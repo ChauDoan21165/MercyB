@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Send, ArrowLeft, MessageCircle, Mail, Users } from "lucide-react";
+import { Send, ArrowLeft, MessageCircle, Mail, Users, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { useToast } from "@/hooks/use-toast";
 
 interface Message {
   id: string;
@@ -17,6 +18,7 @@ interface Message {
 const ChatHub = () => {
   const { roomId } = useParams();
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [mainMessages, setMainMessages] = useState<Message[]>([]);
   const [feedbackMessages, setFeedbackMessages] = useState<Message[]>([]);
   const [roomMessages, setRoomMessages] = useState<Message[]>([]);
@@ -25,6 +27,7 @@ const ChatHub = () => {
   const [feedbackInput, setFeedbackInput] = useState("");
   const [roomInput, setRoomInput] = useState("");
   const [privateInput, setPrivateInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const mainScrollRef = useRef<HTMLDivElement>(null);
 
   // Room data mapping
@@ -43,8 +46,21 @@ const ChatHub = () => {
 
   const currentRoom = roomData[roomId || ""] || { nameVi: "Phòng không xác định", nameEn: "Unknown Room" };
 
-  const sendMainMessage = () => {
-    if (!mainInput.trim()) return;
+  // Add welcome message when room loads
+  useEffect(() => {
+    if (mainMessages.length === 0) {
+      const welcomeMessage: Message = {
+        id: 'welcome',
+        text: `Xin chào! Chào mừng bạn đến với phòng ${currentRoom.nameVi}. Tôi có thể giúp gì cho bạn hôm nay?\n\nHello! Welcome to ${currentRoom.nameEn} room. How can I help you today?`,
+        isUser: false,
+        timestamp: new Date()
+      };
+      setMainMessages([welcomeMessage]);
+    }
+  }, [roomId]);
+
+  const sendMainMessage = async () => {
+    if (!mainInput.trim() || isLoading) return;
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -54,18 +70,59 @@ const ChatHub = () => {
     };
 
     setMainMessages(prev => [...prev, userMessage]);
+    const currentInput = mainInput;
     setMainInput("");
+    setIsLoading(true);
 
-    // Simulate AI response
-    setTimeout(() => {
+    try {
+      // Prepare conversation history (last 10 messages for context)
+      const conversationHistory = mainMessages.slice(-10).map(msg => ({
+        role: msg.isUser ? 'user' : 'assistant',
+        content: msg.text
+      }));
+
+      // Call the edge function
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/room-chat`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            roomId,
+            message: currentInput,
+            conversationHistory
+          })
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Failed to get response');
+      }
+
+      const data = await response.json();
+      
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: `Cảm ơn câu hỏi của bạn về "${mainInput}". Đây là câu trả lời mẫu.\n\nThank you for your question about "${mainInput}". This is a sample response.`,
+        text: data.response,
         isUser: false,
         timestamp: new Date()
       };
+
       setMainMessages(prev => [...prev, aiMessage]);
-    }, 1000);
+
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Lỗi / Error",
+        description: error instanceof Error ? error.message : "Không thể gửi tin nhắn / Could not send message",
+        variant: "destructive"
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const sendMessage = (
@@ -183,11 +240,20 @@ const ChatHub = () => {
                 placeholder="Nhập tin nhắn / Type your message..."
                 value={mainInput}
                 onChange={(e) => setMainInput(e.target.value)}
-                onKeyPress={(e) => e.key === "Enter" && sendMainMessage()}
+                onKeyPress={(e) => e.key === "Enter" && !isLoading && sendMainMessage()}
+                disabled={isLoading}
                 className="flex-1"
               />
-              <Button onClick={sendMainMessage} className="bg-gradient-to-r from-primary to-primary-glow">
-                <Send className="w-4 h-4" />
+              <Button 
+                onClick={sendMainMessage} 
+                disabled={isLoading}
+                className="bg-gradient-to-r from-primary to-primary-glow"
+              >
+                {isLoading ? (
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                ) : (
+                  <Send className="w-4 h-4" />
+                )}
               </Button>
             </div>
           </div>

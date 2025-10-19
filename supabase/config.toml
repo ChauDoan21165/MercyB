@@ -1,0 +1,4 @@
+project_id = "vpkchobbrennozdvhgaw"
+
+[functions.room-chat]
+verify_jwt = false
