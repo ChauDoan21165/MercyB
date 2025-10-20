@@ -65,11 +65,28 @@ const MatchmakingHub = () => {
       <div className="mb-8">
         <div className="flex items-center gap-2 mb-2">
           <Heart className="w-8 h-8 text-primary" />
-          <h1 className="text-4xl font-bold">Matchmaking Hub</h1>
+          <h1 className="text-4xl font-bold">Learning Partner Finder</h1>
         </div>
-        <p className="text-muted-foreground">
-          AI-powered connections based on your interests, knowledge, and personality
-        </p>
+        
+        <Card className="mt-6 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+          <CardContent className="pt-6">
+            <div className="space-y-4">
+              <div>
+                <h3 className="font-semibold text-lg mb-2">English</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Discover your ideal study buddy with our Learning Partner Finder! This feature connects you with others who share your learning style, interests, and goals—whether it's mastering diabetes management, boosting mental wellness, or building healthy habits. By matching you based on preferences like visual learning or goal-setting for fitness, we make learning collaborative and fun. Connect through in-app chats to share tips, motivate each other, and track progress together. For example, if you're focused on stress management, find someone who loves mindfulness practices to exchange ideas. Start today, grow together, and make health education a shared journey!
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold text-lg mb-2">Vietnamese</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Khám phá bạn học lý tưởng với tính năng Tìm Bạn Học! Tính năng này kết nối bạn với những người có phong cách học, sở thích và mục tiêu giống bạn—dù là làm chủ quản lý đái tháo đường, tăng cường sức khỏe tinh thần hay xây dựng thói quen lành mạnh. Bằng cách khớp bạn dựa trên sở thích như học qua hình ảnh hoặc đặt mục tiêu thể dục, chúng tôi khiến việc học trở nên hợp tác và thú vị. Kết nối qua trò chuyện trong ứng dụng để chia sẻ mẹo, động viên nhau và theo dõi tiến độ cùng nhau. Ví dụ, nếu bạn tập trung vào quản lý căng thẳng, tìm người yêu thích thực hành chánh niệm để trao đổi ý tưởng. Bắt đầu hôm nay, cùng phát triển và biến giáo dục sức khỏe thành hành trình chung!
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
 
       <div className="mb-6">
