@@ -64,49 +64,23 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
     setIsLoading(true);
 
     try {
-      // Prepare conversation history (last 10 messages for context)
-      const conversationHistory = mainMessages.slice(-10).map(msg => ({
-        role: msg.isUser ? 'user' : 'assistant',
-        content: msg.text
-      }));
+      // Client-side keyword response using room JSON
+      const { keywordRespond } = await import("@/lib/keywordResponder");
+      const result = await keywordRespond(roomId || "", currentInput);
 
-      // Call the edge function
-      const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/room-chat`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            roomId,
-            message: currentInput,
-            conversationHistory
-          })
-        }
-      );
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || 'Failed to get response');
-      }
-
-      const data = await response.json();
-      
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: data.response,
+        text: result.text,
         isUser: false,
         timestamp: new Date()
       };
-
       setMainMessages(prev => [...prev, aiMessage]);
 
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error('Error generating response:', error);
       toast({
         title: "Lỗi / Error",
-        description: error instanceof Error ? error.message : "Không thể gửi tin nhắn / Could not send message",
+        description: error instanceof Error ? error.message : "Không thể tạo phản hồi / Could not generate response",
         variant: "destructive"
       });
     } finally {
