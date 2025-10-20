@@ -47,6 +47,75 @@ export type Database = {
         }
         Relationships: []
       }
+      subscription_tiers: {
+        Row: {
+          created_at: string | null
+          custom_topics_allowed: number | null
+          display_order: number
+          id: string
+          is_active: boolean | null
+          name: string
+          name_vi: string
+          price_monthly: number
+          priority_support: boolean | null
+          room_access_per_day: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          custom_topics_allowed?: number | null
+          display_order: number
+          id?: string
+          is_active?: boolean | null
+          name: string
+          name_vi: string
+          price_monthly: number
+          priority_support?: boolean | null
+          room_access_per_day?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          custom_topics_allowed?: number | null
+          display_order?: number
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          name_vi?: string
+          price_monthly?: number
+          priority_support?: boolean | null
+          room_access_per_day?: number | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      subscription_usage: {
+        Row: {
+          created_at: string | null
+          custom_topics_requested: number | null
+          id: string
+          rooms_accessed: number | null
+          usage_date: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          custom_topics_requested?: number | null
+          id?: string
+          rooms_accessed?: number | null
+          usage_date?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          custom_topics_requested?: number | null
+          id?: string
+          rooms_accessed?: number | null
+          usage_date?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string | null
@@ -68,6 +137,53 @@ export type Database = {
         }
         Relationships: []
       }
+      user_subscriptions: {
+        Row: {
+          created_at: string | null
+          current_period_end: string | null
+          current_period_start: string | null
+          id: string
+          status: string
+          stripe_customer_id: string | null
+          stripe_subscription_id: string | null
+          tier_id: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          current_period_end?: string | null
+          current_period_start?: string | null
+          id?: string
+          status?: string
+          stripe_customer_id?: string | null
+          stripe_subscription_id?: string | null
+          tier_id: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          current_period_end?: string | null
+          current_period_start?: string | null
+          id?: string
+          status?: string
+          stripe_customer_id?: string | null
+          stripe_subscription_id?: string | null
+          tier_id?: string
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_subscriptions_tier_id_fkey"
+            columns: ["tier_id"]
+            isOneToOne: false
+            referencedRelation: "subscription_tiers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       daily_feedback_summary: {
@@ -83,6 +199,19 @@ export type Database = {
       }
     }
     Functions: {
+      check_usage_limit: {
+        Args: { limit_type: string; user_uuid: string }
+        Returns: boolean
+      }
+      get_user_tier: {
+        Args: { user_uuid: string }
+        Returns: {
+          custom_topics_allowed: number
+          priority_support: boolean
+          room_access_per_day: number
+          tier_name: string
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
