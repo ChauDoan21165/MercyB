@@ -34,6 +34,16 @@ const roomFiles: { [key: string]: string } = {
   'food-nutrition': 'food_and_nutrition.json',
   'grief': 'grief.json',
   'gut-brain': 'gut_brain_axis.json',
+  'headache': 'headache.json',
+  'soul-mate': 'how_to_find_your_soul_mate.json',
+  'husband-dealing': 'husband_dealing.json',
+  'hypertension': 'hypertension.json',
+  'immune-system': 'immune_system.json',
+  'immunity-boost': 'immunity_boost.json',
+  'injury-bleeding': 'injury_and_bleeding.json',
+  'matchmaker': 'matchmaker_traits.json',
+  'mens-health': 'men_health.json',
+  'mental-health': 'mental_health.json',
 };
 
 // Load room data from JSON
