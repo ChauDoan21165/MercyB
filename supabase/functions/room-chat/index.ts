@@ -25,6 +25,15 @@ const roomFiles: { [key: string]: string } = {
   'depression': 'depression.json',
   'diabetes': 'diabetes.json',
   'digestive': 'digestive_system.json',
+  'elderly-care': 'elderly_care.json',
+  'endocrine': 'endocrine_system.json',
+  'exercise-medicine': 'exercise_medicine.json',
+  'fever': 'fever.json',
+  'finance': 'finance.json',
+  'fitness': 'fitness_room.json',
+  'food-nutrition': 'food_and_nutrition.json',
+  'grief': 'grief.json',
+  'gut-brain': 'gut_brain_axis.json',
 };
 
 // Load room data from JSON
