@@ -113,151 +113,123 @@ serve(async (req) => {
 
     // Load room data
     const roomData = await loadRoomData(roomId);
-    const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
 
-    if (!LOVABLE_API_KEY) {
-      console.error('LOVABLE_API_KEY not configured');
+    if (!roomData) {
       return new Response(
-        JSON.stringify({ error: 'AI service not configured' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        JSON.stringify({ error: 'Room data not found' }),
+        { status: 404, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-// Prepare contextual snippets from room data (truncate to keep prompt small)
-function truncate(text: string | undefined, max = 900) {
-  return (text || '').toString().slice(0, max);
-}
-
-const contextEn = truncate(roomData?.room_essay?.en || roomData?.description?.en);
-const contextVi = truncate(roomData?.room_essay?.vi || roomData?.description?.vi);
-const crisisEn = truncate(roomData?.crisis_footer?.en);
-const crisisVi = truncate(roomData?.crisis_footer?.vi);
-const safetyEn = truncate(roomData?.safety_disclaimer?.en);
-const safetyVi = truncate(roomData?.safety_disclaimer?.vi);
-
-let keywordsEn = '';
-let keywordsVi = '';
-try {
-  if (roomData?.keywords) {
-    const groups = Object.values(roomData.keywords as Record<string, any>);
-    if (groups.length > 0) {
-      const first = groups[0] as any;
-      if (Array.isArray(first?.en)) keywordsEn = first.en.slice(0, 12).join(', ');
-      if (Array.isArray(first?.vi)) keywordsVi = first.vi.slice(0, 12).join(', ');
-    }
-  }
-} catch (_) {}
-
-const sampleTitlesEn = Array.isArray(roomData?.entries)
-  ? (roomData!.entries as any[]).slice(0, 3).map(e => e?.title?.en).filter(Boolean).join(' | ')
-  : '';
-const sampleTitlesVi = Array.isArray(roomData?.entries)
-  ? (roomData!.entries as any[]).slice(0, 3).map(e => e?.title?.vi).filter(Boolean).join(' | ')
-  : '';
-
-// Build system prompt with room context
-const systemPrompt = `You are a bilingual health and wellness consultant for the Mercy Blade app, specializing in the "${roomId}" topic.
-
-CRITICAL INSTRUCTIONS:
-- ALWAYS respond in BOTH English and Vietnamese
-- English text comes FIRST, then Vietnamese
-- Format: English paragraph, then blank line, then Vietnamese paragraph
-- Be conversational, warm, and educational
-- Focus on practical, actionable advice
-- Include safety disclaimers when appropriate
-- For health topics, always remind users to consult healthcare professionals
-- Keep responses concise but informative (2-3 paragraphs max)
-- Help Vietnamese speakers improve their English while learning about health
-
-DATA CONTEXT (English):
-- Description: ${contextEn}
-- Keywords: ${keywordsEn}
-- Sample entries: ${sampleTitlesEn}
-- Safety: ${safetyEn}
-- Crisis: ${crisisEn}
-
-NGỮ CẢNH DỮ LIỆU (Tiếng Việt):
-- Mô tả: ${contextVi}
-- Từ khóa: ${keywordsVi}
-- Mục ví dụ: ${sampleTitlesVi}
-- Lưu ý an toàn: ${safetyVi}
-- Khẩn cấp: ${crisisVi}
-
-RESPONSE FORMAT:
-[English paragraph]
-
-[Đoạn tiếng Việt]
-`;
-
-    // Prepare messages
-    const messages = [
-      { role: 'system', content: systemPrompt },
-      ...(conversationHistory || []),
-      { role: 'user', content: message }
-    ];
-
-    console.log('Calling Lovable AI...');
-
-    // Call Lovable AI
-    const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${LOVABLE_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'google/gemini-2.5-flash',
-        messages: messages,
-        temperature: 0.7,
-        max_tokens: 800,
-      }),
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Lovable AI error:', response.status, errorText);
+    // Keyword matching function
+    function findMatchingEntry(userMessage: string, roomData: any) {
+      const messageLower = userMessage.toLowerCase();
       
-      if (response.status === 429) {
-        return new Response(
-          JSON.stringify({ 
-            error: 'Đã vượt quá giới hạn yêu cầu. Vui lòng thử lại sau.\n\nRate limit exceeded. Please try again later.' 
-          }),
-          { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
+      // Check all keyword groups
+      if (roomData.keywords) {
+        const keywordGroups = Object.entries(roomData.keywords as Record<string, any>);
+        
+        for (const [groupKey, group] of keywordGroups) {
+          const groupData = group as any;
+          
+          // Check English keywords
+          if (Array.isArray(groupData.en)) {
+            for (const keyword of groupData.en) {
+              if (messageLower.includes(keyword.toLowerCase())) {
+                console.log(`Matched keyword: ${keyword} in group: ${groupKey}`);
+                // Find corresponding entry
+                const entry = (roomData.entries || []).find((e: any) => 
+                  e.id === groupKey || e.keyword_group === groupKey
+                );
+                if (entry) return entry;
+              }
+            }
+          }
+          
+          // Check Vietnamese keywords
+          if (Array.isArray(groupData.vi)) {
+            for (const keyword of groupData.vi) {
+              if (messageLower.includes(keyword.toLowerCase())) {
+                console.log(`Matched keyword: ${keyword} in group: ${groupKey}`);
+                const entry = (roomData.entries || []).find((e: any) => 
+                  e.id === groupKey || e.keyword_group === groupKey
+                );
+                if (entry) return entry;
+              }
+            }
+          }
+        }
       }
       
-      if (response.status === 402) {
-        return new Response(
-          JSON.stringify({ 
-            error: 'Cần nạp thêm tín dụng. Vui lòng liên hệ quản trị viên.\n\nPayment required. Please contact administrator.' 
-          }),
-          { status: 402, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
+      return null;
+    }
+
+    // Try to find matching entry
+    const matchedEntry = findMatchingEntry(message, roomData);
+
+    if (matchedEntry) {
+      console.log('Found matching entry, returning pre-written content');
+      
+      // Build response from entry data
+      let response = '';
+      
+      // Add title if available
+      if (matchedEntry.title?.en || matchedEntry.title?.vi) {
+        response += `${matchedEntry.title?.en || ''}\n\n`;
+        response += `${matchedEntry.title?.vi || ''}\n\n`;
+      }
+      
+      // Add body content
+      if (matchedEntry.body?.en || matchedEntry.body?.vi) {
+        response += `${matchedEntry.body?.en || ''}\n\n`;
+        response += `${matchedEntry.body?.vi || ''}\n\n`;
+      }
+      
+      // Add recommendations if available
+      if (matchedEntry.recommendations) {
+        if (matchedEntry.recommendations.en && matchedEntry.recommendations.en.length > 0) {
+          response += `Recommendations:\n${matchedEntry.recommendations.en.join('\n')}\n\n`;
+        }
+        if (matchedEntry.recommendations.vi && matchedEntry.recommendations.vi.length > 0) {
+          response += `Khuyến nghị:\n${matchedEntry.recommendations.vi.join('\n')}\n\n`;
+        }
+      }
+      
+      // Add safety disclaimer if available
+      if (roomData.safety_disclaimer?.en || roomData.safety_disclaimer?.vi) {
+        response += `\n${roomData.safety_disclaimer?.en || ''}\n\n`;
+        response += `${roomData.safety_disclaimer?.vi || ''}\n`;
       }
 
       return new Response(
-        JSON.stringify({ error: 'AI service error' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        JSON.stringify({ 
+          response: response.trim(),
+          roomId,
+          matched: true,
+          timestamp: new Date().toISOString()
+        }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    const data = await response.json();
-    const aiResponse = data.choices?.[0]?.message?.content;
-
-    if (!aiResponse) {
-      console.error('No response from AI');
-      return new Response(
-        JSON.stringify({ error: 'No response generated' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+    // No keyword match - return a default response
+    console.log('No keyword match found, returning default response');
+    
+    let defaultResponse = '';
+    
+    if (roomData.room_essay?.en || roomData.room_essay?.vi) {
+      defaultResponse += `${roomData.room_essay?.en || ''}\n\n`;
+      defaultResponse += `${roomData.room_essay?.vi || ''}\n\n`;
     }
-
-    console.log('AI response generated successfully');
+    
+    defaultResponse += `Please use specific keywords related to this topic for more detailed information.\n\n`;
+    defaultResponse += `Vui lòng sử dụng các từ khóa cụ thể liên quan đến chủ đề này để biết thêm thông tin chi tiết.`;
 
     return new Response(
       JSON.stringify({ 
-        response: aiResponse,
+        response: defaultResponse.trim(),
         roomId,
+        matched: false,
         timestamp: new Date().toISOString()
       }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
