@@ -72,7 +72,7 @@ const roomFiles: { [key: string]: string } = {
   'womens-health': 'women_health.json',
 };
 
-// Load room data from JSON embedded in this function's folder
+// Load room data from JSON embedded or bundled with this function
 async function loadRoomData(roomId: string) {
   try {
     const fileName = roomFiles[roomId];
@@ -81,15 +81,42 @@ async function loadRoomData(roomId: string) {
       return null;
     }
 
-    // Read the JSON from ./data which is bundled with this function
-    const fileUrl = new URL(`./data/${fileName}`, import.meta.url);
-    console.log(`Attempting to load: ${fileUrl.href}`);
+    // Prefer dynamic import so the bundler includes the JSON
+    const primaryUrl = new URL(`./data/${fileName}`, import.meta.url);
+    console.log(`Attempting to load (import): ${primaryUrl.href}`);
+    try {
+      // Deno supports JSON module import with assertions
+      const mod = await import(primaryUrl.href, { with: { type: 'json' } } as any);
+      return (mod as any).default ?? mod;
+    } catch (e) {
+      console.warn('Import failed, trying file read...', e);
+    }
 
-    const fileText = await Deno.readTextFile(fileUrl);
-    const json = JSON.parse(fileText);
-    return json;
+    // Fallback 1: Read from the embedded file path
+    try {
+      const fileText = await Deno.readTextFile(primaryUrl);
+      return JSON.parse(fileText);
+    } catch (e) {
+      console.warn('ReadTextFile primary failed, trying legacy path...', e);
+    }
+
+    // Fallback 2: Legacy relative path some builds used previously
+    const legacyUrl = new URL(`../../data/rooms/${fileName}`, import.meta.url);
+    console.log(`Attempting to load (legacy): ${legacyUrl.href}`);
+    try {
+      const modLegacy = await import(legacyUrl.href, { with: { type: 'json' } } as any);
+      return (modLegacy as any).default ?? modLegacy;
+    } catch (_) {}
+
+    try {
+      const legacyText = await Deno.readTextFile(legacyUrl);
+      return JSON.parse(legacyText);
+    } catch (error) {
+      console.error('Error loading room data:', error);
+      return null;
+    }
   } catch (error) {
-    console.error('Error loading room data:', error);
+    console.error('Error loading room data (outer):', error);
     return null;
   }
 }
