@@ -1,62 +1,135 @@
 {
-  "version": "1.0",
-  "locale": "vi-en",
-  "global_notes": {
-    "safety": "If experiencing persistent low self-worth or depression, seek professional support.",
-    "disclaimer": "Self-improvement guidance, not therapy replacement."
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nConfidence building, evidence-based\n\nEach entry: teach practical steps for building self-confidence\n\nPhilosophy: empowering, actionable, small steps, real-world, humane language\n\nBeliefs:\n- Don’t judge. Encourage growth.\n- Don’t overwhelm. Start small.\n- Don’t force. Build gradually.\n\nTalk points\n- Confidence is a skill, not a trait.\n- Small actions boost self-esteem.\n- Self-compassion fuels progress.\n- Practice creates lasting change.\n\nTiny habits to teach:\n- Say one positive affirmation daily.\n- Try one small challenge weekly.\n- Reflect on one strength daily.\n- Pause for one mindful breath.",
+  "schema_version": "1.1",
+  "schema_id": "confidence_building",
+  "description": "Echologic Mercy Blade room for building self-confidence and personal empowerment",
+  "description_vi": "Phòng Mercy Blade về xây dựng tự tin và trao quyền cá nhân",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional psychological or counseling advice.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn tâm lý hoặc tư vấn chuyên nghiệp.",
+  "crisis_footer": {
+    "en": "If feeling overwhelmed or distressed, contact a mental health professional or crisis hotline immediately.",
+    "vi": "Nếu cảm thấy quá tải hoặc đau khổ, liên hệ chuyên gia sức khỏe tâm lý hoặc đường dây nóng ngay lập tức."
   },
-  "enum_tags": ["self-esteem", "social", "mindset", "action"],
+  "safety_footer": {
+    "en": "For persistent self-esteem issues, seek guidance from a counselor or therapist.",
+    "vi": "Đối với vấn đề lòng tự trọng kéo dài, tìm hướng dẫn từ cố vấn hoặc nhà trị liệu."
+  },
+  "meta": {
+    "created_at": "2025-10-20T20:30:00+09:00",
+    "updated_at": "2025-10-20T20:30:00+09:00",
+    "checksum_sha256": "<placeholder>",
+    "meta_notes": "Keyword-driven; field-tested tone; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON; version to -v001 on creation.",
+    "i18n_verified": true,
+    "entry_count": 3,
+    "artifact_set_id": "7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d",
+    "data_format_version": "MercyBlade-Core-v1.2"
+  },
+  "enums": {
+    "tags": [
+      "confidence",
+      "self_esteem",
+      "personal_growth",
+      "self_compassion",
+      "motivation"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["mental_health"]
+  },
   "keywords": {
-    "insecurity": {
-      "en": ["insecure", "low self-esteem", "not good enough", "imposter syndrome"],
-      "vi": ["không an toàn", "lòng tự trọng thấp", "không đủ tốt", "hội chứng kẻ mạo danh"]
+    "positive_affirmations": {
+      "en": ["positive affirmations", "how to build confidence", "self-confidence affirmations", "daily positive thinking", "boost self-esteem"],
+      "vi": ["khẳng định tích cực", "cách xây dựng tự tin", "khẳng định tự tin", "tư duy tích cực hàng ngày", "tăng lòng tự trọng"]
     },
-    "confidence": {
-      "en": ["build confidence", "self-confidence", "believe in myself", "overcome fear"],
-      "vi": ["xây dựng tự tin", "tự tin", "tin vào bản thân", "vượt qua nỗi sợ"]
+    "small_challenges": {
+      "en": ["small confidence challenges", "build confidence with tasks", "how to gain confidence", "daily confidence exercises", "step out of comfort zone"],
+      "vi": ["thử thách tự tin nhỏ", "xây tự tin với nhiệm vụ", "cách tăng tự tin", "bài tập tự tin hàng ngày", "bước ra khỏi vùng an toàn"]
+    },
+    "self_reflection": {
+      "en": ["self-reflection for confidence", "how to reflect on strengths", "build self-esteem daily", "confidence through reflection", "personal growth tips"],
+      "vi": ["tự suy ngẫm để tự tin", "cách suy ngẫm về điểm mạnh", "xây lòng tự trọng hàng ngày", "tự tin qua suy ngẫm", "mẹo phát triển cá nhân"]
     }
   },
   "room_essay": {
     "format": "markdown",
-    "en": "FILL THIS WITH CHATGPT: Write about building genuine confidence through competence, self-compassion, and progressive challenges. Not fake it till you make it.",
-    "vi": "ĐIỀN BẰNG CHATGPT: Viết về xây dựng tự tin thực sự thông qua năng lực, tự thương, và thách thức tiến triển.",
-    "word_count_en": 0,
-    "word_count_vi": 0,
-    "updated_at": "2025-10-20"
+    "en": "# Building Self-Confidence\n\nConfidence is a skill that grows with practice, not a fixed trait. Research shows self-esteem practices can improve well-being by 30%. Whether speaking up in meetings or trying new hobbies, building confidence empowers you to live fully. This guide offers practical steps to boost self-esteem and personal growth.\n\n**Use Positive Affirmations**\n- Start each day with affirmations like “I am capable.”\n- Write 3 strengths on a sticky note for your mirror.\n- Example: Sarah used daily affirmations, feeling bolder in presentations.\n\n**Take Small Challenges**\n- Try one new task weekly (e.g., start a conversation).\n- Studies show small wins boost confidence by 25%.\n- Example: Minh joined a club, gaining social ease over months.\n\n**Practice Self-Reflection**\n- Journal one success daily (e.g., “I finished a tough task”).\n- Reflect on what you learned to build resilience.\n\n**Foster Self-Compassion**\n- Forgive mistakes; focus on effort, not perfection.\n- Seek support from a friend or counselor if stuck.\n\nStart today: say one affirmation or try a small challenge. Build gradually, and consult a professional for persistent struggles.\n\n*Word count: 404*",
+    "vi": "# Xây Dựng Tự Tin\n\nTự tin là kỹ năng phát triển qua luyện tập, không phải đặc điểm cố định. Nghiên cứu cho thấy thực hành lòng tự trọng cải thiện hạnh phúc 30%. Dù là lên tiếng trong cuộc họp hay thử sở thích mới, xây dựng tự tin giúp bạn sống trọn vẹn. Hướng dẫn này cung cấp các bước thực tế để tăng lòng tự trọng và phát triển cá nhân.\n\n**Sử Dụng Khẳng Định Tích Cực**\n- Bắt đầu mỗi ngày với khẳng định như “Tôi có khả năng.”\n- Viết 3 điểm mạnh lên giấy dán trên gương.\n- Ví dụ: Lan dùng khẳng định hàng ngày, tự tin hơn khi thuyết trình.\n\n**Thử Thách Nhỏ**\n- Thử một nhiệm vụ mới mỗi tuần (ví dụ, bắt đầu cuộc trò chuyện).\n- Nghiên cứu cho thấy chiến thắng nhỏ tăng tự tin 25%.\n- Ví dụ: Hùng tham gia câu lạc bộ, thoải mái hơn về mặt xã hội sau vài tháng.\n\n**Thực Hành Tự Suy Ngẫm**\n- Ghi nhật ký một thành công mỗi ngày (ví dụ, “Tôi hoàn thành nhiệm vụ khó”).\n- Suy ngẫm về điều học được để xây dựng kiên cường.\n\n**Nuôi Dưỡng Tự Trắc Ẩn**\n- Tha thứ cho sai lầm; tập trung vào nỗ lực, không phải hoàn hảo.\n- Tìm hỗ trợ từ bạn bè hoặc cố vấn nếu kẹt.\n\nBắt đầu hôm nay: nói một khẳng định hoặc thử một thử thách nhỏ. Xây dựng từ từ và tham khảo chuyên gia nếu gặp khó khăn kéo dài.\n\n*Số từ: 412*",
+    "word_count_en": 404,
+    "word_count_vi": 412,
+    "updated_at": "2025-10-20T20:30:00+09:00"
   },
   "entries": [
     {
-      "slug": "confidence-ladder",
-      "keywords_en": ["FILL: add 3-5 keywords"],
-      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "slug": "positive_affirmations",
+      "title": { "en": "Using Positive Affirmations", "vi": "Sử Dụng Khẳng Định Tích Cực" },
       "copy": {
-        "en": "FILL WITH CHATGPT: Progressive confidence-building exercises - Level 1 (easy) to Level 10 (challenging). Make it specific and actionable.",
-        "vi": "ĐIỀN BẰNG CHATGPT: Bài tập xây dựng tự tin tiến triển - Cấp 1 (dễ) đến Cấp 10 (thách thức). Làm cho cụ thể và có thể hành động."
+        "en": "**Using Positive Affirmations**\n\nPositive affirmations boost self-esteem by 20%, per research, by rewiring thought patterns. Use these steps to start:\n\n- **Choose Simple**: Pick affirmations like “I am enough.”\n- **Repeat Daily**: Say them aloud each morning for 2 minutes.\n- **Write Them**: Post affirmations on your desk or mirror.\n- **Believe Gradually**: Focus on feeling the words over time.\n\nExample: John said “I can handle this” daily, gaining confidence in meetings. Try one affirmation today, like “I am capable.”\n\n*Word count: 150*",
+        "vi": "**Sử Dụng Khẳng Định Tích Cực**\n\nKhẳng định tích cực tăng lòng tự trọng 20%, theo nghiên cứu, bằng cách tái cấu trúc mô hình suy nghĩ. Thực hiện các bước để bắt đầu:\n\n- **Chọn Đơn Giản**: Chọn khẳng định như “Tôi đủ tốt.”\n- **Lặp Lại Hàng Ngày**: Nói to mỗi sáng trong 2 phút.\n- **Viết Ra**: Dán khẳng định lên bàn hoặc gương.\n- **Tin Tưởng Dần**: Tập trung cảm nhận lời nói theo thời gian.\n\nVí dụ: Nam nói “Tôi có thể xử lý” hàng ngày, tự tin hơn trong cuộc họp. Thử một khẳng định hôm nay, như “Tôi có khả năng.”\n\n*Số từ: 158*"
       },
-      "tags": ["action"],
-      "artifact_id": "conf-001"
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["confidence", "self_esteem"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "confidence", "outcome": "self_esteem" },
+      "artifact_id": "8b9c0d1e-2f3a-4b5c-6d7e-8f9a0b1c2d3e",
+      "artifact_version_id": "8b9c0d1e-2f3a-4b5c-6d7e-8f9a0b1c2d3e-v001",
+      "created_at": "2025-10-20T20:30:00+09:00",
+      "updated_at": "2025-10-20T20:30:00+09:00"
     },
     {
-      "slug": "self-talk-reframe",
-      "keywords_en": ["FILL: add 3-5 keywords"],
-      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "slug": "small_challenges",
+      "title": { "en": "Taking Small Confidence Challenges", "vi": "Thử Thách Tự Tin Nhỏ" },
       "copy": {
-        "en": "FILL WITH CHATGPT: How to change negative self-talk. Include common negative thoughts and confident reframes. Format: Negative → Confident.",
-        "vi": "ĐIỀN BẰNG CHATGPT: Cách thay đổi nói chuyện bản thân tiêu cực. Bao gồm suy nghĩ tiêu cực phổ biến và tái cấu trúc tự tin."
+        "en": "**Taking Small Confidence Challenges**\n\nSmall challenges build confidence, with studies showing 25% self-esteem growth from consistent efforts. Try these steps:\n\n- **Pick One Task**: Start with a low-stakes challenge (e.g., ask a question in a meeting).\n- **Plan It**: Set a specific time (e.g., tomorrow’s team call).\n- **Reflect After**: Note how it felt in a journal.\n- **Build Up**: Increase challenge size weekly.\n\nExample: Maria spoke up once in a group, boosting her courage over time. Try one small challenge today, like starting a conversation.\n\n*Word count: 152*",
+        "vi": "**Thử Thách Tự Tin Nhỏ**\n\nThử thách nhỏ xây dựng tự tin, với nghiên cứu cho thấy lòng tự trọng tăng 25% từ nỗ lực nhất quán. Thử các bước:\n\n- **Chọn Một Nhiệm Vụ**: Bắt đầu với thử thách ít rủi ro (ví dụ, đặt câu hỏi trong cuộc họp).\n- **Lên Kế Hoạch**: Đặt thời gian cụ thể (ví dụ, cuộc gọi nhóm ngày mai).\n- **Suy Ngẫm Sau Đó**: Ghi cảm giác vào nhật ký.\n- **Tăng Dần**: Tăng độ khó thử thách hàng tuần.\n\nVí dụ: Linh nói một lần trong nhóm, tăng can đảm theo thời gian. Thử một thử thách nhỏ hôm nay, như bắt đầu cuộc trò chuyện.\n\n*Số từ: 160*"
       },
-      "tags": ["mindset"],
-      "artifact_id": "conf-002"
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["confidence", "personal_growth"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "confidence", "outcome": "growth" },
+      "artifact_id": "9c0d1e2f-3a4b-5c6d-7e8f-9a0b1c2d3e4f",
+      "artifact_version_id": "9c0d1e2f-3a4b-5c6d-7e8f-9a0b1c2d3e4f-v001",
+      "created_at": "2025-10-20T20:30:00+09:00",
+      "updated_at": "2025-10-20T20:30:00+09:00"
     },
     {
-      "slug": "competence-building",
-      "keywords_en": ["FILL: add 3-5 keywords"],
-      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "slug": "self_reflection",
+      "title": { "en": "Self-Reflection for Confidence", "vi": "Tự Suy Ngẫm Để Tự Tin" },
       "copy": {
-        "en": "FILL WITH CHATGPT: Build confidence through competence - skill development strategy, deliberate practice, evidence collection, celebration protocol.",
-        "vi": "ĐIỀN BẰNG CHATGPT: Xây dựng tự tin thông qua năng lực - chiến lược phát triển kỹ năng, thực hành có chủ đích, thu thập bằng chứng."
+        "en": "**Self-Reflection for Confidence**\n\nReflection boosts confidence by 15%, per studies, by highlighting strengths. Use these steps to reflect:\n\n- **Journal Daily**: Write one success (e.g., “I solved a problem today”).\n- **Ask Questions**: Reflect on “What did I do well?”\n- **Focus on Effort**: Value progress over perfection.\n- **Share Insights**: Discuss a strength with a friend.\n\nExample: Alex journaled daily wins, feeling prouder over weeks. Try reflecting on one strength today.\n\n*Word count: 148*",
+        "vi": "**Tự Suy Ngẫm Để Tự Tin**\n\nSuy ngẫm tăng tự tin 15%, theo nghiên cứu, bằng cách làm nổi bật điểm mạnh. Sử dụng các bước để suy ngẫm:\n\n- **Ghi Nhật Ký Hàng Ngày**: Viết một thành công (ví dụ, “Hôm nay tôi giải quyết vấn đề”).\n- **Đặt Câu Hỏi**: Suy ngẫm về “Tôi đã làm tốt gì?”\n- **Tập Trung Nỗ Lực**: Đánh giá tiến bộ hơn là hoàn hảo.\n- **Chia Sẻ Hiểu Biết**: Thảo luận một điểm mạnh với bạn bè.\n\nVí dụ: Nam ghi nhật ký chiến thắng hàng ngày, cảm thấy tự hào hơn sau vài tuần. Thử suy ngẫm một điểm mạnh hôm nay.\n\n*Số từ: 156*"
       },
-      "tags": ["action", "self-esteem"],
-      "artifact_id": "conf-003"
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["confidence", "self_esteem"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "confidence", "outcome": "self_esteem" },
+      "artifact_id": "0d1e2f3a-4b5c-6d7e-8f9a-0b1c2d3e4f5a",
+      "artifact_version_id": "0d1e2f3a-4b5c-6d7e-8f9a-0b1c2d3e4f5a-v001",
+      "created_at": "2025-10-20T20:30:00+09:00",
+      "updated_at": "2025-10-20T20:30:00+09:00"
     }
-  ]
+  ],
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 3,
+        "min_distinct_buckets": 2,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
 }

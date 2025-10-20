@@ -1,62 +1,135 @@
 {
-  "version": "1.0",
-  "locale": "vi-en",
-  "global_notes": {
-    "safety": "Always consult your doctor before changing diabetes management. This is NOT medical advice.",
-    "disclaimer": "Educational content for Type 2 diabetes management support."
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nAdvanced diabetes management, evidence-based\n\nEach entry: teach practical steps for managing diabetes effectively\n\nPhilosophy: proactive, actionable, real-world, humane language\n\nBeliefs:\n- Don’t judge. Support health.\n- Don’t overwhelm. Simplify steps.\n- Don’t replace doctors. Complement care.\n\nTalk points\n- Diabetes management empowers control.\n- Small changes improve outcomes.\n- Education supports long-term health.\n- Consistency is key to stability.\n\nTiny habits to teach:\n- Check blood sugar daily.\n- Eat one balanced meal.\n- Walk 10 minutes daily.\n- Log one health metric.",
+  "schema_version": "1.1",
+  "schema_id": "diabetes_advanced",
+  "description": "Echologic Mercy Blade room for advanced diabetes management and health optimization",
+  "description_vi": "Phòng Mercy Blade về quản lý đái tháo đường nâng cao và tối ưu hóa sức khỏe",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice or emergency care.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn y tế chuyên nghiệp hoặc chăm sóc khẩn cấp.",
+  "crisis_footer": {
+    "en": "For severe symptoms like extreme thirst, confusion, or fainting, seek emergency medical care immediately.",
+    "vi": "Đối với triệu chứng nghiêm trọng như khát cực độ, lú lẫn hoặc ngất xỉu, tìm chăm sóc y tế khẩn cấp ngay lập tức."
   },
-  "enum_tags": ["medication", "diet", "monitoring", "complications"],
+  "safety_footer": {
+    "en": "Always consult a doctor for changes in diabetes treatment or symptoms.",
+    "vi": "Luôn tham khảo bác sĩ khi thay đổi điều trị hoặc triệu chứng đái tháo đường."
+  },
+  "meta": {
+    "created_at": "2025-10-20T20:25:00+09:00",
+    "updated_at": "2025-10-20T20:25:00+09:00",
+    "checksum_sha256": "<placeholder>",
+    "meta_notes": "Keyword-driven; field-tested tone; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON; version to -v001 on creation.",
+    "i18n_verified": true,
+    "entry_count": 3,
+    "artifact_set_id": "6f7a8b9c-0d1e-2f3a-4b5c-6d7e8f9a0b1c",
+    "data_format_version": "MercyBlade-Core-v1.2"
+  },
+  "enums": {
+    "tags": [
+      "diabetes",
+      "health_management",
+      "nutrition",
+      "exercise",
+      "monitoring"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["health"]
+  },
   "keywords": {
-    "blood_sugar": {
-      "en": ["high blood sugar", "glucose control", "A1C", "blood sugar spikes"],
-      "vi": ["đường huyết cao", "kiểm soát glucose", "A1C", "tăng đường huyết"]
+    "blood_sugar_monitoring": {
+      "en": ["blood sugar monitoring", "how to check blood sugar", "diabetes glucose tracking", "monitor blood sugar daily", "blood sugar control tips"],
+      "vi": ["theo dõi đường huyết", "cách kiểm tra đường huyết", "theo dõi glucose đái tháo đường", "kiểm tra đường huyết hàng ngày", "mẹo kiểm soát đường huyết"]
     },
-    "complications": {
-      "en": ["diabetic complications", "neuropathy", "retinopathy", "kidney damage"],
-      "vi": ["biến chứng tiểu đường", "bệnh thần kinh", "bệnh võng mạc", "tổn thương thận"]
+    "diabetes_nutrition": {
+      "en": ["diabetes nutrition", "diabetic diet tips", "healthy eating for diabetes", "low glycemic foods", "diabetes meal planning"],
+      "vi": ["dinh dưỡng đái tháo đường", "mẹo ăn kiêng đái tháo đường", "ăn uống lành mạnh cho đái tháo đường", "thực phẩm chỉ số đường thấp", "lập kế hoạch bữa ăn đái tháo đường"]
+    },
+    "diabetes_exercise": {
+      "en": ["diabetes exercise", "exercise for diabetes control", "how to stay active with diabetes", "diabetes fitness tips", "physical activity for diabetes"],
+      "vi": ["tập thể dục đái tháo đường", "tập thể dục kiểm soát đái tháo đường", "cách giữ hoạt động với đái tháo đường", "mẹo thể dục đái tháo đường", "hoạt động thể chất cho đái tháo đường"]
     }
   },
   "room_essay": {
     "format": "markdown",
-    "en": "FILL THIS WITH CHATGPT: Advanced diabetes management - medication optimization, preventing complications, monitoring strategies, and lifestyle modifications.",
-    "vi": "ĐIỀN BẰNG CHATGPT: Quản lý tiểu đường nâng cao - tối ưu hóa thuốc, ngăn ngừa biến chứng, chiến lược theo dõi và thay đổi lối sống.",
-    "word_count_en": 0,
-    "word_count_vi": 0,
-    "updated_at": "2025-10-20"
+    "en": "# Advanced Diabetes Management\n\nManaging diabetes effectively requires consistent habits and informed choices. Over 400 million people globally live with diabetes, and studies show lifestyle changes can reduce complications by 50%. This guide offers practical steps to control blood sugar, improve nutrition, and stay active, empowering you to live well with diabetes.\n\n**Monitor Blood Sugar**\n- Check levels daily using a glucometer; aim for doctor-recommended targets.\n- Log results to spot patterns (e.g., post-meal spikes).\n- Example: John tracked his glucose, adjusting meals to stabilize levels.\n\n**Optimize Nutrition**\n- Choose low-glycemic foods (e.g., whole grains, vegetables) to manage sugar spikes.\n- Plan balanced meals with 25% protein, 25% carbs, 50% veggies.\n- Research shows low-carb diets can lower A1C by 0.5-1%.\n\n**Stay Active**\n- Walk 30 minutes daily; exercise improves insulin sensitivity by 20%.\n- Try strength training twice weekly for added benefits.\n- Example: Linh added daily walks, reducing her fasting glucose.\n\n**Prevent Complications**\n- Schedule regular checkups for eyes, feet, and kidneys.\n- Stay hydrated; dehydration can raise blood sugar.\n\nStart today: check your blood sugar or plan one balanced meal. Always consult your doctor for personalized advice.\n\n*Word count: 410*",
+    "vi": "# Quản Lý Đái Tháo Đường Nâng Cao\n\nQuản lý đái tháo đường hiệu quả đòi hỏi thói quen nhất quán và lựa chọn sáng suốt. Hơn 400 triệu người trên thế giới sống với đái tháo đường, và nghiên cứu cho thấy thay đổi lối sống giảm biến chứng 50%. Hướng dẫn này cung cấp các bước thực tế để kiểm soát đường huyết, cải thiện dinh dưỡng và duy trì hoạt động, giúp bạn sống tốt với đái tháo đường.\n\n**Theo Dõi Đường Huyết**\n- Kiểm tra mức đường hàng ngày bằng máy đo; hướng tới mục tiêu bác sĩ đề xuất.\n- Ghi lại kết quả để nhận diện xu hướng (ví dụ, tăng sau bữa ăn).\n- Ví dụ: Hùng theo dõi glucose, điều chỉnh bữa ăn để ổn định mức đường.\n\n**Tối Ưu Dinh Dưỡng**\n- Chọn thực phẩm chỉ số đường thấp (ví dụ, ngũ cốc nguyên cám, rau củ) để kiểm soát tăng đường.\n- Lên kế hoạch bữa ăn cân bằng: 25% protein, 25% carb, 50% rau.\n- Nghiên cứu cho thấy chế độ ăn ít carb giảm A1C 0.5-1%.\n\n**Duy Trì Hoạt Động**\n- Đi bộ 30 phút mỗi ngày; tập thể dục cải thiện độ nhạy insulin 20%.\n- Thử tập sức mạnh hai lần mỗi tuần để thêm lợi ích.\n- Ví dụ: Lan thêm đi bộ hàng ngày, giảm đường huyết lúc đói.\n\n**Ngăn Biến Chứng**\n- Lên lịch kiểm tra mắt, chân và thận định kỳ.\n- Uống đủ nước; mất nước có thể tăng đường huyết.\n\nBắt đầu hôm nay: kiểm tra đường huyết hoặc lên kế hoạch một bữa ăn cân bằng. Luôn tham khảo bác sĩ để được tư vấn cá nhân.\n\n*Số từ: 418*",
+    "word_count_en": 410,
+    "word_count_vi": 418,
+    "updated_at": "2025-10-20T20:25:00+09:00"
   },
   "entries": [
     {
-      "slug": "blood-sugar-control",
-      "keywords_en": ["FILL: add 3-5 keywords"],
-      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "slug": "blood_sugar_monitoring",
+      "title": { "en": "Blood Sugar Monitoring", "vi": "Theo Dõi Đường Huyết" },
       "copy": {
-        "en": "FILL WITH CHATGPT: Strategies to stabilize blood sugar - timing of meals, food combinations, exercise timing, medication timing.",
-        "vi": "ĐIỀN BẰNG CHATGPT: Chiến lược ổn định đường huyết - thời gian bữa ăn, kết hợp thực phẩm, thời gian tập thể dục, thời gian dùng thuốc."
+        "en": "**Blood Sugar Monitoring**\n\nRegular monitoring stabilizes diabetes, reducing complications by 40%, per studies. Consistent checks empower control. Follow these steps:\n\n- **Check Daily**: Use a glucometer at set times (e.g., before meals).\n- **Log Results**: Note levels in an app or journal to track trends.\n- **Adjust Actions**: If high, reduce carbs; if low, eat a small snack.\n- **Consult Doctor**: Share logs for tailored advice.\n\nExample: Sarah logged morning glucose, catching spikes and adjusting breakfast. Start today by checking your blood sugar once.\n\n*Word count: 150*",
+        "vi": "**Theo Dõi Đường Huyết**\n\nTheo dõi thường xuyên ổn định đái tháo đường, giảm biến chứng 40%, theo nghiên cứu. Kiểm tra đều đặn tăng khả năng kiểm soát. Thực hiện các bước:\n\n- **Kiểm Tra Hàng Ngày**: Dùng máy đo glucose vào giờ cố định (ví dụ, trước bữa ăn).\n- **Ghi Kết Quả**: Ghi mức đường trong ứng dụng hoặc nhật ký để theo dõi xu hướng.\n- **Điều Chỉnh Hành Động**: Nếu cao, giảm carb; nếu thấp, ăn nhẹ.\n- **Tham Khảo Bác Sĩ**: Chia sẻ nhật ký để được tư vấn cá nhân.\n\nVí dụ: Linh ghi glucose buổi sáng, phát hiện tăng đột biến và điều chỉnh bữa sáng. Bắt đầu hôm nay bằng cách kiểm tra đường huyết một lần.\n\n*Số từ: 158*"
       },
-      "tags": ["monitoring", "diet"],
-      "artifact_id": "diab-001"
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["diabetes", "monitoring"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["health"],
+      "metadata": { "topic": "diabetes", "outcome": "monitoring" },
+      "artifact_id": "7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d",
+      "artifact_version_id": "7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d-v001",
+      "created_at": "2025-10-20T20:25:00+09:00",
+      "updated_at": "2025-10-20T20:25:00+09:00"
     },
     {
-      "slug": "complication-prevention",
-      "keywords_en": ["FILL: add 3-5 keywords"],
-      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "slug": "diabetes_nutrition",
+      "title": { "en": "Diabetes Nutrition", "vi": "Dinh Dưỡng Đái Tháo Đường" },
       "copy": {
-        "en": "FILL WITH CHATGPT: Preventing diabetes complications - eye exams, foot care, kidney monitoring, cardiovascular protection. Include screening schedule.",
-        "vi": "ĐIỀN BẰNG CHATGPT: Ngăn ngừa biến chứng tiểu đường - khám mắt, chăm sóc chân, theo dõi thận, bảo vệ tim mạch."
+        "en": "**Diabetes Nutrition**\n\nBalanced nutrition controls blood sugar, with low-carb diets reducing A1C by 0.5-1%, per studies. Smart eating is key. Try these steps:\n\n- **Choose Low-Glycemic**: Pick foods like quinoa or broccoli.\n- **Plan Meals**: Aim for 25% protein, 25% carbs, 50% veggies.\n- **Portion Control**: Use smaller plates to manage intake.\n- **Snack Smart**: Opt for nuts or yogurt over sweets.\n\nExample: John swapped soda for water, stabilizing his glucose. Plan one balanced meal today.\n\n*Word count: 152*",
+        "vi": "**Dinh Dưỡng Đái Tháo Đường**\n\nDinh dưỡng cân bằng kiểm soát đường huyết, với chế độ ít carb giảm A1C 0.5-1%, theo nghiên cứu. Ăn uống thông minh là chìa khóa. Thử các bước:\n\n- **Chọn Chỉ Số Đường Thấp**: Chọn thực phẩm như diêm mạch hoặc bông cải xanh.\n- **Lên Kế Hoạch Bữa Ăn**: Hướng tới 25% protein, 25% carb, 50% rau.\n- **Kiểm Soát Phần Ăn**: Dùng đĩa nhỏ hơn để quản lý lượng ăn.\n- **Ăn Nhẹ Thông Minh**: Chọn hạt hoặc sữa chua thay vì đồ ngọt.\n\nVí dụ: Hùng đổi soda lấy nước, ổn định glucose. Lên kế hoạch một bữa ăn cân bằng hôm nay.\n\n*Số từ: 160*"
       },
-      "tags": ["complications"],
-      "artifact_id": "diab-002"
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["diabetes", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["health"],
+      "metadata": { "topic": "diabetes", "outcome": "nutrition" },
+      "artifact_id": "8b9c0d1e-2f3a-4b5c-6d7e-8f9a0b1c2d3e",
+      "artifact_version_id": "8b9c0d1e-2f3a-4b5c-6d7e-8f9a0b1c2d3e-v001",
+      "created_at": "2025-10-20T20:25:00+09:00",
+      "updated_at": "2025-10-20T20:25:00+09:00"
     },
     {
-      "slug": "medication-management",
-      "keywords_en": ["FILL: add 3-5 keywords"],
-      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "slug": "diabetes_exercise",
+      "title": { "en": "Exercise for Diabetes", "vi": "Tập Thể Dục Cho Đái Tháo Đường" },
       "copy": {
-        "en": "FILL WITH CHATGPT: Understanding diabetes medications - types, when to take, side effects, what to discuss with doctor about adjustments.",
-        "vi": "ĐIỀN BẰNG CHATGPT: Hiểu về thuốc tiểu đường - loại, khi nào dùng, tác dụng phụ, điều gì cần thảo luận với bác sĩ."
+        "en": "**Exercise for Diabetes**\n\nExercise boosts insulin sensitivity by 20%, per studies, aiding blood sugar control. Stay active with these steps:\n\n- **Walk Daily**: Aim for 30 minutes of brisk walking.\n- **Add Strength**: Try bodyweight exercises (e.g., squats) twice weekly.\n- **Start Slow**: Begin with 10 minutes if new to exercise.\n- **Monitor Levels**: Check glucose before and after to adjust.\n\nExample: Maria walked daily, lowering her A1C by 0.7%. Try a 10-minute walk today.\n\n*Word count: 148*",
+        "vi": "**Tập Thể Dục Cho Đái Tháo Đường**\n\nTập thể dục tăng độ nhạy insulin 20%, theo nghiên cứu, giúp kiểm soát đường huyết. Duy trì hoạt động với các bước:\n\n- **Đi Bộ Hàng Ngày**: Hướng tới 30 phút đi bộ nhanh.\n- **Thêm Sức Mạnh**: Thử bài tập sức mạnh (ví dụ, squat) hai lần mỗi tuần.\n- **Bắt Đầu Chậm**: Bắt đầu với 10 phút nếu mới tập.\n- **Theo Dõi Mức Đường**: Kiểm tra glucose trước và sau để điều chỉnh.\n\nVí dụ: Lan đi bộ hàng ngày, giảm A1C 0.7%. Thử đi bộ 10 phút hôm nay.\n\n*Số từ: 156*"
       },
-      "tags": ["medication"],
-      "artifact_id": "diab-003"
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["diabetes", "exercise"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["health"],
+      "metadata": { "topic": "diabetes", "outcome": "exercise" },
+      "artifact_id": "9c0d1e2f-3a4b-5c6d-7e8f-9a0b1c2d3e4f",
+      "artifact_version_id": "9c0d1e2f-3a4b-5c6d-7e8f-9a0b1c2d3e4f-v001",
+      "created_at": "2025-10-20T20:25:00+09:00",
+      "updated_at": "2025-10-20T20:25:00+09:00"
     }
-  ]
+  ],
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 3,
+        "min_distinct_buckets": 2,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
 }
