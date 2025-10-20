@@ -1,29 +1,29 @@
 {
-  "header": "// dumb tree, no diagnostics, catch keyword, speak sharp, mood: focused\n\nAdvanced AI learning, solid research\n\nEach entry: teach practical AI techniques for learning or application\n\nPhilosophy: clear, actionable, small steps, technical focus, humane language\n\nBeliefs:\n- Don’t overpromise. Explain clearly.\n- Don’t assume expertise. Guide simply.\n- Don’t confuse. Stay on topic.\n\nTalk points\n- Marvel at AI’s potential. Stay curious.\n- Complexity is manageable with small steps.\n- Ethics and privacy are part of learning.\n- Practice builds understanding.\n\nTiny habits to teach:\n- Read one AI concept daily.\n- Try one small code experiment.\n- Note one ethical consideration.\n- Share one learning with a peer.",
+  "header": "// dumb tree, no diagnostics, catch keyword, speak sharp, mood: deep dive\n\nCutting-edge AI learning, research-driven\n\nEach entry: teach advanced AI techniques for exploration or application\n\nPhilosophy: rigorous, actionable, incremental, technical focus, humane language\n\nBeliefs:\n- Don’t overpromise. Explain precisely.\n- Don’t assume mastery. Guide clearly.\n- Don’t confuse. Stay focused.\n\nTalk points\n- Explore AI’s frontiers with curiosity.\n- Complex systems break into small steps.\n- Ethics and responsibility shape innovation.\n- Experimentation fuels breakthroughs.\n\nTiny habits to teach:\n- Study one advanced AI paper weekly.\n- Code one novel AI technique.\n- Reflect on one ethical implication.\n- Discuss one concept with a peer.",
   "schema_version": "1.1",
-  "schema_id": "advanced_ai_learning",
-  "description": "Echologic Mercy Blade room for advanced AI knowledge and technical exploration",
-  "description_vi": "Phòng Mercy Blade về kiến thức AI nâng cao và khám phá kỹ thuật",
+  "schema_id": "cutting_edge_ai_learning",
+  "description": "Echologic Mercy Blade room for cutting-edge AI knowledge and deep technical exploration",
+  "description_vi": "Phòng Mercy Blade về kiến thức AI tiên tiến và khám phá kỹ thuật chuyên sâu",
   "supported_languages": ["en", "vi"],
   "localization": { "default": "en", "fallback": "en", "i18n_required": true },
   "safety_disclaimer": "Educational guidance; not a substitute for professional technical or ethical advice.",
   "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn kỹ thuật hoặc đạo đức chuyên nghiệp.",
   "crisis_footer": {
-    "en": "For technical issues or ethical concerns, consult experts or contact support immediately.",
-    "vi": "Đối với vấn đề kỹ thuật hoặc lo ngại đạo đức, tham khảo chuyên gia hoặc liên hệ hỗ trợ ngay."
+    "en": "For technical errors or ethical dilemmas, consult experts or contact support immediately.",
+    "vi": "Đối với lỗi kỹ thuật hoặc vấn đề đạo đức, tham khảo chuyên gia hoặc liên hệ hỗ trợ ngay."
   },
   "safety_footer": {
-    "en": "Ensure ethical AI use; consult professionals for critical implementations.",
-    "vi": "Đảm bảo sử dụng AI đạo đức; tham khảo chuyên gia cho triển khai quan trọng."
+    "en": "Ensure responsible AI use; consult professionals for critical implementations.",
+    "vi": "Đảm bảo sử dụng AI có trách nhiệm; tham khảo chuyên gia cho triển khai quan trọng."
   },
   "meta": {
     "created_at": "2025-10-04T12:08:00+07:00",
-    "updated_at": "2025-10-20T17:46:00+09:00",
+    "updated_at": "2025-10-20T17:49:00+09:00",
     "checksum_sha256": "<placeholder>",
-    "meta_notes": "Keyword-driven; field-tested tone; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON; version to -v002 on split and refinement.",
+    "meta_notes": "Keyword-driven; field-tested tone; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON; version to -v001 for new advanced AI focus.",
     "i18n_verified": true,
     "entry_count": 16,
-    "artifact_set_id": "1a2b3c4d-5e6f-7890-abcd-ef1234567890",
+    "artifact_set_id": "2b3c4d5e-6f7a-890b-cdef-1234567890ab",
     "data_format_version": "MercyBlade-Core-v1.2"
   },
   "enums": {
@@ -31,175 +31,86 @@
       "ai_literacy",
       "strategy",
       "ethics",
-      "privacy"
+      "privacy",
+      "emerging_tech"
     ],
     "urgency": ["immediate", "soon", "routine"],
     "severity_level": [1, 2, 3, 4, 5],
     "systems": ["ai_tech"]
   },
   "keywords": {
-    "fine_tuning": {
-      "en": ["fine_tuning", "model_adaptation", "parameter_update", "task_tuning", "transfer_learning"],
-      "vi": ["tinh_chinh", "thich_ung_mo_hinh", "cap_nhat_tham_so", "tinh_chinh_nhiem_vu", "chuyen_hoc"]
+    "self_supervised": {
+      "en": ["self_supervised", "self_learning", "unlabeled_data", "contrastive_learning", "pretraining"],
+      "vi": ["tu_giam_sat", "tu_hoc", "du_lieu_khong_nhan", "hoc_tuong_phan", "tien_huan_luyen"]
     },
-    "lora": {
-      "en": ["lora", "low_rank_adaptation", "efficient_tuning", "adapter_method", "parameter_efficient"],
-      "vi": ["lora", "thich_ung_hang_thap", "tinh_chinh_hieu_qua", "phuong_phap_adapter", "hieu_qua_tham_so"]
+    "graph_neural_networks": {
+      "en": ["graph_neural_networks", "gnn", "graph_learning", "node_embedding", "graph_convolution"],
+      "vi": ["mang_noron_do_thi", "gnn", "hoc_do_thi", "nhung_nut", "cuon_tich_do_thi"]
     },
-    "quantization": {
-      "en": ["quantization", "model_compression", "bit_reduction", "inference_speedup", "low_precision"],
-      "vi": ["luong_tu_hoa", "nen_mo_hinh", "giam_bit", "tang_toc_suy_luan", "do_chinh_xac_thap"]
+    "diffusion_models": {
+      "en": ["diffusion_models", "diffusion_process", "generative_diffusion", "denoising_diffusion", "score_based"],
+      "vi": ["mo_hinh_khuech_tan", "qua_trinh_khuech_tan", "sinh_khuech_tan", "lam_sach_khuech_tan", "dua_tren_diem"]
     },
-    "rlhf": {
-      "en": ["rlhf", "reinforcement_human_feedback", "human_aligned", "reward_modeling", "policy_optimization"],
-      "vi": ["rlhf", "tang_cuong_phan_hoi_nguoi", "can_chinh_nguoi", "mo_hinh_phan_thuong", "toi_uu_chinh_sach"]
+    "transformer_evolution": {
+      "en": ["transformer_evolution", "advanced_transformers", "sparse_transformer", "efficient_attention", "long_context"],
+      "vi": ["tien_hoa_transformer", "transformer_nang_cao", "transformer_thua_thot", "chu_y_hieu_qua", "ngu_canh_dai"]
     },
-    "dpo": {
-      "en": ["dpo", "direct_preference_optimization", "alignment_method", "preference_tuning", "reward_free"],
-      "vi": ["dpo", "toi_uu_uu_tien_truc_tiep", "phuong_phap_can_chinh", "tinh_chinh_uu_tien", "khong_phan_thuong"]
+    "ai_safety": {
+      "en": ["ai_safety", "safe_ai", "robustness", "alignment_safety", "risk_mitigation"],
+      "vi": ["an_toan_ai", "ai_an_toan", "ben_vung", "can_chinh_an_toan", "giam_rui_ro"]
     },
-    "multimodal": {
-      "en": ["multimodal", "multi_input", "text_image_audio", "fusion_model", "cross_modal"],
-      "vi": ["da_phuong_thuc", "da_dau_vao", "van_ban_anh_am_thanh", "mo_hinh_hop_nhat", "cheo_phuong_thuc"]
+    "zero_shot": {
+      "en": ["zero_shot", "zero_shot_learning", "task_generalization", "prompt_engineering", "few_shot"],
+      "vi": ["khong_vien_tien", "hoc_khong_vien_tien", "tong_quat_nhiem_vu", "ky_thuat_prompt", "vai_vien"]
     },
-    "graph_rag": {
-      "en": ["graph_rag", "graph_augmented", "knowledge_graph_retrieval", "structured_rag", "graph_based"],
-      "vi": ["graph_rag", "tang_cuong_graph", "truy_xuat_do_thi_kien_thuc", "rag_cau_truc", "dua_graph"]
+    "in_context_learning": {
+      "en": ["in_context_learning", "contextual_learning", "prompt_learning", "meta_learning", "task_adaptation"],
+      "vi": ["hoc_trong_ngu_canh", "hoc_ngu_canh", "hoc_prompt", "meta_hoc", "thich_ung_nhiem_vu"]
     },
-    "explainability": {
-      "en": ["explainability", "xai", "interpretable_ai", "transparent_model", "model_explanation"],
-      "vi": ["giai_thich", "xai", "ai_giai_thich", "mo_hinh_minh_bach", "giai_thich_mo_hinh"]
+    "energy_efficient_ai": {
+      "en": ["energy_efficient_ai", "green_ai", "low_power_models", "sustainable_ai", "efficient_inference"],
+      "vi": ["ai_tiet_kiem_nang_luong", "ai_xanh", "mo_hinh_it_nang_luong", "ai_ben_vung", "suy_luan_hieu_qua"]
     },
-    "shap": {
-      "en": ["shap", "shapley_values", "feature_importance", "contribution_analysis", "shap_explanation"],
-      "vi": ["shap", "gia_tri_shapley", "tam_quan_trong_dac_trung", "phan_tich_dong_gop", "giai_thich_shap"]
+    "causal_inference": {
+      "en": ["causal_inference", "causal_modeling", "counterfactuals", "causal_learning", "effect_estimation"],
+      "vi": ["suy_luan_nhan_qua", "mo_hinh_nhan_qua", "phu_dinh", "hoc_nhan_qua", "uoc_tinh_hieu_qua"]
     },
-    "lime": {
-      "en": ["lime", "local_interpretable", "model_agnostic", "lime_explanation", "instance_analysis"],
-      "vi": ["lime", "giai_thich_cuc_bo", "doc_lap_mo_hinh", "giai_thich_lime", "phan_tich_the_hien"]
+    "continual_learning": {
+      "en": ["continual_learning", "lifelong_learning", "incremental_learning", "catastrophic_forgetting", "online_learning"],
+      "vi": ["hoc_lien_tuc", "hoc_suot_doi", "hoc_tang_tien", "quen_tham_khoc", "hoc_truc_tuyen"]
     },
-    "model_distillation": {
-      "en": ["model_distillation", "knowledge_distillation", "student_teacher", "compressed_model", "distilled_ai"],
-      "vi": ["chung_cat_mo_hinh", "chung_cat_kien_thuc", "hoc_tro_thay", "mo_hinh_nen", "ai_chung_cat"]
+    "sparse_models": {
+      "en": ["sparse_models", "sparsity", "pruned_models", "sparse_attention", "efficient_models"],
+      "vi": ["mo_hinh_thua_thot", "thua_thot", "mo_hinh_cat_tia", "chu_y_thua_thot", "mo_hinh_hieu_qua"]
     },
-    "mixture_of_experts": {
-      "en": ["mixture_of_experts", "moe_models", "expert_routing", "modular_ai", "expert_mixture"],
-      "vi": ["hon_hop_chuyen_gia", "mo_hinh_moe", "dinh_tuyen_chuyen_gia", "ai_mo_dun", "hon_hop_chuyen_gia"]
+    "ai_interpretability": {
+      "en": ["ai_interpretability", "interpretable_models", "model_transparency", "explainable_decisions", "black_box_insight"],
+      "vi": ["giai_thich_ai", "mo_hinh_giai_thich", "minh_bach_mo_hinh", "quyet_dinh_giai_thich", "hop_den_thau_hieu"]
     },
-    "federated_learning": {
-      "en": ["federated_learning", "decentralized_learning", "fed_learn", "collaborative_training", "privacy_learning"],
-      "vi": ["hoc_lien_hop", "hoc_phan_tan", "fed_learn", "huan_luyen_hop_tac", "hoc_bao_mat"]
+    "trustworthy_ai": {
+      "en": ["trustworthy_ai", "reliable_ai", "fairness", "accountable_ai", "ethical_ai"],
+      "vi": ["ai_dang_tin_cay", "ai_tin_cay", "cong_bang", "ai_trach_nhiem", "ai_dao_duc"]
     },
-    "ai_governance": {
-      "en": ["ai_governance", "govern_ai", "regulatory_ai", "policy_framework", "oversight_ai"],
-      "vi": ["quan_tri_ai", "quan_ly_ai", "quy_dinh_ai", "khung_chinh_sach", "giam_sat_ai"]
+    "adversarial_defense": {
+      "en": ["adversarial_defense", "defense_mechanisms", "robust_defense", "attack_mitigation", "secure_ai"],
+      "vi": ["phong_thu_doi_khang", "co_che_phong_thu", "phong_thu_ben_vung", "giam_tan_cong", "ai_an_toan"]
     },
-    "adversarial_training": {
-      "en": ["adversarial_training", "robust_training", "attack_resistance", "adversarial_robustness", "defense_training"],
-      "vi": ["huan_luyen_doi_khang", "huan_luyen_ben_vung", "khang_tan_cong", "ben_vung_doi_khang", "huan_luyen_phong_thu"]
+    "knowledge_distillation": {
+      "en": ["knowledge_distillation", "model_compression", "teacher_student", "distilled_models", "efficient_learning"],
+      "vi": ["chung_cat_kien_thuc", "nen_mo_hinh", "thay_hoc_tro", "mo_hinh_chung_cat", "hoc_hieu_qua"]
     },
-    "neurosymbolic": {
-      "en": ["neurosymbolic", "neural_symbolic", "hybrid_ai", "logic_neural", "symbolic_learning"],
-      "vi": ["than_kinh_bieu_tuong", "than_kinh_bieu_tuong", "ai_lai", "logic_than_kinh", "hoc_bieu_tuong"]
+    "ai_ethics_policy": {
+      "en": ["ai_ethics_policy", "ethical_guidelines", "responsible_ai", "ai_regulation", "policy_design"],
+      "vi": ["chinh_sach_dao_duc_ai", "huong_dan_dao_duc", "ai_co_trach_nhiem", "quy_dinh_ai", "thiet_ke_chinh_sach"]
     }
   },
   "entries": [
     {
-      "slug": "fine_tuning",
-      "title": { "en": "Fine Tuning", "vi": "Tinh Chỉnh" },
+      "slug": "self_supervised",
+      "title": { "en": "Self-Supervised Learning", "vi": "Học Tự Giám Sát" },
       "copy": {
-        "en": "Adapt pre-trained models to specific tasks using fine tuning. Dare: Experiment with a small dataset to adjust model parameters.",
-        "vi": "Thích ứng mô hình được huấn luyện trước cho nhiệm vụ cụ thể bằng tinh chỉnh. Dám: Thử nghiệm với tập dữ liệu nhỏ để điều chỉnh tham số mô hình."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "strategy"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["ai_tech"],
-      "metadata": { "topic": "ai", "outcome": "learn" },
-      "artifact_id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
-      "artifact_version_id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d-v002",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-20T17:46:00+09:00"
-    },
-    {
-      "slug": "lora",
-      "title": { "en": "LoRA", "vi": "LoRA" },
-      "copy": {
-        "en": "Use LoRA for efficient model tuning with low-rank updates. Dare: Implement a LoRA adapter for a neural network.",
-        "vi": "Sử dụng LoRA để tinh chỉnh mô hình hiệu quả với cập nhật hạng thấp. Dám: Triển khai một adapter LoRA cho mạng nơ-ron."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "strategy"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["ai_tech"],
-      "metadata": { "topic": "ai", "outcome": "learn" },
-      "artifact_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
-      "artifact_version_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e-v002",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-20T17:46:00+09:00"
-    },
-    {
-      "slug": "quantization",
-      "title": { "en": "Quantization", "vi": "Lượng Tử Hóa" },
-      "copy": {
-        "en": "Reduce model size and speed up inference with quantization. Dare: Test a model with 8-bit precision.",
-        "vi": "Giảm kích thước mô hình và tăng tốc suy luận với lượng tử hóa. Dám: Thử mô hình với độ chính xác 8-bit."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "strategy"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["ai_tech"],
-      "metadata": { "topic": "ai", "outcome": "learn" },
-      "artifact_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "artifact_version_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f-v002",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-20T17:46:00+09:00"
-    },
-    {
-      "slug": "rlhf",
-      "title": { "en": "RLHF", "vi": "RLHF" },
-      "copy": {
-        "en": "Align models with human preferences using RLHF. Dare: Train a reward model with human feedback data.",
-        "vi": "Căn chỉnh mô hình với sở thích con người bằng RLHF. Dám: Huấn luyện mô hình phần thưởng với dữ liệu phản hồi con người."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "ethics"],
-      "urgency": "routine",
-      "severity_level": 3,
-      "systems": ["ai_tech"],
-      "metadata": { "topic": "ai", "outcome": "learn" },
-      "artifact_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
-      "artifact_version_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a-v002",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-20T17:46:00+09:00"
-    },
-    {
-      "slug": "dpo",
-      "title": { "en": "DPO", "vi": "DPO" },
-      "copy": {
-        "en": "Optimize model alignment with DPO, bypassing reward modeling. Dare: Apply direct preference tuning to a dataset.",
-        "vi": "Tối ưu căn chỉnh mô hình với DPO, bỏ qua mô hình phần thưởng. Dám: Áp dụng tinh chỉnh ưu tiên trực tiếp cho tập dữ liệu."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "ethics"],
-      "urgency": "routine",
-      "severity_level": 3,
-      "systems": ["ai_tech"],
-      "metadata": { "topic": "ai", "outcome": "learn" },
-      "artifact_id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b",
-      "artifact_version_id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b-v002",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-20T17:46:00+09:00"
-    },
-    {
-      "slug": "multimodal",
-      "title": { "en": "Multimodal AI", "vi": "AI Đa Phương Thức" },
-      "copy": {
-        "en": "Develop models handling text, images, and audio. Dare: Fuse text and image inputs in a small project.",
-        "vi": "Phát triển mô hình xử lý văn bản, hình ảnh và âm thanh. Dám: Hợp nhất đầu vào văn bản và hình ảnh trong dự án nhỏ."
+        "en": "Train models with unlabeled data using self-supervised learning. Dare: Implement a contrastive loss function.",
+        "vi": "Huấn luyện mô hình với dữ liệu không nhãn bằng học tự giám sát. Dám: Triển khai hàm mất mát tương phản."
       },
       "attribution": "Best Practices / Thực hành tốt nhất",
       "tags": ["ai_literacy", "strategy"],
@@ -207,17 +118,17 @@
       "severity_level": 3,
       "systems": ["ai_tech"],
       "metadata": { "topic": "ai", "outcome": "learn" },
-      "artifact_id": "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c",
-      "artifact_version_id": "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c-v002",
+      "artifact_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+      "artifact_version_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f-v001",
       "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-20T17:46:00+09:00"
+      "updated_at": "2025-10-20T17:49:00+09:00"
     },
     {
-      "slug": "graph_rag",
-      "title": { "en": "Graph RAG", "vi": "Graph RAG" },
+      "slug": "graph_neural_networks",
+      "title": { "en": "Graph Neural Networks", "vi": "Mạng Nơ-ron Đồ Thị" },
       "copy": {
-        "en": "Enhance retrieval with graph-based RAG. Dare: Construct a knowledge graph for a specific domain.",
-        "vi": "Tăng cường truy xuất với RAG dựa trên đồ thị. Dám: Xây dựng đồ thị kiến thức cho một lĩnh vực cụ thể."
+        "en": "Model relational data with GNNs. Dare: Build a GNN for node classification.",
+        "vi": "Mô hình hóa dữ liệu quan hệ với GNN. Dám: Xây dựng GNN cho phân loại nút."
       },
       "attribution": "Best Practices / Thực hành tốt nhất",
       "tags": ["ai_literacy", "strategy"],
@@ -225,143 +136,17 @@
       "severity_level": 3,
       "systems": ["ai_tech"],
       "metadata": { "topic": "ai", "outcome": "learn" },
-      "artifact_id": "a7b8c9d0-e1f2-4a3b-4c5d-6e7f8a9b0c1d",
-      "artifact_version_id": "a7b8c9d0-e1f2-4a3b-4c5d-6e7f8a9b0c1d-v002",
+      "artifact_id": "4d5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8a",
+      "artifact_version_id": "4d5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8a-v001",
       "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-20T17:46:00+09:00"
+      "updated_at": "2025-10-20T17:49:00+09:00"
     },
     {
-      "slug": "explainability",
-      "title": { "en": "AI Explainability", "vi": "Giải Thích AI" },
+      "slug": "diffusion_models",
+      "title": { "en": "Diffusion Models", "vi": "Mô Hình Khuyếch Tán" },
       "copy": {
-        "en": "Promote transparency with explainable AI techniques. Dare: Apply an XAI method to a model output.",
-        "vi": "Thúc đẩy minh bạch với kỹ thuật AI giải thích được. Dám: Áp dụng phương pháp XAI cho đầu ra mô hình."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "ethics"],
-      "urgency": "routine",
-      "severity_level": 3,
-      "systems": ["ai_tech"],
-      "metadata": { "topic": "ai", "outcome": "learn" },
-      "artifact_id": "b8c9d0e1-f2a3-4b4c-5d6e-7f8a9b0c1d2e",
-      "artifact_version_id": "b8c9d0e1-f2a3-4b4c-5d6e-7f8a9b0c1d2e-v002",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-20T17:46:00+09:00"
-    },
-    {
-      "slug": "shap",
-      "title": { "en": "SHAP", "vi": "SHAP" },
-      "copy": {
-        "en": "Use SHAP for feature importance analysis. Dare: Compute SHAP values for a model prediction.",
-        "vi": "Sử dụng SHAP để phân tích tầm quan trọng đặc trưng. Dám: Tính giá trị SHAP cho dự đoán mô hình."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "ethics"],
-      "urgency": "routine",
-      "severity_level": 3,
-      "systems": ["ai_tech"],
-      "metadata": { "topic": "ai", "outcome": "learn" },
-      "artifact_id": "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f",
-      "artifact_version_id": "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f-v002",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-20T17:46:00+09:00"
-    },
-    {
-      "slug": "lime",
-      "title": { "en": "LIME", "vi": "LIME" },
-      "copy": {
-        "en": "Explain model predictions with LIME for local interpretability. Dare: Generate a LIME explanation for a single instance.",
-        "vi": "Giải thích dự đoán mô hình với LIME cho khả năng giải thích cục bộ. Dám: Tạo giải thích LIME cho một thể hiện đơn lẻ."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "ethics"],
-      "urgency": "routine",
-      "severity_level": 3,
-      "systems": ["ai_tech"],
-      "metadata": { "topic": "ai", "outcome": "learn" },
-      "artifact_id": "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a",
-      "artifact_version_id": "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a-v002",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-20T17:46:00+09:00"
-    },
-    {
-      "slug": "model_distillation",
-      "title": { "en": "Model Distillation", "vi": "Chưng Cất Mô Hình" },
-      "copy": {
-        "en": "Transfer knowledge to a smaller model via distillation. Dare: Train a student model from a larger teacher model.",
-        "vi": "Chuyển giao kiến thức cho mô hình nhỏ hơn qua chưng cất. Dám: Huấn luyện mô hình học trò từ mô hình thầy lớn hơn."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "strategy"],
-      "urgency": "routine",
-      "severity_level": 3,
-      "systems": ["ai_tech"],
-      "metadata": { "topic": "ai", "outcome": "learn" },
-      "artifact_id": "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b",
-      "artifact_version_id": "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b-v002",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-20T17:46:00+09:00"
-    },
-    {
-      "slug": "mixture_of_experts",
-      "title": { "en": "Mixture of Experts", "vi": "Hỗn Hợp Chuyên Gia" },
-      "copy": {
-        "en": "Develop scalable MoE models with expert routing. Dare: Implement a basic MoE architecture.",
-        "vi": "Phát triển mô hình MoE mở rộng với định tuyến chuyên gia. Dám: Triển khai kiến trúc MoE cơ bản."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "strategy"],
-      "urgency": "routine",
-      "severity_level": 3,
-      "systems": ["ai_tech"],
-      "metadata": { "topic": "ai", "outcome": "learn" },
-      "artifact_id": "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c",
-      "artifact_version_id": "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c-v002",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-20T17:46:00+09:00"
-    },
-    {
-      "slug": "federated_learning",
-      "title": { "en": "Federated Learning", "vi": "Học Liên Hợp" },
-      "copy": {
-        "en": "Train models across devices with federated learning. Dare: Set up a decentralized training pipeline.",
-        "vi": "Huấn luyện mô hình trên các thiết bị với học liên hợp. Dám: Thiết lập pipeline huấn luyện phân tán."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "privacy"],
-      "urgency": "routine",
-      "severity_level": 3,
-      "systems": ["ai_tech"],
-      "metadata": { "topic": "ai", "outcome": "learn" },
-      "artifact_id": "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d",
-      "artifact_version_id": "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d-v002",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-20T17:46:00+09:00"
-    },
-    {
-      "slug": "ai_governance",
-      "title": { "en": "AI Governance", "vi": "Quản Trị AI" },
-      "copy": {
-        "en": "Establish ethical AI governance frameworks. Dare: Draft a policy for responsible AI use.",
-        "vi": "Thiết lập khung quản trị AI đạo đức. Dám: Soạn thảo chính sách sử dụng AI có trách nhiệm."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "ethics"],
-      "urgency": "routine",
-      "severity_level": 4,
-      "systems": ["ai_tech"],
-      "metadata": { "topic": "ai", "outcome": "learn" },
-      "artifact_id": "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e",
-      "artifact_version_id": "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e-v002",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-20T17:46:00+09:00"
-    },
-    {
-      "slug": "adversarial_training",
-      "title": { "en": "Adversarial Training", "vi": "Huấn Luyện Đối Kháng" },
-      "copy": {
-        "en": "Enhance model robustness with adversarial training. Dare: Add adversarial examples to a training set.",
-        "vi": "Tăng cường độ bền mô hình với huấn luyện đối kháng. Dám: Thêm ví dụ đối kháng vào tập huấn luyện."
+        "en": "Generate data with diffusion models via denoising. Dare: Train a diffusion model for image synthesis.",
+        "vi": "Tạo dữ liệu với mô hình khuyếch tán qua làm sạch. Dám: Huấn luyện mô hình khuyếch tán cho tổng hợp hình ảnh."
       },
       "attribution": "Best Practices / Thực hành tốt nhất",
       "tags": ["ai_literacy", "strategy"],
@@ -369,17 +154,17 @@
       "severity_level": 4,
       "systems": ["ai_tech"],
       "metadata": { "topic": "ai", "outcome": "learn" },
-      "artifact_id": "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f",
-      "artifact_version_id": "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f-v002",
+      "artifact_id": "5e6f7a8b-9c0d-4e1f-2a3b-4c5d6e7f8a9b",
+      "artifact_version_id": "5e6f7a8b-9c0d-4e1f-2a3b-4c5d6e7f8a9b-v001",
       "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-20T17:46:00+09:00"
+      "updated_at": "2025-10-20T17:49:00+09:00"
     },
     {
-      "slug": "neurosymbolic",
-      "title": { "en": "Neurosymbolic AI", "vi": "AI Thần Kinh Biểu Tượng" },
+      "slug": "transformer_evolution",
+      "title": { "en": "Transformer Evolution", "vi": "Tiến Hóa Transformer" },
       "copy": {
-        "en": "Integrate neural and symbolic approaches for hybrid AI. Dare: Develop a small neurosymbolic model.",
-        "vi": "Tích hợp cách tiếp cận thần kinh và biểu tượng cho AI lai. Dám: Phát triển mô hình thần kinh biểu tượng nhỏ."
+        "en": "Explore advanced transformer architectures. Dare: Implement a sparse attention mechanism.",
+        "vi": "Khám phá kiến trúc transformer nâng cao. Dám: Triển khai cơ chế chú ý thưa thớt."
       },
       "attribution": "Best Practices / Thực hành tốt nhất",
       "tags": ["ai_literacy", "strategy"],
@@ -387,19 +172,235 @@
       "severity_level": 4,
       "systems": ["ai_tech"],
       "metadata": { "topic": "ai", "outcome": "learn" },
-      "artifact_id": "d6e7f8a9-b0c1-4d2e-3f4a-5b6c7d8e9f0a",
-      "artifact_version_id": "d6e7f8a9-b0c1-4d2e-3f4a-5b6c7d8e9f0a-v002",
+      "artifact_id": "6f7a8b9c-0d1e-4f2a-3b4c-5d6e7f8a9b0c",
+      "artifact_version_id": "6f7a8b9c-0d1e-4f2a-3b4c-5d6e7f8a9b0c-v001",
       "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-20T17:46:00+09:00"
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "ai_safety",
+      "title": { "en": "AI Safety", "vi": "An Toàn AI" },
+      "copy": {
+        "en": "Ensure AI systems are safe and aligned. Dare: Design a safety protocol for an AI model.",
+        "vi": "Đảm bảo hệ thống AI an toàn và căn chỉnh. Dám: Thiết kế giao thức an toàn cho mô hình AI."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "ethics"],
+      "urgency": "routine",
+      "severity_level": 4,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "7a8b9c0d-1e2f-4a3b-4c5d-6e7f8a9b0c1d",
+      "artifact_version_id": "7a8b9c0d-1e2f-4a3b-4c5d-6e7f8a9b0c1d-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "zero_shot",
+      "title": { "en": "Zero-Shot Learning", "vi": "Học Không Viên Tiên" },
+      "copy": {
+        "en": "Enable models for new tasks without training. Dare: Craft a zero-shot prompt for a language model.",
+        "vi": "Cho phép mô hình thực hiện nhiệm vụ mới không cần huấn luyện. Dám: Tạo prompt không viên tiên cho mô hình ngôn ngữ."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "strategy"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "8b9c0d1e-2f3a-4b4c-5d6e-7f8a9b0c1d2e",
+      "artifact_version_id": "8b9c0d1e-2f3a-4b4c-5d6e-7f8a9b0c1d2e-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "in_context_learning",
+      "title": { "en": "In-Context Learning", "vi": "Học Trong Ngữ Cảnh" },
+      "copy": {
+        "en": "Leverage in-context learning for task adaptation. Dare: Design prompts for a specific task.",
+        "vi": "Tận dụng học trong ngữ cảnh để thích ứng nhiệm vụ. Dám: Thiết kế prompt cho nhiệm vụ cụ thể."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "strategy"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "9c0d1e2f-3a4b-4c5d-6e7f-8a9b0c1d2e3f",
+      "artifact_version_id": "9c0d1e2f-3a4b-4c5d-6e7f-8a9b0c1d2e3f-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "energy_efficient_ai",
+      "title": { "en": "Energy-Efficient AI", "vi": "AI Tiết Kiệm Năng Lượng" },
+      "copy": {
+        "en": "Optimize AI for low energy use. Dare: Test a model with energy-efficient inference.",
+        "vi": "Tối ưu AI cho sử dụng năng lượng thấp. Dám: Thử mô hình với suy luận tiết kiệm năng lượng."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "strategy"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "0d1e2f3a-4b5c-4d6e-7f8a-9b0c1d2e3f4a",
+      "artifact_version_id": "0d1e2f3a-4b5c-4d6e-7f8a-9b0c1d2e3f4a-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "causal_inference",
+      "title": { "en": "Causal Inference", "vi": "Suy Luận Nhân Quả" },
+      "copy": {
+        "en": "Model cause-effect with causal inference. Dare: Estimate effects in a dataset.",
+        "vi": "Mô hình nhân quả với suy luận nhân quả. Dám: Ước tính hiệu quả trong tập dữ liệu."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "strategy"],
+      "urgency": "routine",
+      "severity_level": 4,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "1e2f3a4b-5c6d-4e7f-8a9b-0c1d2e3f4a5b",
+      "artifact_version_id": "1e2f3a4b-5c6d-4e7f-8a9b-0c1d2e3f4a5b-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "continual_learning",
+      "title": { "en": "Continual Learning", "vi": "Học Liên Tục" },
+      "copy": {
+        "en": "Prevent catastrophic forgetting with continual learning. Dare: Implement an incremental learning system.",
+        "vi": "Ngăn quên thảm khốc với học liên tục. Dám: Triển khai hệ thống học tăng tiến."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "strategy"],
+      "urgency": "routine",
+      "severity_level": 4,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "2f3a4b5c-6d7e-4f8a-9b0c-1d2e3f4a5b6c",
+      "artifact_version_id": "2f3a4b5c-6d7e-4f8a-9b0c-1d2e3f4a5b6c-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "sparse_models",
+      "title": { "en": "Sparse Models", "vi": "Mô Hình Thưa Thớt" },
+      "copy": {
+        "en": "Build efficient sparse models. Dare: Prune a neural network for sparsity.",
+        "vi": "Xây dựng mô hình thưa thớt hiệu quả. Dám: Cắt tỉa mạng nơ-ron cho thưa thớt."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "strategy"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "3a4b5c6d-7e8f-4a9b-0c1d-2e3f4a5b6c7d",
+      "artifact_version_id": "3a4b5c6d-7e8f-4a9b-0c1d-2e3f4a5b6c7d-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "ai_interpretability",
+      "title": { "en": "AI Interpretability", "vi": "Giải Thích AI" },
+      "copy": {
+        "en": "Enhance transparency with interpretable models. Dare: Apply an interpretability technique to a model.",
+        "vi": "Tăng cường minh bạch với mô hình giải thích được. Dám: Áp dụng kỹ thuật giải thích cho mô hình."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "ethics"],
+      "urgency": "routine",
+      "severity_level": 4,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "4b5c6d7e-8f9a-4b0c-1d2e-3f4a5b6c7d8e",
+      "artifact_version_id": "4b5c6d7e-8f9a-4b0c-1d2e-3f4a5b6c7d8e-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "trustworthy_ai",
+      "title": { "en": "Trustworthy AI", "vi": "AI Đáng Tin Cậy" },
+      "copy": {
+        "en": "Develop fair and accountable AI systems. Dare: Audit a model for bias.",
+        "vi": "Phát triển hệ thống AI công bằng và có trách nhiệm. Dám: Kiểm tra mô hình tìm thiên kiến."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "ethics"],
+      "urgency": "routine",
+      "severity_level": 4,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "5c6d7e8f-9a0b-4c1d-2e3f-4a5b6c7d8e9f",
+      "artifact_version_id": "5c6d7e8f-9a0b-4c1d-2e3f-4a5b6c7d8e9f-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "adversarial_defense",
+      "title": { "en": "Adversarial Defense", "vi": "Phòng Thủ Đối Kháng" },
+      "copy": {
+        "en": "Strengthen models against attacks. Dare: Implement a defense mechanism.",
+        "vi": "Tăng cường mô hình chống tấn công. Dám: Triển khai cơ chế phòng thủ."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "strategy"],
+      "urgency": "routine",
+      "severity_level": 4,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "6d7e8f9a-0b1c-4d2e-3f4a-5b6c7d8e9f0a",
+      "artifact_version_id": "6d7e8f9a-0b1c-4d2e-3f4a-5b6c7d8e9f0a-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "knowledge_distillation",
+      "title": { "en": "Knowledge Distillation", "vi": "Chưng Cất Kiến Thức" },
+      "copy": {
+        "en": "Compress models via knowledge distillation. Dare: Train a student model from a teacher.",
+        "vi": "Nén mô hình qua chưng cất kiến thức. Dám: Huấn luyện mô hình học trò từ thầy."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "strategy"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "7e8f9a0b-1c2d-4e3f-4a5b-6c7d8e9f0a1b",
+      "artifact_version_id": "7e8f9a0b-1c2d-4e3f-4a5b-6c7d8e9f0a1b-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "ai_ethics_policy",
+      "title": { "en": "AI Ethics Policy", "vi": "Chính Sách Đạo Đức AI" },
+      "copy": {
+        "en": "Craft policies for responsible AI use. Dare: Propose an ethical guideline for a project.",
+        "vi": "Soạn thảo chính sách cho sử dụng AI có trách nhiệm. Dám: Đề xuất hướng dẫn đạo đức cho dự án."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "ethics"],
+      "urgency": "routine",
+      "severity_level": 4,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "8f9a0b1c-2d3e-4f4a-5b6c-7d8e9f0a1b2c",
+      "artifact_version_id": "8f9a0b1c-2d3e-4f4a-5b6c-7d8e9f0a1b2c-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
     }
   ],
   "room_essay": {
     "format": "markdown",
-    "en": "# Mastering Advanced AI Techniques\n\nThis room dives into advanced AI concepts like fine tuning, LoRA, and neurosymbolic AI. Use entries to explore model optimization, explainability, and privacy-preserving methods. Start with foundational topics like quantization or move to ethics with AI governance. Connect ideas, such as using SHAP for transparency or DPO for efficient alignment.\n\nResearch tasks deepen understanding. Search 'LoRA tutorial' or 'federated learning example' to find practical guides. Take notes to solidify concepts. Experiment with small projects, like a quantized model or a knowledge graph for graph RAG.\n\nFor go or no-go, assess your readiness. If curious about multimodal AI, go—build a small fusion model. If overwhelmed, no-go—start with simpler entries like fine tuning. Ensure learning fits your schedule without stress.\n\nEthics and privacy are critical. Use explainability tools like SHAP or LIME to understand model decisions. Prioritize data protection with federated learning. Consult experts for real-world applications.\n\nNext steps: Read one entry like 'mixture of experts,' then code a small MoE. Discuss concepts with peers. Reflect on ethical implications daily.\n\nWord count: 248",
-    "vi": "# Thành Thạo Kỹ Thuật AI Nâng Cao\n\nPhòng này khám phá các khái niệm AI nâng cao như tinh chỉnh, LoRA và AI thần kinh biểu tượng. Sử dụng mục để tìm hiểu tối ưu mô hình, giải thích và phương pháp bảo vệ quyền riêng tư. Bắt đầu với chủ đề cơ bản như lượng tử hóa hoặc đi sâu vào đạo đức với quản trị AI. Kết nối ý tưởng, như dùng SHAP cho minh bạch hoặc DPO cho căn chỉnh hiệu quả.\n\nNhiệm vụ nghiên cứu giúp hiểu sâu hơn. Tìm 'hướng dẫn LoRA' hoặc 'ví dụ học liên hợp' để có hướng dẫn thực tế. Ghi chép để củng cố khái niệm. Thử nghiệm dự án nhỏ, như mô hình lượng tử hóa hoặc đồ thị kiến thức cho graph RAG.\n\nĐể đi hay không, đánh giá sự sẵn sàng. Nếu tò mò về AI đa phương thức, đi—xây mô hình hợp nhất nhỏ. Nếu choáng ngợp, không đi—bắt đầu với mục đơn giản như tinh chỉnh. Đảm bảo học phù hợp lịch trình mà không căng thẳng.\n\nĐạo đức và quyền riêng tư rất quan trọng. Sử dụng công cụ giải thích như SHAP hoặc LIME để hiểu quyết định mô hình. Ưu tiên bảo vệ dữ liệu với học liên hợp. Tham khảo chuyên gia cho ứng dụng thực tế.\n\nBước tiếp theo: Đọc một mục như 'hỗn hợp chuyên gia,' rồi viết mã MoE nhỏ. Thảo luận khái niệm với bạn bè. Suy nghĩ về tác động đạo đức hàng ngày.\n\nSố từ: 256",
+    "en": "# Diving into Cutting-Edge AI\n\nThis room explores advanced AI frontiers like self-supervised learning, diffusion models, and AI safety. Use entries to delve into emerging techniques such as graph neural networks or continual learning. Start with accessible topics like zero-shot learning or dive into complex ones like transformer evolution. Connect ideas, e.g., using AI ethics policy with trustworthy AI for responsible deployment.\n\nResearch tasks amplify learning. Search 'diffusion model tutorial' or 'GNN code example' to find cutting-edge resources. Take notes to track insights. Experiment with small projects, like a zero-shot classifier or a sparse model.\n\nFor go or no-go, evaluate your readiness. If excited about causal inference, go—build a small model. If overwhelmed, no-go—start with in-context learning. Ensure learning aligns with your capacity.\n\nEthics and privacy are paramount. Use interpretability tools to understand models. Prioritize fairness with trustworthy AI. Consult experts for critical applications.\n\nNext steps: Read an entry like 'ai_safety,' then draft a safety protocol. Code a small GNN project. Reflect on ethical impacts weekly.\n\nWord count: 248",
+    "vi": "# Khám Phá AI Tiên Tiến\n\nPhòng này khám phá các biên giới AI như học tự giám sát, mô hình khuyếch tán và an toàn AI. Sử dụng mục để tìm hiểu kỹ thuật mới như mạng nơ-ron đồ thị hoặc học liên tục. Bắt đầu với chủ đề dễ tiếp cận như học không viên tiên hoặc đi sâu vào phức tạp như tiến hóa transformer. Kết nối ý tưởng, ví dụ, dùng chính sách đạo đức AI với AI đáng tin cậy để triển khai có trách nhiệm.\n\nNhiệm vụ nghiên cứu nâng cao học tập. Tìm 'hướng dẫn mô hình khuyếch tán' hoặc 'ví dụ mã GNN' để khám phá tài nguyên tiên tiến. Ghi chép để theo dõi thông tin. Thử nghiệm dự án nhỏ, như bộ phân loại không viên tiên hoặc mô hình thưa thớt.\n\nĐể đi hay không, đánh giá sự sẵn sàng. Nếu hào hứng về suy luận nhân quả, đi—xây mô hình nhỏ. Nếu choáng ngợp, không đi—bắt đầu với học trong ngữ cảnh. Đảm bảo học phù hợp năng lực.\n\nĐạo đức và quyền riêng tư là tối quan trọng. Sử dụng công cụ giải thích để hiểu mô hình. Ưu tiên công bằng với AI đáng tin cậy. Tham khảo chuyên gia cho ứng dụng quan trọng.\n\nBước tiếp theo: Đọc mục như 'an_toan_ai,' rồi soạn giao thức an toàn. Viết mã dự án GNN nhỏ. Suy nghĩ về tác động đạo đức hàng tuần.\n\nSố từ: 256",
     "word_count_en": 248,
     "word_count_vi": 256,
-    "updated_at": "2025-10-20T17:46:00+09:00"
+    "updated_at": "2025-10-20T17:49:00+09:00"
   },
   "ui_triggers": {
     "essay_offer": {

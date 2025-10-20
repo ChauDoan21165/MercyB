@@ -1,1 +1,981 @@
-{"schema_version":"1.1","schema_id":"cholesterol","supported_languages":["en","vi"],"localization":{"default":"en","fallback":"en","i18n_required":true,"i18n_verified":true,"normalize_case":true,"strict":true},"description":{"en":"Echologic Mercy Blade room for practical cholesterol and heart health","vi":"Phòng Mercy Blade về cholesterol và sức khỏe tim thực tiễn"},"crisis_footer":{"en":"In danger or medical distress? Contact emergency services or a trusted hotline immediately.","vi":"Gặp nguy hiểm hoặc khẩn cấp y tế? Gọi cấp cứu hoặc đường dây nóng đáng tin ngay."},"safety_footer":{"en":"Prioritize safety and legality; if unsure, pause and seek professional guidance.","vi":"Ưu tiên an toàn và hợp pháp; nếu không chắc, hãy hỏi ý kiến chuyên gia."},"safety_disclaimer":{"en":"Educational guidance; not a substitute for professional medical advice or emergency care.","vi":"Thông tin giáo dục; không thay thế tư vấn y khoa hoặc cấp cứu."},"meta":{"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-13T00:00:00Z","meta_notes":["Keyword-driven; field-tested tone for cholesterol and heart health","artifact_ids unique","batch=final/1","batch_total=1","Header: dumb tree, no diagnostics, catch keyword, speak sharp, mood: slow, crisis skips Dare"],"entry_count":31,"checksum_sha256":"9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a"},"enums":{"tags":["cholesterol","nutrition","lifestyle","exercise","medication","prevention","symptoms","safety","screening","heart_health"],"urgency":["immediate","soon","routine"],"severity_level":[1,2,3,4,5],"systems":["cholesterol"],"suggested_action":["call_emergency","track_habit","book_doctor"]},"keywords":{"heart_attack_warning":{"en":["heart attack warning","chest pain","arm pain"],"vi":["cảnh báo nhồi máu tim","đau ngực","đau cánh tay"],"synonyms":{"en":["heart attack signs","chest tightness","heart distress"],"vi":["dấu hiệu nhồi máu","chặt ngực","đau tim"]}},"stroke_signs":{"en":["stroke signs","sudden weakness","speech difficulty"],"vi":["dấu hiệu đột quỵ","yếu đột ngột","khó nói"],"synonyms":{"en":["stroke symptoms","numbness","confusion"],"vi":["triệu chứng đột quỵ","tê bì","lú lẫn"]}},"angina_symptoms":{"en":["angina symptoms","chest discomfort","heart pain"],"vi":["triệu chứng đau thắt ngực","khó chịu ngực","đau tim"],"synonyms":{"en":["chest pain","angina","heart pressure"],"vi":["đau ngực","đau thắt","áp lực tim"]}},"breathing_difficulty":{"en":["breathing difficulty","shortness of breath","dyspnea"],"vi":["khó thở","thở ngắn","khó khăn hô hấp"],"synonyms":{"en":["breathlessness","gasping","respiratory distress"],"vi":["thở hổn hển","khó thở","suy hô hấp"]}},"hypertensive_crisis":{"en":["hypertensive crisis","high blood pressure","severe headache"],"vi":["khủng hoảng tăng huyết áp","huyết áp cao","đau đầu nghiêm trọng"],"synonyms":{"en":["bp spike","hypertension","headache crisis"],"vi":["tăng huyết áp","cao huyết áp","đau đầu khẩn"]}},"severe_allergic_reaction_to_medication":{"en":["severe allergic reaction","medication allergy","anaphylaxis"],"vi":["dị ứng thuốc nghiêm trọng","dị ứng thuốc","sốc phản vệ"],"synonyms":{"en":["drug reaction","allergy crisis","severe allergy"],"vi":["phản ứng thuốc","khủng hoảng dị ứng","dị ứng nặng"]}},"lipid_monitoring":{"en":["lipid monitoring","cholesterol check","blood lipids"],"vi":["theo dõi lipid","kiểm tra cholesterol","lipid máu"],"synonyms":{"en":["lipid test","blood fat","cholesterol screen"],"vi":["xét nghiệm lipid","chất béo máu","sàng lọc cholesterol"]}},"lipid_screening":{"en":["lipid screening","cholesterol test","heart risk check"],"vi":["sàng lọc lipid","xét nghiệm cholesterol","kiểm tra rủi ro tim"],"synonyms":{"en":["lipid panel","heart test","blood screening"],"vi":["bảng lipid","xét nghiệm tim","sàng lọc máu"]}},"statin_adherence":{"en":["statin adherence","cholesterol medication","statin use"],"vi":["tuân thủ statin","thuốc cholesterol","sử dụng statin"],"synonyms":{"en":["statin compliance","drug adherence","medication consistency"],"vi":["tuân thủ thuốc","kiên trì thuốc","đều đặn thuốc"]}},"statin_safety":{"en":["statin safety","medication side effects","statin risks"],"vi":["an toàn statin","tác dụng phụ thuốc","rủi ro statin"],"synonyms":{"en":["drug safety","statin effects","medication risks"],"vi":["an toàn thuốc","hiệu ứng statin","rủi ro thuốc"]}},"medication_review":{"en":["medication review","drug check","prescription update"],"vi":["xem xét thuốc","kiểm tra thuốc","cập nhật đơn thuốc"],"synonyms":{"en":["drug review","prescription check","medication adjustment"],"vi":["xem lại thuốc","kiểm tra đơn","điều chỉnh thuốc"]}},"unsaturated_fats":{"en":["unsaturated fats","healthy fats","omega fats"],"vi":["chất béo không bão hòa","chất béo lành mạnh","chất béo omega"],"synonyms":{"en":["good fats","plant fats","heart fats"],"vi":["chất béo tốt","chất béo thực vật","chất béo tim"]}},"limit_saturated_fats":{"en":["limit saturated fats","reduce animal fats","cut fatty meats"],"vi":["giới hạn chất béo bão hòa","giảm chất béo động vật","cắt thịt béo"],"synonyms":{"en":["lower saturated fats","cut animal fats","reduce fatty foods"],"vi":["hạ chất béo bão hòa","giảm mỡ động vật","cắt thực phẩm béo"]}},"limit_trans_fats":{"en":["limit trans fats","avoid processed fats","cut trans fat"],"vi":["giới hạn chất béo trans","tránh chất béo chế biến","cắt chất béo trans"],"synonyms":{"en":["reduce trans fats","avoid artificial fats","lower processed fats"],"vi":["giảm chất béo trans","tránh mỡ nhân tạo","hạ chất béo chế biến"]}},"soluble_fiber":{"en":["soluble fiber","fiber intake","oat fiber"],"vi":["chất xơ hòa tan","nạp chất xơ","xơ yến mạch"],"synonyms":{"en":["dietary fiber","heart fiber","fiber foods"],"vi":["chất xơ chế độ","xơ tim","thực phẩm xơ"]}},"lean_proteins":{"en":["lean proteins","healthy proteins","protein sources"],"vi":["protein nạc","protein lành mạnh","nguồn protein"],"synonyms":{"en":["low fat protein","heart protein","protein balance"],"vi":["protein béo thấp","protein tim","cân bằng protein"]}},"plant_sterols":{"en":["plant sterols","sterol intake","cholesterol blockers"],"vi":["sterol thực vật","nạp sterol","chặn cholesterol"],"synonyms":{"en":["natural sterols","heart sterols","sterol foods"],"vi":["sterol tự nhiên","sterol tim","thực phẩm sterol"]}},"whole_grains":{"en":["whole grains","grain intake","fiber grains"],"vi":["ngũ cốc nguyên hạt","nạp ngũ cốc","ngũ cốc xơ"],"synonyms":{"en":["healthy grains","heart grains","grain balance"],"vi":["ngũ cốc lành mạnh","ngũ cốc tim","cân bằng ngũ cốc"]}},"fruits_vegetables":{"en":["fruits vegetables","produce intake","veggie fruit"],"vi":["trái cây rau củ","nạp sản phẩm","rau trái"],"synonyms":{"en":["healthy produce","heart produce","produce balance"],"vi":["sản phẩm lành mạnh","sản phẩm tim","cân bằng sản phẩm"]}},"nuts_seeds":{"en":["nuts seeds","nut intake","seed foods"],"vi":["hạt hạt giống","nạp hạt","thực phẩm hạt giống"],"synonyms":{"en":["healthy nuts","heart nuts","nut balance"],"vi":["hạt lành mạnh","hạt tim","cân bằng hạt"]}},"fish_oily":{"en":["fish oily","oily fish","omega fish"],"vi":["cá dầu","cá béo","cá omega"],"synonyms":{"en":["fatty fish","heart fish","fish balance"],"vi":["cá béo","cá tim","cân bằng cá"]}},"limit_sugars":{"en":["limit sugars","sugar reduction","sweet limit"],"vi":["giới hạn đường","giảm đường","giới hạn ngọt"],"synonyms":{"en":["low sugar","heart sugar","sugar control"],"vi":["ít đường","đường tim","kiểm soát đường"]}},"limit_sodium":{"en":["limit sodium","salt reduction","sodium control"],"vi":["giới hạn natri","giảm muối","kiểm soát natri"],"synonyms":{"en":["low salt","heart salt","salt limit"],"vi":["ít muối","muối tim","giới hạn muối"]}},"diet_journal":{"en":["diet journal","food log","eating record"],"vi":["nhật ký chế độ ăn","sổ thực phẩm","ghi chép ăn uống"],"synonyms":{"en":["nutrition diary","meal track","diet record"],"vi":["sổ dinh dưỡng","theo dõi bữa ăn","ghi chế độ"]}},"bp_management":{"en":["bp management","hypertension care","pressure control"],"vi":["quản lý huyết áp","chăm sóc tăng huyết áp","kiểm soát áp lực"],"synonyms":{"en":["blood pressure control","heart bp","bp balance"],"vi":["kiểm soát huyết áp","huyết áp tim","cân bằng huyết áp"]}},"physical_activity":{"en":["physical activity","daily movement","active habit"],"vi":["hoạt động thể chất","chuyển động hàng ngày","thói quen năng động"],"synonyms":{"en":["exercise daily","movement routine","active lifestyle"],"vi":["tập thể dục ngày","lịch chuyển động","lối sống năng động"]}},"aerobic_exercise":{"en":["aerobic exercise","cardio workout","heart exercise"],"vi":["tập aerobic","tập cardio","tập thể dục tim"],"synonyms":{"en":["cardio activity","aerobic routine","endurance exercise"],"vi":["hoạt động cardio","lịch aerobic","tập bền bỉ"]}},"strength_training":{"en":["strength training","weight lift","muscle exercise"],"vi":["tập sức mạnh","nâng tạ","tập cơ bắp"],"synonyms":{"en":["resistance training","strength routine","muscle build"],"vi":["tập kháng lực","lịch sức mạnh","xây cơ"]}},"sedentary_reduction":{"en":["sedentary reduction","reduce inactivity","less sitting"],"vi":["giảm ngồi lâu","giảm thiếu hoạt động","ít ngồi"],"synonyms":{"en":["avoid sedentary","activity increase","sitting limit"],"vi":["tránh tĩnh","tăng hoạt động","giới hạn ngồi"]}},"alcohol_moderation":{"en":["alcohol moderation","drink less","alcohol limit"],"vi":["điều độ rượu","uống ít","giới hạn rượu"],"synonyms":{"en":["moderate drinking","alcohol control","limit drinks"],"vi":["uống vừa phải","kiểm soát rượu","giới hạn đồ uống"]}},"quit_smoking":{"en":["quit smoking","smoking cessation","stop cigarettes"],"vi":["bỏ hút thuốc","cai thuốc lá","ngừng thuốc lá"],"synonyms":{"en":["end smoking","tobacco quit","nicotine stop"],"vi":["kết thúc hút","cai thuốc","ngừng nicotine"]}}},"room_essay":{"en":"# Managing Cholesterol for Heart Health\n\nCholesterol management supports heart health and reduces risks. This guide connects practical tips from the room’s entries to help you make informed choices. Always consult a doctor for personal advice, as this is general guidance.\n\n### Key Practices\nNutrition entries like unsaturated fats, soluble fiber, lean proteins, plant sterols, whole grains, fruits and vegetables, nuts and seeds, fish oily, limit sugars, limit sodium, and limit saturated/trans fats suggest choosing heart-healthy foods (e.g., olive oil, oats, salmon) and avoiding harmful fats. Keep a diet journal to track meals. Screening entries like lipid monitoring and lipid screening recommend regular cholesterol checks. Medication entries such as statin adherence, statin safety, and medication review stress following prescriptions and watching for side effects. Blood pressure management supports heart health. Exercise entries like physical activity, aerobic exercise, strength training, and sedentary reduction promote movement. Lifestyle changes like alcohol moderation and quit smoking reduce risks. Symptoms like heart attack warning, stroke signs, angina symptoms, breathing difficulty, hypertensive crisis, or severe allergic reaction to medication need urgent care.\n\n### Research Tasks\nSearch trusted sources like health websites for “heart-healthy recipes” or “cholesterol tests.” Avoid unverified advice. Check medication side effects or food benefits before changes.\n\n### Go or No-Go\nTry a tip like eating oats for a week. If energy improves, keep it (go). If side effects occur, stop and consult a doctor (no-go). For symptoms, always seek immediate help.\n\n### Ethics and Safety\nKeep health data private. Act safely—never skip meds without doctor input. Call emergency services for severe symptoms, as noted in the crisis footer.\n\n### Next Steps\nStart with one tip, like adding a salad today. Log meals in a journal. Schedule a cholesterol test if needed. Small steps build heart health.\n\n*This is not medical advice. Always consult professionals.*","vi":"# Quản Lý Cholesterol Cho Sức Khỏe Tim\n\nQuản lý cholesterol hỗ trợ sức khỏe tim và giảm rủi ro. Hướng dẫn này kết nối các mẹo thực tiễn từ các mục trong phòng để giúp bạn đưa ra lựa chọn sáng suốt. Luôn tham khảo bác sĩ để được tư vấn cá nhân, vì đây là hướng dẫn chung.\n\n### Các Thực Hành Chính\nCác mục dinh dưỡng như chất béo không bão hòa, chất xơ hòa tan, protein nạc, sterol thực vật, ngũ cốc nguyên hạt, trái cây rau củ, hạt, cá dầu, giới hạn đường, giới hạn natri và giới hạn chất béo bão hòa/trans khuyên chọn thực phẩm tốt cho tim (ví dụ: dầu ô liu, yến mạch, cá hồi) và tránh chất béo có hại. Ghi nhật ký chế độ ăn để theo dõi bữa ăn. Các mục sàng lọc như theo dõi lipid và sàng lọc lipid khuyến nghị kiểm tra cholesterol định kỳ. Các mục thuốc như tuân thủ statin, an toàn statin và xem xét thuốc nhấn mạnh việc theo đơn và theo dõi tác dụng phụ. Quản lý huyết áp hỗ trợ sức khỏe tim. Các mục tập thể dục như hoạt động thể chất, tập aerobic, tập sức mạnh và giảm ngồi lâu khuyến khích vận động. Thay đổi lối sống như điều độ rượu và bỏ hút thuốc giảm rủi ro. Các triệu chứng như cảnh báo nhồi máu tim, dấu hiệu đột quỵ, triệu chứng đau thắt ngực, khó thở, khủng hoảng tăng huyết áp hoặc dị ứng thuốc nghiêm trọng cần chăm sóc khẩn cấp.\n\n### Nghiên Cứu\nTìm nguồn đáng tin như trang web y tế về “công thức tốt cho tim” hoặc “xét nghiệm cholesterol.” Tránh lời khuyên chưa kiểm chứng. Kiểm tra tác dụng phụ thuốc hoặc lợi ích thực phẩm trước khi thay đổi.\n\n### Tiến Hành Hay Tạm Dừng\nThử một mẹo như ăn yến mạch trong một tuần. Nếu năng lượng cải thiện, tiếp tục (tiến hành). Nếu có tác dụng phụ, dừng và hỏi bác sĩ (tạm dừng). Với triệu chứng, luôn tìm giúp đỡ ngay.\n\n### Đạo Đức Và An Toàn\nGiữ dữ liệu sức khỏe riêng tư. Hành động an toàn—không bỏ thuốc mà không có ý kiến bác sĩ. Gọi cấp cứu cho triệu chứng nghiêm trọng, như ghi trong chân trang khủng hoảng.\n\n### Bước Tiếp Theo\nBắt đầu với một mẹo, như thêm salad hôm nay. Ghi bữa ăn vào nhật ký. Lên lịch xét nghiệm cholesterol nếu cần. Những bước nhỏ xây dựng sức khỏe tim.\n\n*Đây không phải lời khuyên y khoa. Luôn tham khảo chuyên gia.*","format":"markdown","updated_at":"2025-10-13T00:00:00Z","word_count_en":298,"word_count_vi":302},"ui_triggers":{"essay_offer":{"behavior":{"mode":"chip_suggest","pin_to_canvas":true,"snooze_minutes":1440},"criteria":{"max_prior_briefs_shown":0,"max_recency_minutes":720,"min_distinct_buckets":3,"min_entries_total":6},"enabled":true},"crisis_alert":{"enabled":true,"behavior":{"mode":"modal","priority":"high"},"criteria":{"flags":["crisis"],"severity_level":5}}},"entries":[{"slug":"heart_attack_warning","title":{"en":"Heart Attack Warning","vi":"Cảnh Báo Nhồi Máu Tim"},"copy":{"en":"Chest pain may signal heart attack. You said ‘chest pain’. Seek urgent care. Call emergency services now.","vi":"Đau ngực có thể báo nhồi máu tim. Bạn nói ‘đau ngực’. Tìm chăm sóc khẩn cấp. Gọi cấp cứu ngay."},"echo_en":"chest pain","echo_vi":"đau ngực","attribution":"Best Practices / Thực hành tốt nhất","tags":["symptoms"],"urgency":"immediate","severity_level":5,"systems":["cholesterol"],"metadata":{"topic":"symptoms","flags":["crisis"],"outcome":"seek_help"},"cta":{"en":{"label":"Take Action","note":"Call emergency services now.","suggested_action":"call_emergency"},"vi":{"label":"Hành Động","note":"Gọi cấp cứu ngay.","suggested_action":"call_emergency"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["nhồi máu tim: heart attack"],"practice":"Say: Call emergency now."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"f1a2b3c4-5d6e-4f7a-8b9c-0d1e2f3a4b5c","artifact_version_id":"f1a2b3c4-5d6e-4f7a-8b9c-0d1e2f3a4b5c-v001"},{"slug":"stroke_signs","title":{"en":"Stroke Signs","vi":"Dấu Hiệu Đột Quỵ"},"copy":{"en":"Sudden weakness may indicate stroke. You said ‘sudden weakness’. Seek urgent care. Call emergency services now.","vi":"Yếu đột ngột có thể báo đột quỵ. Bạn nói ‘yếu đột ngột’. Tìm chăm sóc khẩn cấp. Gọi cấp cứu ngay."},"echo_en":"sudden weakness","echo_vi":"yếu đột ngột","attribution":"Best Practices / Thực hành tốt nhất","tags":["symptoms"],"urgency":"immediate","severity_level":5,"systems":["cholesterol"],"metadata":{"topic":"symptoms","flags":["crisis"],"outcome":"seek_help"},"cta":{"en":{"label":"Take Action","note":"Call emergency services now.","suggested_action":"call_emergency"},"vi":{"label":"Hành Động","note":"Gọi cấp cứu ngay.","suggested_action":"call_emergency"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["đột quỵ: stroke"],"practice":"Say: Seek help now."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"a2b3c4d5-6e7f-4a8b-9c0d-1e2f3a4b5c6d","artifact_version_id":"a2b3c4d5-6e7f-4a8b-9c0d-1e2f3a4b5c6d-v001"},{"slug":"angina_symptoms","title":{"en":"Angina Symptoms","vi":"Triệu Chứng Đau Thắt Ngực"},"copy":{"en":"Chest discomfort may be angina. You said ‘chest discomfort’. Seek urgent care. Call emergency services now.","vi":"Khó chịu ngực có thể đau thắt ngực. Bạn nói ‘khó chịu ngực’. Tìm chăm sóc khẩn cấp. Gọi cấp cứu ngay."},"echo_en":"chest discomfort","echo_vi":"khó chịu ngực","attribution":"Best Practices / Thực hành tốt nhất","tags":["symptoms"],"urgency":"immediate","severity_level":5,"systems":["cholesterol"],"metadata":{"topic":"symptoms","flags":["crisis"],"outcome":"seek_help"},"cta":{"en":{"label":"Take Action","note":"Call emergency services now.","suggested_action":"call_emergency"},"vi":{"label":"Hành Động","note":"Gọi cấp cứu ngay.","suggested_action":"call_emergency"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["đau thắt ngực: angina"],"practice":"Say: Call emergency now."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"b3c4d5e6-7f8a-4b9c-0d1e-2f3a4b5c6d7e","artifact_version_id":"b3c4d5e6-7f8a-4b9c-0d1e-2f3a4b5c6d7e-v001"},{"slug":"breathing_difficulty","title":{"en":"Breathing Difficulty","vi":"Khó Thở"},"copy":{"en":"Shortness of breath may signal heart issue. You said ‘shortness of breath’. Seek urgent care. Call emergency services now.","vi":"Thở ngắn có thể báo vấn đề tim. Bạn nói ‘thở ngắn’. Tìm chăm sóc khẩn cấp. Gọi cấp cứu ngay."},"echo_en":"shortness of breath","echo_vi":"thở ngắn","attribution":"Best Practices / Thực hành tốt nhất","tags":["symptoms"],"urgency":"immediate","severity_level":5,"systems":["cholesterol"],"metadata":{"topic":"symptoms","flags":["crisis"],"outcome":"seek_help"},"cta":{"en":{"label":"Take Action","note":"Call emergency services now.","suggested_action":"call_emergency"},"vi":{"label":"Hành Động","note":"Gọi cấp cứu ngay.","suggested_action":"call_emergency"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["khó thở: breathing difficulty"],"practice":"Say: Seek urgent help."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"c4d5e6f7-8a9b-4c0d-1e2f-3a4b5c6d7e8f","artifact_version_id":"c4d5e6f7-8a9b-4c0d-1e2f-3a4b5c6d7e8f-v001"},{"slug":"hypertensive_crisis","title":{"en":"Hypertensive Crisis","vi":"Khủng Hoảng Tăng Huyết Áp"},"copy":{"en":"Severe headache may be hypertensive crisis. You said ‘severe headache’. Seek urgent care. Call emergency services now.","vi":"Đau đầu nghiêm trọng có thể khủng hoảng tăng huyết áp. Bạn nói ‘đau đầu nghiêm trọng’. Tìm chăm sóc khẩn cấp. Gọi cấp cứu ngay."},"echo_en":"severe headache","echo_vi":"đau đầu nghiêm trọng","attribution":"Best Practices / Thực hành tốt nhất","tags":["symptoms"],"urgency":"immediate","severity_level":5,"systems":["cholesterol"],"metadata":{"topic":"symptoms","flags":["crisis"],"outcome":"seek_help"},"cta":{"en":{"label":"Take Action","note":"Call emergency services now.","suggested_action":"call_emergency"},"vi":{"label":"Hành Động","note":"Gọi cấp cứu ngay.","suggested_action":"call_emergency"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["khủng hoảng tăng huyết áp: hypertensive crisis"],"practice":"Say: Call emergency now."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"d5e6f7a8-9b0c-4d1e-2f3a-4b5c6d7e8f9a","artifact_version_id":"d5e6f7a8-9b0c-4d1e-2f3a-4b5c6d7e8f9a-v001"},{"slug":"severe_allergic_reaction_to_medication","title":{"en":"Severe Allergic Reaction to Medication","vi":"Dị Ứng Thuốc Nghiêm Trọng"},"copy":{"en":"Anaphylaxis from meds requires immediate help. You said ‘medication allergy’. Seek urgent care. Call emergency services now.","vi":"Sốc phản vệ từ thuốc cần giúp ngay. Bạn nói ‘dị ứng thuốc’. Tìm chăm sóc khẩn cấp. Gọi cấp cứu ngay."},"echo_en":"medication allergy","echo_vi":"dị ứng thuốc","attribution":"Best Practices / Thực hành tốt nhất","tags":["symptoms"],"urgency":"immediate","severity_level":5,"systems":["cholesterol"],"metadata":{"topic":"symptoms","flags":["crisis"],"outcome":"seek_help"},"cta":{"en":{"label":"Take Action","note":"Call emergency services now.","suggested_action":"call_emergency"},"vi":{"label":"Hành Động","note":"Gọi cấp cứu ngay.","suggested_action":"call_emergency"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["dị ứng: allergic reaction"],"practice":"Say: Call emergency now."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"e6f7a8b9-0c1d-4e2f-3a4b-5c6d7e8f9a0b","artifact_version_id":"e6f7a8b9-0c1d-4e2f-3a4b-5c6d7e8f9a0b-v001"},{"slug":"lipid_monitoring","title":{"en":"Lipid Monitoring","vi":"Theo Dõi Lipid"},"copy":{"en":"Regular checks might track cholesterol. You said ‘cholesterol check’. Dare: Schedule lipid test.","vi":"Kiểm tra đều theo dõi cholesterol. Bạn nói ‘kiểm tra cholesterol’. Dám: Lên lịch xét nghiệm lipid."},"echo_en":"cholesterol check","echo_vi":"kiểm tra cholesterol","attribution":"Best Practices / Thực hành tốt nhất","tags":["screening"],"urgency":"soon","severity_level":3,"systems":["cholesterol"],"metadata":{"topic":"screening","outcome":"plan_change"},"cta":{"en":{"label":"Take Action","note":"Schedule a lipid test today.","suggested_action":"book_doctor"},"vi":{"label":"Hành Động","note":"Lên lịch xét nghiệm lipid hôm nay.","suggested_action":"book_doctor"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["lipid: lipid"],"practice":"Say: I will schedule a lipid test."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"f7a8b9c0-1d2e-4f3a-4b5c-6d7e8f9a0b1c","artifact_version_id":"f7a8b9c0-1d2e-4f3a-4b5c-6d7e8f9a0b1c-v001"},{"slug":"lipid_screening","title":{"en":"Lipid Screening","vi":"Sàng Lọc Lipid"},"copy":{"en":"Screening might assess heart risk. You said ‘cholesterol test’. Dare: Get screened.","vi":"Sàng lọc đánh giá rủi ro tim. Bạn nói ‘xét nghiệm cholesterol’. Dám: Làm sàng lọc."},"echo_en":"cholesterol test","echo_vi":"xét nghiệm cholesterol","attribution":"Best Practices / Thực hành tốt nhất","tags":["screening"],"urgency":"soon","severity_level":3,"systems":["cholesterol"],"metadata":{"topic":"screening","outcome":"plan_change"},"cta":{"en":{"label":"Take Action","note":"Get a lipid screening today.","suggested_action":"book_doctor"},"vi":{"label":"Hành Động","note":"Làm sàng lọc lipid hôm nay.","suggested_action":"book_doctor"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["sàng lọc: screening"],"practice":"Say: I will get lipid screening."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"a8b9c0d1-2e3f-4a4b-5c6d-7e8f9a0b1c2d","artifact_version_id":"a8b9c0d1-2e3f-4a4b-5c6d-7e8f9a0b1c2d-v001"},{"slug":"statin_adherence","title":{"en":"Statin Adherence","vi":"Tuân Thủ Statin"},"copy":{"en":"Follow statin routine for cholesterol. You said ‘cholesterol medication’. Dare: Set reminders.","vi":"Theo lịch statin cho cholesterol. Bạn nói ‘thuốc cholesterol’. Dám: Đặt nhắc nhở."},"echo_en":"cholesterol medication","echo_vi":"thuốc cholesterol","attribution":"Best Practices / Thực hành tốt nhất","tags":["medication"],"urgency":"routine","severity_level":2,"systems":["cholesterol"],"metadata":{"topic":"medication","outcome":"self_regulate"},"cta":{"en":{"label":"Take Action","note":"Set medication reminders today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Đặt nhắc nhở thuốc hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["statin: statin"],"practice":"Say: I will take my statin."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"b9c0d1e2-3f4a-4b5c-6d7e-8f9a0b1c2d3e","artifact_version_id":"b9c0d1e2-3f4a-4b5c-6d7e-8f9a0b1c2d3e-v001"},{"slug":"statin_safety","title":{"en":"Statin Safety","vi":"An Toàn Statin"},"copy":{"en":"Watch for statin side effects. You said ‘medication side effects’. Dare: Talk to doctor.","vi":"Theo dõi tác dụng phụ statin. Bạn nói ‘tác dụng phụ thuốc’. Dám: Nói với bác sĩ."},"echo_en":"medication side effects","echo_vi":"tác dụng phụ thuốc","attribution":"Best Practices / Thực hành tốt nhất","tags":["medication"],"urgency":"soon","severity_level":3,"systems":["cholesterol"],"metadata":{"topic":"medication","outcome":"seek_help"},"cta":{"en":{"label":"Take Action","note":"Talk to your doctor about side effects.","suggested_action":"book_doctor"},"vi":{"label":"Hành Động","note":"Nói với bác sĩ về tác dụng phụ.","suggested_action":"book_doctor"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["an toàn: safety"],"practice":"Say: I will watch for side effects."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"c0d1e2f3-4a5b-4c6d-7e8f-9a0b1c2d3e4f","artifact_version_id":"c0d1e2f3-4a5b-4c6d-7e8f-9a0b1c2d3e4f-v001"},{"slug":"medication_review","title":{"en":"Medication Review","vi":"Xem Xét Thuốc"},"copy":{"en":"Review meds with doctor. You said ‘drug check’. Dare: Schedule review.","vi":"Xem thuốc với bác sĩ. Bạn nói ‘kiểm tra thuốc’. Dám: Lên lịch xem."},"echo_en":"drug check","echo_vi":"kiểm tra thuốc","attribution":"Best Practices / Thực hành tốt nhất","tags":["medication"],"urgency":"soon","severity_level":3,"systems":["cholesterol"],"metadata":{"topic":"medication","outcome":"seek_help"},"cta":{"en":{"label":"Take Action","note":"Schedule a medication review.","suggested_action":"book_doctor"},"vi":{"label":"Hành Động","note":"Lên lịch xem xét thuốc.","suggested_action":"book_doctor"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["xem xét: review"],"practice":"Say: I will review my meds."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"d1e2f3a4-5b6c-4d7e-8f9a-0b1c2d3e4f5a","artifact_version_id":"d1e2f3a4-5b6c-4d7e-8f9a-0b1c2d3e4f5a-v001"},{"slug":"unsaturated_fats","title":{"en":"Unsaturated Fats","vi":"Chất Béo Không Bão Hòa"},"copy":{"en":"Good fats might help cholesterol. You said ‘healthy fats’. Dare: Use olive oil.","vi":"Chất béo tốt tốt cho cholesterol. Bạn nói ‘chất béo lành mạnh’. Dám: Dùng dầu ô liu."},"echo_en":"healthy fats","echo_vi":"chất béo lành mạnh","attribution":"Best Practices / Thực hành tốt nhất","tags":["nutrition"],"urgency":"routine","severity_level":2,"systems":["cholesterol"],"metadata":{"topic":"nutrition","outcome":"self_regulate"},"cta":{"en":{"label":"Take Action","note":"Use olive oil in cooking today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Dùng dầu ô liu khi nấu ăn hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["không bão hòa: unsaturated"],"practice":"Say: I will use olive oil."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"e2f3a4b5-6c7d-4e8f-9a0b-1c2d3e4f5a6b","artifact_version_id":"e2f3a4b5-6c7d-4e8f-9a0b-1c2d3e4f5a6b-v001"},{"slug":"limit_saturated_fats","title":{"en":"Limit Saturated Fats","vi":"Giới Hạn Chất Béo Bão Hòa"},"copy":{"en":"Reduce saturated fats for heart. You said ‘reduce animal fats’. Dare: Choose lean meat.","vi":"Giảm chất béo bão hòa cho tim. Bạn nói ‘giảm chất béo động vật’. Dám: Chọn thịt nạc."},"echo_en":"reduce animal fats","echo_vi":"giảm chất béo động vật","attribution":"Best Practices / Thực hành tốt nhất","tags":["nutrition"],"urgency":"routine","severity_level":2,"systems":["cholesterol"],"metadata":{"topic":"nutrition","outcome":"self_regulate"},"cta":{"en":{"label":"Take Action","note":"Choose lean meat today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Chọn thịt nạc hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["bão hòa: saturated"],"practice":"Say: I will limit saturated fats."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"f3a4b5c6-7d8e-4f9a-0b1c-2d3e4f5a6b7c","artifact_version_id":"f3a4b5c6-7d8e-4f9a-0b1c-2d3e4f5a6b7c-v001"},{"slug":"limit_trans_fats","title":{"en":"Limit Trans Fats","vi":"Giới Hạn Chất Béo Trans"},"copy":{"en":"Avoid trans fats for cholesterol. You said ‘avoid processed fats’. Dare: Read labels.","vi":"Tránh chất béo trans cho cholesterol. Bạn nói ‘tránh chất béo chế biến’. Dám: Đọc nhãn."},"echo_en":"avoid processed fats","echo_vi":"tránh chất béo chế biến","attribution":"Best Practices / Thực hành tốt nhất","tags":["nutrition"],"urgency":"routine","severity_level":2,"systems":["cholesterol"],"metadata":{"topic":"nutrition","outcome":"self_regulate"},"cta":{"en":{"label":"Take Action","note":"Read food labels today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Đọc nhãn thực phẩm hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["trans: trans"],"practice":"Say: I will avoid trans fats."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"a4b5c6d7-8e9f-4a0b-1c2d-3e4f5a6b7c8d","artifact_version_id":"a4b5c6d7-8e9f-4a0b-1c2d-3e4f5a6b7c8d-v001"},{"slug":"soluble_fiber","title":{"en":"Soluble Fiber","vi":"Chất Xơ Hòa Tan"},"copy":{"en":"Soluble fiber might lower cholesterol. You said ‘fiber intake’. Dare: Eat oats.","vi":"Chất xơ hòa tan hạ cholesterol. Bạn nói ‘nạp chất xơ’. Dám: Ăn yến mạch."},"echo_en":"fiber intake","echo_vi":"nạp chất xơ","attribution":"Best Practices / Thực hành tốt nhất","tags":["nutrition"],"urgency":"routine","severity_level":2,"systems":["cholesterol"],"metadata":{"topic":"nutrition","outcome":"self_regulate"},"cta":{"en":{"label":"Take Action","note":"Eat oats today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Ăn yến mạch hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["hòa tan: soluble"],"practice":"Say: I will eat soluble fiber."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"b5c6d7e8-9f0a-4b1c-2d3e-4f5a6b7c8d9e","artifact_version_id":"b5c6d7e8-9f0a-4b1c-2d3e-4f5a6b7c8d9e-v001"},{"slug":"lean_proteins","title":{"en":"Lean Proteins","vi":"Protein Nạc"},"copy":{"en":"Lean proteins might support heart. You said ‘healthy proteins’. Dare: Choose fish.","vi":"Protein nạc hỗ trợ tim. Bạn nói ‘protein lành mạnh’. Dám: Chọn cá."},"echo_en":"healthy proteins","echo_vi":"protein lành mạnh","attribution":"Best Practices / Thực hành tốt nhất","tags":["nutrition"],"urgency":"routine","severity_level":2,"systems":["cholesterol"],"metadata":{"topic":"nutrition","outcome":"self_regulate"},"cta":{"en":{"label":"Take Action","note":"Choose fish for a meal today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Chọn cá cho bữa ăn hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["nạc: lean"],"practice":"Say: I will eat lean proteins."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"c6d7e8f9-0a1b-4c2d-3e4f-5a6b7c8d9e0f","artifact_version_id":"c6d7e8f9-0a1b-4c2d-3e4f-5a6b7c8d9e0f-v001"},{"slug":"plant_sterols","title":{"en":"Plant Sterols","vi":"Sterol Thực Vật"},"copy":{"en":"Plant sterols might block cholesterol. You said ‘sterol intake’. Dare: Eat nuts.","vi":"Sterol thực vật chặn cholesterol. Bạn nói ‘nạp sterol’. Dám: Ăn hạt."},"echo_en":"sterol intake","echo_vi":"nạp sterol","attribution":"Best Practices / Thực hành tốt nhất","tags":["nutrition"],"urgency":"routine","severity_level":2,"systems":["cholesterol"],"metadata":{"topic":"nutrition","outcome":"self_regulate"},"cta":{"en":{"label":"Take Action","note":"Eat nuts today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Ăn hạt hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["sterol: sterols"],"practice":"Say: I will eat plant sterols."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"d7e8f9a0-1b2c-4d3e-4f5a-6b7c8d9e0f1a","artifact_version_id":"d7e8f9a0-1b2c-4d3e-4f5a-6b7c8d9e0f1a-v001"},{"slug":"whole_grains","title":{"en":"Whole Grains","vi":"Ngũ Cốc Nguyên Hạt"},"copy":{"en":"Whole grains might help cholesterol. You said ‘grain intake’. Dare: Choose brown rice.","vi":"Ngũ cốc nguyên hạt tốt cho cholesterol. Bạn nói ‘nạp ngũ cốc’. Dám: Chọn gạo lứt."},"echo_en":"grain intake","echo_vi":"nạp ngũ cốc","attribution":"Best Practices / Thực hành tốt nhất","tags":["nutrition"],"urgency":"routine","severity_level":2,"systems":["cholesterol"],"metadata":{"topic":"nutrition","outcome":"self_regulate"},"cta":{"en":{"label":"Take Action","note":"Choose brown rice today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Chọn gạo lứt hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["nguyên hạt: whole grains"],"practice":"Say: I will eat whole grains."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"e8f9a0b1-2c3d-4e4f-5a6b-7c8d9e0f1a2b","artifact_version_id":"e8f9a0b1-2c3d-4e4f-5a6b-7c8d9e0f1a2b-v001"},{"slug":"fruits_vegetables","title":{"en":"Fruits & Vegetables","vi":"Trái Cây & Rau Củ"},"copy":{"en":"Produce might lower cholesterol. You said ‘produce intake’. Dare: Add salad.","vi":"Rau củ và trái cây tươi giúp kiểm soát cholesterol. Bạn nói ‘nạp sản phẩm’. Dám: Thêm salad."},"echo_en":"produce intake","echo_vi":"nạp sản phẩm","attribution":"Best Practices / Thực hành tốt nhất","tags":["nutrition"],"urgency":"routine","severity_level":2,"systems":["cholesterol"],"metadata":{"topic":"nutrition","outcome":"self_regulate"},"cta":{"en":{"label":"Take Action","note":"Add a salad to a meal today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Thêm salad vào bữa ăn hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["trái cây rau: fruits vegetables"],"practice":"Say: I will eat more fruits and vegetables."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"f9a0b1c2-3d4e-4f5a-6b7c-8d9e0f1a2b3c","artifact_version_id":"f9a0b1c2-3d4e-4f5a-6b7c-8d9e0f1a2b3c-v001"},{"slug":"nuts_seeds","title":{"en":"Nuts & Seeds","vi":"Hạt & Hạt Giống"},"copy":{"en":"Nuts and seeds might help heart. You said ‘nut intake’. Dare: Snack on almonds.","vi":"Các loại hạt và hạt giống có lợi cho tim. Bạn nói ‘nạp hạt’. Dám: Ăn hạnh nhân."},"echo_en":"nut intake","echo_vi":"nạp hạt","attribution":"Best Practices / Thực hành tốt nhất","tags":["nutrition"],"urgency":"routine","severity_level":2,"systems":["cholesterol"],"metadata":{"topic":"nutrition","outcome":"self_regulate"},"cta":{"en":{"label":"Take Action","note":"Snack on almonds today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Ăn hạnh nhân hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["hạt: nuts"],"practice":"Say: I will snack on nuts."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"a0b1c2d3-4e5f-4a6b-7c8d-9e0f1a2b3c4d","artifact_version_id":"a0b1c2d3-4e5f-4a6b-7c8d-9e0f1a2b3c4d-v001"},{"slug":"fish_oily","title":{"en":"Oily Fish","vi":"Cá Dầu"},"copy":{"en":"Oily fish might lower cholesterol. You said ‘oily fish’. Dare: Eat salmon.","vi":"Cá béo tốt cho cholesterol. Bạn nói ‘cá dầu’. Dám: Ăn cá hồi."},"echo_en":"oily fish","echo_vi":"cá dầu","attribution":"Best Practices / Thực hành tốt nhất","tags":["nutrition"],"urgency":"routine","severity_level":2,"systems":["cholesterol"],"metadata":{"topic":"nutrition","outcome":"self_regulate"},"cta":{"en":{"label":"Take Action","note":"Eat salmon today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Ăn cá hồi hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["cá dầu: oily fish"],"practice":"Say: I will eat oily fish."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"b1c2d3e4-5f6a-4b7c-8d9e-0f1a2b3c4d5e","artifact_version_id":"b1c2d3e4-5f6a-4b7c-8d9e-0f1a2b3c4d5e-v001"},{"slug":"limit_sugars","title":{"en":"Limit Sugars","vi":"Giới Hạn Đường"},"copy":{"en":"Reduce sugars for heart health. You said ‘sugar reduction’. Dare: Skip sweets.","vi":"Giảm đường tốt cho tim. Bạn nói ‘giảm đường’. Dám: Bỏ ngọt."},"echo_en":"sugar reduction","echo_vi":"giảm đường","attribution":"Best Practices / Thực hành tốt nhất","tags":["nutrition"],"urgency":"routine","severity_level":2,"systems":["cholesterol"],"metadata":{"topic":"nutrition","outcome":"self_regulate"},"cta":{"en":{"label":"Take Action","note":"Skip sweets today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Bỏ ngọt hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["đường: sugars"],"practice":"Say: I will limit sugars."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"c2d3e4f5-6a7b-4c8d-9e0f-1a2b3c4d5e6f","artifact_version_id":"c2d3e4f5-6a7b-4c8d-9e0f-1a2b3c4d5e6f-v001"},{"slug":"limit_sodium","title":{"en":"Limit Sodium","vi":"Giới Hạn Natri"},"copy":{"en":"Reduce salt for heart. You said ‘salt reduction’. Dare: Use herbs.","vi":"Giảm muối tốt cho tim. Bạn nói ‘giảm muối’. Dám: Dùng thảo mộc."},"echo_en":"salt reduction","echo_vi":"giảm muối","attribution":"Best Practices / Thực hành tốt nhất","tags":["nutrition"],"urgency":"routine","severity_level":2,"systems":["cholesterol"],"metadata":{"topic":"nutrition","outcome":"self_regulate"},"cta":{"en":{"label":"Take Action","note":"Use herbs instead of salt today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Dùng thảo mộc thay muối hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["natri: sodium"],"practice":"Say: I will limit sodium."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"d3e4f5a6-7b8c-4d9e-0f1a-2b3c4d5e6f7a","artifact_version_id":"d3e4f5a6-7b8c-4d9e-0f1a-2b3c4d5e6f7a-v001"},{"slug":"diet_journal","title":{"en":"Diet Journal","vi":"Nhật Ký Chế Độ Ăn"},"copy":{"en":"Food log might improve diet. You said ‘eating record’. Dare: Start journal today.","vi":"Sổ thực phẩm cải thiện chế độ. Bạn nói ‘ghi ăn uống’. Dám: Bắt đầu nhật ký."},"echo_en":"eating record","echo_vi":"ghi chép ăn uống","attribution":"Best Practices / Thực hành tốt nhất","tags":["nutrition"],"urgency":"routine","severity_level":1,"systems":["cholesterol"],"metadata":{"topic":"nutrition","outcome":"plan_change"},"cta":{"en":{"label":"Take Action","note":"Start a diet journal today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Bắt đầu nhật ký chế độ ăn hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["nhật ký chế độ ăn: diet journal"],"practice":"Say: I will start a diet journal."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"e4f5a6b7-8c9d-4e0f-1a2b-3c4d5e6f7a8b","artifact_version_id":"e4f5a6b7-8c9d-4e0f-1a2b-3c4d5e6f7a8b-v001"},{"slug":"bp_management","title":{"en":"Blood Pressure Management","vi":"Quản Lý Huyết Áp"},"copy":{"en":"Blood pressure control might help heart. You said ‘hypertension care’. Dare: Monitor bp.","vi":"Kiểm soát huyết áp tốt cho tim. Bạn nói ‘chăm sóc huyết áp’. Dám: Theo dõi huyết áp."},"echo_en":"hypertension care","echo_vi":"chăm sóc tăng huyết áp","attribution":"Best Practices / Thực hành tốt nhất","tags":["heart_health"],"urgency":"soon","severity_level":3,"systems":["cholesterol"],"metadata":{"topic":"heart_health","outcome":"self_regulate"},"cta":{"en":{"label":"Take Action","note":"Monitor blood pressure today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Theo dõi huyết áp hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["huyết áp: blood pressure"],"practice":"Say: I will monitor my bp."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"f5a6b7c8-9d0e-4f1a-2b3c-4d5e6f7a8b9c","artifact_version_id":"f5a6b7c8-9d0e-4f1a-2b3c-4d5e6f7a8b9c-v001"},{"slug":"physical_activity","title":{"en":"Physical Activity","vi":"Hoạt Động Thể Chất"},"copy":{"en":"Regular activity might lower cholesterol. You said ‘daily movement’. Dare: Walk daily.","vi":"Hoạt động đều đặn có thể giảm cholesterol. Bạn nói ‘chuyển động hàng ngày’. Dám: Đi bộ hàng ngày."},"echo_en":"daily movement","echo_vi":"chuyển động hàng ngày","attribution":"Best Practices / Thực hành tốt nhất","tags":["exercise"],"urgency":"routine","severity_level":2,"systems":["cholesterol"],"metadata":{"topic":"exercise","outcome":"self_regulate"},"cta":{"en":{"label":"Take Action","note":"Walk 30 minutes today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Đi bộ 30 phút hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["hoạt động thể chất: physical activity"],"practice":"Say: I will walk daily."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"c0d1e2f3-a4b5-4c6d-7e8f-9a0b1c2d3e4f","artifact_version_id":"c0d1e2f3-a4b5-4c6d-7e8f-9a0b1c2d3e4f-v001"},{"slug":"aerobic_exercise","title":{"en":"Aerobic Exercise","vi":"Tập Aerobic"},"copy":{"en":"Cardio workouts might lower cholesterol. You said ‘cardio workout’. Dare: Try jogging.","vi":"Tập cardio có thể giảm cholesterol. Bạn nói ‘tập cardio’. Dám: Thử chạy bộ."},"echo_en":"cardio workout","echo_vi":"tập cardio","attribution":"Best Practices / Thực hành tốt nhất","tags":["exercise"],"urgency":"routine","severity_level":2,"systems":["cholesterol"],"metadata":{"topic":"exercise","outcome":"self_regulate"},"cta":{"en":{"label":"Take Action","note":"Try jogging today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Thử chạy bộ hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["tập aerobic: aerobic exercise"],"practice":"Say: I will try aerobic exercise."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"a1b2c3d4-5e6f-4a7b-8c9d-0e1f2a3b4c5d","artifact_version_id":"a1b2c3d4-5e6f-4a7b-8c9d-0e1f2a3b4c5d-v001"},{"slug":"strength_training","title":{"en":"Strength Training","vi":"Tập Sức Mạnh"},"copy":{"en":"Muscle exercises might support heart. You said ‘weight lift’. Dare: Lift weights.","vi":"Tập cơ bắp có thể hỗ trợ tim. Bạn nói ‘nâng tạ’. Dám: Nâng tạ."},"echo_en":"weight lift","echo_vi":"nâng tạ","attribution":"Best Practices / Thực hành tốt nhất","tags":["exercise"],"urgency":"routine","severity_level":2,"systems":["cholesterol"],"metadata":{"topic":"exercise","outcome":"self_regulate"},"cta":{"en":{"label":"Take Action","note":"Lift weights today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Nâng tạ hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["tập sức mạnh: strength training"],"practice":"Say: I will do strength training."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"b2c3d4e5-6f7a-4b8c-9d0e-1f2a3b4c5d6e","artifact_version_id":"b2c3d4e5-6f7a-4b8c-9d0e-1f2a3b4c5d6e-v001"},{"slug":"sedentary_reduction","title":{"en":"Sedentary Reduction","vi":"Giảm Ngồi Lâu"},"copy":{"en":"Less sitting might help cholesterol. You said ‘reduce inactivity’. Dare: Stand hourly.","vi":"Ít ngồi có thể giúp cholesterol. Bạn nói ‘giảm thiếu hoạt động’. Dám: Đứng mỗi giờ."},"echo_en":"reduce inactivity","echo_vi":"giảm thiếu hoạt động","attribution":"Best Practices / Thực hành tốt nhất","tags":["lifestyle"],"urgency":"routine","severity_level":2,"systems":["cholesterol"],"metadata":{"topic":"lifestyle","outcome":"self_regulate"},"cta":{"en":{"label":"Take Action","note":"Stand hourly today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Đứng mỗi giờ hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["giảm ngồi lâu: sedentary reduction"],"practice":"Say: I will reduce sitting."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"c3d4e5f6-7a8b-4c9d-0e1f-2a3b4c5d6e7f","artifact_version_id":"c3d4e5f6-7a8b-4c9d-0e1f-2a3b4c5d6e7f-v001"},{"slug":"alcohol_moderation","title":{"en":"Alcohol Moderation","vi":"Điều Độ Rượu"},"copy":{"en":"Moderate drinking might support heart. You said ‘drink less’. Dare: Limit alcohol.","vi":"Uống vừa phải có thể hỗ trợ tim. Bạn nói ‘uống ít’. Dám: Giới hạn rượu."},"echo_en":"drink less","echo_vi":"uống ít","attribution":"Best Practices / Thực hành tốt nhất","tags":["lifestyle"],"urgency":"routine","severity_level":2,"systems":["cholesterol"],"metadata":{"topic":"lifestyle","outcome":"self_regulate"},"cta":{"en":{"label":"Take Action","note":"Limit alcohol today.","suggested_action":"track_habit"},"vi":{"label":"Hành Động","note":"Giới hạn rượu hôm nay.","suggested_action":"track_habit"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["điều độ rượu: alcohol moderation"],"practice":"Say: I will limit alcohol."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"d4e5f6a7-8b9c-4d0e-1f2a-3b4c5d6e7f8a","artifact_version_id":"d4e5f6a7-8b9c-4d0e-1f2a-3b4c5d6e7f8a-v001"},{"slug":"quit_smoking","title":{"en":"Quit Smoking","vi":"Bỏ Hút Thuốc"},"copy":{"en":"Stopping smoking might lower cholesterol. You said ‘stop cigarettes’. Dare: Seek quit support.","vi":"Ngừng thuốc lá có thể giảm cholesterol. Bạn nói ‘ngừng thuốc lá’. Dám: Tìm hỗ trợ cai."},"echo_en":"stop cigarettes","echo_vi":"ngừng thuốc lá","attribution":"Best Practices / Thực hành tốt nhất","tags":["lifestyle"],"urgency":"soon","severity_level":3,"systems":["cholesterol"],"metadata":{"topic":"lifestyle","outcome":"seek_help"},"cta":{"en":{"label":"Take Action","note":"Seek smoking cessation support today.","suggested_action":"book_doctor"},"vi":{"label":"Hành Động","note":"Tìm hỗ trợ cai thuốc lá hôm nay.","suggested_action":"book_doctor"}},"language":{"cefr":"B1","en_focus":["keywords","collocations"],"vi_gloss":["bỏ hút thuốc: quit smoking"],"practice":"Say: I will quit smoking."},"created_at":"2025-10-09T10:04:00Z","updated_at":"2025-10-09T10:04:00Z","artifact_id":"e5f6a7b8-9c0d-4e1f-2a3b-4c5d6e7f8a9b","artifact_version_id":"e5f6a7b8-9c0d-4e1f-2a3b-4c5d6e7f8a9b-v001"}]}
+{
+  "header": "// dumb tree, no diagnostics, catch keyword, speak sharp, mood: slow, crisis skips Dare",
+  "schema_version": "1.1",
+  "schema_id": "cholesterol",
+  "description": "Echologic Mercy Blade room for practical cholesterol and heart health",
+  "description_vi": "Phòng Mercy Blade về cholesterol và sức khỏe tim thực tiễn",
+  "supported_languages": ["en", "vi"],
+  "localization": {
+    "default": "en",
+    "fallback": "en",
+    "i18n_required": true
+  },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice or emergency care.",
+  "safety_disclaimer_vi": "Thông tin giáo dục; không thay thế tư vấn y khoa hoặc cấp cứu.",
+  "crisis_footer": {
+    "en": "In danger or medical distress? Contact emergency services or a trusted hotline immediately.",
+    "vi": "Gặp nguy hiểm hoặc khẩn cấp y tế? Gọi cấp cứu hoặc đường dây nóng đáng tin ngay."
+  },
+  "safety_footer": {
+    "en": "Prioritize safety and legality; if unsure, pause and seek professional guidance.",
+    "vi": "Ưu tiên an toàn và hợp pháp; nếu không chắc, hãy hỏi ý kiến chuyên gia."
+  },
+  "meta": {
+    "created_at": "2025-10-09T10:04:00Z",
+    "updated_at": "2025-10-09T10:04:00Z",
+    "i18n_verified": true,
+    "learning_mode": true,
+    "entry_count": 30,
+    "checksum_sha256": "c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c"
+  },
+  "enums": {
+    "tags": [
+      "cholesterol",
+      "nutrition",
+      "lifestyle",
+      "exercise",
+      "medication",
+      "prevention",
+      "symptoms",
+      "safety",
+      "screening",
+      "heart_health"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["cholesterol"]
+  },
+  "keywords": {
+    "heart_attack_warning": {
+      "en": ["heart attack warning", "chest pain", "arm pain"],
+      "vi": ["cảnh báo nhồi máu tim", "đau ngực", "đau cánh tay"],
+      "synonyms": {
+        "en": ["heart attack signs", "chest tightness", "heart distress"],
+        "vi": ["dấu hiệu nhồi máu", "chặt ngực", "đau tim"]
+      }
+    },
+    "stroke_signs": {
+      "en": ["stroke signs", "sudden weakness", "speech difficulty"],
+      "vi": ["dấu hiệu đột quỵ", "yếu đột ngột", "khó nói"],
+      "synonyms": {
+        "en": ["stroke symptoms", "numbness", "confusion"],
+        "vi": ["triệu chứng đột quỵ", "tê bì", "lú lẫn"]
+      }
+    },
+    "angina_symptoms": {
+      "en": ["angina symptoms", "chest discomfort", "heart pain"],
+      "vi": ["triệu chứng đau thắt ngực", "khó chịu ngực", "đau tim"],
+      "synonyms": {
+        "en": ["chest pain", "angina", "heart pressure"],
+        "vi": ["đau ngực", "đau thắt", "áp lực tim"]
+      }
+    },
+    "breathing_difficulty": {
+      "en": ["breathing difficulty", "shortness of breath", "dyspnea"],
+      "vi": ["khó thở", "thở ngắn", "khó khăn hô hấp"],
+      "synonyms": {
+        "en": ["breathlessness", "gasping", "respiratory distress"],
+        "vi": ["thở hổn hển", "khó thở", "suy hô hấp"]
+      }
+    },
+    "hypertensive_crisis": {
+      "en": ["hypertensive crisis", "high blood pressure", "severe headache"],
+      "vi": [
+        "khủng hoảng tăng huyết áp",
+        "huyết áp cao",
+        "đau đầu nghiêm trọng"
+      ],
+      "synonyms": {
+        "en": ["bp spike", "hypertension", "headache crisis"],
+        "vi": ["tăng huyết áp", "cao huyết áp", "đau đầu khẩn"]
+      }
+    },
+    "severe_allergic_reaction_to_medication": {
+      "en": ["severe allergic reaction", "medication allergy", "anaphylaxis"],
+      "vi": ["dị ứng thuốc nghiêm trọng", "dị ứng thuốc", "sốc phản vệ"],
+      "synonyms": {
+        "en": ["drug reaction", "allergy crisis", "severe allergy"],
+        "vi": ["phản ứng thuốc", "khủng hoảng dị ứng", "dị ứng nặng"]
+      }
+    },
+    "lipid_monitoring": {
+      "en": ["lipid monitoring", "cholesterol check", "blood lipids"],
+      "vi": ["theo dõi lipid", "kiểm tra cholesterol", "lipid máu"],
+      "synonyms": {
+        "en": ["lipid test", "blood fat", "cholesterol screen"],
+        "vi": ["xét nghiệm lipid", "chất béo máu", "sàng lọc cholesterol"]
+      }
+    },
+    "lipid_screening": {
+      "en": ["lipid screening", "cholesterol test", "heart risk check"],
+      "vi": ["sàng lọc lipid", "xét nghiệm cholesterol", "kiểm tra rủi ro tim"],
+      "synonyms": {
+        "en": ["lipid panel", "heart test", "blood screening"],
+        "vi": ["bảng lipid", "xét nghiệm tim", "sàng lọc máu"]
+      }
+    },
+    "statin_adherence": {
+      "en": ["statin adherence", "cholesterol medication", "statin use"],
+      "vi": ["tuân thủ statin", "thuốc cholesterol", "sử dụng statin"],
+      "synonyms": {
+        "en": ["statin compliance", "drug adherence", "medication consistency"],
+        "vi": ["tuân thủ thuốc", "kiên trì thuốc", "đều đặn thuốc"]
+      }
+    },
+    "statin_safety": {
+      "en": ["statin safety", "medication side effects", "statin risks"],
+      "vi": ["an toàn statin", "tác dụng phụ thuốc", "rủi ro statin"],
+      "synonyms": {
+        "en": ["drug safety", "statin effects", "medication risks"],
+        "vi": ["an toàn thuốc", "hiệu ứng statin", "rủi ro thuốc"]
+      }
+    },
+    "medication_review": {
+      "en": ["medication review", "drug check", "prescription update"],
+      "vi": ["xem xét thuốc", "kiểm tra thuốc", "cập nhật đơn thuốc"],
+      "synonyms": {
+        "en": ["drug review", "prescription check", "medication adjustment"],
+        "vi": ["xem lại thuốc", "kiểm tra đơn", "điều chỉnh thuốc"]
+      }
+    },
+    "unsaturated_fats": {
+      "en": ["unsaturated fats", "healthy fats", "omega fats"],
+      "vi": ["chất béo không bão hòa", "chất béo lành mạnh", "chất béo omega"],
+      "synonyms": {
+        "en": ["good fats", "plant fats", "heart fats"],
+        "vi": ["chất béo tốt", "chất béo thực vật", "chất béo tim"]
+      }
+    },
+    "limit_saturated_fats": {
+      "en": ["limit saturated fats", "reduce animal fats", "cut fatty meats"],
+      "vi": [
+        "giới hạn chất béo bão hòa",
+        "giảm chất béo động vật",
+        "cắt thịt béo"
+      ],
+      "synonyms": {
+        "en": ["lower saturated fats", "cut animal fats", "reduce fatty foods"],
+        "vi": ["hạ chất béo bão hòa", "giảm mỡ động vật", "cắt thực phẩm béo"]
+      }
+    },
+    "limit_trans_fats": {
+      "en": ["limit trans fats", "avoid processed fats", "cut trans fat"],
+      "vi": [
+        "giới hạn chất béo trans",
+        "tránh chất béo chế biến",
+        "cắt chất béo trans"
+      ],
+      "synonyms": {
+        "en": [
+          "reduce trans fats",
+          "avoid artificial fats",
+          "lower processed fats"
+        ],
+        "vi": [
+          "giảm chất béo trans",
+          "tránh mỡ nhân tạo",
+          "hạ chất béo chế biến"
+        ]
+      }
+    },
+    "soluble_fiber": {
+      "en": ["soluble fiber", "fiber intake", "oat fiber"],
+      "vi": ["chất xơ hòa tan", "nạp chất xơ", "xơ yến mạch"],
+      "synonyms": {
+        "en": ["dietary fiber", "heart fiber", "fiber foods"],
+        "vi": ["chất xơ chế độ", "xơ tim", "thực phẩm xơ"]
+      }
+    },
+    "lean_proteins": {
+      "en": ["lean proteins", "healthy proteins", "protein sources"],
+      "vi": ["protein nạc", "protein lành mạnh", "nguồn protein"],
+      "synonyms": {
+        "en": ["low fat protein", "heart protein", "protein balance"],
+        "vi": ["protein béo thấp", "protein tim", "cân bằng protein"]
+      }
+    },
+    "plant_sterols": {
+      "en": ["plant sterols", "sterol intake", "cholesterol blockers"],
+      "vi": ["sterol thực vật", "nạp sterol", "chặn cholesterol"],
+      "synonyms": {
+        "en": ["natural sterols", "heart sterols", "sterol foods"],
+        "vi": ["sterol tự nhiên", "sterol tim", "thực phẩm sterol"]
+      }
+    },
+    "whole_grains": {
+      "en": ["whole grains", "grain intake", "fiber grains"],
+      "vi": ["ngũ cốc nguyên hạt", "nạp ngũ cốc", "ngũ cốc xơ"],
+      "synonyms": {
+        "en": ["healthy grains", "heart grains", "grain balance"],
+        "vi": ["ngũ cốc lành mạnh", "ngũ cốc tim", "cân bằng ngũ cốc"]
+      }
+    },
+    "fruits_vegetables": {
+      "en": ["fruits vegetables", "produce intake", "veggie fruit"],
+      "vi": ["trái cây rau củ", "nạp sản phẩm", "rau trái"],
+      "synonyms": {
+        "en": ["healthy produce", "heart produce", "produce balance"],
+        "vi": ["sản phẩm lành mạnh", "sản phẩm tim", "cân bằng sản phẩm"]
+      }
+    },
+    "nuts_seeds": {
+      "en": ["nuts seeds", "nut intake", "seed foods"],
+      "vi": ["hạt hạt giống", "nạp hạt", "thực phẩm hạt giống"],
+      "synonyms": {
+        "en": ["healthy nuts", "heart nuts", "nut balance"],
+        "vi": ["hạt lành mạnh", "hạt tim", "cân bằng hạt"]
+      }
+    },
+    "fish_oily": {
+      "en": ["fish oily", "oily fish", "omega fish"],
+      "vi": ["cá dầu", "cá béo", "cá omega"],
+      "synonyms": {
+        "en": ["fatty fish", "heart fish", "fish balance"],
+        "vi": ["cá béo", "cá tim", "cân bằng cá"]
+      }
+    },
+    "limit_sugars": {
+      "en": ["limit sugars", "sugar reduction", "sweet limit"],
+      "vi": ["giới hạn đường", "giảm đường", "giới hạn ngọt"],
+      "synonyms": {
+        "en": ["low sugar", "heart sugar", "sugar control"],
+        "vi": ["ít đường", "đường tim", "kiểm soát đường"]
+      }
+    },
+    "limit_sodium": {
+      "en": ["limit sodium", "salt reduction", "sodium control"],
+      "vi": ["giới hạn natri", "giảm muối", "kiểm soát natri"],
+      "synonyms": {
+        "en": ["low salt", "heart salt", "salt limit"],
+        "vi": ["ít muối", "muối tim", "giới hạn muối"]
+      }
+    },
+    "diet_journal": {
+      "en": ["diet journal", "food log", "eating record"],
+      "vi": ["nhật ký chế độ ăn", "sổ thực phẩm", "ghi chép ăn uống"],
+      "synonyms": {
+        "en": ["nutrition diary", "meal track", "diet record"],
+        "vi": ["sổ dinh dưỡng", "theo dõi bữa ăn", "ghi chế độ"]
+      }
+    },
+    "bp_management": {
+      "en": ["bp management", "hypertension care", "pressure control"],
+      "vi": ["quản lý huyết áp", "chăm sóc tăng huyết áp", "kiểm soát áp lực"],
+      "synonyms": {
+        "en": ["blood pressure control", "heart bp", "bp balance"],
+        "vi": ["kiểm soát huyết áp", "huyết áp tim", "cân bằng huyết áp"]
+      }
+    },
+    "physical_activity": {
+      "en": ["physical activity", "daily movement", "active habit"],
+      "vi": [
+        "hoạt động thể chất",
+        "chuyển động hàng ngày",
+        "thói quen năng động"
+      ],
+      "synonyms": {
+        "en": ["exercise daily", "movement routine", "active lifestyle"],
+        "vi": ["tập thể dục ngày", "lịch chuyển động", "lối sống năng động"]
+      }
+    },
+    "aerobic_exercise": {
+      "en": ["aerobic exercise", "cardio workout", "heart exercise"],
+      "vi": ["tập aerobic", "tập cardio", "tập thể dục tim"],
+      "synonyms": {
+        "en": ["cardio activity", "aerobic routine", "endurance exercise"],
+        "vi": ["hoạt động cardio", "lịch aerobic", "tập bền bỉ"]
+      }
+    },
+    "strength_training": {
+      "en": ["strength training", "weight lift", "muscle exercise"],
+      "vi": ["tập sức mạnh", "nâng tạ", "tập cơ bắp"],
+      "synonyms": {
+        "en": ["resistance training", "strength routine", "muscle build"],
+        "vi": ["tập kháng lực", "lịch sức mạnh", "xây cơ"]
+      }
+    },
+    "sedentary_reduction": {
+      "en": ["sedentary reduction", "reduce inactivity", "less sitting"],
+      "vi": ["giảm ngồi lâu", "giảm thiếu hoạt động", "ít ngồi"],
+      "synonyms": {
+        "en": ["avoid sedentary", "activity increase", "sitting limit"],
+        "vi": ["tránh tĩnh", "tăng hoạt động", "giới hạn ngồi"]
+      }
+    },
+    "alcohol_moderation": {
+      "en": ["alcohol moderation", "drink less", "alcohol limit"],
+      "vi": ["điều độ rượu", "uống ít", "giới hạn rượu"],
+      "synonyms": {
+        "en": ["moderate drinking", "alcohol control", "limit drinks"],
+        "vi": ["uống vừa phải", "kiểm soát rượu", "giới hạn đồ uống"]
+      }
+    },
+    "quit_smoking": {
+      "en": ["quit smoking", "smoking cessation", "stop cigarettes"],
+      "vi": ["bỏ hút thuốc", "cai thuốc lá", "ngừng thuốc lá"],
+      "synonyms": {
+        "en": ["end smoking", "tobacco quit", "nicotine stop"],
+        "vi": ["kết thúc hút", "cai thuốc", "ngừng nicotine"]
+      }
+    }
+  },
+  "entries": [
+    {
+      "slug": "heart_attack_warning",
+      "title": { "en": "Heart Attack Warning", "vi": "Cảnh Báo Nhồi Máu Tim" },
+      "copy": {
+        "en": "Chest pain may signal heart attack. You said ‘chest pain’. Seek urgent care. Call emergency services now.",
+        "vi": "Đau ngực có thể báo nhồi máu tim. Bạn nói ‘đau ngực’. Tìm chăm sóc khẩn cấp. Gọi cấp cứu ngay."
+      },
+      "echo_en": "chest pain",
+      "echo_vi": "đau ngực",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["cholesterol"],
+      "metadata": {
+        "topic": "symptoms",
+        "flags": "crisis",
+        "outcome": "seek_help"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["nhồi máu tim: heart attack"],
+        "practice": "Say: Call emergency now."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "stroke_signs",
+      "title": { "en": "Stroke Signs", "vi": "Dấu Hiệu Đột Quỵ" },
+      "copy": {
+        "en": "Sudden weakness may indicate stroke. You said ‘sudden weakness’. Seek urgent care. Call emergency services now.",
+        "vi": "Yếu đột ngột có thể báo đột quỵ. Bạn nói ‘yếu đột ngột’. Tìm chăm sóc khẩn cấp. Gọi cấp cứu ngay."
+      },
+      "echo_en": "sudden weakness",
+      "echo_vi": "yếu đột ngột",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["cholesterol"],
+      "metadata": {
+        "topic": "symptoms",
+        "flags": "crisis",
+        "outcome": "seek_help"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["đột quỵ: stroke"],
+        "practice": "Say: Seek help now."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "angina_symptoms",
+      "title": { "en": "Angina Symptoms", "vi": "Triệu Chứng Đau Thắt Ngực" },
+      "copy": {
+        "en": "Chest discomfort may be angina. You said ‘chest discomfort’. Seek urgent care. Call emergency services now.",
+        "vi": "Khó chịu ngực có thể đau thắt ngực. Bạn nói ‘khó chịu ngực’. Tìm chăm sóc khẩn cấp. Gọi cấp cứu ngay."
+      },
+      "echo_en": "chest discomfort",
+      "echo_vi": "khó chịu ngực",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["cholesterol"],
+      "metadata": {
+        "topic": "symptoms",
+        "flags": "crisis",
+        "outcome": "seek_help"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["đau thắt ngực: angina"],
+        "practice": "Say: Call emergency now."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "breathing_difficulty",
+      "title": { "en": "Breathing Difficulty", "vi": "Khó Thở" },
+      "copy": {
+        "en": "Shortness of breath may signal heart issue. You said ‘shortness of breath’. Seek urgent care. Call emergency services now.",
+        "vi": "Thở ngắn có thể báo vấn đề tim. Bạn nói ‘thở ngắn’. Tìm chăm sóc khẩn cấp. Gọi cấp cứu ngay."
+      },
+      "echo_en": "shortness of breath",
+      "echo_vi": "thở ngắn",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["cholesterol"],
+      "metadata": {
+        "topic": "symptoms",
+        "flags": "crisis",
+        "outcome": "seek_help"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["khó thở: breathing difficulty"],
+        "practice": "Say: Seek urgent help."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "hypertensive_crisis",
+      "title": {
+        "en": "Hypertensive Crisis",
+        "vi": "Khủng Hoảng Tăng Huyết Áp"
+      },
+      "copy": {
+        "en": "Severe headache may be hypertensive crisis. You said ‘severe headache’. Seek urgent care. Call emergency services now.",
+        "vi": "Đau đầu nghiêm trọng có thể khủng hoảng tăng huyết áp. Bạn nói ‘đau đầu nghiêm trọng’. Tìm chăm sóc khẩn cấp. Gọi cấp cứu ngay."
+      },
+      "echo_en": "severe headache",
+      "echo_vi": "đau đầu nghiêm trọng",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["cholesterol"],
+      "metadata": {
+        "topic": "symptoms",
+        "flags": "crisis",
+        "outcome": "seek_help"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["khủng hoảng tăng huyết áp: hypertensive crisis"],
+        "practice": "Say: Call emergency now."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "severe_allergic_reaction_to_medication",
+      "title": {
+        "en": "Severe Allergic Reaction to Medication",
+        "vi": "Dị Ứng Thuốc Nghiêm Trọng"
+      },
+      "copy": {
+        "en": "Anaphylaxis from meds requires immediate help. You said ‘medication allergy’. Seek urgent care. Call emergency services now.",
+        "vi": "Sốc phản vệ từ thuốc cần giúp ngay. Bạn nói ‘dị ứng thuốc’. Tìm chăm sóc khẩn cấp. Gọi cấp cứu ngay."
+      },
+      "echo_en": "medication allergy",
+      "echo_vi": "dị ứng thuốc",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["cholesterol"],
+      "metadata": {
+        "topic": "symptoms",
+        "flags": "crisis",
+        "outcome": "seek_help"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["dị ứng: allergic reaction"],
+        "practice": "Say: Call emergency now."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "lipid_monitoring",
+      "title": { "en": "Lipid Monitoring", "vi": "Theo Dõi Lipid" },
+      "copy": {
+        "en": "Regular checks might track cholesterol. You said ‘cholesterol check’. Dare: Schedule lipid test.",
+        "vi": "Kiểm tra đều theo dõi cholesterol. Bạn nói ‘kiểm tra cholesterol’. Dám: Lên lịch xét nghiệm lipid."
+      },
+      "echo_en": "cholesterol check",
+      "echo_vi": "kiểm tra cholesterol",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["screening"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["cholesterol"],
+      "metadata": { "topic": "screening", "outcome": "plan_change" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["lipid: lipid"],
+        "practice": "Say: I will schedule a lipid test."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "lipid_screening",
+      "title": { "en": "Lipid Screening", "vi": "Sàng Lọc Lipid" },
+      "copy": {
+        "en": "Screening might assess heart risk. You said ‘cholesterol test’. Dare: Get screened.",
+        "vi": "Sàng lọc đánh giá rủi ro tim. Bạn nói ‘xét nghiệm cholesterol’. Dám: Làm sàng lọc."
+      },
+      "echo_en": "cholesterol test",
+      "echo_vi": "xét nghiệm cholesterol",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["screening"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["cholesterol"],
+      "metadata": { "topic": "screening", "outcome": "plan_change" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["sàng lọc: screening"],
+        "practice": "Say: I will get lipid screening."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "statin_adherence",
+      "title": { "en": "Statin Adherence", "vi": "Tuân Thủ Statin" },
+      "copy": {
+        "en": "Follow statin routine for cholesterol. You said ‘cholesterol medication’. Dare: Set reminders.",
+        "vi": "Theo lịch statin cho cholesterol. Bạn nói ‘thuốc cholesterol’. Dám: Đặt nhắc nhở."
+      },
+      "echo_en": "cholesterol medication",
+      "echo_vi": "thuốc cholesterol",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["medication"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cholesterol"],
+      "metadata": { "topic": "medication", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["statin: statin"],
+        "practice": "Say: I will take my statin."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "statin_safety",
+      "title": { "en": "Statin Safety", "vi": "An Toàn Statin" },
+      "copy": {
+        "en": "Watch for statin side effects. You said ‘medication side effects’. Dare: Talk to doctor.",
+        "vi": "Theo dõi tác dụng phụ statin. Bạn nói ‘tác dụng phụ thuốc’. Dám: Nói với bác sĩ."
+      },
+      "echo_en": "medication side effects",
+      "echo_vi": "tác dụng phụ thuốc",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["medication"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["cholesterol"],
+      "metadata": { "topic": "medication", "outcome": "seek_help" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["an toàn: safety"],
+        "practice": "Say: I will watch for side effects."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "medication_review",
+      "title": { "en": "Medication Review", "vi": "Xem Xét Thuốc" },
+      "copy": {
+        "en": "Review meds with doctor. You said ‘drug check’. Dare: Schedule review.",
+        "vi": "Xem thuốc với bác sĩ. Bạn nói ‘kiểm tra thuốc’. Dám: Lên lịch xem."
+      },
+      "echo_en": "drug check",
+      "echo_vi": "kiểm tra thuốc",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["medication"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["cholesterol"],
+      "metadata": { "topic": "medication", "outcome": "seek_help" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["xem xét: review"],
+        "practice": "Say: I will review my meds."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "unsaturated_fats",
+      "title": { "en": "Unsaturated Fats", "vi": "Chất Béo Không Bão Hòa" },
+      "copy": {
+        "en": "Good fats might help cholesterol. You said ‘healthy fats’. Dare: Use olive oil.",
+        "vi": "Chất béo tốt tốt cho cholesterol. Bạn nói ‘chất béo lành mạnh’. Dám: Dùng dầu ô liu."
+      },
+      "echo_en": "healthy fats",
+      "echo_vi": "chất béo lành mạnh",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cholesterol"],
+      "metadata": { "topic": "nutrition", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["không bão hòa: unsaturated"],
+        "practice": "Say: I will use olive oil."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "limit_saturated_fats",
+      "title": {
+        "en": "Limit Saturated Fats",
+        "vi": "Giới Hạn Chất Béo Bão Hòa"
+      },
+      "copy": {
+        "en": "Reduce saturated fats for heart. You said ‘reduce animal fats’. Dare: Choose lean meat.",
+        "vi": "Giảm chất béo bão hòa cho tim. Bạn nói ‘giảm chất béo động vật’. Dám: Chọn thịt nạc."
+      },
+      "echo_en": "reduce animal fats",
+      "echo_vi": "giảm chất béo động vật",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cholesterol"],
+      "metadata": { "topic": "nutrition", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["bão hòa: saturated"],
+        "practice": "Say: I will limit saturated fats."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "limit_trans_fats",
+      "title": { "en": "Limit Trans Fats", "vi": "Giới Hạn Chất Béo Trans" },
+      "copy": {
+        "en": "Avoid trans fats for cholesterol. You said ‘avoid processed fats’. Dare: Read labels.",
+        "vi": "Tránh chất béo trans cho cholesterol. Bạn nói ‘tránh chất béo chế biến’. Dám: Đọc nhãn."
+      },
+      "echo_en": "avoid processed fats",
+      "echo_vi": "tránh chất béo chế biến",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cholesterol"],
+      "metadata": { "topic": "nutrition", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["trans: trans"],
+        "practice": "Say: I will avoid trans fats."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "soluble_fiber",
+      "title": { "en": "Soluble Fiber", "vi": "Chất Xơ Hòa Tan" },
+      "copy": {
+        "en": "Soluble fiber might lower cholesterol. You said ‘fiber intake’. Dare: Eat oats.",
+        "vi": "Chất xơ hòa tan hạ cholesterol. Bạn nói ‘nạp chất xơ’. Dám: Ăn yến mạch."
+      },
+      "echo_en": "fiber intake",
+      "echo_vi": "nạp chất xơ",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cholesterol"],
+      "metadata": { "topic": "nutrition", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["hòa tan: soluble"],
+        "practice": "Say: I will eat soluble fiber."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "lean_proteins",
+      "title": { "en": "Lean Proteins", "vi": "Protein Nạc" },
+      "copy": {
+        "en": "Lean proteins might support heart. You said ‘healthy proteins’. Dare: Choose fish.",
+        "vi": "Protein nạc hỗ trợ tim. Bạn nói ‘protein lành mạnh’. Dám: Chọn cá."
+      },
+      "echo_en": "healthy proteins",
+      "echo_vi": "protein lành mạnh",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cholesterol"],
+      "metadata": { "topic": "nutrition", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["nạc: lean"],
+        "practice": "Say: I will eat lean proteins."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "plant_sterols",
+      "title": { "en": "Plant Sterols", "vi": "Sterol Thực Vật" },
+      "copy": {
+        "en": "Plant sterols might block cholesterol. You said ‘sterol intake’. Dare: Eat nuts.",
+        "vi": "Sterol thực vật chặn cholesterol. Bạn nói ‘nạp sterol’. Dám: Ăn hạt."
+      },
+      "echo_en": "sterol intake",
+      "echo_vi": "nạp sterol",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cholesterol"],
+      "metadata": { "topic": "nutrition", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["sterol: sterols"],
+        "practice": "Say: I will eat plant sterols."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "whole_grains",
+      "title": { "en": "Whole Grains", "vi": "Ngũ Cốc Nguyên Hạt" },
+      "copy": {
+        "en": "Whole grains might help cholesterol. You said ‘grain intake’. Dare: Choose brown rice.",
+        "vi": "Ngũ cốc nguyên hạt tốt cho cholesterol. Bạn nói ‘nạp ngũ cốc’. Dám: Chọn gạo lứt."
+      },
+      "echo_en": "grain intake",
+      "echo_vi": "nạp ngũ cốc",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cholesterol"],
+      "metadata": { "topic": "nutrition", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["nguyên hạt: whole grains"],
+        "practice": "Say: I will eat whole grains."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "fruits_vegetables",
+      "title": { "en": "Fruits Vegetables", "vi": "Trái Cây Rau Củ" },
+      "copy": {
+        "en": "Produce might lower cholesterol. You said ‘produce intake’. Dare: Add salad.",
+        "vi": "Sản phẩm tươi tốt cho cholesterol. Bạn nói ‘nạp sản phẩm’. Dám: Thêm salad."
+      },
+      "echo_en": "produce intake",
+      "echo_vi": "nạp sản phẩm",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cholesterol"],
+      "metadata": { "topic": "nutrition", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["trái cây rau: fruits vegetables"],
+        "practice": "Say: I will eat more fruits and vegetables."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "nuts_seeds",
+      "title": { "en": "Nuts Seeds", "vi": "Hạt Hạt Giống" },
+      "copy": {
+        "en": "Nuts and seeds might help heart. You said ‘nut intake’. Dare: Snack on almonds.",
+        "vi": "Hạt và hạt giống tốt cho tim. Bạn nói ‘nạp hạt’. Dám: Ăn hạnh nhân."
+      },
+      "echo_en": "nut intake",
+      "echo_vi": "nạp hạt",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cholesterol"],
+      "metadata": { "topic": "nutrition", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["hạt: nuts"],
+        "practice": "Say: I will snack on nuts."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "fish_oily",
+      "title": { "en": "Oily Fish", "vi": "Cá Dầu" },
+      "copy": {
+        "en": "Oily fish might lower cholesterol. You said ‘oily fish’. Dare: Eat salmon.",
+        "vi": "Cá béo tốt cho cholesterol. Bạn nói ‘cá dầu’. Dám: Ăn cá hồi."
+      },
+      "echo_en": "oily fish",
+      "echo_vi": "cá dầu",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cholesterol"],
+      "metadata": { "topic": "nutrition", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["cá dầu: oily fish"],
+        "practice": "Say: I will eat oily fish."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "limit_sugars",
+      "title": { "en": "Limit Sugars", "vi": "Giới Hạn Đường" },
+      "copy": {
+        "en": "Reduce sugars for heart health. You said ‘sugar reduction’. Dare: Skip sweets.",
+        "vi": "Giảm đường tốt cho tim. Bạn nói ‘giảm đường’. Dám: Bỏ ngọt."
+      },
+      "echo_en": "sugar reduction",
+      "echo_vi": "giảm đường",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cholesterol"],
+      "metadata": { "topic": "nutrition", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["đường: sugars"],
+        "practice": "Say: I will limit sugars."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "limit_sodium",
+      "title": { "en": "Limit Sodium", "vi": "Giới Hạn Natri" },
+      "copy": {
+        "en": "Reduce salt for heart. You said ‘salt reduction’. Dare: Use herbs.",
+        "vi": "Giảm muối tốt cho tim. Bạn nói ‘giảm muối’. Dám: Dùng thảo mộc."
+      },
+      "echo_en": "salt reduction",
+      "echo_vi": "giảm muối",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cholesterol"],
+      "metadata": { "topic": "nutrition", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["natri: sodium"],
+        "practice": "Say: I will limit sodium."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "diet_journal",
+      "title": { "en": "Diet Journal", "vi": "Nhật Ký Chế Độ Ăn" },
+      "copy": {
+        "en": "Food log might improve diet. You said ‘eating record’. Dare: Start journal today.",
+        "vi": "Sổ thực phẩm cải thiện chế độ. Bạn nói ‘ghi ăn uống’. Dám: Bắt đầu nhật ký."
+      },
+      "echo_en": "eating record",
+      "echo_vi": "ghi chép ăn uống",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 1,
+      "systems": ["cholesterol"],
+      "metadata": { "topic": "nutrition", "outcome": "plan_change" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["nhật ký chế độ ăn: diet journal"],
+        "practice": "Say: I will start a diet journal."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    },
+    {
+      "slug": "bp_management",
+      "title": { "en": "Blood Pressure Management", "vi": "Quản Lý Huyết Áp" },
+      "copy": {
+        "en": "Blood pressure control might help heart. You said ‘hypertension care’. Dare: Monitor bp.",
+        "vi": "Kiểm soát huyết áp tốt cho tim. Bạn nói ‘chăm sóc huyết áp’. Dám: Theo dõi huyết áp."
+      },
+      "echo_en": "hypertension care",
+      "echo_vi": "chăm sóc tăng huyết áp",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["heart_health"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["cholesterol"],
+      "metadata": { "topic": "heart_health", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["huyết áp: blood pressure"],
+        "practice": "Say: I will monitor my bp."
+      },
+      "created_at": "2025-10-09T10:04:00Z",
+      "updated_at": "2025-10-09T10:04:00Z"
+    }
+  ],
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Managing Cholesterol for Heart Health\n\nCholesterol is a fat in your blood. High levels can lead to heart problems. This guide connects tips from nutrition, exercise, and monitoring to help manage it. Always talk to a doctor for personal advice, especially if you have symptoms like chest pain or shortness of breath.\n\n### Monitoring Cholesterol\nRegular checks can track levels. Get a lipid test to see cholesterol types. Screen for heart risk with blood work. If numbers are high, see a doctor. This helps spot changes early.\n\n### Nutrition Choices\nChoose unsaturated fats like olive oil over saturated ones from meat. Limit trans fats in processed foods—read labels. Add soluble fiber from oats or beans to lower bad cholesterol. Eat lean proteins like fish or chicken. Include plant sterols from nuts or seeds. Whole grains like brown rice can help. Fruits and vegetables add fiber too. Oily fish like salmon provides good fats. Reduce sugars and salt for better heart health. Keep a diet journal to track what you eat.\n\n### Lifestyle and Exercise\nPhysical activity can improve levels. Aim for daily movement like walking. Try aerobic exercise such as jogging. Strength training with weights builds muscle. Reduce sitting by taking breaks. Limit alcohol and quit smoking to support heart. Manage blood pressure as it links to cholesterol.\n\n### Medication and Safety\nFollow statin routines if prescribed. Watch for side effects and review meds with a doctor. In emergencies like heart attack or stroke signs, call help right away.\n\n### When to Research More\nIf you notice symptoms or high readings, look into reliable sources. Use health sites for info on causes like diet. Research food ideas or exercises. Avoid unchecked claims.\n\n### Making a Plan\nDecide if a change fits—a “go” for adding oats, or “no-go” if needing doctor input. Track in a journal to see effects.\n\n### Ethics and Safety\nKeep health data private. Don’t share online. Prioritize safety—if unsure about a food or exercise, ask a professional. Call emergency for severe symptoms.\n\n### Next Steps\nStart with one step, like eating nuts or walking. Check progress after a week. See a doctor if needed. Small changes can help your cholesterol over time.\n\n*This is not medical advice. Consult a professional for concerns.*",
+    "vi": "# Quản Lý Cholesterol Cho Sức Khỏe Tim\n\nCholesterol là một loại chất béo trong máu, đóng vai trò cần thiết cho cơ thể nhưng mức quá cao có thể gây bệnh tim mạch. Hướng dẫn này tổng hợp các mẹo thực tiễn về dinh dưỡng, tập luyện và giám sát để giúp bạn quản lý cholesterol hiệu quả. Luôn tham khảo ý kiến bác sĩ, đặc biệt nếu có triệu chứng như đau ngực, khó thở hoặc chóng mặt.\n\n### Giám Sát Cholesterol\nKiểm tra định kỳ giúp theo dõi mức cholesterol trong máu. Thực hiện xét nghiệm lipid để biết rõ mức LDL (xấu), HDL (tốt) và triglyceride. Sàng lọc các yếu tố nguy cơ tim mạch qua xét nghiệm máu định kỳ. Nếu kết quả cao, hãy gặp bác sĩ để được hướng dẫn cụ thể. Phát hiện sớm giúp điều chỉnh kịp thời.\n\n### Lựa Chọn Dinh Dưỡng\nƯu tiên chất béo không bão hòa như dầu ô liu, dầu hạt cải thay vì chất béo bão hòa từ thịt đỏ hoặc bơ. Tránh chất béo trans trong thực phẩm chế biến — luôn đọc kỹ nhãn. Thêm chất xơ hòa tan từ yến mạch, đậu hoặc táo để giúp giảm LDL. Chọn protein nạc như cá, thịt gà bỏ da hoặc đậu phụ. Bổ sung sterol và stanol thực vật từ các loại hạt hoặc ngũ cốc tăng cường. Ngũ cốc nguyên hạt như gạo lứt hoặc bánh mì đen giúp kiểm soát lipid. Tăng cường rau xanh và trái cây tươi để bổ sung chất xơ và vitamin. Cá béo như cá hồi, cá thu cung cấp omega-3 tốt cho tim. Giảm đường và muối để bảo vệ mạch máu. Ghi nhật ký ăn uống để theo dõi thói quen.\n\n### Lối Sống Và Tập Luyện\nHoạt động thể chất đều đặn giúp cải thiện mức cholesterol. Đi bộ nhanh ít nhất 30 phút mỗi ngày hoặc tham gia aerobic, đạp xe, bơi lội. Tập sức mạnh 2–3 lần/tuần để tăng cơ và cải thiện chuyển hóa. Tránh ngồi lâu, đứng dậy và vận động nhẹ thường xuyên. Hạn chế rượu, bỏ thuốc lá vì chúng làm giảm HDL và hại tim. Duy trì huyết áp ổn định vì huyết áp cao và cholesterol thường liên quan chặt chẽ.\n\n### Thuốc Và An Toàn\nNếu bác sĩ kê statin hoặc thuốc hạ mỡ máu, hãy dùng đúng liều và đúng giờ. Theo dõi tác dụng phụ như đau cơ hoặc mệt mỏi, và thông báo cho bác sĩ nếu có bất thường. Trong trường hợp khẩn cấp, như nghi ngờ nhồi máu cơ tim hoặc đột quỵ, gọi cấp cứu ngay lập tức.\n\n### Khi Nào Nên Tìm Hiểu Thêm\nNếu kết quả xét nghiệm cho thấy mức cholesterol cao hoặc có triệu chứng bất thường, hãy tìm hiểu từ nguồn y tế đáng tin cậy. Tìm hiểu nguyên nhân như chế độ ăn, di truyền, hoặc lối sống. Nghiên cứu thêm về thực phẩm và thói quen tập phù hợp. Tránh tin theo quảng cáo hoặc phương pháp chưa được kiểm chứng.\n\n### Lên Kế Hoạch\nXác định bước thay đổi phù hợp. “Tiến hành” nghĩa là bắt đầu thêm thực phẩm tốt cho tim như yến mạch hoặc cá hồi. “Tạm dừng” khi cần thêm tư vấn bác sĩ. Ghi lại tiến trình để theo dõi sự cải thiện theo thời gian.\n\n### Đạo Đức Và An Toàn\nGiữ kín thông tin sức khỏe cá nhân. Không chia sẻ dữ liệu y tế trên mạng. Ưu tiên an toàn — nếu không chắc về chế độ ăn hoặc bài tập, hãy hỏi ý kiến chuyên gia. Gọi cấp cứu ngay nếu có dấu hiệu nghiêm trọng như đau ngực hoặc tê liệt nửa người.\n\n### Bước Tiếp Theo\nBắt đầu với một thay đổi nhỏ, như thêm yến mạch vào bữa sáng hoặc đi bộ mỗi ngày. Đánh giá lại sau một tuần. Nếu cần, trao đổi với bác sĩ để điều chỉnh kế hoạch. Những bước nhỏ nhưng đều đặn có thể giúp giảm cholesterol và tăng cường sức khỏe tim mạch lâu dài.\n\n*Đây không phải là lời khuyên y khoa. Hãy tham khảo chuyên gia cho các vấn đề sức khỏe.*",
+    "word_count_en": 546,
+    "word_count_vi": 552,
+    "updated_at": "2025-10-11T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}
