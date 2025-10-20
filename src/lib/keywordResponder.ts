@@ -67,7 +67,7 @@ function findRelatedRooms(message: string, currentRoomId: string): string[] {
   return Array.from(relatedRooms).slice(0, 3); // Top 3 related rooms
 }
 
-export function keywordRespond(roomId: string, message: string, noKeywordCount: number = 0): { text: string; matched: boolean } {
+export function keywordRespond(roomId: string, message: string, noKeywordCount: number = 0, matchedEntryCount: number = 0): { text: string; matched: boolean } {
   const roomData = roomDataMap[roomId];
   if (!roomData) throw new Error("Room data not found");
 
@@ -130,13 +130,25 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   const isQuestion = messageWords.length >= 3 || messageLower.includes('?') || startsWithQToken || hasExactQToken || hasMultiWordQ;
 
   if (isQuestion) {
-    const essay = getBilingual(roomData, "room_essay");
+    // Only show essay after ~15 matched entries
+    if (matchedEntryCount >= 15) {
+      const essay = getBilingual(roomData, "room_essay");
+      const desc = getBilingual(roomData, "description");
+      const safety = getBilingual(roomData, "safety_disclaimer");
+      const text = [essay.en || desc.en, essay.vi || desc.vi, safety.en, safety.vi]
+        .map((s) => (s || "").trim())
+        .filter(Boolean)
+        .join("\n\n");
+      return { text, matched: false };
+    }
+    
+    // Before 15 entries, give a helpful prompt
     const desc = getBilingual(roomData, "description");
-    const safety = getBilingual(roomData, "safety_disclaimer");
-    const text = [essay.en || desc.en, essay.vi || desc.vi, safety.en, safety.vi]
-      .map((s) => (s || "").trim())
-      .filter(Boolean)
-      .join("\n\n");
+    const topKeys = Object.keys(roomData.keywords || {}).slice(0, 5).join(', ');
+    const text = [
+      `I'm here to help with ${desc.en}. Try using keywords like: ${topKeys}.`,
+      `Tôi ở đây để giúp về ${desc.vi}. Hãy thử dùng từ khóa như: ${topKeys}.`
+    ].join("\n\n");
     return { text, matched: false };
   }
   
