@@ -108,13 +108,31 @@ export function keywordRespond(roomId: string, message: string): { text: string;
     return { text, matched: true };
   }
 
-  // No match: keep it minimal and still 100% from user's data
-  const essay = getBilingual(roomData, "room_essay");
+  // No match: check if message is substantial before showing essay
+  const messageWords = message.trim().split(/\s+/).filter(Boolean);
+  
+  // Only show essay for meaningful questions (3+ words or contains question words)
+  const questionWords = ['how', 'what', 'why', 'when', 'where', 'can', 'should', 'is', 'are', 'do', 'does', 
+                          'làm', 'gì', 'tại', 'khi', 'nào', 'đâu', 'có', 'nên', 'là'];
+  const isQuestion = messageWords.length >= 3 || 
+                     questionWords.some(qw => messageWords.some(mw => mw.toLowerCase().includes(qw)));
+  
+  if (isQuestion) {
+    const essay = getBilingual(roomData, "room_essay");
+    const desc = getBilingual(roomData, "description");
+    const safety = getBilingual(roomData, "safety_disclaimer");
+    const text = [essay.en || desc.en, essay.vi || desc.vi, safety.en, safety.vi]
+      .map((s) => (s || "").trim())
+      .filter(Boolean)
+      .join("\n\n");
+    return { text, matched: false };
+  }
+  
+  // For short/unclear messages, prompt for more specific question
   const desc = getBilingual(roomData, "description");
-  const safety = getBilingual(roomData, "safety_disclaimer");
-  const text = [essay.en || desc.en, essay.vi || desc.vi, safety.en, safety.vi]
-    .map((s) => (s || "").trim())
-    .filter(Boolean)
-    .join("\n\n");
-  return { text, matched: false };
+  const promptText = [
+    `I'm here to help with ${desc.en}. Could you please ask a specific question or use keywords like: ${Object.keys(roomData.keywords || {}).slice(0, 5).join(', ')}?`,
+    `Tôi ở đây để giúp về ${desc.vi}. Bạn có thể đặt câu hỏi cụ thể hoặc dùng từ khóa như: ${Object.keys(roomData.keywords || {}).slice(0, 5).join(', ')}?`
+  ].join("\n\n");
+  return { text: promptText, matched: false };
 }
