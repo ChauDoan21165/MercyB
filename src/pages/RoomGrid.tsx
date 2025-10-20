@@ -46,18 +46,6 @@ const RoomGrid = () => {
 
           {/* Legend */}
           <div className="flex flex-wrap justify-center gap-3 pt-4">
-            <Badge variant="outline" className={getTierColor("free")}>
-              FREE
-            </Badge>
-            <Badge variant="outline" className={getTierColor("vip1")}>
-              VIP1
-            </Badge>
-            <Badge variant="outline" className={getTierColor("vip2")}>
-              VIP2
-            </Badge>
-            <Badge variant="outline" className={getTierColor("vip3")}>
-              VIP3
-            </Badge>
             <Badge variant="outline" className="bg-green-100 text-green-700 border-green-300">
               <CheckCircle2 className="w-3 h-3 mr-1" />
               Ready / Sẵn Sàng
@@ -91,14 +79,6 @@ const RoomGrid = () => {
               </div>
 
               <div className="space-y-2">
-                {/* Tier Badge */}
-                <Badge 
-                  variant="outline" 
-                  className={`text-[10px] px-1.5 py-0 ${getTierColor(room.tier)}`}
-                >
-                  {getTierLabel(room.tier)}
-                </Badge>
-
                 {/* Room Names */}
                 <div className="space-y-1">
                   <p className="text-xs font-semibold text-foreground leading-tight line-clamp-2">
