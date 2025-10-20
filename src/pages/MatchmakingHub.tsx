@@ -74,14 +74,14 @@ const MatchmakingHub = () => {
               <div>
                 <h3 className="font-semibold text-lg mb-2">English</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Discover your ideal study buddy with our Learning Partner Finder! This feature connects you with others who share your learning style, interests, and goals—whether it's mastering diabetes management, boosting mental wellness, or building healthy habits. By matching you based on preferences like visual learning or goal-setting for fitness, we make learning collaborative and fun. Connect through in-app chats to share tips, motivate each other, and track progress together. For example, if you're focused on stress management, find someone who loves mindfulness practices to exchange ideas. Start today, grow together, and make health education a shared journey!
+                  Welcome to the Learning Partner Finder, your gateway to lifelong learning! Connect with study buddies who share your passions across life's many facets—health, wellness, career, or personal growth. Find learning partners at your level, from beginner to expert, earning points as you engage and learn together. Match based on your learning style—visual, practical, or goal-oriented—and interests like fitness or mindfulness. Use in-app chats to share insights, stay motivated, and track progress. For example, if you're eager to learn meditation, find a buddy to exchange techniques and grow. Our point system rewards your efforts, unlocking new connections and resources. Start today and make learning a vibrant, shared adventure!
                 </p>
               </div>
               
               <div>
                 <h3 className="font-semibold text-lg mb-2">Vietnamese</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Khám phá bạn học lý tưởng với tính năng Tìm Bạn Học! Tính năng này kết nối bạn với những người có phong cách học, sở thích và mục tiêu giống bạn—dù là làm chủ quản lý đái tháo đường, tăng cường sức khỏe tinh thần hay xây dựng thói quen lành mạnh. Bằng cách khớp bạn dựa trên sở thích như học qua hình ảnh hoặc đặt mục tiêu thể dục, chúng tôi khiến việc học trở nên hợp tác và thú vị. Kết nối qua trò chuyện trong ứng dụng để chia sẻ mẹo, động viên nhau và theo dõi tiến độ cùng nhau. Ví dụ, nếu bạn tập trung vào quản lý căng thẳng, tìm người yêu thích thực hành chánh niệm để trao đổi ý tưởng. Bắt đầu hôm nay, cùng phát triển và biến giáo dục sức khỏe thành hành trình chung!
+                  Chào mừng bạn đến với Tìm Bạn Học, cánh cửa dẫn đến học tập suốt đời! Kết nối với bạn học có cùng đam mê trên nhiều khía cạnh cuộc sống—sức khỏe, phúc lợi, sự nghiệp hoặc phát triển cá nhân. Tìm bạn học phù hợp với trình độ, từ mới bắt đầu đến chuyên gia, kiếm điểm khi bạn tương tác và học cùng nhau. Khớp dựa trên phong cách học—hình ảnh, thực hành, hoặc định hướng mục tiêu—và sở thích như thể dục hoặc chánh niệm. Sử dụng trò chuyện trong ứng dụng để chia sẻ hiểu biết, giữ động lực và theo dõi tiến độ. Ví dụ, nếu bạn muốn học thiền, tìm một người bạn để trao đổi kỹ thuật và phát triển. Hệ thống điểm thưởng nỗ lực của bạn, mở khóa kết nối và tài nguyên mới. Bắt đầu hôm nay và biến việc học thành cuộc phiêu lưu chung đầy sôi động!
                 </p>
               </div>
             </div>
