@@ -74,14 +74,14 @@ const MatchmakingHub = () => {
               <div>
                 <h3 className="font-semibold text-lg mb-2">English</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Welcome to the Learning Partner Finder, your gateway to lifelong learning! Connect with study buddies who share your passions across life's many facets—health, wellness, career, or personal growth. Find learning partners at your level, from beginner to expert, earning points as you engage and learn together. Match based on your learning style—visual, practical, or goal-oriented—and interests like fitness or mindfulness. Use in-app chats to share insights, stay motivated, and track progress. For example, if you're eager to learn meditation, find a buddy to exchange techniques and grow. Our point system rewards your efforts, unlocking new connections and resources. Start today and make learning a vibrant, shared adventure!
+                  Unlock elite learning with our VIP 3 Exclusive Matchmaking! This premium feature pairs you with learning partners perfectly suited to your interests—health, career, wellness, or personal growth. Find partners at your level, from novice to expert, based on your learning style (visual, hands-on, or goal-driven). Earn points by engaging in chats, sharing insights, and completing goals together, unlocking exclusive resources. For example, if you're passionate about fitness, connect with a buddy to swap workout plans. Our advanced algorithm matches you with eager learners for meaningful collaboration. Join now and elevate your learning journey!
                 </p>
               </div>
               
               <div>
                 <h3 className="font-semibold text-lg mb-2">Vietnamese</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Chào mừng bạn đến với Tìm Bạn Học, cánh cửa dẫn đến học tập suốt đời! Kết nối với bạn học có cùng đam mê trên nhiều khía cạnh cuộc sống—sức khỏe, phúc lợi, sự nghiệp hoặc phát triển cá nhân. Tìm bạn học phù hợp với trình độ, từ mới bắt đầu đến chuyên gia, kiếm điểm khi bạn tương tác và học cùng nhau. Khớp dựa trên phong cách học—hình ảnh, thực hành, hoặc định hướng mục tiêu—và sở thích như thể dục hoặc chánh niệm. Sử dụng trò chuyện trong ứng dụng để chia sẻ hiểu biết, giữ động lực và theo dõi tiến độ. Ví dụ, nếu bạn muốn học thiền, tìm một người bạn để trao đổi kỹ thuật và phát triển. Hệ thống điểm thưởng nỗ lực của bạn, mở khóa kết nối và tài nguyên mới. Bắt đầu hôm nay và biến việc học thành cuộc phiêu lưu chung đầy sôi động!
+                  Mở khóa học tập đỉnh cao với Tính Năng Ghép Đôi Độc Quyền VIP 3! Tính năng cao cấp này kết nối bạn với các bạn học phù hợp hoàn hảo với sở thích—sức khỏe, sự nghiệp, phúc lợi, hoặc phát triển cá nhân. Tìm bạn học cùng trình độ, từ mới bắt đầu đến chuyên gia, dựa trên phong cách học (hình ảnh, thực hành, hoặc định hướng mục tiêu). Kiếm điểm qua trò chuyện, chia sẻ hiểu biết và hoàn thành mục tiêu cùng nhau, mở khóa tài nguyên độc quyền. Ví dụ, nếu bạn đam mê thể dục, kết nối với một người bạn để chia sẻ kế hoạch tập luyện. Thuật toán tiên tiến của chúng tôi ghép bạn với những người học nhiệt tình để hợp tác ý nghĩa. Tham gia ngay để nâng tầm hành trình học tập!
                 </p>
               </div>
             </div>

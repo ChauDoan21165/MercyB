@@ -69,6 +69,7 @@ const roomFiles: { [key: string]: string } = {
   'toddler': 'toddler.json',
   'train-brain': 'train_brain_memory.json',
   'trauma': 'trauma.json',
+  'user-profile-dashboard': 'user_profile_dashboard.json',
   'wife-dealing': 'wife_dealing.json',
   'womens-health': 'women_health.json',
 };

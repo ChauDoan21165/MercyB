@@ -68,6 +68,7 @@ const roomFiles: { [key: string]: string } = {
   'toddler': 'toddler.json',
   'train-brain': 'train_brain_memory.json',
   'trauma': 'trauma.json',
+  'user-profile-dashboard': 'user_profile_dashboard.json',
   'wife-dealing': 'wife_dealing.json',
   'womens-health': 'women_health.json',
 };
@@ -80,9 +81,11 @@ async function loadRoomData(roomId: string): Promise<any | null> {
   }
 
   try {
-    const dataPath = `./data/${fileName}`;
-    const data = await import(dataPath, { assert: { type: 'json' } });
-    return data.default;
+    const url = new URL(`./data/${fileName}`, import.meta.url);
+    const module = await import(url.href, { with: { type: 'json' } } as any);
+    const data = (module as any).default || module;
+    console.log(`Successfully loaded room data for ${roomId}`);
+    return data;
   } catch (error) {
     console.error(`Failed to load room data for ${roomId}:`, error);
     return null;

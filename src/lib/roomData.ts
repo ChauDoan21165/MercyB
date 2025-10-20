@@ -71,6 +71,7 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "toddler", nameVi: "Trẻ mới biết đi", nameEn: "Toddler", hasData: true, tier: "free", dataFile: "toddler.json" },
   { id: "train-brain", nameVi: "Luyện trí nhớ", nameEn: "Train Brain Memory", hasData: true, tier: "vip2", dataFile: "train_brain_memory.json" },
   { id: "trauma", nameVi: "Chấn thương tâm lý", nameEn: "Trauma", hasData: true, tier: "vip2", dataFile: "trauma.json" },
+  { id: "user-profile-dashboard", nameVi: "Hồ Sơ & Bảng Điều Khiển", nameEn: "User Profile & Dashboard", hasData: true, tier: "free", dataFile: "user_profile_dashboard.json" },
   { id: "wife-dealing", nameVi: "Ứng Xử Với Vợ", nameEn: "Wife Dealing", hasData: true, tier: "vip3", dataFile: "wife_dealing.json" },
   { id: "womens-health", nameVi: "Sức khỏe phụ nữ", nameEn: "Women's Health", hasData: true, tier: "free", dataFile: "women_health.json" }
 ];
