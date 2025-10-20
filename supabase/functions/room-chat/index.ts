@@ -44,6 +44,15 @@ const roomFiles: { [key: string]: string } = {
   'matchmaker': 'matchmaker_traits.json',
   'mens-health': 'men_health.json',
   'mental-health': 'mental_health.json',
+  'mindful-movement': 'mindful_movement.json',
+  'mindfulness-healing': 'mindfulness_and_healing.json',
+  'nutrition-basics': 'nutrition_basics.json',
+  'obesity': 'obesity.json',
+  'office-survival': 'office_survival.json',
+  'pain-management': 'pain_management.json',
+  'philosophy': 'philosophy.json',
+  'phobia': 'phobia.json',
+  'rare-diseases': 'rare_diseases.json',
 };
 
 // Load room data from JSON
