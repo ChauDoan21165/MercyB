@@ -11,8 +11,8 @@ const Welcome = () => {
       name: { vi: "Miễn phí", en: "Free" },
       price: "$0",
       features: {
-        vi: ["10 bài học ngẫu nhiên/ngày", "Huy hiệu thành tựu", "Theo dõi chuỗi học tập"],
-        en: ["10 random entries/day", "Achievement badges", "Learning streaks"]
+        en: ["10 random entries/day", "Achievement badges", "Learning streaks"],
+        vi: ["10 mục ngẫu nhiên/ngày", "Huy hiệu thành tựu", "Chuỗi điểm thưởng"]
       }
     },
     {
@@ -20,8 +20,8 @@ const Welcome = () => {
       price: "$2",
       period: { vi: "/tháng", en: "/month" },
       features: {
-        vi: ["1 chủ đề được cá nhân hóa", "1 phòng đầy đủ/ngày", "Tất cả tính năng Miễn phí"],
-        en: ["1 tailored topic", "1 full room/day", "All Free features"]
+        en: ["Request 1 custom topic", "1 full room access/day", "All Free features"],
+        vi: ["Yêu cầu 1 chủ đề", "Truy cập tự do 1 phòng/ngày", "Tất cả tính năng Miễn phí"]
       },
       popular: true
     },
@@ -30,8 +30,8 @@ const Welcome = () => {
       price: "$4",
       period: { vi: "/tháng", en: "/month" },
       features: {
-        vi: ["2 chủ đề được cá nhân hóa", "2 phòng đầy đủ/ngày", "Tất cả tính năng VIP1"],
-        en: ["2 tailored topics", "2 full rooms/day", "All VIP1 features"]
+        en: ["Request 2 custom topics", "2 full rooms access/day", "All VIP1 features"],
+        vi: ["Yêu cầu 2 chủ đề", "Truy cập tự do 2 phòng/ngày", "Tất cả tính năng VIP1"]
       }
     },
     {
@@ -39,8 +39,8 @@ const Welcome = () => {
       price: "$6",
       period: { vi: "/tháng", en: "/month" },
       features: {
-        vi: ["3 chủ đề được cá nhân hóa", "3 phòng đầy đủ/ngày", "Ưu tiên hỗ trợ"],
-        en: ["3 tailored topics", "3 full rooms/day", "Priority support"]
+        en: ["3 custom topics", "3 rooms access/day", "Priority support"],
+        vi: ["3 chủ đề tùy chỉnh", "Truy cập 3 phòng/ngày", "Hỗ trợ ưu tiên"]
       }
     }
   ];
@@ -56,35 +56,31 @@ const Welcome = () => {
           
           <div className="space-y-2 max-w-3xl mx-auto">
             <p className="text-2xl font-semibold text-foreground/90">
-              Ứng dụng học về sức khỏe, cuộc sống và tiếng Anh
+              Wellness and knowledge app for learning health, life, and English
             </p>
             <p className="text-xl text-muted-foreground">
-              Wellness and knowledge app for learning health, life, and English
+              Ứng dụng học về sức khỏe, cuộc sống và tiếng Anh
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
+          <div className="flex justify-center items-center gap-8 pt-6">
             <Button 
               size="lg"
-              className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-hover transition-all"
+              className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-hover transition-all min-w-[200px]"
               onClick={() => navigate("/rooms")}
             >
-              <span className="flex flex-col items-start">
-                <span className="text-sm">Khám phá các phòng</span>
-                <span className="text-xs opacity-90">Explore Rooms</span>
+              <span className="flex flex-col items-center">
+                <span className="text-base font-semibold">Explore Rooms</span>
+                <span className="text-sm opacity-90">Khám phá các phòng</span>
               </span>
             </Button>
-            <Button 
-              size="lg"
-              variant="outline"
-              className="border-2"
-              onClick={() => navigate("/rooms")}
-            >
-              <span className="flex flex-col items-start">
-                <span className="text-sm">Bắt đầu học</span>
-                <span className="text-xs opacity-90">Start Learning</span>
-              </span>
-            </Button>
+            <div className="flex items-center gap-3">
+              <div className="text-4xl animate-pulse">→</div>
+              <div className="flex flex-col">
+                <span className="text-lg font-bold text-foreground">Chọn Phòng</span>
+                <span className="text-sm text-muted-foreground">Choose Room</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -135,14 +131,14 @@ const Welcome = () => {
                   </div>
 
                   <div className="space-y-3 pt-4">
-                    {tier.features.vi.map((feature, idx) => (
+                    {tier.features.en.map((feature, idx) => (
                       <div key={idx} className="space-y-1">
                         <div className="flex items-start gap-2">
                           <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                           <span className="text-sm text-foreground">{feature}</span>
                         </div>
                         <div className="pl-7 text-xs text-muted-foreground">
-                          {tier.features.en[idx]}
+                          {tier.features.vi[idx]}
                         </div>
                       </div>
                     ))}
@@ -157,8 +153,8 @@ const Welcome = () => {
                     variant={tier.popular ? "default" : "outline"}
                   >
                     <span className="flex flex-col">
-                      <span className="text-sm">Chọn gói</span>
-                      <span className="text-xs opacity-90">Choose Plan</span>
+                      <span className="text-sm">Choose Plan</span>
+                      <span className="text-xs opacity-90">Chọn gói</span>
                     </span>
                   </Button>
                 </div>
@@ -170,10 +166,10 @@ const Welcome = () => {
         {/* Footer Info */}
         <div className="text-center mt-16 space-y-2">
           <p className="text-sm text-muted-foreground">
-            Học từ vựng tiếng Anh qua nội dung sức khỏe thực tế
+            Learn English vocabulary through real health content
           </p>
           <p className="text-xs text-muted-foreground">
-            Learn English vocabulary through real health content
+            Học từ vựng tiếng Anh qua nội dung sức khỏe thực tế
           </p>
         </div>
       </div>

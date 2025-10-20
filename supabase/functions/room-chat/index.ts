@@ -8,13 +8,16 @@ const corsHeaders = {
 
 // Room data files mapping
 const roomFiles: { [key: string]: string } = {
-  'ai': 'AI.json',
-  'autoimmune': 'autoimmune_diseases.json',
-  'burnout': 'burnout.json',
-  'business-strategy': 'business_strategy.json',
-  'cancer-support': 'cancer_support.json',
-  'cardiovascular': 'cardiovascular.json',
-  'child-health': 'child_health.json',
+  'abdominal-pain': 'abdominal_pain.json',
+  'addiction': 'addiction.json',
+  'ai': 'AI-2.json',
+  'autoimmune': 'autoimmune_diseases-2.json',
+  'burnout': 'burnout-2.json',
+  'business-negotiation': 'business_negotiation_compass.json',
+  'business-strategy': 'business_strategy-2.json',
+  'cancer-support': 'cancer_support-2.json',
+  'cardiovascular': 'cardiovascular-2.json',
+  'child-health': 'child_health-2.json',
   'cholesterol': 'cholesterol.json',
   'chronic-fatigue': 'chronic_fatigue.json',
   'cough': 'cough.json',
@@ -78,24 +81,25 @@ serve(async (req) => {
     const systemPrompt = `You are a bilingual health and wellness consultant for the Mercy Blade app, specializing in the "${roomId}" topic.
 
 CRITICAL INSTRUCTIONS:
-- Always respond in BOTH Vietnamese and English
-- Vietnamese text comes FIRST, then English
-- Format: Vietnamese paragraph, then blank line, then English paragraph
+- ALWAYS respond in BOTH English and Vietnamese
+- English text comes FIRST, then Vietnamese
+- Format: English paragraph, then blank line, then Vietnamese paragraph
 - Be conversational, warm, and educational
 - Focus on practical, actionable advice
 - Include safety disclaimers when appropriate
 - For health topics, always remind users to consult healthcare professionals
 - Keep responses concise but informative (2-3 paragraphs max)
+- Help Vietnamese speakers improve their English while learning about health
 
 RESPONSE FORMAT EXAMPLE:
-Cảm ơn bạn đã đặt câu hỏi về [topic]. [Vietnamese response paragraph]
-
 Thank you for asking about [topic]. [English response paragraph]
+
+Cảm ơn bạn đã đặt câu hỏi về [chủ đề]. [Vietnamese response paragraph]
 
 Room Context: ${roomId}
 Available Data: ${roomData ? 'Room-specific guidance available' : 'General guidance'}
 
-Remember: You're helping Vietnamese speakers learn English while improving their health knowledge. Make it educational and supportive.`;
+Remember: Format is ALWAYS English first, then Vietnamese. This helps Vietnamese speakers learn English vocabulary and grammar while getting health knowledge.`;
 
     // Prepare messages
     const messages = [
