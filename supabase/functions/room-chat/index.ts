@@ -101,7 +101,7 @@ serve(async (req) => {
   }
 
   try {
-    const { roomId, message, conversationHistory } = await req.json();
+    const { roomId, message } = await req.json();
     console.log(`Processing message for room: ${roomId}`);
 
     if (!roomId || !message) {
@@ -121,116 +121,156 @@ serve(async (req) => {
       );
     }
 
-    // Keyword matching function
-    function findMatchingEntry(userMessage: string, roomData: any) {
-      const messageLower = userMessage.toLowerCase();
-      
-      // Check all keyword groups
-      if (roomData.keywords) {
-        const keywordGroups = Object.entries(roomData.keywords as Record<string, any>);
-        
-        for (const [groupKey, group] of keywordGroups) {
-          const groupData = group as any;
-          
-          // Check English keywords
-          if (Array.isArray(groupData.en)) {
-            for (const keyword of groupData.en) {
-              if (messageLower.includes(keyword.toLowerCase())) {
-                console.log(`Matched keyword: ${keyword} in group: ${groupKey}`);
-                // Find corresponding entry
-                const entry = (roomData.entries || []).find((e: any) => 
-                  e.id === groupKey || e.keyword_group === groupKey
-                );
-                if (entry) return entry;
-              }
-            }
-          }
-          
-          // Check Vietnamese keywords
-          if (Array.isArray(groupData.vi)) {
-            for (const keyword of groupData.vi) {
-              if (messageLower.includes(keyword.toLowerCase())) {
-                console.log(`Matched keyword: ${keyword} in group: ${groupKey}`);
-                const entry = (roomData.entries || []).find((e: any) => 
-                  e.id === groupKey || e.keyword_group === groupKey
-                );
-                if (entry) return entry;
-              }
-            }
+    // Helpers
+    const normalize = (t: unknown) =>
+      String(t || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '') // strip diacritics
+        .replace(/[\s\-]+/g, '_')
+        .trim();
+
+    const getBilingual = (
+      obj: any,
+      base: string
+    ): { en: string; vi: string } => {
+      const val = obj?.[base];
+      if (val && typeof val === 'object') {
+        return { en: String(val.en || ''), vi: String(val.vi || '') };
+      }
+      // support split fields like description + description_vi
+      return {
+        en: String(obj?.[base] || ''),
+        vi: String(obj?.[`${base}_vi`] || ''),
+      };
+    };
+
+    // Keyword matching across all groups (en/vi)
+    function findMatchingGroup(userMessage: string, keywords: any): string | null {
+      if (!keywords || typeof keywords !== 'object') return null;
+      const msg = normalize(userMessage);
+
+      for (const [groupKey, groupVal] of Object.entries(keywords)) {
+        const g: any = groupVal;
+        const list: string[] = [
+          ...(Array.isArray(g.en) ? g.en : []),
+          ...(Array.isArray(g.vi) ? g.vi : []),
+          ...(Array.isArray(g.slug_vi) ? g.slug_vi : []),
+        ];
+        for (const k of list) {
+          if (msg.includes(normalize(k))) {
+            console.log(`Matched keyword '${k}' in group '${groupKey}'`);
+            return groupKey;
           }
         }
       }
-      
       return null;
     }
 
-    // Try to find matching entry
-    const matchedEntry = findMatchingEntry(message, roomData);
+    function findEntryByGroup(groupKey: string | null, entries: any[]): any | null {
+      if (!groupKey || !Array.isArray(entries)) return null;
+      return (
+        entries.find((e: any) => e?.slug === groupKey) ||
+        entries.find((e: any) => e?.id === groupKey) ||
+        entries.find((e: any) => e?.keyword_group === groupKey) ||
+        null
+      );
+    }
 
+    // Try to find a matching entry
+    const groupKey = findMatchingGroup(message, roomData.keywords);
+    const matchedEntry = findEntryByGroup(groupKey, roomData.entries || []);
+
+    // Build bilingual strings from entry
+    const buildEntryResponse = (entry: any) => {
+      const titleEn = String(entry?.title?.en || entry?.title_en || '');
+      const titleVi = String(entry?.title?.vi || entry?.title_vi || '');
+
+      const copyEn = typeof entry?.copy === 'string'
+        ? entry.copy
+        : String(entry?.copy?.en || entry?.content?.en || entry?.body?.en || entry?.copy_en || '');
+      const copyVi = typeof entry?.copy === 'string'
+        ? ''
+        : String(entry?.copy?.vi || entry?.content?.vi || entry?.body?.vi || entry?.copy_vi || '');
+
+      const parts: string[] = [];
+      if (titleEn) parts.push(titleEn);
+      if (copyEn) parts.push(copyEn);
+      const en = parts.filter(Boolean).join('\n\n');
+
+      const partsVi: string[] = [];
+      if (titleVi) partsVi.push(titleVi);
+      if (copyVi) partsVi.push(copyVi);
+      const vi = partsVi.filter(Boolean).join('\n\n');
+
+      return { en, vi };
+    };
+
+    // Decide response
     if (matchedEntry) {
-      console.log('Found matching entry, returning pre-written content');
-      
-      // Build response from entry data
-      let response = '';
-      
-      // Add title if available
-      if (matchedEntry.title?.en || matchedEntry.title?.vi) {
-        response += `${matchedEntry.title?.en || ''}\n\n`;
-        response += `${matchedEntry.title?.vi || ''}\n\n`;
-      }
-      
-      // Add body content
-      if (matchedEntry.body?.en || matchedEntry.body?.vi) {
-        response += `${matchedEntry.body?.en || ''}\n\n`;
-        response += `${matchedEntry.body?.vi || ''}\n\n`;
-      }
-      
-      // Add recommendations if available
-      if (matchedEntry.recommendations) {
-        if (matchedEntry.recommendations.en && matchedEntry.recommendations.en.length > 0) {
-          response += `Recommendations:\n${matchedEntry.recommendations.en.join('\n')}\n\n`;
-        }
-        if (matchedEntry.recommendations.vi && matchedEntry.recommendations.vi.length > 0) {
-          response += `Khuyến nghị:\n${matchedEntry.recommendations.vi.join('\n')}\n\n`;
-        }
-      }
-      
-      // Add safety disclaimer if available
-      if (roomData.safety_disclaimer?.en || roomData.safety_disclaimer?.vi) {
-        response += `\n${roomData.safety_disclaimer?.en || ''}\n\n`;
-        response += `${roomData.safety_disclaimer?.vi || ''}\n`;
-      }
+      console.log('Returning matched entry content');
+      const { en, vi } = buildEntryResponse(matchedEntry);
+
+      // Safety and crisis footers from data only
+      const safety = getBilingual(roomData, 'safety_disclaimer');
+      const crisis = getBilingual(roomData, 'crisis_footer');
+
+      const response = [
+        en,
+        vi,
+        safety.en,
+        safety.vi,
+        crisis.en,
+        crisis.vi,
+      ]
+        .map((s) => (s || '').trim())
+        .filter(Boolean)
+        .join('\n\n');
 
       return new Response(
-        JSON.stringify({ 
-          response: response.trim(),
+        JSON.stringify({
+          response,
           roomId,
           matched: true,
-          timestamp: new Date().toISOString()
+          groupKey,
+          timestamp: new Date().toISOString(),
         }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    // No keyword match - return a default response
-    console.log('No keyword match found, returning default response');
-    
-    let defaultResponse = '';
-    
-    if (roomData.room_essay?.en || roomData.room_essay?.vi) {
-      defaultResponse += `${roomData.room_essay?.en || ''}\n\n`;
-      defaultResponse += `${roomData.room_essay?.vi || ''}\n\n`;
-    }
-    
-    defaultResponse += `Please use specific keywords related to this topic for more detailed information.\n\n`;
-    defaultResponse += `Vui lòng sử dụng các từ khóa cụ thể liên quan đến chủ đề này để biết thêm thông tin chi tiết.`;
+    // No match: show room description and a hint of available keywords (data-only)
+    console.log('No keyword match found, returning default data-only response');
+    const desc = getBilingual(roomData, 'room_essay');
+    const fallDesc = getBilingual(roomData, 'description');
+    const safety = getBilingual(roomData, 'safety_disclaimer');
+
+    const enDesc = desc.en || fallDesc.en;
+    const viDesc = desc.vi || fallDesc.vi;
+
+    // Suggest first few keywords from data (still from user's data)
+    const firstGroup = Object.values(roomData.keywords || {})[0] as any;
+    const hintEn = Array.isArray(firstGroup?.en) ? firstGroup.en.slice(0, 6).join(', ') : '';
+    const hintVi = Array.isArray(firstGroup?.vi) ? firstGroup.vi.slice(0, 6).join(', ') : '';
+
+    const response = [
+      enDesc,
+      viDesc,
+      hintEn,
+      hintVi,
+      safety.en,
+      safety.vi,
+    ]
+      .map((s) => (s || '').trim())
+      .filter(Boolean)
+      .join('\n\n');
 
     return new Response(
-      JSON.stringify({ 
-        response: defaultResponse.trim(),
+      JSON.stringify({
+        response,
         roomId,
         matched: false,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
