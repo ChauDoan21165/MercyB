@@ -84,7 +84,8 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "user-profile-dashboard", nameVi: "Hồ Sơ & Bảng Điều Khiển", nameEn: "User Profile & Dashboard", hasData: true, tier: "free", dataFile: "user_profile_dashboard.json" },
   { id: "weight-loss", nameVi: "Giảm cân", nameEn: "Weight Loss Program", hasData: true, tier: "vip1", dataFile: "weight_loss_program.json" },
   { id: "wife-dealing", nameVi: "Ứng Xử Với Vợ", nameEn: "Wife Dealing", hasData: true, tier: "vip3", dataFile: "wife_dealing.json" },
-  { id: "womens-health", nameVi: "Sức khỏe phụ nữ", nameEn: "Women's Health", hasData: true, tier: "free", dataFile: "women_health.json" }
+  { id: "womens-health", nameVi: "Sức khỏe phụ nữ", nameEn: "Women's Health", hasData: true, tier: "free", dataFile: "women_health.json" },
+  { id: "philosophy", nameVi: "Triết học cho đời thường", nameEn: "Philosophy for Everyday", hasData: true, tier: "vip2", dataFile: "philosophy.json" }
 ];
 
 // Get room info by ID

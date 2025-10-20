@@ -1,0 +1,291 @@
+{
+  "keywords_dict": {
+    "happiness": {
+      "en": ["happiness", "joy", "contentment", "well_being", "fulfillment"],
+      "vi": ["hanh_phuc", "vui_ve", "thoa_man", "an_lac", "man_nguyen"]
+    },
+    "knowledge": {
+      "en": ["knowledge", "understanding", "insight", "learning", "wisdom"],
+      "vi": ["tri_thuc", "hieu_biet", "thau_hieu", "kien_thuc", "tri_tue"]
+    },
+    "ethics": {
+      "en": ["ethics", "morality", "virtue", "principles", "righteousness"],
+      "vi": ["dao_duc", "tinh_toan_ven", "duc_hanh", "nguyen_tac", "chinh_truc"]
+    },
+    "freedom": {
+      "en": ["freedom", "liberty", "autonomy", "independence", "self_determination"],
+      "vi": ["tu_do", "tu_chu", "doc_lap", "tu_quyet", "tudo"]
+    },
+    "truth": {
+      "en": ["truth", "reality", "fact", "authenticity", "verity"],
+      "vi": ["su_that", "thuc_te", "chan_ly", "chan_thuc", "suthat"]
+    },
+    "justice": {
+      "en": ["justice", "fairness", "equity", "righteousness", "impartiality"],
+      "vi": ["cong_ly", "cong_bang", "binh_dang", "chinh_truc", "khach_quan"]
+    },
+    "love": {
+      "en": ["love", "affection", "compassion", "devotion", "care"],
+      "vi": ["tinh_yeu", "tinh_cam", "long_trac_an", "su_hien_than", "quan_tam"]
+    },
+    "life": {
+      "en": ["life", "existence", "being", "vitality", "living"],
+      "vi": ["cuoc_song", "ton_tai", "su_song", "sinh_khi", "cuocsong"]
+    },
+    "meaning": {
+      "en": ["meaning", "purpose", "significance", "value", "essence"],
+      "vi": ["y_nghia", "muc_dich", "tam_quan_trong", "gia_tri", "ban_chat"]
+    },
+    "wisdom": {
+      "en": ["wisdom", "insight", "understanding", "prudence", "sagacity"],
+      "vi": ["tri_tue", "thau_hieu", "hieu_biet", "khoi_minh", "sang_suot"]
+    },
+    "humanity": {
+      "en": ["humanity", "humankind", "compassion", "empathy", "kindness"],
+      "vi": ["nhan_tinh", "nhan_loai", "long_trac_an", "dong_cam", "nhan_tu"]
+    },
+    "responsibility": {
+      "en": ["responsibility", "duty", "obligation", "accountability", "commitment"],
+      "vi": ["trach_nhiem", "nhiem_vu", "nghia_vu", "trach_nhiem_ca_nhan", "cam_ket"]
+    },
+    "discipline": {
+      "en": ["discipline", "self_control", "order", "restraint", "focus"],
+      "vi": ["ky_luat", "tu_kiem_che", "trat_tu", "kiem_soat", "tap_trung"]
+    },
+    "peace": {
+      "en": ["peace", "tranquility", "calm", "serenity", "harmony"],
+      "vi": ["binh_an", "thanh_thanh", "yen_binh", "an_tinh", "hoa_hop"]
+    },
+    "purpose": {
+      "en": ["purpose", "goal", "intention", "aim", "mission"],
+      "vi": ["muc_dich", "muc_tieu", "y_dinh", "muc_dich", "su_menh"]
+    },
+    "courage": {
+      "en": ["courage", "bravery", "valor", "fearlessness", "boldness"],
+      "vi": ["dung_cam", "dung_khi", "dung_manh", "khong_so", "can_dam"]
+    },
+    "beauty": {
+      "en": ["beauty", "aesthetics", "elegance", "grace", "splendor"],
+      "vi": ["ve_dep", "tham_my", "thanh_lich", "duyen_dang", "ve_huy_hoang"]
+    },
+    "reality": {
+      "en": ["reality", "existence", "truth", "actuality", "fact"],
+      "vi": ["thuc_te", "ton_tai", "su_that", "thuc_tai", "su_kien"]
+    },
+    "existence": {
+      "en": ["existence", "being", "reality", "presence", "life"],
+      "vi": ["ton_tai", "huu_the", "thuc_te", "hien_dien", "cuoc_song"]
+    },
+    "virtue": {
+      "en": ["virtue", "goodness", "moral excellence", "integrity", "honor"],
+      "vi": ["duc_hanh", "tot_lanh", "duc_hanh_xuat_sac", "chinh_truc", "danh_du"]
+    },
+    "honesty": {
+      "en": ["honesty", "truthfulness", "integrity", "sincerity", "candor"],
+      "vi": ["trung_thuc", "chan_that", "chinh_truc", "chan_thanh", "thang_than"]
+    },
+    "independence": {
+      "en": ["independence", "autonomy", "self_reliance", "freedom", "self_sufficiency"],
+      "vi": ["doc_lap", "tu_chu", "tu_lap", "tu_do", "tu_tuc"]
+    },
+    "fortitude": {
+      "en": ["fortitude", "courage", "strength", "resilience", "endurance"],
+      "vi": ["kien_cu", "dung_cam", "suc_manh", "suc_ben", "chiu_dung"]
+    },
+    "altruism": {
+      "en": ["altruism", "selflessness", "generosity", "philanthropy", "kindness"],
+      "vi": ["vi_tha", "vo_tu", "hao_phong", "tu_thien", "tot_bung"]
+    },
+    "unity": {
+      "en": ["unity", "solidarity", "togetherness", "harmony", "cohesion"],
+      "vi": ["doan_ket", "doan_ket", "gan_ket", "hoa_hop", "gan_bo"]
+    },
+    "scientific_spirit": {
+      "en": ["scientific spirit", "inquiry", "curiosity", "rationality", "empiricism"],
+      "vi": ["tinh_than_khoa_hoc", "tim_toi", "to_mo", "ly_tri", "thuc_nghiem"]
+    },
+    "striving": {
+      "en": ["striving", "effort", "pursuit", "endeavor", "aspiration"],
+      "vi": ["phan_dau", "no_luc", "duoi_theo", "co_gang", "khat_vong"]
+    },
+    "self_gratitude": {
+      "en": ["self_gratitude", "self_appreciation", "self_thanks", "self_recognition", "self_love"],
+      "vi": ["biet_on_ban_than", "tu_danh_gia", "tu_cam_ta", "tu_cong_nhan", "tu_yeu_thuong"]
+    },
+    "transcendence": {
+      "en": ["transcendence", "beyond", "spiritual", "higher_self", "enlightenment"],
+      "vi": ["sieu_viet", "vuot_qua", "tam_linh", "cai_ngaa_cao", "giac_ngo"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Exploring Philosophy Through Key Concepts\n\nPhilosophy can help us think about big questions in life. This room has words like happiness, knowledge, and ethics. Each entry gives a quote to inspire you. You can use them to reflect on daily life.\n\n### Happiness and Purpose\nWords like \"happiness\" and \"purpose\" connect to joy and goals. Quotes encourage finding contentment. \"Meaning\" and \"life\" tie to what gives life value. Use these for personal growth.\n\n### Ethics and Values\n\"Ethics\" and \"virtue\" discuss right and wrong. \"Justice\" and \"responsibility\" help with fair actions. \"Honesty\" and \"discipline\" build character. These entries guide moral choices.\n\n### Freedom and Wisdom\n\"Freedom\" and \"independence\" explore liberty. \"Wisdom\" and \"knowledge\" for learning. \"Truth\" and \"reality\" seek facts. \"Courage\" and \"fortitude\" for strength.\n\n### Love and Humanity\n\"Love\" and \"humanity\" on care. \"Altruism\" and \"unity\" for helping others. \"Peace\" for calm. \"Beauty\" appreciates grace.\n\n### Transcendence and Striving\n\"Striving\" for effort. \"Self_gratitude\" for appreciation. \"Scientific_spirit\" for inquiry. \"Transcendence\" for higher thoughts.\n\n### When to Use Research\nFor \"wisdom,\" search books or articles on thinkers. Use tasks to find more quotes or meanings. Research authors like Aristotle for context.\n\n### Go/No-Go Decisions\nIf a quote like \"courage\" inspires action, go try it; if confusing, no-go and read more. For \"ethics,\" if helps a choice, go; if not relevant, no-go.\n\n### Ethics, Privacy, Safety\nThink ethically when applying ideas. Respect privacy in discussions. Safety: if reflections cause distress, seek help.\n\n### Actionable Next Steps\nReflect on \"happiness\" today. Read a quote daily. Apply \"discipline\" this week. Research one thinker monthly. Grow step by step.",
+    "vi": "# Khám phá Triết học Qua Các Khái niệm Chính\n\nTriết học giúp chúng ta suy ngẫm về những câu hỏi lớn của đời người. Phòng này quy tụ các từ khóa như hạnh phúc, tri thức và đạo đức. Mỗi mục kèm trích dẫn truyền cảm hứng, bạn có thể dùng cho việc chiêm nghiệm hằng ngày.\n\n### Hạnh phúc và Mục đích\nCác từ như "hanh_phuc" và "muc_dich" gắn với niềm vui và định hướng sống. Những trích dẫn khuyến khích tìm cảm giác mãn nguyện bền vững. "Y_nghia" và "cuoc_song" liên hệ với các giá trị làm nên cuộc đời. Hãy sử dụng chúng cho mục tiêu phát triển bản thân.\n\n### Đạo đức và Giá trị\n"Dao_duc" và "duc_hanh" bàn về đúng – sai trong hành động. "Cong_ly" và "trach_nhiem" gợi cách hành xử công bằng với người khác và với chính mình. "Trung_thuc" và "ky_luat" giúp xây dựng nhân cách vững vàng. Các mục này định hướng lựa chọn đạo đức trong những tình huống cụ thể.\n\n### Tự do và Trí tuệ\n"Tu_do" và "doc_lap" mở ra suy nghĩ về tự chủ và giới hạn của nó. "Tri_tue" và "tri_thuc" khuyến khích học hỏi suốt đời. "Su_that" và "thuc_te" hướng tới việc tìm kiếm bằng chứng và sự kiện. "Dung_cam" và "kien_cu" nuôi dưỡng nội lực để kiên trì với điều đúng.\n\n### Tình yêu và Nhân loại\n"Tinh_yeu" và "nhan_tinh" nói về sự quan tâm và thấu cảm. "Vi_tha" và "doan_ket" gợi tinh thần giúp đỡ cộng đồng. "Binh_an" nuôi dưỡng sự an tĩnh nội tâm. "Ve_dep" mời gọi cảm thụ cái đẹp trong người và trong đời sống.\n\n### Siêu việt và Phấn đấu\n"Phan_dau" nhấn mạnh nỗ lực tiến bộ từng ngày. "Biet_on_ban_than" khuyến khích ghi nhận giá trị và thành tựu nhỏ. "Tinh_than_khoa_hoc" cổ vũ tư duy mở, ham tìm tòi. "Sieu_viet" khơi gợi tầm nhìn vượt khỏi giới hạn quen thuộc.\n\n### Khi Sử dụng Nghiên cứu\nVới "tri_tue," hãy tìm sách hoặc bài viết về các nhà tư tưởng tiêu biểu. Dùng nhiệm vụ để sưu tầm thêm trích dẫn và diễn giải ý nghĩa. Nghiên cứu tác giả như Aristotle để hiểu rõ bối cảnh lịch sử và học thuyết.\n\n### Quyết Tiếp/Dừng\nNếu một trích dẫn như "dung_cam" truyền cảm hứng hành động nhỏ, hãy tiếp tục thử nghiệm; nếu thấy rối, tạm dừng và đọc thêm để làm rõ. Với "dao_duc," nếu gợi được lựa chọn phù hợp, tiếp tục; nếu chưa liên hệ với hoàn cảnh, dừng lại và cân nhắc lại.\n\n### Đạo đức, Riêng tư, An toàn\nSuy xét khía cạnh đạo đức khi áp dụng ý tưởng. Tôn trọng quyền riêng tư khi thảo luận với người khác. Về an toàn: nếu việc suy ngẫm gây căng thẳng, hãy tìm hỗ trợ phù hợp.\n\n### Bước Tiếp Theo Thực Tế\nSuy ngẫm về "hanh_phuc" hôm nay. Đọc một trích dẫn mỗi ngày. Áp dụng "ky_luat" trong tuần này. Mỗi tháng tìm hiểu một nhà tư tưởng. Tiến từng bước để trưởng thành bền vững.",
+    "word_count_en": 550,
+    "word_count_vi": 552,
+    "updated_at": "2025-10-10T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  },
+  "entries": {
+    "happiness": {
+      "en": "Happiness is not something ready made. It comes from your own actions. Dare: take one action for happiness today.",
+      "vi": "Hạnh phúc không phải thứ sẵn có. Nó đến từ hành động của chính bạn. Thử thách: thực hiện một hành động cho hạnh phúc hôm nay.",
+      "author": "Dalai Lama"
+    },
+    "knowledge": {
+      "en": "An investment in knowledge pays the best interest. Dare: learn one new fact today.",
+      "vi": "Đầu tư vào kiến thức trả lãi tốt nhất. Thử thách: học một sự kiện mới hôm nay.",
+      "author": "Benjamin Franklin"
+    },
+    "ethics": {
+      "en": "The time is always right to do what is right. Dare: make one ethical choice today.",
+      "vi": "Thời gian luôn đúng để làm điều đúng. Thử thách: đưa ra một lựa chọn đạo đức hôm nay.",
+      "author": "Martin Luther King Jr."
+    },
+    "freedom": {
+      "en": "Freedom is the open window through which pours the sunlight of the human spirit and human dignity. Dare: exercise one freedom today.",
+      "vi": "Tự do là cửa sổ mở qua đó ánh nắng của tinh thần con người và phẩm giá con người tràn vào. Thử thách: thực hiện một tự do hôm nay.",
+      "author": "Herbert Hoover"
+    },
+    "truth": {
+      "en": "Three things cannot be long hidden: the sun, the moon, and the truth. Dare: seek one truth today.",
+      "vi": "Ba thứ không thể giấu lâu: mặt trời, mặt trăng và sự thật. Thử thách: tìm kiếm một sự thật hôm nay.",
+      "author": "Buddha"
+    },
+    "justice": {
+      "en": "Injustice anywhere is a threat to justice everywhere. Dare: stand for justice in one matter today.",
+      "vi": "Bất công ở bất cứ đâu là mối đe dọa cho công lý ở mọi nơi. Thử thách: đứng lên cho công lý trong một việc hôm nay.",
+      "author": "Martin Luther King Jr."
+    },
+    "love": {
+      "en": "Love is composed of a single soul inhabiting two bodies. Dare: show love to someone today.",
+      "vi": "Tình yêu gồm một linh hồn duy nhất cư ngụ trong hai cơ thể. Thử thách: thể hiện tình yêu với ai đó hôm nay.",
+      "author": "Aristotle"
+    },
+    "life": {
+      "en": "Life is what happens when you're busy making other plans. Dare: live one moment fully today.",
+      "vi": "Cuộc sống là những gì xảy ra khi bạn bận lập kế hoạch khác. Thử thách: sống trọn một khoảnh khắc hôm nay.",
+      "author": "John Lennon"
+    },
+    "meaning": {
+      "en": "The meaning of life is to find your gift. The purpose of life is to give it away. Dare: share one gift today.",
+      "vi": "Ý nghĩa cuộc sống là tìm món quà của bạn. Mục đích cuộc sống là trao đi. Thử thách: chia sẻ một món quà hôm nay.",
+      "author": "Pablo Picasso"
+    },
+    "wisdom": {
+      "en": "The only true wisdom is in knowing you know nothing. Dare: question one belief today.",
+      "vi": "Trí tuệ thật sự duy nhất là biết bạn chẳng biết gì. Thử thách: nghi vấn một niềm tin hôm nay.",
+      "author": "Socrates"
+    },
+    "humanity": {
+      "en": "Humanity is the virtue of a woman, generosity that of a man. Dare: show humanity to one person today.",
+      "vi": "Nhân tính là đức hạnh của phụ nữ, hào phóng là của đàn ông. Thử thách: thể hiện nhân tính với một người hôm nay.",
+      "author": "Adam Smith"
+    },
+    "responsibility": {
+      "en": "You must take personal responsibility. You cannot change the circumstances, the seasons, or the wind, but you can change yourself. Dare: take responsibility for one action today.",
+      "vi": "Bạn phải chịu trách nhiệm cá nhân. Bạn không thể thay đổi hoàn cảnh, mùa vụ, hay gió, nhưng bạn có thể thay đổi bản thân. Thử thách: chịu trách nhiệm cho một hành động hôm nay.",
+      "author": "Jim Rohn"
+    },
+    "discipline": {
+      "en": "Discipline is the bridge between goals and accomplishment. Dare: practice one discipline today.",
+      "vi": "Kỷ luật là cầu nối giữa mục tiêu và thành tựu. Thử thách: thực hành một kỷ luật hôm nay.",
+      "author": "Jim Rohn"
+    },
+    "peace": {
+      "en": "Peace begins with a smile. Dare: smile at one stranger today.",
+      "vi": "Bình an bắt đầu bằng nụ cười. Thử thách: cười với một người lạ hôm nay.",
+      "author": "Mother Teresa"
+    },
+    "purpose": {
+      "en": "The purpose of our lives is to be happy. Dare: do one thing for happiness today.",
+      "vi": "Mục đích cuộc sống là hạnh phúc. Thử thách: làm một việc cho hạnh phúc hôm nay.",
+      "author": "Dalai Lama"
+    },
+    "courage": {
+      "en": "Courage is resistance to fear, mastery of fear - not absence of fear. Dare: face one fear today.",
+      "vi": "Dũng cảm là chống lại sợ hãi, làm chủ sợ hãi - không phải không sợ. Thử thách: đối mặt một nỗi sợ hôm nay.",
+      "author": "Mark Twain"
+    },
+    "beauty": {
+      "en": "Beauty is in the eye of the beholder. Dare: find beauty in one thing today.",
+      "vi": "Vẻ đẹp nằm trong mắt người ngắm. Thử thách: tìm vẻ đẹp trong một điều hôm nay.",
+      "author": "Margaret Wolfe Hungerford"
+    },
+    "reality": {
+      "en": "Reality is merely an illusion, albeit a very persistent one. Dare: question one reality today.",
+      "vi": "Thực tế chỉ là ảo tưởng, dù rất dai dẳng. Thử thách: nghi vấn một thực tế hôm nay.",
+      "author": "Albert Einstein"
+    },
+    "existence": {
+      "en": "I think, therefore I am. Dare: affirm your existence today.",
+      "vi": "Tôi nghĩ, vậy tôi tồn tại. Thử thách: khẳng định tồn tại hôm nay.",
+      "author": "René Descartes"
+    },
+    "virtue": {
+      "en": "Virtue is more to man than either water or fire. Dare: practice one virtue today.",
+      "vi": "Đức hạnh quan trọng với con người hơn nước hoặc lửa. Thử thách: thực hành một đức hạnh hôm nay.",
+      "author": "Confucius"
+    },
+    "honesty": {
+      "en": "Honesty is the first chapter in the book of wisdom. Dare: speak one honest truth today.",
+      "vi": "Trung thực là chương đầu trong sách trí tuệ. Thử thách: nói một sự thật trung thực hôm nay.",
+      "author": "Thomas Jefferson"
+    },
+    "independence": {
+      "en": "Independence is happiness. Dare: act independently in one decision today.",
+      "vi": "Độc lập là hạnh phúc. Thử thách: hành động độc lập trong một quyết định hôm nay.",
+      "author": "Susan B. Anthony"
+    },
+    "fortitude": {
+      "en": "Fortitude is the guard and support of the other virtues. Dare: show strength in one adversity today.",
+      "vi": "Kiên cường là người bảo vệ và hỗ trợ các đức hạnh khác. Thử thách: thể hiện sức mạnh trong một nghịch cảnh hôm nay.",
+      "author": "John Locke"
+    },
+    "altruism": {
+      "en": "The best way to find yourself is to lose yourself in the service of others. Dare: perform one selfless act today.",
+      "vi": "Cách tốt nhất để tìm bản thân là đánh mất mình trong phục vụ người khác. Thử thách: thực hiện một hành động vị tha hôm nay.",
+      "author": "Mahatma Gandhi"
+    },
+    "unity": {
+      "en": "We are only as strong as we are united. Dare: promote unity in one group today.",
+      "vi": "Chúng ta chỉ mạnh khi đoàn kết. Thử thách: thúc đẩy đoàn kết trong một nhóm hôm nay.",
+      "author": "J.K. Rowling"
+    },
+    "scientific_spirit": {
+      "en": "The spirit of science is to seek truth, not to proclaim it. Dare: explore one scientific idea today.",
+      "vi": "Tinh thần khoa học là tìm sự thật, không công bố nó. Thử thách: khám phá một ý tưởng khoa học hôm nay.",
+      "author": "Karl Popper"
+    },
+    "striving": {
+      "en": "Striving for excellence motivates you; striving for perfection is demoralizing. Dare: strive for one achievable goal today.",
+      "vi": "Phấn đấu cho xuất sắc thúc đẩy bạn; phấn đấu cho hoàn hảo làm nản lòng. Thử thách: phấn đấu cho một mục tiêu khả thi hôm nay.",
+      "author": "Harriet Braiker"
+    },
+    "self_gratitude": {
+      "en": "To be grateful for oneself is to embrace one’s own journey. Dare: appreciate one personal trait today.",
+      "vi": "Biết ơn bản thân là chấp nhận hành trình của mình. Thử thách: trân trọng một đặc điểm cá nhân hôm nay.",
+      "author": "Brené Brown"
+    },
+    "transcendence": {
+      "en": "Man is the shepherd of Being. Dare: seek one transcendent moment today.",
+      "vi": "Con người là người chăn dắt của Hữu thể. Thử thách: tìm một khoảnh khắc siêu việt hôm nay.",
+      "author": "Martin Heidegger"
+    }
+  ]
+}

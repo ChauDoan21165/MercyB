@@ -79,8 +79,9 @@ const roomFiles: { [key: string]: string } = {
   'onboarding-free-users': 'onboarding_free_users.json',
   'parenting-toddlers': 'parenting_toddlers.json',
   'relationship-conflicts': 'relationship_conflicts.json',
-  'weight-loss': 'weight_loss_program.json',
+'weight-loss': 'weight_loss_program.json',
   'anxiety-toolkit': 'anxiety_toolkit.json',
+  'philosophy': 'philosophy.json',
 };
 
 async function loadRoomData(roomId: string): Promise<any | null> {
