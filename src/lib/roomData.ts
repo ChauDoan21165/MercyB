@@ -40,7 +40,7 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "gut-brain", nameVi: "Trục ruột-não", nameEn: "Gut–Brain Axis", hasData: true, tier: "vip2", dataFile: "gut_brain_axis.json" },
   { id: "headache", nameVi: "Đau đầu", nameEn: "Headache", hasData: true, tier: "free", dataFile: "headache.json" },
   { id: "soul-mate", nameVi: "Tìm bạn đời", nameEn: "How to Find Your Soul Mate", hasData: true, tier: "vip3", dataFile: "how_to_find_your_soul_mate.json" },
-  { id: "husband-dealing", nameVi: "Quan hệ chồng", nameEn: "Husband Dealing", hasData: true, tier: "vip3", dataFile: "husband_dealing.json" },
+  { id: "husband-dealing", nameVi: "Ứng Xử Với Chồng", nameEn: "Husband Dealing", hasData: true, tier: "vip3", dataFile: "husband_dealing.json" },
   { id: "hypertension", nameVi: "Tăng huyết áp", nameEn: "Hypertension", hasData: true, tier: "free", dataFile: "hypertension.json" },
   { id: "immune-system", nameVi: "Hệ miễn dịch", nameEn: "Immune System", hasData: true, tier: "free", dataFile: "immune_system.json" },
   { id: "immunity-boost", nameVi: "Tăng cường miễn dịch", nameEn: "Immunity Boost", hasData: true, tier: "free", dataFile: "immunity_boost.json" },
@@ -71,7 +71,7 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "toddler", nameVi: "Trẻ mới biết đi", nameEn: "Toddler", hasData: true, tier: "free", dataFile: "toddler.json" },
   { id: "train-brain", nameVi: "Luyện trí nhớ", nameEn: "Train Brain Memory", hasData: true, tier: "vip2", dataFile: "train_brain_memory.json" },
   { id: "trauma", nameVi: "Chấn thương tâm lý", nameEn: "Trauma", hasData: true, tier: "vip2", dataFile: "trauma.json" },
-  { id: "wife-dealing", nameVi: "Quan hệ vợ", nameEn: "Wife Dealing", hasData: true, tier: "vip3", dataFile: "wife_dealing.json" },
+  { id: "wife-dealing", nameVi: "Ứng Xử Với Vợ", nameEn: "Wife Dealing", hasData: true, tier: "vip3", dataFile: "wife_dealing.json" },
   { id: "womens-health", nameVi: "Sức khỏe phụ nữ", nameEn: "Women's Health", hasData: true, tier: "free", dataFile: "women_health.json" }
 ];
 
