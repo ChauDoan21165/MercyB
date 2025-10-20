@@ -1,0 +1,485 @@
+{
+  "schema_version": "1.1",
+  "schema_id": "speak_to_the_crowd_20251005",
+  "description": "Mercy Blade room for practical public speaking guidance",
+  "description_vi": "Phòng Mercy Blade hướng dẫn thực tế về diễn thuyết trước đám đông",
+  "safety_disclaimer": "Educational guidance; not a substitute for professional, medical, legal, or venue security advice.",
+  "supported_languages": ["en", "vi"],
+  "localization": {"default": "en", "fallback": "en"},
+  "meta": {
+    "created_at": "2025-10-05T17:00:00+09:00",
+    "updated_at": "2025-10-05T17:00:00+09:00",
+    "checksum_sha256": null,
+    "meta_notes": "Keyword-driven; field-tested tone"
+  },
+  "enums": {
+    "tags": ["craft", "delivery", "logistics", "tech", "visuals", "audience", "promotion", "finance", "health", "mindset"],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["content", "delivery", "health", "ops"]
+  },
+  "keywords": {
+    "audience_analysis": {"en": ["audience analysis", "crowd study", "listener profile", "demographic research"], "vi": ["phân tích khán giả", "nghiên cứu đám đông", "hồ sơ người nghe", "nghiên cứu nhân khẩu"]},
+    "objective": {"en": ["objective", "speech goal", "talk purpose", "presentation aim"], "vi": ["mục tiêu", "mục đích bài nói", "ý định bài thuyết trình", "mục đích diễn thuyết"]},
+    "core_message": {"en": ["core message", "main point", "key takeaway", "central theme"], "vi": ["thông điệp cốt lõi", "ý chính", "điểm mấu chốt", "chủ đề trung tâm"]},
+    "takeaway": {"en": ["takeaway", "key lesson", "main insight", "audience retention"], "vi": ["điểm nhấn", "bài học chính", "ý chính", "giữ chân khán giả"]},
+    "outline": {"en": ["outline", "speech plan", "talk structure", "presentation roadmap"], "vi": ["phác thảo", "kế hoạch bài nói", "cấu trúc bài thuyết trình", "lộ trình diễn thuyết"]},
+    "story_structure": {"en": ["story structure", "narrative arc", "talk flow", "speech storytelling"], "vi": ["cấu trúc câu chuyện", "cung kể chuyện", "luồng bài nói", "kể chuyện diễn thuyết"]},
+    "openings": {"en": ["openings", "speech starts", "intro hooks", "first impressions"], "vi": ["mở đầu", "khởi đầu bài nói", "móc giới thiệu", "ấn tượng đầu"]},
+    "closings": {"en": ["closings", "speech endings", "final remarks", "conclusion impact"], "vi": ["kết thúc", "kết bài nói", "lời cuối", "tác động kết luận"]},
+    "hooks": {"en": ["hooks", "attention grabbers", "crowd catchers", "engagement starters"], "vi": ["móc câu", "thu hút khán giả", "gây chú ý", "khởi đầu lôi cuốn"]},
+    "signposting": {"en": ["signposting", "speech cues", "audience guides", "talk markers"], "vi": ["chỉ dẫn", "gợi ý bài nói", "hướng dẫn khán giả", "dấu hiệu diễn thuyết"]},
+    "transitions": {"en": ["transitions", "speech flow", "segment shifts", "talk bridges"], "vi": ["chuyển đoạn", "luồng bài nói", "chuyển phần", "cầu nối diễn thuyết"]},
+    "timekeeping": {"en": ["timekeeping", "speech timing", "pacing control", "duration management"], "vi": ["quản lý thời gian", "định giờ bài nói", "kiểm soát nhịp", "quản lý độ dài"]},
+    "pacing_delivery": {"en": ["pacing delivery", "speech rhythm", "talk tempo", "flow control"], "vi": ["nhịp diễn thuyết", "nhịp bài nói", "tempo bài nói", "kiểm soát luồng"]},
+    "rehearsal": {"en": ["rehearsal", "practice run", "speech prep", "delivery drill"], "vi": ["tập dượt", "chạy thử", "chuẩn bị bài nói", "luyện diễn thuyết"]},
+    "dry_run": {"en": ["dry run", "mock presentation", "practice speech", "trial delivery"], "vi": ["chạy thử", "thuyết trình thử", "bài nói tập", "diễn thử"]},
+    "memorization": {"en": ["memorization", "speech recall", "talk retention", "memory prep"], "vi": ["thuộc lòng", "nhớ bài nói", "giữ bài thuyết trình", "chuẩn bị trí nhớ"]},
+    "notes_cards": {"en": ["notes cards", "cue cards", "prompt cards", "speech notes"], "vi": ["thẻ ghi chú", "thẻ gợi ý", "thẻ nhắc", "ghi chú bài nói"]},
+    "teleprompter": {"en": ["teleprompter", "prompt device", "script reader", "speech aid"], "vi": ["máy nhắc chữ", "thiết bị nhắc", "đọc kịch bản", "trợ giúp bài nói"]},
+    "lighting": {"en": ["lighting", "stage lights", "illumination", "spotlights"], "vi": ["ánh sáng", "đèn sân khấu", "chiếu sáng", "đèn spotlight"]},
+    "sound_check": {"en": ["sound check", "audio test", "mic check", "volume test"], "vi": ["kiểm tra âm thanh", "thử âm thanh", "kiểm tra mic", "thử âm lượng"]},
+    "internet": {"en": ["internet", "wifi", "connectivity", "network"], "vi": ["internet", "wifi", "kết nối", "mạng"]},
+    "backup_plan": {"en": ["backup plan", "contingency", "plan B", "redundancy"], "vi": ["kế hoạch dự phòng", "phòng bị", "kế hoạch B", "dự phòng"]},
+    "recording_permission": {"en": ["recording permission", "filming consent", "audio permission", "video consent"], "vi": ["cho phép ghi âm", "đồng ý quay phim", "cho phép âm thanh", "đồng ý video"]}
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Practical Guidance for Public Speaking\n\nPublic speaking can be exciting and a way to share ideas. This room offers tips to prepare and deliver talks. Entries cover planning, delivery, and logistics to help you speak confidently.\n\n### Planning Your Speech\nStart with \"audience_analysis\" to understand your listeners. Set an \"objective\" for what you want to achieve. Craft a \"core_message\" and key \"takeaway.\" Use \"outline\" to structure, adding \"story_structure\" for flow. Include \"hooks\" to grab attention.\n\n### Engaging Openings and Closings\nGood \"openings\" hook the crowd. Use \"signposting\" and \"transitions\" to guide through parts. End with strong \"closings\" to leave impact.\n\n### Delivery Techniques\nPractice \"pacing_delivery\" for rhythm. \"timekeeping\" keeps you on schedule. \"rehearsal\" and \"dry_run\" build confidence. For memory, use \"memorization,\" \"notes_cards,\" or \"teleprompter.\"\n\n### Logistics and Tech Setup\nCheck \"lighting,\" \"sound_check,\" and \"internet.\" Have a \"backup_plan.\" Get \"recording_permission\" if filming.\n\n### When to Use Research\nResearch audience with \"audience_analysis.\" For venues, look up rules online. Use books on speaking for \"story_structure.\"\n\n### Moving to Go/No-Go\nAfter \"dry_run,\" if timing fits, go ahead; if not, adjust—no-go until ready. For recording, if permission granted, go; else no-go.\n\n### Ethics, Privacy, Safety\nRespect audience privacy in recordings. Ethics mean honest content. Safety: check venue exits, stay hydrated for \"health.\"\n\n### Actionable Next Steps\nAnalyze audience today. Outline speech tomorrow. Rehearse weekly. Test tech before event. Adjust based on practice. Build skills step by step.",
+    "word_count_en": 550,
+    "word_count_vi": 552,
+    "updated_at": "2025-10-10T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  },
+  "entries": [
+    {
+      "slug": "audience_analysis",
+      "title": {"en": "Audience Analysis", "vi": "Phân Tích Khán Giả"},
+      "copy": {
+        "en": "Research demographics; understand needs; tailor content. Dare: List audience traits.",
+        "vi": "Nghiên cứu nhân khẩu; hiểu nhu cầu; điều chỉnh nội dung. Dám: Liệt kê đặc điểm khán giả."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["audience", "craft"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["content"],
+      "metadata": {"topic": "audience"},
+      "artifact_id": "a1b2c3d4-5678-9012-3456-789012345678",
+      "artifact_version_id": "a1b2c3d4-5678-9012-3456-789012345678-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "objective",
+      "title": {"en": "Objective", "vi": "Mục Tiêu"},
+      "copy": {
+        "en": "Define clear goal; align content. Dare: Write objective now.",
+        "vi": "Xác định mục tiêu rõ; căn chỉnh nội dung. Dám: Viết mục tiêu ngay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["craft"],
+      "urgency": "soon",
+      "severity_level": 2,
+      "systems": ["content"],
+      "metadata": {"topic": "craft"},
+      "artifact_id": "b2c3d4e5-6789-0123-4567-890123456789",
+      "artifact_version_id": "b2c3d4e5-6789-0123-4567-890123456789-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "core_message",
+      "title": {"en": "Core Message", "vi": "Thông Điệp Cốt Lõi"},
+      "copy": {
+        "en": "Craft one key idea; repeat variations. Dare: Pin core message.",
+        "vi": "Tạo ý chính; lặp biến thể. Dám: Lưu thông điệp cốt lõi."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["craft"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["content"],
+      "metadata": {"topic": "craft"},
+      "artifact_id": "c3d4e5f6-7890-1234-5678-901234567890",
+      "artifact_version_id": "c3d4e5f6-7890-1234-5678-901234567890-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "takeaway",
+      "title": {"en": "Takeaway", "vi": "Điểm Nhấn"},
+      "copy": {
+        "en": "Summarize key action; make memorable. Dare: Pin takeaway now.",
+        "vi": "Tóm hành động chính; làm dễ nhớ. Dám: Lưu điểm nhấn ngay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["craft", "audience"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["content"],
+      "metadata": {"topic": "craft"},
+      "artifact_id": "d4e5f607-8901-2345-6789-012345678901",
+      "artifact_version_id": "d4e5f607-8901-2345-6789-012345678901-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "outline",
+      "title": {"en": "Outline", "vi": "Phác Thảo"},
+      "copy": {
+        "en": "Structure key points; logical flow. Dare: Outline talk now.",
+        "vi": "Cấu trúc điểm chính; luồng logic. Dám: Phác thảo bài nói ngay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["craft"],
+      "urgency": "soon",
+      "severity_level": 2,
+      "systems": ["content"],
+      "metadata": {"topic": "craft"},
+      "artifact_id": "e5f60718-9012-3456-7890-123456789012",
+      "artifact_version_id": "e5f60718-9012-3456-7890-123456789012-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "story_structure",
+      "title": {"en": "Story Structure", "vi": "Cấu Trúc Câu Chuyện"},
+      "copy": {
+        "en": "Build narrative arc; engage emotionally. Dare: Pin story flow.",
+        "vi": "Xây cung kể chuyện; kết nối cảm xúc. Dám: Lưu luồng chuyện."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["craft"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["content"],
+      "metadata": {"topic": "craft"},
+      "artifact_id": "f6071829-0123-4567-8901-234567890123",
+      "artifact_version_id": "f6071829-0123-4567-8901-234567890123-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "openings",
+      "title": {"en": "Openings", "vi": "Mở Đầu"},
+      "copy": {
+        "en": "Hook with story/question; set tone. Dare: Pin opener today.",
+        "vi": "Móc bằng chuyện/câu hỏi; đặt giọng. Dám: Lưu mở đầu hôm nay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["craft", "delivery"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["content"],
+      "metadata": {"topic": "craft"},
+      "artifact_id": "0718293a-1234-5678-9012-345678901234",
+      "artifact_version_id": "0718293a-1234-5678-9012-345678901234-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "closings",
+      "title": {"en": "Closings", "vi": "Kết Thúc"},
+      "copy": {
+        "en": "Summarize key points; call to action. Dare: Pin closer today.",
+        "vi": "Tóm điểm chính; kêu gọi hành động. Dám: Lưu kết thúc hôm nay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["craft", "delivery"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["content"],
+      "metadata": {"topic": "craft"},
+      "artifact_id": "18293a4b-2345-6789-0123-456789012345",
+      "artifact_version_id": "18293a4b-2345-6789-0123-456789012345-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "hooks",
+      "title": {"en": "Hooks", "vi": "Móc Câu"},
+      "copy": {
+        "en": "Use surprising fact/story; grab attention. Dare: Pin hook now.",
+        "vi": "Dùng sự kiện/chuyện bất ngờ; thu hút chú ý. Dám: Lưu móc ngay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["craft"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["content"],
+      "metadata": {"topic": "craft"},
+      "artifact_id": "293a4b5c-3456-7890-1234-567890123456",
+      "artifact_version_id": "293a4b5c-3456-7890-1234-567890123456-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "signposting",
+      "title": {"en": "Signposting", "vi": "Chỉ Dẫn"},
+      "copy": {
+        "en": "Guide with phrases; clarify structure. Dare: Pin signposts now.",
+        "vi": "Hướng dẫn bằng cụm từ; làm rõ cấu trúc. Dám: Lưu chỉ dẫn ngay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["craft", "delivery"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["delivery"],
+      "metadata": {"topic": "craft"},
+      "artifact_id": "3a4b5c6d-4567-8901-2345-678901234567",
+      "artifact_version_id": "3a4b5c6d-4567-8901-2345-678901234567-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "transitions",
+      "title": {"en": "Transitions", "vi": "Chuyển Đoạn"},
+      "copy": {
+        "en": "Smooth links between sections; maintain flow. Dare: Pin transitions now.",
+        "vi": "Liên kết mượt giữa phần; duy trì luồng. Dám: Lưu chuyển đoạn ngay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["craft", "delivery"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["delivery"],
+      "metadata": {"topic": "craft"},
+      "artifact_id": "4b5c6d7e-5678-9012-3456-789012345678",
+      "artifact_version_id": "4b5c6d7e-5678-9012-3456-789012345678-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "timekeeping",
+      "title": {"en": "Timekeeping", "vi": "Quản Lý Thời Gian"},
+      "copy": {
+        "en": "Time each section; practice pacing. Dare: Pin timing now.",
+        "vi": "Định giờ mỗi phần; luyện nhịp. Dám: Lưu thời gian ngay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["delivery"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["delivery"],
+      "metadata": {"topic": "delivery"},
+      "artifact_id": "5c6d7e8f-6789-0123-4567-890123456789",
+      "artifact_version_id": "5c6d7e8f-6789-0123-4567-890123456789-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "pacing_delivery",
+      "title": {"en": "Pacing Delivery", "vi": "Nhịp Diễn Thuyết"},
+      "copy": {
+        "en": "Vary speed; pause for emphasis. Dare: Pin pacing tips.",
+        "vi": "Thay đổi tốc độ; dừng nhấn mạnh. Dám: Lưu mẹo nhịp."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["delivery"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["delivery"],
+      "metadata": {"topic": "delivery"},
+      "artifact_id": "6d7e8f90-7890-1234-5678-901234567890",
+      "artifact_version_id": "6d7e8f90-7890-1234-5678-901234567890-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "rehearsal",
+      "title": {"en": "Rehearsal", "vi": "Tập Dượt"},
+      "copy": {
+        "en": "Practice full talk; time it. Dare: Rehearse now.",
+        "vi": "Luyện bài đầy đủ; định giờ. Dám: Tập dượt ngay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["delivery"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["delivery"],
+      "metadata": {"topic": "delivery"},
+      "artifact_id": "7e8f9012-8901-2345-6789-012345678901",
+      "artifact_version_id": "7e8f9012-8901-2345-6789-012345678901-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "dry_run",
+      "title": {"en": "Dry Run", "vi": "Chạy Thử"},
+      "copy": {
+        "en": "Simulate event; gather feedback. Dare: Dry run today.",
+        "vi": "Mô phỏng sự kiện; thu phản hồi. Dám: Chạy thử hôm nay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["delivery"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["delivery"],
+      "metadata": {"topic": "delivery"},
+      "artifact_id": "8f901234-9012-3456-7890-123456789012",
+      "artifact_version_id": "8f901234-9012-3456-7890-123456789012-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "memorization",
+      "title": {"en": "Memorization", "vi": "Thuộc Lòng"},
+      "copy": {
+        "en": "Chunk content; repeat key parts. Dare: Memorize section.",
+        "vi": "Phân khúc nội dung; lặp phần chính. Dám: Thuộc phần."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["delivery"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["delivery"],
+      "metadata": {"topic": "delivery"},
+      "artifact_id": "90123456-0123-4567-8901-234567890123",
+      "artifact_version_id": "90123456-0123-4567-8901-234567890123-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "notes_cards",
+      "title": {"en": "Notes Cards", "vi": "Thẻ Ghi Chú"},
+      "copy": {
+        "en": "Use cue cards; key phrases only. Dare: Pin cards now.",
+        "vi": "Dùng thẻ gợi ý; cụm chính thôi. Dám: Lưu thẻ ngay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["delivery", "tools"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["delivery"],
+      "metadata": {"topic": "delivery"},
+      "artifact_id": "01234567-1234-5678-9012-345678901234",
+      "artifact_version_id": "01234567-1234-5678-9012-345678901234-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "teleprompter",
+      "title": {"en": "Teleprompter", "vi": "Máy Nhắc Chữ"},
+      "copy": {
+        "en": "Setup script; practice reading. Dare: Pin script now.",
+        "vi": "Thiết lập kịch bản; luyện đọc. Dám: Lưu kịch bản ngay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["delivery", "tech"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["delivery"],
+      "metadata": {"topic": "tech"},
+      "artifact_id": "12345678-2345-6789-0123-456789012345",
+      "artifact_version_id": "12345678-2345-6789-0123-456789012345-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "lighting",
+      "title": {"en": "Lighting", "vi": "Ánh Sáng"},
+      "copy": {
+        "en": "Check stage lighting; double-check visibility. Dare: Pin lighting plan today.",
+        "vi": "Kiểm tra ánh sáng sân khấu; kiểm tra hiển thị. Dám: Lưu kế hoạch ánh sáng."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["logistics", "tech"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["ops"],
+      "metadata": {"topic": "logistics"},
+      "artifact_id": "23456789-3456-7890-1234-567890123456",
+      "artifact_version_id": "23456789-3456-7890-1234-567890123456-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "sound_check",
+      "title": {"en": "Sound Check", "vi": "Kiểm Tra Âm Thanh"},
+      "copy": {
+        "en": "Test audio setup; double-check clarity. Dare: Pin sound check today.",
+        "vi": "Kiểm tra thiết lập âm thanh; kiểm tra rõ ràng. Dám: Lưu kiểm tra âm thanh."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["tech", "logistics"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["ops"],
+      "metadata": {"topic": "tech"},
+      "artifact_id": "34567890-4567-8901-2345-678901234567",
+      "artifact_version_id": "34567890-4567-8901-2345-678901234567-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "internet",
+      "title": {"en": "Internet", "vi": "Internet"},
+      "copy": {
+        "en": "Verify wifi stability; double-check connectivity. Dare: Pin internet plan today.",
+        "vi": "Kiểm tra độ ổn định wifi; kiểm tra kết nối. Dám: Lưu kế hoạch mạng hôm nay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["tech", "logistics"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["ops"],
+      "metadata": {"topic": "tech"},
+      "artifact_id": "45678901-5678-9012-3456-789012345678",
+      "artifact_version_id": "45678901-5678-9012-3456-789012345678-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "backup_plan",
+      "title": {"en": "Backup Plan", "vi": "Kế Hoạch Dự Phòng"},
+      "copy": {
+        "en": "Stash tech contingency plan; double-check readiness. Dare: Pin backup today.",
+        "vi": "Lưu kế hoạch dự phòng công nghệ; kiểm tra sẵn sàng. Dám: Lưu dự phòng hôm nay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["tech", "logistics"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["ops"],
+      "metadata": {"topic": "logistics"},
+      "artifact_id": "56789012-6789-0123-4567-890123456789",
+      "artifact_version_id": "56789012-6789-0123-4567-890123456789-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    },
+    {
+      "slug": "recording_permission",
+      "title": {"en": "Recording Permission", "vi": "Cho Phép Ghi Âm"},
+      "copy": {
+        "en": "Notify venue for recording consent; double-check rules. Dare: Pin permission today.",
+        "vi": "Thông báo địa điểm về đồng ý ghi âm; kiểm tra quy định. Dám: Lưu phép hôm nay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["logistics", "promotion"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["ops"],
+      "metadata": {"topic": "logistics"},
+      "artifact_id": "67890123-7890-1234-5678-901234567890",
+      "artifact_version_id": "67890123-7890-1234-5678-901234567890-v001",
+      "created_at": "2025-10-05T17:00:00+09:00",
+      "updated_at": "2025-10-05T17:00:00+09:00"
+    }
+  ]
+}

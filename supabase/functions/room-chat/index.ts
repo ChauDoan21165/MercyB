@@ -53,6 +53,15 @@ const roomFiles: { [key: string]: string } = {
   'philosophy': 'philosophy.json',
   'phobia': 'phobia.json',
   'rare-diseases': 'rare_diseases.json',
+  'renal-health': 'renal_health.json',
+  'reproductive': 'reproductive_health.json',
+  'respiratory': 'respiratory_system.json',
+  'screening': 'screening_and_prevention.json',
+  'sexuality': 'sexuality_and_intimacy.json',
+  'skin-health': 'skin_health.json',
+  'sleep-health': 'sleep_health.json',
+  'social-connection': 'social_connection.json',
+  'speaking-crowd': 'speaking_crowd.json',
 };
 
 // Load room data from JSON
