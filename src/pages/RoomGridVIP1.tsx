@@ -1,29 +1,15 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, Lock, Sparkles, BarChart3 } from "lucide-react";
+import { CheckCircle2, Lock, Crown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ALL_ROOMS } from "@/lib/roomData";
 
-const RoomGrid = () => {
+const RoomGridVIP1 = () => {
   const navigate = useNavigate();
 
-  const getTierColor = (tier: string) => {
-    switch (tier) {
-      case "free": return "bg-primary/10 text-primary border-primary/20";
-      case "vip1": return "bg-secondary/10 text-secondary border-secondary/20";
-      case "vip2": return "bg-accent/10 text-accent border-accent/20";
-      case "vip3": return "bg-gradient-to-r from-accent to-primary text-white border-accent";
-      default: return "bg-muted text-muted-foreground";
-    }
-  };
-
-  const getTierLabel = (tier: string) => {
-    return tier.toUpperCase();
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5">
+    <div className="min-h-screen bg-gradient-to-br from-background via-secondary/5 to-accent/5">
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="mb-8 space-y-4">
@@ -34,32 +20,17 @@ const RoomGrid = () => {
             >
               ← Back / Quay Lại
             </Button>
-            
-            <div className="flex gap-2">
-              <Button
-                variant="outline"
-                onClick={() => navigate("/vip-requests")}
-                className="flex items-center gap-2"
-              >
-                <BarChart3 className="h-4 w-4" />
-                My Requests
-              </Button>
-              <Button
-                onClick={() => navigate("/vip-request")}
-                className="flex items-center gap-2 bg-gradient-to-r from-primary to-accent"
-              >
-                <Sparkles className="h-4 w-4" />
-                Request Custom Room
-              </Button>
-            </div>
           </div>
           
           <div className="text-center space-y-2">
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
-              Choose Your Learning Room
-            </h1>
+            <div className="flex items-center justify-center gap-2">
+              <Crown className="h-8 w-8 text-secondary" />
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
+                VIP1 Learning Rooms
+              </h1>
+            </div>
             <p className="text-lg text-muted-foreground">
-              Chọn Phòng Học Của Bạn
+              Phòng Học VIP1
             </p>
           </div>
 
@@ -74,12 +45,12 @@ const RoomGrid = () => {
 
         {/* Room Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-          {ALL_ROOMS.filter(room => room.tier === "free").map((room) => (
+          {ALL_ROOMS.filter(room => room.tier === "vip1").map((room) => (
             <Card
               key={room.id}
               className={`relative p-3 transition-all duration-300 cursor-pointer group ${
                 room.hasData 
-                  ? "hover:scale-110 hover:shadow-hover hover:z-10" 
+                  ? "hover:scale-110 hover:shadow-hover hover:z-10 border-secondary/30" 
                   : "opacity-60 cursor-not-allowed"
               }`}
               onClick={() => room.hasData && navigate(`/chat/${room.id}`)}
@@ -111,7 +82,7 @@ const RoomGrid = () => {
 
               {/* Hover Effect */}
               {room.hasData && (
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
+                <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
               )}
             </Card>
           ))}
@@ -131,4 +102,4 @@ const RoomGrid = () => {
   );
 };
 
-export default RoomGrid;
+export default RoomGridVIP1;

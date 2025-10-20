@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Welcome from "./pages/Welcome";
 import RoomGrid from "./pages/RoomGrid";
+import RoomGridVIP1 from "./pages/RoomGridVIP1";
+import RoomGridVIP2 from "./pages/RoomGridVIP2";
 import ChatHub from "./pages/ChatHub";
 import NotFound from "./pages/NotFound";
 import VIPRequestForm from "./pages/VIPRequestForm";
@@ -22,6 +24,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="/rooms" element={<RoomGrid />} />
+          <Route path="/rooms-vip1" element={<RoomGridVIP1 />} />
+          <Route path="/rooms-vip2" element={<RoomGridVIP2 />} />
           <Route path="/chat/:roomId" element={<ChatHub />} />
           <Route path="/vip-request" element={<VIPRequestForm />} />
           <Route path="/vip-requests" element={<VIPRequests />} />
