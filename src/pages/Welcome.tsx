@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { PointsDisplay } from "@/components/PointsDisplay";
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -53,6 +54,11 @@ const Welcome = () => {
           <h1 className="text-6xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
             Mercy Blade
           </h1>
+          
+          {/* Points Display */}
+          <div className="max-w-md mx-auto">
+            <PointsDisplay />
+          </div>
           
           <div className="space-y-2 max-w-3xl mx-auto">
             <p className="text-2xl font-semibold text-foreground/90">

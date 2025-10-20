@@ -1,10 +1,12 @@
 import { useEffect, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { usePoints } from "./usePoints";
 
 export const useRoomAnalytics = (roomId: string) => {
   const sessionIdRef = useRef<string | null>(null);
   const startTimeRef = useRef<number>(Date.now());
   const messageCountRef = useRef<number>(0);
+  const { awardPoints } = usePoints();
 
   useEffect(() => {
     initSession();
@@ -57,8 +59,10 @@ export const useRoomAnalytics = (roomId: string) => {
     }
   };
 
-  const trackMessage = () => {
+  const trackMessage = async () => {
     messageCountRef.current++;
+    // Award 5 points for each message sent
+    await awardPoints(5, "message_sent", "Sent a message in chat", roomId);
   };
 
   const markCompleted = async () => {
@@ -69,6 +73,9 @@ export const useRoomAnalytics = (roomId: string) => {
         .from("room_usage_analytics")
         .update({ completed_room: true })
         .eq("id", sessionIdRef.current);
+      
+      // Award 50 points for completing a room
+      await awardPoints(50, "room_completed", "Completed a learning room", roomId);
     } catch (error) {
       console.error("Error marking room as completed:", error);
     }
