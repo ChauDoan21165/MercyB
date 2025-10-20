@@ -54,7 +54,6 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "obesity", nameVi: "Béo phì", nameEn: "Obesity", hasData: true, tier: "free", dataFile: "obesity.json" },
   { id: "office-survival", nameVi: "Sống còn văn phòng", nameEn: "Office Survival", hasData: true, tier: "vip2", dataFile: "office_survival.json" },
   { id: "pain-management", nameVi: "Quản lý đau", nameEn: "Pain Management", hasData: true, tier: "vip1", dataFile: "pain_management.json" },
-  { id: "philosophy", nameVi: "Triết học hàng ngày", nameEn: "Philosophy for Everyday", hasData: true, tier: "vip2", dataFile: "philosophy.json" },
   { id: "phobia", nameVi: "Ám ảnh sợ hãi", nameEn: "Phobia", hasData: true, tier: "vip1", dataFile: "phobia.json" },
   { id: "rare-diseases", nameVi: "Bệnh hiếm", nameEn: "Rare Diseases", hasData: true, tier: "vip2", dataFile: "rare_diseases.json" },
   { id: "renal-health", nameVi: "Sức khỏe thận", nameEn: "Renal Health", hasData: true, tier: "vip1", dataFile: "renal_health.json" },
