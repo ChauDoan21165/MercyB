@@ -4,6 +4,7 @@ import addiction from '@/data/rooms/addiction.json';
 import ai from '@/data/rooms/AI.json';
 import autoimmune from '@/data/rooms/autoimmune_diseases.json';
 import burnout from '@/data/rooms/burnout.json';
+import careerBurnout from '@/data/rooms/career_burnout.json';
 import businessNegotiation from '@/data/rooms/business_negotiation_compass.json';
 import businessStrategy from '@/data/rooms/business_strategy.json';
 import cancerSupport from '@/data/rooms/cancer_support.json';
@@ -67,6 +68,7 @@ export const roomDataMap: Record<string, any> = {
   'ai': ai,
   'autoimmune': autoimmune,
   'burnout': burnout,
+  'career-burnout': careerBurnout,
   'business-negotiation': businessNegotiation,
   'business-strategy': businessStrategy,
   'cancer-support': cancerSupport,

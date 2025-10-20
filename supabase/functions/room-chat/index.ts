@@ -13,6 +13,7 @@ const roomFiles: { [key: string]: string } = {
   'ai': 'AI-2.json',
   'autoimmune': 'autoimmune_diseases-2.json',
   'burnout': 'burnout-2.json',
+  'career-burnout': 'career_burnout.json',
   'business-negotiation': 'business_negotiation_compass.json',
   'business-strategy': 'business_strategy-2.json',
   'cancer-support': 'cancer_support-2.json',
