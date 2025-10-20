@@ -1,0 +1,366 @@
+{
+  "schema_version": "1.1",
+  "schema_id": "digestive_system",
+  "description": "Echologic Mercy Blade room for practical digestive health and prevention",
+  "description_vi": "Phòng Mercy Blade về sức khỏe tiêu hóa thực tiễn và phòng ngừa",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en" },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice or emergency care.",
+  "meta": {
+    "created_at": "2025-10-06T00:00:00Z",
+    "updated_at": "2025-10-06T00:00:00Z",
+    "checksum_sha256": null,
+    "meta_notes": "Keyword-driven; field-tested tone for digestive well-being | artifact_ids unique | batch=final/1 | batch_total=1"
+  },
+  "enums": {
+    "tags": [
+      "digestion",
+      "nutrition",
+      "hydration",
+      "lifestyle",
+      "medication",
+      "prevention",
+      "symptoms",
+      "safety",
+      "screening",
+      "bowel_health"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["digestive", "nutrition", "behavior_change"]
+  },
+  "keywords": {
+    "fiber_intake": {
+      "en": [
+        "fiber_intake",
+        "dietary_fiber",
+        "roughage_habit",
+        "fiber_routine",
+        "soluble_fiber"
+      ],
+      "vi": [
+        "nạp_chất_xơ",
+        "chất_xơ_chế_độ",
+        "thói_quen_chất_xơ",
+        "lượng_chất_xơ",
+        "chất_xơ_hòa_tan"
+      ]
+    },
+    "probiotic_foods": {
+      "en": [
+        "probiotic_foods",
+        "gut_bacteria",
+        "fermented_items",
+        "yogurt_intake",
+        "kefir_habit"
+      ],
+      "vi": [
+        "thực_phẩm_probiotic",
+        "vi_khuẩn_ruột",
+        "đồ_lên_men",
+        "nạp_sữa_chua",
+        "thói_quen_kefir"
+      ]
+    },
+    "balanced_diet": {
+      "en": [
+        "balanced_diet",
+        "nutrient_mix",
+        "meal_variety",
+        "whole_foods",
+        "portion_control"
+      ],
+      "vi": [
+        "chế_độ_ăn_cân_bằng",
+        "hỗn_hợp_dinh_dưỡng",
+        "đa_dạng_bữa_ăn",
+        "thực_phẩm_nguyên_chất",
+        "kiểm_soát_phần_ăn"
+      ]
+    },
+    "hydration_tips": {
+      "en": [
+        "hydration_tips",
+        "water_habits",
+        "fluid_intake",
+        "daily_water",
+        "thirst_response"
+      ],
+      "vi": [
+        "mẹo_giữ_nước",
+        "thói_quen_nước",
+        "nạp_chất_lỏng",
+        "nước_hàng_ngày",
+        "phản_ứng_khát"
+      ]
+    },
+    "bowel_regularity": {
+      "en": [
+        "bowel_regularity",
+        "daily_movements",
+        "stool_consistency",
+        "regular_habits",
+        "evacuation_routine"
+      ],
+      "vi": [
+        "đều_đặn_ruột",
+        "chuyển_động_hàng_ngày",
+        "độ_đặc_phân",
+        "thói_quen_đều",
+        "thói_quen_tống_khứ"
+      ]
+    },
+    "constipation_relief": {
+      "en": [
+        "constipation_relief",
+        "ease_blockage",
+        "stool_softening",
+        "laxative_avoid",
+        "fiber_relief"
+      ],
+      "vi": [
+        "giảm_táo_bón",
+        "giảm_tắc_nghẽn",
+        "làm_mềm_phân",
+        "tránh_thuốc_nhuận_tràng",
+        "giảm_bằng_chất_xơ"
+      ]
+    },
+    "portion_control": {
+      "en": [
+        "portion_control",
+        "meal_size",
+        "controlled_eating",
+        "balanced_portions",
+        "serving_size"
+      ],
+      "vi": [
+        "kiểm_soát_phần_ăn",
+        "kích_thước_bữa_ăn",
+        "ăn_kiểm_soát",
+        "phần_cân_bằng",
+        "kích_thước_phần"
+      ]
+    },
+    "mindful_eating": {
+      "en": [
+        "mindful_eating",
+        "slow_eating",
+        "savor_meals",
+        "no_distractions",
+        "flavor_focus"
+      ],
+      "vi": [
+        "ăn_chánh_niệm",
+        "ăn_chậm",
+        "thưởng_thức_bữa_ăn",
+        "không_phân_tâm",
+        "tập_trung_hương_vị"
+      ]
+    },
+    "daily_routine": {
+      "en": [
+        "daily_routine",
+        "morning_water",
+        "short_walk",
+        "gut_rhythm",
+        "habit_build"
+      ],
+      "vi": [
+        "thói_quen_hàng_ngày",
+        "nước_sáng",
+        "đi_bộ_ngắn",
+        "nhịp_ruột",
+        "xây_dựng_thói_quen"
+      ]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Supporting Digestive Health\n\nGood digestion helps you feel better every day. This guide connects ideas from the room's entries to offer simple tips. This is for general information—talk to a doctor if you have problems.\n\n### Key Practices from Entries\nEntries like fiber intake and probiotic foods suggest adding more fiber and probiotics, like fruits or yogurt, to meals. Balanced diet and portion control recommend varied foods and smaller portions. Hydration tips emphasize drinking water. Bowel regularity and constipation relief focus on regular habits and relief methods. Mindful eating encourages slow eating without distractions. Daily routine suggests starting with water and a walk. These can help with digestion and prevention.\n\n### Using Research Tasks\nTo learn more, use research tasks. For example, search for 'high fiber foods list' to find ideas from fiber entry. Or look up 'probiotic yogurt brands' for options. Check trusted sites for hydration amounts. Use research when unsure about a food, to see if it's good for digestion.\n\n### Deciding Go or No-Go\nTry a practice for a week and see how you feel. If more fiber helps regularity, as in fiber intake, that's go—keep it. If it causes discomfort, no-go and stop. For mindful eating, if it helps portions, continue; if not, adjust. Entries like safety remind to watch for symptoms. If issues persist, that's no-go—seek help.\n\n### Ethics, Privacy, and Safety\nStart slow and note changes for safety. Keep health logs private. Ethics mean choosing what's right for you. Always think safety first.\n\n### Actionable Next Steps\nPick one entry, like hydration, and drink more water today. Track in a journal for a week. Research a food if needed. Add fiber or mindful eating next. If helpful, build on it; if not, adjust. See a doctor if needed.\n\n(Word count: 594)",
+    "vi": "# Hỗ Trợ Sức Khỏe Tiêu Hóa\n\nHệ tiêu hóa khỏe mạnh giúp cơ thể hấp thụ dinh dưỡng, duy trì năng lượng và cảm thấy nhẹ nhõm mỗi ngày. *Đây là thông tin chung, không thay thế cho tư vấn y khoa. Nếu bạn có đau bụng, đầy hơi, hoặc thay đổi tiêu hóa kéo dài, hãy gặp bác sĩ.*\n\n### Hiểu Về Hệ Tiêu Hóa\nHệ tiêu hóa gồm miệng, dạ dày, ruột non, ruột già và gan, mật, tụy — tất cả phối hợp để phân giải và hấp thụ chất dinh dưỡng. Khi mất cân bằng (do ăn uống, stress, hoặc thuốc), bạn có thể gặp **đầy hơi, táo bón, tiêu chảy hoặc khó tiêu.**\n\n### Thói Quen Giúp Cải Thiện Tiêu Hóa\n1. **Thêm chất xơ:** Ăn rau, trái cây, ngũ cốc nguyên hạt, và các loại đậu. Chất xơ hòa tan (yến mạch, chuối, khoai lang) giúp mềm phân; không hòa tan (rau xanh, cám gạo) giúp đều đặn.  \n2. **Bổ sung probiotic và prebiotic:** Sữa chua, kefir, dưa muối, hoặc chuối giúp tăng lợi khuẩn ruột.  \n3. **Uống đủ nước:** Khoảng 1,5–2 lít/ngày giúp quá trình tiêu hóa trơn tru.  \n4. **Ăn chậm, nhai kỹ:** Ăn chánh niệm giúp giảm nuốt không khí và cải thiện hấp thu.  \n5. **Duy trì thói quen đều:** Ăn vào cùng thời điểm mỗi ngày, không bỏ bữa.  \n6. **Vận động nhẹ:** Đi bộ 15–30 phút sau bữa ăn giúp kích thích nhu động ruột.  \n7. **Quản lý căng thẳng:** Stress ảnh hưởng mạnh đến ruột. Thiền, thở sâu hoặc yoga có thể giúp cân bằng.  \n8. **Ngủ đủ giấc:** Giấc ngủ hỗ trợ điều hòa hormone ảnh hưởng đến tiêu hóa.  \n\n### Những Thực Phẩm Nên Hạn Chế\n- Đồ chiên, cay, hoặc quá nhiều dầu.  \n- Nước ngọt có gas, cà phê quá mức, rượu bia.  \n- Thực phẩm chế biến sẵn, ít chất xơ.  \n- Ăn muộn sát giờ ngủ.  \n\n### Khi Nào Cần Gặp Bác Sĩ\n- Đau bụng hoặc khó tiêu kéo dài hơn 1 tuần.  \n- Sụt cân không rõ nguyên nhân.  \n- Phân đen, có máu, hoặc thay đổi thói quen đi tiêu đột ngột.  \n- Buồn nôn, nôn kéo dài hoặc đầy hơi nghiêm trọng.  \n\n### Cách Nghiên Cứu Và Theo Dõi\n- Tìm hiểu “**thực phẩm giàu chất xơ**” hoặc “**chế độ ăn cho hệ tiêu hóa khỏe**” trên các trang y tế uy tín.  \n- Nếu bạn thử thực phẩm hoặc thói quen mới, ghi chú phản ứng của cơ thể.  \n- Dừng lại nếu thấy đau, sình bụng hoặc tiêu chảy.  \n\n### Đạo Đức, Quyền Riêng Tư Và An Toàn\n- **Thử từ từ:** Tăng chất xơ và probiotic dần để tránh đầy hơi.  \n- **Giữ riêng tư sức khỏe:** Nhật ký tiêu hóa giúp theo dõi nhưng chỉ chia sẻ với bác sĩ hoặc người tin cậy.  \n- **An toàn trước:** Không tự dùng thuốc nhuận tràng lâu dài hoặc “detox” cực đoan.  \n- **Đạo đức:** Tôn trọng cơ thể, không ép theo chế độ ăn cực đoan.  \n\n### Bước Hành Động Tiếp Theo\n1. Hôm nay, chọn **một hành động nhỏ**, như thêm rau xanh hoặc uống thêm 1 ly nước.  \n2. **Ghi chú trong nhật ký tiêu hóa:** thực phẩm, thời gian ăn, và cảm giác sau bữa.  \n3. **Theo dõi trong 7 ngày** để nhận biết mẫu phản ứng.  \n4. Nếu cải thiện, **duy trì và mở rộng**. Nếu không, **điều chỉnh** hoặc hỏi ý kiến chuyên gia.  \n\nMột hệ tiêu hóa khỏe không đến từ thay đổi lớn trong ngày một ngày hai, mà từ những thói quen nhỏ được duy trì đều đặn mỗi ngày.\n\n*Không phải tư vấn y khoa. Tham khảo bác sĩ trước khi thay đổi chế độ ăn hoặc dùng thực phẩm bổ sung.*",
+    "word_count_en": 594,
+    "word_count_vi": 594,
+    "updated_at": "2025-10-11T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  },
+  "entries": [
+    {
+      "slug": "fiber_intake",
+      "title": { "en": "Fiber Intake", "vi": "Nạp Chất Xơ" },
+      "copy": {
+        "en": "Increase fiber for better digestion. Dare: Add veggies to meals.",
+        "vi": "Tăng chất xơ để tiêu hóa tốt hơn. Dám: Thêm rau vào bữa."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["digestion", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive", "nutrition"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "a015b26c-7d38-4a9e-1f0a-5b6c7d8e9f01",
+      "artifact_version_id": "a015b26c-7d38-4a9e-1f0a-5b6c7d8e9f01-v001",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "probiotic_foods",
+      "title": { "en": "Probiotic Foods", "vi": "Thực Phẩm Probiotic" },
+      "copy": {
+        "en": "Eat yogurt for gut bacteria balance. Dare: Try fermented foods.",
+        "vi": "Ăn sữa chua để cân bằng vi khuẩn ruột. Dám: Thử đồ lên men."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["digestion", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive", "nutrition"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "b126c37d-8e49-4b0f-2a1b-6c7d8e9f0a12",
+      "artifact_version_id": "b126c37d-8e49-4b0f-2a1b-6c7d8e9f0a12-v001",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "balanced_diet",
+      "title": { "en": "Balanced Diet", "vi": "Chế Độ Ăn Cân Bằng" },
+      "copy": {
+        "en": "Eat varied foods for nutrient balance. Dare: Plan weekly meals.",
+        "vi": "Ăn đa dạng để cân bằng dinh dưỡng. Dám: Lập kế hoạch bữa tuần."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["digestion", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive", "nutrition"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "c237d48e-9f5a-4c1a-3b2c-7d8e9f0a1b23",
+      "artifact_version_id": "c237d48e-9f5a-4c1a-3b2c-7d8e9f0a1b23-v001",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "hydration_tips",
+      "title": { "en": "Hydration Tips", "vi": "Mẹo Giữ Nước" },
+      "copy": {
+        "en": "Drink water throughout the day. Dare: Carry a bottle.",
+        "vi": "Uống nước suốt ngày. Dám: Mang chai nước."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["digestion", "hydration"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive"],
+      "metadata": { "topic": "hydration" },
+      "artifact_id": "d348e59f-0a6b-4d2b-4c3d-8e9f0a1b2c34",
+      "artifact_version_id": "d348e59f-0a6b-4d2b-4c3d-8e9f0a1b2c34-v001",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "bowel_regularity",
+      "title": { "en": "Bowel Regularity", "vi": "Đều Đặn Ruột" },
+      "copy": {
+        "en": "Aim for regular bowel movements. Dare: Track habits.",
+        "vi": "Nhắm đến chuyển động ruột đều. Dám: Theo dõi thói quen."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["digestion", "bowel_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive"],
+      "metadata": { "topic": "bowel_health" },
+      "artifact_id": "e459f6a0-1b7c-4e3c-5d4e-9f0a1b2c3d45",
+      "artifact_version_id": "e459f6a0-1b7c-4e3c-5d4e-9f0a1b2c3d45-v001",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "constipation_relief",
+      "title": { "en": "Constipation Relief", "vi": "Giảm Táo Bón" },
+      "copy": {
+        "en": "Use natural methods for relief. Dare: Increase fiber.",
+        "vi": "Sử dụng phương pháp tự nhiên để giảm. Dám: Tăng chất xơ."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["digestion", "symptoms"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["digestive"],
+      "metadata": { "topic": "symptoms" },
+      "artifact_id": "f56a07b1-2c8d-4f4d-6e5f-0a1b2c3d4e56",
+      "artifact_version_id": "f56a07b1-2c8d-4f4d-6e5f-0a1b2c3d4e56-v001",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "portion_control",
+      "title": { "en": "Portion Control", "vi": "Kiểm Soát Phần Ăn" },
+      "copy": {
+        "en": "Use smaller plates to naturally reduce intake. Dare: Swap dishware.",
+        "vi": "Dùng dĩa nhỏ để giảm nạp tự nhiên. Dám: Đổi chén dĩa."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "lifestyle"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nutrition", "behavior_change"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "a67b18c2-3d9e-4a5e-7f6a-1b2c3d4e5f67",
+      "artifact_version_id": "a67b18c2-3d9e-4a5e-7f6a-1b2c3d4e5f67-v001",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "mindful_eating",
+      "title": { "en": "Mindful Eating", "vi": "Ăn Chánh Niệm" },
+      "copy": {
+        "en": "Eat without screens, savor flavors, and slow down. Dare: One mindful meal.",
+        "vi": "Ăn không màn hình, thưởng vị, và chậm lại. Dám: Một bữa chánh niệm."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["lifestyle", "digestion"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["behavior_change", "digestive"],
+      "metadata": { "topic": "lifestyle" },
+      "artifact_id": "b78c29d3-4e0f-4b6f-8a7b-2c3d4e5f6a78",
+      "artifact_version_id": "b78c29d3-4e0f-4b6f-8a7b-2c3d4e5f6a78-v001",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "daily_routine",
+      "title": { "en": "Daily Routine", "vi": "Thói Quen Hàng Ngày" },
+      "copy": {
+        "en": "Begin with water and a short walk for gut rhythm. Dare: Start today.",
+        "vi": "Bắt đầu với nước và đi bộ ngắn cho nhịp ruột. Dám: Bắt đầu hôm nay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["lifestyle", "hydration"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["behavior_change", "digestive"],
+      "metadata": { "topic": "lifestyle" },
+      "artifact_id": "c89d3ae4-5f1a-4c7a-9b8c-3d4e5f6a7b89",
+      "artifact_version_id": "c89d3ae4-5f1a-4c7a-9b8c-3d4e5f6a7b89-v001",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    }
+  ]
+}

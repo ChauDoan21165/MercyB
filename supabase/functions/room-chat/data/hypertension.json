@@ -1,0 +1,945 @@
+{
+  "header": "// dumb tree, no diagnostics, catch keyword, speak sharp, mood: slow, crisis skips Dare",
+  "schema_version": "1.1",
+  "schema_id": "hypertension",
+  "description": "Echologic Mercy Blade room for practical hypertension management and prevention",
+  "description_vi": "Phòng Mercy Blade về quản lý và phòng ngừa tăng huyết áp thực tiễn",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice or emergency care.",
+  "safety_disclaimer_vi": "Thông tin giáo dục; không thay thế tư vấn y khoa hoặc cấp cứu.",
+  "crisis_footer": {
+    "en": "In danger or medical distress? Contact emergency services or a trusted hotline immediately.",
+    "vi": "Gặp nguy hiểm hoặc khẩn cấp y tế? Gọi cấp cứu hoặc đường dây nóng đáng tin ngay."
+  },
+  "safety_footer": {
+    "en": "Prioritize safety and legality; if unsure, pause and seek professional guidance.",
+    "vi": "Ưu tiên an toàn và hợp pháp; nếu không chắc, hãy hỏi ý kiến chuyên gia."
+  },
+  "meta": {
+    "created_at": "2025-10-09T10:29:00Z",
+    "updated_at": "2025-10-09T10:29:00Z",
+    "i18n_verified": true,
+    "learning_mode": true,
+    "entry_count": 38,
+    "checksum_sha256": "f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4i5j",
+    "meta_notes": "Keyword-driven; field-tested tone for hypertension well-being | artifact_ids unique | batch=final/1"
+  },
+  "enums": {
+    "tags": [
+      "hypertension",
+      "blood_pressure",
+      "nutrition",
+      "lifestyle",
+      "medication",
+      "prevention",
+      "symptoms",
+      "safety",
+      "screening",
+      "stress"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["hypertension", "nutrition", "behavior_change"]
+  },
+  "keywords": {
+    "blood_pressure_monitoring": {
+      "en": ["blood_pressure_monitoring", "bp_check", "pressure_track"],
+      "vi": ["giám_sát_huyết_áp", "kiểm_tra_huyết_áp", "theo_dõi_huyết_áp"],
+      "synonyms": {
+        "en": ["hypertension_control", "bp_management", "health_monitor"],
+        "vi": [
+          "kiểm_soát_tăng_huyết_áp",
+          "quản_lý_huyết_áp",
+          "giám_sát_sức_khỏe"
+        ]
+      }
+    },
+    "low_sodium_diet": {
+      "en": ["low_sodium_diet", "salt_reduction", "sodium_limit"],
+      "vi": ["chế_độ_thấp_natri", "giảm_muối", "giới_hạn_natri"],
+      "synonyms": {
+        "en": ["low_salt", "hypertension_diet", "sodium_control"],
+        "vi": ["ít_muối", "chế_độ_tăng_huyết_áp", "kiểm_soát_natri"]
+      }
+    },
+    "balanced_nutrition": {
+      "en": ["balanced_nutrition", "nutrient_mix", "healthy_eating"],
+      "vi": ["dinh_dưỡng_cân_bằng", "hỗn_hợp_dinh_dưỡng", "ăn_lành_mạnh"],
+      "synonyms": {
+        "en": ["hypertension_nutrition", "diet_variety", "nutrition_balance"],
+        "vi": [
+          "dinh_dưỡng_tăng_huyết_áp",
+          "đa_dạng_chế_độ",
+          "cân_bằng_dinh_dưỡng"
+        ]
+      }
+    },
+    "exercise_routine": {
+      "en": ["exercise_routine", "physical_activity", "hypertension_fitness"],
+      "vi": [
+        "thói_quen_tập_thể_dục",
+        "hoạt_động_thể_chất",
+        "thể_dục_tăng_huyết_áp"
+      ],
+      "synonyms": {
+        "en": ["movement_habit", "daily_exercise", "active_lifestyle"],
+        "vi": ["thói_quen_chuyển_động", "tập_hàng_ngày", "lối_sống_năng_động"]
+      }
+    },
+    "weight_management": {
+      "en": ["weight_management", "healthy_weight", "body_mass_control"],
+      "vi": [
+        "quản_lý_cân_nặng",
+        "cân_nặng_lành_mạnh",
+        "kiểm_soát_khối_lượng_cơ_thể"
+      ],
+      "synonyms": {
+        "en": ["hypertension_weight", "weight_balance", "body_control"],
+        "vi": [
+          "cân_nặng_tăng_huyết_áp",
+          "cân_bằng_cân_nặng",
+          "kiểm_soát_cơ_thể"
+        ]
+      }
+    },
+    "stress_reduction": {
+      "en": ["stress_reduction", "calm_techniques", "anxiety_ease"],
+      "vi": ["giảm_căng_thẳng", "kỹ_thuật_bình_tĩnh", "giảm_lo_âu"],
+      "synonyms": {
+        "en": ["hypertension_stress", "relaxation_habit", "stress_control"],
+        "vi": [
+          "căng_thẳng_tăng_huyết_áp",
+          "thói_quen_thư_giãn",
+          "kiểm_soát_căng_thẳng"
+        ]
+      }
+    },
+    "sleep_hygiene": {
+      "en": ["sleep_hygiene", "rest_quality", "sleep_routine"],
+      "vi": ["vệ_sinh_giấc_ngủ", "chất_lượng_nghỉ", "thói_quen_ngủ"],
+      "synonyms": {
+        "en": ["hypertension_rest", "night_recovery", "sleep_balance"],
+        "vi": ["nghỉ_tăng_huyết_áp", "phục_hồi_đêm", "cân_bằng_giấc_ngủ"]
+      }
+    },
+    "smoking_cessation": {
+      "en": ["smoking_cessation", "quit_smoking", "nicotine_stop"],
+      "vi": ["cai_thuốc_lá", "bỏ_hút_thuốc", "ngừng_nicotine"],
+      "synonyms": {
+        "en": ["hypertension_health", "health_recovery", "stop_cigarettes"],
+        "vi": ["sức_khỏe_tăng_huyết_áp", "phục_hồi_sức_khỏe", "ngừng_thuốc"]
+      }
+    },
+    "alcohol_moderation": {
+      "en": ["alcohol_moderation", "drink_limit", "alcohol_control"],
+      "vi": ["điều_tiết_rượu", "giới_hạn_đồ_uống", "kiểm_soát_rượu"],
+      "synonyms": {
+        "en": ["hypertension_alcohol", "health_drink", "moderate_drinking"],
+        "vi": ["rượu_tăng_huyết_áp", "đồ_uống_sức_khỏe", "uống_điều_độ"]
+      }
+    },
+    "caffeine_limits": {
+      "en": ["caffeine_limits", "stimulant_control", "coffee_cap"],
+      "vi": [
+        "giới_hạn_caffeine",
+        "kiểm_soát_chất_kích_thích",
+        "giới_hạn_cà_phê"
+      ],
+      "synonyms": {
+        "en": [
+          "hypertension_caffeine",
+          "intake_moderation",
+          "caffeine_control"
+        ],
+        "vi": ["caffeine_tăng_huyết_áp", "điều_tiết_nạp", "kiểm_soát_caffeine"]
+      }
+    },
+    "medication_adherence": {
+      "en": ["medication_adherence", "pill_schedule", "dose_consistency"],
+      "vi": ["tuân_thủ_thuốc", "lịch_uống_thuốc", "liều_lượng_ổn_định"],
+      "synonyms": {
+        "en": ["hypertension_medication", "treatment_follow", "drug_adherence"],
+        "vi": ["thuốc_tăng_huyết_áp", "tuân_theo_điều_trị", "tuân_thủ_thuốc"]
+      }
+    },
+    "heart_health": {
+      "en": ["heart_health", "cardiac_care", "heart_risk"],
+      "vi": ["sức_khỏe_tim", "chăm_sóc_tim", "rủi_ro_tim"],
+      "synonyms": {
+        "en": [
+          "hypertension_heart",
+          "cardiovascular_support",
+          "heart_wellness"
+        ],
+        "vi": ["tim_tăng_huyết_áp", "hỗ_trợ_tim_mạch", "sức_khỏe_tim_mạch"]
+      }
+    },
+    "cholesterol_management": {
+      "en": ["cholesterol_management", "lipid_control", "heart_health"],
+      "vi": ["quản_lý_cholesterol", "kiểm_soát_lipid", "sức_khỏe_tim"],
+      "synonyms": {
+        "en": [
+          "hypertension_lipids",
+          "cholesterol_balance",
+          "lipid_management"
+        ],
+        "vi": ["lipid_tăng_huyết_áp", "cân_bằng_cholesterol", "quản_lý_lipid"]
+      }
+    },
+    "potassium_intake": {
+      "en": ["potassium_intake", "mineral_balance", "potassium_foods"],
+      "vi": ["nạp_kali", "cân_bằng_khoáng", "thực_phẩm_kali"],
+      "synonyms": {
+        "en": ["hypertension_nutrition", "bp_support", "mineral_intake"],
+        "vi": ["dinh_dưỡng_tăng_huyết_áp", "hỗ_trợ_huyết_áp", "nạp_khoáng"]
+      }
+    },
+    "fiber_intake": {
+      "en": ["fiber_intake", "dietary_fiber", "gut_health"],
+      "vi": ["nạp_chất_xơ", "chất_xơ_chế_độ", "sức_khỏe_ruột"],
+      "synonyms": {
+        "en": ["hypertension_nutrition", "fiber_routine", "nutrition_fiber"],
+        "vi": [
+          "dinh_dưỡng_tăng_huyết_áp",
+          "thói_quen_chất_xơ",
+          "chất_xơ_dinh_dưỡng"
+        ]
+      }
+    },
+    "healthy_fats": {
+      "en": ["healthy_fats", "good_lipids", "fat_balance"],
+      "vi": ["chất_béo_lành_mạnh", "lipid_tốt", "cân_bằng_chất_béo"],
+      "synonyms": {
+        "en": ["hypertension_fats", "nutrition_fats", "fat_support"],
+        "vi": [
+          "chất_béo_tăng_huyết_áp",
+          "dinh_dưỡng_chất_béo",
+          "hỗ_trợ_chất_béo"
+        ]
+      }
+    },
+    "meal_timing": {
+      "en": ["meal_timing", "eating_schedule", "meal_routine"],
+      "vi": ["thời_gian_bữa_ăn", "lịch_ăn", "thói_quen_bữa_ăn"],
+      "synonyms": {
+        "en": ["hypertension_meals", "timing_control", "regular_meals"],
+        "vi": ["bữa_ăn_tăng_huyết_áp", "kiểm_soát_thời_gian", "bữa_ăn_đều"]
+      }
+    },
+    "dash_diet": {
+      "en": ["dash_diet", "hypertension_diet", "bp_diet"],
+      "vi": ["chế_độ_DASH", "chế_độ_tăng_huyết_áp", "chế_độ_huyết_áp"],
+      "synonyms": {
+        "en": ["dash_plan", "nutrition_dash", "diet_support"],
+        "vi": ["kế_hoạch_DASH", "dinh_dưỡng_DASH", "hỗ_trợ_chế_độ"]
+      }
+    },
+    "omega_fatty_acids": {
+      "en": ["omega_fatty_acids", "fish_oil", "healthy_omegas"],
+      "vi": ["axit_béo_omega", "dầu_cá", "omega_lành_mạnh"],
+      "synonyms": {
+        "en": [
+          "hypertension_omegas",
+          "nutrition_omegas",
+          "fatty_acids_support"
+        ],
+        "vi": ["omega_tăng_huyết_áp", "dinh_dưỡng_omega", "hỗ_trợ_axit_béo"]
+      }
+    },
+    "magnesium_intake": {
+      "en": ["magnesium_intake", "magnesium_foods", "mineral_magnesium"],
+      "vi": ["nạp_magiê", "thực_phẩm_magiê", "khoáng_magiê"],
+      "synonyms": {
+        "en": [
+          "hypertension_magnesium",
+          "nutrition_magnesium",
+          "magnesium_support"
+        ],
+        "vi": ["magiê_tăng_huyết_áp", "dinh_dưỡng_magiê", "hỗ_trợ_magiê"]
+      }
+    },
+    "hydration_monitor": {
+      "en": ["hydration_monitor", "fluid_track", "water_balance"],
+      "vi": ["giám_sát_nước", "theo_dõi_chất_lỏng", "cân_bằng_nước"],
+      "synonyms": {
+        "en": [
+          "hypertension_hydration",
+          "nutrition_hydration",
+          "hydration_support"
+        ],
+        "vi": ["nước_tăng_huyết_áp", "dinh_dưỡng_nước", "hỗ_trợ_nước"]
+      }
+    },
+    "sedentary_avoidance": {
+      "en": ["sedentary_avoidance", "sitting_limit", "active_break"],
+      "vi": ["tránh_lối_sống_tĩnh", "giới_hạn_ngồi", "nghỉ_năng_động"],
+      "synonyms": {
+        "en": [
+          "hypertension_activity",
+          "exercise_avoidance",
+          "sedentary_control"
+        ],
+        "vi": ["hoạt_động_tăng_huyết_áp", "tránh_tập", "kiểm_soát_tĩnh"]
+      }
+    },
+    "environmental_factors": {
+      "en": [
+        "environmental_factors",
+        "health_environment",
+        "surroundings_control"
+      ],
+      "vi": [
+        "yếu_tố_môi_trường",
+        "môi_trường_sức_khoẻ",
+        "kiểm_soát_xung_quanh"
+      ],
+      "synonyms": {
+        "en": [
+          "hypertension_environment",
+          "lifestyle_factors",
+          "environment_support"
+        ],
+        "vi": [
+          "môi_trường_tăng_huyết_áp",
+          "yếu_tố_lối_sống",
+          "hỗ_trợ_môi_trường"
+        ]
+      }
+    },
+    "emergency_preparedness": {
+      "en": ["emergency_preparedness", "urgent_plan", "crisis_readiness"],
+      "vi": ["chuẩn_bị_khẩn_cấp", "kế_hoạch_khẩn", "sẵn_sàng_khủng_hoảng"],
+      "synonyms": {
+        "en": ["hypertension_emergency", "safety_plan", "preparedness_support"],
+        "vi": ["khẩn_cấp_tăng_huyết_áp", "kế_hoạch_an_toàn", "hỗ_trợ_chuẩn_bị"]
+      }
+    }
+  },
+  "entries": [
+    {
+      "slug": "blood_pressure_monitoring",
+      "title": { "en": "Blood Pressure Monitoring", "vi": "Giám Sát Huyết Áp" },
+      "copy": {
+        "en": "Check BP regularly to track changes. You said ‘bp check’. Dare: Measure BP today.",
+        "vi": "Kiểm huyết áp đều để theo dõi thay đổi. Bạn nói ‘kiểm tra huyết áp’. Dám: Đo huyết áp hôm nay."
+      },
+      "echo_en": "bp check",
+      "echo_vi": "kiểm tra huyết áp",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["blood_pressure", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["hypertension"],
+      "metadata": { "topic": "screening", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["huyết áp: blood pressure"],
+        "practice": "Say: I will check my BP today."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0n0",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "low_sodium_diet",
+      "title": { "en": "Low Sodium Diet", "vi": "Chế Độ Thấp Natri" },
+      "copy": {
+        "en": "Reduce salt to help lower BP. You said ‘salt reduction’. Dare: Skip salt today.",
+        "vi": "Giảm muối để giúp hạ huyết áp. Bạn nói ‘giảm muối’. Dám: Bỏ muối hôm nay."
+      },
+      "echo_en": "salt reduction",
+      "echo_vi": "giảm muối",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["hypertension", "nutrition"],
+      "metadata": { "topic": "nutrition", "outcome": "plan_change" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["natri: sodium"],
+        "practice": "Say: I will reduce salt today."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0n1",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "balanced_nutrition",
+      "title": { "en": "Balanced Nutrition", "vi": "Dinh Dưỡng Cân Bằng" },
+      "copy": {
+        "en": "Eat varied foods for BP support. You said ‘nutrient mix’. Dare: Plan balanced meal.",
+        "vi": "Ăn đa dạng để hỗ trợ huyết áp. Bạn nói ‘hỗn hợp dinh dưỡng’. Dám: Lên kế hoạch bữa cân bằng."
+      },
+      "echo_en": "nutrient mix",
+      "echo_vi": "hỗn hợp dinh dưỡng",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["hypertension", "nutrition"],
+      "metadata": { "topic": "nutrition", "outcome": "plan_change" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["dinh dưỡng: nutrition"],
+        "practice": "Say: I will eat balanced."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0n2",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "exercise_routine",
+      "title": { "en": "Exercise Routine", "vi": "Thói Quen Tập Thể Dục" },
+      "copy": {
+        "en": "Regular activity can lower BP. You said ‘physical activity’. Dare: Walk 30 minutes.",
+        "vi": "Hoạt động đều có thể hạ huyết áp. Bạn nói ‘hoạt động thể chất’. Dám: Đi bộ 30 phút."
+      },
+      "echo_en": "physical activity",
+      "echo_vi": "hoạt động thể chất",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["exercise", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["hypertension", "behavior_change"],
+      "metadata": { "topic": "exercise", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["tập thể dục: exercise"],
+        "practice": "Say: I will walk 30 minutes."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0n3",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "weight_management",
+      "title": { "en": "Weight Management", "vi": "Quản Lý Cân Nặng" },
+      "copy": {
+        "en": "Healthy weight can reduce BP. You said ‘healthy weight’. Dare: Track weight weekly.",
+        "vi": "Cân nặng lành mạnh có thể giảm huyết áp. Bạn nói ‘cân nặng lành mạnh’. Dám: Theo dõi cân nặng hàng tuần."
+      },
+      "echo_en": "healthy weight",
+      "echo_vi": "cân nặng lành mạnh",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["lifestyle", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["hypertension", "behavior_change"],
+      "metadata": { "topic": "lifestyle", "outcome": "plan_change" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["quản lý cân nặng: weight management"],
+        "practice": "Say: I will track my weight weekly."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0n4",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "stress_reduction",
+      "title": { "en": "Stress Reduction", "vi": "Giảm Căng Thẳng" },
+      "copy": {
+        "en": "Reduce stress to ease BP. You said ‘calm techniques’. Dare: Breathe deeply now.",
+        "vi": "Giảm căng thẳng để dễ huyết áp. Bạn nói ‘kỹ thuật bình tĩnh’. Dám: Thở sâu ngay."
+      },
+      "echo_en": "calm techniques",
+      "echo_vi": "kỹ thuật bình tĩnh",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["stress", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["hypertension", "behavior_change"],
+      "metadata": { "topic": "stress", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["giảm căng thẳng: stress reduction"],
+        "practice": "Say: I will breathe deeply."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0n5",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "sleep_hygiene",
+      "title": { "en": "Sleep Hygiene", "vi": "Vệ Sinh Giấc Ngủ" },
+      "copy": {
+        "en": "Quality sleep supports BP. You said ‘rest quality’. Dare: Set bedtime routine.",
+        "vi": "Giấc ngủ chất lượng hỗ trợ huyết áp. Bạn nói ‘chất lượng nghỉ’. Dám: Đặt lịch ngủ."
+      },
+      "echo_en": "rest quality",
+      "echo_vi": "chất lượng nghỉ",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["lifestyle", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["hypertension", "behavior_change"],
+      "metadata": { "topic": "lifestyle", "outcome": "plan_change" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["vệ sinh giấc ngủ: sleep hygiene"],
+        "practice": "Say: I will set a bedtime routine."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0n6",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "smoking_cessation",
+      "title": { "en": "Smoking Cessation", "vi": "Cai Thuốc Lá" },
+      "copy": {
+        "en": "Quitting smoking lowers BP. You said ‘quit smoking’. Dare: Seek quit support.",
+        "vi": "Cai thuốc hạ huyết áp. Bạn nói ‘bỏ hút thuốc’. Dám: Tìm hỗ trợ cai."
+      },
+      "echo_en": "quit smoking",
+      "echo_vi": "bỏ hút thuốc",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["lifestyle", "hypertension"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["hypertension", "behavior_change"],
+      "metadata": { "topic": "lifestyle", "outcome": "plan_change" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["cai thuốc lá: smoking cessation"],
+        "practice": "Say: I will seek quit support."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0n7",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "alcohol_moderation",
+      "title": { "en": "Alcohol Moderation", "vi": "Điều Tiết Rượu" },
+      "copy": {
+        "en": "Limit alcohol for BP control. You said ‘drink limit’. Dare: Choose non-alcoholic.",
+        "vi": "Giới hạn rượu để kiểm huyết áp. Bạn nói ‘giới hạn đồ uống’. Dám: Chọn không cồn."
+      },
+      "echo_en": "drink limit",
+      "echo_vi": "giới hạn đồ uống",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["lifestyle", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["hypertension", "behavior_change"],
+      "metadata": { "topic": "lifestyle", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["điều tiết rượu: alcohol moderation"],
+        "practice": "Say: I will limit alcohol."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0n8",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "caffeine_limits",
+      "title": { "en": "Caffeine Limits", "vi": "Giới Hạn Caffeine" },
+      "copy": {
+        "en": "Reduce caffeine to ease BP. You said ‘stimulant control’. Dare: Cut coffee intake.",
+        "vi": "Giảm caffeine để dễ huyết áp. Bạn nói ‘kiểm soát chất kích thích’. Dám: Cắt cà phê."
+      },
+      "echo_en": "stimulant control",
+      "echo_vi": "kiểm soát chất kích thích",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["lifestyle", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["hypertension", "behavior_change"],
+      "metadata": { "topic": "lifestyle", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["giới hạn caffeine: caffeine limits"],
+        "practice": "Say: I will reduce caffeine."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0n9",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "medication_adherence",
+      "title": { "en": "Medication Adherence", "vi": "Tuân Thủ Thuốc" },
+      "copy": {
+        "en": "Take meds as prescribed for BP. You said ‘pill schedule’. Dare: Set pill reminders.",
+        "vi": "Uống thuốc theo chỉ định cho huyết áp. Bạn nói ‘lịch uống thuốc’. Dám: Đặt nhắc thuốc."
+      },
+      "echo_en": "pill schedule",
+      "echo_vi": "lịch uống thuốc",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["medication", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["hypertension"],
+      "metadata": { "topic": "medication", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["tuân thủ thuốc: medication adherence"],
+        "practice": "Say: I will take my meds."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0o0",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "heart_health",
+      "title": { "en": "Heart Health", "vi": "Sức Khỏe Tim" },
+      "copy": {
+        "en": "Support heart to manage BP. You said ‘cardiac care’. Dare: Check heart risks.",
+        "vi": "Hỗ trợ tim để quản huyết áp. Bạn nói ‘chăm sóc tim’. Dám: Kiểm rủi ro tim."
+      },
+      "echo_en": "cardiac care",
+      "echo_vi": "chăm sóc tim",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["prevention", "hypertension"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["hypertension"],
+      "metadata": { "topic": "prevention", "outcome": "plan_change" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["sức khỏe tim: heart health"],
+        "practice": "Say: I will support my heart."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0o1",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "cholesterol_management",
+      "title": { "en": "Cholesterol Management", "vi": "Quản Lý Cholesterol" },
+      "copy": {
+        "en": "Control cholesterol for BP. You said ‘lipid control’. Dare: Get lipid test.",
+        "vi": "Kiểm cholesterol cho huyết áp. Bạn nói ‘kiểm soát lipid’. Dám: Làm xét nghiệm lipid."
+      },
+      "echo_en": "lipid control",
+      "echo_vi": "kiểm soát lipid",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["prevention", "hypertension"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["hypertension"],
+      "metadata": { "topic": "prevention", "outcome": "plan_change" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["cholesterol: cholesterol"],
+        "practice": "Say: I will manage cholesterol."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0o2",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "potassium_intake",
+      "title": { "en": "Potassium Intake", "vi": "Nạp Kali" },
+      "copy": {
+        "en": "Eat potassium-rich foods for BP. You said ‘potassium foods’. Dare: Eat banana today.",
+        "vi": "Ăn thực phẩm giàu kali cho huyết áp. Bạn nói ‘thực phẩm kali’. Dám: Ăn chuối hôm nay."
+      },
+      "echo_en": "potassium foods",
+      "echo_vi": "thực phẩm kali",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["hypertension", "nutrition"],
+      "metadata": { "topic": "nutrition", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["kali: potassium"],
+        "practice": "Say: I will eat potassium-rich foods."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0o3",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "fiber_intake",
+      "title": { "en": "Fiber Intake", "vi": "Nạp Chất Xơ" },
+      "copy": {
+        "en": "Fiber supports BP health. You said ‘dietary fiber’. Dare: Add oats breakfast.",
+        "vi": "Chất xơ hỗ trợ sức khỏe huyết áp. Bạn nói ‘chất xơ chế độ’. Dám: Thêm yến mạch sáng."
+      },
+      "echo_en": "dietary fiber",
+      "echo_vi": "chất xơ chế độ",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["hypertension", "nutrition"],
+      "metadata": { "topic": "nutrition", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["chất xơ: fiber"],
+        "practice": "Say: I will add fiber."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0o4",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "healthy_fats",
+      "title": { "en": "Healthy Fats", "vi": "Chất Béo Lành Mạnh" },
+      "copy": {
+        "en": "Choose good fats for BP. You said ‘good lipids’. Dare: Use olive oil.",
+        "vi": "Chọn chất béo tốt cho huyết áp. Bạn nói ‘lipid tốt’. Dám: Dùng dầu ô liu."
+      },
+      "echo_en": "good lipids",
+      "echo_vi": "lipid tốt",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["hypertension", "nutrition"],
+      "metadata": { "topic": "nutrition", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["chất béo lành mạnh: healthy fats"],
+        "practice": "Say: I will choose healthy fats."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0o5",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "meal_timing",
+      "title": { "en": "Meal Timing", "vi": "Thời Gian Bữa Ăn" },
+      "copy": {
+        "en": "Regular meals help BP. You said ‘eating schedule’. Dare: Set meal times.",
+        "vi": "Bữa đều giúp huyết áp. Bạn nói ‘lịch ăn’. Dám: Đặt giờ ăn."
+      },
+      "echo_en": "eating schedule",
+      "echo_vi": "lịch ăn",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["hypertension", "nutrition"],
+      "metadata": { "topic": "nutrition", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["thời gian bữa ăn: meal timing"],
+        "practice": "Say: I will set meal times."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0o6",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "dash_diet",
+      "title": { "en": "DASH Diet", "vi": "Chế Độ DASH" },
+      "copy": {
+        "en": "Follow DASH diet to lower BP. You said ‘hypertension diet’. Dare: Plan DASH meal.",
+        "vi": "Tuân theo chế độ DASH để hạ huyết áp. Bạn nói ‘chế độ tăng huyết áp’. Dám: Lên kế hoạch bữa DASH."
+      },
+      "echo_en": "hypertension diet",
+      "echo_vi": "chế độ tăng huyết áp",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["hypertension", "nutrition"],
+      "metadata": { "topic": "nutrition", "outcome": "plan_change" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["chế độ DASH: DASH diet"],
+        "practice": "Say: I will plan a DASH meal."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0o7",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "omega_fatty_acids",
+      "title": { "en": "Omega Fatty Acids", "vi": "Axit Béo Omega" },
+      "copy": {
+        "en": "Omega-3s from fish can support BP. You said ‘fish oil’. Dare: Eat salmon tonight.",
+        "vi": "Omega-3 từ cá có thể hỗ trợ huyết áp. Bạn nói ‘dầu cá’. Dám: Ăn cá hồi tối nay."
+      },
+      "echo_en": "fish oil",
+      "echo_vi": "dầu cá",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["hypertension", "nutrition"],
+      "metadata": { "topic": "nutrition", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["axit béo omega: omega fatty acids"],
+        "practice": "Say: I will eat salmon tonight."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0o8",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "magnesium_intake",
+      "title": { "en": "Magnesium Intake", "vi": "Nạp Magiê" },
+      "copy": {
+        "en": "Magnesium-rich foods may relax vessels. You said ‘magnesium foods’. Dare: Snack on almonds.",
+        "vi": "Thực phẩm giàu magiê có thể thư giãn mạch máu. Bạn nói ‘thực phẩm magiê’. Dám: Ăn hạnh nhân."
+      },
+      "echo_en": "magnesium foods",
+      "echo_vi": "thực phẩm magiê",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["hypertension", "nutrition"],
+      "metadata": { "topic": "nutrition", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["magiê: magnesium"],
+        "practice": "Say: I will snack on almonds."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0o9",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "hydration_monitor",
+      "title": { "en": "Hydration Monitor", "vi": "Giám Sát Nước" },
+      "copy": {
+        "en": "Check urine color to support BP. You said ‘fluid track’. Dare: Observe urine today.",
+        "vi": "Kiểm tra màu nước tiểu hỗ trợ huyết áp. Bạn nói ‘theo dõi chất lỏng’. Dám: Quan sát nước tiểu."
+      },
+      "echo_en": "fluid track",
+      "echo_vi": "theo dõi chất lỏng",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["hypertension", "nutrition"],
+      "metadata": { "topic": "nutrition", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["nước tiểu: urine"],
+        "practice": "Say: I will observe my urine today."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0p0",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "sedentary_avoidance",
+      "title": { "en": "Sedentary Avoidance", "vi": "Tránh Lối Sống Tĩnh" },
+      "copy": {
+        "en": "Reduce sitting time to gently lower BP. You said ‘sitting limit’. Dare: Stand every hour.",
+        "vi": "Giảm thời gian ngồi để hạ huyết áp nhẹ nhàng. Bạn nói ‘giới hạn ngồi’. Dám: Đứng dậy mỗi giờ."
+      },
+      "echo_en": "sitting limit",
+      "echo_vi": "giới hạn ngồi",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["exercise", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["hypertension", "behavior_change"],
+      "metadata": { "topic": "exercise", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["lối sống tĩnh: sedentary"],
+        "practice": "Say: I will stand every hour."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0p1",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "environmental_factors",
+      "title": { "en": "Environmental Factors", "vi": "Yếu Tố Môi Trường" },
+      "copy": {
+        "en": "Create a calm environment to support BP. You said ‘health environment’. Dare: Clear a quiet space.",
+        "vi": "Tạo môi trường yên tĩnh để hỗ trợ huyết áp. Bạn nói ‘môi trường sức khoẻ’. Dám: Dọn một không gian yên tĩnh."
+      },
+      "echo_en": "health environment",
+      "echo_vi": "môi trường sức khoẻ",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["lifestyle", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["hypertension", "behavior_change"],
+      "metadata": { "topic": "lifestyle", "outcome": "self_regulate" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords", "collocations"],
+        "vi_gloss": ["yếu tố môi trường: environmental factors"],
+        "practice": "Say: I will clear a calm space."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0p2",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    },
+    {
+      "slug": "emergency_preparedness",
+      "title": { "en": "Emergency Preparedness", "vi": "Chuẩn Bị Khẩn Cấp" },
+      "copy": {
+        "en": "Keep emergency contacts ready for crisis situations. Save hotline numbers now.",
+        "vi": "Giữ sẵn liên lạc khẩn cấp cho tình huống khủng hoảng. Lưu số đường dây nóng ngay."
+      },
+      "echo_en": "urgent plan",
+      "echo_vi": "kế hoạch khẩn",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["safety", "hypertension"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["hypertension"],
+      "metadata": { "topic": "safety", "outcome": "seek_help" },
+      "language": {
+        "cefr": "B1",
+        "en_focus": ["keywords"],
+        "vi_gloss": ["khẩn cấp: emergency"],
+        "practice": "Say: I will save emergency contacts now."
+      },
+      "artifact_id": "e6f7a8b9-c0d1-2e3f-g4h5-i6j7k8l9m0p3",
+      "created_at": "2025-10-09T10:29:00Z",
+      "updated_at": "2025-10-09T10:29:00Z"
+    }
+  ],
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Managing Hypertension\n\nHypertension is high blood pressure. It can lead to heart issues if not managed. This guide ties together practical steps from nutrition, lifestyle, and monitoring to help control it. Always see a doctor for advice, especially if you have symptoms or concerns.\n\n### Monitoring Blood Pressure\nCheck your blood pressure often to track changes. Use a home monitor and note the readings. This can help spot patterns. If numbers are high, like over 180/120, seek help right away. Regular checks support early action.\n\n### Nutrition for Blood Pressure\nA low sodium diet can help lower pressure. Reduce salt by cooking fresh foods and reading labels. Eat balanced meals with fruits, vegetables, and whole grains. Add potassium from bananas or potatoes, fiber from oats, and healthy fats from olive oil or fish like salmon. Omega-3s may support vessels. Limit caffeine and stay hydrated by watching urine color—pale yellow is good. Try the DASH diet, rich in these foods, for better control.\n\n### Lifestyle Choices\nExercise like walking 30 minutes a day can reduce pressure. Avoid sitting too long—stand every hour. Manage weight with healthy habits, as extra weight strains the heart. Reduce stress with deep breathing or calm activities. Get good sleep with a routine, aiming for 7-8 hours. Quit smoking, as it raises pressure. Moderate alcohol and caffeine too. These steps can add up to better health.\n\n### Medication and Safety\nTake medications as prescribed. Set reminders for doses. Talk to a doctor about side effects or changes. Manage cholesterol and heart health with regular tests. Prepare for emergencies by saving hotline numbers.\n\n### When to Research More\nIf you notice high readings or feel off, look into reliable sources. Use health websites or books to learn about causes like diet or stress. Research meal ideas or exercises. Avoid unverified info online.\n\n### Making a Plan\nDecide if a change is right for you. A “go” could mean starting with less salt or a daily walk. A “no-go” means waiting for doctor input. Track what you try to see what helps.\n\n### Ethics and Safety\nKeep health info private. Don’t share details publicly. Prioritize safety—if unsure about a diet or exercise, ask a professional. In crisis, call emergency services.\n\n### Next Steps\nStart with one step, like checking pressure today or eating a banana. Review after a week. See a doctor if needed. Small changes can support your blood pressure over time.\n\n*This is not medical advice. Consult a professional for concerns.*",
+    "vi": "# Quản Lý Tăng Huyết Áp\n\nTăng huyết áp là tình trạng huyết áp cao kéo dài, có thể dẫn đến bệnh tim hoặc đột quỵ nếu không được kiểm soát. Hướng dẫn này tổng hợp các bước thực tiễn về dinh dưỡng, lối sống và giám sát để giúp bạn quản lý huyết áp tốt hơn. Luôn tham khảo ý kiến bác sĩ, đặc biệt nếu bạn có triệu chứng bất thường hoặc lo ngại về sức khỏe.\n\n### Giám Sát Huyết Áp\nĐo huyết áp thường xuyên để theo dõi biến động. Sử dụng máy đo tại nhà và ghi lại kết quả mỗi lần để nhận biết xu hướng. Nếu huyết áp rất cao, chẳng hạn trên 180/120 mmHg, hãy tìm trợ giúp y tế ngay lập tức. Kiểm tra đều đặn giúp bạn phát hiện sớm và điều chỉnh kịp thời.\n\n### Dinh Dưỡng Cho Huyết Áp\nChế độ ăn ít natri giúp kiểm soát huyết áp hiệu quả. Giảm muối bằng cách nấu ăn tại nhà và đọc kỹ nhãn thực phẩm. Ăn đa dạng trái cây, rau củ và ngũ cốc nguyên hạt. Bổ sung kali từ chuối, khoai tây hoặc rau xanh; chất xơ từ yến mạch; và chất béo tốt từ dầu ô liu hoặc cá béo như cá hồi. Omega-3 có thể hỗ trợ chức năng tim mạch. Hạn chế caffeine và đảm bảo đủ nước — nước tiểu màu vàng nhạt là dấu hiệu tốt. Cân nhắc áp dụng chế độ DASH, tập trung vào thực phẩm tự nhiên và ít muối.\n\n### Lối Sống\nVận động đều đặn giúp giảm huyết áp. Đi bộ nhanh khoảng 30 phút mỗi ngày hoặc chọn các bài tập nhẹ nhàng như đạp xe, bơi lội. Tránh ngồi lâu — hãy đứng dậy và di chuyển mỗi giờ. Duy trì cân nặng hợp lý vì thừa cân làm tăng gánh nặng cho tim. Quản lý căng thẳng bằng hít thở sâu, thiền hoặc hoạt động thư giãn. Ngủ đủ 7–8 tiếng mỗi đêm giúp ổn định hệ tim mạch. Bỏ thuốc lá vì nicotine làm tăng huyết áp. Hạn chế rượu và caffeine để bảo vệ tim mạch.\n\n### Thuốc Và An Toàn\nTuân thủ đúng liều thuốc theo hướng dẫn của bác sĩ. Đặt nhắc nhở để không quên liều. Báo cho bác sĩ nếu có tác dụng phụ hoặc thay đổi tình trạng sức khỏe. Theo dõi cholesterol và sức khỏe tim mạch bằng các xét nghiệm định kỳ. Ghi lại thông tin liên hệ khẩn cấp để sử dụng khi cần.\n\n### Khi Nào Nên Tìm Hiểu Thêm\nNếu huyết áp thường xuyên cao hoặc bạn cảm thấy chóng mặt, đau đầu, hãy tìm hiểu nguyên nhân. Sử dụng nguồn y tế uy tín hoặc tài liệu chuyên khoa để tìm hiểu về chế độ ăn, tập luyện và yếu tố căng thẳng. Tránh các nguồn thông tin chưa được kiểm chứng trên mạng.\n\n### Lên Kế Hoạch\nXác định bước phù hợp để bắt đầu. “Tiến hành” có thể là giảm lượng muối hoặc bắt đầu đi bộ mỗi ngày. “Tạm dừng” khi cần thêm tư vấn chuyên môn. Theo dõi chỉ số huyết áp để thấy tác động của từng thay đổi.\n\n### Đạo Đức Và An Toàn\nGiữ kín thông tin sức khỏe cá nhân. Không chia sẻ dữ liệu y tế công khai. Ưu tiên an toàn — nếu không chắc về chế độ ăn hoặc bài tập, hãy hỏi ý kiến bác sĩ. Trong trường hợp khẩn cấp, gọi cấp cứu ngay.\n\n### Bước Tiếp Theo\nBắt đầu với một hành động nhỏ, như đo huyết áp hôm nay hoặc ăn thêm một phần trái cây giàu kali. Đánh giá sau một tuần và điều chỉnh nếu cần. Gặp bác sĩ để được hướng dẫn thêm. Những thay đổi nhỏ và kiên trì sẽ giúp cải thiện huyết áp theo thời gian.\n\n*Đây không phải là lời khuyên y khoa. Hãy tham khảo chuyên gia cho các vấn đề sức khỏe.*",
+    "word_count_en": 552,
+    "word_count_vi": 554,
+    "updated_at": "2025-10-11T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}

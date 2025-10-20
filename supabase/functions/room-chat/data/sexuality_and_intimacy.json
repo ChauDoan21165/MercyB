@@ -1,0 +1,1521 @@
+{
+  "schema_version": "1.1",
+  "schema_id": "sexuality_and_intimacy",
+  "description": "Echologic Mercy Blade room for sexual communication, desire, and emotional safety",
+  "description_vi": "Phòng Mercy Blade hỗ trợ giao tiếp, ham muốn và an toàn cảm xúc trong tình dục",
+  "supported_languages": ["en", "vi"],
+  "localization": {
+    "default": "en",
+    "fallback": "en",
+    "i18n_required": true,
+    "i18n_verified": true
+  },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional, medical, or psychological advice.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế cho lời khuyên chuyên nghiệp, y tế hoặc tâm lý.",
+  "crisis_footer": "If you feel unsafe or in acute distress, seek immediate professional help or contact local emergency services.",
+  "crisis_footer_localized": {
+    "en": "If you feel unsafe or in acute distress, seek immediate professional help or contact local emergency services.",
+    "vi": "Nếu bạn cảm thấy không an toàn hoặc khủng hoảng nghiêm trọng, hãy tìm trợ giúp chuyên nghiệp ngay hoặc liên hệ dịch vụ khẩn cấp địa phương."
+  },
+  "crisis_footer_short": {
+    "en": "Seek immediate help if unsafe or distressed.",
+    "vi": "Tìm trợ giúp ngay nếu không an toàn hoặc khủng hoảng."
+  },
+  "topic_group": "sexuality_and_intimacy",
+  "meta": {
+    "created_at": "2025-10-06T05:08:00.100+09:00",
+    "updated_at": "2025-10-06T05:08:00.100+09:00",
+    "checksum_sha256": "b4b6f3e8b6c7a9d8e0f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4",
+    "content_version": "1.0",
+    "topic_group_ref": "sexuality_and_intimacy",
+    "artifact_version_policy": "v001",
+    "artifact_count": 40,
+    "meta_notes": "Keyword-driven; field-tested tone for sexual well-being | artifact_ids unique | batch=final/1 | batch_total=1"
+  },
+  "enums": {
+    "tags": [
+      "sexuality",
+      "communication",
+      "trust",
+      "pleasure",
+      "consent",
+      "emotion",
+      "body",
+      "safety",
+      "healing",
+      "growth",
+      "relationship",
+      "sexual_health"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["psychology", "relationship", "sexual_health"]
+  },
+  "keywords": {
+    "sexual_trust": {
+      "en": [
+        "sexual_trust",
+        "intimacy_trust",
+        "connection_safety",
+        "relationship_safety"
+      ],
+      "vi": [
+        "niềm_tin_tình_dục",
+        "tin_cậy_thân_mật",
+        "an_toàn_kết_nối",
+        "an_toàn_mối_quan_hệ"
+      ]
+    },
+    "open_communication": {
+      "en": [
+        "open_communication",
+        "honest_dialogue",
+        "sexual_openness",
+        "intimate_talk"
+      ],
+      "vi": [
+        "giao_tiếp_mở",
+        "đối_thoại_thành_thật",
+        "cởi_mở_tình_dục",
+        "nói_chuyện_thân_mật"
+      ]
+    },
+    "consent": {
+      "en": [
+        "consent",
+        "mutual_agreement",
+        "permission",
+        "shared_consent",
+        "intimate_agreement"
+      ],
+      "vi": [
+        "đồng_thuận",
+        "thỏa_thuận_chung",
+        "cho_phép",
+        "đồng_ý_chia_sẻ",
+        "thỏa_thuận_thân_mật"
+      ]
+    },
+    "boundaries": {
+      "en": ["boundaries", "limits", "personal_space", "comfort_zone"],
+      "vi": ["ranh_giới", "giới_hạn", "không_gian_cá_nhân", "vùng_an_toàn"]
+    },
+    "desire": {
+      "en": ["desire", "passion", "attraction", "intimate_urge"],
+      "vi": ["ham_muốn", "đam_mê", "hấp_dẫn", "thúc_đẩy_thân_mật"]
+    },
+    "pleasure": {
+      "en": ["pleasure", "enjoyment", "satisfaction", "intimate_joy"],
+      "vi": ["khoái_cảm", "thích_thú", "hài_lòng", "niềm_vui_thân_mật"]
+    },
+    "emotional_safety": {
+      "en": [
+        "emotional_safety",
+        "secure_connection",
+        "trust_space",
+        "heart_safety"
+      ],
+      "vi": [
+        "an_toàn_cảm_xúc",
+        "kết_nối_an_toàn",
+        "không_gian_tin_cậy",
+        "an_toàn_trái_tim"
+      ]
+    },
+    "sexual_health": {
+      "en": [
+        "sexual_health",
+        "intimate_wellness",
+        "body_care",
+        "sexual_wellbeing"
+      ],
+      "vi": [
+        "sức_khỏe_tình_dục",
+        "sức_khỏe_thân_mật",
+        "chăm_sóc_cơ_thể",
+        "hạnh_phúc_tình_dục"
+      ]
+    },
+    "intimate_moment": {
+      "en": [
+        "intimate_moment",
+        "shared_closeness",
+        "private_connection",
+        "close_encounter"
+      ],
+      "vi": [
+        "khoảnh_khắc_thân_mật",
+        "gần_gũi_chia_sẻ",
+        "kết_nối_riêng_tư",
+        "gặp_gỡ_gần_gũi"
+      ]
+    },
+    "vulnerability": {
+      "en": ["vulnerability", "openness", "emotional_risk", "heart_exposure"],
+      "vi": [
+        "tính_dễ_bị_tổn_thương",
+        "cởi_mở",
+        "rủi_ro_cảm_xúc",
+        "phơi_bày_trái_tim"
+      ]
+    },
+    "mutual_respect": {
+      "en": [
+        "mutual_respect",
+        "shared_honor",
+        "reciprocal_value",
+        "equal_regard"
+      ],
+      "vi": [
+        "tôn_trọng_lẫn_nhau",
+        "tôn_vinh_chung",
+        "giá_trị_tương_hỗ",
+        "coi_trọng_bình_đẳng"
+      ]
+    },
+    "body_positivity": {
+      "en": [
+        "body_positivity",
+        "self_acceptance",
+        "body_love",
+        "physical_confidence"
+      ],
+      "vi": [
+        "tích_cực_cơ_thể",
+        "chấp_nhận_bản_thân",
+        "yêu_cơ_thể",
+        "tự_tin_về_cơ_thể"
+      ]
+    },
+    "sexual_expression": {
+      "en": [
+        "sexual_expression",
+        "intimate_identity",
+        "desire_manifestation",
+        "self_expression"
+      ],
+      "vi": [
+        "bày_tỏ_tình_dục",
+        "bản_sắc_thân_mật",
+        "biểu_hiện_ham_muốn",
+        "tự_bày_tỏ"
+      ]
+    },
+    "active_listening": {
+      "en": [
+        "active_listening",
+        "attentive_ear",
+        "mindful_hearing",
+        "engaged_listening"
+      ],
+      "vi": [
+        "lắng_nghe_tích_cực",
+        "tai_chú_ý",
+        "nghe_chăm_chú",
+        "lắng_nghe_tập_trung"
+      ]
+    },
+    "empathy": {
+      "en": ["empathy", "understanding", "compassion", "shared_feeling"],
+      "vi": ["thấu_cảm", "hiểu_biết", "trắc_ẩn", "cảm_xúc_chia_sẻ"]
+    },
+    "sexual_communication": {
+      "en": [
+        "sexual_communication",
+        "intimate_dialogue",
+        "desire_talk",
+        "open_intimacy"
+      ],
+      "vi": [
+        "giao_tiếp_tình_dục",
+        "đối_thoại_thân_mật",
+        "nói_chuyện_ham_muốn",
+        "thân_mật_cởi_mở"
+      ]
+    },
+    "sexual_boundaries": {
+      "en": [
+        "sexual_boundaries",
+        "intimate_limits",
+        "personal_comfort",
+        "safe_space"
+      ],
+      "vi": [
+        "ranh_giới_tình_dục",
+        "giới_hạn_thân_mật",
+        "thoải_mái_cá_nhân",
+        "không_gian_an_toàn"
+      ]
+    },
+    "emotional_intimacy": {
+      "en": [
+        "emotional_intimacy",
+        "heart_connection",
+        "deep_closeness",
+        "feeling_bond"
+      ],
+      "vi": [
+        "thân_mật_cảm_xúc",
+        "kết_nối_trái_tim",
+        "gần_gũi_sâu_sắc",
+        "liên_kết_cảm_xúc"
+      ]
+    },
+    "pleasure_exploration": {
+      "en": [
+        "pleasure_exploration",
+        "joy_discovery",
+        "intimate_adventure",
+        "sensation_journey"
+      ],
+      "vi": [
+        "khám_phá_khoái_cảm",
+        "khám_phá_niềm_vui",
+        "phiêu_lưu_thân_mật",
+        "hành_trình_cảm_giác"
+      ]
+    },
+    "body_awareness": {
+      "en": [
+        "body_awareness",
+        "physical_presence",
+        "sensory_connection",
+        "self_body_knowledge"
+      ],
+      "vi": [
+        "nhận_thức_cơ_thể",
+        "hiện_diện_vật_lý",
+        "kết_nối_cảm_giác",
+        "kiến_thức_cơ_thể"
+      ]
+    },
+    "sexual_self": {
+      "en": [
+        "sexual_self",
+        "intimate_identity",
+        "desire_core",
+        "personal_sexuality"
+      ],
+      "vi": [
+        "bản_thân_tình_dục",
+        "bản_sắc_thân_mật",
+        "lõi_ham_muốn",
+        "tình_dục_cá_nhân"
+      ]
+    },
+    "healing_trauma": {
+      "en": [
+        "healing_trauma",
+        "recovery_journey",
+        "trauma_mending",
+        "emotional_healing"
+      ],
+      "vi": [
+        "chữa_lành_sang_chấn",
+        "hành_trình_phục_hồi",
+        "sửa_chữa_sang_chấn",
+        "chữa_lành_cảm_xúc"
+      ]
+    },
+    "sexual_autonomy": {
+      "en": [
+        "sexual_autonomy",
+        "self_determination",
+        "intimate_choice",
+        "personal_freedom"
+      ],
+      "vi": [
+        "tự_chủ_tình_dục",
+        "tự_quyết_định",
+        "lựa_chọn_thân_mật",
+        "tự_do_cá_nhân"
+      ]
+    },
+    "trust_building": {
+      "en": [
+        "trust_building",
+        "confidence_growth",
+        "secure_bond",
+        "reliability_forge"
+      ],
+      "vi": [
+        "xây_dựng_niềm_tin",
+        "tăng_trưởng_tin_cậy",
+        "liên_kết_an_toàn",
+        "rèn_luyện_độ_tin_cậy"
+      ]
+    },
+    "communication_clarity": {
+      "en": [
+        "communication_clarity",
+        "clear_dialogue",
+        "open_expression",
+        "honest_talk"
+      ],
+      "vi": [
+        "giao_tiếp_rõ_ràng",
+        "đối_thoại_minh_bạch",
+        "bày_tỏ_cởi_mở",
+        "nói_chuyện_thành_thật"
+      ]
+    },
+    "pleasure_safety": {
+      "en": [
+        "pleasure_safety",
+        "safe_joy",
+        "secure_pleasure",
+        "comfort_enjoyment"
+      ],
+      "vi": [
+        "an_toàn_khoái_cảm",
+        "niềm_vui_an_toàn",
+        "khoái_cảm_bảo_vệ",
+        "thích_thú_thoải_mái"
+      ]
+    },
+    "emotional_openness": {
+      "en": [
+        "emotional_openness",
+        "heart_vulnerability",
+        "feeling_exposure",
+        "open_emotion"
+      ],
+      "vi": [
+        "cởi_mở_cảm_xúc",
+        "tính_dễ_bị_tổn_thương_trái_tim",
+        "phơi_bày_cảm_xúc",
+        "cảm_xúc_cởi_mở"
+      ]
+    },
+    "sexual_respect": {
+      "en": [
+        "sexual_respect",
+        "intimate_honor",
+        "desire_regard",
+        "mutual_value"
+      ],
+      "vi": [
+        "tôn_trọng_tình_dục",
+        "tôn_vinh_thân_mật",
+        "coi_trọng_ham_muốn",
+        "giá_trị_lẫn_nhau"
+      ]
+    },
+    "body_connection": {
+      "en": [
+        "body_connection",
+        "physical_bond",
+        "sensory_link",
+        "intimate_touch"
+      ],
+      "vi": [
+        "kết_nối_cơ_thể",
+        "liên_kết_vật_lý",
+        "liên_kết_cảm_giác",
+        "chạm_thân_mật"
+      ]
+    },
+    "intimate_exploration": {
+      "en": [
+        "intimate_exploration",
+        "closeness_journey",
+        "desire_discovery",
+        "connection_adventure"
+      ],
+      "vi": [
+        "khám_phá_thân_mật",
+        "hành_trình_gần_gũi",
+        "khám_phá_ham_muốn",
+        "phiêu_lưu_kết_nối"
+      ]
+    },
+    "sexual_healing": {
+      "en": [
+        "sexual_healing",
+        "intimate_recovery",
+        "pleasure_mending",
+        "heart_healing"
+      ],
+      "vi": [
+        "chữa_lành_tình_dục",
+        "phục_hồi_thân_mật",
+        "sửa_chữa_khoái_cảm",
+        "chữa_lành_trái_tim"
+      ]
+    },
+    "consent_violation_recovery": {
+      "en": [
+        "consent_violation_recovery",
+        "trust_rebuilding",
+        "safety_restoration",
+        "healing_breach"
+      ],
+      "vi": [
+        "phục_hồi_vi_phạm_đồng_thuận",
+        "tái_xây_niềm_tin",
+        "khôi_phục_an_toàn",
+        "chữa_lành_vi_phạm"
+      ]
+    },
+    "sexual_trauma": {
+      "en": [
+        "sexual_trauma",
+        "intimate_harm",
+        "emotional_wound",
+        "trauma_pain"
+      ],
+      "vi": [
+        "sang_chấn_tình_dục",
+        "tổn_thương_thân_mật",
+        "vết_thương_cảm_xúc",
+        "đau_đớn_sang_chấn"
+      ]
+    },
+    "body_dysmorphia": {
+      "en": [
+        "body_dysmorphia",
+        "body_image_distress",
+        "self_perception_pain",
+        "physical_anxiety"
+      ],
+      "vi": [
+        "loạn_hình_cơ_thể",
+        "khủng_hoảng_hình_ảnh_cơ_thể",
+        "nhận_thức_bản_thân_đau_đớn",
+        "lo_âu_vật_lý"
+      ]
+    },
+    "self_care": {
+      "en": ["self_care", "personal_wellness", "self_nurturing", "inner_care"],
+      "vi": [
+        "chăm_sóc_bản_thân",
+        "sức_khỏe_cá_nhân",
+        "nuôi_dưỡng_bản_thân",
+        "chăm_sóc_nội_tâm"
+      ]
+    },
+    "intimate_presence": {
+      "en": [
+        "intimate_presence",
+        "mindful_closeness",
+        "present_connection",
+        "attentive_intimacy"
+      ],
+      "vi": [
+        "hiện_diện_thân_mật",
+        "gần_gũi_chánh_niệm",
+        "kết_nối_hiện_tại",
+        "thân_mật_chú_ý"
+      ]
+    },
+    "relationship_dynamics": {
+      "en": [
+        "relationship_dynamics",
+        "partnership_flow",
+        "connection_patterns",
+        "intimate_balance"
+      ],
+      "vi": [
+        "động_lực_mối_quan_hệ",
+        "dòng_chảy_quan_hệ",
+        "mô_hình_kết_nối",
+        "cân_bằng_thân_mật"
+      ]
+    },
+    "sexual_wellbeing": {
+      "en": [
+        "sexual_wellbeing",
+        "intimate_health",
+        "desire_wellness",
+        "pleasure_balance"
+      ],
+      "vi": [
+        "hạnh_phúc_tình_dục",
+        "sức_khỏe_thân_mật",
+        "ham_muốn_lành_mạnh",
+        "cân_bằng_khoái_cảm"
+      ]
+    },
+    "mutual_pleasure": {
+      "en": [
+        "mutual_pleasure",
+        "shared_joy",
+        "reciprocal_enjoyment",
+        "intimate_delight"
+      ],
+      "vi": [
+        "khoái_cảm_lẫn_nhau",
+        "niềm_vui_chia_sẻ",
+        "thích_thú_tương_hỗ",
+        "vui_thú_thân_mật"
+      ]
+    },
+    "intimate_comfort": {
+      "en": [
+        "intimate_comfort",
+        "safe_closeness",
+        "secure_intimacy",
+        "trust_comfort"
+      ],
+      "vi": [
+        "thoải_mái_thân_mật",
+        "gần_gũi_an_toàn",
+        "thân_mật_bảo_vệ",
+        "tin_cậy_thoải_mái"
+      ]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Practical Guidance on Sexuality and Intimacy\n\nHealthy intimacy supports relationships and well-being. This guide connects ideas like consent, boundaries, trust, communication, desire, pleasure, and safety, and offers simple steps to use them in daily life.\n\nBegin with consent and boundaries. Consent means each person freely agrees to what happens and can change their mind at any time. Talk together about what feels okay and what does not. Link this with open communication: share thoughts honestly and kindly. For example, use active listening—repeat what you heard and ask simple follow-ups—to understand your partner’s needs. Setting clear boundaries creates emotional safety so both people feel secure.\n\nTrust and emotional intimacy matter. Build trust by being consistent, keeping small promises, and showing respect even during conflict. Share feelings and vulnerabilities at a pace that feels right. This connects to empathy—try to see the moment from the other person’s point of view. Mutual respect helps relationships grow stronger over time.\n\nDesire and pleasure bring energy and joy. Explore what you enjoy with care and curiosity. Body awareness—paying attention to breath, tension, and comfort—helps you understand your body better. Talk about desires in simple language and check for comfort along the way. Pleasure exploration can be gentle and slow, and it can pause whenever anyone wants to stop.\n\nSafety and healing also deserve attention. Emotional safety means there is no pressure or harm. If there is past trauma, such as sexual trauma or a consent violation, healing can include self-care, therapy, or support groups. Move at a pace that feels manageable. Body positivity helps too: notice and appreciate what your body can do, not only how it looks.\n\nUse research tasks when you need information. For health topics, such as sexual health or contraception, read trusted sites or official clinics. For skills like consent or boundary setting, look for plain-language guides. If you browse social platforms for stories, compare sources and check credibility before applying advice. Do research before trying something new or when you feel unsure.\n\nTo reach a go or no-go decision, review the basics. Does everyone consent and feel safe? Are boundaries clear and respected? Is there trust, and are expectations aligned? If desire matches and there is no pressure, it may be a go. If something feels off—confusion, discomfort, or lack of respect—choose no-go for now. Talk it through, take a break, or stop.\n\nEthics, privacy, and safety reminders: Respect choices and limits. Keep private conversations confidential to protect feelings and trust. Avoid sharing personal details without permission. If you feel unsafe or harmed, reach out to a trusted person or professional. This guide is educational; seek qualified care for medical or legal concerns.\n\nActionable next steps: Have a boundary talk with a partner today—name one green light, one yellow light, and one red light. Read one short article on consent. Practice active listening in your next conversation. Try a simple self-care activity, like a relaxing bath, a walk, or a grounding exercise. Small steps can build steady habits.\n\nThis guidance links room entries for everyday use. It may help on its own, and professional support can add more tools when needed.\n\n(Word count: 592)",
+    "vi": "# Hướng Dẫn Thực Tế Về Tình Dục Và Thân Mật\n\nThân mật lành mạnh giúp cải thiện mối quan hệ và sức khỏe. Hướng dẫn này kết nối các ý như đồng thuận, ranh giới, niềm tin, giao tiếp, ham muốn, khoái cảm và an toàn, và đưa ra các bước đơn giản để áp dụng hằng ngày.\n\nBắt đầu với đồng thuận và ranh giới. Đồng thuận nghĩa là mỗi người tự do đồng ý và có thể đổi ý bất cứ lúc nào. Nói cùng nhau về điều thoải mái và điều không thoải mái. Kết hợp với giao tiếp mở: chia sẻ suy nghĩ chân thành, nhẹ nhàng. Ví dụ, dùng lắng nghe tích cực—nhắc lại điều bạn nghe và hỏi ngắn gọn—để hiểu nhu cầu của đối tác. Đặt ranh giới rõ giúp tạo an toàn cảm xúc để cả hai thấy yên tâm.\n\nNiềm tin và thân mật cảm xúc rất quan trọng. Xây dựng niềm tin bằng sự nhất quán, giữ lời hẹn nhỏ, và tôn trọng ngay cả khi bất đồng. Chia sẻ cảm xúc và điểm dễ tổn thương theo nhịp phù hợp. Điều này gắn với thấu cảm—thử nhìn sự việc từ góc nhìn của người kia. Tôn trọng lẫn nhau làm mối quan hệ vững hơn theo thời gian.\n\nHam muốn và khoái cảm mang lại niềm vui và sức sống. Khám phá điều bạn thích với sự cẩn trọng và tò mò. Nhận thức cơ thể—chú ý hơi thở, căng cơ, và mức thoải mái—giúp bạn hiểu cơ thể hơn. Nói về ham muốn bằng ngôn ngữ đơn giản và kiểm tra cảm giác an toàn trong suốt quá trình. Việc khám phá khoái cảm có thể nhẹ nhàng, chậm rãi, và có thể tạm dừng bất cứ lúc nào.\n\nAn toàn và chữa lành cũng cần được ưu tiên. An toàn cảm xúc nghĩa là không có ép buộc hay tổn hại. Nếu có sang chấn quá khứ, như sang chấn tình dục hoặc vi phạm đồng thuận, chữa lành có thể gồm chăm sóc bản thân, trị liệu, hoặc nhóm hỗ trợ. Tiến từng bước vừa sức. Tích cực cơ thể cũng hữu ích: ghi nhận và trân trọng điều cơ thể làm được, không chỉ ngoại hình.\n\nSử dụng nhiệm vụ nghiên cứu khi cần thông tin. Với chủ đề sức khỏe, như sức khỏe sinh sản hay biện pháp phòng tránh, đọc trang chính thống hoặc cơ sở y tế. Với kỹ năng đồng thuận hay đặt ranh giới, tìm tài liệu dễ hiểu. Nếu xem câu chuyện trên mạng xã hội, so sánh nguồn và kiểm tra độ tin cậy trước khi áp dụng. Hãy tìm hiểu trước khi thử điều mới hoặc khi còn băn khoăn.\n\nĐể quyết định tiếp tục hay không, rà soát những điều cơ bản. Mọi người có đồng thuận và thấy an toàn không? Ranh giới có rõ và được tôn trọng không? Niềm tin có hiện diện và kỳ vọng có phù hợp không? Nếu ham muốn khớp nhau và không có áp lực, có thể tiếp tục. Nếu có điều gì không ổn—mơ hồ, khó chịu, hay thiếu tôn trọng—hãy chọn dừng lại. Trao đổi thêm, nghỉ một lúc, hoặc dừng hoàn toàn.\n\nĐạo đức, riêng tư và an toàn: Tôn trọng lựa chọn và giới hạn. Giữ kín cuộc trò chuyện riêng để bảo vệ cảm xúc và niềm tin. Tránh chia sẻ chi tiết cá nhân khi chưa có phép. Nếu thấy không an toàn hoặc bị tổn hại, hãy tìm sự giúp đỡ đáng tin. Tài liệu này mang tính giáo dục; hãy gặp chuyên gia cho vấn đề y tế hoặc pháp lý.\n\nBước hành động tiếp theo: Nói về ranh giới với đối tác hôm nay—nêu một vùng xanh, một vùng vàng, và một vùng đỏ. Đọc một bài ngắn về đồng thuận. Luyện lắng nghe tích cực trong cuộc trò chuyện sắp tới. Thử một hoạt động tự chăm sóc, như tắm thư giãn, đi bộ, hoặc bài tập grounding. Những bước nhỏ tạo nên thói quen bền vững.\n\nHướng dẫn này liên kết các mục trong phòng để dùng hằng ngày. Nó có thể hữu ích, và hỗ trợ chuyên môn sẽ bổ sung thêm công cụ khi cần.\n\n(Đếm từ: 598)",
+    "word_count_en": 592,
+    "word_count_vi": 598,
+    "updated_at": "2025-10-10T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  },
+  "entries": [
+    {
+      "slug": "sexual_trust",
+      "title": {
+        "en": "Building Sexual Trust",
+        "vi": "Xây dựng niềm tin tình dục"
+      },
+      "copy": {
+        "en": "Trust fosters safe intimacy. Open hearts connect deeply. Dare: share a feeling.",
+        "vi": "Niềm tin tạo thân mật an toàn. Trái tim cởi mở kết nối sâu sắc. Thử thách: chia sẻ cảm xúc."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["trust", "sexuality"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:sexual_trust",
+        "flags": []
+      },
+      "artifact_id": "550e8400-e29b-41d4-a716-446655440000",
+      "artifact_version_id": "550e8400-e29b-41d4-a716-446655440000-v001",
+      "created_at": "2025-10-06T05:08:00.100+09:00",
+      "updated_at": "2025-10-06T05:08:00.100+09:00"
+    },
+    {
+      "slug": "open_communication",
+      "title": {
+        "en": "Open Sexual Communication",
+        "vi": "Giao tiếp tình dục cởi mở"
+      },
+      "copy": {
+        "en": "Honest dialogue strengthens intimate bonds. Speak clearly. Dare: express a desire.",
+        "vi": "Đối thoại trung thực củng cố gắn kết thân mật. Nói rõ ràng. Thử thách: bày tỏ ham muốn."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["communication", "sexuality"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:open_communication",
+        "flags": []
+      },
+      "artifact_id": "6b1f9501-f3ac-42e5-b827-557766550111",
+      "artifact_version_id": "6b1f9501-f3ac-42e5-b827-557766550111-v001",
+      "created_at": "2025-10-06T05:08:00.101+09:00",
+      "updated_at": "2025-10-06T05:08:00.101+09:00"
+    },
+    {
+      "slug": "consent",
+      "title": { "en": "Understanding Consent", "vi": "Hiểu đồng thuận" },
+      "copy": {
+        "en": "Consent is ongoing and mutual. Check in often. Dare: ask for consent.",
+        "vi": "Đồng thuận liên tục và chung. Kiểm tra thường xuyên. Thử thách: hỏi đồng thuận."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["consent", "safety"],
+      "urgency": "routine",
+      "severity_level": 4,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:consent",
+        "flags": ["safety"]
+      },
+      "artifact_id": "7c30a612-a4bd-43f6-c938-668877661222",
+      "artifact_version_id": "7c30a612-a4bd-43f6-c938-668877661222-v001",
+      "created_at": "2025-10-06T05:08:00.102+09:00",
+      "updated_at": "2025-10-06T05:08:00.102+09:00"
+    },
+    {
+      "slug": "boundaries",
+      "title": { "en": "Setting Boundaries", "vi": "Đặt ranh giới" },
+      "copy": {
+        "en": "Clear boundaries protect well-being. Communicate them. Dare: set a boundary.",
+        "vi": "Ranh giới rõ ràng bảo vệ sức khỏe. Truyền đạt chúng. Thử thách: đặt một ranh giới."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["boundaries", "safety"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:boundaries",
+        "flags": ["safety"]
+      },
+      "artifact_id": "8d41b723-b5ce-44a7-d049-779988772333",
+      "artifact_version_id": "8d41b723-b5ce-44a7-d049-779988772333-v001",
+      "created_at": "2025-10-06T05:08:00.103+09:00",
+      "updated_at": "2025-10-06T05:08:00.103+09:00"
+    },
+    {
+      "slug": "desire",
+      "title": { "en": "Exploring Desire", "vi": "Khám phá ham muốn" },
+      "copy": {
+        "en": "Desire guides intimate connection. Understand yours. Dare: share a desire.",
+        "vi": "Ham muốn dẫn dắt kết nối thân mật. Hiểu ham muốn của bạn. Thử thách: chia sẻ một ham muốn."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["desire", "pleasure"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["psychology", "sexual_health"],
+      "metadata": { "topic": "sexuality_and_intimacy:desire", "flags": [] },
+      "artifact_id": "9e52c834-c6df-45b8-e15a-88aa99783344",
+      "artifact_version_id": "9e52c834-c6df-45b8-e15a-88aa99783344-v001",
+      "created_at": "2025-10-06T05:08:00.104+09:00",
+      "updated_at": "2025-10-06T05:08:00.104+09:00"
+    },
+    {
+      "slug": "pleasure",
+      "title": { "en": "Embracing Pleasure", "vi": "Ôm lấy khoái cảm" },
+      "copy": {
+        "en": "Pleasure enriches intimate experiences. Seek joy. Dare: embrace a pleasure.",
+        "vi": "Khoái cảm làm phong phú trải nghiệm thân mật. Tìm niềm vui. Thử thách: ôm lấy một khoái cảm."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["pleasure", "sexuality"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["psychology", "sexual_health"],
+      "metadata": { "topic": "sexuality_and_intimacy:pleasure", "flags": [] },
+      "artifact_id": "af63d945-d7e0-46c9-f26b-99bbaa883555",
+      "artifact_version_id": "af63d945-d7e0-46c9-f26b-99bbaa883555-v001",
+      "created_at": "2025-10-06T05:08:00.105+09:00",
+      "updated_at": "2025-10-06T05:08:00.105+09:00"
+    },
+    {
+      "slug": "emotional_safety",
+      "title": {
+        "en": "Creating Emotional Safety",
+        "vi": "Tạo an toàn cảm xúc"
+      },
+      "copy": {
+        "en": "Emotional safety nurtures intimacy. Foster security. Dare: create a safe space.",
+        "vi": "An toàn cảm xúc nuôi dưỡng thân mật. Thúc đẩy an ninh. Thử thách: tạo không gian an toàn."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["emotion", "safety"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:emotional_safety",
+        "flags": ["safety"]
+      },
+      "artifact_id": "b074ea56-e8f1-47da-037c-aaccbb994666",
+      "artifact_version_id": "b074ea56-e8f1-47da-037c-aaccbb994666-v001",
+      "created_at": "2025-10-06T05:08:00.106+09:00",
+      "updated_at": "2025-10-06T05:08:00.106+09:00"
+    },
+    {
+      "slug": "sexual_health",
+      "title": {
+        "en": "Prioritizing Sexual Health",
+        "vi": "Ưu tiên sức khỏe tình dục"
+      },
+      "copy": {
+        "en": "Health supports fulfilling intimacy. Care for body. Dare: prioritize health check.",
+        "vi": "Sức khỏe hỗ trợ thân mật trọn vẹn. Chăm sóc cơ thể. Thử thách: ưu tiên kiểm tra sức khỏe."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["sexual_health", "body"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["psychology", "sexual_health"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:sexual_health",
+        "flags": []
+      },
+      "artifact_id": "c185fb67-f902-48eb-148d-bbddccaa5777",
+      "artifact_version_id": "c185fb67-f902-48eb-148d-bbddccaa5777-v001",
+      "created_at": "2025-10-06T05:08:00.107+09:00",
+      "updated_at": "2025-10-06T05:08:00.107+09:00"
+    },
+    {
+      "slug": "intimate_moment",
+      "title": {
+        "en": "Cherishing Intimate Moments",
+        "vi": "Trân trọng khoảnh khắc thân mật"
+      },
+      "copy": {
+        "en": "Moments of closeness build bonds. Savor them. Dare: cherish a moment.",
+        "vi": "Khoảnh khắc gần gũi xây dựng gắn kết. Thưởng thức chúng. Thử thách: trân trọng một khoảnh khắc."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["relationship", "emotion"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:intimate_moment",
+        "flags": []
+      },
+      "artifact_id": "d2960c78-0a13-49fc-259e-ccfdddbb6888",
+      "artifact_version_id": "d2960c78-0a13-49fc-259e-ccfdddbb6888-v001",
+      "created_at": "2025-10-06T05:08:00.108+09:00",
+      "updated_at": "2025-10-06T05:08:00.108+09:00"
+    },
+    {
+      "slug": "vulnerability",
+      "title": {
+        "en": "Embracing Vulnerability",
+        "vi": "Ôm lấy tính dễ bị tổn thương"
+      },
+      "copy": {
+        "en": "Vulnerability deepens intimate trust. Share openly. Dare: embrace vulnerability.",
+        "vi": "Tính dễ bị tổn thương làm sâu sắc niềm tin thân mật. Chia sẻ cởi mở. Thử thách: ôm lấy tính dễ bị tổn thương."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["emotion", "trust"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:vulnerability",
+        "flags": []
+      },
+      "artifact_id": "e3a71d89-1b24-4a0d-36af-dd0eeecc7999",
+      "artifact_version_id": "e3a71d89-1b24-4a0d-36af-dd0eeecc7999-v001",
+      "created_at": "2025-10-06T05:08:00.109+09:00",
+      "updated_at": "2025-10-06T05:08:00.109+09:00"
+    },
+    {
+      "slug": "mutual_respect",
+      "title": {
+        "en": "Fostering Mutual Respect",
+        "vi": "Nuôi dưỡng tôn trọng lẫn nhau"
+      },
+      "copy": {
+        "en": "Respect builds healthy intimacy. Honor each other. Dare: show respect.",
+        "vi": "Tôn trọng xây dựng thân mật lành mạnh. Tôn vinh lẫn nhau. Thử thách: thể hiện tôn trọng."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["trust", "relationship"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:mutual_respect",
+        "flags": []
+      },
+      "artifact_id": "f4b82e9a-2c35-4b1e-47b0-ee1fffdd8aaa",
+      "artifact_version_id": "f4b82e9a-2c35-4b1e-47b0-ee1fffdd8aaa-v001",
+      "created_at": "2025-10-06T05:08:00.110+09:00",
+      "updated_at": "2025-10-06T05:08:00.110+09:00"
+    },
+    {
+      "slug": "body_positivity",
+      "title": {
+        "en": "Embracing Body Positivity",
+        "vi": "Ôm lấy tích cực cơ thể"
+      },
+      "copy": {
+        "en": "Positive body image enhances intimacy. Love your body. Dare: affirm positivity.",
+        "vi": "Hình ảnh cơ thể tích cực nâng cao thân mật. Yêu cơ thể. Thử thách: khẳng định tích cực."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["body", "growth"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["psychology", "sexual_health"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:body_positivity",
+        "flags": []
+      },
+      "artifact_id": "a5c93f0b-3d46-4c2f-58c1-ff2000ee9bbb",
+      "artifact_version_id": "a5c93f0b-3d46-4c2f-58c1-ff2000ee9bbb-v001",
+      "created_at": "2025-10-06T05:08:00.111+09:00",
+      "updated_at": "2025-10-06T05:08:00.111+09:00"
+    },
+    {
+      "slug": "sexual_expression",
+      "title": {
+        "en": "Expressing Sexual Self",
+        "vi": "Bày tỏ bản thân tình dục"
+      },
+      "copy": {
+        "en": "Authentic expression fosters fulfillment. Be true. Dare: express your self.",
+        "vi": "Bày tỏ chân thực thúc đẩy sự viên mãn. Hãy chân thật. Thử thách: bày tỏ bản thân."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["sexuality", "growth"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["psychology", "sexual_health"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:sexual_expression",
+        "flags": []
+      },
+      "artifact_id": "b6da400c-4e57-4d30-69d2-001111ffaccc",
+      "artifact_version_id": "b6da400c-4e57-4d30-69d2-001111ffaccc-v001",
+      "created_at": "2025-10-06T05:08:00.112+09:00",
+      "updated_at": "2025-10-06T05:08:00.112+09:00"
+    },
+    {
+      "slug": "active_listening",
+      "title": {
+        "en": "Practicing Active Listening",
+        "vi": "Lắng nghe tích cực"
+      },
+      "copy": {
+        "en": "Attentive listening deepens understanding. Focus fully. Dare: listen actively.",
+        "vi": "Lắng nghe chú ý làm sâu sắc hiểu biết. Tập trung hoàn toàn. Thử thách: lắng nghe tích cực."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["communication", "trust"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:active_listening",
+        "flags": []
+      },
+      "artifact_id": "c7eb511d-5f68-4e41-7ae3-11222200bddd",
+      "artifact_version_id": "c7eb511d-5f68-4e41-7ae3-11222200bddd-v001",
+      "created_at": "2025-10-06T05:08:00.113+09:00",
+      "updated_at": "2025-10-06T05:08:00.113+09:00"
+    },
+    {
+      "slug": "empathy",
+      "title": { "en": "Cultivating Empathy", "vi": "Nuôi dưỡng thấu cảm" },
+      "copy": {
+        "en": "Empathy strengthens intimate bonds. Understand feelings. Dare: show empathy.",
+        "vi": "Thấu cảm củng cố gắn kết thân mật. Hiểu cảm xúc. Thử thách: thể hiện thấu cảm."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["emotion", "trust"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["psychology", "relationship"],
+      "metadata": { "topic": "sexuality_and_intimacy:empathy", "flags": [] },
+      "artifact_id": "d8fc622e-6079-4f52-8bf4-22333311ceee",
+      "artifact_version_id": "d8fc622e-6079-4f52-8bf4-22333311ceee-v001",
+      "created_at": "2025-10-06T05:08:00.114+09:00",
+      "updated_at": "2025-10-06T05:08:00.114+09:00"
+    },
+    {
+      "slug": "sexual_communication",
+      "title": {
+        "en": "Enhancing Sexual Communication",
+        "vi": "Cải thiện giao tiếp tình dục"
+      },
+      "copy": {
+        "en": "Clear talk fosters mutual understanding. Express openly. Dare: communicate a need.",
+        "vi": "Nói chuyện rõ ràng thúc đẩy hiểu biết chung. Bày tỏ cởi mở. Thử thách: giao tiếp một nhu cầu."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["communication", "sexuality"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:sexual_communication",
+        "flags": []
+      },
+      "artifact_id": "e90d733f-718a-5063-9c05-33444422dfff",
+      "artifact_version_id": "e90d733f-718a-5063-9c05-33444422dfff-v001",
+      "created_at": "2025-10-06T05:08:00.115+09:00",
+      "updated_at": "2025-10-06T05:08:00.115+09:00"
+    },
+    {
+      "slug": "sexual_boundaries",
+      "title": {
+        "en": "Respecting Sexual Boundaries",
+        "vi": "Tôn trọng ranh giới tình dục"
+      },
+      "copy": {
+        "en": "Boundaries ensure safe intimacy. Honor them. Dare: respect a boundary.",
+        "vi": "Ranh giới đảm bảo thân mật an toàn. Tôn vinh chúng. Thử thách: tôn trọng một ranh giới."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["boundaries", "safety"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:sexual_boundaries",
+        "flags": ["safety"]
+      },
+      "artifact_id": "fa1e8440-829b-5174-ad16-44555533e000",
+      "artifact_version_id": "fa1e8440-829b-5174-ad16-44555533e000-v001",
+      "created_at": "2025-10-06T05:08:00.116+09:00",
+      "updated_at": "2025-10-06T05:08:00.116+09:00"
+    },
+    {
+      "slug": "emotional_intimacy",
+      "title": {
+        "en": "Deepening Emotional Intimacy",
+        "vi": "Làm sâu sắc thân mật cảm xúc"
+      },
+      "copy": {
+        "en": "Emotional closeness builds strong bonds. Connect deeply. Dare: deepen emotional intimacy.",
+        "vi": "Gần gũi cảm xúc xây dựng gắn kết mạnh mẽ. Kết nối sâu sắc. Thử thách: làm sâu sắc thân mật cảm xúc."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["emotion", "relationship"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:emotional_intimacy",
+        "flags": []
+      },
+      "artifact_id": "0b2f9551-93ac-5285-be27-55666644f111",
+      "artifact_version_id": "0b2f9551-93ac-5285-be27-55666644f111-v001",
+      "created_at": "2025-10-06T05:08:00.117+09:00",
+      "updated_at": "2025-10-06T05:08:00.117+09:00"
+    },
+    {
+      "slug": "pleasure_exploration",
+      "title": {
+        "en": "Exploring Pleasure Safely",
+        "vi": "Khám phá khoái cảm an toàn"
+      },
+      "copy": {
+        "en": "Safe exploration brings joy. Discover gently. Dare: explore pleasure safely.",
+        "vi": "Khám phá an toàn mang niềm vui. Khám phá nhẹ nhàng. Thử thách: khám phá khoái cảm an toàn."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["pleasure", "growth"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["psychology", "sexual_health"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:pleasure_exploration",
+        "flags": []
+      },
+      "artifact_id": "1c40a662-a4bd-5396-cf38-66777755a222",
+      "artifact_version_id": "1c40a662-a4bd-5396-cf38-66777755a222-v001",
+      "created_at": "2025-10-06T05:08:00.118+09:00",
+      "updated_at": "2025-10-06T05:08:00.118+09:00"
+    },
+    {
+      "slug": "body_awareness",
+      "title": {
+        "en": "Developing Body Awareness",
+        "vi": "Phát triển nhận thức cơ thể"
+      },
+      "copy": {
+        "en": "Awareness enhances intimate experiences. Tune in. Dare: develop body awareness.",
+        "vi": "Nhận thức nâng cao trải nghiệm thân mật. Lắng nghe. Thử thách: phát triển nhận thức cơ thể."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["body", "growth"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["psychology", "sexual_health"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:body_awareness",
+        "flags": []
+      },
+      "artifact_id": "2d51b773-b5ce-54a7-d049-77888866b333",
+      "artifact_version_id": "2d51b773-b5ce-54a7-d049-77888866b333-v001",
+      "created_at": "2025-10-06T05:08:00.119+09:00",
+      "updated_at": "2025-10-06T05:08:00.119+09:00"
+    },
+    {
+      "slug": "sexual_self",
+      "title": {
+        "en": "Understanding Sexual Self",
+        "vi": "Hiểu bản thân tình dục"
+      },
+      "copy": {
+        "en": "Self-understanding guides intimate fulfillment. Know yourself. Dare: understand sexual self.",
+        "vi": "Hiểu bản thân dẫn dắt viên mãn thân mật. Biết bản thân. Thử thách: hiểu bản thân tình dục."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["sexuality", "growth"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["psychology", "sexual_health"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:sexual_self",
+        "flags": []
+      },
+      "artifact_id": "3e62c884-c6df-55b8-e15a-88999977c444",
+      "artifact_version_id": "3e62c884-c6df-55b8-e15a-88999977c444-v001",
+      "created_at": "2025-10-06T05:08:00.120+09:00",
+      "updated_at": "2025-10-06T05:08:00.120+09:00"
+    },
+    {
+      "slug": "healing_trauma",
+      "title": { "en": "Healing from Trauma", "vi": "Chữa lành sang chấn" },
+      "copy": {
+        "en": "Gentle healing restores well-being. Seek support. Dare: begin healing journey.",
+        "vi": "Chữa lành nhẹ nhàng khôi phục sức khỏe. Tìm hỗ trợ. Thử thách: bắt đầu hành trình chữa lành."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["healing", "growth"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:healing_trauma",
+        "flags": []
+      },
+      "artifact_id": "4f73d995-d7e0-56c9-f26b-99aaaa88d555",
+      "artifact_version_id": "4f73d995-d7e0-56c9-f26b-99aaaa88d555-v001",
+      "created_at": "2025-10-06T05:08:00.121+09:00",
+      "updated_at": "2025-10-06T05:08:00.121+09:00"
+    },
+    {
+      "slug": "sexual_autonomy",
+      "title": {
+        "en": "Embracing Sexual Autonomy",
+        "vi": "Ôm lấy tự chủ tình dục"
+      },
+      "copy": {
+        "en": "Autonomy empowers intimate choices. Own your path. Dare: embrace autonomy.",
+        "vi": "Tự chủ trao quyền lựa chọn thân mật. Sở hữu con đường. Thử thách: ôm lấy tự chủ."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["sexuality", "growth"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["psychology", "sexual_health"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:sexual_autonomy",
+        "flags": []
+      },
+      "artifact_id": "5084eaa6-e8f1-57da-037c-aabbbb99e666",
+      "artifact_version_id": "5084eaa6-e8f1-57da-037c-aabbbb99e666-v001",
+      "created_at": "2025-10-06T05:08:00.122+09:00",
+      "updated_at": "2025-10-06T05:08:00.122+09:00"
+    },
+    {
+      "slug": "trust_building",
+      "title": { "en": "Strengthening Trust", "vi": "Củng cố niềm tin" },
+      "copy": {
+        "en": "Consistent actions build secure bonds. Be reliable. Dare: build trust.",
+        "vi": "Hành động nhất quán xây dựng liên kết an toàn. Đáng tin cậy. Thử thách: xây dựng niềm tin."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["trust", "relationship"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:trust_building",
+        "flags": []
+      },
+      "artifact_id": "6195fbb7-f902-58eb-148d-bbccccaae777",
+      "artifact_version_id": "6195fbb7-f902-58eb-148d-bbccccaae777-v001",
+      "created_at": "2025-10-06T05:08:00.123+09:00",
+      "updated_at": "2025-10-06T05:08:00.123+09:00"
+    },
+    {
+      "slug": "communication_clarity",
+      "title": {
+        "en": "Achieving Communication Clarity",
+        "vi": "Đạt giao tiếp rõ ràng"
+      },
+      "copy": {
+        "en": "Clear expression fosters understanding. Speak honestly. Dare: achieve clarity.",
+        "vi": "Bày tỏ rõ ràng thúc đẩy hiểu biết. Nói trung thực. Thử thách: đạt rõ ràng."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["communication", "trust"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:communication_clarity",
+        "flags": []
+      },
+      "artifact_id": "b8ceaa18-eabb-4dfa-bafd-aabbccaa1888",
+      "artifact_version_id": "b8ceaa18-eabb-4dfa-bafd-aabbccaa1888-v001",
+      "created_at": "2025-10-06T05:08:00.124+09:00",
+      "updated_at": "2025-10-06T05:08:00.124+09:00"
+    },
+    {
+      "slug": "pleasure_safety",
+      "title": {
+        "en": "Safe Pleasure Exploration",
+        "vi": "Khám phá khoái cảm an toàn"
+      },
+      "copy": {
+        "en": "Safe pleasure enhances joy. Prioritize comfort always. Dare: explore a safe sensation.",
+        "vi": "Khoái cảm an toàn nâng cao niềm vui. Ưu tiên thoải mái. Thử thách: khám phá một cảm giác an toàn."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["pleasure", "safety"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["psychology", "sexual_health"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:pleasure_safety",
+        "flags": []
+      },
+      "artifact_id": "c9dfbb19-fbcc-4eab-cbae-bbccddbb1999",
+      "artifact_version_id": "c9dfbb19-fbcc-4eab-cbae-bbccddbb1999-v001",
+      "created_at": "2025-10-06T05:08:00.125+09:00",
+      "updated_at": "2025-10-06T05:08:00.125+09:00"
+    },
+    {
+      "slug": "emotional_openness",
+      "title": {
+        "en": "Fostering Emotional Openness",
+        "vi": "Nuôi dưỡng cởi mở cảm xúc"
+      },
+      "copy": {
+        "en": "Open emotions build deeper intimacy. Share honestly. Dare: express a true emotion.",
+        "vi": "Cảm xúc cởi mở xây dựng thân mật sâu sắc. Chia sẻ trung thực. Thử thách: bày tỏ cảm xúc thật."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["emotion", "sexuality"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:emotional_openness",
+        "flags": []
+      },
+      "artifact_id": "d0eacc1a-acdd-4fbc-dcbf-ccddeecc1aaa",
+      "artifact_version_id": "d0eacc1a-acdd-4fbc-dcbf-ccddeecc1aaa-v001",
+      "created_at": "2025-10-06T05:08:00.126+09:00",
+      "updated_at": "2025-10-06T05:08:00.126+09:00"
+    },
+    {
+      "slug": "sexual_respect",
+      "title": {
+        "en": "Practicing Sexual Respect",
+        "vi": "Tôn trọng trong tình dục"
+      },
+      "copy": {
+        "en": "Respecting desires strengthens connection. Honor boundaries. Dare: show a respectful gesture.",
+        "vi": "Tôn trọng ham muốn củng cố kết nối. Tôn vinh ranh giới. Thử thách: thể hiện cử chỉ tôn trọng."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["trust", "sexuality"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:sexual_respect",
+        "flags": []
+      },
+      "artifact_id": "e1fbdd1b-bdee-4acd-edca-ddeeffdd1bbb",
+      "artifact_version_id": "e1fbdd1b-bdee-4acd-edca-ddeeffdd1bbb-v001",
+      "created_at": "2025-10-06T05:08:00.127+09:00",
+      "updated_at": "2025-10-06T05:08:00.127+09:00"
+    },
+    {
+      "slug": "body_connection",
+      "title": {
+        "en": "Building Body Connection",
+        "vi": "Xây dựng kết nối cơ thể"
+      },
+      "copy": {
+        "en": "Physical connection enhances intimacy. Feel your body. Dare: connect through a touch.",
+        "vi": "Kết nối vật lý nâng cao thân mật. Cảm nhận cơ thể. Thử thách: kết nối qua một cái chạm."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["body", "sexuality"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["psychology", "sexual_health"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:body_connection",
+        "flags": []
+      },
+      "artifact_id": "f2acee1c-ceff-4bde-aedb-eeffaaee1ccc",
+      "artifact_version_id": "f2acee1c-ceff-4bde-aedb-eeffaaee1ccc-v001",
+      "created_at": "2025-10-06T05:08:00.128+09:00",
+      "updated_at": "2025-10-06T05:08:00.128+09:00"
+    },
+    {
+      "slug": "intimate_exploration",
+      "title": {
+        "en": "Exploring Intimate Connection",
+        "vi": "Khám phá kết nối thân mật"
+      },
+      "copy": {
+        "en": "Safe exploration deepens intimate bonds. Discover together. Dare: explore a shared desire.",
+        "vi": "Khám phá an toàn làm sâu sắc kết nối thân mật. Cùng khám phá. Thử thách: khám phá ham muốn chung."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["sexuality", "communication"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:intimate_exploration",
+        "flags": []
+      },
+      "artifact_id": "a3bdff1d-dfaa-4cef-bfec-ffaaabff1ddd",
+      "artifact_version_id": "a3bdff1d-dfaa-4cef-bfec-ffaaabff1ddd-v001",
+      "created_at": "2025-10-06T05:08:00.129+09:00",
+      "updated_at": "2025-10-06T05:08:00.129+09:00"
+    },
+    {
+      "slug": "sexual_healing",
+      "title": {
+        "en": "Journey of Sexual Healing",
+        "vi": "Hành trình chữa lành tình dục"
+      },
+      "copy": {
+        "en": "Healing restores intimate joy. Ensure immediate safety; contact local emergency services. Dare: seek support.",
+        "vi": "Chữa lành khôi phục niềm vui thân mật. Đảm bảo an toàn ngay; liên hệ dịch vụ khẩn cấp. Thử thách: liên hệ người hỗ trợ."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["healing", "sexuality"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["psychology", "sexual_health"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:sexual_healing",
+        "flags": ["crisis", "safety"]
+      },
+      "artifact_id": "b4ceaa1e-eabb-4dfa-cafd-aabbccaa1eee",
+      "artifact_version_id": "b4ceaa1e-eabb-4dfa-cafd-aabbccaa1eee-v001",
+      "created_at": "2025-10-06T05:08:00.130+09:00",
+      "updated_at": "2025-10-06T05:08:00.130+09:00"
+    },
+    {
+      "slug": "consent_violation_recovery",
+      "title": {
+        "en": "Recovering from Consent Violation",
+        "vi": "Phục hồi từ vi phạm đồng thuận"
+      },
+      "copy": {
+        "en": "Rebuild trust after violation. Ensure immediate safety; contact local emergency services. Dare: seek support.",
+        "vi": "Tái xây niềm tin sau vi phạm. Đảm bảo an toàn ngay; liên hệ dịch vụ khẩn cấp. Thử thách: tìm sự hỗ trợ chuyên nghiệp."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["healing", "safety", "consent"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:consent_violation_recovery",
+        "flags": ["crisis", "safety"]
+      },
+      "artifact_id": "c5dfbb1f-fbcc-4eab-dbae-bbccddbb1fff",
+      "artifact_version_id": "c5dfbb1f-fbcc-4eab-dbae-bbccddbb1fff-v001",
+      "created_at": "2025-10-06T05:08:00.131+09:00",
+      "updated_at": "2025-10-06T05:08:00.131+09:00"
+    },
+    {
+      "slug": "sexual_trauma",
+      "title": {
+        "en": "Addressing Sexual Trauma",
+        "vi": "Xử lý sang chấn tình dục"
+      },
+      "copy": {
+        "en": "Trauma requires gentle healing. Ensure immediate safety; contact local emergency services. Dare: contact professional.",
+        "vi": "Sang chấn cần chữa lành nhẹ nhàng. Đảm bảo an toàn ngay; liên hệ dịch vụ khẩn cấp. Thử thách: liên hệ chuyên gia."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["healing", "safety"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["psychology", "sexual_health"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:sexual_trauma",
+        "flags": ["crisis", "safety"]
+      },
+      "artifact_id": "d6eacc20-acdd-4fbc-ecbf-ccddeecc2000",
+      "artifact_version_id": "d6eacc20-acdd-4fbc-ecbf-ccddeecc2000-v001",
+      "created_at": "2025-10-06T05:08:00.132+09:00",
+      "updated_at": "2025-10-06T05:08:00.132+09:00"
+    },
+    {
+      "slug": "body_dysmorphia",
+      "title": {
+        "en": "Navigating Body Dysmorphia",
+        "vi": "Đối mặt loạn hình cơ thể"
+      },
+      "copy": {
+        "en": "Body image distress needs support. Ensure immediate safety; contact local emergency services. Dare: seek support.",
+        "vi": "Khủng hoảng hình ảnh cơ thể cần hỗ trợ. Đảm bảo an toàn ngay; liên hệ dịch vụ khẩn cấp. Thử thách: tìm hỗ trợ tâm lý."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["body", "healing"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["psychology", "sexual_health"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:body_dysmorphia",
+        "flags": ["crisis", "safety"]
+      },
+      "artifact_id": "e7fbdd21-bdee-4acd-fdca-ddeeffdd2111",
+      "artifact_version_id": "e7fbdd21-bdee-4acd-fdca-ddeeffdd2111-v001",
+      "created_at": "2025-10-06T05:08:00.133+09:00",
+      "updated_at": "2025-10-06T05:08:00.133+09:00"
+    },
+    {
+      "slug": "self_care",
+      "title": {
+        "en": "Practicing Self-Care",
+        "vi": "Thực hành chăm sóc bản thân"
+      },
+      "copy": {
+        "en": "Self-care supports intimate well-being. Nurture yourself. Dare: prioritize a self-care act.",
+        "vi": "Chăm sóc bản thân hỗ trợ hạnh phúc thân mật. Nuôi dưỡng bản thân. Thử thách: ưu tiên một hành động tự chăm."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["growth", "body"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["psychology", "sexual_health"],
+      "metadata": { "topic": "sexuality_and_intimacy:self_care", "flags": [] },
+      "artifact_id": "f8acee22-ceff-4bde-aedb-eeffaaee2222",
+      "artifact_version_id": "f8acee22-ceff-4bde-aedb-eeffaaee2222-v001",
+      "created_at": "2025-10-06T05:08:00.134+09:00",
+      "updated_at": "2025-10-06T05:08:00.134+09:00"
+    },
+    {
+      "slug": "intimate_presence",
+      "title": {
+        "en": "Cultivating Intimate Presence",
+        "vi": "Nuôi dưỡng hiện diện thân mật"
+      },
+      "copy": {
+        "en": "Mindful presence deepens intimate connection. Stay engaged. Dare: be fully present.",
+        "vi": "Hiện diện chánh niệm làm sâu sắc kết nối thân mật. Luôn gắn kết. Thử thách: hiện diện trọn vẹn."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["emotion", "sexuality"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:intimate_presence",
+        "flags": []
+      },
+      "artifact_id": "a9bdff23-dfaa-4cef-bfec-ffaaabff2333",
+      "artifact_version_id": "a9bdff23-dfaa-4cef-bfec-ffaaabff2333-v001",
+      "created_at": "2025-10-06T05:08:00.135+09:00",
+      "updated_at": "2025-10-06T05:08:00.135+09:00"
+    },
+    {
+      "slug": "relationship_dynamics",
+      "title": {
+        "en": "Understanding Relationship Dynamics",
+        "vi": "Hiểu động lực mối quan hệ"
+      },
+      "copy": {
+        "en": "Balanced dynamics foster healthy intimacy. Reflect together. Dare: discuss a pattern.",
+        "vi": "Động lực cân bằng nuôi dưỡng thân mật lành mạnh. Cùng suy ngẫm. Thử thách: thảo luận một mô hình."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["relationship", "communication"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:relationship_dynamics",
+        "flags": []
+      },
+      "artifact_id": "baceaa24-eabb-4dfa-cafd-aabbccaa2444",
+      "artifact_version_id": "baceaa24-eabb-4dfa-cafd-aabbccaa2444-v001",
+      "created_at": "2025-10-06T05:08:00.136+09:00",
+      "updated_at": "2025-10-06T05:08:00.136+09:00"
+    },
+    {
+      "slug": "sexual_wellbeing",
+      "title": {
+        "en": "Promoting Sexual Wellbeing",
+        "vi": "Thúc đẩy hạnh phúc tình dục"
+      },
+      "copy": {
+        "en": "Wellbeing enhances intimate joy. Prioritize health. Dare: nurture a balanced desire.",
+        "vi": "Hạnh phúc nâng cao niềm vui thân mật. Ưu tiên sức khỏe. Thử thách: nuôi dưỡng ham muốn cân bằng."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["sexual_health", "growth"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["psychology", "sexual_health"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:sexual_wellbeing",
+        "flags": []
+      },
+      "artifact_id": "cbdfbb25-fbcc-4eab-dbae-bbccddbb2555",
+      "artifact_version_id": "cbdfbb25-fbcc-4eab-dbae-bbccddbb2555-v001",
+      "created_at": "2025-10-06T05:08:00.137+09:00",
+      "updated_at": "2025-10-06T05:08:00.137+09:00"
+    },
+    {
+      "slug": "mutual_pleasure",
+      "title": {
+        "en": "Sharing Mutual Pleasure",
+        "vi": "Chia sẻ khoái cảm lẫn nhau"
+      },
+      "copy": {
+        "en": "Mutual pleasure strengthens bonds. Share joy. Dare: share mutual pleasure.",
+        "vi": "Khoái cảm chung củng cố gắn kết. Chia sẻ niềm vui. Thử thách: chia sẻ khoái cảm chung."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["pleasure", "relationship"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:mutual_pleasure",
+        "flags": []
+      },
+      "artifact_id": "dceacc26-acdd-4fbc-ecbf-ccddeecc2666",
+      "artifact_version_id": "dceacc26-acdd-4fbc-ecbf-ccddeecc2666-v001",
+      "created_at": "2025-10-06T05:08:00.138+09:00",
+      "updated_at": "2025-10-06T05:08:00.138+09:00"
+    },
+    {
+      "slug": "intimate_comfort",
+      "title": {
+        "en": "Ensuring Intimate Comfort",
+        "vi": "Đảm bảo thoải mái thân mật"
+      },
+      "copy": {
+        "en": "Comfort fosters fulfilling intimacy. Prioritize ease. Dare: ensure comfort.",
+        "vi": "Thoải mái nuôi dưỡng thân mật viên mãn. Ưu tiên dễ chịu. Thử thách: đảm bảo thoải mái."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["emotion", "safety"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["psychology", "relationship"],
+      "metadata": {
+        "topic": "sexuality_and_intimacy:intimate_comfort",
+        "flags": ["safety"]
+      },
+      "artifact_id": "edfddd27-bdee-4acd-fdca-ddeeffdd2777",
+      "artifact_version_id": "edfddd27-bdee-4acd-fdca-ddeeffdd2777-v001",
+      "created_at": "2025-10-06T05:08:00.139+09:00",
+      "updated_at": "2025-10-06T05:08:00.139+09:00"
+    }
+  ]
+}

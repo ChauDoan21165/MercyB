@@ -72,7 +72,7 @@ const roomFiles: { [key: string]: string } = {
   'womens-health': 'women_health.json',
 };
 
-// Load room data from JSON
+// Load room data from JSON embedded in this function's folder
 async function loadRoomData(roomId: string) {
   try {
     const fileName = roomFiles[roomId];
@@ -81,16 +81,13 @@ async function loadRoomData(roomId: string) {
       return null;
     }
 
-    // Read the file from the project
-    const dataPath = `../../data/rooms/${fileName}`;
-    console.log(`Attempting to load: ${dataPath}`);
-    
-    // For now, return a placeholder - in production, we'd load from storage
-    return {
-      roomId,
-      description: "Room data loaded",
-      note: "Using AI with room context"
-    };
+    // Read the JSON from ./data which is bundled with this function
+    const fileUrl = new URL(`./data/${fileName}`, import.meta.url);
+    console.log(`Attempting to load: ${fileUrl.href}`);
+
+    const fileText = await Deno.readTextFile(fileUrl);
+    const json = JSON.parse(fileText);
+    return json;
   } catch (error) {
     console.error('Error loading room data:', error);
     return null;
@@ -126,8 +123,40 @@ serve(async (req) => {
       );
     }
 
-    // Build system prompt with room context
-    const systemPrompt = `You are a bilingual health and wellness consultant for the Mercy Blade app, specializing in the "${roomId}" topic.
+// Prepare contextual snippets from room data (truncate to keep prompt small)
+function truncate(text: string | undefined, max = 900) {
+  return (text || '').toString().slice(0, max);
+}
+
+const contextEn = truncate(roomData?.room_essay?.en || roomData?.description?.en);
+const contextVi = truncate(roomData?.room_essay?.vi || roomData?.description?.vi);
+const crisisEn = truncate(roomData?.crisis_footer?.en);
+const crisisVi = truncate(roomData?.crisis_footer?.vi);
+const safetyEn = truncate(roomData?.safety_disclaimer?.en);
+const safetyVi = truncate(roomData?.safety_disclaimer?.vi);
+
+let keywordsEn = '';
+let keywordsVi = '';
+try {
+  if (roomData?.keywords) {
+    const groups = Object.values(roomData.keywords as Record<string, any>);
+    if (groups.length > 0) {
+      const first = groups[0] as any;
+      if (Array.isArray(first?.en)) keywordsEn = first.en.slice(0, 12).join(', ');
+      if (Array.isArray(first?.vi)) keywordsVi = first.vi.slice(0, 12).join(', ');
+    }
+  }
+} catch (_) {}
+
+const sampleTitlesEn = Array.isArray(roomData?.entries)
+  ? (roomData!.entries as any[]).slice(0, 3).map(e => e?.title?.en).filter(Boolean).join(' | ')
+  : '';
+const sampleTitlesVi = Array.isArray(roomData?.entries)
+  ? (roomData!.entries as any[]).slice(0, 3).map(e => e?.title?.vi).filter(Boolean).join(' | ')
+  : '';
+
+// Build system prompt with room context
+const systemPrompt = `You are a bilingual health and wellness consultant for the Mercy Blade app, specializing in the "${roomId}" topic.
 
 CRITICAL INSTRUCTIONS:
 - ALWAYS respond in BOTH English and Vietnamese
@@ -140,15 +169,25 @@ CRITICAL INSTRUCTIONS:
 - Keep responses concise but informative (2-3 paragraphs max)
 - Help Vietnamese speakers improve their English while learning about health
 
-RESPONSE FORMAT EXAMPLE:
-Thank you for asking about [topic]. [English response paragraph]
+DATA CONTEXT (English):
+- Description: ${contextEn}
+- Keywords: ${keywordsEn}
+- Sample entries: ${sampleTitlesEn}
+- Safety: ${safetyEn}
+- Crisis: ${crisisEn}
 
-Cảm ơn bạn đã đặt câu hỏi về [chủ đề]. [Vietnamese response paragraph]
+NGỮ CẢNH DỮ LIỆU (Tiếng Việt):
+- Mô tả: ${contextVi}
+- Từ khóa: ${keywordsVi}
+- Mục ví dụ: ${sampleTitlesVi}
+- Lưu ý an toàn: ${safetyVi}
+- Khẩn cấp: ${crisisVi}
 
-Room Context: ${roomId}
-Available Data: ${roomData ? 'Room-specific guidance available' : 'General guidance'}
+RESPONSE FORMAT:
+[English paragraph]
 
-Remember: Format is ALWAYS English first, then Vietnamese. This helps Vietnamese speakers learn English vocabulary and grammar while getting health knowledge.`;
+[Đoạn tiếng Việt]
+`;
 
     // Prepare messages
     const messages = [

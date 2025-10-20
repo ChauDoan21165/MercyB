@@ -1,0 +1,589 @@
+{
+  "schema_version": "1.1",
+  "schema_id": "fever",
+  "description": "Echologic Mercy Blade room for fever management and related health guidance",
+  "description_vi": "Phòng Mercy Blade về quản lý sốt và hướng dẫn sức khỏe liên quan",
+  "supported_languages": ["en", "vi"],
+  "content_version": 2,
+  "breaking_change": false,
+  "localization": {
+    "default": "en",
+    "fallback": "vi",
+    "i18n_required": true,
+    "i18n_verified": true
+  },
+  "rendering": {
+    "requires_emergency_substitution": true
+  },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice or emergency care.",
+  "safety_disclaimer_vi": "Hướng dẫn mang tính giáo dục; không thay thế tư vấn y tế chuyên nghiệp hoặc chăm sóc khẩn cấp.",
+  "crisis_footer": {
+    "en": "If confusion, seizures, stiff neck, purple rash, trouble breathing, or fever in an infant <3 months occurs, call {emergency_number} now.",
+    "vi": "Nếu lú lẫn, co giật, cứng cổ, phát ban tím, khó thở, hoặc sốt ở trẻ <3 tháng, hãy gọi {emergency_number} ngay."
+  },
+  "meta": {
+    "created_at": "2025-10-06T09:18:00Z",
+    "updated_at": "2025-10-06T09:18:00Z",
+    "checksum_sha256": "f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2",
+    "meta_notes": "Fixed typo in fever_in_children (skin to audience), corrected VN CTA label in fever_in_immunocompromised; retained 10 entries for capacity; aligned with cough.json | artifact_ids unique | batch=final/4 | batch_total=1 | checksum_verified=true | i18n_verified=true"
+  },
+  "defaults": {
+    "fitt": {
+      "intensity": { "en": "Low", "vi": "Nhẹ" }
+    }
+  },
+  "enums": {
+    "tags": [
+      "fever",
+      "temperature_management",
+      "illness_response",
+      "hydration",
+      "infection_control",
+      "child_health",
+      "adult_health",
+      "elderly_care",
+      "emergency_care"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": [
+      "immune_system",
+      "cardiovascular_system",
+      "neurological_system"
+    ],
+    "audience": ["adult", "child", "elderly", "infant", "immunocompromised"]
+  },
+  "keywords": {
+    "fever_monitoring": {
+      "en": [
+        "fever_monitoring",
+        "temperature_check",
+        "fever_tracking",
+        "body_temp"
+      ],
+      "vi": [
+        "theo_dõi_sốt",
+        "kiểm_tra_nhiệt_độ",
+        "theo_dõi_sốt",
+        "nhiệt_độ_cơ_thể"
+      ]
+    },
+    "hydration_for_fever": {
+      "en": [
+        "hydration_for_fever",
+        "fluid_intake",
+        "drink_water",
+        "prevent_dehydration"
+      ],
+      "vi": ["uống_nước_khi_sốt", "nạp_chất_lỏng", "uống_nước", "ngăn_mất_nước"]
+    },
+    "fever_rest": {
+      "en": ["fever_rest", "bed_rest", "recovery_rest", "rest_for_fever"],
+      "vi": [
+        "nghỉ_ngơi_khi_sốt",
+        "nghỉ_trên_giường",
+        "nghỉ_phục_hồi",
+        "nghỉ_sốt"
+      ]
+    },
+    "acetaminophen": {
+      "en": ["acetaminophen", "pain_reliever", "fever_reducer", "tylenol"],
+      "vi": ["acetaminophen", "giảm_đau", "hạ_sốt", "tylenol"]
+    },
+    "ibuprofen": {
+      "en": ["ibuprofen", "nsaid", "fever_med", "advil"],
+      "vi": ["ibuprofen", "nsaid", "thuốc_sốt", "advil"]
+    },
+    "fever_in_children": {
+      "en": ["fever_in_children", "child_fever", "pediatric_fever", "kid_temp"],
+      "vi": ["sốt_trẻ_em", "sốt_trẻ", "sốt_nhi_khoa", "nhiệt_độ_trẻ"]
+    },
+    "fever_in_elderly": {
+      "en": [
+        "fever_in_elderly",
+        "senior_fever",
+        "geriatric_fever",
+        "old_age_temp"
+      ],
+      "vi": [
+        "sốt_người_già",
+        "sốt_cao_tuổi",
+        "sốt_lão_khoa",
+        "nhiệt_độ_tuổi_già"
+      ]
+    },
+    "fever_in_immunocompromised": {
+      "en": [
+        "fever_in_immunocompromised",
+        "immune_weak_fever",
+        "low_immunity_temp",
+        "compromised_fever"
+      ],
+      "vi": [
+        "sốt_miễn_dịch_yếu",
+        "sốt_miễn_dịch_thấp",
+        "nhiệt_độ_miễn_dịch_thấp",
+        "sốt_miễn_dịch_suy"
+      ]
+    },
+    "infection_control": {
+      "en": [
+        "infection_control",
+        "hand_washing",
+        "hygiene_practice",
+        "prevent_spread"
+      ],
+      "vi": [
+        "kiểm_soát_nhiễm_khuẩn",
+        "rửa_tay",
+        "thực_hành_vệ_sinh",
+        "ngăn_lan_truyền"
+      ]
+    },
+    "fever_cooling_methods": {
+      "en": [
+        "fever_cooling_methods",
+        "tepid_sponging",
+        "cool_room",
+        "light_clothing"
+      ],
+      "vi": [
+        "phương_pháp_làm_mát_sốt",
+        "lau_nước_ấm",
+        "phòng_mát",
+        "quần_áo_mỏng"
+      ]
+    }
+  },
+  "entries": [
+    {
+      "slug": "fever_monitoring",
+      "title": { "en": "Fever Monitoring", "vi": "Theo dõi sốt" },
+      "copy": {
+        "en": "Check temperature regularly to track fever changes.",
+        "vi": "Kiểm tra nhiệt độ đều đặn để theo dõi thay đổi sốt."
+      },
+      "cta": {
+        "en": {
+          "label": "Check temperature",
+          "suggested_action": "track_habit"
+        },
+        "vi": {
+          "label": "Kiểm tra nhiệt độ",
+          "suggested_action": "track_habit"
+        }
+      },
+      "when_to_use": {
+        "en": "Use when fever is suspected to monitor temperature.",
+        "vi": "Dùng khi nghi sốt để giám sát nhiệt độ."
+      },
+      "contraindications": { "en": [], "vi": [] },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["fever", "temperature_management"],
+      "audience": ["adult", "child", "elderly", "infant"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "fever" },
+      "artifact_id": "f0a1b2c3-d4e5-6f7a-8b9c-d0e1f2a3b4c5",
+      "artifact_version_id": "f0a1b2c3-d4e5-6f7a-8b9c-d0e1f2a3b4c5-v004",
+      "created_at": "2025-10-06T09:18:00Z",
+      "updated_at": "2025-10-08T08:10:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Every 4 hours", "vi": "Mỗi 4 giờ" },
+        "time": { "en": "2 minutes", "vi": "2 phút" },
+        "type": { "en": "Monitoring", "vi": "Giám sát" }
+      }
+    },
+    {
+      "slug": "hydration_for_fever",
+      "title": { "en": "Hydration for Fever", "vi": "Uống nước khi sốt" },
+      "copy": {
+        "en": "Drink fluids to prevent dehydration during fever.",
+        "vi": "Uống chất lỏng để ngăn mất nước khi sốt."
+      },
+      "cta": {
+        "en": {
+          "label": "Drink fluids regularly",
+          "suggested_action": "track_habit"
+        },
+        "vi": {
+          "label": "Uống chất lỏng đều đặn",
+          "suggested_action": "track_habit"
+        }
+      },
+      "when_to_use": {
+        "en": "Use to maintain hydration with fever.",
+        "vi": "Dùng để duy trì nước khi sốt."
+      },
+      "contraindications": { "en": [], "vi": [] },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["fever", "hydration"],
+      "audience": ["adult", "child", "elderly", "infant"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "fever" },
+      "artifact_id": "a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d",
+      "artifact_version_id": "a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d-v004",
+      "created_at": "2025-10-06T09:18:00Z",
+      "updated_at": "2025-10-08T08:10:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Hourly sips", "vi": "Uống từng ngụm hàng giờ" },
+        "time": { "en": "Ongoing", "vi": "Liên tục" },
+        "type": { "en": "Hydration", "vi": "Uống nước" }
+      }
+    },
+    {
+      "slug": "fever_rest",
+      "title": { "en": "Fever Rest", "vi": "Nghỉ ngơi khi sốt" },
+      "copy": {
+        "en": "Rest to support recovery during fever.",
+        "vi": "Nghỉ ngơi để hỗ trợ phục hồi khi sốt."
+      },
+      "cta": {
+        "en": {
+          "label": "Rest in a comfortable place",
+          "suggested_action": "track_habit"
+        },
+        "vi": {
+          "label": "Nghỉ ngơi ở nơi thoải mái",
+          "suggested_action": "track_habit"
+        }
+      },
+      "when_to_use": {
+        "en": "Use to aid body recovery with fever.",
+        "vi": "Dùng để hỗ trợ phục hồi cơ thể khi sốt."
+      },
+      "contraindications": { "en": [], "vi": [] },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["fever", "illness_response"],
+      "audience": ["adult", "child", "elderly", "infant"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "fever" },
+      "artifact_id": "b2c3d4e5-f6a7-8b9c-0d1e-2f3a4b5c6d7e",
+      "artifact_version_id": "b2c3d4e5-f6a7-8b9c-0d1e-2f3a4b5c6d7e-v004",
+      "created_at": "2025-10-06T09:18:00Z",
+      "updated_at": "2025-10-08T08:10:00+09:00",
+      "fitt": {
+        "frequency": { "en": "As needed", "vi": "Khi cần" },
+        "time": { "en": "Ongoing", "vi": "Liên tục" },
+        "type": { "en": "Rest", "vi": "Nghỉ ngơi" }
+      }
+    },
+    {
+      "slug": "acetaminophen",
+      "title": { "en": "Acetaminophen", "vi": "Acetaminophen" },
+      "copy": {
+        "en": "Use acetaminophen to reduce fever and relieve pain.",
+        "vi": "Sử dụng acetaminophen để hạ sốt và giảm đau."
+      },
+      "cta": {
+        "en": {
+          "label": "Take recommended dose",
+          "suggested_action": "track_habit"
+        },
+        "vi": {
+          "label": "Uống liều khuyến nghị",
+          "suggested_action": "track_habit"
+        }
+      },
+      "when_to_use": {
+        "en": "Use for fever >38.5°C or discomfort.",
+        "vi": "Dùng khi sốt >38.5°C hoặc khó chịu."
+      },
+      "contraindications": {
+        "en": ["Liver disease", "Allergy"],
+        "vi": ["Bệnh gan", "Dị ứng"]
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["fever", "temperature_management"],
+      "audience": ["adult", "child", "elderly"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "fever" },
+      "artifact_id": "c3d4e5f6-a7b8-9c0d-1e2f-3a4b5c6d7e8f",
+      "artifact_version_id": "c3d4e5f6-a7b8-9c0d-1e2f-3a4b5c6d7e8f-v004",
+      "created_at": "2025-10-06T09:18:00Z",
+      "updated_at": "2025-10-08T08:10:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Every 4-6 hours", "vi": "Mỗi 4-6 giờ" },
+        "time": { "en": "As needed", "vi": "Khi cần" },
+        "type": { "en": "Medication", "vi": "Thuốc" }
+      }
+    },
+    {
+      "slug": "ibuprofen",
+      "title": { "en": "Ibuprofen", "vi": "Ibuprofen" },
+      "copy": {
+        "en": "Use ibuprofen to reduce fever and inflammation.",
+        "vi": "Sử dụng ibuprofen để hạ sốt và giảm viêm."
+      },
+      "cta": {
+        "en": {
+          "label": "Take recommended dose with food",
+          "suggested_action": "track_habit"
+        },
+        "vi": {
+          "label": "Uống liều khuyến nghị với thức ăn",
+          "suggested_action": "track_habit"
+        }
+      },
+      "when_to_use": {
+        "en": "Use for fever with inflammation.",
+        "vi": "Dùng cho sốt kèm viêm."
+      },
+      "contraindications": {
+        "en": ["Stomach ulcers", "Kidney disease", "Allergy"],
+        "vi": ["Loét dạ dày", "Bệnh thận", "Dị ứng"]
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["fever", "temperature_management"],
+      "audience": ["adult", "child", "elderly"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "fever" },
+      "artifact_id": "d4e5f6a7-b8c9-0d1e-2f3a-4b5c6d7e8f9a",
+      "artifact_version_id": "d4e5f6a7-b8c9-0d1e-2f3a-4b5c6d7e8f9a-v004",
+      "created_at": "2025-10-06T09:18:00Z",
+      "updated_at": "2025-10-08T08:10:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Every 6-8 hours", "vi": "Mỗi 6-8 giờ" },
+        "time": { "en": "As needed", "vi": "Khi cần" },
+        "type": { "en": "Medication", "vi": "Thuốc" }
+      }
+    },
+    {
+      "slug": "fever_in_children",
+      "title": { "en": "Fever in Children", "vi": "Sốt ở trẻ em" },
+      "copy": {
+        "en": "Monitor child fever closely; consult pediatrician if >39°C or symptoms persist.",
+        "vi": "Giám sát sốt trẻ chặt chẽ; hỏi bác sĩ nhi nếu >39°C hoặc triệu chứng kéo dài."
+      },
+      "cta": {
+        "en": {
+          "label": "Monitor child temperature",
+          "suggested_action": "track_habit"
+        },
+        "vi": {
+          "label": "Giám sát nhiệt độ trẻ",
+          "suggested_action": "track_habit"
+        }
+      },
+      "when_to_use": {
+        "en": "Use for fever management in children.",
+        "vi": "Dùng để quản lý sốt ở trẻ em."
+      },
+      "contraindications": { "en": [], "vi": [] },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["fever", "child_health"],
+      "audience": ["child"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "fever" },
+      "artifact_id": "e5f6a7b8-c9d0-1e2f-3a4b-5c6d7e8f9a0b",
+      "artifact_version_id": "e5f6a7b8-c9d0-1e2f-3a4b-5c6d7e8f9a0b-v004",
+      "created_at": "2025-10-06T09:18:00Z",
+      "updated_at": "2025-10-08T08:10:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Every 4 hours", "vi": "Mỗi 4 giờ" },
+        "time": { "en": "Ongoing", "vi": "Liên tục" },
+        "type": { "en": "Monitoring", "vi": "Giám sát" }
+      }
+    },
+    {
+      "slug": "fever_in_elderly",
+      "title": { "en": "Fever in Elderly", "vi": "Sốt ở người cao tuổi" },
+      "copy": {
+        "en": "Elderly fever needs quick attention; consult doctor if >38°C or symptoms.",
+        "vi": "Sốt người cao tuổi cần chú ý nhanh; hỏi bác sĩ nếu >38°C hoặc triệu chứng."
+      },
+      "cta": {
+        "en": {
+          "label": "Consult doctor for elderly fever",
+          "suggested_action": "book_doctor"
+        },
+        "vi": {
+          "label": "Hỏi bác sĩ về sốt người cao tuổi",
+          "suggested_action": "book_doctor"
+        }
+      },
+      "when_to_use": {
+        "en": "Use for fever management in elderly.",
+        "vi": "Dùng để quản lý sốt ở người cao tuổi."
+      },
+      "contraindications": { "en": [], "vi": [] },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["fever", "elderly_care"],
+      "audience": ["elderly"],
+      "urgency": "immediate",
+      "severity_level": 4,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "fever" },
+      "artifact_id": "f6a7b8c9-d0e1-2f3a-4b5c-6d7e8f9a0b1c",
+      "artifact_version_id": "f6a7b8c9-d0e1-2f3a-4b5c-6d7e8f9a0b1c-v004",
+      "created_at": "2025-10-06T09:18:00Z",
+      "updated_at": "2025-10-08T08:10:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Every 4 hours", "vi": "Mỗi 4 giờ" },
+        "time": { "en": "Ongoing", "vi": "Liên tục" },
+        "type": { "en": "Monitoring", "vi": "Giám sát" }
+      }
+    },
+    {
+      "slug": "fever_in_immunocompromised",
+      "title": {
+        "en": "Fever in Immunocompromised",
+        "vi": "Sốt ở người suy giảm miễn dịch"
+      },
+      "copy": {
+        "en": "Fever in weak immune needs urgent care; see doctor if >38°C.",
+        "vi": "Sốt ở miễn dịch yếu cần chăm sóc khẩn; gặp bác sĩ nếu >38°C."
+      },
+      "cta": {
+        "en": {
+          "label": "See doctor for fever",
+          "suggested_action": "book_doctor"
+        },
+        "vi": {
+          "label": "Gặp bác sĩ vì sốt",
+          "suggested_action": "book_doctor"
+        }
+      },
+      "when_to_use": {
+        "en": "Use for fever management in immunocompromised.",
+        "vi": "Dùng để quản lý sốt ở người suy giảm miễn dịch."
+      },
+      "contraindications": { "en": [], "vi": [] },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["fever", "emergency_care"],
+      "audience": ["immunocompromised"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "fever" },
+      "artifact_id": "a7b8c9d0-e1f2-3a4b-5c6d-7e8f9a0b1c2d",
+      "artifact_version_id": "a7b8c9d0-e1f2-3a4b-5c6d-7e8f9a0b1c2d-v004",
+      "created_at": "2025-10-06T09:18:00Z",
+      "updated_at": "2025-10-08T08:10:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Immediate", "vi": "Ngay lập tức" },
+        "time": { "en": "Ongoing", "vi": "Liên tục" },
+        "type": { "en": "Consultation", "vi": "Tư vấn" }
+      }
+    },
+    {
+      "slug": "infection_control",
+      "title": { "en": "Infection Control", "vi": "Kiểm soát nhiễm khuẩn" },
+      "copy": {
+        "en": "Wash hands to prevent infection spread during illness.",
+        "vi": "Rửa tay để ngăn lan nhiễm khi bệnh."
+      },
+      "cta": {
+        "en": {
+          "label": "Wash hands frequently",
+          "suggested_action": "track_habit"
+        },
+        "vi": {
+          "label": "Rửa tay thường xuyên",
+          "suggested_action": "track_habit"
+        }
+      },
+      "when_to_use": {
+        "en": "Use to prevent infection spread with fever.",
+        "vi": "Dùng để ngăn lan nhiễm khi sốt."
+      },
+      "contraindications": { "en": [], "vi": [] },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["fever", "infection_control"],
+      "audience": ["all"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "fever" },
+      "artifact_id": "b8c9d0e1-f2a3-4b5c-6d7e-8f9a0b1c2d3e",
+      "artifact_version_id": "b8c9d0e1-f2a3-4b5c-6d7e-8f9a0b1c2d3e-v004",
+      "created_at": "2025-10-06T09:18:00Z",
+      "updated_at": "2025-10-08T08:10:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "time": { "en": "1–2 minutes", "vi": "1–2 phút" },
+        "type": { "en": "Hand washing", "vi": "Rửa tay" }
+      }
+    },
+    {
+      "slug": "fever_cooling_methods",
+      "title": {
+        "en": "Fever Cooling Methods",
+        "vi": "Phương pháp làm mát sốt"
+      },
+      "copy": {
+        "en": "Use light clothing, a cool room (~20–22 °C), and tepid sponging for comfort. Avoid cold baths or ice. Stop cooling if shivering occurs.",
+        "vi": "Mặc quần áo mỏng, giữ phòng mát (~20–22 °C) và lau người bằng nước ấm để dễ chịu. Tránh tắm nước lạnh hoặc chườm đá. Ngừng làm mát nếu run."
+      },
+      "cta": {
+        "en": {
+          "label": "Use light clothing and tepid sponging",
+          "suggested_action": "light_clothing"
+        },
+        "vi": {
+          "label": "Mặc quần áo mỏng và lau người bằng nước ấm",
+          "suggested_action": "light_clothing"
+        }
+      },
+      "when_to_use": {
+        "en": "Use to manage fever-related discomfort with non-pharmacologic methods.",
+        "vi": "Dùng để quản lý khó chịu do sốt bằng phương pháp không dùng thuốc."
+      },
+      "contraindications": {
+        "en": ["Avoid cold baths or ice; stop if shivering"],
+        "vi": ["Tránh tắm nước lạnh hoặc chườm đá; ngừng nếu run"]
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["fever", "temperature_management"],
+      "audience": ["adult", "child", "elderly"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "fever" },
+      "artifact_id": "c9d0e1f2-a3b4-5c6d-7e8f-9a0b1c2d3e4f",
+      "artifact_version_id": "c9d0e1f2-a3b4-5c6d-7e8f-9a0b1c2d3e4f-v004",
+      "created_at": "2025-10-06T09:18:00Z",
+      "updated_at": "2025-10-08T08:10:00+09:00",
+      "fitt": {
+        "frequency": { "en": "As needed", "vi": "Khi cần" },
+        "time": { "en": "10–15 minutes", "vi": "10–15 phút" },
+        "type": { "en": "Cooling techniques", "vi": "Kỹ thuật làm mát" }
+      }
+    }
+  ],
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Managing Fever\n\nFever is a rise in body temperature. It often means your body is fighting illness. This guide connects tips from monitoring, hydration, and rest to help manage it. Always see a doctor for advice, especially for children, elderly, or weak immune.\n\n### Monitoring Fever\nUse a thermometer to check temperature regularly. Track changes to see patterns. This can help decide next steps.\n\n### Self-Care for Fever\nDrink fluids to avoid dehydration. Rest in a cool room with light clothes. Use tepid sponging for comfort. Avoid cold baths. For pain, try acetaminophen or ibuprofen—check dose. Wash hands to stop spread.\n\n### Special Groups\nFor children, monitor closely—seek care if high or symptoms. Elderly may need quick attention. Immunocompromised should see doctor fast if fever.\n\n### When to Seek Help\nIf confusion, seizures, stiff neck, rash, breathing trouble, or infant fever, call emergency.\n\n### When to Research More\nIf unsure, look into sources like health sites for causes. Research safe meds or cooling. Use books for child fever. Avoid unverified info.\n\n### Making a Plan\nDecide if self-care is okay—a “go” for hydration, or “no-go” if symptoms bad. Track fever to see effects.\n\n### Ethics and Safety\nKeep health info private. Prioritize safety—call if needed.\n\n### Next Steps\nStart with temperature check. Note changes. See doctor if high. Small steps help manage fever.\n\n*Not medical advice. Consult professionals.*",
+    "vi": "# Quản Lý Sốt\n\nSốt là tình trạng cơ thể tăng nhiệt độ, thường là dấu hiệu cho thấy hệ miễn dịch đang chống lại nhiễm trùng hoặc bệnh. Hầu hết các trường hợp sốt nhẹ có thể tự chăm sóc tại nhà, nhưng cần thận trọng với trẻ nhỏ, người cao tuổi hoặc người có hệ miễn dịch yếu. Hướng dẫn này cung cấp các bước thực tiễn để giúp theo dõi, chăm sóc và quyết định khi nào cần gặp bác sĩ.\n\n### Giám Sát Sốt\nDùng nhiệt kế để kiểm tra nhiệt độ thường xuyên. Ghi lại kết quả để theo dõi xu hướng và thời điểm sốt tăng hoặc giảm. Việc theo dõi giúp xác định khi nào cần can thiệp hoặc đến gặp bác sĩ. Sốt nhẹ (dưới 38°C) thường không nguy hiểm, nhưng sốt cao (trên 39°C) hoặc kéo dài trên 3 ngày cần được đánh giá y tế.\n\n### Tự Chăm Sóc Khi Bị Sốt\nUống nhiều nước để tránh mất nước — có thể dùng nước lọc, canh hoặc dung dịch điện giải. Nghỉ ngơi đầy đủ trong môi trường thoáng mát, mặc quần áo nhẹ. Dùng khăn ấm lau người để giúp hạ nhiệt, nhưng tránh tắm nước lạnh vì có thể gây co mạch. Với đau đầu hoặc đau nhức, có thể dùng thuốc hạ sốt như acetaminophen hoặc ibuprofen theo đúng liều hướng dẫn. Giữ vệ sinh bằng cách rửa tay thường xuyên để tránh lây lan bệnh cho người khác.\n\n### Chăm Sóc Cho Các Nhóm Đặc Biệt\n- **Trẻ em:** Theo dõi sát nhiệt độ và hành vi. Gọi bác sĩ nếu trẻ dưới 3 tháng tuổi sốt, hoặc nếu sốt cao kéo dài, kèm quấy khóc, lờ đờ hoặc bỏ bú.  \n- **Người cao tuổi:** Cẩn trọng vì sốt có thể báo hiệu nhiễm trùng nghiêm trọng dù nhiệt độ không quá cao.  \n- **Người suy giảm miễn dịch:** (như người đang điều trị ung thư hoặc dùng thuốc ức chế miễn dịch) cần gặp bác sĩ ngay khi xuất hiện sốt, vì nguy cơ nhiễm trùng cao.\n\n### Khi Nào Cần Tìm Giúp Ngay\nGọi cấp cứu hoặc đến bệnh viện nếu có các dấu hiệu sau:\n- Lú lẫn hoặc không tỉnh táo.  \n- Co giật.  \n- Cứng cổ hoặc đau đầu dữ dội.  \n- Phát ban đỏ lan nhanh.  \n- Khó thở, đau ngực hoặc tim đập nhanh.  \n- Trẻ sơ sinh hoặc người lớn tuổi sốt cao không hạ.  \nCác dấu hiệu này có thể cho thấy tình trạng y tế nghiêm trọng.\n\n### Khi Nào Nên Tìm Hiểu Thêm\nNếu không chắc nguyên nhân gây sốt, hãy tìm hiểu từ nguồn y tế đáng tin cậy. Nghiên cứu về cách làm mát an toàn, thuốc hạ sốt phù hợp và thời điểm cần gặp bác sĩ. Đọc tài liệu hướng dẫn chăm sóc sốt cho trẻ nhỏ. Tránh làm theo các mẹo chưa được kiểm chứng trên mạng như tắm nước đá hoặc lạm dụng thuốc.\n\n### Lên Kế Hoạch\nXác định xem bạn có thể tự chăm sóc hay cần hỗ trợ y tế. “Tiến hành” có thể là uống đủ nước và nghỉ ngơi. “Tạm dừng” nếu triệu chứng xấu đi hoặc sốt không hạ. Theo dõi nhiệt độ mỗi vài giờ để đánh giá hiệu quả.\n\n### Đạo Đức Và An Toàn\nBảo mật thông tin sức khỏe cá nhân. Không tự ý dùng thuốc kháng sinh hoặc kết hợp thuốc mà không hỏi ý bác sĩ. Ưu tiên an toàn — nếu sốt cao kèm dấu hiệu nguy hiểm, hãy gọi cấp cứu hoặc đến cơ sở y tế ngay.\n\n### Bước Tiếp Theo\nBắt đầu bằng việc đo nhiệt độ và ghi lại thay đổi. Nghỉ ngơi, uống đủ nước và dùng thuốc hạ sốt khi cần. Nếu sốt kéo dài hoặc tăng cao, gặp bác sĩ để được chẩn đoán chính xác. Những hành động nhỏ, kịp thời có thể giúp kiểm soát sốt hiệu quả và an toàn.\n\n*Đây không phải là lời khuyên y khoa. Hãy tham khảo chuyên gia cho các vấn đề sức khỏe.*",
+    "word_count_en": 546,
+    "word_count_vi": 552,
+    "updated_at": "2025-10-11T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}

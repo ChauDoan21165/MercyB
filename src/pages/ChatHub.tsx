@@ -7,6 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Send, ArrowLeft, MessageCircle, Mail, Users, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
+import { getRoomInfo } from "@/lib/roomData";
 
 interface Message {
   id: string;
@@ -30,21 +31,9 @@ const ChatHub = () => {
   const [isLoading, setIsLoading] = useState(false);
   const mainScrollRef = useRef<HTMLDivElement>(null);
 
-  // Room data mapping
-  const roomData: { [key: string]: { nameVi: string; nameEn: string } } = {
-    "ai": { nameVi: "Trí tuệ nhân tạo", nameEn: "AI" },
-    "autoimmune": { nameVi: "Bệnh tự miễn", nameEn: "Autoimmune Diseases" },
-    "burnout": { nameVi: "Kiệt sức", nameEn: "Burnout" },
-    "business-strategy": { nameVi: "Chiến lược kinh doanh", nameEn: "Business Strategy" },
-    "cancer-support": { nameVi: "Hỗ trợ ung thư", nameEn: "Cancer Support" },
-    "cardiovascular": { nameVi: "Tim mạch", nameEn: "Cardiovascular" },
-    "child-health": { nameVi: "Sức khỏe trẻ em", nameEn: "Child Health" },
-    "cholesterol": { nameVi: "Cholesterol", nameEn: "Cholesterol" },
-    "chronic-fatigue": { nameVi: "Mệt mỏi mãn tính", nameEn: "Chronic Fatigue" },
-    "cough": { nameVi: "Ho", nameEn: "Cough" }
-  };
-
-  const currentRoom = roomData[roomId || ""] || { nameVi: "Phòng không xác định", nameEn: "Unknown Room" };
+// Use centralized room metadata
+const info = getRoomInfo(roomId || "");
+const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { nameVi: "Phòng không xác định", nameEn: "Unknown Room" };
 
   // Add welcome message when room loads
   useEffect(() => {

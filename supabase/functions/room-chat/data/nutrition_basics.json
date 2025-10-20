@@ -1,0 +1,725 @@
+{
+  "header": "// dumb tree, no diagnostics, catch keyword, speak sharp, mood: slow",
+  "schema_version": "1.1",
+  "schema_id": "nutrition_basics",
+  "description": "Echologic Mercy Blade room for practical nutrition basics and healthy eating",
+  "description_vi": "Phòng Mercy Blade về các nguyên tắc dinh dưỡng thực tiễn và ăn uống lành mạnh",
+  "supported_languages": ["en", "vi"],
+  "localization": {
+    "default": "en",
+    "fallback": "en",
+    "i18n_required": true,
+    "i18n_verified": true
+  },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice or emergency care.",
+  "crisis_footer": {
+    "en": "If you are in crisis or feel unsafe, call local emergency services or a trusted hotline immediately.",
+    "vi": "Nếu bạn đang trong khủng hoảng hoặc cảm thấy không an toàn, hãy gọi dịch vụ khẩn cấp hoặc đường dây nóng đáng tin cậy ngay."
+  },
+  "safety_footer": {
+    "en": "Educational guidance only. Always consult licensed clinicians for diagnosis or treatment.",
+    "vi": "Chỉ mang tính hướng dẫn giáo dục. Luôn tham khảo bác sĩ có chuyên môn để được chẩn đoán hoặc điều trị."
+  },
+  "meta": {
+    "created_at": "2025-10-06T19:35:00Z",
+    "updated_at": "2025-10-06T19:35:00Z",
+    "checksum_sha256": "<computed_checksum>",
+    "meta_notes": "Keyword-driven; field-tested tone for nutrition well-being | artifact_ids unique | batch=final/1 | batch_total=1",
+    "meta_compliance_label": "Mercy Blade Certified v2025.10",
+    "meta_quality_score": 0.994
+  },
+  "enums": {
+    "tags": [
+      "nutrition",
+      "healthy_eating",
+      "lifestyle",
+      "diet_balance",
+      "portion_control",
+      "prevention",
+      "symptoms",
+      "safety",
+      "behavior_change",
+      "hydration"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["nutrition", "behavior_change"]
+  },
+  "keywords": {
+    "balanced_diet": {
+      "en": [
+        "balanced_diet",
+        "nutrient_mix",
+        "healthy_eating",
+        "diet_variety",
+        "nutrition_balance"
+      ],
+      "vi": [
+        "chế_độ_ăn_cân_bằng",
+        "hỗn_hợp_dinh_dưỡng",
+        "ăn_lành_mạnh",
+        "đa_dạng_chế_độ",
+        "cân_bằng_dinh_dưỡng"
+      ]
+    },
+    "portion_control": {
+      "en": [
+        "portion_control",
+        "serving_size",
+        "meal_portion",
+        "food_amount",
+        "eating_control"
+      ],
+      "vi": [
+        "kiểm_soát_phần_ăn",
+        "kích_thước_phần",
+        "phần_bữa_ăn",
+        "lượng_thức_ăn",
+        "kiểm_soát_ăn"
+      ]
+    },
+    "whole_foods": {
+      "en": [
+        "whole_foods",
+        "natural_foods",
+        "unprocessed_diet",
+        "healthy_nutrition",
+        "clean_eating"
+      ],
+      "vi": [
+        "thực_phẩm_nguyên_chất",
+        "thực_phẩm_tự_nhiên",
+        "chế_độ_không_chế_biến",
+        "dinh_dưỡng_lành_mạnh",
+        "ăn_sạch"
+      ]
+    },
+    "fiber_intake": {
+      "en": [
+        "fiber_intake",
+        "dietary_fiber",
+        "fiber_routine",
+        "gut_health",
+        "nutrition_fiber"
+      ],
+      "vi": [
+        "nạp_chất_xơ",
+        "chất_xơ_chế_độ",
+        "thói_quen_chất_xơ",
+        "sức_khỏe_ruột",
+        "dinh_dưỡng_chất_xơ"
+      ]
+    },
+    "healthy_fats": {
+      "en": [
+        "healthy_fats",
+        "good_lipids",
+        "nutrition_fats",
+        "fat_balance",
+        "heart_fats"
+      ],
+      "vi": [
+        "chất_béo_lành_mạnh",
+        "lipid_tốt",
+        "dinh_dưỡng_chất_béo",
+        "cân_bằng_chất_béo",
+        "chất_béo_tim"
+      ]
+    },
+    "lean_protein": {
+      "en": [
+        "lean_protein",
+        "protein_balance",
+        "muscle_support",
+        "nutrition_protein",
+        "healthy_protein"
+      ],
+      "vi": [
+        "protein_nạc",
+        "cân_bằng_protein",
+        "hỗ_trợ_cơ",
+        "dinh_dưỡng_protein",
+        "protein_lành_mạnh"
+      ]
+    },
+    "hydration_habits": {
+      "en": [
+        "hydration_habits",
+        "water_intake",
+        "fluid_balance",
+        "daily_hydration",
+        "water_routine"
+      ],
+      "vi": [
+        "thói_quen_nước",
+        "nạp_nước",
+        "cân_bằng_chất_lỏng",
+        "nước_hàng_ngày",
+        "thói_quen_nước"
+      ]
+    },
+    "sugar_reduction": {
+      "en": [
+        "sugar_reduction",
+        "added_sugar_limit",
+        "sweet_control",
+        "sugar_intake",
+        "healthy_sugar"
+      ],
+      "vi": [
+        "giảm_đường",
+        "giới_hạn_đường_thêm",
+        "kiểm_soát_ngọt",
+        "nạp_đường",
+        "đường_lành_mạnh"
+      ]
+    },
+    "sodium_control": {
+      "en": [
+        "sodium_control",
+        "salt_reduction",
+        "sodium_limit",
+        "nutrition_sodium",
+        "low_salt"
+      ],
+      "vi": [
+        "kiểm_soát_natri",
+        "giảm_muối",
+        "giới_hạn_natri",
+        "dinh_dưỡng_natri",
+        "ít_muối"
+      ]
+    },
+    "meal_planning": {
+      "en": [
+        "meal_planning",
+        "food_schedule",
+        "nutrition_plan",
+        "meal_prep",
+        "diet_planning"
+      ],
+      "vi": [
+        "lập_kế_hoạch_bữa_ăn",
+        "lịch_thực_phẩm",
+        "kế_hoạch_dinh_dưỡng",
+        "chuẩn_bị_bữa_ăn",
+        "lập_chế_độ_ăn"
+      ]
+    },
+    "mindful_eating": {
+      "en": [
+        "mindful_eating",
+        "conscious_eating",
+        "eating_awareness",
+        "slow_eating",
+        "nutrition_mindfulness"
+      ],
+      "vi": [
+        "ăn_chánh_niệm",
+        "ăn_ý_thức",
+        "nhận_thức_ăn",
+        "ăn_chậm",
+        "dinh_dưỡng_chánh_niệm"
+      ]
+    },
+    "nutrient_timing": {
+      "en": [
+        "nutrient_timing",
+        "meal_timing",
+        "eating_schedule",
+        "nutrition_timing",
+        "food_timing"
+      ],
+      "vi": [
+        "thời_gian_dinh_dưỡng",
+        "thời_gian_bữa_ăn",
+        "lịch_ăn",
+        "thời_gian_dinh_dưỡng",
+        "thời_gian_thực_phẩm"
+      ]
+    },
+    "allergen_awareness": {
+      "en": [
+        "allergen_awareness",
+        "allergy_check",
+        "food_safety",
+        "allergen_control",
+        "nutrition_allergy"
+      ],
+      "vi": [
+        "nhận_thức_dị_ứng",
+        "kiểm_tra_dị_ứng",
+        "an_toàn_thực_phẩm",
+        "kiểm_soát_dị_ứng",
+        "dinh_dưỡng_dị_ứng"
+      ]
+    },
+    "food_label_reading": {
+      "en": [
+        "food_label_reading",
+        "nutrition_facts",
+        "label_check",
+        "ingredient_list",
+        "label_awareness"
+      ],
+      "vi": [
+        "đọc_nhãn_thực_phẩm",
+        "thông_tin_dinh_dưỡng",
+        "kiểm_tra_nhãn",
+        "danh_sách_thành_phần",
+        "nhận_thức_nhãn"
+      ]
+    },
+    "processed_food_reduction": {
+      "en": [
+        "processed_food_reduction",
+        "limit_processed",
+        "whole_food_shift",
+        "food_reduction",
+        "nutrition_processed"
+      ],
+      "vi": [
+        "giảm_thực_phẩm_chế_biến",
+        "giới_hạn_chế_biến",
+        "chuyển_sang_nguyên_chất",
+        "giảm_thực_phẩm",
+        "dinh_dưỡng_chế_biến"
+      ]
+    },
+    "nutrition_education": {
+      "en": [
+        "nutrition_education",
+        "learn_nutrition",
+        "diet_knowledge",
+        "food_education",
+        "nutrition_learning"
+      ],
+      "vi": [
+        "giáo_dục_dinh_dưỡng",
+        "học_dinh_dưỡng",
+        "kiến_thức_chế_độ_ăn",
+        "giáo_dục_thực_phẩm",
+        "học_dinh_dưỡng"
+      ]
+    },
+    "meal_preparation": {
+      "en": [
+        "meal_preparation",
+        "food_prep",
+        "cooking_habits",
+        "nutrition_prep",
+        "meal_cooking"
+      ],
+      "vi": [
+        "chuẩn_bị_bữa_ăn",
+        "chuẩn_bị_thực_phẩm",
+        "thói_quen_nấu_ăn",
+        "chuẩn_bị_dinh_dưỡng",
+        "nấu_bữa_ăn"
+      ]
+    },
+    "eating_habits": {
+      "en": [
+        "eating_habits",
+        "diet_habits",
+        "food_routine",
+        "nutrition_habits",
+        "healthy_habits"
+      ],
+      "vi": [
+        "thói_quen_ăn",
+        "thói_quen_chế_độ_ăn",
+        "lịch_thực_phẩm",
+        "thói_quen_dinh_dưỡng",
+        "thói_quen_lành_mạnh"
+      ]
+    },
+    "snack_choices": {
+      "en": [
+        "snack_choices",
+        "healthy_snacks",
+        "nutrition_snacks",
+        "snack_selection",
+        "food_snacks"
+      ],
+      "vi": [
+        "lựa_chọn_đồ_ăn_vặt",
+        "đồ_ăn_vặt_lành_mạnh",
+        "dinh_dưỡng_đồ_ăn_vặt",
+        "chọn_đồ_ăn_vặt",
+        "thực_phẩm_ăn_vặt"
+      ]
+    }
+  },
+  "entries": [
+    {
+      "slug": "balanced_diet",
+      "title": { "en": "Balanced Diet", "vi": "Chế Độ Ăn Cân Bằng" },
+      "copy": {
+        "en": "Eat a variety of foods to get nutrients for health. Dare: Plan a balanced meal today.",
+        "vi": "Ăn đa dạng thực phẩm để lấy dinh dưỡng cho sức khỏe. Dám: Lập kế hoạch bữa ăn cân bằng hôm nay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "diet_balance"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nutrition"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "0a1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d",
+      "artifact_version_id": "0a1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d-v001",
+      "created_at": "2025-10-06T19:35:00Z",
+      "updated_at": "2025-10-06T19:35:00Z"
+    },
+    {
+      "slug": "portion_control",
+      "title": { "en": "Portion Control", "vi": "Kiểm Soát Phần Ăn" },
+      "copy": {
+        "en": "Use smaller plates to manage portions and support health. Dare: Measure a meal today.",
+        "vi": "Sử dụng dĩa nhỏ để quản lý phần ăn và hỗ trợ sức khỏe. Dám: Đo một bữa hôm nay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "portion_control"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nutrition"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "1b2c3d4e-5f6a-7b8c-9d0e-1f2a3b4c5d6e",
+      "artifact_version_id": "1b2c3d4e-5f6a-7b8c-9d0e-1f2a3b4c5d6e-v001",
+      "created_at": "2025-10-06T19:35:00Z",
+      "updated_at": "2025-10-06T19:35:00Z"
+    },
+    {
+      "slug": "whole_foods",
+      "title": { "en": "Whole Foods", "vi": "Thực Phẩm Nguyên Chất" },
+      "copy": {
+        "en": "Choose unprocessed foods for better nutrition and well-being. Dare: Select whole foods.",
+        "vi": "Chọn thực phẩm không chế biến để dinh dưỡng tốt hơn và sức khỏe. Dám: Chọn thực phẩm nguyên."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "healthy_eating"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nutrition"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "2c3d4e5f-6a7b-8c9d-0e1f-2a3b4c5d6e7f",
+      "artifact_version_id": "2c3d4e5f-6a7b-8c9d-0e1f-2a3b4c5d6e7f-v001",
+      "created_at": "2025-10-06T19:35:00Z",
+      "updated_at": "2025-10-06T19:35:00Z"
+    },
+    {
+      "slug": "fiber_intake",
+      "title": { "en": "Fiber Intake", "vi": "Nạp Chất Xơ" },
+      "copy": {
+        "en": "Increase fiber with oats or fruits for digestion and health. Dare: Add fiber-rich food.",
+        "vi": "Tăng chất xơ với yến mạch hoặc trái cây cho tiêu hóa và sức khỏe. Dám: Thêm thực phẩm giàu xơ."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "diet_balance"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nutrition"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "3d4e5f6a-7b8c-9d0e-1f2a-3b4c5d6e7f8a",
+      "artifact_version_id": "3d4e5f6a-7b8c-9d0e-1f2a-3b4c5d6e7f8a-v001",
+      "created_at": "2025-10-06T19:35:00Z",
+      "updated_at": "2025-10-06T19:35:00Z"
+    },
+    {
+      "slug": "healthy_fats",
+      "title": { "en": "Healthy Fats", "vi": "Chất Béo Lành Mạnh" },
+      "copy": {
+        "en": "Include avocados or nuts for heart health and nutrition. Dare: Choose healthy fats.",
+        "vi": "Bao gồm bơ hoặc hạt cho sức khỏe tim và dinh dưỡng. Dám: Chọn chất béo lành mạnh."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "diet_balance"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nutrition"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "4e5f6a7b-8c9d-0e1f-2a3b-4c5d6e7f8a9b",
+      "artifact_version_id": "4e5f6a7b-8c9d-0e1f-2a3b-4c5d6e7f8a9b-v001",
+      "created_at": "2025-10-06T19:35:00Z",
+      "updated_at": "2025-10-06T19:35:00Z"
+    },
+    {
+      "slug": "lean_protein",
+      "title": { "en": "Lean Protein", "vi": "Protein Nạc" },
+      "copy": {
+        "en": "Opt for chicken or fish to build muscle and support health. Dare: Select lean protein.",
+        "vi": "Chọn gà hoặc cá để xây cơ và hỗ trợ sức khỏe. Dám: Chọn protein nạc."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "diet_balance"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nutrition"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "5f6a7b8c-9d0e-1f2a-3b4c-5d6e7f8a9b0c",
+      "artifact_version_id": "5f6a7b8c-9d0e-1f2a-3b4c-5d6e7f8a9b0c-v001",
+      "created_at": "2025-10-06T19:35:00Z",
+      "updated_at": "2025-10-06T19:35:00Z"
+    },
+    {
+      "slug": "hydration_habits",
+      "title": { "en": "Hydration Habits", "vi": "Thói Quen Nước" },
+      "copy": {
+        "en": "Drink water regularly for hydration and overall health. Dare: Set water reminders.",
+        "vi": "Uống nước đều đặn để giữ nước và sức khỏe tổng thể. Dám: Đặt nhắc uống nước."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "hydration"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nutrition"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "6a7b8c9d-0e1f-2a3b-4c5d-6e7f8a9b0c1d",
+      "artifact_version_id": "6a7b8c9d-0e1f-2a3b-4c5d-6e7f8a9b0c1d-v001",
+      "created_at": "2025-10-06T19:35:00Z",
+      "updated_at": "2025-10-06T19:35:00Z"
+    },
+    {
+      "slug": "sugar_reduction",
+      "title": { "en": "Sugar Reduction", "vi": "Giảm Đường" },
+      "copy": {
+        "en": "Reduce added sugars for better health and energy. Dare: Check sugar labels.",
+        "vi": "Giảm đường thêm để sức khỏe tốt hơn và năng lượng. Dám: Kiểm tra nhãn đường."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "prevention"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["nutrition"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "7b8c9d0e-1f2a-3b4c-5d6e-7f8a9b0c1d2e",
+      "artifact_version_id": "7b8c9d0e-1f2a-3b4c-5d6e-7f8a9b0c1d2e-v001",
+      "created_at": "2025-10-06T19:35:00Z",
+      "updated_at": "2025-10-06T19:35:00Z"
+    },
+    {
+      "slug": "sodium_control",
+      "title": { "en": "Sodium Control", "vi": "Kiểm Soát Natri" },
+      "copy": {
+        "en": "Limit salt to support heart health and prevent issues. Dare: Cook low-salt meals.",
+        "vi": "Giới hạn muối để hỗ trợ sức khỏe tim và ngừa vấn đề. Dám: Nấu bữa ít muối."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "prevention"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["nutrition"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "8c9d0e1f-2a3b-4c5d-6e7f-8a9b0c1d2e3f",
+      "artifact_version_id": "8c9d0e1f-2a3b-4c5d-6e7f-8a9b0c1d2e3f-v001",
+      "created_at": "2025-10-06T19:35:00Z",
+      "updated_at": "2025-10-06T19:35:00Z"
+    },
+    {
+      "slug": "meal_planning",
+      "title": { "en": "Meal Planning", "vi": "Lập Kế Hoạch Bữa Ăn" },
+      "copy": {
+        "en": "Plan meals ahead to make healthy choices easier daily. Dare: Create a weekly menu.",
+        "vi": "Lập kế hoạch bữa ăn trước để chọn lành mạnh dễ dàng hàng ngày. Dám: Tạo thực đơn tuần."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "behavior_change"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nutrition", "behavior_change"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "9d0e1f2a-3b4c-5d6e-7f8a-9b0c1d2e3f4a",
+      "artifact_version_id": "9d0e1f2a-3b4c-5d6e-7f8a-9b0c1d2e3f4a-v001",
+      "created_at": "2025-10-06T19:35:00Z",
+      "updated_at": "2025-10-06T19:35:00Z"
+    },
+    {
+      "slug": "mindful_eating",
+      "title": { "en": "Mindful Eating", "vi": "Ăn Chánh Niệm" },
+      "copy": {
+        "en": "Eat slowly and pay attention to hunger for better nutrition. Dare: Practice mindful eating.",
+        "vi": "Ăn chậm và chú ý đến đói để dinh dưỡng tốt hơn. Dám: Thực hành ăn chánh niệm."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "behavior_change"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nutrition", "behavior_change"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "0e1f2a3b-4c5d-6e7f-8a9b-0c1d2e3f4a5b",
+      "artifact_version_id": "0e1f2a3b-4c5d-6e7f-8a9b-0c1d2e3f4a5b-v001",
+      "created_at": "2025-10-06T19:35:00Z",
+      "updated_at": "2025-10-06T19:35:00Z"
+    },
+    {
+      "slug": "nutrient_timing",
+      "title": { "en": "Nutrient Timing", "vi": "Thời Gian Dinh Dưỡng" },
+      "copy": {
+        "en": "Eat regular meals to keep energy steady throughout the day. Dare: Set meal times.",
+        "vi": "Ăn bữa đều đặn để giữ năng lượng ổn định suốt ngày. Dám: Đặt giờ ăn."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "behavior_change"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nutrition", "behavior_change"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "1f2a3b4c-5d6e-7f8a-9b0c-1d2e3f4a5b6c",
+      "artifact_version_id": "1f2a3b4c-5d6e-7f8a-9b0c-1d2e3f4a5b6c-v001",
+      "created_at": "2025-10-06T19:35:00Z",
+      "updated_at": "2025-10-06T19:35:00Z"
+    },
+    {
+      "slug": "allergen_awareness",
+      "title": { "en": "Allergen Awareness", "vi": "Nhận Thức Dị Ứng" },
+      "copy": {
+        "en": "Know allergens to avoid reactions and support safe eating. Dare: Check labels today.",
+        "vi": "Biết dị ứng để tránh phản ứng và hỗ trợ ăn an toàn. Dám: Kiểm tra nhãn hôm nay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "safety"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["nutrition"],
+      "metadata": { "topic": "safety" },
+      "artifact_id": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+      "artifact_version_id": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d-v001",
+      "created_at": "2025-10-06T19:35:00Z",
+      "updated_at": "2025-10-06T19:35:00Z"
+    },
+    {
+      "slug": "food_label_reading",
+      "title": { "en": "Food Label Reading", "vi": "Đọc Nhãn Thực Phẩm" },
+      "copy": {
+        "en": "Read labels to make informed, healthy food choices. Dare: Read a label today.",
+        "vi": "Đọc nhãn để đưa ra lựa chọn thực phẩm lành mạnh có thông tin. Dám: Đọc nhãn hôm nay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "behavior_change"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nutrition", "behavior_change"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "3b4c5d6e-7f8a-9b0c-1d2e-3f4a5b6c7d8e",
+      "artifact_version_id": "3b4c5d6e-7f8a-9b0c-1d2e-3f4a5b6c7d8e-v001",
+      "created_at": "2025-10-06T19:35:00Z",
+      "updated_at": "2025-10-06T19:35:00Z"
+    },
+    {
+      "slug": "processed_food_reduction",
+      "title": {
+        "en": "Processed Food Reduction",
+        "vi": "Giảm Thực Phẩm Chế Biến"
+      },
+      "copy": {
+        "en": "Limit processed foods for better nutrition and health. Dare: Avoid processed food.",
+        "vi": "Giới hạn thực phẩm chế biến để dinh dưỡng tốt hơn và sức khỏe. Dám: Tránh thực phẩm chế biến."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "prevention"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["nutrition"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "4c5d6e7f-8a9b-0c1d-2e3f-4a5b6c7d8e9f",
+      "artifact_version_id": "4c5d6e7f-8a9b-0c1d-2e3f-4a5b6c7d8e9f-v001",
+      "created_at": "2025-10-06T19:35:00Z",
+      "updated_at": "2025-10-06T19:35:00Z"
+    },
+    {
+      "slug": "nutrition_education",
+      "title": { "en": "Nutrition Education", "vi": "Giáo Dục Dinh Dưỡng" },
+      "copy": {
+        "en": "Learn about nutrition to make informed, healthy food choices daily. Dare: Read a nutrition guide.",
+        "vi": "Tìm hiểu về dinh dưỡng để đưa ra lựa chọn thực phẩm lành mạnh hàng ngày. Dám: Đọc hướng dẫn dinh dưỡng."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "behavior_change"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nutrition", "behavior_change"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "5d6e7f8a-9b0c-1d2e-3f4a-5b6c7d8e9f0a",
+      "artifact_version_id": "5d6e7f8a-9b0c-1d2e-3f4a-5b6c7d8e9f0a-v001",
+      "created_at": "2025-10-06T19:35:00Z",
+      "updated_at": "2025-10-06T19:35:00Z"
+    },
+    {
+      "slug": "meal_preparation",
+      "title": { "en": "Meal Preparation", "vi": "Chuẩn Bị Bữa Ăn" },
+      "copy": {
+        "en": "Prepare healthy meals in advance to maintain consistent nutrition. Dare: Cook a healthy dish.",
+        "vi": "Chuẩn bị bữa ăn lành mạnh trước để duy trì dinh dưỡng đều đặn. Dám: Nấu món lành mạnh."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "healthy_eating"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nutrition", "behavior_change"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "6e7f8a9b-0c1d-2e3f-4a5b-6c7d8e9f0a1b",
+      "artifact_version_id": "6e7f8a9b-0c1d-2e3f-4a5b-6c7d8e9f0a1b-v001",
+      "created_at": "2025-10-06T19:35:00Z",
+      "updated_at": "2025-10-06T19:35:00Z"
+    },
+    {
+      "slug": "eating_habits",
+      "title": { "en": "Eating Habits", "vi": "Thói Quen Ăn" },
+      "copy": {
+        "en": "Build consistent healthy eating habits for long-term wellness. Dare: Try a new healthy recipe.",
+        "vi": "Xây dựng thói quen ăn uống lành mạnh để có sức khỏe lâu dài. Dám: Thử công thức lành mạnh mới."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "behavior_change"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nutrition", "behavior_change"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "7f8a9b0c-1d2e-3f4a-5b6c-7d8e9f0a1b2c",
+      "artifact_version_id": "7f8a9b0c-1d2e-3f4a-5b6c-7d8e9f0a1b2c-v001",
+      "created_at": "2025-10-06T19:35:00Z",
+      "updated_at": "2025-10-06T19:35:00Z"
+    },
+    {
+      "slug": "snack_choices",
+      "title": { "en": "Snack Choices", "vi": "Lựa Chọn Đồ Ăn Vặt" },
+      "copy": {
+        "en": "Choose nutrient-dense snacks like nuts for sustained energy. Dare: Snack on almonds today.",
+        "vi": "Chọn đồ ăn vặt giàu dinh dưỡng như hạt để có năng lượng bền vững. Dám: Ăn hạnh nhân hôm nay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "healthy_eating"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nutrition"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "8a9b0c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3d",
+      "artifact_version_id": "8a9b0c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3d-v001",
+      "created_at": "2025-10-06T19:35:00Z",
+      "updated_at": "2025-10-06T19:35:00Z"
+    }
+  ],
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Basics of Healthy Nutrition\n\nGood nutrition helps your body stay strong and have energy. It can support health and prevent problems. This guide ties together tips from balanced diets, portion control, and habits to help you eat better. Always talk to a doctor for personal advice, especially if you have symptoms or concerns.\n\n### Balanced Diet and Nutrients\nEat a mix of foods to get vitamins and minerals. Include fruits, vegetables, grains, proteins, and fats. Whole foods like apples or oats can be good choices. Add fiber from beans or fruits for digestion. Choose healthy fats from avocados or nuts for heart support. Lean proteins like chicken or fish build muscle. These can make meals nourishing.\n\n### Portion Control and Habits\nWatch how much you eat. Use smaller plates to manage portions and avoid overeating. Practice mindful eating by chewing slowly and listening to hunger. Plan meals to make good choices easier. Prepare dishes ahead for consistency. Choose nutrient-dense snacks like almonds for energy. Reduce sugar and salt by reading labels. Limit processed foods for better health.\n\n### Hydration and Lifestyle\nDrink water often to stay hydrated. It helps your body work well. Build eating habits like regular meals for steady energy. Learn about nutrition to make informed choices. Know allergens to eat safely.\n\n### Prevention and Safety\nTrack what you eat to spot patterns. This can help adjust for better nutrition. Avoid extremes in diets. Focus on sustainable changes.\n\n### When to Research More\nIf unsure about foods, look into reliable sources like health websites or books. Research recipes or nutrient needs. Use tools to learn more, but avoid unverified info. For example, search for fiber-rich foods if planning meals.\n\n### Making a Plan\nDecide if a change is right. A “go” could mean trying smaller portions. A “no-go” means waiting for doctor input if you have health issues. Track changes in a journal to see effects.\n\n### Ethics and Safety\nKeep diet details private. Don’t share online without thought. Prioritize safety—if a food causes issues, stop and seek help. In emergencies, call services.\n\n### Next Steps\nStart with one tip, like adding fiber to a meal. Check progress after a week. Talk to a professional if needed. Small steps can lead to better nutrition over time.\n\n*This is not medical advice. Consult professionals for concerns.*",
+    "vi": "# Nguyên Tắc Dinh Dưỡng Lành Mạnh\n\nDinh dưỡng hợp lý giúp cơ thể khỏe mạnh, tràn đầy năng lượng và giảm nguy cơ bệnh tật. Hướng dẫn này tổng hợp các mẹo thực tiễn về chế độ ăn cân bằng, kiểm soát khẩu phần và xây dựng thói quen lành mạnh để giúp bạn ăn uống tốt hơn. Luôn tham khảo ý kiến bác sĩ để được tư vấn cá nhân, đặc biệt nếu bạn có triệu chứng hoặc tình trạng sức khỏe cụ thể.\n\n### Chế Độ Ăn Cân Bằng Và Dinh Dưỡng\nĂn đa dạng thực phẩm để cung cấp đủ vitamin, khoáng chất và năng lượng. Kết hợp các nhóm thực phẩm chính: trái cây, rau củ, ngũ cốc nguyên hạt, protein và chất béo lành mạnh. Ưu tiên thực phẩm tự nhiên như táo, yến mạch hoặc khoai lang. Thêm chất xơ từ đậu, rau xanh hoặc trái cây để hỗ trợ tiêu hóa. Chọn chất béo tốt từ bơ, quả hạch và dầu ô liu để bảo vệ tim mạch. Bổ sung protein nạc như cá, thịt gà, trứng hoặc đậu phụ để duy trì cơ bắp. Những lựa chọn này giúp bữa ăn đầy đủ và cân bằng.\n\n### Kiểm Soát Khẩu Phần Và Thói Quen Ăn Uống\nTheo dõi lượng ăn hàng ngày để tránh ăn quá mức. Dùng dĩa hoặc bát nhỏ hơn để kiểm soát khẩu phần. Thực hành ăn uống chánh niệm bằng cách nhai chậm và lắng nghe cảm giác no. Lập kế hoạch bữa ăn trước giúp duy trì thói quen ổn định. Chuẩn bị sẵn đồ ăn lành mạnh để tránh lựa chọn vội vàng. Chọn món ăn nhẹ giàu dinh dưỡng như hạnh nhân hoặc trái cây tươi để duy trì năng lượng. Đọc kỹ nhãn dinh dưỡng để giảm đường và muối. Hạn chế thực phẩm chế biến sẵn để bảo vệ sức khỏe lâu dài.\n\n### Giữ Nước Và Lối Sống Lành Mạnh\nUống đủ nước trong ngày giúp cơ thể hoạt động tối ưu và hỗ trợ tiêu hóa. Thiết lập thói quen ăn uống điều độ với các bữa chính và bữa phụ hợp lý để giữ năng lượng ổn định. Học kiến thức cơ bản về dinh dưỡng để đưa ra lựa chọn sáng suốt. Ghi nhớ các dị ứng cá nhân để đảm bảo an toàn khi ăn uống.\n\n### Phòng Ngừa Và An Toàn\nTheo dõi thói quen ăn uống để nhận biết xu hướng và điều chỉnh phù hợp. Tránh các chế độ ăn kiêng cực đoan có thể gây hại cho sức khỏe. Tập trung vào những thay đổi bền vững, từng bước nhỏ nhưng nhất quán để đạt kết quả lâu dài.\n\n### Khi Nào Nên Tìm Hiểu Thêm\nNếu không chắc về loại thực phẩm phù hợp, hãy tìm hiểu từ nguồn y tế uy tín hoặc sách chuyên môn. Nghiên cứu công thức nấu ăn hoặc nhu cầu dinh dưỡng cá nhân. Sử dụng công cụ theo dõi hoặc ứng dụng dinh dưỡng đáng tin cậy, và tránh các thông tin chưa được kiểm chứng. Ví dụ, tìm hiểu danh sách thực phẩm giàu chất xơ để lập kế hoạch bữa ăn hợp lý.\n\n### Lên Kế Hoạch\nXác định thay đổi phù hợp với bạn. “Tiến hành” có thể là thử giảm khẩu phần hoặc thêm rau xanh vào mỗi bữa. “Tạm dừng” khi cần hỏi ý kiến bác sĩ, nhất là nếu có vấn đề sức khỏe. Ghi lại thay đổi và kết quả trong sổ để theo dõi hiệu quả.\n\n### Đạo Đức Và An Toàn\nGiữ kín thông tin về chế độ ăn cá nhân. Không chia sẻ công khai nếu chưa cân nhắc kỹ. Ưu tiên an toàn — nếu thực phẩm gây phản ứng, hãy ngừng ngay và tìm trợ giúp y tế. Trong trường hợp khẩn cấp, gọi cấp cứu hoặc liên hệ chuyên gia.\n\n### Bước Tiếp Theo\nBắt đầu với một thay đổi nhỏ, như thêm chất xơ vào bữa ăn hoặc giảm đồ chiên. Đánh giá tiến triển sau một tuần. Tham khảo chuyên gia dinh dưỡng nếu cần hướng dẫn thêm. Những bước nhỏ và kiên trì có thể giúp cải thiện sức khỏe dinh dưỡng theo thời gian.\n\n*Đây không phải là lời khuyên y khoa. Hãy tham khảo chuyên gia cho các vấn đề sức khỏe.*",
+    "word_count_en": 546,
+    "word_count_vi": 552,
+    "updated_at": "2025-10-11T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}
