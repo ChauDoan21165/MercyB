@@ -37,7 +37,7 @@ const report: ValidationReport = {
   }
 };
 
-// Check which files exist
+// Check which files exist (only in rooms folder, not system folder)
 const roomsDir = join(process.cwd(), 'src/data/rooms');
 const existingFiles = readdirSync(roomsDir).filter(f => f.endsWith('.json'));
 
