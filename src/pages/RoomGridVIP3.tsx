@@ -4,6 +4,7 @@ import { CheckCircle2, Lock, Crown, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ALL_ROOMS } from "@/lib/roomData";
+import { VIPNavigation } from "@/components/VIPNavigation";
 
 const RoomGridVIP3 = () => {
   const navigate = useNavigate();
@@ -88,6 +89,9 @@ const RoomGridVIP3 = () => {
             </Card>
           ))}
         </div>
+
+        {/* Navigation */}
+        <VIPNavigation currentPage="vip3" />
 
         {/* Footer Note */}
         <div className="text-center mt-8 space-y-1">

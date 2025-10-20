@@ -49,6 +49,16 @@ const Welcome = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5">
       <div className="container mx-auto px-4 py-12 max-w-7xl">
+        {/* Header with Sign In Button */}
+        <div className="flex justify-end mb-4">
+          <Button 
+            variant="outline"
+            onClick={() => navigate("/auth")}
+          >
+            Sign In / Đăng Nhập
+          </Button>
+        </div>
+
         {/* Hero Section */}
         <div className="text-center mb-16 space-y-6">
           <h1 className="text-6xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">

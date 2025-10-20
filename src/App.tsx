@@ -15,6 +15,7 @@ import VIPRequestForm from "./pages/VIPRequestForm";
 import VIPRequests from "./pages/VIPRequests";
 import AdminDashboard from "./pages/AdminDashboard";
 import MatchmakingHub from "./pages/MatchmakingHub";
+import Auth from "./pages/Auth";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Welcome />} />
+          <Route path="/auth" element={<Auth />} />
           <Route path="/rooms" element={<AllRooms />} />
           <Route path="/rooms-vip1" element={<RoomGridVIP1 />} />
           <Route path="/rooms-vip2" element={<RoomGridVIP2 />} />
