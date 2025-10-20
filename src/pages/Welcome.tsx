@@ -137,15 +137,26 @@ const Welcome = () => {
             </div>
           </Card>
 
-          <div className="flex justify-center items-center gap-8 pt-8">
+          <div className="flex justify-center items-center gap-8 pt-8 flex-wrap">
             <Button 
               size="lg"
               className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-hover transition-all min-w-[200px]"
               onClick={() => navigate("/rooms")}
             >
               <span className="flex flex-col items-center">
-                <span className="text-base font-semibold">Explore Rooms</span>
-                <span className="text-sm opacity-90">Khám Phá Các Phòng</span>
+                <span className="text-base font-semibold">Explore Free Rooms</span>
+                <span className="text-sm opacity-90">Khám Phá Phòng Miễn Phí</span>
+              </span>
+            </Button>
+            <Button 
+              size="lg"
+              variant="outline"
+              className="border-2 hover:bg-primary/10 min-w-[200px]"
+              onClick={() => navigate("/all-rooms")}
+            >
+              <span className="flex flex-col items-center">
+                <span className="text-base font-semibold">View All Rooms</span>
+                <span className="text-sm opacity-90">Xem Tất Cả Phòng</span>
               </span>
             </Button>
             <div className="flex items-center gap-3">

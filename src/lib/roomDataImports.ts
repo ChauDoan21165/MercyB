@@ -66,6 +66,12 @@ import negotiationMastery from '@/data/rooms/negotiation_mastery.json';
 import diabetesAdvanced from '@/data/rooms/diabetes_advanced.json';
 import confidenceBuilding from '@/data/rooms/confidence_building.json';
 import onboardingFreeUsers from '@/data/rooms/onboarding_free_users.json';
+import anxietyToolkit from '@/data/rooms/anxiety_toolkit.json';
+import financialPlanning from '@/data/rooms/financial_planning_101.json';
+import parentingToddlers from '@/data/rooms/parenting_toddlers.json';
+import relationshipConflicts from '@/data/rooms/relationship_conflicts.json';
+import userProfileDashboard from '@/data/rooms/user_profile_dashboard.json';
+import weightLoss from '@/data/rooms/weight_loss_program.json';
 
 export const roomDataMap: Record<string, any> = {
   'abdominal-pain': abdominalPain,
@@ -135,4 +141,10 @@ export const roomDataMap: Record<string, any> = {
   'diabetes-advanced': diabetesAdvanced,
   'confidence-building': confidenceBuilding,
   'onboarding-free-users': onboardingFreeUsers,
+  'anxiety-toolkit': anxietyToolkit,
+  'financial-planning': financialPlanning,
+  'parenting-toddlers': parentingToddlers,
+  'relationship-conflicts': relationshipConflicts,
+  'user-profile-dashboard': userProfileDashboard,
+  'weight-loss': weightLoss,
 };
