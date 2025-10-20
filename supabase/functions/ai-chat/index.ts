@@ -71,6 +71,15 @@ const roomFiles: { [key: string]: string } = {
   'user-profile-dashboard': 'user_profile_dashboard.json',
   'wife-dealing': 'wife_dealing.json',
   'womens-health': 'women_health.json',
+  'habit-building': 'habit_building.json',
+  'negotiation-mastery': 'negotiation_mastery.json',
+  'diabetes-advanced': 'diabetes_advanced.json',
+  'confidence-building': 'confidence_building.json',
+  'financial-planning': 'financial_planning_101.json',
+  'parenting-toddlers': 'parenting_toddlers.json',
+  'relationship-conflicts': 'relationship_conflicts.json',
+  'weight-loss': 'weight_loss_program.json',
+  'anxiety-toolkit': 'anxiety_toolkit.json',
 };
 
 async function loadRoomData(roomId: string): Promise<any | null> {
@@ -82,7 +91,7 @@ async function loadRoomData(roomId: string): Promise<any | null> {
 
   try {
     const url = new URL(`./data/${fileName}`, import.meta.url);
-    const module = await import(url.href, { with: { type: 'json' } } as any);
+    const module = await import(url.href, { assert: { type: 'json' } } as any);
     const data = (module as any).default || module;
     console.log(`Successfully loaded room data for ${roomId}`);
     return data;
