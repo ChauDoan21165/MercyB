@@ -65,6 +65,7 @@ import habitBuilding from '@/data/rooms/habit_building.json';
 import negotiationMastery from '@/data/rooms/negotiation_mastery.json';
 import diabetesAdvanced from '@/data/rooms/diabetes_advanced.json';
 import confidenceBuilding from '@/data/rooms/confidence_building.json';
+import onboardingFreeUsers from '@/data/rooms/onboarding_free_users.json';
 
 export const roomDataMap: Record<string, any> = {
   'abdominal-pain': abdominalPain,
@@ -133,4 +134,5 @@ export const roomDataMap: Record<string, any> = {
   'negotiation-mastery': negotiationMastery,
   'diabetes-advanced': diabetesAdvanced,
   'confidence-building': confidenceBuilding,
+  'onboarding-free-users': onboardingFreeUsers,
 };

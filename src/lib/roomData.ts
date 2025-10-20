@@ -58,6 +58,7 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "negotiation-mastery", nameVi: "Làm chủ đàm phán", nameEn: "Negotiation Mastery", hasData: true, tier: "vip2", dataFile: "negotiation_mastery.json" },
   { id: "nutrition-basics", nameVi: "Dinh dưỡng cơ bản", nameEn: "Nutrition Basics", hasData: true, tier: "free", dataFile: "nutrition_basics.json" },
   { id: "obesity", nameVi: "Béo phì", nameEn: "Obesity", hasData: true, tier: "free", dataFile: "obesity.json" },
+  { id: "onboarding-free-users", nameVi: "Hướng dẫn người dùng miễn phí", nameEn: "Getting Started (Free Users)", hasData: true, tier: "free", dataFile: "onboarding_free_users.json" },
   { id: "office-survival", nameVi: "Sống còn văn phòng", nameEn: "Office Survival", hasData: true, tier: "vip2", dataFile: "office_survival.json" },
   { id: "pain-management", nameVi: "Quản lý đau", nameEn: "Pain Management", hasData: true, tier: "vip1", dataFile: "pain_management.json" },
   { id: "parenting-toddlers", nameVi: "Nuôi dạy trẻ mới biết đi", nameEn: "Parenting Toddlers", hasData: true, tier: "free", dataFile: "parenting_toddlers.json" },

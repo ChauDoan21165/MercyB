@@ -76,6 +76,7 @@ const roomFiles: { [key: string]: string } = {
   'diabetes-advanced': 'diabetes_advanced.json',
   'confidence-building': 'confidence_building.json',
   'financial-planning': 'financial_planning_101.json',
+  'onboarding-free-users': 'onboarding_free_users.json',
   'parenting-toddlers': 'parenting_toddlers.json',
   'relationship-conflicts': 'relationship_conflicts.json',
   'weight-loss': 'weight_loss_program.json',
