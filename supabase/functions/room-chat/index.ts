@@ -6,7 +6,7 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-// Room data files mapping
+// Room data files mapping (kept for future file-based loading)
 const roomFiles: { [key: string]: string } = {
   'abdominal-pain': 'abdominal_pain.json',
   'addiction': 'addiction.json',
@@ -72,53 +72,154 @@ const roomFiles: { [key: string]: string } = {
   'womens-health': 'women_health.json',
 };
 
-// Load room data from JSON embedded or bundled with this function
+// Embedded minimal fallback data to guarantee responses even if JSON files are not bundled
+const embeddedFallbackData: Record<string, any> = {
+  'abdominal-pain': {
+    schema_version: '1.0',
+    schema_id: 'abdominal_pain',
+    room_essay: {
+      en: 'Welcome to the Abdominal Pain room. Evidence-based tips to understand and manage abdominal symptoms.',
+      vi: 'Chào mừng đến phòng Đau bụng. Gợi ý dựa trên bằng chứng để hiểu và quản lý triệu chứng bụng.',
+    },
+    safety_disclaimer: {
+      en: 'Educational guidance; not a substitute for professional medical advice or emergency care.',
+      vi: 'Hướng dẫn mang tính giáo dục; không thay thế tư vấn y tế chuyên nghiệp hoặc chăm sóc khẩn cấp.',
+    },
+    crisis_footer: {
+      en: 'If pain is severe or persistent, or with fever/vomiting, seek urgent medical care.',
+      vi: 'Nếu đau dữ dội hoặc kéo dài, hoặc kèm sốt/nôn, hãy đi khám khẩn cấp.',
+    },
+    keywords: {
+      severe_abdominal_pain: {
+        en: ['severe_abdominal_pain', 'acute_stomach_pain', 'emergency_pain', 'critical_discomfort'],
+        vi: ['đau bụng nặng', 'đau dạ dày cấp tính', 'đau khẩn cấp', 'khó chịu nguy kịch'],
+      },
+      abdominal_pain_relief: {
+        en: ['abdominal_pain_relief', 'stomach_pain_management', 'pain_soothing', 'digestive_comfort'],
+        vi: ['giảm đau bụng', 'quản lý đau dạ dày', 'làm dịu đau', 'thoải mái tiêu hóa'],
+      },
+    },
+    entries: [
+      {
+        slug: 'severe_abdominal_pain',
+        title: { en: 'Severe Abdominal Pain', vi: 'Đau bụng nặng' },
+        copy: {
+          en: 'Severe abdominal pain needs immediate medical attention. Do not delay care if intense, persistent, or with fever/vomiting.',
+          vi: 'Đau bụng nặng cần chăm sóc y tế ngay. Đừng trì hoãn nếu đau dữ dội, kéo dài, hoặc kèm sốt/nôn.',
+        },
+      },
+      {
+        slug: 'abdominal_pain_relief',
+        title: { en: 'Abdominal Pain Relief', vi: 'Giảm đau bụng' },
+        copy: {
+          en: 'For mild discomfort: gentle heat, hydration, simple foods. Consult a clinician if symptoms persist.',
+          vi: 'Khó chịu nhẹ: chườm ấm, uống đủ nước, ăn nhẹ. Tham vấn bác sĩ nếu triệu chứng kéo dài.',
+        },
+      },
+    ],
+  },
+};
+
+// Attempt to load JSON from bundled files; otherwise fall back to embedded data
 async function loadRoomData(roomId: string) {
-  try {
-    const fileName = roomFiles[roomId];
-    if (!fileName) {
-      console.log(`Room ${roomId} not found in mapping`);
-      return null;
-    }
-
-    // Prefer dynamic import so the bundler includes the JSON
-    const primaryUrl = new URL(`./data/${fileName}`, import.meta.url);
-    console.log(`Attempting to load (import): ${primaryUrl.href}`);
-    try {
-      // Deno supports JSON module import with assertions
-      const mod = await import(primaryUrl.href, { with: { type: 'json' } } as any);
-      return (mod as any).default ?? mod;
-    } catch (e) {
-      console.warn('Import failed, trying file read...', e);
-    }
-
-    // Fallback 1: Read from the embedded file path
-    try {
-      const fileText = await Deno.readTextFile(primaryUrl);
-      return JSON.parse(fileText);
-    } catch (e) {
-      console.warn('ReadTextFile primary failed, trying legacy path...', e);
-    }
-
-    // Fallback 2: Legacy relative path some builds used previously
-    const legacyUrl = new URL(`../../data/rooms/${fileName}`, import.meta.url);
-    console.log(`Attempting to load (legacy): ${legacyUrl.href}`);
-    try {
-      const modLegacy = await import(legacyUrl.href, { with: { type: 'json' } } as any);
-      return (modLegacy as any).default ?? modLegacy;
-    } catch (_) {}
-
-    try {
-      const legacyText = await Deno.readTextFile(legacyUrl);
-      return JSON.parse(legacyText);
-    } catch (error) {
-      console.error('Error loading room data:', error);
-      return null;
-    }
-  } catch (error) {
-    console.error('Error loading room data (outer):', error);
-    return null;
+  const fileName = roomFiles[roomId];
+  if (!fileName) {
+    console.log(`Room ${roomId} not found in mapping`);
+    return embeddedFallbackData[roomId] || null;
   }
+
+  // 1) Try dynamic import (ensures bundlers can include JSON)
+  try {
+    const url = new URL(`./data/${fileName}`, import.meta.url);
+    console.log(`Attempting to load (import): ${url.href}`);
+    // Deno supports JSON import assertions; cast any to avoid TS complaints
+    const mod: any = await import(url.href, { with: { type: 'json' } } as any);
+    const json = (mod && (mod.default ?? mod)) as any;
+    if (json) return json;
+  } catch (e) {
+    console.warn('Import JSON failed:', e);
+  }
+
+  // 2) Try reading file directly
+  try {
+    const url = new URL(`./data/${fileName}`, import.meta.url);
+    const text = await Deno.readTextFile(url);
+    return JSON.parse(text);
+  } catch (e) {
+    console.warn('ReadTextFile failed:', e);
+  }
+
+  // 3) Legacy relative path used by some builds
+  try {
+    const legacy = new URL(`../../data/rooms/${fileName}`, import.meta.url);
+    console.log(`Attempting to load (legacy import): ${legacy.href}`);
+    const modLegacy: any = await import(legacy.href, { with: { type: 'json' } } as any);
+    const json = (modLegacy && (modLegacy.default ?? modLegacy)) as any;
+    if (json) return json;
+  } catch (e) {
+    console.warn('Legacy import failed:', e);
+  }
+
+  try {
+    const legacy = new URL(`../../data/rooms/${fileName}`, import.meta.url);
+    const text = await Deno.readTextFile(legacy);
+    return JSON.parse(text);
+  } catch (e) {
+    console.error('All loaders failed; using embedded fallback if available. Error:', e);
+  }
+
+  return embeddedFallbackData[roomId] || null;
+}
+
+// Utilities
+const normalize = (t: unknown) =>
+  String(t ?? '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[\s\-]+/g, '_')
+    .trim();
+
+function getBilingual(obj: any, base: string): { en: string; vi: string } {
+  // Support object form { en, vi } or split keys base and base_vi
+  const val = obj?.[base];
+  if (val && typeof val === 'object') {
+    return { en: String(val.en || ''), vi: String(val.vi || '') };
+  }
+  return {
+    en: String(obj?.[base] || ''),
+    vi: String(obj?.[`${base}_vi`] || ''),
+  };
+}
+
+function findMatchingGroup(userMessage: string, keywords: any): string | null {
+  if (!keywords || typeof keywords !== 'object') return null;
+  const msg = normalize(userMessage);
+  for (const [groupKey, groupVal] of Object.entries(keywords)) {
+    const g: any = groupVal;
+    const list: string[] = [
+      ...(Array.isArray(g.en) ? g.en : []),
+      ...(Array.isArray(g.vi) ? g.vi : []),
+      ...(Array.isArray(g.slug_vi) ? g.slug_vi : []),
+    ];
+    for (const k of list) {
+      if (msg.includes(normalize(k))) {
+        console.log(`Matched keyword '${k}' in group '${groupKey}'`);
+        return groupKey;
+      }
+    }
+  }
+  return null;
+}
+
+function findEntryByGroup(groupKey: string | null, entries: any[]): any | null {
+  if (!groupKey || !Array.isArray(entries)) return null;
+  return (
+    entries.find((e: any) => e?.slug === groupKey) ||
+    entries.find((e: any) => e?.id === groupKey) ||
+    entries.find((e: any) => e?.keyword_group === groupKey) ||
+    null
+  );
 }
 
 serve(async (req) => {
@@ -138,9 +239,8 @@ serve(async (req) => {
       );
     }
 
-    // Load room data
+    // Load data (JSON files if available; otherwise embedded fallback)
     const roomData = await loadRoomData(roomId);
-
     if (!roomData) {
       return new Response(
         JSON.stringify({ error: 'Room data not found' }),
@@ -148,67 +248,9 @@ serve(async (req) => {
       );
     }
 
-    // Helpers
-    const normalize = (t: unknown) =>
-      String(t || '')
-        .toLowerCase()
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '') // strip diacritics
-        .replace(/[\s\-]+/g, '_')
-        .trim();
-
-    const getBilingual = (
-      obj: any,
-      base: string
-    ): { en: string; vi: string } => {
-      const val = obj?.[base];
-      if (val && typeof val === 'object') {
-        return { en: String(val.en || ''), vi: String(val.vi || '') };
-      }
-      // support split fields like description + description_vi
-      return {
-        en: String(obj?.[base] || ''),
-        vi: String(obj?.[`${base}_vi`] || ''),
-      };
-    };
-
-    // Keyword matching across all groups (en/vi)
-    function findMatchingGroup(userMessage: string, keywords: any): string | null {
-      if (!keywords || typeof keywords !== 'object') return null;
-      const msg = normalize(userMessage);
-
-      for (const [groupKey, groupVal] of Object.entries(keywords)) {
-        const g: any = groupVal;
-        const list: string[] = [
-          ...(Array.isArray(g.en) ? g.en : []),
-          ...(Array.isArray(g.vi) ? g.vi : []),
-          ...(Array.isArray(g.slug_vi) ? g.slug_vi : []),
-        ];
-        for (const k of list) {
-          if (msg.includes(normalize(k))) {
-            console.log(`Matched keyword '${k}' in group '${groupKey}'`);
-            return groupKey;
-          }
-        }
-      }
-      return null;
-    }
-
-    function findEntryByGroup(groupKey: string | null, entries: any[]): any | null {
-      if (!groupKey || !Array.isArray(entries)) return null;
-      return (
-        entries.find((e: any) => e?.slug === groupKey) ||
-        entries.find((e: any) => e?.id === groupKey) ||
-        entries.find((e: any) => e?.keyword_group === groupKey) ||
-        null
-      );
-    }
-
-    // Try to find a matching entry
     const groupKey = findMatchingGroup(message, roomData.keywords);
     const matchedEntry = findEntryByGroup(groupKey, roomData.entries || []);
 
-    // Build bilingual strings from entry
     const buildEntryResponse = (entry: any) => {
       const titleEn = String(entry?.title?.en || entry?.title_en || '');
       const titleVi = String(entry?.title?.vi || entry?.title_vi || '');
@@ -220,53 +262,29 @@ serve(async (req) => {
         ? ''
         : String(entry?.copy?.vi || entry?.content?.vi || entry?.body?.vi || entry?.copy_vi || '');
 
-      const parts: string[] = [];
-      if (titleEn) parts.push(titleEn);
-      if (copyEn) parts.push(copyEn);
-      const en = parts.filter(Boolean).join('\n\n');
-
-      const partsVi: string[] = [];
-      if (titleVi) partsVi.push(titleVi);
-      if (copyVi) partsVi.push(copyVi);
-      const vi = partsVi.filter(Boolean).join('\n\n');
-
+      const en = [titleEn, copyEn].filter(Boolean).join('\n\n');
+      const vi = [titleVi, copyVi].filter(Boolean).join('\n\n');
       return { en, vi };
     };
 
-    // Decide response
     if (matchedEntry) {
       console.log('Returning matched entry content');
       const { en, vi } = buildEntryResponse(matchedEntry);
-
-      // Safety and crisis footers from data only
       const safety = getBilingual(roomData, 'safety_disclaimer');
       const crisis = getBilingual(roomData, 'crisis_footer');
 
-      const response = [
-        en,
-        vi,
-        safety.en,
-        safety.vi,
-        crisis.en,
-        crisis.vi,
-      ]
+      const response = [en, vi, safety.en, safety.vi, crisis.en, crisis.vi]
         .map((s) => (s || '').trim())
         .filter(Boolean)
         .join('\n\n');
 
       return new Response(
-        JSON.stringify({
-          response,
-          roomId,
-          matched: true,
-          groupKey,
-          timestamp: new Date().toISOString(),
-        }),
+        JSON.stringify({ response, roomId, matched: true, groupKey, timestamp: new Date().toISOString() }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    // No match: show room description and a hint of available keywords (data-only)
+    // Default: show room essay/description + a hint of available keywords
     console.log('No keyword match found, returning default data-only response');
     const desc = getBilingual(roomData, 'room_essay');
     const fallDesc = getBilingual(roomData, 'description');
@@ -275,33 +293,19 @@ serve(async (req) => {
     const enDesc = desc.en || fallDesc.en;
     const viDesc = desc.vi || fallDesc.vi;
 
-    // Suggest first few keywords from data (still from user's data)
-    const firstGroup = Object.values(roomData.keywords || {})[0] as any;
-    const hintEn = Array.isArray(firstGroup?.en) ? firstGroup.en.slice(0, 6).join(', ') : '';
-    const hintVi = Array.isArray(firstGroup?.vi) ? firstGroup.vi.slice(0, 6).join(', ') : '';
+    const firstGroup: any = Object.values(roomData.keywords || {})[0] || {};
+    const hintEn = Array.isArray(firstGroup.en) ? firstGroup.en.slice(0, 6).join(', ') : '';
+    const hintVi = Array.isArray(firstGroup.vi) ? firstGroup.vi.slice(0, 6).join(', ') : '';
 
-    const response = [
-      enDesc,
-      viDesc,
-      hintEn,
-      hintVi,
-      safety.en,
-      safety.vi,
-    ]
+    const response = [enDesc, viDesc, hintEn, hintVi, safety.en, safety.vi]
       .map((s) => (s || '').trim())
       .filter(Boolean)
       .join('\n\n');
 
     return new Response(
-      JSON.stringify({
-        response,
-        roomId,
-        matched: false,
-        timestamp: new Date().toISOString(),
-      }),
+      JSON.stringify({ response, roomId, matched: false, timestamp: new Date().toISOString() }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
-
   } catch (error) {
     console.error('Error in room-chat function:', error);
     return new Response(
