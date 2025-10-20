@@ -134,7 +134,10 @@ async function loadRoomData(roomId: string): Promise<any | null> {
   try {
     const url = new URL(`./data/${fileName}`, import.meta.url);
     const module = await import(url.href, { with: { type: 'json' } } as any);
-    const data = module.default || module;
+    const data = (module as any).default || module;
+    if (data && typeof data === 'object') {
+      (data as any).__source = 'file';
+    }
     console.log(`Successfully loaded data for ${roomId}`);
     return data;
   } catch (e) {
@@ -142,6 +145,9 @@ async function loadRoomData(roomId: string): Promise<any | null> {
     const fallback = embeddedFallbackData[roomId];
     if (fallback) {
       console.log(`Using embedded fallback for ${roomId}`);
+      if (fallback && typeof fallback === 'object') {
+        (fallback as any).__source = 'fallback';
+      }
       return fallback;
     }
     return null;
@@ -256,7 +262,7 @@ serve(async (req) => {
         .join('\n\n');
 
       return new Response(
-        JSON.stringify({ response, roomId, matched: true, groupKey, timestamp: new Date().toISOString() }),
+        JSON.stringify({ response, roomId, matched: true, groupKey, dataSource: roomData.__source || 'unknown', timestamp: new Date().toISOString() }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
