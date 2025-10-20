@@ -47,7 +47,7 @@ const Welcome = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5">
+    <div className="min-h-screen" style={{ background: 'hsl(var(--page-welcome))' }}>
       <div className="container mx-auto px-4 py-12 max-w-7xl">
         {/* Header with Sign In Button */}
         <div className="flex justify-end mb-4">

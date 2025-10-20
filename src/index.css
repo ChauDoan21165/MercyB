@@ -60,6 +60,14 @@ All colors MUST be HSL.
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Page-specific backgrounds */
+    --page-welcome: 120 40% 85%;
+    --page-allrooms: 160 45% 70%;
+    --page-roomgrid: 210 55% 45%;
+    --page-vip1: 30 35% 75%;
+    --page-vip2: 45 70% 75%;
+    --page-vip3: 45 90% 60%;
   }
 
   .dark {
@@ -104,6 +112,14 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Page-specific backgrounds - dark mode */
+    --page-welcome: 120 30% 25%;
+    --page-allrooms: 160 35% 20%;
+    --page-roomgrid: 210 45% 25%;
+    --page-vip1: 30 25% 30%;
+    --page-vip2: 45 50% 30%;
+    --page-vip3: 45 70% 35%;
   }
 }
 

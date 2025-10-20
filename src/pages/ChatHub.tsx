@@ -15,6 +15,7 @@ import { WelcomeBack } from "@/components/WelcomeBack";
 import { RelatedRooms } from "@/components/RelatedRooms";
 import { MessageActions } from "@/components/MessageActions";
 import { MatchmakingButton } from "@/components/MatchmakingButton";
+import { usePoints } from "@/hooks/usePoints";
 
 interface Message {
   id: string;
@@ -39,9 +40,11 @@ const ChatHub = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [noKeywordCount, setNoKeywordCount] = useState(0);
   const [matchedEntryCount, setMatchedEntryCount] = useState(0);
+  const [userMessageCount, setUserMessageCount] = useState(0);
   const mainScrollRef = useRef<HTMLDivElement>(null);
   const progress = useRoomProgress(roomId);
   const { trackMessage, trackKeyword, trackCompletion } = useBehaviorTracking(roomId || "");
+  const { awardPoints } = usePoints();
 
 // Use centralized room metadata
 const info = getRoomInfo(roomId || "");
@@ -74,6 +77,17 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
     const currentInput = mainInput;
     setMainInput("");
     setIsLoading(true);
+    
+    // Track message count and award points every 10 questions
+    const newCount = userMessageCount + 1;
+    setUserMessageCount(newCount);
+    if (newCount % 10 === 0) {
+      await awardPoints(10, 'questions_completed', `Completed ${newCount} questions in ${currentRoom.nameEn}`, roomId);
+      toast({
+        title: "Points Awarded! / Điểm Thưởng!",
+        description: `You earned 10 points for completing ${newCount} questions! / Bạn nhận 10 điểm khi hoàn thành ${newCount} câu hỏi!`,
+      });
+    }
     
     // Track message for behavior analytics
     trackMessage(currentInput);
@@ -252,8 +266,20 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
     </div>
   );
 
+  // Get background color based on room tier
+  const roomInfo = getRoomInfo(roomId || "");
+  const getBgColor = () => {
+    if (!roomInfo) return 'hsl(var(--background))';
+    switch (roomInfo.tier) {
+      case 'vip1': return 'hsl(var(--page-vip1))';
+      case 'vip2': return 'hsl(var(--page-vip2))';
+      case 'vip3': return 'hsl(var(--page-vip3))';
+      default: return 'hsl(var(--background))';
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5 p-4">
+    <div className="min-h-screen p-4" style={{ background: getBgColor() }}>
       <div className="max-w-7xl mx-auto space-y-4">
         {/* Header */}
         <div className="flex items-center justify-between bg-card rounded-lg p-4 shadow-soft">
