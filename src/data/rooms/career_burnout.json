@@ -1,0 +1,62 @@
+{
+  "version": "1.0",
+  "locale": "vi-en",
+  "global_notes": {
+    "safety": "If experiencing severe depression or thoughts of self-harm, seek immediate professional help.",
+    "disclaimer": "This is educational content, not mental health treatment."
+  },
+  "enum_tags": ["stress", "recovery", "boundaries", "career"],
+  "keywords": {
+    "exhaustion": {
+      "en": ["burned out", "exhausted", "can't work", "drained", "no energy"],
+      "vi": ["kiệt sức", "mệt mỏi", "không thể làm việc", "cạn kiệt", "không có năng lượng"]
+    },
+    "overwhelmed": {
+      "en": ["too much work", "overwhelmed", "can't cope", "stressed"],
+      "vi": ["quá nhiều công việc", "choáng ngợp", "không đối phó nổi", "căng thẳng"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "FILL THIS WITH CHATGPT: Write a comprehensive essay about career burnout recovery, signs, prevention strategies, and work-life balance. Include actionable steps.",
+    "vi": "ĐIỀN BẰNG CHATGPT: Viết một bài luận toàn diện về phục hồi kiệt sức nghề nghiệp, dấu hiệu, chiến lược phòng ngừa và cân bằng công việc-cuộc sống.",
+    "word_count_en": 0,
+    "word_count_vi": 0,
+    "updated_at": "2025-10-20"
+  },
+  "entries": [
+    {
+      "slug": "burnout-signs",
+      "keywords_en": ["FILL: add 3-5 keywords"],
+      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "copy": {
+        "en": "FILL WITH CHATGPT: Write about recognizing burnout signs - physical, emotional, and behavioral symptoms. Keep it under 200 words.",
+        "vi": "ĐIỀN BẰNG CHATGPT: Viết về nhận biết dấu hiệu kiệt sức - triệu chứng thể chất, cảm xúc và hành vi. Giữ dưới 200 từ."
+      },
+      "tags": ["stress"],
+      "artifact_id": "burnout-001"
+    },
+    {
+      "slug": "recovery-protocol",
+      "keywords_en": ["FILL: add 3-5 keywords"],
+      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "copy": {
+        "en": "FILL WITH CHATGPT: Write a step-by-step burnout recovery protocol. Include rest, boundaries, and gradual return strategies.",
+        "vi": "ĐIỀN BẰNG CHATGPT: Viết quy trình phục hồi kiệt sức từng bước. Bao gồm nghỉ ngơi, ranh giới và chiến lược trở lại dần dần."
+      },
+      "tags": ["recovery"],
+      "artifact_id": "burnout-002"
+    },
+    {
+      "slug": "work-boundaries",
+      "keywords_en": ["FILL: add 3-5 keywords"],
+      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "copy": {
+        "en": "FILL WITH CHATGPT: How to set and maintain healthy work boundaries. Include saying no, email boundaries, after-hours protection.",
+        "vi": "ĐIỀN BẰNG CHATGPT: Cách thiết lập và duy trì ranh giới công việc lành mạnh. Bao gồm nói không, ranh giới email, bảo vệ sau giờ."
+      },
+      "tags": ["boundaries"],
+      "artifact_id": "burnout-003"
+    }
+  ]
+}

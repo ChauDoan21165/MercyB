@@ -1,0 +1,62 @@
+{
+  "version": "1.0",
+  "locale": "vi-en",
+  "global_notes": {
+    "safety": "If experiencing persistent low self-worth or depression, seek professional support.",
+    "disclaimer": "Self-improvement guidance, not therapy replacement."
+  },
+  "enum_tags": ["self-esteem", "social", "mindset", "action"],
+  "keywords": {
+    "insecurity": {
+      "en": ["insecure", "low self-esteem", "not good enough", "imposter syndrome"],
+      "vi": ["không an toàn", "lòng tự trọng thấp", "không đủ tốt", "hội chứng kẻ mạo danh"]
+    },
+    "confidence": {
+      "en": ["build confidence", "self-confidence", "believe in myself", "overcome fear"],
+      "vi": ["xây dựng tự tin", "tự tin", "tin vào bản thân", "vượt qua nỗi sợ"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "FILL THIS WITH CHATGPT: Write about building genuine confidence through competence, self-compassion, and progressive challenges. Not fake it till you make it.",
+    "vi": "ĐIỀN BẰNG CHATGPT: Viết về xây dựng tự tin thực sự thông qua năng lực, tự thương, và thách thức tiến triển.",
+    "word_count_en": 0,
+    "word_count_vi": 0,
+    "updated_at": "2025-10-20"
+  },
+  "entries": [
+    {
+      "slug": "confidence-ladder",
+      "keywords_en": ["FILL: add 3-5 keywords"],
+      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "copy": {
+        "en": "FILL WITH CHATGPT: Progressive confidence-building exercises - Level 1 (easy) to Level 10 (challenging). Make it specific and actionable.",
+        "vi": "ĐIỀN BẰNG CHATGPT: Bài tập xây dựng tự tin tiến triển - Cấp 1 (dễ) đến Cấp 10 (thách thức). Làm cho cụ thể và có thể hành động."
+      },
+      "tags": ["action"],
+      "artifact_id": "conf-001"
+    },
+    {
+      "slug": "self-talk-reframe",
+      "keywords_en": ["FILL: add 3-5 keywords"],
+      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "copy": {
+        "en": "FILL WITH CHATGPT: How to change negative self-talk. Include common negative thoughts and confident reframes. Format: Negative → Confident.",
+        "vi": "ĐIỀN BẰNG CHATGPT: Cách thay đổi nói chuyện bản thân tiêu cực. Bao gồm suy nghĩ tiêu cực phổ biến và tái cấu trúc tự tin."
+      },
+      "tags": ["mindset"],
+      "artifact_id": "conf-002"
+    },
+    {
+      "slug": "competence-building",
+      "keywords_en": ["FILL: add 3-5 keywords"],
+      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "copy": {
+        "en": "FILL WITH CHATGPT: Build confidence through competence - skill development strategy, deliberate practice, evidence collection, celebration protocol.",
+        "vi": "ĐIỀN BẰNG CHATGPT: Xây dựng tự tin thông qua năng lực - chiến lược phát triển kỹ năng, thực hành có chủ đích, thu thập bằng chứng."
+      },
+      "tags": ["action", "self-esteem"],
+      "artifact_id": "conf-003"
+    }
+  ]
+}

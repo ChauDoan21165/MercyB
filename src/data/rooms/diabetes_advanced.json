@@ -1,0 +1,62 @@
+{
+  "version": "1.0",
+  "locale": "vi-en",
+  "global_notes": {
+    "safety": "Always consult your doctor before changing diabetes management. This is NOT medical advice.",
+    "disclaimer": "Educational content for Type 2 diabetes management support."
+  },
+  "enum_tags": ["medication", "diet", "monitoring", "complications"],
+  "keywords": {
+    "blood_sugar": {
+      "en": ["high blood sugar", "glucose control", "A1C", "blood sugar spikes"],
+      "vi": ["đường huyết cao", "kiểm soát glucose", "A1C", "tăng đường huyết"]
+    },
+    "complications": {
+      "en": ["diabetic complications", "neuropathy", "retinopathy", "kidney damage"],
+      "vi": ["biến chứng tiểu đường", "bệnh thần kinh", "bệnh võng mạc", "tổn thương thận"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "FILL THIS WITH CHATGPT: Advanced diabetes management - medication optimization, preventing complications, monitoring strategies, and lifestyle modifications.",
+    "vi": "ĐIỀN BẰNG CHATGPT: Quản lý tiểu đường nâng cao - tối ưu hóa thuốc, ngăn ngừa biến chứng, chiến lược theo dõi và thay đổi lối sống.",
+    "word_count_en": 0,
+    "word_count_vi": 0,
+    "updated_at": "2025-10-20"
+  },
+  "entries": [
+    {
+      "slug": "blood-sugar-control",
+      "keywords_en": ["FILL: add 3-5 keywords"],
+      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "copy": {
+        "en": "FILL WITH CHATGPT: Strategies to stabilize blood sugar - timing of meals, food combinations, exercise timing, medication timing.",
+        "vi": "ĐIỀN BẰNG CHATGPT: Chiến lược ổn định đường huyết - thời gian bữa ăn, kết hợp thực phẩm, thời gian tập thể dục, thời gian dùng thuốc."
+      },
+      "tags": ["monitoring", "diet"],
+      "artifact_id": "diab-001"
+    },
+    {
+      "slug": "complication-prevention",
+      "keywords_en": ["FILL: add 3-5 keywords"],
+      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "copy": {
+        "en": "FILL WITH CHATGPT: Preventing diabetes complications - eye exams, foot care, kidney monitoring, cardiovascular protection. Include screening schedule.",
+        "vi": "ĐIỀN BẰNG CHATGPT: Ngăn ngừa biến chứng tiểu đường - khám mắt, chăm sóc chân, theo dõi thận, bảo vệ tim mạch."
+      },
+      "tags": ["complications"],
+      "artifact_id": "diab-002"
+    },
+    {
+      "slug": "medication-management",
+      "keywords_en": ["FILL: add 3-5 keywords"],
+      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "copy": {
+        "en": "FILL WITH CHATGPT: Understanding diabetes medications - types, when to take, side effects, what to discuss with doctor about adjustments.",
+        "vi": "ĐIỀN BẰNG CHATGPT: Hiểu về thuốc tiểu đường - loại, khi nào dùng, tác dụng phụ, điều gì cần thảo luận với bác sĩ."
+      },
+      "tags": ["medication"],
+      "artifact_id": "diab-003"
+    }
+  ]
+}

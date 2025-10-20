@@ -1,0 +1,62 @@
+{
+  "version": "1.0",
+  "locale": "vi-en",
+  "global_notes": {
+    "safety": "These are general negotiation principles, not legal advice.",
+    "disclaimer": "Practice in low-stakes situations before high-stakes negotiations."
+  },
+  "enum_tags": ["salary", "business", "tactics", "preparation"],
+  "keywords": {
+    "salary": {
+      "en": ["salary negotiation", "raise", "promotion", "compensation", "offer"],
+      "vi": ["đàm phán lương", "tăng lương", "thăng chức", "bồi thường", "đề nghị"]
+    },
+    "tactics": {
+      "en": ["negotiation tactics", "strategy", "win-win", "leverage"],
+      "vi": ["chiến thuật đàm phán", "chiến lược", "đôi bên cùng có lợi", "đòn bẩy"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "FILL THIS WITH CHATGPT: Write about negotiation principles, preparation, tactics, and common mistakes. Include salary negotiation specifics.",
+    "vi": "ĐIỀN BẰNG CHATGPT: Viết về nguyên tắc đàm phán, chuẩn bị, chiến thuật và lỗi phổ biến. Bao gồm chi tiết đàm phán lương.",
+    "word_count_en": 0,
+    "word_count_vi": 0,
+    "updated_at": "2025-10-20"
+  },
+  "entries": [
+    {
+      "slug": "salary-negotiation-script",
+      "keywords_en": ["FILL: add 3-5 keywords"],
+      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "copy": {
+        "en": "FILL WITH CHATGPT: Provide exact scripts for salary negotiation - initial offer response, counteroffer, handling objections. Include numbers strategy.",
+        "vi": "ĐIỀN BẰNG CHATGPT: Cung cấp kịch bản chính xác cho đàm phán lương - phản hồi đề nghị ban đầu, đề nghị ngược, xử lý phản đối."
+      },
+      "tags": ["salary", "tactics"],
+      "artifact_id": "neg-001"
+    },
+    {
+      "slug": "preparation-checklist",
+      "keywords_en": ["FILL: add 3-5 keywords"],
+      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "copy": {
+        "en": "FILL WITH CHATGPT: Complete negotiation preparation checklist - research, BATNA, walk-away point, opening anchor, etc.",
+        "vi": "ĐIỀN BẰNG CHATGPT: Danh sách kiểm tra chuẩn bị đàm phán đầy đủ - nghiên cứu, BATNA, điểm rút lui, neo mở đầu."
+      },
+      "tags": ["preparation"],
+      "artifact_id": "neg-002"
+    },
+    {
+      "slug": "advanced-tactics",
+      "keywords_en": ["FILL: add 3-5 keywords"],
+      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "copy": {
+        "en": "FILL WITH CHATGPT: Advanced negotiation tactics - mirroring, tactical empathy, calibrated questions, accusation audit.",
+        "vi": "ĐIỀN BẰNG CHATGPT: Chiến thuật đàm phán nâng cao - phản chiếu, đồng cảm chiến thuật, câu hỏi hiệu chỉnh."
+      },
+      "tags": ["tactics"],
+      "artifact_id": "neg-003"
+    }
+  ]
+}

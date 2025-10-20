@@ -1,0 +1,62 @@
+{
+  "version": "1.0",
+  "locale": "vi-en",
+  "global_notes": {
+    "safety": "Start small. Sustainable change takes time.",
+    "disclaimer": "Based on behavioral science research, but individual results vary."
+  },
+  "enum_tags": ["motivation", "systems", "tracking", "psychology"],
+  "keywords": {
+    "motivation": {
+      "en": ["no motivation", "can't stick to habits", "always quit", "lack discipline"],
+      "vi": ["không có động lực", "không thể giữ thói quen", "luôn bỏ cuộc", "thiếu kỷ luật"]
+    },
+    "building": {
+      "en": ["how to build habits", "habit formation", "consistency", "routine"],
+      "vi": ["cách xây dựng thói quen", "hình thành thói quen", "nhất quán", "thói quen"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "FILL THIS WITH CHATGPT: Write about habit formation science, the habit loop, identity-based habits, and practical implementation strategies.",
+    "vi": "ĐIỀN BẰNG CHATGPT: Viết về khoa học hình thành thói quen, vòng lặp thói quen, thói quen dựa trên bản sắc và chiến lược thực hiện.",
+    "word_count_en": 0,
+    "word_count_vi": 0,
+    "updated_at": "2025-10-20"
+  },
+  "entries": [
+    {
+      "slug": "30-day-system",
+      "keywords_en": ["FILL: add 3-5 keywords"],
+      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "copy": {
+        "en": "FILL WITH CHATGPT: 30-day habit building system - Week 1: Tiny habits, Week 2: Stack, Week 3: Environment, Week 4: Identity. Be specific.",
+        "vi": "ĐIỀN BẰNG CHATGPT: Hệ thống xây dựng thói quen 30 ngày - Tuần 1: Thói quen nhỏ, Tuần 2: Xếp chồng, Tuần 3: Môi trường, Tuần 4: Bản sắc."
+      },
+      "tags": ["systems"],
+      "artifact_id": "habit-001"
+    },
+    {
+      "slug": "breaking-bad-habits",
+      "keywords_en": ["FILL: add 3-5 keywords"],
+      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "copy": {
+        "en": "FILL WITH CHATGPT: How to break bad habits - identify triggers, create friction, replace with good habits, track progress.",
+        "vi": "ĐIỀN BẰNG CHATGPT: Cách phá vỡ thói quen xấu - xác định kích thích, tạo ma sát, thay thế bằng thói quen tốt, theo dõi tiến độ."
+      },
+      "tags": ["psychology"],
+      "artifact_id": "habit-002"
+    },
+    {
+      "slug": "habit-stacking",
+      "keywords_en": ["FILL: add 3-5 keywords"],
+      "keywords_vi": ["FILL: thêm 3-5 từ khóa"],
+      "copy": {
+        "en": "FILL WITH CHATGPT: Habit stacking formula and 10 examples. Format: 'After [EXISTING HABIT], I will [NEW HABIT].'",
+        "vi": "ĐIỀN BẰNG CHATGPT: Công thức xếp chồng thói quen và 10 ví dụ. Định dạng: 'Sau [THÓI QUEN HIỆN TẠI], tôi sẽ [THÓI QUEN MỚI].')"
+      },
+      "tags": ["systems"],
+      "artifact_id": "habit-003"
+    }
+  ]
+}
