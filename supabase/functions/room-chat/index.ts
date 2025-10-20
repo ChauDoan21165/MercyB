@@ -1,5 +1,6 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { getRoomData as getPreloadedRoomData } from './allRoomData.ts';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -120,55 +121,26 @@ const embeddedFallbackData: Record<string, any> = {
   },
 };
 
-// Attempt to load JSON from bundled files; otherwise fall back to embedded data
-async function loadRoomData(roomId: string) {
-  const fileName = roomFiles[roomId];
-  if (!fileName) {
-    console.log(`Room ${roomId} not found in mapping`);
-    return embeddedFallbackData[roomId] || null;
+// Load room data - uses preloaded imports to ensure all data is bundled
+function loadRoomData(roomId: string): any | null {
+  console.log(`Loading data for room: ${roomId}`);
+  
+  // Primary: Use preloaded data from allRoomData.ts
+  const data = getPreloadedRoomData(roomId);
+  if (data) {
+    console.log(`Successfully loaded preloaded data for ${roomId}`);
+    return data;
   }
-
-  // 1) Try dynamic import (ensures bundlers can include JSON)
-  try {
-    const url = new URL(`./data/${fileName}`, import.meta.url);
-    console.log(`Attempting to load (import): ${url.href}`);
-    // Deno supports JSON import assertions; cast any to avoid TS complaints
-    const mod: any = await import(url.href, { with: { type: 'json' } } as any);
-    const json = (mod && (mod.default ?? mod)) as any;
-    if (json) return json;
-  } catch (e) {
-    console.warn('Import JSON failed:', e);
+  
+  // Fallback: Use minimal embedded data for critical rooms
+  const fallback = embeddedFallbackData[roomId];
+  if (fallback) {
+    console.log(`Using embedded fallback data for ${roomId}`);
+    return fallback;
   }
-
-  // 2) Try reading file directly
-  try {
-    const url = new URL(`./data/${fileName}`, import.meta.url);
-    const text = await Deno.readTextFile(url);
-    return JSON.parse(text);
-  } catch (e) {
-    console.warn('ReadTextFile failed:', e);
-  }
-
-  // 3) Legacy relative path used by some builds
-  try {
-    const legacy = new URL(`../../data/rooms/${fileName}`, import.meta.url);
-    console.log(`Attempting to load (legacy import): ${legacy.href}`);
-    const modLegacy: any = await import(legacy.href, { with: { type: 'json' } } as any);
-    const json = (modLegacy && (modLegacy.default ?? modLegacy)) as any;
-    if (json) return json;
-  } catch (e) {
-    console.warn('Legacy import failed:', e);
-  }
-
-  try {
-    const legacy = new URL(`../../data/rooms/${fileName}`, import.meta.url);
-    const text = await Deno.readTextFile(legacy);
-    return JSON.parse(text);
-  } catch (e) {
-    console.error('All loaders failed; using embedded fallback if available. Error:', e);
-  }
-
-  return embeddedFallbackData[roomId] || null;
+  
+  console.error(`No data found for room: ${roomId}`);
+  return null;
 }
 
 // Utilities
@@ -239,8 +211,8 @@ serve(async (req) => {
       );
     }
 
-    // Load data (JSON files if available; otherwise embedded fallback)
-    const roomData = await loadRoomData(roomId);
+    // Load data from preloaded imports
+    const roomData = loadRoomData(roomId);
     if (!roomData) {
       return new Response(
         JSON.stringify({ error: 'Room data not found' }),
