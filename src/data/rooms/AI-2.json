@@ -1,1515 +1,406 @@
 {
-  "header": "// dumb tree, no diagnostics, catch keyword, speak sharp, mood: slow",
+  "header": "// dumb tree, no diagnostics, catch keyword, speak sharp, mood: deep dive\n\nCutting-edge AI learning, research-driven\n\nEach entry: teach advanced AI techniques for exploration or application\n\nPhilosophy: rigorous, actionable, incremental, technical focus, humane language\n\nBeliefs:\n- Don’t overpromise. Explain precisely.\n- Don’t assume mastery. Guide clearly.\n- Don’t confuse. Stay focused.\n\nTalk points\n- Explore AI’s frontiers with curiosity.\n- Complex systems break into small steps.\n- Ethics and responsibility shape innovation.\n- Experimentation fuels breakthroughs.\n\nTiny habits to teach:\n- Study one advanced AI paper weekly.\n- Code one novel AI technique.\n- Reflect on one ethical implication.\n- Discuss one concept with a peer.",
   "schema_version": "1.1",
-  "schema_id": "advanced_ai_learning",
-  "description": "Echologic Mercy Blade room for advanced AI knowledge and mental health support",
-  "description_vi": "Phòng Mercy Blade về kiến thức AI nâng cao và hỗ trợ sức khỏe tinh thần",
+  "schema_id": "cutting_edge_ai_learning",
+  "description": "Echologic Mercy Blade room for cutting-edge AI knowledge and deep technical exploration",
+  "description_vi": "Phòng Mercy Blade về kiến thức AI tiên tiến và khám phá kỹ thuật chuyên sâu",
   "supported_languages": ["en", "vi"],
   "localization": { "default": "en", "fallback": "en", "i18n_required": true },
-  "safety_disclaimer": "Educational guidance; not a substitute for professional medical or psychological advice or emergency care.",
-  "safety_disclaimer_vi": "Nội dung chỉ mang tính giáo dục; không thay thế tư vấn y tế hoặc tâm lý chuyên nghiệp hay chăm sóc khẩn cấp.",
+  "safety_disclaimer": "Educational guidance; not a substitute for professional technical or ethical advice.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn kỹ thuật hoặc đạo đức chuyên nghiệp.",
   "crisis_footer": {
-    "en": "If overdose risk or unsafe, get urgent medical care now. If in US/CA/UK/AU, try national crisis lines. Elsewhere, search '[country] crisis hotline'. Dare: Call now.",
-    "vi": "Nếu nguy cơ quá liều hoặc không an toàn, hãy đi cấp cứu ngay. Nếu ở US/CA/UK/AU, thử các đường dây nóng quốc gia. Nơi khác, tìm '[tên quốc gia] crisis hotline'. Dám: Gọi ngay."
+    "en": "For technical errors or ethical dilemmas, consult experts or contact support immediately.",
+    "vi": "Đối với lỗi kỹ thuật hoặc vấn đề đạo đức, tham khảo chuyên gia hoặc liên hệ hỗ trợ ngay."
   },
   "safety_footer": {
-    "en": "If you have severe withdrawal symptoms or mixing substances, seek urgent care.",
-    "vi": "Nếu có triệu chứng cai nghiện nặng hoặc trộn chất, hãy đi cấp cứu."
+    "en": "Ensure responsible AI use; consult professionals for critical implementations.",
+    "vi": "Đảm bảo sử dụng AI có trách nhiệm; tham khảo chuyên gia cho triển khai quan trọng."
   },
   "meta": {
     "created_at": "2025-10-04T12:08:00+07:00",
-    "updated_at": "2025-10-04T12:08:00+07:00",
+    "updated_at": "2025-10-20T17:49:00+09:00",
     "checksum_sha256": "<placeholder>",
-    "meta_notes": "Keyword-driven; field-tested tone; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON; version bumps to -v001 on creation.",
+    "meta_notes": "Keyword-driven; field-tested tone; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON; version to -v001 for new advanced AI focus.",
     "i18n_verified": true,
-    "entry_count": 30
+    "entry_count": 16,
+    "artifact_set_id": "2b3c4d5e-6f7a-890b-cdef-1234567890ab",
+    "data_format_version": "MercyBlade-Core-v1.2"
   },
   "enums": {
     "tags": [
       "ai_literacy",
-      "mental_health",
       "strategy",
       "ethics",
       "privacy",
-      "crisis",
-      "caregiver",
-      "support"
+      "emerging_tech"
     ],
     "urgency": ["immediate", "soon", "routine"],
     "severity_level": [1, 2, 3, 4, 5],
-    "systems": ["mental_health"]
+    "systems": ["ai_tech"]
   },
   "keywords": {
-    "fine_tuning": {
-      "en": [
-        "fine_tuning",
-        "model_adaptation",
-        "parameter_update",
-        "task_tuning",
-        "transfer_learning"
-      ],
-      "vi": [
-        "tinh_chinh",
-        "thich_ung_mo_hinh",
-        "cap_nhat_tham_so",
-        "tinh_chinh_nhiem_vu",
-        "chuyen_hoc"
-      ]
+    "self_supervised": {
+      "en": ["self_supervised", "self_learning", "unlabeled_data", "contrastive_learning", "pretraining"],
+      "vi": ["tu_giam_sat", "tu_hoc", "du_lieu_khong_nhan", "hoc_tuong_phan", "tien_huan_luyen"]
     },
-    "lora": {
-      "en": [
-        "lora",
-        "low_rank_adaptation",
-        "efficient_tuning",
-        "adapter_method",
-        "parameter_efficient"
-      ],
-      "vi": [
-        "lora",
-        "thich_ung_hang_thap",
-        "tinh_chinh_hieu_qua",
-        "phuong_phap_adapter",
-        "hieu_qua_tham_so"
-      ]
+    "graph_neural_networks": {
+      "en": ["graph_neural_networks", "gnn", "graph_learning", "node_embedding", "graph_convolution"],
+      "vi": ["mang_noron_do_thi", "gnn", "hoc_do_thi", "nhung_nut", "cuon_tich_do_thi"]
     },
-    "quantization": {
-      "en": [
-        "quantization",
-        "model_compression",
-        "bit_reduction",
-        "inference_speedup",
-        "low_precision"
-      ],
-      "vi": [
-        "luong_tu_hoa",
-        "nen_mo_hinh",
-        "giam_bit",
-        "tang_toc_suy_luan",
-        "do_chinh_xac_thap"
-      ]
+    "diffusion_models": {
+      "en": ["diffusion_models", "diffusion_process", "generative_diffusion", "denoising_diffusion", "score_based"],
+      "vi": ["mo_hinh_khuech_tan", "qua_trinh_khuech_tan", "sinh_khuech_tan", "lam_sach_khuech_tan", "dua_tren_diem"]
     },
-    "rlhf": {
-      "en": [
-        "rlhf",
-        "reinforcement_human_feedback",
-        "human_aligned",
-        "reward_modeling",
-        "policy_optimization"
-      ],
-      "vi": [
-        "rlhf",
-        "tang_cuong_phan_hoi_nguoi",
-        "can_chinh_nguoi",
-        "mo_hinh_phan_thuong",
-        "toi_uu_chinh_sach"
-      ]
+    "transformer_evolution": {
+      "en": ["transformer_evolution", "advanced_transformers", "sparse_transformer", "efficient_attention", "long_context"],
+      "vi": ["tien_hoa_transformer", "transformer_nang_cao", "transformer_thua_thot", "chu_y_hieu_qua", "ngu_canh_dai"]
     },
-    "dpo": {
-      "en": [
-        "dpo",
-        "direct_preference_optimization",
-        "alignment_method",
-        "preference_tuning",
-        "reward_free"
-      ],
-      "vi": [
-        "dpo",
-        "toi_uu_uu_tien_truc_tiep",
-        "phuong_phap_can_chinh",
-        "tinh_chinh_uu_tien",
-        "khong_phan_thuong"
-      ]
+    "ai_safety": {
+      "en": ["ai_safety", "safe_ai", "robustness", "alignment_safety", "risk_mitigation"],
+      "vi": ["an_toan_ai", "ai_an_toan", "ben_vung", "can_chinh_an_toan", "giam_rui_ro"]
     },
-    "multimodal": {
-      "en": [
-        "multimodal",
-        "multi_input",
-        "text_image_audio",
-        "fusion_model",
-        "cross_modal"
-      ],
-      "vi": [
-        "da_phuong_thuc",
-        "da_dau_vao",
-        "van_ban_anh_am_thanh",
-        "mo_hinh_hop_nhat",
-        "cheo_phuong_thuc"
-      ]
+    "zero_shot": {
+      "en": ["zero_shot", "zero_shot_learning", "task_generalization", "prompt_engineering", "few_shot"],
+      "vi": ["khong_vien_tien", "hoc_khong_vien_tien", "tong_quat_nhiem_vu", "ky_thuat_prompt", "vai_vien"]
     },
-    "graph_rag": {
-      "en": [
-        "graph_rag",
-        "graph_augmented",
-        "knowledge_graph_retrieval",
-        "structured_rag",
-        "graph_based"
-      ],
-      "vi": [
-        "graph_rag",
-        "tang_cuong_graph",
-        "truy_xuat_do_thi_kien_thuc",
-        "rag_cau_truc",
-        "dua_graph"
-      ]
+    "in_context_learning": {
+      "en": ["in_context_learning", "contextual_learning", "prompt_learning", "meta_learning", "task_adaptation"],
+      "vi": ["hoc_trong_ngu_canh", "hoc_ngu_canh", "hoc_prompt", "meta_hoc", "thich_ung_nhiem_vu"]
     },
-    "explainability": {
-      "en": [
-        "explainability",
-        "xai",
-        "interpretable_ai",
-        "transparent_model",
-        "model_explanation"
-      ],
-      "vi": [
-        "giai_thich",
-        "xai",
-        "ai_giai_thich",
-        "mo_hinh_minh_bach",
-        "giai_thich_mo_hinh"
-      ]
+    "energy_efficient_ai": {
+      "en": ["energy_efficient_ai", "green_ai", "low_power_models", "sustainable_ai", "efficient_inference"],
+      "vi": ["ai_tiet_kiem_nang_luong", "ai_xanh", "mo_hinh_it_nang_luong", "ai_ben_vung", "suy_luan_hieu_qua"]
     },
-    "shap": {
-      "en": [
-        "shap",
-        "shapley_values",
-        "feature_importance",
-        "contribution_analysis",
-        "shap_explanation"
-      ],
-      "vi": [
-        "shap",
-        "gia_tri_shapley",
-        "tam_quan_trong_dac_trung",
-        "phan_tich_dong_gop",
-        "giai_thich_shap"
-      ]
+    "causal_inference": {
+      "en": ["causal_inference", "causal_modeling", "counterfactuals", "causal_learning", "effect_estimation"],
+      "vi": ["suy_luan_nhan_qua", "mo_hinh_nhan_qua", "phu_dinh", "hoc_nhan_qua", "uoc_tinh_hieu_qua"]
     },
-    "lime": {
-      "en": [
-        "lime",
-        "local_interpretable",
-        "model_agnostic",
-        "lime_explanation",
-        "instance_analysis"
-      ],
-      "vi": [
-        "lime",
-        "giai_thich_cuc_bo",
-        "doc_lap_mo_hinh",
-        "giai_thich_lime",
-        "phan_tich_the_hien"
-      ]
+    "continual_learning": {
+      "en": ["continual_learning", "lifelong_learning", "incremental_learning", "catastrophic_forgetting", "online_learning"],
+      "vi": ["hoc_lien_tuc", "hoc_suot_doi", "hoc_tang_tien", "quen_tham_khoc", "hoc_truc_tuyen"]
     },
-    "model_distillation": {
-      "en": [
-        "model_distillation",
-        "knowledge_distillation",
-        "student_teacher",
-        "compressed_model",
-        "distilled_ai"
-      ],
-      "vi": [
-        "chung_cat_mo_hinh",
-        "chung_cat_kien_thuc",
-        "hoc_tro_thay",
-        "mo_hinh_nen",
-        "ai_chung_cat"
-      ]
+    "sparse_models": {
+      "en": ["sparse_models", "sparsity", "pruned_models", "sparse_attention", "efficient_models"],
+      "vi": ["mo_hinh_thua_thot", "thua_thot", "mo_hinh_cat_tia", "chu_y_thua_thot", "mo_hinh_hieu_qua"]
     },
-    "mixture_of_experts": {
-      "en": [
-        "mixture_of_experts",
-        "moe_models",
-        "expert_routing",
-        "modular_ai",
-        "expert_mixture"
-      ],
-      "vi": [
-        "hon_hop_chuyen_gia",
-        "mo_hinh_moe",
-        "dinh_tuyen_chuyen_gia",
-        "ai_mo_dun",
-        "hon_hop_chuyen_gia"
-      ]
+    "ai_interpretability": {
+      "en": ["ai_interpretability", "interpretable_models", "model_transparency", "explainable_decisions", "black_box_insight"],
+      "vi": ["giai_thich_ai", "mo_hinh_giai_thich", "minh_bach_mo_hinh", "quyet_dinh_giai_thich", "hop_den_thau_hieu"]
     },
-    "federated_learning": {
-      "en": [
-        "federated_learning",
-        "decentralized_learning",
-        "fed_learn",
-        "collaborative_training",
-        "privacy_learning"
-      ],
-      "vi": [
-        "hoc_lien_hop",
-        "hoc_phan_tan",
-        "fed_learn",
-        "huan_luyen_hop_tac",
-        "hoc_bao_mat"
-      ]
+    "trustworthy_ai": {
+      "en": ["trustworthy_ai", "reliable_ai", "fairness", "accountable_ai", "ethical_ai"],
+      "vi": ["ai_dang_tin_cay", "ai_tin_cay", "cong_bang", "ai_trach_nhiem", "ai_dao_duc"]
     },
-    "ai_governance": {
-      "en": [
-        "ai_governance",
-        "govern_ai",
-        "regulatory_ai",
-        "policy_framework",
-        "oversight_ai"
-      ],
-      "vi": [
-        "quan_tri_ai",
-        "quan_ly_ai",
-        "quy_dinh_ai",
-        "khung_chinh_sach",
-        "giam_sat_ai"
-      ]
+    "adversarial_defense": {
+      "en": ["adversarial_defense", "defense_mechanisms", "robust_defense", "attack_mitigation", "secure_ai"],
+      "vi": ["phong_thu_doi_khang", "co_che_phong_thu", "phong_thu_ben_vung", "giam_tan_cong", "ai_an_toan"]
     },
-    "adversarial_training": {
-      "en": [
-        "adversarial_training",
-        "robust_training",
-        "attack_resistance",
-        "adversarial_robustness",
-        "defense_training"
-      ],
-      "vi": [
-        "huan_luyen_doi_khang",
-        "huan_luyen_ben_vung",
-        "khang_tan_cong",
-        "ben_vung_doi_khang",
-        "huan_luyen_phong_thu"
-      ]
+    "knowledge_distillation": {
+      "en": ["knowledge_distillation", "model_compression", "teacher_student", "distilled_models", "efficient_learning"],
+      "vi": ["chung_cat_kien_thuc", "nen_mo_hinh", "thay_hoc_tro", "mo_hinh_chung_cat", "hoc_hieu_qua"]
     },
-    "neurosymbolic": {
-      "en": [
-        "neurosymbolic",
-        "neural_symbolic",
-        "hybrid_ai",
-        "logic_neural",
-        "symbolic_learning"
-      ],
-      "vi": [
-        "than_kinh_bieu_tuong",
-        "than_kinh_bieu_tuong",
-        "ai_lai",
-        "logic_than_kinh",
-        "hoc_bieu_tuong"
-      ]
-    },
-    "overdose": {
-      "en": [
-        "overdose",
-        "od",
-        "o_d",
-        "too_much",
-        "over_dosing",
-        "drug_overdose",
-        "overloaded",
-        "excess_dose"
-      ],
-      "vi": [
-        "qua_lieu",
-        "od",
-        "o_d",
-        "qua_nhieu",
-        "qua_lieu_thuoc",
-        "qua_lieu_ma_tuy",
-        "qua_tai",
-        "lieu_thua"
-      ]
-    },
-    "withdrawal": {
-      "en": [
-        "withdrawal",
-        "cold_turkey",
-        "detox",
-        "withdrawing",
-        "quit_drugs",
-        "stopping",
-        "withdrawal_symptoms",
-        "abstinence"
-      ],
-      "vi": [
-        "cai_nghien",
-        "ngung_dot_ngot",
-        "giai_doc",
-        "rut_thuoc",
-        "bo_thuoc",
-        "dung_thuoc",
-        "trieu_chung_cai",
-        "kieng_thuoc"
-      ]
-    },
-    "alcohol_withdrawal": {
-      "en": [
-        "alcohol_withdrawal",
-        "dt",
-        "delirium_tremens",
-        "booze_withdrawal",
-        "quit_drinking",
-        "alcohol_detox",
-        "sobering",
-        "dry_out"
-      ],
-      "vi": [
-        "cai_ruou",
-        "dt",
-        "me_sang_ruou",
-        "ngung_ruou",
-        "bo_uong_ruou",
-        "giai_doc_ruou",
-        "tinh_tao",
-        "cai_kho"
-      ]
-    },
-    "benzo_withdrawal": {
-      "en": [
-        "benzo_withdrawal",
-        "benzos",
-        "xannies",
-        "benzo_detox",
-        "quit_benzos",
-        "benzo_stop",
-        "anxiety_pill_withdrawal",
-        "sedative_withdrawal"
-      ],
-      "vi": [
-        "cai_benzo",
-        "benzo",
-        "xannies",
-        "giai_doc_benzo",
-        "bo_benzo",
-        "dung_benzo",
-        "cai_thuoc_lo_au",
-        "cai_thuoc_an_than"
-      ]
-    },
-    "opioid_withdrawal": {
-      "en": [
-        "opioid_withdrawal",
-        "opiate_withdrawal",
-        "heroin_withdrawal",
-        "fentanyl_withdrawal",
-        "oxy_withdrawal",
-        "opioid_detox",
-        "dope_sick",
-        "kicking_habit"
-      ],
-      "vi": [
-        "cai_opioid",
-        "cai_thuoc_phien",
-        "cai_heroin",
-        "cai_fentanyl",
-        "cai_oxy",
-        "giai_doc_opioid",
-        "benh_nghien",
-        "cai_nghien"
-      ]
-    },
-    "stimulant_withdrawal": {
-      "en": [
-        "stimulant_withdrawal",
-        "meth_withdrawal",
-        "coke_withdrawal",
-        "amphetamine_withdrawal",
-        "adderall_withdrawal",
-        "stim_detox",
-        "crash",
-        "comedown"
-      ],
-      "vi": [
-        "cai_chat_kich_thich",
-        "cai_meth",
-        "cai_cocaine",
-        "cai_amphe",
-        "cai_adderall",
-        "giai_doc_kich_thich",
-        "sut_giam",
-        "ha_giam"
-      ]
-    },
-    "cannabis_withdrawal": {
-      "en": [
-        "cannabis_withdrawal",
-        "weed_withdrawal",
-        "marijuana_quit",
-        "thc_detox",
-        "pot_stop",
-        "cannabis_dependence",
-        "weed_sickness",
-        "cannabis_pause"
-      ],
-      "vi": [
-        "cai_can_sa",
-        "cai_co",
-        "bo_can_sa",
-        "giai_doc_thc",
-        "dung_co",
-        "nghien_can_sa",
-        "benh_co",
-        "tam_dung_can_sa"
-      ]
-    },
-    "hallucinogen_withdrawal": {
-      "en": [
-        "hallucinogen_withdrawal",
-        "psychedelic_withdrawal",
-        "lsd_withdrawal",
-        "mushroom_withdrawal",
-        "dmt_withdrawal",
-        "halluc_detox",
-        "trip_recovery",
-        "psyche_stop"
-      ],
-      "vi": [
-        "cai_chat_gay_ao",
-        "cai_thuoc_gay_ao",
-        "cai_lsd",
-        "cai_nam",
-        "cai_dmt",
-        "giai_doc_gay_ao",
-        "phuc_hoi_chuyen_di",
-        "dung_tam_than"
-      ]
-    },
-    "inhalant_withdrawal": {
-      "en": [
-        "inhalant_withdrawal",
-        "huffing_withdrawal",
-        "glue_withdrawal",
-        "paint_thinner_withdrawal",
-        "inhalant_detox",
-        "sniff_stop",
-        "inhalant_dependence",
-        "whippet_withdrawal"
-      ],
-      "vi": [
-        "cai_chat_hut",
-        "cai_hut",
-        "cai_keo",
-        "cai_son_mo",
-        "giai_doc_hut",
-        "dung_hut",
-        "nghien_hut",
-        "cai_whippet"
-      ]
-    },
-    "sedative_withdrawal": {
-      "en": [
-        "sedative_withdrawal",
-        "barbiturate_withdrawal",
-        "sleeping_pill_withdrawal",
-        "sed_detox",
-        "downer_withdrawal",
-        "barb_stop",
-        "sedative_dependence",
-        "tranq_withdrawal"
-      ],
-      "vi": [
-        "cai_thuoc_an_than",
-        "cai_barbiturate",
-        "cai_thuoc_ngu",
-        "giai_doc_an_than",
-        "cai_thuoc_ha",
-        "dung_barb",
-        "nghien_an_than",
-        "cai_tranq"
-      ]
-    },
-    "nicotine_withdrawal": {
-      "en": [
-        "nicotine_withdrawal",
-        "quit_smoking",
-        "vape_withdrawal",
-        "nic_detox",
-        "cigarette_stop",
-        "nicotine_dependence",
-        "nic_sickness",
-        "patch_withdrawal"
-      ],
-      "vi": [
-        "cai_nicotine",
-        "bo_hut_thuoc",
-        "cai_vape",
-        "giai_doc_nic",
-        "dung_thuoc_la",
-        "nghien_nicotine",
-        "benh_nic",
-        "cai_mieng_dan"
-      ]
-    },
-    "caffeine_withdrawal": {
-      "en": [
-        "caffeine_withdrawal",
-        "coffee_withdrawal",
-        "energy_drink_withdrawal",
-        "caff_detox",
-        "caffeine_stop",
-        "caffeine_dependence",
-        "caff_headache",
-        "decaf_switch"
-      ],
-      "vi": [
-        "cai_caffeine",
-        "cai_ca_phe",
-        "cai_nuoc_uong_nang_luong",
-        "giai_doc_caff",
-        "dung_caffeine",
-        "nghien_caffeine",
-        "dau_dau_caff",
-        "chuyen_decaf"
-      ]
-    },
-    "severe_withdrawal": {
-      "en": [
-        "severe_withdrawal",
-        "intense_symptoms",
-        "bad_withdrawal",
-        "withdrawal_crisis",
-        "extreme_detox",
-        "withdrawal_severity",
-        "high_risk_withdrawal",
-        "complicated_withdrawal"
-      ],
-      "vi": [
-        "cai_nghiem_trong",
-        "trieu_chung_manh",
-        "cai_xau",
-        "khung_hoang_cai",
-        "giai_doc_cuc_doan",
-        "do_nang_cai",
-        "cai_rui_ro_cao",
-        "cai_phuc_tap"
-      ]
-    },
-    "dt": {
-      "en": [
-        "dt",
-        "delirium_tremens",
-        "dts",
-        "alcohol_dt",
-        "severe_alcohol_withdrawal",
-        "dt_symptoms",
-        "dt_risk",
-        "dt_emergency"
-      ],
-      "vi": [
-        "dt",
-        "me_sang_ruou",
-        "dts",
-        "dt_ruou",
-        "cai_ruou_nang",
-        "trieu_chung_dt",
-        "rui_ro_dt",
-        "khẩn_dt"
-      ]
-    },
-    "seizure": {
-      "en": [
-        "seizure",
-        "convulsion",
-        "fit",
-        "epileptic_seizure",
-        "withdrawal_seizure",
-        "grand_mal",
-        "seizure_risk",
-        "seizure_emergency"
-      ],
-      "vi": [
-        "co_giat",
-        "co_giat",
-        "con_co",
-        "co_giat_dong_kinh",
-        "co_giat_cai",
-        "co_giat_lon",
-        "rui_ro_co_giat",
-        "khẩn_co_giat"
-      ]
-    },
-    "pregnancy_substances": {
-      "en": [
-        "pregnancy_substances",
-        "substance_pregnancy",
-        "drug_pregnancy",
-        "alcohol_pregnancy",
-        "smoking_pregnancy",
-        "opioid_pregnancy",
-        "fetal_risk",
-        "pregnancy_detox"
-      ],
-      "vi": [
-        "chat_thai_ky",
-        "chat_trong_thai_ky",
-        "ma_tuy_thai_ky",
-        "ruou_thai_ky",
-        "hut_thuoc_thai_ky",
-        "opioid_thai_ky",
-        "rui_ro_thai_nhi",
-        "giai_doc_thai_ky"
-      ]
-    },
-    "methadone_bupe": {
-      "en": [
-        "methadone_bupe",
-        "methadone",
-        "buprenorphine",
-        "mat",
-        "opioid_replacement",
-        "bupe_withdrawal",
-        "methadone_detox",
-        "maintenance_therapy"
-      ],
-      "vi": [
-        "methadone_bupe",
-        "methadone",
-        "buprenorphine",
-        "mat",
-        "thay_the_opioid",
-        "cai_bupe",
-        "giai_doc_methadone",
-        "lieu_phap_duy_tri"
-      ]
-    },
-    "suicidal_urges": {
-      "en": [
-        "suicidal_urges",
-        "suicide_thoughts",
-        "suicidal_ideation",
-        "want_to_die",
-        "end_it_all",
-        "self_harm_thoughts",
-        "suicide_risk",
-        "crisis_thoughts"
-      ],
-      "vi": [
-        "thuc_giuc_tu_tu",
-        "y_nghi_tu_tu",
-        "tuong_tuong_tu_tu",
-        "muon_chet",
-        "ket_thuc_tat_ca",
-        "y_nghi_tu_hai",
-        "rui_ro_tu_tu",
-        "y_nghi_khung_hoang"
-      ]
-    },
-    "caregiver_support": {
-      "en": [
-        "caregiver_support",
-        "supporter_help",
-        "caregiver_role",
-        "ally_support",
-        "helper_guidance",
-        "caregiver_resources",
-        "support_network",
-        "caregiver_burnout"
-      ],
-      "vi": [
-        "ho_tro_nguoi_cham_soc",
-        "ho_tro_nguoi_ung_ho",
-        "vai_tro_cham_soc",
-        "ho_tro_dong_minh",
-        "huong_dan_nguoi_giup",
-        "tai_nguyen_cham_soc",
-        "mang_ho_tro",
-        "met_moi_cham_soc"
-      ]
-    },
-    "partner_support": {
-      "en": [
-        "partner_support",
-        "spouse_help",
-        "partner_role",
-        "relationship_support",
-        "loved_one_guidance",
-        "partner_resources",
-        "couple_support",
-        "partner_burnout"
-      ],
-      "vi": [
-        "ho_tro_doi_tac",
-        "ho_tro_vo_chong",
-        "vai_tro_doi_tac",
-        "ho_tro_quan_he",
-        "huong_dan_nguoi_than",
-        "tai_nguyen_doi_tac",
-        "ho_tro_cap_doi",
-        "met_moi_doi_tac"
-      ]
-    },
-    "parent_support": {
-      "en": [
-        "parent_support",
-        "parent_help",
-        "parent_role",
-        "family_support",
-        "parent_guidance",
-        "parent_resources",
-        "parenting_support",
-        "parent_burnout"
-      ],
-      "vi": [
-        "ho_tro_cha_me",
-        "ho_tro_cha_me",
-        "vai_tro_cha_me",
-        "ho_tro_gia_dinh",
-        "huong_dan_cha_me",
-        "tai_nguyen_cha_me",
-        "ho_tro_lam_cha_me",
-        "met_moi_cha_me"
-      ]
-    },
-    "friend_support": {
-      "en": [
-        "friend_support",
-        "friend_help",
-        "friend_role",
-        "peer_support",
-        "friend_guidance",
-        "friend_resources",
-        "friend_network",
-        "friend_burnout"
-      ],
-      "vi": [
-        "ho_tro_ban_be",
-        "ho_tro_ban",
-        "vai_tro_ban_be",
-        "ho_tro_dong_nghiep",
-        "huong_dan_ban_be",
-        "tai_nguyen_ban_be",
-        "mang_ban_be",
-        "met_moi_ban_be"
-      ]
+    "ai_ethics_policy": {
+      "en": ["ai_ethics_policy", "ethical_guidelines", "responsible_ai", "ai_regulation", "policy_design"],
+      "vi": ["chinh_sach_dao_duc_ai", "huong_dan_dao_duc", "ai_co_trach_nhiem", "quy_dinh_ai", "thiet_ke_chinh_sach"]
     }
   },
   "entries": [
     {
-      "slug": "fine_tuning",
-      "title": { "en": "Fine Tuning", "vi": "Tinh Chỉnh" },
+      "slug": "self_supervised",
+      "title": { "en": "Self-Supervised Learning", "vi": "Học Tự Giám Sát" },
       "copy": {
-        "en": "Adapt models with data. Dare: try fine-tuning a small model.",
-        "vi": "Thích ứng mô hình với dữ liệu. Dám: thử tinh chỉnh mô hình nhỏ."
+        "en": "Train models with unlabeled data using self-supervised learning. Dare: Implement a contrastive loss function.",
+        "vi": "Huấn luyện mô hình với dữ liệu không nhãn bằng học tự giám sát. Dám: Triển khai hàm mất mát tương phản."
       },
       "attribution": "Best Practices / Thực hành tốt nhất",
       "tags": ["ai_literacy", "strategy"],
       "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "ai_literacy", "outcome": "plan_change" },
-      "artifact_id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
-      "artifact_version_id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "lora",
-      "title": { "en": "LoRA", "vi": "LoRA" },
-      "copy": {
-        "en": "Efficient tuning with adapters. Dare: implement LoRA on a model.",
-        "vi": "Tinh chỉnh hiệu quả với adapter. Dám: triển khai LoRA trên mô hình."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "strategy"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "ai_literacy", "outcome": "plan_change" },
-      "artifact_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
-      "artifact_version_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "quantization",
-      "title": { "en": "Quantization", "vi": "Lượng Tử Hóa" },
-      "copy": {
-        "en": "Compress models for speed. Dare: quantize a model to 8-bit.",
-        "vi": "Nén mô hình để tăng tốc. Dám: lượng tử hóa mô hình 8-bit."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "strategy"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "ai_literacy", "outcome": "plan_change" },
-      "artifact_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "artifact_version_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "rlhf",
-      "title": { "en": "RLHF", "vi": "RLHF" },
-      "copy": {
-        "en": "Align models with feedback. Dare: study RLHF techniques.",
-        "vi": "Căn chỉnh mô hình với phản hồi. Dám: nghiên cứu kỹ thuật RLHF."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "ethics"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "ai_literacy", "outcome": "plan_change" },
-      "artifact_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
-      "artifact_version_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "dpo",
-      "title": { "en": "DPO", "vi": "DPO" },
-      "copy": {
-        "en": "Optimize preferences directly. Dare: read DPO papers.",
-        "vi": "Tối ưu ưu tiên trực tiếp. Dám: đọc tài liệu DPO."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "ethics"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "ai_literacy", "outcome": "plan_change" },
-      "artifact_id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b",
-      "artifact_version_id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "multimodal",
-      "title": { "en": "Multimodal", "vi": "Đa Phương Thức" },
-      "copy": {
-        "en": "Combine inputs like text and image. Dare: experiment with multimodal models.",
-        "vi": "Kết hợp đầu vào như văn bản và hình ảnh. Dám: thử nghiệm mô hình đa phương thức."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "strategy"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "ai_literacy", "outcome": "plan_change" },
-      "artifact_id": "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c",
-      "artifact_version_id": "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "graph_rag",
-      "title": { "en": "Graph RAG", "vi": "Graph RAG" },
-      "copy": {
-        "en": "Use graphs for retrieval. Dare: build a graph RAG system.",
-        "vi": "Sử dụng graph cho truy xuất. Dám: xây dựng hệ thống graph RAG."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "strategy"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "ai_literacy", "outcome": "plan_change" },
-      "artifact_id": "a7b8c9d0-e1f2-4a3b-4c5d-6e7f8a9b0c1d",
-      "artifact_version_id": "a7b8c9d0-e1f2-4a3b-4c5d-6e7f8a9b0c1d-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "explainability",
-      "title": { "en": "Explainability", "vi": "Giải Thích" },
-      "copy": {
-        "en": "Understand AI decisions. Dare: use explainability tools.",
-        "vi": "Hiểu quyết định AI. Dám: sử dụng công cụ giải thích."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "ethics"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "ai_literacy", "outcome": "plan_change" },
-      "artifact_id": "b8c9d0e1-f2a3-4b4c-5d6e-7f8a9b0c1d2e",
-      "artifact_version_id": "b8c9d0e1-f2a3-4b4c-5d6e-7f8a9b0c1d2e-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "shap",
-      "title": { "en": "SHAP", "vi": "SHAP" },
-      "copy": {
-        "en": "Feature importance with SHAP. Dare: apply SHAP to a model.",
-        "vi": "Tầm quan trọng đặc trưng với SHAP. Dám: áp dụng SHAP cho mô hình."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "ethics"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "ai_literacy", "outcome": "plan_change" },
-      "artifact_id": "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f",
-      "artifact_version_id": "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "lime",
-      "title": { "en": "LIME", "vi": "LIME" },
-      "copy": {
-        "en": "Local explanations with LIME. Dare: use LIME on predictions.",
-        "vi": "Giải thích cục bộ với LIME. Dám: sử dụng LIME cho dự đoán."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "ethics"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "ai_literacy", "outcome": "plan_change" },
-      "artifact_id": "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a",
-      "artifact_version_id": "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "model_distillation",
-      "title": { "en": "Model Distillation", "vi": "Chưng Cất Mô Hình" },
-      "copy": {
-        "en": "Compress knowledge from large models. Dare: distill a teacher model.",
-        "vi": "Nén kiến thức từ mô hình lớn. Dám: chưng cất mô hình thầy."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "strategy"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "ai_literacy", "outcome": "plan_change" },
-      "artifact_id": "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b",
-      "artifact_version_id": "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "mixture_of_experts",
-      "title": { "en": "Mixture of Experts", "vi": "Hỗn Hợp Chuyên Gia" },
-      "copy": {
-        "en": "Route tasks to experts. Dare: build a MoE model.",
-        "vi": "Định tuyến nhiệm vụ cho chuyên gia. Dám: xây dựng mô hình MoE."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "strategy"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "ai_literacy", "outcome": "plan_change" },
-      "artifact_id": "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c",
-      "artifact_version_id": "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "federated_learning",
-      "title": { "en": "Federated Learning", "vi": "Học Liên Hợp" },
-      "copy": {
-        "en": "Train across devices privately. Dare: explore federated setups.",
-        "vi": "Huấn luyện qua thiết bị riêng tư. Dám: khám phá thiết lập liên hợp."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "privacy"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "ai_literacy", "outcome": "plan_change" },
-      "artifact_id": "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d",
-      "artifact_version_id": "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "ai_governance",
-      "title": { "en": "AI Governance", "vi": "Quản Trị AI" },
-      "copy": {
-        "en": "Regulate AI ethically. Dare: study governance frameworks.",
-        "vi": "Quy định AI đạo đức. Dám: nghiên cứu khung quản trị."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "ethics"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "ai_literacy", "outcome": "plan_change" },
-      "artifact_id": "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e",
-      "artifact_version_id": "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "adversarial_training",
-      "title": { "en": "Adversarial Training", "vi": "Huấn Luyện Đối Kháng" },
-      "copy": {
-        "en": "Build robust models. Dare: train against attacks.",
-        "vi": "Xây dựng mô hình bền vững. Dám: huấn luyện chống tấn công."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "strategy"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "ai_literacy", "outcome": "plan_change" },
-      "artifact_id": "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f",
-      "artifact_version_id": "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "neurosymbolic",
-      "title": { "en": "Neurosymbolic", "vi": "Thần Kinh Biểu Tượng" },
-      "copy": {
-        "en": "Combine neural and symbolic. Dare: explore neurosymbolic AI.",
-        "vi": "Kết hợp thần kinh và biểu tượng. Dám: khám phá AI thần kinh biểu tượng."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["ai_literacy", "strategy"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "ai_literacy", "outcome": "plan_change" },
-      "artifact_id": "d6e7f8a9-b0c1-4d2e-3f4a-5b6c7d8e9f0a",
-      "artifact_version_id": "d6e7f8a9-b0c1-4d2e-3f4a-5b6c7d8e9f0a-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "overdose",
-      "title": { "en": "Overdose", "vi": "Quá Liều" },
-      "copy": {
-        "en": "Overdose is serious; get urgent care. Dare: Call emergency now.",
-        "vi": "Quá liều nghiêm trọng; đi cấp cứu. Dám: Gọi khẩn cấp ngay."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["crisis", "mental_health"],
-      "urgency": "immediate",
-      "severity_level": 5,
-      "systems": ["mental_health"],
-      "metadata": {
-        "topic": "safety",
-        "outcome": "seek_help",
-        "flags": ["crisis"]
-      },
-      "artifact_id": "e7f8a9b0-c1d2-4e3f-4a5b-6c7d8e9f0a1b",
-      "artifact_version_id": "e7f8a9b0-c1d2-4e3f-4a5b-6c7d8e9f0a1b-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "withdrawal",
-      "title": { "en": "Withdrawal", "vi": "Cai Nghiện" },
-      "copy": {
-        "en": "Withdrawal can be tough; seek help. Dare: Consult doctor.",
-        "vi": "Cai nghiện có thể khó; tìm giúp. Dám: Tham khảo bác sĩ."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["crisis", "mental_health"],
-      "urgency": "soon",
-      "severity_level": 4,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "safety", "outcome": "seek_help" },
-      "artifact_id": "f8a9b0c1-d2e3-4f4a-5b6c-7d8e9f0a1b2c",
-      "artifact_version_id": "f8a9b0c1-d2e3-4f4a-5b6c-7d8e9f0a1b2c-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "alcohol_withdrawal",
-      "title": { "en": "Alcohol Withdrawal", "vi": "Cai Rượu" },
-      "copy": {
-        "en": "Alcohol withdrawal needs care. Dare: Get medical help.",
-        "vi": "Cai rượu cần chăm sóc. Dám: Tìm giúp y tế."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["crisis", "mental_health"],
-      "urgency": "soon",
-      "severity_level": 4,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "safety", "outcome": "seek_help" },
-      "artifact_id": "a9b0c1d2-e3f4-4a5b-6c7d-8e9f0a1b2c3d",
-      "artifact_version_id": "a9b0c1d2-e3f4-4a5b-6c7d-8e9f0a1b2c3d-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "benzo_withdrawal",
-      "title": { "en": "Benzo Withdrawal", "vi": "Cai Benzo" },
-      "copy": {
-        "en": "Benzo withdrawal is risky; seek help. Dare: Call doctor.",
-        "vi": "Cai benzo rủi ro; tìm giúp. Dám: Gọi bác sĩ."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["crisis", "mental_health"],
-      "urgency": "immediate",
-      "severity_level": 5,
-      "systems": ["mental_health"],
-      "metadata": {
-        "topic": "safety",
-        "outcome": "seek_help",
-        "flags": ["crisis"]
-      },
-      "artifact_id": "b0c1d2e3-f4a5-4b6c-7d8e-9f0a1b2c3d4e",
-      "artifact_version_id": "b0c1d2e3-f4a5-4b6c-7d8e-9f0a1b2c3d4e-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "opioid_withdrawal",
-      "title": { "en": "Opioid Withdrawal", "vi": "Cai Opioid" },
-      "copy": {
-        "en": "Opioid withdrawal needs support. Dare: Seek medical aid.",
-        "vi": "Cai opioid cần hỗ trợ. Dám: Tìm giúp y tế."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["crisis", "mental_health"],
-      "urgency": "soon",
-      "severity_level": 4,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "safety", "outcome": "seek_help" },
-      "artifact_id": "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f",
-      "artifact_version_id": "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "stimulant_withdrawal",
-      "title": { "en": "Stimulant Withdrawal", "vi": "Cai Kích Thích" },
-      "copy": {
-        "en": "Stimulant withdrawal can be hard. Dare: Get help.",
-        "vi": "Cai kích thích có thể khó. Dám: Tìm giúp."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["crisis", "mental_health"],
-      "urgency": "soon",
       "severity_level": 3,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "safety", "outcome": "seek_help" },
-      "artifact_id": "d2e3f4a5-b6c7-4d8e-9f0a-1b2c3d4e5f6a",
-      "artifact_version_id": "d2e3f4a5-b6c7-4d8e-9f0a-1b2c3d4e5f6a-v001",
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+      "artifact_version_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f-v001",
       "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
+      "updated_at": "2025-10-20T17:49:00+09:00"
     },
     {
-      "slug": "cannabis_withdrawal",
-      "title": { "en": "Cannabis Withdrawal", "vi": "Cai Can Sa" },
+      "slug": "graph_neural_networks",
+      "title": { "en": "Graph Neural Networks", "vi": "Mạng Nơ-ron Đồ Thị" },
       "copy": {
-        "en": "Cannabis withdrawal symptoms pass. Dare: Seek support.",
-        "vi": "Triệu chứng cai can sa sẽ qua. Dám: Tìm hỗ trợ."
+        "en": "Model relational data with GNNs. Dare: Build a GNN for node classification.",
+        "vi": "Mô hình hóa dữ liệu quan hệ với GNN. Dám: Xây dựng GNN cho phân loại nút."
       },
       "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["crisis", "mental_health"],
+      "tags": ["ai_literacy", "strategy"],
       "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "safety", "outcome": "seek_help" },
-      "artifact_id": "e3f4a5b6-c7d8-4e9f-0a1b-2c3d4e5f6a7b",
-      "artifact_version_id": "e3f4a5b6-c7d8-4e9f-0a1b-2c3d4e5f6a7b-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "hallucinogen_withdrawal",
-      "title": { "en": "Hallucinogen Withdrawal", "vi": "Cai Gây Ảo" },
-      "copy": {
-        "en": "Hallucinogen withdrawal varies. Dare: Consult expert.",
-        "vi": "Cai gây ảo đa dạng. Dám: Tham khảo chuyên gia."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["crisis", "mental_health"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "safety", "outcome": "seek_help" },
-      "artifact_id": "f4a5b6c7-d8e9-4f0a-1b2c-3d4e5f6a7b8c",
-      "artifact_version_id": "f4a5b6c7-d8e9-4f0a-1b2c-3d4e5f6a7b8c-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "inhalant_withdrawal",
-      "title": { "en": "Inhalant Withdrawal", "vi": "Cai Hút" },
-      "copy": {
-        "en": "Inhalant withdrawal needs care. Dare: Get medical help.",
-        "vi": "Cai hút cần chăm sóc. Dám: Tìm giúp y tế."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["crisis", "mental_health"],
-      "urgency": "soon",
       "severity_level": 3,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "safety", "outcome": "seek_help" },
-      "artifact_id": "a5b6c7d8-e9f0-4a1b-2c3d-4e5f6a7b8c9d",
-      "artifact_version_id": "a5b6c7d8-e9f0-4a1b-2c3d-4e5f6a7b8c9d-v001",
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "4d5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8a",
+      "artifact_version_id": "4d5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8a-v001",
       "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
+      "updated_at": "2025-10-20T17:49:00+09:00"
     },
     {
-      "slug": "sedative_withdrawal",
-      "title": { "en": "Sedative Withdrawal", "vi": "Cai An Thần" },
+      "slug": "diffusion_models",
+      "title": { "en": "Diffusion Models", "vi": "Mô Hình Khuyếch Tán" },
       "copy": {
-        "en": "Sedative withdrawal is risky. Dare: Seek urgent care.",
-        "vi": "Cai an thần rủi ro. Dám: Đi cấp cứu."
+        "en": "Generate data with diffusion models via denoising. Dare: Train a diffusion model for image synthesis.",
+        "vi": "Tạo dữ liệu với mô hình khuyếch tán qua làm sạch. Dám: Huấn luyện mô hình khuyếch tán cho tổng hợp hình ảnh."
       },
       "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["crisis", "mental_health"],
-      "urgency": "immediate",
-      "severity_level": 5,
-      "systems": ["mental_health"],
-      "metadata": {
-        "topic": "safety",
-        "outcome": "seek_help",
-        "flags": ["crisis"]
-      },
-      "artifact_id": "b6c7d8e9-f0a1-4b2c-3d4e-5f6a7b8c9d0e",
-      "artifact_version_id": "b6c7d8e9-f0a1-4b2c-3d4e-5f6a7b8c9d0e-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "nicotine_withdrawal",
-      "title": { "en": "Nicotine Withdrawal", "vi": "Cai Nicotine" },
-      "copy": {
-        "en": "Nicotine withdrawal can be managed. Dare: Find support.",
-        "vi": "Cai nicotine có thể quản lý. Dám: Tìm hỗ trợ."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["crisis", "mental_health"],
+      "tags": ["ai_literacy", "strategy"],
       "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "safety", "outcome": "seek_help" },
-      "artifact_id": "c7d8e9f0-a1b2-4c3d-4e5f-6a7b8c9d0e1f",
-      "artifact_version_id": "c7d8e9f0-a1b2-4c3d-4e5f-6a7b8c9d0e1f-v001",
+      "severity_level": 4,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "5e6f7a8b-9c0d-4e1f-2a3b-4c5d6e7f8a9b",
+      "artifact_version_id": "5e6f7a8b-9c0d-4e1f-2a3b-4c5d6e7f8a9b-v001",
       "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
+      "updated_at": "2025-10-20T17:49:00+09:00"
     },
     {
-      "slug": "caffeine_withdrawal",
-      "title": { "en": "Caffeine Withdrawal", "vi": "Cai Caffeine" },
+      "slug": "transformer_evolution",
+      "title": { "en": "Transformer Evolution", "vi": "Tiến Hóa Transformer" },
       "copy": {
-        "en": "Caffeine withdrawal passes. Dare: Reduce intake slowly.",
-        "vi": "Cai caffeine sẽ qua. Dám: Giảm dần lượng dùng."
+        "en": "Explore advanced transformer architectures. Dare: Implement a sparse attention mechanism.",
+        "vi": "Khám phá kiến trúc transformer nâng cao. Dám: Triển khai cơ chế chú ý thưa thớt."
       },
       "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["crisis", "mental_health"],
+      "tags": ["ai_literacy", "strategy"],
       "urgency": "routine",
-      "severity_level": 1,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "safety", "outcome": "plan_change" },
-      "artifact_id": "d8e9f0a1-b2c3-4d4e-5f6a-7b8c9d0e1f2a",
-      "artifact_version_id": "d8e9f0a1-b2c3-4d4e-5f6a-7b8c9d0e1f2a-v001",
+      "severity_level": 4,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "6f7a8b9c-0d1e-4f2a-3b4c-5d6e7f8a9b0c",
+      "artifact_version_id": "6f7a8b9c-0d1e-4f2a-3b4c-5d6e7f8a9b0c-v001",
       "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
+      "updated_at": "2025-10-20T17:49:00+09:00"
     },
     {
-      "slug": "severe_withdrawal",
-      "title": { "en": "Severe Withdrawal", "vi": "Cai Nghiêm Trọng" },
+      "slug": "ai_safety",
+      "title": { "en": "AI Safety", "vi": "An Toàn AI" },
       "copy": {
-        "en": "Severe symptoms need care. Dare: Get urgent help.",
-        "vi": "Triệu chứng nghiêm trọng cần chăm sóc. Dám: Tìm giúp khẩn."
+        "en": "Ensure AI systems are safe and aligned. Dare: Design a safety protocol for an AI model.",
+        "vi": "Đảm bảo hệ thống AI an toàn và căn chỉnh. Dám: Thiết kế giao thức an toàn cho mô hình AI."
       },
       "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["crisis", "mental_health"],
-      "urgency": "immediate",
-      "severity_level": 5,
-      "systems": ["mental_health"],
-      "metadata": {
-        "topic": "safety",
-        "outcome": "seek_help",
-        "flags": ["crisis"]
-      },
-      "artifact_id": "e9f0a1b2-c3d4-4e5f-6a7b-8c9d0e1f2a3b",
-      "artifact_version_id": "e9f0a1b2-c3d4-4e5f-6a7b-8c9d0e1f2a3b-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "dt",
-      "title": { "en": "DT", "vi": "DT" },
-      "copy": {
-        "en": "Delirium tremens is dangerous. Dare: Seek emergency care.",
-        "vi": "Mê sảng rượu nguy hiểm. Dám: Đi cấp cứu."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["crisis", "mental_health"],
-      "urgency": "immediate",
-      "severity_level": 5,
-      "systems": ["mental_health"],
-      "metadata": {
-        "topic": "safety",
-        "outcome": "seek_help",
-        "flags": ["crisis"]
-      },
-      "artifact_id": "f0a1b2c3-d4e5-4f6a-7b8c-9d0e1f2a3b4c",
-      "artifact_version_id": "f0a1b2c3-d4e5-4f6a-7b8c-9d0e1f2a3b4c-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "seizure",
-      "title": { "en": "Seizure", "vi": "Co Giật" },
-      "copy": {
-        "en": "Seizures need immediate medical care. Dare: Call emergency services now.",
-        "vi": "Co giật cần chăm sóc y tế khẩn cấp. Dám: Gọi dịch vụ khẩn cấp."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["crisis", "mental_health"],
-      "urgency": "immediate",
-      "severity_level": 5,
-      "systems": ["mental_health"],
-      "metadata": {
-        "topic": "safety",
-        "outcome": "seek_help",
-        "flags": ["crisis"]
-      },
-      "artifact_id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
-      "artifact_version_id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "pregnancy_substances",
-      "title": { "en": "Pregnancy Substances", "vi": "Chất Thai Kỳ" },
-      "copy": {
-        "en": "Stop substance use in pregnancy; get help. Dare: Call doctor now.",
-        "vi": "Ngừng dùng chất trong thai kỳ; tìm giúp. Dám: Gọi bác sĩ ngay."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["crisis", "mental_health"],
-      "urgency": "immediate",
-      "severity_level": 5,
-      "systems": ["mental_health"],
-      "metadata": {
-        "topic": "safety",
-        "outcome": "seek_help",
-        "flags": ["crisis"]
-      },
-      "artifact_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
-      "artifact_version_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "methadone_bupe",
-      "title": { "en": "Methadone Bupe", "vi": "Methadone Bupe" },
-      "copy": {
-        "en": "Seek urgent care for methadone/bupe issues. Dare: Contact specialist now.",
-        "vi": "Tìm chăm sóc khẩn cấp cho vấn đề methadone/bupe. Dám: Liên hệ chuyên gia."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["crisis", "mental_health"],
-      "urgency": "immediate",
-      "severity_level": 5,
-      "systems": ["mental_health"],
-      "metadata": {
-        "topic": "safety",
-        "outcome": "seek_help",
-        "flags": ["crisis"]
-      },
-      "artifact_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "artifact_version_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "suicidal_urges",
-      "title": { "en": "Suicidal Urges", "vi": "Thúc Giục Tự Tử" },
-      "copy": {
-        "en": "If suicidal urges arise, seek urgent help. Dare: Call crisis hotline.",
-        "vi": "Nếu có thúc giục tự tử, tìm giúp khẩn cấp. Dám: Gọi đường dây nóng."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["crisis", "mental_health"],
-      "urgency": "immediate",
-      "severity_level": 5,
-      "systems": ["mental_health"],
-      "metadata": {
-        "topic": "safety",
-        "outcome": "seek_help",
-        "flags": ["crisis"]
-      },
-      "artifact_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
-      "artifact_version_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a-v001",
-      "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
-    },
-    {
-      "slug": "caregiver_support",
-      "title": { "en": "Caregiver Support", "vi": "Hỗ Trợ Người Chăm Sóc" },
-      "copy": {
-        "en": "Support caregivers with AI-driven resources. Dare: Share a caregiver tool.",
-        "vi": "Hỗ trợ người chăm sóc với tài nguyên AI. Dám: Chia sẻ công cụ chăm sóc."
-      },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["caregiver", "support"],
+      "tags": ["ai_literacy", "ethics"],
       "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "caregiver", "outcome": "support" },
-      "artifact_id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b",
-      "artifact_version_id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b-v001",
+      "severity_level": 4,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "7a8b9c0d-1e2f-4a3b-4c5d-6e7f8a9b0c1d",
+      "artifact_version_id": "7a8b9c0d-1e2f-4a3b-4c5d-6e7f8a9b0c1d-v001",
       "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
+      "updated_at": "2025-10-20T17:49:00+09:00"
     },
     {
-      "slug": "partner_support",
-      "title": { "en": "Partner Support", "vi": "Hỗ Trợ Đối Tác" },
+      "slug": "zero_shot",
+      "title": { "en": "Zero-Shot Learning", "vi": "Học Không Viên Tiên" },
       "copy": {
-        "en": "Assist partners with AI support tools. Dare: Provide partner guidance.",
-        "vi": "Hỗ trợ đối tác với công cụ AI. Dám: Cung cấp hướng dẫn đối tác."
+        "en": "Enable models for new tasks without training. Dare: Craft a zero-shot prompt for a language model.",
+        "vi": "Cho phép mô hình thực hiện nhiệm vụ mới không cần huấn luyện. Dám: Tạo prompt không viên tiên cho mô hình ngôn ngữ."
       },
       "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["caregiver", "support"],
+      "tags": ["ai_literacy", "strategy"],
       "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "support", "outcome": "support" },
-      "artifact_id": "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c",
-      "artifact_version_id": "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c-v001",
+      "severity_level": 3,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "8b9c0d1e-2f3a-4b4c-5d6e-7f8a9b0c1d2e",
+      "artifact_version_id": "8b9c0d1e-2f3a-4b4c-5d6e-7f8a9b0c1d2e-v001",
       "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
+      "updated_at": "2025-10-20T17:49:00+09:00"
     },
     {
-      "slug": "parent_support",
-      "title": { "en": "Parent Support", "vi": "Hỗ Trợ Cha Mẹ" },
+      "slug": "in_context_learning",
+      "title": { "en": "In-Context Learning", "vi": "Học Trong Ngữ Cảnh" },
       "copy": {
-        "en": "Guide parents with AI-driven resources. Dare: Share parenting tool.",
-        "vi": "Hướng dẫn cha mẹ với tài nguyên AI. Dám: Chia sẻ công cụ cha mẹ."
+        "en": "Leverage in-context learning for task adaptation. Dare: Design prompts for a specific task.",
+        "vi": "Tận dụng học trong ngữ cảnh để thích ứng nhiệm vụ. Dám: Thiết kế prompt cho nhiệm vụ cụ thể."
       },
       "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["caregiver", "support"],
+      "tags": ["ai_literacy", "strategy"],
       "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "caregiver", "outcome": "support" },
-      "artifact_id": "a7b8c9d0-e1f2-4a3b-4c5d-6e7f8a9b0c1d",
-      "artifact_version_id": "a7b8c9d0-e1f2-4a3b-4c5d-6e7f8a9b0c1d-v001",
+      "severity_level": 3,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "9c0d1e2f-3a4b-4c5d-6e7f-8a9b0c1d2e3f",
+      "artifact_version_id": "9c0d1e2f-3a4b-4c5d-6e7f-8a9b0c1d2e3f-v001",
       "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
+      "updated_at": "2025-10-20T17:49:00+09:00"
     },
     {
-      "slug": "friend_support",
-      "title": { "en": "Friend Support", "vi": "Hỗ Trợ Bạn Bè" },
+      "slug": "energy_efficient_ai",
+      "title": { "en": "Energy-Efficient AI", "vi": "AI Tiết Kiệm Năng Lượng" },
       "copy": {
-        "en": "Support friends with AI-driven tools. Dare: Share a friend resource.",
-        "vi": "Hỗ trợ bạn bè với công cụ AI. Dám: Chia sẻ tài nguyên bạn bè."
+        "en": "Optimize AI for low energy use. Dare: Test a model with energy-efficient inference.",
+        "vi": "Tối ưu AI cho sử dụng năng lượng thấp. Dám: Thử mô hình với suy luận tiết kiệm năng lượng."
       },
       "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["caregiver", "support"],
+      "tags": ["ai_literacy", "strategy"],
       "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["mental_health"],
-      "metadata": { "topic": "support", "outcome": "support" },
-      "artifact_id": "b8c9d0e1-f2a3-4b4c-5d6e-7f8a9b0c1d2e",
-      "artifact_version_id": "b8c9d0e1-f2a3-4b4c-5d6e-7f8a9b0c1d2e-v001",
+      "severity_level": 3,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "0d1e2f3a-4b5c-4d6e-7f8a-9b0c1d2e3f4a",
+      "artifact_version_id": "0d1e2f3a-4b5c-4d6e-7f8a-9b0c1d2e3f4a-v001",
       "created_at": "2025-10-04T12:08:00+07:00",
-      "updated_at": "2025-10-04T12:08:00+07:00"
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "causal_inference",
+      "title": { "en": "Causal Inference", "vi": "Suy Luận Nhân Quả" },
+      "copy": {
+        "en": "Model cause-effect with causal inference. Dare: Estimate effects in a dataset.",
+        "vi": "Mô hình nhân quả với suy luận nhân quả. Dám: Ước tính hiệu quả trong tập dữ liệu."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "strategy"],
+      "urgency": "routine",
+      "severity_level": 4,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "1e2f3a4b-5c6d-4e7f-8a9b-0c1d2e3f4a5b",
+      "artifact_version_id": "1e2f3a4b-5c6d-4e7f-8a9b-0c1d2e3f4a5b-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "continual_learning",
+      "title": { "en": "Continual Learning", "vi": "Học Liên Tục" },
+      "copy": {
+        "en": "Prevent catastrophic forgetting with continual learning. Dare: Implement an incremental learning system.",
+        "vi": "Ngăn quên thảm khốc với học liên tục. Dám: Triển khai hệ thống học tăng tiến."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "strategy"],
+      "urgency": "routine",
+      "severity_level": 4,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "2f3a4b5c-6d7e-4f8a-9b0c-1d2e3f4a5b6c",
+      "artifact_version_id": "2f3a4b5c-6d7e-4f8a-9b0c-1d2e3f4a5b6c-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "sparse_models",
+      "title": { "en": "Sparse Models", "vi": "Mô Hình Thưa Thớt" },
+      "copy": {
+        "en": "Build efficient sparse models. Dare: Prune a neural network for sparsity.",
+        "vi": "Xây dựng mô hình thưa thớt hiệu quả. Dám: Cắt tỉa mạng nơ-ron cho thưa thớt."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "strategy"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "3a4b5c6d-7e8f-4a9b-0c1d-2e3f4a5b6c7d",
+      "artifact_version_id": "3a4b5c6d-7e8f-4a9b-0c1d-2e3f4a5b6c7d-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "ai_interpretability",
+      "title": { "en": "AI Interpretability", "vi": "Giải Thích AI" },
+      "copy": {
+        "en": "Enhance transparency with interpretable models. Dare: Apply an interpretability technique to a model.",
+        "vi": "Tăng cường minh bạch với mô hình giải thích được. Dám: Áp dụng kỹ thuật giải thích cho mô hình."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "ethics"],
+      "urgency": "routine",
+      "severity_level": 4,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "4b5c6d7e-8f9a-4b0c-1d2e-3f4a5b6c7d8e",
+      "artifact_version_id": "4b5c6d7e-8f9a-4b0c-1d2e-3f4a5b6c7d8e-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "trustworthy_ai",
+      "title": { "en": "Trustworthy AI", "vi": "AI Đáng Tin Cậy" },
+      "copy": {
+        "en": "Develop fair and accountable AI systems. Dare: Audit a model for bias.",
+        "vi": "Phát triển hệ thống AI công bằng và có trách nhiệm. Dám: Kiểm tra mô hình tìm thiên kiến."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "ethics"],
+      "urgency": "routine",
+      "severity_level": 4,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "5c6d7e8f-9a0b-4c1d-2e3f-4a5b6c7d8e9f",
+      "artifact_version_id": "5c6d7e8f-9a0b-4c1d-2e3f-4a5b6c7d8e9f-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "adversarial_defense",
+      "title": { "en": "Adversarial Defense", "vi": "Phòng Thủ Đối Kháng" },
+      "copy": {
+        "en": "Strengthen models against attacks. Dare: Implement a defense mechanism.",
+        "vi": "Tăng cường mô hình chống tấn công. Dám: Triển khai cơ chế phòng thủ."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "strategy"],
+      "urgency": "routine",
+      "severity_level": 4,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "6d7e8f9a-0b1c-4d2e-3f4a-5b6c7d8e9f0a",
+      "artifact_version_id": "6d7e8f9a-0b1c-4d2e-3f4a-5b6c7d8e9f0a-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "knowledge_distillation",
+      "title": { "en": "Knowledge Distillation", "vi": "Chưng Cất Kiến Thức" },
+      "copy": {
+        "en": "Compress models via knowledge distillation. Dare: Train a student model from a teacher.",
+        "vi": "Nén mô hình qua chưng cất kiến thức. Dám: Huấn luyện mô hình học trò từ thầy."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "strategy"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "7e8f9a0b-1c2d-4e3f-4a5b-6c7d8e9f0a1b",
+      "artifact_version_id": "7e8f9a0b-1c2d-4e3f-4a5b-6c7d8e9f0a1b-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
+    },
+    {
+      "slug": "ai_ethics_policy",
+      "title": { "en": "AI Ethics Policy", "vi": "Chính Sách Đạo Đức AI" },
+      "copy": {
+        "en": "Craft policies for responsible AI use. Dare: Propose an ethical guideline for a project.",
+        "vi": "Soạn thảo chính sách cho sử dụng AI có trách nhiệm. Dám: Đề xuất hướng dẫn đạo đức cho dự án."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["ai_literacy", "ethics"],
+      "urgency": "routine",
+      "severity_level": 4,
+      "systems": ["ai_tech"],
+      "metadata": { "topic": "ai", "outcome": "learn" },
+      "artifact_id": "8f9a0b1c-2d3e-4f4a-5b6c-7d8e9f0a1b2c",
+      "artifact_version_id": "8f9a0b1c-2d3e-4f4a-5b6c-7d8e9f0a1b2c-v001",
+      "created_at": "2025-10-04T12:08:00+07:00",
+      "updated_at": "2025-10-20T17:49:00+09:00"
     }
   ],
   "room_essay": {
     "format": "markdown",
-    "en": "# Using Your Advanced AI and Mental Health Room\n\nThis room combines entries on AI topics and mental health support. AI entries like fine tuning, lora, and quantization help you learn how to work with models. Mental health entries like overdose, withdrawal, and suicidal urges offer guidance for tough times. They connect because AI can support health, but health comes first. Start with AI entries if you want to learn tech, or health entries if you need help now.\n\nResearch tasks are good for more details. Use them to find tutorials on AI concepts like rlhf or dpo. Or search for local hotlines for withdrawal or dt. Do this when you feel ready. Spend time reading reliable sources. Take notes on what you learn to remember better. For AI, look up examples or code. For health, find support groups or doctors.\n\nTo decide on using this room, think about go or no-go. If you're interested in AI but feeling low, it might be a go for learning as a distraction. If symptoms like severe withdrawal are strong, no-go on AI—focus on health first. Check if you're safe to learn. If not, seek help as in crisis entries.\n\nEthics, privacy, and safety are key. In AI, think about explainability with shap or lime to understand decisions. Protect data in federated learning. For health, keep info private. The room reminds you this isn't medical advice. If in danger, use crisis footer to call help. Avoid mixing substances or sudden stops without a doctor.\n\nNext steps could include reading one AI entry and trying a small task, like studying multimodal. For health, call a hotline if needed. Talk to a friend or caregiver using support entries. Practice breathing if stressed. These steps can help you learn and feel better.\n\nWord count: 548",
-    "vi": "# Sử Dụng Phòng AI Nâng Cao và Sức Khỏe Tinh Thần\n\nPhòng này kết hợp các mục về chủ đề AI và hỗ trợ sức khỏe tinh thần. Các mục AI như tinh chỉnh, lora và lượng tử hóa giúp bạn học cách làm việc với mô hình. Các mục sức khỏe tinh thần như quá liều, cai nghiện và thúc giục tự tử cung cấp hướng dẫn cho lúc khó khăn. Chúng kết nối vì AI có thể hỗ trợ sức khỏe, nhưng sức khỏe ưu tiên. Bắt đầu với mục AI nếu muốn học công nghệ, hoặc mục sức khỏe nếu cần giúp ngay.\n\nNhiệm vụ nghiên cứu tốt cho thêm chi tiết. Sử dụng để tìm hướng dẫn về khái niệm AI như rlhf hoặc dpo. Hoặc tìm đường dây nóng địa phương cho cai nghiện hoặc dt. Làm khi bạn cảm thấy sẵn sàng. Dành thời gian đọc nguồn đáng tin. Ghi chép những gì học để nhớ tốt hơn. Với AI, tìm ví dụ hoặc mã. Với sức khỏe, tìm nhóm hỗ trợ hoặc bác sĩ.\n\nĐể quyết định sử dụng phòng, nghĩ về đi hay không đi. Nếu quan tâm AI nhưng cảm thấy thấp, có thể đi để học làm phân tâm. Nếu triệu chứng như cai nghiêm trọng mạnh, không đi với AI—tập trung sức khỏe trước. Kiểm tra xem bạn có an toàn để học không. Nếu không, tìm giúp như trong mục khủng hoảng.\n\nĐạo đức, quyền riêng tư và an toàn là chính. Trong AI, nghĩ về giải thích với shap hoặc lime để hiểu quyết định. Bảo vệ dữ liệu trong học liên hợp. Với sức khỏe, giữ thông tin riêng tư. Phòng nhắc bạn đây không phải lời khuyên y tế. Nếu nguy hiểm, dùng chân trang khủng hoảng để gọi giúp. Tránh trộn chất hoặc dừng đột ngột mà không có bác sĩ.\n\nCác bước tiếp theo có thể bao gồm đọc một mục AI và thử nhiệm vụ nhỏ, như học đa phương thức. Với sức khỏe, gọi đường dây nóng nếu cần. Nói chuyện với bạn bè hoặc người chăm sóc dùng mục hỗ trợ. Thực hành thở nếu căng thẳng. Những bước này có thể giúp bạn học và cảm thấy tốt hơn.\n\nSố từ: 556",
-    "word_count_en": 548,
-    "word_count_vi": 556,
-    "updated_at": "2025-10-10T00:00:00Z"
+    "en": "# Diving into Cutting-Edge AI\n\nThis room explores advanced AI frontiers like self-supervised learning, diffusion models, and AI safety. Use entries to delve into emerging techniques such as graph neural networks or continual learning. Start with accessible topics like zero-shot learning or dive into complex ones like transformer evolution. Connect ideas, e.g., using AI ethics policy with trustworthy AI for responsible deployment.\n\nResearch tasks amplify learning. Search 'diffusion model tutorial' or 'GNN code example' to find cutting-edge resources. Take notes to track insights. Experiment with small projects, like a zero-shot classifier or a sparse model.\n\nFor go or no-go, evaluate your readiness. If excited about causal inference, go—build a small model. If overwhelmed, no-go—start with in-context learning. Ensure learning aligns with your capacity.\n\nEthics and privacy are paramount. Use interpretability tools to understand models. Prioritize fairness with trustworthy AI. Consult experts for critical applications.\n\nNext steps: Read an entry like 'ai_safety,' then draft a safety protocol. Code a small GNN project. Reflect on ethical impacts weekly.\n\nWord count: 248",
+    "vi": "# Khám Phá AI Tiên Tiến\n\nPhòng này khám phá các biên giới AI như học tự giám sát, mô hình khuyếch tán và an toàn AI. Sử dụng mục để tìm hiểu kỹ thuật mới như mạng nơ-ron đồ thị hoặc học liên tục. Bắt đầu với chủ đề dễ tiếp cận như học không viên tiên hoặc đi sâu vào phức tạp như tiến hóa transformer. Kết nối ý tưởng, ví dụ, dùng chính sách đạo đức AI với AI đáng tin cậy để triển khai có trách nhiệm.\n\nNhiệm vụ nghiên cứu nâng cao học tập. Tìm 'hướng dẫn mô hình khuyếch tán' hoặc 'ví dụ mã GNN' để khám phá tài nguyên tiên tiến. Ghi chép để theo dõi thông tin. Thử nghiệm dự án nhỏ, như bộ phân loại không viên tiên hoặc mô hình thưa thớt.\n\nĐể đi hay không, đánh giá sự sẵn sàng. Nếu hào hứng về suy luận nhân quả, đi—xây mô hình nhỏ. Nếu choáng ngợp, không đi—bắt đầu với học trong ngữ cảnh. Đảm bảo học phù hợp năng lực.\n\nĐạo đức và quyền riêng tư là tối quan trọng. Sử dụng công cụ giải thích để hiểu mô hình. Ưu tiên công bằng với AI đáng tin cậy. Tham khảo chuyên gia cho ứng dụng quan trọng.\n\nBước tiếp theo: Đọc mục như 'an_toan_ai,' rồi soạn giao thức an toàn. Viết mã dự án GNN nhỏ. Suy nghĩ về tác động đạo đức hàng tuần.\n\nSố từ: 256",
+    "word_count_en": 248,
+    "word_count_vi": 256,
+    "updated_at": "2025-10-20T17:49:00+09:00"
   },
   "ui_triggers": {
     "essay_offer": {
