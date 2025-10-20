@@ -1,6 +1,5 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { getRoomData as getPreloadedRoomData } from './allRoomData.ts';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -121,26 +120,32 @@ const embeddedFallbackData: Record<string, any> = {
   },
 };
 
-// Load room data - uses preloaded imports to ensure all data is bundled
-function loadRoomData(roomId: string): any | null {
+// Load room data - reads from bundled JSON files
+async function loadRoomData(roomId: string): Promise<any | null> {
   console.log(`Loading data for room: ${roomId}`);
   
-  // Primary: Use preloaded data from allRoomData.ts
-  const data = getPreloadedRoomData(roomId);
-  if (data) {
-    console.log(`Successfully loaded preloaded data for ${roomId}`);
+  const fileName = roomFiles[roomId];
+  if (!fileName) {
+    console.error(`Room ${roomId} not found in mapping`);
+    return embeddedFallbackData[roomId] || null;
+  }
+
+  // Try dynamic import with proper error handling
+  try {
+    const url = new URL(`./data/${fileName}`, import.meta.url);
+    const module = await import(url.href, { with: { type: 'json' } } as any);
+    const data = module.default || module;
+    console.log(`Successfully loaded data for ${roomId}`);
     return data;
+  } catch (e) {
+    console.error(`Failed to load ${fileName}:`, e);
+    const fallback = embeddedFallbackData[roomId];
+    if (fallback) {
+      console.log(`Using embedded fallback for ${roomId}`);
+      return fallback;
+    }
+    return null;
   }
-  
-  // Fallback: Use minimal embedded data for critical rooms
-  const fallback = embeddedFallbackData[roomId];
-  if (fallback) {
-    console.log(`Using embedded fallback data for ${roomId}`);
-    return fallback;
-  }
-  
-  console.error(`No data found for room: ${roomId}`);
-  return null;
 }
 
 // Utilities
@@ -211,8 +216,8 @@ serve(async (req) => {
       );
     }
 
-    // Load data from preloaded imports
-    const roomData = loadRoomData(roomId);
+    // Load data from bundled JSON
+    const roomData = await loadRoomData(roomId);
     if (!roomData) {
       return new Response(
         JSON.stringify({ error: 'Room data not found' }),
