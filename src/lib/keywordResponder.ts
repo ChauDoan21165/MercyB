@@ -1,4 +1,4 @@
-import { getRoomInfo } from "@/lib/roomData";
+import { roomDataMap } from "@/lib/roomDataImports";
 
 function normalize(text: unknown) {
   return String(text ?? "")
@@ -44,14 +44,9 @@ function findEntryByGroup(groupKey: string | null, entries: any[]): any | null {
   );
 }
 
-export async function keywordRespond(roomId: string, message: string): Promise<{ text: string; matched: boolean }> {
-  const info = getRoomInfo(roomId);
-  if (!info?.dataFile) throw new Error("Room data mapping not found");
-
-  // Dynamic import of the JSON file at build/runtime
-  const mod: any = await import(`@/data/rooms/${info.dataFile}`);
-  const roomData = (mod && (mod.default ?? mod)) as any;
-  if (!roomData) throw new Error("Room data file missing");
+export function keywordRespond(roomId: string, message: string): { text: string; matched: boolean } {
+  const roomData = roomDataMap[roomId];
+  if (!roomData) throw new Error("Room data not found");
 
   const groupKey = findMatchingGroup(message, roomData.keywords);
   const matchedEntry = findEntryByGroup(groupKey, roomData.entries || []);

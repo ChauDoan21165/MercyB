@@ -66,7 +66,7 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
     try {
       // Client-side keyword response using room JSON
       const { keywordRespond } = await import("@/lib/keywordResponder");
-      const result = await keywordRespond(roomId || "", currentInput);
+      const result = keywordRespond(roomId || "", currentInput);
 
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
