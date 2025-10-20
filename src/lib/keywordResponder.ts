@@ -109,14 +109,26 @@ export function keywordRespond(roomId: string, message: string): { text: string;
   }
 
   // No match: check if message is substantial before showing essay
-  const messageWords = message.trim().split(/\s+/).filter(Boolean);
-  
-  // Only show essay for meaningful questions (3+ words or contains question words)
-  const questionWords = ['how', 'what', 'why', 'when', 'where', 'can', 'should', 'is', 'are', 'do', 'does', 
-                          'làm', 'gì', 'tại', 'khi', 'nào', 'đâu', 'có', 'nên', 'là'];
-  const isQuestion = messageWords.length >= 3 || 
-                     questionWords.some(qw => messageWords.some(mw => mw.toLowerCase().includes(qw)));
-  
+  const raw = String(message || "");
+  const messageLower = raw.toLowerCase();
+  const messageWords = raw.trim().split(/\s+/).filter(Boolean);
+
+  // Consider it a real question if:
+  // - 3+ words, or
+  // - contains a question mark, or
+  // - starts with / equals a question word (exact token match), including VN multi-word forms
+  const qTokens = new Set([
+    'how','what','why','when','where','can','should','is','are','do','does','could','would','will',
+    'làm','gì','khi','nào','đâu','có','nên','là'
+  ]);
+  const multiWordQs = ['tại sao','khi nào','ở đâu'];
+
+  const startsWithQToken = messageWords.length > 0 && qTokens.has(messageWords[0].toLowerCase());
+  const hasExactQToken = messageWords.some(w => qTokens.has(w.toLowerCase()));
+  const hasMultiWordQ = multiWordQs.some(phrase => messageLower.includes(phrase));
+
+  const isQuestion = messageWords.length >= 3 || messageLower.includes('?') || startsWithQToken || hasExactQToken || hasMultiWordQ;
+
   if (isQuestion) {
     const essay = getBilingual(roomData, "room_essay");
     const desc = getBilingual(roomData, "description");
@@ -130,9 +142,10 @@ export function keywordRespond(roomId: string, message: string): { text: string;
   
   // For short/unclear messages, prompt for more specific question
   const desc = getBilingual(roomData, "description");
+  const topKeys = Object.keys(roomData.keywords || {}).slice(0, 5).join(', ');
   const promptText = [
-    `I'm here to help with ${desc.en}. Could you please ask a specific question or use keywords like: ${Object.keys(roomData.keywords || {}).slice(0, 5).join(', ')}?`,
-    `Tôi ở đây để giúp về ${desc.vi}. Bạn có thể đặt câu hỏi cụ thể hoặc dùng từ khóa như: ${Object.keys(roomData.keywords || {}).slice(0, 5).join(', ')}?`
+    `I'm here to help with ${desc.en}. Ask a specific question or use keywords like: ${topKeys}.`,
+    `Tôi ở đây để giúp về ${desc.vi}. Hãy đặt câu hỏi cụ thể hoặc dùng từ khóa như: ${topKeys}.`
   ].join("\n\n");
   return { text: promptText, matched: false };
 }
