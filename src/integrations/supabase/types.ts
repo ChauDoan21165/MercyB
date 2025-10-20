@@ -47,6 +47,102 @@ export type Database = {
         }
         Relationships: []
       }
+      matchmaking_preferences: {
+        Row: {
+          availability: Json | null
+          communication_style: string | null
+          created_at: string | null
+          goals: Json | null
+          id: string
+          looking_for: string[] | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          availability?: Json | null
+          communication_style?: string | null
+          created_at?: string | null
+          goals?: Json | null
+          id?: string
+          looking_for?: string[] | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          availability?: Json | null
+          communication_style?: string | null
+          created_at?: string | null
+          goals?: Json | null
+          id?: string
+          looking_for?: string[] | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      matchmaking_suggestions: {
+        Row: {
+          common_interests: string[] | null
+          complementary_traits: string[] | null
+          created_at: string | null
+          expires_at: string | null
+          id: string
+          match_reason: Json | null
+          match_score: number | null
+          status: string | null
+          suggested_user_id: string
+          user_id: string
+        }
+        Insert: {
+          common_interests?: string[] | null
+          complementary_traits?: string[] | null
+          created_at?: string | null
+          expires_at?: string | null
+          id?: string
+          match_reason?: Json | null
+          match_score?: number | null
+          status?: string | null
+          suggested_user_id: string
+          user_id: string
+        }
+        Update: {
+          common_interests?: string[] | null
+          complementary_traits?: string[] | null
+          created_at?: string | null
+          expires_at?: string | null
+          id?: string
+          match_reason?: Json | null
+          match_score?: number | null
+          status?: string | null
+          suggested_user_id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string | null
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       room_usage_analytics: {
         Row: {
           completed_room: boolean | null
@@ -148,6 +244,63 @@ export type Database = {
           id?: string
           rooms_accessed?: number | null
           usage_date?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_behavior_tracking: {
+        Row: {
+          created_at: string | null
+          id: string
+          interaction_data: Json | null
+          interaction_type: string
+          room_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          interaction_data?: Json | null
+          interaction_type: string
+          room_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          interaction_data?: Json | null
+          interaction_type?: string
+          room_id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_knowledge_profile: {
+        Row: {
+          completed_topics: Json | null
+          id: string
+          interests: Json | null
+          knowledge_areas: Json | null
+          traits: Json | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          completed_topics?: Json | null
+          id?: string
+          interests?: Json | null
+          knowledge_areas?: Json | null
+          traits?: Json | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          completed_topics?: Json | null
+          id?: string
+          interests?: Json | null
+          knowledge_areas?: Json | null
+          traits?: Json | null
+          updated_at?: string | null
           user_id?: string
         }
         Relationships: []

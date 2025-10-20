@@ -9,10 +9,12 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomInfo } from "@/lib/roomData";
 import { useRoomProgress } from "@/hooks/useRoomProgress";
+import { useBehaviorTracking } from "@/hooks/useBehaviorTracking";
 import { RoomProgress } from "@/components/RoomProgress";
 import { WelcomeBack } from "@/components/WelcomeBack";
 import { RelatedRooms } from "@/components/RelatedRooms";
 import { MessageActions } from "@/components/MessageActions";
+import { MatchmakingButton } from "@/components/MatchmakingButton";
 
 interface Message {
   id: string;
@@ -39,6 +41,7 @@ const ChatHub = () => {
   const [matchedEntryCount, setMatchedEntryCount] = useState(0);
   const mainScrollRef = useRef<HTMLDivElement>(null);
   const progress = useRoomProgress(roomId);
+  const { trackMessage, trackKeyword, trackCompletion } = useBehaviorTracking(roomId || "");
 
 // Use centralized room metadata
 const info = getRoomInfo(roomId || "");
@@ -71,6 +74,9 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
     const currentInput = mainInput;
     setMainInput("");
     setIsLoading(true);
+    
+    // Track message for behavior analytics
+    trackMessage(currentInput);
 
     // Create a temporary AI message that we'll update with streaming content
     const aiMessageId = (Date.now() + 1).toString();
@@ -251,14 +257,17 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
       <div className="max-w-7xl mx-auto space-y-4">
         {/* Header */}
         <div className="flex items-center justify-between bg-card rounded-lg p-4 shadow-soft">
-          <Button
-            variant="ghost"
-            onClick={() => navigate("/rooms")}
-            className="gap-2"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back / Quay Lại
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              variant="ghost"
+              onClick={() => navigate("/rooms")}
+              className="gap-2"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back / Quay Lại
+            </Button>
+            <MatchmakingButton />
+          </div>
           
           <div className="text-center">
             <h2 className="text-xl font-bold text-foreground">{currentRoom.nameEn}</h2>

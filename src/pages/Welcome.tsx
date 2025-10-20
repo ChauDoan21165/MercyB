@@ -39,8 +39,8 @@ const Welcome = () => {
       price: "$6",
       period: { vi: "/tháng", en: "/month" },
       features: {
-        en: ["3 custom topics", "3 rooms access/day", "Priority support"],
-        vi: ["3 chủ đề tùy chỉnh", "Truy cập 3 phòng/ngày", "Hỗ trợ ưu tiên"]
+        en: ["3 custom topics", "3 rooms access/day", "AI Matchmaking", "Voice chat", "Priority support"],
+        vi: ["3 chủ đề tùy chỉnh", "Truy cập 3 phòng/ngày", "Ghép đôi AI", "Chat bằng giọng nói", "Hỗ trợ ưu tiên"]
       }
     }
   ];

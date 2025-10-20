@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import VIPRequestForm from "./pages/VIPRequestForm";
 import VIPRequests from "./pages/VIPRequests";
 import AdminDashboard from "./pages/AdminDashboard";
+import MatchmakingHub from "./pages/MatchmakingHub";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/vip-request" element={<VIPRequestForm />} />
           <Route path="/vip-requests" element={<VIPRequests />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/matchmaking" element={<MatchmakingHub />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
