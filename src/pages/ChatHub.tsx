@@ -8,12 +8,18 @@ import { Send, ArrowLeft, MessageCircle, Mail, Users, Loader2 } from "lucide-rea
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomInfo } from "@/lib/roomData";
+import { useRoomProgress } from "@/hooks/useRoomProgress";
+import { RoomProgress } from "@/components/RoomProgress";
+import { WelcomeBack } from "@/components/WelcomeBack";
+import { RelatedRooms } from "@/components/RelatedRooms";
+import { MessageActions } from "@/components/MessageActions";
 
 interface Message {
   id: string;
   text: string;
   isUser: boolean;
   timestamp: Date;
+  relatedRooms?: string[];
 }
 
 const ChatHub = () => {
@@ -32,6 +38,7 @@ const ChatHub = () => {
   const [noKeywordCount, setNoKeywordCount] = useState(0);
   const [matchedEntryCount, setMatchedEntryCount] = useState(0);
   const mainScrollRef = useRef<HTMLDivElement>(null);
+  const progress = useRoomProgress(roomId);
 
 // Use centralized room metadata
 const info = getRoomInfo(roomId || "");
@@ -82,7 +89,8 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
         id: (Date.now() + 1).toString(),
         text: result.text,
         isUser: false,
-        timestamp: new Date()
+        timestamp: new Date(),
+        relatedRooms: result.relatedRooms || []
       };
       setMainMessages(prev => [...prev, aiMessage]);
 
@@ -145,17 +153,28 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
 
   const MessageBubble = ({ message }: { message: Message }) => (
     <div className={`flex ${message.isUser ? "justify-end" : "justify-start"} mb-4`}>
-      <div
-        className={`max-w-[80%] rounded-2xl px-4 py-3 ${
-          message.isUser
-            ? "bg-gradient-to-br from-primary to-primary-glow text-primary-foreground"
-            : "bg-card border shadow-sm"
-        }`}
-      >
-        <p className="text-sm whitespace-pre-wrap">{message.text}</p>
-        <span className="text-xs opacity-70 mt-1 block">
-          {message.timestamp.toLocaleTimeString()}
-        </span>
+      <div className="max-w-[80%] group">
+        <div
+          className={`rounded-2xl px-4 py-3 ${
+            message.isUser
+              ? "bg-gradient-to-br from-primary to-primary-glow text-primary-foreground"
+              : "bg-card border shadow-sm"
+          }`}
+        >
+          <p className="text-sm whitespace-pre-wrap">{message.text}</p>
+          <span className="text-xs opacity-70 mt-1 block">
+            {message.timestamp.toLocaleTimeString()}
+          </span>
+        </div>
+        
+        {!message.isUser && (
+          <>
+            <MessageActions text={message.text} roomId={roomId || ""} />
+            {message.relatedRooms && message.relatedRooms.length > 0 && (
+              <RelatedRooms roomNames={message.relatedRooms} />
+            )}
+          </>
+        )}
       </div>
     </div>
   );
@@ -183,6 +202,9 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
             Active / Đang Hoạt Động
           </Badge>
         </div>
+        
+        {/* Progress Tracker */}
+        <RoomProgress totalRooms={progress.totalRooms} streak={progress.streak} />
 
         {/* Main Chat Area */}
         <Card className="p-6 shadow-soft">
@@ -196,6 +218,7 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
             </div>
             
             <ScrollArea className="h-[400px] pr-4" ref={mainScrollRef}>
+              <WelcomeBack lastRoomId={progress.lastVisit} currentRoomId={roomId || ""} />
               {mainMessages.length === 0 ? (
                 <div className="flex items-center justify-center h-full text-center">
                   <div className="space-y-2">

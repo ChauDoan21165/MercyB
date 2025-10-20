@@ -67,7 +67,7 @@ function findRelatedRooms(message: string, currentRoomId: string): string[] {
   return Array.from(relatedRooms).slice(0, 3); // Top 3 related rooms
 }
 
-export function keywordRespond(roomId: string, message: string, noKeywordCount: number = 0, matchedEntryCount: number = 0): { text: string; matched: boolean } {
+export function keywordRespond(roomId: string, message: string, noKeywordCount: number = 0, matchedEntryCount: number = 0): { text: string; matched: boolean; relatedRooms?: string[] } {
   const roomData = roomDataMap[roomId];
   if (!roomData) throw new Error("Room data not found");
 
@@ -96,16 +96,11 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
     const safety = getBilingual(roomData, "safety_disclaimer");
     const crisis = getBilingual(roomData, "crisis_footer");
     
-    // Add related rooms suggestion if available
-    const relatedSection = relatedRooms.length > 0
-      ? `\n\n📚 Related Topics:\nYou might also find helpful information in: ${relatedRooms.join(', ')}\n\n📚 Chủ đề liên quan:\nBạn cũng có thể tìm thông tin hữu ích trong: ${relatedRooms.join(', ')}`
-      : "";
-    
-    const text = [base, relatedSection, safety.en, safety.vi, crisis.en, crisis.vi]
+    const text = [base, safety.en, safety.vi, crisis.en, crisis.vi]
       .map((s) => (s || "").trim())
       .filter(Boolean)
       .join("\n\n");
-    return { text, matched: true };
+    return { text, matched: true, relatedRooms };
   }
 
   // No match: check if message is substantial before showing essay
