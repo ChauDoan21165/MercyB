@@ -67,7 +67,7 @@ function findRelatedRooms(message: string, currentRoomId: string): string[] {
   return Array.from(relatedRooms).slice(0, 3); // Top 3 related rooms
 }
 
-export function keywordRespond(roomId: string, message: string): { text: string; matched: boolean } {
+export function keywordRespond(roomId: string, message: string, noKeywordCount: number = 0): { text: string; matched: boolean } {
   const roomData = roomDataMap[roomId];
   if (!roomData) throw new Error("Room data not found");
 
@@ -140,12 +140,35 @@ export function keywordRespond(roomId: string, message: string): { text: string;
     return { text, matched: false };
   }
   
-  // For short/unclear messages, prompt for more specific question
+  // For short/unclear messages, use escalating friendly prompts
+  const escalationPrompts = [
+    {
+      en: "Please tell me more.",
+      vi: "Vui lòng cho tôi biết thêm."
+    },
+    {
+      en: "Please tell me a bit more, my friend.",
+      vi: "Vui lòng cho tôi biết thêm một chút, bạn của tôi."
+    },
+    {
+      en: "Please tell me more my dear friend.",
+      vi: "Vui lòng cho tôi biết thêm, bạn thân yêu của tôi."
+    }
+  ];
+  
+  // Cycle through the prompts (0, 1, 2, 0, 1, 2, ...)
+  const promptIndex = noKeywordCount % escalationPrompts.length;
+  const selectedPrompt = escalationPrompts[promptIndex];
+  
   const desc = getBilingual(roomData, "description");
   const topKeys = Object.keys(roomData.keywords || {}).slice(0, 5).join(', ');
+  
   const promptText = [
-    `I'm here to help with ${desc.en}. Ask a specific question or use keywords like: ${topKeys}.`,
-    `Tôi ở đây để giúp về ${desc.vi}. Hãy đặt câu hỏi cụ thể hoặc dùng từ khóa như: ${topKeys}.`
+    selectedPrompt.en,
+    selectedPrompt.vi,
+    `\nI'm here to help with ${desc.en}. Try using keywords like: ${topKeys}.`,
+    `Tôi ở đây để giúp về ${desc.vi}. Hãy thử dùng từ khóa như: ${topKeys}.`
   ].join("\n\n");
+  
   return { text: promptText, matched: false };
 }

@@ -29,6 +29,7 @@ const ChatHub = () => {
   const [roomInput, setRoomInput] = useState("");
   const [privateInput, setPrivateInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [noKeywordCount, setNoKeywordCount] = useState(0);
   const mainScrollRef = useRef<HTMLDivElement>(null);
 
 // Use centralized room metadata
@@ -66,7 +67,14 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
     try {
       // Client-side keyword response using room JSON
       const { keywordRespond } = await import("@/lib/keywordResponder");
-      const result = keywordRespond(roomId || "", currentInput);
+      const result = keywordRespond(roomId || "", currentInput, noKeywordCount);
+
+      // Update counter based on whether keyword was matched
+      if (result.matched) {
+        setNoKeywordCount(0); // Reset counter when keyword found
+      } else {
+        setNoKeywordCount(prev => prev + 1); // Increment counter
+      }
 
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
