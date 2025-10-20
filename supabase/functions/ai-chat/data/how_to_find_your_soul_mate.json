@@ -1,0 +1,1395 @@
+{
+  "header": {},
+  "schema_version": "1.2",
+  "schema_id": "matchmaker_traits",
+  "description": "Guides adults to clarify values, communicate well, date safely, assess compatibility, and decide to commit or not.",
+  "description_vi": "Hướng dẫn người lớn làm rõ giá trị, giao tiếp tốt, hẹn hò an toàn, đánh giá phù hợp, và quyết định cam kết hay không.",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en" },
+  "safety_disclaimer": "Educational guidance; not legal, financial, therapeutic, or professional advice.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không phải tư vấn pháp lý, tài chính, trị liệu hoặc chuyên môn.",
+  "crisis_footer": "Stop. Secure safety and data. Contact authorities or legal counsel now.",
+  "safety_footer": "Prioritize safety and consent; seek qualified help when unsure.",
+  "meta": { "entry_count": 36, "last_verified": "2025-10-10" },
+  "enums": {
+    "tags": [
+      "self_knowledge",
+      "communication",
+      "values",
+      "boundaries",
+      "consent",
+      "safety",
+      "dating",
+      "compatibility",
+      "healing",
+      "ethics",
+      "research",
+      "decision"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["relationship_readiness"]
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Finding Your Soul Mate with Intention\n\nFinding a partner can be exciting yet complex. This room offers guidance on values, communication, and safety to help you date with purpose and decide on commitment. Use entries to reflect, connect, and stay safe.\n\n### Clarifying Your Values\nStart with \"self_reflection\" to understand past patterns. \"attachment_styles\" and \"past_patterns\" help identify bonding habits. \"non_negotiables\" sets core values. \"life_goals\", \"family_values\", \"financial_values\", and \"faith_values\" align long-term plans. These steps build a foundation for meaningful dating.\n\n### Communicating Well\nGood communication strengthens bonds. \"active_listening\" encourages hearing without interrupting. \"assertiveness\" helps express needs clearly. \"conflict_repair\" mends disputes. \"emotional_expression\" fosters vulnerability. Practice these to create open, honest connections.\n\n### Dating Safely and Strategically\n\"profile_creation\" guides honest bios. \"first_date_tips\" suggests public meetings. \"pacing_relationship\" advises slow trust-building. \"intention_setting\" clarifies goals early. These entries help you date with purpose and caution.\n\n### Assessing Compatibility\nCheck if lifestyles match with \"daily_habits\" and \"lifestyle_fit\". \"love_languages\" reveals how affection is shown. \"conflict_styles\" shows dispute handling. These help you see if a partner fits long-term.\n\n### Setting Boundaries and Consent\n\"personal_limits\" protects your space. \"consent_practices\" ensures mutual agreement. \"digital_privacy\" safeguards online info. These keep relationships respectful and safe.\n\n### Screening for Safety\n\"background_checks\" verifies history. \"red_flags\" spots warning signs like inconsistency. \"online_safety\" emphasizes public first meets. Use these to avoid risks.\n\n### Using Research Tasks\nFor \"attachment_styles\" or \"love_languages\", read studies online. \"ask_mentors\" suggests trusted advice. \"read_studies\" offers insights from research. Search reliable sources to inform choices.\n\n### Making Go/No-Go Decisions\nUse \"commitment_criteria\" to set standards. If values align, go forward; if not, no-go. For \"kill_rules\", end if disrespect appears. If \"red_flags\" arise, no-go and reassess.\n\n### Ethics, Privacy, Safety\nRespect others’ boundaries and privacy. Don’t share personal info without consent. Prioritize safety with public meets. If distress arises, seek help as noted in \"crisis_footer\".\n\n### Actionable Next Steps\nJournal \"non_negotiables\" today. Discuss \"life_goals\" this week. Practice \"active_listening\" daily. Check \"red_flags\" monthly. Plan safe dates. Build connections step by step.",
+    "vi": "# Tìm Bạn Đời với Ý Định\n\nTìm đối tác có thể thú vị nhưng phức tạp. Phòng này đưa hướng dẫn về giá trị, giao tiếp, và an toàn để hẹn hò có mục đích và quyết định cam kết. Dùng các mục để suy ngẫm, kết nối, và an toàn.\n\n### Làm Rõ Giá Trị\nBắt đầu với \"tu_suy_ngam\" để hiểu mô hình cũ. \"kieu_gan_bo\" và \"mo_hinh_qua_khu\" giúp nhận diện thói quen gắn kết. \"khong_thuong_luong\" đặt giá trị cốt lõi. \"muc_tieu_cuoc_song\", \"gia_tri_gia_dinh\", \"gia_tri_tai_chinh\", và \"gia_tri_tin_nguong\" căn chỉnh kế hoạch dài hạn. Các bước này xây nền tảng cho hẹn hò ý nghĩa.\n\n### Giao Tiếp Tốt\nGiao tiếp tốt tăng gắn kết. \"lang_nghe_tich_cuc\" khuyến khích nghe không ngắt. \"quyet_doan\" giúp bày tỏ nhu cầu rõ. \"sua_chua_xung_dot\" hàn gắn tranh chấp. \"bay_to_cam_xuc\" nuôi dưỡng dễ tổn thương. Thực hành để tạo kết nối cởi mở, trung thực.\n\n### Hẹn Hò An Toàn và Chiến Lược\n\"tao_ho_so\" hướng dẫn viết tiểu sử thật. \"meo_hen_dau\" đề xuất gặp công cộng. \"nhip_do_quan_he\" khuyên xây tin chậm. \"dat_y_dinh\" làm rõ mục tiêu sớm. Các mục này giúp hẹn hò có mục đích và cẩn thận.\n\n### Đánh Giá Sự Phù Hợp\nKiểm lối sống khớp với \"thoi_quen_hang_ngay\" và \"phu_hop_loi_song\". \"ngon_ngu_yeu_thuong\" lộ cách thể hiện tình cảm. \"kieu_xung_dot\" cho thấy xử lý tranh chấp. Chúng giúp xem đối tác hợp dài hạn.\n\n### Đặt Ranh Giới và Đồng Thuận\n\"gioi_han_ca_nhan\" bảo vệ không gian. \"thuc_hanh_dong_thuan\" đảm bảo thỏa thuận chung. \"rieng_tu_so\" giữ an toàn thông tin trực tuyến. Những điều này giữ quan hệ tôn trọng và an toàn.\n\n### Sàng Lọc An Toàn\n\"kiem_tra_ly_lich\" xác minh lịch sử. \"co_do\" phát hiện dấu hiệu như không nhất quán. \"an_toan_truc_tuyen\" nhấn mạnh gặp công cộng trước. Dùng để tránh rủi ro.\n\n### Sử Dụng Nghiên Cứu\nVới \"kieu_gan_bo\" hoặc \"ngon_ngu_yeu_thuong\", đọc nghiên cứu trực tuyến. \"hoi_co_van\" gợi hỏi người tin cậy. \"doc_nghien_cuu\" đưa thấu hiểu từ nghiên cứu. Tìm nguồn đáng tin để thông tin lựa chọn.\n\n### Quyết Định Tiếp/Dừng\nDùng \"tieu_chi_cam_ket\" đặt tiêu chuẩn. Nếu giá trị hợp, tiếp tục; nếu không, dừng. Với \"quy_tac_ket_thuc\", kết thúc nếu thiếu tôn trọng. Nếu \"co_do\" xuất hiện, dừng và đánh giá lại.\n\n### Đạo Đức, Riêng Tư, An Toàn\nTôn trọng ranh giới và riêng tư người khác. Đừng chia sẻ thông tin cá nhân nếu không có đồng thuận. Ưu tiên an toàn với gặp công cộng. Nếu khó khăn, tìm giúp theo \"crisis_footer\".\n\n### Bước Tiếp Theo Thực Tế\nGhi \"khong_thuong_luong\" hôm nay. Bàn \"muc_tieu_cuoc_song\" tuần này. Luyện \"lang_nghe_tich_cuc\" hàng ngày. Kiểm \"co_do\" hàng tháng. Lập hẹn an toàn. Xây kết nối từng bước.",
+    "word_count_en": 550,
+    "word_count_vi": 552,
+    "updated_at": "2025-10-10T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  },
+  "keywords": {
+    "self_reflection": {
+      "en": ["self_reflection", "introspection", "self_awareness"],
+      "vi": ["tu_suy_ngam", "noi_tam", "tu_nhan_thuc"],
+      "synonyms": {
+        "en": ["self_examination", "personal_insight", "self_analysis"],
+        "vi": ["tu_kiem_tra", "thau_hieu_ca_nhan", "phan_tich_ban_than"]
+      }
+    },
+    "attachment_styles": {
+      "en": ["attachment_styles", "relationship_patterns", "bonding_types"],
+      "vi": ["kieu_gan_bo", "mo_hinh_quan_he", "loai_ket_noi"],
+      "synonyms": {
+        "en": [
+          "secure_attachment",
+          "anxious_attachment",
+          "avoidant_attachment"
+        ],
+        "vi": ["gan_bo_an_toan", "gan_bo_lo_lang", "gan_bo_tranh_ne"]
+      }
+    },
+    "past_patterns": {
+      "en": ["past_patterns", "relationship_history", "previous_behaviors"],
+      "vi": ["mo_hinh_qua_khu", "lich_su_quan_he", "hanh_vi_truoc"],
+      "synonyms": {
+        "en": ["recurring_issues", "lesson_learned", "behavior_cycles"],
+        "vi": ["van_de_lap_lai", "bai_hoc_kinh_nghiem", "chu_ky_hanh_vi"]
+      }
+    },
+    "non_negotiables": {
+      "en": ["non_negotiables", "deal_breakers", "must_haves"],
+      "vi": ["khong_thuong_luong", "gioi_han_cam", "yeu_cau_bat_buoc"],
+      "synonyms": {
+        "en": ["core_values", "boundaries", "essentials"],
+        "vi": ["gia_tri_cot_loi", "ranh_gioi", "yeu_to_thiet_yeu"]
+      }
+    },
+    "life_goals": {
+      "en": ["life_goals", "future_plans", "aspirations"],
+      "vi": ["muc_tieu_cuoc_song", "ke_hoach_tuong_lai", "khat_vong"],
+      "synonyms": {
+        "en": ["long_term_goals", "dreams", "ambitions"],
+        "vi": ["muc_tieu_dai_han", "giac_mo", "tham_vong"]
+      }
+    },
+    "family_values": {
+      "en": ["family_values", "family_priorities", "family_plans"],
+      "vi": ["gia_tri_gia_dinh", "uu_tien_gia_dinh", "ke_hoach_gia_dinh"],
+      "synonyms": {
+        "en": ["children_preferences", "marriage_views", "family_dynamics"],
+        "vi": ["yeu_thich_con_cai", "quan_diem_hon_nhan", "dong_luc_gia_dinh"]
+      }
+    },
+    "financial_values": {
+      "en": ["financial_values", "money_attitudes", "financial_goals"],
+      "vi": ["gia_tri_tai_chinh", "thai_do_tien_bac", "muc_tieu_tai_chinh"],
+      "synonyms": {
+        "en": ["spending_habits", "saving_priorities", "wealth_views"],
+        "vi": ["thoi_quen_chi_tieu", "uu_tien_tiet_kiem", "quan_diem_giau_co"]
+      }
+    },
+    "faith_values": {
+      "en": ["faith_values", "spiritual_beliefs", "religious_views"],
+      "vi": ["gia_tri_tin_nguong", "niem_tin_tam_linh", "quan_diem_ton_giao"],
+      "synonyms": {
+        "en": ["belief_systems", "spiritual_practices", "faith_compatibility"],
+        "vi": ["he_thong_niem_tin", "thuc_hanh_tam_linh", "phu_hop_tin_nguong"]
+      }
+    },
+    "active_listening": {
+      "en": ["active_listening", "attentive_hearing", "empathetic_listening"],
+      "vi": ["lang_nghe_tich_cuc", "nghe_chu_y", "lang_nghe_thau_cam"],
+      "synonyms": {
+        "en": ["reflective_listening", "engaged_hearing", "understanding_ears"],
+        "vi": ["lang_nghe_phan_anh", "nghe_tuong_tac", "tai_thau_hieu"]
+      }
+    },
+    "assertiveness": {
+      "en": ["assertiveness", "direct_communication", "boundary_setting"],
+      "vi": ["quyet_doan", "giao_tiep_truc_tiep", "dat_ranh_gioi"],
+      "synonyms": {
+        "en": ["confident_expression", "self_advocacy", "firm_talk"],
+        "vi": ["bay_to_tu_tin", "tu_ve_vay", "noi_kien_quyet"]
+      }
+    },
+    "conflict_repair": {
+      "en": ["conflict_repair", "dispute_resolution", "relationship_mend"],
+      "vi": ["sua_chua_xung_dot", "giai_quyet_tranh_chap", "han_gan_quan_he"],
+      "synonyms": {
+        "en": ["make_amends", "reconciliation", "fix_fight"],
+        "vi": ["lam_lanh", "hoa_giai", "sua_sai_lam"]
+      }
+    },
+    "emotional_expression": {
+      "en": ["emotional_expression", "feeling_sharing", "vulnerability"],
+      "vi": ["bay_to_cam_xuc", "chia_se_cam_giac", "de_bi_ton_thuong"],
+      "synonyms": {
+        "en": ["open_heart", "share_emotions", "be_vulnerable"],
+        "vi": ["mo_long", "chia_se_cam_xuc", "de_mo"]
+      }
+    },
+    "profile_creation": {
+      "en": ["profile_creation", "dating_profile", "bio_writing"],
+      "vi": ["tao_ho_so", "ho_so_hen_ho", "viet_tieu_su"],
+      "synonyms": {
+        "en": ["online_profile", "app_bio", "self_summary"],
+        "vi": ["ho_so_truc_tuyen", "tieu_su_app", "tom_tat_ban_than"]
+      }
+    },
+    "first_date_tips": {
+      "en": ["first_date_tips", "initial_meet", "date_advice"],
+      "vi": ["meo_hen_dau", "cuoc_gap_dau", "loi_khuyen_hen"],
+      "synonyms": {
+        "en": ["debut_date", "first_impression", "meetup_tips"],
+        "vi": ["hen_dau_tien", "an_tuong_dau", "meo_gap"]
+      }
+    },
+    "pacing_relationship": {
+      "en": [
+        "pacing_relationship",
+        "relationship_speed",
+        "progression_control"
+      ],
+      "vi": ["nhip_do_quan_he", "toc_do_quan_he", "kiem_soat_tien_trinh"],
+      "synonyms": {
+        "en": ["take_it_slow", "build_gradually", "relationship_timeline"],
+        "vi": ["cham_cham", "xay_dan_dan", "thoi_gian_quan_he"]
+      }
+    },
+    "intention_setting": {
+      "en": ["intention_setting", "dating_goals", "purposeful_dating"],
+      "vi": ["dat_y_dinh", "muc_tieu_hen_ho", "hen_ho_co_muc_dich"],
+      "synonyms": {
+        "en": ["clear_intents", "goal_oriented_dating", "mindful_meets"],
+        "vi": ["y_dinh_ro_rang", "hen_huong_muc_tieu", "gap_co_y_thuc"]
+      }
+    },
+    "conflict_styles": {
+      "en": ["conflict_styles", "dispute_handling", "argument_approaches"],
+      "vi": ["kieu_xung_dot", "xu_ly_tranh_chap", "cach_tiep_can_tranh_cai"],
+      "synonyms": {
+        "en": ["fight_modes", "resolution_styles", "disagreement_methods"],
+        "vi": ["che_do_dau_tranh", "kieu_giai_quyet", "phuong_phap_bat_dong"]
+      }
+    },
+    "love_languages": {
+      "en": ["love_languages", "affection_styles", "expression_modes"],
+      "vi": ["ngon_ngu_yeu_thuong", "kieu_tinh_cam", "che_do_bay_to"],
+      "synonyms": {
+        "en": ["love_styles", "affection_languages", "care_expressions"],
+        "vi": ["kieu_yeu", "ngon_ngu_tinh_cam", "bay_to_quan_tam"]
+      }
+    },
+    "daily_habits": {
+      "en": ["daily_habits", "routine_compatibility", "lifestyle_habits"],
+      "vi": ["thoi_quen_hang_ngay", "phu_hop_thoi_quen", "thoi_quen_song"],
+      "synonyms": {
+        "en": ["everyday_routines", "habit_alignment", "daily_patterns"],
+        "vi": [
+          "thoi_quen_thuong_nien",
+          "phoi_hop_thoi_quen",
+          "mo_hinh_hang_ngay"
+        ]
+      }
+    },
+    "lifestyle_fit": {
+      "en": ["lifestyle_fit", "compatibility_lifestyle", "way_of_life_match"],
+      "vi": ["phu_hop_loi_song", "tuong_thich_loi_song", "khop_cach_song"],
+      "synonyms": {
+        "en": ["life_style_alignment", "habit_match", "daily_life_fit"],
+        "vi": [
+          "can_bang_loi_song",
+          "phu_hop_thoi_quen",
+          "phu_hop_cuoc_song_hang_ngay"
+        ]
+      }
+    },
+    "personal_limits": {
+      "en": ["personal_limits", "boundaries_setting", "self_boundaries"],
+      "vi": ["gioi_han_ca_nhan", "dat_ranh_gioi", "ranh_gioi_tu_than"],
+      "synonyms": {
+        "en": ["individual_boundaries", "limit_setting", "personal_space"],
+        "vi": ["ranh_gioi_ca_nhan", "thiet_lap_gioi_han", "khong_gian_ca_nhan"]
+      }
+    },
+    "consent_practices": {
+      "en": ["consent_practices", "agreement_checks", "permission_asking"],
+      "vi": ["thuc_hanh_dong_thuan", "kiem_tra_thoa_thuan", "hoi_phep"],
+      "synonyms": {
+        "en": ["consent_habits", "mutual_agreement", "ask_permission"],
+        "vi": ["thoi_quen_dong_thuan", "thoa_thuan_lan_nhau", "hoi_y_kien"]
+      }
+    },
+    "digital_privacy": {
+      "en": ["digital_privacy", "online_safety", "data_boundaries"],
+      "vi": ["rieng_tu_so", "an_toan_truc_tuyen", "ranh_gioi_du_lieu"],
+      "synonyms": {
+        "en": ["privacy_online", "cyber_boundaries", "data_protection"],
+        "vi": ["bao_ve_thong_tin", "ranh_gioi_mang", "an_ninh_so"]
+      }
+    },
+    "background_checks": {
+      "en": ["background_checks", "history_verification", "safety_screen"],
+      "vi": ["kiem_tra_ly_lich", "xac_minh_lich_su", "sang_loc_an_toan"],
+      "synonyms": {
+        "en": ["vetting_process", "past_check", "safety_verify"],
+        "vi": ["quy_trinh_kiem_tra", "kiem_qua_khu", "xac_thuc_an_toan"]
+      }
+    },
+    "red_flags": {
+      "en": ["red_flags", "warning_signs", "danger_signals"],
+      "vi": ["co_do", "dau_hieu_canh_bao", "tin_hieu_nguy_hiem"],
+      "synonyms": {
+        "en": ["alerts", "caution_indicators", "problem_signs"],
+        "vi": ["canh_bao", "chi_so_nguy_hiem", "dau_hieu_van_de"]
+      }
+    },
+    "online_safety": {
+      "en": ["online_safety", "digital_security", "net_safety"],
+      "vi": ["an_toan_truc_tuyen", "bao_mat_so", "an_toan_mang"],
+      "synonyms": {
+        "en": ["cyber_safety", "internet_protection", "web_security"],
+        "vi": ["an_ninh_mang", "bao_ve_truc_tuyen", "bao_mat_web"]
+      }
+    },
+    "ask_mentors": {
+      "en": ["ask_mentors", "seek_advice", "consult_experienced"],
+      "vi": ["hoi_co_van", "tim_loi_khuyen", "tham_khao_nguoi_co_kinh_nghiem"],
+      "synonyms": {
+        "en": ["mentor_consult", "advice_seek", "experienced_input"],
+        "vi": ["tu_van_co_van", "tim_tu_van", "y_kien_kinh_nghiem"]
+      }
+    },
+    "read_studies": {
+      "en": ["read_studies", "research_reading", "study_review"],
+      "vi": ["doc_nghien_cuu", "doc_tai_lieu", "xem_xet_nghien_cuu"],
+      "synonyms": {
+        "en": ["literature_review", "read_research", "analyze_studies"],
+        "vi": ["on_tai_lieu", "doc_nghien_cuu", "phan_tich_nghien_cuu"]
+      }
+    },
+    "commitment_criteria": {
+      "en": ["commitment_criteria", "go_standards", "relationship_tests"],
+      "vi": ["tieu_chi_cam_ket", "tieu_chuan_tiep", "kiem_tra_quan_he"],
+      "synonyms": {
+        "en": [
+          "commitment_checks",
+          "decision_standards",
+          "relationship_criteria"
+        ],
+        "vi": ["kiem_tra_cam_ket", "tieu_chuan_quyet_dinh", "tieu_chi_quan_he"]
+      }
+    },
+    "kill_rules": {
+      "en": ["kill_rules", "no_go_triggers", "end_conditions"],
+      "vi": ["quy_tac_ket_thuc", "kich_hoat_dung", "dieu_kien_ket_thuc"],
+      "synonyms": {
+        "en": ["deal_killers", "stop_signals", "break_points"],
+        "vi": ["yeu_to_ket_thuc", "tin_hieu_dung", "diem_dung"]
+      }
+    },
+    "immediate_physical_threat": {
+      "en": ["physical_threat", "violence", "stalking"],
+      "vi": ["de_doa_vat_ly", "bao_luc", "theo_doi"],
+      "synonyms": {
+        "en": ["abuse", "assault", "harassment"],
+        "vi": ["lam_dung", "tan_cong", "quay_roi"]
+      }
+    },
+    "sexual_coercion_or_assault": {
+      "en": ["sexual_coercion", "assault", "pressure"],
+      "vi": ["ep_buoc_tinh_duc", "tan_cong", "ap_luc"],
+      "synonyms": {
+        "en": ["non_consent", "force", "manipulation"],
+        "vi": ["khong_dong_thuan", "ep_buoc", "thao_tung"]
+      }
+    },
+    "severe_domestic_abuse": {
+      "en": ["domestic_abuse", "partner_violence", "isolation"],
+      "vi": ["bao_luc_gia_dinh", "bao_luc_doi_tac", "co_lap"],
+      "synonyms": {
+        "en": ["abusive_relationship", "control", "manipulation"],
+        "vi": ["quan_he_lam_dung", "kiem_soat", "thao_tung"]
+      }
+    },
+    "doxxing_blackmail": {
+      "en": ["doxxing", "blackmail", "harassment"],
+      "vi": ["tiet_lo_thong_tin", "tong_tien", "quay_roi"],
+      "synonyms": {
+        "en": ["privacy_breach", "extortion", "threats"],
+        "vi": ["vi_pham_rieng_tu", "tong_tien", "de_doa"]
+      }
+    },
+    "suicidal_ideation_partner_self": {
+      "en": ["suicidal_ideation", "self_harm", "mental_crisis"],
+      "vi": ["y_tu_tu", "tu_lam_hai", "khung_hoang_tam_tri"],
+      "synonyms": {
+        "en": ["suicide_risk", "depression", "distress"],
+        "vi": ["rui_ro_tu_tu", "tram_cam", "kho_khan"]
+      }
+    },
+    "minors_involved_or_suspicion": {
+      "en": ["minors_involved", "age_concerns", "exploitation"],
+      "vi": ["vi_thanh_nien_lien_quan", "lo_ngai_tuoi_tac", "loi_dung"],
+      "synonyms": {
+        "en": ["underage", "predatory_behavior", "grooming"],
+        "vi": ["chua_du_tuoi", "hanh_vi_san_moi", "dan_dat"]
+      }
+    }
+  },
+  "entries": [
+    {
+      "slug": "self_reflection",
+      "title": { "en": "Self Reflection", "vi": "Tự Suy Ngẫm" },
+      "copy": {
+        "en": "Reflect on past relationships. Identify patterns that may repeat. Dare: journal one insight.",
+        "vi": "Suy ngẫm về quan hệ cũ. Xác định mô hình có thể lặp. Dám: ghi nhật ký một thấu hiểu."
+      },
+      "echo_en": ["find your soul mate", "date with intention"],
+      "echo_vi": ["find your soul mate", "date with intention"],
+      "attribution": "APA communication guidelines",
+      "tags": "self_knowledge",
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "self_reflection",
+        "flags": [],
+        "outcome": "self_regulate"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "pattern recognition",
+        "vi_gloss": "nhận diện mô hình",
+        "practice": "Say: I can learn from past. / Nói: Tôi có thể học từ quá khứ."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "attachment_styles",
+      "title": { "en": "Attachment Styles", "vi": "Kiểu Gắn Bó" },
+      "copy": {
+        "en": "Explore secure or anxious styles. They may affect bonding. Dare: identify your style.",
+        "vi": "Khám phá kiểu an toàn hoặc lo lắng. Chúng có thể ảnh hưởng gắn kết. Dám: xác định kiểu của bạn."
+      },
+      "echo_en": ["decide to commit or not"],
+      "echo_vi": ["decide to commit or not"],
+      "attribution": "APA communication guidelines",
+      "tags": "self_knowledge",
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "self_reflection",
+        "flags": [],
+        "outcome": "self_regulate"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "style awareness",
+        "vi_gloss": "nhận thức kiểu",
+        "practice": "Say: I might have secure style. / Nói: Tôi có thể có kiểu an toàn."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "past_patterns",
+      "title": { "en": "Past Patterns", "vi": "Mô Hình Quá Khứ" },
+      "copy": {
+        "en": "Review recurring issues in dating. Patterns might guide choices. Dare: list three patterns.",
+        "vi": "Ôn vấn đề lặp trong hẹn hò. Mô hình có thể hướng chọn. Dám: liệt kê ba mô hình."
+      },
+      "echo_en": ["date with intention"],
+      "echo_vi": ["date with intention"],
+      "attribution": "APA communication guidelines",
+      "tags": "self_knowledge",
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "self_reflection",
+        "flags": [],
+        "outcome": "self_regulate"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "issue review",
+        "vi_gloss": "ôn vấn đề",
+        "practice": "Say: Patterns can teach lessons. / Nói: Mô hình có thể dạy bài học."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "non_negotiables",
+      "title": { "en": "Non Negotiables", "vi": "Không Thương Lượng" },
+      "copy": {
+        "en": "Define core values that might not change. Dare: list five must-haves.",
+        "vi": "Xác định giá trị cốt lõi có thể không thay. Dám: liệt kê năm yêu cầu."
+      },
+      "echo_en": ["decide to commit or not"],
+      "echo_vi": ["decide to commit or not"],
+      "attribution": "APA communication guidelines",
+      "tags": "self_knowledge",
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "self_reflection",
+        "flags": [],
+        "outcome": "self_regulate"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "value definition",
+        "vi_gloss": "định giá trị",
+        "practice": "Say: Values may shape choices. / Nói: Giá trị có thể định hình chọn."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "life_goals",
+      "title": { "en": "Life Goals", "vi": "Mục Tiêu Cuộc Sống" },
+      "copy": {
+        "en": "Share aspirations that may align. Dare: discuss one goal.",
+        "vi": "Chia sẻ khát vọng có thể phù hợp. Dám: bàn một mục tiêu."
+      },
+      "echo_en": ["find your soul mate"],
+      "echo_vi": ["find your soul mate"],
+      "attribution": "APA communication guidelines",
+      "tags": "values",
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "value_alignment",
+        "flags": [],
+        "outcome": "plan_change"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "goal sharing",
+        "vi_gloss": "chia mục tiêu",
+        "practice": "Say: Goals might match well. / Nói: Mục tiêu có thể phù hợp tốt."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "family_values",
+      "title": { "en": "Family Values", "vi": "Giá Trị Gia Đình" },
+      "copy": {
+        "en": "Explore views on family that may align. Dare: ask about family.",
+        "vi": "Khám quan điểm gia đình có thể phù hợp. Dám: hỏi về gia đình."
+      },
+      "echo_en": ["date with intention"],
+      "echo_vi": ["date with intention"],
+      "attribution": "APA communication guidelines",
+      "tags": "values",
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "value_alignment",
+        "flags": [],
+        "outcome": "plan_change"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "family views",
+        "vi_gloss": "quan điểm gia đình",
+        "practice": "Say: Values can guide bonds. / Nói: Giá trị có thể hướng gắn kết."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "financial_values",
+      "title": { "en": "Financial Values", "vi": "Giá Trị Tài Chính" },
+      "copy": {
+        "en": "Talk money attitudes that may match. Dare: share spending views.",
+        "vi": "Nói thái độ tiền bạc có thể phù hợp. Dám: chia quan điểm chi tiêu."
+      },
+      "echo_en": ["decide to commit or not"],
+      "echo_vi": ["decide to commit or not"],
+      "attribution": "APA communication guidelines",
+      "tags": "values",
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "value_alignment",
+        "flags": [],
+        "outcome": "plan_change"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "money talk",
+        "vi_gloss": "nói tiền bạc",
+        "practice": "Say: Attitudes might align finances. / Nói: Thái độ có thể phù hợp tài chính."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "faith_values",
+      "title": { "en": "Faith Values", "vi": "Giá Trị Tín Ngưỡng" },
+      "copy": {
+        "en": "Discuss beliefs that may harmonize. Dare: share faith views.",
+        "vi": "Bàn niềm tin có thể hòa hợp. Dám: chia quan điểm tín ngưỡng."
+      },
+      "echo_en": ["find your soul mate"],
+      "echo_vi": ["find your soul mate"],
+      "attribution": "APA communication guidelines",
+      "tags": "values",
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "value_alignment",
+        "flags": [],
+        "outcome": "plan_change"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "belief discussion",
+        "vi_gloss": "bàn niềm tin",
+        "practice": "Say: Beliefs can connect deeply. / Nói: Niềm tin có thể kết nối sâu."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "active_listening",
+      "title": { "en": "Active Listening", "vi": "Lắng Nghe Tích Cực" },
+      "copy": {
+        "en": "Listen without interrupting. Reflect back. Dare: practice in talk.",
+        "vi": "Nghe không ngắt. Phản ánh lại. Dám: luyện trong cuộc nói."
+      },
+      "echo_en": ["date with intention"],
+      "echo_vi": ["date with intention"],
+      "attribution": "APA communication guidelines",
+      "tags": "communication",
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "communication_skills",
+        "flags": [],
+        "outcome": "self_regulate"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "reflective hearing",
+        "vi_gloss": "nghe phản ánh",
+        "practice": "Say: I can reflect words. / Nói: Tôi có thể phản ánh lời."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "assertiveness",
+      "title": { "en": "Assertiveness", "vi": "Quyết Đoán" },
+      "copy": {
+        "en": "Express needs clearly. Use I-statements. Dare: state one need.",
+        "vi": "Bày tỏ nhu cầu rõ. Dùng câu Tôi. Dám: nêu một nhu cầu."
+      },
+      "echo_en": ["decide to commit or not"],
+      "echo_vi": ["decide to commit or not"],
+      "attribution": "APA communication guidelines",
+      "tags": "communication",
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "communication_skills",
+        "flags": [],
+        "outcome": "self_regulate"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "need expression",
+        "vi_gloss": "bày tỏ nhu cầu",
+        "practice": "Say: I might need space. / Nói: Tôi có thể cần không gian."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "conflict_repair",
+      "title": { "en": "Conflict Repair", "vi": "Sửa Xung Đột" },
+      "copy": {
+        "en": "Apologize sincerely. Rebuild trust. Dare: repair one issue.",
+        "vi": "Xin lỗi chân thành. Xây lại tin. Dám: sửa một vấn đề."
+      },
+      "echo_en": ["date with intention"],
+      "echo_vi": ["date with intention"],
+      "attribution": "APA communication guidelines",
+      "tags": "communication",
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "communication_skills",
+        "flags": [],
+        "outcome": "plan_change"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "apology practice",
+        "vi_gloss": "luyện xin lỗi",
+        "practice": "Say: I can apologize. / Nói: Tôi có thể xin lỗi."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "emotional_expression",
+      "title": { "en": "Emotional Expression", "vi": "Bày Tỏ Cảm Xúc" },
+      "copy": {
+        "en": "Share feelings openly. Be vulnerable. Dare: express one emotion.",
+        "vi": "Chia cảm xúc cởi. Dễ tổn thương. Dám: bày một cảm xúc."
+      },
+      "echo_en": ["find your soul mate"],
+      "echo_vi": ["find your soul mate"],
+      "attribution": "APA communication guidelines",
+      "tags": "communication",
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "communication_skills",
+        "flags": [],
+        "outcome": "self_regulate"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "feeling share",
+        "vi_gloss": "chia cảm xúc",
+        "practice": "Say: Feelings might connect us. / Nói: Cảm xúc có thể kết nối chúng ta."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "profile_creation",
+      "title": { "en": "Profile Creation", "vi": "Tạo Hồ Sơ" },
+      "copy": {
+        "en": "Write honest bio. Add clear photos. Dare: update profile.",
+        "vi": "Viết tiểu sử thật. Thêm ảnh rõ. Dám: cập nhật hồ sơ."
+      },
+      "echo_en": ["date with intention"],
+      "echo_vi": ["date with intention"],
+      "attribution": "NCMEC tips",
+      "tags": "dating",
+      "urgency": "soon",
+      "severity_level": 2,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "dating_strategy",
+        "flags": [],
+        "outcome": "plan_change"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "bio writing",
+        "vi_gloss": "viết tiểu sử",
+        "practice": "Say: Profile can attract matches. / Nói: Hồ sơ có thể thu hút phù hợp."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "first_date_tips",
+      "title": { "en": "First Date Tips", "vi": "Mẹo Hẹn Đầu" },
+      "copy": {
+        "en": "Meet in public. Share plans. Dare: plan safe date.",
+        "vi": "Gặp nơi công cộng. Chia kế hoạch. Dám: lập hẹn an toàn."
+      },
+      "echo_en": ["date with intention"],
+      "echo_vi": ["date with intention"],
+      "attribution": "NCMEC tips",
+      "tags": "dating",
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "dating_strategy",
+        "flags": [],
+        "outcome": "seek_help"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "safety planning",
+        "vi_gloss": "lập an toàn",
+        "practice": "Say: Dates can be safe. / Nói: Hẹn có thể an toàn."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "pacing_relationship",
+      "title": { "en": "Pacing Relationship", "vi": "Nhịp Độ Quan Hệ" },
+      "copy": {
+        "en": "Go slow to build trust. Check comfort. Dare: discuss pacing.",
+        "vi": "Chậm để xây tin. Kiểm thoải mái. Dám: bàn nhịp độ."
+      },
+      "echo_en": ["date with intention"],
+      "echo_vi": ["date with intention"],
+      "attribution": "APA communication guidelines",
+      "tags": "dating",
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "dating_strategy",
+        "flags": [],
+        "outcome": "plan_change"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "slow building",
+        "vi_gloss": "xây chậm",
+        "practice": "Say: Pacing might build trust. / Nói: Nhịp độ có thể xây tin."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "intention_setting",
+      "title": { "en": "Intention Setting", "vi": "Đặt Ý Định" },
+      "copy": {
+        "en": "Clarify dating goals early. Share honestly. Dare: state intentions.",
+        "vi": "Làm rõ mục hẹn sớm. Chia thật. Dám: nêu ý định."
+      },
+      "echo_en": ["date with intention"],
+      "echo_vi": ["date with intention"],
+      "attribution": "APA communication guidelines",
+      "tags": "dating",
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "dating_strategy",
+        "flags": [],
+        "outcome": "self_regulate"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "goal clarify",
+        "vi_gloss": "rõ mục tiêu",
+        "practice": "Say: Intentions can guide dates. / Nói: Ý định có thể hướng hẹn."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "conflict_styles",
+      "title": { "en": "Conflict Styles", "vi": "Kiểu Xung Đột" },
+      "copy": {
+        "en": "Observe how they handle disputes. Styles may match. Dare: note one style.",
+        "vi": "Quan sát cách xử lý tranh chấp. Kiểu có thể phù. Dám: ghi một kiểu."
+      },
+      "echo_en": ["decide to commit or not"],
+      "echo_vi": ["decide to commit or not"],
+      "attribution": "APA communication guidelines",
+      "tags": "compatibility",
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "compatibility_checks",
+        "flags": [],
+        "outcome": "plan_change"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "style observation",
+        "vi_gloss": "quan sát kiểu",
+        "practice": "Say: Styles might affect bonds. / Nói: Kiểu có thể ảnh hưởng gắn kết."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "love_languages",
+      "title": { "en": "Love Languages", "vi": "Ngôn Ngữ Yêu" },
+      "copy": {
+        "en": "Learn their expression style. Languages may align. Dare: ask about language.",
+        "vi": "Học kiểu bày tỏ của họ. Ngôn ngữ có thể phù. Dám: hỏi về ngôn ngữ."
+      },
+      "echo_en": ["find your soul mate"],
+      "echo_vi": ["find your soul mate"],
+      "attribution": "APA communication guidelines",
+      "tags": "compatibility",
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "compatibility_checks",
+        "flags": [],
+        "outcome": "self_regulate"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "language learning",
+        "vi_gloss": "học ngôn ngữ",
+        "practice": "Say: Languages can show care. / Nói: Ngôn ngữ có thể thể hiện quan tâm."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "daily_habits",
+      "title": { "en": "Daily Habits", "vi": "Thói Quen Hàng Ngày" },
+      "copy": {
+        "en": "Share routines to check fit. Habits might complement. Dare: discuss habits.",
+        "vi": "Chia thói quen để kiểm phù. Thói quen có thể bổ sung. Dám: bàn thói quen."
+      },
+      "echo_en": ["date with intention"],
+      "echo_vi": ["date with intention"],
+      "attribution": "APA communication guidelines",
+      "tags": "compatibility",
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "compatibility_checks",
+        "flags": [],
+        "outcome": "plan_change"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "habit sharing",
+        "vi_gloss": "chia thói quen",
+        "practice": "Say: Habits may build routines. / Nói: Thói quen có thể xây thói quen."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "lifestyle_fit",
+      "title": { "en": "Lifestyle Fit", "vi": "Phù Hợp Lối Sống" },
+      "copy": {
+        "en": "Compare ways of living. Lifestyles may harmonize. Dare: compare one aspect.",
+        "vi": "So cách sống. Lối sống có thể hòa hợp. Dám: so một khía cạnh."
+      },
+      "echo_en": ["decide to commit or not"],
+      "echo_vi": ["decide to commit or not"],
+      "attribution": "APA communication guidelines",
+      "tags": "compatibility",
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "compatibility_checks",
+        "flags": [],
+        "outcome": "plan_change"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "lifestyle compare",
+        "vi_gloss": "so lối sống",
+        "practice": "Say: Lifestyles can match well. / Nói: Lối sống có thể phù hợp tốt."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "personal_limits",
+      "title": { "en": "Personal Limits", "vi": "Giới Hạn Cá Nhân" },
+      "copy": {
+        "en": "Set clear boundaries. Limits may protect. Dare: state one limit.",
+        "vi": "Đặt ranh giới rõ. Giới hạn có thể bảo vệ. Dám: nêu một giới hạn."
+      },
+      "echo_en": ["date with intention"],
+      "echo_vi": ["date with intention"],
+      "attribution": "APA communication guidelines",
+      "tags": "boundaries",
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "boundaries_consent",
+        "flags": [],
+        "outcome": "self_regulate"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "limit setting",
+        "vi_gloss": "đặt giới hạn",
+        "practice": "Say: Limits can keep safe. / Nói: Giới hạn có thể giữ an toàn."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "consent_practices",
+      "title": { "en": "Consent Practices", "vi": "Thực Hành Đồng Thuận" },
+      "copy": {
+        "en": "Ask for permission clearly. Consent may build trust. Dare: practice asking.",
+        "vi": "Hỏi phép rõ ràng. Đồng thuận có thể xây tin. Dám: luyện hỏi."
+      },
+      "echo_en": ["date with intention"],
+      "echo_vi": ["date with intention"],
+      "attribution": "APA communication guidelines",
+      "tags": "consent",
+      "urgency": "immediate",
+      "severity_level": 4,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "boundaries_consent",
+        "flags": [],
+        "outcome": "self_regulate"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "permission asking",
+        "vi_gloss": "hỏi phép",
+        "practice": "Say: Consent can ensure respect. / Nói: Đồng thuận có thể đảm bảo tôn trọng."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "digital_privacy",
+      "title": { "en": "Digital Privacy", "vi": "Riêng Tư Số" },
+      "copy": {
+        "en": "Protect online info. Privacy may foster safety. Dare: review settings.",
+        "vi": "Bảo vệ thông tin trực tuyến. Riêng tư có thể tăng an toàn. Dám: kiểm cài đặt."
+      },
+      "echo_en": ["date with intention"],
+      "echo_vi": ["date with intention"],
+      "attribution": "NCMEC tips",
+      "tags": "boundaries",
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "boundaries_consent",
+        "flags": [],
+        "outcome": "self_regulate"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "info protection",
+        "vi_gloss": "bảo vệ thông tin",
+        "practice": "Say: Privacy might keep safe. / Nói: Riêng tư có thể giữ an toàn."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "background_checks",
+      "title": { "en": "Background Checks", "vi": "Kiểm Tra Lý Lịch" },
+      "copy": {
+        "en": "Verify basic history online. Checks may reveal issues. Dare: search name.",
+        "vi": "Xác minh lịch cơ bản trực tuyến. Kiểm có thể lộ vấn đề. Dám: tìm tên."
+      },
+      "echo_en": ["date with intention"],
+      "echo_vi": ["date with intention"],
+      "attribution": "NCMEC tips",
+      "tags": "safety",
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "safety_screening",
+        "flags": [],
+        "outcome": "seek_help"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "history verify",
+        "vi_gloss": "xác minh lịch",
+        "practice": "Say: Checks can show facts. / Nói: Kiểm có thể lộ sự kiện."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "red_flags",
+      "title": { "en": "Red Flags", "vi": "Cờ Đỏ" },
+      "copy": {
+        "en": "Watch for inconsistent stories. Flags may signal risk. Dare: note one flag.",
+        "vi": "Xem chuyện không nhất quán. Cờ có thể báo rủi ro. Dám: ghi một cờ."
+      },
+      "echo_en": ["decide to commit or not"],
+      "echo_vi": ["decide to commit or not"],
+      "attribution": "UK CPS stalking guidance",
+      "tags": "safety",
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "safety_screening",
+        "flags": [],
+        "outcome": "plan_change"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "flag watch",
+        "vi_gloss": "xem cờ",
+        "practice": "Say: Flags might warn risks. / Nói: Cờ có thể cảnh báo rủi ro."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "online_safety",
+      "title": { "en": "Online Safety", "vi": "An Toàn Trực Tuyến" },
+      "copy": {
+        "en": "Meet public first. Safety may prevent harm. Dare: plan safe meet.",
+        "vi": "Gặp công cộng trước. An toàn có thể ngăn hại. Dám: lập gặp an toàn."
+      },
+      "echo_en": ["date with intention"],
+      "echo_vi": ["date with intention"],
+      "attribution": "NCMEC tips",
+      "tags": "safety",
+      "urgency": "immediate",
+      "severity_level": 4,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "safety_screening",
+        "flags": [],
+        "outcome": "seek_help"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "safe meet",
+        "vi_gloss": "gặp an toàn",
+        "practice": "Say: Safety can protect. / Nói: An toàn có thể bảo vệ."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "ask_mentors",
+      "title": { "en": "Ask Mentors", "vi": "Hỏi Cố Vấn" },
+      "copy": {
+        "en": "Seek advice from trusted people. Insights may guide. Dare: ask one question.",
+        "vi": "Tìm lời khuyên từ người tin cậy. Thấu hiểu có thể hướng. Dám: hỏi một câu."
+      },
+      "echo_en": ["find your soul mate"],
+      "echo_vi": ["find your soul mate"],
+      "attribution": "APA communication guidelines",
+      "tags": "research",
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "research_tasks",
+        "flags": [],
+        "outcome": "seek_help"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "advice seeking",
+        "vi_gloss": "tìm lời khuyên",
+        "practice": "Say: Mentors can offer insights. / Nói: Cố vấn có thể đưa thấu hiểu."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "read_studies",
+      "title": { "en": "Read Studies", "vi": "Đọc Nghiên Cứu" },
+      "copy": {
+        "en": "Review relationship research. Findings may inform. Dare: read one article.",
+        "vi": "Ôn nghiên cứu quan hệ. Phát hiện có thể thông tin. Dám: đọc một bài."
+      },
+      "echo_en": ["decide to commit or not"],
+      "echo_vi": ["decide to commit or not"],
+      "attribution": "APA communication guidelines",
+      "tags": "research",
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "research_tasks",
+        "flags": [],
+        "outcome": "self_regulate"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "research review",
+        "vi_gloss": "ôn nghiên cứu",
+        "practice": "Say: Studies might give info. / Nói: Nghiên cứu có thể đưa thông tin."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "commitment_criteria",
+      "title": { "en": "Commitment Criteria", "vi": "Tiêu Chí Cam Kết" },
+      "copy": {
+        "en": "List standards for commitment. Criteria may help decide. Dare: define criteria.",
+        "vi": "Liệt tiêu chí cam kết. Tiêu chí có thể giúp quyết. Dám: định tiêu chí."
+      },
+      "echo_en": ["decide to commit or not"],
+      "echo_vi": ["decide to commit or not"],
+      "attribution": "APA communication guidelines",
+      "tags": "decision",
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "go_no_go",
+        "flags": [],
+        "outcome": "plan_change"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "standard list",
+        "vi_gloss": "liệt tiêu chí",
+        "practice": "Say: Criteria can aid decisions. / Nói: Tiêu chí có thể giúp quyết."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "kill_rules",
+      "title": { "en": "Kill Rules", "vi": "Quy Tắc Kết Thúc" },
+      "copy": {
+        "en": "Set end triggers like disrespect. Rules may protect. Dare: list kill rules.",
+        "vi": "Đặt kích hoạt kết như thiếu tôn trọng. Quy tắc có thể bảo vệ. Dám: liệt quy tắc kết."
+      },
+      "echo_en": ["decide to commit or not"],
+      "echo_vi": ["decide to commit or not"],
+      "attribution": "APA communication guidelines",
+      "tags": "decision",
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "go_no_go",
+        "flags": [],
+        "outcome": "plan_change"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "trigger setting",
+        "vi_gloss": "đặt kích hoạt",
+        "practice": "Say: Rules might save time. / Nói: Quy tắc có thể tiết kiệm thời gian."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "immediate_physical_threat",
+      "title": {
+        "en": "Immediate Physical Threat",
+        "vi": "Đe Dọa Vật Lý Ngay Lập Tức"
+      },
+      "copy": {
+        "en": "Recognize violence or stalking signs. Stop. Secure safety and data. Contact authorities or legal counsel now.",
+        "vi": "Nhận diện dấu hiệu bạo lực hoặc theo dõi. Dừng lại. Đảm bảo an toàn và dữ liệu. Liên hệ cơ quan hoặc luật sư ngay."
+      },
+      "echo_en": ["date with intention"],
+      "echo_vi": ["date with intention"],
+      "attribution": "UK CPS stalking guidance",
+      "tags": "safety",
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "crisis",
+        "flags": ["crisis"],
+        "outcome": "seek_help"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "threat recognition",
+        "vi_gloss": "nhận diện đe dọa",
+        "practice": "Say: Safety can come first. / Nói: An toàn có thể ưu tiên."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "sexual_coercion_or_assault",
+      "title": {
+        "en": "Sexual Coercion Or Assault",
+        "vi": "Ép Buộc Tình Dục Hoặc Tấn Công"
+      },
+      "copy": {
+        "en": "Identify coercion or pressure. Stop. Secure safety and data. Contact authorities or legal counsel now.",
+        "vi": "Xác định ép buộc hoặc áp lực. Dừng lại. Đảm bảo an toàn và dữ liệu. Liên hệ cơ quan hoặc luật sư ngay."
+      },
+      "echo_en": ["date with intention"],
+      "echo_vi": ["date with intention"],
+      "attribution": "WHO IPV resources",
+      "tags": "safety",
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "crisis",
+        "flags": ["crisis"],
+        "outcome": "seek_help"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "coercion identification",
+        "vi_gloss": "xác định ép buộc",
+        "practice": "Say: Consent can protect. / Nói: Đồng thuận có thể bảo vệ."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "severe_domestic_abuse",
+      "title": {
+        "en": "Severe Domestic Abuse",
+        "vi": "Bạo Lực Gia Đình Nghiêm Trọng"
+      },
+      "copy": {
+        "en": "Spot isolation or control. Stop. Secure safety and data. Contact authorities or legal counsel now.",
+        "vi": "Phát hiện cô lập hoặc kiểm soát. Dừng lại. Đảm bảo an toàn và dữ liệu. Liên hệ cơ quan hoặc luật sư ngay."
+      },
+      "echo_en": ["decide to commit or not"],
+      "echo_vi": ["decide to commit or not"],
+      "attribution": "WHO IPV resources",
+      "tags": "safety",
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "crisis",
+        "flags": ["crisis"],
+        "outcome": "seek_help"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "abuse spotting",
+        "vi_gloss": "phát hiện lạm dụng",
+        "practice": "Say: Help can be sought. / Nói: Giúp có thể tìm."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "doxxing_blackmail",
+      "title": {
+        "en": "Doxxing Blackmail",
+        "vi": "Tiết Lộ Thông Tin Tống Tiền"
+      },
+      "copy": {
+        "en": "Detect harassment or extortion. Stop. Secure safety and data. Contact authorities or legal counsel now.",
+        "vi": "Phát hiện quấy rối hoặc tống tiền. Dừng lại. Đảm bảo an toàn và dữ liệu. Liên hệ cơ quan hoặc luật sư ngay."
+      },
+      "echo_en": ["date with intention"],
+      "echo_vi": ["date with intention"],
+      "attribution": "UK CPS stalking guidance",
+      "tags": "safety",
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "crisis",
+        "flags": ["crisis"],
+        "outcome": "seek_help"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "extortion detection",
+        "vi_gloss": "phát hiện tống tiền",
+        "practice": "Say: Authorities can assist. / Nói: Cơ quan có thể giúp."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "suicidal_ideation_partner_self",
+      "title": {
+        "en": "Suicidal Ideation Partner Self",
+        "vi": "Ý Tự Tử Đối Tác Tự Thân"
+      },
+      "copy": {
+        "en": "Notice harm risks in self or partner. Stop. Secure safety and data. Contact authorities or legal counsel now.",
+        "vi": "Chú ý rủi ro hại trong tự hoặc đối tác. Dừng lại. Đảm bảo an toàn và dữ liệu. Liên hệ cơ quan hoặc luật sư ngay."
+      },
+      "echo_en": ["decide to commit or not"],
+      "echo_vi": ["decide to commit or not"],
+      "attribution": "WHO IPV resources",
+      "tags": "safety",
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "crisis",
+        "flags": ["crisis"],
+        "outcome": "seek_help"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "risk notice",
+        "vi_gloss": "chú ý rủi ro",
+        "practice": "Say: Help can save lives. / Nói: Giúp có thể cứu mạng."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    },
+    {
+      "slug": "minors_involved_or_suspicion",
+      "title": {
+        "en": "Minors Involved Or Suspicion",
+        "vi": "Vị Thành Niên Liên Quan Hoặc Nghi Ngờ"
+      },
+      "copy": {
+        "en": "Suspect age issues or exploitation. Stop. Secure safety and data. Contact authorities or legal counsel now.",
+        "vi": "Nghi vấn đề tuổi tác hoặc lợi dụng. Dừng lại. Đảm bảo an toàn và dữ liệu. Liên hệ cơ quan hoặc luật sư ngay."
+      },
+      "echo_en": ["date with intention"],
+      "echo_vi": ["date with intention"],
+      "attribution": "NCMEC tips",
+      "tags": "safety",
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["relationship_readiness"],
+      "metadata": {
+        "topic": "crisis",
+        "flags": ["crisis"],
+        "outcome": "seek_help"
+      },
+      "language": {
+        "cefr": "B1",
+        "en_focus": "age suspicion",
+        "vi_gloss": "nghi tuổi tác",
+        "practice": "Say: Authorities can protect. / Nói: Cơ quan có thể bảo vệ."
+      },
+      "created_at": "2025-10-10T00:00:00Z",
+      "updated_at": "2025-10-10T00:00:00Z"
+    }
+  ]
+}

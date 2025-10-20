@@ -1,0 +1,496 @@
+{
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nStoicism (enchiridion, discourses, letters), solid research\n\nSafety first; we aren't therapists. For any danger, step away. Contact support lines; harm sensitive verbs\n\nEach bullet: teach in an approach that can be used by an App or a Person to help themselves be better and calm\n\nPhilosophy: calm, fail-forward, small steps, real world, humane language\n\nBeliefs:\n- Don’t promise. Don’t blame.\n- Don’t diagnose. Don’t label.\n- Don’t argue. Don’t shame.\n\nTalk points\n\n- Marvel at people. Sense of wonder.\n- People apologize for falling short all the time; 99% are trying their best. \n- The map in our head can be wrong. That’s OK. That’s update gently. \n- Mind the body’s state. Sleep, food, light, walk.  \n- Calm is a verb. Courage is a verb. Care is a verb.\n\nTiny habits to teach:  \n- One breath on purpose.  \n- Two sentences that are true.  \n- Three things you can control.  \n- Four second pause before reply.  \n\nFor heavy days: make the day smaller. \n- Eat a little. Drink water. Open a window. Text a friend. \n- Make the bed. Tie your shoes. Touch sunlight.  \n- Name three objects you see. \n\n(“Stoic” = everyday practice. It doesn’t kill emotion. It steadies the helm.)",
+  "schema_version": "1.2",
+  "schema_id": "stoicism_room_v1",
+  "description": "Echologic Mercy Blade for Stoic philosophy and mental self-care. Bilingual EN/VI. Gentle, real-world, small steps.",
+  "description_vi": "Mercy Blade Echologic về triết học Khắc Kỷ và tự chăm sóc tinh thần. Song ngữ EN/VI. Nhẹ nhàng, thực tế, từng bước nhỏ.",
+  "supported_languages": ["en", "vi"],
+  "localization": {
+    "mode": "bilingual",
+    "primary": "en",
+    "secondary": "vi",
+    "fallback": "en"
+  },
+  "safety_disclaimer": "Educational guidance; not medical, legal, or professional advice.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không phải tư vấn y khoa, pháp lý hoặc chuyên môn.",
+  "crisis_footer": {
+    "en": "Stop. Secure safety and data. Contact local services, hotlines, or legal counsel now.",
+    "vi": "Dừng lại. Bảo vệ an toàn và dữ liệu. Liên hệ dịch vụ địa phương, đường dây nóng hoặc cố vấn pháp lý ngay."
+  },
+  "safety_footer": {
+    "en": "Prioritize safety and compliance; consult qualified professionals when unsure.",
+    "vi": "Ưu tiên an toàn và tuân thủ; tham khảo chuyên gia khi không chắc."
+  },
+  "meta": {
+    "created_at": "2025-10-10T00:00:00Z",
+    "updated_at": "2025-10-20T00:00:00Z",
+    "entry_count": 16,
+    "last_verified": "2025-10-20"
+  },
+  "enums": {
+    "tags": [
+      "mindfulness",
+      "emotion",
+      "action",
+      "reflection",
+      "perspective",
+      "values",
+      "safety",
+      "community",
+      "virtue",
+      "impressions",
+      "resilience",
+      "acceptance"
+    ],
+    "urgency": {
+      "immediate": "Act now to prevent harm.",
+      "soon": "Address in the next few days.",
+      "routine": "Handle as part of regular process."
+    },
+    "severity_level": {
+      "1": "Minimal impact.",
+      "2": "Low impact.",
+      "3": "Moderate impact.",
+      "4": "High impact.",
+      "5": "Critical impact."
+    },
+    "systems": ["stoicism"]
+  },
+  "keywords": {
+    "mindful_breath": {
+      "en": ["mindful breath", "calm breath", "square breath"],
+      "vi": ["thở chánh niệm", "thở bình tĩnh", "thở hình vuông"]
+    },
+    "dichotomy_control": {
+      "en": [
+        "dichotomy of control",
+        "what i can control",
+        "what i cannot control"
+      ],
+      "vi": [
+        "nhị nguyên kiểm soát",
+        "điều tôi kiểm soát",
+        "điều tôi không kiểm soát"
+      ]
+    },
+    "present_action": {
+      "en": ["present action", "one small step", "mindful action"],
+      "vi": ["hành động hiện tại", "một bước nhỏ", "hành động chánh niệm"]
+    },
+    "perspective_shift": {
+      "en": ["perspective shift", "view from above", "zoom out"],
+      "vi": ["đổi góc nhìn", "nhìn từ trên cao", "phóng rộng"]
+    },
+    "negative_visualization": {
+      "en": ["negative visualization", "pre-mortem", "plan for setback"],
+      "vi": ["hình dung tiêu cực", "tiền giải phẫu", "kế hoạch cho trục trặc"]
+    },
+    "virtue_quadrant": {
+      "en": ["virtue", "wisdom justice courage temperance", "values in action"],
+      "vi": [
+        "đức hạnh",
+        "khôn ngoan công bằng can đảm tiết độ",
+        "giá trị trong hành động"
+      ]
+    },
+    "evening_review": {
+      "en": ["evening review", "three questions", "daily reflection"],
+      "vi": ["tổng kết buổi tối", "ba câu hỏi", "soi lại trong ngày"]
+    },
+    "heavy_day": {
+      "en": ["heavy day", "make day smaller", "tiny wins"],
+      "vi": ["ngày nặng nề", "thu nhỏ ngày", "thắng lợi nhỏ"]
+    },
+    "judge_impressions": {
+      "en": ["judge impressions", "examine thoughts", "rational check"],
+      "vi": ["xét ấn tượng", "kiểm tra suy nghĩ", "kiểm tra lý tính"]
+    },
+    "accept_fate": {
+      "en": ["accept fate", "amor fati", "love what is"],
+      "vi": ["chấp nhận số phận", "amor fati", "yêu điều đang là"]
+    },
+    "virtue_practice": {
+      "en": ["practice virtue", "daily virtue", "stoic virtues"],
+      "vi": ["thực hành đức hạnh", "đức hạnh hàng ngày", "đức hạnh khắc kỷ"]
+    },
+    "resilience_build": {
+      "en": ["build resilience", "stoic strength", "endure hardship"],
+      "vi": ["xây dựng sức bền", "sức mạnh khắc kỷ", "chịu đựng khó khăn"]
+    },
+    "community_care": {
+      "en": ["stoic community", "help others", "social virtue"],
+      "vi": ["cộng đồng khắc kỷ", "giúp người khác", "đức hạnh xã hội"]
+    },
+    "emotional_steady": {
+      "en": ["steady emotions", "stoic calm", "equanimity"],
+      "vi": ["bình ổn cảm xúc", "bình tĩnh khắc kỷ", "tâm bình đẳng"]
+    },
+    "daily_stoic": {
+      "en": ["daily stoic", "morning routine", "stoic day"],
+      "vi": ["khắc kỷ hàng ngày", "thói quen sáng", "ngày khắc kỷ"]
+    },
+    "seneca_letters": {
+      "en": ["seneca letters", "stoic letters", "moral letters"],
+      "vi": ["thư seneca", "thư khắc kỷ", "thư đạo đức"]
+    }
+  },
+  "entries": [
+    {
+      "slug": "mindful_breath",
+      "title": {
+        "en": "Mindful breath in, longer out",
+        "vi": "Hít vào chánh niệm, thở ra dài hơn"
+      },
+      "copy": {
+        "en": "Breathe in 4, breathe out 6–8. Soften shoulders. Attention on nose or belly. Repeat for 2 minutes.",
+        "vi": "Hít 4, thở 6–8. Thả lỏng vai. Chú ý ở mũi hoặc bụng. Lặp 2 phút."
+      },
+      "tags": ["mindfulness"],
+      "urgency": "routine",
+      "severity_level": "2",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "dichotomy_control",
+      "title": {
+        "en": "Two lists: control vs. no control",
+        "vi": "Hai danh sách: kiểm soát vs. không kiểm soát"
+      },
+      "copy": {
+        "en": "Split a page. Left: actions you can influence. Right: things outside influence. Place effort on the left.",
+        "vi": "Chia đôi trang. Trái: hành động bạn có thể tác động. Phải: điều ngoài ảnh hưởng. Dồn sức cho cột trái."
+      },
+      "tags": ["perspective"],
+      "urgency": "routine",
+      "severity_level": "2",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "present_action",
+      "title": {
+        "en": "Do one small present action",
+        "vi": "Làm một hành động nhỏ hiện tại"
+      },
+      "copy": {
+        "en": "Wash one cup. Send one kind message. Write three true sentences: what happened, what you felt, what to try next.",
+        "vi": "Rửa một cái cốc. Gửi một tin nhắn tử tế. Viết ba câu thật: điều đã xảy ra, cảm xúc của bạn, điều sẽ thử tiếp."
+      },
+      "tags": ["action"],
+      "urgency": "routine",
+      "severity_level": "2",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "perspective_shift",
+      "title": {
+        "en": "Zoom out: view from above",
+        "vi": "Phóng rộng: nhìn từ trên cao"
+      },
+      "copy": {
+        "en": "Imagine a hill view. Ask: what may matter in a week, a year, a decade? Let fear soften; choose a kind step.",
+        "vi": "Hãy tưởng như đứng trên đồi. Hỏi: điều gì còn quan trọng sau một tuần, một năm, một thập kỷ? Mềm nỗi sợ; chọn bước tử tế."
+      },
+      "tags": ["perspective"],
+      "urgency": "routine",
+      "severity_level": "2",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "negative_visualization",
+      "title": {
+        "en": "Rehearse setbacks with calm",
+        "vi": "Diễn tập trục trặc một cách điềm tĩnh"
+      },
+      "copy": {
+        "en": "Picture rain, delay, or loss. Plan a measured response. This builds readiness and may reduce shock.",
+        "vi": "Hình dung mưa, chậm trễ hoặc mất mát. Lập phản ứng vừa phải. Điều này có thể tăng sẵn sàng và giảm sốc."
+      },
+      "tags": ["perspective"],
+      "urgency": "routine",
+      "severity_level": "3",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "virtue_quadrant",
+      "title": {
+        "en": "Pick one virtue, tie to an act",
+        "vi": "Chọn một đức hạnh, gắn vào việc làm"
+      },
+      "copy": {
+        "en": "Wisdom: ask one good question. Justice: give fair credit. Courage: say a true sentence kindly. Temperance: take one less.",
+        "vi": "Khôn ngoan: hỏi một câu tốt. Công bằng: ghi công đúng. Can đảm: nói một câu thật, tử tế. Tiết độ: bớt một điều."
+      },
+      "tags": ["values"],
+      "urgency": "routine",
+      "severity_level": "3",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "evening_review",
+      "title": {
+        "en": "Three-question evening review",
+        "vi": "Ba câu hỏi tổng kết tối"
+      },
+      "copy": {
+        "en": "What went well? What did not? What will I try tomorrow? One line each, then close the book.",
+        "vi": "Điều gì đã tốt? Điều gì chưa? Ngày mai tôi sẽ thử gì? Mỗi câu một dòng, rồi đóng sổ."
+      },
+      "tags": ["reflection"],
+      "urgency": "routine",
+      "severity_level": "2",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "heavy_day",
+      "title": {
+        "en": "Make the day smaller",
+        "vi": "Thu nhỏ ngày lại"
+      },
+      "copy": {
+        "en": "Eat a little, drink water, open a window, text a friend. One tiny win may restart momentum.",
+        "vi": "Ăn chút gì, uống nước, mở cửa sổ, nhắn cho một người bạn. Một thắng lợi nhỏ có thể khởi động lại đà đi."
+      },
+      "tags": ["safety"],
+      "urgency": "soon",
+      "severity_level": "3",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "judge_impressions",
+      "title": {
+        "en": "Examine impressions calmly",
+        "vi": "Xét ấn tượng bình tĩnh"
+      },
+      "copy": {
+        "en": "When a thought arises, pause. Ask: Is this true? Is it helpful? Respond with reason, not reaction.",
+        "vi": "Khi suy nghĩ dâng, tạm dừng. Hỏi: Điều này có thật? Có hữu ích? Đáp lại bằng lý trí, không phản ứng."
+      },
+      "tags": ["impressions"],
+      "urgency": "routine",
+      "severity_level": "2",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "accept_fate",
+      "title": {
+        "en": "Love what happens (amor fati)",
+        "vi": "Yêu điều xảy ra (amor fati)"
+      },
+      "copy": {
+        "en": "Embrace events as they are. Ask: What can I learn here? Turn obstacles into opportunities gently.",
+        "vi": "Ôm lấy sự việc như chúng là. Hỏi: Tôi học gì ở đây? Biến chướng ngại thành cơ hội nhẹ nhàng."
+      },
+      "tags": ["acceptance"],
+      "urgency": "routine",
+      "severity_level": "3",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "virtue_practice",
+      "title": {
+        "en": "Daily virtue in small deeds",
+        "vi": "Đức hạnh hàng ngày qua việc nhỏ"
+      },
+      "copy": {
+        "en": "Choose wisdom, justice, courage, or temperance. Act on it once today, note the effect.",
+        "vi": "Chọn khôn ngoan, công bằng, can đảm hoặc tiết độ. Thực hành một lần hôm nay, ghi chú hiệu quả."
+      },
+      "tags": ["virtue"],
+      "urgency": "routine",
+      "severity_level": "2",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "resilience_build",
+      "title": {
+        "en": "Build resilience through endurance",
+        "vi": "Xây sức bền qua chịu đựng"
+      },
+      "copy": {
+        "en": "Face a small discomfort voluntarily. Reflect: What strength did this build? Grow step by step.",
+        "vi": "Đối mặt khó chịu nhỏ tự nguyện. Suy ngẫm: Điều này xây sức mạnh gì? Tăng dần từng bước."
+      },
+      "tags": ["resilience"],
+      "urgency": "routine",
+      "severity_level": "3",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "community_care",
+      "title": {
+        "en": "Care for community with virtue",
+        "vi": "Chăm sóc cộng đồng bằng đức hạnh"
+      },
+      "copy": {
+        "en": "Help one person today justly. Ask: How does this align with common good? Act kindly.",
+        "vi": "Giúp một người hôm nay công bằng. Hỏi: Điều này phù hợp lợi ích chung? Hành động tử tế."
+      },
+      "tags": ["community"],
+      "urgency": "routine",
+      "severity_level": "2",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "emotional_steady",
+      "title": {
+        "en": "Steady emotions with reason",
+        "vi": "Bình ổn cảm xúc bằng lý trí"
+      },
+      "copy": {
+        "en": "When emotion surges, pause four seconds. Judge: Is this in my control? Respond steadily.",
+        "vi": "Khi cảm xúc dâng, dừng bốn giây. Xét: Điều này trong kiểm soát? Đáp lại vững vàng."
+      },
+      "tags": ["emotion"],
+      "urgency": "routine",
+      "severity_level": "2",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "daily_stoic",
+      "title": {
+        "en": "Start day with Stoic intent",
+        "vi": "Bắt ngày bằng ý định Khắc Kỷ"
+      },
+      "copy": {
+        "en": "Morning: Name three things you control today. Evening: Review with gratitude.",
+        "vi": "Sáng: Nêu ba điều bạn kiểm soát hôm nay. Tối: Tổng kết với biết ơn."
+      },
+      "tags": ["reflection"],
+      "urgency": "routine",
+      "severity_level": "2",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "seneca_letters",
+      "title": {
+        "en": "Reflect on time like Seneca",
+        "vi": "Suy ngẫm thời gian như Seneca"
+      },
+      "copy": {
+        "en": "Ask: Did I use time wisely today? Plan tomorrow's priorities gently.",
+        "vi": "Hỏi: Hôm nay tôi dùng thời gian khôn ngoan? Lập kế hoạch ưu tiên mai nhẹ nhàng."
+      },
+      "tags": ["values"],
+      "urgency": "routine",
+      "severity_level": "3",
+      "systems": ["stoicism"]
+    }
+  ],
+  "micro_packs": [
+    {
+      "slug": "pack_micro_001",
+      "title": {
+        "en": "Micro practice set 1",
+        "vi": "Bộ thực hành vi mô 1"
+      },
+      "steps": [
+        {
+          "en": "Breathe mindfully: in 4, out 6.",
+          "vi": "Thở chánh niệm: vào 4, ra 6."
+        },
+        {
+          "en": "List one controllable action.",
+          "vi": "Liệt một hành động kiểm soát được."
+        },
+        {
+          "en": "Take a small step forward.",
+          "vi": "Làm bước nhỏ tiến tới."
+        },
+        {
+          "en": "Reflect: what learned today?",
+          "vi": "Suy ngẫm: học gì hôm nay?"
+        }
+      ],
+      "notes": {
+        "en": "Build calm through repetition.",
+        "vi": "Xây bình tĩnh qua lặp lại."
+      }
+    },
+    {
+      "slug": "pack_micro_002",
+      "title": {
+        "en": "Micro practice set 2",
+        "vi": "Bộ thực hành vi mô 2"
+      },
+      "steps": [
+        {
+          "en": "Pause, examine impression.",
+          "vi": "Dừng, xét ấn tượng."
+        },
+        {
+          "en": "Accept what comes gently.",
+          "vi": "Chấp nhận điều đến nhẹ nhàng."
+        },
+        {
+          "en": "Act with one virtue now.",
+          "vi": "Hành động một đức hạnh giờ."
+        },
+        {
+          "en": "Build strength in small way.",
+          "vi": "Xây sức mạnh cách nhỏ."
+        }
+      ],
+      "notes": {
+        "en": "Steady mind with practice.",
+        "vi": "Vững tâm qua thực hành."
+      }
+    }
+  ],
+  "audio_guides": [
+    {
+      "slug": "audio_breath_reset",
+      "title": {
+        "en": "Breath reset (2 minutes)",
+        "vi": "Đặt lại hơi thở (2 phút)"
+      },
+      "script": {
+        "en": "Find a gentle posture. Breathe in four. Breathe out six–eight. Soften the shoulders. Let attention rest at the nose or belly. If the mind wanders, note it and return to breath.",
+        "vi": "Chọn tư thế nhẹ nhàng. Hít vào bốn. Thở ra sáu–tám. Thả lỏng vai. Để ý ở mũi hoặc bụng. Nếu tâm trí đi xa, nhận ra rồi quay lại hơi thở."
+      }
+    },
+    {
+      "slug": "audio_view_from_above",
+      "title": {
+        "en": "View from above (3 minutes)",
+        "vi": "Nhìn từ trên cao (3 phút)"
+      },
+      "script": {
+        "en": "Picture yourself on a hill. See the room, street, city, and sky. Ask what may matter in a week or a year. Let the breath guide a calm choice.",
+        "vi": "Hãy tưởng bạn đứng trên đồi. Thấy căn phòng, con phố, thành phố và bầu trời. Hỏi điều gì còn quan trọng sau một tuần hay một năm. Để hơi thở dẫn dắt một chọn lựa bình tĩnh."
+      }
+    },
+    {
+      "slug": "audio_evening_review",
+      "title": {
+        "en": "Evening review (3 minutes)",
+        "vi": "Tổng kết buổi tối (3 phút)"
+      },
+      "script": {
+        "en": "Ask three questions: what went well, what did not, what to try tomorrow. One short line each. Close the day with a kind thought toward yourself.",
+        "vi": "Hỏi ba câu: điều gì đã tốt, điều gì chưa, ngày mai sẽ thử gì. Mỗi câu một dòng ngắn. Khép ngày với một ý nghĩ tử tế cho chính mình."
+      }
+    },
+    {
+      "slug": "audio_amor_fati",
+      "title": {
+        "en": "Embrace fate (4 minutes)",
+        "vi": "Ôm lấy số phận (4 phút)"
+      },
+      "script": {
+        "en": "Sit comfortably. Reflect on a recent event. Ask: What lesson here? Breathe acceptance. Turn it to growth with calm.",
+        "vi": "Ngồi thoải mái. Suy ngẫm sự việc gần. Hỏi: Bài học gì? Thở chấp nhận. Biến thành tăng trưởng điềm tĩnh."
+      }
+    },
+    {
+      "slug": "audio_virtue_moment",
+      "title": {
+        "en": "Virtue in moment (3 minutes)",
+        "vi": "Đức hạnh trong khoảnh khắc (3 phút)"
+      },
+      "script": {
+        "en": "Choose a virtue: wisdom or courage. Visualize acting on it today. Breathe strength. Commit gently.",
+        "vi": "Chọn đức hạnh: khôn ngoan hay can đảm. Hình dung hành động hôm nay. Thở sức mạnh. Cam kết nhẹ nhàng."
+      }
+    }
+  ]
+}

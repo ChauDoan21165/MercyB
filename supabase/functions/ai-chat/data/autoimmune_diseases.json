@@ -1,0 +1,699 @@
+{
+  "schema_version": "1.1",
+  "schema_id": "autoimmune_diseases",
+  "description": "Echologic Mercy Blade room for autoimmune disease management and related health guidance",
+  "description_vi": "Phòng Mercy Blade về quản lý bệnh tự miễn và hướng dẫn sức khỏe liên quan",
+  "supported_languages": ["en", "vi"],
+  "localization": {
+    "default": "en",
+    "fallback": "vi",
+    "i18n_required": true,
+    "i18n_verified": true
+  },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice or emergency care.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn y tế chuyên nghiệp hoặc chăm sóc khẩn cấp.",
+  "crisis_footer": {
+    "en": "For emergencies, contact local crisis support, emergency services, or the nearest hospital.",
+    "vi": "Trong trường hợp khẩn cấp, liên hệ hỗ trợ khủng hoảng địa phương, dịch vụ khẩn cấp hoặc bệnh viện gần nhất."
+  },
+  "meta": {
+    "created_at": "2025-10-06T22:05:00+09:00",
+    "updated_at": "2025-10-07T17:01:00+09:00",
+    "checksum_sha256": "placeholder_sha256_hash_to_be_generated",
+    "meta_notes": "Keyword-driven; field-tested tone for autoimmune disease management and prevention | artifact_ids updated to UUIDv4 with valid variant nibble (8,9,a,b) | batch=final/1 | batch_total=1 | Per-entry attribution is optional and inherited from default_attribution | Vietnamese keywords use space-separated tokenization for search tooling compatibility | Checksum to be computed at freeze time."
+  },
+  "enums": {
+    "tags": [
+      "autoimmune_diseases",
+      "immune_health",
+      "chronic_conditions",
+      "nutrition",
+      "stress_management",
+      "child_health",
+      "adult_health",
+      "elderly_care",
+      "prevention",
+      "symptom_management"
+    ],
+    "urgency": ["routine", "soon", "immediate"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["immune_system", "musculoskeletal_system", "digestive_system"]
+  },
+  "keywords": {
+    "autoimmune_management": {
+      "en": [
+        "autoimmune_management",
+        "immune_disease_control",
+        "chronic_immune_health",
+        "autoimmune_care"
+      ],
+      "vi": [
+        "quản lý tự miễn",
+        "kiểm soát bệnh miễn dịch",
+        "sức khỏe miễn dịch mãn tính",
+        "chăm sóc tự miễn"
+      ]
+    },
+    "anti_inflammatory_diet": {
+      "en": [
+        "anti_inflammatory_diet",
+        "immune_diet",
+        "inflammation_control",
+        "gut_health_diet"
+      ],
+      "vi": [
+        "chế độ ăn kháng viêm",
+        "chế độ ăn miễn dịch",
+        "kiểm soát viêm",
+        "chế độ ăn sức khỏe ruột"
+      ]
+    },
+    "stress_and_autoimmune": {
+      "en": [
+        "stress_and_autoimmune",
+        "stress_immune_impact",
+        "stress_management",
+        "autoimmune_stress"
+      ],
+      "vi": [
+        "căng thẳng và tự miễn",
+        "tác động căng thẳng miễn dịch",
+        "quản lý căng thẳng",
+        "căng thẳng tự miễn"
+      ]
+    },
+    "autoimmune_in_children": {
+      "en": [
+        "autoimmune_in_children",
+        "pediatric_autoimmune",
+        "child_immune_health",
+        "kids_autoimmune"
+      ],
+      "vi": [
+        "tự miễn trẻ em",
+        "tự miễn nhi khoa",
+        "sức khỏe miễn dịch trẻ",
+        "tự miễn trẻ"
+      ]
+    },
+    "autoimmune_in_adults": {
+      "en": [
+        "autoimmune_in_adults",
+        "adult_autoimmune",
+        "grownup_immune_health",
+        "adult_chronic",
+        "adult_autoimmune_care"
+      ],
+      "vi": [
+        "tự miễn người lớn",
+        "tự miễn trưởng thành",
+        "sức khỏe miễn dịch người lớn",
+        "mãn tính người lớn",
+        "chăm sóc tự miễn người lớn"
+      ]
+    },
+    "autoimmune_in_elderly": {
+      "en": [
+        "autoimmune_in_elderly",
+        "senior_autoimmune",
+        "elderly_immune_health",
+        "aged_chronic"
+      ],
+      "vi": [
+        "tự miễn người cao tuổi",
+        "tự miễn người già",
+        "sức khỏe miễn dịch người cao tuổi",
+        "mãn tính người già"
+      ]
+    },
+    "autoimmune_symptom_management": {
+      "en": [
+        "autoimmune_symptom_management",
+        "symptom_control",
+        "immune_symptoms",
+        "chronic_symptom_care"
+      ],
+      "vi": [
+        "quản lý triệu chứng tự miễn",
+        "kiểm soát triệu chứng",
+        "triệu chứng miễn dịch",
+        "chăm sóc triệu chứng mãn tính"
+      ]
+    },
+    "autoimmune_nutrition": {
+      "en": [
+        "autoimmune_nutrition",
+        "immune_dietary_support",
+        "nutrition_for_autoimmune",
+        "healthy_eating"
+      ],
+      "vi": [
+        "dinh dưỡng tự miễn",
+        "hỗ trợ chế độ ăn miễn dịch",
+        "dinh dưỡng cho tự miễn",
+        "ăn uống lành mạnh"
+      ]
+    },
+    "autoimmune_exercise": {
+      "en": [
+        "autoimmune_exercise",
+        "physical_activity_autoimmune",
+        "immune_fitness",
+        "gentle_exercise"
+      ],
+      "vi": [
+        "tập thể dục tự miễn",
+        "hoạt động thể chất tự miễn",
+        "thể lực miễn dịch",
+        "tập thể dục nhẹ nhàng"
+      ]
+    },
+    "autoimmune_sleep": {
+      "en": [
+        "autoimmune_sleep",
+        "rest_for_autoimmune",
+        "sleep_health",
+        "immune_recovery"
+      ],
+      "vi": [
+        "giấc ngủ tự miễn",
+        "nghỉ ngơi cho tự miễn",
+        "sức khỏe giấc ngủ",
+        "phục hồi miễn dịch"
+      ]
+    },
+    "autoimmune_stress_management": {
+      "en": [
+        "autoimmune_stress_management",
+        "stress_reduction_autoimmune",
+        "mental_wellness",
+        "immune_calm"
+      ],
+      "vi": [
+        "quản lý căng thẳng tự miễn",
+        "giảm căng thẳng tự miễn",
+        "sức khỏe tinh thần",
+        "bình tĩnh miễn dịch"
+      ]
+    },
+    "autoimmune_flare_management": {
+      "en": [
+        "autoimmune_flare_management",
+        "flare_control",
+        "symptom_flare",
+        "immune_flare_care"
+      ],
+      "vi": [
+        "quản lý bùng phát tự miễn",
+        "kiểm soát bùng phát",
+        "triệu chứng bùng phát",
+        "chăm sóc bùng phát miễn dịch"
+      ]
+    },
+    "autoimmune_medication": {
+      "en": [
+        "autoimmune_medication",
+        "immune_suppressants",
+        "chronic_medication",
+        "treatment_plan"
+      ],
+      "vi": [
+        "thuốc tự miễn",
+        "thuốc ức chế miễn dịch",
+        "thuốc mãn tính",
+        "kế hoạch điều trị"
+      ]
+    },
+    "autoimmune_monitoring": {
+      "en": [
+        "autoimmune_monitoring",
+        "symptom_tracking",
+        "immune_health_check",
+        "chronic_monitoring"
+      ],
+      "vi": [
+        "theo dõi tự miễn",
+        "theo dõi triệu chứng",
+        "kiểm tra sức khỏe miễn dịch",
+        "theo dõi mãn tính"
+      ]
+    },
+    "autoimmune_inflammation_control": {
+      "en": [
+        "autoimmune_inflammation_control",
+        "inflammation_management",
+        "immune_inflammation",
+        "anti_inflammatory"
+      ],
+      "vi": [
+        "kiểm soát viêm tự miễn",
+        "quản lý viêm",
+        "viêm miễn dịch",
+        "kháng viêm"
+      ]
+    },
+    "autoimmune_prevention": {
+      "en": [
+        "autoimmune_prevention",
+        "immune_health_prevention",
+        "chronic_prevention",
+        "disease_management"
+      ],
+      "vi": [
+        "phòng ngừa tự miễn",
+        "phòng ngừa sức khỏe miễn dịch",
+        "phòng ngừa mãn tính",
+        "quản lý bệnh"
+      ]
+    },
+    "autoimmune_child_health": {
+      "en": [
+        "autoimmune_child_health",
+        "pediatric_autoimmune",
+        "child_immune_care",
+        "kids_chronic"
+      ],
+      "vi": [
+        "sức khỏe tự miễn trẻ em",
+        "tự miễn nhi khoa",
+        "chăm sóc miễn dịch trẻ",
+        "mãn tính trẻ"
+      ]
+    },
+    "autoimmune_adult_health": {
+      "en": [
+        "autoimmune_adult_health",
+        "adult_immune_health",
+        "grownup_chronic",
+        "adult_autoimmune_care"
+      ],
+      "vi": [
+        "sức khỏe tự miễn người lớn",
+        "sức khỏe miễn dịch người lớn",
+        "mãn tính người trưởng thành",
+        "chăm sóc tự miễn người lớn"
+      ]
+    },
+    "autoimmune_elderly_health": {
+      "en": [
+        "autoimmune_elderly_health",
+        "elderly_immune_health",
+        "senior_chronic",
+        "aged_autoimmune_care"
+      ],
+      "vi": [
+        "sức khỏe tự miễn người cao tuổi",
+        "sức khỏe miễn dịch người cao tuổi",
+        "mãn tính người già",
+        "chăm sóc tự miễn người cao tuổi"
+      ]
+    },
+    "autoimmune_medical_consultation": {
+      "en": [
+        "autoimmune_medical_consultation",
+        "doctor_visit_autoimmune",
+        "immune_consultation",
+        "chronic_care"
+      ],
+      "vi": [
+        "tư vấn y tế tự miễn",
+        "thăm bác sĩ tự miễn",
+        "tư vấn miễn dịch",
+        "chăm sóc mãn tính"
+      ]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Managing Autoimmune Conditions\n\nAutoimmune conditions can affect daily life, but some steps might help with symptoms. This guide connects ideas from the room's entries to offer practical tips. Remember, this is general information—always talk to a doctor for advice.\n\n### Key Practices from Entries\nEntries like autoimmune management and symptom management suggest tracking how you feel. For diet, anti inflammatory diet and autoimmune nutrition recommend foods like fruits and vegetables to reduce inflammation. Stress and autoimmune highlights relaxation techniques, while autoimmune stress management adds mindfulness. For activity, autoimmune exercise suggests gentle walks. Sleep from autoimmune sleep is important for recovery. Entries for flares, like autoimmune flare management, advise rest during bad times. Medication from autoimmune medication reminds to follow doctor's plans. Monitoring with autoimmune monitoring helps spot changes. Prevention and inflammation control focus on habits to avoid issues. Age-specific entries for children, adults, and elderly adjust tips, like simpler routines for kids.\n\n### Using Research Tasks\nTo learn more, use research tasks. For example, search for 'anti inflammatory foods list' to try new recipes. Or look up 'gentle exercises for autoimmune' to find safe options. This ties to entries like autoimmune nutrition or exercise. Check trusted sites for info on supplements in inflammation control. Use research when unsure about a change, to see if it fits your needs.\n\n### Deciding Go or No-Go\nTry a practice for a week and note effects. If a diet helps symptoms, as in nutrition, that's go—keep it. If it worsens flares, no-go and stop. For stress techniques, if they calm you, continue; if not, try another. Entries like medical consultation remind to check with doctors before big changes. If symptoms don't improve, that's no-go for self-help—seek help.\n\n### Ethics, Privacy, and Safety\nStart slow and listen to your body for safety. The crisis footer says get help in emergencies. Keep health notes private. Ethics mean choosing what's right without forcing. Always prioritize safety.\n\n### Actionable Next Steps\nChoose one entry, like diet, and add a food today. Track in a journal for a week. Research a recipe if needed. Add exercise or stress tips next. If helpful, build on it; if not, adjust. Schedule a doctor visit for guidance.\n\n(Word count: 594)",
+    "vi": "# Quản Lý Bệnh Tự Miễn\n\nBệnh tự miễn xảy ra khi hệ miễn dịch tấn công nhầm chính cơ thể, gây viêm và tổn thương mô. Dù không thể chữa khỏi hoàn toàn, nhiều bước thực tế có thể giúp kiểm soát triệu chứng, cải thiện năng lượng và giảm bùng phát. Hướng dẫn này cung cấp các gợi ý an toàn để hỗ trợ sức khỏe tổng thể. *Lưu ý: đây chỉ là thông tin chung, không thay thế cho tư vấn y khoa.*\n\n### Hiểu Về Bệnh Tự Miễn\nCó hơn 80 loại bệnh tự miễn, như lupus, viêm khớp dạng thấp, viêm ruột và Hashimoto. Các triệu chứng thường bao gồm **mệt mỏi, đau khớp, viêm, sốt nhẹ hoặc rối loạn tiêu hóa.** Vì mỗi người phản ứng khác nhau, điều quan trọng là theo dõi cơ thể, nhận ra dấu hiệu sớm của bùng phát (flare) và điều chỉnh lối sống cho phù hợp.\n\n### Chế Độ Ăn Hỗ Trợ Chống Viêm\n1. **Tăng thực phẩm chống viêm:** rau lá xanh, quả mọng, cá hồi, nghệ, gừng và dầu ô liu.  \n2. **Giảm thực phẩm gây viêm:** đường tinh luyện, thực phẩm chiên, chất béo bão hòa, rượu và gluten (nếu cơ thể nhạy cảm).  \n3. **Ăn cân bằng:** kết hợp carb phức (yến mạch, khoai lang), protein nạc (gà, cá) và chất béo lành.  \n4. **Uống đủ nước:** giúp loại bỏ độc tố và giảm cảm giác mệt.  \n5. **Thử nhật ký thực phẩm:** ghi lại món ăn và triệu chứng sau đó để phát hiện tác nhân kích ứng.  \n\nNếu định thử chế độ ăn đặc biệt (như AIP hoặc Địa Trung Hải), hãy trao đổi với chuyên gia dinh dưỡng hoặc bác sĩ để đảm bảo đầy đủ dưỡng chất.\n\n### Quản Lý Căng Thẳng Và Giấc Ngủ\nCăng thẳng kéo dài có thể làm bùng phát viêm.  \n- **Thực hành thư giãn:** thở sâu, thiền chánh niệm hoặc yoga nhẹ.  \n- **Duy trì giấc ngủ ổn định:** ngủ 7–9 tiếng, giữ lịch ngủ cố định, tránh thiết bị điện tử 1 giờ trước khi ngủ.  \n- **Tự chăm sóc tinh thần:** dành thời gian cho sở thích, thiên nhiên hoặc kết nối với người thân.  \n\nCác kỹ thuật này giúp ổn định hormone căng thẳng và hỗ trợ hệ miễn dịch cân bằng hơn.\n\n### Hoạt Động Thể Chất Nhẹ Và An Toàn\nVận động nhẹ giúp giảm cứng khớp, cải thiện lưu thông máu và tâm trạng.  \n- **Đi bộ, giãn cơ, bơi lội hoặc đạp xe nhẹ** là lựa chọn tốt.  \n- **Lắng nghe cơ thể:** nếu thấy đau hoặc kiệt sức, hãy nghỉ ngơi.  \n- **Tránh tập cường độ cao trong giai đoạn bùng phát.**  \nMột số người thấy hữu ích khi thực hành **chánh niệm chuyển động (mindful movement)** để kết hợp thư giãn với vận động.\n\n### Theo Dõi Triệu Chứng Và Thuốc\n- **Ghi chú hằng ngày:** mức năng lượng, đau, giấc ngủ, thức ăn, và mức độ căng thẳng. Mẫu này giúp bạn và bác sĩ nhận ra xu hướng bùng phát.  \n- **Tuân thủ đơn thuốc:** không tự ý ngưng hoặc thay đổi liều thuốc (như corticosteroid hoặc thuốc ức chế miễn dịch).  \n- **Hẹn tái khám định kỳ:** để kiểm tra máu và đánh giá đáp ứng điều trị.  \n\nNếu xuất hiện **sốt, phát ban lan rộng hoặc đau dữ dội**, hãy tìm chăm sóc y tế ngay.\n\n### Khi Nào Nên Dừng Và Tìm Hỗ Trợ\nNếu thay đổi lối sống khiến triệu chứng tệ hơn — ví dụ: đau khớp tăng, tiêu hóa kém, hoặc mệt mỏi cực độ — hãy **ngừng lại** và hỏi ý kiến bác sĩ. Không nên tự thử nhiều biện pháp cùng lúc, vì khó xác định yếu tố gây ảnh hưởng. Khi cảm thấy nản hoặc lo âu vì bệnh, hãy tìm **hỗ trợ tâm lý** — đây là một phần quan trọng của điều trị.\n\n### Đạo Đức, Quyền Riêng Tư Và An Toàn\nTôn trọng giới hạn của cơ thể, không ép bản thân vượt quá sức. Giữ thông tin sức khỏe cá nhân riêng tư và chỉ chia sẻ với người chăm sóc hoặc bác sĩ. Trong trường hợp khẩn cấp — như **khó thở, sưng đột ngột, hoặc chóng mặt** — hãy gọi cấp cứu ngay. Tự chăm sóc không bao giờ thay thế điều trị y khoa chuyên sâu.\n\n### Bước Hành Động Tiếp Theo\nHôm nay, hãy chọn **một thay đổi nhỏ:** thêm rau xanh vào bữa ăn, thực hành thở sâu 5 phút, hoặc ghi nhật ký triệu chứng. Sau 1 tuần, đánh giá cảm giác của bạn. Nếu thấy tốt hơn, tiếp tục. Nếu không, điều chỉnh hoặc trao đổi với chuyên gia. Những bước nhỏ, đều đặn sẽ giúp bạn **sống chủ động và hòa hợp hơn với cơ thể mình.**\n\n*Đây không phải tư vấn y khoa. Luôn tham khảo bác sĩ trước khi thay đổi chế độ ăn, thuốc hoặc lối sống.*",
+    "word_count_en": 594,
+    "word_count_vi": 594,
+    "updated_at": "2025-10-11T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  },
+  "entries": [
+    {
+      "slug": "autoimmune_management",
+      "title": { "en": "Autoimmune Management", "vi": "Quản lý tự miễn" },
+      "copy": {
+        "en": "Manage autoimmune conditions with medical guidance. Dare: follow a personalized plan.",
+        "vi": "Quản lý bệnh tự miễn với hướng dẫn y tế. Dám: tuân theo kế hoạch cá nhân hóa."
+      },
+      "tags": ["autoimmune_diseases", "chronic_conditions"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "management" },
+      "artifact_id": "1a2b3c4d-5e6f-4a1b-8c23-d4e5f6a7b8c9",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    },
+    {
+      "slug": "anti_inflammatory_diet",
+      "title": { "en": "Anti-Inflammatory Diet", "vi": "Chế độ ăn kháng viêm" },
+      "copy": {
+        "en": "Adopt an anti-inflammatory diet for autoimmune support. Dare: include omega-3 foods daily.",
+        "vi": "Áp dụng chế độ ăn kháng viêm để hỗ trợ tự miễn. Dám: thêm thực phẩm omega-3 hàng ngày."
+      },
+      "tags": ["autoimmune_diseases", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "diet" },
+      "artifact_id": "2b3c4d5e-6f7a-4b2c-9d34-e5f6a7b8c9d0",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    },
+    {
+      "slug": "stress_and_autoimmune",
+      "title": { "en": "Stress and Autoimmune", "vi": "Căng thẳng và tự miễn" },
+      "copy": {
+        "en": "Reduce stress to manage autoimmune conditions. Dare: practice mindfulness daily.",
+        "vi": "Giảm căng thẳng để quản lý bệnh tự miễn. Dám: thực hành chánh niệm hàng ngày."
+      },
+      "tags": ["autoimmune_diseases", "stress_management"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "stress" },
+      "artifact_id": "3c4d5e6f-7a8b-4c3d-8e45-f6a7b8c9d0e1",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    },
+    {
+      "slug": "autoimmune_in_children",
+      "title": { "en": "Autoimmune in Children", "vi": "Tự miễn trẻ em" },
+      "copy": {
+        "en": "Monitor children's autoimmune health carefully. Dare: consult pediatric specialist.",
+        "vi": "Theo dõi sức khỏe tự miễn trẻ em cẩn thận. Dám: tham khảo chuyên gia nhi khoa."
+      },
+      "tags": ["autoimmune_diseases", "child_health"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "child_health" },
+      "artifact_id": "4d5e6f7a-8b9c-4d4e-9f56-a7b8c9d0e1f2",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    },
+    {
+      "slug": "autoimmune_in_adults",
+      "title": { "en": "Autoimmune in Adults", "vi": "Tự miễn người lớn" },
+      "copy": {
+        "en": "Manage adult autoimmune conditions with lifestyle changes. Dare: adopt a balanced diet.",
+        "vi": "Quản lý bệnh tự miễn người lớn bằng thay đổi lối sống. Dám: áp dụng chế độ ăn cân bằng."
+      },
+      "tags": ["autoimmune_diseases", "adult_health"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "adult_health" },
+      "artifact_id": "5e6f7a8b-9c0d-4e5f-8a67-b8c9d0e1f2a3",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    },
+    {
+      "slug": "autoimmune_in_elderly",
+      "title": {
+        "en": "Autoimmune in Elderly",
+        "vi": "Tự miễn người cao tuổi"
+      },
+      "copy": {
+        "en": "Care for elderly autoimmune health with gentle approaches. Dare: encourage light activity.",
+        "vi": "Chăm sóc sức khỏe tự miễn người cao tuổi bằng cách tiếp cận nhẹ nhàng. Dám: khuyến khích hoạt động nhẹ."
+      },
+      "tags": ["autoimmune_diseases", "elderly_care"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "elderly_care" },
+      "artifact_id": "6f7a8b9c-0d1e-4f6a-9b78-c9d0e1f2a3b4",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    },
+    {
+      "slug": "autoimmune_symptom_management",
+      "title": {
+        "en": "Autoimmune Symptom Management",
+        "vi": "Quản lý triệu chứng tự miễn"
+      },
+      "copy": {
+        "en": "Manage symptoms with rest and nutrition. Dare: keep a symptom journal.",
+        "vi": "Quản lý triệu chứng bằng nghỉ ngơi và dinh dưỡng. Dám: ghi nhật ký triệu chứng."
+      },
+      "tags": ["autoimmune_diseases", "symptom_management"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "symptom_management" },
+      "artifact_id": "7a8b9c0d-1e2f-4a7b-8c89-d0e1f2a3b4c5",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    },
+    {
+      "slug": "autoimmune_nutrition",
+      "title": { "en": "Autoimmune Nutrition", "vi": "Dinh dưỡng tự miễn" },
+      "copy": {
+        "en": "Support autoimmune health with balanced nutrition. Dare: try gluten-free options.",
+        "vi": "Hỗ trợ sức khỏe tự miễn bằng dinh dưỡng cân bằng. Dám: thử lựa chọn không gluten."
+      },
+      "tags": ["autoimmune_diseases", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "8b9c0d1e-2f3a-4b8c-9d90-e1f2a3b4c5d6",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    },
+    {
+      "slug": "autoimmune_exercise",
+      "title": { "en": "Autoimmune Exercise", "vi": "Tập thể dục tự miễn" },
+      "copy": {
+        "en": "Engage in gentle exercise for autoimmune support. Dare: walk 20 minutes daily.",
+        "vi": "Tham gia tập thể dục nhẹ nhàng để hỗ trợ tự miễn. Dám: đi bộ 20 phút hàng ngày."
+      },
+      "tags": ["autoimmune_diseases", "prevention"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["musculoskeletal_system"],
+      "metadata": { "topic": "exercise" },
+      "artifact_id": "9c0d1e2f-3a4b-4c9d-8e01-f2a3b4c5d6e7",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    },
+    {
+      "slug": "autoimmune_sleep",
+      "title": { "en": "Autoimmune Sleep", "vi": "Giấc ngủ tự miễn" },
+      "copy": {
+        "en": "Prioritize sleep for autoimmune health. Dare: establish a bedtime routine.",
+        "vi": "Ưu tiên giấc ngủ cho sức khỏe tự miễn. Dám: thiết lập thói quen giờ ngủ."
+      },
+      "tags": ["autoimmune_diseases", "prevention"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "sleep" },
+      "artifact_id": "a0d1e2f3-4b5c-4d0e-9f12-a3b4c5d6e7f8",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    },
+    {
+      "slug": "autoimmune_stress_management",
+      "title": {
+        "en": "Autoimmune Stress Management",
+        "vi": "Quản lý căng thẳng tự miễn"
+      },
+      "copy": {
+        "en": "Manage stress to reduce autoimmune flares. Dare: meditate 10 minutes daily.",
+        "vi": "Quản lý căng thẳng để giảm bùng phát tự miễn. Dám: thiền 10 phút hàng ngày."
+      },
+      "tags": ["autoimmune_diseases", "stress_management"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "stress_management" },
+      "artifact_id": "b1e2f3a4-5c6d-4e1f-8a23-b4c5d6e7f8a9",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    },
+    {
+      "slug": "autoimmune_flare_management",
+      "title": {
+        "en": "Autoimmune Flare Management",
+        "vi": "Quản lý bùng phát tự miễn"
+      },
+      "copy": {
+        "en": "Address flares with rest and medical advice. Dare: contact doctor during flares.",
+        "vi": "Xử lý bùng phát bằng nghỉ ngơi và tư vấn y tế. Dám: liên hệ bác sĩ khi bùng phát."
+      },
+      "tags": ["autoimmune_diseases", "symptom_management"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "symptom_management", "flags": ["crisis"] },
+      "artifact_id": "f2a3b4c5-d6e7-48f9-a0b1-c2d3e4f5a6b7",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    },
+    {
+      "slug": "autoimmune_medication",
+      "title": { "en": "Autoimmune Medication", "vi": "Thuốc tự miễn" },
+      "copy": {
+        "en": "Follow prescribed medications for autoimmune control. Dare: adhere to dosage strictly.",
+        "vi": "Tuân theo thuốc được kê để kiểm soát tự miễn. Dám: tuân thủ liều lượng nghiêm ngặt."
+      },
+      "tags": ["autoimmune_diseases", "chronic_conditions"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "medication" },
+      "artifact_id": "a3b4c5d6-e7f8-49a0-91c2-d3e4f5a6b7c8",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    },
+    {
+      "slug": "autoimmune_monitoring",
+      "title": { "en": "Autoimmune Monitoring", "vi": "Theo dõi tự miễn" },
+      "copy": {
+        "en": "Track symptoms to manage autoimmune conditions. Dare: use a health tracking app.",
+        "vi": "Theo dõi triệu chứng để quản lý bệnh tự miễn. Dám: sử dụng ứng dụng theo dõi sức khỏe."
+      },
+      "tags": ["autoimmune_diseases", "symptom_management"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "monitoring" },
+      "artifact_id": "b4c5d6e7-f8a9-40b1-a2d3-e4f5a6b7c8d9",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    },
+    {
+      "slug": "autoimmune_inflammation_control",
+      "title": {
+        "en": "Autoimmune Inflammation Control",
+        "vi": "Kiểm soát viêm tự miễn"
+      },
+      "copy": {
+        "en": "Reduce inflammation with diet and lifestyle. Dare: ask your clinician before trying turmeric/curcumin supplements.",
+        "vi": "Giảm viêm bằng chế độ ăn và lối sống. Dám: hỏi ý kiến bác sĩ trước khi thử bổ sung nghệ/curcumin."
+      },
+      "tags": ["autoimmune_diseases", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system", "immune_system"],
+      "metadata": { "topic": "inflammation_control" },
+      "artifact_id": "c5d6e7f8-a9b0-41c2-a3e4-f5a6b7c8d9e0",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    },
+    {
+      "slug": "autoimmune_prevention",
+      "title": { "en": "Autoimmune Prevention", "vi": "Phòng ngừa tự miễn" },
+      "copy": {
+        "en": "Adopt healthy habits to reduce autoimmune risk. Dare: maintain a balanced lifestyle.",
+        "vi": "Áp dụng thói quen lành mạnh để giảm nguy cơ tự miễn. Dám: duy trì lối sống cân bằng."
+      },
+      "tags": ["autoimmune_diseases", "prevention"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "prevention" },
+      "artifact_id": "d6e7f8a9-b0c1-42d3-a4f5-a6b7c8d9e0f1",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    },
+    {
+      "slug": "autoimmune_child_health",
+      "title": {
+        "en": "Autoimmune Child Health",
+        "vi": "Sức khỏe tự miễn trẻ em"
+      },
+      "copy": {
+        "en": "Support children’s autoimmune health with diet and care. Dare: consult pediatrician regularly.",
+        "vi": "Hỗ trợ sức khỏe tự miễn trẻ em bằng chế độ ăn và chăm sóc. Dám: tham khảo bác sĩ nhi thường xuyên."
+      },
+      "tags": ["autoimmune_diseases", "child_health"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "child_health" },
+      "artifact_id": "e7f8a9b0-c1d2-43e4-a5a6-b7c8d9e0f1a2",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    },
+    {
+      "slug": "autoimmune_adult_health",
+      "title": {
+        "en": "Autoimmune Adult Health",
+        "vi": "Sức khỏe tự miễn người lớn"
+      },
+      "copy": {
+        "en": "Manage adult autoimmune health with lifestyle. Dare: follow a tailored health plan.",
+        "vi": "Quản lý sức khỏe tự miễn người lớn bằng lối sống. Dám: tuân theo kế hoạch sức khỏe phù hợp."
+      },
+      "tags": ["autoimmune_diseases", "adult_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "adult_health" },
+      "artifact_id": "f8a9b0c1-d2e3-44f5-a6b7-c8d9e0f1a2b3",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    },
+    {
+      "slug": "autoimmune_elderly_health",
+      "title": {
+        "en": "Autoimmune Elderly Health",
+        "vi": "Sức khỏe tự miễn người cao tuổi"
+      },
+      "copy": {
+        "en": "Support elderly autoimmune health with careful monitoring. Dare: seek specialist advice.",
+        "vi": "Hỗ trợ sức khỏe tự miễn người cao tuổi bằng theo dõi cẩn thận. Dám: tìm tư vấn chuyên gia."
+      },
+      "tags": ["autoimmune_diseases", "elderly_care"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "elderly_care" },
+      "artifact_id": "a9b0c1d2-e3f4-45a6-b7c8-d9e0f1a2b3c4",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    },
+    {
+      "slug": "autoimmune_medical_consultation",
+      "title": {
+        "en": "Autoimmune Medical Consultation",
+        "vi": "Tư vấn y tế tự miễn"
+      },
+      "copy": {
+        "en": "Consult a doctor for autoimmune management plans. Dare: schedule regular checkups.",
+        "vi": "Tham khảo bác sĩ để lập kế hoạch quản lý tự miễn. Dám: lên lịch kiểm tra định kỳ."
+      },
+      "tags": ["autoimmune_diseases", "chronic_conditions"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "medical_consultation" },
+      "artifact_id": "b0c1d2e3-f4a5-46b7-a8d9-e0f1a2b3c4d5",
+      "created_at": "2025-10-06T22:05:00+09:00",
+      "updated_at": "2025-10-07T17:01:00+09:00"
+    }
+  ]
+}
