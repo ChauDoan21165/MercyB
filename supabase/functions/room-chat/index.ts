@@ -62,6 +62,14 @@ const roomFiles: { [key: string]: string } = {
   'sleep-health': 'sleep_health.json',
   'social-connection': 'social_connection.json',
   'speaking-crowd': 'speaking_crowd.json',
+  'stoicism': 'stoicism.json',
+  'stress-anxiety': 'stress_and_anxiety.json',
+  'teen': 'teen.json',
+  'toddler': 'toddler.json',
+  'train-brain': 'train_brain_memory.json',
+  'trauma': 'trauma.json',
+  'wife-dealing': 'wife_dealing.json',
+  'womens-health': 'women_health.json',
 };
 
 // Load room data from JSON

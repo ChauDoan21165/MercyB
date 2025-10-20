@@ -66,14 +66,14 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "sleep-health", nameVi: "Sức khỏe giấc ngủ", nameEn: "Sleep Health", hasData: true, tier: "free", dataFile: "sleep_health.json" },
   { id: "social-connection", nameVi: "Kết nối xã hội", nameEn: "Social Connection", hasData: true, tier: "vip1", dataFile: "social_connection.json" },
   { id: "speaking-crowd", nameVi: "Nói trước đám đông", nameEn: "Speaking Crowd", hasData: true, tier: "vip2", dataFile: "speaking_crowd.json" },
-  { id: "stoicism", nameVi: "Chủ nghĩa khắc kỷ", nameEn: "Stoicism", hasData: false, tier: "vip2" },
-  { id: "stress-anxiety", nameVi: "Căng thẳng & Lo âu", nameEn: "Stress and Anxiety", hasData: false, tier: "vip1" },
-  { id: "teen", nameVi: "Tuổi thiếu niên", nameEn: "Teen", hasData: false, tier: "free" },
-  { id: "toddler", nameVi: "Trẻ mới biết đi", nameEn: "Toddler", hasData: false, tier: "free" },
-  { id: "train-brain", nameVi: "Luyện trí nhớ", nameEn: "Train Brain Memory", hasData: false, tier: "vip2" },
-  { id: "trauma", nameVi: "Chấn thương tâm lý", nameEn: "Trauma", hasData: false, tier: "vip2" },
-  { id: "wife-dealing", nameVi: "Quan hệ vợ", nameEn: "Wife Dealing", hasData: false, tier: "vip3" },
-  { id: "womens-health", nameVi: "Sức khỏe phụ nữ", nameEn: "Women's Health", hasData: false, tier: "free" }
+  { id: "stoicism", nameVi: "Chủ nghĩa khắc kỷ", nameEn: "Stoicism", hasData: true, tier: "vip2", dataFile: "stoicism.json" },
+  { id: "stress-anxiety", nameVi: "Căng thẳng & Lo âu", nameEn: "Stress and Anxiety", hasData: true, tier: "vip1", dataFile: "stress_and_anxiety.json" },
+  { id: "teen", nameVi: "Tuổi thiếu niên", nameEn: "Teen", hasData: true, tier: "free", dataFile: "teen.json" },
+  { id: "toddler", nameVi: "Trẻ mới biết đi", nameEn: "Toddler", hasData: true, tier: "free", dataFile: "toddler.json" },
+  { id: "train-brain", nameVi: "Luyện trí nhớ", nameEn: "Train Brain Memory", hasData: true, tier: "vip2", dataFile: "train_brain_memory.json" },
+  { id: "trauma", nameVi: "Chấn thương tâm lý", nameEn: "Trauma", hasData: true, tier: "vip2", dataFile: "trauma.json" },
+  { id: "wife-dealing", nameVi: "Quan hệ vợ", nameEn: "Wife Dealing", hasData: true, tier: "vip3", dataFile: "wife_dealing.json" },
+  { id: "womens-health", nameVi: "Sức khỏe phụ nữ", nameEn: "Women's Health", hasData: true, tier: "free", dataFile: "women_health.json" }
 ];
 
 // Get room info by ID

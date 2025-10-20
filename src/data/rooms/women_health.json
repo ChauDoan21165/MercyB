@@ -1,0 +1,820 @@
+{
+  "schema_version": "1.1",
+  "schema_id": "women_health",
+  "description": "Echologic Mercy Blade room for women’s physical, hormonal, and emotional well-being",
+  "description_vi": "Phòng Mercy Blade về sức khỏe thể chất, nội tiết và cảm xúc của phụ nữ",
+  "supported_languages": ["en", "vi"],
+  "localization": {
+    "default": "en",
+    "fallback": "en",
+    "i18n_required": true,
+    "i18n_verified": true
+  },
+  "safety_disclaimer": {
+    "en": "Educational guidance; not a substitute for professional medical advice or emergency care.",
+    "vi": "Hướng dẫn giáo dục; không thay thế cho tư vấn y tế chuyên nghiệp hoặc chăm sóc khẩn cấp."
+  },
+  "crisis_footer": {
+    "en": "If you are in crisis or feel unsafe, call local emergency services or a trusted helpline immediately.",
+    "vi": "Nếu bạn đang trong khủng hoảng hoặc cảm thấy không an toàn, hãy gọi dịch vụ khẩn cấp hoặc đường dây nóng đáng tin cậy ngay."
+  },
+  "safety_footer": {
+    "en": "Educational guidance only. Always consult licensed clinicians for diagnosis or treatment.",
+    "vi": "Chỉ mang tính hướng dẫn giáo dục. Luôn tham khảo bác sĩ có chuyên môn để được chẩn đoán hoặc điều trị."
+  },
+  "meta": {
+    "created_at": "2025-10-06T00:00:00Z",
+    "updated_at": "2025-10-11T00:00:00Z",
+    "checksum_sha256": null,
+    "meta_quality_score": 0.997,
+    "meta_notes": "Keyword-driven; field-tested tone for women's health and prevention | artifact_ids unique | batch=final/1 | batch_total=1 | Enforced 1:1 keywords↔entries = 30"
+  },
+  "enums": {
+    "tags": [
+      "women_health", "menstruation", "reproductive", "hormones",
+      "pregnancy", "postpartum", "menopause", "safety",
+      "emotion", "prevention"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["reproductive_system", "endocrine_system", "mental_health"]
+  },
+  "keywords": {
+    "menstrual_cycle": {
+      "en": ["menstrual_cycle", "period", "monthly_cycle", "menses"],
+      "vi": ["chu kỳ kinh nguyệt", "kinh nguyệt", "chu kỳ tháng", "hành kinh"]
+    },
+    "period_tracking": {
+      "en": ["period_tracking", "cycle_monitoring", "menstrual_logging", "flow_recording"],
+      "vi": ["theo dõi kinh nguyệt", "giám sát chu kỳ", "ghi chép kinh nguyệt", "theo dõi dòng chảy"]
+    },
+    "menstrual_cramps": {
+      "en": ["menstrual_cramps", "period_pain", "dysmenorrhea", "abdominal_aches"],
+      "vi": ["đau bụng kinh", "đau kỳ kinh", "rối loạn kinh nguyệt", "đau bụng dưới"]
+    },
+    "heavy_menstruation": {
+      "en": ["heavy_menstruation", "menorrhagia", "excessive_bleeding", "heavy_flow"],
+      "vi": ["kinh nguyệt nặng", "rong kinh", "chảy máu quá mức", "dòng chảy nặng"]
+    },
+    "irregular_periods": {
+      "en": ["irregular_periods", "cycle_irregularity", "menstrual_irregular", "period_variation"],
+      "vi": ["kinh nguyệt không đều", "bất thường chu kỳ", "kinh nguyệt bất thường", "biến đổi kỳ kinh"]
+    },
+    "pms_symptoms": {
+      "en": ["pms_symptoms", "premenstrual_syndrome", "mood_swings", "bloating"],
+      "vi": ["triệu chứng pms", "hội chứng tiền kinh nguyệt", "thay đổi tâm trạng", "chướng bụng"]
+    },
+    "ovulation_tracking": {
+      "en": ["ovulation_tracking", "fertility_window", "ovulation_signs", "cycle_midpoint"],
+      "vi": ["theo dõi rụng trứng", "cửa sổ sinh sản", "dấu hiệu rụng trứng", "giữa chu kỳ"]
+    },
+    "breast_self_exam": {
+      "en": ["breast_self_exam", "self_check", "breast_health", "lump_detection"],
+      "vi": ["tự khám vú", "kiểm tra tự thân", "sức khỏe vú", "phát hiện cục u"]
+    },
+    "pap_smear": {
+      "en": ["pap_smear", "cervical_screening", "pap_test", "cervical_health"],
+      "vi": ["phết tế bào cổ tử cung", "sàng lọc cổ tử cung", "xét nghiệm pap", "sức khỏe cổ tử cung"]
+    },
+    "mammogram": {
+      "en": ["mammogram", "breast_screening", "mammography", "breast_check"],
+      "vi": ["chụp nhũ ảnh", "sàng lọc vú", "nhũ ảnh", "kiểm tra vú"]
+    },
+    "hormonal_balance": {
+      "en": ["hormonal_balance", "hormone_health", "endocrine_balance", "hormone_care"],
+      "vi": ["cân bằng nội tiết", "sức khỏe hormone", "cân bằng nội tiết tố", "chăm sóc hormone"]
+    },
+    "pcos_symptoms": {
+      "en": ["pcos_symptoms", "polycystic_ovary", "irregular_cycles", "hormone_imbalance"],
+      "vi": ["triệu chứng pcos", "buồng trứng đa nang", "chu kỳ không đều", "mất cân bằng hormone"]
+    },
+    "endometriosis_signs": {
+      "en": ["endometriosis_signs", "pelvic_pain", "heavy_periods", "infertility"],
+      "vi": ["dấu hiệu lạc nội mạc tử cung", "đau vùng chậu", "kinh nguyệt nặng", "vô sinh"]
+    },
+    "fibroids": {
+      "en": ["fibroids", "uterine_fibroids", "pelvic_pressure", "heavy_bleeding"],
+      "vi": ["u xơ tử cung", "áp lực vùng chậu", "chảy máu nặng"]
+    },
+    "ovarian_cysts": {
+      "en": ["ovarian_cysts", "cyst_pain", "abdominal_swelling", "ovary_health"],
+      "vi": ["u nang buồng trứng", "đau nang", "sưng bụng", "sức khỏe buồng trứng"]
+    },
+    "hormonal_contraception": {
+      "en": ["hormonal_contraception", "birth_control_pill", "contraceptive_patch", "hormone_iud"],
+      "vi": ["tránh thai nội tiết", "viên tránh thai", "miếng dán tránh thai", "vòng tránh thai hormone"]
+    },
+    "contraceptive_counseling": {
+      "en": ["contraceptive_counseling", "birth_control_advice", "family_planning", "contraception_options"],
+      "vi": ["tư vấn tránh thai", "lời khuyên tránh thai", "kế hoạch hóa gia đình", "lựa chọn tránh thai"]
+    },
+    "fertility_awareness": {
+      "en": ["fertility_awareness", "ovulation_tracking", "cycle_fertility", "conception_planning"],
+      "vi": ["nhận thức sinh sản", "theo dõi rụng trứng", "chu kỳ sinh sản", "lập kế hoạch thụ thai"]
+    },
+    "prenatal_care": {
+      "en": ["prenatal_care", "pregnancy_checkups", "fetal_health", "maternal_care"],
+      "vi": ["chăm sóc tiền sản", "kiểm tra thai kỳ", "sức khỏe thai nhi", "chăm sóc mẹ"]
+    },
+    "morning_sickness": {
+      "en": ["morning_sickness", "nausea_pregnancy", "vomiting_pregnancy", "pregnancy_symptoms"],
+      "vi": ["ốm nghén", "buồn nôn thai kỳ", "ói mửa thai kỳ", "triệu chứng thai kỳ"]
+    },
+    "gestational_diabetes": {
+      "en": ["gestational_diabetes", "pregnancy_diabetes", "blood_sugar_pregnancy", "diabetes_screening"],
+      "vi": ["tiểu đường thai kỳ", "đái tháo đường thai", "đường huyết thai kỳ", "sàng lọc tiểu đường"]
+    },
+    "preeclampsia_signs": {
+      "en": ["preeclampsia_signs", "high_bp_pregnancy", "swelling_pregnancy", "protein_urine"],
+      "vi": ["dấu hiệu tiền sản giật", "huyết áp cao thai kỳ", "sưng phù thai kỳ", "protein trong nước tiểu"]
+    },
+    "postpartum_recovery": {
+      "en": ["postpartum_recovery", "after_birth_care", "new_mom_health", "recovery_post_birth"],
+      "vi": ["phục hồi sau sinh", "chăm sóc sau sinh", "sức khỏe mẹ mới", "phục hồi sau đẻ"]
+    },
+    "postpartum_depression": {
+      "en": ["postpartum_depression", "baby_blues", "maternal_mental_health", "ppd_symptoms"],
+      "vi": ["trầm cảm sau sinh", "buồn sau sinh", "sức khỏe tâm lý mẹ", "triệu chứng trầm cảm sau sinh"]
+    },
+    "breastfeeding_support": {
+      "en": ["breastfeeding_support", "nursing_help", "lactation_care", "feeding_techniques"],
+      "vi": ["hỗ trợ cho con bú", "giúp cho con bú", "chăm sóc tiết sữa", "kỹ thuật cho ăn"]
+    },
+    "hot_flashes": {
+      "en": ["hot_flashes", "menopause_symptoms", "heat_surges", "night_sweats"],
+      "vi": ["bốc hỏa", "triệu chứng mãn kinh", "nóng bừng", "đổ mồ hôi đêm"]
+    },
+    "mood_swings": {
+      "en": ["mood_swings", "emotional_changes", "menopause_mood", "hormone_mood"],
+      "vi": ["thay đổi tâm trạng", "thay đổi cảm xúc", "tâm trạng mãn kinh", "tâm trạng hormone"]
+    },
+    "vaginal_dryness": {
+      "en": ["vaginal_dryness", "dryness_menopause", "vaginal_health", "lubrication_issue"],
+      "vi": ["khô âm đạo", "khô mãn kinh", "sức khỏe âm đạo", "vấn đề bôi trơn"]
+    },
+    "domestic_abuse": {
+      "en": ["domestic_abuse", "family_violence", "abuse_support", "safety_abuse"],
+      "vi": ["bạo lực gia đình", "bạo lực trong gia đình", "hỗ trợ nạn nhân bạo lực", "an toàn khi bị bạo lực"]
+    },
+    "sexual_health": {
+      "en": ["sexual_health", "reproductive_health", "intimate_wellness", "sexual_care"],
+      "vi": ["sức khỏe tình dục", "sức khỏe sinh sản", "sức khỏe thân mật", "chăm sóc tình dục"]
+    }
+  },
+  "entries": [
+    {
+      "slug": "menstrual_cycle",
+      "title": {"en": "Menstrual Cycle", "vi": "Chu Kỳ Kinh Nguyệt"},
+      "copy": {
+        "en": "Understand your cycle to support women's health. Dare: note cycle patterns this month.",
+        "vi": "Hiểu chu kỳ để hỗ trợ sức khỏe phụ nữ. Dám: ghi chú mẫu chu kỳ trong tháng này."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "track_habit", "note": "Note cycle patterns this month."},
+        "vi": {"label": "Hành Động", "suggested_action": "track_habit", "note": "Ghi chú mẫu chu kỳ trong tháng này."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "menstruation"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "menstruation"},
+      "artifact_id": "0e1f2a3b-4c5d-6e7f-8a9b-0c1d2e3f4a5b",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "period_tracking",
+      "title": {"en": "Period Tracking", "vi": "Theo Dõi Kinh Nguyệt"},
+      "copy": {
+        "en": "Track periods to monitor health and predict cycles. Dare: log your cycle today.",
+        "vi": "Theo dõi kinh nguyệt để giám sát sức khỏe và dự đoán chu kỳ. Dám: ghi chép chu kỳ hôm nay."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "track_habit", "note": "Log your cycle today."},
+        "vi": {"label": "Hành Động", "suggested_action": "track_habit", "note": "Ghi chép chu kỳ hôm nay."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "menstruation"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "menstruation"},
+      "artifact_id": "1f2a3b4c-5d6e-7f8a-9b0c-1d2e3f4a5b6c",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "menstrual_cramps",
+      "title": {"en": "Menstrual Cramps", "vi": "Đau Bụng Kinh"},
+      "copy": {
+        "en": "Ease cramps with heat or light exercise. Dare: apply a warm compress.",
+        "vi": "Giảm đau bụng kinh bằng nhiệt hoặc tập nhẹ. Dám: chườm ấm."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "track_habit", "note": "Apply a warm compress today."},
+        "vi": {"label": "Hành Động", "suggested_action": "track_habit", "note": "Chườm ấm hôm nay."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "menstruation"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "menstruation"},
+      "artifact_id": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "heavy_menstruation",
+      "title": {"en": "Heavy Menstruation", "vi": "Kinh Nguyệt Nặng"},
+      "copy": {
+        "en": "Monitor heavy flow; consult if it affects daily life. Dare: track bleeding this cycle.",
+        "vi": "Giám sát dòng chảy nặng; hỏi ý kiến nếu ảnh hưởng cuộc sống hàng ngày. Dám: theo dõi chảy máu trong chu kỳ này."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "track_habit", "note": "Track bleeding this cycle."},
+        "vi": {"label": "Hành Động", "suggested_action": "track_habit", "note": "Theo dõi chảy máu trong chu kỳ này."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "menstruation", "safety"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "menstruation"},
+      "artifact_id": "3b4c5d6e-7f8a-9b0c-1d2e-3f4a5b6c7d8e",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "irregular_periods",
+      "title": {"en": "Irregular Periods", "vi": "Kinh Nguyệt Không Đều"},
+      "copy": {
+        "en": "Irregular cycles may need monitoring; consult if persistent. Dare: log periods for three months.",
+        "vi": "Chu kỳ không đều có thể cần giám sát; hỏi ý kiến nếu kéo dài. Dám: ghi chép kinh nguyệt ba tháng."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "track_habit", "note": "Log periods for three months."},
+        "vi": {"label": "Hành Động", "suggested_action": "track_habit", "note": "Ghi chép kinh nguyệt ba tháng."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "menstruation"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "menstruation"},
+      "artifact_id": "4c5d6e7f-8a9b-0c1d-2e3f-4a5b6c7d8e9f",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "pms_symptoms",
+      "title": {"en": "PMS Symptoms", "vi": "Triệu Chứng PMS"},
+      "copy": {
+        "en": "Manage mood swings and bloating with rest and nutrition. Dare: track PMS symptoms.",
+        "vi": "Quản lý thay đổi tâm trạng và chướng bụng bằng nghỉ ngơi và dinh dưỡng. Dám: theo dõi triệu chứng PMS."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "track_habit", "note": "Track PMS symptoms this month."},
+        "vi": {"label": "Hành Động", "suggested_action": "track_habit", "note": "Theo dõi triệu chứng PMS trong tháng này."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "menstruation", "emotion"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["reproductive_system", "mental_health"],
+      "metadata": {"topic": "menstruation"},
+      "artifact_id": "5d6e7f8a-9b0c-1d2e-3f4a-5b6c7d8e9f0a",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "ovulation_tracking",
+      "title": {"en": "Ovulation Tracking", "vi": "Theo Dõi Rụng Trứng"},
+      "copy": {
+        "en": "Track ovulation signs for fertility awareness and health. Dare: note ovulation symptoms.",
+        "vi": "Theo dõi dấu hiệu rụng trứng để nhận thức sinh sản và sức khỏe. Dám: ghi chép triệu chứng rụng trứng."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "track_habit", "note": "Note ovulation symptoms this cycle."},
+        "vi": {"label": "Hành Động", "suggested_action": "track_habit", "note": "Ghi chép triệu chứng rụng trứng trong chu kỳ này."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "reproductive"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "reproductive"},
+      "artifact_id": "6e7f8a9b-0c1d-2e3f-4a5b-6c7d8e9f0a1b",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "breast_self_exam",
+      "title": {"en": "Breast Self-Exam", "vi": "Tự Khám Vú"},
+      "copy": {
+        "en": "Perform monthly self-exams to monitor breast health. Dare: do a self-exam this week.",
+        "vi": "Thực hiện tự khám hàng tháng để giám sát sức khỏe vú. Dám: làm tự khám trong tuần này."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "track_habit", "note": "Do a self-exam this week."},
+        "vi": {"label": "Hành Động", "suggested_action": "track_habit", "note": "Làm tự khám trong tuần này."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "prevention"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "prevention"},
+      "artifact_id": "7f8a9b0c-1d2e-3f4a-5b6c-7d8e9f0a1b2c",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "pap_smear",
+      "title": {"en": "Pap Smear", "vi": "Phết Tế Bào Cổ Tử Cung"},
+      "copy": {
+        "en": "Regular Pap tests support cervical health and prevention. Dare: schedule a Pap smear.",
+        "vi": "Xét nghiệm Pap đều đặn hỗ trợ sức khỏe cổ tử cung và phòng ngừa. Dám: lên lịch phết tế bào."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "book_doctor", "note": "Schedule a Pap smear this year."},
+        "vi": {"label": "Hành Động", "suggested_action": "book_doctor", "note": "Lên lịch phết tế bào trong năm nay."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "prevention"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "prevention"},
+      "artifact_id": "8a9b0c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3d",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "mammogram",
+      "title": {"en": "Mammogram", "vi": "Chụp Nhũ Ảnh"},
+      "copy": {
+        "en": "Mammograms help early detection for breast health. Dare: book a mammogram appointment.",
+        "vi": "Chụp nhũ ảnh giúp phát hiện sớm cho sức khỏe vú. Dám: đặt lịch chụp nhũ ảnh."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "book_doctor", "note": "Book a mammogram appointment this year."},
+        "vi": {"label": "Hành Động", "suggested_action": "book_doctor", "note": "Đặt lịch chụp nhũ ảnh trong năm nay."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "prevention"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "prevention"},
+      "artifact_id": "9b0c1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "hormonal_balance",
+      "title": {"en": "Hormonal Balance", "vi": "Cân Bằng Nội Tiết"},
+      "copy": {
+        "en": "Support hormonal balance with nutrition and exercise. Dare: eat balanced meals.",
+        "vi": "Hỗ trợ cân bằng nội tiết bằng dinh dưỡng và tập luyện. Dám: ăn bữa cân bằng."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "track_habit", "note": "Eat balanced meals this week."},
+        "vi": {"label": "Hành Động", "suggested_action": "track_habit", "note": "Ăn bữa cân bằng trong tuần này."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "hormones"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["endocrine_system"],
+      "metadata": {"topic": "hormones"},
+      "artifact_id": "0c1d2e3f-4a5b-6c7d-8e9f-0a1b2c3d4e5f",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "pcos_symptoms",
+      "title": {"en": "PCOS Symptoms", "vi": "Triệu Chứng PCOS"},
+      "copy": {
+        "en": "Manage PCOS with diet and exercise; consult for care. Dare: track symptoms.",
+        "vi": "Quản lý PCOS bằng chế độ ăn và tập luyện; hỏi ý kiến chăm sóc. Dám: theo dõi triệu chứng."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "track_habit", "note": "Track symptoms this month."},
+        "vi": {"label": "Hành Động", "suggested_action": "track_habit", "note": "Theo dõi triệu chứng trong tháng này."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "hormones"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["reproductive_system", "endocrine_system"],
+      "metadata": {"topic": "hormones"},
+      "artifact_id": "1d2e3f4a-5b6c-7d8e-9f0a-1b2c3d4e5f6a",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "endometriosis_signs",
+      "title": {"en": "Endometriosis Signs", "vi": "Dấu Hiệu Lạc Nội Mạc Tử Cung"},
+      "copy": {
+        "en": "Pelvic pain may indicate endometriosis; seek evaluation. Dare: note pain patterns.",
+        "vi": "Đau vùng chậu có thể báo lạc nội mạc tử cung; tìm đánh giá. Dám: ghi chép mẫu đau."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "book_doctor", "note": "Note pain patterns this month."},
+        "vi": {"label": "Hành Động", "suggested_action": "book_doctor", "note": "Ghi chép mẫu đau trong tháng này."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "reproductive"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "reproductive"},
+      "artifact_id": "2e3f4a5b-6c7d-8e9f-0a1b-2c3d4e5f6a7b",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "fibroids",
+      "title": {"en": "Fibroids", "vi": "U Xơ Tử Cung"},
+      "copy": {
+        "en": "Monitor for pelvic pressure; consult for fibroid care. Dare: schedule checkup.",
+        "vi": "Giám sát áp lực vùng chậu; hỏi ý kiến chăm sóc u xơ. Dám: lên lịch kiểm tra."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "book_doctor", "note": "Schedule a checkup this month."},
+        "vi": {"label": "Hành Động", "suggested_action": "book_doctor", "note": "Lên lịch kiểm tra trong tháng này."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "reproductive"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "reproductive"},
+      "artifact_id": "3f4a5b6c-7d8e-9f0a-1b2c-3d4e5f6a7b8c",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "ovarian_cysts",
+      "title": {"en": "Ovarian Cysts", "vi": "U Nang Buồng Trứng"},
+      "copy": {
+        "en": "Abdominal swelling may indicate cysts; seek evaluation. Dare: note symptoms.",
+        "vi": "Sưng bụng có thể báo u nang; tìm đánh giá. Dám: ghi chép triệu chứng."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "book_doctor", "note": "Note symptoms this week."},
+        "vi": {"label": "Hành Động", "suggested_action": "book_doctor", "note": "Ghi chép triệu chứng trong tuần này."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "reproductive"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "reproductive"},
+      "artifact_id": "4a5b6c7d-8e9f-0a1b-2c3d-4e5f6a7b8c9d",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "hormonal_contraception",
+      "title": {"en": "Hormonal Contraception", "vi": "Tránh Thai Nội Tiết"},
+      "copy": {
+        "en": "Choose contraception methods with doctor guidance for health. Dare: discuss options.",
+        "vi": "Chọn phương pháp tránh thai với hướng dẫn bác sĩ cho sức khỏe. Dám: thảo luận tùy chọn."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "book_doctor", "note": "Discuss options with a doctor."},
+        "vi": {"label": "Hành Động", "suggested_action": "book_doctor", "note": "Thảo luận tùy chọn với bác sĩ."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "reproductive"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "reproductive"},
+      "artifact_id": "5b6c7d8e-9f0a-1b2c-3d4e-5f6a7b8c9d0e",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "contraceptive_counseling",
+      "title": {"en": "Contraceptive Counseling", "vi": "Tư Vấn Tránh Thai"},
+      "copy": {
+        "en": "Get counseling for family planning and health choices. Dare: book a consultation.",
+        "vi": "Nhận tư vấn cho kế hoạch hóa gia đình và lựa chọn sức khỏe. Dám: đặt lịch tư vấn."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "book_doctor", "note": "Book a consultation this month."},
+        "vi": {"label": "Hành Động", "suggested_action": "book_doctor", "note": "Đặt lịch tư vấn trong tháng này."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "reproductive"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "reproductive"},
+      "artifact_id": "6c7d8e9f-0a1b-2c3d-4e5f-6a7b8c9d0e1f",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "fertility_awareness",
+      "title": {"en": "Fertility Awareness", "vi": "Nhận Thức Sinh Sản"},
+      "copy": {
+        "en": "Learn fertility signs for conception planning and health. Dare: track fertility window.",
+        "vi": "Học dấu hiệu sinh sản cho lập kế hoạch thụ thai và sức khỏe. Dám: theo dõi cửa sổ sinh sản."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "track_habit", "note": "Track fertility window this cycle."},
+        "vi": {"label": "Hành Động", "suggested_action": "track_habit", "note": "Theo dõi cửa sổ sinh sản trong chu kỳ này."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "reproductive"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "reproductive"},
+      "artifact_id": "7d8e9f0a-1b2c-3d4e-5f6a-7b8c9d0e1f2a",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "prenatal_care",
+      "title": {"en": "Prenatal Care", "vi": "Chăm Sóc Tiền Sản"},
+      "copy": {
+        "en": "Regular checkups support pregnancy health for mother and baby. Dare: schedule prenatal visit.",
+        "vi": "Kiểm tra đều đặn hỗ trợ sức khỏe thai kỳ cho mẹ và em bé. Dám: lên lịch thăm tiền sản."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "book_doctor", "note": "Schedule prenatal visit this month."},
+        "vi": {"label": "Hành Động", "suggested_action": "book_doctor", "note": "Lên lịch thăm tiền sản trong tháng này."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "pregnancy"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "pregnancy"},
+      "artifact_id": "8e9f0a1b-2c3d-4e5f-6a7b-8c9d0e1f2a3b",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "morning_sickness",
+      "title": {"en": "Morning Sickness", "vi": "Ốm Nghén"},
+      "copy": {
+        "en": "Ease nausea with small meals and ginger. Dare: try ginger tea.",
+        "vi": "Giảm buồn nôn bằng bữa nhỏ và gừng. Dám: thử trà gừng."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "track_habit", "note": "Try ginger tea today."},
+        "vi": {"label": "Hành Động", "suggested_action": "track_habit", "note": "Thử trà gừng hôm nay."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "pregnancy"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "pregnancy"},
+      "artifact_id": "9f0a1b2c-3d4e-5f6a-7b8c-9d0e1f2a3b4c",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "gestational_diabetes",
+      "title": {"en": "Gestational Diabetes", "vi": "Tiểu Đường Thai Kỳ"},
+      "copy": {
+        "en": "Monitor blood sugar in pregnancy; consult for care. Dare: track sugar levels.",
+        "vi": "Giám sát đường huyết trong thai kỳ; hỏi ý kiến chăm sóc. Dám: theo dõi mức đường."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "book_doctor", "note": "Track sugar levels this week."},
+        "vi": {"label": "Hành Động", "suggested_action": "book_doctor", "note": "Theo dõi mức đường trong tuần này."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "pregnancy"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["reproductive_system", "endocrine_system"],
+      "metadata": {"topic": "pregnancy"},
+      "artifact_id": "0a1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "preeclampsia_signs",
+      "title": {"en": "Preeclampsia Signs", "vi": "Dấu Hiệu Tiền Sản Giật"},
+      "copy": {
+        "en": "High BP and swelling in pregnancy need immediate care. Dare: monitor BP.",
+        "vi": "Huyết áp cao và sưng phù trong thai kỳ cần chăm sóc ngay. Dám: giám sát huyết áp."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "book_doctor", "note": "Monitor BP this week."},
+        "vi": {"label": "Hành Động", "suggested_action": "book_doctor", "note": "Giám sát huyết áp trong tuần này."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "pregnancy", "safety"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "pregnancy"},
+      "artifact_id": "1b2c3d4e-5f6a-7b8c-9d0e-1f2a3b4c5d6e",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "postpartum_recovery",
+      "title": {"en": "Postpartum Recovery", "vi": "Phục Hồi Sau Sinh"},
+      "copy": {
+        "en": "Rest and nutrition support recovery after birth. Dare: plan rest time.",
+        "vi": "Nghỉ ngơi và dinh dưỡng hỗ trợ phục hồi sau sinh. Dám: lập kế hoạch nghỉ."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "track_habit", "note": "Plan rest time this week."},
+        "vi": {"label": "Hành Động", "suggested_action": "track_habit", "note": "Lập kế hoạch nghỉ trong tuần này."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "postpartum"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "postpartum"},
+      "artifact_id": "2c3d4e5f-6a7b-8c9d-0e1f-2a3b4c5d6e7f",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "postpartum_depression",
+      "title": {"en": "Postpartum Depression", "vi": "Trầm Cảm Sau Sinh"},
+      "copy": {
+        "en": "Monitor for mood changes after birth; seek support. Dare: talk to a doctor.",
+        "vi": "Giám sát thay đổi tâm trạng sau sinh; tìm hỗ trợ. Dám: nói với bác sĩ."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "book_doctor", "note": "Talk to a doctor this week."},
+        "vi": {"label": "Hành Động", "suggested_action": "book_doctor", "note": "Nói với bác sĩ trong tuần này."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "postpartum", "emotion"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["mental_health", "reproductive_system"],
+      "metadata": {"topic": "postpartum"},
+      "artifact_id": "3d4e5f6a-7b8c-9d0e-1f2a-3b4c5d6e7f8a",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "breastfeeding_support",
+      "title": {"en": "Breastfeeding Support", "vi": "Hỗ Trợ Cho Con Bú"},
+      "copy": {
+        "en": "Seek support for breastfeeding techniques and care. Dare: consult a lactation specialist.",
+        "vi": "Tìm hỗ trợ cho kỹ thuật cho con bú và chăm sóc. Dám: hỏi chuyên gia tiết sữa."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "book_doctor", "note": "Consult a lactation specialist this month."},
+        "vi": {"label": "Hành Động", "suggested_action": "book_doctor", "note": "Hỏi chuyên gia tiết sữa trong tháng này."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "postpartum"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "postpartum"},
+      "artifact_id": "4e5f6a7b-8c9d-0e1f-2a3b-4c5d6e7f8a9b",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "hot_flashes",
+      "title": {"en": "Hot Flashes", "vi": "Bốc Hỏa"},
+      "copy": {
+        "en": "Cool clothing and fans can ease hot flashes. Dare: dress in layers.",
+        "vi": "Quần áo mát và quạt có thể giảm bốc hỏa. Dám: mặc nhiều lớp."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "track_habit", "note": "Dress in layers today."},
+        "vi": {"label": "Hành Động", "suggested_action": "track_habit", "note": "Mặc nhiều lớp hôm nay."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "menopause"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["endocrine_system"],
+      "metadata": {"topic": "menopause"},
+      "artifact_id": "5f6a7b8c-9d0e-1f2a-3b4c-5d6e7f8a9b0c",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "mood_swings",
+      "title": {"en": "Mood Swings", "vi": "Thay Đổi Tâm Trạng"},
+      "copy": {
+        "en": "Journal and social connections. Dare: express feelings honestly today.",
+        "vi": "Ghi nhật ký và kết nối xã hội. Dám: bày tỏ cảm xúc trung thực hôm nay."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "track_habit", "note": "Express feelings honestly today."},
+        "vi": {"label": "Hành Động", "suggested_action": "track_habit", "note": "Bày tỏ cảm xúc trung thực hôm nay."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "menopause", "emotion"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": {"topic": "menopause"},
+      "artifact_id": "6a7b8c9d-0e1f-2a3b-4c5d-6e7f8a9b0c1d",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "vaginal_dryness",
+      "title": {"en": "Vaginal Dryness", "vi": "Khô Âm Đạo"},
+      "copy": {
+        "en": "Relieve discomfort with water-based lubricants and hydration. Dare: discuss options with a doctor this month.",
+        "vi": "Giảm khó chịu bằng chất bôi trơn gốc nước và uống đủ nước. Dám: thảo luận tùy chọn với bác sĩ trong tháng này."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "book_doctor", "note": "Discuss options with a doctor this month."},
+        "vi": {"label": "Hành Động", "suggested_action": "book_doctor", "note": "Thảo luận tùy chọn với bác sĩ trong tháng này."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "menopause"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "menopause"},
+      "artifact_id": "7b8c9d0e-1f2a-3b4c-5d6e-7f8a9b0c1d2e",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "domestic_abuse",
+      "title": {"en": "Domestic Abuse", "vi": "Bạo Lực Gia Đình"},
+      "copy": {
+        "en": "Recognize patterns of control; ensure immediate safety by calling a hotline. Dare: seek support today.",
+        "vi": "Nhận biết mẫu kiểm soát; đảm bảo an toàn ngay bằng cách gọi đường dây nóng. Dám: tìm hỗ trợ hôm nay."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "call_emergency", "note": "Seek support today."},
+        "vi": {"label": "Hành Động", "suggested_action": "call_emergency", "note": "Tìm hỗ trợ hôm nay."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "safety", "emotion"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["mental_health"],
+      "metadata": {"topic": "safety"},
+      "artifact_id": "8c9d0e1f-2a3b-4c5d-6e7f-8a9b0c1d2e3f",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    },
+    {
+      "slug": "sexual_health",
+      "title": {"en": "Sexual Health", "vi": "Sức Khỏe Tình Dục"},
+      "copy": {
+        "en": "Maintain intimate wellness with regular checkups and care. Dare: schedule a sexual health check.",
+        "vi": "Duy trì sức khỏe thân mật với kiểm tra đều đặn và chăm sóc. Dám: lên lịch kiểm tra sức khỏe tình dục."
+      },
+      "cta": {
+        "en": {"label": "Take Action", "suggested_action": "book_doctor", "note": "Schedule a sexual health check this year."},
+        "vi": {"label": "Hành Động", "suggested_action": "book_doctor", "note": "Lên lịch kiểm tra sức khỏe tình dục trong năm nay."}
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["women_health", "reproductive"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["reproductive_system"],
+      "metadata": {"topic": "reproductive"},
+      "artifact_id": "9d0e1f2a-3b4c-5d6e-7f8a-9b0c1d2e3f4a",
+      "created_at": "2025-10-06T00:00:00Z",
+      "updated_at": "2025-10-06T00:00:00Z"
+    }
+  ],
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Supporting Women's Health\n\nWomen's health includes physical, hormonal, and emotional aspects across menstruation, pregnancy, postpartum, and menopause. This guide offers practical steps from room entries to support well-being. Always consult a doctor for personal advice, especially for symptoms like heavy bleeding or mood changes.\n\n### Menstrual Health\nTracking your menstrual cycle, as in menstrual_cycle and period_tracking, helps understand patterns. Log periods, cramps (menstrual_cramps), or heavy flow (heavy_menstruation) to spot issues. For irregular periods (irregular_periods) or PMS symptoms (pms_symptoms) like mood swings, journal symptoms. Use heat for cramps or rest for relief, as suggested in menstrual_cramps.\n\n### Reproductive Care\nPerform monthly breast self-exams (breast_self_exam) to check for lumps. Schedule Pap smears (pap_smear) and mammograms (mammogram) for early detection. For conditions like PCOS (pcos_symptoms), endometriosis (endometriosis_signs), fibroids, or ovarian cysts, monitor symptoms like pelvic pain or swelling and consult a doctor, as advised in those entries.\n\n### Hormonal Balance\nSupport hormonal health with nutrition and exercise, per hormonal_balance. For contraception, discuss options like pills or IUDs (hormonal_contraception) with a doctor. Track ovulation (ovulation_tracking) for fertility awareness (fertility_awareness) to plan conception.\n\n### Pregnancy and Postpartum\nRegular prenatal care (prenatal_care) ensures mother and baby health. Manage morning sickness with small meals or ginger (morning_sickness). Monitor gestational diabetes or preeclampsia signs like swelling (preeclampsia_signs) and seek immediate care if severe. After birth, prioritize rest for postpartum recovery (postpartum_recovery). Watch for postpartum depression (postpartum_depression) mood changes and seek support. Get breastfeeding support (breastfeeding_support) for techniques.\n\n### Menopause\nEase hot flashes (hot_flashes) with cool clothing. Journal mood swings (mood_swings) for emotional health. Use water-based lubricants for vaginal dryness (vaginal_dryness) and consult a doctor.\n\n### Emotional and Safety\nRecognize domestic abuse (domestic_abuse) patterns and call a hotline for safety. Maintain sexual health (sexual_health) with regular checkups.\n\n### Research Tasks\nIf symptoms persist, research trusted sources like health websites for cycle tracking apps (period_tracking), nutrition tips (hormonal_balance), or pregnancy care (prenatal_care). Avoid unverified online information.\n\n### Go or No-Go Decisions\nTest a step like tracking periods (period_tracking)—if helpful, it’s a “go”; continue. If symptoms worsen, it’s a “no-go”; see a doctor, as in pcos_symptoms or endometriosis_signs. Log changes to assess progress.\n\n### Ethics, Privacy, and Safety\nKeep health details private; avoid sharing online. Prioritize safety—call emergency services or a helpline for crises, as in domestic_abuse or preeclampsia_signs. The crisis footer reinforces this.\n\n### Next Steps\nStart with one action, like a breast self-exam (breast_self_exam) or tracking cycles (period_tracking). Review progress after a month. Consult a doctor for persistent issues, as in postpartum_depression. Small steps build long-term health.\n\n*This is not medical advice. Consult professionals for concerns.*\n\n(Word count: 546)",
+    "vi": "# Hỗ Trợ Sức Khỏe Phụ Nữ\n\nSức khỏe phụ nữ bao gồm thể chất, nội tiết và cảm xúc, trải dài qua các giai đoạn như chu kỳ kinh nguyệt, thai kỳ, sau sinh và mãn kinh. Hướng dẫn này tổng hợp các mẹo thực tiễn để giúp bạn duy trì sức khỏe toàn diện. Luôn tham khảo ý kiến bác sĩ để được tư vấn cá nhân, đặc biệt nếu có triệu chứng như chảy máu nặng hoặc thay đổi tâm trạng.\n\n### Sức Khỏe Kinh Nguyệt\nTheo dõi chu kỳ kinh nguyệt, như trong theo dõi kinh nguyệt và chu kỳ kinh nguyệt, giúp nhận biết quy luật. Ghi lại ngày hành kinh, đau bụng (đau bụng kinh) hoặc chảy máu nặng (kinh nguyệt nặng) để phát hiện vấn đề sớm. Với chu kỳ không đều (kinh nguyệt không đều) hoặc triệu chứng PMS như thay đổi tâm trạng (triệu chứng PMS), ghi nhật ký triệu chứng. Dùng túi chườm ấm cho đau bụng hoặc nghỉ ngơi, như trong đau bụng kinh.\n\n### Chăm Sóc Sức Khỏe Sinh Sản\nThực hiện tự khám vú hàng tháng (tự khám vú) để phát hiện khối u. Lên lịch phết tế bào cổ tử cung (phết tế bào cổ tử cung) và chụp nhũ ảnh (chụp nhũ ảnh) để sàng lọc sớm. Với các tình trạng như PCOS (triệu chứng PCOS), lạc nội mạc tử cung (dấu hiệu lạc nội mạc tử cung), u xơ tử cung hoặc u nang buồng trứng, theo dõi triệu chứng như đau vùng chậu hoặc sưng và hỏi bác sĩ.\n\n### Cân Bằng Nội Tiết\nHỗ trợ sức khỏe hormone bằng dinh dưỡng và tập luyện (cân bằng nội tiết). Với tránh thai, thảo luận các lựa chọn như viên thuốc hoặc vòng tránh thai (tránh thai nội tiết) với bác sĩ. Theo dõi rụng trứng (theo dõi rụng trứng) để nhận thức sinh sản (nhận thức sinh sản) và lập kế hoạch thụ thai.\n\n### Thai Kỳ Và Sau Sinh\nKiểm tra tiền sản định kỳ (chăm sóc tiền sản) đảm bảo sức khỏe mẹ và bé. Giảm ốm nghén bằng bữa nhỏ hoặc gừng (ốm nghén). Theo dõi tiểu đường thai kỳ (tiểu đường thai kỳ) hoặc dấu hiệu tiền sản giật như sưng phù (dấu hiệu tiền sản giật)—tìm chăm sóc ngay nếu nghiêm trọng. Sau sinh, nghỉ ngơi để phục hồi (phục hồi sau sinh). Theo dõi trầm cảm sau sinh (trầm cảm sau sinh) nếu có thay đổi tâm trạng và tìm hỗ trợ. Nhận hỗ trợ cho con bú (hỗ trợ cho con bú) để học kỹ thuật.\n\n### Mãn Kinh\nGiảm bốc hỏa (bốc hỏa) bằng quần áo thoáng mát. Ghi nhật ký tâm trạng (thay đổi tâm trạng) để theo dõi sức khỏe cảm xúc. Dùng chất bôi trơn gốc nước cho khô âm đạo (khô âm đạo) và hỏi bác sĩ.\n\n### Cảm Xúc Và An Toàn\nNhận biết bạo lực gia đình (bạo lực gia đình) và gọi đường dây nóng để đảm bảo an toàn. Duy trì sức khỏe tình dục (sức khỏe tình dục) bằng kiểm tra định kỳ.\n\n### Nghiên Cứu Thêm\nNếu triệu chứng kéo dài, tra cứu nguồn đáng tin như trang y tế về ứng dụng theo dõi chu kỳ (theo dõi kinh nguyệt), dinh dưỡng (cân bằng nội tiết) hoặc chăm sóc thai kỳ (chăm sóc tiền sản). Tránh thông tin không kiểm chứng.\n\n### Quyết Định Tiến Hành hay Tạm Dừng\nThử một bước như theo dõi chu kỳ (theo dõi kinh nguyệt)—nếu hữu ích, “tiến hành”; tiếp tục. Nếu triệu chứng tệ hơn, “tạm dừng”; gặp bác sĩ, như trong triệu chứng PCOS hoặc dấu hiệu lạc nội mạc tử cung. Ghi lại tiến triển để đánh giá.\n\n### Đạo Đức, Quyền Riêng Tư và An Toàn\nGiữ thông tin sức khỏe riêng tư; không chia sẻ công khai. Ưu tiên an toàn—gọi cấp cứu hoặc đường dây nóng nếu gặp nguy, như trong bạo lực gia đình hoặc dấu hiệu tiền sản giật. Chân trang khủng hoảng nhấn mạnh điều này.\n\n### Bước Tiếp Theo\nBắt đầu với một hành động, như tự khám vú (tự khám vú) hoặc theo dõi chu kỳ (theo dõi kinh nguyệt). Đánh giá sau một tháng. Tham khảo bác sĩ nếu vấn đề kéo dài, như trong trầm cảm sau sinh. Những bước nhỏ xây dựng sức khỏe lâu dài.\n\n*Đây không phải là lời khuyên y khoa. Hãy tham khảo chuyên gia cho các vấn đề sức khỏe.*\n\n(Đếm từ: 552)",
+    "word_count_en": 546,
+    "word_count_vi": 552,
+    "updated_at": "2025-10-11T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}
