@@ -47,6 +47,42 @@ export type Database = {
         }
         Relationships: []
       }
+      room_usage_analytics: {
+        Row: {
+          completed_room: boolean | null
+          created_at: string
+          id: string
+          messages_sent: number | null
+          room_id: string
+          session_end: string | null
+          session_start: string
+          time_spent_seconds: number | null
+          user_id: string
+        }
+        Insert: {
+          completed_room?: boolean | null
+          created_at?: string
+          id?: string
+          messages_sent?: number | null
+          room_id: string
+          session_end?: string | null
+          session_start?: string
+          time_spent_seconds?: number | null
+          user_id: string
+        }
+        Update: {
+          completed_room?: boolean | null
+          created_at?: string
+          id?: string
+          messages_sent?: number | null
+          room_id?: string
+          session_end?: string | null
+          session_start?: string
+          time_spent_seconds?: number | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       subscription_tiers: {
         Row: {
           created_at: string | null
@@ -183,6 +219,51 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      vip_room_requests: {
+        Row: {
+          admin_notes: string | null
+          completed_at: string | null
+          created_at: string
+          description: string
+          id: string
+          room_id: string | null
+          status: string | null
+          topic_name: string
+          topic_name_vi: string | null
+          updated_at: string
+          urgency: string | null
+          user_id: string
+        }
+        Insert: {
+          admin_notes?: string | null
+          completed_at?: string | null
+          created_at?: string
+          description: string
+          id?: string
+          room_id?: string | null
+          status?: string | null
+          topic_name: string
+          topic_name_vi?: string | null
+          updated_at?: string
+          urgency?: string | null
+          user_id: string
+        }
+        Update: {
+          admin_notes?: string | null
+          completed_at?: string | null
+          created_at?: string
+          description?: string
+          id?: string
+          room_id?: string | null
+          status?: string | null
+          topic_name?: string
+          topic_name_vi?: string | null
+          updated_at?: string
+          urgency?: string | null
+          user_id?: string
+        }
+        Relationships: []
       }
     }
     Views: {

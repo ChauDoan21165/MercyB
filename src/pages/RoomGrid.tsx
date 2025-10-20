@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, Lock } from "lucide-react";
+import { CheckCircle2, Lock, Sparkles, BarChart3 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ALL_ROOMS } from "@/lib/roomData";
@@ -27,13 +27,32 @@ const RoomGrid = () => {
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="mb-8 space-y-4">
-          <Button
-            variant="ghost"
-            onClick={() => navigate("/")}
-            className="mb-4"
-          >
-            ← Back / Quay Lại
-          </Button>
+          <div className="flex items-center justify-between mb-4">
+            <Button
+              variant="ghost"
+              onClick={() => navigate("/")}
+            >
+              ← Back / Quay Lại
+            </Button>
+            
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                onClick={() => navigate("/vip-requests")}
+                className="flex items-center gap-2"
+              >
+                <BarChart3 className="h-4 w-4" />
+                My Requests
+              </Button>
+              <Button
+                onClick={() => navigate("/vip-request")}
+                className="flex items-center gap-2 bg-gradient-to-r from-primary to-accent"
+              >
+                <Sparkles className="h-4 w-4" />
+                Request Custom Room
+              </Button>
+            </div>
+          </div>
           
           <div className="text-center space-y-2">
             <h1 className="text-4xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
