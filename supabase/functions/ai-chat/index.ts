@@ -93,8 +93,11 @@ async function loadRoomData(roomId: string): Promise<any | null> {
 
   try {
     const url = new URL(`./data/${fileName}`, import.meta.url);
-    const module = await import(url.href, { assert: { type: 'json' } } as any);
-    const data = (module as any).default || module;
+    const response = await fetch(url.href);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch ${fileName}: ${response.status}`);
+    }
+    const data = await response.json();
     console.log(`Successfully loaded room data for ${roomId}`);
     return data;
   } catch (error) {
