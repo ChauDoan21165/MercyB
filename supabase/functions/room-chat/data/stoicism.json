@@ -1,5 +1,5 @@
 {
-  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nStoicism (enchiridion, discourses, letters), solid research\n\nSafety first; we aren't therapists. For any danger, step away. Contact support lines; harm sensitive verbs\n\nEach bullet: teach in an approach that can be used by an App or a Person to help themselves be better and calm\n\nPhilosophy: calm, fail-forward, small steps, real world, humane language\n\nBeliefs:\n- Don’t promise. Don’t blame.\n- Don’t diagnose. Don’t label.\n- Don’t argue. Don’t shame.\n\nTalk points\n\n- Marvel at people. Sense of wonder.\n- People apologize for falling short all the time; 99% are trying their best. \n- The map in our head can be wrong. That’s OK. Update gently. \n- Mind the body’s state. Sleep, food, light, walk.  \n- Calm is a verb. Courage is a verb. Care is a verb.\n\nTiny habits to teach:  \n- One breath on purpose.  \n- Two sentences that are true.  \n- Three things you can control.  \n- Four second pause before reply.  \n\nFor heavy days: make the day smaller. \n- Eat a little. Drink water. Open a window. Text a friend. \n- Make the bed. Tie your shoes. Touch sunlight.  \n- Name three objects you see. \n\n(“Stoic” = everyday practice. It doesn’t kill emotion. It steadies the helm.)",
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nStoicism (enchiridion, discourses, letters), solid research\n\nSafety first; we aren't therapists. For any danger, step away. Contact support lines; harm sensitive verbs\n\nEach bullet: teach in an approach that can be used by an App or a Person to help themselves be better and calm\n\nPhilosophy: calm, fail-forward, small steps, real world, humane language\n\nBeliefs:\n- Don’t promise. Don’t blame.\n- Don’t diagnose. Don’t label.\n- Don’t argue. Don’t shame.\n\nTalk points\n\n- Marvel at people. Sense of wonder.\n- People apologize for falling short all the time; 99% are trying their best. \n- The map in our head can be wrong. That’s OK. That’s update gently. \n- Mind the body’s state. Sleep, food, light, walk.  \n- Calm is a verb. Courage is a verb. Care is a verb.\n\nTiny habits to teach:  \n- One breath on purpose.  \n- Two sentences that are true.  \n- Three things you can control.  \n- Four second pause before reply.  \n\nFor heavy days: make the day smaller. \n- Eat a little. Drink water. Open a window. Text a friend. \n- Make the bed. Tie your shoes. Touch sunlight.  \n- Name three objects you see. \n\n(“Stoic” = everyday practice. It doesn’t kill emotion. It steadies the helm.)",
   "schema_version": "1.2",
   "schema_id": "stoicism_room_v1",
   "description": "Echologic Mercy Blade for Stoic philosophy and mental self-care. Bilingual EN/VI. Gentle, real-world, small steps.",
@@ -23,9 +23,9 @@
   },
   "meta": {
     "created_at": "2025-10-10T00:00:00Z",
-    "updated_at": "2025-10-10T00:00:00Z",
-    "entry_count": 8,
-    "last_verified": "2025-10-10"
+    "updated_at": "2025-10-20T00:00:00Z",
+    "entry_count": 16,
+    "last_verified": "2025-10-20"
   },
   "enums": {
     "tags": [
@@ -36,7 +36,11 @@
       "perspective",
       "values",
       "safety",
-      "community"
+      "community",
+      "virtue",
+      "impressions",
+      "resilience",
+      "acceptance"
     ],
     "urgency": {
       "immediate": "Act now to prevent harm.",
@@ -96,6 +100,38 @@
     "heavy_day": {
       "en": ["heavy day", "make day smaller", "tiny wins"],
       "vi": ["ngày nặng nề", "thu nhỏ ngày", "thắng lợi nhỏ"]
+    },
+    "judge_impressions": {
+      "en": ["judge impressions", "examine thoughts", "rational check"],
+      "vi": ["xét ấn tượng", "kiểm tra suy nghĩ", "kiểm tra lý tính"]
+    },
+    "accept_fate": {
+      "en": ["accept fate", "amor fati", "love what is"],
+      "vi": ["chấp nhận số phận", "amor fati", "yêu điều đang là"]
+    },
+    "virtue_practice": {
+      "en": ["practice virtue", "daily virtue", "stoic virtues"],
+      "vi": ["thực hành đức hạnh", "đức hạnh hàng ngày", "đức hạnh khắc kỷ"]
+    },
+    "resilience_build": {
+      "en": ["build resilience", "stoic strength", "endure hardship"],
+      "vi": ["xây dựng sức bền", "sức mạnh khắc kỷ", "chịu đựng khó khăn"]
+    },
+    "community_care": {
+      "en": ["stoic community", "help others", "social virtue"],
+      "vi": ["cộng đồng khắc kỷ", "giúp người khác", "đức hạnh xã hội"]
+    },
+    "emotional_steady": {
+      "en": ["steady emotions", "stoic calm", "equanimity"],
+      "vi": ["bình ổn cảm xúc", "bình tĩnh khắc kỷ", "tâm bình đẳng"]
+    },
+    "daily_stoic": {
+      "en": ["daily stoic", "morning routine", "stoic day"],
+      "vi": ["khắc kỷ hàng ngày", "thói quen sáng", "ngày khắc kỷ"]
+    },
+    "seneca_letters": {
+      "en": ["seneca letters", "stoic letters", "moral letters"],
+      "vi": ["thư seneca", "thư khắc kỷ", "thư đạo đức"]
     }
   },
   "entries": [
@@ -182,7 +218,7 @@
       },
       "copy": {
         "en": "Wisdom: ask one good question. Justice: give fair credit. Courage: say a true sentence kindly. Temperance: take one less.",
-        "vi": "Khôn ngoan: hỏi một câu tốt. Công bằng: ghi công công bằng. Can đảm: nói một câu thật, tử tế. Tiết độ: bớt một điều."
+        "vi": "Khôn ngoan: hỏi một câu tốt. Công bằng: ghi công đúng. Can đảm: nói một câu thật, tử tế. Tiết độ: bớt một điều."
       },
       "tags": ["values"],
       "urgency": "routine",
@@ -218,1311 +254,243 @@
       "urgency": "soon",
       "severity_level": "3",
       "systems": ["stoicism"]
+    },
+    {
+      "slug": "judge_impressions",
+      "title": {
+        "en": "Examine impressions calmly",
+        "vi": "Xét ấn tượng bình tĩnh"
+      },
+      "copy": {
+        "en": "When a thought arises, pause. Ask: Is this true? Is it helpful? Respond with reason, not reaction.",
+        "vi": "Khi suy nghĩ dâng, tạm dừng. Hỏi: Điều này có thật? Có hữu ích? Đáp lại bằng lý trí, không phản ứng."
+      },
+      "tags": ["impressions"],
+      "urgency": "routine",
+      "severity_level": "2",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "accept_fate",
+      "title": {
+        "en": "Love what happens (amor fati)",
+        "vi": "Yêu điều xảy ra (amor fati)"
+      },
+      "copy": {
+        "en": "Embrace events as they are. Ask: What can I learn here? Turn obstacles into opportunities gently.",
+        "vi": "Ôm lấy sự việc như chúng là. Hỏi: Tôi học gì ở đây? Biến chướng ngại thành cơ hội nhẹ nhàng."
+      },
+      "tags": ["acceptance"],
+      "urgency": "routine",
+      "severity_level": "3",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "virtue_practice",
+      "title": {
+        "en": "Daily virtue in small deeds",
+        "vi": "Đức hạnh hàng ngày qua việc nhỏ"
+      },
+      "copy": {
+        "en": "Choose wisdom, justice, courage, or temperance. Act on it once today, note the effect.",
+        "vi": "Chọn khôn ngoan, công bằng, can đảm hoặc tiết độ. Thực hành một lần hôm nay, ghi chú hiệu quả."
+      },
+      "tags": ["virtue"],
+      "urgency": "routine",
+      "severity_level": "2",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "resilience_build",
+      "title": {
+        "en": "Build resilience through endurance",
+        "vi": "Xây sức bền qua chịu đựng"
+      },
+      "copy": {
+        "en": "Face a small discomfort voluntarily. Reflect: What strength did this build? Grow step by step.",
+        "vi": "Đối mặt khó chịu nhỏ tự nguyện. Suy ngẫm: Điều này xây sức mạnh gì? Tăng dần từng bước."
+      },
+      "tags": ["resilience"],
+      "urgency": "routine",
+      "severity_level": "3",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "community_care",
+      "title": {
+        "en": "Care for community with virtue",
+        "vi": "Chăm sóc cộng đồng bằng đức hạnh"
+      },
+      "copy": {
+        "en": "Help one person today justly. Ask: How does this align with common good? Act kindly.",
+        "vi": "Giúp một người hôm nay công bằng. Hỏi: Điều này phù hợp lợi ích chung? Hành động tử tế."
+      },
+      "tags": ["community"],
+      "urgency": "routine",
+      "severity_level": "2",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "emotional_steady",
+      "title": {
+        "en": "Steady emotions with reason",
+        "vi": "Bình ổn cảm xúc bằng lý trí"
+      },
+      "copy": {
+        "en": "When emotion surges, pause four seconds. Judge: Is this in my control? Respond steadily.",
+        "vi": "Khi cảm xúc dâng, dừng bốn giây. Xét: Điều này trong kiểm soát? Đáp lại vững vàng."
+      },
+      "tags": ["emotion"],
+      "urgency": "routine",
+      "severity_level": "2",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "daily_stoic",
+      "title": {
+        "en": "Start day with Stoic intent",
+        "vi": "Bắt ngày bằng ý định Khắc Kỷ"
+      },
+      "copy": {
+        "en": "Morning: Name three things you control today. Evening: Review with gratitude.",
+        "vi": "Sáng: Nêu ba điều bạn kiểm soát hôm nay. Tối: Tổng kết với biết ơn."
+      },
+      "tags": ["reflection"],
+      "urgency": "routine",
+      "severity_level": "2",
+      "systems": ["stoicism"]
+    },
+    {
+      "slug": "seneca_letters",
+      "title": {
+        "en": "Reflect on time like Seneca",
+        "vi": "Suy ngẫm thời gian như Seneca"
+      },
+      "copy": {
+        "en": "Ask: Did I use time wisely today? Plan tomorrow's priorities gently.",
+        "vi": "Hỏi: Hôm nay tôi dùng thời gian khôn ngoan? Lập kế hoạch ưu tiên mai nhẹ nhàng."
+      },
+      "tags": ["values"],
+      "urgency": "routine",
+      "severity_level": "3",
+      "systems": ["stoicism"]
     }
   ],
-  "room_essay": {
-    "format": "markdown",
-    "en": "# A Simple Stoic Path for Daily Life\n\nThis room gathers small practices from Stoic thought. The goal is calm action in the middle of change. You can try one card at a time, or link several cards into a short routine. Read this as a field guide. Use it when work feels heavy, when emotions rise, or when you need a steady frame for choices.\n\n**Start with safety.** If your body or mind feels in real danger, step back and find help first. Stoic practice sits on care. After you are safe, the tools here may support you.\n\n**See what is in your control.** The classic move is the “dichotomy of control.” List two columns: things you may influence, and things you cannot. Put effort into the first column. Let the second be what it is. This simple split can reduce waste and free energy for useful steps.\n\n**Slow the storm inside.** When anger, panic, or despair rises, you may pause. Try mindful breathing: longer exhale, softer shoulders, attention on the nose or belly. Count four in, six out. If thoughts race, name them like clouds: “worry,” “memory,” “plan.” The act of naming may create space.\n\n**Make room for the present.** Focus on one small action in front of you. Wash a cup. Send one kind message. Write three true sentences in a journal: what happened, what you felt, what you will try next. Simple present acts can steady the day.\n\n**Choose a point of view.** Stoics use perspective shifts. Imagine you are looking from a hill. The scene of today gets smaller. Ask: “What might matter in a week, a year, a decade?” You might find room to act with care, not with fear.\n\n**Practice negative visualization.** Picture a plan that meets delay, rain, or loss. Then picture how you would respond with reason and grace. This is not a curse. It is mental rehearsal. It may build readiness and reduce shock when life moves sideways.\n\n**Shape character by small deeds.** Virtue in Stoic terms is practical: wisdom, justice, courage, and temperance. Pick one value for today. Tie it to a concrete act. Wisdom: ask one good question before you speak. Justice: give fair credit. Courage: say a true sentence kindly. Temperance: take one less of what pulls you off balance.\n\n**Work with emotions, not against them.** Feelings give signals. You can listen, then choose the next move. Gratitude can soften envy. Patience can cool anger. A walk outside can lift low mood. A short nap can change how a problem looks. Household fixes count as care for the mind too.\n\n**Keep a short daily review.** At evening, ask three simple prompts: What went well? What did not? What will I try tomorrow? Write one line for each. Close the book. Sleep with a lighter mind.\n\n**When life hits hard.** In crisis, shrink the day. Eat a little. Drink water. Text one trusted person. Make the bed or open a window. These tiny wins may restart momentum. Seek support from local services and professionals as needed.\n\n**Grow with community.** Share the practice with a friend. Read a short passage from a Stoic author and explain it in your own words. Teaching may deepen learning.\n\n**Use the room with purpose.** Pick two or three entries and make a stack. For example: “Mindful Breathing → Dichotomy of Control → Mindful Action.” Run the stack in the morning and again in the afternoon. If a card does not help, swap it. Progress is a direction, not a race.\n\nThis path does not ask for perfection. It invites steady steps, honest review, and kind courage. When you return to the room, choose one tool, apply it to one real moment, and move one notch toward calm and good action.",
-    "vi": "# Lộ trình Khắc Kỷ đơn giản cho đời sống hằng ngày\n\nPhòng này gom các thực hành nhỏ từ tư tưởng Khắc Kỷ. Mục tiêu là hành động bình tĩnh giữa đổi thay. Bạn có thể thử từng thẻ, hoặc ghép vài thẻ thành thói quen ngắn. Hãy dùng như cẩm nang thực địa khi công việc nặng, cảm xúc dâng, hoặc bạn cần một khung vững để chọn.\n\n**Bắt đầu với an toàn.** Nếu cơ thể hay tinh thần ở nguy cơ, hãy lùi lại và tìm hỗ trợ trước. Sau khi ổn, công cụ ở đây có thể nâng đỡ bạn.\n\n**Nhị nguyên kiểm soát.** Kẻ hai cột: điều bạn có thể tác động, và điều bạn không thể. Dồn sức vào cột thứ nhất. Để cột thứ hai như nó đang là. Cách chia này có thể giảm lãng phí và giải phóng năng lượng.\n\n**Làm chậm cơn bão bên trong.** Khi giận, hoảng hay buồn sâu dâng lên, bạn có thể tạm dừng. Thử thở chánh niệm: thở ra dài hơn, thả lỏng vai, chú ý ở mũi hoặc bụng. Đếm bốn vào, sáu ra. Nếu ý nghĩ chạy nhanh, hãy gọi tên như mây: “lo,” “kỷ niệm,” “kế hoạch.”\n\n**Sống với hiện tại.** Tập trung vào một việc nhỏ trước mắt: rửa một cái cốc, gửi một tin nhắn tử tế. Viết ba câu thật: chuyện đã xảy ra, cảm xúc của bạn, điều sẽ thử tiếp. Hành động đơn giản có thể làm vững ngày.\n\n**Đổi góc nhìn.** Tưởng tượng bạn đứng trên đồi. Cảnh vật hôm nay nhỏ lại. Hỏi: “Điều gì còn quan trọng sau một tuần, một năm, một thập kỷ?” Góc nhìn rộng có thể giúp bạn bớt sợ và chủ động.\n\n**Hình dung tiêu cực.** Tưởng tượng kế hoạch gặp chậm trễ hay mất mát. Rồi hình dung bạn sẽ đáp lại bằng lý trí và sự điềm đạm. Đây là diễn tập tinh thần, có thể tăng sẵn sàng và giảm sốc.\n\n**Xây tính cách bằng việc nhỏ.** Đức hạnh theo Khắc Kỷ gồm khôn ngoan, công bằng, can đảm, tiết độ. Chọn một giá trị cho hôm nay và gắn nó với hành động cụ thể: hỏi một câu tốt, ghi công đúng người, nói một câu thật tử tế, hoặc bớt một điều đang kéo bạn lệch nhịp.\n\n**Làm việc với cảm xúc.** Cảm xúc là tín hiệu. Bạn có thể lắng nghe, rồi chọn bước kế tiếp. Biết ơn có thể dịu ghen tị. Kiên nhẫn có thể mát giận dữ. Đi bộ ngoài trời hoặc giấc ngủ ngắn có thể đổi cách nhìn vấn đề.\n\n**Tổng kết ngắn mỗi ngày.** Buổi tối, hỏi ba câu: Điều gì đã tốt? Điều gì chưa? Ngày mai tôi sẽ thử gì? Viết mỗi câu một dòng rồi đóng sổ.\n\n**Khi đời đánh mạnh.** Lúc khủng hoảng, hãy thu nhỏ ngày. Ăn chút gì, uống nước, nhắn cho một người tin cậy. Dọn giường hoặc mở cửa sổ. Những thắng lợi nhỏ có thể khởi động lại đà đi. Tìm hỗ trợ từ dịch vụ địa phương và chuyên gia khi cần.\n\n**Cùng học với cộng đồng.** Chia sẻ thực hành với một người bạn. Đọc một đoạn ngắn và giải thích bằng lời của bạn. Dạy lại có thể làm sâu hiểu biết.\n\n**Dùng phòng có chủ đích.** Chọn hai hoặc ba thẻ và xếp thành chuỗi. Ví dụ: “Thở chánh niệm → Nhị nguyên kiểm soát → Hành động chánh niệm.” Chạy chuỗi vào buổi sáng và buổi chiều. Nếu thẻ nào không giúp, hãy thay. Tiến bộ là một hướng đi, không phải cuộc đua.\n\nLộ trình này không đòi sự hoàn hảo. Nó mời những bước ổn định, rà soát trung thực, và can đảm nhân hậu. Khi quay lại phòng, chọn một công cụ, áp nó vào một khoảnh khắc, và tiến một nấc về phía bình tĩnh và hành động đúng.",
-    "word_count_en": 627,
-    "word_count_vi": 660,
-    "updated_at": "2025-10-10T00:00:00Z"
-  },
-  "ui_triggers": {
-    "essay_offer": {
-      "enabled": true,
-      "criteria": {
-        "min_entries_total": 6,
-        "min_distinct_buckets": 3,
-        "max_prior_briefs_shown": 0,
-        "max_recency_minutes": 720
+  "micro_packs": [
+    {
+      "slug": "pack_micro_001",
+      "title": {
+        "en": "Micro practice set 1",
+        "vi": "Bộ thực hành vi mô 1"
       },
-      "behavior": {
-        "mode": "chip_suggest",
-        "snooze_minutes": 1440,
-        "pin_to_canvas": true
+      "steps": [
+        {
+          "en": "Breathe mindfully: in 4, out 6.",
+          "vi": "Thở chánh niệm: vào 4, ra 6."
+        },
+        {
+          "en": "List one controllable action.",
+          "vi": "Liệt một hành động kiểm soát được."
+        },
+        {
+          "en": "Take a small step forward.",
+          "vi": "Làm bước nhỏ tiến tới."
+        },
+        {
+          "en": "Reflect: what learned today?",
+          "vi": "Suy ngẫm: học gì hôm nay?"
+        }
+      ],
+      "notes": {
+        "en": "Build calm through repetition.",
+        "vi": "Xây bình tĩnh qua lặp lại."
+      }
+    },
+    {
+      "slug": "pack_micro_002",
+      "title": {
+        "en": "Micro practice set 2",
+        "vi": "Bộ thực hành vi mô 2"
+      },
+      "steps": [
+        {
+          "en": "Pause, examine impression.",
+          "vi": "Dừng, xét ấn tượng."
+        },
+        {
+          "en": "Accept what comes gently.",
+          "vi": "Chấp nhận điều đến nhẹ nhàng."
+        },
+        {
+          "en": "Act with one virtue now.",
+          "vi": "Hành động một đức hạnh giờ."
+        },
+        {
+          "en": "Build strength in small way.",
+          "vi": "Xây sức mạnh cách nhỏ."
+        }
+      ],
+      "notes": {
+        "en": "Steady mind with practice.",
+        "vi": "Vững tâm qua thực hành."
       }
     }
-  },
-  "appendix": {
-    "faq": [
-      {
-        "q_en": "Is Stoicism about hiding feelings?",
-        "a_en": "No. Stoic practice may help you notice a feeling, name it, and act with care. Feelings still matter. You are building a steady response, not a mask.",
-        "q_vi": "Khắc Kỷ có phải là giấu cảm xúc không?",
-        "a_vi": "Không. Thực hành Khắc Kỷ có thể giúp bạn nhận ra cảm xúc, gọi tên, và hành động có cân nhắc. Cảm xúc vẫn quan trọng. Bạn đang xây phản ứng vững, không phải chiếc mặt nạ."
+  ],
+  "audio_guides": [
+    {
+      "slug": "audio_breath_reset",
+      "title": {
+        "en": "Breath reset (2 minutes)",
+        "vi": "Đặt lại hơi thở (2 phút)"
       },
-      {
-        "q_en": "How long should I practice each day?",
-        "a_en": "Short is fine. Two to ten minutes may help. You can link two or three cards and repeat them at a steady time, like morning and evening.",
-        "q_vi": "Mỗi ngày nên tập bao lâu?",
-        "a_vi": "Ngắn cũng ổn. Hai đến mười phút có thể giúp. Bạn có thể ghép hai hoặc ba thẻ và lặp vào thời điểm đều đặn, như sáng và tối."
-      },
-      {
-        "q_en": "What if I skip a day?",
-        "a_en": "It happens. Notice it, restart with a small step. Progress can come from return and review, not from a perfect streak.",
-        "q_vi": "Nếu tôi bỏ lỡ một ngày thì sao?",
-        "a_vi": "Chuyện thường. Nhận ra, rồi bắt đầu lại bằng một bước nhỏ. Tiến bộ có thể đến từ việc quay lại và soi lại, không phải chuỗi hoàn hảo."
-      },
-      {
-        "q_en": "Can I practice with friends?",
-        "a_en": "Yes. You can read a short passage together and share one action you will try. Community may make practice lighter and more steady.",
-        "q_vi": "Tôi có thể tập với bạn bè không?",
-        "a_vi": "Có. Bạn có thể đọc một đoạn ngắn cùng nhau và chia sẻ một hành động sẽ thử. Cộng đồng có thể làm việc tập nhẹ nhàng và đều hơn."
-      },
-      {
-        "q_en": "What if my stress feels unsafe?",
-        "a_en": "Pause and seek real-world help. Contact local services or a trusted person. After safety improves, you can return to the practices.",
-        "q_vi": "Nếu căng thẳng của tôi thấy không an toàn thì sao?",
-        "a_vi": "Tạm dừng và tìm hỗ trợ thực tế. Liên hệ dịch vụ địa phương hoặc người bạn tin. Khi an toàn hơn, bạn có thể quay lại các thực hành."
+      "script": {
+        "en": "Find a gentle posture. Breathe in four. Breathe out six–eight. Soften the shoulders. Let attention rest at the nose or belly. If the mind wanders, note it and return to breath.",
+        "vi": "Chọn tư thế nhẹ nhàng. Hít vào bốn. Thở ra sáu–tám. Thả lỏng vai. Để ý ở mũi hoặc bụng. Nếu tâm trí đi xa, nhận ra rồi quay lại hơi thở."
       }
-    ],
-    "practice_packs": [
-      {
-        "slug": "pack_morning_reset",
-        "title": {
-          "en": "Morning reset (10 minutes)",
-          "vi": "Tái cân bằng buổi sáng (10 phút)"
-        },
-        "steps": [
-          {
-            "en": "Mindful breath: 10 cycles, longer exhale.",
-            "vi": "Thở chánh niệm: 10 chu kỳ, thở ra dài hơn."
-          },
-          {
-            "en": "Dichotomy of control: list two items per side.",
-            "vi": "Nhị nguyên kiểm soát: liệt kê hai mục mỗi cột."
-          },
-          {
-            "en": "Present action: one small task now.",
-            "vi": "Hành động hiện tại: một việc nhỏ ngay bây giờ."
-          },
-          {
-            "en": "Virtue pick: choose one value for today.",
-            "vi": "Chọn đức hạnh: chọn một giá trị cho hôm nay."
-          }
-        ],
-        "notes": {
-          "en": "You can adapt the length. Consistency may matter more than intensity.",
-          "vi": "Bạn có thể điều chỉnh thời lượng. Tính đều có thể quan trọng hơn cường độ."
-        }
+    },
+    {
+      "slug": "audio_view_from_above",
+      "title": {
+        "en": "View from above (3 minutes)",
+        "vi": "Nhìn từ trên cao (3 phút)"
       },
-      {
-        "slug": "pack_evening_unwind",
-        "title": {
-          "en": "Evening unwind (7 minutes)",
-          "vi": "Thư giãn buổi tối (7 phút)"
-        },
-        "steps": [
-          {
-            "en": "Mindful breath: in 4, out 6, for 2 minutes.",
-            "vi": "Thở chánh niệm: vào 4, ra 6, trong 2 phút."
-          },
-          {
-            "en": "Evening review: three short lines.",
-            "vi": "Tổng kết tối: ba dòng ngắn."
-          },
-          {
-            "en": "Gratitude: name two small goods.",
-            "vi": "Biết ơn: gọi tên hai điều nhỏ tích cực."
-          }
-        ],
-        "notes": {
-          "en": "Soft light and quiet may help. End with a kind thought.",
-          "vi": "Ánh sáng dịu và yên tĩnh có thể giúp. Kết thúc bằng một ý nghĩ tử tế."
-        }
-      },
-      {
-        "slug": "pack_heavy_day",
-        "title": {
-          "en": "Heavy day support (anytime)",
-          "vi": "Hỗ trợ ngày nặng (bất kỳ lúc nào)"
-        },
-        "steps": [
-          {
-            "en": "Make the day smaller: pick one tiny win.",
-            "vi": "Thu nhỏ ngày: chọn một thắng lợi nhỏ."
-          },
-          {
-            "en": "Body check: water, window, walk if possible.",
-            "vi": "Kiểm thân: uống nước, mở cửa sổ, đi bộ nếu được."
-          },
-          {
-            "en": "Dichotomy: choose one controllable action.",
-            "vi": "Nhị nguyên: chọn một hành động trong tầm tay."
-          }
-        ],
-        "notes": {
-          "en": "If stress feels unsafe, pause and seek help first.",
-          "vi": "Nếu căng thẳng thấy không an toàn, hãy tạm dừng và tìm hỗ trợ trước."
-        }
-      },
-      {
-        "slug": "pack_micro_001",
-        "title": {
-          "en": "Micro practice set 1",
-          "vi": "Bộ thực hành vi mô 1"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_002",
-        "title": {
-          "en": "Micro practice set 2",
-          "vi": "Bộ thực hành vi mô 2"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_003",
-        "title": {
-          "en": "Micro practice set 3",
-          "vi": "Bộ thực hành vi mô 3"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_004",
-        "title": {
-          "en": "Micro practice set 4",
-          "vi": "Bộ thực hành vi mô 4"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_005",
-        "title": {
-          "en": "Micro practice set 5",
-          "vi": "Bộ thực hành vi mô 5"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_006",
-        "title": {
-          "en": "Micro practice set 6",
-          "vi": "Bộ thực hành vi mô 6"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_007",
-        "title": {
-          "en": "Micro practice set 7",
-          "vi": "Bộ thực hành vi mô 7"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_008",
-        "title": {
-          "en": "Micro practice set 8",
-          "vi": "Bộ thực hành vi mô 8"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_009",
-        "title": {
-          "en": "Micro practice set 9",
-          "vi": "Bộ thực hành vi mô 9"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_010",
-        "title": {
-          "en": "Micro practice set 10",
-          "vi": "Bộ thực hành vi mô 10"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_011",
-        "title": {
-          "en": "Micro practice set 11",
-          "vi": "Bộ thực hành vi mô 11"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_012",
-        "title": {
-          "en": "Micro practice set 12",
-          "vi": "Bộ thực hành vi mô 12"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_013",
-        "title": {
-          "en": "Micro practice set 13",
-          "vi": "Bộ thực hành vi mô 13"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_014",
-        "title": {
-          "en": "Micro practice set 14",
-          "vi": "Bộ thực hành vi mô 14"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_015",
-        "title": {
-          "en": "Micro practice set 15",
-          "vi": "Bộ thực hành vi mô 15"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_016",
-        "title": {
-          "en": "Micro practice set 16",
-          "vi": "Bộ thực hành vi mô 16"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_017",
-        "title": {
-          "en": "Micro practice set 17",
-          "vi": "Bộ thực hành vi mô 17"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_018",
-        "title": {
-          "en": "Micro practice set 18",
-          "vi": "Bộ thực hành vi mô 18"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_019",
-        "title": {
-          "en": "Micro practice set 19",
-          "vi": "Bộ thực hành vi mô 19"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_020",
-        "title": {
-          "en": "Micro practice set 20",
-          "vi": "Bộ thực hành vi mô 20"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_021",
-        "title": {
-          "en": "Micro practice set 21",
-          "vi": "Bộ thực hành vi mô 21"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_022",
-        "title": {
-          "en": "Micro practice set 22",
-          "vi": "Bộ thực hành vi mô 22"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_023",
-        "title": {
-          "en": "Micro practice set 23",
-          "vi": "Bộ thực hành vi mô 23"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_024",
-        "title": {
-          "en": "Micro practice set 24",
-          "vi": "Bộ thực hành vi mô 24"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_025",
-        "title": {
-          "en": "Micro practice set 25",
-          "vi": "Bộ thực hành vi mô 25"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_026",
-        "title": {
-          "en": "Micro practice set 26",
-          "vi": "Bộ thực hành vi mô 26"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_027",
-        "title": {
-          "en": "Micro practice set 27",
-          "vi": "Bộ thực hành vi mô 27"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_028",
-        "title": {
-          "en": "Micro practice set 28",
-          "vi": "Bộ thực hành vi mô 28"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_029",
-        "title": {
-          "en": "Micro practice set 29",
-          "vi": "Bộ thực hành vi mô 29"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_030",
-        "title": {
-          "en": "Micro practice set 30",
-          "vi": "Bộ thực hành vi mô 30"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_031",
-        "title": {
-          "en": "Micro practice set 31",
-          "vi": "Bộ thực hành vi mô 31"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_032",
-        "title": {
-          "en": "Micro practice set 32",
-          "vi": "Bộ thực hành vi mô 32"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_033",
-        "title": {
-          "en": "Micro practice set 33",
-          "vi": "Bộ thực hành vi mô 33"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_034",
-        "title": {
-          "en": "Micro practice set 34",
-          "vi": "Bộ thực hành vi mô 34"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_035",
-        "title": {
-          "en": "Micro practice set 35",
-          "vi": "Bộ thực hành vi mô 35"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_036",
-        "title": {
-          "en": "Micro practice set 36",
-          "vi": "Bộ thực hành vi mô 36"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_037",
-        "title": {
-          "en": "Micro practice set 37",
-          "vi": "Bộ thực hành vi mô 37"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_038",
-        "title": {
-          "en": "Micro practice set 38",
-          "vi": "Bộ thực hành vi mô 38"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
-      },
-      {
-        "slug": "pack_micro_039",
-        "title": {
-          "en": "Micro practice set 39",
-          "vi": "Bộ thực hành vi mô 39"
-        },
-        "steps": [
-          {
-            "en": "One mindful breath: in 4, out 6.",
-            "vi": "Một hơi thở chánh niệm: vào 4, ra 6."
-          },
-          {
-            "en": "Name a feeling and a need.",
-            "vi": "Gọi tên một cảm xúc và một nhu cầu."
-          },
-          {
-            "en": "Pick one small next action.",
-            "vi": "Chọn một hành động nhỏ kế tiếp."
-          },
-          {
-            "en": "Review: one line of learning.",
-            "vi": "Soi lại: một dòng bài học."
-          }
-        ],
-        "notes": {
-          "en": "Short loops can fit into busy days.",
-          "vi": "Vòng ngắn có thể phù hợp ngày bận rộn."
-        }
+      "script": {
+        "en": "Picture yourself on a hill. See the room, street, city, and sky. Ask what may matter in a week or a year. Let the breath guide a calm choice.",
+        "vi": "Hãy tưởng bạn đứng trên đồi. Thấy căn phòng, con phố, thành phố và bầu trời. Hỏi điều gì còn quan trọng sau một tuần hay một năm. Để hơi thở dẫn dắt một chọn lựa bình tĩnh."
       }
-    ],
-    "audio_guides": [
-      {
-        "slug": "audio_breath_reset",
-        "title": {
-          "en": "Breath reset (2 minutes)",
-          "vi": "Đặt lại hơi thở (2 phút)"
-        },
-        "script": {
-          "en": "Find a gentle posture. Breathe in four. Breathe out six. Soften the shoulders. Let attention rest at the nose or belly. If the mind wanders, note it and return to breath.",
-          "vi": "Chọn tư thế nhẹ nhàng. Hít vào bốn. Thở ra sáu. Thả lỏng vai. Để ý ở mũi hoặc bụng. Nếu tâm trí đi xa, nhận ra rồi quay lại hơi thở."
-        }
+    },
+    {
+      "slug": "audio_evening_review",
+      "title": {
+        "en": "Evening review (3 minutes)",
+        "vi": "Tổng kết buổi tối (3 phút)"
       },
-      {
-        "slug": "audio_view_from_above",
-        "title": {
-          "en": "View from above (3 minutes)",
-          "vi": "Nhìn từ trên cao (3 phút)"
-        },
-        "script": {
-          "en": "Picture yourself on a hill. See the room, street, city, and sky. Ask what may matter in a week or a year. Let the breath guide a calm choice.",
-          "vi": "Hãy tưởng bạn đứng trên đồi. Thấy căn phòng, con phố, thành phố và bầu trời. Hỏi điều gì còn quan trọng sau một tuần hay một năm. Để hơi thở dẫn dắt một chọn lựa bình tĩnh."
-        }
-      },
-      {
-        "slug": "audio_evening_review",
-        "title": {
-          "en": "Evening review (3 minutes)",
-          "vi": "Tổng kết buổi tối (3 phút)"
-        },
-        "script": {
-          "en": "Ask three questions: what went well, what did not, what to try tomorrow. One short line each. Close the day with a kind thought toward yourself.",
-          "vi": "Hỏi ba câu: điều gì đã tốt, điều gì chưa, ngày mai sẽ thử gì. Mỗi câu một dòng ngắn. Khép ngày với một ý nghĩ tử tế cho chính mình."
-        }
+      "script": {
+        "en": "Ask three questions: what went well, what did not, what to try tomorrow. One short line each. Close the day with a kind thought toward yourself.",
+        "vi": "Hỏi ba câu: điều gì đã tốt, điều gì chưa, ngày mai sẽ thử gì. Mỗi câu một dòng ngắn. Khép ngày với một ý nghĩ tử tế cho chính mình."
       }
-    ]
-  }
+    },
+    {
+      "slug": "audio_amor_fati",
+      "title": {
+        "en": "Embrace fate (4 minutes)",
+        "vi": "Ôm lấy số phận (4 phút)"
+      },
+      "script": {
+        "en": "Sit comfortably. Reflect on a recent event. Ask: What lesson here? Breathe acceptance. Turn it to growth with calm.",
+        "vi": "Ngồi thoải mái. Suy ngẫm sự việc gần. Hỏi: Bài học gì? Thở chấp nhận. Biến thành tăng trưởng điềm tĩnh."
+      }
+    },
+    {
+      "slug": "audio_virtue_moment",
+      "title": {
+        "en": "Virtue in moment (3 minutes)",
+        "vi": "Đức hạnh trong khoảnh khắc (3 phút)"
+      },
+      "script": {
+        "en": "Choose a virtue: wisdom or courage. Visualize acting on it today. Breathe strength. Commit gently.",
+        "vi": "Chọn đức hạnh: khôn ngoan hay can đảm. Hình dung hành động hôm nay. Thở sức mạnh. Cam kết nhẹ nhàng."
+      }
+    }
+  ]
 }
