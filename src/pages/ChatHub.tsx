@@ -40,7 +40,7 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
     if (mainMessages.length === 0) {
       const welcomeMessage: Message = {
         id: 'welcome',
-        text: `Xin chào! Chào mừng bạn đến với phòng ${currentRoom.nameVi}. Tôi có thể giúp gì cho bạn hôm nay?\n\nHello! Welcome to ${currentRoom.nameEn} room. How can I help you today?`,
+        text: `Hello! Welcome to ${currentRoom.nameEn} room. How can I help you today?\n\nXin chào! Chào mừng bạn đến với phòng ${currentRoom.nameVi}. Tôi có thể giúp gì cho bạn hôm nay?`,
         isUser: false,
         timestamp: new Date()
       };
@@ -79,8 +79,8 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
     } catch (error) {
       console.error('Error generating response:', error);
       toast({
-        title: "Lỗi / Error",
-        description: error instanceof Error ? error.message : "Không thể tạo phản hồi / Could not generate response",
+        title: "Error / Lỗi",
+        description: error instanceof Error ? error.message : "Could not generate response / Không Thể Tạo Phản Hồi",
         variant: "destructive"
       });
     } finally {
@@ -110,11 +110,11 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
     setTimeout(() => {
       let responseText = "";
       if (chatType === "feedback") {
-        responseText = "Cảm ơn phản hồi của bạn. Chúng tôi đã ghi nhận.\n\nThank you for your feedback. We have recorded it.";
+        responseText = "Thank you for your feedback. We have recorded it.\n\nCảm ơn phản hồi của bạn. Chúng tôi đã ghi nhận.";
       } else if (chatType === "room") {
-        responseText = "Tin nhắn của bạn đã được gửi đến phòng.\n\nYour message has been sent to the room.";
+        responseText = "Your message has been sent to the room.\n\nTin nhắn của bạn đã được gửi đến phòng.";
       } else {
-        responseText = "Tin nhắn riêng tư của bạn đã được gửi.\n\nYour private message has been sent.";
+        responseText = "Your private message has been sent.\n\nTin nhắn riêng tư của bạn đã được gửi.";
       }
 
       const aiMessage: Message = {
@@ -161,16 +161,16 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
             className="gap-2"
           >
             <ArrowLeft className="w-4 h-4" />
-            Quay lại / Back
+            Back / Quay Lại
           </Button>
           
           <div className="text-center">
-            <h2 className="text-xl font-bold text-foreground">{currentRoom.nameVi}</h2>
-            <p className="text-sm text-muted-foreground">{currentRoom.nameEn}</p>
+            <h2 className="text-xl font-bold text-foreground">{currentRoom.nameEn}</h2>
+            <p className="text-sm text-muted-foreground">{currentRoom.nameVi}</p>
           </div>
           
           <Badge variant="outline" className="bg-green-100 text-green-700 border-green-300">
-            Đang hoạt động / Active
+            Active / Đang Hoạt Động
           </Badge>
         </div>
 
@@ -180,8 +180,8 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
             <div className="flex items-center gap-2 pb-2 border-b">
               <MessageCircle className="w-5 h-5 text-primary" />
               <div>
-                <h3 className="font-semibold">Tư vấn chính</h3>
-                <p className="text-xs text-muted-foreground">Main Consultation</p>
+                <h3 className="font-semibold">Main Consultation</h3>
+                <p className="text-xs text-muted-foreground">Tư Vấn Chính</p>
               </div>
             </div>
             
@@ -189,8 +189,8 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
               {mainMessages.length === 0 ? (
                 <div className="flex items-center justify-center h-full text-center">
                   <div className="space-y-2">
-                    <p className="text-muted-foreground">Bắt đầu cuộc trò chuyện của bạn</p>
-                    <p className="text-sm text-muted-foreground">Start your conversation</p>
+                    <p className="text-muted-foreground">Start your conversation</p>
+                    <p className="text-sm text-muted-foreground">Bắt Đầu Cuộc Trò Chuyện Của Bạn</p>
                   </div>
                 </div>
               ) : (
@@ -200,7 +200,7 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
 
             <div className="flex gap-2 pt-2">
               <Input
-                placeholder="Nhập tin nhắn / Type your message..."
+                placeholder="Type your message / Nhập Tin Nhắn..."
                 value={mainInput}
                 onChange={(e) => setMainInput(e.target.value)}
                 onKeyPress={(e) => e.key === "Enter" && !isLoading && sendMainMessage()}
@@ -230,8 +230,8 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
               <div className="flex items-center gap-2 pb-2 border-b">
                 <Mail className="w-4 h-4 text-secondary" />
                 <div>
-                  <h4 className="text-sm font-semibold">Phản hồi</h4>
-                  <p className="text-xs text-muted-foreground">Feedback to Admin</p>
+                  <h4 className="text-sm font-semibold">Feedback to Admin</h4>
+                  <p className="text-xs text-muted-foreground">Phản Hồi</p>
                 </div>
               </div>
               
@@ -247,7 +247,7 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
 
               <div className="flex gap-2">
                 <Input
-                  placeholder="Gửi phản hồi..."
+                  placeholder="Send feedback / Gửi Phản Hồi..."
                   value={feedbackInput}
                   onChange={(e) => setFeedbackInput(e.target.value)}
                   onKeyPress={(e) => e.key === "Enter" && sendMessage(feedbackInput, setFeedbackInput, setFeedbackMessages, "feedback")}
@@ -270,8 +270,8 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
               <div className="flex items-center gap-2 pb-2 border-b">
                 <Users className="w-4 h-4 text-accent" />
                 <div>
-                  <h4 className="text-sm font-semibold">Chat phòng</h4>
-                  <p className="text-xs text-muted-foreground">Room Chat</p>
+                  <h4 className="text-sm font-semibold">Room Chat</h4>
+                  <p className="text-xs text-muted-foreground">Chat Phòng</p>
                 </div>
               </div>
               
@@ -287,7 +287,7 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
 
               <div className="flex gap-2">
                 <Input
-                  placeholder="Nhắn tin phòng..."
+                  placeholder="Room message / Nhắn Tin Phòng..."
                   value={roomInput}
                   onChange={(e) => setRoomInput(e.target.value)}
                   onKeyPress={(e) => e.key === "Enter" && sendMessage(roomInput, setRoomInput, setRoomMessages, "room")}
@@ -310,8 +310,8 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
               <div className="flex items-center gap-2 pb-2 border-b">
                 <MessageCircle className="w-4 h-4 text-primary" />
                 <div>
-                  <h4 className="text-sm font-semibold">Chat riêng</h4>
-                  <p className="text-xs text-muted-foreground">Private Chat</p>
+                  <h4 className="text-sm font-semibold">Private Chat</h4>
+                  <p className="text-xs text-muted-foreground">Chat Riêng</p>
                 </div>
               </div>
               
@@ -327,7 +327,7 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
 
               <div className="flex gap-2">
                 <Input
-                  placeholder="Nhắn tin riêng..."
+                  placeholder="Private message / Nhắn Tin Riêng..."
                   value={privateInput}
                   onChange={(e) => setPrivateInput(e.target.value)}
                   onKeyPress={(e) => e.key === "Enter" && sendMessage(privateInput, setPrivateInput, setPrivateMessages, "private")}

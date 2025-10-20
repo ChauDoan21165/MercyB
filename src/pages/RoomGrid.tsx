@@ -32,15 +32,15 @@ const RoomGrid = () => {
             onClick={() => navigate("/")}
             className="mb-4"
           >
-            ← Quay lại / Back
+            ← Back / Quay Lại
           </Button>
           
           <div className="text-center space-y-2">
             <h1 className="text-4xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
-              Chọn phòng học
+              Choose Your Learning Room
             </h1>
             <p className="text-lg text-muted-foreground">
-              Choose Your Learning Room
+              Chọn Phòng Học Của Bạn
             </p>
           </div>
 
@@ -60,7 +60,7 @@ const RoomGrid = () => {
             </Badge>
             <Badge variant="outline" className="bg-green-100 text-green-700 border-green-300">
               <CheckCircle2 className="w-3 h-3 mr-1" />
-              Sẵn sàng / Ready
+              Ready / Sẵn Sàng
             </Badge>
           </div>
         </div>
@@ -102,10 +102,10 @@ const RoomGrid = () => {
                 {/* Room Names */}
                 <div className="space-y-1">
                   <p className="text-xs font-semibold text-foreground leading-tight line-clamp-2">
-                    {room.nameVi}
+                    {room.nameEn}
                   </p>
                   <p className="text-[10px] text-muted-foreground leading-tight line-clamp-2">
-                    {room.nameEn}
+                    {room.nameVi}
                   </p>
                 </div>
               </div>
@@ -121,10 +121,10 @@ const RoomGrid = () => {
         {/* Footer Note */}
         <div className="text-center mt-8 space-y-1">
           <p className="text-sm text-muted-foreground">
-            Các phòng có ✓ đã sẵn sàng để học
+            Rooms with ✓ are ready for learning
           </p>
           <p className="text-xs text-muted-foreground">
-            Rooms with ✓ are ready for learning
+            Các Phòng Có ✓ Đã Sẵn Sàng Để Học
           </p>
         </div>
       </div>

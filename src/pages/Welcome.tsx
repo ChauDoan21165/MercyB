@@ -59,7 +59,7 @@ const Welcome = () => {
               Wellness and knowledge app for learning health, life, and English
             </p>
             <p className="text-xl text-muted-foreground">
-              Ứng dụng học về sức khỏe, cuộc sống và tiếng Anh
+              Ứng Dụng Học Về Sức Khỏe, Cuộc Sống Và Tiếng Anh
             </p>
           </div>
 
@@ -71,14 +71,14 @@ const Welcome = () => {
             >
               <span className="flex flex-col items-center">
                 <span className="text-base font-semibold">Explore Rooms</span>
-                <span className="text-sm opacity-90">Khám phá các phòng</span>
+                <span className="text-sm opacity-90">Khám Phá Các Phòng</span>
               </span>
             </Button>
             <div className="flex items-center gap-3">
               <div className="text-4xl animate-pulse">→</div>
               <div className="flex flex-col">
-                <span className="text-lg font-bold text-foreground">Chọn Phòng</span>
-                <span className="text-sm text-muted-foreground">Choose Room</span>
+                <span className="text-lg font-bold text-foreground">Choose Room</span>
+                <span className="text-sm text-muted-foreground">Chọn Phòng</span>
               </div>
             </div>
           </div>
@@ -88,10 +88,10 @@ const Welcome = () => {
         <div className="space-y-8">
           <div className="text-center space-y-2">
             <h2 className="text-3xl font-bold text-foreground">
-              Chọn gói phù hợp với bạn
+              Choose Your Plan
             </h2>
             <p className="text-lg text-muted-foreground">
-              Choose your plan
+              Chọn Gói Phù Hợp Với Bạn
             </p>
           </div>
 
@@ -105,17 +105,17 @@ const Welcome = () => {
               >
                 {tier.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-accent text-primary-foreground px-4 py-1 rounded-full text-xs font-semibold">
-                    Phổ biến / Popular
+                    Popular / Phổ Biến
                   </div>
                 )}
                 
                 <div className="space-y-4">
                   <div className="space-y-1">
                     <h3 className="text-xl font-bold text-foreground">
-                      {tier.name.vi}
+                      {tier.name.en}
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                      {tier.name.en}
+                      {tier.name.vi}
                     </p>
                   </div>
 
@@ -154,7 +154,7 @@ const Welcome = () => {
                   >
                     <span className="flex flex-col">
                       <span className="text-sm">Choose Plan</span>
-                      <span className="text-xs opacity-90">Chọn gói</span>
+                      <span className="text-xs opacity-90">Chọn Gói</span>
                     </span>
                   </Button>
                 </div>
@@ -169,7 +169,7 @@ const Welcome = () => {
             Learn English vocabulary through real health content
           </p>
           <p className="text-xs text-muted-foreground">
-            Học từ vựng tiếng Anh qua nội dung sức khỏe thực tế
+            Học Từ Vựng Tiếng Anh Qua Nội Dung Sức Khỏe Thực Tế
           </p>
         </div>
       </div>
