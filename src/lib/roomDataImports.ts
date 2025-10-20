@@ -61,6 +61,10 @@ import trainBrain from '@/data/rooms/train_brain_memory.json';
 import trauma from '@/data/rooms/trauma.json';
 import wifeDealing from '@/data/rooms/wife_dealing.json';
 import womenHealth from '@/data/rooms/women_health.json';
+import habitBuilding from '@/data/rooms/habit_building.json';
+import negotiationMastery from '@/data/rooms/negotiation_mastery.json';
+import diabetesAdvanced from '@/data/rooms/diabetes_advanced.json';
+import confidenceBuilding from '@/data/rooms/confidence_building.json';
 
 export const roomDataMap: Record<string, any> = {
   'abdominal-pain': abdominalPain,
@@ -125,4 +129,8 @@ export const roomDataMap: Record<string, any> = {
   'trauma': trauma,
   'wife-dealing': wifeDealing,
   'womens-health': womenHealth,
+  'habit-building': habitBuilding,
+  'negotiation-mastery': negotiationMastery,
+  'diabetes-advanced': diabetesAdvanced,
+  'confidence-building': confidenceBuilding,
 };
