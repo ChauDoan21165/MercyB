@@ -63,7 +63,20 @@ const Welcome = () => {
             </p>
           </div>
 
-          <div className="flex justify-center items-center gap-8 pt-6">
+          <Card className="max-w-4xl mx-auto mt-8 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+            <div className="p-8 space-y-6">
+              <div className="space-y-3">
+                <p className="text-base leading-relaxed text-foreground/90">
+                  Mercy Blade is your compassionate companion for health and wellness journeys. It offers bite-sized, evidence-based guidance on topics like burnout recovery, habit building, and diabetes care, empowering you with practical steps and gentle encouragement. Whether managing stress or fostering confidence, Mercy Blade supports sustainable growth in a supportive, non-judgmental space.
+                </p>
+                <p className="text-base leading-relaxed text-muted-foreground">
+                  Mercy Blade là người bạn đồng hành đầy lòng thương xót cho hành trình sức khỏe và phúc lợi. Nó cung cấp hướng dẫn ngắn gọn, dựa trên bằng chứng về các chủ đề như phục hồi kiệt sức, xây dựng thói quen và chăm sóc đái tháo đường, trao quyền cho bạn với các bước thực tế và khích lệ nhẹ nhàng. Dù quản lý căng thẳng hay nuôi dưỡng tự tin, Mercy Blade hỗ trợ tăng trưởng bền vững trong không gian hỗ trợ, không phán xét.
+                </p>
+              </div>
+            </div>
+          </Card>
+
+          <div className="flex justify-center items-center gap-8 pt-8">
             <Button 
               size="lg"
               className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-hover transition-all min-w-[200px]"
