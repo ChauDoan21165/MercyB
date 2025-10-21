@@ -17,14 +17,24 @@ export const UsernameSetup = ({ onComplete }: UsernameSetupProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Normalize and sanitize input (trim spaces, remove zero-width chars)
+    const cleaned = username
+      .normalize('NFKC')
+      .replace(/[\u200B-\u200D\uFEFF]/g, '')
+      .trim();
+
+    if (cleaned !== username) {
+      setUsername(cleaned);
+    }
     
-    if (username.length < 3 || username.length > 30) {
+    if (cleaned.length < 3 || cleaned.length > 30) {
       toast.error("Username must be between 3 and 30 characters");
       return;
     }
 
     // Check if username contains only valid characters
-    if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+    if (!/^[a-zA-Z0-9_]+$/.test(cleaned)) {
       toast.error("Username can only contain letters, numbers, and underscores");
       return;
     }
@@ -39,13 +49,13 @@ export const UsernameSetup = ({ onComplete }: UsernameSetupProps) => {
 
       const { error } = await supabase
         .from("profiles")
-        .update({ username })
+        .update({ username: cleaned })
         .eq("id", user.id);
 
       if (error) {
         console.error("Username error:", error);
         if (error.code === "23505") {
-          toast.error(`"${username}" is already taken. Please choose another username.`);
+          toast.error(`"${cleaned}" is already taken. Please choose another username.`);
         } else if (error.message) {
           toast.error(`Error: ${error.message}`);
         } else {
