@@ -235,65 +235,116 @@ serve(async (req) => {
     }
 
     // Build context from room data
-    let contextInfo = `You are an AI assistant in the "${roomData.schema_id}" room.\n\n`;
+    let contextInfo = `You are an AI advisor in the "${roomData.schema_id}" room.\n\n`;
     
     if (roomData.room_essay) {
-      contextInfo += `Room Description (English): ${roomData.room_essay.en}\n`;
-      contextInfo += `Room Description (Vietnamese): ${roomData.room_essay.vi}\n\n`;
+      contextInfo += `Room Overview (English): ${roomData.room_essay.en}\n`;
+      contextInfo += `Room Overview (Vietnamese): ${roomData.room_essay.vi}\n\n`;
     }
 
-    // Add available topics from entries
+    // KEYWORD MATCHING: Find relevant entries based on user query
+    let matchedEntries: any[] = [];
     if (roomData.entries && Array.isArray(roomData.entries)) {
-      contextInfo += `Available Topics:\n`;
-      roomData.entries.slice(0, 10).forEach((entry: any) => {
-        if (entry.title?.en) {
-          contextInfo += `- ${entry.title.en} (${entry.title.vi || ''})\n`;
-        }
+      // Search for entries whose keywords match the user's query
+      matchedEntries = roomData.entries.filter((entry: any) => {
+        if (!entry.keywords || !Array.isArray(entry.keywords)) return false;
+        
+        // Check if any keyword from the entry appears in the user query
+        return entry.keywords.some((keyword: string) => 
+          userQuery.includes(keyword.toLowerCase().replace(/_/g, ' '))
+        );
       });
-      contextInfo += `\n`;
+
+      // If we found matching entries, provide their detailed content
+      if (matchedEntries.length > 0) {
+        contextInfo += `\n=== RELEVANT DETAILED INFORMATION ===\n`;
+        matchedEntries.slice(0, 3).forEach((entry: any, idx: number) => {
+          contextInfo += `\n[Topic ${idx + 1}]\n`;
+          if (entry.title) {
+            contextInfo += `Title: ${entry.title.en} / ${entry.title.vi}\n`;
+          }
+          if (entry.content?.en) {
+            contextInfo += `Content (EN): ${entry.content.en}\n`;
+          }
+          if (entry.content?.vi) {
+            contextInfo += `Content (VI): ${entry.content.vi}\n`;
+          }
+          if (entry.copy?.en) {
+            contextInfo += `Guidance (EN): ${entry.copy.en}\n`;
+          }
+          if (entry.copy?.vi) {
+            contextInfo += `Guidance (VI): ${entry.copy.vi}\n`;
+          }
+        });
+        contextInfo += `\n=== END OF DETAILED INFORMATION ===\n\n`;
+      } else {
+        // No exact matches, show available topics
+        contextInfo += `Available Topics (ask about these):\n`;
+        roomData.entries.slice(0, 8).forEach((entry: any) => {
+          if (entry.title?.en) {
+            contextInfo += `- ${entry.title.en} (${entry.title.vi || ''})\n`;
+          }
+        });
+        contextInfo += `\n`;
+      }
     }
 
     // Add safety and crisis info
     if (roomData.safety_disclaimer) {
-      contextInfo += `Safety Disclaimer: ${roomData.safety_disclaimer.en}\n`;
+      contextInfo += `Safety: ${roomData.safety_disclaimer.en || roomData.safety_disclaimer}\n`;
     }
     if (roomData.crisis_footer) {
-      contextInfo += `Crisis Info: ${roomData.crisis_footer.en}\n\n`;
+      const crisis = roomData.crisis_footer.en || roomData.crisis_footer;
+      contextInfo += `Emergency: ${crisis}\n\n`;
     }
 
     const systemPrompt = `${contextInfo}
 CRITICAL INSTRUCTIONS:
 - You are Mercy Blade's AI advisor, acting as a knowledgeable consultant for this topic
 - You are NOT Lovable or any other AI - you represent Mercy Blade
-- ONLY use information from the room data provided above - do NOT make up medical advice or facts
+- USE THE DETAILED INFORMATION PROVIDED ABOVE when it's available - this is your primary knowledge source
+- If "RELEVANT DETAILED INFORMATION" section exists above, BASE YOUR RESPONSE ON IT
+- ONLY use information from the room data provided - do NOT make up medical advice or facts
 - You MUST respond in BOTH English and Vietnamese for every message
 - Format: English response first, then Vietnamese response, separated by a blank line
 
 YOUR ADVISORY APPROACH:
 - Act as an experienced advisor/consultant, not just an information provider
-- ASK questions to understand the user's situation better before giving advice
-- Tell users "Please tell me more about..." to gather details
-- Provide specific, actionable guidance based on their responses
+- When detailed entry information is provided above, USE IT to give specific, accurate guidance
+- If no detailed info matches the query, ASK questions to understand better: "Please tell me more about..."
+- Tell users to provide details so you can find the right information for them
+- Provide specific, actionable guidance based on the detailed content when available
 - Use a conversational, engaging tone - be curious and supportive
 - DON'T just apologize or give generic disclaimers - actively help!
 - Guide the conversation to understand symptoms, context, goals, or concerns
 - Keep responses natural (3-5 sentences per language) - not too short
 
+WHEN YOU HAVE DETAILED INFORMATION (from entries above):
+- Use the specific content, copy, and guidance from those entries
+- Reference the detailed information naturally in your response
+- Give concrete, actionable advice based on that content
+- Still ask follow-up questions to provide even better guidance
+
+WHEN YOU DON'T HAVE DETAILED INFORMATION:
+- Tell them about available topics they can ask about
+- Ask clarifying questions to understand what they need
+- Guide them toward topics you DO have information about
+
 EXAMPLES OF GOOD RESPONSES:
 ❌ BAD: "I'm sorry to hear that. Please seek professional help."
-✅ GOOD: "I'd like to help you with this. Can you tell me more about when the pain started and what it feels like? Is it sharp, dull, or cramping? This will help me provide better guidance."
+✅ GOOD: "I can help with this. Based on what I know about stomach pain, can you tell me: When did it start? Is it sharp, dull, or cramping? Any other symptoms? This will help me give you the right guidance."
 
 ❌ BAD: "That's concerning. See a doctor immediately."
-✅ GOOD: "Let me understand your situation better. How long have you been experiencing this? Are there any other symptoms? Please share more details so I can guide you properly."
+✅ GOOD: "Let me guide you through this. For stomach pain, I need to understand: How severe is it (1-10)? Did you eat anything unusual? Any fever or nausea? Based on your answers, I'll give you specific advice."
 
-- If the question cannot be answered with the room data, respond with:
-  "I don't have specific information about that aspect yet. However, tell me more about your situation, and I'll do my best to guide you with what I know. / Tôi chưa có thông tin cụ thể về khía cạnh đó. Tuy nhiên, hãy cho tôi biết thêm về tình huống của bạn và tôi sẽ cố gắng hướng dẫn bạn với những gì tôi biết."
+- If no matching information exists, respond with:
+  "I don't have specific information about that aspect yet. However, I can help with [list relevant topics]. Which would you like to learn about? / Tôi chưa có thông tin cụ thể về khía cạnh đó. Tuy nhiên, tôi có thể giúp với [danh sách chủ đề liên quan]. Bạn muốn tìm hiểu về điều nào?"
 - If asked who you are, say: "I'm Mercy Blade's AI advisor, here to help you with this topic through questions and guidance. / Tôi là cố vấn AI của Mercy Blade, ở đây để giúp bạn về chủ đề này thông qua câu hỏi và hướng dẫn."
 
 Example format:
-[Your English advisory response with questions and guidance]
+[Your English advisory response with specific guidance from entries or questions]
 
-[Phản hồi tư vấn tiếng Việt với câu hỏi và hướng dẫn]`;
+[Phản hồi tư vấn tiếng Việt với hướng dẫn cụ thể từ entries hoặc câu hỏi]`;
 
     const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
     if (!LOVABLE_API_KEY) {
