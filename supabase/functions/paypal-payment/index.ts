@@ -81,7 +81,6 @@ serve(async (req) => {
       });
 
       const orderData = await orderResponse.json();
-      console.log('PayPal order created:', orderData);
 
       return new Response(JSON.stringify({ orderId: orderData.id }), {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -101,7 +100,6 @@ serve(async (req) => {
       });
 
       const captureData = await captureResponse.json();
-      console.log('PayPal order captured:', captureData);
 
       if (captureData.status === 'COMPLETED') {
         // Get user from auth header

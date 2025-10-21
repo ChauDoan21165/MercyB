@@ -12,15 +12,40 @@ serve(async (req) => {
   }
 
   try {
+    // Verify authentication
+    const authHeader = req.headers.get('Authorization')
+    if (!authHeader) {
+      return new Response(
+        JSON.stringify({ error: 'Authentication required' }),
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      )
+    }
+
     const supabaseClient = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_ANON_KEY') ?? '',
+      { global: { headers: { Authorization: authHeader } } }
+    )
+
+    const { data: { user }, error: authError } = await supabaseClient.auth.getUser()
+    if (authError || !user) {
+      return new Response(
+        JSON.stringify({ error: 'Invalid authentication' }),
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      )
+    }
+
+    // Get authenticated user's ID
+    const userId = user.id;
+
+    // Create admin client for database operations
+    const supabaseAdmin = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
     );
 
-    const { userId } = await req.json();
-
     // Get user's knowledge profile
-    const { data: userProfile } = await supabaseClient
+    const { data: userProfile } = await supabaseAdmin
       .from('user_knowledge_profile')
       .select('*')
       .eq('user_id', userId)
@@ -34,7 +59,7 @@ serve(async (req) => {
     }
 
     // Get all VIP3 users' profiles (excluding current user)
-    const { data: otherProfiles } = await supabaseClient
+    const { data: otherProfiles } = await supabaseAdmin
       .from('user_knowledge_profile')
       .select(`
         *,
@@ -55,7 +80,7 @@ serve(async (req) => {
     // Calculate match scores using AI
     const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
     
-    const matchPromises = otherProfiles.map(async (otherProfile) => {
+    const matchPromises = otherProfiles.map(async (otherProfile: any) => {
       const prompt = `Analyze compatibility between two users based on their profiles and generate a match score from 0 to 1.
 
 User 1 Profile:
@@ -118,11 +143,11 @@ Return a JSON object with:
       return null;
     });
 
-    const matches = (await Promise.all(matchPromises)).filter(m => m !== null && m.match_score > 0.5);
+    const matches = (await Promise.all(matchPromises)).filter((m: any) => m !== null && m.match_score > 0.5);
 
     // Insert match suggestions into database
-    const insertPromises = matches.map(match => 
-      supabaseClient.from('matchmaking_suggestions').insert({
+    const insertPromises = matches.map((match: any) => 
+      supabaseAdmin.from('matchmaking_suggestions').insert({
         user_id: userId,
         suggested_user_id: match.userId,
         match_score: match.match_score,

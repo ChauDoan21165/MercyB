@@ -23,6 +23,7 @@ import { CreditsDisplay } from "@/components/CreditsDisplay";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { keywordRespond } from "@/lib/keywordResponder";
+import { messageSchema } from "@/lib/inputValidation";
 
 interface Message {
   id: string;
@@ -104,6 +105,17 @@ const handleAccessDenied = () => {
 
   const sendMainMessage = async () => {
     if (!mainInput.trim() || isLoading) return;
+
+    // Validate input
+    const validation = messageSchema.safeParse({ text: mainInput });
+    if (!validation.success) {
+      toast({
+        title: "Invalid Input / Đầu Vào Không Hợp Lệ",
+        description: validation.error.errors[0].message,
+        variant: "destructive"
+      });
+      return;
+    }
 
     // Check if user has credits remaining
     if (!hasCreditsRemaining()) {
