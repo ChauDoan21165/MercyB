@@ -84,22 +84,55 @@ const roomFiles: { [key: string]: string } = {
   'philosophy': 'philosophy.json',
 };
 
+// Minimal embedded fallback to guarantee a response if JSON isn't bundled
+const embeddedFallbackData: Record<string, any> = {
+  generic: {
+    schema_version: '1.0',
+    schema_id: 'generic_room',
+    room_essay: {
+      en: 'Welcome! I will provide concise, supportive guidance using general best practices for this topic.',
+      vi: 'Chào bạn! Tôi sẽ hỗ trợ ngắn gọn, hữu ích dựa trên các thực hành tốt nhất về chủ đề này.'
+    },
+    safety_disclaimer: {
+      en: 'Educational guidance only; not a substitute for professional advice or emergency care.',
+      vi: 'Chỉ mang tính giáo dục; không thay thế tư vấn chuyên môn hoặc chăm sóc khẩn cấp.'
+    },
+    crisis_footer: {
+      en: 'If symptoms are severe or worsening, seek local professional help immediately.',
+      vi: 'Nếu triệu chứng nặng hoặc xấu đi, hãy tìm trợ giúp chuyên môn ngay.'
+    },
+    entries: []
+  }
+};
+
 async function loadRoomData(roomId: string): Promise<any | null> {
   const fileName = roomFiles[roomId];
   if (!fileName) {
     console.log(`Room ${roomId} not found in mapping`);
-    return null;
+    return embeddedFallbackData.generic;
   }
 
+  // 1) Prefer module import (works when JSON is bundled)
+  try {
+    const url = new URL(`./data/${fileName}`, import.meta.url);
+    const mod = await import(url.href, { with: { type: 'json' } } as any);
+    const data = (mod as any).default || mod;
+    console.log(`Successfully loaded room data (module) for ${roomId}`);
+    return data;
+  } catch (e) {
+    console.warn(`Module import failed for ${fileName}, trying file read:`, e);
+  }
+
+  // 2) Fallback to reading the file at runtime
   try {
     const url = new URL(`./data/${fileName}`, import.meta.url);
     const text = await Deno.readTextFile(url);
     const data = JSON.parse(text);
-    console.log(`Successfully loaded room data for ${roomId}`);
+    console.log(`Successfully loaded room data (file) for ${roomId}`);
     return data;
   } catch (error) {
     console.error(`Failed to load room data for ${roomId}:`, error);
-    return null;
+    return embeddedFallbackData.generic;
   }
 }
 
