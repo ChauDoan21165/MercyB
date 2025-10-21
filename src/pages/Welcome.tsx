@@ -38,9 +38,12 @@ const Welcome = () => {
       
       setProfile(profileData);
       
-      // Show username setup if user doesn't have one
-      if (profileData && !profileData.username) {
+      // Only show username setup for first-time users
+      // Check if profile exists and explicitly has no username
+      if (profileData && profileData.username === null) {
         setShowUsernameSetup(true);
+      } else {
+        setShowUsernameSetup(false);
       }
     }
   };
