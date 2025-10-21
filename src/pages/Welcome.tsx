@@ -242,8 +242,18 @@ const Welcome = () => {
           )}
         </div>
 
+        {/* Footer Info */}
+        <div className="text-center mt-16 space-y-2">
+          <p className="text-sm text-muted-foreground">
+            Learn English vocabulary through real-world content about health, life, and personal development
+          </p>
+          <p className="text-xs text-muted-foreground">
+            Học từ vựng tiếng Anh qua nội dung thực tế về sức khỏe, cuộc sống và phát triển bản thân
+          </p>
+        </div>
+
         {/* Subscription Tiers */}
-        <div className="space-y-8">
+        <div className="space-y-8 mt-16">
           <div className="text-center space-y-2">
             <h2 className="text-3xl font-bold text-foreground">
               Choose Your Plan
@@ -320,16 +330,6 @@ const Welcome = () => {
               </Card>
             ))}
           </div>
-        </div>
-
-        {/* Footer Info */}
-        <div className="text-center mt-16 space-y-2">
-          <p className="text-sm text-muted-foreground">
-            Learn English vocabulary through real health content
-          </p>
-          <p className="text-xs text-muted-foreground">
-            Học Từ Vựng Tiếng Anh Qua Nội Dung Sức Khỏe Thực Tế
-          </p>
         </div>
       </div>
     </div>
