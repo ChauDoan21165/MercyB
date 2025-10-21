@@ -154,10 +154,10 @@ const Welcome = () => {
           </div>
           
           <div className="space-y-2 max-w-3xl mx-auto">
-            <p className="text-2xl font-semibold text-foreground/90">
+            <p className="text-xl font-semibold text-foreground/90">
               Wellness and knowledge app for learning health, life, and English
             </p>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl font-semibold text-foreground/90">
               Ứng Dụng Học Về Sức Khỏe, Cuộc Sống Và Tiếng Anh
             </p>
           </div>
@@ -182,8 +182,8 @@ const Welcome = () => {
               onClick={() => navigate("/all-rooms")}
             >
               <span className="flex flex-col items-center">
-                <span className="text-base font-semibold">Explore All Rooms</span>
-                <span className="text-sm opacity-90">Khám Phá Tất Cả Phòng</span>
+                <span className="text-base font-semibold">Explore All Free Rooms</span>
+                <span className="text-sm opacity-90">Khám Phá Tất Cả Phòng Miễn Phí</span>
               </span>
             </Button>
             <Button 
