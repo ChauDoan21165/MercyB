@@ -113,6 +113,13 @@ serve(async (req) => {
           throw new Error('User not authenticated');
         }
 
+        // Get tier details for notification
+        const { data: tier } = await supabase
+          .from('subscription_tiers')
+          .select('name, price_monthly')
+          .eq('id', tierId)
+          .single();
+
         // Update user subscription
         const { data: subscription, error: subError } = await supabase
           .from('user_subscriptions')
@@ -129,6 +136,29 @@ serve(async (req) => {
         if (subError) {
           console.error('Error updating subscription:', subError);
           throw subError;
+        }
+
+        // Send notification to admin
+        const { data: adminUsers } = await supabase
+          .from('user_roles')
+          .select('user_id')
+          .eq('role', 'admin');
+
+        if (adminUsers && adminUsers.length > 0) {
+          const notificationMessage = `🎉 New Payment Received!\n\nUser: ${user.email}\nTier: ${tier?.name || 'Unknown'}\nAmount: $${tier?.price_monthly || 0}\nDate: ${new Date().toLocaleString()}`;
+          
+          // Create a feedback entry for admin notification
+          for (const admin of adminUsers) {
+            await supabase
+              .from('feedback')
+              .insert({
+                user_id: admin.user_id,
+                category: 'payment_notification',
+                message: notificationMessage,
+                priority: 'high',
+                status: 'new'
+              });
+          }
         }
 
         return new Response(JSON.stringify({ 

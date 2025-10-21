@@ -130,9 +130,9 @@ const PaymentTest = () => {
           </Button>
         </div>
 
-        <h1 className="text-4xl font-bold mb-4">Payment Test</h1>
+        <h1 className="text-4xl font-bold mb-4">VIP Subscriptions</h1>
         <p className="text-muted-foreground mb-8">
-          Test PayPal integration with sandbox credentials
+          Choose your plan and upgrade to unlock premium features
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -171,22 +171,11 @@ const PaymentTest = () => {
           ))}
         </div>
 
-        <div className="mt-8 p-4 bg-muted rounded-lg space-y-3">
-          <div>
-            <h3 className="font-semibold mb-2">💳 Real Payment Mode</h3>
-            <p className="text-sm text-muted-foreground">
-              This page accepts real PayPal payments. Share this link with friends to test:
-            </p>
-            <code className="block mt-2 p-2 bg-background rounded text-xs break-all">
-              {window.location.origin}/payment-test
-            </code>
-          </div>
-          <div>
-            <h3 className="font-semibold mb-2 text-amber-600">⚠️ Important</h3>
-            <p className="text-sm text-muted-foreground">
-              To accept real money, make sure you've set PAYPAL_MODE="live" and added your production PayPal credentials in the backend secrets.
-            </p>
-          </div>
+        <div className="mt-8 p-4 bg-muted rounded-lg">
+          <h3 className="font-semibold mb-2">💳 Secure Payment</h3>
+          <p className="text-sm text-muted-foreground">
+            All payments are processed securely through PayPal. Your subscription will be activated immediately after successful payment.
+          </p>
         </div>
       </div>
     </div>

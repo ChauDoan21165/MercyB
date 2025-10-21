@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { ArrowLeft, Sparkles } from "lucide-react";
+import { useUserAccess } from "@/hooks/useUserAccess";
 
 const VIPTopicRequest = () => {
   const [formData, setFormData] = useState({
@@ -21,13 +22,47 @@ const VIPTopicRequest = () => {
     additionalNotes: ""
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [requestCount, setRequestCount] = useState(0);
+  const [maxRequests, setMaxRequests] = useState(0);
   const navigate = useNavigate();
+  const { tier, loading } = useUserAccess();
+
+  useEffect(() => {
+    const checkRequestLimit = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      // Set max requests based on tier
+      const limits = { vip1: 1, vip2: 2, vip3: 3, free: 0 };
+      setMaxRequests(limits[tier] || 0);
+
+      // Count existing requests for this user
+      const { data, error } = await supabase
+        .from("vip_topic_requests_detailed")
+        .select("id", { count: "exact" })
+        .eq("user_id", user.id);
+
+      if (!error && data) {
+        setRequestCount(data.length);
+      }
+    };
+
+    if (!loading) {
+      checkRequestLimit();
+    }
+  }, [tier, loading]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!formData.tier || !formData.topicTitle || !formData.topicDescription) {
       toast.error("Please fill in all required fields");
+      return;
+    }
+
+    // Check if user has reached their limit
+    if (requestCount >= maxRequests) {
+      toast.error(`You've reached your limit of ${maxRequests} topic request${maxRequests > 1 ? 's' : ''}. Upgrade your tier for more requests!`);
       return;
     }
 
@@ -56,6 +91,7 @@ const VIPTopicRequest = () => {
       if (error) throw error;
 
       toast.success("Topic request submitted successfully! We'll prepare your custom content soon.");
+      setRequestCount(prev => prev + 1);
       navigate("/");
     } catch (error: any) {
       console.error("Submission error:", error);
@@ -88,6 +124,20 @@ const VIPTopicRequest = () => {
                 </CardDescription>
               </div>
             </div>
+            {maxRequests > 0 && (
+              <div className="mt-4 p-3 bg-primary/10 border border-primary/20 rounded-lg">
+                <p className="text-sm font-medium">
+                  Requests used: {requestCount} / {maxRequests}
+                </p>
+              </div>
+            )}
+            {maxRequests === 0 && (
+              <div className="mt-4 p-3 bg-destructive/10 border border-destructive/20 rounded-lg">
+                <p className="text-sm font-medium text-destructive">
+                  You need a VIP subscription to request custom topics. Please upgrade your account.
+                </p>
+              </div>
+            )}
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -183,11 +233,11 @@ const VIPTopicRequest = () => {
 
               <Button
                 type="submit"
-                disabled={isLoading}
+                disabled={isLoading || requestCount >= maxRequests || maxRequests === 0}
                 className="w-full"
                 size="lg"
               >
-                {isLoading ? "Submitting..." : "Submit Topic Request"}
+                {isLoading ? "Submitting..." : requestCount >= maxRequests ? "Limit Reached" : "Submit Topic Request"}
               </Button>
             </form>
           </CardContent>
