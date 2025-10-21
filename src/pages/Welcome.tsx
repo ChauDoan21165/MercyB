@@ -111,7 +111,18 @@ const Welcome = () => {
       
       <div className="container mx-auto px-4 py-12 max-w-7xl">
         {/* Header with User Info or Sign In Button */}
-        <div className="flex justify-end mb-4">
+        <div className="flex justify-between items-center mb-4">
+          <Button 
+            size="lg"
+            className="bg-gradient-to-r from-accent to-primary hover:shadow-hover transition-all"
+            onClick={() => navigate("/payment-test")}
+          >
+            <span className="flex flex-col items-center px-4">
+              <span className="text-base font-semibold">💳 Upgrade / Subscribe</span>
+              <span className="text-sm opacity-90">Nâng Cấp / Đăng Ký</span>
+            </span>
+          </Button>
+          
           {user ? (
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-lg">
