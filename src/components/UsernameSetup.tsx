@@ -43,10 +43,13 @@ export const UsernameSetup = ({ onComplete }: UsernameSetupProps) => {
         .eq("id", user.id);
 
       if (error) {
+        console.error("Username error:", error);
         if (error.code === "23505") {
-          toast.error("Username already taken. Please choose another.");
+          toast.error(`"${username}" is already taken. Please choose another username.`);
+        } else if (error.message) {
+          toast.error(`Error: ${error.message}`);
         } else {
-          throw error;
+          toast.error("Failed to set username. Please try again.");
         }
         return;
       }
