@@ -246,6 +246,7 @@ const Welcome = () => {
                         : ""
                     }`}
                     variant={tier.popular ? "default" : "outline"}
+                    onClick={() => navigate("/payment-test")}
                   >
                     <span className="flex flex-col">
                       <span className="text-sm">Choose Plan</span>

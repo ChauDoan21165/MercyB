@@ -14,6 +14,7 @@ import NotFound from "./pages/NotFound";
 import VIPRequestForm from "./pages/VIPRequestForm";
 import VIPRequests from "./pages/VIPRequests";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminVIPRooms from "./pages/AdminVIPRooms";
 import MatchmakingHub from "./pages/MatchmakingHub";
 import Auth from "./pages/Auth";
 import PaymentTest from "./pages/PaymentTest";
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/vip-request" element={<VIPRequestForm />} />
           <Route path="/vip-requests" element={<VIPRequests />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/vip-rooms" element={<AdminVIPRooms />} />
           <Route path="/matchmaking" element={<MatchmakingHub />} />
           <Route path="/payment-test" element={<PaymentTest />} />
           <Route path="*" element={<NotFound />} />

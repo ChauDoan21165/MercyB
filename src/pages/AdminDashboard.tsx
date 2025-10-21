@@ -177,10 +177,15 @@ const AdminDashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 p-4">
       <div className="max-w-7xl mx-auto pt-8">
-        <Button variant="ghost" onClick={() => navigate("/rooms")} className="mb-6">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back
-        </Button>
+        <div className="flex items-center justify-between mb-6">
+          <Button variant="ghost" onClick={() => navigate("/rooms")}>
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back
+          </Button>
+          <Button onClick={() => navigate("/admin/vip-rooms")}>
+            View VIP Rooms
+          </Button>
+        </div>
 
         <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
 
