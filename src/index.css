@@ -8,80 +8,80 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Base colors - Free/Page 1 theme (cyan to blue gradient) */
-    --background: 184 100% 43%;
-    --foreground: 0 0% 100%;
+    /* Base colors - Free/Page 1 theme (cyan to blue gradient) - DARK with BRIGHT text */
+    --background: 210 70% 15%;
+    --foreground: 190 40% 95%;
 
-    --card: 207 100% 43%;
-    --card-foreground: 0 0% 100%;
+    --card: 210 60% 20%;
+    --card-foreground: 190 40% 95%;
 
-    --popover: 207 100% 43%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 210 60% 20%;
+    --popover-foreground: 190 40% 95%;
 
-    --primary: 184 100% 43%;
+    --primary: 200 80% 50%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 207 100% 50%;
+    --primary-glow: 200 70% 60%;
 
-    --secondary: 207 100% 43%;
+    --secondary: 190 60% 45%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 207 100% 35%;
-    --muted-foreground: 0 0% 90%;
+    --muted: 210 50% 25%;
+    --muted-foreground: 190 30% 70%;
 
-    --accent: 245 100% 43%;
+    --accent: 180 65% 55%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 9 100% 43%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 207 100% 35%;
-    --input: 207 100% 35%;
-    --ring: 184 100% 43%;
+    --border: 210 40% 30%;
+    --input: 210 40% 30%;
+    --ring: 200 80% 50%;
 
     --radius: 0.75rem;
     
-    --gradient-hero: linear-gradient(135deg, hsl(184 100% 43%), hsl(207 100% 43%));
-    --gradient-card: linear-gradient(135deg, hsl(207 100% 43%), hsl(245 100% 43%));
-    --shadow-soft: 0 4px 20px -4px hsl(184 100% 43% / 0.25);
-    --shadow-hover: 0 8px 30px -4px hsl(184 100% 43% / 0.35);
+    --gradient-hero: linear-gradient(135deg, hsl(200 80% 50%), hsl(200 70% 60%));
+    --gradient-card: linear-gradient(135deg, hsl(210 60% 20%), hsl(210 50% 25%));
+    --shadow-soft: 0 4px 20px -4px hsl(200 80% 50% / 0.25);
+    --shadow-hover: 0 8px 30px -4px hsl(200 80% 50% / 0.35);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --sidebar-background: 207 100% 38%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 184 100% 43%;
+    --sidebar-background: 210 65% 18%;
+    --sidebar-foreground: 190 40% 90%;
+    --sidebar-primary: 200 80% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 207 100% 50%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 207 100% 35%;
-    --sidebar-ring: 184 100% 43%;
+    --sidebar-accent: 210 50% 25%;
+    --sidebar-accent-foreground: 190 40% 90%;
+    --sidebar-border: 210 40% 30%;
+    --sidebar-ring: 200 80% 50%;
     
-    /* Page-specific backgrounds */
-    --page-welcome: 184 100% 43%;
-    --page-allrooms: 207 100% 43%;
-    --page-roomgrid: 245 100% 43%;
+    /* Page-specific backgrounds - DARK */
+    --page-welcome: 210 70% 18%;
+    --page-allrooms: 200 65% 22%;
+    --page-roomgrid: 210 60% 25%;
     
-    /* VIP1 colors (turquoise to deep blue) */
-    --page-vip1: 168 100% 43%;
-    --vip1-primary: 168 100% 43%;
-    --vip1-secondary: 196 100% 43%;
-    --vip1-accent: 228 100% 43%;
+    /* VIP1 colors (turquoise to deep blue) - DARK */
+    --page-vip1: 168 60% 22%;
+    --vip1-primary: 168 80% 45%;
+    --vip1-secondary: 196 75% 40%;
+    --vip1-accent: 228 85% 55%;
     
-    /* VIP2 colors (bright green to blue) */
-    --page-vip2: 156 97% 43%;
-    --vip2-primary: 156 97% 43%;
-    --vip2-secondary: 186 97% 43%;
-    --vip2-accent: 217 98% 43%;
+    /* VIP2 colors (bright green to blue) - DARK */
+    --page-vip2: 156 65% 20%;
+    --vip2-primary: 156 85% 45%;
+    --vip2-secondary: 186 80% 42%;
+    --vip2-accent: 217 90% 55%;
     
-    /* VIP3 colors (bright green to blue) */
-    --page-vip3: 148 97% 43%;
-    --vip3-primary: 148 97% 43%;
-    --vip3-secondary: 177 97% 43%;
-    --vip3-accent: 207 98% 43%;
+    /* VIP3 colors (bright green to blue) - DARK */
+    --page-vip3: 148 65% 18%;
+    --vip3-primary: 148 85% 45%;
+    --vip3-secondary: 177 80% 40%;
+    --vip3-accent: 207 90% 55%;
     
-    /* Admin page colors (red-orange to lime) */
-    --admin-primary: 9 100% 43%;
-    --admin-secondary: 41 100% 43%;
-    --admin-accent: 72 100% 43%;
+    /* Admin page colors (red-orange to lime) - DARK */
+    --admin-primary: 9 85% 50%;
+    --admin-secondary: 41 90% 50%;
+    --admin-accent: 72 85% 50%;
   }
 
   .dark {
