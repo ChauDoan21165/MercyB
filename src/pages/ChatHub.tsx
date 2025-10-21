@@ -16,6 +16,8 @@ import { RelatedRooms } from "@/components/RelatedRooms";
 import { MessageActions } from "@/components/MessageActions";
 import { MatchmakingButton } from "@/components/MatchmakingButton";
 import { usePoints } from "@/hooks/usePoints";
+import { useUserAccess } from "@/hooks/useUserAccess";
+import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
 
 interface Message {
   id: string;
@@ -45,10 +47,31 @@ const ChatHub = () => {
   const progress = useRoomProgress(roomId);
   const { trackMessage, trackKeyword, trackCompletion } = useBehaviorTracking(roomId || "");
   const { awardPoints } = usePoints();
+  const { canAccessVIP1, canAccessVIP2, canAccessVIP3, tier, loading: accessLoading } = useUserAccess();
+  const [showAccessDenied, setShowAccessDenied] = useState(false);
 
 // Use centralized room metadata
 const info = getRoomInfo(roomId || "");
 const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { nameVi: "Phòng không xác định", nameEn: "Unknown Room" };
+
+// Check access
+useEffect(() => {
+  if (!accessLoading && info) {
+    const hasAccess = 
+      info.tier === 'free' ||
+      (info.tier === 'vip1' && canAccessVIP1) ||
+      (info.tier === 'vip2' && canAccessVIP2) ||
+      (info.tier === 'vip3' && canAccessVIP3);
+    
+    if (!hasAccess) {
+      setShowAccessDenied(true);
+    }
+  }
+}, [accessLoading, info, canAccessVIP1, canAccessVIP2, canAccessVIP3]);
+
+const handleAccessDenied = () => {
+  navigate('/');
+};
 
   // Add welcome message when room loads
   useEffect(() => {
@@ -279,8 +302,26 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
   };
 
   return (
-    <div className="min-h-screen p-4" style={{ background: getBgColor() }}>
-      <div className="max-w-7xl mx-auto space-y-4">
+    <>
+      <AlertDialog open={showAccessDenied} onOpenChange={setShowAccessDenied}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>VIP Only / Chỉ Dành Cho VIP</AlertDialogTitle>
+            <AlertDialogDescription className="space-y-2">
+              <p>This room is for VIP members only. Please upgrade your subscription to access this content.</p>
+              <p className="text-sm">Phòng này chỉ dành cho thành viên VIP. Vui lòng nâng cấp gói đăng ký để truy cập nội dung này.</p>
+              <p className="font-semibold mt-4">Required tier: {info?.tier?.toUpperCase()}</p>
+              <p className="text-sm">Your tier: {tier?.toUpperCase()}</p>
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction onClick={handleAccessDenied}>Go Back / Quay Lại</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <div className="min-h-screen p-4" style={{ background: getBgColor() }}>
+        <div className="max-w-7xl mx-auto space-y-4">
         {/* Header */}
         <div className="flex items-center justify-between bg-card rounded-lg p-4 shadow-soft">
           <div className="flex gap-2">
@@ -481,6 +522,7 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
         </div>
       </div>
     </div>
+    </>
   );
 };
 

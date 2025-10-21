@@ -4,9 +4,45 @@ import { CheckCircle2, Lock, Sparkles, BarChart3 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ALL_ROOMS } from "@/lib/roomData";
+import { useUserAccess } from "@/hooks/useUserAccess";
+import { useToast } from "@/hooks/use-toast";
 
 const RoomGrid = () => {
   const navigate = useNavigate();
+  const { canAccessVIP1, canAccessVIP2, canAccessVIP3 } = useUserAccess();
+  const { toast } = useToast();
+
+  const handleRoomClick = (room: typeof ALL_ROOMS[0]) => {
+    if (!room.hasData) return;
+    
+    // Check VIP access
+    if (room.tier === 'vip1' && !canAccessVIP1) {
+      toast({
+        title: "VIP Only / Chỉ Dành Cho VIP",
+        description: "This room requires VIP1 subscription / Phòng này yêu cầu gói VIP1",
+        variant: "destructive"
+      });
+      return;
+    }
+    if (room.tier === 'vip2' && !canAccessVIP2) {
+      toast({
+        title: "VIP Only / Chỉ Dành Cho VIP",
+        description: "This room requires VIP2 subscription / Phòng này yêu cầu gói VIP2",
+        variant: "destructive"
+      });
+      return;
+    }
+    if (room.tier === 'vip3' && !canAccessVIP3) {
+      toast({
+        title: "VIP Only / Chỉ Dành Cho VIP",
+        description: "This room requires VIP3 subscription / Phòng này yêu cầu gói VIP3",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    navigate(`/chat/${room.id}`);
+  };
 
   const getTierColor = (tier: string) => {
     switch (tier) {
@@ -82,7 +118,7 @@ const RoomGrid = () => {
                   ? "hover:scale-110 hover:shadow-hover hover:z-10" 
                   : "opacity-60 cursor-not-allowed"
               }`}
-              onClick={() => room.hasData && navigate(`/chat/${room.id}`)}
+              onClick={() => handleRoomClick(room)}
             >
               {/* Status Badge */}
               <div className="absolute -top-2 -right-2 z-10">
