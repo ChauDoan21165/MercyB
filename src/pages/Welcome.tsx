@@ -16,6 +16,7 @@ const Welcome = () => {
   const [user, setUser] = useState<any>(null);
   const [profile, setProfile] = useState<any>(null);
   const [showUsernameSetup, setShowUsernameSetup] = useState(false);
+  const [isCheckingProfile, setIsCheckingProfile] = useState(true);
 
   useEffect(() => {
     checkUser();
@@ -26,26 +27,31 @@ const Welcome = () => {
   }, []);
 
   const checkUser = async () => {
+    setIsCheckingProfile(true);
     const { data: { user } } = await supabase.auth.getUser();
     setUser(user);
     
     if (user) {
-      const { data: profileData } = await supabase
+      const { data: profileData, error } = await supabase
         .from("profiles")
         .select("*")
         .eq("id", user.id)
         .single();
       
-      setProfile(profileData);
-      
-      // Only show username setup for first-time users
-      // Check if profile exists and explicitly has no username
-      if (profileData && profileData.username === null) {
-        setShowUsernameSetup(true);
+      if (!error && profileData) {
+        setProfile(profileData);
+        
+        // Only show username setup if username is null, undefined, or empty
+        const hasUsername = profileData.username && profileData.username.trim().length > 0;
+        setShowUsernameSetup(!hasUsername);
       } else {
         setShowUsernameSetup(false);
       }
+    } else {
+      setShowUsernameSetup(false);
     }
+    
+    setIsCheckingProfile(false);
   };
 
   const handleLogout = async () => {
@@ -96,7 +102,7 @@ const Welcome = () => {
 
   return (
     <div className="min-h-screen" style={{ background: 'hsl(var(--page-welcome))' }}>
-      {showUsernameSetup && (
+      {!isCheckingProfile && showUsernameSetup && (
         <UsernameSetup onComplete={() => {
           setShowUsernameSetup(false);
           checkUser();
