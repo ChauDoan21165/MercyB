@@ -65,9 +65,9 @@ All colors MUST be HSL.
     --page-welcome: 210 70% 18%;
     --page-allrooms: 200 65% 22%;
     --page-roomgrid: 210 60% 25%;
-    --page-vip1: 220 55% 28%;
-    --page-vip2: 215 60% 30%;
-    --page-vip3: 205 70% 32%;
+    --page-vip1: 160 84% 39%;
+    --page-vip2: 216 91% 56%;
+    --page-vip3: 245 91% 56%;
   }
 
   .dark {
@@ -117,9 +117,9 @@ All colors MUST be HSL.
     --page-welcome: 120 30% 25%;
     --page-allrooms: 160 35% 20%;
     --page-roomgrid: 210 45% 25%;
-    --page-vip1: 30 25% 30%;
-    --page-vip2: 45 50% 30%;
-    --page-vip3: 45 70% 35%;
+    --page-vip1: 160 60% 25%;
+    --page-vip2: 216 70% 35%;
+    --page-vip3: 245 70% 35%;
   }
 }
 

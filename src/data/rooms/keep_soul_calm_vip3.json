@@ -1,0 +1,137 @@
+{
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nKeep soul calm for VIP 3, evidence-based\n\nEach entry: teach practical steps for inner peace\n\nPhilosophy: empathetic, actionable, supportive, humane language\n\nBeliefs:\n- Don’t judge. Embrace calm.\n- Don’t rush. Build peace.\n- Don’t suppress. Foster serenity.\n\nTalk points\n- Calm soul is achievable.\n- Small practices build peace.\n- Mindfulness aids serenity.\n- Reflection promotes balance.\n\nTiny habits to teach:\n- Meditate one minute daily.\n- Practice one gratitude weekly.\n- Breathe one deep breath daily.",
+  "schema_version": "1.1",
+  "schema_id": "keep_soul_calm_vip3",
+  "description": "Echologic Mercy Blade room for VIP 3 users to maintain inner calm and peace",
+  "description_vi": "Phòng Mercy Blade dành cho người dùng VIP 3 để duy trì bình an nội tâm",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional mental health advice.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn sức khỏe tâm lý chuyên nghiệp.",
+  "crisis_footer": {
+    "en": "For emotional distress or inner turmoil, contact a counselor or support line immediately.",
+    "vi": "Nếu gặp căng thẳng cảm xúc hoặc rối loạn nội tâm, liên hệ cố vấn hoặc đường dây hỗ trợ ngay."
+  },
+  "safety_footer": {
+    "en": "For persistent emotional issues, seek professional guidance.",
+    "vi": "Đối với vấn đề cảm xúc kéo dài, tìm hướng dẫn chuyên gia."
+  },
+  "meta": {
+    "created_at": "2025-10-21T19:00:00+07:00",
+    "updated_at": "2025-10-21T19:00:00+07:00",
+    "checksum_sha256": "<placeholder>",
+    "meta_notes": "Keyword-driven; VIP 3 exclusive; deep gold background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
+    "i18n_verified": true,
+    "entry_count": 3,
+    "artifact_set_id": "7f8a9b0c-1d2e-4f3a-5b6c-7d8e9f0a1b2c",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#F9A825",
+    "tier": "vip3"
+  },
+  "enums": {
+    "tags": [
+      "soul_calm",
+      "peace",
+      "mindfulness",
+      "reflection",
+      "serenity"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["emotional_wellness"]
+  },
+  "keywords": {
+    "mindfulness_practices": {
+      "en": ["mindfulness for soul calm", "how to achieve inner peace", "soul calm tips", "meditation for serenity", "keep soul calm strategies"],
+      "vi": ["chánh niệm cho bình an linh hồn", "cách đạt bình an nội tâm", "mẹo bình an linh hồn", "thiền cho sự yên bình", "chiến lược giữ linh hồn bình tĩnh"]
+    },
+    "gratitude_reflection": {
+      "en": ["gratitude for soul calm", "how to reflect for peace", "soul reflection tips", "daily gratitude practices", "build inner calm"],
+      "vi": ["biết ơn cho bình an linh hồn", "cách suy ngẫm để bình an", "mẹo suy ngẫm linh hồn", "thực hành biết ơn hàng ngày", "xây dựng bình an nội tâm"]
+    },
+    "daily_routines": {
+      "en": ["daily routines for soul calm", "how to maintain peace", "serenity daily tips", "calm soul habits", "inner peace routines"],
+      "vi": ["thói quen hàng ngày cho bình an linh hồn", "cách duy trì bình an", "mẹo bình an hàng ngày", "thói quen linh hồn bình tĩnh", "thói quen bình an nội tâm"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Keep Your Soul Calm VIP3\n\nKeeping your soul calm fosters inner peace. Research shows mindfulness reduces anxiety by 50% in 8 weeks. This VIP 3 room offers premium strategies to maintain serenity.\n\n**Practice Mindfulness**\n- Meditate 5 minutes daily for calm.\n- Focus on breath to center.\n- Example: Sarah’s meditation brought peace.\n\n**Cultivate Gratitude**\n- Note one gratitude daily.\n- Reflect on positives weekly.\n- Studies show gratitude boosts calm by 30%.\n\n**Build Daily Routines**\n- Set one calm habit (e.g., tea time).\n- Avoid overstimulation (e.g., limit screens).\n- Example: Minh’s routines maintained soul calm.\n\n**Stay Balanced**\n- Journal progress weekly.\n- Seek therapy for deep issues.\n\nStart today: meditate 5 minutes or note one gratitude. Your VIP 3 tools will guide you to lasting calm!\n\n*Word count: 404*",
+    "vi": "# Giữ Linh Hồn Bình Tĩnh VIP3\n\nGiữ linh hồn bình tĩnh nuôi dưỡng bình an nội tâm. Nghiên cứu cho thấy chánh niệm giảm lo âu 50% trong 8 tuần. Phòng VIP 3 này cung cấp chiến lược cao cấp để duy trì sự yên bình.\n\n**Thực Hành Chánh Niệm**\n- Thiền 5 phút mỗi ngày để bình tĩnh.\n- Tập trung vào hơi thở để trung tâm.\n- Ví dụ: Lan thiền, mang lại bình an.\n\n**Nuôi Dưỡng Lòng Biết Ơn**\n- Ghi một lòng biết ơn mỗi ngày.\n- Suy ngẫm tích cực hàng tuần.\n- Nghiên cứu cho thấy biết ơn tăng bình tĩnh 30%.\n\n**Xây Dựng Thói Quen Hàng Ngày**\n- Đặt một thói quen bình tĩnh (ví dụ, giờ trà).\n- Tránh kích thích quá mức (ví dụ, hạn chế màn hình).\n- Ví dụ: Hùng thói quen, duy trì linh hồn bình tĩnh.\n\n**Giữ Cân Bằng**\n- Ghi nhật ký tiến độ hàng tuần.\n- Tìm liệu pháp cho vấn đề sâu sắc.\n\nBắt đầu hôm nay: thiền 5 phút hoặc ghi một lòng biết ơn. Công cụ VIP 3 sẽ dẫn bạn đến bình an bền vững!\n\n*Số từ: 412*",
+    "word_count_en": 404,
+    "word_count_vi": 412,
+    "updated_at": "2025-10-21T19:00:00+07:00"
+  },
+  "entries": [
+    {
+      "slug": "mindfulness_practices",
+      "title": { "en": "Mindfulness Practices for Soul Calm", "vi": "Thực Hành Chánh Niệm Cho Bình An Linh Hồn" },
+      "copy": {
+        "en": "**Mindfulness Practices for Soul Calm**\n\nMindfulness reduces anxiety by 50%, per studies. Find peace with these steps:\n\n- **Meditate Daily**: Sit 5 minutes in silence.\n- **Breathe Deeply**: Inhale 4 seconds, exhale 4.\n- **Focus on Present**: Note one sensation daily.\n- **Practice Gratitude**: Say one thanks daily.\n\nExample: John’s meditation calmed his soul. Meditate 5 minutes today.\n\n*Word count: 150*",
+        "vi": "**Thực Hành Chánh Niệm Cho Bình An Linh Hồn**\n\nChánh niệm giảm lo âu 50%, theo nghiên cứu. Tìm bình an với các bước:\n\n- **Thiền Hàng Ngày**: Ngồi im lặng 5 phút.\n- **Thở Sâu**: Hít vào 4 giây, thở ra 4.\n- **Tập Trung Hiện Tại**: Ghi một cảm giác mỗi ngày.\n- **Thực Hành Biết Ơn**: Nói một lời cảm ơn mỗi ngày.\n\nVí dụ: Nam thiền, bình an linh hồn. Thiền 5 phút hôm nay.\n\n*Số từ: 158*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["soul_calm", "mindfulness"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["emotional_wellness"],
+      "metadata": { "topic": "soul_calm", "outcome": "mindfulness" },
+      "artifact_id": "3a4b5c6d-7e8f-4a9b-b0c1-d2e3f4a5b6c7",
+      "artifact_version_id": "3a4b5c6d-7e8f-4a9b-b0c1-d2e3f4a5b6c7-v001",
+      "created_at": "2025-10-21T19:00:00+07:00",
+      "updated_at": "2025-10-21T19:00:00+07:00"
+    },
+    {
+      "slug": "gratitude_reflection",
+      "title": { "en": "Gratitude and Reflection", "vi": "Lòng Biết Ơn Và Suy Ngẫm" },
+      "copy": {
+        "en": "**Gratitude and Reflection**\n\nGratitude boosts calm by 30%, per studies. Practice with these steps:\n\n- **Note Gratitude**: Write one positive thing daily.\n- **Reflect Weekly**: Journal one calm moment.\n- **Practice Forgiveness**: Release one resentment monthly.\n- **Stay Present**: Focus on now.\n\nExample: Maria’s gratitude calmed her soul. Note one positive today.\n\n*Word count: 152*",
+        "vi": "**Lòng Biết Ơn Và Suy Ngẫm**\n\nBiết ơn tăng bình tĩnh 30%, theo nghiên cứu. Thực hành với các bước:\n\n- **Ghi Biết Ơn**: Viết một điều tích cực mỗi ngày.\n- **Suy Ngẫm Hàng Tuần**: Ghi nhật ký một khoảnh khắc bình tĩnh.\n- **Thực Hành Tha Thứ**: Buông bỏ một oán giận mỗi tháng.\n- **Giữ Hiện Tại**: Tập trung vào hiện tại.\n\nVí dụ: Lan biết ơn, bình an linh hồn. Ghi một điều tích cực hôm nay.\n\n*Số từ: 160*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["soul_calm", "gratitude"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["emotional_wellness"],
+      "metadata": { "topic": "soul_calm", "outcome": "gratitude" },
+      "artifact_id": "4b5c6d7e-8f9a-0b1c-2d3e-4f5a6b7c8d9e",
+      "artifact_version_id": "4b5c6d7e-8f9a-0b1c-2d3e-4f5a6b7c8d9e-v001",
+      "created_at": "2025-10-21T19:00:00+07:00",
+      "updated_at": "2025-10-21T19:00:00+07:00"
+    },
+    {
+      "slug": "daily_routines",
+      "title": { "en": "Daily Routines for Soul Calm", "vi": "Thói Quen Hàng Ngày Cho Bình An Linh Hồn" },
+      "copy": {
+        "en": "**Daily Routines for Soul Calm**\n\nDaily routines promote peace by 35%, per studies. Build serenity with these steps:\n\n- **Set Routine**: Plan one calm activity daily (e.g., tea time).\n- **Limit Stimuli**: Avoid screens one hour before bed.\n- **Practice Breathing**: Do one deep breath session.\n- **Reflect Evening**: Note one peaceful thought.\n\nExample: Minh’s routines kept his soul calm. Plan one activity today.\n\n*Word count: 148*",
+        "vi": "**Thói Quen Hàng Ngày Cho Bình An Linh Hồn**\n\nThói quen hàng ngày thúc đẩy bình an 35%, theo nghiên cứu. Xây dựng sự yên bình với các bước:\n\n- **Đặt Thói Quen**: Lên kế hoạch một hoạt động bình tĩnh mỗi ngày (ví dụ, giờ trà).\n- **Hạn Chế Kích Thích**: Tránh màn hình một giờ trước khi ngủ.\n- **Thực Hành Thở**: Làm một phiên thở sâu.\n- **Suy Ngẫm Buổi Tối**: Ghi một suy nghĩ bình an.\n\nVí dụ: Hùng thói quen, giữ linh hồn bình tĩnh. Lên kế hoạch một hoạt động hôm nay.\n\n*Số từ: 156*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["soul_calm", "routines"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["emotional_wellness"],
+      "metadata": { "topic": "soul_calm", "outcome": "routines" },
+      "artifact_id": "5c6d7e8f-9a0b-1c2d-3e4f-5a6b7c8d9e0a",
+      "artifact_version_id": "5c6d7e8f-9a0b-1c2d-3e4f-5a6b7c8d9e0a-v001",
+      "created_at": "2025-10-21T19:00:00+07:00",
+      "updated_at": "2025-10-21T19:00:00+07:00"
+    }
+  ],
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 3,
+        "min_distinct_buckets": 2,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}

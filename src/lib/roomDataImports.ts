@@ -80,6 +80,11 @@ import parentingToddlers from '@/data/rooms/parenting_toddlers.json';
 import relationshipConflicts from '@/data/rooms/relationship_conflicts.json';
 import userProfileDashboard from '@/data/rooms/user_profile_dashboard.json';
 import weightLoss from '@/data/rooms/weight_loss_program.json';
+import keepSoulCalm from '@/data/rooms/keep_soul_calm_vip3.json';
+import sharpenMind from '@/data/rooms/sharpen_mind_vip3.json';
+import overcomeStorm from '@/data/rooms/overcome_storm_vip3.json';
+import unlockShadow from '@/data/rooms/unlock_shadow_vip3.json';
+import humanRights from '@/data/rooms/human_rights_vip3.json';
 
 export const roomDataMap: Record<string, any> = {
   'abdominal-pain': abdominalPain,
@@ -163,4 +168,9 @@ export const roomDataMap: Record<string, any> = {
   'relationship-conflicts': relationshipConflicts,
   'user-profile-dashboard': userProfileDashboard,
   'weight-loss': weightLoss,
+  'keep-soul-calm': keepSoulCalm,
+  'sharpen-mind': sharpenMind,
+  'overcome-storm': overcomeStorm,
+  'unlock-shadow': unlockShadow,
+  'human-rights': humanRights,
 };

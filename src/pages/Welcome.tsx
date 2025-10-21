@@ -193,8 +193,8 @@ const Welcome = () => {
               onClick={() => navigate("/rooms")}
             >
               <span className="flex flex-col items-center">
-                <span className="text-base font-semibold">Explore All Free Rooms</span>
-                <span className="text-sm opacity-90">Khám Phá Tất Cả Các Phòng Miễn Phí</span>
+                <span className="text-base font-semibold">All Free Rooms</span>
+                <span className="text-sm opacity-90">Tất Cả Phòng Miễn Phí</span>
               </span>
             </Button>
             <Button 
