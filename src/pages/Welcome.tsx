@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check } from "lucide-react";
+import { Check, Shield } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { PointsDisplay } from "@/components/PointsDisplay";
+import { useUserAccess } from "@/hooks/useUserAccess";
 
 const Welcome = () => {
   const navigate = useNavigate();
+  const { isAdmin } = useUserAccess();
 
   const tiers = [
     {
@@ -213,6 +215,22 @@ const Welcome = () => {
                 <span className="text-sm opacity-90">Test Thanh Toán</span>
               </span>
             </Button>
+            {isAdmin && (
+              <Button 
+                size="lg"
+                variant="outline"
+                className="border-2 border-destructive hover:bg-destructive/10 min-w-[200px]"
+                onClick={() => navigate("/admin/vip-rooms")}
+              >
+                <span className="flex flex-col items-center gap-1">
+                  <span className="flex items-center gap-2">
+                    <Shield className="w-4 h-4" />
+                    <span className="text-base font-semibold">Admin Dashboard</span>
+                  </span>
+                  <span className="text-sm opacity-90">Quản Trị Viên</span>
+                </span>
+              </Button>
+            )}
           </div>
         </div>
 
