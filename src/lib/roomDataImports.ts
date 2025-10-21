@@ -29,6 +29,7 @@ import gutBrain from '@/data/rooms/gut_brain_axis.json';
 import headache from '@/data/rooms/headache.json';
 import soulMate from '@/data/rooms/how_to_find_your_soul_mate.json';
 import husbandDealing from '@/data/rooms/husband_dealing.json';
+import husbandDealingVip2 from '@/data/rooms/husband_dealing_vip2.json';
 import hypertension from '@/data/rooms/hypertension.json';
 import immuneSystem from '@/data/rooms/immune_system.json';
 import immunityBoost from '@/data/rooms/immunity_boost.json';
@@ -40,6 +41,7 @@ import mindfulMovement from '@/data/rooms/mindful_movement.json';
 import mindfulnessHealing from '@/data/rooms/mindfulness_and_healing.json';
 import nutritionBasics from '@/data/rooms/nutrition_basics.json';
 import obesity from '@/data/rooms/obesity.json';
+import obesityManagementVip2 from '@/data/rooms/obesity_management_vip2.json';
 import officeSurvival from '@/data/rooms/office_survival.json';
 import painManagement from '@/data/rooms/pain_management.json';
 import phobia from '@/data/rooms/phobia.json';
@@ -49,6 +51,7 @@ import reproductive from '@/data/rooms/reproductive_health.json';
 import respiratory from '@/data/rooms/respiratory_system.json';
 import screening from '@/data/rooms/screening_and_prevention.json';
 import sexuality from '@/data/rooms/sexuality_and_intimacy.json';
+import sexualityIntimacyVip2 from '@/data/rooms/sexuality_intimacy_vip2.json';
 import skinHealth from '@/data/rooms/skin_health.json';
 import sleepHealth from '@/data/rooms/sleep_health.json';
 import socialConnection from '@/data/rooms/social_connection.json';
@@ -60,6 +63,7 @@ import toddler from '@/data/rooms/toddler.json';
 import trainBrain from '@/data/rooms/train_brain_memory.json';
 import trauma from '@/data/rooms/trauma.json';
 import wifeDealing from '@/data/rooms/wife_dealing.json';
+import wifeDealingVip2 from '@/data/rooms/wife_dealing_vip2.json';
 import womenHealth from '@/data/rooms/women_health.json';
 import habitBuilding from '@/data/rooms/habit_building.json';
 import negotiationMastery from '@/data/rooms/negotiation_mastery.json';
@@ -104,6 +108,7 @@ export const roomDataMap: Record<string, any> = {
   'headache': headache,
   'soul-mate': soulMate,
   'husband-dealing': husbandDealing,
+  'husband-dealing-vip2': husbandDealingVip2,
   'hypertension': hypertension,
   'immune-system': immuneSystem,
   'immunity-boost': immunityBoost,
@@ -115,6 +120,7 @@ export const roomDataMap: Record<string, any> = {
   'mindfulness-healing': mindfulnessHealing,
   'nutrition-basics': nutritionBasics,
   'obesity': obesity,
+  'obesity-management-vip2': obesityManagementVip2,
   'office-survival': officeSurvival,
   'pain-management': painManagement,
   'phobia': phobia,
@@ -124,6 +130,7 @@ export const roomDataMap: Record<string, any> = {
   'respiratory': respiratory,
   'screening': screening,
   'sexuality': sexuality,
+  'sexuality-intimacy-vip2': sexualityIntimacyVip2,
   'skin-health': skinHealth,
   'sleep-health': sleepHealth,
   'social-connection': socialConnection,
@@ -135,6 +142,7 @@ export const roomDataMap: Record<string, any> = {
   'train-brain': trainBrain,
   'trauma': trauma,
   'wife-dealing': wifeDealing,
+  'wife-dealing-vip2': wifeDealingVip2,
   'womens-health': womenHealth,
   'habit-building': habitBuilding,
   'negotiation-mastery': negotiationMastery,

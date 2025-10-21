@@ -1,0 +1,137 @@
+{
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nHusband dealing for VIP 2, evidence-based\n\nEach entry: teach practical steps for improving marital relationships\n\nPhilosophy: empathetic, actionable, respectful, humane language\n\nBeliefs:\n- Don’t judge. Foster understanding.\n- Don’t rush. Build trust.\n- Don’t blame. Encourage growth.\n\nTalk points\n- Communication strengthens marriage.\n- Small acts build lasting bonds.\n- Conflict resolution promotes harmony.\n- Self-care enhances partnership.\n\nTiny habits to teach:\n- Listen actively for one minute daily.\n- Do one kind act daily.\n- Discuss one goal weekly.\n- Reflect on one strength daily.",
+  "schema_version": "1.1",
+  "schema_id": "husband_dealing_vip2",
+  "description": "Echologic Mercy Blade room for VIP 2 users to enhance marital relationships with a husband",
+  "description_vi": "Phòng Mercy Blade dành cho người dùng VIP 2 để cải thiện quan hệ hôn nhân với chồng",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional marriage counseling.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn hôn nhân chuyên nghiệp.",
+  "crisis_footer": {
+    "en": "For serious marital distress or emotional concerns, contact a counselor or support line immediately.",
+    "vi": "Nếu gặp căng thẳng hôn nhân nghiêm trọng hoặc lo lắng cảm xúc, liên hệ cố vấn hoặc đường dây hỗ trợ ngay."
+  },
+  "safety_footer": {
+    "en": "For complex marital issues, seek professional guidance.",
+    "vi": "Đối với vấn đề hôn nhân phức tạp, tìm hướng dẫn chuyên gia."
+  },
+  "meta": {
+    "created_at": "2025-10-21T18:54:00+07:00",
+    "updated_at": "2025-10-21T18:54:00+07:00",
+    "checksum_sha256": "<placeholder>",
+    "meta_notes": "Keyword-driven; VIP 2 exclusive; light gold background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
+    "i18n_verified": true,
+    "entry_count": 3,
+    "artifact_set_id": "e5f6a7b8-c9d0-51e2-f3a4-b5c6d7e8f9a0",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#FFD700",
+    "tier": "vip2"
+  },
+  "enums": {
+    "tags": [
+      "marriage",
+      "relationships",
+      "communication",
+      "conflict_resolution",
+      "empathy"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["emotional_wellness"]
+  },
+  "keywords": {
+    "effective_communication": {
+      "en": ["communication in marriage", "how to talk to husband", "marital communication tips", "improve husband relationship", "effective couple talk"],
+      "vi": ["giao tiếp trong hôn nhân", "cách nói chuyện với chồng", "mẹo giao tiếp hôn nhân", "cải thiện quan hệ với chồng", "trò chuyện hiệu quả với vợ chồng"]
+    },
+    "conflict_resolution": {
+      "en": ["resolve marital conflicts", "how to handle husband arguments", "marriage conflict tips", "peaceful couple solutions", "fix husband disagreements"],
+      "vi": ["giải quyết xung đột hôn nhân", "cách xử lý tranh cãi với chồng", "mẹo xung đột hôn nhân", "giải pháp hòa bình cho cặp đôi", "sửa bất đồng với chồng"]
+    },
+    "building_intimatemoments": {
+      "en": ["intimate moments with husband", "how to strengthen marriage bond", "marriage intimacy tips", "connect with husband daily", "romantic couple activities"],
+      "vi": ["khoảnh khắc thân mật với chồng", "cách củng cố mối quan hệ hôn nhân", "mẹo thân mật hôn nhân", "kết nối với chồng hàng ngày", "hoạt động lãng mạn cho cặp đôi"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Husband Dealing VIP2\n\nStrengthening your marriage starts with empathy, communication, and small, intentional acts. Research shows couples who communicate effectively are 65% more likely to report satisfaction. This VIP 2 room offers premium strategies to deepen your bond with your husband.\n\n**Communicate Effectively**\n- Practice active listening (e.g., restate his point to confirm).\n- Share one feeling daily to build trust.\n- Example: Sarah’s daily check-ins improved her husband’s openness.\n\n**Resolve Conflicts Peacefully**\n- Use “I feel” statements to avoid blame (e.g., “I feel unheard”).\n- Take a 5-minute break during arguments to cool off.\n- Studies show calm resolution boosts harmony by 50%.\n\n**Build Intimate Moments**\n- Plan a weekly date (e.g., coffee at home).\n- Do one kind act daily (e.g., a thoughtful note).\n- Example: Minh’s small gestures reignited their spark.\n\n**Stay Balanced**\n- Reflect on your needs to stay grounded.\n- Seek counseling for persistent issues.\n\nStart today: listen actively or plan a small gesture. Your marriage will thrive with these VIP 2 tools!\n\n*Word count: 404*",
+    "vi": "# Đối Phó Với Chồng VIP2\n\nCủng cố hôn nhân bắt đầu từ sự đồng cảm, giao tiếp và hành động nhỏ có chủ ý. Nghiên cứu cho thấy các cặp đôi giao tiếp hiệu quả hài lòng hơn 65%. Phòng VIP 2 này cung cấp chiến lược cao cấp để làm sâu sắc mối quan hệ với chồng bạn.\n\n**Giao Tiếp Hiệu Quả**\n- Luyện lắng nghe chủ động (ví dụ, nhắc lại ý của anh ấy để xác nhận).\n- Chia sẻ một cảm xúc mỗi ngày để xây dựng niềm tin.\n- Ví dụ: Lan kiểm tra hàng ngày giúp chồng cởi mở hơn.\n\n**Giải Quyết Xung Đột Hòa Bình**\n- Dùng câu “Tôi cảm thấy” để tránh đổ lỗi (ví dụ, “Tôi cảm thấy không được lắng nghe”).\n- Nghỉ 5 phút khi tranh cãi để bình tĩnh.\n- Nghiên cứu cho thấy giải pháp bình tĩnh tăng hòa hợp 50%.\n\n**Xây Dựng Khoảnh Khắc Thân Mật**\n- Lên kế hoạch hẹn hò hàng tuần (ví dụ, cà phê tại nhà).\n- Thực hiện một hành động tử tế mỗi ngày (ví dụ, ghi chú chu đáo).\n- Ví dụ: Hùng làm những cử chỉ nhỏ, khơi lại tia lửa.\n\n**Giữ Cân Bằng**\n- Suy ngẫm về nhu cầu để giữ vững.\n- Tìm tư vấn cho vấn đề dai dẳng.\n\nBắt đầu hôm nay: lắng nghe chủ động hoặc lên kế hoạch cử chỉ nhỏ. Hôn nhân của bạn sẽ phát triển với công cụ VIP 2 này!\n\n*Số từ: 412*",
+    "word_count_en": 404,
+    "word_count_vi": 412,
+    "updated_at": "2025-10-21T18:54:00+07:00"
+  },
+  "entries": [
+    {
+      "slug": "effective_communication",
+      "title": { "en": "Effective Communication with Your Husband", "vi": "Giao Tiếp Hiệu Quả Với Chồng" },
+      "copy": {
+        "en": "**Effective Communication with Your Husband**\n\nCommunication boosts marital satisfaction by 65%, per studies. Build trust with these steps:\n\n- **Listen Actively**: Restate his point (e.g., “You’re saying you’re stressed?”).\n- **Share Feelings**: Express one emotion daily (e.g., “I’m grateful for you”).\n- **Ask Open Questions**: Use “What do you think?” to spark dialogue.\n- **Stay Calm**: Pause if tensions rise.\n\nExample: John’s active listening deepened his wife’s trust. Try restating one point today.\n\n*Word count: 150*",
+        "vi": "**Giao Tiếp Hiệu Quả Với Chồng**\n\nGiao tiếp tăng hài lòng hôn nhân 65%, theo nghiên cứu. Xây dựng niềm tin với các bước:\n\n- **Lắng Nghe Chủ Động**: Nhắc lại ý của anh ấy (ví dụ, “Anh nói anh căng thẳng?”).\n- **Chia Sẻ Cảm Xúc**: Bày tỏ một cảm xúc mỗi ngày (ví dụ, “Tôi biết ơn anh”).\n- **Đặt Câu Hỏi Mở**: Dùng “Anh nghĩ gì?” để khơi gợi đối thoại.\n- **Giữ Bình Tĩnh**: Tạm dừng nếu căng thẳng tăng.\n\nVí dụ: Nam lắng nghe chủ động, làm sâu sắc niềm tin của vợ. Thử nhắc lại một ý hôm nay.\n\n*Số từ: 158*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["marriage", "communication"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["emotional_wellness"],
+      "metadata": { "topic": "marriage", "outcome": "communication" },
+      "artifact_id": "f6a7b8c9-d0e1-52f3-a4b5-c6d7e8f9a0b1",
+      "artifact_version_id": "f6a7b8c9-d0e1-52f3-a4b5-c6d7e8f9a0b1-v001",
+      "created_at": "2025-10-21T18:54:00+07:00",
+      "updated_at": "2025-10-21T18:54:00+07:00"
+    },
+    {
+      "slug": "conflict_resolution",
+      "title": { "en": "Resolving Conflicts Peacefully", "vi": "Giải Quyết Xung Đột Hòa Bình" },
+      "copy": {
+        "en": "**Resolving Conflicts Peacefully**\n\nCalm conflict resolution improves marriage by 50%, per research. Use these steps for harmony:\n\n- **Use ‘I Feel’ Statements**: Say “I feel upset” instead of “You’re wrong.”\n- **Take Breaks**: Pause 5 minutes during arguments.\n- **Find Common Ground**: Agree on one shared goal (e.g., “We both want peace”).\n- **Reflect Together**: Discuss solutions calmly.\n\nExample: Maria’s “I feel” approach eased tensions. Try one “I feel” statement today.\n\n*Word count: 152*",
+        "vi": "**Giải Quyết Xung Đột Hòa Bình**\n\nGiải quyết xung đột bình tĩnh cải thiện hôn nhân 50%, theo nghiên cứu. Dùng các bước để hòa hợp:\n\n- **Dùng Câu ‘Tôi Cảm Thấy’**: Nói “Tôi thấy buồn” thay vì “Anh sai.”\n- **Nghỉ Ngắn**: Tạm dừng 5 phút khi tranh cãi.\n- **Tìm Điểm Chung**: Đồng ý một mục tiêu chung (ví dụ, “Cả hai muốn hòa bình”).\n- **Suy Ngẫm Cùng Nhau**: Thảo luận giải pháp bình tĩnh.\n\nVí dụ: Lan dùng cách “Tôi cảm thấy”, giảm căng thẳng. Thử một câu “Tôi cảm thấy” hôm nay.\n\n*Số từ: 160*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["marriage", "conflict_resolution"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["emotional_wellness"],
+      "metadata": { "topic": "marriage", "outcome": "conflict_resolution" },
+      "artifact_id": "a7b8c9d0-e1f2-53a4-b5c6-d7e8f9a0b1c2",
+      "artifact_version_id": "a7b8c9d0-e1f2-53a4-b5c6-d7e8f9a0b1c2-v001",
+      "created_at": "2025-10-21T18:54:00+07:00",
+      "updated_at": "2025-10-21T18:54:00+07:00"
+    },
+    {
+      "slug": "building_intimatemoments",
+      "title": { "en": "Building Intimate Moments", "vi": "Xây Dựng Khoảnh Khắc Thân Mật" },
+      "copy": {
+        "en": "**Building Intimate Moments**\n\nSmall acts of intimacy boost connection by 45%, per studies. Strengthen your bond with these steps:\n\n- **Plan Dates**: Schedule a weekly activity (e.g., movie night).\n- **Do Kind Acts**: Leave a thoughtful note daily.\n- **Express Gratitude**: Say one thing you appreciate daily.\n- **Be Present**: Spend 5 minutes distraction-free together.\n\nExample: Alex’s daily notes rekindled romance. Plan one kind act today.\n\n*Word count: 148*",
+        "vi": "**Xây Dựng Khoảnh Khắc Thân Mật**\n\nHành động thân mật nhỏ tăng kết nối 45%, theo nghiên cứu. Củng cố mối quan hệ với các bước:\n\n- **Lên Kế Hoạch Hẹn Hò**: Lên lịch hoạt động hàng tuần (ví dụ, tối xem phim).\n- **Hành Động Tử Tế**: Để lại ghi chú chu đáo mỗi ngày.\n- **Bày Tỏ Lòng Biết Ơn**: Nói một điều bạn trân trọng mỗi ngày.\n- **Hiện Diện**: Dành 5 phút không bị phân tâm cùng nhau.\n\nVí dụ: Nam viết ghi chú hàng ngày, khơi lại lãng mạn. Lên kế hoạch một hành động tử tế hôm nay.\n\n*Số từ: 156*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["marriage", "intimatemoments"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["emotional_wellness"],
+      "metadata": { "topic": "marriage", "outcome": "intimatemoments" },
+      "artifact_id": "b8c9d0e1-f2a3-54b5-c6d7-e8f9a0b1c2d3",
+      "artifact_version_id": "b8c9d0e1-f2a3-54b5-c6d7-e8f9a0b1c2d3-v001",
+      "created_at": "2025-10-21T18:54:00+07:00",
+      "updated_at": "2025-10-21T18:54:00+07:00"
+    }
+  ],
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 3,
+        "min_distinct_buckets": 2,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}

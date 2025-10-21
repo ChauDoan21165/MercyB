@@ -46,6 +46,7 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "headache", nameVi: "Đau đầu", nameEn: "Headache", hasData: true, tier: "free", dataFile: "headache.json" },
   { id: "soul-mate", nameVi: "Tìm bạn đời", nameEn: "How to Find Your Soul Mate", hasData: true, tier: "vip2", dataFile: "how_to_find_your_soul_mate.json" },
   { id: "husband-dealing", nameVi: "Ứng Xử Với Chồng", nameEn: "Husband Dealing", hasData: true, tier: "vip2", dataFile: "husband_dealing.json" },
+  { id: "husband-dealing-vip2", nameVi: "Ứng Xử Với Chồng VIP2", nameEn: "Husband Dealing VIP2", hasData: true, tier: "vip2", dataFile: "husband_dealing_vip2.json" },
   { id: "hypertension", nameVi: "Tăng huyết áp", nameEn: "Hypertension", hasData: true, tier: "free", dataFile: "hypertension.json" },
   { id: "immune-system", nameVi: "Hệ miễn dịch", nameEn: "Immune System", hasData: true, tier: "free", dataFile: "immune_system.json" },
   { id: "immunity-boost", nameVi: "Tăng cường miễn dịch", nameEn: "Immunity Boost", hasData: true, tier: "free", dataFile: "immunity_boost.json" },
@@ -58,6 +59,7 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "negotiation-mastery", nameVi: "Làm chủ đàm phán", nameEn: "Negotiation Mastery", hasData: true, tier: "free", dataFile: "negotiation_mastery.json" },
   { id: "nutrition-basics", nameVi: "Dinh dưỡng cơ bản", nameEn: "Nutrition Basics", hasData: true, tier: "free", dataFile: "nutrition_basics.json" },
   { id: "obesity", nameVi: "Béo phì", nameEn: "Obesity", hasData: true, tier: "vip2", dataFile: "obesity.json" },
+  { id: "obesity-management-vip2", nameVi: "Quản Lý Béo Phì VIP2", nameEn: "Obesity Management VIP2", hasData: true, tier: "vip2", dataFile: "obesity_management_vip2.json" },
   { id: "onboarding-free-users", nameVi: "Hướng dẫn người dùng miễn phí", nameEn: "Getting Started (Free Users)", hasData: true, tier: "free", dataFile: "onboarding_free_users.json" },
   { id: "office-survival", nameVi: "Sống còn văn phòng", nameEn: "Office Survival", hasData: true, tier: "free", dataFile: "office_survival.json" },
   { id: "pain-management", nameVi: "Quản lý đau", nameEn: "Pain Management", hasData: true, tier: "free", dataFile: "pain_management.json" },
@@ -70,6 +72,7 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "respiratory", nameVi: "Hệ hô hấp", nameEn: "Respiratory System", hasData: true, tier: "free", dataFile: "respiratory_system.json" },
   { id: "screening", nameVi: "Sàng lọc & Phòng ngừa", nameEn: "Screening and Prevention", hasData: true, tier: "free", dataFile: "screening_and_prevention.json" },
   { id: "sexuality", nameVi: "Tình dục & Thân mật", nameEn: "Sexuality and Intimacy", hasData: true, tier: "vip2", dataFile: "sexuality_and_intimacy.json" },
+  { id: "sexuality-intimacy-vip2", nameVi: "Tình Dục & Thân Mật VIP2", nameEn: "Sexuality & Intimacy VIP2", hasData: true, tier: "vip2", dataFile: "sexuality_intimacy_vip2.json" },
   { id: "skin-health", nameVi: "Sức khỏe da", nameEn: "Skin Health", hasData: true, tier: "free", dataFile: "skin_health.json" },
   { id: "sleep-health", nameVi: "Sức khỏe giấc ngủ", nameEn: "Sleep Health", hasData: true, tier: "free", dataFile: "sleep_health.json" },
   { id: "social-connection", nameVi: "Kết nối xã hội", nameEn: "Social Connection", hasData: true, tier: "free", dataFile: "social_connection.json" },
@@ -84,6 +87,7 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "user-profile-dashboard", nameVi: "Hồ Sơ & Bảng Điều Khiển", nameEn: "User Profile & Dashboard", hasData: true, tier: "free", dataFile: "user_profile_dashboard.json" },
   { id: "weight-loss", nameVi: "Giảm cân", nameEn: "Weight Loss Program", hasData: true, tier: "free", dataFile: "weight_loss_program.json" },
   { id: "wife-dealing", nameVi: "Ứng Xử Với Vợ", nameEn: "Wife Dealing", hasData: true, tier: "vip2", dataFile: "wife_dealing.json" },
+  { id: "wife-dealing-vip2", nameVi: "Ứng Xử Với Vợ VIP2", nameEn: "Wife Dealing VIP2", hasData: true, tier: "vip2", dataFile: "wife_dealing_vip2.json" },
   { id: "womens-health", nameVi: "Sức khỏe phụ nữ", nameEn: "Women's Health", hasData: true, tier: "free", dataFile: "women_health.json" },
   { id: "philosophy", nameVi: "Triết học cho đời thường", nameEn: "Philosophy for Everyday", hasData: true, tier: "free", dataFile: "philosophy.json" }
 ];
