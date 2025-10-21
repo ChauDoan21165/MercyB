@@ -21,6 +21,14 @@ serve(async (req) => {
 
     const { action, orderId, tierId } = await req.json();
 
+    // Public endpoint to retrieve client ID for SDK loading
+    if (action === 'get-client-id') {
+      return new Response(
+        JSON.stringify({ clientId: Deno.env.get('PAYPAL_CLIENT_ID') }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
     // Get PayPal access token
     const getAccessToken = async () => {
       const auth = btoa(`${Deno.env.get('PAYPAL_CLIENT_ID')}:${Deno.env.get('PAYPAL_CLIENT_SECRET')}`);

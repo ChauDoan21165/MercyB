@@ -34,11 +34,27 @@ const PaymentTest = () => {
     }
   };
 
-  const loadPayPalScript = () => {
-    const script = document.createElement('script');
-    script.src = 'https://www.paypal.com/sdk/js?client-id=' + import.meta.env.VITE_PAYPAL_CLIENT_ID + '&currency=USD';
-    script.async = true;
-    document.body.appendChild(script);
+  const loadPayPalScript = async () => {
+    try {
+      // Avoid duplicate loads
+      if (window.paypal || document.getElementById('paypal-sdk')) return;
+
+      const { data, error } = await supabase.functions.invoke('paypal-payment', {
+        body: { action: 'get-client-id' },
+      });
+      if (error) throw error;
+      const clientId = data?.clientId;
+      if (!clientId) throw new Error('Missing PayPal client ID');
+
+      const script = document.createElement('script');
+      script.id = 'paypal-sdk';
+      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=USD`;
+      script.async = true;
+      document.body.appendChild(script);
+    } catch (e) {
+      console.error('Failed to load PayPal SDK:', e);
+      toast.error('Failed to load PayPal SDK');
+    }
   };
 
   const handlePayment = async (tierId: string) => {
