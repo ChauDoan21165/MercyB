@@ -17,6 +17,9 @@ import { MessageActions } from "@/components/MessageActions";
 import { MatchmakingButton } from "@/components/MatchmakingButton";
 import { usePoints } from "@/hooks/usePoints";
 import { useUserAccess } from "@/hooks/useUserAccess";
+import { useCredits } from "@/hooks/useCredits";
+import { CreditLimitModal } from "@/components/CreditLimitModal";
+import { CreditsDisplay } from "@/components/CreditsDisplay";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { keywordRespond } from "@/lib/keywordResponder";
@@ -50,7 +53,9 @@ const ChatHub = () => {
   const { trackMessage, trackKeyword, trackCompletion } = useBehaviorTracking(roomId || "");
   const { awardPoints } = usePoints();
   const { canAccessVIP1, canAccessVIP2, canAccessVIP3, tier, loading: accessLoading } = useUserAccess();
+  const { creditInfo, hasCreditsRemaining, incrementUsage, refreshCredits } = useCredits();
   const [showAccessDenied, setShowAccessDenied] = useState(false);
+  const [showCreditLimit, setShowCreditLimit] = useState(false);
   const [contentMode, setContentMode] = useState<"ai" | "keyword">(() => {
     const saved = localStorage.getItem(`contentMode_${roomId}`);
     return (saved === "keyword" || saved === "ai") ? saved : "ai";
@@ -100,6 +105,12 @@ const handleAccessDenied = () => {
   const sendMainMessage = async () => {
     if (!mainInput.trim() || isLoading) return;
 
+    // Check if user has credits remaining
+    if (!hasCreditsRemaining()) {
+      setShowCreditLimit(true);
+      return;
+    }
+
     const userMessage: Message = {
       id: Date.now().toString(),
       text: mainInput,
@@ -111,6 +122,9 @@ const handleAccessDenied = () => {
     const currentInput = mainInput;
     setMainInput("");
     setIsLoading(true);
+    
+    // Increment usage count
+    await incrementUsage();
     
     // Track message count and award points every 10 questions
     const newCount = userMessageCount + 1;
@@ -401,9 +415,12 @@ const handleAccessDenied = () => {
             </ToggleGroup>
           </div>
           
-          <Badge variant="outline" className="bg-green-100 text-green-700 border-green-300">
-            Active / Đang Hoạt Động
-          </Badge>
+          <div className="flex items-center gap-3">
+            <CreditsDisplay />
+            <Badge variant="outline" className="bg-green-100 text-green-700 border-green-300">
+              Active / Đang Hoạt Động
+            </Badge>
+          </div>
         </div>
         
         {/* Progress Tracker */}
@@ -582,6 +599,14 @@ const handleAccessDenied = () => {
         </div>
       </div>
     </div>
+
+    <CreditLimitModal
+      open={showCreditLimit}
+      onClose={() => setShowCreditLimit(false)}
+      onSuccess={refreshCredits}
+      questionsUsed={creditInfo.questionsUsed}
+      questionsLimit={creditInfo.questionsLimit}
+    />
     </>
   );
 };
