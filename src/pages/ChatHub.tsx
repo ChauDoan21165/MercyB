@@ -111,7 +111,7 @@ const handleAccessDenied = () => {
     if (!validation.success) {
       toast({
         title: "Invalid Input / Đầu Vào Không Hợp Lệ",
-        description: validation.error.errors[0].message,
+        description: validation.error.issues[0].message,
         variant: "destructive"
       });
       return;

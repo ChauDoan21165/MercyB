@@ -1,5 +1,6 @@
 import { z } from 'zod';
 
+// Message validation schema
 export const messageSchema = z.object({
   text: z.string()
     .trim()
