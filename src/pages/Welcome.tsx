@@ -243,12 +243,15 @@ const Welcome = () => {
           </div>
           
           {isAdmin && (
-            <div className="flex justify-center mt-4">
-              <button
-                className="w-2 h-2 rounded-full bg-muted-foreground/20 hover:bg-destructive/50 transition-colors cursor-pointer"
-                onClick={() => navigate("/admin/vip-rooms")}
-                aria-label="Admin"
-              />
+            <div className="flex justify-center mt-8">
+              <Button
+                size="sm"
+                variant="outline"
+                className="bg-destructive/10 hover:bg-destructive/20 border-destructive/30"
+                onClick={() => navigate("/admin/stats")}
+              >
+                📊 Admin Dashboard
+              </Button>
             </div>
           )}
         </div>

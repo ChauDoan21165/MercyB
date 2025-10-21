@@ -21,6 +21,7 @@ import PaymentTest from "./pages/PaymentTest";
 import PromoCode from "./pages/PromoCode";
 import VIPTopicRequest from "./pages/VIPTopicRequest";
 import AdminReports from "./pages/AdminReports";
+import AdminStats from "./pages/AdminStats";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +49,7 @@ const App = () => (
           <Route path="/promo-code" element={<PromoCode />} />
           <Route path="/vip-topic-request" element={<VIPTopicRequest />} />
           <Route path="/admin/reports" element={<AdminReports />} />
+          <Route path="/admin/stats" element={<AdminStats />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

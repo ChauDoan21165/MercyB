@@ -49,13 +49,14 @@ serve(async (req) => {
 
     if (action === 'create-order') {
       // Get tier details
-      const { data: tier } = await supabase
+      const { data: tier, error: tierError } = await supabase
         .from('subscription_tiers')
         .select('*')
         .eq('id', tierId)
         .single();
 
-      if (!tier) {
+      if (tierError || !tier) {
+        console.error('Tier lookup error:', tierError);
         throw new Error('Tier not found');
       }
 
@@ -81,6 +82,13 @@ serve(async (req) => {
       });
 
       const orderData = await orderResponse.json();
+      
+      console.log('PayPal order response:', orderData);
+
+      if (!orderResponse.ok || !orderData.id) {
+        console.error('PayPal order creation failed:', orderData);
+        throw new Error(orderData.message || 'Failed to create PayPal order');
+      }
 
       return new Response(JSON.stringify({ orderId: orderData.id }), {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },

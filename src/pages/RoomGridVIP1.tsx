@@ -5,9 +5,28 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ALL_ROOMS } from "@/lib/roomData";
 import { VIPNavigation } from "@/components/VIPNavigation";
+import { useUserAccess } from "@/hooks/useUserAccess";
+import { useEffect } from "react";
+import { toast } from "sonner";
 
 const RoomGridVIP1 = () => {
   const navigate = useNavigate();
+  const { canAccessVIP1, loading } = useUserAccess();
+
+  useEffect(() => {
+    if (!loading && !canAccessVIP1) {
+      toast.error("VIP1 access required / Yêu cầu quyền truy cập VIP1");
+      navigate('/');
+    }
+  }, [canAccessVIP1, loading, navigate]);
+
+  if (loading || !canAccessVIP1) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <p className="text-muted-foreground">Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip1))' }}>

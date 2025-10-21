@@ -4,9 +4,11 @@ import { CheckCircle2, Lock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ALL_ROOMS } from "@/lib/roomData";
+import { useUserAccess } from "@/hooks/useUserAccess";
 
 const AllRooms = () => {
   const navigate = useNavigate();
+  const { tier } = useUserAccess();
 
   const getTierColor = (tier: string) => {
     switch (tier) {
@@ -98,14 +100,27 @@ const AllRooms = () => {
               </div>
 
               <div className="space-y-2 mt-2">
-                {/* Room Names */}
+                {/* Room Names - Hide VIP room titles for free users */}
                 <div className="space-y-1">
-                  <p className="text-xs font-semibold text-foreground leading-tight line-clamp-2">
-                    {room.nameEn}
-                  </p>
-                  <p className="text-[10px] text-muted-foreground leading-tight line-clamp-2">
-                    {room.nameVi}
-                  </p>
+                  {tier === 'free' && room.tier !== 'free' ? (
+                    <>
+                      <p className="text-xs font-semibold text-muted-foreground leading-tight line-clamp-2">
+                        🔒 VIP Content
+                      </p>
+                      <p className="text-[10px] text-muted-foreground leading-tight line-clamp-2">
+                        Nội dung VIP
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-xs font-semibold text-foreground leading-tight line-clamp-2">
+                        {room.nameEn}
+                      </p>
+                      <p className="text-[10px] text-muted-foreground leading-tight line-clamp-2">
+                        {room.nameVi}
+                      </p>
+                    </>
+                  )}
                 </div>
               </div>
 
