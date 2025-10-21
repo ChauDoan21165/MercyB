@@ -18,6 +18,7 @@ import AdminVIPRooms from "./pages/AdminVIPRooms";
 import MatchmakingHub from "./pages/MatchmakingHub";
 import Auth from "./pages/Auth";
 import PaymentTest from "./pages/PaymentTest";
+import PromoCode from "./pages/PromoCode";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/admin/vip-rooms" element={<AdminVIPRooms />} />
           <Route path="/matchmaking" element={<MatchmakingHub />} />
           <Route path="/payment-test" element={<PaymentTest />} />
+          <Route path="/promo-code" element={<PromoCode />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

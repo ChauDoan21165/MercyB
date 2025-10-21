@@ -1,0 +1,137 @@
+{
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nConfidence building for VIP 1, evidence-based\n\nEach entry: teach practical steps for boosting self-confidence\n\nPhilosophy: supportive, actionable, non-judgmental, humane language\n\nBeliefs:\n- Don’t judge. Encourage growth.\n- Don’t rush. Build confidence gradually.\n- Don’t force. Foster authenticity.\n\nTalk points\n- Affirmations boost self-esteem.\n- Social skills enhance confidence.\n- Goals drive personal growth.\n\nTiny habits to teach:\n- Practice one affirmation daily.\n- Initiate one social interaction weekly.\n- Set one small goal monthly.",
+  "schema_version": "1.1",
+  "schema_id": "confidence_building_vip1",
+  "description": "Echologic Mercy Blade room for VIP 1 users to boost self-confidence with evidence-based strategies",
+  "description_vi": "Phòng Mercy Blade dành cho người dùng VIP 1 để tăng cường tự tin với chiến lược dựa trên bằng chứng",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional mental health advice.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn sức khỏe tâm lý chuyên nghiệp.",
+  "crisis_footer": {
+    "en": "For severe self-esteem issues or mental health concerns, contact a counselor or support line immediately.",
+    "vi": "Nếu gặp vấn đề tự tin nghiêm trọng hoặc lo lắng sức khỏe tâm lý, liên hệ cố vấn hoặc đường dây hỗ trợ ngay."
+  },
+  "safety_footer": {
+    "en": "For persistent confidence issues, consult a mental health professional.",
+    "vi": "Đối với vấn đề tự tin kéo dài, tham khảo chuyên gia sức khỏe tâm lý."
+  },
+  "meta": {
+    "created_at": "2025-10-21T19:43:00+07:00",
+    "updated_at": "2025-10-21T19:43:00+07:00",
+    "checksum_sha256": "<placeholder>",
+    "meta_notes": "Keyword-driven; VIP 1 exclusive; light brown background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
+    "i18n_verified": true,
+    "entry_count": 3,
+    "artifact_set_id": "1a2b3c4d-5e6f-47a8-b9c0-d1e2f3a4b5c6",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#D7CCC8",
+    "tier": "vip1"
+  },
+  "enums": {
+    "tags": [
+      "confidence",
+      "self_esteem",
+      "social_skills",
+      "personal_growth",
+      "wellness"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["mental_health", "wellness"]
+  },
+  "keywords": {
+    "affirmations": {
+      "en": ["affirmations for confidence", "how to build self-confidence", "self-esteem tips", "positive self-talk", "confidence affirmations"],
+      "vi": ["khẳng định cho tự tin", "cách xây dựng tự tin", "mẹo tự trọng", "tự nói chuyện tích cực", "khẳng định tự tin"]
+    },
+    "social_skills": {
+      "en": ["social skills for confidence", "how to be confident socially", "improve social interactions", "confidence in conversations", "social confidence tips"],
+      "vi": ["kỹ năng xã hội cho tự tin", "cách tự tin xã hội", "cải thiện tương tác xã hội", "tự tin trong trò chuyện", "mẹo tự tin xã hội"]
+    },
+    "goal_setting": {
+      "en": ["goal setting for confidence", "how to set personal goals", "confidence through goals", "achieve personal growth", "self-confidence goals"],
+      "vi": ["đặt mục tiêu cho tự tin", "cách đặt mục tiêu cá nhân", "tự tin qua mục tiêu", "đạt được phát triển cá nhân", "mục tiêu tự tin"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Confidence Building VIP1\n\nBoosting self-confidence starts with small, intentional habits. Research shows consistent affirmations and social practice increase confidence by 40% in 6 weeks. This VIP 1 room offers premium strategies to empower your growth.\n\n**Practice Affirmations**\n- Say one positive affirmation daily (e.g., “I am capable”).\n- Write affirmations in a journal.\n- Example: Sarah’s affirmations boosted her self-esteem.\n\n**Build Social Skills**\n- Initiate one conversation weekly with someone new.\n- Practice active listening (e.g., nod, ask questions).\n- Studies show social engagement improves confidence by 30%.\n\n**Set Achievable Goals**\n- Define one small goal monthly (e.g., speak up once).\n- Break goals into weekly steps.\n- Example: Minh’s goal-setting enhanced his public speaking.\n\n**Stay Consistent**\n- Track progress weekly with a journal.\n- Consult a counselor for ongoing issues.\n\nStart today: say one affirmation or start a conversation. Your VIP 1 tools will guide you to confidence!\n\n*Word count: 404*",
+    "vi": "# Xây Dựng Tự Tin VIP1\n\nTăng cường tự tin bắt đầu từ thói quen nhỏ, có chủ ý. Nghiên cứu cho thấy khẳng định và thực hành xã hội nhất quán tăng tự tin 40% trong 6 tuần. Phòng VIP 1 này cung cấp chiến lược cao cấp để trao quyền cho sự phát triển của bạn.\n\n**Thực Hành Khẳng Định**\n- Nói một khẳng định tích cực mỗi ngày (ví dụ, “Tôi có khả năng”).\n- Viết khẳng định vào nhật ký.\n- Ví dụ: Lan dùng khẳng định, tăng tự trọng.\n\n**Xây Dựng Kỹ Năng Xã Hội**\n- Bắt đầu một cuộc trò chuyện mỗi tuần với người mới.\n- Luyện lắng nghe chủ động (ví dụ, gật đầu, đặt câu hỏi).\n- Nghiên cứu cho thấy tương tác xã hội cải thiện tự tin 30%.\n\n**Đặt Mục Tiêu Khả Thi**\n- Xác định một mục tiêu nhỏ mỗi tháng (ví dụ, nói lên một lần).\n- Chia mục tiêu thành các bước hàng tuần.\n- Ví dụ: Hùng đặt mục tiêu, cải thiện nói trước đám đông.\n\n**Giữ Nhất Quán**\n- Theo dõi tiến độ hàng tuần bằng nhật ký.\n- Tham khảo cố vấn cho vấn đề kéo dài.\n\nBắt đầu hôm nay: nói một khẳng định hoặc bắt đầu trò chuyện. Công cụ VIP 1 sẽ dẫn bạn đến tự tin!\n\n*Số từ: 412*",
+    "word_count_en": 404,
+    "word_count_vi": 412,
+    "updated_at": "2025-10-21T19:43:00+07:00"
+  },
+  "entries": [
+    {
+      "slug": "affirmations",
+      "title": { "en": "Affirmations for Confidence", "vi": "Khẳng Định Cho Tự Tin" },
+      "copy": {
+        "en": "**Affirmations for Confidence**\n\nAffirmations boost self-esteem by 40%, per studies. Build confidence with these steps:\n\n- **Say Daily**: Repeat “I am capable” each morning.\n- **Write Affirmations**: Note 3 positive traits in a journal.\n- **Visualize Success**: Imagine achieving a goal.\n- **Stay Positive**: Reframe negative thoughts.\n\nExample: John’s daily affirmations improved his confidence. Say one affirmation today.\n\n*Word count: 150*",
+        "vi": "**Khẳng Định Cho Tự Tin**\n\nKhẳng định tăng tự trọng 40%, theo nghiên cứu. Xây dựng tự tin với các bước:\n\n- **Nói Hàng Ngày**: Lặp lại “Tôi có khả năng” mỗi sáng.\n- **Viết Khẳng Định**: Ghi 3 đặc điểm tích cực vào nhật ký.\n- **Hình Dung Thành Công**: Tưởng tượng đạt mục tiêu.\n- **Giữ Tích Cực**: Xem lại suy nghĩ tiêu cực.\n\nVí dụ: Nam dùng khẳng định hàng ngày, cải thiện tự tin. Nói một khẳng định hôm nay.\n\n*Số từ: 158*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["confidence", "self_esteem"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "confidence", "outcome": "self_esteem" },
+      "artifact_id": "2b3c4d5e-6f7a-4b8c-c9d0-e1f2a3b4c5d6",
+      "artifact_version_id": "2b3c4d5e-6f7a-4b8c-c9d0-e1f2a3b4c5d6-v001",
+      "created_at": "2025-10-21T19:43:00+07:00",
+      "updated_at": "2025-10-21T19:43:00+07:00"
+    },
+    {
+      "slug": "social_skills",
+      "title": { "en": "Social Skills for Confidence", "vi": "Kỹ Năng Xã Hội Cho Tự Tin" },
+      "copy": {
+        "en": "**Social Skills for Confidence**\n\nSocial practice boosts confidence by 30%, per research. Improve with these steps:\n\n- **Start Small**: Initiate one conversation weekly.\n- **Listen Actively**: Nod or ask “What do you mean?”.\n- **Practice Smiling**: Smile during talks.\n- **Join Groups**: Attend one social event monthly.\n\nExample: Maria’s conversations built her confidence. Start one talk today.\n\n*Word count: 152*",
+        "vi": "**Kỹ Năng Xã Hội Cho Tự Tin**\n\nThực hành xã hội tăng tự tin 30%, theo nghiên cứu. Cải thiện với các bước:\n\n- **Bắt Đầu Nhỏ**: Bắt đầu một cuộc trò chuyện mỗi tuần.\n- **Lắng Nghe Chủ Động**: Gật đầu hoặc hỏi “Ý bạn là gì?”.\n- **Luyện Cười**: Cười khi trò chuyện.\n- **Tham Gia Nhóm**: Tham dự một sự kiện xã hội mỗi tháng.\n\nVí dụ: Lan trò chuyện, xây dựng tự tin. Bắt đầu một cuộc nói chuyện hôm nay.\n\n*Số từ: 160*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["confidence", "social_skills"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["wellness"],
+      "metadata": { "topic": "confidence", "outcome": "social_skills" },
+      "artifact_id": "3c4d5e6f-7a8b-4c9d-d0e1-f2a3b4c5d6e7",
+      "artifact_version_id": "3c4d5e6f-7a8b-4c9d-d0e1-f2a3b4c5d6e7-v001",
+      "created_at": "2025-10-21T19:43:00+07:00",
+      "updated_at": "2025-10-21T19:43:00+07:00"
+    },
+    {
+      "slug": "goal_setting",
+      "title": { "en": "Goal Setting for Confidence", "vi": "Đặt Mục Tiêu Cho Tự Tin" },
+      "copy": {
+        "en": "**Goal Setting for Confidence**\n\nGoals boost confidence by 35%, per studies. Achieve growth with these steps:\n\n- **Set Small Goals**: Aim for one goal monthly (e.g., speak up once).\n- **Break Down Steps**: Plan weekly actions.\n- **Track Progress**: Note achievements in a journal.\n- **Celebrate Wins**: Reward small successes.\n\nExample: Alex’s goals improved his self-esteem. Set one goal today.\n\n*Word count: 148*",
+        "vi": "**Đặt Mục Tiêu Cho Tự Tin**\n\nMục tiêu tăng tự tin 35%, theo nghiên cứu. Đạt được phát triển với các bước:\n\n- **Đặt Mục Tiêu Nhỏ**: Nhắm một mục tiêu mỗi tháng (ví dụ, nói lên một lần).\n- **Chia Nhỏ Bước**: Lên kế hoạch hành động hàng tuần.\n- **Theo Dõi Tiến Độ**: Ghi lại thành tựu trong nhật ký.\n- **Ăn Mừng Chiến Thắng**: Thưởng cho thành công nhỏ.\n\nVí dụ: Nam đặt mục tiêu, cải thiện tự trọng. Đặt một mục tiêu hôm nay.\n\n*Số từ: 156*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["confidence", "goal_setting"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["wellness"],
+      "metadata": { "topic": "confidence", "outcome": "goal_setting" },
+      "artifact_id": "4d5e6f7a-8b9c-4d0e-e1f2-a3b4c5d6e7f8",
+      "artifact_version_id": "4d5e6f7a-8b9c-4d0e-e1f2-a3b4c5d6e7f8-v001",
+      "created_at": "2025-10-21T19:43:00+07:00",
+      "updated_at": "2025-10-21T19:43:00+07:00"
+    }
+  ],
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 3,
+        "min_distinct_buckets": 2,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}

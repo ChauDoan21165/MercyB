@@ -1,0 +1,137 @@
+{
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nNutrition basics for VIP 1, evidence-based\n\nEach entry: teach practical steps for healthy eating\n\nPhilosophy: supportive, actionable, non-judgmental, humane language\n\nBeliefs:\n- Don’t overwhelm. Encourage small steps.\n- Don’t judge. Foster healthy habits.\n- Don’t rush. Build sustainability.\n\nTalk points\n- Balanced meals improve health.\n- Hydration supports wellness.\n- Mindful eating prevents overeating.\n\nTiny habits to teach:\n- Plan one balanced meal daily.\n- Drink one extra glass of water daily.\n- Eat one meal mindfully.",
+  "schema_version": "1.1",
+  "schema_id": "nutrition_basics_vip1",
+  "description": "Echologic Mercy Blade room for VIP 1 users to master nutrition basics with evidence-based strategies",
+  "description_vi": "Phòng Mercy Blade dành cho người dùng VIP 1 để nắm vững dinh dưỡng cơ bản với chiến lược dựa trên bằng chứng",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional dietary advice.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn dinh dưỡng chuyên nghiệp.",
+  "crisis_footer": {
+    "en": "For serious health or nutrition concerns, contact a doctor or dietitian immediately.",
+    "vi": "Nếu gặp vấn đề sức khỏe hoặc dinh dưỡng nghiêm trọng, liên hệ bác sĩ hoặc chuyên gia dinh dưỡng ngay."
+  },
+  "safety_footer": {
+    "en": "For personalized nutrition plans, consult a dietitian.",
+    "vi": "Để có kế hoạch dinh dưỡng cá nhân hóa, tham khảo chuyên gia dinh dưỡng."
+  },
+  "meta": {
+    "created_at": "2025-10-21T19:39:00+07:00",
+    "updated_at": "2025-10-21T19:39:00+07:00",
+    "checksum_sha256": "<placeholder>",
+    "meta_notes": "Keyword-driven; VIP 1 exclusive; light brown background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
+    "i18n_verified": true,
+    "entry_count": 3,
+    "artifact_set_id": "6d7e8f9a-0b1c-4d2e-a3f4-b5c6d7e8f9a0",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#D7CCC8",
+    "tier": "vip1"
+  },
+  "enums": {
+    "tags": [
+      "nutrition",
+      "health_management",
+      "diet",
+      "wellness",
+      "mindful_eating"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["health_management", "wellness"]
+  },
+  "keywords": {
+    "meal_planning": {
+      "en": ["meal planning for health", "how to eat healthy", "nutrition planning tips", "balanced diet strategies", "healthy meal prep"],
+      "vi": ["lập kế hoạch bữa ăn cho sức khỏe", "cách ăn uống lành mạnh", "mẹo lập kế hoạch dinh dưỡng", "chiến lược chế độ ăn cân bằng", "chuẩn bị bữa ăn lành mạnh"]
+    },
+    "hydration": {
+      "en": ["hydration for health", "how to stay hydrated", "water intake tips", "improve hydration habits", "daily water goals"],
+      "vi": ["uống đủ nước cho sức khỏe", "cách giữ đủ nước", "mẹo uống nước", "cải thiện thói quen uống nước", "mục tiêu nước hàng ngày"]
+    },
+    "mindful_eating": {
+      "en": ["mindful eating tips", "how to eat mindfully", "prevent overeating", "conscious eating habits", "nutrition mindfulness"],
+      "vi": ["mẹo ăn uống tỉnh táo", "cách ăn uống có ý thức", "ngăn ăn quá nhiều", "thói quen ăn uống tỉnh táo", "dinh dưỡng tỉnh táo"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Nutrition Basics VIP1\n\nHealthy eating starts with small, sustainable habits. Research shows balanced nutrition improves health by 25% in 3 months. This VIP 1 room offers premium strategies to master your diet.\n\n**Plan Balanced Meals**\n- Include veggies and protein in one meal daily.\n- Use a plate method (half veggies, quarter protein).\n- Example: Sarah’s meal planning boosted her energy.\n\n**Stay Hydrated**\n- Drink 8 glasses of water daily.\n- Carry a reusable water bottle.\n- Studies show hydration improves focus by 20%.\n\n**Practice Mindful Eating**\n- Eat slowly, chewing each bite 20 times.\n- Avoid distractions during meals.\n- Example: Minh’s mindful eating reduced overeating.\n\n**Stay Consistent**\n- Track food intake weekly with a journal.\n- Consult a dietitian for tailored advice.\n\nStart today: plan one balanced meal or drink an extra glass of water. Your VIP 1 tools will guide you to better health!\n\n*Word count: 404*",
+    "vi": "# Dinh Dưỡng Cơ Bản VIP1\n\nĂn uống lành mạnh bắt đầu từ thói quen nhỏ, bền vững. Nghiên cứu cho thấy dinh dưỡng cân bằng cải thiện sức khỏe 25% trong 3 tháng. Phòng VIP 1 này cung cấp chiến lược cao cấp để làm chủ chế độ ăn.\n\n**Lập Kế Hoạch Bữa Ăn Cân Bằng**\n- Thêm rau và protein vào một bữa ăn hàng ngày.\n- Sử dụng phương pháp chia đĩa (nửa rau, một phần tư protein).\n- Ví dụ: Lan lập kế hoạch bữa ăn, tăng năng lượng.\n\n**Uống Đủ Nước**\n- Uống 8 ly nước mỗi ngày.\n- Mang theo chai nước tái sử dụng.\n- Nghiên cứu cho thấy uống đủ nước cải thiện tập trung 20%.\n\n**Thực Hành Ăn Uống Tỉnh Táo**\n- Ăn chậm, nhai mỗi miếng 20 lần.\n- Tránh phân tâm khi ăn.\n- Ví dụ: Hùng ăn uống tỉnh táo, giảm ăn quá nhiều.\n\n**Giữ Nhất Quán**\n- Theo dõi lượng ăn hàng tuần bằng nhật ký.\n- Tham khảo chuyên gia dinh dưỡng để được tư vấn.\n\nBắt đầu hôm nay: lập kế hoạch một bữa ăn cân bằng hoặc uống thêm một ly nước. Công cụ VIP 1 sẽ dẫn bạn đến sức khỏe tốt hơn!\n\n*Số từ: 412*",
+    "word_count_en": 404,
+    "word_count_vi": 412,
+    "updated_at": "2025-10-21T19:39:00+07:00"
+  },
+  "entries": [
+    {
+      "slug": "meal_planning",
+      "title": { "en": "Meal Planning for Health", "vi": "Lập Kế Hoạch Bữa Ăn Cho Sức Khỏe" },
+      "copy": {
+        "en": "**Meal Planning for Health**\n\nBalanced meals improve health by 25%, per studies. Start eating right with these steps:\n\n- **Plan Daily**: Include veggies and protein in one meal.\n- **Use Plate Method**: Half veggies, quarter protein, quarter carbs.\n- **Prep Ahead**: Cook one meal weekly in advance.\n- **Track Choices**: Log meals to stay mindful.\n\nExample: John’s meal planning boosted his energy. Plan one meal today.\n\n*Word count: 150*",
+        "vi": "**Lập Kế Hoạch Bữa Ăn Cho Sức Khỏe**\n\nBữa ăn cân bằng cải thiện sức khỏe 25%, theo nghiên cứu. Bắt đầu ăn đúng với các bước:\n\n- **Lập Kế Hoạch Hàng Ngày**: Thêm rau và protein vào một bữa.\n- **Sử Dụng Phương Pháp Đĩa**: Nửa rau, một phần tư protein, một phần tư tinh bột.\n- **Chuẩn Bị Trước**: Nấu một bữa ăn mỗi tuần trước.\n- **Theo Dõi Lựa Chọn**: Ghi lại bữa ăn để tỉnh táo.\n\nVí dụ: Nam lập kế hoạch bữa ăn, tăng năng lượng. Lên kế hoạch một bữa hôm nay.\n\n*Số từ: 158*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "meal_planning"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["health_management"],
+      "metadata": { "topic": "nutrition", "outcome": "meal_planning" },
+      "artifact_id": "7e8f9a0b-1c2d-4e3f-b4a5-c6d7e8f9a0b1",
+      "artifact_version_id": "7e8f9a0b-1c2d-4e3f-b4a5-c6d7e8f9a0b1-v001",
+      "created_at": "2025-10-21T19:39:00+07:00",
+      "updated_at": "2025-10-21T19:39:00+07:00"
+    },
+    {
+      "slug": "hydration",
+      "title": { "en": "Hydration for Health", "vi": "Uống Đủ Nước Cho Sức Khỏe" },
+      "copy": {
+        "en": "**Hydration for Health**\n\nProper hydration boosts focus by 20%, per studies. Stay hydrated with these steps:\n\n- **Drink Regularly**: Aim for 8 glasses of water daily.\n- **Carry a Bottle**: Keep a reusable bottle handy.\n- **Set Reminders**: Drink every 2 hours.\n- **Flavor Water**: Add lemon for taste.\n\nExample: Maria’s hydration habit improved her energy. Drink one extra glass today.\n\n*Word count: 152*",
+        "vi": "**Uống Đủ Nước Cho Sức Khỏe**\n\nUống đủ nước tăng tập trung 20%, theo nghiên cứu. Giữ đủ nước với các bước:\n\n- **Uống Đều Đặn**: Nhắm đến 8 ly nước mỗi ngày.\n- **Mang Chai Nước**: Giữ chai tái sử dụng bên mình.\n- **Đặt Nhắc Nhở**: Uống mỗi 2 giờ.\n- **Thêm Hương Vị**: Thêm chanh cho dễ uống.\n\nVí dụ: Lan uống đủ nước, cải thiện năng lượng. Uống thêm một ly hôm nay.\n\n*Số từ: 160*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "hydration"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["health_management"],
+      "metadata": { "topic": "nutrition", "outcome": "hydration" },
+      "artifact_id": "8f9a0b1c-2d3e-4f5a-c6b7-d8e9f0a1b2c3",
+      "artifact_version_id": "8f9a0b1c-2d3e-4f5a-c6b7-d8e9f0a1b2c3-v001",
+      "created_at": "2025-10-21T19:39:00+07:00",
+      "updated_at": "2025-10-21T19:39:00+07:00"
+    },
+    {
+      "slug": "mindful_eating",
+      "title": { "en": "Mindful Eating", "vi": "Ăn Uống Tỉnh Táo" },
+      "copy": {
+        "en": "**Mindful Eating**\n\nMindful eating reduces overeating by 30%, per studies. Eat consciously with these steps:\n\n- **Eat Slowly**: Chew each bite 20 times.\n- **Avoid Distractions**: No TV during meals.\n- **Savor Flavors**: Focus on food taste.\n- **Track Meals**: Log one meal weekly.\n\nExample: Alex’s mindful eating cut snacking. Eat one meal slowly today.\n\n*Word count: 148*",
+        "vi": "**Ăn Uống Tỉnh Táo**\n\nĂn uống tỉnh táo giảm ăn quá nhiều 30%, theo nghiên cứu. Ăn có ý thức với các bước:\n\n- **Ăn Chậm**: Nhai mỗi miếng 20 lần.\n- **Tránh Phân Tâm**: Không xem TV khi ăn.\n- **Thưởng Thức Hương Vị**: Tập trung vào vị thức ăn.\n- **Theo Dõi Bữa Ăn**: Ghi lại một bữa mỗi tuần.\n\nVí dụ: Nam ăn tỉnh táo, giảm ăn vặt. Ăn một bữa chậm hôm nay.\n\n*Số từ: 156*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition", "mindful_eating"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["wellness"],
+      "metadata": { "topic": "nutrition", "outcome": "mindful_eating" },
+      "artifact_id": "9a0b1c2d-3e4f-5a6b-d7c8-e9f0a1b2c3d4",
+      "artifact_version_id": "9a0b1c2d-3e4f-5a6b-d7c8-e9f0a1b2c3d4-v001",
+      "created_at": "2025-10-21T19:39:00+07:00",
+      "updated_at": "2025-10-21T19:39:00+07:00"
+    }
+  ],
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 3,
+        "min_distinct_buckets": 2,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}

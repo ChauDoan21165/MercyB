@@ -173,6 +173,45 @@ export type Database = {
         }
         Relationships: []
       }
+      promo_codes: {
+        Row: {
+          code: string
+          created_at: string
+          current_redemptions: number
+          daily_question_limit: number
+          description: string | null
+          expires_at: string | null
+          id: string
+          is_active: boolean
+          max_redemptions: number
+          updated_at: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          current_redemptions?: number
+          daily_question_limit?: number
+          description?: string | null
+          expires_at?: string | null
+          id?: string
+          is_active?: boolean
+          max_redemptions?: number
+          updated_at?: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          current_redemptions?: number
+          daily_question_limit?: number
+          description?: string | null
+          expires_at?: string | null
+          id?: string
+          is_active?: boolean
+          max_redemptions?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       responses: {
         Row: {
           created_at: string | null
@@ -462,6 +501,75 @@ export type Database = {
         }
         Relationships: []
       }
+      user_moderation_status: {
+        Row: {
+          id: string
+          is_muted: boolean
+          is_suspended: boolean
+          last_violation_at: string | null
+          muted_until: string | null
+          total_violations: number
+          updated_at: string
+          user_id: string
+          violation_score: number
+        }
+        Insert: {
+          id?: string
+          is_muted?: boolean
+          is_suspended?: boolean
+          last_violation_at?: string | null
+          muted_until?: string | null
+          total_violations?: number
+          updated_at?: string
+          user_id: string
+          violation_score?: number
+        }
+        Update: {
+          id?: string
+          is_muted?: boolean
+          is_suspended?: boolean
+          last_violation_at?: string | null
+          muted_until?: string | null
+          total_violations?: number
+          updated_at?: string
+          user_id?: string
+          violation_score?: number
+        }
+        Relationships: []
+      }
+      user_moderation_violations: {
+        Row: {
+          action_taken: string
+          created_at: string
+          id: string
+          message_content: string | null
+          room_id: string | null
+          severity_level: number
+          user_id: string
+          violation_type: string
+        }
+        Insert: {
+          action_taken: string
+          created_at?: string
+          id?: string
+          message_content?: string | null
+          room_id?: string | null
+          severity_level: number
+          user_id: string
+          violation_type: string
+        }
+        Update: {
+          action_taken?: string
+          created_at?: string
+          id?: string
+          message_content?: string | null
+          room_id?: string | null
+          severity_level?: number
+          user_id?: string
+          violation_type?: string
+        }
+        Relationships: []
+      }
       user_points: {
         Row: {
           created_at: string
@@ -485,6 +593,41 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      user_promo_redemptions: {
+        Row: {
+          daily_question_limit: number
+          expires_at: string | null
+          id: string
+          promo_code_id: string
+          redeemed_at: string
+          user_id: string
+        }
+        Insert: {
+          daily_question_limit: number
+          expires_at?: string | null
+          id?: string
+          promo_code_id: string
+          redeemed_at?: string
+          user_id: string
+        }
+        Update: {
+          daily_question_limit?: number
+          expires_at?: string | null
+          id?: string
+          promo_code_id?: string
+          redeemed_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_promo_redemptions_promo_code_id_fkey"
+            columns: ["promo_code_id"]
+            isOneToOne: false
+            referencedRelation: "promo_codes"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_quotas: {
         Row: {

@@ -4,6 +4,7 @@ import { Check, Shield } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { PointsDisplay } from "@/components/PointsDisplay";
 import { useUserAccess } from "@/hooks/useUserAccess";
+import { PromoCodeBanner } from "@/components/PromoCodeBanner";
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -60,6 +61,9 @@ const Welcome = () => {
             Sign In / Đăng Nhập
           </Button>
         </div>
+
+        {/* Promo Code Banner */}
+        <PromoCodeBanner />
 
         {/* Hero Section */}
         <div className="text-center mb-16 space-y-6">

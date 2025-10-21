@@ -27,7 +27,11 @@ import foodNutrition from '@/data/rooms/food_and_nutrition.json';
 import grief from '@/data/rooms/grief.json';
 import gutBrain from '@/data/rooms/gut_brain_axis.json';
 import headache from '@/data/rooms/headache.json';
-import soulMate from '@/data/rooms/how_to_find_your_soul_mate.json';
+import soulMateVip1 from '@/data/rooms/how_to_find_your_soul_mate_vip1.json';
+import confidenceBuildingVip1 from '@/data/rooms/confidence_building_vip1.json';
+import nutritionBasicsVip1 from '@/data/rooms/nutrition_basics_vip1.json';
+import financialWellnessVip1 from '@/data/rooms/financial_wellness_vip1.json';
+import sleepImprovementVip1 from '@/data/rooms/sleep_improvement_vip1.json';
 import husbandDealing from '@/data/rooms/husband_dealing.json';
 import husbandDealingVip2 from '@/data/rooms/husband_dealing_vip2.json';
 import hypertension from '@/data/rooms/hypertension.json';
@@ -106,7 +110,11 @@ export const roomDataMap: Record<string, any> = {
   'grief': grief,
   'gut-brain': gutBrain,
   'headache': headache,
-  'soul-mate': soulMate,
+  'soul-mate': soulMateVip1,
+  'confidence-building-vip1': confidenceBuildingVip1,
+  'nutrition-basics-vip1': nutritionBasicsVip1,
+  'financial-wellness-vip1': financialWellnessVip1,
+  'sleep-improvement-vip1': sleepImprovementVip1,
   'husband-dealing': husbandDealing,
   'husband-dealing-vip2': husbandDealingVip2,
   'hypertension': hypertension,
