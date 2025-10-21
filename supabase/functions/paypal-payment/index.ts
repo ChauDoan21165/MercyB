@@ -6,7 +6,10 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-const PAYPAL_API = 'https://api-m.sandbox.paypal.com'; // Use sandbox for testing
+// Switch between sandbox and production
+const PAYPAL_API = Deno.env.get('PAYPAL_MODE') === 'live' 
+  ? 'https://api-m.paypal.com'  // Production for real money
+  : 'https://api-m.sandbox.paypal.com'; // Sandbox for testing
 
 serve(async (req) => {
   if (req.method === 'OPTIONS') {

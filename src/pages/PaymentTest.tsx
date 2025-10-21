@@ -171,12 +171,22 @@ const PaymentTest = () => {
           ))}
         </div>
 
-        <div className="mt-8 p-4 bg-muted rounded-lg">
-          <h3 className="font-semibold mb-2">Test Credentials (Sandbox)</h3>
-          <p className="text-sm text-muted-foreground">
-            Use PayPal sandbox test accounts to test payments without real money.
-            Visit <a href="https://developer.paypal.com/dashboard/" target="_blank" rel="noopener noreferrer" className="text-primary underline">PayPal Developer Dashboard</a> to create test accounts.
-          </p>
+        <div className="mt-8 p-4 bg-muted rounded-lg space-y-3">
+          <div>
+            <h3 className="font-semibold mb-2">💳 Real Payment Mode</h3>
+            <p className="text-sm text-muted-foreground">
+              This page accepts real PayPal payments. Share this link with friends to test:
+            </p>
+            <code className="block mt-2 p-2 bg-background rounded text-xs break-all">
+              {window.location.origin}/payment-test
+            </code>
+          </div>
+          <div>
+            <h3 className="font-semibold mb-2 text-amber-600">⚠️ Important</h3>
+            <p className="text-sm text-muted-foreground">
+              To accept real money, make sure you've set PAYPAL_MODE="live" and added your production PayPal credentials in the backend secrets.
+            </p>
+          </div>
         </div>
       </div>
     </div>

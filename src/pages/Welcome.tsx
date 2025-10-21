@@ -173,11 +173,33 @@ const Welcome = () => {
               size="lg"
               variant="outline"
               className="border-2 border-accent hover:bg-accent/10 min-w-[200px]"
-              onClick={() => navigate("/admin/vip-rooms")}
+              onClick={() => navigate("/vip1")}
             >
               <span className="flex flex-col items-center">
-                <span className="text-base font-semibold">VIP Rooms</span>
-                <span className="text-sm opacity-90">Phòng VIP</span>
+                <span className="text-base font-semibold">VIP1 Rooms</span>
+                <span className="text-sm opacity-90">Phòng VIP1</span>
+              </span>
+            </Button>
+            <Button 
+              size="lg"
+              variant="outline"
+              className="border-2 border-primary hover:bg-primary/10 min-w-[200px]"
+              onClick={() => navigate("/vip2")}
+            >
+              <span className="flex flex-col items-center">
+                <span className="text-base font-semibold">VIP2 Rooms</span>
+                <span className="text-sm opacity-90">Phòng VIP2</span>
+              </span>
+            </Button>
+            <Button 
+              size="lg"
+              variant="outline"
+              className="border-2 border-secondary hover:bg-secondary/10 min-w-[200px]"
+              onClick={() => navigate("/vip3")}
+            >
+              <span className="flex flex-col items-center">
+                <span className="text-base font-semibold">VIP3 Rooms</span>
+                <span className="text-sm opacity-90">Phòng VIP3</span>
               </span>
             </Button>
             <Button 
