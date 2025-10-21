@@ -182,9 +182,14 @@ const AdminDashboard = () => {
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
           </Button>
-          <Button onClick={() => navigate("/admin/vip-rooms")}>
-            View VIP Rooms
-          </Button>
+          <div className="flex gap-2">
+            <Button onClick={() => navigate("/admin/vip-rooms")}>
+              View VIP Rooms
+            </Button>
+            <Button onClick={() => navigate("/admin/reports")} variant="outline">
+              View Reports
+            </Button>
+          </div>
         </div>
 
         <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>

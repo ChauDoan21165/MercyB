@@ -44,7 +44,7 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "gut-brain", nameVi: "Trục ruột-não", nameEn: "Gut–Brain Axis", hasData: true, tier: "free", dataFile: "gut_brain_axis.json" },
   { id: "habit-building", nameVi: "Xây dựng thói quen", nameEn: "Habit Building", hasData: true, tier: "free", dataFile: "habit_building.json" },
   { id: "headache", nameVi: "Đau đầu", nameEn: "Headache", hasData: true, tier: "free", dataFile: "headache.json" },
-  { id: "soul-mate", nameVi: "Tìm bạn đời", nameEn: "How to Find Your Soul Mate", hasData: true, tier: "vip1", dataFile: "how_to_find_your_soul_mate_vip1.json" },
+  { id: "soul-mate", nameVi: "Tìm bạn đời", nameEn: "How to Find Your Soul Mate", hasData: true, tier: "vip2", dataFile: "how_to_find_your_soul_mate_vip1.json" },
   { id: "confidence-building-vip1", nameVi: "Xây dựng sự tự tin VIP1", nameEn: "Confidence Building VIP1", hasData: true, tier: "vip1", dataFile: "confidence_building_vip1.json" },
   { id: "nutrition-basics-vip1", nameVi: "Dinh dưỡng cơ bản VIP1", nameEn: "Nutrition Basics VIP1", hasData: true, tier: "vip1", dataFile: "nutrition_basics_vip1.json" },
   { id: "financial-wellness-vip1", nameVi: "Sức khỏe tài chính VIP1", nameEn: "Financial Wellness VIP1", hasData: true, tier: "vip1", dataFile: "financial_wellness_vip1.json" },

@@ -212,6 +212,17 @@ const Welcome = () => {
               size="lg"
               variant="outline"
               className="border-2 border-secondary hover:bg-secondary/10 min-w-[200px]"
+              onClick={() => navigate("/vip-topic-request")}
+            >
+              <span className="flex flex-col items-center">
+                <span className="text-base font-semibold">🌟 Request Custom Topic</span>
+                <span className="text-sm opacity-90">Yêu Cầu Chủ Đề Riêng</span>
+              </span>
+            </Button>
+            <Button 
+              size="lg"
+              variant="outline"
+              className="border-2 border-secondary hover:bg-secondary/10 min-w-[200px]"
               onClick={() => navigate("/payment-test")}
             >
               <span className="flex flex-col items-center">

@@ -772,6 +772,54 @@ export type Database = {
         }
         Relationships: []
       }
+      vip_topic_requests_detailed: {
+        Row: {
+          additional_notes: string | null
+          admin_response: string | null
+          created_at: string
+          id: string
+          specific_goals: string | null
+          status: string | null
+          target_audience: string | null
+          tier: string
+          topic_description: string
+          topic_title: string
+          updated_at: string
+          urgency: string | null
+          user_id: string
+        }
+        Insert: {
+          additional_notes?: string | null
+          admin_response?: string | null
+          created_at?: string
+          id?: string
+          specific_goals?: string | null
+          status?: string | null
+          target_audience?: string | null
+          tier: string
+          topic_description: string
+          topic_title: string
+          updated_at?: string
+          urgency?: string | null
+          user_id: string
+        }
+        Update: {
+          additional_notes?: string | null
+          admin_response?: string | null
+          created_at?: string
+          id?: string
+          specific_goals?: string | null
+          status?: string | null
+          target_audience?: string | null
+          tier?: string
+          topic_description?: string
+          topic_title?: string
+          updated_at?: string
+          urgency?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       daily_feedback_summary: {
