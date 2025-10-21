@@ -169,81 +169,15 @@ const Welcome = () => {
             </div>
           </Card>
 
-          {/* Get Started Section - Free Users Onboarding */}
-          <Card className="max-w-4xl mx-auto mt-8" style={{ backgroundColor: '#4CAF50' }}>
-            <div className="p-8 space-y-6">
-              <div className="text-center space-y-3">
-                <h2 className="text-3xl font-bold text-white">
-                  Get Started
-                </h2>
-                <p className="text-xl text-white/90">
-                  Bắt Đầu Ngay
-                </p>
-                <p className="text-base text-white/80 max-w-2xl mx-auto">
-                  Free users get 10 questions and 10 rooms daily. Learn how to maximize your experience!
-                </p>
-                <p className="text-sm text-white/70 max-w-2xl mx-auto">
-                  Người dùng miễn phí nhận 10 câu hỏi và 10 phòng mỗi ngày. Học cách tối đa hóa trải nghiệm!
-                </p>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
-                <Button 
-                  size="lg"
-                  className="bg-white text-[#4CAF50] hover:bg-white/90 hover:shadow-hover transition-all min-w-[200px]"
-                  onClick={() => navigate("/chat/onboarding-free-users")}
-                >
-                  <span className="flex flex-col items-center">
-                    <span className="text-base font-semibold">Start Learning</span>
-                    <span className="text-sm opacity-90">Bắt Đầu Học</span>
-                  </span>
-                </Button>
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  className="bg-transparent border-2 border-white text-white hover:bg-white/10 min-w-[200px]"
-                  onClick={() => navigate("/chat/user-profile-dashboard")}
-                >
-                  <span className="flex flex-col items-center">
-                    <span className="text-base font-semibold">View Dashboard</span>
-                    <span className="text-sm opacity-90">Xem Bảng Điều Khiển</span>
-                  </span>
-                </Button>
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  className="bg-transparent border-2 border-white text-white hover:bg-white/10 min-w-[200px]"
-                  onClick={() => navigate("/matchmaking")}
-                >
-                  <span className="flex flex-col items-center">
-                    <span className="text-base font-semibold">Find Partner</span>
-                    <span className="text-sm opacity-90">Tìm Bạn Học</span>
-                  </span>
-                </Button>
-              </div>
-            </div>
-          </Card>
-
           <div className="flex justify-center items-center gap-4 pt-8 flex-wrap">
             <Button 
               size="lg"
               className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-hover transition-all min-w-[200px]"
-              onClick={() => navigate("/rooms")}
-            >
-              <span className="flex flex-col items-center">
-                <span className="text-base font-semibold">Explore Free Rooms</span>
-                <span className="text-sm opacity-90">Khám Phá Phòng Miễn Phí</span>
-              </span>
-            </Button>
-            <Button 
-              size="lg"
-              variant="outline"
-              className="border-2 hover:bg-primary/10 min-w-[200px]"
               onClick={() => navigate("/all-rooms")}
             >
               <span className="flex flex-col items-center">
-                <span className="text-base font-semibold">View All Rooms</span>
-                <span className="text-sm opacity-90">Xem Tất Cả Phòng</span>
+                <span className="text-base font-semibold">Explore All Rooms</span>
+                <span className="text-sm opacity-90">Khám Phá Tất Cả Phòng</span>
               </span>
             </Button>
             <Button 
@@ -279,36 +213,27 @@ const Welcome = () => {
                 <span className="text-sm opacity-90">Phòng VIP3</span>
               </span>
             </Button>
-            <Button 
-              size="lg"
-              variant="outline"
-              className="border-2 border-secondary hover:bg-secondary/10 min-w-[200px]"
-              onClick={() => navigate("/vip-topic-request")}
-            >
-              <span className="flex flex-col items-center">
-                <span className="text-base font-semibold">🌟 Request Custom Topic</span>
-                <span className="text-sm opacity-90">Yêu Cầu Chủ Đề Riêng</span>
-              </span>
-            </Button>
-            <Button 
-              size="lg"
-              variant="outline"
-              className="border-2 border-secondary hover:bg-secondary/10 min-w-[200px]"
-              onClick={() => navigate("/payment-test")}
-            >
-              <span className="flex flex-col items-center">
-                <span className="text-base font-semibold">Test Payment</span>
-                <span className="text-sm opacity-90">Test Thanh Toán</span>
-              </span>
-            </Button>
-            {isAdmin && (
+          </div>
+          
+          {/* VIP Custom Topic Info */}
+          <div className="text-center mt-8 p-4 max-w-2xl mx-auto">
+            <p className="text-sm text-muted-foreground">
+              🌟 VIP members can request custom topics tailored to their needs
+            </p>
+            <p className="text-xs text-muted-foreground">
+              Thành viên VIP có thể yêu cầu chủ đề tùy chỉnh theo nhu cầu
+            </p>
+          </div>
+          
+          {isAdmin && (
+            <div className="flex justify-center mt-4">
               <button
                 className="w-2 h-2 rounded-full bg-muted-foreground/20 hover:bg-destructive/50 transition-colors cursor-pointer"
                 onClick={() => navigate("/admin/vip-rooms")}
                 aria-label="Admin"
               />
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
         {/* Subscription Tiers */}
