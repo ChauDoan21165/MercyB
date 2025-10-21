@@ -13,8 +13,10 @@ const Auth = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
+  const [signInPassword, setSignInPassword] = useState('');
+  const [signUpPassword, setSignUpPassword] = useState('');
+  const [showSignInPassword, setShowSignInPassword] = useState(false);
+  const [showSignUpPassword, setShowSignUpPassword] = useState(false);
   const [resetEmail, setResetEmail] = useState('');
   const [showReset, setShowReset] = useState(false);
 
@@ -43,7 +45,7 @@ const Auth = () => {
       
       const { error } = await supabase.auth.signUp({
         email,
-        password,
+        password: signUpPassword,
         options: {
           emailRedirectTo: `${window.location.origin}/`
         }
@@ -59,7 +61,7 @@ const Auth = () => {
       // Auto login after signup
       const { error: signInError } = await supabase.auth.signInWithPassword({
         email,
-        password,
+        password: signUpPassword,
       });
 
       if (signInError) throw signInError;
@@ -86,7 +88,7 @@ const Auth = () => {
       
       const { error } = await supabase.auth.signInWithPassword({
         email,
-        password,
+        password: signInPassword,
       });
 
       if (error) throw error;
@@ -208,18 +210,18 @@ const Auth = () => {
                 <div className="relative">
                   <Input
                     id="signin-password"
-                    type={showPassword ? "text" : "password"}
+                    type={showSignInPassword ? "text" : "password"}
                     placeholder="••••••••"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={signInPassword}
+                    onChange={(e) => setSignInPassword(e.target.value)}
                     required
                   />
                   <button
                     type="button"
-                    onClick={() => setShowPassword(!showPassword)}
+                    onClick={() => setShowSignInPassword(!showSignInPassword)}
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                   >
-                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                    {showSignInPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                   </button>
                 </div>
               </div>
@@ -257,19 +259,19 @@ const Auth = () => {
                 <div className="relative">
                   <Input
                     id="signup-password"
-                    type={showPassword ? "text" : "password"}
+                    type={showSignUpPassword ? "text" : "password"}
                     placeholder="••••••••"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={signUpPassword}
+                    onChange={(e) => setSignUpPassword(e.target.value)}
                     required
                     minLength={6}
                   />
                   <button
                     type="button"
-                    onClick={() => setShowPassword(!showPassword)}
+                    onClick={() => setShowSignUpPassword(!showSignUpPassword)}
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                   >
-                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                    {showSignUpPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                   </button>
                 </div>
               </div>

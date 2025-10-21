@@ -65,7 +65,7 @@ export const useUserAccess = (): UserAccess => {
 
       setAccess({
         isAdmin,
-        tier,
+        tier: isAdmin ? 'vip3' : tier,
         canAccessVIP1: isAdmin || tier === 'vip1' || tier === 'vip2' || tier === 'vip3',
         canAccessVIP2: isAdmin || tier === 'vip2' || tier === 'vip3',
         canAccessVIP3: isAdmin || tier === 'vip3',

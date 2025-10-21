@@ -157,10 +157,10 @@ const Welcome = () => {
             <div className="p-8 space-y-6">
               <div className="space-y-3">
                 <p className="text-base leading-relaxed text-foreground/90">
-                  Mercy Blade is your compassionate companion for health and wellness journeys. It offers bite-sized, evidence-based guidance on topics like burnout recovery, habit building, and diabetes care, empowering you with practical steps and gentle encouragement. Whether managing stress or fostering confidence, Mercy Blade supports sustainable growth in a supportive, non-judgmental space.
+                  Mercy Blade is your compassionate companion on the journey of holistic development — from physical health, mental well-being, relationships, finances, to personal growth. The app provides concise, evidence-based, and easy-to-apply guidance to help you recover from burnout, build healthy habits, manage chronic conditions, and nurture confidence and inner peace. Whether you're looking to reduce stress, improve health, or develop yourself, Mercy Blade walks alongside you in a space full of understanding, encouragement, and non-judgment.
                 </p>
                 <p className="text-base leading-relaxed text-muted-foreground">
-                  Mercy Blade là người bạn đồng hành đầy lòng thương xót cho hành trình sức khỏe và phúc lợi. Nó cung cấp hướng dẫn ngắn gọn, dựa trên bằng chứng về các chủ đề như phục hồi kiệt sức, xây dựng thói quen và chăm sóc đái tháo đường, trao quyền cho bạn với các bước thực tế và khích lệ nhẹ nhàng. Dù quản lý căng thẳng hay nuôi dưỡng tự tin, Mercy Blade hỗ trợ tăng trưởng bền vững trong không gian hỗ trợ, không phán xét.
+                  Mercy Blade là người bạn đồng hành đầy lòng trắc ẩn trên hành trình phát triển toàn diện của bạn — từ sức khỏe thể chất, tinh thần, mối quan hệ, tài chính cho đến sự trưởng thành cá nhân. Ứng dụng cung cấp những hướng dẫn ngắn gọn, dựa trên bằng chứng và dễ áp dụng, giúp bạn phục hồi sau kiệt sức, xây dựng thói quen lành mạnh, quản lý bệnh mạn tính, cũng như nuôi dưỡng sự tự tin và bình an nội tâm. Dù bạn đang tìm cách giảm căng thẳng, cải thiện sức khỏe hay phát triển bản thân, Mercy Blade luôn đồng hành trong một không gian đầy thấu hiểu, khích lệ và không phán xét.
                 </p>
               </div>
             </div>
