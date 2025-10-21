@@ -244,7 +244,11 @@ serve(async (req) => {
 
     // KEYWORD MATCHING: Find relevant entries based on user query
     let matchedEntries: any[] = [];
+    let hasEntriesData = false;
+    
     if (roomData.entries && Array.isArray(roomData.entries)) {
+      hasEntriesData = roomData.entries.length > 0;
+      
       // Search for entries whose keywords match the user's query
       matchedEntries = roomData.entries.filter((entry: any) => {
         if (!entry.keywords || !Array.isArray(entry.keywords)) return false;
@@ -255,8 +259,17 @@ serve(async (req) => {
         );
       });
 
+      // LOG FEEDBACK about data coverage
+      if (matchedEntries.length === 0 && hasEntriesData) {
+        console.log(`[FEEDBACK] Room "${roomData.schema_id}" - No matching entries for query: "${userQuery}"`);
+        console.log(`[FEEDBACK] Available keywords in this room:`, 
+          roomData.entries.slice(0, 5).map((e: any) => e.keywords).flat().join(', ')
+        );
+      }
+
       // If we found matching entries, provide their detailed content
       if (matchedEntries.length > 0) {
+        console.log(`[SUCCESS] Found ${matchedEntries.length} matching entries for: "${userQuery}"`);
         contextInfo += `\n=== RELEVANT DETAILED INFORMATION ===\n`;
         matchedEntries.slice(0, 3).forEach((entry: any, idx: number) => {
           contextInfo += `\n[Topic ${idx + 1}]\n`;
@@ -287,6 +300,8 @@ serve(async (req) => {
         });
         contextInfo += `\n`;
       }
+    } else {
+      console.log(`[FEEDBACK] Room "${roomData.schema_id}" - NO ENTRIES DATA AVAILABLE`);
     }
 
     // Add safety and crisis info

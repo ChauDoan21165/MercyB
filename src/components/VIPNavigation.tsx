@@ -38,31 +38,41 @@ export const VIPNavigation = ({ currentPage }: VIPNavigationProps) => {
   };
 
   return (
-    <div className="flex items-center justify-center gap-2 mt-4">
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={() => handleNavigation(prevPage)}
-        disabled={!prevPage || (!isAdmin && !prevPage.canAccess)}
-        className="gap-1"
-      >
-        <ChevronLeft className="w-4 h-4" />
-        {prevPage ? prevPage.label : 'Previous'}
-      </Button>
-      
-      <div className="text-sm text-muted-foreground px-2">
-        {pages[currentIndex].label}
+    <div className="flex flex-col items-center gap-3 mt-6">
+      <div className="flex items-center justify-center gap-2">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => handleNavigation(prevPage)}
+          disabled={!prevPage || (!isAdmin && !prevPage.canAccess)}
+          className="gap-1"
+        >
+          <ChevronLeft className="w-4 h-4" />
+          {prevPage ? prevPage.label : 'Previous'}
+        </Button>
+        
+        <div className="text-sm text-muted-foreground px-2">
+          {pages[currentIndex].label}
+        </div>
+
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => handleNavigation(nextPage)}
+          disabled={!nextPage || (!isAdmin && !nextPage.canAccess)}
+          className="gap-1"
+        >
+          {nextPage ? nextPage.label : 'Next'}
+          <ChevronRight className="w-4 h-4" />
+        </Button>
       </div>
 
       <Button
-        variant="outline"
-        size="sm"
-        onClick={() => handleNavigation(nextPage)}
-        disabled={!nextPage || (!isAdmin && !nextPage.canAccess)}
-        className="gap-1"
+        onClick={() => navigate('/promo-code')}
+        className="bg-gradient-to-r from-primary to-accent hover:opacity-90 shadow-lg"
+        size="lg"
       >
-        {nextPage ? nextPage.label : 'Next'}
-        <ChevronRight className="w-4 h-4" />
+        🎁 Upgrade / Subscribe / Nâng Cấp
       </Button>
     </div>
   );

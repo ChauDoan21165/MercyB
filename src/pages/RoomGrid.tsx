@@ -121,7 +121,7 @@ const RoomGrid = () => {
               onClick={() => handleRoomClick(room)}
             >
               {/* Status Badge */}
-              <div className="absolute -top-2 -right-2 z-10">
+              <div className="absolute top-1 right-1 z-10">
                 {room.hasData ? (
                   <div className="bg-green-500 rounded-full p-1">
                     <CheckCircle2 className="w-3 h-3 text-white" />
