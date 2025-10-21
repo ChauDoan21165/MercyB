@@ -19,6 +19,12 @@ const Auth = () => {
   const [showReset, setShowReset] = useState(false);
 
   useEffect(() => {
+    // Load saved email
+    const savedEmail = localStorage.getItem('mercyblade_email');
+    if (savedEmail) {
+      setEmail(savedEmail);
+    }
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_IN' && session) {
         navigate('/');
@@ -32,6 +38,9 @@ const Auth = () => {
     setLoading(true);
 
     try {
+      // Save email for next time
+      localStorage.setItem('mercyblade_email', email);
+      
       const { error } = await supabase.auth.signUp({
         email,
         password,
@@ -43,8 +52,8 @@ const Auth = () => {
       if (error) throw error;
 
       toast({
-        title: 'Success!',
-        description: 'Account created successfully. Please check your email.',
+        title: 'Success! / Thành công!',
+        description: 'Account created successfully. / Tài khoản đã được tạo thành công.',
       });
       
       // Auto login after signup
@@ -58,7 +67,7 @@ const Auth = () => {
       navigate('/');
     } catch (error: any) {
       toast({
-        title: 'Error',
+        title: 'Error / Lỗi',
         description: error.message,
         variant: 'destructive',
       });
@@ -72,6 +81,9 @@ const Auth = () => {
     setLoading(true);
 
     try {
+      // Save email for next time
+      localStorage.setItem('mercyblade_email', email);
+      
       const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -80,14 +92,14 @@ const Auth = () => {
       if (error) throw error;
 
       toast({
-        title: 'Welcome back!',
-        description: 'Successfully signed in.',
+        title: 'Welcome back! / Chào mừng trở lại!',
+        description: 'Successfully signed in. / Đăng nhập thành công.',
       });
       
       navigate('/');
     } catch (error: any) {
       toast({
-        title: 'Error',
+        title: 'Error / Lỗi',
         description: error.message,
         variant: 'destructive',
       });

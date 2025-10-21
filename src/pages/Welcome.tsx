@@ -1,14 +1,56 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, Shield } from "lucide-react";
+import { Check, Shield, LogOut, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { PointsDisplay } from "@/components/PointsDisplay";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { PromoCodeBanner } from "@/components/PromoCodeBanner";
+import { UsernameSetup } from "@/components/UsernameSetup";
+import { useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const Welcome = () => {
   const navigate = useNavigate();
   const { isAdmin } = useUserAccess();
+  const [user, setUser] = useState<any>(null);
+  const [profile, setProfile] = useState<any>(null);
+  const [showUsernameSetup, setShowUsernameSetup] = useState(false);
+
+  useEffect(() => {
+    checkUser();
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
+      checkUser();
+    });
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const checkUser = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    setUser(user);
+    
+    if (user) {
+      const { data: profileData } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", user.id)
+        .single();
+      
+      setProfile(profileData);
+      
+      // Show username setup if user doesn't have one
+      if (profileData && !profileData.username) {
+        setShowUsernameSetup(true);
+      }
+    }
+  };
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setUser(null);
+    setProfile(null);
+    toast.success("Logged out successfully / Đăng xuất thành công");
+  };
 
   const tiers = [
     {
@@ -51,15 +93,41 @@ const Welcome = () => {
 
   return (
     <div className="min-h-screen" style={{ background: 'hsl(var(--page-welcome))' }}>
+      {showUsernameSetup && (
+        <UsernameSetup onComplete={() => {
+          setShowUsernameSetup(false);
+          checkUser();
+        }} />
+      )}
+      
       <div className="container mx-auto px-4 py-12 max-w-7xl">
-        {/* Header with Sign In Button */}
+        {/* Header with User Info or Sign In Button */}
         <div className="flex justify-end mb-4">
-          <Button 
-            variant="outline"
-            onClick={() => navigate("/auth")}
-          >
-            Sign In / Đăng Nhập
-          </Button>
+          {user ? (
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-lg">
+                <User className="h-4 w-4 text-primary" />
+                <span className="font-medium">
+                  {profile?.username || user.email?.split('@')[0]}
+                </span>
+              </div>
+              <Button 
+                variant="outline"
+                onClick={handleLogout}
+                size="sm"
+              >
+                <LogOut className="h-4 w-4 mr-2" />
+                Logout / Đăng xuất
+              </Button>
+            </div>
+          ) : (
+            <Button 
+              variant="outline"
+              onClick={() => navigate("/auth")}
+            >
+              Sign In / Đăng Nhập
+            </Button>
+          )}
         </div>
 
         {/* Promo Code Banner */}
@@ -179,7 +247,7 @@ const Welcome = () => {
               size="lg"
               variant="outline"
               className="border-2 border-accent hover:bg-accent/10 min-w-[200px]"
-              onClick={() => navigate("/vip1")}
+              onClick={() => navigate("/rooms-vip1")}
             >
               <span className="flex flex-col items-center">
                 <span className="text-base font-semibold">VIP1 Rooms</span>
@@ -190,7 +258,7 @@ const Welcome = () => {
               size="lg"
               variant="outline"
               className="border-2 border-primary hover:bg-primary/10 min-w-[200px]"
-              onClick={() => navigate("/vip2")}
+              onClick={() => navigate("/rooms-vip2")}
             >
               <span className="flex flex-col items-center">
                 <span className="text-base font-semibold">VIP2 Rooms</span>
@@ -201,7 +269,7 @@ const Welcome = () => {
               size="lg"
               variant="outline"
               className="border-2 border-secondary hover:bg-secondary/10 min-w-[200px]"
-              onClick={() => navigate("/vip3")}
+              onClick={() => navigate("/rooms-vip3")}
             >
               <span className="flex flex-col items-center">
                 <span className="text-base font-semibold">VIP3 Rooms</span>
