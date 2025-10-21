@@ -7,6 +7,51 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+// Helper function to verify user tier access
+async function verifyUserTierAccess(supabaseClient: any, userId: string, roomTier: string): Promise<{ hasAccess: boolean; tier: string }> {
+  try {
+    // Check admin status first
+    const { data: roles } = await supabaseClient
+      .from('user_roles')
+      .select('role')
+      .eq('user_id', userId);
+    
+    if (roles?.some((r: any) => r.role === 'admin')) {
+      return { hasAccess: true, tier: 'admin' };
+    }
+
+    // Get user's subscription
+    const { data: subscription } = await supabaseClient
+      .from('user_subscriptions')
+      .select('tier_id, subscription_tiers(name)')
+      .eq('user_id', userId)
+      .eq('status', 'active')
+      .maybeSingle();
+
+    if (!subscription) {
+      return { hasAccess: roomTier === 'free', tier: 'free' };
+    }
+
+    const tierName = subscription.subscription_tiers?.name?.toLowerCase() || 'free';
+    const userTier = tierName.includes('vip3') ? 'vip3' :
+                     tierName.includes('vip2') ? 'vip2' :
+                     tierName.includes('vip1') ? 'vip1' : 'free';
+
+    // Check if user has required tier
+    const tierHierarchy = { free: 0, vip1: 1, vip2: 2, vip3: 3 };
+    const requiredLevel = tierHierarchy[roomTier as keyof typeof tierHierarchy] || 0;
+    const userLevel = tierHierarchy[userTier as keyof typeof tierHierarchy] || 0;
+
+    return {
+      hasAccess: userLevel >= requiredLevel,
+      tier: userTier
+    };
+  } catch (error) {
+    console.error('Error verifying tier access:', error);
+    return { hasAccess: false, tier: 'free' };
+  }
+}
+
 const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
 const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
 const supabase = createClient(supabaseUrl, supabaseKey);
@@ -160,6 +205,48 @@ serve(async (req) => {
         JSON.stringify({ error: 'roomId and messages array required' }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
+    }
+
+    // SERVER-SIDE TIER VALIDATION
+    // Authenticate user first
+    if (authHeader) {
+      try {
+        const token = authHeader.replace('Bearer ', '');
+        const userSupabase = createClient(supabaseUrl, supabaseKey, {
+          global: { headers: { Authorization: authHeader } }
+        });
+        const { data: { user }, error: authError } = await userSupabase.auth.getUser();
+        
+        if (!authError && user) {
+          // Get room tier from Supabase rooms table
+          const { data: roomData } = await supabase
+            .from('rooms')
+            .select('tier')
+            .eq('id', roomId)
+            .single();
+          
+          const roomTier = roomData?.tier || 'free';
+          
+          // Verify user has access to this tier
+          const { hasAccess, tier: userTier } = await verifyUserTierAccess(supabase, user.id, roomTier);
+          
+          if (!hasAccess) {
+            console.log(`Access denied: User tier ${userTier} cannot access ${roomTier} room`);
+            return new Response(
+              JSON.stringify({ 
+                error: 'Insufficient subscription tier',
+                required: roomTier,
+                current: userTier
+              }),
+              { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+            );
+          }
+          
+          console.log(`Access granted: User tier ${userTier} accessing ${roomTier} room`);
+        }
+      } catch (authVerifyError) {
+        console.warn('Auth verification failed:', authVerifyError);
+      }
     }
 
     // Extract user query

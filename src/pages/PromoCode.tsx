@@ -27,35 +27,14 @@ const PromoCode = () => {
         return;
       }
 
-      // Check if code exists and is valid
-      const { data: promoData, error: promoError } = await supabase
-        .from("promo_codes")
-        .select("*")
-        .eq("code", code.toUpperCase())
-        .eq("is_active", true)
-        .single();
+      // Validate code server-side using secure function
+      const { data: validationResult, error: validationError } = await supabase
+        .rpc("validate_promo_code", { code_input: code.toUpperCase() });
 
-      if (promoError || !promoData) {
-        toast.error("Invalid or expired promo code");
-        return;
-      }
+      const result = validationResult as any;
 
-      // Check if already redeemed
-      const { data: existingRedemption } = await supabase
-        .from("user_promo_redemptions")
-        .select("*")
-        .eq("user_id", user.id)
-        .eq("promo_code_id", promoData.id)
-        .single();
-
-      if (existingRedemption) {
-        toast.error("You've already redeemed this code");
-        return;
-      }
-
-      // Check max redemptions
-      if (promoData.current_redemptions >= promoData.max_redemptions) {
-        toast.error("This promo code has reached its maximum redemptions");
+      if (validationError || !result?.valid) {
+        toast.error(result?.error || "Invalid or expired promo code");
         return;
       }
 
@@ -67,20 +46,14 @@ const PromoCode = () => {
         .from("user_promo_redemptions")
         .insert({
           user_id: user.id,
-          promo_code_id: promoData.id,
-          daily_question_limit: promoData.daily_question_limit,
+          promo_code_id: result.promo_code_id,
+          daily_question_limit: result.daily_question_limit,
           expires_at: expiresAt.toISOString()
         });
 
       if (redeemError) throw redeemError;
 
-      // Update promo code redemption count
-      await supabase
-        .from("promo_codes")
-        .update({ current_redemptions: promoData.current_redemptions + 1 })
-        .eq("id", promoData.id);
-
-      toast.success(`Success! You now have ${promoData.daily_question_limit} questions per day for 1 year!`);
+      toast.success(`Success! You now have ${result.daily_question_limit} questions per day for 1 year!`);
       setCode("");
       
     } catch (error: any) {

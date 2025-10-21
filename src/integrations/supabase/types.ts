@@ -876,6 +876,10 @@ export type Database = {
         Args: Record<PropertyKey, never>
         Returns: undefined
       }
+      validate_promo_code: {
+        Args: { code_input: string }
+        Returns: Json
+      }
     }
     Enums: {
       app_role: "admin" | "user"
