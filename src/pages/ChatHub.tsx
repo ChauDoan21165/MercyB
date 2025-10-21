@@ -18,6 +18,8 @@ import { MatchmakingButton } from "@/components/MatchmakingButton";
 import { usePoints } from "@/hooks/usePoints";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { keywordRespond } from "@/lib/keywordResponder";
 
 interface Message {
   id: string;
@@ -49,6 +51,15 @@ const ChatHub = () => {
   const { awardPoints } = usePoints();
   const { canAccessVIP1, canAccessVIP2, canAccessVIP3, tier, loading: accessLoading } = useUserAccess();
   const [showAccessDenied, setShowAccessDenied] = useState(false);
+  const [contentMode, setContentMode] = useState<"ai" | "keyword">(() => {
+    const saved = localStorage.getItem(`contentMode_${roomId}`);
+    return (saved === "keyword" || saved === "ai") ? saved : "ai";
+  });
+
+  // Save content mode preference
+  useEffect(() => {
+    localStorage.setItem(`contentMode_${roomId}`, contentMode);
+  }, [contentMode, roomId]);
 
 // Use centralized room metadata
 const info = getRoomInfo(roomId || "");
@@ -115,6 +126,40 @@ const handleAccessDenied = () => {
     // Track message for behavior analytics
     trackMessage(currentInput);
 
+    // KEYWORD MODE: Use keyword responder
+    if (contentMode === "keyword") {
+      try {
+        const response = keywordRespond(roomId || "", currentInput, noKeywordCount, matchedEntryCount);
+        
+        if (response.matched) {
+          setMatchedEntryCount(prev => prev + 1);
+          setNoKeywordCount(0);
+        } else {
+          setNoKeywordCount(prev => prev + 1);
+        }
+
+        const aiMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          text: response.text,
+          isUser: false,
+          timestamp: new Date(),
+          relatedRooms: response.relatedRooms
+        };
+        setMainMessages(prev => [...prev, aiMessage]);
+      } catch (error) {
+        console.error('Error generating keyword response:', error);
+        toast({
+          title: "Error / Lỗi",
+          description: "Could not generate response / Không Thể Tạo Phản Hồi",
+          variant: "destructive"
+        });
+      } finally {
+        setIsLoading(false);
+      }
+      return;
+    }
+
+    // AI MODE: Use AI chat
     // Create a temporary AI message that we'll update with streaming content
     const aiMessageId = (Date.now() + 1).toString();
     const tempAiMessage: Message = {
@@ -336,9 +381,24 @@ const handleAccessDenied = () => {
             <MatchmakingButton />
           </div>
           
-          <div className="text-center">
-            <h2 className="text-xl font-bold text-foreground">{currentRoom.nameEn}</h2>
-            <p className="text-sm text-muted-foreground">{currentRoom.nameVi}</p>
+          <div className="text-center space-y-2">
+            <div>
+              <h2 className="text-xl font-bold text-foreground">{currentRoom.nameEn}</h2>
+              <p className="text-sm text-muted-foreground">{currentRoom.nameVi}</p>
+            </div>
+            <ToggleGroup 
+              type="single" 
+              value={contentMode} 
+              onValueChange={(value) => value && setContentMode(value as "ai" | "keyword")}
+              className="inline-flex"
+            >
+              <ToggleGroupItem value="ai" aria-label="AI Content" className="text-xs px-3">
+                AI Content
+              </ToggleGroupItem>
+              <ToggleGroupItem value="keyword" aria-label="Keyword Content" className="text-xs px-3">
+                Keyword Content
+              </ToggleGroupItem>
+            </ToggleGroup>
           </div>
           
           <Badge variant="outline" className="bg-green-100 text-green-700 border-green-300">
