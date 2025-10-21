@@ -179,11 +179,11 @@ const Welcome = () => {
             <Button 
               size="lg"
               className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-hover transition-all min-w-[200px]"
-              onClick={() => navigate("/all-rooms")}
+              onClick={() => navigate("/rooms")}
             >
               <span className="flex flex-col items-center">
                 <span className="text-base font-semibold">Explore All Free Rooms</span>
-                <span className="text-sm opacity-90">Khám Phá Tất Cả Phòng Miễn Phí</span>
+                <span className="text-sm opacity-90">Khám Phá Tất Cả Các Phòng Miễn Phí</span>
               </span>
             </Button>
             <Button 
