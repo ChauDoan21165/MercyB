@@ -8,66 +8,66 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 190 40% 98%;
-    --foreground: 200 15% 20%;
+    --background: 210 70% 15%;
+    --foreground: 190 40% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 200 15% 20%;
+    --card: 210 60% 20%;
+    --card-foreground: 190 40% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 200 15% 20%;
+    --popover: 210 60% 20%;
+    --popover-foreground: 190 40% 95%;
 
-    --primary: 180 45% 45%;
+    --primary: 200 80% 50%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 180 50% 60%;
+    --primary-glow: 200 70% 60%;
 
-    --secondary: 15 85% 65%;
+    --secondary: 190 60% 45%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 190 30% 92%;
-    --muted-foreground: 200 10% 45%;
+    --muted: 210 50% 25%;
+    --muted-foreground: 190 30% 70%;
 
-    --accent: 265 60% 50%;
+    --accent: 180 65% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 190 25% 88%;
-    --input: 190 25% 88%;
-    --ring: 180 45% 45%;
+    --border: 210 40% 30%;
+    --input: 210 40% 30%;
+    --ring: 200 80% 50%;
 
     --radius: 0.75rem;
     
-    --gradient-hero: linear-gradient(135deg, hsl(180 45% 45%), hsl(180 50% 60%));
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(190 40% 98%));
-    --shadow-soft: 0 4px 20px -4px hsl(180 45% 45% / 0.15);
-    --shadow-hover: 0 8px 30px -4px hsl(180 45% 45% / 0.25);
+    --gradient-hero: linear-gradient(135deg, hsl(200 80% 50%), hsl(200 70% 60%));
+    --gradient-card: linear-gradient(135deg, hsl(210 60% 20%), hsl(210 50% 25%));
+    --shadow-soft: 0 4px 20px -4px hsl(200 80% 50% / 0.25);
+    --shadow-hover: 0 8px 30px -4px hsl(200 80% 50% / 0.35);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --sidebar-background: 0 0% 98%;
+    --sidebar-background: 210 65% 18%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-foreground: 190 40% 90%;
 
-    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary: 200 80% 50%;
 
-    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-primary-foreground: 0 0% 100%;
 
-    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent: 210 50% 25%;
 
-    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-accent-foreground: 190 40% 90%;
 
-    --sidebar-border: 220 13% 91%;
+    --sidebar-border: 210 40% 30%;
 
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 200 80% 50%;
     
     /* Page-specific backgrounds */
-    --page-welcome: 120 40% 85%;
-    --page-allrooms: 160 45% 70%;
-    --page-roomgrid: 210 55% 45%;
-    --page-vip1: 30 35% 75%;
-    --page-vip2: 45 70% 75%;
-    --page-vip3: 45 90% 60%;
+    --page-welcome: 210 70% 18%;
+    --page-allrooms: 200 65% 22%;
+    --page-roomgrid: 210 60% 25%;
+    --page-vip1: 220 55% 28%;
+    --page-vip2: 215 60% 30%;
+    --page-vip3: 205 70% 32%;
   }
 
   .dark {

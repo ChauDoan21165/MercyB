@@ -147,7 +147,7 @@ const Welcome = () => {
             </div>
           </Card>
 
-          <div className="flex justify-center items-center gap-8 pt-8 flex-wrap">
+          <div className="flex justify-center items-center gap-4 pt-8 flex-wrap">
             <Button 
               size="lg"
               className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-hover transition-all min-w-[200px]"
@@ -169,13 +169,28 @@ const Welcome = () => {
                 <span className="text-sm opacity-90">Xem Tất Cả Phòng</span>
               </span>
             </Button>
-            <div className="flex items-center gap-3">
-              <div className="text-4xl animate-pulse">→</div>
-              <div className="flex flex-col">
-                <span className="text-lg font-bold text-foreground">Choose Room</span>
-                <span className="text-sm text-muted-foreground">Chọn Phòng</span>
-              </div>
-            </div>
+            <Button 
+              size="lg"
+              variant="outline"
+              className="border-2 border-accent hover:bg-accent/10 min-w-[200px]"
+              onClick={() => navigate("/admin/vip-rooms")}
+            >
+              <span className="flex flex-col items-center">
+                <span className="text-base font-semibold">VIP Rooms</span>
+                <span className="text-sm opacity-90">Phòng VIP</span>
+              </span>
+            </Button>
+            <Button 
+              size="lg"
+              variant="outline"
+              className="border-2 border-secondary hover:bg-secondary/10 min-w-[200px]"
+              onClick={() => navigate("/payment-test")}
+            >
+              <span className="flex flex-col items-center">
+                <span className="text-base font-semibold">Test Payment</span>
+                <span className="text-sm opacity-90">Test Thanh Toán</span>
+              </span>
+            </Button>
           </div>
         </div>
 
