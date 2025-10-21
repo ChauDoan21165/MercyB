@@ -166,10 +166,10 @@ const Welcome = () => {
           
           <div className="space-y-2 max-w-3xl mx-auto">
             <p className="text-xl font-semibold text-foreground/90">
-              Wellness and knowledge app for learning health, life, and English
+              Overall human wellness app for health, life, and English learning
             </p>
             <p className="text-xl font-semibold text-foreground/90">
-              Ứng Dụng Học Về Sức Khỏe, Cuộc Sống Và Tiếng Anh
+              Ứng dụng về sức khỏe tổng thể con người, cuộc sống và Tiếng Anh
             </p>
           </div>
 

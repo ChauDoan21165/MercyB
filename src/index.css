@@ -65,9 +65,15 @@ All colors MUST be HSL.
     --page-welcome: 210 70% 18%;
     --page-allrooms: 200 65% 22%;
     --page-roomgrid: 210 60% 25%;
-    --page-vip1: 160 84% 39%;
-    --page-vip2: 216 91% 56%;
-    --page-vip3: 245 91% 56%;
+    --page-vip1: 160 84% 39%; /* Emerald green */
+    --page-vip2: 217 92% 56%; /* #2776F5 */
+    --page-vip3: 245 92% 56%; /* #3827F5 */
+
+    /* VIP tier semantic tokens */
+    --vip1: 160 84% 39%;
+    --vip2: 217 92% 56%;
+    --vip3: 245 92% 56%;
+    --vip3-gold: 42 94% 56%; /* #F9A825 approx */
   }
 
   .dark {

@@ -27,11 +27,11 @@ const RoomGridVIP3 = () => {
             <div className="flex items-center justify-center gap-2">
               <Crown className="h-8 w-8 text-accent" />
               <Sparkles className="h-8 w-8 text-primary" />
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-accent via-primary to-secondary bg-clip-text text-transparent">
+              <h1 className="text-4xl font-bold text-[hsl(var(--vip3-gold))]">
                 VIP3 Premium Rooms
               </h1>
             </div>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-[hsl(var(--vip3-gold))]/90">
               Phòng Học VIP3 Cao Cấp
             </p>
           </div>
@@ -47,7 +47,7 @@ const RoomGridVIP3 = () => {
 
         {/* Room Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-          {ALL_ROOMS.filter(room => room.tier === "vip3").map((room) => (
+          {ALL_ROOMS.filter(room => room.tier === "vip3" && room.hasData).map((room) => (
             <Card
               key={room.id}
               className={`relative p-3 transition-all duration-300 cursor-pointer group ${
@@ -73,10 +73,10 @@ const RoomGridVIP3 = () => {
               <div className="space-y-2">
                 {/* Room Names */}
                 <div className="space-y-1">
-                  <p className="text-xs font-semibold text-foreground leading-tight line-clamp-2">
+                  <p className="text-xs font-semibold text-[hsl(var(--vip3-gold))] leading-tight line-clamp-2">
                     {room.nameEn}
                   </p>
-                  <p className="text-[10px] text-muted-foreground leading-tight line-clamp-2">
+                  <p className="text-[10px] leading-tight line-clamp-2 text-[hsl(var(--vip3-gold))]/80">
                     {room.nameVi}
                   </p>
                 </div>

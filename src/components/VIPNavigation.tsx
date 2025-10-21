@@ -68,11 +68,11 @@ export const VIPNavigation = ({ currentPage }: VIPNavigationProps) => {
       </div>
 
       <Button
-        onClick={() => navigate('/promo-code')}
+        onClick={() => navigate('/payment-test')}
         className="bg-gradient-to-r from-primary to-accent hover:opacity-90 shadow-lg"
         size="lg"
       >
-        🎁 Upgrade / Subscribe / Nâng Cấp
+        💳 Pay Now / Thanh Toán
       </Button>
     </div>
   );
