@@ -86,6 +86,11 @@ const roomFiles: { [key: string]: string } = {
   'relationship-conflicts': 'relationship_conflicts.json',
 'weight-loss': 'weight_loss_program.json',
   'anxiety-toolkit': 'anxiety_toolkit.json',
+  'keep-soul-calm': 'keep_soul_calm_vip3.json',
+  'sharpen-mind': 'sharpen_mind_vip3.json',
+  'overcome-storm': 'overcome_storm_vip3.json',
+  'unlock-shadow': 'unlock_shadow_vip3.json',
+  'human-rights': 'human_rights_vip3.json',
   'philosophy': 'philosophy.json',
 };
 
