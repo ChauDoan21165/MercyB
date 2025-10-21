@@ -11,15 +11,19 @@ export const PromoCodeBanner = () => {
         <div className="flex items-center gap-3">
           <Gift className="h-6 w-6 text-primary" />
           <div>
-            <h3 className="font-semibold text-foreground">Have a promo code?</h3>
-            <p className="text-sm text-muted-foreground">Unlock additional questions per day</p>
+            <h3 className="font-semibold text-foreground">
+              Have a promo code? / Có mã khuyến mãi?
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              Unlock additional questions per day / Mở khóa thêm câu hỏi mỗi ngày
+            </p>
           </div>
         </div>
         <Button 
           onClick={() => navigate("/promo-code")}
           variant="default"
         >
-          Redeem
+          Redeem / Đổi mã
         </Button>
       </div>
     </div>
