@@ -1,10 +1,15 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
+
+const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Room data files mapping
 const roomFiles: { [key: string]: string } = {
@@ -143,6 +148,7 @@ serve(async (req) => {
 
   try {
     const { roomId, messages } = await req.json();
+    const authHeader = req.headers.get('authorization');
     
     if (!roomId || !messages || !Array.isArray(messages)) {
       return new Response(
@@ -151,7 +157,74 @@ serve(async (req) => {
       );
     }
 
-    // Load room data for context
+    // Extract user query
+    const userQuery = messages[messages.length - 1]?.content?.toLowerCase() || '';
+
+    // Step 1: Check cached response (24hr cache)
+    try {
+      const { data: cachedResponse } = await supabase
+        .from('responses')
+        .select('response_en, response_vi')
+        .eq('query', userQuery)
+        .eq('room_id', roomId)
+        .gt('expires_at', new Date().toISOString())
+        .single();
+
+      if (cachedResponse) {
+        console.log(`Cache hit for query: ${userQuery}`);
+        const response = `${cachedResponse.response_en}\n\n${cachedResponse.response_vi}`;
+        return new Response(JSON.stringify({ content: response }), {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+    } catch (e) {
+      console.log('Cache miss or error:', e);
+    }
+
+    // Step 2: Query Supabase room table for keyword match
+    try {
+      const { data: roomData } = await supabase
+        .from('rooms')
+        .select('*')
+        .eq('id', roomId)
+        .single();
+
+      if (roomData) {
+        // Check if query matches any keywords
+        const matchedKeyword = roomData.keywords?.some((kw: string) => 
+          userQuery.includes(kw.toLowerCase())
+        );
+
+        if (matchedKeyword && roomData.entries) {
+          // Find matching entry
+          const entries = Array.isArray(roomData.entries) ? roomData.entries : [];
+          const matchedEntry = entries.find((entry: any) => 
+            entry.keywords?.some((kw: string) => userQuery.includes(kw.toLowerCase()))
+          );
+
+          if (matchedEntry) {
+            console.log(`Keyword match in Supabase room data for: ${roomId}`);
+            const response = `${matchedEntry.copy?.en || roomData.room_essay_en}\n\n${matchedEntry.copy?.vi || roomData.room_essay_vi}`;
+            return new Response(JSON.stringify({ content: response }), {
+              headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            });
+          }
+        }
+
+        // If no keyword match but room exists, use room essay
+        if (roomData.room_essay_en) {
+          console.log(`Using room essay for: ${roomId}`);
+          const response = `${roomData.room_essay_en}\n\n${roomData.room_essay_vi}`;
+          return new Response(JSON.stringify({ content: response }), {
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+      }
+    } catch (e) {
+      console.warn('Supabase room lookup error:', e);
+    }
+
+    // Step 3: Fallback to JSON files (legacy support)
     const roomData = await loadRoomData(roomId);
     
     if (!roomData) {
@@ -208,41 +281,106 @@ Example format:
       throw new Error('LOVABLE_API_KEY not configured');
     }
 
-    const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${LOVABLE_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'google/gemini-2.5-flash',
-        messages: [
-          { role: 'system', content: systemPrompt },
-          ...messages
-        ],
-        stream: true,
-      }),
-    });
+    // Step 4: AI fallback with exponential backoff for 429
+    let retries = 0;
+    const maxRetries = 3;
+    let aiResponse: Response | null = null;
 
-    if (!response.ok) {
-      if (response.status === 429) {
-        return new Response(
-          JSON.stringify({ error: 'Rate limit exceeded. Please try again in a moment.' }),
-          { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
+    while (retries < maxRetries) {
+      try {
+        aiResponse = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${LOVABLE_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model: 'google/gemini-2.5-flash',
+            messages: [
+              { role: 'system', content: systemPrompt },
+              ...messages
+            ],
+            stream: true,
+          }),
+        });
+
+        if (aiResponse.status === 429) {
+          const backoffMs = Math.pow(2, retries) * 1000; // 1s, 2s, 4s
+          console.log(`Rate limited, retrying in ${backoffMs}ms (attempt ${retries + 1}/${maxRetries})`);
+          await new Promise(resolve => setTimeout(resolve, backoffMs));
+          retries++;
+          continue;
+        }
+
+        if (aiResponse.status === 402) {
+          return new Response(
+            JSON.stringify({ error: 'AI credits exhausted. Please contact support.' }),
+            { status: 402, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          );
+        }
+
+        if (!aiResponse.ok) {
+          const errorText = await aiResponse.text();
+          console.error('AI Gateway error:', aiResponse.status, errorText);
+          throw new Error('AI Gateway error');
+        }
+
+        break; // Success, exit retry loop
+      } catch (e) {
+        console.error('AI call error:', e);
+        if (retries >= maxRetries - 1) throw e;
+        retries++;
+        await new Promise(resolve => setTimeout(resolve, Math.pow(2, retries) * 1000));
       }
-      if (response.status === 402) {
-        return new Response(
-          JSON.stringify({ error: 'AI credits exhausted. Please contact support.' }),
-          { status: 402, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
-      }
-      const errorText = await response.text();
-      console.error('AI Gateway error:', response.status, errorText);
-      throw new Error('AI Gateway error');
     }
 
-    return new Response(response.body, {
+    if (!aiResponse || !aiResponse.ok) {
+      return new Response(
+        JSON.stringify({ error: 'Rate limit exceeded after retries. Please try again later.' }),
+        { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Cache AI response for 24 hours (fire-and-forget)
+    if (authHeader) {
+      try {
+        // Extract response content from stream for caching (simplified - would need full stream parsing)
+        const clonedResponse = aiResponse.clone();
+        const reader = clonedResponse.body?.getReader();
+        const decoder = new TextDecoder();
+        let fullContent = '';
+        
+        if (reader) {
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            const chunk = decoder.decode(value);
+            const lines = chunk.split('\n').filter(line => line.trim().startsWith('data: '));
+            for (const line of lines) {
+              const json = line.replace('data: ', '');
+              if (json === '[DONE]') break;
+              try {
+                const parsed = JSON.parse(json);
+                fullContent += parsed.choices?.[0]?.delta?.content || '';
+              } catch {}
+            }
+          }
+        }
+
+        if (fullContent) {
+          await supabase.from('responses').insert({
+            query: userQuery,
+            room_id: roomId,
+            response_en: fullContent,
+            response_vi: fullContent, // In production, split by language
+          });
+        }
+      } catch (e) {
+        console.warn('Failed to cache AI response:', e);
+      }
+    }
+
+    return new Response(aiResponse.body, {
       headers: { ...corsHeaders, 'Content-Type': 'text/event-stream' },
     });
 

@@ -173,6 +173,79 @@ export type Database = {
         }
         Relationships: []
       }
+      responses: {
+        Row: {
+          created_at: string | null
+          expires_at: string | null
+          id: string
+          query: string
+          response_en: string
+          response_vi: string
+          room_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          expires_at?: string | null
+          id?: string
+          query: string
+          response_en: string
+          response_vi: string
+          room_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          expires_at?: string | null
+          id?: string
+          query?: string
+          response_en?: string
+          response_vi?: string
+          room_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "responses_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: false
+            referencedRelation: "rooms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      room_assignments: {
+        Row: {
+          assigned_date: string | null
+          created_at: string | null
+          id: string
+          is_full_access: boolean | null
+          room_id: string | null
+          user_id: string
+        }
+        Insert: {
+          assigned_date?: string | null
+          created_at?: string | null
+          id?: string
+          is_full_access?: boolean | null
+          room_id?: string | null
+          user_id: string
+        }
+        Update: {
+          assigned_date?: string | null
+          created_at?: string | null
+          id?: string
+          is_full_access?: boolean | null
+          room_id?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "room_assignments_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: false
+            referencedRelation: "rooms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       room_usage_analytics: {
         Row: {
           completed_room: boolean | null
@@ -206,6 +279,60 @@ export type Database = {
           session_start?: string
           time_spent_seconds?: number | null
           user_id?: string
+        }
+        Relationships: []
+      }
+      rooms: {
+        Row: {
+          created_at: string | null
+          crisis_footer_en: string | null
+          crisis_footer_vi: string | null
+          entries: Json | null
+          id: string
+          keywords: string[] | null
+          room_essay_en: string | null
+          room_essay_vi: string | null
+          safety_disclaimer_en: string | null
+          safety_disclaimer_vi: string | null
+          schema_id: string
+          tier: string | null
+          title_en: string
+          title_vi: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          crisis_footer_en?: string | null
+          crisis_footer_vi?: string | null
+          entries?: Json | null
+          id: string
+          keywords?: string[] | null
+          room_essay_en?: string | null
+          room_essay_vi?: string | null
+          safety_disclaimer_en?: string | null
+          safety_disclaimer_vi?: string | null
+          schema_id: string
+          tier?: string | null
+          title_en: string
+          title_vi: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          crisis_footer_en?: string | null
+          crisis_footer_vi?: string | null
+          entries?: Json | null
+          id?: string
+          keywords?: string[] | null
+          room_essay_en?: string | null
+          room_essay_vi?: string | null
+          safety_disclaimer_en?: string | null
+          safety_disclaimer_vi?: string | null
+          schema_id?: string
+          tier?: string | null
+          title_en?: string
+          title_vi?: string
+          updated_at?: string | null
         }
         Relationships: []
       }
@@ -359,6 +486,36 @@ export type Database = {
         }
         Relationships: []
       }
+      user_quotas: {
+        Row: {
+          created_at: string | null
+          id: string
+          questions_used: number | null
+          quota_date: string | null
+          rooms_accessed: number | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          questions_used?: number | null
+          quota_date?: string | null
+          rooms_accessed?: number | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          questions_used?: number | null
+          quota_date?: string | null
+          rooms_accessed?: number | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string | null
@@ -500,6 +657,10 @@ export type Database = {
       check_usage_limit: {
         Args: { limit_type: string; user_uuid: string }
         Returns: boolean
+      }
+      clean_expired_responses: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
       }
       get_user_tier: {
         Args: { user_uuid: string }
