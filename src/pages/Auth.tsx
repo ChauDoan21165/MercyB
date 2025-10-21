@@ -193,7 +193,7 @@ const Auth = () => {
           </TabsList>
 
           <TabsContent value="signin">
-            <form onSubmit={handleSignIn} className="space-y-4">
+            <form onSubmit={handleSignIn} className="space-y-4 mt-4">
               <div className="space-y-2">
                 <Label htmlFor="signin-email">Email</Label>
                 <Input
@@ -203,11 +203,12 @@ const Auth = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  className="w-full"
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="signin-password">Password</Label>
-                <div className="relative">
+                <div className="relative w-full">
                   <Input
                     id="signin-password"
                     type={showSignInPassword ? "text" : "password"}
@@ -215,11 +216,13 @@ const Auth = () => {
                     value={signInPassword}
                     onChange={(e) => setSignInPassword(e.target.value)}
                     required
+                    className="w-full pr-10"
                   />
                   <button
                     type="button"
                     onClick={() => setShowSignInPassword(!showSignInPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground z-10"
+                    tabIndex={-1}
                   >
                     {showSignInPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                   </button>
@@ -242,7 +245,7 @@ const Auth = () => {
           </TabsContent>
 
           <TabsContent value="signup">
-            <form onSubmit={handleSignUp} className="space-y-4">
+            <form onSubmit={handleSignUp} className="space-y-4 mt-4">
               <div className="space-y-2">
                 <Label htmlFor="signup-email">Email</Label>
                 <Input
@@ -252,11 +255,12 @@ const Auth = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  className="w-full"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="signup-password">Password</Label>
-                <div className="relative">
+                <Label htmlFor="signup-password">Password (min 6 characters)</Label>
+                <div className="relative w-full">
                   <Input
                     id="signup-password"
                     type={showSignUpPassword ? "text" : "password"}
@@ -265,11 +269,13 @@ const Auth = () => {
                     onChange={(e) => setSignUpPassword(e.target.value)}
                     required
                     minLength={6}
+                    className="w-full pr-10"
                   />
                   <button
                     type="button"
                     onClick={() => setShowSignUpPassword(!showSignUpPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground z-10"
+                    tabIndex={-1}
                   >
                     {showSignUpPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                   </button>

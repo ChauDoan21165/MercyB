@@ -302,20 +302,11 @@ const Welcome = () => {
               </span>
             </Button>
             {isAdmin && (
-              <Button 
-                size="lg"
-                variant="outline"
-                className="border-2 border-destructive hover:bg-destructive/10 min-w-[200px]"
+              <button
+                className="w-2 h-2 rounded-full bg-muted-foreground/20 hover:bg-destructive/50 transition-colors cursor-pointer"
                 onClick={() => navigate("/admin/vip-rooms")}
-              >
-                <span className="flex flex-col items-center gap-1">
-                  <span className="flex items-center gap-2">
-                    <Shield className="w-4 h-4" />
-                    <span className="text-base font-semibold">Admin Dashboard</span>
-                  </span>
-                  <span className="text-sm opacity-90">Quản Trị Viên</span>
-                </span>
-              </Button>
+                aria-label="Admin"
+              />
             )}
           </div>
         </div>
