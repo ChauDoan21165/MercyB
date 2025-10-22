@@ -158,6 +158,10 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
       vi: "Vui lòng cho tôi biết thêm một chút, bạn của tôi."
     },
     {
+      en: "Keep saying more, I am listening.",
+      vi: "Hãy nói thêm, tôi đang lắng nghe."
+    },
+    {
       en: "Please tell me more my dear friend.",
       vi: "Vui lòng cho tôi biết thêm, bạn thân yêu của tôi."
     }

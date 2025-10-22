@@ -404,6 +404,14 @@ const handleAccessDenied = () => {
               <ArrowLeft className="w-4 h-4" />
               Back / Quay Lại
             </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => navigate('/admin-dashboard')}
+              className="text-xs"
+            >
+              Admin Dashboard
+            </Button>
             <MatchmakingButton />
           </div>
           
