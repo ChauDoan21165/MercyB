@@ -89,6 +89,7 @@ import findingGodsPeace from '@/data/rooms/finding_gods_peace_free.json';
 import godsGuidance from '@/data/rooms/gods_guidance_vip1.json';
 import godsStrength from '@/data/rooms/gods_strength_vip2_resilience.json';
 import godsPurpose from '@/data/rooms/gods_purpose_vip3.json';
+import proverbsWisdomVip1 from '@/data/rooms/proverbs_wisdom_VIP1.json';
 
 export const roomDataMap: Record<string, any> = {
   'abdominal-pain': abdominalPain,
@@ -181,4 +182,5 @@ export const roomDataMap: Record<string, any> = {
   'gods-guidance': godsGuidance,
   'gods-strength': godsStrength,
   'gods-purpose': godsPurpose,
+  'proverbs-wisdom-vip1': proverbsWisdomVip1,
 };

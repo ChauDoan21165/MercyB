@@ -242,18 +242,6 @@ const Welcome = () => {
               Thành viên VIP có thể yêu cầu chủ đề tùy chỉnh theo nhu cầu
             </p>
           </div>
-          
-          {isAdmin && (
-            <Button
-              size="icon"
-              className="fixed bottom-4 right-4 z-50 shadow-hover bg-gradient-to-r from-[hsl(var(--admin-primary))] to-[hsl(var(--admin-accent))]"
-              onClick={() => navigate("/admin/stats")}
-              aria-label="Open Admin Dashboard"
-              title="Admin Dashboard"
-            >
-              📊
-            </Button>
-          )}
         </div>
 
         {/* Footer Info */}
