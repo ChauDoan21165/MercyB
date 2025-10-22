@@ -119,6 +119,77 @@ export type Database = {
         }
         Relationships: []
       }
+      payment_proof_submissions: {
+        Row: {
+          admin_notes: string | null
+          created_at: string
+          extracted_amount: number | null
+          extracted_date: string | null
+          extracted_email: string | null
+          extracted_transaction_id: string | null
+          id: string
+          ocr_confidence: number | null
+          payment_method: string
+          screenshot_url: string
+          status: string
+          tier_id: string
+          updated_at: string
+          user_id: string
+          username: string
+          verification_method: string | null
+          verified_at: string | null
+          verified_by: string | null
+        }
+        Insert: {
+          admin_notes?: string | null
+          created_at?: string
+          extracted_amount?: number | null
+          extracted_date?: string | null
+          extracted_email?: string | null
+          extracted_transaction_id?: string | null
+          id?: string
+          ocr_confidence?: number | null
+          payment_method?: string
+          screenshot_url: string
+          status?: string
+          tier_id: string
+          updated_at?: string
+          user_id: string
+          username: string
+          verification_method?: string | null
+          verified_at?: string | null
+          verified_by?: string | null
+        }
+        Update: {
+          admin_notes?: string | null
+          created_at?: string
+          extracted_amount?: number | null
+          extracted_date?: string | null
+          extracted_email?: string | null
+          extracted_transaction_id?: string | null
+          id?: string
+          ocr_confidence?: number | null
+          payment_method?: string
+          screenshot_url?: string
+          status?: string
+          tier_id?: string
+          updated_at?: string
+          user_id?: string
+          username?: string
+          verification_method?: string | null
+          verified_at?: string | null
+          verified_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "payment_proof_submissions_tier_id_fkey"
+            columns: ["tier_id"]
+            isOneToOne: false
+            referencedRelation: "subscription_tiers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       point_transactions: {
         Row: {
           created_at: string
