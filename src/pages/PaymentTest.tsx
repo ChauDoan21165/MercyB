@@ -37,23 +37,53 @@ const PaymentTest = () => {
   const loadPayPalScript = async () => {
     try {
       // Avoid duplicate loads
-      if (window.paypal || document.getElementById('paypal-sdk')) return;
+      if (window.paypal) {
+        console.log('PayPal SDK already loaded');
+        return;
+      }
 
+      if (document.getElementById('paypal-sdk')) {
+        console.log('PayPal SDK script already exists, waiting for load...');
+        return;
+      }
+
+      console.log('Loading PayPal SDK...');
       const { data, error } = await supabase.functions.invoke('paypal-payment', {
         body: { action: 'get-client-id' },
       });
-      if (error) throw error;
+      
+      if (error) {
+        console.error('Error getting PayPal client ID:', error);
+        throw error;
+      }
+      
       const clientId = data?.clientId;
-      if (!clientId) throw new Error('Missing PayPal client ID');
+      if (!clientId) {
+        throw new Error('Missing PayPal client ID');
+      }
 
+      console.log('PayPal client ID received, loading script...');
+      
       const script = document.createElement('script');
       script.id = 'paypal-sdk';
       script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=USD`;
       script.async = true;
-      document.body.appendChild(script);
+      
+      // Wait for script to load
+      await new Promise((resolve, reject) => {
+        script.onload = () => {
+          console.log('PayPal SDK loaded successfully');
+          resolve(true);
+        };
+        script.onerror = () => {
+          console.error('Failed to load PayPal SDK script');
+          reject(new Error('Failed to load PayPal SDK'));
+        };
+        document.body.appendChild(script);
+      });
     } catch (e) {
       console.error('Failed to load PayPal SDK:', e);
-      toast.error('Failed to load PayPal SDK');
+      toast.error('Failed to load PayPal SDK / Không thể tải PayPal');
     }
   };
 
@@ -64,55 +94,100 @@ const PaymentTest = () => {
     try {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) {
-        toast.error('Please sign in to purchase a subscription');
+        toast.error('Please sign in to purchase a subscription / Vui lòng đăng nhập để mua gói');
+        setLoading(false);
         navigate('/auth');
         return;
       }
 
       if (!window.paypal) {
-        toast.error('PayPal SDK not loaded. Please refresh the page.');
+        toast.error('PayPal SDK not loaded. Refreshing... / Đang tải PayPal...');
         setLoading(false);
+        await loadPayPalScript();
         return;
       }
 
       // Render PayPal button
       const container = document.getElementById(`paypal-button-${tierId}`);
-      if (!container) return;
+      if (!container) {
+        console.error('PayPal container not found');
+        toast.error('Payment container not found. Please try again.');
+        setLoading(false);
+        return;
+      }
 
       container.innerHTML = '';
 
-      window.paypal.Buttons({
+      await window.paypal.Buttons({
         createOrder: async () => {
-          const { data, error } = await supabase.functions.invoke('paypal-payment', {
-            body: { action: 'create-order', tierId },
-          });
+          try {
+            console.log('Creating PayPal order for tier:', tierId);
+            const { data: { session } } = await supabase.auth.getSession();
+            
+            const { data, error } = await supabase.functions.invoke('paypal-payment', {
+              body: { action: 'create-order', tierId },
+              headers: {
+                Authorization: `Bearer ${session?.access_token}`
+              }
+            });
 
-          if (error) throw error;
-          return data.orderId;
+            if (error) {
+              console.error('Create order error:', error);
+              throw error;
+            }
+            
+            console.log('Order created:', data.orderId);
+            return data.orderId;
+          } catch (error) {
+            console.error('Failed to create order:', error);
+            toast.error('Failed to create payment order / Không thể tạo đơn hàng');
+            throw error;
+          }
         },
         onApprove: async (data: any) => {
-          const { data: captureData, error } = await supabase.functions.invoke('paypal-payment', {
-            body: { action: 'capture-order', orderId: data.orderID, tierId },
-          });
+          try {
+            console.log('Payment approved, capturing order:', data.orderID);
+            const { data: { session } } = await supabase.auth.getSession();
+            
+            const { data: captureData, error } = await supabase.functions.invoke('paypal-payment', {
+              body: { action: 'capture-order', orderId: data.orderID, tierId },
+              headers: {
+                Authorization: `Bearer ${session?.access_token}`
+              }
+            });
 
-          if (error) {
-            toast.error('Payment failed: ' + error.message);
-            return;
-          }
+            if (error) {
+              console.error('Capture error:', error);
+              toast.error('Payment failed: ' + error.message);
+              return;
+            }
 
-          if (captureData.success) {
-            toast.success('Payment successful! Your subscription is now active.');
-            navigate('/');
-          } else {
-            toast.error('Payment was not completed');
+            console.log('Capture result:', captureData);
+
+            if (captureData.success) {
+              toast.success('Payment successful! Your subscription is now active. / Thanh toán thành công!');
+              navigate('/');
+            } else {
+              toast.error('Payment was not completed / Thanh toán không hoàn tất');
+            }
+          } catch (error) {
+            console.error('Payment approval error:', error);
+            toast.error('Payment processing failed / Xử lý thanh toán thất bại');
           }
         },
         onError: (err: any) => {
           console.error('PayPal error:', err);
-          toast.error('Payment error occurred');
+          toast.error('Payment error occurred / Lỗi thanh toán');
+          setLoading(false);
         },
+        onCancel: () => {
+          console.log('Payment cancelled by user');
+          toast.info('Payment cancelled / Đã hủy thanh toán');
+          setLoading(false);
+        }
       }).render(`#paypal-button-${tierId}`);
 
+      console.log('PayPal button rendered successfully');
       setLoading(false);
     } catch (error: any) {
       console.error('Payment error:', error);
@@ -159,12 +234,17 @@ const PaymentTest = () => {
                 <div className="space-y-2">
                   <Button
                     onClick={() => handlePayment(tier.id)}
-                    disabled={loading && selectedTier === tier.id}
+                    disabled={loading}
                     className="w-full"
                   >
-                    {loading && selectedTier === tier.id ? 'Loading...' : 'Pay with PayPal'}
+                    {loading && selectedTier === tier.id ? 'Loading PayPal... / Đang tải...' : 'Pay with PayPal / Thanh toán'}
                   </Button>
-                  <div id={`paypal-button-${tier.id}`} className="min-h-[50px]"></div>
+                  <div 
+                    id={`paypal-button-${tier.id}`} 
+                    className="min-h-[50px] w-full border-2 border-dashed border-muted rounded-md flex items-center justify-center text-sm text-muted-foreground"
+                  >
+                    {loading && selectedTier === tier.id ? 'Loading PayPal buttons...' : 'Click "Pay with PayPal" to continue'}
+                  </div>
                 </div>
               </CardContent>
             </Card>
