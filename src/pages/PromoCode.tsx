@@ -48,12 +48,28 @@ const PromoCode = () => {
           user_id: user.id,
           promo_code_id: result.promo_code_id,
           daily_question_limit: result.daily_question_limit,
+          total_question_limit: result.daily_question_limit,
+          total_questions_used: 0,
           expires_at: expiresAt.toISOString()
         });
 
       if (redeemError) throw redeemError;
 
-      toast.success(`Success! You now have ${result.daily_question_limit} questions per day for 1 year!`);
+      // Increment promo code usage
+      const { data: promoData } = await supabase
+        .from("promo_codes")
+        .select("current_redemptions")
+        .eq("id", result.promo_code_id)
+        .single();
+      
+      if (promoData) {
+        await supabase
+          .from("promo_codes")
+          .update({ current_redemptions: promoData.current_redemptions + 1 })
+          .eq("id", result.promo_code_id);
+      }
+
+      toast.success(`Success! You now have ${result.daily_question_limit} total questions across all rooms for 1 year! / Thành công! Bạn có ${result.daily_question_limit} câu hỏi tổng cộng!`);
       setCode("");
       
     } catch (error: any) {

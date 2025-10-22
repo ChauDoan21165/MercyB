@@ -54,12 +54,28 @@ export const CreditLimitModal = ({ open, onClose, onSuccess, questionsUsed, ques
           user_id: user.id,
           promo_code_id: result.promo_code_id,
           daily_question_limit: result.daily_question_limit,
+          total_question_limit: result.daily_question_limit,
+          total_questions_used: 0,
           expires_at: expiresAt.toISOString()
         });
 
       if (redeemError) throw redeemError;
 
-      toast.success(`Success! You now have ${result.daily_question_limit} questions per day! / Thành công! Bạn có ${result.daily_question_limit} câu hỏi mỗi ngày!`);
+      // Increment promo code usage
+      const { data: promoData } = await supabase
+        .from("promo_codes")
+        .select("current_redemptions")
+        .eq("id", result.promo_code_id)
+        .single();
+      
+      if (promoData) {
+        await supabase
+          .from("promo_codes")
+          .update({ current_redemptions: promoData.current_redemptions + 1 })
+          .eq("id", result.promo_code_id);
+      }
+
+      toast.success(`Success! You now have ${result.daily_question_limit} total questions across all rooms! / Thành công! Bạn có ${result.daily_question_limit} câu hỏi tổng cộng!`);
       setPromoCode("");
       onSuccess();
       onClose();
@@ -81,11 +97,17 @@ export const CreditLimitModal = ({ open, onClose, onSuccess, questionsUsed, ques
             <DialogTitle>Daily Limit Reached / Đã hết câu hỏi</DialogTitle>
           </div>
           <DialogDescription className="space-y-3 text-base">
-            <p>
-              You've used <strong>{questionsUsed}</strong> out of <strong>{questionsLimit}</strong> questions today.
+            <p className="font-semibold text-destructive">
+              You've reached your question limit!
             </p>
             <p className="text-sm text-muted-foreground">
-              Bạn đã dùng <strong>{questionsUsed}</strong> / <strong>{questionsLimit}</strong> câu hỏi hôm nay.
+              Bạn đã hết số câu hỏi!
+            </p>
+            <p className="text-sm mt-2">
+              💡 <strong>Get more questions by entering a promo code below!</strong>
+            </p>
+            <p className="text-xs text-muted-foreground">
+              💡 <strong>Nhận thêm câu hỏi bằng cách nhập mã khuyến mãi bên dưới!</strong>
             </p>
           </DialogDescription>
         </DialogHeader>

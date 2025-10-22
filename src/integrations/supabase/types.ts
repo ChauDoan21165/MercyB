@@ -604,6 +604,8 @@ export type Database = {
           id: string
           promo_code_id: string
           redeemed_at: string
+          total_question_limit: number | null
+          total_questions_used: number | null
           user_id: string
         }
         Insert: {
@@ -612,6 +614,8 @@ export type Database = {
           id?: string
           promo_code_id: string
           redeemed_at?: string
+          total_question_limit?: number | null
+          total_questions_used?: number | null
           user_id: string
         }
         Update: {
@@ -620,6 +624,8 @@ export type Database = {
           id?: string
           promo_code_id?: string
           redeemed_at?: string
+          total_question_limit?: number | null
+          total_questions_used?: number | null
           user_id?: string
         }
         Relationships: [
