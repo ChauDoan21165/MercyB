@@ -663,11 +663,11 @@ const handleAccessDenied = () => {
             </div>
           </Card>
         </div>
-
-        {/* Room Disclaimer */}
-        <RoomDisclaimer roomId={roomId || ""} />
       </div>
     </div>
+
+    {/* Room Disclaimer */}
+    <RoomDisclaimer roomId={roomId || ""} />
 
     <CreditLimitModal
       open={showCreditLimit}

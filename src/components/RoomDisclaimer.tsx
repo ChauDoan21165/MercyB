@@ -18,10 +18,10 @@ export const RoomDisclaimer = ({ roomId }: RoomDisclaimerProps) => {
   if (!safetyEn && !safetyVi && !crisisEn && !crisisVi) return null;
 
   return (
-    <div className="mt-4 p-3 bg-muted/50 rounded-lg border border-border/50">
-      <div className="flex items-start gap-2">
-        <AlertCircle className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
-        <div className="space-y-2 text-xs text-muted-foreground">
+    <div className="mt-2 p-2 bg-muted/30 rounded border border-border/30">
+      <div className="flex items-start gap-1.5">
+        <AlertCircle className="h-3 w-3 text-muted-foreground mt-0.5 flex-shrink-0" />
+        <div className="space-y-1 text-[10px] leading-tight text-muted-foreground">
           {safetyEn && <p>{safetyEn}</p>}
           {safetyVi && <p>{safetyVi}</p>}
           {crisisEn && <p className="font-medium">{crisisEn}</p>}
