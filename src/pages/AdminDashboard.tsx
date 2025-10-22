@@ -43,6 +43,15 @@ interface FeedbackNotification {
   };
 }
 
+interface ActiveSubscription {
+  id: string;
+  username: string;
+  tier_name: string;
+  screenshot_url: string;
+  verified_at: string;
+  status: string;
+}
+
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -54,6 +63,7 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [notifications, setNotifications] = useState<FeedbackNotification[]>([]);
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
+  const [activeSubscriptions, setActiveSubscriptions] = useState<ActiveSubscription[]>([]);
 
   useEffect(() => {
     checkAdminAccess();
@@ -93,7 +103,8 @@ const AdminDashboard = () => {
         fetchRequests(), 
         fetchAnalytics(), 
         fetchNotifications(),
-        fetchNotificationPreferences()
+        fetchNotificationPreferences(),
+        fetchActiveSubscriptions()
       ]);
 
       // Subscribe to real-time notifications
@@ -301,6 +312,41 @@ const AdminDashboard = () => {
     }
   };
 
+  const fetchActiveSubscriptions = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('payment_proof_submissions')
+        .select(`
+          id,
+          username,
+          screenshot_url,
+          verified_at,
+          status,
+          tier_id,
+          subscription_tiers (
+            name
+          )
+        `)
+        .eq('status', 'approved')
+        .order('verified_at', { ascending: false });
+
+      if (error) throw error;
+
+      const subscriptions = data?.map(sub => ({
+        id: sub.id,
+        username: sub.username,
+        tier_name: (sub.subscription_tiers as any)?.name || 'Unknown',
+        screenshot_url: sub.screenshot_url,
+        verified_at: sub.verified_at || '',
+        status: sub.status
+      })) || [];
+
+      setActiveSubscriptions(subscriptions);
+    } catch (error) {
+      console.error('Error fetching active subscriptions:', error);
+    }
+  };
+
   const getRequestsByStatus = (status: string) => {
     return requests.filter(r => r.status === status);
   };
@@ -335,8 +381,12 @@ const AdminDashboard = () => {
 
         <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
 
-        <Tabs defaultValue="notifications" className="space-y-6">
+        <Tabs defaultValue="subscriptions" className="space-y-6">
           <TabsList>
+            <TabsTrigger value="subscriptions">
+              <Users className="h-4 w-4 mr-2" />
+              Active Subscriptions ({activeSubscriptions.length})
+            </TabsTrigger>
             <TabsTrigger value="notifications">
               <Bell className="h-4 w-4 mr-2" />
               Feedback Notifications
@@ -355,6 +405,66 @@ const AdminDashboard = () => {
               Analytics
             </TabsTrigger>
           </TabsList>
+
+          <TabsContent value="subscriptions" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Active Subscriptions</CardTitle>
+                <CardDescription>
+                  Users with approved payment submissions
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                {activeSubscriptions.length === 0 ? (
+                  <p className="text-center text-muted-foreground py-8">
+                    No active subscriptions
+                  </p>
+                ) : (
+                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                    {activeSubscriptions.map((sub) => (
+                      <Card key={sub.id} className="overflow-hidden">
+                        <CardHeader className="pb-3">
+                          <div className="flex items-start justify-between">
+                            <div>
+                              <CardTitle className="text-base">{sub.username}</CardTitle>
+                              <Badge variant="outline" className="mt-1">
+                                {sub.tier_name}
+                              </Badge>
+                            </div>
+                            <Badge variant="default">Active</Badge>
+                          </div>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                          <div className="text-xs text-muted-foreground">
+                            Verified: {new Date(sub.verified_at).toLocaleDateString()}
+                          </div>
+                          {sub.screenshot_url && (
+                            <div className="space-y-2">
+                              <p className="text-xs font-medium">Payment Screenshot:</p>
+                              <img
+                                src={sub.screenshot_url}
+                                alt={`Payment proof for ${sub.username}`}
+                                className="w-full h-40 object-cover rounded-md border cursor-pointer hover:opacity-80 transition"
+                                onClick={() => window.open(sub.screenshot_url, '_blank')}
+                              />
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                className="w-full"
+                                onClick={() => window.open(sub.screenshot_url, '_blank')}
+                              >
+                                View Full Screenshot
+                              </Button>
+                            </div>
+                          )}
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
 
           <TabsContent value="notifications" className="space-y-6">
             <Card>
