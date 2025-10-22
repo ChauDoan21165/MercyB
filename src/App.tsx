@@ -18,10 +18,12 @@ import AdminVIPRooms from "./pages/AdminVIPRooms";
 import MatchmakingHub from "./pages/MatchmakingHub";
 import Auth from "./pages/Auth";
 import PaymentTest from "./pages/PaymentTest";
+import ManualPayment from "./pages/ManualPayment";
 import PromoCode from "./pages/PromoCode";
 import VIPTopicRequest from "./pages/VIPTopicRequest";
 import AdminReports from "./pages/AdminReports";
 import AdminStats from "./pages/AdminStats";
+import AdminPaymentVerification from "./pages/AdminPaymentVerification";
 
 const queryClient = new QueryClient();
 
@@ -47,10 +49,12 @@ const App = () => (
           <Route path="/matchmaking" element={<MatchmakingHub />} />
           <Route path="/subscribe" element={<PaymentTest />} />
           <Route path="/payment-test" element={<PaymentTest />} /> {/* Legacy redirect */}
+          <Route path="/manual-payment" element={<ManualPayment />} />
           <Route path="/promo-code" element={<PromoCode />} />
           <Route path="/vip-topic-request" element={<VIPTopicRequest />} />
           <Route path="/admin/reports" element={<AdminReports />} />
           <Route path="/admin/stats" element={<AdminStats />} />
+          <Route path="/admin/payments" element={<AdminPaymentVerification />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

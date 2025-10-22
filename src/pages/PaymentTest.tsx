@@ -221,10 +221,27 @@ const PaymentTest = () => {
           </Button>
         </div>
 
-        <h1 className="text-4xl font-bold mb-4">Subscribe to VIP</h1>
-        <p className="text-muted-foreground mb-8">
-          Choose your plan and upgrade to unlock premium features / Chọn gói và nâng cấp để mở khóa tính năng cao cấp
+        <h1 className="text-4xl font-bold mb-4">Choose Your Payment Method</h1>
+        <p className="text-muted-foreground mb-4">
+          Select your plan and payment method / Chọn gói và phương thức thanh toán
         </p>
+
+        <div className="grid md:grid-cols-2 gap-4 mb-8 p-4 bg-muted/50 rounded-lg">
+          <div className="flex items-start gap-3">
+            <span className="text-2xl">⚡</span>
+            <div>
+              <h3 className="font-semibold">Instant PayPal</h3>
+              <p className="text-sm text-muted-foreground">Pay through app, instant activation</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="text-2xl">📸</span>
+            <div>
+              <h3 className="font-semibold">Manual Transfer</h3>
+              <p className="text-sm text-muted-foreground">Pay yourself, upload screenshot (may need admin approval)</p>
+            </div>
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {tiers.map((tier) => (
@@ -257,7 +274,7 @@ const PaymentTest = () => {
                     disabled={loading}
                     className="w-full"
                   >
-                    {loading && selectedTier === tier.id ? 'Loading PayPal... / Đang tải...' : 'Pay with PayPal / Thanh toán'}
+                    {loading && selectedTier === tier.id ? 'Loading PayPal... / Đang tải...' : '⚡ Pay with PayPal (Instant)'}
                   </Button>
                   <div className="w-full border-2 border-dashed border-muted rounded-md p-2">
                     <div 
@@ -270,8 +287,28 @@ const PaymentTest = () => {
                       <div className="text-sm text-muted-foreground">Loading PayPal buttons...</div>
                     ) : null
                   ) : (
-                    <div className="text-sm text-muted-foreground">Click "Pay with PayPal" to continue</div>
+                    <div className="text-sm text-muted-foreground">Click button above to continue</div>
                   )}
+
+                  <div className="relative my-4">
+                    <div className="absolute inset-0 flex items-center">
+                      <span className="w-full border-t" />
+                    </div>
+                    <div className="relative flex justify-center text-xs uppercase">
+                      <span className="bg-background px-2 text-muted-foreground">OR</span>
+                    </div>
+                  </div>
+
+                  <Button
+                    variant="outline"
+                    className="w-full"
+                    onClick={() => navigate(`/manual-payment?tier=${tier.id}&name=${encodeURIComponent(tier.name)}&price=${tier.price_monthly}`)}
+                  >
+                    📸 Pay Manually & Upload Screenshot
+                  </Button>
+                  <p className="text-xs text-muted-foreground text-center">
+                    Send to: cd12536@gmail.com | May require admin approval
+                  </p>
                 </div>
               </CardContent>
             </Card>

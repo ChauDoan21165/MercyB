@@ -14,3 +14,6 @@ verify_jwt = false
 
 [functions.text-to-speech]
 verify_jwt = true
+
+[functions.verify-payment-screenshot]
+verify_jwt = true
