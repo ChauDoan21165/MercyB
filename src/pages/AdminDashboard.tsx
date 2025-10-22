@@ -186,6 +186,9 @@ const AdminDashboard = () => {
             <Button onClick={() => navigate("/admin/vip-rooms")}>
               View VIP Rooms
             </Button>
+            <Button onClick={() => navigate("/admin/audio")} variant="outline">
+              🎵 Manage Audio
+            </Button>
             <Button onClick={() => navigate("/admin/payments")} variant="outline">
               📸 Payment Verification
             </Button>

@@ -83,10 +83,38 @@ export const MessageActions = ({ text, roomId }: MessageActionsProps) => {
 
     setIsPlayingAudio(true);
     try {
-      // Extract English text only (before Vietnamese part)
+      // PRIORITY 1: Check for manually uploaded MP3 in storage
+      const { data: uploadedFiles } = await supabase.storage
+        .from('room-audio-uploads')
+        .list(roomId, {
+          search: '.mp3'
+        });
+
+      if (uploadedFiles && uploadedFiles.length > 0) {
+        // Use first uploaded MP3 file
+        const { data: urlData } = supabase.storage
+          .from('room-audio-uploads')
+          .getPublicUrl(`${roomId}/${uploadedFiles[0].name}`);
+        
+        console.log('Playing manually uploaded audio');
+        const audio = new Audio(urlData.publicUrl);
+        
+        audio.onended = () => setIsPlayingAudio(false);
+        audio.onerror = () => {
+          setIsPlayingAudio(false);
+          toast({
+            title: "Playback Error / Lỗi Phát",
+            description: "Failed to play audio / Không thể phát âm thanh",
+            variant: "destructive",
+          });
+        };
+
+        await audio.play();
+        return;
+      }
+
+      // PRIORITY 2: Check for TTS-generated cached audio
       const englishText = text.split('\n\n')[0] || text;
-      
-      // Create simple hash for caching (first 100 chars)
       const textHash = englishText.substring(0, 100).replace(/[^a-z0-9]/gi, '_').substring(0, 50);
       
       const { data, error } = await supabase.functions.invoke('text-to-speech', {
@@ -101,13 +129,9 @@ export const MessageActions = ({ text, roomId }: MessageActionsProps) => {
       if (error) throw error;
 
       if (data?.audioUrl) {
-        // Play audio from URL (either cached or newly generated)
         const audio = new Audio(data.audioUrl);
         
-        audio.onended = () => {
-          setIsPlayingAudio(false);
-        };
-
+        audio.onended = () => setIsPlayingAudio(false);
         audio.onerror = () => {
           setIsPlayingAudio(false);
           toast({
@@ -118,19 +142,14 @@ export const MessageActions = ({ text, roomId }: MessageActionsProps) => {
         };
 
         await audio.play();
-        
-        if (data.cached) {
-          console.log('Playing cached audio');
-        } else {
-          console.log('Playing newly generated audio');
-        }
+        console.log(data.cached ? 'Playing TTS cached audio' : 'Playing new TTS audio');
       }
     } catch (err) {
-      console.error('TTS error:', err);
+      console.error('Audio playback error:', err);
       setIsPlayingAudio(false);
       toast({
         title: "Error / Lỗi",
-        description: "Failed to generate audio / Không thể tạo âm thanh",
+        description: "Failed to play audio / Không thể phát âm thanh",
         variant: "destructive",
       });
     }
