@@ -425,14 +425,20 @@ const handleAccessDenied = () => {
                   aria-label="AI Content" 
                   className="text-sm px-4 py-2 data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
                 >
-                  🤖 AI Content
+                  <span className="flex flex-col items-center">
+                    <span>🤖 AI Content</span>
+                    <span className="text-xs opacity-80">Nội dung tạo bởi AI</span>
+                  </span>
                 </ToggleGroupItem>
                 <ToggleGroupItem 
                   value="keyword" 
                   aria-label="Keyword Content" 
                   className="text-sm px-4 py-2 data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
                 >
-                  📚 Keyword Content
+                  <span className="flex flex-col items-center">
+                    <span>📚 Keyword Content</span>
+                    <span className="text-xs opacity-80">Nội dung nghiên cứu trước của admin</span>
+                  </span>
                 </ToggleGroupItem>
               </ToggleGroup>
             </div>
