@@ -16,7 +16,7 @@ export const AdminFloatingButton = () => {
 
     fetchUnreadCount();
 
-    // Subscribe to real-time updates
+    // Subscribe to real-time updates for both admin_notifications and feedback
     const channel = supabase
       .channel('admin-notifications')
       .on(
@@ -25,6 +25,15 @@ export const AdminFloatingButton = () => {
           event: '*',
           schema: 'public',
           table: 'admin_notifications'
+        },
+        () => fetchUnreadCount()
+      )
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'feedback'
         },
         () => fetchUnreadCount()
       )
@@ -40,13 +49,20 @@ export const AdminFloatingButton = () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
 
-      const { count } = await supabase
+      // Count unread admin notifications
+      const { count: notificationCount } = await supabase
         .from('admin_notifications')
         .select('*', { count: 'exact', head: true })
         .eq('admin_user_id', user.id)
         .eq('is_read', false);
 
-      setUnreadCount(count || 0);
+      // Count new feedback
+      const { count: feedbackCount } = await supabase
+        .from('feedback')
+        .select('*', { count: 'exact', head: true })
+        .eq('status', 'new');
+
+      setUnreadCount((notificationCount || 0) + (feedbackCount || 0));
     } catch (error) {
       console.error('Error fetching unread count:', error);
     }

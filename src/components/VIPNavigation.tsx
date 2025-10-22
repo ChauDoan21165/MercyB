@@ -66,14 +66,6 @@ export const VIPNavigation = ({ currentPage }: VIPNavigationProps) => {
           <ChevronRight className="w-4 h-4" />
         </Button>
       </div>
-
-      <Button
-        onClick={() => navigate('/payment-test')}
-        className="bg-gradient-to-r from-primary to-accent hover:opacity-90 shadow-lg"
-        size="lg"
-      >
-        💳 Pay Now / Thanh Toán
-      </Button>
     </div>
   );
 };

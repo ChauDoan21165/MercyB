@@ -20,11 +20,12 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useCredits } from "@/hooks/useCredits";
 import { CreditLimitModal } from "@/components/CreditLimitModal";
 import { CreditsDisplay } from "@/components/CreditsDisplay";
-import { RoomDisclaimer } from "@/components/RoomDisclaimer";
+import { PrivateChatPanel } from "@/components/PrivateChatPanel";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { keywordRespond } from "@/lib/keywordResponder";
 import { messageSchema } from "@/lib/inputValidation";
+import { supabase } from "@/integrations/supabase/client";
 
 interface Message {
   id: string;
@@ -41,11 +42,9 @@ const ChatHub = () => {
   const [mainMessages, setMainMessages] = useState<Message[]>([]);
   const [feedbackMessages, setFeedbackMessages] = useState<Message[]>([]);
   const [roomMessages, setRoomMessages] = useState<Message[]>([]);
-  const [privateMessages, setPrivateMessages] = useState<Message[]>([]);
   const [mainInput, setMainInput] = useState("");
   const [feedbackInput, setFeedbackInput] = useState("");
   const [roomInput, setRoomInput] = useState("");
-  const [privateInput, setPrivateInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [noKeywordCount, setNoKeywordCount] = useState(0);
   const [matchedEntryCount, setMatchedEntryCount] = useState(0);
@@ -303,7 +302,7 @@ const handleAccessDenied = () => {
     }
   };
 
-  const sendMessage = (
+  const sendMessage = async (
     input: string,
     setInput: (val: string) => void,
     setMessages: React.Dispatch<React.SetStateAction<Message[]>>,
@@ -321,25 +320,39 @@ const handleAccessDenied = () => {
     setMessages(prev => [...prev, newMessage]);
     setInput("");
 
-    // Simulate response
-    setTimeout(() => {
-      let responseText = "";
-      if (chatType === "feedback") {
-        responseText = "Thank you for your feedback. We have recorded it.\n\nCảm ơn phản hồi của bạn. Chúng tôi đã ghi nhận.";
-      } else if (chatType === "room") {
-        responseText = "Your message has been sent to the room.\n\nTin nhắn của bạn đã được gửi đến phòng.";
-      } else {
-        responseText = "Your private message has been sent.\n\nTin nhắn riêng tư của bạn đã được gửi.";
-      }
+    // Handle feedback submission to database
+    if (chatType === "feedback") {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        await supabase.from('feedback').insert({
+          user_id: user.id,
+          room_id: roomId || '',
+          message: input,
+          status: 'new',
+          priority: 'normal'
+        });
 
-      const aiMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        text: responseText,
-        isUser: false,
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, aiMessage]);
-    }, 800);
+        const responseText = "Thank you for your feedback. Admins have been notified.\n\nCảm ơn phản hồi của bạn. Quản trị viên đã được thông báo.";
+        const aiMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          text: responseText,
+          isUser: false,
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, aiMessage]);
+      }
+    } else if (chatType === "room") {
+      setTimeout(() => {
+        const responseText = "Your message has been sent to the room.\n\nTin nhắn của bạn đã được gửi đến phòng.";
+        const aiMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          text: responseText,
+          isUser: false,
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, aiMessage]);
+      }, 800);
+    }
   };
 
   useEffect(() => {
@@ -477,11 +490,6 @@ const handleAccessDenied = () => {
           </div>
         </div>
         
-        {/* Room Disclaimer - Always Visible */}
-        <div className="sticky top-20 z-10">
-          <RoomDisclaimer roomId={roomId || ""} />
-        </div>
-        
         {/* Progress Tracker */}
         <RoomProgress totalRooms={progress.totalRooms} streak={progress.streak} />
 
@@ -616,45 +624,8 @@ const handleAccessDenied = () => {
             </div>
           </Card>
 
-          {/* Private Chat */}
-          <Card className="p-4 shadow-soft">
-            <div className="space-y-3">
-              <div className="flex items-center gap-2 pb-2 border-b">
-                <MessageCircle className="w-4 h-4 text-primary" />
-                <div>
-                  <h4 className="text-sm font-semibold">Private Chat</h4>
-                  <p className="text-xs text-muted-foreground">Chat Riêng</p>
-                </div>
-              </div>
-              
-              <ScrollArea className="h-32">
-                {privateMessages.map(msg => (
-                  <div key={msg.id} className="mb-2">
-                    <div className={`text-xs p-2 rounded-lg ${msg.isUser ? "bg-primary/20" : "bg-muted"}`}>
-                      {msg.text}
-                    </div>
-                  </div>
-                ))}
-              </ScrollArea>
-
-              <div className="flex gap-2">
-                <Input
-                  placeholder="Private message / Nhắn Tin Riêng..."
-                  value={privateInput}
-                  onChange={(e) => setPrivateInput(e.target.value)}
-                  onKeyPress={(e) => e.key === "Enter" && sendMessage(privateInput, setPrivateInput, setPrivateMessages, "private")}
-                  className="text-sm"
-                />
-                <Button 
-                  size="sm" 
-                  variant="outline"
-                  onClick={() => sendMessage(privateInput, setPrivateInput, setPrivateMessages, "private")}
-                >
-                  <Send className="w-3 h-3" />
-                </Button>
-              </div>
-            </div>
-          </Card>
+          {/* Private Chat with Permissions */}
+          <PrivateChatPanel roomId={roomId || ""} />
         </div>
       </div>
     </div>

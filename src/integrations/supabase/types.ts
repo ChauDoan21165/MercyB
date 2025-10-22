@@ -276,6 +276,74 @@ export type Database = {
         }
         Relationships: []
       }
+      private_chat_requests: {
+        Row: {
+          created_at: string | null
+          id: string
+          receiver_id: string
+          room_id: string
+          sender_id: string
+          status: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          receiver_id: string
+          room_id: string
+          sender_id: string
+          status?: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          receiver_id?: string
+          room_id?: string
+          sender_id?: string
+          status?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      private_messages: {
+        Row: {
+          created_at: string | null
+          id: string
+          is_read: boolean | null
+          message: string
+          receiver_id: string
+          request_id: string
+          sender_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          is_read?: boolean | null
+          message: string
+          receiver_id: string
+          request_id: string
+          sender_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          is_read?: boolean | null
+          message?: string
+          receiver_id?: string
+          request_id?: string
+          sender_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "private_messages_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: false
+            referencedRelation: "private_chat_requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           created_at: string | null
@@ -985,10 +1053,7 @@ export type Database = {
         Args: { limit_type: string; user_uuid: string }
         Returns: boolean
       }
-      clean_expired_responses: {
-        Args: Record<PropertyKey, never>
-        Returns: undefined
-      }
+      clean_expired_responses: { Args: never; Returns: undefined }
       get_user_tier: {
         Args: { user_uuid: string }
         Returns: {
@@ -1005,14 +1070,8 @@ export type Database = {
         }
         Returns: boolean
       }
-      setup_admin_user: {
-        Args: Record<PropertyKey, never>
-        Returns: undefined
-      }
-      validate_promo_code: {
-        Args: { code_input: string }
-        Returns: Json
-      }
+      setup_admin_user: { Args: never; Returns: undefined }
+      validate_promo_code: { Args: { code_input: string }; Returns: Json }
     }
     Enums: {
       app_role: "admin" | "user"

@@ -254,6 +254,29 @@ const Welcome = () => {
           </p>
         </div>
 
+        {/* Common Disclaimer */}
+        <Card className="max-w-4xl mx-auto p-6 bg-yellow-50/80 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-800">
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-yellow-900 dark:text-yellow-100">
+              Important Safety Information / Thông Tin An Toàn Quan Trọng
+            </h3>
+            <div className="space-y-2 text-sm text-yellow-900 dark:text-yellow-100">
+              <p>
+                <strong>English:</strong> This app provides general wellness guidance and educational content. It is NOT a substitute for professional medical, psychological, or financial advice. If you are experiencing a medical emergency or mental health crisis, please contact emergency services immediately.
+              </p>
+              <p>
+                <strong>Tiếng Việt:</strong> Ứng dụng này cung cấp hướng dẫn sức khỏe tổng thể và nội dung giáo dục. Nó KHÔNG thay thế lời khuyên y tế, tâm lý hoặc tài chính chuyên nghiệp. Nếu bạn đang gặp cấp cứu y tế hoặc khủng hoảng sức khỏe tâm thần, vui lòng liên hệ dịch vụ cấp cứu ngay lập tức.
+              </p>
+              <p className="text-red-600 dark:text-red-400 font-semibold">
+                <strong>Crisis Support:</strong> National Suicide Prevention Lifeline: 988 (US) | Lifeline: 13 11 14 (Australia) | Samaritans: 116 123 (UK)
+              </p>
+              <p className="text-red-600 dark:text-red-400 font-semibold">
+                <strong>Hỗ Trợ Khủng Hoảng:</strong> Tổng đài hỗ trợ tâm lý: 1800 599 927 (Việt Nam)
+              </p>
+            </div>
+          </div>
+        </Card>
+
         {/* Subscription Tiers */}
         <div className="space-y-8 mt-16">
           <div className="text-center space-y-2">
