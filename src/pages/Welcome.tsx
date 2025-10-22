@@ -189,12 +189,13 @@ const Welcome = () => {
           <div className="flex justify-center items-center gap-4 pt-8 flex-wrap">
             <Button 
               size="lg"
-              className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-hover transition-all min-w-[200px]"
+              variant="outline"
+              className="border-2 border-primary hover:bg-primary/10 min-w-[200px]"
               onClick={() => navigate("/rooms")}
             >
               <span className="flex flex-col items-center">
-                <span className="text-base font-semibold">All Free Rooms</span>
-                <span className="text-sm opacity-90">Tất Cả Phòng Miễn Phí</span>
+                <span className="text-base font-semibold">Free Rooms</span>
+                <span className="text-sm opacity-90">Phòng Miễn Phí</span>
               </span>
             </Button>
             <Button 
@@ -326,13 +327,9 @@ const Welcome = () => {
                   </div>
 
                   <Button
-                    className={`w-full mt-6 ${
-                      tier.popular
-                        ? "bg-gradient-to-r from-primary to-accent"
-                        : ""
-                    }`}
-                    variant={tier.popular ? "default" : "outline"}
-                    onClick={() => navigate("/payment-test")}
+                    className="w-full mt-6"
+                    variant="outline"
+                    onClick={() => navigate(index === 0 ? "/rooms" : "/payment-test")}
                   >
                     <span className="flex flex-col">
                       <span className="text-sm">Choose Plan</span>
