@@ -239,12 +239,19 @@ const PaymentTest = () => {
                   >
                     {loading && selectedTier === tier.id ? 'Loading PayPal... / Đang tải...' : 'Pay with PayPal / Thanh toán'}
                   </Button>
-                  <div 
-                    id={`paypal-button-${tier.id}`} 
-                    className="min-h-[50px] w-full border-2 border-dashed border-muted rounded-md flex items-center justify-center text-sm text-muted-foreground"
-                  >
-                    {loading && selectedTier === tier.id ? 'Loading PayPal buttons...' : 'Click "Pay with PayPal" to continue'}
+                  <div className="w-full border-2 border-dashed border-muted rounded-md p-2">
+                    <div 
+                      id={`paypal-button-${tier.id}`} 
+                      className="min-h-[50px] w-full"
+                    />
                   </div>
+                  {selectedTier === tier.id ? (
+                    loading ? (
+                      <div className="text-sm text-muted-foreground">Loading PayPal buttons...</div>
+                    ) : null
+                  ) : (
+                    <div className="text-sm text-muted-foreground">Click "Pay with PayPal" to continue</div>
+                  )}
                 </div>
               </CardContent>
             </Card>
