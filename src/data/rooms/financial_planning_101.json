@@ -2,8 +2,7 @@
   "version": "1.0",
   "locale": "vi-en",
   "global_notes": {
-    "safety": "This is educational content, not financial advice.",
-    "disclaimer": "Consult qualified financial advisor for personalized guidance."
+    "safety": "This is educational content, not financial advice."
   },
   "enum_tags": ["budgeting", "saving", "investing", "debt"],
   "keywords": {
@@ -19,10 +18,7 @@
   "room_essay": {
     "format": "markdown",
     "en": "Master personal finance basics: budgeting, saving, and investing for beginners.",
-    "vi": "Nắm vững cơ bản tài chính cá nhân: ngân sách, tiết kiệm và đầu tư cho người mới.",
-    "word_count_en": 400,
-    "word_count_vi": 400,
-    "updated_at": "2025-10-20"
+    "vi": "Nắm vững cơ bản tài chính cá nhân: ngân sách, tiết kiệm và đầu tư cho người mới."
   },
   "entries": [
     {
@@ -30,8 +26,8 @@
       "keywords_en": ["budget", "50-30-20", "how to start"],
       "keywords_vi": ["ngân sách", "50-30-20", "cách bắt đầu"],
       "copy": {
-        "en": "**THE 50-30-20 BUDGET RULE**\n\nDivide after-tax income:\n- **50% Needs**: Rent, utilities, groceries, insurance, minimum debt payments\n- **30% Wants**: Dining out, entertainment, hobbies, subscriptions\n- **20% Savings**: Emergency fund, retirement, extra debt payments\n\nHow to start:\n1. Track spending for 1 month\n2. Categorize everything\n3. Adjust percentages to fit your situation\n4. Use apps: Mint, YNAB, or simple spreadsheet",
-        "vi": "**QUY TẮC NGÂN SÁCH 50-30-20**\n\nChia thu nhập sau thuế:\n- **50% Nhu cầu**: Thuê nhà, tiện ích, tạp hóa, bảo hiểm, thanh toán nợ tối thiểu\n- **30% Muốn**: Ăn uống, giải trí, sở thích, đăng ký\n- **20% Tiết kiệm**: Quỹ khẩn cấp, nghỉ hưu, thanh toán nợ thêm\n\nCách bắt đầu:\n1. Theo dõi chi tiêu 1 tháng\n2. Phân loại mọi thứ\n3. Điều chỉnh tỷ lệ phần trăm\n4. Dùng ứng dụng: Mint, YNAB hoặc bảng tính đơn giản"
+        "en": "THE 50-30-20 BUDGET RULE\n\nDivide after-tax income:\n- 50% Needs: Rent, utilities, groceries, insurance, minimum debt payments\n- 30% Wants: Dining out, entertainment, hobbies, subscriptions\n- 20% Savings: Emergency fund, retirement, extra debt payments\n\nHow to start:\n1. Track spending for 1 month\n2. Categorize everything\n3. Adjust percentages to fit your situation\n4. Use apps: Mint, YNAB, or simple spreadsheet",
+        "vi": "QUY TẮC NGÂN SÁCH 50-30-20\n\nChia thu nhập sau thuế:\n- 50% Nhu cầu: Thuê nhà, tiện ích, tạp hóa, bảo hiểm, thanh toán nợ tối thiểu\n- 30% Muốn: Ăn uống, giải trí, sở thích, đăng ký\n- 20% Tiết kiệm: Quỹ khẩn cấp, nghỉ hưu, thanh toán nợ thêm\n\nCách bắt đầu:\n1. Theo dõi chi tiêu 1 tháng\n2. Phân loại mọi thứ\n3. Điều chỉnh tỷ lệ phần trăm\n4. Dùng ứng dụng: Mint, YNAB hoặc bảng tính đơn giản"
       },
       "tags": ["budgeting"],
       "artifact_id": "budget-001"

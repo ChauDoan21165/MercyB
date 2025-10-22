@@ -2,8 +2,7 @@
   "version": "1.0",
   "locale": "vi-en",
   "global_notes": {
-    "safety": "Consult healthcare provider before starting any weight loss program.",
-    "disclaimer": "This is educational content. Individual results vary."
+    "safety": "Consult healthcare provider before starting any weight loss program."
   },
   "enum_tags": ["nutrition", "exercise", "mindset", "habits"],
   "keywords": {
@@ -19,10 +18,7 @@
   "room_essay": {
     "format": "markdown",
     "en": "Science-based 30-day weight loss program with sustainable habits.",
-    "vi": "Chương trình giảm cân 30 ngày dựa trên khoa học với thói quen bền vững.",
-    "word_count_en": 500,
-    "word_count_vi": 500,
-    "updated_at": "2025-10-20"
+    "vi": "Chương trình giảm cân 30 ngày dựa trên khoa học với thói quen bền vững."
   },
   "entries": [
     {
@@ -30,8 +26,8 @@
       "keywords_en": ["getting started", "calories", "tracking"],
       "keywords_vi": ["bắt đầu", "calo", "theo dõi"],
       "copy": {
-        "en": "**WEEK 1: FOUNDATION**\n\nCalculate your TDEE (Total Daily Energy Expenditure):\n- Sedentary: Weight(lb) × 12-14\n- Active: Weight(lb) × 15-17\n\nCreate 300-500 calorie deficit. Track everything for 7 days using MyFitnessPal or Cronometer.\n\nStart with: Protein 0.8g per lb bodyweight, Fill rest with whole foods.",
-        "vi": "**TUẦN 1: NỀN TẢNG**\n\nTính TDEE của bạn:\n- Ít vận động: Cân nặng(kg) × 26-30\n- Vận động: Cân nặng(kg) × 33-37\n\nTạo thiếu hụt 300-500 calo. Theo dõi mọi thứ trong 7 ngày.\n\nBắt đầu với: Protein 0.8g/kg cân nặng, Phần còn lại là thực phẩm nguyên chất."
+        "en": "WEEK 1: FOUNDATION\n\nCalculate your TDEE (Total Daily Energy Expenditure):\n- Sedentary: Weight(lb) × 12-14\n- Active: Weight(lb) × 15-17\n\nCreate 300-500 calorie deficit. Track everything for 7 days using MyFitnessPal or Cronometer.\n\nStart with: Protein 0.8g per lb bodyweight, Fill rest with whole foods.",
+        "vi": "TUẦN 1: NỀN TẢNG\n\nTính TDEE của bạn:\n- Ít vận động: Cân nặng(kg) × 26-30\n- Vận động: Cân nặng(kg) × 33-37\n\nTạo thiếu hụt 300-500 calo. Theo dõi mọi thứ trong 7 ngày.\n\nBắt đầu với: Protein 0.8g/kg cân nặng, Phần còn lại là thực phẩm nguyên chất."
       },
       "tags": ["nutrition", "habits"],
       "artifact_id": "week1-001"
