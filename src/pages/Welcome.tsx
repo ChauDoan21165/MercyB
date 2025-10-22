@@ -111,10 +111,18 @@ const Welcome = () => {
       )}
       
       <div className="container mx-auto px-4 py-12 max-w-7xl">
-        {/* Header with User Info or Sign In Button */}
-        <div className="flex justify-end items-center mb-4">
-          {user ? (
-            <div className="flex items-center gap-3">
+        {/* Header with Home Page and User Info */}
+        <div className="flex justify-between items-center mb-4">
+          <Button 
+            variant="outline"
+            onClick={() => navigate("/")}
+            className="border-2 border-primary/50 hover:bg-primary/10"
+          >
+            Home Page / Trang Chủ
+          </Button>
+          <div>
+            {user ? (
+              <div className="flex items-center gap-3">
               <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-lg">
                 <User className="h-4 w-4 text-primary" />
                 <span className="font-medium">
@@ -129,15 +137,16 @@ const Welcome = () => {
                 <LogOut className="h-4 w-4 mr-2" />
                 Logout / Đăng xuất
               </Button>
-            </div>
-          ) : (
-            <Button 
-              variant="outline"
-              onClick={() => navigate("/auth")}
-            >
-              Sign In / Đăng Nhập
-            </Button>
-          )}
+              </div>
+            ) : (
+              <Button 
+                variant="outline"
+                onClick={() => navigate("/auth")}
+              >
+                Sign In / Đăng Nhập
+              </Button>
+            )}
+          </div>
         </div>
 
         {/* Hero Section */}

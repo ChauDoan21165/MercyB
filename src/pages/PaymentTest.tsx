@@ -24,20 +24,8 @@ const PaymentTest = () => {
     loadPayPalScript();
   }, []);
 
-  // Auto-scroll to pre-selected tier from URL
-  useEffect(() => {
-    const tierParam = searchParams.get('tier');
-    if (tierParam && tiers.length > 0) {
-      const matchingTier = tiers.find(t => t.name.toLowerCase() === tierParam.toLowerCase());
-      if (matchingTier && tierRefs.current[matchingTier.id]) {
-        setTimeout(() => {
-          tierRefs.current[matchingTier.id]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 300);
-      }
-    }
-  }, [searchParams, tiers]);
-
   const loadTiers = async () => {
+    const tierParam = searchParams.get('tier');
     const { data } = await supabase
       .from('subscription_tiers')
       .select('*')
@@ -45,7 +33,14 @@ const PaymentTest = () => {
       .order('display_order');
     
     if (data) {
-      setTiers(data.filter(t => t.name !== 'Free'));
+      let filteredData = data.filter(t => t.name !== 'Free');
+      
+      // Filter to only the selected tier if tier param exists
+      if (tierParam) {
+        filteredData = filteredData.filter(t => t.name.toLowerCase() === tierParam.toLowerCase());
+      }
+      
+      setTiers(filteredData);
     }
   };
 
