@@ -15,7 +15,6 @@ const RoomGridVIP3 = () => {
 
   useEffect(() => {
     if (!loading && !canAccessVIP3) {
-      toast.error("VIP3 access required / Yêu cầu quyền truy cập VIP3");
       navigate('/');
     }
   }, [canAccessVIP3, loading, navigate]);

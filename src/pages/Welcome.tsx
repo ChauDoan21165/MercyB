@@ -9,10 +9,11 @@ import { UsernameSetup } from "@/components/UsernameSetup";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const Welcome = () => {
   const navigate = useNavigate();
-  const { isAdmin } = useUserAccess();
+  const { isAdmin, tier, canAccessVIP1, canAccessVIP2, canAccessVIP3 } = useUserAccess();
   const [user, setUser] = useState<any>(null);
   const [profile, setProfile] = useState<any>(null);
   const [showUsernameSetup, setShowUsernameSetup] = useState(false);
@@ -172,52 +173,87 @@ const Welcome = () => {
             </div>
           </Card>
 
-          <div className="flex justify-center items-center gap-4 pt-8 flex-wrap">
-            <Button 
-              size="lg"
-              variant="outline"
-              className="border-2 border-primary hover:bg-primary/10 min-w-[200px]"
-              onClick={() => navigate("/rooms")}
-            >
-              <span className="flex flex-col items-center">
-                <span className="text-base font-semibold">Free Rooms</span>
-                <span className="text-sm opacity-90">Phòng Miễn Phí</span>
-              </span>
-            </Button>
-            <Button 
-              size="lg"
-              variant="outline"
-              className="border-2 border-accent hover:bg-accent/10 min-w-[200px]"
-              onClick={() => navigate("/rooms-vip1")}
-            >
-              <span className="flex flex-col items-center">
-                <span className="text-base font-semibold">VIP1 Rooms</span>
-                <span className="text-sm opacity-90">Phòng VIP1</span>
-              </span>
-            </Button>
-            <Button 
-              size="lg"
-              variant="outline"
-              className="border-2 border-primary hover:bg-primary/10 min-w-[200px]"
-              onClick={() => navigate("/rooms-vip2")}
-            >
-              <span className="flex flex-col items-center">
-                <span className="text-base font-semibold">VIP2 Rooms</span>
-                <span className="text-sm opacity-90">Phòng VIP2</span>
-              </span>
-            </Button>
-            <Button 
-              size="lg"
-              variant="outline"
-              className="border-2 border-secondary hover:bg-secondary/10 min-w-[200px]"
-              onClick={() => navigate("/rooms-vip3")}
-            >
-              <span className="flex flex-col items-center">
-                <span className="text-base font-semibold">VIP3 Rooms</span>
-                <span className="text-sm opacity-90">Phòng VIP3</span>
-              </span>
-            </Button>
-          </div>
+          <TooltipProvider>
+            <div className="flex justify-center items-center gap-4 pt-8 flex-wrap">
+              <Button 
+                size="lg"
+                variant="outline"
+                className="border-2 border-primary hover:bg-primary/10 min-w-[200px]"
+                onClick={() => navigate("/rooms")}
+              >
+                <span className="flex flex-col items-center">
+                  <span className="text-base font-semibold">Free Rooms</span>
+                  <span className="text-sm opacity-90">Phòng Miễn Phí</span>
+                </span>
+              </Button>
+              
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button 
+                    size="lg"
+                    variant="outline"
+                    className="border-2 border-accent hover:bg-accent/10 min-w-[200px]"
+                    onClick={() => canAccessVIP1 ? navigate("/rooms-vip1") : null}
+                    disabled={!canAccessVIP1}
+                  >
+                    <span className="flex flex-col items-center">
+                      <span className="text-base font-semibold">VIP1 Rooms</span>
+                      <span className="text-sm opacity-90">Phòng VIP1</span>
+                    </span>
+                  </Button>
+                </TooltipTrigger>
+                {!canAccessVIP1 && (
+                  <TooltipContent>
+                    <p>Only for VIP1</p>
+                  </TooltipContent>
+                )}
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button 
+                    size="lg"
+                    variant="outline"
+                    className="border-2 border-primary hover:bg-primary/10 min-w-[200px]"
+                    onClick={() => canAccessVIP2 ? navigate("/rooms-vip2") : null}
+                    disabled={!canAccessVIP2}
+                  >
+                    <span className="flex flex-col items-center">
+                      <span className="text-base font-semibold">VIP2 Rooms</span>
+                      <span className="text-sm opacity-90">Phòng VIP2</span>
+                    </span>
+                  </Button>
+                </TooltipTrigger>
+                {!canAccessVIP2 && (
+                  <TooltipContent>
+                    <p>Only for VIP2</p>
+                  </TooltipContent>
+                )}
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button 
+                    size="lg"
+                    variant="outline"
+                    className="border-2 border-secondary hover:bg-secondary/10 min-w-[200px]"
+                    onClick={() => canAccessVIP3 ? navigate("/rooms-vip3") : null}
+                    disabled={!canAccessVIP3}
+                  >
+                    <span className="flex flex-col items-center">
+                      <span className="text-base font-semibold">VIP3 Rooms</span>
+                      <span className="text-sm opacity-90">Phòng VIP3</span>
+                    </span>
+                  </Button>
+                </TooltipTrigger>
+                {!canAccessVIP3 && (
+                  <TooltipContent>
+                    <p>Only for VIP3</p>
+                  </TooltipContent>
+                )}
+              </Tooltip>
+            </div>
+          </TooltipProvider>
           
           {/* VIP Custom Topic Info */}
           <div className="text-center mt-8 p-4 max-w-2xl mx-auto">
