@@ -154,7 +154,20 @@ const handleAccessDenied = () => {
 
     // KEYWORD MODE: Use keyword responder
     if (contentMode === "keyword") {
+      // Add typing indicator
+      const typingMessageId = (Date.now() + 1).toString();
+      const typingMessage: Message = {
+        id: typingMessageId,
+        text: '...',
+        isUser: false,
+        timestamp: new Date()
+      };
+      setMainMessages(prev => [...prev, typingMessage]);
+      
       try {
+        // Simulate a brief delay for better UX
+        await new Promise(resolve => setTimeout(resolve, 300));
+        
         const response = keywordRespond(roomId || "", currentInput, noKeywordCount, matchedEntryCount);
         
         if (response.matched) {
@@ -164,16 +177,18 @@ const handleAccessDenied = () => {
           setNoKeywordCount(prev => prev + 1);
         }
 
-        const aiMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          text: response.text,
-          isUser: false,
-          timestamp: new Date(),
-          relatedRooms: response.relatedRooms
-        };
-        setMainMessages(prev => [...prev, aiMessage]);
+        // Replace typing indicator with actual response
+        setMainMessages(prev => 
+          prev.map(m => 
+            m.id === typingMessageId 
+              ? { ...m, text: response.text, relatedRooms: response.relatedRooms }
+              : m
+          )
+        );
       } catch (error) {
         console.error('Error generating keyword response:', error);
+        // Remove typing indicator on error
+        setMainMessages(prev => prev.filter(m => m.id !== typingMessageId));
         toast({
           title: "Error / Lỗi",
           description: "Could not generate response / Không Thể Tạo Phản Hồi",

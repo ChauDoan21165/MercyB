@@ -29,7 +29,18 @@ function findMatchingGroup(message: string, keywords: any): string | null {
       ...(Array.isArray(g.slug_vi) ? g.slug_vi : []),
     ];
     for (const k of list) {
-      if (msg.includes(normalize(k))) return groupKey;
+      const normalizedK = normalize(k);
+      // Exact match
+      if (msg.includes(normalizedK)) return groupKey;
+      // Fuzzy match: check if keyword partially matches (>= 70% overlap)
+      if (normalizedK.length >= 4 && msg.length >= 4) {
+        for (let i = 0; i <= msg.length - 3; i++) {
+          const substring = msg.substring(i, i + Math.min(normalizedK.length, msg.length - i));
+          if (normalizedK.includes(substring) && substring.length >= normalizedK.length * 0.7) {
+            return groupKey;
+          }
+        }
+      }
     }
   }
   return null;
@@ -125,8 +136,8 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   const isQuestion = messageWords.length >= 3 || messageLower.includes('?') || startsWithQToken || hasExactQToken || hasMultiWordQ;
 
   if (isQuestion) {
-    // Only show essay after ~15 matched entries
-    if (matchedEntryCount >= 15) {
+    // Only show essay after ~10 matched entries (reduced for faster access)
+    if (matchedEntryCount >= 10) {
       const essay = getBilingual(roomData, "room_essay");
       const desc = getBilingual(roomData, "description");
       const safety = getBilingual(roomData, "safety_disclaimer");
@@ -137,7 +148,7 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
       return { text, matched: false };
     }
     
-    // Before 15 entries, give a helpful prompt
+    // Before 10 entries, give a helpful prompt
     const desc = getBilingual(roomData, "description");
     const topKeys = Object.keys(roomData.keywords || {}).slice(0, 5).join(', ');
     const text = [
@@ -148,6 +159,7 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   }
   
   // For short/unclear messages, use escalating friendly prompts
+  // After 2 non-matches, skip to "I am listening"
   const escalationPrompts = [
     {
       en: "Please tell me more.",
@@ -160,15 +172,11 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
     {
       en: "Keep saying more, I am listening.",
       vi: "Hãy nói thêm, tôi đang lắng nghe."
-    },
-    {
-      en: "Please tell me more my dear friend.",
-      vi: "Vui lòng cho tôi biết thêm, bạn thân yêu của tôi."
     }
   ];
   
-  // Cycle through the prompts (0, 1, 2, 0, 1, 2, ...)
-  const promptIndex = noKeywordCount % escalationPrompts.length;
+  // Use the listening prompt after 2 non-matches
+  const promptIndex = noKeywordCount >= 2 ? 2 : noKeywordCount;
   const selectedPrompt = escalationPrompts[promptIndex];
   
   const desc = getBilingual(roomData, "description");
