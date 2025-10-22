@@ -183,7 +183,6 @@ const Auth = () => {
       <Card className="w-full max-w-md p-6">
         <div className="text-center mb-6">
           <h1 className="text-3xl font-bold">Welcome</h1>
-          <p className="text-muted-foreground mt-2">Sign in to access VIP content</p>
         </div>
 
         <Tabs defaultValue="signin" className="w-full">

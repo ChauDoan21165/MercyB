@@ -111,18 +111,7 @@ const Welcome = () => {
       
       <div className="container mx-auto px-4 py-12 max-w-7xl">
         {/* Header with User Info or Sign In Button */}
-        <div className="flex justify-between items-center mb-4">
-          <Button 
-            size="lg"
-            className="bg-gradient-to-r from-accent to-primary hover:shadow-hover transition-all"
-            onClick={() => navigate("/subscribe")}
-          >
-            <span className="flex flex-col items-center px-4">
-              <span className="text-base font-semibold">💳 Upgrade / Subscribe</span>
-              <span className="text-sm opacity-90">Nâng Cấp / Đăng Ký</span>
-            </span>
-          </Button>
-          
+        <div className="flex justify-end items-center mb-4">
           {user ? (
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-lg">
@@ -149,9 +138,6 @@ const Welcome = () => {
             </Button>
           )}
         </div>
-
-        {/* Promo Code Banner */}
-        <PromoCodeBanner />
 
         {/* Hero Section */}
         <div className="text-center mb-16 space-y-6">
@@ -254,18 +240,6 @@ const Welcome = () => {
           </p>
         </div>
 
-        {/* Common Disclaimer */}
-        <Card className="max-w-4xl mx-auto p-3 bg-primary/5 dark:bg-primary/10 border-primary/20">
-          <div className="space-y-1.5 text-xs text-muted-foreground leading-relaxed">
-            <p>
-              This app provides general wellness guidance and educational content. It is NOT a substitute for professional medical, psychological, or financial advice. If you are experiencing a medical emergency or mental health crisis, please contact emergency services immediately.
-            </p>
-            <p>
-              Ứng dụng này cung cấp hướng dẫn sức khỏe tổng thể và nội dung giáo dục. Nó KHÔNG thay thế lời khuyên y tế, tâm lý hoặc tài chính chuyên nghiệp. Nếu bạn đang gặp cấp cứu y tế hoặc khủng hoảng sức khỏe tâm thần, vui lòng liên hệ dịch vụ cấp cứu ngay lập tức.
-            </p>
-          </div>
-        </Card>
-
         {/* Subscription Tiers */}
         <div className="space-y-8 mt-16">
           <div className="text-center space-y-2">
@@ -281,16 +255,8 @@ const Welcome = () => {
             {tiers.map((tier, index) => (
               <Card
                 key={index}
-                className={`relative p-6 transition-all hover:shadow-hover hover:scale-105 ${
-                  tier.popular ? "border-2 border-primary shadow-soft" : ""
-                }`}
+                className="relative p-6 transition-all hover:shadow-hover hover:scale-105"
               >
-                {tier.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-accent text-primary-foreground px-4 py-1 rounded-full text-xs font-semibold">
-                    Popular / Phổ Biến
-                  </div>
-                )}
-                
                 <div className="space-y-4">
                   <div className="space-y-1">
                     <h3 className="text-xl font-bold text-foreground">
@@ -327,27 +293,43 @@ const Welcome = () => {
                   </div>
 
                   <Button
-                    className="w-full mt-6"
-                    variant="outline"
+                    className={`w-12 h-12 rounded-full mt-6 mx-auto ${
+                      index === 0 
+                        ? "bg-white hover:bg-white/90 text-foreground" 
+                        : index === 1
+                        ? "bg-gradient-to-br from-yellow-200 via-yellow-400 to-yellow-600 hover:opacity-90"
+                        : index === 2
+                        ? "bg-gradient-to-br from-yellow-300 via-yellow-500 to-yellow-700 hover:opacity-90"
+                        : "bg-gradient-to-br from-yellow-400 via-yellow-600 to-yellow-800 hover:opacity-90"
+                    }`}
+                    size="icon"
                     onClick={() => {
                       if (index === 0) {
                         navigate("/rooms");
                       } else {
-                        // Pass tier name in URL to pre-select on subscribe page
                         navigate(`/subscribe?tier=${tier.name.en.toLowerCase()}`);
                       }
                     }}
                   >
-                    <span className="flex flex-col">
-                      <span className="text-sm">Choose</span>
-                      <span className="text-xs opacity-90">Chọn Gói</span>
-                    </span>
+                    →
                   </Button>
                 </div>
               </Card>
             ))}
           </div>
         </div>
+
+        {/* Common Disclaimer */}
+        <Card className="max-w-4xl mx-auto mt-12 p-3 bg-primary/5 dark:bg-primary/10 border-primary/20">
+          <div className="space-y-1.5 text-xs text-muted-foreground leading-relaxed">
+            <p>
+              This app provides general wellness guidance and educational content. It is NOT a substitute for professional medical, psychological, or financial advice. If you are experiencing a medical emergency or mental health crisis, please contact emergency services immediately.
+            </p>
+            <p>
+              Ứng dụng này cung cấp hướng dẫn sức khỏe tổng thể và nội dung giáo dục. Nó KHÔNG thay thế lời khuyên y tế, tâm lý hoặc tài chính chuyên nghiệp. Nếu bạn đang gặp cấp cứu y tế hoặc khủng hoảng sức khỏe tâm thần, vui lòng liên hệ dịch vụ cấp cứu ngay lập tức.
+            </p>
+          </div>
+        </Card>
       </div>
     </div>
   );
