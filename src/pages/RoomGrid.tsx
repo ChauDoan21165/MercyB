@@ -7,14 +7,35 @@ import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/comp
 import { ALL_ROOMS } from "@/lib/roomData";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { useEffect, useState } from "react";
 
 const RoomGrid = () => {
   const navigate = useNavigate();
   const { canAccessVIP1, canAccessVIP2, canAccessVIP3 } = useUserAccess();
   const { toast } = useToast();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      setIsAuthenticated(!!user);
+    };
+    checkAuth();
+  }, []);
 
   const handleRoomClick = (room: typeof ALL_ROOMS[0]) => {
     if (!room.hasData) return;
+
+    // Check authentication for free rooms
+    if (room.tier === 'free' && !isAuthenticated) {
+      toast({
+        title: "Please register first / Vui lòng đăng ký trước",
+        description: "You need to sign in to access this room / Bạn cần đăng nhập để truy cập phòng này",
+        variant: "destructive"
+      });
+      return;
+    }
     
     // Check VIP access
     if (room.tier === 'vip1' && !canAccessVIP1) {

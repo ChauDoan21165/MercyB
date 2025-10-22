@@ -223,57 +223,76 @@ const PaymentTest = () => {
           }
         </h1>
 
-        <div className="grid md:grid-cols-2 gap-4 mb-8 p-4 bg-muted/50 rounded-lg">
-          <div className="flex items-start gap-3">
-            <span className="text-2xl">⚡</span>
-            <div>
-              <h3 className="font-semibold">Fast PayPal / PayPal Nhanh Chóng</h3>
-              <p className="text-sm text-muted-foreground">Pay via app, activate instantly / Thanh toán qua app, kích hoạt ngay lập tức</p>
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <Card className="p-6 bg-card/50 backdrop-blur border-primary/20">
+            <div className="flex items-start gap-3">
+              <span className="text-3xl">⚡</span>
+              <div>
+                <h3 className="text-xl font-bold mb-1">Fast PayPal / PayPal Nhanh Chóng</h3>
+                <p className="text-sm text-muted-foreground">Pay via app, activate instantly / Thanh toán qua app, kích hoạt ngay lập tức</p>
+              </div>
             </div>
-          </div>
-          <div className="flex items-start gap-3">
-            <span className="text-2xl">📸</span>
-            <div>
-              <h3 className="font-semibold">Manual Transfer / Chuyển Khoản Thủ Công</h3>
-              <p className="text-sm text-muted-foreground">You can pay yourself via PayPal, give app the transaction screenshot / Bạn có thể tự trả bằng PayPal, cho app màn hình giao dịch</p>
+          </Card>
+          <Card className="p-6 bg-card/50 backdrop-blur border-primary/20">
+            <div className="flex items-start gap-3">
+              <span className="text-3xl">💰</span>
+              <div>
+                <h3 className="text-xl font-bold mb-1">Manual Transfer / Chuyển Khoản Thủ Công</h3>
+                <p className="text-sm text-muted-foreground">You can pay yourself via PayPal, give app the transaction screenshot / Bạn có thể tự trả bằng PayPal, cho app màn hình giao dịch</p>
+              </div>
             </div>
-          </div>
+          </Card>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {tiers.map((tier) => (
             <Card 
               key={tier.id} 
               ref={(el) => tierRefs.current[tier.id] = el}
-              className="relative"
+              className="relative border-2 transition-all duration-300 hover:shadow-xl bg-gradient-to-br from-card/90 to-card/50 backdrop-blur-sm"
+              style={{
+                borderColor: `hsl(var(--${tier.name.includes('VIP1') ? 'secondary' : tier.name.includes('VIP2') ? 'accent' : tier.name.includes('VIP3') ? 'primary' : 'border'}))`,
+              }}
             >
               <CardHeader>
-                <CardTitle>{tier.name}</CardTitle>
-                <CardDescription>{tier.name_vi}</CardDescription>
+                <CardTitle className="text-3xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  {tier.name}
+                </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="text-3xl font-bold">
-                  ${tier.price_monthly}
-                  <span className="text-sm font-normal text-muted-foreground">/month / tháng</span>
+              <CardContent className="space-y-6">
+                <div className="text-4xl font-bold flex items-baseline gap-2">
+                  <span>${tier.price_monthly}</span>
+                  <span className="text-base font-normal text-muted-foreground">/month / tháng</span>
                 </div>
 
-                <ul className="space-y-2 text-sm">
-                  <li>✓ {tier.room_access_per_day} rooms per day / {tier.room_access_per_day} phòng mỗi ngày</li>
+                <ul className="space-y-3 text-sm">
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary mt-0.5">✓</span>
+                    <span>{tier.room_access_per_day} rooms per day / {tier.room_access_per_day} phòng mỗi ngày</span>
+                  </li>
                   {tier.custom_topics_allowed > 0 && (
-                    <li>✓ {tier.custom_topics_allowed} custom topics / {tier.custom_topics_allowed} chủ đề tùy chỉnh</li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary mt-0.5">✓</span>
+                      <span>{tier.custom_topics_allowed} custom topics / {tier.custom_topics_allowed} chủ đề tùy chỉnh</span>
+                    </li>
                   )}
-                  {tier.priority_support && <li>✓ Priority support / Hỗ trợ ưu tiên</li>}
+                  {tier.priority_support && (
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary mt-0.5">✓</span>
+                      <span>Priority support / Hỗ trợ ưu tiên</span>
+                    </li>
+                  )}
                 </ul>
 
-                <div className="space-y-2">
+                <div className="space-y-3 pt-4">
                   <Button
                     onClick={() => handlePayment(tier.id)}
                     disabled={loading}
-                    className="w-full"
+                    className="w-full h-12 text-base bg-primary hover:bg-primary/90"
                   >
                     ⚡ Pay with PayPal
                   </Button>
-                  <div className="w-full border-2 border-dashed border-muted rounded-md p-2">
+                  <div className="w-full border-2 border-dashed border-muted rounded-md p-3">
                     <div 
                       id={`paypal-button-${tier.id}`} 
                       className="min-h-[50px] w-full"
@@ -285,16 +304,16 @@ const PaymentTest = () => {
                       <span className="w-full border-t" />
                     </div>
                     <div className="relative flex justify-center text-xs uppercase">
-                      <span className="bg-background px-2 text-muted-foreground">OR / HOẶC</span>
+                      <span className="bg-card px-2 text-muted-foreground">OR / HOẶC</span>
                     </div>
                   </div>
 
                   <Button
                     variant="outline"
-                    className="w-full"
+                    className="w-full h-12 text-base"
                     onClick={() => navigate(`/manual-payment?tier=${tier.id}&name=${encodeURIComponent(tier.name)}&price=${tier.price_monthly}`)}
                   >
-                    📸 Manual Payment
+                    💰 Manual Payment
                   </Button>
                 </div>
               </CardContent>
