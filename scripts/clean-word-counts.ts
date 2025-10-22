@@ -13,15 +13,18 @@ const roomDirs = [
 ];
 
 function cleanContent(text: string): string {
-  if (typeof text !== 'string') return text;
+  if (typeof text !== 'string') return text as any;
   
-  // Remove word count patterns (case insensitive, with various markers)
+  // Remove word count patterns, markdown bold, and cleanup
   let cleaned = text
+    // Word count patterns (EN/VI)
     .replace(/\*?[Ww]ord [Cc]ount:?\s*\d+\*?/g, '')
     .replace(/\([Ww]ord [Cc]ount:?\s*\d+\)/g, '')
     .replace(/[Ss]ố từ:?\s*\d+/g, '')
     .replace(/\*[Ss]ố từ:?\s*\d+\*/g, '')
-    .replace(/\([Ss]ố từ:?\s*\d+\)/g, '');
+    .replace(/\([Ss]ố từ:?\s*\d+\)/g, '')
+    // Remove markdown bold markers
+    .replace(/\*\*/g, '');
   
   // Clean up extra whitespace/newlines left behind
   cleaned = cleaned.replace(/\n\n\n+/g, '\n\n').trim();
@@ -82,6 +85,25 @@ function cleanRoomFile(filePath: string) {
         });
       });
     }
+    
+    // Remove room-level disclaimers and global safety notes
+    const removedAny = (() => {
+      let changed = false;
+      ['safety_disclaimer', 'crisis_footer', 'safety_footer'].forEach((key) => {
+        if (data[key]) { delete data[key]; changed = true; }
+      });
+      if (data.global_notes) {
+        ['safety', 'disclaimer'].forEach((k) => {
+          if (data.global_notes[k]) { delete data.global_notes[k]; changed = true; }
+        });
+        if (Object.keys(data.global_notes).length === 0) {
+          delete data.global_notes;
+          changed = true;
+        }
+      }
+      return changed;
+    })();
+    if (removedAny) modified = true;
 
     if (modified) {
       fs.writeFileSync(filePath, JSON.stringify(data, null, 2));

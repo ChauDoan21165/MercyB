@@ -394,13 +394,15 @@ serve(async (req) => {
               contextInfo += `Title: ${entry.title.en} / ${entry.title.vi}\n`;
             }
             
-            // Extract content without word counts and markdown title repetitions
+            // Extract content without word counts, markdown bold, timestamps, and title repetitions
             const cleanCopy = (text: string) => {
               if (!text) return '';
               return text
                 .replace(/\*\*[^*]+\*\*\n\n/g, '') // Remove markdown title at start
                 .replace(/\*?[Ww]ord [Cc]ount:?\s*\d+\*?/g, '') // Remove word count
                 .replace(/\*[Ss]ố từ:?\s*\d+\*/g, '') // Remove Vietnamese word count
+                .replace(/\*\*/g, '') // Remove all bold markers
+                .replace(/(?:\n|\s)*\d{1,2}:\d{2}:\d{2}\s?(AM|PM)?\.?$/i, '') // Remove trailing timestamps like 4:45:48 AM
                 .trim();
             };
             
@@ -433,14 +435,6 @@ serve(async (req) => {
       console.log(`[FEEDBACK] Room "${roomData.schema_id}" - NO ENTRIES DATA AVAILABLE`);
     }
 
-    // Add safety and crisis info
-    if (roomData.safety_disclaimer) {
-      contextInfo += `Safety: ${roomData.safety_disclaimer.en || roomData.safety_disclaimer}\n`;
-    }
-    if (roomData.crisis_footer) {
-      const crisis = roomData.crisis_footer.en || roomData.crisis_footer;
-      contextInfo += `Emergency: ${crisis}\n\n`;
-    }
 
     const systemPrompt = `${contextInfo}
 CRITICAL INSTRUCTIONS:

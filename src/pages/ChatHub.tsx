@@ -181,7 +181,14 @@ const handleAccessDenied = () => {
         setMainMessages(prev => 
           prev.map(m => 
             m.id === typingMessageId 
-              ? { ...m, text: response.text, relatedRooms: response.relatedRooms }
+              ? { 
+                  ...m, 
+                  text: response.text
+                    .replace(/\*\*/g, '')
+                    .replace(/(?:\n|\s)*\d{1,2}:\d{2}:\d{2}\s?(AM|PM)?\.?$/i, '')
+                    .trim(), 
+                  relatedRooms: response.relatedRooms 
+                }
               : m
           )
         );
@@ -273,10 +280,14 @@ const handleAccessDenied = () => {
             const content = parsed.choices?.[0]?.delta?.content;
             if (content) {
               accumulatedText += content;
-              // Update the AI message with accumulated text
+              const cleaned = accumulatedText
+                .replace(/\*\*/g, '')
+                .replace(/(?:\n|\s)*\d{1,2}:\d{2}:\d{2}\s?(AM|PM)?\.?$/i, '')
+                .trim();
+              // Update the AI message with accumulated, cleaned text
               setMainMessages(prev =>
                 prev.map(m =>
-                  m.id === aiMessageId ? { ...m, text: accumulatedText } : m
+                  m.id === aiMessageId ? { ...m, text: cleaned } : m
                 )
               );
             }
