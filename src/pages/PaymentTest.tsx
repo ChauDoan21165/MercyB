@@ -66,7 +66,7 @@ const PaymentTest = () => {
       
       const script = document.createElement('script');
       script.id = 'paypal-sdk';
-      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=USD`;
+      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=USD&components=buttons&intent=capture`;
       script.async = true;
       
       // Wait for script to load
