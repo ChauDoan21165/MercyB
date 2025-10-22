@@ -18,14 +18,14 @@ export const RoomDisclaimer = ({ roomId }: RoomDisclaimerProps) => {
   if (!safetyEn && !safetyVi && !crisisEn && !crisisVi) return null;
 
   return (
-    <div className="mt-2 p-2 bg-muted/30 rounded border border-border/30">
-      <div className="flex items-start gap-1.5">
-        <AlertCircle className="h-3 w-3 text-muted-foreground mt-0.5 flex-shrink-0" />
-        <div className="space-y-1 text-[10px] leading-tight text-muted-foreground">
-          {safetyEn && <p>{safetyEn}</p>}
-          {safetyVi && <p>{safetyVi}</p>}
-          {crisisEn && <p className="font-medium">{crisisEn}</p>}
-          {crisisVi && <p className="font-medium">{crisisVi}</p>}
+    <div className="p-3 bg-yellow-50/80 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800 shadow-sm">
+      <div className="flex items-start gap-2">
+        <AlertCircle className="h-4 w-4 text-yellow-600 dark:text-yellow-500 mt-0.5 flex-shrink-0" />
+        <div className="space-y-1.5 text-xs leading-relaxed text-yellow-900 dark:text-yellow-100">
+          {safetyEn && <p className="font-medium">{safetyEn}</p>}
+          {safetyVi && <p className="font-medium">{safetyVi}</p>}
+          {crisisEn && <p className="font-semibold text-red-600 dark:text-red-400">{crisisEn}</p>}
+          {crisisVi && <p className="font-semibold text-red-600 dark:text-red-400">{crisisVi}</p>}
         </div>
       </div>
     </div>

@@ -477,6 +477,11 @@ const handleAccessDenied = () => {
           </div>
         </div>
         
+        {/* Room Disclaimer - Always Visible */}
+        <div className="sticky top-20 z-10">
+          <RoomDisclaimer roomId={roomId || ""} />
+        </div>
+        
         {/* Progress Tracker */}
         <RoomProgress totalRooms={progress.totalRooms} streak={progress.streak} />
 
@@ -650,11 +655,6 @@ const handleAccessDenied = () => {
               </div>
             </div>
           </Card>
-        </div>
-
-        {/* Room Disclaimer */}
-        <div className="mt-2">
-          <RoomDisclaimer roomId={roomId || ""} />
         </div>
       </div>
     </div>

@@ -381,46 +381,6 @@ const AdminDashboard = () => {
 
         <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
 
-        <Card className="mb-6 border-yellow-500/50 bg-yellow-50/10">
-          <CardHeader>
-            <CardTitle className="text-lg flex items-center gap-2">
-              ⚠️ Important Disclaimers
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3 text-sm">
-            <div className="flex items-start gap-2">
-              <span className="text-lg">💰</span>
-              <div>
-                <strong>Payment Verification:</strong> All payment submissions require admin verification. Check the Payment Verification page regularly to approve or reject submissions.
-              </div>
-            </div>
-            <div className="flex items-start gap-2">
-              <span className="text-lg">📧</span>
-              <div>
-                <strong>PayPal Account:</strong> Ensure cd12536@gmail.com is active and monitored for incoming payments.
-              </div>
-            </div>
-            <div className="flex items-start gap-2">
-              <span className="text-lg">🔔</span>
-              <div>
-                <strong>Notifications:</strong> Enable feedback notifications in the Feedback Notifications tab to stay updated on user feedback, payment submissions, and topic requests.
-              </div>
-            </div>
-            <div className="flex items-start gap-2">
-              <span className="text-lg">📝</span>
-              <div>
-                <strong>Topic Requests:</strong> VIP users can request custom topics. Review and update their status regularly in the Requests tab.
-              </div>
-            </div>
-            <div className="flex items-start gap-2">
-              <span className="text-lg">⚡</span>
-              <div>
-                <strong>Data Privacy:</strong> All user data, payment information, and screenshots are confidential. Handle with care and in compliance with privacy regulations.
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
         <Tabs defaultValue="subscriptions" className="space-y-6">
           <TabsList>
             <TabsTrigger value="subscriptions">
