@@ -372,9 +372,11 @@ const handleAccessDenied = () => {
           }`}
         >
           <p className="text-sm whitespace-pre-wrap">{message.text}</p>
-          <span className="text-xs opacity-70 mt-1 block">
-            {message.timestamp.toLocaleTimeString()}
-          </span>
+          {message.isUser && (
+            <span className="text-xs opacity-70 mt-1 block">
+              {message.timestamp.toLocaleTimeString()}
+            </span>
+          )}
         </div>
         
         {!message.isUser && (
