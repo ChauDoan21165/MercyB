@@ -20,6 +20,7 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useCredits } from "@/hooks/useCredits";
 import { CreditLimitModal } from "@/components/CreditLimitModal";
 import { CreditsDisplay } from "@/components/CreditsDisplay";
+import { RoomDisclaimer } from "@/components/RoomDisclaimer";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { keywordRespond } from "@/lib/keywordResponder";
@@ -442,7 +443,18 @@ const handleAccessDenied = () => {
               <ToggleGroup 
                 type="single" 
                 value={contentMode} 
-                onValueChange={(value) => value && setContentMode(value as "ai" | "keyword")}
+                onValueChange={(value) => {
+                  if (value === "ai" && !canAccessVIP1) {
+                    toast({
+                      title: "VIP Required / Yêu Cầu VIP",
+                      description: "AI mode is only available for VIP members. Switch to keyword mode for free access. / Chế độ AI chỉ dành cho thành viên VIP. Chuyển sang chế độ từ khóa để sử dụng miễn phí.",
+                      variant: "destructive",
+                      duration: 4000,
+                    });
+                    return;
+                  }
+                  if (value) setContentMode(value as "ai" | "keyword");
+                }}
                 className="inline-flex bg-card border rounded-lg p-1"
               >
                 <ToggleGroupItem 
@@ -651,6 +663,9 @@ const handleAccessDenied = () => {
             </div>
           </Card>
         </div>
+
+        {/* Room Disclaimer */}
+        <RoomDisclaimer roomId={roomId || ""} />
       </div>
     </div>
 

@@ -104,14 +104,8 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
 
   if (matchedEntry) {
     const base = buildEntryResponse(matchedEntry);
-    const safety = getBilingual(roomData, "safety_disclaimer");
-    const crisis = getBilingual(roomData, "crisis_footer");
-    
-    const text = [base, safety.en, safety.vi, crisis.en, crisis.vi]
-      .map((s) => (s || "").trim())
-      .filter(Boolean)
-      .join("\n\n");
-    return { text, matched: true, relatedRooms };
+    // Note: Disclaimer now displayed at bottom of chat, not per-entry
+    return { text: base, matched: true, relatedRooms };
   }
 
   // No match: check if message is substantial before showing essay
