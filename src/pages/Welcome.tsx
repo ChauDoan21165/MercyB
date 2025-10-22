@@ -75,8 +75,8 @@ const Welcome = () => {
       price: "$2",
       period: { vi: "/tháng", en: "/month" },
       features: {
-        en: ["Request 1 custom topic", "1 full room access/day"],
-        vi: ["Yêu cầu 1 chủ đề", "Truy cập tự do 1 phòng/ngày"]
+        en: ["Users can request one custom topic", "1 full room access/day"],
+        vi: ["Người dùng có thể yêu cầu một chủ đề tùy chỉnh", "Truy cập tự do 1 phòng/ngày"]
       },
       popular: true
     },
@@ -85,8 +85,8 @@ const Welcome = () => {
       price: "$4",
       period: { vi: "/tháng", en: "/month" },
       features: {
-        en: ["Request 2 custom topics", "2 full rooms access/day"],
-        vi: ["Yêu cầu 2 chủ đề", "Truy cập tự do 2 phòng/ngày"]
+        en: ["Users can request two custom topics", "2 full rooms access/day"],
+        vi: ["Người dùng có thể yêu cầu hai chủ đề tùy chỉnh", "Truy cập tự do 2 phòng/ngày"]
       }
     },
     {
@@ -94,8 +94,8 @@ const Welcome = () => {
       price: "$6",
       period: { vi: "/tháng", en: "/month" },
       features: {
-        en: ["3 custom topics", "3 rooms access/day", "AI Matchmaking", "Voice chat"],
-        vi: ["3 chủ đề tùy chỉnh", "Truy cập 3 phòng/ngày", "Ghép đôi AI", "Chat bằng giọng nói"]
+        en: ["Users can request three custom topics", "3 rooms access/day", "AI Matchmaking", "Voice chat"],
+        vi: ["Người dùng có thể yêu cầu ba chủ đề tùy chỉnh", "Truy cập 3 phòng/ngày", "Ghép đôi AI", "Chat bằng giọng nói"]
       }
     }
   ];

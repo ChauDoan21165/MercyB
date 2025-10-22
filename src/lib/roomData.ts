@@ -102,7 +102,8 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "finding-gods-peace", nameVi: "Tìm Bình An Trong Chúa", nameEn: "Finding God's Peace", hasData: true, tier: "free", dataFile: "finding_gods_peace_free.json" },
   { id: "gods-guidance", nameVi: "Sự Dẫn Dắt Của Chúa VIP1", nameEn: "God's Guidance VIP1", hasData: true, tier: "vip1", dataFile: "gods_guidance_vip1.json" },
   { id: "gods-strength", nameVi: "Sức Mạnh Của Chúa VIP2", nameEn: "God's Strength VIP2", hasData: true, tier: "vip2", dataFile: "gods_strength_vip2_resilience.json" },
-  { id: "gods-purpose", nameVi: "Mục Đích Của Chúa VIP3", nameEn: "God's Purpose VIP3", hasData: true, tier: "vip3", dataFile: "gods_purpose_vip3.json" }
+  { id: "gods-purpose", nameVi: "Mục Đích Của Chúa VIP3", nameEn: "God's Purpose VIP3", hasData: true, tier: "vip3", dataFile: "gods_purpose_vip3.json" },
+  { id: "proverbs-wisdom-vip1", nameVi: "Tục Ngữ Trí Tuệ VIP1", nameEn: "Proverbs Wisdom VIP1", hasData: true, tier: "vip1", dataFile: "proverbs_wisdom_VIP1.json" }
 ];
 
 // Get room info by ID
