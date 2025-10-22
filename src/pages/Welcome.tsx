@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, Shield, LogOut, User } from "lucide-react";
+import { Check, Shield, LogOut, User, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { PointsDisplay } from "@/components/PointsDisplay";
 import { useUserAccess } from "@/hooks/useUserAccess";
@@ -76,8 +76,8 @@ const Welcome = () => {
       price: "$2",
       period: { vi: "/tháng", en: "/month" },
       features: {
-        en: ["Users can request one custom topic", "1 full room access/day"],
-        vi: ["Người dùng có thể yêu cầu một chủ đề tùy chỉnh", "Truy cập tự do 1 phòng/ngày"]
+        en: ["Users can request one custom topic", "1 full room access/day", "🤖 AI Content"],
+        vi: ["Người dùng có thể yêu cầu một chủ đề tùy chỉnh", "Truy cập tự do 1 phòng/ngày", "Nội dung tạo bởi AI"]
       },
       popular: true
     },
@@ -86,8 +86,8 @@ const Welcome = () => {
       price: "$4",
       period: { vi: "/tháng", en: "/month" },
       features: {
-        en: ["Users can request two custom topics", "2 full rooms access/day"],
-        vi: ["Người dùng có thể yêu cầu hai chủ đề tùy chỉnh", "Truy cập tự do 2 phòng/ngày"]
+        en: ["Users can request two custom topics", "2 full rooms access/day", "🤖 AI Content"],
+        vi: ["Người dùng có thể yêu cầu hai chủ đề tùy chỉnh", "Truy cập tự do 2 phòng/ngày", "Nội dung tạo bởi AI"]
       }
     },
     {
@@ -95,8 +95,8 @@ const Welcome = () => {
       price: "$6",
       period: { vi: "/tháng", en: "/month" },
       features: {
-        en: ["Users can request three custom topics", "3 rooms access/day", "AI Matchmaking", "Voice chat"],
-        vi: ["Người dùng có thể yêu cầu ba chủ đề tùy chỉnh", "Truy cập 3 phòng/ngày", "Ghép đôi AI", "Chat bằng giọng nói"]
+        en: ["Users can request three custom topics", "3 rooms access/day", "AI Matchmaking", "Voice chat", "🤖 AI Content"],
+        vi: ["Người dùng có thể yêu cầu ba chủ đề tùy chỉnh", "Truy cập 3 phòng/ngày", "Ghép đôi AI", "Chat bằng giọng nói", "Nội dung tạo bởi AI"]
       }
     }
   ];
@@ -291,9 +291,9 @@ const Welcome = () => {
             {tiers.map((tier, index) => (
               <Card
                 key={index}
-                className="relative p-6 transition-all hover:shadow-hover hover:scale-105"
+                className="relative p-6 transition-all hover:shadow-hover hover:scale-105 flex flex-col"
               >
-                <div className="space-y-4">
+                <div className="space-y-4 flex flex-col flex-grow">
                   <div className="space-y-1">
                     <h3 className="text-xl font-bold text-foreground">
                       {tier.name.en}
@@ -314,7 +314,7 @@ const Welcome = () => {
                     )}
                   </div>
 
-                  <div className="space-y-3 pt-4">
+                  <div className="space-y-3 pt-4 flex-grow">
                     {tier.features.en.map((feature, idx) => (
                       <div key={idx} className="space-y-1">
                         <div className="flex items-start gap-2">
@@ -328,27 +328,29 @@ const Welcome = () => {
                     ))}
                   </div>
 
-                  <Button
-                    className={`w-12 h-12 rounded-full mt-6 mx-auto ${
-                      index === 0 
-                        ? "bg-white hover:bg-white/90 text-foreground" 
-                        : index === 1
-                        ? "bg-gradient-to-br from-yellow-200 via-yellow-400 to-yellow-600 hover:opacity-90"
-                        : index === 2
-                        ? "bg-gradient-to-br from-yellow-300 via-yellow-500 to-yellow-700 hover:opacity-90"
-                        : "bg-gradient-to-br from-yellow-400 via-yellow-600 to-yellow-800 hover:opacity-90"
-                    }`}
-                    size="icon"
-                    onClick={() => {
-                      if (index === 0) {
-                        navigate("/rooms");
-                      } else {
-                        navigate(`/subscribe?tier=${tier.name.en.toLowerCase()}`);
-                      }
-                    }}
-                  >
-                    →
-                  </Button>
+                  <div className="mt-auto pt-4 flex justify-center">
+                    <Button
+                      className={`w-14 h-14 rounded-full ${
+                        index === 0 
+                          ? "bg-gradient-to-br from-yellow-200 via-yellow-400 to-yellow-600 hover:opacity-90" 
+                          : index === 1
+                          ? "bg-gradient-to-br from-yellow-300 via-yellow-500 to-yellow-700 hover:opacity-90"
+                          : index === 2
+                          ? "bg-gradient-to-br from-yellow-400 via-yellow-600 to-yellow-800 hover:opacity-90"
+                          : "bg-gradient-to-br from-yellow-500 via-yellow-700 to-yellow-900 hover:opacity-90"
+                      }`}
+                      size="icon"
+                      onClick={() => {
+                        if (index === 0) {
+                          navigate("/rooms");
+                        } else {
+                          navigate(`/subscribe?tier=${tier.name.en.toLowerCase()}`);
+                        }
+                      }}
+                    >
+                      <ArrowRight className="w-6 h-6 text-white" />
+                    </Button>
+                  </div>
                 </div>
               </Card>
             ))}

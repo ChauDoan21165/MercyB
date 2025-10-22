@@ -221,10 +221,12 @@ const PaymentTest = () => {
           </Button>
         </div>
 
-        <h1 className="text-4xl font-bold mb-4">Choose Your VIP Package / Chọn Gói VIP Của Bạn</h1>
-        <p className="text-muted-foreground mb-4">
-          Unlock premium features and exclusive content / Mở khóa tính năng cao cấp và nội dung độc quyền
-        </p>
+        <h1 className="text-4xl font-bold mb-4">
+          {searchParams.get('tier') 
+            ? `Payment for ${searchParams.get('tier')?.toUpperCase()} / Thanh toán cho ${searchParams.get('tier')?.toUpperCase()}`
+            : 'Choose Your VIP Package / Chọn Gói VIP Của Bạn'
+          }
+        </h1>
 
         <div className="grid md:grid-cols-2 gap-4 mb-8 p-4 bg-muted/50 rounded-lg">
           <div className="flex items-start gap-3">
