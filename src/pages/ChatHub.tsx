@@ -412,19 +412,30 @@ const handleAccessDenied = () => {
               <h2 className="text-xl font-bold text-foreground">{currentRoom.nameEn}</h2>
               <p className="text-sm text-muted-foreground">{currentRoom.nameVi}</p>
             </div>
-            <ToggleGroup 
-              type="single" 
-              value={contentMode} 
-              onValueChange={(value) => value && setContentMode(value as "ai" | "keyword")}
-              className="inline-flex"
-            >
-              <ToggleGroupItem value="ai" aria-label="AI Content" className="text-xs px-3">
-                AI Content
-              </ToggleGroupItem>
-              <ToggleGroupItem value="keyword" aria-label="Keyword Content" className="text-xs px-3">
-                Keyword Content
-              </ToggleGroupItem>
-            </ToggleGroup>
+            <div className="flex flex-col items-center gap-2">
+              <p className="text-xs text-muted-foreground">Choose content mode / Chọn chế độ nội dung:</p>
+              <ToggleGroup 
+                type="single" 
+                value={contentMode} 
+                onValueChange={(value) => value && setContentMode(value as "ai" | "keyword")}
+                className="inline-flex bg-card border rounded-lg p-1"
+              >
+                <ToggleGroupItem 
+                  value="ai" 
+                  aria-label="AI Content" 
+                  className="text-sm px-4 py-2 data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+                >
+                  🤖 AI Content
+                </ToggleGroupItem>
+                <ToggleGroupItem 
+                  value="keyword" 
+                  aria-label="Keyword Content" 
+                  className="text-sm px-4 py-2 data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+                >
+                  📚 Keyword Content
+                </ToggleGroupItem>
+              </ToggleGroup>
+            </div>
           </div>
           
           <div className="flex items-center gap-3">
