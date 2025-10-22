@@ -223,33 +223,34 @@ const PaymentTest = () => {
           }
         </h1>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <Card className="p-6 bg-card/50 backdrop-blur border-primary/20">
-            <div className="flex items-start gap-3">
-              <span className="text-3xl">⚡</span>
-              <div>
-                <h3 className="text-xl font-bold mb-1">Fast PayPal / PayPal Nhanh Chóng</h3>
-                <p className="text-sm text-muted-foreground">Pay via app, activate instantly / Thanh toán qua app, kích hoạt ngay lập tức</p>
+        <div className="max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <Card className="p-6 bg-card/50 backdrop-blur border-primary/20">
+              <div className="flex items-start gap-3">
+                <span className="text-3xl">⚡</span>
+                <div>
+                  <h3 className="text-xl font-bold mb-1">Fast PayPal / PayPal Nhanh Chóng</h3>
+                  <p className="text-sm text-muted-foreground">Pay via app, activate instantly / Thanh toán qua app, kích hoạt ngay lập tức</p>
+                </div>
               </div>
-            </div>
-          </Card>
-          <Card className="p-6 bg-card/50 backdrop-blur border-primary/20">
-            <div className="flex items-start gap-3">
-              <span className="text-3xl">💰</span>
-              <div>
-                <h3 className="text-xl font-bold mb-1">Manual Transfer / Chuyển Khoản Thủ Công</h3>
-                <p className="text-sm text-muted-foreground">You can pay yourself via PayPal, give app the transaction screenshot / Bạn có thể tự trả bằng PayPal, cho app màn hình giao dịch</p>
+            </Card>
+            <Card className="p-6 bg-card/50 backdrop-blur border-primary/20">
+              <div className="flex items-start gap-3">
+                <span className="text-3xl">💰</span>
+                <div>
+                  <h3 className="text-xl font-bold mb-1">Manual Transfer / Chuyển Khoản Thủ Công</h3>
+                  <p className="text-sm text-muted-foreground">You can pay yourself via PayPal, give app the transaction screenshot / Bạn có thể tự trả bằng PayPal, cho app màn hình giao dịch</p>
+                </div>
               </div>
-            </div>
-          </Card>
-        </div>
+            </Card>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="space-y-6">
           {tiers.map((tier) => (
             <Card 
               key={tier.id} 
               ref={(el) => tierRefs.current[tier.id] = el}
-              className="relative border-2 transition-all duration-300 hover:shadow-xl bg-gradient-to-br from-card/90 to-card/50 backdrop-blur-sm"
+              className="relative border-2 transition-all duration-300 hover:shadow-xl bg-gradient-to-br from-card/90 to-card/50 backdrop-blur-sm w-full"
               style={{
                 borderColor: `hsl(var(--${tier.name.includes('VIP1') ? 'secondary' : tier.name.includes('VIP2') ? 'accent' : tier.name.includes('VIP3') ? 'primary' : 'border'}))`,
               }}
@@ -319,13 +320,14 @@ const PaymentTest = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
+          </div>
 
-        <div className="mt-8 p-4 bg-muted rounded-lg">
-          <h3 className="font-semibold mb-2">💳 Secure Payment / Thanh toán An toàn</h3>
-          <p className="text-sm text-muted-foreground">
-            All payments are securely processed via PayPal. Your subscription will be activated immediately after successful payment. / Tất cả thanh toán được xử lý an toàn qua PayPal. Gói đăng ký sẽ được kích hoạt ngay sau khi thanh toán thành công.
-          </p>
+          <div className="mt-8 p-4 bg-muted rounded-lg">
+            <h3 className="font-semibold mb-2">💳 Secure Payment / Thanh toán An toàn</h3>
+            <p className="text-sm text-muted-foreground">
+              All payments are securely processed via PayPal. Your subscription will be activated immediately after successful payment. / Tất cả thanh toán được xử lý an toàn qua PayPal. Gói đăng ký sẽ được kích hoạt ngay sau khi thanh toán thành công.
+            </p>
+          </div>
         </div>
       </div>
     </div>
