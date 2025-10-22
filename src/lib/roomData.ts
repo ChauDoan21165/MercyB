@@ -98,7 +98,11 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "overcome-storm", nameVi: "Vượt Qua Bão Tố VIP3", nameEn: "Overcome Storm VIP3", hasData: true, tier: "vip3", dataFile: "overcome_storm_vip3.json" },
   { id: "unlock-shadow", nameVi: "Mở Khóa Bóng Tối VIP3", nameEn: "Unlock Shadow VIP3", hasData: true, tier: "vip3", dataFile: "unlock_shadow_vip3.json" },
   { id: "human-rights", nameVi: "Quyền Con Người VIP3", nameEn: "Human Rights VIP3", hasData: true, tier: "vip3", dataFile: "human_rights_vip3.json" },
-  { id: "philosophy", nameVi: "Triết học cho đời thường", nameEn: "Philosophy for Everyday", hasData: true, tier: "free", dataFile: "philosophy.json" }
+  { id: "philosophy", nameVi: "Triết học cho đời thường", nameEn: "Philosophy for Everyday", hasData: true, tier: "free", dataFile: "philosophy.json" },
+  { id: "finding-gods-peace", nameVi: "Tìm Bình An Trong Chúa", nameEn: "Finding God's Peace", hasData: true, tier: "free", dataFile: "finding_gods_peace_free.json" },
+  { id: "gods-guidance", nameVi: "Sự Dẫn Dắt Của Chúa VIP1", nameEn: "God's Guidance VIP1", hasData: true, tier: "vip1", dataFile: "gods_guidance_vip1.json" },
+  { id: "gods-strength", nameVi: "Sức Mạnh Của Chúa VIP2", nameEn: "God's Strength VIP2", hasData: true, tier: "vip2", dataFile: "gods_strength_vip2_resilience.json" },
+  { id: "gods-purpose", nameVi: "Mục Đích Của Chúa VIP3", nameEn: "God's Purpose VIP3", hasData: true, tier: "vip3", dataFile: "gods_purpose_vip3.json" }
 ];
 
 // Get room info by ID

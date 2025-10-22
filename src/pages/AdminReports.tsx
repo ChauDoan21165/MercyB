@@ -103,7 +103,7 @@ const AdminReports = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-primary/5 p-4">
+    <div className="min-h-screen p-4" style={{ background: 'var(--gradient-admin)' }}>
       <div className="container max-w-7xl mx-auto py-8">
         <Button
           variant="ghost"

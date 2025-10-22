@@ -140,7 +140,7 @@ const AdminStats = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background p-8">
+    <div className="min-h-screen p-8" style={{ background: 'var(--gradient-admin)' }}>
       <div className="max-w-7xl mx-auto">
         <div className="mb-8 flex items-center justify-between">
           <div>

@@ -175,7 +175,7 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 p-4">
+    <div className="min-h-screen p-4" style={{ background: 'var(--gradient-admin)' }}>
       <div className="max-w-7xl mx-auto pt-8">
         <div className="flex items-center justify-between mb-6">
           <Button variant="ghost" onClick={() => navigate("/rooms")}>

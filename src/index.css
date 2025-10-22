@@ -79,10 +79,11 @@ All colors MUST be HSL.
     --vip3-accent: 207 90% 55%;
     --vip3-gold: 46 90% 55%;
     
-    /* Admin page colors (red-orange to lime) - DARK */
-    --admin-primary: 9 85% 50%;
-    --admin-secondary: 41 90% 50%;
-    --admin-accent: 72 85% 50%;
+    /* Admin page colors (red-orange to lime gradient from DB2800, DB9600, B3DB00) - DARK */
+    --admin-primary: 11 100% 43%;
+    --admin-secondary: 41 100% 43%;
+    --admin-accent: 71 100% 43%;
+    --gradient-admin: linear-gradient(135deg, hsl(11 100% 43%), hsl(41 100% 43%), hsl(71 100% 43%));
   }
 
   .dark {
