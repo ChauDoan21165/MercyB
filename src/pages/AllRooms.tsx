@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, Lock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
 import { ALL_ROOMS } from "@/lib/roomData";
 import { useUserAccess } from "@/hooks/useUserAccess";
 
@@ -31,8 +32,9 @@ const AllRooms = () => {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: 'hsl(var(--page-allrooms))' }}>
-      <div className="container mx-auto px-4 py-8 max-w-7xl">
+    <TooltipProvider>
+      <div className="min-h-screen" style={{ background: 'hsl(var(--page-allrooms))' }}>
+        <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="mb-8 space-y-4">
           <div className="flex items-center justify-between mb-4">
@@ -71,65 +73,77 @@ const AllRooms = () => {
 
         {/* Room Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-          {ALL_ROOMS.map((room) => (
-            <Card
-              key={room.id}
-              className={`relative p-3 transition-all duration-300 cursor-pointer group ${getTierColor(room.tier)} ${
-                room.hasData 
-                  ? "hover:scale-110 hover:shadow-hover hover:z-10" 
-                  : "opacity-60 cursor-not-allowed"
-              }`}
-              onClick={() => room.hasData && navigate(`/chat/${room.id}`)}
-            >
-              {/* Tier Badge */}
-              <div className="absolute -top-2 -left-2 z-10">
-                {getTierBadge(room.tier)}
-              </div>
+          {ALL_ROOMS.map((room) => {
+            const isVIPRoom = room.tier !== 'free';
+            const isFreeUser = tier === 'free';
+            const tooltipText = isVIPRoom && isFreeUser ? "VIP only" : (room.hasData ? "Click to enter" : "Coming soon");
+            
+            return (
+              <Tooltip key={room.id}>
+                <TooltipTrigger asChild>
+                  <Card
+                    className={`relative p-3 transition-all duration-300 cursor-pointer group ${getTierColor(room.tier)} ${
+                      room.hasData 
+                        ? "hover:scale-110 hover:shadow-hover hover:z-10" 
+                        : "opacity-60 cursor-not-allowed"
+                    }`}
+                    onClick={() => room.hasData && navigate(`/chat/${room.id}`)}
+                  >
+                    {/* Tier Badge */}
+                    <div className="absolute -top-2 -left-2 z-10">
+                      {getTierBadge(room.tier)}
+                    </div>
 
-              {/* Status Badge */}
-              <div className="absolute -top-2 -right-2 z-10">
-                {room.hasData ? (
-                  <div className="bg-green-500 rounded-full p-1">
-                    <CheckCircle2 className="w-3 h-3 text-white" />
-                  </div>
-                ) : (
-                  <div className="bg-gray-400 rounded-full p-1">
-                    <Lock className="w-3 h-3 text-white" />
-                  </div>
-                )}
-              </div>
+                    {/* Status Badge */}
+                    <div className="absolute -top-2 -right-2 z-10">
+                      {room.hasData ? (
+                        <div className="bg-green-500 rounded-full p-1">
+                          <CheckCircle2 className="w-3 h-3 text-white" />
+                        </div>
+                      ) : (
+                        <div className="bg-gray-400 rounded-full p-1">
+                          <Lock className="w-3 h-3 text-white" />
+                        </div>
+                      )}
+                    </div>
 
-              <div className="space-y-2 mt-2">
-                {/* Room Names - Hide VIP room titles for free users */}
-                <div className="space-y-1">
-                  {tier === 'free' && room.tier !== 'free' ? (
-                    <>
-                      <p className="text-xs font-semibold text-muted-foreground leading-tight line-clamp-2">
-                        🔒 VIP Content
-                      </p>
-                      <p className="text-[10px] text-muted-foreground leading-tight line-clamp-2">
-                        Nội dung VIP
-                      </p>
-                    </>
-                  ) : (
-                    <>
-                      <p className="text-xs font-semibold text-foreground leading-tight line-clamp-2">
-                        {room.nameEn}
-                      </p>
-                      <p className="text-[10px] text-muted-foreground leading-tight line-clamp-2">
-                        {room.nameVi}
-                      </p>
-                    </>
-                  )}
-                </div>
-              </div>
+                    <div className="space-y-2 mt-2">
+                      {/* Room Names - Hide VIP room titles for free users */}
+                      <div className="space-y-1">
+                        {isFreeUser && isVIPRoom ? (
+                          <>
+                            <p className="text-xs font-semibold text-muted-foreground leading-tight line-clamp-2">
+                              🔒 VIP Content
+                            </p>
+                            <p className="text-[10px] text-muted-foreground leading-tight line-clamp-2">
+                              Nội dung VIP
+                            </p>
+                          </>
+                        ) : (
+                          <>
+                            <p className="text-xs font-semibold text-foreground leading-tight line-clamp-2">
+                              {room.nameEn}
+                            </p>
+                            <p className="text-[10px] text-muted-foreground leading-tight line-clamp-2">
+                              {room.nameVi}
+                            </p>
+                          </>
+                        )}
+                      </div>
+                    </div>
 
-              {/* Hover Effect */}
-              {room.hasData && (
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
-              )}
-            </Card>
-          ))}
+                    {/* Hover Effect */}
+                    {room.hasData && (
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
+                    )}
+                  </Card>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{tooltipText}</p>
+                </TooltipContent>
+              </Tooltip>
+            );
+          })}
         </div>
 
         {/* Footer Note */}
@@ -143,6 +157,7 @@ const AllRooms = () => {
         </div>
       </div>
     </div>
+    </TooltipProvider>
   );
 };
 

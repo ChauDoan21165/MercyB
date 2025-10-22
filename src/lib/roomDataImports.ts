@@ -85,6 +85,10 @@ import sharpenMind from '@/data/rooms/sharpen_mind_vip3.json';
 import overcomeStorm from '@/data/rooms/overcome_storm_vip3.json';
 import unlockShadow from '@/data/rooms/unlock_shadow_vip3.json';
 import humanRights from '@/data/rooms/human_rights_vip3.json';
+import findingGodsPeace from '@/data/rooms/finding_gods_peace_free.json';
+import godsGuidance from '@/data/rooms/gods_guidance_vip1.json';
+import godsStrength from '@/data/rooms/gods_strength_vip2_resilience.json';
+import godsPurpose from '@/data/rooms/gods_purpose_vip3.json';
 
 export const roomDataMap: Record<string, any> = {
   'abdominal-pain': abdominalPain,
@@ -173,4 +177,8 @@ export const roomDataMap: Record<string, any> = {
   'overcome-storm': overcomeStorm,
   'unlock-shadow': unlockShadow,
   'human-rights': humanRights,
+  'finding-gods-peace': findingGodsPeace,
+  'gods-guidance': godsGuidance,
+  'gods-strength': godsStrength,
+  'gods-purpose': godsPurpose,
 };

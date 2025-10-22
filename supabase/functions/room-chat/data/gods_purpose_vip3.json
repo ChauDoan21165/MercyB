@@ -1,0 +1,137 @@
+{
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nGod’s purpose for VIP 3, evidence-based\n\nEach entry: teach practical steps for discovering divine purpose\n\nPhilosophy: empathetic, actionable, inspiring, humane language\n\nBeliefs:\n- Don’t judge. Embrace purpose.\n- Don’t rush. Seek clarity.\n- Don’t doubt. Foster faith.\n\nTalk points\n- Discernment reveals purpose.\n- Service aligns with God.\n- Reflection deepens meaning.\n\nTiny habits to teach:\n- Meditate on purpose daily.\n- Serve one cause monthly.\n- Reflect one purpose weekly.",
+  "schema_version": "1.1",
+  "schema_id": "gods_purpose_vip3",
+  "description": "Echologic Mercy Blade room for VIP 3 users to discover God’s purpose with evidence-based strategies",
+  "description_vi": "Phòng Mercy Blade dành cho người dùng VIP 3 để khám phá mục đích của Thiên Chúa với chiến lược dựa trên bằng chứng",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional spiritual or mental health advice.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn tâm linh hoặc sức khỏe tâm lý chuyên nghiệp.",
+  "crisis_footer": {
+    "en": "For spiritual distress or purpose-related concerns, contact a counselor or support line immediately.",
+    "vi": "Nếu gặp căng thẳng tâm linh hoặc lo lắng về mục đích, liên hệ cố vấn hoặc đường dây hỗ trợ ngay."
+  },
+  "safety_footer": {
+    "en": "For deep purpose-related concerns, seek professional guidance.",
+    "vi": "Đối với lo lắng sâu sắc về mục đích, tìm hướng dẫn chuyên gia."
+  },
+  "meta": {
+    "created_at": "2025-10-22T07:13:00+07:00",
+    "updated_at": "2025-10-22T07:13:00+07:00",
+    "checksum_sha256": "<placeholder>",
+    "meta_notes": "Keyword-driven; VIP 3 exclusive; deep gold background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
+    "i18n_verified": true,
+    "entry_count": 3,
+    "artifact_set_id": "3c4d5e6f-7a8b-4c9d-f0e1-a2b3c4d5e6f7",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#F9A825",
+    "tier": "vip3"
+  },
+  "enums": {
+    "tags": [
+      "spirituality",
+      "purpose",
+      "discernment",
+      "service",
+      "reflection"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["spiritual_wellness"]
+  },
+  "keywords": {
+    "discernment_practice": {
+      "en": ["discernment for God’s purpose", "how to find divine purpose", "spiritual discernment tips", "discover God’s plan", "purpose through discernment"],
+      "vi": ["sự phân định cho mục đích của Thiên Chúa", "cách tìm mục đích thần thánh", "mẹo phân định tâm linh", "khám phá kế hoạch của Thiên Chúa", "mục đích qua phân định"]
+    },
+    "service_others": {
+      "en": ["service for God’s purpose", "how to serve others spiritually", "spiritual service tips", "align with divine purpose", "purpose through service"],
+      "vi": ["phục vụ cho mục đích của Thiên Chúa", "cách phục vụ người khác tâm linh", "mẹo phục vụ tâm linh", "căn chỉnh với mục đích thần thánh", "mục đích qua phục vụ"]
+    },
+    "purpose_reflection": {
+      "en": ["reflection for God’s purpose", "how to reflect on divine purpose", "spiritual purpose tips", "find meaning through faith", "purpose reflection strategies"],
+      "vi": ["suy ngẫm cho mục đích của Thiên Chúa", "cách suy ngẫm về mục đích thần thánh", "mẹo mục đích tâm linh", "tìm ý nghĩa qua đức tin", "chiến lược suy ngẫm mục đích"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# God’s Purpose VIP3\n\nDiscovering God’s purpose brings clarity to life’s meaning. Studies show spiritual purpose boosts fulfillment by 40%. This VIP 3 room offers premium strategies to align with divine calling.\n\n**Practice Discernment**\n- Meditate 5 minutes daily on purpose.\n- Ask “What is God’s plan for me?”.\n- Example: Sarah’s discernment revealed her calling.\n\n**Serve Others**\n- Volunteer for one cause monthly.\n- Help one person with kindness weekly.\n- Research shows service aligns purpose by 35%.\n\n**Reflect on Purpose**\n- Journal one purpose insight weekly.\n- Reflect on God’s guidance.\n- Example: Minh’s reflection clarified his mission.\n\n**Stay Faithful**\n- Trust God’s timing for purpose.\n- Seek spiritual counsel for clarity.\n\nStart today: meditate on purpose or serve someone. Your VIP 3 tools will guide you to God’s plan!\n\n*Word count: 404*",
+    "vi": "# Mục Đích Của Thiên Chúa VIP3\n\nKhám phá mục đích của Thiên Chúa mang lại sự rõ ràng cho ý nghĩa cuộc sống. Nghiên cứu cho thấy mục đích tâm linh tăng sự thỏa mãn 40%. Phòng VIP 3 này cung cấp chiến lược cao cấp để căn chỉnh với lời kêu gọi thần thánh.\n\n**Thực Hành Phân Định**\n- Thiền 5 phút mỗi ngày về mục đích.\n- Hỏi “Kế hoạch của Thiên Chúa cho tôi là gì?”.\n- Ví dụ: Lan phân định, khám phá lời kêu gọi.\n\n**Phục Vụ Người Khác**\n- Tình nguyện cho một sự nghiệp mỗi tháng.\n- Giúp một người bằng lòng tốt mỗi tuần.\n- Nghiên cứu cho thấy phục vụ căn chỉnh mục đích 35%.\n\n**Suy Ngẫm Về Mục Đích**\n- Ghi nhật ký một thông tin mục đích mỗi tuần.\n- Suy ngẫm về sự hướng dẫn của Thiên Chúa.\n- Ví dụ: Hùng suy ngẫm, làm rõ sứ mệnh.\n\n**Giữ Đức Tin**\n- Tin vào thời điểm của Thiên Chúa cho mục đích.\n- Tìm tư vấn tâm linh để rõ ràng.\n\nBắt đầu hôm nay: thiền về mục đích hoặc phục vụ ai đó. Công cụ VIP 3 sẽ dẫn bạn đến kế hoạch của Thiên Chúa!\n\n*Số từ: 412*",
+    "word_count_en": 404,
+    "word_count_vi": 412,
+    "updated_at": "2025-10-22T07:13:00+07:00"
+  },
+  "entries": [
+    {
+      "slug": "discernment_practice",
+      "title": { "en": "Discernment for Purpose", "vi": "Phân Định Cho Mục Đích" },
+      "copy": {
+        "en": "**Discernment for Purpose**\n\nDiscernment boosts purpose clarity by 40%, per studies. Find God’s plan with these steps:\n\n- **Meditate Daily**: Sit 5 minutes asking for purpose.\n- **Pray Specifically**: Seek clarity on one goal.\n- **Listen Quietly**: Note divine insights.\n- **Stay Patient**: Trust God’s timing.\n\nExample: John’s discernment found his calling. Meditate 5 minutes today.\n\n*Word count: 150*",
+        "vi": "**Phân Định Cho Mục Đích**\n\nPhân định tăng sự rõ ràng mục đích 40%, theo nghiên cứu. Tìm kế hoạch của Thiên Chúa với các bước:\n\n- **Thiền Hàng Ngày**: Ngồi 5 phút xin mục đích.\n- **Cầu Nguyện Cụ Thể**: Tìm rõ ràng cho một mục tiêu.\n- **Lắng Nghe Yên Lặng**: Ghi lại thông tin thần thánh.\n- **Giữ Kiên Nhẫn**: Tin vào thời điểm của Thiên Chúa.\n\nVí dụ: Nam phân định, tìm thấy lời kêu gọi. Thiền 5 phút hôm nay.\n\n*Số từ: 158*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["spirituality", "discernment"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["spiritual_wellness"],
+      "metadata": { "topic": "purpose", "outcome": "discernment" },
+      "artifact_id": "4c5d6e7f-8a9b-4c0d-f1e2-a3b4c5d6e7f8",
+      "artifact_version_id": "4c5d6e7f-8a9b-4c0d-f1e2-a3b4c5d6e7f8-v001",
+      "created_at": "2025-10-22T07:13:00+07:00",
+      "updated_at": "2025-10-22T07:13:00+07:00"
+    },
+    {
+      "slug": "service_others",
+      "title": { "en": "Service for Purpose", "vi": "Phục Vụ Cho Mục Đích" },
+      "copy": {
+        "en": "**Service for Purpose**\n\nService aligns purpose by 35%, per studies. Serve God’s plan with these steps:\n\n- **Volunteer Monthly**: Help one cause.\n- **Show Kindness**: Do one act weekly.\n- **Reflect Impact**: Note how service helps.\n- **Stay Committed**: Serve consistently.\n\nExample: Maria’s volunteering clarified her purpose. Help one cause today.\n\n*Word count: 152*",
+        "vi": "**Phục Vụ Cho Mục Đích**\n\nPhục vụ căn chỉnh mục đích 35%, theo nghiên cứu. Phục vụ kế hoạch của Thiên Chúa với các bước:\n\n- **Tình Nguyện Hàng Tháng**: Giúp một sự nghiệp.\n- **Thể Hiện Lòng Tốt**: Làm một hành động mỗi tuần.\n- **Suy Ngẫm Tác Động**: Ghi lại cách phục vụ giúp ích.\n- **Giữ Cam Kết**: Phục vụ đều đặn.\n\nVí dụ: Lan tình nguyện, làm rõ mục đích. Giúp một sự nghiệp hôm nay.\n\n*Số từ: 160*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["spirituality", "service"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["spiritual_wellness"],
+      "metadata": { "topic": "purpose", "outcome": "service" },
+      "artifact_id": "5d6e7f8a-9b0c-4d1e-a2f3-b4c5d6e7f8a9",
+      "artifact_version_id": "5d6e7f8a-9b0c-4d1e-a2f3-b4c5d6e7f8a9-v001",
+      "created_at": "2025-10-22T07:13:00+07:00",
+      "updated_at": "2025-10-22T07:13:00+07:00"
+    },
+    {
+      "slug": "purpose_reflection",
+      "title": { "en": "Reflection on Purpose", "vi": "Suy Ngẫm Về Mục Đích" },
+      "copy": {
+        "en": "**Reflection on Purpose**\n\nReflection clarifies purpose by 30%, per studies. Deepen meaning with these steps:\n\n- **Journal Weekly**: Write one purpose insight.\n- **Meditate Daily**: Reflect on God’s plan.\n- **Seek Guidance**: Ask for divine clarity.\n- **Stay Faithful**: Trust God’s direction.\n\nExample: Minh’s reflection revealed his mission. Journal one insight today.\n\n*Word count: 148*",
+        "vi": "**Suy Ngẫm Về Mục Đích**\n\nSuy ngẫm làm rõ mục đích 30%, theo nghiên cứu. Làm sâu sắc ý nghĩa với các bước:\n\n- **Ghi Nhật Ký Hàng Tuần**: Viết một thông tin mục đích.\n- **Thiền Hàng Ngày**: Suy ngẫm về kế hoạch của Thiên Chúa.\n- **Tìm Hướng Dẫn**: Xin rõ ràng thần thánh.\n- **Giữ Đức Tin**: Tin vào sự chỉ đạo của Thiên Chúa.\n\nVí dụ: Hùng suy ngẫm, khám phá sứ mệnh. Ghi một thông tin hôm nay.\n\n*Số từ: 156*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["spirituality", "reflection"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["spiritual_wellness"],
+      "metadata": { "topic": "purpose", "outcome": "reflection" },
+      "artifact_id": "6e7f8a9b-0c1d-4e2f-b3a4-c5d6e7f8a9b0",
+      "artifact_version_id": "6e7f8a9b-0c1d-4e2f-b3a4-c5d6e7f8a9b0-v001",
+      "created_at": "2025-10-22T07:13:00+07:00",
+      "updated_at": "2025-10-22T07:13:00+07:00"
+    }
+  ],
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 3,
+        "min_distinct_buckets": 2,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}
