@@ -274,7 +274,7 @@ const PaymentTest = () => {
                     disabled={loading}
                     className="w-full"
                   >
-                    {loading && selectedTier === tier.id ? 'Loading PayPal... / Đang tải PayPal...' : '⚡ Pay with PayPal (Fast) / Thanh toán bằng PayPal (Nhanh)'}
+                    ⚡ Pay with PayPal
                   </Button>
                   <div className="w-full border-2 border-dashed border-muted rounded-md p-2">
                     <div 
@@ -282,13 +282,6 @@ const PaymentTest = () => {
                       className="min-h-[50px] w-full"
                     />
                   </div>
-                  {selectedTier === tier.id ? (
-                    loading ? (
-                      <div className="text-sm text-muted-foreground">Loading PayPal button... / Đang tải nút PayPal...</div>
-                    ) : null
-                  ) : (
-                    <div className="text-sm text-muted-foreground">Click button above to continue / Nhấn nút trên để tiếp tục</div>
-                  )}
 
                   <div className="relative my-4">
                     <div className="absolute inset-0 flex items-center">
@@ -304,11 +297,8 @@ const PaymentTest = () => {
                     className="w-full"
                     onClick={() => navigate(`/manual-payment?tier=${tier.id}&name=${encodeURIComponent(tier.name)}&price=${tier.price_monthly}`)}
                   >
-                    📸 Manual Payment & Upload Screenshot / Thanh toán Thủ công & Tải lên Ảnh chụp
+                    📸 Manual Payment
                   </Button>
-                  <p className="text-xs text-muted-foreground text-center">
-                    Send to / Gửi đến: cd12536@gmail.com | May need admin approval / Có thể cần phê duyệt quản trị viên
-                  </p>
                 </div>
               </CardContent>
             </Card>
