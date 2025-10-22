@@ -150,10 +150,12 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
     
     // Before 10 entries, give a helpful prompt
     const desc = getBilingual(roomData, "description");
-    const topKeys = Object.keys(roomData.keywords || {}).slice(0, 5).join(', ');
+    const keywordGroups = Object.values(roomData.keywords || {}).slice(0, 3);
+    const topKeysEn = keywordGroups.flatMap((g: any) => (Array.isArray(g.en) ? g.en.slice(0, 2) : [])).join(', ');
+    const topKeysVi = keywordGroups.flatMap((g: any) => (Array.isArray(g.vi) ? g.vi.slice(0, 2) : [])).join(', ');
     const text = [
-      `I'm here to help with ${desc.en}. Try using keywords like: ${topKeys}.`,
-      `Tôi ở đây để giúp về ${desc.vi}. Hãy thử dùng từ khóa như: ${topKeys}.`
+      `I'm here to help with ${desc.en}. Try using keywords like: ${topKeysEn}.`,
+      `Tôi ở đây để giúp về ${desc.vi}. Hãy thử dùng từ khóa như: ${topKeysVi}.`
     ].join("\n\n");
     return { text, matched: false };
   }
@@ -180,13 +182,17 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   const selectedPrompt = escalationPrompts[promptIndex];
   
   const desc = getBilingual(roomData, "description");
-  const topKeys = Object.keys(roomData.keywords || {}).slice(0, 5).join(', ');
+  
+  // Extract actual keywords in both languages
+  const keywordGroups = Object.values(roomData.keywords || {}).slice(0, 3);
+  const topKeysEn = keywordGroups.flatMap((g: any) => (Array.isArray(g.en) ? g.en.slice(0, 2) : [])).join(', ');
+  const topKeysVi = keywordGroups.flatMap((g: any) => (Array.isArray(g.vi) ? g.vi.slice(0, 2) : [])).join(', ');
   
   const promptText = [
     selectedPrompt.en,
     selectedPrompt.vi,
-    `\nI'm here to help with ${desc.en}. Try using keywords like: ${topKeys}.`,
-    `Tôi ở đây để giúp về ${desc.vi}. Hãy thử dùng từ khóa như: ${topKeys}.`
+    `\nI'm here to help with ${desc.en}. Try using keywords like: ${topKeysEn}.`,
+    `Tôi ở đây để giúp về ${desc.vi}. Hãy thử dùng từ khóa như: ${topKeysVi}.`
   ].join("\n\n");
   
   return { text: promptText, matched: false };
