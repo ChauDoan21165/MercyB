@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -14,6 +14,50 @@ interface UsernameSetupProps {
 export const UsernameSetup = ({ onComplete }: UsernameSetupProps) => {
   const [username, setUsername] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [availability, setAvailability] = useState<'unknown' | 'checking' | 'available' | 'taken'>('unknown');
+  const [suggestedUsernames, setSuggestedUsernames] = useState<string[]>([
+    "MindfulWarrior", "ZenSeeker", "WellnessWizard", "HealthHero",
+    "CalmNavigator", "LifeLearner", "WiseWanderer", "PeacefulPioneer"
+  ]);
+  const debounceTimer = useRef<number | null>(null);
+
+  const generateSuggestions = (base: string) => {
+    const stem = base.replace(/[^a-zA-Z0-9_]/g, "");
+    const nums = () => Math.floor(100 + Math.random() * 900);
+    const candidates = [
+      stem,
+      `${stem}_${nums()}`,
+      `${stem}${nums()}`,
+      `${stem}_vip`,
+      `${stem}_ai`,
+      `${stem}_pro`,
+    ];
+    return Array.from(new Set(candidates)).slice(0, 8);
+  };
+
+  const checkAvailability = async (name: string) => {
+    setAvailability('checking');
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      const userId = user?.id ?? '';
+      const { count, error } = await supabase
+        .from("profiles")
+        .select('id', { count: 'exact', head: true })
+        .eq('username', name)
+        .neq('id', userId);
+      if (error) {
+        console.error('Availability check error:', error);
+        setAvailability('unknown');
+        return;
+      }
+      const isFree = (count ?? 0) === 0;
+      setAvailability(isFree ? 'available' : 'taken');
+      if (!isFree) setSuggestedUsernames(generateSuggestions(name));
+    } catch (e) {
+      console.error('Availability check error:', e);
+      setAvailability('unknown');
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,7 +83,13 @@ export const UsernameSetup = ({ onComplete }: UsernameSetupProps) => {
       return;
     }
 
-    setIsLoading(true);
+    if (availability === 'taken') {
+      toast.error(`"${cleaned}" is already taken. Please choose another username.`);
+      setSuggestedUsernames(generateSuggestions(cleaned));
+      return;
+    }
+ 
+     setIsLoading(true);
     try {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) {
@@ -54,10 +104,12 @@ export const UsernameSetup = ({ onComplete }: UsernameSetupProps) => {
 
       if (error) {
         console.error("Username error:", error);
-        if (error.code === "23505") {
+        if ((error as any).code === "23505") {
+          setAvailability('taken');
+          setSuggestedUsernames(generateSuggestions(cleaned));
           toast.error(`"${cleaned}" is already taken. Please choose another username.`);
-        } else if (error.message) {
-          toast.error(`Error: ${error.message}`);
+        } else if ((error as any).message) {
+          toast.error(`Error: ${(error as any).message}`);
         } else {
           toast.error("Failed to set username. Please try again.");
         }
@@ -74,10 +126,7 @@ export const UsernameSetup = ({ onComplete }: UsernameSetupProps) => {
     }
   };
 
-  const suggestedUsernames = [
-    "MindfulWarrior", "ZenSeeker", "WellnessWizard", "HealthHero",
-    "CalmNavigator", "LifeLearner", "WiseWanderer", "PeacefulPioneer"
-  ];
+  
 
   return (
     <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
@@ -99,10 +148,30 @@ export const UsernameSetup = ({ onComplete }: UsernameSetupProps) => {
                 id="username"
                 placeholder="your_unique_name"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setUsername(value);
+                  const cleaned = value
+                    .normalize('NFKC')
+                    .replace(/[\u200B-\u200D\uFEFF]/g, '')
+                    .trim();
+                  if (cleaned.length >= 3 && /^[a-zA-Z0-9_]+$/.test(cleaned)) {
+                    if (debounceTimer.current) window.clearTimeout(debounceTimer.current);
+                    debounceTimer.current = window.setTimeout(() => {
+                      checkAvailability(cleaned);
+                    }, 400);
+                  } else {
+                    setAvailability('unknown');
+                  }
+                }}
                 maxLength={30}
                 required
               />
+              <p className="text-xs text-muted-foreground">
+                {availability === 'checking' && 'Checking availability...'}
+                {availability === 'available' && 'Great! This username is available.'}
+                {availability === 'taken' && 'That username is taken. Try a suggestion below.'}
+              </p>
             </div>
 
             <div className="space-y-2">
@@ -124,7 +193,9 @@ export const UsernameSetup = ({ onComplete }: UsernameSetupProps) => {
 
             <Button
               type="submit"
-              disabled={isLoading || username.length < 3}
+              disabled={
+                isLoading || username.length < 3 || availability === 'taken' || availability === 'checking'
+              }
               className="w-full"
             >
               {isLoading ? "Setting up..." : "Continue"}
