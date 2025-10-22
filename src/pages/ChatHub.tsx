@@ -420,17 +420,6 @@ const handleAccessDenied = () => {
               <ArrowLeft className="w-4 h-4" />
               Back / Quay Lại
             </Button>
-            {isAdmin && (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => navigate('/admin/stats')}
-                className="text-xs"
-              >
-                📊 Admin Dashboard
-              </Button>
-            )}
-            <MatchmakingButton />
           </div>
           
           <div className="text-center space-y-2">
@@ -482,7 +471,6 @@ const handleAccessDenied = () => {
           </div>
           
           <div className="flex items-center gap-3">
-            <CreditsDisplay />
             <Badge variant="outline" className="bg-green-100 text-green-700 border-green-300">
               Active / Đang Hoạt Động
             </Badge>
@@ -663,11 +651,13 @@ const handleAccessDenied = () => {
             </div>
           </Card>
         </div>
+
+        {/* Room Disclaimer */}
+        <div className="mt-2">
+          <RoomDisclaimer roomId={roomId || ""} />
+        </div>
       </div>
     </div>
-
-    {/* Room Disclaimer */}
-    <RoomDisclaimer roomId={roomId || ""} />
 
     <CreditLimitModal
       open={showCreditLimit}
