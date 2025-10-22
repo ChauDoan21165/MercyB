@@ -69,7 +69,8 @@ const Welcome = () => {
       features: {
         en: ["10 random entries/day", "Achievement badges", "Learning streaks"],
         vi: ["10 mục ngẫu nhiên/ngày", "Huy hiệu thành tựu", "Chuỗi điểm thưởng"]
-      }
+      },
+      requiresAuth: true
     },
     {
       name: { vi: "VIP1", en: "VIP1" },
@@ -77,7 +78,7 @@ const Welcome = () => {
       period: { vi: "/tháng", en: "/month" },
       features: {
         en: ["Users can request one custom topic", "1 full room access/day", "🤖 AI Content"],
-        vi: ["Người dùng có thể yêu cầu một chủ đề tùy chỉnh", "Truy cập tự do 1 phòng/ngày", "Nội dung tạo bởi AI"]
+        vi: ["Người dùng có thể yêu cầu một chủ đề tùy chỉnh", "Truy cập tự do 1 phòng/ngày", "🤖 Nội dung tạo bởi AI"]
       },
       popular: true
     },
@@ -87,7 +88,7 @@ const Welcome = () => {
       period: { vi: "/tháng", en: "/month" },
       features: {
         en: ["Users can request two custom topics", "2 full rooms access/day", "🤖 AI Content"],
-        vi: ["Người dùng có thể yêu cầu hai chủ đề tùy chỉnh", "Truy cập tự do 2 phòng/ngày", "Nội dung tạo bởi AI"]
+        vi: ["Người dùng có thể yêu cầu hai chủ đề tùy chỉnh", "Truy cập tự do 2 phòng/ngày", "🤖 Nội dung tạo bởi AI"]
       }
     },
     {
@@ -96,7 +97,7 @@ const Welcome = () => {
       period: { vi: "/tháng", en: "/month" },
       features: {
         en: ["Users can request three custom topics", "3 rooms access/day", "AI Matchmaking", "Voice chat", "🤖 AI Content"],
-        vi: ["Người dùng có thể yêu cầu ba chủ đề tùy chỉnh", "Truy cập 3 phòng/ngày", "Ghép đôi AI", "Chat bằng giọng nói", "Nội dung tạo bởi AI"]
+        vi: ["Người dùng có thể yêu cầu ba chủ đề tùy chỉnh", "Truy cập 3 phòng/ngày", "Ghép đôi AI", "Chat bằng giọng nói", "🤖 Nội dung tạo bởi AI"]
       }
     }
   ];
@@ -338,27 +339,39 @@ const Welcome = () => {
                   </div>
 
                   <div className="mt-auto pt-4 flex justify-center">
-                    <Button
-                      className={`w-14 h-14 rounded-full ${
-                        index === 0 
-                          ? "bg-gradient-to-br from-yellow-200 via-yellow-400 to-yellow-600 hover:opacity-90" 
-                          : index === 1
-                          ? "bg-gradient-to-br from-yellow-300 via-yellow-500 to-yellow-700 hover:opacity-90"
-                          : index === 2
-                          ? "bg-gradient-to-br from-yellow-400 via-yellow-600 to-yellow-800 hover:opacity-90"
-                          : "bg-gradient-to-br from-yellow-500 via-yellow-700 to-yellow-900 hover:opacity-90"
-                      }`}
-                      size="icon"
-                      onClick={() => {
-                        if (index === 0) {
-                          navigate("/rooms");
-                        } else {
-                          navigate(`/subscribe?tier=${tier.name.en.toLowerCase()}`);
-                        }
-                      }}
-                    >
-                      <ArrowRight className="w-6 h-6 text-white" />
-                    </Button>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button
+                          className={`w-14 h-14 rounded-full ${
+                            index === 0 
+                              ? "bg-gradient-to-br from-yellow-200 via-yellow-400 to-yellow-600 hover:opacity-90" 
+                              : index === 1
+                              ? "bg-gradient-to-br from-yellow-300 via-yellow-500 to-yellow-700 hover:opacity-90"
+                              : index === 2
+                              ? "bg-gradient-to-br from-yellow-400 via-yellow-600 to-yellow-800 hover:opacity-90"
+                              : "bg-gradient-to-br from-yellow-500 via-yellow-700 to-yellow-900 hover:opacity-90"
+                          }`}
+                          size="icon"
+                          disabled={tier.requiresAuth && !user}
+                          onClick={() => {
+                            if (index === 0) {
+                              if (user) {
+                                navigate("/rooms");
+                              }
+                            } else {
+                              navigate(`/subscribe?tier=${tier.name.en.toLowerCase()}`);
+                            }
+                          }}
+                        >
+                          <ArrowRight className="w-6 h-6 text-white" />
+                        </Button>
+                      </TooltipTrigger>
+                      {tier.requiresAuth && !user && (
+                        <TooltipContent>
+                          <p>Please register first / Vui lòng đăng ký trước</p>
+                        </TooltipContent>
+                      )}
+                    </Tooltip>
                   </div>
                 </div>
               </Card>
