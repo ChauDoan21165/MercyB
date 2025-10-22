@@ -14,6 +14,62 @@ export type Database = {
   }
   public: {
     Tables: {
+      admin_notification_preferences: {
+        Row: {
+          admin_user_id: string
+          created_at: string
+          feedback_notifications_enabled: boolean
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          admin_user_id: string
+          created_at?: string
+          feedback_notifications_enabled?: boolean
+          id?: string
+          updated_at?: string
+        }
+        Update: {
+          admin_user_id?: string
+          created_at?: string
+          feedback_notifications_enabled?: boolean
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      admin_notifications: {
+        Row: {
+          admin_user_id: string
+          created_at: string
+          feedback_id: string
+          id: string
+          is_read: boolean
+        }
+        Insert: {
+          admin_user_id: string
+          created_at?: string
+          feedback_id: string
+          id?: string
+          is_read?: boolean
+        }
+        Update: {
+          admin_user_id?: string
+          created_at?: string
+          feedback_id?: string
+          id?: string
+          is_read?: boolean
+        }
+        Relationships: [
+          {
+            foreignKeyName: "admin_notifications_feedback_id_fkey"
+            columns: ["feedback_id"]
+            isOneToOne: false
+            referencedRelation: "feedback"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       feedback: {
         Row: {
           category: string | null

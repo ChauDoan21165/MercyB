@@ -7,7 +7,9 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowLeft, TrendingUp, Users, MessageSquare } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
+import { ArrowLeft, TrendingUp, Users, MessageSquare, Bell } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface Request {
@@ -29,6 +31,18 @@ interface Analytics {
   completion_rate: number;
 }
 
+interface FeedbackNotification {
+  id: string;
+  feedback_id: string;
+  is_read: boolean;
+  created_at: string;
+  feedback: {
+    message: string;
+    priority: string;
+    created_at: string;
+  };
+}
+
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -38,6 +52,8 @@ const AdminDashboard = () => {
   const [adminNotes, setAdminNotes] = useState("");
   const [newStatus, setNewStatus] = useState("");
   const [loading, setLoading] = useState(true);
+  const [notifications, setNotifications] = useState<FeedbackNotification[]>([]);
+  const [notificationsEnabled, setNotificationsEnabled] = useState(true);
 
   useEffect(() => {
     checkAdminAccess();
@@ -73,7 +89,30 @@ const AdminDashboard = () => {
         return;
       }
 
-      await Promise.all([fetchRequests(), fetchAnalytics()]);
+      await Promise.all([
+        fetchRequests(), 
+        fetchAnalytics(), 
+        fetchNotifications(),
+        fetchNotificationPreferences()
+      ]);
+
+      // Subscribe to real-time notifications
+      const channel = supabase
+        .channel('admin-feedback-notifications')
+        .on(
+          'postgres_changes',
+          {
+            event: '*',
+            schema: 'public',
+            table: 'admin_notifications'
+          },
+          () => fetchNotifications()
+        )
+        .subscribe();
+
+      return () => {
+        supabase.removeChannel(channel);
+      };
     } catch (error) {
       console.error("Error checking admin access:", error);
       navigate("/");
@@ -166,6 +205,102 @@ const AdminDashboard = () => {
     }
   };
 
+  const fetchNotifications = async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      const { data, error } = await supabase
+        .from('admin_notifications')
+        .select(`
+          id,
+          feedback_id,
+          is_read,
+          created_at,
+          feedback:feedback_id (
+            message,
+            priority,
+            created_at
+          )
+        `)
+        .eq('admin_user_id', user.id)
+        .eq('is_read', false)
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+      setNotifications(data as any || []);
+    } catch (error) {
+      console.error('Error fetching notifications:', error);
+    }
+  };
+
+  const fetchNotificationPreferences = async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      const { data, error } = await supabase
+        .from('admin_notification_preferences')
+        .select('feedback_notifications_enabled')
+        .eq('admin_user_id', user.id)
+        .maybeSingle();
+
+      if (error && error.code !== 'PGRST116') throw error;
+      
+      if (data) {
+        setNotificationsEnabled(data.feedback_notifications_enabled);
+      }
+    } catch (error) {
+      console.error('Error fetching notification preferences:', error);
+    }
+  };
+
+  const toggleNotifications = async (enabled: boolean) => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      const { error } = await supabase
+        .from('admin_notification_preferences')
+        .upsert({
+          admin_user_id: user.id,
+          feedback_notifications_enabled: enabled,
+          updated_at: new Date().toISOString()
+        });
+
+      if (error) throw error;
+
+      setNotificationsEnabled(enabled);
+      toast({
+        title: enabled ? "Notifications enabled" : "Notifications disabled",
+        description: enabled 
+          ? "You will receive notifications for new feedback" 
+          : "You will not receive notifications for new feedback"
+      });
+    } catch (error) {
+      console.error('Error updating notification preferences:', error);
+      toast({
+        title: "Error",
+        description: "Failed to update notification preferences",
+        variant: "destructive"
+      });
+    }
+  };
+
+  const markNotificationAsRead = async (notificationId: string) => {
+    try {
+      const { error } = await supabase
+        .from('admin_notifications')
+        .update({ is_read: true })
+        .eq('id', notificationId);
+
+      if (error) throw error;
+      fetchNotifications();
+    } catch (error) {
+      console.error('Error marking notification as read:', error);
+    }
+  };
+
   const getRequestsByStatus = (status: string) => {
     return requests.filter(r => r.status === status);
   };
@@ -200,8 +335,17 @@ const AdminDashboard = () => {
 
         <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
 
-        <Tabs defaultValue="requests" className="space-y-6">
+        <Tabs defaultValue="notifications" className="space-y-6">
           <TabsList>
+            <TabsTrigger value="notifications">
+              <Bell className="h-4 w-4 mr-2" />
+              Feedback Notifications
+              {notifications.length > 0 && (
+                <Badge variant="destructive" className="ml-2">
+                  {notifications.length}
+                </Badge>
+              )}
+            </TabsTrigger>
             <TabsTrigger value="requests">
               <MessageSquare className="h-4 w-4 mr-2" />
               Requests
@@ -211,6 +355,69 @@ const AdminDashboard = () => {
               Analytics
             </TabsTrigger>
           </TabsList>
+
+          <TabsContent value="notifications" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <CardTitle>Feedback Notifications</CardTitle>
+                    <CardDescription>
+                      Get notified when users submit new feedback
+                    </CardDescription>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Switch
+                      id="notifications-toggle"
+                      checked={notificationsEnabled}
+                      onCheckedChange={toggleNotifications}
+                    />
+                    <Label htmlFor="notifications-toggle">
+                      {notificationsEnabled ? 'Enabled' : 'Disabled'}
+                    </Label>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                {notifications.length === 0 ? (
+                  <p className="text-center text-muted-foreground py-8">
+                    No unread feedback notifications
+                  </p>
+                ) : (
+                  <div className="space-y-4">
+                    {notifications.map((notification) => (
+                      <Card key={notification.id} className="border-l-4 border-l-primary">
+                        <CardContent className="pt-6">
+                          <div className="flex items-start justify-between gap-4">
+                            <div className="flex-1">
+                              <p className="text-sm font-medium mb-2">
+                                {notification.feedback.message}
+                              </p>
+                              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                                <Badge variant={notification.feedback.priority === 'high' ? 'destructive' : 'outline'}>
+                                  {notification.feedback.priority}
+                                </Badge>
+                                <span>
+                                  {new Date(notification.feedback.created_at).toLocaleString()}
+                                </span>
+                              </div>
+                            </div>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => markNotificationAsRead(notification.id)}
+                            >
+                              Mark as Read
+                            </Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
 
           <TabsContent value="requests" className="space-y-6">
             <div className="grid gap-4 md:grid-cols-4">
