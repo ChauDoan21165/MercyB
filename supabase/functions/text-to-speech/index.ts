@@ -35,7 +35,7 @@ serve(async (req) => {
       )
     }
 
-    // Verify VIP3 access
+    // Verify VIP1+ access
     const { data: subscription } = await supabaseClient
       .from('user_subscriptions')
       .select('tier_id, subscription_tiers(name)')
@@ -44,9 +44,9 @@ serve(async (req) => {
       .maybeSingle()
 
     const tierName = (subscription?.subscription_tiers as any)?.name?.toLowerCase()
-    if (!tierName?.includes('vip3')) {
+    if (!tierName?.includes('vip1') && !tierName?.includes('vip2') && !tierName?.includes('vip3')) {
       return new Response(
-        JSON.stringify({ error: 'VIP3 subscription required for text-to-speech' }),
+        JSON.stringify({ error: 'VIP subscription required for text-to-speech / Cần đăng ký VIP để sử dụng chuyển văn bản thành giọng nói' }),
         { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       )
     }
