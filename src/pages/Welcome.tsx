@@ -243,16 +243,15 @@ const Welcome = () => {
           </div>
           
           {isAdmin && (
-            <div className="flex justify-center mt-8">
-              <Button
-                size="sm"
-                variant="outline"
-                className="bg-destructive/10 hover:bg-destructive/20 border-destructive/30"
-                onClick={() => navigate("/admin/stats")}
-              >
-                📊 Admin Dashboard
-              </Button>
-            </div>
+            <Button
+              size="icon"
+              className="fixed bottom-4 right-4 z-50 shadow-hover bg-gradient-to-r from-[hsl(var(--admin-primary))] to-[hsl(var(--admin-accent))]"
+              onClick={() => navigate("/admin/stats")}
+              aria-label="Open Admin Dashboard"
+              title="Admin Dashboard"
+            >
+              📊
+            </Button>
           )}
         </div>
 

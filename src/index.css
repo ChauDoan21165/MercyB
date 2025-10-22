@@ -77,6 +77,7 @@ All colors MUST be HSL.
     --vip3-primary: 148 85% 45%;
     --vip3-secondary: 177 80% 40%;
     --vip3-accent: 207 90% 55%;
+    --vip3-gold: 46 90% 55%;
     
     /* Admin page colors (red-orange to lime) - DARK */
     --admin-primary: 9 85% 50%;
@@ -134,6 +135,7 @@ All colors MUST be HSL.
     --page-vip1: 160 60% 25%;
     --page-vip2: 216 70% 35%;
     --page-vip3: 245 70% 35%;
+    --vip3-gold: 46 90% 60%;
   }
 }
 
