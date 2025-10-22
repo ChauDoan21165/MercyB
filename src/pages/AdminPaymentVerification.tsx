@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -7,8 +7,9 @@ import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, CheckCircle, XCircle, Loader2, ExternalLink } from "lucide-react";
+import { ArrowLeft, CheckCircle, XCircle, Loader2, ExternalLink, Bell } from "lucide-react";
 import { useUserAccess } from "@/hooks/useUserAccess";
+import { toast as sonnerToast } from "sonner";
 
 interface PaymentSubmission {
   id: string;
@@ -44,6 +45,7 @@ const AdminPaymentVerification = () => {
   const [submissions, setSubmissions] = useState<PaymentSubmission[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedNotes, setSelectedNotes] = useState<{ [key: string]: string }>({});
+  const hasShownNotification = useRef(false);
 
   useEffect(() => {
     if (!accessLoading && !isAdmin) {
@@ -55,6 +57,46 @@ const AdminPaymentVerification = () => {
     if (isAdmin) {
       loadSubmissions();
     }
+  }, [isAdmin]);
+
+  // Real-time subscription for new payment submissions
+  useEffect(() => {
+    if (!isAdmin) return;
+
+    const channel = supabase
+      .channel('payment-submissions')
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'payment_proof_submissions'
+        },
+        (payload) => {
+          console.log('New payment submission received:', payload);
+          
+          // Show notification only after initial load
+          if (hasShownNotification.current) {
+            sonnerToast.success('🔔 Thanh toán mới! / New Payment Received!', {
+              description: `User: ${payload.new.username}`,
+              duration: 10000,
+            });
+          }
+          
+          // Reload submissions to show the new one
+          loadSubmissions();
+        }
+      )
+      .subscribe();
+
+    // Mark that initial load is complete after a short delay
+    setTimeout(() => {
+      hasShownNotification.current = true;
+    }, 1000);
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, [isAdmin]);
 
   const loadSubmissions = async () => {
