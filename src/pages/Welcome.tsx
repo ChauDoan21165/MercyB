@@ -75,8 +75,8 @@ const Welcome = () => {
       price: "$2",
       period: { vi: "/tháng", en: "/month" },
       features: {
-        en: ["Request 1 custom topic", "1 full room access/day", "All Free features"],
-        vi: ["Yêu cầu 1 chủ đề", "Truy cập tự do 1 phòng/ngày", "Tất cả tính năng Miễn phí"]
+        en: ["Request 1 custom topic", "1 full room access/day"],
+        vi: ["Yêu cầu 1 chủ đề", "Truy cập tự do 1 phòng/ngày"]
       },
       popular: true
     },
@@ -85,8 +85,8 @@ const Welcome = () => {
       price: "$4",
       period: { vi: "/tháng", en: "/month" },
       features: {
-        en: ["Request 2 custom topics", "2 full rooms access/day", "All VIP1 features"],
-        vi: ["Yêu cầu 2 chủ đề", "Truy cập tự do 2 phòng/ngày", "Tất cả tính năng VIP1"]
+        en: ["Request 2 custom topics", "2 full rooms access/day"],
+        vi: ["Yêu cầu 2 chủ đề", "Truy cập tự do 2 phòng/ngày"]
       }
     },
     {
@@ -94,8 +94,8 @@ const Welcome = () => {
       price: "$6",
       period: { vi: "/tháng", en: "/month" },
       features: {
-        en: ["3 custom topics", "3 rooms access/day", "AI Matchmaking", "Voice chat", "Priority support"],
-        vi: ["3 chủ đề tùy chỉnh", "Truy cập 3 phòng/ngày", "Ghép đôi AI", "Chat bằng giọng nói", "Hỗ trợ ưu tiên"]
+        en: ["3 custom topics", "3 rooms access/day", "AI Matchmaking", "Voice chat"],
+        vi: ["3 chủ đề tùy chỉnh", "Truy cập 3 phòng/ngày", "Ghép đôi AI", "Chat bằng giọng nói"]
       }
     }
   ];
@@ -327,7 +327,7 @@ const Welcome = () => {
                     }}
                   >
                     <span className="flex flex-col">
-                      <span className="text-sm">Choose Plan</span>
+                      <span className="text-sm">Choose</span>
                       <span className="text-xs opacity-90">Chọn Gói</span>
                     </span>
                   </Button>

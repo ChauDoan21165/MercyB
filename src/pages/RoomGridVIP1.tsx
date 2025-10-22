@@ -110,16 +110,6 @@ const RoomGridVIP1 = () => {
 
         {/* Navigation */}
         <VIPNavigation currentPage="vip1" />
-
-        {/* Footer Note */}
-        <div className="text-center mt-8 space-y-1">
-          <p className="text-sm text-muted-foreground">
-            Rooms with ✓ are ready for learning
-          </p>
-          <p className="text-xs text-muted-foreground">
-            Các Phòng Có ✓ Đã Sẵn Sàng Để Học
-          </p>
-        </div>
       </div>
     </div>
   );
