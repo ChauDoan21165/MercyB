@@ -137,6 +137,10 @@ const roomFiles: { [key: string]: string } = {
   'unlock-shadow': 'unlock_shadow_vip3.json',
   'human-rights': 'human_rights_vip3.json',
   'philosophy': 'philosophy.json',
+  'finding-gods-peace': 'finding_gods_peace_free.json',
+  'gods-guidance': 'gods_guidance_vip1.json',
+  'gods-strength': 'gods_strength_vip2_resilience.json',
+  'gods-purpose': 'gods_purpose_vip3.json',
 };
 
 // Minimal embedded fallback to guarantee a response if JSON isn't bundled

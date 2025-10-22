@@ -83,6 +83,10 @@ const roomFiles: { [key: string]: string } = {
   'relationship-conflicts': 'relationship_conflicts.json',
   'weight-loss': 'weight_loss_program.json',
   'anxiety-toolkit': 'anxiety_toolkit.json',
+  'finding-gods-peace': 'finding_gods_peace_free.json',
+  'gods-guidance': 'gods_guidance_vip1.json',
+  'gods-strength': 'gods_strength_vip2_resilience.json',
+  'gods-purpose': 'gods_purpose_vip3.json',
 };
 
 // Embedded minimal fallback data to guarantee responses even if JSON files are not bundled
