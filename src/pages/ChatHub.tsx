@@ -361,6 +361,19 @@ const handleAccessDenied = () => {
     }
   }, [mainMessages]);
 
+  // Auto-scroll when AI is typing/loading
+  useEffect(() => {
+    if (isLoading && mainScrollRef.current) {
+      const scrollInterval = setInterval(() => {
+        if (mainScrollRef.current) {
+          mainScrollRef.current.scrollTop = mainScrollRef.current.scrollHeight;
+        }
+      }, 100);
+      
+      return () => clearInterval(scrollInterval);
+    }
+  }, [isLoading]);
+
   const MessageBubble = ({ message }: { message: Message }) => (
     <div className={`flex ${message.isUser ? "justify-end" : "justify-start"} mb-4`}>
       <div className="max-w-[80%] group">

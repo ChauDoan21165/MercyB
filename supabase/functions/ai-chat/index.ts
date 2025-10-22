@@ -353,56 +353,81 @@ serve(async (req) => {
     if (roomData.entries && Array.isArray(roomData.entries)) {
       hasEntriesData = roomData.entries.length > 0;
       
-      // Search for entries whose keywords match the user's query
-      matchedEntries = roomData.entries.filter((entry: any) => {
-        if (!entry.keywords || !Array.isArray(entry.keywords)) return false;
-        
-        // Check if any keyword from the entry appears in the user query
-        return entry.keywords.some((keyword: string) => 
-          userQuery.includes(keyword.toLowerCase().replace(/_/g, ' '))
-        );
-      });
-
-      // LOG FEEDBACK about data coverage
-      if (matchedEntries.length === 0 && hasEntriesData) {
-        console.log(`[FEEDBACK] Room "${roomData.schema_id}" - No matching entries for query: "${userQuery}"`);
-        console.log(`[FEEDBACK] Available keywords in this room:`, 
-          roomData.entries.slice(0, 5).map((e: any) => e.keywords).flat().join(', ')
-        );
-      }
-
-      // If we found matching entries, provide their detailed content
-      if (matchedEntries.length > 0) {
-        console.log(`[SUCCESS] Found ${matchedEntries.length} matching entries for: "${userQuery}"`);
-        contextInfo += `\n=== RELEVANT DETAILED INFORMATION ===\n`;
-        matchedEntries.slice(0, 3).forEach((entry: any, idx: number) => {
-          contextInfo += `\n[Topic ${idx + 1}]\n`;
-          if (entry.title) {
-            contextInfo += `Title: ${entry.title.en} / ${entry.title.vi}\n`;
-          }
-          if (entry.content?.en) {
-            contextInfo += `Content (EN): ${entry.content.en}\n`;
-          }
-          if (entry.content?.vi) {
-            contextInfo += `Content (VI): ${entry.content.vi}\n`;
-          }
-          if (entry.copy?.en) {
-            contextInfo += `Guidance (EN): ${entry.copy.en}\n`;
-          }
-          if (entry.copy?.vi) {
-            contextInfo += `Guidance (VI): ${entry.copy.vi}\n`;
-          }
+      // Handle simple entries (like proverbs - just strings with en/vi)
+      const firstEntry = roomData.entries[0];
+      const isSimpleFormat = firstEntry && !firstEntry.keywords && (firstEntry.en || firstEntry.vi);
+      
+      if (isSimpleFormat) {
+        // For simple proverb-style entries, provide ALL of them as context
+        contextInfo += `\n=== ALL PROVERBS/CONTENT ===\n`;
+        roomData.entries.slice(0, 40).forEach((entry: any, idx: number) => {
+          if (entry.en) contextInfo += `${idx + 1}. ${entry.en} / ${entry.vi || ''}\n`;
         });
-        contextInfo += `\n=== END OF DETAILED INFORMATION ===\n\n`;
+        contextInfo += `\n=== END OF PROVERBS ===\n\n`;
+        matchedEntries = roomData.entries; // Mark as having content
       } else {
-        // No exact matches, show available topics
-        contextInfo += `Available Topics (ask about these):\n`;
-        roomData.entries.slice(0, 8).forEach((entry: any) => {
-          if (entry.title?.en) {
-            contextInfo += `- ${entry.title.en} (${entry.title.vi || ''})\n`;
-          }
+        // For complex entries with keywords, do keyword matching
+        matchedEntries = roomData.entries.filter((entry: any) => {
+          if (!entry.keywords || !Array.isArray(entry.keywords)) return false;
+          
+          // Check if any keyword from the entry appears in the user query
+          return entry.keywords.some((keyword: string) => 
+            userQuery.includes(keyword.toLowerCase().replace(/_/g, ' '))
+          );
         });
-        contextInfo += `\n`;
+
+        // LOG FEEDBACK about data coverage
+        if (matchedEntries.length === 0 && hasEntriesData) {
+          console.log(`[FEEDBACK] Room "${roomData.schema_id}" - No matching entries for query: "${userQuery}"`);
+          console.log(`[FEEDBACK] Available keywords in this room:`, 
+            roomData.entries.slice(0, 5).map((e: any) => e.keywords).flat().join(', ')
+          );
+        }
+
+        // If we found matching entries, provide their detailed content
+        if (matchedEntries.length > 0) {
+          console.log(`[SUCCESS] Found ${matchedEntries.length} matching entries for: "${userQuery}"`);
+          contextInfo += `\n=== RELEVANT DETAILED INFORMATION ===\n`;
+          matchedEntries.slice(0, 3).forEach((entry: any, idx: number) => {
+            contextInfo += `\n[Topic ${idx + 1}]\n`;
+            if (entry.title) {
+              contextInfo += `Title: ${entry.title.en} / ${entry.title.vi}\n`;
+            }
+            
+            // Extract content without word counts and markdown title repetitions
+            const cleanCopy = (text: string) => {
+              if (!text) return '';
+              return text
+                .replace(/\*\*[^*]+\*\*\n\n/g, '') // Remove markdown title at start
+                .replace(/\*?[Ww]ord [Cc]ount:?\s*\d+\*?/g, '') // Remove word count
+                .replace(/\*[Ss]ố từ:?\s*\d+\*/g, '') // Remove Vietnamese word count
+                .trim();
+            };
+            
+            if (entry.content?.en) {
+              contextInfo += `Content (EN): ${cleanCopy(entry.content.en)}\n`;
+            }
+            if (entry.content?.vi) {
+              contextInfo += `Content (VI): ${cleanCopy(entry.content.vi)}\n`;
+            }
+            if (entry.copy?.en) {
+              contextInfo += `Guidance (EN): ${cleanCopy(entry.copy.en)}\n`;
+            }
+            if (entry.copy?.vi) {
+              contextInfo += `Guidance (VI): ${cleanCopy(entry.copy.vi)}\n`;
+            }
+          });
+          contextInfo += `\n=== END OF DETAILED INFORMATION ===\n\n`;
+        } else {
+          // No exact matches, show available topics
+          contextInfo += `Available Topics (ask about these):\n`;
+          roomData.entries.slice(0, 8).forEach((entry: any) => {
+            if (entry.title?.en) {
+              contextInfo += `- ${entry.title.en} (${entry.title.vi || ''})\n`;
+            }
+          });
+          contextInfo += `\n`;
+        }
       }
     } else {
       console.log(`[FEEDBACK] Room "${roomData.schema_id}" - NO ENTRIES DATA AVAILABLE`);
@@ -427,11 +452,17 @@ CRITICAL INSTRUCTIONS:
 - You MUST respond in BOTH English and Vietnamese for every message
 - Format: English response first, then Vietnamese response, separated by a blank line
 
+FORMATTING RULES (CRITICAL):
+- DO NOT repeat titles or headings in your response - if the entry title is "Building Emotional Connection", don't write it twice
+- DO NOT include word counts, metadata like "*Word count: 152*" or technical markers
+- DO NOT include timestamp information  
+- Keep responses clean, natural, and conversational
+- Use markdown formatting sparingly and naturally
+- Strip out any source metadata before presenting to users
+
 YOUR ADVISORY APPROACH:
 - Act as an experienced advisor/consultant, not just an information provider
 - When detailed entry information is provided above, USE IT to give specific, accurate guidance
-- If no detailed info matches the query, ASK questions to understand better: "Please tell me more about..."
-- Tell users to provide details so you can find the right information for them
 - Provide specific, actionable guidance based on the detailed content when available
 - Use a conversational, engaging tone - be curious and supportive
 - DON'T just apologize or give generic disclaimers - actively help!
@@ -458,9 +489,9 @@ EXAMPLES OF GOOD RESPONSES:
 ✅ GOOD: "Let me guide you through this. For stomach pain, I need to understand: How severe is it (1-10)? Did you eat anything unusual? Any fever or nausea? Based on your answers, I'll give you specific advice."
 
 Example format:
-[Your English advisory response with specific guidance from entries or questions]
+[Your English advisory response using entry content - NO repeated titles, NO word counts]
 
-[Phản hồi tư vấn tiếng Việt với hướng dẫn cụ thể từ entries hoặc câu hỏi]`;
+[Phản hồi tiếng Việt sử dụng nội dung entry - KHÔNG lặp tiêu đề, KHÔNG đếm từ]`;
 
     const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
     if (!LOVABLE_API_KEY) {
