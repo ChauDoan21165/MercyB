@@ -257,7 +257,7 @@ const PaymentTest = () => {
               <CardContent className="space-y-4">
                 <div className="text-3xl font-bold">
                   ${tier.price_monthly}
-                  <span className="text-sm font-normal text-muted-foreground">/month / /tháng</span>
+                  <span className="text-sm font-normal text-muted-foreground">/month / tháng</span>
                 </div>
 
                 <ul className="space-y-2 text-sm">
