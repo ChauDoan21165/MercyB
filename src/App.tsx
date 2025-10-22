@@ -45,7 +45,8 @@ const App = () => (
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/vip-rooms" element={<AdminVIPRooms />} />
           <Route path="/matchmaking" element={<MatchmakingHub />} />
-          <Route path="/payment-test" element={<PaymentTest />} />
+          <Route path="/subscribe" element={<PaymentTest />} />
+          <Route path="/payment-test" element={<PaymentTest />} /> {/* Legacy redirect */}
           <Route path="/promo-code" element={<PromoCode />} />
           <Route path="/vip-topic-request" element={<VIPTopicRequest />} />
           <Route path="/admin/reports" element={<AdminReports />} />

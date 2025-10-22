@@ -115,7 +115,7 @@ const Welcome = () => {
           <Button 
             size="lg"
             className="bg-gradient-to-r from-accent to-primary hover:shadow-hover transition-all"
-            onClick={() => navigate("/payment-test")}
+            onClick={() => navigate("/subscribe")}
           >
             <span className="flex flex-col items-center px-4">
               <span className="text-base font-semibold">💳 Upgrade / Subscribe</span>
@@ -329,7 +329,14 @@ const Welcome = () => {
                   <Button
                     className="w-full mt-6"
                     variant="outline"
-                    onClick={() => navigate(index === 0 ? "/rooms" : "/payment-test")}
+                    onClick={() => {
+                      if (index === 0) {
+                        navigate("/rooms");
+                      } else {
+                        // Pass tier name in URL to pre-select on subscribe page
+                        navigate(`/subscribe?tier=${tier.name.en.toLowerCase()}`);
+                      }
+                    }}
                   >
                     <span className="flex flex-col">
                       <span className="text-sm">Choose Plan</span>

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -13,14 +13,29 @@ declare global {
 
 const PaymentTest = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [tiers, setTiers] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [selectedTier, setSelectedTier] = useState<string | null>(null);
+  const tierRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
   useEffect(() => {
     loadTiers();
     loadPayPalScript();
   }, []);
+
+  // Auto-scroll to pre-selected tier from URL
+  useEffect(() => {
+    const tierParam = searchParams.get('tier');
+    if (tierParam && tiers.length > 0) {
+      const matchingTier = tiers.find(t => t.name.toLowerCase() === tierParam.toLowerCase());
+      if (matchingTier && tierRefs.current[matchingTier.id]) {
+        setTimeout(() => {
+          tierRefs.current[matchingTier.id]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 300);
+      }
+    }
+  }, [searchParams, tiers]);
 
   const loadTiers = async () => {
     const { data } = await supabase
@@ -205,14 +220,18 @@ const PaymentTest = () => {
           </Button>
         </div>
 
-        <h1 className="text-4xl font-bold mb-4">VIP Subscriptions</h1>
+        <h1 className="text-4xl font-bold mb-4">Subscribe to VIP</h1>
         <p className="text-muted-foreground mb-8">
-          Choose your plan and upgrade to unlock premium features
+          Choose your plan and upgrade to unlock premium features / Chọn gói và nâng cấp để mở khóa tính năng cao cấp
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {tiers.map((tier) => (
-            <Card key={tier.id} className="relative">
+            <Card 
+              key={tier.id} 
+              ref={(el) => tierRefs.current[tier.id] = el}
+              className="relative"
+            >
               <CardHeader>
                 <CardTitle>{tier.name}</CardTitle>
                 <CardDescription>{tier.name_vi}</CardDescription>

@@ -53,7 +53,7 @@ const ChatHub = () => {
   const progress = useRoomProgress(roomId);
   const { trackMessage, trackKeyword, trackCompletion } = useBehaviorTracking(roomId || "");
   const { awardPoints } = usePoints();
-  const { canAccessVIP1, canAccessVIP2, canAccessVIP3, tier, loading: accessLoading } = useUserAccess();
+  const { canAccessVIP1, canAccessVIP2, canAccessVIP3, tier, isAdmin, loading: accessLoading } = useUserAccess();
   const { creditInfo, hasCreditsRemaining, incrementUsage, refreshCredits } = useCredits();
   const [showAccessDenied, setShowAccessDenied] = useState(false);
   const [showCreditLimit, setShowCreditLimit] = useState(false);
@@ -419,14 +419,16 @@ const handleAccessDenied = () => {
               <ArrowLeft className="w-4 h-4" />
               Back / Quay Lại
             </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => navigate('/admin-dashboard')}
-              className="text-xs"
-            >
-              Admin Dashboard
-            </Button>
+            {isAdmin && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => navigate('/admin/stats')}
+                className="text-xs"
+              >
+                📊 Admin Dashboard
+              </Button>
+            )}
             <MatchmakingButton />
           </div>
           
