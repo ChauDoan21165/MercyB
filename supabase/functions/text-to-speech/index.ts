@@ -51,12 +51,42 @@ serve(async (req) => {
       )
     }
 
-    const { text, voice } = await req.json()
+    const { text, voice, roomSlug, entrySlug } = await req.json()
 
     if (!text) {
       throw new Error('Text is required')
     }
 
+    // Generate unique filename based on room and entry
+    const fileName = `${roomSlug}/${entrySlug}_${voice || 'alloy'}.mp3`
+    
+    // Check if audio file already exists in storage
+    const { data: existingFile } = await supabaseClient
+      .storage
+      .from('room-audio')
+      .list(roomSlug, {
+        search: `${entrySlug}_${voice || 'alloy'}.mp3`
+      })
+
+    if (existingFile && existingFile.length > 0) {
+      // Return existing audio URL
+      const { data: urlData } = supabaseClient
+        .storage
+        .from('room-audio')
+        .getPublicUrl(fileName)
+      
+      console.log('Returning cached audio:', fileName)
+      return new Response(
+        JSON.stringify({ audioUrl: urlData.publicUrl, cached: true }),
+        {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        },
+      )
+    }
+
+    // Audio doesn't exist, generate new one
+    console.log('Generating new audio for:', fileName)
+    
     const OPENAI_API_KEY = Deno.env.get('OPENAI_API_KEY')
     if (!OPENAI_API_KEY) {
       throw new Error('OPENAI_API_KEY is not configured')
@@ -85,14 +115,34 @@ serve(async (req) => {
       throw new Error(error.error?.message || 'Failed to generate speech')
     }
 
-    // Convert audio buffer to base64
+    // Get audio buffer
     const arrayBuffer = await response.arrayBuffer()
-    const base64Audio = btoa(
-      String.fromCharCode(...new Uint8Array(arrayBuffer))
-    )
+    const audioBlob = new Uint8Array(arrayBuffer)
+
+    // Upload to storage
+    const { error: uploadError } = await supabaseClient
+      .storage
+      .from('room-audio')
+      .upload(fileName, audioBlob, {
+        contentType: 'audio/mpeg',
+        upsert: false
+      })
+
+    if (uploadError) {
+      console.error('Storage upload error:', uploadError)
+      throw new Error(`Failed to store audio: ${uploadError.message}`)
+    }
+
+    // Get public URL
+    const { data: urlData } = supabaseClient
+      .storage
+      .from('room-audio')
+      .getPublicUrl(fileName)
+
+    console.log('Audio generated and stored:', fileName)
 
     return new Response(
-      JSON.stringify({ audioContent: base64Audio }),
+      JSON.stringify({ audioUrl: urlData.publicUrl, cached: false }),
       {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       },

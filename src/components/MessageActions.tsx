@@ -83,28 +83,32 @@ export const MessageActions = ({ text, roomId }: MessageActionsProps) => {
 
     setIsPlayingAudio(true);
     try {
+      // Extract English text only (before Vietnamese part)
+      const englishText = text.split('\n\n')[0] || text;
+      
+      // Create simple hash for caching (first 100 chars)
+      const textHash = englishText.substring(0, 100).replace(/[^a-z0-9]/gi, '_').substring(0, 50);
+      
       const { data, error } = await supabase.functions.invoke('text-to-speech', {
-        body: { text, voice: 'alloy' }
+        body: { 
+          text, 
+          voice: 'alloy',
+          roomSlug: roomId,
+          entrySlug: textHash
+        }
       });
 
       if (error) throw error;
 
-      if (data?.audioContent) {
-        // Convert base64 to audio and play
-        const audioBlob = new Blob(
-          [Uint8Array.from(atob(data.audioContent), c => c.charCodeAt(0))],
-          { type: 'audio/mpeg' }
-        );
-        const audioUrl = URL.createObjectURL(audioBlob);
-        const audio = new Audio(audioUrl);
+      if (data?.audioUrl) {
+        // Play audio from URL (either cached or newly generated)
+        const audio = new Audio(data.audioUrl);
         
         audio.onended = () => {
-          URL.revokeObjectURL(audioUrl);
           setIsPlayingAudio(false);
         };
 
         audio.onerror = () => {
-          URL.revokeObjectURL(audioUrl);
           setIsPlayingAudio(false);
           toast({
             title: "Playback Error / Lỗi Phát",
@@ -114,6 +118,12 @@ export const MessageActions = ({ text, roomId }: MessageActionsProps) => {
         };
 
         await audio.play();
+        
+        if (data.cached) {
+          console.log('Playing cached audio');
+        } else {
+          console.log('Playing newly generated audio');
+        }
       }
     } catch (err) {
       console.error('TTS error:', err);
