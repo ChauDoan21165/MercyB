@@ -81,7 +81,7 @@ const PaymentTest = () => {
       
       const script = document.createElement('script');
       script.id = 'paypal-sdk';
-      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=USD&components=buttons&intent=capture&disable-funding=card`;
+      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=USD&components=buttons&intent=capture&commit=true&enable-funding=paypal&disable-funding=card,venmo,credit,sepa,bancontact,eps,giropay,ideal,mybank,p24,sofort`;
       script.async = true;
       
       // Wait for script to load
@@ -134,6 +134,7 @@ const PaymentTest = () => {
       container.innerHTML = '';
 
       await window.paypal.Buttons({
+        fundingSource: window.paypal.FUNDING.PAYPAL,
         createOrder: async () => {
           try {
             console.log('Creating PayPal order for tier:', tierId);

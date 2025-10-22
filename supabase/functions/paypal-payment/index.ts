@@ -71,6 +71,10 @@ serve(async (req) => {
         },
         body: JSON.stringify({
           intent: 'CAPTURE',
+          application_context: {
+            landing_page: 'LOGIN', // Force PayPal login instead of guest card form
+            user_action: 'PAY_NOW', // Show Pay Now for clarity
+          },
           purchase_units: [{
             amount: {
               currency_code: 'USD',
