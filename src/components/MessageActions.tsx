@@ -14,7 +14,7 @@ export const MessageActions = ({ text, roomId }: MessageActionsProps) => {
   const [copied, setCopied] = useState(false);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const { toast } = useToast();
-  const { canAccessVIP3 } = useUserAccess();
+  const { canAccessVIP1 } = useUserAccess();
 
   const handleCopy = async () => {
     try {
@@ -68,11 +68,11 @@ export const MessageActions = ({ text, roomId }: MessageActionsProps) => {
   };
 
   const handlePlayAudio = async () => {
-    // Check VIP3 access
-    if (!canAccessVIP3) {
+    // Check VIP access
+    if (!canAccessVIP1) {
       toast({
-        title: "VIP 3 Only / Chỉ Dành Cho VIP 3",
-        description: "Audio playback is only available for VIP 3 members. / Phát âm thanh chỉ dành cho thành viên VIP 3.",
+        title: "VIP Required / Yêu Cầu VIP",
+        description: "Audio playback is available for VIP members. / Phát âm thanh dành cho thành viên VIP.",
         variant: "destructive",
         duration: 3000,
       });
@@ -187,7 +187,7 @@ export const MessageActions = ({ text, roomId }: MessageActionsProps) => {
         onClick={handlePlayAudio}
         disabled={isPlayingAudio}
         className="h-7 px-2 text-xs"
-        title="Listen to English audio (VIP 3 only)"
+        title="Listen to English audio (VIP only)"
       >
         <Volume2 className={`w-3 h-3 mr-1 ${isPlayingAudio ? 'animate-pulse' : ''}`} />
         {isPlayingAudio ? "Playing..." : "Audio"}
