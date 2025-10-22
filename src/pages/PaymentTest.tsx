@@ -217,28 +217,28 @@ const PaymentTest = () => {
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
           <Button variant="outline" onClick={() => navigate('/')}>
-            ← Back to Home
+            ← Quay lại Trang chủ
           </Button>
         </div>
 
-        <h1 className="text-4xl font-bold mb-4">Choose Your Payment Method</h1>
+        <h1 className="text-4xl font-bold mb-4">Chọn Gói VIP Của Bạn</h1>
         <p className="text-muted-foreground mb-4">
-          Select your plan and payment method / Chọn gói và phương thức thanh toán
+          Mở khóa tính năng cao cấp và nội dung độc quyền
         </p>
 
         <div className="grid md:grid-cols-2 gap-4 mb-8 p-4 bg-muted/50 rounded-lg">
           <div className="flex items-start gap-3">
             <span className="text-2xl">⚡</span>
             <div>
-              <h3 className="font-semibold">Instant PayPal</h3>
-              <p className="text-sm text-muted-foreground">Pay through app, instant activation</p>
+              <h3 className="font-semibold">PayPal Nhanh Chóng</h3>
+              <p className="text-sm text-muted-foreground">Thanh toán qua app, kích hoạt ngay lập tức</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <span className="text-2xl">📸</span>
             <div>
-              <h3 className="font-semibold">Manual Transfer</h3>
-              <p className="text-sm text-muted-foreground">Pay yourself, upload screenshot (may need admin approval)</p>
+              <h3 className="font-semibold">Chuyển Khoản Thủ Công</h3>
+              <p className="text-sm text-muted-foreground">Bạn có thể tự trả bằng PayPal, cho app màn hình giao dịch</p>
             </div>
           </div>
         </div>
@@ -257,15 +257,15 @@ const PaymentTest = () => {
               <CardContent className="space-y-4">
                 <div className="text-3xl font-bold">
                   ${tier.price_monthly}
-                  <span className="text-sm font-normal text-muted-foreground">/month</span>
+                  <span className="text-sm font-normal text-muted-foreground">/tháng</span>
                 </div>
 
                 <ul className="space-y-2 text-sm">
-                  <li>✓ {tier.room_access_per_day} rooms per day</li>
+                  <li>✓ {tier.room_access_per_day} phòng mỗi ngày</li>
                   {tier.custom_topics_allowed > 0 && (
-                    <li>✓ {tier.custom_topics_allowed} custom topics</li>
+                    <li>✓ {tier.custom_topics_allowed} chủ đề tùy chỉnh</li>
                   )}
-                  {tier.priority_support && <li>✓ Priority support</li>}
+                  {tier.priority_support && <li>✓ Hỗ trợ ưu tiên</li>}
                 </ul>
 
                 <div className="space-y-2">
@@ -274,7 +274,7 @@ const PaymentTest = () => {
                     disabled={loading}
                     className="w-full"
                   >
-                    {loading && selectedTier === tier.id ? 'Loading PayPal... / Đang tải...' : '⚡ Pay with PayPal (Instant)'}
+                    {loading && selectedTier === tier.id ? 'Đang tải PayPal...' : '⚡ Thanh toán bằng PayPal (Nhanh)'}
                   </Button>
                   <div className="w-full border-2 border-dashed border-muted rounded-md p-2">
                     <div 
@@ -284,10 +284,10 @@ const PaymentTest = () => {
                   </div>
                   {selectedTier === tier.id ? (
                     loading ? (
-                      <div className="text-sm text-muted-foreground">Loading PayPal buttons...</div>
+                      <div className="text-sm text-muted-foreground">Đang tải nút PayPal...</div>
                     ) : null
                   ) : (
-                    <div className="text-sm text-muted-foreground">Click button above to continue</div>
+                    <div className="text-sm text-muted-foreground">Nhấn nút trên để tiếp tục</div>
                   )}
 
                   <div className="relative my-4">
@@ -295,7 +295,7 @@ const PaymentTest = () => {
                       <span className="w-full border-t" />
                     </div>
                     <div className="relative flex justify-center text-xs uppercase">
-                      <span className="bg-background px-2 text-muted-foreground">OR</span>
+                      <span className="bg-background px-2 text-muted-foreground">HOẶC</span>
                     </div>
                   </div>
 
@@ -304,10 +304,10 @@ const PaymentTest = () => {
                     className="w-full"
                     onClick={() => navigate(`/manual-payment?tier=${tier.id}&name=${encodeURIComponent(tier.name)}&price=${tier.price_monthly}`)}
                   >
-                    📸 Pay Manually & Upload Screenshot
+                    📸 Thanh toán Thủ công & Tải lên Ảnh chụp
                   </Button>
                   <p className="text-xs text-muted-foreground text-center">
-                    Send to: cd12536@gmail.com | May require admin approval
+                    Gửi đến: cd12536@gmail.com | Có thể cần phê duyệt quản trị viên
                   </p>
                 </div>
               </CardContent>
@@ -316,9 +316,9 @@ const PaymentTest = () => {
         </div>
 
         <div className="mt-8 p-4 bg-muted rounded-lg">
-          <h3 className="font-semibold mb-2">💳 Secure Payment</h3>
+          <h3 className="font-semibold mb-2">💳 Thanh toán An toàn</h3>
           <p className="text-sm text-muted-foreground">
-            All payments are processed securely through PayPal. Your subscription will be activated immediately after successful payment.
+            Tất cả thanh toán được xử lý an toàn qua PayPal. Gói đăng ký sẽ được kích hoạt ngay sau khi thanh toán thành công.
           </p>
         </div>
       </div>
