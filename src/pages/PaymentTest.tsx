@@ -176,7 +176,8 @@ const PaymentTest = () => {
             console.log('Capture result:', captureData);
 
             if (captureData.success) {
-              toast.success('Payment successful! Your subscription is now active. / Thanh toán thành công!');
+              const tierName = tiers.find(t => t.id === tierId)?.name || 'VIP';
+              toast.success(`🎉 Congratulations! You are now in ${tierName}. Enjoy your experience! / Chúc mừng! Bạn đã là ${tierName}. Tận hưởng trải nghiệm!`);
               navigate('/');
             } else {
               toast.error('Payment was not completed / Thanh toán không hoàn tất');
@@ -216,7 +217,7 @@ const PaymentTest = () => {
           </Button>
         </div>
 
-        <h1 className="text-4xl font-bold mb-4">
+        <h1 className="text-4xl font-bold mb-4 text-center">
           {searchParams.get('tier') 
             ? `Payment for ${searchParams.get('tier')?.toUpperCase()} / Thanh toán cho ${searchParams.get('tier')?.toUpperCase()}`
             : 'Choose Your VIP Package / Chọn Gói VIP Của Bạn'

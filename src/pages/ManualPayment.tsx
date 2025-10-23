@@ -121,8 +121,8 @@ const ManualPayment = () => {
 
       if (data.status === 'auto_approved') {
         toast({
-          title: "✅ Payment Verified!",
-          description: "Your subscription is now active!",
+          title: "🎉 Congratulations!",
+          description: `You are now in ${tierName}. Enjoy your experience! / Bạn đã là ${tierName}. Tận hưởng trải nghiệm!`,
         });
         
         // Redirect to home after 2 seconds
