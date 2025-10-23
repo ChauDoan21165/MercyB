@@ -224,6 +224,10 @@ const PaymentTest = () => {
         </h1>
 
         <div className="max-w-4xl mx-auto">
+          <p className="text-lg mb-6 text-center text-muted-foreground">
+            You have two ways to transfer money: / Bạn có hai cách chuyển tiền:
+          </p>
+          
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <Card className="p-6 bg-card/50 backdrop-blur border-primary/20">
               <div className="flex items-start gap-3">
@@ -243,83 +247,6 @@ const PaymentTest = () => {
                 </div>
               </div>
             </Card>
-          </div>
-
-          <div className="space-y-6">
-          {tiers.map((tier) => (
-            <Card 
-              key={tier.id} 
-              ref={(el) => tierRefs.current[tier.id] = el}
-              className="relative border-2 transition-all duration-300 hover:shadow-xl bg-gradient-to-br from-card/90 to-card/50 backdrop-blur-sm w-full"
-              style={{
-                borderColor: `hsl(var(--${tier.name.includes('VIP1') ? 'secondary' : tier.name.includes('VIP2') ? 'accent' : tier.name.includes('VIP3') ? 'primary' : 'border'}))`,
-              }}
-            >
-              <CardHeader>
-                <CardTitle className="text-3xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  {tier.name}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="text-4xl font-bold flex items-baseline gap-2">
-                  <span>${tier.price_monthly}</span>
-                  <span className="text-base font-normal text-muted-foreground">/month / tháng</span>
-                </div>
-
-                <ul className="space-y-3 text-sm">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">✓</span>
-                    <span>{tier.room_access_per_day} rooms per day / {tier.room_access_per_day} phòng mỗi ngày</span>
-                  </li>
-                  {tier.custom_topics_allowed > 0 && (
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary mt-0.5">✓</span>
-                      <span>{tier.custom_topics_allowed} custom topics / {tier.custom_topics_allowed} chủ đề tùy chỉnh</span>
-                    </li>
-                  )}
-                  {tier.priority_support && (
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary mt-0.5">✓</span>
-                      <span>Priority support / Hỗ trợ ưu tiên</span>
-                    </li>
-                  )}
-                </ul>
-
-                <div className="space-y-3 pt-4">
-                  <Button
-                    onClick={() => handlePayment(tier.id)}
-                    disabled={loading}
-                    className="w-full h-12 text-base bg-primary hover:bg-primary/90"
-                  >
-                    ⚡ Pay with PayPal
-                  </Button>
-                  <div className="w-full border-2 border-dashed border-muted rounded-md p-3">
-                    <div 
-                      id={`paypal-button-${tier.id}`} 
-                      className="min-h-[50px] w-full"
-                    />
-                  </div>
-
-                  <div className="relative my-4">
-                    <div className="absolute inset-0 flex items-center">
-                      <span className="w-full border-t" />
-                    </div>
-                    <div className="relative flex justify-center text-xs uppercase">
-                      <span className="bg-card px-2 text-muted-foreground">OR / HOẶC</span>
-                    </div>
-                  </div>
-
-                  <Button
-                    variant="outline"
-                    className="w-full h-12 text-base"
-                    onClick={() => navigate(`/manual-payment?tier=${tier.id}&name=${encodeURIComponent(tier.name)}&price=${tier.price_monthly}`)}
-                  >
-                    💰 Manual Payment
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
           </div>
 
           <div className="mt-8 p-4 bg-muted rounded-lg">
