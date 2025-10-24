@@ -25,6 +25,7 @@ import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, A
 import { keywordRespond } from "@/lib/keywordResponder";
 import { messageSchema } from "@/lib/inputValidation";
 import { supabase } from "@/integrations/supabase/client";
+import { roomDataMap } from "@/lib/roomDataImports";
 
 interface Message {
   id: string;
@@ -99,7 +100,6 @@ const handleAccessDenied = () => {
     setIsAudioPlaying(false);
 
     try {
-      const { roomDataMap } = require('@/lib/roomDataImports');
       const roomData = roomDataMap[roomId || ''];
       
       // Load welcome message from room data
