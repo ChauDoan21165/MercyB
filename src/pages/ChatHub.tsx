@@ -70,14 +70,16 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
 useEffect(() => {
   if (!accessLoading && info) {
     const hasAccess = 
-      isAdmin ||  // Admins can access all rooms
+      isAdmin || // Admins can access all rooms
       info.tier === 'free' ||
       (info.tier === 'vip1' && canAccessVIP1) ||
       (info.tier === 'vip2' && canAccessVIP2) ||
       (info.tier === 'vip3' && canAccessVIP3);
-    
+
     if (!hasAccess) {
       setShowAccessDenied(true);
+    } else {
+      setShowAccessDenied(false);
     }
   }
 }, [accessLoading, info, canAccessVIP1, canAccessVIP2, canAccessVIP3, isAdmin]);
@@ -537,7 +539,10 @@ const handleAccessDenied = () => {
                   </div>
                 </div>
                 <audio 
-                  ref={audioRef} 
+                  key={currentAudio}
+                  ref={audioRef}
+                  preload="auto"
+                  controls
                   onEnded={() => setIsAudioPlaying(false)}
                   onPause={() => setIsAudioPlaying(false)}
                   onPlay={() => setIsAudioPlaying(true)}
