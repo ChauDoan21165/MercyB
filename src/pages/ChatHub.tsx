@@ -22,7 +22,6 @@ import { CreditLimitModal } from "@/components/CreditLimitModal";
 import { CreditsDisplay } from "@/components/CreditsDisplay";
 import { PrivateChatPanel } from "@/components/PrivateChatPanel";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { keywordRespond } from "@/lib/keywordResponder";
 import { messageSchema } from "@/lib/inputValidation";
 import { supabase } from "@/integrations/supabase/client";
@@ -57,15 +56,7 @@ const ChatHub = () => {
   const { creditInfo, hasCreditsRemaining, incrementUsage, refreshCredits } = useCredits();
   const [showAccessDenied, setShowAccessDenied] = useState(false);
   const [showCreditLimit, setShowCreditLimit] = useState(false);
-  const [contentMode, setContentMode] = useState<"ai" | "keyword">(() => {
-    const saved = localStorage.getItem(`contentMode_${roomId}`);
-    return (saved === "keyword" || saved === "ai") ? saved : "ai";
-  });
-
-  // Save content mode preference
-  useEffect(() => {
-    localStorage.setItem(`contentMode_${roomId}`, contentMode);
-  }, [contentMode, roomId]);
+  const contentMode = "keyword"; // Always use keyword mode
 
 // Use centralized room metadata
 const info = getRoomInfo(roomId || "");
@@ -152,9 +143,8 @@ const handleAccessDenied = () => {
     // Track message for behavior analytics
     trackMessage(currentInput);
 
-    // KEYWORD MODE: Use keyword responder
-    if (contentMode === "keyword") {
-      // Add typing indicator
+    // KEYWORD MODE: Use keyword responder only
+    // Add typing indicator
       const typingMessageId = (Date.now() + 1).toString();
       const typingMessage: Message = {
         id: typingMessageId,
@@ -204,113 +194,6 @@ const handleAccessDenied = () => {
       } finally {
         setIsLoading(false);
       }
-      return;
-    }
-
-    // AI MODE: Use AI chat
-    // Create a temporary AI message that we'll update with streaming content
-    const aiMessageId = (Date.now() + 1).toString();
-    const tempAiMessage: Message = {
-      id: aiMessageId,
-      text: '',
-      isUser: false,
-      timestamp: new Date()
-    };
-    setMainMessages(prev => [...prev, tempAiMessage]);
-
-    try {
-      // Get conversation history
-      const conversationHistory = mainMessages
-        .filter(m => m.id !== 'welcome')
-        .map(m => ({
-          role: m.isUser ? 'user' : 'assistant',
-          content: m.text
-        }));
-
-      conversationHistory.push({ role: 'user', content: currentInput });
-
-      const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/ai-chat`;
-      const response = await fetch(CHAT_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-        },
-        body: JSON.stringify({
-          roomId: roomId,
-          messages: conversationHistory
-        }),
-      });
-
-      if (!response.ok || !response.body) {
-        if (response.status === 429) {
-          throw new Error('Too many requests. Please wait a moment and try again.');
-        }
-        if (response.status === 402) {
-          throw new Error('AI service temporarily unavailable. Please try again later.');
-        }
-        throw new Error('Failed to get AI response');
-      }
-
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      let textBuffer = '';
-      let accumulatedText = '';
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        
-        textBuffer += decoder.decode(value, { stream: true });
-
-        let newlineIndex: number;
-        while ((newlineIndex = textBuffer.indexOf('\n')) !== -1) {
-          let line = textBuffer.slice(0, newlineIndex);
-          textBuffer = textBuffer.slice(newlineIndex + 1);
-
-          if (line.endsWith('\r')) line = line.slice(0, -1);
-          if (line.startsWith(':') || line.trim() === '') continue;
-          if (!line.startsWith('data: ')) continue;
-
-          const jsonStr = line.slice(6).trim();
-          if (jsonStr === '[DONE]') break;
-
-          try {
-            const parsed = JSON.parse(jsonStr);
-            const content = parsed.choices?.[0]?.delta?.content;
-            if (content) {
-              accumulatedText += content;
-              const cleaned = accumulatedText
-                .replace(/\*\*/g, '')
-                .replace(/(?:\n|\s)*\d{1,2}:\d{2}:\d{2}\s?(AM|PM)?\.?$/i, '')
-                .trim();
-              // Update the AI message with accumulated, cleaned text
-              setMainMessages(prev =>
-                prev.map(m =>
-                  m.id === aiMessageId ? { ...m, text: cleaned } : m
-                )
-              );
-            }
-          } catch {
-            textBuffer = line + '\n' + textBuffer;
-            break;
-          }
-        }
-      }
-
-    } catch (error) {
-      console.error('Error generating response:', error);
-      // Remove the temp message on error
-      setMainMessages(prev => prev.filter(m => m.id !== aiMessageId));
-      
-      toast({
-        title: "Error / Lỗi",
-        description: error instanceof Error ? error.message : "Could not generate response / Không Thể Tạo Phản Hồi",
-        variant: "destructive"
-      });
-    } finally {
-      setIsLoading(false);
-    }
   };
 
   const sendMessage = async (
@@ -467,45 +350,7 @@ const handleAccessDenied = () => {
               <p className="text-sm text-muted-foreground">{currentRoom.nameVi}</p>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <p className="text-xs text-muted-foreground">Choose content mode / Chọn chế độ nội dung:</p>
-              <ToggleGroup 
-                type="single" 
-                value={contentMode} 
-                onValueChange={(value) => {
-                  if (value === "ai" && !canAccessVIP1) {
-                    toast({
-                      title: "VIP Required / Yêu Cầu VIP",
-                      description: "AI mode is only available for VIP members. Switch to keyword mode for free access. / Chế độ AI chỉ dành cho thành viên VIP. Chuyển sang chế độ từ khóa để sử dụng miễn phí.",
-                      variant: "destructive",
-                      duration: 4000,
-                    });
-                    return;
-                  }
-                  if (value) setContentMode(value as "ai" | "keyword");
-                }}
-                className="inline-flex bg-card border rounded-lg p-1"
-              >
-                <ToggleGroupItem 
-                  value="ai" 
-                  aria-label="AI Content" 
-                  className="text-sm px-4 py-2 data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
-                >
-                  <span className="flex flex-col items-center">
-                    <span>🤖 AI Content</span>
-                    <span className="text-xs opacity-80">Nội dung tạo bởi AI</span>
-                  </span>
-                </ToggleGroupItem>
-                <ToggleGroupItem 
-                  value="keyword" 
-                  aria-label="Keyword Content" 
-                  className="text-sm px-4 py-2 data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
-                >
-                  <span className="flex flex-col items-center">
-                    <span>📚 Keyword Content</span>
-                    <span className="text-xs opacity-80">Nội dung nghiên cứu trước của admin</span>
-                  </span>
-                </ToggleGroupItem>
-              </ToggleGroup>
+              <Badge variant="outline">📚 Keyword Mode / Chế Độ Từ Khóa</Badge>
             </div>
           </div>
           
