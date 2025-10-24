@@ -28,6 +28,32 @@
 "dat_duoc_hoa_hop_noi_tam"
 ]
 },
+"keywords": {
+"recognizing_hidden_aspects": {
+"en": ["recognizing", "hidden", "aspects", "recognize", "shadow", "hidden_aspects", "recognizing_hidden_aspects"],
+"vi": ["nhận", "diện", "khía", "cạnh", "ẩn", "giấu", "nhan_dien", "khia_canh", "an_giau", "nhan_dien_khia_canh_an_giau"]
+},
+"embracing_shadow_integration": {
+"en": ["embracing", "shadow", "integration", "embrace", "integrate", "embracing_shadow_integration"],
+"vi": ["chấp", "nhận", "hòa", "nhập", "bóng", "tối", "chap_nhan", "hoa_nhap", "mat_toi", "chap_nhan_hoa_nhap_mat_toi"]
+},
+"shadow_reflection_practices": {
+"en": ["shadow", "reflection", "practices", "reflect", "meditate", "shadow_reflection_practices"],
+"vi": ["thực", "hành", "chiêm", "nghiệm", "bóng", "tối", "thuc_hanh", "chiem_nghiem", "bong_toi", "thuc_hanh_chiem_nghiem_bong_toi"]
+},
+"practicing_shadow_forgiveness": {
+"en": ["practicing", "shadow", "forgiveness", "forgive", "forgiving", "practicing_shadow_forgiveness"],
+"vi": ["thực", "hành", "tha", "thứ", "bóng", "tối", "thuc_hanh", "tha_thu", "bong_toi", "thuc_hanh_tha_thu_bong_toi"]
+},
+"trigger_awareness_techniques": {
+"en": ["trigger", "awareness", "techniques", "triggers", "aware", "trigger_awareness_techniques"],
+"vi": ["kỹ", "thuật", "nhận", "thức", "tác", "nhân", "ky_thuat", "nhan_thuc", "tac_nhan", "ky_thuat_nhan_thuc_tac_nhan"]
+},
+"achieving_inner_harmony": {
+"en": ["achieving", "inner", "harmony", "achieve", "peace", "balance", "achieving_inner_harmony"],
+"vi": ["đạt", "được", "hòa", "hợp", "nội", "tâm", "dat_duoc", "hoa_hop", "noi_tam", "dat_duoc_hoa_hop_noi_tam"]
+}
+},
 "keywords_dict": {
 "recognizing_hidden_aspects": {
 "en": "Recognizing Hidden Aspects",
