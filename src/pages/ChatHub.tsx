@@ -286,18 +286,8 @@ const handleAccessDenied = () => {
                 setCurrentAudio(localUrl);
                 setIsAudioPlaying(false);
 
-                if (audioRef.current) {
-                  // Set up event handler BEFORE loading to avoid race condition
-                  audioRef.current.oncanplay = () => {
-                    setAudioLoading(false);
-                    toast({
-                      title: "Audio Ready / Âm Thanh Sẵn Sàng",
-                      description: "Click play button / Nhấn nút phát",
-                    });
-                  };
-                  audioRef.current.src = localUrl;
-                  audioRef.current.load();
-                }
+                // Audio src is bound in JSX; loading handled via onCanPlay
+
               } catch (e) {
                 console.error('Audio load error:', e);
                 setAudioLoading(false);
@@ -602,9 +592,17 @@ const handleAccessDenied = () => {
                 <audio 
                   key={currentAudio}
                   ref={audioRef}
+                  src={currentAudio}
                   preload="auto"
                   controls
                   className="w-full"
+                  onCanPlay={() => {
+                    setAudioLoading(false);
+                    toast({
+                      title: "Audio Ready / Âm Thanh Sẵn Sàng",
+                      description: "Click play button / Nhấn nút phát",
+                    });
+                  }}
                   onEnded={() => setIsAudioPlaying(false)}
                   onPause={() => setIsAudioPlaying(false)}
                   onPlay={() => setIsAudioPlaying(true)}
