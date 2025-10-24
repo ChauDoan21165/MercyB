@@ -109,6 +109,7 @@ import womenHealthFree from '@/data/rooms/Women_Health_Free.json';
 import abdominalPainFree from '@/data/rooms/Abdominal_Pain_Free.json';
 import keepSoulCalmVip3 from '@/data/rooms/Keep_Soul_Calm_VIP3.json';
 import mentalSharpnessVip3 from '@/data/rooms/Mental_Sharpness_VIP3.json';
+import overcomeStormVip3 from '@/data/rooms/Overcome_Storm_VIP3.json';
 
 export const roomDataMap: Record<string, any> = {
   'abdominal-pain': abdominalPain,
@@ -221,4 +222,5 @@ export const roomDataMap: Record<string, any> = {
   'abdominal-pain-free': abdominalPainFree,
   'keep-soul-calm-vip3': keepSoulCalmVip3,
   'mental-sharpness-vip3': mentalSharpnessVip3,
+  'overcome-storm-vip3': overcomeStormVip3,
 };

@@ -122,7 +122,8 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "women-health-free", nameVi: "Sức Khỏe Phụ Nữ", nameEn: "Women's Health", hasData: true, tier: "free", dataFile: "Women_Health_Free.json" },
   { id: "abdominal-pain-free", nameVi: "Đau Bụng", nameEn: "Abdominal Pain", hasData: true, tier: "free", dataFile: "Abdominal_Pain_Free.json" },
   { id: "keep-soul-calm-vip3", nameVi: "Bình An Nội Tâm VIP3", nameEn: "Inner Peace VIP3", hasData: true, tier: "vip3", dataFile: "Keep_Soul_Calm_VIP3.json" },
-  { id: "mental-sharpness-vip3", nameVi: "Trí Tuệ Sắc Bén VIP3", nameEn: "Mental Sharpness VIP3", hasData: true, tier: "vip3", dataFile: "Mental_Sharpness_VIP3.json" }
+  { id: "mental-sharpness-vip3", nameVi: "Trí Tuệ Sắc Bén VIP3", nameEn: "Mental Sharpness VIP3", hasData: true, tier: "vip3", dataFile: "Mental_Sharpness_VIP3.json" },
+  { id: "overcome-storm-vip3", nameVi: "Vượt Qua Giông Bão VIP3", nameEn: "Overcome Storm VIP3", hasData: true, tier: "vip3", dataFile: "Overcome_Storm_VIP3.json" }
 ];
 
 // Get room info by ID
