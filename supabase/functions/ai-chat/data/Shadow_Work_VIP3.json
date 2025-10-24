@@ -29,12 +29,48 @@
     ]
   },
   "keywords_dict": {
-    "revealing_buried_characteristics": ["revealing", "buried", "characteristics", "hidden", "traits", "reveal", "uncover", "khai", "lo", "dac", "tinh", "tiem", "an"],
-    "fusing_shadow_components": ["fusing", "shadow", "components", "integration", "merge", "hoa", "nhap", "thanh", "phan", "bong", "toi"],
-    "pondering_shadow_elements": ["pondering", "shadow", "elements", "reflection", "contemplate", "chiem", "nghiem", "yeu", "to", "bong", "toi"],
-    "participating_shadow_absolution": ["participating", "shadow", "absolution", "forgiveness", "pardon", "tham", "gia", "tha", "thu", "noi", "tam"],
-    "spotting_trigger_configurations": ["spotting", "trigger", "configurations", "patterns", "awareness", "nhan", "biet", "cau", "truc", "tac", "nhan"],
-    "realizing_intrinsic_cohesion": ["realizing", "intrinsic", "cohesion", "unity", "harmony", "nhan", "thuc", "su", "ket", "noi", "noi", "tai"]
+    "en": {
+      "revealing_buried_characteristics": "Revealing Buried Characteristics",
+      "fusing_shadow_components": "Fusing Shadow Components",
+      "pondering_shadow_elements": "Pondering Shadow Elements",
+      "participating_shadow_absolution": "Participating in Shadow Absolution",
+      "spotting_trigger_configurations": "Spotting Trigger Configurations",
+      "realizing_intrinsic_cohesion": "Realizing Intrinsic Cohesion"
+    },
+    "vi": {
+      "khai_lo_dac_tinh_tiem_an": "Khai Lộ Những Đặc Tính Tiềm Ẩn",
+      "hoa_nhap_thanh_phan_bong_toi": "Hòa Nhập Các Thành Phần Bóng Tối",
+      "chiem_nghiem_yeu_to_bong_toi": "Chiêm Nghiệm Những Yếu Tố Bóng Tối",
+      "tham_gia_tha_thu_noi_tam": "Tham Gia Vào Sự Tha Thứ Nội Tâm",
+      "nhan_biet_cau_truc_tac_nhan": "Nhận Biết Cấu Trúc Tác Nhân",
+      "nhan_thuc_su_ket_noi_noi_tai": "Nhận Thức Sự Kết Nối Nội Tại"
+    }
+  },
+  "keywords": {
+    "revealing_buried_characteristics": {
+      "en": ["revealing_buried_characteristics", "revealing", "buried", "characteristics", "hidden_traits", "shadow_revelation"],
+      "vi": ["khai_lo_dac_tinh_tiem_an", "khai", "lo", "dac", "tinh", "tiem", "an"]
+    },
+    "fusing_shadow_components": {
+      "en": ["fusing_shadow_components", "fusing", "shadow_components", "shadow_integration", "merging_shadow"],
+      "vi": ["hoa_nhap_thanh_phan_bong_toi", "hoa", "nhap", "thanh", "phan", "bong", "toi"]
+    },
+    "pondering_shadow_elements": {
+      "en": ["pondering_shadow_elements", "pondering", "shadow_elements", "shadow_reflection", "contemplating_shadow", "shadow_reflection_practices"],
+      "vi": ["chiem_nghiem_yeu_to_bong_toi", "chiem", "nghiem", "yeu", "to", "bong", "toi", "thuc_hanh_chiem_nghiem_bong_toi"]
+    },
+    "participating_shadow_absolution": {
+      "en": ["participating_shadow_absolution", "shadow_absolution", "shadow_forgiveness", "practicing_shadow_forgiveness"],
+      "vi": ["tham_gia_tha_thu_noi_tam", "tham", "gia", "tha", "thu", "noi", "tam", "thuc_hanh_tha_thu_bong_toi"]
+    },
+    "spotting_trigger_configurations": {
+      "en": ["spotting_trigger_configurations", "trigger_configurations", "trigger_patterns", "trigger_awareness", "trigger_awareness_techniques"],
+      "vi": ["nhan_biet_cau_truc_tac_nhan", "nhan", "biet", "cau", "truc", "tac", "nhan", "ky_thuat_nhan_thuc_tac_nhan"]
+    },
+    "realizing_intrinsic_cohesion": {
+      "en": ["realizing_intrinsic_cohesion", "intrinsic_cohesion", "internal_unity", "inner_harmony"],
+      "vi": ["nhan_thuc_su_ket_noi_noi_tai", "nhan", "thuc", "su", "ket", "noi", "noi", "tai", "dat_duoc_su_thong_nhat_noi_tam"]
+    }
   },
   "entries": [
     {

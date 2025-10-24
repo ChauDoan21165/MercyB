@@ -101,6 +101,9 @@ const roomFiles: { [key: string]: string } = {
   'gods-strength': 'gods_strength_vip2_resilience.json',
   'gods-purpose': 'gods_purpose_vip3.json',
   'proverbs-wisdom-vip1': 'proverbs_wisdom_VIP1.json',
+  'shadow-work-vip1': 'Shadow_Work_VIP1.json',
+  'shadow-work-vip2': 'Shadow_Work_VIP2.json',
+  'shadow-work-vip3': 'Shadow_Work_VIP3.json',
 };
 
 // Embedded minimal fallback data to guarantee responses even if JSON files are not bundled
