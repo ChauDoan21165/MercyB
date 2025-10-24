@@ -6,7 +6,7 @@ import meaningFree from "@/data/rooms/meaning_of_life_free.json";
 import meaningVip1 from "@/data/rooms/meaning_of_life_vip1.json";
 import meaningVip2 from "@/data/rooms/meaning_of_life_vip2.json";
 import meaningVip3 from "@/data/rooms/meaning_of_life_vip3.json";
-import { supabase } from "@/integrations/supabase/client";
+
 
 const MeaningOfLife = () => {
   const [playingTier, setPlayingTier] = useState<string | null>(null);
@@ -47,33 +47,6 @@ const MeaningOfLife = () => {
     setPlayingTier(null);
   };
 
-  const handleAudioError = async (tierKey: string, data: any) => {
-    try {
-      const englishText: string = data?.content?.en || data?.title?.en || 'Meaning of Life';
-      const { data: ttsData, error } = await supabase.functions.invoke('text-to-speech', {
-        body: {
-          text: englishText,
-          voice: 'alloy',
-          roomSlug: 'meaning_of_life',
-          entrySlug: tierKey,
-        },
-      });
-
-      if (error) {
-        console.error('TTS error:', error);
-        return;
-      }
-
-      const url = (ttsData as any)?.audioUrl as string | undefined;
-      const ref = audioRefs[tierKey as keyof typeof audioRefs].current;
-      if (url && ref) {
-        ref.src = url;
-        ref.load();
-      }
-    } catch (e) {
-      console.error('TTS fallback failed', e);
-    }
-  };
 
   const tiers = [
     { key: "free", data: meaningFree, audio: "/room-audio/meaning_of_life_free.mp3" },
@@ -128,7 +101,7 @@ const MeaningOfLife = () => {
                 ref={audioRefs[key as keyof typeof audioRefs]}
                 src={audio}
                 onEnded={handleAudioEnded}
-                onError={() => handleAudioError(key, data)}
+                
               />
 
               <div className="grid md:grid-cols-2 gap-6">
