@@ -15,14 +15,19 @@ const Index = () => {
     }
   }, []);
 
-  const toggleAudio = () => {
+  const toggleAudio = async () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
         setIsPlaying(false);
       } else {
-        audioRef.current.play();
-        setIsPlaying(true);
+        try {
+          await audioRef.current.play();
+          setIsPlaying(true);
+        } catch (error) {
+          console.error('Audio play error:', error);
+          alert('Cannot play audio. Please check if Mercy_Blade.mp3 file exists in public folder.');
+        }
       }
     }
   };
@@ -60,7 +65,17 @@ const Index = () => {
               And as your journey unfolds, Mercy Blade may even help you find the learning companion — or soulmate — who truly resonates with you.
             </p>
           </div>
-          <audio ref={audioRef} src="/Mercy_Blade.mp3" onEnded={() => setIsPlaying(false)} />
+          <audio 
+            ref={audioRef} 
+            src="/Mercy_Blade.mp3" 
+            onEnded={() => setIsPlaying(false)}
+            onError={(e) => {
+              console.error('Audio load error:', e);
+              alert('Audio file not found: /Mercy_Blade.mp3. Please add it to the public folder.');
+            }}
+            controls
+            className="w-full mt-4"
+          />
         </Card>
 
         <Card className="p-8 shadow-lg">
