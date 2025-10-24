@@ -18,17 +18,21 @@ const Index = () => {
 
   const toggleAudio = async () => {
     if (audioRef.current) {
-      try {
-        if (isPlaying) {
-          audioRef.current.pause();
-          setIsPlaying(false);
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        // Generate audio if not loaded yet
+        if (!audioRef.current.src || audioRef.current.src.includes('Mercy_Blade.mp3')) {
+          await handleAudioError();
         } else {
-          await audioRef.current.play();
-          setIsPlaying(true);
+          try {
+            await audioRef.current.play();
+            setIsPlaying(true);
+          } catch (e) {
+            console.error('Audio play error:', e);
+          }
         }
-      } catch (e) {
-        // Attempt TTS generation as fallback
-        await handleAudioError();
       }
     }
   };
@@ -88,7 +92,7 @@ const Index = () => {
               And as your journey unfolds, Mercy Blade may even help you find the learning companion — or soulmate — who truly resonates with you.
             </p>
           </div>
-          <audio ref={audioRef} src="/Mercy_Blade.mp3" onEnded={() => setIsPlaying(false)} onError={handleAudioError} />
+          <audio ref={audioRef} onEnded={() => setIsPlaying(false)} />
         </Card>
 
         <Card className="p-8 shadow-lg">
