@@ -271,12 +271,11 @@ const handleAccessDenied = () => {
             if (response.audioFile) {
               try {
                 let audioUrl = response.audioFile as string;
+                // Audio files are in /public/room-audio/ folder
                 if (!/^https?:\/\//.test(audioUrl)) {
-                  const storagePath = audioUrl.replace(/^\//, '');
-                  const { data: urlData } = supabase.storage
-                    .from('room-audio')
-                    .getPublicUrl(storagePath);
-                  audioUrl = urlData.publicUrl;
+                  // Remove leading slash if present and construct public URL
+                  const filename = audioUrl.replace(/^\//, '');
+                  audioUrl = `/room-audio/${filename}`;
                 }
                 setCurrentAudio(audioUrl);
                 setIsAudioPlaying(false);
