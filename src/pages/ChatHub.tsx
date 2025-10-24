@@ -274,19 +274,41 @@ const handleAccessDenied = () => {
                 setAudioLoading(true);
                 const raw = String(response.audioFile);
                 const filename = raw.replace(/^\//, '');
-                const localUrl = `/room-audio/${filename}`;
-                // Prepare fallback to storage (in case local file missing)
+                const baseLocalUrl = `/room-audio/${filename}`;
+                // Fallback: storage public URL
                 const { data: urlData } = supabase.storage
                   .from('room-audio')
                   .getPublicUrl(filename);
                 const storageUrl = urlData.publicUrl;
 
-                // Primary: local public file; Fallback: storage
-                setAltAudio(storageUrl);
+                // Cache-bust to force reload even for same file
+                const withTs = (u: string) => `${u}${u.includes('?') ? '&' : '?'}t=${Date.now()}`;
+
+                // Update state so player renders with source
+                const localUrl = withTs(baseLocalUrl);
+                setAltAudio(withTs(storageUrl));
                 setCurrentAudio(localUrl);
                 setIsAudioPlaying(false);
 
-                // Audio src is bound in JSX; loading handled via onCanPlay
+                // Try to start playback immediately within user gesture
+                const el = audioRef.current;
+                if (el) {
+                  // Attach a one-time error handler to try fallback automatically
+                  const handleError = () => {
+                    if (storageUrl) {
+                      el.src = withTs(storageUrl);
+                      el.load();
+                      el.play().catch(() => {/* browser may block; user can press play */});
+                    }
+                    el.removeEventListener('error', handleError);
+                  };
+                  el.addEventListener('error', handleError, { once: true } as any);
+                  el.src = localUrl;
+                  el.load();
+                  el.currentTime = 0;
+                  // Best-effort autoplay; ok if blocked
+                  el.play().catch(() => {/* ignore */});
+                }
 
               } catch (e) {
                 console.error('Audio load error:', e);
@@ -595,13 +617,19 @@ const handleAccessDenied = () => {
                   src={currentAudio}
                   preload="auto"
                   controls
+                  autoPlay
                   className="w-full"
                   onCanPlay={() => {
                     setAudioLoading(false);
-                    toast({
-                      title: "Audio Ready / Âm Thanh Sẵn Sàng",
-                      description: "Click play button / Nhấn nút phát",
-                    });
+                    const el = audioRef.current;
+                    if (el && el.paused) {
+                      el.play().catch(() => {
+                        toast({
+                          title: "Audio Ready / Âm Thanh Sẵn Sàng",
+                          description: "Click play button / Nhấn nút phát",
+                        });
+                      });
+                    }
                   }}
                   onEnded={() => setIsAudioPlaying(false)}
                   onPause={() => setIsAudioPlaying(false)}
