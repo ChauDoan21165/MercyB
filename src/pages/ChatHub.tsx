@@ -262,30 +262,46 @@ const handleAccessDenied = () => {
         
         const response = keywordRespond(roomId || "", currentInput, noKeywordCount, matchedEntryCount);
         
-        if (response.matched) {
-          setMatchedEntryCount(prev => prev + 1);
-          setNoKeywordCount(0);
-          
-          // Play audio if available (echologic function)
-          if (response.audioFile) {
-            const audioPath = `/room-audio/${encodeURIComponent(response.audioFile)}`;
-            setCurrentAudio(audioPath);
-            setIsAudioPlaying(false);
+          if (response.matched) {
+            setMatchedEntryCount(prev => prev + 1);
+            setNoKeywordCount(0);
             
-            // Set audio source and show controls
-            if (audioRef.current) {
-              audioRef.current.src = audioPath;
-              audioRef.current.load();
+            // Play audio if available (echologic function)
+            if (response.audioFile) {
+              try {
+                let audioUrl = response.audioFile as string;
+                if (!/^https?:\/\//.test(audioUrl)) {
+                  const storagePath = audioUrl.replace(/^\//, '');
+                  const { data: urlData } = supabase.storage
+                    .from('room-audio')
+                    .getPublicUrl(storagePath);
+                  audioUrl = urlData.publicUrl;
+                }
+                setCurrentAudio(audioUrl);
+                setIsAudioPlaying(false);
+                
+                // Set audio source and show controls
+                if (audioRef.current) {
+                  audioRef.current.src = audioUrl;
+                  audioRef.current.load();
+                }
+                
+                toast({
+                  title: "Audio Ready / Âm Thanh Sẵn Sàng",
+                  description: "Click play button / Nhấn nút phát",
+                });
+              } catch (e) {
+                console.error('Audio load error:', e);
+                toast({
+                  title: "Audio Error / Lỗi Âm Thanh",
+                  description: "Could not load audio / Không thể tải âm thanh",
+                  variant: "destructive",
+                });
+              }
             }
-            
-            toast({
-              title: "Audio Ready / Âm Thanh Sẵn Sàng",
-              description: "Click play button / Nhấn nút phát",
-            });
+          } else {
+            setNoKeywordCount(prev => prev + 1);
           }
-        } else {
-          setNoKeywordCount(prev => prev + 1);
-        }
 
         // Replace typing indicator with actual response
         setMainMessages(prev => 
