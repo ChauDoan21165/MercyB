@@ -425,6 +425,13 @@ const handleAccessDenied = () => {
     }
   }, [isLoading]);
 
+  // Auto-scroll when user is typing to keep input visible
+  useEffect(() => {
+    if (mainInput && mainScrollRef.current) {
+      mainScrollRef.current.scrollTop = mainScrollRef.current.scrollHeight;
+    }
+  }, [mainInput]);
+
   const MessageBubble = ({ message }: { message: Message }) => (
     <div className={`flex ${message.isUser ? "justify-end" : "justify-start"} mb-4`}>
       <div className="max-w-[80%] group">

@@ -35,7 +35,7 @@ export const UsernameSetup = ({ onComplete }: UsernameSetupProps) => {
     return Array.from(new Set(candidates)).slice(0, 8);
   };
 
-  const checkAvailability = async (name: string) => {
+  const checkAvailability = async (name: string): Promise<boolean> => {
     setAvailability('checking');
     try {
       const { data: { user } } = await supabase.auth.getUser();
@@ -48,15 +48,23 @@ export const UsernameSetup = ({ onComplete }: UsernameSetupProps) => {
       if (error) {
         console.error('Availability check error:', error);
         setAvailability('unknown');
-        return;
+        return false;
       }
       const isFree = (count ?? 0) === 0;
       setAvailability(isFree ? 'available' : 'taken');
       if (!isFree) setSuggestedUsernames(generateSuggestions(name));
+      return isFree;
     } catch (e) {
       console.error('Availability check error:', e);
       setAvailability('unknown');
+      return false;
     }
+  };
+
+  const handleSuggestionClick = async (suggested: string) => {
+    setUsername(suggested);
+    // Check if it's actually available before allowing submission
+    await checkAvailability(suggested);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -183,7 +191,7 @@ export const UsernameSetup = ({ onComplete }: UsernameSetupProps) => {
                     type="button"
                     variant="outline"
                     size="sm"
-                    onClick={() => setUsername(suggested)}
+                    onClick={() => handleSuggestionClick(suggested)}
                   >
                     {suggested}
                   </Button>
