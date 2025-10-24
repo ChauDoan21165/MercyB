@@ -270,22 +270,25 @@ const handleAccessDenied = () => {
             // Play audio if available (echologic function)
             if (response.audioFile) {
               try {
-                let audioUrl = response.audioFile as string;
-                // Audio files are in /public/room-audio/ folder
-                if (!/^https?:\/\//.test(audioUrl)) {
-                  // Remove leading slash if present and construct public URL
-                  const filename = audioUrl.replace(/^\//, '');
-                  audioUrl = `/room-audio/${filename}`;
-                }
-                setCurrentAudio(audioUrl);
+                const raw = String(response.audioFile);
+                const filename = raw.replace(/^\//, '');
+                const localUrl = `/room-audio/${filename}`;
+                // Prepare fallback to storage (in case local file missing)
+                const { data: urlData } = supabase.storage
+                  .from('room-audio')
+                  .getPublicUrl(filename);
+                const storageUrl = urlData.publicUrl;
+
+                // Primary: local public file; Fallback: storage
+                setAltAudio(storageUrl);
+                setCurrentAudio(localUrl);
                 setIsAudioPlaying(false);
-                
-                // Set audio source and show controls
+
                 if (audioRef.current) {
-                  audioRef.current.src = audioUrl;
+                  audioRef.current.src = localUrl;
                   audioRef.current.load();
                 }
-                
+
                 toast({
                   title: "Audio Ready / Âm Thanh Sẵn Sàng",
                   description: "Click play button / Nhấn nút phát",
@@ -594,6 +597,16 @@ const handleAccessDenied = () => {
                   onEnded={() => setIsAudioPlaying(false)}
                   onPause={() => setIsAudioPlaying(false)}
                   onPlay={() => setIsAudioPlaying(true)}
+                  onError={() => {
+                    if (altAudio && audioRef.current && audioRef.current.src !== altAudio) {
+                      audioRef.current.src = altAudio;
+                      audioRef.current.load();
+                      setCurrentAudio(altAudio);
+                      toast({ title: "Using fallback audio", description: "Đang dùng nguồn dự phòng" });
+                    } else {
+                      toast({ title: "Audio not found", description: "Không tìm thấy âm thanh", variant: "destructive" });
+                    }
+                  }}
                 />
               </div>
             )}
