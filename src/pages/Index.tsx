@@ -26,31 +26,31 @@ const Index = () => {
         </h1>
 
         <Card className="p-8 mb-8 shadow-lg">
-          <div className="flex items-start gap-4 mb-6">
-            <div className="flex-1">
-              <h2 className="text-2xl font-semibold mb-4 text-foreground">English</h2>
-              <p className="text-lg leading-relaxed text-muted-foreground mb-4">
-                Mercy Blade is your compassionate companion on the path of holistic growth — embracing body, mind, relationships, finances, and the unfolding of your inner self.
-              </p>
-              <p className="text-lg leading-relaxed text-muted-foreground mb-4">
-                It offers concise, evidence-based, and gently practical guidance to help you recover from burnout, rebuild healthy habits, manage chronic conditions, and cultivate confidence and calm.
-              </p>
-              <p className="text-lg leading-relaxed text-muted-foreground mb-4">
-                Whether you seek to ease stress, strengthen your health, or deepen self-understanding, Mercy Blade walks beside you — in a space of empathy, encouragement, and non-judgment.
-              </p>
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                And as your journey unfolds, Mercy Blade may even help you find the learning companion — or soulmate — who truly resonates with you.
-              </p>
+          <div className="mb-6">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-2xl font-semibold text-foreground">English</h2>
+              <Button
+                onClick={toggleAudio}
+                size="lg"
+                variant="default"
+                className="flex items-center gap-2"
+              >
+                <Volume2 size={20} />
+                {isPlaying ? "Pause Audio" : "Play Audio"}
+              </Button>
             </div>
-            <Button
-              onClick={toggleAudio}
-              size="icon"
-              variant="outline"
-              className="shrink-0 mt-8"
-              aria-label={isPlaying ? "Pause audio" : "Play audio"}
-            >
-              <Volume2 className={isPlaying ? "text-primary" : ""} />
-            </Button>
+            <p className="text-lg leading-relaxed text-muted-foreground mb-4">
+              Mercy Blade is your compassionate companion on the path of holistic growth — embracing body, mind, relationships, finances, and the unfolding of your inner self.
+            </p>
+            <p className="text-lg leading-relaxed text-muted-foreground mb-4">
+              It offers concise, evidence-based, and gently practical guidance to help you recover from burnout, rebuild healthy habits, manage chronic conditions, and cultivate confidence and calm.
+            </p>
+            <p className="text-lg leading-relaxed text-muted-foreground mb-4">
+              Whether you seek to ease stress, strengthen your health, or deepen self-understanding, Mercy Blade walks beside you — in a space of empathy, encouragement, and non-judgment.
+            </p>
+            <p className="text-lg leading-relaxed text-muted-foreground">
+              And as your journey unfolds, Mercy Blade may even help you find the learning companion — or soulmate — who truly resonates with you.
+            </p>
           </div>
           <audio ref={audioRef} src="/Mercy_Blade.mp3" onEnded={() => setIsPlaying(false)} />
         </Card>
