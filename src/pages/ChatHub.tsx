@@ -70,6 +70,7 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
 useEffect(() => {
   if (!accessLoading && info) {
     const hasAccess = 
+      isAdmin ||  // Admins can access all rooms
       info.tier === 'free' ||
       (info.tier === 'vip1' && canAccessVIP1) ||
       (info.tier === 'vip2' && canAccessVIP2) ||
@@ -79,7 +80,7 @@ useEffect(() => {
       setShowAccessDenied(true);
     }
   }
-}, [accessLoading, info, canAccessVIP1, canAccessVIP2, canAccessVIP3]);
+}, [accessLoading, info, canAccessVIP1, canAccessVIP2, canAccessVIP3, isAdmin]);
 
 const handleAccessDenied = () => {
   navigate('/');
@@ -208,30 +209,19 @@ const handleAccessDenied = () => {
           // Play audio if available (echologic function)
           if (response.audioFile) {
             const audioPath = `/room-audio/${encodeURIComponent(response.audioFile)}`;
-            try {
-              const res = await fetch(audioPath, { method: 'HEAD' });
-              if (!res.ok) throw new Error('not found');
-              setCurrentAudio(audioPath);
-              setIsAudioPlaying(false);
-              
-              // Set audio source and show controls
-              if (audioRef.current) {
-                audioRef.current.src = audioPath;
-                audioRef.current.load();
-              }
-              
-              toast({
-                title: "Audio Ready / Âm Thanh Sẵn Sàng",
-                description: response.audioFile,
-              });
-            } catch (e) {
-              setCurrentAudio(null);
-              toast({
-                title: "Audio Not Found / Không Tìm Thấy Âm Thanh",
-                description: String(response.audioFile),
-                variant: "destructive"
-              });
+            setCurrentAudio(audioPath);
+            setIsAudioPlaying(false);
+            
+            // Set audio source and show controls
+            if (audioRef.current) {
+              audioRef.current.src = audioPath;
+              audioRef.current.load();
             }
+            
+            toast({
+              title: "Audio Ready / Âm Thanh Sẵn Sàng",
+              description: "Click play button / Nhấn nút phát",
+            });
           }
         } else {
           setNoKeywordCount(prev => prev + 1);
@@ -532,11 +522,7 @@ const handleAccessDenied = () => {
                           } else {
                             audioRef.current.play().catch(err => {
                               console.error('Playback error:', err);
-                              toast({
-                                title: "Playback Error / Lỗi Phát",
-                                description: "Could not play audio / Không thể phát âm thanh",
-                                variant: "destructive"
-                              });
+                              // Silent fail - file might not exist yet
                             });
                           }
                         }
