@@ -126,7 +126,8 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "overcome-storm-vip3", nameVi: "Vượt Qua Giông Bão VIP3", nameEn: "Overcome Storm VIP3", hasData: true, tier: "vip3", dataFile: "Overcome_Storm_VIP3.json" },
   { id: "shadow-work-free", nameVi: "Làm Việc Với Bóng Tối", nameEn: "Shadow Work", hasData: true, tier: "free", dataFile: "Shadow_Work_Free.json" },
   { id: "shadow-work-vip1", nameVi: "Làm Việc Với Bóng Tối VIP1", nameEn: "Shadow Work VIP1", hasData: true, tier: "vip1", dataFile: "Shadow_Work_VIP1.json" },
-  { id: "shadow-work-vip2", nameVi: "Làm Việc Với Bóng Tối VIP2", nameEn: "Shadow Work VIP2", hasData: true, tier: "vip2", dataFile: "Shadow_Work_VIP2.json" }
+  { id: "shadow-work-vip2", nameVi: "Làm Việc Với Bóng Tối VIP2", nameEn: "Shadow Work VIP2", hasData: true, tier: "vip2", dataFile: "Shadow_Work_VIP2.json" },
+  { id: "shadow-work-vip3", nameVi: "Làm Việc Với Bóng Tối VIP3", nameEn: "Shadow Work VIP3", hasData: true, tier: "vip3", dataFile: "Shadow_Work_VIP3.json" }
 ];
 
 // Get room info by ID
