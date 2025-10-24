@@ -287,9 +287,7 @@ const handleAccessDenied = () => {
                 setIsAudioPlaying(false);
 
                 if (audioRef.current) {
-                  audioRef.current.src = localUrl;
-                  audioRef.current.load();
-                  // Wait for canplay event to confirm audio is ready
+                  // Set up event handler BEFORE loading to avoid race condition
                   audioRef.current.oncanplay = () => {
                     setAudioLoading(false);
                     toast({
@@ -297,6 +295,8 @@ const handleAccessDenied = () => {
                       description: "Click play button / Nhấn nút phát",
                     });
                   };
+                  audioRef.current.src = localUrl;
+                  audioRef.current.load();
                 }
               } catch (e) {
                 console.error('Audio load error:', e);
