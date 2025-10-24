@@ -10,24 +10,50 @@
 "normalize_accents": true,
 "tokenize_on": [" ", "_"]
 },
-"keyword_menu": {
-"en": [
-"praying_daily_strength",
-"faith_groups",
-"divine_wisdom",
-"meditating_peace",
-"reading_holy_texts",
-"writing_spiritual_thoughts"
-],
-"vi": [
-"cau_nguyen_suc_manh_hang_ngay",
-"nhom_dao_duc_tin",
-"tri_tue_thien_thuong",
-"thien_dinh_an_nhien",
-"doc_kinh_thanh",
-"viet_suy_nghi_tam_linh"
-]
-},
+  "keyword_menu": {
+    "en": [
+      "praying_daily_strength",
+      "faith_groups",
+      "divine_wisdom",
+      "meditating_peace",
+      "reading_holy_texts",
+      "writing_spiritual_thoughts"
+    ],
+    "vi": [
+      "cau_nguyen_suc_manh_hang_ngay",
+      "nhom_dao_duc_tin",
+      "tri_tue_thien_thuong",
+      "thien_dinh_an_nhien",
+      "doc_kinh_thanh",
+      "viet_suy_nghi_tam_linh"
+    ]
+  },
+  "keywords_dict": {
+    "praying_daily_strength": {
+      "en": ["praying_daily_strength", "praying", "prayer", "daily strength", "pray"],
+      "vi": ["cau_nguyen_suc_manh_hang_ngay", "cau nguyen", "suc manh", "hang ngay"]
+    },
+    "faith_groups": {
+      "en": ["faith_groups", "faith", "groups", "community", "fellowship"],
+      "vi": ["nhom_dao_duc_tin", "nhom", "dao", "duc tin", "cong dong"]
+    },
+    "divine_wisdom": {
+      "en": ["divine_wisdom", "divine", "wisdom", "god wisdom", "guidance"],
+      "vi": ["tri_tue_thien_thuong", "tri tue", "thien thuong", "su khon ngoan"]
+    },
+    "meditating_peace": {
+      "en": ["meditating_peace", "meditation", "peace", "inner peace", "meditate"],
+      "vi": ["thien_dinh_an_nhien", "thien", "dinh", "an nhien", "binh an"]
+    },
+    "reading_holy_texts": {
+      "en": ["reading_holy_texts", "reading", "holy texts", "bible", "scripture"],
+      "vi": ["doc_kinh_thanh", "doc", "kinh thanh", "thanh kinh"]
+    },
+    "writing_spiritual_thoughts": {
+      "en": ["writing_spiritual_thoughts", "writing", "journal", "spiritual thoughts", "reflection"],
+      "vi": ["viet_suy_nghi_tam_linh", "viet", "suy nghi", "tam linh", "nhat ky"]
+    }
+  },
 "entries": [
 {
 "id": "praying_daily_strength",
