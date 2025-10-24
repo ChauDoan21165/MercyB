@@ -112,6 +112,7 @@ import mentalSharpnessVip3 from '@/data/rooms/Mental_Sharpness_VIP3.json';
 import overcomeStormVip3 from '@/data/rooms/Overcome_Storm_VIP3.json';
 import shadowWorkFree from '@/data/rooms/Shadow_Work_Free.json';
 import shadowWorkVip1 from '@/data/rooms/Shadow_Work_VIP1.json';
+import shadowWorkVip2 from '@/data/rooms/Shadow_Work_VIP2.json';
 
 export const roomDataMap: Record<string, any> = {
   'abdominal-pain': abdominalPain,
@@ -227,4 +228,5 @@ export const roomDataMap: Record<string, any> = {
   'overcome-storm-vip3': overcomeStormVip3,
   'shadow-work-free': shadowWorkFree,
   'shadow-work-vip1': shadowWorkVip1,
+  'shadow-work-vip2': shadowWorkVip2,
 };
