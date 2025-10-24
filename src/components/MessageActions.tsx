@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Copy, Share2, Check } from "lucide-react";
+import { Copy, Share2, Check, Volume2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { useUserAccess } from "@/hooks/useUserAccess";
+
 interface MessageActionsProps {
   text: string;
   roomId: string;
@@ -9,7 +12,10 @@ interface MessageActionsProps {
 
 export const MessageActions = ({ text, roomId }: MessageActionsProps) => {
   const [copied, setCopied] = useState(false);
+  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const { toast } = useToast();
+  const { canAccessVIP1 } = useUserAccess();
+
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(text);
@@ -61,6 +67,94 @@ export const MessageActions = ({ text, roomId }: MessageActionsProps) => {
     }
   };
 
+  const handlePlayAudio = async () => {
+    // Check VIP access
+    if (!canAccessVIP1) {
+      toast({
+        title: "VIP Required / Yêu Cầu VIP",
+        description: "Audio playback is available for VIP members. / Phát âm thanh dành cho thành viên VIP.",
+        variant: "destructive",
+        duration: 3000,
+      });
+      return;
+    }
+
+    if (isPlayingAudio) return;
+
+    setIsPlayingAudio(true);
+    try {
+      // PRIORITY 1: Check for manually uploaded MP3 in storage
+      const { data: uploadedFiles } = await supabase.storage
+        .from('room-audio-uploads')
+        .list(roomId, {
+          search: '.mp3'
+        });
+
+      if (uploadedFiles && uploadedFiles.length > 0) {
+        // Use first uploaded MP3 file
+        const { data: urlData } = supabase.storage
+          .from('room-audio-uploads')
+          .getPublicUrl(`${roomId}/${uploadedFiles[0].name}`);
+        
+        console.log('Playing manually uploaded audio');
+        const audio = new Audio(urlData.publicUrl);
+        
+        audio.onended = () => setIsPlayingAudio(false);
+        audio.onerror = () => {
+          setIsPlayingAudio(false);
+          toast({
+            title: "Playback Error / Lỗi Phát",
+            description: "Failed to play audio / Không thể phát âm thanh",
+            variant: "destructive",
+          });
+        };
+
+        await audio.play();
+        return;
+      }
+
+      // PRIORITY 2: Check for TTS-generated cached audio
+      const englishText = text.split('\n\n')[0] || text;
+      const textHash = englishText.substring(0, 100).replace(/[^a-z0-9]/gi, '_').substring(0, 50);
+      
+      const { data, error } = await supabase.functions.invoke('text-to-speech', {
+        body: { 
+          text, 
+          voice: 'alloy',
+          roomSlug: roomId,
+          entrySlug: textHash
+        }
+      });
+
+      if (error) throw error;
+
+      if (data?.audioUrl) {
+        const audio = new Audio(data.audioUrl);
+        
+        audio.onended = () => setIsPlayingAudio(false);
+        audio.onerror = () => {
+          setIsPlayingAudio(false);
+          toast({
+            title: "Playback Error / Lỗi Phát",
+            description: "Failed to play audio / Không thể phát âm thanh",
+            variant: "destructive",
+          });
+        };
+
+        await audio.play();
+        console.log(data.cached ? 'Playing TTS cached audio' : 'Playing new TTS audio');
+      }
+    } catch (err) {
+      console.error('Audio playback error:', err);
+      setIsPlayingAudio(false);
+      toast({
+        title: "Error / Lỗi",
+        description: "Failed to play audio / Không thể phát âm thanh",
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <div className="flex gap-2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
       <Button
@@ -87,6 +181,17 @@ export const MessageActions = ({ text, roomId }: MessageActionsProps) => {
         Share
       </Button>
 
+      <Button
+        variant="ghost"
+        size="sm"
+        onClick={handlePlayAudio}
+        disabled={isPlayingAudio}
+        className="h-7 px-2 text-xs"
+        title="Listen to English audio (VIP only)"
+      >
+        <Volume2 className={`w-3 h-3 mr-1 ${isPlayingAudio ? 'animate-pulse' : ''}`} />
+        {isPlayingAudio ? "Playing..." : "Audio"}
+      </Button>
     </div>
   );
 };

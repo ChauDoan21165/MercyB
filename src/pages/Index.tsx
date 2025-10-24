@@ -15,20 +15,14 @@ const Index = () => {
     }
   }, []);
 
-  const toggleAudio = async () => {
+  const toggleAudio = () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
-        setIsPlaying(false);
       } else {
-        try {
-          await audioRef.current.play();
-          setIsPlaying(true);
-        } catch (error) {
-          console.error('Audio play error:', error);
-          alert('Cannot play audio. Please check if Mercy_Blade.mp3 file exists in public folder.');
-        }
+        audioRef.current.play();
       }
+      setIsPlaying(!isPlaying);
     }
   };
 
@@ -46,7 +40,8 @@ const Index = () => {
               <Button
                 onClick={toggleAudio}
                 size="lg"
-                className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground"
+                variant="outline"
+                className="flex items-center gap-2"
               >
                 <Volume2 size={20} />
                 {isPlaying ? "Pause Audio" : "Play Audio"}
@@ -65,17 +60,7 @@ const Index = () => {
               And as your journey unfolds, Mercy Blade may even help you find the learning companion — or soulmate — who truly resonates with you.
             </p>
           </div>
-          <audio 
-            ref={audioRef} 
-            src="/Mercy_Blade.mp3" 
-            onEnded={() => setIsPlaying(false)}
-            onError={(e) => {
-              console.error('Audio load error:', e);
-              alert('Audio file not found: /Mercy_Blade.mp3. Please add it to the public folder.');
-            }}
-            controls
-            className="w-full mt-4"
-          />
+          <audio ref={audioRef} src="/Mercy_Blade.mp3" onEnded={() => setIsPlaying(false)} />
         </Card>
 
         <Card className="p-8 shadow-lg">

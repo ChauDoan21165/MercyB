@@ -25,15 +25,7 @@ const RoomGrid = () => {
   }, []);
 
   const handleRoomClick = (room: typeof ALL_ROOMS[0]) => {
-    // Prevent clicking on locked rooms
-    if (!room.hasData) {
-      toast({
-        title: "Room Locked / Phòng Bị Khóa",
-        description: "This room is currently unavailable / Phòng này hiện không khả dụng",
-        variant: "destructive"
-      });
-      return;
-    }
+    if (!room.hasData) return;
 
     // Check authentication for free rooms
     if (room.tier === 'free' && !isAuthenticated) {
@@ -145,10 +137,10 @@ const RoomGrid = () => {
             <Tooltip key={room.id}>
               <TooltipTrigger asChild>
                 <Card
-                  className={`relative p-3 transition-all duration-300 group ${
+                  className={`relative p-3 transition-all duration-300 cursor-pointer group ${
                     room.hasData 
-                      ? "hover:scale-110 hover:shadow-hover hover:z-10 cursor-pointer" 
-                      : "opacity-30 cursor-not-allowed grayscale"
+                      ? "hover:scale-110 hover:shadow-hover hover:z-10" 
+                      : "opacity-60 cursor-not-allowed"
                   }`}
                   onClick={() => handleRoomClick(room)}
                 >

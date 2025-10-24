@@ -102,10 +102,6 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   } else {
     // Old structure: entries is an array
     matchedEntry = findEntryByGroup(groupKey, roomData.entries || []);
-    if (matchedEntry) {
-      audioFile = matchedEntry.audio?.en || matchedEntry.audio?.vi;
-      entryId = matchedEntry.id || matchedEntry.artifact_id;
-    }
   }
   
   const relatedRooms = findRelatedRooms(message, roomId);
@@ -176,15 +172,12 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
     
     // Before 10 entries, give a helpful prompt
     const desc = getBilingual(roomData, "description");
-    const keywordSource: any = roomData.keywords || roomData.keywords_dict || {};
-    const keywordGroups = Object.values(keywordSource).slice(0, 3);
+    const keywordGroups = Object.values(roomData.keywords || {}).slice(0, 3);
     const topKeysEn = keywordGroups.flatMap((g: any) => (Array.isArray(g.en) ? g.en.slice(0, 2) : [])).join(', ');
     const topKeysVi = keywordGroups.flatMap((g: any) => (Array.isArray(g.vi) ? g.vi.slice(0, 2) : [])).join(', ');
-    const safeDescEn = desc.en || 'this topic';
-    const safeDescVi = desc.vi || 'chủ đề này';
     const text = [
-      `I'm here to help with ${safeDescEn}. Try using keywords like: ${topKeysEn}.`,
-      `Tôi ở đây để giúp về ${safeDescVi}. Hãy thử dùng từ khóa như: ${topKeysVi}.`
+      `I'm here to help with ${desc.en}. Try using keywords like: ${topKeysEn}.`,
+      `Tôi ở đây để giúp về ${desc.vi}. Hãy thử dùng từ khóa như: ${topKeysVi}.`
     ].join("\n\n");
     return { text, matched: false };
   }
@@ -213,16 +206,15 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   const desc = getBilingual(roomData, "description");
   
   // Extract actual keywords in both languages
-  const keywordSource: any = roomData.keywords || roomData.keywords_dict || {};
-  const keywordGroups = Object.values(keywordSource).slice(0, 3);
+  const keywordGroups = Object.values(roomData.keywords || {}).slice(0, 3);
   const topKeysEn = keywordGroups.flatMap((g: any) => (Array.isArray(g.en) ? g.en.slice(0, 2) : [])).join(', ');
   const topKeysVi = keywordGroups.flatMap((g: any) => (Array.isArray(g.vi) ? g.vi.slice(0, 2) : [])).join(', ');
   
   const promptText = [
     selectedPrompt.en,
     selectedPrompt.vi,
-    `\nI'm here to help with ${desc.en || 'this topic'}. Try using keywords like: ${topKeysEn}.`,
-    `Tôi ở đây để giúp về ${desc.vi || 'chủ đề này'}. Hãy thử dùng từ khóa như: ${topKeysVi}.`
+    `\nI'm here to help with ${desc.en}. Try using keywords like: ${topKeysEn}.`,
+    `Tôi ở đây để giúp về ${desc.vi}. Hãy thử dùng từ khóa như: ${topKeysVi}.`
   ].join("\n\n");
   
   return { text: promptText, matched: false };

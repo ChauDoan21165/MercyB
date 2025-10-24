@@ -28,7 +28,6 @@ import AdminReports from "./pages/AdminReports";
 import AdminStats from "./pages/AdminStats";
 import AdminPaymentVerification from "./pages/AdminPaymentVerification";
 import AdminAudioUpload from "./pages/AdminAudioUpload";
-import AdminModeration from "./pages/AdminModeration";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +40,7 @@ const App = () => (
         <AdminFloatingButton />
         <Routes>
           <Route path="/" element={<Welcome />} />
+          <Route path="/intro" element={<Index />} />
           <Route path="/meaning-of-life" element={<MeaningOfLife />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/rooms" element={<RoomGrid />} />
@@ -63,7 +63,6 @@ const App = () => (
           <Route path="/admin/stats" element={<AdminStats />} />
           <Route path="/admin/payments" element={<AdminPaymentVerification />} />
           <Route path="/admin/audio" element={<AdminAudioUpload />} />
-          <Route path="/admin/moderation" element={<AdminModeration />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -231,7 +231,7 @@ const AdminStats = () => {
         </div>
 
         {/* Quick Links */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Button
             onClick={() => navigate('/admin')}
             className="h-auto py-4"
@@ -262,17 +262,6 @@ const AdminStats = () => {
             <div className="flex flex-col items-center gap-2">
               <span className="text-base font-semibold">User Reports</span>
               <span className="text-xs text-muted-foreground">View user feedback</span>
-            </div>
-          </Button>
-
-          <Button
-            onClick={() => navigate('/admin/moderation')}
-            className="h-auto py-4"
-            variant="outline"
-          >
-            <div className="flex flex-col items-center gap-2">
-              <span className="text-base font-semibold">User Moderation</span>
-              <span className="text-xs text-muted-foreground">Locked users & payments</span>
             </div>
           </Button>
         </div>

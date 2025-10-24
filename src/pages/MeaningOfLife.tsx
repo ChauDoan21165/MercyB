@@ -7,7 +7,6 @@ import meaningVip1 from "@/data/rooms/meaning_of_life_vip1.json";
 import meaningVip2 from "@/data/rooms/meaning_of_life_vip2.json";
 import meaningVip3 from "@/data/rooms/meaning_of_life_vip3.json";
 
-
 const MeaningOfLife = () => {
   const [playingTier, setPlayingTier] = useState<string | null>(null);
   const audioRefs = {
@@ -46,7 +45,6 @@ const MeaningOfLife = () => {
   const handleAudioEnded = () => {
     setPlayingTier(null);
   };
-
 
   const tiers = [
     { key: "free", data: meaningFree, audio: "/room-audio/meaning_of_life_free.mp3" },
@@ -101,7 +99,6 @@ const MeaningOfLife = () => {
                 ref={audioRefs[key as keyof typeof audioRefs]}
                 src={audio}
                 onEnded={handleAudioEnded}
-                
               />
 
               <div className="grid md:grid-cols-2 gap-6">
