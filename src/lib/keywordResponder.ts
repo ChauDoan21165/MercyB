@@ -183,7 +183,7 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
     const safeDescEn = desc.en || 'this topic';
     const safeDescVi = desc.vi || 'chủ đề này';
     const text = [
-      `I'm here to help with ${safeDescEn}. Try using keywords in the box below.`,
+      `I'm here to help with ${safeDescEn}. Try using keywords in the box below (for your English, please type the keyword so you can remember spelling.).`,
       `Tôi ở đây để giúp về ${safeDescVi}. Hãy thử dùng từ khóa trong khung bên dưới.`
     ].join("\n\n");
     return { text, matched: false };
@@ -221,7 +221,7 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   const promptText = [
     selectedPrompt.en,
     selectedPrompt.vi,
-    `\nI'm here to help with ${desc.en || 'this topic'}. Try using keywords in the box below.`,
+    `\nI'm here to help with ${desc.en || 'this topic'}. Try using keywords in the box below (for your English, please type the keyword so you can remember spelling.).`,
     `Tôi ở đây để giúp về ${desc.vi || 'chủ đề này'}. Hãy thử dùng từ khóa trong khung bên dưới.`
   ].join("\n\n");
   

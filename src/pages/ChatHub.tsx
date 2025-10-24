@@ -50,6 +50,10 @@ const ChatHub = () => {
   const [matchedEntryCount, setMatchedEntryCount] = useState(0);
   const [userMessageCount, setUserMessageCount] = useState(0);
   const mainScrollRef = useRef<HTMLDivElement>(null);
+  const endRef = useRef<HTMLDivElement>(null);
+  const scrollToBottom = () => {
+    endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  };
   const progress = useRoomProgress(roomId);
   const { trackMessage, trackKeyword, trackCompletion } = useBehaviorTracking(roomId || "");
   const { awardPoints } = usePoints();
@@ -407,29 +411,20 @@ const handleAccessDenied = () => {
   };
 
   useEffect(() => {
-    if (mainScrollRef.current) {
-      mainScrollRef.current.scrollTop = mainScrollRef.current.scrollHeight;
-    }
+    scrollToBottom();
   }, [mainMessages]);
 
   // Auto-scroll when AI is typing/loading
   useEffect(() => {
-    if (isLoading && mainScrollRef.current) {
-      const scrollInterval = setInterval(() => {
-        if (mainScrollRef.current) {
-          mainScrollRef.current.scrollTop = mainScrollRef.current.scrollHeight;
-        }
-      }, 100);
-      
+    if (isLoading) {
+      const scrollInterval = setInterval(scrollToBottom, 100);
       return () => clearInterval(scrollInterval);
     }
   }, [isLoading]);
 
   // Auto-scroll when user is typing to keep input visible
   useEffect(() => {
-    if (mainInput && mainScrollRef.current) {
-      mainScrollRef.current.scrollTop = mainScrollRef.current.scrollHeight;
-    }
+    if (mainInput) scrollToBottom();
   }, [mainInput]);
 
   const MessageBubble = ({ message }: { message: Message }) => (
@@ -551,6 +546,7 @@ const handleAccessDenied = () => {
               ) : (
                 mainMessages.map(msg => <MessageBubble key={msg.id} message={msg} />)
               )}
+              <div ref={endRef} />
             </ScrollArea>
 
             {/* Keyword Menu Display */}
@@ -593,7 +589,7 @@ const handleAccessDenied = () => {
                 placeholder="Type your message / Nhập Tin Nhắn..."
                 value={mainInput}
                 onChange={(e) => setMainInput(e.target.value)}
-                onKeyPress={(e) => e.key === "Enter" && !isLoading && sendMainMessage()}
+                onKeyDown={(e) => e.key === "Enter" && !isLoading && sendMainMessage()}
                 disabled={isLoading}
                 className="flex-1"
               />
