@@ -1,347 +1,362 @@
 {
-"tier": "Free / Miễn phí",
-"default_entry_id": "firm_purpose",
-"welcome": {
-"en": "Hello! Welcome to Stoic Philosophy room. How can I help you today?\n\nTopic keywords you can type are below:\n- firm_purpose\n- emotional_control\n- anticipate_obstacles\n- inner_strength\n- natural_flow\n- release_control\n- confident_energy\n- reframe_challenges\n- trust_life_order",
-"vi": "Xin chào! Chào mừng bạn đến với phòng Triết Học Stoic. Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:\n- mục đích vững chắc\n- làm chủ cảm xúc\n- chủ động đối mặt khó khăn\n- sức mạnh nội tâm\n- dòng chảy tự nhiên\n- buông kiểm soát\n- năng lượng tự tin\n- tái khuôn thử thách\n- trật tự tự nhiên"
-},
-"search": {
-"normalize_case": true,
-"normalize_accents": true,
-"tokenize_on": [" ", "_"]
-},
-"keyword_menu": {
-"en": [
-"firm_purpose",
-"emotional_control",
-"anticipate_obstacles",
-"inner_strength",
-"natural_flow",
-"release_control",
-"confident_energy",
-"reframe_challenges",
-"trust_life_order"
-],
-"vi": [
-"muc_dich_vung_chac",
-"lam_chu_cam_xuc",
-"chu_dong_doi_mat_kho_khan",
-"suc_manh_noi_tam",
-"dong_chay_tu_nhien",
-"buong_kiem_soat",
-"nang_luong_tu_tin",
-"tai_khuon_thu_thach",
-"trat_tu_tu_nhien"
-]
-},
-"keywords_dict": {
-"firm_purpose": {
-"en": [
-"firm_purpose",
-"firm purpose",
-"purpose",
-"life purpose",
-"direction",
-"compass",
-"values",
-"meaning"
-],
-"vi": [
-"muc_dich_vung_chac",
-"mục đích vững chắc",
-"muc dich vung chac",
-"muc_dich",
-"mục đích",
-"muc dich",
-"dinh_huong",
-"định hướng",
-"dinh huong",
-"gia_tri",
-"giá trị",
-"gia tri"
-]
-},
-"emotional_control": {
-"en": [
-"emotional_control",
-"emotional control",
-"emotion mastery",
-"mindfulness",
-"respond not react",
-"calm mind"
-],
-"vi": [
-"lam_chu_cam_xuc",
-"làm chủ cảm xúc",
-"lam chu cam xuc",
-"chanh_niem",
-"chánh niệm",
-"chanh niem",
-"binh_tam",
-"bình tâm",
-"binh tam"
-]
-},
-"anticipate_obstacles": {
-"en": [
-"anticipate_obstacles",
-"anticipating obstacles",
-"premeditatio malorum",
-"resilience",
-"prepare for challenges",
-"handle obstacles"
-],
-"vi": [
-"chu_dong_doi_mat_kho_khan",
-"chủ động đối mặt khó khăn",
-"chu dong doi mat kho khan",
-"chuan_bi",
-"chuẩn bị",
-"chuan bi",
-"kha_nang_chong_chiu",
-"khả năng chống chịu",
-"kha nang chong chiu"
-]
-},
-"inner_strength": {
-"en": [
-"inner_strength",
-"inner strength",
-"acceptance",
-"virtue",
-"integrity",
-"gratitude",
-"forgiveness"
-],
-"vi": [
-"suc_manh_noi_tam",
-"sức mạnh nội tâm",
-"suc manh noi tam",
-"chap_nhan",
-"chấp nhận",
-"chap nhan",
-"chinh_truc",
-"chính trực",
-"chinh truc",
-"biet_on",
-"biết ơn",
-"biet on",
-"tha_thu",
-"tha thứ",
-"tha thu"
-]
-},
-"natural_flow": {
-"en": [
-"natural_flow",
-"natural flow",
-"go with the flow",
-"patience",
-"non-forcing",
-"effort with ease"
-],
-"vi": [
-"dong_chay_tu_nhien",
-"dòng chảy tự nhiên",
-"dong chay tu nhien",
-"nhe_nhang",
-"nhẹ nhàng",
-"nhe nhang",
-"khong_cuong_ep",
-"không cưỡng ép",
-"khong cuong ep",
-"kien_nhan",
-"kiên nhẫn",
-"kien nhan"
-]
-},
-"release_control": {
-"en": [
-"release_control",
-"releasing control",
-"let go",
-"dichotomy of control",
-"freedom",
-"equanimity"
-],
-"vi": [
-"buong_kiem_soat",
-"buông kiểm soát",
-"buong kiem soat",
-"buong_bo",
-"buông bỏ",
-"buong bo",
-"tu_do",
-"tự do",
-"tu do",
-"binh_than",
-"bình thản",
-"binh than"
-]
-},
-"confident_energy": {
-"en": [
-"confident_energy",
-"confident energy",
-"calm action",
-"composed",
-"non-anxious presence",
-"assured"
-],
-"vi": [
-"nang_luong_tu_tin",
-"năng lượng tự tin",
-"nang luong tu tin",
-"hanh_dong_binh_tinh",
-"hành động bình tĩnh",
-"hanh dong binh tinh",
-"vung_vang",
-"vững vàng",
-"vung vang"
-]
-},
-"reframe_challenges": {
-"en": [
-"reframe_challenges",
-"reframing challenges",
-"obstacle is the way",
-"growth mindset",
-"resilience",
-"perspective shift"
-],
-"vi": [
-"tai_khuon_thu_thach",
-"tái khuôn thử thách",
-"tai khuon thu thach",
-"co_hoi_truong_thanh",
-"cơ hội trưởng thành",
-"co hoi truong thanh",
-"doi_goc_nhin",
-"đổi góc nhìn",
-"doi goc nhin"
-]
-},
-"trust_life_order": {
-"en": [
-"trust_life_order",
-"trust life’s order",
-"timing",
-"patience",
-"natural order",
-"things take time"
-],
-"vi": [
-"trat_tu_tu_nhien",
-"trật tự tự nhiên",
-"trat tu tu nhien",
-"dung_thoi_diem",
-"đúng thời điểm",
-"dung thoi diem",
-"kien_nhan",
-"kiên nhẫn",
-"kien nhan"
-]
-}
-},
-"entries": [
-{
-"id": "firm_purpose",
-"title": {
-"en": "Developing a Firm Purpose",
-"vi": "Nuôi Dưỡng Mục Đích Vững Chắc"
-},
-    "content": {
-      "en": "A life without purpose drifts like a ship without a compass, tossed by every wind. True direction begins with stillness — listening for what your heart quietly values. Reflect until clarity dawns; let purpose become your anchor in storm and calm alike. When you act from conviction, even chaos becomes current guiding you home. Live each day with intention and courage, and meaning will unfold as naturally as dawn upon the sea.\n\n*Discover deeper insights in VIP 1, 2, or 3.*",
-      "vi": "Cuộc đời không mục đích như con thuyền không la bàn, chao đảo theo từng cơn gió. Hướng đi thật sự khởi đầu từ tĩnh lặng — bằng cách lắng nghe điều trái tim bạn thầm gìn giữ. Suy ngẫm cho đến khi sáng tỏ; để mục đích thành mỏ neo giữa bão giông và bình yên. Khi hành động từ niềm tin, cả hỗn loạn cũng hóa thành dòng chảy đưa bạn về bến. Sống mỗi ngày với ý định và dũng khí, ý nghĩa sẽ hé mở tự nhiên như bình minh trên biển.\n\n*Khám phá chiều sâu hơn ở các cấp độ VIP 1, 2 hoặc 3.*"
+  "tier": "Free / Miễn phí",
+  "default_entry_id": "firm_purpose",
+  "welcome": {
+    "en": "Hello! Welcome to Stoic Philosophy room. How can I help you today?\n\nTopic keywords you can type are below:\n- firm_purpose\n- emotional_control\n- anticipate_obstacles\n- inner_strength\n- natural_flow\n- release_control\n- confident_energy\n- reframe_challenges\n- trust_life_order",
+    "vi": "Xin chào! Chào mừng bạn đến với phòng Triết Học Stoic. Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:\n- mục đích vững chắc\n- làm chủ cảm xúc\n- chủ động đối mặt khó khăn\n- sức mạnh nội tâm\n- dòng chảy tự nhiên\n- buông kiểm soát\n- năng lượng tự tin\n- tái khuôn thử thách\n- trật tự tự nhiên"
+  },
+  "search": {
+    "normalize_case": true,
+    "normalize_accents": true,
+    "tokenize_on": [" ", "_"]
+  },
+  "keyword_menu": {
+    "en": [
+      "firm_purpose",
+      "emotional_control",
+      "anticipate_obstacles",
+      "inner_strength",
+      "natural_flow",
+      "release_control",
+      "confident_energy",
+      "reframe_challenges",
+      "trust_life_order"
+    ],
+    "vi": [
+      "muc_dich_vung_chac",
+      "lam_chu_cam_xuc",
+      "chu_dong_doi_mat_kho_khan",
+      "suc_manh_noi_tam",
+      "dong_chay_tu_nhien",
+      "buong_kiem_soat",
+      "nang_luong_tu_tin",
+      "tai_khuon_thu_thach",
+      "trat_tu_tu_nhien"
+    ]
+  },
+  "keywords_dict": {
+    "firm_purpose": {
+      "en": [
+        "firm_purpose",
+        "firm purpose",
+        "purpose",
+        "life purpose",
+        "direction",
+        "compass",
+        "values",
+        "meaning"
+      ],
+      "vi": [
+        "muc_dich_vung_chac",
+        "mục đích vững chắc",
+        "muc dich vung chac",
+        "muc_dich",
+        "mục đích",
+        "muc dich",
+        "dinh_huong",
+        "định hướng",
+        "dinh huong",
+        "gia_tri",
+        "giá trị",
+        "gia tri"
+      ]
+    },
+    "emotional_control": {
+      "en": [
+        "emotional_control",
+        "emotional control",
+        "emotion mastery",
+        "mindfulness",
+        "respond not react",
+        "calm mind"
+      ],
+      "vi": [
+        "lam_chu_cam_xuc",
+        "làm chủ cảm xúc",
+        "lam chu cam xuc",
+        "chanh_niem",
+        "chánh niệm",
+        "chanh niem",
+        "binh_tam",
+        "bình tâm",
+        "binh tam"
+      ]
+    },
+    "anticipate_obstacles": {
+      "en": [
+        "anticipate_obstacles",
+        "anticipating obstacles",
+        "premeditatio malorum",
+        "resilience",
+        "prepare for challenges",
+        "handle obstacles"
+      ],
+      "vi": [
+        "chu_dong_doi_mat_kho_khan",
+        "chủ động đối mặt khó khăn",
+        "chu dong doi mat kho khan",
+        "chuan_bi",
+        "chuẩn bị",
+        "chuan bi",
+        "kha_nang_chong_chiu",
+        "khả năng chống chịu",
+        "kha nang chong chiu"
+      ]
+    },
+    "inner_strength": {
+      "en": [
+        "inner_strength",
+        "inner strength",
+        "acceptance",
+        "virtue",
+        "integrity",
+        "gratitude",
+        "forgiveness"
+      ],
+      "vi": [
+        "suc_manh_noi_tam",
+        "sức mạnh nội tâm",
+        "suc manh noi tam",
+        "chap_nhan",
+        "chấp nhận",
+        "chap nhan",
+        "chinh_truc",
+        "chính trực",
+        "chinh truc",
+        "biet_on",
+        "biết ơn",
+        "biet on",
+        "tha_thu",
+        "tha thứ",
+        "tha thu"
+      ]
+    },
+    "natural_flow": {
+      "en": [
+        "natural_flow",
+        "natural flow",
+        "go with the flow",
+        "patience",
+        "non-forcing",
+        "effort with ease"
+      ],
+      "vi": [
+        "dong_chay_tu_nhien",
+        "dòng chảy tự nhiên",
+        "dong chay tu nhien",
+        "nhe_nhang",
+        "nhẹ nhàng",
+        "nhe nhang",
+        "khong_cuong_ep",
+        "không cưỡng ép",
+        "khong cuong ep",
+        "kien_nhan",
+        "kiên nhẫn",
+        "kien nhan"
+      ]
+    },
+    "release_control": {
+      "en": [
+        "release_control",
+        "releasing control",
+        "let go",
+        "dichotomy of control",
+        "freedom",
+        "equanimity"
+      ],
+      "vi": [
+        "buong_kiem_soat",
+        "buông kiểm soát",
+        "buong kiem soat",
+        "buong_bo",
+        "buông bỏ",
+        "buong bo",
+        "tu_do",
+        "tự do",
+        "tu do",
+        "binh_than",
+        "bình thản",
+        "binh than"
+      ]
+    },
+    "confident_energy": {
+      "en": [
+        "confident_energy",
+        "confident energy",
+        "calm action",
+        "composed",
+        "non-anxious presence",
+        "assured"
+      ],
+      "vi": [
+        "nang_luong_tu_tin",
+        "năng lượng tự tin",
+        "nang luong tu tin",
+        "hanh_dong_binh_tinh",
+        "hành động bình tĩnh",
+        "hanh dong binh tinh",
+        "vung_vang",
+        "vững vàng",
+        "vung vang"
+      ]
+    },
+    "reframe_challenges": {
+      "en": [
+        "reframe_challenges",
+        "reframing challenges",
+        "obstacle is the way",
+        "growth mindset",
+        "resilience",
+        "perspective shift"
+      ],
+      "vi": [
+        "tai_khuon_thu_thach",
+        "tái khuôn thử thách",
+        "tai khuon thu thach",
+        "co_hoi_truong_thanh",
+        "cơ hội trưởng thành",
+        "co hoi truong thanh",
+        "doi_goc_nhin",
+        "đổi góc nhìn",
+        "doi goc nhin"
+      ]
+    },
+    "trust_life_order": {
+      "en": [
+        "trust_life_order",
+        "trust life’s order",
+        "timing",
+        "patience",
+        "natural order",
+        "things take time"
+      ],
+      "vi": [
+        "trat_tu_tu_nhien",
+        "trật tự tự nhiên",
+        "trat tu tu nhien",
+        "dung_thoi_diem",
+        "đúng thời điểm",
+        "dung thoi diem",
+        "kien_nhan",
+        "kiên nhẫn",
+        "kien nhan"
+      ]
     }
-},
-{
-"id": "emotional_control",
-"title": {
-"en": "Mastering Emotional Control",
-"vi": "Làm Chủ Cảm Xúc"
-},
-    "content": {
-      "en": "Emotions rise not from events but from thoughts about them. To master emotion is to master meaning. Observe each feeling like a passing cloud — neither clinging nor fighting. Guard your peace from negativity; let calm discernment guide your words. When hurt appears, let it teach compassion, not bitterness. In patience and awareness, you reclaim freedom over your own inner weather.\n\n*Discover deeper insights in VIP 1, 2, or 3.*",
-      "vi": "Cảm xúc không sinh từ sự kiện mà từ cách ta nhìn chúng. Làm chủ cảm xúc là làm chủ ý nghĩa. Hãy quan sát mỗi cảm xúc như đám mây trôi — không bám víu, chẳng chống cự. Giữ bình yên khỏi điều tiêu cực; để sáng suốt dìu dắt lời nói. Khi tổn thương ghé đến, hãy để nó dạy ta lòng từ bi thay vì cay đắng. Trong kiên nhẫn và tỉnh thức, bạn giành lại tự do cho bầu trời nội tâm.\n\n*Khám phá chiều sâu hơn ở các cấp độ VIP 1, 2 hoặc 3.*"
+  },
+  "entries": [
+    {
+      "id": "firm_purpose",
+      "title": {
+        "en": "Developing a Firm Purpose",
+        "vi": "Nuôi Dưỡng Mục Đích Vững Chắc"
+      },
+      "content": {
+        "en": "A life without purpose drifts like a ship without a compass, tossed by every wind. True direction begins with stillness — listening for what your heart quietly values. Reflect until clarity dawns; let purpose become your anchor in storm and calm alike. When you act from conviction, even chaos becomes current guiding you home. Live each day with intention and courage, and meaning will unfold as naturally as dawn upon the sea.\n\n*Discover deeper insights in VIP 1, 2, or 3.*",
+        "vi": "Cuộc đời không mục đích như con thuyền không la bàn, chao đảo theo từng cơn gió. Hướng đi thật sự khởi đầu từ tĩnh lặng — bằng cách lắng nghe điều trái tim bạn thầm gìn giữ. Suy ngẫm cho đến khi sáng tỏ; để mục đích thành mỏ neo giữa bão giông và bình yên. Khi hành động từ niềm tin, cả hỗn loạn cũng hóa thành dòng chảy đưa bạn về bến. Sống mỗi ngày với ý định và dũng khí, ý nghĩa sẽ hé mở tự nhiên như bình minh trên biển.\n\n*Khám phá chiều sâu hơn ở các cấp độ VIP 1, 2 hoặc 3.*"
+      },
+      "audio": {
+        "en": "firm_purpose_free.mp3"
+      }
+    },
+    {
+      "id": "emotional_control",
+      "title": {
+        "en": "Mastering Emotional Control",
+        "vi": "Làm Chủ Cảm Xúc"
+      },
+      "content": {
+        "en": "Emotions rise not from events but from thoughts about them. To master emotion is to master meaning. Observe each feeling like a passing cloud — neither clinging nor fighting. Guard your peace from negativity; let calm discernment guide your words. When hurt appears, let it teach compassion, not bitterness. In patience and awareness, you reclaim freedom over your own inner weather.\n\n*Discover deeper insights in VIP 1, 2, or 3.*",
+        "vi": "Cảm xúc không sinh từ sự kiện mà từ cách ta nhìn chúng. Làm chủ cảm xúc là làm chủ ý nghĩa. Hãy quan sát mỗi cảm xúc như đám mây trôi — không bám víu, chẳng chống cự. Giữ bình yên khỏi điều tiêu cực; để sáng suốt dìu dắt lời nói. Khi tổn thương ghé đến, hãy để nó dạy ta lòng từ bi thay vì cay đắng. Trong kiên nhẫn và tỉnh thức, bạn giành lại tự do cho bầu trời nội tâm.\n\n*Khám phá chiều sâu hơn ở các cấp độ VIP 1, 2 hoặc 3.*"
+      },
+      "audio": {
+        "en": "emotional_control_free.mp3"
+      }
+    },
+    {
+      "id": "anticipate_obstacles",
+      "title": {
+        "en": "Anticipating and Handling Obstacles",
+        "vi": "Chủ Động Đối Mặt Khó Khăn"
+      },
+      "content": {
+        "en": "Before storms arrive, imagine them. This is not fear, but foresight. When you prepare the mind, trouble loses its surprise. Distinguish what can be shaped from what must be endured; place effort only where it bears fruit. Patience turns setbacks into stepping stones. Each obstacle faced with grace refines the soul into quiet strength.\n\n*Discover deeper insights in VIP 1, 2, or 3.*",
+        "vi": "Trước khi bão đến, hãy hình dung nó. Không phải sợ hãi, mà là thấu suốt. Khi tâm đã sẵn sàng, biến cố không còn bất ngờ. Phân biệt điều có thể uốn nắn và điều cần chấp nhận; dồn sức vào nơi sinh quả. Kiên nhẫn biến trở ngại thành bậc thang. Mỗi thử thách đón nhận với điềm tĩnh sẽ mài giũa tâm hồn thành sức mạnh lặng lẽ.\n\n*Khám phá chiều sâu hơn ở các cấp độ VIP 1, 2 hoặc 3.*"
+      },
+      "audio": {
+        "en": "anticipate_obstacles_free.mp3"
+      }
+    },
+    {
+      "id": "inner_strength",
+      "title": {
+        "en": "Cultivating Inner Strength and Acceptance",
+        "vi": "Bồi Đắp Sức Mạnh Nội Tâm Và Chấp Nhận"
+      },
+      "content": {
+        "en": "Inner strength grows where resistance ends. Accepting reality frees energy for creation. Live simply, in rhythm with nature, grateful for each breath. Practice forgiveness — it lightens the heart. Let integrity, not outcome, define your peace. In quiet acceptance, courage blooms, and fulfillment follows like sunlight after rain.\n\n*Discover deeper insights in VIP 1, 2, or 3.*",
+        "vi": "Sức mạnh nội tâm lớn dần nơi sự kháng cự dừng lại. Chấp nhận thực tại giải phóng năng lượng để kiến tạo. Sống giản dị, thuận theo tự nhiên, biết ơn từng hơi thở. Hãy tha thứ — trái tim sẽ nhẹ hơn. Để chính trực, không phải kết quả, định nghĩa bình yên. Trong tĩnh lặng của chấp nhận, dũng khí nở hoa và sự mãn nguyện đến như nắng sau mưa.\n\n*Khám phá chiều sâu hơn ở các cấp độ VIP 1, 2 hoặc 3.*"
+      },
+      "audio": {
+        "en": "inner_strength_free.mp3"
+      }
+    },
+    {
+      "id": "natural_flow",
+      "title": {
+        "en": "Embracing Natural Flow",
+        "vi": "Hòa Mình Trong Dòng Chảy Tự Nhiên"
+      },
+      "content": {
+        "en": "Life flows best when not forced. Like a river finding its path, let your actions move with patience, not haste. Tend the garden; do not tug at the sprouts. What is meant will ripen in its season. Surrender, joined with trust, matures into wisdom.\n\n*Discover deeper insights in VIP 1, 2, or 3.*",
+        "vi": "Cuộc sống trôi chảy nhất khi ta thôi cưỡng ép. Như con sông tự tìm đường, hãy để hành động đi cùng kiên nhẫn, không vội vàng. Hãy chăm khu vườn của mình; đừng kéo mầm non. Điều thuộc về bạn sẽ chín đúng mùa. Buông bỏ, khi đi cùng niềm tin, hóa thành trí tuệ.\n\n*Khám phá chiều sâu hơn ở các cấp độ VIP 1, 2 hoặc 3.*"
+      },
+      "audio": {
+        "en": "natural_flow_free.mp3"
+      }
+    },
+    {
+      "id": "release_control",
+      "title": {
+        "en": "Releasing Control for Freedom",
+        "vi": "Buông Kiểm Soát Để Tự Do"
+      },
+      "content": {
+        "en": "Freedom begins where control ends. What others do or think lies beyond your reach. Guard your peace by tending your own thoughts and choices. When you release what you cannot command, the heart breathes, the mind clears, and calm returns like morning light.\n\n*Discover deeper insights in VIP 1, 2, or 3.*",
+        "vi": "Tự do khởi đầu nơi kiểm soát khép lại. Điều người khác làm hay nghĩ nằm ngoài tầm tay. Giữ bình yên bằng cách chăm sóc suy nghĩ và lựa chọn của chính mình. Khi buông điều không thể nắm, trái tim thở nhẹ, tâm trí sáng trong, và an nhiên trở lại như ánh bình minh.\n\n*Khám phá chiều sâu hơn ở các cấp độ VIP 1, 2 hoặc 3.*"
+      }
+    },
+    {
+      "id": "confident_energy",
+      "title": {
+        "en": "Embodying Confident Energy",
+        "vi": "Lan Tỏa Năng Lượng Tự Tin"
+      },
+      "content": {
+        "en": "Desperation repels; calm confidence attracts. Move with quiet clarity, not haste. Trust that sincere effort will meet the right door. Act with purpose, not panic. Life answers energy, not urgency — let yours be steady, assured, and kind.\n\n*Discover deeper insights in VIP 1, 2, or 3.*",
+        "vi": "Tuyệt vọng xua đuổi; tự tin dịu êm mời gọi. Hãy bước với sáng tỏ bình yên, không hấp tấp. Tin rằng nỗ lực chân thành sẽ gặp đúng cánh cửa. Hành động bằng mục đích, không hoảng loạn. Cuộc sống đáp lại năng lượng, không phải vội vàng — hãy để năng lượng của bạn vững vàng, tự chủ và nhân hậu.\n\n*Khám phá chiều sâu hơn ở các cấp độ VIP 1, 2 hoặc 3.*"
+      }
+    },
+    {
+      "id": "reframe_challenges",
+      "title": {
+        "en": "Reframing Challenges as Growth",
+        "vi": "Biến Thử Thách Thành Cơ Hội Trưởng Thành"
+      },
+      "content": {
+        "en": "Every obstacle is an invitation to evolve. Let hardship become the gym of the soul — each struggle a weight that builds resilience. Gratitude turns pressure into power, burden into blessing. Shift the lens, and the path brightens under your feet.\n\n*Discover deeper insights in VIP 1, 2, or 3.*",
+        "vi": "Mỗi trở ngại là một lời mời để lớn lên. Hãy xem khó khăn như phòng tập của tâm hồn — mỗi thử thách là quả tạ hun đúc sức bền. Lòng biết ơn biến áp lực thành sức mạnh, biến gánh nặng thành phước lành. Đổi góc nhìn, con đường sẽ sáng lên dưới chân bạn.\n\n*Khám phá chiều sâu hơn ở các cấp độ VIP 1, 2 hoặc 3.*"
+      }
+    },
+    {
+      "id": "trust_life_order",
+      "title": {
+        "en": "Trusting Life’s Natural Order",
+        "vi": "Tin Vào Trật Tự Tự Nhiên Của Cuộc Sống"
+      },
+      "content": {
+        "en": "Great things unfold in their own time. Trust the rhythm that governs stars and seasons. Like seeds resting before bloom, your efforts ripen unseen. Patience is partnership with the universe — let time do its quiet work.\n\n*Discover deeper insights in VIP 1, 2, or 3.*",
+        "vi": "Những điều lớn lao nở rộ theo nhịp riêng. Hãy tin vào tiết điệu dẫn dắt sao trời và mùa vụ. Như hạt giống yên nghỉ trước khi khai hoa, nỗ lực của bạn cũng chín muồi trong thầm lặng. Kiên nhẫn là cộng tác với vũ trụ — hãy để thời gian làm công việc âm thầm của nó.\n\n*Khám phá chiều sâu hơn ở các cấp độ VIP 1, 2 hoặc 3.*"
+      }
     }
-},
-{
-"id": "anticipate_obstacles",
-"title": {
-"en": "Anticipating and Handling Obstacles",
-"vi": "Chủ Động Đối Mặt Khó Khăn"
-},
-    "content": {
-      "en": "Before storms arrive, imagine them. This is not fear, but foresight. When you prepare the mind, trouble loses its surprise. Distinguish what can be shaped from what must be endured; place effort only where it bears fruit. Patience turns setbacks into stepping stones. Each obstacle faced with grace refines the soul into quiet strength.\n\n*Discover deeper insights in VIP 1, 2, or 3.*",
-      "vi": "Trước khi bão đến, hãy hình dung nó. Không phải sợ hãi, mà là thấu suốt. Khi tâm đã sẵn sàng, biến cố không còn bất ngờ. Phân biệt điều có thể uốn nắn và điều cần chấp nhận; dồn sức vào nơi sinh quả. Kiên nhẫn biến trở ngại thành bậc thang. Mỗi thử thách đón nhận với điềm tĩnh sẽ mài giũa tâm hồn thành sức mạnh lặng lẽ.\n\n*Khám phá chiều sâu hơn ở các cấp độ VIP 1, 2 hoặc 3.*"
-    }
-},
-{
-"id": "inner_strength",
-"title": {
-"en": "Cultivating Inner Strength and Acceptance",
-"vi": "Bồi Đắp Sức Mạnh Nội Tâm Và Chấp Nhận"
-},
-    "content": {
-      "en": "Inner strength grows where resistance ends. Accepting reality frees energy for creation. Live simply, in rhythm with nature, grateful for each breath. Practice forgiveness — it lightens the heart. Let integrity, not outcome, define your peace. In quiet acceptance, courage blooms, and fulfillment follows like sunlight after rain.\n\n*Discover deeper insights in VIP 1, 2, or 3.*",
-      "vi": "Sức mạnh nội tâm lớn dần nơi sự kháng cự dừng lại. Chấp nhận thực tại giải phóng năng lượng để kiến tạo. Sống giản dị, thuận theo tự nhiên, biết ơn từng hơi thở. Hãy tha thứ — trái tim sẽ nhẹ hơn. Để chính trực, không phải kết quả, định nghĩa bình yên. Trong tĩnh lặng của chấp nhận, dũng khí nở hoa và sự mãn nguyện đến như nắng sau mưa.\n\n*Khám phá chiều sâu hơn ở các cấp độ VIP 1, 2 hoặc 3.*"
-    }
-},
-{
-"id": "natural_flow",
-"title": {
-"en": "Embracing Natural Flow",
-"vi": "Hòa Mình Trong Dòng Chảy Tự Nhiên"
-},
-    "content": {
-      "en": "Life flows best when not forced. Like a river finding its path, let your actions move with patience, not haste. Tend the garden; do not tug at the sprouts. What is meant will ripen in its season. Surrender, joined with trust, matures into wisdom.\n\n*Discover deeper insights in VIP 1, 2, or 3.*",
-      "vi": "Cuộc sống trôi chảy nhất khi ta thôi cưỡng ép. Như con sông tự tìm đường, hãy để hành động đi cùng kiên nhẫn, không vội vàng. Hãy chăm khu vườn của mình; đừng kéo mầm non. Điều thuộc về bạn sẽ chín đúng mùa. Buông bỏ, khi đi cùng niềm tin, hóa thành trí tuệ.\n\n*Khám phá chiều sâu hơn ở các cấp độ VIP 1, 2 hoặc 3.*"
-    }
-},
-{
-"id": "release_control",
-"title": {
-"en": "Releasing Control for Freedom",
-"vi": "Buông Kiểm Soát Để Tự Do"
-},
-"content": {
-"en": "Freedom begins where control ends. What others do or think lies beyond your reach. Guard your peace by tending your own thoughts and choices. When you release what you cannot command, the heart breathes, the mind clears, and calm returns like morning light.\n\n*Discover deeper insights in VIP 1, 2, or 3.*",
-"vi": "Tự do khởi đầu nơi kiểm soát khép lại. Điều người khác làm hay nghĩ nằm ngoài tầm tay. Giữ bình yên bằng cách chăm sóc suy nghĩ và lựa chọn của chính mình. Khi buông điều không thể nắm, trái tim thở nhẹ, tâm trí sáng trong, và an nhiên trở lại như ánh bình minh.\n\n*Khám phá chiều sâu hơn ở các cấp độ VIP 1, 2 hoặc 3.*"
-}
-},
-{
-"id": "confident_energy",
-"title": {
-"en": "Embodying Confident Energy",
-"vi": "Lan Tỏa Năng Lượng Tự Tin"
-},
-"content": {
-"en": "Desperation repels; calm confidence attracts. Move with quiet clarity, not haste. Trust that sincere effort will meet the right door. Act with purpose, not panic. Life answers energy, not urgency — let yours be steady, assured, and kind.\n\n*Discover deeper insights in VIP 1, 2, or 3.*",
-"vi": "Tuyệt vọng xua đuổi; tự tin dịu êm mời gọi. Hãy bước với sáng tỏ bình yên, không hấp tấp. Tin rằng nỗ lực chân thành sẽ gặp đúng cánh cửa. Hành động bằng mục đích, không hoảng loạn. Cuộc sống đáp lại năng lượng, không phải vội vàng — hãy để năng lượng của bạn vững vàng, tự chủ và nhân hậu.\n\n*Khám phá chiều sâu hơn ở các cấp độ VIP 1, 2 hoặc 3.*"
-}
-},
-{
-"id": "reframe_challenges",
-"title": {
-"en": "Reframing Challenges as Growth",
-"vi": "Biến Thử Thách Thành Cơ Hội Trưởng Thành"
-},
-"content": {
-"en": "Every obstacle is an invitation to evolve. Let hardship become the gym of the soul — each struggle a weight that builds resilience. Gratitude turns pressure into power, burden into blessing. Shift the lens, and the path brightens under your feet.\n\n*Discover deeper insights in VIP 1, 2, or 3.*",
-"vi": "Mỗi trở ngại là một lời mời để lớn lên. Hãy xem khó khăn như phòng tập của tâm hồn — mỗi thử thách là quả tạ hun đúc sức bền. Lòng biết ơn biến áp lực thành sức mạnh, biến gánh nặng thành phước lành. Đổi góc nhìn, con đường sẽ sáng lên dưới chân bạn.\n\n*Khám phá chiều sâu hơn ở các cấp độ VIP 1, 2 hoặc 3.*"
-}
-},
-{
-"id": "trust_life_order",
-"title": {
-"en": "Trusting Life’s Natural Order",
-"vi": "Tin Vào Trật Tự Tự Nhiên Của Cuộc Sống"
-},
-"content": {
-"en": "Great things unfold in their own time. Trust the rhythm that governs stars and seasons. Like seeds resting before bloom, your efforts ripen unseen. Patience is partnership with the universe — let time do its quiet work.\n\n*Discover deeper insights in VIP 1, 2, or 3.*",
-"vi": "Những điều lớn lao nở rộ theo nhịp riêng. Hãy tin vào tiết điệu dẫn dắt sao trời và mùa vụ. Như hạt giống yên nghỉ trước khi khai hoa, nỗ lực của bạn cũng chín muồi trong thầm lặng. Kiên nhẫn là cộng tác với vũ trụ — hãy để thời gian làm công việc âm thầm của nó.\n\n*Khám phá chiều sâu hơn ở các cấp độ VIP 1, 2 hoặc 3.*"
-}
-}
-]
+  ]
 }
