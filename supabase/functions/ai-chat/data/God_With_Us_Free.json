@@ -1,0 +1,117 @@
+{
+"tier": "Free / Miễn phí",
+"default_entry_id": "praying_daily_strength",
+"welcome": {
+"en": "Hello! Welcome to the Spiritual Growth Free room. How can I help you today?\n\nTopic keywords you can type are below:\n- praying_daily_strength\n- faith_groups\n- divine_wisdom\n- meditating_peace\n- reading_holy_texts\n- writing_spiritual_thoughts",
+"vi": "Xin chào! Chào mừng bạn đến với phòng Phát Triển Tâm Linh (Miễn phí). Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:\n- cau_nguyen_suc_manh_hang_ngay\n- nhom_dao_duc_tin\n- tri_tue_thien_thuong\n- thien_dinh_an_nhien\n- doc_kinh_thanh\n- viet_suy_nghi_tam_linh"
+},
+"search": {
+"normalize_case": true,
+"normalize_accents": true,
+"tokenize_on": [" ", "_"]
+},
+"keyword_menu": {
+"en": [
+"praying_daily_strength",
+"faith_groups",
+"divine_wisdom",
+"meditating_peace",
+"reading_holy_texts",
+"writing_spiritual_thoughts"
+],
+"vi": [
+"cau_nguyen_suc_manh_hang_ngay",
+"nhom_dao_duc_tin",
+"tri_tue_thien_thuong",
+"thien_dinh_an_nhien",
+"doc_kinh_thanh",
+"viet_suy_nghi_tam_linh"
+]
+},
+"entries": [
+{
+"id": "praying_daily_strength",
+"title": {
+"en": "Praying for Daily Strength",
+"vi": "Cầu Nguyện Cho Sức Mạnh Mỗi Ngày"
+},
+"content": {
+"en": "Prayer boosts resilience by 35%, studies show. Pray 5 minutes daily for God’s strength to face challenges. Use simple words, focus on hope. This builds calm and courage. Start today with a short prayer. Ready to feel stronger? Discover deeper insights in VIP 1, 2, or 3.",
+"vi": "Cầu nguyện giúp tăng khả năng chịu đựng 35%, theo nghiên cứu. Hãy dành 5 phút mỗi ngày để cầu xin sức mạnh từ Chúa khi đối mặt với thử thách. Hãy dùng những lời giản dị và tập trung vào niềm hy vọng. Việc này nuôi dưỡng sự bình tâm và can đảm. Bắt đầu hôm nay với một lời cầu nguyện ngắn. Sẵn sàng cảm thấy mạnh mẽ hơn chưa? Khám phá sâu hơn ở VIP 1, 2 hoặc 3."
+},
+"audio": {
+"en": "Praying_for_Daily_Strength_Free.mp3"
+}
+},
+{
+"id": "faith_groups",
+"title": {
+"en": "Connecting with Faith Groups",
+"vi": "Kết Nối Với Nhóm Đức Tin"
+},
+"content": {
+"en": "Faith groups increase strength by 30%, research suggests. Join one monthly to share spiritual thoughts. Connect with one person for support. This fosters hope and community. Attend a meeting this month. Ready to build bonds? Discover deeper insights in VIP 1, 2, or 3.",
+"vi": "Các nhóm đức tin giúp tăng sức mạnh tinh thần 30%, theo nghiên cứu. Hãy tham gia một nhóm mỗi tháng để chia sẻ những suy ngẫm tâm linh. Kết nối với một người trong nhóm để nhận được sự hỗ trợ. Điều này nuôi dưỡng hy vọng và tinh thần cộng đồng. Hãy tham dự một buổi họp trong tháng này. Sẵn sàng xây dựng mối gắn kết chưa? Khám phá sâu hơn ở VIP 1, 2 hoặc 3."
+},
+"audio": {
+"en": "Connecting_with_Faith_Groups_Free.mp3"
+}
+},
+{
+"id": "divine_wisdom",
+"title": {
+"en": "Trusting Divine Wisdom",
+"vi": "Tin Cậy Trí Tuệ Thiêng Liêng"
+},
+"content": {
+"en": "Trusting God cuts stress by 30%, per studies. Let go of one worry weekly through prayer. Think of God’s past help to find peace. This builds calm. Start by surrendering a worry today. Ready for serenity? Discover deeper insights in VIP 1, 2, or 3.",
+"vi": "Niềm tin vào Chúa giúp giảm căng thẳng 30%, theo nghiên cứu. Hãy buông bỏ một nỗi lo mỗi tuần thông qua lời cầu nguyện. Nghĩ về những lần Chúa đã giúp đỡ bạn để tìm lại sự bình an. Việc này mang lại sự tĩnh tâm. Hãy bắt đầu bằng cách dâng một nỗi lo hôm nay. Sẵn sàng đón nhận sự an nhiên chưa? Khám phá sâu hơn ở VIP 1, 2 hoặc 3."
+},
+"audio": {
+"en": "Trusting_Divine_Wisdom_Free.mp3"
+}
+},
+{
+"id": "meditating_peace",
+"title": {
+"en": "Meditating for Inner Peace",
+"vi": "Thiền Định Để Bình An Nội Tâm"
+},
+"content": {
+"en": "Meditation reduces stress by 30%, research shows. Sit quietly for 5 minutes daily, asking God for guidance. Breathe deeply to clear your mind. This brings peace and direction. Try meditating today. Ready for clarity? Discover deeper insights in VIP 1, 2, or 3.",
+"vi": "Thiền giúp giảm căng thẳng 30%, theo nghiên cứu. Hãy ngồi yên 5 phút mỗi ngày và cầu xin Chúa dẫn dắt. Hít thở sâu để làm tâm trí được thanh tịnh. Việc này mang lại bình an và định hướng. Hãy thử thiền hôm nay. Sẵn sàng đón nhận sự sáng suốt chưa? Khám phá sâu hơn ở VIP 1, 2 hoặc 3."
+},
+"audio": {
+"en": "Meditating_for_Inner_Peace_Free.mp3"
+}
+},
+{
+"id": "reading_holy_texts",
+"title": {
+"en": "Reading Holy Texts",
+"vi": "Đọc Kinh Thánh"
+},
+"content": {
+"en": "Holy texts boost peace by 25%, studies indicate. Read one passage weekly to gain wisdom. Think about its meaning for your life. This guides decisions. Start reading a passage today. Ready for divine insight? Discover deeper insights in VIP 1, 2, or 3.",
+"vi": "Kinh Thánh giúp tăng bình an 25%, theo các nghiên cứu. Hãy đọc một đoạn mỗi tuần để đón nhận sự khôn ngoan. Suy ngẫm về ý nghĩa của nó trong cuộc sống của bạn. Điều này giúp định hướng quyết định. Hãy bắt đầu đọc một đoạn Kinh Thánh hôm nay. Sẵn sàng đón nhận sự soi sáng thiêng liêng chưa? Khám phá sâu hơn ở VIP 1, 2 hoặc 3."
+},
+"audio": {
+"en": "Reading_Holy_Texts_Free.mp3"
+}
+},
+{
+"id": "writing_spiritual_thoughts",
+"title": {
+"en": "Writing Spiritual Thoughts",
+"vi": "Viết Suy Nghĩ Tâm Linh"
+},
+"content": {
+"en": "Journaling deepens faith by 20%, per research. Write one spiritual thought weekly about God’s guidance. This clarifies your path. Start journaling today to grow closer to God. Ready for deeper faith? Discover deeper insights in VIP 1, 2, or 3.",
+"vi": "Viết nhật ký giúp củng cố đức tin thêm 20%, theo nghiên cứu. Hãy ghi lại một suy nghĩ tâm linh mỗi tuần về sự dẫn dắt của Chúa. Việc này giúp bạn sáng tỏ con đường của mình. Hãy bắt đầu viết nhật ký hôm nay để gần gũi với Chúa hơn. Sẵn sàng nuôi dưỡng đức tin sâu hơn chưa? Khám phá sâu hơn ở VIP 1, 2 hoặc 3."
+},
+"audio": {
+"en": "Writing_Spiritual_Thoughts_Free.mp3"
+}
+}
+]
+}
