@@ -2,12 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Volume2, ArrowRight } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
-  const navigate = useNavigate();
+  
 
   useEffect(() => {
     document.title = "Mercy Blade — Holistic Growth";
@@ -97,13 +97,11 @@ const Index = () => {
         </Card>
 
         <div className="mt-8 flex justify-center">
-          <Button
-            onClick={() => navigate('/meaning-of-life')}
-            size="lg"
-            className="flex items-center gap-2"
-          >
-            Explore Meaning of Life
-            <ArrowRight size={20} />
+          <Button asChild size="lg" className="flex items-center gap-2">
+            <Link to="/meaning-of-life">
+              Explore Meaning of Life
+              <ArrowRight size={20} />
+            </Link>
           </Button>
         </div>
       </div>
