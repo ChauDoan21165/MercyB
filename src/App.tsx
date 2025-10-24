@@ -41,7 +41,6 @@ const App = () => (
         <AdminFloatingButton />
         <Routes>
           <Route path="/" element={<Welcome />} />
-          <Route path="/intro" element={<Index />} />
           <Route path="/meaning-of-life" element={<MeaningOfLife />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/rooms" element={<RoomGrid />} />
