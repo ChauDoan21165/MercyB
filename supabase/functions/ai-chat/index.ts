@@ -219,6 +219,41 @@ serve(async (req) => {
       );
     }
 
+    // Validate message content
+    const lastMessage = messages[messages.length - 1];
+    if (!lastMessage || !lastMessage.content || typeof lastMessage.content !== 'string') {
+      return new Response(
+        JSON.stringify({ error: 'Invalid message format' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const messageContent = lastMessage.content.trim();
+
+    // Validate message length
+    if (messageContent.length === 0) {
+      return new Response(
+        JSON.stringify({ error: 'Message cannot be empty' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    if (messageContent.length > 2000) {
+      return new Response(
+        JSON.stringify({ error: 'Message too long (max 2000 characters)' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Check for suspicious patterns (basic XSS prevention)
+    const suspiciousPatterns = /<script|javascript:|onerror=|onclick=/i;
+    if (suspiciousPatterns.test(messageContent)) {
+      return new Response(
+        JSON.stringify({ error: 'Invalid content detected' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
     // SERVER-SIDE TIER VALIDATION
     // Authenticate user first
     if (authHeader) {
@@ -261,8 +296,8 @@ serve(async (req) => {
       }
     }
 
-    // Extract user query
-    const userQuery = messages[messages.length - 1]?.content?.toLowerCase() || '';
+    // Extract user query (already validated above)
+    const userQuery = messageContent.toLowerCase();
 
     // Step 1: Check cached response (24hr cache)
     try {

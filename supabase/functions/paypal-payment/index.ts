@@ -24,11 +24,45 @@ serve(async (req) => {
 
     const { action, orderId, tierId } = await req.json();
 
-    // Public endpoint to retrieve client ID for SDK loading
+    // Public endpoint to retrieve client ID for SDK loading (no auth required)
     if (action === 'get-client-id') {
       return new Response(
         JSON.stringify({ clientId: Deno.env.get('PAYPAL_CLIENT_ID') }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Authenticate user for all other actions
+    const authHeader = req.headers.get('authorization');
+    if (!authHeader) {
+      return new Response(
+        JSON.stringify({ error: 'Authentication required' }),
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const token = authHeader.replace('Bearer ', '');
+    const { data: { user }, error: authError } = await supabase.auth.getUser(token);
+
+    if (authError || !user) {
+      return new Response(
+        JSON.stringify({ error: 'Invalid authentication' }),
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Rate limiting: Check for recent orders
+    const { data: recentOrders } = await supabase
+      .from('payment_proof_submissions')
+      .select('id')
+      .eq('user_id', user.id)
+      .gte('created_at', new Date(Date.now() - 3600000).toISOString())
+      .limit(5);
+
+    if (recentOrders && recentOrders.length >= 5) {
+      return new Response(
+        JSON.stringify({ error: 'Rate limit exceeded. Please try again later.' }),
+        { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
@@ -114,14 +148,7 @@ serve(async (req) => {
       const captureData = await captureResponse.json();
 
       if (captureData.status === 'COMPLETED') {
-        // Get user from auth header
-        const authHeader = req.headers.get('authorization');
-        const token = authHeader?.replace('Bearer ', '');
-        const { data: { user } } = await supabase.auth.getUser(token!);
-
-        if (!user) {
-          throw new Error('User not authenticated');
-        }
+        // User already authenticated earlier in the function
 
         // Get tier details for notification
         const { data: tier } = await supabase
