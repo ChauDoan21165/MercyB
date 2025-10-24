@@ -102,6 +102,7 @@ import aiFree from '@/data/rooms/AI_free.json';
 import aiVip1 from '@/data/rooms/AI_VIP1.json';
 import aiVip2 from '@/data/rooms/AI_VIP2.json';
 import aiVip3 from '@/data/rooms/AI_VIP3.json';
+import godWithUsVip1 from '@/data/rooms/God_With_Us_VIP1.json';
 
 export const roomDataMap: Record<string, any> = {
   'abdominal-pain': abdominalPain,
@@ -192,12 +193,13 @@ export const roomDataMap: Record<string, any> = {
   'keep-soul-calm': keepSoulCalm,
   'sharpen-mind': sharpenMind,
   'overcome-storm': overcomeStorm,
-  'unlock-shadow': unlockShadow,
+'unlock-shadow': unlockShadow,
   'human-rights': humanRights,
   'finding-gods-peace': findingGodsPeace,
   'gods-guidance': godsGuidance,
   'gods-strength': godsStrength,
   'gods-purpose': godsPurpose,
+  'god-with-us-vip1': godWithUsVip1,
   'proverbs-wisdom-vip1': proverbsWisdomVip1,
   'philosophy-of-everyday-free': philosophyEverydayFree,
   'philosophy-of-everyday-vip1': philosophyEverydayVip1,
