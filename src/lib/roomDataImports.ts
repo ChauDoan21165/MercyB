@@ -63,6 +63,7 @@ import speakingCrowd from '@/data/rooms/speaking_crowd.json';
 import stoicism from '@/data/rooms/stoicism.json';
 import stoicismFree from '@/data/rooms/stoicism_free.json';
 import stoicismVip1 from '@/data/rooms/stoicism_vip1.json';
+import stoicismVip2 from '@/data/rooms/stoicism_vip2.json';
 import stressAnxiety from '@/data/rooms/stress_and_anxiety.json';
 import teen from '@/data/rooms/teen.json';
 import toddler from '@/data/rooms/toddler.json';
@@ -162,6 +163,7 @@ export const roomDataMap: Record<string, any> = {
   'stoicism': stoicism,
   'stoicism-free': stoicismFree,
   'stoicism-vip1': stoicismVip1,
+  'stoicism-vip2': stoicismVip2,
   'stress-anxiety': stressAnxiety,
   'teen': teen,
   'toddler': toddler,

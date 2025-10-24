@@ -84,6 +84,7 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "stoicism", nameVi: "Chủ nghĩa khắc kỷ", nameEn: "Stoicism", hasData: false, tier: "free", dataFile: "stoicism.json" },
   { id: "stoicism-free", nameVi: "Triết Học Stoic", nameEn: "Stoic Philosophy", hasData: true, tier: "free", dataFile: "stoicism_free.json" },
   { id: "stoicism-vip1", nameVi: "Triết Học Stoic VIP1", nameEn: "Stoic Philosophy VIP1", hasData: true, tier: "vip1", dataFile: "stoicism_vip1.json" },
+  { id: "stoicism-vip2", nameVi: "Triết Học Stoic VIP2", nameEn: "Stoic Philosophy VIP2", hasData: true, tier: "vip2", dataFile: "stoicism_vip2.json" },
   { id: "stress-anxiety", nameVi: "Căng thẳng & Lo âu", nameEn: "Stress and Anxiety", hasData: false, tier: "free", dataFile: "stress_and_anxiety.json" },
   { id: "anxiety-toolkit", nameVi: "Bộ công cụ lo âu", nameEn: "Anxiety Toolkit", hasData: false, tier: "free", dataFile: "anxiety_toolkit.json" },
   { id: "teen", nameVi: "Tuổi thiếu niên", nameEn: "Teen", hasData: false, tier: "vip3", dataFile: "teen.json" },
