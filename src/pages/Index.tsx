@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Volume2 } from "lucide-react";
+import { Volume2, ArrowRight } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = "Mercy Blade — Holistic Growth";
@@ -15,14 +17,20 @@ const Index = () => {
     }
   }, []);
 
-  const toggleAudio = () => {
+  const toggleAudio = async () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
+        setIsPlaying(false);
       } else {
-        audioRef.current.play();
+        try {
+          await audioRef.current.play();
+          setIsPlaying(true);
+        } catch (error) {
+          console.error('Audio play error:', error);
+          alert('Cannot play audio. Please check if Mercy_Blade.mp3 file exists in public folder.');
+        }
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
@@ -40,8 +48,7 @@ const Index = () => {
               <Button
                 onClick={toggleAudio}
                 size="lg"
-                variant="outline"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground"
               >
                 <Volume2 size={20} />
                 {isPlaying ? "Pause Audio" : "Play Audio"}
@@ -60,7 +67,17 @@ const Index = () => {
               And as your journey unfolds, Mercy Blade may even help you find the learning companion — or soulmate — who truly resonates with you.
             </p>
           </div>
-          <audio ref={audioRef} src="/Mercy_Blade.mp3" onEnded={() => setIsPlaying(false)} />
+          <audio 
+            ref={audioRef} 
+            src="/Mercy_Blade.mp3" 
+            onEnded={() => setIsPlaying(false)}
+            onError={(e) => {
+              console.error('Audio load error:', e);
+              alert('Audio file not found: /Mercy_Blade.mp3. Please add it to the public folder.');
+            }}
+            controls
+            className="w-full mt-4"
+          />
         </Card>
 
         <Card className="p-8 shadow-lg">
@@ -78,6 +95,17 @@ const Index = () => {
             Và trên hành trình ấy, Mercy Blade có thể giúp bạn gặp được người bạn học phù hợp nhất — thậm chí là tri kỷ của chính mình.
           </p>
         </Card>
+
+        <div className="mt-8 flex justify-center">
+          <Button
+            onClick={() => navigate('/meaning-of-life')}
+            size="lg"
+            className="flex items-center gap-2"
+          >
+            Explore Meaning of Life
+            <ArrowRight size={20} />
+          </Button>
+        </div>
       </div>
     </div>
   );

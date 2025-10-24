@@ -182,25 +182,28 @@ serve(async (req) => {
     const scoreKey = `severity${moderationResult.severity}` as keyof typeof MODERATION_RULES.policy.scoring;
     const score = MODERATION_RULES.policy.scoring[scoreKey] || 1;
 
-    // Check recent violations
+    // Check recent violations within 24 hours
     const { data: recentViolations } = await supabase
       .from('user_moderation_violations')
       .select('*')
       .eq('user_id', userId)
       .gte('created_at', twentyFourHoursAgo.toISOString());
 
-    const violationCount = (recentViolations?.length || 0) + 1;
+    const violationCount = (recentViolations?.length || 0) + 1; // Including current violation
     const totalScore = (statusData?.violation_score || 0) + score;
 
-    // Determine action
+    // Determine action based on violation count (not score)
+    // First violation: warn
+    // Second or more violations within 24h: suspend
     let action = "warn";
     let actionMessage = MODERATION_RULES.policy.actions[0][language === "vi" ? "message_vi" : "message_en"];
     
-    for (const policyAction of MODERATION_RULES.policy.actions) {
-      if (totalScore >= policyAction.score_gte) {
-        action = policyAction.action;
-        actionMessage = policyAction[language === "vi" ? "message_vi" : "message_en"];
-      }
+    if (violationCount >= 2) {
+      action = "suspend";
+      actionMessage = MODERATION_RULES.policy.actions[1][language === "vi" ? "message_vi" : "message_en"];
+    } else {
+      action = "warn";
+      actionMessage = `⚠️ First warning: ${MODERATION_RULES.policy.actions[0][language === "vi" ? "message_vi" : "message_en"]} (1/${violationCount} violations)`;
     }
 
     // Record violation
@@ -237,6 +240,17 @@ serve(async (req) => {
           last_violation_at: now.toISOString(),
           is_suspended: action === 'suspend',
         });
+    }
+
+    // If suspended, create admin notification via feedback
+    if (action === 'suspend') {
+      await supabase.from('feedback').insert({
+        user_id: userId,
+        room_id: roomId || 'unknown',
+        message: `🚨 URGENT: User has been automatically suspended for repeated profanity violations. Total violations: ${violationCount}. Last message: "${content.substring(0, 100)}..."`,
+        status: 'urgent',
+        priority: 'high'
+      });
     }
 
     return new Response(

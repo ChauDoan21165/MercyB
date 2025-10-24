@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Send, ArrowLeft, MessageCircle, Mail, Users, Loader2, Volume2, VolumeX } from "lucide-react";
+import { Send, ArrowLeft, MessageCircle, Mail, Users, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomInfo } from "@/lib/roomData";
@@ -58,8 +58,10 @@ const ChatHub = () => {
   const [showCreditLimit, setShowCreditLimit] = useState(false);
   const contentMode = "keyword"; // Always use keyword mode
   const [currentAudio, setCurrentAudio] = useState<string | null>(null);
+  const [altAudio, setAltAudio] = useState<string | null>(null);
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [keywordMenu, setKeywordMenu] = useState<{ en: string[]; vi: string[] } | null>(null);
 
 // Use centralized room metadata
 const info = getRoomInfo(roomId || "");
@@ -69,24 +71,64 @@ const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { name
 useEffect(() => {
   if (!accessLoading && info) {
     const hasAccess = 
+      isAdmin || // Admins can access all rooms
       info.tier === 'free' ||
       (info.tier === 'vip1' && canAccessVIP1) ||
       (info.tier === 'vip2' && canAccessVIP2) ||
       (info.tier === 'vip3' && canAccessVIP3);
-    
+
     if (!hasAccess) {
       setShowAccessDenied(true);
+    } else {
+      setShowAccessDenied(false);
     }
   }
-}, [accessLoading, info, canAccessVIP1, canAccessVIP2, canAccessVIP3]);
+}, [accessLoading, info, canAccessVIP1, canAccessVIP2, canAccessVIP3, isAdmin]);
 
 const handleAccessDenied = () => {
   navigate('/');
 };
 
-  // Add welcome message when room loads
+  // Initialize room on load or when roomId changes
   useEffect(() => {
-    if (mainMessages.length === 0) {
+    // Reset state when switching rooms
+    setMainMessages([]);
+    setKeywordMenu(null);
+    setCurrentAudio(null);
+    setIsAudioPlaying(false);
+
+    try {
+      const { roomDataMap } = require('@/lib/roomDataImports');
+      const roomData = roomDataMap[roomId || ''];
+      
+      // Load welcome message from room data
+      let welcomeText = '';
+      if (roomData?.room_welcome) {
+        // Format: room_welcome with en and vi
+        welcomeText = `${roomData.room_welcome.en}\n\n${roomData.room_welcome.vi}`;
+      } else if (roomData?.welcome) {
+        // Format: welcome with en and vi
+        welcomeText = `${roomData.welcome.en}\n\n${roomData.welcome.vi}`;
+      } else {
+        // Fallback to generic message
+        welcomeText = `Hello! Welcome to ${currentRoom.nameEn} room. How can I help you today?\n\nXin chào! Chào mừng bạn đến với phòng ${currentRoom.nameVi}. Tôi có thể giúp gì cho bạn hôm nay?`;
+      }
+      
+      const welcomeMessage: Message = {
+        id: 'welcome',
+        text: welcomeText,
+        isUser: false,
+        timestamp: new Date()
+      };
+      setMainMessages([welcomeMessage]);
+      
+      // Load keyword menu from room data
+      if (roomData?.keyword_menu) {
+        setKeywordMenu(roomData.keyword_menu);
+      }
+    } catch (error) {
+      console.error('Error loading room data:', error);
+      // Fallback welcome message
       const welcomeMessage: Message = {
         id: 'welcome',
         text: `Hello! Welcome to ${currentRoom.nameEn} room. How can I help you today?\n\nXin chào! Chào mừng bạn đến với phòng ${currentRoom.nameVi}. Tôi có thể giúp gì cho bạn hôm nay?`,
@@ -100,6 +142,34 @@ const handleAccessDenied = () => {
   const sendMainMessage = async () => {
     if (!mainInput.trim() || isLoading) return;
 
+    // Get current user
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      toast({
+        title: "Authentication Required",
+        description: "Please log in to send messages",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    // Check if user is suspended
+    const { data: moderationStatus } = await supabase
+      .from('user_moderation_status')
+      .select('is_suspended')
+      .eq('user_id', user.id)
+      .single();
+
+    if (moderationStatus?.is_suspended) {
+      toast({
+        title: "Account Suspended / Tài Khoản Bị Khóa",
+        description: "Your account has been suspended due to violations. Please contact admin. / Tài khoản của bạn bị khóa do vi phạm. Vui lòng liên hệ admin.",
+        variant: "destructive",
+        duration: 5000
+      });
+      return;
+    }
+
     // Validate input
     const validation = messageSchema.safeParse({ text: mainInput });
     if (!validation.success) {
@@ -109,6 +179,36 @@ const handleAccessDenied = () => {
         variant: "destructive"
       });
       return;
+    }
+
+    // Check content moderation
+    try {
+      const { data: moderationResult, error: moderationError } = await supabase.functions.invoke('content-moderation', {
+        body: {
+          content: mainInput,
+          userId: user.id,
+          roomId: roomId || '',
+          language: 'en'
+        }
+      });
+
+      if (moderationError) {
+        console.error('Moderation check failed:', moderationError);
+        // Continue if moderation check fails (fail-open for better UX)
+      } else if (!moderationResult.allowed) {
+        // Show warning or suspension message
+        toast({
+          title: moderationResult.action === 'suspend' ? "Account Suspended / Tài Khoản Bị Khóa" : "Warning / Cảnh Báo",
+          description: moderationResult.message,
+          variant: "destructive",
+          duration: 5000
+        });
+
+        return; // Don't send the message
+      }
+    } catch (moderationCheckError) {
+      console.error('Moderation check error:', moderationCheckError);
+      // Continue (fail-open)
     }
 
     // Check if user has credits remaining
@@ -163,32 +263,46 @@ const handleAccessDenied = () => {
         
         const response = keywordRespond(roomId || "", currentInput, noKeywordCount, matchedEntryCount);
         
-        if (response.matched) {
-          setMatchedEntryCount(prev => prev + 1);
-          setNoKeywordCount(0);
-          
-          // Play audio if available (echologic function)
-          if (response.audioFile) {
-            const audioPath = `/room-audio/${response.audioFile}`;
-            setCurrentAudio(audioPath);
-            // Auto-play after a short delay
-            setTimeout(() => {
-              if (audioRef.current) {
-                audioRef.current.src = audioPath;
-                audioRef.current.play().catch(err => {
-                  console.log('Auto-play prevented:', err);
-                  toast({
-                    title: "Audio Ready",
-                    description: "Click the audio button to play the content.",
-                  });
+          if (response.matched) {
+            setMatchedEntryCount(prev => prev + 1);
+            setNoKeywordCount(0);
+            
+            // Play audio if available (echologic function)
+            if (response.audioFile) {
+              try {
+                let audioUrl = response.audioFile as string;
+                if (!/^https?:\/\//.test(audioUrl)) {
+                  const storagePath = audioUrl.replace(/^\//, '');
+                  const { data: urlData } = supabase.storage
+                    .from('room-audio')
+                    .getPublicUrl(storagePath);
+                  audioUrl = urlData.publicUrl;
+                }
+                setCurrentAudio(audioUrl);
+                setIsAudioPlaying(false);
+                
+                // Set audio source and show controls
+                if (audioRef.current) {
+                  audioRef.current.src = audioUrl;
+                  audioRef.current.load();
+                }
+                
+                toast({
+                  title: "Audio Ready / Âm Thanh Sẵn Sàng",
+                  description: "Click play button / Nhấn nút phát",
                 });
-                setIsAudioPlaying(true);
+              } catch (e) {
+                console.error('Audio load error:', e);
+                toast({
+                  title: "Audio Error / Lỗi Âm Thanh",
+                  description: "Could not load audio / Không thể tải âm thanh",
+                  variant: "destructive",
+                });
               }
-            }, 500);
+            }
+          } else {
+            setNoKeywordCount(prev => prev + 1);
           }
-        } else {
-          setNoKeywordCount(prev => prev + 1);
-        }
 
         // Replace typing indicator with actual response
         setMainMessages(prev => 
@@ -412,6 +526,41 @@ const handleAccessDenied = () => {
               )}
             </ScrollArea>
 
+            {/* Keyword Menu Display */}
+            {keywordMenu && (
+              <div className="my-3 p-3 bg-secondary/10 rounded-lg border border-border">
+                <h4 className="text-sm font-semibold mb-2">
+                  Available Keywords / Từ Khóa Có Sẵn
+                </h4>
+                <div className="space-y-2">
+                  <div className="flex flex-wrap gap-1">
+                    {keywordMenu.en.slice(0, 5).map((keyword, idx) => (
+                      <Badge 
+                        key={`en-${idx}`} 
+                        variant="outline" 
+                        className="text-xs cursor-pointer hover:bg-primary/10"
+                        onClick={() => setMainInput(keyword)}
+                      >
+                        {keyword}
+                      </Badge>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    {keywordMenu.vi.slice(0, 5).map((keyword, idx) => (
+                      <Badge 
+                        key={`vi-${idx}`} 
+                        variant="outline" 
+                        className="text-xs cursor-pointer hover:bg-primary/10"
+                        onClick={() => setMainInput(keyword)}
+                      >
+                        {keyword}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div className="flex gap-2 pt-2">
               <Input
                 placeholder="Type your message / Nhập Tin Nhắn..."
@@ -434,34 +583,15 @@ const handleAccessDenied = () => {
               </Button>
             </div>
             
-            {/* Audio Player - Echologic Function */}
+            {/* Audio Player */}
             {currentAudio && (
-              <div className="mt-4 p-3 bg-secondary/20 rounded-lg border border-border">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={() => {
-                        if (audioRef.current) {
-                          if (isAudioPlaying) {
-                            audioRef.current.pause();
-                          } else {
-                            audioRef.current.play();
-                          }
-                          setIsAudioPlaying(!isAudioPlaying);
-                        }
-                      }}
-                    >
-                      {isAudioPlaying ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-                    </Button>
-                    <span className="text-sm text-muted-foreground">
-                      {isAudioPlaying ? "Playing audio..." : "Audio ready"}
-                    </span>
-                  </div>
-                </div>
+              <div className="mt-4">
                 <audio 
-                  ref={audioRef} 
+                  key={currentAudio}
+                  ref={audioRef}
+                  preload="auto"
+                  controls
+                  className="w-full"
                   onEnded={() => setIsAudioPlaying(false)}
                   onPause={() => setIsAudioPlaying(false)}
                   onPlay={() => setIsAudioPlaying(true)}

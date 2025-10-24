@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, Shield, LogOut, User, ArrowRight } from "lucide-react";
+import { Check, Shield, LogOut, User, ArrowRight, Volume2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { PointsDisplay } from "@/components/PointsDisplay";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { PromoCodeBanner } from "@/components/PromoCodeBanner";
 import { UsernameSetup } from "@/components/UsernameSetup";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -18,6 +18,8 @@ const Welcome = () => {
   const [profile, setProfile] = useState<any>(null);
   const [showUsernameSetup, setShowUsernameSetup] = useState(false);
   const [isCheckingProfile, setIsCheckingProfile] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     checkUser();
@@ -155,6 +157,37 @@ const Welcome = () => {
           <h1 className="text-6xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
             Mercy Blade
           </h1>
+          
+          {/* Intro Audio Button */}
+          <div className="flex justify-center">
+            <Button
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground flex items-center gap-2"
+              onClick={() => {
+                if (audioRef.current) {
+                  if (isPlaying) {
+                    audioRef.current.pause();
+                    setIsPlaying(false);
+                  } else {
+                    audioRef.current.play().catch(err => {
+                      console.error('Audio playback error:', err);
+                    });
+                    setIsPlaying(true);
+                  }
+                }
+              }}
+            >
+              <Volume2 className="w-5 h-5" /> 
+              {isPlaying ? "Pause Intro Audio" : "Play Intro Audio"}
+            </Button>
+          </div>
+          <audio 
+            ref={audioRef} 
+            src="/Mercy_Blade.mp3" 
+            onEnded={() => setIsPlaying(false)}
+            onPause={() => setIsPlaying(false)}
+            onPlay={() => setIsPlaying(true)}
+          />
           
           {/* Points Display */}
           <div className="max-w-md mx-auto">
