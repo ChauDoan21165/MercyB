@@ -16,6 +16,7 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "addiction", nameVi: "Nghiện", nameEn: "Addiction", hasData: false, tier: "free", dataFile: "addiction.json" },
   { id: "ai", nameVi: "Trí tuệ nhân tạo", nameEn: "AI", hasData: false, tier: "free", dataFile: "AI-2.json" },
   { id: "ai-free", nameVi: "Cơ Bản Về AI", nameEn: "AI Fundamentals", hasData: true, tier: "free", dataFile: "AI_free.json" },
+  { id: "ai-vip1", nameVi: "Kỹ Thuật AI Nâng Cao", nameEn: "AI Advanced Techniques", hasData: true, tier: "vip1", dataFile: "AI_VIP1.json" },
   { id: "autoimmune", nameVi: "Bệnh tự miễn", nameEn: "Autoimmune Diseases", hasData: false, tier: "free", dataFile: "autoimmune_diseases-2.json" },
   { id: "burnout", nameVi: "Kiệt sức", nameEn: "Burnout", hasData: false, tier: "free", dataFile: "burnout-2.json" },
   { id: "career-burnout", nameVi: "Kiệt sức nghề nghiệp", nameEn: "Career Burnout", hasData: false, tier: "free", dataFile: "career_burnout.json" },

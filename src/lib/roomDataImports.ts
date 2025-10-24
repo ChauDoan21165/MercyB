@@ -99,6 +99,7 @@ import philosophyEverydayVip1 from '@/data/rooms/philosophy_of_everyday_vip1.jso
 import philosophyEverydayVip2 from '@/data/rooms/philosophy_of_everyday_vip2.json';
 import philosophyEverydayVip3 from '@/data/rooms/philosophy_of_everyday_vip3.json';
 import aiFree from '@/data/rooms/AI_free.json';
+import aiVip1 from '@/data/rooms/AI_VIP1.json';
 
 export const roomDataMap: Record<string, any> = {
   'abdominal-pain': abdominalPain,
@@ -201,4 +202,5 @@ export const roomDataMap: Record<string, any> = {
   'philosophy-of-everyday-vip2': philosophyEverydayVip2,
   'philosophy-of-everyday-vip3': philosophyEverydayVip3,
   'ai-free': aiFree,
+  'ai-vip1': aiVip1,
 };
