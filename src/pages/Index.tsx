@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Volume2 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
-import { supabase } from "@/integrations/supabase/client";
 
 const Index = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -16,46 +15,15 @@ const Index = () => {
     }
   }, []);
 
-  const toggleAudio = async () => {
+  const toggleAudio = () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
         setIsPlaying(false);
       } else {
-        // Generate audio if not loaded yet
-        if (!audioRef.current.src || audioRef.current.src.includes('Mercy_Blade.mp3')) {
-          await handleAudioError();
-        } else {
-          try {
-            await audioRef.current.play();
-            setIsPlaying(true);
-          } catch (e) {
-            console.error('Audio play error:', e);
-          }
-        }
-      }
-    }
-  };
-
-  const handleAudioError = async () => {
-    try {
-      const text = `Mercy Blade is your compassionate companion on the path of holistic growth — embracing body, mind, relationships, finances, and the unfolding of your inner self.`;
-      const { data, error } = await supabase.functions.invoke('text-to-speech', {
-        body: {
-          text,
-          voice: 'alloy',
-          roomSlug: 'landing',
-          entrySlug: 'mercy_blade',
-        },
-      });
-      if (!error && data?.audioUrl && audioRef.current) {
-        audioRef.current.src = data.audioUrl;
-        audioRef.current.load();
-        await audioRef.current.play();
+        audioRef.current.play();
         setIsPlaying(true);
       }
-    } catch (err) {
-      console.error('Index TTS fallback failed', err);
     }
   };
 
@@ -92,7 +60,7 @@ const Index = () => {
               And as your journey unfolds, Mercy Blade may even help you find the learning companion — or soulmate — who truly resonates with you.
             </p>
           </div>
-          <audio ref={audioRef} onEnded={() => setIsPlaying(false)} />
+          <audio ref={audioRef} src="/Mercy_Blade.mp3" onEnded={() => setIsPlaying(false)} />
         </Card>
 
         <Card className="p-8 shadow-lg">
