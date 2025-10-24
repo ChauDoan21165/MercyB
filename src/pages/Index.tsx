@@ -1,11 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Volume2 } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const Index = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    document.title = "Mercy Blade — Holistic Growth";
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) {
+      desc.setAttribute("content", "Mercy Blade: compassionate guidance for holistic growth—body, mind, relationships, finances, and inner self.");
+    }
+  }, []);
 
   const toggleAudio = () => {
     if (audioRef.current) {
