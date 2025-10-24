@@ -40,7 +40,7 @@ const Index = () => {
               <Button
                 onClick={toggleAudio}
                 size="lg"
-                variant="default"
+                variant="outline"
                 className="flex items-center gap-2"
               >
                 <Volume2 size={20} />

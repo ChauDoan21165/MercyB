@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Send, ArrowLeft, MessageCircle, Mail, Users, Loader2 } from "lucide-react";
+import { Send, ArrowLeft, MessageCircle, Mail, Users, Loader2, Volume2, VolumeX } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomInfo } from "@/lib/roomData";
@@ -57,6 +57,9 @@ const ChatHub = () => {
   const [showAccessDenied, setShowAccessDenied] = useState(false);
   const [showCreditLimit, setShowCreditLimit] = useState(false);
   const contentMode = "keyword"; // Always use keyword mode
+  const [currentAudio, setCurrentAudio] = useState<string | null>(null);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
 // Use centralized room metadata
 const info = getRoomInfo(roomId || "");
@@ -163,6 +166,26 @@ const handleAccessDenied = () => {
         if (response.matched) {
           setMatchedEntryCount(prev => prev + 1);
           setNoKeywordCount(0);
+          
+          // Play audio if available (echologic function)
+          if (response.audioFile) {
+            const audioPath = `/room-audio/${response.audioFile}`;
+            setCurrentAudio(audioPath);
+            // Auto-play after a short delay
+            setTimeout(() => {
+              if (audioRef.current) {
+                audioRef.current.src = audioPath;
+                audioRef.current.play().catch(err => {
+                  console.log('Auto-play prevented:', err);
+                  toast({
+                    title: "Audio Ready",
+                    description: "Click the audio button to play the content.",
+                  });
+                });
+                setIsAudioPlaying(true);
+              }
+            }, 500);
+          }
         } else {
           setNoKeywordCount(prev => prev + 1);
         }
@@ -410,6 +433,41 @@ const handleAccessDenied = () => {
                 )}
               </Button>
             </div>
+            
+            {/* Audio Player - Echologic Function */}
+            {currentAudio && (
+              <div className="mt-4 p-3 bg-secondary/20 rounded-lg border border-border">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => {
+                        if (audioRef.current) {
+                          if (isAudioPlaying) {
+                            audioRef.current.pause();
+                          } else {
+                            audioRef.current.play();
+                          }
+                          setIsAudioPlaying(!isAudioPlaying);
+                        }
+                      }}
+                    >
+                      {isAudioPlaying ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                    </Button>
+                    <span className="text-sm text-muted-foreground">
+                      {isAudioPlaying ? "Playing audio..." : "Audio ready"}
+                    </span>
+                  </div>
+                </div>
+                <audio 
+                  ref={audioRef} 
+                  onEnded={() => setIsAudioPlaying(false)}
+                  onPause={() => setIsAudioPlaying(false)}
+                  onPlay={() => setIsAudioPlaying(true)}
+                />
+              </div>
+            )}
           </div>
         </Card>
 

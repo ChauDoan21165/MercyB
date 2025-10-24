@@ -78,12 +78,32 @@ function findRelatedRooms(message: string, currentRoomId: string): string[] {
   return Array.from(relatedRooms).slice(0, 3); // Top 3 related rooms
 }
 
-export function keywordRespond(roomId: string, message: string, noKeywordCount: number = 0, matchedEntryCount: number = 0): { text: string; matched: boolean; relatedRooms?: string[] } {
+export function keywordRespond(roomId: string, message: string, noKeywordCount: number = 0, matchedEntryCount: number = 0): { text: string; matched: boolean; relatedRooms?: string[]; audioFile?: string; entryId?: string } {
   const roomData = roomDataMap[roomId];
   if (!roomData) throw new Error("Room data not found");
 
-  const groupKey = findMatchingGroup(message, roomData.keywords);
-  const matchedEntry = findEntryByGroup(groupKey, roomData.entries || []);
+  const groupKey = findMatchingGroup(message, roomData.keywords || roomData.keywords_dict);
+  
+  // Handle new structure with entries object
+  let matchedEntry = null;
+  let audioFile: string | undefined;
+  let entryId: string | undefined;
+  
+  if (roomData.entries && !Array.isArray(roomData.entries)) {
+    // New structure: entries is an object with entry IDs as keys
+    if (roomData.default_entry_id && groupKey) {
+      const defaultEntry = roomData.entries[roomData.default_entry_id];
+      if (defaultEntry) {
+        matchedEntry = defaultEntry;
+        entryId = roomData.default_entry_id;
+        audioFile = defaultEntry.audio?.en || defaultEntry.audio?.vi;
+      }
+    }
+  } else {
+    // Old structure: entries is an array
+    matchedEntry = findEntryByGroup(groupKey, roomData.entries || []);
+  }
+  
   const relatedRooms = findRelatedRooms(message, roomId);
 
   const buildEntryResponse = (entry: any) => {
@@ -103,9 +123,17 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   };
 
   if (matchedEntry) {
-    const base = buildEntryResponse(matchedEntry);
+    // Handle new entry structure with summary and essay
+    let responseText: string;
+    if (matchedEntry.summary && matchedEntry.essay) {
+      const summary = getBilingual(matchedEntry, 'summary');
+      const essay = getBilingual(matchedEntry, 'essay');
+      responseText = `**${summary.en}** / **${summary.vi}**\n\n${essay.en}\n\n---\n\n${essay.vi}`;
+    } else {
+      responseText = buildEntryResponse(matchedEntry);
+    }
     // Note: Disclaimer now displayed at bottom of chat, not per-entry
-    return { text: base, matched: true, relatedRooms };
+    return { text: responseText, matched: true, relatedRooms, audioFile, entryId };
   }
 
   // No match: check if message is substantial before showing essay
