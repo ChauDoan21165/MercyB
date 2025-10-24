@@ -1,0 +1,143 @@
+{
+"tier": "VIP 2 / Cấp VIP 2",
+"default_entry_id": "knowledge_distillation",
+"welcome": {
+"en": "Hello! Welcome to AI Mastery VIP2 room. How can I help you today?\n\nTopic keywords you can type are below:\n- knowledge_distillation\n- attention_mechanisms\n- mixture_of_experts\n- adversarial_training\n- hyperparameter_tuning\n- ethical_ai_frameworks",
+"vi": "Xin chào! Chào mừng bạn đến với phòng Làm Chủ AI VIP2. Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:\n- chiet_xuat_kien_thuc\n- co_che_chu_y\n- hon_hop_chuyen_gia\n- huan_luyen_khang_cong\n- dieu_chinh_sieu_tham_so\n- khung_dao_duc_ai"
+},
+"search": {
+"normalize_case": true,
+"normalize_accents": true,
+"tokenize_on": [" ", "_"]
+},
+"keyword_menu": {
+"en": [
+"knowledge_distillation",
+"attention_mechanisms",
+"mixture_of_experts",
+"adversarial_training",
+"hyperparameter_tuning",
+"ethical_ai_frameworks"
+],
+"vi": [
+"chiet_xuat_kien_thuc",
+"co_che_chu_y",
+"hon_hop_chuyen_gia",
+"huan_luyen_khang_cong",
+"dieu_chinh_sieu_tham_so",
+"khung_dao_duc_ai"
+]
+},
+"keywords_dict": {
+"knowledge_distillation": {
+"en": ["knowledge_distillation", "model distillation", "teacher student model", "compressed AI"],
+"vi": ["chiet_xuat_kien_thuc", "chiết xuất kiến thức", "mo_hinh_thay_va_tro", "mô hình thầy và trò", "nen_ai", "nén AI"]
+},
+"attention_mechanisms": {
+"en": ["attention_mechanisms", "self-attention", "transformer attention", "sequence modeling"],
+"vi": ["co_che_chu_y", "cơ chế chú ý", "tu_chu_y", "tự chú ý", "mo_hinh_tuan_tu", "mô hình tuần tự"]
+},
+"mixture_of_experts": {
+"en": ["mixture_of_experts", "MoE", "expert routing", "modular AI"],
+"vi": ["hon_hop_chuyen_gia", "hỗn hợp chuyên gia", "dinh_tuyen_chuyen_gia", "định tuyến chuyên gia", "ai_phan_module", "AI phân mô-đun"]
+},
+"adversarial_training": {
+"en": ["adversarial_training", "robust AI", "defensive AI", "secure models"],
+"vi": ["huan_luyen_khang_cong", "huấn luyện kháng công", "ai_ben_vung", "AI bền vững", "mo_hinh_bao_mat", "mô hình bảo mật"]
+},
+"hyperparameter_tuning": {
+"en": ["hyperparameter_tuning", "grid search", "Bayesian optimization", "model tuning"],
+"vi": ["dieu_chinh_sieu_tham_so", "điều chỉnh siêu tham số", "tim_kiem_luoi", "tìm kiếm lưới", "toi_uu_bayes", "tối ưu Bayes"]
+},
+"ethical_ai_frameworks": {
+"en": ["ethical_ai_frameworks", "AI governance", "AI policy", "responsible AI"],
+"vi": ["khung_dao_duc_ai", "khung đạo đức AI", "quan_tri_ai", "quản trị AI", "chinh_sach_ai", "chính sách AI"]
+}
+},
+"entries": [
+{
+"id": "knowledge_distillation",
+"title": {
+"en": "Distilling Knowledge for Efficiency",
+"vi": "Chiết Xuất Kiến Thức Để Tăng Hiệu Suất"
+},
+"content": {
+"en": "Model distillation compresses large AI models into smaller, faster versions by transferring knowledge from a teacher to a student model. This complex process balances accuracy and efficiency, crucial for edge deployment. Try distilling a pretrained model for a simple task to grasp its challenges. Emma struggled with slow models until distillation streamlined her app’s performance. It reduces resource demands but requires careful tuning. This technique drives sustainable AI. Ready to tackle this? Explore a distillation tutorial and note trade-offs. Ethical considerations ensure compact models remain reliable. Discover deeper insights in VIP 3.",
+"vi": "Chiết xuất kiến thức nén các mô hình AI lớn thành phiên bản nhỏ hơn, nhanh hơn bằng cách chuyển tri thức từ mô hình thầy sang mô hình trò. Quá trình phức tạp này cân bằng giữa độ chính xác và hiệu suất — yếu tố then chốt khi triển khai trên thiết bị biên. Hãy thử chiết xuất mô hình đã huấn luyện sẵn cho một tác vụ nhỏ để cảm nhận thách thức. Emma từng gặp rắc rối vì mô hình chậm cho đến khi distillation cải thiện hiệu năng ứng dụng. Phương pháp này giảm nhu cầu tài nguyên nhưng đòi hỏi điều chỉnh tinh tế. Đây là kỹ thuật thúc đẩy AI bền vững. Sẵn sàng chưa? Hãy học thử hướng dẫn distillation và xem xét điểm đánh đổi. Đạo đức đảm bảo mô hình gọn vẫn đáng tin cậy. Khám phá sâu hơn ở VIP 3."
+},
+"audio": {
+"en": "Distilling_Knowledge_for_Efficiency_VIP2.mp3"
+}
+},
+{
+"id": "attention_mechanisms",
+"title": {
+"en": "Mastering Attention Mechanisms",
+"vi": "Làm Chủ Cơ Chế Chú Ý"
+},
+"content": {
+"en": "Attention mechanisms, like self-attention in transformers, focus on relevant data, revolutionizing sequence processing. Their complexity lies in scaling to long contexts without excessive computation. Add a self-attention layer to a small neural network to understand its power. John’s language model improved with attention, handling complex texts. It’s key for NLP but demands optimization. Practice with a tutorial to see attention weights in action. Ethically, ensure attention doesn’t amplify biases. Ready to tackle this? Experiment and reflect on computational costs. Discover deeper insights in VIP 3.",
+"vi": "Cơ chế chú ý, như tự chú ý trong transformer, giúp mô hình tập trung vào dữ liệu quan trọng, cách mạng hóa xử lý chuỗi. Thách thức là mở rộng tới ngữ cảnh dài mà không tăng chi phí tính toán quá mức. Hãy thêm một lớp tự chú ý vào mạng nơ-ron nhỏ để hiểu sức mạnh của nó. Mô hình ngôn ngữ của John được cải thiện nhờ attention, xử lý tốt văn bản phức tạp. Đây là yếu tố cốt lõi của NLP nhưng cần tối ưu kỹ. Hãy thực hành qua hướng dẫn để thấy trọng số chú ý hoạt động. Đạo đức yêu cầu đảm bảo attention không khuếch đại thiên lệch. Sẵn sàng chưa? Thử nghiệm và cân nhắc chi phí tính toán. Khám phá sâu hơn ở VIP 3."
+},
+"audio": {
+"en": "Mastering_Attention_Mechanisms_VIP2.mp3"
+}
+},
+{
+"id": "mixture_of_experts",
+"title": {
+"en": "Optimizing with Expert Mixtures",
+"vi": "Tối Ưu Với Hỗn Hợp Chuyên Gia"
+},
+"content": {
+"en": "Mixture of Experts (MoE) models use modular subnetworks, routing tasks to specialized experts for efficiency. Designing routing algorithms is challenging, balancing performance and complexity. Try an MoE framework on a small dataset to explore its scalability. Sarah’s AI system gained speed with MoE, handling diverse tasks. It’s ideal for large-scale AI but requires tuning. Practice with a tutorial to grasp expert routing. Ethically, ensure fairness in task allocation. Ready to tackle this? Experiment and note efficiency gains. Discover deeper insights in VIP 3.",
+"vi": "Mô hình Hỗn Hợp Chuyên Gia (MoE) sử dụng các mạng con dạng mô-đun, định tuyến nhiệm vụ đến chuyên gia phù hợp để tăng hiệu suất. Thiết kế thuật toán định tuyến là một thử thách, cần cân bằng giữa hiệu năng và độ phức tạp. Hãy thử khung MoE trên tập dữ liệu nhỏ để khám phá khả năng mở rộng. Hệ thống AI của Sarah tăng tốc rõ rệt nhờ MoE, xử lý tốt nhiều nhiệm vụ khác nhau. Đây là lựa chọn lý tưởng cho AI quy mô lớn nhưng cần tinh chỉnh. Hãy thực hành qua hướng dẫn để hiểu định tuyến chuyên gia. Đạo đức yêu cầu đảm bảo công bằng khi phân bổ tác vụ. Sẵn sàng chưa? Thử nghiệm và ghi nhận hiệu quả. Khám phá sâu hơn ở VIP 3."
+},
+"audio": {
+"en": "Optimizing_with_Expert_Mixtures_VIP2.mp3"
+}
+},
+{
+"id": "adversarial_training",
+"title": {
+"en": "Strengthening Models Against Attacks",
+"vi": "Tăng Cường Mô Hình Chống Tấn Công"
+},
+"content": {
+"en": "Adversarial training hardens AI models against malicious inputs, a complex task requiring robust defenses. Test an adversarial example on a model to see its vulnerabilities. Lisa’s image classifier failed until adversarial training boosted resilience. It’s critical for secure AI but computationally intensive. Practice with a tutorial to balance robustness and accuracy. Ethically, prioritize user safety to prevent misuse. Ready to tackle this? Experiment and reflect on attack mitigation. This ensures reliable AI systems. Discover deeper insights in VIP 3.",
+"vi": "Huấn luyện kháng công giúp mô hình AI chống lại các đầu vào độc hại, một nhiệm vụ phức tạp đòi hỏi phòng thủ vững chắc. Hãy thử tạo ví dụ tấn công đối kháng để kiểm tra điểm yếu của mô hình. Bộ phân loại hình ảnh của Lisa từng thất bại cho đến khi huấn luyện kháng công tăng độ bền. Đây là yếu tố then chốt cho AI an toàn nhưng tốn nhiều tài nguyên. Thực hành qua hướng dẫn để cân bằng giữa khả năng chống chịu và độ chính xác. Đạo đức yêu cầu ưu tiên an toàn người dùng để ngăn lạm dụng. Sẵn sàng chưa? Thử nghiệm và suy ngẫm về cách giảm thiểu tấn công. Điều này đảm bảo hệ thống AI đáng tin cậy. Khám phá sâu hơn ở VIP 3."
+},
+"audio": {
+"en": "Strengthening_Models_Against_Attacks_VIP2.mp3"
+}
+},
+{
+"id": "hyperparameter_tuning",
+"title": {
+"en": "Tuning Hyperparameters Effectively",
+"vi": "Điều Chỉnh Siêu Tham Số Hiệu Quả"
+},
+"content": {
+"en": "Hyperparameter tuning optimizes AI performance by adjusting settings like learning rates, a nuanced challenge requiring systematic searches. Try a grid search on a small model to feel its complexity. Tom’s model underperformed until tuning improved accuracy. It’s essential for model success but time-consuming. Practice with a tutorial to explore search methods like random or Bayesian optimization. Ethically, ensure tuning doesn’t overfit to biased data. Ready to tackle this? Experiment and track results for better models. Discover deeper insights in VIP 3.",
+"vi": "Điều chỉnh siêu tham số giúp tối ưu hiệu suất mô hình bằng cách thay đổi các thiết lập như tốc độ học — một thách thức tinh tế đòi hỏi tìm kiếm có hệ thống. Hãy thử grid search trên mô hình nhỏ để cảm nhận độ phức tạp. Mô hình của Tom hoạt động kém cho đến khi điều chỉnh cải thiện độ chính xác. Đây là bước thiết yếu cho mô hình thành công nhưng khá tốn thời gian. Thực hành với hướng dẫn để khám phá các phương pháp như random hoặc tối ưu Bayes. Đạo đức yêu cầu đảm bảo việc tinh chỉnh không khiến mô hình lệch dữ liệu. Sẵn sàng chưa? Thử nghiệm và theo dõi kết quả để có mô hình tốt hơn. Khám phá sâu hơn ở VIP 3."
+},
+"audio": {
+"en": "Tuning_Hyperparameters_Effectively_VIP2.mp3"
+}
+},
+{
+"id": "ethical_ai_frameworks",
+"title": {
+"en": "Building Ethical AI Frameworks",
+"vi": "Xây Dựng Khung Đạo Đức Cho AI"
+},
+"content": {
+"en": "AI governance designs policies for ethical, transparent AI, a complex task balancing innovation and responsibility. Review an AI policy guide to understand fairness and accountability challenges. Claire’s team faced bias issues until governance ensured equitable models. It’s vital for trust but requires stakeholder input. Practice drafting a simple policy to grasp its scope. Ethically, prioritize inclusivity to avoid harm. Ready to tackle this? Explore governance frameworks and reflect on their impact. This fosters responsible AI. Discover deeper insights in VIP 3.",
+"vi": "Quản trị AI tạo ra các chính sách cho hệ thống AI có đạo đức và minh bạch, một nhiệm vụ phức tạp cần cân bằng giữa sáng tạo và trách nhiệm. Hãy đọc hướng dẫn chính sách AI để hiểu các thách thức về công bằng và trách nhiệm giải trình. Đội của Claire từng gặp vấn đề thiên vị cho đến khi khung quản trị đảm bảo mô hình công bằng. Đây là yếu tố quan trọng để xây dựng niềm tin, nhưng cần sự tham gia của nhiều bên liên quan. Hãy thử soạn thảo một chính sách đơn giản để hiểu phạm vi. Đạo đức yêu cầu ưu tiên tính bao trùm để tránh gây hại. Sẵn sàng chưa? Khám phá khung quản trị và suy ngẫm về tác động của nó. Cách này giúp nuôi dưỡng AI có trách nhiệm. Khám phá sâu hơn ở VIP 3."
+},
+"audio": {
+"en": "Building_Ethical_AI_Frameworks_VIP2.mp3"
+}
+}
+]
+}
