@@ -27,6 +27,7 @@ function findMatchingGroup(message: string, keywords: any): string | null {
       ...(Array.isArray(g.en) ? g.en : []),
       ...(Array.isArray(g.vi) ? g.vi : []),
       ...(Array.isArray(g.slug_vi) ? g.slug_vi : []),
+      groupKey // allow matching by the slug key itself
     ];
     for (const k of list) {
       const normalizedK = normalize(k);
@@ -102,6 +103,19 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   } else {
     // Old structure: entries is an array
     matchedEntry = findEntryByGroup(groupKey, roomData.entries || []);
+    if (!matchedEntry && groupKey && (roomData as any).keywords_dict) {
+      // Fallback: map dictionary key to an entry by matching titles
+      const dictEntry = (roomData as any).keywords_dict[groupKey];
+      const targetEn = dictEntry?.en ? String(dictEntry.en) : undefined;
+      const targetVi = dictEntry?.vi ? String(dictEntry.vi) : undefined;
+      if (targetEn || targetVi) {
+        matchedEntry = (roomData.entries || []).find((e: any) => {
+          const tEn = e?.title?.en || e?.title_en;
+          const tVi = e?.title?.vi || e?.title_vi;
+          return (targetEn && tEn === targetEn) || (targetVi && tVi === targetVi);
+        }) || null;
+      }
+    }
     if (matchedEntry) {
       audioFile = matchedEntry.audio?.en || matchedEntry.audio?.vi;
       entryId = matchedEntry.id || matchedEntry.artifact_id;
