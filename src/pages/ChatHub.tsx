@@ -88,24 +88,46 @@ const handleAccessDenied = () => {
   // Add welcome message when room loads
   useEffect(() => {
     if (mainMessages.length === 0) {
-      const welcomeMessage: Message = {
-        id: 'welcome',
-        text: `Hello! Welcome to ${currentRoom.nameEn} room. How can I help you today?\n\nXin chào! Chào mừng bạn đến với phòng ${currentRoom.nameVi}. Tôi có thể giúp gì cho bạn hôm nay?`,
-        isUser: false,
-        timestamp: new Date()
-      };
-      setMainMessages([welcomeMessage]);
-    }
-    
-    // Load keyword menu from room data
-    try {
-      const { roomDataMap } = require('@/lib/roomDataImports');
-      const roomData = roomDataMap[roomId || ''];
-      if (roomData?.keyword_menu) {
-        setKeywordMenu(roomData.keyword_menu);
+      try {
+        const { roomDataMap } = require('@/lib/roomDataImports');
+        const roomData = roomDataMap[roomId || ''];
+        
+        // Load welcome message from room data
+        let welcomeText = '';
+        if (roomData?.room_welcome) {
+          // Format: room_welcome with en and vi
+          welcomeText = `${roomData.room_welcome.en}\n\n${roomData.room_welcome.vi}`;
+        } else if (roomData?.welcome) {
+          // Format: welcome with en and vi
+          welcomeText = `${roomData.welcome.en}\n\n${roomData.welcome.vi}`;
+        } else {
+          // Fallback to generic message
+          welcomeText = `Hello! Welcome to ${currentRoom.nameEn} room. How can I help you today?\n\nXin chào! Chào mừng bạn đến với phòng ${currentRoom.nameVi}. Tôi có thể giúp gì cho bạn hôm nay?`;
+        }
+        
+        const welcomeMessage: Message = {
+          id: 'welcome',
+          text: welcomeText,
+          isUser: false,
+          timestamp: new Date()
+        };
+        setMainMessages([welcomeMessage]);
+        
+        // Load keyword menu from room data
+        if (roomData?.keyword_menu) {
+          setKeywordMenu(roomData.keyword_menu);
+        }
+      } catch (error) {
+        console.error('Error loading room data:', error);
+        // Fallback welcome message
+        const welcomeMessage: Message = {
+          id: 'welcome',
+          text: `Hello! Welcome to ${currentRoom.nameEn} room. How can I help you today?\n\nXin chào! Chào mừng bạn đến với phòng ${currentRoom.nameVi}. Tôi có thể giúp gì cho bạn hôm nay?`,
+          isUser: false,
+          timestamp: new Date()
+        };
+        setMainMessages([welcomeMessage]);
       }
-    } catch (error) {
-      console.error('Error loading keyword menu:', error);
     }
   }, [roomId]);
 
