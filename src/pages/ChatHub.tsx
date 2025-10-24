@@ -58,6 +58,7 @@ const ChatHub = () => {
   const [showCreditLimit, setShowCreditLimit] = useState(false);
   const contentMode = "keyword"; // Always use keyword mode
   const [currentAudio, setCurrentAudio] = useState<string | null>(null);
+  const [altAudio, setAltAudio] = useState<string | null>(null);
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const [keywordMenu, setKeywordMenu] = useState<{ en: string[]; vi: string[] } | null>(null);
