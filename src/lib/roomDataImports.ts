@@ -107,6 +107,7 @@ import godWithUsFree from '@/data/rooms/God_With_Us_Free.json';
 import godWithUsVip3 from '@/data/rooms/God_With_Us_VIP3.json';
 import womenHealthFree from '@/data/rooms/Women_Health_Free.json';
 import abdominalPainFree from '@/data/rooms/Abdominal_Pain_Free.json';
+import keepSoulCalmVip3 from '@/data/rooms/Keep_Soul_Calm_VIP3.json';
 
 export const roomDataMap: Record<string, any> = {
   'abdominal-pain': abdominalPain,
@@ -217,4 +218,5 @@ export const roomDataMap: Record<string, any> = {
   'ai-vip3': aiVip3,
   'women-health-free': womenHealthFree,
   'abdominal-pain-free': abdominalPainFree,
+  'keep-soul-calm-vip3': keepSoulCalmVip3,
 };
