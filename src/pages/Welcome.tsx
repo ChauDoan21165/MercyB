@@ -114,15 +114,8 @@ const Welcome = () => {
       )}
       
       <div className="container mx-auto px-4 py-12 max-w-7xl">
-        {/* Header with Home Page and User Info */}
-        <div className="flex justify-between items-center mb-4">
-          <Button 
-            variant="outline"
-            onClick={() => navigate("/intro")}
-            className="border-2 border-primary/50 hover:bg-primary/10"
-          >
-            About / Giới Thiệu
-          </Button>
+        {/* Header with User Info */}
+        <div className="flex justify-end items-center mb-4">
           <div>
             {user ? (
               <div className="flex items-center gap-3">
