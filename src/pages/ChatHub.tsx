@@ -208,19 +208,30 @@ const handleAccessDenied = () => {
           // Play audio if available (echologic function)
           if (response.audioFile) {
             const audioPath = `/room-audio/${encodeURIComponent(response.audioFile)}`;
-            setCurrentAudio(audioPath);
-            setIsAudioPlaying(false);
-            
-            // Set audio source and show controls
-            if (audioRef.current) {
-              audioRef.current.src = audioPath;
-              audioRef.current.load();
+            try {
+              const res = await fetch(audioPath, { method: 'HEAD' });
+              if (!res.ok) throw new Error('not found');
+              setCurrentAudio(audioPath);
+              setIsAudioPlaying(false);
+              
+              // Set audio source and show controls
+              if (audioRef.current) {
+                audioRef.current.src = audioPath;
+                audioRef.current.load();
+              }
+              
+              toast({
+                title: "Audio Ready / Âm Thanh Sẵn Sàng",
+                description: response.audioFile,
+              });
+            } catch (e) {
+              setCurrentAudio(null);
+              toast({
+                title: "Audio Not Found / Không Tìm Thấy Âm Thanh",
+                description: String(response.audioFile),
+                variant: "destructive"
+              });
             }
-            
-            toast({
-              title: "Audio Ready / Âm Thanh Sẵn Sàng",
-              description: "Click the audio button to play / Nhấn nút để phát",
-            });
           }
         } else {
           setNoKeywordCount(prev => prev + 1);
