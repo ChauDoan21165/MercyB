@@ -116,10 +116,10 @@ const Welcome = () => {
         <div className="flex justify-between items-center mb-4">
           <Button 
             variant="outline"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/intro")}
             className="border-2 border-primary/50 hover:bg-primary/10"
           >
-            Home Page / Trang Chủ
+            About / Giới Thiệu
           </Button>
           <div>
             {user ? (
