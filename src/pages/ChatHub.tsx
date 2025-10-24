@@ -60,6 +60,7 @@ const ChatHub = () => {
   const [currentAudio, setCurrentAudio] = useState<string | null>(null);
   const [altAudio, setAltAudio] = useState<string | null>(null);
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const [audioLoading, setAudioLoading] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const [keywordMenu, setKeywordMenu] = useState<{ en: string[]; vi: string[] } | null>(null);
 
@@ -270,6 +271,7 @@ const handleAccessDenied = () => {
             // Play audio if available (echologic function)
             if (response.audioFile) {
               try {
+                setAudioLoading(true);
                 const raw = String(response.audioFile);
                 const filename = raw.replace(/^\//, '');
                 const localUrl = `/room-audio/${filename}`;
@@ -287,14 +289,18 @@ const handleAccessDenied = () => {
                 if (audioRef.current) {
                   audioRef.current.src = localUrl;
                   audioRef.current.load();
+                  // Wait for canplay event to confirm audio is ready
+                  audioRef.current.oncanplay = () => {
+                    setAudioLoading(false);
+                    toast({
+                      title: "Audio Ready / Âm Thanh Sẵn Sàng",
+                      description: "Click play button / Nhấn nút phát",
+                    });
+                  };
                 }
-
-                toast({
-                  title: "Audio Ready / Âm Thanh Sẵn Sàng",
-                  description: "Click play button / Nhấn nút phát",
-                });
               } catch (e) {
                 console.error('Audio load error:', e);
+                setAudioLoading(false);
                 toast({
                   title: "Audio Error / Lỗi Âm Thanh",
                   description: "Could not load audio / Không thể tải âm thanh",
@@ -588,6 +594,11 @@ const handleAccessDenied = () => {
             {/* Audio Player */}
             {currentAudio && (
               <div className="mt-4">
+                {audioLoading && (
+                  <div className="text-sm text-muted-foreground mb-2">
+                    Loading audio... / Đang tải âm thanh...
+                  </div>
+                )}
                 <audio 
                   key={currentAudio}
                   ref={audioRef}
@@ -597,15 +608,32 @@ const handleAccessDenied = () => {
                   onEnded={() => setIsAudioPlaying(false)}
                   onPause={() => setIsAudioPlaying(false)}
                   onPlay={() => setIsAudioPlaying(true)}
-                  onError={() => {
+                  onError={(e) => {
+                    console.error('Audio error event:', e);
+                    setAudioLoading(false);
                     if (altAudio && audioRef.current && audioRef.current.src !== altAudio) {
+                      console.log('Trying fallback audio:', altAudio);
                       audioRef.current.src = altAudio;
                       audioRef.current.load();
-                      setCurrentAudio(altAudio);
-                      toast({ title: "Using fallback audio", description: "Đang dùng nguồn dự phòng" });
+                      toast({ 
+                        title: "Trying alternate source / Thử nguồn khác", 
+                        description: "Loading from backup / Tải từ nguồn dự phòng" 
+                      });
                     } else {
-                      toast({ title: "Audio not found", description: "Không tìm thấy âm thanh", variant: "destructive" });
+                      // Don't clear currentAudio to keep player visible
+                      toast({ 
+                        title: "Audio playback issue / Vấn đề phát âm thanh", 
+                        description: "Try typing the keyword again / Thử nhập lại từ khóa", 
+                        variant: "destructive" 
+                      });
                     }
+                  }}
+                  onLoadStart={() => {
+                    console.log('Audio load started');
+                  }}
+                  onLoadedMetadata={() => {
+                    console.log('Audio metadata loaded');
+                    setAudioLoading(false);
                   }}
                 />
               </div>
