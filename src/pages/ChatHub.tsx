@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Send, ArrowLeft, MessageCircle, Mail, Users, Loader2, Volume2, VolumeX } from "lucide-react";
+import { Send, ArrowLeft, MessageCircle, Mail, Users, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomInfo } from "@/lib/roomData";
@@ -511,33 +511,6 @@ const handleAccessDenied = () => {
             {/* Audio Player - Echologic Function */}
             {currentAudio && (
               <div className="mt-4 p-3 bg-secondary/20 rounded-lg border border-border">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                  <Button
-                      size="sm"
-                      className="bg-primary hover:bg-primary/90"
-                      onClick={() => {
-                        if (audioRef.current) {
-                          if (isAudioPlaying) {
-                            audioRef.current.pause();
-                            setIsAudioPlaying(false);
-                          } else {
-                            audioRef.current.play().catch(err => {
-                              console.error('Playback error:', err);
-                              // Silent fail - file might not exist yet
-                            });
-                          }
-                        }
-                      }}
-                    >
-                      {isAudioPlaying ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-                      <span className="ml-2">{isAudioPlaying ? "Pause" : "Play"}</span>
-                    </Button>
-                    <span className="text-sm text-muted-foreground">
-                      {isAudioPlaying ? "Playing audio..." : "Audio ready"}
-                    </span>
-                  </div>
-                </div>
                 <audio 
                   key={currentAudio}
                   ref={audioRef}
