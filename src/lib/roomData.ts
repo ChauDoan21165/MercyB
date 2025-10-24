@@ -14,7 +14,7 @@ export interface RoomInfo {
 export const ALL_ROOMS: RoomInfo[] = [
   { id: "abdominal-pain", nameVi: "Đau bụng", nameEn: "Abdominal Pain", hasData: true, tier: "free", dataFile: "abdominal_pain.json" },
   { id: "addiction", nameVi: "Nghiện", nameEn: "Addiction", hasData: true, tier: "free", dataFile: "addiction.json" },
-  { id: "ai", nameVi: "Trí tuệ nhân tạo", nameEn: "AI", hasData: true, tier: "vip3", dataFile: "AI-2.json" },
+  { id: "ai", nameVi: "Trí tuệ nhân tạo", nameEn: "AI", hasData: false, tier: "free", dataFile: "AI-2.json" },
   { id: "autoimmune", nameVi: "Bệnh tự miễn", nameEn: "Autoimmune Diseases", hasData: true, tier: "free", dataFile: "autoimmune_diseases-2.json" },
   { id: "burnout", nameVi: "Kiệt sức", nameEn: "Burnout", hasData: true, tier: "free", dataFile: "burnout-2.json" },
   { id: "career-burnout", nameVi: "Kiệt sức nghề nghiệp", nameEn: "Career Burnout", hasData: true, tier: "free", dataFile: "career_burnout.json" },
