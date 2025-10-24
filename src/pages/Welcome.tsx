@@ -162,23 +162,32 @@ const Welcome = () => {
           <div className="flex justify-center">
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground flex items-center gap-2"
               onClick={() => {
                 if (audioRef.current) {
                   if (isPlaying) {
                     audioRef.current.pause();
                     setIsPlaying(false);
                   } else {
-                    audioRef.current.play();
+                    audioRef.current.play().catch(err => {
+                      console.error('Audio playback error:', err);
+                    });
                     setIsPlaying(true);
                   }
                 }
               }}
             >
-              <Volume2 className="w-5 h-5 mr-2" /> {isPlaying ? "Pause Intro Audio" : "Play Intro Audio"}
+              <Volume2 className="w-5 h-5" /> 
+              {isPlaying ? "Pause Intro Audio" : "Play Intro Audio"}
             </Button>
           </div>
-          <audio ref={audioRef} src="/Mercy_Blade.mp3" onEnded={() => setIsPlaying(false)} />
+          <audio 
+            ref={audioRef} 
+            src="/Mercy_Blade.mp3" 
+            onEnded={() => setIsPlaying(false)}
+            onPause={() => setIsPlaying(false)}
+            onPlay={() => setIsPlaying(true)}
+          />
           
           {/* Points Display */}
           <div className="max-w-md mx-auto">

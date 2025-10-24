@@ -60,6 +60,7 @@ const ChatHub = () => {
   const [currentAudio, setCurrentAudio] = useState<string | null>(null);
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [keywordMenu, setKeywordMenu] = useState<{ en: string[]; vi: string[] } | null>(null);
 
 // Use centralized room metadata
 const info = getRoomInfo(roomId || "");
@@ -94,6 +95,17 @@ const handleAccessDenied = () => {
         timestamp: new Date()
       };
       setMainMessages([welcomeMessage]);
+    }
+    
+    // Load keyword menu from room data
+    try {
+      const { roomDataMap } = require('@/lib/roomDataImports');
+      const roomData = roomDataMap[roomId || ''];
+      if (roomData?.keyword_menu) {
+        setKeywordMenu(roomData.keyword_menu);
+      }
+    } catch (error) {
+      console.error('Error loading keyword menu:', error);
     }
   }, [roomId]);
 
@@ -409,6 +421,41 @@ const handleAccessDenied = () => {
                 mainMessages.map(msg => <MessageBubble key={msg.id} message={msg} />)
               )}
             </ScrollArea>
+
+            {/* Keyword Menu Display */}
+            {keywordMenu && (
+              <div className="my-3 p-3 bg-secondary/10 rounded-lg border border-border">
+                <h4 className="text-sm font-semibold mb-2">
+                  Available Keywords / Từ Khóa Có Sẵn
+                </h4>
+                <div className="space-y-2">
+                  <div className="flex flex-wrap gap-1">
+                    {keywordMenu.en.slice(0, 5).map((keyword, idx) => (
+                      <Badge 
+                        key={`en-${idx}`} 
+                        variant="outline" 
+                        className="text-xs cursor-pointer hover:bg-primary/10"
+                        onClick={() => setMainInput(keyword)}
+                      >
+                        {keyword}
+                      </Badge>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    {keywordMenu.vi.slice(0, 5).map((keyword, idx) => (
+                      <Badge 
+                        key={`vi-${idx}`} 
+                        variant="outline" 
+                        className="text-xs cursor-pointer hover:bg-primary/10"
+                        onClick={() => setMainInput(keyword)}
+                      >
+                        {keyword}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div className="flex gap-2 pt-2">
               <Input
