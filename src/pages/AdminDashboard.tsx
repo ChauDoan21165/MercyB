@@ -370,21 +370,27 @@ const AdminDashboard = () => {
 
       if (error) throw error;
       
-      // Fetch usernames separately
-      const usersWithNames = await Promise.all((data || []).map(async (user) => {
+      // Fetch usernames separately and build the result array
+      const usersWithNames: SuspendedUser[] = [];
+      
+      for (const user of data || []) {
         const { data: profile } = await supabase
           .from('profiles')
           .select('username')
-          .eq('user_id', user.user_id)
-          .single();
+          .eq('id', user.user_id)
+          .maybeSingle();
         
-        return {
-          ...user,
+        usersWithNames.push({
+          user_id: user.user_id,
+          violation_score: user.violation_score,
+          total_violations: user.total_violations,
+          last_violation_at: user.last_violation_at,
+          is_suspended: user.is_suspended,
           profiles: profile ? { username: profile.username } : undefined
-        };
-      }));
+        });
+      }
       
-      setSuspendedUsers(usersWithNames as SuspendedUser[]);
+      setSuspendedUsers(usersWithNames);
     } catch (error) {
       console.error('Error fetching suspended users:', error);
     }
