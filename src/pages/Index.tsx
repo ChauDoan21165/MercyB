@@ -1,13 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Volume2, ArrowRight } from "lucide-react";
+import { Volume2 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
 
 const Index = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
-  
 
   useEffect(() => {
     document.title = "Mercy Blade — Holistic Growth";
@@ -95,15 +93,6 @@ const Index = () => {
             Và trên hành trình ấy, Mercy Blade có thể giúp bạn gặp được người bạn học phù hợp nhất — thậm chí là tri kỷ của chính mình.
           </p>
         </Card>
-
-        <div className="mt-8 flex justify-center">
-          <Button asChild size="lg" className="flex items-center gap-2">
-            <Link to="/meaning-of-life">
-              Explore Meaning of Life
-              <ArrowRight size={20} />
-            </Link>
-          </Button>
-        </div>
       </div>
     </div>
   );
