@@ -102,6 +102,10 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   } else {
     // Old structure: entries is an array
     matchedEntry = findEntryByGroup(groupKey, roomData.entries || []);
+    if (matchedEntry) {
+      audioFile = matchedEntry.audio?.en || matchedEntry.audio?.vi;
+      entryId = matchedEntry.id || matchedEntry.artifact_id;
+    }
   }
   
   const relatedRooms = findRelatedRooms(message, roomId);
