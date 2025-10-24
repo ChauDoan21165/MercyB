@@ -108,7 +108,7 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "philosophy-of-everyday-free", nameVi: "Triết Học Đời Thường", nameEn: "Philosophy of Everyday", hasData: true, tier: "free", dataFile: "philosophy_of_everyday_free.json" },
   { id: "philosophy-of-everyday-vip1", nameVi: "Triết Học Đời Thường VIP1", nameEn: "Philosophy of Everyday VIP1", hasData: false, tier: "vip1", dataFile: "philosophy_of_everyday_vip1.json" },
   { id: "philosophy-of-everyday-vip2", nameVi: "Triết Học Đời Thường VIP2", nameEn: "Philosophy of Everyday VIP2", hasData: false, tier: "vip2", dataFile: "philosophy_of_everyday_vip2.json" },
-  { id: "philosophy-of-everyday-vip3", nameVi: "Triết Học Đời Thường VIP3", nameEn: "Philosophy of Everyday VIP3", hasData: false, tier: "vip3", dataFile: "philosophy_of_everyday_vip3.json" }
+  { id: "philosophy-of-everyday-vip3", nameVi: "Triết Học Đời Thường VIP3", nameEn: "Philosophy of Everyday VIP3", hasData: true, tier: "vip3", dataFile: "philosophy_of_everyday_vip3.json" }
 ];
 
 // Get room info by ID
