@@ -82,6 +82,7 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "social-connection", nameVi: "Kết nối xã hội", nameEn: "Social Connection", hasData: true, tier: "free", dataFile: "social_connection.json" },
   { id: "speaking-crowd", nameVi: "Nói trước đám đông", nameEn: "Speaking Crowd", hasData: true, tier: "free", dataFile: "speaking_crowd.json" },
   { id: "stoicism", nameVi: "Chủ nghĩa khắc kỷ", nameEn: "Stoicism", hasData: true, tier: "free", dataFile: "stoicism.json" },
+  { id: "stoicism-free", nameVi: "Triết Học Stoic", nameEn: "Stoic Philosophy", hasData: true, tier: "free", dataFile: "stoicism_free.json" },
   { id: "stress-anxiety", nameVi: "Căng thẳng & Lo âu", nameEn: "Stress and Anxiety", hasData: true, tier: "free", dataFile: "stress_and_anxiety.json" },
   { id: "anxiety-toolkit", nameVi: "Bộ công cụ lo âu", nameEn: "Anxiety Toolkit", hasData: true, tier: "free", dataFile: "anxiety_toolkit.json" },
   { id: "teen", nameVi: "Tuổi thiếu niên", nameEn: "Teen", hasData: false, tier: "vip3", dataFile: "teen.json" },
