@@ -2,8 +2,8 @@
 "tier": "VIP 1 / Cấp VIP 1",
 "default_entry_id": "recognizing_hidden_aspects",
 "welcome": {
-"en": "Hello! Welcome to Shadow Work VIP1 room. How can I help you today?\n\nTopic keywords you can type are below:\n- recognizing_hidden_aspects\n- embracing_shadow_integration\n- shadow_reflection_practices\n- practicing_shadow_forgiveness\n- trigger_awareness_techniques\n- achieving_inner_harmony",
-"vi": "Xin chào! Chào mừng bạn đến với phòng Làm Việc Với Bóng Tối VIP1. Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:\n- nhan_dien_khia_canh_an_giau\n- chap_nhan_hoa_nhap_mat_toi\n- thuc_hanh_chiem_nghiem_bong_toi\n- thuc_hanh_tha_thu_bong_toi\n- ky_thuat_nhan_thuc_tac_nhan\n- dat_duoc_hoa_hop_noi_tam"
+"en": "Hello! Welcome to Shadow Work VIP1 room. How can I help you today?",
+"vi": "Xin chào! Chào mừng bạn đến với phòng Làm Việc Với Bóng Tối VIP1. Tôi có thể giúp gì cho bạn hôm nay?"
 },
 "search": {
 "normalize_case": true,
