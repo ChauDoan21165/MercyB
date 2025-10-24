@@ -90,6 +90,10 @@ import godsGuidance from '@/data/rooms/gods_guidance_vip1.json';
 import godsStrength from '@/data/rooms/gods_strength_vip2_resilience.json';
 import godsPurpose from '@/data/rooms/gods_purpose_vip3.json';
 import proverbsWisdomVip1 from '@/data/rooms/proverbs_wisdom_VIP1.json';
+import philosophyEverydayFree from '@/data/rooms/philosophy_of_everyday_free.json';
+import philosophyEverydayVip1 from '@/data/rooms/philosophy_of_everyday_vip1.json';
+import philosophyEverydayVip2 from '@/data/rooms/philosophy_of_everyday_vip2.json';
+import philosophyEverydayVip3 from '@/data/rooms/philosophy_of_everyday_vip3.json';
 
 export const roomDataMap: Record<string, any> = {
   'abdominal-pain': abdominalPain,
@@ -183,4 +187,8 @@ export const roomDataMap: Record<string, any> = {
   'gods-strength': godsStrength,
   'gods-purpose': godsPurpose,
   'proverbs-wisdom-vip1': proverbsWisdomVip1,
+  'philosophy-of-everyday-free': philosophyEverydayFree,
+  'philosophy-of-everyday-vip1': philosophyEverydayVip1,
+  'philosophy-of-everyday-vip2': philosophyEverydayVip2,
+  'philosophy-of-everyday-vip3': philosophyEverydayVip3,
 };

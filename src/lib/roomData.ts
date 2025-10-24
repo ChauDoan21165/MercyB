@@ -103,7 +103,11 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "gods-guidance", nameVi: "Sự Dẫn Dắt Của Chúa VIP1", nameEn: "God's Guidance VIP1", hasData: true, tier: "vip1", dataFile: "gods_guidance_vip1.json" },
   { id: "gods-strength", nameVi: "Sức Mạnh Của Chúa VIP2", nameEn: "God's Strength VIP2", hasData: true, tier: "vip2", dataFile: "gods_strength_vip2_resilience.json" },
   { id: "gods-purpose", nameVi: "Mục Đích Của Chúa VIP3", nameEn: "God's Purpose VIP3", hasData: true, tier: "vip3", dataFile: "gods_purpose_vip3.json" },
-  { id: "proverbs-wisdom-vip1", nameVi: "Tục Ngữ Trí Tuệ VIP1", nameEn: "Proverbs Wisdom VIP1", hasData: true, tier: "vip1", dataFile: "proverbs_wisdom_VIP1.json" }
+  { id: "proverbs-wisdom-vip1", nameVi: "Tục Ngữ Trí Tuệ VIP1", nameEn: "Proverbs Wisdom VIP1", hasData: true, tier: "vip1", dataFile: "proverbs_wisdom_VIP1.json" },
+  { id: "philosophy-of-everyday-free", nameVi: "Triết Học Đời Thường", nameEn: "Philosophy of Everyday", hasData: true, tier: "free", dataFile: "philosophy_of_everyday_free.json" },
+  { id: "philosophy-of-everyday-vip1", nameVi: "Triết Học Đời Thường VIP1", nameEn: "Philosophy of Everyday VIP1", hasData: true, tier: "vip1", dataFile: "philosophy_of_everyday_vip1.json" },
+  { id: "philosophy-of-everyday-vip2", nameVi: "Triết Học Đời Thường VIP2", nameEn: "Philosophy of Everyday VIP2", hasData: true, tier: "vip2", dataFile: "philosophy_of_everyday_vip2.json" },
+  { id: "philosophy-of-everyday-vip3", nameVi: "Triết Học Đời Thường VIP3", nameEn: "Philosophy of Everyday VIP3", hasData: true, tier: "vip3", dataFile: "philosophy_of_everyday_vip3.json" }
 ];
 
 // Get room info by ID
