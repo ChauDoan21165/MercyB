@@ -169,22 +169,20 @@ const handleAccessDenied = () => {
           
           // Play audio if available (echologic function)
           if (response.audioFile) {
-            const audioPath = `/room-audio/${response.audioFile}`;
+            const audioPath = `/room-audio/${encodeURIComponent(response.audioFile)}`;
             setCurrentAudio(audioPath);
-            // Auto-play after a short delay
-            setTimeout(() => {
-              if (audioRef.current) {
-                audioRef.current.src = audioPath;
-                audioRef.current.play().catch(err => {
-                  console.log('Auto-play prevented:', err);
-                  toast({
-                    title: "Audio Ready",
-                    description: "Click the audio button to play the content.",
-                  });
-                });
-                setIsAudioPlaying(true);
-              }
-            }, 500);
+            setIsAudioPlaying(false);
+            
+            // Set audio source and show controls
+            if (audioRef.current) {
+              audioRef.current.src = audioPath;
+              audioRef.current.load();
+            }
+            
+            toast({
+              title: "Audio Ready / Âm Thanh Sẵn Sàng",
+              description: "Click the audio button to play / Nhấn nút để phát",
+            });
           }
         } else {
           setNoKeywordCount(prev => prev + 1);
@@ -439,21 +437,29 @@ const handleAccessDenied = () => {
               <div className="mt-4 p-3 bg-secondary/20 rounded-lg border border-border">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <Button
+                  <Button
                       size="sm"
-                      variant="outline"
+                      className="bg-primary hover:bg-primary/90"
                       onClick={() => {
                         if (audioRef.current) {
                           if (isAudioPlaying) {
                             audioRef.current.pause();
+                            setIsAudioPlaying(false);
                           } else {
-                            audioRef.current.play();
+                            audioRef.current.play().catch(err => {
+                              console.error('Playback error:', err);
+                              toast({
+                                title: "Playback Error / Lỗi Phát",
+                                description: "Could not play audio / Không thể phát âm thanh",
+                                variant: "destructive"
+                              });
+                            });
                           }
-                          setIsAudioPlaying(!isAudioPlaying);
                         }
                       }}
                     >
                       {isAudioPlaying ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                      <span className="ml-2">{isAudioPlaying ? "Pause" : "Play"}</span>
                     </Button>
                     <span className="text-sm text-muted-foreground">
                       {isAudioPlaying ? "Playing audio..." : "Audio ready"}

@@ -40,8 +40,7 @@ const Index = () => {
               <Button
                 onClick={toggleAudio}
                 size="lg"
-                variant="outline"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground"
               >
                 <Volume2 size={20} />
                 {isPlaying ? "Pause Audio" : "Play Audio"}
