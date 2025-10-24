@@ -239,6 +239,17 @@ serve(async (req) => {
         });
     }
 
+    // If suspended, create admin notification via feedback
+    if (action === 'suspend') {
+      await supabase.from('feedback').insert({
+        user_id: userId,
+        room_id: roomId || 'unknown',
+        message: `🚨 URGENT: User has been automatically suspended for repeated profanity violations. Total violations: ${violationCount}. Last message: "${content.substring(0, 100)}..."`,
+        status: 'urgent',
+        priority: 'high'
+      });
+    }
+
     return new Response(
       JSON.stringify({
         allowed: false,

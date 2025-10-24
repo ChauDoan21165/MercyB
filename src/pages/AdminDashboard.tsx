@@ -52,6 +52,17 @@ interface ActiveSubscription {
   status: string;
 }
 
+interface SuspendedUser {
+  user_id: string;
+  violation_score: number;
+  total_violations: number;
+  last_violation_at: string;
+  is_suspended: boolean;
+  profiles?: {
+    username: string;
+  };
+}
+
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -64,6 +75,7 @@ const AdminDashboard = () => {
   const [notifications, setNotifications] = useState<FeedbackNotification[]>([]);
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [activeSubscriptions, setActiveSubscriptions] = useState<ActiveSubscription[]>([]);
+  const [suspendedUsers, setSuspendedUsers] = useState<SuspendedUser[]>([]);
 
   useEffect(() => {
     checkAdminAccess();
@@ -104,7 +116,8 @@ const AdminDashboard = () => {
         fetchAnalytics(), 
         fetchNotifications(),
         fetchNotificationPreferences(),
-        fetchActiveSubscriptions()
+        fetchActiveSubscriptions(),
+        fetchSuspendedUsers()
       ]);
 
       // Subscribe to real-time notifications
@@ -347,6 +360,65 @@ const AdminDashboard = () => {
     }
   };
 
+  const fetchSuspendedUsers = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('user_moderation_status')
+        .select('*')
+        .eq('is_suspended', true)
+        .order('last_violation_at', { ascending: false });
+
+      if (error) throw error;
+      
+      // Fetch usernames separately
+      const usersWithNames = await Promise.all((data || []).map(async (user) => {
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('username')
+          .eq('user_id', user.user_id)
+          .single();
+        
+        return {
+          ...user,
+          profiles: profile ? { username: profile.username } : undefined
+        };
+      }));
+      
+      setSuspendedUsers(usersWithNames as SuspendedUser[]);
+    } catch (error) {
+      console.error('Error fetching suspended users:', error);
+    }
+  };
+
+  const unlockUser = async (userId: string) => {
+    try {
+      const { error } = await supabase
+        .from('user_moderation_status')
+        .update({
+          is_suspended: false,
+          violation_score: 0,
+          updated_at: new Date().toISOString()
+        })
+        .eq('user_id', userId);
+
+      if (error) throw error;
+
+      toast({
+        title: "User unlocked",
+        description: "User account has been reactivated"
+      });
+
+      fetchSuspendedUsers();
+    } catch (error) {
+      console.error('Error unlocking user:', error);
+      toast({
+        title: "Error",
+        description: "Failed to unlock user account",
+        variant: "destructive"
+      });
+    }
+  };
+
   const getRequestsByStatus = (status: string) => {
     return requests.filter(r => r.status === status);
   };
@@ -399,6 +471,10 @@ const AdminDashboard = () => {
             <TabsTrigger value="requests">
               <MessageSquare className="h-4 w-4 mr-2" />
               Requests
+            </TabsTrigger>
+            <TabsTrigger value="moderation">
+              <Users className="h-4 w-4 mr-2" />
+              Suspended Users
             </TabsTrigger>
             <TabsTrigger value="analytics">
               <TrendingUp className="h-4 w-4 mr-2" />
@@ -518,6 +594,69 @@ const AdminDashboard = () => {
                               onClick={() => markNotificationAsRead(notification.id)}
                             >
                               Mark as Read
+                            </Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="moderation" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Suspended Users</CardTitle>
+                <CardDescription>
+                  Users who have been suspended for content policy violations
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                {suspendedUsers.length === 0 ? (
+                  <p className="text-center text-muted-foreground py-8">
+                    No suspended users
+                  </p>
+                ) : (
+                  <div className="space-y-4">
+                    {suspendedUsers.map((user) => (
+                      <Card key={user.user_id} className="border-l-4 border-l-destructive">
+                        <CardContent className="pt-6">
+                          <div className="flex items-start justify-between gap-4">
+                            <div className="flex-1 space-y-2">
+                              <div>
+                                <p className="font-medium">
+                                  {(user.profiles as any)?.username || 'Unknown User'}
+                                </p>
+                                <p className="text-xs text-muted-foreground">
+                                  User ID: {user.user_id.slice(0, 8)}...
+                                </p>
+                              </div>
+                              <div className="grid grid-cols-3 gap-4 text-sm">
+                                <div>
+                                  <p className="text-muted-foreground">Total Violations</p>
+                                  <p className="font-semibold">{user.total_violations}</p>
+                                </div>
+                                <div>
+                                  <p className="text-muted-foreground">Violation Score</p>
+                                  <p className="font-semibold">{user.violation_score}</p>
+                                </div>
+                                <div>
+                                  <p className="text-muted-foreground">Last Violation</p>
+                                  <p className="font-semibold text-xs">
+                                    {new Date(user.last_violation_at).toLocaleDateString()}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => unlockUser(user.user_id)}
+                              className="shrink-0"
+                            >
+                              Unlock Account
                             </Button>
                           </div>
                         </CardContent>

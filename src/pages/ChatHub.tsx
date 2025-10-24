@@ -141,6 +141,34 @@ const handleAccessDenied = () => {
   const sendMainMessage = async () => {
     if (!mainInput.trim() || isLoading) return;
 
+    // Get current user
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      toast({
+        title: "Authentication Required",
+        description: "Please log in to send messages",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    // Check if user is suspended
+    const { data: moderationStatus } = await supabase
+      .from('user_moderation_status')
+      .select('is_suspended')
+      .eq('user_id', user.id)
+      .single();
+
+    if (moderationStatus?.is_suspended) {
+      toast({
+        title: "Account Suspended / Tài Khoản Bị Khóa",
+        description: "Your account has been suspended due to violations. Please contact admin. / Tài khoản của bạn bị khóa do vi phạm. Vui lòng liên hệ admin.",
+        variant: "destructive",
+        duration: 5000
+      });
+      return;
+    }
+
     // Validate input
     const validation = messageSchema.safeParse({ text: mainInput });
     if (!validation.success) {
@@ -150,6 +178,36 @@ const handleAccessDenied = () => {
         variant: "destructive"
       });
       return;
+    }
+
+    // Check content moderation
+    try {
+      const { data: moderationResult, error: moderationError } = await supabase.functions.invoke('content-moderation', {
+        body: {
+          content: mainInput,
+          userId: user.id,
+          roomId: roomId || '',
+          language: 'en'
+        }
+      });
+
+      if (moderationError) {
+        console.error('Moderation check failed:', moderationError);
+        // Continue if moderation check fails (fail-open for better UX)
+      } else if (!moderationResult.allowed) {
+        // Show warning or suspension message
+        toast({
+          title: moderationResult.action === 'suspend' ? "Account Suspended / Tài Khoản Bị Khóa" : "Warning / Cảnh Báo",
+          description: moderationResult.message,
+          variant: "destructive",
+          duration: 5000
+        });
+
+        return; // Don't send the message
+      }
+    } catch (moderationCheckError) {
+      console.error('Moderation check error:', moderationCheckError);
+      // Continue (fail-open)
     }
 
     // Check if user has credits remaining
@@ -508,14 +566,15 @@ const handleAccessDenied = () => {
               </Button>
             </div>
             
-            {/* Audio Player - Echologic Function */}
+            {/* Audio Player */}
             {currentAudio && (
-              <div className="mt-4 p-3 bg-secondary/20 rounded-lg border border-border">
+              <div className="mt-4">
                 <audio 
                   key={currentAudio}
                   ref={audioRef}
                   preload="auto"
                   controls
+                  className="w-full"
                   onEnded={() => setIsAudioPlaying(false)}
                   onPause={() => setIsAudioPlaying(false)}
                   onPlay={() => setIsAudioPlaying(true)}
