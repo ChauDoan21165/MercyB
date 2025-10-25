@@ -1,5 +1,5 @@
 {
-  "tier": "VIP 1",
+  "tier": "VIP 2",
   "entries": [
     {
       "title": "Practicing Deep Breathing",
@@ -35,6 +35,6 @@
     "artifact_set_id": "9c0d1e2f-3a4b-4c5d-b6e7-d8f9a0b1c2d4",
     "data_format_version": "MercyBlade-Core-v1.2",
     "room_color": "#D7CCC8",
-    "tier": "vip1"
+    "tier": "vip2"
   }
 }

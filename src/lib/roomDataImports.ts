@@ -114,6 +114,9 @@ import shadowWorkFree from '@/data/rooms/Shadow_Work_Free.json';
 import shadowWorkVip1 from '@/data/rooms/Shadow_Work_VIP1.json';
 import shadowWorkVip2 from '@/data/rooms/Shadow_Work_VIP2.json';
 import shadowWorkVip3 from '@/data/rooms/Shadow_Work_VIP3.json';
+import nutritionVip3 from '@/data/rooms/nutrition_vip3.json';
+import stressFree from '@/data/rooms/stress_free.json';
+import stressVip2 from '@/data/rooms/stress_vip2.json';
 
 export const roomDataMap: Record<string, any> = {
   'abdominal-pain': abdominalPain,
@@ -231,4 +234,7 @@ export const roomDataMap: Record<string, any> = {
   'shadow-work-vip1': shadowWorkVip1,
   'shadow-work-vip2': shadowWorkVip2,
   'shadow-work-vip3': shadowWorkVip3,
+  'nutrition-vip3': nutritionVip3,
+  'stress-free': stressFree,
+  'stress-vip2': stressVip2,
 };

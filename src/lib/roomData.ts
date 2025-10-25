@@ -127,7 +127,10 @@ export const ALL_ROOMS: RoomInfo[] = [
   { id: "shadow-work-free", nameVi: "Làm Việc Với Bóng Tối", nameEn: "Shadow Work", hasData: true, tier: "free", dataFile: "Shadow_Work_Free.json" },
   { id: "shadow-work-vip1", nameVi: "Làm Việc Với Bóng Tối VIP1", nameEn: "Shadow Work VIP1", hasData: true, tier: "vip1", dataFile: "Shadow_Work_VIP1.json" },
   { id: "shadow-work-vip2", nameVi: "Làm Việc Với Bóng Tối VIP2", nameEn: "Shadow Work VIP2", hasData: true, tier: "vip2", dataFile: "Shadow_Work_VIP2.json" },
-  { id: "shadow-work-vip3", nameVi: "Làm Việc Với Bóng Tối VIP3", nameEn: "Shadow Work VIP3", hasData: true, tier: "vip3", dataFile: "Shadow_Work_VIP3.json" }
+  { id: "shadow-work-vip3", nameVi: "Làm Việc Với Bóng Tối VIP3", nameEn: "Shadow Work VIP3", hasData: true, tier: "vip3", dataFile: "Shadow_Work_VIP3.json" },
+  { id: "nutrition-vip3", nameVi: "Dinh Dưỡng VIP3", nameEn: "Nutrition VIP3", hasData: true, tier: "vip3", dataFile: "nutrition_vip3.json" },
+  { id: "stress-free", nameVi: "Giảm Căng Thẳng", nameEn: "Stress Management", hasData: true, tier: "free", dataFile: "stress_free.json" },
+  { id: "stress-vip2", nameVi: "Giảm Căng Thẳng VIP2", nameEn: "Stress Management VIP2", hasData: true, tier: "vip2", dataFile: "stress_vip2.json" }
 ];
 
 // Get room info by ID
