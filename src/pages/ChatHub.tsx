@@ -68,6 +68,7 @@ const ChatHub = () => {
   const [audioLoading, setAudioLoading] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const [keywordMenu, setKeywordMenu] = useState<{ en: string[]; vi: string[] } | null>(null);
+  const [clickedKeyword, setClickedKeyword] = useState<string | null>(null);
 
 // Use centralized room metadata
 const info = getRoomInfo(roomId || "");
@@ -148,7 +149,10 @@ const handleAccessDenied = () => {
   const handleKeywordClick = async (keyword: string) => {
     if (isLoading) return;
     
-    // Set the input and trigger the message send
+    // Highlight the clicked keyword
+    setClickedKeyword(keyword);
+    
+    // Send the message without showing it as a user bubble
     await sendMainMessage(keyword);
   };
 
@@ -233,14 +237,17 @@ const handleAccessDenied = () => {
       return;
     }
 
-    const userMessage: Message = {
-      id: Date.now().toString(),
-      text: messageText,
-      isUser: true,
-      timestamp: new Date()
-    };
-
-    setMainMessages(prev => [...prev, userMessage]);
+    // Only add user message bubble if NOT from keyword click
+    if (!keywordText) {
+      const userMessage: Message = {
+        id: Date.now().toString(),
+        text: messageText,
+        isUser: true,
+        timestamp: new Date()
+      };
+      setMainMessages(prev => [...prev, userMessage]);
+    }
+    
     const currentInput = messageText;
     if (!keywordText) {
       setMainInput("");
@@ -515,54 +522,64 @@ const handleAccessDenied = () => {
         {/* Main Chat Area */}
         <Card className="p-4 shadow-soft">
           <div className="space-y-3">
-            
-            {/* Keyword Menu Display - Show prominently */}
-            {keywordMenu && keywordMenu.en && keywordMenu.vi && (
-              <div className="mb-3 p-3 bg-secondary/10 rounded-lg border border-border">
-                <div className="space-y-2">
-                  <div className="flex flex-wrap gap-2">
-                    {keywordMenu.en.map((keyword, idx) => (
-                      <Button 
-                        key={`en-${idx}`} 
-                        variant="outline" 
-                        size="sm"
-                        className="text-xs cursor-pointer hover:bg-primary hover:text-primary-foreground"
-                        onClick={() => handleKeywordClick(keyword)}
-                        disabled={isLoading}
-                      >
-                        {keyword}
-                      </Button>
-                    ))}
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {keywordMenu.vi.map((keyword, idx) => (
-                      <Button 
-                        key={`vi-${idx}`} 
-                        variant="outline"
-                        size="sm" 
-                        className="text-xs cursor-pointer hover:bg-primary hover:text-primary-foreground"
-                        onClick={() => handleKeywordClick(keyword)}
-                        disabled={isLoading}
-                      >
-                        {keyword}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
-
             <ScrollArea className="h-[280px] pr-4" ref={mainScrollRef}>
               <WelcomeBack lastRoomId={progress.lastVisit} currentRoomId={roomId || ""} />
-              {mainMessages.length === 0 ? (
-                <div className="flex items-center justify-center h-full text-center">
+              
+              {/* Show welcome message first */}
+              {mainMessages.length > 0 && mainMessages[0].id === 'welcome' && (
+                <div className="mb-4">
+                  <div className="bg-card border shadow-sm rounded-2xl px-4 py-3">
+                    <p className="text-sm whitespace-pre-wrap">{mainMessages[0].text}</p>
+                  </div>
+                </div>
+              )}
+              
+              {/* Keyword Menu Display - Below welcome message */}
+              {keywordMenu && keywordMenu.en && keywordMenu.vi && (
+                <div className="mb-4 p-3 bg-secondary/10 rounded-lg border border-border">
                   <div className="space-y-2">
-                    <p className="text-muted-foreground">Click a keyword above to start</p>
-                    <p className="text-sm text-muted-foreground">Nhấp vào từ khóa ở trên để bắt đầu</p>
+                    <div className="flex flex-wrap gap-2">
+                      {keywordMenu.en.map((keyword, idx) => (
+                        <Button 
+                          key={`en-${idx}`} 
+                          variant={clickedKeyword === keyword ? "default" : "outline"}
+                          size="sm"
+                          className="text-xs cursor-pointer"
+                          onClick={() => handleKeywordClick(keyword)}
+                          disabled={isLoading}
+                        >
+                          {keyword}
+                        </Button>
+                      ))}
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {keywordMenu.vi.map((keyword, idx) => (
+                        <Button 
+                          key={`vi-${idx}`} 
+                          variant={clickedKeyword === keyword ? "default" : "outline"}
+                          size="sm" 
+                          className="text-xs cursor-pointer"
+                          onClick={() => handleKeywordClick(keyword)}
+                          disabled={isLoading}
+                        >
+                          {keyword}
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              {/* Show response messages (excluding welcome) */}
+              {mainMessages.slice(1).length === 0 ? (
+                <div className="flex items-center justify-center text-center py-8">
+                  <div className="space-y-2">
+                    <p className="text-muted-foreground">Click a keyword to start</p>
+                    <p className="text-sm text-muted-foreground">Nhấp vào từ khóa để bắt đầu</p>
                   </div>
                 </div>
               ) : (
-                mainMessages.map(msg => <MessageBubble key={msg.id} message={msg} />)
+                mainMessages.slice(1).map(msg => <MessageBubble key={msg.id} message={msg} />)
               )}
               <div ref={endRef} />
             </ScrollArea>
