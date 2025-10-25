@@ -27,13 +27,14 @@ const Auth = () => {
     if (savedEmail) setEmail(savedEmail);
   }, [setEmail]);
 
-  // If the user lands on /auth with an error in the URL hash (e.g., otp_expired),
-  // redirect them to /reset with an expired flag so they see the resend form.
+  // If the user lands on /auth with recovery/error in the URL hash, route to /reset
   useEffect(() => {
-    const hash = window.location.hash.replace(/^#/, '');
+    const rawHash = window.location.hash;
+    const hash = rawHash.replace(/^#/, '');
     if (!hash) return;
     const params = new URLSearchParams(hash);
     const hasError = params.get('error') || params.get('error_code');
+    const isRecovery = params.get('type') === 'recovery' && params.get('access_token') && params.get('refresh_token');
     if (hasError) {
       try {
         const url = new URL(window.location.href);
@@ -41,6 +42,13 @@ const Auth = () => {
         window.history.replaceState({}, '', url.toString());
       } catch {}
       navigate('/reset?expired=1');
+    } else if (isRecovery) {
+      try {
+        const url = new URL(window.location.href);
+        url.hash = '';
+        window.history.replaceState({}, '', url.toString());
+      } catch {}
+      navigate(`/reset${rawHash}`);
     }
   }, [navigate]);
 
@@ -82,9 +90,7 @@ const Auth = () => {
     setLoading(true);
 
     try {
-      const { error } = await supabase.auth.resetPasswordForEmail(resetEmail, {
-        redirectTo: `${window.location.origin}/reset`,
-      });
+      const { error } = await supabase.auth.resetPasswordForEmail(resetEmail);
 
       if (error) throw error;
 
