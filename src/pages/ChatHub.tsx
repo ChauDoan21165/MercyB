@@ -422,21 +422,10 @@ const handleAccessDenied = () => {
     }
   };
 
+  // Stable scroll: only when messages change or loading starts
   useEffect(() => {
     scrollToBottom();
-  }, [mainMessages]);
-
-  // Auto-scroll when AI is typing/loading (single scroll to avoid jitter)
-  useEffect(() => {
-    if (isLoading) {
-      scrollToBottom();
-    }
-  }, [isLoading]);
-
-  // Auto-scroll when user is typing to keep input visible (throttled)
-  useEffect(() => {
-    if (mainInput) scrollToBottom();
-  }, [mainInput]);
+  }, [mainMessages, isLoading]);
 
   const MessageBubble = ({ message }: { message: Message }) => (
     <div className={`flex ${message.isUser ? "justify-end" : "justify-start"} mb-4`}>
