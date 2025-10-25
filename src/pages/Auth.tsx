@@ -30,23 +30,37 @@ const Auth = () => {
       setEmail(savedEmail);
     }
 
+    // If coming back without hash but we marked recovery, keep showing the form
+    try {
+      const qs = new URLSearchParams(window.location.search);
+      if (qs.get('recovery') === '1') {
+        setIsPasswordRecovery(true);
+      }
+    } catch {}
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'PASSWORD_RECOVERY') {
+        // Clean sensitive hash from URL and persist recovery state in query param
+        try {
+          const url = new URL(window.location.href);
+          url.hash = '';
+          url.searchParams.set('recovery', '1');
+          window.history.replaceState({}, '', url.toString());
+        } catch {}
         setIsPasswordRecovery(true);
         return;
       }
 
-      const isRecoveryUrl = window.location.hash.includes('type=recovery');
+      const isRecoveryUrl = window.location.hash.includes('type=recovery') || new URLSearchParams(window.location.search).get('recovery') === '1';
       if (event === 'SIGNED_IN' && session && !isRecoveryUrl) {
         navigate('/');
       }
     });
 
-    // Complete email link/OTP flow if code or access token present
+    // Complete email link/OTP flow if code present (PKCE/magic link)
     const url = new URL(window.location.href);
     const hasCode = !!url.searchParams.get('code');
-    const hasAccessToken = window.location.hash.includes('access_token');
-    if (hasCode || hasAccessToken) {
+    if (hasCode) {
       supabase.auth.exchangeCodeForSession(window.location.href).catch(() => {
         toast({ title: 'Error', description: 'Email link is invalid or has expired.', variant: 'destructive' });
       });
@@ -54,8 +68,8 @@ const Auth = () => {
 
     // Initialize current session after wiring the listener
     supabase.auth.getSession().then(({ data: { session } }) => {
-      // no-op, but ensures SDK processes URL on first load
-      if (!session && window.location.hash.includes('type=recovery')) {
+      // If no session but we detect recovery hash, show the form
+      if (!session && (window.location.hash.includes('type=recovery') || new URLSearchParams(window.location.search).get('recovery') === '1')) {
         setIsPasswordRecovery(true);
       }
     });
