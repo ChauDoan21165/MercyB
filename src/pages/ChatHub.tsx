@@ -564,7 +564,7 @@ const handleAccessDenied = () => {
         {/* Main Chat Area */}
         <Card className="p-4 shadow-soft">
           <div className="space-y-3">
-            <ScrollArea className="h-[280px] pr-4" ref={mainScrollRef}>
+            <ScrollArea className="h-[380px] pr-4" ref={mainScrollRef}>
               <WelcomeBack lastRoomId={progress.lastVisit} currentRoomId={roomId || ""} />
               
               {/* Show welcome message first */}
@@ -572,30 +572,6 @@ const handleAccessDenied = () => {
                 <div className="mb-4">
                   <div className="bg-card border shadow-sm rounded-2xl px-4 py-3">
                     <p className="text-sm whitespace-pre-wrap">{mainMessages[0].text}</p>
-                  </div>
-                </div>
-              )}
-              
-              {/* Keyword Menu Display - Below welcome message */}
-              {keywordMenu && keywordMenu.en && keywordMenu.vi && (
-                <div className="mb-4 p-3 bg-secondary/10 rounded-lg border border-border">
-                  <div className="flex flex-wrap gap-2">
-                    {keywordMenu.en.map((keywordEn, idx) => {
-                      const keywordVi = keywordMenu.vi[idx] || '';
-                      const isClicked = clickedKeyword === keywordEn || clickedKeyword === keywordVi;
-                      return (
-                        <Button 
-                          key={`pair-${idx}`} 
-                          variant={isClicked ? "default" : "outline"}
-                          size="sm"
-                          className="text-xs cursor-pointer"
-                          onClick={() => handleKeywordClick(keywordEn)}
-                          disabled={isLoading}
-                        >
-                          {keywordEn} / {keywordVi}
-                        </Button>
-                      );
-                    })}
                   </div>
                 </div>
               )}
@@ -659,21 +635,50 @@ const handleAccessDenied = () => {
           </div>
         </Card>
 
-        {/* Three Small Chat Boxes */}
-        <div className="grid md:grid-cols-3 gap-4">
-          {/* Feedback Chat */}
+        {/* Keyword Menu Section */}
+        {keywordMenu && keywordMenu.en && keywordMenu.vi && (
+          <Card className="p-4 shadow-soft">
+            <div className="space-y-2">
+              <h4 className="text-sm font-semibold text-muted-foreground">Keywords / Từ Khóa</h4>
+              <div className="flex flex-wrap gap-2">
+                {keywordMenu.en.map((keywordEn, idx) => {
+                  const keywordVi = keywordMenu.vi[idx] || '';
+                  const isClicked = clickedKeyword === keywordEn || clickedKeyword === keywordVi;
+                  return (
+                    <Button 
+                      key={`pair-${idx}`} 
+                      variant={isClicked ? "default" : "outline"}
+                      size="sm"
+                      className="text-xs cursor-pointer"
+                      onClick={() => handleKeywordClick(keywordEn)}
+                      disabled={isLoading}
+                    >
+                      {keywordEn} / {keywordVi}
+                    </Button>
+                  );
+                })}
+              </div>
+            </div>
+          </Card>
+        )}
+
+        {/* Two Chat Boxes */}
+        <div className="grid md:grid-cols-2 gap-4">
+          {/* Combined Feedback & Room Chat */}
           <Card className="p-4 shadow-soft">
             <div className="space-y-3">
               <div className="flex items-center gap-2 pb-2 border-b">
-                <Mail className="w-4 h-4 text-secondary" />
+                <MessageCircle className="w-4 h-4 text-secondary" />
                 <div>
-                  <h4 className="text-sm font-semibold">Feedback to Admin</h4>
-                  <p className="text-xs text-muted-foreground">Phản Hồi</p>
+                  <h4 className="text-sm font-semibold">Feedback & Room Chat</h4>
+                  <p className="text-xs text-muted-foreground">Phản Hồi & Chat Phòng</p>
                 </div>
               </div>
               
               <ScrollArea className="h-24">
-                {feedbackMessages.map(msg => (
+                {[...feedbackMessages, ...roomMessages].sort((a, b) => 
+                  a.timestamp.getTime() - b.timestamp.getTime()
+                ).map(msg => (
                   <div key={msg.id} className="mb-2">
                     <div className={`text-xs p-2 rounded-lg ${msg.isUser ? "bg-secondary/20" : "bg-muted"}`}>
                       {msg.text}
@@ -684,56 +689,20 @@ const handleAccessDenied = () => {
 
               <div className="flex gap-2">
                 <Input
-                  placeholder="Send feedback / Gửi Phản Hồi..."
+                  placeholder="Send message / Gửi tin nhắn..."
                   value={feedbackInput}
                   onChange={(e) => setFeedbackInput(e.target.value)}
-                  onKeyPress={(e) => e.key === "Enter" && sendMessage(feedbackInput, setFeedbackInput, setFeedbackMessages, "feedback")}
+                  onKeyPress={(e) => {
+                    if (e.key === "Enter") {
+                      sendMessage(feedbackInput, setFeedbackInput, setFeedbackMessages, "feedback");
+                    }
+                  }}
                   className="text-sm"
                 />
                 <Button 
                   size="sm" 
                   variant="outline"
                   onClick={() => sendMessage(feedbackInput, setFeedbackInput, setFeedbackMessages, "feedback")}
-                >
-                  <Send className="w-3 h-3" />
-                </Button>
-              </div>
-            </div>
-          </Card>
-
-          {/* Room Chat */}
-          <Card className="p-4 shadow-soft">
-            <div className="space-y-3">
-              <div className="flex items-center gap-2 pb-2 border-b">
-                <Users className="w-4 h-4 text-accent" />
-                <div>
-                  <h4 className="text-sm font-semibold">Room Chat</h4>
-                  <p className="text-xs text-muted-foreground">Chat Phòng</p>
-                </div>
-              </div>
-              
-              <ScrollArea className="h-24">
-                {roomMessages.map(msg => (
-                  <div key={msg.id} className="mb-2">
-                    <div className={`text-xs p-2 rounded-lg ${msg.isUser ? "bg-accent/20" : "bg-muted"}`}>
-                      {msg.text}
-                    </div>
-                  </div>
-                ))}
-              </ScrollArea>
-
-              <div className="flex gap-2">
-                <Input
-                  placeholder="Room message / Nhắn Tin Phòng..."
-                  value={roomInput}
-                  onChange={(e) => setRoomInput(e.target.value)}
-                  onKeyPress={(e) => e.key === "Enter" && sendMessage(roomInput, setRoomInput, setRoomMessages, "room")}
-                  className="text-sm"
-                />
-                <Button 
-                  size="sm" 
-                  variant="outline"
-                  onClick={() => sendMessage(roomInput, setRoomInput, setRoomMessages, "room")}
                 >
                   <Send className="w-3 h-3" />
                 </Button>
