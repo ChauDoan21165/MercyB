@@ -288,13 +288,13 @@ const handleAccessDenied = () => {
               try {
                 setAudioLoading(true);
                 const raw = String(response.audioFile);
-                const filename = raw.replace(/^\//, '');
-                // Audio files are in public/audio/, accessible at /audio/filename.mp3
-                const baseLocalUrl = `/audio/${filename}`;
+                // Use path as provided; ensure leading slash. Do NOT re-prefix /audio if already present
+                const baseLocalUrl = raw.startsWith('/') ? raw : `/${raw}`;
                 // Fallback: storage public URL
+                const storageKey = raw.replace(/^\//, '').replace(/^audio\//, '');
                 const { data: urlData } = supabase.storage
                   .from('room-audio')
-                  .getPublicUrl(filename);
+                  .getPublicUrl(storageKey);
                 const storageUrl = urlData.publicUrl;
 
                 // Cache-bust to force reload even for same file
