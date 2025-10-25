@@ -170,9 +170,10 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
         ? ""
         : String(entry?.copy?.vi || entry?.content?.vi || entry?.body?.vi || entry?.copy_vi || "");
 
+    // English first, then Vietnamese below with clear separator
     const en = [titleEn, copyEn].filter(Boolean).join("\n\n");
     const vi = [titleVi, copyVi].filter(Boolean).join("\n\n");
-    return [en, vi].filter(Boolean).join("\n\n");
+    return [en, "---", vi].filter(Boolean).join("\n\n");
   };
 
   if (matchedEntry) {
@@ -181,7 +182,8 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
     if (matchedEntry.summary && matchedEntry.essay) {
       const summary = getBilingual(matchedEntry, 'summary');
       const essay = getBilingual(matchedEntry, 'essay');
-      responseText = `**${summary.en}** / **${summary.vi}**\n\n${essay.en}\n\n---\n\n${essay.vi}`;
+      // English first, Vietnamese below
+      responseText = `${essay.en}\n\n---\n\n${essay.vi}`;
     } else {
       responseText = buildEntryResponse(matchedEntry);
     }
