@@ -8,20 +8,20 @@ interface RoomProgressProps {
 
 export const RoomProgress = ({ totalRooms, streak }: RoomProgressProps) => {
   return (
-    <div className="flex items-center gap-4 px-4 py-2 bg-accent/20 rounded-lg border border-accent/30">
+    <div className="flex items-center gap-3 text-sm">
       <div className="flex items-center gap-2">
         <Target className="w-4 h-4 text-primary" />
-        <span className="text-sm font-medium">
-          {totalRooms} {totalRooms === 1 ? 'topic' : 'topics'} explored
+        <span className="font-medium">
+          You have explored {totalRooms} {totalRooms === 1 ? 'topic' : 'topics'}
         </span>
       </div>
       
-      {streak > 1 && (
+      {streak > 0 && (
         <div className="flex items-center gap-2">
           <TrendingUp className="w-4 h-4 text-primary" />
-          <Badge variant="secondary" className="text-xs">
+          <span className="font-medium">
             {streak} day streak! 🔥
-          </Badge>
+          </span>
         </div>
       )}
     </div>

@@ -184,15 +184,17 @@ const handleAccessDenied = () => {
       return;
     }
 
-    // Validate input
-    const validation = messageSchema.safeParse({ text: mainInput });
-    if (!validation.success) {
-      toast({
-        title: "Invalid Input / Đầu Vào Không Hợp Lệ",
-        description: validation.error.issues[0].message,
-        variant: "destructive"
-      });
-      return;
+    // Validate input (only when user types, not for keyword clicks)
+    if (!keywordText) {
+      const validation = messageSchema.safeParse({ text: mainInput });
+      if (!validation.success) {
+        toast({
+          title: "Invalid Input / Đầu Vào Không Hợp Lệ",
+          description: validation.error.issues[0].message,
+          variant: "destructive"
+        });
+        return;
+      }
     }
 
     // Check content moderation
@@ -503,21 +505,12 @@ const handleAccessDenied = () => {
             </Button>
           </div>
           
-          <div className="text-center space-y-2">
-            <div className="flex flex-col items-center gap-2">
-              <Badge variant="outline">📚 Keyword Mode / Chế Độ Từ Khóa</Badge>
-            </div>
+          <div className="text-center">
+            <RoomProgress totalRooms={progress.totalRooms} streak={progress.streak} />
           </div>
           
-          <div className="flex items-center gap-3">
-            <Badge variant="outline" className="bg-green-100 text-green-700 border-green-300">
-              Active / Đang Hoạt Động
-            </Badge>
-          </div>
+          <div className="w-24"></div>
         </div>
-        
-        {/* Progress Tracker */}
-        <RoomProgress totalRooms={progress.totalRooms} streak={progress.streak} />
 
         {/* Main Chat Area */}
         <Card className="p-4 shadow-soft">
