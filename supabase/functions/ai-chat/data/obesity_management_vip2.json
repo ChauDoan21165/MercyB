@@ -22,7 +22,7 @@
     "checksum_sha256": "<placeholder>",
     "meta_notes": "Keyword-driven; VIP 2 exclusive; light gold background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
     "i18n_verified": true,
-    "entry_count": 3,
+    "entry_count": 5,
     "artifact_set_id": "3c4d5e6f-7a8b-49c0-d1e2-f3a4b5c6d7e8",
     "data_format_version": "MercyBlade-Core-v1.2",
     "room_color": "#FFD700",
@@ -41,17 +41,9 @@
     "systems": ["health_management", "wellness"]
   },
   "keywords": {
-    "healthy_nutrition": {
-      "en": ["healthy eating for obesity", "how to manage diet for weight loss", "nutrition tips for obesity", "balanced diet strategies", "obesity diet plan"],
-      "vi": ["ăn uống lành mạnh cho béo phì", "cách quản lý chế độ ăn để giảm cân", "mẹo dinh dưỡng cho béo phì", "chiến lược chế độ ăn cân bằng", "kế hoạch ăn kiêng béo phì"]
-    },
-    "exercise_routines": {
-      "en": ["exercise for obesity", "how to start fitness for weight loss", "obesity workout tips", "physical activity for health", "weight loss exercise plan"],
-      "vi": ["tập thể dục cho béo phì", "cách bắt đầu thể dục để giảm cân", "mẹo tập luyện cho béo phì", "hoạt động thể chất cho sức khỏe", "kế hoạch tập thể dục giảm cân"]
-    },
-    "mindset_for_change": {
-      "en": ["mindset for weight loss", "how to stay motivated for obesity management", "obesity mindset tips", "mental health for weight loss", "motivation for healthy living"],
-      "vi": ["tư duy để giảm cân", "cách giữ động lực quản lý béo phì", "mẹo tư duy cho béo phì", "sức khỏe tinh thần để giảm cân", "động lực sống lành mạnh"]
+    "advanced_obesity_management": {
+      "en": ["refined meal planning", "active lifestyle", "enhanced mindful eating", "optimized portion control", "nutrient-dense choices"],
+      "vi": ["lập kế hoạch bữa ăn tinh chỉnh", "lối sống vận động", "ăn uống tỉnh táo nâng cao", "kiểm soát khẩu phần tối ưu", "lựa chọn giàu dinh dưỡng"]
     }
   },
   "room_essay": {
@@ -64,58 +56,89 @@
   },
   "entries": [
     {
-      "slug": "healthy_nutrition",
-      "title": { "en": "Healthy Nutrition for Obesity", "vi": "Dinh Dưỡng Lành Mạnh Cho Béo Phì" },
-      "copy": {
-        "en": "**Healthy Nutrition for Obesity**\n\nBalanced nutrition reduces weight by 5-10% in 6 months, per studies. Start with these steps:\n\n- **Plan Meals**: Include veggies and lean protein daily.\n- **Track Intake**: Log one meal to stay mindful.\n- **Limit Sugars**: Swap soda for water.\n- **Portion Control**: Use smaller plates.\n\nExample: John’s meal tracking cut 500 calories weekly. Plan one healthy meal today.\n\n*Word count: 150*",
-        "vi": "**Dinh Dưỡng Lành Mạnh Cho Béo Phì**\n\nDinh dưỡng cân bằng giảm 5-10% cân nặng trong 6 tháng, theo nghiên cứu. Bắt đầu với các bước:\n\n- **Lên Kế Hoạch Bữa Ăn**: Thêm rau và protein nạc mỗi ngày.\n- **Theo Dõi Lượng Ăn**: Ghi lại một bữa ăn để tỉnh táo.\n- **Hạn Chế Đường**: Thay nước ngọt bằng nước lọc.\n- **Kiểm Soát Phần Ăn**: Dùng đĩa nhỏ hơn.\n\nVí dụ: Nam theo dõi bữa ăn, giảm 500 calo mỗi tuần. Lên kế hoạch một bữa ăn lành mạnh hôm nay.\n\n*Số từ: 158*"
+      "id": "refining_balanced_meal_planning",
+      "title": {
+        "en": "Refining Balanced Meal Planning",
+        "vi": "Lập Kế Hoạch Bữa Ăn Tinh Chỉnh"
       },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["obesity", "nutrition"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["health_management"],
-      "metadata": { "topic": "obesity", "outcome": "nutrition" },
-      "artifact_id": "8e9f0a1b-6c2d-47e3-b4f5-a6b7c8d9e0f1",
-      "artifact_version_id": "8e9f0a1b-6c2d-47e3-b4f5-a6b7c8d9e0f1-v001",
-      "created_at": "2025-10-21T19:04:00+07:00",
-      "updated_at": "2025-10-21T19:04:00+07:00"
+      "copy": {
+        "en": "Refine meal planning to maintain healthy weight and nourish long-term wellness. Design one daily meal rich in vegetables, lean proteins, and whole grains, using a simple ratio: half vegetables, one quarter protein, one quarter carbohydrates. Prepare three meals ahead each week to avoid impulsive eating. Reflect weekly on energy levels and digestion in your journal. Ask a friend or nutrition partner for feedback once a month to refine your approach. Gradual adjustments build confidence and stability without restriction. Celebrate balance rather than perfection—this method sustains progress naturally. Begin today by sketching one colorful, balanced meal that excites you. Ready to refine your nutritional rhythm? Explore beyond VIP 2.",
+        "vi": "Tinh chỉnh kế hoạch bữa ăn để duy trì cân nặng khỏe mạnh và nuôi dưỡng sức khỏe lâu dài. Thiết kế một bữa ăn hàng ngày giàu rau củ, protein nạc và ngũ cốc nguyên hạt, sử dụng tỷ lệ đơn giản: một nửa rau, một phần tư protein, một phần tư carbohydrate. Chuẩn bị ba bữa ăn mỗi tuần để tránh ăn uống bốc đồng. Phản ánh hàng tuần về mức năng lượng và tiêu hóa trong nhật ký của bạn. Hỏi ý kiến bạn bè hoặc đối tác dinh dưỡng mỗi tháng một lần. Điều chỉnh dần dần xây dựng sự tự tin và ổn định. Ăn cân bằng thay vì hoàn hảo—phương pháp này duy trì tiến bộ tự nhiên."
+      },
+      "attribution": "MercyBlade Core - VIP 2 Content",
+      "tags": ["nutrition", "meal_planning"],
+      "meta": {
+        "created_at": "2025-10-25T12:22:00+09:00",
+        "audio_path": "/audio/Refining_Balanced_Meal_Planning_vip2.mp3"
+      }
     },
     {
-      "slug": "exercise_routines",
-      "title": { "en": "Exercise Routines for Obesity", "vi": "Thói Quen Tập Thể Dục Cho Béo Phì" },
-      "copy": {
-        "en": "**Exercise Routines for Obesity**\n\nExercise boosts weight loss by 30%, per research. Build habits with these steps:\n\n- **Start Small**: Walk 10 minutes daily.\n- **Add Variety**: Try swimming or cycling weekly.\n- **Track Activity**: Log steps to stay motivated.\n- **Increase Gradually**: Add 5 minutes weekly.\n\nExample: Maria’s daily walks led to a 5-pound loss. Walk 10 minutes today.\n\n*Word count: 152*",
-        "vi": "**Thói Quen Tập Thể Dục Cho Béo Phì**\n\nTập thể dục tăng giảm cân 30%, theo nghiên cứu. Xây dựng thói quen với các bước:\n\n- **Bắt Đầu Nhỏ**: Đi bộ 10 phút mỗi ngày.\n- **Thêm Đa Dạng**: Thử bơi hoặc đạp xe hàng tuần.\n- **Theo Dõi Hoạt Động**: Ghi lại số bước để giữ động lực.\n- **Tăng Dần**: Thêm 5 phút mỗi tuần.\n\nVí dụ: Lan đi bộ hàng ngày, giảm 2 kg. Đi bộ 10 phút hôm nay.\n\n*Số từ: 160*"
+      "id": "mastering_active_lifestyle",
+      "title": {
+        "en": "Mastering an Active Lifestyle",
+        "vi": "Làm Chủ Lối Sống Vận Động"
       },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["obesity", "exercise"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["health_management"],
-      "metadata": { "topic": "obesity", "outcome": "exercise" },
-      "artifact_id": "9f0a1b2c-7d3e-58f4-c5a6-b7c8d9e0f1a2",
-      "artifact_version_id": "9f0a1b2c-7d3e-58f4-c5a6-b7c8d9e0f1a2-v001",
-      "created_at": "2025-10-21T19:04:00+07:00",
-      "updated_at": "2025-10-21T19:04:00+07:00"
+      "copy": {
+        "en": "Mastering an active lifestyle is about joyful consistency, not intensity. Commit to twenty minutes of movement daily—walks, cycling, yoga, or dance. Choose activities that spark enjoyment so you look forward to them. Record each session and note your mood and focus afterward. Once a week, increase duration slightly to encourage gentle progress. Join a monthly fitness class or weekend group walk for community motivation. If fatigue arises, rest consciously instead of quitting; recovery is part of rhythm. Over time, this steady balance reshapes metabolism, posture, and confidence. Begin now with one empowering movement that feels light and sustainable. Ready to master your momentum? Explore beyond VIP 2.",
+        "vi": "Làm chủ lối sống năng động là về tính nhất quán vui vẻ, không phải cường độ. Cam kết hai mươi phút vận động hàng ngày—đi bộ, đạp xe, yoga hoặc khiêu vũ. Chọn các hoạt động mang lại niềm vui để bạn mong đợi chúng. Ghi lại mỗi buổi và ghi chú tâm trạng và sự tập trung sau đó. Mỗi tuần một lần, tăng thời lượng nhẹ nhàng để khuyến khích tiến bộ từ từ. Tham gia lớp thể dục hàng tháng hoặc đi bộ nhóm cuối tuần để có động lực cộng đồng. Nếu mệt mỏi xuất hiện, nghỉ ngơi có ý thức thay vì bỏ cuộc."
+      },
+      "attribution": "MercyBlade Core - VIP 2 Content",
+      "tags": ["exercise", "lifestyle"],
+      "meta": {
+        "created_at": "2025-10-25T12:22:00+09:00",
+        "audio_path": "/audio/Mastering_an_Active_Lifestyle_vip2.mp3"
+      }
     },
     {
-      "slug": "mindset_for_change",
-      "title": { "en": "Mindset for Lasting Change", "vi": "Tư Duy Cho Thay Đổi Bền Vững" },
-      "copy": {
-        "en": "**Mindset for Lasting Change**\n\nA positive mindset boosts success by 40%, per studies. Stay motivated with these steps:\n\n- **Set Goals**: Aim for one small goal weekly (e.g., lose 1 pound).\n- **Celebrate Wins**: Note every achievement.\n- **Stay Positive**: Reframe setbacks (e.g., “I’ll try again”).\n- **Seek Support**: Join a health group.\n\nExample: Alex’s goals kept him focused. Set one goal today.\n\n*Word count: 148*",
-        "vi": "**Tư Duy Cho Thay Đổi Bền Vững**\n\nTư duy tích cực tăng thành công 40%, theo nghiên cứu. Giữ động lực với các bước:\n\n- **Đặt Mục Tiêu**: Nhắm một mục tiêu nhỏ mỗi tuần (ví dụ, giảm 0,5 kg).\n- **Ăn Mừng Chiến Thắng**: Ghi lại mọi thành tựu.\n- **Giữ Tích Cực**: Xem lại thất bại (ví dụ, “Tôi sẽ thử lại”).\n- **Tìm Hỗ Trợ**: Tham gia nhóm sức khỏe.\n\nVí dụ: Nam đặt mục tiêu, giữ tập trung. Đặt một mục tiêu hôm nay.\n\n*Số từ: 156*"
+      "id": "enhancing_mindful_eating",
+      "title": {
+        "en": "Enhancing Mindful Eating Practices",
+        "vi": "Nâng Cao Ăn Uống Tỉnh Táo"
       },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["obesity", "mindset"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["wellness"],
-      "metadata": { "topic": "obesity", "outcome": "mindset" },
-      "artifact_id": "0a1b2c3d-8e4f-69a5-d6b7-c8d9e0f1a2b3",
-      "artifact_version_id": "0a1b2c3d-8e4f-69a5-d6b7-c8d9e0f1a2b3-v001",
-      "created_at": "2025-10-21T19:04:00+07:00",
-      "updated_at": "2025-10-21T19:04:00+07:00"
+      "copy": {
+        "en": "Enhancing mindful eating transforms your relationship with nourishment. Sit for one meal each day without screens, distractions, or hurry. Taste your food with full attention—texture, scent, and satisfaction. This awareness gently reduces overeating and emotional snacking. Reflect weekly in your journal on triggers and gratitude moments that arise. Once a month, discuss your insights with a trusted partner to stay accountable. Gradually, meals become quieter rituals of self-respect rather than routine refueling. Mindful eating cultivates emotional steadiness and digestive comfort. Begin this practice at your next meal—chew slowly, breathe fully, and honor nourishment as self-care. Ready to deepen presence with food? Explore beyond VIP 2.",
+        "vi": "Nâng cao ăn uống tỉnh táo biến đổi mối quan hệ của bạn với dinh dưỡng. Ngồi cho một bữa ăn mỗi ngày mà không có màn hình, phiền nhiễu hoặc vội vàng. Nếm thức ăn với sự chú ý đầy đủ—kết cấu, mùi và sự hài lòng. Nhận thức này nhẹ nhàng giảm ăn quá nhiều và ăn vặt cảm xúc. Phản ánh hàng tuần trong nhật ký về các yếu tố kích hoạt và khoảnh khắc biết ơn. Mỗi tháng một lần, thảo luận những hiểu biết của bạn với đối tác đáng tin cậy. Dần dần, bữa ăn trở thành nghi lễ tôn trọng bản thân thay vì tiếp nhiên liệu thường xuyên."
+      },
+      "attribution": "MercyBlade Core - VIP 2 Content",
+      "tags": ["mindfulness", "eating_habits"],
+      "meta": {
+        "created_at": "2025-10-25T12:22:00+09:00",
+        "audio_path": "/audio/Enhancing_Mindful_Eating_Practices_vip2.mp3"
+      }
+    },
+    {
+      "id": "optimizing_portion_control",
+      "title": {
+        "en": "Optimizing Portion Control",
+        "vi": "Tối Ưu Kiểm Soát Khẩu Phần"
+      },
+      "copy": {
+        "en": "Optimizing portion control helps you balance nourishment and satisfaction gracefully. Use smaller plates and bowls to guide natural moderation. Before eating, pause for a breath to gauge true hunger rather than habit. Reflect weekly on portion size, energy, and comfort levels. If you often eat quickly, set utensils down between bites to slow your rhythm. Prepare meals in advance to prevent overeating from stress or fatigue. Once a month, review patterns with a supportive friend or coach. Over time, portion awareness becomes effortless self-respect instead of discipline. Begin today by plating your next meal with mindful attention to what feels 'enough.' Ready to refine your balance? Explore beyond VIP 2.",
+        "vi": "Tối ưu hóa kiểm soát khẩu phần giúp bạn cân bằng dinh dưỡng và sự hài lòng một cách duyên dáng. Sử dụng đĩa và bát nhỏ hơn để hướng dẫn điều độ tự nhiên. Trước khi ăn, dừng lại để hít thở và đánh giá sự đói thực sự thay vì thói quen. Phản ánh hàng tuần về kích thước khẩu phần, năng lượng và mức độ thoải mái. Nếu bạn thường ăn nhanh, đặt đồ dùng xuống giữa các miếng để làm chậm nhịp độ. Chuẩn bị bữa ăn trước để ngăn ăn quá nhiều do căng thẳng."
+      },
+      "attribution": "MercyBlade Core - VIP 2 Content",
+      "tags": ["portion_control", "mindfulness"],
+      "meta": {
+        "created_at": "2025-10-25T12:22:00+09:00",
+        "audio_path": "/audio/Optimizing_Portion_Control_vip2.mp3"
+      }
+    },
+    {
+      "id": "choosing_nutrient_dense_foods",
+      "title": {
+        "en": "Choosing Nutrient-Dense Foods",
+        "vi": "Chọn Thực Phẩm Giàu Dinh Dưỡng"
+      },
+      "copy": {
+        "en": "Choosing nutrient-dense foods fuels vitality and supports natural weight regulation. Fill one meal each day with colorful vegetables, high-quality proteins, and whole grains. Swap processed snacks for nuts, fruits, or yogurt rich in texture and nutrients. Keep a weekly record of food quality and energy shifts to notice patterns. Once a month, challenge yourself to cook a new wholesome recipe to prevent boredom. Nourishment should feel inspiring, not restrictive. Invite feedback from a friend on your creative healthy dishes. Over time, nutrient-rich eating becomes intuitive—guided by how your body feels rather than rigid rules. Begin now by adding one vibrant, nourishing ingredient to today's meal. Ready to eat smarter and thrive? Explore beyond VIP 2.",
+        "vi": "Chọn thực phẩm giàu dinh dưỡng nuôi dưỡng sức sống và hỗ trợ điều chỉnh cân nặng tự nhiên. Điền một bữa ăn mỗi ngày với rau củ đầy màu sắc, protein chất lượng cao và ngũ cốc nguyên hạt. Thay đồ ăn vặt chế biến sẵn bằng các loại hạt, trái cây hoặc sữa chua giàu kết cấu và chất dinh dưỡng. Giữ hồ sơ hàng tuần về chất lượng thực phẩm và sự thay đổi năng lượng. Mỗi tháng một lần, thử thách bản thân nấu một công thức lành mạnh mới. Dinh dưỡng nên cảm thấy truyền cảm hứng, không hạn chế."
+      },
+      "attribution": "MercyBlade Core - VIP 2 Content",
+      "tags": ["nutrition", "food_choices"],
+      "meta": {
+        "created_at": "2025-10-25T12:22:00+09:00",
+        "audio_path": "/audio/Choosing_Nutrient-Dense_Foods_vip2.mp3"
+      }
     }
   ],
   "ui_triggers": {
