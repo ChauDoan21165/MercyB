@@ -553,9 +553,9 @@ const handleAccessDenied = () => {
               <div ref={endRef} />
             </ScrollArea>
             
-            {/* Audio player with controls */}
+            {/* Audio player - always visible when audio is available */}
             {currentAudio && (
-              <div className="mt-2 flex items-center gap-2 p-2 bg-muted/50 rounded-lg">
+              <div className="mt-3 flex items-center gap-2 p-3 bg-muted/30 rounded-lg border">
                 <Button
                   variant="ghost"
                   size="sm"
@@ -576,13 +576,23 @@ const handleAccessDenied = () => {
                     }
                   }}
                   disabled={audioLoading}
+                  className="flex items-center gap-2"
                 >
                   {audioLoading ? (
-                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span className="text-xs">Loading...</span>
+                    </>
                   ) : isAudioPlaying ? (
-                    <span className="text-xs">⏸️ Pause</span>
+                    <>
+                      <span className="text-lg">⏸️</span>
+                      <span className="text-xs font-medium">Pause Audio</span>
+                    </>
                   ) : (
-                    <span className="text-xs">▶️ Play Audio</span>
+                    <>
+                      <Volume2 className="w-4 h-4" />
+                      <span className="text-xs font-medium">Play Audio / Phát Âm Thanh</span>
+                    </>
                   )}
                 </Button>
                 <audio
@@ -599,8 +609,15 @@ const handleAccessDenied = () => {
                     console.error('Audio error:', e);
                     setAudioLoading(false);
                     if (altAudio && audioRef.current && audioRef.current.src !== altAudio) {
+                      console.log('Trying fallback audio');
                       audioRef.current.src = altAudio;
                       audioRef.current.load();
+                    } else {
+                      toast({
+                        title: "Audio unavailable / Âm thanh không có",
+                        description: "Audio file not found / Không tìm thấy file âm thanh",
+                        variant: "destructive"
+                      });
                     }
                   }}
                   onLoadedMetadata={() => setAudioLoading(false)}

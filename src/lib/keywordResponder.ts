@@ -109,26 +109,45 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   const groupKey = matchResult?.groupKey || null;
   const matchedKeyword = matchResult?.matchedKeyword || null;
   
-  // Handle new structure with entries object
+  // Handle both old (array) and new (object) entry structures
   let matchedEntry = null;
   let audioFile: string | undefined;
   let entryId: string | undefined;
   
   if (roomData.entries && !Array.isArray(roomData.entries)) {
     // New structure: entries is an object with entry IDs as keys
-    if (roomData.default_entry_id && groupKey) {
-      const defaultEntry = roomData.entries[roomData.default_entry_id];
-      if (defaultEntry) {
-        matchedEntry = defaultEntry;
+    // Try to find entry that matches the groupKey
+    if (groupKey) {
+      matchedEntry = roomData.entries[groupKey];
+      if (matchedEntry) {
+        entryId = groupKey;
+        // Extract audio file
+        const audio = matchedEntry.audio;
+        if (typeof audio === 'string') {
+          audioFile = audio;
+        } else if (audio && typeof audio === 'object') {
+          audioFile = audio.en || audio.vi;
+        }
+      }
+    }
+    // Fallback to default entry if no match
+    if (!matchedEntry && roomData.default_entry_id) {
+      matchedEntry = roomData.entries[roomData.default_entry_id];
+      if (matchedEntry) {
         entryId = roomData.default_entry_id;
-        audioFile = defaultEntry.audio?.en || defaultEntry.audio?.vi;
+        const audio = matchedEntry.audio;
+        if (typeof audio === 'string') {
+          audioFile = audio;
+        } else if (audio && typeof audio === 'object') {
+          audioFile = audio.en || audio.vi;
+        }
       }
     }
   } else {
     // Old structure: entries is an array
     matchedEntry = findEntryByKeyword(matchedKeyword, groupKey, roomData.entries || []);
 
-    // Fallback: try to match by keyword text within title/content (handles simple string fields and no explicit mapping)
+    // Fallback: try to match by keyword text within title/content
     if (!matchedEntry && groupKey) {
       const groups: any = roomData.keywords || (roomData as any).keywords_dict || {};
       const group = groups[groupKey];
@@ -154,18 +173,18 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
       }) || null;
     }
 
-    // Final fallback: pick the first entry if we still have nothing but a group was matched
+    // Final fallback: pick the first entry
     if (!matchedEntry && groupKey && Array.isArray(roomData.entries) && roomData.entries.length > 0) {
       matchedEntry = roomData.entries[0];
     }
 
     if (matchedEntry) {
-      // Support audio in various formats, including meta.audio_file
+      // Support audio in various formats
       const audio = matchedEntry.audio || matchedEntry.audio_file || matchedEntry.meta?.audio_file || matchedEntry.audioEn || matchedEntry.audio_en;
       if (typeof audio === 'string') {
-        audioFile = audio.startsWith('/') ? audio : `/audio/${audio}`;
-      } else {
-        audioFile = matchedEntry.audio?.en || matchedEntry.audio?.vi;
+        audioFile = audio;
+      } else if (audio && typeof audio === 'object') {
+        audioFile = audio.en || audio.vi;
       }
       entryId = matchedEntry.id || matchedEntry.artifact_id || matchedEntry.title;
     }
