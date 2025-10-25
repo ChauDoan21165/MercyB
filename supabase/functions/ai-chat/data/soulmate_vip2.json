@@ -1,0 +1,70 @@
+{
+  "tier": "VIP 2",
+  "default_entry_id": "refining_values_for_lasting_love",
+  "search": {
+    "normalize_case": true,
+    "normalize_accents": true,
+    "tokenize_on": [" ", "_"]
+  },
+  "keyword_menu": {
+    "en": [
+      "refining_values_for_lasting_love",
+      "nurturing_meaningful_connections",
+      "communicating_for_deeper_trust",
+      "cultivating_empathy_for_bonds",
+      "aligning_goals_for_love"
+    ]
+  },
+  "entries": [
+    {
+      "id": "refining_values_for_lasting_love",
+      "title": "Refining Values for Lasting Love",
+      "content": "Refining your values helps build relationships that endure. Spend a few quiet moments each day reflecting on one principle—such as compassion, honesty, or patience—and how it shapes your choices. Journaling weekly clarifies what kind of partnership aligns with your life goals. Ask a trusted friend for feedback once a month to broaden perspective and refine understanding. Studies show that self-awareness and shared values strengthen emotional compatibility by 40%. Each week, engage in a meaningful conversation about beliefs and hopes. These steady, authentic reflections create a foundation for trust and long-term harmony. Begin today by choosing one guiding value that defines your path in love. Ready to evolve your connection? Explore beyond VIP 2.",
+      "audio": "Refining_Values_for_Lasting_Love_VIP2.mp3"
+    },
+    {
+      "id": "nurturing_meaningful_connections",
+      "title": "Nurturing Meaningful Connections",
+      "content": "Meaningful connections are cultivated through sincerity and patience. Attend a community gathering or creative class each month to meet people with similar intentions. Initiate one genuine conversation weekly, focusing on shared experiences and values. Research shows that authentic communication builds emotional safety and deepens compatibility. Follow up within a few days to keep new relationships alive, showing care without pressure. Practice openness but remain grounded in your values. These small gestures nurture trust and comfort over time. Every meaningful interaction teaches you more about what love truly feels like when it grows naturally. Begin today by starting one thoughtful conversation that invites sincerity. Ready to nurture stronger, lasting bonds? Explore beyond VIP 2.",
+      "audio": "Nurturing_Meaningful_Connections_VIP2.mp3"
+    },
+    {
+      "id": "communicating_for_deeper_trust",
+      "title": "Communicating for Deeper Trust",
+      "content": "Communication is the bridge between hearts. Practice active listening every day—pause before speaking, maintain presence, and ask thoughtful questions like "What feels important to you right now?" Share one authentic emotion weekly to strengthen openness and connection. Studies reveal that mindful communication enhances trust by up to 35%. Once a month, reflect on how your words influence emotional safety and growth. Speak with honesty but also with kindness; true connection is not about perfection, but understanding. By communicating consciously, you create space for love to deepen beyond appearances. Begin today with a calm, open-hearted conversation. Ready to cultivate deeper trust and compassion? Explore beyond VIP 2.",
+      "audio": "Communicating_for_Deeper_Trust_VIP2.mp3"
+    },
+    {
+      "id": "cultivating_empathy_for_bonds",
+      "title": "Cultivating Empathy for Bonds",
+      "content": "Empathy is the art of seeing love through another's eyes. Take a few moments daily to imagine how others feel, especially during disagreement or silence. Offer one thoughtful act of kindness each week—listening fully, offering comfort, or simply being present. Research shows empathy deepens emotional closeness and reduces misunderstanding by 30%. Once a month, write about moments when compassion helped you connect. These small acts open your heart to patience and mutual care. In love, empathy turns distance into closeness and difference into learning. Begin today by practicing one gentle, understanding gesture. Ready to strengthen emotional bonds through compassion? Explore beyond VIP 2.",
+      "audio": "Cultivating_Empathy_for_Bonds_VIP2.mp3"
+    },
+    {
+      "id": "aligning_goals_for_love",
+      "title": "Aligning Goals for Love",
+      "content": "Shared direction gives love purpose. Reflect daily on one personal goal—such as health, creativity, or family—and how it aligns with the kind of relationship you wish to build. Write weekly about ways your aspirations complement those of a future partner. Studies suggest that goal alignment boosts relationship satisfaction and stability by 40%. Each month, discuss dreams and intentions openly with a friend or mentor to gain perspective. Small, intentional conversations about the future create clarity and confidence. Love thrives when two visions move in harmony. Begin today by defining one goal that truly matters to you. Ready to align heart and purpose in partnership? Explore beyond VIP 2.",
+      "audio": "Aligning_Goals_for_Love_VIP2.mp3"
+    }
+  ],
+  "keywords": {
+    "deep_connection": {
+      "en": [
+        "value refinement",
+        "meaningful connections",
+        "deep trust building",
+        "advanced relationship tips",
+        "soul mate bonding"
+      ]
+    }
+  },
+  "meta": {
+    "created_at": "2025-10-25T09:20:00+09:00",
+    "updated_at": "2025-10-25T09:20:00+09:00",
+    "entry_count": 5,
+    "artifact_set_id": "a1b2c3d4-e5f6-47a8-b9c0-d1e2f3a4b5c6",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#FFD700",
+    "tier": "vip2"
+  }
+}
