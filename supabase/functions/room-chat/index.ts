@@ -104,6 +104,7 @@ const roomFiles: { [key: string]: string } = {
   'shadow-work-vip1': 'Shadow_Work_VIP1.json',
   'shadow-work-vip2': 'Shadow_Work_VIP2.json',
   'shadow-work-vip3': 'Shadow_Work_VIP3.json',
+  'mental-health-free': 'mental_health_free.json',
 };
 
 // Embedded minimal fallback data to guarantee responses even if JSON files are not bundled
