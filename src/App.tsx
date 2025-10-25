@@ -28,6 +28,7 @@ import AdminStats from "./pages/AdminStats";
 import AdminPaymentVerification from "./pages/AdminPaymentVerification";
 import AdminAudioUpload from "./pages/AdminAudioUpload";
 import AdminModeration from "./pages/AdminModeration";
+import ResetPassword from "./pages/ResetPassword";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/" element={<Welcome />} />
           <Route path="/meaning-of-life" element={<MeaningOfLife />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/reset" element={<ResetPassword />} />
           <Route path="/rooms" element={<RoomGrid />} />
           <Route path="/rooms-vip1" element={<RoomGridVIP1 />} />
           <Route path="/rooms-vip2" element={<RoomGridVIP2 />} />
