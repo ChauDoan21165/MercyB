@@ -555,6 +555,15 @@ const handleAccessDenied = () => {
           </div>
           
           <div className="text-center">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <h2 className="text-lg font-semibold">{currentRoom.nameEn}</h2>
+              {info && (
+                <Badge variant="secondary" className="text-xs">
+                  {info.tier === 'free' ? 'Free' : info.tier === 'vip1' ? 'VIP 1' : info.tier === 'vip2' ? 'VIP 2' : 'VIP 3'}
+                </Badge>
+              )}
+            </div>
+            <p className="text-xs text-muted-foreground mb-1">{currentRoom.nameVi}</p>
             <RoomProgress totalRooms={progress.totalRooms} streak={progress.streak} />
           </div>
           

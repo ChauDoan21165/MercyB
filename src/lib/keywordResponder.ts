@@ -160,8 +160,8 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
     }
 
     if (matchedEntry) {
-      // Support audio in various formats
-      const audio = matchedEntry.audio || matchedEntry.audio_file || matchedEntry.audioEn || matchedEntry.audio_en;
+      // Support audio in various formats, including meta.audio_file
+      const audio = matchedEntry.audio || matchedEntry.audio_file || matchedEntry.meta?.audio_file || matchedEntry.audioEn || matchedEntry.audio_en;
       if (typeof audio === 'string') {
         audioFile = audio.startsWith('/') ? audio : `/audio/${audio}`;
       } else {
