@@ -1,0 +1,137 @@
+{
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nObesity management for VIP 1, foundational\n\nEach entry: teach basic steps for managing obesity\n\nPhilosophy: supportive, simple, non-judgmental, humane language\n\nBeliefs:\n- Don't judge. Encourage first steps.\n- Don't overwhelm. Keep it simple.\n- Don't shame. Build confidence.\n\nTalk points\n- Nutrition starts with awareness.\n- Movement builds health.\n- Mindset supports progress.\n- Every step counts.\n\nTiny habits to teach:\n- Notice one eating pattern.\n- Move for 5 minutes daily.\n- Track one meal weekly.\n- Set one small goal.",
+  "schema_version": "1.1",
+  "schema_id": "obesity_management_vip1",
+  "description": "Echologic Mercy Blade room for VIP 1 users to start managing obesity with foundational strategies",
+  "description_vi": "Phòng Mercy Blade dành cho người dùng VIP 1 để bắt đầu quản lý béo phì với chiến lược cơ bản",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn y tế chuyên nghiệp.",
+  "crisis_footer": {
+    "en": "For serious health concerns or obesity-related issues, contact a doctor or support line immediately.",
+    "vi": "Nếu gặp vấn đề sức khỏe nghiêm trọng hoặc liên quan đến béo phì, liên hệ bác sĩ hoặc đường dây hỗ trợ ngay."
+  },
+  "safety_footer": {
+    "en": "For personalized obesity management, consult a healthcare professional.",
+    "vi": "Để quản lý béo phì cá nhân hóa, tham khảo chuyên gia y tế."
+  },
+  "meta": {
+    "created_at": "2025-10-25T10:00:00+07:00",
+    "updated_at": "2025-10-25T10:00:00+07:00",
+    "checksum_sha256": "<placeholder>",
+    "meta_notes": "Keyword-driven; VIP 1 exclusive; light background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
+    "i18n_verified": true,
+    "entry_count": 3,
+    "artifact_set_id": "1a2b3c4d-5e6f-47a8-b9c0-d1e2f3a4b5c6",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#FFE4B5",
+    "tier": "vip1"
+  },
+  "enums": {
+    "tags": [
+      "obesity",
+      "nutrition",
+      "exercise",
+      "mindset",
+      "health_management"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["health_management", "wellness"]
+  },
+  "keywords": {
+    "basic_nutrition": {
+      "en": ["eating habits for obesity", "simple diet tips", "food awareness", "healthy eating basics", "nutrition for weight loss"],
+      "vi": ["thói quen ăn uống cho béo phì", "mẹo ăn kiêng đơn giản", "nhận thức về thực phẩm", "cơ bản về ăn uống lành mạnh", "dinh dưỡng để giảm cân"]
+    },
+    "simple_movement": {
+      "en": ["easy exercise for obesity", "starting to move", "simple fitness tips", "basic physical activity", "beginner exercise"],
+      "vi": ["tập thể dục dễ dàng cho béo phì", "bắt đầu vận động", "mẹo thể dục đơn giản", "hoạt động thể chất cơ bản", "tập thể dục cho người mới"]
+    },
+    "starting_mindset": {
+      "en": ["weight loss motivation", "starting healthy habits", "obesity mindset basics", "staying positive", "first steps to change"],
+      "vi": ["động lực giảm cân", "bắt đầu thói quen lành mạnh", "tư duy cơ bản về béo phì", "giữ tích cực", "bước đầu thay đổi"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Obesity Management VIP1\n\nStarting to manage obesity begins with simple, achievable steps in nutrition, movement, and mindset. Small changes can lead to big results over time. This VIP 1 room offers foundational strategies to begin your journey.\n\n**Notice Your Nutrition**\n- Track one meal this week.\n- Notice when you feel full.\n- Example: Tom tracked breakfast and learned his portions.\n\n**Start Moving**\n- Walk for 5 minutes daily.\n- Stand up every hour.\n- Research shows small movements add up.\n\n**Build a Positive Mindset**\n- Set one small goal this week (e.g., \"Drink more water\").\n- Celebrate when you complete it.\n- Example: Lisa's water goal helped her feel better.\n\n**Take the First Step**\n- Start with just one change today.\n- Track your progress in a notebook.\n\nBegin today: track one meal or walk for 5 minutes. Your VIP 1 tools will support your first steps to better health!\n\n*Word count: 298*",
+    "vi": "# Quản Lý Béo Phì VIP1\n\nBắt đầu quản lý béo phì từ những bước đơn giản, khả thi trong dinh dưỡng, vận động và tư duy. Thay đổi nhỏ có thể dẫn đến kết quả lớn theo thời gian. Phòng VIP 1 này cung cấp chiến lược cơ bản để bắt đầu hành trình của bạn.\n\n**Chú Ý Dinh Dưỡng**\n- Theo dõi một bữa ăn tuần này.\n- Chú ý khi bạn no.\n- Ví dụ: An theo dõi bữa sáng và học về khẩu phần.\n\n**Bắt Đầu Vận Động**\n- Đi bộ 5 phút mỗi ngày.\n- Đứng dậy mỗi giờ.\n- Nghiên cứu cho thấy vận động nhỏ tích lũy.\n\n**Xây Dựng Tư Duy Tích Cực**\n- Đặt một mục tiêu nhỏ tuần này (ví dụ, \"Uống nhiều nước\").\n- Ăn mừng khi hoàn thành.\n- Ví dụ: Lan đặt mục tiêu uống nước, cảm thấy tốt hơn.\n\n**Bước Đầu Tiên**\n- Bắt đầu với một thay đổi hôm nay.\n- Theo dõi tiến độ trong sổ tay.\n\nBắt đầu hôm nay: theo dõi một bữa ăn hoặc đi bộ 5 phút. Công cụ VIP 1 sẽ hỗ trợ bước đầu đến sức khỏe tốt hơn!\n\n*Số từ: 306*",
+    "word_count_en": 298,
+    "word_count_vi": 306,
+    "updated_at": "2025-10-25T10:00:00+07:00"
+  },
+  "entries": [
+    {
+      "slug": "basic_nutrition",
+      "title": { "en": "Basic Nutrition Awareness", "vi": "Nhận Thức Dinh Dưỡng Cơ Bản" },
+      "copy": {
+        "en": "**Basic Nutrition Awareness**\n\nStarting with nutrition is about awareness. Begin with these simple steps:\n\n- **Track One Meal**: Write down what you eat at breakfast.\n- **Notice Fullness**: Stop eating when you feel satisfied.\n- **Drink Water**: Have a glass before meals.\n- **Choose Whole Foods**: Pick an apple instead of chips.\n\nExample: Mark tracked his lunch and noticed he ate less junk food. Track one meal today.\n\n*Word count: 142*",
+        "vi": "**Nhận Thức Dinh Dưỡng Cơ Bản**\n\nBắt đầu với dinh dưỡng là về nhận thức. Bắt đầu với các bước đơn giản:\n\n- **Theo Dõi Một Bữa Ăn**: Viết ra bạn ăn gì vào bữa sáng.\n- **Chú Ý No**: Ngừng ăn khi cảm thấy đủ.\n- **Uống Nước**: Uống một cốc trước bữa ăn.\n- **Chọn Thực Phẩm Nguyên Chất**: Chọn táo thay vì snack.\n\nVí dụ: Minh theo dõi bữa trưa, ăn ít đồ ăn vặt hơn. Theo dõi một bữa ăn hôm nay.\n\n*Số từ: 150*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["obesity", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 1,
+      "systems": ["health_management"],
+      "metadata": { "topic": "obesity", "outcome": "nutrition" },
+      "artifact_id": "1b2c3d4e-5f6a-47b8-c9d0-e1f2a3b4c5d6",
+      "artifact_version_id": "1b2c3d4e-5f6a-47b8-c9d0-e1f2a3b4c5d6-v001",
+      "created_at": "2025-10-25T10:00:00+07:00",
+      "updated_at": "2025-10-25T10:00:00+07:00"
+    },
+    {
+      "slug": "simple_movement",
+      "title": { "en": "Simple Movement to Start", "vi": "Vận Động Đơn Giản Để Bắt Đầu" },
+      "copy": {
+        "en": "**Simple Movement to Start**\n\nMovement doesn't have to be hard. Start small with these steps:\n\n- **Walk 5 Minutes**: Take a short walk after dinner.\n- **Stand Often**: Get up every hour.\n- **Stretch**: Move your arms and legs during breaks.\n- **Take Stairs**: Choose stairs over elevators when possible.\n\nExample: Sara's 5-minute walks became her favorite habit. Walk for 5 minutes today.\n\n*Word count: 140*",
+        "vi": "**Vận Động Đơn Giản Để Bắt Đầu**\n\nVận động không phải khó. Bắt đầu nhỏ với các bước:\n\n- **Đi Bộ 5 Phút**: Đi bộ ngắn sau bữa tối.\n- **Đứng Thường Xuyên**: Đứng dậy mỗi giờ.\n- **Duỗi Người**: Cử động tay chân trong giờ nghỉ.\n- **Đi Cầu Thang**: Chọn cầu thang thay vì thang máy khi có thể.\n\nVí dụ: Hoa đi bộ 5 phút, trở thành thói quen yêu thích. Đi bộ 5 phút hôm nay.\n\n*Số từ: 148*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["obesity", "exercise"],
+      "urgency": "routine",
+      "severity_level": 1,
+      "systems": ["health_management"],
+      "metadata": { "topic": "obesity", "outcome": "exercise" },
+      "artifact_id": "2c3d4e5f-6a7b-58c9-d0e1-f2a3b4c5d6e7",
+      "artifact_version_id": "2c3d4e5f-6a7b-58c9-d0e1-f2a3b4c5d6e7-v001",
+      "created_at": "2025-10-25T10:00:00+07:00",
+      "updated_at": "2025-10-25T10:00:00+07:00"
+    },
+    {
+      "slug": "starting_mindset",
+      "title": { "en": "Starting with a Positive Mindset", "vi": "Bắt Đầu Với Tư Duy Tích Cực" },
+      "copy": {
+        "en": "**Starting with a Positive Mindset**\n\nA good mindset makes change easier. Begin with these steps:\n\n- **Set One Goal**: Choose something small (e.g., \"Drink 3 glasses of water\").\n- **Celebrate Wins**: Feel proud when you complete your goal.\n- **Be Kind**: Don't criticize yourself for mistakes.\n- **Ask for Help**: Talk to a friend or family member.\n\nExample: Ben's goal to drink water made him feel accomplished. Set one goal today.\n\n*Word count: 138*",
+        "vi": "**Bắt Đầu Với Tư Duy Tích Cực**\n\nTư duy tốt làm thay đổi dễ dàng hơn. Bắt đầu với các bước:\n\n- **Đặt Một Mục Tiêu**: Chọn điều nhỏ (ví dụ, \"Uống 3 cốc nước\").\n- **Ăn Mừng Chiến Thắng**: Tự hào khi hoàn thành mục tiêu.\n- **Tử Tế**: Đừng chỉ trích bản thân vì sai lầm.\n- **Xin Giúp Đỡ**: Nói chuyện với bạn hoặc gia đình.\n\nVí dụ: Nam đặt mục tiêu uống nước, cảm thấy hoàn thành. Đặt một mục tiêu hôm nay.\n\n*Số từ: 146*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["obesity", "mindset"],
+      "urgency": "routine",
+      "severity_level": 1,
+      "systems": ["wellness"],
+      "metadata": { "topic": "obesity", "outcome": "mindset" },
+      "artifact_id": "3d4e5f6a-7b8c-69d0-e1f2-a3b4c5d6e7f8",
+      "artifact_version_id": "3d4e5f6a-7b8c-69d0-e1f2-a3b4c5d6e7f8-v001",
+      "created_at": "2025-10-25T10:00:00+07:00",
+      "updated_at": "2025-10-25T10:00:00+07:00"
+    }
+  ],
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 3,
+        "min_distinct_buckets": 2,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}

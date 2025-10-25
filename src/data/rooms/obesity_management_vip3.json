@@ -1,0 +1,138 @@
+{
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nObesity management for VIP 3, advanced mastery\n\nEach entry: teach advanced, evidence-based strategies for managing obesity\n\nPhilosophy: empowering, comprehensive, personalized, research-backed\n\nBeliefs:\n- Don't settle. Pursue optimal health.\n- Don't limit. Expand possibilities.\n- Don't generalize. Personalize strategies.\n\nTalk points\n- Advanced nutrition optimizes metabolic health.\n- Strategic exercise maximizes fat loss.\n- Deep mindset work creates lasting transformation.\n- Data-driven approaches ensure success.\n\nAdvanced habits to teach:\n- Implement macro tracking and meal timing.\n- Design periodized training programs.\n- Practice cognitive restructuring weekly.\n- Monitor biometrics and adjust strategies.",
+  "schema_version": "1.1",
+  "schema_id": "obesity_management_vip3",
+  "description": "Echologic Mercy Blade room for VIP 3 users to master obesity management with advanced, personalized strategies",
+  "description_vi": "Phòng Mercy Blade dành cho người dùng VIP 3 để làm chủ quản lý béo phì với chiến lược nâng cao, cá nhân hóa",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn y tế chuyên nghiệp.",
+  "crisis_footer": {
+    "en": "For serious health concerns or obesity-related issues, contact a doctor or support line immediately.",
+    "vi": "Nếu gặp vấn đề sức khỏe nghiêm trọng hoặc liên quan đến béo phì, liên hệ bác sĩ hoặc đường dây hỗ trợ ngay."
+  },
+  "safety_footer": {
+    "en": "For personalized obesity management, consult a healthcare professional.",
+    "vi": "Để quản lý béo phì cá nhân hóa, tham khảo chuyên gia y tế."
+  },
+  "meta": {
+    "created_at": "2025-10-25T10:00:00+07:00",
+    "updated_at": "2025-10-25T10:00:00+07:00",
+    "checksum_sha256": "<placeholder>",
+    "meta_notes": "Keyword-driven; VIP 3 exclusive; premium gold background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
+    "i18n_verified": true,
+    "entry_count": 3,
+    "artifact_set_id": "5e6f7a8b-9c0d-41e2-f3a4-b5c6d7e8f9a0",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#FFA500",
+    "tier": "vip3"
+  },
+  "enums": {
+    "tags": [
+      "obesity",
+      "nutrition",
+      "exercise",
+      "mindset",
+      "health_management",
+      "advanced"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["health_management", "wellness"]
+  },
+  "keywords": {
+    "advanced_nutrition": {
+      "en": ["macro tracking for obesity", "metabolic optimization", "advanced diet strategies", "nutrient timing for weight loss", "personalized nutrition planning"],
+      "vi": ["theo dõi macro cho béo phì", "tối ưu hóa trao đổi chất", "chiến lược ăn kiêng nâng cao", "thời gian dinh dưỡng để giảm cân", "kế hoạch dinh dưỡng cá nhân"]
+    },
+    "strategic_exercise": {
+      "en": ["advanced exercise for obesity", "periodized training for fat loss", "HIIT and resistance training", "exercise programming", "metabolic conditioning"],
+      "vi": ["tập thể dục nâng cao cho béo phì", "luyện tập theo chu kỳ để giảm mỡ", "HIIT và luyện tập sức đề kháng", "lập trình tập luyện", "điều hòa trao đổi chất"]
+    },
+    "transformational_mindset": {
+      "en": ["cognitive restructuring for weight loss", "advanced mindset strategies", "psychological resilience", "identity transformation", "habit mastery"],
+      "vi": ["tái cấu trúc nhận thức để giảm cân", "chiến lược tư duy nâng cao", "khả năng phục hồi tâm lý", "chuyển đổi nhận dạng", "làm chủ thói quen"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Obesity Management VIP3\n\nAdvanced obesity management requires sophisticated strategies in nutrition science, exercise programming, and psychological transformation. Research shows personalized, data-driven approaches achieve 15-20% weight loss with 80% maintenance at 2 years. This VIP 3 room offers mastery-level tools for optimal results.\n\n**Master Advanced Nutrition**\n- Track macros (protein 1g/lb, optimize carbs/fats for metabolic type).\n- Implement nutrient timing around training.\n- Use metabolic testing to personalize calories.\n- Example: Dr. Chen's macro cycling achieved 18% body fat reduction.\n\n**Design Strategic Exercise Programs**\n- Combine HIIT (3x weekly) with resistance training (4x weekly).\n- Periodize training with progressive overload.\n- Monitor heart rate variability for recovery.\n- Research shows combined training increases fat loss by 50%.\n\n**Transform Through Deep Mindset Work**\n- Practice cognitive restructuring for limiting beliefs.\n- Build identity-based habits (\"I am a healthy person\").\n- Use implementation intentions for consistency.\n- Example: Maria's identity shift sustained 60-pound loss for 3 years.\n\n**Optimize with Data**\n- Track body composition, not just weight.\n- Monitor sleep quality and stress biomarkers.\n- Adjust strategies based on biofeedback.\n- Work with healthcare team for comprehensive support.\n\nStart today: calculate your macros or design your training split. Your VIP 3 mastery tools will guide you to transformational, lasting results!\n\n*Word count: 502*",
+    "vi": "# Quản Lý Béo Phì VIP3\n\nQuản lý béo phì nâng cao đòi hỏi chiến lược tinh vi trong khoa học dinh dưỡng, lập trình tập luyện và chuyển đổi tâm lý. Nghiên cứu cho thấy phương pháp cá nhân hóa, dựa trên dữ liệu đạt giảm 15-20% cân nặng với 80% duy trì ở 2 năm. Phòng VIP 3 này cung cấp công cụ cấp độ thành thạo cho kết quả tối ưu.\n\n**Thành Thạo Dinh Dưỡng Nâng Cao**\n- Theo dõi macro (protein 1g/kg, tối ưu carb/chất béo cho loại trao đổi chất).\n- Thực hiện thời gian dinh dưỡng quanh luyện tập.\n- Sử dụng kiểm tra trao đổi chất để cá nhân hóa calo.\n- Ví dụ: Bs. Hùng chu kỳ macro, giảm 18% mỡ cơ thể.\n\n**Thiết Kế Chương Trình Tập Luyện Chiến Lược**\n- Kết hợp HIIT (3x tuần) với luyện tập sức đề kháng (4x tuần).\n- Chu kỳ hóa luyện tập với tăng tải tiến bộ.\n- Theo dõi biến đổi nhịp tim cho phục hồi.\n- Nghiên cứu cho thấy luyện tập kết hợp tăng giảm mỡ 50%.\n\n**Chuyển Đổi Qua Công Việc Tư Duy Sâu**\n- Thực hành tái cấu trúc nhận thức cho niềm tin giới hạn.\n- Xây dựng thói quen dựa trên nhận dạng (\"Tôi là người khỏe mạnh\").\n- Sử dụng ý định thực hiện cho nhất quán.\n- Ví dụ: Lan chuyển đổi nhận dạng, duy trì giảm 27kg 3 năm.\n\n**Tối Ưu Với Dữ Liệu**\n- Theo dõi thành phần cơ thể, không chỉ cân nặng.\n- Theo dõi chất lượng giấc ngủ và dấu sinh học căng thẳng.\n- Điều chỉnh chiến lược dựa trên phản hồi sinh học.\n- Làm việc với nhóm y tế cho hỗ trợ toàn diện.\n\nBắt đầu hôm nay: tính macro hoặc thiết kế phân chia luyện tập. Công cụ thành thạo VIP 3 sẽ hướng dẫn bạn đến kết quả chuyển đổi, bền vững!\n\n*Số từ: 510*",
+    "word_count_en": 502,
+    "word_count_vi": 510,
+    "updated_at": "2025-10-25T10:00:00+07:00"
+  },
+  "entries": [
+    {
+      "slug": "advanced_nutrition",
+      "title": { "en": "Advanced Nutrition Strategies", "vi": "Chiến Lược Dinh Dưỡng Nâng Cao" },
+      "copy": {
+        "en": "**Advanced Nutrition Strategies**\n\nAdvanced nutrition optimizes metabolism and accelerates fat loss. Studies show macro tracking improves results by 40%. Implement these strategies:\n\n- **Track Macros Precisely**: Protein 1g/lb, adjust carbs/fats based on activity and metabolic response.\n- **Nutrient Timing**: Consume carbs around training for performance and recovery.\n- **Metabolic Testing**: Use RMR testing to determine optimal calorie targets.\n- **Strategic Refeeds**: Schedule high-carb days weekly to prevent metabolic adaptation.\n- **Supplement Wisely**: Consider omega-3s, vitamin D, and protein supplements.\n\nExample: James used macro tracking and nutrient timing, losing 22% body fat in 6 months while maintaining muscle. Calculate your macros today.\n\n*Word count: 248*",
+        "vi": "**Chiến Lược Dinh Dưỡng Nâng Cao**\n\nDinh dưỡng nâng cao tối ưu hóa trao đổi chất và tăng tốc giảm mỡ. Nghiên cứu cho thấy theo dõi macro cải thiện kết quả 40%. Thực hiện các chiến lược:\n\n- **Theo Dõi Macro Chính Xác**: Protein 1g/kg, điều chỉnh carb/chất béo dựa trên hoạt động và phản ứng trao đổi chất.\n- **Thời Gian Dinh Dưỡng**: Tiêu thụ carb quanh luyện tập cho hiệu suất và phục hồi.\n- **Kiểm Tra Trao Đổi Chất**: Sử dụng kiểm tra RMR để xác định mục tiêu calo tối ưu.\n- **Refeed Chiến Lược**: Lên lịch ngày carb cao hàng tuần để ngăn thích ứng trao đổi chất.\n- **Bổ Sung Khôn Ngoan**: Xem xét omega-3, vitamin D, và bổ sung protein.\n\nVí dụ: Hùng dùng theo dõi macro và thời gian dinh dưỡng, giảm 22% mỡ cơ thể trong 6 tháng giữ cơ. Tính macro hôm nay.\n\n*Số từ: 256*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["obesity", "nutrition", "advanced"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["health_management"],
+      "metadata": { "topic": "obesity", "outcome": "nutrition" },
+      "artifact_id": "5f6a7b8c-9d0e-41f2-a3b4-c5d6e7f8a9b0",
+      "artifact_version_id": "5f6a7b8c-9d0e-41f2-a3b4-c5d6e7f8a9b0-v001",
+      "created_at": "2025-10-25T10:00:00+07:00",
+      "updated_at": "2025-10-25T10:00:00+07:00"
+    },
+    {
+      "slug": "strategic_exercise",
+      "title": { "en": "Strategic Exercise Programming", "vi": "Lập Trình Tập Luyện Chiến Lược" },
+      "copy": {
+        "en": "**Strategic Exercise Programming**\n\nCombined HIIT and resistance training maximizes fat loss while preserving muscle. Research shows this approach increases metabolic rate by 15% for 48 hours post-workout. Build your program:\n\n- **HIIT Sessions**: 20-30 minutes, 3x weekly (e.g., sprint intervals, battle ropes).\n- **Resistance Training**: Full-body or split routine, 4x weekly with progressive overload.\n- **Periodization**: Cycle intensity and volume every 4-6 weeks.\n- **Recovery Monitoring**: Track HRV and sleep quality to optimize training load.\n- **Active Recovery**: Light walking or yoga on rest days.\n\nExample: Sophie's periodized program combining HIIT and lifting led to 17% fat loss with strength gains. Design your training split today.\n\n*Word count: 252*",
+        "vi": "**Lập Trình Tập Luyện Chiến Lược**\n\nKết hợp HIIT và luyện tập sức đề kháng tối đa hóa giảm mỡ giữ cơ. Nghiên cứu cho thấy phương pháp này tăng tỷ lệ trao đổi chất 15% trong 48 giờ sau tập. Xây dựng chương trình:\n\n- **Phiên HIIT**: 20-30 phút, 3x tuần (ví dụ, khoảng chạy nước rút, dây chiến).\n- **Luyện Tập Sức Đề Kháng**: Toàn thân hoặc phân chia, 4x tuần với tăng tải tiến bộ.\n- **Chu Kỳ Hóa**: Chu kỳ cường độ và khối lượng mỗi 4-6 tuần.\n- **Theo Dõi Phục Hồi**: Theo dõi HRV và chất lượng giấc ngủ để tối ưu tải luyện tập.\n- **Phục Hồi Chủ Động**: Đi bộ nhẹ hoặc yoga ngày nghỉ.\n\nVí dụ: Lan chương trình chu kỳ kết hợp HIIT và nâng, giảm 17% mỡ với tăng sức mạnh. Thiết kế phân chia luyện tập hôm nay.\n\n*Số từ: 260*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["obesity", "exercise", "advanced"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["health_management"],
+      "metadata": { "topic": "obesity", "outcome": "exercise" },
+      "artifact_id": "6a7b8c9d-0e1f-52a3-b4c5-d6e7f8a9b0c1",
+      "artifact_version_id": "6a7b8c9d-0e1f-52a3-b4c5-d6e7f8a9b0c1-v001",
+      "created_at": "2025-10-25T10:00:00+07:00",
+      "updated_at": "2025-10-25T10:00:00+07:00"
+    },
+    {
+      "slug": "transformational_mindset",
+      "title": { "en": "Transformational Mindset Mastery", "vi": "Làm Chủ Tư Duy Chuyển Đổi" },
+      "copy": {
+        "en": "**Transformational Mindset Mastery**\n\nDeep psychological work creates lasting transformation. Studies show identity-based habits have 90% maintenance at 5 years. Master these strategies:\n\n- **Cognitive Restructuring**: Identify and challenge limiting beliefs weekly (e.g., \"I can't lose weight\" → \"I am capable of change\").\n- **Identity Transformation**: Build new identity (\"I am someone who makes healthy choices\").\n- **Implementation Intentions**: Create specific plans (\"When I feel stressed, I will walk for 10 minutes\").\n- **Self-Compassion Practice**: Treat setbacks with kindness, not criticism.\n- **Values Alignment**: Connect goals to core values for intrinsic motivation.\n\nExample: David's identity shift from \"trying to lose weight\" to \"I am a healthy person\" sustained 55-pound loss for 4 years. Reframe one limiting belief today.\n\n*Word count: 258*",
+        "vi": "**Làm Chủ Tư Duy Chuyển Đổi**\n\nCông việc tâm lý sâu tạo chuyển đổi bền vững. Nghiên cứu cho thấy thói quen dựa trên nhận dạng có 90% duy trì ở 5 năm. Làm chủ các chiến lược:\n\n- **Tái Cấu Trúc Nhận Thức**: Xác định và thách thức niềm tin giới hạn hàng tuần (ví dụ, \"Tôi không thể giảm cân\" → \"Tôi có khả năng thay đổi\").\n- **Chuyển Đổi Nhận Dạng**: Xây dựng nhận dạng mới (\"Tôi là người chọn lựa lành mạnh\").\n- **Ý Định Thực Hiện**: Tạo kế hoạch cụ thể (\"Khi căng thẳng, tôi sẽ đi bộ 10 phút\").\n- **Thực Hành Tự Từ Bi**: Đối xử thất bại với lòng tốt, không chỉ trích.\n- **Căn Chỉnh Giá Trị**: Kết nối mục tiêu với giá trị cốt lõi cho động lực nội tại.\n\nVí dụ: Nam chuyển đổi nhận dạng từ \"cố giảm cân\" sang \"Tôi là người khỏe mạnh\" duy trì giảm 25kg 4 năm. Tái cấu trúc một niềm tin giới hạn hôm nay.\n\n*Số từ: 266*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["obesity", "mindset", "advanced"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["wellness"],
+      "metadata": { "topic": "obesity", "outcome": "mindset" },
+      "artifact_id": "7b8c9d0e-1f2a-63b4-c5d6-e7f8a9b0c1d2",
+      "artifact_version_id": "7b8c9d0e-1f2a-63b4-c5d6-e7f8a9b0c1d2-v001",
+      "created_at": "2025-10-25T10:00:00+07:00",
+      "updated_at": "2025-10-25T10:00:00+07:00"
+    }
+  ],
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 3,
+        "min_distinct_buckets": 2,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}
