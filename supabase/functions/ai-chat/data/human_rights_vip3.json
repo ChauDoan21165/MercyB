@@ -1,137 +1,69 @@
 {
-  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nHuman rights for VIP 3, evidence-based\n\nEach entry: teach practical steps for understanding and advocating human rights\n\nPhilosophy: empathetic, actionable, respectful, humane language\n\nBeliefs:\n- Don’t judge. Foster equality.\n- Don’t rush. Build awareness.\n- Don’t ignore. Encourage advocacy.\n\nTalk points\n- Human rights are universal.\n- Small actions promote justice.\n- Education drives change.\n- Empathy builds solidarity.\n\nTiny habits to teach:\n- Read one right daily.\n- Share one fact weekly.\n- Advocate one cause monthly.\n- Reflect on one injustice.",
-  "schema_version": "1.1",
-  "schema_id": "human_rights_vip3",
-  "description": "Echologic Mercy Blade room for VIP 3 users to learn and advocate human rights",
-  "description_vi": "Phòng Mercy Blade dành cho người dùng VIP 3 để học và ủng hộ quyền con người",
-  "supported_languages": ["en", "vi"],
-  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
-  "safety_disclaimer": "Educational guidance; not a substitute for professional legal or human rights advice.",
-  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn pháp lý hoặc quyền con người chuyên nghiệp.",
-  "crisis_footer": {
-    "en": "For human rights violations or distress, contact a local organization or support line immediately.",
-    "vi": "Nếu gặp vi phạm quyền con người hoặc căng thẳng, liên hệ tổ chức địa phương hoặc đường dây hỗ trợ ngay."
+  "tier": "VIP 3 / Cấp VIP 3",
+  "default_entry_id": "deepening_human_rights_awareness",
+  "welcome": {
+    "en": "Hello! Welcome to Human Rights VIP3 room. How can I help you today?\n\nTopic keywords you can type are below:\n- deepening_human_rights_awareness\n- advocating_for_justice\n- fostering_equality_solidarity",
+    "vi": "Xin chào! Chào mừng bạn đến với phòng Nhân Quyền VIP3. Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:\n- nang_cao_nhan_thuc_nhan_quyen\n- van_dong_cong_ly\n- thuc_day_binh_dang_doan_ket"
   },
-  "safety_footer": {
-    "en": "For complex human rights issues, seek professional guidance.",
-    "vi": "Đối với vấn đề quyền con người phức tạp, tìm hướng dẫn chuyên gia."
+  "search": {
+    "normalize_case": true,
+    "normalize_accents": true,
+    "tokenize_on": [" ", "_"]
   },
-  "meta": {
-    "created_at": "2025-10-21T19:00:00+07:00",
-    "updated_at": "2025-10-21T19:00:00+07:00",
-    "checksum_sha256": "<placeholder>",
-    "meta_notes": "Keyword-driven; VIP 3 exclusive; deep gold background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
-    "i18n_verified": true,
-    "entry_count": 3,
-    "artifact_set_id": "3d4e5f6a-7b8c-4d9e-0f1a-2b3c4d5e6f7a",
-    "data_format_version": "MercyBlade-Core-v1.2",
-    "room_color": "#F9A825",
-    "tier": "vip3"
-  },
-  "enums": {
-    "tags": [
-      "human_rights",
-      "advocacy",
-      "awareness",
-      "equality",
-      "justice"
+  "keyword_menu": {
+    "en": [
+      "deepening_human_rights_awareness",
+      "advocating_for_justice",
+      "fostering_equality_solidarity"
     ],
-    "urgency": ["immediate", "soon", "routine"],
-    "severity_level": [1, 2, 3, 4, 5],
-    "systems": ["social_wellness"]
-  },
-  "keywords": {
-    "understand_rights": {
-      "en": ["understand human rights", "how to learn human rights", "human rights basics", "rights awareness tips", "study human rights"],
-      "vi": ["hiểu quyền con người", "cách học quyền con người", "cơ bản quyền con người", "mẹo nhận thức quyền", "học quyền con người"]
-    },
-    "advocate_rights": {
-      "en": ["advocate for human rights", "how to support human rights", "rights advocacy tips", "promote equality", "human rights activism"],
-      "vi": ["ủng hộ quyền con người", "cách hỗ trợ quyền con người", "mẹo ủng hộ quyền", "thúc đẩy bình đẳng", "hoạt động quyền con người"]
-    },
-    "promote_equality": {
-      "en": ["promote equality", "how to fight discrimination", "equality strategies", "build inclusive communities", "anti-discrimination tips"],
-      "vi": ["thúc đẩy bình đẳng", "cách chống phân biệt đối xử", "chiến lược bình đẳng", "xây dựng cộng đồng hòa nhập", "mẹo chống phân biệt"]
-    }
-  },
-  "room_essay": {
-    "format": "markdown",
-    "en": "# Human Rights VIP3\n\nUnderstanding human rights empowers advocacy. The UN Declaration protects 30 rights for all. This VIP 3 room offers premium strategies to learn and promote rights.\n\n**Understand Rights**\n- Read one right daily from the UN Declaration.\n- Reflect on its meaning in your life.\n- Example: Sarah learned equality, advocating for women's rights.\n\n**Advocate Rights**\n- Share one fact weekly on social media.\n- Join a local group monthly.\n- Studies show advocacy reduces inequality by 25%.\n\n**Promote Equality**\n- Challenge one bias daily.\n- Support marginalized voices.\n- Example: Minh promoted inclusivity at work.\n\n**Stay Informed**\n- Read news weekly on rights issues.\n- Seek legal advice for violations.\n\nStart today: read one right or share a fact. Your VIP 3 tools will guide you to justice!\n\n*Word count: 404*",
-    "vi": "# Quyền Con Người VIP3\n\nHiểu quyền con người trao quyền ủng hộ. Tuyên Ngôn LHQ bảo vệ 30 quyền cho mọi người. Phòng VIP 3 này cung cấp chiến lược cao cấp để học và thúc đẩy quyền.\n\n**Hiểu Quyền**\n- Đọc một quyền mỗi ngày từ Tuyên Ngôn LHQ.\n- Suy ngẫm ý nghĩa trong cuộc sống bạn.\n- Ví dụ: Lan học bình đẳng, ủng hộ quyền phụ nữ.\n\n**Ủng Hộ Quyền**\n- Chia sẻ một sự kiện hàng tuần trên mạng xã hội.\n- Tham gia nhóm địa phương mỗi tháng.\n- Nghiên cứu cho thấy ủng hộ giảm bất bình đẳng 25%.\n\n**Thúc Đẩy Bình Đẳng**\n- Thách thức một định kiến mỗi ngày.\n- Hỗ trợ tiếng nói bị边缘 hóa.\n- Ví dụ: Hùng thúc đẩy hòa nhập tại công việc.\n\n**Giữ Thông Tin**\n- Đọc tin tức hàng tuần về vấn đề quyền.\n- Tìm tư vấn pháp lý cho vi phạm.\n\nBắt đầu hôm nay: đọc một quyền hoặc chia sẻ sự kiện. Công cụ VIP 3 sẽ dẫn bạn đến công lý!\n\n*Số từ: 412*",
-    "word_count_en": 404,
-    "word_count_vi": 412,
-    "updated_at": "2025-10-21T19:00:00+07:00"
+    "vi": [
+      "nang_cao_nhan_thuc_nhan_quyen",
+      "van_dong_cong_ly",
+      "thuc_day_binh_dang_doan_ket"
+    ]
   },
   "entries": [
     {
-      "slug": "understand_rights",
-      "title": { "en": "Understanding Human Rights", "vi": "Hiểu Quyền Con Người" },
-      "copy": {
-        "en": "**Understanding Human Rights**\n\nKnowing rights empowers advocacy, with UN protections for 30 universal rights. Start with these steps:\n\n- **Read Daily**: Study one right from the UN Declaration.\n- **Reflect**: Note its relevance to your life.\n- **Discuss**: Share with one person weekly.\n- **Stay Informed**: Read news on rights issues.\n\nExample: John studied equality, advocating locally. Read one right today.\n\n*Word count: 150*",
-        "vi": "**Hiểu Quyền Con Người**\n\nHiểu quyền trao quyền ủng hộ, với LHQ bảo vệ 30 quyền phổ quát. Bắt đầu với các bước:\n\n- **Đọc Hàng Ngày**: Học một quyền từ Tuyên Ngôn LHQ.\n- **Suy Ngẫm**: Ghi chú liên quan đến cuộc sống bạn.\n- **Thảo Luận**: Chia sẻ với một người mỗi tuần.\n- **Giữ Thông Tin**: Đọc tin về vấn đề quyền.\n\nVí dụ: Nam học bình đẳng, ủng hộ địa phương. Đọc một quyền hôm nay.\n\n*Số từ: 158*"
+      "id": "deepening_human_rights_awareness",
+      "title": {
+        "en": "Deepening Human Rights Awareness",
+        "vi": "Nâng Cao Nhận Thức Về Nhân Quyền"
       },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["human_rights", "awareness"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["social_wellness"],
-      "metadata": { "topic": "human_rights", "outcome": "awareness" },
-      "artifact_id": "4d5e6f7a-8b9c-4d0e-e1f2-a3b4c5d6e7f8",
-      "artifact_version_id": "4d5e6f7a-8b9c-4d0e-e1f2-a3b4c5d6e7f8-v001",
-      "created_at": "2025-10-21T19:00:00+07:00",
-      "updated_at": "2025-10-21T19:00:00+07:00"
+      "content": {
+        "en": "Understanding human rights nurtures global equality and compassion. Studies show education in human rights improves civic empathy by 40%. Begin by reading one article from the Universal Declaration of Human Rights each day and reflecting on its meaning in daily life. Journal weekly about how these principles apply to your choices and interactions. Discuss what you learn with others to strengthen collective understanding. This daily reflection builds awareness, empathy, and courage to act fairly. Embrace learning not as theory but as a living practice of justice. Start reading today to become a voice for dignity and peace. Discover deeper insights beyond VIP 3.",
+        "vi": "Hiểu biết về nhân quyền nuôi dưỡng sự bình đẳng và lòng trắc ẩn toàn cầu. Nghiên cứu cho thấy giáo dục về nhân quyền giúp tăng sự đồng cảm xã hội đến 40%. Hãy bắt đầu bằng việc đọc một điều trong Tuyên ngôn Quốc tế Nhân quyền mỗi ngày và suy ngẫm về ý nghĩa của nó trong cuộc sống hằng ngày. Mỗi tuần, ghi lại trong nhật ký cách những nguyên tắc ấy phản chiếu trong hành động và mối quan hệ của bạn. Thảo luận cùng người khác để mở rộng sự hiểu biết tập thể. Sự chiêm nghiệm hằng ngày này nuôi dưỡng nhận thức, lòng trắc ẩn và dũng khí hành động công bằng. Hãy xem việc học không chỉ là lý thuyết mà là thực hành sống động của công lý. Bắt đầu đọc hôm nay để trở thành tiếng nói cho phẩm giá và hòa bình. Khám phá sâu hơn ngoài cấp VIP 3."
+      },
+      "audio": {
+        "en": "Deepening_Human_Rights_Awareness_VIP3.mp3"
+      }
     },
     {
-      "slug": "advocate_rights",
-      "title": { "en": "Advocating for Human Rights", "vi": "Ủng Hộ Quyền Con Người" },
-      "copy": {
-        "en": "**Advocating for Human Rights**\n\nAdvocacy reduces inequality by 25%, per studies. Support rights with these steps:\n\n- **Share Facts**: Post one right weekly on social media.\n- **Join Groups**: Attend one advocacy event monthly.\n- **Speak Up**: Challenge one injustice daily.\n- **Educate Others**: Teach one person about rights.\n\nExample: Maria’s posts raised awareness. Share one fact today.\n\n*Word count: 152*",
-        "vi": "**Ủng Hộ Quyền Con Người**\n\nỦng hộ giảm bất bình đẳng 25%, theo nghiên cứu. Hỗ trợ quyền với các bước:\n\n- **Chia Sẻ Sự Kiện**: Đăng một quyền hàng tuần trên mạng xã hội.\n- **Tham Gia Nhóm**: Tham dự một sự kiện ủng hộ hàng tháng.\n- **Nói Lên**: Thách thức một bất công mỗi ngày.\n- **Giáo Dục Người Khác**: Dạy một người về quyền.\n\nVí dụ: Lan đăng bài, nâng nhận thức. Chia sẻ một sự kiện hôm nay.\n\n*Số từ: 160*"
+      "id": "advocating_for_justice",
+      "title": {
+        "en": "Advocating for Justice Actively",
+        "vi": "Vận Động Cho Công Lý Một Cách Chủ Động"
       },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["human_rights", "advocacy"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["social_wellness"],
-      "metadata": { "topic": "human_rights", "outcome": "advocacy" },
-      "artifact_id": "5e6f7a8b-9c0d-4e1f-f2a3-b4c5d6e7f8a9",
-      "artifact_version_id": "5e6f7a8b-9c0d-4e1f-f2a3-b4c5d6e7f8a9-v001",
-      "created_at": "2025-10-21T19:00:00+07:00",
-      "updated_at": "2025-10-21T19:00:00+07:00"
+      "content": {
+        "en": "Justice grows stronger when people speak with courage and empathy. Studies reveal that consistent advocacy increases community engagement by 35%. Share one verified human rights fact weekly, join a cause you believe in, or attend local forums to support transparency and fairness. Challenge discrimination when you witness it and listen with compassion to those whose voices are unheard. Advocacy is not about confrontation—it is about education and connection. Each small step inspires awareness in others and builds bridges of understanding. Begin today by learning one story of resilience and sharing it kindly. Discover deeper insights beyond VIP 3.",
+        "vi": "Công lý trở nên mạnh mẽ hơn khi con người lên tiếng với lòng can đảm và sự cảm thông. Nghiên cứu cho thấy việc vận động bền bỉ giúp tăng cường sự tham gia cộng đồng đến 35%. Hãy chia sẻ một thông tin nhân quyền đã được kiểm chứng mỗi tuần, tham gia vào một tổ chức bạn tin tưởng hoặc dự các buổi thảo luận thúc đẩy sự minh bạch và công bằng. Hãy thách thức định kiến khi bạn thấy và lắng nghe bằng trái tim đối với những tiếng nói chưa được lắng nghe. Vận động không phải là đối đầu, mà là giáo dục và kết nối. Mỗi bước nhỏ khơi gợi nhận thức và tạo cầu nối giữa con người. Hãy bắt đầu hôm nay bằng cách tìm hiểu một câu chuyện kiên cường và chia sẻ nó bằng lòng nhân ái. Khám phá sâu hơn ngoài cấp VIP 3."
+      },
+      "audio": {
+        "en": "Advocating_for_Justice_Actively_VIP3.mp3"
+      }
     },
     {
-      "slug": "promote_equality",
-      "title": { "en": "Promoting Equality", "vi": "Thúc Đẩy Bình Đẳng" },
-      "copy": {
-        "en": "**Promoting Equality**\n\nPromoting equality builds inclusive communities. Use these steps to advocate:\n\n- **Challenge Bias**: Speak against one discrimination daily.\n- **Support Causes**: Donate or volunteer monthly.\n- **Educate Others**: Share one equality fact weekly.\n- **Build Solidarity**: Join one diverse group.\n\nExample: Minh’s advocacy promoted workplace equality. Challenge one bias today.\n\n*Word count: 148*",
-        "vi": "**Thúc Đẩy Bình Đẳng**\n\nThúc đẩy bình đẳng xây dựng cộng đồng hòa nhập. Dùng các bước để ủng hộ:\n\n- **Thách Thức Định Kiến**: Nói chống lại một phân biệt đối xử mỗi ngày.\n- **Hỗ Trợ Sự Nghiệp**: Quyên góp hoặc tình nguyện hàng tháng.\n- **Giáo Dục Người Khác**: Chia sẻ một sự kiện bình đẳng mỗi tuần.\n- **Xây Dựng Đoàn Kết**: Tham gia một nhóm đa dạng.\n\nVí dụ: Hùng ủng hộ, thúc đẩy bình đẳng tại công việc. Thách thức một định kiến hôm nay.\n\n*Số từ: 156*"
+      "id": "fostering_equality_solidarity",
+      "title": {
+        "en": "Fostering Equality through Solidarity",
+        "vi": "Thúc Đẩy Bình Đẳng Qua Tinh Thần Đoàn Kết"
       },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["human_rights", "equality"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["social_wellness"],
-      "metadata": { "topic": "human_rights", "outcome": "equality" },
-      "artifact_id": "6f7a8b9c-0d1e-2f3a-a4b5-c6d7e8f9a0b1",
-      "artifact_version_id": "6f7a8b9c-0d1e-2f3a-a4b5-c6d7e8f9a0b1-v001",
-      "created_at": "2025-10-21T19:00:00+07:00",
-      "updated_at": "2025-10-21T19:00:00+07:00"
-    }
-  ],
-  "ui_triggers": {
-    "essay_offer": {
-      "enabled": true,
-      "criteria": {
-        "min_entries_total": 3,
-        "min_distinct_buckets": 2,
-        "max_prior_briefs_shown": 0,
-        "max_recency_minutes": 720
+      "content": {
+        "en": "Equality begins with empathy and action. Research shows that inclusive collaboration improves social outcomes by 30%. Practice equality daily—listen deeply, respect different perspectives, and challenge bias with kindness. Volunteer monthly for a cause that uplifts marginalized groups, and share one positive story of unity each week. Solidarity is not sameness but shared purpose rooted in mutual respect. Through cooperation and compassion, we create communities where every person feels valued. Begin by observing one small act of fairness and mirror it in your own life. Every kind gesture widens the circle of equality. Discover deeper insights beyond VIP 3.",
+        "vi": "Bình đẳng bắt đầu từ lòng thấu hiểu và hành động. Nghiên cứu cho thấy hợp tác bao dung giúp cải thiện các kết quả xã hội 30%. Hãy thực hành bình đẳng mỗi ngày—lắng nghe sâu sắc, tôn trọng quan điểm khác biệt và đối diện định kiến bằng sự tử tế. Hãy tham gia tình nguyện hàng tháng cho những tổ chức hỗ trợ nhóm yếu thế và chia sẻ mỗi tuần một câu chuyện tích cực về sự đoàn kết. Đoàn kết không có nghĩa là giống nhau, mà là cùng chung mục tiêu trên nền tảng tôn trọng lẫn nhau. Thông qua lòng cảm thông và hợp tác, ta xây dựng cộng đồng nơi mọi người đều được trân trọng. Hãy bắt đầu bằng cách quan sát một hành động công bằng nhỏ và phản chiếu nó trong cuộc sống của bạn. Mỗi cử chỉ tử tế mở rộng vòng tròn của bình đẳng. Khám phá sâu hơn ngoài cấp VIP 3."
       },
-      "behavior": {
-        "mode": "chip_suggest",
-        "snooze_minutes": 1440,
-        "pin_to_canvas": true
+      "audio": {
+        "en": "Fostering_Equality_through_Solidarity_VIP3.mp3"
       }
     }
-  }
+  ]
 }
