@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Send, ArrowLeft, MessageCircle, Mail, Users, Loader2 } from "lucide-react";
+import { Send, ArrowLeft, MessageCircle, Mail, Users, Loader2, Volume2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomInfo } from "@/lib/roomData";
@@ -108,7 +108,7 @@ const handleAccessDenied = () => {
       const roomData = roomDataMap[roomId || ''];
       
       // Load welcome message with new format
-      const welcomeText = `Welcome to ${currentRoom.nameEn} Room, please click to keyword of the topic you want to discover.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.`;
+      const welcomeText = `Welcome to ${currentRoom.nameEn} Room, please click the keyword of the topic you want to discover.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.`;
       
       const welcomeMessage: Message = {
         id: 'welcome',
@@ -138,7 +138,7 @@ const handleAccessDenied = () => {
       // Fallback welcome message
       const welcomeMessage: Message = {
         id: 'welcome',
-        text: `Welcome to ${currentRoom.nameEn} Room, please click to keyword of the topic you want to discover.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.`,
+        text: `Welcome to ${currentRoom.nameEn} Room, please click the keyword of the topic you want to discover.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.`,
         isUser: false,
         timestamp: new Date()
       };
@@ -437,10 +437,10 @@ const handleAccessDenied = () => {
   }, [mainMessages, isLoading]);
 
   const MessageBubble = ({ message }: { message: Message }) => {
-    // Split content by "---" separator to display English and Vietnamese separately
-    const parts = message.text.split('\n\n---\n\n');
-    const englishContent = parts[0] || message.text;
-    const vietnameseContent = parts[1] || '';
+    // Split content to display English and Vietnamese separately
+    const parts = message.text.split(/\n+---\n+/);
+    const englishContent = parts[0]?.trim() || message.text;
+    const vietnameseContent = parts[1]?.trim() || '';
 
     return (
       <div className={`flex ${message.isUser ? "justify-end" : "justify-start"} mb-4`}>
@@ -454,8 +454,8 @@ const handleAccessDenied = () => {
           >
             {!message.isUser && vietnameseContent ? (
               <>
-                <p className="text-sm whitespace-pre-wrap mb-4">{englishContent}</p>
-                <hr className="border-border my-4" />
+                <p className="text-sm whitespace-pre-wrap">{englishContent}</p>
+                <hr className="border-border my-3" />
                 <p className="text-sm whitespace-pre-wrap">{vietnameseContent}</p>
               </>
             ) : (
@@ -591,8 +591,8 @@ const handleAccessDenied = () => {
             {currentAudio && (
               <div className="mt-4 flex items-center gap-2">
                 <Button
-                  variant="outline"
-                  size="sm"
+                  variant="ghost"
+                  size="icon"
                   onClick={() => {
                     if (audioRef.current) {
                       if (isAudioPlaying) {
@@ -612,10 +612,8 @@ const handleAccessDenied = () => {
                 >
                   {audioLoading ? (
                     <Loader2 className="w-4 h-4 animate-spin" />
-                  ) : isAudioPlaying ? (
-                    "⏸ Pause / Tạm Dừng"
                   ) : (
-                    "▶ Play Audio / Phát Âm Thanh"
+                    <Volume2 className="w-4 h-4" />
                   )}
                 </Button>
                 <audio 
