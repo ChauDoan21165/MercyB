@@ -7,90 +7,52 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-// Room data files mapping (cleaned - only new format rooms)
-const roomFiles: { [key: string]: string } = {
-  'stress-vip3': 'stress_vip3.json',
-  'mental-health': 'mental_health_free.json',
-};
-
-// Embedded minimal fallback data to guarantee responses even if JSON files are not bundled
-const embeddedFallbackData: Record<string, any> = {
-  'abdominal-pain': {
-    schema_version: '1.0',
-    schema_id: 'abdominal_pain',
-    room_essay: {
-      en: 'Welcome to the Abdominal Pain room. Evidence-based tips to understand and manage abdominal symptoms.',
-      vi: 'Chào mừng đến phòng Đau bụng. Gợi ý dựa trên bằng chứng để hiểu và quản lý triệu chứng bụng.',
-    },
-    safety_disclaimer: {
-      en: 'Educational guidance; not a substitute for professional medical advice or emergency care.',
-      vi: 'Hướng dẫn mang tính giáo dục; không thay thế tư vấn y tế chuyên nghiệp hoặc chăm sóc khẩn cấp.',
-    },
-    crisis_footer: {
-      en: 'If pain is severe or persistent, or with fever/vomiting, seek urgent medical care.',
-      vi: 'Nếu đau dữ dội hoặc kéo dài, hoặc kèm sốt/nôn, hãy đi khám khẩn cấp.',
-    },
-    keywords: {
-      severe_abdominal_pain: {
-        en: ['severe_abdominal_pain', 'acute_stomach_pain', 'emergency_pain', 'critical_discomfort'],
-        vi: ['đau bụng nặng', 'đau dạ dày cấp tính', 'đau khẩn cấp', 'khó chịu nguy kịch'],
-      },
-      abdominal_pain_relief: {
-        en: ['abdominal_pain_relief', 'stomach_pain_management', 'pain_soothing', 'digestive_comfort'],
-        vi: ['giảm đau bụng', 'quản lý đau dạ dày', 'làm dịu đau', 'thoải mái tiêu hóa'],
-      },
-    },
-    entries: [
-      {
-        slug: 'severe_abdominal_pain',
-        title: { en: 'Severe Abdominal Pain', vi: 'Đau bụng nặng' },
-        copy: {
-          en: 'Severe abdominal pain needs immediate medical attention. Do not delay care if intense, persistent, or with fever/vomiting.',
-          vi: 'Đau bụng nặng cần chăm sóc y tế ngay. Đừng trì hoãn nếu đau dữ dội, kéo dài, hoặc kèm sốt/nôn.',
-        },
-      },
-      {
-        slug: 'abdominal_pain_relief',
-        title: { en: 'Abdominal Pain Relief', vi: 'Giảm đau bụng' },
-        copy: {
-          en: 'For mild discomfort: gentle heat, hydration, simple foods. Consult a clinician if symptoms persist.',
-          vi: 'Khó chịu nhẹ: chườm ấm, uống đủ nước, ăn nhẹ. Tham vấn bác sĩ nếu triệu chứng kéo dài.',
-        },
-      },
-    ],
-  },
-};
-
-// Load room data - reads from bundled JSON files
-async function loadRoomData(roomId: string): Promise<any | null> {
+// Load room data from database
+async function loadRoomData(roomId: string, supabaseClient: any): Promise<any | null> {
   console.log(`Loading data for room: ${roomId}`);
   
-  const fileName = roomFiles[roomId];
-  if (!fileName) {
-    console.error(`Room ${roomId} not found in mapping`);
-    return embeddedFallbackData[roomId] || null;
-  }
-
-  // Try dynamic import with proper error handling
   try {
-    const url = new URL(`./data/${fileName}`, import.meta.url);
-    const module = await import(url.href, { with: { type: 'json' } } as any);
-    const data = (module as any).default || module;
-    if (data && typeof data === 'object') {
-      (data as any).__source = 'file';
+    // Query the rooms table for this room
+    const { data: room, error } = await supabaseClient
+      .from('rooms')
+      .select('*')
+      .eq('id', roomId)
+      .maybeSingle();
+
+    if (error) {
+      console.error(`Database error loading room ${roomId}:`, error);
+      return null;
     }
-    console.log(`Successfully loaded data for ${roomId}`);
-    return data;
+
+    if (!room) {
+      console.error(`Room ${roomId} not found in database`);
+      return null;
+    }
+
+    // Transform database format to expected format
+    const roomData: any = {
+      schema_id: room.schema_id,
+      room_essay: {
+        en: room.room_essay_en || '',
+        vi: room.room_essay_vi || '',
+      },
+      safety_disclaimer: {
+        en: room.safety_disclaimer_en || '',
+        vi: room.safety_disclaimer_vi || '',
+      },
+      crisis_footer: {
+        en: room.crisis_footer_en || '',
+        vi: room.crisis_footer_vi || '',
+      },
+      keywords: room.keywords || {},
+      entries: room.entries || [],
+      __source: 'database'
+    };
+
+    console.log(`Successfully loaded data for ${roomId} from database`);
+    return roomData;
   } catch (e) {
-    console.error(`Failed to load ${fileName}:`, e);
-    const fallback = embeddedFallbackData[roomId];
-    if (fallback) {
-      console.log(`Using embedded fallback for ${roomId}`);
-      if (fallback && typeof fallback === 'object') {
-        (fallback as any).__source = 'fallback';
-      }
-      return fallback;
-    }
+    console.error(`Failed to load room ${roomId}:`, e);
     return null;
   }
 }
@@ -186,8 +148,8 @@ serve(async (req) => {
       );
     }
 
-    // Load data from bundled JSON
-    const roomData = await loadRoomData(roomId);
+    // Load data from database
+    const roomData = await loadRoomData(roomId, supabaseClient);
     if (!roomData) {
       return new Response(
         JSON.stringify({ error: 'Room data not found' }),
