@@ -1,0 +1,35 @@
+{
+  "tier": "Free",
+  "entries": [
+    {
+      "title": "Starting Stress Relief Breathing",
+      "content": "Breathing is the simplest way to calm your mind. Sit comfortably, close your eyes, and inhale through your nose for four seconds. Hold briefly, then exhale slowly for six. One deep breath can ease tension and steady focus. Practice this during quiet moments or before sleep. Each breath tells your body it is safe to relax. Journal weekly about how breathing changes your mood or clarity. Small steps build calm that lasts. Begin with one deep breath right now. Ready to reduce stress? Explore more beyond Free.",
+      "audio": "Starting_Stress_Relief_Breathing_Free.mp3"
+    },
+    {
+      "title": "Trying Mindful Moments",
+      "content": "Mindful pauses reset your inner rhythm. Each day, stop for one minute to notice something real—sound, scent, color, or texture. This simple awareness brings you back from worry to presence. Let thoughts pass like clouds, focusing gently on what’s here and now. Afterward, notice how your breath and shoulders soften. Journal weekly about moments of calm you discovered. Over time, these mindful pauses form anchors of peace. Begin today with one quiet minute of noticing. Ready to feel centered? Explore more beyond Free.",
+      "audio": "Trying_Mindful_Moments_Free.mp3"
+    },
+    {
+      "title": "Building Simple Routines",
+      "content": "Calm grows from rhythm. Choose one small routine—a short walk, stretching, or journaling—to clear your mind each day. Routines create predictability, giving your nervous system a sense of safety. Keep it brief and consistent; five minutes is enough. Track in a journal how your body and emotions respond. If a day feels heavy, return to your chosen habit for grounding. Over time, routine becomes resilience. Begin today with one gentle walk to breathe and reset. Ready to build peaceful structure? Explore more beyond Free.",
+      "audio": "Building_Simple_Routines_Free.mp3"
+    }
+  ],
+  "keywords": {
+    "basic_stress_relief": {
+      "en": ["simple breathing", "mindful moments", "basic routines", "beginner stress relief", "easy calm habits"],
+      "vi": ["hít thở đơn giản", "khoảnh khắc tỉnh táo", "thói quen cơ bản", "giảm căng thẳng cho người mới", "thói quen bình tĩnh dễ dàng"]
+    }
+  },
+  "meta": {
+    "created_at": "2025-10-25T11:12:00+09:00",
+    "updated_at": "2025-10-25T11:33:00+09:00",
+    "entry_count": 3,
+    "artifact_set_id": "9c0d1e2f-3a4b-4c5d-b6e7-d8f9a0b1c2d4",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#FFFFFF",
+    "tier": "free"
+  }
+}
