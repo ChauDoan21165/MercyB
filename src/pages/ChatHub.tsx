@@ -290,7 +290,7 @@ const handleAccessDenied = () => {
                 const raw = String(response.audioFile);
                 const filename = raw.replace(/^\//, '');
                 // Audio files are in public/audio/, accessible at /audio/filename.mp3
-                const baseLocalUrl = `/${filename}`;
+                const baseLocalUrl = `/audio/${filename}`;
                 // Fallback: storage public URL
                 const { data: urlData } = supabase.storage
                   .from('room-audio')
