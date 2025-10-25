@@ -1,4 +1,3 @@
-```json
 {
   "tier": "VIP 1",
   "default_entry_id": "clarifying_affirmations_for_growth",
@@ -19,13 +18,13 @@
     {
       "id": "clarifying_affirmations_for_growth",
       "title": "Clarifying Affirmations for Growth",
-      "content": "Clarify your affirmations to build steady confidence. Choose one empowering phrase each morning—like “I am enough” or “I grow stronger every day.” Write three new affirmations weekly in a journal to track your evolving mindset. Studies show positive self-talk practiced daily increases motivation by 30%. When doubts appear, gently reframe them into learning opportunities. Confidence grows through repetition and patience, not pressure. Begin today with one sincere statement that reminds you of your worth. Small, consistent practice plants deep roots of self-belief. Ready to rise higher? Explore beyond VIP 1.",
+      "content": "Clarify your affirmations to build steady confidence. Choose one empowering phrase each morning—like \"I am enough\" or \"I grow stronger every day.\" Write three new affirmations weekly in a journal to track your evolving mindset. Studies show positive self-talk practiced daily increases motivation by 30%. When doubts appear, gently reframe them into learning opportunities. Confidence grows through repetition and patience, not pressure. Begin today with one sincere statement that reminds you of your worth. Small, consistent practice plants deep roots of self-belief. Ready to rise higher? Explore beyond VIP 1.",
       "audio": "Clarifying_Affirmations_for_Growth_VIP1.mp3"
     },
     {
       "id": "building_social_confidence",
       "title": "Building Social Confidence",
-      "content": "Social confidence develops through kind presence, not perfection. Begin one meaningful conversation each week—share something you care about and listen openly. Ask questions like “What do you think?” to invite connection. Join a club or casual event monthly to expand comfort zones. Research shows social engagement improves emotional well-being by 25%. Celebrate small moments of ease instead of flawless performance. Each interaction builds familiarity and trust, turning anxiety into curiosity. Start today with one simple conversation where you stay fully present. Ready to connect with genuine calm? Explore beyond VIP 1.",
+      "content": "Social confidence develops through kind presence, not perfection. Begin one meaningful conversation each week—share something you care about and listen openly. Ask questions like \"What do you think?\" to invite connection. Join a club or casual event monthly to expand comfort zones. Research shows social engagement improves emotional well-being by 25%. Celebrate small moments of ease instead of flawless performance. Each interaction builds familiarity and trust, turning anxiety into curiosity. Start today with one simple conversation where you stay fully present. Ready to connect with genuine calm? Explore beyond VIP 1.",
       "audio": "Building_Social_Confidence_VIP1.mp3"
     },
     {
@@ -37,7 +36,7 @@
     {
       "id": "practicing_empathy_in_interactions",
       "title": "Practicing Empathy in Interactions",
-      "content": "Empathy creates confidence rooted in connection. Take a moment each day to imagine another’s perspective before responding. Offer one small act of kindness weekly—listening fully, supporting a peer, or expressing appreciation. Write monthly reflections on what you’ve learned about compassion. Studies show empathy enhances communication and reduces social anxiety by 30%. When you understand others, fear of judgment fades. Start today by practicing patient listening in one conversation. Confidence grows naturally from genuine care. Ready to strengthen both heart and voice? Explore beyond VIP 1.",
+      "content": "Empathy creates confidence rooted in connection. Take a moment each day to imagine another's perspective before responding. Offer one small act of kindness weekly—listening fully, supporting a peer, or expressing appreciation. Write monthly reflections on what you've learned about compassion. Studies show empathy enhances communication and reduces social anxiety by 30%. When you understand others, fear of judgment fades. Start today by practicing patient listening in one conversation. Confidence grows naturally from genuine care. Ready to strengthen both heart and voice? Explore beyond VIP 1.",
       "audio": "Practicing_Empathy_in_Interactions_VIP1.mp3"
     }
   ],
@@ -67,4 +66,3 @@
     "tier": "vip1"
   }
 }
-```
