@@ -159,16 +159,20 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
       : "";
 
     // Handle content/copy as string or bilingual object
-    const copyEn = typeof entry?.copy === "string"
+    let copyEn = typeof entry?.copy === "string"
       ? entry.copy
       : typeof entry?.content === 'string'
         ? entry.content
         : String(entry?.copy?.en || entry?.content?.en || entry?.body?.en || entry?.copy_en || "");
-    const copyVi = typeof entry?.copy === "string"
+    let copyVi = typeof entry?.copy === "string"
       ? ""
       : typeof entry?.content === 'string'
         ? ""
         : String(entry?.copy?.vi || entry?.content?.vi || entry?.body?.vi || entry?.copy_vi || "");
+
+    // Remove word count from both English and Vietnamese
+    copyEn = copyEn.replace(/\*Word count: \d+\*\s*/g, '').trim();
+    copyVi = copyVi.replace(/\*Số từ: \d+\*\s*/g, '').trim();
 
     // English first, then Vietnamese below with clear separator
     const en = [titleEn, copyEn].filter(Boolean).join("\n\n");
@@ -181,7 +185,10 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
     let responseText: string;
     if (matchedEntry.summary && matchedEntry.essay) {
       const summary = getBilingual(matchedEntry, 'summary');
-      const essay = getBilingual(matchedEntry, 'essay');
+      let essay = getBilingual(matchedEntry, 'essay');
+      // Remove word count from essay
+      essay.en = essay.en.replace(/\*Word count: \d+\*\s*/g, '').trim();
+      essay.vi = essay.vi.replace(/\*Số từ: \d+\*\s*/g, '').trim();
       // English first, Vietnamese below
       responseText = `${essay.en}\n\n---\n\n${essay.vi}`;
     } else {

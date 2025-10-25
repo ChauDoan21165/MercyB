@@ -65,26 +65,24 @@ export const MessageActions = ({ text, roomId }: MessageActionsProps) => {
     <div className="flex gap-2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
       <Button
         variant="ghost"
-        size="sm"
+        size="icon"
         onClick={handleCopy}
-        className="h-7 px-2 text-xs"
+        className="h-7 w-7"
       >
         {copied ? (
-          <Check className="w-3 h-3 mr-1" />
+          <Check className="w-3 h-3" />
         ) : (
-          <Copy className="w-3 h-3 mr-1" />
+          <Copy className="w-3 h-3" />
         )}
-        {copied ? "Copied" : "Copy"}
       </Button>
       
       <Button
         variant="ghost"
-        size="sm"
+        size="icon"
         onClick={handleShare}
-        className="h-7 px-2 text-xs"
+        className="h-7 w-7"
       >
-        <Share2 className="w-3 h-3 mr-1" />
-        Share
+        <Share2 className="w-3 h-3" />
       </Button>
 
     </div>

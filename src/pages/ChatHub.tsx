@@ -455,8 +455,40 @@ const handleAccessDenied = () => {
             {!message.isUser && vietnameseContent ? (
               <>
                 <p className="text-sm whitespace-pre-wrap">{englishContent}</p>
+                {!message.isUser && <MessageActions text={englishContent} roomId={roomId || ""} />}
+                {currentAudio && (
+                  <div className="mt-2 flex items-center gap-2">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => {
+                        if (audioRef.current) {
+                          if (isAudioPlaying) {
+                            audioRef.current.pause();
+                          } else {
+                            audioRef.current.play().catch(() => {
+                              toast({
+                                title: "Audio Error / Lỗi Âm Thanh",
+                                description: "Cannot play audio / Không thể phát âm thanh",
+                                variant: "destructive"
+                              });
+                            });
+                          }
+                        }
+                      }}
+                      disabled={audioLoading}
+                    >
+                      {audioLoading ? (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      ) : (
+                        <Volume2 className="w-4 h-4" />
+                      )}
+                    </Button>
+                  </div>
+                )}
                 <hr className="border-border my-3" />
                 <p className="text-sm whitespace-pre-wrap">{vietnameseContent}</p>
+                {!message.isUser && <MessageActions text={vietnameseContent} roomId={roomId || ""} />}
               </>
             ) : (
               <p className="text-sm whitespace-pre-wrap">{message.text}</p>
@@ -468,13 +500,8 @@ const handleAccessDenied = () => {
             )}
           </div>
           
-          {!message.isUser && (
-            <>
-              <MessageActions text={message.text} roomId={roomId || ""} />
-              {message.relatedRooms && message.relatedRooms.length > 0 && (
-                <RelatedRooms roomNames={message.relatedRooms} />
-              )}
-            </>
+          {!message.isUser && message.relatedRooms && message.relatedRooms.length > 0 && (
+            <RelatedRooms roomNames={message.relatedRooms} />
           )}
         </div>
       </div>
@@ -587,36 +614,9 @@ const handleAccessDenied = () => {
               <div ref={endRef} />
             </ScrollArea>
             
-            {/* Audio Button */}
+            {/* Hidden audio player */}
             {currentAudio && (
-              <div className="mt-4 flex items-center gap-2">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => {
-                    if (audioRef.current) {
-                      if (isAudioPlaying) {
-                        audioRef.current.pause();
-                      } else {
-                        audioRef.current.play().catch(() => {
-                          toast({
-                            title: "Audio Error / Lỗi Âm Thanh",
-                            description: "Cannot play audio / Không thể phát âm thanh",
-                            variant: "destructive"
-                          });
-                        });
-                      }
-                    }
-                  }}
-                  disabled={audioLoading}
-                >
-                  {audioLoading ? (
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                  ) : (
-                    <Volume2 className="w-4 h-4" />
-                  )}
-                </Button>
-                <audio 
+                <audio
                   key={currentAudio}
                   ref={audioRef}
                   src={currentAudio}
@@ -655,7 +655,6 @@ const handleAccessDenied = () => {
                     setAudioLoading(false);
                   }}
                 />
-              </div>
             )}
           </div>
         </Card>
