@@ -17,7 +17,9 @@ function generateRoomInfo(): RoomInfo[] {
   
   for (const [roomId, roomData] of Object.entries(roomDataMap)) {
     // Extract tier from room data meta or tier field
-    const tier = (roomData.meta?.tier || roomData.tier || 'free').toLowerCase() as RoomInfo['tier'];
+    const rawTier = (roomData.meta?.tier || roomData.tier || 'free').toLowerCase();
+    // Normalize tier format: "vip 3 / cấp vip 3" -> "vip3", "vip 1" -> "vip1", etc.
+    const tier = rawTier.replace(/\s+/g, '').split('/')[0] as RoomInfo['tier'];
     
     // Extract names from room data
     const nameEn = roomData.description?.en?.split('.')[0] || 
