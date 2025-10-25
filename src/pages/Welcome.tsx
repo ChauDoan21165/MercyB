@@ -44,9 +44,12 @@ const Welcome = () => {
       if (!error && profileData) {
         setProfile(profileData);
         
-        // Only show username setup if username is null, undefined, or empty
+        // Check if user has skipped username setup in this session
+        const hasSkipped = sessionStorage.getItem('username_setup_skipped') === 'true';
+        
+        // Only show username setup if username is null, undefined, or empty AND user hasn't skipped
         const hasUsername = profileData.username && profileData.username.trim().length > 0;
-        setShowUsernameSetup(!hasUsername);
+        setShowUsernameSetup(!hasUsername && !hasSkipped);
       } else {
         setShowUsernameSetup(false);
       }
@@ -107,7 +110,14 @@ const Welcome = () => {
   return (
     <div className="min-h-screen" style={{ background: 'hsl(var(--page-welcome))' }}>
       {!isCheckingProfile && showUsernameSetup && (
-        <UsernameSetup onComplete={() => {
+        <UsernameSetup onComplete={(skipped = false) => {
+          if (skipped) {
+            // Mark as skipped in session storage
+            sessionStorage.setItem('username_setup_skipped', 'true');
+          } else {
+            // Clear the skip flag when username is successfully set
+            sessionStorage.removeItem('username_setup_skipped');
+          }
           setShowUsernameSetup(false);
           checkUser();
         }} />

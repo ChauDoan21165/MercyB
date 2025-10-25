@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { Sparkles } from "lucide-react";
 
 interface UsernameSetupProps {
-  onComplete: () => void;
+  onComplete: (skipped?: boolean) => void;
 }
 
 export const UsernameSetup = ({ onComplete }: UsernameSetupProps) => {
@@ -203,7 +203,7 @@ export const UsernameSetup = ({ onComplete }: UsernameSetupProps) => {
               <Button
                 type="button"
                 variant="outline"
-                onClick={onComplete}
+                onClick={() => onComplete(true)}
                 className="flex-1"
               >
                 Skip for now
