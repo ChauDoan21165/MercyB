@@ -51,6 +51,8 @@ const Auth = () => {
           window.history.replaceState({}, '', url.toString());
         } catch {}
         setIsPasswordRecovery(true);
+        // Forward to dedicated reset page
+        window.location.replace('/reset');
         return;
       }
 
@@ -64,9 +66,13 @@ const Auth = () => {
     const url = new URL(window.location.href);
     const hasCode = !!url.searchParams.get('code');
     if (hasCode) {
-      supabase.auth.exchangeCodeForSession(window.location.href).catch(() => {
-        toast({ title: 'Error', description: 'Email link is invalid or has expired.', variant: 'destructive' });
-      });
+      supabase.auth.exchangeCodeForSession(window.location.href)
+        .then(() => {
+          window.location.replace('/reset');
+        })
+        .catch(() => {
+          toast({ title: 'Error', description: 'Email link is invalid or has expired.', variant: 'destructive' });
+        });
     }
 
     // Fallback: process hash tokens from recovery links (#access_token, #refresh_token)
@@ -84,6 +90,7 @@ const Auth = () => {
           cleanUrl.searchParams.set('recovery', '1');
           window.history.replaceState({}, '', cleanUrl.toString());
           setIsPasswordRecovery(true);
+          window.location.replace('/reset');
         }
       } catch {}
     })();
