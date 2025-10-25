@@ -51,7 +51,7 @@ const AdminAudioUpload = () => {
       // Load files for each room
       for (const room of rooms) {
         const { data, error } = await supabase.storage
-          .from('room-audio-uploads')
+          .from('room-audio')
           .list(room.id, {
             sortBy: { column: 'created_at', order: 'desc' }
           });
@@ -128,7 +128,7 @@ const AdminAudioUpload = () => {
       const fileName = `${selectedRoom}/${audioFile.name}`;
       
       const { error: uploadError } = await supabase.storage
-        .from('room-audio-uploads')
+        .from('room-audio')
         .upload(fileName, audioFile, {
           upsert: true // Replace if exists
         });
@@ -166,7 +166,7 @@ const AdminAudioUpload = () => {
 
     try {
       const { error } = await supabase.storage
-        .from('room-audio-uploads')
+        .from('room-audio')
         .remove([`${roomId}/${fileName}`]);
 
       if (error) throw error;
@@ -188,7 +188,7 @@ const AdminAudioUpload = () => {
 
   const handlePlayAudio = (roomId: string, fileName: string) => {
     const { data } = supabase.storage
-      .from('room-audio-uploads')
+      .from('room-audio')
       .getPublicUrl(`${roomId}/${fileName}`);
     
     const audio = new Audio(data.publicUrl);
