@@ -171,22 +171,6 @@ const handleAccessDenied = () => {
       return;
     }
 
-    // Check if user is suspended
-    const { data: moderationStatus } = await supabase
-      .from('user_moderation_status')
-      .select('is_suspended')
-      .eq('user_id', user.id)
-      .single();
-
-    if (moderationStatus?.is_suspended) {
-      toast({
-        title: "Account Suspended / Tài Khoản Bị Khóa",
-        description: "Your account has been suspended due to violations. Please contact admin. / Tài khoản của bạn bị khóa do vi phạm. Vui lòng liên hệ admin.",
-        variant: "destructive",
-        duration: 5000
-      });
-      return;
-    }
 
     // Validate input (only when user types, not for keyword clicks)
     if (!keywordText) {
@@ -201,35 +185,6 @@ const handleAccessDenied = () => {
       }
     }
 
-    // Check content moderation
-    try {
-      const { data: moderationResult, error: moderationError } = await supabase.functions.invoke('content-moderation', {
-        body: {
-          content: mainInput,
-          userId: user.id,
-          roomId: roomId || '',
-          language: 'en'
-        }
-      });
-
-      if (moderationError) {
-        console.error('Moderation check failed:', moderationError);
-        // Continue if moderation check fails (fail-open for better UX)
-      } else if (!moderationResult.allowed) {
-        // Show warning or suspension message
-        toast({
-          title: moderationResult.action === 'suspend' ? "Account Suspended / Tài Khoản Bị Khóa" : "Warning / Cảnh Báo",
-          description: moderationResult.message,
-          variant: "destructive",
-          duration: 5000
-        });
-
-        return; // Don't send the message
-      }
-    } catch (moderationCheckError) {
-      console.error('Moderation check error:', moderationCheckError);
-      // Continue (fail-open)
-    }
 
     // Check if user has credits remaining
     if (!hasCreditsRemaining()) {
