@@ -103,37 +103,72 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   } else {
     // Old structure: entries is an array
     matchedEntry = findEntryByGroup(groupKey, roomData.entries || []);
-    if (!matchedEntry && groupKey && (roomData as any).keywords_dict) {
-      // Fallback: map dictionary key to an entry by matching titles
-      const dictEntry = (roomData as any).keywords_dict[groupKey];
-      const targetEn = dictEntry?.en ? String(dictEntry.en) : undefined;
-      const targetVi = dictEntry?.vi ? String(dictEntry.vi) : undefined;
-      if (targetEn || targetVi) {
-        matchedEntry = (roomData.entries || []).find((e: any) => {
-          const tEn = e?.title?.en || e?.title_en;
-          const tVi = e?.title?.vi || e?.title_vi;
-          return (targetEn && tEn === targetEn) || (targetVi && tVi === targetVi);
-        }) || null;
-      }
+
+    // Fallback: try to match by keyword text within title/content (handles simple string fields and no explicit mapping)
+    if (!matchedEntry && groupKey) {
+      const groups: any = roomData.keywords || (roomData as any).keywords_dict || {};
+      const group = groups[groupKey];
+      const candidates: string[] = [
+        ...(Array.isArray(group?.en) ? group.en : []),
+        ...(Array.isArray(group?.vi) ? group.vi : [])
+      ].map((s: any) => String(s));
+
+      const norm = (s: any) => String(s || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[\s\-]+/g, '_')
+        .trim();
+
+      const normalizedCandidates = candidates.map(norm).filter(Boolean);
+
+      matchedEntry = (roomData.entries || []).find((e: any) => {
+        const titleStr = typeof e?.title === 'string' ? e.title : (e?.title?.en || e?.title_en || '');
+        const contentStr = typeof e?.content === 'string' ? e.content : (e?.content?.en || e?.body?.en || '');
+        const text = norm(`${titleStr} ${contentStr}`);
+        return normalizedCandidates.some((kw) => kw.length >= 4 && text.includes(kw));
+      }) || null;
     }
+
+    // Final fallback: pick the first entry if we still have nothing but a group was matched
+    if (!matchedEntry && groupKey && Array.isArray(roomData.entries) && roomData.entries.length > 0) {
+      matchedEntry = roomData.entries[0];
+    }
+
     if (matchedEntry) {
-      audioFile = matchedEntry.audio?.en || matchedEntry.audio?.vi;
-      entryId = matchedEntry.id || matchedEntry.artifact_id;
+      // Support audio in various formats
+      const audio = matchedEntry.audio || matchedEntry.audio_file || matchedEntry.audioEn || matchedEntry.audio_en;
+      if (typeof audio === 'string') {
+        audioFile = audio.startsWith('/') ? audio : `/audio/${audio}`;
+      } else {
+        audioFile = matchedEntry.audio?.en || matchedEntry.audio?.vi;
+      }
+      entryId = matchedEntry.id || matchedEntry.artifact_id || matchedEntry.title;
     }
   }
   
   const relatedRooms = findRelatedRooms(message, roomId);
 
   const buildEntryResponse = (entry: any) => {
-    const titleEn = String(entry?.title?.en || entry?.title_en || "");
-    const titleVi = String(entry?.title?.vi || entry?.title_vi || "");
+    // Handle title as string or bilingual object
+    const titleEn = typeof entry?.title === 'string' 
+      ? entry.title 
+      : String(entry?.title?.en || entry?.title_en || "");
+    const titleVi = typeof entry?.title === 'object'
+      ? String(entry?.title?.vi || entry?.title_vi || "")
+      : "";
 
+    // Handle content/copy as string or bilingual object
     const copyEn = typeof entry?.copy === "string"
       ? entry.copy
-      : String(entry?.copy?.en || entry?.content?.en || entry?.body?.en || entry?.copy_en || "");
+      : typeof entry?.content === 'string'
+        ? entry.content
+        : String(entry?.copy?.en || entry?.content?.en || entry?.body?.en || entry?.copy_en || "");
     const copyVi = typeof entry?.copy === "string"
       ? ""
-      : String(entry?.copy?.vi || entry?.content?.vi || entry?.body?.vi || entry?.copy_vi || "");
+      : typeof entry?.content === 'string'
+        ? ""
+        : String(entry?.copy?.vi || entry?.content?.vi || entry?.body?.vi || entry?.copy_vi || "");
 
     const en = [titleEn, copyEn].filter(Boolean).join("\n\n");
     const vi = [titleVi, copyVi].filter(Boolean).join("\n\n");

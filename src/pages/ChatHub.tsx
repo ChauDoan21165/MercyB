@@ -425,15 +425,14 @@ const handleAccessDenied = () => {
     scrollToBottom();
   }, [mainMessages]);
 
-  // Auto-scroll when AI is typing/loading
+  // Auto-scroll when AI is typing/loading (single scroll to avoid jitter)
   useEffect(() => {
     if (isLoading) {
-      const scrollInterval = setInterval(scrollToBottom, 100);
-      return () => clearInterval(scrollInterval);
+      scrollToBottom();
     }
   }, [isLoading]);
 
-  // Auto-scroll when user is typing to keep input visible
+  // Auto-scroll when user is typing to keep input visible (throttled)
   useEffect(() => {
     if (mainInput) scrollToBottom();
   }, [mainInput]);
