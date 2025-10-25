@@ -550,7 +550,7 @@ const handleAccessDenied = () => {
             </ScrollArea>
 
             {/* Keyword Menu Display */}
-            {keywordMenu && (
+            {keywordMenu && keywordMenu.en && keywordMenu.vi && (
               <div className="my-3 p-3 bg-secondary/10 rounded-lg border border-border">
                 <h4 className="text-sm font-semibold mb-2">
                   Available Keywords / Từ Khóa Có Sẵn
