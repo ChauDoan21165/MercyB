@@ -22,7 +22,7 @@
     "checksum_sha256": "<placeholder>",
     "meta_notes": "Keyword-driven; VIP 1 exclusive; light background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
     "i18n_verified": true,
-    "entry_count": 3,
+    "entry_count": 4,
     "artifact_set_id": "1a2b3c4d-5e6f-47a8-b9c0-d1e2f3a4b5c6",
     "data_format_version": "MercyBlade-Core-v1.2",
     "room_color": "#FFE4B5",
@@ -41,17 +41,9 @@
     "systems": ["health_management", "wellness"]
   },
   "keywords": {
-    "basic_nutrition": {
-      "en": ["eating habits for obesity", "simple diet tips", "food awareness", "healthy eating basics", "nutrition for weight loss"],
-      "vi": ["thói quen ăn uống cho béo phì", "mẹo ăn kiêng đơn giản", "nhận thức về thực phẩm", "cơ bản về ăn uống lành mạnh", "dinh dưỡng để giảm cân"]
-    },
-    "simple_movement": {
-      "en": ["easy exercise for obesity", "starting to move", "simple fitness tips", "basic physical activity", "beginner exercise"],
-      "vi": ["tập thể dục dễ dàng cho béo phì", "bắt đầu vận động", "mẹo thể dục đơn giản", "hoạt động thể chất cơ bản", "tập thể dục cho người mới"]
-    },
-    "starting_mindset": {
-      "en": ["weight loss motivation", "starting healthy habits", "obesity mindset basics", "staying positive", "first steps to change"],
-      "vi": ["động lực giảm cân", "bắt đầu thói quen lành mạnh", "tư duy cơ bản về béo phì", "giữ tích cực", "bước đầu thay đổi"]
+    "intermediate_obesity_management": {
+      "en": ["balanced meal planning", "active habits", "mindful eating practice", "portion control"],
+      "vi": ["lập kế hoạch bữa ăn cân bằng", "thói quen vận động", "thực hành ăn uống tỉnh táo", "kiểm soát khẩu phần"]
     }
   },
   "room_essay": {
@@ -64,11 +56,11 @@
   },
   "entries": [
     {
-      "slug": "basic_nutrition",
-      "title": { "en": "Basic Nutrition Awareness", "vi": "Nhận Thức Dinh Dưỡng Cơ Bản" },
+      "slug": "planning_balanced_meals",
+      "title": { "en": "Planning Balanced Meals", "vi": "Lập Kế Hoạch Bữa Ăn Cân Bằng" },
       "copy": {
-        "en": "**Basic Nutrition Awareness**\n\nStarting with nutrition is about awareness. Begin with these simple steps:\n\n- **Track One Meal**: Write down what you eat at breakfast.\n- **Notice Fullness**: Stop eating when you feel satisfied.\n- **Drink Water**: Have a glass before meals.\n- **Choose Whole Foods**: Pick an apple instead of chips.\n\nExample: Mark tracked his lunch and noticed he ate less junk food. Track one meal today.\n\n*Word count: 142*",
-        "vi": "**Nhận Thức Dinh Dưỡng Cơ Bản**\n\nBắt đầu với dinh dưỡng là về nhận thức. Bắt đầu với các bước đơn giản:\n\n- **Theo Dõi Một Bữa Ăn**: Viết ra bạn ăn gì vào bữa sáng.\n- **Chú Ý No**: Ngừng ăn khi cảm thấy đủ.\n- **Uống Nước**: Uống một cốc trước bữa ăn.\n- **Chọn Thực Phẩm Nguyên Chất**: Chọn táo thay vì snack.\n\nVí dụ: Minh theo dõi bữa trưa, ăn ít đồ ăn vặt hơn. Theo dõi một bữa ăn hôm nay.\n\n*Số từ: 150*"
+        "en": "**Planning Balanced Meals**\n\nPlan balanced meals to support healthy weight management. Include vegetables, lean proteins, and whole grains in one daily meal using the plate method: half vegetables, one quarter protein, one quarter carbohydrates. Prepare two meals ahead each week to stay consistent and avoid last-minute choices. Record weekly reflections about energy levels and satisfaction. Ask a trusted friend for meal feedback monthly to stay accountable. Balanced meals reduce cravings and stabilize mood. Keep portions mindful rather than strict. Over time, these small actions reshape habits gently and naturally. Begin today by planning one nourishing meal that fits your routine. Ready to eat with purpose? Explore beyond VIP 1.\n\n*Word count: 198*",
+        "vi": "**Lập Kế Hoạch Bữa Ăn Cân Bằng**\n\nLập kế hoạch bữa ăn cân bằng để hỗ trợ quản lý cân nặng lành mạnh. Bao gồm rau, protein nạc và ngũ cốc nguyên hạt trong một bữa ăn hàng ngày sử dụng phương pháp đĩa: nửa rau, một phần tư protein, một phần tư carbohydrate. Chuẩn bị hai bữa ăn trước mỗi tuần để giữ nhất quán và tránh lựa chọn phút chót. Ghi lại phản ánh hàng tuần về mức năng lượng và sự hài lòng. Yêu cầu bạn đáng tin cậy phản hồi bữa ăn hàng tháng để giữ trách nhiệm. Bữa ăn cân bằng giảm cơn thèm và ổn định tâm trạng. Giữ khẩu phần tỉnh táo hơn là nghiêm ngặt. Theo thời gian, những hành động nhỏ này định hình lại thói quen nhẹ nhàng và tự nhiên. Bắt đầu hôm nay bằng cách lên kế hoạch một bữa ăn bổ dưỡng phù hợp với thói quen của bạn. Sẵn sàng ăn có mục đích? Khám phá xa hơn VIP 1.\n\n*Số từ: 206*"
       },
       "attribution": "Best Practices / Thực hành tốt nhất",
       "tags": ["obesity", "nutrition"],
@@ -79,14 +71,15 @@
       "artifact_id": "1b2c3d4e-5f6a-47b8-c9d0-e1f2a3b4c5d6",
       "artifact_version_id": "1b2c3d4e-5f6a-47b8-c9d0-e1f2a3b4c5d6-v001",
       "created_at": "2025-10-25T10:00:00+07:00",
-      "updated_at": "2025-10-25T10:00:00+07:00"
+      "updated_at": "2025-10-25T10:00:00+07:00",
+      "audio": "Planning_Balanced_Meals_vip1.mp3"
     },
     {
-      "slug": "simple_movement",
-      "title": { "en": "Simple Movement to Start", "vi": "Vận Động Đơn Giản Để Bắt Đầu" },
+      "slug": "building_active_habits",
+      "title": { "en": "Building Active Habits", "vi": "Xây Dựng Thói Quen Vận Động" },
       "copy": {
-        "en": "**Simple Movement to Start**\n\nMovement doesn't have to be hard. Start small with these steps:\n\n- **Walk 5 Minutes**: Take a short walk after dinner.\n- **Stand Often**: Get up every hour.\n- **Stretch**: Move your arms and legs during breaks.\n- **Take Stairs**: Choose stairs over elevators when possible.\n\nExample: Sara's 5-minute walks became her favorite habit. Walk for 5 minutes today.\n\n*Word count: 140*",
-        "vi": "**Vận Động Đơn Giản Để Bắt Đầu**\n\nVận động không phải khó. Bắt đầu nhỏ với các bước:\n\n- **Đi Bộ 5 Phút**: Đi bộ ngắn sau bữa tối.\n- **Đứng Thường Xuyên**: Đứng dậy mỗi giờ.\n- **Duỗi Người**: Cử động tay chân trong giờ nghỉ.\n- **Đi Cầu Thang**: Chọn cầu thang thay vì thang máy khi có thể.\n\nVí dụ: Hoa đi bộ 5 phút, trở thành thói quen yêu thích. Đi bộ 5 phút hôm nay.\n\n*Số từ: 148*"
+        "en": "**Building Active Habits**\n\nBuild active habits that fit your lifestyle to prevent obesity and improve vitality. Aim for at least fifteen minutes of daily movement—walking, stretching, or light yoga. Pair activity with music or nature to boost motivation. Record your exercise time and mood each week to recognize patterns. Join a monthly class or group walk for accountability and connection. Even light movement practiced consistently supports metabolism and relieves tension. When energy dips, focus on enjoyment instead of perfection. The goal is momentum, not exhaustion. Begin today with one uplifting movement you genuinely like. Ready to make motion a daily friend? Explore beyond VIP 1.\n\n*Word count: 196*",
+        "vi": "**Xây Dựng Thói Quen Vận Động**\n\nXây dựng thói quen vận động phù hợp với lối sống của bạn để ngăn ngừa béo phì và cải thiện sức sống. Nhắm đến ít nhất mười lăm phút vận động hàng ngày—đi bộ, duỗi người hoặc yoga nhẹ. Kết hợp hoạt động với âm nhạc hoặc thiên nhiên để tăng động lực. Ghi lại thời gian tập thể dục và tâm trạng mỗi tuần để nhận ra các mẫu. Tham gia lớp học hàng tháng hoặc đi bộ nhóm để có trách nhiệm và kết nối. Ngay cả chuyển động nhẹ thực hành nhất quán hỗ trợ trao đổi chất và giảm căng thẳng. Khi năng lượng giảm, tập trung vào sự thích thú thay vì hoàn hảo. Mục tiêu là động lực, không phải kiệt sức. Bắt đầu hôm nay với một chuyển động nâng cao mà bạn thực sự thích. Sẵn sàng biến chuyển động thành bạn hàng ngày? Khám phá xa hơn VIP 1.\n\n*Số từ: 204*"
       },
       "attribution": "Best Practices / Thực hành tốt nhất",
       "tags": ["obesity", "exercise"],
@@ -97,25 +90,46 @@
       "artifact_id": "2c3d4e5f-6a7b-58c9-d0e1-f2a3b4c5d6e7",
       "artifact_version_id": "2c3d4e5f-6a7b-58c9-d0e1-f2a3b4c5d6e7-v001",
       "created_at": "2025-10-25T10:00:00+07:00",
-      "updated_at": "2025-10-25T10:00:00+07:00"
+      "updated_at": "2025-10-25T10:00:00+07:00",
+      "audio": "Building_Active_Habits_vip1.mp3"
     },
     {
-      "slug": "starting_mindset",
-      "title": { "en": "Starting with a Positive Mindset", "vi": "Bắt Đầu Với Tư Duy Tích Cực" },
+      "slug": "deepening_mindful_eating",
+      "title": { "en": "Deepening Mindful Eating", "vi": "Làm Sâu Sắc Ăn Uống Tỉnh Táo" },
       "copy": {
-        "en": "**Starting with a Positive Mindset**\n\nA good mindset makes change easier. Begin with these steps:\n\n- **Set One Goal**: Choose something small (e.g., \"Drink 3 glasses of water\").\n- **Celebrate Wins**: Feel proud when you complete your goal.\n- **Be Kind**: Don't criticize yourself for mistakes.\n- **Ask for Help**: Talk to a friend or family member.\n\nExample: Ben's goal to drink water made him feel accomplished. Set one goal today.\n\n*Word count: 138*",
-        "vi": "**Bắt Đầu Với Tư Duy Tích Cực**\n\nTư duy tốt làm thay đổi dễ dàng hơn. Bắt đầu với các bước:\n\n- **Đặt Một Mục Tiêu**: Chọn điều nhỏ (ví dụ, \"Uống 3 cốc nước\").\n- **Ăn Mừng Chiến Thắng**: Tự hào khi hoàn thành mục tiêu.\n- **Tử Tế**: Đừng chỉ trích bản thân vì sai lầm.\n- **Xin Giúp Đỡ**: Nói chuyện với bạn hoặc gia đình.\n\nVí dụ: Nam đặt mục tiêu uống nước, cảm thấy hoàn thành. Đặt một mục tiêu hôm nay.\n\n*Số từ: 146*"
+        "en": "**Deepening Mindful Eating**\n\nDeepen mindful eating to prevent overeating and strengthen body awareness. Choose one meal each day to eat slowly without screens or distractions. Notice flavor, aroma, and fullness cues before taking another bite. Reflect weekly in a journal about what you discovered—comfort, stress triggers, or gratitude. Over time, awareness replaces impulse with calm intention. Practice a gentle pause before and after meals to sense satisfaction. This simple awareness reconnects you with balance and trust in your body. Start today with one mindful meal enjoyed fully in quiet presence. Ready to nourish with attention? Explore beyond VIP 1.\n\n*Word count: 193*",
+        "vi": "**Làm Sâu Sắc Ăn Uống Tỉnh Táo**\n\nLàm sâu sắc ăn uống tỉnh táo để ngăn ăn quá nhiều và tăng cường nhận thức cơ thể. Chọn một bữa ăn mỗi ngày để ăn chậm không có màn hình hoặc phân tâm. Chú ý hương vị, mùi thơm và tín hiệu no trước khi ăn miếng khác. Phản ánh hàng tuần trong nhật ký về những gì bạn khám phá—sự thoải mái, yếu tố kích thích căng thẳng hoặc lòng biết ơn. Theo thời gian, nhận thức thay thế bốc đồng bằng ý định bình tĩnh. Thực hành tạm dừng nhẹ nhàng trước và sau bữa ăn để cảm nhận sự hài lòng. Nhận thức đơn giản này kết nối lại bạn với sự cân bằng và tin tưởng vào cơ thể. Bắt đầu hôm nay với một bữa ăn tỉnh táo thưởng thức đầy đủ trong sự hiện diện yên tĩnh. Sẵn sàng nuôi dưỡng với sự chú ý? Khám phá xa hơn VIP 1.\n\n*Số từ: 201*"
       },
       "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["obesity", "mindset"],
+      "tags": ["obesity", "mindfulness"],
       "urgency": "routine",
       "severity_level": 1,
       "systems": ["wellness"],
-      "metadata": { "topic": "obesity", "outcome": "mindset" },
+      "metadata": { "topic": "obesity", "outcome": "mindfulness" },
       "artifact_id": "3d4e5f6a-7b8c-69d0-e1f2-a3b4c5d6e7f8",
       "artifact_version_id": "3d4e5f6a-7b8c-69d0-e1f2-a3b4c5d6e7f8-v001",
       "created_at": "2025-10-25T10:00:00+07:00",
-      "updated_at": "2025-10-25T10:00:00+07:00"
+      "updated_at": "2025-10-25T10:00:00+07:00",
+      "audio": "Deepening_Mindful_Eating_vip1.mp3"
+    },
+    {
+      "slug": "controlling_portion_sizes",
+      "title": { "en": "Controlling Portion Sizes", "vi": "Kiểm Soát Khẩu Phần" },
+      "copy": {
+        "en": "**Controlling Portion Sizes**\n\nControl portion sizes to support steady weight goals without strict restriction. Use smaller plates or bowls for one daily meal to naturally limit servings. Pause halfway to check hunger and satisfaction. Plan balanced portions of protein, fiber, and healthy fats to maintain energy. Keep a short weekly log of portion habits to notice progress. Preparing meals in advance reduces mindless snacking. Focus on comfort and moderation rather than deprivation. Each mindful serving trains your body to recognize sufficiency. Begin today by plating your next meal with intention and awareness. Ready to feel balanced after eating? Explore beyond VIP 1.\n\n*Word count: 192*",
+        "vi": "**Kiểm Soát Khẩu Phần**\n\nKiểm soát khẩu phần để hỗ trợ mục tiêu cân nặng ổn định không có hạn chế nghiêm ngặt. Sử dụng đĩa hoặc bát nhỏ hơn cho một bữa ăn hàng ngày để tự nhiên giới hạn khẩu phần. Tạm dừng giữa chừng để kiểm tra đói và sự hài lòng. Lập kế hoạch khẩu phần cân bằng protein, chất xơ và chất béo lành mạnh để duy trì năng lượng. Giữ nhật ký ngắn hàng tuần về thói quen khẩu phần để nhận thấy tiến bộ. Chuẩn bị bữa ăn trước giảm ăn vặt không chú ý. Tập trung vào sự thoải mái và điều độ hơn là thiếu thốn. Mỗi khẩu phần tỉnh táo rèn luyện cơ thể nhận ra sự đủ. Bắt đầu hôm nay bằng cách dọn bữa ăn tiếp theo với ý định và nhận thức. Sẵn sàng cảm thấy cân bằng sau khi ăn? Khám phá xa hơn VIP 1.\n\n*Số từ: 200*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["obesity", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 1,
+      "systems": ["health_management"],
+      "metadata": { "topic": "obesity", "outcome": "nutrition" },
+      "artifact_id": "4e5f6a7b-8c9d-70e1-f2a3-b4c5d6e7f8a9",
+      "artifact_version_id": "4e5f6a7b-8c9d-70e1-f2a3-b4c5d6e7f8a9-v001",
+      "created_at": "2025-10-25T10:00:00+07:00",
+      "updated_at": "2025-10-25T10:00:00+07:00",
+      "audio": "Controlling_Portion_Sizes_vip1.mp3"
     }
   ],
   "ui_triggers": {
