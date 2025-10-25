@@ -32,13 +32,17 @@ const RoomGridVIP2 = () => {
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="mb-8 space-y-4">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center mb-4">
             <Button
               variant="ghost"
               onClick={() => navigate("/")}
+              className="flex items-center gap-2"
             >
               ← Back / Quay Lại
             </Button>
+            <span className="ml-3 text-sm text-muted-foreground">
+              You are in VIP 2 area / Bạn đang ở khu vực VIP 2
+            </span>
           </div>
           
           <div className="text-center space-y-2">
@@ -51,14 +55,6 @@ const RoomGridVIP2 = () => {
             <p className="text-lg text-muted-foreground">
               Phòng Học VIP2
             </p>
-          </div>
-
-          {/* Legend */}
-          <div className="flex flex-wrap justify-center gap-3 pt-4">
-            <Badge variant="outline" className="bg-green-100 text-green-700 border-green-300">
-              <CheckCircle2 className="w-3 h-3 mr-1" />
-              Ready / Sẵn Sàng
-            </Badge>
           </div>
         </div>
 

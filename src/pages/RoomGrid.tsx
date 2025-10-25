@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, Lock, Sparkles, BarChart3 } from "lucide-react";
+import { CheckCircle2, Lock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
@@ -94,31 +93,17 @@ const RoomGrid = () => {
         <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="mb-8 space-y-4">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center mb-4">
             <Button
               variant="ghost"
               onClick={() => navigate("/")}
+              className="flex items-center gap-2"
             >
               ← Back / Quay Lại
             </Button>
-            
-            <div className="flex gap-2">
-              <Button
-                variant="outline"
-                onClick={() => navigate("/vip-requests")}
-                className="flex items-center gap-2"
-              >
-                <BarChart3 className="h-4 w-4" />
-                My Requests
-              </Button>
-              <Button
-                onClick={() => navigate("/vip-request")}
-                className="flex items-center gap-2 bg-gradient-to-r from-primary to-accent"
-              >
-                <Sparkles className="h-4 w-4" />
-                Request Custom Room
-              </Button>
-            </div>
+            <span className="ml-3 text-sm text-muted-foreground">
+              You are in free of charge area / Bạn đang ở khu vực miễn phí
+            </span>
           </div>
           
           <div className="text-center space-y-2">
@@ -128,14 +113,6 @@ const RoomGrid = () => {
             <p className="text-lg text-muted-foreground">
               Chọn Phòng Học Của Bạn
             </p>
-          </div>
-
-          {/* Legend */}
-          <div className="flex flex-wrap justify-center gap-3 pt-4">
-            <Badge variant="outline" className="bg-green-100 text-green-700 border-green-300">
-              <CheckCircle2 className="w-3 h-3 mr-1" />
-              Ready / Sẵn Sàng
-            </Badge>
           </div>
         </div>
 
@@ -190,15 +167,6 @@ const RoomGrid = () => {
           ))}
         </div>
 
-        {/* Footer Note */}
-        <div className="text-center mt-8 space-y-1">
-          <p className="text-sm text-muted-foreground">
-            Rooms with ✓ are ready for learning
-          </p>
-          <p className="text-xs text-muted-foreground">
-            Các Phòng Có ✓ Đã Sẵn Sàng Để Học
-          </p>
-        </div>
       </div>
     </div>
     </TooltipProvider>

@@ -60,10 +60,6 @@ const AllRooms = () => {
 
           {/* Legend */}
           <div className="flex flex-wrap justify-center gap-3 pt-4">
-            <Badge variant="outline" className="bg-green-100 text-green-700 border-green-300">
-              <CheckCircle2 className="w-3 h-3 mr-1" />
-              Ready / Sẵn Sàng
-            </Badge>
             <Badge className="bg-primary text-primary-foreground">FREE</Badge>
             <Badge className="bg-secondary text-secondary-foreground">VIP1</Badge>
             <Badge className="bg-accent text-accent-foreground">VIP2</Badge>
