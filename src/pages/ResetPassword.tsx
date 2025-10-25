@@ -23,9 +23,7 @@ const ResetPassword = () => {
 
   // Password fields
   const [newPassword, setNewPassword] = useState('');
-  const [confirmNewPassword, setConfirmNewPassword] = useState('');
   const [showNewPassword, setShowNewPassword] = useState(false);
-  const [showConfirmNewPassword, setShowConfirmNewPassword] = useState(false);
 
   // Resend form when link is expired/invalid
   const [resendEmail, setResendEmail] = useState('');
@@ -51,7 +49,8 @@ const ResetPassword = () => {
 
         // If Supabase indicates expired/invalid directly in query params, show resend immediately
         const errorCode = current.searchParams.get('error_code');
-        if (errorCode === 'otp_expired' || current.searchParams.get('error')) {
+        const expiredFlag = current.searchParams.get('expired');
+        if (errorCode === 'otp_expired' || current.searchParams.get('error') || expiredFlag === '1') {
           setStatus('expired');
           return;
         }
@@ -108,13 +107,12 @@ const ResetPassword = () => {
     e.preventDefault();
     setLoading(true);
 
-    try {
-      const schema = z.object({
-        password: z.string().trim().min(6, { message: 'Password must be at least 6 characters' }).max(128),
-        confirm: z.string().trim().min(6).max(128),
-      }).refine((d) => d.password === d.confirm, { path: ['confirm'], message: 'Passwords do not match' });
+      try {
+        const schema = z.object({
+          password: z.string().trim().min(6, { message: 'Password must be at least 6 characters' }).max(128),
+        });
 
-      const parsed = schema.safeParse({ password: newPassword, confirm: confirmNewPassword });
+        const parsed = schema.safeParse({ password: newPassword });
       if (!parsed.success) {
         toast({ title: 'Error', description: parsed.error.issues[0]?.message || 'Invalid input', variant: 'destructive' });
         setLoading(false);
@@ -202,30 +200,7 @@ const ResetPassword = () => {
               </div>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="confirm-password">Confirm New Password</Label>
-              <div className="relative w-full">
-                <Input
-                  id="confirm-password"
-                  type={showConfirmNewPassword ? 'text' : 'password'}
-                  placeholder="••••••••"
-                  value={confirmNewPassword}
-                  onChange={(e) => setConfirmNewPassword(e.target.value)}
-                  required
-                  minLength={6}
-                  className="w-full pr-10"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowConfirmNewPassword(!showConfirmNewPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground z-10"
-                  aria-label={showConfirmNewPassword ? 'Hide password' : 'Show password'}
-                  tabIndex={-1}
-                >
-                  {showConfirmNewPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                </button>
-              </div>
-            </div>
+            {/* Confirm password removed for simpler UX */}
 
             <Button type="submit" className="w-full" disabled={loading}>
               {loading ? 'Updating...' : 'Update Password'}
