@@ -106,18 +106,8 @@ const handleAccessDenied = () => {
     try {
       const roomData = roomDataMap[roomId || ''];
       
-      // Load welcome message from room data
-      let welcomeText = '';
-      if (roomData?.room_welcome) {
-        // Format: room_welcome with en and vi
-        welcomeText = `${roomData.room_welcome.en}\n\n${roomData.room_welcome.vi}`;
-      } else if (roomData?.welcome) {
-        // Format: welcome with en and vi
-        welcomeText = `${roomData.welcome.en}\n\n${roomData.welcome.vi}`;
-      } else {
-        // Fallback to generic message
-        welcomeText = `Hello! Welcome to ${currentRoom.nameEn} room. How can I help you today?\n\nXin chào! Chào mừng bạn đến với phòng ${currentRoom.nameVi}. Tôi có thể giúp gì cho bạn hôm nay?`;
-      }
+      // Load welcome message with new format
+      const welcomeText = `Welcome to ${currentRoom.nameEn} Room, please click to keyword of the topic you want to discover.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.`;
       
       const welcomeMessage: Message = {
         id: 'welcome',
@@ -147,7 +137,7 @@ const handleAccessDenied = () => {
       // Fallback welcome message
       const welcomeMessage: Message = {
         id: 'welcome',
-        text: `Hello! Welcome to ${currentRoom.nameEn} room. How can I help you today?\n\nXin chào! Chào mừng bạn đến với phòng ${currentRoom.nameVi}. Tôi có thể giúp gì cho bạn hôm nay?`,
+        text: `Welcome to ${currentRoom.nameEn} Room, please click to keyword of the topic you want to discover.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.`,
         isUser: false,
         timestamp: new Date()
       };
@@ -155,8 +145,16 @@ const handleAccessDenied = () => {
     }
   }, [roomId]);
 
-  const sendMainMessage = async () => {
-    if (!mainInput.trim() || isLoading) return;
+  const handleKeywordClick = async (keyword: string) => {
+    if (isLoading) return;
+    
+    // Set the input and trigger the message send
+    await sendMainMessage(keyword);
+  };
+
+  const sendMainMessage = async (keywordText?: string) => {
+    const messageText = keywordText || mainInput.trim();
+    if (!messageText || isLoading) return;
 
     // Get current user
     const { data: { user } } = await supabase.auth.getUser();
@@ -235,14 +233,16 @@ const handleAccessDenied = () => {
 
     const userMessage: Message = {
       id: Date.now().toString(),
-      text: mainInput,
+      text: messageText,
       isUser: true,
       timestamp: new Date()
     };
 
     setMainMessages(prev => [...prev, userMessage]);
-    const currentInput = mainInput;
-    setMainInput("");
+    const currentInput = messageText;
+    if (!keywordText) {
+      setMainInput("");
+    }
     setIsLoading(true);
     
     // Increment usage count
@@ -504,10 +504,6 @@ const handleAccessDenied = () => {
           </div>
           
           <div className="text-center space-y-2">
-            <div>
-              <h2 className="text-xl font-bold text-foreground">{currentRoom.nameEn}</h2>
-              <p className="text-sm text-muted-foreground">{currentRoom.nameVi}</p>
-            </div>
             <div className="flex flex-col items-center gap-2">
               <Badge variant="outline">📚 Keyword Mode / Chế Độ Từ Khóa</Badge>
             </div>
@@ -524,23 +520,52 @@ const handleAccessDenied = () => {
         <RoomProgress totalRooms={progress.totalRooms} streak={progress.streak} />
 
         {/* Main Chat Area */}
-        <Card className="p-6 shadow-soft">
-          <div className="space-y-4">
-            <div className="flex items-center gap-2 pb-2 border-b">
-              <MessageCircle className="w-5 h-5 text-primary" />
-              <div>
-                <h3 className="font-semibold">Main Consultation</h3>
-                <p className="text-xs text-muted-foreground">Tư Vấn Chính</p>
-              </div>
-            </div>
+        <Card className="p-4 shadow-soft">
+          <div className="space-y-3">
             
-            <ScrollArea className="h-[400px] pr-4" ref={mainScrollRef}>
+            {/* Keyword Menu Display - Show prominently */}
+            {keywordMenu && keywordMenu.en && keywordMenu.vi && (
+              <div className="mb-3 p-3 bg-secondary/10 rounded-lg border border-border">
+                <div className="space-y-2">
+                  <div className="flex flex-wrap gap-2">
+                    {keywordMenu.en.map((keyword, idx) => (
+                      <Button 
+                        key={`en-${idx}`} 
+                        variant="outline" 
+                        size="sm"
+                        className="text-xs cursor-pointer hover:bg-primary hover:text-primary-foreground"
+                        onClick={() => handleKeywordClick(keyword)}
+                        disabled={isLoading}
+                      >
+                        {keyword}
+                      </Button>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {keywordMenu.vi.map((keyword, idx) => (
+                      <Button 
+                        key={`vi-${idx}`} 
+                        variant="outline"
+                        size="sm" 
+                        className="text-xs cursor-pointer hover:bg-primary hover:text-primary-foreground"
+                        onClick={() => handleKeywordClick(keyword)}
+                        disabled={isLoading}
+                      >
+                        {keyword}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <ScrollArea className="h-[280px] pr-4" ref={mainScrollRef}>
               <WelcomeBack lastRoomId={progress.lastVisit} currentRoomId={roomId || ""} />
               {mainMessages.length === 0 ? (
                 <div className="flex items-center justify-center h-full text-center">
                   <div className="space-y-2">
-                    <p className="text-muted-foreground">Start your conversation</p>
-                    <p className="text-sm text-muted-foreground">Bắt Đầu Cuộc Trò Chuyện Của Bạn</p>
+                    <p className="text-muted-foreground">Click a keyword above to start</p>
+                    <p className="text-sm text-muted-foreground">Nhấp vào từ khóa ở trên để bắt đầu</p>
                   </div>
                 </div>
               ) : (
@@ -548,63 +573,6 @@ const handleAccessDenied = () => {
               )}
               <div ref={endRef} />
             </ScrollArea>
-
-            {/* Keyword Menu Display */}
-            {keywordMenu && keywordMenu.en && keywordMenu.vi && (
-              <div className="my-3 p-3 bg-secondary/10 rounded-lg border border-border">
-                <h4 className="text-sm font-semibold mb-2">
-                  Available Keywords / Từ Khóa Có Sẵn
-                </h4>
-                <div className="space-y-2">
-                  <div className="flex flex-wrap gap-1">
-                    {keywordMenu.en.slice(0, 5).map((keyword, idx) => (
-                      <Badge 
-                        key={`en-${idx}`} 
-                        variant="outline" 
-                        className="text-xs cursor-pointer hover:bg-primary/10"
-                        onClick={() => setMainInput(keyword)}
-                      >
-                        {keyword}
-                      </Badge>
-                    ))}
-                  </div>
-                  <div className="flex flex-wrap gap-1">
-                    {keywordMenu.vi.slice(0, 5).map((keyword, idx) => (
-                      <Badge 
-                        key={`vi-${idx}`} 
-                        variant="outline" 
-                        className="text-xs cursor-pointer hover:bg-primary/10"
-                        onClick={() => setMainInput(keyword)}
-                      >
-                        {keyword}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
-
-            <div className="flex gap-2 pt-2">
-              <Input
-                placeholder="Type your message / Nhập Tin Nhắn..."
-                value={mainInput}
-                onChange={(e) => setMainInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && !isLoading && sendMainMessage()}
-                disabled={isLoading}
-                className="flex-1"
-              />
-              <Button 
-                onClick={sendMainMessage} 
-                disabled={isLoading}
-                className="bg-gradient-to-r from-primary to-primary-glow"
-              >
-                {isLoading ? (
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                ) : (
-                  <Send className="w-4 h-4" />
-                )}
-              </Button>
-            </div>
             
             {/* Audio Player */}
             {currentAudio && (
@@ -683,7 +651,7 @@ const handleAccessDenied = () => {
                 </div>
               </div>
               
-              <ScrollArea className="h-32">
+              <ScrollArea className="h-24">
                 {feedbackMessages.map(msg => (
                   <div key={msg.id} className="mb-2">
                     <div className={`text-xs p-2 rounded-lg ${msg.isUser ? "bg-secondary/20" : "bg-muted"}`}>
@@ -723,7 +691,7 @@ const handleAccessDenied = () => {
                 </div>
               </div>
               
-              <ScrollArea className="h-32">
+              <ScrollArea className="h-24">
                 {roomMessages.map(msg => (
                   <div key={msg.id} className="mb-2">
                     <div className={`text-xs p-2 rounded-lg ${msg.isUser ? "bg-accent/20" : "bg-muted"}`}>
