@@ -199,15 +199,25 @@ export const UsernameSetup = ({ onComplete }: UsernameSetupProps) => {
               </div>
             </div>
 
-            <Button
-              type="submit"
-              disabled={
-                isLoading || username.length < 3 || availability === 'taken' || availability === 'checking'
-              }
-              className="w-full"
-            >
-              {isLoading ? "Setting up..." : "Continue"}
-            </Button>
+            <div className="flex gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={onComplete}
+                className="flex-1"
+              >
+                Skip for now
+              </Button>
+              <Button
+                type="submit"
+                disabled={
+                  isLoading || username.length < 3 || availability === 'taken' || availability === 'checking'
+                }
+                className="flex-1"
+              >
+                {isLoading ? "Setting up..." : "Continue"}
+              </Button>
+            </div>
           </form>
         </CardContent>
       </Card>
