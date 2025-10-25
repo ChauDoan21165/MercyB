@@ -436,35 +436,50 @@ const handleAccessDenied = () => {
     scrollToBottom();
   }, [mainMessages, isLoading]);
 
-  const MessageBubble = ({ message }: { message: Message }) => (
-    <div className={`flex ${message.isUser ? "justify-end" : "justify-start"} mb-4`}>
-      <div className="max-w-[80%] group">
-        <div
-          className={`rounded-2xl px-4 py-3 ${
-            message.isUser
-              ? "bg-gradient-to-br from-primary to-primary-glow text-primary-foreground"
-              : "bg-card border shadow-sm"
-          }`}
-        >
-          <p className="text-sm whitespace-pre-wrap">{message.text}</p>
-          {message.isUser && (
-            <span className="text-xs opacity-70 mt-1 block">
-              {message.timestamp.toLocaleTimeString()}
-            </span>
+  const MessageBubble = ({ message }: { message: Message }) => {
+    // Split content by "---" separator to display English and Vietnamese separately
+    const parts = message.text.split('\n\n---\n\n');
+    const englishContent = parts[0] || message.text;
+    const vietnameseContent = parts[1] || '';
+
+    return (
+      <div className={`flex ${message.isUser ? "justify-end" : "justify-start"} mb-4`}>
+        <div className="w-full group">
+          <div
+            className={`rounded-2xl px-4 py-3 ${
+              message.isUser
+                ? "bg-gradient-to-br from-primary to-primary-glow text-primary-foreground"
+                : "bg-card border shadow-sm"
+            }`}
+          >
+            {!message.isUser && vietnameseContent ? (
+              <>
+                <p className="text-sm whitespace-pre-wrap mb-4">{englishContent}</p>
+                <hr className="border-border my-4" />
+                <p className="text-sm whitespace-pre-wrap">{vietnameseContent}</p>
+              </>
+            ) : (
+              <p className="text-sm whitespace-pre-wrap">{message.text}</p>
+            )}
+            {message.isUser && (
+              <span className="text-xs opacity-70 mt-1 block">
+                {message.timestamp.toLocaleTimeString()}
+              </span>
+            )}
+          </div>
+          
+          {!message.isUser && (
+            <>
+              <MessageActions text={message.text} roomId={roomId || ""} />
+              {message.relatedRooms && message.relatedRooms.length > 0 && (
+                <RelatedRooms roomNames={message.relatedRooms} />
+              )}
+            </>
           )}
         </div>
-        
-        {!message.isUser && (
-          <>
-            <MessageActions text={message.text} roomId={roomId || ""} />
-            {message.relatedRooms && message.relatedRooms.length > 0 && (
-              <RelatedRooms roomNames={message.relatedRooms} />
-            )}
-          </>
-        )}
       </div>
-    </div>
-  );
+    );
+  };
 
   // Get background color based on room tier
   const roomInfo = getRoomInfo(roomId || "");
@@ -537,35 +552,23 @@ const handleAccessDenied = () => {
               {/* Keyword Menu Display - Below welcome message */}
               {keywordMenu && keywordMenu.en && keywordMenu.vi && (
                 <div className="mb-4 p-3 bg-secondary/10 rounded-lg border border-border">
-                  <div className="space-y-2">
-                    <div className="flex flex-wrap gap-2">
-                      {keywordMenu.en.map((keyword, idx) => (
+                  <div className="flex flex-wrap gap-2">
+                    {keywordMenu.en.map((keywordEn, idx) => {
+                      const keywordVi = keywordMenu.vi[idx] || '';
+                      const isClicked = clickedKeyword === keywordEn || clickedKeyword === keywordVi;
+                      return (
                         <Button 
-                          key={`en-${idx}`} 
-                          variant={clickedKeyword === keyword ? "default" : "outline"}
+                          key={`pair-${idx}`} 
+                          variant={isClicked ? "default" : "outline"}
                           size="sm"
                           className="text-xs cursor-pointer"
-                          onClick={() => handleKeywordClick(keyword)}
+                          onClick={() => handleKeywordClick(keywordEn)}
                           disabled={isLoading}
                         >
-                          {keyword}
+                          {keywordEn} / {keywordVi}
                         </Button>
-                      ))}
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {keywordMenu.vi.map((keyword, idx) => (
-                        <Button 
-                          key={`vi-${idx}`} 
-                          variant={clickedKeyword === keyword ? "default" : "outline"}
-                          size="sm" 
-                          className="text-xs cursor-pointer"
-                          onClick={() => handleKeywordClick(keyword)}
-                          disabled={isLoading}
-                        >
-                          {keyword}
-                        </Button>
-                      ))}
-                    </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
@@ -584,33 +587,45 @@ const handleAccessDenied = () => {
               <div ref={endRef} />
             </ScrollArea>
             
-            {/* Audio Player */}
+            {/* Audio Button */}
             {currentAudio && (
-              <div className="mt-4">
-                {audioLoading && (
-                  <div className="text-sm text-muted-foreground mb-2">
-                    Loading audio... / Đang tải âm thanh...
-                  </div>
-                )}
+              <div className="mt-4 flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    if (audioRef.current) {
+                      if (isAudioPlaying) {
+                        audioRef.current.pause();
+                      } else {
+                        audioRef.current.play().catch(() => {
+                          toast({
+                            title: "Audio Error / Lỗi Âm Thanh",
+                            description: "Cannot play audio / Không thể phát âm thanh",
+                            variant: "destructive"
+                          });
+                        });
+                      }
+                    }
+                  }}
+                  disabled={audioLoading}
+                >
+                  {audioLoading ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : isAudioPlaying ? (
+                    "⏸ Pause / Tạm Dừng"
+                  ) : (
+                    "▶ Play Audio / Phát Âm Thanh"
+                  )}
+                </Button>
                 <audio 
                   key={currentAudio}
                   ref={audioRef}
                   src={currentAudio}
                   preload="auto"
-                  controls
-                  autoPlay
-                  className="w-full"
+                  className="hidden"
                   onCanPlay={() => {
                     setAudioLoading(false);
-                    const el = audioRef.current;
-                    if (el && el.paused) {
-                      el.play().catch(() => {
-                        toast({
-                          title: "Audio Ready / Âm Thanh Sẵn Sàng",
-                          description: "Click play button / Nhấn nút phát",
-                        });
-                      });
-                    }
                   }}
                   onEnded={() => setIsAudioPlaying(false)}
                   onPause={() => setIsAudioPlaying(false)}
@@ -627,10 +642,9 @@ const handleAccessDenied = () => {
                         description: "Loading from backup / Tải từ nguồn dự phòng" 
                       });
                     } else {
-                      // Don't clear currentAudio to keep player visible
                       toast({ 
                         title: "Audio playback issue / Vấn đề phát âm thanh", 
-                        description: "Try typing the keyword again / Thử nhập lại từ khóa", 
+                        description: "Audio file unavailable / Tệp âm thanh không khả dụng", 
                         variant: "destructive" 
                       });
                     }
