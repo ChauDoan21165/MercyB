@@ -127,9 +127,20 @@ const handleAccessDenied = () => {
       };
       setMainMessages([welcomeMessage]);
       
-      // Load keyword menu from room data
-      if (roomData?.keyword_menu) {
+      // Load keyword menu from room data (support multiple schemas)
+      if (roomData?.keyword_menu?.en && roomData?.keyword_menu?.vi) {
         setKeywordMenu(roomData.keyword_menu);
+      } else if (roomData?.keywords) {
+        try {
+          const groups = Object.values(roomData.keywords) as any[];
+          const en = Array.from(new Set(groups.flatMap((g: any) => g?.en || [])));
+          const vi = Array.from(new Set(groups.flatMap((g: any) => g?.vi || [])));
+          if (en.length > 0 || vi.length > 0) {
+            setKeywordMenu({ en, vi });
+          }
+        } catch (e) {
+          console.warn('Could not derive keyword menu from keywords', e);
+        }
       }
     } catch (error) {
       console.error('Error loading room data:', error);
