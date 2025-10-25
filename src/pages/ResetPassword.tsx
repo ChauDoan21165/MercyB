@@ -148,7 +148,9 @@ const ResetPassword = () => {
         return;
       }
 
-      const { error } = await supabase.auth.resetPasswordForEmail(resendEmail);
+      const { error } = await supabase.auth.resetPasswordForEmail(resendEmail, {
+        redirectTo: `${window.location.origin}/reset`,
+      });
       if (error) throw error;
 
       toast({ title: 'Email sent', description: 'Check your inbox for the new reset link.' });
