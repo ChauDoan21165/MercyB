@@ -57,7 +57,7 @@ const Auth = () => {
       }
     });
 
-    // Complete email link/OTP flow if code present (PKCE/magic link)
+    // Complete email link PKCE code if present
     const url = new URL(window.location.href);
     const hasCode = !!url.searchParams.get('code');
     if (hasCode) {
@@ -66,9 +66,28 @@ const Auth = () => {
       });
     }
 
+    // Fallback: process hash tokens from recovery links (#access_token, #refresh_token)
+    (async () => {
+      try {
+        const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+        const type = hashParams.get('type');
+        const at = hashParams.get('access_token');
+        const rt = hashParams.get('refresh_token');
+        if (type === 'recovery' && at && rt) {
+          await supabase.auth.setSession({ access_token: at, refresh_token: rt });
+          // Clean URL and mark recovery state
+          const cleanUrl = new URL(window.location.href);
+          cleanUrl.hash = '';
+          cleanUrl.searchParams.set('recovery', '1');
+          window.history.replaceState({}, '', cleanUrl.toString());
+          setIsPasswordRecovery(true);
+        }
+      } catch {}
+    })();
+
     // Initialize current session after wiring the listener
     supabase.auth.getSession().then(({ data: { session } }) => {
-      // If no session but we detect recovery hash, show the form
+      // If no session but we detect recovery flags, show the form
       if (!session && (window.location.hash.includes('type=recovery') || new URLSearchParams(window.location.search).get('recovery') === '1')) {
         setIsPasswordRecovery(true);
       }
@@ -158,7 +177,7 @@ const Auth = () => {
 
     try {
       const { error } = await supabase.auth.resetPasswordForEmail(resetEmail, {
-        redirectTo: `${window.location.origin}/auth`,
+        redirectTo: `${window.location.origin}/auth?recovery=1`,
       });
 
       if (error) throw error;
