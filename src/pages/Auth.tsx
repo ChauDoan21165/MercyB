@@ -33,10 +33,33 @@ const Auth = () => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'PASSWORD_RECOVERY') {
         setIsPasswordRecovery(true);
-      } else if (event === 'SIGNED_IN' && session) {
+        return;
+      }
+
+      const isRecoveryUrl = window.location.hash.includes('type=recovery');
+      if (event === 'SIGNED_IN' && session && !isRecoveryUrl) {
         navigate('/');
       }
     });
+
+    // Complete email link/OTP flow if code or access token present
+    const url = new URL(window.location.href);
+    const hasCode = !!url.searchParams.get('code');
+    const hasAccessToken = window.location.hash.includes('access_token');
+    if (hasCode || hasAccessToken) {
+      supabase.auth.exchangeCodeForSession(window.location.href).catch(() => {
+        toast({ title: 'Error', description: 'Email link is invalid or has expired.', variant: 'destructive' });
+      });
+    }
+
+    // Initialize current session after wiring the listener
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      // no-op, but ensures SDK processes URL on first load
+      if (!session && window.location.hash.includes('type=recovery')) {
+        setIsPasswordRecovery(true);
+      }
+    });
+
     return () => subscription.unsubscribe();
   }, [navigate]);
 
@@ -160,9 +183,16 @@ const Auth = () => {
         description: 'Password updated successfully. You can now sign in.',
       });
       
+      // Ensure a clean session, then redirect to sign-in
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user?.email) {
+        localStorage.setItem('mercyblade_email', user.email);
+      }
+      await supabase.auth.signOut();
+
       setIsPasswordRecovery(false);
       setNewPassword('');
-      navigate('/');
+      navigate('/auth');
     } catch (error: any) {
       toast({
         title: 'Error',
