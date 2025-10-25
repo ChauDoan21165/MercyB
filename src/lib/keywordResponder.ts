@@ -18,7 +18,7 @@ function getBilingual(obj: any, base: string): { en: string; vi: string } {
   return { en: String(obj?.[base] || ""), vi: String(obj?.[`${base}_vi`] || "") };
 }
 
-function findMatchingGroup(message: string, keywords: any): string | null {
+function findMatchingGroup(message: string, keywords: any): { groupKey: string; matchedKeyword: string } | null {
   if (!keywords || typeof keywords !== "object") return null;
   const msg = normalize(message);
   for (const [groupKey, groupVal] of Object.entries(keywords)) {
@@ -32,13 +32,13 @@ function findMatchingGroup(message: string, keywords: any): string | null {
     for (const k of list) {
       const normalizedK = normalize(k);
       // Exact match
-      if (msg.includes(normalizedK)) return groupKey;
+      if (msg.includes(normalizedK)) return { groupKey, matchedKeyword: normalize(k) };
       // Fuzzy match: check if keyword partially matches (>= 70% overlap)
       if (normalizedK.length >= 4 && msg.length >= 4) {
         for (let i = 0; i <= msg.length - 3; i++) {
           const substring = msg.substring(i, i + Math.min(normalizedK.length, msg.length - i));
           if (normalizedK.includes(substring) && substring.length >= normalizedK.length * 0.7) {
-            return groupKey;
+            return { groupKey, matchedKeyword: normalize(k) };
           }
         }
       }
@@ -47,8 +47,30 @@ function findMatchingGroup(message: string, keywords: any): string | null {
   return null;
 }
 
-function findEntryByGroup(groupKey: string | null, entries: any[]): any | null {
-  if (!groupKey || !Array.isArray(entries)) return null;
+function findEntryByKeyword(matchedKeyword: string | null, groupKey: string | null, entries: any[]): any | null {
+  if (!Array.isArray(entries)) return null;
+  
+  // First try to match by keyword in entry slug or title
+  if (matchedKeyword) {
+    const keywordParts = matchedKeyword.split('_').filter(Boolean);
+    for (const entry of entries) {
+      const slug = normalize(entry?.slug || '');
+      const titleEn = normalize(typeof entry?.title === 'string' ? entry.title : (entry?.title?.en || ''));
+      const titleVi = normalize(typeof entry?.title === 'object' ? (entry?.title?.vi || '') : '');
+      
+      // Check if keyword parts appear in slug or title
+      const matchScore = keywordParts.filter(part => 
+        slug.includes(part) || titleEn.includes(part) || titleVi.includes(part)
+      ).length;
+      
+      if (matchScore >= keywordParts.length * 0.6) {
+        return entry;
+      }
+    }
+  }
+  
+  // Fallback to group matching
+  if (!groupKey) return null;
   return (
     entries.find((e: any) => e?.slug === groupKey) ||
     entries.find((e: any) => e?.id === groupKey) ||
@@ -83,7 +105,9 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   const roomData = roomDataMap[roomId];
   if (!roomData) throw new Error("Room data not found");
 
-  const groupKey = findMatchingGroup(message, roomData.keywords || roomData.keywords_dict);
+  const matchResult = findMatchingGroup(message, roomData.keywords || roomData.keywords_dict);
+  const groupKey = matchResult?.groupKey || null;
+  const matchedKeyword = matchResult?.matchedKeyword || null;
   
   // Handle new structure with entries object
   let matchedEntry = null;
@@ -102,7 +126,7 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
     }
   } else {
     // Old structure: entries is an array
-    matchedEntry = findEntryByGroup(groupKey, roomData.entries || []);
+    matchedEntry = findEntryByKeyword(matchedKeyword, groupKey, roomData.entries || []);
 
     // Fallback: try to match by keyword text within title/content (handles simple string fields and no explicit mapping)
     if (!matchedEntry && groupKey) {
@@ -150,14 +174,6 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   const relatedRooms = findRelatedRooms(message, roomId);
 
   const buildEntryResponse = (entry: any) => {
-    // Handle title as string or bilingual object
-    const titleEn = typeof entry?.title === 'string' 
-      ? entry.title 
-      : String(entry?.title?.en || entry?.title_en || "");
-    const titleVi = typeof entry?.title === 'object'
-      ? String(entry?.title?.vi || entry?.title_vi || "")
-      : "";
-
     // Handle content/copy as string or bilingual object
     let copyEn = typeof entry?.copy === "string"
       ? entry.copy
@@ -174,10 +190,8 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
     copyEn = copyEn.replace(/\*Word count: \d+\*\s*/g, '').trim();
     copyVi = copyVi.replace(/\*Số từ: \d+\*\s*/g, '').trim();
 
-    // English first, then Vietnamese below with clear separator
-    const en = [titleEn, copyEn].filter(Boolean).join("\n\n");
-    const vi = [titleVi, copyVi].filter(Boolean).join("\n\n");
-    return [en, "---", vi].filter(Boolean).join("\n\n");
+    // Return copy only (titles are already included in copy text)
+    return [copyEn, "---", copyVi].filter(Boolean).join("\n\n");
   };
 
   if (matchedEntry) {
