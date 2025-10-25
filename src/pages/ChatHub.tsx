@@ -46,6 +46,7 @@ const ChatHub = () => {
   const [feedbackInput, setFeedbackInput] = useState("");
   const [roomInput, setRoomInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [username, setUsername] = useState<string>("");
   const [noKeywordCount, setNoKeywordCount] = useState(0);
   const [matchedEntryCount, setMatchedEntryCount] = useState(0);
   const [userMessageCount, setUserMessageCount] = useState(0);
@@ -73,6 +74,23 @@ const ChatHub = () => {
 // Use centralized room metadata
 const info = getRoomInfo(roomId || "");
 const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { nameVi: "Phòng không xác định", nameEn: "Unknown Room" };
+
+// Fetch username
+useEffect(() => {
+  const fetchUsername = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user) {
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("username, email")
+        .eq("id", user.id)
+        .single();
+      
+      setUsername(profile?.username || user.email?.split('@')[0] || "User");
+    }
+  };
+  fetchUsername();
+}, []);
 
 // Check access
 useEffect(() => {
@@ -247,57 +265,60 @@ const handleAccessDenied = () => {
             setMatchedEntryCount(prev => prev + 1);
             setNoKeywordCount(0);
             
-            // Play audio if available (echologic function)
+            // Play audio if available - try storage first
             if (response.audioFile) {
               try {
                 setAudioLoading(true);
                 const raw = String(response.audioFile);
-                // Use path as provided; ensure leading slash. Do NOT re-prefix /audio if already present
-                const baseLocalUrl = raw.startsWith('/') ? raw : `/${raw}`;
-                // Fallback: storage public URL
-                const storageKey = raw.replace(/^\//, '').replace(/^audio\//, '');
+                // Extract filename from path
+                const filename = raw.replace(/^\/?(audio\/)?/, '');
+                
+                // Try Supabase storage first
                 const { data: urlData } = supabase.storage
                   .from('room-audio')
-                  .getPublicUrl(storageKey);
+                  .getPublicUrl(filename);
                 const storageUrl = urlData.publicUrl;
 
-                // Cache-bust to force reload even for same file
+                // Cache-bust to force reload
                 const withTs = (u: string) => `${u}${u.includes('?') ? '&' : '?'}t=${Date.now()}`;
 
-                // Update state so player renders with source
-                const localUrl = withTs(baseLocalUrl);
-                setAltAudio(withTs(storageUrl));
-                setCurrentAudio(localUrl);
+                // Set storage URL as primary, local path as fallback
+                const primaryUrl = withTs(storageUrl);
+                const fallbackUrl = withTs(`/audio/${filename}`);
+                
+                setCurrentAudio(primaryUrl);
+                setAltAudio(fallbackUrl);
                 setIsAudioPlaying(false);
 
-                // Try to start playback immediately within user gesture
+                // Try to start playback
                 const el = audioRef.current;
                 if (el) {
-                  // Attach a one-time error handler to try fallback automatically
                   const handleError = () => {
-                    if (storageUrl) {
-                      el.src = withTs(storageUrl);
+                    console.log('Primary audio failed, trying fallback');
+                    if (fallbackUrl && el.src !== fallbackUrl) {
+                      el.src = fallbackUrl;
                       el.load();
-                      el.play().catch(() => {/* browser may block; user can press play */});
+                      el.play().catch(() => {
+                        toast({
+                          title: "Audio unavailable / Âm thanh không có",
+                          description: "Audio file not found / Không tìm thấy file âm thanh",
+                          variant: "destructive"
+                        });
+                      });
                     }
                     el.removeEventListener('error', handleError);
                   };
                   el.addEventListener('error', handleError, { once: true } as any);
-                  el.src = localUrl;
+                  el.src = primaryUrl;
                   el.load();
                   el.currentTime = 0;
-                  // Best-effort autoplay; ok if blocked
-                  el.play().catch(() => {/* ignore */});
+                  el.play().catch(() => {/* autoplay blocked, user can click play */});
                 }
 
               } catch (e) {
                 console.error('Audio load error:', e);
                 setAudioLoading(false);
-                toast({
-                  title: "Audio Error / Lỗi Âm Thanh",
-                  description: "Could not load audio / Không thể tải âm thanh",
-                  variant: "destructive",
-                });
+                setCurrentAudio(null);
               }
             }
           } else {
@@ -411,42 +432,15 @@ const handleAccessDenied = () => {
               <>
                 <p className="text-sm whitespace-pre-wrap">{englishContent}</p>
                 {!message.isUser && <MessageActions text={englishContent} roomId={roomId || ""} />}
-                {currentAudio && (
-                  <div className="mt-2 flex items-center gap-2">
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => {
-                        if (audioRef.current) {
-                          if (isAudioPlaying) {
-                            audioRef.current.pause();
-                          } else {
-                            audioRef.current.play().catch(() => {
-                              toast({
-                                title: "Audio Error / Lỗi Âm Thanh",
-                                description: "Cannot play audio / Không thể phát âm thanh",
-                                variant: "destructive"
-                              });
-                            });
-                          }
-                        }
-                      }}
-                      disabled={audioLoading}
-                    >
-                      {audioLoading ? (
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                      ) : (
-                        <Volume2 className="w-4 h-4" />
-                      )}
-                    </Button>
-                  </div>
-                )}
                 <hr className="border-border my-3" />
                 <p className="text-sm whitespace-pre-wrap">{vietnameseContent}</p>
                 {!message.isUser && <MessageActions text={vietnameseContent} roomId={roomId || ""} />}
               </>
             ) : (
-              <p className="text-sm whitespace-pre-wrap">{message.text}</p>
+              <>
+                <p className="text-sm whitespace-pre-wrap">{message.text}</p>
+                {!message.isUser && <MessageActions text={message.text} roomId={roomId || ""} />}
+              </>
             )}
             {message.isUser && (
               <span className="text-xs opacity-70 mt-1 block">
@@ -519,6 +513,11 @@ const handleAccessDenied = () => {
               )}
             </div>
             <p className="text-xs text-muted-foreground mb-1">{currentRoom.nameVi}</p>
+            {username && (
+              <p className="text-xs font-medium text-primary mb-1">
+                👤 {username}
+              </p>
+            )}
             <RoomProgress totalRooms={progress.totalRooms} streak={progress.streak} />
           </div>
           
@@ -554,47 +553,59 @@ const handleAccessDenied = () => {
               <div ref={endRef} />
             </ScrollArea>
             
-            {/* Hidden audio player */}
+            {/* Audio player with controls */}
             {currentAudio && (
+              <div className="mt-2 flex items-center gap-2 p-2 bg-muted/50 rounded-lg">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    if (audioRef.current) {
+                      if (isAudioPlaying) {
+                        audioRef.current.pause();
+                      } else {
+                        audioRef.current.play().catch((err) => {
+                          console.error('Playback error:', err);
+                          toast({
+                            title: "Audio Error / Lỗi Âm Thanh",
+                            description: "Cannot play audio / Không thể phát âm thanh",
+                            variant: "destructive"
+                          });
+                        });
+                      }
+                    }
+                  }}
+                  disabled={audioLoading}
+                >
+                  {audioLoading ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : isAudioPlaying ? (
+                    <span className="text-xs">⏸️ Pause</span>
+                  ) : (
+                    <span className="text-xs">▶️ Play Audio</span>
+                  )}
+                </Button>
                 <audio
                   key={currentAudio}
                   ref={audioRef}
                   src={currentAudio}
                   preload="auto"
                   className="hidden"
-                  onCanPlay={() => {
-                    setAudioLoading(false);
-                  }}
+                  onCanPlay={() => setAudioLoading(false)}
                   onEnded={() => setIsAudioPlaying(false)}
                   onPause={() => setIsAudioPlaying(false)}
                   onPlay={() => setIsAudioPlaying(true)}
                   onError={(e) => {
-                    console.error('Audio error event:', e);
+                    console.error('Audio error:', e);
                     setAudioLoading(false);
                     if (altAudio && audioRef.current && audioRef.current.src !== altAudio) {
-                      console.log('Trying fallback audio:', altAudio);
                       audioRef.current.src = altAudio;
                       audioRef.current.load();
-                      toast({ 
-                        title: "Trying alternate source / Thử nguồn khác", 
-                        description: "Loading from backup / Tải từ nguồn dự phòng" 
-                      });
-                    } else {
-                      toast({ 
-                        title: "Audio playback issue / Vấn đề phát âm thanh", 
-                        description: "Audio file unavailable / Tệp âm thanh không khả dụng", 
-                        variant: "destructive" 
-                      });
                     }
                   }}
-                  onLoadStart={() => {
-                    console.log('Audio load started');
-                  }}
-                  onLoadedMetadata={() => {
-                    console.log('Audio metadata loaded');
-                    setAudioLoading(false);
-                  }}
+                  onLoadedMetadata={() => setAudioLoading(false)}
                 />
+              </div>
             )}
           </div>
         </Card>
