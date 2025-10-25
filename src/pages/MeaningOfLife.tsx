@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Volume2, VolumeX } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
-import meaningFree from "@/data/rooms/meaning_of_life_free.json";
+import meaningFree from "@/data/rooms/meaning_of_life.json";
 import meaningVip1 from "@/data/rooms/meaning_of_life_vip1.json";
 import meaningVip2 from "@/data/rooms/meaning_of_life_vip2.json";
 import meaningVip3 from "@/data/rooms/meaning_of_life_vip3.json";

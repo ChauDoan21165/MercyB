@@ -10,8 +10,7 @@ const corsHeaders = {
 // Room data files mapping (cleaned - only new format rooms)
 const roomFiles: { [key: string]: string } = {
   'stress-vip3': 'stress_vip3.json',
-  'mental-health-free': 'mental_health_free.json',
-  'autoimmune-diseases': 'autoimmune_diseases.json',
+  'mental-health': 'mental_health_free.json',
 };
 
 // Embedded minimal fallback data to guarantee responses even if JSON files are not bundled
