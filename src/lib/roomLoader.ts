@@ -56,19 +56,47 @@ export async function loadMergedRoom(roomId: string, tier: 'free' | 'vip1' | 'vi
   const lowercasePath = `/${roomNameParts.join('_')}_${extractedTier}.json`;
   
   try {
-    // Try Title Case first (e.g., "God With Us_Free.json")
-    let res = await fetch(titleCasePath);
-    
-    // If not found, try lowercase with underscores (e.g., "obesity_free.json")
-    if (!res.ok) {
-      res = await fetch(lowercasePath);
+    // Try multiple path patterns and fall back to Free tier if needed
+    const pathsToTry: string[] = [];
+    const underscore = roomNameParts.join('_');
+    const kebab = roomNameParts.join('-');
+
+    // Current tier patterns
+    pathsToTry.push(
+      `/${roomName}_${tierSuffix}.json`,               // Title Case + Suffix (Free/VIPx)
+      `/${underscore}_${extractedTier}.json`,          // underscore + lowercase tier
+      `/tiers/${extractedTier}/${underscore}/${underscore}_${extractedTier}.json`, // nested underscore
+      `/tiers/${extractedTier}/${kebab}/${kebab}_${extractedTier}.json`            // nested kebab
+    );
+
+    // Free tier fallback if not already free
+    if (extractedTier !== 'free') {
+      pathsToTry.push(
+        `/${roomName}_Free.json`,
+        `/${underscore}_free.json`,
+        `/tiers/free/${underscore}/${underscore}_free.json`,
+        `/tiers/free/${kebab}/${kebab}_free.json`
+      );
     }
-    
-    if (!res.ok) {
-      console.warn(`JSON not found: tried ${titleCasePath} and ${lowercasePath}`);
+
+    let res: Response | null = null;
+    let data: any = null;
+
+    for (const p of pathsToTry) {
+      try {
+        const r = await fetch(p);
+        if (r.ok) {
+          res = r;
+          data = await r.json();
+          break;
+        }
+      } catch {}
+    }
+
+    if (!res || !data) {
+      console.warn(`JSON not found. Tried: ${pathsToTry.join(', ')}`);
       return { merged: [], keywordMenu: { en: [], vi: [] }, audioBasePath: '/' };
     }
-    const data = await res.json();
     
     // Extract entries first
     const entries = Array.isArray(data.entries) ? data.entries : [];

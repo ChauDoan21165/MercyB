@@ -219,7 +219,7 @@ const handleAccessDenied = () => {
       const en = String(entry.replyEn || '');
       const vi = String(entry.replyVi || '');
       const text = vi ? `${en}\n\n---\n\n${vi}` : en;
-      const audioFile = entry.audio ? `${audioBasePath}${entry.audio}` : undefined;
+      const audioFile = entry.audio ? (entry.audio.startsWith('/') ? entry.audio : `/${entry.audio}`) : undefined;
 
       setMainMessages(prev => prev.map(m => m.id === typingMessageId ? { ...m, text, audioFile } : m));
       trackKeyword(keyword);
