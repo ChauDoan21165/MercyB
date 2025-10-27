@@ -193,11 +193,16 @@ export async function loadMergedRoom(roomId: string, tier: 'free' | 'vip1' | 'vi
       return { keywordEn, keywordVi, replyEn, replyVi, audio };
     });
     
+    // Build keyword menu strictly from available merged entries to avoid showing
+    // keywords that don't have corresponding content
+    const menuEn = merged.length > 0 ? merged.map(m => m.keywordEn) : keywordsEn;
+    const menuVi = merged.length > 0 ? merged.map(m => m.keywordVi) : keywordsVi;
+
     return {
       merged,
       keywordMenu: {
-        en: keywordsEn,
-        vi: keywordsVi
+        en: menuEn,
+        vi: menuVi
       },
       audioBasePath: '/' // All audio files in public root
     };

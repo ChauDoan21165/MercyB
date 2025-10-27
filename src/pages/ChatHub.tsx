@@ -194,15 +194,14 @@ const handleAccessDenied = () => {
     return { en, vi: String(entry?.content_vi || entry?.copy_vi || '').trim() };
   };
 
-  // Find merged entry by keyword_en exact match
+  // Find merged entry by keyword_en match (no fallback to first entry)
   const resolveEntryByKeyword = (keyword: string) => {
     const k = norm(keyword);
     if (!mergedEntries || mergedEntries.length === 0) return null;
-    
-    // Find entry where keyword_en matches
+
+    // Prefer exact match, then contains; otherwise return null
     let entry = mergedEntries.find(e => norm(e.keywordEn) === k);
     if (!entry) entry = mergedEntries.find(e => norm(e.keywordEn).includes(k));
-    if (!entry) entry = mergedEntries[0];
     return entry || null;
   };
 
