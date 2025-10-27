@@ -2,6 +2,7 @@
   "version": "1.0",
   "locale": "vi-en",
   "name": "Sleep Improvement (VIP 3)",
+  "name_vi": "Cải Thiện Giấc Ngủ (VIP 3)",
   "description": "Advanced sleep mastery: schedule, relaxation, nutrition, environment, mindful activity, and tracking.",
   "global_notes": { "safety": "" },
   "enum_tags": [

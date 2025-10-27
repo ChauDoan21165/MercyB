@@ -2,6 +2,7 @@
   "version": "1.0",
   "locale": "vi-en",
   "name": "Nutrition (VIP 2)",
+  "name_vi": "Dinh Dưỡng (VIP 2)",
   "description": "Advanced nutrition guidance: refined meal planning, hydration mastery, mindful eating, portion awareness, and nutrient-dense choices.",
   "global_notes": { "safety": "" },
   "enum_tags": [

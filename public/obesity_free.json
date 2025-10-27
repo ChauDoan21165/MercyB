@@ -2,6 +2,7 @@
   "version": "1.0",
   "locale": "vi-en",
   "name": "Obesity Management (Free)",
+  "name_vi": "Quản Lý Béo Phì (Miễn Phí)",
   "description": "Starter guidance for healthy meal choices, daily movement, and mindful eating.",
   "global_notes": { "safety": "" },
   "enum_tags": [

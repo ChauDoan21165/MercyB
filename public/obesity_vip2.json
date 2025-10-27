@@ -2,6 +2,7 @@
   "version": "1.0",
   "locale": "vi-en",
   "name": "Obesity Management (VIP 2)",
+  "name_vi": "Quản Lý Béo Phì (VIP 2)",
   "description": "Advanced obesity management: refined meal planning, active lifestyle, mindful eating, portion control, and nutrient-dense choices.",
   "global_notes": { "safety": "" },
   "enum_tags": [

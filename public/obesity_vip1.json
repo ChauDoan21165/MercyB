@@ -2,6 +2,7 @@
   "version": "1.0",
   "locale": "vi-en",
   "name": "Obesity Management (VIP 1)",
+  "name_vi": "Quản Lý Béo Phì (VIP 1)",
   "description": "Intermediate guidance: balanced meals, active habits, mindful eating, and portion control for sustainable weight health.",
   "global_notes": { "safety": "" },
   "enum_tags": [

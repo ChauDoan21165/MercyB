@@ -2,6 +2,7 @@
   "version": "1.0",
   "locale": "vi-en",
   "name": "Nutrition (VIP 3)",
+  "name_vi": "Dinh Dưỡng (VIP 3)",
   "description": "Personalized nutrition mastery: balanced meal planning, optimized hydration, mindful eating, portion control, nutrient density, and sustainable habits.",
   "global_notes": { "safety": "" },
   "enum_tags": [

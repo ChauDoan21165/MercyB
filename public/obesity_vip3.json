@@ -3,6 +3,7 @@
   "version": "1.0",
   "locale": "vi-en",
   "name": "Obesity Management (VIP 3)",
+  "name_vi": "Quản Lý Béo Phì (VIP 3)",
   "description": "Personalized mastery for sustainable weight management: balanced meals, active lifestyle, mindful eating, portion awareness, nutrient density, and behavioral resilience.",
   "global_notes": { "safety": "" },
   "enum_tags": [

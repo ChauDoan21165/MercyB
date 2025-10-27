@@ -2,6 +2,7 @@
   "version": "1.0",
   "locale": "vi-en",
   "name": "Nutrition (VIP 1)",
+  "name_vi": "Dinh Dưỡng (VIP 1)",
   "description": "Intermediate nutrition: balanced meals, hydration, mindful eating, and portion control.",
   "global_notes": { "safety": "" },
   "enum_tags": [

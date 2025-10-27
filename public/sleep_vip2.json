@@ -2,6 +2,7 @@
   "version": "1.0",
   "locale": "vi-en",
   "name": "Sleep Improvement (VIP 1)",
+  "name_vi": "Cải Thiện Giấc Ngủ (VIP 1)",
   "description": "Intermediate sleep training: consistent schedule, relaxation, diet, and environment for restorative rest.",
   "global_notes": { "safety": "" },
   "enum_tags": ["sleep", "routine", "relaxation", "nutrition", "environment"],

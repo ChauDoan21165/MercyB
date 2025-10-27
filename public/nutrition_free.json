@@ -2,6 +2,7 @@
   "version": "1.0",
   "locale": "vi-en",
   "name": "Nutrition (Free)",
+  "name_vi": "Dinh Dưỡng (Miễn Phí)",
   "description": "Starter nutrition guidance: balanced meals, hydration, and mindful eating.",
   "global_notes": { "safety": "" },
   "enum_tags": [

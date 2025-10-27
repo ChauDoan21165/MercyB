@@ -2,6 +2,7 @@
   "version": "1.0",
   "locale": "vi-en",
   "name": "Sleep Improvement (Free)",
+  "name_vi": "Cải Thiện Giấc Ngủ (Miễn Phí)",
   "description": "Starter sleep guidance: bedtime routine, simple relaxation, and limiting stimulants.",
   "global_notes": { "safety": "" },
   "enum_tags": [
