@@ -8,6 +8,7 @@ import { Send, ArrowLeft, MessageCircle, Mail, Users, Loader2, Volume2 } from "l
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomInfo } from "@/lib/roomData";
+import { getRoomDataWithTier } from "@/lib/roomDataImports";
 import { useRoomProgress } from "@/hooks/useRoomProgress";
 import { useBehaviorTracking } from "@/hooks/useBehaviorTracking";
 import { RoomProgress } from "@/components/RoomProgress";
@@ -114,55 +115,68 @@ const handleAccessDenied = () => {
   navigate('/');
 };
 
-  // Initialize room on load or when roomId changes
+  // Initialize room on load or when roomId or tier changes
   useEffect(() => {
-    // Reset state when switching rooms
-    setMainMessages([]);
-    setKeywordMenu(null);
-    setCurrentAudio(null);
-    setIsAudioPlaying(false);
+    const loadRoomData = async () => {
+      // Reset state when switching rooms
+      setMainMessages([]);
+      setKeywordMenu(null);
+      setCurrentAudio(null);
+      setIsAudioPlaying(false);
 
-    try {
-      const roomData = roomDataMap[roomId || ''];
-      
-      // Load welcome message with new format
-      const welcomeText = `Welcome to ${currentRoom.nameEn} Room, please click the keyword of the topic you want to discover.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.`;
-      
-      const welcomeMessage: Message = {
-        id: 'welcome',
-        text: welcomeText,
-        isUser: false,
-        timestamp: new Date()
-      };
-      setMainMessages([welcomeMessage]);
-      
-      // Load keyword menu from room data (support multiple schemas)
-      if (roomData?.keyword_menu?.en && roomData?.keyword_menu?.vi) {
-        setKeywordMenu(roomData.keyword_menu);
-      } else if (roomData?.keywords) {
-        try {
-          const groups = Object.values(roomData.keywords) as any[];
-          const en = Array.from(new Set(groups.flatMap((g: any) => g?.en || [])));
-          const vi = Array.from(new Set(groups.flatMap((g: any) => g?.vi || [])));
-          if (en.length > 0 || vi.length > 0) {
-            setKeywordMenu({ en, vi });
-          }
-        } catch (e) {
-          console.warn('Could not derive keyword menu from keywords', e);
+      try {
+        // Determine room name from roomId (convert kebab-case to snake_case)
+        const roomName = (roomId || '').replace(/-/g, '_');
+        
+        // Load tier-specific JSON from /public
+        const roomData = await getRoomDataWithTier(roomName, tier || 'free');
+        
+        if (!roomData) {
+          console.warn(`No room data found for ${roomName} with tier ${tier}`);
+          return;
         }
+        
+        // Load welcome message with new format
+        const welcomeText = `Welcome to ${currentRoom.nameEn} Room, please click the keyword of the topic you want to discover.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.`;
+        
+        const welcomeMessage: Message = {
+          id: 'welcome',
+          text: welcomeText,
+          isUser: false,
+          timestamp: new Date()
+        };
+        setMainMessages([welcomeMessage]);
+        
+        // Load keyword menu from room data (support multiple schemas)
+        if (roomData?.keyword_menu?.en && roomData?.keyword_menu?.vi) {
+          setKeywordMenu(roomData.keyword_menu);
+        } else if (roomData?.keywords) {
+          try {
+            const groups = Object.values(roomData.keywords) as any[];
+            const en = Array.from(new Set(groups.flatMap((g: any) => g?.en || [])));
+            const vi = Array.from(new Set(groups.flatMap((g: any) => g?.vi || [])));
+            if (en.length > 0 || vi.length > 0) {
+              setKeywordMenu({ en, vi });
+            }
+          } catch (e) {
+            console.warn('Could not derive keyword menu from keywords', e);
+          }
+        }
+      } catch (error) {
+        console.error('Error loading room data:', error);
+        // Fallback welcome message
+        const welcomeMessage: Message = {
+          id: 'welcome',
+          text: `Welcome to ${currentRoom.nameEn} Room, please click the keyword of the topic you want to discover.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.`,
+          isUser: false,
+          timestamp: new Date()
+        };
+        setMainMessages([welcomeMessage]);
       }
-    } catch (error) {
-      console.error('Error loading room data:', error);
-      // Fallback welcome message
-      const welcomeMessage: Message = {
-        id: 'welcome',
-        text: `Welcome to ${currentRoom.nameEn} Room, please click the keyword of the topic you want to discover.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.`,
-        isUser: false,
-        timestamp: new Date()
-      };
-      setMainMessages([welcomeMessage]);
-    }
-  }, [roomId]);
+    };
+    
+    loadRoomData();
+  }, [roomId, tier]);
 
   const handleKeywordClick = async (keyword: string) => {
     if (isLoading) return;
@@ -265,51 +279,37 @@ const handleAccessDenied = () => {
             setMatchedEntryCount(prev => prev + 1);
             setNoKeywordCount(0);
             
-            // Play audio if available - try storage first
+            // Play audio if available - MP3s are in /public root
             if (response.audioFile) {
               try {
                 setAudioLoading(true);
-                const raw = String(response.audioFile);
-                // Extract filename from path
-                const filename = raw.replace(/^\/?(audio\/)?/, '');
+                const filename = String(response.audioFile).replace(/^\//, '');
                 
-                // Try Supabase storage first
-                const { data: urlData } = supabase.storage
-                  .from('room-audio')
-                  .getPublicUrl(filename);
-                const storageUrl = urlData.publicUrl;
-
                 // Cache-bust to force reload
                 const withTs = (u: string) => `${u}${u.includes('?') ? '&' : '?'}t=${Date.now()}`;
-
-                // Set storage URL as primary, local path as fallback
-                const primaryUrl = withTs(storageUrl);
-                const fallbackUrl = withTs(`/audio/${filename}`);
                 
-                setCurrentAudio(primaryUrl);
-                setAltAudio(fallbackUrl);
+                // MP3s are in /public root
+                const audioUrl = withTs(`/${filename}`);
+                
+                setCurrentAudio(audioUrl);
+                setAltAudio(null);
                 setIsAudioPlaying(false);
 
                 // Try to start playback
                 const el = audioRef.current;
                 if (el) {
                   const handleError = () => {
-                    console.log('Primary audio failed, trying fallback');
-                    if (fallbackUrl && el.src !== fallbackUrl) {
-                      el.src = fallbackUrl;
-                      el.load();
-                      el.play().catch(() => {
-                        toast({
-                          title: "Audio unavailable / Âm thanh không có",
-                          description: "Audio file not found / Không tìm thấy file âm thanh",
-                          variant: "destructive"
-                        });
-                      });
-                    }
+                    console.error('Audio file not found:', filename);
+                    toast({
+                      title: "Audio unavailable / Âm thanh không có",
+                      description: "Audio file not found / Không tìm thấy file âm thanh",
+                      variant: "destructive"
+                    });
+                    setAudioLoading(false);
                     el.removeEventListener('error', handleError);
                   };
                   el.addEventListener('error', handleError, { once: true } as any);
-                  el.src = primaryUrl;
+                  el.src = audioUrl;
                   el.load();
                   el.currentTime = 0;
                   el.play().catch(() => {/* autoplay blocked, user can click play */});

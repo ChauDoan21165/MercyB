@@ -182,9 +182,11 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
       // Support audio in various formats
       const audio = matchedEntry.audio || matchedEntry.audio_file || matchedEntry.meta?.audio_file || matchedEntry.audioEn || matchedEntry.audio_en;
       if (typeof audio === 'string') {
-        audioFile = audio;
+        // Audio files are in /public root, no path needed
+        audioFile = audio.startsWith('/') ? audio.substring(1) : audio;
       } else if (audio && typeof audio === 'object') {
-        audioFile = audio.en || audio.vi;
+        const audioPath = audio.en || audio.vi;
+        audioFile = audioPath?.startsWith('/') ? audioPath.substring(1) : audioPath;
       }
       entryId = matchedEntry.id || matchedEntry.artifact_id || matchedEntry.title;
     }

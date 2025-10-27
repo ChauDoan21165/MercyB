@@ -29,6 +29,18 @@ const Welcome = () => {
     return () => subscription.unsubscribe();
   }, []);
 
+  // Play Mercy_Blade.mp3 on homepage load
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      audio.src = '/Mercy_Blade.mp3';
+      audio.load();
+      audio.play().catch(() => {
+        // Autoplay blocked, user can click play button
+      });
+    }
+  }, []);
+
   const checkUser = async () => {
     setIsCheckingProfile(true);
     const { data: { user } } = await supabase.auth.getUser();
@@ -108,7 +120,11 @@ const Welcome = () => {
   ];
 
   return (
-    <div className="min-h-screen" style={{ background: 'hsl(var(--page-welcome))' }}>
+    <>
+      {/* Hidden audio player for Mercy_Blade.mp3 */}
+      <audio ref={audioRef} />
+      
+      <div className="min-h-screen" style={{ background: 'hsl(var(--page-welcome))' }}>
       {!isCheckingProfile && showUsernameSetup && (
         <UsernameSetup onComplete={(skipped = false) => {
           if (skipped) {
@@ -428,6 +444,7 @@ const Welcome = () => {
         </Card>
       </div>
     </div>
+    </>
   );
 };
 
