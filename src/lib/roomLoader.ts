@@ -51,14 +51,21 @@ export async function loadMergedRoom(roomId: string, tier: 'free' | 'vip1' | 'vi
   // Convert tier to uppercase format: vip3 -> VIP3, free -> Free
   const tierSuffix = extractedTier === 'free' ? 'Free' : extractedTier.toUpperCase();
   
-  // Build file path: /Room Name_TIER.json (flat in public root)
-  const jsonPath = `/${roomName}_${tierSuffix}.json`;
+  // Build file paths: try both Title Case and lowercase patterns
+  const titleCasePath = `/${roomName}_${tierSuffix}.json`;
+  const lowercasePath = `/${roomNameParts.join('_')}_${extractedTier}.json`;
   
   try {
-    // Load JSON from flat public structure
-    const res = await fetch(jsonPath);
+    // Try Title Case first (e.g., "God With Us_Free.json")
+    let res = await fetch(titleCasePath);
+    
+    // If not found, try lowercase with underscores (e.g., "obesity_free.json")
     if (!res.ok) {
-      console.warn(`JSON not found: ${jsonPath}`);
+      res = await fetch(lowercasePath);
+    }
+    
+    if (!res.ok) {
+      console.warn(`JSON not found: tried ${titleCasePath} and ${lowercasePath}`);
       return { merged: [], keywordMenu: { en: [], vi: [] }, audioBasePath: '/' };
     }
     const data = await res.json();

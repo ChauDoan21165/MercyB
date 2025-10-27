@@ -1,0 +1,26 @@
+{
+  "version": "1.0",
+  "locale": "vi-en",
+  "name": "The Meaning of Life: Flow of Connection",
+  "description": "Meaning widens beyond the self as life becomes a river of connections and shared purpose.",
+  "entries": [
+    {
+      "slug": "flow-of-connection",
+      "keywords_en": ["connection", "fulfillment", "giving", "wisdom", "sacred"],
+      "keywords_vi": ["kết nối", "viên mãn", "cho đi", "sáng suốt", "thiêng liêng"],
+      "copy": {
+        "en": "As understanding matures, meaning widens beyond the self. Life becomes a river of connections — between your breath and the wind, your voice and another's silence, your giving and the world's quiet gratitude. True fulfillment arises when what you do begins to nourish something larger than you. Purpose becomes a dialogue: between your strength and someone's need, your wisdom and another's doubt. To live meaningfully is to participate in the great weaving of existence — to bring light where it is dim, to restore what has been forgotten, to witness what is sacred in the ordinary. Each gesture of sincerity ripples outward, unseen yet enduring. And when you give without losing yourself, you find that you have never been separate from the whole.\n\nDiscover deeper meaning in higher level.",
+        "vi": "Khi hiểu biết trưởng thành, ý nghĩa mở rộng vượt khỏi cái tôi. Cuộc sống trở thành một dòng sông của những kết nối — giữa hơi thở bạn và làn gió, giữa giọng nói bạn và sự im lặng của người khác, giữa việc bạn cho đi và lòng biết ơn thầm lặng của thế giới. Sự viên mãn thật sự nảy sinh khi những việc bạn làm bắt đầu nuôi dưỡng điều gì đó lớn hơn chính mình. Mục đích trở thành một cuộc đối thoại: giữa sức mạnh của bạn và nhu cầu của ai đó, giữa sự sáng suốt của bạn và những hoang mang ngoài kia. Sống có ý nghĩa là tham dự vào tấm thảm lớn của tồn tại — mang ánh sáng đến nơi còn mờ tối, hàn gắn điều bị lãng quên, chứng kiến vẻ thiêng liêng trong điều bình dị. Mỗi cử chỉ chân thành là một gợn sóng lan xa, âm thầm mà bền lâu. Và khi bạn cho đi mà vẫn giữ được chính mình, bạn nhận ra rằng mình chưa bao giờ tách rời khỏi toàn thể.\n\nKhám phá ý nghĩa sâu hơn ở cấp độ cao hơn."
+      },
+      "tags": ["philosophy", "connection", "purpose"],
+      "audio": "/audio/en/Meaning_Of_Life_VIP2.mp3"
+    }
+  ],
+  "meta": {
+    "created_at": "2025-10-27T00:00:00+00:00",
+    "updated_at": "2025-10-27T00:00:00+00:00",
+    "entry_count": 1,
+    "tier": "vip2",
+    "room_color": "#8B7355"
+  }
+}
