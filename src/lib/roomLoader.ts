@@ -63,12 +63,34 @@ export async function loadMergedRoom(roomId: string, tier: 'free' | 'vip1' | 'vi
     }
     const data = await res.json();
     
-    // Extract top-level keywords
-    const keywordsEn = Array.isArray(data.keywords_en) ? data.keywords_en : [];
-    const keywordsVi = Array.isArray(data.keywords_vi) ? data.keywords_vi : keywordsEn;
-    
-    // Extract entries
+    // Extract entries first
     const entries = Array.isArray(data.entries) ? data.entries : [];
+    
+    // Extract keywords - try top-level first, then collect from entries
+    let keywordsEn = Array.isArray(data.keywords_en) ? data.keywords_en : [];
+    let keywordsVi = Array.isArray(data.keywords_vi) ? data.keywords_vi : [];
+    
+    // If no top-level keywords, collect unique keywords from all entries
+    if (keywordsEn.length === 0 && entries.length > 0) {
+      const uniqueEn = new Set<string>();
+      const uniqueVi = new Set<string>();
+      
+      entries.forEach((e: any) => {
+        const entryKeywordsEn = Array.isArray(e.keywords_en) ? e.keywords_en : [];
+        const entryKeywordsVi = Array.isArray(e.keywords_vi) ? e.keywords_vi : [];
+        
+        entryKeywordsEn.forEach(k => uniqueEn.add(k));
+        entryKeywordsVi.forEach(k => uniqueVi.add(k));
+      });
+      
+      keywordsEn = Array.from(uniqueEn);
+      keywordsVi = Array.from(uniqueVi);
+    }
+    
+    // Fallback: if still no Vietnamese keywords, use English
+    if (keywordsVi.length === 0) {
+      keywordsVi = keywordsEn;
+    }
     
     // Build merged entries - handle multiple JSON structures
     const merged: MergedEntry[] = entries.map((e: any) => {
