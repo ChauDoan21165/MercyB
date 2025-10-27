@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "locale": "vi-en",
+  "name": "Stoic Philosophy (VIP 2)",
+  "name_vi": "Triết Học Khắc Kỷ (VIP 2)",
+  "description": "Advanced Stoic wisdom: virtue, acceptance, discipline, and philosophical depth.",
+  "entries": [
+    {
+      "slug": "virtue-in-action",
+      "keywords_en": ["virtue", "integrity", "wisdom", "justice", "courage"],
+      "keywords_vi": ["đức hạnh", "chính trực", "trí tuệ", "công lý", "dũng khí"],
+      "copy": {
+        "en": "Live virtue through daily alignment with wisdom, justice, courage, and temperance. Each morning, choose one virtue to embody. When faced with choices, ask: 'What would the wise person do?' Epictetus taught that virtue is the only true good. Practice integrity in small things: keep promises, speak truth, act fairly. This builds character that withstands any storm.",
+        "vi": "Sống đức hạnh qua việc điều chỉnh hàng ngày với trí tuệ, công lý, dũng khí và tiết độ. Mỗi sáng, chọn một đức hạnh để thể hiện. Khi đối mặt với lựa chọn, hãy tự hỏi: 'Người khôn ngoan sẽ làm gì?' Epictetus dạy rằng đức hạnh là điều tốt đẹp duy nhất thật sự. Thực hành chính trực trong những việc nhỏ: giữ lời hứa, nói sự thật, hành động công bằng. Điều này xây dựng nhân cách chịu đựng được mọi cơn bão."
+      },
+      "tags": ["stoicism", "virtue", "integrity"],
+      "audio": "/stoicism_virtue_vip2.mp3"
+    }
+  ],
+  "meta": {
+    "created_at": "2025-10-27T00:00:00+00:00",
+    "updated_at": "2025-10-27T00:00:00+00:00",
+    "entry_count": 1,
+    "tier": "vip2",
+    "room_color": "#6B8E23"
+  }
+}

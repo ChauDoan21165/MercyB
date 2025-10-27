@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "locale": "vi-en",
+  "name": "Stoic Philosophy (VIP 3)",
+  "name_vi": "Triết Học Khắc Kỷ (VIP 3)",
+  "description": "Mastery of Stoic philosophy: cosmic perspective, deep acceptance, and philosophical transcendence.",
+  "entries": [
+    {
+      "slug": "cosmic-perspective",
+      "keywords_en": ["cosmic", "perspective", "universe", "interconnection", "transcendence"],
+      "keywords_vi": ["vũ trụ", "quan điểm", "liên kết", "siêu việt", "toàn thể"],
+      "copy": {
+        "en": "Adopt the cosmic perspective: see yourself as part of the whole universe. Marcus Aurelius meditated on how we are threads in the great tapestry of existence. Your troubles are tiny against infinite time and space, yet your virtue echoes eternally. Practice viewing life from above: imagine looking down at Earth, seeing all humanity as one family. This perspective brings both humility and grandeur. You are small, yet essential. Your choices matter, yet worry dissolves. Live aligned with universal nature — with reason, with compassion, with acceptance of what is.",
+        "vi": "Áp dụng quan điểm vũ trụ: thấy mình là một phần của toàn thể vũ trụ. Marcus Aurelius thiền về cách chúng ta là những sợi chỉ trong tấm thảm lớn của sự tồn tại. Khó khăn của bạn nhỏ bé trước thời gian và không gian vô hạn, nhưng đức hạnh của bạn vang vọng mãi mãi. Thực hành nhìn cuộc sống từ trên cao: tưởng tượng nhìn xuống Trái Đất, thấy toàn nhân loại như một gia đình. Quan điểm này mang lại cả sự khiêm tốn và vĩ đại. Bạn nhỏ bé, nhưng thiết yếu. Lựa chọn của bạn quan trọng, nhưng lo lắng tan biến. Sống theo bản chất vũ trụ — với lý trí, với lòng từ bi, với sự chấp nhận điều hiện hữu."
+      },
+      "tags": ["stoicism", "cosmic", "philosophy"],
+      "audio": "/stoicism_cosmic_vip3.mp3"
+    }
+  ],
+  "meta": {
+    "created_at": "2025-10-27T00:00:00+00:00",
+    "updated_at": "2025-10-27T00:00:00+00:00",
+    "entry_count": 1,
+    "tier": "vip3",
+    "room_color": "#6B8E23"
+  }
+}

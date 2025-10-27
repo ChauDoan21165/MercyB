@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "locale": "vi-en",
+  "name": "Philosophy of Everyday (VIP 1)",
+  "name_vi": "Triết Học Đời Thường (VIP 1)",
+  "description": "Deepening awareness, purpose, and mindful living in daily experience.",
+  "entries": [
+    {
+      "slug": "seeds-of-purpose",
+      "keywords_en": ["purpose", "intention", "awareness", "integrity", "intuition"],
+      "keywords_vi": ["mục đích", "ý định", "nhận thức", "chính trực", "trực giác"],
+      "copy": {
+        "en": "Life deepens when awareness turns into intention. Meaning begins to take root as you align your days with what truly matters. Ask yourself: What gives me energy? What do I wish to nurture in others? Each small act becomes a seed of purpose — a kind word, a quiet moment of care, a choice guided by integrity. Learn to listen not only to your thoughts but also to the spaces between them, where intuition whispers. Purpose is not a grand arrival but a daily tending of what feels alive inside you. In that tending, life becomes luminous.\n\nDiscover deeper meaning in higher level.",
+        "vi": "Cuộc sống trở nên sâu sắc khi nhận thức hóa thành ý định. Ý nghĩa bắt đầu bén rễ khi bạn sắp xếp những ngày của mình quanh điều thật sự quan trọng. Hãy tự hỏi: Điều gì khiến tôi tràn đầy năng lượng? Tôi muốn nuôi dưỡng điều gì trong người khác? Mỗi hành động nhỏ là một hạt giống của mục đích — một lời nói tử tế, một phút lắng đọng chăm sóc, một lựa chọn được dẫn dắt bởi sự chính trực. Học cách lắng nghe không chỉ suy nghĩ mà cả những khoảng lặng giữa chúng, nơi trực giác khẽ thì thầm. Mục đích không phải là đích đến lớn lao, mà là việc vun trồng mỗi ngày những gì còn sống động trong bạn. Trong sự vun trồng ấy, cuộc sống trở nên sáng trong và có hồn.\n\nKhám phá ý nghĩa sâu hơn ở cấp độ cao hơn."
+      },
+      "tags": ["philosophy", "purpose", "intention"],
+      "audio": "/philosophy_everyday_vip1.mp3"
+    }
+  ],
+  "meta": {
+    "created_at": "2025-10-27T00:00:00+00:00",
+    "updated_at": "2025-10-27T00:00:00+00:00",
+    "entry_count": 1,
+    "tier": "vip1",
+    "room_color": "#8B7355"
+  }
+}

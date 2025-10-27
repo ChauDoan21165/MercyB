@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "locale": "vi-en",
+  "name": "Philosophy of Everyday (Free)",
+  "name_vi": "Triết Học Đời Thường (Miễn Phí)",
+  "description": "A gentle quest for balance, mindfulness, and finding meaning in everyday life.",
+  "entries": [
+    {
+      "slug": "meaning-of-life",
+      "keywords_en": ["meaning of life", "purpose", "balance", "mindfulness", "gratitude"],
+      "keywords_vi": ["ý nghĩa cuộc sống", "mục đích", "cân bằng", "chánh niệm", "biết ơn"],
+      "copy": {
+        "en": "The meaning of life is a gentle quest for balance between body, mind, and the living world around us. It begins by listening inward — recognizing your core values, quiet passions, and the small worries that visit each day. Practice mindfulness to stay present, cultivating gratitude for simple joys that steady the heart. Build daily rituals of nourishment, movement, and rest to anchor your well-being. Remember that purpose blooms through connection — cherish the relationships that lift your spirit and the moments that remind you of belonging. When challenges come, greet them as teachers guiding you toward growth and self-understanding.\n\nDiscover deeper meaning in higher level.",
+        "vi": "Ý nghĩa của cuộc sống là hành trình dịu dàng đi tìm sự cân bằng giữa thân, tâm và thế giới quanh ta. Nó khởi đầu bằng việc lắng nghe bên trong — nhận ra giá trị cốt lõi, những đam mê thầm lặng, và cả những ưu tư nhỏ ghé thăm mỗi ngày. Hãy thực hành chánh niệm để ở lại với hiện tại, nuôi dưỡng lòng biết ơn trước những niềm vui giản dị giữ cho trái tim được vững vàng. Xây dựng những nghi thức nhỏ mỗi ngày như ăn uống điều độ, vận động nhẹ nhàng, và nghỉ ngơi trọn vẹn để neo giữ sức khỏe và bình an. Hãy nhớ rằng mục đích sống nảy nở qua sự kết nối — trân quý những mối quan hệ nâng đỡ tâm hồn và những khoảnh khắc nhắc bạn rằng mình thuộc về. Khi thử thách đến, hãy đón nhận chúng như những người thầy, chỉ đường cho bạn hiểu sâu hơn về chính mình.\n\nKhám phá ý nghĩa sâu hơn ở cấp độ cao hơn."
+      },
+      "tags": ["philosophy", "mindfulness", "purpose"],
+      "audio": "/meaning_of_life_free.mp3"
+    }
+  ],
+  "meta": {
+    "created_at": "2025-10-27T00:00:00+00:00",
+    "updated_at": "2025-10-27T00:00:00+00:00",
+    "entry_count": 1,
+    "tier": "free",
+    "room_color": "#8B7355"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "locale": "vi-en",
+  "name": "Women's Health (Free)",
+  "name_vi": "Sức Khỏe Phụ Nữ (Miễn Phí)",
+  "description": "Essential women's health guidance: menstrual cycle, pain relief, hormonal balance, and self-care.",
+  "entries": [
+    {
+      "slug": "menstrual-cycle-basics",
+      "keywords_en": ["menstrual cycle", "period cycle", "cycle basics", "menstruation"],
+      "keywords_vi": ["chu kỳ kinh nguyệt", "kinh nguyệt", "kỳ kinh", "chu kỳ"],
+      "copy": {
+        "en": "Understanding your menstrual cycle empowers better health decisions. Track your cycle monthly to notice patterns. A typical cycle ranges 21-35 days. Note changes in mood, energy, and physical symptoms. This awareness helps you plan, rest, and seek care when needed. Start today: mark day one of your next period and observe how you feel throughout the month.",
+        "vi": "Hiểu chu kỳ kinh nguyệt giúp bạn đưa ra quyết định sức khỏe tốt hơn. Theo dõi chu kỳ hàng tháng để nhận ra các quy luật. Một chu kỳ thông thường kéo dài 21-35 ngày. Ghi chú thay đổi về tâm trạng, năng lượng và các triệu chứng thể chất. Sự nhận thức này giúp bạn lập kế hoạch, nghỉ ngơi và tìm kiếm chăm sóc khi cần. Hãy bắt đầu hôm nay: đánh dấu ngày đầu tiên của kỳ kinh tiếp theo và quan sát cảm giác của bạn trong suốt tháng."
+      },
+      "tags": ["women_health", "menstrual", "cycle"],
+      "audio": "/menstrual_cycle_basics_free.mp3"
+    },
+    {
+      "slug": "period-pain-relief",
+      "keywords_en": ["period pain", "menstrual cramps", "cramps", "pain relief"],
+      "keywords_vi": ["đau bụng kinh", "đau kinh", "đau bụng", "giảm đau"],
+      "copy": {
+        "en": "Relieve period pain naturally with heat, gentle movement, and hydration. Apply a warm compress to your lower abdomen for 15 minutes. Light walking or stretching eases cramping. Drink plenty of water and avoid caffeine. If pain is severe or worsens, consult a healthcare provider. Begin now: apply warmth and take a short, gentle walk.",
+        "vi": "Giảm đau bụng kinh tự nhiên bằng nhiệt, vận động nhẹ nhàng và nước. Chườm ấm vùng bụng dưới trong 15 phút. Đi bộ nhẹ hoặc kéo giãn giúp giảm co thắt. Uống nhiều nước và tránh caffein. Nếu đau nghiêm trọng hoặc tệ hơn, hãy tham khảo ý kiến bác sĩ. Hãy bắt đầu ngay: chườm ấm và đi bộ nhẹ nhàng một chút."
+      },
+      "tags": ["women_health", "pain", "menstrual"],
+      "audio": "/period_pain_relief_free.mp3"
+    }
+  ],
+  "meta": {
+    "created_at": "2025-10-27T00:00:00+00:00",
+    "updated_at": "2025-10-27T00:00:00+00:00",
+    "entry_count": 2,
+    "tier": "free",
+    "room_color": "#FF69B4"
+  }
+}

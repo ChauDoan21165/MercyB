@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "locale": "vi-en",
+  "name": "Stoic Philosophy (VIP 1)",
+  "name_vi": "Triết Học Khắc Kỷ (VIP 1)",
+  "description": "Intermediate Stoic practice: resilience, acceptance, virtue, and daily discipline.",
+  "entries": [
+    {
+      "slug": "building-resilience",
+      "keywords_en": ["resilience", "strength", "adversity", "growth", "endurance"],
+      "keywords_vi": ["kiên cường", "sức mạnh", "nghịch cảnh", "trưởng thành", "bền bỉ"],
+      "copy": {
+        "en": "Build resilience through daily practice of facing small discomforts. Cold showers, early mornings, difficult conversations — each trains your mind to stay calm under pressure. Marcus Aurelius taught that obstacles become the path forward. When challenges arise, pause and ask: 'What can I learn here?' Journal weekly about one difficulty you faced and how you responded. This builds the muscle of resilience that serves you in greater storms.",
+        "vi": "Xây dựng sự kiên cường qua thực hành hàng ngày đối mặt với những khó chịu nhỏ. Tắm nước lạnh, dậy sớm, cuộc trò chuyện khó khăn — mỗi việc rèn luyện tâm trí giữ bình tĩnh dưới áp lực. Marcus Aurelius dạy rằng chướng ngại trở thành con đường tiến về phía trước. Khi thử thách xuất hiện, hãy tạm dừng và tự hỏi: 'Tôi có thể học gì ở đây?' Ghi nhật ký hàng tuần về một khó khăn bạn đối mặt và cách bạn phản ứng. Điều này xây dựng cơ bắp của sự kiên cường phục vụ bạn trong những cơn bão lớn hơn."
+      },
+      "tags": ["stoicism", "resilience", "growth"],
+      "audio": "/stoicism_resilience_vip1.mp3"
+    }
+  ],
+  "meta": {
+    "created_at": "2025-10-27T00:00:00+00:00",
+    "updated_at": "2025-10-27T00:00:00+00:00",
+    "entry_count": 1,
+    "tier": "vip1",
+    "room_color": "#6B8E23"
+  }
+}
