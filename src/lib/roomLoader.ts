@@ -16,9 +16,9 @@ export type MergedRoomData = {
 };
 
 /**
- * Load room data from NEW structure:
- * - Path: /public/tiers/{tier}/{room}/{room}_{tier}.json
- * - Audio: /public/tiers/{tier}/{room}/*.mp3
+ * Load room data from flat public structure:
+ * - Path: /public/{Room Name}_{TIER}.json (e.g., "God With Us_VIP3.json")
+ * - Audio: /public/*.mp3 (all in root)
  * 
  * JSON format:
  * {
@@ -36,45 +36,39 @@ export type MergedRoomData = {
  * }
  */
 export async function loadMergedRoom(roomId: string, tier: 'free' | 'vip1' | 'vip2' | 'vip3') {
-  // Parse room ID: stress-vip3 -> room=stress, tier=vip3
-  // Extract tier from roomId if present, otherwise use parameter
+  // Convert roomId (kebab-case) to Room Name format with spaces
+  // e.g., "god-with-us" -> "God With Us"
   const parts = String(roomId || '').trim().toLowerCase().split('-');
   const lastPart = parts[parts.length - 1];
   const extractedTier = ['free', 'vip1', 'vip2', 'vip3'].includes(lastPart) ? lastPart : tier;
-  const roomName = lastPart === extractedTier ? parts.slice(0, -1).join('-') : parts.join('-');
+  const roomNameParts = lastPart === extractedTier ? parts.slice(0, -1) : parts;
   
-  // Build file paths: /tiers/{tier}/{room}/{room}_{tier}.json
-  const enPath = `/tiers/${extractedTier}/${roomName}/${roomName}_${extractedTier}.json`;
-  const vnPath = `/tiers/${extractedTier}/${roomName}/${roomName}_${extractedTier}.json`; // Same file for now
+  // Convert to Title Case with spaces: "god-with-us" -> "God With Us"
+  const roomName = roomNameParts
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+  
+  // Convert tier to uppercase format: vip3 -> VIP3, free -> Free
+  const tierSuffix = extractedTier === 'free' ? 'Free' : extractedTier.toUpperCase();
+  
+  // Build file path: /Room Name_TIER.json (flat in public root)
+  const jsonPath = `/${roomName}_${tierSuffix}.json`;
   
   try {
-    // Load English JSON
-    const enRes = await fetch(enPath);
-    if (!enRes.ok) {
-      console.warn(`English JSON not found: ${enPath}`);
+    // Load JSON from flat public structure
+    const res = await fetch(jsonPath);
+    if (!res.ok) {
+      console.warn(`JSON not found: ${jsonPath}`);
       return { merged: [], keywordMenu: { en: [], vi: [] }, audioBasePath: '/' };
     }
-    const enData = await enRes.json();
-    
-    // Load Vietnamese JSON (optional)
-    let vnData: any = null;
-    try {
-      const vnRes = await fetch(vnPath);
-      if (vnRes.ok) {
-        vnData = await vnRes.json();
-      }
-    } catch (e) {
-      console.info(`Vietnamese JSON not found (optional): ${vnPath}`);
-    }
+    const data = await res.json();
     
     // Extract top-level keywords
-    const keywordsEn = Array.isArray(enData.keywords_en) ? enData.keywords_en : [];
-    const keywordsVi = Array.isArray(vnData?.keywords_vi) ? vnData.keywords_vi : 
-                       Array.isArray(enData.keywords_vi) ? enData.keywords_vi : 
-                       keywordsEn;
+    const keywordsEn = Array.isArray(data.keywords_en) ? data.keywords_en : [];
+    const keywordsVi = Array.isArray(data.keywords_vi) ? data.keywords_vi : keywordsEn;
     
     // Extract entries
-    const entries = Array.isArray(enData.entries) ? enData.entries : [];
+    const entries = Array.isArray(data.entries) ? data.entries : [];
     
     // Build merged entries
     const merged: MergedEntry[] = entries.map((e: any) => {
@@ -93,7 +87,7 @@ export async function loadMergedRoom(roomId: string, tier: 'free' | 'vip1' | 'vi
         en: keywordsEn,
         vi: keywordsVi
       },
-      audioBasePath: `/tiers/${extractedTier}/${roomName}/`
+      audioBasePath: '/' // All audio files in public root
     };
   } catch (error) {
     console.error(`Error loading room ${roomId} tier ${tier}:`, error);
