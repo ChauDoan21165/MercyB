@@ -283,37 +283,48 @@ const handleAccessDenied = () => {
             if (response.audioFile) {
               try {
                 setAudioLoading(true);
-                const filename = String(response.audioFile).replace(/^\//, '');
+                const filename = String(response.audioFile).replace(/^\//, '').trim();
                 
-                // Cache-bust to force reload
-                const withTs = (u: string) => `${u}${u.includes('?') ? '&' : '?'}t=${Date.now()}`;
+                // Validate filename exists
+                if (!filename || filename === 'undefined' || filename === 'null') {
+                  console.warn('No valid audio file specified');
+                  setAudioLoading(false);
+                  return;
+                }
                 
-                // MP3s are in /public root
-                const audioUrl = withTs(`/${filename}`);
+                // MP3s are in /public root - don't add cache-bust, let browser cache work
+                const audioUrl = `/${filename}`;
                 
-                setCurrentAudio(audioUrl);
-                setAltAudio(null);
-                setIsAudioPlaying(false);
+                // Pre-check if file exists before setting audio
+                fetch(audioUrl, { method: 'HEAD' })
+                  .then(response => {
+                    if (response.ok) {
+                      setCurrentAudio(audioUrl);
+                      setAltAudio(null);
+                      setIsAudioPlaying(false);
 
-                // Try to start playback
-                const el = audioRef.current;
-                if (el) {
-                  const handleError = () => {
-                    console.error('Audio file not found:', filename);
+                      // Try to start playback
+                      const el = audioRef.current;
+                      if (el) {
+                        el.src = audioUrl;
+                        el.load();
+                        el.currentTime = 0;
+                        el.play().catch(() => {/* autoplay blocked, user can click play */});
+                      }
+                    } else {
+                      throw new Error(`Audio file not found: ${filename}`);
+                    }
+                  })
+                  .catch(err => {
+                    console.error('Audio file check failed:', filename, err);
+                    setAudioLoading(false);
+                    setCurrentAudio(null);
                     toast({
                       title: "Audio unavailable / Âm thanh không có",
-                      description: "Audio file not found / Không tìm thấy file âm thanh",
+                      description: `File not found: ${filename}`,
                       variant: "destructive"
                     });
-                    setAudioLoading(false);
-                    el.removeEventListener('error', handleError);
-                  };
-                  el.addEventListener('error', handleError, { once: true } as any);
-                  el.src = audioUrl;
-                  el.load();
-                  el.currentTime = 0;
-                  el.play().catch(() => {/* autoplay blocked, user can click play */});
-                }
+                  });
 
               } catch (e) {
                 console.error('Audio load error:', e);
@@ -407,10 +418,18 @@ const handleAccessDenied = () => {
     }
   };
 
-  // Stable scroll: only when messages change or loading starts
+  // Stable scroll: only scroll when new messages are added (not replacements)
+  const prevMessageCountRef = useRef(mainMessages.length);
   useEffect(() => {
-    scrollToBottom();
-  }, [mainMessages, isLoading]);
+    // Only scroll if message count increased (new message) not when messages are replaced
+    if (mainMessages.length > prevMessageCountRef.current) {
+      const timer = setTimeout(() => {
+        endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }, 100);
+      prevMessageCountRef.current = mainMessages.length;
+      return () => clearTimeout(timer);
+    }
+  }, [mainMessages]);
 
   const MessageBubble = ({ message }: { message: Message }) => {
     // Split content to display English and Vietnamese separately
