@@ -1,0 +1,49 @@
+{
+  "name": "Cognitive Growth VIP3",
+  "description": "Advanced mental exercises for focus, memory, and sharpness.",
+  "entries": [
+    {
+      "id": "01",
+      "title": "Mental Exercises for Sharpness",
+      "keywords_en": [
+        "mental exercise",
+        "sharpness",
+        "puzzle",
+        "cognitive strength"
+      ],
+      "keywords_vi": [
+        "bài tập tư duy",
+        "sắc bén",
+        "trò chơi trí tuệ",
+        "sức mạnh nhận thức"
+      ],
+      "reply_en": "Solve one puzzle daily: Sudoku, crosswords. Set 10 minutes, focus fully. Minh sharpened memory. Try new type weekly. Read one page daily.",
+      "reply_vi": "Giải một câu đố mỗi ngày: Sudoku, ô chữ. Dành 10 phút, tập trung hoàn toàn. Minh rèn trí nhớ. Thử loại mới hàng tuần. Đọc một trang sách mỗi ngày.",
+      "dare": "Solve one puzzle row now.",
+      "audio": "01_mental_exercises.mp3",
+      "duration": "00:52"
+    },
+    {
+      "id": "02",
+      "title": "Improving Focus",
+      "keywords_en": ["focus", "attention", "concentration", "mindfulness"],
+      "keywords_vi": ["tập trung", "chú ý", "chuyên tâm", "chánh niệm"],
+      "reply_en": "Meditate 5 minutes daily. Turn off notifications. Work 25 minutes focused. Maria improved concentration. Reflect weekly. Exercise 10 minutes.",
+      "reply_vi": "Thiền 5 phút mỗi ngày. Tắt thông báo. Làm việc tập trung 25 phút. Maria cải thiện sự chú ý. Suy ngẫm hàng tuần. Tập thể dục 10 phút.",
+      "dare": "Focus on one task for 2 minutes now.",
+      "audio": "02_improving_focus.mp3",
+      "duration": "00:48"
+    },
+    {
+      "id": "03",
+      "title": "Memory Enhancement",
+      "keywords_en": ["memory", "mnemonics", "recall", "learning"],
+      "keywords_vi": ["trí nhớ", "kỹ thuật ghi nhớ", "hồi tưởng", "học tập"],
+      "reply_en": "Use mnemonics daily. Link words to images. Review one fact. Minh boosted recall. Weekly review lists. Stay active with exercise.",
+      "reply_vi": "Dùng kỹ thuật ghi nhớ mỗi ngày. Liên kết từ với hình ảnh. Ôn một thông tin. Minh tăng khả năng nhớ. Xem lại danh sách hàng tuần. Giữ vận động.",
+      "dare": "Create one mnemonic for a word now.",
+      "audio": "03_memory_enhancement.mp3",
+      "duration": "00:50"
+    }
+  ]
+}

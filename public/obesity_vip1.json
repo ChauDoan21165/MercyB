@@ -1,0 +1,112 @@
+{
+  "version": "1.0",
+  "locale": "vi-en",
+  "name": "Obesity Management (VIP 1)",
+  "description": "Intermediate guidance: balanced meals, active habits, mindful eating, and portion control for sustainable weight health.",
+  "global_notes": { "safety": "" },
+  "enum_tags": [
+    "nutrition",
+    "movement",
+    "mindful_eating",
+    "portion_control",
+    "weight_management"
+  ],
+  "entries": [
+    {
+      "slug": "planning-balanced-meals",
+      "keywords_en": [
+        "balanced meal planning",
+        "nutrition",
+        "healthy weight",
+        "routine"
+      ],
+      "keywords_vi": [
+        "lập kế hoạch bữa ăn cân bằng",
+        "dinh dưỡng",
+        "cân nặng lành mạnh",
+        "thói quen"
+      ],
+      "copy": {
+        "en": "Plan balanced meals to support healthy weight management. Include vegetables, lean proteins, and whole grains in one daily meal using the plate method: half vegetables, one quarter protein, one quarter carbohydrates. Prepare two meals ahead each week to stay consistent and avoid last-minute choices. Record weekly reflections about energy levels and satisfaction. Ask a trusted friend for meal feedback monthly to stay accountable. Balanced meals reduce cravings and stabilize mood. Keep portions mindful rather than strict. Over time, these small actions reshape habits gently and naturally. Begin today by planning one nourishing meal that fits your routine. Ready to eat with purpose? Explore beyond VIP 1.",
+        "vi": "Lên kế hoạch bữa ăn cân bằng để hỗ trợ quản lý cân nặng lành mạnh. Hãy bao gồm rau củ, protein nạc và ngũ cốc nguyên hạt trong một bữa ăn mỗi ngày, theo phương pháp đĩa: một nửa rau, một phần tư protein, một phần tư tinh bột. Chuẩn bị trước hai bữa mỗi tuần giúp bạn duy trì thói quen và tránh lựa chọn vội vàng. Mỗi tuần, ghi lại cảm nhận về mức năng lượng và sự hài lòng của bạn. Mỗi tháng, nhờ một người bạn đáng tin cậy góp ý về bữa ăn để duy trì trách nhiệm. Bữa ăn cân bằng giúp giảm thèm ăn và ổn định tâm trạng. Giữ khẩu phần tỉnh táo thay vì khắt khe. Theo thời gian, những hành động nhỏ này sẽ định hình lại thói quen một cách nhẹ nhàng và tự nhiên. Hãy bắt đầu hôm nay bằng cách lên kế hoạch cho một bữa ăn bổ dưỡng phù hợp với nhịp sống của bạn. Sẵn sàng ăn uống có mục đích chứ? Hãy khám phá thêm vượt ngoài cấp VIP 1."
+      },
+      "tags": ["nutrition"],
+      "artifact_id": "a7b29e45-b39e-4f65-84f9-93d90b1c8a01",
+      "audio": "/audio/en/Planning_Balanced_Meals_VIP1.mp3"
+    },
+    {
+      "slug": "building-active-habits",
+      "keywords_en": ["active habits", "exercise", "motivation", "vitality"],
+      "keywords_vi": [
+        "thói quen vận động",
+        "tập thể dục",
+        "động lực",
+        "sức sống"
+      ],
+      "copy": {
+        "en": "Build active habits that fit your lifestyle to prevent obesity and improve vitality. Aim for at least fifteen minutes of daily movement—walking, stretching, or light yoga. Pair activity with music or nature to boost motivation. Record your exercise time and mood each week to recognize patterns. Join a monthly class or group walk for accountability and connection. Even light movement practiced consistently supports metabolism and relieves tension. When energy dips, focus on enjoyment instead of perfection. The goal is momentum, not exhaustion. Begin today with one uplifting movement you genuinely like. Ready to make motion a daily friend? Explore beyond VIP 1.",
+        "vi": "Xây dựng thói quen vận động phù hợp với lối sống của bạn để phòng ngừa béo phì và tăng sức sống. Hãy đặt mục tiêu vận động ít nhất mười lăm phút mỗi ngày — đi bộ, duỗi cơ hoặc tập yoga nhẹ. Kết hợp hoạt động cùng âm nhạc hoặc thiên nhiên để tăng động lực. Ghi lại thời gian tập luyện và tâm trạng mỗi tuần để nhận ra mô hình cải thiện. Tham gia một lớp học hoặc buổi đi bộ nhóm hàng tháng để duy trì tinh thần gắn kết. Ngay cả chuyển động nhẹ nhưng đều đặn cũng giúp cải thiện trao đổi chất và giảm căng thẳng. Khi năng lượng giảm, hãy tập trung vào niềm vui thay vì sự hoàn hảo. Mục tiêu là duy trì động lực, không phải kiệt sức. Hãy bắt đầu hôm nay bằng một chuyển động vui tươi mà bạn thật sự yêu thích. Sẵn sàng biến vận động thành người bạn mỗi ngày chứ? Hãy khám phá thêm vượt ngoài cấp VIP 1."
+      },
+      "tags": ["movement"],
+      "artifact_id": "b4f36c9d-30b7-4f86-b5cf-9b3a4e27f102",
+      "audio": "/audio/en/Building_Active_Habits_VIP1.mp3"
+    },
+    {
+      "slug": "deepening-mindful-eating",
+      "keywords_en": ["mindful eating", "awareness", "gratitude", "balance"],
+      "keywords_vi": ["ăn uống tỉnh táo", "nhận thức", "biết ơn", "cân bằng"],
+      "copy": {
+        "en": "Deepen mindful eating to prevent overeating and strengthen body awareness. Choose one meal each day to eat slowly without screens or distractions. Notice flavor, aroma, and fullness cues before taking another bite. Reflect weekly in a journal about what you discovered—comfort, stress triggers, or gratitude. Over time, awareness replaces impulse with calm intention. Practice a gentle pause before and after meals to sense satisfaction. This simple awareness reconnects you with balance and trust in your body. Start today with one mindful meal enjoyed fully in quiet presence. Ready to nourish with attention? Explore beyond VIP 1.",
+        "vi": "Đào sâu thực hành ăn uống chánh niệm để ngăn ăn quá mức và tăng cường nhận biết cơ thể. Hãy chọn một bữa mỗi ngày để ăn chậm rãi, không màn hình, không xao nhãng. Cảm nhận hương vị, mùi thơm và tín hiệu no trước khi ăn thêm. Mỗi tuần, ghi lại trong nhật ký điều bạn nhận ra — sự thoải mái, yếu tố gây căng thẳng, hay lòng biết ơn. Theo thời gian, nhận thức sẽ thay thế hành động bốc đồng bằng sự bình tâm có chủ đích. Thực hành dừng lại nhẹ nhàng trước và sau bữa ăn để cảm nhận sự hài lòng. Sự nhận biết đơn giản này giúp bạn kết nối lại với sự cân bằng và niềm tin vào cơ thể. Hãy bắt đầu hôm nay bằng một bữa ăn chánh niệm được tận hưởng trọn vẹn trong tĩnh lặng. Sẵn sàng nuôi dưỡng bằng sự chú tâm chứ? Hãy khám phá thêm vượt ngoài cấp VIP 1."
+      },
+      "tags": ["mindful_eating"],
+      "artifact_id": "ce7a92b6-44fb-42d7-b70a-6d4f3c7a5c03",
+      "audio": "/audio/en/Deepening_Mindful_Eating_VIP1.mp3"
+    },
+    {
+      "slug": "controlling-portion-sizes",
+      "keywords_en": [
+        "portion control",
+        "moderation",
+        "mindful portions",
+        "habit"
+      ],
+      "keywords_vi": [
+        "kiểm soát khẩu phần",
+        "điều độ",
+        "khẩu phần tỉnh táo",
+        "thói quen"
+      ],
+      "copy": {
+        "en": "Control portion sizes to support steady weight goals without strict restriction. Use smaller plates or bowls for one daily meal to naturally limit servings. Pause halfway to check hunger and satisfaction. Plan balanced portions of protein, fiber, and healthy fats to maintain energy. Keep a short weekly log of portion habits to notice progress. Preparing meals in advance reduces mindless snacking. Focus on comfort and moderation rather than deprivation. Each mindful serving trains your body to recognize sufficiency. Begin today by plating your next meal with intention and awareness. Ready to feel balanced after eating? Explore beyond VIP 1.",
+        "vi": "Kiểm soát khẩu phần giúp duy trì mục tiêu cân nặng ổn định mà không cần ép buộc. Hãy sử dụng đĩa hoặc bát nhỏ hơn cho một bữa mỗi ngày để tự nhiên giới hạn lượng ăn. Dừng lại giữa bữa để kiểm tra cảm giác đói và sự hài lòng. Lên kế hoạch cho khẩu phần cân bằng gồm protein, chất xơ và chất béo lành mạnh để giữ năng lượng. Mỗi tuần, ghi lại ngắn gọn thói quen khẩu phần để theo dõi tiến bộ. Chuẩn bị bữa ăn trước giúp giảm việc ăn vặt vô thức. Tập trung vào sự thoải mái và điều độ thay vì kiềm chế. Mỗi khẩu phần chánh niệm sẽ rèn luyện cơ thể bạn nhận ra cảm giác đủ. Hãy bắt đầu hôm nay bằng việc bày bữa ăn kế tiếp của bạn với sự chủ tâm và nhận thức. Sẵn sàng cảm thấy cân bằng sau khi ăn chứ? Hãy khám phá thêm vượt ngoài cấp VIP 1."
+      },
+      "tags": ["portion_control"],
+      "artifact_id": "d2a64e38-7c42-4cc2-9c5e-8d6e5f9a8b04",
+      "audio": "/audio/en/Controlling_Portion_Sizes_VIP1.mp3"
+    }
+  ],
+  "keywords": {
+    "intermediate_obesity_management": {
+      "en": [
+        "balanced meal planning",
+        "active habits",
+        "mindful eating practice",
+        "portion control"
+      ],
+      "vi": [
+        "lập kế hoạch bữa ăn cân bằng",
+        "thói quen vận động",
+        "thực hành ăn uống tỉnh táo",
+        "kiểm soát khẩu phần"
+      ]
+    }
+  },
+  "meta": {
+    "created_at": "2025-10-25T12:22:00+09:00",
+    "updated_at": "2025-10-27T18:33:00+09:00",
+    "entry_count": 4,
+    "tier": "vip1",
+    "room_color": "#D7CCC8"
+  }
+}

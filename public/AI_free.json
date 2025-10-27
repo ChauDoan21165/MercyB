@@ -1,0 +1,72 @@
+{
+  "name": "AI Fundamentals Free",
+  "description": "Master model compression, interpretability, data privacy, and ethical AI with simple steps.",
+  "entries": [
+    {
+      "id": "01",
+      "title": "Compressing Complex Models",
+      "keywords_en": ["compressing", "quantization", "efficient", "model size"],
+      "keywords_vi": ["nén", "lượng hóa", "tối ưu", "kích thước mô hình"],
+      "reply_en": "Use quantization to shrink models for phones and edge devices. Reduce precision to save space. Try compressing a small model to see the trade-off.",
+      "reply_vi": "Dùng lượng hóa để thu nhỏ mô hình cho điện thoại và thiết bị biên. Giảm độ chính xác để tiết kiệm bộ nhớ. Thử nén một mô hình nhỏ để thấy sự đánh đổi.",
+      "dare": "Think of one AI tool you use daily.",
+      "audio": "01_compressing_models.mp3",
+      "duration": "00:50"
+    },
+    {
+      "id": "02",
+      "title": "Decoding AI’s Black Box",
+      "keywords_en": ["interpretability", "SHAP", "transparency", "explain"],
+      "keywords_vi": ["giải thích", "SHAP", "minh bạch", "hiểu rõ"],
+      "reply_en": "Use SHAP to see why AI makes decisions. Test it on a simple dataset. It builds trust but takes effort. Start with one prediction.",
+      "reply_vi": "Dùng SHAP để hiểu lý do AI ra quyết định. Thử trên dữ liệu nhỏ. Nó tạo niềm tin nhưng cần công sức. Bắt đầu với một dự đoán.",
+      "dare": "Ask: 'Why did the model say that?'",
+      "audio": "02_decoding_black_box.mp3",
+      "duration": "00:48"
+    },
+    {
+      "id": "03",
+      "title": "Safeguarding Data in AI",
+      "keywords_en": ["privacy", "federated", "decentralized", "secure"],
+      "keywords_vi": ["riêng tư", "liên kết", "phi tập trung", "an toàn"],
+      "reply_en": "Train AI on devices with federated learning. Keep user data private. Try a basic example to see how it works. No data leaves the phone.",
+      "reply_vi": "Huấn luyện AI trên thiết bị bằng học liên kết. Giữ dữ liệu riêng tư. Thử ví dụ cơ bản để thấy cách hoạt động. Dữ liệu không rời điện thoại.",
+      "dare": "Check your phone’s privacy settings.",
+      "audio": "03_safeguarding_data.mp3",
+      "duration": "00:46"
+    },
+    {
+      "id": "04",
+      "title": "Adapting with Few Examples",
+      "keywords_en": ["few-shot", "low data", "adapt", "meta learning"],
+      "keywords_vi": ["ít ví dụ", "dữ liệu ít", "thích ứng", "học meta"],
+      "reply_en": "Teach AI with just a few examples. It’s hard but powerful for rare tasks. Try a few-shot task on images or text. Start small.",
+      "reply_vi": "Dạy AI chỉ với vài ví dụ. Khó nhưng mạnh mẽ cho tác vụ hiếm. Thử few-shot trên hình ảnh hoặc văn bản. Bắt đầu nhỏ.",
+      "dare": "Show AI 3 examples of something.",
+      "audio": "04_few_shot_adaptation.mp3",
+      "duration": "00:47"
+    },
+    {
+      "id": "05",
+      "title": "Crafting Effective Prompts",
+      "keywords_en": ["prompt", "engineering", "design", "control"],
+      "keywords_vi": ["prompt", "thiết kế", "điều khiển", "lệnh"],
+      "reply_en": "Write clear prompts to guide AI. Be specific. Test one prompt and improve it. Precision beats retraining. Start with one sentence.",
+      "reply_vi": "Viết prompt rõ ràng để dẫn dắt AI. Cụ thể. Thử một prompt và cải thiện. Độ chính xác vượt huấn luyện lại. Bắt đầu với một câu.",
+      "dare": "Rewrite one question better.",
+      "audio": "05_crafting_prompts.mp3",
+      "duration": "00:45"
+    },
+    {
+      "id": "06",
+      "title": "Ensuring Ethical AI Use",
+      "keywords_en": ["ethics", "governance", "fairness", "responsibility"],
+      "keywords_vi": ["đạo đức", "quản trị", "công bằng", "trách nhiệm"],
+      "reply_en": "Build AI with fairness and transparency. Review a policy guide. Prevent bias. It’s complex but essential. Start with one rule.",
+      "reply_vi": "Xây dựng AI công bằng và minh bạch. Xem hướng dẫn chính sách. Ngăn thiên vị. Phức tạp nhưng cần thiết. Bắt đầu với một quy tắc.",
+      "dare": "Ask: 'Is this fair?'",
+      "audio": "06_ethical_ai_use.mp3",
+      "duration": "00:49"
+    }
+  ]
+}

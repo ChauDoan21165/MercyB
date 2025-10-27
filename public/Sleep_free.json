@@ -1,0 +1,92 @@
+{
+  "version": "1.0",
+  "locale": "vi-en",
+  "name": "Sleep Improvement (Free)",
+  "description": "Starter sleep guidance: bedtime routine, simple relaxation, and limiting stimulants.",
+  "global_notes": { "safety": "" },
+  "enum_tags": [
+    "sleep",
+    "relaxation",
+    "routine",
+    "stimulant_control",
+    "wellness"
+  ],
+  "entries": [
+    {
+      "slug": "starting-a-bedtime-routine",
+      "keywords_en": ["bedtime routine", "sleep rhythm", "habit", "relaxation"],
+      "keywords_vi": [
+        "thói quen trước giờ ngủ",
+        "nhịp ngủ",
+        "thói quen",
+        "thư giãn"
+      ],
+      "copy": {
+        "en": "Begin improving sleep with a calm bedtime routine that signals your body to rest. Choose a consistent sleep and wake time each day, even on weekends, to regulate your natural rhythm. Dim lights and lower noise one hour before bed to help the mind unwind. Avoid screens and bright devices that disrupt melatonin. Keep your room cool, quiet, and comfortable. Record bedtime and wake times weekly in a short journal to track progress. Over time, this steady rhythm tells your body when to relax. Begin tonight with one peaceful ritual like reading or soft music. Ready to restore deep rest? Explore more beyond Free.",
+        "vi": "Bắt đầu cải thiện giấc ngủ bằng một thói quen trước giờ ngủ nhẹ nhàng giúp cơ thể nhận tín hiệu nghỉ ngơi. Hãy chọn giờ đi ngủ và thức dậy cố định mỗi ngày, kể cả cuối tuần, để điều hòa nhịp sinh học tự nhiên. Giảm ánh sáng và tiếng ồn trước khi ngủ một giờ để giúp tâm trí thư giãn. Tránh màn hình và thiết bị sáng có thể cản trở melatonin. Giữ phòng ngủ mát mẻ, yên tĩnh và thoải mái. Ghi lại thời gian ngủ và thức mỗi tuần vào nhật ký ngắn để theo dõi tiến triển. Theo thời gian, nhịp điệu đều đặn này sẽ giúp cơ thể biết khi nào cần thư giãn. Hãy bắt đầu tối nay với một nghi thức yên bình như đọc sách hoặc nghe nhạc nhẹ. Sẵn sàng phục hồi giấc ngủ sâu chưa? Hãy khám phá thêm vượt ngoài cấp Free."
+      },
+      "tags": ["sleep"],
+      "artifact_id": "a3b4c5d6-e7f8-49a0-b1c2-d3e4f5a60101",
+      "audio": "/audio/en/Starting_a_Bedtime_Routine_Free.mp3"
+    },
+    {
+      "slug": "trying-simple-relaxation",
+      "keywords_en": ["relaxation", "breathing", "calm", "mindfulness"],
+      "keywords_vi": ["thư giãn", "hít thở", "bình tâm", "chánh niệm"],
+      "copy": {
+        "en": "Ease into restful sleep through simple relaxation techniques. Sit or lie comfortably, close your eyes, and breathe slowly—in for four seconds, hold briefly, then exhale for six. Feel your shoulders soften and your heartbeat slow. This gentle rhythm signals the nervous system to release tension. Try pairing it with calming music or gentle stretching before bed. Reflect weekly in a journal on how relaxation changes your sleep quality. If thoughts intrude, imagine them drifting away like clouds. One mindful breath can begin the shift toward stillness. Start tonight by practicing calm breathing for five minutes. Ready to rest with ease? Explore more beyond Free.",
+        "vi": "Dễ dàng đi vào giấc ngủ yên bình bằng các kỹ thuật thư giãn đơn giản. Ngồi hoặc nằm thoải mái, nhắm mắt và hít thở chậm — hít vào bốn giây, giữ nhẹ, rồi thở ra sáu giây. Cảm nhận vai bạn mềm ra và nhịp tim chậm lại. Nhịp điệu nhẹ nhàng này giúp hệ thần kinh giải tỏa căng thẳng. Hãy kết hợp cùng âm nhạc nhẹ hoặc kéo giãn cơ thể nhẹ nhàng trước khi ngủ. Mỗi tuần, ghi lại trong nhật ký cách thư giãn ảnh hưởng đến chất lượng giấc ngủ của bạn. Nếu suy nghĩ xuất hiện, hãy tưởng tượng chúng trôi đi như những đám mây. Một hơi thở chánh niệm có thể khởi đầu cho sự tĩnh lặng. Hãy bắt đầu tối nay bằng năm phút hít thở bình yên. Sẵn sàng nghỉ ngơi dễ dàng hơn chứ? Hãy khám phá thêm vượt ngoài cấp Free."
+      },
+      "tags": ["relaxation"],
+      "artifact_id": "b4c5d6e7-f8a9-40b1-c2d3-e4f5a6b70202",
+      "audio": "/audio/en/Trying_Simple_Relaxation_Free.mp3"
+    },
+    {
+      "slug": "limiting-evening-stimulants",
+      "keywords_en": [
+        "stimulant limits",
+        "nutrition",
+        "evening habits",
+        "rest quality"
+      ],
+      "keywords_vi": [
+        "giới hạn chất kích thích",
+        "dinh dưỡng",
+        "thói quen buổi tối",
+        "chất lượng giấc ngủ"
+      ],
+      "copy": {
+        "en": "Improving sleep begins by limiting stimulants that disrupt natural rest. Avoid caffeine, energy drinks, and large meals after early evening. Choose herbal tea, fruit, or light soup instead. Heavy or late dinners strain digestion and delay sleep onset. Notice how evening choices affect how quickly you fall asleep and how refreshed you feel in the morning. Keep a weekly note of which habits help or hinder rest. Replace nighttime scrolling with reading or journaling. These small, steady adjustments create a calmer transition into sleep. Skip that late coffee today and feel the difference tonight. Ready to reclaim your nights? Explore more beyond Free.",
+        "vi": "Cải thiện giấc ngủ bắt đầu bằng việc hạn chế các chất kích thích gây rối loạn nghỉ ngơi tự nhiên. Tránh cà phê, nước tăng lực và bữa ăn lớn sau buổi tối sớm. Thay vào đó, hãy chọn trà thảo mộc, trái cây hoặc súp nhẹ. Những bữa tối nặng hoặc muộn khiến tiêu hóa khó khăn và trì hoãn giấc ngủ. Hãy chú ý xem các lựa chọn buổi tối ảnh hưởng như thế nào đến tốc độ bạn đi vào giấc ngủ và cảm giác sảng khoái khi thức dậy. Ghi lại hàng tuần thói quen nào giúp hoặc cản trở giấc ngủ. Thay việc lướt điện thoại bằng đọc sách hoặc viết nhật ký. Những điều chỉnh nhỏ nhưng đều đặn này giúp bạn chuyển sang giấc ngủ nhẹ nhàng hơn. Bỏ qua ly cà phê muộn hôm nay và cảm nhận sự khác biệt tối nay. Sẵn sàng lấy lại những đêm yên bình chứ? Hãy khám phá thêm vượt ngoài cấp Free."
+      },
+      "tags": ["stimulant_control"],
+      "artifact_id": "c5d6e7f8-a9b0-41c2-d3e4-f5a6b7c80303",
+      "audio": "/audio/en/Limiting_Evening_Stimulants_Free.mp3"
+    }
+  ],
+  "keywords": {
+    "basic_sleep_improvement": {
+      "en": [
+        "bedtime routine",
+        "simple relaxation",
+        "stimulant limits",
+        "beginner sleep habits",
+        "easy rest steps"
+      ],
+      "vi": [
+        "thói quen trước giờ ngủ",
+        "thư giãn đơn giản",
+        "giới hạn chất kích thích",
+        "thói quen ngủ cho người mới",
+        "bước nghỉ ngơi dễ dàng"
+      ]
+    }
+  },
+  "meta": {
+    "created_at": "2025-10-25T13:07:00+09:00",
+    "updated_at": "2025-10-27T19:05:00+09:00",
+    "entry_count": 3,
+    "tier": "free",
+    "room_color": "#FFFFFF"
+  }
+}

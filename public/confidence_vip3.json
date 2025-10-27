@@ -1,0 +1,82 @@
+{
+  "name": "Confidence VIP3",
+  "description": "Master unshakable confidence through deep awareness, self-compassion, value-aligned goals, and mentoring others.",
+  "entries": [
+    {
+      "id": "01",
+      "title": "Deepening Confidence through Awareness",
+      "keywords_en": ["awareness", "resilience", "reflection", "inner voice"],
+      "keywords_vi": ["nhận thức", "kiên cường", "suy ngẫm", "giọng nội tâm"],
+      "reply_en": "Each morning, name one strength that carried you. Journal what made you feel alive. Ask a friend for insight monthly. Awareness builds trust.",
+      "reply_vi": "Mỗi sáng, nêu tên một điểm mạnh đã nâng đỡ bạn. Ghi nhật ký điều khiến bạn sống động. Hỏi bạn bè để mở rộng góc nhìn hàng tháng. Nhận thức xây dựng niềm tin.",
+      "dare": "Name one strength that defines you.",
+      "audio": "01_deepening_awareness.mp3",
+      "duration": "00:55"
+    },
+    {
+      "id": "02",
+      "title": "Overcoming Confidence Barriers",
+      "keywords_en": ["barriers", "fear", "reframe", "courage"],
+      "keywords_vi": ["rào cản", "sợ hãi", "chuyển khung", "can đảm"],
+      "reply_en": "Spot one limiting thought. Rewrite: 'I am learning.' Breathe through fear. Journal weekly wins. Share your journey with a listener.",
+      "reply_vi": "Phát hiện một suy nghĩ giới hạn. Viết lại: 'Tôi đang học.' Thở qua nỗi sợ. Ghi nhật ký chiến thắng hàng tuần. Chia sẻ hành trình với người lắng nghe.",
+      "dare": "Rewrite one negative thought now.",
+      "audio": "02_overcoming_barriers.mp3",
+      "duration": "00:53"
+    },
+    {
+      "id": "03",
+      "title": "Advanced Social Strategies",
+      "keywords_en": [
+        "social mastery",
+        "authenticity",
+        "body language",
+        "curiosity"
+      ],
+      "keywords_vi": [
+        "làm chủ xã hội",
+        "chân thực",
+        "ngôn ngữ cơ thể",
+        "tò mò"
+      ],
+      "reply_en": "Ask: 'What inspires you?' Use steady eyes, soft smiles. Attend one event monthly. Reflect on genuine moments. Be real, not perfect.",
+      "reply_vi": "Hỏi: 'Điều gì truyền cảm hứng cho bạn?' Dùng ánh mắt vững, nụ cười dịu. Tham gia một sự kiện mỗi tháng. Suy ngẫm về khoảnh khắc chân thật. Là chính mình, không cần hoàn hảo.",
+      "dare": "Ask one deep question today.",
+      "audio": "03_advanced_social.mp3",
+      "duration": "00:52"
+    },
+    {
+      "id": "04",
+      "title": "Practicing Self-Compassion",
+      "keywords_en": ["compassion", "kindness", "acceptance", "resilience"],
+      "keywords_vi": ["từ bi", "tử tế", "chấp nhận", "kiên cường"],
+      "reply_en": "Say: 'I am enough today.' Replace criticism with understanding. Journal compassion moments. Offer kindness to another. Soften to strengthen.",
+      "reply_vi": "Nói: 'Hôm nay tôi đủ rồi.' Thay chỉ trích bằng thấu hiểu. Ghi nhật ký khoảnh khắc từ bi. Đưa ra lòng tốt cho người khác. Mềm mại để mạnh mẽ.",
+      "dare": "Forgive yourself for one mistake.",
+      "audio": "04_self_compassion.mp3",
+      "duration": "00:50"
+    },
+    {
+      "id": "05",
+      "title": "Aligning Goals with Values",
+      "keywords_en": ["values", "alignment", "purpose", "consistency"],
+      "keywords_vi": ["giá trị", "căn chỉnh", "mục đích", "kiên định"],
+      "reply_en": "Name what matters: growth, honesty, service. Review actions weekly. Adjust gently. Discuss with peers. Act from values, not urgency.",
+      "reply_vi": "Nêu tên điều quan trọng: phát triển, trung thực, phục vụ. Xem lại hành động hàng tuần. Điều chỉnh nhẹ nhàng. Thảo luận với bạn đồng hành. Hành động từ giá trị, không gấp gáp.",
+      "dare": "Take one step true to your values.",
+      "audio": "05_aligning_goals.mp3",
+      "duration": "00:51"
+    },
+    {
+      "id": "06",
+      "title": "Mentoring Confidence in Others",
+      "keywords_en": ["mentoring", "leadership", "empathy", "inspiration"],
+      "keywords_vi": ["hướng dẫn", "lãnh đạo", "thấu cảm", "truyền cảm hứng"],
+      "reply_en": "Share one courage story. Listen deeply. Reflect on what mentoring teaches you. Help others rise — your light grows too.",
+      "reply_vi": "Chia sẻ một câu chuyện can đảm. Lắng nghe sâu. Suy ngẫm điều hướng dẫn dạy bạn. Giúp người khác vươn lên — ánh sáng của bạn cũng lớn hơn.",
+      "dare": "Encourage one person today.",
+      "audio": "06_mentoring_confidence.mp3",
+      "duration": "00:54"
+    }
+  ]
+}

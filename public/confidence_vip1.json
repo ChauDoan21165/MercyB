@@ -1,0 +1,50 @@
+{
+  "name": "Confidence VIP1",
+  "description": "Build steady confidence with clear affirmations, social practice, goal tracking, and empathy-driven interactions.",
+  "entries": [
+    {
+      "id": "01",
+      "title": "Clarifying Affirmations for Growth",
+      "keywords_en": ["affirmations", "mindset", "self-belief", "growth"],
+      "keywords_vi": ["khẳng định", "tư duy", "niềm tin", "phát triển"],
+      "reply_en": "Say one empowering phrase every morning: 'I am enough.' Write three new ones weekly. Reframe doubts into lessons. Confidence grows with repetition.",
+      "reply_vi": "Nói một câu khẳng định mỗi sáng: 'Tôi đủ rồi.' Viết ba câu mới mỗi tuần. Chuyển nghi ngờ thành bài học. Tự tin phát triển qua lặp lại.",
+      "dare": "Say your affirmation out loud now.",
+      "audio": "01_clarifying_affirmations.mp3",
+      "duration": "00:48"
+    },
+    {
+      "id": "02",
+      "title": "Building Social Confidence",
+      "keywords_en": ["social", "conversation", "connection", "presence"],
+      "keywords_vi": ["xã hội", "trò chuyện", "kết nối", "hiện diện"],
+      "reply_en": "Start one real conversation weekly. Share something you care about. Ask: 'What do you think?' Join a group monthly. Celebrate ease, not perfection.",
+      "reply_vi": "Bắt đầu một cuộc trò chuyện thật mỗi tuần. Chia sẻ điều bạn quan tâm. Hỏi: 'Bạn nghĩ sao?' Tham gia nhóm hàng tháng. Khen ngợi sự thoải mái, không cần hoàn hảo.",
+      "dare": "Smile and say hello to someone today.",
+      "audio": "02_building_social_confidence.mp3",
+      "duration": "00:45"
+    },
+    {
+      "id": "03",
+      "title": "Tracking Goals for Success",
+      "keywords_en": ["goals", "tracking", "progress", "motivation"],
+      "keywords_vi": ["mục tiêu", "theo dõi", "tiến bộ", "động lực"],
+      "reply_en": "Set one small monthly goal. Break into weekly steps. Journal progress. Celebrate every win. Turn effort into pride.",
+      "reply_vi": "Đặt một mục tiêu nhỏ mỗi tháng. Chia thành bước hàng tuần. Ghi nhật ký tiến độ. Khen thưởng mỗi chiến thắng. Biến nỗ lực thành niềm tự hào.",
+      "dare": "Write down one goal for this week.",
+      "audio": "03_tracking_goals.mp3",
+      "duration": "00:47"
+    },
+    {
+      "id": "04",
+      "title": "Practicing Empathy in Interactions",
+      "keywords_en": ["empathy", "listening", "kindness", "connection"],
+      "keywords_vi": ["thấu cảm", "lắng nghe", "tử tế", "kết nối"],
+      "reply_en": "Pause and see their view before replying. Offer one kind act weekly. Reflect monthly. Empathy dissolves fear of judgment.",
+      "reply_vi": "Tạm dừng và hiểu góc nhìn người khác trước khi trả lời. Làm một việc tử tế mỗi tuần. Suy ngẫm hàng tháng. Thấu cảm xóa bỏ nỗi sợ bị phán xét.",
+      "dare": "Listen fully to someone without interrupting.",
+      "audio": "04_practicing_empathy.mp3",
+      "duration": "00:49"
+    }
+  ]
+}

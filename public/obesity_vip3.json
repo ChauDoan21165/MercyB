@@ -1,0 +1,60 @@
+```json
+{
+  "version": "1.0",
+  "locale": "vi-en",
+  "name": "Obesity Management (VIP 3)",
+  "description": "Personalized mastery for sustainable weight management: balanced meals, active lifestyle, mindful eating, portion awareness, nutrient density, and behavioral resilience.",
+  "global_notes": { "safety": "" },
+  "enum_tags": [
+    "nutrition",
+    "movement",
+    "mindful_eating",
+    "portion_control",
+    "nutrient_density",
+    "behavioral_resilience"
+  ],
+  "entries": [
+    {
+      "slug": "mastering-balanced-meal-planning",
+      "keywords_en": ["balanced meal planning", "nutrition", "energy", "focus"],
+      "keywords_vi": [
+        "lập kế hoạch bữa ăn cân bằng",
+        "dinh dưỡng",
+        "năng lượng",
+        "tập trung"
+      ],
+      "copy": {
+        "en": "Master balanced meal planning to manage weight with clarity and consistency. Create one nourishing meal daily filled with vegetables, lean proteins, and whole grains. Follow the simple ratio: half vegetables, one quarter protein, one quarter carbohydrates. Prepare four meals in advance each week to prevent rushed, unbalanced eating. Reflect weekly in your journal on energy, digestion, and mood to refine your plan. Once a month, seek honest feedback from a trusted peer or nutrition partner about your eating habits. Balanced planning reduces cravings, evens blood sugar, and transforms food into calm self-care instead of stress. Over time, you’ll feel lighter, clearer, and more focused. Begin today by planning tomorrow’s balanced meal and noticing the stability it brings. Ready to master lasting nourishment? Explore beyond VIP 3.",
+        "vi": "Làm chủ việc lập kế hoạch bữa ăn cân bằng để quản lý cân nặng một cách rõ ràng và bền vững. Hãy tạo mỗi ngày một bữa ăn đầy đủ dưỡng chất với rau củ, protein nạc và ngũ cốc nguyên hạt. Tuân theo tỷ lệ đơn giản: một nửa rau, một phần tư protein, một phần tư tinh bột. Chuẩn bị sẵn bốn bữa mỗi tuần để tránh việc ăn vội vàng và mất cân đối. Mỗi tuần, ghi lại trong nhật ký cảm nhận về năng lượng, tiêu hóa và tâm trạng để điều chỉnh kế hoạch. Mỗi tháng, hãy xin phản hồi chân thành từ một người bạn hoặc chuyên gia dinh dưỡng về thói quen ăn uống của bạn. Kế hoạch ăn uống cân bằng giúp giảm cảm giác thèm ăn, ổn định đường huyết và biến việc ăn uống thành một hành động chăm sóc bản thân đầy bình yên thay vì căng thẳng. Theo thời gian, bạn sẽ cảm thấy nhẹ nhàng hơn, sáng suốt hơn và tập trung hơn. Hãy bắt đầu hôm nay bằng việc lên kế hoạch cho bữa ăn cân bằng ngày mai và cảm nhận sự ổn định mà nó mang lại. Sẵn sàng làm chủ dinh dưỡng bền vững chứ? Hãy khám phá thêm vượt ngoài cấp VIP 3."
+      },
+      "tags": ["nutrition"],
+      "artifact_id": "f6b7e41a-793f-4b46-a0b5-2c8e1b7c1101",
+      "audio": "/audio/en/Mastering_Balanced_Meal_Planning_VIP3.mp3"
+    },
+    {
+      "slug": "sustaining-an-active-lifestyle",
+      "keywords_en": ["active lifestyle", "movement", "vitality", "wellness"],
+      "keywords_vi": [
+        "lối sống vận động",
+        "chuyển động",
+        "sức sống",
+        "sức khỏe"
+      ],
+      "copy": {
+        "en": "Sustain an active lifestyle by turning movement into ritual instead of effort. Choose activities you genuinely enjoy — walking, dancing, cycling, or yoga — and weave them naturally into your days. Schedule brief daily movement breaks, even five minutes at a time, to re-energize both body and mind. Treat motion as gratitude for what your body can do, not punishment for what it isn’t. Track weekly consistency, not perfection. Over time, this mindset shift builds vitality, strength, and self-respect. Begin today with one joyful move and let momentum grow from there.",
+        "vi": "Duy trì lối sống vận động bằng cách biến chuyển động thành thói quen chứ không phải gánh nặng. Hãy chọn những hoạt động mà bạn thật sự yêu thích — đi bộ, nhảy múa, đạp xe hoặc tập yoga — và kết hợp chúng một cách tự nhiên vào ngày của bạn. Lên lịch những khoảng vận động ngắn hằng ngày, dù chỉ năm phút, để tái tạo năng lượng cho cả cơ thể và tâm trí. Hãy xem chuyển động là lời biết ơn đối với khả năng của cơ thể, không phải sự trừng phạt cho những gì nó chưa đạt được. Theo dõi sự kiên định hàng tuần thay vì sự hoàn hảo. Theo thời gian, sự thay đổi trong tư duy này sẽ bồi đắp sức sống, sức mạnh và lòng tự trọng. Hãy bắt đầu hôm nay bằng một chuyển động vui tươi, để đà tiến triển tự nhiên tiếp tục lớn dần lên."
+      },
+      "tags": ["movement"],
+      "artifact_id": "0b90eacf-3f45-47e7-b23e-2f72d8d5a902",
+      "audio": "/audio/en/Sustaining_an_Active_Lifestyle_VIP3.mp3"
+    }
+  ],
+  "meta": {
+    "created_at": "2025-10-25T12:22:00+09:00",
+    "updated_at": "2025-10-27T18:55:00+09:00",
+    "entry_count": 2,
+    "tier": "vip3",
+    "room_color": "#C5A671"
+  }
+}
+```

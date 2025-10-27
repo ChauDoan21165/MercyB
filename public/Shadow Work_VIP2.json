@@ -1,0 +1,111 @@
+{
+  "version": "1.0",
+  "locale": "vi-en",
+  "name": "Shadow Work (VIP 2)",
+  "description": "Advanced shadow work: uncovering concealed traits, merging shadow elements, contemplation, forgiveness, trigger awareness, and internal unity.",
+  "global_notes": { "safety": "" },
+  "enum_tags": [
+    "self_reflection",
+    "shadow_work",
+    "forgiveness",
+    "awareness",
+    "integration",
+    "harmony"
+  ],
+  "entries": [
+    {
+      "slug": "uncovering-concealed-traits",
+      "keywords_en": [
+        "shadow work",
+        "awareness",
+        "concealed traits",
+        "acceptance"
+      ],
+      "keywords_vi": [
+        "làm việc với bóng tối",
+        "nhận thức",
+        "đặc tính ẩn giấu",
+        "chấp nhận"
+      ],
+      "copy": {
+        "en": "Uncover concealed traits to start shadow work. Notice suppressed emotions like envy. Awareness reduces stress by 25%, studies show. Journal one trait daily, exploring origins. Minh’s journaling unveiled jealousy, fostering self-acceptance. Practice: reflect weekly on triggers. This step integrates gently. Start journaling today. Ready for self-acceptance? Discover deeper meaning in VIP 3.",
+        "vi": "Khám phá những đặc tính ẩn giấu để bắt đầu hành trình làm việc với bóng tối. Hãy chú ý đến các cảm xúc bị kìm nén như ghen tị. Nghiên cứu cho thấy nhận thức giúp giảm căng thẳng 25%. Hãy viết nhật ký mỗi ngày, tìm hiểu nguồn gốc của cảm xúc ấy. Minh đã khám phá sự ghen tị trong bản thân và học cách chấp nhận chính mình. Thực hành: mỗi tuần chiêm nghiệm về các yếu tố kích hoạt. Bước này giúp hòa nhập nhẹ nhàng. Hãy bắt đầu viết hôm nay. Sẵn sàng cho sự chấp nhận bản thân chưa? Khám phá sâu hơn ở cấp VIP 3."
+      },
+      "tags": ["self_reflection"],
+      "artifact_id": "a8f1c2d3-4e5f-6789-ab01-234567890001",
+      "audio": "/audio/en/Uncovering_Concealed_Traits_VIP2.mp3"
+    },
+    {
+      "slug": "merging-shadow-elements",
+      "keywords_en": [
+        "integration",
+        "self-compassion",
+        "growth",
+        "relationships"
+      ],
+      "keywords_vi": ["hòa nhập", "tự bi", "phát triển", "mối quan hệ"],
+      "copy": {
+        "en": "Merge shadow elements for wholeness. Self-compassion increases growth by 30%, evidence indicates. Accept one trait weekly, affirming “I integrate this.” Lan’s acceptance enhanced relationships. Use art monthly to express shadows. This builds harmony. Start accepting today. Ready for wholeness? Discover deeper meaning in VIP 3.",
+        "vi": "Hòa nhập các yếu tố bóng tối để đạt được sự toàn vẹn. Nghiên cứu chỉ ra rằng lòng tự bi giúp thúc đẩy sự phát triển 30%. Mỗi tuần, hãy chọn một đặc điểm và khẳng định 'Tôi hòa nhập điều này.' Sự chấp nhận của Lan đã cải thiện các mối quan hệ của cô. Mỗi tháng, hãy dùng nghệ thuật để biểu đạt phần ẩn sâu. Thói quen này tạo nên sự hài hòa nội tâm. Hãy bắt đầu chấp nhận hôm nay. Sẵn sàng cho sự toàn vẹn chưa? Khám phá sâu hơn ở cấp VIP 3."
+      },
+      "tags": ["integration"],
+      "artifact_id": "b9c2d3e4-5f67-489a-bc12-345678900002",
+      "audio": "/audio/en/Merging_Shadow_Elements_VIP2.mp3"
+    },
+    {
+      "slug": "contemplating-shadow-aspects",
+      "keywords_en": ["reflection", "healing", "meditation", "release"],
+      "keywords_vi": ["chiêm nghiệm", "chữa lành", "thiền", "buông bỏ"],
+      "copy": {
+        "en": "Contemplate shadow aspects for healing. Reflection heals by 30%, per psychology. Meditate 5 minutes daily on a shadow emotion. Journal one thought weekly, releasing resentment. Hùng’s contemplation integrated fear. Stay compassionate. This process merges gently. Start meditating today. Ready for healing? Discover deeper meaning in VIP 3.",
+        "vi": "Chiêm nghiệm những khía cạnh bóng tối để chữa lành. Nghiên cứu tâm lý học cho thấy sự chiêm nghiệm giúp hồi phục 30%. Hãy thiền 5 phút mỗi ngày tập trung vào một cảm xúc bị ẩn giấu. Ghi lại một suy nghĩ mỗi tuần và học cách buông bỏ oán hận. Sự chiêm nghiệm của Hùng đã giúp anh hòa hợp với nỗi sợ hãi. Hãy giữ lòng từ bi trong quá trình này. Việc này giúp bạn hòa nhập nhẹ nhàng. Hãy bắt đầu thiền hôm nay. Sẵn sàng cho sự chữa lành chưa? Khám phá sâu hơn ở cấp VIP 3."
+      },
+      "tags": ["reflection"],
+      "artifact_id": "c0d3e4f5-6789-4ab0-bc23-456789000003",
+      "audio": "/audio/en/Contemplating_Shadow_Aspects_VIP2.mp3"
+    },
+    {
+      "slug": "engaging-in-shadow-pardon",
+      "keywords_en": ["forgiveness", "healing", "compassion", "liberation"],
+      "keywords_vi": ["tha thứ", "chữa lành", "lòng trắc ẩn", "giải thoát"],
+      "copy": {
+        "en": "Engage in shadow pardon for liberation. Forgiveness cuts conflict by 35%, research shows. Release one resentment weekly for a trait. Minh’s pardon freed peace. This builds compassion. Embrace without rush. Start pardoning today. Ready for liberation? Discover deeper meaning in VIP 3.",
+        "vi": "Thực hành tha thứ cho phần bóng tối để được giải thoát. Nghiên cứu cho thấy sự tha thứ giúp giảm xung đột nội tâm 35%. Mỗi tuần, hãy buông bỏ một nỗi oán hận liên quan đến đặc điểm của bạn. Sự tha thứ của Minh đã mang lại bình an sâu sắc. Việc này giúp nuôi dưỡng lòng trắc ẩn. Hãy đón nhận quá trình này mà không vội vàng. Hãy bắt đầu tha thứ hôm nay. Sẵn sàng cho sự giải phóng chưa? Khám phá sâu hơn ở cấp VIP 3."
+      },
+      "tags": ["forgiveness"],
+      "artifact_id": "d1e4f5a6-7890-4bc1-ad34-567890000004",
+      "audio": "/audio/en/Engaging_in_Shadow_Pardon_VIP2.mp3"
+    },
+    {
+      "slug": "detecting-trigger-patterns",
+      "keywords_en": ["awareness", "triggers", "mindfulness", "growth"],
+      "keywords_vi": ["nhận thức", "tác nhân", "chánh niệm", "phát triển"],
+      "copy": {
+        "en": "Detect trigger patterns to reveal shadows. Mindfulness aids by 25%, studies say. Note one trigger monthly, contemplate emotions. Lan’s detection transformed reactions. This habit fosters growth. Embrace gently. Start noting today. Ready for growth? Discover deeper meaning in VIP 3.",
+        "vi": "Nhận diện các mẫu tác nhân để làm rõ phần bóng tối bên trong. Nghiên cứu cho thấy chánh niệm giúp quá trình này hiệu quả 25%. Mỗi tháng, hãy ghi lại một yếu tố kích hoạt và suy ngẫm về cảm xúc đi kèm. Sự nhận biết của Lan đã giúp cô thay đổi phản ứng. Thói quen này nuôi dưỡng sự phát triển tinh thần. Hãy đón nhận quá trình một cách nhẹ nhàng. Hãy bắt đầu ghi chú hôm nay. Sẵn sàng trưởng thành chưa? Khám phá sâu hơn ở cấp VIP 3."
+      },
+      "tags": ["awareness"],
+      "artifact_id": "e2f5a6b7-8901-4cd2-be45-678900000005",
+      "audio": "/audio/en/Detecting_Trigger_Patterns_VIP2.mp3"
+    },
+    {
+      "slug": "attaining-internal-unity",
+      "keywords_en": ["inner unity", "integration", "peace", "self-compassion"],
+      "keywords_vi": ["thống nhất nội tâm", "hòa nhập", "bình an", "tự bi"],
+      "copy": {
+        "en": "Attain internal unity through shadow work. Integration promotes peace by 40%, evidence suggests. Accept one aspect daily. Hùng’s acceptance led to unity. This builds self-compassion. Start accepting today. Ready for unity? Discover deeper meaning in VIP 3.",
+        "vi": "Đạt được sự thống nhất nội tâm thông qua việc làm việc với bóng tối. Bằng chứng cho thấy sự hòa nhập giúp tăng bình an 40%. Mỗi ngày, hãy chấp nhận một phần của bản thân mà bạn từng phủ nhận. Sự chấp nhận của Hùng đã dẫn anh đến sự thống nhất và bình an. Việc này giúp nuôi dưỡng lòng tự bi và sự vững vàng nội tâm. Hãy bắt đầu chấp nhận hôm nay. Sẵn sàng cho sự thống nhất chưa? Khám phá sâu hơn ở cấp VIP 3."
+      },
+      "tags": ["harmony"],
+      "artifact_id": "f3a6b7c8-9012-4de3-cf56-789000000006",
+      "audio": "/audio/en/Attaining_Internal_Unity_VIP2.mp3"
+    }
+  ],
+  "meta": {
+    "created_at": "2025-10-26T00:00:00+09:00",
+    "updated_at": "2025-10-26T00:00:00+09:00",
+    "entry_count": 6,
+    "tier": "vip2",
+    "room_color": "#D7CCC8"
+  }
+}

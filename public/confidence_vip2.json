@@ -1,0 +1,71 @@
+{
+  "name": "Confidence VIP2",
+  "description": "Strengthen inner power with refined affirmations, mindful presence, goal planning, and authentic community engagement.",
+  "entries": [
+    {
+      "id": "01",
+      "title": "Refining Affirmations for Strength",
+      "keywords_en": [
+        "refined",
+        "affirmations",
+        "inner truth",
+        "self-kindness"
+      ],
+      "keywords_vi": [
+        "tinh chỉnh",
+        "khẳng định",
+        "sự thật nội tâm",
+        "từ bi bản thân"
+      ],
+      "reply_en": "Choose one true phrase daily: 'I stand tall in my truth.' Write three weekly. Reframe doubts gently. Ask a friend for insight.",
+      "reply_vi": "Chọn một câu đúng mỗi ngày: 'Tôi đứng vững trong sự thật của mình.' Viết ba câu mỗi tuần. Chuyển nghi ngờ một cách nhẹ nhàng. Hỏi bạn bè để sâu sắc hơn.",
+      "dare": "Say your affirmation with full belief.",
+      "audio": "01_refining_affirmations.mp3",
+      "duration": "00:52"
+    },
+    {
+      "id": "02",
+      "title": "Mastering Social Confidence",
+      "keywords_en": ["social mastery", "authenticity", "curiosity", "warmth"],
+      "keywords_vi": ["làm chủ xã hội", "chân thực", "tò mò", "ấm áp"],
+      "reply_en": "Start one real conversation weekly. Share something true. Ask open questions. Attend one event monthly. Focus on curiosity, not performance.",
+      "reply_vi": "Bắt đầu một cuộc trò chuyện thật mỗi tuần. Chia sẻ điều chân thành. Hỏi câu mở. Tham gia một sự kiện mỗi tháng. Tập trung vào tò mò, không phải biểu diễn.",
+      "dare": "Speak first in a group today.",
+      "audio": "02_mastering_social_confidence.mp3",
+      "duration": "00:50"
+    },
+    {
+      "id": "03",
+      "title": "Planning Goals for Growth",
+      "keywords_en": ["goal planning", "values", "progress", "courage"],
+      "keywords_vi": ["lập kế hoạch mục tiêu", "giá trị", "tiến bộ", "can đảm"],
+      "reply_en": "Pick one meaningful goal this month. Break into steps. Journal progress. Seek trusted feedback. Celebrate courage, not just results.",
+      "reply_vi": "Chọn một mục tiêu ý nghĩa trong tháng. Chia nhỏ thành bước. Ghi nhật ký tiến độ. Tìm phản hồi từ người đáng tin. Khen ngợi can đảm, không chỉ kết quả.",
+      "dare": "Write one step you’ll take tomorrow.",
+      "audio": "03_planning_goals.mp3",
+      "duration": "00:49"
+    },
+    {
+      "id": "04",
+      "title": "Mindful Confidence Building",
+      "keywords_en": ["mindful", "presence", "calm", "awareness"],
+      "keywords_vi": ["chánh niệm", "hiện diện", "bình tĩnh", "nhận thức"],
+      "reply_en": "Breathe mindfully each morning. Acknowledge one strength. Pause before speaking. Journal monthly about grounded moments.",
+      "reply_vi": "Thở chánh niệm mỗi sáng. Công nhận một điểm mạnh. Tạm dừng trước khi nói. Ghi nhật ký hàng tháng về khoảnh khắc vững chãi.",
+      "dare": "Breathe deeply for 10 seconds now.",
+      "audio": "04_mindful_confidence.mp3",
+      "duration": "00:47"
+    },
+    {
+      "id": "05",
+      "title": "Engaging Communities Confidently",
+      "keywords_en": ["community", "belonging", "contribution", "trust"],
+      "keywords_vi": ["cộng đồng", "thuộc về", "đóng góp", "niềm tin"],
+      "reply_en": "Join one group aligned with your values. Listen deeply. Offer kindness. Reflect on connection. You belong by being you.",
+      "reply_vi": "Tham gia một nhóm phù hợp với giá trị. Lắng nghe sâu. Đưa ra sự tử tế. Suy ngẫm về kết nối. Bạn thuộc về bằng cách là chính mình.",
+      "dare": "Send one kind message in a group.",
+      "audio": "05_engaging_communities.mp3",
+      "duration": "00:51"
+    }
+  ]
+}
