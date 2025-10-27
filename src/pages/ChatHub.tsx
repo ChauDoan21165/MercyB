@@ -34,6 +34,7 @@ interface Message {
   isUser: boolean;
   timestamp: Date;
   relatedRooms?: string[];
+  audioFile?: string;
 }
 
 const ChatHub = () => {
@@ -279,59 +280,7 @@ const handleAccessDenied = () => {
             setMatchedEntryCount(prev => prev + 1);
             setNoKeywordCount(0);
             
-            // Play audio if available - MP3s are in /public root
-            if (response.audioFile) {
-              try {
-                setAudioLoading(true);
-                const filename = String(response.audioFile).replace(/^\//, '').trim();
-                
-                // Validate filename exists
-                if (!filename || filename === 'undefined' || filename === 'null') {
-                  console.warn('No valid audio file specified');
-                  setAudioLoading(false);
-                  return;
-                }
-                
-                // MP3s are in /public root - don't add cache-bust, let browser cache work
-                const audioUrl = `/${filename}`;
-                
-                // Pre-check if file exists before setting audio
-                fetch(audioUrl, { method: 'HEAD' })
-                  .then(response => {
-                    if (response.ok) {
-                      setCurrentAudio(audioUrl);
-                      setAltAudio(null);
-                      setIsAudioPlaying(false);
-
-                      // Try to start playback
-                      const el = audioRef.current;
-                      if (el) {
-                        el.src = audioUrl;
-                        el.load();
-                        el.currentTime = 0;
-                        el.play().catch(() => {/* autoplay blocked, user can click play */});
-                      }
-                    } else {
-                      throw new Error(`Audio file not found: ${filename}`);
-                    }
-                  })
-                  .catch(err => {
-                    console.error('Audio file check failed:', filename, err);
-                    setAudioLoading(false);
-                    setCurrentAudio(null);
-                    toast({
-                      title: "Audio unavailable / Âm thanh không có",
-                      description: `File not found: ${filename}`,
-                      variant: "destructive"
-                    });
-                  });
-
-              } catch (e) {
-                console.error('Audio load error:', e);
-                setAudioLoading(false);
-                setCurrentAudio(null);
-              }
-            }
+            // Audio is now handled per-message in MessageBubble component
           } else {
             setNoKeywordCount(prev => prev + 1);
           }
@@ -346,7 +295,8 @@ const handleAccessDenied = () => {
                     .replace(/\*\*/g, '')
                     .replace(/(?:\n|\s)*\d{1,2}:\d{2}:\d{2}\s?(AM|PM)?\.?$/i, '')
                     .trim(), 
-                  relatedRooms: response.relatedRooms 
+                  relatedRooms: response.relatedRooms,
+                  audioFile: response.audioFile 
                 }
               : m
           )
@@ -437,6 +387,52 @@ const handleAccessDenied = () => {
     const englishContent = parts[0]?.trim() || message.text;
     const vietnameseContent = parts[1]?.trim() || '';
 
+    const handleAudioClick = () => {
+      if (!message.audioFile) return;
+      
+      const filename = String(message.audioFile).replace(/^\//, '').trim();
+      if (!filename || filename === 'undefined' || filename === 'null') {
+        console.warn('No valid audio file specified');
+        return;
+      }
+      
+      const audioUrl = `/${filename}`;
+      
+      // Check if this audio is already playing
+      if (currentAudio === audioUrl && isAudioPlaying) {
+        audioRef.current?.pause();
+      } else {
+        // Load and play new audio
+        setAudioLoading(true);
+        fetch(audioUrl, { method: 'HEAD' })
+          .then(response => {
+            if (response.ok) {
+              setCurrentAudio(audioUrl);
+              setIsAudioPlaying(false);
+              
+              const el = audioRef.current;
+              if (el) {
+                el.src = audioUrl;
+                el.load();
+                el.currentTime = 0;
+                el.play().catch(() => {/* autoplay blocked */});
+              }
+            } else {
+              throw new Error(`Audio file not found: ${filename}`);
+            }
+          })
+          .catch(err => {
+            console.error('Audio file check failed:', filename, err);
+            setAudioLoading(false);
+            toast({
+              title: "Audio unavailable / Âm thanh không có",
+              description: `File not found: ${filename}`,
+              variant: "destructive"
+            });
+          });
+      }
+    };
+
     return (
       <div className={`flex ${message.isUser ? "justify-end" : "justify-start"} mb-4`}>
         <div className="w-full group">
@@ -450,6 +446,24 @@ const handleAccessDenied = () => {
             {!message.isUser && vietnameseContent ? (
               <>
                 <p className="text-sm whitespace-pre-wrap">{englishContent}</p>
+                {message.audioFile && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={handleAudioClick}
+                    disabled={audioLoading}
+                    className="mt-2 h-8 px-2 gap-1.5"
+                  >
+                    {audioLoading && currentAudio === `/${String(message.audioFile).replace(/^\//, '')}` ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : currentAudio === `/${String(message.audioFile).replace(/^\//, '')}` && isAudioPlaying ? (
+                      <span className="text-base">⏸️</span>
+                    ) : (
+                      <Volume2 className="w-4 h-4" />
+                    )}
+                    <span className="text-xs">Audio</span>
+                  </Button>
+                )}
                 {!message.isUser && <MessageActions text={englishContent} roomId={roomId || ""} />}
                 <hr className="border-border my-3" />
                 <p className="text-sm whitespace-pre-wrap">{vietnameseContent}</p>
@@ -458,6 +472,24 @@ const handleAccessDenied = () => {
             ) : (
               <>
                 <p className="text-sm whitespace-pre-wrap">{message.text}</p>
+                {!message.isUser && message.audioFile && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={handleAudioClick}
+                    disabled={audioLoading}
+                    className="mt-2 h-8 px-2 gap-1.5"
+                  >
+                    {audioLoading && currentAudio === `/${String(message.audioFile).replace(/^\//, '')}` ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : currentAudio === `/${String(message.audioFile).replace(/^\//, '')}` && isAudioPlaying ? (
+                      <span className="text-base">⏸️</span>
+                    ) : (
+                      <Volume2 className="w-4 h-4" />
+                    )}
+                    <span className="text-xs">Audio</span>
+                  </Button>
+                )}
                 {!message.isUser && <MessageActions text={message.text} roomId={roomId || ""} />}
               </>
             )}
@@ -572,77 +604,25 @@ const handleAccessDenied = () => {
               <div ref={endRef} />
             </ScrollArea>
             
-            {/* Audio player - always visible when audio is available */}
-            {currentAudio && (
-              <div className="mt-3 flex items-center gap-2 p-3 bg-muted/30 rounded-lg border">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => {
-                    if (audioRef.current) {
-                      if (isAudioPlaying) {
-                        audioRef.current.pause();
-                      } else {
-                        audioRef.current.play().catch((err) => {
-                          console.error('Playback error:', err);
-                          toast({
-                            title: "Audio Error / Lỗi Âm Thanh",
-                            description: "Cannot play audio / Không thể phát âm thanh",
-                            variant: "destructive"
-                          });
-                        });
-                      }
-                    }
-                  }}
-                  disabled={audioLoading}
-                  className="flex items-center gap-2"
-                >
-                  {audioLoading ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      <span className="text-xs">Loading...</span>
-                    </>
-                  ) : isAudioPlaying ? (
-                    <>
-                      <span className="text-lg">⏸️</span>
-                      <span className="text-xs font-medium">Pause Audio</span>
-                    </>
-                  ) : (
-                    <>
-                      <Volume2 className="w-4 h-4" />
-                      <span className="text-xs font-medium">Play Audio / Phát Âm Thanh</span>
-                    </>
-                  )}
-                </Button>
-                <audio
-                  key={currentAudio}
-                  ref={audioRef}
-                  src={currentAudio}
-                  preload="auto"
-                  className="hidden"
-                  onCanPlay={() => setAudioLoading(false)}
-                  onEnded={() => setIsAudioPlaying(false)}
-                  onPause={() => setIsAudioPlaying(false)}
-                  onPlay={() => setIsAudioPlaying(true)}
-                  onError={(e) => {
-                    console.error('Audio error:', e);
-                    setAudioLoading(false);
-                    if (altAudio && audioRef.current && audioRef.current.src !== altAudio) {
-                      console.log('Trying fallback audio');
-                      audioRef.current.src = altAudio;
-                      audioRef.current.load();
-                    } else {
-                      toast({
-                        title: "Audio unavailable / Âm thanh không có",
-                        description: "Audio file not found / Không tìm thấy file âm thanh",
-                        variant: "destructive"
-                      });
-                    }
-                  }}
-                  onLoadedMetadata={() => setAudioLoading(false)}
-                />
-              </div>
-            )}
+            {/* Hidden audio element for playback */}
+            <audio
+              ref={audioRef}
+              className="hidden"
+              onCanPlay={() => setAudioLoading(false)}
+              onEnded={() => setIsAudioPlaying(false)}
+              onPause={() => setIsAudioPlaying(false)}
+              onPlay={() => setIsAudioPlaying(true)}
+              onError={(e) => {
+                console.error('Audio error:', e);
+                setAudioLoading(false);
+                toast({
+                  title: "Audio unavailable / Âm thanh không có",
+                  description: "Audio file not found / Không tìm thấy file âm thanh",
+                  variant: "destructive"
+                });
+              }}
+              onLoadedMetadata={() => setAudioLoading(false)}
+            />
           </div>
         </Card>
 
