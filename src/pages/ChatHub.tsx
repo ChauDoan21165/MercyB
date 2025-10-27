@@ -65,7 +65,7 @@ const ChatHub = () => {
   const [showAccessDenied, setShowAccessDenied] = useState(false);
   const [showCreditLimit, setShowCreditLimit] = useState(false);
   const contentMode = "keyword"; // Always use keyword mode
-  const [currentAudio, setCurrentAudio] = useState<string | null>(null);
+const [currentAudio, setCurrentAudio] = useState<string | null>(null);
   const [altAudio, setAltAudio] = useState<string | null>(null);
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [audioLoading, setAudioLoading] = useState(false);
@@ -73,6 +73,7 @@ const ChatHub = () => {
 const [keywordMenu, setKeywordMenu] = useState<{ en: string[]; vi: string[] } | null>(null);
 const [clickedKeyword, setClickedKeyword] = useState<string | null>(null);
 const [mergedEntries, setMergedEntries] = useState<any[]>([]);
+const [audioBasePath, setAudioBasePath] = useState<string>('/');
 
 // Use centralized room metadata
 const info = getRoomInfo(roomId || "");
@@ -131,11 +132,12 @@ const handleAccessDenied = () => {
         // Determine room name from roomId (convert kebab-case to snake_case)
         const roomName = (roomId || '').replace(/-/g, '_');
         
-        // Load merged entries from /public/audio/{en|vn}/ based on tier
-        const { merged, keywordMenu } = await loadMergedRoom(roomId || '', tier || 'free');
-        setMergedEntries(merged);
+        // Load merged entries from /public/tiers/{tier}/{room}/ based on tier
+        const result = await loadMergedRoom(roomId || '', tier || 'free');
+        setMergedEntries(result.merged);
+        setAudioBasePath(result.audioBasePath || '/');
         
-        if (!merged || merged.length === 0) {
+        if (!result.merged || result.merged.length === 0) {
           console.warn(`No merged entries for room ${roomId} tier ${tier}`);
         }
         
@@ -145,7 +147,7 @@ const handleAccessDenied = () => {
         setMainMessages([welcomeMessage]);
         
         // Set keyword menu from merged data
-        setKeywordMenu(keywordMenu);
+        setKeywordMenu(result.keywordMenu);
       } catch (error) {
         console.error('Error loading room data:', error);
         // Fallback welcome message
@@ -217,7 +219,7 @@ const handleAccessDenied = () => {
       const en = String(entry.replyEn || '');
       const vi = String(entry.replyVi || '');
       const text = vi ? `${en}\n\n---\n\n${vi}` : en;
-      const audioFile = entry.audio || undefined;
+      const audioFile = entry.audio ? `${audioBasePath}${entry.audio}` : undefined;
 
       setMainMessages(prev => prev.map(m => m.id === typingMessageId ? { ...m, text, audioFile } : m));
       trackKeyword(keyword);

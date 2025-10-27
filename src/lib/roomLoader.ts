@@ -6,10 +6,19 @@ export type MergedEntry = {
   audio: string;
 };
 
+export type MergedRoomData = {
+  merged: MergedEntry[];
+  keywordMenu: {
+    en: string[];
+    vi: string[];
+  };
+  audioBasePath: string;
+};
+
 /**
  * Load room data from NEW structure:
- * - English: /public/audio/en/{room}_{tier}.json
- * - Vietnamese: /public/audio/vn/{room}_{tier}.json
+ * - Path: /public/tiers/{tier}/{room}/{room}_{tier}.json
+ * - Audio: /public/tiers/{tier}/{room}/*.mp3
  * 
  * JSON format:
  * {
@@ -27,19 +36,23 @@ export type MergedEntry = {
  * }
  */
 export async function loadMergedRoom(roomId: string, tier: 'free' | 'vip1' | 'vip2' | 'vip3') {
-  // Convert kebab-case to snake_case: stoicism-vip3 -> stoicism_vip3
-  const roomName = String(roomId || '').trim().toLowerCase().replace(/-/g, '_');
+  // Parse room ID: stress-vip3 -> room=stress, tier=vip3
+  // Extract tier from roomId if present, otherwise use parameter
+  const parts = String(roomId || '').trim().toLowerCase().split('-');
+  const lastPart = parts[parts.length - 1];
+  const extractedTier = ['free', 'vip1', 'vip2', 'vip3'].includes(lastPart) ? lastPart : tier;
+  const roomName = lastPart === extractedTier ? parts.slice(0, -1).join('-') : parts.join('-');
   
-  // Build file paths
-  const enPath = `/audio/en/${roomName}.json`;
-  const vnPath = `/audio/vn/${roomName}.json`;
+  // Build file paths: /tiers/{tier}/{room}/{room}_{tier}.json
+  const enPath = `/tiers/${extractedTier}/${roomName}/${roomName}_${extractedTier}.json`;
+  const vnPath = `/tiers/${extractedTier}/${roomName}/${roomName}_${extractedTier}.json`; // Same file for now
   
   try {
     // Load English JSON
     const enRes = await fetch(enPath);
     if (!enRes.ok) {
       console.warn(`English JSON not found: ${enPath}`);
-      return { merged: [], keywordMenu: { en: [], vi: [] } };
+      return { merged: [], keywordMenu: { en: [], vi: [] }, audioBasePath: '/' };
     }
     const enData = await enRes.json();
     
@@ -79,10 +92,11 @@ export async function loadMergedRoom(roomId: string, tier: 'free' | 'vip1' | 'vi
       keywordMenu: {
         en: keywordsEn,
         vi: keywordsVi
-      }
+      },
+      audioBasePath: `/tiers/${extractedTier}/${roomName}/`
     };
   } catch (error) {
     console.error(`Error loading room ${roomId} tier ${tier}:`, error);
-    return { merged: [], keywordMenu: { en: [], vi: [] } };
+    return { merged: [], keywordMenu: { en: [], vi: [] }, audioBasePath: '/' };
   }
 }

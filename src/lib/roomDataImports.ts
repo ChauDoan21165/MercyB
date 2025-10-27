@@ -43,7 +43,7 @@ for (const path in roomModules) {
 console.log('Auto-loaded rooms:', Object.keys(roomDataMap).sort());
 
 // Helper function to get room data with tier fallback
-// Looks for: {roomName}_{tier}.json, then {roomName}_vip3.json, vip2, vip1, then {roomName}.json
+// New structure: /tiers/{tier}/{room}/{room}_{tier}.json
 export async function getRoomDataWithTier(roomName: string, userTier: 'free' | 'vip1' | 'vip2' | 'vip3'): Promise<any> {
   const cacheKey = `${roomName}_${userTier}`;
   
@@ -52,31 +52,25 @@ export async function getRoomDataWithTier(roomName: string, userTier: 'free' | '
     return tierDataCache[cacheKey];
   }
   
-  // NEW STRUCTURE: Check /audio/en/{roomName}.json
-  const enPath = `audio/en/${roomName}.json`;
-  const enData = await loadPublicJson(enPath);
+  // NEW STRUCTURE: Check /tiers/{tier}/{room}/{room}_{tier}.json
+  const jsonPath = `tiers/${userTier}/${roomName}/${roomName}_${userTier}.json`;
+  const jsonData = await loadPublicJson(jsonPath);
   
-  if (enData) {
-    console.log(`Loaded ${enPath} for room ${roomName}`);
+  if (jsonData) {
+    console.log(`Loaded ${jsonPath} for room ${roomName}`);
     // Cache the loaded data
-    tierDataCache[cacheKey] = enData;
+    tierDataCache[cacheKey] = jsonData;
     // Also update roomDataMap for keywordResponder
-    const roomId = roomName.replace(/_/g, '-').toLowerCase();
-    roomDataMap[roomId] = enData;
-    return enData;
+    const roomId = `${roomName}-${userTier}`;
+    roomDataMap[roomId] = jsonData;
+    return jsonData;
   }
   
-  // Fallback to base room data from src/data/rooms
-  const roomId = roomName.replace(/_/g, '-').toLowerCase();
-  const fallbackData = roomDataMap[roomId] || null;
-  if (fallbackData) {
-    tierDataCache[cacheKey] = fallbackData;
-    return fallbackData;
-  }
-  // If nothing found anywhere, ensure room is removed from the in-memory map
+  // If nothing found, ensure room is removed from the in-memory map
+  const roomId = `${roomName}-${userTier}`;
   if (roomDataMap[roomId]) {
     delete roomDataMap[roomId];
-    console.warn(`Removed room '${roomId}' from registry because no JSON was found for ${userTier}`);
+    console.warn(`Removed room '${roomId}' from registry because no JSON was found`);
   }
   return null;
 }
