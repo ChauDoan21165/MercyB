@@ -94,6 +94,22 @@ export async function loadMergedRoom(roomId: string, tier: 'free' | 'vip1' | 'vi
       keywordsVi = Array.from(uniqueVi);
     }
     
+    // If still no keywords, derive from slugs/titles
+    if (keywordsEn.length === 0 && entries.length > 0) {
+      const derived = new Set<string>();
+      const derivedVi = new Set<string>();
+      entries.forEach((e: any) => {
+        const en = e.slug || e.id || e.title?.en || e.title || '';
+        const vi = e.title?.vi || en;
+        if (en) derived.add(String(en));
+        if (vi) derivedVi.add(String(vi));
+      });
+      keywordsEn = Array.from(derived);
+      if (derivedVi.size > 0) {
+        keywordsVi = Array.from(derivedVi);
+      }
+    }
+    
     // Fallback: if still no Vietnamese keywords, use English
     if (keywordsVi.length === 0) {
       keywordsVi = keywordsEn;
@@ -101,8 +117,12 @@ export async function loadMergedRoom(roomId: string, tier: 'free' | 'vip1' | 'vi
     
     // Build merged entries - handle multiple JSON structures
     const merged: MergedEntry[] = entries.map((e: any) => {
-      const keywordEn = String(e.keyword_en || e.keywords_en?.[0] || '').trim();
-      const keywordVi = String(e.keyword_vi || e.keywords_vi?.[0] || keywordEn).trim();
+      const keywordEn = String(
+        e.keyword_en || e.keywords_en?.[0] || e.slug || e.id || e.title?.en || e.title || ''
+      ).trim();
+      const keywordVi = String(
+        e.keyword_vi || e.keywords_vi?.[0] || e.title?.vi || keywordEn
+      ).trim();
       
       // Try multiple field paths for content: copy.en, reply_en, essay.en, content.en, body.en
       const replyEn = String(
@@ -129,7 +149,10 @@ export async function loadMergedRoom(roomId: string, tier: 'free' | 'vip1' | 'vi
         ''
       ).trim();
       
-      const audio = String(e.audio || '').trim();
+      // Normalize audio to public root, strip folder paths if present
+      const audioRaw = String(e.audio || '').trim();
+      const audioBasename = audioRaw.split('/').pop() || '';
+      const audio = audioBasename ? `/${audioBasename}` : '';
       
       return { keywordEn, keywordVi, replyEn, replyVi, audio };
     });
