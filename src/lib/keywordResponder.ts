@@ -31,52 +31,84 @@ function findMatchingGroup(message: string, keywords: any): { groupKey: string; 
     ];
     for (const k of list) {
       const normalizedK = normalize(k);
-      // Exact match
-      if (msg.includes(normalizedK)) return { groupKey, matchedKeyword: normalize(k) };
-      // Fuzzy match: check if keyword partially matches (>= 70% overlap)
-      if (normalizedK.length >= 4 && msg.length >= 4) {
-        for (let i = 0; i <= msg.length - 3; i++) {
-          const substring = msg.substring(i, i + Math.min(normalizedK.length, msg.length - i));
-          if (normalizedK.includes(substring) && substring.length >= normalizedK.length * 0.7) {
-            return { groupKey, matchedKeyword: normalize(k) };
-          }
-        }
-      }
+      // Exact or contains
+      if (msg.includes(normalizedK) || normalizedK.includes(msg)) return { groupKey, matchedKeyword: normalize(k) };
     }
   }
   return null;
 }
 
-function findEntryByKeyword(matchedKeyword: string | null, groupKey: string | null, entries: any[]): any | null {
-  if (!Array.isArray(entries)) return null;
-  
-  // First try to match by keyword in entry slug or title
-  if (matchedKeyword) {
-    const keywordParts = matchedKeyword.split('_').filter(Boolean);
-    for (const entry of entries) {
-      const slug = normalize(entry?.slug || '');
-      const titleEn = normalize(typeof entry?.title === 'string' ? entry.title : (entry?.title?.en || ''));
-      const titleVi = normalize(typeof entry?.title === 'object' ? (entry?.title?.vi || '') : '');
-      
-      // Check if keyword parts appear in slug or title
-      const matchScore = keywordParts.filter(part => 
-        slug.includes(part) || titleEn.includes(part) || titleVi.includes(part)
-      ).length;
-      
-      if (matchScore >= keywordParts.length * 0.6) {
-        return entry;
-      }
-    }
-  }
-  
-  // Fallback to group matching
-  if (!groupKey) return null;
-  return (
-    entries.find((e: any) => e?.slug === groupKey) ||
-    entries.find((e: any) => e?.id === groupKey) ||
-    entries.find((e: any) => e?.keyword_group === groupKey) ||
-    null
+function tokenize(s: string): Set<string> {
+  return new Set(
+    String(s || "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9_\s-]/g, " ")
+      .replace(/[\s-]+/g, " ")
+      .trim()
+      .split(" ")
+      .filter(Boolean)
   );
+}
+
+function jaccard(a: Set<string>, b: Set<string>): number {
+  if (a.size === 0 || b.size === 0) return 0;
+  let inter = 0;
+  for (const t of a) if (b.has(t)) inter++;
+  return inter / (a.size + b.size - inter);
+}
+
+function bestTitleTokens(entry: any): Set<string> {
+  const titleStr = typeof entry?.title === 'string' ? entry.title : (entry?.title?.en || entry?.title?.vi || '');
+  return tokenize(titleStr);
+}
+
+function audioTokens(entry: any): Set<string> {
+  const audio = entry?.audio || entry?.audio_file || entry?.meta?.audio_file || entry?.audioEn || entry?.audio_en;
+  let audioStr = '';
+  if (typeof audio === 'string') audioStr = audio;
+  else if (audio && typeof audio === 'object') audioStr = audio.en || audio.vi || '';
+  audioStr = audioStr.replace(/^\//, '').replace(/\.[a-z0-9]+$/i, '').replace(/[_.-]+/g, ' ');
+  return tokenize(audioStr);
+}
+
+function findEntryByKeyword(matchedKeyword: string | null, groupKey: string | null, entries: any[], keywordsSource: any): any | null {
+  if (!Array.isArray(entries)) return null;
+
+  const mkTokens = tokenize(String(matchedKeyword || ''));
+  const group = groupKey ? (keywordsSource?.[groupKey] || {}) : {};
+  const groupKeywords: string[] = [
+    ...(Array.isArray(group.en) ? group.en : []),
+    ...(Array.isArray(group.vi) ? group.vi : [])
+  ];
+  const groupTokenSets = groupKeywords.map(k => tokenize(k));
+
+  let best: { entry: any; score: number } | null = null;
+
+  for (const entry of entries) {
+    const tTokens = bestTitleTokens(entry);
+    const aTokens = audioTokens(entry);
+
+    let score = 0;
+    // Title vs matched keyword
+    score = Math.max(score, jaccard(tTokens, mkTokens));
+    // Title vs each group keyword
+    for (const g of groupTokenSets) score = Math.max(score, jaccard(tTokens, g));
+    // Audio filename cue
+    score = Math.max(score, jaccard(aTokens, mkTokens) * 0.9);
+    for (const g of groupTokenSets) score = Math.max(score, jaccard(aTokens, g) * 0.9);
+
+    // Boost if title string contains matched keyword substring
+    const titleStr = [...tTokens].join(' ');
+    const mkStr = [...mkTokens].join(' ');
+    if (mkStr && titleStr.includes(mkStr)) score += 0.2;
+
+    if (!best || score > best.score) best = { entry, score };
+  }
+
+  if (best && best.score >= 0.2) return best.entry;
+  return null;
 }
 
 function findRelatedRooms(message: string, currentRoomId: string): string[] {
@@ -145,11 +177,12 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
     }
   } else {
     // Old structure: entries is an array
-    matchedEntry = findEntryByKeyword(matchedKeyword, groupKey, roomData.entries || []);
+    const keywordsSource: any = roomData.keywords || (roomData as any).keywords_dict || {};
+    matchedEntry = findEntryByKeyword(matchedKeyword, groupKey, roomData.entries || [], keywordsSource);
 
     // Fallback: try to match by keyword text within title/content
     if (!matchedEntry && groupKey) {
-      const groups: any = roomData.keywords || (roomData as any).keywords_dict || {};
+      const groups: any = keywordsSource;
       const group = groups[groupKey];
       const candidates: string[] = [
         ...(Array.isArray(group?.en) ? group.en : []),
