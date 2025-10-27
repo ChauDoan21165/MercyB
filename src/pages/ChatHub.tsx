@@ -398,23 +398,37 @@ const handleAccessDenied = () => {
       if (currentAudio === audioUrl && isAudioPlaying) {
         audioRef.current?.pause();
       } else {
-        // Load and play new audio
         setAudioLoading(true);
         fetch(audioUrl, { method: 'HEAD' })
-          .then(response => {
-            if (response.ok) {
-              setCurrentAudio(audioUrl);
+          .then(async (response) => {
+            const tryPlay = (url: string) => {
+              setCurrentAudio(url);
               setIsAudioPlaying(false);
-              
               const el = audioRef.current;
               if (el) {
-                el.src = audioUrl;
+                el.src = url;
                 el.load();
                 el.currentTime = 0;
                 el.play().catch(() => {/* autoplay blocked */});
               }
+            };
+
+            if (response.ok) {
+              tryPlay(audioUrl);
             } else {
-              throw new Error(`Audio file not found: ${filename}`);
+              // Fallback to a known existing audio file
+              const fallback = '/Building_Simple_Routines_Free.mp3';
+              try {
+                const r2 = await fetch(fallback, { method: 'HEAD' });
+                if (r2.ok) {
+                  tryPlay(fallback);
+                  toast({ title: 'Using fallback audio', description: `Original missing: ${filename}` });
+                } else {
+                  throw new Error('Fallback audio unavailable');
+                }
+              } catch {
+                throw new Error(`Audio file not found: ${filename}`);
+              }
             }
           })
           .catch(err => {
