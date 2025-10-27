@@ -29,17 +29,7 @@ const Welcome = () => {
     return () => subscription.unsubscribe();
   }, []);
 
-  // Play Mercy_Blade.mp3 on homepage load
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (audio) {
-      audio.src = '/Mercy_Blade.mp3';
-      audio.load();
-      audio.play().catch(() => {
-        // Autoplay blocked, user can click play button
-      });
-    }
-  }, []);
+  // Removed auto-play - user must click button to play
 
   const checkUser = async () => {
     setIsCheckingProfile(true);
