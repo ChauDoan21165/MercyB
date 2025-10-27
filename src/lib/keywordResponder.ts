@@ -186,20 +186,22 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   
   if (roomData.entries && !Array.isArray(roomData.entries)) {
     // New structure: entries is an object with entry IDs as keys
-    // Try to find entry that matches the groupKey
-    if (groupKey) {
-      matchedEntry = roomData.entries[groupKey];
-      if (matchedEntry) {
-        entryId = groupKey;
-        // Extract audio file
-        const audio = matchedEntry.audio;
-        if (typeof audio === 'string') {
-          audioFile = audio;
-        } else if (audio && typeof audio === 'object') {
-          audioFile = audio.en || audio.vi;
-        }
+    const entriesArray = Object.entries(roomData.entries).map(([id, entry]) => ({ id, ...(entry as any) }));
+    const keywordsSource: any = roomData.keywords || roomData.keywords_dict || {};
+    
+    // Search through all entries to find best match
+    matchedEntry = findEntryByKeyword(matchedKeyword, groupKey, entriesArray, keywordsSource);
+    
+    if (matchedEntry) {
+      entryId = matchedEntry.id;
+      const audio = matchedEntry.audio;
+      if (typeof audio === 'string') {
+        audioFile = audio;
+      } else if (audio && typeof audio === 'object') {
+        audioFile = audio.en || audio.vi;
       }
     }
+    
     // Fallback to default entry if no match
     if (!matchedEntry && roomData.default_entry_id) {
       matchedEntry = roomData.entries[roomData.default_entry_id];
