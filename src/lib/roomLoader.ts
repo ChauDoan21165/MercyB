@@ -149,10 +149,18 @@ export async function loadMergedRoom(roomId: string, tier: 'free' | 'vip1' | 'vi
         ''
       ).trim();
       
-      // Normalize audio to public root, strip folder paths if present
-      const audioRaw = String(e.audio || '').trim();
-      const audioBasename = audioRaw.split('/').pop() || '';
-      const audio = audioBasename ? `/${audioBasename}` : '';
+      // Handle audio: can be string or object with .en field
+      let audioRaw = '';
+      if (typeof e.audio === 'string') {
+        audioRaw = e.audio;
+      } else if (e.audio?.en) {
+        audioRaw = e.audio.en;
+      }
+      
+      // Normalize audio path: preserve subfolders, ensure leading slash
+      const audio = audioRaw.trim() 
+        ? (audioRaw.startsWith('/') ? audioRaw : `/${audioRaw}`)
+        : '';
       
       return { keywordEn, keywordVi, replyEn, replyVi, audio };
     });
