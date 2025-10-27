@@ -31,9 +31,19 @@ export async function loadMergedRoom(roomId: string, tier: 'free' | 'vip1' | 'vi
   const cleaned = raw.replace(/_(vip[123]|free)$/, '');
   const primary = cleaned.split('_')[0];
   const suffix = String(tier || 'free').toLowerCase();
+  const upperSuffix = suffix.toUpperCase();
+  const titleCase = cleaned
+    .replace(/_/g, ' ')
+    .replace(/\b\w/g, (c) => c.toUpperCase());
   const candidates = Array.from(new Set([
     `/${cleaned}_${suffix}.json`,
     `/${primary}_${suffix}.json`,
+    `/${cleaned}_${upperSuffix}.json`,
+    `/${primary}_${upperSuffix}.json`,
+    `/${cleaned}${upperSuffix}.json`,
+    `/${primary}${upperSuffix}.json`,
+    `/${titleCase}_${upperSuffix}.json`,
+    `/${titleCase}${upperSuffix}.json`,
   ]));
   
   try {
@@ -64,9 +74,18 @@ export async function loadMergedRoom(roomId: string, tier: 'free' | 'vip1' | 'vi
       return { titleEn, essayEn: String(essayEn), titleVi, essayVi: String(essayVi), audio, slug };
     });
     
+    // Build keyword menu from keywords_en/keywords_vi with fallback to titles
     const keywordMenu = {
-      en: merged.map(m => m.titleEn).filter(Boolean),
-      vi: merged.map(m => m.titleVi).filter(Boolean),
+      en: entries.map((e: any, idx: number) => {
+        const arr = (e?.keywords_en || e?.keywordsEn || e?.keywords || []) as string[];
+        if (Array.isArray(arr) && arr.length > 0) return formatKeyword(arr);
+        return merged[idx]?.titleEn || '';
+      }).filter(Boolean),
+      vi: entries.map((e: any, idx: number) => {
+        const arr = (e?.keywords_vi || e?.keywordsVi || []) as string[];
+        if (Array.isArray(arr) && arr.length > 0) return formatKeyword(arr);
+        return merged[idx]?.titleVi || merged[idx]?.titleEn || '';
+      }).filter(Boolean),
     };
     
     return { merged, keywordMenu };

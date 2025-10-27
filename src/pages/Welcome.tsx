@@ -111,8 +111,6 @@ const Welcome = () => {
 
   return (
     <>
-      {/* Hidden audio player for Mercy_Blade.mp3 */}
-      <audio ref={audioRef} />
       
       <div className="min-h-screen" style={{ background: 'hsl(var(--page-welcome))' }}>
       {!isCheckingProfile && showUsernameSetup && (
@@ -193,6 +191,7 @@ const Welcome = () => {
           <audio 
             ref={audioRef} 
             src="/Mercy_Blade.mp3" 
+            preload="none"
             onEnded={() => setIsPlaying(false)}
             onPause={() => setIsPlaying(false)}
             onPlay={() => setIsPlaying(true)}

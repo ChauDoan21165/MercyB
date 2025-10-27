@@ -77,6 +77,12 @@ export async function getRoomDataWithTier(roomName: string, userTier: 'free' | '
   const fallbackData = roomDataMap[roomId] || null;
   if (fallbackData) {
     tierDataCache[cacheKey] = fallbackData;
+    return fallbackData;
   }
-  return fallbackData;
+  // If nothing found anywhere, ensure room is removed from the in-memory map
+  if (roomDataMap[roomId]) {
+    delete roomDataMap[roomId];
+    console.warn(`Removed room '${roomId}' from registry because no JSON was found for ${userTier}`);
+  }
+  return null;
 }
