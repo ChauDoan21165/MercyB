@@ -70,8 +70,9 @@ const ChatHub = () => {
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [audioLoading, setAudioLoading] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
-  const [keywordMenu, setKeywordMenu] = useState<{ en: string[]; vi: string[] } | null>(null);
-  const [clickedKeyword, setClickedKeyword] = useState<string | null>(null);
+const [keywordMenu, setKeywordMenu] = useState<{ en: string[]; vi: string[] } | null>(null);
+const [clickedKeyword, setClickedKeyword] = useState<string | null>(null);
+const [roomJson, setRoomJson] = useState<any>(null);
 
 // Use centralized room metadata
 const info = getRoomInfo(roomId || "");
@@ -124,6 +125,7 @@ const handleAccessDenied = () => {
       setKeywordMenu(null);
       setCurrentAudio(null);
       setIsAudioPlaying(false);
+      setRoomJson(null);
 
       try {
         // Determine room name from roomId (convert kebab-case to snake_case)
@@ -131,6 +133,7 @@ const handleAccessDenied = () => {
         
         // Load tier-specific JSON from /public
         const roomData = await getRoomDataWithTier(roomName, tier || 'free');
+        setRoomJson(roomData);
         
         if (!roomData) {
           console.warn(`No room data found for ${roomName} with tier ${tier}`);
@@ -181,12 +184,99 @@ const handleAccessDenied = () => {
 
   const handleKeywordClick = async (keyword: string) => {
     if (isLoading) return;
-    
-    // Highlight the clicked keyword
     setClickedKeyword(keyword);
-    
-    // Send the message without showing it as a user bubble
-    await sendMainMessage(keyword);
+    await sendEntryForKeyword(keyword);
+  };
+  // Helpers for direct keyword→entry mapping
+  const norm = (s: any) => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+
+  const extractBilingual = (entry: any) => {
+    const read = (obj: any, path: string[]) => path.reduce((acc, k) => (acc ? acc[k] : undefined), obj);
+    const candidates: Array<[string[], string[]]> = [
+      [["essay","en"],["essay","vi"]],
+      [["copy","en"],["copy","vi"]],
+      [["content","en"],["content","vi"]],
+      [["body","en"],["body","vi"]],
+      [["description","en"],["description","vi"]],
+      [["essay_en"],["essay_vi"]],
+      [["copy_en"],["copy_vi"]],
+      [["content_en"],["content_vi"]],
+      [["body_en"],["body_vi"]],
+    ];
+    for (const [enP, viP] of candidates) {
+      const en = String(read(entry, enP) || '').trim();
+      const vi = String(read(entry, viP) || '').trim();
+      if (en || vi) return { en, vi };
+    }
+    const en = String(entry?.content || entry?.copy || '').trim();
+    return { en, vi: String(entry?.content_vi || entry?.copy_vi || '').trim() };
+  };
+
+  const extractAudio = (entry: any): string | null => {
+    const audio = entry?.audio || entry?.audio_file || entry?.meta?.audio_file || entry?.audioEn || entry?.audio_en;
+    let p = '';
+    if (typeof audio === 'string') p = audio;
+    else if (audio && typeof audio === 'object') p = audio.en || audio.vi || '';
+    if (!p) return null;
+    return p.startsWith('/') ? p.slice(1) : p;
+  };
+
+  const resolveEntryByKeyword = (keyword: string): any | null => {
+    if (!roomJson) return null;
+    const k = norm(keyword);
+    const entriesArr: any[] = Array.isArray(roomJson?.entries)
+      ? roomJson.entries
+      : roomJson?.entries && typeof roomJson.entries === 'object'
+        ? Object.values(roomJson.entries)
+        : [];
+
+    if (roomJson?.keyword_menu?.en) {
+      const idx = roomJson.keyword_menu.en.findIndex((s: string) => norm(s) === k);
+      if (idx >= 0) {
+        if (Array.isArray(roomJson.entries) && roomJson.entries[idx]) return roomJson.entries[idx];
+        const id = roomJson.keyword_menu.en[idx];
+        if (roomJson.entries && typeof roomJson.entries === 'object' && roomJson.entries[id]) return roomJson.entries[id];
+      }
+    }
+
+    const groups = roomJson.keywords || roomJson.keywords_dict || {};
+    for (const [gk, gv] of Object.entries<any>(groups)) {
+      const list = [ ...(Array.isArray(gv.en) ? gv.en : []), ...(Array.isArray(gv.vi) ? gv.vi : []) ];
+      if (list.some((s: string) => norm(s) === k)) {
+        for (const e of entriesArr) {
+          const t = norm(typeof e?.title === 'string' ? e.title : e?.title?.en || e?.title?.vi || '');
+          if (t.includes(norm(gk)) || t.includes(k)) return e;
+        }
+      }
+    }
+
+    if (Array.isArray(roomJson.keyword_menu?.en) && Array.isArray(roomJson.entries) && roomJson.entries.length === roomJson.keyword_menu.en.length) {
+      const idx = roomJson.keyword_menu.en.findIndex((s: string) => norm(s) === k);
+      if (idx >= 0) return roomJson.entries[idx];
+    }
+
+    return entriesArr[0] || null;
+  };
+
+  const sendEntryForKeyword = async (keyword: string) => {
+    const typingMessageId = (Date.now() + 1).toString();
+    const typingMessage: Message = { id: typingMessageId, text: '...', isUser: false, timestamp: new Date() };
+    setMainMessages(prev => [...prev, typingMessage]);
+
+    try {
+      const entry = resolveEntryByKeyword(keyword);
+      if (!entry) throw new Error('No entry matched');
+      const { en, vi } = extractBilingual(entry);
+      const text = vi ? `${en}\n\n---\n\n${vi}` : en;
+      const audioFile = extractAudio(entry) || undefined;
+
+      setMainMessages(prev => prev.map(m => m.id === typingMessageId ? { ...m, text, audioFile } : m));
+      trackKeyword(keyword);
+    } catch (err) {
+      console.error('Keyword mapping failed', err);
+      setMainMessages(prev => prev.filter(m => m.id !== typingMessageId));
+      toast({ title: 'Error', description: 'Could not load entry for keyword', variant: 'destructive' });
+    }
   };
 
   const sendMainMessage = async (keywordText?: string) => {
