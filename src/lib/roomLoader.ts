@@ -1,94 +1,86 @@
 export type MergedEntry = {
-  titleEn: string;
-  essayEn: string;
-  titleVi?: string;
-  essayVi?: string;
+  keywordEn: string;
+  keywordVi: string;
+  replyEn: string;
+  replyVi: string;
   audio: string;
-  slug?: string;
 };
 
-function toFileName(roomId: string, tier: string): string {
-  // Example: roomId 'sleep-improvement-vip3' + tier 'vip3' -> '/sleep_improvement_vip3.json'
-  const raw = String(roomId || '').trim().toLowerCase().replace(/-/g, '_');
-  // Remove trailing _vipX or _free if present in roomId
-  const cleaned = raw.replace(/_(vip[123]|free)$/, '');
-  const suffix = String(tier || 'free').toLowerCase();
-  return `/${cleaned}_${suffix}.json`;
-}
-
-function formatKeyword(keywords: string[]): string {
-  // Take first keyword and capitalize properly
-  if (!keywords || keywords.length === 0) return '';
-  return keywords[0]
-    .split(' ')
-    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(' ');
-}
-
+/**
+ * Load room data from NEW structure:
+ * - English: /public/audio/en/{room}_{tier}.json
+ * - Vietnamese: /public/audio/vn/{room}_{tier}.json
+ * 
+ * JSON format:
+ * {
+ *   "keywords_en": ["Gratitude", "Inner Peace"],
+ *   "keywords_vi": ["Lòng Biết Ơn", "Bình An"],
+ *   "entries": [
+ *     {
+ *       "keyword_en": "Gratitude",
+ *       "keyword_vi": "Lòng Biết Ơn",
+ *       "reply_en": "English essay...",
+ *       "reply_vi": "Vietnamese essay...",
+ *       "audio": "Gratitude_VIP3.mp3"
+ *     }
+ *   ]
+ * }
+ */
 export async function loadMergedRoom(roomId: string, tier: 'free' | 'vip1' | 'vip2' | 'vip3') {
-  // Build candidate filenames for robustness (e.g., sleep_improvement -> sleep)
-  const raw = String(roomId || '').trim().toLowerCase().replace(/-/g, '_');
-  const cleaned = raw.replace(/_(vip[123]|free)$/, '');
-  const primary = cleaned.split('_')[0];
-  const suffix = String(tier || 'free').toLowerCase();
-  const upperSuffix = suffix.toUpperCase();
-  const titleCase = cleaned
-    .replace(/_/g, ' ')
-    .replace(/\b\w/g, (c) => c.toUpperCase());
-  const candidates = Array.from(new Set([
-    `/${cleaned}_${suffix}.json`,
-    `/${primary}_${suffix}.json`,
-    `/${cleaned}_${upperSuffix}.json`,
-    `/${primary}_${upperSuffix}.json`,
-    `/${cleaned}${upperSuffix}.json`,
-    `/${primary}${upperSuffix}.json`,
-    `/${titleCase}_${upperSuffix}.json`,
-    `/${titleCase}${upperSuffix}.json`,
-  ]));
+  // Convert kebab-case to snake_case: stoicism-vip3 -> stoicism_vip3
+  const roomName = String(roomId || '').trim().toLowerCase().replace(/-/g, '_');
+  
+  // Build file paths
+  const enPath = `/audio/en/${roomName}.json`;
+  const vnPath = `/audio/vn/${roomName}.json`;
   
   try {
-    let data: any = null;
-    let usedUrl = '';
-    for (const url of candidates) {
-      const res = await fetch(url);
-      if (res.ok) {
-        data = await res.json();
-        usedUrl = url;
-        break;
-      }
-    }
-    if (!data) {
-      console.warn(`Failed to load any of: ${candidates.join(', ')}`);
+    // Load English JSON
+    const enRes = await fetch(enPath);
+    if (!enRes.ok) {
+      console.warn(`English JSON not found: ${enPath}`);
       return { merged: [], keywordMenu: { en: [], vi: [] } };
     }
+    const enData = await enRes.json();
     
-    const entries = Array.isArray(data?.entries) ? data.entries : [];
-
+    // Load Vietnamese JSON (optional)
+    let vnData: any = null;
+    try {
+      const vnRes = await fetch(vnPath);
+      if (vnRes.ok) {
+        vnData = await vnRes.json();
+      }
+    } catch (e) {
+      console.info(`Vietnamese JSON not found (optional): ${vnPath}`);
+    }
+    
+    // Extract top-level keywords
+    const keywordsEn = Array.isArray(enData.keywords_en) ? enData.keywords_en : [];
+    const keywordsVi = Array.isArray(vnData?.keywords_vi) ? vnData.keywords_vi : 
+                       Array.isArray(enData.keywords_vi) ? enData.keywords_vi : 
+                       keywordsEn;
+    
+    // Extract entries
+    const entries = Array.isArray(enData.entries) ? enData.entries : [];
+    
+    // Build merged entries
     const merged: MergedEntry[] = entries.map((e: any) => {
-      const titleEn = e?.en?.title || e?.title?.en || e?.title || formatKeyword(e?.keywords || []) || String(e?.slug || '').replace(/[-_]/g, ' ');
-      const titleVi = e?.vi?.title || e?.title?.vi || titleEn;
-      const essayEn = e?.en?.essay || e?.content?.en || e?.reply_en || e?.essay_en || '';
-      const essayVi = e?.vi?.essay || e?.content?.vi || e?.reply_vi || e?.essay_vi || '';
-      const audio = String(e?.audio || '');
-      const slug = String(e?.slug || '');
-      return { titleEn, essayEn: String(essayEn), titleVi, essayVi: String(essayVi), audio, slug };
+      const keywordEn = String(e.keyword_en || '').trim();
+      const keywordVi = String(e.keyword_vi || keywordEn).trim();
+      const replyEn = String(e.reply_en || '').trim();
+      const replyVi = String(e.reply_vi || '').trim();
+      const audio = String(e.audio || '').trim();
+      
+      return { keywordEn, keywordVi, replyEn, replyVi, audio };
     });
     
-    // Build keyword menu from keywords_en/keywords_vi with fallback to titles
-    const keywordMenu = {
-      en: entries.map((e: any, idx: number) => {
-        const arr = (e?.keywords_en || e?.keywordsEn || e?.keywords || []) as string[];
-        if (Array.isArray(arr) && arr.length > 0) return formatKeyword(arr);
-        return merged[idx]?.titleEn || '';
-      }).filter(Boolean),
-      vi: entries.map((e: any, idx: number) => {
-        const arr = (e?.keywords_vi || e?.keywordsVi || []) as string[];
-        if (Array.isArray(arr) && arr.length > 0) return formatKeyword(arr);
-        return merged[idx]?.titleVi || merged[idx]?.titleEn || '';
-      }).filter(Boolean),
+    return {
+      merged,
+      keywordMenu: {
+        en: keywordsEn,
+        vi: keywordsVi
+      }
     };
-    
-    return { merged, keywordMenu };
   } catch (error) {
     console.error(`Error loading room ${roomId} tier ${tier}:`, error);
     return { merged: [], keywordMenu: { en: [], vi: [] } };

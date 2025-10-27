@@ -192,12 +192,14 @@ const handleAccessDenied = () => {
     return { en, vi: String(entry?.content_vi || entry?.copy_vi || '').trim() };
   };
 
-  // Find merged entry by English title
+  // Find merged entry by keyword_en exact match
   const resolveEntryByKeyword = (keyword: string) => {
     const k = norm(keyword);
     if (!mergedEntries || mergedEntries.length === 0) return null;
-    let entry = mergedEntries.find(e => norm(e.titleEn) === k);
-    if (!entry) entry = mergedEntries.find(e => norm(e.titleEn).startsWith(k));
+    
+    // Find entry where keyword_en matches
+    let entry = mergedEntries.find(e => norm(e.keywordEn) === k);
+    if (!entry) entry = mergedEntries.find(e => norm(e.keywordEn).includes(k));
     if (!entry) entry = mergedEntries[0];
     return entry || null;
   };
@@ -210,11 +212,12 @@ const handleAccessDenied = () => {
     try {
       const entry = resolveEntryByKeyword(keyword);
       if (!entry) throw new Error('No entry matched');
-      const en = String(entry.essayEn || '');
-      const vi = String(entry.essayVi || '');
+      
+      // Build message: English Essay + Audio + Vietnamese Essay (if exists)
+      const en = String(entry.replyEn || '');
+      const vi = String(entry.replyVi || '');
       const text = vi ? `${en}\n\n---\n\n${vi}` : en;
-      const rawAudio = String(entry.audio || '');
-      const audioFile = rawAudio ? rawAudio.split('/').pop() : undefined;
+      const audioFile = entry.audio || undefined;
 
       setMainMessages(prev => prev.map(m => m.id === typingMessageId ? { ...m, text, audioFile } : m));
       trackKeyword(keyword);

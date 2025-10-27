@@ -52,24 +52,18 @@ export async function getRoomDataWithTier(roomName: string, userTier: 'free' | '
     return tierDataCache[cacheKey];
   }
   
-  // Try exact tier match from public folder
-  const tierPriority = userTier === 'vip3' ? ['VIP3', 'VIP2', 'VIP1', 'Free'] :
-                       userTier === 'vip2' ? ['VIP2', 'VIP1', 'Free'] :
-                       userTier === 'vip1' ? ['VIP1', 'Free'] :
-                       ['Free'];
+  // NEW STRUCTURE: Check /audio/en/{roomName}.json
+  const enPath = `audio/en/${roomName}.json`;
+  const enData = await loadPublicJson(enPath);
   
-  for (const tier of tierPriority) {
-    const filename = `${roomName}_${tier}.json`;
-    const data = await loadPublicJson(filename);
-    if (data) {
-      console.log(`Loaded ${filename} for room ${roomName}`);
-      // Cache the loaded data
-      tierDataCache[cacheKey] = data;
-      // Also update roomDataMap for keywordResponder
-      const roomId = roomName.replace(/_/g, '-').toLowerCase();
-      roomDataMap[roomId] = data;
-      return data;
-    }
+  if (enData) {
+    console.log(`Loaded ${enPath} for room ${roomName}`);
+    // Cache the loaded data
+    tierDataCache[cacheKey] = enData;
+    // Also update roomDataMap for keywordResponder
+    const roomId = roomName.replace(/_/g, '-').toLowerCase();
+    roomDataMap[roomId] = enData;
+    return enData;
   }
   
   // Fallback to base room data from src/data/rooms
