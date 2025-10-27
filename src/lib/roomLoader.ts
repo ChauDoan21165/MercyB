@@ -70,12 +70,36 @@ export async function loadMergedRoom(roomId: string, tier: 'free' | 'vip1' | 'vi
     // Extract entries
     const entries = Array.isArray(data.entries) ? data.entries : [];
     
-    // Build merged entries
+    // Build merged entries - handle multiple JSON structures
     const merged: MergedEntry[] = entries.map((e: any) => {
-      const keywordEn = String(e.keyword_en || '').trim();
-      const keywordVi = String(e.keyword_vi || keywordEn).trim();
-      const replyEn = String(e.reply_en || '').trim();
-      const replyVi = String(e.reply_vi || '').trim();
+      const keywordEn = String(e.keyword_en || e.keywords_en?.[0] || '').trim();
+      const keywordVi = String(e.keyword_vi || e.keywords_vi?.[0] || keywordEn).trim();
+      
+      // Try multiple field paths for content: copy.en, reply_en, essay.en, content.en, body.en
+      const replyEn = String(
+        e.reply_en || 
+        e.copy?.en || 
+        e.essay?.en || 
+        e.content?.en || 
+        e.body?.en ||
+        e.copy_en ||
+        e.essay_en ||
+        e.content_en ||
+        ''
+      ).trim();
+      
+      const replyVi = String(
+        e.reply_vi || 
+        e.copy?.vi || 
+        e.essay?.vi || 
+        e.content?.vi || 
+        e.body?.vi ||
+        e.copy_vi ||
+        e.essay_vi ||
+        e.content_vi ||
+        ''
+      ).trim();
+      
       const audio = String(e.audio || '').trim();
       
       return { keywordEn, keywordVi, replyEn, replyVi, audio };
