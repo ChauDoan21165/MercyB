@@ -8,7 +8,7 @@ import { Send, ArrowLeft, MessageCircle, Mail, Users, Loader2, Volume2 } from "l
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomInfo } from "@/lib/roomData";
-import { getRoomDataWithTier } from "@/lib/roomDataImports";
+import { loadMergedRoom } from "@/lib/roomLoader";
 import { useRoomProgress } from "@/hooks/useRoomProgress";
 import { useBehaviorTracking } from "@/hooks/useBehaviorTracking";
 import { RoomProgress } from "@/components/RoomProgress";
@@ -23,7 +23,7 @@ import { CreditLimitModal } from "@/components/CreditLimitModal";
 import { CreditsDisplay } from "@/components/CreditsDisplay";
 import { PrivateChatPanel } from "@/components/PrivateChatPanel";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
-import { keywordRespond } from "@/lib/keywordResponder";
+
 import { messageSchema } from "@/lib/inputValidation";
 import { supabase } from "@/integrations/supabase/client";
 import { roomDataMap } from "@/lib/roomDataImports";
@@ -72,7 +72,7 @@ const ChatHub = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
 const [keywordMenu, setKeywordMenu] = useState<{ en: string[]; vi: string[] } | null>(null);
 const [clickedKeyword, setClickedKeyword] = useState<string | null>(null);
-const [roomJson, setRoomJson] = useState<any>(null);
+const [mergedEntries, setMergedEntries] = useState<any[]>([]);
 
 // Use centralized room metadata
 const info = getRoomInfo(roomId || "");
@@ -125,47 +125,27 @@ const handleAccessDenied = () => {
       setKeywordMenu(null);
       setCurrentAudio(null);
       setIsAudioPlaying(false);
-      setRoomJson(null);
+      setMergedEntries([]);
 
       try {
         // Determine room name from roomId (convert kebab-case to snake_case)
         const roomName = (roomId || '').replace(/-/g, '_');
         
-        // Load tier-specific JSON from /public
-        const roomData = await getRoomDataWithTier(roomName, tier || 'free');
-        setRoomJson(roomData);
+        // Load merged entries from /public/audio/{en|vn}/ based on tier
+        const { merged, keywordMenu } = await loadMergedRoom(roomId || '', tier || 'free');
+        setMergedEntries(merged);
         
-        if (!roomData) {
-          console.warn(`No room data found for ${roomName} with tier ${tier}`);
-          return;
+        if (!merged || merged.length === 0) {
+          console.warn(`No merged entries for room ${roomId} tier ${tier}`);
         }
         
         // Load welcome message with new format
         const welcomeText = `Welcome to ${currentRoom.nameEn} Room, please click the keyword of the topic you want to discover.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.`;
-        
-        const welcomeMessage: Message = {
-          id: 'welcome',
-          text: welcomeText,
-          isUser: false,
-          timestamp: new Date()
-        };
+        const welcomeMessage: Message = { id: 'welcome', text: welcomeText, isUser: false, timestamp: new Date() };
         setMainMessages([welcomeMessage]);
         
-        // Load keyword menu from room data (support multiple schemas)
-        if (roomData?.keyword_menu?.en && roomData?.keyword_menu?.vi) {
-          setKeywordMenu(roomData.keyword_menu);
-        } else if (roomData?.keywords) {
-          try {
-            const groups = Object.values(roomData.keywords) as any[];
-            const en = Array.from(new Set(groups.flatMap((g: any) => g?.en || [])));
-            const vi = Array.from(new Set(groups.flatMap((g: any) => g?.vi || [])));
-            if (en.length > 0 || vi.length > 0) {
-              setKeywordMenu({ en, vi });
-            }
-          } catch (e) {
-            console.warn('Could not derive keyword menu from keywords', e);
-          }
-        }
+        // Set keyword menu from merged data
+        setKeywordMenu(keywordMenu);
       } catch (error) {
         console.error('Error loading room data:', error);
         // Fallback welcome message
@@ -212,50 +192,14 @@ const handleAccessDenied = () => {
     return { en, vi: String(entry?.content_vi || entry?.copy_vi || '').trim() };
   };
 
-  const extractAudio = (entry: any): string | null => {
-    const audio = entry?.audio || entry?.audio_file || entry?.meta?.audio_file || entry?.audioEn || entry?.audio_en;
-    let p = '';
-    if (typeof audio === 'string') p = audio;
-    else if (audio && typeof audio === 'object') p = audio.en || audio.vi || '';
-    if (!p) return null;
-    return p.startsWith('/') ? p.slice(1) : p;
-  };
-
-  const resolveEntryByKeyword = (keyword: string): any | null => {
-    if (!roomJson) return null;
+  // Find merged entry by English title
+  const resolveEntryByKeyword = (keyword: string) => {
     const k = norm(keyword);
-    const entriesArr: any[] = Array.isArray(roomJson?.entries)
-      ? roomJson.entries
-      : roomJson?.entries && typeof roomJson.entries === 'object'
-        ? Object.values(roomJson.entries)
-        : [];
-
-    if (roomJson?.keyword_menu?.en) {
-      const idx = roomJson.keyword_menu.en.findIndex((s: string) => norm(s) === k);
-      if (idx >= 0) {
-        if (Array.isArray(roomJson.entries) && roomJson.entries[idx]) return roomJson.entries[idx];
-        const id = roomJson.keyword_menu.en[idx];
-        if (roomJson.entries && typeof roomJson.entries === 'object' && roomJson.entries[id]) return roomJson.entries[id];
-      }
-    }
-
-    const groups = roomJson.keywords || roomJson.keywords_dict || {};
-    for (const [gk, gv] of Object.entries<any>(groups)) {
-      const list = [ ...(Array.isArray(gv.en) ? gv.en : []), ...(Array.isArray(gv.vi) ? gv.vi : []) ];
-      if (list.some((s: string) => norm(s) === k)) {
-        for (const e of entriesArr) {
-          const t = norm(typeof e?.title === 'string' ? e.title : e?.title?.en || e?.title?.vi || '');
-          if (t.includes(norm(gk)) || t.includes(k)) return e;
-        }
-      }
-    }
-
-    if (Array.isArray(roomJson.keyword_menu?.en) && Array.isArray(roomJson.entries) && roomJson.entries.length === roomJson.keyword_menu.en.length) {
-      const idx = roomJson.keyword_menu.en.findIndex((s: string) => norm(s) === k);
-      if (idx >= 0) return roomJson.entries[idx];
-    }
-
-    return entriesArr[0] || null;
+    if (!mergedEntries || mergedEntries.length === 0) return null;
+    let entry = mergedEntries.find(e => norm(e.titleEn) === k);
+    if (!entry) entry = mergedEntries.find(e => norm(e.titleEn).startsWith(k));
+    if (!entry) entry = mergedEntries[0];
+    return entry || null;
   };
 
   const sendEntryForKeyword = async (keyword: string) => {
@@ -266,9 +210,10 @@ const handleAccessDenied = () => {
     try {
       const entry = resolveEntryByKeyword(keyword);
       if (!entry) throw new Error('No entry matched');
-      const { en, vi } = extractBilingual(entry);
+      const en = String(entry.essayEn || '');
+      const vi = String(entry.essayVi || '');
       const text = vi ? `${en}\n\n---\n\n${vi}` : en;
-      const audioFile = extractAudio(entry) || undefined;
+      const audioFile = entry.audio ? String(entry.audio).replace(/^\//, '') : undefined;
 
       setMainMessages(prev => prev.map(m => m.id === typingMessageId ? { ...m, text, audioFile } : m));
       trackKeyword(keyword);
@@ -349,60 +294,15 @@ const handleAccessDenied = () => {
     // Track message for behavior analytics
     trackMessage(currentInput);
 
-    // KEYWORD MODE: Use keyword responder only
-    // Add typing indicator
-      const typingMessageId = (Date.now() + 1).toString();
-      const typingMessage: Message = {
-        id: typingMessageId,
-        text: '...',
-        isUser: false,
-        timestamp: new Date()
-      };
-      setMainMessages(prev => [...prev, typingMessage]);
-      
-      try {
-        // Simulate a brief delay for better UX
-        await new Promise(resolve => setTimeout(resolve, 300));
-        
-        const response = keywordRespond(roomId || "", currentInput, noKeywordCount, matchedEntryCount);
-        
-          if (response.matched) {
-            setMatchedEntryCount(prev => prev + 1);
-            setNoKeywordCount(0);
-            
-            // Audio is now handled per-message in MessageBubble component
-          } else {
-            setNoKeywordCount(prev => prev + 1);
-          }
-
-        // Replace typing indicator with actual response
-        setMainMessages(prev => 
-          prev.map(m => 
-            m.id === typingMessageId 
-              ? { 
-                  ...m, 
-                  text: response.text
-                    .replace(/\*\*/g, '')
-                    .replace(/(?:\n|\s)*\d{1,2}:\d{2}:\d{2}\s?(AM|PM)?\.?$/i, '')
-                    .trim(), 
-                  relatedRooms: response.relatedRooms,
-                  audioFile: response.audioFile 
-                }
-              : m
-          )
-        );
-      } catch (error) {
-        console.error('Error generating keyword response:', error);
-        // Remove typing indicator on error
-        setMainMessages(prev => prev.filter(m => m.id !== typingMessageId));
-        toast({
-          title: "Error / Lỗi",
-          description: "Could not generate response / Không Thể Tạo Phản Hồi",
-          variant: "destructive"
-        });
-      } finally {
-        setIsLoading(false);
-      }
+    // For typed input, respond by mapping to the matching keyword entry
+    try {
+      await sendEntryForKeyword(currentInput);
+    } catch (e) {
+      console.error('Error generating response:', e);
+      toast({ title: 'Error', description: 'Could not generate response', variant: 'destructive' });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const sendMessage = async (
