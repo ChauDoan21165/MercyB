@@ -1,0 +1,66 @@
+{
+  "name": "Physical Fitness and Nutrition",
+  "name_vi": "Thể Chất và Dinh Dưỡng",
+  "description": "In-depth strategies for improving fitness and nutrition through balance and support",
+  "keywords_en": ["fitness", "nutrition", "healthy eating", "exercise"],
+  "keywords_vi": ["thể chất", "dinh dưỡng", "ăn uống lành mạnh", "tập luyện"],
+  "entries": [
+    {
+      "slug": "healthy-eating",
+      "keywords_en": ["healthy eating", "nutrition", "well-being"],
+      "keywords_vi": ["ăn uống lành mạnh", "dinh dưỡng", "sức khỏe"],
+      "copy": {
+        "en": "Healthy eating is key to physical fitness and overall well-being. Choose whole foods like vegetables, fruits, and lean proteins to fuel your body with essential nutrients. Plan balanced meals with variety to sustain energy and focus throughout the day. Stay hydrated by drinking water consistently. Connect with a nutritionist or supportive friend for guidance and motivation, fostering resilience and encouraging better health choices in your daily life.",
+        "vi": "Ăn uống lành mạnh là chìa khóa cho thể chất và sức khỏe tổng thể. Hãy chọn thực phẩm nguyên cám như rau củ, trái cây và protein nạc để cung cấp dưỡng chất thiết yếu cho cơ thể. Lên kế hoạch bữa ăn cân bằng và đa dạng để duy trì năng lượng, sự tập trung suốt ngày. Uống đủ nước đều đặn mỗi ngày. Kết nối với chuyên gia dinh dưỡng hoặc bạn bè hỗ trợ để nhận hướng dẫn và động lực, giúp bạn xây dựng sức khỏe tốt hơn từng ngày."
+      },
+      "tags": ["nutrition", "fitness"],
+      "audio": {
+        "en": "physical_fitness_and_nutrition_vip1_healthy_eating_en.mp3",
+        "vi": "physical_fitness_and_nutrition_vip1_healthy_eating_vi.mp3"
+      }
+    },
+    {
+      "slug": "exercise-routines",
+      "keywords_en": ["exercise", "fitness", "strength"],
+      "keywords_vi": ["tập luyện", "thể chất", "sức mạnh"],
+      "copy": {
+        "en": "Exercise routines enhance physical fitness and strength. Start with short, enjoyable activities like walking, yoga, or cycling to build endurance and flexibility. Aim for consistency with daily movement suited to your level. Connect with a fitness group or coach for motivation, tips, and accountability. These steps foster resilience, improving your physical well-being and confidence day by day.",
+        "vi": "Thói quen tập luyện giúp nâng cao thể chất và sức mạnh. Hãy bắt đầu với các hoạt động ngắn, thú vị như đi bộ, yoga hoặc đạp xe để tăng sức bền và độ linh hoạt. Duy trì sự đều đặn với vận động hàng ngày phù hợp với thể lực của bạn. Kết nối với nhóm thể thao hoặc huấn luyện viên để có động lực, lời khuyên và sự cam kết. Những bước này giúp xây dựng nghị lực, cải thiện sức khỏe và sự tự tin mỗi ngày."
+      },
+      "tags": ["exercise", "fitness"],
+      "audio": {
+        "en": "physical_fitness_and_nutrition_vip1_exercise_routines_en.mp3",
+        "vi": "physical_fitness_and_nutrition_vip1_exercise_routines_vi.mp3"
+      }
+    },
+    {
+      "slug": "hydration",
+      "keywords_en": ["hydration", "health", "well-being"],
+      "keywords_vi": ["bù nước", "sức khỏe", "sức khỏe tinh thần"],
+      "copy": {
+        "en": "Hydration is essential for fitness and nutrition success. Drink water regularly to maintain energy, focus, and physical performance. Track your intake using a bottle or app to build consistent habits. Connect with friends or a health coach for accountability and encouragement. These steps nurture resilience, helping you sustain well-being and enhance daily health through simple discipline.",
+        "vi": "Bù nước là yếu tố thiết yếu cho thành công trong thể chất và dinh dưỡng. Uống nước đều đặn để duy trì năng lượng, sự tập trung và hiệu suất cơ thể. Theo dõi lượng nước bằng chai hoặc ứng dụng để hình thành thói quen đều đặn. Kết nối với bạn bè hoặc huấn luyện viên sức khỏe để nhận sự khích lệ và trách nhiệm. Những bước này giúp nuôi dưỡng nghị lực, duy trì sức khỏe và cải thiện thể trạng mỗi ngày."
+      },
+      "tags": ["hydration", "fitness"],
+      "audio": {
+        "en": "physical_fitness_and_nutrition_vip1_hydration_en.mp3",
+        "vi": "physical_fitness_and_nutrition_vip1_hydration_vi.mp3"
+      }
+    },
+    {
+      "slug": "rest",
+      "keywords_en": ["rest", "recovery", "well-being"],
+      "keywords_vi": ["nghỉ ngơi", "phục hồi", "sức khỏe"],
+      "copy": {
+        "en": "Rest supports fitness and nutrition by promoting recovery and balance. Aim for seven to eight hours of quality sleep nightly to recharge your body. Take short breaks during workouts to prevent burnout and injury. Connect with a friend or coach for relaxation techniques, building resilience and enhancing your overall well-being daily.",
+        "vi": "Nghỉ ngơi hỗ trợ thể chất và dinh dưỡng bằng cách thúc đẩy sự phục hồi và cân bằng. Hãy ngủ từ bảy đến tám giờ mỗi đêm để nạp năng lượng cho cơ thể. Nghỉ ngắn trong khi tập luyện để tránh kiệt sức và chấn thương. Kết nối với bạn bè hoặc huấn luyện viên để học các kỹ thuật thư giãn, giúp xây dựng nghị lực và nâng cao sức khỏe tổng thể mỗi ngày."
+      },
+      "tags": ["rest", "fitness"],
+      "audio": {
+        "en": "physical_fitness_and_nutrition_vip1_rest_en.mp3",
+        "vi": "physical_fitness_and_nutrition_vip1_rest_vi.mp3"
+      }
+    }
+  ],
+  "meta": {
+    "created_at"_
