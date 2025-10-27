@@ -22,6 +22,9 @@ const VIETNAMESE_NAME_FALLBACKS: Record<string, string> = {
   
   // Women Health
   'women-health': 'Sức Khỏe Phụ Nữ',
+  'women-health-vip1': 'Sức Khỏe Phụ Nữ VIP1',
+  'women-health-vip2': 'Sức Khỏe Phụ Nữ VIP2',
+  'women-health-vip3': 'Sức Khỏe Phụ Nữ VIP3',
   
   // Other rooms
   'mental-sharpness-vip3': 'Trí Tuệ Sắc Bén VIP3',
@@ -52,6 +55,54 @@ const VIETNAMESE_NAME_FALLBACKS: Record<string, string> = {
   
   // Human Rights
   'human-right-vip3': 'Quyền Con Người VIP3',
+  
+  // ADHD Support
+  'adhd-support': 'Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý',
+  'adhd-support-vip1': 'Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý VIP1',
+  'adhd-support-vip2': 'Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý VIP2',
+  'adhd-support-vip3': 'Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý VIP3',
+  
+  // Eating Disorder Support
+  'eating-disorder-support': 'Hỗ Trợ Rối Loạn Ăn Uống',
+  'eating-disorder-support-vip1': 'Hỗ Trợ Rối Loạn Ăn Uống VIP1',
+  'eating-disorder-support-vip2': 'Hỗ Trợ Rối Loạn Ăn Uống VIP2',
+  'eating-disorder-support-vip3': 'Hỗ Trợ Rối Loạn Ăn Uống VIP3',
+  
+  // Mindfulness
+  'mindfulness': 'Thực Hành Chánh Niệm',
+  'mindfulness-vip1': 'Thực Hành Chánh Niệm VIP1',
+  'mindfulness-vip2': 'Thực Hành Chánh Niệm VIP2',
+  'mindfulness-vip3': 'Thực Hành Chánh Niệm VIP3',
+  
+  // Nutrition
+  'nutrition': 'Dinh Dưỡng',
+  'nutrition-vip1': 'Dinh Dưỡng VIP1',
+  'nutrition-vip2': 'Dinh Dưỡng VIP2',
+  'nutrition-vip3': 'Dinh Dưỡng VIP3',
+  
+  // Obesity
+  'obesity': 'Quản Lý Cân Nặng',
+  'obesity-vip1': 'Quản Lý Cân Nặng VIP1',
+  'obesity-vip2': 'Quản Lý Cân Nặng VIP2',
+  'obesity-vip3': 'Quản Lý Cân Nặng VIP3',
+  
+  // Sleep
+  'sleep': 'Cải Thiện Giấc Ngủ',
+  'sleep-vip1': 'Cải Thiện Giấc Ngủ VIP1',
+  'sleep-vip2': 'Cải Thiện Giấc Ngủ VIP2',
+  'sleep-vip3': 'Cải Thiện Giấc Ngủ VIP3',
+  
+  // Confidence
+  'confidence': 'Tự Tin',
+  'confidence-vip1': 'Tự Tin VIP1',
+  'confidence-vip2': 'Tự Tin VIP2',
+  'confidence-vip3': 'Tự Tin VIP3',
+  
+  // Meaning of Life
+  'meaning-of-life': 'Ý Nghĩa Cuộc Sống',
+  'meaning-of-life-vip1': 'Ý Nghĩa Cuộc Sống VIP1',
+  'meaning-of-life-vip2': 'Ý Nghĩa Cuộc Sống VIP2',
+  'meaning-of-life-vip3': 'Ý Nghĩa Cuộc Sống VIP3',
 };
 
 export interface RoomInfo {
@@ -68,6 +119,9 @@ function generateRoomInfo(): RoomInfo[] {
   const rooms: RoomInfo[] = [];
   
   for (const [roomId, roomData] of Object.entries(roomDataMap)) {
+    // Skip if no data
+    if (!roomData) continue;
+    
     // Extract tier from room data meta or tier field
     const rawTier = (roomData.meta?.tier || roomData.tier || 'free').toLowerCase();
     // Normalize tier format: "vip 3 / cấp vip 3" -> "vip3", "vip 1" -> "vip1", etc.
@@ -98,8 +152,18 @@ function generateRoomInfo(): RoomInfo[] {
   return rooms.sort((a, b) => a.id.localeCompare(b.id));
 }
 
-// Complete list of all rooms in the app (auto-generated)
-export const ALL_ROOMS: RoomInfo[] = generateRoomInfo();
+// Complete list of all rooms in the app (dynamically generated on access)
+let cachedRooms: RoomInfo[] | null = null;
+
+export const ALL_ROOMS = new Proxy([] as RoomInfo[], {
+  get(target, prop) {
+    // Regenerate room list on each access to ensure it's up-to-date
+    if (!cachedRooms || prop === 'length' || typeof prop === 'symbol') {
+      cachedRooms = generateRoomInfo();
+    }
+    return (cachedRooms as any)[prop];
+  }
+});
 
 // Get room info by ID
 export function getRoomInfo(roomId: string): RoomInfo | null {

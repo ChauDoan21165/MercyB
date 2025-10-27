@@ -2,6 +2,9 @@
 // This automatically imports all JSON files from the rooms directory
 const roomModules = import.meta.glob('@/data/rooms/*.json', { eager: true });
 
+// Import room manifest for public JSON files
+import { PUBLIC_ROOM_MANIFEST } from './roomManifest';
+
 // Also import JSON files from public directory
 const publicJsonModules: Record<string, any> = {};
 
@@ -38,6 +41,19 @@ for (const path in roomModules) {
   const module = roomModules[path] as any;
   roomDataMap[roomId] = module.default || module;
 }
+
+// Pre-load public room JSON files from manifest
+// This makes them available in ALL_ROOMS immediately
+(async () => {
+  for (const [roomId, filename] of Object.entries(PUBLIC_ROOM_MANIFEST)) {
+    const data = await loadPublicJson(filename);
+    if (data) {
+      roomDataMap[roomId] = data;
+      console.log(`Pre-loaded public room: ${roomId} from ${filename}`);
+    }
+  }
+  console.log('Total rooms loaded:', Object.keys(roomDataMap).length);
+})();
 
 // Log available rooms for debugging
 console.log('Auto-loaded rooms:', Object.keys(roomDataMap).sort());
