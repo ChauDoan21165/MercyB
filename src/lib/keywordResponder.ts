@@ -15,7 +15,45 @@ function getBilingual(obj: any, base: string): { en: string; vi: string } {
   if (val && typeof val === "object") {
     return { en: String(val.en || ""), vi: String(val.vi || "") };
   }
-  return { en: String(obj?.[base] || ""), vi: String(obj?.[`${base}_vi`] || "") };
+  return { en: String(obj?.[base] || ""), vi: String(obj?.[`${base}_vi`] || obj?.[`${base}Vi`] || "") };
+}
+
+// Extremely tolerant bilingual extractor across many schemas
+function getBilingualFlexible(entry: any): { en: string; vi: string } {
+  const paths: Array<[string[], string[]]> = [
+    // essay object
+    [["essay","en"],["essay","vi"]],
+    // copy object
+    [["copy","en"],["copy","vi"]],
+    // content object
+    [["content","en"],["content","vi"]],
+    // body object
+    [["body","en"],["body","vi"]],
+    // description object
+    [["description","en"],["description","vi"]],
+  ];
+
+  const singles: Array<[string[], string[]]> = [
+    [["essay_en"],["essay_vi"]],
+    [["copy_en"],["copy_vi"]],
+    [["content_en"],["content_vi"]],
+    [["body_en"],["body_vi"]],
+    [["vi_en"],["vi_vi"]],
+  ];
+
+  const readPath = (root: any, path: string[]) => path.reduce((acc, key) => (acc ? acc[key] : undefined), root);
+
+  for (const [enPath, viPath] of [...paths, ...singles]) {
+    const en = String(readPath(entry, enPath) || "").trim();
+    const vi = String(readPath(entry, viPath) || "").trim();
+    if (en || vi) return { en, vi };
+  }
+
+  // Last resort: if entry has both en/vi at root
+  if (typeof entry?.en === 'string' || typeof entry?.vi === 'string') {
+    return { en: String(entry.en || ''), vi: String(entry.vi || '') };
+  }
+  return { en: '', vi: '' };
 }
 
 function findMatchingGroup(message: string, keywords: any): { groupKey: string; matchedKeyword: string } | null {
@@ -228,24 +266,24 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   const relatedRooms = findRelatedRooms(message, roomId);
 
   const buildEntryResponse = (entry: any) => {
-    // Handle content/copy as string or bilingual object
-    let copyEn = typeof entry?.copy === "string"
-      ? entry.copy
-      : typeof entry?.content === 'string'
-        ? entry.content
-        : String(entry?.copy?.en || entry?.content?.en || entry?.body?.en || entry?.copy_en || "");
-    let copyVi = typeof entry?.copy === "string"
-      ? ""
-      : typeof entry?.content === 'string'
-        ? ""
-        : String(entry?.copy?.vi || entry?.content?.vi || entry?.body?.vi || entry?.copy_vi || "");
+    // Tolerant bilingual extraction
+    let { en: copyEn, vi: copyVi } = getBilingualFlexible(entry);
 
-    // Remove word count from both English and Vietnamese
-    copyEn = copyEn.replace(/\*Word count: \d+\*\s*/g, '').trim();
-    copyVi = copyVi.replace(/\*Số từ: \d+\*\s*/g, '').trim();
+    // If still empty, try legacy fields
+    if (!copyEn) {
+      copyEn = String(entry?.copy_en || entry?.content_en || entry?.body_en || "");
+    }
+    if (!copyVi) {
+      copyVi = String(entry?.copy_vi || entry?.content_vi || entry?.body_vi || "");
+    }
 
-    // Return copy only (titles are already included in copy text)
-    return [copyEn, "---", copyVi].filter(Boolean).join("\n\n");
+    // Remove word count footers
+    copyEn = String(copyEn || "").replace(/\*Word count: \d+\*\s*/g, '').trim();
+    copyVi = String(copyVi || "").replace(/\*Số từ: \d+\*\s*/g, '').trim();
+
+    // Return only the languages that exist
+    if (copyEn && copyVi) return `${copyEn}\n\n---\n\n${copyVi}`;
+    return copyEn || copyVi || '';
   };
 
   if (matchedEntry) {
@@ -255,10 +293,10 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
       const summary = getBilingual(matchedEntry, 'summary');
       let essay = getBilingual(matchedEntry, 'essay');
       // Remove word count from essay
-      essay.en = essay.en.replace(/\*Word count: \d+\*\s*/g, '').trim();
-      essay.vi = essay.vi.replace(/\*Số từ: \d+\*\s*/g, '').trim();
-      // English first, Vietnamese below
-      responseText = `${essay.en}\n\n---\n\n${essay.vi}`;
+      essay.en = String(essay.en || '').replace(/\*Word count: \d+\*\s*/g, '').trim();
+      essay.vi = String(essay.vi || '').replace(/\*Số từ: \d+\*\s*/g, '').trim();
+      // English first, Vietnamese below when available
+      responseText = essay.vi ? `${essay.en}\n\n---\n\n${essay.vi}` : essay.en;
     } else {
       responseText = buildEntryResponse(matchedEntry);
     }
