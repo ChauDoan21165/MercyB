@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ALL_ROOMS } from "@/lib/roomData";
 import { VIPNavigation } from "@/components/VIPNavigation";
 import { useUserAccess } from "@/hooks/useUserAccess";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 const RoomGridVIP3 = () => {
@@ -18,6 +18,13 @@ const RoomGridVIP3 = () => {
       navigate('/');
     }
   }, [canAccessVIP3, loading, navigate]);
+
+  const [roomsVersion, setRoomsVersion] = useState(0);
+  useEffect(() => {
+    const handle = () => setRoomsVersion(v => v + 1);
+    window.addEventListener('rooms-loaded', handle as any);
+    return () => window.removeEventListener('rooms-loaded', handle as any);
+  }, []);
 
   if (loading || !canAccessVIP3) {
     return (

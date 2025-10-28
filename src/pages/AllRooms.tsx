@@ -6,10 +6,18 @@ import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
 import { ALL_ROOMS } from "@/lib/roomData";
 import { useUserAccess } from "@/hooks/useUserAccess";
+import { useEffect, useState } from "react";
 
 const AllRooms = () => {
   const navigate = useNavigate();
   const { tier } = useUserAccess();
+  const [roomsVersion, setRoomsVersion] = useState(0);
+
+  useEffect(() => {
+    const handle = () => setRoomsVersion(v => v + 1);
+    window.addEventListener('rooms-loaded', handle as any);
+    return () => window.removeEventListener('rooms-loaded', handle as any);
+  }, []);
 
   const getTierColor = (tier: string) => {
     switch (tier) {

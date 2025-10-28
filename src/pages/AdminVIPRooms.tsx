@@ -12,9 +12,16 @@ const AdminVIPRooms = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [roomsVersion, setRoomsVersion] = useState(0);
 
   useEffect(() => {
     checkAdminAccess();
+  }, []);
+
+  useEffect(() => {
+    const handle = () => setRoomsVersion(v => v + 1);
+    window.addEventListener('rooms-loaded', handle as any);
+    return () => window.removeEventListener('rooms-loaded', handle as any);
   }, []);
 
   const checkAdminAccess = async () => {

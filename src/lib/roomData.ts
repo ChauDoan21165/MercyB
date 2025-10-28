@@ -124,6 +124,8 @@ export interface RoomInfo {
 function generateRoomInfo(): RoomInfo[] {
   const rooms: RoomInfo[] = [];
   
+  console.log('generateRoomInfo called, roomDataMap keys:', Object.keys(roomDataMap));
+  
   for (const [roomId, roomData] of Object.entries(roomDataMap)) {
     // Skip if no data
     if (!roomData) continue;
@@ -169,15 +171,20 @@ function generateRoomInfo(): RoomInfo[] {
     });
   }
   
+  console.log('Generated rooms:', rooms.length, 'Free rooms:', rooms.filter(r => r.tier === 'free').length);
   return rooms.sort((a, b) => a.id.localeCompare(b.id));
 }
 
 // Complete list of all rooms in the app (dynamically generated on access)
 export const ALL_ROOMS = new Proxy([] as RoomInfo[], {
   get(_target, prop) {
-    // Always generate fresh data on access so late-loaded public JSON appears
     const fresh = generateRoomInfo();
-    return (fresh as any)[prop];
+    const value = (fresh as any)[prop];
+    // Bind array methods to the fresh array so calls like ALL_ROOMS.filter work
+    if (typeof value === 'function') {
+      return value.bind(fresh);
+    }
+    return value;
   }
 });
 
