@@ -36,6 +36,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   
   // Mental Health
   'mental-health-free': 'mental_health_free.json',
+  'mental-health-vip1': 'Mental Health_VIP1.json',
   
   // Mindfulness
   'mindfulness-free': 'Mindfulness_Free.json',
@@ -43,10 +44,14 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   'mindfulness-vip2': 'Mindfulness_VIP2.json',
   'mindfulness-vip3': 'Mindfulness_VIP3.json',
   
+  // Mental Sharpness
+  'mental-sharpness-vip3': 'Mental SharpnessVIP3.json',
+  
   // Nutrition
   'nutrition-free': 'nutrition_free.json',
   'nutrition-vip1': 'nutrition_vip1.json',
   'nutrition-vip2': 'nutrition_vip2.json',
+  
   
   // Obesity
   'obesity-free': 'obesity_free.json',
@@ -54,8 +59,17 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   'obesity-vip2': 'obesity_vip2.json',
   'obesity-vip3': 'obesity_vip3.json',
   
-  // Sleep
-  'sleep-free': 'Sleep_free.json',
+  // Addiction Support
+  'addiction-support-free': 'Addiction Support_Free.json',
+  
+  // Bipolar Support
+  'bipolar-support-free': 'Bipolar Support_Free.json',
+  
+  // Relationship Healing
+  'relationship-healing-free': 'Relationship Healing_Free.json',
+  
+  // Women Health
+  'women-health-free': 'women_health_free.json',
 };
 
 /**

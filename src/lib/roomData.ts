@@ -21,7 +21,7 @@ const VIETNAMESE_NAME_FALLBACKS: Record<string, string> = {
   'stoicism-vip3': 'Chủ Nghĩa Khắc Kỷ VIP3',
   
   // Women Health
-  'women-health': 'Sức Khỏe Phụ Nữ',
+  'women-health-free': 'Sức Khỏe Phụ Nữ',
   'women-health-vip1': 'Sức Khỏe Phụ Nữ VIP1',
   'women-health-vip2': 'Sức Khỏe Phụ Nữ VIP2',
   'women-health-vip3': 'Sức Khỏe Phụ Nữ VIP3',
@@ -44,65 +44,71 @@ const VIETNAMESE_NAME_FALLBACKS: Record<string, string> = {
   'soulmate-vip3': 'Tìm Người Tri Kỷ VIP3',
   
   // AI
-  'ai': 'Trí Tuệ Nhân Tạo',
+  'ai-free': 'Trí Tuệ Nhân Tạo',
   'ai-vip1': 'Trí Tuệ Nhân Tạo VIP1',
   'ai-vip2': 'Trí Tuệ Nhân Tạo VIP2',
   'ai-vip3': 'Trí Tuệ Nhân Tạo VIP3',
   
   // Mental Health
-  'mental-health': 'Sức Khỏe Tâm Thần',
+  'mental-health-free': 'Sức Khỏe Tâm Thần',
   'mental-health-vip1': 'Sức Khỏe Tâm Thần VIP1',
   
-  // Human Rights
-  'human-right-vip3': 'Quyền Con Người VIP3',
-  
   // ADHD Support
-  'adhd-support': 'Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý',
+  'adhd-support-free': 'Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý',
   'adhd-support-vip1': 'Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý VIP1',
   'adhd-support-vip2': 'Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý VIP2',
   'adhd-support-vip3': 'Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý VIP3',
   
   // Eating Disorder Support
-  'eating-disorder-support': 'Hỗ Trợ Rối Loạn Ăn Uống',
+  'eating-disorder-support-free': 'Hỗ Trợ Rối Loạn Ăn Uống',
   'eating-disorder-support-vip1': 'Hỗ Trợ Rối Loạn Ăn Uống VIP1',
   'eating-disorder-support-vip2': 'Hỗ Trợ Rối Loạn Ăn Uống VIP2',
   'eating-disorder-support-vip3': 'Hỗ Trợ Rối Loạn Ăn Uống VIP3',
   
   // Mindfulness
-  'mindfulness': 'Thực Hành Chánh Niệm',
+  'mindfulness-free': 'Thực Hành Chánh Niệm',
   'mindfulness-vip1': 'Thực Hành Chánh Niệm VIP1',
   'mindfulness-vip2': 'Thực Hành Chánh Niệm VIP2',
   'mindfulness-vip3': 'Thực Hành Chánh Niệm VIP3',
   
   // Nutrition
-  'nutrition': 'Dinh Dưỡng',
+  'nutrition-free': 'Dinh Dưỡng',
   'nutrition-vip1': 'Dinh Dưỡng VIP1',
   'nutrition-vip2': 'Dinh Dưỡng VIP2',
   'nutrition-vip3': 'Dinh Dưỡng VIP3',
   
   // Obesity
-  'obesity': 'Quản Lý Cân Nặng',
+  'obesity-free': 'Quản Lý Cân Nặng',
   'obesity-vip1': 'Quản Lý Cân Nặng VIP1',
   'obesity-vip2': 'Quản Lý Cân Nặng VIP2',
   'obesity-vip3': 'Quản Lý Cân Nặng VIP3',
   
   // Sleep
-  'sleep': 'Cải Thiện Giấc Ngủ',
+  'sleep-free': 'Cải Thiện Giấc Ngủ',
   'sleep-vip1': 'Cải Thiện Giấc Ngủ VIP1',
   'sleep-vip2': 'Cải Thiện Giấc Ngủ VIP2',
   'sleep-vip3': 'Cải Thiện Giấc Ngủ VIP3',
   
-  // Confidence
-  'confidence': 'Tự Tin',
-  'confidence-vip1': 'Tự Tin VIP1',
-  'confidence-vip2': 'Tự Tin VIP2',
-  'confidence-vip3': 'Tự Tin VIP3',
-  
   // Meaning of Life
-  'meaning-of-life': 'Ý Nghĩa Cuộc Sống',
+  'meaning-of-life-free': 'Ý Nghĩa Cuộc Sống',
   'meaning-of-life-vip1': 'Ý Nghĩa Cuộc Sống VIP1',
   'meaning-of-life-vip2': 'Ý Nghĩa Cuộc Sống VIP2',
   'meaning-of-life-vip3': 'Ý Nghĩa Cuộc Sống VIP3',
+  
+  // Addiction Support
+  'addiction-support-free': 'Hỗ Trợ Cai Nghiện',
+  
+  // Bipolar Support
+  'bipolar-support-free': 'Hỗ Trợ Rối Loạn Lưỡng Cực',
+  
+  // Relationship Healing
+  'relationship-healing-free': 'Hàn Gắn Mối Quan Hệ',
+  
+  // Confidence
+  'confidence-free': 'Tự Tin',
+  'confidence-vip1': 'Tự Tin VIP1',
+  'confidence-vip2': 'Tự Tin VIP2',
+  'confidence-vip3': 'Tự Tin VIP3',
 };
 
 export interface RoomInfo {
@@ -122,10 +128,24 @@ function generateRoomInfo(): RoomInfo[] {
     // Skip if no data
     if (!roomData) continue;
     
-    // Extract tier from room data meta or tier field
-    const rawTier = (roomData.meta?.tier || roomData.tier || 'free').toLowerCase();
-    // Normalize tier format: "vip 3 / cấp vip 3" -> "vip3", "vip 1" -> "vip1", etc.
-    const tier = rawTier.replace(/\s+/g, '').split('/')[0] as RoomInfo['tier'];
+    // Extract tier from roomId first (most reliable source)
+    let tier: RoomInfo['tier'] = 'free';
+    if (roomId.endsWith('-vip1')) tier = 'vip1';
+    else if (roomId.endsWith('-vip2')) tier = 'vip2';
+    else if (roomId.endsWith('-vip3')) tier = 'vip3';
+    else if (roomId.endsWith('-free')) tier = 'free';
+    // Fallback: check room data
+    else if (roomData.meta?.tier) {
+      const rawTier = roomData.meta.tier.toLowerCase().replace(/\s+/g, '').split('/')[0];
+      if (['free', 'vip1', 'vip2', 'vip3'].includes(rawTier)) {
+        tier = rawTier as RoomInfo['tier'];
+      }
+    } else if (roomData.tier) {
+      const rawTier = roomData.tier.toLowerCase().replace(/\s+/g, '').split('/')[0];
+      if (['free', 'vip1', 'vip2', 'vip3'].includes(rawTier)) {
+        tier = rawTier as RoomInfo['tier'];
+      }
+    }
     
     // Extract names from room data - try multiple paths
     const nameEn = roomData.name ||
