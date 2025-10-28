@@ -70,6 +70,48 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   
   // Women Health
   'women-health-free': 'women_health_free.json',
+  
+  // Anxiety Relief
+  'anxiety-relief-free': 'Anxiety_Relief_Free.json',
+  'anxiety-relief-vip1': 'Anxiety_Relief_VIP1.json',
+  'anxiety-relief-vip2': 'Anxiety_Relief_VIP2.json',
+  'anxiety-relief-vip3': 'Anxiety_Relief_VIP3.json',
+  
+  // Burnout Recovery
+  'burnout-recovery-free': 'Burnout_Recovery_Free.json',
+  'burnout-recovery-vip1': 'Burnout_Recovery_VIP1.json',
+  'burnout-recovery-vip2': 'Burnout_Recovery_VIP2.json',
+  'burnout-recovery-vip3': 'Burnout_Recovery_VIP3.json',
+  
+  // Depression Support
+  'depression-support-free': 'Depression_Support_Free.json',
+  'depression-support-vip1': 'Depression_Support_VIP1.json',
+  'depression-support-vip2': 'Depression_Support_VIP2.json',
+  'depression-support-vip3': 'Depression_Support_VIP3.json',
+  
+  // Men's Mental Health
+  'mens-mental-health-free': 'Mens_Mental_Health_Free.json',
+  'mens-mental-health-vip1': 'Mens_Mental_Health_VIP1.json',
+  'mens-mental-health-vip2': 'Mens_Mental_Health_VIP2.json',
+  'mens-mental-health-vip3': 'Mens_Mental_Health_VIP3.json',
+  
+  // Productivity And Focus
+  'productivity-and-focus-free': 'Productivity_And_Focus_Free.json',
+  'productivity-and-focus-vip1': 'Productivity_And_Focus_VIP1.json',
+  'productivity-and-focus-vip2': 'Productivity_And_Focus_VIP2.json',
+  'productivity-and-focus-vip3': 'Productivity_And_Focus_VIP3.json',
+  
+  // Social Anxiety
+  'social-anxiety-free': 'Social_Anxiety_Free.json',
+  'social-anxiety-vip1': 'Social_Anxiety_VIP1.json',
+  'social-anxiety-vip2': 'Social_Anxiety_VIP2.json',
+  'social-anxiety-vip3': 'Social_Anxiety_VIP3.json',
+  
+  // Weight Loss And Fitness
+  'weight-loss-and-fitness-free': 'Weight_Loss_And_Fitness_Free.json',
+  'weight-loss-and-fitness-vip1': 'Weight_Loss_And_Fitness_VIP1.json',
+  'weight-loss-and-fitness-vip2': 'Weight_Loss_And_Fitness_VIP2.json',
+  'weight-loss-and-fitness-vip3': 'Weight_Loss_And_Fitness_VIP3.json',
 };
 
 /**

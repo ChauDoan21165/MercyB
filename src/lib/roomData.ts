@@ -109,6 +109,48 @@ const VIETNAMESE_NAME_FALLBACKS: Record<string, string> = {
   'confidence-vip1': 'Tự Tin VIP1',
   'confidence-vip2': 'Tự Tin VIP2',
   'confidence-vip3': 'Tự Tin VIP3',
+  
+  // Anxiety Relief
+  'anxiety-relief-free': 'Giảm Lo Âu',
+  'anxiety-relief-vip1': 'Giảm Lo Âu VIP1',
+  'anxiety-relief-vip2': 'Giảm Lo Âu VIP2',
+  'anxiety-relief-vip3': 'Giảm Lo Âu VIP3',
+  
+  // Burnout Recovery
+  'burnout-recovery-free': 'Phục Hồi Kiệt Sức',
+  'burnout-recovery-vip1': 'Phục Hồi Kiệt Sức VIP1',
+  'burnout-recovery-vip2': 'Phục Hồi Kiệt Sức VIP2',
+  'burnout-recovery-vip3': 'Phục Hồi Kiệt Sức VIP3',
+  
+  // Depression Support
+  'depression-support-free': 'Hỗ Trợ Trầm Cảm',
+  'depression-support-vip1': 'Hỗ Trợ Trầm Cảm VIP1',
+  'depression-support-vip2': 'Hỗ Trợ Trầm Cảm VIP2',
+  'depression-support-vip3': 'Hỗ Trợ Trầm Cảm VIP3',
+  
+  // Men's Mental Health
+  'mens-mental-health-free': 'Sức Khỏe Tinh Thần Nam Giới',
+  'mens-mental-health-vip1': 'Sức Khỏe Tinh Thần Nam Giới VIP1',
+  'mens-mental-health-vip2': 'Sức Khỏe Tinh Thần Nam Giới VIP2',
+  'mens-mental-health-vip3': 'Sức Khỏe Tinh Thần Nam Giới VIP3',
+  
+  // Productivity And Focus
+  'productivity-and-focus-free': 'Năng Suất & Tập Trung',
+  'productivity-and-focus-vip1': 'Năng Suất & Tập Trung VIP1',
+  'productivity-and-focus-vip2': 'Năng Suất & Tập Trung VIP2',
+  'productivity-and-focus-vip3': 'Năng Suất & Tập Trung VIP3',
+  
+  // Social Anxiety
+  'social-anxiety-free': 'Lo Âu Xã Hội',
+  'social-anxiety-vip1': 'Lo Âu Xã Hội VIP1',
+  'social-anxiety-vip2': 'Lo Âu Xã Hội VIP2',
+  'social-anxiety-vip3': 'Lo Âu Xã Hội VIP3',
+  
+  // Weight Loss And Fitness
+  'weight-loss-and-fitness-free': 'Giảm Cân & Thể Hình',
+  'weight-loss-and-fitness-vip1': 'Giảm Cân & Thể Hình VIP1',
+  'weight-loss-and-fitness-vip2': 'Giảm Cân & Thể Hình VIP2',
+  'weight-loss-and-fitness-vip3': 'Giảm Cân & Thể Hình VIP3',
 };
 
 export interface RoomInfo {
