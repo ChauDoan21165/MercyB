@@ -23,6 +23,14 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   'confidence-vip2': 'confidence_vip2.json',
   'confidence-vip3': 'confidence_vip3.json',
   
+  // God With Us
+  'god-with-us-free': 'God_With_Us.json',
+  'god-with-us-vip1': 'God_With_Us_VIP1.json',
+  'god-with-us-vip3': 'God_With_Us_VIP3.json',
+  
+  // Keep Soul Calm
+  'keep-soul-calm-vip3': 'Keep_Soul_Calm_VIP3.json',
+  
   // Eating Disorder Support
   'eating-disorder-support-free': 'Eating Disorder Support_Free.json',
   'eating-disorder-support-vip1': 'Eating Disorder Support_VIP1.json',
@@ -30,7 +38,8 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   'eating-disorder-support-vip3': 'Eating Disorder Support_VIP3.json',
   
   // Meaning of Life
-  'meaning-of-life-free': 'meaning_of_life_free.json',
+  'meaning-of-life-free': 'meaning_of_life.json',
+  'meaning-of-life-vip1': 'meaning_of_life_vip1.json',
   'meaning-of-life-vip2': 'meaning_of_life_vip2.json',
   'meaning-of-life-vip3': 'meaning_of_life_vip3.json',
   
@@ -45,19 +54,46 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   'mindfulness-vip3': 'Mindfulness_VIP3.json',
   
   // Mental Sharpness
-  'mental-sharpness-vip3': 'Mental SharpnessVIP3.json',
+  'mental-sharpness-vip3': 'Mental_Sharpness_VIP3.json',
   
   // Nutrition
-  'nutrition-free': 'nutrition_free.json',
+  'nutrition-free': 'nutrition.json',
   'nutrition-vip1': 'nutrition_vip1.json',
   'nutrition-vip2': 'nutrition_vip2.json',
-  
+  'nutrition-vip3': 'nutrition_vip3.json',
   
   // Obesity
-  'obesity-free': 'obesity_free.json',
-  'obesity-vip1': 'obesity_vip1.json',
-  'obesity-vip2': 'obesity_vip2.json',
-  'obesity-vip3': 'obesity_vip3.json',
+  'obesity-free': 'obesity.json',
+  'obesity-vip1': 'obesity_management_vip1.json',
+  'obesity-vip3': 'obesity_management_vip3.json',
+  
+  // Overcome Storm
+  'overcome-storm-vip3': 'Overcome_Storm_VIP3.json',
+  
+  // Philosophy of Everyday
+  'philosophy-of-everyday-free': 'philosophy_of_everyday.json',
+  'philosophy-of-everyday-vip1': 'philosophy_of_everyday_vip1.json',
+  'philosophy-of-everyday-vip2': 'philosophy_of_everyday_vip2.json',
+  'philosophy-of-everyday-vip3': 'philosophy_of_everyday_vip3.json',
+  
+  // Physical Fitness and Nutrition
+  'physical-fitness-and-nutrition-vip3': 'Physical Fitness and Nutrition_VIP3.json',
+  
+  // Sleep Improvement
+  'sleep-improvement-free': 'sleep_improvement.json',
+  'sleep-improvement-vip2': 'sleep_improvement_vip2.json',
+  'sleep-improvement-vip3': 'sleep_improvement_vip3.json',
+  
+  // Stoicism
+  'stoicism-free': 'stoicism.json',
+  'stoicism-vip1': 'stoicism_vip1.json',
+  'stoicism-vip2': 'stoicism_vip2.json',
+  'stoicism-vip3': 'stoicism_vip3.json',
+  
+  // Stress Management
+  'stress-free': 'stress.json',
+  'stress-vip2': 'stress_vip2.json',
+  'stress-vip3': 'stress_vip3.json',
   
   // Addiction Support
   'addiction-support-free': 'Addiction Support_Free.json',
@@ -69,7 +105,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   'relationship-healing-free': 'Relationship Healing_Free.json',
   
   // Women Health
-  'women-health-free': 'women_health_free.json',
+  'women-health-free': 'Women_Health.json',
   
   // Anxiety Relief
   'anxiety-relief-free': 'Anxiety_Relief_Free.json',

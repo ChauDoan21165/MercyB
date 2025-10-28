@@ -30,6 +30,7 @@ const VIETNAMESE_NAME_FALLBACKS: Record<string, string> = {
   'mental-sharpness-vip3': 'Trí Tuệ Sắc Bén VIP3',
   'overcome-storm-vip3': 'Vượt Qua Bão Tố VIP3',
   'keep-soul-calm-vip3': 'Giữ Tâm Hồn Bình Yên VIP3',
+  'physical-fitness-and-nutrition-vip3': 'Thể Chất & Dinh Dưỡng VIP3',
   
   // Shadow Work
   'shadow-work': 'Công Việc Bóng Tối',
@@ -85,9 +86,14 @@ const VIETNAMESE_NAME_FALLBACKS: Record<string, string> = {
   
   // Sleep
   'sleep-free': 'Cải Thiện Giấc Ngủ',
-  'sleep-vip1': 'Cải Thiện Giấc Ngủ VIP1',
-  'sleep-vip2': 'Cải Thiện Giấc Ngủ VIP2',
-  'sleep-vip3': 'Cải Thiện Giấc Ngủ VIP3',
+  'sleep-improvement-free': 'Cải Thiện Giấc Ngủ',
+  'sleep-improvement-vip2': 'Cải Thiện Giấc Ngủ VIP2',
+  'sleep-improvement-vip3': 'Cải Thiện Giấc Ngủ VIP3',
+  
+  // Stress Management
+  'stress-free': 'Quản Lý Căng Thẳng',
+  'stress-vip2': 'Quản Lý Căng Thẳng VIP2',
+  'stress-vip3': 'Quản Lý Căng Thẳng VIP3',
   
   // Meaning of Life
   'meaning-of-life-free': 'Ý Nghĩa Cuộc Sống',
