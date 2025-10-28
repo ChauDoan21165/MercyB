@@ -45,14 +45,18 @@ for (const path in roomModules) {
 // Pre-load public room JSON files from manifest
 // This makes them available in ALL_ROOMS immediately
 (async () => {
-  for (const [roomId, filename] of Object.entries(PUBLIC_ROOM_MANIFEST)) {
-    const data = await loadPublicJson(filename);
-    if (data) {
-      roomDataMap[roomId] = data;
-      console.log(`Pre-loaded public room: ${roomId} from ${filename}`);
+  try {
+    for (const [roomId, filename] of Object.entries(PUBLIC_ROOM_MANIFEST)) {
+      const data = await loadPublicJson(filename);
+      if (data) {
+        roomDataMap[roomId] = data;
+        console.log(`Pre-loaded public room: ${roomId} from ${filename}`);
+      }
     }
+    console.log('Total rooms loaded:', Object.keys(roomDataMap).length);
+  } catch (error) {
+    console.error('Error pre-loading rooms:', error);
   }
-  console.log('Total rooms loaded:', Object.keys(roomDataMap).length);
 })();
 
 // Log available rooms for debugging

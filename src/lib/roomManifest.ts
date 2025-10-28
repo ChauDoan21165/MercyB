@@ -47,7 +47,6 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   'nutrition-free': 'nutrition_free.json',
   'nutrition-vip1': 'nutrition_vip1.json',
   'nutrition-vip2': 'nutrition_vip2.json',
-  'nutrition-vip3': 'nutrition_vip3.json',
   
   // Obesity
   'obesity-free': 'obesity_free.json',
@@ -57,9 +56,6 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   
   // Sleep
   'sleep-free': 'Sleep_free.json',
-  'sleep-vip1': 'Sleep_vip1.json',
-  'sleep-vip2': 'Sleep_vip2.json',
-  'sleep-vip3': 'Sleep_vip3.json',
 };
 
 /**

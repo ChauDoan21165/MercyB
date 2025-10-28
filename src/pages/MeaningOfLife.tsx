@@ -2,14 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Volume2, VolumeX } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
-import meaningFree from "@/data/rooms/meaning_of_life.json";
-import meaningVip1 from "@/data/rooms/meaning_of_life_vip1.json";
-import meaningVip2 from "@/data/rooms/meaning_of_life_vip2.json";
-import meaningVip3 from "@/data/rooms/meaning_of_life_vip3.json";
-
 
 const MeaningOfLife = () => {
   const [playingTier, setPlayingTier] = useState<string | null>(null);
+  const [tiersData, setTiersData] = useState<any[]>([]);
   const audioRefs = {
     free: useRef<HTMLAudioElement>(null),
     vip1: useRef<HTMLAudioElement>(null),
@@ -19,6 +15,38 @@ const MeaningOfLife = () => {
 
   useEffect(() => {
     document.title = "Meaning of Life — Mercy Blade";
+    
+    // Load data from public folder
+    const loadData = async () => {
+      try {
+        const files = [
+          { key: "free", file: "meaning_of_life_free.json", audio: "/room-audio/meaning_of_life_free.mp3" },
+          { key: "vip2", file: "meaning_of_life_vip2.json", audio: "/room-audio/meaning_of_life_vip2.mp3" },
+          { key: "vip3", file: "meaning_of_life_vip3.json", audio: "/room-audio/meaning_of_life_vip3.json" },
+        ];
+        
+        const loaded = await Promise.all(
+          files.map(async ({ key, file, audio }) => {
+            try {
+              const response = await fetch(`/${file}`);
+              if (response.ok) {
+                const data = await response.json();
+                return { key, data, audio };
+              }
+            } catch (e) {
+              console.warn(`Could not load ${file}`);
+            }
+            return null;
+          })
+        );
+        
+        setTiersData(loaded.filter(Boolean) as any[]);
+      } catch (error) {
+        console.error('Error loading meaning of life data:', error);
+      }
+    };
+    
+    loadData();
   }, []);
 
   const toggleAudio = (tier: string) => {
@@ -48,12 +76,13 @@ const MeaningOfLife = () => {
   };
 
 
-  const tiers = [
-    { key: "free", data: meaningFree, audio: "/room-audio/meaning_of_life_free.mp3" },
-    { key: "vip1", data: meaningVip1, audio: "/room-audio/meaning_of_life_vip1.mp3" },
-    { key: "vip2", data: meaningVip2, audio: "/room-audio/meaning_of_life_vip2.mp3" },
-    { key: "vip3", data: meaningVip3, audio: "/room-audio/meaning_of_life_vip3.mp3" },
-  ];
+  if (tiersData.length === 0) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 p-4 md:p-8 flex items-center justify-center">
+        <p className="text-muted-foreground">Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 p-4 md:p-8">
@@ -68,7 +97,7 @@ const MeaningOfLife = () => {
         </div>
 
         <div className="grid gap-8">
-          {tiers.map(({ key, data, audio }) => (
+          {tiersData.map(({ key, data, audio }) => (
             <Card key={key} className="p-6 md:p-8 space-y-6 border-2 hover:border-primary/50 transition-all">
               <div className="flex items-start justify-between gap-4">
                 <div className="space-y-2 flex-1">
