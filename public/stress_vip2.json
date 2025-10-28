@@ -1,49 +1,40 @@
 {
-  "version": "1.0",
-  "locale": "vi-en",
-  "name": "Stress Relief (VIP 1)",
-  "name_vi": "Giảm Căng Thẳng (VIP 1)",
-  "description": "Intermediate stress management through deep breathing, mindfulness, gentle routines, and positive self-talk.",
+  "tier": "VIP 2",
   "entries": [
     {
-      "slug": "practicing-deep-breathing",
-      "audio": "/audio/en/Practicing_Deep_Breathing_VIP1.mp3",
-      "reply_en": "Deep breathing is one of the most powerful ways to calm the mind and body. Sit or stand tall, inhale slowly through your nose for four counts, hold gently for another four, and exhale through your mouth for six. Feel your shoulders drop and your heartbeat steady. Repeat for two to three minutes whenever tension builds. Each slow breath signals safety to your nervous system. Keep a short journal of how often you breathe consciously and how it shifts your mood. Over time, this practice becomes an anchor you can return to anywhere, anytime. Begin now with one deep breath and feel calm rise within you. Ready to breathe with intention? Explore beyond VIP 1.",
-      "reply_vi": "Hít thở sâu là một trong những cách hiệu quả nhất để làm dịu tâm trí và cơ thể. Hãy ngồi hoặc đứng thẳng, hít vào chậm rãi bằng mũi trong bốn nhịp, giữ nhẹ trong bốn nhịp nữa, rồi thở ra thật chậm bằng miệng trong sáu nhịp. Cảm nhận vai bạn thả lỏng và nhịp tim ổn định. Lặp lại trong hai đến ba phút mỗi khi căng thẳng xuất hiện. Mỗi hơi thở chậm gửi tín hiệu an toàn đến hệ thần kinh. Hãy ghi chú ngắn về tần suất bạn hít thở có ý thức và cách nó thay đổi tâm trạng của bạn. Theo thời gian, việc hít thở này trở thành điểm tựa bình yên mà bạn có thể quay lại bất cứ lúc nào. Hãy bắt đầu ngay bây giờ với một hơi thở sâu và cảm nhận sự tĩnh lặng dâng lên bên trong. Sẵn sàng hít thở có chủ đích chứ? Hãy khám phá thêm vượt ngoài cấp VIP 1.",
-      "dare": "Thực hành 3 phút hít thở sâu trước khi bắt đầu một công việc khó.",
-      "mood": "calm",
-      "keywords": ["deep breathing", "calm", "relaxation"],
-      "synonyms": ["controlled breath", "focused breathing", "steady inhale"]
+      "title": "Practicing Deep Breathing",
+      "content": "Deep breathing is one of the most powerful ways to calm the mind and body. Sit or stand tall, inhale slowly through your nose for four counts, hold gently for another four, and exhale through your mouth for six. Feel your shoulders drop and your heartbeat steady. Repeat for two to three minutes whenever tension builds. Each slow breath signals safety to your nervous system. Keep a short journal of how often you breathe consciously and how it shifts your mood. Over time, this practice becomes an anchor you can return to anywhere, anytime. Begin now with one deep breath and feel calm rise within you. Ready to breathe with intention? Explore beyond VIP 1.",
+      "audio": "Practicing_Deep_Breathing_VIP1.mp3"
     },
     {
-      "slug": "building-mindful-awareness",
-      "audio": "/audio/en/Building_Mindful_Awareness_VIP1.mp3",
-      "reply_en": "Mindful awareness transforms stress into presence. Once a day, pause for sixty seconds to notice something real—the warmth of light, the rhythm of your breath, the hum of background sound. Let thoughts drift without judgment. This short practice re-grounds you when life feels rushed. Each week, write a few lines about what awareness revealed—perhaps gratitude, peace, or a new perspective. Over time, mindfulness creates mental space where reaction turns into choice. Start small; one calm minute a day can reshape your focus. Take a mindful pause now and notice one simple detail around you. Ready to nurture steady awareness? Explore beyond VIP 1.",
-      "reply_vi": "Chánh niệm giúp biến căng thẳng thành sự hiện diện bình an. Mỗi ngày, hãy dừng lại trong một phút để nhận biết điều gì đó thật — hơi ấm của ánh sáng, nhịp thở, hay âm thanh xung quanh. Hãy để suy nghĩ trôi qua mà không phán xét. Thói quen ngắn này giúp bạn quay lại với thực tại khi cuộc sống trở nên vội vã. Mỗi tuần, hãy viết vài dòng về điều mà sự chú tâm mang lại — có thể là lòng biết ơn, sự yên bình, hoặc một góc nhìn mới. Theo thời gian, chánh niệm tạo ra không gian tinh thần, nơi phản ứng trở thành sự lựa chọn. Hãy bắt đầu nhỏ, chỉ một phút tĩnh lặng mỗi ngày cũng có thể thay đổi sự tập trung của bạn. Hãy dừng lại ngay bây giờ và quan sát một điều đơn giản quanh bạn. Sẵn sàng nuôi dưỡng sự tỉnh thức ổn định chứ? Hãy khám phá thêm vượt ngoài cấp VIP 1.",
-      "dare": "Dành 1 phút hôm nay để quan sát hơi thở và không gian xung quanh bạn.",
-      "mood": "peaceful",
-      "keywords": ["mindful awareness", "presence", "reflection"],
-      "synonyms": ["mindfulness", "calm observation", "inner focus"]
+      "title": "Building Mindful Awareness",
+      "content": "Mindful awareness transforms stress into presence. Once a day, pause for sixty seconds to notice something real—the warmth of light, the rhythm of your breath, the hum of background sound. Let thoughts drift without judgment. This short practice re-grounds you when life feels rushed. Each week, write a few lines about what awareness revealed—perhaps gratitude, peace, or a new perspective. Over time, mindfulness creates mental space where reaction turns into choice. Start small; one calm minute a day can reshape your focus. Take a mindful pause now and notice one simple detail around you. Ready to nurture steady awareness? Explore beyond VIP 1.",
+      "audio": "Building_Mindful_Awareness_VIP1.mp3"
     },
     {
-      "slug": "creating-stress-reducing-routines",
-      "audio": "/audio/en/Creating_Stress_Reducing_Routines_VIP1.mp3",
-      "reply_en": "Calm grows through structure. Design one daily habit that soothes your mind—perhaps a ten-minute walk, a warm cup of tea in silence, or evening journaling. Keep it gentle and consistent. Record each session’s effect on mood and tension. These small rituals train your brain to expect rest, not rush. When stressful days arise, routine offers comfort and predictability. Adjust timing or activity as needed; flexibility keeps habits sustainable. Over weeks, these steady moments stitch together a calmer life. Begin tonight by planning one soothing ritual for tomorrow. Ready to make peace part of your schedule? Explore beyond VIP 1.",
-      "reply_vi": "Sự bình yên phát triển từ cấu trúc ổn định. Hãy tạo cho mình một thói quen hằng ngày giúp làm dịu tâm trí — có thể là đi bộ mười phút, nhâm nhi tách trà trong im lặng, hoặc viết nhật ký buổi tối. Hãy giữ thói quen nhẹ nhàng và đều đặn. Ghi lại cảm nhận sau mỗi lần thực hành, chú ý đến sự thay đổi trong tâm trạng và căng thẳng. Những nghi thức nhỏ này giúp não bộ học cách mong đợi sự nghỉ ngơi thay vì vội vã. Khi ngày trở nên áp lực, thói quen mang lại sự thoải mái và dự đoán được. Hãy linh hoạt điều chỉnh thời gian hoặc hoạt động để duy trì sự bền vững. Theo thời gian, những khoảnh khắc ổn định này sẽ dệt nên một cuộc sống bình an hơn. Hãy bắt đầu tối nay bằng việc lên kế hoạch cho một nghi thức thư giãn cho ngày mai. Sẵn sàng biến bình yên thành thói quen chứ? Hãy khám phá thêm vượt ngoài cấp VIP 1.",
-      "dare": "Lên kế hoạch và thực hiện một nghi thức thư giãn nhỏ vào tối nay.",
-      "mood": "grounded",
-      "keywords": ["stress reducing", "routines", "calm habits"],
-      "synonyms": ["rituals", "daily balance", "habit design"]
+      "title": "Creating Stress-Reducing Routines",
+      "content": "Calm grows through structure. Design one daily habit that soothes your mind—perhaps a ten-minute walk, a warm cup of tea in silence, or evening journaling. Keep it gentle and consistent. Record each session’s effect on mood and tension. These small rituals train your brain to expect rest, not rush. When stressful days arise, routine offers comfort and predictability. Adjust timing or activity as needed; flexibility keeps habits sustainable. Over weeks, these steady moments stitch together a calmer life. Begin tonight by planning one soothing ritual for tomorrow. Ready to make peace part of your schedule? Explore beyond VIP 1.",
+      "audio": "Creating_Stress_Reducing_Routines_VIP1.mp3"
     },
     {
-      "slug": "using-positive-self-talk",
-      "audio": "/audio/en/Using_Positive_Self_Talk_VIP1.mp3",
-      "reply_en": "The way you speak to yourself shapes how you handle stress. Replace harsh thoughts with kind, realistic phrases such as “I’m doing my best” or “I can handle this step.” Repeat one affirmation aloud each morning and again during tense moments. Write it on a note where you’ll see it often. Notice how tone and posture shift when you talk to yourself with compassion. Track these changes weekly to see patterns of strength emerging. Positive self-talk doesn’t ignore challenges—it gives you courage to face them gently. Begin now by saying one supportive phrase with a deep breath. Ready to strengthen calm from within? Explore beyond VIP 1.",
-      "reply_vi": "Cách bạn nói với chính mình định hình cách bạn đối diện với căng thẳng. Hãy thay những suy nghĩ gay gắt bằng những câu nhẹ nhàng và thực tế như “Tôi đang làm hết sức mình” hoặc “Tôi có thể vượt qua điều này từng bước một.” Lặp lại một lời khẳng định tích cực mỗi sáng và trong những lúc căng thẳng. Viết nó ra giấy và đặt ở nơi bạn dễ nhìn thấy. Hãy để ý cách giọng điệu và tư thế của bạn thay đổi khi nói với bản thân bằng lòng nhân hậu. Ghi lại sự thay đổi đó mỗi tuần để nhận ra những dấu hiệu mạnh mẽ đang hình thành. Tự nhủ tích cực không phải là né tránh khó khăn — nó giúp bạn có dũng khí đối mặt nhẹ nhàng hơn. Hãy bắt đầu ngay bây giờ bằng cách nói một câu động viên cùng với một hơi thở sâu. Sẵn sàng nuôi dưỡng sự bình tĩnh từ bên trong chứ? Hãy khám phá thêm vượt ngoài cấp VIP 1.",
-      "dare": "Viết và đọc to một câu khẳng định tích cực mỗi sáng trong 3 ngày tới.",
-      "mood": "encouraged",
-      "keywords": ["positive self-talk", "affirmations", "resilience"],
-      "synonyms": ["self-kindness", "compassionate speech", "empowering words"]
+      "title": "Using Positive Self-Talk",
+      "content": "The way you speak to yourself shapes how you handle stress. Replace harsh thoughts with kind, realistic phrases such as “I’m doing my best” or “I can handle this step.” Repeat one affirmation aloud each morning and again during tense moments. Write it on a note where you’ll see it often. Notice how tone and posture shift when you talk to yourself with compassion. Track these changes weekly to see patterns of strength emerging. Positive self-talk doesn’t ignore challenges—it gives you courage to face them gently. Begin now by saying one supportive phrase with a deep breath. Ready to strengthen calm from within? Explore beyond VIP 1.",
+      "audio": "Using_Positive_Self_Talk_VIP1.mp3"
     }
-  ]
+  ],
+  "keywords": {
+    "intermediate_stress_management": {
+      "en": ["deep breathing", "mindful awareness", "stress-reducing routines", "positive self-talk"],
+      "vi": ["hít thở sâu", "tỉnh táo nhận thức", "thói quen giảm căng thẳng", "tự nói tích cực"]
+    }
+  },
+  "meta": {
+    "created_at": "2025-10-25T11:12:00+09:00",
+    "updated_at": "2025-10-25T11:45:00+09:00",
+    "entry_count": 4,
+    "artifact_set_id": "9c0d1e2f-3a4b-4c5d-b6e7-d8f9a0b1c2d4",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#D7CCC8",
+    "tier": "vip2"
+  }
 }

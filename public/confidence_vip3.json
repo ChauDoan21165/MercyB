@@ -1,83 +1,64 @@
 {
-  "name": "Confidence VIP3",
-  "name_vi": "Tự Tin VIP3",
-  "description": "Master unshakable confidence through deep awareness, self-compassion, value-aligned goals, and mentoring others.",
+  "tier": "VIP 3",
   "entries": [
     {
-      "id": "01",
       "title": "Deepening Confidence through Awareness",
-      "keywords_en": ["awareness", "resilience", "reflection", "inner voice"],
-      "keywords_vi": ["nhận thức", "kiên cường", "suy ngẫm", "giọng nội tâm"],
-      "reply_en": "Each morning, name one strength that carried you. Journal what made you feel alive. Ask a friend for insight monthly. Awareness builds trust.",
-      "reply_vi": "Mỗi sáng, nêu tên một điểm mạnh đã nâng đỡ bạn. Ghi nhật ký điều khiến bạn sống động. Hỏi bạn bè để mở rộng góc nhìn hàng tháng. Nhận thức xây dựng niềm tin.",
-      "dare": "Name one strength that defines you.",
-      "audio": "01_deepening_awareness.mp3",
-      "duration": "00:55"
+      "content": "Confidence begins with awareness—the quiet observation of your strengths and inner voice. Each morning, reflect on one quality that defines your resilience. Write it down and notice how it shapes your actions throughout the day. At week’s end, journal what made you feel most alive, not just what went well. Once a month, invite a trusted friend’s feedback to broaden perspective. This practice turns self-reflection into steady self-trust. True awareness isn’t perfection; it’s honest acceptance. When you know your worth, challenges lose their power. Begin today by naming one strength that has carried you through storms. Breathe gratitude into it and let awareness guide you forward. Ready to deepen your confidence? Explore beyond VIP 3.",
+      "audio": "Deepening_Confidence_through_Awareness_VIP3.mp3"
     },
     {
-      "id": "02",
       "title": "Overcoming Confidence Barriers",
-      "keywords_en": ["barriers", "fear", "reframe", "courage"],
-      "keywords_vi": ["rào cản", "sợ hãi", "chuyển khung", "can đảm"],
-      "reply_en": "Spot one limiting thought. Rewrite: 'I am learning.' Breathe through fear. Journal weekly wins. Share your journey with a listener.",
-      "reply_vi": "Phát hiện một suy nghĩ giới hạn. Viết lại: 'Tôi đang học.' Thở qua nỗi sợ. Ghi nhật ký chiến thắng hàng tuần. Chia sẻ hành trình với người lắng nghe.",
-      "dare": "Rewrite one negative thought now.",
-      "audio": "02_overcoming_barriers.mp3",
-      "duration": "00:53"
+      "content": "Barriers to confidence often hide as small fears—fear of judgment, of failure, of not being enough. Face them gently, one at a time. Each morning, identify a thought that limits you and rewrite it with compassion: “I am learning,” “I am growing,” or simply, “I can.” Keep a weekly journal to track these reframes and celebrate each step forward, no matter how small. When fear arises, breathe through it instead of fighting it. Courage is built in these quiet moments of choosing calm over avoidance. Share your journey with someone who listens without fixing. Growth becomes lighter when shared. Begin today by meeting one fear with curiosity rather than resistance. Ready to step past limitation? Explore beyond VIP 3.",
+      "audio": "Overcoming_Confidence_Barriers_VIP3.mp3"
     },
     {
-      "id": "03",
       "title": "Advanced Social Strategies",
-      "keywords_en": [
-        "social mastery",
-        "authenticity",
-        "body language",
-        "curiosity"
-      ],
-      "keywords_vi": [
-        "làm chủ xã hội",
-        "chân thực",
-        "ngôn ngữ cơ thể",
-        "tò mò"
-      ],
-      "reply_en": "Ask: 'What inspires you?' Use steady eyes, soft smiles. Attend one event monthly. Reflect on genuine moments. Be real, not perfect.",
-      "reply_vi": "Hỏi: 'Điều gì truyền cảm hứng cho bạn?' Dùng ánh mắt vững, nụ cười dịu. Tham gia một sự kiện mỗi tháng. Suy ngẫm về khoảnh khắc chân thật. Là chính mình, không cần hoàn hảo.",
-      "dare": "Ask one deep question today.",
-      "audio": "03_advanced_social.mp3",
-      "duration": "00:52"
+      "content": "Confidence in connection grows through authentic engagement, not performance. Before social events, take a breath and remind yourself that presence matters more than perfection. Begin one deep conversation each week by asking questions that open the heart, such as, “What inspires you most right now?” Attend community gatherings or workshops monthly to practice natural interaction. Focus on body language—steady eye contact, gentle smiles, relaxed shoulders. Afterward, reflect in your journal on the exchanges that felt most genuine. Each experience strengthens emotional intelligence and social ease. True mastery is not speaking flawlessly but being real enough to listen deeply. Begin today with one moment of honest curiosity in conversation. Ready to shine through authenticity? Explore beyond VIP 3.",
+      "audio": "Advanced_Social_Strategies_VIP3.mp3"
     },
     {
-      "id": "04",
       "title": "Practicing Self-Compassion",
-      "keywords_en": ["compassion", "kindness", "acceptance", "resilience"],
-      "keywords_vi": ["từ bi", "tử tế", "chấp nhận", "kiên cường"],
-      "reply_en": "Say: 'I am enough today.' Replace criticism with understanding. Journal compassion moments. Offer kindness to another. Soften to strengthen.",
-      "reply_vi": "Nói: 'Hôm nay tôi đủ rồi.' Thay chỉ trích bằng thấu hiểu. Ghi nhật ký khoảnh khắc từ bi. Đưa ra lòng tốt cho người khác. Mềm mại để mạnh mẽ.",
-      "dare": "Forgive yourself for one mistake.",
-      "audio": "04_self_compassion.mp3",
-      "duration": "00:50"
+      "content": "Confidence thrives in kindness toward oneself. Begin each morning by offering gentle words of acceptance—'I am enough as I am today.' When mistakes occur, replace harsh criticism with understanding. Journal weekly about moments when you showed yourself compassion instead of pressure. Share one kind gesture with someone else to reinforce empathy as a habit. Notice how softening your own heart strengthens your resilience. Self-compassion doesn’t weaken drive; it sustains it. True confidence is not flawless execution—it is the ability to stay kind in the face of imperfection. Begin today with one small act of forgiveness for yourself. Ready to meet your reflection with warmth? Explore beyond VIP 3.",
+      "audio": "Practicing_Self_Compassion_VIP3.mp3"
     },
     {
-      "id": "05",
       "title": "Aligning Goals with Values",
-      "keywords_en": ["values", "alignment", "purpose", "consistency"],
-      "keywords_vi": ["giá trị", "căn chỉnh", "mục đích", "kiên định"],
-      "reply_en": "Name what matters: growth, honesty, service. Review actions weekly. Adjust gently. Discuss with peers. Act from values, not urgency.",
-      "reply_vi": "Nêu tên điều quan trọng: phát triển, trung thực, phục vụ. Xem lại hành động hàng tuần. Điều chỉnh nhẹ nhàng. Thảo luận với bạn đồng hành. Hành động từ giá trị, không gấp gáp.",
-      "dare": "Take one step true to your values.",
-      "audio": "05_aligning_goals.mp3",
-      "duration": "00:51"
+      "content": "When your goals reflect your values, confidence feels effortless. Start by naming what truly matters—growth, honesty, creativity, or service. Each week, review your actions and see how they align with these principles. Adjust direction gently when tension appears. Write monthly reflections about progress that feels meaningful, not just productive. Discuss aspirations with trusted peers who challenge and inspire you. Let consistency replace urgency. Over time, every decision shaped by values becomes an act of self-trust. Alignment brings both clarity and calm purpose. Today, choose one small step that honors your highest value. Begin it with intention and joy. Ready to lead from inner alignment? Explore beyond VIP 3.",
+      "audio": "Aligning_Goals_with_Values_VIP3.mp3"
     },
     {
-      "id": "06",
       "title": "Mentoring Confidence in Others",
-      "keywords_en": ["mentoring", "leadership", "empathy", "inspiration"],
-      "keywords_vi": ["hướng dẫn", "lãnh đạo", "thấu cảm", "truyền cảm hứng"],
-      "reply_en": "Share one courage story. Listen deeply. Reflect on what mentoring teaches you. Help others rise — your light grows too.",
-      "reply_vi": "Chia sẻ một câu chuyện can đảm. Lắng nghe sâu. Suy ngẫm điều hướng dẫn dạy bạn. Giúp người khác vươn lên — ánh sáng của bạn cũng lớn hơn.",
-      "dare": "Encourage one person today.",
-      "audio": "06_mentoring_confidence.mp3",
-      "duration": "00:54"
+      "content": "Teaching confidence deepens your own. Offer to mentor or simply support someone beginning their journey. Share one personal story of learning courage and listen as they share theirs. Write monthly reflections on what guiding others reveals about your own strengths. Each act of service reinforces self-belief—not through ego, but empathy. When you help others grow, you expand the space for your own confidence to breathe. True mentoring is not instruction; it is presence, encouragement, and trust in shared potential. Begin today with one kind word that lifts someone’s spirit. Your light strengthens when it helps others shine. Ready to inspire through quiet leadership? Explore beyond VIP 3.",
+      "audio": "Mentoring_Confidence_in_Others_VIP3.mp3"
     }
-  ]
+  ],
+  "keywords": {
+    "personalized_confidence": {
+      "en": [
+        "deep awareness",
+        "overcome barriers",
+        "advanced social strategies",
+        "self compassion",
+        "value aligned goals",
+        "mentoring confidence"
+      ],
+      "vi": [
+        "nhận thức sâu sắc",
+        "vượt qua rào cản",
+        "chiến lược xã hội nâng cao",
+        "tự thấu cảm",
+        "mục tiêu phù hợp giá trị",
+        "hướng dẫn tự tin"
+      ]
+    }
+  },
+  "meta": {
+    "created_at": "2025-10-25T10:58:00+09:00",
+    "updated_at": "2025-10-25T10:58:00+09:00",
+    "entry_count": 6,
+    "artifact_set_id": "1a2b3c4d-5e6f-47a8-b9c0-d1e2f3a4b5c6",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#C5A671",
+    "tier": "vip3"
+  }
 }

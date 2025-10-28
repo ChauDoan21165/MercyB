@@ -1,27 +1,203 @@
 {
-  "version": "1.0",
-  "locale": "vi-en",
-  "name": "Stoic Philosophy (VIP 2)",
-  "name_vi": "Triết Học Khắc Kỷ (VIP 2)",
-  "description": "Advanced Stoic wisdom: virtue, acceptance, discipline, and philosophical depth.",
-  "entries": [
-    {
-      "slug": "virtue-in-action",
-      "keywords_en": ["virtue", "integrity", "wisdom", "justice", "courage"],
-      "keywords_vi": ["đức hạnh", "chính trực", "trí tuệ", "công lý", "dũng khí"],
-      "copy": {
-        "en": "Live virtue through daily alignment with wisdom, justice, courage, and temperance. Each morning, choose one virtue to embody. When faced with choices, ask: 'What would the wise person do?' Epictetus taught that virtue is the only true good. Practice integrity in small things: keep promises, speak truth, act fairly. This builds character that withstands any storm.",
-        "vi": "Sống đức hạnh qua việc điều chỉnh hàng ngày với trí tuệ, công lý, dũng khí và tiết độ. Mỗi sáng, chọn một đức hạnh để thể hiện. Khi đối mặt với lựa chọn, hãy tự hỏi: 'Người khôn ngoan sẽ làm gì?' Epictetus dạy rằng đức hạnh là điều tốt đẹp duy nhất thật sự. Thực hành chính trực trong những việc nhỏ: giữ lời hứa, nói sự thật, hành động công bằng. Điều này xây dựng nhân cách chịu đựng được mọi cơn bão."
-      },
-      "tags": ["stoicism", "virtue", "integrity"],
-      "audio": "/stoicism_virtue_vip2.mp3"
-    }
-  ],
-  "meta": {
-    "created_at": "2025-10-27T00:00:00+00:00",
-    "updated_at": "2025-10-27T00:00:00+00:00",
-    "entry_count": 1,
-    "tier": "vip2",
-    "room_color": "#6B8E23"
-  }
+"tier": "VIP 2 / Cấp VIP 2",
+"default_entry_id": "balanced_generosity",
+"welcome": {
+"en": "Hello! Welcome to Stoic Philosophy VIP2 room. How can I help you today?\n\nTopic keywords you can type are below:\n- balanced_generosity\n- self_awareness_balance\n- confident_boundaries\n- self_care_strength\n- relationship_discernment\n- virtuous_action_respect\n- avoid_dependency\n- stoic_moderation\n- protect_energy",
+"vi": "Xin chào! Chào mừng bạn đến với phòng Triết Học Stoic VIP2. Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:\n- rộng_lượng_cân_bằng\n- tự_nhận_thức_cân_bằng\n- ranh_giới_tự_tin\n- tự_chăm_sóc_để_mạnh_mẽ\n- phân_biệt_trong_mối_quan_hệ\n- hành_động_đức_hạnh_để_được_tôn_trọng\n- tránh_phụ_thuộc\n- tiết_độ_stoic\n- bảo_vệ_năng_lượng"
+},
+"search": {
+"normalize_case": true,
+"normalize_accents": true,
+"tokenize_on": [" ", "_"]
+},
+"keyword_menu": {
+"en": [
+"balanced_generosity",
+"self_awareness_balance",
+"confident_boundaries",
+"self_care_strength",
+"relationship_discernment",
+"virtuous_action_respect",
+"avoid_dependency",
+"stoic_moderation",
+"protect_energy"
+],
+"vi": [
+"rong_luong_can_bang",
+"tu_nhan_thuc_can_bang",
+"ranh_gioi_tu_tin",
+"tu_cham_soc_de_manh_me",
+"phan_biet_trong_moi_quan_he",
+"hanh_dong_duc_hanh_de_duoc_ton_trong",
+"tranh_phu_thuoc",
+"tiet_do_stoic",
+"bao_ve_nang_luong"
+]
+},
+"keywords_dict": {
+"balanced_generosity": {
+"en": ["balanced_generosity", "generosity", "moderation in giving", "boundaries in helping", "inner peace"],
+"vi": ["rong_luong_can_bang", "rộng lượng cân bằng", "tiet_do_khi_cho", "tiết độ khi cho", "hoa_binh_noi_tam", "hòa bình nội tâm"]
+},
+"self_awareness_balance": {
+"en": ["self_awareness_balance", "self awareness", "emotional balance", "journaling", "know limits"],
+"vi": ["tu_nhan_thuc_can_bang", "tự nhận thức cân bằng", "can_bang_cam_xuc", "cân bằng cảm xúc", "nhat_ky", "nhật ký", "gioi_han_ban_than", "giới hạn bản thân"]
+},
+"confident_boundaries": {
+"en": ["confident_boundaries", "set boundaries", "say no", "self discipline"],
+"vi": ["ranh_gioi_tu_tin", "ranh giới tự tin", "noi_khong", "nói không", "tu_ky_luat", "tự kỷ luật"]
+},
+"self_care_strength": {
+"en": ["self_care_strength", "self care", "rest and exercise", "avoid burnout"],
+"vi": ["tu_cham_soc_de_manh_me", "tự chăm sóc để mạnh mẽ", "nghi_ngoi_va_van_dong", "nghỉ ngơi và vận động", "tranh_kiet_suc", "tránh kiệt sức"]
+},
+"relationship_discernment": {
+"en": ["relationship_discernment", "discernment", "choose who to help", "uplifting bonds"],
+"vi": ["phan_biet_trong_moi_quan_he", "phân biệt trong mối quan hệ", "chon_nguoi_de_giup", "chọn người để giúp", "ket_noi_nang_do", "kết nối nâng đỡ"]
+},
+"virtuous_action_respect": {
+"en": ["virtuous_action_respect", "integrity", "earn respect", "act with virtue"],
+"vi": ["hanh_dong_duc_hanh_de_duoc_ton_trong", "hành động đức hạnh để được tôn trọng", "chinh_truc", "chính trực", "duc_hanh", "đức hạnh"]
+},
+"avoid_dependency": {
+"en": ["avoid_dependency", "dependency traps", "encourage self reliance", "guidance not rescue"],
+"vi": ["tranh_phu_thuoc", "tránh phụ thuộc", "khuyen_khich_tu_luc", "khuyến khích tự lực", "huong_dan_khong_cuu_ho", "hướng dẫn không cứu hộ"]
+},
+"stoic_moderation": {
+"en": ["stoic_moderation", "moderation", "balance kindness", "avoid resentment"],
+"vi": ["tiet_do_stoic", "tiết độ stoic", "can_bang_long_tot", "cân bằng lòng tốt", "tranh_oan_trach", "tránh oán trách"]
+},
+"protect_energy": {
+"en": ["protect_energy", "energy vampires", "limit contact", "wise relationships"],
+"vi": ["bao_ve_nang_luong", "bảo vệ năng lượng", "han_che_tiep_xuc", "hạn chế tiếp xúc", "quan_he_khon_ngoan", "quan hệ khôn ngoan"]
+}
+},
+"entries": [
+{
+"id": "balanced_generosity",
+"title": {
+"en": "Balanced Generosity for Inner Peace",
+"vi": "Rộng Lượng Cân Bằng Để An Nhiên"
+},
+"content": {
+"en": "Stoics like Epictetus advocate moderation in giving to preserve inner peace. Excessive kindness breeds dependency, draining energy. Sarah gave endlessly, expecting reciprocity, but faced disappointment. Practice: give thoughtfully, assess your capacity daily. Reflect: does helping align with my well-being? This Stoic balance maintains mental clarity, fostering calm strength. Avoid overextending; prioritize self-care to sustain generosity without resentment. True kindness respects personal limits, ensuring peace in relationships and goals. Discover deeper insights in VIP 3.",
+"vi": "Những người Stoic như Epictetus khuyên tiết độ khi cho để gìn giữ bình an nội tâm. Quá tử tế dễ nuôi sự lệ thuộc và làm cạn năng lượng. Sarah cho đi không ngừng, mong được đáp lại và rồi thất vọng. Thực hành: cho một cách có suy xét, tự lượng sức mình mỗi ngày. Tự hỏi: sự giúp đỡ này có phù hợp với an lành của tôi không? Sự cân bằng theo Stoic giữ cho tâm trí sáng suốt, nuôi dưỡng sức mạnh điềm tĩnh. Tránh quá sức; ưu tiên tự chăm sóc để rộng lượng bền lâu, không sinh oán trách. Lòng tốt chân thật tôn trọng giới hạn cá nhân, giữ bình yên cho quan hệ và mục tiêu. Khám phá sâu hơn ở VIP 3."
+},
+"audio": {
+"en": "balanced_generosity_VIP2.mp3"
+}
+},
+{
+"id": "self_awareness_balance",
+"title": {
+"en": "Self-Awareness for Emotional Balance",
+"vi": "Tự Nhận Thức Để Cân Bằng Cảm Xúc"
+},
+"content": {
+"en": "Marcus Aurelius emphasized self-awareness to understand emotions, preventing over-giving. Emma’s constant aid to others left her exhausted, ignoring her feelings. Practice: journal daily to identify emotional strain from helping. Ask: am I giving beyond my means? This Stoic skill fosters balance, reducing anger or sadness from unmet expectations. Recognize your limits to maintain equanimity, aligning actions with inner health for calm, sustainable relationships. Discover deeper insights in VIP 3.",
+"vi": "Marcus Aurelius đề cao tự nhận thức để hiểu cảm xúc, tránh cho đi quá mức. Emma liên tục giúp người khác đến kiệt sức, bỏ quên cảm nhận của chính mình. Thực hành: viết nhật ký mỗi ngày để nhận diện căng thẳng cảm xúc do việc giúp đỡ. Tự hỏi: tôi có đang cho đi vượt quá khả năng không? Kỹ năng Stoic này tạo cân bằng, giảm giận dữ hay buồn bã khi kỳ vọng không được đáp lại. Nhận ra giới hạn để giữ tâm bình, cho hành động hòa hợp với sức khỏe nội tâm và nuôi dưỡng các mối quan hệ bền vững. Khám phá sâu hơn ở VIP 3."
+},
+"audio": {
+"en": "self_awareness_balance_VIP2.mp3"
+}
+},
+{
+"id": "confident_boundaries",
+"title": {
+"en": "Setting Boundaries with Confidence",
+"vi": "Thiết Lập Ranh Giới Với Sự Tự Tin"
+},
+"content": {
+"en": "Stoics teach self-discipline through saying ‘no’ to protect energy. John’s endless favors led to exploitation until he set limits. Practice: rehearse saying ‘no’ calmly, assess requests against your priorities. Epictetus: control your choices, not others’ demands. This builds respect, preventing perceived weakness. Boundaries align with Stoic virtue, fostering confident interactions. Refuse unfair requests to preserve mental clarity, ensuring balanced relationships and personal strength. Discover deeper insights in VIP 3.",
+"vi": "Stoic dạy rèn kỷ luật bằng cách dám nói “không” để bảo vệ năng lượng. John làm ơn không dứt nên bị lợi dụng cho đến khi đặt ra giới hạn. Thực hành: tập nói “không” một cách điềm tĩnh, cân nhắc đề nghị dựa trên ưu tiên của bạn. Epictetus: hãy làm chủ lựa chọn của mình, không phải đòi hỏi của người khác. Điều này gây dựng sự tôn trọng, ngăn người khác xem thường bạn. Ranh giới phù hợp với đức hạnh Stoic, giúp tương tác tự tin. Từ chối yêu cầu bất công để giữ tâm sáng và gìn giữ quan hệ cân bằng lẫn nội lực. Khám phá sâu hơn ở VIP 3."
+},
+"audio": {
+"en": "confident_boundaries_VIP2.mp3"
+}
+},
+{
+"id": "self_care_strength",
+"title": {
+"en": "Prioritizing Self-Care for Strength",
+"vi": "Ưu Tiên Tự Chăm Sóc Để Mạnh Mẽ"
+},
+"content": {
+"en": "Seneca valued self-care as foundational for helping others. Lisa neglected her needs, aiding friends, and faced burnout. Practice: schedule daily self-care—exercise, rest, hobbies—before assisting others. Ask: am I whole enough to give? This Stoic principle builds strength, ensuring sustainable kindness. Prioritize personal health to avoid emotional depletion, fostering resilience. Balanced self-care enhances your capacity to help without sacrificing well-being, aligning with virtuous living. Discover deeper insights in VIP 3.",
+"vi": "Seneca xem tự chăm sóc là nền tảng để có thể giúp người khác. Lisa bỏ quên nhu cầu của mình khi hỗ trợ bạn bè và kiệt sức. Thực hành: lên lịch tự chăm sóc mỗi ngày — vận động, nghỉ ngơi, sở thích — trước khi giúp người khác. Tự hỏi: tôi đã đủ đầy để cho đi chưa? Nguyên tắc Stoic này xây nền sức mạnh, khiến lòng tốt bền lâu. Ưu tiên sức khỏe cá nhân để tránh cạn kiệt cảm xúc và nuôi dưỡng khả năng hồi phục. Tự chăm sóc cân bằng làm tăng năng lực giúp người mà vẫn gìn giữ an lạc, phù hợp đời sống đức hạnh. Khám phá sâu hơn ở VIP 3."
+},
+"audio": {
+"en": "self_care_strength_VIP2.mp3"
+}
+},
+{
+"id": "relationship_discernment",
+"title": {
+"en": "Discernment in Relationships",
+"vi": "Sự Phân Biệt Trong Các Mối Quan Hệ"
+},
+"content": {
+"en": "Stoics like Epictetus stress discernment to choose who to help. Tom’s generosity attracted opportunists until he prioritized genuine connections. Practice: evaluate relationships weekly—do they uplift or drain? This Stoic wisdom prevents energy waste, fostering mutual bonds. Avoid those seeking only gain; align with those sharing positive energy. Discernment protects mental clarity, ensuring kindness supports meaningful relationships, not exploitation, for balanced, fulfilling interactions. Discover deeper insights in VIP 3.",
+"vi": "Những Stoic như Epictetus nhấn mạnh sự phân biệt để biết nên giúp ai. Lòng hào phóng của Tom thu hút kẻ lợi dụng cho đến khi anh ưu tiên những kết nối chân thành. Thực hành: đánh giá các mối quan hệ mỗi tuần — chúng nâng đỡ hay bào mòn bạn? Trí tuệ Stoic giúp tránh lãng phí năng lượng và nuôi dưỡng sự gắn kết hai chiều. Tránh những ai chỉ tìm lợi; đồng hành với người lan tỏa tích cực. Sự phân biệt gìn giữ tâm trí sáng suốt, để lòng tốt phục vụ quan hệ ý nghĩa thay vì bị lợi dụng. Khám phá sâu hơn ở VIP 3."
+},
+"audio": {
+"en": "relationship_discernment_VIP2.mp3"
+}
+},
+{
+"id": "virtuous_action_respect",
+"title": {
+"en": "Virtuous Action for Respect",
+"vi": "Hành Động Đức Hạnh Để Được Tôn Trọng"
+},
+"content": {
+"en": "Stoicism teaches acting with integrity to earn respect, not weakness. Anna’s over-giving led others to dismiss her strength. Practice: align actions with virtue—wisdom, justice—daily. Epictetus: live by principles, not others’ views. Refuse excessive demands to project self-discipline. This builds a respected image, countering exploitation. Virtuous actions foster calm confidence, ensuring kindness reflects strength, not vulnerability, in relationships and endeavors. Discover deeper insights in VIP 3.",
+"vi": "Stoicism dạy hành động với chính trực để được tôn trọng, không phải yếu mềm. Việc cho đi quá mức khiến người khác xem nhẹ sức mạnh của Anna. Thực hành: mỗi ngày điều chỉnh hành động theo đức hạnh — trí tuệ, công chính. Epictetus: sống theo nguyên tắc, đừng sống theo ánh nhìn người khác. Từ chối đòi hỏi quá đáng để thể hiện kỷ luật tự thân. Điều này xây hình ảnh đáng trọng, ngăn sự lợi dụng. Hành động đức hạnh nuôi dưỡng tự tin điềm tĩnh, để lòng tốt phản chiếu sức mạnh chứ không phơi bày yếu đuối. Khám phá sâu hơn ở VIP 3."
+},
+"audio": {
+"en": "virtuous_action_respect_VIP2.mp3"
+}
+},
+{
+"id": "avoid_dependency",
+"title": {
+"en": "Avoiding Dependency Traps",
+"vi": "Tránh Những Cái Bẫy Phụ Thuộc"
+},
+"content": {
+"en": "Stoics warn against fostering dependency through excessive giving. Mark’s constant help made others reliant, draining him. Practice: limit aid to encourage self-reliance; offer guidance, not solutions. Epictetus: focus on what’s rational, not habitual. This prevents others’ comfort zones from trapping you. Moderate kindness to maintain balance, fostering mutual growth in relationships. Avoid dependency to preserve energy, aligning with Stoic self-control for sustainable connections. Discover deeper insights in VIP 3.",
+"vi": "Stoic cảnh báo việc cho quá mức sẽ nuôi sự phụ thuộc. Sự giúp đỡ liên tục của Mark khiến người khác ỷ lại và anh kiệt sức. Thực hành: giới hạn hỗ trợ để khuyến khích tự lực; đưa định hướng thay vì làm hộ. Epictetus: chú trọng điều hợp lý, không chạy theo thói quen. Cách này tránh để vùng an toàn của người khác biến thành chiếc bẫy cho bạn. Giữ lòng tốt ở mức vừa phải để cân bằng và cùng lớn lên trong quan hệ. Tránh phụ thuộc để bảo toàn năng lượng, hợp với tự chủ kiểu Stoic cho kết nối bền vững. Khám phá sâu hơn ở VIP 3."
+},
+"audio": {
+"en": "avoid_dependency_VIP2.mp3"
+}
+},
+{
+"id": "stoic_moderation",
+"title": {
+"en": "Cultivating Stoic Moderation",
+"vi": "Bồi Dưỡng Đức Tiết Độ Stoic"
+},
+"content": {
+"en": "Seneca advocated moderation to balance kindness with self-discipline. Claire’s over-generosity led to resentment until she set limits. Practice: give within your capacity, reflect nightly on balance. Ask: does my kindness harm me? This Stoic principle prevents emotional exhaustion, fostering calm, rational giving. Moderation aligns with virtue, ensuring generosity strengthens, not weakens, your mental clarity and relationships for lasting peace. Discover deeper insights in VIP 3.",
+"vi": "Seneca đề cao tiết độ để cân bằng lòng tốt với kỷ luật bản thân. Lòng hào phóng quá mức khiến Claire sinh oán trách cho đến khi cô đặt giới hạn. Thực hành: cho trong khả năng, mỗi tối phản tỉnh về sự cân bằng. Tự hỏi: lòng tốt này có làm hại mình không? Nguyên tắc Stoic này ngăn kiệt quệ cảm xúc, nuôi dưỡng sự cho đi điềm tĩnh và lý trí. Tiết độ hòa với đức hạnh, giúp hào phóng củng cố — không làm suy yếu — sự sáng suốt và các mối quan hệ để bình an bền lâu. Khám phá sâu hơn ở VIP 3."
+},
+"audio": {
+"en": "stoic_moderation_VIP2.mp3"
+}
+},
+{
+"id": "protect_energy",
+"title": {
+"en": "Protecting Energy from Exploitation",
+"vi": "Bảo Vệ Năng Lượng Khỏi Sự Lợi Dụng"
+},
+"content": {
+"en": "Stoics like Marcus Aurelius urge wisdom in relationships to avoid exploitation. Jane’s kindness attracted energy vampires until she distanced them. Practice: identify draining individuals weekly, limit contact. Focus on uplifting connections to preserve mental health. This Stoic discernment protects energy, fostering balanced interactions. Avoid those who only take; align with mutual respect. This ensures kindness supports your well-being, not others’ gain, for calm strength. Discover deeper insights in VIP 3.",
+"vi": "Những Stoic như Marcus Aurelius khuyên dùng trí tuệ trong quan hệ để tránh bị lợi dụng. Lòng tốt của Jane thu hút “ma cà rồng năng lượng” cho đến khi cô giữ khoảng cách. Thực hành: hàng tuần nhận diện người gây kiệt quệ và hạn chế tiếp xúc. Tập trung vào những kết nối nâng đỡ để gìn giữ sức khỏe tinh thần. Sự phân biệt theo tinh thần Stoic bảo vệ năng lượng và nuôi những tương tác cân bằng. Tránh người chỉ biết nhận; gắn bó với sự tôn trọng lẫn nhau. Nhờ vậy, lòng tốt nâng đỡ chính bạn thay vì phục vụ sự trục lợi, giúp bạn mạnh mẽ và an hòa. Khám phá sâu hơn ở VIP 3."
+},
+"audio": {
+"en": "protect_energy_VIP2.mp3"
+}
+}
+]
 }

@@ -1,108 +1,40 @@
 {
-  "version": "1.0",
-  "locale": "vi-en",
-  "name": "Nutrition (VIP 1)",
-  "name_vi": "Dinh Dưỡng (VIP 1)",
-  "description": "Intermediate nutrition: balanced meals, hydration, mindful eating, and portion control.",
-  "global_notes": { "safety": "" },
-  "enum_tags": [
-    "nutrition",
-    "hydration",
-    "mindful_eating",
-    "portion_control",
-    "wellness"
-  ],
+  "tier": "VIP 1",
   "entries": [
     {
-      "slug": "planning-balanced-meals",
-      "keywords_en": ["balanced meals", "nutrition", "energy", "focus"],
-      "keywords_vi": [
-        "bữa ăn cân bằng",
-        "dinh dưỡng",
-        "năng lượng",
-        "tập trung"
-      ],
-      "copy": {
-        "en": "Balanced meals support both energy and focus. Plan each day with a simple plate method—half vegetables, one quarter protein, one quarter complex carbohydrates. Add healthy fats like olive oil or avocado for balance. Preparing one or two meals ahead each week keeps choices easy and reduces stress. Reflect weekly on how different meals make you feel; awareness builds better habits. Avoid perfection—focus on steady progress. Over time, balanced planning turns nutrition into self-care. Begin today by creating one colorful, balanced plate and notice the difference in your mood and energy. Ready to nourish yourself more intentionally? Explore beyond VIP 1.",
-        "vi": "Bữa ăn cân bằng giúp duy trì cả năng lượng lẫn sự tập trung. Hãy lên kế hoạch mỗi ngày với phương pháp đĩa đơn giản — một nửa là rau củ, một phần tư là protein, một phần tư là tinh bột phức hợp. Thêm chất béo lành mạnh như dầu ô liu hoặc bơ để tạo sự cân đối. Chuẩn bị sẵn một đến hai bữa mỗi tuần giúp việc lựa chọn trở nên dễ dàng hơn và giảm căng thẳng. Mỗi tuần, hãy suy ngẫm xem các bữa ăn khác nhau khiến bạn cảm thấy thế nào; sự nhận thức này sẽ hình thành thói quen tốt hơn. Đừng hướng đến sự hoàn hảo — hãy tập trung vào tiến bộ đều đặn. Theo thời gian, việc lập kế hoạch bữa ăn sẽ trở thành một hình thức tự chăm sóc. Hãy bắt đầu hôm nay bằng cách tạo ra một đĩa ăn đầy màu sắc và cân bằng, rồi cảm nhận sự khác biệt trong tâm trạng và năng lượng của bạn. Sẵn sàng nuôi dưỡng bản thân một cách có ý thức hơn chứ? Hãy khám phá thêm vượt ngoài cấp VIP 1."
-      },
-      "tags": ["nutrition"],
-      "artifact_id": "fae32ac3-8f89-4826-95f9-b7a95d57c1a1",
-      "audio": "/audio/en/Planning_Balanced_Meals_VIP1.mp3"
+      "title": "Planning Balanced Meals",
+      "content": "Balanced meals support both energy and focus. Plan each day with a simple plate method—half vegetables, one quarter protein, one quarter complex carbohydrates. Add healthy fats like olive oil or avocado for balance. Preparing one or two meals ahead each week keeps choices easy and reduces stress. Reflect weekly on how different meals make you feel; awareness builds better habits. Avoid perfection—focus on steady progress. Over time, balanced planning turns nutrition into self-care. Begin today by creating one colorful, balanced plate and notice the difference in your mood and energy. Ready to nourish yourself more intentionally? Explore beyond VIP 1.",
+      "audio": "Planning_Balanced_Meals_VIP1.mp3"
     },
     {
-      "slug": "enhancing-hydration-habits",
-      "keywords_en": ["hydration", "wellness", "daily care", "energy"],
-      "keywords_vi": [
-        "uống nước",
-        "sức khỏe",
-        "chăm sóc hằng ngày",
-        "năng lượng"
-      ],
-      "copy": {
-        "en": "Hydration is one of the simplest and most powerful ways to support wellness. Begin each morning with a full glass of water before coffee or breakfast. Carry a reusable bottle through the day and add a squeeze of lemon or mint if you enjoy flavor. Set gentle reminders every few hours until hydration feels natural. Notice how energy, mood, and focus improve when your body is well watered. Reflect weekly on your intake patterns and celebrate small consistency wins. Sustainable health starts with easy daily care. Begin now by finishing one glass and refilling it with gratitude. Ready to refresh body and mind? Explore beyond VIP 1.",
-        "vi": "Uống đủ nước là một trong những cách đơn giản nhưng mạnh mẽ nhất để duy trì sức khỏe. Hãy bắt đầu mỗi buổi sáng bằng một cốc nước đầy trước khi uống cà phê hoặc ăn sáng. Mang theo chai nước có thể tái sử dụng suốt cả ngày, thêm vài giọt chanh hoặc lá bạc hà nếu bạn thích hương vị tự nhiên. Đặt lời nhắc nhẹ nhàng vài giờ một lần cho đến khi việc uống nước trở thành thói quen tự nhiên. Hãy chú ý xem năng lượng, tâm trạng và sự tập trung của bạn cải thiện thế nào khi cơ thể được cấp nước đầy đủ. Mỗi tuần, hãy xem lại thói quen uống nước và tự khen ngợi những lần duy trì ổn định nhỏ. Sức khỏe bền vững bắt đầu từ những hành động chăm sóc hằng ngày đơn giản. Hãy bắt đầu ngay bây giờ bằng cách uống cạn một ly nước và rót đầy lại với lòng biết ơn. Sẵn sàng làm mới cơ thể và tâm trí chứ? Hãy khám phá thêm vượt ngoài cấp VIP 1."
-      },
-      "tags": ["hydration"],
-      "artifact_id": "4b6e0ad9-1d5f-46e9-9d44-ccae78071a02",
-      "audio": "/audio/en/Enhancing_Hydration_Habits_VIP1.mp3"
+      "title": "Enhancing Hydration Habits",
+      "content": "Hydration is one of the simplest and most powerful ways to support wellness. Begin each morning with a full glass of water before coffee or breakfast. Carry a reusable bottle through the day and add a squeeze of lemon or mint if you enjoy flavor. Set gentle reminders every few hours until hydration feels natural. Notice how energy, mood, and focus improve when your body is well watered. Reflect weekly on your intake patterns and celebrate small consistency wins. Sustainable health starts with easy daily care. Begin now by finishing one glass and refilling it with gratitude. Ready to refresh body and mind? Explore beyond VIP 1.",
+      "audio": "Enhancing_Hydration_Habits_VIP1.mp3"
     },
     {
-      "slug": "practicing-mindful-eating",
-      "keywords_en": ["mindful eating", "awareness", "gratitude", "calm"],
-      "keywords_vi": ["ăn uống tỉnh táo", "nhận thức", "biết ơn", "bình tâm"],
-      "copy": {
-        "en": "Mindful eating connects nourishment to awareness. Choose one meal each day to enjoy slowly—turn off screens, take a breath, and truly taste your food. Observe textures, flavors, and the moment hunger fades. This calm attention reduces overeating and builds gratitude for nourishment. Journal weekly about what mindful meals reveal—perhaps patience, comfort, or calm. Over time, mindfulness turns eating into a grounding ritual. Try one quiet lunch or dinner today, noticing how presence changes satisfaction. Confidence in nutrition begins with calm awareness. Ready to eat with more intention and peace? Explore beyond VIP 1.",
-        "vi": "Ăn uống chánh niệm kết nối sự nuôi dưỡng với nhận thức. Hãy chọn một bữa mỗi ngày để thưởng thức chậm rãi — tắt màn hình, hít một hơi sâu và thực sự cảm nhận hương vị món ăn. Quan sát kết cấu, hương vị và khoảnh khắc khi cơn đói tan biến. Sự chú tâm bình thản này giúp giảm ăn quá mức và nuôi dưỡng lòng biết ơn đối với thực phẩm. Mỗi tuần, hãy ghi lại trong nhật ký điều bạn nhận ra từ những bữa ăn chánh niệm — có thể là sự kiên nhẫn, thoải mái hoặc bình an. Theo thời gian, sự chánh niệm biến việc ăn uống thành một nghi thức giúp bạn trở lại với chính mình. Hãy thử một bữa trưa hoặc bữa tối yên tĩnh hôm nay và nhận ra sự hiện diện khiến bạn thỏa mãn hơn thế nào. Niềm tin vào dinh dưỡng bắt đầu từ sự nhận biết bình tĩnh. Sẵn sàng ăn uống với nhiều ý thức và bình yên hơn chứ? Hãy khám phá thêm vượt ngoài cấp VIP 1."
-      },
-      "tags": ["mindful_eating"],
-      "artifact_id": "5b2f3e9a-3e5c-4a5d-9b4f-7c1e9a8b5c03",
-      "audio": "/audio/en/Practicing_Mindful_Eating_VIP1.mp3"
+      "title": "Practicing Mindful Eating",
+      "content": "Mindful eating connects nourishment to awareness. Choose one meal each day to enjoy slowly—turn off screens, take a breath, and truly taste your food. Observe textures, flavors, and the moment hunger fades. This calm attention reduces overeating and builds gratitude for nourishment. Journal weekly about what mindful meals reveal—perhaps patience, comfort, or calm. Over time, mindfulness turns eating into a grounding ritual. Try one quiet lunch or dinner today, noticing how presence changes satisfaction. Confidence in nutrition begins with calm awareness. Ready to eat with more intention and peace? Explore beyond VIP 1.",
+      "audio": "Practicing_Mindful_Eating_VIP1.mp3"
     },
     {
-      "slug": "controlling-portion-sizes",
-      "keywords_en": [
-        "portion control",
-        "mindful eating",
-        "balance",
-        "awareness"
-      ],
-      "keywords_vi": [
-        "kiểm soát khẩu phần",
-        "ăn uống tỉnh táo",
-        "cân bằng",
-        "nhận thức"
-      ],
-      "copy": {
-        "en": "Portion control helps your body find its natural rhythm of hunger and fullness. Use smaller plates or bowls to encourage moderation without restriction. Pause halfway through meals to ask, “Am I still hungry or simply comfortable?” Preparing balanced portions in advance prevents mindless eating later. Reflect weekly on how portion awareness affects energy levels. Over time, this practice teaches balance, not limitation. Healthy eating becomes flexible, enjoyable, and mindful. Begin today by serving yourself slightly less than usual and see if you feel just as satisfied. Ready to feel lighter and more in tune with your needs? Explore beyond VIP 1.",
-        "vi": "Kiểm soát khẩu phần giúp cơ thể tìm lại nhịp tự nhiên giữa đói và no. Hãy sử dụng đĩa hoặc bát nhỏ hơn để khuyến khích sự điều độ mà không phải ép buộc. Dừng lại giữa bữa ăn và tự hỏi: “Mình vẫn còn đói hay chỉ đã đủ thoải mái?” Chuẩn bị khẩu phần cân bằng trước giúp bạn tránh việc ăn vô thức sau này. Mỗi tuần, hãy suy ngẫm xem việc nhận biết khẩu phần ảnh hưởng thế nào đến mức năng lượng của bạn. Theo thời gian, thực hành này dạy bạn về sự cân bằng chứ không phải giới hạn. Ăn uống lành mạnh trở nên linh hoạt, thú vị và chánh niệm. Hãy bắt đầu hôm nay bằng cách tự phục ít hơn một chút so với thường lệ và xem liệu bạn vẫn cảm thấy thỏa mãn như thế nào. Sẵn sàng cảm thấy nhẹ nhõm hơn và hòa hợp với nhu cầu thật của mình chứ? Hãy khám phá thêm vượt ngoài cấp VIP 1."
-      },
-      "tags": ["portion_control"],
-      "artifact_id": "ed7b18f4-0d7a-49bc-86e8-fd1a23c7f004",
-      "audio": "/audio/en/Controlling_Portion_Sizes_VIP1.mp3"
+      "title": "Controlling Portion Sizes",
+      "content": "Portion control helps your body find its natural rhythm of hunger and fullness. Use smaller plates or bowls to encourage moderation without restriction. Pause halfway through meals to ask, “Am I still hungry or simply comfortable?” Preparing balanced portions in advance prevents mindless eating later. Reflect weekly on how portion awareness affects energy levels. Over time, this practice teaches balance, not limitation. Healthy eating becomes flexible, enjoyable, and mindful. Begin today by serving yourself slightly less than usual and see if you feel just as satisfied. Ready to feel lighter and more in tune with your needs? Explore beyond VIP 1.",
+      "audio": "Controlling_Portion_Sizes_VIP1.mp3"
     }
   ],
   "keywords": {
     "intermediate_nutrition": {
-      "en": [
-        "balanced meal planning",
-        "enhanced hydration",
-        "mindful eating practice",
-        "portion control"
-      ],
-      "vi": [
-        "lập kế hoạch bữa ăn cân bằng",
-        "tăng cường uống nước",
-        "thực hành ăn uống tỉnh táo",
-        "kiểm soát khẩu phần"
-      ]
+      "en": ["balanced meal planning", "enhanced hydration", "mindful eating practice", "portion control"],
+      "vi": ["lập kế hoạch bữa ăn cân bằng", "tăng cường uống nước", "thực hành ăn uống tỉnh táo", "kiểm soát khẩu phần"]
     }
   },
   "meta": {
     "created_at": "2025-10-25T10:33:00+09:00",
-    "updated_at": "2025-10-27T17:55:00+09:00",
+    "updated_at": "2025-10-25T11:20:00+09:00",
     "entry_count": 4,
-    "tier": "vip1",
-    "room_color": "#D7CCC8"
+    "artifact_set_id": "6d7e8f9a-0b1c-4d2e-a3f4-b5c6d7e8f9a0",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#D7CCC8",
+    "tier": "vip1"
   }
 }

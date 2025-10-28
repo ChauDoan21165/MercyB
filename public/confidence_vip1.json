@@ -1,51 +1,68 @@
 {
-  "name": "Confidence VIP1",
-  "name_vi": "Tự Tin VIP1",
-  "description": "Build steady confidence with clear affirmations, social practice, goal tracking, and empathy-driven interactions.",
+  "tier": "VIP 1",
+  "default_entry_id": "clarifying_affirmations_for_growth",
+  "search": {
+    "normalize_case": true,
+    "normalize_accents": true,
+    "tokenize_on": [" ", "_"]
+  },
+  "keyword_menu": {
+    "en": [
+      "clarifying_affirmations_for_growth",
+      "building_social_confidence",
+      "tracking_goals_for_success",
+      "practicing_empathy_in_interactions"
+    ]
+  },
   "entries": [
     {
-      "id": "01",
+      "id": "clarifying_affirmations_for_growth",
       "title": "Clarifying Affirmations for Growth",
-      "keywords_en": ["affirmations", "mindset", "self-belief", "growth"],
-      "keywords_vi": ["khẳng định", "tư duy", "niềm tin", "phát triển"],
-      "reply_en": "Say one empowering phrase every morning: 'I am enough.' Write three new ones weekly. Reframe doubts into lessons. Confidence grows with repetition.",
-      "reply_vi": "Nói một câu khẳng định mỗi sáng: 'Tôi đủ rồi.' Viết ba câu mới mỗi tuần. Chuyển nghi ngờ thành bài học. Tự tin phát triển qua lặp lại.",
-      "dare": "Say your affirmation out loud now.",
-      "audio": "01_clarifying_affirmations.mp3",
-      "duration": "00:48"
+      "content": "Clarify your affirmations to build steady confidence. Choose one empowering phrase each morning—like \"I am enough\" or \"I grow stronger every day.\" Write three new affirmations weekly in a journal to track your evolving mindset. Studies show positive self-talk practiced daily increases motivation by 30%. When doubts appear, gently reframe them into learning opportunities. Confidence grows through repetition and patience, not pressure. Begin today with one sincere statement that reminds you of your worth. Small, consistent practice plants deep roots of self-belief. Ready to rise higher? Explore beyond VIP 1.",
+      "audio": "Clarifying_Affirmations_for_Growth_VIP1.mp3"
     },
     {
-      "id": "02",
+      "id": "building_social_confidence",
       "title": "Building Social Confidence",
-      "keywords_en": ["social", "conversation", "connection", "presence"],
-      "keywords_vi": ["xã hội", "trò chuyện", "kết nối", "hiện diện"],
-      "reply_en": "Start one real conversation weekly. Share something you care about. Ask: 'What do you think?' Join a group monthly. Celebrate ease, not perfection.",
-      "reply_vi": "Bắt đầu một cuộc trò chuyện thật mỗi tuần. Chia sẻ điều bạn quan tâm. Hỏi: 'Bạn nghĩ sao?' Tham gia nhóm hàng tháng. Khen ngợi sự thoải mái, không cần hoàn hảo.",
-      "dare": "Smile and say hello to someone today.",
-      "audio": "02_building_social_confidence.mp3",
-      "duration": "00:45"
+      "content": "Social confidence develops through kind presence, not perfection. Begin one meaningful conversation each week—share something you care about and listen openly. Ask questions like \"What do you think?\" to invite connection. Join a club or casual event monthly to expand comfort zones. Research shows social engagement improves emotional well-being by 25%. Celebrate small moments of ease instead of flawless performance. Each interaction builds familiarity and trust, turning anxiety into curiosity. Start today with one simple conversation where you stay fully present. Ready to connect with genuine calm? Explore beyond VIP 1.",
+      "audio": "Building_Social_Confidence_VIP1.mp3"
     },
     {
-      "id": "03",
+      "id": "tracking_goals_for_success",
       "title": "Tracking Goals for Success",
-      "keywords_en": ["goals", "tracking", "progress", "motivation"],
-      "keywords_vi": ["mục tiêu", "theo dõi", "tiến bộ", "động lực"],
-      "reply_en": "Set one small monthly goal. Break into weekly steps. Journal progress. Celebrate every win. Turn effort into pride.",
-      "reply_vi": "Đặt một mục tiêu nhỏ mỗi tháng. Chia thành bước hàng tuần. Ghi nhật ký tiến độ. Khen thưởng mỗi chiến thắng. Biến nỗ lực thành niềm tự hào.",
-      "dare": "Write down one goal for this week.",
-      "audio": "03_tracking_goals.mp3",
-      "duration": "00:47"
+      "content": "Confidence strengthens when goals are visible and attainable. Set one small monthly objective—such as speaking in a meeting or completing a new project step. Break it into weekly actions and record progress in a journal. Research shows tracking achievements boosts commitment by 40%. Celebrate each small win as proof of growth. This steady rhythm transforms effort into confidence. Start today by defining one reachable goal that excites you. Consistency turns progress into pride. Ready to build momentum toward lasting success? Explore beyond VIP 1.",
+      "audio": "Tracking_Goals_for_Success_VIP1.mp3"
     },
     {
-      "id": "04",
+      "id": "practicing_empathy_in_interactions",
       "title": "Practicing Empathy in Interactions",
-      "keywords_en": ["empathy", "listening", "kindness", "connection"],
-      "keywords_vi": ["thấu cảm", "lắng nghe", "tử tế", "kết nối"],
-      "reply_en": "Pause and see their view before replying. Offer one kind act weekly. Reflect monthly. Empathy dissolves fear of judgment.",
-      "reply_vi": "Tạm dừng và hiểu góc nhìn người khác trước khi trả lời. Làm một việc tử tế mỗi tuần. Suy ngẫm hàng tháng. Thấu cảm xóa bỏ nỗi sợ bị phán xét.",
-      "dare": "Listen fully to someone without interrupting.",
-      "audio": "04_practicing_empathy.mp3",
-      "duration": "00:49"
+      "content": "Empathy creates confidence rooted in connection. Take a moment each day to imagine another's perspective before responding. Offer one small act of kindness weekly—listening fully, supporting a peer, or expressing appreciation. Write monthly reflections on what you've learned about compassion. Studies show empathy enhances communication and reduces social anxiety by 30%. When you understand others, fear of judgment fades. Start today by practicing patient listening in one conversation. Confidence grows naturally from genuine care. Ready to strengthen both heart and voice? Explore beyond VIP 1.",
+      "audio": "Practicing_Empathy_in_Interactions_VIP1.mp3"
     }
-  ]
+  ],
+  "keywords": {
+    "intermediate_confidence": {
+      "en": [
+        "clear affirmations",
+        "social confidence",
+        "goal tracking",
+        "empathy in interactions"
+      ],
+      "vi": [
+        "khẳng định rõ ràng",
+        "tự tin xã hội",
+        "theo dõi mục tiêu",
+        "thấu cảm trong tương tác"
+      ]
+    }
+  },
+  "meta": {
+    "created_at": "2025-10-25T10:45:00+09:00",
+    "updated_at": "2025-10-25T10:45:00+09:00",
+    "entry_count": 4,
+    "artifact_set_id": "1a2b3c4d-5e6f-47a8-b9c0-d1e2f3a4b5c6",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#D7CCC8",
+    "tier": "vip1"
+  }
 }
