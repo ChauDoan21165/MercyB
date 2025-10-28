@@ -173,15 +173,11 @@ function generateRoomInfo(): RoomInfo[] {
 }
 
 // Complete list of all rooms in the app (dynamically generated on access)
-let cachedRooms: RoomInfo[] | null = null;
-
 export const ALL_ROOMS = new Proxy([] as RoomInfo[], {
-  get(target, prop) {
-    // Regenerate room list on each access to ensure it's up-to-date
-    if (!cachedRooms || prop === 'length' || typeof prop === 'symbol') {
-      cachedRooms = generateRoomInfo();
-    }
-    return (cachedRooms as any)[prop];
+  get(_target, prop) {
+    // Always generate fresh data on access so late-loaded public JSON appears
+    const fresh = generateRoomInfo();
+    return (fresh as any)[prop];
   }
 });
 

@@ -54,6 +54,8 @@ for (const path in roomModules) {
       }
     }
     console.log('Total rooms loaded:', Object.keys(roomDataMap).length);
+    // Notify UI that rooms are available
+    window.dispatchEvent(new CustomEvent('rooms-loaded'));
   } catch (error) {
     console.error('Error pre-loading rooms:', error);
   }

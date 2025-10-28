@@ -14,6 +14,7 @@ const RoomGrid = () => {
   const { canAccessVIP1, canAccessVIP2, canAccessVIP3 } = useUserAccess();
   const { toast } = useToast();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [roomsVersion, setRoomsVersion] = useState(0);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -21,6 +22,10 @@ const RoomGrid = () => {
       setIsAuthenticated(!!user);
     };
     checkAuth();
+
+    const handleRoomsLoaded = () => setRoomsVersion(v => v + 1);
+    window.addEventListener('rooms-loaded', handleRoomsLoaded as any);
+    return () => window.removeEventListener('rooms-loaded', handleRoomsLoaded as any);
   }, []);
 
   const handleRoomClick = (room: typeof ALL_ROOMS[0]) => {
