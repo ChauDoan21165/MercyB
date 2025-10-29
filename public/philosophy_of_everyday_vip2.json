@@ -1,11 +1,31 @@
 {
-"tier": "VIP 2 / Cấp VIP 2",
-"title": {
-"en": "The Meaning of Life: Flow of Connection",
-"vi": "Ý Nghĩa Của Cuộc Sống: Dòng Chảy Của Kết Nối"
-},
-"content": {
-"en": "As understanding matures, meaning widens beyond the self. Life becomes a river of connections — between your breath and the wind, your voice and another’s silence, your giving and the world’s quiet gratitude. True fulfillment arises when what you do begins to nourish something larger than you. Purpose becomes a dialogue: between your strength and someone’s need, your wisdom and another’s doubt. To live meaningfully is to participate in the great weaving of existence — to bring light where it is dim, to restore what has been forgotten, to witness what is sacred in the ordinary. Each gesture of sincerity ripples outward, unseen yet enduring. And when you give without losing yourself, you find that you have never been separate from the whole.\n\n*Discover deeper meaning in higher level.*",
-"vi": "Khi hiểu biết trưởng thành, ý nghĩa mở rộng vượt khỏi cái tôi. Cuộc sống trở thành một dòng sông của những kết nối — giữa hơi thở bạn và làn gió, giữa giọng nói bạn và sự im lặng của người khác, giữa việc bạn cho đi và lòng biết ơn thầm lặng của thế giới. Sự viên mãn thật sự nảy sinh khi những việc bạn làm bắt đầu nuôi dưỡng điều gì đó lớn hơn chính mình. Mục đích trở thành một cuộc đối thoại: giữa sức mạnh của bạn và nhu cầu của ai đó, giữa sự sáng suốt của bạn và những hoang mang ngoài kia. Sống có ý nghĩa là tham dự vào tấm thảm lớn của tồn tại — mang ánh sáng đến nơi còn mờ tối, hàn gắn điều bị lãng quên, chứng kiến vẻ thiêng liêng trong điều bình dị. Mỗi cử chỉ chân thành là một gợn sóng lan xa, âm thầm mà bền lâu. Và khi bạn cho đi mà vẫn giữ được chính mình, bạn nhận ra rằng mình chưa bao giờ tách rời khỏi toàn thể.\n\n*Khám phá ý nghĩa sâu hơn ở cấp độ cao hơn.*"
-}
-}
+  "id": "philosophy-of-everyday-vip2",
+  "tier": "vip2",
+  "title": {
+    "en": "Philosophy of Everyday VIP2",
+    "vi": "Triết Lý Cuộc Sống Hàng Ngày VIP2"
+  },
+  "keywords": {
+    "en": ["wisdom", "awareness", "presence", "connection"],
+    "vi": ["trí tuệ", "nhận thức", "hiện diện", "kết nối"]
+  },
+  "entries": [
+    {
+      "keywordEn": "wisdom",
+      "keywordVi": "trí tuệ",
+      "replyEn": "Wisdom is not knowledge accumulated, but the courage to let go of what no longer serves. It grows in silence, in the pause between action and reaction. True wisdom is knowing when to speak and when to listen, when to act and when to wait.",
+      "replyVi": "Trí tuệ không phải kiến thức tích lũy, mà là can đảm buông bỏ điều không còn phục vụ. Nó mọc lên trong im lặng, trong khoảng dừng giữa hành động và phản ứng. Trí tuệ thật sự là biết khi nào nên nói và khi nào nên lắng nghe, khi nào nên hành động và khi nào nên chờ đợi.",
+      "audio": "philosophy_vip2_1_en.mp3"
+    },
+    {
+      "keywordEn": "presence",
+      "keywordVi": "hiện diện",
+      "replyEn": "Presence is the greatest gift you can give. When you are fully here, time expands. The past and future dissolve into this moment. In presence, you meet life as it is — not as you wish it to be.",
+      "replyVi": "Hiện diện là món quà lớn nhất bạn có thể trao. Khi bạn hoàn toàn ở đây, thời gian mở rộng. Quá khứ và tương lai tan biến vào khoảnh khắc này. Trong sự hiện diện, bạn gặp gỡ cuộc sống như nó vốn có — không như bạn mong muốn.",
+      "audio": "philosophy_vip2_2_en.mp3"
+    },
+    {
+      "keywordEn": "awareness",
+      "keywordVi": "nhận thức",
+      "replyEn": "Awareness is the light that reveals what was always there. It is not about seeing more, but seeing clearly. With awareness, you notice the subtle shifts — a breath, a thought, a feeling — and choose how to respond.",
+      "replyVi": "Nhận thức là ánh sáng hé lộ những gì luôn tồn tại. Không phải thấy nhiều hơn, mà thấy rõ ràng hơn. Với nhận thức
