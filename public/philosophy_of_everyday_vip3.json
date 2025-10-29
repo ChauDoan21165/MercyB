@@ -1,74 +1,17 @@
 {
-"room_welcome": {
-"en": "Hello! Welcome to Philosophy of Everyday VIP3 room. How can I help you today?\n\nTopic keywords you can type are below:",
-"vi": "Xin chào! Chào mừng bạn đến với phòng Triết Học Đời Thường VIP3. Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:"
-},
-"keyword_menu": {
-"en": ["meaning_of_life", "meaning of life", "life meaning", "purpose of life"],
-"vi": ["y_nghia_cuoc_song", "ý nghĩa cuộc sống", "muc_dich_cuoc_song", "mục đích cuộc sống"]
-},
-"default_entry_id": "meaning_of_life",
-"search": {
-"normalize_case": true,
-"normalize_accents": true,
-"tokenize_on": [" ", "_"]
-},
-"keywords_dict": {
-"meaning_of_life": {
-"en": [
-"meaning_of_life",
-"meaning of life",
-"life meaning",
-"purpose of life",
-"meaning",
-"purpose"
-],
-"vi": [
-"y_nghia_cuoc_song",
-"ý nghĩa cuộc sống",
-"y nghia cuoc song",
-"muc_dich_cuoc_song",
-"mục đích cuộc sống",
-"ban_chat_cuoc_song"
-]
-}
-},
-"entries": {
-"meaning_of_life": {
-"summary": {
-"en": "A poetic reflection on harmony, integration, and living with presence.",
-"vi": "Một suy niệm thi vị về hòa điệu, hợp nhất và sống trong tỉnh thức."
-},
-"essay": {
-"en": "At the deepest level, meaning reveals itself as harmony — not something to chase, but something to remember. Life is not a ladder to climb but a song to join, where each note is both your breath and the breath of the world. When you live with awareness, you see that even pain participates in beauty: the wilted leaf feeding new soil, the heartbreak carving space for compassion. True purpose lies in integration — where thought, emotion, and action move as one, guided by quiet integrity. To be human is to learn the art of balance between surrender and shaping, solitude and belonging, silence and expression. In this understanding, service becomes devotion, and love becomes practice. Meaning is not found — it is made, in each choice to be present, kind, and awake within the fleeting miracle of now.",
-"vi": "Ở tầng sâu nhất, ý nghĩa hé lộ như một khúc hòa điệu — không phải điều để theo đuổi, mà là điều để ghi nhớ. Cuộc sống không phải chiếc thang để leo, mà là bản nhạc để hòa cùng, nơi mỗi nốt là hơi thở của bạn và cũng là hơi thở của thế giới. Khi sống với sự tỉnh thức, bạn nhận ra rằng ngay cả nỗi đau cũng góp phần vào vẻ đẹp: chiếc lá úa nuôi dưỡng mảnh đất mới, trái tim tan vỡ mở ra chỗ cho lòng từ bi. Mục đích chân thật nằm trong sự hòa hợp — nơi suy nghĩ, cảm xúc và hành động vận hành như một thể, được dẫn dắt bởi sự chính trực tĩnh lặng. Là con người là học cách cân bằng giữa buông và nắm, giữa cô đơn và gắn bó, giữa im lặng và biểu đạt. Trong nhận thức ấy, sự phục vụ trở thành lòng dâng hiến, và tình yêu trở thành sự thực hành. Ý nghĩa không phải được tìm thấy — mà được tạo nên, trong từng khoảnh khắc bạn hiện diện, tử tế, và tỉnh thức giữa phép màu mong manh của giây phút này."
-},
-"author": "Philosophy Room",
-"tags": ["meaning", "vip3"],
-"keywords": [
-"meaning_of_life",
-"meaning of life",
-"life meaning",
-"purpose of life",
-"ý nghĩa cuộc sống",
-"y nghia cuoc song"
-],
-"audio": {
-"en": "meaning_of_life_vip3.mp3"
-}
-}
-},
-"ui_triggers": {
-"essay_offer": {
-"enabled": true,
-"criteria": {
-"min_entries_total": 1,
-"min_distinct_buckets": 1
-},
-"behavior": {
-"mode": "chip_suggest",
-"pin_to_canvas": true
-}
-}
-}
-}
+  "id": "philosophy-of-everyday-vip3",
+  "tier": "vip3",
+  "title": {
+    "en": "Philosophy of Everyday VIP3",
+    "vi": "Triết Lý Cuộc Sống Hàng Ngày VIP3"
+  },
+  "keywords": {
+    "en": ["enlightenment", "freedom", "truth", "compassion", "transcendence"],
+    "vi": ["giác ngộ", "tự do", "chân lý", "lòng trắc ẩn", "siêu việt"]
+  },
+  "entries": [
+    {
+      "keywordEn": "enlightenment",
+      "keywordVi": "giác ngộ",
+      "replyEn": "Enlightenment is not a destination but a return. You do not become someone new — you remember who you have always been. The light was never outside; it was the veil you removed. In that remembrance, suffering dissolves into understanding.",
+      "replyVi": "Giác ngộ không phải điểm đến mà là sự trở về. Bạn không trở thành ai đó mới — bạn nhớ lại mình luôn là ai. Ánh sáng không bao giờ ở
