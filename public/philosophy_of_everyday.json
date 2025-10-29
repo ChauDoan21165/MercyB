@@ -1,113 +1,42 @@
 {
-  "tier": "Free / Miễn phí",
-  "default_entry_id": "meaning_of_life",
-  "welcome": {
-    "en": "Hello! Welcome to Philosophy of Everyday room. How can I help you today?",
-    "vi": "Xin chào! Chào mừng bạn đến với phòng Triết Học Đời Thường. Tôi có thể giúp gì cho bạn hôm nay?"
+  "id": "philosophy-of-everyday",
+  "tier": "free",
+  "title": {
+    "en": "Philosophy of Everyday",
+    "vi": "Triết Lý Cuộc Sống Hàng Ngày"
   },
-  "search": {
-    "normalize_case": true,
-    "normalize_accents": true,
-    "tokenize_on": [" ", "_"]
-  },
-  "keyword_menu": {
-    "en": [
-      "meaning_of_life",
-      "purpose",
-      "balance",
-      "mindfulness",
-      "gratitude"
-    ],
-    "vi": [
-      "y_nghia_cuoc_song",
-      "muc_dich",
-      "can_bang",
-      "chanh_niem",
-      "biet_on"
-    ]
-  },
-  "keywords_dict": {
-    "meaning_of_life": {
-      "en": [
-        "meaning_of_life",
-        "meaning of life",
-        "life meaning",
-        "purpose of life",
-        "meaning",
-        "purpose"
-      ],
-      "vi": [
-        "y_nghia_cuoc_song",
-        "ý nghĩa cuộc sống",
-        "y nghia cuoc song",
-        "muc_dich_cuoc_song",
-        "mục đích cuộc sống",
-        "muc dich cuoc song"
-      ]
-    },
-    "balance": {
-      "en": [
-        "balance",
-        "harmony",
-        "equilibrium",
-        "body mind balance"
-      ],
-      "vi": [
-        "can_bang",
-        "cân bằng",
-        "can bang",
-        "hoa_dieu",
-        "hòa điệu",
-        "hoa dieu"
-      ]
-    },
-    "mindfulness": {
-      "en": [
-        "mindfulness",
-        "present",
-        "awareness",
-        "being present"
-      ],
-      "vi": [
-        "chanh_niem",
-        "chánh niệm",
-        "chanh niem",
-        "tinh_thuc",
-        "tỉnh thức",
-        "tinh thuc"
-      ]
-    },
-    "gratitude": {
-      "en": [
-        "gratitude",
-        "grateful",
-        "thankful",
-        "appreciation"
-      ],
-      "vi": [
-        "biet_on",
-        "biết ơn",
-        "biet on",
-        "tri_an",
-        "tri ân",
-        "tri an"
-      ]
-    }
+  "keywords": {
+    "en": ["life", "purpose", "meaning", "daily"],
+    "vi": ["cuộc sống", "mục đích", "ý nghĩa", "hàng ngày"]
   },
   "entries": [
     {
-      "id": "meaning_of_life",
-      "title": {
-        "en": "The Meaning of Life: Foundations of Balance",
-        "vi": "Ý Nghĩa Của Cuộc Sống: Nền Tảng Của Sự Cân Bằng"
-      },
-      "content": {
-        "en": "The meaning of life is a gentle quest for balance between body, mind, and the living world around us. It begins by listening inward — recognizing your core values, quiet passions, and the small worries that visit each day. Practice mindfulness to stay present, cultivating gratitude for simple joys that steady the heart. Build daily rituals of nourishment, movement, and rest to anchor your well-being. Remember that purpose blooms through connection — cherish the relationships that lift your spirit and the moments that remind you of belonging. When challenges come, greet them as teachers guiding you toward growth and self-understanding.\n\nDiscover deeper meaning in higher level.",
-        "vi": "Ý nghĩa của cuộc sống là hành trình dịu dàng đi tìm sự cân bằng giữa thân, tâm và thế giới quanh ta. Nó khởi đầu bằng việc lắng nghe bên trong — nhận ra giá trị cốt lõi, những đam mê thầm lặng, và cả những ưu tư nhỏ ghé thăm mỗi ngày. Hãy thực hành chánh niệm để ở lại với hiện tại, nuôi dưỡng lòng biết ơn trước những niềm vui giản dị giữ cho trái tim được vững vàng. Xây dựng những nghi thức nhỏ mỗi ngày như ăn uống điều độ, vận động nhẹ nhàng, và nghỉ ngơi trọn vẹn để neo giữ sức khỏe và bình an. Hãy nhớ rằng mục đích sống nảy nở qua sự kết nối — trân quý những mối quan hệ nâng đỡ tâm hồn và những khoảnh khắc nhắc bạn rằng mình thuộc về. Khi thử thách đến, hãy đón nhận chúng như những người thầy, chỉ đường cho bạn hiểu sâu hơn về chính mình.\n\nKhám phá ý nghĩa sâu hơn ở cấp độ cao hơn."
-      },
-      "audio": {
-        "en": "meaning_of_life_free.mp3"
-      }
+      "keywordEn": "life",
+      "keywordVi": "cuộc sống",
+      "replyEn": "Life is not about finding yourself — it's about creating yourself. Every day is a blank page. What story will you write today? The small choices — a smile, a kind word, a moment of stillness — are the ink that shapes your legacy.",
+      "replyVi": "Cuộc sống không phải tìm kiếm bản thân — mà là tạo ra chính mình. Mỗi ngày là một trang giấy trắng. Hôm nay bạn sẽ viết câu chuyện gì? Những lựa chọn nhỏ — nụ cười, lời nói tử tế, khoảnh khắc tĩnh lặng — là mực in định hình di sản của bạn.",
+      "audio": "philosophy_free_1_en.mp3"
+    },
+    {
+      "keywordEn": "purpose",
+      "keywordVi": "mục đích",
+      "replyEn": "Purpose is not a grand mission — it's the quiet intention behind your actions. When you act with care, even the smallest task becomes meaningful. Purpose grows in the soil of attention and love.",
+      "replyVi": "Mục đích không phải sứ mệnh lớn lao — mà là ý định thầm lặng đằng sau hành động. Khi bạn hành động với sự quan tâm, ngay cả công việc nhỏ nhất cũng trở nên ý nghĩa. Mục đích mọc lên từ đất của sự chú ý và tình yêu.",
+      "audio": "philosophy_free_2_en.mp3"
+    },
+    {
+      "keywordEn": "meaning",
+      "keywordVi": "ý nghĩa",
+      "replyEn": "Meaning is not found — it is made. It lives in the spaces between what you do and why you do it. Ask: Does this bring light to my life or to another's? That is where meaning begins.",
+      "replyVi": "Ý nghĩa không được tìm thấy — nó được tạo ra. Nó sống trong khoảng trống giữa việc bạn làm và lý do bạn làm. Hỏi: Điều này có mang ánh sáng đến cuộc đời tôi hay người khác không? Đó là nơi ý nghĩa bắt đầu.",
+      "audio": "philosophy_free_3_en.mp3"
+    },
+    {
+      "keywordEn": "daily",
+      "keywordVi": "hàng ngày",
+      "replyEn": "The daily grind is not the enemy of greatness — it is its training ground. In the routine of brushing teeth, making tea, walking to work, there is space for mindfulness, gratitude, and growth.",
+      "replyVi": "Việc hàng ngày không phải kẻ thù của sự vĩ đại — mà là sân tập của nó. Trong thói quen đánh răng, pha trà, đi làm, có không gian cho chánh niệm, biết ơn và trưởng thành.",
+      "audio": "philosophy_free_4_en.mp3"
     }
   ]
 }
