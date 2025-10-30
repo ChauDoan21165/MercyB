@@ -3,7 +3,7 @@ import { RoomInfo } from "@/lib/roomData";
 export const roomDataMap: Record<string, RoomInfo> = {
   "adhd-support-free": {
     nameEn: "ADHD Support",
-    nameVi: "Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý",
+    nameVi: "Hỗ Trợ ADHD",
     tier: "free"
   },
   "adhd-support-vip1": {
@@ -63,7 +63,7 @@ export const roomDataMap: Record<string, RoomInfo> = {
   },
   "finding-gods-peace-free": {
     nameEn: "Finding God's Peace",
-    nameVi: "Tìm Bình An Từ Thiên Chúa",
+    nameVi: "Tìm Bình An Từ Chúa",
     tier: "free"
   },
   "building-simple-routines-free": {
@@ -72,14 +72,14 @@ export const roomDataMap: Record<string, RoomInfo> = {
     tier: "free"
   },
   "good-with-us-vip1": {
-    nameEn: "Good With Us VIP1",
-    nameVi: "Tốt Với Chúng Tôi VIP1",
+    nameEn: "Good With Us",
+    nameVi: "Tốt Với Chúng Tôi",
     tier: "vip1"
   },
   "aligning-aspirations-for-love-vip3": {
-    nameEn: "Aligning Aspirations for Love VIP3",
-    nameVi: "Căn Chỉnh Khát Vọng Vì Tình Yêu VIP3",
+    nameEn: "Aligning Aspirations for Love",
+    nameVi: "Căn Chỉnh Khát Vọng Vì Tình Yêu",
     tier: "vip3"
-  },
+  }
   // Add more rooms here if needed
 };
