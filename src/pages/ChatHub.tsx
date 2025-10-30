@@ -23,7 +23,6 @@ import { CreditLimitModal } from "@/components/CreditLimitModal";
 import { CreditsDisplay } from "@/components/CreditsDisplay";
 import { PrivateChatPanel } from "@/components/PrivateChatPanel";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
-
 import { messageSchema } from "@/lib/inputValidation";
 import { supabase } from "@/integrations/supabase/client";
 import { roomDataMap } from "@/lib/roomDataImports";
@@ -65,58 +64,56 @@ const ChatHub = () => {
   const [showAccessDenied, setShowAccessDenied] = useState(false);
   const [showCreditLimit, setShowCreditLimit] = useState(false);
   const contentMode = "keyword"; // Always use keyword mode
-const [currentAudio, setCurrentAudio] = useState<string | null>(null);
-  const [altAudio, setAltAudio] = useState<string | null>(null);
+  const [currentAudio, setCurrentAudio] = useState<string | null>(null);
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [audioLoading, setAudioLoading] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
-const [keywordMenu, setKeywordMenu] = useState<{ en: string[]; vi: string[] } | null>(null);
-const [clickedKeyword, setClickedKeyword] = useState<string | null>(null);
-const [mergedEntries, setMergedEntries] = useState<any[]>([]);
-const [audioBasePath, setAudioBasePath] = useState<string>('/');
+  const [keywordMenu, setKeywordMenu] = useState<{ en: string[]; vi: string[] } | null>(null);
+  const [clickedKeyword, setClickedKeyword] = useState<string | null>(null);
+  const [mergedEntries, setMergedEntries] = useState<any[]>([]);
+  const [audioBasePath, setAudioBasePath] = useState<string>('/');
 
-// Use centralized room metadata
-const info = getRoomInfo(roomId || "");
-const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { nameVi: "Phòng không xác định", nameEn: "Unknown Room" };
+  // Use centralized room metadata
+  const info = getRoomInfo(roomId || "");
+  const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { nameVi: "Phòng không xác định", nameEn: "Unknown Room" };
 
-// Fetch username
-useEffect(() => {
-  const fetchUsername = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (user) {
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("username, email")
-        .eq("id", user.id)
-        .single();
-      
-      setUsername(profile?.username || user.email?.split('@')[0] || "User");
+  // Fetch username
+  useEffect(() => {
+    const fetchUsername = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("username, email")
+          .eq("id", user.id)
+          .single();
+       
+        setUsername(profile?.username || user.email?.split('@')[0] || "User");
+      }
+    };
+    fetchUsername();
+  }, []);
+
+  // Check access
+  useEffect(() => {
+    if (!accessLoading && info) {
+      const hasAccess =
+        isAdmin || // Admins can access all rooms
+        info.tier === 'free' ||
+        (info.tier === 'vip1' && canAccessVIP1) ||
+        (info.tier === 'vip2' && canAccessVIP2) ||
+        (info.tier === 'vip3' && canAccessVIP3);
+      if (!hasAccess) {
+        setShowAccessDenied(true);
+      } else {
+        setShowAccessDenied(false);
+      }
     }
+  }, [accessLoading, info, canAccessVIP1, canAccessVIP2, canAccessVIP3, isAdmin]);
+
+  const handleAccessDenied = () => {
+    navigate('/');
   };
-  fetchUsername();
-}, []);
-
-// Check access
-useEffect(() => {
-  if (!accessLoading && info) {
-    const hasAccess = 
-      isAdmin || // Admins can access all rooms
-      info.tier === 'free' ||
-      (info.tier === 'vip1' && canAccessVIP1) ||
-      (info.tier === 'vip2' && canAccessVIP2) ||
-      (info.tier === 'vip3' && canAccessVIP3);
-
-    if (!hasAccess) {
-      setShowAccessDenied(true);
-    } else {
-      setShowAccessDenied(false);
-    }
-  }
-}, [accessLoading, info, canAccessVIP1, canAccessVIP2, canAccessVIP3, isAdmin]);
-
-const handleAccessDenied = () => {
-  navigate('/');
-};
 
   // Initialize room on load or when roomId or tier changes
   useEffect(() => {
@@ -127,25 +124,21 @@ const handleAccessDenied = () => {
       setCurrentAudio(null);
       setIsAudioPlaying(false);
       setMergedEntries([]);
-
       try {
-        // Determine room name from roomId (convert kebab-case to snake_case)
-        const roomName = (roomId || '').replace(/-/g, '_');
-        
         // Load merged entries from /public/tiers/{tier}/{room}/ based on tier
         const result = await loadMergedRoom(roomId || '', tier || 'free');
         setMergedEntries(result.merged);
         setAudioBasePath(result.audioBasePath || '/');
-        
+       
         if (!result.merged || result.merged.length === 0) {
           console.warn(`No merged entries for room ${roomId} tier ${tier}`);
         }
-        
+       
         // Load welcome message with new format
         const welcomeText = `Welcome to ${currentRoom.nameEn} Room, please click the keyword of the topic you want to discover.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.`;
         const welcomeMessage: Message = { id: 'welcome', text: welcomeText, isUser: false, timestamp: new Date() };
         setMainMessages([welcomeMessage]);
-        
+       
         // Set keyword menu from merged data
         setKeywordMenu(result.keywordMenu);
       } catch (error) {
@@ -160,7 +153,7 @@ const handleAccessDenied = () => {
         setMainMessages([welcomeMessage]);
       }
     };
-    
+   
     loadRoomData();
   }, [roomId, tier]);
 
@@ -169,9 +162,9 @@ const handleAccessDenied = () => {
     setClickedKeyword(keyword);
     await sendEntryForKeyword(keyword);
   };
+
   // Helpers for direct keyword→entry mapping
   const norm = (s: any) => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
-
   const extractBilingual = (entry: any) => {
     const read = (obj: any, path: string[]) => path.reduce((acc, k) => (acc ? acc[k] : undefined), obj);
     const candidates: Array<[string[], string[]]> = [
@@ -198,7 +191,6 @@ const handleAccessDenied = () => {
   const resolveEntryByKeyword = (keyword: string) => {
     const k = norm(keyword);
     if (!mergedEntries || mergedEntries.length === 0) return null;
-
     // Prefer exact match, then contains; otherwise return null
     let entry = mergedEntries.find(e => norm(e.keywordEn) === k);
     if (!entry) entry = mergedEntries.find(e => norm(e.keywordEn).includes(k));
@@ -209,17 +201,15 @@ const handleAccessDenied = () => {
     const typingMessageId = (Date.now() + 1).toString();
     const typingMessage: Message = { id: typingMessageId, text: '...', isUser: false, timestamp: new Date() };
     setMainMessages(prev => [...prev, typingMessage]);
-
     try {
       const entry = resolveEntryByKeyword(keyword);
       if (!entry) throw new Error('No entry matched');
-      
+     
       // Build message: English Essay + Audio + Vietnamese Essay (if exists)
       const en = String(entry.replyEn || '');
       const vi = String(entry.replyVi || '');
       const text = vi ? `${en}\n\n---\n\n${vi}` : en;
       const audioFile = entry.audio ? (entry.audio.startsWith('/') ? entry.audio : `/${entry.audio}`) : undefined;
-
       setMainMessages(prev => prev.map(m => m.id === typingMessageId ? { ...m, text, audioFile } : m));
       trackKeyword(keyword);
     } catch (err) {
@@ -232,7 +222,6 @@ const handleAccessDenied = () => {
   const sendMainMessage = async (keywordText?: string) => {
     const messageText = keywordText || mainInput.trim();
     if (!messageText || isLoading) return;
-
     // Get current user
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
@@ -243,8 +232,6 @@ const handleAccessDenied = () => {
       });
       return;
     }
-
-
     // Validate input (only when user types, not for keyword clicks)
     if (!keywordText) {
       const validation = messageSchema.safeParse({ text: mainInput });
@@ -257,14 +244,11 @@ const handleAccessDenied = () => {
         return;
       }
     }
-
-
     // Check if user has credits remaining
     if (!hasCreditsRemaining()) {
       setShowCreditLimit(true);
       return;
     }
-
     // Only add user message bubble if NOT from keyword click
     if (!keywordText) {
       const userMessage: Message = {
@@ -275,16 +259,16 @@ const handleAccessDenied = () => {
       };
       setMainMessages(prev => [...prev, userMessage]);
     }
-    
+   
     const currentInput = messageText;
     if (!keywordText) {
       setMainInput("");
     }
     setIsLoading(true);
-    
+   
     // Increment usage count
     await incrementUsage();
-    
+   
     // Track message count and award points every 10 questions
     const newCount = userMessageCount + 1;
     setUserMessageCount(newCount);
@@ -295,10 +279,9 @@ const handleAccessDenied = () => {
         description: `You earned 10 points for completing ${newCount} questions! / Bạn nhận 10 điểm khi hoàn thành ${newCount} câu hỏi!`,
       });
     }
-    
+   
     // Track message for behavior analytics
     trackMessage(currentInput);
-
     // For typed input, respond by mapping to the matching keyword entry
     try {
       await sendEntryForKeyword(currentInput);
@@ -317,17 +300,14 @@ const handleAccessDenied = () => {
     chatType: string
   ) => {
     if (!input.trim()) return;
-
     const newMessage: Message = {
       id: Date.now().toString(),
       text: input,
       isUser: true,
       timestamp: new Date()
     };
-
     setMessages(prev => [...prev, newMessage]);
     setInput("");
-
     // Handle feedback submission to database
     if (chatType === "feedback") {
       const { data: { user } } = await supabase.auth.getUser();
@@ -339,7 +319,6 @@ const handleAccessDenied = () => {
           status: 'new',
           priority: 'normal'
         });
-
         const responseText = "Thank you for your feedback. Admins have been notified.\n\nCảm ơn phản hồi của bạn. Quản trị viên đã được thông báo.";
         const aiMessage: Message = {
           id: (Date.now() + 1).toString(),
@@ -384,62 +363,41 @@ const handleAccessDenied = () => {
 
     const handleAudioClick = () => {
       if (!message.audioFile) return;
-      
+
       const filename = String(message.audioFile).replace(/^\//, '').trim();
       if (!filename || filename === 'undefined' || filename === 'null') {
         console.warn('No valid audio file specified');
         return;
       }
-      
-      const audioUrl = `/${filename}`;
-      
-      // Check if this audio is already playing
-      if (currentAudio === audioUrl && isAudioPlaying) {
-        audioRef.current?.pause();
-      } else {
-        setAudioLoading(true);
-        fetch(audioUrl, { method: 'HEAD' })
-          .then(async (response) => {
-            const tryPlay = (url: string) => {
-              setCurrentAudio(url);
-              setIsAudioPlaying(false);
-              const el = audioRef.current;
-              if (el) {
-                el.src = url;
-                el.load();
-                el.currentTime = 0;
-                el.play().catch(() => {/* autoplay blocked */});
-              }
-            };
 
-            if (response.ok) {
-              tryPlay(audioUrl);
-            } else {
-              // Fallback to a known existing audio file
-              const fallback = '/Building_Simple_Routines_Free.mp3';
-              try {
-                const r2 = await fetch(fallback, { method: 'HEAD' });
-                if (r2.ok) {
-                  tryPlay(fallback);
-                  toast({ title: 'Using fallback audio', description: `Original missing: ${filename}` });
-                } else {
-                  throw new Error('Fallback audio unavailable');
-                }
-              } catch {
-                throw new Error(`Audio file not found: ${filename}`);
-              }
+      const audioUrl = audioBasePath + filename; // Uses correct path from JSON
+
+      setAudioLoading(true);
+      fetch(audioUrl, { method: 'HEAD' })
+        .then(response => {
+          if (response.ok) {
+            setCurrentAudio(audioUrl);
+            const el = audioRef.current;
+            if (el) {
+              el.src = audioUrl;
+              el.load();
+              el.currentTime = 0;
+              el.play().catch(() => {});
             }
-          })
-          .catch(err => {
-            console.error('Audio file check failed:', filename, err);
             setAudioLoading(false);
-            toast({
-              title: "Audio unavailable / Âm thanh không có",
-              description: `File not found: ${filename}`,
-              variant: "destructive"
-            });
+          } else {
+            throw new Error(`Audio file not found: ${filename}`);
+          }
+        })
+        .catch(err => {
+          console.error('Audio error:', err);
+          setAudioLoading(false);
+          toast({
+            title: "Audio unavailable / Âm thanh không có",
+            description: `File not found: ${filename}`,
+            variant: "destructive"
           });
-      }
+        });
     };
 
     return (
@@ -463,9 +421,9 @@ const handleAccessDenied = () => {
                     disabled={audioLoading}
                     className="mt-2 h-8 px-2 gap-1.5"
                   >
-                    {audioLoading && currentAudio === `/${String(message.audioFile).replace(/^\//, '')}` ? (
+                    {audioLoading && currentAudio === audioUrl ? (
                       <Loader2 className="w-4 h-4 animate-spin" />
-                    ) : currentAudio === `/${String(message.audioFile).replace(/^\//, '')}` && isAudioPlaying ? (
+                    ) : currentAudio === audioUrl && isAudioPlaying ? (
                       <span className="text-base">⏸️</span>
                     ) : (
                       <Volume2 className="w-4 h-4" />
@@ -489,9 +447,9 @@ const handleAccessDenied = () => {
                     disabled={audioLoading}
                     className="mt-2 h-8 px-2 gap-1.5"
                   >
-                    {audioLoading && currentAudio === `/${String(message.audioFile).replace(/^\//, '')}` ? (
+                    {audioLoading && currentAudio === audioUrl ? (
                       <Loader2 className="w-4 h-4 animate-spin" />
-                    ) : currentAudio === `/${String(message.audioFile).replace(/^\//, '')}` && isAudioPlaying ? (
+                    ) : currentAudio === audioUrl && isAudioPlaying ? (
                       <span className="text-base">⏸️</span>
                     ) : (
                       <Volume2 className="w-4 h-4" />
@@ -508,7 +466,7 @@ const handleAccessDenied = () => {
               </span>
             )}
           </div>
-          
+         
           {!message.isUser && message.relatedRooms && message.relatedRooms.length > 0 && (
             <RelatedRooms roomNames={message.relatedRooms} />
           )}
@@ -547,7 +505,6 @@ const handleAccessDenied = () => {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-
       <div className="min-h-screen p-4" style={{ background: getBgColor() }}>
         <div className="max-w-7xl mx-auto space-y-4">
         {/* Header */}
@@ -562,7 +519,7 @@ const handleAccessDenied = () => {
               Back / Quay Lại
             </Button>
           </div>
-          
+         
           <div className="text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <h2 className="text-lg font-semibold">{currentRoom.nameEn}</h2>
@@ -580,16 +537,15 @@ const handleAccessDenied = () => {
             )}
             <RoomProgress totalRooms={progress.totalRooms} streak={progress.streak} />
           </div>
-          
+         
           <div className="w-24"></div>
         </div>
-
         {/* Main Chat Area */}
         <Card className="p-4 shadow-soft">
           <div className="space-y-3">
             <ScrollArea className="h-[380px] pr-4" ref={mainScrollRef}>
               <WelcomeBack lastRoomId={progress.lastVisit} currentRoomId={roomId || ""} />
-              
+             
               {/* Show welcome message first */}
               {mainMessages.length > 0 && mainMessages[0].id === 'welcome' && (
                 <div className="mb-4">
@@ -598,7 +554,7 @@ const handleAccessDenied = () => {
                   </div>
                 </div>
               )}
-              
+             
               {/* Show response messages (excluding welcome) */}
               {mainMessages.slice(1).length === 0 ? (
                 <div className="flex items-center justify-center text-center py-8">
@@ -612,7 +568,7 @@ const handleAccessDenied = () => {
               )}
               <div ref={endRef} />
             </ScrollArea>
-            
+           
             {/* Hidden audio element for playback */}
             <audio
               ref={audioRef}
@@ -634,7 +590,6 @@ const handleAccessDenied = () => {
             />
           </div>
         </Card>
-
         {/* Keyword Menu Section */}
         {keywordMenu && keywordMenu.en && keywordMenu.vi && (
           <Card className="p-4 shadow-soft">
@@ -645,8 +600,8 @@ const handleAccessDenied = () => {
                   const keywordVi = keywordMenu.vi[idx] || '';
                   const isClicked = clickedKeyword === keywordEn || clickedKeyword === keywordVi;
                   return (
-                    <Button 
-                      key={`pair-${idx}`} 
+                    <Button
+                      key={`pair-${idx}`}
                       variant={isClicked ? "default" : "outline"}
                       size="sm"
                       className="text-xs cursor-pointer"
@@ -661,7 +616,6 @@ const handleAccessDenied = () => {
             </div>
           </Card>
         )}
-
         {/* Two Chat Boxes */}
         <div className="grid md:grid-cols-2 gap-4">
           {/* Combined Feedback & Room Chat */}
@@ -674,9 +628,9 @@ const handleAccessDenied = () => {
                   <p className="text-xs text-muted-foreground">Phản Hồi & Chat Phòng</p>
                 </div>
               </div>
-              
+             
               <ScrollArea className="h-24">
-                {[...feedbackMessages, ...roomMessages].sort((a, b) => 
+                {[...feedbackMessages, ...roomMessages].sort((a, b) =>
                   a.timestamp.getTime() - b.timestamp.getTime()
                 ).map(msg => (
                   <div key={msg.id} className="mb-2">
@@ -686,7 +640,6 @@ const handleAccessDenied = () => {
                   </div>
                 ))}
               </ScrollArea>
-
               <div className="flex gap-2">
                 <Input
                   placeholder="Send message / Gửi tin nhắn..."
@@ -699,8 +652,8 @@ const handleAccessDenied = () => {
                   }}
                   className="text-sm"
                 />
-                <Button 
-                  size="sm" 
+                <Button
+                  size="sm"
                   variant="outline"
                   onClick={() => sendMessage(feedbackInput, setFeedbackInput, setFeedbackMessages, "feedback")}
                 >
@@ -709,13 +662,11 @@ const handleAccessDenied = () => {
               </div>
             </div>
           </Card>
-
           {/* Private Chat with Permissions */}
           <PrivateChatPanel roomId={roomId || ""} />
         </div>
       </div>
     </div>
-
     <CreditLimitModal
       open={showCreditLimit}
       onClose={() => setShowCreditLimit(false)}
