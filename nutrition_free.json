@@ -1,0 +1,93 @@
+{
+  "version": "1.0",
+  "locale": "vi-en",
+  "name": "Nutrition (Free)",
+  "name_vi": "Dinh Dưỡng (Miễn Phí)",
+  "description": "Starter nutrition guidance: balanced meals, hydration, and mindful eating.",
+  "global_notes": { "safety": "" },
+  "enum_tags": [
+    "nutrition",
+    "hydration",
+    "mindful_eating",
+    "balance",
+    "wellness"
+  ],
+  "entries": [
+    {
+      "slug": "starting-balanced-meal-planning",
+      "keywords_en": [
+        "balanced meal",
+        "planning",
+        "healthy eating",
+        "nutrition start"
+      ],
+      "keywords_vi": [
+        "bữa ăn cân bằng",
+        "lập kế hoạch",
+        "ăn uống lành mạnh",
+        "bắt đầu dinh dưỡng"
+      ],
+      "copy": {
+        "en": "Healthy eating begins with one balanced plate. Each meal is a chance to care for your body’s energy and focus. Picture your plate: half colorful vegetables, one quarter lean protein, one quarter whole grains. Add a small portion of healthy fat, like olive oil or avocado. Prepare one meal ahead each week so good choices feel effortless. Keep it simple and consistent rather than perfect. Balanced meals bring steady energy and calm clarity. Start planning today with one mindful lunch, and notice how nourishment changes your day. Ready to eat better? Explore more beyond Free.",
+        "vi": "Chế độ ăn lành mạnh bắt đầu từ một đĩa ăn cân bằng. Mỗi bữa ăn là cơ hội để bạn chăm sóc năng lượng và sự tập trung cho cơ thể. Hãy hình dung đĩa của bạn: một nửa là rau củ nhiều màu, một phần tư là protein nạc, một phần tư là ngũ cốc nguyên hạt. Thêm một lượng nhỏ chất béo lành mạnh như dầu ô liu hoặc bơ. Mỗi tuần, hãy chuẩn bị trước ít nhất một bữa để việc lựa chọn lành mạnh trở nên dễ dàng. Hãy giữ mọi thứ đơn giản và đều đặn thay vì hoàn hảo. Bữa ăn cân bằng mang lại nguồn năng lượng ổn định và sự minh mẫn nhẹ nhàng. Hãy bắt đầu lên kế hoạch hôm nay với một bữa trưa chánh niệm và cảm nhận cách dinh dưỡng thay đổi ngày của bạn. Sẵn sàng ăn uống tốt hơn chứ? Hãy khám phá thêm vượt ngoài cấp Free."
+      },
+      "tags": ["nutrition"],
+      "artifact_id": "c2b1a8e4-4b38-4fb5-86b9-4ad03e25e3f1",
+      "audio": "/audio/en/Starting_Balanced_Meal_Planning_Free.mp3"
+    },
+    {
+      "slug": "building-hydration-habits",
+      "keywords_en": ["hydration", "water", "wellness", "healthy habit"],
+      "keywords_vi": ["uống nước", "nước", "sức khỏe", "thói quen lành mạnh"],
+      "copy": {
+        "en": "Water keeps your body balanced and your mind clear. Begin by adding one extra glass each morning and carrying a refillable bottle through the day. Gentle reminders or water-tracking apps help consistency without pressure. Flavor water with fruit or herbs if plain feels dull. Notice small signs of hydration—steady energy, smoother skin, better focus. Replace one sugary drink with water this week to build momentum. Tiny actions turn into lifelong habits when repeated kindly. Start with one sip toward renewal. Ready to feel refreshed? Explore more beyond Free.",
+        "vi": "Nước giúp cơ thể bạn cân bằng và đầu óc tỉnh táo. Hãy bắt đầu bằng cách thêm một cốc nước vào buổi sáng và mang theo chai nước có thể tái sử dụng suốt cả ngày. Những lời nhắc nhẹ nhàng hoặc ứng dụng theo dõi lượng nước sẽ giúp bạn duy trì thói quen mà không áp lực. Nếu nước lọc khiến bạn chán, hãy thêm trái cây hoặc lá thảo mộc để tăng hương vị. Chú ý đến những dấu hiệu nhỏ của sự đủ nước — năng lượng ổn định, làn da mịn màng, sự tập trung tốt hơn. Trong tuần này, hãy thay một đồ uống có đường bằng nước để tạo đà mới. Những hành động nhỏ khi được lặp lại bằng sự quan tâm sẽ trở thành thói quen suốt đời. Hãy bắt đầu với một ngụm nước hướng đến sự tươi mới. Sẵn sàng cảm nhận sự sảng khoái chứ? Hãy khám phá thêm vượt ngoài cấp Free."
+      },
+      "tags": ["hydration"],
+      "artifact_id": "d93e2b11-3e2a-4b65-b25c-1a5aebdf1e02",
+      "audio": "/audio/en/Building_Hydration_Habits_Free.mp3"
+    },
+    {
+      "slug": "trying-mindful-eating",
+      "keywords_en": ["mindful eating", "slow meals", "awareness", "gratitude"],
+      "keywords_vi": [
+        "ăn uống tỉnh táo",
+        "bữa ăn chậm",
+        "nhận thức",
+        "biết ơn"
+      ],
+      "copy": {
+        "en": "Mindful eating transforms meals into moments of calm. Choose one meal a day to slow down—turn off screens, take a breath, and truly taste. Chew each bite completely, noticing texture and flavor. Gratitude before eating helps your body relax and digest. When distractions fade, fullness signals become clear. If cravings rise later, pause and ask what emotion you’re feeding. This awareness builds peace around food. Begin tonight by eating slowly and listening to your body’s quiet wisdom. Ready to enjoy food without rush? Explore more beyond Free.",
+        "vi": "Ăn uống chánh niệm biến mỗi bữa ăn thành khoảnh khắc bình yên. Hãy chọn một bữa mỗi ngày để ăn chậm lại — tắt màn hình, hít một hơi thật sâu và cảm nhận hương vị thật sự. Nhai kỹ từng miếng, chú ý đến kết cấu và vị ngon. Sự biết ơn trước khi ăn giúp cơ thể bạn thư giãn và tiêu hóa tốt hơn. Khi sự phân tâm biến mất, tín hiệu no sẽ trở nên rõ ràng hơn. Nếu cơn thèm ăn xuất hiện sau đó, hãy dừng lại và tự hỏi bạn đang muốn lấp đầy cảm xúc nào. Sự nhận thức này giúp bạn xây dựng mối quan hệ hòa bình với thực phẩm. Hãy bắt đầu tối nay bằng việc ăn chậm rãi và lắng nghe sự khôn ngoan thầm lặng của cơ thể. Sẵn sàng thưởng thức món ăn mà không vội vã chứ? Hãy khám phá thêm vượt ngoài cấp Free."
+      },
+      "tags": ["mindful_eating"],
+      "artifact_id": "e41b7a9f-3a7a-4f8b-9c3a-b8f7d1e2f9c3",
+      "audio": "/audio/en/Trying_Mindful_Eating_Free.mp3"
+    }
+  ],
+  "keywords": {
+    "basic_nutrition": {
+      "en": [
+        "basic meal planning",
+        "simple hydration",
+        "beginner mindful eating",
+        "healthy eating start",
+        "easy nutrition habits"
+      ],
+      "vi": [
+        "lập kế hoạch bữa ăn cơ bản",
+        "uống nước đơn giản",
+        "ăn uống tỉnh táo cho người mới",
+        "bắt đầu ăn lành mạnh",
+        "thói quen dinh dưỡng dễ dàng"
+      ]
+    }
+  },
+  "meta": {
+    "created_at": "2025-10-25T10:33:00+09:00",
+    "updated_at": "2025-10-27T17:45:00+09:00",
+    "entry_count": 3,
+    "tier": "free",
+    "room_color": "#FFFFFF"
+  }
+}

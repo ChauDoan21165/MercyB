@@ -1,0 +1,72 @@
+{
+  "name": "AI Frontier VIP3",
+  "description": "Push AI to its limits with VAEs, NAS, CoT, federated learning, neuroevolution, and science.",
+  "entries": [
+    {
+      "id": "01",
+      "title": "Encoding Latent Spaces with VAEs",
+      "keywords_en": ["VAE", "latent", "generative", "reconstruction"],
+      "keywords_vi": ["VAE", "tiềm ẩn", "sinh dữ liệu", "tái tạo"],
+      "reply_en": "Learn latent spaces with VAEs. Balance KL loss and reconstruction. Generate images from noise. Stable but tricky.",
+      "reply_vi": "Học không gian tiềm ẩn bằng VAE. Cân bằng KL và tái tạo. Sinh ảnh từ nhiễu. Ổn định nhưng khó tinh chỉnh.",
+      "dare": "Generate one image from a random vector.",
+      "audio": "01_vae_encoding.mp3",
+      "duration": "00:58"
+    },
+    {
+      "id": "02",
+      "title": "Automating Architecture Design",
+      "keywords_en": ["NAS", "DARTS", "search", "optimize"],
+      "keywords_vi": ["NAS", "DARTS", "tìm kiếm", "tối ưu"],
+      "reply_en": "Let NAS design your model. Search vast spaces. Use DARTS for speed. Run on a tiny dataset first.",
+      "reply_vi": "Để NAS thiết kế mô hình. Tìm kiếm không gian lớn. Dùng DARTS để tăng tốc. Chạy trên dữ liệu nhỏ trước.",
+      "dare": "Find one optimal layer setup.",
+      "audio": "02_nas_automation.mp3",
+      "duration": "00:55"
+    },
+    {
+      "id": "03",
+      "title": "Learning with Stepwise Reasoning",
+      "keywords_en": ["CoT", "chain", "reasoning", "prompt"],
+      "keywords_vi": ["CoT", "chuỗi", "suy luận", "prompt"],
+      "reply_en": "Break problems into steps. Write CoT prompts. Boost accuracy. Test on math or logic. Precision matters.",
+      "reply_vi": "Chia bài toán thành bước. Viết prompt CoT. Tăng độ chính xác. Thử với toán hoặc logic. Độ chính xác quan trọng.",
+      "dare": "Solve one problem step-by-step aloud.",
+      "audio": "03_chain_of_thought.mp3",
+      "duration": "00:53"
+    },
+    {
+      "id": "04",
+      "title": "Decentralized Learning for Privacy",
+      "keywords_en": ["federated", "privacy", "devices", "secure"],
+      "keywords_vi": ["liên kết", "riêng tư", "thiết bị", "bảo mật"],
+      "reply_en": "Train across phones. Keep data local. Sync only updates. Try a federated example. Privacy without sacrifice.",
+      "reply_vi": "Huấn luyện trên điện thoại. Giữ dữ liệu tại chỗ. Đồng bộ chỉ cập nhật. Thử ví dụ liên kết. Riêng tư không hy sinh.",
+      "dare": "Train one model without sending data.",
+      "audio": "04_federated_learning.mp3",
+      "duration": "00:56"
+    },
+    {
+      "id": "05",
+      "title": "Evolving Neural Networks",
+      "keywords_en": ["neuroevolution", "genetic", "evolve", "fitness"],
+      "keywords_vi": ["tiến hóa", "di truyền", "phát triển", "thích nghi"],
+      "reply_en": "Evolve architectures with genetics. Mutate and select. Slow but powerful. Run on a simple game.",
+      "reply_vi": "Tiến hóa kiến trúc bằng di truyền. Đột biến và chọn lọc. Chậm nhưng mạnh mẽ. Chạy trên game đơn giản.",
+      "dare": "Breed two networks into one.",
+      "audio": "05_neuroevolution.mp3",
+      "duration": "00:54"
+    },
+    {
+      "id": "06",
+      "title": "Advancing Scientific Discovery with AI",
+      "keywords_en": ["science", "protein", "physics", "research"],
+      "keywords_vi": ["khoa học", "protein", "vật lý", "nghiên cứu"],
+      "reply_en": "Use AI to model proteins or simulate physics. Integrate domain knowledge. Handle sparse data. Accelerate discovery.",
+      "reply_vi": "Dùng AI mô hình protein hoặc mô phỏng vật lý. Tích hợp kiến thức chuyên ngành. Xử lý dữ liệu thưa. Tăng tốc khám phá.",
+      "dare": "Predict one molecule’s behavior.",
+      "audio": "06_ai_for_science.mp3",
+      "duration": "00:57"
+    }
+  ]
+}

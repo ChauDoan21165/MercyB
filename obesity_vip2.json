@@ -1,0 +1,142 @@
+{
+  "version": "1.0",
+  "locale": "vi-en",
+  "name": "Obesity Management (VIP 2)",
+  "name_vi": "Quản Lý Béo Phì (VIP 2)",
+  "description": "Advanced obesity management: refined meal planning, active lifestyle, mindful eating, portion control, and nutrient-dense choices.",
+  "global_notes": { "safety": "" },
+  "enum_tags": [
+    "nutrition",
+    "movement",
+    "mindful_eating",
+    "portion_control",
+    "nutrient_density"
+  ],
+  "entries": [
+    {
+      "slug": "refining-balanced-meal-planning",
+      "keywords_en": [
+        "refined meal planning",
+        "nutrition",
+        "healthy weight",
+        "wellness"
+      ],
+      "keywords_vi": [
+        "lập kế hoạch bữa ăn tinh chỉnh",
+        "dinh dưỡng",
+        "cân nặng lành mạnh",
+        "sức khỏe"
+      ],
+      "copy": {
+        "en": "Refine meal planning to maintain healthy weight and nourish long-term wellness. Design one daily meal rich in vegetables, lean proteins, and whole grains, using a simple ratio: half vegetables, one quarter protein, one quarter carbohydrates. Prepare three meals ahead each week to avoid impulsive eating. Reflect weekly on energy levels and digestion in your journal. Ask a friend or nutrition partner for feedback once a month to refine your approach. Gradual adjustments build confidence and stability without restriction. Celebrate balance rather than perfection—this method sustains progress naturally. Begin today by sketching one colorful, balanced meal that excites you. Ready to refine your nutritional rhythm? Explore beyond VIP 2.",
+        "vi": "Tinh chỉnh việc lập kế hoạch bữa ăn để duy trì cân nặng lành mạnh và nuôi dưỡng sức khỏe lâu dài. Hãy thiết kế một bữa ăn mỗi ngày giàu rau củ, protein nạc và ngũ cốc nguyên hạt, theo tỷ lệ đơn giản: một nửa rau, một phần tư protein, một phần tư tinh bột. Chuẩn bị trước ba bữa mỗi tuần để tránh ăn uống bốc đồng. Mỗi tuần, ghi lại trong nhật ký cảm nhận về mức năng lượng và quá trình tiêu hóa. Hỏi ý kiến một người bạn hoặc đối tác dinh dưỡng mỗi tháng để cải thiện cách tiếp cận của bạn. Những điều chỉnh dần dần sẽ xây dựng sự tự tin và ổn định mà không cần gò bó. Hãy ăn mừng sự cân bằng thay vì sự hoàn hảo — phương pháp này giúp bạn tiến bộ tự nhiên hơn. Hãy bắt đầu hôm nay bằng việc phác thảo một bữa ăn cân bằng đầy màu sắc khiến bạn hứng khởi. Sẵn sàng tinh chỉnh nhịp dinh dưỡng của bạn chứ? Hãy khám phá thêm vượt ngoài cấp VIP 2."
+      },
+      "tags": ["nutrition"],
+      "artifact_id": "e1a27b3f-7bcb-45a8-97a1-fb2b32f1c601",
+      "audio": "/audio/en/Refining_Balanced_Meal_Planning_VIP2.mp3"
+    },
+    {
+      "slug": "mastering-an-active-lifestyle",
+      "keywords_en": [
+        "active lifestyle",
+        "movement",
+        "vitality",
+        "consistency"
+      ],
+      "keywords_vi": [
+        "lối sống vận động",
+        "chuyển động",
+        "sức sống",
+        "kiên trì"
+      ],
+      "copy": {
+        "en": "Mastering an active lifestyle is about joyful consistency, not intensity. Commit to twenty minutes of movement daily—walks, cycling, yoga, or dance. Choose activities that spark enjoyment so you look forward to them. Record each session and note your mood and focus afterward. Once a week, increase duration slightly to encourage gentle progress. Join a monthly fitness class or weekend group walk for community motivation. If fatigue arises, rest consciously instead of quitting; recovery is part of rhythm. Over time, this steady balance reshapes metabolism, posture, and confidence. Begin now with one empowering movement that feels light and sustainable. Ready to master your momentum? Explore beyond VIP 2.",
+        "vi": "Làm chủ lối sống vận động là về sự kiên trì vui vẻ, không phải cường độ. Hãy cam kết dành ít nhất hai mươi phút vận động mỗi ngày — đi bộ, đạp xe, tập yoga hoặc khiêu vũ. Chọn những hoạt động mang lại niềm vui để bạn mong chờ mỗi ngày. Ghi lại mỗi buổi tập và tâm trạng sau đó để nhận ra sự thay đổi. Mỗi tuần, tăng nhẹ thời lượng để khuyến khích tiến bộ bền vững. Tham gia một lớp thể dục hàng tháng hoặc nhóm đi bộ cuối tuần để được cộng đồng truyền cảm hứng. Nếu cảm thấy mệt, hãy nghỉ ngơi có ý thức thay vì bỏ cuộc; phục hồi cũng là một phần của nhịp sống. Theo thời gian, sự cân bằng này sẽ cải thiện trao đổi chất, tư thế và sự tự tin. Hãy bắt đầu ngay bằng một chuyển động khiến bạn cảm thấy nhẹ nhàng và dễ duy trì. Sẵn sàng làm chủ nhịp năng lượng của bạn chứ? Hãy khám phá thêm vượt ngoài cấp VIP 2."
+      },
+      "tags": ["movement"],
+      "artifact_id": "fb0e9f64-cd67-47e5-b13e-1a72c74c6f02",
+      "audio": "/audio/en/Mastering_an_Active_Lifestyle_VIP2.mp3"
+    },
+    {
+      "slug": "enhancing-mindful-eating-practices",
+      "keywords_en": [
+        "mindful eating",
+        "awareness",
+        "gratitude",
+        "self-respect"
+      ],
+      "keywords_vi": ["ăn uống tỉnh táo", "nhận thức", "biết ơn", "tự trọng"],
+      "copy": {
+        "en": "Enhancing mindful eating transforms your relationship with nourishment. Sit for one meal each day without screens, distractions, or hurry. Taste your food with full attention—texture, scent, and satisfaction. This awareness gently reduces overeating and emotional snacking. Reflect weekly in your journal on triggers and gratitude moments that arise. Once a month, discuss your insights with a trusted partner to stay accountable. Gradually, meals become quieter rituals of self-respect rather than routine refueling. Mindful eating cultivates emotional steadiness and digestive comfort. Begin this practice at your next meal—chew slowly, breathe fully, and honor nourishment as self-care. Ready to deepen presence with food? Explore beyond VIP 2.",
+        "vi": "Nâng cao thực hành ăn uống chánh niệm giúp bạn thay đổi mối quan hệ với việc nuôi dưỡng cơ thể. Hãy ngồi ăn một bữa mỗi ngày không màn hình, không xao nhãng, không vội vã. Cảm nhận món ăn bằng toàn bộ sự chú tâm — kết cấu, mùi hương và cảm giác thỏa mãn. Sự nhận thức này nhẹ nhàng giúp giảm ăn quá mức và ăn vặt theo cảm xúc. Mỗi tuần, ghi lại trong nhật ký các yếu tố kích hoạt và khoảnh khắc biết ơn mà bạn nhận ra. Mỗi tháng, thảo luận với người bạn tin tưởng để duy trì sự cam kết. Dần dần, các bữa ăn trở thành nghi thức tôn trọng bản thân hơn là nạp năng lượng máy móc. Ăn uống chánh niệm giúp ổn định cảm xúc và tiêu hóa êm ái. Hãy bắt đầu thực hành này ngay ở bữa tiếp theo — nhai chậm, thở sâu và xem việc ăn như một hành động tự chăm sóc. Sẵn sàng hiện diện sâu sắc hơn trong từng bữa ăn chứ? Hãy khám phá thêm vượt ngoài cấp VIP 2."
+      },
+      "tags": ["mindful_eating"],
+      "artifact_id": "a3c15e2d-0e8f-4e42-9618-6d90b72fa203",
+      "audio": "/audio/en/Enhancing_Mindful_Eating_Practices_VIP2.mp3"
+    },
+    {
+      "slug": "optimizing-portion-control",
+      "keywords_en": ["portion control", "moderation", "balance", "awareness"],
+      "keywords_vi": [
+        "kiểm soát khẩu phần",
+        "điều độ",
+        "cân bằng",
+        "nhận thức"
+      ],
+      "copy": {
+        "en": "Optimizing portion control helps you balance nourishment and satisfaction gracefully. Use smaller plates and bowls to guide natural moderation. Before eating, pause for a breath to gauge true hunger rather than habit. Reflect weekly on portion size, energy, and comfort levels. If you often eat quickly, set utensils down between bites to slow your rhythm. Prepare meals in advance to prevent overeating from stress or fatigue. Once a month, review patterns with a supportive friend or coach. Over time, portion awareness becomes effortless self-respect instead of discipline. Begin today by plating your next meal with mindful attention to what feels ‘enough.’ Ready to refine your balance? Explore beyond VIP 2.",
+        "vi": "Tối ưu việc kiểm soát khẩu phần giúp bạn cân bằng giữa dinh dưỡng và sự hài lòng một cách tinh tế. Hãy dùng đĩa hoặc bát nhỏ hơn để khuyến khích sự điều độ tự nhiên. Trước khi ăn, hãy dừng lại một nhịp để cảm nhận cơn đói thật sự thay vì theo thói quen. Mỗi tuần, ghi lại suy nghĩ về khẩu phần, năng lượng và cảm giác thoải mái của bạn. Nếu bạn thường ăn nhanh, hãy đặt dụng cụ xuống giữa các miếng để chậm lại. Chuẩn bị bữa ăn trước giúp bạn tránh ăn quá nhiều khi căng thẳng hoặc mệt mỏi. Mỗi tháng, xem lại thói quen cùng một người bạn hoặc huấn luyện viên để được hỗ trợ. Theo thời gian, nhận thức về khẩu phần sẽ trở thành sự tôn trọng bản thân thay vì kỷ luật. Hãy bắt đầu hôm nay bằng việc bày bữa ăn kế tiếp với sự chú ý chánh niệm tới cảm giác “đủ”. Sẵn sàng tinh chỉnh sự cân bằng của bạn chứ? Hãy khám phá thêm vượt ngoài cấp VIP 2."
+      },
+      "tags": ["portion_control"],
+      "artifact_id": "dfb81c94-78a9-4e3d-a786-91a3d2f6d904",
+      "audio": "/audio/en/Optimizing_Portion_Control_VIP2.mp3"
+    },
+    {
+      "slug": "choosing-nutrient-dense-foods",
+      "keywords_en": [
+        "nutrient-dense choices",
+        "healthy eating",
+        "vitality",
+        "nutrition"
+      ],
+      "keywords_vi": [
+        "lựa chọn giàu dinh dưỡng",
+        "ăn lành mạnh",
+        "sức sống",
+        "dinh dưỡng"
+      ],
+      "copy": {
+        "en": "Choosing nutrient-dense foods fuels vitality and supports natural weight regulation. Fill one meal each day with colorful vegetables, high-quality proteins, and whole grains. Swap processed snacks for nuts, fruits, or yogurt rich in texture and nutrients. Keep a weekly record of food quality and energy shifts to notice patterns. Once a month, challenge yourself to cook a new wholesome recipe to prevent boredom. Nourishment should feel inspiring, not restrictive. Invite feedback from a friend on your creative healthy dishes. Over time, nutrient-rich eating becomes intuitive—guided by how your body feels rather than rigid rules. Begin now by adding one vibrant, nourishing ingredient to today’s meal. Ready to eat smarter and thrive? Explore beyond VIP 2.",
+        "vi": "Lựa chọn thực phẩm giàu dinh dưỡng giúp tăng sức sống và hỗ trợ điều hòa cân nặng tự nhiên. Mỗi ngày, hãy làm cho ít nhất một bữa ăn của bạn đầy rau củ nhiều màu, protein chất lượng và ngũ cốc nguyên hạt. Thay đồ ăn vặt chế biến sẵn bằng các loại hạt, trái cây hoặc sữa chua giàu dưỡng chất và hương vị tự nhiên. Mỗi tuần, ghi lại chất lượng thực phẩm và sự thay đổi năng lượng của bạn để nhận ra quy luật. Mỗi tháng, hãy thử nấu một công thức lành mạnh mới để tránh nhàm chán. Dinh dưỡng nên mang lại cảm hứng, không phải sự gò bó. Hãy nhờ bạn bè góp ý cho những món ăn sáng tạo của bạn. Theo thời gian, việc ăn uống giàu dinh dưỡng sẽ trở nên tự nhiên — được dẫn dắt bởi cảm nhận cơ thể thay vì quy tắc cứng nhắc. Hãy bắt đầu ngay hôm nay bằng cách thêm một nguyên liệu tươi mới, đầy màu sắc vào bữa ăn. Sẵn sàng ăn uống thông minh và tràn đầy sức sống chứ? Hãy khám phá thêm vượt ngoài cấp VIP 2."
+      },
+      "tags": ["nutrient_density"],
+      "artifact_id": "bda3f215-c9ef-4b76-8176-f0bda3f22105",
+      "audio": "/audio/en/Choosing_Nutrient_Dense_Foods_VIP2.mp3"
+    }
+  ],
+  "keywords": {
+    "advanced_obesity_management": {
+      "en": [
+        "refined meal planning",
+        "active lifestyle",
+        "enhanced mindful eating",
+        "optimized portion control",
+        "nutrient-dense choices"
+      ],
+      "vi": [
+        "lập kế hoạch bữa ăn tinh chỉnh",
+        "lối sống vận động",
+        "ăn uống tỉnh táo nâng cao",
+        "kiểm soát khẩu phần tối ưu",
+        "lựa chọn giàu dinh dưỡng"
+      ]
+    }
+  },
+  "meta": {
+    "created_at": "2025-10-25T12:22:00+09:00",
+    "updated_at": "2025-10-27T18:43:00+09:00",
+    "entry_count": 5,
+    "tier": "vip2",
+    "room_color": "#D7CCC8"
+  }
+}

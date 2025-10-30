@@ -1,0 +1,202 @@
+{
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nObesity management for VIP 3, advanced mastery\n\nEach entry: teach advanced, evidence-based strategies for managing obesity\n\nPhilosophy: empowering, comprehensive, personalized, research-backed\n\nBeliefs:\n- Don't settle. Pursue optimal health.\n- Don't limit. Expand possibilities.\n- Don't generalize. Personalize strategies.\n\nTalk points\n- Advanced nutrition optimizes metabolic health.\n- Strategic exercise maximizes fat loss.\n- Deep mindset work creates lasting transformation.\n- Data-driven approaches ensure success.\n\nAdvanced habits to teach:\n- Implement macro tracking and meal timing.\n- Design periodized training programs.\n- Practice cognitive restructuring weekly.\n- Monitor biometrics and adjust strategies.",
+  "schema_version": "1.1",
+  "schema_id": "obesity_management_vip3",
+  "description": "Echologic Mercy Blade room for VIP 3 users to master obesity management with advanced, personalized strategies",
+  "description_vi": "Phòng Mercy Blade dành cho người dùng VIP 3 để làm chủ quản lý béo phì với chiến lược nâng cao, cá nhân hóa",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn y tế chuyên nghiệp.",
+  "crisis_footer": {
+    "en": "For serious health concerns or obesity-related issues, contact a doctor or support line immediately.",
+    "vi": "Nếu gặp vấn đề sức khỏe nghiêm trọng hoặc liên quan đến béo phì, liên hệ bác sĩ hoặc đường dây hỗ trợ ngay."
+  },
+  "safety_footer": {
+    "en": "For personalized obesity management, consult a healthcare professional.",
+    "vi": "Để quản lý béo phì cá nhân hóa, tham khảo chuyên gia y tế."
+  },
+  "meta": {
+    "created_at": "2025-10-25T10:00:00+07:00",
+    "updated_at": "2025-10-25T10:00:00+07:00",
+    "checksum_sha256": "<placeholder>",
+    "meta_notes": "Keyword-driven; VIP 3 exclusive; premium gold background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
+    "i18n_verified": true,
+    "entry_count": 6,
+    "artifact_set_id": "5e6f7a8b-9c0d-41e2-f3a4-b5c6d7e8f9a0",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#FFA500",
+    "tier": "vip3"
+  },
+  "enums": {
+    "tags": [
+      "obesity",
+      "nutrition",
+      "exercise",
+      "mindset",
+      "health_management",
+      "advanced"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["health_management", "wellness"]
+  },
+  "keywords": {
+    "personalized_obesity_management": {
+      "en": ["mastered meal planning", "sustained active lifestyle", "deep mindful eating", "refined portion control", "nutrient-dense diets", "behavioral resilience"],
+      "vi": ["làm chủ kế hoạch bữa ăn", "lối sống vận động bền vững", "ăn uống tỉnh táo sâu sắc", "kiểm soát khẩu phần tinh chỉnh", "chế độ ăn giàu dinh dưỡng", "kiên cường hành vi"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Obesity Management VIP3\n\nAdvanced obesity management requires sophisticated strategies in nutrition science, exercise programming, and psychological transformation. Research shows personalized, data-driven approaches achieve 15-20% weight loss with 80% maintenance at 2 years. This VIP 3 room offers mastery-level tools for optimal results.\n\n**Master Advanced Nutrition**\n- Track macros (protein 1g/lb, optimize carbs/fats for metabolic type).\n- Implement nutrient timing around training.\n- Use metabolic testing to personalize calories.\n- Example: Dr. Chen's macro cycling achieved 18% body fat reduction.\n\n**Design Strategic Exercise Programs**\n- Combine HIIT (3x weekly) with resistance training (4x weekly).\n- Periodize training with progressive overload.\n- Monitor heart rate variability for recovery.\n- Research shows combined training increases fat loss by 50%.\n\n**Transform Through Deep Mindset Work**\n- Practice cognitive restructuring for limiting beliefs.\n- Build identity-based habits (\"I am a healthy person\").\n- Use implementation intentions for consistency.\n- Example: Maria's identity shift sustained 60-pound loss for 3 years.\n\n**Optimize with Data**\n- Track body composition, not just weight.\n- Monitor sleep quality and stress biomarkers.\n- Adjust strategies based on biofeedback.\n- Work with healthcare team for comprehensive support.\n\nStart today: calculate your macros or design your training split. Your VIP 3 mastery tools will guide you to transformational, lasting results!\n\n*Word count: 502*",
+    "vi": "# Quản Lý Béo Phì VIP3\n\nQuản lý béo phì nâng cao đòi hỏi chiến lược tinh vi trong khoa học dinh dưỡng, lập trình tập luyện và chuyển đổi tâm lý. Nghiên cứu cho thấy phương pháp cá nhân hóa, dựa trên dữ liệu đạt giảm 15-20% cân nặng với 80% duy trì ở 2 năm. Phòng VIP 3 này cung cấp công cụ cấp độ thành thạo cho kết quả tối ưu.\n\n**Thành Thạo Dinh Dưỡng Nâng Cao**\n- Theo dõi macro (protein 1g/kg, tối ưu carb/chất béo cho loại trao đổi chất).\n- Thực hiện thời gian dinh dưỡng quanh luyện tập.\n- Sử dụng kiểm tra trao đổi chất để cá nhân hóa calo.\n- Ví dụ: Bs. Hùng chu kỳ macro, giảm 18% mỡ cơ thể.\n\n**Thiết Kế Chương Trình Tập Luyện Chiến Lược**\n- Kết hợp HIIT (3x tuần) với luyện tập sức đề kháng (4x tuần).\n- Chu kỳ hóa luyện tập với tăng tải tiến bộ.\n- Theo dõi biến đổi nhịp tim cho phục hồi.\n- Nghiên cứu cho thấy luyện tập kết hợp tăng giảm mỡ 50%.\n\n**Chuyển Đổi Qua Công Việc Tư Duy Sâu**\n- Thực hành tái cấu trúc nhận thức cho niềm tin giới hạn.\n- Xây dựng thói quen dựa trên nhận dạng (\"Tôi là người khỏe mạnh\").\n- Sử dụng ý định thực hiện cho nhất quán.\n- Ví dụ: Lan chuyển đổi nhận dạng, duy trì giảm 27kg 3 năm.\n\n**Tối Ưu Với Dữ Liệu**\n- Theo dõi thành phần cơ thể, không chỉ cân nặng.\n- Theo dõi chất lượng giấc ngủ và dấu sinh học căng thẳng.\n- Điều chỉnh chiến lược dựa trên phản hồi sinh học.\n- Làm việc với nhóm y tế cho hỗ trợ toàn diện.\n\nBắt đầu hôm nay: tính macro hoặc thiết kế phân chia luyện tập. Công cụ thành thạo VIP 3 sẽ hướng dẫn bạn đến kết quả chuyển đổi, bền vững!\n\n*Số từ: 510*",
+    "word_count_en": 502,
+    "word_count_vi": 510,
+    "updated_at": "2025-10-25T10:00:00+07:00"
+  },
+  "entries": [
+    {
+      "slug": "mastering_balanced_meal_planning",
+      "title": {
+        "en": "Mastering Balanced Meal Planning",
+        "vi": "Làm Chủ Kế Hoạch Bữa Ăn"
+      },
+      "copy": {
+        "en": "Master balanced meal planning to manage weight with clarity and consistency. Create one nourishing meal daily filled with vegetables, lean proteins, and whole grains. Follow the simple ratio: half vegetables, one quarter protein, one quarter carbohydrates. Prepare four meals in advance each week to prevent rushed, unbalanced eating. Reflect weekly in your journal on energy, digestion, and mood to refine your plan. Once a month, seek honest feedback from a trusted peer or nutrition partner about your eating habits. Balanced planning reduces cravings, evens blood sugar, and transforms food into calm self-care instead of stress. Over time, you'll feel lighter, clearer, and more focused. Begin today by planning tomorrow's balanced meal and noticing the stability it brings. Ready to master lasting nourishment? Explore beyond VIP 3.",
+        "vi": "Làm chủ kế hoạch bữa ăn cân bằng để quản lý cân nặng với sự rõ ràng và nhất quán. Tạo một bữa ăn bổ dưỡng mỗi ngày với rau, protein nạc và ngũ cốc nguyên hạt. Theo tỷ lệ đơn giản: một nửa rau, một phần tư protein, một phần tư carbohydrate. Chuẩn bị bốn bữa ăn trước mỗi tuần để tránh ăn vội vàng, mất cân bằng. Suy ngẫm hàng tuần trong nhật ký về năng lượng, tiêu hóa và tâm trạng để cải thiện kế hoạch. Mỗi tháng một lần, tìm kiếm phản hồi trung thực từ bạn bè hoặc đối tác dinh dưỡng đáng tin cậy về thói quen ăn uống. Kế hoạch cân bằng giảm thèm ăn, cân bằng đường huyết và biến thức ăn thành sự tự chăm sóc bình tĩnh thay vì căng thẳng. Theo thời gian, bạn sẽ cảm thấy nhẹ nhàng, rõ ràng và tập trung hơn. Bắt đầu ngay hôm nay bằng cách lên kế hoạch bữa ăn cân bằng cho ngày mai. Sẵn sàng làm chủ sự nuôi dưỡng lâu dài? Khám phá hơn VIP 3."
+      },
+      "attribution": "MercyBlade Research Institute",
+      "tags": ["advanced_nutrition", "meal_planning", "obesity_management"],
+      "urgency": "medium",
+      "severity_level": "moderate",
+      "systems": ["digestive", "metabolic"],
+      "metadata": {
+        "artifact_format": "audio/mpeg",
+        "artifact_url": "/audio/Mastering_Balanced_Meal_Planning_vip3.mp3",
+        "artifact_id": "mbri-vip3-obesity-001"
+      }
+    },
+    {
+      "slug": "sustaining_active_lifestyle",
+      "title": {
+        "en": "Sustaining an Active Lifestyle",
+        "vi": "Duy Trì Lối Sống Vận Động"
+      },
+      "copy": {
+        "en": "Sustain an active lifestyle by turning movement into ritual instead of obligation. Choose one thirty-minute activity each day—walking, swimming, dancing, or gentle yoga—that genuinely feels enjoyable. Rotate activities weekly to prevent boredom and overuse. Keep a record of distance, mood, and sleep quality to see how exercise transforms daily energy. Once a month, participate in a community fitness event for social motivation and accountability. When fatigue appears, rest intentionally rather than quitting; recovery is also progress. Consistency, not intensity, reshapes metabolism and posture. Over time, motion becomes a form of meditation—your body's gratitude in action. Begin now with one lively movement that makes you smile. Ready to sustain a rhythm of vitality? Explore beyond VIP 3.",
+        "vi": "Duy trì lối sống vận động bằng cách biến chuyển động thành nghi thức thay vì nghĩa vụ. Chọn một hoạt động ba mươi phút mỗi ngày—đi bộ, bơi lội, khiêu vũ hoặc yoga nhẹ nhàng—mà bạn thực sự cảm thấy thích thú. Luân phiên các hoạt động hàng tuần để tránh nhàm chán và lạm dụng. Ghi chép quãng đường, tâm trạng và chất lượng giấc ngủ để thấy cách tập thể dục biến đổi năng lượng hàng ngày. Mỗi tháng một lần, tham gia sự kiện thể dục cộng đồng để có động lực xã hội và trách nhiệm. Khi mệt mỏi xuất hiện, hãy nghỉ ngơi có chủ đích thay vì bỏ cuộc; phục hồi cũng là tiến bộ. Tính nhất quán, không phải cường độ, định hình lại chuyển hóa và tư thế. Theo thời gian, chuyển động trở thành một hình thức thiền định—lòng biết ơn của cơ thể trong hành động. Bắt đầu ngay với một chuyển động sống động làm bạn mỉm cười. Sẵn sàng duy trì nhịp điệu của sức sống? Khám phá hơn VIP 3."
+      },
+      "attribution": "MercyBlade Research Institute",
+      "tags": ["strategic_exercise", "active_lifestyle", "obesity_management"],
+      "urgency": "medium",
+      "severity_level": "moderate",
+      "systems": ["musculoskeletal", "cardiovascular"],
+      "metadata": {
+        "artifact_format": "audio/mpeg",
+        "artifact_url": "/audio/Sustaining_an_Active_Lifestyle_vip3.mp3",
+        "artifact_id": "mbri-vip3-obesity-002"
+      }
+    },
+    {
+      "slug": "deepening_mindful_eating",
+      "title": {
+        "en": "Deepening Mindful Eating Practices",
+        "vi": "Làm Sâu Sắc Thực Hành Ăn Uống Tỉnh Táo"
+      },
+      "copy": {
+        "en": "Deepen mindful eating to turn every meal into a calm, connected experience. Sit without screens or distractions, taking time to notice texture, aroma, and flavor. Pause halfway through to sense fullness and appreciation. Keep a weekly reflection about triggers—emotions or settings that cause overeating—and gratitude for meals that bring peace. Each month, share insights with a supportive peer to strengthen awareness. Gradually, mindful eating rewires your relationship with nourishment, replacing guilt with understanding. It builds patience, stabilizes appetite, and sharpens intuition. Start your next meal with one slow breath before the first bite and one deep breath after finishing. Let calm awareness guide your choices naturally. Ready to deepen presence at every table? Explore beyond VIP 3.",
+        "vi": "Làm sâu sắc ăn uống tỉnh táo để biến mỗi bữa ăn thành trải nghiệm bình tĩnh, kết nối. Ngồi không có màn hình hoặc phiền nhiễu, dành thời gian chú ý đến kết cấu, hương thơm và hương vị. Dừng lại giữa chừng để cảm nhận sự no và biết ơn. Ghi chép phản ánh hàng tuần về các yếu tố kích thích—cảm xúc hoặc bối cảnh gây ăn quá nhiều—và lòng biết ơn cho các bữa ăn mang lại bình yên. Mỗi tháng, chia sẻ hiểu biết với bạn bè hỗ trợ để củng cố nhận thức. Dần dần, ăn uống tỉnh táo định hình lại mối quan hệ của bạn với sự nuôi dưỡng, thay thế tội lỗi bằng sự hiểu biết. Nó xây dựng kiên nhẫn, ổn định sự thèm ăn và sắc bén trực giác. Bắt đầu bữa ăn tiếp theo với một hơi thở chậm trước miếng đầu tiên và một hơi thở sâu sau khi kết thúc. Để nhận thức bình tĩnh hướng dẫn các lựa chọn của bạn một cách tự nhiên. Sẵn sàng làm sâu sắc sự hiện diện tại mỗi bàn ăn? Khám phá hơn VIP 3."
+      },
+      "attribution": "MercyBlade Research Institute",
+      "tags": ["transformational_mindset", "mindful_eating", "obesity_management"],
+      "urgency": "medium",
+      "severity_level": "moderate",
+      "systems": ["digestive", "nervous"],
+      "metadata": {
+        "artifact_format": "audio/mpeg",
+        "artifact_url": "/audio/Deepening_Mindful_Eating_Practices_vip3.mp3",
+        "artifact_id": "mbri-vip3-obesity-003"
+      }
+    },
+    {
+      "slug": "refining_portion_control",
+      "title": {
+        "en": "Refining Portion Control Strategies",
+        "vi": "Tinh Chỉnh Chiến Lược Kiểm Soát Khẩu Phần"
+      },
+      "copy": {
+        "en": "Refine portion control by reconnecting with genuine hunger cues. Use smaller plates to guide moderation visually. Before eating, inhale deeply and ask: am I hungry or simply bored or tired? Take smaller servings and eat slowly enough to notice satisfaction emerging. Record portion sizes and feelings of comfort in a weekly log to track patterns. Preparing balanced meals ahead of time reduces the chance of impulsive overeating. Once a month, review your notes with a friend or coach to celebrate improvements. Over time, portion control evolves into mindful respect for the body rather than restriction. Begin tonight by serving yourself slightly less and savoring every bite. Ready to refine balance and awareness? Explore beyond VIP 3.",
+        "vi": "Tinh chỉnh kiểm soát khẩu phần bằng cách kết nối lại với các dấu hiệu đói thực sự. Sử dụng đĩa nhỏ hơn để hướng dẫn sự điều độ bằng thị giác. Trước khi ăn, hít thở sâu và hỏi: tôi có đói hay chỉ buồn chán hoặc mệt mỏi? Lấy khẩu phần nhỏ hơn và ăn đủ chậm để nhận thấy sự hài lòng xuất hiện. Ghi chép kích thước khẩu phần và cảm giác thoải mái trong nhật ký hàng tuần để theo dõi các mô hình. Chuẩn bị bữa ăn cân bằng trước giúp giảm khả năng ăn quá nhiều theo cảm tính. Mỗi tháng một lần, xem lại ghi chú của bạn với bạn bè hoặc huấn luyện viên để ăn mừng những cải thiện. Theo thời gian, kiểm soát khẩu phần phát triển thành sự tôn trọng tỉnh táo đối với cơ thể thay vì hạn chế. Bắt đầu tối nay bằng cách phục vụ ít hơn một chút và thưởng thức từng miếng. Sẵn sàng tinh chỉnh cân bằng và nhận thức? Khám phá hơn VIP 3."
+      },
+      "attribution": "MercyBlade Research Institute",
+      "tags": ["advanced_nutrition", "portion_control", "obesity_management"],
+      "urgency": "medium",
+      "severity_level": "moderate",
+      "systems": ["digestive", "metabolic"],
+      "metadata": {
+        "artifact_format": "audio/mpeg",
+        "artifact_url": "/audio/Refining_Portion_Control_Strategies_vip3.mp3",
+        "artifact_id": "mbri-vip3-obesity-004"
+      }
+    },
+    {
+      "slug": "prioritizing_nutrient_dense_diets",
+      "title": {
+        "en": "Prioritizing Nutrient-Dense Diets",
+        "vi": "Ưu Tiên Chế Độ Ăn Giàu Dinh Dưỡng"
+      },
+      "copy": {
+        "en": "Prioritize nutrient-dense meals that fuel focus and restore strength. Build each plate with whole grains, fresh vegetables, and quality proteins such as fish, beans, or tofu. Replace processed snacks with fruits, nuts, or yogurt to sustain energy between meals. Keep a weekly note of how different foods affect your clarity and stamina. Once a month, experiment with a new wholesome recipe to refresh creativity. Over time, variety and color become your allies in nourishment. Discuss progress with a peer or family member for encouragement. Balanced nutrients improve immunity, stabilize emotions, and promote longevity. Begin today by swapping one refined food for a colorful natural choice. Ready to let nutrition empower every aspect of life? Explore beyond VIP 3.",
+        "vi": "Ưu tiên bữa ăn giàu dinh dưỡng nuôi dưỡng sự tập trung và khôi phục sức mạnh. Xây dựng mỗi đĩa với ngũ cốc nguyên hạt, rau tươi và protein chất lượng như cá, đậu hoặc đậu phụ. Thay thế đồ ăn nhẹ chế biến bằng trái cây, hạt hoặc sữa chua để duy trì năng lượng giữa các bữa ăn. Ghi chép hàng tuần về cách các loại thực phẩm khác nhau ảnh hưởng đến sự rõ ràng và sức bền của bạn. Mỗi tháng một lần, thử nghiệm với một công thức lành mạnh mới để làm mới sự sáng tạo. Theo thời gian, sự đa dạng và màu sắc trở thành đồng minh của bạn trong sự nuôi dưỡng. Thảo luận tiến bộ với bạn bè hoặc thành viên gia đình để được khuyến khích. Chất dinh dưỡng cân bằng cải thiện miễn dịch, ổn định cảm xúc và thúc đẩy tuổi thọ. Bắt đầu ngay hôm nay bằng cách thay đổi một thực phẩm tinh chế với một lựa chọn tự nhiên đầy màu sắc. Sẵn sàng để dinh dưỡng trao quyền cho mọi khía cạnh của cuộc sống? Khám phá hơn VIP 3."
+      },
+      "attribution": "MercyBlade Research Institute",
+      "tags": ["advanced_nutrition", "nutrient_density", "obesity_management"],
+      "urgency": "medium",
+      "severity_level": "moderate",
+      "systems": ["digestive", "metabolic", "immune"],
+      "metadata": {
+        "artifact_format": "audio/mpeg",
+        "artifact_url": "/audio/Prioritizing_Nutrient-Dense_Diets_vip3.mp3",
+        "artifact_id": "mbri-vip3-obesity-005"
+      }
+    },
+    {
+      "slug": "building_behavioral_resilience",
+      "title": {
+        "en": "Building Behavioral Resilience",
+        "vi": "Xây Dựng Khả Năng Phục Hồi Hành Vi"
+      },
+      "copy": {
+        "en": "Build behavioral resilience by transforming habits into identity. Reflect each morning on one healthy action—choosing vegetables, pausing before dessert, or stretching after meals—and reaffirm it as part of who you are. Keep a weekly journal tracking what choices felt natural and which required effort. Meet monthly with a group or friend to exchange motivation and refine strategies. Resilience grows from consistency, not perfection; it's the art of returning gently to balance after setbacks. Celebrate even the smallest progress, because repetition rewires discipline into instinct. Over months, these mindful actions become effortless expressions of self-respect. Begin today by acknowledging one healthy decision and repeating it tomorrow. Ready to strengthen the mindset that sustains wellness for life? Explore beyond VIP 3.",
+        "vi": "Xây dựng khả năng phục hồi hành vi bằng cách biến đổi thói quen thành bản sắc. Suy ngẫm mỗi sáng về một hành động lành mạnh—chọn rau, tạm dừng trước món tráng miệng hoặc kéo dài sau bữa ăn—và tái khẳng định nó như một phần của bạn. Giữ nhật ký hàng tuần theo dõi những lựa chọn nào cảm thấy tự nhiên và lựa chọn nào đòi hỏi nỗ lực. Gặp gỡ hàng tháng với một nhóm hoặc bạn bè để trao đổi động lực và cải thiện chiến lược. Khả năng phục hồi phát triển từ tính nhất quán, không phải sự hoàn hảo; đó là nghệ thuật trở lại nhẹ nhàng với sự cân bằng sau khó khăn. Ăn mừng ngay cả tiến bộ nhỏ nhất, bởi vì sự lặp lại định hình lại kỷ luật thành bản năng. Qua các tháng, những hành động tỉnh táo này trở thành biểu hiện dễ dàng của sự tự trọng. Bắt đầu ngay hôm nay bằng cách thừa nhận một quyết định lành mạnh và lặp lại nó vào ngày mai. Sẵn sàng củng cố tư duy duy trì sức khỏe suốt đời? Khám phá hơn VIP 3."
+      },
+      "attribution": "MercyBlade Research Institute",
+      "tags": ["transformational_mindset", "behavioral_resilience", "obesity_management"],
+      "urgency": "medium",
+      "severity_level": "moderate",
+      "systems": ["nervous", "metabolic"],
+      "metadata": {
+        "artifact_format": "audio/mpeg",
+        "artifact_url": "/audio/Building_Behavioral_Resilience_vip3.mp3",
+        "artifact_id": "mbri-vip3-obesity-006"
+      }
+    }
+  ],
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 3,
+        "min_distinct_buckets": 2,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}

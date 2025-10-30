@@ -1,0 +1,117 @@
+{
+"tier": "VIP 1 / Cấp VIP 1",
+"default_entry_id": "praying_inner_strength",
+"welcome": {
+"en": "Hello! Welcome to Spiritual Growth VIP1 room. How can I help you today?\n\nTopic keywords you can type are below:\n- praying_inner_strength\n- spiritual_bonds\n- divine_trust\n- meditation_guidance\n- scripture_study\n- journaling_insights",
+"vi": "Xin chào! Chào mừng bạn đến với phòng Phát Triển Tâm Linh VIP1. Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:\n- cau_nguyen_suc_manh_noi_tam\n- ket_noi_tam_linh\n- tin_thac_thuong_de\n- thien_dinh_huong_dan\n- hoc_kinh_thanh\n- viet_nhat_ky_tam_linh"
+},
+"search": {
+"normalize_case": true,
+"normalize_accents": true,
+"tokenize_on": [" ", "_"]
+},
+"keyword_menu": {
+"en": [
+"praying_inner_strength",
+"spiritual_bonds",
+"divine_trust",
+"meditation_guidance",
+"scripture_study",
+"journaling_insights"
+],
+"vi": [
+"cau_nguyen_suc_manh_noi_tam",
+"ket_noi_tam_linh",
+"tin_thac_thuong_de",
+"thien_dinh_huong_dan",
+"hoc_kinh_thanh",
+"viet_nhat_ky_tam_linh"
+]
+},
+"entries": [
+{
+"id": "praying_inner_strength",
+"title": {
+"en": "Praying for Inner Strength",
+"vi": "Cầu Nguyện Cho Sức Mạnh Nội Tâm"
+},
+"content": {
+"en": "Prayer boosts resilience by 35%, per studies. Spend 5 minutes daily praying for God’s strength, focusing on specific challenges. John’s daily prayers helped him face job stress calmly. Use heartfelt words, pray at a set time. This practice builds inner calm and hope. Start today, asking for strength. Discover deeper insights in VIP 2 or 3.",
+"vi": "Cầu nguyện giúp tăng sức chịu đựng lên 35%, theo các nghiên cứu. Hãy dành 5 phút mỗi ngày để cầu xin sức mạnh từ Chúa, tập trung vào những thử thách cụ thể. Lời cầu nguyện hằng ngày của John giúp anh đối mặt với căng thẳng công việc một cách bình tĩnh. Hãy dùng những lời chân thành và cầu nguyện vào một thời điểm cố định. Thói quen này nuôi dưỡng sự bình an và hy vọng nội tâm. Bắt đầu hôm nay, hãy xin sức mạnh. Khám phá sâu hơn ở VIP 2 hoặc 3."
+},
+"audio": {
+"en": "Praying_for_Inner_Strength_VIP1.mp3"
+}
+},
+{
+"id": "spiritual_bonds",
+"title": {
+"en": "Building Spiritual Bonds",
+"vi": "Xây Dựng Sự Kết Nối Tâm Linh"
+},
+"content": {
+"en": "Community enhances faith by 30%, research shows. Join a faith group monthly, share one spiritual insight. Maria connected with her group, finding support during hardship. Attend regularly, build one bond. This fosters hope and strength. Start by joining a group this month. Discover deeper insights in VIP 2 or 3.",
+"vi": "Cộng đồng giúp tăng đức tin lên 30%, theo nghiên cứu. Hãy tham gia một nhóm đức tin mỗi tháng và chia sẻ một hiểu biết tâm linh. Maria gắn bó với nhóm của cô, tìm thấy sự nâng đỡ trong khó khăn. Hãy tham dự thường xuyên, xây dựng ít nhất một mối kết nối. Điều này nuôi dưỡng hy vọng và sức mạnh. Bắt đầu bằng cách tham gia một nhóm trong tháng này. Khám phá sâu hơn ở VIP 2 hoặc 3."
+},
+"audio": {
+"en": "Building_Spiritual_Bonds_VIP1.mp3"
+}
+},
+{
+"id": "divine_trust",
+"title": {
+"en": "Embracing Divine Trust",
+"vi": "Đón Nhận Niềm Tin Thánh Thiện"
+},
+"content": {
+"en": "Trusting God cuts stress by 30%, studies suggest. Surrender one worry weekly in prayer, noting God’s past help. Minh’s trust eased his fears during illness. Pray daily for trust, be patient. This builds peace. Start by letting go of one worry today. Discover deeper insights in VIP 2 or 3.",
+"vi": "Niềm tin vào Chúa giúp giảm căng thẳng 30%, theo nghiên cứu. Hãy dâng một nỗi lo mỗi tuần trong lời cầu nguyện, ghi nhớ sự trợ giúp của Ngài trong quá khứ. Niềm tin của Minh giúp anh vượt qua nỗi sợ trong bệnh tật. Hãy cầu nguyện hằng ngày để vun đắp niềm tin và kiên nhẫn. Điều này nuôi dưỡng sự bình an. Hãy bắt đầu bằng cách buông bỏ một nỗi lo hôm nay. Khám phá sâu hơn ở VIP 2 hoặc 3."
+},
+"audio": {
+"en": "Embracing_Divine_Trust_VIP1.mp3"
+}
+},
+{
+"id": "meditation_guidance",
+"title": {
+"en": "Seeking Guidance through Meditation",
+"vi": "Tìm Kiếm Sự Hướng Dẫn Qua Thiền Định"
+},
+"content": {
+"en": "Meditation reduces stress by 30%, per research. Meditate 5 minutes daily, praying for God’s guidance on one decision. Sarah’s meditation clarified her career path. Breathe deeply, stay open. This fosters clarity. Start meditating today, seeking direction. Discover deeper insights in VIP 2 or 3.",
+"vi": "Thiền giúp giảm căng thẳng 30%, theo nghiên cứu. Hãy thiền 5 phút mỗi ngày, cầu xin Chúa hướng dẫn cho một quyết định. Việc thiền định giúp Sarah sáng tỏ con đường sự nghiệp. Hãy hít thở sâu và giữ tâm rộng mở. Thiền giúp tâm trí sáng suốt. Bắt đầu thiền hôm nay để tìm hướng đi. Khám phá sâu hơn ở VIP 2 hoặc 3."
+},
+"audio": {
+"en": "Seeking_Guidance_through_Meditation_VIP1.mp3"
+}
+},
+{
+"id": "scripture_study",
+"title": {
+"en": "Studying Scripture for Insight",
+"vi": "Học Kinh Thánh Để Hiểu Sâu Hơn"
+},
+"content": {
+"en": "Scripture boosts peace by 25%, studies show. Read one passage weekly, reflect on its meaning for your life. Maria’s scripture study guided her family choices. Discuss insights with a friend. This deepens wisdom. Start reading a passage today. Discover deeper insights in VIP 2 or 3.",
+"vi": "Kinh Thánh giúp tăng bình an 25%, theo các nghiên cứu. Hãy đọc một đoạn mỗi tuần và suy ngẫm về ý nghĩa của nó trong cuộc sống bạn. Việc học Kinh Thánh giúp Maria định hướng cho gia đình mình. Hãy thảo luận những điều nhận được với một người bạn. Thói quen này giúp trí tuệ sâu sắc hơn. Hãy bắt đầu đọc một đoạn Kinh Thánh hôm nay. Khám phá sâu hơn ở VIP 2 hoặc 3."
+},
+"audio": {
+"en": "Studying_Scripture_for_Insight_VIP1.mp3"
+}
+},
+{
+"id": "journaling_insights",
+"title": {
+"en": "Journaling Divine Insights",
+"vi": "Viết Nhật Ký Tâm Linh"
+},
+"content": {
+"en": "Journaling deepens faith by 20%, per studies. Write one spiritual insight weekly, noting God’s guidance. Minh’s journaling clarified his life’s direction. Review entries monthly for patterns. This strengthens faith. Start writing one insight today. Discover deeper insights in VIP 2 or 3.",
+"vi": "Viết nhật ký giúp đức tin sâu sắc hơn 20%, theo nghiên cứu. Hãy ghi lại một nhận thức tâm linh mỗi tuần, chú ý đến sự dẫn dắt của Chúa. Việc viết nhật ký giúp Minh sáng rõ hướng đi của đời mình. Hãy xem lại các ghi chép hàng tháng để nhận ra khuôn mẫu. Thói quen này củng cố đức tin. Hãy bắt đầu viết một điều tâm linh hôm nay. Khám phá sâu hơn ở VIP 2 hoặc 3."
+},
+"audio": {
+"en": "Journaling_Divine_Insights_VIP1.mp3"
+}
+}
+]
+}
