@@ -1,98 +1,85 @@
-// Automatic room data imports using Vite's import.meta.glob
-// This automatically imports all JSON files from the rooms directory
-const roomModules = import.meta.glob('@/data/rooms/*.json', { eager: true });
+import { RoomInfo } from "@/lib/roomData";
 
-// Import room manifest for public JSON files
-import { PUBLIC_ROOM_MANIFEST } from './roomManifest';
-
-// Also import JSON files from public directory
-const publicJsonModules: Record<string, any> = {};
-
-// Cache for loaded tier-specific data
-const tierDataCache: Record<string, any> = {};
-
-// Fetch public JSON files dynamically
-async function loadPublicJson(filename: string) {
-  try {
-    const response = await fetch(`/${filename}`);
-    if (response.ok) {
-      return await response.json();
-    }
-  } catch (e) {
-    console.warn(`Could not load public JSON: ${filename}`, e);
-  }
-  return null;
-}
-
-// Build the roomDataMap dynamically from imported modules
-export const roomDataMap: Record<string, any> = {};
-
-for (const path in roomModules) {
-  // Extract filename from path: '@/data/rooms/stress_free.json' -> 'stress_free'
-  const fileName = path.split('/').pop()?.replace('.json', '') || '';
-  
-  // Convert filename to kebab-case room ID
-  // stress_free -> stress-free, Shadow_Work_Free -> shadow-work-free
-  const roomId = fileName
-    .replace(/_/g, '-')
-    .toLowerCase();
-  
-  // Store the module data
-  const module = roomModules[path] as any;
-  roomDataMap[roomId] = module.default || module;
-}
-
-// Pre-load public room JSON files from manifest
-// This makes them available in ALL_ROOMS immediately
-(async () => {
-  try {
-    for (const [roomId, filename] of Object.entries(PUBLIC_ROOM_MANIFEST)) {
-      const data = await loadPublicJson(filename);
-      if (data) {
-        roomDataMap[roomId] = data;
-        console.log(`Pre-loaded public room: ${roomId} from ${filename}`);
-      }
-    }
-    console.log('Total rooms loaded:', Object.keys(roomDataMap).length);
-    // Notify UI that rooms are available
-    window.dispatchEvent(new CustomEvent('rooms-loaded'));
-  } catch (error) {
-    console.error('Error pre-loading rooms:', error);
-  }
-})();
-
-// Log available rooms for debugging
-console.log('Auto-loaded rooms:', Object.keys(roomDataMap).sort());
-
-// Helper function to get room data with tier fallback
-// New structure: /tiers/{tier}/{room}/{room}_{tier}.json
-export async function getRoomDataWithTier(roomName: string, userTier: 'free' | 'vip1' | 'vip2' | 'vip3'): Promise<any> {
-  const cacheKey = `${roomName}_${userTier}`;
-  
-  // Return from cache if available
-  if (tierDataCache[cacheKey]) {
-    return tierDataCache[cacheKey];
-  }
-  
-  // NEW STRUCTURE: Check /tiers/{tier}/{room}/{room}_{tier}.json
-  const jsonPath = `tiers/${userTier}/${roomName}/${roomName}_${userTier}.json`;
-  const jsonData = await loadPublicJson(jsonPath);
-  
-  if (jsonData) {
-    console.log(`Loaded ${jsonPath} for room ${roomName}`);
-    // Cache the loaded data
-    tierDataCache[cacheKey] = jsonData;
-    // Also update roomDataMap for keywordResponder
-    const roomId = `${roomName}-${userTier}`;
-    roomDataMap[roomId] = jsonData;
-    return jsonData;
-  }
-  
-  // If nothing found, ensure room is removed from the in-memory map
-  const roomId = `${roomName}-${userTier}`;
-  if (roomDataMap[roomId]) {
-    delete roomDataMap[roomId];
-    console.warn(`Removed room '${roomId}' from registry because no JSON was found`);
-  }
-  return null;
-}
+export const roomDataMap: Record<string, RoomInfo> = {
+  "adhd-support-free": {
+    nameEn: "ADHD Support",
+    nameVi: "Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý",
+    tier: "free"
+  },
+  "adhd-support-vip1": {
+    nameEn: "ADHD Support VIP1",
+    nameVi: "Hỗ Trợ ADHD VIP1",
+    tier: "vip1"
+  },
+  "adhd-support-vip2": {
+    nameEn: "ADHD Support VIP2",
+    nameVi: "Hỗ Trợ ADHD VIP2",
+    tier: "vip2"
+  },
+  "adhd-support-vip3": {
+    nameEn: "ADHD Support VIP3",
+    nameVi: "Hỗ Trợ ADHD VIP3",
+    tier: "vip3"
+  },
+  "anxiety-relief-free": {
+    nameEn: "Anxiety Relief",
+    nameVi: "Giảm Lo Âu",
+    tier: "free"
+  },
+  "anxiety-relief-vip1": {
+    nameEn: "Anxiety Relief VIP1",
+    nameVi: "Giảm Lo Âu VIP1",
+    tier: "vip1"
+  },
+  "anxiety-relief-vip2": {
+    nameEn: "Anxiety Relief VIP2",
+    nameVi: "Giảm Lo Âu VIP2",
+    tier: "vip2"
+  },
+  "anxiety-relief-vip3": {
+    nameEn: "Anxiety Relief VIP3",
+    nameVi: "Giảm Lo Âu VIP3",
+    tier: "vip3"
+  },
+  "meaning-of-life-free": {
+    nameEn: "Meaning of Life",
+    nameVi: "Ý Nghĩa Cuộc Sống",
+    tier: "free"
+  },
+  "meaning-of-life-vip1": {
+    nameEn: "Meaning of Life VIP1",
+    nameVi: "Ý Nghĩa Cuộc Sống VIP1",
+    tier: "vip1"
+  },
+  "meaning-of-life-vip2": {
+    nameEn: "Meaning of Life VIP2",
+    nameVi: "Ý Nghĩa Cuộc Sống VIP2",
+    tier: "vip2"
+  },
+  "meaning-of-life-vip3": {
+    nameEn: "Meaning of Life VIP3",
+    nameVi: "Ý Nghĩa Cuộc Sống VIP3",
+    tier: "vip3"
+  },
+  "finding-gods-peace-free": {
+    nameEn: "Finding God's Peace",
+    nameVi: "Tìm Bình An Từ Thiên Chúa",
+    tier: "free"
+  },
+  "building-simple-routines-free": {
+    nameEn: "Building Simple Routines",
+    nameVi: "Xây Dựng Thói Quen Đơn Giản",
+    tier: "free"
+  },
+  "good-with-us-vip1": {
+    nameEn: "Good With Us VIP1",
+    nameVi: "Tốt Với Chúng Tôi VIP1",
+    tier: "vip1"
+  },
+  "aligning-aspirations-for-love-vip3": {
+    nameEn: "Aligning Aspirations for Love VIP3",
+    nameVi: "Căn Chỉnh Khát Vọng Vì Tình Yêu VIP3",
+    tier: "vip3"
+  },
+  // Add more rooms here if needed
+};
