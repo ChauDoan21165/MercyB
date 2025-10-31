@@ -6,7 +6,12 @@
     {
       "id": "01",
       "title": "Starting Stress Coping",
-      "keywords_en": ["stress coping", "beginner", "calm habits", "breathing"],
+      "keywords_en": [
+        "stress coping",
+        "beginner",
+        "calm habits",
+        "breathing"
+      ],
       "keywords_vi": [
         "đối phó căng thẳng",
         "người mới",
@@ -43,7 +48,12 @@
     {
       "id": "03",
       "title": "Building Simple Routines",
-      "keywords_en": ["simple routines", "walk", "mental wellness", "habit"],
+      "keywords_en": [
+        "simple routines",
+        "walk",
+        "mental wellness",
+        "habit"
+      ],
       "keywords_vi": [
         "thói quen đơn giản",
         "đi bộ",
@@ -56,5 +66,6 @@
       "audio": "03_simple_routines.mp3",
       "duration": "00:42"
     }
-  ]
+  ],
+  "audio": "building_simple_routines_free.mp3"
 }

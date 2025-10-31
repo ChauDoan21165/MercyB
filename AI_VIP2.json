@@ -5,52 +5,102 @@
     {
       "id": "01",
       "title": "Distilling Knowledge for Efficiency",
-      "keywords_en": ["distillation", "teacher", "student", "compress"],
-      "keywords_vi": ["chiết xuất", "thầy", "trò", "nén"],
+      "keywords_en": [
+        "distillation",
+        "teacher",
+        "student",
+        "compress"
+      ],
+      "keywords_vi": [
+        "chiết xuất",
+        "thầy",
+        "trò",
+        "nén"
+      ],
       "reply_en": "Transfer knowledge from a large teacher to a small student model. Balance speed and accuracy. Try distilling BERT on a simple task.",
       "reply_vi": "Chuyển kiến thức từ mô hình lớn sang mô hình nhỏ. Cân bằng tốc độ và độ chính xác. Thử chiết xuất BERT cho tác vụ đơn giản.",
       "dare": "Shrink one model by 10x.",
-      "audio": "01_knowledge_distillation.mp3",
+      "audio": "distilling_knowledge_for_efficiency_vip2.mp3",
       "duration": "00:55"
     },
     {
       "id": "02",
       "title": "Mastering Attention Mechanisms",
-      "keywords_en": ["attention", "self-attention", "transformer", "focus"],
-      "keywords_vi": ["chú ý", "tự chú ý", "transformer", "t trọng"],
+      "keywords_en": [
+        "attention",
+        "self-attention",
+        "transformer",
+        "focus"
+      ],
+      "keywords_vi": [
+        "chú ý",
+        "tự chú ý",
+        "transformer",
+        "t trọng"
+      ],
       "reply_en": "Focus on key tokens with self-attention. Scale efficiently. Add attention to a small network. See weights in action.",
       "reply_vi": "Tập trung vào token quan trọng bằng tự chú ý. Mở rộng hiệu quả. Thêm attention vào mạng nhỏ. Xem trọng số hoạt động.",
       "dare": "Highlight one important word in a sentence.",
-      "audio": "02_attention_mechanisms.mp3",
+      "audio": "mastering_attention_mechanisms_vip2.mp3",
       "duration": "00:52"
     },
     {
       "id": "03",
       "title": "Optimizing with Expert Mixtures",
-      "keywords_en": ["MoE", "mixture", "experts", "routing"],
-      "keywords_vi": ["MoE", "hỗn hợp", "chuyên gia", "định tuyến"],
+      "keywords_en": [
+        "MoE",
+        "mixture",
+        "experts",
+        "routing"
+      ],
+      "keywords_vi": [
+        "MoE",
+        "hỗn hợp",
+        "chuyên gia",
+        "định tuyến"
+      ],
       "reply_en": "Route tasks to specialized subnetworks. Scale to billions. Try MoE on a small dataset. Watch efficiency soar.",
       "reply_vi": "Định tuyến tác vụ đến mạng con chuyên biệt. Mở rộng đến hàng tỷ. Thử MoE trên dữ liệu nhỏ. Xem hiệu suất tăng vọt.",
       "dare": "Split one task into two experts.",
-      "audio": "03_mixture_of_experts.mp3",
+      "audio": "optimizing_with_expert_mixtures_vip2.mp3",
       "duration": "00:50"
     },
     {
       "id": "04",
       "title": "Strengthening Models Against Attacks",
-      "keywords_en": ["adversarial", "robust", "defense", "attack"],
-      "keywords_vi": ["đối kháng", "bền vững", "phòng thủ", "tấn công"],
+      "keywords_en": [
+        "adversarial",
+        "robust",
+        "defense",
+        "attack"
+      ],
+      "keywords_vi": [
+        "đối kháng",
+        "bền vững",
+        "phòng thủ",
+        "tấn công"
+      ],
       "reply_en": "Train on malicious inputs to harden models. Test with a perturbed image. Build resilience. Security first.",
       "reply_vi": "Huấn luyện trên đầu vào độc hại để tăng độ bền. Thử với ảnh bị nhiễu. Xây dựng khả năng chống chịu. Bảo mật ưu tiên.",
       "dare": "Flip one pixel and see if it breaks.",
-      "audio": "04_adversarial_training.mp3",
+      "audio": "strengthening_models_against_attacks_vip2.mp3",
       "duration": "00:53"
     },
     {
       "id": "05",
       "title": "Tuning Hyperparameters Effectively",
-      "keywords_en": ["tuning", "grid", "Bayesian", "optimize"],
-      "keywords_vi": ["tinh chỉnh", "lưới", "Bayes", "tối ưu"],
+      "keywords_en": [
+        "tuning",
+        "grid",
+        "Bayesian",
+        "optimize"
+      ],
+      "keywords_vi": [
+        "tinh chỉnh",
+        "lưới",
+        "Bayes",
+        "tối ưu"
+      ],
       "reply_en": "Search learning rates and batch sizes. Use Bayesian optimization. Track results. One good config changes everything.",
       "reply_vi": "Tìm kiếm tốc độ học và kích thước batch. Dùng tối ưu Bayes. Theo dõi kết quả. Một cấu hình tốt thay đổi tất cả.",
       "dare": "Change one hyperparameter and measure.",
@@ -60,13 +110,24 @@
     {
       "id": "06",
       "title": "Building Ethical AI Frameworks",
-      "keywords_en": ["ethics", "governance", "policy", "fairness"],
-      "keywords_vi": ["đạo đức", "quản trị", "chính sách", "công bằng"],
+      "keywords_en": [
+        "ethics",
+        "governance",
+        "policy",
+        "fairness"
+      ],
+      "keywords_vi": [
+        "đạo đức",
+        "quản trị",
+        "chính sách",
+        "công bằng"
+      ],
       "reply_en": "Draft policies for fairness and transparency. Involve stakeholders. Prevent bias. Trust starts with governance.",
       "reply_vi": "Soạn chính sách cho công bằng và minh bạch. Liên quan các bên. Ngăn thiên vị. Niềm tin bắt đầu từ quản trị.",
       "dare": "Write one ethical rule for AI.",
-      "audio": "06_ethical_ai_frameworks.mp3",
+      "audio": "building_ethical_ai_frameworks_vip2.mp3",
       "duration": "00:51"
     }
-  ]
+  ],
+  "audio": "building_ethical_ai_frameworks_vip2.mp3"
 }

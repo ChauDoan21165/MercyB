@@ -8,7 +8,10 @@
   "search": {
     "normalize_case": true,
     "normalize_accents": true,
-    "tokenize_on": [" ", "_"]
+    "tokenize_on": [
+      " ",
+      "_"
+    ]
   },
   "keyword_menu": {
     "en": [
@@ -358,5 +361,6 @@
         "vi": "Những điều lớn lao nở rộ theo nhịp riêng. Hãy tin vào tiết điệu dẫn dắt sao trời và mùa vụ. Như hạt giống yên nghỉ trước khi khai hoa, nỗ lực của bạn cũng chín muồi trong thầm lặng. Kiên nhẫn là cộng tác với vũ trụ — hãy để thời gian làm công việc âm thầm của nó.\n\n*Khám phá chiều sâu hơn ở các cấp độ VIP 1, 2 hoặc 3.*"
       }
     }
-  ]
+  ],
+  "audio": "anticipating_and_handling_obstacles_free.mp3"
 }

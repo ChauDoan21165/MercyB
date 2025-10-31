@@ -3,7 +3,9 @@
   "locale": "vi-en",
   "name": "Inner Peace (VIP 3)",
   "description": "Deep practices for mindfulness, gratitude, calm routines, reflection, breathing, and inner serenity.",
-  "global_notes": { "safety": "" },
+  "global_notes": {
+    "safety": ""
+  },
   "enum_tags": [
     "mindfulness",
     "gratitude",
@@ -15,75 +17,135 @@
   "entries": [
     {
       "slug": "mindfulness-soul-serenity",
-      "keywords_en": ["mindfulness", "serenity", "soul calm"],
-      "keywords_vi": ["chánh niệm", "tĩnh lặng", "tâm hồn"],
+      "keywords_en": [
+        "mindfulness",
+        "serenity",
+        "soul calm"
+      ],
+      "keywords_vi": [
+        "chánh niệm",
+        "tĩnh lặng",
+        "tâm hồn"
+      ],
       "copy": {
         "en": "Mindfulness reduces anxiety by 50% in 8 weeks, per studies. For profound soul calm, meditate 5 minutes daily, focusing on breath to center your spirit. Sarah’s mindfulness brought serenity amid chaos. Practice: sit quietly, inhale 4 counts, exhale 4, release thoughts. Reflect weekly: how did mindfulness foster peace? This practice aligns with God's calm, deepening inner harmony. Start today to build serenity. Ready to embrace peace? Discover deeper insights beyond VIP 3.",
         "vi": "Chánh niệm giúp giảm lo âu 50% chỉ sau 8 tuần, theo nghiên cứu. Để nuôi dưỡng sự tĩnh lặng sâu trong tâm hồn, hãy thiền 5 phút mỗi ngày, tập trung vào hơi thở để cân bằng tinh thần. Sự chánh niệm của Sarah đã mang lại bình an giữa hỗn loạn. Thực hành: ngồi yên, hít vào 4 nhịp, thở ra 4 nhịp, buông bỏ suy nghĩ. Mỗi tuần, hãy chiêm nghiệm: chánh niệm đã mang lại bình an thế nào? Thói quen này hòa nhịp cùng sự tĩnh tại của Chúa, nuôi dưỡng sự hòa hợp nội tâm. Bắt đầu hôm nay để xây dựng bình an. Sẵn sàng đón nhận sự tĩnh lặng chưa? Khám phá sâu hơn ngoài cấp VIP 3."
       },
-      "tags": ["mindfulness"],
+      "tags": [
+        "mindfulness"
+      ],
       "artifact_id": "1e1d4c6b-bd1a-4231-9f1d-6f84ed9fa93d",
-      "audio": "/audio/en/Mindfulness_for_Soul_Serenity_VIP3.mp3"
+      "audio": "/audio/en/mindfulness_for_soul_serenity_vip3.mp3"
     },
     {
       "slug": "gratitude-tranquility",
-      "keywords_en": ["gratitude", "tranquility", "calm"],
-      "keywords_vi": ["lòng biết ơn", "thanh thản", "bình tâm"],
+      "keywords_en": [
+        "gratitude",
+        "tranquility",
+        "calm"
+      ],
+      "keywords_vi": [
+        "lòng biết ơn",
+        "thanh thản",
+        "bình tâm"
+      ],
       "copy": {
         "en": "Gratitude boosts calm by 30%, studies show. For soul serenity, note one gratitude daily, reflecting on positives. Maria’s gratitude calmed her spirit during hardship. Practice: journal one thing you're thankful for, considering its divine source. Weekly review patterns of peace. This fosters empathy and hope, aligning with humane serenity. Start journaling today. Ready to cultivate tranquility? Discover deeper insights beyond VIP 3.",
         "vi": "Lòng biết ơn giúp tăng sự bình tâm 30%, theo nghiên cứu. Để nuôi dưỡng sự tĩnh lặng tâm hồn, hãy ghi lại một điều bạn biết ơn mỗi ngày, suy ngẫm về điều tích cực. Lòng biết ơn của Maria đã làm dịu tâm hồn cô trong gian khó. Thực hành: viết ra một điều bạn cảm tạ, nhận ra nguồn gốc thiêng liêng của nó. Mỗi tuần, xem lại để nhận ra những khuôn mẫu của bình an. Thói quen này nuôi dưỡng lòng trắc ẩn và hy vọng, hòa hợp với sự thanh thản nhân từ. Hãy bắt đầu viết nhật ký biết ơn hôm nay. Sẵn sàng gieo trồng sự an nhiên chưa? Khám phá sâu hơn ngoài cấp VIP 3."
       },
-      "tags": ["gratitude"],
+      "tags": [
+        "gratitude"
+      ],
       "artifact_id": "8e9931b8-5fa9-4f2c-88de-5a3b35e1d12e",
-      "audio": "/audio/en/Gratitude_for_Inner_Tranquility_VIP3.mp3"
+      "audio": "/audio/en/gratitude_for_inner_tranquility_vip3.mp3"
     },
     {
       "slug": "daily-routines-calm",
-      "keywords_en": ["routine", "balance", "calm"],
-      "keywords_vi": ["thói quen", "cân bằng", "bình an"],
+      "keywords_en": [
+        "routine",
+        "balance",
+        "calm"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "cân bằng",
+        "bình an"
+      ],
       "copy": {
         "en": "Daily routines promote peace by 35%, per research. For soul calm, plan one calming activity daily, like tea time. Minh’s routines maintained serenity. Practice: limit screens one hour before bed, practice deep breathing. Weekly reflect on overstimulation. This builds supportive habits, fostering humane balance. Start one routine today. Ready to find calm? Discover deeper insights beyond VIP 3.",
         "vi": "Thói quen hằng ngày giúp tăng sự bình an 35%, theo nghiên cứu. Để nuôi dưỡng sự tĩnh tại, hãy chọn một hoạt động nhẹ nhàng mỗi ngày như thưởng trà. Thói quen của Minh đã giúp anh duy trì sự an nhiên. Thực hành: tránh màn hình một giờ trước khi ngủ, hít thở sâu. Mỗi tuần, suy ngẫm về những kích thích quá mức. Thói quen này xây dựng nền tảng hài hòa, hướng tới cân bằng nhân ái. Hãy bắt đầu một thói quen mới hôm nay. Sẵn sàng tìm thấy sự bình an chưa? Khám phá sâu hơn ngoài cấp VIP 3."
       },
-      "tags": ["routine"],
+      "tags": [
+        "routine"
+      ],
       "artifact_id": "db86fce7-cb6d-4e2e-b23e-37fa9a3cbfcb",
-      "audio": "/audio/en/Daily_Routines_for_Calm_Balance_VIP3.mp3"
+      "audio": "/audio/en/daily_routines_for_calm_balance_vip3.mp3"
     },
     {
       "slug": "reflection-spiritual-peace",
-      "keywords_en": ["reflection", "spirituality", "peace"],
-      "keywords_vi": ["chiêm nghiệm", "tâm linh", "bình an"],
+      "keywords_en": [
+        "reflection",
+        "spirituality",
+        "peace"
+      ],
+      "keywords_vi": [
+        "chiêm nghiệm",
+        "tâm linh",
+        "bình an"
+      ],
       "copy": {
         "en": "Reflection promotes balance by 30%, studies indicate. For soul calm, journal one calm moment weekly. Minh’s reflection deepened peace. Practice: note peaceful thoughts, release resentments monthly. This empathetic practice fosters serenity without judgment. Start reflecting today. Ready to embrace spiritual peace? Discover deeper insights beyond VIP 3.",
         "vi": "Chiêm nghiệm giúp nuôi dưỡng sự cân bằng 30%, theo nghiên cứu. Để bình tâm, hãy ghi lại một khoảnh khắc an nhiên mỗi tuần. Sự chiêm nghiệm của Minh giúp anh đạt được sự tĩnh tại sâu sắc. Thực hành: ghi lại những suy nghĩ bình yên, buông bỏ oán giận mỗi tháng. Thói quen này nuôi dưỡng sự cảm thông và bình an không phán xét. Hãy bắt đầu chiêm nghiệm hôm nay. Sẵn sàng đón nhận bình an tâm linh chưa? Khám phá sâu hơn ngoài cấp VIP 3."
       },
-      "tags": ["reflection"],
+      "tags": [
+        "reflection"
+      ],
       "artifact_id": "61f1ab86-3f3e-44e2-97f0-71c4e1fae179",
-      "audio": "/audio/en/Reflection_for_Spiritual_Peace_VIP3.mp3"
+      "audio": "/audio/en/reflection_for_spiritual_peace_vip3.mp3"
     },
     {
       "slug": "breathing-soul-harmony",
-      "keywords_en": ["breathing", "harmony", "relaxation"],
-      "keywords_vi": ["hít thở", "hòa hợp", "thư giãn"],
+      "keywords_en": [
+        "breathing",
+        "harmony",
+        "relaxation"
+      ],
+      "keywords_vi": [
+        "hít thở",
+        "hòa hợp",
+        "thư giãn"
+      ],
       "copy": {
         "en": "Deep breathing aids serenity, reducing stress by 25%. For soul calm, do one session daily. Sarah’s breathing brought harmony. Practice: inhale 4 counts, hold 4, exhale 4. Weekly combine with gratitude. This actionable habit builds peace gently. Start breathing today. Ready to find harmony? Discover deeper insights beyond VIP 3.",
         "vi": "Hít thở sâu giúp mang lại sự an nhiên, giảm căng thẳng 25%. Để nuôi dưỡng tâm hồn, hãy thực hành một buổi hít thở mỗi ngày. Bài tập của Sarah đã giúp cô cảm thấy hòa hợp hơn. Thực hành: hít vào 4 nhịp, giữ 4, thở ra 4. Mỗi tuần, kết hợp cùng lòng biết ơn. Thói quen nhỏ này tạo nên bình an nhẹ nhàng. Hãy bắt đầu hít thở hôm nay. Sẵn sàng tìm thấy sự hòa hợp chưa? Khám phá sâu hơn ngoài cấp VIP 3."
       },
-      "tags": ["breathing"],
+      "tags": [
+        "breathing"
+      ],
       "artifact_id": "a89e50e2-69a4-4df0-8a92-2f4e0b6dfd24",
-      "audio": "/audio/en/Breathing_for_Soul_Harmony_VIP3.mp3"
+      "audio": "/audio/en/breathing_for_soul_harmony_vip3.mp3"
     },
     {
       "slug": "inner-serenity-practices",
-      "keywords_en": ["serenity", "forgiveness", "mindfulness"],
-      "keywords_vi": ["an nhiên", "tha thứ", "chánh niệm"],
+      "keywords_en": [
+        "serenity",
+        "forgiveness",
+        "mindfulness"
+      ],
+      "keywords_vi": [
+        "an nhiên",
+        "tha thứ",
+        "chánh niệm"
+      ],
       "copy": {
         "en": "Inner practices build serenity by 40%, per studies. For soul calm, meditate one minute daily. Maria’s practices fostered peace. Practice: focus on now, practice forgiveness weekly. This supportive approach embraces calm without rush. Start one practice today. Ready to deepen serenity? Discover deeper insights beyond VIP 3.",
         "vi": "Các thực hành nội tâm giúp tăng sự an nhiên 40%, theo nghiên cứu. Để nuôi dưỡng sự tĩnh tại, hãy thiền một phút mỗi ngày. Những thực hành của Maria giúp cô tìm thấy sự bình yên. Thực hành: tập trung vào hiện tại, rèn luyện lòng tha thứ mỗi tuần. Cách tiếp cận này ôm trọn sự bình an mà không vội vàng. Hãy bắt đầu một thực hành hôm nay. Sẵn sàng đào sâu sự an nhiên chưa? Khám phá sâu hơn ngoài cấp VIP 3."
       },
-      "tags": ["serenity"],
+      "tags": [
+        "serenity"
+      ],
       "artifact_id": "e9c4f118-72b4-4f60-a4a7-ef97b19c606d",
-      "audio": "/audio/en/Practices_for_Inner_Serenity_VIP3.mp3"
+      "audio": "/audio/en/practices_for_inner_serenity_vip3.mp3"
     }
   ],
   "keywords": {
@@ -111,5 +173,6 @@
     "entry_count": 6,
     "tier": "vip3",
     "room_color": "#D7CCC8"
-  }
+  },
+  "audio": "breathing_soul_harmony_vip3.mp3"
 }

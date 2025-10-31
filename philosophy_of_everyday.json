@@ -6,8 +6,18 @@
     "vi": "Triết Lý Cuộc Sống Hàng Ngày"
   },
   "keywords": {
-    "en": ["life", "purpose", "meaning", "daily"],
-    "vi": ["cuộc sống", "mục đích", "ý nghĩa", "hàng ngày"]
+    "en": [
+      "life",
+      "purpose",
+      "meaning",
+      "daily"
+    ],
+    "vi": [
+      "cuộc sống",
+      "mục đích",
+      "ý nghĩa",
+      "hàng ngày"
+    ]
   },
   "entries": [
     {
@@ -38,5 +48,6 @@
       "replyVi": "Việc hàng ngày không phải kẻ thù của sự vĩ đại — mà là sân tập của nó. Trong thói quen đánh răng, pha trà, đi làm, có không gian cho chánh niệm, biết ơn và trưởng thành.",
       "audio": "philosophy_free_4_en.mp3"
     }
-  ]
+  ],
+  "audio": "soc_free_2_en.mp3"
 }

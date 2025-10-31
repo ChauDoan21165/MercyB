@@ -8,7 +8,10 @@
   "search": {
     "normalize_case": true,
     "normalize_accents": true,
-    "tokenize_on": [" ", "_"]
+    "tokenize_on": [
+      " ",
+      "_"
+    ]
   },
   "keyword_menu": {
     "en": [
@@ -30,28 +33,94 @@
   },
   "keywords_dict": {
     "divine_fortitude_prayer": {
-      "en": ["divine_fortitude_prayer", "divine fortitude", "prayer", "anchoring", "resilience"],
-      "vi": ["cau_nguyen_suc_manh_thanh_than", "cau nguyen", "suc manh", "thanh than"]
+      "en": [
+        "divine_fortitude_prayer",
+        "divine fortitude",
+        "prayer",
+        "anchoring",
+        "resilience"
+      ],
+      "vi": [
+        "cau_nguyen_suc_manh_thanh_than",
+        "cau nguyen",
+        "suc manh",
+        "thanh than"
+      ]
     },
     "transcendent_bonds": {
-      "en": ["transcendent_bonds", "transcendent", "community", "bonds", "fellowship"],
-      "vi": ["ket_noi_thang_hoa", "ket noi", "thang hoa", "cong dong"]
+      "en": [
+        "transcendent_bonds",
+        "transcendent",
+        "community",
+        "bonds",
+        "fellowship"
+      ],
+      "vi": [
+        "ket_noi_thang_hoa",
+        "ket noi",
+        "thang hoa",
+        "cong dong"
+      ]
     },
     "cosmic_purpose": {
-      "en": ["cosmic_purpose", "cosmic", "purpose", "surrendering", "trust"],
-      "vi": ["muc_dich_vu_tru", "muc dich", "vu tru", "pho thac"]
+      "en": [
+        "cosmic_purpose",
+        "cosmic",
+        "purpose",
+        "surrendering",
+        "trust"
+      ],
+      "vi": [
+        "muc_dich_vu_tru",
+        "muc dich",
+        "vu tru",
+        "pho thac"
+      ]
     },
     "celestial_meditation": {
-      "en": ["celestial_meditation", "celestial", "meditation", "guidance", "wisdom"],
-      "vi": ["thien_dinh_thien_thuong", "thien dinh", "thien thuong", "huong dan"]
+      "en": [
+        "celestial_meditation",
+        "celestial",
+        "meditation",
+        "guidance",
+        "wisdom"
+      ],
+      "vi": [
+        "thien_dinh_thien_thuong",
+        "thien dinh",
+        "thien thuong",
+        "huong dan"
+      ]
     },
     "divine_scripture": {
-      "en": ["divine_scripture", "divine", "scripture", "illuminating", "bible"],
-      "vi": ["kinh_thanh_soi_duong", "kinh thanh", "soi duong", "soi sang"]
+      "en": [
+        "divine_scripture",
+        "divine",
+        "scripture",
+        "illuminating",
+        "bible"
+      ],
+      "vi": [
+        "kinh_thanh_soi_duong",
+        "kinh thanh",
+        "soi duong",
+        "soi sang"
+      ]
     },
     "eternal_plan": {
-      "en": ["eternal_plan", "eternal", "plan", "discerning", "journaling"],
-      "vi": ["ke_hoach_vinh_hang", "ke hoach", "vinh hang", "thau hieu"]
+      "en": [
+        "eternal_plan",
+        "eternal",
+        "plan",
+        "discerning",
+        "journaling"
+      ],
+      "vi": [
+        "ke_hoach_vinh_hang",
+        "ke hoach",
+        "vinh hang",
+        "thau hieu"
+      ]
     }
   },
   "entries": [
@@ -66,7 +135,7 @@
         "vi": "Cầu nguyện, giúp tăng sức chịu đựng 35% theo nghiên cứu, neo giữ sức mạnh thiêng liêng trong quyền năng vĩnh cửu của Chúa. Hãy dành 5 phút mỗi ngày để cầu xin sức mạnh biến đổi, hướng vào những thử thách trong đời bằng tâm chân thành. Lời cầu nguyện của John trong mất mát đã rèn nên sự bình thản không lay chuyển, hòa nhịp với sự hài hòa của vũ trụ. Hãy suy ngẫm mỗi đêm: lời cầu nguyện đã củng cố tôi thế nào? Thói quen này nuôi dưỡng hy vọng, biến thử thách thành sự trưởng thành thiêng liêng. Bắt đầu hôm nay, hãy cầu nguyện với ý thức sâu sắc. Sẵn sàng vượt qua nghịch cảnh chưa? Khám phá sâu hơn ngoài cấp VIP 3."
       },
       "audio": {
-        "en": "Anchoring_Divine_Fortitude_in_Prayer_VIP3.mp3"
+        "en": "anchoring_divine_fortitude_in_prayer_vip3.mp3"
       }
     },
     {
@@ -80,7 +149,7 @@
         "vi": "Cộng đồng giúp củng cố đức tin 30%, theo nghiên cứu, bồi đắp những kết nối thăng hoa gắn liền với ý định của Chúa. Hãy tham gia một nhóm đức tin mỗi tháng, chia sẻ hai suy ngẫm và tạo dựng mối liên kết sâu sắc. Nhóm của Maria đã nâng đỡ cô qua nỗi đau, thể hiện sự hợp nhất thiêng liêng. Hãy tham gia tích cực, chia sẻ thử thách và tìm kiếm lời khuyên. Điều này nuôi dưỡng hy vọng sâu sắc, kết nối bạn với kế hoạch của Chúa. Bắt đầu bằng việc tham gia một nhóm, xây dựng mối dây thiêng liêng. Sẵn sàng thăng hoa qua cộng đồng chưa? Khám phá sâu hơn ngoài cấp VIP 3."
       },
       "audio": {
-        "en": "Fostering_Transcendent_Community_Bonds_VIP3.mp3"
+        "en": "fostering_transcendent_community_bonds_vip3.mp3"
       }
     },
     {
@@ -94,7 +163,7 @@
         "vi": "Tin tưởng vào thời điểm của Chúa, giúp giảm căng thẳng 30% theo nghiên cứu, và hòa hợp với mục đích vũ trụ. Hãy dâng một nỗi lo mỗi tuần, suy ngẫm về lòng trung tín của Chúa qua mọi thử thách. Niềm tin của Minh đã biến lo âu thành tĩnh tại trong mất mát. Hãy cầu nguyện mỗi ngày để rèn kiên nhẫn và ghi lại sự can thiệp của Ngài. Thói quen này nuôi dưỡng sự an nhiên vĩnh cửu, làm sâu sắc đức tin. Bắt đầu hôm nay bằng cách phó thác một nỗi lo, đón nhận kế hoạch của Chúa. Sẵn sàng hòa nhịp với sự hài hòa của vũ trụ chưa? Khám phá sâu hơn ngoài cấp VIP 3."
       },
       "audio": {
-        "en": "Surrendering_to_Cosmic_Purpose_VIP3.mp3"
+        "en": "surrendering_to_cosmic_purpose_vip3.mp3"
       }
     },
     {
@@ -108,7 +177,7 @@
         "vi": "Thiền định, giúp giảm căng thẳng 30% theo nghiên cứu, kết nối bạn với trí tuệ thiên thượng của Chúa. Hãy thiền 5 phút mỗi ngày, tìm kiếm sự sáng tỏ cho một quyết định trong đời. Việc thiền định giúp Sarah khám phá thiên mệnh, hòa hợp với mục tiêu vĩnh hằng. Hãy hít thở sâu, cầu nguyện cụ thể và tin tưởng câu trả lời. Thói quen này nuôi dưỡng hướng đi thăng hoa. Hãy bắt đầu thiền hôm nay, xin Chúa soi dẫn. Sẵn sàng đón nhận sự sáng suốt thiên thượng chưa? Khám phá sâu hơn ngoài cấp VIP 3."
       },
       "audio": {
-        "en": "Seeking_Celestial_Guidance_through_Meditation_VIP3.mp3"
+        "en": "seeking_celestial_guidance_through_meditation_vip3.mp3"
       }
     },
     {
@@ -122,7 +191,7 @@
         "vi": "Kinh Thánh, giúp tăng bình an 25% theo nghiên cứu, soi sáng mục đích thiêng liêng của Chúa. Hãy đọc một đoạn mỗi tuần, phân tích mối liên hệ của nó với sứ mệnh của bạn. Việc học Kinh Thánh giúp Maria hóa giải mâu thuẫn, hòa hợp với trí tuệ thiêng liêng. Hãy thảo luận với người cố vấn và thực hành mỗi ngày. Điều này làm sâu sắc sự sáng tỏ tâm linh. Hãy bắt đầu học một đoạn Kinh Thánh hôm nay, tìm kiếm kế hoạch của Chúa. Sẵn sàng soi sáng mục tiêu thiêng liêng của mình chưa? Khám phá sâu hơn ngoài cấp VIP 3."
       },
       "audio": {
-        "en": "Illuminating_Divine_Purpose_with_Scripture_VIP3.mp3"
+        "en": "illuminating_divine_purpose_with_scripture_vip3.mp3"
       }
     },
     {
@@ -136,8 +205,9 @@
         "vi": "Việc viết nhật ký, giúp củng cố đức tin thêm 20% theo nghiên cứu, hé mở kế hoạch vĩnh hằng của Chúa. Hãy ghi lại một nhận thức mỗi tuần, phản chiếu sự dẫn dắt của Ngài qua thử thách. Việc viết của Minh giúp anh nhận ra sứ mệnh, hòa hợp với mục đích vũ trụ. Hãy xem lại các ghi chép mỗi tháng, cầu nguyện cho sự sáng tỏ và tìm ra khuôn mẫu. Việc này nuôi dưỡng đức tin sâu sắc. Hãy bắt đầu viết một nhận thức tâm linh hôm nay, khám phá hướng đi của Chúa. Sẵn sàng tìm thấy sứ mệnh vĩnh hằng của mình chưa? Khám phá sâu hơn ngoài cấp VIP 3."
       },
       "audio": {
-        "en": "Discerning_Gods_Eternal_Plan_VIP3.mp3"
+        "en": "discerning_gods_eternal_plan_vip3.mp3"
       }
     }
-  ]
+  ],
+  "audio": "discerning_god_s_eternal_plan_vip3.mp3"
 }

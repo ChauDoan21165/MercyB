@@ -6,7 +6,12 @@
     {
       "id": "01",
       "title": "Praying for Inner Strength",
-      "keywords_en": ["prayer", "inner strength", "resilience", "focus"],
+      "keywords_en": [
+        "prayer",
+        "inner strength",
+        "resilience",
+        "focus"
+      ],
       "keywords_vi": [
         "cầu nguyện",
         "sức mạnh nội tâm",
@@ -16,25 +21,45 @@
       "reply_en": "Pray 5 minutes daily for strength on one challenge. Use real words. Set a time. John found calm in stress.",
       "reply_vi": "Cầu nguyện 5 phút mỗi ngày cho sức mạnh trước một thử thách. Dùng lời chân thành. Đặt giờ cố định. John tìm bình an trong căng thẳng.",
       "dare": "Pray for one need right now.",
-      "audio": "01_praying_inner.mp3",
+      "audio": "praying_for_inner_strengthvip1.mp3",
       "duration": "00:50"
     },
     {
       "id": "02",
       "title": "Building Spiritual Bonds",
-      "keywords_en": ["bonds", "faith group", "support", "share"],
-      "keywords_vi": ["kết nối", "nhóm đức tin", "hỗ trợ", "chia sẻ"],
+      "keywords_en": [
+        "bonds",
+        "faith group",
+        "support",
+        "share"
+      ],
+      "keywords_vi": [
+        "kết nối",
+        "nhóm đức tin",
+        "hỗ trợ",
+        "chia sẻ"
+      ],
       "reply_en": "Join one group monthly. Share one insight. Build one bond. Maria found strength in hardship.",
       "reply_vi": "Tham gia một nhóm mỗi tháng. Chia sẻ một điều tâm linh. Xây dựng một mối quan hệ. Maria tìm sức mạnh trong khó khăn.",
       "dare": "Text one faith friend today.",
-      "audio": "02_spiritual_bonds.mp3",
+      "audio": "building_spiritual_bondsvip1.mp3",
       "duration": "00:48"
     },
     {
       "id": "03",
       "title": "Embracing Divine Trust",
-      "keywords_en": ["trust", "surrender", "peace", "past help"],
-      "keywords_vi": ["tin thác", "buông bỏ", "bình an", "giúp đỡ xưa"],
+      "keywords_en": [
+        "trust",
+        "surrender",
+        "peace",
+        "past help"
+      ],
+      "keywords_vi": [
+        "tin thác",
+        "buông bỏ",
+        "bình an",
+        "giúp đỡ xưa"
+      ],
       "reply_en": "Surrender one worry weekly. Recall God’s help. Pray daily for trust. Minh overcame fear in illness.",
       "reply_vi": "Dâng một nỗi lo mỗi tuần. Nhớ lại sự giúp đỡ của Chúa. Cầu nguyện hằng ngày để tin thác. Minh vượt sợ trong bệnh tật.",
       "dare": "Let go of one fear in prayer.",
@@ -44,8 +69,18 @@
     {
       "id": "04",
       "title": "Seeking Guidance through Meditation",
-      "keywords_en": ["meditation", "guidance", "clarity", "breath"],
-      "keywords_vi": ["thiền", "hướng dẫn", "sáng suốt", "hơi thở"],
+      "keywords_en": [
+        "meditation",
+        "guidance",
+        "clarity",
+        "breath"
+      ],
+      "keywords_vi": [
+        "thiền",
+        "hướng dẫn",
+        "sáng suốt",
+        "hơi thở"
+      ],
       "reply_en": "Meditate 5 minutes daily. Ask for guidance on one choice. Breathe deeply. Sarah saw her career path.",
       "reply_vi": "Thiền 5 phút mỗi ngày. Xin hướng dẫn cho một quyết định. Thở sâu. Sarah thấy rõ con đường sự nghiệp.",
       "dare": "Sit in silence for 1 minute.",
@@ -55,8 +90,18 @@
     {
       "id": "05",
       "title": "Studying Scripture for Insight",
-      "keywords_en": ["scripture", "wisdom", "reflection", "meaning"],
-      "keywords_vi": ["kinh thánh", "khôn ngoan", "suy ngẫm", "ý nghĩa"],
+      "keywords_en": [
+        "scripture",
+        "wisdom",
+        "reflection",
+        "meaning"
+      ],
+      "keywords_vi": [
+        "kinh thánh",
+        "khôn ngoan",
+        "suy ngẫm",
+        "ý nghĩa"
+      ],
       "reply_en": "Read one passage weekly. Reflect on its meaning. Share with a friend. Maria guided her family.",
       "reply_vi": "Đọc một đoạn kinh mỗi tuần. Suy ngẫm ý nghĩa. Chia sẻ với bạn. Maria định hướng gia đình.",
       "dare": "Read one verse and think.",
@@ -66,13 +111,24 @@
     {
       "id": "06",
       "title": "Journaling Divine Insights",
-      "keywords_en": ["journal", "insight", "clarity", "patterns"],
-      "keywords_vi": ["nhật ký", "nhận thức", "rõ ràng", "khuôn mẫu"],
+      "keywords_en": [
+        "journal",
+        "insight",
+        "clarity",
+        "patterns"
+      ],
+      "keywords_vi": [
+        "nhật ký",
+        "nhận thức",
+        "rõ ràng",
+        "khuôn mẫu"
+      ],
       "reply_en": "Write one insight weekly. Note God’s guidance. Review monthly. Minh found life’s direction.",
       "reply_vi": "Viết một nhận thức mỗi tuần. Ghi sự dẫn dắt của Chúa. Xem lại hàng tháng. Minh tìm hướng đời mình.",
       "dare": "Write one line of faith today.",
       "audio": "06_journaling_insights.mp3",
       "duration": "00:47"
     }
-  ]
+  ],
+  "audio": "journaling_divine_insights_vip1.mp3"
 }
