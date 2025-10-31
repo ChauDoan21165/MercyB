@@ -361,43 +361,57 @@ const ChatHub = () => {
     const englishContent = parts[0]?.trim() || message.text;
     const vietnameseContent = parts[1]?.trim() || '';
 
-    const handleAudioClick = () => {
-      if (!message.audioFile) return;
+    // Compute audio URL if available
+    const audioUrl = message.audioFile 
+      ? (message.audioFile.startsWith('/') ? message.audioFile : `/${message.audioFile}`)
+      : null;
 
-      const filename = String(message.audioFile).replace(/^\//, '').trim();
-      if (!filename || filename === 'undefined' || filename === 'null') {
-        console.warn('No valid audio file specified');
+    const handleAudioClick = () => {
+      if (!message.audioFile) {
+        toast({
+          title: "Audio unavailable / Âm thanh không có",
+          description: "No audio file specified / Không có file âm thanh",
+          variant: "destructive"
+        });
         return;
       }
 
-      const audioUrl = audioBasePath + filename; // Uses correct path from JSON
-
-      setAudioLoading(true);
-      fetch(audioUrl, { method: 'HEAD' })
-        .then(response => {
-          if (response.ok) {
-            setCurrentAudio(audioUrl);
-            const el = audioRef.current;
-            if (el) {
-              el.src = audioUrl;
-              el.load();
-              el.currentTime = 0;
-              el.play().catch(() => {});
-            }
-            setAudioLoading(false);
-          } else {
-            throw new Error(`Audio file not found: ${filename}`);
-          }
-        })
-        .catch(err => {
-          console.error('Audio error:', err);
-          setAudioLoading(false);
-          toast({
-            title: "Audio unavailable / Âm thanh không có",
-            description: `File not found: ${filename}`,
-            variant: "destructive"
-          });
+      const filename = String(message.audioFile).replace(/^\//, '').trim();
+      if (!filename || filename === 'undefined' || filename === 'null') {
+        toast({
+          title: "Audio unavailable / Âm thanh không có",
+          description: "Invalid audio file / File âm thanh không hợp lệ",
+          variant: "destructive"
         });
+        return;
+      }
+
+      // Direct audio URL - no fallback
+      const audioUrl = message.audioFile.startsWith('/') ? message.audioFile : `/${message.audioFile}`;
+      
+      console.log('Playing audio from:', audioUrl);
+      setCurrentAudio(audioUrl);
+      setAudioLoading(true);
+      
+      const el = audioRef.current;
+      if (el) {
+        el.src = audioUrl;
+        el.load();
+        el.currentTime = 0;
+        el.play()
+          .then(() => {
+            setAudioLoading(false);
+          })
+          .catch(err => {
+            console.error('Audio playback error:', err);
+            setAudioLoading(false);
+            toast({
+              title: "Audio unavailable / Âm thanh không có",
+              description: `Cannot play: ${filename}`,
+              variant: "destructive"
+            });
+          });
+      }
     };
 
     return (

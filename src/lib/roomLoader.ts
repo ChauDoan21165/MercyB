@@ -15,7 +15,7 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
     };
 
     // Build merged entries
-    const merged = (jsonData.entries || []).map((entry:.ConcurrentModificationException any) => ({
+    const merged = (jsonData.entries || []).map((entry: any) => ({
       ...entry,
       audio: entry.audio ? `/${entry.audio}` : undefined
     }));
