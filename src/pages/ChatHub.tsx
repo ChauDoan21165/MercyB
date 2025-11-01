@@ -392,12 +392,14 @@ const ChatHub = () => {
         return;
       }
 
-      // Direct audio URL - no fallback
-      const audioUrl = message.audioFile.startsWith('/') ? message.audioFile : `/${message.audioFile}`;
+      // Normalize to lowercase snake_case, then build URL - no fallback
+      let normalized = message.audioFile.replace(/^\//, '').toLowerCase().replace(/[\s-]+/g, '_');
+      const audioUrl = `/${normalized}`;
       
       console.log('=== AUDIO DEBUG ===');
       console.log('Keyword clicked or message:', clickedKeyword);
       console.log('Audio file from entry:', message.audioFile);
+      console.log('Normalized filename:', normalized);
       console.log('Final audio URL:', audioUrl);
       console.log('==================');
       setCurrentAudio(audioUrl);

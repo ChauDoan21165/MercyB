@@ -48,11 +48,18 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       }
     }
 
-    // Build merged entries and normalize audio path (no playback fallback anywhere)
-    const merged = Array.isArray(jsonData?.entries) ? (jsonData.entries as any[]).map((entry: any) => ({
-      ...entry,
-      audio: entry?.audio ? `/${String(entry.audio).replace(/^\//, '')}` : undefined,
-    })) : [];
+    // Build merged entries and normalize audio path to lowercase snake_case (no playback fallback anywhere)
+    const merged = Array.isArray(jsonData?.entries) ? (jsonData.entries as any[]).map((entry: any) => {
+      let audioPath = entry?.audio ? String(entry.audio).replace(/^\//, '') : undefined;
+      if (audioPath) {
+        // Force lowercase snake_case: spaces/hyphens → underscores, remove capitals
+        audioPath = audioPath.toLowerCase().replace(/[\s-]+/g, '_');
+      }
+      return {
+        ...entry,
+        audio: audioPath ? `/${audioPath}` : undefined,
+      };
+    }) : [];
 
     return {
       merged,
