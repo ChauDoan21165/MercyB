@@ -27,9 +27,11 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       jsonData = await resp.json();
     }
 
-    // Extract keywords robustly
+    // Extract keywords robustly - check both root level and entry level
     let keywordMenu: { en: string[]; vi: string[] } = { en: [], vi: [] };
     const kw = jsonData?.keywords;
+    
+    // First try root-level keywords
     if (kw) {
       if (Array.isArray(kw.en) || Array.isArray(kw.vi)) {
         keywordMenu = {
@@ -47,17 +49,55 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
         keywordMenu = { en: enList, vi: viList };
       }
     }
+    
+    // If no root keywords found, extract from entries
+    if (keywordMenu.en.length === 0 && keywordMenu.vi.length === 0 && Array.isArray(jsonData?.entries)) {
+      const enSet = new Set<string>();
+      const viSet = new Set<string>();
+      
+      jsonData.entries.forEach((entry: any) => {
+        // Check for keywords_en and keywords_vi
+        if (Array.isArray(entry.keywords_en)) {
+          entry.keywords_en.forEach((kw: string) => enSet.add(kw));
+        }
+        if (Array.isArray(entry.keywords_vi)) {
+          entry.keywords_vi.forEach((kw: string) => viSet.add(kw));
+        }
+      });
+      
+      keywordMenu = {
+        en: Array.from(enSet),
+        vi: Array.from(viSet)
+      };
+    }
 
     // Build merged entries and normalize audio path to lowercase snake_case (no playback fallback anywhere)
-    const merged = Array.isArray(jsonData?.entries) ? (jsonData.entries as any[]).map((entry: any) => {
+    const merged = Array.isArray(jsonData?.entries) ? (jsonData.entries as any[]).map((entry: any, idx: number) => {
       let audioPath = entry?.audio ? String(entry.audio).replace(/^\//, '') : undefined;
       if (audioPath) {
         // Force lowercase snake_case: spaces/hyphens → underscores, remove capitals
         audioPath = audioPath.toLowerCase().replace(/[\s-]+/g, '_');
       }
+      
+      // Extract primary keyword (first keyword from arrays) for matching
+      const keywordEn = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0 
+        ? entry.keywords_en[0] 
+        : entry.title || `entry-${idx}`;
+      const keywordVi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0 
+        ? entry.keywords_vi[0] 
+        : '';
+      
+      // Extract essay/reply content
+      const replyEn = entry.reply_en || entry.essay_en || entry.content_en || entry.copy?.en || entry.essay?.en || '';
+      const replyVi = entry.reply_vi || entry.essay_vi || entry.content_vi || entry.copy?.vi || entry.essay?.vi || '';
+      
       return {
         ...entry,
         audio: audioPath ? `/${audioPath}` : undefined,
+        keywordEn,
+        keywordVi,
+        replyEn,
+        replyVi
       };
     }) : [];
 
