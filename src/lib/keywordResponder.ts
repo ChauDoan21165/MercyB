@@ -184,14 +184,6 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   let audioFile: string | undefined;
   let entryId: string | undefined;
   
-  if (roomData.entries && !Array.isArray(roomData.entries)) {
-    // New structure: entries is an object with entry IDs as keys
-    const entriesArray = Object.entries(roomData.entries).map(([id, entry]) => ({ id, ...(entry as any) }));
-    const keywordsSource: any = roomData.keywords || roomData.keywords_dict || {};
-    
-    // Search through all entries to find best match
-    matchedEntry = findEntryByKeyword(matchedKeyword, groupKey, entriesArray, keywordsSource);
-    
     if (matchedEntry) {
       entryId = matchedEntry.id;
       const audio = matchedEntry.audio;
@@ -201,56 +193,13 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
         audioFile = audio.en || audio.vi;
       }
     }
-    
-    // Fallback to default entry if no match
-    if (!matchedEntry && roomData.default_entry_id) {
-      matchedEntry = roomData.entries[roomData.default_entry_id];
-      if (matchedEntry) {
-        entryId = roomData.default_entry_id;
-        const audio = matchedEntry.audio;
-        if (typeof audio === 'string') {
-          audioFile = audio;
-        } else if (audio && typeof audio === 'object') {
-          audioFile = audio.en || audio.vi;
-        }
-      }
-    }
+    // No fallback: if no exact/best match, return unmatched state
   } else {
     // Old structure: entries is an array
     const keywordsSource: any = roomData.keywords || (roomData as any).keywords_dict || {};
     matchedEntry = findEntryByKeyword(matchedKeyword, groupKey, roomData.entries || [], keywordsSource);
 
-    // Fallback: try to match by keyword text within title/content
-    if (!matchedEntry && groupKey) {
-      const groups: any = keywordsSource;
-      const group = groups[groupKey];
-      const candidates: string[] = [
-        ...(Array.isArray(group?.en) ? group.en : []),
-        ...(Array.isArray(group?.vi) ? group.vi : [])
-      ].map((s: any) => String(s));
-
-      const norm = (s: any) => String(s || '')
-        .toLowerCase()
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .replace(/[\s\-]+/g, '_')
-        .trim();
-
-      const normalizedCandidates = candidates.map(norm).filter(Boolean);
-
-      matchedEntry = (roomData.entries || []).find((e: any) => {
-        const titleStr = typeof e?.title === 'string' ? e.title : (e?.title?.en || e?.title_en || '');
-        const contentStr = typeof e?.content === 'string' ? e.content : (e?.content?.en || e?.body?.en || '');
-        const text = norm(`${titleStr} ${contentStr}`);
-        return normalizedCandidates.some((kw) => kw.length >= 4 && text.includes(kw));
-      }) || null;
-    }
-
-    // Final fallback: pick the first entry
-    if (!matchedEntry && groupKey && Array.isArray(roomData.entries) && roomData.entries.length > 0) {
-      matchedEntry = roomData.entries[0];
-    }
-
+    // No fallback selection of first entry
     if (matchedEntry) {
       // Support audio in various formats
       const audio = matchedEntry.audio || matchedEntry.audio_file || matchedEntry.meta?.audio_file || matchedEntry.audioEn || matchedEntry.audio_en;
