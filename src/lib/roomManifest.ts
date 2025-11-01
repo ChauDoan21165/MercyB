@@ -38,7 +38,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   'eating-disorder-support-vip3': 'Eating Disorder Support_VIP3.json',
   
   // Meaning of Life
-  'meaning-of-life-free': 'meaning_of_life.json',
+  'meaning-of-life-free': 'meaning_of_life_free.json',
   'meaning-of-life-vip1': 'meaning_of_life_vip1.json',
   'meaning-of-life-vip2': 'meaning_of_life_vip2.json',
   'meaning-of-life-vip3': 'meaning_of_life_vip3.json',
