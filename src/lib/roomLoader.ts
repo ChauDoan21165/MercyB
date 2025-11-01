@@ -11,20 +11,43 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
     const filename = PUBLIC_ROOM_MANIFEST[manifestKey];
     let jsonData: any = null;
 
-    if (filename) {
-      const url = `/${encodeURI(filename)}`;
-      const resp = await fetch(url);
-      if (!resp.ok) throw new Error(`JSON not found for ${manifestKey} at ${url}`);
-      jsonData = await resp.json();
-    } else {
-      // Compatibility fallback to old /data/{tier}/{room}.json structure
-      const roomName = manifestKey.replace(/-/g, '_');
-      const tierToken = manifestKey.endsWith('-free') ? 'free' : manifestKey.match(/-(vip\d)$/)?.[1] || normalizedTier;
-      const tierPath = tierToken === 'free' ? 'free' : `vip${tierToken.replace('vip', '')}`;
-      const url = `/data/${tierPath}/${roomName}.json`;
-      const resp = await fetch(url);
-      if (!resp.ok) throw new Error('JSON not found');
-      jsonData = await resp.json();
+    // Try multiple filename candidates to handle casing/spacing differences
+    const candidates: string[] = [];
+    if (filename) candidates.push(`/${encodeURI(filename)}`);
+
+    // Derive from manifestKey (e.g., meaning-of-life-free -> meaning_of_life_free.json)
+    const base = manifestKey.replace(/-/g, '_');
+    candidates.push(`/${base}.json`);
+    candidates.push(`/${base.toLowerCase()}.json`);
+
+    // TitleCase variant: Meaning_Of_Life_Free.json
+    const titleCase = base
+      .split('_')
+      .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+      .join('_');
+    candidates.push(`/${titleCase}.json`);
+
+    // Attempt to fetch each candidate
+    for (const path of candidates) {
+      try {
+        const resp = await fetch(path);
+        if (!resp.ok) continue;
+        // Guard: JSON parse may fail if HTML returned
+        const text = await resp.text();
+        try {
+          jsonData = JSON.parse(text);
+          break;
+        } catch {
+          // not valid JSON, try next candidate
+          continue;
+        }
+      } catch {
+        // try next
+      }
+    }
+
+    if (!jsonData) {
+      throw new Error(`JSON not found for ${manifestKey} in candidates: ${candidates.join(', ')}`);
     }
 
     // Extract keywords robustly - check both root level and entry level
