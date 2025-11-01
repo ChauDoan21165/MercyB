@@ -184,6 +184,13 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   let audioFile: string | undefined;
   let entryId: string | undefined;
   
+  // Check if entries is an object (new structure) or array (old structure)
+  if (roomData.entries && typeof roomData.entries === 'object' && !Array.isArray(roomData.entries)) {
+    // New structure: entries is an object with entry IDs as keys
+    if (groupKey && roomData.entries[groupKey]) {
+      matchedEntry = roomData.entries[groupKey];
+    }
+    
     if (matchedEntry) {
       entryId = matchedEntry.id;
       const audio = matchedEntry.audio;
