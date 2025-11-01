@@ -203,6 +203,12 @@ const ChatHub = () => {
     setMainMessages(prev => [...prev, typingMessage]);
     try {
       const entry = resolveEntryByKeyword(keyword);
+      console.log('=== KEYWORD MATCH DEBUG ===');
+      console.log('Keyword searched:', keyword);
+      console.log('Entry found:', entry);
+      console.log('Audio in entry:', entry?.audio);
+      console.log('=========================');
+      
       if (!entry) throw new Error('No entry matched');
      
       // Build message: English Essay + Audio + Vietnamese Essay (if exists)
@@ -389,7 +395,11 @@ const ChatHub = () => {
       // Direct audio URL - no fallback
       const audioUrl = message.audioFile.startsWith('/') ? message.audioFile : `/${message.audioFile}`;
       
-      console.log('Playing audio from:', audioUrl);
+      console.log('=== AUDIO DEBUG ===');
+      console.log('Keyword clicked or message:', clickedKeyword);
+      console.log('Audio file from entry:', message.audioFile);
+      console.log('Final audio URL:', audioUrl);
+      console.log('==================');
       setCurrentAudio(audioUrl);
       setAudioLoading(true);
       
