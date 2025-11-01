@@ -207,39 +207,19 @@ function generateRoomInfo(): RoomInfo[] {
     if (roomId.endsWith('-vip1')) tier = 'vip1';
     else if (roomId.endsWith('-vip2')) tier = 'vip2';
     else if (roomId.endsWith('-vip3')) tier = 'vip3';
-    else if (roomId.endsWith('-free')) tier = 'free';
-    // Fallback: check room data
-    else if ((roomData as any).meta?.tier) {
-      const rawTier = (roomData as any).meta.tier.toLowerCase().replace(/\s+/g, '').split('/')[0];
-      if (['free', 'vip1', 'vip2', 'vip3'].includes(rawTier)) {
-        tier = rawTier as RoomInfo['tier'];
-      }
-    } else if (roomData.tier) {
-      const rawTier = roomData.tier.toLowerCase().replace(/\s+/g, '').split('/')[0];
-      if (['free', 'vip1', 'vip2', 'vip3'].includes(rawTier)) {
-        tier = rawTier as RoomInfo['tier'];
-      }
+    
+    // Fallback to the tier property if present
+    const dataTier = roomData.tier;
+    if (dataTier === 'vip1' || dataTier === 'vip2' || dataTier === 'vip3') {
+      tier = dataTier;
     }
-    
-    // Extract names from room data - try multiple paths
-    const nameEn = roomData.name ||
-                   (roomData.description as any)?.en?.split('.')[0] || 
-                   (roomData.title as any)?.en ||
-                   roomId.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-    
-    const nameVi = roomData.name_vi ||
-                   (roomData.description as any)?.vi?.split('.')[0] ||
-                   (roomData.title as any)?.vi ||
-                   VIETNAMESE_NAME_FALLBACKS[roomId] ||
-                   nameEn;
     
     rooms.push({
       id: roomId,
-      nameVi: nameVi,
-      nameEn: nameEn,
-      hasData: true,
-      tier: tier,
-      dataFile: `${roomId.replace(/-/g, '_')}.json`
+      nameEn: roomData.nameEn,
+      nameVi: roomData.nameVi,
+      tier,
+      hasData: roomData.hasData || false
     });
   }
   
@@ -247,18 +227,8 @@ function generateRoomInfo(): RoomInfo[] {
   return rooms.sort((a, b) => a.id.localeCompare(b.id));
 }
 
-// Complete list of all rooms in the app (dynamically generated on access)
-export const ALL_ROOMS = new Proxy([] as RoomInfo[], {
-  get(_target, prop) {
-    const fresh = generateRoomInfo();
-    const value = (fresh as any)[prop];
-    // Bind array methods to the fresh array so calls like ALL_ROOMS.filter work
-    if (typeof value === 'function') {
-      return value.bind(fresh);
-    }
-    return value;
-  }
-});
+// Cache the generated rooms list (only generated once)
+export const ALL_ROOMS: RoomInfo[] = generateRoomInfo();
 
 // Get room info by ID
 export function getRoomInfo(roomId: string): RoomInfo | null {
