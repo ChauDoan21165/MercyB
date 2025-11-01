@@ -1,1 +1,35 @@
-{"name":"Weight Loss & Fitness","name_vi":"Giảm Cân & Thể Dục","description":"Practical guidance for weight loss and fitness with simple steps","keywords_en":["weight loss","fitness","exercise","diet"],"keywords_vi":["giảm cân","thể dục","tập luyện","chế độ ăn"],"entries":[{"slug":"calorie-deficit","keywords_en":["calorie deficit","weight loss","diet"],"keywords_vi":["thiếu hụt calo","giảm cân","chế độ ăn"],"copy":{"en":"Weight loss begins with a calorie deficit. Eat about 500 fewer calories than your maintenance level each day. Track meals with an app and choose whole, nutrient-dense foods. Partner with a friend for accountability to create sustainable habits and lasting progress."},"tags":["diet","weight loss"],"audio":{"en":"wlf_free_1_en.mp3"},"essay_ref":"wlf_free_1_essay.txt"},{"slug":"daily-walk","keywords_en":["walk","exercise","fitness"],"keywords_vi":["đi bộ","tập luyện","thể dục"],"copy":{"en":"A daily walk improves fitness and supports weight loss. Aim for thirty minutes at a brisk pace. Use a step counter to stay consistent and increase distance weekly. Walk with a friend for motivation and enjoy steady calorie burn and better mood each day."},"tags":["exercise","fitness"],"audio":{"en":"wlf_free_2_en.mp3"},"essay_ref":"wlf_free_2_essay.txt"}],"meta":{"created_at":"2025-10-28T00:00:00+00:00","updated_at":"2025-10-28T00:00:00+00:00","entry_count":2,"tier":"free","room_color":"#4A90E2"}}
+{
+  "tier": "Free / Miễn phí",
+  "title": {
+    "en": "Weight Loss & Fitness",
+    "vi": "Giảm Cân & Thể Dục"
+  },
+  "content": {
+    "en": "Practical guidance for weight loss and fitness with simple steps. Start with small, sustainable changes to build lasting habits. Discover deeper guidance in higher tiers.",
+    "vi": "Hướng dẫn thực tế để giảm cân và rèn luyện thể dục với các bước đơn giản. Bắt đầu bằng những thay đổi nhỏ, bền vững để xây dựng thói quen lâu dài. Khám phá thêm ở cấp độ cao hơn."
+  },
+  "entries": [
+    {
+      "slug": "calorie-deficit",
+      "keywords_en": ["calorie deficit", "weight loss", "diet"],
+      "keywords_vi": ["thiếu hụt calo", "giảm cân", "chế độ ăn"],
+      "copy": {
+        "en": "Weight loss begins with a calorie deficit. Eat about 500 fewer calories than your maintenance level each day. Track meals with an app and choose whole, nutrient-dense foods. Partner with a friend for accountability to create sustainable habits and lasting progress.",
+        "vi": "Giảm cân bắt đầu từ việc thiếu hụt calo. Ăn ít hơn khoảng 500 calo so với mức duy trì mỗi ngày. Theo dõi bữa ăn bằng ứng dụng và chọn thực phẩm nguyên hạt, giàu dinh dưỡng. Hợp tác với bạn để tăng trách nhiệm, tạo thói quen bền vững và tiến bộ lâu dài."
+      },
+      "tags": ["diet", "weight loss"],
+      "audio": "wlf_free_1_en.mp3"
+    },
+    {
+      "slug": "daily-walk",
+      "keywords_en": ["walk", "exercise", "fitness"],
+      "keywords_vi": ["đi bộ", "tập luyện", "thể dục"],
+      "copy": {
+        "en": "A daily walk improves fitness and supports weight loss. Aim for thirty minutes at a brisk pace. Use a step counter to stay consistent and increase distance weekly. Walk with a friend for motivation and enjoy steady calorie burn and better mood each day.",
+        "vi": "Đi bộ hàng ngày cải thiện thể lực và hỗ trợ giảm cân. Nhắm đến 30 phút với tốc độ nhanh. Dùng máy đếm bước để duy trì đều đặn và tăng khoảng cách hàng tuần. Đi cùng bạn để có động lực và tận hưởng việc đốt calo ổn định cùng tâm trạng tốt hơn mỗi ngày."
+      },
+      "tags": ["exercise", "fitness"],
+      "audio": "wlf_free_2_en.mp3"
+    }
+  ]
+}
