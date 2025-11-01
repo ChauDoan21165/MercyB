@@ -73,25 +73,28 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       }
     }
     
-    // If no root keywords found, extract from entries
+    // If no root keywords found, extract concise menu from entries
     if (keywordMenu.en.length === 0 && keywordMenu.vi.length === 0 && Array.isArray(jsonData?.entries)) {
-      const enSet = new Set<string>();
-      const viSet = new Set<string>();
-      
-      jsonData.entries.forEach((entry: any) => {
-        // Check for keywords_en and keywords_vi
-        if (Array.isArray(entry.keywords_en)) {
-          entry.keywords_en.forEach((kw: string) => enSet.add(kw));
-        }
-        if (Array.isArray(entry.keywords_vi)) {
-          entry.keywords_vi.forEach((kw: string) => viSet.add(kw));
-        }
-      });
-      
-      keywordMenu = {
-        en: Array.from(enSet),
-        vi: Array.from(viSet)
-      };
+      const enList: string[] = [];
+      const viList: string[] = [];
+
+      (jsonData.entries as any[])
+        // Prefer entries that have audio files to avoid non-functional keywords
+        .filter((e: any) => !!e?.audio)
+        .forEach((entry: any) => {
+          const en = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0
+            ? String(entry.keywords_en[0])
+            : String(entry.title || entry.slug || '').trim();
+          const vi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0
+            ? String(entry.keywords_vi[0])
+            : '';
+          if (en) {
+            enList.push(en);
+            viList.push(vi);
+          }
+        });
+
+      keywordMenu = { en: enList, vi: viList };
     }
 
     // Build merged entries and normalize audio path to lowercase snake_case (no playback fallback anywhere)
