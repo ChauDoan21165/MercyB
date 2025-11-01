@@ -159,6 +159,7 @@ const VIETNAMESE_NAME_FALLBACKS: Record<string, string> = {
   'weight-loss-and-fitness-vip3': 'Giảm Cân & Thể Hình VIP3',
 };
 
+// Metadata interface for room listing
 export interface RoomInfo {
   id: string;
   nameVi: string;
@@ -166,6 +167,29 @@ export interface RoomInfo {
   hasData: boolean;
   tier: 'free' | 'vip1' | 'vip2' | 'vip3';
   dataFile?: string;
+}
+
+// Full room data structure from JSON files
+export interface RoomData {
+  name?: string;
+  name_vi?: string;
+  nameEn?: string;
+  nameVi?: string;
+  title?: any;
+  description?: any;
+  keywords?: any;
+  keywords_dict?: any;
+  entries?: any;
+  meta?: any;
+  tier?: string;
+  safety_disclaimer?: string;
+  safety_disclaimer_vi?: string;
+  crisis_footer?: {
+    en?: string;
+    vi?: string;
+  };
+  room_essay?: any;
+  [key: string]: any; // Allow additional properties
 }
 
 // Auto-generate room info from loaded room data
@@ -185,8 +209,8 @@ function generateRoomInfo(): RoomInfo[] {
     else if (roomId.endsWith('-vip3')) tier = 'vip3';
     else if (roomId.endsWith('-free')) tier = 'free';
     // Fallback: check room data
-    else if (roomData.meta?.tier) {
-      const rawTier = roomData.meta.tier.toLowerCase().replace(/\s+/g, '').split('/')[0];
+    else if ((roomData as any).meta?.tier) {
+      const rawTier = (roomData as any).meta.tier.toLowerCase().replace(/\s+/g, '').split('/')[0];
       if (['free', 'vip1', 'vip2', 'vip3'].includes(rawTier)) {
         tier = rawTier as RoomInfo['tier'];
       }
@@ -199,13 +223,13 @@ function generateRoomInfo(): RoomInfo[] {
     
     // Extract names from room data - try multiple paths
     const nameEn = roomData.name ||
-                   roomData.description?.en?.split('.')[0] || 
-                   roomData.title?.en ||
+                   (roomData.description as any)?.en?.split('.')[0] || 
+                   (roomData.title as any)?.en ||
                    roomId.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
     
     const nameVi = roomData.name_vi ||
-                   roomData.description?.vi?.split('.')[0] ||
-                   roomData.title?.vi ||
+                   (roomData.description as any)?.vi?.split('.')[0] ||
+                   (roomData.title as any)?.vi ||
                    VIETNAMESE_NAME_FALLBACKS[roomId] ||
                    nameEn;
     

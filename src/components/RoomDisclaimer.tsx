@@ -10,10 +10,10 @@ export const RoomDisclaimer = ({ roomId }: RoomDisclaimerProps) => {
   const roomData = roomDataMap[roomId];
   if (!roomData) return null;
 
-  const safetyEn = roomData.safety_disclaimer;
-  const safetyVi = roomData.safety_disclaimer_vi;
-  const crisisEn = roomData.crisis_footer?.en;
-  const crisisVi = roomData.crisis_footer?.vi;
+  const safetyEn = (roomData as any).safety_disclaimer;
+  const safetyVi = (roomData as any).safety_disclaimer_vi;
+  const crisisEn = (roomData as any).crisis_footer?.en;
+  const crisisVi = (roomData as any).crisis_footer?.vi;
 
   if (!safetyEn && !safetyVi && !crisisEn && !crisisVi) return null;
 

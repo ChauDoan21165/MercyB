@@ -172,7 +172,7 @@ function findRelatedRooms(message: string, currentRoomId: string): string[] {
 }
 
 export function keywordRespond(roomId: string, message: string, noKeywordCount: number = 0, matchedEntryCount: number = 0): { text: string; matched: boolean; relatedRooms?: string[]; audioFile?: string; entryId?: string } {
-  const roomData = roomDataMap[roomId];
+  const roomData = roomDataMap[roomId] as any;
   if (!roomData) throw new Error("Room data not found");
 
   const matchResult = findMatchingGroup(message, roomData.keywords || roomData.keywords_dict);
