@@ -1,1 +1,57 @@
-{"name":"Depression Support","name_vi":"Hỗ Trợ Trầm Cảm","description":"In-depth strategies for managing depression with tools","keywords_en":["depression","mood","support","routine"],"keywords_vi":["trầm cảm","tâm trạng","hỗ trợ","thói quen"],"entries":[{"slug":"routine","keywords_en":["routine","structure","depression"],"keywords_vi":["thói quen","cấu trúc","trầm cảm"],"copy":{"en":"A structured routine effectively combats depression. Set fixed times for waking, sleeping, meals, and exercise. Track habits in a journal to notice progress. Join a support group for motivation and accountability, building stability and consistent mood improvement over time."},"tags":["routine","depression"],"audio":{"en":"dep_vip1_1_en.mp3"},"essay_ref":"dep_vip1_1_essay.txt"},{"slug":"gratitude","keywords_en":["gratitude","positive","depression"],"keywords_vi":["biết ơn","tích cực","trầm cảm"],"copy":{"en":"Gratitude practice helps elevate mood. Write three things you appreciate each day, describing sensory details. Review weekly to strengthen positive focus. Share your reflections with friends or a group to encourage hope and emotional resilience."},"tags":["gratitude","depression"],"audio":{"en":"dep_vip1_2_en.mp3"},"essay_ref":"dep_vip1_2_essay.txt"},{"slug":"exercise","keywords_en":["exercise","mood","depression"],"keywords_vi":["tập luyện","tâm trạng","trầm cảm"],"copy":{"en":"Exercise is a natural antidepressant. Begin with a daily twenty-minute walk, then add light strength training twice a week. Track your energy and sleep quality. Partner with a friend for joint workouts to boost endorphins and maintain consistency through social motivation."},"tags":["exercise","depression"],"audio":{"en":"dep_vip1_3_en.mp3"},"essay_ref":"dep_vip1_3_essay.txt"},{"slug":"social","keywords_en":["social","connection","depression"],"keywords_vi":["xã hội","kết nối","trầm cảm"],"copy":{"en":"Social connection breaks isolation linked to depression. Schedule one meaningful call or meeting each week. Join a support group or community circle to share openly. Honest conversations foster trust, belonging, and a gentle emotional lift through shared empathy."},"tags":["social","depression"],"audio":{"en":"dep_vip1_4_en.mp3"},"essay_ref":"dep_vip1_4_essay.txt"}],"meta":{"created_at":"2025-10-28T00:00:00+00:00","updated_at":"2025-10-28T00:00:00+00:00","entry_count":4,"tier":"vip1","room_color":"#4A90E2"}}
+{
+  "tier": "VIP1 / VIP1",
+  "title": {
+    "en": "Depression Support",
+    "vi": "Hỗ Trợ Trầm Cảm"
+  },
+  "content": {
+    "en": "In-depth strategies for managing depression with practical tools and supportive practices. Establish structured routines to build stability, practice gratitude to shift focus positively, incorporate exercise to boost endorphins, and foster social connections to combat isolation. These methods promote self-awareness, resilience, and gradual mood improvement in a non-judgmental way. Start implementing small changes today for lasting emotional well-being. Discover deeper guidance in higher tiers.",
+    "vi": "Các chiến lược sâu sắc để quản lý trầm cảm với công cụ thực tế và thực hành hỗ trợ. Thiết lập thói quen có cấu trúc để xây dựng sự ổn định, thực hành biết ơn để chuyển hướng tích cực, kết hợp tập luyện để tăng endorphin, và nuôi dưỡng kết nối xã hội để chống lại sự cô lập. Những phương pháp này thúc đẩy tự nhận thức, khả năng phục hồi và cải thiện tâm trạng dần dần một cách không phán xét. Bắt đầu thực hiện những thay đổi nhỏ hôm nay để có sức khỏe cảm xúc lâu dài. Khám phá thêm ở cấp độ cao hơn."
+  },
+  "entries": [
+    {
+      "slug": "routine",
+      "keywords_en": ["routine", "structure", "depression"],
+      "keywords_vi": ["thói quen", "cấu trúc", "trầm cảm"],
+      "copy": {
+        "en": "A structured routine effectively combats depression. Set fixed times for waking, sleeping, meals, and exercise. Track habits in a journal to notice progress. Join a support group for motivation and accountability, building stability and consistent mood improvement over time.",
+        "vi": "Thói quen có cấu trúc hiệu quả chống lại trầm cảm. Đặt thời gian cố định cho thức dậy, ngủ, bữa ăn và tập luyện. Theo dõi thói quen trong nhật ký để nhận thấy tiến bộ. Tham gia nhóm hỗ trợ để có động lực và trách nhiệm, xây dựng sự ổn định và cải thiện tâm trạng nhất quán theo thời gian."
+      },
+      "tags": ["routine", "depression"],
+      "audio": "dep_vip1_1_en.mp3"
+    },
+    {
+      "slug": "gratitude",
+      "keywords_en": ["gratitude", "positive", "depression"],
+      "keywords_vi": ["biết ơn", "tích cực", "trầm cảm"],
+      "copy": {
+        "en": "Gratitude practice helps elevate mood. Write three things you appreciate each day, describing sensory details. Review weekly to strengthen positive focus. Share your reflections with friends or a group to encourage hope and emotional resilience.",
+        "vi": "Thực hành biết ơn giúp nâng cao tâm trạng. Viết ba điều bạn đánh giá cao mỗi ngày, mô tả chi tiết cảm giác. Xem lại hàng tuần để củng cố sự tập trung tích cực. Chia sẻ suy ngẫm với bạn bè hoặc nhóm để khuyến khích hy vọng và khả năng phục hồi cảm xúc."
+      },
+      "tags": ["gratitude", "depression"],
+      "audio": "dep_vip1_2_en.mp3"
+    },
+    {
+      "slug": "exercise",
+      "keywords_en": ["exercise", "mood", "depression"],
+      "keywords_vi": ["tập luyện", "tâm trạng", "trầm cảm"],
+      "copy": {
+        "en": "Exercise is a natural antidepressant. Begin with a daily twenty-minute walk, then add light strength training twice a week. Track your energy and sleep quality. Partner with a friend for joint workouts to boost endorphins and maintain consistency through social motivation.",
+        "vi": "Tập luyện là chất chống trầm cảm tự nhiên. Bắt đầu với đi bộ hai mươi phút hàng ngày, sau đó thêm tập luyện sức mạnh nhẹ hai lần một tuần. Theo dõi năng lượng và chất lượng giấc ngủ. Hợp tác với bạn bè để tập luyện chung, tăng endorphin và duy trì nhất quán qua động lực xã hội."
+      },
+      "tags": ["exercise", "depression"],
+      "audio": "dep_vip1_3_en.mp3"
+    },
+    {
+      "slug": "social",
+      "keywords_en": ["social", "connection", "depression"],
+      "keywords_vi": ["xã hội", "kết nối", "trầm cảm"],
+      "copy": {
+        "en": "Social connection breaks isolation linked to depression. Schedule one meaningful call or meeting each week. Join a support group or community circle to share openly. Honest conversations foster trust, belonging, and a gentle emotional lift through shared empathy.",
+        "vi": "Kết nối xã hội phá vỡ sự cô lập liên quan đến trầm cảm. Lên lịch một cuộc gọi hoặc gặp gỡ ý nghĩa mỗi tuần. Tham gia nhóm hỗ trợ hoặc vòng tròn cộng đồng để chia sẻ cởi mở. Cuộc trò chuyện chân thành nuôi dưỡng lòng tin, sự thuộc về và nâng đỡ cảm xúc nhẹ nhàng qua sự đồng cảm chia sẻ."
+      },
+      "tags": ["social", "depression"],
+      "audio": "dep_vip1_4_en.mp3"
+    }
+  ]
+}
