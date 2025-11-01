@@ -1,1 +1,57 @@
-{"name":"Addiction Support","name_vi":"Hỗ Trợ Cai Nghiện","description":"In-depth strategies for addiction recovery with therapy and community support","keywords_en":["addiction","recovery","CBT","support system"],"keywords_vi":["nghiện","phục hồi","CBT","hệ thống hỗ trợ"],"entries":[{"slug":"recovery","keywords_en":["recovery","healing","sobriety"],"keywords_vi":["phục hồi","chữa lành","tỉnh táo"],"copy":{"en":"Addiction recovery begins with small, consistent steps and self-acceptance. Acknowledge your struggles without shame, seeking professional or peer support. Cognitive Behavioral Therapy helps reframe harmful thoughts, building healthier habits. Journaling can reveal triggers, fostering self-awareness. Celebrate milestones, like a sober week, to sustain momentum. Surround yourself with positive influences to reinforce hope, ensuring your unique journey leads to lasting sobriety and emotional strength.","vi":"Phục hồi khỏi nghiện bắt đầu bằng những bước nhỏ, nhất quán và sự tự chấp nhận. Thừa nhận khó khăn mà không tự trách, tìm hỗ trợ từ chuyên gia hoặc người cùng nhóm hỗ trợ. Liệu pháp Nhận thức Hành vi giúp định hình lại những suy nghĩ tiêu cực, xây dựng thói quen lành mạnh. Viết nhật ký giúp nhận diện các yếu tố kích hoạt và tăng cường tự nhận thức. Ăn mừng những cột mốc như một tuần tỉnh táo để duy trì đà tiến. Hãy bao quanh mình bằng những ảnh hưởng tích cực để củng cố hy vọng, giúp hành trình của bạn hướng đến sự tỉnh táo và sức mạnh cảm xúc bền vững."},"tags":["recovery","addiction"],"audio":"addiction_support_vip1_recovery.mp3"},{"slug":"cbt","keywords_en":["therapy","CBT","coping skills"],"keywords_vi":["liệu pháp","CBT","kỹ năng đối phó"],"copy":{"en":"Cognitive Behavioral Therapy (CBT) is a cornerstone of addiction recovery. It helps identify triggers, like stress or environments, and develop coping skills to manage cravings. Through structured sessions, you’ll replace harmful habits with positive ones. Practice mindfulness to stay grounded, reducing impulsive actions. CBT fosters a resilient mindset, empowering you to maintain sobriety and emotional balance over time.","vi":"Liệu pháp Nhận thức Hành vi (CBT) là nền tảng của quá trình phục hồi nghiện. Liệu pháp giúp nhận diện các yếu tố kích hoạt như căng thẳng hoặc môi trường và phát triển kỹ năng đối phó để kiểm soát cơn thèm chất. Thông qua các buổi trị liệu có cấu trúc, bạn sẽ thay thế thói quen có hại bằng những hành vi tích cực. Thực hành chánh niệm để giữ bình tĩnh, giảm hành vi bốc đồng. CBT giúp nuôi dưỡng tư duy kiên cường, giúp bạn duy trì sự tỉnh táo và cân bằng cảm xúc lâu dài."},"tags":["therapy","addiction"],"audio":"addiction_support_vip1_cbt.mp3"},{"slug":"support-system","keywords_en":["support system","community","empathy"],"keywords_vi":["hệ thống hỗ trợ","cộng đồng","đồng cảm"],"copy":{"en":"A strong support system is vital for addiction recovery. Engage friends, family, or support groups by sharing your needs openly. Their empathy fosters a safe environment for healing. Attend group meetings to connect with others facing similar challenges. Positive influences help you stay motivated, building resilience to navigate setbacks and maintain sobriety effectively.","vi":"Hệ thống hỗ trợ vững chắc rất quan trọng trong phục hồi nghiện. Hãy gắn kết với bạn bè, gia đình hoặc nhóm hỗ trợ bằng cách chia sẻ nhu cầu một cách cởi mở. Sự đồng cảm của họ tạo nên môi trường an toàn cho quá trình chữa lành. Tham gia các buổi sinh hoạt nhóm để kết nối với những người đang đối mặt thử thách tương tự. Ảnh hưởng tích cực giúp bạn duy trì động lực, tăng khả năng phục hồi và duy trì trạng thái tỉnh táo hiệu quả."},"tags":["support","recovery"],"audio":"addiction_support_vip1_support_system.mp3"},{"slug":"relapse-prevention","keywords_en":["relapse prevention","strategies","sobriety"],"keywords_vi":["ngăn ngừa tái phát","chiến lược","tỉnh táo"],"copy":{"en":"Relapse prevention is key to sustained addiction recovery. Identify triggers, like stress or social settings, and plan coping strategies in advance. Create a daily routine with healthy activities, like exercise or hobbies, to replace old habits. Seek support when cravings arise. Staying proactive and connected to your support system builds resilience, helping you maintain sobriety long-term.","vi":"Ngăn ngừa tái phát là chìa khóa để duy trì quá trình phục hồi khỏi nghiện. Nhận diện các yếu tố kích hoạt như căng thẳng hoặc môi trường xã hội và lập kế hoạch đối phó từ trước. Tạo thói quen hằng ngày với các hoạt động lành mạnh như tập thể dục hoặc sở thích để thay thế thói quen cũ. Tìm sự hỗ trợ khi cơn thèm xuất hiện. Duy trì sự chủ động và kết nối với hệ thống hỗ trợ sẽ giúp bạn tăng khả năng phục hồi và giữ vững sự tỉnh táo lâu dài."},"tags":["relapse","recovery"],"audio":"addiction_support_vip1_relapse_prevention.mp3"}],"meta":{"created_at":"2025-10-27T00:00:00+00:00","updated_at":"2025-10-27T00:00:00+00:00","entry_count":4,"tier":"vip1","room_color":"#4A90E2"}}
+{
+  "tier": "VIP1 / VIP1",
+  "title": {
+    "en": "Addiction Support",
+    "vi": "Hỗ Trợ Cai Nghiện"
+  },
+  "content": {
+    "en": "In-depth strategies for addiction recovery with therapy and community support. Explore cognitive behavioral techniques, building a strong support system, and relapse prevention methods to foster lasting sobriety. These approaches emphasize self-awareness, positive habits, and resilience in overcoming addiction. Discover deeper guidance in higher tiers.",
+    "vi": "Các chiến lược sâu sắc cho phục hồi nghiện với liệu pháp và hỗ trợ cộng đồng. Khám phá kỹ thuật nhận thức hành vi, xây dựng hệ thống hỗ trợ vững chắc, và phương pháp ngăn ngừa tái phát để thúc đẩy sự tỉnh táo lâu dài. Những cách tiếp cận này nhấn mạnh tự nhận thức, thói quen tích cực, và khả năng phục hồi trong việc vượt qua nghiện. Khám phá thêm ở cấp độ cao hơn."
+  },
+  "entries": [
+    {
+      "slug": "recovery",
+      "keywords_en": ["recovery", "healing", "sobriety"],
+      "keywords_vi": ["phục hồi", "chữa lành", "tỉnh táo"],
+      "copy": {
+        "en": "Addiction recovery begins with small, consistent steps and self-acceptance. Acknowledge your struggles without shame, seeking professional or peer support. Cognitive Behavioral Therapy helps reframe harmful thoughts, building healthier habits. Journaling can reveal triggers, fostering self-awareness. Celebrate milestones, like a sober week, to sustain momentum. Surround yourself with positive influences to reinforce hope, ensuring your unique journey leads to lasting sobriety and emotional strength.",
+        "vi": "Phục hồi khỏi nghiện bắt đầu bằng những bước nhỏ, nhất quán và sự tự chấp nhận. Thừa nhận khó khăn mà không tự trách, tìm hỗ trợ từ chuyên gia hoặc người cùng nhóm hỗ trợ. Liệu pháp Nhận thức Hành vi giúp định hình lại những suy nghĩ tiêu cực, xây dựng thói quen lành mạnh. Viết nhật ký giúp nhận diện các yếu tố kích hoạt và tăng cường tự nhận thức. Ăn mừng những cột mốc như một tuần tỉnh táo để duy trì đà tiến. Hãy bao quanh mình bằng những ảnh hưởng tích cực để củng cố hy vọng, giúp hành trình của bạn hướng đến sự tỉnh táo và sức mạnh cảm xúc bền vững."
+      },
+      "tags": ["recovery", "addiction"],
+      "audio": "addiction_support_vip1_recovery.mp3"
+    },
+    {
+      "slug": "cbt",
+      "keywords_en": ["therapy", "CBT", "coping skills"],
+      "keywords_vi": ["liệu pháp", "CBT", "kỹ năng đối phó"],
+      "copy": {
+        "en": "Cognitive Behavioral Therapy (CBT) is a cornerstone of addiction recovery. It helps identify triggers, like stress or environments, and develop coping skills to manage cravings. Through structured sessions, you’ll replace harmful habits with positive ones. Practice mindfulness to stay grounded, reducing impulsive actions. CBT fosters a resilient mindset, empowering you to maintain sobriety and emotional balance over time.",
+        "vi": "Liệu pháp Nhận thức Hành vi (CBT) là nền tảng của quá trình phục hồi nghiện. Liệu pháp giúp nhận diện các yếu tố kích hoạt như căng thẳng hoặc môi trường và phát triển kỹ năng đối phó để kiểm soát cơn thèm chất. Thông qua các buổi trị liệu có cấu trúc, bạn sẽ thay thế thói quen có hại bằng những hành vi tích cực. Thực hành chánh niệm để giữ bình tĩnh, giảm hành vi bốc đồng. CBT giúp nuôi dưỡng tư duy kiên cường, giúp bạn duy trì sự tỉnh táo và cân bằng cảm xúc lâu dài."
+      },
+      "tags": ["therapy", "addiction"],
+      "audio": "addiction_support_vip1_cbt.mp3"
+    },
+    {
+      "slug": "support-system",
+      "keywords_en": ["support system", "community", "empathy"],
+      "keywords_vi": ["hệ thống hỗ trợ", "cộng đồng", "đồng cảm"],
+      "copy": {
+        "en": "A strong support system is vital for addiction recovery. Engage friends, family, or support groups by sharing your needs openly. Their empathy fosters a safe environment for healing. Attend group meetings to connect with others facing similar challenges. Positive influences help you stay motivated, building resilience to navigate setbacks and maintain sobriety effectively.",
+        "vi": "Hệ thống hỗ trợ vững chắc rất quan trọng trong phục hồi nghiện. Hãy gắn kết với bạn bè, gia đình hoặc nhóm hỗ trợ bằng cách chia sẻ nhu cầu một cách cởi mở. Sự đồng cảm của họ tạo nên môi trường an toàn cho quá trình chữa lành. Tham gia các buổi sinh hoạt nhóm để kết nối với những người đang đối mặt thử thách tương tự. Ảnh hưởng tích cực giúp bạn duy trì động lực, tăng khả năng phục hồi và duy trì trạng thái tỉnh táo hiệu quả."
+      },
+      "tags": ["support", "recovery"],
+      "audio": "addiction_support_vip1_support_system.mp3"
+    },
+    {
+      "slug": "relapse-prevention",
+      "keywords_en": ["relapse prevention", "strategies", "sobriety"],
+      "keywords_vi": ["ngăn ngừa tái phát", "chiến lược", "tỉnh táo"],
+      "copy": {
+        "en": "Relapse prevention is key to sustained addiction recovery. Identify triggers, like stress or social settings, and plan coping strategies in advance. Create a daily routine with healthy activities, like exercise or hobbies, to replace old habits. Seek support when cravings arise. Staying proactive and connected to your support system builds resilience, helping you maintain sobriety long-term.",
+        "vi": "Ngăn ngừa tái phát là chìa khóa để duy trì quá trình phục hồi khỏi nghiện. Nhận diện các yếu tố kích hoạt như căng thẳng hoặc môi trường xã hội và lập kế hoạch đối phó từ trước. Tạo thói quen hằng ngày với các hoạt động lành mạnh như tập thể dục hoặc sở thích để thay thế thói quen cũ. Tìm sự hỗ trợ khi cơn thèm xuất hiện. Duy trì sự chủ động và kết nối với hệ thống hỗ trợ sẽ giúp bạn tăng khả năng phục hồi và giữ vững sự tỉnh táo lâu dài."
+      },
+      "tags": ["relapse", "recovery"],
+      "audio": "addiction_support_vip1_relapse_prevention.mp3"
+    }
+  ]
+}
