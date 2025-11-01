@@ -52,24 +52,34 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
 
     // Extract keywords robustly - check both root level and entry level
     let keywordMenu: { en: string[]; vi: string[] } = { en: [], vi: [] };
-    const kw = jsonData?.keywords;
     
-    // First try root-level keywords
-    if (kw) {
-      if (Array.isArray(kw.en) || Array.isArray(kw.vi)) {
-        keywordMenu = {
-          en: Array.isArray(kw.en) ? kw.en : [],
-          vi: Array.isArray(kw.vi) ? kw.vi : []
-        };
-      } else if (typeof kw === 'object') {
-        // Flatten grouped keywords into simple lists
-        const enList: string[] = [];
-        const viList: string[] = [];
-        Object.values(kw).forEach((g: any) => {
-          if (Array.isArray(g?.en)) enList.push(...g.en);
-          if (Array.isArray(g?.vi)) viList.push(...g.vi);
-        });
-        keywordMenu = { en: enList, vi: viList };
+    // Try root-level keywords in multiple formats
+    // Format 1: keywords_en / keywords_vi (separate properties)
+    if (Array.isArray(jsonData?.keywords_en) || Array.isArray(jsonData?.keywords_vi)) {
+      keywordMenu = {
+        en: Array.isArray(jsonData.keywords_en) ? jsonData.keywords_en : [],
+        vi: Array.isArray(jsonData.keywords_vi) ? jsonData.keywords_vi : []
+      };
+    }
+    // Format 2: keywords.en / keywords.vi (nested object)
+    else {
+      const kw = jsonData?.keywords;
+      if (kw) {
+        if (Array.isArray(kw.en) || Array.isArray(kw.vi)) {
+          keywordMenu = {
+            en: Array.isArray(kw.en) ? kw.en : [],
+            vi: Array.isArray(kw.vi) ? kw.vi : []
+          };
+        } else if (typeof kw === 'object') {
+          // Flatten grouped keywords into simple lists
+          const enList: string[] = [];
+          const viList: string[] = [];
+          Object.values(kw).forEach((g: any) => {
+            if (Array.isArray(g?.en)) enList.push(...g.en);
+            if (Array.isArray(g?.vi)) viList.push(...g.vi);
+          });
+          keywordMenu = { en: enList, vi: viList };
+        }
       }
     }
     
