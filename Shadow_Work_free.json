@@ -1,17 +1,23 @@
 {
-  "version": "1.0",
-  "locale": "vi-en",
-  "name": "Shadow Work (Free)",
-  "description": "Introductory shadow work: identifying hidden traits, integration, reflection, forgiveness, awareness, and inner wholeness.",
-  "global_notes": {
-    "safety": ""
+  "name": "Shadow Work",
+  "name_vi": "Làm Việc Với Bóng Tối",
+  "description": {
+    "en": "Introductory shadow work: identifying hidden traits, integration, reflection, forgiveness, awareness, and inner wholeness.",
+    "vi": "Giới thiệu về làm việc với bóng tối: nhận diện đặc điểm ẩn giấu, hòa nhập, chiêm nghiệm, tha thứ, nhận thức, và sự toàn vẹn nội tâm."
   },
-  "enum_tags": [
+  "keywords_en": [
     "self_reflection",
     "shadow_work",
     "forgiveness",
     "awareness",
     "integration"
+  ],
+  "keywords_vi": [
+    "tự chiêm nghiệm",
+    "làm việc với bóng tối",
+    "tha thứ",
+    "nhận thức",
+    "hòa nhập"
   ],
   "entries": [
     {
@@ -35,7 +41,6 @@
       "tags": [
         "self_reflection"
       ],
-      "artifact_id": "f1e4a912-7135-4e34-9a3f-7a1c1b9c0001",
       "audio": "identifying_hidden_traits_free.mp3"
     },
     {
@@ -59,7 +64,6 @@
       "tags": [
         "integration"
       ],
-      "artifact_id": "b0e47f18-20a3-422b-8a43-3f0a9b7f0002",
       "audio": "integrating_shadow_parts_free.mp3"
     },
     {
@@ -83,7 +87,6 @@
       "tags": [
         "reflection"
       ],
-      "artifact_id": "a2b6e315-38d2-4d25-96cf-2b5e8a8a0003",
       "audio": "reflecting_on_shadows_free.mp3"
     },
     {
@@ -107,7 +110,6 @@
       "tags": [
         "forgiveness"
       ],
-      "artifact_id": "c4e13f87-98cb-449a-8f28-8f8f0a7f0004",
       "audio": "forgiving_shadow_self_free.mp3"
     },
     {
@@ -131,7 +133,6 @@
       "tags": [
         "awareness"
       ],
-      "artifact_id": "e8a94d2a-0e29-4c23-bf22-8c7c0b7a0005",
       "audio": "awareness_of_triggers_free.mp3"
     },
     {
@@ -155,13 +156,12 @@
       "tags": [
         "integration"
       ],
-      "artifact_id": "d6b8f391-2e3a-4b41-8a37-1e4d9a7f0006",
       "audio": "embracing_inner_wholeness_free.mp3"
     }
   ],
   "meta": {
     "created_at": "2025-10-25T12:22:00+09:00",
-    "updated_at": "2025-10-25T12:22:00+09:00",
+    "updated_at": "2025-11-02T00:00:00+00:00",
     "entry_count": 6,
     "tier": "free",
     "room_color": "#FFFFFF"
