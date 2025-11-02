@@ -1,25 +1,18 @@
 {
-  "name": "Shadow Work",
-  "name_vi": "Làm Việc Với Bóng Tối",
-  "description": {
-    "en": "Intermediate shadow work: recognizing hidden aspects, integration, reflection, forgiveness, trigger awareness, and inner harmony.",
-    "vi": "Làm việc với bóng tối trung cấp: nhận diện khía cạnh ẩn giấu, hòa nhập, chiêm nghiệm, tha thứ, nhận thức tác nhân kích hoạt, và hòa hợp nội tâm."
+  "version": "1.0",
+  "locale": "vi-en",
+  "name": "Shadow Work (VIP 1)",
+  "description": "Intermediate shadow work: recognizing hidden aspects, integration, reflection, forgiveness, trigger awareness, and inner harmony.",
+  "global_notes": {
+    "safety": ""
   },
-  "keywords_en": [
+  "enum_tags": [
     "self_reflection",
     "shadow_work",
     "forgiveness",
     "awareness",
     "integration",
     "harmony"
-  ],
-  "keywords_vi": [
-    "tự chiêm nghiệm",
-    "làm việc với bóng tối",
-    "tha thứ",
-    "nhận thức",
-    "hòa nhập",
-    "hòa hợp"
   ],
   "entries": [
     {
@@ -43,6 +36,7 @@
       "tags": [
         "self_reflection"
       ],
+      "artifact_id": "8f9f1a2b-6f5c-4f6e-9a3b-1c2d3e4f0001",
       "audio": "recognizing_hidden_aspects_vip1.mp3"
     },
     {
@@ -66,6 +60,7 @@
       "tags": [
         "integration"
       ],
+      "artifact_id": "1b2c3d4e-5f6a-47b8-9c0d-e1f2a3b40002",
       "audio": "embracing_shadow_integration_vip1.mp3"
     },
     {
@@ -89,6 +84,7 @@
       "tags": [
         "reflection"
       ],
+      "artifact_id": "3c4d5e6f-7a8b-49c0-b1d2-c3e4f5a60003",
       "audio": "shadow_reflection_practices_vip1.mp3"
     },
     {
@@ -112,6 +108,7 @@
       "tags": [
         "forgiveness"
       ],
+      "artifact_id": "4d5e6f7a-8b9c-40d1-a2b3-c4d5e6f70004",
       "audio": "practicing_shadow_forgiveness_vip1.mp3"
     },
     {
@@ -135,6 +132,7 @@
       "tags": [
         "awareness"
       ],
+      "artifact_id": "5e6f7a8b-9c40-41d2-b3c4-d5e6f7a80005",
       "audio": "trigger_awareness_techniques_vip1.mp3"
     },
     {
@@ -158,12 +156,13 @@
       "tags": [
         "harmony"
       ],
+      "artifact_id": "6f7a8b9c-40d1-42b3-c4d5-e6f7a8b90006",
       "audio": "achieving_inner_harmony_vip1.mp3"
     }
   ],
   "meta": {
     "created_at": "2025-10-26T00:00:00+09:00",
-    "updated_at": "2025-11-02T00:00:00+00:00",
+    "updated_at": "2025-10-26T00:00:00+09:00",
     "entry_count": 6,
     "tier": "vip1",
     "room_color": "#D7CCC8"
