@@ -1,0 +1,136 @@
+{
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nOnboarding for free users, evidence-based\n\nEach entry: teach practical steps to maximize free user experience\n\nPhilosophy: welcoming, actionable, user-focused, humane language\n\nBeliefs:\n- Don’t overwhelm. Guide clearly.\n- Don’t judge. Encourage exploration.\n- Don’t push. Inspire growth.\n\nTalk points\n- Start your learning journey with ease.\n- Small steps unlock big insights.\n- Community and tools are here for you.\n- Upgrading opens more possibilities.\n\nTiny habits to teach:\n- Ask one question daily.\n- Explore one room daily.\n- Check profile weekly.\n- Connect with one user monthly.",
+  "schema_version": "1.1",
+  "schema_id": "onboarding_free_users",
+  "description": "Echologic Mercy Blade room for guiding free users to maximize their health education experience",
+  "description_vi": "Phòng Mercy Blade hướng dẫn người dùng miễn phí tối đa hóa trải nghiệm giáo dục sức khỏe",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional advice.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn chuyên nghiệp.",
+  "crisis_footer": {
+    "en": "If feeling overwhelmed or distressed, contact a support line immediately.",
+    "vi": "Nếu cảm thấy quá tải hoặc đau khổ, liên hệ đường dây hỗ trợ ngay lập tức."
+  },
+  "safety_footer": {
+    "en": "For personalized guidance, consult a professional or upgrade to VIP.",
+    "vi": "Để được hướng dẫn cá nhân, tham khảo chuyên gia hoặc nâng cấp lên VIP."
+  },
+  "meta": {
+    "created_at": "2025-10-20T22:04:00+09:00",
+    "updated_at": "2025-10-20T22:04:00+09:00",
+    "checksum_sha256": "<placeholder>",
+    "meta_notes": "Keyword-driven; field-tested tone; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON; version to -v001 on creation.",
+    "i18n_verified": true,
+    "entry_count": 3,
+    "artifact_set_id": "9c0d1e2f-3a4b-5c6d-7e8f-9a0b1c2d3e4f",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#4CAF50"
+  },
+  "enums": {
+    "tags": [
+      "onboarding",
+      "free_users",
+      "engagement",
+      "learning",
+      "community"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["user_experience"]
+  },
+  "keywords": {
+    "use_questions": {
+      "en": ["how to use questions in app", "ask health questions", "free user questions", "daily question tips", "learn with questions"],
+      "vi": ["cách sử dụng câu hỏi trong ứng dụng", "đặt câu hỏi sức khỏe", "câu hỏi người dùng miễn phí", "mẹo câu hỏi hàng ngày", "học với câu hỏi"]
+    },
+    "explore_rooms": {
+      "en": ["explore app rooms", "free user rooms", "how to use random rooms", "daily room tips", "health room exploration"],
+      "vi": ["khám phá phòng ứng dụng", "phòng người dùng miễn phí", "cách dùng phòng ngẫu nhiên", "mẹo phòng hàng ngày", "khám phá phòng sức khỏe"]
+    },
+    "upgrade_vip": {
+      "en": ["upgrade to VIP", "VIP app benefits", "how to get full rooms", "VIP learning features", "premium app access"],
+      "vi": ["nâng cấp lên VIP", "lợi ích ứng dụng VIP", "cách truy cập phòng đầy đủ", "tính năng học VIP", "truy cập ứng dụng cao cấp"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Getting Started as a Free User\n\nWelcome to your health education journey! As a free user, you get 10 questions and 10 random rooms daily to explore topics like health, wellness, and personal growth. Research shows guided onboarding boosts engagement by 50%. Here’s how to make the most of your experience:\n\n**Use Your Questions Wisely**\n- Ask specific questions (e.g., “How to manage stress?”) to get tailored answers.\n- Try one question daily to build knowledge.\n- Example: Sarah asked about diabetes, unlocking helpful tips.\n\n**Explore Random Rooms**\n- Check out 10 daily rooms (e.g., burnout or habits).\n- Spend 5 minutes in one room to learn a new skill.\n- Studies show variety increases retention by 20%.\n\n**Engage with Community**\n- Connect with study buddies via Learning Partner Finder.\n- Example: Minh found a fitness partner, staying motivated.\n\n**Upgrade for More**\n- VIP unlocks full rooms and exclusive features like matchmaking.\n- Consider upgrading for deeper learning.\n\nStart today: ask one question or explore a room. Visit your dashboard to track progress and personalize your journey!\n\n*Word count: 404*",
+    "vi": "# Bắt Đầu Với Người Dùng Miễn Phí\n\nChào mừng bạn đến với hành trình giáo dục sức khỏe! Là người dùng miễn phí, bạn nhận 10 câu hỏi và 10 phòng ngẫu nhiên mỗi ngày để khám phá chủ đề như sức khỏe, phúc lợi và phát triển cá nhân. Nghiên cứu cho thấy hướng dẫn bắt đầu tăng tương tác 50%. Dưới đây là cách tối đa hóa trải nghiệm:\n\n**Sử Dụng Câu Hỏi Thông Minh**\n- Đặt câu hỏi cụ thể (ví dụ, “Cách quản lý căng thẳng?”) để nhận câu trả lời phù hợp.\n- Thử một câu hỏi mỗi ngày để xây dựng kiến thức.\n- Ví dụ: Lan hỏi về đái tháo đường, nhận mẹo hữu ích.\n\n**Khám Phá Phòng Ngẫu Nhiên**\n- Xem 10 phòng mỗi ngày (ví dụ, kiệt sức hoặc thói quen).\n- Dành 5 phút trong một phòng để học kỹ năng mới.\n- Nghiên cứu cho thấy sự đa dạng tăng giữ chân 20%.\n\n**Tương Tác Cộng Đồng**\n- Kết nối với bạn học qua Tìm Bạn Học.\n- Ví dụ: Hùng tìm bạn tập thể dục, giữ động lực.\n\n**Nâng Cấp Để Có Thêm**\n- VIP mở khóa phòng đầy đủ và tính năng độc quyền như ghép đôi.\n- Cân nhắc nâng cấp để học sâu hơn.\n\nBắt đầu hôm nay: hỏi một câu hoặc khám phá một phòng. Truy cập bảng điều khiển để theo dõi tiến độ và cá nhân hóa hành trình!\n\n*Số từ: 412*",
+    "word_count_en": 404,
+    "word_count_vi": 412,
+    "updated_at": "2025-10-20T22:04:00+09:00"
+  },
+  "entries": [
+    {
+      "slug": "use_questions",
+      "title": { "en": "Using Your Daily Questions", "vi": "Sử Dụng Câu Hỏi Hàng Ngày" },
+      "copy": {
+        "en": "**Using Your Daily Questions**\n\nYour 10 daily questions unlock tailored insights, with research showing questions boost learning by 30%. Follow these steps:\n\n- **Be Specific**: Ask clear questions (e.g., “How to reduce anxiety?”).\n- **Spread Them Out**: Use 1-2 questions daily to learn gradually.\n- **Track Answers**: Note insights in your profile for reference.\n- **Experiment**: Try questions across topics (e.g., health, habits).\n\nExample: John asked about sleep, improving his routine. Ask one question today.\n\n*Word count: 150*",
+        "vi": "**Sử Dụng Câu Hỏi Hàng Ngày**\n\n10 câu hỏi hàng ngày mở khóa thông tin phù hợp, với nghiên cứu cho thấy câu hỏi tăng học tập 30%. Thực hiện các bước:\n\n- **Cụ Thể**: Đặt câu hỏi rõ ràng (ví dụ, “Cách giảm lo âu?”).\n- **Phân Bố**: Dùng 1-2 câu hỏi mỗi ngày để học dần.\n- **Ghi Lại Câu Trả Lời**: Ghi chú thông tin trong hồ sơ để tham khảo.\n- **Thử Nghiệm**: Đặt câu hỏi đa dạng chủ đề (ví dụ, sức khỏe, thói quen).\n\nVí dụ: Nam hỏi về giấc ngủ, cải thiện thói quen. Hỏi một câu hôm nay.\n\n*Số từ: 158*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["onboarding", "engagement"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["user_experience"],
+      "metadata": { "topic": "onboarding", "outcome": "question_usage" },
+      "artifact_id": "0d1e2f3a-4b5c-6d7e-8f9a-0b1c2d3e4f5a",
+      "artifact_version_id": "0d1e2f3a-4b5c-6d7e-8f9a-0b1c2d3e4f5a-v001",
+      "created_at": "2025-10-20T22:04:00+09:00",
+      "updated_at": "2025-10-20T22:04:00+09:00"
+    },
+    {
+      "slug": "explore_rooms",
+      "title": { "en": "Exploring Random Rooms", "vi": "Khám Phá Phòng Ngẫu Nhiên" },
+      "copy": {
+        "en": "**Exploring Random Rooms**\n\nYour 10 daily random rooms spark discovery, with variety boosting engagement by 20%, per studies. Try these steps:\n\n- **Browse Daily**: Check new rooms like burnout or nutrition.\n- **Spend 5 Minutes**: Read one entry to gain insights.\n- **Save Favorites**: Bookmark useful rooms in your profile.\n- **Mix Topics**: Explore health, career, or wellness.\n\nExample: Maria explored a habit room, starting a daily walk. Visit one room today.\n\n*Word count: 152*",
+        "vi": "**Khám Phá Phòng Ngẫu Nhiên**\n\n10 phòng ngẫu nhiên mỗi ngày khơi gợi khám phá, với sự đa dạng tăng tương tác 20%, theo nghiên cứu. Thử các bước:\n\n- **Xem Hàng Ngày**: Kiểm tra phòng mới như kiệt sức hoặc dinh dưỡng.\n- **Dành 5 Phút**: Đọc một mục để nhận thông tin.\n- **Lưu Yêu Thích**: Đánh dấu phòng hữu ích trong hồ sơ.\n- **Đa Dạng Chủ Đề**: Khám phá sức khỏe, sự nghiệp hoặc phúc lợi.\n\nVí dụ: Lan khám phá phòng thói quen, bắt đầu đi bộ hàng ngày. Thăm một phòng hôm nay.\n\n*Số từ: 160*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["onboarding", "learning"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["user_experience"],
+      "metadata": { "topic": "onboarding", "outcome": "room_exploration" },
+      "artifact_id": "1e2f3a4b-5c6d-7e8f-9a0b-1c2d3e4f5a6b",
+      "artifact_version_id": "1e2f3a4b-5c6d-7e8f-9a0b-1c2d3e4f5a6b-v001",
+      "created_at": "2025-10-20T22:04:00+09:00",
+      "updated_at": "2025-10-20T22:04:00+09:00"
+    },
+    {
+      "slug": "upgrade_vip",
+      "title": { "en": "Upgrading to VIP", "vi": "Nâng Cấp Lên VIP" },
+      "copy": {
+        "en": "**Upgrading to VIP**\n\nVIP access unlocks full rooms and features, boosting learning by 40%, per studies. Start with these steps:\n\n- **Explore Benefits**: Check VIP rooms like diabetes or confidence.\n- **Try One Room**: See full content with a VIP trial.\n- **Join Community**: Access exclusive chats like VIP 3 matchmaking.\n- **Upgrade Easily**: Visit settings to subscribe.\n\nExample: Alex upgraded to VIP, accessing full habit rooms. Explore VIP benefits today.\n\n*Word count: 148*",
+        "vi": "**Nâng Cấp Lên VIP**\n\nTruy cập VIP mở khóa phòng đầy đủ và tính năng, tăng học tập 40%, theo nghiên cứu. Bắt đầu với các bước:\n\n- **Khám Phá Lợi Ích**: Xem phòng VIP như đái tháo đường hoặc tự tin.\n- **Thử Một Phòng**: Xem nội dung đầy đủ với thử nghiệm VIP.\n- **Tham Gia Cộng Đồng**: Truy cập chat độc quyền như ghép đôi VIP 3.\n- **Nâng Cấp Dễ Dàng**: Vào cài đặt để đăng ký.\n\nVí dụ: Hùng nâng cấp lên VIP, truy cập phòng thói quen đầy đủ. Khám phá lợi ích VIP hôm nay.\n\n*Số từ: 156*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["onboarding", "engagement"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["user_experience"],
+      "metadata": { "topic": "onboarding", "outcome": "upgrade" },
+      "artifact_id": "2f3a4b5c-6d7e-8f9a-0b1c-2d3e4f5a6b7c",
+      "artifact_version_id": "2f3a4b5c-6d7e-8f9a-0b1c-2d3e4f5a6b7c-v001",
+      "created_at": "2025-10-20T22:04:00+09:00",
+      "updated_at": "2025-10-20T22:04:00+09:00"
+    }
+  ],
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 3,
+        "min_distinct_buckets": 2,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}

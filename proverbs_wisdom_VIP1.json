@@ -1,0 +1,109 @@
+{
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nProverbs for wisdom for Free users, curated collection\n\nEach entry: provide a timeless proverb with English and Vietnamese translations\n\nPhilosophy: inclusive, wisdom-sharing, accessible, humane language\n\nBeliefs:\n- Don't judge. Share wisdom.\n- Don't rush. Reflect on meaning.\n- Don't exclude. Inspire all.\n\nTalk points\n- Proverbs guide daily life.\n- Wisdom fosters growth.\n- Reflection deepens understanding.",
+  "schema_version": "1.1",
+  "schema_id": "proverbs_wisdom_free",
+  "description": "Echologic Mercy Blade room for Free users to explore timeless proverbs for wisdom",
+  "description_vi": "Phòng Mercy Blade dành cho người dùng Free để khám phá các câu tục ngữ vượt thời gian về trí tuệ",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
+  "meta": {
+    "created_at": "2025-10-22T09:23:20Z",
+    "updated_at": "2025-10-22T17:03:00Z",
+    "checksum_sha256": "<placeholder>",
+    "meta_notes": "Keyword-driven; Free user access; white background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
+    "i18n_verified": true,
+    "entry_count": 40,
+    "artifact_set_id": "a1b2c3d4-e5f6-4a7b-b8c9-d0e1f2a3b4c5",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#FFFFFF",
+    "tier": "vip1"
+  },
+  "enums": {
+    "tags": [
+      "wisdom",
+      "proverbs",
+      "life_lessons",
+      "reflection",
+      "guidance"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["personal_growth"]
+  },
+  "keywords": {
+    "life_wisdom": {
+      "en": ["life wisdom proverbs", "how to live wisely", "timeless proverbs", "wisdom for daily life", "proverb guidance"],
+      "vi": ["tục ngữ trí tuệ cuộc sống", "cách sống khôn ngoan", "tục ngữ vượt thời gian", "trí tuệ cho cuộc sống hàng ngày", "hướng dẫn tục ngữ"]
+    },
+    "reflection_guidance": {
+      "en": ["reflect on proverbs", "how to apply proverbs", "proverb reflection tips", "learn from proverbs", "wisdom through reflection"],
+      "vi": ["suy ngẫm về tục ngữ", "cách áp dụng tục ngữ", "mẹo suy ngẫm tục ngữ", "học từ tục ngữ", "trí tuệ qua suy ngẫm"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# The Quiet Thread of Wisdom\n\nThere is a quiet thread that runs through every life, weaving moments of joy and loss, courage and hesitation, into one vast tapestry of becoming. It is the thread of wisdom. We seldom see it clearly while we are living inside it; only when we pause—when the noise softens and the heart begins to listen—do we notice its shimmer.\n\nWisdom is not thunder. It does not arrive with grand applause. It comes like dawn light touching the leaves, asking nothing, giving everything. It is in the patience of a teacher repeating a lesson for the hundredth time, in a parent who forgives without words, in a stranger who smiles when no one is watching. These are the small revolutions that shape the human soul.\n\nTo live wisely is to stay curious. Each proverb, whether whispered in a market or carved on temple stone, is a mirror polished by generations. "Actions speak louder than words," they say—and yet, to act with awareness, one must first listen deeply. "Better late than never," another reminds—and still, timeliness is born from compassion, not haste. Such sayings are not rules but invitations: walk slower, look closer, love longer.\n\nWe grow not by collecting knowledge but by letting it change us. A wise person does not seek to win every argument; they seek to understand the silence between sentences. They practice kindness not as a duty but as a rhythm of breathing. Wisdom, at its core, is love translated into understanding.\n\nMay we, like humble students of life, keep a notebook of light—scribbling down the gentle truths we find on ordinary days. A single line, sincerely remembered, can steady an entire season of doubt. Let us begin again each morning with the quiet vow: to see, to learn, to forgive, to glow.\n\n*Word count: 404*",
+    "vi": "# Sợi Chỉ Tĩnh Lặng Của Trí Tuệ\n\nCó một sợi chỉ tĩnh lặng len qua từng đời người, dệt niềm vui và nỗi mất, dũng khí và do dự, thành tấm thảm lớn của hành trình trưởng thành. Đó là sợi chỉ của trí tuệ. Ta hiếm khi thấy nó khi đang sống giữa dòng đời; chỉ khi dừng lại—khi tiếng ồn lắng xuống và trái tim bắt đầu lắng nghe—ta mới thấy ánh lấp lánh của nó.\n\nTrí tuệ không ầm ĩ. Nó đến như ánh bình minh chạm lá, không đòi hỏi mà ban tặng tất cả. Nó nằm trong sự kiên nhẫn của người thầy giảng lại bài học trăm lần, trong người mẹ tha thứ mà không nói, trong nụ cười của người lạ khi chẳng ai để ý. Đó là những cuộc cách mạng nhỏ hình thành linh hồn con người.\n\nSống khôn ngoan là giữ tâm hiếu kỳ. Mỗi câu tục ngữ, dù vang nơi chợ hay khắc trên đá, là tấm gương được bao đời mài bóng. "Hành động nói to hơn lời nói" — nhưng muốn hành động có ý nghĩa, phải biết lắng nghe. "Muộn còn hơn không" — nhưng đúng lúc là khi lòng biết thương, không phải khi vội vàng. Những lời ấy không là luật lệ mà là lời mời: đi chậm hơn, nhìn sâu hơn, yêu lâu hơn.\n\nTa trưởng thành không phải bằng việc gom góp tri thức, mà bằng cách để nó biến đổi ta. Người khôn ngoan không tìm thắng mọi tranh luận; họ tìm hiểu khoảng lặng giữa các câu. Họ thực hành lòng tốt không như bổn phận mà như hơi thở. Cốt lõi của trí tuệ là tình yêu được dịch sang sự thấu hiểu.\n\nƯớc gì ta, như học trò khiêm nhường của cuộc đời, luôn mang theo cuốn sổ ánh sáng—ghi lại những sự thật dịu êm ta bắt gặp trong ngày thường. Một dòng chữ chân thành có thể giữ vững cả mùa nghi hoặc. Mỗi sớm mai, ta lại khẽ hứa: nhìn thấy, học hỏi, tha thứ, và tỏa sáng.\n\n*Số từ: 412*",
+    "word_count_en": 404,
+    "word_count_vi": 412,
+    "updated_at": "2025-10-22T17:03:00Z"
+  },
+  "entries": [
+    {"id": "001", "en": "Actions speak louder than words.", "vi": "Hành động nói to hơn lời nói.", "origin": "English"},
+    {"id": "002", "en": "The pen is mightier than the sword.", "vi": "Ngòi bút mạnh hơn thanh gươm.", "origin": "English"},
+    {"id": "003", "en": "When in Rome, do as the Romans do.", "vi": "Đến La Mã thì làm như người La Mã.", "origin": "Latin"},
+    {"id": "004", "en": "The early bird catches the worm.", "vi": "Chim dậy sớm bắt được sâu.", "origin": "English"},
+    {"id": "005", "en": "A picture is worth a thousand words.", "vi": "Một bức hình đáng giá ngàn lời nói.", "origin": "Chinese/English"},
+    {"id": "006", "en": "Practice makes perfect.", "vi": "Có công mài sắt, có ngày nên kim.", "origin": "English"},
+    {"id": "007", "en": "Better late than never.", "vi": "Muộn còn hơn không.", "origin": "English"},
+    {"id": "008", "en": "Two heads are better than one.", "vi": "Hai cái đầu vẫn hơn một.", "origin": "English"},
+    {"id": "009", "en": "Too many cooks spoil the broth.", "vi": "Nhiều thầy thối ma.", "origin": "English"},
+    {"id": "010", "en": "Don't count your chickens before they hatch.", "vi": "Đừng đếm gà trước khi nở.", "origin": "English"},
+    {"id": "011", "en": "Necessity is the mother of invention.", "vi": "Nhu cầu là mẹ của phát minh.", "origin": "Greek/English"},
+    {"id": "012", "en": "Where there's a will, there's a way.", "vi": "Có chí thì nên.", "origin": "English"},
+    {"id": "013", "en": "No pain, no gain.", "vi": "Không vấp ngã thì không trưởng thành.", "origin": "English"},
+    {"id": "014", "en": "Rome wasn't built in a day.", "vi": "La Mã không được xây trong một ngày.", "origin": "Latin"},
+    {"id": "015", "en": "Haste makes waste.", "vi": "Dục tốc bất đạt.", "origin": "English"},
+    {"id": "016", "en": "Look before you leap.", "vi": "Uốn lưỡi bảy lần trước khi nói.", "origin": "English"},
+    {"id": "017", "en": "Fortune favors the bold.", "vi": "May mắn ưu ái kẻ dũng cảm.", "origin": "Latin"},
+    {"id": "018", "en": "Honesty is the best policy.", "vi": "Thật thà là thượng sách.", "origin": "English"},
+    {"id": "019", "en": "Knowledge is power.", "vi": "Tri thức là sức mạnh.", "origin": "Latin/English"},
+    {"id": "020", "en": "Time is money.", "vi": "Thời gian là tiền bạc.", "origin": "English"},
+    {"id": "021", "en": "You can't judge a book by its cover.", "vi": "Đừng trông mặt mà bắt hình dong.", "origin": "English"},
+    {"id": "022", "en": "The grass is always greener on the other side.", "vi": "Cỏ bên kia đồi luôn xanh hơn.", "origin": "English"},
+    {"id": "023", "en": "A journey of a thousand miles begins with a single step.", "vi": "Hành trình ngàn dặm bắt đầu từ một bước chân.", "origin": "Chinese"},
+    {"id": "024", "en": "If you want to go fast, go alone; if you want to go far, go together.", "vi": "Muốn đi nhanh hãy đi một mình; muốn đi xa hãy đi cùng nhau.", "origin": "African"},
+    {"id": "025", "en": "It takes a village to raise a child.", "vi": "Cần cả làng để nuôi dạy một đứa trẻ.", "origin": "African"},
+    {"id": "026", "en": "Fall seven times, stand up eight.", "vi": "Ngã bảy lần, đứng dậy tám lần.", "origin": "Japanese"},
+    {"id": "027", "en": "If you chase two rabbits, you will catch neither.", "vi": "Đuổi theo hai con thỏ sẽ chẳng bắt được con nào.", "origin": "Japanese/Russian"},
+    {"id": "028", "en": "The best time to plant a tree was twenty years ago; the second best time is now.", "vi": "Thời điểm tốt nhất để trồng cây là hai mươi năm trước; thời điểm tốt thứ hai là bây giờ.", "origin": "Chinese"},
+    {"id": "029", "en": "Empty vessels make the most noise.", "vi": "Thùng rỗng kêu to.", "origin": "English"},
+    {"id": "030", "en": "A watched pot never boils.", "vi": "Nồi canh nhìn mãi chẳng sôi.", "origin": "English"},
+    {"id": "031", "en": "Birds of a feather flock together.", "vi": "Ngưu tầm ngưu, mã tầm mã.", "origin": "English"},
+    {"id": "032", "en": "The squeaky wheel gets the grease.", "vi": "Bánh xe kêu cót két sẽ được tra dầu.", "origin": "American"},
+    {"id": "033", "en": "Don't bite the hand that feeds you.", "vi": "Đừng cắn bàn tay nuôi bạn.", "origin": "English"},
+    {"id": "034", "en": "Beggars can't be choosers.", "vi": "Ăn mày còn đòi xôi gấc.", "origin": "English"},
+    {"id": "035", "en": "Every cloud has a silver lining.", "vi": "Sau cơn mưa trời lại sáng.", "origin": "English"},
+    {"id": "036", "en": "All that glitters is not gold.", "vi": "Không phải cái gì lấp lánh cũng là vàng.", "origin": "English"},
+    {"id": "037", "en": "Beauty is in the eye of the beholder.", "vi": "Vẻ đẹp nằm trong mắt kẻ si tình.", "origin": "Greek/English"},
+    {"id": "038", "en": "Measure twice, cut once.", "vi": "Đo hai lần rồi hãy cắt.", "origin": "Carpentry proverb"},
+    {"id": "039", "en": "The nail that sticks out gets hammered down.", "vi": "Cái đinh thò ra sẽ bị đóng xuống.", "origin": "Japanese"},
+    {"id": "040", "en": "Smooth seas do not make skillful sailors.", "vi": "Biển lặng không tạo nên thủy thủ giỏi.", "origin": "African/European"}
+  ],
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 3,
+        "min_distinct_buckets": 2,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}

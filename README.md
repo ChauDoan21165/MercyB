@@ -1,74 +1,65 @@
-# Welcome to your Lovable project
+# Room Analysis Scripts
 
-## Project info
+## Generate Cross-Topic Recommendations
 
-**URL**: https://lovable.dev/projects/9c81770a-e1f8-453e-9be8-6507aa51e8da
+This script analyzes all 62 room files and automatically generates intelligent cross-room keyword mappings.
 
-## How can I edit this code?
+### What it does:
+1. **Extracts keywords** from all room JSON files
+2. **Finds overlaps** - discovers which keywords appear across multiple rooms
+3. **Builds relationships** - creates a map showing related rooms for each keyword
+4. **Generates recommendations** - outputs `cross_topic_recommendations.json` with smart room suggestions
 
-There are several ways of editing your application.
+### How to run:
 
-**Use Lovable**
+```bash
+# Using tsx (recommended)
+npx tsx scripts/generate-cross-topic-recommendations.ts
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/9c81770a-e1f8-453e-9be8-6507aa51e8da) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+# Or using node with TypeScript support
+node --loader ts-node/esm scripts/generate-cross-topic-recommendations.ts
 ```
 
-**Edit a file directly in GitHub**
+### Output:
+- File: `src/data/system/cross_topic_recommendations.json`
+- Contains: Keyword → Related Rooms mapping
+- Used by: `keywordResponder.ts` to suggest related rooms to users
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Example output:
+```json
+{
+  "keyword": "stress",
+  "rooms": [
+    {
+      "roomId": "mental-health",
+      "roomNameEn": "Mental Health",
+      "roomNameVi": "Sức khỏe tâm thần",
+      "relevance": "primary",
+      "matchedTerms": ["stress", "anxiety", "mental_stress"]
+    },
+    {
+      "roomId": "burnout",
+      "roomNameEn": "Burnout",
+      "roomNameVi": "Kiệt sức",
+      "relevance": "primary",
+      "matchedTerms": ["work_stress", "chronic_stress"]
+    }
+  ]
+}
+```
 
-**Use GitHub Codespaces**
+## Validate Room Integrity
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Checks all room files for data quality and completeness.
 
-## What technologies are used for this project?
+```bash
+npx tsx scripts/validate-room-integrity.ts
+```
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/9c81770a-e1f8-453e-9be8-6507aa51e8da) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
-SSH test
+### What it checks:
+- JSON syntax validity
+- Required fields presence
+- Bilingual content (EN/VI)
+- Keyword completeness
+- Entry structure
+- Import/export consistency

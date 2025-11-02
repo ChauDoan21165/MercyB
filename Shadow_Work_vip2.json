@@ -1,18 +1,25 @@
 {
-  "version": "1.0",
-  "locale": "vi-en",
-  "name": "Shadow Work (VIP 2)",
-  "description": "Advanced shadow work: uncovering concealed traits, merging shadow elements, contemplation, forgiveness, trigger awareness, and internal unity.",
-  "global_notes": {
-    "safety": ""
+  "name": "Shadow Work",
+  "name_vi": "Làm Việc Với Bóng Tối",
+  "description": {
+    "en": "Advanced shadow work: uncovering concealed traits, merging shadow elements, contemplation, forgiveness, trigger awareness, and internal unity.",
+    "vi": "Làm việc với bóng tối nâng cao: khám phá đặc tính ẩn giấu, hòa nhập yếu tố bóng tối, chiêm nghiệm, tha thứ, nhận thức tác nhân kích hoạt, và thống nhất nội tâm."
   },
-  "enum_tags": [
+  "keywords_en": [
     "self_reflection",
     "shadow_work",
     "forgiveness",
     "awareness",
     "integration",
     "harmony"
+  ],
+  "keywords_vi": [
+    "tự chiêm nghiệm",
+    "làm việc với bóng tối",
+    "tha thứ",
+    "nhận thức",
+    "hòa nhập",
+    "hòa hợp"
   ],
   "entries": [
     {
@@ -36,7 +43,6 @@
       "tags": [
         "self_reflection"
       ],
-      "artifact_id": "a8f1c2d3-4e5f-6789-ab01-234567890001",
       "audio": "uncovering_concealed_traits_vip2.mp3"
     },
     {
@@ -60,7 +66,6 @@
       "tags": [
         "integration"
       ],
-      "artifact_id": "b9c2d3e4-5f67-489a-bc12-345678900002",
       "audio": "merging_shadow_elements_vip2.mp3"
     },
     {
@@ -84,7 +89,6 @@
       "tags": [
         "reflection"
       ],
-      "artifact_id": "c0d3e4f5-6789-4ab0-bc23-456789000003",
       "audio": "contemplating_shadow_aspects_vip2.mp3"
     },
     {
@@ -108,7 +112,6 @@
       "tags": [
         "forgiveness"
       ],
-      "artifact_id": "d1e4f5a6-7890-4bc1-ad34-567890000004",
       "audio": "engaging_in_shadow_pardon_vip2.mp3"
     },
     {
@@ -132,7 +135,6 @@
       "tags": [
         "awareness"
       ],
-      "artifact_id": "e2f5a6b7-8901-4cd2-be45-678900000005",
       "audio": "detecting_trigger_patterns_vip2.mp3"
     },
     {
@@ -156,13 +158,12 @@
       "tags": [
         "harmony"
       ],
-      "artifact_id": "f3a6b7c8-9012-4de3-cf56-789000000006",
       "audio": "attaining_internal_unity_vip2.mp3"
     }
   ],
   "meta": {
     "created_at": "2025-10-26T00:00:00+09:00",
-    "updated_at": "2025-10-26T00:00:00+09:00",
+    "updated_at": "2025-11-02T00:00:00+00:00",
     "entry_count": 6,
     "tier": "vip2",
     "room_color": "#D7CCC8"

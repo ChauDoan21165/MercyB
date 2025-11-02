@@ -1,18 +1,25 @@
 {
-  "version": "1.0",
-  "locale": "vi-en",
-  "name": "Shadow Work (VIP 3)",
-  "description": "Personal mastery in shadow work: revealing buried characteristics, fusing components, contemplation, forgiveness, trigger awareness, and intrinsic cohesion.",
-  "global_notes": {
-    "safety": ""
+  "name": "Shadow Work",
+  "name_vi": "Làm Việc Với Bóng Tối",
+  "description": {
+    "en": "Personal mastery in shadow work: revealing buried characteristics, fusing components, contemplation, forgiveness, trigger awareness, and intrinsic cohesion.",
+    "vi": "Làm chủ cá nhân trong làm việc với bóng tối: khai lộ đặc tính chôn giấu, hòa nhập thành phần, chiêm nghiệm, tha thứ, nhận thức tác nhân kích hoạt, và sự gắn kết nội tại."
   },
-  "enum_tags": [
+  "keywords_en": [
     "self_reflection",
     "shadow_work",
     "forgiveness",
     "awareness",
     "integration",
     "harmony"
+  ],
+  "keywords_vi": [
+    "tự chiêm nghiệm",
+    "làm việc với bóng tối",
+    "tha thứ",
+    "nhận thức",
+    "hòa nhập",
+    "hòa hợp"
   ],
   "entries": [
     {
@@ -36,7 +43,6 @@
       "tags": [
         "self_reflection"
       ],
-      "artifact_id": "7a1c2b3d-4e5f-6789-a0b1-23c4567890a1",
       "audio": "revealing_buried_characteristics_vip3.mp3"
     },
     {
@@ -54,13 +60,12 @@
         "mối quan hệ"
       ],
       "copy": {
-        "en": "Fuse shadow components for completeness. Self-compassion amplifies growth by 30%, evidence shows. Affirm acceptance of one component weekly, "I fuse this part." Lan's fusion improved interactions. Express via art monthly. This cultivates harmony. Start affirming today. Ready for completeness? Discover deeper insights beyond VIP 3.",
+        "en": "Fuse shadow components for completeness. Self-compassion amplifies growth by 30%, evidence shows. Affirm acceptance of one component weekly, \"I fuse this part.\" Lan's fusion improved interactions. Express via art monthly. This cultivates harmony. Start affirming today. Ready for completeness? Discover deeper insights beyond VIP 3.",
         "vi": "Hòa nhập các thành phần bóng tối để đạt đến sự trọn vẹn. Nghiên cứu cho thấy lòng tự bi giúp phát triển 30%. Mỗi tuần, hãy khẳng định 'Tôi hòa nhập phần này' để đón nhận bản thân. Sự hòa nhập của Lan đã giúp cô cải thiện các mối quan hệ. Mỗi tháng, thể hiện phần bóng tối qua nghệ thuật hoặc sáng tạo. Thói quen này nuôi dưỡng sự hài hòa nội tâm. Hãy bắt đầu khẳng định hôm nay. Sẵn sàng cho sự trọn vẹn chưa? Khám phá sâu hơn ngoài cấp VIP 3."
       },
       "tags": [
         "integration"
       ],
-      "artifact_id": "8b2d3e4f-5a67-4890-b1c2-34d5678901b2",
       "audio": "fusing_shadow_components_vip3.mp3"
     },
     {
@@ -84,7 +89,6 @@
       "tags": [
         "reflection"
       ],
-      "artifact_id": "9c3e4f50-6b78-4a91-c2d3-45e6789012c3",
       "audio": "pondering_shadow_elements_vip3.mp3"
     },
     {
@@ -108,7 +112,6 @@
       "tags": [
         "forgiveness"
       ],
-      "artifact_id": "0d4f5061-7c89-4ba2-d3e4-56f7890123d4",
       "audio": "participating_in_shadow_absolution_vip3.mp3"
     },
     {
@@ -132,7 +135,6 @@
       "tags": [
         "awareness"
       ],
-      "artifact_id": "1e506172-8d9a-4cb3-e4f5-6789012345e6",
       "audio": "spotting_trigger_configurations_vip3.mp3"
     },
     {
@@ -156,33 +158,30 @@
       "tags": [
         "harmony"
       ],
-      "artifact_id": "2f617283-9e0b-4dc4-f506-7890123456f7",
       "audio": "realizing_intrinsic_cohesion_vip3.mp3"
     }
   ],
-  "keywords": {
-    "shadow_work_vip3": {
-      "en": [
-        "revealing buried characteristics",
-        "fusing shadow components",
-        "pondering shadow elements",
-        "shadow absolution",
-        "trigger configurations",
-        "intrinsic cohesion"
-      ],
-      "vi": [
-        "khai lộ đặc tính tiềm ẩn",
-        "hòa nhập thành phần bóng tối",
-        "chiêm nghiệm yếu tố bóng tối",
-        "tha thứ nội tâm",
-        "cấu trúc tác nhân",
-        "kết nối nội tại"
-      ]
-    }
+  "keyword_menu": {
+    "en": [
+      "revealing buried characteristics",
+      "fusing shadow components",
+      "pondering shadow elements",
+      "shadow absolution",
+      "trigger configurations",
+      "intrinsic cohesion"
+    ],
+    "vi": [
+      "khai lộ đặc tính tiềm ẩn",
+      "hòa nhập thành phần bóng tối",
+      "chiêm nghiệm yếu tố bóng tối",
+      "tha thứ nội tâm",
+      "cấu trúc tác nhân",
+      "kết nối nội tại"
+    ]
   },
   "meta": {
     "created_at": "2025-10-26T00:00:00+09:00",
-    "updated_at": "2025-10-26T00:00:00+09:00",
+    "updated_at": "2025-11-03T00:00:00+00:00",
     "entry_count": 6,
     "tier": "vip3",
     "room_color": "#D7CCC8"
