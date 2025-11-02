@@ -1,1 +1,154 @@
-{"name":"Anxiety Relief","name_vi":"Giảm Lo Âu","description":"Advanced strategies for long-term anxiety management and resilience","keywords_en":["anxiety","calm","breathing","grounding","resilience"],"keywords_vi":["lo âu","bình tĩnh","thở","tiếp đất","kiên cường"],"entries":[{"slug":"breathing","keywords_en":["breathing","calm","anxiety"],"keywords_vi":["thở","bình tĩnh","lo âu"],"copy":{"en":"Advanced breathing techniques provide lasting anxiety relief. Try 4-7-8 breathing: inhale four, hold seven, exhale eight to regulate nervous system. Use during triggers for immediate calm. Build a daily routine to strengthen response. Connect with a support group to share progress and tips, fostering resilience and reducing anxiety frequency over time with consistent practice and community encouragement."},"tags":["breathing","anxiety"],"audio":{"en":"anx_vip2_1_en.mp3"},"essay_ref":"anx_vip2_1_essay.txt"},{"slug":"grounding","keywords_en":["grounding","present","calm"],"keywords_vi":["tiếp đất","hiện tại","bình tĩnh"],"copy":{"en":"Enhanced grounding stops anxiety spirals effectively. Use advanced 5-4-3-2-1 with emotions: five sights, four touches, three sounds, two smells, one taste, then name one feeling. Practice in calm moments to master during stress. Journal patterns to predict triggers. Connect with a therapist or group for deeper strategies, building long-term resilience and emotional control against anxiety."},"tags":["grounding","anxiety"],"audio":{"en":"anx_vip2_2_en.mp3"},"essay_ref":"anx_vip2_2_essay.txt"},{"slug":"thought-challenge","keywords_en":["thought challenge","cognitive","anxiety"],"keywords_vi":["thách thức suy nghĩ","nhận thức","lo âu"],"copy":{"en":"Cognitive challenging rewires anxious thinking patterns. Use CBT worksheet: identify thought, evidence for/against, balanced alternative. Practice weekly to reduce automatic fears. Track in journal for progress. Connect with a CBT group or therapist for guided sessions, enhancing resilience and creating lasting change in anxiety response through structured practice and expert support."},"tags":["cognitive","anxiety"],"audio":{"en":"anx_vip2_3_en.mp3"},"essay_ref":"anx_vip2_3_essay.txt"},{"slug":"body-scan","keywords_en":["body scan","relaxation","anxiety"],"keywords_vi":["quét cơ thể","thư giãn","lo âu"],"copy":{"en":"Progressive body scan releases stored anxiety tension. Start at feet, tense for five seconds, release while exhaling. Move up to head. Practice twenty minutes nightly. Use guided audio for consistency. Connect with a mindfulness group to share experiences, building deeper relaxation, resilience, and freedom from physical anxiety symptoms over time."},"tags":["relaxation","anxiety"],"audio":{"en":"anx_vip2_4_en.mp3"},"essay_ref":"anx_vip2_4_essay.txt"},{"slug":"exposure","keywords_en":["exposure","facing fears","anxiety"],"keywords_vi":["phơi nhiễm","đối mặt nỗi sợ","lo âu"],"copy":{"en":"Gradual exposure reduces anxiety triggers long-term. Create fear hierarchy from least to most scary. Start with imagining, then real exposure. Stay in situation until anxiety drops fifty percent. Journal success to build confidence. Connect with a therapist for guided exposure, fostering resilience and mastering fears through systematic practice and professional support."},"tags":["exposure","anxiety"],"audio":{"en":"anx_vip2_5_en.mp3"},"essay_ref":"anx_vip2_5_essay.txt"},{"slug":"lifestyle","keywords_en":["lifestyle","habits","anxiety"],"keywords_vi":["lối sống","thói quen","lo âu"],"copy":{"en":"Lifestyle changes prevent anxiety buildup. Limit caffeine, exercise thirty minutes daily, maintain sleep schedule. Eat balanced meals to stabilize mood. Track habits in app for consistency. Connect with a wellness coach or group for accountability, building sustainable habits that reduce anxiety and enhance overall resilience in daily life."},"tags":["lifestyle","anxiety"],"audio":{"en":"anx_vip2_6_en.mp3"},"essay_ref":"anx_vip2_6_essay.txt"}],"meta":{"created_at":"2025-10-28T00:00:00+00:00","updated_at":"2025-10-28T00:00:00+00:00","entry_count":6,"tier":"vip2","room_color":"#4A90E2"}}
+{
+  "name": "Anxiety Relief",
+  "name_vi": "Giảm Lo Âu",
+  "description": "Advanced strategies for long-term anxiety management and resilience",
+  "keywords_en": [
+    "anxiety",
+    "calm",
+    "breathing",
+    "grounding",
+    "resilience"
+  ],
+  "keywords_vi": [
+    "lo âu",
+    "bình tĩnh",
+    "thở",
+    "tiếp đất",
+    "kiên cường"
+  ],
+  "entries": [
+    {
+      "slug": "breathing",
+      "keywords_en": [
+        "breathing",
+        "calm",
+        "anxiety"
+      ],
+      "keywords_vi": [
+        "thở",
+        "bình tĩnh",
+        "lo âu"
+      ],
+      "copy": {
+        "en": "Advanced breathing techniques provide lasting anxiety relief. Try 4-7-8 breathing: inhale four, hold seven, exhale eight to regulate nervous system. Use during triggers for immediate calm. Build a daily routine to strengthen response. Connect with a support group to share progress and tips, fostering resilience and reducing anxiety frequency over time with consistent practice and community encouragement."
+      },
+      "tags": [
+        "breathing",
+        "anxiety"
+      ],
+      "audio": "anxiety_relief_vip2_breathing.mp3"
+    },
+    {
+      "slug": "grounding",
+      "keywords_en": [
+        "grounding",
+        "present",
+        "calm"
+      ],
+      "keywords_vi": [
+        "tiếp đất",
+        "hiện tại",
+        "bình tĩnh"
+      ],
+      "copy": {
+        "en": "Enhanced grounding stops anxiety spirals effectively. Use advanced 5-4-3-2-1 with emotions: five sights, four touches, three sounds, two smells, one taste, then name one feeling. Practice in calm moments to master during stress. Journal patterns to predict triggers. Connect with a therapist or group for deeper strategies, building long-term resilience and emotional control against anxiety."
+      },
+      "tags": [
+        "grounding",
+        "anxiety"
+      ],
+      "audio": "anxiety_relief_vip2_grounding.mp3"
+    },
+    {
+      "slug": "thought-challenge",
+      "keywords_en": [
+        "thought challenge",
+        "cognitive",
+        "anxiety"
+      ],
+      "keywords_vi": [
+        "thách thức suy nghĩ",
+        "nhận thức",
+        "lo âu"
+      ],
+      "copy": {
+        "en": "Cognitive challenging rewires anxious thinking patterns. Use CBT worksheet: identify thought, evidence for/against, balanced alternative. Practice weekly to reduce automatic fears. Track in journal for progress. Connect with a CBT group or therapist for guided sessions, enhancing resilience and creating lasting change in anxiety response through structured practice and expert support."
+      },
+      "tags": [
+        "cognitive",
+        "anxiety"
+      ],
+      "audio": "anxiety_relief_vip2_thought_challenge.mp3"
+    },
+    {
+      "slug": "body-scan",
+      "keywords_en": [
+        "body scan",
+        "relaxation",
+        "anxiety"
+      ],
+      "keywords_vi": [
+        "quét cơ thể",
+        "thư giãn",
+        "lo âu"
+      ],
+      "copy": {
+        "en": "Progressive body scan releases stored anxiety tension. Start at feet, tense for five seconds, release while exhaling. Move up to head. Practice twenty minutes nightly. Use guided audio for consistency. Connect with a mindfulness group to share experiences, building deeper relaxation, resilience, and freedom from physical anxiety symptoms over time."
+      },
+      "tags": [
+        "relaxation",
+        "anxiety"
+      ],
+      "audio": "anxiety_relief_vip2_body_scan.mp3"
+    },
+    {
+      "slug": "exposure",
+      "keywords_en": [
+        "exposure",
+        "facing fears",
+        "anxiety"
+      ],
+      "keywords_vi": [
+        "phơi nhiễm",
+        "đối mặt nỗi sợ",
+        "lo âu"
+      ],
+      "copy": {
+        "en": "Gradual exposure reduces anxiety triggers long-term. Create fear hierarchy from least to most scary. Start with imagining, then real exposure. Stay in situation until anxiety drops fifty percent. Journal success to build confidence. Connect with a therapist for guided exposure, fostering resilience and mastering fears through systematic practice and professional support."
+      },
+      "tags": [
+        "exposure",
+        "anxiety"
+      ],
+      "audio": "anxiety_relief_vip2_exposure.mp3"
+    },
+    {
+      "slug": "lifestyle",
+      "keywords_en": [
+        "lifestyle",
+        "habits",
+        "anxiety"
+      ],
+      "keywords_vi": [
+        "lối sống",
+        "thói quen",
+        "lo âu"
+      ],
+      "copy": {
+        "en": "Lifestyle changes prevent anxiety buildup. Limit caffeine, exercise thirty minutes daily, maintain sleep schedule. Eat balanced meals to stabilize mood. Track habits in app for consistency. Connect with a wellness coach or group for accountability, building sustainable habits that reduce anxiety and enhance overall resilience in daily life."
+      },
+      "tags": [
+        "lifestyle",
+        "anxiety"
+      ],
+      "audio": "anxiety_relief_vip2_lifestyle.mp3"
+    }
+  ],
+  "meta": {
+    "created_at": "2025-10-28T00:00:00+00:00",
+    "updated_at": "2025-10-28T00:00:00+00:00",
+    "entry_count": 6,
+    "tier": "vip2",
+    "room_color": "#4A90E2"
+  }
+}
