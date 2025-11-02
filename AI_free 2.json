@@ -1,0 +1,80 @@
+{
+  "tier": "Free / Miễn phí",
+  "title": {
+    "en": "AI Fundamentals",
+    "vi": "Nền Tảng AI"
+  },
+  "content": {
+    "en": "Master model compression, interpretability, data privacy, and ethical AI with simple steps. Discover deeper guidance in higher tiers.",
+    "vi": "Thành thạo nén mô hình, khả năng giải thích, bảo mật dữ liệu, và AI đạo đức với các bước đơn giản. Khám phá thêm ở cấp độ cao hơn.",
+    "audio": "safeguarding_data_in_ai_free.mp3"
+  },
+  "entries": [
+    {
+      "slug": "compressing-complex-models",
+      "keywords_en": ["compressing", "quantization", "efficient", "model size"],
+      "keywords_vi": ["nén", "lượng hóa", "tối ưu", "kích thước mô hình"],
+      "copy": {
+        "en": "Use quantization to shrink models for phones and edge devices. Reduce precision to save space. Try compressing a small model to see the trade-off.",
+        "vi": "Dùng lượng hóa để thu nhỏ mô hình cho điện thoại và thiết bị biên. Giảm độ chính xác để tiết kiệm bộ nhớ. Thử nén một mô hình nhỏ để thấy sự đánh đổi."
+      },
+      "tags": ["ai", "compression", "quantization"],
+      "audio": "compressing_complex_models_free.mp3"
+    },
+    {
+      "slug": "decoding-ais-black-box",
+      "keywords_en": ["interpretability", "SHAP", "transparency", "explain"],
+      "keywords_vi": ["giải thích", "SHAP", "minh bạch", "hiểu rõ"],
+      "copy": {
+        "en": "Use SHAP to see why AI makes decisions. Test it on a simple dataset. It builds trust but takes effort. Start with one prediction.",
+        "vi": "Dùng SHAP để hiểu lý do AI ra quyết định. Thử trên dữ liệu nhỏ. Nó tạo niềm tin nhưng cần công sức. Bắt đầu với một dự đoán."
+      },
+      "tags": ["ai", "interpretability", "transparency"],
+      "audio": "decoding_ai_s_black_box_free.mp3"
+    },
+    {
+      "slug": "safeguarding-data-in-ai",
+      "keywords_en": ["privacy", "federated", "decentralized", "secure"],
+      "keywords_vi": ["riêng tư", "liên kết", "phi tập trung", "an toàn"],
+      "copy": {
+        "en": "Train AI on devices with federated learning. Keep user data private. Try a basic example to see how it works. No data leaves the phone.",
+        "vi": "Huấn luyện AI trên thiết bị bằng học liên kết. Giữ dữ liệu riêng tư. Thử ví dụ cơ bản để thấy cách hoạt động. Dữ liệu không rời điện thoại."
+      },
+      "tags": ["ai", "privacy", "federated"],
+      "audio": "safeguarding_data_in_ai_free.mp3"
+    },
+    {
+      "slug": "adapting-with-few-examples",
+      "keywords_en": ["few-shot", "low data", "adapt", "meta learning"],
+      "keywords_vi": ["ít ví dụ", "dữ liệu ít", "thích ứng", "học meta"],
+      "copy": {
+        "en": "Teach AI with just a few examples. It’s hard but powerful for rare tasks. Try a few-shot task on images or text. Start small.",
+        "vi": "Dạy AI chỉ với vài ví dụ. Khó nhưng mạnh mẽ cho tác vụ hiếm. Thử few-shot trên hình ảnh hoặc văn bản. Bắt đầu nhỏ."
+      },
+      "tags": ["ai", "few-shot", "adaptation"],
+      "audio": "adapting_with_few_examples_free.mp3"
+    },
+    {
+      "slug": "crafting-effective-prompts",
+      "keywords_en": ["prompt", "engineering", "design", "control"],
+      "keywords_vi": ["prompt", "thiết kế", "điều khiển", "lệnh"],
+      "copy": {
+        "en": "Write clear prompts to guide AI. Be specific. Test one prompt and improve it. Precision beats retraining. Start with one sentence.",
+        "vi": "Viết prompt rõ ràng để dẫn dắt AI. Cụ thể. Thử một prompt và cải thiện. Độ chính xác vượt huấn luyện lại. Bắt đầu với một câu."
+      },
+      "tags": ["ai", "prompt", "engineering"],
+      "audio": "crafting_effective_prompts_free.mp3"
+    },
+    {
+      "slug": "ensuring-ethical-ai-use",
+      "keywords_en": ["ethics", "governance", "fairness", "responsibility"],
+      "keywords_vi": ["đạo đức", "quản trị", "công bằng", "trách nhiệm"],
+      "copy": {
+        "en": "Build AI with fairness and transparency. Review a policy guide. Prevent bias. It’s complex but essential. Start with one rule.",
+        "vi": "Xây dựng AI công bằng và minh bạch. Xem hướng dẫn chính sách. Ngăn thiên vị. Phức tạp nhưng cần thiết. Bắt đầu với một quy tắc."
+      },
+      "tags": ["ai", "ethics", "fairness"],
+      "audio": "ensuring_ethical_ai_use_free.mp3"
+    }
+  ]
+}

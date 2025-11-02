@@ -1,0 +1,16 @@
+{
+  "schema_version": "2.0",
+  "schema_id": "cross_topic_recommendations",
+  "description": {
+    "en": "Intelligent cross-room keyword mapping for seamless navigation and topic discovery across 62+ rooms",
+    "vi": "Bản đồ từ khóa liên phòng thông minh để điều hướng liền mạch và khám phá chủ đề trên 62+ phòng"
+  },
+  "meta": {
+    "generated_at": "2025-10-20T15:30:00.000Z",
+    "total_rooms": 0,
+    "total_keywords": 0,
+    "algorithm_version": "v2.0-overlap-analysis",
+    "note": "This is a placeholder. Run 'npx tsx scripts/generate-cross-topic-recommendations.ts' to generate full recommendations."
+  },
+  "recommendations": []
+}

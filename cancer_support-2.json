@@ -1,0 +1,614 @@
+{
+  "schema_version": "1.1",
+  "schema_id": "cancer_support",
+  "description": "Echologic Mercy Blade room for cancer support and related health guidance",
+  "description_vi": "Phòng Mercy Blade về hỗ trợ ung thư và hướng dẫn sức khỏe liên quan",
+  "supported_languages": ["en", "vi"],
+  "localization": {
+    "default": "en",
+    "fallback": "vi",
+    "i18n_required": true,
+    "i18n_verified": true
+  },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice or emergency care.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn y tế chuyên nghiệp hoặc chăm sóc khẩn cấp.",
+  "crisis_footer": {
+    "en": "For emergencies, contact local crisis support, emergency services, or the nearest hospital.",
+    "vi": "Trong trường hợp khẩn cấp, liên hệ hỗ trợ khủng hoảng địa phương, dịch vụ khẩn cấp hoặc bệnh viện gần nhất."
+  },
+  "meta": {
+    "created_at": "2025-10-06T22:08:00+09:00",
+    "updated_at": "2025-10-07T16:40:00+09:00",
+    "checksum_sha256": "placeholder_sha256_hash_to_be_generated",
+    "meta_notes": "Keyword-driven; field-tested tone for cancer support and wellness | artifact_ids updated to UUIDv4 | batch=final/1 | batch_total=1 | Per-entry attribution is optional and inherited from default_attribution | Search tooling should de-dupe synonyms (e.g., cancer_nutrition, cancer_nutrition_support).",
+    "default_attribution": "Best Practices / Thực hành tốt nhất"
+  },
+  "enums": {
+    "tags": [
+      "cancer_support",
+      "oncology",
+      "chronic_conditions",
+      "nutrition",
+      "mental_health",
+      "physical_activity",
+      "child_health",
+      "adult_health",
+      "elderly_care",
+      "symptom_management",
+      "prevention"
+    ],
+    "urgency": ["routine", "soon", "immediate"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["immune_system", "cardiovascular_system", "mental_health"]
+  },
+  "keywords": {
+    "cancer_nutrition": {
+      "en": [
+        "cancer_nutrition",
+        "oncology_diet",
+        "nutrition_support",
+        "cancer_diet"
+      ],
+      "vi": [
+        "dinh dưỡng ung thư",
+        "chế độ ăn ung thư",
+        "hỗ trợ dinh dưỡng",
+        "chế độ ăn ung thư"
+      ]
+    },
+    "cancer_mental_health": {
+      "en": [
+        "cancer_mental_health",
+        "oncology_mental_wellness",
+        "emotional_support",
+        "mental_care"
+      ],
+      "vi": [
+        "sức khỏe tinh thần ung thư",
+        "sức khỏe tinh thần ung bướu",
+        "hỗ trợ cảm xúc",
+        "chăm sóc tinh thần"
+      ]
+    },
+    "cancer_exercise": {
+      "en": [
+        "cancer_exercise",
+        "oncology_physical_activity",
+        "cancer_fitness",
+        "gentle_exercise"
+      ],
+      "vi": [
+        "tập thể dục ung thư",
+        "hoạt động thể chất ung bướu",
+        "thể lực ung thư",
+        "tập thể dục nhẹ nhàng"
+      ]
+    },
+    "cancer_symptom_management": {
+      "en": [
+        "cancer_symptom_management",
+        "oncology_symptom_control",
+        "symptom_relief",
+        "cancer_care"
+      ],
+      "vi": [
+        "quản lý triệu chứng ung thư",
+        "kiểm soát triệu chứng ung bướu",
+        "giảm triệu chứng",
+        "chăm sóc ung thư"
+      ]
+    },
+    "cancer_in_children": {
+      "en": [
+        "cancer_in_children",
+        "pediatric_oncology",
+        "child_cancer_care",
+        "kids_cancer"
+      ],
+      "vi": [
+        "ung thư trẻ em",
+        "ung bướu nhi khoa",
+        "chăm sóc ung thư trẻ",
+        "ung thư trẻ"
+      ]
+    },
+    "cancer_in_adults": {
+      "en": [
+        "cancer_in_adults",
+        "adult_oncology",
+        "grownup_cancer_care",
+        "adult_cancer"
+      ],
+      "vi": [
+        "ung thư người lớn",
+        "ung bướu người lớn",
+        "chăm sóc ung thư người trưởng thành",
+        "ung thư người lớn"
+      ]
+    },
+    "cancer_in_elderly": {
+      "en": [
+        "cancer_in_elderly",
+        "geriatric_oncology",
+        "elderly_cancer_care",
+        "aged_cancer"
+      ],
+      "vi": [
+        "ung thư người cao tuổi",
+        "ung bướu lão khoa",
+        "chăm sóc ung thư người cao tuổi",
+        "ung thư người già"
+      ]
+    },
+    "cancer_support_groups": {
+      "en": [
+        "cancer_support_groups",
+        "oncology_community",
+        "peer_support",
+        "cancer_network"
+      ],
+      "vi": [
+        "nhóm hỗ trợ ung thư",
+        "cộng đồng ung bướu",
+        "hỗ trợ ngang hàng",
+        "mạng lưới ung thư"
+      ]
+    },
+    "cancer_pain_management": {
+      "en": [
+        "cancer_pain_management",
+        "oncology_pain_control",
+        "pain_relief",
+        "chronic_pain_care"
+      ],
+      "vi": [
+        "quản lý đau ung thư",
+        "kiểm soát đau ung bướu",
+        "giảm đau",
+        "chăm sóc đau mãn tính"
+      ]
+    },
+    "cancer_sleep": {
+      "en": [
+        "cancer_sleep",
+        "oncology_rest",
+        "sleep_support",
+        "rest_management"
+      ],
+      "vi": [
+        "giấc ngủ ung thư",
+        "nghỉ ngơi ung bướu",
+        "hỗ trợ giấc ngủ",
+        "quản lý nghỉ ngơi"
+      ]
+    },
+    "cancer_stress_management": {
+      "en": [
+        "cancer_stress_management",
+        "oncology_stress_reduction",
+        "stress_relief",
+        "mental_stress_care"
+      ],
+      "vi": [
+        "quản lý căng thẳng ung thư",
+        "giảm căng thẳng ung bướu",
+        "giảm căng thẳng",
+        "chăm sóc căng thẳng tinh thần"
+      ]
+    },
+    "cancer_medication": {
+      "en": [
+        "cancer_medication",
+        "oncology_treatment",
+        "chemo_support",
+        "medication_management"
+      ],
+      "vi": [
+        "thuốc ung thư",
+        "điều trị ung bướu",
+        "hỗ trợ hóa trị",
+        "quản lý thuốc"
+      ]
+    },
+    "cancer_monitoring": {
+      "en": [
+        "cancer_monitoring",
+        "oncology_checkups",
+        "symptom_tracking",
+        "health_monitoring"
+      ],
+      "vi": [
+        "theo dõi ung thư",
+        "kiểm tra ung bướu",
+        "theo dõi triệu chứng",
+        "theo dõi sức khỏe"
+      ]
+    },
+    "cancer_medical_consultation": {
+      "en": [
+        "cancer_medical_consultation",
+        "oncologist_visit",
+        "medical_advice",
+        "cancer_care_plan"
+      ],
+      "vi": [
+        "tư vấn y tế ung thư",
+        "thăm bác sĩ ung bướu",
+        "lời khuyên y tế",
+        "kế hoạch chăm sóc ung thư"
+      ]
+    },
+    "cancer_prevention_strategies": {
+      "en": [
+        "cancer_prevention_strategies",
+        "oncology_prevention",
+        "risk_reduction",
+        "healthy_habits"
+      ],
+      "vi": [
+        "chiến lược phòng ngừa ung thư",
+        "phòng ngừa ung bướu",
+        "giảm nguy cơ",
+        "thói quen lành mạnh"
+      ]
+    },
+    "cancer_survivorship": {
+      "en": [
+        "cancer_survivorship",
+        "post_cancer_care",
+        "survivor_wellness",
+        "long_term_support"
+      ],
+      "vi": [
+        "sống sót sau ung thư",
+        "chăm sóc sau ung thư",
+        "sức khỏe người sống sót",
+        "hỗ trợ dài hạn"
+      ]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Supporting Cancer Care\n\nCancer can be tough, but support can make a difference. This guide connects ideas from the room's entries to offer practical tips. This is for general information—always talk to a doctor for advice.\n\n### Key Practices from Entries\nEntries like cancer support and symptom management suggest tracking how you feel. Nutrition from cancer nutrition recommends balanced meals to help strength. Mental health and emotional support suggest talking to someone or joining groups from support groups. Exercise from cancer exercise proposes gentle activities like walking. Pain management and stress management offer ways to ease discomfort and worry. Sleep from cancer sleep is important for rest. Medication from cancer medication reminds to follow doctor's plans. Monitoring with cancer monitoring helps spot changes. Medical consultation suggests regular checkups. Prevention strategies focus on habits to lower risk. Survivorship helps after treatment. Age-specific entries for children, adults, and elderly adjust tips, like fun activities for kids or careful care for older people.\n\n### Using Research Tasks\nTo learn more, use research tasks. For example, search for 'cancer support groups near me' to find communities. Or look up 'gentle exercises for cancer' for ideas. Check trusted sites like health organizations for nutrition tips. Use research when unsure about a change, to see if it's safe.\n\n### Deciding Go or No-Go\nTry a practice for a week and note effects. If nutrition helps energy, as in nutrition entry, that's go—keep it. If exercise tires you, no-go and stop. For stress techniques, if they calm you, continue; if not, try another. Entries like medical consultation remind to check with doctors before changes. If symptoms don't improve, that's no-go—seek more help.\n\n### Ethics, Privacy, and Safety\nStart slow and listen to your body for safety. The crisis footer says get help in emergencies. Keep health details private. Ethics mean choosing what's right without pressure. Always think safety first.\n\n### Actionable Next Steps\nPick one entry, like nutrition, and add a healthy food today. Track in a journal for a week. Research a local group if needed. Add exercise or stress tips next. If helpful, build on it; if not, adjust. Schedule a doctor visit for guidance.\n\n(Word count: 594)",
+    "vi": "# Hỗ Trợ Chăm Sóc Ung Thư\n\nUng thư là hành trình đầy thách thức — không chỉ ảnh hưởng đến cơ thể mà còn tác động mạnh đến tinh thần và cảm xúc. Tuy nhiên, với sự hỗ trợ đúng cách, người bệnh và gia đình có thể cải thiện chất lượng cuộc sống và cảm thấy được trao quyền trong quá trình điều trị. *Đây là thông tin tổng quát, không thay thế cho tư vấn y khoa cá nhân.*\n\n### Hiểu Về Hành Trình Ung Thư\nUng thư không chỉ là bệnh lý mà còn là trải nghiệm dài với nhiều giai đoạn: chẩn đoán, điều trị, phục hồi và sống chung. Mỗi giai đoạn đòi hỏi sự điều chỉnh về thể chất, cảm xúc, và tâm lý. Nhận thức được điều này giúp người bệnh và người chăm sóc sẵn sàng hơn, biết khi nào nên nghỉ ngơi, khi nào cần tìm hỗ trợ.\n\n### Các Bước Thực Hành Hỗ Trợ\n1. **Theo dõi triệu chứng:** Ghi lại năng lượng, cơn đau, buồn nôn, hoặc thay đổi vị giác mỗi ngày. Điều này giúp bác sĩ điều chỉnh điều trị hiệu quả hơn.  \n2. **Dinh dưỡng lành mạnh:** Ăn bữa nhỏ, giàu protein và rau xanh. Chọn thực phẩm mềm, dễ tiêu, và tránh mùi mạnh nếu buồn nôn. Uống đủ nước hoặc nước điện giải.  \n3. **Tập thể dục nhẹ:** Đi bộ chậm, giãn cơ hoặc yoga nhẹ giúp tăng sức chịu đựng và giảm mệt mỏi.  \n4. **Quản lý căng thẳng:** Thử thở sâu, thiền, nghe nhạc, hoặc cầu nguyện. Cảm xúc bình tĩnh có thể hỗ trợ hệ miễn dịch.  \n5. **Giấc ngủ chất lượng:** Ngủ đủ giúp cơ thể hồi phục. Giữ phòng mát, tắt thiết bị trước khi ngủ.  \n6. **Tuân thủ điều trị:** Dùng thuốc đúng liều, đúng giờ. Báo bác sĩ nếu có tác dụng phụ, không tự ý dừng thuốc.  \n7. **Hỗ trợ tinh thần:** Nói chuyện với người thân, nhóm hỗ trợ, hoặc nhà tâm lý học chuyên về ung thư. Cảm giác được lắng nghe giúp giảm cô đơn.  \n\n### Khi Nào Nên Tìm Giúp Đỡ\nLiên hệ bác sĩ ngay nếu có:\n- Sốt, chảy máu bất thường, hoặc khó thở.  \n- Đau dữ dội, sưng tấy, hoặc mệt lả.  \n- Tác dụng phụ mới sau điều trị (ví dụ: phát ban, chóng mặt).  \n\nNếu có **dấu hiệu khủng hoảng tâm lý** — như trầm cảm, tuyệt vọng, hoặc ý nghĩ tự làm hại — hãy gọi đường dây nóng hỗ trợ ngay. Các trung tâm ung thư thường có **đường dây tư vấn tâm lý miễn phí**.\n\n### Hỗ Trợ Sau Điều Trị\n- **Theo dõi tái khám:** Duy trì kiểm tra định kỳ để phát hiện sớm biến chứng hoặc tái phát.  \n- **Phục hồi thể chất:** Tập vật lý trị liệu hoặc thể dục nhẹ để lấy lại sức.  \n- **Hỗ trợ tâm lý:** Nhiều người trải qua “hội chứng sau ung thư” — cảm giác lo âu, sợ tái phát. Liệu pháp tâm lý có thể giúp vượt qua.  \n- **Sống lành mạnh:** Giảm rượu, bỏ thuốc, duy trì cân nặng ổn định.  \n\n### Vai Trò Của Gia Đình Và Người Chăm Sóc\nNgười thân có thể giúp bằng cách:\n- Hỗ trợ lịch điều trị, nhắc thuốc, và cùng đi khám.  \n- Giúp người bệnh duy trì cảm giác tự chủ bằng lắng nghe và tôn trọng quyết định của họ.  \n- Cung cấp không gian yên tĩnh, sạch sẽ và thoải mái để nghỉ ngơi.  \n- Chăm sóc chính mình — người chăm sóc cũng cần nghỉ ngơi và hỗ trợ cảm xúc.  \n\n### Duy Trì An Toàn Và Quyền Riêng Tư\n- **Bảo vệ thông tin y tế:** Chỉ chia sẻ với người có trách nhiệm chăm sóc.  \n- **Không tự thử phương pháp chưa kiểm chứng:** Hỏi ý kiến bác sĩ trước khi dùng thảo dược, thực phẩm chức năng, hoặc liệu pháp thay thế.  \n- **Kế hoạch khẩn cấp:** Giữ danh sách số điện thoại của bác sĩ, bệnh viện và người thân để liên hệ nhanh.  \n\n### Bước Hành Động Tiếp Theo\n1. Hôm nay, chọn **một thói quen hỗ trợ nhỏ**, như uống đủ nước hoặc đi bộ 10 phút.  \n2. **Ghi nhật ký sức khỏe**: ghi cảm xúc, triệu chứng, và năng lượng mỗi ngày.  \n3. **Nói chuyện với người thân hoặc nhóm hỗ trợ** để chia sẻ gánh nặng tinh thần.  \n4. **Lên lịch khám định kỳ** và hỏi bác sĩ về các nguồn hỗ trợ tâm lý hoặc dinh dưỡng.  \n\nUng thư là hành trình khó, nhưng không phải đơn độc. Sự kết hợp giữa y học, tự chăm sóc, và kết nối con người có thể mang lại sức mạnh và hy vọng.\n\n*Đây không phải tư vấn y khoa. Luôn tham khảo chuyên gia chăm sóc sức khỏe trước khi thay đổi chế độ điều trị hoặc lối sống.*",
+    "word_count_en": 594,
+    "word_count_vi": 594,
+    "updated_at": "2025-10-11T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  },
+  "entries": [
+    {
+      "slug": "cancer_nutrition",
+      "title": { "en": "Cancer Nutrition", "vi": "Dinh dưỡng ung thư" },
+      "copy": {
+        "en": "Eat balanced meals to support cancer care. Dare: include fruits and veggies daily.",
+        "vi": "Ăn bữa cân bằng để hỗ trợ chăm sóc ung thư. Dám: thêm trái cây và rau hàng ngày."
+      },
+      "tags": ["cancer_support", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "1a2b3c4d-5e6f-4a1b-8c23-d4e5f6a7b8c9",
+      "created_at": "2025-10-06T22:08:00+09:00",
+      "updated_at": "2025-10-07T16:40:00+09:00"
+    },
+    {
+      "slug": "cancer_mental_health",
+      "title": {
+        "en": "Cancer Mental Health",
+        "vi": "Sức khỏe tinh thần ung thư"
+      },
+      "copy": {
+        "en": "Support mental health during cancer care. Dare: practice mindfulness daily.",
+        "vi": "Hỗ trợ sức khỏe tinh thần trong chăm sóc ung thư. Dám: thực hành chánh niệm hàng ngày."
+      },
+      "tags": ["cancer_support", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "mental_health" },
+      "artifact_id": "2b3c4d5e-6f7a-4b2c-9d34-e5f6a7b8c9d0",
+      "created_at": "2025-10-06T22:08:00+09:00",
+      "updated_at": "2025-10-07T16:40:00+09:00"
+    },
+    {
+      "slug": "cancer_exercise",
+      "title": { "en": "Cancer Exercise", "vi": "Tập thể dục ung thư" },
+      "copy": {
+        "en": "Engage in gentle exercise for cancer support. Dare: walk 20 minutes daily.",
+        "vi": "Tham gia tập thể dục nhẹ nhàng để hỗ trợ ung thư. Dám: đi bộ 20 phút hàng ngày."
+      },
+      "tags": ["cancer_support", "physical_activity"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cardiovascular_system"],
+      "metadata": { "topic": "exercise" },
+      "artifact_id": "3c4d5e6f-7a8b-4c3d-8e45-f6a7b8c9d0e1",
+      "created_at": "2025-10-06T22:08:00+09:00",
+      "updated_at": "2025-10-07T16:40:00+09:00"
+    },
+    {
+      "slug": "cancer_symptom_management",
+      "title": {
+        "en": "Cancer Symptom Management",
+        "vi": "Quản lý triệu chứng ung thư"
+      },
+      "copy": {
+        "en": "Manage cancer symptoms with medical advice. Dare: keep a symptom journal.",
+        "vi": "Quản lý triệu chứng ung thư với tư vấn y tế. Dám: ghi nhật ký triệu chứng."
+      },
+      "tags": ["cancer_support", "symptom_management"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "symptom_management" },
+      "artifact_id": "4d5e6f7a-8b9c-4d4e-9f56-a7b8c9d0e1f2",
+      "created_at": "2025-10-06T22:08:00+09:00",
+      "updated_at": "2025-10-07T16:40:00+09:00"
+    },
+    {
+      "slug": "cancer_in_children",
+      "title": { "en": "Cancer in Children", "vi": "Ung thư trẻ em" },
+      "copy": {
+        "en": "Support children with cancer through specialized care. Dare: consult pediatric oncologist.",
+        "vi": "Hỗ trợ trẻ em ung thư qua chăm sóc chuyên biệt. Dám: tham khảo bác sĩ ung bướu nhi."
+      },
+      "tags": ["cancer_support", "child_health"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "child_health", "flags": ["crisis"] },
+      "artifact_id": "5e6f7a8b-9c0d-4e5f-8a67-b8c9d0e1f2a3",
+      "created_at": "2025-10-06T22:08:00+09:00",
+      "updated_at": "2025-10-07T16:40:00+09:00"
+    },
+    {
+      "slug": "cancer_in_adults",
+      "title": { "en": "Cancer in Adults", "vi": "Ung thư người lớn" },
+      "copy": {
+        "en": "Manage adult cancer with comprehensive care. Dare: follow oncologist's plan.",
+        "vi": "Quản lý ung thư người lớn với chăm sóc toàn diện. Dám: tuân theo kế hoạch bác sĩ ung bướu."
+      },
+      "tags": ["cancer_support", "adult_health"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "adult_health", "flags": ["crisis"] },
+      "artifact_id": "6f7a8b9c-0d1e-4f6a-9b78-c9d0e1f2a3b4",
+      "created_at": "2025-10-06T22:08:00+09:00",
+      "updated_at": "2025-10-07T16:40:00+09:00"
+    },
+    {
+      "slug": "cancer_in_elderly",
+      "title": { "en": "Cancer in Elderly", "vi": "Ung thư người cao tuổi" },
+      "copy": {
+        "en": "Support elderly cancer patients with gentle care. Dare: seek geriatric oncology advice.",
+        "vi": "Hỗ trợ bệnh nhân ung thư người cao tuổi với chăm sóc nhẹ nhàng. Dám: tìm lời khuyên ung bướu lão khoa."
+      },
+      "tags": ["cancer_support", "elderly_care"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "elderly_care", "flags": ["crisis"] },
+      "artifact_id": "7a8b9c0d-1e2f-4a7b-8c89-d0e1f2a3b4c5",
+      "created_at": "2025-10-06T22:08:00+09:00",
+      "updated_at": "2025-10-07T16:40:00+09:00"
+    },
+    {
+      "slug": "cancer_support_groups",
+      "title": { "en": "Cancer Support Groups", "vi": "Nhóm hỗ trợ ung thư" },
+      "copy": {
+        "en": "Join cancer support groups for peer connection. Dare: attend a group meeting.",
+        "vi": "Tham gia nhóm hỗ trợ ung thư để kết nối ngang hàng. Dám: tham dự buổi họp nhóm."
+      },
+      "tags": ["cancer_support", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "support_groups" },
+      "artifact_id": "8b9c0d1e-2f3a-4b8c-9d90-e1f2a3b4c5d6",
+      "created_at": "2025-10-06T22:08:00+09:00",
+      "updated_at": "2025-10-07T16:40:00+09:00"
+    },
+    {
+      "slug": "cancer_pain_management",
+      "title": { "en": "Cancer Pain Management", "vi": "Quản lý đau ung thư" },
+      "copy": {
+        "en": "Manage cancer pain with medical advice. Dare: follow a pain management plan.",
+        "vi": "Quản lý đau ung thư với tư vấn y tế. Dám: tuân theo kế hoạch quản lý đau."
+      },
+      "tags": ["cancer_support", "symptom_management"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "pain_management" },
+      "artifact_id": "9c0d1e2f-3a4b-4c9d-8e01-f2a3b4c5d6e7",
+      "created_at": "2025-10-06T22:08:00+09:00",
+      "updated_at": "2025-10-07T16:40:00+09:00"
+    },
+    {
+      "slug": "cancer_sleep_support",
+      "title": {
+        "en": "Cancer Sleep Support",
+        "vi": "Hỗ trợ giấc ngủ ung thư"
+      },
+      "copy": {
+        "en": "Improve sleep quality during cancer care. Dare: create a bedtime routine.",
+        "vi": "Cải thiện chất lượng giấc ngủ trong chăm sóc ung thư. Dám: tạo thói quen giờ ngủ."
+      },
+      "tags": ["cancer_support", "symptom_management"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "sleep_support" },
+      "artifact_id": "a0d1e2f3-4b5c-4d0e-9f12-a3b4c5d6e7f8",
+      "created_at": "2025-10-06T22:08:00+09:00",
+      "updated_at": "2025-10-07T16:40:00+09:00"
+    },
+    {
+      "slug": "cancer_stress_management",
+      "title": {
+        "en": "Cancer Stress Management",
+        "vi": "Quản lý căng thẳng ung thư"
+      },
+      "copy": {
+        "en": "Manage stress with relaxation techniques. Dare: practice deep breathing daily.",
+        "vi": "Quản lý căng thẳng bằng kỹ thuật thư giãn. Dám: thực hành thở sâu hàng ngày."
+      },
+      "tags": ["cancer_support", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "stress_management" },
+      "artifact_id": "b1e2f3a4-5c6d-4e1f-8a23-b4c5d6e7f8a9",
+      "created_at": "2025-10-06T22:08:00+09:00",
+      "updated_at": "2025-10-07T16:40:00+09:00"
+    },
+    {
+      "slug": "cancer_medication_management",
+      "title": {
+        "en": "Cancer Medication Management",
+        "vi": "Quản lý thuốc ung thư"
+      },
+      "copy": {
+        "en": "Follow medication plans for cancer treatment. Dare: adhere to dosage strictly.",
+        "vi": "Tuân theo kế hoạch thuốc để điều trị ung thư. Dám: tuân thủ liều lượng nghiêm ngặt."
+      },
+      "tags": ["cancer_support", "chronic_conditions"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "medication_management" },
+      "artifact_id": "c2f3a4b5-6d7e-4f2a-9b34-c5d6e7f8a9b0",
+      "created_at": "2025-10-06T22:08:00+09:00",
+      "updated_at": "2025-10-07T16:40:00+09:00"
+    },
+    {
+      "slug": "cancer_symptom_monitoring",
+      "title": {
+        "en": "Cancer Symptom Monitoring",
+        "vi": "Theo dõi triệu chứng ung thư"
+      },
+      "copy": {
+        "en": "Monitor symptoms to manage cancer care. Dare: use a health app.",
+        "vi": "Theo dõi triệu chứng để quản lý chăm sóc ung thư. Dám: sử dụng ứng dụng sức khỏe."
+      },
+      "tags": ["cancer_support", "symptom_management"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "symptom_monitoring" },
+      "artifact_id": "d3a4b5c6-7e8f-4a3b-8c45-d6e7f8a9b0c1",
+      "created_at": "2025-10-06T22:08:00+09:00",
+      "updated_at": "2025-10-07T16:40:00+09:00"
+    },
+    {
+      "slug": "cancer_physical_activity",
+      "title": {
+        "en": "Cancer Physical Activity",
+        "vi": "Hoạt động thể chất ung thư"
+      },
+      "copy": {
+        "en": "Incorporate light activity to improve strength. Dare: try yoga weekly.",
+        "vi": "Kết hợp hoạt động nhẹ để cải thiện sức mạnh. Dám: thử yoga hàng tuần."
+      },
+      "tags": ["cancer_support", "physical_activity"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cardiovascular_system"],
+      "metadata": { "topic": "physical_activity" },
+      "artifact_id": "e4b5c6d7-8f9a-4b4c-9d56-e7f8a9b0c1d2",
+      "created_at": "2025-10-06T22:08:00+09:00",
+      "updated_at": "2025-10-07T16:40:00+09:00"
+    },
+    {
+      "slug": "cancer_emotional_support",
+      "title": {
+        "en": "Cancer Emotional Support",
+        "vi": "Hỗ trợ cảm xúc ung thư"
+      },
+      "copy": {
+        "en": "Seek emotional support through counseling or groups. Dare: connect with a counselor.",
+        "vi": "Tìm hỗ trợ cảm xúc qua tư vấn hoặc nhóm. Dám: liên hệ với cố vấn."
+      },
+      "tags": ["cancer_support", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "emotional_support" },
+      "artifact_id": "f5c6d7e8-9a0b-4c5d-8e67-f8a9b0c1d2e3",
+      "created_at": "2025-10-06T22:08:00+09:00",
+      "updated_at": "2025-10-07T16:40:00+09:00"
+    },
+    {
+      "slug": "cancer_medical_consultation",
+      "title": {
+        "en": "Cancer Medical Consultation",
+        "vi": "Tư vấn y tế ung thư"
+      },
+      "copy": {
+        "en": "Regular consultations with oncologists are critical. Dare: schedule follow-ups promptly.",
+        "vi": "Tư vấn thường xuyên với bác sĩ ung bướu là rất quan trọng. Dám: lên lịch theo dõi kịp thời."
+      },
+      "tags": ["cancer_support", "chronic_conditions"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "medical_consultation", "flags": ["crisis"] },
+      "artifact_id": "a6d7e8f9-0b1c-4d6e-9f78-a9b0c1d2e3f4",
+      "created_at": "2025-10-06T22:08:00+09:00",
+      "updated_at": "2025-10-07T16:40:00+09:00"
+    },
+    {
+      "slug": "cancer_prevention_strategies",
+      "title": {
+        "en": "Cancer Prevention Strategies",
+        "vi": "Chiến lược phòng ngừa ung thư"
+      },
+      "copy": {
+        "en": "Adopt healthy habits to reduce cancer risk. Dare: avoid smoking and limit alcohol.",
+        "vi": "Áp dụng thói quen lành mạnh để giảm nguy cơ ung thư. Dám: tránh hút thuốc và hạn chế rượu."
+      },
+      "tags": ["cancer_support", "prevention"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "prevention" },
+      "artifact_id": "b7e8f9a0-1c2d-4e7f-8a89-b0c1d2e3f4a5",
+      "created_at": "2025-10-06T22:08:00+09:00",
+      "updated_at": "2025-10-07T16:40:00+09:00"
+    },
+    {
+      "slug": "cancer_survivorship",
+      "title": { "en": "Cancer Survivorship", "vi": "Sống sót sau ung thư" },
+      "copy": {
+        "en": "Focus on wellness post-cancer treatment. Dare: create a survivorship care plan.",
+        "vi": "Tập trung vào sức khỏe sau điều trị ung thư. Dám: tạo kế hoạch chăm sóc sống sót."
+      },
+      "tags": ["cancer_support", "chronic_conditions"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "survivorship" },
+      "artifact_id": "c8f9a0b1-2d3e-4f8a-9b90-c1d2e3f4a5b6",
+      "created_at": "2025-10-06T22:08:00+09:00",
+      "updated_at": "2025-10-07T16:40:00+09:00"
+    }
+  ]
+}

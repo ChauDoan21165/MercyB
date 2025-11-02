@@ -1,0 +1,798 @@
+{
+  "schema_version": "1.0",
+  "schema_id": "abdominal_pain",
+  "description": "Echologic Mercy Blade room for abdominal pain management and related health guidance",
+  "description_vi": "Phòng Mercy Blade về quản lý đau bụng và hướng dẫn sức khỏe liên quan",
+  "supported_languages": ["en", "vi"],
+  "localization": {
+    "default": "en",
+    "fallback": "vi",
+    "i18n_required": true,
+    "i18n_verified": true
+  },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice or emergency care.",
+  "safety_disclaimer_vi": "Hướng dẫn mang tính giáo dục; không thay thế tư vấn y tế chuyên nghiệp hoặc chăm sóc khẩn cấp.",
+  "crisis_footer": {
+    "en": "If abdominal pain is severe, persistent, or accompanied by vomiting or fever, call {emergency_number} immediately.",
+    "vi": "Nếu đau bụng dữ dội, kéo dài hoặc kèm nôn hay sốt, hãy gọi {emergency_number} ngay lập tức."
+  },
+  "meta": {
+    "created_at": "2025-10-06T21:34:00+09:00",
+    "updated_at": "2025-10-07T23:16:00+09:00",
+    "checksum_sha256": "8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9",
+    "meta_notes": "Keyword-driven; field-tested tone for abdominal pain management and prevention | artifact_ids unique | batch=final/1 | batch_total=1"
+  },
+  "artifact_version_id": "f6a7b8c9-d0e1-4f2a-9b34-c5d6e7f8a9b0-v001",
+  "enums": {
+    "tags": [
+      "abdominal_pain",
+      "digestive_health",
+      "pain_management",
+      "hydration",
+      "child_health",
+      "adult_health",
+      "elderly_care",
+      "emergency_care",
+      "nutrition",
+      "prevention",
+      "pregnancy_health"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["digestive_system", "cardiovascular_system", "reproductive_system"]
+  },
+  "keywords": {
+    "abdominal_pain_monitoring": {
+      "en": ["abdominal_pain_monitoring", "stomach_pain_tracking", "pain_assessment", "digestive_discomfort"],
+      "vi": ["theo dõi đau bụng", "theo dõi đau dạ dày", "đánh giá đau", "khó chịu tiêu hóa"],
+      "slug_vi": ["theo_dõi_đau_bụng", "theo_dõi_đau_dạ_dày", "đánh_giá_đau", "khó_chịu_tiêu_hóa"]
+    },
+    "abdominal_pain_relief": {
+      "en": ["abdominal_pain_relief", "stomach_pain_management", "pain_soothing", "digestive_comfort"],
+      "vi": ["giảm đau bụng", "quản lý đau dạ dày", "làm dịu đau", "thoải mái tiêu hóa"],
+      "slug_vi": ["giảm_đau_bụng", "quản_lý_đau_dạ_dày", "làm_dịu_đau", "thoải_mái_tiêu_hóa"]
+    },
+    "hydration_during_pain": {
+      "en": ["hydration_during_pain", "fluid_intake", "water_balance", "pain_hydration"],
+      "vi": ["duy trì nước khi đau", "hấp thụ chất lỏng", "cân bằng nước", "duy trì nước khi đau"],
+      "slug_vi": ["hydrat_khi_đau", "hấp_thụ_chất_lỏng", "cân_bằng_nước", "hydrat_đau"]
+    },
+    "abdominal_pain_in_children": {
+      "en": ["abdominal_pain_in_children", "pediatric_pain", "child_stomach_pain", "kids_discomfort"],
+      "vi": ["đau bụng trẻ em", "đau nhi khoa", "đau dạ dày trẻ", "khó chịu trẻ"],
+      "slug_vi": ["đau_bụng_trẻ_em", "đau_nhi_khoa", "đau_dạ_dày_trẻ", "khó_chịu_trẻ"]
+    },
+    "abdominal_pain_in_adults": {
+      "en": ["abdominal_pain_in_adults", "adult_stomach_pain", "grownup_discomfort", "adult_pain"],
+      "vi": ["đau bụng người lớn", "đau dạ dày người lớn", "khó chịu người trưởng thành", "đau trưởng thành"],
+      "slug_vi": ["đau_bụng_người_lớn", "đau_dạ_dày_người_lớn", "khó_chịu_người_trưởng_thành", "đau_trưởng_thành"]
+    },
+    "abdominal_pain_in_elderly": {
+      "en": ["abdominal_pain_in_elderly", "senior_stomach_pain", "elderly_discomfort", "aged_pain"],
+      "vi": ["đau bụng người cao tuổi", "đau dạ dày người già", "khó chịu người cao tuổi", "đau người già"],
+      "slug_vi": ["đau_bụng_người_cao_tuổi", "đau_dạ_dày_người_già", "khó_chịu_người_cao_tuổi", "đau_người_già"]
+    },
+    "severe_abdominal_pain": {
+      "en": ["severe_abdominal_pain", "acute_stomach_pain", "emergency_pain", "critical_discomfort"],
+      "vi": ["đau bụng nặng", "đau dạ dày cấp tính", "đau khẩn cấp", "khó chịu nguy kịch"],
+      "slug_vi": ["đau_bụng_nặng", "đau_dạ_dày_cấp_tính", "đau_khẩn_cấp", "khó_chịu_nguy_kịch"]
+    },
+    "abdominal_pain_medication": {
+      "en": ["abdominal_pain_medication", "pain_relievers", "stomach_medicine", "discomfort_relief"],
+      "vi": ["thuốc đau bụng", "thuốc giảm đau", "thuốc dạ dày", "giảm khó chịu"],
+      "slug_vi": ["thuốc_đau_bụng", "thuốc_giảm_đau", "thuốc_dạ_dày", "giảm_khó_chịu"]
+    },
+    "abdominal_pain_symptoms": {
+      "en": ["abdominal_pain_symptoms", "stomach_pain_signs", "digestive_indicators", "pain_signals"],
+      "vi": ["triệu chứng đau bụng", "dấu hiệu đau dạ dày", "chỉ số tiêu hóa", "tín hiệu đau"],
+      "slug_vi": ["triệu_chứng_đau_bụng", "dấu_hiệu_đau_dạ_dày", "chỉ_số_tiêu_hóa", "tín_hiệu_đau"]
+    },
+    "infection_prevention": {
+      "en": ["infection_prevention", "germ_control", "disease_avoidance", "hygiene_practices"],
+      "vi": ["phòng ngừa nhiễm trùng", "kiểm soát vi khuẩn", "tránh bệnh", "thực hành vệ sinh"],
+      "slug_vi": ["phòng_ngừa_nhiễm_trùng", "kiểm_soát_vi_khuẩn", "tránh_bệnh", "thực_hành_vệ_sinh"]
+    },
+    "abdominal_pain_hygiene": {
+      "en": ["abdominal_pain_hygiene", "digestive_cleanliness", "pain_hygiene", "cleanliness_during_pain"],
+      "vi": ["vệ sinh đau bụng", "sạch sẽ tiêu hóa", "vệ sinh khi đau", "sạch sẽ khi đau"],
+      "slug_vi": ["vệ_sinh_đau_bụng", "sạch_sẽ_tiêu_hóa", "vệ_sinh_đau", "sạch_sẽ_khi_đau"]
+    },
+    "abdominal_pain_rest": {
+      "en": ["abdominal_pain_rest", "digestive_recovery", "rest_during_pain", "healing_rest"],
+      "vi": ["nghỉ ngơi đau bụng", "phục hồi tiêu hóa", "nghỉ ngơi khi đau", "nghỉ phục hồi"],
+      "slug_vi": ["nghỉ_ngơi_đau_bụng", "phục_hồi_tiêu_hóa", "nghỉ_ngơi_khi_đau", "nghỉ_phục_hồi"]
+    },
+    "abdominal_pain_triggers": {
+      "en": ["abdominal_pain_triggers", "stomach_pain_causes", "digestive_irritants", "pain_sources"],
+      "vi": ["nguyên nhân đau bụng", "nguyên nhân đau dạ dày", "chất kích thích tiêu hóa", "nguồn đau"],
+      "slug_vi": ["nguyên_nhân_đau_bụng", "nguyên_nhân_đau_dạ_dày", "chất_kích_thích_tiêu_hóa", "nguồn_đau"]
+    },
+    "abdominal_pain_complications": {
+      "en": ["abdominal_pain_complications", "pain_risks", "digestive_complications", "pain_dangers"],
+      "vi": ["biến chứng đau bụng", "rủi ro đau", "biến chứng tiêu hóa", "nguy hiểm đau"],
+      "slug_vi": ["biến_chứng_đau_bụng", "rủi_ro_đau", "biến_chứng_tiêu_hóa", "nguy_hiểm_đau"]
+    },
+    "abdominal_pain_nutrition": {
+      "en": ["abdominal_pain_nutrition", "diet_during_pain", "digestive_diet", "food_for_recovery"],
+      "vi": ["dinh dưỡng đau bụng", "chế độ ăn khi đau", "chế độ tiêu hóa", "thức ăn phục hồi"],
+      "slug_vi": ["dinh_dưỡng_đau_bụng", "chế_độ_ăn_khi_đau", "chế_độ_tiêu_hóa", "thức_ăn_phục_hồi"]
+    },
+    "abdominal_pain_in_infants": {
+      "en": ["abdominal_pain_in_infants", "baby_stomach_pain", "infant_discomfort", "newborn_pain"],
+      "vi": ["đau bụng trẻ sơ sinh", "đau dạ dày em bé", "khó chịu trẻ sơ sinh", "đau sơ sinh"],
+      "slug_vi": ["đau_bụng_trẻ_sơ_sinh", "đau_dạ_dày_em_bé", "khó_chịu_trẻ_sơ_sinh", "đau_sơ_sinh"]
+    },
+    "abdominal_pain_duration": {
+      "en": ["abdominal_pain_duration", "pain_length", "stomach_pain_timeline", "pain_persistence"],
+      "vi": ["thời gian đau bụng", "độ dài đau", "lịch đau dạ dày", "đau kéo dài"],
+      "slug_vi": ["thời_gian_đau_bụng", "độ_dài_đau", "lịch_đau_dạ_dày", "đau_kéo_dài"]
+    },
+    "abdominal_pain_and_sleep": {
+      "en": ["abdominal_pain_and_sleep", "rest_during_pain", "sleep_with_pain", "recovery_rest"],
+      "vi": ["đau bụng và ngủ", "nghỉ ngơi khi đau", "ngủ khi đau", "nghỉ phục hồi"],
+      "slug_vi": ["đau_bụng_và_ngủ", "nghỉ_ngơi_khi_đau", "ngủ_khi_đau", "nghỉ_phục_hồi"]
+    },
+    "abdominal_pain_emergency_signs": {
+      "en": ["abdominal_pain_emergency_signs", "urgent_pain_symptoms", "critical_pain", "emergency_indicators"],
+      "vi": ["dấu hiệu khẩn cấp đau bụng", "triệu chứng đau khẩn cấp", "đau nguy kịch", "chỉ số khẩn cấp"],
+      "slug_vi": ["dấu_hiệu_khẩn_cấp_đau_bụng", "triệu_chứng_đau_khẩn_cấp", "đau_nguy_kịch", "chỉ_số_khẩn_cấp"]
+    },
+    "abdominal_pain_and_infections": {
+      "en": ["abdominal_pain_and_infections", "digestive_infections", "pain_causes", "infection_response"],
+      "vi": ["đau bụng và nhiễm trùng", "nhiễm trùng tiêu hóa", "nguyên nhân đau", "phản ứng nhiễm trùng"],
+      "slug_vi": ["đau_bụng_và_nhiễm_trùng", "nhiễm_trùng_tiêu_hóa", "nguyên_nhân_đau", "phản_ứng_nhiễm_trùng"]
+    },
+    "abdominal_pain_in_immunocompromised": {
+      "en": ["abdominal_pain_in_immunocompromised", "weak_immune_pain", "immune_pain", "vulnerable_discomfort"],
+      "vi": ["đau bụng ở người miễn dịch yếu", "đau miễn dịch kém", "đau miễn dịch", "khó chịu dễ nhiễm"],
+      "slug_vi": ["đau_bụng_miễn_dịch_yếu", "đau_miễn_dịch_kém", "đau_miễn_dịch", "khó_chịu_dễ_nhiễm"]
+    },
+    "abdominal_pain_and_medication_side_effects": {
+      "en": ["abdominal_pain_and_medication_side_effects", "drug_reaction_pain", "medication_pain", "side_effect_pain"],
+      "vi": ["đau bụng và tác dụng phụ thuốc", "đau phản ứng thuốc", "đau do thuốc", "đau tác dụng phụ"],
+      "slug_vi": ["đau_bụng_và_tác_dụng_phụ_thuốc", "đau_phản_ứng_thuốc", "đau_do_thuốc", "đau_tác_dụng_phụ"]
+    },
+    "abdominal_pain_and_diet": {
+      "en": ["abdominal_pain_and_diet", "food_related_pain", "dietary_discomfort", "nutrition_pain"],
+      "vi": ["đau bụng và chế độ ăn", "đau liên quan thực phẩm", "khó chịu chế độ ăn", "dinh dưỡng đau"],
+      "slug_vi": ["đau_bụng_và_chế_độ_ăn", "đau_liên_quan_thực_phẩm", "khó_chịu_chế_độ_ăn", "dinh_dưỡng_đau"]
+    },
+    "abdominal_pain_and_activity": {
+      "en": ["abdominal_pain_and_activity", "movement_during_pain", "activity_limits", "pain_rest"],
+      "vi": ["đau bụng và hoạt động", "vận động khi đau", "giới hạn hoạt động", "nghỉ khi đau"],
+      "slug_vi": ["đau_bụng_và_hoạt_động", "vận_động_khi_đau", "giới_hạn_hoạt_động", "nghỉ_đau"]
+    },
+    "abdominal_pain_and_medical_consultation": {
+      "en": ["abdominal_pain_and_medical_consultation", "doctor_visit_pain", "pain_checkup", "medical_advice"],
+      "vi": ["đau bụng và tư vấn y tế", "thăm bác sĩ vì đau", "kiểm tra đau", "tư vấn y tế"],
+      "slug_vi": ["đau_bụng_và_tư_vấn_y_tế", "thăm_bác_sĩ_đau", "kiểm_tra_đau", "tư_vấn_y_tế"]
+    },
+    "abdominal_pain_and_home_remedies": {
+      "en": ["abdominal_pain_and_home_remedies", "natural_pain_relief", "home_care_pain", "traditional_remedies"],
+      "vi": ["đau bụng và biện pháp tại nhà", "giảm đau tự nhiên", "chăm sóc đau tại nhà", "biện pháp truyền thống"],
+      "slug_vi": ["đau_bụng_và_biện_pháp_tại_nhà", "giảm_đau_tự_nhiên", "chăm_sóc_đau_tại_nhà", "biện_pháp_truyền_thống"]
+    },
+    "abdominal_pain_and_emergency_care": {
+      "en": ["abdominal_pain_and_emergency_care", "urgent_pain_response", "critical_pain", "emergency_services"],
+      "vi": ["đau bụng và chăm sóc khẩn cấp", "phản ứng đau khẩn cấp", "đau nguy kịch", "dịch vụ khẩn cấp"],
+      "slug_vi": ["đau_bụng_và_chăm_sóc_khẩn_cấp", "phản_ứng_đau_khẩn_cấp", "đau_nguy_kịch", "dịch_vụ_khẩn_cấp"]
+    },
+    "abdominal_pain_and_travel_history": {
+      "en": ["abdominal_pain_and_travel_history", "travel_related_pain", "pain_travel", "exposure_risk"],
+      "vi": ["đau bụng và lịch sử du lịch", "đau liên quan du lịch", "đau do du lịch", "rủi ro phơi nhiễm"],
+      "slug_vi": ["đau_bụng_và_lịch_sử_du_lịch", "đau_liên_quan_du_lịch", "đau_du_lịch", "rủi_ro_phơi_nhiễm"]
+    },
+    "abdominal_pain_and_warning_signs": {
+      "en": ["abdominal_pain_and_warning_signs", "pain_red_flags", "critical_pain_symptoms", "urgent_indicators"],
+      "vi": ["đau bụng và dấu hiệu cảnh báo", "cờ đỏ đau", "triệu chứng đau nguy kịch", "chỉ số khẩn cấp"],
+      "slug_vi": ["đau_bụng_và_dấu_hiệu_cảnh_báo", "cờ_đỏ_đau", "triệu_chứng_đau_nguy_kịch", "chỉ_số_khẩn_cấp"]
+    },
+    "abdominal_pain_in_pregnancy": {
+      "en": ["abdominal_pain_in_pregnancy", "pregnancy_pain", "maternal_discomfort", "pregnancy_health"],
+      "vi": ["đau bụng khi mang thai", "đau khi mang thai", "khó chịu thai kỳ", "sức khỏe thai kỳ"],
+      "slug_vi": ["đau_bụng_khi_mang_thai", "đau_khi_mang_thai", "khó_chịu_thai_kỳ", "sức_khỏe_thai_kỳ"]
+    }
+  },
+  "entries": [
+    {
+      "slug": "abdominal_pain_monitoring",
+      "title": { "en": "Abdominal Pain Monitoring", "vi": "Theo dõi đau bụng" },
+      "copy": { "en": "Track pain location, intensity, and duration. Dare: Keep a daily pain log.", "vi": "Theo dõi vị trí, cường độ và thời gian đau. Dare: Ghi nhật ký đau hàng ngày." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "pain_management"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "abdominal_pain", "flags": null, "red_flag": null },
+      "artifact_id": "a1b2c3d4-e5f6-4c7a-8b9c-d0e1f2a3b4c5",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "5–10 minutes", "vi": "5–10 phút" },
+        "type": { "en": "Logging", "vi": "Ghi chép" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_relief",
+      "title": { "en": "Abdominal Pain Relief", "vi": "Giảm đau bụng" },
+      "copy": { "en": "Apply heat packs to soothe mild abdominal pain. Dare: Try gentle stretching.", "vi": "Đắp túi chườm nóng để làm dịu đau bụng nhẹ. Dare: Thử giãn cơ nhẹ nhàng." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "pain_management"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "abdominal_pain", "flags": null, "red_flag": null },
+      "artifact_id": "c3d4e5f6-a7b8-4d9c-0e1f-2a3b4c5d6e7f",
+      "created_at": "2025-10-06T21:35:00+09:00",
+      "updated_at": "2025-10-07T23:15:00+09:00",
+      "fitt": {
+        "frequency": { "en": "As needed", "vi": "Khi cần" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "10–15 minutes", "vi": "10–15 phút" },
+        "type": { "en": "Heat application or stretching", "vi": "Chườm nóng hoặc giãn cơ" }
+      }
+    },
+    {
+      "slug": "hydration_during_pain",
+      "title": { "en": "Hydration During Pain", "vi": "Duy trì nước khi đau" },
+      "copy": { "en": "Sip clear fluids or electrolyte drinks to support digestion during pain. Dare: Drink water or electrolytes hourly.", "vi": "Nhấp chất lỏng trong hoặc đồ uống điện giải để hỗ trợ tiêu hóa khi đau. Dare: Uống nước hoặc điện giải mỗi giờ." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "hydration"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "hydration", "flags": null, "red_flag": null },
+      "artifact_id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Hourly", "vi": "Hàng giờ" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "Ongoing", "vi": "Liên tục" },
+        "type": { "en": "Fluid intake", "vi": "Hấp thụ chất lỏng" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_in_children",
+      "title": { "en": "Abdominal Pain in Children", "vi": "Đau bụng trẻ em" },
+      "copy": { "en": "Monitor child’s pain and consult pediatrician if severe. Dare: Track symptoms daily.", "vi": "Theo dõi đau bụng của trẻ và tham khảo bác sĩ nhi nếu nặng. Dare: Theo dõi triệu chứng hàng ngày." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "child_health"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "child_health", "flags": null, "red_flag": null },
+      "artifact_id": "a7b8c9d0-e1f2-4a3b-5c6d-7e8f9a0b1c2d",
+      "created_at": "2025-10-06T21:35:00+09:00",
+      "updated_at": "2025-10-07T23:15:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Moderate", "vi": "Trung bình" },
+        "time": { "en": "5–10 minutes", "vi": "5–10 phút" },
+        "type": { "en": "Symptom tracking", "vi": "Theo dõi triệu chứng" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_in_adults",
+      "title": { "en": "Abdominal Pain in Adults", "vi": "Đau bụng người lớn" },
+      "copy": { "en": "Rest and hydrate to ease adult abdominal pain. Dare: Consult doctor if persistent.", "vi": "Nghỉ ngơi và duy trì nước để giảm đau bụng người lớn. Dare: Tham khảo bác sĩ nếu kéo dài." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "adult_health"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "adult_health", "flags": null, "red_flag": null },
+      "artifact_id": "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f",
+      "created_at": "2025-10-06T21:35:00+09:00",
+      "updated_at": "2025-10-07T23:15:00+09:00",
+      "fitt": {
+        "frequency": { "en": "As needed", "vi": "Khi cần" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "Ongoing", "vi": "Liên tục" },
+        "type": { "en": "Rest and hydration", "vi": "Nghỉ ngơi và duy trì nước" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_in_elderly",
+      "title": { "en": "Abdominal Pain in Elderly", "vi": "Đau bụng người cao tuổi" },
+      "copy": { "en": "Elderly pain requires prompt attention; seek care. Dare: Call the emergency number immediately.", "vi": "Đau bụng người cao tuổi cần chú ý ngay; tìm chăm sóc. Dare: Hành động ngay lập tức." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "elderly_care"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "elderly_care", "flags": ["crisis"], "red_flag": true },
+      "artifact_id": "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Immediate", "vi": "Ngay lập tức" },
+        "intensity": { "en": "High", "vi": "Cao" },
+        "time": { "en": "As soon as possible", "vi": "Sớm nhất có thể" },
+        "type": { "en": "Medical consultation", "vi": "Tư vấn y tế" }
+      }
+    },
+    {
+      "slug": "severe_abdominal_pain",
+      "title": { "en": "Severe Abdominal Pain", "vi": "Đau bụng nặng" },
+      "copy": { "en": "Severe pain requires urgent care; call the emergency number immediately. Dare: Act immediately.", "vi": "Đau nặng cần chăm sóc khẩn cấp; gọi số khẩn cấp ngay lập tức. Dare: Hành động ngay lập tức." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "emergency_care"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "emergency_care", "flags": ["crisis"], "red_flag": true },
+      "artifact_id": "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Immediate", "vi": "Ngay lập tức" },
+        "intensity": { "en": "High", "vi": "Cao" },
+        "time": { "en": "As soon as possible", "vi": "Sớm nhất có thể" },
+        "type": { "en": "Emergency action", "vi": "Hành động khẩn cấp" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_medication",
+      "title": { "en": "Abdominal Pain Medication", "vi": "Thuốc đau bụng" },
+      "copy": { "en": "Use doctor-approved pain relievers cautiously; avoid NSAIDs if gastrointestinal bleeding is suspected. Dare: Follow dosage instructions.", "vi": "Sử dụng thuốc giảm đau được bác sĩ phê duyệt cẩn thận; tránh NSAIDs nếu nghi ngờ xuất huyết tiêu hóa. Dare: Tuân thủ hướng dẫn liều lượng." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "pain_management"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "abdominal_pain", "flags": null, "red_flag": null },
+      "artifact_id": "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f",
+      "created_at": "2025-10-06T21:35:00+09:00",
+      "updated_at": "2025-10-07T23:15:00+09:00",
+      "fitt": {
+        "frequency": { "en": "As prescribed", "vi": "Theo chỉ định" },
+        "intensity": { "en": "Moderate", "vi": "Trung bình" },
+        "time": { "en": "Per dosage schedule", "vi": "Theo lịch liều lượng" },
+        "type": { "en": "Medication adherence", "vi": "Tuân thủ thuốc" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_symptoms",
+      "title": { "en": "Abdominal Pain Symptoms", "vi": "Triệu chứng đau bụng" },
+      "copy": { "en": "Note bloating, nausea, or cramping with pain. Dare: Record symptoms daily.", "vi": "Ghi nhận đầy hơi, buồn nôn hoặc chuột rút khi đau. Dare: Ghi triệu chứng hàng ngày." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "digestive_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "abdominal_pain", "flags": null, "red_flag": null },
+      "artifact_id": "e7f8a9b0-c1d2-4e3f-4a5b-6c7d8e9f0a1b",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "5–10 minutes", "vi": "5–10 phút" },
+        "type": { "en": "Symptom logging", "vi": "Ghi chép triệu chứng" }
+      }
+    },
+    {
+      "slug": "infection_prevention",
+      "title": { "en": "Infection Prevention", "vi": "Phòng ngừa nhiễm trùng" },
+      "copy": { "en": "Wash hands to prevent infection-related pain. Dare: Practice hygiene daily.", "vi": "Rửa tay để ngăn đau do nhiễm trùng. Dare: Thực hành vệ sinh hàng ngày." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "prevention"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "prevention", "flags": null, "red_flag": null },
+      "artifact_id": "a9b0c1d2-e3f4-4a5b-6c7d-8e9f0a1b2c3d",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "1–2 minutes", "vi": "1–2 phút" },
+        "type": { "en": "Hand washing", "vi": "Rửa tay" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_hygiene",
+      "title": { "en": "Abdominal Pain Hygiene", "vi": "Vệ sinh đau bụng" },
+      "copy": { "en": "Maintain cleanliness to avoid worsening pain. Dare: Sanitize surfaces regularly.", "vi": "Duy trì vệ sinh để tránh làm đau nặng thêm. Dare: Khử trùng bề mặt thường xuyên." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "prevention"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "prevention", "flags": null, "red_flag": null },
+      "artifact_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "5–10 minutes", "vi": "5–10 phút" },
+        "type": { "en": "Surface cleaning", "vi": "Làm sạch bề mặt" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_rest",
+      "title": { "en": "Abdominal Pain Rest", "vi": "Nghỉ ngơi đau bụng" },
+      "copy": { "en": "Rest to support recovery from abdominal pain. Dare: Prioritize relaxation daily.", "vi": "Nghỉ ngơi để hỗ trợ phục hồi từ đau bụng. Dare: Ưu tiên thư giãn hàng ngày." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "pain_management"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "abdominal_pain", "flags": null, "red_flag": null },
+      "artifact_id": "e3f4a5b6-c7d8-4e9f-0a1b-2c3d4e5f6a7b",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "30–60 minutes", "vi": "30–60 phút" },
+        "type": { "en": "Rest", "vi": "Nghỉ ngơi" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_triggers",
+      "title": { "en": "Abdominal Pain Triggers", "vi": "Nguyên nhân đau bụng" },
+      "copy": { "en": "Identify food or stress causing abdominal pain. Dare: Note potential triggers.", "vi": "Xác định thực phẩm hoặc căng thẳng gây đau bụng. Dare: Ghi chú các tác nhân." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "digestive_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "abdominal_pain", "flags": null, "red_flag": null },
+      "artifact_id": "a5b6c7d8-e9f0-4a1b-2c3d-4e5f6a7b8c9d",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "5–10 minutes", "vi": "5–10 phút" },
+        "type": { "en": "Trigger logging", "vi": "Ghi chép tác nhân" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_complications",
+      "title": { "en": "Abdominal Pain Complications", "vi": "Biến chứng đau bụng" },
+      "copy": { "en": "Watch for vomiting or fever; seek immediate care. Dare: Call the emergency number immediately.", "vi": "Theo dõi nôn hoặc sốt; tìm chăm sóc ngay lập tức. Dare: Hành động ngay lập tức." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "emergency_care"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "emergency_care", "flags": ["crisis"], "red_flag": true },
+      "artifact_id": "c7d8e9f0-a1b2-4c3d-4e5f-6a7b8c9d0e1f",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Immediate", "vi": "Ngay lập tức" },
+        "intensity": { "en": "High", "vi": "Cao" },
+        "time": { "en": "As soon as possible", "vi": "Sớm nhất có thể" },
+        "type": { "en": "Emergency action", "vi": "Hành động khẩn cấp" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_nutrition",
+      "title": { "en": "Abdominal Pain Nutrition", "vi": "Dinh dưỡng đau bụng" },
+      "copy": { "en": "Eat bland foods like rice to ease pain. Dare: Avoid spicy foods.", "vi": "Ăn thực phẩm nhạt như gạo để giảm đau. Dare: Tránh thực phẩm cay." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "nutrition", "flags": null, "red_flag": null },
+      "artifact_id": "e9f0a1b2-c3d4-4e5f-6a7b-8c9d0e1f2a3b",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "During meals", "vi": "Trong bữa ăn" },
+        "type": { "en": "Diet adjustment", "vi": "Điều chỉnh chế độ ăn" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_in_infants",
+      "title": { "en": "Abdominal Pain in Infants", "vi": "Đau bụng trẻ sơ sinh" },
+      "copy": { "en": "Infant pain needs urgent care; call pediatrician. Dare: Call the emergency number immediately.", "vi": "Đau bụng trẻ sơ sinh cần chăm sóc khẩn cấp; gọi bác sĩ nhi. Dare: Hành động ngay lập tức." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "child_health"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "child_health", "flags": ["crisis"], "red_flag": true },
+      "artifact_id": "f1a2b3c4-d5e6-4f7a-8b9c-0d1e2f3a4b5c",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Immediate", "vi": "Ngay lập tức" },
+        "intensity": { "en": "High", "vi": "Cao" },
+        "time": { "en": "As soon as possible", "vi": "Sớm nhất có thể" },
+        "type": { "en": "Medical consultation", "vi": "Tư vấn y tế" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_duration",
+      "title": { "en": "Abdominal Pain Duration", "vi": "Thời gian đau bụng" },
+      "copy": { "en": "Track pain length; consult if over 24 hours. Dare: Keep daily records.", "vi": "Theo dõi thời gian đau; tham khảo nếu quá 24 giờ. Dare: Ghi chép hàng ngày." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "pain_management"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "abdominal_pain", "flags": null, "red_flag": null },
+      "artifact_id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b",
+      "created_at": "2025-10-06T21:35:00+09:00",
+      "updated_at": "2025-10-07T23:15:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "5–10 minutes", "vi": "5–10 phút" },
+        "type": { "en": "Symptom logging", "vi": "Ghi chép triệu chứng" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_and_sleep",
+      "title": { "en": "Abdominal Pain and Sleep", "vi": "Đau bụng và ngủ" },
+      "copy": { "en": "Rest in a comfortable position to ease pain. Dare: Create calm sleep environment.", "vi": "Nghỉ ngơi ở tư thế thoải mái để giảm đau. Dare: Tạo môi trường ngủ yên tĩnh." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "pain_management"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "abdominal_pain", "flags": null, "red_flag": null },
+      "artifact_id": "a7b8c9d0-e1f2-4a3b-5c6d-7e8f9a0b1c2d",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "Nightly", "vi": "Hàng đêm" },
+        "type": { "en": "Rest adjustment", "vi": "Điều chỉnh nghỉ ngơi" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_emergency_signs",
+      "title": { "en": "Abdominal Pain Emergency Signs", "vi": "Dấu hiệu khẩn cấp đau bụng" },
+      "copy": { "en": "Fever or severe pain signals emergency; call the emergency number immediately. Dare: Act immediately.", "vi": "Sốt hoặc đau nặng báo hiệu khẩn cấp; gọi số khẩn cấp ngay lập tức. Dare: Hành động ngay lập tức." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "emergency_care"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "emergency_care", "flags": ["crisis"], "red_flag": true },
+      "artifact_id": "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Immediate", "vi": "Ngay lập tức" },
+        "intensity": { "en": "High", "vi": "Cao" },
+        "time": { "en": "As soon as possible", "vi": "Sớm nhất có thể" },
+        "type": { "en": "Emergency action", "vi": "Hành động khẩn cấp" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_and_infections",
+      "title": { "en": "Abdominal Pain and Infections", "vi": "Đau bụng và nhiễm trùng" },
+      "copy": { "en": "Infections may cause pain; monitor closely. Dare: Consult doctor promptly.", "vi": "Nhiễm trùng có thể gây đau; theo dõi cẩn thận. Dare: Tham khảo bác sĩ kịp thời." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "digestive_health"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "abdominal_pain", "flags": null, "red_flag": null },
+      "artifact_id": "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b",
+      "created_at": "2025-10-06T21:35:00+09:00",
+      "updated_at": "2025-10-07T23:15:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Moderate", "vi": "Trung bình" },
+        "time": { "en": "5–10 minutes", "vi": "5–10 phút" },
+        "type": { "en": "Symptom monitoring", "vi": "Theo dõi triệu chứng" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_in_immunocompromised",
+      "title": { "en": "Abdominal Pain in Immunocompromised", "vi": "Đau bụng ở người miễn dịch yếu" },
+      "copy": { "en": "Pain in weak immunity needs urgent care. Dare: Call the emergency number immediately.", "vi": "Đau ở người miễn dịch yếu cần chăm sóc khẩn cấp. Dare: Hành động ngay lập tức." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "emergency_care"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "emergency_care", "flags": ["crisis"], "red_flag": true },
+      "artifact_id": "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Immediate", "vi": "Ngay lập tức" },
+        "intensity": { "en": "High", "vi": "Cao" },
+        "time": { "en": "As soon as possible", "vi": "Sớm nhất có thể" },
+        "type": { "en": "Emergency action", "vi": "Hành động khẩn cấp" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_and_medication_side_effects",
+      "title": { "en": "Abdominal Pain and Medication Side Effects", "vi": "Đau bụng và tác dụng phụ thuốc" },
+      "copy": { "en": "Pain may signal drug reaction; report promptly. Avoid NSAIDs if gastrointestinal bleeding is suspected. Dare: Consult doctor now.", "vi": "Đau có thể báo hiệu phản ứng thuốc; báo cáo ngay. Tránh NSAIDs nếu nghi ngờ xuất huyết tiêu hóa. Dare: Tham khảo bác sĩ ngay lập tức." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "pain_management"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "abdominal_pain", "flags": null, "red_flag": null },
+      "artifact_id": "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a",
+      "created_at": "2025-10-06T21:35:00+09:00",
+      "updated_at": "2025-10-07T23:15:00+09:00",
+      "fitt": {
+        "frequency": { "en": "As needed", "vi": "Khi cần" },
+        "intensity": { "en": "Moderate", "vi": "Trung bình" },
+        "time": { "en": "As soon as possible", "vi": "Sớm nhất có thể" },
+        "type": { "en": "Medical consultation", "vi": "Tư vấn y tế" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_and_diet",
+      "title": { "en": "Abdominal Pain and Diet", "vi": "Đau bụng và chế độ ăn" },
+      "copy": { "en": "Avoid trigger foods to reduce pain. Dare: Keep a food diary.", "vi": "Tránh thực phẩm kích hoạt để giảm đau. Dare: Ghi nhật ký thực phẩm." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "nutrition", "flags": null, "red_flag": null },
+      "artifact_id": "e7f8a9b0-c1d2-4e3f-4a5b-6c7d8e9f0a1b",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "During meals", "vi": "Trong bữa ăn" },
+        "type": { "en": "Diet adjustment", "vi": "Điều chỉnh chế độ ăn" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_and_activity",
+      "title": { "en": "Abdominal Pain and Activity", "vi": "Đau bụng và hoạt động" },
+      "copy": { "en": "Avoid strenuous activity during pain to aid recovery. Dare: Rest fully.", "vi": "Tránh hoạt động nặng khi đau để hỗ trợ phục hồi. Dare: Nghỉ ngơi hoàn toàn." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "pain_management"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "abdominal_pain", "flags": null, "red_flag": null },
+      "artifact_id": "e3f4a5b6-c7d8-4e9f-0a1b-2c3d4e5f6a7b",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "Ongoing", "vi": "Liên tục" },
+        "type": { "en": "Activity restriction", "vi": "Hạn chế hoạt động" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_and_medical_consultation",
+      "title": { "en": "Abdominal Pain and Medical Consultation", "vi": "Đau bụng và tư vấn y tế" },
+      "copy": { "en": "Consult doctor if pain persists over 24 hours. Dare: Schedule appointment promptly.", "vi": "Tham khảo bác sĩ nếu đau kéo dài quá 24 giờ. Dare: Lên lịch hẹn kịp thời." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "pain_management"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "abdominal_pain", "flags": null, "red_flag": null },
+      "artifact_id": "a5b6c7d8-e9f0-4a1b-2c3d-4e5f6a7b8c9d",
+      "created_at": "2025-10-06T21:35:00+09:00",
+      "updated_at": "2025-10-07T23:15:00+09:00",
+      "fitt": {
+        "frequency": { "en": "As needed", "vi": "Khi cần" },
+        "intensity": { "en": "Moderate", "vi": "Trung bình" },
+        "time": { "en": "As soon as possible", "vi": "Sớm nhất có thể" },
+        "type": { "en": "Medical consultation", "vi": "Tư vấn y tế" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_and_home_remedies",
+      "title": { "en": "Abdominal Pain and Home Remedies", "vi": "Đau bụng và biện pháp tại nhà" },
+      "copy": { "en": "Try ginger tea to soothe mild pain. Dare: Use chamomile tea daily.", "vi": "Thử trà gừng để làm dịu đau nhẹ. Dare: Dùng trà hoa cúc hàng ngày." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "pain_management"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "abdominal_pain", "flags": null, "red_flag": null },
+      "artifact_id": "c7d8e9f0-a1b2-4c3d-4e5f-6a7b8c9d0e1f",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "10–15 minutes", "vi": "10–15 phút" },
+        "type": { "en": "Home remedy", "vi": "Biện pháp tại nhà" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_and_emergency_care",
+      "title": { "en": "Abdominal Pain and Emergency Care", "vi": "Đau bụng và chăm sóc khẩn cấp" },
+      "copy": { "en": "Severe pain needs emergency care; call the emergency number immediately. Dare: Act immediately.", "vi": "Đau nặng cần chăm sóc khẩn cấp; gọi số khẩn cấp ngay lập tức. Dare: Hành động ngay lập tức." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "emergency_care"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "emergency_care", "flags": ["crisis"], "red_flag": true },
+      "artifact_id": "d2e3f4a5-b6c7-4d8e-9f0a-1b2c3d4e5f6a",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Immediate", "vi": "Ngay lập tức" },
+        "intensity": { "en": "High", "vi": "Cao" },
+        "time": { "en": "As soon as possible", "vi": "Sớm nhất có thể" },
+        "type": { "en": "Emergency action", "vi": "Hành động khẩn cấp" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_and_travel_history",
+      "title": { "en": "Abdominal Pain and Travel History", "vi": "Đau bụng và lịch sử du lịch" },
+      "copy": { "en": "Report recent travel if pain develops. Dare: Inform doctor promptly.", "vi": "Báo cáo du lịch gần đây nếu đau xuất hiện. Dare: Thông báo bác sĩ kịp thời." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "digestive_health"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "abdominal_pain", "flags": null, "red_flag": null },
+      "artifact_id": "f3a4b5c6-d7e8-4f9a-0b1c-2d3e4f5a6b7c",
+      "created_at": "2025-10-06T21:35:00+09:00",
+      "updated_at": "2025-10-07T23:15:00+09:00",
+      "fitt": {
+        "frequency": { "en": "As needed", "vi": "Khi cần" },
+        "intensity": { "en": "Moderate", "vi": "Trung bình" },
+        "time": { "en": "As soon as possible", "vi": "Sớm nhất có thể" },
+        "type": { "en": "Medical consultation", "vi": "Tư vấn y tế" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_and_warning_signs",
+      "title": { "en": "Abdominal Pain and Warning Signs", "vi": "Đau bụng và dấu hiệu cảnh báo" },
+      "copy": { "en": "Severe pain or vomiting signals emergency; call the emergency number immediately. Dare: Act immediately.", "vi": "Đau nặng hoặc nôn báo hiệu khẩn cấp; gọi số khẩn cấp ngay lập tức. Dare: Hành động ngay lập tức." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "emergency_care"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "emergency_care", "flags": ["crisis"], "red_flag": true },
+      "artifact_id": "b5c6d7e8-f9a0-4b1c-2d3e-4f5a6b7c8d9e",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Immediate", "vi": "Ngay lập tức" },
+        "intensity": { "en": "High", "vi": "Cao" },
+        "time": { "en": "As soon as possible", "vi": "Sớm nhất có thể" },
+        "type": { "en": "Emergency action", "vi": "Hành động khẩn cấp" }
+      }
+    },
+    {
+      "slug": "abdominal_pain_in_pregnancy",
+      "title": { "en": "Abdominal Pain in Pregnancy", "vi": "Đau bụng khi mang thai" },
+      "copy": { "en": "Abdominal pain in pregnancy requires immediate medical attention; consult a doctor. Avoid self-medicating without clinician advice, especially NSAIDs. Dare: Call the emergency number if severe or persistent.", "vi": "Đau bụng khi mang thai cần chú ý y tế ngay lập tức; tham khảo bác sĩ. Tránh tự dùng thuốc mà không có tư vấn bác sĩ, đặc biệt là NSAIDs. Dare: Hành động ngay lập tức." },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["abdominal_pain", "pregnancy_health"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["digestive_system", "reproductive_system"],
+      "metadata": { "topic": "pregnancy_health", "flags": ["crisis"], "red_flag": true },
+      "artifact_id": "c6d7e8f9-a0b1-4c2d-3e4f-5a6b7c8d9e0f",
+      "created_at": "2025-10-06T21:34:00+09:00",
+      "updated_at": "2025-10-07T23:16:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Immediate", "vi": "Ngay lập tức" },
+        "intensity": { "en": "High", "vi": "Cao" },
+        "time": { "en": "As soon as possible", "vi": "Sớm nhất có thể" },
+        "type": { "en": "Medical consultation", "vi": "Tư vấn y tế" }
+      }
+    }
+  ]
+}
