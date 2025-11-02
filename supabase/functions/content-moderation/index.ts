@@ -158,6 +158,22 @@ serve(async (req) => {
       );
     }
 
+    // Validate content length
+    if (content.length > 2000) {
+      return new Response(
+        JSON.stringify({ error: "Content too long (max 2000 characters)" }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Validate roomId format
+    if (roomId && !/^[a-z0-9-]+$/.test(roomId)) {
+      return new Response(
+        JSON.stringify({ error: "Invalid room ID format" }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
     // Check content for violations
     const moderationResult = checkContent(content);
 

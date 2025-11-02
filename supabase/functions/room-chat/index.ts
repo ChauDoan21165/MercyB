@@ -148,6 +148,79 @@ serve(async (req) => {
       );
     }
 
+    // Validate roomId format
+    if (!/^[a-z0-9-]+$/.test(roomId)) {
+      return new Response(
+        JSON.stringify({ error: 'Invalid room ID format' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Validate message length
+    if (message.length > 2000) {
+      return new Response(
+        JSON.stringify({ error: 'Message too long (max 2000 characters)' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Check user suspension status
+    const { data: modStatus } = await supabaseClient
+      .from('user_moderation_status')
+      .select('is_suspended, is_muted, muted_until')
+      .eq('user_id', user.id)
+      .single();
+
+    if (modStatus?.is_suspended) {
+      return new Response(
+        JSON.stringify({ error: 'Account suspended for policy violations' }),
+        { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    if (modStatus?.is_muted && modStatus.muted_until) {
+      const muteExpiry = new Date(modStatus.muted_until);
+      if (muteExpiry > new Date()) {
+        return new Response(
+          JSON.stringify({ error: `Account muted until ${muteExpiry.toISOString()}` }),
+          { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+    }
+
+    // Server-side content moderation
+    const serviceSupabase = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+    );
+
+    const moderationResponse = await fetch(
+      `${Deno.env.get('SUPABASE_URL')}/functions/v1/content-moderation`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')}`
+        },
+        body: JSON.stringify({
+          content: message,
+          userId: user.id,
+          roomId,
+          language: 'en'
+        })
+      }
+    );
+
+    if (moderationResponse.ok) {
+      const moderationResult = await moderationResponse.json();
+      if (!moderationResult.allowed) {
+        return new Response(
+          JSON.stringify({ error: moderationResult.message }),
+          { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+    }
+
     // Load data from database
     const roomData = await loadRoomData(roomId, supabaseClient);
     if (!roomData) {

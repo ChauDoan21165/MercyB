@@ -263,16 +263,81 @@ serve(async (req) => {
     }
 
     // SERVER-SIDE TIER VALIDATION
-    // Authenticate user first
-    if (authHeader) {
-      try {
-        const token = authHeader.replace('Bearer ', '');
-        const userSupabase = createClient(supabaseUrl, supabaseKey, {
-          global: { headers: { Authorization: authHeader } }
-        });
+    // Authenticate user (now required)
+    if (!authHeader) {
+      return new Response(
+        JSON.stringify({ error: 'Authentication required' }),
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    try {
+      const token = authHeader.replace('Bearer ', '');
+      const userSupabase = createClient(supabaseUrl, supabaseKey, {
+        global: { headers: { Authorization: authHeader } }
+      });
         const { data: { user }, error: authError } = await userSupabase.auth.getUser();
         
-        if (!authError && user) {
+        if (authError || !user) {
+          return new Response(
+            JSON.stringify({ error: 'Invalid authentication' }),
+            { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          );
+        }
+
+        // Check user suspension status
+        const { data: modStatus } = await supabase
+          .from('user_moderation_status')
+          .select('is_suspended, is_muted, muted_until')
+          .eq('user_id', user.id)
+          .single();
+
+        if (modStatus?.is_suspended) {
+          return new Response(
+            JSON.stringify({ error: 'Account suspended for policy violations' }),
+            { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          );
+        }
+
+        if (modStatus?.is_muted && modStatus.muted_until) {
+          const muteExpiry = new Date(modStatus.muted_until);
+          if (muteExpiry > new Date()) {
+            return new Response(
+              JSON.stringify({ error: `Account muted until ${muteExpiry.toISOString()}` }),
+              { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+            );
+          }
+        }
+
+        // Server-side content moderation
+        const moderationResponse = await fetch(
+          `${supabaseUrl}/functions/v1/content-moderation`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${supabaseKey}`
+            },
+            body: JSON.stringify({
+              content: messageContent,
+              userId: user.id,
+              roomId,
+              language: 'en'
+            })
+          }
+        );
+
+        if (moderationResponse.ok) {
+          const moderationResult = await moderationResponse.json();
+          if (!moderationResult.allowed) {
+            return new Response(
+              JSON.stringify({ error: moderationResult.message }),
+              { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+            );
+          }
+        }
+
+        if (user) {
           // Get room tier from Supabase rooms table
           const { data: roomData } = await supabase
             .from('rooms')
@@ -299,9 +364,13 @@ serve(async (req) => {
           
           console.log(`Access granted: User tier ${userTier} accessing ${roomTier} room`);
         }
-      } catch (authVerifyError) {
-        console.warn('Auth verification failed:', authVerifyError);
       }
+    } catch (authVerifyError) {
+      console.error('Auth verification failed:', authVerifyError);
+      return new Response(
+        JSON.stringify({ error: 'Authentication failed' }),
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
     }
 
     // Extract user query (already validated above)

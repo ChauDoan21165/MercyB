@@ -40,6 +40,30 @@ serve(async (req) => {
       throw new Error('Missing required fields')
     }
 
+    // Validate username
+    if (username.length > 100) {
+      throw new Error('Username must be less than 100 characters')
+    }
+
+    // Validate expectedAmount
+    if (expectedAmount && (isNaN(expectedAmount) || expectedAmount <= 0)) {
+      throw new Error('Invalid expected amount')
+    }
+
+    // Check user suspension status
+    const { data: modStatus } = await supabaseClient
+      .from('user_moderation_status')
+      .select('is_suspended')
+      .eq('user_id', user.id)
+      .single();
+
+    if (modStatus?.is_suspended) {
+      return new Response(
+        JSON.stringify({ error: 'Account suspended for policy violations' }),
+        { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
     // Create service role client for storage access
     const supabaseServiceClient = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',

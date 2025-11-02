@@ -4,7 +4,7 @@ project_id = "vpkchobbrennozdvhgaw"
 verify_jwt = true
 
 [functions.ai-chat]
-verify_jwt = false
+verify_jwt = true
 
 [functions.generate-matches]
 verify_jwt = true
