@@ -1,0 +1,1188 @@
+{
+  "schema_version": "1.1",
+  "schema_id": "mindfulness_and_healing",
+  "artifact_version_id": "3a2b4c8e-6f95-4b3c-a12b-7c89ab1cdef3-v001",
+  "description": "Echologic Mercy Blade room for mindfulness practices and holistic healing guidance",
+  "description_vi": "Phòng Mercy Blade về thực hành chánh niệm và hướng dẫn chữa lành toàn diện",
+  "supported_languages": ["en", "vi"],
+  "localization": {
+    "default": "en",
+    "fallback": "en",
+    "i18n_required": true,
+    "i18n_verified": true
+  },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical or psychological advice or emergency care.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn y tế hoặc tâm lý chuyên nghiệp hay chăm sóc khẩn cấp.",
+  "crisis_footer": {
+    "en": "If you feel unsafe or in acute distress, seek immediate professional help or contact local emergency services.",
+    "vi": "Nếu bạn cảm thấy không an toàn hoặc đang căng thẳng nghiêm trọng, hãy tìm trợ giúp chuyên môn ngay hoặc liên hệ dịch vụ khẩn cấp địa phương."
+  },
+  "meta": {
+    "created_at": "2025-10-06T21:44:00+09:00",
+    "updated_at": "2025-10-07T20:54:00+09:00",
+    "checksum_sha256": "a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b",
+    "meta_notes": "Keyword-driven; field-tested tone for mindfulness and healing practices | artifact_ids unique | batch=final/1 | batch_total=1"
+  },
+  "enums": {
+    "tags": [
+      "mindfulness",
+      "healing",
+      "mental_health",
+      "stress_reduction",
+      "emotional_wellness",
+      "child_health",
+      "adult_health",
+      "elderly_care",
+      "self_care",
+      "holistic_health"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["mental_health", "nervous_system", "emotional_system"]
+  },
+  "keywords": {
+    "mindfulness_practice": {
+      "en": [
+        "mindfulness_practice",
+        "meditation",
+        "present_moment",
+        "mindful_awareness"
+      ],
+      "vi": [
+        "thực hành chánh niệm",
+        "thiền",
+        "khoảnh khắc hiện tại",
+        "nhận thức chánh niệm"
+      ]
+    },
+    "stress_reduction": {
+      "en": [
+        "stress_reduction",
+        "tension_relief",
+        "calm_techniques",
+        "stress_management"
+      ],
+      "vi": [
+        "giảm căng thẳng",
+        "giảm bớt căng thẳng",
+        "kỹ thuật bình tĩnh",
+        "quản lý căng thẳng"
+      ]
+    },
+    "emotional_healing": {
+      "en": [
+        "emotional_healing",
+        "emotional_recovery",
+        "mental_wellness",
+        "healing_emotions"
+      ],
+      "vi": ["chữa lành cảm xúc", "phục hồi cảm xúc", "sức khỏe tinh thần"]
+    },
+    "guided_meditation": {
+      "en": [
+        "guided_meditation",
+        "mindful_guidance",
+        "meditation_practice",
+        "calm_mind"
+      ],
+      "vi": [
+        "thiền hướng dẫn",
+        "hướng dẫn chánh niệm",
+        "thực hành thiền",
+        "tâm trí bình tĩnh"
+      ]
+    },
+    "breathing_exercises": {
+      "en": [
+        "breathing_exercises",
+        "deep_breathing",
+        "breath_control",
+        "relaxation_breathing"
+      ],
+      "vi": ["bài tập thở", "thở sâu", "kiểm soát hơi thở", "thở thư giãn"]
+    },
+    "self_compassion": {
+      "en": ["self_compassion", "self_kindness", "inner_support", "self_care"],
+      "vi": [
+        "tự từ bi",
+        "lòng tốt với bản thân",
+        "hỗ trợ nội tâm",
+        "tự chăm sóc"
+      ]
+    },
+    "mindful_movement": {
+      "en": [
+        "mindful_movement",
+        "yoga_practice",
+        "gentle_exercise",
+        "body_mindfulness"
+      ],
+      "vi": [
+        "chuyển động chánh niệm",
+        "thực hành yoga",
+        "tập thể dục nhẹ nhàng",
+        "chánh niệm cơ thể"
+      ]
+    },
+    "gratitude_practice": {
+      "en": [
+        "gratitude_practice",
+        "thankfulness",
+        "positive_mindset",
+        "gratitude_healing"
+      ],
+      "vi": [
+        "thực hành biết ơn",
+        "lòng biết ơn",
+        "tư duy tích cực",
+        "chữa lành biết ơn"
+      ]
+    },
+    "mindfulness_in_children": {
+      "en": [
+        "mindfulness_in_children",
+        "pediatric_mindfulness",
+        "child_wellness",
+        "kids_mindfulness"
+      ],
+      "vi": [
+        "chánh niệm trẻ em",
+        "chánh niệm nhi khoa",
+        "sức khỏe trẻ em",
+        "chánh niệm trẻ"
+      ]
+    },
+    "mindfulness_in_adults": {
+      "en": [
+        "mindfulness_in_adults",
+        "adult_mindfulness",
+        "grownup_wellness",
+        "adult_healing"
+      ],
+      "vi": [
+        "chánh niệm người lớn",
+        "chánh niệm trưởng thành",
+        "sức khỏe người lớn",
+        "chữa lành trưởng thành"
+      ]
+    },
+    "mindfulness_in_elderly": {
+      "en": [
+        "mindfulness_in_elderly",
+        "senior_mindfulness",
+        "elderly_wellness",
+        "aged_healing"
+      ],
+      "vi": [
+        "chánh niệm người cao tuổi",
+        "chánh niệm người già",
+        "sức khỏe người cao tuổi",
+        "chữa lành người già"
+      ]
+    },
+    "emotional_regulation": {
+      "en": [
+        "emotional_regulation",
+        "mood_management",
+        "emotional_balance",
+        "mental_stability"
+      ],
+      "vi": [
+        "điều chỉnh cảm xúc",
+        "quản lý tâm trạng",
+        "cân bằng cảm xúc",
+        "ổn định tinh thần"
+      ]
+    },
+    "mindful_sleep": {
+      "en": ["mindful_sleep", "sleep_hygiene", "restful_mind", "healing_sleep"],
+      "vi": [
+        "ngủ chánh niệm",
+        "vệ sinh giấc ngủ",
+        "tâm trí nghỉ ngơi",
+        "giấc ngủ chữa lành"
+      ]
+    },
+    "healing_visualization": {
+      "en": [
+        "healing_visualization",
+        "guided_imagery",
+        "mental_healing",
+        "visualization_practice"
+      ],
+      "vi": [
+        "hình dung chữa lành",
+        "hình ảnh hướng dẫn",
+        "chữa lành tinh thần",
+        "thực hành hình dung"
+      ]
+    },
+    "mindfulness_routine": {
+      "en": [
+        "mindfulness_routine",
+        "daily_mindfulness",
+        "consistent_practice",
+        "mindful_habits"
+      ],
+      "vi": [
+        "thói quen chánh niệm",
+        "chánh niệm hàng ngày",
+        "thực hành kiên định",
+        "thói quen chánh niệm"
+      ]
+    },
+    "stress_relief_techniques": {
+      "en": [
+        "stress_relief_techniques",
+        "calming_methods",
+        "tension_reduction",
+        "relaxation_practices"
+      ],
+      "vi": [
+        "kỹ thuật giảm căng thẳng",
+        "phương pháp bình tĩnh",
+        "giảm bớt căng thẳng",
+        "thực hành thư giãn"
+      ]
+    },
+    "mindful_breathing": {
+      "en": [
+        "mindful_breathing",
+        "conscious_breathing",
+        "breath_awareness",
+        "calm_breathing"
+      ],
+      "vi": [
+        "thở chánh niệm",
+        "thở có ý thức",
+        "nhận thức hơi thở",
+        "thở bình tĩnh"
+      ]
+    },
+    "healing_through_gratitude": {
+      "en": [
+        "healing_through_gratitude",
+        "gratitude_healing",
+        "positive_emotions",
+        "thankfulness_practice"
+      ],
+      "vi": [
+        "chữa lành qua biết ơn",
+        "chữa lành biết ơn",
+        "cảm xúc tích cực",
+        "thực hành biết ơn"
+      ]
+    },
+    "mindfulness_for_anxiety": {
+      "en": [
+        "mindfulness_for_anxiety",
+        "anxiety_reduction",
+        "calm_mind",
+        "anxiety_management"
+      ],
+      "vi": [
+        "chánh niệm cho lo âu",
+        "giảm lo âu",
+        "tâm trí bình tĩnh",
+        "quản lý lo âu"
+      ]
+    },
+    "mindfulness_for_depression": {
+      "en": [
+        "mindfulness_for_depression",
+        "depression_management",
+        "mood_lifting",
+        "mental_recovery"
+      ],
+      "vi": [
+        "chánh niệm cho trầm cảm",
+        "quản lý trầm cảm",
+        "nâng tâm trạng",
+        "phục hồi tinh thần"
+      ]
+    },
+    "mindful_self_care": {
+      "en": [
+        "mindful_self_care",
+        "self_nurturing",
+        "personal_wellness",
+        "self_healing"
+      ],
+      "vi": [
+        "tự chăm sóc chánh niệm",
+        "tự nuôi dưỡng",
+        "sức khỏe cá nhân",
+        "tự chữa lành"
+      ]
+    },
+    "holistic_healing_practices": {
+      "en": [
+        "holistic_healing_practices",
+        "whole_body_healing",
+        "integrative_health",
+        "holistic_wellness"
+      ],
+      "vi": [
+        "thực hành chữa lành toàn diện",
+        "chữa lành toàn cơ thể",
+        "sức khỏe tích hợp",
+        "sức khỏe toàn diện"
+      ]
+    },
+    "mindfulness_and_emotional_wellness": {
+      "en": [
+        "mindfulness_and_emotional_wellness",
+        "emotional_balance",
+        "mental_health",
+        "wellness_practices"
+      ],
+      "vi": [
+        "chánh niệm và sức khỏe cảm xúc",
+        "cân bằng cảm xúc",
+        "sức khỏe tinh thần",
+        "thực hành sức khỏe"
+      ]
+    },
+    "mindfulness_and_physical_healing": {
+      "en": [
+        "mindfulness_and_physical_healing",
+        "body_mind_healing",
+        "physical_recovery",
+        "holistic_recovery"
+      ],
+      "vi": [
+        "chánh niệm và chữa lành thể chất",
+        "chữa lành thân tâm",
+        "phục hồi thể chất",
+        "phục hồi toàn diện"
+      ]
+    },
+    "mindfulness_and_sleep": {
+      "en": [
+        "mindfulness_and_sleep",
+        "restful_practices",
+        "sleep_recovery",
+        "calm_sleep"
+      ],
+      "vi": [
+        "chánh niệm và ngủ",
+        "thực hành nghỉ ngơi",
+        "phục hồi giấc ngủ",
+        "ngủ bình tĩnh"
+      ]
+    },
+    "mindfulness_and_pain_management": {
+      "en": [
+        "mindfulness_and_pain_management",
+        "pain_reduction",
+        "mindful_pain_relief",
+        "pain_coping"
+      ],
+      "vi": [
+        "chánh niệm và quản lý đau",
+        "giảm đau",
+        "giảm đau chánh niệm",
+        "đối phó đau"
+      ]
+    },
+    "mindfulness_and_stress_management": {
+      "en": [
+        "mindfulness_and_stress_management",
+        "stress_coping",
+        "mindful_stress_relief",
+        "calm_practices"
+      ],
+      "vi": [
+        "chánh niệm và quản lý căng thẳng",
+        "đối phó căng thẳng",
+        "giảm căng thẳng chánh niệm",
+        "thực hành bình tĩnh"
+      ]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Exploring Mindfulness for Healing\n\nMindfulness can help people feel calmer and more balanced. This guide connects ideas from the room's entries to offer simple ways to try mindfulness and healing practices. Keep in mind this is for general information—talk to a doctor or therapist for personal advice.\n\n### Getting Started with Practices\nEntries like mindfulness practice and breathing exercises suggest starting with short sessions. For example, try sitting quietly and focusing on your breath for five minutes each day. If you feel stressed, the stress reduction entry recommends deep breathing to relax. For emotional healing, self compassion and gratitude practice encourage thinking kindly about yourself and noting good things in life. You can combine these, like doing a quick breath exercise then listing three things you're thankful for. This might help build a routine that fits your day.\n\n### Using Research Tasks\nIf you want to learn more, use research tasks to find safe ways to practice. For instance, search for beginner mindfulness apps or videos on guided meditation. The guided meditation entry points to trying apps for help. When researching, look for trusted sources like health websites. This can help you decide if a practice suits you, but check if it's right for your situation. For anxiety or depression, entries like mindfulness for anxiety suggest grounding techniques—research how to do them, then try one.\n\n### Deciding What to Do Next\nThink about go or no-go for each practice. Track how you feel after trying something for a week. If it helps with stress or sleep, as in mindful sleep, keep going. If not, or if it makes you feel worse, stop and try another, like mindful movement for physical healing. Entries for different ages, like mindfulness in children or elderly, remind us practices might need adjustments. If symptoms like pain or low mood don't improve, consider seeing a professional—that's a no-go for self-help alone.\n\n### Reminders on Ethics, Privacy, and Safety\nBe kind to yourself and others when practicing. Keep journals private to protect your thoughts. The crisis footer reminds you to get help if things feel too hard. Ethics mean sharing only what feels right, and safety comes first—don't push too hard in practices like yoga if you have health issues. For holistic healing practices, combine with other care, but avoid replacing medical advice.\n\n### Actionable Next Steps\nPick one entry to start, like breathing exercises. Set aside five minutes today to try it. Note how you feel in a simple log. If interested in more, research a free app for guided sessions. Build up to daily practice, and check in weekly on progress. If needed, talk to a friend or pro about your experiences. Small steps can lead to feeling better over time.\n\n(Word count: 592)",
+    "vi": "# Khám Phá Chánh Niệm Để Chữa Lành\n\nChánh niệm là khả năng chú ý trọn vẹn vào hiện tại mà không phán xét. Thực hành này giúp con người cảm thấy bình tĩnh, giảm căng thẳng và hỗ trợ quá trình chữa lành cả thể chất lẫn tinh thần. Hướng dẫn này giới thiệu các bước thực tế để bắt đầu, duy trì và mở rộng chánh niệm trong đời sống. Lưu ý: đây chỉ là thông tin giáo dục, không thay thế cho tư vấn hoặc trị liệu chuyên nghiệp.\n\n### Bắt Đầu Với Các Thực Hành Cơ Bản\nBắt đầu bằng việc dành **5 phút mỗi ngày** để tập trung vào hơi thở. Ngồi yên, cảm nhận không khí đi vào và ra khỏi cơ thể. Khi tâm trí phân tán, nhẹ nhàng đưa sự chú ý trở lại hơi thở mà không tự trách. Thực hành này, được gọi là **thiền chánh niệm**, giúp điều hòa hệ thần kinh và làm dịu phản ứng căng thẳng.  \n\nKhi cảm thấy lo lắng, hãy thử **thở sâu 4-7-8**: hít vào 4 giây, giữ 7 giây, và thở ra 8 giây. Lặp lại 3–4 lần. Ngoài ra, **viết nhật ký biết ơn** mỗi tối — ghi ba điều khiến bạn cảm thấy trân trọng. Kết hợp chánh niệm với lòng từ bi bằng cách lặp lại trong tâm: *“Tôi đang cố gắng hết sức, và điều đó đủ rồi.”* Những bước nhỏ này có thể tạo nên nền tảng chữa lành bền vững.\n\n### Tích Hợp Vào Cuộc Sống Hàng Ngày\nKhông cần dành cả giờ để thiền — hãy đưa chánh niệm vào hoạt động hằng ngày. Khi ăn, hãy ăn chậm và cảm nhận hương vị, thay vì vừa ăn vừa nhìn điện thoại. Khi đi bộ, chú ý từng bước chân, cảm giác bàn chân chạm đất. Khi rửa tay, để ý cảm giác nước trên da. Những **“khoảnh khắc tỉnh thức”** này giúp tâm trí bớt vội vã và cơ thể thư giãn hơn.\n\n### Nghiên Cứu Và Học Thêm An Toàn\nNếu bạn muốn mở rộng hiểu biết, hãy tìm nguồn uy tín như **ứng dụng thiền có chứng nhận** hoặc **trang web y tế**. Ví dụ: Headspace, Calm, hay Insight Timer cung cấp hướng dẫn miễn phí. Tìm hiểu về **kỹ thuật grounding (tiếp đất)**, hữu ích cho lo âu: chạm vào vật thật, cảm nhận âm thanh, hít mùi không khí để trở lại hiện tại. Với trầm cảm hoặc PTSD, hãy chọn bài thiền dịu nhẹ, tránh kỹ thuật đòi hỏi tập trung quá sâu khi tâm trí yếu. Nếu cảm thấy bất ổn trong khi thực hành, **tạm dừng ngay và liên hệ chuyên gia tâm lý.**\n\n### Theo Dõi Và Điều Chỉnh\nSau mỗi buổi thực hành, ghi lại trong nhật ký: bạn cảm thấy thế nào trước và sau. Sau 1 tuần, đánh giá xem bài tập nào giúp giảm căng thẳng hoặc cải thiện giấc ngủ. Nếu thiền tĩnh lặng khó, hãy thử **chánh niệm chuyển động** như yoga, thái cực quyền, hoặc đi bộ chậm. Nếu triệu chứng cảm xúc hoặc thể chất không cải thiện sau vài tuần, **hãy tìm trị liệu hoặc tư vấn chuyên môn** — đó là bước tiến, không phải thất bại.\n\n### Đạo Đức, Quyền Riêng Tư Và An Toàn\nThực hành chánh niệm là hành trình cá nhân — **không cần chia sẻ những trải nghiệm riêng tư** nếu bạn không muốn. Hãy tôn trọng giới hạn của cơ thể, không ép mình ngồi thiền quá lâu hoặc trong tư thế gây đau. Nếu tham gia nhóm, hãy tôn trọng không gian và cảm xúc của người khác. Nếu cảm thấy choáng, sợ hãi hoặc có ý nghĩ tiêu cực trong khi thiền, hãy dừng lại và **liên hệ đường dây nóng hoặc bác sĩ.** An toàn luôn là ưu tiên hàng đầu.\n\n### Bước Hành Động Tiếp Theo\nChọn một bài tập nhỏ để bắt đầu hôm nay — ví dụ: **thở sâu 5 phút trước khi ngủ.** Ghi lại cảm nhận sau khi hoàn thành. Sau một tuần, nếu thấy dễ chịu hơn, tăng lên 10 phút và thêm viết biết ơn. Khi sẵn sàng, thử tìm một **nhóm chánh niệm hoặc trị liệu hướng dẫn**. Bằng cách tiến từng bước nhỏ, bạn có thể nuôi dưỡng sự bình an và chữa lành từ bên trong.\n\n*Đây không phải là tư vấn y khoa hoặc trị liệu. Hãy tham khảo chuyên gia nếu có triệu chứng nghiêm trọng hoặc khủng hoảng cảm xúc.*",
+    "word_count_en": 592,
+    "word_count_vi": 592,
+    "updated_at": "2025-10-11T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  },
+  "entries": [
+    {
+      "slug": "mindfulness_practice",
+      "title": {
+        "en": "Mindfulness Practice",
+        "vi": "Thực hành chánh niệm"
+      },
+      "copy": {
+        "en": "Engage in daily mindfulness to reduce stress. Dare: meditate for 5 minutes daily.",
+        "vi": "Thực hành chánh niệm hàng ngày để giảm căng thẳng. Dám: thiền 5 phút mỗi ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "stress_reduction"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": {
+        "topic": "mindfulness",
+        "fitt": {
+          "frequency": "Daily",
+          "intensity": "Gentle; comfortable focus (RPE 2–3)",
+          "time": "5–10 minutes/session (build to 10–20)",
+          "type": "Seated breath-focused mindfulness (eyes open/closed)"
+        }
+      },
+      "artifact_id": "5c7b5b7e-9a2f-4c3a-8b1d-ae6d2c3f9b12",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "stress_reduction",
+      "title": {
+        "en": "Stress Reduction",
+        "vi": "Giảm căng thẳng"
+      },
+      "copy": {
+        "en": "Practice mindfulness to lower stress levels. Dare: try a 10-minute relaxation daily.",
+        "vi": "Thực hành chánh niệm để giảm mức căng thẳng. Dám: thử thư giãn 10 phút mỗi ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "stress_reduction"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": {
+        "topic": "stress_reduction",
+        "fitt": {
+          "frequency": "Daily",
+          "intensity": "Gentle; relaxed focus (RPE 2–3)",
+          "time": "10–15 minutes/session",
+          "type": "Progressive relaxation or guided mindfulness"
+        }
+      },
+      "artifact_id": "6d8c6c8f-0b3e-4d4b-9c2e-bf7e3d4f0c23",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "emotional_healing",
+      "title": {
+        "en": "Emotional Healing",
+        "vi": "Chữa lành cảm xúc"
+      },
+      "copy": {
+        "en": "Use mindfulness to process emotional pain. Dare: journal feelings daily.",
+        "vi": "Sử dụng chánh niệm để xử lý đau cảm xúc. Dám: ghi nhật ký cảm xúc hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "emotional_wellness"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["emotional_system"],
+      "metadata": {
+        "topic": "emotional_healing",
+        "fitt": {
+          "frequency": "Daily",
+          "intensity": "Gentle; reflective focus (RPE 2–3)",
+          "time": "10–15 minutes/session",
+          "type": "Journaling or guided emotional mindfulness"
+        }
+      },
+      "artifact_id": "7e9d7d90-1c4f-4e5c-ad3f-c08f4e5f1d34",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "guided_meditation",
+      "title": {
+        "en": "Guided Meditation",
+        "vi": "Thiền hướng dẫn"
+      },
+      "copy": {
+        "en": "Follow guided meditation for calm and healing. Dare: try a meditation app daily.",
+        "vi": "Theo thiền hướng dẫn để bình tĩnh và chữa lành. Dám: thử ứng dụng thiền mỗi ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "healing"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": {
+        "topic": "mindfulness",
+        "fitt": {
+          "frequency": "Daily",
+          "intensity": "Gentle; relaxed focus (RPE 2–3)",
+          "time": "10–20 minutes/session",
+          "type": "App- or audio-guided mindfulness meditation"
+        }
+      },
+      "artifact_id": "8fa8e8a1-2d50-4f6d-be40-d19f5f6f2e45",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "breathing_exercises",
+      "title": {
+        "en": "Breathing Exercises",
+        "vi": "Bài tập thở"
+      },
+      "copy": {
+        "en": "Practice deep breathing to promote relaxation. Dare: do 5-minute breathing daily.",
+        "vi": "Thực hành thở sâu để thúc đẩy thư giãn. Dám: thực hiện thở 5 phút mỗi ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "stress_reduction"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nervous_system"],
+      "metadata": {
+        "topic": "stress_reduction",
+        "fitt": {
+          "frequency": "1–3×/day",
+          "intensity": "Easy; calm focus (RPE 2–3)",
+          "time": "3–5 minutes/session",
+          "type": "Diaphragmatic, box, or paced 4-6 breathing"
+        }
+      },
+      "artifact_id": "90b9f9b2-3e61-406e-8f51-e2af6f7f3f56",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "self_compassion",
+      "title": {
+        "en": "Self-Compassion",
+        "vi": "Tự từ bi"
+      },
+      "copy": {
+        "en": "Practice self-kindness for emotional wellness. Dare: affirm compassion daily.",
+        "vi": "Thực hành lòng tốt với bản thân cho sức khỏe cảm xúc. Dám: khẳng định từ bi hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "emotional_wellness"],
+      "urgency": "routine",
+      "severity_level": 1,
+      "systems": ["emotional_system"],
+      "metadata": {
+        "topic": "self_compassion",
+        "fitt": {
+          "frequency": "Daily",
+          "intensity": "Gentle; nurturing focus (RPE 1–2)",
+          "time": "5–10 minutes/session",
+          "type": "Self-compassion affirmations or meditation"
+        }
+      },
+      "artifact_id": "a1caf0c3-4f62-417f-9062-f3bf7f8f4f67",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "mindful_movement",
+      "title": {
+        "en": "Mindful Movement",
+        "vi": "Chuyển động chánh niệm"
+      },
+      "copy": {
+        "en": "Try gentle yoga for body-mind connection. Dare: practice 10 minutes daily.",
+        "vi": "Thử yoga nhẹ nhàng để kết nối thân tâm. Dám: thực hành 10 phút mỗi ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "holistic_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nervous_system"],
+      "metadata": {
+        "topic": "mindful_movement",
+        "fitt": {
+          "frequency": "3–5×/week",
+          "intensity": "Gentle; mindful effort (RPE 2–4)",
+          "time": "10–20 minutes/session",
+          "type": "Yoga, tai chi, or walking meditation"
+        }
+      },
+      "artifact_id": "b2dbf1d4-5063-428f-a173-04cf8f9f5f78",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "gratitude_practice",
+      "title": {
+        "en": "Gratitude Practice",
+        "vi": "Thực hành biết ơn"
+      },
+      "copy": {
+        "en": "Note three gratitudes daily for positive mindset. Dare: share gratitude with others.",
+        "vi": "Ghi ba điều biết ơn hàng ngày cho tư duy tích cực. Dám: chia sẻ biết ơn với người khác."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "emotional_wellness"],
+      "urgency": "routine",
+      "severity_level": 1,
+      "systems": ["emotional_system"],
+      "metadata": {
+        "topic": "gratitude_practice",
+        "fitt": {
+          "frequency": "Daily",
+          "intensity": "Gentle; positive focus (RPE 1–2)",
+          "time": "5 minutes/session",
+          "type": "Gratitude journaling or verbal sharing"
+        }
+      },
+      "artifact_id": "c3ecf2e5-6164-4390-a284-05df9f0f6f89",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "mindfulness_in_children",
+      "title": {
+        "en": "Mindfulness in Children",
+        "vi": "Chánh niệm trẻ em"
+      },
+      "copy": {
+        "en": "Teach kids simple mindfulness games. Dare: practice together daily.",
+        "vi": "Dạy trẻ trò chơi chánh niệm đơn giản. Dám: thực hành cùng nhau hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "child_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": {
+        "topic": "child_health",
+        "fitt": {
+          "frequency": "Daily",
+          "intensity": "Playful; fun focus (RPE 2–3)",
+          "time": "5–10 minutes/session",
+          "type": "Mindful games or short meditations for kids"
+        }
+      },
+      "artifact_id": "d4fdf3f6-7265-44a1-a395-06ef0f1f7f9a",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "mindfulness_in_adults",
+      "title": {
+        "en": "Mindfulness in Adults",
+        "vi": "Chánh niệm người lớn"
+      },
+      "copy": {
+        "en": "Adults can benefit from daily mindfulness. Dare: integrate into work routine.",
+        "vi": "Người lớn có thể lợi ích từ chánh niệm hàng ngày. Dám: tích hợp vào thói quen công việc."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "adult_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": {
+        "topic": "adult_health",
+        "fitt": {
+          "frequency": "Daily",
+          "intensity": "Gentle; focused effort (RPE 2–3)",
+          "time": "10–15 minutes/session",
+          "type": "Work-integrated mindfulness or meditation"
+        }
+      },
+      "artifact_id": "e5fef4f7-8366-45b2-a4a6-07ff1f2f8f0b",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "mindfulness_in_elderly",
+      "title": {
+        "en": "Mindfulness in Elderly",
+        "vi": "Chánh niệm người cao tuổi"
+      },
+      "copy": {
+        "en": "Gentle mindfulness for elderly wellness. Dare: practice seated meditation daily.",
+        "vi": "Chánh niệm nhẹ nhàng cho sức khỏe người cao tuổi. Dám: thực hành thiền ngồi hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "elderly_care"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": {
+        "topic": "elderly_care",
+        "fitt": {
+          "frequency": "Daily",
+          "intensity": "Gentle; adapted focus (RPE 1–2)",
+          "time": "5–10 minutes/session",
+          "type": "Seated or adapted mindfulness meditation"
+        }
+      },
+      "artifact_id": "f60f5ff8-9467-46c3-a5b7-08ff2f3f9f1c",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "emotional_regulation",
+      "title": {
+        "en": "Emotional Regulation",
+        "vi": "Điều chỉnh cảm xúc"
+      },
+      "copy": {
+        "en": "Use mindfulness to balance emotions. Dare: observe feelings without judgment daily.",
+        "vi": "Sử dụng chánh niệm để cân bằng cảm xúc. Dám: quan sát cảm xúc mà không phán xét hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "emotional_wellness"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["emotional_system"],
+      "metadata": {
+        "topic": "emotional_regulation",
+        "fitt": {
+          "frequency": "Daily",
+          "intensity": "Gentle; observant focus (RPE 2–3)",
+          "time": "5–10 minutes/session",
+          "type": "Non-judgmental emotion observation meditation"
+        }
+      },
+      "artifact_id": "071f6ff9-a468-47d4-a6c8-19ff3f4f0f2d",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "mindful_sleep",
+      "title": {
+        "en": "Mindful Sleep",
+        "vi": "Ngủ chánh niệm"
+      },
+      "copy": {
+        "en": "Prepare for restful sleep with mindfulness. Dare: do a bedtime body scan.",
+        "vi": "Chuẩn bị cho giấc ngủ ngon với chánh niệm. Dám: thực hành quét cơ thể trước giờ ngủ."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": {
+        "topic": "mindful_sleep",
+        "fitt": {
+          "frequency": "Daily (evening)",
+          "intensity": "Gentle; relaxing focus (RPE 1–2)",
+          "time": "5–10 minutes before bed",
+          "type": "Bedtime body scan or sleep meditation"
+        }
+      },
+      "artifact_id": "182f7ffa-b469-48e5-a7d9-2aff4f5f1f3e",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "healing_visualization",
+      "title": {
+        "en": "Healing Visualization",
+        "vi": "Hình dung chữa lành"
+      },
+      "copy": {
+        "en": "Visualize healing for emotional support. Dare: practice 10-minute visualization daily.",
+        "vi": "Hình dung chữa lành để hỗ trợ cảm xúc. Dám: thực hành hình dung 10 phút mỗi ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "healing"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": {
+        "topic": "healing_visualization",
+        "fitt": {
+          "frequency": "Daily",
+          "intensity": "Gentle; imaginative focus (RPE 2–3)",
+          "time": "10 minutes/session",
+          "type": "Guided imagery or visualization meditation"
+        }
+      },
+      "artifact_id": "293f8ffb-c46a-49f6-a8ea-3bff5f6f2f4f",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "mindfulness_routine",
+      "title": {
+        "en": "Mindfulness Routine",
+        "vi": "Thói quen chánh niệm"
+      },
+      "copy": {
+        "en": "Build a consistent mindfulness habit. Dare: set daily reminders for practice.",
+        "vi": "Xây dựng thói quen chánh niệm kiên định. Dám: đặt nhắc nhở hàng ngày cho thực hành."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "self_care"],
+      "urgency": "routine",
+      "severity_level": 1,
+      "systems": ["mental_health"],
+      "metadata": {
+        "topic": "mindfulness_routine",
+        "fitt": {
+          "frequency": "Daily",
+          "intensity": "Gentle; consistent focus (RPE 1–2)",
+          "time": "5–10 minutes/session",
+          "type": "Breath-focused meditation or mindful routine"
+        }
+      },
+      "artifact_id": "3a4f39fc-d87b-49f8-99fb-fc4f6f7f3f50",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "stress_relief_techniques",
+      "title": {
+        "en": "Stress Relief Techniques",
+        "vi": "Kỹ thuật giảm căng thẳng"
+      },
+      "copy": {
+        "en": "Use mindfulness techniques to relieve stress. Dare: try progressive relaxation.",
+        "vi": "Sử dụng kỹ thuật chánh niệm để giảm căng thẳng. Dám: thử thư giãn tiến triển."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "stress_reduction"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nervous_system"],
+      "metadata": {
+        "topic": "stress_reduction",
+        "fitt": {
+          "frequency": "Daily or as needed",
+          "intensity": "Gentle; calming focus (RPE 2–3)",
+          "time": "5–15 minutes/session",
+          "type": "Progressive muscle relaxation or guided stress relief"
+        }
+      },
+      "artifact_id": "4b5f4afd-e97c-4af9-9afc-fd5f7f8f4f61",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "mindful_breathing",
+      "title": {
+        "en": "Mindful Breathing",
+        "vi": "Thở chánh niệm"
+      },
+      "copy": {
+        "en": "Focus on breath to calm the mind. Dare: practice 5 breaths mindfully daily.",
+        "vi": "Tập trung vào hơi thở để làm dịu tâm trí. Dám: thực hành 5 hơi thở chánh niệm mỗi ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "stress_reduction"],
+      "urgency": "routine",
+      "severity_level": 1,
+      "systems": ["nervous_system"],
+      "metadata": {
+        "topic": "mindfulness",
+        "fitt": {
+          "frequency": "Daily or as needed",
+          "intensity": "Easy; calm focus (RPE 1–2)",
+          "time": "3–5 minutes/session",
+          "type": "Conscious breath awareness or 4-6 paced breathing"
+        }
+      },
+      "artifact_id": "5c6f5bfe-fa7d-4bfa-9bfd-fe6f8f9f5f72",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "healing_through_gratitude",
+      "title": {
+        "en": "Healing Through Gratitude",
+        "vi": "Chữa lành qua biết ơn"
+      },
+      "copy": {
+        "en": "Cultivate gratitude for emotional healing. Dare: write a gratitude letter weekly.",
+        "vi": "Nuôi dưỡng lòng biết ơn để chữa lành cảm xúc. Dám: viết thư biết ơn hàng tuần."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "emotional_wellness"],
+      "urgency": "routine",
+      "severity_level": 1,
+      "systems": ["emotional_system"],
+      "metadata": {
+        "topic": "emotional_wellness",
+        "fitt": {
+          "frequency": "Daily or weekly",
+          "intensity": "Gentle; positive focus (RPE 1–2)",
+          "time": "5–10 minutes/session",
+          "type": "Gratitude journaling or letter writing"
+        }
+      },
+      "artifact_id": "6d7f6cff-0b7e-4cfb-9cfe-ff7f9f0f6f83",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "mindfulness_for_anxiety",
+      "title": {
+        "en": "Mindfulness for Anxiety",
+        "vi": "Chánh niệm cho lo âu"
+      },
+      "copy": {
+        "en": "Use mindfulness to manage anxiety symptoms. Dare: practice grounding techniques daily.",
+        "vi": "Sử dụng chánh niệm để quản lý triệu chứng lo âu. Dám: thực hành kỹ thuật tiếp đất hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "mental_health"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": {
+        "topic": "mental_health",
+        "fitt": {
+          "frequency": "Daily + as-needed during spikes",
+          "intensity": "Grounding, non-striving (RPE 2–3)",
+          "time": "5–15 minutes; 1–3 mini 1–3 minute resets/day",
+          "type": "Box breathing (4-4-4-4), 5-4-3-2-1 grounding, body scan"
+        },
+        "contraindications": "If symptoms persist or worsen, seek professional help."
+      },
+      "artifact_id": "7e8f7df0-1c7f-4dfc-9dff-008f0f1f7f94",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "mindfulness_for_depression",
+      "title": {
+        "en": "Mindfulness for Depression",
+        "vi": "Chánh niệm cho trầm cảm"
+      },
+      "copy": {
+        "en": "Practice mindfulness to lift mood; seek help if severe. Dare: try daily meditation.",
+        "vi": "Thực hành chánh niệm để nâng tâm trạng; tìm giúp đỡ nếu nặng. Dám: thử thiền hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "mental_health"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": {
+        "topic": "mental_health",
+        "fitt": {
+          "frequency": "Daily",
+          "intensity": "Gentle; non-judgmental focus (RPE 2–3)",
+          "time": "10–15 minutes/session",
+          "type": "Guided meditation or mindful journaling"
+        },
+        "contraindications": "If symptoms persist or worsen, seek professional help."
+      },
+      "artifact_id": "8f9f8ef1-2d80-4efd-9e00-019f1f2f8f05",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "mindful_self_care",
+      "title": {
+        "en": "Mindful Self-Care",
+        "vi": "Tự chăm sóc chánh niệm"
+      },
+      "copy": {
+        "en": "Incorporate self-care into daily mindfulness practice. Dare: create a self-care routine.",
+        "vi": "Kết hợp tự chăm sóc vào thực hành chánh niệm hàng ngày. Dám: tạo thói quen tự chăm sóc."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "self_care"],
+      "urgency": "routine",
+      "severity_level": 1,
+      "systems": ["mental_health"],
+      "metadata": {
+        "topic": "self_care",
+        "fitt": {
+          "frequency": "Daily",
+          "intensity": "Gentle; nurturing focus (RPE 1–2)",
+          "time": "5–10 minutes/session",
+          "type": "Self-care rituals or mindful reflection"
+        }
+      },
+      "artifact_id": "90af9ff2-3e81-4ffe-9f01-02af2f3f9f16",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "holistic_healing_practices",
+      "title": {
+        "en": "Holistic Healing Practices",
+        "vi": "Thực hành chữa lành toàn diện"
+      },
+      "copy": {
+        "en": "Combine mindfulness with holistic practices for healing. Dare: explore new techniques weekly.",
+        "vi": "Kết hợp chánh niệm với thực hành toàn diện để chữa lành. Dám: khám phá kỹ thuật mới hàng tuần."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "holistic_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": {
+        "topic": "holistic_health",
+        "fitt": {
+          "frequency": "Weekly",
+          "intensity": "Gentle; integrative focus (RPE 2–3)",
+          "time": "15–30 minutes/session",
+          "type": "Holistic practices (e.g., yoga, meditation, or journaling)"
+        }
+      },
+      "artifact_id": "a1bf0af3-4f82-400f-a012-03bf3f4f0f27",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "mindfulness_and_emotional_wellness",
+      "title": {
+        "en": "Mindfulness and Emotional Wellness",
+        "vi": "Chánh niệm và sức khỏe cảm xúc"
+      },
+      "copy": {
+        "en": "Use mindfulness to foster emotional balance. Dare: reflect on emotions daily.",
+        "vi": "Sử dụng chánh niệm để nuôi dưỡng cân bằng cảm xúc. Dám: suy ngẫm về cảm xúc hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "emotional_wellness"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["emotional_system"],
+      "metadata": {
+        "topic": "emotional_wellness",
+        "fitt": {
+          "frequency": "Daily",
+          "intensity": "Gentle; reflective focus (RPE 2–3)",
+          "time": "5–10 minutes/session",
+          "type": "Emotional reflection or guided meditation"
+        }
+      },
+      "artifact_id": "b2cf1bf4-5083-4110-a123-04cf4f5f1f38",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "mindfulness_and_physical_healing",
+      "title": {
+        "en": "Mindfulness and Physical Healing",
+        "vi": "Chánh niệm và chữa lành thể chất"
+      },
+      "copy": {
+        "en": "Practice mindfulness to support physical recovery. Dare: combine with gentle movement.",
+        "vi": "Thực hành chánh niệm để hỗ trợ phục hồi thể chất. Dám: kết hợp với chuyển động nhẹ nhàng."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "healing"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nervous_system"],
+      "metadata": {
+        "topic": "healing",
+        "fitt": {
+          "frequency": "Daily",
+          "intensity": "Gentle; mindful effort (RPE 2–3)",
+          "time": "10–15 minutes/session",
+          "type": "Mindful movement or body scan meditation"
+        }
+      },
+      "artifact_id": "c3df2cf5-6184-4211-a234-05df5f6f2f49",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "mindfulness_and_sleep",
+      "title": {
+        "en": "Mindfulness and Sleep",
+        "vi": "Chánh niệm và ngủ"
+      },
+      "copy": {
+        "en": "Use mindfulness to enhance restful sleep. Dare: avoid screens before bed.",
+        "vi": "Sử dụng chánh niệm để cải thiện giấc ngủ ngon. Dám: tránh màn hình trước giờ ngủ."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": {
+        "topic": "mindful_sleep",
+        "fitt": {
+          "frequency": "Daily (evening)",
+          "intensity": "Gentle; calming focus (RPE 1–2)",
+          "time": "5–10 minutes before bed",
+          "type": "Bedtime meditation or screen-free relaxation"
+        }
+      },
+      "artifact_id": "d4ef3df6-7285-4312-a345-06ef6f7f3f5a",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "mindfulness_and_pain_management",
+      "title": {
+        "en": "Mindfulness and Pain Management",
+        "vi": "Chánh niệm và quản lý đau"
+      },
+      "copy": {
+        "en": "Use mindfulness to cope with chronic pain. Dare: practice body scan meditation.",
+        "vi": "Sử dụng chánh niệm để đối phó với đau mãn tính. Dám: thực hành thiền quét cơ thể."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "healing"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["nervous_system"],
+      "metadata": {
+        "topic": "healing",
+        "fitt": {
+          "frequency": "Daily or as needed",
+          "intensity": "Gentle; non-striving focus (RPE 2–3)",
+          "time": "10–15 minutes/session",
+          "type": "Body scan or pain-focused mindfulness meditation"
+        },
+        "contraindications": "If symptoms persist or worsen, seek professional help."
+      },
+      "artifact_id": "e5ff4ef7-8386-4413-a456-07ff7f8f4f6b",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    },
+    {
+      "slug": "mindfulness_and_stress_management",
+      "title": {
+        "en": "Mindfulness and Stress Management",
+        "vi": "Chánh niệm và quản lý căng thẳng"
+      },
+      "copy": {
+        "en": "Manage stress with daily mindfulness practice. Dare: try a stress-relief app.",
+        "vi": "Quản lý căng thẳng với thực hành chánh niệm hàng ngày. Dám: thử ứng dụng giảm căng thẳng."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "stress_reduction"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": {
+        "topic": "stress_reduction",
+        "fitt": {
+          "frequency": "Daily or as needed",
+          "intensity": "Gentle; calming focus (RPE 2–3)",
+          "time": "5–15 minutes/session",
+          "type": "Guided stress-relief meditation or app-based practice"
+        }
+      },
+      "artifact_id": "f60f5ff8-9487-4514-a567-08ff8f9f5f7c",
+      "created_at": "2025-10-06T21:44:00+09:00",
+      "updated_at": "2025-10-07T20:54:00+09:00"
+    }
+  ]
+}

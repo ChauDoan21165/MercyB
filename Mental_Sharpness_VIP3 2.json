@@ -1,0 +1,134 @@
+{
+  "tier": "VIP 3 / Cấp VIP 3",
+  "default_entry_id": "mental_exercises_sharpness",
+  "welcome": {
+    "en": "Hello! Welcome to Cognitive Growth VIP3 room. How can I help you today?\n\nTopic keywords you can type are below:\n- mental_exercises_sharpness\n- improving_focus\n- memory_enhancement",
+    "vi": "Xin chào! Chào mừng bạn đến với phòng Phát Triển Trí Tuệ VIP3. Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:\n- bai_tap_tu_duy\n- cai_thien_tap_trung\n- tang_cuong_tri_nho"
+  },
+  "search": {
+    "normalize_case": true,
+    "normalize_accents": true,
+    "tokenize_on": [
+      " ",
+      "_"
+    ]
+  },
+  "keyword_menu": {
+    "en": [
+      "mental_exercises_sharpness",
+      "improving_focus",
+      "memory_enhancement"
+    ],
+    "vi": [
+      "bai_tap_tu_duy",
+      "cai_thien_tap_trung",
+      "tang_cuong_tri_nho"
+    ]
+  },
+  "keywords_dict": {
+    "en": {
+      "mental_exercises_sharpness": [
+        "mental",
+        "exercises",
+        "sharpness",
+        "cognition",
+        "puzzle",
+        "sudoku",
+        "crosswords",
+        "memory",
+        "brain"
+      ],
+      "improving_focus": [
+        "focus",
+        "concentration",
+        "productivity",
+        "meditation",
+        "attention",
+        "distractions",
+        "mindfulness"
+      ],
+      "memory_enhancement": [
+        "memory",
+        "recall",
+        "mnemonics",
+        "retention",
+        "learning",
+        "techniques",
+        "remembering"
+      ]
+    },
+    "vi": {
+      "bai_tap_tu_duy": [
+        "tư duy",
+        "bài tập",
+        "nhận thức",
+        "câu đố",
+        "sudoku",
+        "ô chữ",
+        "trí nhớ",
+        "não bộ"
+      ],
+      "cai_thien_tap_trung": [
+        "tập trung",
+        "chú ý",
+        "năng suất",
+        "thiền",
+        "xao nhãng",
+        "chánh niệm"
+      ],
+      "tang_cuong_tri_nho": [
+        "trí nhớ",
+        "hồi tưởng",
+        "ghi nhớ",
+        "học tập",
+        "kỹ thuật",
+        "nhớ lâu"
+      ]
+    }
+  },
+  "entries": [
+    {
+      "id": "mental_exercises_sharpness",
+      "title": {
+        "en": "Mental Exercises for Sharpness",
+        "vi": "Bài Tập Tư Duy Cho Trí Óc Sắc Bén"
+      },
+      "content": {
+        "en": "Mental exercises improve cognition by 30%, per studies. For advanced sharpness, solve one puzzle daily, like Sudoku or crosswords. Minh's daily puzzles sharpened memory. Practice: set 10 minutes, focus fully, reflect on progress. Weekly try a new type. This builds cognitive strength gently. Combine with reading one page for insight. Start today to enhance mental acuity. Ready to sharpen? Discover deeper insights beyond VIP 3.",
+        "vi": "Các bài tập tư duy giúp cải thiện nhận thức 30%, theo nghiên cứu. Để tăng sự nhạy bén, hãy giải một câu đố mỗi ngày như Sudoku hoặc ô chữ. Minh đã rèn luyện trí nhớ nhờ thói quen này. Thực hành: dành 10 phút, tập trung hoàn toàn và suy ngẫm về tiến bộ của bạn. Mỗi tuần thử một loại mới. Việc này giúp tăng cường sức mạnh trí tuệ một cách nhẹ nhàng. Kết hợp đọc một trang sách mỗi ngày để mở rộng hiểu biết. Bắt đầu hôm nay để rèn trí óc sắc bén. Sẵn sàng mài giũa tâm trí chưa? Khám phá sâu hơn ngoài cấp VIP 3."
+      },
+      "audio": {
+        "en": "mental_exercises_for_sharpness_vip3.mp3"
+      }
+    },
+    {
+      "id": "improving_focus",
+      "title": {
+        "en": "Improving Mental Focus",
+        "vi": "Cải Thiện Khả Năng Tập Trung"
+      },
+      "content": {
+        "en": "Focus training boosts productivity by 25%, studies show. For mental sharpness, meditate 5 minutes daily, turn off notifications. Maria's meditation improved concentration. Practice: work 25 minutes focused, eliminate distractions. Weekly reflect on progress. This fosters growth without judgment. Stay active with 10 minutes exercise. Start one focused session today. Ready to enhance focus? Discover deeper insights beyond VIP 3.",
+        "vi": "Huấn luyện khả năng tập trung giúp tăng năng suất 25%, theo nghiên cứu. Để rèn luyện sự sắc bén, hãy thiền 5 phút mỗi ngày và tắt thông báo điện thoại. Việc thiền của Maria đã cải thiện khả năng tập trung của cô. Thực hành: làm việc tập trung 25 phút, loại bỏ các yếu tố gây xao nhãng. Mỗi tuần hãy suy ngẫm về tiến bộ. Cách này giúp bạn phát triển mà không phán xét bản thân. Kết hợp vận động 10 phút mỗi ngày để duy trì sự tỉnh táo. Hãy bắt đầu một buổi tập trung ngay hôm nay. Sẵn sàng tăng cường sự chú ý chưa? Khám phá sâu hơn ngoài cấp VIP 3."
+      },
+      "audio": {
+        "en": "improving_mental_focus_vip3.mp3"
+      }
+    },
+    {
+      "id": "memory_enhancement",
+      "title": {
+        "en": "Memory Enhancement Tips",
+        "vi": "Bí Quyết Tăng Cường Trí Nhớ"
+      },
+      "content": {
+        "en": "Memory techniques improve recall by 30%, per research. For sharpness, use mnemonics daily, review one fact. Minh's mnemonics sharpened memory. Practice: link words with visuals, associate images. Weekly review lists. This builds strength step by step. Stay active with exercise. Start with one mnemonic today. Ready to boost memory? Discover deeper insights beyond VIP 3.",
+        "vi": "Các kỹ thuật ghi nhớ giúp cải thiện khả năng hồi tưởng 30%, theo nghiên cứu. Để tăng sự sắc bén, hãy dùng phương pháp ghi nhớ mỗi ngày và ôn lại một thông tin. Minh đã rèn luyện trí nhớ của mình nhờ kỹ thuật này. Thực hành: liên kết từ ngữ với hình ảnh, tạo kết nối trực quan. Mỗi tuần xem lại danh sách từ khóa. Cách tiếp cận này giúp phát triển trí nhớ từng bước. Kết hợp vận động thể chất để tăng hiệu quả. Hãy bắt đầu với một kỹ thuật ghi nhớ hôm nay. Sẵn sàng nâng cao trí nhớ chưa? Khám phá sâu hơn ngoài cấp VIP 3."
+      },
+      "audio": {
+        "en": "memory_enhancement_tips_vip3.mp3"
+      }
+    }
+  ],
+  "audio": "improving_mental_focusf_vip3.mp3"
+}

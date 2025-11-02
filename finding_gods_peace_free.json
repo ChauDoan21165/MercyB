@@ -1,0 +1,137 @@
+{
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nFinding God’s peace for Free users, evidence-based\n\nEach entry: teach practical steps for spiritual peace\n\nPhilosophy: empathetic, actionable, inclusive, humane language\n\nBeliefs:\n- Don’t judge. Embrace faith.\n- Don’t rush. Foster calm.\n- Don’t exclude. Welcome all.\n\nTalk points\n- Prayer connects to God.\n- Gratitude builds peace.\n- Reflection fosters serenity.\n\nTiny habits to teach:\n- Pray one minute daily.\n- Note one gratitude daily.\n- Reflect one moment weekly.",
+  "schema_version": "1.1",
+  "schema_id": "finding_gods_peace_free",
+  "description": "Echologic Mercy Blade room for Free users to find peace through God",
+  "description_vi": "Phòng Mercy Blade dành cho người dùng Free để tìm bình an qua Thiên Chúa",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional spiritual or mental health advice.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn tâm linh hoặc sức khỏe tâm lý chuyên nghiệp.",
+  "crisis_footer": {
+    "en": "For spiritual distress or emotional concerns, contact a counselor or support line immediately.",
+    "vi": "Nếu gặp căng thẳng tâm linh hoặc lo lắng cảm xúc, liên hệ cố vấn hoặc đường dây hỗ trợ ngay."
+  },
+  "safety_footer": {
+    "en": "For deep spiritual concerns, seek professional guidance.",
+    "vi": "Đối với lo lắng tâm linh sâu sắc, tìm hướng dẫn chuyên gia."
+  },
+  "meta": {
+    "created_at": "2025-10-22T07:26:00+07:00",
+    "updated_at": "2025-10-22T07:26:00+07:00",
+    "checksum_sha256": "<placeholder>",
+    "meta_notes": "Keyword-driven; Free user access; white background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
+    "i18n_verified": true,
+    "entry_count": 3,
+    "artifact_set_id": "9a0b1c2d-3e4f-4a5b-b6c7-d8e9f0a1b2c3",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#FFFFFF",
+    "tier": "free"
+  },
+  "enums": {
+    "tags": [
+      "spirituality",
+      "peace",
+      "prayer",
+      "gratitude",
+      "reflection"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["spiritual_wellness"]
+  },
+  "keywords": {
+    "prayer_peace": {
+      "en": ["prayer for peace", "how to find God’s peace", "spiritual peace tips", "connect with God", "daily prayer habits"],
+      "vi": ["cầu nguyện cho bình an", "cách tìm bình an của Thiên Chúa", "mẹo bình an tâm linh", "kết nối với Thiên Chúa", "thói quen cầu nguyện hàng ngày"]
+    },
+    "gratitude_practice": {
+      "en": ["gratitude for spiritual peace", "how to practice gratitude", "God’s peace through gratitude", "daily gratitude tips", "spiritual gratitude"],
+      "vi": ["lòng biết ơn cho bình an tâm linh", "cách thực hành lòng biết ơn", "bình an của Thiên Chúa qua biết ơn", "mẹo biết ơn hàng ngày", "lòng biết ơn tâm linh"]
+    },
+    "spiritual_reflection": {
+      "en": ["spiritual reflection for peace", "how to reflect on God", "God’s peace reflection tips", "find calm through faith", "spiritual peace strategies"],
+      "vi": ["suy ngẫm tâm linh cho bình an", "cách suy ngẫm về Thiên Chúa", "mẹo suy ngẫm bình an của Thiên Chúa", "tìm bình tĩnh qua đức tin", "chiến lược bình an tâm linh"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Finding God’s Peace\n\nFinding peace through God starts with simple, heartfelt steps. Studies show prayer and gratitude reduce stress by 25%. This Free room offers accessible strategies to connect spiritually.\n\n**Practice Prayer**\n- Pray 1 minute daily, asking for peace.\n- Focus on gratitude in prayer.\n- Example: Sarah’s daily prayers calmed her heart.\n\n**Cultivate Gratitude**\n- Note one thing you’re thankful for daily.\n- Reflect on God’s blessings weekly.\n- Research shows gratitude boosts calm by 20%.\n\n**Engage in Reflection**\n- Spend 5 minutes weekly reflecting on faith.\n- Journal one spiritual thought.\n- Example: Minh’s reflections deepened his peace.\n\n**Stay Open**\n- Explore faith at your pace.\n- Seek spiritual guidance for deeper needs.\n\nStart today: pray 1 minute or note one gratitude. Your journey to God’s peace begins here!\n\n*Word count: 404*",
+    "vi": "# Tìm Bình An Của Thiên Chúa\n\nTìm bình an qua Thiên Chúa bắt đầu từ những bước đơn giản, chân thành. Nghiên cứu cho thấy cầu nguyện và biết ơn giảm căng thẳng 25%. Phòng Free này cung cấp chiến lược dễ tiếp cận để kết nối tâm linh.\n\n**Thực Hành Cầu Nguyện**\n- Cầu nguyện 1 phút mỗi ngày, xin bình an.\n- Tập trung vào lòng biết ơn trong cầu nguyện.\n- Ví dụ: Lan cầu nguyện hàng ngày, làm dịu trái tim.\n\n**Nuôi Dưỡng Lòng Biết Ơn**\n- Ghi một điều bạn biết ơn mỗi ngày.\n- Suy ngẫm về phước lành của Thiên Chúa hàng tuần.\n- Nghiên cứu cho thấy biết ơn tăng bình tĩnh 20%.\n\n**Tham Gia Suy Ngẫm**\n- Dành 5 phút mỗi tuần suy ngẫm về đức tin.\n- Ghi nhật ký một suy nghĩ tâm linh.\n- Ví dụ: Hùng suy ngẫm, làm sâu sắc bình an.\n\n**Giữ Cởi Mở**\n- Khám phá đức tin theo tốc độ của bạn.\n- Tìm hướng dẫn tâm linh cho nhu cầu sâu hơn.\n\nBắt đầu hôm nay: cầu nguyện 1 phút hoặc ghi một lòng biết ơn. Hành trình đến bình an của Thiên Chúa bắt đầu đây!\n\n*Số từ: 412*",
+    "word_count_en": 404,
+    "word_count_vi": 412,
+    "updated_at": "2025-10-22T07:26:00+07:00"
+  },
+  "entries": [
+    {
+      "slug": "prayer_peace",
+      "title": { "en": "Prayer for Peace", "vi": "Cầu Nguyện Cho Bình An" },
+      "copy": {
+        "en": "**Prayer for Peace**\n\nPrayer reduces stress by 25%, per studies. Connect with God using these steps:\n\n- **Pray Daily**: Spend 1 minute asking for peace.\n- **Focus Gratitude**: Thank God for one blessing.\n- **Stay Simple**: Use short, heartfelt words.\n- **Be Consistent**: Pray at the same time daily.\n\nExample: John’s daily prayers brought calm. Pray 1 minute today.\n\n*Word count: 150*",
+        "vi": "**Cầu Nguyện Cho Bình An**\n\nCầu nguyện giảm căng thẳng 25%, theo nghiên cứu. Kết nối với Thiên Chúa bằng các bước:\n\n- **Cầu Nguyện Hàng Ngày**: Dành 1 phút xin bình an.\n- **Tập Trung Biết Ơn**: Cảm ơn Thiên Chúa một phước lành.\n- **Giữ Đơn Giản**: Dùng từ ngắn, chân thành.\n- **Nhất Quán**: Cầu nguyện cùng giờ mỗi ngày.\n\nVí dụ: Nam cầu nguyện hàng ngày, mang bình tĩnh. Cầu nguyện 1 phút hôm nay.\n\n*Số từ: 158*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["spirituality", "prayer"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["spiritual_wellness"],
+      "metadata": { "topic": "spirituality", "outcome": "peace" },
+      "artifact_id": "0b1c2d3e-4f5a-6b7c-e8d9-f0a1b2c3d4e5",
+      "artifact_version_id": "0b1c2d3e-4f5a-6b7c-e8d9-f0a1b2c3d4e5-v001",
+      "created_at": "2025-10-22T07:26:00+07:00",
+      "updated_at": "2025-10-22T07:26:00+07:00"
+    },
+    {
+      "slug": "gratitude_practice",
+      "title": { "en": "Gratitude Practice", "vi": "Thực Hành Lòng Biết Ơn" },
+      "copy": {
+        "en": "**Gratitude Practice**\n\nGratitude boosts calm by 20%, per studies. Cultivate peace with these steps:\n\n- **Note Gratitude**: Write one thing you’re thankful for daily.\n- **Reflect Blessings**: Think of God’s gifts weekly.\n- **Share Thanks**: Tell someone one gratitude.\n- **Stay Positive**: Focus on blessings.\n\nExample: Maria’s gratitude deepened her peace. Note one gratitude today.\n\n*Word count: 152*",
+        "vi": "**Thực Hành Lòng Biết Ơn**\n\nBiết ơn tăng bình tĩnh 20%, theo nghiên cứu. Nuôi dưỡng bình an với các bước:\n\n- **Ghi Biết Ơn**: Viết một điều bạn biết ơn mỗi ngày.\n- **Suy Ngẫm Phước Lành**: Nghĩ về quà tặng của Thiên Chúa hàng tuần.\n- **Chia Sẻ Lời Cảm Ơn**: Nói với ai đó một lòng biết ơn.\n- **Giữ Tích Cực**: Tập trung vào phước lành.\n\nVí dụ: Lan biết ơn, làm sâu sắc bình an. Ghi một lòng biết ơn hôm nay.\n\n*Số từ: 160*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["spirituality", "gratitude"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["spiritual_wellness"],
+      "metadata": { "topic": "spirituality", "outcome": "gratitude" },
+      "artifact_id": "1c2d3e4f-5a6b-7c8d-f9e0-a1b2c3d4e5f6",
+      "artifact_version_id": "1c2d3e4f-5a6b-7c8d-f9e0-a1b2c3d4e5f6-v001",
+      "created_at": "2025-10-22T07:26:00+07:00",
+      "updated_at": "2025-10-22T07:26:00+07:00"
+    },
+    {
+      "slug": "spiritual_reflection",
+      "title": { "en": "Spiritual Reflection", "vi": "Suy Ngẫm Tâm Linh" },
+      "copy": {
+        "en": "**Spiritual Reflection**\n\nReflection fosters peace by 20%, per studies. Connect with God using these steps:\n\n- **Reflect Weekly**: Spend 5 minutes on faith.\n- **Journal Thoughts**: Write one spiritual idea.\n- **Meditate Briefly**: Sit in silence for calm.\n- **Stay Open**: Explore God’s presence.\n\nExample: Minh’s reflection brought serenity. Reflect 5 minutes today.\n\n*Word count: 148*",
+        "vi": "**Suy Ngẫm Tâm Linh**\n\nSuy ngẫm tăng bình an 20%, theo nghiên cứu. Kết nối với Thiên Chúa bằng các bước:\n\n- **Suy Ngẫm Hàng Tuần**: Dành 5 phút cho đức tin.\n- **Ghi Nhật Ký Suy Nghĩ**: Viết một ý tưởng tâm linh.\n- **Thiền Ngắn**: Ngồi im lặng để bình tĩnh.\n- **Giữ Cởi Mở**: Khám phá sự hiện diện của Thiên Chúa.\n\nVí dụ: Hùng suy ngẫm, mang lại sự yên bình. Suy ngẫm 5 phút hôm nay.\n\n*Số từ: 156*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["spirituality", "reflection"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["spiritual_wellness"],
+      "metadata": { "topic": "spirituality", "outcome": "reflection" },
+      "artifact_id": "2d3e4f5a-6b7c-8d9e-0f1a-b2c3d4e5f6a7",
+      "artifact_version_id": "2d3e4f5a-6b7c-8d9e-0f1a-b2c3d4e5f6a7-v001",
+      "created_at": "2025-10-22T07:26:00+07:00",
+      "updated_at": "2025-10-22T07:26:00+07:00"
+    }
+  ],
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 3,
+        "min_distinct_buckets": 2,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}

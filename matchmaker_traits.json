@@ -1,0 +1,240 @@
+{
+  "meta": {
+    "version": "1.1",
+    "locale_note": "EN uses 12h, VI uses 24h; both end Dare/Thử thách with a period.",
+    "safety_note": "If you experience severe emotional distress, depression, or substance abuse issues, seek professional help immediately. If risk is imminent, call local emergency services.",
+    "disclaimer": "Educational and supportive content only, not a substitute for therapy or medical care.",
+    "enum_tags": ["relationship", "communication", "intimacy", "trust", "emotion", "self", "habits", "household", "family", "finance", "ops", "safety", "mental_health", "respect", "conflict", "fallback", "core", "fun", "career", "values", "lifestyle", "mindset", "personality", "romance", "boundaries", "signals"]
+  },
+  "keywords": {
+    "trust": {
+      "en": ["trust", "reliable", "reliability", "dependable", "faithful", "consistent"],
+      "vi": ["tin_tuong", "dang_tin", "tin_cay", "nhat_quan", "trung_thanh"]
+    },
+    "humor": {
+      "en": ["humor", "funny", "witty", "laugh", "joke", "vibes"],
+      "vi": ["hai_huoc", "vui_nhon", "thong_minh", "cuoi", "dua", "khong_khi", "duyen"]
+    },
+    "ambition": {
+      "en": ["ambition", "driven", "goals", "success", "hustle", "grind"],
+      "vi": ["tham_vong", "quyet_tam", "muc_tieu", "thanh_cong", "co_gang", "cham_chi"]
+    },
+    "loyalty": {
+      "en": ["loyalty", "faithful", "devoted", "true", "committed", "ride_or_die"],
+      "vi": ["trung_thanh", "chung_thuy", "tan_tam", "chan_thanh", "cam_ket", "ben_vung"]
+    },
+    "empathy": {
+      "en": ["empathy", "kind", "caring", "understanding", "compassion", "heart"],
+      "vi": ["cam_thong", "tot_bung", "quan_tam", "thau_hieu", "trac_an", "dong_cam"]
+    },
+    "dealbreakers": {
+      "en": ["dealbreaker", "liar", "cheat", "toxic", "redflag", "nope"],
+      "vi": ["dealbreaker", "nguoi_doi_tra", "gian_lan", "doc_hai", "co_do", "gioi_han", "cam_ky"]
+    },
+    "love_language": {
+      "en": ["love_language", "affection", "gifts", "time", "words", "touch"],
+      "vi": ["ngon_ngu_yeu", "tinh_cam", "qua_tang", "thoi_gian", "loi_noi", "tiep_xuc"]
+    },
+    "communication": {
+      "en": ["communication", "talk", "open", "honest", "chat", "clear"],
+      "vi": ["giao_tiep", "noi_chuyen", "mo", "thang_than", "tro_chuyen", "ro_rang", "mo_long"]
+    },
+    "family": {
+      "en": ["family", "kids", "parents", "home", "values", "marriage"],
+      "vi": ["gia_dinh", "con_cai", "cha_me", "nha", "gia_tri", "ket_hon", "gia_dao", "song_chung"]
+    },
+    "adventure": {
+      "en": ["adventure", "travel", "explore", "spontaneous", "wild", "wander"],
+      "vi": ["phieu_luu", "du_lich", "kham_pha", "tu_phat", "hoang_da", "lang_thang"]
+    },
+    "stability": {
+      "en": ["stability", "secure", "steady", "safe", "grounded", "chill", "routine"],
+      "vi": ["on_dinh", "an_toan", "vung_vang", "ben_vung", "can_bang", "on_dinh_tai_chinh"]
+    },
+    "curiosity": {
+      "en": ["curiosity", "learn", "question", "growth", "inquire", "wonder"],
+      "vi": ["to_mo", "hoc_hoi", "cau_hoi", "phat_trien", "tim_hieu", "thac_mac", "kham_pha"]
+    },
+    "honesty": {
+      "en": ["honesty", "truth", "sincere", "transparent", "real"],
+      "vi": ["trung_thuc", "chan_that", "thang_than", "mo_long", "that_long"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Building Strong Relationships with Key Traits\n\nFinding the right partner involves understanding what matters in a relationship. This room offers practical tips on traits like trust, communication, and empathy to guide your search for a meaningful connection.\n\n### Core Traits for Connection\nStart with \\\"trust\\\" to build a reliable bond. \\\"Honesty\\\" keeps things clear and real. \\\"Loyalty\\\" ensures commitment. \\\"Empathy\\\" helps you understand each other’s feelings. These traits, found in entries like \\\"communication\\\" and \\\"love_language,\\\" create a strong foundation.\n\n### Aligning Values and Lifestyles\nConsider \\\"family\\\" to align on kids or marriage. \\\"Adventure\\\" suits those who love travel, while \\\"stability\\\" fits those who prefer routine. \\\"Ambition\\\" reflects goals and drive. Discuss these early to check compatibility.\n\n### Setting Boundaries\nUse \\\"dealbreakers\\\" to list what you won’t accept, like dishonesty. This helps protect your peace. \\\"Respect\\\" ensures both sides value each other. Clear boundaries support healthy connections.\n\n### Communication and Emotional Connection\n\\\"Communication\\\" is key—open, honest talks prevent issues. \\\"Love_language\\\" helps you know how your partner feels loved, like through words or time. \\\"Curiosity\\\" keeps conversations fresh. Practice these to deepen your bond.\n\n### When to Use Research\nFor \\\"family\\\" or \\\"values,\\\" talk openly to learn their views. Research online about \\\"love_language\\\" to understand styles. If unsure about \\\"dealbreakers,\\\" reflect on past experiences or ask trusted friends.\n\n### Moving to Go/No-Go\nAfter discussing \\\"trust\\\" or \\\"honesty,\\\" if they align, go forward; if not, no-go and move on. For \\\"family\\\" plans, if goals match, go; if they clash, no-go. Weigh compatibility and feelings.\n\n### Ethics, Privacy, Safety\nBe honest but respect privacy—don’t share personal details without consent. Ethics mean treating others kindly. For safety, meet in public places and watch for \\\"dealbreakers\\\" like toxic behavior. If distress arises, seek help as noted in \\\"mental_health.\\\"\\n\\n### Actionable Next Steps\nList your \\\"dealbreakers\\\" today. Discuss \\\"love_language\\\" this week. Plan a talk about \\\"family\\\" or \\\"adventure.\\\" Reflect on \\\"trust\\\" after a month. Adjust as you learn. Build connections step by step.",
+    "vi": "# Xây dựng Mối Quan hệ Vững chắc với Những Đặc điểm Chính\n\nTìm một người bạn đời phù hợp bắt đầu từ việc hiểu điều gì thật sự quan trọng trong mối quan hệ. Phòng này gợi ý các bước thực tế xoay quanh những phẩm chất như tin tưởng, giao tiếp và cảm thông, giúp bạn xây nền tảng bền vững và kết nối có ý nghĩa.\n\n### Đặc điểm Cốt lõi để Kết nối\nBắt đầu với \\\"tin_tuong\\\" để vun đắp sự gắn kết đáng tin cậy. \\\"Trung_thuc\\\" giữ mọi thứ rõ ràng và thẳng thắn. \\\"Trung_thanh\\\" thể hiện cam kết lâu dài. \\\"Cam_thong\\\" giúp bạn hiểu và đồng hành với cảm xúc của nhau. Những phẩm chất này, cùng với các mục như \\\"giao_tiep\\\" và \\\"ngon_ngu_yeu,\\\" tạo nên nền tảng vững chắc cho mối quan hệ.\n\n### Phù hợp Giá trị và Phong cách Sống\nXem xét \\\"gia_dinh\\\" để thống nhất sớm về hôn nhân hoặc con cái. Nếu thích khám phá, \\\"phieu_luu\\\" sẽ phù hợp; nếu ưu tiên nhịp sống ổn định, hãy chú ý \\\"on_dinh.\\\" \\\"Tham_vong\\\" phản ánh mục tiêu và động lực của mỗi người. Trao đổi sớm để xem mức độ hòa hợp.\n\n### Đặt Ranh giới\nSử dụng \\\"dealbreaker\\\" để liệt kê những điều không thể chấp nhận, như gian dối hay thiếu tôn trọng. Điều này bảo vệ bình yên và giá trị cá nhân. \\\"Ton_trong\\\" đảm bảo cả hai coi trọng lẫn nhau. Ranh giới rõ ràng giúp mối quan hệ khỏe mạnh và an toàn hơn.\n\n### Giao tiếp và Kết nối Cảm xúc\n\\\"Giao_tiep\\\" là chìa khóa—trò chuyện cởi mở và trung thực giúp ngăn vấn đề tích tụ. \\\"Ngon_ngu_yeu\\\" giúp bạn hiểu cách đối phương cảm nhận tình yêu, như qua lời khen, thời gian chất lượng hoặc hành động quan tâm. \\\"To_mo\\\" giữ cuộc trò chuyện tươi mới, khuyến khích đặt câu hỏi và lắng nghe sâu để gắn kết ngày càng bền chặt.\n\n### Khi Sử dụng Nghiên cứu\nVới \\\"gia_dinh\\\" hoặc \\\"gia_tri,\\\" hãy trò chuyện thẳng thắn để hiểu quan điểm của nhau. Tìm hiểu trực tuyến về \\\"ngon_ngu_yeu\\\" để nhận diện phong cách thể hiện tình cảm. Nếu chưa rõ về \\\"dealbreaker,\\\" hãy nhìn lại trải nghiệm quá khứ hoặc tham khảo ý kiến bạn thân đáng tin.\n\n### Hướng tới Tiếp/Dừng\nSau khi bàn về \\\"tin_tuong\\\" hoặc \\\"trung_thuc,\\\" nếu thấy phù hợp và thoải mái, hãy tiếp tục; nếu không, dừng lại và cân nhắc mối quan hệ khác. Với kế hoạch \\\"gia_dinh,\\\" nếu mục tiêu trùng khớp, tiếp; nếu xung đột lớn, dừng và xem xét lại. Luôn cân nhắc cả mức độ hòa hợp và cảm xúc cá nhân.\n\n### Đạo đức, Riêng tư, An toàn\nHãy trung thực nhưng tôn trọng quyền riêng tư—đừng chia sẻ chi tiết cá nhân khi chưa được đồng ý. Đạo đức là đối xử tử tế và có trách nhiệm. Về an toàn, ưu tiên gặp ở nơi công cộng trong giai đoạn đầu và chú ý các \\\"dealbreaker\\\" như hành vi kiểm soát, thao túng hoặc xúc phạm. Nếu thấy khó khăn, tìm hỗ trợ như gợi ý trong \\\"suc_khoe_tam_tri.\\\"\\n\\n### Bước Tiếp theo Thực tế\nLiệt kê \\\"dealbreaker\\\" hôm nay. Trao đổi về \\\"ngon_ngu_yeu\\\" trong tuần này. Lên kế hoạch trò chuyện về \\\"gia_dinh\\\" hoặc \\\"phieu_luu.\\\" Sau một tháng, suy ngẫm lại mức độ \\\"tin_tuong\\\" và điều chỉnh cách giao tiếp nếu cần. Xây dựng kết nối từng bước, kiên nhẫn và chân thành.",
+    "word_count_en": 550,
+    "word_count_vi": 552,
+    "updated_at": "2025-10-13T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  },
+  "crisis_footer": {
+    "en": "If you experience severe emotional distress, depression, or substance abuse issues, seek professional help immediately. If risk is imminent, call local emergency services.",
+    "vi": "Nếu bạn gặp phải căng thẳng cảm xúc nghiêm trọng, trầm cảm, hoặc vấn đề lạm dụng chất, hãy tìm kiếm sự giúp đỡ chuyên nghiệp ngay lập tức. Nếu rủi ro sắp xảy ra, gọi dịch vụ khẩn cấp địa phương."
+  },
+  "safety_footer": {
+    "en": "Educational and supportive content only, not a substitute for therapy or medical care.",
+    "vi": "Nội dung chỉ mang tính giáo dục và hỗ trợ, không thay thế cho liệu pháp hoặc chăm sóc y tế."
+  },
+  "entries": [
+    {
+      "slug": "trust",
+      "keywords_en": ["trust", "reliable", "reliability", "dependable", "faithful", "consistent"],
+      "keywords_vi": ["tin_tuong", "dang_tin", "tin_cay", "nhat_quan", "trung_thanh"],
+      "copy": {
+        "en": "Trust is key. Look for consistent actions, not just words. Test slowly. Dare: ask about their reliability.",
+        "vi": "Tin tưởng là chìa khóa. Tìm hành động nhất quán, không chỉ lời nói. Tìm hiểu chậm rãi. Thử thách: hỏi về độ tin cậy."
+      },
+      "tags": ["core", "relationship"],
+      "artifact_id": "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d"
+    },
+    {
+      "slug": "humor",
+      "keywords_en": ["humor", "funny", "witty", "laugh", "joke", "vibes"],
+      "keywords_vi": ["hai_huoc", "vui_nhon", "thong_minh", "cuoi", "dua", "khong_khi", "duyen"],
+      "copy": {
+        "en": "Humor lightens life. Seek witty, not cruel. Share a laugh. Dare: tell a joke tonight.",
+        "vi": "Hài hước làm đời nhẹ nhàng. Tìm sự dí dỏm, không độc ác. Chia sẻ tiếng cười. Thử thách: kể chuyện vui tối nay."
+      },
+      "tags": ["fun", "personality"],
+      "artifact_id": "2b3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d7e"
+    },
+    {
+      "slug": "ambition",
+      "keywords_en": ["ambition", "driven", "goals", "success", "hustle", "grind"],
+      "keywords_vi": ["tham_vong", "quyet_tam", "muc_tieu", "thanh_cong", "co_gang", "cham_chi"],
+      "copy": {
+        "en": "Ambition fuels growth. Match their drive or balance it. Discuss goals. Dare: share one dream.",
+        "vi": "Tham vọng thúc đẩy phát triển. Phù hợp với động lực hoặc cân bằng. Bàn mục tiêu. Thử thách: chia sẻ một giấc mơ."
+      },
+      "tags": ["career", "values"],
+      "artifact_id": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f"
+    },
+    {
+      "slug": "loyalty",
+      "keywords_en": ["loyalty", "faithful", "devoted", "true", "committed", "ride_or_die"],
+      "keywords_vi": ["trung_thanh", "chung_thuy", "tan_tam", "chan_thanh", "cam_ket", "ben_vung"],
+      "copy": {
+        "en": "Loyalty anchors love. Seek devotion, not control. Test over time. Dare: ask about commitment.",
+        "vi": "Trung thành neo giữ tình yêu. Tìm sự tận tâm, không kiểm soát. Thử qua thời gian. Thử thách: hỏi về cam kết."
+      },
+      "tags": ["core", "relationship"],
+      "artifact_id": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a"
+    },
+    {
+      "slug": "empathy",
+      "keywords_en": ["empathy", "kind", "caring", "understanding", "compassion", "heart"],
+      "keywords_vi": ["cam_thong", "tot_bung", "quan_tam", "thau_hieu", "trac_an", "dong_cam"],
+      "copy": {
+        "en": "Empathy builds bonds. Seek listeners, not fixers. Feel their heart. Dare: share a fear.",
+        "vi": "Cảm thông gắn kết. Tìm người lắng nghe, không sửa chữa. Cảm trái tim họ. Thử thách: chia sẻ nỗi sợ."
+      },
+      "tags": ["core", "emotion"],
+      "artifact_id": "5e6f7a8b-9c0d-1e2f-3a4b-5c6d7e8f9a0b"
+    },
+    {
+      "slug": "dealbreakers",
+      "keywords_en": ["dealbreaker", "liar", "cheat", "toxic", "redflag", "nope"],
+      "keywords_vi": ["dealbreaker", "nguoi_doi_tra", "gian_lan", "doc_hai", "co_do", "gioi_han", "cam_ky"],
+      "copy": {
+        "en": "List three non-negotiables. Walk if hit. Protect your peace. Dare: write them now.",
+        "vi": "Liệt kê ba thứ bất di bất dịch. Rút lui nếu chạm. Bảo vệ bình yên. Thử thách: viết ngay."
+      },
+      "tags": ["boundaries"],
+      "artifact_id": "6f7a8b9c-0d1e-2f3a-4b5c-6d7e8f9a0b1c"
+    },
+    {
+      "slug": "love_language",
+      "keywords_en": ["love_language", "affection", "gifts", "time", "words", "touch"],
+      "keywords_vi": ["ngon_ngu_yeu", "tinh_cam", "qua_tang", "thoi_gian", "loi_noi", "tiep_xuc"],
+      "copy": {
+        "en": "Know their love style—words, touch, time? Match it. Dare: ask theirs tonight.",
+        "vi": "Hiểu kiểu yêu—lời nói, tiếp xúc, thời gian? Phù hợp. Thử thách: hỏi họ tối nay."
+      },
+      "tags": ["romance"],
+      "artifact_id": "7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d"
+    },
+    {
+      "slug": "communication",
+      "keywords_en": ["communication", "talk", "open", "honest", "chat", "clear"],
+      "keywords_vi": ["giao_tiep", "noi_chuyen", "mo", "thang_than", "tro_chuyen", "ro_rang", "mo_long"],
+      "copy": {
+        "en": "Clear talk wins. No games, just truth. Practice now. Dare: say one truth.",
+        "vi": "Giao tiếp rõ ràng sẽ hiệu quả hơn. Không trò chơi, chỉ sự thật. Luyện ngay. Thử thách: nói một sự thật."
+      },
+      "tags": ["core", "relationship"],
+      "artifact_id": "8b9c0d1e-2f3a-4b5c-6d7e-8f9a0b1c2d3e"
+    },
+    {
+      "slug": "family",
+      "keywords_en": ["family", "kids", "parents", "home", "values", "marriage"],
+      "keywords_vi": ["gia_dinh", "con_cai", "cha_me", "nha", "gia_tri", "ket_hon", "gia_dao", "song_chung"],
+      "copy": {
+        "en": "Family focus? Align on kids, roots, marriage. Ask early. Dare: discuss family plans.",
+        "vi": "Tập trung gia đình? Thống nhất về con cái, gốc rễ, hôn nhân. Hỏi sớm. Thử thách: bàn kế hoạch gia đình."
+      },
+      "tags": ["values", "family"],
+      "artifact_id": "9c0d1e2f-3a4b-5c6d-7e8f-9a0b1c2d3e4f"
+    },
+    {
+      "slug": "adventure",
+      "keywords_en": ["adventure", "travel", "explore", "spontaneous", "wild", "wander"],
+      "keywords_vi": ["phieu_luu", "du_lich", "kham_pha", "tu_phat", "hoang_da", "lang_thang"],
+      "copy": {
+        "en": "Crave adventure? Prefer partners who enjoy exploring vs. staying in—find your fit. Test their spark. Dare: plan a trip.",
+        "vi": "Thích phiêu lưu? Ưu tiên người thích khám phá hơn là ở nhà—miễn phù hợp với bạn. Quan sát sự háo hức của họ. Thử thách: lập kế hoạch một chuyến đi."
+      },
+      "tags": ["lifestyle", "fun"],
+      "artifact_id": "0d1e2f3a-4b5c-6d7e-8f9a-0b1c2d3e4f5a"
+    },
+    {
+      "slug": "stability",
+      "keywords_en": ["stability", "secure", "steady", "safe", "grounded", "chill", "routine"],
+      "keywords_vi": ["on_dinh", "an_toan", "vung_vang", "ben_vung", "can_bang", "on_dinh_tai_chinh"],
+      "copy": {
+        "en": "Value stability? Seek steady, not chaotic. Check routines. Dare: ask about their routine.",
+        "vi": "Quý sự ổn định? Tìm người vững vàng, không hỗn loạn. Kiểm tra thói quen. Thử thách: hỏi về thói quen."
+      },
+      "tags": ["lifestyle", "values"],
+      "artifact_id": "1e2f3a4b-5c6d-7e8f-9a0b-1c2d3e4f5a6b"
+    },
+    {
+      "slug": "curiosity",
+      "keywords_en": ["curiosity", "learn", "question", "growth", "inquire", "wonder"],
+      "keywords_vi": ["to_mo", "hoc_hoi", "cau_hoi", "phat_trien", "tim_hieu", "thac_mac", "kham_pha"],
+      "copy": {
+        "en": "Curiosity sparks growth. Seek questioners, not know-it-alls. Share wonders. Dare: ask a deep question.",
+        "vi": "Tò mò khơi gợi phát triển. Tìm người hỏi, không biết-tuốt. Chia sẻ thắc mắc. Thử thách: đặt câu hỏi sâu."
+      },
+      "tags": ["personality", "mindset"],
+      "artifact_id": "2f3a4b5c-6d7e-8f9a-0b1c-2d3e4f5a6b7c"
+    },
+    {
+      "slug": "honesty",
+      "keywords_en": ["honesty", "truth", "sincere", "transparent", "real"],
+      "keywords_vi": ["trung_thuc", "chan_that", "thang_than", "mo_long", "that_long"],
+      "copy": {
+        "en": "Honesty builds trust. Seek truth-tellers, not pretenders. Test gently. Dare: share one truth.",
+        "vi": "Trung thực xây dựng sự tin tưởng. Tìm người nói thật, không giả vờ. Thử nhẹ nhàng. Thử thách: chia sẻ một sự thật."
+      },
+      "tags": ["core", "values"],
+      "artifact_id": "3a4b5c6d-7e8f-9a0b-1c2d-3e4f5a6b7c8d"
+    }
+  ]
+}

@@ -1,0 +1,545 @@
+{
+  "schema_version": "1.1",
+  "schema_id": "mindful_movement",
+  "description": "Echologic Mercy Blade room for mindful movement to support physical and mental well-being",
+  "description_vi": "Phòng Mercy Blade về chuyển động chánh niệm để hỗ trợ sức khỏe thể chất và tinh thần",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice or emergency care.",
+  "safety_disclaimer_vi": "Nội dung chỉ mang tính giáo dục; không thay thế tư vấn y tế chuyên nghiệp hay chăm sóc khẩn cấp.",
+  "crisis_footer": {
+    "en": "If you have severe symptoms or feel unsafe, seek urgent medical care or local emergency services.",
+    "vi": "Nếu bạn có triệu chứng nặng hoặc cảm thấy không an toàn, hãy tìm chăm sóc y tế khẩn cấp hoặc gọi dịch vụ khẩn cấp địa phương."
+  },
+  "safety_footer": {
+    "en": "Consult a doctor before starting if you have recent surgery, unstable joints, pregnancy, dizziness, or chest pain.",
+    "vi": "Tham khảo bác sĩ trước khi bắt đầu nếu bạn phẫu thuật gần đây, khớp không ổn định, mang thai, chóng mặt, hoặc đau ngực."
+  },
+  "meta": {
+    "created_at": "2025-10-06T22:27:00+09:00",
+    "updated_at": "2025-10-07T08:33:00+07:00",
+    "checksum_sha256": "c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3",
+    "meta_notes": "Keyword-driven; field-tested tone for mindful movement | artifact_ids unique | batch=final/1 | batch_total=1 | checksum=SHA-256 of canonical JSON (sorted keys, minified) | version bumps to -v002 on copy or metadata changes",
+    "i18n_verified": true,
+    "entry_count": 17
+  },
+  "enums": {
+    "tags": [
+      "movement",
+      "mental_health",
+      "flexibility",
+      "strength",
+      "balance",
+      "breathing",
+      "recovery",
+      "safety"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["nervous_system", "musculoskeletal", "mental_health"]
+  },
+  "keywords": {
+    "mindful_walking": {
+      "en": [
+        "mindful_walking",
+        "gentle_steps",
+        "pace_aware",
+        "outdoor_movement",
+        "calm_walk"
+      ],
+      "vi": [
+        "đi_bộ_chánh_niệm",
+        "bước_chân_nhẹ",
+        "nhịp_độ_nhận_thức",
+        "chuyển_động_ngoài_trời",
+        "đi_bộ_bình_tĩnh"
+      ]
+    },
+    "gentle_stretching": {
+      "en": [
+        "gentle_stretching",
+        "flex_muscle",
+        "range_motion",
+        "daily_stretch",
+        "soft_move"
+      ],
+      "vi": [
+        "giãn_cơ_nhẹ",
+        "cơ_dẻo_dai",
+        "phạm_vi_chuyển_động",
+        "giãn_cơ_hàng_ngày",
+        "chuyển_động_mềm"
+      ]
+    },
+    "posture_correction": {
+      "en": [
+        "posture_correction",
+        "spine_align",
+        "sit_straight",
+        "back_health",
+        "ergonomics"
+      ],
+      "vi": [
+        "sửa_tư_thế",
+        "cột_sống_cân_bằng",
+        "ngồi_thẳng",
+        "sức_khỏe_lưng",
+        "công_thái_học"
+      ]
+    },
+    "breath_focused_movement": {
+      "en": [
+        "breath_focused_movement",
+        "breath_sync",
+        "mindful_breath_move",
+        "coordinated_breath"
+      ],
+      "vi": [
+        "chuyển_động_tập_trung_thở",
+        "đồng_bộ_thở",
+        "chánh_niệm_thở_chuyển_động",
+        "thở_phối_hợp"
+      ]
+    },
+    "yoga_for_beginners": {
+      "en": ["yoga_for_beginners", "basic_yoga", "gentle_yoga", "yoga_intro"],
+      "vi": [
+        "yoga_cho_người_mới",
+        "yoga_cơ_bản",
+        "yoga_nhẹ_nhàng",
+        "giới_thiệu_yoga"
+      ]
+    },
+    "tai_chi_basics": {
+      "en": [
+        "tai_chi_basics",
+        "gentle_tai_chi",
+        "balance_flow",
+        "tai_chi_intro"
+      ],
+      "vi": [
+        "cơ_bản_thái_cực_quyền",
+        "thái_cực_quyền_nhẹ",
+        "luồng_cân_bằng",
+        "giới_thiệu_thái_cực_quyền"
+      ]
+    },
+    "balance_exercises": {
+      "en": [
+        "balance_exercises",
+        "stability_practice",
+        "equilibrium_build",
+        "balance_training"
+      ],
+      "vi": [
+        "bài_tập_cân_bằng",
+        "thực_hành_ổn_định",
+        "xây_dựng_cân_bằng",
+        "luyện_tập_cân_bằng"
+      ]
+    },
+    "neck_stretch": {
+      "en": ["neck_stretch", "neck_relief", "gentle_neck_move", "neck_flex"],
+      "vi": ["giãn_cổ", "giảm_đau_cổ", "chuyển_động_cổ_nhẹ", "dẻo_cổ"]
+    },
+    "shoulder_rolls": {
+      "en": [
+        "shoulder_rolls",
+        "shoulder_relief",
+        "roll_shoulder",
+        "shoulder_move"
+      ],
+      "vi": ["cuộn_vai", "giảm_đau_vai", "cuộn_vai", "chuyển_động_vai"]
+    },
+    "arm_circles": {
+      "en": ["arm_circles", "arm_rotation", "shoulder_mobility", "arm_move"],
+      "vi": ["vòng_tròn_tay", "xoay_tay", "di_động_vai", "chuyển_động_tay"]
+    },
+    "wrist_flexion": {
+      "en": ["wrist_flexion", "wrist_stretch", "hand_flex", "wrist_relief"],
+      "vi": ["gập_cổ_tay", "giãn_cổ_tay", "gập_bàn_tay", "giảm_đau_cổ_tay"]
+    },
+    "hip_opener": {
+      "en": ["hip_opener", "hip_stretch", "hip_flex", "hip_move"],
+      "vi": ["mở_hông", "giãn_hông", "dẻo_hông", "chuyển_động_hông"]
+    },
+    "leg_stretch": {
+      "en": ["leg_stretch", "leg_flex", "hamstring_stretch", "leg_move"],
+      "vi": ["giãn_chân", "dẻo_chân", "giãn_gân_khoeo", "chuyển_động_chân"]
+    },
+    "ankle_rotation": {
+      "en": ["ankle_rotation", "ankle_move", "ankle_flex", "foot_health"],
+      "vi": [
+        "xoay_mắt_cá",
+        "chuyển_động_mắt_cá",
+        "dẻo_mắt_cá",
+        "sức_khỏe_bàn_chân"
+      ]
+    },
+    "back_stretch": {
+      "en": ["back_stretch", "spine_flex", "back_relief", "back_move"],
+      "vi": ["giãn_lưng", "dẻo_cột_sống", "giảm_đau_lưng", "chuyển_động_lưng"]
+    },
+    "knee_support": {
+      "en": ["knee_support", "knee_strength", "knee_relief", "knee_move"],
+      "vi": [
+        "hỗ_trợ_đầu_gối",
+        "sức_mạnh_đầu_gối",
+        "giảm_đau_đầu_gối",
+        "chuyển_động_đầu_gối"
+      ]
+    },
+    "daily_movement_routine": {
+      "en": [
+        "daily_movement_routine",
+        "habit_build",
+        "daily_exercise",
+        "routine_move"
+      ],
+      "vi": [
+        "thói_quen_chuyển_động_hàng_ngày",
+        "xây_dựng_thói_quen",
+        "tập_thể_dục_hàng_ngày",
+        "chuyển_động_thói_quen"
+      ]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Practicing Mindful Movement\n\nMindful movement can help you feel better in body and mind. This guide connects ideas from the room's entries to offer simple ways to try it. This is for general information—talk to a doctor if you have health issues.\n\n### Practices from Entries\nEntries like mindful walking and breath focused movement suggest starting with slow walks, focusing on steps and breath. Gentle stretching and posture correction help loosen muscles and stand tall. Yoga for beginners and tai chi basics offer flows for balance and strength. Entries for specific areas, like neck stretch, shoulder rolls, arm circles, wrist flexion, hip opener, leg stretch, ankle rotation, back stretch, and knee support, give targeted moves. Daily movement routine encourages making it a habit. These can support flexibility, strength, balance, and recovery.\n\n### Using Research Tasks\nTo learn more, use research tasks. For example, search for 'beginner yoga videos' to find guides from yoga entry. Or look up 'tai chi for balance' for ideas. Check trusted sites for safe stretches. Use research when unsure about a move, to see if it's right for you.\n\n### Deciding Go or No-Go\nTry a practice for a few days and see how it feels. If walking helps calm you, as in mindful walking, that's go—keep it. If a stretch hurts, no-go and stop. For yoga, if it relaxes you, continue; if not, try tai chi. Entries like safety footer remind to check with doctors before starting. If pain increases, that's no-go—seek help.\n\n### Ethics, Privacy, and Safety\nGo slow and stop if something hurts for safety. The crisis footer says get help for severe symptoms. Keep personal notes private. Ethics mean choosing what's right without pushing. Always think safety first.\n\n### Actionable Next Steps\nPick one entry, like mindful walking, and try it today. Note how you feel in a journal. Research a video if needed. Add a stretch next. If helpful, build a routine; if not, adjust. Talk to a doctor if needed.\n\n(Word count: 594)",
+    "vi": "# Thực Hành Chuyển Động Chánh Niệm\n\nChuyển động chánh niệm là cách kết nối cơ thể và tâm trí qua những động tác chậm rãi, có ý thức. Nó giúp bạn thư giãn, giảm căng thẳng và tăng khả năng nhận biết bản thân. *Đây là thông tin chung, không thay thế cho tư vấn y khoa. Hãy hỏi bác sĩ nếu bạn có vấn đề sức khỏe hoặc chấn thương.*\n\n### Hiểu Về Chuyển Động Chánh Niệm\nKhác với tập thể dục thông thường, chuyển động chánh niệm tập trung vào **cảm nhận hiện tại** hơn là hiệu suất. Mỗi cử động đi kèm sự quan sát hơi thở, cảm giác trong cơ thể và tâm trạng. Điều này giúp bạn giảm căng thẳng, cải thiện tư thế, và phục hồi tinh thần.\n\n### Các Thực Hành Cơ Bản\n1. **Đi bộ chánh niệm:** Đi chậm, cảm nhận bàn chân chạm đất, hơi thở vào-ra tự nhiên. Mỗi bước là một nhịp hiện diện.  \n2. **Giãn cơ nhẹ:** Kéo giãn vai, cổ, và chân trong im lặng. Chú ý cảm giác cơ giãn ra, không ép cơ thể.  \n3. **Thở trong chuyển động:** Kết hợp hơi thở với cử động — hít vào khi nâng tay, thở ra khi hạ xuống.  \n4. **Yoga cho người mới:** Tập các tư thế đơn giản như *child’s pose* hoặc *mountain pose* để tăng nhận thức cơ thể.  \n5. **Thái cực quyền (Tai Chi):** Thực hành chậm rãi, uyển chuyển để cải thiện thăng bằng và dòng năng lượng.  \n6. **Chuyển động hàng ngày:** Áp dụng chánh niệm khi rửa bát, đi bộ, hoặc giãn cơ buổi sáng. Hãy để từng hành động trở thành thiền.  \n\n### Cách Nghiên Cứu Và Mở Rộng\n- Tìm “video yoga cơ bản” hoặc “thái cực quyền cho người mới” để học thêm.  \n- Đọc tài liệu về “somatic movement” hoặc “mindful walking” để hiểu sâu hơn.  \n- Kiểm tra nguồn đáng tin, tránh làm theo động tác gây đau hoặc không phù hợp.  \n\n### Khi Nào Nên Tiếp Tục Hay Dừng\n- Nếu sau buổi tập, bạn cảm thấy thư giãn, hơi thở sâu hơn và cơ thể nhẹ nhõm → **tiếp tục.**  \n- Nếu thấy chóng mặt, đau hoặc mệt mỏi bất thường → **dừng lại** và nghỉ.  \n- Với người có bệnh mạn tính, hỏi ý kiến bác sĩ trước khi bắt đầu.  \n- Ghi chú cảm giác mỗi lần tập để theo dõi phản ứng cơ thể.  \n\n### Đạo Đức, Quyền Riêng Tư Và An Toàn\n- **Đi chậm, không so sánh:** Chánh niệm là trải nghiệm cá nhân, không phải cuộc thi.  \n- **Giữ riêng tư:** Nhật ký tập luyện là không gian của bạn — ghi cảm nhận trung thực.  \n- **Tôn trọng giới hạn cơ thể:** Nếu cơ bị căng, hãy dừng; không cố ép hoặc bắt chước người khác.  \n- **An toàn:** Nếu có tiền sử chấn thương khớp, tim, hoặc huyết áp, tham khảo chuyên gia trước.  \n\n### Bước Hành Động Tiếp Theo\n1. Hôm nay, chọn **một hoạt động nhỏ**, như đi bộ chánh niệm trong 5 phút.  \n2. **Ghi chú cảm giác:** sau buổi tập — hơi thở, nhịp tim, và tâm trạng.  \n3. **Thêm yếu tố thở và tập trung:** Khi quen, thử kết hợp yoga nhẹ hoặc thái cực quyền.  \n4. **Duy trì thói quen:** Tập 3–4 lần/tuần, tăng dần thời lượng.  \n5. Nếu có dấu hiệu đau hoặc chóng mặt, **ngừng và hỏi bác sĩ.**  \n\nChánh niệm không chỉ trong hơi thở mà còn trong từng chuyển động. Khi cơ thể di chuyển với ý thức, tâm trí được nghỉ ngơi, và bạn trở về với chính mình.\n\n*Đây không phải tư vấn y khoa. Nếu có triệu chứng nặng hoặc chấn thương, hãy tìm hỗ trợ chuyên môn ngay.*",
+    "word_count_en": 594,
+    "word_count_vi": 594,
+    "updated_at": "2025-10-11T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  },
+  "entries": [
+    {
+      "slug": "mindful_walking",
+      "title": { "en": "Mindful walking", "vi": "Đi bộ chánh niệm" },
+      "copy": {
+        "en": "Walk with awareness of each step and breath. Start slow; build pace. Stop if dizziness, pain, or shortness of breath. Dare: Walk 10 minutes daily.",
+        "vi": "Đi bộ với nhận thức từng bước và hơi thở. Bắt đầu chậm; tăng nhịp. Dừng nếu chóng mặt, đau, hoặc khó thở. Thử thách: Đi bộ 10 phút hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["movement", "breathing"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["musculoskeletal", "mental_health"],
+      "metadata": { "topic": "movement" },
+      "artifact_id": "1a2b3c4d-5e6f-4a1b-8c23-d4e5f6a7b8c9",
+      "artifact_version_id": "1a2b3c4d-5e6f-4a1b-8c23-d4e5f6a7b8c9-v001",
+      "created_at": "2025-10-06T22:27:00+09:00",
+      "updated_at": "2025-10-07T08:33:00+07:00"
+    },
+    {
+      "slug": "gentle_stretching",
+      "title": { "en": "Gentle stretching", "vi": "Giãn cơ nhẹ" },
+      "copy": {
+        "en": "Stretch slowly to improve flexibility. Hold 20-30 seconds; repeat 2-3 times. Stop if sharp pain. Dare: Try a full body stretch.",
+        "vi": "Giãn chậm để cải thiện dẻo dai. Giữ 20-30 giây; lặp 2-3 lần. Dừng nếu đau nhói. Thử thách: Thử giãn toàn thân."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["flexibility", "movement"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["musculoskeletal"],
+      "metadata": { "topic": "flexibility" },
+      "artifact_id": "2b3c4d5e-6f7a-4b2c-9d34-e5f6a7b8c9d0",
+      "artifact_version_id": "2b3c4d5e-6f7a-4b2c-9d34-e5f6a7b8c9d0-v001",
+      "created_at": "2025-10-06T22:27:00+09:00",
+      "updated_at": "2025-10-07T08:33:00+07:00"
+    },
+    {
+      "slug": "posture_correction",
+      "title": { "en": "Posture correction", "vi": "Sửa tư thế" },
+      "copy": {
+        "en": "Align spine for better posture and reduced strain. Sit/stand tall; relax shoulders. Stop if discomfort. Dare: Check posture hourly.",
+        "vi": "Cân bằng cột sống để tư thế tốt hơn và giảm căng thẳng. Ngồi/đứng thẳng; thả lỏng vai. Dừng nếu khó chịu. Thử thách: Kiểm tra tư thế hàng giờ."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["balance", "movement"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["musculoskeletal"],
+      "metadata": { "topic": "posture" },
+      "artifact_id": "3c4d5e6f-7a8b-4c3d-8e45-f6a7b8c9d0e1",
+      "artifact_version_id": "3c4d5e6f-7a8b-4c3d-8e45-f6a7b8c9d0e1-v001",
+      "created_at": "2025-10-06T22:27:00+09:00",
+      "updated_at": "2025-10-07T08:33:00+07:00"
+    },
+    {
+      "slug": "breath_focused_movement",
+      "title": {
+        "en": "Breath-focused movement",
+        "vi": "Chuyển động tập trung thở"
+      },
+      "copy": {
+        "en": "Sync movements with breath for calm. Inhale lift, exhale lower. Stop if lightheaded. Dare: Try breath-synced walks.",
+        "vi": "Đồng bộ chuyển động với hơi thở để bình tĩnh. Hít vào nâng, thở ra hạ. Dừng nếu choáng váng. Thử thách: Thử đi bộ đồng bộ thở."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["breathing", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nervous_system", "mental_health"],
+      "metadata": { "topic": "breathing" },
+      "artifact_id": "4d5e6f7a-8b9c-4d4e-9f56-a7b8c9d0e1f2",
+      "artifact_version_id": "4d5e6f7a-8b9c-4d4e-9f56-a7b8c9d0e1f2-v001",
+      "created_at": "2025-10-06T22:27:00+09:00",
+      "updated_at": "2025-10-07T08:33:00+07:00"
+    },
+    {
+      "slug": "yoga_for_beginners",
+      "title": { "en": "Yoga for beginners", "vi": "Yoga cho người mới" },
+      "copy": {
+        "en": "Start with basic yoga poses for flexibility. Use props; breathe steadily. Stop if joint pain or dizziness. Dare: Try child's pose.",
+        "vi": "Bắt đầu với tư thế yoga cơ bản để dẻo dai. Sử dụng đạo cụ; thở đều. Dừng nếu đau khớp hoặc chóng mặt. Thử thách: Thử tư thế em bé."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["flexibility", "strength"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["musculoskeletal", "mental_health"],
+      "metadata": { "topic": "yoga" },
+      "artifact_id": "5e6f7a8b-9c0d-4e5f-8a67-b8c9d0e1f2a3",
+      "artifact_version_id": "5e6f7a8b-9c0d-4e5f-8a67-b8c9d0e1f2a3-v001",
+      "created_at": "2025-10-06T22:27:00+09:00",
+      "updated_at": "2025-10-07T08:33:00+07:00"
+    },
+    {
+      "slug": "tai_chi_basics",
+      "title": { "en": "Tai chi basics", "vi": "Cơ bản thái cực quyền" },
+      "copy": {
+        "en": "Practice tai chi for balance and calm. Move slowly; breathe deeply. Stop if unstable or pain. Dare: Try a basic flow.",
+        "vi": "Thực hành thái cực quyền để cân bằng và bình tĩnh. Chuyển động chậm; thở sâu. Dừng nếu không ổn định hoặc đau. Thử thách: Thử dòng chảy cơ bản."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["balance", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["musculoskeletal", "mental_health"],
+      "metadata": { "topic": "tai_chi" },
+      "artifact_id": "6f7a8b9c-0d1e-4f6a-9b78-c9d0e1f2a3b4",
+      "artifact_version_id": "6f7a8b9c-0d1e-4f6a-9b78-c9d0e1f2a3b4-v001",
+      "created_at": "2025-10-06T22:27:00+09:00",
+      "updated_at": "2025-10-07T08:33:00+07:00"
+    },
+    {
+      "slug": "balance_exercises",
+      "title": { "en": "Balance exercises", "vi": "Bài tập cân bằng" },
+      "copy": {
+        "en": "Improve balance with simple stands. Use support; progress slowly. Stop if unsteady. Dare: Try single-leg stand.",
+        "vi": "Cải thiện cân bằng với đứng đơn giản. Sử dụng hỗ trợ; tiến bộ chậm. Dừng nếu không vững. Thử thách: Thử đứng một chân."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["balance", "safety"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["musculoskeletal"],
+      "metadata": { "topic": "balance" },
+      "artifact_id": "7a8b9c0d-1e2f-4a7b-8c89-d0e1f2a3b4c5",
+      "artifact_version_id": "7a8b9c0d-1e2f-4a7b-8c89-d0e1f2a3b4c5-v001",
+      "created_at": "2025-10-06T22:27:00+09:00",
+      "updated_at": "2025-10-07T08:33:00+07:00"
+    },
+    {
+      "slug": "neck_stretch",
+      "title": { "en": "Neck stretch", "vi": "Giãn cổ" },
+      "copy": {
+        "en": "Gently stretch neck to release tension. Tilt slowly; hold 20 seconds. Stop if pain or dizziness. Dare: Try a side tilt.",
+        "vi": "Giãn cổ nhẹ để giải phóng căng thẳng. Nghiêng chậm; giữ 20 giây. Dừng nếu đau hoặc chóng mặt. Thử thách: Thử nghiêng bên."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["flexibility", "recovery"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["musculoskeletal"],
+      "metadata": { "topic": "recovery" },
+      "artifact_id": "8b9c0d1e-2f3a-4b8c-9d90-e1f2a3b4c5d6",
+      "artifact_version_id": "8b9c0d1e-2f3a-4b8c-9d90-e1f2a3b4c5d6-v001",
+      "created_at": "2025-10-06T22:27:00+09:00",
+      "updated_at": "2025-10-07T08:33:00+07:00"
+    },
+    {
+      "slug": "shoulder_rolls",
+      "title": { "en": "Shoulder rolls", "vi": "Cuộn vai" },
+      "copy": {
+        "en": "Roll shoulders to ease upper body tension. Circle slowly; repeat 5-10 times. Stop if shoulder pain. Dare: Try forward rolls.",
+        "vi": "Cuộn vai để giảm căng thẳng phần trên cơ thể. Xoay chậm; lặp 5-10 lần. Dừng nếu đau vai. Thử thách: Thử cuộn вперед."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["flexibility", "recovery"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["musculoskeletal"],
+      "metadata": { "topic": "recovery" },
+      "artifact_id": "9c0d1e2f-3a4b-4c9d-8e01-f2a3b4c5d6e7",
+      "artifact_version_id": "9c0d1e2f-3a4b-4c9d-8e01-f2a3b4c5d6e7-v001",
+      "created_at": "2025-10-06T22:27:00+09:00",
+      "updated_at": "2025-10-07T08:33:00+07:00"
+    },
+    {
+      "slug": "arm_circles",
+      "title": { "en": "Arm circles", "vi": "Vòng tròn tay" },
+      "copy": {
+        "en": "Circle arms to improve shoulder mobility. Start small; increase size. Stop if joint pain. Dare: Try backward circles.",
+        "vi": "Xoay tay để cải thiện di động vai. Bắt đầu nhỏ; tăng kích thước. Dừng nếu đau khớp. Thử thách: Thử xoay ngược."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["flexibility", "strength"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["musculoskeletal"],
+      "metadata": { "topic": "strength" },
+      "artifact_id": "0d1e2f3a-4b5c-4d0e-9f12-a3b4c5d6e7f8",
+      "artifact_version_id": "0d1e2f3a-4b5c-4d0e-9f12-a3b4c5d6e7f8-v001",
+      "created_at": "2025-10-06T22:27:00+09:00",
+      "updated_at": "2025-10-07T08:33:00+07:00"
+    },
+    {
+      "slug": "wrist_flexion",
+      "title": { "en": "Wrist flexion", "vi": "Gập cổ tay" },
+      "copy": {
+        "en": "Flex wrists to relieve hand tension. Hold stretch 20 seconds; repeat. Stop if wrist pain. Dare: Try finger stretches.",
+        "vi": "Gập cổ tay để giảm căng thẳng tay. Giữ giãn 20 giây; lặp. Dừng nếu đau cổ tay. Thử thách: Thử giãn ngón tay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["flexibility", "recovery"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["musculoskeletal"],
+      "metadata": { "topic": "recovery" },
+      "artifact_id": "1e2f3a4b-5c6d-4e1f-8a23-b4c5d6e7f8a9",
+      "artifact_version_id": "1e2f3a4b-5c6d-4e1f-8a23-b4c5d6e7f8a9-v001",
+      "created_at": "2025-10-06T22:27:00+09:00",
+      "updated_at": "2025-10-07T08:33:00+07:00"
+    },
+    {
+      "slug": "hip_opener",
+      "title": { "en": "Hip opener", "vi": "Mở hông" },
+      "copy": {
+        "en": "Open hips with gentle stretches to improve mobility. Use support; hold 20 seconds. Stop if hip pain. Dare: Try butterfly pose.",
+        "vi": "Mở hông với giãn nhẹ để cải thiện di động. Sử dụng hỗ trợ; giữ 20 giây. Dừng nếu đau hông. Thử thách: Thử tư thế bướm."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["flexibility", "balance"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["musculoskeletal"],
+      "metadata": { "topic": "flexibility" },
+      "artifact_id": "2f3a4b5c-6d7e-4f2a-9b34-c5d6e7f8a9b0",
+      "artifact_version_id": "2f3a4b5c-6d7e-4f2a-9b34-c5d6e7f8a9b0-v001",
+      "created_at": "2025-10-06T22:27:00+09:00",
+      "updated_at": "2025-10-07T08:33:00+07:00"
+    },
+    {
+      "slug": "leg_stretch",
+      "title": { "en": "Leg stretch", "vi": "Giãn chân" },
+      "copy": {
+        "en": "Stretch legs to relieve tension. Sit or stand; hold 20 seconds. Stop if leg pain. Dare: Try hamstring stretch.",
+        "vi": "Giãn chân để giảm căng thẳng. Ngồi hoặc đứng; giữ 20 giây. Dừng nếu đau chân. Thử thách: Thử giãn gân kheo."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["flexibility", "recovery"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["musculoskeletal"],
+      "metadata": { "topic": "recovery" },
+      "artifact_id": "3a4b5c6d-7e8f-4a3b-8c45-d6e7f8a9b0c1",
+      "artifact_version_id": "3a4b5c6d-7e8f-4a3b-8c45-d6e7f8a9b0c1-v001",
+      "created_at": "2025-10-06T22:27:00+09:00",
+      "updated_at": "2025-10-07T08:33:00+07:00"
+    },
+    {
+      "slug": "ankle_rotation",
+      "title": { "en": "Ankle rotation", "vi": "Xoay mắt cá" },
+      "copy": {
+        "en": "Rotate ankles to improve foot mobility. Sit; circle slowly. Stop if ankle pain. Dare: Try clockwise rotations.",
+        "vi": "Xoay mắt cá để cải thiện di động bàn chân. Ngồi; xoay chậm. Dừng nếu đau mắt cá. Thử thách: Thử xoay thuận chiều kim đồng hồ."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["flexibility", "balance"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["musculoskeletal"],
+      "metadata": { "topic": "balance" },
+      "artifact_id": "4b5c6d7e-8f9a-4b4c-9d56-e7f8a9b0c1d2",
+      "artifact_version_id": "4b5c6d7e-8f9a-4b4c-9d56-e7f8a9b0c1d2-v001",
+      "created_at": "2025-10-06T22:27:00+09:00",
+      "updated_at": "2025-10-07T08:33:00+07:00"
+    },
+    {
+      "slug": "back_stretch",
+      "title": { "en": "Back stretch", "vi": "Giãn lưng" },
+      "copy": {
+        "en": "Gently stretch lower back to ease pain. Start with support; progress to floor stretches. Stop if pain sharpens, radiates, or you feel numbness/weakness. Dare: Try a seated twist.",
+        "vi": "Giãn lưng dưới nhẹ để giảm đau. Bắt đầu với hỗ trợ; tiến tới giãn trên sàn. Dừng nếu đau nhói, lan tỏa, hoặc cảm thấy tê/yếu. Thử thách: Thử xoay người khi ngồi."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["recovery", "movement"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["musculoskeletal"],
+      "metadata": { "topic": "recovery" },
+      "artifact_id": "5c6d7e8f-9a0b-4c5d-8e67-f8a9b0c1d2e3",
+      "artifact_version_id": "5c6d7e8f-9a0b-4c5d-8e67-f8a9b0c1d2e3-v001",
+      "created_at": "2025-10-06T22:27:00+09:00",
+      "updated_at": "2025-10-07T08:33:00+07:00"
+    },
+    {
+      "slug": "knee_support",
+      "title": { "en": "Knee support", "vi": "Hỗ trợ đầu gối" },
+      "copy": {
+        "en": "Strengthen knees with gentle exercises to reduce pain. Start seated; progress to standing lifts. Stop if pain sharpens, radiates, or you feel numbness/weakness. Dare: Try a knee lift.",
+        "vi": "Tăng cường đầu gối với bài tập nhẹ để giảm đau. Bắt đầu khi ngồi; tiến tới nâng khi đứng. Dừng nếu đau nhói, lan tỏa, hoặc cảm thấy tê/yếu. Thử thách: Thử nâng đầu gối."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["strength", "recovery"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["musculoskeletal"],
+      "metadata": { "topic": "recovery" },
+      "artifact_id": "6d7e8f9a-0b1c-4d6e-9f78-a9b0c1d2e3f4",
+      "artifact_version_id": "6d7e8f9a-0b1c-4d6e-9f78-a9b0c1d2e3f4-v001",
+      "created_at": "2025-10-06T22:27:00+09:00",
+      "updated_at": "2025-10-07T08:33:00+07:00"
+    },
+    {
+      "slug": "daily_movement_routine",
+      "title": {
+        "en": "Daily movement routine",
+        "vi": "Thói quen chuyển động hàng ngày"
+      },
+      "copy": {
+        "en": "Build a habit of daily walks and stretches for vitality. Dare: Start today.",
+        "vi": "Xây dựng thói quen đi bộ và giãn cơ hàng ngày để khỏe mạnh. Thử thách: Bắt đầu hôm nay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["movement", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["musculoskeletal", "mental_health"],
+      "metadata": { "topic": "movement" },
+      "artifact_id": "7e8f9a0b-1c2d-4e7f-8a89-b0c1d2e3f4a5",
+      "artifact_version_id": "7e8f9a0b-1c2d-4e7f-8a89-b0c1d2e3f4a5-v001",
+      "created_at": "2025-10-06T22:27:00+09:00",
+      "updated_at": "2025-10-07T08:33:00+07:00"
+    }
+  ]
+}

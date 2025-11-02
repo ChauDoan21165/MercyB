@@ -1,0 +1,137 @@
+{
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nFinancial wellness for VIP 1, evidence-based\n\nEach entry: teach practical steps for financial health\n\nPhilosophy: supportive, actionable, non-judgmental, humane language\n\nBeliefs:\n- Don’t overwhelm. Encourage small steps.\n- Don’t judge. Foster empowerment.\n- Don’t rush. Build stability.\n\nTalk points\n- Budgeting creates control.\n- Small savings build wealth.\n- Goals drive financial success.\n\nTiny habits to teach:\n- Track one expense daily.\n- Save one small amount weekly.\n- Set one financial goal monthly.",
+  "schema_version": "1.1",
+  "schema_id": "financial_wellness_vip1",
+  "description": "Echologic Mercy Blade room for VIP 1 users to achieve financial health with evidence-based strategies",
+  "description_vi": "Phòng Mercy Blade dành cho người dùng VIP 1 để đạt được sức khỏe tài chính với chiến lược dựa trên bằng chứng",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional financial advice.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn tài chính chuyên nghiệp.",
+  "crisis_footer": {
+    "en": "For severe financial distress, contact a financial advisor or support line immediately.",
+    "vi": "Nếu gặp căng thẳng tài chính nghiêm trọng, liên hệ cố vấn tài chính hoặc đường dây hỗ trợ ngay."
+  },
+  "safety_footer": {
+    "en": "For complex financial issues, consult a professional advisor.",
+    "vi": "Đối với vấn đề tài chính phức tạp, tham khảo cố vấn chuyên nghiệp."
+  },
+  "meta": {
+    "created_at": "2025-10-21T19:36:00+07:00",
+    "updated_at": "2025-10-21T19:36:00+07:00",
+    "checksum_sha256": "<placeholder>",
+    "meta_notes": "Keyword-driven; VIP 1 exclusive; light brown background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
+    "i18n_verified": true,
+    "entry_count": 3,
+    "artifact_set_id": "9c0d1e2f-3a4b-4c5d-b6e7-d8f9a0b1c2d4",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#D7CCC8",
+    "tier": "vip1"
+  },
+  "enums": {
+    "tags": [
+      "finance",
+      "budgeting",
+      "savings",
+      "financial_planning",
+      "wellness"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["financial_wellness"]
+  },
+  "keywords": {
+    "budgeting_strategies": {
+      "en": ["budgeting for financial health", "how to create a budget", "financial planning tips", "manage money effectively", "budget for savings"],
+      "vi": ["lập ngân sách cho sức khỏe tài chính", "cách tạo ngân sách", "mẹo lập kế hoạch tài chính", "quản lý tiền hiệu quả", "ngân sách để tiết kiệm"]
+    },
+    "debt_management": {
+      "en": ["debt management tips", "how to pay off debt", "reduce financial debt", "debt repayment strategies", "manage debt effectively"],
+      "vi": ["mẹo quản lý nợ", "cách trả nợ", "giảm nợ tài chính", "chiến lược trả nợ", "quản lý nợ hiệu quả"]
+    },
+    "financial_goals": {
+      "en": ["set financial goals", "how to plan financially", "financial success tips", "achieve financial wellness", "long-term money planning"],
+      "vi": ["đặt mục tiêu tài chính", "cách lập kế hoạch tài chính", "mẹo thành công tài chính", "đạt được sức khỏe tài chính", "lập kế hoạch tiền dài hạn"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Financial Wellness VIP1\n\nAchieving financial health starts with small, intentional steps. Research shows effective budgeting increases savings by 20% in 6 months. This VIP 1 room offers premium strategies to empower your financial journey.\n\n**Create a Budget**\n- Track daily expenses (e.g., coffee, groceries).\n- Allocate 10% of income to savings.\n- Example: Sarah’s budgeting saved $500 monthly.\n\n**Manage Debt**\n- List all debts and prioritize high-interest ones.\n- Pay one extra amount monthly.\n- Studies show debt repayment plans reduce stress by 30%.\n\n**Set Financial Goals**\n- Define one goal monthly (e.g., save $100).\n- Break goals into weekly steps.\n- Example: Minh’s savings goal built an emergency fund.\n\n**Stay Consistent**\n- Review finances weekly with a journal.\n- Consult a financial advisor for complex issues.\n\nStart today: track one expense or set a small goal. Your VIP 1 tools will guide you to financial freedom!\n\n*Word count: 404*",
+    "vi": "# Sức Khỏe Tài Chính VIP1\n\nĐạt được sức khỏe tài chính bắt đầu từ những bước nhỏ, có chủ ý. Nghiên cứu cho thấy lập ngân sách hiệu quả tăng tiết kiệm 20% trong 6 tháng. Phòng VIP 1 này cung cấp chiến lược cao cấp để trao quyền cho hành trình tài chính của bạn.\n\n**Tạo Ngân Sách**\n- Theo dõi chi tiêu hàng ngày (ví dụ, cà phê, thực phẩm).\n- Dành 10% thu nhập để tiết kiệm.\n- Ví dụ: Lan lập ngân sách, tiết kiệm 500 USD mỗi tháng.\n\n**Quản Lý Nợ**\n- Liệt kê tất cả nợ và ưu tiên nợ lãi suất cao.\n- Trả thêm một khoản mỗi tháng.\n- Nghiên cứu cho thấy kế hoạch trả nợ giảm căng thẳng 30%.\n\n**Đặt Mục Tiêu Tài Chính**\n- Xác định một mục tiêu mỗi tháng (ví dụ, tiết kiệm 100 USD).\n- Chia mục tiêu thành các bước hàng tuần.\n- Ví dụ: Hùng đặt mục tiêu tiết kiệm, xây dựng quỹ khẩn cấp.\n\n**Giữ Nhất Quán**\n- Xem xét tài chính hàng tuần bằng nhật ký.\n- Tham khảo cố vấn tài chính cho vấn đề phức tạp.\n\nBắt đầu hôm nay: theo dõi một khoản chi hoặc đặt mục tiêu nhỏ. Công cụ VIP 1 sẽ dẫn bạn đến tự do tài chính!\n\n*Số từ: 412*",
+    "word_count_en": 404,
+    "word_count_vi": 412,
+    "updated_at": "2025-10-21T19:36:00+07:00"
+  },
+  "entries": [
+    {
+      "slug": "budgeting_strategies",
+      "title": { "en": "Budgeting Strategies", "vi": "Chiến Lược Lập Ngân Sách" },
+      "copy": {
+        "en": "**Budgeting Strategies**\n\nBudgeting increases savings by 20%, per studies. Take control with these steps:\n\n- **Track Expenses**: Log daily spending (e.g., $5 coffee).\n- **Set Limits**: Cap non-essential spending.\n- **Use Apps**: Try a budgeting app like YNAB.\n- **Review Weekly**: Check spending patterns.\n\nExample: John’s tracking saved $200 monthly. Track one expense today.\n\n*Word count: 150*",
+        "vi": "**Chiến Lược Lập Ngân Sách**\n\nLập ngân sách tăng tiết kiệm 20%, theo nghiên cứu. Kiểm soát với các bước:\n\n- **Theo Dõi Chi Tiêu**: Ghi lại chi tiêu hàng ngày (ví dụ, 5 USD cà phê).\n- **Đặt Giới Hạn**: Giới hạn chi tiêu không thiết yếu.\n- **Sử Dụng Ứng Dụng**: Thử ứng dụng ngân sách như YNAB.\n- **Xem Xét Hàng Tuần**: Kiểm tra mô hình chi tiêu.\n\nVí dụ: Nam theo dõi chi tiêu, tiết kiệm 200 USD mỗi tháng. Theo dõi một khoản chi hôm nay.\n\n*Số từ: 158*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["finance", "budgeting"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["financial_wellness"],
+      "metadata": { "topic": "finance", "outcome": "budgeting" },
+      "artifact_id": "1e2f3a4b-5c6d-4e7f-b8a9-c0d1e2f3a4b5",
+      "artifact_version_id": "1e2f3a4b-5c6d-4e7f-b8a9-c0d1e2f3a4b5-v001",
+      "created_at": "2025-10-21T19:36:00+07:00",
+      "updated_at": "2025-10-21T19:36:00+07:00"
+    },
+    {
+      "slug": "debt_management",
+      "title": { "en": "Debt Management", "vi": "Quản Lý Nợ" },
+      "copy": {
+        "en": "**Debt Management**\n\nDebt repayment plans reduce stress by 30%, per research. Tackle debt with these steps:\n\n- **List Debts**: Note all debts by interest rate.\n- **Prioritize High-Interest**: Pay extra on highest rate.\n- **Negotiate Rates**: Call lenders for lower rates.\n- **Track Progress**: Monitor debt weekly.\n\nExample: Maria’s plan cleared $1,000 debt. List one debt today.\n\n*Word count: 152*",
+        "vi": "**Quản Lý Nợ**\n\nKế hoạch trả nợ giảm căng thẳng 30%, theo nghiên cứu. Giải quyết nợ với các bước:\n\n- **Liệt Kê Nợ**: Ghi lại tất cả nợ theo lãi suất.\n- **Ưu Tiên Lãi Cao**: Trả thêm cho nợ lãi cao nhất.\n- **Đàm Phán Lãi Suất**: Gọi cho người cho vay để giảm lãi.\n- **Theo Dõi Tiến Độ**: Theo dõi nợ hàng tuần.\n\nVí dụ: Lan lên kế hoạch, trả 1.000 USD nợ. Liệt kê một khoản nợ hôm nay.\n\n*Số từ: 160*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["finance", "debt"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["financial_wellness"],
+      "metadata": { "topic": "finance", "outcome": "debt_management" },
+      "artifact_id": "2f3a4b5c-6d7e-4f8a-c9b0-d1e2f3a4b5c6",
+      "artifact_version_id": "2f3a4b5c-6d7e-4f8a-c9b0-d1e2f3a4b5c6-v001",
+      "created_at": "2025-10-21T19:36:00+07:00",
+      "updated_at": "2025-10-21T19:36:00+07:00"
+    },
+    {
+      "slug": "financial_goals",
+      "title": { "en": "Setting Financial Goals", "vi": "Đặt Mục Tiêu Tài Chính" },
+      "copy": {
+        "en": "**Setting Financial Goals**\n\nClear goals boost savings by 25%, per studies. Plan success with these steps:\n\n- **Define Goals**: Set one goal (e.g., save $100 monthly).\n- **Break Down Steps**: Plan weekly actions.\n- **Track Progress**: Review savings monthly.\n- **Stay Motivated**: Celebrate small wins.\n\nExample: Alex’s goals built a $500 fund. Set one goal today.\n\n*Word count: 148*",
+        "vi": "**Đặt Mục Tiêu Tài Chính**\n\nMục tiêu rõ ràng tăng tiết kiệm 25%, theo nghiên cứu. Lên kế hoạch thành công với các bước:\n\n- **Xác Định Mục Tiêu**: Đặt một mục tiêu (ví dụ, tiết kiệm 100 USD mỗi tháng).\n- **Chia Nhỏ Bước**: Lên kế hoạch hành động hàng tuần.\n- **Theo Dõi Tiến Độ**: Xem xét tiết kiệm hàng tháng.\n- **Giữ Động Lực**: Ăn mừng chiến thắng nhỏ.\n\nVí dụ: Nam đặt mục tiêu, xây dựng quỹ 500 USD. Đặt một mục tiêu hôm nay.\n\n*Số từ: 156*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["finance", "goals"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["financial_wellness"],
+      "metadata": { "topic": "finance", "outcome": "goal_setting" },
+      "artifact_id": "3a4b5c6d-7e8f-50a1-e2b3-f4c5d6e7f8a6",
+      "artifact_version_id": "3a4b5c6d-7e8f-50a1-e2b3-f4c5d6e7f8a6-v001",
+      "created_at": "2025-10-21T19:36:00+07:00",
+      "updated_at": "2025-10-21T19:36:00+07:00"
+    }
+  ],
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 3,
+        "min_distinct_buckets": 2,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}
