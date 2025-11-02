@@ -364,7 +364,6 @@ serve(async (req) => {
           
           console.log(`Access granted: User tier ${userTier} accessing ${roomTier} room`);
         }
-      }
     } catch (authVerifyError) {
       console.error('Auth verification failed:', authVerifyError);
       return new Response(
