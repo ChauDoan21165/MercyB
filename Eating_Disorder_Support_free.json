@@ -3,16 +3,16 @@
   "name_vi": "Hỗ Trợ Rối Loạn Ăn Uống",
   "description": "Guidance for recovering from eating disorders with practical and emotional support",
   "keywords_en": [
-    "eating disorder",
+    "eatingdisorder",
     "recovery",
     "therapy",
-    "support system"
+    "supportsystem"
   ],
   "keywords_vi": [
-    "rối loạn ăn uống",
-    "phục hồi",
-    "liệu pháp",
-    "hệ thống hỗ trợ"
+    "roisloan",
+    "phuchoi",
+    "lieuphap",
+    "hethonghotro"
   ],
   "entries": [
     {
@@ -20,12 +20,12 @@
       "keywords_en": [
         "recovery",
         "healing",
-        "self-compassion"
+        "selfcompassion"
       ],
       "keywords_vi": [
-        "phục hồi",
-        "chữa lành",
-        "tự trắc ẩn"
+        "phuchoi",
+        "chualanh",
+        "tutracan"
       ],
       "copy": {
         "en": "Begin your eating disorder recovery with small, intentional steps. Acknowledge challenges without self-judgment and connect with trusted friends or professionals. Family-Based Therapy can help rebuild healthy eating habits. Focus on progress, not perfection, celebrating each milestone to foster hope and resilience in your unique journey.",
@@ -41,13 +41,13 @@
       "slug": "cbt-e",
       "keywords_en": [
         "therapy",
-        "CBT-E",
-        "coping skills"
+        "cbte",
+        "copingskills"
       ],
       "keywords_vi": [
-        "liệu pháp",
-        "CBT-E",
-        "kỹ năng đối phó"
+        "lieuphap",
+        "cbte",
+        "kynangdoipho"
       ],
       "copy": {
         "en": "Cognitive Behavioral Therapy-Enhanced (CBT-E) targets thoughts driving eating disorders. It guides you to challenge negative patterns and build coping skills. Regular sessions offer a safe space to explore emotions and triggers, helping you foster a healthier relationship with food and your body over time.",
@@ -62,14 +62,14 @@
     {
       "slug": "support-system",
       "keywords_en": [
-        "support system",
+        "supportsystem",
         "community",
         "empathy"
       ],
       "keywords_vi": [
-        "hệ thống hỗ trợ",
-        "cộng đồng",
-        "đồng cảm"
+        "hethonghotro",
+        "congdong",
+        "dongcam"
       ],
       "copy": {
         "en": "A strong support system is vital for eating disorder recovery. Friends, family, or support groups provide encouragement and empathy. Open communication helps them understand your needs, building resilience and hope. Surround yourself with positive influences to guide you through the healing process effectively.",
