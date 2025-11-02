@@ -82,6 +82,12 @@
       "audio": "relationship_healing_free_emotional_connection.mp3"
     }
   ],
+  "keywords": {
+    "relationship_healing": {
+      "en": ["relationship healing", "communication", "trust building", "emotional connection", "empathy", "bonding"],
+      "vi": ["hàn gắn mối quan hệ", "giao tiếp", "xây dựng niềm tin", "kết nối cảm xúc", "đồng cảm", "gắn kết"]
+    }
+  },
   "meta": {
     "created_at": "2025-10-27T00:00:00+00:00",
     "updated_at": "2025-11-02T00:00:00+00:00",
