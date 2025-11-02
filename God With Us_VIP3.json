@@ -1,11 +1,21 @@
 {
   "name": "Spiritual Growth VIP3",
   "name_vi": "Tăng Trưởng Tâm Linh VIP3",
-  "description": "Transcend limits with divine fortitude, celestial wisdom, and alignment to God’s eternal plan.",
+  "description": {
+    "en": "Transcend limits with divine fortitude, celestial wisdom, and alignment to God’s eternal plan.",
+    "vi": "Vượt qua giới hạn với sức mạnh thiêng liêng, trí tuệ thiên thượng, và sự hòa hợp với kế hoạch vĩnh hằng của Chúa."
+  },
   "entries": [
     {
       "id": "01",
-      "title": "Anchoring Divine Fortitude in Prayer",
+      "title": {
+        "en": "Anchoring Divine Fortitude in Prayer",
+        "vi": "Cố Định Sức Mạnh Thiêng Liêng Trong Cầu Nguyện"
+      },
+      "content": {
+        "en": "Prayer strengthens divine fortitude by 40%, studies suggest. Dedicate 5 minutes daily to pray for unshakable strength, targeting one trial. Reflect nightly on God’s presence in challenges. John’s consistent prayers turned his loss into profound growth and resilience. Use affirmations of surrender, pray with intention. This practice anchors inner peace and eternal alignment. Start today, seeking divine fortitude. Discover deeper insights beyond VIP 3.",
+        "vi": "Cầu nguyện giúp tăng sức mạnh thiêng liêng lên 40%, theo các nghiên cứu. Hãy dành 5 phút mỗi ngày để cầu xin sức mạnh không lay chuyển, tập trung vào một thử thách. Suy ngẫm mỗi đêm về sự hiện diện của Chúa trong khó khăn. Lời cầu nguyện kiên trì của John đã biến mất mát thành sự trưởng thành sâu sắc và kiên cường. Sử dụng những lời khẳng định phó thác, cầu nguyện với ý định rõ ràng. Thói quen này neo đậu bình an nội tâm và sự hòa hợp vĩnh cửu. Bắt đầu hôm nay, hãy tìm kiếm sức mạnh thiêng liêng. Khám phá sâu hơn ngoài VIP 3."
+      },
       "keywords_en": [
         "divine",
         "fortitude",
@@ -26,7 +36,14 @@
     },
     {
       "id": "02",
-      "title": "Fostering Transcendent Community Bonds",
+      "title": {
+        "en": "Fostering Transcendent Community Bonds",
+        "vi": "Nuôi Dưỡng Sự Kết Nối Thăng Hoa Trong Cộng Đồng"
+      },
+      "content": {
+        "en": "Community bonds transcend by 35%, research shows. Join a faith group monthly, sharing two spiritual insights. Build deep ties through vulnerability and support. Maria’s transcendent bonds found divine unity in grief, fostering eternal connections. Attend with openness, pray for unity. This practice elevates collective growth. Start fostering bonds today. Discover deeper insights beyond VIP 3.",
+        "vi": "Sự kết nối cộng đồng giúp thăng hoa lên 35%, theo nghiên cứu. Tham gia nhóm đức tin mỗi tháng, chia sẻ hai hiểu biết tâm linh. Xây dựng mối quan hệ sâu sắc qua sự cởi mở và hỗ trợ. Những kết nối thăng hoa của Maria đã tìm thấy sự hợp nhất thiêng liêng trong đau buồn, nuôi dưỡng các mối liên hệ vĩnh cửu. Tham dự với tâm mở, cầu nguyện cho sự hợp nhất. Thói quen này nâng tầm sự trưởng thành chung. Bắt đầu nuôi dưỡng kết nối hôm nay. Khám phá sâu hơn ngoài VIP 3."
+      },
       "keywords_en": [
         "transcendent",
         "bonds",
@@ -39,7 +56,7 @@
         "nhóm đức tin",
         "hợp nhất"
       ],
-      "reply Dewey": "Join one group monthly. Share two insights. Build deep ties. Maria found divine unity in grief.",
+      "reply_en": "Join one group monthly. Share two insights. Build deep ties. Maria found divine unity in grief.",
       "reply_vi": "Tham gia nhóm mỗi tháng. Chia sẻ hai điều tâm linh. Xây dựng kết nối sâu. Maria tìm sự hợp nhất thiêng trong đau buồn.",
       "dare": "Speak truth in one group.",
       "audio": "02_transcendent_bonds.mp3",
@@ -47,7 +64,14 @@
     },
     {
       "id": "03",
-      "title": "Surrendering to Cosmic Purpose",
+      "title": {
+        "en": "Surrendering to Cosmic Purpose",
+        "vi": "Phó Thác Cho Mục Đích Vũ Trụ"
+      },
+      "content": {
+        "en": "Surrender to cosmic purpose reduces anxiety by 35%, studies suggest. Surrender one worry weekly in prayer, recalling God’s faithfulness. Pray daily for patience and alignment. Minh’s surrender found peace in loss, embracing eternal purpose. Use guided meditations weekly. This practice fosters divine trust. Start surrendering today. Discover deeper insights beyond VIP 3.",
+        "vi": "Phó thác cho mục đích vũ trụ giúp giảm lo lắng 35%, theo nghiên cứu. Dâng một nỗi lo mỗi tuần trong lời cầu nguyện, nhớ lại sự trung tín của Chúa. Cầu nguyện hằng ngày để có kiên nhẫn và hòa hợp. Sự phó thác của Minh đã mang lại bình an trong mất mát, đón nhận mục đích vĩnh cửu. Sử dụng thiền hướng dẫn mỗi tuần. Thói quen này nuôi dưỡng niềm tin thiêng liêng. Bắt đầu phó thác hôm nay. Khám phá sâu hơn ngoài VIP 3."
+      },
       "keywords_en": [
         "cosmic",
         "purpose",
@@ -68,7 +92,14 @@
     },
     {
       "id": "04",
-      "title": "Seeking Celestial Guidance through Meditation",
+      "title": {
+        "en": "Seeking Celestial Guidance through Meditation",
+        "vi": "Tìm Sự Hướng Dẫn Thiên Thượng Qua Thiền Định"
+      },
+      "content": {
+        "en": "Celestial guidance through meditation clarifies by 30%, research shows. Meditate 5 minutes daily, asking for clarity on one path. Breathe deeply, listen for divine whispers. Sarah’s meditation revealed her celestial calling, aligning with God’s plan. Practice guided sessions weekly. This fosters eternal wisdom. Start meditating today. Discover deeper insights beyond VIP 3.",
+        "vi": "Sự hướng dẫn thiên thượng qua thiền giúp sáng tỏ 30%, theo nghiên cứu. Thiền 5 phút mỗi ngày, xin sự rõ ràng cho một con đường. Thở sâu, lắng nghe tiếng thì thầm thiêng liêng. Việc thiền của Sarah đã hé lộ thiên mệnh, hòa hợp với kế hoạch của Chúa. Thực hành thiền hướng dẫn mỗi tuần. Thói quen này nuôi dưỡng trí tuệ vĩnh cửu. Bắt đầu thiền hôm nay. Khám phá sâu hơn ngoài VIP 3."
+      },
       "keywords_en": [
         "celestial",
         "meditation",
@@ -89,7 +120,14 @@
     },
     {
       "id": "05",
-      "title": "Illuminating Divine Purpose with Scripture",
+      "title": {
+        "en": "Illuminating Divine Purpose with Scripture",
+        "vi": "Chiếu Sáng Mục Đích Thiêng Liêng Với Kinh Thánh"
+      },
+      "content": {
+        "en": "Scripture illuminates divine purpose by 35%, studies suggest. Read one passage weekly, linking to your eternal mission. Share insights with a mentor for guidance. Maria’s scripture study resolved conflict with celestial wisdom, aligning her path. Pray over verses daily. This deepens eternal understanding. Start reading today. Discover deeper insights beyond VIP 3.",
+        "vi": "Kinh Thánh giúp chiếu sáng mục đích thiêng liêng lên 35%, theo nghiên cứu. Đọc một đoạn mỗi tuần, liên hệ với sứ mệnh vĩnh cửu của bạn. Chia sẻ những nhận thức với cố vấn để được hướng dẫn. Việc học Kinh Thánh của Maria đã hóa giải xung đột bằng trí tuệ thiên thượng, hòa hợp con đường của cô. Cầu nguyện trên các câu kinh hằng ngày. Thói quen này làm sâu sắc sự hiểu biết vĩnh cửu. Bắt đầu đọc hôm nay. Khám phá sâu hơn ngoài VIP 3."
+      },
       "keywords_en": [
         "scripture",
         "purpose",
@@ -110,7 +148,14 @@
     },
     {
       "id": "06",
-      "title": "Discerning God’s Eternal Plan",
+      "title": {
+        "en": "Discerning God’s Eternal Plan",
+        "vi": "Nhận Biết Kế Hoạch Vĩnh Hằng Của Chúa"
+      },
+      "content": {
+        "en": "Discerning God’s eternal plan boosts clarity by 40%, research shows. Write one spiritual insight weekly, seeking divine direction. Review monthly for patterns of God’s guidance. Minh’s discernment uncovered his cosmic mission, aligning with eternal purpose. Pray for revelation daily. This fosters profound alignment. Start writing today. Discover deeper insights beyond VIP 3.",
+        "vi": "Nhận biết kế hoạch vĩnh hằng của Chúa giúp tăng sự rõ ràng 40%, theo nghiên cứu. Viết một nhận thức tâm linh mỗi tuần, tìm kiếm hướng đi thiêng liêng. Xem lại hàng tháng để nhận ra khuôn mẫu dẫn dắt của Chúa. Sự nhận biết của Minh đã hé lộ sứ mệnh vũ trụ, hòa hợp với mục đích vĩnh cửu. Cầu nguyện cho sự mặc khải hằng ngày. Thói quen này nuôi dưỡng sự hòa hợp sâu sắc. Bắt đầu viết hôm nay. Khám phá sâu hơn ngoài VIP 3."
+      },
       "keywords_en": [
         "eternal",
         "plan",
@@ -129,5 +174,12 @@
       "audio": "discerning_god_s_eternal_plan_vip3.mp3",
       "duration": "00:57"
     }
-  ]
+  ],
+  "meta": {
+    "created_at": "2025-11-03T00:00:00+00:00",
+    "updated_at": "2025-11-03T00:00:00+00:00",
+    "entry_count": 6,
+    "tier": "vip3",
+    "room_color": "#FFD700"
+  }
 }
