@@ -1,17 +1,22 @@
 import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Trash2 } from "lucide-react";
+import { Trash2, FileJson, Music } from "lucide-react";
 import { toast } from "sonner";
 
+interface FileItem {
+  name: string;
+  type: "json" | "mp3";
+}
+
 const AudioFileList = () => {
-  const [audioFiles, setAudioFiles] = useState<string[]>([]);
+  const [files, setFiles] = useState<FileItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchAudioFiles = async () => {
+    const fetchFiles = async () => {
       try {
-        // Fetch all JSON files to extract audio references
+        // List of JSON files
         const jsonFiles = [
           "Abdominal_Pain.json",
           "God_With_Us.json",
@@ -29,8 +34,15 @@ const AudioFileList = () => {
           "nutrition_vip3.json",
         ];
 
+        const allFiles: FileItem[] = [];
         const allAudioFiles = new Set<string>();
 
+        // Add JSON files
+        jsonFiles.forEach(file => {
+          allFiles.push({ name: file, type: "json" });
+        });
+
+        // Extract MP3 references from JSON files
         for (const file of jsonFiles) {
           try {
             const response = await fetch(`/data/${file}`);
@@ -49,25 +61,31 @@ const AudioFileList = () => {
           }
         }
 
+        // Add MP3 files
+        Array.from(allAudioFiles).forEach(mp3 => {
+          allFiles.push({ name: mp3, type: "mp3" });
+        });
+
         // Sort alphabetically
-        const sortedFiles = Array.from(allAudioFiles).sort((a, b) => 
-          a.toLowerCase().localeCompare(b.toLowerCase())
+        const sortedFiles = allFiles.sort((a, b) => 
+          a.name.toLowerCase().localeCompare(b.name.toLowerCase())
         );
         
-        setAudioFiles(sortedFiles);
+        setFiles(sortedFiles);
       } catch (error) {
-        console.error("Error fetching audio files:", error);
-        toast.error("Failed to load audio files");
+        console.error("Error fetching files:", error);
+        toast.error("Failed to load files");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchAudioFiles();
+    fetchFiles();
   }, []);
 
-  const handleDeleteInstruction = (filename: string) => {
-    toast.info(`To delete: ${filename}\n1. Go to your file manager\n2. Navigate to public/ folder\n3. Delete the file`);
+  const handleDeleteInstruction = (file: FileItem) => {
+    const folder = file.type === "json" ? "supabase/functions/ai-chat/data/" : "public/";
+    toast.info(`To delete: ${file.name}\n1. Go to your file manager\n2. Navigate to ${folder}\n3. Delete the file`);
   };
 
   if (loading) {
@@ -78,22 +96,47 @@ const AudioFileList = () => {
     );
   }
 
+  const jsonFiles = files.filter(f => f.type === "json");
+  const mp3Files = files.filter(f => f.type === "mp3");
+
   return (
     <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">All Audio Files (Alphabetically)</h1>
-      <p className="text-muted-foreground mb-4">
-        Total files referenced in JSON: {audioFiles.length}
-      </p>
+      <h1 className="text-3xl font-bold mb-6">All JSON & Audio Files (Alphabetically)</h1>
+      <div className="grid grid-cols-2 gap-4 mb-6">
+        <Card className="p-4">
+          <div className="flex items-center gap-2 mb-2">
+            <FileJson className="h-5 w-5 text-primary" />
+            <h2 className="font-semibold">JSON Files</h2>
+          </div>
+          <p className="text-2xl font-bold">{jsonFiles.length}</p>
+          <p className="text-xs text-muted-foreground">in supabase/functions/ai-chat/data/</p>
+        </Card>
+        <Card className="p-4">
+          <div className="flex items-center gap-2 mb-2">
+            <Music className="h-5 w-5 text-primary" />
+            <h2 className="font-semibold">MP3 Files</h2>
+          </div>
+          <p className="text-2xl font-bold">{mp3Files.length}</p>
+          <p className="text-xs text-muted-foreground">referenced in JSON (should be in public/)</p>
+        </Card>
+      </div>
       <p className="text-sm text-muted-foreground mb-6">
-        These files should exist in the <code className="bg-secondary px-2 py-1 rounded">public/</code> folder.
-        Look for duplicates (similar names with slight variations) and delete manually.
+        Look for duplicates (similar names with slight variations) and delete manually from their respective folders.
       </p>
 
       <div className="grid gap-2">
-        {audioFiles.map((file, index) => (
+        {files.map((file, index) => (
           <Card key={index} className="p-4 flex items-center justify-between">
-            <div className="flex-1">
-              <code className="text-sm">{file}</code>
+            <div className="flex items-center gap-3 flex-1">
+              {file.type === "json" ? (
+                <FileJson className="h-4 w-4 text-blue-500" />
+              ) : (
+                <Music className="h-4 w-4 text-green-500" />
+              )}
+              <code className="text-sm">{file.name}</code>
+              <span className="text-xs text-muted-foreground">
+                ({file.type === "json" ? "data/" : "public/"})
+              </span>
             </div>
             <Button
               variant="ghost"
