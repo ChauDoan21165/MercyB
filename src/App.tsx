@@ -30,6 +30,7 @@ import AdminAudioUpload from "./pages/AdminAudioUpload";
 import AdminModeration from "./pages/AdminModeration";
 import ResetPassword from "./pages/ResetPassword";
 import DebugRooms from "./pages/DebugRooms";
+import AudioAnalysis from "./pages/AudioAnalysis";
 
 const queryClient = new QueryClient();
 
@@ -67,6 +68,7 @@ const App = () => (
           <Route path="/admin/audio-upload" element={<AdminAudioUpload />} />
           <Route path="/admin/moderation" element={<AdminModeration />} />
           <Route path="/debug/rooms" element={<DebugRooms />} />
+          <Route path="/audio-analysis" element={<AudioAnalysis />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
