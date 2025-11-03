@@ -16,9 +16,11 @@ const AudioFileList = () => {
   useEffect(() => {
     const fetchFiles = async () => {
       try {
-        // List of JSON files
+        // List of JSON files (duplicates cleaned)
         const jsonFiles = [
           "Abdominal_Pain.json",
+          "Addiction_Support_vip1.json",
+          "Anxiety_Relief_Free.json",
           "God_With_Us.json",
           "God_With_Us_VIP1.json",
           "God_With_Us_VIP3.json",
