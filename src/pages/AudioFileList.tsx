@@ -9,8 +9,14 @@ interface FileItem {
   type: "json" | "mp3";
 }
 
+interface JsonWithoutAudio {
+  name: string;
+  entryCount: number;
+}
+
 const AudioFileList = () => {
   const [files, setFiles] = useState<FileItem[]>([]);
+  const [jsonWithoutAudio, setJsonWithoutAudio] = useState<JsonWithoutAudio[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -38,6 +44,7 @@ const AudioFileList = () => {
 
         const allFiles: FileItem[] = [];
         const allAudioFiles = new Set<string>();
+        const jsonNoAudio: JsonWithoutAudio[] = [];
 
         // Add JSON files
         jsonFiles.forEach(file => {
@@ -50,18 +57,29 @@ const AudioFileList = () => {
             const response = await fetch(`/data/${file}`);
             if (response.ok) {
               const data = await response.json();
+              let hasAudio = false;
+              let entryCount = 0;
+              
               if (data.entries) {
+                entryCount = data.entries.length;
                 data.entries.forEach((entry: any) => {
                   if (entry.audio?.en) {
                     allAudioFiles.add(entry.audio.en);
+                    hasAudio = true;
                   }
                 });
+              }
+              
+              if (!hasAudio && entryCount > 0) {
+                jsonNoAudio.push({ name: file, entryCount });
               }
             }
           } catch (err) {
             console.error(`Error loading ${file}:`, err);
           }
         }
+        
+        setJsonWithoutAudio(jsonNoAudio);
 
         // Add MP3 files
         Array.from(allAudioFiles).forEach(mp3 => {
@@ -104,6 +122,21 @@ const AudioFileList = () => {
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">All JSON & Audio Files (Alphabetically)</h1>
+      
+      {jsonWithoutAudio.length > 0 && (
+        <Card className="p-4 mb-6 border-yellow-500 bg-yellow-50">
+          <h2 className="font-semibold text-lg mb-3 text-yellow-800">⚠️ JSON Files Without Audio ({jsonWithoutAudio.length})</h2>
+          <div className="space-y-2">
+            {jsonWithoutAudio.map((item, index) => (
+              <div key={index} className="text-sm">
+                <code className="text-yellow-900">{item.name}</code>
+                <span className="text-yellow-700 ml-2">({item.entryCount} entries)</span>
+              </div>
+            ))}
+          </div>
+        </Card>
+      )}
+      
       <div className="grid grid-cols-2 gap-4 mb-6">
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-2">
