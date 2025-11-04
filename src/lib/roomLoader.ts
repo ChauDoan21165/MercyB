@@ -107,12 +107,14 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       keywordMenu = { en: enList, vi: viList };
     }
 
-    // Build merged entries and normalize audio path to lowercase snake_case (no playback fallback anywhere)
+    // Build merged entries and normalize audio path to /audio/ directory
     const merged = Array.isArray(jsonData?.entries) ? (jsonData.entries as any[]).map((entry: any, idx: number) => {
       let audioPath = entry?.audio ? String(entry.audio).replace(/^\//, '') : undefined;
       if (audioPath) {
-        // Force lowercase snake_case: spaces/hyphens → underscores, remove capitals
-        audioPath = audioPath.toLowerCase().replace(/[\s-]+/g, '_');
+        // Ensure audio files are in /audio/ directory
+        if (!audioPath.startsWith('audio/')) {
+          audioPath = `audio/${audioPath}`;
+        }
       }
       
       // Extract primary keyword (first keyword from arrays) for matching
@@ -140,7 +142,7 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
     return {
       merged,
       keywordMenu,
-      audioBasePath: '/'
+      audioBasePath: '/audio/'
     };
   } catch (error) {
     console.error('Failed to load room:', error);
