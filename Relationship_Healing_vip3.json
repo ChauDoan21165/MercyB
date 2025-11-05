@@ -21,134 +21,62 @@
   "entries": [
     {
       "slug": "communication",
-      "keywords_en": [
-        "communication",
-        "listening",
-        "empathy"
-      ],
-      "keywords_vi": [
-        "giao tiếp",
-        "lắng nghe",
-        "đồng cảm"
-      ],
+      "keywords_en": ["communication", "listening", "empathy"],
+      "keywords_vi": ["giao tiếp", "lắng nghe", "đồng cảm"],
       "copy": {
-        "en": "Open communication is the foundation of relationship healing. Practice active listening by giving your partner full attention without interruption, fostering empathy and understanding. Share your thoughts honestly, using “I” statements to avoid blame. Engage in calm, respectful discussions to resolve conflicts and build trust. Connect with a trusted friend or counselor for perspective, helping you strengthen your bond with clarity, care, and daily resilience.",
-        "vi": "Giao tiếp cởi mở là nền tảng của việc hàn gắn mối quan hệ. Hãy lắng nghe chủ động bằng cách dành trọn sự chú ý cho đối phương mà không ngắt lời, nuôi dưỡng sự đồng cảm và thấu hiểu. Chia sẻ suy nghĩ một cách trung thực, sử dụng câu “Tôi cảm thấy” để tránh đổ lỗi. Trao đổi nhẹ nhàng, tôn trọng để giải quyết xung đột và xây dựng niềm tin. Kết nối với bạn bè hoặc cố vấn đáng tin để có góc nhìn, giúp bạn củng cố mối gắn kết với sự rõ ràng, quan tâm và kiên định mỗi ngày."
+        "en": "Open communication is the foundation of relationship healing. Practice active listening by giving your partner full attention without interruption, fostering empathy and understanding. Share your thoughts honestly, using “I” statements to avoid blame. Engage in calm, respectful discussions to resolve conflicts and build trust. Connect with a trusted friend or counselor for perspective, helping you strengthen your bond with clarity, care, and daily resilience."
       },
-      "tags": [
-        "communication",
-        "relationships"
-      ],
+      "tags": ["communication", "relationships"],
       "audio": "relationship_healing_vip3_communication.mp3"
     },
     {
       "slug": "trust-building",
-      "keywords_en": [
-        "trust",
-        "reliability",
-        "connection"
-      ],
-      "keywords_vi": [
-        "niềm tin",
-        "độ tin cậy",
-        "kết nối"
-      ],
+      "keywords_en": ["trust", "reliability", "connection"],
+      "keywords_vi": ["niềm tin", "độ tin cậy", "kết nối"],
       "copy": {
-        "en": "Trust is vital for lasting relationship healing. Be consistent in your actions and keep promises to build reliability and mutual respect. Acknowledge past hurts with honesty and patience, showing commitment to rebuilding trust. Spend quality time together to nurture connection. Seek guidance from a counselor or friend for insight, helping you strengthen your bond with empathy, resilience, and calm clarity.",
-        "vi": "Niềm tin là yếu tố cốt lõi để hàn gắn bền vững. Hãy nhất quán trong hành động và giữ trọn lời hứa để xây dựng độ tin cậy và sự tôn trọng lẫn nhau. Thừa nhận tổn thương quá khứ bằng sự trung thực và kiên nhẫn, thể hiện cam kết trong việc tái tạo niềm tin. Dành thời gian chất lượng bên nhau để nuôi dưỡng kết nối. Tìm sự hướng dẫn từ cố vấn hoặc bạn bè để có góc nhìn sâu sắc, giúp bạn củng cố mối quan hệ bằng sự đồng cảm, nghị lực và bình tâm."
+        "en": "Trust is vital for lasting relationship healing. Be consistent in your actions and keep promises to build reliability and mutual respect. Acknowledge past hurts with honesty and patience, showing commitment to rebuilding trust. Spend quality time together to nurture connection. Seek guidance from a counselor or friend for insight, helping you strengthen your bond with empathy, resilience, and calm clarity."
       },
-      "tags": [
-        "trust",
-        "relationships"
-      ],
+      "tags": ["trust", "relationships"],
       "audio": "relationship_healing_vip3_trust_building.mp3"
     },
     {
       "slug": "emotional-connection",
-      "keywords_en": [
-        "emotional connection",
-        "empathy",
-        "bonding"
-      ],
-      "keywords_vi": [
-        "kết nối cảm xúc",
-        "đồng cảm",
-        "gắn kết"
-      ],
+      "keywords_en": ["emotional connection", "empathy", "bonding"],
+      "keywords_vi": ["kết nối cảm xúc", "đồng cảm", "gắn kết"],
       "copy": {
-        "en": "Emotional connection is key to deep and lasting healing. Share your feelings openly to build empathy and trust. Spend mindful time together—through shared hobbies, walks, or gentle conversations—to nurture closeness. Listen without judgment to strengthen understanding. Connect with a support group for advice and encouragement, helping you cultivate a grounded, resilient relationship each day.",
-        "vi": "Kết nối cảm xúc là chìa khóa để chữa lành sâu sắc và bền vững. Hãy chia sẻ cảm xúc cởi mở để xây dựng sự đồng cảm và niềm tin. Dành thời gian ý nghĩa bên nhau—qua sở thích chung, dạo chơi hay những cuộc trò chuyện nhẹ nhàng—để nuôi dưỡng sự gần gũi. Lắng nghe mà không phán xét để tăng sự thấu hiểu. Tham gia nhóm hỗ trợ để nhận lời khuyên và khích lệ, giúp bạn nuôi dưỡng mối quan hệ vững vàng và kiên cường mỗi ngày."
+        "en": "Emotional connection is key to deep and lasting healing. Share your feelings openly to build empathy and trust. Spend mindful time together—through shared hobbies, walks, or gentle conversations—to nurture closeness. Listen without judgment to strengthen understanding. Connect with a support group for advice and encouragement, helping you cultivate a grounded, resilient relationship each day."
       },
-      "tags": [
-        "connection",
-        "relationships"
-      ],
+      "tags": ["connection", "relationships"],
       "audio": "relationship_healing_vip3_emotional_connection.mp3"
     },
     {
       "slug": "conflict-resolution",
-      "keywords_en": [
-        "conflict resolution",
-        "communication",
-        "empathy"
-      ],
-      "keywords_vi": [
-        "giải quyết xung đột",
-        "giao tiếp",
-        "đồng cảm"
-      ],
+      "keywords_en": ["conflict resolution", "communication", "empathy"],
+      "keywords_vi": ["giải quyết xung đột", "giao tiếp", "đồng cảm"],
       "copy": {
-        "en": "Conflict resolution reinforces trust and respect. Approach disagreements with calm, open communication, focusing on solutions rather than blame. Listen to your partner’s viewpoint with patience and empathy. Use “I feel” statements to express emotions clearly. Seek guidance from a counselor or friend for balanced perspective, fostering understanding and emotional resilience in your relationship.",
-        "vi": "Giải quyết xung đột củng cố niềm tin và sự tôn trọng. Hãy tiếp cận bất đồng bằng giao tiếp bình tĩnh, cởi mở, tập trung vào giải pháp thay vì đổ lỗi. Lắng nghe quan điểm của đối phương với sự kiên nhẫn và đồng cảm. Sử dụng câu “Tôi cảm thấy” để diễn đạt cảm xúc rõ ràng. Tìm lời khuyên từ cố vấn hoặc bạn bè để có góc nhìn cân bằng, giúp tăng sự thấu hiểu và sức mạnh cảm xúc trong mối quan hệ."
+        "en": "Conflict resolution reinforces trust and respect. Approach disagreements with calm, open communication, focusing on solutions rather than blame. Listen to your partner’s viewpoint with patience and empathy. Use “I feel” statements to express emotions clearly. Seek guidance from a counselor or friend for balanced perspective, fostering understanding and emotional resilience in your relationship."
       },
-      "tags": [
-        "conflict",
-        "relationships"
-      ],
+      "tags": ["conflict", "relationships"],
       "audio": "relationship_healing_vip3_conflict_resolution.mp3"
     },
     {
       "slug": "boundaries",
-      "keywords_en": [
-        "boundaries",
-        "respect",
-        "connection"
-      ],
-      "keywords_vi": [
-        "ranh giới",
-        "tôn trọng",
-        "kết nối"
-      ],
+      "keywords_en": ["boundaries", "respect", "connection"],
+      "keywords_vi": ["ranh giới", "tôn trọng", "kết nối"],
       "copy": {
-        "en": "Healthy boundaries sustain mutual respect and emotional balance. Communicate your needs clearly and listen to your partner’s in return. Discuss limits calmly and remain consistent in maintaining them. Boundaries protect trust, safety, and clarity. Seek support from a counselor or friend to refine communication, helping your relationship grow with harmony and strength.",
-        "vi": "Ranh giới lành mạnh duy trì sự tôn trọng lẫn nhau và cân bằng cảm xúc. Hãy truyền đạt nhu cầu của bạn một cách rõ ràng và lắng nghe nhu cầu của đối phương. Thảo luận giới hạn một cách bình tĩnh và duy trì sự nhất quán trong việc thực hiện. Ranh giới bảo vệ niềm tin, cảm giác an toàn và sự rõ ràng. Tìm sự hỗ trợ từ cố vấn hoặc bạn bè để cải thiện giao tiếp, giúp mối quan hệ phát triển hài hòa và vững chắc."
+        "en": "Healthy boundaries sustain mutual respect and emotional balance. Communicate your needs clearly and listen to your partner’s in return. Discuss limits calmly and remain consistent in maintaining them. Boundaries protect trust, safety, and clarity. Seek support from a counselor or friend to refine communication, helping your relationship grow with harmony and strength."
       },
-      "tags": [
-        "boundaries",
-        "relationships"
-      ],
+      "tags": ["boundaries", "relationships"],
       "audio": "relationship_healing_vip3_boundaries.mp3"
     },
     {
       "slug": "forgiveness",
-      "keywords_en": [
-        "forgiveness",
-        "healing",
-        "empathy"
-      ],
-      "keywords_vi": [
-        "tha thứ",
-        "chữa lành",
-        "đồng cảm"
-      ],
+      "keywords_en": ["forgiveness", "healing", "empathy"],
+      "keywords_vi": ["tha thứ", "chữa lành", "đồng cảm"],
       "copy": {
-        "en": "Forgiveness is the final step toward lasting healing. Reflect on past wounds and practice letting go without resentment. Communicate openly with your partner to rebuild trust and emotional safety. Seek support from a counselor or friend to process emotions with compassion. This act of release fosters empathy, resilience, and peace, helping your relationship grow with renewed clarity and care.",
-        "vi": "Tha thứ là bước cuối cùng hướng đến sự chữa lành bền vững. Hãy suy ngẫm về những tổn thương trong quá khứ và thực hành buông bỏ mà không giữ oán giận. Giao tiếp cởi mở với đối phương để xây dựng lại niềm tin và cảm giác an toàn cảm xúc. Tìm sự hỗ trợ từ cố vấn hoặc bạn bè để xử lý cảm xúc bằng lòng trắc ẩn. Hành động buông bỏ này nuôi dưỡng sự đồng cảm, nghị lực và bình an, giúp mối quan hệ phát triển với sự sáng rõ và quan tâm mới mẻ."
+        "en": "Forgiveness is the final step toward lasting healing. Reflect on past wounds and practice letting go without resentment. Communicate openly with your partner to rebuild trust and emotional safety. Seek support from a counselor or friend to process emotions with compassion. This act of release fosters empathy, resilience, and peace, helping your relationship grow with renewed clarity and care."
       },
-      "tags": [
-        "forgiveness",
-        "relationships"
-      ],
+      "tags": ["forgiveness", "relationships"],
       "audio": "relationship_healing_vip3_forgiveness.mp3"
     }
   ],
@@ -158,6 +86,5 @@
     "entry_count": 6,
     "tier": "vip3",
     "room_color": "#4A90E2"
-  },
-  "audio": "elationship_healing_vip3_boundaries.mp3"
+  }
 }
