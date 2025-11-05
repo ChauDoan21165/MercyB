@@ -42,38 +42,43 @@ function extractNames(jsonPath) {
   }
 }
 
-// Scan public directory for JSON files
+// Scan tier directories for JSON files
 function scanRoomFiles() {
-  const files = fs.readdirSync(publicDir);
-  const roomFiles = files.filter(f => f.endsWith('.json') && !f.startsWith('.'));
-  
+  const tiers = ['free', 'vip1', 'vip2', 'vip3'];
   const manifest = {};
   const dataImports = {};
   
-  for (const filename of roomFiles) {
-    const roomId = filenameToRoomId(filename);
-    const jsonPath = path.join(publicDir, filename);
-    const names = extractNames(jsonPath);
+  for (const tier of tiers) {
+    const tierDir = path.join(publicDir, 'data', tier);
     
-    if (!names) continue;
+    // Skip if tier directory doesn't exist
+    if (!fs.existsSync(tierDir)) {
+      console.warn(`Warning: Tier directory not found: ${tierDir}`);
+      continue;
+    }
     
-    // Extract tier from roomId
-    let tier = 'free';
-    if (roomId.endsWith('-vip1')) tier = 'vip1';
-    else if (roomId.endsWith('-vip2')) tier = 'vip2';
-    else if (roomId.endsWith('-vip3')) tier = 'vip3';
+    const files = fs.readdirSync(tierDir);
+    const roomFiles = files.filter(f => f.endsWith('.json') && !f.startsWith('.'));
     
-    // Add to manifest
-    manifest[roomId] = filename;
-    
-    // Add to dataImports
-    dataImports[roomId] = {
-      id: roomId,
-      nameEn: names.nameEn,
-      nameVi: names.nameVi,
-      tier,
-      hasData: true
-    };
+    for (const filename of roomFiles) {
+      const roomId = filenameToRoomId(filename);
+      const jsonPath = path.join(tierDir, filename);
+      const names = extractNames(jsonPath);
+      
+      if (!names) continue;
+      
+      // Add to manifest with tier path
+      manifest[roomId] = `data/${tier}/${filename}`;
+      
+      // Add to dataImports
+      dataImports[roomId] = {
+        id: roomId,
+        nameEn: names.nameEn,
+        nameVi: names.nameVi,
+        tier,
+        hasData: true
+      };
+    }
   }
   
   return { manifest, dataImports };
