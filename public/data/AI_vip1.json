@@ -1,0 +1,80 @@
+{
+  "tier": "VIP1 / VIP1",
+  "title": {
+    "en": "AI Advanced Techniques VIP1",
+    "vi": "Kỹ Thuật AI Nâng Cao VIP1"
+  },
+  "content": {
+    "en": "Fine-tune, align, and integrate multimodal AI with precision and efficiency. Master cutting-edge methods like LoRA, RLHF, DPO, and Graph RAG to build smarter, task-specific models. Apply these techniques in real projects with minimal resources. Discover deeper guidance in higher tiers.",
+    "vi": "Tinh chỉnh, căn chỉnh và tích hợp AI đa phương thức với độ chính xác và hiệu quả cao. Làm chủ các phương pháp tiên tiến như LoRA, RLHF, DPO và Graph RAG để xây dựng mô hình thông minh, phù hợp tác vụ. Áp dụng thực tế với nguồn lực tối thiểu. Khám phá thêm ở cấp độ cao hơn.",
+    "audio": "ai_advanced_intro_vip1.mp3"
+  },
+  "entries": [
+    {
+      "slug": "fine-tuning-task-adaptation",
+      "keywords_en": ["fine-tuning", "task", "pretrained", "weights"],
+      "keywords_vi": ["tinh chỉnh", "tác vụ", "tiền huấn luyện", "trọng số"],
+      "copy": {
+        "en": "Update weights on new data to adapt BERT. Use small learning rates. Validate to avoid overfitting. Start with a tiny dataset.",
+        "vi": "Cập nhật trọng số trên dữ liệu mới để thích nghi BERT. Dùng tốc độ học nhỏ. Xác thực để tránh overfitting. Bắt đầu với tập dữ liệu nhỏ."
+      },
+      "tags": ["fine-tuning", "adaptation"],
+      "audio": "fine_tuning_for_task_adaptation_vip1.mp3"
+    },
+    {
+      "slug": "low-rank-adaptation",
+      "keywords_en": ["LoRA", "low-rank", "efficient", "parameters"],
+      "keywords_vi": ["LoRA", "hạng thấp", "tối ưu", "tham số"],
+      "copy": {
+        "en": "Add low-rank matrices to update models fast. Choose rank wisely. Apply LoRA to a language model for a custom task.",
+        "vi": "Thêm ma trận hạng thấp để cập nhật mô hình nhanh. Chọn hạng hợp lý. Áp dụng LoRA cho mô hình ngôn ngữ theo tác vụ riêng."
+      },
+      "tags": ["lora", "efficiency"],
+      "audio": "02_lora_adaptation.mp3"
+    },
+    {
+      "slug": "rlhf-alignment",
+      "keywords_en": ["RLHF", "alignment", "reward", "human feedback"],
+      "keywords_vi": ["RLHF", "căn chỉnh", "phần thưởng", "phản hồi"],
+      "copy": {
+        "en": "Train a reward model from human preferences. Use it to align AI. Test on a chatbot. Quality feedback is key.",
+        "vi": "Huấn luyện mô hình phần thưởng từ phản hồi người dùng. Dùng để căn chỉnh AI. Thử trên chatbot. Phản hồi chất lượng là chìa khóa."
+      },
+      "tags": ["rlhf", "alignment"],
+      "audio": "reinforcement_learning_with_feedback_vip1.mp3"
+    },
+    {
+      "slug": "direct-preference-optimization",
+      "keywords_en": ["DPO", "preference", "pairwise", "alignment"],
+      "keywords_vi": ["DPO", "sở thích", "cặp đôi", "căn chỉnh"],
+      "copy": {
+        "en": "Align AI using pairwise preferences. No reward model needed. Handle noisy data carefully. Try on a small preference set.",
+        "vi": "Căn chỉnh AI bằng cặp sở thích. Không cần mô hình phần thưởng. Xử lý dữ liệu nhiễu cẩn thận. Thử trên tập sở thích nhỏ."
+      },
+      "tags": ["dpo", "alignment"],
+      "audio": "direct_preference_optimization_vip1.mp3"
+    },
+    {
+      "slug": "multimodal-integration",
+      "keywords_en": ["multimodal", "text", "image", "audio", "fusion"],
+      "keywords_vi": ["đa phương thức", "văn bản", "hình ảnh", "âm thanh", "hòa trộn"],
+      "copy": {
+        "en": "Fuse text, image, and audio in one model. Bridge modality gaps. Try a simple video captioning task.",
+        "vi": "Kết hợp văn bản, hình ảnh, âm thanh trong một mô hình. Vượt qua khoảng cách phương thức. Thử tạo phụ đề video đơn giản."
+      },
+      "tags": ["multimodal", "fusion"],
+      "audio": "multimodal_data_integration_vip1.mp3"
+    },
+    {
+      "slug": "graph-augmented-retrieval",
+      "keywords_en": ["graph RAG", "knowledge graph", "retrieval", "structured"],
+      "keywords_vi": ["graph RAG", "đồ thị tri thức", "truy xuất", "cấu trúc"],
+      "copy": {
+        "en": "Use knowledge graphs to boost retrieval. Build a small graph. Outperforms standard RAG. Needs clean data.",
+        "vi": "Dùng đồ thị tri thức để tăng cường truy xuất. Xây dựng đồ thị nhỏ. Vượt trội RAG tiêu chuẩn. Cần dữ liệu sạch."
+      },
+      "tags": ["graph-rag", "retrieval"],
+      "audio": "06_graph_rag.mp3"
+    }
+  ]
+}

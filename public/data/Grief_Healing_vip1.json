@@ -1,0 +1,127 @@
+{
+  "name": "Grief Healing",
+  "name_vi": "Chữa Lành Nỗi Đau Mất Mát",
+  "description": "In-depth strategies for healing from grief with support and care",
+  "keywords_en": [
+    "grief",
+    "healing",
+    "support system",
+    "self-care"
+  ],
+  "keywords_vi": [
+    "mất mát",
+    "chữa lành",
+    "hệ thống hỗ trợ",
+    "tự chăm sóc"
+  ],
+  "entries": [
+    {
+      "slug": "processing-loss",
+      "keywords_en": [
+        "processing loss",
+        "grief",
+        "healing"
+      ],
+      "keywords_vi": [
+        "xử lý mất mát",
+        "nỗi đau",
+        "chữa lành"
+      ],
+      "copy": {
+        "en": "Healing from grief begins with processing loss. Allow yourself to feel emotions like sadness or anger without judgment. Journal to express thoughts and reflect on memories. Connect with supportive friends or groups for comfort. Practice self-compassion to foster resilience, helping you navigate grief with hope and emotional strength.",
+        "vi": "Chữa lành nỗi đau mất mát bắt đầu bằng việc học cách đối diện và xử lý tổn thất. Hãy cho phép bản thân cảm nhận nỗi buồn hay tức giận mà không phán xét. Viết nhật ký để bày tỏ suy nghĩ và hồi tưởng kỷ niệm. Kết nối với bạn bè hoặc nhóm hỗ trợ để tìm sự an ủi. Thực hành lòng trắc ẩn để nuôi dưỡng nghị lực, giúp bạn vượt qua nỗi đau với hy vọng và sức mạnh cảm xúc."
+      },
+      "tags": [
+        "grief",
+        "healing"
+      ],
+      "audio": {
+        "en": "grief_healing_vip1_processing_loss_en.mp3",
+        "vi": "grief_healing_vip1_processing_loss_vi.mp3"
+      }
+    },
+    {
+      "slug": "emotional-expression",
+      "keywords_en": [
+        "emotional expression",
+        "grief",
+        "healing"
+      ],
+      "keywords_vi": [
+        "bày tỏ cảm xúc",
+        "nỗi đau",
+        "chữa lành"
+      ],
+      "copy": {
+        "en": "Emotional expression supports grief healing. Share your feelings through talking, writing, or creative outlets like art. Join a support group to connect with others who understand. Allow tears or memories to flow freely. These steps foster resilience, helping you heal with clarity and emotional strength.",
+        "vi": "Bày tỏ cảm xúc giúp quá trình chữa lành nỗi đau trở nên nhẹ nhàng hơn. Hãy chia sẻ cảm xúc qua trò chuyện, viết lách hoặc các hình thức sáng tạo như nghệ thuật. Tham gia nhóm hỗ trợ để kết nối với những người thấu hiểu. Cho phép nước mắt hay ký ức tuôn chảy tự nhiên, giúp bạn chữa lành với sự sáng tỏ và sức mạnh cảm xúc."
+      },
+      "tags": [
+        "emotions",
+        "grief"
+      ],
+      "audio": {
+        "en": "grief_healing_vip1_emotional_expression_en.mp3",
+        "vi": "grief_healing_vip1_emotional_expression_vi.mp3"
+      }
+    },
+    {
+      "slug": "support-system",
+      "keywords_en": [
+        "support system",
+        "community",
+        "empathy"
+      ],
+      "keywords_vi": [
+        "hệ thống hỗ trợ",
+        "cộng đồng",
+        "đồng cảm"
+      ],
+      "copy": {
+        "en": "A strong support system enhances grief healing. Share your experiences with friends, family, or support groups to foster empathy and reduce isolation. Regular check-ins provide comfort and understanding. These connections build resilience, helping you navigate grief with hope and strength daily.",
+        "vi": "Một hệ thống hỗ trợ vững chắc giúp quá trình chữa lành nỗi đau sâu sắc hơn. Hãy chia sẻ trải nghiệm của bạn với bạn bè, gia đình hoặc nhóm hỗ trợ để xây dựng sự đồng cảm và giảm cảm giác cô lập. Việc trò chuyện thường xuyên mang lại an ủi và thấu hiểu. Những kết nối này giúp bạn thêm nghị lực để vượt qua nỗi đau mỗi ngày với hy vọng và sức mạnh."
+      },
+      "tags": [
+        "support",
+        "grief"
+      ],
+      "audio": {
+        "en": "grief_healing_vip1_support_system_en.mp3",
+        "vi": "grief_healing_vip1_support_system_vi.mp3"
+      }
+    },
+    {
+      "slug": "self-care",
+      "keywords_en": [
+        "self-care",
+        "well-being",
+        "resilience"
+      ],
+      "keywords_vi": [
+        "tự chăm sóc",
+        "sức khỏe tinh thần",
+        "kiên cường"
+      ],
+      "copy": {
+        "en": "Self-care supports grief healing. Prioritize rest, healthy eating, and gentle exercise to nurture your body and mind. Set aside time for calming activities like reading or walking. Connect with supportive friends for encouragement. These steps build resilience, helping you heal with strength and hope.",
+        "vi": "Tự chăm sóc giúp quá trình chữa lành nỗi đau diễn ra bền vững hơn. Hãy ưu tiên nghỉ ngơi, ăn uống lành mạnh và tập luyện nhẹ nhàng để nuôi dưỡng cơ thể lẫn tâm trí. Dành thời gian cho hoạt động thư giãn như đọc sách hoặc đi bộ. Kết nối với bạn bè hỗ trợ để được khích lệ. Những bước này giúp bạn xây dựng nghị lực, chữa lành với sức mạnh và hy vọng."
+      },
+      "tags": [
+        "self-care",
+        "grief"
+      ],
+      "audio": {
+        "en": "grief_healing_vip1_self_care_en.mp3",
+        "vi": "grief_healing_vip1_self_care_vi.mp3"
+      }
+    }
+  ],
+  "meta": {
+    "created_at": "2025-10-27T00:00:00+00:00",
+    "updated_at": "2025-10-27T00:00:00+00:00",
+    "entry_count": 4,
+    "tier": "vip1",
+    "room_color": "#4A90E2"
+  },
+  "audio": "grief_healing_vip1_self_care_en.mp3"
+}

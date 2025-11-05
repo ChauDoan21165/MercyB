@@ -1,0 +1,57 @@
+{
+  "tier": "VIP1 / VIP1",
+  "title": {
+    "en": "Men’s Mental Health",
+    "vi": "Sức Khỏe Tinh Thần Nam Giới"
+  },
+  "content": {
+    "en": "In-depth strategies tailored for men’s mental health, providing practical tools to manage stress, build emotional awareness, and foster support networks. Incorporate daily check-ins to track moods and identify patterns, engage in walk-and-talk sessions for open expression, integrate exercise to naturally elevate mood, and set purposeful goals to combat emptiness. These action-oriented approaches encourage resilience, self-compassion, and consistent habits in a supportive, non-judgmental framework. Start small to cultivate lasting well-being and stronger connections. Discover deeper guidance in higher tiers.",
+    "vi": "Các chiến lược sâu sắc dành riêng cho sức khỏe tinh thần nam giới, cung cấp công cụ thực tế để quản lý căng thẳng, xây dựng nhận thức cảm xúc và nuôi dưỡng mạng lưới hỗ trợ. Kết hợp kiểm tra hàng ngày để theo dõi tâm trạng và nhận diện mẫu hình, tham gia buổi đi bộ nói chuyện để biểu đạt cởi mở, tích hợp tập luyện để nâng cao tâm trạng tự nhiên, và đặt mục tiêu có mục đích để chống lại sự trống rỗng. Những cách tiếp cận hướng đến hành động này khuyến khích khả năng phục hồi, lòng tự từ bi và thói quen nhất quán trong khuôn khổ hỗ trợ, không phán xét. Bắt đầu nhỏ để nuôi dưỡng sức khỏe lâu dài và kết nối mạnh mẽ hơn. Khám phá thêm ở cấp độ cao hơn."
+  },
+  "entries": [
+    {
+      "slug": "check-in",
+      "keywords_en": ["check in", "emotion", "health"],
+      "keywords_vi": ["kiểm tra", "cảm xúc", "sức khỏe"],
+      "copy": {
+        "en": "Use a structured morning check-in to track mood and promote emotional health for men. Rate your feelings from one to ten and jot down any triggers or positive influences from the previous day. Review these patterns each week to gain insights into what affects your well-being. Pair this practice with a trusted friend or mentor for shared accountability, discussing entries to deepen self-awareness and encourage mutual support. This simple habit builds resilience, helps identify early signs of stress, and fosters a proactive approach to mental health maintenance over time.",
+        "vi": "Dùng kiểm tra buổi sáng có cấu trúc để theo dõi tâm trạng và thúc đẩy sức khỏe cảm xúc cho nam giới. Đánh giá cảm xúc từ một đến mười và ghi lại bất kỳ yếu tố kích hoạt hoặc ảnh hưởng tích cực từ ngày trước. Xem lại các mẫu hình này mỗi tuần để có cái nhìn sâu sắc về những gì ảnh hưởng đến sức khỏe. Kết nối thực hành này với người bạn hoặc cố vấn tin tưởng để cùng chịu trách nhiệm, thảo luận các mục để tăng cường tự nhận thức và khuyến khích hỗ trợ lẫn nhau. Thói quen đơn giản này xây dựng khả năng phục hồi, giúp nhận diện dấu hiệu căng thẳng sớm và thúc đẩy cách tiếp cận chủ động để duy trì sức khỏe tinh thần theo thời gian."
+      },
+      "tags": ["check", "health"],
+      "audio": "mmh_vip1_1_en.mp3"
+    },
+    {
+      "slug": "walk-talk",
+      "keywords_en": ["walk talk", "friend", "support"],
+      "keywords_vi": ["đi bộ nói", "bạn bè", "hỗ trợ"],
+      "copy": {
+        "en": "Plan a weekly forty-five-minute walk-and-talk session to support men’s mental health through open dialogue. Use 'I feel' statements to express emotions clearly and authentically, creating a safe space for vulnerability. Offer no advice unless invited, focusing instead on active listening and empathy. Rotate partners or join a men’s group to vary perspectives and maintain engaging, supportive conversations. This practice combines physical activity with emotional release, reducing stress, building trust, and strengthening relationships for long-term resilience and well-being.",
+        "vi": "Lên kế hoạch cho buổi đi bộ nói chuyện bốn mươi lăm phút mỗi tuần để hỗ trợ sức khỏe tinh thần nam giới qua đối thoại cởi mở. Dùng câu 'Tôi cảm thấy' để diễn đạt cảm xúc rõ ràng và chân thực, tạo không gian an toàn cho sự dễ bị tổn thương. Không đưa lời khuyên trừ khi được hỏi, thay vào đó tập trung vào lắng nghe tích cực và đồng cảm. Luân phiên bạn đồng hành hoặc tham gia nhóm nam giới để đa dạng góc nhìn và duy trì cuộc trò chuyện hấp dẫn, hỗ trợ. Thực hành này kết hợp hoạt động thể chất với giải phóng cảm xúc, giảm căng thẳng, xây dựng lòng tin và củng cố mối quan hệ cho khả năng phục hồi và sức khỏe lâu dài."
+      },
+      "tags": ["talk", "health"],
+      "audio": "mmh_vip1_2_en.mp3"
+    },
+    {
+      "slug": "exercise",
+      "keywords_en": ["exercise", "mood", "health"],
+      "keywords_vi": ["tập luyện", "tâm trạng", "sức khỏe"],
+      "copy": {
+        "en": "Exercise lifts the male mood naturally and supports overall mental health. Commit to training or running for thirty minutes at least three times a week, choosing activities like weightlifting or jogging that build strength and endurance. Track improvements in energy levels, focus, and sleep quality to stay motivated. Challenge a gym buddy or join a group class for accountability and camaraderie, turning workouts into opportunities for connection. Consistent physical activity releases endorphins, reduces anxiety, and fosters a sense of accomplishment, contributing to long-term emotional resilience.",
+        "vi": "Tập luyện giúp cải thiện tâm trạng nam giới tự nhiên và hỗ trợ sức khỏe tinh thần tổng thể. Cam kết tập luyện hoặc chạy ba mươi phút ít nhất ba lần mỗi tuần, chọn hoạt động như nâng tạ hoặc chạy bộ để xây dựng sức mạnh và sức bền. Theo dõi cải thiện trong mức năng lượng, sự tập trung và chất lượng giấc ngủ để duy trì động lực. Thử thách với bạn tập gym hoặc tham gia lớp nhóm để có trách nhiệm và tình bạn, biến buổi tập thành cơ hội kết nối. Hoạt động thể chất nhất quán giải phóng endorphin, giảm lo âu và nuôi dưỡng cảm giác thành tựu, góp phần vào khả năng phục hồi cảm xúc lâu dài."
+      },
+      "tags": ["exercise", "health"],
+      "audio": "mmh_vip1_3_en.mp3"
+    },
+    {
+      "slug": "purpose",
+      "keywords_en": ["purpose", "goal", "health"],
+      "keywords_vi": ["mục đích", "mục tiêu", "sức khỏe"],
+      "copy": {
+        "en": "Combat emptiness by setting one meaningful weekly goal to enhance men’s mental health and direction. Choose objectives aligned with personal values, like learning a skill or helping others, and break them into actionable steps. Track progress daily and celebrate completion with a small reward to build positive reinforcement. Share your goals and results with a mentor or peer for feedback and encouragement, fostering accountability. This practice reignites motivation, provides a sense of achievement, and contributes to overall emotional strength and purpose over time.",
+        "vi": "Chống lại cảm giác trống rỗng bằng cách đặt một mục tiêu ý nghĩa mỗi tuần để nâng cao sức khỏe tinh thần và định hướng cho nam giới. Chọn mục tiêu phù hợp với giá trị cá nhân, như học kỹ năng hoặc giúp đỡ người khác, và phân chia thành bước hành động. Theo dõi tiến trình hàng ngày và ăn mừng hoàn thành với phần thưởng nhỏ để xây dựng củng cố tích cực. Chia sẻ mục tiêu và kết quả với cố vấn hoặc bạn đồng hành để có phản hồi và khuyến khích, nuôi dưỡng trách nhiệm. Thực hành này khơi dậy lại động lực, mang lại cảm giác thành tựu và góp phần vào sức mạnh cảm xúc tổng thể và mục đích theo thời gian."
+      },
+      "tags": ["purpose", "health"],
+      "audio": "mmh_vip1_4_en.mp3"
+    }
+  ]
+}

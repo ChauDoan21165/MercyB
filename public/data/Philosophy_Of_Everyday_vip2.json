@@ -1,0 +1,42 @@
+{
+  "id": "philosophy-of-everyday-vip2",
+  "tier": "vip2",
+  "title": {
+    "en": "Philosophy of Everyday VIP2",
+    "vi": "Triết Lý Cuộc Sống Hàng Ngày VIP2"
+  },
+  "keywords": {
+    "en": ["wisdom", "awareness", "presence", "connection"],
+    "vi": ["trí tuệ", "nhận thức", "hiện diện", "kết nối"]
+  },
+  "entries": [
+    {
+      "keywordEn": "wisdom",
+      "keywordVi": "trí tuệ",
+      "replyEn": "Wisdom is not knowledge accumulated, but the courage to let go of what no longer serves. It grows in silence, in the pause between action and reaction. True wisdom is knowing when to speak and when to listen, when to act and when to wait.",
+      "replyVi": "Trí tuệ không phải kiến thức tích lũy, mà là can đảm buông bỏ điều không còn phục vụ. Nó mọc lên trong im lặng, trong khoảng dừng giữa hành động và phản ứng. Trí tuệ thật sự là biết khi nào nên nói và khi nào nên lắng nghe, khi nào nên hành động và khi nào nên chờ đợi.",
+      "audio": "philosophy_vip2_1_en.mp3"
+    },
+    {
+      "keywordEn": "presence",
+      "keywordVi": "hiện diện",
+      "replyEn": "Presence is the greatest gift you can give. When you are fully here, time expands. The past and future dissolve into this moment. In presence, you meet life as it is — not as you wish it to be.",
+      "replyVi": "Hiện diện là món quà lớn nhất bạn có thể trao. Khi bạn hoàn toàn ở đây, thời gian mở rộng. Quá khứ và tương lai tan biến vào khoảnh khắc này. Trong sự hiện diện, bạn gặp gỡ cuộc sống như nó vốn có — không như bạn mong muốn.",
+      "audio": "philosophy_vip2_2_en.mp3"
+    },
+    {
+      "keywordEn": "awareness",
+      "keywordVi": "nhận thức",
+      "replyEn": "Awareness is the light that reveals what was always there. It is not about seeing more, but seeing clearly. With awareness, you notice the subtle shifts — a breath, a thought, a feeling — and choose how to respond.",
+      "replyVi": "Nhận thức là ánh sáng hé lộ những gì luôn tồn tại. Không phải thấy nhiều hơn, mà thấy rõ ràng hơn. Với nhận thức, bạn nhận ra những thay đổi tinh tế — hơi thở, suy nghĩ, cảm xúc — và chọn cách phản hồi.",
+      "audio": "philosophy_vip2_3_en.mp3"
+    },
+    {
+      "keywordEn": "connection",
+      "keywordVi": "kết nối",
+      "replyEn": "Connection begins with seeing another as they are, not as a reflection of your needs. True connection is mutual presence — two souls meeting without agenda, where understanding flows naturally.",
+      "replyVi": "Kết nối bắt đầu từ việc nhìn người khác như họ vốn là, không phải hình ảnh phản chiếu nhu cầu của bạn. Kết nối thật sự là sự hiện diện lẫn nhau — hai tâm hồn gặp gỡ không toan tính, nơi sự thấu hiểu tự nhiên tuôn chảy.",
+      "audio": "philosophy_vip2_4_en.mp3"
+    }
+  ]
+}
