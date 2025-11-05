@@ -42,43 +42,45 @@ function extractNames(jsonPath) {
   }
 }
 
-// Scan tier directories for JSON files
+// Scan public/data directory for JSON files (flat structure)
 function scanRoomFiles() {
-  const tiers = ['free', 'vip1', 'vip2', 'vip3'];
+  const dataDir = path.join(publicDir, 'data');
+  
+  if (!fs.existsSync(dataDir)) {
+    console.error(`Error: Data directory not found: ${dataDir}`);
+    return { manifest: {}, dataImports: {} };
+  }
+  
+  const files = fs.readdirSync(dataDir);
+  const roomFiles = files.filter(f => f.endsWith('.json') && !f.startsWith('.'));
+  
   const manifest = {};
   const dataImports = {};
   
-  for (const tier of tiers) {
-    const tierDir = path.join(publicDir, 'data', tier);
+  for (const filename of roomFiles) {
+    const roomId = filenameToRoomId(filename);
+    const jsonPath = path.join(dataDir, filename);
+    const names = extractNames(jsonPath);
     
-    // Skip if tier directory doesn't exist
-    if (!fs.existsSync(tierDir)) {
-      console.warn(`Warning: Tier directory not found: ${tierDir}`);
-      continue;
-    }
+    if (!names) continue;
     
-    const files = fs.readdirSync(tierDir);
-    const roomFiles = files.filter(f => f.endsWith('.json') && !f.startsWith('.'));
+    // Extract tier from filename
+    let tier = 'free';
+    if (roomId.endsWith('-vip1')) tier = 'vip1';
+    else if (roomId.endsWith('-vip2')) tier = 'vip2';
+    else if (roomId.endsWith('-vip3')) tier = 'vip3';
     
-    for (const filename of roomFiles) {
-      const roomId = filenameToRoomId(filename);
-      const jsonPath = path.join(tierDir, filename);
-      const names = extractNames(jsonPath);
-      
-      if (!names) continue;
-      
-      // Add to manifest with tier path
-      manifest[roomId] = `data/${tier}/${filename}`;
-      
-      // Add to dataImports
-      dataImports[roomId] = {
-        id: roomId,
-        nameEn: names.nameEn,
-        nameVi: names.nameVi,
-        tier,
-        hasData: true
-      };
-    }
+    // Add to manifest with data/ prefix only
+    manifest[roomId] = `data/${filename}`;
+    
+    // Add to dataImports
+    dataImports[roomId] = {
+      id: roomId,
+      nameEn: names.nameEn,
+      nameVi: names.nameVi,
+      tier,
+      hasData: true
+    };
   }
   
   return { manifest, dataImports };
