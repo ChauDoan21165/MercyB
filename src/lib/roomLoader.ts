@@ -13,19 +13,19 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
 
     // Try multiple filename candidates to handle casing/spacing differences
     const candidates: string[] = [];
-    if (filename) candidates.push(`/${encodeURI(filename)}`);
+    if (filename) candidates.push(`/public/${encodeURI(filename)}`);
 
     // Derive from manifestKey (e.g., meaning-of-life-free -> meaning_of_life_free.json)
     const base = manifestKey.replace(/-/g, '_');
-    candidates.push(`/${base}.json`);
-    candidates.push(`/${base.toLowerCase()}.json`);
+    candidates.push(`/public/data/${base}.json`);
+    candidates.push(`/public/data/${base.toLowerCase()}.json`);
 
     // TitleCase variant: Meaning_Of_Life_Free.json
     const titleCase = base
       .split('_')
       .map(w => w.charAt(0).toUpperCase() + w.slice(1))
       .join('_');
-    candidates.push(`/${titleCase}.json`);
+    candidates.push(`/public/data/${titleCase}.json`);
 
     // Attempt to fetch each candidate
     for (const path of candidates) {
@@ -107,13 +107,13 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       keywordMenu = { en: enList, vi: viList };
     }
 
-    // Build merged entries and normalize audio path to /audio/ directory
+    // Build merged entries and normalize audio path to /public/audio/ directory
     const merged = Array.isArray(jsonData?.entries) ? (jsonData.entries as any[]).map((entry: any, idx: number) => {
       let audioPath = entry?.audio ? String(entry.audio).replace(/^\//, '') : undefined;
       if (audioPath) {
-        // Ensure audio files are in /audio/ directory
-        if (!audioPath.startsWith('audio/')) {
-          audioPath = `audio/${audioPath}`;
+        // Ensure audio files are in /public/audio/ directory
+        if (!audioPath.startsWith('public/audio/')) {
+          audioPath = `public/audio/${audioPath}`;
         }
       }
       
@@ -142,14 +142,14 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
     return {
       merged,
       keywordMenu,
-      audioBasePath: '/audio/'
+      audioBasePath: '/public/audio/'
     };
   } catch (error) {
     console.error('Failed to load room:', error);
     return {
       merged: [],
       keywordMenu: { en: [], vi: [] },
-      audioBasePath: '/'
+      audioBasePath: '/public/audio/'
     };
   }
 };
