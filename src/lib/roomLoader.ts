@@ -7,49 +7,42 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
   const manifestKey = hasTier ? roomId.replace(/_/g, '-') : `${roomId.replace(/_/g, '-')}-${normalizedTier}`;
 
   try {
-    // Prefer manifest mapping in public root
+    // Prefer manifest mapping (flat structure in public/data/)
     const filename = PUBLIC_ROOM_MANIFEST[manifestKey];
     let jsonData: any = null;
 
     // Try multiple filename candidates to handle casing/spacing differences
     const candidates: string[] = [];
-    if (filename) candidates.push(`/public/${encodeURI(filename)}`);
+    
+    // First priority: Use exact manifest path
+    if (filename) {
+      candidates.push(`/public/${encodeURI(filename)}`);
+    }
 
-    // Extract tier from manifestKey for organized subdirectories
-    const tierMatch = manifestKey.match(/-(free|vip1|vip2|vip3)$/);
-    const tierDir = tierMatch ? tierMatch[1] : normalizedTier;
-
-    // Derive from manifestKey (e.g., meaning-of-life-free -> meaning_of_life_free.json)
+    // Fallback: Generate possible filenames from manifestKey
     const base = manifestKey.replace(/-/g, '_');
     
-    // Try tier subdirectory first (new organized structure)
-    candidates.push(`/public/data/${tierDir}/${base}.json`);
-    candidates.push(`/public/data/${tierDir}/${base.toLowerCase()}.json`);
+    // Try common naming patterns in flat structure
+    candidates.push(`/public/data/${base}.json`);
+    candidates.push(`/public/data/${base.toLowerCase()}.json`);
     
     // TitleCase variant with lowercase tier: Meaning_Of_Life_free.json
-    // Split base to separate tier suffix from the rest
     const parts = base.split('_');
     const tierIndex = parts.findIndex(p => ['free', 'vip1', 'vip2', 'vip3'].includes(p.toLowerCase()));
     
     if (tierIndex > 0) {
-      // TitleCase everything before tier, keep tier lowercase
       const beforeTier = parts.slice(0, tierIndex)
         .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
       const tierPart = parts[tierIndex].toLowerCase();
       const titleCaseWithLowerTier = [...beforeTier, tierPart].join('_');
-      candidates.push(`/public/data/${tierDir}/${titleCaseWithLowerTier}.json`);
+      candidates.push(`/public/data/${titleCaseWithLowerTier}.json`);
     }
     
-    // Full TitleCase variant (legacy): Meaning_Of_Life_Free.json
+    // Full TitleCase variant: Meaning_Of_Life_Free.json
     const titleCase = base
       .split('_')
       .map(w => w.charAt(0).toUpperCase() + w.slice(1))
       .join('_');
-    candidates.push(`/public/data/${tierDir}/${titleCase}.json`);
-    
-    // Legacy paths (fallback for backward compatibility)
-    candidates.push(`/public/data/${base}.json`);
-    candidates.push(`/public/data/${base.toLowerCase()}.json`);
     candidates.push(`/public/data/${titleCase}.json`);
 
     // Attempt to fetch each candidate
