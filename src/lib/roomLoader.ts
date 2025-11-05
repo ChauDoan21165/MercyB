@@ -26,7 +26,21 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
     candidates.push(`/public/data/${tierDir}/${base}.json`);
     candidates.push(`/public/data/${tierDir}/${base.toLowerCase()}.json`);
     
-    // TitleCase variant in tier subdirectory: Meaning_Of_Life_Free.json
+    // TitleCase variant with lowercase tier: Meaning_Of_Life_free.json
+    // Split base to separate tier suffix from the rest
+    const parts = base.split('_');
+    const tierIndex = parts.findIndex(p => ['free', 'vip1', 'vip2', 'vip3'].includes(p.toLowerCase()));
+    
+    if (tierIndex > 0) {
+      // TitleCase everything before tier, keep tier lowercase
+      const beforeTier = parts.slice(0, tierIndex)
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
+      const tierPart = parts[tierIndex].toLowerCase();
+      const titleCaseWithLowerTier = [...beforeTier, tierPart].join('_');
+      candidates.push(`/public/data/${tierDir}/${titleCaseWithLowerTier}.json`);
+    }
+    
+    // Full TitleCase variant (legacy): Meaning_Of_Life_Free.json
     const titleCase = base
       .split('_')
       .map(w => w.charAt(0).toUpperCase() + w.slice(1))
