@@ -15,16 +15,27 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
     const candidates: string[] = [];
     if (filename) candidates.push(`/public/${encodeURI(filename)}`);
 
+    // Extract tier from manifestKey for organized subdirectories
+    const tierMatch = manifestKey.match(/-(free|vip1|vip2|vip3)$/);
+    const tierDir = tierMatch ? tierMatch[1] : normalizedTier;
+
     // Derive from manifestKey (e.g., meaning-of-life-free -> meaning_of_life_free.json)
     const base = manifestKey.replace(/-/g, '_');
-    candidates.push(`/public/data/${base}.json`);
-    candidates.push(`/public/data/${base.toLowerCase()}.json`);
-
-    // TitleCase variant: Meaning_Of_Life_Free.json
+    
+    // Try tier subdirectory first (new organized structure)
+    candidates.push(`/public/data/${tierDir}/${base}.json`);
+    candidates.push(`/public/data/${tierDir}/${base.toLowerCase()}.json`);
+    
+    // TitleCase variant in tier subdirectory: Meaning_Of_Life_Free.json
     const titleCase = base
       .split('_')
       .map(w => w.charAt(0).toUpperCase() + w.slice(1))
       .join('_');
+    candidates.push(`/public/data/${tierDir}/${titleCase}.json`);
+    
+    // Legacy paths (fallback for backward compatibility)
+    candidates.push(`/public/data/${base}.json`);
+    candidates.push(`/public/data/${base.toLowerCase()}.json`);
     candidates.push(`/public/data/${titleCase}.json`);
 
     // Attempt to fetch each candidate
