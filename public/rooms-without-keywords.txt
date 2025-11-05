@@ -1,0 +1,23 @@
+ROOMS WITHOUT KEYWORDS
+======================
+
+The following JSON files in public/data/ do NOT have any keyword definitions:
+
+1. Meaning_Of_Life_vip1.json
+2. Meaning_Of_Life_vip2.json  
+3. Meaning_Of_Life_vip3.json
+4. Philosophy_Of_Everyday_vip1.json
+
+ANALYSIS:
+---------
+These 4 files lack keyword structures entirely, meaning the keyword responder system cannot match user queries to these rooms. The files only contain tier, title, and content fields.
+
+NOTE: Other rooms use various keyword formats:
+- keywords_en/keywords_vi (in entries or root)
+- keywords object with en/vi sub-objects
+- keywords_dict with entry mappings
+- keyword_menu arrays
+
+RECOMMENDATION:
+---------------
+Add keyword structures to these 4 files to enable proper room routing and search functionality.
