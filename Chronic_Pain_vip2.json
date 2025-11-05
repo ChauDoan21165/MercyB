@@ -2,129 +2,64 @@
   "name": "Chronic Pain",
   "name_vi": "Quản Lý Đau Mạn Tính",
   "description": "Advanced strategies for managing chronic pain with therapy and mindfulness",
-  "keywords_en": [
-    "chronic pain",
-    "pain management",
-    "physical therapy",
-    "emotional coping",
-    "mindfulness"
-  ],
-  "keywords_vi": [
-    "đau mạn tính",
-    "quản lý cơn đau",
-    "vật lý trị liệu",
-    "đối phó cảm xúc",
-    "chánh niệm"
-  ],
+  "description_vi": "Chiến lược nâng cao để quản lý đau mạn tính bằng trị liệu và chánh niệm",
+  "keywords_en": ["chronic pain", "pain management", "physical therapy", "emotional coping", "mindfulness"],
+  "keywords_vi": ["đau mạn tính", "quản lý cơn đau", "vật lý trị liệu", "đối phó cảm xúc", "chánh niệm"],
+  "tier": "VIP 2",
   "entries": [
     {
       "slug": "pain-management",
-      "keywords_en": [
-        "pain management",
-        "relief",
-        "coping"
-      ],
-      "keywords_vi": [
-        "quản lý cơn đau",
-        "giảm đau",
-        "đối phó"
-      ],
+      "keywords_en": ["pain management", "relief", "coping"],
+      "keywords_vi": ["quản lý cơn đau", "giảm đau", "đối phó"],
       "copy": {
         "en": "Chronic pain management requires a tailored, proactive approach. Consult a doctor to explore treatments like medication, acupuncture, or nerve blocks. Practice daily gentle stretches to improve mobility and reduce stiffness. Track pain patterns in a journal to identify triggers and adjust routines. Stay connected with supportive friends or professionals for encouragement. These steps build resilience, helping you manage pain effectively and maintain a balanced, fulfilling life with greater ease and confidence.",
         "vi": "Quản lý đau mạn tính đòi hỏi cách tiếp cận cá nhân hóa và chủ động. Hãy tham khảo bác sĩ để tìm hiểu các phương pháp như dùng thuốc, châm cứu hoặc chặn dây thần kinh. Thực hiện giãn cơ nhẹ nhàng mỗi ngày để cải thiện khả năng vận động và giảm cứng khớp. Ghi nhật ký để nhận diện yếu tố gây đau và điều chỉnh thói quen. Kết nối với bạn bè hoặc chuyên gia hỗ trợ để nhận khích lệ, giúp bạn quản lý cơn đau hiệu quả và duy trì cuộc sống cân bằng, trọn vẹn."
       },
-      "tags": [
-        "pain management",
-        "health"
-      ],
+      "tags": ["pain management", "health"],
       "audio": "chronic_pain_vip2_pain_management.mp3"
     },
     {
       "slug": "physical-therapy",
-      "keywords_en": [
-        "physical therapy",
-        "mobility",
-        "strength"
-      ],
-      "keywords_vi": [
-        "vật lý trị liệu",
-        "vận động",
-        "sức mạnh"
-      ],
+      "keywords_en": ["physical therapy", "mobility", "strength"],
+      "keywords_vi": ["vật lý trị liệu", "vận động", "sức mạnh"],
       "copy": {
         "en": "Physical therapy is essential for chronic pain management, enhancing strength and mobility. Collaborate with a therapist to design a personalized plan with low-impact exercises like yoga or swimming. These reduce strain while improving function. Track progress to stay motivated, adjusting routines as needed. Consistent effort builds physical resilience, helping you manage pain and improve daily activities with greater ease and confidence over time.",
         "vi": "Vật lý trị liệu rất quan trọng trong quản lý đau mạn tính, giúp tăng cường sức mạnh và khả năng vận động. Hợp tác với chuyên gia để xây dựng kế hoạch tập luyện cá nhân hóa với các bài tập nhẹ nhàng như yoga hoặc bơi lội. Những bài tập này giúp giảm áp lực và cải thiện chức năng. Theo dõi tiến bộ để duy trì động lực và điều chỉnh khi cần thiết. Kiên trì giúp xây dựng sức bền thể chất, hỗ trợ quản lý cơn đau và nâng cao chất lượng sinh hoạt hàng ngày."
       },
-      "tags": [
-        "therapy",
-        "health"
-      ],
+      "tags": ["therapy", "health"],
       "audio": "chronic_pain_vip2_physical_therapy.mp3"
     },
     {
       "slug": "emotional-coping",
-      "keywords_en": [
-        "emotional coping",
-        "resilience",
-        "well-being"
-      ],
-      "keywords_vi": [
-        "đối phó cảm xúc",
-        "kiên cường",
-        "sức khỏe tinh thần"
-      ],
+      "keywords_en": ["emotional coping", "resilience", "well-being"],
+      "keywords_vi": ["đối phó cảm xúc", "kiên cường", "sức khỏe tinh thần"],
       "copy": {
         "en": "Emotional coping is crucial for managing chronic pain’s impact. Practice mindfulness, like deep breathing or meditation, to reduce stress and stay present. Journaling helps process emotions tied to pain, fostering self-awareness. Join a support group to share experiences and gain empathy. These strategies build emotional resilience, empowering you to maintain a positive outlook and navigate pain’s challenges with greater emotional strength and clarity.",
         "vi": "Đối phó cảm xúc là yếu tố quan trọng để quản lý tác động của đau mạn tính. Thực hành chánh niệm, như hít thở sâu hoặc thiền, để giảm căng thẳng và duy trì sự hiện diện. Viết nhật ký giúp xử lý cảm xúc liên quan đến cơn đau và tăng cường tự nhận thức. Tham gia nhóm hỗ trợ để chia sẻ trải nghiệm và nhận sự đồng cảm. Những chiến lược này xây dựng nghị lực cảm xúc, giúp bạn duy trì tinh thần tích cực và vượt qua khó khăn với sự vững vàng và sáng suốt hơn."
       },
-      "tags": [
-        "coping",
-        "mental health"
-      ],
+      "tags": ["coping", "mental health"],
       "audio": "chronic_pain_vip2_emotional_coping.mp3"
     },
     {
       "slug": "support-system",
-      "keywords_en": [
-        "support system",
-        "community",
-        "empathy"
-      ],
-      "keywords_vi": [
-        "hệ thống hỗ trợ",
-        "cộng đồng",
-        "đồng cảm"
-      ],
+      "keywords_en": ["support system", "community", "empathy"],
+      "keywords_vi": ["hệ thống hỗ trợ", "cộng đồng", "đồng cảm"],
       "copy": {
         "en": "A strong support system enhances chronic pain management. Share your experiences with friends, family, or support groups to foster empathy and reduce isolation. Open communication helps loved ones understand your needs. Regular check-ins with a community provide encouragement and practical advice. This network builds resilience, supporting your emotional and physical well-being, helping you navigate pain’s challenges with greater strength and hope.",
         "vi": "Hệ thống hỗ trợ vững chắc giúp nâng cao khả năng quản lý đau mạn tính. Hãy chia sẻ trải nghiệm với bạn bè, gia đình hoặc nhóm hỗ trợ để xây dựng sự đồng cảm và giảm cảm giác cô lập. Giao tiếp cởi mở giúp người thân hiểu rõ nhu cầu của bạn. Thường xuyên tương tác với cộng đồng để nhận được sự khích lệ và lời khuyên thiết thực. Mạng lưới này giúp bạn tăng khả năng phục hồi, hỗ trợ cả sức khỏe thể chất lẫn tinh thần, giúp bạn vượt qua khó khăn với niềm tin và sức mạnh lớn hơn."
       },
-      "tags": [
-        "support",
-        "health"
-      ],
+      "tags": ["support", "health"],
       "audio": "chronic_pain_vip2_support_system.mp3"
     },
     {
       "slug": "mindfulness",
-      "keywords_en": [
-        "mindfulness",
-        "relaxation",
-        "well-being"
-      ],
-      "keywords_vi": [
-        "chánh niệm",
-        "thư giãn",
-        "sức khỏe tinh thần"
-      ],
+      "keywords_en": ["mindfulness", "relaxation", "well-being"],
+      "keywords_vi": ["chánh niệm", "thư giãn", "sức khỏe tinh thần"],
       "copy": {
         "en": "Mindfulness is a powerful tool for chronic pain management. Practice techniques like deep breathing or guided meditation to reduce stress and focus on the present. These methods help lower pain perception and improve emotional resilience. Dedicate time daily to mindfulness, even for a few minutes. Connect with supportive communities to share practices, enhancing your ability to manage pain and maintain a positive outlook daily.",
         "vi": "Chánh niệm là công cụ hữu hiệu trong quản lý đau mạn tính. Thực hành các kỹ thuật như hít thở sâu hoặc thiền có hướng dẫn để giảm căng thẳng và tập trung vào hiện tại. Những phương pháp này giúp giảm cảm nhận về cơn đau và tăng nghị lực cảm xúc. Dành thời gian mỗi ngày cho chánh niệm, dù chỉ vài phút. Kết nối với cộng đồng hỗ trợ để chia sẻ trải nghiệm, giúp bạn quản lý cơn đau và duy trì tinh thần tích cực mỗi ngày."
       },
-      "tags": [
-        "mindfulness",
-        "mental health"
-      ],
+      "tags": ["mindfulness", "mental health"],
       "audio": "chronic_pain_vip2_mindfulness.mp3"
     }
   ],
@@ -135,5 +70,5 @@
     "tier": "vip2",
     "room_color": "#4A90E2"
   },
-  "audio": "chronic_pain_vip3_pain_management.mp3"
+  "audio": "chronic_pain_vip2_pain_management.mp3"
 }
