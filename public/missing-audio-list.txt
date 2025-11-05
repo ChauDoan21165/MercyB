@@ -1,0 +1,67 @@
+Based on analysis of JSON files vs existing audio files in public/audio:
+
+MISSING AUDIO FILES (59 files):
+
+1. 02_lora_adaptation.mp3
+2. 05_hyperparameter_tuning.mp3
+3. 06_graph_rag.mp3
+4. ai_advanced_intro_vip1.mp3
+5. bur_vip2_5_en.mp3
+6. bur_vip3_6_en.mp3
+7. chronic_pain_vip2_emotional_coping.mp3
+8. chronic_pain_vip2_pain_management.mp3
+9. chronic_pain_vip2_physical_therapy.mp3
+10. chronic_pain_vip2_support_system.mp3
+11. chronic_pain_vip3_emotional_coping.mp3
+12. chronic_pain_vip3_pain_management.mp3
+13. chronic_pain_vip3_physical_therapy.mp3
+14. chronic_pain_vip3_resilience.mp3
+15. confidence_vip2_affirmations.mp3
+16. confidence_vip2_goal_setting.mp3
+17. confidence_vip2_social_skills.mp3
+18. confidence_vip3_affirmations.mp3
+19. confidence_vip3_goal_setting.mp3
+20. confidence_vip3_resilience.mp3
+21. confidence_vip3_social_skills.mp3
+22. dep_vip2_5_en.mp3
+23. learning_with_stepwise_reasoning_vip3.mp3
+24. lon_free_1_en.mp3
+25. lon_free_2_en.mp3
+26. lon_vip1_1_en.mp3
+27. lon_vip1_2_en.mp3
+28. lon_vip1_3_en.mp3
+29. lon_vip1_4_en.mp3
+30. lon_vip2_1_en.mp3
+31. lon_vip2_2_en.mp3
+32. lon_vip2_3_en.mp3
+33. lon_vip2_4_en.mp3
+34. lon_vip2_5_en.mp3
+35. lon_vip2_6_en.mp3
+36. lon_vip3_1_en.mp3
+37. lon_vip3_2_en.mp3
+38. lon_vip3_3_en.mp3
+39. lon_vip3_4_en.mp3
+40. lon_vip3_5_en.mp3
+41. lon_vip3_6_en.mp3
+42. lon_vip3_7_en.mp3
+43. lon_vip3_8_en.mp3
+44. mastering_attention_mechanisms_vip2.mp3
+45. mindfulness_vip1_awareness.mp3
+46. mindfulness_vip1_breathing_exercises.mp3
+47. mindfulness_vip1_emotional_regulation.mp3
+48. mindfulness_vip1_meditation.mp3
+49. multimodal_data_integration_vip1.mp3
+50. optimizing_with_expert_mixtures_vip2.mp3
+51. paf_vip3_1_en.mp3
+52. paf_vip3_2_en.mp3
+53. paf_vip3_3_en.mp3
+54. paf_vip3_4_en.mp3
+55. paf_vip3_5_en.mp3
+56. reinforcement_learning_with_feedback_vip1.mp3
+57. slp_vip2_1_en.mp3
+58. slp_vip2_2_en.mp3
+59. strengthening_models_against_attacks_vip2.mp3
+
+Total: 59 missing audio files
+
+These files are referenced in the JSON data files but not present in public/audio folder.
