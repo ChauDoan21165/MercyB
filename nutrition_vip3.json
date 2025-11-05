@@ -1,57 +1,65 @@
 {
+  "name": "Nutrition",
+  "name_vi": "Dinh Dưỡng",
+  "description": "Advanced nutrition mastery through balanced planning, mindful eating, and sustainable habits for lasting vitality.",
+  "description_vi": "Làm chủ dinh dưỡng nâng cao thông qua kế hoạch bữa ăn cân bằng, ăn uống chánh niệm và thói quen bền vững để duy trì sức sống lâu dài.",
   "tier": "VIP 3",
   "entries": [
     {
       "title": "Mastering Balanced Meal Planning",
-      "content": "Mastering balanced meal planning is the foundation of lifelong nourishment. Begin each week by designing simple, colorful meals—half vegetables for fiber and calm digestion, one quarter lean protein for strength, and one quarter whole grains for sustained energy. Add small amounts of healthy fats like olive oil or seeds to keep hormones steady. Prepare three meals in advance to make good choices effortless when life becomes busy. Each week, review what fuels focus and mood, then adjust gently. Once a month, refresh inspiration by learning a new recipe or flavor pairing. True mastery comes from curiosity, not rigidity. Balanced planning invites harmony between health and enjoyment. Begin today by crafting one vibrant plate and savoring how energy rises from nourishment done with love. Ready to master your rhythm of health? Explore beyond VIP 3.",
+      "title_vi": "Làm Chủ Kế Hoạch Bữa Ăn Cân Bằng",
+      "content": {
+        "en": "Mastering balanced meal planning is the foundation of lifelong nourishment. Begin each week by designing simple, colorful meals—half vegetables for fiber and calm digestion, one quarter lean protein for strength, and one quarter whole grains for sustained energy. Add small amounts of healthy fats like olive oil or seeds to keep hormones steady. Prepare three meals in advance to make good choices effortless when life becomes busy. Each week, review what fuels focus and mood, then adjust gently. Once a month, refresh inspiration by learning a new recipe or flavor pairing. True mastery comes from curiosity, not rigidity. Balanced planning invites harmony between health and enjoyment. Begin today by crafting one vibrant plate and savoring how energy rises from nourishment done with love. Ready to master your rhythm of health? Explore beyond VIP 3.",
+        "vi": "Làm chủ kế hoạch bữa ăn cân bằng là nền tảng của nuôi dưỡng trọn đời. Hãy bắt đầu mỗi tuần bằng việc thiết kế những bữa ăn đơn giản, nhiều màu sắc—một nửa là rau củ để bổ sung chất xơ và giúp tiêu hóa nhẹ nhàng, một phần tư là protein nạc để tăng sức mạnh, và một phần tư là ngũ cốc nguyên hạt để duy trì năng lượng. Thêm một chút chất béo lành mạnh như dầu ô liu hoặc hạt để giữ ổn định hormone. Chuẩn bị sẵn ba bữa ăn để việc lựa chọn lành mạnh trở nên dễ dàng khi cuộc sống bận rộn. Mỗi tuần, hãy xem lại điều gì giúp bạn tập trung và cải thiện tâm trạng, rồi điều chỉnh nhẹ nhàng. Mỗi tháng, học một công thức hoặc cách kết hợp hương vị mới để làm mới cảm hứng. Sự tinh thông đến từ tò mò chứ không từ cứng nhắc. Lên kế hoạch cân bằng là lời mời gọi hòa hợp giữa sức khỏe và niềm vui. Hãy bắt đầu hôm nay bằng một đĩa ăn rực rỡ và cảm nhận năng lượng dâng lên từ sự nuôi dưỡng được làm bằng tình yêu. Bạn đã sẵn sàng làm chủ nhịp điệu sức khỏe của mình chưa? Hãy khám phá sâu hơn ngoài VIP 3."
+      },
       "audio": "mastering_balanced_meal_planning_vip3.mp3"
     },
     {
       "title": "Optimizing Hydration Practices",
-      "content": "Hydration mastery is about rhythm, not rules. Begin your morning with a full glass of water to awaken the body’s flow. Keep a bottle nearby and sip slowly throughout the day, matching pace to calm breathing. Infuse water with cucumber, herbs, or citrus to make hydration feel like ritual. Notice subtle shifts—clearer thought, softer skin, lighter energy. Journal weekly about hydration patterns and how they affect mood or focus. Every month, reflect on environments that challenge your water habits and create supportive reminders. Hydration is the simplest act of kindness to self, yet the one most often overlooked. Let it symbolize steady care, the kind that asks for nothing dramatic—just presence. Start now with a mindful sip and a quiet promise to honor your body’s flow. Ready to keep yourself renewed? Explore beyond VIP 3.",
+      "title_vi": "Tối Ưu Hóa Thói Quen Uống Nước",
+      "content": {
+        "en": "Hydration mastery is about rhythm, not rules. Begin your morning with a full glass of water to awaken the body’s flow. Keep a bottle nearby and sip slowly throughout the day, matching pace to calm breathing. Infuse water with cucumber, herbs, or citrus to make hydration feel like ritual. Notice subtle shifts—clearer thought, softer skin, lighter energy. Journal weekly about hydration patterns and how they affect mood or focus. Every month, reflect on environments that challenge your water habits and create supportive reminders. Hydration is the simplest act of kindness to self, yet the one most often overlooked. Let it symbolize steady care, the kind that asks for nothing dramatic—just presence. Start now with a mindful sip and a quiet promise to honor your body’s flow. Ready to keep yourself renewed? Explore beyond VIP 3.",
+        "vi": "Làm chủ việc uống nước là hiểu về nhịp điệu chứ không phải luật lệ. Hãy bắt đầu buổi sáng bằng một ly nước đầy để đánh thức dòng chảy trong cơ thể. Giữ chai nước bên cạnh và nhấp từng ngụm chậm rãi trong ngày, hòa cùng nhịp thở êm dịu. Thêm dưa leo, thảo mộc hoặc chanh vào nước để biến việc uống nước thành một nghi thức nhẹ nhàng. Nhận biết những thay đổi tinh tế—suy nghĩ sáng hơn, làn da mềm hơn, năng lượng nhẹ hơn. Viết nhật ký mỗi tuần về thói quen uống nước và ảnh hưởng của nó đến tâm trạng hay sự tập trung. Mỗi tháng, suy ngẫm về những môi trường khiến bạn dễ quên uống nước và tạo nhắc nhở hỗ trợ. Uống nước là hành động tử tế đơn giản nhất với bản thân, nhưng lại thường bị lãng quên. Hãy để nó tượng trưng cho sự chăm sóc bền bỉ—không phô trương, chỉ hiện diện. Bắt đầu ngay bây giờ với một ngụm nước chánh niệm và lời hứa lặng thầm tôn trọng dòng chảy của cơ thể. Bạn đã sẵn sàng làm mới chính mình chưa? Hãy khám phá sâu hơn ngoài VIP 3."
+      },
       "audio": "optimizing_hydration_practices_vip3.mp3"
     },
     {
       "title": "Deepening Mindful Eating Practices",
-      "content": "Mindful eating is a conversation between body and soul. Before each meal, pause and take three deep breaths. Observe color, aroma, and the story of how food reached your plate. As you chew, notice how texture and taste shift with patience. Gratitude invites awareness to replace judgment. Journal weekly about what mindful moments reveal—when you felt peace, when impulse softened. Eat without screens, allowing silence to nurture focus. Over time, you’ll recognize what foods uplift or drain energy. This awareness is freedom; it transforms eating from habit to ceremony. Once a month, enjoy a meal outdoors to reconnect with nature’s rhythm. Mindful nourishment teaches reverence, not restriction. Begin today by honoring your meal as a gift. Ready to deepen your relationship with food and self? Explore beyond VIP 3.",
+      "title_vi": "Làm Sâu Thực Hành Ăn Uống Chánh Niệm",
+      "content": {
+        "en": "Mindful eating is a conversation between body and soul. Before each meal, pause and take three deep breaths. Observe color, aroma, and the story of how food reached your plate. As you chew, notice how texture and taste shift with patience. Gratitude invites awareness to replace judgment. Journal weekly about what mindful moments reveal—when you felt peace, when impulse softened. Eat without screens, allowing silence to nurture focus. Over time, you’ll recognize what foods uplift or drain energy. This awareness is freedom; it transforms eating from habit to ceremony. Once a month, enjoy a meal outdoors to reconnect with nature’s rhythm. Mindful nourishment teaches reverence, not restriction. Begin today by honoring your meal as a gift. Ready to deepen your relationship with food and self? Explore beyond VIP 3.",
+        "vi": "Ăn uống chánh niệm là cuộc đối thoại giữa thân và tâm. Trước mỗi bữa ăn, hãy tạm dừng và hít sâu ba hơi. Quan sát màu sắc, hương thơm và câu chuyện đằng sau thực phẩm trên đĩa. Khi nhai, cảm nhận sự thay đổi của kết cấu và hương vị trong sự kiên nhẫn. Lòng biết ơn mời gọi nhận thức thay cho phán xét. Viết nhật ký mỗi tuần về những khoảnh khắc chánh niệm—khi bạn cảm thấy bình an, khi ham muốn lắng dịu. Ăn mà không có màn hình, để sự tĩnh lặng nuôi dưỡng tập trung. Theo thời gian, bạn sẽ nhận ra loại thực phẩm nào giúp nâng năng lượng và loại nào khiến cơ thể nặng nề. Sự nhận biết này là tự do; nó biến việc ăn uống từ thói quen thành nghi lễ. Mỗi tháng, hãy tận hưởng một bữa ăn ngoài trời để kết nối lại với nhịp điệu của thiên nhiên. Nuôi dưỡng chánh niệm dạy ta lòng tôn kính, không phải sự gò bó. Hãy bắt đầu hôm nay bằng cách trân trọng bữa ăn như một món quà. Bạn đã sẵn sàng làm sâu mối liên hệ với thức ăn và chính mình chưa? Hãy khám phá sâu hơn ngoài VIP 3."
+      },
       "audio": "deepening_mindful_eating_practices_vip3.mp3"
     },
     {
       "title": "Refining Portion Control",
-      "content": "Portion control is the wisdom of listening. Instead of measuring perfection, sense what balance feels like in your body. Begin by using smaller plates to reset visual cues, but pay closer attention to hunger itself—how it rises, peaks, and fades. Halfway through each meal, rest your fork, breathe, and ask: am I still hungry or simply comfortable? Journal weekly about these reflections. Over time, you’ll discover that satisfaction is quieter than fullness. Preparing balanced portions in advance prevents decision fatigue and mindless snacking. This practice teaches humility and trust: the body knows when it has enough. Once balance becomes intuitive, nourishment feels effortless. Begin today by eating until peaceful, not heavy. Ready to refine your connection with your body’s signals? Explore beyond VIP 3.",
+      "title_vi": "Tinh Chỉnh Kiểm Soát Khẩu Phần",
+      "content": {
+        "en": "Portion control is the wisdom of listening. Instead of measuring perfection, sense what balance feels like in your body. Begin by using smaller plates to reset visual cues, but pay closer attention to hunger itself—how it rises, peaks, and fades. Halfway through each meal, rest your fork, breathe, and ask: am I still hungry or simply comfortable? Journal weekly about these reflections. Over time, you’ll discover that satisfaction is quieter than fullness. Preparing balanced portions in advance prevents decision fatigue and mindless snacking. This practice teaches humility and trust: the body knows when it has enough. Once balance becomes intuitive, nourishment feels effortless. Begin today by eating until peaceful, not heavy. Ready to refine your connection with your body’s signals? Explore beyond VIP 3.",
+        "vi": "Kiểm soát khẩu phần là trí tuệ của sự lắng nghe. Thay vì đo lường sự hoàn hảo, hãy cảm nhận sự cân bằng trong cơ thể. Bắt đầu bằng việc dùng đĩa nhỏ hơn để điều chỉnh cảm nhận thị giác, nhưng chú ý nhiều hơn đến cảm giác đói—nó dâng lên, đạt đỉnh rồi dịu xuống như thế nào. Giữa bữa ăn, hãy đặt nĩa xuống, hít thở và tự hỏi: mình còn đói hay đã đủ thoải mái? Ghi lại những suy ngẫm này mỗi tuần. Theo thời gian, bạn sẽ nhận ra rằng sự hài lòng thường yên ả hơn cảm giác no. Chuẩn bị khẩu phần cân đối trước giúp tránh mệt mỏi khi ra quyết định và ăn vặt vô thức. Thực hành này dạy bạn sự khiêm nhường và lòng tin rằng cơ thể biết khi nào là đủ. Khi cân bằng trở nên tự nhiên, việc nuôi dưỡng trở nên nhẹ nhàng. Hãy bắt đầu hôm nay bằng cách ăn đến khi thấy bình yên chứ không nặng nề. Bạn đã sẵn sàng tinh chỉnh sự kết nối với tín hiệu cơ thể chưa? Hãy khám phá sâu hơn ngoài VIP 3."
+      },
       "audio": "refining_portion_control_vip3.mp3"
     },
     {
       "title": "Prioritizing Nutrient-Dense Foods",
-      "content": "Nutrient density is the language of vitality. Choose foods that return energy to you: vibrant vegetables, whole grains, clean proteins, and natural fats. Let your meals look like a painter’s palette—varied, bright, and alive. Replace one processed food each week with something closer to its natural form. Keep a journal to record how your body responds to different foods—lightness after greens, steadiness after oats, warmth after lentils. Every month, explore a new ingredient to expand flavor and nutrition. This is nourishment as curiosity, not restriction. Let food be joyful medicine, a reminder that health can taste delicious. Begin today by adding one colorful ingredient to your next meal. Ready to make every bite an act of care? Explore beyond VIP 3.",
+      "title_vi": "Ưu Tiên Thực Phẩm Giàu Dinh Dưỡng",
+      "content": {
+        "en": "Nutrient density is the language of vitality. Choose foods that return energy to you: vibrant vegetables, whole grains, clean proteins, and natural fats. Let your meals look like a painter’s palette—varied, bright, and alive. Replace one processed food each week with something closer to its natural form. Keep a journal to record how your body responds to different foods—lightness after greens, steadiness after oats, warmth after lentils. Every month, explore a new ingredient to expand flavor and nutrition. This is nourishment as curiosity, not restriction. Let food be joyful medicine, a reminder that health can taste delicious. Begin today by adding one colorful ingredient to your next meal. Ready to make every bite an act of care? Explore beyond VIP 3.",
+        "vi": "Thực phẩm giàu dinh dưỡng là ngôn ngữ của sức sống. Hãy chọn những món ăn trả lại năng lượng cho bạn: rau củ tươi sáng, ngũ cốc nguyên hạt, protein sạch và chất béo tự nhiên. Hãy để bữa ăn của bạn trông như bảng màu của họa sĩ—đa dạng, tươi tắn và tràn đầy sức sống. Mỗi tuần, thay thế một món chế biến sẵn bằng thực phẩm gần với tự nhiên hơn. Giữ nhật ký để ghi lại phản ứng của cơ thể—cảm giác nhẹ nhàng sau khi ăn rau, vững vàng sau yến mạch, ấm áp sau đậu lăng. Mỗi tháng, thử một nguyên liệu mới để mở rộng hương vị và dinh dưỡng. Đây là nuôi dưỡng dựa trên tò mò, không phải ép buộc. Hãy để thực phẩm trở thành liều thuốc vui vẻ, nhắc nhở rằng sức khỏe cũng có thể ngon miệng. Bắt đầu hôm nay bằng cách thêm một nguyên liệu đầy màu sắc vào bữa ăn tiếp theo. Bạn đã sẵn sàng biến mỗi miếng ăn thành hành động yêu thương chưa? Hãy khám phá sâu hơn ngoài VIP 3."
+      },
       "audio": "prioritizing_nutrient_dense_foods_vip3.mp3"
     },
     {
       "title": "Sustaining Healthy Eating Habits",
-      "content": "Sustainability in eating is built from rhythm and kindness, not rules. Create a weekly plan that balances nourishment and pleasure. Rotate familiar recipes to reduce decision fatigue and leave room for creativity. Reflect weekly on how meals affect energy, focus, and emotional balance. Engage monthly with a nutrition group or community to share insight and accountability. True mastery isn’t control—it’s harmony between nourishment, culture, and joy. Celebrate progress, not perfection. A sustainable path welcomes rest days, occasional indulgence, and gentle recalibration. Over time, eating becomes second nature, a daily act of respect for life. Begin this week by planning meals that make you both happy and whole. Ready to sustain your vitality for the long run? Explore beyond VIP 3.",
+      "title_vi": "Duy Trì Thói Quen Ăn Uống Lành Mạnh",
+      "content": {
+        "en": "Sustainability in eating is built from rhythm and kindness, not rules. Create a weekly plan that balances nourishment and pleasure. Rotate familiar recipes to reduce decision fatigue and leave room for creativity. Reflect weekly on how meals affect energy, focus, and emotional balance. Engage monthly with a nutrition group or community to share insight and accountability. True mastery isn’t control—it’s harmony between nourishment, culture, and joy. Celebrate progress, not perfection. A sustainable path welcomes rest days, occasional indulgence, and gentle recalibration. Over time, eating becomes second nature, a daily act of respect for life. Begin this week by planning meals that make you both happy and whole. Ready to sustain your vitality for the long run? Explore beyond VIP 3.",
+        "vi": "Tính bền vững trong ăn uống được xây dựng từ nhịp điệu và lòng tử tế, không phải quy tắc. Hãy tạo kế hoạch hàng tuần cân bằng giữa dinh dưỡng và niềm vui. Luân phiên các công thức quen thuộc để giảm mệt mỏi khi quyết định và dành chỗ cho sự sáng tạo. Mỗi tuần, phản chiếu lại cách bữa ăn ảnh hưởng đến năng lượng, sự tập trung và cân bằng cảm xúc. Mỗi tháng, tham gia nhóm hoặc cộng đồng dinh dưỡng để chia sẻ kinh nghiệm và duy trì trách nhiệm. Sự tinh thông thật sự không nằm ở kiểm soát mà ở hòa hợp giữa nuôi dưỡng, văn hóa và niềm vui. Hãy tôn vinh tiến bộ thay vì sự hoàn hảo. Con đường bền vững chào đón ngày nghỉ, những bữa thưởng nhẹ và sự điều chỉnh dịu dàng. Theo thời gian, việc ăn uống trở thành bản năng tự nhiên—một hành động tôn trọng sự sống mỗi ngày. Hãy bắt đầu tuần này bằng việc lập kế hoạch cho những bữa ăn khiến bạn vừa hạnh phúc vừa toàn vẹn. Bạn đã sẵn sàng duy trì sức sống dài lâu chưa? Hãy khám phá sâu hơn ngoài VIP 3."
+      },
       "audio": "sustaining_healthy_eating_habits_vip3.mp3"
     }
   ],
-  "keywords": {
-    "personalized_nutrition": {
-      "en": [
-        "mastered meal planning",
-        "optimized hydration",
-        "deep mindful practices",
-        "refined portion control",
-        "nutrient-dense priorities",
-        "sustainable eating habits"
-      ],
-      "vi": [
-        "làm chủ kế hoạch bữa ăn",
-        "tối ưu hóa uống nước",
-        "thực hành tỉnh táo sâu sắc",
-        "kiểm soát khẩu phần tinh chỉnh",
-        "ưu tiên giàu dinh dưỡng",
-        "thói quen ăn uống bền vững"
-      ]
-    }
-  },
   "meta": {
     "created_at": "2025-10-25T10:33:00+09:00",
     "updated_at": "2025-10-25T11:30:00+09:00",
@@ -60,6 +68,5 @@
     "data_format_version": "MercyBlade-Core-v1.2",
     "room_color": "#C5A671",
     "tier": "vip3"
-  },
-  "audio": "deepening_relaxation_practices_vip3.mp3"
+  }
 }
