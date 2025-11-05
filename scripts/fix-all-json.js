@@ -2,14 +2,17 @@
 const fs = require('fs');
 const path = require('path');
 
-const DATA_DIR = path.join(__dirname, '../src/data');
+const DATA_DIR = path.join(__dirname, '..');
 
 if (!fs.existsSync(DATA_DIR)) {
   console.error(`❌ Không tìm thấy: ${DATA_DIR}`);
   process.exit(1);
 }
 
-const files = fs.readdirSync(DATA_DIR).filter(f => f.endsWith('.json'));
+const files = fs.readdirSync(DATA_DIR).filter(f => 
+  f.endsWith('.json') && 
+  !['package.json', 'package-lock.json', 'tsconfig.json', 'tsconfig.app.json', 'tsconfig.node.json', 'components.json'].includes(f)
+);
 console.log(`🔍 Tìm thấy ${files.length} file JSON. Đang sửa...\n`);
 
 let fixedCount = 0;
