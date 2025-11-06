@@ -1,0 +1,35 @@
+{
+  "tier": "Free / Miễn phí",
+  "title": {
+    "en": "AI Fundamentals",
+    "vi": "Nền Tảng AI"
+  },
+  "content": {
+    "en": "Start your AI journey by learning how machines understand patterns and make predictions. Discover how data shapes intelligence and explore ethical ways to build trustworthy systems. These basics give you confidence to experiment, learn fast, and apply AI in daily life responsibly and creatively.",
+    "vi": "Bắt đầu hành trình AI của bạn bằng cách học cách máy móc nhận ra mẫu và dự đoán. Khám phá cách dữ liệu hình thành trí tuệ và tìm hiểu phương pháp đạo đức để xây dựng hệ thống đáng tin cậy. Kiến thức nền này giúp bạn tự tin thử nghiệm, học nhanh và ứng dụng AI có trách nhiệm."
+  },
+  "entries": [
+    {
+      "slug": "understanding-ai-basics",
+      "keywords_en": ["AI", "learning", "basics", "intelligence"],
+      "keywords_vi": ["AI", "học máy", "cơ bản", "trí tuệ nhân tạo"],
+      "copy": {
+        "en": "Artificial Intelligence mimics human learning by finding patterns in data. Start by observing how simple models classify text or recognize faces. You’ll understand how machines learn through examples, improving over time. Begin small, stay curious, and let each experiment reveal new ways to think creatively.",
+        "vi": "Trí tuệ nhân tạo mô phỏng cách con người học bằng cách tìm mẫu trong dữ liệu. Hãy bắt đầu quan sát cách mô hình đơn giản phân loại văn bản hoặc nhận diện khuôn mặt. Bạn sẽ hiểu máy học qua ví dụ, cải thiện dần. Bắt đầu nhỏ, giữ tò mò và sáng tạo không ngừng."
+      },
+      "tags": ["ai", "learning", "foundation"],
+      "audio": "understanding_ai_basics_free.mp3"
+    },
+    {
+      "slug": "responsible-ai-practice",
+      "keywords_en": ["ethics", "privacy", "trust", "design"],
+      "keywords_vi": ["đạo đức", "riêng tư", "niềm tin", "thiết kế"],
+      "copy": {
+        "en": "Responsible AI means building systems that respect fairness and privacy. Always ask how data is used and who benefits. Small ethical choices shape big impacts. By understanding bias and designing transparently, you build technology that people can trust, supporting both progress and human values.",
+        "vi": "AI có trách nhiệm là xây dựng hệ thống tôn trọng công bằng và quyền riêng tư. Luôn tự hỏi dữ liệu được dùng ra sao và ai hưởng lợi. Những lựa chọn đạo đức nhỏ tạo tác động lớn. Hiểu thiên lệch và thiết kế minh bạch giúp công nghệ được tin tưởng, phát triển cùng giá trị con người."
+      },
+      "tags": ["ethics", "privacy", "responsibility"],
+      "audio": "responsible_ai_practice_free.mp3"
+    }
+  ]
+}
