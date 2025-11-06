@@ -13,46 +13,67 @@ function hasProperKeywords(data) {
   return !!(data.keywords || data.keywords_dict);
 }
 
-// Generate keywords_dict from entries
-function generateKeywordsDict(data, fileName) {
-  const keywords = {};
-  
+// Generate keywords array from entries
+function generateKeywords(data, fileName) {
   // Check if entries exist and is an array
   if (!data.entries || !Array.isArray(data.entries)) {
     console.warn(`⚠️  ${fileName}: No entries array found`);
     return null;
   }
   
-  // Build keywords_dict from entries
+  const allKeywordsEn = new Set();
+  const allKeywordsVi = new Set();
+
+  // Collect all keywords from entries
   data.entries.forEach(entry => {
-    const slug = entry.slug || entry.id;
-    if (!slug) {
-      console.warn(`⚠️  ${fileName}: Entry missing slug/id`);
-      return;
+    if (entry.keywords_en) {
+      entry.keywords_en.forEach(kw => allKeywordsEn.add(kw));
     }
-    
-    // Get keywords from entry
-    const keywordsEn = entry.keywords_en || [];
-    const keywordsVi = entry.keywords_vi || [];
-    
-    // If no keywords in entry, generate from slug
-    if (keywordsEn.length === 0) {
-      const slugWords = slug.split('-').map(w => w.toLowerCase());
-      keywordsEn.push(...slugWords);
+    if (entry.keywords_vi) {
+      entry.keywords_vi.forEach(kw => allKeywordsVi.add(kw));
     }
-    
-    if (keywordsVi.length === 0) {
-      keywordsVi.push(...translateToVietnamese(keywordsEn));
-    }
-    
-    keywords[slug] = {
-      en: keywordsEn,
-      vi: keywordsVi,
-      slug_vi: keywordsVi // Also add slug_vi for compatibility
-    };
   });
+
+  // Add room title keywords
+  if (data.title?.en) {
+    data.title.en.split(' ').forEach(word => {
+      if (word.length > 3) allKeywordsEn.add(word.toLowerCase());
+    });
+  }
+  if (data.title?.vi) {
+    data.title.vi.split(' ').forEach(word => {
+      if (word.length > 2) allKeywordsVi.add(word.toLowerCase());
+    });
+  }
+
+  return {
+    en: Array.from(allKeywordsEn).slice(0, 15),
+    vi: Array.from(allKeywordsVi).slice(0, 15)
+  };
+}
+
+// Fix audio format in entries
+function fixAudioFormat(data, fileName) {
+  let audioFixed = false;
   
-  return Object.keys(keywords).length > 0 ? keywords : null;
+  if (data.entries && Array.isArray(data.entries)) {
+    data.entries.forEach((entry, index) => {
+      // Convert string audio to object format
+      if (entry.audio && typeof entry.audio === 'string') {
+        entry.audio = { en: entry.audio };
+        audioFixed = true;
+      }
+    });
+  }
+  
+  // Remove root-level audio if present (incorrect structure)
+  if (data.audio) {
+    delete data.audio;
+    audioFixed = true;
+    console.log(`  ⚠️  Removed root-level audio from ${fileName}`);
+  }
+  
+  return audioFixed;
 }
 
 // Basic Vietnamese translations
@@ -112,31 +133,41 @@ for (const file of files) {
     const content = fs.readFileSync(filePath, 'utf-8');
     const data = JSON.parse(content);
     
-    if (hasProperKeywords(data)) {
-      console.log(`✅ ${file} - Already has keywords`);
+    let modified = false;
+    let changes = [];
+    
+    // Fix 1: Add keywords if missing
+    if (!hasProperKeywords(data)) {
+      const keywords = generateKeywords(data, file);
+      
+      if (keywords) {
+        data.keywords = keywords;
+        modified = true;
+        changes.push(`keywords (${keywords.en.length} en, ${keywords.vi.length} vi)`);
+      } else {
+        console.error(`❌ ${file} - Could not generate keywords (no entries or invalid structure)`);
+        errorCount++;
+        continue;
+      }
+    } else {
       alreadyOkCount++;
-      continue;
     }
     
-    // Generate keywords_dict from entries
-    const keywordsDict = generateKeywordsDict(data, file);
-    
-    if (!keywordsDict) {
-      console.error(`❌ ${file} - Could not generate keywords (no entries or invalid structure)`);
-      errorCount++;
-      continue;
+    // Fix 2: Fix audio format
+    const audioFixed = fixAudioFormat(data, file);
+    if (audioFixed) {
+      modified = true;
+      changes.push('audio format');
     }
     
-    // Add keywords to the data
-    const updatedData = {
-      ...data,
-      keywords: keywordsDict
-    };
-    
-    // Write back
-    fs.writeFileSync(filePath, JSON.stringify(updatedData, null, 2));
-    console.log(`🔧 ${file} - Added keywords_dict with ${Object.keys(keywordsDict).length} entries`);
-    fixedCount++;
+    // Write back if modified
+    if (modified) {
+      fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+      console.log(`🔧 ${file} - Fixed: ${changes.join(', ')}`);
+      fixedCount++;
+    } else if (!hasProperKeywords(data)) {
+      console.log(`✅ ${file} - Already correct`);
+    }
     
   } catch (error) {
     console.error(`❌ Error processing ${file}:`, error.message);

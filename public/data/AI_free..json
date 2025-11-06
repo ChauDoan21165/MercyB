@@ -5,8 +5,12 @@
     "vi": "Nền Tảng AI"
   },
   "content": {
-    "en": "Artificial Intelligence begins with curiosity—how can machines learn, decide, and adapt like humans? This room introduces the essential ideas behind AI: pattern recognition, data training, and problem-solving. You’ll explore how algorithms find meaning in information, building systems that sense and respond intelligently. Start simple, observe patiently, and experiment boldly. Every small step in AI expands your ability to understand how logic meets creativity in the digital mind.",
+    "en": "Artificial Intelligence begins with curiosity—how can machines learn, decide, and adapt like humans? This room introduces the essential ideas behind AI: pattern recognition, data training, and problem-solving. You'll explore how algorithms find meaning in information, building systems that sense and respond intelligently. Start simple, observe patiently, and experiment boldly. Every small step in AI expands your ability to understand how logic meets creativity in the digital mind.",
     "vi": "Trí tuệ Nhân tạo bắt đầu từ sự tò mò — làm thế nào máy móc có thể học hỏi, ra quyết định và thích ứng như con người? Phòng này giới thiệu những ý tưởng cốt lõi của AI: nhận dạng mẫu, huấn luyện dữ liệu và giải quyết vấn đề. Bạn sẽ khám phá cách các thuật toán tìm ý nghĩa trong thông tin, xây dựng hệ thống biết cảm nhận và phản hồi thông minh. Hãy bắt đầu đơn giản, quan sát kiên nhẫn và thử nghiệm táo bạo. Mỗi bước nhỏ trong AI mở rộng khả năng hiểu sự giao thoa giữa logic và sáng tạo của trí tuệ số."
+  },
+  "keywords": {
+    "en": ["machine learning", "data", "patterns", "models", "ethics", "fairness", "privacy", "responsibility", "AI", "artificial intelligence"],
+    "vi": ["học máy", "dữ liệu", "mẫu", "mô hình", "đạo đức", "công bằng", "riêng tư", "trách nhiệm", "AI", "trí tuệ nhân tạo"]
   },
   "entries": [
     {
@@ -18,18 +22,22 @@
         "vi": "Học máy giúp máy tính khám phá cấu trúc trong dữ liệu thô. Bằng cách huấn luyện mô hình trên các ví dụ có nhãn, chúng ta dạy hệ thống dự đoán kết quả, nhận diện giọng nói hoặc hình ảnh. Hãy bắt đầu bằng việc quan sát cách các mô hình đơn giản — như hồi quy tuyến tính — rút ra kết luận từ con số. Mỗi thí nghiệm đều làm sâu sắc thêm hiểu biết của bạn về cách máy biến trải nghiệm thành tri thức."
       },
       "tags": ["machine-learning", "education"],
-      "audio": "understanding_machine_learning_free.mp3"
+      "audio": {
+        "en": "understanding_machine_learning_free.mp3"
+      }
     },
     {
       "slug": "ethical-ai-foundations",
       "keywords_en": ["ethics", "fairness", "privacy", "responsibility"],
       "keywords_vi": ["đạo đức", "công bằng", "riêng tư", "trách nhiệm"],
       "copy": {
-        "en": "Building responsible AI means balancing innovation with human values. Every dataset reflects choices—what to include, what to protect, and whose voices are heard. Learn to evaluate models for bias and privacy before deployment. Ethical AI isn’t just a safeguard; it’s a mindset of care that ensures technology serves people with respect and trust.",
+        "en": "Building responsible AI means balancing innovation with human values. Every dataset reflects choices—what to include, what to protect, and whose voices are heard. Learn to evaluate models for bias and privacy before deployment. Ethical AI isn't just a safeguard; it's a mindset of care that ensures technology serves people with respect and trust.",
         "vi": "Xây dựng AI có trách nhiệm nghĩa là cân bằng đổi mới với giá trị con người. Mỗi bộ dữ liệu phản ánh lựa chọn — điều gì được bao gồm, điều gì cần bảo vệ và tiếng nói của ai được lắng nghe. Hãy học cách đánh giá mô hình về thiên lệch và quyền riêng tư trước khi triển khai. AI đạo đức không chỉ là biện pháp bảo vệ; đó là tư duy quan tâm, đảm bảo công nghệ phục vụ con người với sự tôn trọng và tin cậy."
       },
       "tags": ["ethics", "responsibility"],
-      "audio": "ethical_ai_foundations_free.mp3"
+      "audio": {
+        "en": "ethical_ai_foundations_free.mp3"
+      }
     }
   ]
 }
