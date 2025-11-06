@@ -9,9 +9,13 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useEffect, useState } from "react";
 
-// VIP3 exclusive rooms with special sensual colors
+// VIP3 exclusive rooms with special thematic colors
 const VIP3_SPECIAL_ROOMS: Record<string, string> = {
   'sexuality-and-curiosity-and-culture-vip3': '#D946A6', // Deep sensual magenta
+  'finance-glory-vip3': '#FBBF24', // Golden glory
+  'strategy-in-life-1-vip3': '#1E40AF', // Strategic deep blue
+  'strategy-in-life-2-vip3': '#7C3AED', // Strategic purple
+  'strategy-in-life-3-vip3': '#059669', // Strategic emerald
 };
 
 const RoomGrid = () => {

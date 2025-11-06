@@ -1,0 +1,197 @@
+{
+  "tier": "VIP 3",
+  "title": {
+    "en": "Finance Glory",
+    "vi": "Vinh Quang Tài Chính"
+  },
+  "content": {
+    "en": "An exclusive journey through wealth building, financial intelligence, and prosperity mindset. Master the art of money, investment, and financial freedom.",
+    "vi": "Hành trình độc quyền khám phá xây dựng tài sản, trí tuệ tài chính và tư duy thịnh vượng. Làm chủ nghệ thuật tiền bạc, đầu tư và tự do tài chính."
+  },
+  "entries": [
+    {
+      "title": "Room 1 - Foundation of Wealth",
+      "content": "Content pending. Building blocks of financial success.",
+      "audio": "finance_glory_vip3_room_01.mp3"
+    },
+    {
+      "title": "Room 2 - Money Mindset",
+      "content": "Content pending. Transforming your relationship with money.",
+      "audio": "finance_glory_vip3_room_02.mp3"
+    },
+    {
+      "title": "Room 3 - Income Streams",
+      "content": "Content pending. Creating multiple revenue sources.",
+      "audio": "finance_glory_vip3_room_03.mp3"
+    },
+    {
+      "title": "Room 4 - Investment Basics",
+      "content": "Content pending. Smart investing fundamentals.",
+      "audio": "finance_glory_vip3_room_04.mp3"
+    },
+    {
+      "title": "Room 5 - Risk Management",
+      "content": "Content pending. Protecting and growing wealth.",
+      "audio": "finance_glory_vip3_room_05.mp3"
+    },
+    {
+      "title": "Room 6 - Real Estate Wealth",
+      "content": "Content pending. Property investment strategies.",
+      "audio": "finance_glory_vip3_room_06.mp3"
+    },
+    {
+      "title": "Room 7 - Stock Market Mastery",
+      "content": "Content pending. Understanding market dynamics.",
+      "audio": "finance_glory_vip3_room_07.mp3"
+    },
+    {
+      "title": "Room 8 - Cryptocurrency",
+      "content": "Content pending. Digital asset opportunities.",
+      "audio": "finance_glory_vip3_room_08.mp3"
+    },
+    {
+      "title": "Room 9 - Business Building",
+      "content": "Content pending. Entrepreneurial wealth creation.",
+      "audio": "finance_glory_vip3_room_09.mp3"
+    },
+    {
+      "title": "Room 10 - Tax Optimization",
+      "content": "Content pending. Legal wealth preservation.",
+      "audio": "finance_glory_vip3_room_10.mp3"
+    },
+    {
+      "title": "Room 11 - Retirement Planning",
+      "content": "Content pending. Securing your future.",
+      "audio": "finance_glory_vip3_room_11.mp3"
+    },
+    {
+      "title": "Room 12 - Wealth Psychology",
+      "content": "Content pending. Mental models of prosperity.",
+      "audio": "finance_glory_vip3_room_12.mp3"
+    },
+    {
+      "title": "Room 13 - Financial Freedom",
+      "content": "Content pending. Achieving independence.",
+      "audio": "finance_glory_vip3_room_13.mp3"
+    },
+    {
+      "title": "Room 14 - Debt Strategy",
+      "content": "Content pending. Smart borrowing and elimination.",
+      "audio": "finance_glory_vip3_room_14.mp3"
+    },
+    {
+      "title": "Room 15 - Legacy Building",
+      "content": "Content pending. Generational wealth transfer.",
+      "audio": "finance_glory_vip3_room_15.mp3"
+    },
+    {
+      "title": "Room 16 - Global Markets",
+      "content": "Content pending. International opportunities.",
+      "audio": "finance_glory_vip3_room_16.mp3"
+    },
+    {
+      "title": "Room 17 - Passive Income",
+      "content": "Content pending. Earning while you sleep.",
+      "audio": "finance_glory_vip3_room_17.mp3"
+    },
+    {
+      "title": "Room 18 - Financial Education",
+      "content": "Content pending. Continuous learning strategies.",
+      "audio": "finance_glory_vip3_room_18.mp3"
+    },
+    {
+      "title": "Room 19 - Negotiation Skills",
+      "content": "Content pending. Maximizing value in deals.",
+      "audio": "finance_glory_vip3_room_19.mp3"
+    },
+    {
+      "title": "Room 20 - Insurance Wisdom",
+      "content": "Content pending. Protection strategies.",
+      "audio": "finance_glory_vip3_room_20.mp3"
+    },
+    {
+      "title": "Room 21 - Economic Trends",
+      "content": "Content pending. Understanding market cycles.",
+      "audio": "finance_glory_vip3_room_21.mp3"
+    },
+    {
+      "title": "Room 22 - Philanthropy",
+      "content": "Content pending. Giving back strategically.",
+      "audio": "finance_glory_vip3_room_22.mp3"
+    },
+    {
+      "title": "Room 23 - Credit Mastery",
+      "content": "Content pending. Leveraging credit power.",
+      "audio": "finance_glory_vip3_room_23.mp3"
+    },
+    {
+      "title": "Room 24 - Alternative Assets",
+      "content": "Content pending. Unique investment vehicles.",
+      "audio": "finance_glory_vip3_room_24.mp3"
+    },
+    {
+      "title": "Room 25 - Family Finances",
+      "content": "Content pending. Household wealth management.",
+      "audio": "finance_glory_vip3_room_25.mp3"
+    },
+    {
+      "title": "Room 26 - Financial Technology",
+      "content": "Content pending. Modern tools and platforms.",
+      "audio": "finance_glory_vip3_room_26.mp3"
+    },
+    {
+      "title": "Room 27 - Crisis Management",
+      "content": "Content pending. Protecting wealth in downturns.",
+      "audio": "finance_glory_vip3_room_27.mp3"
+    },
+    {
+      "title": "Room 28 - Abundance Mindset",
+      "content": "Content pending. Attracting prosperity.",
+      "audio": "finance_glory_vip3_room_28.mp3"
+    },
+    {
+      "title": "Room 29 - Financial Networks",
+      "content": "Content pending. Building wealth communities.",
+      "audio": "finance_glory_vip3_room_29.mp3"
+    },
+    {
+      "title": "Room 30 - Mastery Integration",
+      "content": "Content pending. Putting it all together.",
+      "audio": "finance_glory_vip3_room_30.mp3"
+    }
+  ],
+  "keywords": {
+    "personalized_finance_glory": {
+      "en": [
+        "finance",
+        "wealth",
+        "investment",
+        "prosperity",
+        "money",
+        "freedom",
+        "growth",
+        "success"
+      ],
+      "vi": [
+        "tài chính",
+        "giàu có",
+        "đầu tư",
+        "thịnh vượng",
+        "tiền bạc",
+        "tự do",
+        "tăng trưởng",
+        "thành công"
+      ]
+    }
+  },
+  "meta": {
+    "created_at": "2025-01-15T10:00:00+00:00",
+    "updated_at": "2025-01-15T10:00:00+00:00",
+    "entry_count": 30,
+    "artifact_set_id": "finance-glory-vip3-2025",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#FBBF24",
+    "special_theme": "glory",
+    "tier": "vip3"
+  }
+}
