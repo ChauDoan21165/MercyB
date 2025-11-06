@@ -105,6 +105,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "self-love-vip1": "data/Self_Love_vip1.json",
   "self-love-vip2": "data/Self_Love_vip2.json",
   "self-love-vip3": "data/Self_Love_vip3.json",
+  "sexuality-and-curiosity-free": "data/Sexuality & Curiosity_free.json",
   "shadow-work-free": "data/Shadow_Work_free.json",
   "shadow-work-vip1": "data/Shadow_Work_vip1.json",
   "shadow-work-vip2": "data/Shadow_Work_vip2.json",
