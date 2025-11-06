@@ -116,28 +116,25 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       }
     }
     
-    // If no root keywords found, extract concise menu from entries
+    // If no root keywords found, extract concise menu from ALL entries (audio-agnostic)
     if (keywordMenu.en.length === 0 && keywordMenu.vi.length === 0 && Array.isArray(jsonData?.entries)) {
       const enList: string[] = [];
       const viList: string[] = [];
 
-      (jsonData.entries as any[])
-        // Prefer entries that have audio files to avoid non-functional keywords
-        .filter((e: any) => !!(e?.audio || e?.meta?.audio_file || e?.audioFile))
-        .forEach((entry: any) => {
-          const titleText = typeof entry.title === 'object' ? entry.title?.en : entry.title;
-          const en = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0
-            ? String(entry.keywords_en[0])
-            : String(titleText || entry.slug || '').trim();
-          const titleViText = typeof entry.title === 'object' ? entry.title?.vi : '';
-          const vi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0
-            ? String(entry.keywords_vi[0])
-            : titleViText;
-          if (en) {
-            enList.push(en);
-            viList.push(vi);
-          }
-        });
+      (jsonData.entries as any[]).forEach((entry: any) => {
+        const titleText = typeof entry.title === 'object' ? entry.title?.en : entry.title;
+        const en = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0
+          ? String(entry.keywords_en[0])
+          : String(titleText || entry.slug || '').trim();
+        const titleViText = typeof entry.title === 'object' ? entry.title?.vi : '';
+        const vi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0
+          ? String(entry.keywords_vi[0])
+          : titleViText;
+        if (en) {
+          enList.push(en);
+          viList.push(vi);
+        }
+      });
 
       keywordMenu = { en: enList, vi: viList };
     }

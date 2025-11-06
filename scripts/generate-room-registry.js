@@ -62,7 +62,10 @@ function scanRoomFiles() {
     const jsonPath = path.join(dataDir, filename);
     const names = extractNames(jsonPath);
     
-    if (!names) continue;
+    if (!names) {
+      console.warn(`⚠️  Skipping ${filename}: Could not extract names`);
+      continue;
+    }
     
     // Extract tier from filename
     let tier = 'free';
@@ -70,7 +73,7 @@ function scanRoomFiles() {
     else if (roomId.endsWith('-vip2')) tier = 'vip2';
     else if (roomId.endsWith('-vip3')) tier = 'vip3';
     
-    // Add to manifest with data/ prefix only
+    // Add to manifest with data/ prefix
     manifest[roomId] = `data/${filename}`;
     
     // Add to dataImports
@@ -81,6 +84,8 @@ function scanRoomFiles() {
       tier,
       hasData: true
     };
+    
+    console.log(`✓ Registered: ${roomId} → data/${filename}`);
   }
   
   return { manifest, dataImports };
