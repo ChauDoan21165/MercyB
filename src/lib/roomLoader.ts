@@ -16,15 +16,15 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
     
     // First priority: Use exact manifest path
     if (filename) {
-      candidates.push(`/public/${encodeURI(filename)}`);
+      candidates.push(`/${encodeURI(filename)}`);
     }
 
     // Fallback: Generate possible filenames from manifestKey
     const base = manifestKey.replace(/-/g, '_');
     
     // Try common naming patterns in flat structure
-    candidates.push(`/public/data/${base}.json`);
-    candidates.push(`/public/data/${base.toLowerCase()}.json`);
+    candidates.push(`/data/${base}.json`);
+    candidates.push(`/data/${base.toLowerCase()}.json`);
     
     // TitleCase variant with lowercase tier: Meaning_Of_Life_free.json
     const parts = base.split('_');
@@ -35,7 +35,7 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
         .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
       const tierPart = parts[tierIndex].toLowerCase();
       const titleCaseWithLowerTier = [...beforeTier, tierPart].join('_');
-      candidates.push(`/public/data/${titleCaseWithLowerTier}.json`);
+      candidates.push(`/data/${titleCaseWithLowerTier}.json`);
     }
     
     // Full TitleCase variant: Meaning_Of_Life_Free.json
@@ -43,7 +43,22 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       .split('_')
       .map(w => w.charAt(0).toUpperCase() + w.slice(1))
       .join('_');
-    candidates.push(`/public/data/${titleCase}.json`);
+    candidates.push(`/data/${titleCase}.json`);
+
+    // Fallback: tiered subdirectories (vip1/vip2/vip3/free)
+    if (tierIndex >= 0) {
+      const tierFolder = parts[tierIndex].toLowerCase();
+      candidates.push(`/data/${tierFolder}/${base}.json`);
+      candidates.push(`/data/${tierFolder}/${base.toLowerCase()}.json`);
+      if (tierIndex > 0) {
+        const beforeTier = parts.slice(0, tierIndex)
+          .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
+        const tierPart = parts[tierIndex].toLowerCase();
+        const titleCaseWithLowerTier = [...beforeTier, tierPart].join('_');
+        candidates.push(`/data/${tierFolder}/${titleCaseWithLowerTier}.json`);
+      }
+      candidates.push(`/data/${tierFolder}/${titleCase}.json`);
+    }
 
     // Attempt to fetch each candidate
     for (const path of candidates) {
@@ -127,20 +142,25 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       keywordMenu = { en: enList, vi: viList };
     }
 
-    // Build merged entries and normalize audio path to /public/audio/ directory
+    // Build merged entries and normalize audio path to /audio/ directory
     const merged = Array.isArray(jsonData?.entries) ? (jsonData.entries as any[]).map((entry: any, idx: number) => {
-      // Extract audio from multiple possible locations
-      let audioPath = entry?.audio || entry?.meta?.audio_file || entry?.audioFile;
+      // Extract audio from multiple possible locations and normalize to /audio/filename.mp3
+      const audioRaw = (entry?.audio && typeof entry.audio === 'object')
+        ? (entry.audio.en ?? Object.values(entry.audio)[0])
+        : entry?.audio;
+      let audioPath = audioRaw || entry?.meta?.audio_file || entry?.audioFile;
+
       if (audioPath) {
-        audioPath = String(audioPath).replace(/^\//, '');
-        // Ensure audio files are in /public/audio/ directory
-        if (!audioPath.startsWith('public/audio/') && !audioPath.startsWith('audio/')) {
-          audioPath = `public/audio/${audioPath}`;
-        } else if (audioPath.startsWith('audio/')) {
-          audioPath = `public/${audioPath}`;
-        }
+        let p = String(audioPath);
+        // Strip leading slashes and public prefix
+        p = p.replace(/^\/+/, '').replace(/^public\//, '');
+        // Collapse language folders
+        p = p.replace(/^audio\/(en|vi)\//, 'audio/');
+        // Remove 'audio/' prefix; we'll add it consistently
+        p = p.replace(/^audio\//, '');
+        audioPath = `/audio/${p}`;
       }
-      
+
       // Extract primary keyword (first keyword from arrays) for matching
       const keywordEn = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0 
         ? entry.keywords_en[0] 
@@ -155,7 +175,7 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       
       return {
         ...entry,
-        audio: audioPath ? `/${audioPath}` : undefined,
+        audio: audioPath || undefined,
         keywordEn,
         keywordVi,
         replyEn,
@@ -166,14 +186,14 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
     return {
       merged,
       keywordMenu,
-      audioBasePath: '/public/audio/'
+      audioBasePath: '/audio/'
     };
   } catch (error) {
     console.error('Failed to load room:', error);
     return {
       merged: [],
       keywordMenu: { en: [], vi: [] },
-      audioBasePath: '/public/audio/'
+      audioBasePath: '/audio/'
     };
   }
 };

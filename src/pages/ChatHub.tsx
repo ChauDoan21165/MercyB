@@ -191,9 +191,32 @@ const ChatHub = () => {
   const resolveEntryByKeyword = (keyword: string) => {
     const k = norm(keyword);
     if (!mergedEntries || mergedEntries.length === 0) return null;
-    // Prefer exact match, then contains; otherwise return null
-    let entry = mergedEntries.find(e => norm(e.keywordEn) === k);
-    if (!entry) entry = mergedEntries.find(e => norm(e.keywordEn).includes(k));
+
+    const by = (s: any) => norm(String(s || ''));
+
+    // 1) Exact match on keywordEn
+    let entry = mergedEntries.find(e => by(e.keywordEn) === k);
+    if (entry) return entry;
+
+    // 2) Contains either direction on keywordEn
+    entry = mergedEntries.find(e => by(e.keywordEn).includes(k) || k.includes(by(e.keywordEn)));
+    if (entry) return entry;
+
+    // 3) Match by slug/title
+    entry = mergedEntries.find(e => {
+      const slug = by(e.slug);
+      const title = typeof e.title === 'object' ? by(e.title?.en) : by(e.title);
+      return slug.includes(k) || k.includes(slug) || title.includes(k) || k.includes(title);
+    });
+    if (entry) return entry;
+
+    // 4) Token-overlap fallback
+    const tokens = k.split(/\s+/).filter(Boolean);
+    entry = mergedEntries.find(e => {
+      const target = [by(e.keywordEn), by(typeof e.title === 'object' ? e.title?.en : e.title), by(e.slug)].join(' ');
+      return tokens.every(t => target.includes(t));
+    });
+
     return entry || null;
   };
 
