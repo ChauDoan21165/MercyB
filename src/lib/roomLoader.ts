@@ -108,14 +108,16 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
 
       (jsonData.entries as any[])
         // Prefer entries that have audio files to avoid non-functional keywords
-        .filter((e: any) => !!e?.audio)
+        .filter((e: any) => !!(e?.audio || e?.meta?.audio_file || e?.audioFile))
         .forEach((entry: any) => {
+          const titleText = typeof entry.title === 'object' ? entry.title?.en : entry.title;
           const en = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0
             ? String(entry.keywords_en[0])
-            : String(entry.title || entry.slug || '').trim();
+            : String(titleText || entry.slug || '').trim();
+          const titleViText = typeof entry.title === 'object' ? entry.title?.vi : '';
           const vi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0
             ? String(entry.keywords_vi[0])
-            : '';
+            : titleViText;
           if (en) {
             enList.push(en);
             viList.push(vi);
@@ -127,21 +129,25 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
 
     // Build merged entries and normalize audio path to /public/audio/ directory
     const merged = Array.isArray(jsonData?.entries) ? (jsonData.entries as any[]).map((entry: any, idx: number) => {
-      let audioPath = entry?.audio ? String(entry.audio).replace(/^\//, '') : undefined;
+      // Extract audio from multiple possible locations
+      let audioPath = entry?.audio || entry?.meta?.audio_file || entry?.audioFile;
       if (audioPath) {
+        audioPath = String(audioPath).replace(/^\//, '');
         // Ensure audio files are in /public/audio/ directory
-        if (!audioPath.startsWith('public/audio/')) {
+        if (!audioPath.startsWith('public/audio/') && !audioPath.startsWith('audio/')) {
           audioPath = `public/audio/${audioPath}`;
+        } else if (audioPath.startsWith('audio/')) {
+          audioPath = `public/${audioPath}`;
         }
       }
       
       // Extract primary keyword (first keyword from arrays) for matching
       const keywordEn = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0 
         ? entry.keywords_en[0] 
-        : entry.title || `entry-${idx}`;
+        : (typeof entry.title === 'object' ? entry.title?.en : entry.title) || `entry-${idx}`;
       const keywordVi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0 
         ? entry.keywords_vi[0] 
-        : '';
+        : (typeof entry.title === 'object' ? entry.title?.vi : '') || '';
       
       // Extract essay/reply content
       const replyEn = entry.reply_en || entry.essay_en || entry.content_en || entry.copy?.en || entry.essay?.en || '';
