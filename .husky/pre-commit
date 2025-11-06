@@ -4,12 +4,22 @@
 # Check if any JSON files in public/data have changed
 if git diff --cached --name-only | grep -q "^public/data/.*\.json$"; then
   echo "🔍 Detected changes in room JSON files..."
-  echo "📦 Regenerating room registry..."
   
+  # Validate data files first
+  echo "✅ Validating JSON files..."
+  node scripts/validate-data-files.js
+  
+  if [ $? -ne 0 ]; then
+    echo "❌ Validation failed! Please fix the errors above before committing."
+    exit 1
+  fi
+  
+  # Regenerate room registry
+  echo "📦 Regenerating room registry..."
   node scripts/generate-room-registry.js
   
   # Add the generated files to the commit
   git add src/lib/roomManifest.ts src/lib/roomDataImports.ts
   
-  echo "✅ Room registry updated and added to commit"
+  echo "✅ Room registry validated and updated"
 fi
