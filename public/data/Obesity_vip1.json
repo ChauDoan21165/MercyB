@@ -3,6 +3,8 @@
   "locale": "vi-en",
   "name": "Obesity Management (VIP 1)",
   "description": "Intermediate guidance: balanced meals, active habits, mindful eating, and portion control for sustainable weight health.",
+  "keywords_en": ["obesity", "weight management", "nutrition", "balanced meals", "portion control", "mindful eating"],
+  "keywords_vi": ["béo phì", "quản lý cân nặng", "dinh dưỡng", "bữa ăn cân bằng", "kiểm soát khẩu phần", "ăn uống tỉnh táo"],
   "global_notes": { "safety": "" },
   "enum_tags": [
     "nutrition",

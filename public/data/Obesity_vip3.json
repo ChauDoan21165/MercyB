@@ -4,6 +4,8 @@
   "locale": "vi-en",
   "name": "Obesity Management (VIP 3)",
   "description": "Personalized mastery for sustainable weight management: balanced meals, active lifestyle, mindful eating, portion awareness, nutrient density, and behavioral resilience.",
+  "keywords_en": ["obesity", "weight management", "nutrition", "meal planning", "mindful eating", "behavioral resilience"],
+  "keywords_vi": ["béo phì", "quản lý cân nặng", "dinh dưỡng", "lập kế hoạch bữa ăn", "ăn uống tỉnh táo", "kiên cường hành vi"],
   "global_notes": { "safety": "" },
   "enum_tags": [
     "nutrition",
