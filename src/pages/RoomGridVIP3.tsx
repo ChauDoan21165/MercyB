@@ -97,17 +97,18 @@ const RoomGridVIP3 = () => {
               >
                 {/* VIP3 Exclusive Badge - Top Left */}
                 {isSpecialRoom && (
-                  <div className="absolute top-1 left-1 z-10">
+                  <div className="absolute top-1 left-1 z-10 animate-pulse">
                     <Badge 
                       className="px-1.5 py-0.5 text-[9px] font-bold flex items-center gap-0.5"
                       style={{
                         background: `linear-gradient(135deg, ${isSpecialRoom}, ${isSpecialRoom}dd)`,
                         color: 'white',
                         border: 'none',
-                        boxShadow: `0 2px 8px ${isSpecialRoom}80`
+                        boxShadow: `0 0 15px ${isSpecialRoom}cc, 0 2px 8px ${isSpecialRoom}80`,
+                        animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
                       }}
                     >
-                      <Crown className="w-2.5 h-2.5" />
+                      <Crown className="w-2.5 h-2.5 animate-pulse" />
                       <span>EXCLUSIVE</span>
                     </Badge>
                   </div>
