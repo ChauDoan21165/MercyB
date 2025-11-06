@@ -1,0 +1,84 @@
+name: Move root JSON & MP3 files to DEL
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  move-junk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Move root JSON & MP3 files to DEL
+        run: |
+          set -e
+
+          echo "🔎 Creating DEL folder if it does not exist..."
+          mkdir -p DEL
+
+          echo "📄 Candidate JSON & MP3 files in repo root:"
+          ls -1 *.json *.mp3 2>/dev/null || echo "No json/mp3 in root"
+
+          # Whitelisted JSON files to KEEP in root
+          keep_files=(
+            "Dictionary.json"
+          )
+
+          should_keep() {
+            local f="$1"
+            for k in "${keep_files[@]}"; do
+              if [[ "$f" == "$k" ]]; then
+                return 0
+              fi
+            done
+            return 1
+          }
+
+          moved=0
+
+          for f in *; do
+            # Only handle regular files in root
+            if [[ -f "$f" ]]; then
+              case "$f" in
+                *.json|*.mp3)
+                  if should_keep "$f"; then
+                    echo "✅ Keeping whitelisted file: $f"
+                  else
+                    echo "🚚 Moving $f -> DEL/$f"
+                    git mv "$f" "DEL/$f"
+                    moved=$((moved+1))
+                  fi
+                  ;;
+                *)
+                  # Not json/mp3, ignore
+                  ;;
+              esac
+            fi
+          done
+
+          echo "📦 Total files moved: $moved"
+
+          if [[ "$moved" -eq 0 ]]; then
+            echo "Nothing to move."
+            exit 0
+          fi
+
+      - name: Commit & push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if git diff --cached --quiet; then
+            echo "No staged changes, skipping commit."
+            exit 0
+          fi
+
+          git commit -m "Move root JSON & MP3 files into DEL"
+          git push
