@@ -2,13 +2,13 @@ name: Validate Data Files
 
 on:
   push:
-    branches: ['**']
+    branches: ['main', 'develop']
     paths:
       - 'public/data/**/*.json'
       - 'scripts/validate-data-files.js'
       - '.github/workflows/validate-data.yml'
   pull_request:
-    branches: ['**']
+    branches: ['main', 'develop']
     paths:
       - 'public/data/**/*.json'
       - 'scripts/validate-data-files.js'
@@ -33,15 +33,23 @@ jobs:
         run: npm ci
 
       - name: Run data validation
+        id: validate
         run: node scripts/validate-data-files.js
 
       - name: Post validation summary
         if: always()
         run: |
-          echo "## Validation Results" >> $GITHUB_STEP_SUMMARY
+          echo "## 📋 Data Validation Results" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          if [ $? -eq 0 ]; then
+          if [ "${{ steps.validate.outcome }}" == "success" ]; then
             echo "✅ All data files validated successfully!" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "- All JSON files are properly formatted" >> $GITHUB_STEP_SUMMARY
+            echo "- Required fields present in all entries" >> $GITHUB_STEP_SUMMARY
+            echo "- Audio file references validated" >> $GITHUB_STEP_SUMMARY
           else
-            echo "❌ Validation failed. Check the logs above for details." >> $GITHUB_STEP_SUMMARY
+            echo "❌ Validation failed - PR cannot be merged" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Please fix the validation errors shown above before merging." >> $GITHUB_STEP_SUMMARY
+            exit 1
           fi
