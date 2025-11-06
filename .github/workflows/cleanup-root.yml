@@ -1,35 +1,51 @@
 name: Cleanup root data files
 
 on:
-  workflow_dispatch: {}  # manual trigger from GitHub UI
+  workflow_dispatch:
+    inputs:
+      batch_size:
+        description: 'Number of files to process per batch'
+        required: false
+        default: '100'
+      dry_run:
+        description: 'Preview changes without deleting'
+        required: false
+        default: 'false'
 
 jobs:
   cleanup-root:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-            node-version: "20"
+          node-version: "20"
 
-      - name: Run cleanup script
-        run: node scripts/cleanup-root_files.js
-
-      - name: Commit and push changes
+      - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # If nothing changed, stop
-          if git diff --quiet; then
-            echo "No changes to commit."
-            exit 0
-          fi
+      - name: Run batch cleanup script
+        run: node scripts/cleanup-root-batched.js
+        env:
+          BATCH_SIZE: ${{ github.event.inputs.batch_size || '100' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
 
-          git add .
-          git commit -m "chore: cleanup root data files"
-          git push
+      - name: Push all changes
+        if: github.event.inputs.dry_run != 'true'
+        run: |
+          if git log origin/main..HEAD --oneline | grep -q .; then
+            echo "📤 Pushing all batch commits to GitHub..."
+            git push
+            echo "✅ All changes pushed successfully!"
+          else
+            echo "✨ No commits to push - cleanup complete!"
+          fi
