@@ -131,6 +131,10 @@ const RoomGrid = () => {
                     room.hasData 
                       ? "hover:scale-110 hover:shadow-hover hover:z-10 cursor-pointer" 
                       : "opacity-30 cursor-not-allowed grayscale"
+                  } ${
+                    room.id === 'sexuality-and-curiosity-free' 
+                      ? 'border-2 border-[#FF6B6B] bg-gradient-to-br from-[#FF6B6B]/10 to-[#FF6B6B]/5 shadow-[0_0_20px_rgba(255,107,107,0.3)]' 
+                      : ''
                   }`}
                   onClick={() => handleRoomClick(room)}
                 >

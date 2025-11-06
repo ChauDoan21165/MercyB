@@ -8,6 +8,10 @@
     "en": "A gentle introduction to why sexuality is such a deep, fascinating part of being human, and why the in-depth, adult-only explorations are available in the VIP3 tier.",
     "vi": "Giới thiệu nhẹ nhàng về lý do tính dục là phần sâu sắc, thú vị của con người, và vì sao các nội dung chuyên sâu chỉ dành cho người trưởng thành sẽ có trong gói VIP3."
   },
+  "meta": {
+    "room_color": "#FF6B6B",
+    "special_attention": true
+  },
   "entries": [
     {
       "slug": "sexuality-intro",
