@@ -1,4 +1,3 @@
-```json
 {
   "tier": "Free / Miễn phí",
   "title": {
@@ -6,8 +5,8 @@
     "vi": "Nền Tảng AI"
   },
   "content": {
-    "en": "Begin exploring Artificial Intelligence through simple, clear concepts. Learn how data teaches machines to recognize patterns and make logical predictions. Understand the importance of privacy, fairness, and creative responsibility in every system you build. This foundation helps you grow confidently with AI each day.",
-    "vi": "Bắt đầu khám phá Trí tuệ Nhân tạo qua các khái niệm đơn giản, rõ ràng. Học cách dữ liệu dạy máy nhận ra mẫu và đưa ra dự đoán hợp lý. Hiểu tầm quan trọng của quyền riêng tư, công bằng và trách nhiệm sáng tạo trong mỗi hệ thống bạn xây dựng. Nền tảng này giúp bạn phát triển tự tin cùng AI mỗi ngày."
+    "en": "Artificial Intelligence begins with curiosity—how can machines learn, decide, and adapt like humans? This room introduces the essential ideas behind AI: pattern recognition, data training, and problem-solving. You’ll explore how algorithms find meaning in information, building systems that sense and respond intelligently. Start simple, observe patiently, and experiment boldly. Every small step in AI expands your ability to understand how logic meets creativity in the digital mind.",
+    "vi": "Trí tuệ Nhân tạo bắt đầu từ sự tò mò — làm thế nào máy móc có thể học hỏi, ra quyết định và thích ứng như con người? Phòng này giới thiệu những ý tưởng cốt lõi của AI: nhận dạng mẫu, huấn luyện dữ liệu và giải quyết vấn đề. Bạn sẽ khám phá cách các thuật toán tìm ý nghĩa trong thông tin, xây dựng hệ thống biết cảm nhận và phản hồi thông minh. Hãy bắt đầu đơn giản, quan sát kiên nhẫn và thử nghiệm táo bạo. Mỗi bước nhỏ trong AI mở rộng khả năng hiểu sự giao thoa giữa logic và sáng tạo của trí tuệ số."
   },
   "entries": [
     {
@@ -15,8 +14,8 @@
       "keywords_en": ["machine learning", "data", "patterns", "models"],
       "keywords_vi": ["học máy", "dữ liệu", "mẫu", "mô hình"],
       "copy": {
-        "en": "Machine learning helps computers recognize hidden patterns in data. By training models on examples, they learn to make accurate predictions. You can try a small experiment—like teaching AI to identify fruits by color or shape. Each test builds your understanding of how machines think.",
-        "vi": "Học máy giúp máy tính nhận ra các mẫu ẩn trong dữ liệu. Bằng cách huấn luyện mô hình qua các ví dụ, chúng học cách dự đoán chính xác. Bạn có thể thử một thí nghiệm nhỏ — như dạy AI nhận diện trái cây qua màu sắc hoặc hình dạng. Mỗi lần thử giúp bạn hiểu hơn cách máy tư duy."
+        "en": "Machine learning helps computers discover structure in raw data. By training models on labeled examples, we teach systems to predict outcomes, recognize speech, or detect images. Start by observing how simple models—like linear regression—draw conclusions from numbers. Every experiment deepens your sense of how machines turn experience into knowledge.",
+        "vi": "Học máy giúp máy tính khám phá cấu trúc trong dữ liệu thô. Bằng cách huấn luyện mô hình trên các ví dụ có nhãn, chúng ta dạy hệ thống dự đoán kết quả, nhận diện giọng nói hoặc hình ảnh. Hãy bắt đầu bằng việc quan sát cách các mô hình đơn giản — như hồi quy tuyến tính — rút ra kết luận từ con số. Mỗi thí nghiệm đều làm sâu sắc thêm hiểu biết của bạn về cách máy biến trải nghiệm thành tri thức."
       },
       "tags": ["machine-learning", "education"],
       "audio": "understanding_machine_learning_free.mp3"
@@ -26,12 +25,11 @@
       "keywords_en": ["ethics", "fairness", "privacy", "responsibility"],
       "keywords_vi": ["đạo đức", "công bằng", "riêng tư", "trách nhiệm"],
       "copy": {
-        "en": "Ethical AI ensures technology respects human values. Start by asking how your system uses data and affects people. Practice fairness by testing for bias, and protect privacy in every project. Building AI with integrity creates trust and benefits everyone, not just the technology itself.",
-        "vi": "AI có đạo đức đảm bảo công nghệ tôn trọng giá trị con người. Hãy bắt đầu bằng việc hỏi hệ thống của bạn sử dụng dữ liệu thế nào và ảnh hưởng đến ai. Thực hành công bằng bằng cách kiểm tra thiên lệch và bảo vệ quyền riêng tư trong mọi dự án. Xây dựng AI liêm chính tạo ra niềm tin và mang lợi ích cho tất cả."
+        "en": "Building responsible AI means balancing innovation with human values. Every dataset reflects choices—what to include, what to protect, and whose voices are heard. Learn to evaluate models for bias and privacy before deployment. Ethical AI isn’t just a safeguard; it’s a mindset of care that ensures technology serves people with respect and trust.",
+        "vi": "Xây dựng AI có trách nhiệm nghĩa là cân bằng đổi mới với giá trị con người. Mỗi bộ dữ liệu phản ánh lựa chọn — điều gì được bao gồm, điều gì cần bảo vệ và tiếng nói của ai được lắng nghe. Hãy học cách đánh giá mô hình về thiên lệch và quyền riêng tư trước khi triển khai. AI đạo đức không chỉ là biện pháp bảo vệ; đó là tư duy quan tâm, đảm bảo công nghệ phục vụ con người với sự tôn trọng và tin cậy."
       },
       "tags": ["ethics", "responsibility"],
       "audio": "ethical_ai_foundations_free.mp3"
     }
   ]
 }
-```
