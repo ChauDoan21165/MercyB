@@ -1,0 +1,39 @@
+{
+  "tier": "Free / Miễn phí",
+  "title": {
+    "en": "Sexuality & Curiosity",
+    "vi": "Tính Dục & Sự Tò Mò"
+  },
+  "content": {
+    "en": "A gentle introduction to why sexuality is such a deep, fascinating part of being human, and why the in-depth, adult-only explorations are available in the VIP3 tier.",
+    "vi": "Giới thiệu nhẹ nhàng về lý do tính dục là phần sâu sắc, thú vị của con người, và vì sao các nội dung chuyên sâu chỉ dành cho người trưởng thành sẽ có trong gói VIP3."
+  },
+  "entries": [
+    {
+      "slug": "sexuality-intro",
+      "keywords_en": [
+        "sexuality",
+        "curiosity",
+        "relationships",
+        "vip3"
+      ],
+      "keywords_vi": [
+        "tính dục",
+        "tò mò",
+        "mối quan hệ",
+        "vip3"
+      ],
+      "copy": {
+        "en": "Sexuality is fascinating because it sits at the crossroads of body, emotion, identity, culture, and spirit. It shapes how we see ourselves, how we connect with others, and how we experience pleasure, boundaries, and safety. Yet most of us grew up with silence, shame, or confusing messages. A mature conversation about sex isn’t about gossip or fantasy; it’s about understanding consent, desire, communication, and respect. In the VIP3 tier, you can explore adult-only essays that go deeper into real questions—around relationships, intimacy after heartbreak, mismatched desire, faith and sexuality, or simply how to feel at home in your own body. You can even request specific topics from the admin when you’re curious or “thirsty” to learn more. Think of it as a private library for grown-ups: a safe, thoughtful place to explore one of the most human parts of your life. The goal is guidance, not judgment or pressure.",
+        "vi": "Tính dục hấp dẫn vì nó nằm ở giao điểm giữa cơ thể, cảm xúc, bản dạng, văn hoá và đời sống tinh thần. Nó định hình cách ta nhìn chính mình, kết nối với người khác và trải nghiệm khoái cảm, ranh giới, sự an toàn. Nhưng nhiều người lớn lên trong im lặng, xấu hổ hoặc thông tin mơ hồ. Một cuộc trò chuyện trưởng thành về tình dục không phải chuyện đùa giỡn hay kích thích trí tò mò rẻ tiền, mà là hiểu về sự đồng thuận, khao khát, giao tiếp và tôn trọng. Ở gói VIP3, bạn có thể khám phá các bài viết chỉ dành cho người trưởng thành, đi sâu vào những câu hỏi thật: mối quan hệ, sự thân mật sau đổ vỡ, khác biệt ham muốn, niềm tin tôn giáo và tính dục, hay đơn giản là cảm thấy an toàn trong chính cơ thể mình. Bạn còn có thể đề xuất chủ đề cho admin khi thấy “khát” hiểu biết. Đây là một thư viện riêng tư cho người lớn – nơi an toàn, tôn trọng, giúp bạn hiểu hơn về một phần rất con người trong chính mình."
+      },
+      "tags": [
+        "sexuality",
+        "education",
+        "vip3",
+        "intro"
+      ],
+      "audio": "sexuality_fascination_free.mp3"
+    }
+  ]
+}
