@@ -9,6 +9,15 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
+// VIP3 exclusive rooms with special thematic colors
+const VIP3_SPECIAL_ROOMS: Record<string, string> = {
+  'sexuality-and-curiosity-and-culture-vip3': '#D946A6',
+  'finance-glory-vip3': '#FBBF24',
+  'strategy-in-life-1-vip3': '#1E40AF',
+  'strategy-in-life-2-vip3': '#7C3AED',
+  'strategy-in-life-3-vip3': '#059669',
+};
+
 const RoomGridVIP3 = () => {
   const navigate = useNavigate();
   const { canAccessVIP3, loading } = useUserAccess();
@@ -68,47 +77,86 @@ const RoomGridVIP3 = () => {
 
         {/* Room Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-          {ALL_ROOMS.filter(room => room.tier === "vip3").map((room) => (
-            <Card
-              key={room.id}
-              className={`relative p-3 transition-all duration-300 cursor-pointer group ${
-                room.hasData 
-                  ? "hover:scale-110 hover:shadow-hover hover:z-10 border-accent/50 bg-gradient-to-br from-background to-accent/5" 
-                  : "opacity-60 cursor-not-allowed"
-              }`}
-              onClick={() => room.hasData && navigate(`/chat/${room.id}`)}
-            >
-              {/* Status Badge */}
-              <div className="absolute top-1 right-1 z-10">
-                {room.hasData ? (
-                  <div className="bg-green-500 rounded-full p-1">
-                    <CheckCircle2 className="w-3 h-3 text-white" />
-                  </div>
-                ) : (
-                  <div className="bg-gray-400 rounded-full p-1">
-                    <Lock className="w-3 h-3 text-white" />
+          {ALL_ROOMS.filter(room => room.tier === "vip3").map((room) => {
+            const isSpecialRoom = VIP3_SPECIAL_ROOMS[room.id];
+            
+            return (
+              <Card
+                key={room.id}
+                className={`relative p-3 transition-all duration-300 cursor-pointer group ${
+                  room.hasData 
+                    ? "hover:scale-110 hover:shadow-hover hover:z-10 border-accent/50 bg-gradient-to-br from-background to-accent/5" 
+                    : "opacity-60 cursor-not-allowed"
+                }`}
+                style={isSpecialRoom ? {
+                  border: `2px solid ${isSpecialRoom}`,
+                  background: `linear-gradient(135deg, ${isSpecialRoom}15, ${isSpecialRoom}08)`,
+                  boxShadow: `0 0 20px ${isSpecialRoom}50`
+                } : undefined}
+                onClick={() => room.hasData && navigate(`/chat/${room.id}`)}
+              >
+                {/* VIP3 Exclusive Badge - Top Left */}
+                {isSpecialRoom && (
+                  <div className="absolute top-1 left-1 z-10">
+                    <Badge 
+                      className="px-1.5 py-0.5 text-[9px] font-bold flex items-center gap-0.5"
+                      style={{
+                        background: `linear-gradient(135deg, ${isSpecialRoom}, ${isSpecialRoom}dd)`,
+                        color: 'white',
+                        border: 'none',
+                        boxShadow: `0 2px 8px ${isSpecialRoom}80`
+                      }}
+                    >
+                      <Crown className="w-2.5 h-2.5" />
+                      <span>EXCLUSIVE</span>
+                    </Badge>
                   </div>
                 )}
-              </div>
 
-              <div className="space-y-2">
-                {/* Room Names */}
-                <div className="space-y-1">
-                  <p className="text-xs font-semibold text-[hsl(var(--vip3-gold))] leading-tight line-clamp-2">
-                    {room.nameEn}
-                  </p>
-                  <p className="text-[10px] leading-tight line-clamp-2 text-[hsl(var(--vip3-gold))]/80">
-                    {room.nameVi}
-                  </p>
+                {/* Status Badge */}
+                <div className="absolute top-1 right-1 z-10">
+                  {room.hasData ? (
+                    <div className="bg-green-500 rounded-full p-1">
+                      <CheckCircle2 className="w-3 h-3 text-white" />
+                    </div>
+                  ) : (
+                    <div className="bg-gray-400 rounded-full p-1">
+                      <Lock className="w-3 h-3 text-white" />
+                    </div>
+                  )}
                 </div>
-              </div>
 
-              {/* Hover Effect */}
-              {room.hasData && (
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
-              )}
-            </Card>
-          ))}
+                <div className="space-y-2">
+                  {/* Room Names */}
+                  <div className="space-y-1">
+                    <p 
+                      className="text-xs font-semibold leading-tight line-clamp-2"
+                      style={isSpecialRoom ? { color: isSpecialRoom } : { color: 'hsl(var(--vip3-gold))' }}
+                    >
+                      {room.nameEn}
+                    </p>
+                    <p 
+                      className="text-[10px] leading-tight line-clamp-2"
+                      style={isSpecialRoom ? { color: `${isSpecialRoom}cc` } : { color: 'hsl(var(--vip3-gold)/0.8)' }}
+                    >
+                      {room.nameVi}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Hover Effect */}
+                {room.hasData && (
+                  <div 
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"
+                    style={isSpecialRoom 
+                      ? { background: `linear-gradient(135deg, ${isSpecialRoom}30, ${isSpecialRoom}20)` }
+                      : { background: 'linear-gradient(to bottom right, hsl(var(--accent) / 0.2), hsl(var(--primary) / 0.2))' }
+                    }
+                  />
+                )}
+              </Card>
+            );
+          })}
         </div>
 
         {/* Navigation */}
