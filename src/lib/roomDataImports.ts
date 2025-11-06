@@ -105,6 +105,7 @@ export const roomDataMap: Record<string, RoomData> = {
   "relationship-healing-vip2": { id: "relationship-healing-vip2", nameEn: "Relationship Healing", nameVi: "Hàn Gắn Mối Quan Hệ", tier: "vip2", hasData: true },
   "relationship-healing-vip3": { id: "relationship-healing-vip3", nameEn: "Relationship Healing", nameVi: "Hàn Gắn Mối Quan Hệ", tier: "vip3", hasData: true },
   "sexuality-and-curiosity-free": { id: "sexuality-and-curiosity-free", nameEn: "Sexuality & Curiosity", nameVi: "Tính Dục & Sự Tò Mò", tier: "free", hasData: true },
+  "sexuality-and-curiosity-and-culture-vip3": { id: "sexuality-and-curiosity-and-culture-vip3", nameEn: "Sexuality & Curiosity & Culture", nameVi: "Tính Dục & Sự Tò Mò & Văn Hóa", tier: "vip3", hasData: true },
   "shadow-work-free": { id: "shadow-work-free", nameEn: "Shadow Work", nameVi: "Công Việc Bóng Tối", tier: "free", hasData: true },
   "shadow-work-vip1": { id: "shadow-work-vip1", nameEn: "Shadow Work", nameVi: "Công Việc Bóng Tối", tier: "vip1", hasData: true },
   "shadow-work-vip2": { id: "shadow-work-vip2", nameEn: "Shadow Work", nameVi: "Công Việc Bóng Tối", tier: "vip2", hasData: true },
