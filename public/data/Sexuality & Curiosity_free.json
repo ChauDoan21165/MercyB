@@ -9,8 +9,7 @@
     "vi": "Giới thiệu nhẹ nhàng về lý do tính dục là phần sâu sắc, thú vị của con người, và vì sao các nội dung chuyên sâu chỉ dành cho người trưởng thành sẽ có trong gói VIP3."
   },
   "meta": {
-    "room_color": "#FF6B6B",
-    "special_attention": true
+    "tier": "free"
   },
   "entries": [
     {

@@ -9,12 +9,9 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useEffect, useState } from "react";
 
-// Special attention rooms with warm colors
-const SPECIAL_ATTENTION_ROOMS: Record<string, string> = {
-  'sexuality-and-curiosity-free': '#FF6B6B',
-  'self-love-free': '#FF7F66',
-  'soulmate-free': '#FF85A1',
-  'philosophy-of-everyday-free': '#FFC857',
+// VIP3 exclusive rooms with special warm colors
+const VIP3_SPECIAL_ROOMS: Record<string, string> = {
+  'sexuality-and-curiosity-and-culture-vip3': '#FF6B6B',
 };
 
 const RoomGrid = () => {
@@ -140,10 +137,10 @@ const RoomGrid = () => {
                       ? "hover:scale-110 hover:shadow-hover hover:z-10 cursor-pointer" 
                       : "opacity-30 cursor-not-allowed grayscale"
                   }`}
-                  style={SPECIAL_ATTENTION_ROOMS[room.id] ? {
-                    border: `2px solid ${SPECIAL_ATTENTION_ROOMS[room.id]}`,
-                    background: `linear-gradient(135deg, ${SPECIAL_ATTENTION_ROOMS[room.id]}15, ${SPECIAL_ATTENTION_ROOMS[room.id]}08)`,
-                    boxShadow: `0 0 20px ${SPECIAL_ATTENTION_ROOMS[room.id]}50`
+                  style={VIP3_SPECIAL_ROOMS[room.id] ? {
+                    border: `2px solid ${VIP3_SPECIAL_ROOMS[room.id]}`,
+                    background: `linear-gradient(135deg, ${VIP3_SPECIAL_ROOMS[room.id]}15, ${VIP3_SPECIAL_ROOMS[room.id]}08)`,
+                    boxShadow: `0 0 20px ${VIP3_SPECIAL_ROOMS[room.id]}50`
                   } : undefined}
                   onClick={() => handleRoomClick(room)}
                 >
