@@ -1,7 +1,5 @@
 {
   "tier": "Free / Miễn phí",
-  "keywords_en": ["sexuality", "curiosity", "relationships", "education"],
-  "keywords_vi": ["tính dục", "tò mò", "mối quan hệ", "giáo dục"],
   "title": {
     "en": "Sexuality & Curiosity",
     "vi": "Tính Dục & Sự Tò Mò"
@@ -36,6 +34,32 @@
         "intro"
       ],
       "audio": "sexuality_fascination_free.mp3"
+    },
+    {
+      "slug": "vip3-overview",
+      "keywords_en": [
+        "vip3",
+        "sexuality & curiosity",
+        "overview",
+        "advanced"
+      ],
+      "keywords_vi": [
+        "vip3",
+        "tính dục & tò mò",
+        "tổng quan",
+        "nâng cao"
+      ],
+      "copy": {
+        "en": "The VIP3 “Sexuality & Curiosity” series is a rare space for adults who want to explore one of life’s deepest energies with honesty, safety, and wonder. Across six subrooms, it guides you through everything that standard education never dared to cover—how curiosity, consent, pleasure, and identity intertwine to shape who we are. You’ll start from self-discovery and body awareness, then move into communication and relationships, learning to express desire and boundaries with clarity. Later sections dive into advanced topics like pleasure anatomy, mindful kink, diversity, and aging with vitality. You’ll also find essays on inclusion—LGBTQ+, disability, culture, and spirituality—because sexuality is never one-size-fits-all. Every entry is research-based, compassionate, and written to spark reflection rather than judgment. The tone is grown-up, mindful, and humane: this is not pornography or fantasy—it’s emotional intelligence in action. You’ll gain practical insight for intimacy, mental balance, and self-confidence, turning curiosity into courage. With over 70 entries and hours of guided audio, this VIP3 room is both a personal retreat and an education in empathy. It’s for those who want to love better, feel deeper, and live with integrity.",
+        "vi": "Chuỗi “Tính Dục & Sự Tò Mò” trong gói VIP3 là không gian hiếm có dành cho người trưởng thành muốn khám phá một nguồn năng lượng sâu sắc của cuộc sống bằng sự trung thực, an toàn và kinh ngạc. Sáu tiểu phòng dẫn dắt bạn đi qua những điều mà giáo dục truyền thống hiếm khi chạm tới — cách tò mò, sự đồng thuận, khoái cảm và bản dạng đan xen để tạo nên con người ta. Bạn sẽ bắt đầu từ việc hiểu bản thân và cơ thể, rồi tiến đến giao tiếp và các mối quan hệ, học cách thể hiện ham muốn và ranh giới một cách rõ ràng. Các phần sau đi sâu vào giải phẫu khoái cảm, chánh niệm trong tình dục, sự đa dạng và quá trình lão hoá đầy sinh lực. Bạn cũng sẽ gặp các bài viết về hòa nhập — LGBTQ+, người khuyết tật, văn hoá và tâm linh — vì tính dục không bao giờ chỉ có một khuôn mẫu. Mỗi bài viết đều dựa trên nghiên cứu, đầy cảm thông, và hướng đến chiêm nghiệm thay vì phán xét. Đây không phải là kích thích rẻ tiền mà là trí tuệ cảm xúc được ứng dụng. Với hơn 70 bài và hàng giờ âm thanh hướng dẫn, VIP3 là nơi ẩn tu cá nhân và là hành trình học về lòng nhân ái. Dành cho những ai muốn yêu sâu hơn, hiểu rõ hơn và sống chân thật hơn."
+      },
+      "tags": [
+        "vip3",
+        "overview",
+        "promotion",
+        "sexuality"
+      ],
+      "audio": "sexuality_vip3_overview_free_en.mp3"
     }
   ]
 }
