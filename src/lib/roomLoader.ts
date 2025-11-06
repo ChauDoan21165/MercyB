@@ -145,11 +145,16 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
     // Build merged entries and normalize audio path to /audio/ directory
     const merged = Array.isArray(jsonData?.entries) ? (jsonData.entries as any[]).map((entry: any, idx: number) => {
       // Extract audio from multiple possible locations and normalize to /audio/filename.mp3
-      const audioRaw = (entry?.audio && typeof entry.audio === 'object')
-        ? (entry.audio.en ?? Object.values(entry.audio)[0])
-        : entry?.audio;
-      let audioPath = audioRaw || entry?.meta?.audio_file || entry?.audioFile;
+      let audioRaw: any;
+      if (entry?.audio && typeof entry.audio === 'object') {
+        audioRaw = entry.audio.en ?? Object.values(entry.audio)[0];
+      } else if (entry?.audio) {
+        audioRaw = entry.audio;
+      }
+      // Additional common placements used by our content
+      if (!audioRaw) audioRaw = entry?.meta?.audio_file || entry?.audioFile || entry?.copy?.audio || entry?.content?.audio;
 
+      let audioPath = audioRaw;
       if (audioPath) {
         let p = String(audioPath);
         // Strip leading slashes and public prefix
@@ -182,7 +187,6 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
         replyVi
       };
     }) : [];
-
     return {
       merged,
       keywordMenu,
