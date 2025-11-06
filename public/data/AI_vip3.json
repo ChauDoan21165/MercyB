@@ -5,75 +5,65 @@
     "vi": "Biên Giới AI"
   },
   "content": {
-    "en": "Push AI to its limits with advanced techniques like VAEs for generative modeling, NAS for automated architecture, CoT for reasoned prompting, federated learning for privacy, neuroevolution for adaptive networks, and AI-driven scientific discovery. These strategies empower you to innovate efficiently, handle complex challenges, and ensure ethical, robust systems. Build practical skills through hands-on experiments, balancing theory with real-world application to accelerate progress in AI. Embrace these tools to unlock new possibilities in technology and research. Discover deeper guidance in higher tiers.",
-    "vi": "Đẩy AI đến giới hạn với kỹ thuật nâng cao như VAE cho mô hình sinh, NAS cho kiến trúc tự động, CoT cho prompt suy luận, học liên kết cho riêng tư, tiến hóa nơ-ron cho mạng thích ứng, và khám phá khoa học bằng AI. Những chiến lược này trao quyền cho bạn đổi mới hiệu quả, xử lý thách thức phức tạp và đảm bảo hệ thống đạo đức, bền vững. Xây dựng kỹ năng thực tế qua thí nghiệm thực hành, cân bằng lý thuyết với ứng dụng thực tế để tăng tốc tiến bộ AI. Áp dụng các công cụ này để mở khóa khả năng mới trong công nghệ và nghiên cứu. Khám phá thêm ở cấp độ cao hơn."
+    "en": "AI stands at the frontier of human discovery — a bridge between imagination and reality. It transforms how we heal, learn, create, and connect. The next era of progress depends on our ability to use intelligence wisely and compassionately. This room explores AI as the heartbeat of modern innovation, helping us see that technology is not a cold machine, but a mirror of human potential. Enter the frontier where vision meets purpose and code becomes creation.",
+    "vi": "AI đứng ở biên giới của khám phá nhân loại — cây cầu giữa tưởng tượng và hiện thực. Nó thay đổi cách ta chữa lành, học hỏi, sáng tạo và kết nối. Kỷ nguyên tiếp theo của tiến bộ phụ thuộc vào khả năng sử dụng trí tuệ một cách khôn ngoan và nhân ái. Phòng này khám phá AI như nhịp tim của đổi mới hiện đại, giúp ta thấy rằng công nghệ không lạnh lẽo, mà là tấm gương phản chiếu tiềm năng con người. Hãy bước vào biên giới nơi tầm nhìn gặp mục đích và mã lệnh trở thành sáng tạo.",
+    "audio": "ai_frontier_intro_vip3.mp3"
   },
   "entries": [
     {
-      "slug": "encoding-latent-spaces-with-vaes",
-      "keywords_en": ["VAE", "latent", "generative", "reconstruction"],
-      "keywords_vi": ["VAE", "tiềm ẩn", "sinh dữ liệu", "tái tạo"],
+      "slug": "ai-transforming-human-progress",
+      "keywords_en": ["progress", "innovation", "society", "future"],
+      "keywords_vi": ["tiến bộ", "đổi mới", "xã hội", "tương lai"],
       "copy": {
-        "en": "Learn to encode latent spaces with Variational Autoencoders (VAEs) for powerful generative modeling. Balance the KL divergence loss with reconstruction error to create smooth, meaningful representations. Experiment by generating images from random noise vectors, observing how the model interpolates between samples. This technique is stable yet requires careful tuning of hyperparameters to avoid posterior collapse. Apply it in creative tasks like art generation or data augmentation, fostering innovation in AI. Start small with MNIST datasets, gradually scaling to complex images, building your skills in probabilistic modeling for practical, real-world applications.",
-        "vi": "Học mã hóa không gian tiềm ẩn bằng Variational Autoencoder (VAE) cho mô hình sinh mạnh mẽ. Cân bằng mất mát KL với lỗi tái tạo để tạo biểu diễn mượt mà, ý nghĩa. Thử nghiệm bằng cách sinh ảnh từ vector nhiễu ngẫu nhiên, quan sát cách mô hình nội suy giữa mẫu. Kỹ thuật này ổn định nhưng cần tinh chỉnh siêu tham số cẩn thận để tránh sụp đổ posterior. Áp dụng trong tác vụ sáng tạo như sinh nghệ thuật hoặc tăng dữ liệu, thúc đẩy đổi mới AI. Bắt đầu nhỏ với bộ dữ liệu MNIST, dần mở rộng đến ảnh phức tạp, xây dựng kỹ năng mô hình xác suất cho ứng dụng thực tế."
+        "en": "Artificial Intelligence is the new engine of human progress. From curing diseases to predicting climate change, AI helps us solve problems once thought impossible. It automates the ordinary and amplifies the extraordinary, freeing human minds for creativity and empathy. Every breakthrough — in medicine, education, or space — carries the signature of AI’s precision and human curiosity combined. This is not just technology evolving; it’s civilization accelerating. As we refine these systems, we shape a smarter, fairer, and more compassionate future where intelligence is shared for the good of all.",
+        "vi": "Trí tuệ nhân tạo là động cơ mới của tiến bộ nhân loại. Từ chữa bệnh đến dự đoán khí hậu, AI giúp ta giải quyết những vấn đề tưởng chừng không thể. Nó tự động hóa điều bình thường và khuếch đại điều phi thường, giải phóng tâm trí con người cho sáng tạo và lòng trắc ẩn. Mỗi đột phá — trong y học, giáo dục hay không gian — đều mang dấu ấn của sự kết hợp giữa độ chính xác của AI và trí tò mò con người. Đây không chỉ là công nghệ tiến hóa, mà là nền văn minh tăng tốc. Khi ta tinh chỉnh hệ thống này, ta định hình một tương lai thông minh, công bằng và nhân ái hơn.",
+        "audio": "ai_transforming_human_progress_vip3.mp3"
       },
-      "tags": ["vae", "generative", "ai"],
-      "audio": "encoding_latent_spaces_with_vaes_vip3.mp3"
+      "tags": ["progress", "society", "innovation"]
     },
     {
-      "slug": "automating-architecture-design",
-      "keywords_en": ["NAS", "DARTS", "search", "optimize"],
-      "keywords_vi": ["NAS", "DARTS", "tìm kiếm", "tối ưu"],
+      "slug": "the-power-of-ai-discovery",
+      "keywords_en": ["discovery", "science", "breakthrough", "knowledge"],
+      "keywords_vi": ["khám phá", "khoa học", "đột phá", "tri thức"],
       "copy": {
-        "en": "Let Neural Architecture Search (NAS) automate your model design, exploring vast architectural spaces to find optimal configurations. Use methods like DARTS for faster, differentiable searches that reduce computational demands. Begin by running NAS on a tiny dataset, evaluating discovered architectures on metrics like accuracy and efficiency. This approach saves time and uncovers innovative designs beyond manual intuition. Practice on classification tasks, refining search spaces and objectives to suit your needs, empowering you to create high-performing models with minimal manual intervention.",
-        "vi": "Để Tìm Kiếm Kiến Trúc Nơ-ron (NAS) tự động hóa thiết kế mô hình, khám phá không gian kiến trúc lớn để tìm cấu hình tối ưu. Dùng phương pháp như DARTS cho tìm kiếm nhanh, khả vi phân giảm nhu cầu tính toán. Bắt đầu bằng chạy NAS trên dữ liệu nhỏ, đánh giá kiến trúc phát hiện trên chỉ số như độ chính xác và hiệu quả. Cách tiếp cận này tiết kiệm thời gian và khám phá thiết kế đổi mới vượt ngoài trực giác thủ công. Thực hành trên tác vụ phân loại, tinh chỉnh không gian tìm kiếm và mục tiêu phù hợp nhu cầu, trao quyền tạo mô hình hiệu suất cao với can thiệp thủ công tối thiểu."
+        "en": "AI accelerates discovery at a speed never before seen. It can simulate galaxies, design new medicines, and decode the building blocks of life. In labs and classrooms, it works as a tireless collaborator — analyzing data, revealing hidden patterns, and proposing ideas humans might miss. Its power lies not in replacing scientists, but in empowering them to dream bigger and see further. Every insight generated by AI extends the reach of human understanding, pushing the frontier of what’s possible in science, art, and beyond.",
+        "vi": "AI tăng tốc khám phá với tốc độ chưa từng có. Nó có thể mô phỏng thiên hà, thiết kế thuốc mới và giải mã cấu trúc của sự sống. Trong phòng thí nghiệm và lớp học, nó hoạt động như người cộng tác không biết mệt — phân tích dữ liệu, hé lộ mô hình ẩn và đề xuất ý tưởng mà con người có thể bỏ qua. Sức mạnh của AI không nằm ở việc thay thế nhà khoa học, mà ở việc giúp họ mơ xa hơn và nhìn sâu hơn. Mỗi hiểu biết do AI tạo ra mở rộng tầm hiểu biết của con người, đẩy biên giới của cái có thể trong khoa học, nghệ thuật và hơn thế nữa.",
+        "audio": "the_power_of_ai_discovery_vip3.mp3"
       },
-      "tags": ["nas", "architecture", "ai"],
-      "audio": "automating_architecture_design_vip3.mp3"
+      "tags": ["discovery", "science"]
     },
     {
-      "slug": "learning-with-stepwise-reasoning",
-      "keywords_en": ["CoT", "chain", "reasoning", "prompt"],
-      "keywords_vi": ["CoT", "chuỗi", "suy luận", "prompt"],
+      "slug": "ai-reshaping-creativity",
+      "keywords_en": ["creativity", "art", "music", "imagination"],
+      "keywords_vi": ["sáng tạo", "nghệ thuật", "âm nhạc", "tưởng tượng"],
       "copy": {
-        "en": "Break complex problems into manageable steps with Chain of Thought (CoT) prompting to enhance AI reasoning capabilities. Craft detailed CoT prompts that guide models through logical sequences, boosting accuracy in tasks like math or logic puzzles. Test on diverse problems, iterating prompts for clarity and precision. This method transforms black-box outputs into transparent, step-by-step explanations, improving reliability. Incorporate it into your workflow for better decision-making, starting with simple queries and scaling to advanced applications, fostering deeper understanding and effective problem-solving.",
-        "vi": "Chia bài toán phức tạp thành bước dễ quản lý bằng prompt Chuỗi Suy Nghĩ (CoT) để nâng cao khả năng suy luận AI. Tạo prompt CoT chi tiết hướng dẫn mô hình qua chuỗi logic, tăng độ chính xác trong tác vụ như toán hoặc logic. Thử trên vấn đề đa dạng, lặp prompt để rõ ràng và chính xác. Phương pháp này biến đầu ra hộp đen thành giải thích từng bước minh bạch, cải thiện độ tin cậy. Kết hợp vào quy trình làm việc cho quyết định tốt hơn, bắt đầu với truy vấn đơn giản và mở rộng đến ứng dụng nâng cao, nuôi dưỡng hiểu biết sâu hơn và giải quyết vấn đề hiệu quả."
+        "en": "AI has become the newest muse of human creativity. It paints, composes, and writes — not to outshine artists, but to collaborate with them. When algorithms learn beauty, they reflect our imagination in unexpected ways. A verse completed by AI, a symphony co-written with code — these moments remind us that creativity is infinite when shared. AI transforms blank canvases into living expressions of possibility, inspiring artists to explore new dimensions of emotion, color, and sound. It doesn’t steal the soul of art — it expands it.",
+        "vi": "AI đã trở thành nguồn cảm hứng mới của sáng tạo con người. Nó vẽ, sáng tác và viết — không để vượt qua nghệ sĩ, mà để cùng họ hợp tác. Khi thuật toán học được cái đẹp, chúng phản chiếu trí tưởng tượng của ta theo cách bất ngờ. Một bài thơ được AI hoàn thiện, một bản giao hưởng viết cùng mã lệnh — những khoảnh khắc ấy nhắc ta rằng sáng tạo là vô tận khi được chia sẻ. AI biến những tấm toan trắng thành biểu đạt sống động của khả năng, truyền cảm hứng cho nghệ sĩ khám phá chiều sâu mới của cảm xúc, màu sắc và âm thanh. Nó không cướp linh hồn nghệ thuật — nó mở rộng nó.",
+        "audio": "ai_reshaping_creativity_vip3.mp3"
       },
-      "tags": ["cot", "reasoning", "ai"],
-      "audio": "learning_with_stepwise_reasoning_vip3.mp3"
+      "tags": ["creativity", "art"]
     },
     {
-      "slug": "decentralized-learning-for-privacy",
-      "keywords_en": ["federated", "privacy", "devices", "secure"],
-      "keywords_vi": ["liên kết", "riêng tư", "thiết bị", "bảo mật"],
+      "slug": "ai-ethics-and-human-responsibility",
+      "keywords_en": ["ethics", "responsibility", "trust", "balance"],
+      "keywords_vi": ["đạo đức", "trách nhiệm", "niềm tin", "cân bằng"],
       "copy": {
-        "en": "Train models across distributed devices with federated learning to preserve user privacy. Keep sensitive data local while syncing only model updates to a central server. Implement a basic federated example on simulated devices, observing convergence without compromising security. This approach enables collaborative AI development in privacy-sensitive fields like healthcare. Focus on aggregation techniques to mitigate risks, starting small and scaling to real-world scenarios, ensuring ethical and secure advancements in machine learning.",
-        "vi": "Huấn luyện mô hình trên thiết bị phân tán bằng học liên kết để bảo vệ riêng tư người dùng. Giữ dữ liệu nhạy cảm tại chỗ trong khi đồng bộ chỉ cập nhật mô hình đến máy chủ trung tâm. Triển khai ví dụ liên kết cơ bản trên thiết bị mô phỏng, quan sát hội tụ mà không ảnh hưởng bảo mật. Cách tiếp cận này cho phép phát triển AI hợp tác trong lĩnh vực nhạy cảm riêng tư như y tế. Tập trung kỹ thuật tổng hợp để giảm rủi ro, bắt đầu nhỏ và mở rộng đến kịch bản thực tế, đảm bảo tiến bộ đạo đức và bảo mật trong học máy."
+        "en": "The rise of AI demands a rise in human responsibility. As algorithms influence decisions from finance to healthcare, ethics becomes our compass. We must design systems that are transparent, fair, and inclusive — technology that serves humanity, not controls it. The challenge is not building intelligence, but building wisdom. Every ethical choice we make today shapes the trust of tomorrow. Responsible AI is not a restriction; it’s the foundation for progress that endures with integrity and compassion.",
+        "vi": "Sự trỗi dậy của AI đòi hỏi sự trỗi dậy tương ứng của trách nhiệm con người. Khi thuật toán ảnh hưởng đến quyết định từ tài chính đến y tế, đạo đức trở thành la bàn của ta. Ta phải thiết kế hệ thống minh bạch, công bằng và bao quát — công nghệ phục vụ con người chứ không kiểm soát họ. Thách thức không phải là xây dựng trí tuệ, mà là xây dựng sự khôn ngoan. Mỗi lựa chọn đạo đức hôm nay định hình niềm tin ngày mai. AI có trách nhiệm không phải là giới hạn, mà là nền tảng của tiến bộ bền vững, có chính trực và nhân ái.",
+        "audio": "ai_ethics_and_human_responsibility_vip3.mp3"
       },
-      "tags": ["federated", "privacy", "ai"],
-      "audio": "decentralized_learning_for_privacy_vip3.mp3"
+      "tags": ["ethics", "trust"]
     },
     {
-      "slug": "evolving-neural-networks",
-      "keywords_en": ["neuroevolution", "genetic", "evolve", "fitness"],
-      "keywords_vi": ["tiến hóa", "di truyền", "phát triển", "thích nghi"],
+      "slug": "the-ai-future-we-choose",
+      "keywords_en": ["future", "hope", "humanity", "vision"],
+      "keywords_vi": ["tương lai", "hy vọng", "nhân loại", "tầm nhìn"],
       "copy": {
-        "en": "Evolve neural network architectures using genetic algorithms in neuroevolution for adaptive, innovative designs. Mutate parameters, select based on fitness scores, and iterate generations to optimize performance. Though computationally intensive, it's powerful for tasks without clear gradients, like game AI. Run on a simple simulation game to watch evolution in action. This biology-inspired method uncovers unique solutions, enhancing creativity in AI. Begin with basic populations, refining selection criteria for better results, building robust networks through evolutionary processes.",
-        "vi": "Tiến hóa kiến trúc mạng nơ-ron bằng thuật toán di truyền trong tiến hóa nơ-ron cho thiết kế thích ứng, đổi mới. Đột biến tham số, chọn dựa trên điểm thích nghi và lặp thế hệ để tối ưu hiệu suất. Dù tính toán nặng, nó mạnh mẽ cho tác vụ không gradient rõ ràng, như AI game. Chạy trên game mô phỏng đơn giản để xem tiến hóa hoạt động. Phương pháp lấy cảm hứng sinh học khám phá giải pháp độc đáo, nâng cao sáng tạo AI. Bắt đầu với quần thể cơ bản, tinh chỉnh tiêu chí chọn để kết quả tốt hơn, xây dựng mạng bền vững qua quy trình tiến hóa."
+        "en": "The future of AI is the future we choose to create. It can amplify inequality or inspire equality, automate routine or awaken creativity. The difference lies in our intent. AI’s destiny is not written in code but in the conscience of its creators. When guided by empathy and vision, AI becomes more than a tool — it becomes a partner in progress. The next chapter of humanity will be written not by machines alone, but by hearts and minds working with them in harmony.",
+        "vi": "Tương lai của AI là tương lai mà ta chọn tạo nên. Nó có thể khuếch đại bất bình đẳng hoặc khơi dậy công bằng, tự động hóa điều tẻ nhạt hoặc đánh thức sáng tạo. Sự khác biệt nằm ở ý định của ta. Số phận của AI không được viết bằng mã lệnh mà bằng lương tri của người tạo ra nó. Khi được dẫn dắt bởi lòng trắc ẩn và tầm nhìn, AI không chỉ là công cụ — nó trở thành người bạn đồng hành của tiến bộ. Chương tiếp theo của nhân loại sẽ không do máy móc viết nên, mà do trái tim và trí tuệ hợp lực cùng chúng.",
+        "audio": "the_ai_future_we_choose_vip3.mp3"
       },
-      "tags": ["neuroevolution", "genetic", "ai"],
-      "audio": "evolving_neural_networks_vip3.mp3"
-    },
-    {
-      "slug": "advancing-scientific-discovery-with-ai",
-      "keywords_en": ["science", "protein", "physics", "research"],
-      "keywords_vi": ["khoa học", "protein", "vật lý", "nghiên cứu"],
-      "copy": {
-        "en": "Use AI to advance scientific discovery by modeling complex phenomena like protein folding or physics simulations. Integrate domain-specific knowledge to guide models, handling sparse or noisy data effectively. This accelerates research in fields like biology and materials science, uncovering insights faster than traditional methods. Experiment with tools like AlphaFold for proteins or neural ODEs for dynamics. Focus on validation against real experiments, starting with benchmark datasets and progressing to novel hypotheses, driving impactful innovations in science.",
-        "vi": "Dùng AI để thúc đẩy khám phá khoa học bằng mô hình hiện tượng phức tạp như gấp protein hoặc mô phỏng vật lý. Tích hợp kiến thức chuyên ngành để hướng dẫn mô hình, xử lý dữ liệu thưa hoặc nhiễu hiệu quả. Điều này tăng tốc nghiên cứu trong lĩnh vực như sinh học và khoa học vật liệu, khám phá insight nhanh hơn phương pháp truyền thống. Thử nghiệm công cụ như AlphaFold cho protein hoặc ODE nơ-ron cho động học. Tập trung xác thực chống thực nghiệm thực, bắt đầu với bộ dữ liệu chuẩn và tiến đến giả thuyết mới, thúc đẩy đổi mới tác động trong khoa học."
-      },
-      "tags": ["science", "discovery", "ai"],
-      "audio": "advancing_scientific_discovery_with_ai_vip3.mp3"
+      "tags": ["future", "humanity"]
     }
   ]
 }
