@@ -87,6 +87,7 @@
 "updated_at": "2025-10-27T00:00:00+00:00",
 "entry_count": 3,
 "tier": "free",
-"room_color": "#4A90E2"
+"room_color": "#FF7F66",
+"special_attention": true
 }
 }

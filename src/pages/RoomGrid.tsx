@@ -9,6 +9,14 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useEffect, useState } from "react";
 
+// Special attention rooms with warm colors
+const SPECIAL_ATTENTION_ROOMS: Record<string, string> = {
+  'sexuality-and-curiosity-free': '#FF6B6B',
+  'self-love-free': '#FF7F66',
+  'soulmate-free': '#FF85A1',
+  'philosophy-of-everyday-free': '#FFC857',
+};
+
 const RoomGrid = () => {
   const navigate = useNavigate();
   const { canAccessVIP1, canAccessVIP2, canAccessVIP3 } = useUserAccess();
@@ -131,11 +139,12 @@ const RoomGrid = () => {
                     room.hasData 
                       ? "hover:scale-110 hover:shadow-hover hover:z-10 cursor-pointer" 
                       : "opacity-30 cursor-not-allowed grayscale"
-                  } ${
-                    room.id === 'sexuality-and-curiosity-free' 
-                      ? 'border-2 border-[#FF6B6B] bg-gradient-to-br from-[#FF6B6B]/10 to-[#FF6B6B]/5 shadow-[0_0_20px_rgba(255,107,107,0.3)]' 
-                      : ''
                   }`}
+                  style={SPECIAL_ATTENTION_ROOMS[room.id] ? {
+                    border: `2px solid ${SPECIAL_ATTENTION_ROOMS[room.id]}`,
+                    background: `linear-gradient(135deg, ${SPECIAL_ATTENTION_ROOMS[room.id]}15, ${SPECIAL_ATTENTION_ROOMS[room.id]}08)`,
+                    boxShadow: `0 0 20px ${SPECIAL_ATTENTION_ROOMS[room.id]}50`
+                  } : undefined}
                   onClick={() => handleRoomClick(room)}
                 >
                   {/* Status Badge */}
