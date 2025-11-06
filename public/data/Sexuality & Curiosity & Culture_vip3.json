@@ -12,151 +12,211 @@
     {
       "title": "Room 1 - Foundations",
       "content": "Content pending. This room will explore foundational concepts.",
+      "keywords_en": ["foundations", "sexuality basics", "introduction", "fundamentals"],
+      "keywords_vi": ["nền tảng", "cơ bản về tình dục", "giới thiệu", "căn bản"],
       "audio": "sexuality_culture_vip3_room_01.mp3"
     },
     {
       "title": "Room 2 - Body Awareness",
       "content": "Content pending. This room will explore body awareness and acceptance.",
+      "keywords_en": ["body awareness", "self-acceptance", "anatomy", "physical health"],
+      "keywords_vi": ["nhận thức cơ thể", "chấp nhận bản thân", "giải phẫu", "sức khỏe thể chất"],
       "audio": "sexuality_culture_vip3_room_02.mp3"
     },
     {
       "title": "Room 3 - Emotional Intelligence",
       "content": "Content pending. This room will explore emotional aspects of sexuality.",
+      "keywords_en": ["emotions", "feelings", "emotional intelligence", "self-awareness"],
+      "keywords_vi": ["cảm xúc", "tình cảm", "trí tuệ cảm xúc", "tự nhận thức"],
       "audio": "sexuality_culture_vip3_room_03.mp3"
     },
     {
       "title": "Room 4 - Communication & Boundaries",
       "content": "Content pending. This room will explore healthy communication.",
+      "keywords_en": ["communication", "boundaries", "consent", "talking", "conversation"],
+      "keywords_vi": ["giao tiếp", "ranh giới", "đồng thuận", "nói chuyện", "hội thoại"],
       "audio": "sexuality_culture_vip3_room_04.mp3"
     },
     {
       "title": "Room 5 - Cultural Perspectives",
       "content": "Content pending. This room will explore cultural dimensions.",
+      "keywords_en": ["culture", "society", "traditions", "diversity", "cultural views"],
+      "keywords_vi": ["văn hóa", "xã hội", "truyền thống", "đa dạng", "quan điểm văn hóa"],
       "audio": "sexuality_culture_vip3_room_05.mp3"
     },
     {
       "title": "Room 6 - Identity & Expression",
       "content": "Content pending. This room will explore identity formation.",
+      "keywords_en": ["identity", "self-expression", "who am I", "personal identity"],
+      "keywords_vi": ["bản dạng", "thể hiện bản thân", "tôi là ai", "danh tính cá nhân"],
       "audio": "sexuality_culture_vip3_room_06.mp3"
     },
     {
       "title": "Room 7 - Relationship Dynamics",
       "content": "Content pending. This room will explore relationship patterns.",
+      "keywords_en": ["relationships", "dynamics", "patterns", "connections", "partnership"],
+      "keywords_vi": ["mối quan hệ", "động lực", "khuôn mẫu", "kết nối", "đối tác"],
       "audio": "sexuality_culture_vip3_room_07.mp3"
     },
     {
       "title": "Room 8 - Intimacy & Connection",
       "content": "Content pending. This room will explore deep intimacy.",
+      "keywords_en": ["intimacy", "connection", "closeness", "bonding", "deep connection"],
+      "keywords_vi": ["sự thân mật", "kết nối", "gần gũi", "gắn kết", "kết nối sâu sắc"],
       "audio": "sexuality_culture_vip3_room_08.mp3"
     },
     {
       "title": "Room 9 - Consent & Ethics",
       "content": "Content pending. This room will explore ethical frameworks.",
+      "keywords_en": ["consent", "ethics", "morality", "boundaries", "respect"],
+      "keywords_vi": ["sự đồng thuận", "đạo đức", "luân lý", "ranh giới", "tôn trọng"],
       "audio": "sexuality_culture_vip3_room_09.mp3"
     },
     {
       "title": "Room 10 - Pleasure & Wellbeing",
       "content": "Content pending. This room will explore holistic pleasure.",
+      "keywords_en": ["pleasure", "wellbeing", "joy", "satisfaction", "happiness"],
+      "keywords_vi": ["khoái cảm", "hạnh phúc", "niềm vui", "thỏa mãn", "hạnh phúc"],
       "audio": "sexuality_culture_vip3_room_10.mp3"
     },
     {
       "title": "Room 11 - Trauma & Healing",
       "content": "Content pending. This room will explore healing approaches.",
+      "keywords_en": ["trauma", "healing", "recovery", "therapy", "support"],
+      "keywords_vi": ["chấn thương", "chữa lành", "hồi phục", "trị liệu", "hỗ trợ"],
       "audio": "sexuality_culture_vip3_room_11.mp3"
     },
     {
       "title": "Room 12 - LGBTQ+ Perspectives",
       "content": "Content pending. This room will explore diverse identities.",
+      "keywords_en": ["LGBTQ+", "queer", "diversity", "gender identity", "sexual orientation"],
+      "keywords_vi": ["LGBTQ+", "đa dạng", "bản dạng giới", "xu hướng tình dục"],
       "audio": "sexuality_culture_vip3_room_12.mp3"
     },
     {
       "title": "Room 13 - Gender & Society",
       "content": "Content pending. This room will explore gender constructs.",
+      "keywords_en": ["gender", "society", "masculinity", "femininity", "gender roles"],
+      "keywords_vi": ["giới tính", "xã hội", "nam tính", "nữ tính", "vai trò giới"],
       "audio": "sexuality_culture_vip3_room_13.mp3"
     },
     {
       "title": "Room 14 - Spiritual Dimensions",
       "content": "Content pending. This room will explore spiritual sexuality.",
+      "keywords_en": ["spirituality", "sacred", "tantra", "mindfulness", "consciousness"],
+      "keywords_vi": ["tâm linh", "thiêng liêng", "tantra", "chánh niệm", "ý thức"],
       "audio": "sexuality_culture_vip3_room_14.mp3"
     },
     {
       "title": "Room 15 - Psychology of Desire",
       "content": "Content pending. This room will explore psychological aspects.",
+      "keywords_en": ["desire", "psychology", "attraction", "libido", "motivation"],
+      "keywords_vi": ["ham muốn", "tâm lý", "hấp dẫn", "dục tính", "động lực"],
       "audio": "sexuality_culture_vip3_room_15.mp3"
     },
     {
       "title": "Room 16 - Aging & Vitality",
       "content": "Content pending. This room will explore sexuality across lifespan.",
+      "keywords_en": ["aging", "vitality", "mature", "older adults", "life stages"],
+      "keywords_vi": ["lão hóa", "sinh lực", "trưởng thành", "người lớn tuổi", "giai đoạn cuộc đời"],
       "audio": "sexuality_culture_vip3_room_16.mp3"
     },
     {
       "title": "Room 17 - Media & Representation",
       "content": "Content pending. This room will explore cultural narratives.",
+      "keywords_en": ["media", "representation", "stereotypes", "narratives", "culture"],
+      "keywords_vi": ["truyền thông", "đại diện", "định kiến", "câu chuyện", "văn hóa"],
       "audio": "sexuality_culture_vip3_room_17.mp3"
     },
     {
       "title": "Room 18 - Education & Literacy",
       "content": "Content pending. This room will explore sex education.",
+      "keywords_en": ["education", "learning", "sex ed", "knowledge", "information"],
+      "keywords_vi": ["giáo dục", "học tập", "giáo dục giới tính", "kiến thức", "thông tin"],
       "audio": "sexuality_culture_vip3_room_18.mp3"
     },
     {
       "title": "Room 19 - Health & Safety",
       "content": "Content pending. This room will explore sexual health.",
+      "keywords_en": ["health", "safety", "STI", "protection", "wellness"],
+      "keywords_vi": ["sức khỏe", "an toàn", "bệnh lây truyền", "bảo vệ", "khỏe mạnh"],
       "audio": "sexuality_culture_vip3_room_19.mp3"
     },
     {
       "title": "Room 20 - Technology & Connection",
       "content": "Content pending. This room will explore digital intimacy.",
+      "keywords_en": ["technology", "online", "digital", "apps", "virtual"],
+      "keywords_vi": ["công nghệ", "trực tuyến", "kỹ thuật số", "ứng dụng", "ảo"],
       "audio": "sexuality_culture_vip3_room_20.mp3"
     },
     {
       "title": "Room 21 - Power & Politics",
       "content": "Content pending. This room will explore power dynamics.",
+      "keywords_en": ["power", "politics", "dynamics", "control", "equality"],
+      "keywords_vi": ["quyền lực", "chính trị", "động lực", "kiểm soát", "bình đẳng"],
       "audio": "sexuality_culture_vip3_room_21.mp3"
     },
     {
       "title": "Room 22 - Parenting & Sexuality",
       "content": "Content pending. This room will explore family conversations.",
+      "keywords_en": ["parenting", "family", "children", "talking to kids", "education"],
+      "keywords_vi": ["làm cha mẹ", "gia đình", "trẻ em", "nói chuyện với con", "giáo dục"],
       "audio": "sexuality_culture_vip3_room_22.mp3"
     },
     {
       "title": "Room 23 - Disability & Inclusion",
       "content": "Content pending. This room will explore accessibility.",
+      "keywords_en": ["disability", "inclusion", "accessibility", "diversity", "accommodation"],
+      "keywords_vi": ["khuyết tật", "hòa nhập", "tiếp cận", "đa dạng", "điều chỉnh"],
       "audio": "sexuality_culture_vip3_room_23.mp3"
     },
     {
       "title": "Room 24 - Addiction & Recovery",
       "content": "Content pending. This room will explore healthy patterns.",
+      "keywords_en": ["addiction", "recovery", "compulsion", "healthy habits", "balance"],
+      "keywords_vi": ["nghiện", "phục hồi", "cưỡng bức", "thói quen lành mạnh", "cân bằng"],
       "audio": "sexuality_culture_vip3_room_24.mp3"
     },
     {
       "title": "Room 25 - Mindfulness & Presence",
       "content": "Content pending. This room will explore conscious sexuality.",
+      "keywords_en": ["mindfulness", "presence", "awareness", "meditation", "conscious"],
+      "keywords_vi": ["chánh niệm", "hiện diện", "nhận thức", "thiền định", "có ý thức"],
       "audio": "sexuality_culture_vip3_room_25.mp3"
     },
     {
       "title": "Room 26 - Art & Expression",
       "content": "Content pending. This room will explore creative sexuality.",
+      "keywords_en": ["art", "creativity", "expression", "beauty", "aesthetics"],
+      "keywords_vi": ["nghệ thuật", "sáng tạo", "biểu đạt", "cái đẹp", "thẩm mỹ"],
       "audio": "sexuality_culture_vip3_room_26.mp3"
     },
     {
       "title": "Room 27 - Science & Research",
       "content": "Content pending. This room will explore current research.",
+      "keywords_en": ["science", "research", "studies", "evidence", "data"],
+      "keywords_vi": ["khoa học", "nghiên cứu", "học tập", "bằng chứng", "dữ liệu"],
       "audio": "sexuality_culture_vip3_room_27.mp3"
     },
     {
       "title": "Room 28 - Philosophy & Meaning",
       "content": "Content pending. This room will explore philosophical questions.",
+      "keywords_en": ["philosophy", "meaning", "purpose", "ethics", "wisdom"],
+      "keywords_vi": ["triết học", "ý nghĩa", "mục đích", "đạo đức", "trí tuệ"],
       "audio": "sexuality_culture_vip3_room_28.mp3"
     },
     {
       "title": "Room 29 - Community & Support",
       "content": "Content pending. This room will explore peer support.",
+      "keywords_en": ["community", "support", "groups", "connection", "belonging"],
+      "keywords_vi": ["cộng đồng", "hỗ trợ", "nhóm", "kết nối", "thuộc về"],
       "audio": "sexuality_culture_vip3_room_29.mp3"
     },
     {
       "title": "Room 30 - Integration & Practice",
       "content": "Content pending. This room will explore daily integration.",
+      "keywords_en": ["integration", "practice", "daily life", "application", "implementation"],
+      "keywords_vi": ["tích hợp", "thực hành", "cuộc sống hàng ngày", "ứng dụng", "thực hiện"],
       "audio": "sexuality_culture_vip3_room_30.mp3"
     }
   ],
