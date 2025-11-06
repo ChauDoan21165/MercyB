@@ -23,17 +23,14 @@ function fileExists(filePath) {
 // Get all existing JSON files
 function getAllExistingFiles() {
   const existing = new Set();
-  const tiers = ['free', 'vip1', 'vip2', 'vip3'];
+  const dataDir = path.join(projectRoot, 'public', 'data');
   
-  for (const tier of tiers) {
-    const tierDir = path.join(projectRoot, 'public', 'data', tier);
-    if (!fs.existsSync(tierDir)) continue;
-    
-    const files = fs.readdirSync(tierDir);
-    files.filter(f => f.endsWith('.json')).forEach(f => {
-      existing.add(`data/${tier}/${f}`);
-    });
-  }
+  if (!fs.existsSync(dataDir)) return existing;
+  
+  const files = fs.readdirSync(dataDir);
+  files.filter(f => f.endsWith('.json')).forEach(f => {
+    existing.add(`data/${f}`);
+  });
   
   return existing;
 }
@@ -78,9 +75,9 @@ function generateCleanManifest() {
     
     if (!names) continue;
     
-    // Extract tier
-    const tierMatch = filePath.match(/data\/(free|vip1|vip2|vip3)\//);
-    const tier = tierMatch ? tierMatch[1] : 'free';
+    // Extract tier from filename
+    const tierMatch = filename.match(/_(free|vip1|vip2|vip3)\.json$/i);
+    const tier = tierMatch ? tierMatch[1].toLowerCase() : 'free';
     
     manifest[roomId] = filePath;
     dataImports[roomId] = {
