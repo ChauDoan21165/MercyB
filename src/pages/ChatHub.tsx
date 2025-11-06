@@ -561,7 +561,24 @@ const ChatHub = () => {
           <div className="flex gap-2">
             <Button
               variant="ghost"
-              onClick={() => navigate("/rooms")}
+              onClick={() => {
+                // Special handling for sexuality sub-rooms - navigate to their parent room
+                if (roomId?.startsWith('sexuality-curiosity-vip3-sub')) {
+                  navigate("/sexuality-culture-room");
+                } else {
+                  // For all other rooms, determine the appropriate tier page
+                  const tierSuffix = roomId?.match(/-(free|vip1|vip2|vip3)$/)?.[1];
+                  if (tierSuffix === 'vip3') {
+                    navigate("/rooms-vip3");
+                  } else if (tierSuffix === 'vip2') {
+                    navigate("/rooms-vip2");
+                  } else if (tierSuffix === 'vip1') {
+                    navigate("/rooms-vip1");
+                  } else {
+                    navigate("/rooms");
+                  }
+                }
+              }}
               className="gap-2"
             >
               <ArrowLeft className="w-4 h-4" />
