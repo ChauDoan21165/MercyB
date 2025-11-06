@@ -190,7 +190,8 @@
     "entry_count": 30,
     "artifact_set_id": "sexuality-culture-vip3-2025",
     "data_format_version": "MercyBlade-Core-v1.2",
-    "room_color": "#FF6B6B",
+    "room_color": "#D946A6",
+    "special_theme": "sensual",
     "tier": "vip3"
   }
 }
