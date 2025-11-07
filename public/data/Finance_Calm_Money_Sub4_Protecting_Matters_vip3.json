@@ -1,0 +1,139 @@
+{
+  "name": "Protecting What Matters",
+  "name_vi": "Bảo Vệ Những Gì Quan Trọng",
+  "description": "So nothing can knock you down. Build your safety net and backup plans.",
+  "description_vi": "Để không gì có thể đánh ngã bạn. Xây dựng lưới an toàn và kế hoạch dự phòng.",
+  "keywords_en": [
+    "protection",
+    "insurance",
+    "emergency planning",
+    "risk management",
+    "estate planning",
+    "fraud prevention",
+    "backup plans",
+    "financial security",
+    "safety net",
+    "contingency"
+  ],
+  "keywords_vi": [
+    "bảo vệ",
+    "bảo hiểm",
+    "lập kế hoạch khẩn cấp",
+    "quản lý rủi ro",
+    "hoạch định tài sản",
+    "phòng chống gian lận",
+    "kế hoạch dự phòng",
+    "an ninh tài chính",
+    "lưới an toàn",
+    "dự phòng"
+  ],
+  "entries": [
+    {
+      "slug": "backup-plan-sleep",
+      "keywords_en": ["backup plan", "contingency", "peace of mind", "safety"],
+      "keywords_vi": ["kế hoạch dự phòng", "dự phòng", "yên tâm", "an toàn"],
+      "audio": {"en": "calm_vip3_11_en.mp3"},
+      "copy": {
+        "en": "The Backup Plan You Can Sleep With: 3-6 months expenses saved. Insurance that covers the big stuff. A will. Not exciting—but deeply comforting. Build it slowly.",
+        "vi": "Kế Hoạch Dự Phòng Bạn Có Thể Ngủ Ngon: 3-6 tháng chi phí được tiết kiệm. Bảo hiểm bao phủ những thứ lớn. Di chúc. Không thú vị—nhưng rất an tâm. Xây dựng từ từ."
+      }
+    },
+    {
+      "slug": "insurance-what-need",
+      "keywords_en": ["insurance", "coverage", "health", "life", "essentials"],
+      "keywords_vi": ["bảo hiểm", "bảo hiểm", "sức khỏe", "cuộc sống", "thiết yếu"],
+      "audio": {"en": "calm_vip3_12_en.mp3"},
+      "copy": {
+        "en": "Insurance: Only What You Need. Health (always). Life (if others depend on you). Disability (if you work). Car/home (if you own). Skip the rest. Over-insurance drains money.",
+        "vi": "Bảo Hiểm: Chỉ Những Gì Bạn Cần. Sức khỏe (luôn luôn). Cuộc sống (nếu người khác phụ thuộc vào bạn). Khuyết tật (nếu bạn làm việc). Xe/nhà (nếu bạn sở hữu). Bỏ qua phần còn lại. Bảo hiểm quá mức làm cạn kiệt tiền."
+      }
+    },
+    {
+      "slug": "wills-trusts-letters",
+      "keywords_en": ["estate planning", "will", "trust", "legacy", "documentation"],
+      "keywords_vi": ["hoạch định tài sản", "di chúc", "ủy thác", "di sản", "tài liệu"],
+      "audio": {"en": "calm_vip3_13_en.mp3"},
+      "copy": {
+        "en": "Wills, Trusts, and 'If I'm Gone' Letters: Who gets what. Who takes care of whom. What matters to you. Write it down. Free templates exist. Don't leave chaos behind.",
+        "vi": "Di Chúc, Ủy Thác, và Thư 'Nếu Tôi Mất': Ai được gì. Ai chăm sóc ai. Điều gì quan trọng với bạn. Viết ra. Có mẫu miễn phí. Đừng để lại hỗn loạn."
+      }
+    },
+    {
+      "slug": "fraud-scams-spot",
+      "keywords_en": ["fraud", "scams", "security", "protection", "awareness"],
+      "keywords_vi": ["gian lận", "lừa đảo", "an ninh", "bảo vệ", "nhận thức"],
+      "audio": {"en": "calm_vip3_14_en.mp3"},
+      "copy": {
+        "en": "Fraud & Scams: Spot Them Fast. If it sounds too good, it is. Never share passwords. Verify before clicking. Your bank will never ask for your PIN. Trust your gut.",
+        "vi": "Gian Lận & Lừa Đảo: Phát Hiện Nhanh. Nếu nghe quá tốt, thì đó là lừa. Không bao giờ chia sẻ mật khẩu. Xác minh trước khi nhấp. Ngân hàng của bạn sẽ không bao giờ hỏi PIN. Tin vào trực giác."
+      }
+    },
+    {
+      "slug": "ai-check-risk",
+      "keywords_en": ["AI prompt", "risk assessment", "blind spots", "analysis"],
+      "keywords_vi": ["AI prompt", "đánh giá rủi ro", "điểm mù", "phân tích"],
+      "audio": {"en": "calm_vip3_15_en.mp3"},
+      "copy": {
+        "en": "AI Prompt: 'Here's my situation. What's one risk I might be missing?' A second set of eyes finds blind spots. Use it before trouble finds you.",
+        "vi": "AI Prompt: 'Đây là tình huống của tôi. Một rủi ro tôi có thể đang bỏ lỡ là gì?' Một bộ mắt thứ hai tìm điểm mù. Dùng nó trước khi rắc rối tìm bạn."
+      }
+    },
+    {
+      "slug": "health-crisis-money",
+      "keywords_en": ["health crisis", "medical bills", "emergency", "healthcare costs"],
+      "keywords_vi": ["khủng hoảng sức khỏe", "hóa đơn y tế", "khẩn cấp", "chi phí chăm sóc sức khỏe"],
+      "audio": {"en": "calm_vip3_16_en.mp3"},
+      "copy": {
+        "en": "Health Crises & Money: Bills pile up fast. Know your insurance limits. Ask for payment plans. Negotiate. Medical debt can often be reduced—don't assume it's fixed.",
+        "vi": "Khủng Hoảng Sức Khỏe & Tiền: Hóa đơn chồng chất nhanh. Biết giới hạn bảo hiểm của bạn. Yêu cầu kế hoạch thanh toán. Đàm phán. Nợ y tế thường có thể giảm—đừng cho là cố định."
+      }
+    },
+    {
+      "slug": "job-loss-bridge",
+      "keywords_en": ["job loss", "unemployment", "transition", "emergency fund"],
+      "keywords_vi": ["mất việc", "thất nghiệp", "chuyển tiếp", "quỹ khẩn cấp"],
+      "audio": {"en": "calm_vip3_17_en.mp3"},
+      "copy": {
+        "en": "Job Loss: The 3-Month Bridge. File for unemployment immediately. Cut non-essentials. Lean on your emergency fund. This is what it's for. You'll rebuild. Give yourself grace.",
+        "vi": "Mất Việc: Cây Cầu 3 Tháng. Nộp đơn thất nghiệp ngay lập tức. Cắt những thứ không cần thiết. Dựa vào quỹ khẩn cấp. Đây là lý do nó tồn tại. Bạn sẽ xây dựng lại. Cho bản thân sự khoan dung."
+      }
+    },
+    {
+      "slug": "family-money-boundaries",
+      "keywords_en": ["boundaries", "family", "loans", "relationships", "saying no"],
+      "keywords_vi": ["ranh giới", "gia đình", "cho vay", "mối quan hệ", "nói không"],
+      "audio": {"en": "calm_vip3_18_en.mp3"},
+      "copy": {
+        "en": "Family & Money Boundaries: You can love someone and still say no. Lending money you can't afford to lose damages both the money and the relationship. Choose wisely.",
+        "vi": "Gia Đình & Ranh Giới Tiền Bạc: Bạn có thể yêu ai đó và vẫn nói không. Cho vay tiền bạn không thể mất làm hại cả tiền lẫn mối quan hệ. Chọn khôn ngoan."
+      }
+    },
+    {
+      "slug": "climate-cyber-future",
+      "keywords_en": ["future risks", "climate", "cyber security", "emerging threats"],
+      "keywords_vi": ["rủi ro tương lai", "khí hậu", "an ninh mạng", "mối đe dọa mới nổi"],
+      "audio": {"en": "calm_vip3_19_en.mp3"},
+      "copy": {
+        "en": "Climate, Cyber, and Future Risks: Flood zones. Data breaches. Supply chain disruptions. New risks emerge. Stay informed. Adjust coverage. Resilience is ongoing, not one-time.",
+        "vi": "Khí Hậu, Mạng, và Rủi Ro Tương Lai: Vùng lũ lụt. Vi phạm dữ liệu. Gián đoạn chuỗi cung ứng. Rủi ro mới nổi lên. Luôn cập nhật. Điều chỉnh bảo hiểm. Khả năng phục hồi là liên tục, không phải một lần."
+      }
+    },
+    {
+      "slug": "protected-checklist",
+      "keywords_en": ["checklist", "protection review", "security audit", "completion"],
+      "keywords_vi": ["danh sách kiểm tra", "xem xét bảo vệ", "kiểm tra an ninh", "hoàn thành"],
+      "audio": {"en": "calm_vip3_20_en.mp3"},
+      "copy": {
+        "en": "Your 'I'm Protected' Checklist: Emergency fund? ✓ Insurance? ✓ Will? ✓ Passwords secure? ✓ Backup plans? ✓ If yes to most—breathe easier. You're ahead of 80% of people.",
+        "vi": "Danh Sách 'Tôi Được Bảo Vệ': Quỹ khẩn cấp? ✓ Bảo hiểm? ✓ Di chúc? ✓ Mật khẩu an toàn? ✓ Kế hoạch dự phòng? ✓ Nếu có hầu hết—thở nhẹ nhõm hơn. Bạn đi trước 80% mọi người."
+      }
+    }
+  ],
+  "meta": {
+    "created_at": "2025-11-07T00:00:00+09:00",
+    "updated_at": "2025-11-07T00:00:00+09:00",
+    "entry_count": 10,
+    "tier": "vip3",
+    "room_color": "#FFD700"
+  }
+}

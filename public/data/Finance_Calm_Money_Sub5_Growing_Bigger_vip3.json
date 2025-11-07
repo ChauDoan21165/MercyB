@@ -1,0 +1,139 @@
+{
+  "name": "Growing Bigger (When Ready)",
+  "name_vi": "Phát Triển Lớn Hơn (Khi Sẵn Sàng)",
+  "description": "For side hustles, raises, or starting something. You're allowed to want more.",
+  "description_vi": "Cho công việc phụ, tăng lương, hoặc khởi nghiệp. Bạn được phép muốn nhiều hơn.",
+  "keywords_en": [
+    "income growth",
+    "side hustle",
+    "salary negotiation",
+    "entrepreneurship",
+    "freelancing",
+    "business",
+    "scaling",
+    "wealth building",
+    "career growth",
+    "additional income"
+  ],
+  "keywords_vi": [
+    "tăng trưởng thu nhập",
+    "công việc phụ",
+    "đàm phán lương",
+    "khởi nghiệp",
+    "làm tự do",
+    "kinh doanh",
+    "mở rộng quy mô",
+    "xây dựng tài sản",
+    "phát triển sự nghiệp",
+    "thu nhập bổ sung"
+  ],
+  "entries": [
+    {
+      "slug": "allowed-want-more",
+      "keywords_en": ["permission", "ambition", "growth mindset", "desire"],
+      "keywords_vi": ["cho phép", "tham vọng", "tư duy phát triển", "mong muốn"],
+      "audio": {"en": "calm_vip3_11_en.mp3"},
+      "copy": {
+        "en": "You're Allowed to Want More. Not from greed—from possibility. More income means more choices, more security, more breathing room. Ambition isn't dirty. It's human.",
+        "vi": "Bạn Được Phép Muốn Nhiều Hơn. Không phải từ tham lam—từ khả năng. Thu nhập nhiều hơn có nghĩa là nhiều lựa chọn hơn, an toàn hơn, không gian thở hơn. Tham vọng không bẩn. Đó là con người."
+      }
+    },
+    {
+      "slug": "side-income-one-hour",
+      "keywords_en": ["side income", "starting small", "hustle", "extra money"],
+      "keywords_vi": ["thu nhập phụ", "bắt đầu nhỏ", "làm thêm", "tiền bổ sung"],
+      "audio": {"en": "calm_vip3_12_en.mp3"},
+      "copy": {
+        "en": "Side Income: Start with One Hour. What can you do in 60 minutes that someone would pay for? Teach. Design. Write. Organize. Start tiny. Test. Adjust. Grow.",
+        "vi": "Thu Nhập Phụ: Bắt Đầu Với Một Giờ. Bạn có thể làm gì trong 60 phút mà ai đó sẽ trả tiền? Dạy. Thiết kế. Viết. Tổ chức. Bắt đầu nhỏ. Thử nghiệm. Điều chỉnh. Phát triển."
+      }
+    },
+    {
+      "slug": "asking-raise-script",
+      "keywords_en": ["raise", "negotiation", "salary", "asking", "script"],
+      "keywords_vi": ["tăng lương", "đàm phán", "lương", "yêu cầu", "kịch bản"],
+      "audio": {"en": "calm_vip3_13_en.mp3"},
+      "copy": {
+        "en": "Asking for a Raise (Script Included): 'I'd like to discuss my compensation. Here's what I've delivered. Here's market rate. Can we align?' Prepare. Practice. Ask. The worst they say is 'not yet.'",
+        "vi": "Yêu Cầu Tăng Lương (Có Kịch Bản): 'Tôi muốn thảo luận về lương của tôi. Đây là những gì tôi đã làm. Đây là mức thị trường. Chúng ta có thể điều chỉnh không?' Chuẩn bị. Luyện tập. Yêu cầu. Điều tồi tệ nhất họ nói là 'chưa phải lúc.'"
+      }
+    },
+    {
+      "slug": "freelance-gig-business",
+      "keywords_en": ["freelance", "gig work", "business", "self-employment"],
+      "keywords_vi": ["làm tự do", "công việc gig", "kinh doanh", "tự kinh doanh"],
+      "audio": {"en": "calm_vip3_14_en.mp3"},
+      "copy": {
+        "en": "Freelance, Gig, or Business? Freelance = you sell your time. Gig = you complete tasks. Business = you build a system. Choose based on your life, not trends. All are valid.",
+        "vi": "Làm Tự Do, Gig, hay Kinh Doanh? Tự do = bạn bán thời gian. Gig = bạn hoàn thành nhiệm vụ. Kinh doanh = bạn xây dựng hệ thống. Chọn dựa trên cuộc sống, không phải xu hướng. Tất cả đều hợp lệ."
+      }
+    },
+    {
+      "slug": "ai-idea-to-income",
+      "keywords_en": ["AI prompt", "monetization", "skill", "income generation"],
+      "keywords_vi": ["AI prompt", "kiếm tiền", "kỹ năng", "tạo thu nhập"],
+      "audio": {"en": "calm_vip3_15_en.mp3"},
+      "copy": {
+        "en": "AI Prompt: 'I have [skill]. Help me turn it into $100/month.' Break it down. You already have something valuable. AI helps you see the path. Then you walk it.",
+        "vi": "AI Prompt: 'Tôi có [kỹ năng]. Giúp tôi biến nó thành $100/tháng.' Phân tích. Bạn đã có thứ gì đó có giá trị. AI giúp bạn thấy con đường. Sau đó bạn đi."
+      }
+    },
+    {
+      "slug": "scaling-without-burnout",
+      "keywords_en": ["scaling", "burnout prevention", "sustainability", "growth"],
+      "keywords_vi": ["mở rộng", "phòng chống kiệt sức", "bền vững", "tăng trưởng"],
+      "audio": {"en": "calm_vip3_16_en.mp3"},
+      "copy": {
+        "en": "Scaling Without Burning Out: Growth at the cost of your health isn't growth—it's extraction. Set boundaries. Automate. Hire help. Sustainable beats explosive every time.",
+        "vi": "Mở Rộng Mà Không Kiệt Sức: Tăng trưởng với cái giá sức khỏe không phải tăng trưởng—đó là khai thác. Đặt ranh giới. Tự động hóa. Thuê giúp đỡ. Bền vững đánh bại bùng nổ mọi lúc."
+      }
+    },
+    {
+      "slug": "equity-ownership-wealth",
+      "keywords_en": ["equity", "ownership", "wealth", "assets", "investment"],
+      "keywords_vi": ["vốn chủ sở hữu", "quyền sở hữu", "tài sản", "tài sản", "đầu tư"],
+      "audio": {"en": "calm_vip3_17_en.mp3"},
+      "copy": {
+        "en": "Equity, Ownership, and Real Wealth: Trading time for money has limits. Owning assets (business, property, investments) builds wealth that works while you sleep. Shift when ready.",
+        "vi": "Vốn Chủ Sở Hữu, Quyền Sở Hữu, và Tài Sản Thực: Đổi thời gian lấy tiền có giới hạn. Sở hữu tài sản (kinh doanh, bất động sản, đầu tư) xây dựng tài sản hoạt động khi bạn ngủ. Chuyển khi sẵn sàng."
+      }
+    },
+    {
+      "slug": "imposter-voice-earn-more",
+      "keywords_en": ["imposter syndrome", "self-doubt", "confidence", "success"],
+      "keywords_vi": ["hội chứng kẻ mạo danh", "tự nghi ngờ", "tự tin", "thành công"],
+      "audio": {"en": "calm_vip3_18_en.mp3"},
+      "copy": {
+        "en": "Imposter Voice When You Earn More: 'Who am I to charge this?' You're someone who solved a problem. Someone who showed up. Someone who earned it. The voice lies. Keep going.",
+        "vi": "Giọng Nói Kẻ Mạo Danh Khi Bạn Kiếm Nhiều Hơn: 'Tôi là ai để tính phí này?' Bạn là người đã giải quyết vấn đề. Người đã xuất hiện. Người đã kiếm được nó. Giọng nói nói dối. Tiếp tục."
+      }
+    },
+    {
+      "slug": "giving-back-small",
+      "keywords_en": ["giving", "charity", "contribution", "gratitude"],
+      "keywords_vi": ["cho đi", "từ thiện", "đóng góp", "biết ơn"],
+      "audio": {"en": "calm_vip3_19_en.mp3"},
+      "copy": {
+        "en": "Giving Back (Even Small): Once you're stable, give—time, money, mentorship. Even $10/month matters. Generosity reinforces abundance. You have enough to share. That's powerful.",
+        "vi": "Cho Đi (Ngay Cả Nhỏ): Khi bạn ổn định, hãy cho—thời gian, tiền, cố vấn. Ngay cả $10/tháng cũng quan trọng. Sự hào phóng củng cố sự dồi dào. Bạn có đủ để chia sẻ. Điều đó mạnh mẽ."
+      }
+    },
+    {
+      "slug": "bigger-next-step",
+      "keywords_en": ["next step", "action", "growth", "forward movement"],
+      "keywords_vi": ["bước tiếp theo", "hành động", "tăng trưởng", "di chuyển về phía trước"],
+      "audio": {"en": "calm_vip3_20_en.mp3"},
+      "copy": {
+        "en": "Your 'Bigger' Next Step: Not 'quit your job' or 'launch a startup.' Just: one conversation, one hour of work, one test. Big starts with believable. Choose yours now.",
+        "vi": "Bước 'Lớn Hơn' Tiếp Theo Của Bạn: Không phải 'nghỉ việc' hay 'khởi nghiệp.' Chỉ: một cuộc trò chuyện, một giờ làm việc, một bài kiểm tra. Lớn bắt đầu với tin được. Chọn của bạn ngay bây giờ."
+      }
+    }
+  ],
+  "meta": {
+    "created_at": "2025-11-07T00:00:00+09:00",
+    "updated_at": "2025-11-07T00:00:00+09:00",
+    "entry_count": 10,
+    "tier": "vip3",
+    "room_color": "#FFD700"
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "name": "Money & Your Nervous System",
+  "name_vi": "Tiền & Hệ Thống Thần Kinh",
+  "description": "A gentle start. Reduce money stress, build calm habits, and begin without shame.",
+  "description_vi": "Một khởi đầu nhẹ nhàng. Giảm căng thẳng về tiền, xây dựng thói quen bình tĩnh, và bắt đầu không xấu hổ.",
+  "keywords_en": [
+    "money shame",
+    "nervous system",
+    "calm finance",
+    "financial anxiety",
+    "money trauma",
+    "breathing techniques",
+    "safe money moment",
+    "money stress",
+    "financial peace",
+    "money mindset"
+  ],
+  "keywords_vi": [
+    "xấu hổ về tiền",
+    "hệ thần kinh",
+    "tài chính bình tĩnh",
+    "lo lắng tài chính",
+    "chấn thương tiền bạc",
+    "kỹ thuật thở",
+    "khoảnh khắc tiền an toàn",
+    "căng thẳng tiền bạc",
+    "bình an tài chính",
+    "tư duy tiền bạc"
+  ],
+  "entries": [
+    {
+      "slug": "money-shame-freeze",
+      "keywords_en": ["shame", "freeze", "money trauma", "anxiety"],
+      "keywords_vi": ["xấu hổ", "đóng băng", "chấn thương tiền", "lo âu"],
+      "audio": {"en": "calm_vip3_1_en.mp3"},
+      "copy": {
+        "en": "You open the banking app and your chest tightens. That's normal. Shame isn't truth—it's a signal. Try this: name the feeling ('I feel scared'), then take one slow breath. You're allowed to feel this and still move forward.",
+        "vi": "Bạn mở ứng dụng ngân hàng và ngực bạn thắt lại. Đó là bình thường. Xấu hổ không phải sự thật—đó là tín hiệu. Thử điều này: đặt tên cho cảm giác ('Tôi cảm thấy sợ'), sau đó hít một hơi thật chậm. Bạn được phép cảm thấy điều này và vẫn tiến về phía trước."
+      }
+    },
+    {
+      "slug": "one-breath-before-bank",
+      "keywords_en": ["breathing", "mindfulness", "bank anxiety", "calm"],
+      "keywords_vi": ["thở", "chánh niệm", "lo âu ngân hàng", "bình tĩnh"],
+      "audio": {"en": "calm_vip3_2_en.mp3"},
+      "copy": {
+        "en": "Before checking your balance, pause. Breathe in for four counts, hold for four, out for six. This small ritual tells your body: 'We're safe. We can look.' It transforms panic into presence.",
+        "vi": "Trước khi kiểm tra số dư, tạm dừng. Hít vào đếm bốn, giữ bốn, thở ra sáu. Nghi thức nhỏ này nói với cơ thể bạn: 'Chúng ta an toàn. Chúng ta có thể nhìn.' Nó biến hoảng loạn thành hiện diện."
+      }
+    },
+    {
+      "slug": "safe-money-moment",
+      "keywords_en": ["ritual", "safety", "money routine", "grounding"],
+      "keywords_vi": ["nghi thức", "an toàn", "thói quen tiền", "định tâm"],
+      "audio": {"en": "calm_vip3_3_en.mp3"},
+      "copy": {
+        "en": "Create your 'Safe Money Moment': same time, same place, same cup of tea. Your nervous system learns: 'Here, money isn't dangerous.' Start with just 5 minutes weekly. Consistency builds trust.",
+        "vi": "Tạo 'Khoảnh Khắc Tiền An Toàn' của bạn: cùng thời gian, cùng nơi, cùng tách trà. Hệ thần kinh của bạn học: 'Ở đây, tiền không nguy hiểm.' Bắt đầu chỉ 5 phút mỗi tuần. Sự nhất quán xây dựng niềm tin."
+      }
+    },
+    {
+      "slug": "numbers-feel-judgment",
+      "keywords_en": ["judgment", "numbers", "self-worth", "shame"],
+      "keywords_vi": ["phán xét", "con số", "giá trị bản thân", "xấu hổ"],
+      "audio": {"en": "calm_vip3_4_en.mp3"},
+      "copy": {
+        "en": "When numbers feel like judgment, remember: your account balance is data, not a verdict on your worth. You are not your bank statement. You're a person learning to manage a tool.",
+        "vi": "Khi con số cảm giác như phán xét, hãy nhớ: số dư tài khoản của bạn là dữ liệu, không phải bản án về giá trị của bạn. Bạn không phải là sao kê ngân hàng. Bạn là một người đang học cách quản lý một công cụ."
+      }
+    },
+    {
+      "slug": "allowed-start-zero",
+      "keywords_en": ["permission", "starting point", "acceptance", "beginning"],
+      "keywords_vi": ["cho phép", "điểm bắt đầu", "chấp nhận", "khởi đầu"],
+      "audio": {"en": "calm_vip3_5_en.mp3"},
+      "copy": {
+        "en": "You're allowed to start at zero. Or in debt. Or with no clue what you're doing. Every financial expert started somewhere. The only requirement is willingness—not perfection.",
+        "vi": "Bạn được phép bắt đầu từ số không. Hoặc trong nợ. Hoặc không biết bạn đang làm gì. Mọi chuyên gia tài chính đều bắt đầu từ đâu đó. Yêu cầu duy nhất là sự sẵn sàng—không phải hoàn hảo."
+      }
+    },
+    {
+      "slug": "money-stories-past",
+      "keywords_en": ["childhood", "patterns", "family", "history"],
+      "keywords_vi": ["thời thơ ấu", "khuôn mẫu", "gia đình", "lịch sử"],
+      "audio": {"en": "calm_vip3_6_en.mp3"},
+      "copy": {
+        "en": "What did your family say about money? 'It doesn't grow on trees'? 'Rich people are greedy'? These stories live in your body. Name them. You can choose new ones.",
+        "vi": "Gia đình bạn đã nói gì về tiền? 'Nó không mọc trên cây'? 'Người giàu tham lam'? Những câu chuyện này sống trong cơ thể bạn. Đặt tên cho chúng. Bạn có thể chọn những câu mới."
+      }
+    },
+    {
+      "slug": "ai-calm-money-thoughts",
+      "keywords_en": ["AI prompt", "support", "anxiety", "guidance"],
+      "keywords_vi": ["AI prompt", "hỗ trợ", "lo âu", "hướng dẫn"],
+      "audio": {"en": "calm_vip3_7_en.mp3"},
+      "copy": {
+        "en": "Try this AI prompt: 'I feel anxious about money. Help me name one feeling and one small action.' Sometimes we need a calm voice outside our head to break the spiral.",
+        "vi": "Thử AI prompt này: 'Tôi cảm thấy lo lắng về tiền. Giúp tôi đặt tên một cảm giác và một hành động nhỏ.' Đôi khi chúng ta cần một giọng nói bình tĩnh bên ngoài đầu để phá vỡ vòng xoáy."
+      }
+    },
+    {
+      "slug": "weekly-money-checkin",
+      "keywords_en": ["routine", "check-in", "habit", "weekly"],
+      "keywords_vi": ["thói quen", "kiểm tra", "tập quán", "hàng tuần"],
+      "audio": {"en": "calm_vip3_8_en.mp3"},
+      "copy": {
+        "en": "The Weekly Money Check-In: 5 minutes, every Sunday. Look at what came in, what went out, how you feel. Not to fix everything—just to witness. Awareness is the first step.",
+        "vi": "Kiểm Tra Tiền Hàng Tuần: 5 phút, mỗi Chủ nhật. Nhìn vào những gì đến, những gì đi ra, bạn cảm thấy thế nào. Không phải để sửa mọi thứ—chỉ để chứng kiến. Nhận thức là bước đầu tiên."
+      }
+    },
+    {
+      "slug": "others-judge-money",
+      "keywords_en": ["judgment", "others", "boundaries", "confidence"],
+      "keywords_vi": ["phán xét", "người khác", "ranh giới", "tự tin"],
+      "audio": {"en": "calm_vip3_9_en.mp3"},
+      "copy": {
+        "en": "When others judge your money choices, remember: they're not paying your bills. You don't owe anyone an explanation for living within your means. Your pace is valid.",
+        "vi": "Khi người khác phán xét lựa chọn tiền của bạn, hãy nhớ: họ không trả hóa đơn của bạn. Bạn không nợ ai lời giải thích cho việc sống trong khả năng của mình. Tốc độ của bạn là hợp lệ."
+      }
+    },
+    {
+      "slug": "first-did-it-win",
+      "keywords_en": ["victory", "milestone", "progress", "celebration"],
+      "keywords_vi": ["chiến thắng", "cột mốc", "tiến bộ", "ăn mừng"],
+      "audio": {"en": "calm_vip3_10_en.mp3"},
+      "copy": {
+        "en": "Your first 'I Did It' win doesn't have to be big. Maybe you checked your balance. Maybe you made a budget. Maybe you just read this far. That counts. Celebrate it.",
+        "vi": "Chiến thắng 'Tôi Đã Làm Được' đầu tiên của bạn không cần phải lớn. Có thể bạn đã kiểm tra số dư. Có thể bạn đã làm ngân sách. Có thể bạn chỉ đọc đến đây. Điều đó có giá trị. Hãy ăn mừng nó."
+      }
+    }
+  ],
+  "meta": {
+    "created_at": "2025-11-07T00:00:00+09:00",
+    "updated_at": "2025-11-07T00:00:00+09:00",
+    "entry_count": 10,
+    "tier": "vip3",
+    "room_color": "#FFD700"
+  }
+}

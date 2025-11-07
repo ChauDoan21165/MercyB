@@ -1,0 +1,53 @@
+{
+  "name": "Calm Money, Clear Future — Preview",
+  "name_vi": "Tiền Bình Tĩnh, Tương Lai Rõ Ràng — Giới Thiệu",
+  "description": "A free introduction to the VIP3 Finance room: transform money anxiety into financial peace through shame-aware, practical guidance.",
+  "description_vi": "Giới thiệu miễn phí về phòng Tài Chính VIP3: biến lo lắng về tiền bạc thành sự bình an tài chính qua hướng dẫn thực tế, không xấu hổ.",
+  "keywords_en": [
+    "money mindset",
+    "financial wellness",
+    "VIP3",
+    "financial peace",
+    "money anxiety",
+    "finance intro"
+  ],
+  "keywords_vi": [
+    "tư duy tiền bạc",
+    "sức khỏe tài chính",
+    "VIP3",
+    "bình an tài chính",
+    "lo lắng tiền bạc",
+    "giới thiệu tài chính"
+  ],
+  "entries": [
+    {
+      "slug": "calm-money-intro",
+      "keywords_en": [
+        "introduction",
+        "calm money",
+        "financial peace",
+        "money journey"
+      ],
+      "keywords_vi": [
+        "giới thiệu",
+        "tiền bình tĩnh",
+        "bình an tài chính",
+        "hành trình tiền bạc"
+      ],
+      "audio": {
+        "en": "finance_vip3_intro_en.mp3"
+      },
+      "copy": {
+        "en": "Money doesn't have to hurt. You're allowed to start exactly where you are—even if that's $0, debt, or fear.\n\nIn *Calm Money, Clear Future (VIP3)*, you'll enter a shame-free space where money becomes a tool for peace, not panic. This isn't about guarantees or hype. It's about clarity, calm, and a practical path forward built on CFA/CFP rigor—but designed to feel like support, not pressure.\n\nInside, you'll explore six transformative paths: from healing your nervous system around money to mastering simple investing, from protecting what matters to building bigger income streams, and finally creating a legacy that reflects your values. Each lesson reduces shame, increases understanding, and gives you one clear next step.\n\nYou'll learn how to read your money like a story, make decisions from calm instead of crisis, and grow your resources in ways that serve you, your family, and your future. No jargon. No judgment. Just practical wisdom in 150-200 words per entry, designed for your real life.\n\nThis free preview gives you a taste of what's possible. But the full VIP3 journey offers 60 entries across 6 subrooms—a complete architecture for lifelong financial peace, backed by research from Bank of America, Vanguard, KFF, and more.\n\nYou don't need to be rich to start. You just need to be ready.\nStep into *Calm Money, Clear Future*, and learn to let money breathe—so your life can, too.",
+        "vi": "Tiền bạc không nhất thiết phải đau đớn. Bạn được phép bắt đầu đúng từ nơi bạn đang ở—ngay cả khi đó là $0, nợ nần, hay sợ hãi.\n\nTrong *Tiền Bình Tĩnh, Tương Lai Rõ Ràng (VIP3)*, bạn sẽ bước vào không gian không xấu hổ, nơi tiền bạc trở thành công cụ cho bình an, không phải hoảng loạn. Đây không phải về lời hứa hay cường điệu. Đây là về sự rõ ràng, bình tĩnh, và con đường thực tế được xây dựng trên nền tảng CFA/CFP—nhưng được thiết kế để cảm thấy như sự hỗ trợ, không phải áp lực.\n\nBên trong, bạn sẽ khám phá sáu lộ trình chuyển hóa: từ chữa lành hệ thần kinh của bạn xung quanh tiền bạc đến làm chủ đầu tư đơn giản, từ bảo vệ những gì quan trọng đến xây dựng nguồn thu nhập lớn hơn, và cuối cùng tạo ra di sản phản ánh giá trị của bạn. Mỗi bài học giảm bớt xấu hổ, tăng hiểu biết, và cho bạn một bước tiếp theo rõ ràng.\n\nBạn sẽ học cách đọc tiền của mình như một câu chuyện, đưa ra quyết định từ sự bình tĩnh thay vì khủng hoảng, và phát triển nguồn lực theo cách phục vụ bạn, gia đình và tương lai của bạn. Không có thuật ngữ. Không phán xét. Chỉ có trí tuệ thực tế trong 150-200 từ mỗi mục, được thiết kế cho cuộc sống thực của bạn.\n\nBản xem trước miễn phí này cho bạn nếm trải những gì có thể. Nhưng hành trình VIP3 đầy đủ cung cấp 60 mục trên 6 phòng con—một kiến trúc hoàn chỉnh cho bình an tài chính suốt đời, được hỗ trợ bởi nghiên cứu từ Bank of America, Vanguard, KFF và nhiều hơn nữa.\n\nBạn không cần giàu để bắt đầu. Bạn chỉ cần sẵn sàng.\nBước vào *Tiền Bình Tĩnh, Tương Lai Rõ Ràng*, và học cách để tiền thở—để cuộc sống bạn cũng có thể thở."
+      }
+    }
+  ],
+  "meta": {
+    "created_at": "2025-11-07T00:00:00+09:00",
+    "updated_at": "2025-11-07T00:00:00+09:00",
+    "entry_count": 1,
+    "tier": "free",
+    "room_color": "#FFD700"
+  }
+}
