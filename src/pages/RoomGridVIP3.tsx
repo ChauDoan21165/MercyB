@@ -141,13 +141,13 @@ const RoomGridVIP3 = () => {
                   <div className="space-y-1">
                     <p 
                       className="text-xs font-semibold leading-tight line-clamp-2"
-                      style={isSpecialRoom ? { color: isSpecialRoom } : { color: 'hsl(var(--vip3-gold))' }}
+                      style={{ color: 'hsl(var(--vip3-gold))' }}
                     >
                       {room.nameEn}
                     </p>
                     <p 
                       className="text-[10px] leading-tight line-clamp-2"
-                      style={isSpecialRoom ? { color: `${isSpecialRoom}cc` } : { color: 'hsl(var(--vip3-gold)/0.8)' }}
+                      style={{ color: 'hsl(var(--vip3-gold)/0.85)' }}
                     >
                       {room.nameVi}
                     </p>
