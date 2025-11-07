@@ -8,7 +8,8 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
 
   try {
     // Prefer manifest mapping (flat structure in public/data/)
-    const filename = PUBLIC_ROOM_MANIFEST[manifestKey];
+    const directKey = roomId ? roomId.replace(/_/g, '-') : '';
+    const filename = PUBLIC_ROOM_MANIFEST[manifestKey] || (directKey ? PUBLIC_ROOM_MANIFEST[directKey] : undefined);
     let jsonData: any = null;
 
     // Try multiple filename candidates to handle casing/spacing differences
@@ -19,12 +20,17 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       candidates.push(`/${encodeURI(filename)}`);
     }
 
-    // Fallback: Generate possible filenames from manifestKey
+    // Fallback: Generate possible filenames from manifestKey AND direct roomId
     const base = manifestKey.replace(/-/g, '_');
+    const directBase = (roomId || '').replace(/-/g, '_');
     
     // Try common naming patterns in flat structure
     candidates.push(`/data/${base}.json`);
     candidates.push(`/data/${base.toLowerCase()}.json`);
+    if (directBase) {
+      candidates.push(`/data/${directBase}.json`);
+      candidates.push(`/data/${directBase.toLowerCase()}.json`);
+    }
     
     // TitleCase variant with lowercase tier: Meaning_Of_Life_free.json
     const parts = base.split('_');

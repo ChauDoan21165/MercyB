@@ -11,40 +11,40 @@ import { useEffect } from "react";
 const SUB_ROOMS = [
   {
     id: "sexuality-curiosity-vip3-sub1",
-    nameEn: "Foundations of Sexuality",
-    nameVi: "Nền Tảng Về Tình Dục",
+    nameEn: "Sacred Body, Curious Self",
+    nameVi: "Thân Thể Linh Thiêng, Bản Ngã Tò Mò",
     color: "#EC4899"
   },
   {
     id: "sexuality-curiosity-vip3-sub2",
-    nameEn: "Cultural Perspectives",
-    nameVi: "Góc Nhìn Văn Hóa",
+    nameEn: "Relational Intelligence & Erotic Communication",
+    nameVi: "Thông Minh Quan Hệ & Giao Tiếp Gợi Cảm",
     color: "#8B5CF6"
   },
   {
     id: "sexuality-curiosity-vip3-sub3",
-    nameEn: "Modern Relationships",
-    nameVi: "Mối Quan Hệ Hiện Đại",
+    nameEn: "Calm Confident Sexual Health",
+    nameVi: "Sức Khỏe Tình Dục Bình Tĩnh & Tự Tin",
     color: "#F59E0B"
   },
   {
     id: "sexuality-curiosity-vip3-sub4",
-    nameEn: "Communication & Consent",
-    nameVi: "Giao Tiếp & Đồng Thuận",
+    nameEn: "Sexual Health and Safety",
+    nameVi: "Sức Khỏe và An Toàn Tình Dục",
     color: "#10B981"
   },
   {
     id: "sexuality-curiosity-vip3-sub5",
-    nameEn: "Personal Identity",
-    nameVi: "Bản Sắc Cá Nhân",
+    nameEn: "Diverse Desires & Belonging",
+    nameVi: "Khao Khát Đa Dạng & Thuộc Về",
     color: "#06B6D4"
   },
   {
     id: "sexuality-curiosity-vip3-sub6",
-    nameEn: "Well-being & Health",
-    nameVi: "Sức Khỏe & Hạnh Phúc",
+    nameEn: "Erotic Wisdom for Life",
+    nameVi: "Trí Tuệ Gợi Cảm Trọn Đời",
     color: "#EF4444"
-  },
+  }
 ];
 
 const SexualityCultureRoom = () => {
