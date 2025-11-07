@@ -1,10 +1,73 @@
 /**
  * Centralized route helper to determine parent routes for rooms
- * Prevents 404s and navigation mismatches
+ * Prevents 404s and navigation mismatches with TypeScript type safety
  */
 
-export const getParentRoute = (roomId: string | undefined): string => {
+import { roomDataMap } from './roomDataImports';
+
+/**
+ * Valid parent route paths in the application
+ */
+export type ParentRoute = 
+  | "/rooms"           // Free tier rooms
+  | "/rooms-vip1"      // VIP1 tier rooms
+  | "/rooms-vip2"      // VIP2 tier rooms
+  | "/rooms-vip3"      // VIP3 tier rooms
+  | "/sexuality-culture"; // Sexuality sub-rooms parent
+
+/**
+ * Room tier type
+ */
+export type RoomTier = 'free' | 'vip1' | 'vip2' | 'vip3';
+
+/**
+ * Validates if a room ID exists in the system
+ */
+export function isValidRoomId(roomId: string | undefined): roomId is string {
+  if (!roomId) return false;
+  return roomId in roomDataMap;
+}
+
+/**
+ * Gets the tier from a room ID
+ */
+export function getRoomTier(roomId: string): RoomTier | null {
+  const tierMatch = roomId.match(/-(free|vip1|vip2|vip3)$/);
+  return tierMatch ? (tierMatch[1] as RoomTier) : null;
+}
+
+/**
+ * Converts a room tier to its corresponding parent route
+ */
+export function tierToRoute(tier: RoomTier): ParentRoute {
+  const tierRouteMap: Record<RoomTier, ParentRoute> = {
+    'free': "/rooms",
+    'vip1': "/rooms-vip1",
+    'vip2': "/rooms-vip2",
+    'vip3': "/rooms-vip3"
+  };
+  return tierRouteMap[tier];
+}
+
+/**
+ * Gets the parent route for a given room ID with full type safety
+ * 
+ * @param roomId - The room identifier (e.g., 'adhd-support-vip3')
+ * @returns The parent route path for navigation
+ * 
+ * @example
+ * getParentRoute('adhd-support-vip3') // Returns: "/rooms-vip3"
+ * getParentRoute('sexuality-curiosity-vip3-sub1') // Returns: "/sexuality-culture"
+ */
+export function getParentRoute(roomId: string | undefined): ParentRoute {
+  // Handle undefined or empty room ID
   if (!roomId) return "/rooms";
+
+  // Validate room exists (log warning but don't throw)
+  if (!isValidRoomId(roomId)) {
+    console.warn(`[RouteHelper] Unknown room ID: ${roomId}. Defaulting to /rooms`);
+    return "/rooms";
+  }
 
   // Special handling for sexuality sub-rooms (all 6 sub-rooms)
   if (roomId.startsWith('sexuality-curiosity-vip3-sub')) {
@@ -27,20 +90,13 @@ export const getParentRoute = (roomId: string | undefined): string => {
   }
 
   // Standard tier-based routing for all other rooms
-  // Pattern: {room-name}-(free|vip1|vip2|vip3)
-  const tierSuffix = roomId.match(/-(free|vip1|vip2|vip3)$/)?.[1];
+  const tier = getRoomTier(roomId);
   
-  switch (tierSuffix) {
-    case 'vip3':
-      return "/rooms-vip3";
-    case 'vip2':
-      return "/rooms-vip2";
-    case 'vip1':
-      return "/rooms-vip1";
-    case 'free':
-      return "/rooms";
-    default:
-      // Fallback for any room without a tier suffix
-      return "/rooms";
+  if (tier) {
+    return tierToRoute(tier);
   }
-};
+
+  // Fallback for any room without a tier suffix
+  console.warn(`[RouteHelper] Could not determine tier for room: ${roomId}. Defaulting to /rooms`);
+  return "/rooms";
+}
