@@ -155,7 +155,7 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
         audioRaw = entry.audio;
       }
       // Additional common placements used by our content
-      if (!audioRaw) audioRaw = entry?.meta?.audio_file || entry?.audioFile || entry?.copy?.audio || entry?.content?.audio;
+      if (!audioRaw) audioRaw = entry?.audio_en || entry?.audio_vi || entry?.meta?.audio_file || entry?.audioFile || entry?.copy?.audio || entry?.content?.audio;
 
       let audioPath = audioRaw;
       if (audioPath) {
@@ -178,8 +178,8 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
         : (typeof entry.title === 'object' ? entry.title?.vi : '') || '';
       
       // Extract essay/reply content
-      const replyEn = entry.reply_en || entry.essay_en || entry.content_en || entry.copy?.en || entry.essay?.en || '';
-      const replyVi = entry.reply_vi || entry.essay_vi || entry.content_vi || entry.copy?.vi || entry.essay?.vi || '';
+      const replyEn = entry.reply_en || entry.essay_en || entry.content_en || entry.copy_en || entry.copy?.en || entry.essay?.en || '';
+      const replyVi = entry.reply_vi || entry.essay_vi || entry.content_vi || entry.copy_vi || entry.copy?.vi || entry.essay?.vi || '';
       
       return {
         ...entry,
