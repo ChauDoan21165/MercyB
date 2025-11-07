@@ -116,7 +116,7 @@ const ChatHub = () => {
     navigate('/');
   };
 
-  // Initialize room on load or when roomId or tier changes
+  // Initialize room on load or when roomId changes
   useEffect(() => {
     const loadRoomData = async () => {
       // Reset state when switching rooms
@@ -157,7 +157,7 @@ const ChatHub = () => {
     };
    
     loadRoomData();
-  }, [roomId, tier]);
+  }, [roomId]);
 
   const handleKeywordClick = async (keyword: string) => {
     if (isLoading) return;
