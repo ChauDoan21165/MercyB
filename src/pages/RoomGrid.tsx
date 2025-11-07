@@ -18,6 +18,12 @@ const VIP3_SPECIAL_ROOMS: Record<string, string> = {
   'strategy-in-life-3-vip3': '#059669', // Strategic emerald
 };
 
+// Free introduction rooms with golden styling to attract attention
+const FREE_INTRO_ROOMS: Record<string, string> = {
+  'finance-calm-money-clear-future-preview-free': '#FFD700', // Golden
+  'sexuality-and-curiosity-free': '#FFD700', // Golden
+};
+
 const RoomGrid = () => {
   const navigate = useNavigate();
   const { canAccessVIP1, canAccessVIP2, canAccessVIP3 } = useUserAccess();
@@ -141,10 +147,10 @@ const RoomGrid = () => {
                       ? "hover:scale-110 hover:shadow-hover hover:z-10 cursor-pointer" 
                       : "opacity-30 cursor-not-allowed grayscale"
                   }`}
-                  style={VIP3_SPECIAL_ROOMS[room.id] ? {
-                    border: `2px solid ${VIP3_SPECIAL_ROOMS[room.id]}`,
-                    background: `linear-gradient(135deg, ${VIP3_SPECIAL_ROOMS[room.id]}15, ${VIP3_SPECIAL_ROOMS[room.id]}08)`,
-                    boxShadow: `0 0 20px ${VIP3_SPECIAL_ROOMS[room.id]}50`
+                  style={FREE_INTRO_ROOMS[room.id] ? {
+                    border: `2px solid ${FREE_INTRO_ROOMS[room.id]}`,
+                    background: `linear-gradient(135deg, ${FREE_INTRO_ROOMS[room.id]}20, ${FREE_INTRO_ROOMS[room.id]}10)`,
+                    boxShadow: `0 0 20px ${FREE_INTRO_ROOMS[room.id]}60`
                   } : undefined}
                   onClick={() => handleRoomClick(room)}
                 >
