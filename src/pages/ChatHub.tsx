@@ -70,6 +70,8 @@ const ChatHub = () => {
   const [clickedKeyword, setClickedKeyword] = useState<string | null>(null);
   const [mergedEntries, setMergedEntries] = useState<any[]>([]);
   const [audioBasePath, setAudioBasePath] = useState<string>('/');
+  const [debugMode, setDebugMode] = useState(false);
+  const [matchedEntryId, setMatchedEntryId] = useState<string | null>(null);
 
   // Use centralized room metadata
   const info = getRoomInfo(roomId || "");
@@ -122,6 +124,7 @@ const ChatHub = () => {
       setCurrentAudio(null);
       setIsAudioPlaying(false);
       setMergedEntries([]);
+      setMatchedEntryId(null);
       try {
         // Load merged entries from /public/tiers/{tier}/{room}/ based on tier
         const result = await loadMergedRoom(roomId || '', tier || 'free');
@@ -194,18 +197,27 @@ const ChatHub = () => {
 
     // 1) Exact match on keywordEn (first keyword in entry)
     let entry = mergedEntries.find(e => by(e.keywordEn) === k);
-    if (entry) return entry;
+    if (entry) {
+      setMatchedEntryId(entry.slug || entry.keywordEn);
+      return entry;
+    }
 
     // 2) Match against ALL keywords in the entry's keywords_en array
     entry = mergedEntries.find(e => {
       const keywords = Array.isArray(e.keywords_en) ? e.keywords_en : [];
       return keywords.some(kw => by(kw) === k);
     });
-    if (entry) return entry;
+    if (entry) {
+      setMatchedEntryId(entry.slug || entry.keywordEn);
+      return entry;
+    }
 
     // 3) Contains either direction on keywordEn
     entry = mergedEntries.find(e => by(e.keywordEn).includes(k) || k.includes(by(e.keywordEn)));
-    if (entry) return entry;
+    if (entry) {
+      setMatchedEntryId(entry.slug || entry.keywordEn);
+      return entry;
+    }
 
     // 4) Contains match in any keyword
     entry = mergedEntries.find(e => {
@@ -215,7 +227,10 @@ const ChatHub = () => {
         return normalized.includes(k) || k.includes(normalized);
       });
     });
-    if (entry) return entry;
+    if (entry) {
+      setMatchedEntryId(entry.slug || entry.keywordEn);
+      return entry;
+    }
 
     // 5) Match by slug/title
     entry = mergedEntries.find(e => {
@@ -223,7 +238,10 @@ const ChatHub = () => {
       const title = typeof e.title === 'object' ? by(e.title?.en) : by(e.title);
       return slug.includes(k) || k.includes(slug) || title.includes(k) || k.includes(title);
     });
-    if (entry) return entry;
+    if (entry) {
+      setMatchedEntryId(entry.slug || entry.keywordEn);
+      return entry;
+    }
 
     // 6) Token-overlap fallback
     const tokens = k.split(/\s+/).filter(Boolean);
@@ -231,7 +249,9 @@ const ChatHub = () => {
       const target = [by(e.keywordEn), by(typeof e.title === 'object' ? e.title?.en : e.title), by(e.slug)].join(' ');
       return tokens.every(t => target.includes(t));
     });
-
+    if (entry) {
+      setMatchedEntryId(entry.slug || entry.keywordEn);
+    }
     return entry || null;
   };
 
@@ -571,6 +591,46 @@ const ChatHub = () => {
       </AlertDialog>
       <div className="min-h-screen p-4" style={{ background: getBgColor() }}>
         <div className="max-w-7xl mx-auto space-y-4">
+        
+        {/* Debug Mode Toggle */}
+        <button
+          onClick={() => setDebugMode(!debugMode)}
+          className="fixed top-4 right-4 z-50 px-3 py-1 bg-primary/10 text-primary text-xs rounded border border-primary/20 hover:bg-primary/20 transition-colors"
+        >
+          {debugMode ? 'Hide' : 'Show'} Debug
+        </button>
+
+        {/* Debug Panel */}
+        {debugMode && mergedEntries.length > 0 && (
+          <div className="fixed top-16 right-4 z-50 w-96 max-h-[80vh] overflow-y-auto bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg p-4">
+            <h3 className="text-sm font-semibold mb-3 text-foreground">Keyword Mappings ({mergedEntries.length} entries)</h3>
+            <div className="space-y-2">
+              {mergedEntries.map((entry, idx) => {
+                const isMatched = matchedEntryId === (entry.slug || entry.keywordEn);
+                const keywords = Array.isArray(entry.keywords_en) ? entry.keywords_en : [entry.keywordEn];
+                return (
+                  <div 
+                    key={idx} 
+                    className={`p-2 rounded text-xs border ${isMatched ? 'bg-primary/20 border-primary' : 'bg-muted/50 border-border'}`}
+                  >
+                    <div className="font-medium text-foreground mb-1">
+                      {entry.slug || entry.keywordEn || `Entry ${idx + 1}`}
+                    </div>
+                    <div className="text-muted-foreground">
+                      Keywords: {keywords.join(', ')}
+                    </div>
+                    {entry.audioPath && (
+                      <div className="text-muted-foreground mt-1">
+                        Audio: {entry.audioPath.split('/').pop()}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+        
         {/* Header */}
         <div className="flex items-center justify-between bg-card rounded-lg p-4 shadow-soft">
           <div className="flex gap-2">
