@@ -192,15 +192,32 @@ const ChatHub = () => {
 
     const by = (s: any) => norm(String(s || ''));
 
-    // 1) Exact match on keywordEn
+    // 1) Exact match on keywordEn (first keyword in entry)
     let entry = mergedEntries.find(e => by(e.keywordEn) === k);
     if (entry) return entry;
 
-    // 2) Contains either direction on keywordEn
+    // 2) Match against ALL keywords in the entry's keywords_en array
+    entry = mergedEntries.find(e => {
+      const keywords = Array.isArray(e.keywords_en) ? e.keywords_en : [];
+      return keywords.some(kw => by(kw) === k);
+    });
+    if (entry) return entry;
+
+    // 3) Contains either direction on keywordEn
     entry = mergedEntries.find(e => by(e.keywordEn).includes(k) || k.includes(by(e.keywordEn)));
     if (entry) return entry;
 
-    // 3) Match by slug/title
+    // 4) Contains match in any keyword
+    entry = mergedEntries.find(e => {
+      const keywords = Array.isArray(e.keywords_en) ? e.keywords_en : [];
+      return keywords.some(kw => {
+        const normalized = by(kw);
+        return normalized.includes(k) || k.includes(normalized);
+      });
+    });
+    if (entry) return entry;
+
+    // 5) Match by slug/title
     entry = mergedEntries.find(e => {
       const slug = by(e.slug);
       const title = typeof e.title === 'object' ? by(e.title?.en) : by(e.title);
@@ -208,7 +225,7 @@ const ChatHub = () => {
     });
     if (entry) return entry;
 
-    // 4) Token-overlap fallback
+    // 6) Token-overlap fallback
     const tokens = k.split(/\s+/).filter(Boolean);
     entry = mergedEntries.find(e => {
       const target = [by(e.keywordEn), by(typeof e.title === 'object' ? e.title?.en : e.title), by(e.slug)].join(' ');

@@ -149,12 +149,13 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
     const merged = Array.isArray(jsonData?.entries) ? (jsonData.entries as any[]).map((entry: any, idx: number) => {
       // Extract audio from multiple possible locations and normalize to /audio/filename.mp3
       let audioRaw: any;
+      // Handle nested object format: audio: {en: "file.mp3", vi: "file_vi.mp3"}
       if (entry?.audio && typeof entry.audio === 'object') {
-        audioRaw = entry.audio.en ?? Object.values(entry.audio)[0];
+        audioRaw = entry.audio.en ?? entry.audio.vi ?? Object.values(entry.audio)[0];
       } else if (entry?.audio) {
         audioRaw = entry.audio;
       }
-      // Additional common placements used by our content
+      // Handle separate field format: audio_en, audio_vi
       if (!audioRaw) audioRaw = entry?.audio_en || entry?.audio_vi || entry?.meta?.audio_file || entry?.audioFile || entry?.copy?.audio || entry?.content?.audio;
 
       let audioPath = audioRaw;
@@ -177,9 +178,11 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
         ? entry.keywords_vi[0] 
         : (typeof entry.title === 'object' ? entry.title?.vi : '') || '';
       
-      // Extract essay/reply content
-      const replyEn = entry.reply_en || entry.essay_en || entry.content_en || entry.copy_en || entry.copy?.en || entry.essay?.en || '';
-      const replyVi = entry.reply_vi || entry.essay_vi || entry.content_vi || entry.copy_vi || entry.copy?.vi || entry.essay?.vi || '';
+      // Extract essay/reply content - handle both nested object and separate field formats
+      const replyEn = entry.copy?.en || entry.essay?.en || entry.content?.en || 
+                      entry.reply_en || entry.essay_en || entry.content_en || entry.copy_en || '';
+      const replyVi = entry.copy?.vi || entry.essay?.vi || entry.content?.vi || 
+                      entry.reply_vi || entry.essay_vi || entry.content_vi || entry.copy_vi || '';
       
       return {
         ...entry,
