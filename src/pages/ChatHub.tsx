@@ -392,34 +392,59 @@ const ChatHub = () => {
       let normalized = message.audioFile.replace(/^\//, '').toLowerCase().replace(/[\s-]+/g, '_');
       const audioUrl = `/${normalized}`;
       
-      console.log('=== AUDIO DEBUG ===');
-      console.log('Keyword clicked or message:', clickedKeyword);
-      console.log('Audio file from entry:', message.audioFile);
-      console.log('Normalized filename:', normalized);
-      console.log('Final audio URL:', audioUrl);
-      console.log('==================');
-      setCurrentAudio(audioUrl);
-      setAudioLoading(true);
-      
       const el = audioRef.current;
-      if (el) {
-        el.src = audioUrl;
-        el.load();
-        el.currentTime = 0;
+      if (!el) return;
+
+      // If this audio is currently playing, pause it
+      if (currentAudio === audioUrl && isAudioPlaying) {
+        el.pause();
+        setIsAudioPlaying(false);
+        return;
+      }
+
+      // If this audio is paused, resume it
+      if (currentAudio === audioUrl && !isAudioPlaying) {
         el.play()
-          .then(() => {
-            setAudioLoading(false);
-          })
+          .then(() => setIsAudioPlaying(true))
           .catch(err => {
-            console.error('Audio playback error:', err);
-            setAudioLoading(false);
+            console.error('Audio resume error:', err);
             toast({
               title: "Audio unavailable / Âm thanh không có",
               description: `Cannot play: ${filename}`,
               variant: "destructive"
             });
           });
+        return;
       }
+
+      // Otherwise, load and play new audio
+      console.log('=== AUDIO DEBUG ===');
+      console.log('Keyword clicked or message:', clickedKeyword);
+      console.log('Audio file from entry:', message.audioFile);
+      console.log('Normalized filename:', normalized);
+      console.log('Final audio URL:', audioUrl);
+      console.log('==================');
+      
+      setCurrentAudio(audioUrl);
+      setAudioLoading(true);
+      el.src = audioUrl;
+      el.load();
+      el.currentTime = 0;
+      el.play()
+        .then(() => {
+          setAudioLoading(false);
+          setIsAudioPlaying(true);
+        })
+        .catch(err => {
+          console.error('Audio playback error:', err);
+          setAudioLoading(false);
+          setIsAudioPlaying(false);
+          toast({
+            title: "Audio unavailable / Âm thanh không có",
+            description: `Cannot play: ${filename}`,
+            variant: "destructive"
+          });
+        });
     };
 
     return (
