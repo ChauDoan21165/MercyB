@@ -536,7 +536,7 @@ const ChatHub = () => {
               onClick={() => {
                 // Special handling for sexuality sub-rooms - navigate to their parent room
                 if (roomId?.startsWith('sexuality-curiosity-vip3-sub')) {
-                  navigate("/sexuality-culture-room");
+                  navigate("/sexuality-culture");
                 } else {
                   // For all other rooms, determine the appropriate tier page
                   const tierSuffix = roomId?.match(/-(free|vip1|vip2|vip3)$/)?.[1];
