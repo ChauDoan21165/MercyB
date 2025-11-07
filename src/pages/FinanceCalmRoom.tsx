@@ -67,7 +67,7 @@ const FinanceCalmRoom = () => {
   }
 
   // Calculate progress
-  const completedRooms = SUB_ROOMS.filter(room => visitedRooms.has(room.id)).length;
+  const completedRooms = SUB_ROOMS.filter(room => visitedRooms?.has(room.id)).length;
   const progressPercentage = (completedRooms / SUB_ROOMS.length) * 100;
 
   return (
@@ -118,7 +118,7 @@ const FinanceCalmRoom = () => {
         {/* Sub-rooms Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {SUB_ROOMS.map((room) => {
-            const isVisited = visitedRooms.has(room.id);
+            const isVisited = visitedRooms?.has(room.id) || false;
             
             return (
               <Card
