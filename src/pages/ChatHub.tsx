@@ -72,6 +72,7 @@ const ChatHub = () => {
   const [audioBasePath, setAudioBasePath] = useState<string>('/');
   const [debugMode, setDebugMode] = useState(false);
   const [matchedEntryId, setMatchedEntryId] = useState<string | null>(null);
+  const [debugSearch, setDebugSearch] = useState("");
 
   // Use centralized room metadata
   const info = getRoomInfo(roomId || "");
@@ -602,31 +603,49 @@ const ChatHub = () => {
 
         {/* Debug Panel */}
         {debugMode && mergedEntries.length > 0 && (
-          <div className="fixed top-16 right-4 z-50 w-96 max-h-[80vh] overflow-y-auto bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg p-4">
-            <h3 className="text-sm font-semibold mb-3 text-foreground">Keyword Mappings ({mergedEntries.length} entries)</h3>
-            <div className="space-y-2">
-              {mergedEntries.map((entry, idx) => {
-                const isMatched = matchedEntryId === (entry.slug || entry.keywordEn);
-                const keywords = Array.isArray(entry.keywords_en) ? entry.keywords_en : [entry.keywordEn];
-                return (
-                  <div 
-                    key={idx} 
-                    className={`p-2 rounded text-xs border ${isMatched ? 'bg-primary/20 border-primary' : 'bg-muted/50 border-border'}`}
-                  >
-                    <div className="font-medium text-foreground mb-1">
-                      {entry.slug || entry.keywordEn || `Entry ${idx + 1}`}
-                    </div>
-                    <div className="text-muted-foreground">
-                      Keywords: {keywords.join(', ')}
-                    </div>
-                    {entry.audioPath && (
-                      <div className="text-muted-foreground mt-1">
-                        Audio: {entry.audioPath.split('/').pop()}
+          <div className="fixed top-16 right-4 z-50 w-96 max-h-[80vh] bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg">
+            <div className="p-4 border-b border-border">
+              <h3 className="text-sm font-semibold mb-3 text-foreground">Keyword Mappings ({mergedEntries.length} entries)</h3>
+              <Input
+                placeholder="Search keywords or entries..."
+                value={debugSearch}
+                onChange={(e) => setDebugSearch(e.target.value)}
+                className="h-8 text-xs"
+              />
+            </div>
+            <div className="overflow-y-auto max-h-[calc(80vh-120px)] p-4 space-y-2">
+              {mergedEntries
+                .filter(entry => {
+                  if (!debugSearch.trim()) return true;
+                  const search = debugSearch.toLowerCase();
+                  const slug = (entry.slug || entry.keywordEn || '').toLowerCase();
+                  const keywords = Array.isArray(entry.keywords_en) ? entry.keywords_en : [entry.keywordEn];
+                  const keywordsMatch = keywords.some((kw: string) => kw.toLowerCase().includes(search));
+                  const audioMatch = entry.audioPath?.toLowerCase().includes(search);
+                  return slug.includes(search) || keywordsMatch || audioMatch;
+                })
+                .map((entry, idx) => {
+                  const isMatched = matchedEntryId === (entry.slug || entry.keywordEn);
+                  const keywords = Array.isArray(entry.keywords_en) ? entry.keywords_en : [entry.keywordEn];
+                  return (
+                    <div 
+                      key={idx} 
+                      className={`p-2 rounded text-xs border ${isMatched ? 'bg-primary/20 border-primary' : 'bg-muted/50 border-border'}`}
+                    >
+                      <div className="font-medium text-foreground mb-1">
+                        {entry.slug || entry.keywordEn || `Entry ${idx + 1}`}
                       </div>
-                    )}
-                  </div>
-                );
-              })}
+                      <div className="text-muted-foreground">
+                        Keywords: {keywords.join(', ')}
+                      </div>
+                      {entry.audioPath && (
+                        <div className="text-muted-foreground mt-1">
+                          Audio: {entry.audioPath.split('/').pop()}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
             </div>
           </div>
         )}
