@@ -89,41 +89,11 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       throw new Error(`JSON not found for ${manifestKey} in candidates: ${candidates.join(', ')}`);
     }
 
-    // Extract keywords robustly - check both root level and entry level
+    // ALWAYS extract keyword menu from entries for accurate 1:1 mapping
+    // This ensures each keyword in the menu maps to exactly one entry
     let keywordMenu: { en: string[]; vi: string[] } = { en: [], vi: [] };
     
-    // Try root-level keywords in multiple formats
-    // Format 1: keywords_en / keywords_vi (separate properties)
-    if (Array.isArray(jsonData?.keywords_en) || Array.isArray(jsonData?.keywords_vi)) {
-      keywordMenu = {
-        en: Array.isArray(jsonData.keywords_en) ? jsonData.keywords_en : [],
-        vi: Array.isArray(jsonData.keywords_vi) ? jsonData.keywords_vi : []
-      };
-    }
-    // Format 2: keywords.en / keywords.vi (nested object)
-    else {
-      const kw = jsonData?.keywords;
-      if (kw) {
-        if (Array.isArray(kw.en) || Array.isArray(kw.vi)) {
-          keywordMenu = {
-            en: Array.isArray(kw.en) ? kw.en : [],
-            vi: Array.isArray(kw.vi) ? kw.vi : []
-          };
-        } else if (typeof kw === 'object') {
-          // Flatten grouped keywords into simple lists
-          const enList: string[] = [];
-          const viList: string[] = [];
-          Object.values(kw).forEach((g: any) => {
-            if (Array.isArray(g?.en)) enList.push(...g.en);
-            if (Array.isArray(g?.vi)) viList.push(...g.vi);
-          });
-          keywordMenu = { en: enList, vi: viList };
-        }
-      }
-    }
-    
-    // If no root keywords found, extract concise menu from ALL entries (audio-agnostic)
-    if (keywordMenu.en.length === 0 && keywordMenu.vi.length === 0 && Array.isArray(jsonData?.entries)) {
+    if (Array.isArray(jsonData?.entries)) {
       const enList: string[] = [];
       const viList: string[] = [];
 
@@ -178,11 +148,14 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
         ? entry.keywords_vi[0] 
         : (typeof entry.title === 'object' ? entry.title?.vi : '') || '';
       
-      // Extract essay/reply content - handle both nested object and separate field formats
-      const replyEn = entry.copy?.en || entry.essay?.en || entry.content?.en || 
-                      entry.reply_en || entry.essay_en || entry.content_en || entry.copy_en || '';
-      const replyVi = entry.copy?.vi || entry.essay?.vi || entry.content?.vi || 
-                      entry.reply_vi || entry.essay_vi || entry.content_vi || entry.copy_vi || '';
+      // Extract essay/reply content - prioritize essay over copy for richer content
+      // Check for essay first (longer form content), then fall back to copy (shorter form)
+      const replyEn = entry.essay?.en || entry.essay_en || 
+                      entry.copy?.en || entry.reply_en || entry.content?.en || 
+                      entry.content_en || entry.copy_en || '';
+      const replyVi = entry.essay?.vi || entry.essay_vi || 
+                      entry.copy?.vi || entry.reply_vi || entry.content?.vi || 
+                      entry.content_vi || entry.copy_vi || '';
       
       return {
         ...entry,
