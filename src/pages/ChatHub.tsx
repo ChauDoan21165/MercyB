@@ -21,7 +21,7 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useCredits } from "@/hooks/useCredits";
 import { CreditLimitModal } from "@/components/CreditLimitModal";
 import { CreditsDisplay } from "@/components/CreditsDisplay";
-import { PrivateChatPanel } from "@/components/PrivateChatPanel";
+
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { messageSchema } from "@/lib/inputValidation";
 import { supabase } from "@/integrations/supabase/client";
@@ -41,11 +41,8 @@ const ChatHub = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [mainMessages, setMainMessages] = useState<Message[]>([]);
-  const [feedbackMessages, setFeedbackMessages] = useState<Message[]>([]);
-  const [roomMessages, setRoomMessages] = useState<Message[]>([]);
   const [mainInput, setMainInput] = useState("");
   const [feedbackInput, setFeedbackInput] = useState("");
-  const [roomInput, setRoomInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [username, setUsername] = useState<string>("");
   const [noKeywordCount, setNoKeywordCount] = useState(0);
@@ -325,17 +322,10 @@ const ChatHub = () => {
   const sendMessage = async (
     input: string,
     setInput: (val: string) => void,
-    setMessages: React.Dispatch<React.SetStateAction<Message[]>>,
+    callback: () => void,
     chatType: string
   ) => {
     if (!input.trim()) return;
-    const newMessage: Message = {
-      id: Date.now().toString(),
-      text: input,
-      isUser: true,
-      timestamp: new Date()
-    };
-    setMessages(prev => [...prev, newMessage]);
     setInput("");
     // Handle feedback submission to database
     if (chatType === "feedback") {
@@ -348,26 +338,8 @@ const ChatHub = () => {
           status: 'new',
           priority: 'normal'
         });
-        const responseText = "Thank you for your feedback. Admins have been notified.\n\nCảm ơn phản hồi của bạn. Quản trị viên đã được thông báo.";
-        const aiMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          text: responseText,
-          isUser: false,
-          timestamp: new Date()
-        };
-        setMessages(prev => [...prev, aiMessage]);
+        callback();
       }
-    } else if (chatType === "room") {
-      setTimeout(() => {
-        const responseText = "Your message has been sent to the room.\n\nTin nhắn của bạn đã được gửi đến phòng.";
-        const aiMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          text: responseText,
-          isUser: false,
-          timestamp: new Date()
-        };
-        setMessages(prev => [...prev, aiMessage]);
-      }, 800);
     }
   };
 
@@ -682,55 +654,40 @@ const ChatHub = () => {
             </div>
           </Card>
         )}
-        {/* Two Chat Boxes */}
-        <div className="grid md:grid-cols-2 gap-4">
-          {/* Combined Feedback & Room Chat */}
-          <Card className="p-4 shadow-soft">
-            <div className="space-y-3">
-              <div className="flex items-center gap-2 pb-2 border-b">
-                <MessageCircle className="w-4 h-4 text-secondary" />
-                <div>
-                  <h4 className="text-sm font-semibold">Feedback & Room Chat</h4>
-                  <p className="text-xs text-muted-foreground">Phản Hồi & Chat Phòng</p>
-                </div>
-              </div>
-             
-              <ScrollArea className="h-24">
-                {[...feedbackMessages, ...roomMessages].sort((a, b) =>
-                  a.timestamp.getTime() - b.timestamp.getTime()
-                ).map(msg => (
-                  <div key={msg.id} className="mb-2">
-                    <div className={`text-xs p-2 rounded-lg ${msg.isUser ? "bg-secondary/20" : "bg-muted"}`}>
-                      {msg.text}
-                    </div>
-                  </div>
-                ))}
-              </ScrollArea>
-              <div className="flex gap-2">
-                <Input
-                  placeholder="Send message / Gửi tin nhắn..."
-                  value={feedbackInput}
-                  onChange={(e) => setFeedbackInput(e.target.value)}
-                  onKeyPress={(e) => {
-                    if (e.key === "Enter") {
-                      sendMessage(feedbackInput, setFeedbackInput, setFeedbackMessages, "feedback");
-                    }
-                  }}
-                  className="text-sm"
-                />
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() => sendMessage(feedbackInput, setFeedbackInput, setFeedbackMessages, "feedback")}
-                >
-                  <Send className="w-3 h-3" />
-                </Button>
-              </div>
-            </div>
-          </Card>
-          {/* Private Chat with Permissions */}
-          <PrivateChatPanel roomId={roomId || ""} />
-        </div>
+        {/* Feedback - Single Line at Bottom */}
+        <Card className="p-3 shadow-soft">
+          <div className="flex items-center gap-2">
+            <MessageCircle className="w-4 h-4 text-secondary flex-shrink-0" />
+            <Input
+              placeholder="Feedback / Phản Hồi..."
+              value={feedbackInput}
+              onChange={(e) => setFeedbackInput(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  sendMessage(feedbackInput, setFeedbackInput, () => {
+                    toast({
+                      title: "Thank you! / Cảm ơn!",
+                      description: "Your feedback has been submitted / Phản hồi của bạn đã được gửi"
+                    });
+                  }, "feedback");
+                }
+              }}
+              className="text-sm flex-1"
+            />
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => sendMessage(feedbackInput, setFeedbackInput, () => {
+                toast({
+                  title: "Thank you! / Cảm ơn!",
+                  description: "Your feedback has been submitted / Phản hồi của bạn đã được gửi"
+                });
+              }, "feedback")}
+            >
+              <Send className="w-3 h-3" />
+            </Button>
+          </div>
+        </Card>
       </div>
     </div>
     <CreditLimitModal
