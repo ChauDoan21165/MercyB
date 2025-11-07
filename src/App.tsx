@@ -33,6 +33,7 @@ import DebugRooms from "./pages/DebugRooms";
 import AudioAnalysis from "./pages/AudioAnalysis";
 import AudioFileList from "./pages/AudioFileList";
 import SexualityCultureRoom from "./pages/SexualityCultureRoom";
+import FinanceCalmRoom from "./pages/FinanceCalmRoom";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +54,7 @@ const App = () => (
           <Route path="/rooms-vip2" element={<RoomGridVIP2 />} />
           <Route path="/rooms-vip3" element={<RoomGridVIP3 />} />
           <Route path="/sexuality-culture" element={<SexualityCultureRoom />} />
+          <Route path="/finance-calm" element={<FinanceCalmRoom />} />
           <Route path="/all-rooms" element={<AllRooms />} />
           <Route path="/chat/:roomId" element={<ChatHub />} />
           <Route path="/vip-request" element={<VIPRequestForm />} />

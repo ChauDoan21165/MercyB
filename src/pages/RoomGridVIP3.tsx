@@ -80,6 +80,7 @@ const RoomGridVIP3 = () => {
           {ALL_ROOMS.filter(room => room.tier === "vip3").map((room) => {
             const isSpecialRoom = VIP3_SPECIAL_ROOMS[room.id];
             const isSexualityCultureRoom = room.id === 'sexuality-and-curiosity-and-culture-vip3';
+            const isFinanceRoom = room.id === 'finance-glory-vip3';
             
             return (
               <Card
@@ -98,6 +99,8 @@ const RoomGridVIP3 = () => {
                   if (!room.hasData) return;
                   if (isSexualityCultureRoom) {
                     navigate('/sexuality-culture');
+                  } else if (isFinanceRoom) {
+                    navigate('/finance-calm');
                   } else {
                     navigate(`/chat/${room.id}`);
                   }

@@ -13,7 +13,8 @@ export type ParentRoute =
   | "/rooms-vip1"      // VIP1 tier rooms
   | "/rooms-vip2"      // VIP2 tier rooms
   | "/rooms-vip3"      // VIP3 tier rooms
-  | "/sexuality-culture"; // Sexuality sub-rooms parent
+  | "/sexuality-culture" // Sexuality sub-rooms parent
+  | "/finance-calm";   // Finance sub-rooms parent
 
 /**
  * Room tier type
@@ -74,18 +75,23 @@ export function getParentRoute(roomId: string | undefined): ParentRoute {
     return "/sexuality-culture";
   }
 
+  // Special handling for finance sub-rooms (all 6 sub-rooms)
+  if (roomId.startsWith('finance-calm-money-sub')) {
+    return "/finance-calm";
+  }
+
   // Special handling for sexuality parent room
   if (roomId === 'sexuality-and-curiosity-and-culture-vip3') {
     return "/rooms-vip3";
   }
 
-  // Special handling for strategy in life series (multi-part VIP3 rooms)
-  if (roomId.startsWith('strategy-in-life-')) {
+  // Special handling for finance parent room
+  if (roomId === 'finance-glory-vip3') {
     return "/rooms-vip3";
   }
 
-  // Special handling for finance glory VIP3
-  if (roomId === 'finance-glory-vip3') {
+  // Special handling for strategy in life series (multi-part VIP3 rooms)
+  if (roomId.startsWith('strategy-in-life-')) {
     return "/rooms-vip3";
   }
 
