@@ -113,13 +113,12 @@ const RoomGridVIP3 = () => {
                       className="px-1.5 py-0.5 text-[9px] font-bold flex items-center gap-0.5"
                       style={{
                         background: `linear-gradient(135deg, ${isSpecialRoom}, ${isSpecialRoom}dd)`,
-                        color: 'white',
                         border: 'none',
                         boxShadow: `0 0 15px ${isSpecialRoom}cc, 0 2px 8px ${isSpecialRoom}80`
                       }}
                     >
-                      <Crown className="w-2.5 h-2.5" />
-                      <span className="animate-blink">EXCLUSIVE</span>
+                      <Crown className="w-2.5 h-2.5 text-white" />
+                      <span className="animate-blink text-white">EXCLUSIVE</span>
                     </Badge>
                   </div>
                 )}
