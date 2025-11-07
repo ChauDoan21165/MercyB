@@ -77,96 +77,123 @@ const RoomGridVIP3 = () => {
 
         {/* Room Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-          {ALL_ROOMS.filter(room => room.tier === "vip3").map((room) => {
-            const isSpecialRoom = VIP3_SPECIAL_ROOMS[room.id];
-            const isSexualityCultureRoom = room.id === 'sexuality-and-curiosity-and-culture-vip3';
-            const isFinanceRoom = room.id === 'finance-glory-vip3';
-            
-            return (
-              <Card
-                key={room.id}
-                className={`relative p-3 transition-all duration-300 cursor-pointer group ${
-                  room.hasData 
-                    ? "hover:scale-110 hover:shadow-hover hover:z-10 border-accent/50 bg-gradient-to-br from-background to-accent/5" 
-                    : "opacity-60 cursor-not-allowed"
-                }`}
-                style={isSpecialRoom ? {
-                  border: `2px solid ${isSpecialRoom}`,
-                  background: `linear-gradient(135deg, ${isSpecialRoom}15, ${isSpecialRoom}08)`,
-                  boxShadow: `0 0 20px ${isSpecialRoom}50`
-                } : undefined}
-                onClick={() => {
-                  if (!room.hasData) return;
-                  if (isSexualityCultureRoom) {
-                    navigate('/sexuality-culture');
-                  } else if (isFinanceRoom) {
-                    navigate('/finance-calm');
-                  } else {
-                    navigate(`/chat/${room.id}`);
-                  }
-                }}
-              >
-                {/* VIP3 Exclusive Badge - Top Left */}
-                {isSpecialRoom && (
-                  <div className="absolute top-1 left-1 z-10">
-                    <Badge 
-                      className="px-1.5 py-0.5 text-[9px] font-bold flex items-center gap-0.5"
-                      style={{
-                        background: `linear-gradient(135deg, ${isSpecialRoom}, ${isSpecialRoom}dd)`,
-                        border: 'none',
-                        boxShadow: `0 0 15px ${isSpecialRoom}cc, 0 2px 8px ${isSpecialRoom}80`
-                      }}
-                    >
-                      <Crown className="w-2.5 h-2.5 text-white" />
-                      <span className="animate-blink text-white">EXCLUSIVE</span>
-                    </Badge>
-                  </div>
-                )}
+          {(() => {
+            // Prioritize Finance first, then other special rooms
+            const priority = [
+              'finance-glory-vip3',
+              'sexuality-and-curiosity-and-culture-vip3',
+              'strategy-in-life-1-vip3',
+              'strategy-in-life-2-vip3',
+              'strategy-in-life-3-vip3',
+            ];
+            const vip3Rooms = ALL_ROOMS
+              .filter((room) => room.tier === 'vip3')
+              .sort((a, b) => {
+                const ai = priority.indexOf(a.id);
+                const bi = priority.indexOf(b.id);
+                const ap = ai === -1 ? Number.MAX_SAFE_INTEGER : ai;
+                const bp = bi === -1 ? Number.MAX_SAFE_INTEGER : bi;
+                if (ap !== bp) return ap - bp;
+                return a.id.localeCompare(b.id);
+              });
 
-                {/* Status Badge */}
-                <div className="absolute top-1 right-1 z-10">
-                  {room.hasData ? (
-                    <div className="bg-green-500 rounded-full p-1">
-                      <CheckCircle2 className="w-3 h-3 text-white" />
-                    </div>
-                  ) : (
-                    <div className="bg-gray-400 rounded-full p-1">
-                      <Lock className="w-3 h-3 text-white" />
+            return vip3Rooms.map((room) => {
+              const isSpecialRoom = VIP3_SPECIAL_ROOMS[room.id];
+              const isSexualityCultureRoom = room.id === 'sexuality-and-curiosity-and-culture-vip3';
+              const isFinanceRoom = room.id === 'finance-glory-vip3';
+
+              return (
+                <Card
+                  key={room.id}
+                  className={`relative p-3 transition-all duration-300 cursor-pointer group ${
+                    room.hasData 
+                      ? 'hover:scale-110 hover:shadow-hover hover:z-10 border-accent/50 bg-gradient-to-br from-background to-accent/5' 
+                      : 'opacity-60 cursor-not-allowed'
+                  }`}
+                  style={
+                    isSpecialRoom
+                      ? {
+                          border: `2px solid ${isSpecialRoom}`,
+                          background: `linear-gradient(135deg, ${isSpecialRoom}15, ${isSpecialRoom}08)`,
+                          boxShadow: `0 0 20px ${isSpecialRoom}50`,
+                        }
+                      : undefined
+                  }
+                  onClick={() => {
+                    if (!room.hasData) return;
+                    if (isSexualityCultureRoom) {
+                      navigate('/sexuality-culture');
+                    } else if (isFinanceRoom) {
+                      navigate('/finance-calm');
+                    } else {
+                      navigate(`/chat/${room.id}`);
+                    }
+                  }}
+                >
+                  {/* Crown Badge - Bottom Right for Special Rooms */}
+                  {isSpecialRoom && (
+                    <div className="absolute bottom-2 right-2 z-10">
+                      <div 
+                        className="rounded-full p-1.5"
+                        style={{
+                          background: `linear-gradient(135deg, ${isSpecialRoom}, ${isSpecialRoom}dd)`,
+                          boxShadow: `0 0 15px ${isSpecialRoom}cc, 0 4px 12px ${isSpecialRoom}80`,
+                        }}
+                      >
+                        <Crown className="w-4 h-4 text-white" />
+                      </div>
                     </div>
                   )}
-                </div>
 
-                <div className="space-y-2">
-                  {/* Room Names */}
-                  <div className="space-y-1">
-                    <p 
-                      className="text-xs font-semibold leading-tight line-clamp-2"
-                      style={{ color: 'hsl(var(--vip3-gold))' }}
-                    >
-                      {room.nameEn}
-                    </p>
-                    <p 
-                      className="text-[10px] leading-tight line-clamp-2"
-                      style={{ color: 'hsl(var(--vip3-gold)/0.85)' }}
-                    >
-                      {room.nameVi}
-                    </p>
+                  {/* Status Badge */}
+                  <div className="absolute top-1 right-1 z-10">
+                    {room.hasData ? (
+                      <div className="bg-green-500 rounded-full p-1">
+                        <CheckCircle2 className="w-3 h-3 text-white" />
+                      </div>
+                    ) : (
+                      <div className="bg-gray-400 rounded-full p-1">
+                        <Lock className="w-3 h-3 text-white" />
+                      </div>
+                    )}
                   </div>
-                </div>
 
-                {/* Hover Effect */}
-                {room.hasData && (
-                  <div 
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"
-                    style={isSpecialRoom 
-                      ? { background: `linear-gradient(135deg, ${isSpecialRoom}30, ${isSpecialRoom}20)` }
-                      : { background: 'linear-gradient(to bottom right, hsl(var(--accent) / 0.2), hsl(var(--primary) / 0.2))' }
-                    }
-                  />
-                )}
-              </Card>
-            );
-          })}
+                  <div className="space-y-2">
+                    {/* Room Names */}
+                    <div className="space-y-1">
+                      <p
+                        className="text-xs font-semibold leading-tight line-clamp-2"
+                        style={{ color: 'hsl(var(--vip3-gold))' }}
+                      >
+                        {room.nameEn}
+                      </p>
+                      <p
+                        className="text-[10px] leading-tight line-clamp-2"
+                        style={{ color: 'hsl(var(--vip3-gold)/0.85)' }}
+                      >
+                        {room.nameVi}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Hover Effect */}
+                  {room.hasData && (
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"
+                      style={
+                        isSpecialRoom
+                          ? { background: `linear-gradient(135deg, ${isSpecialRoom}30, ${isSpecialRoom}20)` }
+                          : {
+                              background:
+                                'linear-gradient(to bottom right, hsl(var(--accent) / 0.2), hsl(var(--primary) / 0.2))',
+                            }
+                      }
+                    />
+                  )}
+                </Card>
+              );
+            });
+          })()}
         </div>
 
         {/* Navigation */}
