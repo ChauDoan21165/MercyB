@@ -175,6 +175,38 @@ export type Database = {
         }
         Relationships: []
       }
+      payment_proof_audit_log: {
+        Row: {
+          action: string
+          admin_user_id: string
+          created_at: string
+          id: string
+          submission_id: string
+        }
+        Insert: {
+          action: string
+          admin_user_id: string
+          created_at?: string
+          id?: string
+          submission_id: string
+        }
+        Update: {
+          action?: string
+          admin_user_id?: string
+          created_at?: string
+          id?: string
+          submission_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "payment_proof_audit_log_submission_id_fkey"
+            columns: ["submission_id"]
+            isOneToOne: false
+            referencedRelation: "payment_proof_submissions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       payment_proof_submissions: {
         Row: {
           admin_notes: string | null
@@ -1070,6 +1102,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      purge_old_payment_proofs: { Args: never; Returns: undefined }
       setup_admin_user: { Args: never; Returns: undefined }
       validate_promo_code: { Args: { code_input: string }; Returns: Json }
     }
