@@ -34,6 +34,9 @@ import AudioAnalysis from "./pages/AudioAnalysis";
 import AudioFileList from "./pages/AudioFileList";
 import SexualityCultureRoom from "./pages/SexualityCultureRoom";
 import FinanceCalmRoom from "./pages/FinanceCalmRoom";
+import AdminRooms from "./pages/AdminRooms";
+import AdminRoomEditor from "./pages/AdminRoomEditor";
+import AdminRoomImport from "./pages/AdminRoomImport";
 
 const queryClient = new QueryClient();
 
@@ -75,6 +78,10 @@ const App = () => (
           <Route path="/debug/rooms" element={<DebugRooms />} />
           <Route path="/audio-analysis" element={<AudioAnalysis />} />
           <Route path="/audio-files" element={<AudioFileList />} />
+          <Route path="/admin/rooms" element={<AdminRooms />} />
+          <Route path="/admin/rooms/new" element={<AdminRoomEditor />} />
+          <Route path="/admin/rooms/edit/:roomId" element={<AdminRoomEditor />} />
+          <Route path="/admin/rooms/import" element={<AdminRoomImport />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

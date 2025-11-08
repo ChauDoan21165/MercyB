@@ -1,30 +1,94 @@
 import { PUBLIC_ROOM_MANIFEST } from "./roomManifest";
+import { supabase } from '@/integrations/supabase/client';
 
 export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
-  // Normalize key to include tier suffix
+  console.log('=== loadMergedRoom START ===');
+  console.log('Input roomId:', roomId);
+  console.log('Input tier:', tier);
+
+  // First try to load from database
+  try {
+    const { data: dbRoom, error } = await supabase
+      .from('rooms')
+      .select('*')
+      .eq('id', roomId)
+      .maybeSingle();
+
+    if (dbRoom && !error) {
+      console.log('✅ Room loaded from database:', dbRoom.id);
+      
+      // Transform database format to expected format
+      const keywordMenu = {
+        en: dbRoom.keywords || [],
+        vi: dbRoom.keywords || []
+      };
+
+      const merged = Array.isArray(dbRoom.entries) 
+        ? dbRoom.entries.map((entry: any, idx: number) => {
+            // Extract audio path
+            let audioRaw: any;
+            if (entry?.audio && typeof entry.audio === 'object') {
+              audioRaw = entry.audio.en ?? entry.audio.vi ?? Object.values(entry.audio)[0];
+            } else if (entry?.audio) {
+              audioRaw = entry.audio;
+            }
+
+            let audioPath = audioRaw;
+            if (audioPath) {
+              let p = String(audioPath);
+              p = p.replace(/^\/+/, '').replace(/^public\//, '');
+              p = p.replace(/^audio\/(en|vi)\//, 'audio/');
+              p = p.replace(/^audio\//, '');
+              audioPath = `/audio/${p}`;
+            }
+
+            const keywordEn = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0 
+              ? entry.keywords_en[0] 
+              : entry.slug || `entry-${idx}`;
+            const keywordVi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0 
+              ? entry.keywords_vi[0] 
+              : entry.slug || '';
+
+            return {
+              ...entry,
+              audio: audioPath || undefined,
+              keywordEn,
+              keywordVi,
+              replyEn: entry.copy?.en || '',
+              replyVi: entry.copy?.vi || ''
+            };
+          })
+        : [];
+
+      return {
+        merged,
+        keywordMenu,
+        audioBasePath: '/audio/'
+      };
+    }
+  } catch (dbError) {
+    console.log('⚠️ Database load failed, falling back to static files:', dbError);
+  }
+
+  // Fallback to static JSON files (original logic)
   const hasTier = /(\-|_)(free|vip1|vip2|vip3)$/.test(roomId);
   const normalizedTier = ['free','vip1','vip2','vip3'].includes(tier) ? tier : 'free';
   const manifestKey = hasTier ? roomId.replace(/_/g, '-') : `${roomId.replace(/_/g, '-')}-${normalizedTier}`;
 
   try {
-    // Prefer manifest mapping (flat structure in public/data/)
     const directKey = roomId ? roomId.replace(/_/g, '-') : '';
     const filename = PUBLIC_ROOM_MANIFEST[manifestKey] || (directKey ? PUBLIC_ROOM_MANIFEST[directKey] : undefined);
     let jsonData: any = null;
 
-    // Try multiple filename candidates to handle casing/spacing differences
     const candidates: string[] = [];
     
-    // First priority: Use exact manifest path
     if (filename) {
       candidates.push(`/${encodeURI(filename)}`);
     }
 
-    // Fallback: Generate possible filenames from manifestKey AND direct roomId
     const base = manifestKey.replace(/-/g, '_');
     const directBase = (roomId || '').replace(/-/g, '_');
     
-    // Try common naming patterns in flat structure
     candidates.push(`/data/${base}.json`);
     candidates.push(`/data/${base.toLowerCase()}.json`);
     if (directBase) {
@@ -32,7 +96,6 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       candidates.push(`/data/${directBase.toLowerCase()}.json`);
     }
     
-    // TitleCase variant with lowercase tier: Meaning_Of_Life_free.json
     const parts = base.split('_');
     const tierIndex = parts.findIndex(p => ['free', 'vip1', 'vip2', 'vip3'].includes(p.toLowerCase()));
     
@@ -44,14 +107,12 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       candidates.push(`/data/${titleCaseWithLowerTier}.json`);
     }
     
-    // Full TitleCase variant: Meaning_Of_Life_Free.json
     const titleCase = base
       .split('_')
       .map(w => w.charAt(0).toUpperCase() + w.slice(1))
       .join('_');
     candidates.push(`/data/${titleCase}.json`);
 
-    // Fallback: tiered subdirectories (vip1/vip2/vip3/free)
     if (tierIndex >= 0) {
       const tierFolder = parts[tierIndex].toLowerCase();
       candidates.push(`/data/${tierFolder}/${base}.json`);
@@ -66,18 +127,16 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       candidates.push(`/data/${tierFolder}/${titleCase}.json`);
     }
 
-    // Attempt to fetch each candidate
     for (const path of candidates) {
       try {
         const resp = await fetch(path);
         if (!resp.ok) continue;
-        // Guard: JSON parse may fail if HTML returned
         const text = await resp.text();
         try {
           jsonData = JSON.parse(text);
+          console.log('✅ Room loaded from static file:', path);
           break;
         } catch {
-          // not valid JSON, try next candidate
           continue;
         }
       } catch {
@@ -89,8 +148,6 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       throw new Error(`JSON not found for ${manifestKey} in candidates: ${candidates.join(', ')}`);
     }
 
-    // ALWAYS extract keyword menu from entries for accurate 1:1 mapping
-    // This ensures each keyword in the menu maps to exactly one entry
     let keywordMenu: { en: string[]; vi: string[] } = { en: [], vi: [] };
     
     if (Array.isArray(jsonData?.entries)) {
@@ -115,32 +172,24 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       keywordMenu = { en: enList, vi: viList };
     }
 
-    // Build merged entries and normalize audio path to /audio/ directory
     const merged = Array.isArray(jsonData?.entries) ? (jsonData.entries as any[]).map((entry: any, idx: number) => {
-      // Extract audio from multiple possible locations and normalize to /audio/filename.mp3
       let audioRaw: any;
-      // Handle nested object format: audio: {en: "file.mp3", vi: "file_vi.mp3"}
       if (entry?.audio && typeof entry.audio === 'object') {
         audioRaw = entry.audio.en ?? entry.audio.vi ?? Object.values(entry.audio)[0];
       } else if (entry?.audio) {
         audioRaw = entry.audio;
       }
-      // Handle separate field format: audio_en, audio_vi
       if (!audioRaw) audioRaw = entry?.audio_en || entry?.audio_vi || entry?.meta?.audio_file || entry?.audioFile || entry?.copy?.audio || entry?.content?.audio;
 
       let audioPath = audioRaw;
       if (audioPath) {
         let p = String(audioPath);
-        // Strip leading slashes and public prefix
         p = p.replace(/^\/+/, '').replace(/^public\//, '');
-        // Collapse language folders
         p = p.replace(/^audio\/(en|vi)\//, 'audio/');
-        // Remove 'audio/' prefix; we'll add it consistently
         p = p.replace(/^audio\//, '');
         audioPath = `/audio/${p}`;
       }
 
-      // Extract primary keyword (first keyword from arrays) for matching
       const keywordEn = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0 
         ? entry.keywords_en[0] 
         : (typeof entry.title === 'object' ? entry.title?.en : entry.title) || `entry-${idx}`;
@@ -148,8 +197,6 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
         ? entry.keywords_vi[0] 
         : (typeof entry.title === 'object' ? entry.title?.vi : '') || '';
       
-      // Extract essay/reply content - prioritize essay over copy for richer content
-      // Check for essay first (longer form content), then fall back to copy (shorter form)
       const replyEn = entry.essay?.en || entry.essay_en || 
                       entry.copy?.en || entry.reply_en || entry.content?.en || 
                       entry.content_en || entry.copy_en || '';
