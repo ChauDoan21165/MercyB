@@ -152,14 +152,18 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "weight-loss-and-fitness-vip1": "data/Weight_Loss_And_Fitness_vip1.json",
   "weight-loss-and-fitness-vip2": "data/Weight_Loss_And_Fitness_vip2.json",
   "weight-loss-and-fitness-vip3": "data/Weight_Loss_And_Fitness_vip3.json",
-  // VIP4 Career Path rooms
-  "build-skills-vip4-career-3": "data/Build_Skills_vip4_career_3.json",
-  "build-skills-vip4-career-3-ii": "data/Build_Skills_vip4_career_3_II.json",
+  // VIP4 Career Path rooms (in journey order)
   "discover-self-vip4-career-1": "data/Discover_Self_vip4_career_1.json",
   "explore-world-vip4-career-i-2": "data/Explore_World_vip4_career_I_2.json",
   "explore-world-vip4-career-ii-2": "data/Explore_World_vip4_career_II_2.json",
-  "grow-wealth-vip4-career-6": "data/Grow_Wealth_vip4_career_6.json",
+  "build-skills-vip4-career-3": "data/Build_Skills_vip4_career_3.json",
+  "build-skills-vip4-career-3-ii": "data/Build_Skills_vip4_career_3_II.json",
   "launch-career-vip4-career-4-ii": "data/Launch_Career_vip4_career_4_II.json",
+  // Uncomment when JSON files are created:
+  // "find-fit-vip4-career-5": "data/Find_Fit_vip4_career_5.json",
+  "grow-wealth-vip4-career-6": "data/Grow_Wealth_vip4_career_6.json",
+  // "master-climb-vip4-career-7": "data/Master_Climb_vip4_career_7.json",
+  // "lead-impact-vip4-career-8": "data/Lead_Impact_vip4_career_8.json",
 };
 
 /**
