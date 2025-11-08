@@ -71,8 +71,8 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
   }
 
   // Fallback to static JSON files (original logic)
-  const hasTier = /(\-|_)(free|vip1|vip2|vip3)$/.test(roomId);
-  const normalizedTier = ['free','vip1','vip2','vip3'].includes(tier) ? tier : 'free';
+  const hasTier = /(\-|_)(free|vip1|vip2|vip3|vip4)$/.test(roomId);
+  const normalizedTier = ['free','vip1','vip2','vip3','vip4'].includes(tier) ? tier : 'free';
   const manifestKey = hasTier ? roomId.replace(/_/g, '-') : `${roomId.replace(/_/g, '-')}-${normalizedTier}`;
 
   try {
@@ -97,7 +97,7 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
     }
     
     const parts = base.split('_');
-    const tierIndex = parts.findIndex(p => ['free', 'vip1', 'vip2', 'vip3'].includes(p.toLowerCase()));
+    const tierIndex = parts.findIndex(p => ['free', 'vip1', 'vip2', 'vip3', 'vip4'].includes(p.toLowerCase()));
     
     if (tierIndex > 0) {
       const beforeTier = parts.slice(0, tierIndex)

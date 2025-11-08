@@ -57,7 +57,7 @@ const ChatHub = () => {
   const progress = useRoomProgress(roomId);
   const { trackMessage, trackKeyword, trackCompletion } = useBehaviorTracking(roomId || "");
   const { awardPoints } = usePoints();
-  const { canAccessVIP1, canAccessVIP2, canAccessVIP3, tier, isAdmin, loading: accessLoading } = useUserAccess();
+  const { canAccessVIP1, canAccessVIP2, canAccessVIP3, canAccessVIP4, tier, isAdmin, loading: accessLoading } = useUserAccess();
   const { creditInfo, hasCreditsRemaining, incrementUsage, refreshCredits } = useCredits();
   const [showAccessDenied, setShowAccessDenied] = useState(false);
   const [showCreditLimit, setShowCreditLimit] = useState(false);
@@ -103,14 +103,15 @@ const ChatHub = () => {
         info.tier === 'free' ||
         (info.tier === 'vip1' && canAccessVIP1) ||
         (info.tier === 'vip2' && canAccessVIP2) ||
-        (info.tier === 'vip3' && canAccessVIP3);
+        (info.tier === 'vip3' && canAccessVIP3) ||
+        (info.tier === 'vip4' && canAccessVIP4);
       if (!hasAccess) {
         setShowAccessDenied(true);
       } else {
         setShowAccessDenied(false);
       }
     }
-  }, [accessLoading, info, canAccessVIP1, canAccessVIP2, canAccessVIP3, isAdmin]);
+  }, [accessLoading, info, canAccessVIP1, canAccessVIP2, canAccessVIP3, canAccessVIP4, isAdmin]);
 
   const handleAccessDenied = () => {
     navigate('/');
@@ -668,7 +669,7 @@ const ChatHub = () => {
               <h2 className="text-lg font-semibold">{currentRoom.nameEn}</h2>
               {info && (
                 <Badge variant="secondary" className="text-xs">
-                  {info.tier === 'free' ? 'Free' : info.tier === 'vip1' ? 'VIP 1' : info.tier === 'vip2' ? 'VIP 2' : 'VIP 3'}
+                  {info.tier === 'free' ? 'Free' : info.tier === 'vip1' ? 'VIP 1' : info.tier === 'vip2' ? 'VIP 2' : info.tier === 'vip3' ? 'VIP 3' : 'VIP 4'}
                 </Badge>
               )}
             </div>
