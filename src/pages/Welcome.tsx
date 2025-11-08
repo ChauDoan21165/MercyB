@@ -13,7 +13,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 
 const Welcome = () => {
   const navigate = useNavigate();
-  const { isAdmin, tier, canAccessVIP1, canAccessVIP2, canAccessVIP3 } = useUserAccess();
+  const { isAdmin, tier, canAccessVIP1, canAccessVIP2, canAccessVIP3, canAccessVIP4 } = useUserAccess();
   const [user, setUser] = useState<any>(null);
   const [profile, setProfile] = useState<any>(null);
   const [showUsernameSetup, setShowUsernameSetup] = useState(false);
@@ -268,6 +268,28 @@ const Welcome = () => {
                 {!canAccessVIP3 && (
                   <TooltipContent>
                     <p>Only for VIP3</p>
+                  </TooltipContent>
+                )}
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button 
+                    size="lg"
+                    variant="outline"
+                    className="border-2 border-orange-500 hover:bg-orange-500/10 min-w-[200px]"
+                    onClick={() => canAccessVIP4 ? navigate("/rooms-vip4") : null}
+                    disabled={!canAccessVIP4}
+                  >
+                    <span className="flex flex-col items-center">
+                      <span className="text-base font-semibold">VIP4 CareerZ</span>
+                      <span className="text-sm opacity-90">Tư Vấn Nghề Nghiệp</span>
+                    </span>
+                  </Button>
+                </TooltipTrigger>
+                {!canAccessVIP4 && (
+                  <TooltipContent>
+                    <p>Only for VIP4 - Career Consultance</p>
                   </TooltipContent>
                 )}
               </Tooltip>

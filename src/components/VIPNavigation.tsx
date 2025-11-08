@@ -5,17 +5,18 @@ import { useUserAccess } from '@/hooks/useUserAccess';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
 
 interface VIPNavigationProps {
-  currentPage: 'vip1' | 'vip2' | 'vip3';
+  currentPage: 'vip1' | 'vip2' | 'vip3' | 'vip4';
 }
 
 export const VIPNavigation = ({ currentPage }: VIPNavigationProps) => {
   const navigate = useNavigate();
-  const { isAdmin, canAccessVIP1, canAccessVIP2, canAccessVIP3 } = useUserAccess();
+  const { isAdmin, canAccessVIP1, canAccessVIP2, canAccessVIP3, canAccessVIP4 } = useUserAccess();
 
   const pages = [
     { name: 'vip1', path: '/rooms-vip1', label: 'VIP1', canAccess: canAccessVIP1 },
     { name: 'vip2', path: '/rooms-vip2', label: 'VIP2', canAccess: canAccessVIP2 },
     { name: 'vip3', path: '/rooms-vip3', label: 'VIP3', canAccess: canAccessVIP3 },
+    { name: 'vip4', path: '/rooms-vip4', label: 'VIP4 CareerZ', canAccess: canAccessVIP4 },
   ];
 
   const currentIndex = pages.findIndex(p => p.name === currentPage);

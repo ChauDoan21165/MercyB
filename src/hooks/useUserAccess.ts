@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 
-export type UserTier = 'free' | 'vip1' | 'vip2' | 'vip3';
+export type UserTier = 'free' | 'vip1' | 'vip2' | 'vip3' | 'vip4';
 
 interface UserAccess {
   isAdmin: boolean;
@@ -9,6 +9,7 @@ interface UserAccess {
   canAccessVIP1: boolean;
   canAccessVIP2: boolean;
   canAccessVIP3: boolean;
+  canAccessVIP4: boolean;
   loading: boolean;
 }
 
@@ -19,6 +20,7 @@ export const useUserAccess = (): UserAccess => {
     canAccessVIP1: false,
     canAccessVIP2: false,
     canAccessVIP3: false,
+    canAccessVIP4: false,
     loading: true,
   });
 
@@ -37,6 +39,7 @@ export const useUserAccess = (): UserAccess => {
           canAccessVIP1: false,
           canAccessVIP2: false,
           canAccessVIP3: false,
+          canAccessVIP4: false,
           loading: false,
         });
         return;
@@ -59,16 +62,18 @@ export const useUserAccess = (): UserAccess => {
         .maybeSingle();
 
       const tierName = subscription?.subscription_tiers?.name?.toLowerCase() || 'free';
-      const tier = (tierName.includes('vip1') ? 'vip1' : 
+      const tier = (tierName.includes('vip4') ? 'vip4' :
+                   tierName.includes('vip1') ? 'vip1' : 
                    tierName.includes('vip2') ? 'vip2' : 
                    tierName.includes('vip3') ? 'vip3' : 'free') as UserTier;
 
       setAccess({
         isAdmin,
-        tier: isAdmin ? 'vip3' : tier,
-        canAccessVIP1: isAdmin || tier === 'vip1' || tier === 'vip2' || tier === 'vip3',
-        canAccessVIP2: isAdmin || tier === 'vip2' || tier === 'vip3',
-        canAccessVIP3: isAdmin || tier === 'vip3',
+        tier: isAdmin ? 'vip4' : tier,
+        canAccessVIP1: isAdmin || tier === 'vip1' || tier === 'vip2' || tier === 'vip3' || tier === 'vip4',
+        canAccessVIP2: isAdmin || tier === 'vip2' || tier === 'vip3' || tier === 'vip4',
+        canAccessVIP3: isAdmin || tier === 'vip3' || tier === 'vip4',
+        canAccessVIP4: isAdmin || tier === 'vip4',
         loading: false,
       });
     } catch (error) {
@@ -79,6 +84,7 @@ export const useUserAccess = (): UserAccess => {
         canAccessVIP1: false,
         canAccessVIP2: false,
         canAccessVIP3: false,
+        canAccessVIP4: false,
         loading: false,
       });
     }
