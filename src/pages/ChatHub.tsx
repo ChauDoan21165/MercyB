@@ -428,9 +428,11 @@ const ChatHub = () => {
         return;
       }
 
-      // Normalize to lowercase snake_case, then build URL - no fallback
-      let normalized = message.audioFile.replace(/^\//, '').toLowerCase().replace(/[\s-]+/g, '_');
-      const audioUrl = `/${normalized}`;
+      // Preserve original casing; clean leading slashes and stray public/ prefixes
+      let p = String(message.audioFile).replace(/^\/+/, '').replace(/^public\//, '');
+      p = p.replace(/^audio\/(en|vi)\//, 'audio/');
+      if (!p.startsWith('audio/')) p = `audio/${p}`;
+      const audioUrl = `/${p}`;
       
       const el = audioRef.current;
       if (!el) return;
