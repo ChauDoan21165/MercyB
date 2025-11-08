@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, LayoutDashboard, Users, TrendingUp, MessageSquare, DollarSign, Music, Shield, FileText } from "lucide-react";
+import { LayoutDashboard, Users, TrendingUp, MessageSquare, DollarSign, Music, Shield, FileText } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 import { AdminBreadcrumb } from "@/components/admin/AdminBreadcrumb";
+import { AdminLayout } from "@/components/admin/AdminLayout";
 
 interface DashboardStats {
   totalRooms: number;
@@ -109,20 +109,13 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background p-6">
+    <AdminLayout>
       <div className="max-w-7xl mx-auto">
         <AdminBreadcrumb items={[{ label: "Dashboard" }]} />
         
-        <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" onClick={() => navigate("/")}>
-              <ArrowLeft className="h-5 w-5" />
-            </Button>
-            <div>
-              <h1 className="text-4xl font-bold">Admin Dashboard</h1>
-              <p className="text-muted-foreground mt-1">Manage your application and monitor activity</p>
-            </div>
-          </div>
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold">Admin Dashboard</h1>
+          <p className="text-muted-foreground mt-1">Manage your application and monitor activity</p>
         </div>
 
         {/* Quick Stats */}
@@ -351,7 +344,7 @@ const AdminDashboard = () => {
           </Card>
         </div>
       </div>
-    </div>
+    </AdminLayout>
   );
 };
 
