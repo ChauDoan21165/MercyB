@@ -37,6 +37,7 @@ import FinanceCalmRoom from "./pages/FinanceCalmRoom";
 import AdminRooms from "./pages/AdminRooms";
 import AdminRoomEditor from "./pages/AdminRoomEditor";
 import AdminRoomImport from "./pages/AdminRoomImport";
+import AdminUserRoles from "./pages/AdminUserRoles";
 
 const queryClient = new QueryClient();
 
@@ -82,6 +83,7 @@ const App = () => (
           <Route path="/admin/rooms/new" element={<AdminRoomEditor />} />
           <Route path="/admin/rooms/edit/:roomId" element={<AdminRoomEditor />} />
           <Route path="/admin/rooms/import" element={<AdminRoomImport />} />
+          <Route path="/admin/users" element={<AdminUserRoles />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
