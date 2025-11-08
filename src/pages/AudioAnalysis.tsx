@@ -79,6 +79,14 @@ export default function AudioAnalysis() {
       'Weight_Loss_And_Fitness_Free.json', 'Weight_Loss_And_Fitness_VIP1.json', 'Weight_Loss_And_Fitness_VIP2.json', 'Weight_Loss_And_Fitness_VIP3.json',
       // Women's Health
       'Women_Health_Free.json', 'Women_Health_VIP1.json', 'Women_Health_VIP2.json', 'Women_Health_VIP3.json',
+      // VIP4 Career Rooms (data/)
+      'data/Discover_Self_vip4_career_1.json',
+      'data/Explore_World_vip4_career_I_2.json',
+      'data/Explore_World_vip4_career_II_2.json',
+      'data/Build_Skills_vip4_career_3.json',
+      'data/Build_Skills_vip4_career_3_II.json',
+      'data/Grow_Wealth_vip4_career_6.json',
+      'data/Launch_Career_vip4_career_4_II.json',
     ];
 
     const foundMp3s: Set<string> = new Set();
