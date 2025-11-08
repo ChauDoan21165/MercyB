@@ -184,19 +184,14 @@ const RoomGridVIP4 = () => {
                   onClick={() => !isLocked && navigate(`/chat/${room.id}`)}
                 >
                   {/* Status Badge */}
-                  <div className="absolute top-2 right-2 z-10">
-                    {isLocked ? (
+                  {isLocked && (
+                    <div className="absolute top-2 right-2 z-10">
                       <Badge variant="secondary" className="bg-gray-500/80 text-white gap-1">
                         <Lock className="h-3 w-3" />
                         Locked
                       </Badge>
-                    ) : (
-                      <Badge variant="secondary" className="bg-green-500/80 text-white gap-1">
-                        <Crown className="h-3 w-3" />
-                        Available
-                      </Badge>
-                    )}
-                  </div>
+                    </div>
+                  )}
 
                   <div className="p-6">
                     <div className="flex items-start gap-3 mb-3">
@@ -220,20 +215,13 @@ const RoomGridVIP4 = () => {
                       {room.description}
                     </p>
 
-                    <div className="flex items-center justify-between">
-                      <Badge
-                        variant="outline"
-                        className="text-xs"
-                        style={{ borderColor: roomColor, color: roomColor }}
-                      >
-                        VIP4 CareerZ
-                      </Badge>
-                      {!isLocked && (
-                        <span className="text-xs text-muted-foreground">
-                          Click to explore
-                        </span>
-                      )}
-                    </div>
+                    <Badge
+                      variant="outline"
+                      className="text-xs"
+                      style={{ borderColor: roomColor, color: roomColor }}
+                    >
+                      CareerZ
+                    </Badge>
                   </div>
                 </Card>
               );
