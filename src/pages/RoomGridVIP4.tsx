@@ -202,26 +202,18 @@ const RoomGridVIP4 = () => {
                         <Briefcase className="h-6 w-6" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-bold text-lg mb-1 truncate">
+                        <h3 className="font-bold text-lg mb-1 line-clamp-2 leading-tight">
                           {room.nameEn}
                         </h3>
-                        <p className="text-sm text-muted-foreground truncate">
+                        <p className="text-sm text-muted-foreground line-clamp-2 leading-tight">
                           {room.nameVi}
                         </p>
                       </div>
                     </div>
 
-                    <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
+                    <p className="text-sm text-muted-foreground line-clamp-2">
                       {room.description}
                     </p>
-
-                    <Badge
-                      variant="outline"
-                      className="text-xs"
-                      style={{ borderColor: roomColor, color: roomColor }}
-                    >
-                      CareerZ
-                    </Badge>
                   </div>
                 </Card>
               );
