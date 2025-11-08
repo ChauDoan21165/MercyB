@@ -193,22 +193,14 @@ const RoomGridVIP4 = () => {
                     </div>
                   )}
 
-                  <div className="p-6">
-                    <div className="flex items-start gap-3 mb-3">
-                      <div
-                        className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center text-white text-xl font-bold"
-                        style={{ backgroundColor: roomColor }}
-                      >
-                        <Briefcase className="h-6 w-6" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-bold text-lg mb-1 line-clamp-2 leading-tight">
-                          {room.nameEn}
-                        </h3>
-                        <p className="text-sm text-muted-foreground line-clamp-2 leading-tight">
-                          {room.nameVi}
-                        </p>
-                      </div>
+                  <div className="p-6 space-y-3">
+                    <div className="space-y-2">
+                      <h3 className="font-bold text-lg leading-tight">
+                        {room.nameEn}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-tight">
+                        {room.nameVi}
+                      </p>
                     </div>
 
                     <p className="text-sm text-muted-foreground line-clamp-2">
