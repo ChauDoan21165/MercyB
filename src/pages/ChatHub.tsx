@@ -128,8 +128,8 @@ const ChatHub = () => {
       setMergedEntries([]);
       setMatchedEntryId(null);
       try {
-        // Load merged entries from /public/tiers/{tier}/{room}/ based on tier
-        const result = await loadMergedRoom(roomId || '', tier || 'free');
+        // Load merged entries from /public/tiers/{tier}/{room}/ based on room's tier metadata
+        const result = await loadMergedRoom(roomId || '', info?.tier || 'free');
         setMergedEntries(result.merged);
         setAudioBasePath(result.audioBasePath || '/');
        

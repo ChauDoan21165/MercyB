@@ -34,8 +34,9 @@ export function isValidRoomId(roomId: string | undefined): roomId is string {
  * Gets the tier from a room ID
  */
 export function getRoomTier(roomId: string): RoomTier | null {
-  const tierMatch = roomId.match(/-(free|vip1|vip2|vip3|vip4)$/);
-  return tierMatch ? (tierMatch[1] as RoomTier) : null;
+  // Detect tier segment anywhere in the ID (supports -, _, . separators)
+  const match = roomId.match(/(?:^|[._-])(free|vip1|vip2|vip3|vip4)(?:$|[._-])/i);
+  return match ? (match[1].toLowerCase() as RoomTier) : null;
 }
 
 /**

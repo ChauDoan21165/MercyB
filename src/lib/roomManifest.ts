@@ -151,7 +151,9 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "weight-loss-and-fitness-free": "data/Weight_Loss_And_Fitness_free.json",
   "weight-loss-and-fitness-vip1": "data/Weight_Loss_And_Fitness_vip1.json",
   "weight-loss-and-fitness-vip2": "data/Weight_Loss_And_Fitness_vip2.json",
-  "weight-loss-and-fitness-vip3": "data/Weight_Loss_And_Fitness_vip3.json"
+  "weight-loss-and-fitness-vip3": "data/Weight_Loss_And_Fitness_vip3.json",
+  // VIP4 mappings (incrementally adding as files become available)
+  "launch-career-vip4-career-4-ii": "data/Launch_Career_vip4_career_4_II.json",
 };
 
 /**
@@ -161,7 +163,7 @@ export function getRoomBaseNames(): string[] {
   const baseNames = new Set<string>();
   
   for (const roomId of Object.keys(PUBLIC_ROOM_MANIFEST)) {
-    const baseName = roomId.replace(/-(free|vip1|vip2|vip3)$/, '');
+    const baseName = roomId.replace(/-(free|vip1|vip2|vip3|vip4)$/i, '');
     baseNames.add(baseName);
   }
   
@@ -174,7 +176,7 @@ export function getRoomBaseNames(): string[] {
 export function getAvailableTiers(roomBaseName: string): string[] {
   const tiers: string[] = [];
   
-  for (const tier of ['free', 'vip1', 'vip2', 'vip3']) {
+  for (const tier of ['free', 'vip1', 'vip2', 'vip3', 'vip4']) {
     const roomId = `${roomBaseName}-${tier}`;
     if (PUBLIC_ROOM_MANIFEST[roomId]) {
       tiers.push(tier);
