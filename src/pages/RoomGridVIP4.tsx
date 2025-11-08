@@ -21,10 +21,13 @@ const VIP4_CAREER_ROOMS = [
 
 const RoomGridVIP4 = () => {
   const navigate = useNavigate();
-  const { canAccessVIP4, isAdmin } = useUserAccess();
+  const { canAccessVIP4, isAdmin, loading } = useUserAccess();
   const [rooms, setRooms] = useState<Room[]>([]);
 
   useEffect(() => {
+    // Wait for access check to complete before redirecting
+    if (loading) return;
+    
     // Redirect if no VIP4 access
     if (!canAccessVIP4 && !isAdmin) {
       navigate("/");
@@ -42,7 +45,7 @@ const RoomGridVIP4 = () => {
     });
     
     setRooms(sortedRooms);
-  }, [canAccessVIP4, isAdmin, navigate]);
+  }, [canAccessVIP4, isAdmin, loading, navigate]);
 
   useEffect(() => {
     // Listen for room data updates
@@ -59,6 +62,15 @@ const RoomGridVIP4 = () => {
     window.addEventListener('roomDataUpdated', handleRoomDataUpdate);
     return () => window.removeEventListener('roomDataUpdated', handleRoomDataUpdate);
   }, []);
+
+  // Show loading state while checking access
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center">
+        <p className="text-muted-foreground">Loading... / Đang Tải...</p>
+      </div>
+    );
+  }
 
   if (!canAccessVIP4 && !isAdmin) {
     return null;
