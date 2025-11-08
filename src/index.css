@@ -79,6 +79,13 @@ All colors MUST be HSL.
     --vip3-accent: 207 90% 55%;
     --vip3-gold: 46 90% 55%;
     
+    /* VIP4 colors (same as VIP3 for consistency) - DARK */
+    --page-vip4: 148 65% 18%;
+    --vip4-primary: 148 85% 45%;
+    --vip4-secondary: 177 80% 40%;
+    --vip4-accent: 207 90% 55%;
+    --vip4-gold: 46 90% 55%;
+    
     /* Admin page colors (red-orange to lime gradient from DB2800, DB9600, B3DB00) - DARK */
     --admin-primary: 11 100% 43%;
     --admin-secondary: 41 100% 43%;
@@ -137,6 +144,10 @@ All colors MUST be HSL.
     --page-vip2: 216 70% 35%;
     --page-vip3: 245 70% 35%;
     --vip3-gold: 46 90% 60%;
+    
+    /* VIP4 dark mode - same as VIP3 */
+    --page-vip4: 245 70% 35%;
+    --vip4-gold: 46 90% 60%;
   }
 }
 

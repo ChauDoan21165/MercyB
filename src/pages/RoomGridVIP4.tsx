@@ -66,7 +66,7 @@ const RoomGridVIP4 = () => {
   // Show loading state while checking access
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center" style={{ background: 'hsl(var(--page-vip4))' }}>
         <p className="text-muted-foreground">Loading... / Đang Tải...</p>
       </div>
     );
@@ -86,7 +86,7 @@ const RoomGridVIP4 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip4))' }}>
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="mb-12 text-center space-y-4">
@@ -101,11 +101,11 @@ const RoomGridVIP4 = () => {
           </div>
 
           <div className="flex items-center justify-center gap-3">
-            <Briefcase className="h-12 w-12 text-orange-600" />
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
+            <Briefcase className="h-12 w-12 text-accent" />
+            <h1 className="text-4xl md:text-5xl font-bold" style={{ color: 'hsl(var(--vip4-gold))' }}>
               CareerZ - VIP4
             </h1>
-            <Crown className="h-12 w-12 text-amber-500" />
+            <Crown className="h-12 w-12" style={{ color: 'hsl(var(--vip4-gold))' }} />
           </div>
 
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -133,7 +133,7 @@ const RoomGridVIP4 = () => {
 
         {/* Career Journey Path */}
         <div className="mb-8 text-center">
-          <h2 className="text-2xl font-semibold mb-4 text-orange-700 dark:text-orange-400">
+          <h2 className="text-2xl font-semibold mb-4" style={{ color: 'hsl(var(--vip4-gold))' }}>
             Your Career Journey • Hành Trình Nghề Nghiệp
           </h2>
           <div className="flex flex-wrap justify-center gap-2 text-sm">
