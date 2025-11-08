@@ -9,6 +9,7 @@ import { Pencil, Trash2, Plus, ArrowLeft, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { useUserAccess } from "@/hooks/useUserAccess";
+import { AdminBreadcrumb } from "@/components/admin/AdminBreadcrumb";
 
 interface Room {
   id: string;
@@ -112,7 +113,9 @@ export default function AdminRooms() {
   return (
     <div className="min-h-screen bg-background p-6">
       <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
+        <AdminBreadcrumb items={[{ label: "Room Management" }]} />
+        
+        <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
             <Button
               variant="ghost"

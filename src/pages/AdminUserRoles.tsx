@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Shield, ShieldOff, LayoutDashboard } from "lucide-react";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { Badge } from "@/components/ui/badge";
+import { AdminBreadcrumb } from "@/components/admin/AdminBreadcrumb";
 
 interface Profile {
   id: string;
@@ -145,6 +146,8 @@ export default function AdminUserRoles() {
   return (
     <div className="min-h-screen bg-background p-6">
       <div className="max-w-6xl mx-auto">
+        <AdminBreadcrumb items={[{ label: "User Roles" }]} />
+        
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
             <Button
