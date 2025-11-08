@@ -154,7 +154,7 @@ const RoomGridVIP4 = () => {
         </div>
 
         {/* Room Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 mb-12">
           {rooms.length === 0 ? (
             <div className="col-span-full text-center py-12">
               <p className="text-muted-foreground">
@@ -208,10 +208,10 @@ const RoomGridVIP4 = () => {
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-bold text-lg mb-1 truncate">
-                          {room.name_en}
+                          {room.nameEn}
                         </h3>
                         <p className="text-sm text-muted-foreground truncate">
-                          {room.name_vi}
+                          {room.nameVi}
                         </p>
                       </div>
                     </div>
