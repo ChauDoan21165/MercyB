@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "created_at": "2025-11-08T03:45:00Z",
+    "artifact_version_id": "Launch_Career_vip4_career_4_II",
+    "entry_count": 1,
+    "tier": "vip4",
+    "summary_of": "Launch_Career_vip4_career_4 (File I)",
+    "word_count": 100,
+    "localization": {
+      "i18n_required": true,
+      "i18n_verified": false
+    }
+  },
+  "entries": [
+    {
+      "slug": "careerspark-file-i-summary",
+      "keywords_en": [
+        "career guidance",
+        "future jobs",
+        "no-degree paths",
+        "AI-powered growth"
+      ],
+      "essay_en": "CareerSpark File I spotlights five high-growth, accessible careers for youth aged 14–24. A UX researcher in SF earns $95K decoding user behavior—no psych degree needed. Wind turbine techs climb 300-ft towers for $62K in clean energy, 61% growth. Community health workers bridge care gaps at $48K with a 3-month cert. No-code developers ship MVPs in days for $75K using Bubble, demand up 500%. Sustainability coordinators turn green strategy into $80K corporate roles. All paths require no traditional degree—just skills, hustle, and CareerSpark tools: prototypes, safety labs, CDC scripts, templates, and ESG calculators. From empathy to algorithms, one insight, one climb, or one dashboard launches a future. 170 million new jobs emerge by 2030—CareerSpark ensures youth claim them first.",
+      "audio": {
+        "en": "Launch_Career_vip4_career_4_II_summary_en.mp3"
+      }
+    }
+  ]
+}
