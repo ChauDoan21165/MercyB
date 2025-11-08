@@ -27,6 +27,7 @@ import { messageSchema } from "@/lib/inputValidation";
 import { supabase } from "@/integrations/supabase/client";
 import { roomDataMap } from "@/lib/roomDataImports";
 import { getParentRoute } from "@/lib/routeHelper";
+import { CareerProgressTracker } from "@/components/CareerProgressTracker";
 
 interface Message {
   id: string;
@@ -684,6 +685,12 @@ const ChatHub = () => {
          
           <div className="w-24"></div>
         </div>
+        
+        {/* Career Progress Tracker - Only for VIP4 rooms */}
+        {info?.tier === 'vip4' && roomId && (
+          <CareerProgressTracker currentRoomId={roomId} />
+        )}
+        
         {/* Main Chat Area */}
         <Card className="p-4 shadow-soft">
           <div className="space-y-3">
