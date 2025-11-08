@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Shield, ShieldOff } from "lucide-react";
+import { ArrowLeft, Shield, ShieldOff, LayoutDashboard } from "lucide-react";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { Badge } from "@/components/ui/badge";
 
@@ -145,15 +145,25 @@ export default function AdminUserRoles() {
   return (
     <div className="min-h-screen bg-background p-6">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-center gap-4 mb-6">
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-4">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => navigate("/")}
+            >
+              <ArrowLeft className="h-5 w-5" />
+            </Button>
+            <h1 className="text-3xl font-bold">User Role Management</h1>
+          </div>
           <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/admin/rooms")}
+            variant="outline"
+            className="gap-2"
           >
-            <ArrowLeft className="h-5 w-5" />
+            <LayoutDashboard className="h-4 w-4" />
+            Room Management
           </Button>
-          <h1 className="text-3xl font-bold">User Role Management</h1>
         </div>
 
         <Card className="p-6 mb-6">

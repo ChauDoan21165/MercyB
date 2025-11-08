@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Pencil, Trash2, Plus, ArrowLeft } from "lucide-react";
+import { Pencil, Trash2, Plus, ArrowLeft, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { useUserAccess } from "@/hooks/useUserAccess";
@@ -129,6 +129,14 @@ export default function AdminRooms() {
             </div>
           </div>
           <div className="flex gap-2">
+            <Button
+              onClick={() => navigate("/admin/users")}
+              variant="outline"
+              className="gap-2"
+            >
+              <Users className="h-4 w-4" />
+              User Roles
+            </Button>
             <Button
               onClick={() => navigate("/admin/rooms/import")}
               variant="outline"
