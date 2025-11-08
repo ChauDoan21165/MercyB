@@ -154,5 +154,12 @@ export const roomDataMap: Record<string, RoomData> = {
   "women-health-free": { id: "women-health-free", nameEn: "Women Health", nameVi: "Sức Khỏe Phụ Nữ", tier: "free", hasData: true },
   "women-health-vip1": { id: "women-health-vip1", nameEn: "Women Health", nameVi: "Sức Khỏe Phụ Nữ", tier: "vip1", hasData: true },
   "women-health-vip2": { id: "women-health-vip2", nameEn: "Women Health", nameVi: "Sức Khỏe Phụ Nữ", tier: "vip2", hasData: true },
-  "women-health-vip3": { id: "women-health-vip3", nameEn: "Women Health", nameVi: "Sức Khỏe Phụ Nữ", tier: "vip3", hasData: true }
+  "women-health-vip3": { id: "women-health-vip3", nameEn: "Women Health", nameVi: "Sức Khỏe Phụ Nữ", tier: "vip3", hasData: true },
+  "build-skills-vip4-career-3": { id: "build-skills-vip4-career-3", nameEn: "Build Skills - CareerSpark", nameVi: "Xây Dựng Kỹ Năng - CareerSpark", tier: "vip4", hasData: true },
+  "build-skills-vip4-career-3-ii": { id: "build-skills-vip4-career-3-ii", nameEn: "Build Skills Summary", nameVi: "Tóm Tắt Xây Dựng Kỹ Năng", tier: "vip4", hasData: true },
+  "discover-self-vip4-career-1": { id: "discover-self-vip4-career-1", nameEn: "Discover Self - CareerSpark", nameVi: "Khám Phá Bản Thân - CareerSpark", tier: "vip4", hasData: true },
+  "explore-world-vip4-career-i-2": { id: "explore-world-vip4-career-i-2", nameEn: "Explore World Part I", nameVi: "Khám Phá Thế Giới Phần I", tier: "vip4", hasData: true },
+  "explore-world-vip4-career-ii-2": { id: "explore-world-vip4-career-ii-2", nameEn: "Explore World Part II", nameVi: "Khám Phá Thế Giới Phần II", tier: "vip4", hasData: true },
+  "grow-wealth-vip4-career-6": { id: "grow-wealth-vip4-career-6", nameEn: "Grow Wealth - CareerSpark", nameVi: "Phát Triển Tài Chính - CareerSpark", tier: "vip4", hasData: true },
+  "launch-career-vip4-career-4-ii": { id: "launch-career-vip4-career-4-ii", nameEn: "Launch Career Summary", nameVi: "Tóm Tắt Khởi Nghiệp", tier: "vip4", hasData: true }
 };

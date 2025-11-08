@@ -165,7 +165,7 @@ export interface RoomInfo {
   nameVi: string;
   nameEn: string;
   hasData: boolean;
-  tier: 'free' | 'vip1' | 'vip2' | 'vip3';
+  tier: 'free' | 'vip1' | 'vip2' | 'vip3' | 'vip4';
   dataFile?: string;
 }
 
@@ -207,10 +207,11 @@ function generateRoomInfo(): RoomInfo[] {
     if (roomId.endsWith('-vip1')) tier = 'vip1';
     else if (roomId.endsWith('-vip2')) tier = 'vip2';
     else if (roomId.endsWith('-vip3')) tier = 'vip3';
+    else if (roomId.endsWith('-vip4')) tier = 'vip4';
     
     // Fallback to the tier property if present
     const dataTier = roomData.tier;
-    if (dataTier === 'vip1' || dataTier === 'vip2' || dataTier === 'vip3') {
+    if (dataTier === 'vip1' || dataTier === 'vip2' || dataTier === 'vip3' || dataTier === 'vip4') {
       tier = dataTier;
     }
     
