@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Pencil, Trash2, Plus, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
+import { useUserAccess } from "@/hooks/useUserAccess";
 
 interface Room {
   id: string;
@@ -26,6 +27,7 @@ export default function AdminRooms() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [searchQuery, setSearchQuery] = useState("");
+  const { isAdmin, loading: accessLoading } = useUserAccess();
 
   // Fetch all rooms
   const { data: rooms, isLoading } = useQuery({
@@ -82,6 +84,30 @@ export default function AdminRooms() {
       default: return "bg-gray-500";
     }
   };
+
+  if (accessLoading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <p className="text-muted-foreground">Loading...</p>
+      </div>
+    );
+  }
+
+  if (!isAdmin) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Card className="p-8 max-w-md text-center">
+          <h2 className="text-2xl font-bold mb-4">Access Denied</h2>
+          <p className="text-muted-foreground mb-6">
+            You need admin privileges to access this page.
+          </p>
+          <Button onClick={() => navigate("/")}>
+            Go to Home
+          </Button>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background p-6">
