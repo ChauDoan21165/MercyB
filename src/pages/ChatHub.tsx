@@ -172,23 +172,23 @@ const ChatHub = () => {
   const extractBilingual = (entry: any) => {
     const read = (obj: any, path: string[]) => path.reduce((acc, k) => (acc ? acc[k] : undefined), obj);
     const candidates: Array<[string[], string[]]> = [
-      [["essay","en"],["essay","vi"]],
-      [["copy","en"],["copy","vi"]],
-      [["content","en"],["content","vi"]],
-      [["body","en"],["body","vi"]],
-      [["description","en"],["description","vi"]],
       [["essay_en"],["essay_vi"]],
-      [["copy_en"],["copy_vi"]],
+      [["essay","en"],["essay","vi"]],
       [["content_en"],["content_vi"]],
+      [["content","en"],["content","vi"]],
       [["body_en"],["body_vi"]],
+      [["body","en"],["body","vi"]],
+      [["copy_en"],["copy_vi"]],
+      [["copy","en"],["copy","vi"]],
+      [["description","en"],["description","vi"]],
     ];
     for (const [enP, viP] of candidates) {
       const en = String(read(entry, enP) || '').trim();
       const vi = String(read(entry, viP) || '').trim();
       if (en || vi) return { en, vi };
     }
-    const en = String(entry?.content || entry?.copy || '').trim();
-    return { en, vi: String(entry?.content_vi || entry?.copy_vi || '').trim() };
+    const en = String(entry?.content || entry?.essay || '').trim();
+    return { en, vi: String(entry?.content_vi || entry?.essay_vi || '').trim() };
   };
 
   // Find merged entry by keyword_en match (no fallback to first entry)
