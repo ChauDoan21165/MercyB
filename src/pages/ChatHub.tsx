@@ -21,6 +21,7 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useCredits } from "@/hooks/useCredits";
 import { CreditLimitModal } from "@/components/CreditLimitModal";
 import { CreditsDisplay } from "@/components/CreditsDisplay";
+import { AudioPlayer } from "@/components/AudioPlayer";
 
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { messageSchema } from "@/lib/inputValidation";
@@ -513,25 +514,23 @@ const ChatHub = () => {
                 <div className="max-w-prose mx-auto">
                   <p className="text-base leading-relaxed whitespace-pre-wrap">{englishContent}</p>
                 </div>
+                
+                {/* Audio Player */}
+                {message.audioFile && audioUrl && (
+                  <div className="mt-4 mb-3">
+                    <AudioPlayer
+                      audioPath={audioUrl}
+                      isPlaying={currentAudio === audioUrl && isAudioPlaying}
+                      onPlayPause={handleAudioClick}
+                      onEnded={() => {
+                        setIsAudioPlaying(false);
+                        setCurrentAudio(null);
+                      }}
+                    />
+                  </div>
+                )}
+                
                 <div className="flex gap-2 mt-3 flex-wrap">
-                  {message.audioFile && (
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={handleAudioClick}
-                      disabled={audioLoading}
-                      className="h-8 px-3 gap-1.5"
-                    >
-                      {audioLoading && currentAudio === audioUrl ? (
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                      ) : currentAudio === audioUrl && isAudioPlaying ? (
-                        <span className="text-base">⏸️</span>
-                      ) : (
-                        <Volume2 className="w-4 h-4" />
-                      )}
-                      <span className="text-xs">Audio</span>
-                    </Button>
-                  )}
                   <Button
                     variant="outline"
                     size="sm"
@@ -557,24 +556,22 @@ const ChatHub = () => {
                 <div className="max-w-prose mx-auto">
                   <p className="text-base leading-relaxed whitespace-pre-wrap">{message.text}</p>
                 </div>
-                {!message.isUser && message.audioFile && (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={handleAudioClick}
-                    disabled={audioLoading}
-                    className="mt-2 h-8 px-2 gap-1.5"
-                  >
-                    {audioLoading && currentAudio === audioUrl ? (
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                    ) : currentAudio === audioUrl && isAudioPlaying ? (
-                      <span className="text-base">⏸️</span>
-                    ) : (
-                      <Volume2 className="w-4 h-4" />
-                    )}
-                    <span className="text-xs">Audio</span>
-                  </Button>
+                
+                {/* Audio Player */}
+                {!message.isUser && message.audioFile && audioUrl && (
+                  <div className="mt-4 mb-3">
+                    <AudioPlayer
+                      audioPath={audioUrl}
+                      isPlaying={currentAudio === audioUrl && isAudioPlaying}
+                      onPlayPause={handleAudioClick}
+                      onEnded={() => {
+                        setIsAudioPlaying(false);
+                        setCurrentAudio(null);
+                      }}
+                    />
+                  </div>
                 )}
+                
                 {!message.isUser && <MessageActions text={message.text} roomId={roomId || ""} />}
               </>
             )}
