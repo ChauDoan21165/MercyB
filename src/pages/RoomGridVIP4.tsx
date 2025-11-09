@@ -6,7 +6,8 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useEffect, useState } from "react";
 import { ALL_ROOMS, Room } from "@/lib/roomData";
 import { VIPNavigation } from "@/components/VIPNavigation";
-import { Briefcase, Crown, Lock } from "lucide-react";
+import { Briefcase, Crown, Lock, RefreshCw } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const VIP4_CAREER_ROOMS = [
   { id: "discover-self", color: "#4CAF50", name: "Discover Self" },
@@ -23,6 +24,8 @@ const RoomGridVIP4 = () => {
   const navigate = useNavigate();
   const { canAccessVIP4, isAdmin, loading } = useUserAccess();
   const [rooms, setRooms] = useState<Room[]>([]);
+  const { toast } = useToast();
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   useEffect(() => {
     // Wait for access check to complete before redirecting
@@ -85,12 +88,28 @@ const RoomGridVIP4 = () => {
     return rooms.some(r => r.id === room.id) ? "available" : "locked";
   };
 
+  const handleRefreshRooms = () => {
+    setIsRefreshing(true);
+    toast({
+      title: "Refreshing rooms...",
+      description: "Reloading room registry from files",
+    });
+    
+    // Dispatch the event first
+    window.dispatchEvent(new Event('roomDataUpdated'));
+    
+    // Then reload the page to pick up any new registry changes
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
+  };
+
   return (
     <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip4))' }}>
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="mb-12 text-center space-y-4">
-          <div className="flex items-center justify-center gap-3 mb-4">
+          <div className="flex items-center justify-between mb-4">
             <Button
               variant="ghost"
               onClick={() => navigate("/")}
@@ -98,6 +117,19 @@ const RoomGridVIP4 = () => {
             >
               ← Home / Trang Chủ
             </Button>
+            
+            {isAdmin && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleRefreshRooms}
+                disabled={isRefreshing}
+                className="flex items-center gap-2"
+              >
+                <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+                Refresh Rooms
+              </Button>
+            )}
           </div>
 
           <div className="flex items-center justify-center gap-3">
