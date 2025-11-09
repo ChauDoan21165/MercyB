@@ -85,18 +85,18 @@ export const CareerProgressTracker = ({ currentRoomId }: CareerProgressTrackerPr
   };
 
   return (
-    <Card className="p-4 mb-4 bg-gradient-to-r from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-900 border-orange-200 dark:border-gray-700">
-      <div className="mb-3">
-        <h3 className="text-sm font-semibold text-orange-700 dark:text-orange-400 mb-1">
+    <Card className="p-2 mb-3 bg-gradient-to-r from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-900 border-orange-200 dark:border-gray-700">
+      <div className="mb-1.5">
+        <h3 className="text-xs font-semibold text-orange-700 dark:text-orange-400">
           Career Journey Progress • Hành Trình Nghề Nghiệp
         </h3>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-[10px] text-muted-foreground">
           Step {currentStepIndex + 1} of 8 • Bước {currentStepIndex + 1} trên 8
         </p>
       </div>
       
       {/* Desktop Progress Bar */}
-      <div className="hidden md:flex items-center gap-2">
+      <div className="hidden md:flex items-center gap-1.5">
         {CAREER_JOURNEY.map((step, index) => {
           const isCompleted = index < currentStepIndex;
           const isCurrent = index === currentStepIndex;
