@@ -170,5 +170,6 @@ export const roomDataMap: Record<string, RoomData> = {
   // "lead-impact-vip4-career-8": { id: "lead-impact-vip4-career-8", nameEn: "Lead Impact - CareerSpark", nameVi: "Dẫn Dắt Tác Động - CareerSpark", tier: "vip4", hasData: true },
   // New VIP4 rooms
   "choosing-your-path-vip4": { id: "choosing-your-path-vip4", nameEn: "Choosing Your Path", nameVi: "Chọn Con Đường Của Bạn", tier: "vip4", hasData: true },
-  "find-what-you-love-vip4": { id: "find-what-you-love-vip4", nameEn: "Find What You Love", nameVi: "Tìm Điều Bạn Yêu", tier: "vip4", hasData: true }
+  "find-what-you-love-vip4": { id: "find-what-you-love-vip4", nameEn: "Find What You Love", nameVi: "Tìm Điều Bạn Yêu", tier: "vip4", hasData: true },
+  "know-yourself-deeply-vip4": { id: "know-yourself-deeply-vip4", nameEn: "Know Yourself Deeply", nameVi: "Hiểu Sâu Về Chính Mình", tier: "vip4", hasData: true }
 };

@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "tier": "vip4",
+    "title": {
+      "en": "Know Yourself Deeply",
+      "vi": "Hiểu Sâu Về Chính Mình"
+    },
+    "content": {
+      "en": "The more you understand yourself, the more clearly your path appears. This room invites you to pause, listen inwardly, and reconnect with what truly matters—so the career you choose feels like a natural extension of your soul.",
+      "vi": "Càng hiểu chính mình, con đường càng hiện rõ. Phòng này mời bạn dừng lại, lắng nghe bên trong và kết nối với điều thật sự quan trọng—để nghề bạn chọn trở thành phần tự nhiên của tâm hồn."
+    }
+  },
+  "entries": [
+    {
+      "slug": "self-discovery-journey",
+      "keywords_en": ["self", "reflection", "growth"],
+      "keywords_vi": ["bản thân", "suy ngẫm", "phát triển"],
+      "essay_en": "Knowing yourself is the beginning of every wise path. Spend time observing what energizes you, what drains you, and what quietly stays in your heart. Visit new places—a hospital, a studio, a workshop, a courtroom, a forest—and see which rhythm calls to you. Each moment of curiosity is a mirror. Write about what moves you, not what impresses others. When you meet people who do work you admire, ask them how it feels, not how much it pays. The more you collect experiences, the clearer your compass becomes.",
+      "essay_vi": "Hiểu bản thân là khởi đầu của mọi con đường khôn ngoan. Hãy dành thời gian quan sát điều khiến bạn tràn năng lượng, điều khiến bạn mệt mỏi, và điều vẫn ở lại trong tim. Hãy đến nhiều nơi—bệnh viện, xưởng vẽ, tòa án, rừng, phòng thu—và xem nhịp nào gọi bạn. Mỗi khoảnh khắc tò mò là một tấm gương. Viết ra điều khiến bạn xúc động, không phải điều khiến người khác khen. Khi gặp người làm công việc bạn ngưỡng mộ, hãy hỏi họ cảm thấy thế nào, không phải họ kiếm bao nhiêu. Càng trải nghiệm, la bàn bên trong càng rõ.",
+      "audio_en": "rooms/self_v4_1_en.mp3",
+      "tags": ["reflection", "purpose"]
+    },
+    {
+      "slug": "career-as-self-mirror",
+      "keywords_en": ["career", "identity", "effort"],
+      "keywords_vi": ["nghề nghiệp", "bản sắc", "nỗ lực"],
+      "essay_en": "Choosing a career is not only choosing a job—it's meeting yourself in a deeper way. Through effort and challenge, your values come to light. Some callings are quiet but beautiful: a novelist writing in solitude, a gardener tending silently, a coder shaping invisible worlds. Success doesn't always roar; sometimes it hums softly through peace and fulfillment. What matters is whether your work leaves you more alive when the day ends. Work becomes sacred when it helps you grow into who you truly are.",
+      "essay_vi": "Chọn nghề không chỉ là chọn việc—mà là gặp lại chính mình sâu hơn. Qua nỗ lực và thử thách, giá trị thật hé lộ. Có nghề lặng lẽ nhưng đẹp: nhà văn viết trong cô tịch, người làm vườn chăm thầm lặng, lập trình viên tạo thế giới vô hình. Thành công không luôn ồn ào; đôi khi nó ngân khẽ qua bình an và mãn nguyện. Điều quan trọng là khi hết ngày, bạn thấy mình sống hơn hay cạn đi. Công việc trở nên thiêng khi giúp bạn trưởng thành thành chính mình.",
+      "audio_en": "rooms/self_v4_2_en.mp3",
+      "tags": ["career", "mindfulness"]
+    },
+    {
+      "slug": "inspired-by-stories",
+      "keywords_en": ["inspiration", "story", "memory"],
+      "keywords_vi": ["cảm hứng", "câu chuyện", "ký ức"],
+      "essay_en": "Sometimes a story, a movie, or a moment from childhood holds the seed of your path. Recall characters who stirred something deep inside you—the doctor who healed, the explorer who wandered, the artist who saw beauty in ordinary things. What did you envy in them? What did you feel called to try? Keep a list of such sparks. They are not fantasies but messages from your inner world saying, 'This could be you.' Life leaves clues in wonder, not logic.",
+      "essay_vi": "Đôi khi một câu chuyện, một bộ phim, hay một ký ức tuổi thơ chứa hạt giống con đường bạn. Hãy nhớ lại những nhân vật từng khuấy động trong bạn—bác sĩ chữa lành, người khám phá phiêu du, nghệ sĩ thấy vẻ đẹp trong điều bình thường. Bạn ghen tị điều gì ở họ? Bạn cảm thấy được gọi làm gì? Ghi lại những tia sáng ấy. Chúng không phải mộng tưởng mà là thông điệp từ thế giới bên trong nói: 'Đây có thể là bạn.' Cuộc đời để lại manh mối qua sự kỳ diệu, không qua lý trí.",
+      "audio_en": "rooms/self_v4_3_en.mp3",
+      "tags": ["inspiration", "memory"]
+    },
+    {
+      "slug": "beyond-money",
+      "keywords_en": ["values", "meaning", "balance"],
+      "keywords_vi": ["giá trị", "ý nghĩa", "cân bằng"],
+      "essay_en": "Money matters, but meaning sustains. A career that empties your spirit in exchange for comfort will never feel enough. True wealth is waking up eager to give your energy to something that matters. When you align passion with purpose, even modest success feels rich. Ask not only 'How much will this pay?' but 'Who will I become while doing it?' A life guided by meaning will never feel poor.",
+      "essay_vi": "Tiền quan trọng, nhưng ý nghĩa mới nuôi dưỡng. Một nghề khiến tâm hồn bạn trống rỗng để đổi lấy tiện nghi sẽ không bao giờ đủ. Giàu thật là khi bạn thức dậy háo hức trao năng lượng cho điều có ý nghĩa. Khi đam mê hòa với mục đích, thành công dù nhỏ vẫn thấy đầy. Đừng chỉ hỏi 'Công việc này trả bao nhiêu?' mà hãy hỏi 'Tôi sẽ trở thành ai khi làm nó?' Cuộc đời dẫn bằng ý nghĩa sẽ không bao giờ nghèo.",
+      "audio_en": "rooms/self_v4_4_en.mp3",
+      "tags": ["purpose", "values"]
+    },
+    {
+      "slug": "freedom-to-change",
+      "keywords_en": ["change", "growth", "career path"],
+      "keywords_vi": ["thay đổi", "trưởng thành", "hướng nghiệp"],
+      "essay_en": "You don't have to get it right the first time. Life offers many drafts, not a single script. Changing paths doesn't mean you failed—it means you listened. Each job teaches something: teamwork, patience, creativity, or courage. Don't fear starting again; you're not starting from zero but from experience. Growth often hides in detours. The map of your life is drawn in pencil, not stone.",
+      "essay_vi": "Bạn không cần đúng ngay lần đầu. Cuộc đời cho nhiều bản nháp, không chỉ một kịch bản. Đổi hướng không phải thất bại—mà là biết lắng nghe. Mỗi công việc dạy một điều: hợp tác, kiên nhẫn, sáng tạo, hay dũng cảm. Đừng sợ bắt đầu lại; bạn không khởi đầu từ số không mà từ kinh nghiệm. Sự trưởng thành thường ẩn trong lối rẽ. Bản đồ đời bạn được vẽ bằng bút chì, không phải đá.",
+      "audio_en": "rooms/self_v4_5_en.mp3",
+      "tags": ["growth", "change"]
+    },
+    {
+      "slug": "many-talents",
+      "keywords_en": ["talent", "multipotential", "balance"],
+      "keywords_vi": ["tài năng", "đa tiềm năng", "cân bằng"],
+      "essay_en": "One person can love and do many things well. The heart is wide enough to hold more than one calling. You may be both an artist and a teacher, a caregiver and an entrepreneur, a thinker and a maker. Do not fear variety—it is how your soul explores itself. Each talent enriches the others, forming a mosaic of your life. Some seasons will highlight one role, others another. The goal is not to choose once and close the door, but to keep discovering new ways your gifts can serve.",
+      "essay_vi": "Một người có thể yêu và làm tốt nhiều điều. Trái tim đủ rộng để chứa hơn một tiếng gọi. Bạn có thể vừa là nghệ sĩ vừa là thầy cô, người chăm sóc và doanh nhân, người suy tư và người tạo dựng. Đừng sợ đa dạng—đó là cách tâm hồn khám phá chính nó. Mỗi tài năng bồi đắp tài năng khác, thành bức tranh đời bạn. Có mùa tôn vai này, mùa khác vai kia. Mục tiêu không phải chọn một và đóng cửa, mà là tiếp tục khám phá cách món quà của bạn có thể phụng sự.",
+      "audio_en": "rooms/self_v4_6_en.mp3",
+      "tags": ["talent", "freedom"]
+    },
+    {
+      "slug": "inner-compass",
+      "keywords_en": ["intuition", "decision", "trust"],
+      "keywords_vi": ["trực giác", "quyết định", "tin tưởng"],
+      "essay_en": "Within you is a quiet compass that points toward what feels right. You sense it when time disappears, when you forget to check your phone, when joy feels effortless. Trust that. The world will offer many opinions, but only you can feel your own resonance. Before choosing any path, sit in silence and ask: 'Does this feel like expansion or contraction?' Choose the one that opens you. Your intuition is wiser than fear.",
+      "essay_vi": "Bên trong bạn có chiếc la bàn lặng lẽ chỉ về điều đúng. Bạn cảm nhận khi thời gian biến mất, khi quên nhìn điện thoại, khi niềm vui tự nhiên tràn. Hãy tin điều đó. Thế giới có nhiều ý kiến, nhưng chỉ bạn cảm được rung động của mình. Trước khi chọn đường, hãy ngồi yên và hỏi: 'Điều này khiến tôi mở ra hay co lại?' Hãy chọn điều khiến bạn mở ra. Trực giác bạn khôn ngoan hơn nỗi sợ.",
+      "audio_en": "rooms/self_v4_7_en.mp3",
+      "tags": ["trust", "decision"]
+    },
+    {
+      "slug": "fear-and-courage",
+      "keywords_en": ["fear", "courage", "confidence"],
+      "keywords_vi": ["nỗi sợ", "dũng cảm", "tự tin"],
+      "essay_en": "It's natural to fear making the wrong choice. But fear is not an enemy—it's a signal that you care. Let courage be the movement that happens beside fear, not the absence of it. Every step you take toward your authentic path builds quiet confidence. The brave are not fearless; they simply move anyway. Remember, the door of your future opens from the inside.",
+      "essay_vi": "Sợ chọn sai là tự nhiên. Nhưng sợ không phải kẻ thù—mà là dấu hiệu bạn quan tâm. Hãy để dũng cảm là chuyển động song hành cùng sợ hãi, không phải vắng bóng nó. Mỗi bước bạn tiến về con đường thật đều xây niềm tin thầm lặng. Người dũng cảm không vô úy; họ chỉ vẫn đi. Hãy nhớ, cánh cửa tương lai mở từ bên trong.",
+      "audio_en": "rooms/self_v4_8_en.mp3",
+      "tags": ["courage", "growth"]
+    },
+    {
+      "slug": "meaningful-work",
+      "keywords_en": ["meaning", "purpose", "impact"],
+      "keywords_vi": ["ý nghĩa", "mục đích", "ảnh hưởng"],
+      "essay_en": "Meaningful work isn't only what changes the world—it's what changes you. Whether you build bridges, teach children, or write code, your effort ripples outward in unseen ways. Ask yourself: does this work make me kinder, wiser, more awake? If yes, then it matters. The truest legacy isn't fame, but the quiet transformation of the soul doing what it loves.",
+      "essay_vi": "Công việc có ý nghĩa không chỉ là thứ thay đổi thế giới—mà là điều thay đổi bạn. Dù bạn xây cầu, dạy trẻ hay viết code, nỗ lực bạn lan tỏa âm thầm. Hãy hỏi: công việc này có khiến tôi nhân hậu, sáng suốt, tỉnh thức hơn không? Nếu có, nó quan trọng. Di sản thật không phải danh tiếng, mà là sự chuyển hóa thầm lặng của tâm hồn khi làm điều mình yêu.",
+      "audio_en": "rooms/self_v4_9_en.mp3",
+      "tags": ["meaning", "growth"]
+    },
+    {
+      "slug": "lifelong-learning",
+      "keywords_en": ["learning", "growth", "wisdom"],
+      "keywords_vi": ["học tập", "trưởng thành", "trí tuệ"],
+      "essay_en": "Knowing yourself is not a one-time discovery—it's a lifelong practice. With every decade, you'll shed layers and meet new versions of yourself. Stay curious. Read, travel, listen, ask, reflect. Let humility be your teacher and wonder your companion. The world will keep changing, and so will you. Keep learning who you are becoming. That is the real success story.",
+      "essay_vi": "Hiểu bản thân không phải khám phá một lần—mà là thực hành cả đời. Mỗi thập kỷ, bạn cởi bỏ lớp cũ và gặp phiên bản mới. Hãy luôn tò mò. Đọc, đi, lắng nghe, hỏi, suy ngẫm. Khiêm nhường là thầy, kinh ngạc là bạn. Thế giới thay đổi, bạn cũng vậy. Hãy tiếp tục học về chính mình đang trở thành ai. Đó mới là câu chuyện thành công thật.",
+      "audio_en": "rooms/self_v4_10_en.mp3",
+      "tags": ["learning", "wisdom"]
+    }
+  ]
+}
