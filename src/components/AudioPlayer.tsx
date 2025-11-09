@@ -1,7 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Play, Pause, RotateCcw, Volume2, VolumeX } from "lucide-react";
+import { Play, Pause, RotateCcw, Volume2, VolumeX, Gauge } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface AudioPlayerProps {
   audioPath: string;
@@ -24,8 +30,11 @@ export const AudioPlayer = ({
   const [volume, setVolume] = useState(1);
   const [isMuted, setIsMuted] = useState(false);
   const [previousVolume, setPreviousVolume] = useState(1);
+  const [playbackSpeed, setPlaybackSpeed] = useState(1);
   const audioRef = useRef<HTMLAudioElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
+
+  const speedOptions = [0.5, 0.75, 1, 1.25, 1.5, 2];
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -76,6 +85,13 @@ export const AudioPlayer = ({
 
     audio.volume = isMuted ? 0 : volume;
   }, [volume, isMuted]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    audio.playbackRate = playbackSpeed;
+  }, [playbackSpeed]);
 
   const formatTime = (time: number) => {
     if (isNaN(time)) return "0:00";
@@ -205,6 +221,34 @@ export const AudioPlayer = ({
           className="w-20 h-1 bg-secondary rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-moz-range-thumb]:w-3 [&::-moz-range-thumb]:h-3 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-primary [&::-moz-range-thumb]:border-0"
         />
       </div>
+
+      {/* Playback Speed */}
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button
+            size="sm"
+            variant="ghost"
+            className="h-8 px-2 shrink-0 text-xs font-medium"
+          >
+            <Gauge className="h-4 w-4 mr-1" />
+            {playbackSpeed}x
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end" className="bg-background border z-50">
+          {speedOptions.map((speed) => (
+            <DropdownMenuItem
+              key={speed}
+              onClick={() => setPlaybackSpeed(speed)}
+              className={cn(
+                "cursor-pointer",
+                playbackSpeed === speed && "bg-accent"
+              )}
+            >
+              {speed}x {speed === 1 && "(Normal)"}
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
   );
 };
