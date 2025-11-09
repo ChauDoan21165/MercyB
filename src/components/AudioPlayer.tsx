@@ -1,0 +1,157 @@
+import { useState, useEffect, useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { Play, Pause, RotateCcw } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+interface AudioPlayerProps {
+  audioPath: string;
+  isPlaying: boolean;
+  onPlayPause: () => void;
+  onEnded: () => void;
+  className?: string;
+}
+
+export const AudioPlayer = ({ 
+  audioPath, 
+  isPlaying, 
+  onPlayPause, 
+  onEnded,
+  className 
+}: AudioPlayerProps) => {
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    audio.src = audioPath;
+
+    const handleTimeUpdate = () => {
+      if (!isDragging) {
+        setCurrentTime(audio.currentTime);
+      }
+    };
+
+    const handleLoadedMetadata = () => {
+      setDuration(audio.duration);
+    };
+
+    const handleEnded = () => {
+      setCurrentTime(0);
+      onEnded();
+    };
+
+    audio.addEventListener('timeupdate', handleTimeUpdate);
+    audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+    audio.addEventListener('ended', handleEnded);
+
+    return () => {
+      audio.removeEventListener('timeupdate', handleTimeUpdate);
+      audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      audio.removeEventListener('ended', handleEnded);
+    };
+  }, [audioPath, isDragging, onEnded]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (isPlaying) {
+      audio.play().catch(console.error);
+    } else {
+      audio.pause();
+    }
+  }, [isPlaying]);
+
+  const formatTime = (time: number) => {
+    if (isNaN(time)) return "0:00";
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
+
+  const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const audio = audioRef.current;
+    const progressBar = progressBarRef.current;
+    if (!audio || !progressBar) return;
+
+    const rect = progressBar.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const percentage = clickX / rect.width;
+    const newTime = percentage * duration;
+    
+    audio.currentTime = newTime;
+    setCurrentTime(newTime);
+  };
+
+  const handleReplay = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    
+    audio.currentTime = 0;
+    setCurrentTime(0);
+    if (!isPlaying) {
+      onPlayPause();
+    }
+  };
+
+  const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
+
+  return (
+    <div className={cn("flex items-center gap-2 w-full", className)}>
+      <audio ref={audioRef} />
+      
+      {/* Play/Pause Button */}
+      <Button
+        onClick={onPlayPause}
+        size="sm"
+        variant="ghost"
+        className="h-8 w-8 p-0 shrink-0"
+      >
+        {isPlaying ? (
+          <Pause className="h-4 w-4" />
+        ) : (
+          <Play className="h-4 w-4" />
+        )}
+      </Button>
+
+      {/* Time Display */}
+      <span className="text-xs text-muted-foreground shrink-0 w-12">
+        {formatTime(currentTime)}
+      </span>
+
+      {/* Progress Bar */}
+      <div
+        ref={progressBarRef}
+        onClick={handleProgressClick}
+        className="flex-1 h-2 bg-secondary rounded-full cursor-pointer relative group"
+      >
+        <div
+          className="h-full bg-primary rounded-full transition-all duration-100 relative"
+          style={{ width: `${progress}%` }}
+        >
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+        </div>
+      </div>
+
+      {/* Duration */}
+      <span className="text-xs text-muted-foreground shrink-0 w-12">
+        {formatTime(duration)}
+      </span>
+
+      {/* Replay Button */}
+      <Button
+        onClick={handleReplay}
+        size="sm"
+        variant="ghost"
+        className="h-8 w-8 p-0 shrink-0"
+      >
+        <RotateCcw className="h-4 w-4" />
+      </Button>
+    </div>
+  );
+};

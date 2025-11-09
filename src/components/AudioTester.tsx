@@ -3,8 +3,9 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
-import { Play, Pause, CheckCircle, XCircle, Loader2, Volume2 } from "lucide-react";
+import { CheckCircle, XCircle, Loader2, Volume2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { AudioPlayer } from "./AudioPlayer";
 
 interface AudioFile {
   slug: string;
@@ -172,34 +173,22 @@ export const AudioTester = () => {
     setRooms([...updatedRooms]);
   };
 
-  const playAudio = async (roomIndex: number, audioIndex: number) => {
+  const toggleAudio = (roomIndex: number, audioIndex: number) => {
     const audioFile = rooms[roomIndex].audioFiles[audioIndex];
+    const audioKey = `${roomIndex}-${audioIndex}`;
     
-    if (currentlyPlaying === audioFile.audioPath) {
-      audioRef.current?.pause();
+    if (currentlyPlaying === audioKey) {
       setCurrentlyPlaying(null);
-      return;
+    } else {
+      setCurrentlyPlaying(audioKey);
     }
+  };
 
-    try {
-      let audioPath = audioFile.audioPath;
-      audioPath = audioPath.replace(/^\/audio\//, '');
-      audioPath = audioPath.replace(/^audio\//, '');
-      
-      const fullPath = `/audio/${audioPath}`;
-      
-      if (audioRef.current) {
-        audioRef.current.src = fullPath;
-        await audioRef.current.play();
-        setCurrentlyPlaying(audioFile.audioPath);
-      }
-    } catch (error) {
-      toast({
-        title: "Playback Error",
-        description: `Failed to play: ${audioFile.audioPath}`,
-        variant: "destructive"
-      });
-    }
+  const getAudioPath = (audioPath: string) => {
+    let cleanPath = audioPath;
+    cleanPath = cleanPath.replace(/^\/audio\//, '');
+    cleanPath = cleanPath.replace(/^audio\//, '');
+    return `/audio/${cleanPath}`;
   };
 
   const testAllInRoom = async (roomIndex: number) => {
@@ -267,7 +256,6 @@ export const AudioTester = () => {
 
   return (
     <div className="space-y-4 p-4">
-      <audio ref={audioRef} onEnded={() => setCurrentlyPlaying(null)} />
       
       <div className="flex items-center justify-between">
         <div>
@@ -362,30 +350,27 @@ export const AudioTester = () => {
                           )}
                         </div>
 
-                        <div className="flex items-center gap-2">
-                          <Button
-                            onClick={() => testAudioFile(roomIdx, audioIdx)}
-                            size="sm"
-                            variant="outline"
-                            disabled={audio.status === 'loading'}
-                          >
-                            {audio.status === 'loading' ? 'Testing...' : 'Test'}
-                          </Button>
-                          {audio.status === 'success' && (
-                            <Button
-                              onClick={() => playAudio(roomIdx, audioIdx)}
-                              size="sm"
-                              variant={currentlyPlaying === audio.audioPath ? "default" : "outline"}
-                            >
-                              {currentlyPlaying === audio.audioPath ? (
-                                <Pause className="h-4 w-4" />
-                              ) : (
-                                <Play className="h-4 w-4" />
-                              )}
-                            </Button>
-                          )}
-                        </div>
+                        <Button
+                          onClick={() => testAudioFile(roomIdx, audioIdx)}
+                          size="sm"
+                          variant="outline"
+                          disabled={audio.status === 'loading'}
+                        >
+                          {audio.status === 'loading' ? 'Testing...' : 'Test'}
+                        </Button>
                       </div>
+
+                      {/* Audio Player Bar */}
+                      {audio.status === 'success' && (
+                        <div className="pl-7">
+                          <AudioPlayer
+                            audioPath={getAudioPath(audio.audioPath)}
+                            isPlaying={currentlyPlaying === `${roomIdx}-${audioIdx}`}
+                            onPlayPause={() => toggleAudio(roomIdx, audioIdx)}
+                            onEnded={() => setCurrentlyPlaying(null)}
+                          />
+                        </div>
+                      )}
 
                       {/* Essay Content */}
                       {(audio.essay_en || audio.essay_vi) && (
