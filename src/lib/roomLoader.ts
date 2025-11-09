@@ -78,7 +78,7 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
   }
 
   // Fallback to static JSON files (original logic)
-  const hasTier = /(\-|_)(free|vip1|vip2|vip3|vip4)$/.test(roomId);
+  const hasTier = /(\-|_)(free|vip1|vip2|vip3|vip4)($|\-)/.test(roomId);
   const normalizedTier = ['free','vip1','vip2','vip3','vip4'].includes(tier) ? tier : 'free';
   const manifestKey = hasTier ? roomId.replace(/_/g, '-') : `${roomId.replace(/_/g, '-')}-${normalizedTier}`;
 
