@@ -405,6 +405,8 @@ const ChatHub = () => {
   }, [mainMessages]);
 
   const MessageBubble = ({ message }: { message: Message }) => {
+    const [showVietnamese, setShowVietnamese] = useState(true);
+    
     // Split content to display English and Vietnamese separately
     const parts = message.text.split(/\n+---\n+/);
     const englishContent = parts[0]?.trim() || message.text;
@@ -500,7 +502,7 @@ const ChatHub = () => {
       <div className={`flex ${message.isUser ? "justify-end" : "justify-start"} mb-4`}>
         <div className="w-full group">
           <div
-            className={`rounded-2xl px-4 py-3 ${
+            className={`rounded-2xl px-6 py-4 ${
               message.isUser
                 ? "bg-gradient-to-br from-primary to-primary-glow text-primary-foreground"
                 : "bg-card border shadow-sm"
@@ -508,33 +510,53 @@ const ChatHub = () => {
           >
             {!message.isUser && vietnameseContent ? (
               <>
-                <p className="text-sm whitespace-pre-wrap">{englishContent}</p>
-                {message.audioFile && (
+                <div className="max-w-prose mx-auto">
+                  <p className="text-base leading-relaxed whitespace-pre-wrap">{englishContent}</p>
+                </div>
+                <div className="flex gap-2 mt-3 flex-wrap">
+                  {message.audioFile && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={handleAudioClick}
+                      disabled={audioLoading}
+                      className="h-8 px-3 gap-1.5"
+                    >
+                      {audioLoading && currentAudio === audioUrl ? (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      ) : currentAudio === audioUrl && isAudioPlaying ? (
+                        <span className="text-base">⏸️</span>
+                      ) : (
+                        <Volume2 className="w-4 h-4" />
+                      )}
+                      <span className="text-xs">Audio</span>
+                    </Button>
+                  )}
                   <Button
-                    variant="ghost"
+                    variant="outline"
                     size="sm"
-                    onClick={handleAudioClick}
-                    disabled={audioLoading}
-                    className="mt-2 h-8 px-2 gap-1.5"
+                    onClick={() => setShowVietnamese(!showVietnamese)}
+                    className="h-8 px-3 gap-1.5"
                   >
-                    {audioLoading && currentAudio === audioUrl ? (
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                    ) : currentAudio === audioUrl && isAudioPlaying ? (
-                      <span className="text-base">⏸️</span>
-                    ) : (
-                      <Volume2 className="w-4 h-4" />
-                    )}
-                    <span className="text-xs">Audio</span>
+                    <span className="text-xs">{showVietnamese ? '🇻🇳 Hide' : '🇻🇳 Show'}</span>
                   </Button>
-                )}
+                </div>
                 {!message.isUser && <MessageActions text={englishContent} roomId={roomId || ""} />}
-                <hr className="border-border my-3" />
-                <p className="text-sm whitespace-pre-wrap">{vietnameseContent}</p>
-                {!message.isUser && <MessageActions text={vietnameseContent} roomId={roomId || ""} />}
+                {showVietnamese && (
+                  <>
+                    <hr className="border-border my-4" />
+                    <div className="max-w-prose mx-auto">
+                      <p className="text-base leading-relaxed whitespace-pre-wrap">{vietnameseContent}</p>
+                    </div>
+                    {!message.isUser && <MessageActions text={vietnameseContent} roomId={roomId || ""} />}
+                  </>
+                )}
               </>
             ) : (
               <>
-                <p className="text-sm whitespace-pre-wrap">{message.text}</p>
+                <div className="max-w-prose mx-auto">
+                  <p className="text-base leading-relaxed whitespace-pre-wrap">{message.text}</p>
+                </div>
                 {!message.isUser && message.audioFile && (
                   <Button
                     variant="ghost"
