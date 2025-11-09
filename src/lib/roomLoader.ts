@@ -199,7 +199,7 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
 
       const keywordEn = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0 
         ? entry.keywords_en[0] 
-        : (typeof entry.title === 'object' ? entry.title?.en : entry.title) || `entry-${idx}`;
+        : (typeof entry.title === 'object' ? entry.title?.en : entry.title) || entry.slug || `entry-${idx}`;
       const keywordVi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0 
         ? entry.keywords_vi[0] 
         : (typeof entry.title === 'object' ? entry.title?.vi : '') || '';

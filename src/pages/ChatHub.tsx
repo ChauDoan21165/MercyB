@@ -198,8 +198,15 @@ const ChatHub = () => {
 
     const by = (s: any) => norm(String(s || ''));
 
+    // 0) Exact match on slug
+    let entry = mergedEntries.find(e => by(e.slug) === k);
+    if (entry) {
+      setMatchedEntryId(entry.slug || entry.keywordEn);
+      return entry;
+    }
+
     // 1) Exact match on keywordEn (first keyword in entry)
-    let entry = mergedEntries.find(e => by(e.keywordEn) === k);
+    entry = mergedEntries.find((e: any) => by(e.keywordEn) === k);
     if (entry) {
       setMatchedEntryId(entry.slug || entry.keywordEn);
       return entry;
@@ -694,9 +701,9 @@ const ChatHub = () => {
         )}
         
         {/* Main Chat Area */}
-        <Card className="p-4 shadow-soft bg-blue-50/30 dark:bg-blue-950/20 border-blue-100 dark:border-blue-900/30">
+        <Card className="p-4 shadow-soft bg-green-50/30 dark:bg-green-950/20 border-green-100 dark:border-green-900/30">
           <div className="space-y-3">
-            <ScrollArea className="h-[500px] pr-4" ref={mainScrollRef}>
+            <ScrollArea className="h-[560px] pr-4" ref={mainScrollRef}>
               <WelcomeBack lastRoomId={progress.lastVisit} currentRoomId={roomId || ""} />
              
               {/* Show welcome message first */}
