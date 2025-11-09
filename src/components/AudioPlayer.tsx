@@ -40,6 +40,10 @@ export const AudioPlayer = ({
     const audio = audioRef.current;
     if (!audio) return;
 
+    // Stop and reset previous audio before loading new one
+    audio.pause();
+    audio.currentTime = 0;
+    setCurrentTime(0);
     audio.src = audioPath;
 
     const handleTimeUpdate = () => {
