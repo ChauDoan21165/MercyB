@@ -169,7 +169,7 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
         const titleViText = typeof entry.title === 'object' ? entry.title?.vi : '';
         const vi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0
           ? String(entry.keywords_vi[0])
-          : titleViText;
+          : (titleViText || entry.slug || '');
         if (en) {
           enList.push(en);
           viList.push(vi);
@@ -202,7 +202,7 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
         : (typeof entry.title === 'object' ? entry.title?.en : entry.title) || entry.slug || `entry-${idx}`;
       const keywordVi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0 
         ? entry.keywords_vi[0] 
-        : (typeof entry.title === 'object' ? entry.title?.vi : '') || '';
+        : (typeof entry.title === 'object' ? entry.title?.vi : '') || entry.slug || '';
       
       const replyEn = entry.essay_en || entry.essay?.en || 
                       entry.copy?.en || entry.content?.en || 
