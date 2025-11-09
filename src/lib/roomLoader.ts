@@ -49,13 +49,20 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
               ? entry.keywords_vi[0] 
               : entry.slug || '';
 
+            const replyEn = entry.essay_en || entry.essay?.en || 
+                            entry.copy?.en || entry.content?.en || 
+                            entry.copy_en || entry.content_en || '';
+            const replyVi = entry.essay_vi || entry.essay?.vi || 
+                            entry.copy?.vi || entry.content?.vi || 
+                            entry.copy_vi || entry.content_vi || '';
+
             return {
               ...entry,
               audio: audioPath || undefined,
               keywordEn,
               keywordVi,
-              replyEn: entry.copy?.en || '',
-              replyVi: entry.copy?.vi || ''
+              replyEn,
+              replyVi
             };
           })
         : [];
@@ -197,12 +204,12 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
         ? entry.keywords_vi[0] 
         : (typeof entry.title === 'object' ? entry.title?.vi : '') || '';
       
-      const replyEn = entry.essay?.en || entry.essay_en || 
-                      entry.copy?.en || entry.reply_en || entry.content?.en || 
-                      entry.content_en || entry.copy_en || '';
-      const replyVi = entry.essay?.vi || entry.essay_vi || 
-                      entry.copy?.vi || entry.reply_vi || entry.content?.vi || 
-                      entry.content_vi || entry.copy_vi || '';
+      const replyEn = entry.essay_en || entry.essay?.en || 
+                      entry.copy?.en || entry.content?.en || 
+                      entry.copy_en || entry.content_en || '';
+      const replyVi = entry.essay_vi || entry.essay?.vi || 
+                      entry.copy?.vi || entry.content?.vi || 
+                      entry.copy_vi || entry.content_vi || '';
       
       return {
         ...entry,
