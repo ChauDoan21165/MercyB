@@ -12,6 +12,8 @@ interface AudioFile {
   language: string;
   status: 'pending' | 'loading' | 'success' | 'error';
   error?: string;
+  essay_en?: string;
+  essay_vi?: string;
 }
 
 interface RoomAudio {
@@ -94,7 +96,9 @@ export const AudioTester = () => {
                   slug: entry.slug,
                   audioPath: entry.audio,
                   language: 'en',
-                  status: 'pending'
+                  status: 'pending',
+                  essay_en: entry.essay_en,
+                  essay_vi: entry.essay_vi
                 });
               } else if (typeof entry.audio === 'object') {
                 Object.entries(entry.audio).forEach(([lang, path]) => {
@@ -102,7 +106,9 @@ export const AudioTester = () => {
                     slug: entry.slug,
                     audioPath: path as string,
                     language: lang,
-                    status: 'pending'
+                    status: 'pending',
+                    essay_en: entry.essay_en,
+                    essay_vi: entry.essay_vi
                   });
                 });
               }
@@ -332,52 +338,72 @@ export const AudioTester = () => {
                   {room.audioFiles.map((audio, audioIdx) => (
                     <div
                       key={`${audio.slug}-${audio.language}`}
-                      className="flex items-center gap-3 p-2 rounded border bg-card hover:bg-accent/50 transition-colors"
+                      className="flex flex-col gap-3 p-3 rounded border bg-card"
                     >
-                      {getStatusIcon(audio.status)}
-                      
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2">
-                          <span className="text-sm font-medium truncate">
-                            {audio.slug}
-                          </span>
-                          <Badge variant="secondary" className="text-xs">
-                            {audio.language}
-                          </Badge>
-                        </div>
-                        <div className="text-xs text-muted-foreground truncate">
-                          {audio.audioPath}
-                        </div>
-                        {audio.error && (
-                          <div className="text-xs text-red-500 mt-1">
-                            Error: {audio.error}
+                      <div className="flex items-center gap-3">
+                        {getStatusIcon(audio.status)}
+                        
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2">
+                            <span className="text-sm font-medium truncate">
+                              {audio.slug}
+                            </span>
+                            <Badge variant="secondary" className="text-xs">
+                              {audio.language}
+                            </Badge>
                           </div>
-                        )}
+                          <div className="text-xs text-muted-foreground truncate">
+                            {audio.audioPath}
+                          </div>
+                          {audio.error && (
+                            <div className="text-xs text-red-500 mt-1">
+                              Error: {audio.error}
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          <Button
+                            onClick={() => testAudioFile(roomIdx, audioIdx)}
+                            size="sm"
+                            variant="outline"
+                            disabled={audio.status === 'loading'}
+                          >
+                            {audio.status === 'loading' ? 'Testing...' : 'Test'}
+                          </Button>
+                          {audio.status === 'success' && (
+                            <Button
+                              onClick={() => playAudio(roomIdx, audioIdx)}
+                              size="sm"
+                              variant={currentlyPlaying === audio.audioPath ? "default" : "outline"}
+                            >
+                              {currentlyPlaying === audio.audioPath ? (
+                                <Pause className="h-4 w-4" />
+                              ) : (
+                                <Play className="h-4 w-4" />
+                              )}
+                            </Button>
+                          )}
+                        </div>
                       </div>
 
-                      <div className="flex items-center gap-2">
-                        <Button
-                          onClick={() => testAudioFile(roomIdx, audioIdx)}
-                          size="sm"
-                          variant="outline"
-                          disabled={audio.status === 'loading'}
-                        >
-                          {audio.status === 'loading' ? 'Testing...' : 'Test'}
-                        </Button>
-                        {audio.status === 'success' && (
-                          <Button
-                            onClick={() => playAudio(roomIdx, audioIdx)}
-                            size="sm"
-                            variant={currentlyPlaying === audio.audioPath ? "default" : "outline"}
-                          >
-                            {currentlyPlaying === audio.audioPath ? (
-                              <Pause className="h-4 w-4" />
-                            ) : (
-                              <Play className="h-4 w-4" />
-                            )}
-                          </Button>
-                        )}
-                      </div>
+                      {/* Essay Content */}
+                      {(audio.essay_en || audio.essay_vi) && (
+                        <div className="pl-7 space-y-2 text-sm border-l-2 border-primary/20">
+                          {audio.essay_en && (
+                            <div className="space-y-1">
+                              <span className="text-xs font-medium text-muted-foreground">EN:</span>
+                              <p className="text-foreground">{audio.essay_en}</p>
+                            </div>
+                          )}
+                          {audio.essay_vi && (
+                            <div className="space-y-1">
+                              <span className="text-xs font-medium text-muted-foreground">VI:</span>
+                              <p className="text-foreground">{audio.essay_vi}</p>
+                            </div>
+                          )}
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
