@@ -718,11 +718,6 @@ const ChatHub = () => {
           <div className="w-24"></div>
         </div>
         
-        {/* Career Progress Tracker - Only for VIP4 rooms */}
-        {info?.tier === 'vip4' && roomId && (
-          <CareerProgressTracker currentRoomId={roomId} />
-        )}
-        
         {/* Main Chat Area */}
         <Card className="p-4 shadow-soft bg-card border border-border">
           <div className="space-y-3">
