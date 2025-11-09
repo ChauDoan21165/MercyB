@@ -67,7 +67,7 @@ const ChatHub = () => {
   const [currentAudio, setCurrentAudio] = useState<string | null>(null);
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [audioLoading, setAudioLoading] = useState(false);
-  const audioRef = useRef<HTMLAudioElement>(null);
+  
   const [keywordMenu, setKeywordMenu] = useState<{ en: string[]; vi: string[] } | null>(null);
   const [clickedKeyword, setClickedKeyword] = useState<string | null>(null);
   const [mergedEntries, setMergedEntries] = useState<any[]>([]);
@@ -428,75 +428,19 @@ const ChatHub = () => {
         return;
       }
 
-      const filename = String(message.audioFile).replace(/^\//, '').trim();
-      if (!filename || filename === 'undefined' || filename === 'null') {
-        toast({
-          title: "Audio unavailable / Âm thanh không có",
-          description: "Invalid audio file / File âm thanh không hợp lệ",
-          variant: "destructive"
-        });
-        return;
-      }
-
-      // Preserve original casing; clean leading slashes and stray public/ prefixes
+      // Normalize path
       let p = String(message.audioFile).replace(/^\/+/, '').replace(/^public\//, '');
       p = p.replace(/^audio\/(en|vi)\//, 'audio/');
       if (!p.startsWith('audio/')) p = `audio/${p}`;
-      const audioUrl = `/${p}`;
-      
-      const el = audioRef.current;
-      if (!el) return;
+      const url = `/${p}`;
 
-      // If this audio is currently playing, pause it
-      if (currentAudio === audioUrl && isAudioPlaying) {
-        el.pause();
-        setIsAudioPlaying(false);
-        return;
+      // Toggle or switch track; Audio element is managed inside AudioPlayer
+      if (currentAudio === url) {
+        setIsAudioPlaying(!isAudioPlaying);
+      } else {
+        setCurrentAudio(url);
+        setIsAudioPlaying(true);
       }
-
-      // If this audio is paused, resume it
-      if (currentAudio === audioUrl && !isAudioPlaying) {
-        el.play()
-          .then(() => setIsAudioPlaying(true))
-          .catch(err => {
-            console.error('Audio resume error:', err);
-            toast({
-              title: "Audio unavailable / Âm thanh không có",
-              description: `Cannot play: ${filename}`,
-              variant: "destructive"
-            });
-          });
-        return;
-      }
-
-      // Otherwise, load and play new audio
-      console.log('=== AUDIO DEBUG ===');
-      console.log('Keyword clicked or message:', clickedKeyword);
-      console.log('Audio file from entry:', message.audioFile);
-      console.log('Processed filename:', p);
-      console.log('Final audio URL:', audioUrl);
-      console.log('==================');
-      
-      setCurrentAudio(audioUrl);
-      setAudioLoading(true);
-      el.src = audioUrl;
-      el.load();
-      el.currentTime = 0;
-      el.play()
-        .then(() => {
-          setAudioLoading(false);
-          setIsAudioPlaying(true);
-        })
-        .catch(err => {
-          console.error('Audio playback error:', err);
-          setAudioLoading(false);
-          setIsAudioPlaying(false);
-          toast({
-            title: "Audio unavailable / Âm thanh không có",
-            description: `Cannot play: ${filename}`,
-            variant: "destructive"
-          });
-        });
     };
 
     return (
@@ -537,7 +481,7 @@ const ChatHub = () => {
                     onClick={() => setShowVietnamese(!showVietnamese)}
                     className="h-8 px-3 gap-1.5"
                   >
-                    <span className="text-xs">{showVietnamese ? '🇻🇳 Hide' : '🇻🇳 Show'}</span>
+                    <span className="text-xs">🇻🇳</span>
                   </Button>
                 </div>
                 {!message.isUser && <MessageActions text={englishContent} roomId={roomId || ""} />}

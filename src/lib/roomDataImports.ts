@@ -155,6 +155,7 @@ export const roomDataMap: Record<string, RoomData> = {
   "women-health-vip1": { id: "women-health-vip1", nameEn: "Women Health", nameVi: "Sức Khỏe Phụ Nữ", tier: "vip1", hasData: true },
   "women-health-vip2": { id: "women-health-vip2", nameEn: "Women Health", nameVi: "Sức Khỏe Phụ Nữ", tier: "vip2", hasData: true },
   "women-health-vip3": { id: "women-health-vip3", nameEn: "Women Health", nameVi: "Sức Khỏe Phụ Nữ", tier: "vip3", hasData: true },
+  "career-consultant-free": { id: "career-consultant-free", nameEn: "Career Consultant Free", nameVi: "Chuyên Gia Định Hướng Nghề Nghiệp Miễn Phí", tier: "free", hasData: true },
   // VIP4 Career Path Rooms (in journey order)
   "discover-self-vip4-career-1": { id: "discover-self-vip4-career-1", nameEn: "Discover Self", nameVi: "Khám Phá Bản Thân", tier: "vip4", hasData: true },
   "explore-world-vip4-career-i-2": { id: "explore-world-vip4-career-i-2", nameEn: "Explore World I", nameVi: "Khám Phá Thế Giới I", tier: "vip4", hasData: true },

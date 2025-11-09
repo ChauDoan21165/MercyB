@@ -164,6 +164,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "grow-wealth-vip4-career-6": "data/Grow_Wealth_vip4_career_6.json",
   // "master-climb-vip4-career-7": "data/Master_Climb_vip4_career_7.json",
   // "lead-impact-vip4-career-8": "data/Lead_Impact_vip4_career_8.json",
+  "career-consultant-free": "data/Career_Consultant_free.json",
 };
 
 /**
