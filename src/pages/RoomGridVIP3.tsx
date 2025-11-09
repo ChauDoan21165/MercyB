@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, Lock, Crown, Sparkles } from "lucide-react";
+import { CheckCircle2, Lock, Crown, Sparkles, RefreshCw } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ALL_ROOMS } from "@/lib/roomData";
@@ -8,6 +8,7 @@ import { VIPNavigation } from "@/components/VIPNavigation";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { useToast } from "@/hooks/use-toast";
 
 // VIP3 exclusive rooms with special thematic colors
 const VIP3_SPECIAL_ROOMS: Record<string, string> = {
@@ -20,7 +21,9 @@ const VIP3_SPECIAL_ROOMS: Record<string, string> = {
 
 const RoomGridVIP3 = () => {
   const navigate = useNavigate();
-  const { canAccessVIP3, loading } = useUserAccess();
+  const { canAccessVIP3, isAdmin, loading } = useUserAccess();
+  const { toast: toastHook } = useToast();
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   useEffect(() => {
     if (!loading && !canAccessVIP3) {
@@ -35,6 +38,20 @@ const RoomGridVIP3 = () => {
     return () => window.removeEventListener('rooms-loaded', handle as any);
   }, []);
 
+  const handleRefreshRooms = () => {
+    setIsRefreshing(true);
+    toastHook({
+      title: "Refreshing rooms...",
+      description: "Reloading room registry from files",
+    });
+    
+    window.dispatchEvent(new Event('roomDataUpdated'));
+    
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
+  };
+
   if (loading || !canAccessVIP3) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
@@ -48,17 +65,32 @@ const RoomGridVIP3 = () => {
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="mb-8 space-y-4">
-          <div className="flex items-center mb-4">
-            <Button
-              variant="ghost"
-              onClick={() => navigate("/")}
-              className="flex items-center gap-2"
-            >
-              ← Back / Quay Lại
-            </Button>
-            <span className="ml-3 text-sm text-muted-foreground">
-              You are in VIP 3 area / Bạn đang ở khu vực VIP 3
-            </span>
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center">
+              <Button
+                variant="ghost"
+                onClick={() => navigate("/")}
+                className="flex items-center gap-2"
+              >
+                ← Back / Quay Lại
+              </Button>
+              <span className="ml-3 text-sm text-muted-foreground">
+                You are in VIP 3 area / Bạn đang ở khu vực VIP 3
+              </span>
+            </div>
+            
+            {isAdmin && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleRefreshRooms}
+                disabled={isRefreshing}
+                className="flex items-center gap-2"
+              >
+                <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+                Refresh Rooms
+              </Button>
+            )}
           </div>
           
           <div className="text-center space-y-2">

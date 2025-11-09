@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { CheckCircle2, Lock } from "lucide-react";
+import { CheckCircle2, Lock, RefreshCw } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
@@ -27,10 +27,11 @@ const FREE_INTRO_ROOMS: Record<string, string> = {
 
 const RoomGrid = () => {
   const navigate = useNavigate();
-  const { canAccessVIP1, canAccessVIP2, canAccessVIP3 } = useUserAccess();
+  const { canAccessVIP1, canAccessVIP2, canAccessVIP3, isAdmin } = useUserAccess();
   const { toast } = useToast();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [roomsVersion, setRoomsVersion] = useState(0);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -108,23 +109,52 @@ const RoomGrid = () => {
     return tier.toUpperCase();
   };
 
+  const handleRefreshRooms = () => {
+    setIsRefreshing(true);
+    toast({
+      title: "Refreshing rooms...",
+      description: "Reloading room registry from files",
+    });
+    
+    window.dispatchEvent(new Event('roomDataUpdated'));
+    
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
+  };
+
   return (
     <TooltipProvider>
       <div className="min-h-screen" style={{ background: 'hsl(var(--page-roomgrid))' }}>
         <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="mb-8 space-y-4">
-          <div className="flex items-center mb-4">
-            <Button
-              variant="ghost"
-              onClick={() => navigate("/")}
-              className="flex items-center gap-2"
-            >
-              ← Back / Quay Lại
-            </Button>
-            <span className="ml-3 text-sm text-muted-foreground">
-              You are in free of charge area / Bạn đang ở khu vực miễn phí
-            </span>
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center">
+              <Button
+                variant="ghost"
+                onClick={() => navigate("/")}
+                className="flex items-center gap-2"
+              >
+                ← Back / Quay Lại
+              </Button>
+              <span className="ml-3 text-sm text-muted-foreground">
+                You are in free of charge area / Bạn đang ở khu vực miễn phí
+              </span>
+            </div>
+            
+            {isAdmin && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleRefreshRooms}
+                disabled={isRefreshing}
+                className="flex items-center gap-2"
+              >
+                <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+                Refresh Rooms
+              </Button>
+            )}
           </div>
           
           <div className="text-center space-y-2">
