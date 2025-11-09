@@ -145,8 +145,8 @@ All colors MUST be HSL.
     --page-vip3: 245 70% 35%;
     --vip3-gold: 46 90% 60%;
     
-    /* VIP4 dark mode - same as VIP3 */
-    --page-vip4: 245 70% 35%;
+    /* VIP4 dark mode - align with green theme */
+    --page-vip4: 148 65% 18%;
     --vip4-gold: 46 90% 60%;
   }
 }

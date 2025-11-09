@@ -280,8 +280,8 @@ const ChatHub = () => {
       if (!entry) throw new Error('No entry matched');
      
       // Build message: English Essay + Audio + Vietnamese Essay (if exists)
-      const en = String(entry.replyEn || '');
-      const vi = String(entry.replyVi || '');
+      const en = String(entry.essay_en || entry.replyEn || '');
+      const vi = String(entry.essay_vi || entry.replyVi || '');
       const text = vi ? `${en}\n\n---\n\n${vi}` : en;
       const audioFile = entry.audio ? (entry.audio.startsWith('/') ? entry.audio : `/${entry.audio}`) : undefined;
       setMainMessages(prev => prev.map(m => m.id === typingMessageId ? { ...m, text, audioFile } : m));
@@ -579,6 +579,7 @@ const ChatHub = () => {
       case 'vip1': return 'hsl(var(--page-vip1))';
       case 'vip2': return 'hsl(var(--page-vip2))';
       case 'vip3': return 'hsl(var(--page-vip3))';
+      case 'vip4': return 'hsl(var(--page-vip4))';
       default: return 'hsl(var(--background))';
     }
   };
@@ -701,7 +702,7 @@ const ChatHub = () => {
         )}
         
         {/* Main Chat Area */}
-        <Card className="p-4 shadow-soft bg-green-50/30 dark:bg-green-950/20 border-green-100 dark:border-green-900/30">
+        <Card className="p-4 shadow-soft bg-card border border-border">
           <div className="space-y-3">
             <ScrollArea className="h-[560px] pr-4" ref={mainScrollRef}>
               <WelcomeBack lastRoomId={progress.lastVisit} currentRoomId={roomId || ""} />
