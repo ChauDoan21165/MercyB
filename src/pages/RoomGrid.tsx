@@ -22,6 +22,7 @@ const VIP3_SPECIAL_ROOMS: Record<string, string> = {
 const FREE_INTRO_ROOMS: Record<string, string> = {
   'finance-calm-money-clear-future-preview-free': '#FFD700', // Golden
   'sexuality-and-curiosity-free': '#FFD700', // Golden
+  'career-consultant-free': '#FFD700', // Golden
 };
 
 const RoomGrid = () => {
