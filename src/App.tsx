@@ -39,6 +39,7 @@ import AdminRooms from "./pages/AdminRooms";
 import AdminRoomEditor from "./pages/AdminRoomEditor";
 import AdminRoomImport from "./pages/AdminRoomImport";
 import AdminUserRoles from "./pages/AdminUserRoles";
+import AudioTestPage from "./pages/AudioTestPage";
 
 const queryClient = new QueryClient();
 
@@ -86,6 +87,7 @@ const App = () => (
           <Route path="/admin/rooms/edit/:roomId" element={<AdminRoomEditor />} />
           <Route path="/admin/rooms/import" element={<AdminRoomImport />} />
           <Route path="/admin/users" element={<AdminUserRoles />} />
+          <Route path="/audio-test" element={<AudioTestPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
