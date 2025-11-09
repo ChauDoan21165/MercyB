@@ -165,6 +165,9 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   // "master-climb-vip4-career-7": "data/Master_Climb_vip4_career_7.json",
   // "lead-impact-vip4-career-8": "data/Lead_Impact_vip4_career_8.json",
   "career-consultant-free": "data/Career_Consultant_free.json",
+  // New VIP4 rooms
+  "choosing-your-path-vip4": "data/Choosing_Your_Path_vip4.json",
+  "find-what-you-love-vip4": "data/Find_What_You_Love_vip4.json",
 };
 
 /**

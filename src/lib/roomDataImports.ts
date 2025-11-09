@@ -167,5 +167,8 @@ export const roomDataMap: Record<string, RoomData> = {
   // "find-fit-vip4-career-5": { id: "find-fit-vip4-career-5", nameEn: "Find Fit", nameVi: "Tìm Sự Phù Hợp", tier: "vip4", hasData: true },
   "grow-wealth-vip4-career-6": { id: "grow-wealth-vip4-career-6", nameEn: "Grow Wealth", nameVi: "Phát Triển Tài Chính", tier: "vip4", hasData: true },
   // "master-climb-vip4-career-7": { id: "master-climb-vip4-career-7", nameEn: "Master Climb - CareerSpark", nameVi: "Thành Thạo Leo Lên - CareerSpark", tier: "vip4", hasData: true },
-  // "lead-impact-vip4-career-8": { id: "lead-impact-vip4-career-8", nameEn: "Lead Impact - CareerSpark", nameVi: "Dẫn Dắt Tác Động - CareerSpark", tier: "vip4", hasData: true }
+  // "lead-impact-vip4-career-8": { id: "lead-impact-vip4-career-8", nameEn: "Lead Impact - CareerSpark", nameVi: "Dẫn Dắt Tác Động - CareerSpark", tier: "vip4", hasData: true },
+  // New VIP4 rooms
+  "choosing-your-path-vip4": { id: "choosing-your-path-vip4", nameEn: "Choosing Your Path", nameVi: "Chọn Con Đường Của Bạn", tier: "vip4", hasData: true },
+  "find-what-you-love-vip4": { id: "find-what-you-love-vip4", nameEn: "Find What You Love", nameVi: "Tìm Điều Bạn Yêu", tier: "vip4", hasData: true }
 };
