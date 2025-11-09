@@ -463,7 +463,7 @@ const ChatHub = () => {
       console.log('=== AUDIO DEBUG ===');
       console.log('Keyword clicked or message:', clickedKeyword);
       console.log('Audio file from entry:', message.audioFile);
-      console.log('Normalized filename:', normalized);
+      console.log('Processed filename:', p);
       console.log('Final audio URL:', audioUrl);
       console.log('==================');
       
