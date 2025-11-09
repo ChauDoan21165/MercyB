@@ -687,26 +687,6 @@ const ChatHub = () => {
               )}
               <div ref={endRef} />
             </ScrollArea>
-           
-            {/* Hidden audio element for playback */}
-            <audio
-              ref={audioRef}
-              className="hidden"
-              onCanPlay={() => setAudioLoading(false)}
-              onEnded={() => setIsAudioPlaying(false)}
-              onPause={() => setIsAudioPlaying(false)}
-              onPlay={() => setIsAudioPlaying(true)}
-              onError={(e) => {
-                console.error('Audio error:', e);
-                setAudioLoading(false);
-                toast({
-                  title: "Audio unavailable / Âm thanh không có",
-                  description: "Audio file not found / Không tìm thấy file âm thanh",
-                  variant: "destructive"
-                });
-              }}
-              onLoadedMetadata={() => setAudioLoading(false)}
-            />
           </div>
         </Card>
         {/* Keyword Menu Section */}
