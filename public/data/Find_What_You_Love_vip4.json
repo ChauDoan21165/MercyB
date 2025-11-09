@@ -1,0 +1,54 @@
+{
+  "name": "Find What You Love",
+  "name_vi": "Tìm Điều Bạn Yêu",
+  "description": "Discover why loving what you do brings true meaning and strength to your life.",
+  "description_vi": "Khám phá vì sao yêu công việc mình làm mang lại ý nghĩa và sức mạnh thật sự cho cuộc sống.",
+  "keywords_en": ["career", "passion", "purpose", "love what you do"],
+  "keywords_vi": ["nghề nghiệp", "đam mê", "mục đích", "yêu công việc"],
+  "entries": [
+    {
+      "slug": "importance-of-loving-work",
+      "keywords_en": ["love", "passion", "meaning"],
+      "keywords_vi": ["yêu", "đam mê", "ý nghĩa"],
+      "essay_en": "When you find what you truly love to do, you stop feeling like you are working and start living with care. Work becomes a way to take care of what you believe matters. You no longer count hours but moments of connection and purpose. A gardener tending plants, a teacher shaping young minds, a designer building beauty, a doctor healing pain—they all move from duty to devotion. Finding what you love is not about luxury; it is about alignment. When heart and skill meet, even effort feels like grace. You still work hard, but it no longer drains you—it nourishes you. Each morning becomes a quiet yes to life.",
+      "essay_vi": "Khi bạn tìm thấy điều thật sự yêu thích, bạn không còn cảm giác đang làm việc mà là đang sống với sự chăm sóc. Công việc trở thành cách bạn gìn giữ điều mình tin là quan trọng. Bạn không đếm giờ nữa, mà ghi nhớ những khoảnh khắc có ý nghĩa. Người làm vườn chăm cây, thầy cô dạy học trò, nhà thiết kế tạo vẻ đẹp, bác sĩ chữa lành nỗi đau—họ làm việc bằng sự tận tâm, không chỉ nghĩa vụ. Tìm điều mình yêu không phải xa xỉ, mà là sự hòa hợp giữa trái tim và năng lực. Khi hai thứ ấy gặp nhau, nỗ lực trở nên nhẹ nhàng. Bạn vẫn làm việc chăm chỉ, nhưng công việc không làm bạn cạn kiệt, nó nuôi dưỡng bạn. Mỗi sáng thức dậy là một lời đồng ý bình yên với cuộc sống.",
+      "audio_en": "love_vip4_01_en.mp3"
+    },
+    {
+      "slug": "success-many-views",
+      "keywords_en": ["success", "values", "perspective"],
+      "keywords_vi": ["thành công", "giá trị", "góc nhìn"],
+      "essay_en": "Success wears many faces. For some, it is money, fame, or power—the visible trophies of effort. For others, it is a quiet path walked with integrity, a peaceful home, or meaningful work done without applause. The truth is, no one can define success for you. It must fit the shape of your values. If you find joy in what you do and peace when you rest, you are already living successfully. Society may celebrate loud victories, but your heart will know when it feels right. Success is not about comparison; it is about coherence—your actions reflecting your soul. The world changes, trends fade, but fulfillment stays when it comes from within.",
+      "essay_vi": "Thành công có nhiều khuôn mặt. Với người này là tiền bạc, danh tiếng, quyền lực; với người khác là con đường yên bình, ngôi nhà ấm áp, hay công việc ý nghĩa dù không ai khen. Không ai có thể định nghĩa thành công thay bạn, vì nó phải phù hợp với giá trị của chính bạn. Nếu bạn vui trong việc mình làm và yên lòng khi nghỉ ngơi, bạn đã sống thành công. Xã hội thường tôn vinh chiến thắng ồn ào, nhưng trái tim bạn biết khi nào điều đó đúng. Thành công không nằm ở so sánh mà ở sự hòa hợp giữa hành động và tâm hồn. Thế giới thay đổi, xu hướng phai nhạt, nhưng cảm giác mãn nguyện sẽ ở lại khi nó đến từ bên trong.",
+      "audio_en": "love_vip4_02_en.mp3"
+    },
+    {
+      "slug": "career-change-possible",
+      "keywords_en": ["change", "growth", "flexibility"],
+      "keywords_vi": ["thay đổi", "phát triển", "linh hoạt"],
+      "essay_en": "Choosing a career is not a lifetime sentence. You can change paths and still build a meaningful story. The world shifts, and so will you. What fits you at twenty may not fit at forty, and that is natural. Each job teaches you something—discipline, empathy, creativity, or resilience—that you carry forward. Changing direction is not failure; it is evolution. Allow yourself to grow beyond old dreams. The courage to start again is also a form of success. Your career is a conversation with life, not a contract. Keep listening, learning, and adjusting. Every turn adds depth to who you are becoming.",
+      "essay_vi": "Chọn nghề không phải là cam kết suốt đời. Bạn có thể đổi hướng mà vẫn xây dựng được câu chuyện ý nghĩa. Thế giới thay đổi, và bạn cũng vậy. Điều phù hợp ở tuổi hai mươi có thể không còn hợp ở tuổi bốn mươi, điều đó rất tự nhiên. Mỗi công việc đều dạy bạn điều gì đó—kỷ luật, thấu cảm, sáng tạo hay kiên cường—mà bạn mang theo. Đổi hướng không phải thất bại mà là trưởng thành. Hãy cho phép mình lớn lên khỏi giấc mơ cũ. Dám bắt đầu lại cũng là một dạng thành công. Sự nghiệp là cuộc trò chuyện với cuộc sống, không phải bản hợp đồng. Hãy lắng nghe, học hỏi, điều chỉnh. Mỗi khúc rẽ đều thêm chiều sâu cho con người bạn đang trở thành.",
+      "audio_en": "love_vip4_03_en.mp3"
+    },
+    {
+      "slug": "many-talents-one-heart",
+      "keywords_en": ["multi talent", "growth", "diversity"],
+      "keywords_vi": ["đa tài", "phát triển", "đa dạng"],
+      "essay_en": "One person can love and do many things well. The heart is wide enough to hold more than one calling. You may be both an artist and a teacher, a caregiver and an entrepreneur, a thinker and a maker. Do not fear variety—it is how your soul explores itself. Each talent enriches the others, forming a mosaic of your life. Some seasons will highlight one role, others another. The goal is not to choose once and close the door, but to keep discovering new ways your gifts can serve. Let your curiosity lead, not guilt or doubt. A fulfilled life is rarely narrow; it is wide, textured, and alive.",
+      "essay_vi": "Một người có thể yêu và làm tốt nhiều việc. Trái tim đủ rộng để chứa hơn một tiếng gọi. Bạn có thể vừa là nghệ sĩ vừa là thầy cô, vừa chăm sóc người khác vừa kinh doanh, vừa suy tư vừa sáng tạo. Đừng sợ sự đa dạng, vì đó là cách tâm hồn khám phá chính mình. Mỗi khả năng làm phong phú những khả năng khác, tạo nên bức tranh nhiều sắc của cuộc đời. Có giai đoạn vai trò này nổi bật, giai đoạn khác vai trò kia tỏa sáng. Mục tiêu không phải chọn một lần rồi đóng cửa, mà là tiếp tục khám phá cách tài năng của bạn có thể phục vụ cuộc sống. Hãy để trí tò mò dẫn đường, không phải cảm giác tội lỗi hay hoài nghi. Một cuộc đời trọn vẹn hiếm khi hẹp; nó rộng mở, đa sắc và đầy sức sống.",
+      "audio_en": "love_vip4_04_en.mp3"
+    }
+  ],
+  "meta": {
+    "created_at": "2025-11-09T00:00:00+07:00",
+    "updated_at": "2025-11-09T00:00:00+07:00",
+    "entry_count": 4,
+    "tier": "vip4",
+    "room_color": "#F9C37A",
+    "artifact_version_id": "find-what-you-love-vip4-v001",
+    "localization": {
+      "i18n_required": true,
+      "i18n_verified": true
+    }
+  }
+}
