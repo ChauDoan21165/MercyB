@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Send, ArrowLeft, MessageCircle, Mail, Users, Loader2, Volume2 } from "lucide-react";
+import { Send, ArrowLeft, MessageCircle, Mail, Users, Loader2, Volume2, RefreshCw } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomInfo } from "@/lib/roomData";
@@ -75,10 +75,27 @@ const ChatHub = () => {
   const [debugMode, setDebugMode] = useState(false);
   const [matchedEntryId, setMatchedEntryId] = useState<string | null>(null);
   const [debugSearch, setDebugSearch] = useState("");
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   // Use centralized room metadata
   const info = getRoomInfo(roomId || "");
   const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { nameVi: "Phòng không xác định", nameEn: "Unknown Room" };
+
+  const handleRefreshRooms = () => {
+    setIsRefreshing(true);
+    toast({
+      title: "Refreshing room data...",
+      description: "Reloading registry and content"
+    });
+    
+    // Dispatch event to trigger registry reload
+    window.dispatchEvent(new CustomEvent('roomDataUpdated'));
+    
+    // Reload the page to force re-fetch
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
+  };
 
   // Fetch username
   useEffect(() => {
@@ -656,7 +673,20 @@ const ChatHub = () => {
             <RoomProgress totalRooms={progress.totalRooms} streak={progress.streak} />
           </div>
          
-          <div className="w-24"></div>
+          <div className="flex items-center gap-2">
+            {isAdmin && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleRefreshRooms}
+                disabled={isRefreshing}
+                className="gap-2"
+              >
+                <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+                <span className="hidden sm:inline">Refresh Rooms</span>
+              </Button>
+            )}
+          </div>
         </div>
         
         {/* Main Chat Area */}
