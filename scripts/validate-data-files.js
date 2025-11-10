@@ -9,6 +9,7 @@ const projectRoot = join(__dirname, '..');
 // Scan flat public/data directory, not subdirectories
 const DATA_DIR = join(projectRoot, 'public', 'data');
 const AUDIO_DIR = join(projectRoot, 'public', 'audio');
+const ROOM_FILE_REGEX = /(free|vip1|vip2|vip3|vip4)\.json$/i;
 const REQUIRED_FIELDS = ['entries']; // Minimal requirement
 const ENTRY_REQUIRED_FIELDS_FLEXIBLE = ['slug', 'keywords_en', 'keywords_vi', 'copy', 'tags']; // At least some should exist
 
@@ -234,7 +235,7 @@ async function validateDataDirectory() {
   }
 
   const files = await readdir(DATA_DIR);
-  const jsonFiles = files.filter(f => f.endsWith('.json') && !f.startsWith('.'));
+  const jsonFiles = files.filter(f => f.endsWith('.json') && !f.startsWith('.') && ROOM_FILE_REGEX.test(f));
 
   console.log(`\n${colors.cyan}📁 Validating data files (${jsonFiles.length} files)${colors.reset}\n`);
 

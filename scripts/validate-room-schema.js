@@ -14,6 +14,7 @@ const projectRoot = path.resolve(__dirname, '..');
 const publicDir = path.join(projectRoot, 'public', 'data');
 const audioDir = path.join(projectRoot, 'public', 'audio');
 const schemaPath = path.join(__dirname, 'room-schema.json');
+const ROOM_FILE_REGEX = /(free|vip1|vip2|vip3|vip4)\.json$/i;
 
 // Simple JSON schema validator
 function validateSchema(data, schema) {
@@ -163,7 +164,7 @@ function validateAllRooms() {
 
   const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
   const files = fs.readdirSync(publicDir);
-  const roomFiles = files.filter(f => f.endsWith('.json') && !f.startsWith('.'));
+  const roomFiles = files.filter(f => f.endsWith('.json') && !f.startsWith('.') && ROOM_FILE_REGEX.test(f));
   
   // Get all available audio files
   const skipAudioCheck = process.env.SKIP_AUDIO_CHECK !== 'false';

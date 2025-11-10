@@ -7,12 +7,26 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+// Get project root (one level up from scripts/)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Get project root (one level up from scripts/)
 const projectRoot = path.resolve(__dirname, '..');
 const publicDir = path.join(projectRoot, 'public');
+const ROOM_FILE_REGEX = /(free|vip1|vip2|vip3|vip4)\.json$/i;
+
+// Helper to convert filename to room ID (kebab-case with tier)
+function filenameToRoomId(filename) {
+  // Remove .json extension
+  const base = filename.replace(/\.json$/i, '');
+  
+  // Convert to kebab-case and normalize tier suffix
+  return base
+    .toLowerCase()
+    .replace(/[_\s]+/g, '-') // underscores and spaces to hyphens
+    .replace(/-(free|vip1|vip2|vip3|vip4)$/i, (match) => match.toLowerCase()); // normalize tier
+}
 
 // Helper to convert filename to room ID (kebab-case with tier)
 function filenameToRoomId(filename) {
@@ -52,7 +66,7 @@ function scanRoomFiles() {
   }
   
   const files = fs.readdirSync(dataDir);
-  const roomFiles = files.filter(f => f.endsWith('.json') && !f.startsWith('.'));
+  const roomFiles = files.filter(f => f.endsWith('.json') && !f.startsWith('.') && ROOM_FILE_REGEX.test(f));
   
   const manifest = {};
   const dataImports = {};
