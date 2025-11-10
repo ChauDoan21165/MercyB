@@ -1,0 +1,59 @@
+name: Ensure Package Lock File
+
+on:
+  push:
+    branches: ['main', 'develop']
+  workflow_dispatch:
+
+jobs:
+  check-lockfile:
+    name: Check and Generate Lock File
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check for package-lock.json
+        id: lockfile_check
+        run: |
+          if [ -f "package-lock.json" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "✅ package-lock.json exists"
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "⚠️ package-lock.json is missing"
+          fi
+
+      - name: Generate package-lock.json
+        if: steps.lockfile_check.outputs.exists == 'false'
+        run: |
+          echo "Generating package-lock.json..."
+          npm install --package-lock-only
+          echo "✅ package-lock.json generated"
+
+      - name: Commit and push lock file
+        if: steps.lockfile_check.outputs.exists == 'false'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add package-lock.json
+          git commit -m "chore: auto-generate package-lock.json [skip ci]"
+          git push
+
+      - name: Summary
+        run: |
+          echo "## 📦 Package Lock File Status" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.lockfile_check.outputs.exists }}" == "true" ]; then
+            echo "✅ package-lock.json already exists" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ package-lock.json generated and committed" >> $GITHUB_STEP_SUMMARY
+          fi
