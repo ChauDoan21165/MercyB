@@ -216,9 +216,30 @@ export default function AdminRoomEditor() {
           <Button variant="ghost" size="icon" onClick={() => navigate("/admin/rooms")}>
             <ArrowLeft className="h-5 w-5" />
           </Button>
-          <h1 className="text-4xl font-bold">
-            {isEditMode ? "Edit Room" : "New Room"}
-          </h1>
+          <div className="flex items-center gap-3 flex-1">
+            {formData.id && (
+              <button
+                type="button"
+                onClick={() => {
+                  navigator.clipboard.writeText(formData.id);
+                  toast({
+                    title: "Copied!",
+                    description: `Room ID: ${formData.id}`,
+                  });
+                }}
+                className="w-[1em] h-[1em] rounded-full bg-blue-500 hover:bg-blue-600 cursor-pointer flex-shrink-0 transition-colors"
+                title="Copy room ID for JSON filename"
+              />
+            )}
+            <h1 className="text-4xl font-bold">
+              {isEditMode ? (formData.title_en || "Edit Room") : "New Room"}
+            </h1>
+            {formData.tier && formData.tier !== "free" && (
+              <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold uppercase">
+                {formData.tier}
+              </span>
+            )}
+          </div>
         </div>
 
         <Tabs defaultValue="basic" className="space-y-6">
@@ -342,38 +363,40 @@ export default function AdminRoomEditor() {
                   </Button>
                 </div>
                 <div className="space-y-4">
-                  <div className="flex gap-2 items-center">
+                  <div>
                     <Input
                       placeholder="Slug (e.g., backup-strategy)"
                       value={entry.slug}
                       onChange={(e) => updateEntry(index, "slug", e.target.value)}
                     />
-                    {entry.slug && (
+                  </div>
+                  <div className="flex gap-2 items-center">
+                    {entry.audio && (
                       <button
                         type="button"
                         onClick={() => {
-                          navigator.clipboard.writeText(entry.slug);
+                          navigator.clipboard.writeText(entry.audio);
                           toast({
                             title: "Copied!",
-                            description: `Slug: ${entry.slug}`,
+                            description: `Audio: ${entry.audio}`,
                           });
                         }}
-                        className="w-6 h-6 rounded-full bg-blue-500 hover:bg-blue-600 cursor-pointer flex-shrink-0 transition-colors"
-                        title="Copy slug for JSON filename"
+                        className="w-[1em] h-[1em] rounded-full bg-red-500 hover:bg-red-600 cursor-pointer flex-shrink-0 transition-colors"
+                        title="Copy audio filename"
                       />
                     )}
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <Input
-                      placeholder="Keywords EN (comma-separated)"
-                      value={entry.keywords_en?.join(", ") || ""}
-                      onChange={(e) => updateEntry(index, "keywords_en", e.target.value.split(",").map(k => k.trim()).filter(Boolean))}
-                    />
-                    <Input
-                      placeholder="Keywords VI (comma-separated)"
-                      value={entry.keywords_vi?.join(", ") || ""}
-                      onChange={(e) => updateEntry(index, "keywords_vi", e.target.value.split(",").map(k => k.trim()).filter(Boolean))}
-                    />
+                    <div className="grid grid-cols-2 gap-4 flex-1">
+                      <Input
+                        placeholder="Keywords EN (comma-separated)"
+                        value={entry.keywords_en?.join(", ") || ""}
+                        onChange={(e) => updateEntry(index, "keywords_en", e.target.value.split(",").map(k => k.trim()).filter(Boolean))}
+                      />
+                      <Input
+                        placeholder="Keywords VI (comma-separated)"
+                        value={entry.keywords_vi?.join(", ") || ""}
+                        onChange={(e) => updateEntry(index, "keywords_vi", e.target.value.split(",").map(k => k.trim()).filter(Boolean))}
+                      />
+                    </div>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <Textarea
@@ -389,26 +412,12 @@ export default function AdminRoomEditor() {
                       rows={4}
                     />
                   </div>
-                  <div className="flex gap-2 items-center">
+                  <div>
                     <Input
                       placeholder="Audio filename"
                       value={entry.audio}
                       onChange={(e) => updateEntry(index, "audio", e.target.value)}
                     />
-                    {entry.audio && (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          navigator.clipboard.writeText(entry.audio);
-                          toast({
-                            title: "Copied!",
-                            description: `Audio: ${entry.audio}`,
-                          });
-                        }}
-                        className="w-6 h-6 rounded-full bg-red-500 hover:bg-red-600 cursor-pointer flex-shrink-0 transition-colors"
-                        title="Copy audio filename"
-                      />
-                    )}
                   </div>
                 </div>
               </Card>
