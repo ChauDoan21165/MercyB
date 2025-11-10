@@ -34,6 +34,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "confidence-vip1": "data/confidence_vip1.json",
   "confidence-vip2": "data/confidence_vip2.json",
   "confidence-vip3": "data/confidence_vip3.json",
+  "courage-to-begin-vip4": "data/Courage_To_Begin_vip4.json",
   "depression-support-free": "data/Depression_Support_free.json",
   "depression-support-vip1": "data/Depression_Support_vip1.json",
   "depression-support-vip3": "data/Depression_Support_vip3.json",

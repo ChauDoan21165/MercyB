@@ -36,6 +36,7 @@ export const roomDataMap: Record<string, RoomData> = {
   "confidence-vip1": { id: "confidence-vip1", nameEn: "Confidence", nameVi: "Tự Tin", tier: "vip1", hasData: true },
   "confidence-vip2": { id: "confidence-vip2", nameEn: "Confidence", nameVi: "Tự Tin", tier: "vip2", hasData: true },
   "confidence-vip3": { id: "confidence-vip3", nameEn: "Confidence", nameVi: "Tự Tin", tier: "vip3", hasData: true },
+  "courage-to-begin-vip4": { id: "courage-to-begin-vip4", nameEn: "Courage to Begin", nameVi: "Dám Bắt Đầu", tier: "vip4", hasData: true },
   "depression-support-free": { id: "depression-support-free", nameEn: "Depression Support", nameVi: "Hỗ Trợ Trầm Cảm", tier: "free", hasData: true },
   "depression-support-vip1": { id: "depression-support-vip1", nameEn: "Depression Support", nameVi: "Hỗ Trợ Trầm Cảm", tier: "vip1", hasData: true },
   "depression-support-vip2": { id: "depression-support-vip2", nameEn: "Depression Support", nameVi: "Hỗ Trợ Trầm Cảm", tier: "vip2", hasData: true },
