@@ -364,48 +364,16 @@ export default function AdminRoomEditor() {
                     )}
                   </div>
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="flex gap-2 items-center">
-                      <Input
-                        placeholder="Keywords EN (comma-separated)"
-                        value={entry.keywords_en?.join(", ") || ""}
-                        onChange={(e) => updateEntry(index, "keywords_en", e.target.value.split(",").map(k => k.trim()).filter(Boolean))}
-                      />
-                      {entry.keywords_en && entry.keywords_en.length > 0 && (
-                        <button
-                          type="button"
-                          onClick={() => {
-                            navigator.clipboard.writeText(entry.keywords_en.join(", "));
-                            toast({
-                              title: "Copied!",
-                              description: `Keywords EN: ${entry.keywords_en.join(", ")}`,
-                            });
-                          }}
-                          className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-600 cursor-pointer flex-shrink-0"
-                          title="Copy English keywords"
-                        />
-                      )}
-                    </div>
-                    <div className="flex gap-2 items-center">
-                      <Input
-                        placeholder="Keywords VI (comma-separated)"
-                        value={entry.keywords_vi?.join(", ") || ""}
-                        onChange={(e) => updateEntry(index, "keywords_vi", e.target.value.split(",").map(k => k.trim()).filter(Boolean))}
-                      />
-                      {entry.keywords_vi && entry.keywords_vi.length > 0 && (
-                        <button
-                          type="button"
-                          onClick={() => {
-                            navigator.clipboard.writeText(entry.keywords_vi.join(", "));
-                            toast({
-                              title: "Copied!",
-                              description: `Keywords VI: ${entry.keywords_vi.join(", ")}`,
-                            });
-                          }}
-                          className="w-3 h-3 rounded-full bg-purple-500 hover:bg-purple-600 cursor-pointer flex-shrink-0"
-                          title="Copy Vietnamese keywords"
-                        />
-                      )}
-                    </div>
+                    <Input
+                      placeholder="Keywords EN (comma-separated)"
+                      value={entry.keywords_en?.join(", ") || ""}
+                      onChange={(e) => updateEntry(index, "keywords_en", e.target.value.split(",").map(k => k.trim()).filter(Boolean))}
+                    />
+                    <Input
+                      placeholder="Keywords VI (comma-separated)"
+                      value={entry.keywords_vi?.join(", ") || ""}
+                      onChange={(e) => updateEntry(index, "keywords_vi", e.target.value.split(",").map(k => k.trim()).filter(Boolean))}
+                    />
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <Textarea
