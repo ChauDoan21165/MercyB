@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, Plus, Trash2, Save } from "lucide-react";
+import { ArrowLeft, Plus, Trash2, Save, Copy } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -361,11 +361,30 @@ export default function AdminRoomEditor() {
                       rows={4}
                     />
                   </div>
-                  <Input
-                    placeholder="Audio filename"
-                    value={entry.audio}
-                    onChange={(e) => updateEntry(index, "audio", e.target.value)}
-                  />
+                  <div className="flex gap-2">
+                    <Input
+                      placeholder="Audio filename"
+                      value={entry.audio}
+                      onChange={(e) => updateEntry(index, "audio", e.target.value)}
+                    />
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="icon"
+                      onClick={() => {
+                        if (entry.audio) {
+                          navigator.clipboard.writeText(entry.audio);
+                          toast({
+                            title: "Copied!",
+                            description: `Audio filename: ${entry.audio}`,
+                          });
+                        }
+                      }}
+                      disabled={!entry.audio}
+                    >
+                      <Copy className="h-4 w-4" />
+                    </Button>
+                  </div>
                 </div>
               </Card>
             ))}
