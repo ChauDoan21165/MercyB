@@ -23,47 +23,18 @@
       }
     },
     "entries": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "object",
-        "required": ["slug", "copy"],
-        "properties": {
-          "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
-          "keywords_en": {
-            "type": "array",
-            "items": { "type": "string" }
-          },
-          "keywords_vi": {
-            "type": "array",
-            "items": { "type": "string" }
-          },
-          "copy": {
-            "type": "object",
-            "required": ["en", "vi"],
-            "properties": {
-              "en": { "type": "string", "minLength": 1 },
-              "vi": { "type": "string", "minLength": 1 }
-            }
-          },
-          "tags": {
-            "type": "array",
-            "items": { "type": "string" }
-          },
-          "audio": {
-            "oneOf": [
-              { "type": "string", "pattern": "^[a-zA-Z0-9_-]+\\.mp3$" },
-              {
-                "type": "object",
-                "properties": {
-                  "en": { "type": "string", "pattern": "^[a-zA-Z0-9_-]+\\.mp3$" },
-                  "vi": { "type": "string", "pattern": "^[a-zA-Z0-9_-]+\\.mp3$" }
-                }
-              }
-            ]
-          }
+      "oneOf": [
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/entry" }
+        },
+        {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": { "$ref": "#/definitions/entry" }
         }
-      }
+      ]
     },
     "meta": {
       "type": "object",
@@ -74,6 +45,48 @@
         "tier": { "type": "string" },
         "room_color": { "type": "string" }
       }
+    }
+  },
+  "definitions": {
+    "entry": {
+      "type": "object",
+      "properties": {
+        "slug": { "type": "string", "pattern": "^[A-Za-z0-9_-]+$" },
+        "keywordEn": { "type": "string" },
+        "id": { "type": "string" },
+        "keywords_en": { "type": "array", "items": { "type": "string" } },
+        "keywords_vi": { "type": "array", "items": { "type": "string" } },
+        "copy": {
+          "type": "object",
+          "properties": {
+            "en": { "type": "string" },
+            "vi": { "type": "string" }
+          },
+          "additionalProperties": true
+        },
+        "replyEn": { "type": "string" },
+        "replyVi": { "type": "string" },
+        "essay": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "audio": {
+          "oneOf": [
+            { "type": "string", "pattern": "^[A-Za-z0-9._\/-]+\\.mp3$" },
+            {
+              "type": "object",
+              "properties": {
+                "en": { "type": "string", "pattern": "^[A-Za-z0-9._\/-]+\\.mp3$" },
+                "vi": { "type": "string", "pattern": "^[A-Za-z0-9._\/-]+\\.mp3$" }
+              }
+            }
+          ]
+        }
+      },
+      "additionalProperties": true,
+      "anyOf": [
+        { "required": ["slug"] },
+        { "required": ["keywordEn"] },
+        { "required": ["id"] }
+      ]
     }
   }
 }
