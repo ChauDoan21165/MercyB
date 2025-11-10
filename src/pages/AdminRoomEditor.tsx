@@ -361,29 +361,26 @@ export default function AdminRoomEditor() {
                       rows={4}
                     />
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 items-center">
                     <Input
                       placeholder="Audio filename"
                       value={entry.audio}
                       onChange={(e) => updateEntry(index, "audio", e.target.value)}
                     />
-                    <Button
-                      type="button"
-                      variant="outline"
-                      size="icon"
-                      onClick={() => {
-                        if (entry.audio) {
+                    {entry.audio && (
+                      <button
+                        type="button"
+                        onClick={() => {
                           navigator.clipboard.writeText(entry.audio);
                           toast({
                             title: "Copied!",
                             description: `Audio filename: ${entry.audio}`,
                           });
-                        }
-                      }}
-                      disabled={!entry.audio}
-                    >
-                      <Copy className="h-4 w-4" />
-                    </Button>
+                        }}
+                        className="w-2 h-2 rounded-full bg-red-500 hover:bg-red-600 cursor-pointer flex-shrink-0"
+                        title="Click to copy audio filename"
+                      />
+                    )}
                   </div>
                 </div>
               </Card>
