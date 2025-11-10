@@ -342,11 +342,27 @@ export default function AdminRoomEditor() {
                   </Button>
                 </div>
                 <div className="space-y-4">
-                  <Input
-                    placeholder="Slug (e.g., backup-strategy)"
-                    value={entry.slug}
-                    onChange={(e) => updateEntry(index, "slug", e.target.value)}
-                  />
+                  <div className="flex gap-2 items-center">
+                    <Input
+                      placeholder="Slug (e.g., backup-strategy)"
+                      value={entry.slug}
+                      onChange={(e) => updateEntry(index, "slug", e.target.value)}
+                    />
+                    {entry.slug && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          navigator.clipboard.writeText(entry.slug);
+                          toast({
+                            title: "Copied!",
+                            description: `Slug: ${entry.slug}`,
+                          });
+                        }}
+                        className="w-3 h-3 rounded-full bg-blue-500 hover:bg-blue-600 cursor-pointer flex-shrink-0"
+                        title="Copy slug for JSON filename"
+                      />
+                    )}
+                  </div>
                   <div className="grid grid-cols-2 gap-4">
                     <Textarea
                       placeholder="Content (English)"
@@ -374,11 +390,11 @@ export default function AdminRoomEditor() {
                           navigator.clipboard.writeText(entry.audio);
                           toast({
                             title: "Copied!",
-                            description: `Audio filename: ${entry.audio}`,
+                            description: `Audio: ${entry.audio}`,
                           });
                         }}
-                        className="w-2 h-2 rounded-full bg-red-500 hover:bg-red-600 cursor-pointer flex-shrink-0"
-                        title="Click to copy audio filename"
+                        className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 cursor-pointer flex-shrink-0"
+                        title="Copy audio filename"
                       />
                     )}
                   </div>
