@@ -148,8 +148,8 @@ export const roomDataMap: Record<string, RoomData> = {
   },
   "bridge-to-reality-vip4": {
       "id": "bridge-to-reality-vip4",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Bridge To Reality",
+      "nameVi": "Bridge To Reality",
       "tier": "vip4",
       "hasData": true
   },
@@ -183,8 +183,8 @@ export const roomDataMap: Record<string, RoomData> = {
   },
   "career-community-vip4": {
       "id": "career-community-vip4",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Career Community",
+      "nameVi": "Career Community",
       "tier": "vip4",
       "hasData": true
   },
@@ -330,8 +330,8 @@ export const roomDataMap: Record<string, RoomData> = {
   },
   "know-yourself-deeply-vip4": {
       "id": "know-yourself-deeply-vip4",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Know Yourself Deeply",
+      "nameVi": "Know Yourself Deeply",
       "tier": "vip4",
       "hasData": true
   },
@@ -400,8 +400,8 @@ export const roomDataMap: Record<string, RoomData> = {
   },
   "mental-sharpness-vip3": {
       "id": "mental-sharpness-vip3",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Mental Sharpness",
+      "nameVi": "Mental Sharpness",
       "tier": "vip3",
       "hasData": true
   },
@@ -421,29 +421,29 @@ export const roomDataMap: Record<string, RoomData> = {
   },
   "nutrition-free": {
       "id": "nutrition-free",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Nutrition",
+      "nameVi": "Nutrition",
       "tier": "free",
       "hasData": true
   },
   "nutrition-vip1": {
       "id": "nutrition-vip1",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Nutrition",
+      "nameVi": "Nutrition",
       "tier": "vip1",
       "hasData": true
   },
   "nutrition-vip2": {
       "id": "nutrition-vip2",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Nutrition",
+      "nameVi": "Nutrition",
       "tier": "vip2",
       "hasData": true
   },
   "nutrition-vip3": {
       "id": "nutrition-vip3",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Nutrition",
+      "nameVi": "Nutrition",
       "tier": "vip3",
       "hasData": true
   },
@@ -456,29 +456,29 @@ export const roomDataMap: Record<string, RoomData> = {
   },
   "obesity-management-vip1": {
       "id": "obesity-management-vip1",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Obesity Management",
+      "nameVi": "Obesity Management",
       "tier": "vip1",
       "hasData": true
   },
   "obesity-management-vip2": {
       "id": "obesity-management-vip2",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Obesity Management",
+      "nameVi": "Obesity Management",
       "tier": "vip2",
       "hasData": true
   },
   "obesity-management-vip3": {
       "id": "obesity-management-vip3",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Obesity Management",
+      "nameVi": "Obesity Management",
       "tier": "vip3",
       "hasData": true
   },
   "obesity-free": {
       "id": "obesity-free",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Obesity",
+      "nameVi": "Obesity",
       "tier": "free",
       "hasData": true
   },
@@ -526,8 +526,8 @@ export const roomDataMap: Record<string, RoomData> = {
   },
   "overcome-storm-vip3": {
       "id": "overcome-storm-vip3",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Overcome Storm",
+      "nameVi": "Overcome Storm",
       "tier": "vip3",
       "hasData": true
   },
@@ -547,8 +547,8 @@ export const roomDataMap: Record<string, RoomData> = {
   },
   "philosophy-of-everyday-vip3": {
       "id": "philosophy-of-everyday-vip3",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Philosophy Of Everyday",
+      "nameVi": "Philosophy Of Everyday",
       "tier": "vip3",
       "hasData": true
   },
@@ -659,22 +659,22 @@ export const roomDataMap: Record<string, RoomData> = {
   },
   "sleep-improvement-free": {
       "id": "sleep-improvement-free",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Sleep Improvement",
+      "nameVi": "Sleep Improvement",
       "tier": "free",
       "hasData": true
   },
   "sleep-improvement-vip1": {
       "id": "sleep-improvement-vip1",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Sleep Improvement",
+      "nameVi": "Sleep Improvement",
       "tier": "vip1",
       "hasData": true
   },
   "sleep-improvement-vip3": {
       "id": "sleep-improvement-vip3",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Sleep Improvement",
+      "nameVi": "Sleep Improvement",
       "tier": "vip3",
       "hasData": true
   },
@@ -736,22 +736,22 @@ export const roomDataMap: Record<string, RoomData> = {
   },
   "stress-free": {
       "id": "stress-free",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Stress",
+      "nameVi": "Stress",
       "tier": "free",
       "hasData": true
   },
   "stress-vip2": {
       "id": "stress-vip2",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Stress",
+      "nameVi": "Stress",
       "tier": "vip2",
       "hasData": true
   },
   "stress-vip3": {
       "id": "stress-vip3",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Stress",
+      "nameVi": "Stress",
       "tier": "vip3",
       "hasData": true
   },
@@ -785,22 +785,22 @@ export const roomDataMap: Record<string, RoomData> = {
   },
   "confidence-vip2": {
       "id": "confidence-vip2",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Confidence",
+      "nameVi": "Confidence",
       "tier": "vip2",
       "hasData": true
   },
   "confidence-vip3": {
       "id": "confidence-vip3",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Confidence",
+      "nameVi": "Confidence",
       "tier": "vip3",
       "hasData": true
   },
   "sleep-improvement-vip2": {
       "id": "sleep-improvement-vip2",
-      "nameEn": "Unknown Room",
-      "nameVi": "Unknown Room",
+      "nameEn": "Sleep Improvement",
+      "nameVi": "Sleep Improvement",
       "tier": "vip2",
       "hasData": true
   }
