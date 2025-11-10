@@ -112,6 +112,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "relationship-healing-vip2": "data/Relationship_Healing_vip2.json",
   "relationship-healing-vip3": "data/Relationship_Healing_vip3.json",
   "resilience-and-adaptation-vip4": "data/Resilience_and_Adaptation_vip4.json",
+  "career-community-vip4": "data/Career_Community_vip4.json",
   "self-love-free": "data/Self_Love_free.json",
   "self-love-vip1": "data/Self_Love_vip1.json",
   "self-love-vip2": "data/Self_Love_vip2.json",
