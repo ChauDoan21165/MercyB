@@ -56,4 +56,5 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add src/lib/roomManifest.ts src/lib/roomDataImports.ts
           git commit -m "chore: auto-generate room registry [skip ci]"
+          git pull --rebase origin main
           git push
