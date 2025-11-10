@@ -358,7 +358,7 @@ export default function AdminRoomEditor() {
                             description: `Slug: ${entry.slug}`,
                           });
                         }}
-                        className="w-3 h-3 rounded-full bg-blue-500 hover:bg-blue-600 cursor-pointer flex-shrink-0"
+                        className="w-6 h-6 rounded-full bg-blue-500 hover:bg-blue-600 cursor-pointer flex-shrink-0 transition-colors"
                         title="Copy slug for JSON filename"
                       />
                     )}
@@ -405,7 +405,7 @@ export default function AdminRoomEditor() {
                             description: `Audio: ${entry.audio}`,
                           });
                         }}
-                        className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 cursor-pointer flex-shrink-0"
+                        className="w-6 h-6 rounded-full bg-red-500 hover:bg-red-600 cursor-pointer flex-shrink-0 transition-colors"
                         title="Copy audio filename"
                       />
                     )}
