@@ -1,0 +1,94 @@
+{
+  "name": "Mentors Who Light the Way",
+  "name_vi": "Những Người Dẫn Đường Thắp Sáng",
+  "description": "Long-form mentor essays on courage, purpose, and building a meaningful career",
+  "description_vi": "Bài văn dài từ người dẫn đường về dũng khí, mục đích và xây dựng sự nghiệp ý nghĩa",
+  "keywords_en": ["mentorship", "career", "courage", "purpose", "growth", "legacy", "change"],
+  "keywords_vi": ["người dẫn đường", "sự nghiệp", "dũng cảm", "mục đích", "phát triển", "di sản", "thay đổi"],
+  "entries": [
+    {
+      "slug": "courage-to-begin",
+      "keywords_en": ["Courage to Begin", "fear", "starting", "imperfection"],
+      "keywords_vi": ["Dũng Khí Bắt Đầu", "sợ hãi", "khởi đầu", "không hoàn hảo"],
+      "copy": {
+        "en": "Fear is a liar. It whispers that you must wait until every light turns green, every skill is perfected, every doubt silenced. But courage is not the absence of fear—it is the choice to move forward despite it. A 17-year-old girl in Hanoi once sat frozen before her first coding tutorial, convinced she was too late, too slow, too ordinary. Yet she pressed play anyway. One line of code became a weekend project. That project became a scholarship. Today she leads a team of thirty developers. Her story is not exceptional; it is inevitable for anyone who chooses motion over perfection. You need no permission. You need no certainty. You only need the willingness to begin imperfectly. Write the messy draft. Send the awkward email. Ask the question you fear sounds foolish. The world does not reward those who wait for readiness—it rewards those who dare to stumble forward. Your future self is not judging your first step; she is celebrating it. Take it now. The path appears beneath the foot that moves.",
+        "vi": "Nỗi sợ là kẻ dối trá. Nó thì thầm rằng bạn phải đợi đến khi mọi đèn đều xanh, mọi kỹ năng hoàn hảo, mọi nghi ngờ im lặng. Nhưng dũng cảm không phải là không sợ—mà là quyết định tiến lên dù có sợ. Một cô gái 17 tuổi ở Hà Nội từng ngồi tê liệt trước video lập trình đầu tiên, tin rằng mình quá muộn, quá chậm, quá bình thường. Nhưng cô vẫn nhấn play. Một dòng code thành dự án cuối tuần. Dự án ấy thành học bổng. Hôm nay cô dẫn dắt đội ba mươi lập trình viên. Câu chuyện của cô không ngoại lệ; nó là tất yếu cho bất kỳ ai chọn hành động thay vì hoàn hảo. Bạn không cần sự cho phép. Bạn không cần chắc chắn. Bạn chỉ cần sẵn lòng bắt đầu dù chưa trọn vẹn. Viết bản nháp lộn xộn. Gửi email vụng về. Hỏi câu mà bạn sợ ngu ngốc. Thế giới không thưởng cho người đợi sẵn sàng—mà cho người dám vấp ngã tiến lên. Bản thân tương lai của bạn không phán xét bước đầu; cô ấy đang ăn mừng nó. Hãy bước ngay bây giờ. Con đường sẽ hiện ra dưới bàn chân đang di chuyển."
+      },
+      "tags": ["courage", "beginning", "action"],
+      "audio": "rooms/begin_vip4_long_01_en.mp3"
+    },
+    {
+      "slug": "inner-compass",
+      "keywords_en": ["Inner Compass", "intuition", "decision-making", "values"],
+      "keywords_vi": ["La Bàn Nội Tâm", "trực giác", "quyết định", "giá trị"],
+      "copy": {
+        "en": "Your inner compass is not a loud voice—it is a quiet knowing. It speaks in the tightening of your chest when a path feels wrong, and in the spark behind your eyes when something feels deeply right. A young nurse in Manila once stood at a crossroads: stay in a high-paying city hospital or move to a rural clinic for half the salary. Logic screamed 'stay.' Her heart whispered 'go.' She followed the whisper. In the provinces, she delivered babies under flickering lights, held dying hands, and found a joy no paycheck could buy. Decisions are never just about data—they are about alignment: between what you know, what you feel, and what you value. Begin a simple practice: each night, write one sentence—'Today, this made me feel alive.' Over time, patterns appear. Your compass sharpens. You learn to trust the quiet signals your body sends before your mind catches up. You are allowed to choose what expands you, even when the world calls it irrational. Your life is too precious to be lived by someone else's map.",
+        "vi": "La bàn nội tâm không phải là giọng nói lớn—mà là sự biết lặng lẽ. Nó nói bằng sự co thắt trong ngực khi con đường sai, bằng tia sáng trong mắt khi điều gì đó thật đúng. Một y tá trẻ ở Manila từng đứng giữa ngã rẽ: ở lại bệnh viện thành phố lương cao hay về phòng khám nông thôn chỉ nửa số đó. Lý trí gào 'ở lại.' Trái tim thì thầm 'đi.' Cô nghe theo tiếng thì thầm ấy. Ở tỉnh lẻ, cô đỡ đẻ dưới ánh đèn chập chờn, nắm tay người hấp hối, và tìm thấy niềm vui không đồng lương nào mua nổi. Quyết định không bao giờ chỉ dựa trên dữ liệu—mà trên sự thẳng hàng giữa điều bạn biết, điều bạn cảm, và điều bạn trân trọng. Hãy bắt đầu thói quen đơn giản: mỗi đêm, viết một câu: 'Hôm nay, điều này khiến tôi thấy mình sống.' Vài tuần sau, mẫu hình hiện ra. La bàn của bạn sắc nét hơn. Bạn học cách tin vào tín hiệu lặng lẽ cơ thể gửi trước khi lý trí kịp phản ứng. Bạn được phép chọn điều khiến bạn nở ra, dù thế giới cho là phi lý. Cuộc đời bạn quá quý giá để sống theo bản đồ của người khác."
+      },
+      "tags": ["intuition", "guidance", "alignment"],
+      "audio": "rooms/compass_vip4_long_01_en.mp3"
+    },
+    {
+      "slug": "people-who-inspire",
+      "keywords_en": ["People Who Inspire", "role models", "ordinary heroes", "possibility"],
+      "keywords_vi": ["Người Truyền Cảm Hứng", "hình mẫu", "anh hùng bình thường", "khả năng"],
+      "copy": {
+        "en": "Inspiration doesn't live in perfect heroes—it lives in ordinary people who dare to begin. Meet Uncle Tuan, 52, a former factory worker in Saigon. When the pandemic shut his plant, he picked up a second-hand camera and walked the streets at dawn. His first photos were blurry, his first sale just $10. But he kept walking. Today, his images of morning markets and smiling grandmas hang in galleries from Tokyo to Berlin. He now mentors young photographers for free, saying, 'I wish someone had told me age is just a number.' Or consider Maya, 16, from a fishing village in Cebu. She built a solar lamp from plastic bottles and bike parts—lighting her neighbor's home for the first time. That lamp won a UN award. Now she teaches girls to build. These are not superhumans. They are proof that inspiration is contagious. One small act—pressing record, soldering a wire, sharing a skill—can ripple across oceans. You don't need to be them. You only need to begin like them. With whatever you have, right where you are. The world is waiting for your version of dawn.",
+        "vi": "Cảm hứng không sống trong những anh hùng hoàn hảo—mà trong những con người bình thường dám bắt đầu. Gặp chú Tuấn, 52 tuổi, công nhân nhà máy cũ ở Sài Gòn. Khi đại dịch đóng cửa xưởng, chú nhặt chiếc máy ảnh cũ và đi dọc phố lúc bình minh. Ảnh đầu tiên mờ, bức đầu tiên bán được 10 đô. Nhưng chú vẫn đi tiếp. Hôm nay, ảnh chợ sớm và nụ cười của bà cụ của chú treo ở gallery từ Tokyo đến Berlin. Chú dạy nhiếp ảnh miễn phí cho người trẻ, nói: 'Ước gì ai đó từng bảo tôi tuổi chỉ là con số.' Hoặc Maya, 16 tuổi, từ làng chài Cebu. Cô làm đèn năng lượng mặt trời từ chai nhựa và linh kiện xe đạp cũ—thắp sáng nhà hàng xóm lần đầu. Chiếc đèn ấy thắng giải Liên Hợp Quốc. Giờ cô dạy các bé gái chế tạo. Họ không phải siêu nhân. Họ là bằng chứng rằng cảm hứng có thể lan truyền. Một hành động nhỏ—bấm ghi, hàn dây, chia sẻ kỹ năng—có thể lan qua đại dương. Bạn không cần là họ. Bạn chỉ cần bắt đầu như họ. Với bất cứ gì bạn có, ngay nơi bạn đang đứng. Thế giới đang đợi bình minh của riêng bạn."
+      },
+      "tags": ["inspiration", "role-models", "possibility"],
+      "audio": "rooms/inspire_vip4_long_01_en.mp3"
+    },
+    {
+      "slug": "start-small",
+      "keywords_en": ["Start Small", "consistency", "humility", "mastery"],
+      "keywords_vi": ["Bắt Đầu Nhỏ", "kiên định", "khiêm tốn", "thành thạo"],
+      "copy": {
+        "en": "Every legendary career began in quiet humility. A barista in Saigon saved 50,000 VND in tips each week. Three years later, she opened her own café—now a chain of five. She started by learning to make one perfect latte. The lesson? Mastery is built on small, faithful acts. Internships, part-time jobs, side projects—they are not detours. They are training grounds where discipline is forged, networks are born, and confidence takes root. A junior designer in Manila once fetched coffee and fixed typos. Six months later, she led a rebrand. Her boss said, 'She earned trust one task at a time.' You are allowed to be new. You are allowed to earn $100 before $10,000. You are allowed to learn in public, fail in private, and grow in silence. The oak does not apologize for being an acorn—it simply keeps growing. Begin with one email, one shift, one line of code. Consistency compounds. Patience protects. And small, humble beginnings are the only soil in which greatness can take root. Plant yourself today. The forest will follow.",
+        "vi": "Mọi sự nghiệp huyền thoại đều bắt đầu trong sự khiêm tốn lặng lẽ. Một barista ở Sài Gòn tiết kiệm 50.000 đồng tiền tip mỗi tuần. Ba năm sau, cô mở quán cà phê riêng—giờ là chuỗi năm quán. Cô khởi đầu bằng việc học pha một ly latte hoàn hảo. Bài học? Thành thạo được xây từ những hành động nhỏ, kiên định. Thực tập, làm thêm, dự án phụ—không phải đường vòng. Chúng là sân tập nơi kỷ luật được rèn, mối quan hệ hình thành, và tự tin bén rễ. Một nhà thiết kế trẻ ở Manila từng pha cà phê, sửa lỗi chính tả. Sáu tháng sau, cô dẫn đầu tái thương hiệu. Sếp nói: 'Cô ấy gây dựng niềm tin từng việc một.' Bạn được phép là người mới. Bạn được phép kiếm 100 đô trước 10.000. Bạn được phép học công khai, vấp ngã riêng tư, và lớn lên trong thinh lặng. Cây sồi không xin lỗi vì là hạt dẻ—nó chỉ tiếp tục lớn. Hãy bắt đầu bằng một email, một ca làm, một dòng code. Kiên định tích lũy. Kiên nhẫn bảo vệ. Và khởi đầu nhỏ, khiêm tốn là mảnh đất duy nhất nơi vĩ đại có thể bén rễ. Gieo mình hôm nay. Rừng sẽ theo sau."
+      },
+      "tags": ["starting-small", "consistency", "growth"],
+      "audio": "rooms/start_vip4_long_01_en.mp3"
+    },
+    {
+      "slug": "work-that-heals-helps",
+      "keywords_en": ["Work That Heals", "service", "purpose", "impact"],
+      "keywords_vi": ["Công Việc Chữa Lành", "phục vụ", "mục đích", "tác động"],
+      "copy": {
+        "en": "Some work doesn't just pay—it restores. A teacher in a Manila slum stays after class to tutor one struggling child. Years later, that child returns as a doctor to serve the same community. The cycle of healing begins with one act of care. Service professions—nursing, teaching, social work, sustainable farming—are not just jobs. They are sacred contracts between your gifts and the world's pain. A nurse in rural Vietnam once held a mother's hand through twelve hours of labor under a tin roof. The baby lived. The mother named her daughter after the nurse. That is not a salary—that is a soulprint. You are allowed to choose work that moves you to tears of gratitude. You are allowed to earn less on paper if you gain more in meaning. The world measures success in numbers; your heart measures it in lives touched, smiles returned, ecosystems restored. Choose the career that nourishes both the giver and the receiver. In a world starving for kindness, your empathy is not weakness—it is a revolution. Begin with one patient, one student, one seed. Healing is not a grand gesture—it is a thousand quiet mercies, offered daily.",
+        "vi": "Có những công việc không chỉ trả lương—mà còn chữa lành. Một giáo viên ở khu ổ chuột Manila ở lại sau giờ để kèm một đứa trẻ khó khăn. Nhiều năm sau, đứa trẻ ấy trở lại làm bác sĩ phục vụ chính cộng đồng đó. Vòng tròn chữa lành bắt đầu từ một hành động quan tâm. Các nghề phục vụ—y tá, giáo viên, công tác xã hội, nông nghiệp bền vững—không chỉ là công việc. Chúng là giao ước thiêng liêng giữa tài năng của bạn và nỗi đau của thế giới. Một y tá ở vùng quê Việt Nam từng nắm tay một người mẹ suốt 12 giờ chuyển dạ dưới mái tôn. Đứa bé sống. Người mẹ đặt tên con theo tên cô. Đó không phải lương—mà là dấu ấn linh hồn. Bạn được phép chọn công việc khiến bạn rơi nước mắt trong biết ơn. Bạn được phép kiếm ít hơn trên giấy nếu nhận nhiều hơn trong ý nghĩa. Thế giới đo thành công bằng con số; trái tim bạn đo bằng cuộc đời được chạm, nụ cười được trả, hệ sinh thái được cứu. Hãy chọn nghề nuôi dưỡng cả người cho lẫn người nhận. Trong thế giới đói lòng tử tế, lòng cảm thông của bạn không phải yếu đuối—mà là cách mạng. Bắt đầu từ một bệnh nhân, một học sinh, một hạt giống. Chữa lành không phải cử chỉ lớn—mà là ngàn lòng thương nhỏ, được dâng mỗi ngày."
+      },
+      "tags": ["service", "healing", "purpose"],
+      "audio": "rooms/heal_vip4_long_01_en.mp3"
+    },
+    {
+      "slug": "grow-through-change",
+      "keywords_en": ["Grow Through Change", "resilience", "adaptation", "evolution"],
+      "keywords_vi": ["Lớn Qua Thay Đổi", "sức bật", "thích nghi", "tiến hóa"],
+      "copy": {
+        "en": "Change is not the enemy of growth—it is the soil from which growth emerges. A software engineer in Jakarta lost his job to automation. Instead of despair, he enrolled in a free AI course. One year later, he consulted for the same company that had let him go—now earning triple. Life will pivot you without warning: layoffs, illness, heartbreak, relocation. The question isn't 'Will change come?' but 'How will I dance with it?' Resilience is not a trait you're born with—it's a muscle built through small, brave choices. A single mother in Cebu learned to code at night after her children slept. Her first app helped fisherfolk sell directly to restaurants. Today she employs ten. Adaptation is not betrayal of your past self—it is evolution. You are allowed to outgrow roles, cities, even dreams. You are allowed to begin again at 30, 40, or 60. The river doesn't apologize for changing course—it simply finds the sea. Keep learning. Keep listening. Keep moving. The version of you waiting on the other side of this change is already there—stronger, wiser, and deeply proud of the courage it took to let the old self go.",
+        "vi": "Thay đổi không phải kẻ thù của trưởng thành—mà là mảnh đất để trưởng thành nảy mầm. Một kỹ sư phần mềm ở Jakarta mất việc vì tự động hóa. Thay vì tuyệt vọng, anh đăng ký khóa học AI miễn phí. Một năm sau, anh trở lại làm tư vấn cho chính công ty từng sa thải mình—và kiếm gấp ba. Cuộc đời sẽ xoay bạn mà không báo trước: sa thải, bệnh tật, tan vỡ, di chuyển. Câu hỏi không phải 'Thay đổi có đến không?' mà là 'Tôi sẽ nhảy cùng nó thế nào?' Sức bật không phải bẩm sinh—mà là cơ bắp được rèn qua những lựa chọn nhỏ, dũng cảm. Một người mẹ đơn thân ở Cebu học code ban đêm sau khi con ngủ. Ứng dụng đầu tiên của cô giúp ngư dân bán trực tiếp cho nhà hàng. Giờ cô thuê mười người. Thích nghi không phải phản bội bản thân cũ—mà là tiến hóa. Bạn được phép lớn hơn vai trò, thành phố, thậm chí cả giấc mơ. Bạn được phép bắt đầu lại ở tuổi 30, 40 hay 60. Dòng sông không xin lỗi vì đổi hướng—nó chỉ tìm về biển. Tiếp tục học. Tiếp tục lắng nghe. Tiếp tục di chuyển. Phiên bản của bạn ở bên kia thay đổi đã chờ sẵn—mạnh mẽ hơn, khôn ngoan hơn, và tự hào sâu sắc về dũng khí đã giúp bạn buông bản thân cũ."
+      },
+      "tags": ["change", "resilience", "adaptation"],
+      "audio": "rooms/change_vip4_long_01_en.mp3"
+    },
+    {
+      "slug": "meaning-and-legacy",
+      "keywords_en": ["Meaning and Legacy", "contribution", "impact", "purpose"],
+      "keywords_vi": ["Ý Nghĩa và Di Sản", "đóng góp", "tác động", "mục đích"],
+      "copy": {
+        "en": "True success is not what you accumulate—it is what you contribute. A retired teacher in Hanoi spends her mornings tutoring street children under a banyan tree. She will never be rich, but every child who learns to read carries her light forward. Legacy is not a monument; it is a ripple. The mentor who believed in you. The stranger who paid for your meal. The code you open-sourced so others could build. You are writing your legacy in invisible ink—through every kind word, every skill shared, every small stand for what is right. A street vendor in Manila teaches her daughter to give one free bowl of soup each day to a hungry child. That child grows up to feed others. The bowl multiplies. Meaning is not found in the spotlight—it is forged in the quiet moments when no one is watching. You are allowed to measure your life not by titles or accounts, but by the number of times you helped someone believe in themselves. When your final breath comes, may it bring peace—knowing you left the world softer, kinder, and more hopeful than you found it. That is the only legacy worth building.",
+        "vi": "Thành công thật không nằm ở điều bạn tích lũy—mà ở điều bạn cống hiến. Một giáo viên nghỉ hưu ở Hà Nội dành buổi sáng dạy trẻ đường phố dưới tán đa. Cô sẽ không bao giờ giàu có, nhưng mỗi đứa trẻ biết đọc mang ánh sáng của cô đi xa. Di sản không phải tượng đài; nó là gợn sóng. Người cố vấn tin bạn. Người lạ trả bữa ăn cho bạn. Mã nguồn bạn mở để người khác xây. Bạn đang viết di sản bằng mực vô hình—qua mỗi lời tử tế, mỗi kỹ năng chia sẻ, mỗi lập trường nhỏ cho điều đúng. Một người bán rong ở Manila dạy con gái cho một tô súp miễn phí mỗi ngày cho trẻ đói. Đứa trẻ ấy lớn lên nuôi người khác. Tô súp nhân lên. Ý nghĩa không tìm thấy dưới đèn sân khấu—mà rèn trong khoảnh khắc lặng lẽ khi không ai nhìn. Bạn được phép đo đời mình không bằng chức danh hay tài khoản, mà bằng số lần bạn giúp ai đó tin vào chính họ. Khi hơi thở cuối đến, mong nó mang bình yên—biết rằng bạn để lại thế giới mềm hơn, tử tế hơn, và hy vọng hơn khi tìm thấy. Đó là di sản duy nhất đáng xây."
+      },
+      "tags": ["legacy", "meaning", "contribution"],
+      "audio": "rooms/legacy_vip4_long_01_en.mp3"
+    }
+  ],
+  "meta": {
+    "created_at": "2025-11-10T00:00:00Z",
+    "updated_at": "2025-11-10T00:00:00Z",
+    "entry_count": 7,
+    "tier": "vip4",
+    "room_color": "hsl(280, 70%, 60%)"
+  }
+}

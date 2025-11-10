@@ -169,6 +169,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "choosing-your-path-vip4": "data/Choosing_Your_Path_vip4.json",
   "find-what-you-love-vip4": "data/Find_What_You_Love_vip4.json",
   "know-yourself-deeply-vip4": "data/Know_Yourself_Deeply_vip4.json",
+  "mentors-who-light-the-way-vip4": "data/Mentors_Who_Light_the_Way_vip4.json",
 };
 
 /**
