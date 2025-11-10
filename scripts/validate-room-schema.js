@@ -12,6 +12,7 @@ const __dirname = path.dirname(__filename);
 
 const projectRoot = path.resolve(__dirname, '..');
 const publicDir = path.join(projectRoot, 'public', 'data');
+const audioDir = path.join(projectRoot, 'public', 'audio');
 const schemaPath = path.join(__dirname, 'room-schema.json');
 
 // Simple JSON schema validator
@@ -83,6 +84,77 @@ function validateSchema(data, schema) {
   return errors;
 }
 
+// Get all audio files from public/audio directory
+function getAllAudioFiles() {
+  const audioFiles = new Set();
+  
+  function scanDir(dir) {
+    if (!fs.existsSync(dir)) return;
+    
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        scanDir(fullPath);
+      } else if (entry.name.endsWith('.mp3')) {
+        // Store relative path from public/audio
+        const relativePath = path.relative(audioDir, fullPath);
+        audioFiles.add(relativePath);
+        // Also store just the filename for backward compatibility
+        audioFiles.add(entry.name);
+      }
+    }
+  }
+  
+  scanDir(audioDir);
+  return audioFiles;
+}
+
+// Extract audio references from JSON data
+function extractAudioReferences(data, audioRefs = []) {
+  if (typeof data === 'string' && data.endsWith('.mp3')) {
+    audioRefs.push(data);
+  } else if (Array.isArray(data)) {
+    data.forEach(item => extractAudioReferences(item, audioRefs));
+  } else if (typeof data === 'object' && data !== null) {
+    for (const [key, value] of Object.entries(data)) {
+      // Check for audio fields
+      if (key === 'audio' || key === 'audio_en' || key === 'audio_vi') {
+        if (typeof value === 'string' && value.endsWith('.mp3')) {
+          audioRefs.push(value);
+        } else if (typeof value === 'object') {
+          // Handle { en: "file_en.mp3", vi: "file_vi.mp3" }
+          Object.values(value).forEach(v => {
+            if (typeof v === 'string' && v.endsWith('.mp3')) {
+              audioRefs.push(v);
+            }
+          });
+        }
+      } else {
+        extractAudioReferences(value, audioRefs);
+      }
+    }
+  }
+  return audioRefs;
+}
+
+// Validate audio file references
+function validateAudioReferences(content, filename, availableAudioFiles) {
+  const errors = [];
+  const audioRefs = extractAudioReferences(content);
+  
+  for (const audioRef of audioRefs) {
+    // Clean the path - remove leading slashes and audio/en/ or audio/vi/ prefixes
+    let cleanPath = audioRef.replace(/^\//, '').replace(/^audio\/(en|vi)\//, '');
+    
+    if (!availableAudioFiles.has(cleanPath) && !availableAudioFiles.has(audioRef)) {
+      errors.push(`Missing audio file: ${audioRef}`);
+    }
+  }
+  
+  return errors;
+}
+
 // Validate all room files
 function validateAllRooms() {
   console.log('🔍 Validating room JSON files...\n');
@@ -90,6 +162,11 @@ function validateAllRooms() {
   const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
   const files = fs.readdirSync(publicDir);
   const roomFiles = files.filter(f => f.endsWith('.json') && !f.startsWith('.'));
+  
+  // Get all available audio files
+  console.log('📁 Scanning audio files...');
+  const availableAudioFiles = getAllAudioFiles();
+  console.log(`   Found ${availableAudioFiles.size} audio files\n`);
 
   let totalErrors = 0;
   const results = [];
@@ -99,7 +176,9 @@ function validateAllRooms() {
     
     try {
       const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-      const errors = validateSchema(content, schema);
+      const schemaErrors = validateSchema(content, schema);
+      const audioErrors = validateAudioReferences(content, filename, availableAudioFiles);
+      const errors = [...schemaErrors, ...audioErrors];
 
       if (errors.length > 0) {
         totalErrors += errors.length;
