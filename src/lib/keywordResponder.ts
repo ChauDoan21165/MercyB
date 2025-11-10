@@ -195,10 +195,15 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
       entryId = matchedEntry.id;
       const audio = matchedEntry.audio;
       if (typeof audio === 'string') {
-        audioFile = audio.startsWith('/public/audio/') ? audio : `/public/audio/${audio}`;
+        // Files are in public/audio/, but served at /audio/
+        let path = audio.replace(/^\/+/, '').replace(/^public\//, '').replace(/^audio\//, '');
+        audioFile = `/audio/${path}`;
       } else if (audio && typeof audio === 'object') {
         const audioPath = audio.en || audio.vi;
-        audioFile = audioPath?.startsWith('/public/audio/') ? audioPath : `/public/audio/${audioPath}`;
+        if (audioPath) {
+          let path = audioPath.replace(/^\/+/, '').replace(/^public\//, '').replace(/^audio\//, '');
+          audioFile = `/audio/${path}`;
+        }
       }
     }
     // No fallback: if no exact/best match, return unmatched state
@@ -212,11 +217,15 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
       // Support audio in various formats
       const audio = matchedEntry.audio || matchedEntry.audio_file || matchedEntry.meta?.audio_file || matchedEntry.audioEn || matchedEntry.audio_en;
       if (typeof audio === 'string') {
-        // Audio files are in /public/audio/, ensure proper path
-        audioFile = audio.startsWith('/public/audio/') ? audio : `/public/audio/${audio.replace(/^\//, '')}`;
+        // Files are in public/audio/, but served at /audio/
+        let path = audio.replace(/^\/+/, '').replace(/^public\//, '').replace(/^audio\//, '');
+        audioFile = `/audio/${path}`;
       } else if (audio && typeof audio === 'object') {
         const audioPath = audio.en || audio.vi;
-        audioFile = audioPath?.startsWith('/public/audio/') ? audioPath : `/public/audio/${audioPath?.replace(/^\//, '')}`;
+        if (audioPath) {
+          let path = audioPath.replace(/^\/+/, '').replace(/^public\//, '').replace(/^audio\//, '');
+          audioFile = `/audio/${path}`;
+        }
       }
       entryId = matchedEntry.id || matchedEntry.artifact_id || matchedEntry.title;
     }
