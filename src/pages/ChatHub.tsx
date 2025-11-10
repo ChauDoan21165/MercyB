@@ -286,7 +286,13 @@ const ChatHub = () => {
   const sendEntryForKeyword = async (keyword: string) => {
     const typingMessageId = (Date.now() + 1).toString();
     const typingMessage: Message = { id: typingMessageId, text: '...', isUser: false, timestamp: new Date() };
-    setMainMessages(prev => [...prev, typingMessage]);
+    
+    // Replace the last bot message instead of appending (keep only welcome + latest essay)
+    setMainMessages(prev => {
+      const filtered = prev.filter(m => m.isUser || m.id === 'welcome');
+      return [...filtered, typingMessage];
+    });
+    
     try {
       const entry = resolveEntryByKeyword(keyword);
       console.log('=== KEYWORD MATCH DEBUG ===');
