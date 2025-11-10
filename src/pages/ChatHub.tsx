@@ -668,6 +668,20 @@ const ChatHub = () => {
          
           <div className="text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
+              {isAdmin && roomId && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigator.clipboard.writeText(roomId);
+                    toast({
+                      title: "Copied!",
+                      description: `Room ID: ${roomId}`,
+                    });
+                  }}
+                  className="w-[1em] h-[1em] rounded-full bg-blue-500 hover:bg-blue-600 cursor-pointer flex-shrink-0 transition-colors"
+                  title="Copy room ID for JSON filename"
+                />
+              )}
               <h2 className="text-lg font-semibold">{currentRoom.nameEn}</h2>
               {info && (
                 <Badge variant="secondary" className="text-xs">
@@ -734,7 +748,25 @@ const ChatHub = () => {
         {keywordMenu && keywordMenu.en && keywordMenu.vi && (
           <Card className="p-4 shadow-soft">
             <div className="space-y-2">
-              <h4 className="text-sm font-semibold text-muted-foreground">Keywords / Từ Khóa</h4>
+              <div className="flex items-center gap-2">
+                {isAdmin && matchedEntryId && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const entry = mergedEntries.find(e => e.slug === matchedEntryId);
+                      const audioFile = entry?.audio || matchedEntryId;
+                      navigator.clipboard.writeText(audioFile);
+                      toast({
+                        title: "Copied!",
+                        description: `Audio: ${audioFile}`,
+                      });
+                    }}
+                    className="w-[1em] h-[1em] rounded-full bg-red-500 hover:bg-red-600 cursor-pointer flex-shrink-0 transition-colors"
+                    title="Copy audio filename"
+                  />
+                )}
+                <h4 className="text-sm font-semibold text-muted-foreground">Keywords / Từ Khóa</h4>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {keywordMenu.en.map((keywordEn, idx) => {
                   const keywordVi = keywordMenu.vi[idx] || '';
