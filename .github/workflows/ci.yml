@@ -24,6 +24,27 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Generate room registry
+        run: node scripts/generate-room-registry.js
+
+      - name: Check for registry changes
+        id: registry_check
+        run: |
+          if git diff --exit-code src/lib/roomManifest.ts src/lib/roomDataImports.ts; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit registry changes
+        if: steps.registry_check.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add src/lib/roomManifest.ts src/lib/roomDataImports.ts
+          git commit -m "chore: auto-generate room registry [skip ci]"
+          git push
+
       - name: Run TypeScript checks
         run: npx tsc --noEmit
 
