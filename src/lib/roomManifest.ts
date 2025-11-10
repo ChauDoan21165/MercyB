@@ -23,6 +23,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "bipolar-support-vip1": "data/Bipolar_Support_vip1.json",
   "bipolar-support-vip2": "data/Bipolar_Support_vip2.json",
   "bipolar-support-vip3": "data/Bipolar_Support_vip3.json",
+  "bridge-to-reality-vip4": "data/Bridge_to_Reality_vip4.json",
   "burnout-recovery-free": "data/Burnout_Recovery_free.json",
   "burnout-recovery-vip1": "data/Burnout_Recovery_vip1.json",
   "burnout-recovery-vip2": "data/Burnout_Recovery_vip2.json",

@@ -24,6 +24,7 @@ export const roomDataMap: Record<string, RoomData> = {
   "bipolar-support-vip1": { id: "bipolar-support-vip1", nameEn: "Bipolar Support", nameVi: "Hỗ Trợ Rối Loạn Lưỡng Cực", tier: "vip1", hasData: true },
   "bipolar-support-vip2": { id: "bipolar-support-vip2", nameEn: "Bipolar Support", nameVi: "Hỗ Trợ Rối Loạn Lưỡng Cực", tier: "vip2", hasData: true },
   "bipolar-support-vip3": { id: "bipolar-support-vip3", nameEn: "Bipolar Support", nameVi: "Hỗ Trợ Rối Loạn Lưỡng Cực", tier: "vip3", hasData: true },
+  "bridge-to-reality-vip4": { id: "bridge-to-reality-vip4", nameEn: "Bridge to Reality", nameVi: "Cầu Nối Thực Tại", tier: "vip4", hasData: true },
   "building-simple-routines-free": { id: "building-simple-routines-free", nameEn: "Building Simple Routines", nameVi: "Xây Dựng Thói Quen Đơn Giản", tier: "free", hasData: true },
   "building-simple-routines-vip1": { id: "building-simple-routines-vip1", nameEn: "Building Simple Routines", nameVi: "Xây Dựng Thói Quen Đơn Giản", tier: "vip1", hasData: true },
   "building-simple-routines-vip2": { id: "building-simple-routines-vip2", nameEn: "Building Simple Routines", nameVi: "Xây Dựng Thói Quen Đơn Giản", tier: "vip2", hasData: true },
