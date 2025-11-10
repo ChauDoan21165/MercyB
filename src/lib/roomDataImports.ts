@@ -6,175 +6,802 @@
 import { RoomData } from "@/lib/roomData";
 
 export const roomDataMap: Record<string, RoomData> = {
-  "addiction-support-free": { id: "addiction-support-free", nameEn: "Addiction Support", nameVi: "Hỗ Trợ Cai Nghiện", tier: "free", hasData: true },
-  "addiction-support-vip1": { id: "addiction-support-vip1", nameEn: "Addiction Support", nameVi: "Hỗ Trợ Cai Nghiện", tier: "vip1", hasData: true },
-  "adhd-support-free": { id: "adhd-support-free", nameEn: "ADHD Support", nameVi: "Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý", tier: "free", hasData: true },
-  "adhd-support-vip1": { id: "adhd-support-vip1", nameEn: "ADHD Support", nameVi: "Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý", tier: "vip1", hasData: true },
-  "adhd-support-vip2": { id: "adhd-support-vip2", nameEn: "ADHD Support", nameVi: "Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý", tier: "vip2", hasData: true },
-  "adhd-support-vip3": { id: "adhd-support-vip3", nameEn: "ADHD Support", nameVi: "Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý", tier: "vip3", hasData: true },
-  "ai-free": { id: "ai-free", nameEn: "AI", nameVi: "AI", tier: "free", hasData: true },
-  "ai-vip1": { id: "ai-vip1", nameEn: "AI", nameVi: "AI", tier: "vip1", hasData: true },
-  "ai-vip2": { id: "ai-vip2", nameEn: "AI", nameVi: "AI", tier: "vip2", hasData: true },
-  "ai-vip3": { id: "ai-vip3", nameEn: "AI", nameVi: "AI", tier: "vip3", hasData: true },
-  "anxiety-relief-free": { id: "anxiety-relief-free", nameEn: "Anxiety Relief", nameVi: "Giảm Lo Âu", tier: "free", hasData: true },
-  "anxiety-relief-vip1": { id: "anxiety-relief-vip1", nameEn: "Anxiety Relief", nameVi: "Giảm Lo Âu", tier: "vip1", hasData: true },
-  "anxiety-relief-vip2": { id: "anxiety-relief-vip2", nameEn: "Anxiety Relief", nameVi: "Giảm Lo Âu", tier: "vip2", hasData: true },
-  "anxiety-relief-vip3": { id: "anxiety-relief-vip3", nameEn: "Anxiety Relief", nameVi: "Giảm Lo Âu", tier: "vip3", hasData: true },
-  "bipolar-support-free": { id: "bipolar-support-free", nameEn: "Bipolar Support", nameVi: "Hỗ Trợ Rối Loạn Lưỡng Cực", tier: "free", hasData: true },
-  "bipolar-support-vip1": { id: "bipolar-support-vip1", nameEn: "Bipolar Support", nameVi: "Hỗ Trợ Rối Loạn Lưỡng Cực", tier: "vip1", hasData: true },
-  "bipolar-support-vip2": { id: "bipolar-support-vip2", nameEn: "Bipolar Support", nameVi: "Hỗ Trợ Rối Loạn Lưỡng Cực", tier: "vip2", hasData: true },
-  "bipolar-support-vip3": { id: "bipolar-support-vip3", nameEn: "Bipolar Support", nameVi: "Hỗ Trợ Rối Loạn Lưỡng Cực", tier: "vip3", hasData: true },
-  "bridge-to-reality-vip4": { id: "bridge-to-reality-vip4", nameEn: "Bridge to Reality", nameVi: "Cầu Nối Thực Tại", tier: "vip4", hasData: true },
-  "building-simple-routines-free": { id: "building-simple-routines-free", nameEn: "Building Simple Routines", nameVi: "Xây Dựng Thói Quen Đơn Giản", tier: "free", hasData: true },
-  "building-simple-routines-vip1": { id: "building-simple-routines-vip1", nameEn: "Building Simple Routines", nameVi: "Xây Dựng Thói Quen Đơn Giản", tier: "vip1", hasData: true },
-  "building-simple-routines-vip2": { id: "building-simple-routines-vip2", nameEn: "Building Simple Routines", nameVi: "Xây Dựng Thói Quen Đơn Giản", tier: "vip2", hasData: true },
-  "building-simple-routines-vip3": { id: "building-simple-routines-vip3", nameEn: "Building Simple Routines", nameVi: "Xây Dựng Thói Quen Đơn Giản", tier: "vip3", hasData: true },
-  "burnout-recovery-free": { id: "burnout-recovery-free", nameEn: "Burnout Recovery", nameVi: "Phục Hồi Kiệt Sức", tier: "free", hasData: true },
-  "burnout-recovery-vip1": { id: "burnout-recovery-vip1", nameEn: "Burnout Recovery", nameVi: "Phục Hồi Kiệt Sức", tier: "vip1", hasData: true },
-  "burnout-recovery-vip2": { id: "burnout-recovery-vip2", nameEn: "Burnout Recovery", nameVi: "Phục Hồi Kiệt Sức", tier: "vip2", hasData: true },
-  "burnout-recovery-vip3": { id: "burnout-recovery-vip3", nameEn: "Burnout Recovery", nameVi: "Phục Hồi Kiệt Sức", tier: "vip3", hasData: true },
-  "confidence-free": { id: "confidence-free", nameEn: "Confidence", nameVi: "Tự Tin", tier: "free", hasData: true },
-  "confidence-vip1": { id: "confidence-vip1", nameEn: "Confidence", nameVi: "Tự Tin", tier: "vip1", hasData: true },
-  "confidence-vip2": { id: "confidence-vip2", nameEn: "Confidence", nameVi: "Tự Tin", tier: "vip2", hasData: true },
-  "confidence-vip3": { id: "confidence-vip3", nameEn: "Confidence", nameVi: "Tự Tin", tier: "vip3", hasData: true },
-  "courage-to-begin-vip4": { id: "courage-to-begin-vip4", nameEn: "Courage to Begin", nameVi: "Dám Bắt Đầu", tier: "vip4", hasData: true },
-  "depression-support-free": { id: "depression-support-free", nameEn: "Depression Support", nameVi: "Hỗ Trợ Trầm Cảm", tier: "free", hasData: true },
-  "depression-support-vip1": { id: "depression-support-vip1", nameEn: "Depression Support", nameVi: "Hỗ Trợ Trầm Cảm", tier: "vip1", hasData: true },
-  "depression-support-vip2": { id: "depression-support-vip2", nameEn: "Depression Support", nameVi: "Hỗ Trợ Trầm Cảm", tier: "vip2", hasData: true },
-  "depression-support-vip3": { id: "depression-support-vip3", nameEn: "Depression Support", nameVi: "Hỗ Trợ Trầm Cảm", tier: "vip3", hasData: true },
-  "eating-disorder-support-free": { id: "eating-disorder-support-free", nameEn: "Eating Disorder Support", nameVi: "Hỗ Trợ Rối Loạn Ăn Uống", tier: "free", hasData: true },
-  "eating-disorder-support-vip1": { id: "eating-disorder-support-vip1", nameEn: "Eating Disorder Support", nameVi: "Hỗ Trợ Rối Loạn Ăn Uống", tier: "vip1", hasData: true },
-  "eating-disorder-support-vip2": { id: "eating-disorder-support-vip2", nameEn: "Eating Disorder Support", nameVi: "Hỗ Trợ Rối Loạn Ăn Uống", tier: "vip2", hasData: true },
-  "eating-disorder-support-vip3": { id: "eating-disorder-support-vip3", nameEn: "Eating Disorder Support", nameVi: "Hỗ Trợ Rối Loạn Ăn Uống", tier: "vip3", hasData: true },
-  "finance-calm-money-clear-future-preview-free": { id: "finance-calm-money-clear-future-preview-free", nameEn: "Finance: Calm Money, Clear Future - Preview", nameVi: "Tài Chính: Tiền Bình Yên, Tương Lai Rõ Ràng - Xem Trước", tier: "free", hasData: true },
-  "finding-gods-peace-free": { id: "finding-gods-peace-free", nameEn: "Finding Gods Peace", nameVi: "Tìm Bình Yên Của Chúa", tier: "free", hasData: true },
-  "finding-gods-peace-vip1": { id: "finding-gods-peace-vip1", nameEn: "Finding Gods Peace", nameVi: "Tìm Bình Yên Của Chúa", tier: "vip1", hasData: true },
-  "finding-gods-peace-vip2": { id: "finding-gods-peace-vip2", nameEn: "Finding Gods Peace", nameVi: "Tìm Bình Yên Của Chúa", tier: "vip2", hasData: true },
-  "finding-gods-peace-vip3": { id: "finding-gods-peace-vip3", nameEn: "Finding Gods Peace", nameVi: "Tìm Bình Yên Của Chúa", tier: "vip3", hasData: true },
-  "god-with-us-free": { id: "god-with-us-free", nameEn: "God With Us", nameVi: "Thiên Chúa Cùng Ta", tier: "free", hasData: true },
-  "god-with-us-vip1": { id: "god-with-us-vip1", nameEn: "God With Us", nameVi: "Thiên Chúa Cùng Ta", tier: "vip1", hasData: true },
-  "god-with-us-vip2": { id: "god-with-us-vip2", nameEn: "God With Us", nameVi: "Thiên Chúa Cùng Ta", tier: "vip2", hasData: true },
-  "god-with-us-vip3": { id: "god-with-us-vip3", nameEn: "God With Us", nameVi: "Thiên Chúa Cùng Ta", tier: "vip3", hasData: true },
-  "keep-soul-calm-free": { id: "keep-soul-calm-free", nameEn: "Keep Soul Calm", nameVi: "Giữ Tâm Hồn Bình Yên", tier: "free", hasData: true },
-  "keep-soul-calm-vip1": { id: "keep-soul-calm-vip1", nameEn: "Keep Soul Calm", nameVi: "Giữ Tâm Hồn Bình Yên", tier: "vip1", hasData: true },
-  "keep-soul-calm-vip2": { id: "keep-soul-calm-vip2", nameEn: "Keep Soul Calm", nameVi: "Giữ Tâm Hồn Bình Yên", tier: "vip2", hasData: true },
-  "keep-soul-calm-vip3": { id: "keep-soul-calm-vip3", nameEn: "Keep Soul Calm", nameVi: "Giữ Tâm Hồn Bình Yên", tier: "vip3", hasData: true },
-  "meaning-of-life-free": { id: "meaning-of-life-free", nameEn: "Meaning Of Life", nameVi: "Ý Nghĩa Cuộc Sống", tier: "free", hasData: true },
-  "meaning-of-life-vip1": { id: "meaning-of-life-vip1", nameEn: "Meaning Of Life", nameVi: "Ý Nghĩa Cuộc Sống", tier: "vip1", hasData: true },
-  "meaning-of-life-vip2": { id: "meaning-of-life-vip2", nameEn: "Meaning Of Life", nameVi: "Ý Nghĩa Cuộc Sống", tier: "vip2", hasData: true },
-  "meaning-of-life-vip3": { id: "meaning-of-life-vip3", nameEn: "Meaning Of Life", nameVi: "Ý Nghĩa Cuộc Sống", tier: "vip3", hasData: true },
-  "mens-mental-health-free": { id: "mens-mental-health-free", nameEn: "Mens Mental Health", nameVi: "Sức Khỏe Tinh Thần Nam Giới", tier: "free", hasData: true },
-  "mens-mental-health-vip1": { id: "mens-mental-health-vip1", nameEn: "Mens Mental Health", nameVi: "Sức Khỏe Tinh Thần Nam Giới", tier: "vip1", hasData: true },
-  "mens-mental-health-vip2": { id: "mens-mental-health-vip2", nameEn: "Mens Mental Health", nameVi: "Sức Khỏe Tinh Thần Nam Giới", tier: "vip2", hasData: true },
-  "mens-mental-health-vip3": { id: "mens-mental-health-vip3", nameEn: "Mens Mental Health", nameVi: "Sức Khỏe Tinh Thần Nam Giới", tier: "vip3", hasData: true },
-  "mental-health-free": { id: "mental-health-free", nameEn: "Mental Health", nameVi: "Sức Khỏe Tâm Thần", tier: "free", hasData: true },
-  "mental-health-vip1": { id: "mental-health-vip1", nameEn: "Mental Health", nameVi: "Sức Khỏe Tâm Thần", tier: "vip1", hasData: true },
-  "mental-health-vip2": { id: "mental-health-vip2", nameEn: "Mental Health", nameVi: "Sức Khỏe Tâm Thần", tier: "vip2", hasData: true },
-  "mental-health-vip3": { id: "mental-health-vip3", nameEn: "Mental Health", nameVi: "Sức Khỏe Tâm Thần", tier: "vip3", hasData: true },
-  "mental-sharpness-free": { id: "mental-sharpness-free", nameEn: "Mental Sharpness", nameVi: "Trí Tuệ Sắc Bén", tier: "free", hasData: true },
-  "mental-sharpness-vip1": { id: "mental-sharpness-vip1", nameEn: "Mental Sharpness", nameVi: "Trí Tuệ Sắc Bén", tier: "vip1", hasData: true },
-  "mental-sharpness-vip2": { id: "mental-sharpness-vip2", nameEn: "Mental Sharpness", nameVi: "Trí Tuệ Sắc Bén", tier: "vip2", hasData: true },
-  "mental-sharpness-vip3": { id: "mental-sharpness-vip3", nameEn: "Mental Sharpness", nameVi: "Trí Tuệ Sắc Bén", tier: "vip3", hasData: true },
-  "mindfulness-free": { id: "mindfulness-free", nameEn: "Mindfulness", nameVi: "Thực Hành Chánh Niệm", tier: "free", hasData: true },
-  "mindfulness-vip1": { id: "mindfulness-vip1", nameEn: "Mindfulness", nameVi: "Thực Hành Chánh Niệm", tier: "vip1", hasData: true },
-  "mindfulness-vip2": { id: "mindfulness-vip2", nameEn: "Mindfulness", nameVi: "Thực Hành Chánh Niệm", tier: "vip2", hasData: true },
-  "mindfulness-vip3": { id: "mindfulness-vip3", nameEn: "Mindfulness", nameVi: "Thực Hành Chánh Niệm", tier: "vip3", hasData: true },
-  "nutrition-free": { id: "nutrition-free", nameEn: "Nutrition", nameVi: "Dinh Dưỡng", tier: "free", hasData: true },
-  "nutrition-vip1": { id: "nutrition-vip1", nameEn: "Nutrition", nameVi: "Dinh Dưỡng", tier: "vip1", hasData: true },
-  "nutrition-vip2": { id: "nutrition-vip2", nameEn: "Nutrition", nameVi: "Dinh Dưỡng", tier: "vip2", hasData: true },
-  "nutrition-vip3": { id: "nutrition-vip3", nameEn: "Nutrition", nameVi: "Dinh Dưỡng", tier: "vip3", hasData: true },
-  "obesity-free": { id: "obesity-free", nameEn: "Obesity", nameVi: "Quản Lý Cân Nặng", tier: "free", hasData: true },
-  "obesity-vip1": { id: "obesity-vip1", nameEn: "Obesity", nameVi: "Quản Lý Cân Nặng", tier: "vip1", hasData: true },
-  "obesity-vip2": { id: "obesity-vip2", nameEn: "Obesity", nameVi: "Quản Lý Cân Nặng", tier: "vip2", hasData: true },
-  "obesity-vip3": { id: "obesity-vip3", nameEn: "Obesity", nameVi: "Quản Lý Cân Nặng", tier: "vip3", hasData: true },
-  "overcome-storm-free": { id: "overcome-storm-free", nameEn: "Overcome Storm", nameVi: "Vượt Qua Bão Tố", tier: "free", hasData: true },
-  "overcome-storm-vip1": { id: "overcome-storm-vip1", nameEn: "Overcome Storm", nameVi: "Vượt Qua Bão Tố", tier: "vip1", hasData: true },
-  "overcome-storm-vip2": { id: "overcome-storm-vip2", nameEn: "Overcome Storm", nameVi: "Vượt Qua Bão Tố", tier: "vip2", hasData: true },
-  "overcome-storm-vip3": { id: "overcome-storm-vip3", nameEn: "Overcome Storm", nameVi: "Vượt Qua Bão Tố", tier: "vip3", hasData: true },
-  "philosophy-of-everyday-free": { id: "philosophy-of-everyday-free", nameEn: "Philosophy Of Everyday", nameVi: "Triết Học Đời Thường", tier: "free", hasData: true },
-  "philosophy-of-everyday-vip1": { id: "philosophy-of-everyday-vip1", nameEn: "Philosophy Of Everyday", nameVi: "Triết Học Đời Thường", tier: "vip1", hasData: true },
-  "philosophy-of-everyday-vip2": { id: "philosophy-of-everyday-vip2", nameEn: "Philosophy Of Everyday", nameVi: "Triết Học Đời Thường", tier: "vip2", hasData: true },
-  "philosophy-of-everyday-vip3": { id: "philosophy-of-everyday-vip3", nameEn: "Philosophy Of Everyday", nameVi: "Triết Học Đời Thường", tier: "vip3", hasData: true },
-  "physical-fitness-and-nutrition-free": { id: "physical-fitness-and-nutrition-free", nameEn: "Physical Fitness and Nutrition", nameVi: "Thể Chất & Dinh Dưỡng", tier: "free", hasData: true },
-  "physical-fitness-and-nutrition-vip1": { id: "physical-fitness-and-nutrition-vip1", nameEn: "Physical Fitness and Nutrition", nameVi: "Thể Chất & Dinh Dưỡng", tier: "vip1", hasData: true },
-  "physical-fitness-and-nutrition-vip2": { id: "physical-fitness-and-nutrition-vip2", nameEn: "Physical Fitness and Nutrition", nameVi: "Thể Chất & Dinh Dưỡng", tier: "vip2", hasData: true },
-  "physical-fitness-and-nutrition-vip3": { id: "physical-fitness-and-nutrition-vip3", nameEn: "Physical Fitness and Nutrition", nameVi: "Thể Chất & Dinh Dưỡng", tier: "vip3", hasData: true },
-  "productivity-and-focus-free": { id: "productivity-and-focus-free", nameEn: "Productivity and Focus", nameVi: "Năng Suất & Tập Trung", tier: "free", hasData: true },
-  "productivity-and-focus-vip1": { id: "productivity-and-focus-vip1", nameEn: "Productivity and Focus", nameVi: "Năng Suất & Tập Trung", tier: "vip1", hasData: true },
-  "productivity-and-focus-vip2": { id: "productivity-and-focus-vip2", nameEn: "Productivity and Focus", nameVi: "Năng Suất & Tập Trung", tier: "vip2", hasData: true },
-  "productivity-and-focus-vip3": { id: "productivity-and-focus-vip3", nameEn: "Productivity and Focus", nameVi: "Năng Suất & Tập Trung", tier: "vip3", hasData: true },
-  "relationship-healing-free": { id: "relationship-healing-free", nameEn: "Relationship Healing", nameVi: "Hàn Gắn Mối Quan Hệ", tier: "free", hasData: true },
-  "relationship-healing-vip1": { id: "relationship-healing-vip1", nameEn: "Relationship Healing", nameVi: "Hàn Gắn Mối Quan Hệ", tier: "vip1", hasData: true },
-  "relationship-healing-vip2": { id: "relationship-healing-vip2", nameEn: "Relationship Healing", nameVi: "Hàn Gắn Mối Quan Hệ", tier: "vip2", hasData: true },
-  "relationship-healing-vip3": { id: "relationship-healing-vip3", nameEn: "Relationship Healing", nameVi: "Hàn Gắn Mối Quan Hệ", tier: "vip3", hasData: true },
-  "resilience-and-adaptation-vip4": { id: "resilience-and-adaptation-vip4", nameEn: "Resilience and Adaptation", nameVi: "Khả Năng Phục Hồi và Thích Nghi", tier: "vip4", hasData: true },
-  "career-community-vip4": { id: "career-community-vip4", nameEn: "Career Community", nameVi: "Cộng Đồng Nghề Nghiệp", tier: "vip4", hasData: true },
-  "sexuality-and-curiosity-free": { id: "sexuality-and-curiosity-free", nameEn: "Sexuality & Curiosity", nameVi: "Tính Dục & Sự Tò Mò", tier: "free", hasData: true },
-  "sexuality-and-curiosity-and-culture-vip3": { id: "sexuality-and-curiosity-and-culture-vip3", nameEn: "Sexuality & Curiosity & Culture", nameVi: "Tính Dục & Sự Tò Mò & Văn Hóa", tier: "vip3", hasData: true },
-  "sexuality-curiosity-vip3-sub1": { id: "sexuality-curiosity-vip3-sub1", nameEn: "Sacred Body, Curious Self", nameVi: "Thân Thể Linh Thiêng, Bản Ngã Tò Mò", tier: "vip3", hasData: true },
-  "sexuality-curiosity-vip3-sub2": { id: "sexuality-curiosity-vip3-sub2", nameEn: "Relational Intelligence & Erotic Communication", nameVi: "Thông Minh Quan Hệ & Giao Tiếp Gợi Cảm", tier: "vip3", hasData: true },
-  "sexuality-curiosity-vip3-sub3": { id: "sexuality-curiosity-vip3-sub3", nameEn: "Calm Confident Sexual Health", nameVi: "Sức Khỏe Tình Dục Bình Tĩnh & Tự Tin", tier: "vip3", hasData: true },
-  "sexuality-curiosity-vip3-sub4": { id: "sexuality-curiosity-vip3-sub4", nameEn: "Sexual Health and Safety", nameVi: "Sức Khỏe và An Toàn Tình Dục", tier: "vip3", hasData: true },
-  "sexuality-curiosity-vip3-sub5": { id: "sexuality-curiosity-vip3-sub5", nameEn: "Diverse Desires & Belonging", nameVi: "Khao Khát Đa Dạng & Thuộc Về", tier: "vip3", hasData: true },
-  "sexuality-curiosity-vip3-sub6": { id: "sexuality-curiosity-vip3-sub6", nameEn: "Erotic Wisdom for Life", nameVi: "Trí Tuệ Gợi Cảm Trọn Đời", tier: "vip3", hasData: true },
-  "finance-glory-vip3": { id: "finance-glory-vip3", nameEn: "Finance: Calm Money, Clear Future", nameVi: "Tài Chính: Tiền Bình Yên, Tương Lai Rõ Ràng", tier: "vip3", hasData: true },
-  "finance-calm-money-sub1-vip3": { id: "finance-calm-money-sub1-vip3", nameEn: "Money & Your Nervous System", nameVi: "Tiền & Hệ Thống Thần Kinh", tier: "vip3", hasData: true },
-  "finance-calm-money-sub2-vip3": { id: "finance-calm-money-sub2-vip3", nameEn: "Money Basics That Actually Work", nameVi: "Cơ Bản Về Tiền Thực Sự Hiệu Quả", tier: "vip3", hasData: true },
-  "finance-calm-money-sub3-vip3": { id: "finance-calm-money-sub3-vip3", nameEn: "Growing Your Money with Less Worry", nameVi: "Tăng Trưởng Tiền Với Ít Lo Lắng Hơn", tier: "vip3", hasData: true },
-  "finance-calm-money-sub4-vip3": { id: "finance-calm-money-sub4-vip3", nameEn: "Protecting What Matters", nameVi: "Bảo Vệ Những Gì Quan Trọng", tier: "vip3", hasData: true },
-  "finance-calm-money-sub5-vip3": { id: "finance-calm-money-sub5-vip3", nameEn: "Growing Bigger, Staying Grounded", nameVi: "Phát Triển Lớn, Giữ Vững Nền Tảng", tier: "vip3", hasData: true },
-  "finance-calm-money-sub6-vip3": { id: "finance-calm-money-sub6-vip3", nameEn: "Legacy & Peace of Mind", nameVi: "Di Sản & Bình Yên Tâm Hồn", tier: "vip3", hasData: true },
-  "strategy-in-life-1-vip3": { id: "strategy-in-life-1-vip3", nameEn: "Strategy in Life - Foundations", nameVi: "Chiến Lược Cuộc Sống - Nền Tảng", tier: "vip3", hasData: true },
-  "strategy-in-life-2-vip3": { id: "strategy-in-life-2-vip3", nameEn: "Strategy in Life - Advanced Tactics", nameVi: "Chiến Lược Cuộc Sống - Chiến Thuật Nâng Cao", tier: "vip3", hasData: true },
-  "strategy-in-life-3-vip3": { id: "strategy-in-life-3-vip3", nameEn: "Strategy in Life - Mastery & Legacy", nameVi: "Chiến Lược Cuộc Sống - Tinh Thông & Di Sản", tier: "vip3", hasData: true },
-  "shadow-work-free": { id: "shadow-work-free", nameEn: "Shadow Work", nameVi: "Công Việc Bóng Tối", tier: "free", hasData: true },
-  "shadow-work-vip1": { id: "shadow-work-vip1", nameEn: "Shadow Work", nameVi: "Công Việc Bóng Tối", tier: "vip1", hasData: true },
-  "shadow-work-vip2": { id: "shadow-work-vip2", nameEn: "Shadow Work", nameVi: "Công Việc Bóng Tối", tier: "vip2", hasData: true },
-  "shadow-work-vip3": { id: "shadow-work-vip3", nameEn: "Shadow Work", nameVi: "Công Việc Bóng Tối", tier: "vip3", hasData: true },
-  "sleep-improvement-free": { id: "sleep-improvement-free", nameEn: "Sleep Improvement", nameVi: "Cải Thiện Giấc Ngủ", tier: "free", hasData: true },
-  "sleep-improvement-vip1": { id: "sleep-improvement-vip1", nameEn: "Sleep Improvement", nameVi: "Cải Thiện Giấc Ngủ", tier: "vip1", hasData: true },
-  "sleep-improvement-vip2": { id: "sleep-improvement-vip2", nameEn: "Sleep Improvement", nameVi: "Cải Thiện Giấc Ngủ", tier: "vip2", hasData: true },
-  "sleep-improvement-vip3": { id: "sleep-improvement-vip3", nameEn: "Sleep Improvement", nameVi: "Cải Thiện Giấc Ngủ", tier: "vip3", hasData: true },
-  "social-anxiety-free": { id: "social-anxiety-free", nameEn: "Social Anxiety", nameVi: "Lo Âu Xã Hội", tier: "free", hasData: true },
-  "social-anxiety-vip1": { id: "social-anxiety-vip1", nameEn: "Social Anxiety", nameVi: "Lo Âu Xã Hội", tier: "vip1", hasData: true },
-  "social-anxiety-vip2": { id: "social-anxiety-vip2", nameEn: "Social Anxiety", nameVi: "Lo Âu Xã Hội", tier: "vip2", hasData: true },
-  "social-anxiety-vip3": { id: "social-anxiety-vip3", nameEn: "Social Anxiety", nameVi: "Lo Âu Xã Hội", tier: "vip3", hasData: true },
-  "soulmate-free": { id: "soulmate-free", nameEn: "Soulmate", nameVi: "Tìm Người Tri Kỷ", tier: "free", hasData: true },
-  "soulmate-vip1": { id: "soulmate-vip1", nameEn: "Soulmate", nameVi: "Tìm Người Tri Kỷ", tier: "vip1", hasData: true },
-  "soulmate-vip2": { id: "soulmate-vip2", nameEn: "Soulmate", nameVi: "Tìm Người Tri Kỷ", tier: "vip2", hasData: true },
-  "soulmate-vip3": { id: "soulmate-vip3", nameEn: "Soulmate", nameVi: "Tìm Người Tri Kỷ", tier: "vip3", hasData: true },
-  "stoicism-free": { id: "stoicism-free", nameEn: "Stoicism", nameVi: "Chủ Nghĩa Khắc Kỷ", tier: "free", hasData: true },
-  "stoicism-vip1": { id: "stoicism-vip1", nameEn: "Stoicism", nameVi: "Chủ Nghĩa Khắc Kỷ", tier: "vip1", hasData: true },
-  "stoicism-vip2": { id: "stoicism-vip2", nameEn: "Stoicism", nameVi: "Chủ Nghĩa Khắc Kỷ", tier: "vip2", hasData: true },
-  "stoicism-vip3": { id: "stoicism-vip3", nameEn: "Stoicism", nameVi: "Chủ Nghĩa Khắc Kỷ", tier: "vip3", hasData: true },
-  "stress-management-free": { id: "stress-management-free", nameEn: "Stress Management", nameVi: "Quản Lý Căng Thẳng", tier: "free", hasData: true },
-  "stress-management-vip1": { id: "stress-management-vip1", nameEn: "Stress Management", nameVi: "Quản Lý Căng Thẳng", tier: "vip1", hasData: true },
-  "stress-management-vip2": { id: "stress-management-vip2", nameEn: "Stress Management", nameVi: "Quản Lý Căng Thẳng", tier: "vip2", hasData: true },
-  "stress-management-vip3": { id: "stress-management-vip3", nameEn: "Stress Management", nameVi: "Quản Lý Căng Thẳng", tier: "vip3", hasData: true },
-  "weight-loss-and-fitness-free": { id: "weight-loss-and-fitness-free", nameEn: "Weight Loss and Fitness", nameVi: "Giảm Cân & Thể Hình", tier: "free", hasData: true },
-  "weight-loss-and-fitness-vip1": { id: "weight-loss-and-fitness-vip1", nameEn: "Weight Loss and Fitness", nameVi: "Giảm Cân & Thể Hình", tier: "vip1", hasData: true },
-  "weight-loss-and-fitness-vip2": { id: "weight-loss-and-fitness-vip2", nameEn: "Weight Loss and Fitness", nameVi: "Giảm Cân & Thể Hình", tier: "vip2", hasData: true },
-  "weight-loss-and-fitness-vip3": { id: "weight-loss-and-fitness-vip3", nameEn: "Weight Loss and Fitness", nameVi: "Giảm Cân & Thể Hình", tier: "vip3", hasData: true },
-  "women-health-free": { id: "women-health-free", nameEn: "Women Health", nameVi: "Sức Khỏe Phụ Nữ", tier: "free", hasData: true },
-  "women-health-vip1": { id: "women-health-vip1", nameEn: "Women Health", nameVi: "Sức Khỏe Phụ Nữ", tier: "vip1", hasData: true },
-  "women-health-vip2": { id: "women-health-vip2", nameEn: "Women Health", nameVi: "Sức Khỏe Phụ Nữ", tier: "vip2", hasData: true },
-  "women-health-vip3": { id: "women-health-vip3", nameEn: "Women Health", nameVi: "Sức Khỏe Phụ Nữ", tier: "vip3", hasData: true },
-  "career-consultant-free": { id: "career-consultant-free", nameEn: "Career Consultant Free", nameVi: "Chuyên Gia Định Hướng Nghề Nghiệp Miễn Phí", tier: "free", hasData: true },
-  // VIP4 Career Path Rooms (in journey order)
-  "discover-self-vip4-career-1": { id: "discover-self-vip4-career-1", nameEn: "Discover Self", nameVi: "Khám Phá Bản Thân", tier: "vip4", hasData: true },
-  "explore-world-vip4-career-i-2": { id: "explore-world-vip4-career-i-2", nameEn: "Explore World I", nameVi: "Khám Phá Thế Giới I", tier: "vip4", hasData: true },
-  "explore-world-vip4-career-ii-2": { id: "explore-world-vip4-career-ii-2", nameEn: "Explore World II", nameVi: "Khám Phá Thế Giới II", tier: "vip4", hasData: true },
-  "build-skills-vip4-career-3": { id: "build-skills-vip4-career-3", nameEn: "Build Skills", nameVi: "Xây Dựng Kỹ Năng", tier: "vip4", hasData: true },
-  "build-skills-vip4-career-3-ii": { id: "build-skills-vip4-career-3-ii", nameEn: "Build Skills Summary", nameVi: "Tóm Tắt Xây Dựng Kỹ Năng", tier: "vip4", hasData: true },
-  "launch-career-vip4-career-4-ii": { id: "launch-career-vip4-career-4-ii", nameEn: "Launch Career Summary", nameVi: "Tóm Tắt Khởi Nghiệp", tier: "vip4", hasData: true },
-  // Uncomment below when JSON files are created:
-  // "find-fit-vip4-career-5": { id: "find-fit-vip4-career-5", nameEn: "Find Fit", nameVi: "Tìm Sự Phù Hợp", tier: "vip4", hasData: true },
-  "grow-wealth-vip4-career-6": { id: "grow-wealth-vip4-career-6", nameEn: "Grow Wealth", nameVi: "Phát Triển Tài Chính", tier: "vip4", hasData: true },
-  // "master-climb-vip4-career-7": { id: "master-climb-vip4-career-7", nameEn: "Master Climb - CareerSpark", nameVi: "Thành Thạo Leo Lên - CareerSpark", tier: "vip4", hasData: true },
-  // "lead-impact-vip4-career-8": { id: "lead-impact-vip4-career-8", nameEn: "Lead Impact - CareerSpark", nameVi: "Dẫn Dắt Tác Động - CareerSpark", tier: "vip4", hasData: true },
-  // New VIP4 rooms
-  "choosing-your-path-vip4": { id: "choosing-your-path-vip4", nameEn: "Choosing Your Path", nameVi: "Chọn Con Đường Của Bạn", tier: "vip4", hasData: true },
-  "find-what-you-love-vip4": { id: "find-what-you-love-vip4", nameEn: "Find What You Love", nameVi: "Tìm Điều Bạn Yêu", tier: "vip4", hasData: true },
-  "know-yourself-deeply-vip4": { id: "know-yourself-deeply-vip4", nameEn: "Know Yourself Deeply", nameVi: "Hiểu Sâu Về Chính Mình", tier: "vip4", hasData: true },
-  "mentors-who-light-the-way-vip4": { id: "mentors-who-light-the-way-vip4", nameEn: "Mentors Who Light the Way", nameVi: "Những Người Dẫn Đường Thắp Sáng", tier: "vip4", hasData: true }
+  "adhd-support-vip1": {
+      "id": "adhd-support-vip1",
+      "nameEn": "ADHD Support",
+      "nameVi": "Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý",
+      "tier": "vip1",
+      "hasData": true
+  },
+  "adhd-support-vip2": {
+      "id": "adhd-support-vip2",
+      "nameEn": "ADHD Support",
+      "nameVi": "Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "adhd-support-vip3": {
+      "id": "adhd-support-vip3",
+      "nameEn": "ADHD Support",
+      "nameVi": "Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "ai-free": {
+      "id": "ai-free",
+      "nameEn": "AI Fundamentals",
+      "nameVi": "Nền Tảng AI",
+      "tier": "free",
+      "hasData": true
+  },
+  "ai-vip1": {
+      "id": "ai-vip1",
+      "nameEn": "AI Advanced Techniques VIP1",
+      "nameVi": "Kỹ Thuật AI Nâng Cao VIP1",
+      "tier": "vip1",
+      "hasData": true
+  },
+  "ai-vip2": {
+      "id": "ai-vip2",
+      "nameEn": "AI Mastery",
+      "nameVi": "Thành Thạo AI",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "ai-vip3": {
+      "id": "ai-vip3",
+      "nameEn": "AI Frontier",
+      "nameVi": "Biên Giới AI",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "addiction-support-free": {
+      "id": "addiction-support-free",
+      "nameEn": "Addiction Support",
+      "nameVi": "Hỗ Trợ Cai Nghiện",
+      "tier": "free",
+      "hasData": true
+  },
+  "addiction-support-vip1": {
+      "id": "addiction-support-vip1",
+      "nameEn": "Addiction Support",
+      "nameVi": "Hỗ Trợ Cai Nghiện",
+      "tier": "vip1",
+      "hasData": true
+  },
+  "addiction-support-vip2": {
+      "id": "addiction-support-vip2",
+      "nameEn": "Addiction Support",
+      "nameVi": "Hỗ Trợ Cai Nghiện",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "addiction-support-vip3": {
+      "id": "addiction-support-vip3",
+      "nameEn": "Addiction Support",
+      "nameVi": "Hỗ Trợ Cai Nghiện",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "adhd-support-free": {
+      "id": "adhd-support-free",
+      "nameEn": "ADHD Support",
+      "nameVi": "Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý",
+      "tier": "free",
+      "hasData": true
+  },
+  "anxiety-relief-free": {
+      "id": "anxiety-relief-free",
+      "nameEn": "Anxiety Relief",
+      "nameVi": "Giảm Lo Âu",
+      "tier": "free",
+      "hasData": true
+  },
+  "anxiety-relief-vip1": {
+      "id": "anxiety-relief-vip1",
+      "nameEn": "Anxiety Relief",
+      "nameVi": "Giảm Lo Âu",
+      "tier": "vip1",
+      "hasData": true
+  },
+  "anxiety-relief-vip2": {
+      "id": "anxiety-relief-vip2",
+      "nameEn": "Anxiety Relief",
+      "nameVi": "Giảm Lo Âu",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "anxiety-relief-vip3": {
+      "id": "anxiety-relief-vip3",
+      "nameEn": "Anxiety Relief",
+      "nameVi": "Giảm Lo Âu",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "bipolar-support-free": {
+      "id": "bipolar-support-free",
+      "nameEn": "Bipolar Support",
+      "nameVi": "Hỗ Trợ Rối Loạn Lưỡng Cực",
+      "tier": "free",
+      "hasData": true
+  },
+  "bipolar-support-vip1": {
+      "id": "bipolar-support-vip1",
+      "nameEn": "Bipolar Support",
+      "nameVi": "Hỗ Trợ Rối Loạn Lưỡng Cực",
+      "tier": "vip1",
+      "hasData": true
+  },
+  "bipolar-support-vip2": {
+      "id": "bipolar-support-vip2",
+      "nameEn": "Bipolar Support",
+      "nameVi": "Hỗ Trợ Rối Loạn Lưỡng Cực",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "bipolar-support-vip3": {
+      "id": "bipolar-support-vip3",
+      "nameEn": "Bipolar Support",
+      "nameVi": "Hỗ Trợ Rối Loạn Lưỡng Cực",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "bridge-to-reality-vip4": {
+      "id": "bridge-to-reality-vip4",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "vip4",
+      "hasData": true
+  },
+  "burnout-recovery-free": {
+      "id": "burnout-recovery-free",
+      "nameEn": "Burnout Recovery",
+      "nameVi": "Phục Hồi Kiệt Sức",
+      "tier": "free",
+      "hasData": true
+  },
+  "burnout-recovery-vip1": {
+      "id": "burnout-recovery-vip1",
+      "nameEn": "Burnout Recovery",
+      "nameVi": "Phục Hồi Kiệt Sức",
+      "tier": "vip1",
+      "hasData": true
+  },
+  "burnout-recovery-vip2": {
+      "id": "burnout-recovery-vip2",
+      "nameEn": "Burnout Recovery",
+      "nameVi": "Phục Hồi Kiệt Sức",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "burnout-recovery-vip3": {
+      "id": "burnout-recovery-vip3",
+      "nameEn": "Burnout Recovery",
+      "nameVi": "Phục Hồi Kiệt Sức",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "career-community-vip4": {
+      "id": "career-community-vip4",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "vip4",
+      "hasData": true
+  },
+  "career-consultant-free": {
+      "id": "career-consultant-free",
+      "nameEn": "Career Consultant",
+      "nameVi": "Chuyên Gia Định Hướng Nghề Nghiệp",
+      "tier": "free",
+      "hasData": true
+  },
+  "choosing-your-path-vip4": {
+      "id": "choosing-your-path-vip4",
+      "nameEn": "Choosing Your Path",
+      "nameVi": "Chọn Con Đường Của Bạn",
+      "tier": "vip4",
+      "hasData": true
+  },
+  "courage-to-begin-vip4": {
+      "id": "courage-to-begin-vip4",
+      "nameEn": "Courage to Begin",
+      "nameVi": "Dám Bắt Đầu",
+      "tier": "vip4",
+      "hasData": true
+  },
+  "depression-support-vip1": {
+      "id": "depression-support-vip1",
+      "nameEn": "Depression Support",
+      "nameVi": "Hỗ Trợ Trầm Cảm",
+      "tier": "vip1",
+      "hasData": true
+  },
+  "depression-support-vip3": {
+      "id": "depression-support-vip3",
+      "nameEn": "Depression Support",
+      "nameVi": "Hỗ Trợ Trầm Cảm",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "eating-disorder-support-free": {
+      "id": "eating-disorder-support-free",
+      "nameEn": "Eating Disorder Support",
+      "nameVi": "Hỗ Trợ Rối Loạn Ăn Uống",
+      "tier": "free",
+      "hasData": true
+  },
+  "eating-disorder-support-vip1": {
+      "id": "eating-disorder-support-vip1",
+      "nameEn": "Eating Disorder Support",
+      "nameVi": "Hỗ Trợ Rối Loạn Ăn Uống",
+      "tier": "vip1",
+      "hasData": true
+  },
+  "eating-disorder-support-vip2": {
+      "id": "eating-disorder-support-vip2",
+      "nameEn": "Eating Disorder Support",
+      "nameVi": "Hỗ Trợ Rối Loạn Ăn Uống",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "eating-disorder-support-vip3": {
+      "id": "eating-disorder-support-vip3",
+      "nameEn": "Eating Disorder Support",
+      "nameVi": "Hỗ Trợ Rối Loạn Ăn Uống",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "finance-calm-money-clear-future-preview-free": {
+      "id": "finance-calm-money-clear-future-preview-free",
+      "nameEn": "Calm Money, Clear Future — Preview",
+      "nameVi": "Tiền Bình Tĩnh, Tương Lai Rõ Ràng — Giới Thiệu",
+      "tier": "free",
+      "hasData": true
+  },
+  "finance-calm-money-sub1-nervous-system-vip3": {
+      "id": "finance-calm-money-sub1-nervous-system-vip3",
+      "nameEn": "Money & Your Nervous System",
+      "nameVi": "Tiền & Hệ Thống Thần Kinh",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "finance-calm-money-sub2-money-basics-vip3": {
+      "id": "finance-calm-money-sub2-money-basics-vip3",
+      "nameEn": "Money Basics You Should've Learned",
+      "nameVi": "Kiến Thức Tiền Bạc Cơ Bản Bạn Nên Học",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "finance-calm-money-sub3-growing-money-vip3": {
+      "id": "finance-calm-money-sub3-growing-money-vip3",
+      "nameEn": "Growing Your Money (Simply)",
+      "nameVi": "Phát Triển Tiền Của Bạn (Đơn Giản)",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "finance-calm-money-sub4-vip3": {
+      "id": "finance-calm-money-sub4-vip3",
+      "nameEn": "Protecting What Matters",
+      "nameVi": "Bảo Vệ Điều Quan Trọng",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "finance-calm-money-sub5-growing-bigger-vip3": {
+      "id": "finance-calm-money-sub5-growing-bigger-vip3",
+      "nameEn": "Growing Bigger (When Ready)",
+      "nameVi": "Phát Triển Lớn Hơn (Khi Sẵn Sàng)",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "finance-calm-money-sub6-legacy-peace-vip3": {
+      "id": "finance-calm-money-sub6-legacy-peace-vip3",
+      "nameEn": "Legacy & Long-Term Peace",
+      "nameVi": "Di Sản & Bình An Lâu Dài",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "finance-glory-vip3": {
+      "id": "finance-glory-vip3",
+      "nameEn": "Finance Glory",
+      "nameVi": "Vinh Quang Tài Chính",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "find-what-you-love-vip4": {
+      "id": "find-what-you-love-vip4",
+      "nameEn": "Find What You Love",
+      "nameVi": "Tìm Điều Bạn Yêu",
+      "tier": "vip4",
+      "hasData": true
+  },
+  "god-with-us-free": {
+      "id": "god-with-us-free",
+      "nameEn": "Spiritual Growth Free",
+      "nameVi": "Tăng Trưởng Tâm Linh Miễn Phí",
+      "tier": "free",
+      "hasData": true
+  },
+  "grief-healing-free": {
+      "id": "grief-healing-free",
+      "nameEn": "Grief Healing",
+      "nameVi": "Chữa Lành Nỗi Đau Mất Mát",
+      "tier": "free",
+      "hasData": true
+  },
+  "know-yourself-deeply-vip4": {
+      "id": "know-yourself-deeply-vip4",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "vip4",
+      "hasData": true
+  },
+  "legacy-and-impact-vip4": {
+      "id": "legacy-and-impact-vip4",
+      "nameEn": "Legacy and Impact",
+      "nameVi": "Di Sản Và Ảnh Hưởng",
+      "tier": "vip4",
+      "hasData": true
+  },
+  "loneliness-comfort-free": {
+      "id": "loneliness-comfort-free",
+      "nameEn": "Loneliness Comfort",
+      "nameVi": "An Ủi Nỗi Cô Đơn",
+      "tier": "free",
+      "hasData": true
+  },
+  "meaning-of-life-free": {
+      "id": "meaning-of-life-free",
+      "nameEn": "The Meaning of Life: Foundations of Balance",
+      "nameVi": "Ý Nghĩa Của Cuộc Sống: Nền Tảng Của Sự Cân Bằng",
+      "tier": "free",
+      "hasData": true
+  },
+  "meaning-of-life-vip3": {
+      "id": "meaning-of-life-vip3",
+      "nameEn": "The Meaning of Life: Harmony of Being",
+      "nameVi": "Ý Nghĩa Của Cuộc Sống: Hòa Điệu Của Tồn Tại",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "mens-mental-health-free": {
+      "id": "mens-mental-health-free",
+      "nameEn": "Men's Mental Health",
+      "nameVi": "Sức Khỏe Tinh Thần Nam Giới",
+      "tier": "free",
+      "hasData": true
+  },
+  "mens-mental-health-vip1": {
+      "id": "mens-mental-health-vip1",
+      "nameEn": "Men’s Mental Health",
+      "nameVi": "Sức Khỏe Tinh Thần Nam Giới",
+      "tier": "vip1",
+      "hasData": true
+  },
+  "mens-mental-health-vip2": {
+      "id": "mens-mental-health-vip2",
+      "nameEn": "Men’s Mental Health",
+      "nameVi": "Sức Khỏe Tinh Thần Nam Giới",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "mens-mental-health-vip3": {
+      "id": "mens-mental-health-vip3",
+      "nameEn": "Men’s Mental Health",
+      "nameVi": "Sức Khỏe Tinh Thần Nam Giới",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "mental-health-vip1": {
+      "id": "mental-health-vip1",
+      "nameEn": "Mental Health VIP1",
+      "nameVi": "Mental Health VIP1",
+      "tier": "vip1",
+      "hasData": true
+  },
+  "mental-sharpness-vip3": {
+      "id": "mental-sharpness-vip3",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "mentors-who-light-the-way-vip4": {
+      "id": "mentors-who-light-the-way-vip4",
+      "nameEn": "Mentors Who Light the Way",
+      "nameVi": "Những Người Dẫn Đường Thắp Sáng",
+      "tier": "vip4",
+      "hasData": true
+  },
+  "mindfulness-vip1": {
+      "id": "mindfulness-vip1",
+      "nameEn": "Mindfulness",
+      "nameVi": "Thực Hành Chánh Niệm",
+      "tier": "vip1",
+      "hasData": true
+  },
+  "nutrition-free": {
+      "id": "nutrition-free",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "free",
+      "hasData": true
+  },
+  "nutrition-vip1": {
+      "id": "nutrition-vip1",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "vip1",
+      "hasData": true
+  },
+  "nutrition-vip2": {
+      "id": "nutrition-vip2",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "nutrition-vip3": {
+      "id": "nutrition-vip3",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "ocd-support-free": {
+      "id": "ocd-support-free",
+      "nameEn": "OCD Support",
+      "nameVi": "Hỗ Trợ Rối Loạn Ám Ảnh Cưỡng Chế",
+      "tier": "free",
+      "hasData": true
+  },
+  "obesity-management-vip1": {
+      "id": "obesity-management-vip1",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "vip1",
+      "hasData": true
+  },
+  "obesity-management-vip2": {
+      "id": "obesity-management-vip2",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "obesity-management-vip3": {
+      "id": "obesity-management-vip3",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "obesity-free": {
+      "id": "obesity-free",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "free",
+      "hasData": true
+  },
+  "obesity-vip1": {
+      "id": "obesity-vip1",
+      "nameEn": "Obesity Management (VIP 1)",
+      "nameVi": "Obesity Management (VIP 1)",
+      "tier": "vip1",
+      "hasData": true
+  },
+  "obesity-vip2": {
+      "id": "obesity-vip2",
+      "nameEn": "Obesity Management (VIP 2)",
+      "nameVi": "Obesity Management (VIP 2)",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "obesity-vip3": {
+      "id": "obesity-vip3",
+      "nameEn": "Obesity Management (VIP 3)",
+      "nameVi": "Obesity Management (VIP 3)",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "ocd-support-vip1": {
+      "id": "ocd-support-vip1",
+      "nameEn": "OCD Support",
+      "nameVi": "Hỗ Trợ Rối Loạn Ám Ảnh Cưỡng Chế",
+      "tier": "vip1",
+      "hasData": true
+  },
+  "ocd-support-vip2": {
+      "id": "ocd-support-vip2",
+      "nameEn": "OCD Support",
+      "nameVi": "Hỗ Trợ Rối Loạn Ám Ảnh Cưỡng Chế",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "ocd-support-vip3": {
+      "id": "ocd-support-vip3",
+      "nameEn": "OCD Support",
+      "nameVi": "Hỗ Trợ Rối Loạn Ám Ảnh Cưỡng Chế",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "overcome-storm-vip3": {
+      "id": "overcome-storm-vip3",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "philosophy-of-everyday-free": {
+      "id": "philosophy-of-everyday-free",
+      "nameEn": "Philosophy of Everyday (Free)",
+      "nameVi": "Triết Học Đời Thường (Miễn Phí)",
+      "tier": "free",
+      "hasData": true
+  },
+  "philosophy-of-everyday-vip2": {
+      "id": "philosophy-of-everyday-vip2",
+      "nameEn": "Philosophy of Everyday VIP2",
+      "nameVi": "Triết Lý Cuộc Sống Hàng Ngày VIP2",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "philosophy-of-everyday-vip3": {
+      "id": "philosophy-of-everyday-vip3",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "physical-fitness-and-nutrition-free": {
+      "id": "physical-fitness-and-nutrition-free",
+      "nameEn": "Physical Fitness and Nutrition",
+      "nameVi": "Thể Chất và Dinh Dưỡng",
+      "tier": "free",
+      "hasData": true
+  },
+  "productivity-and-focus-free": {
+      "id": "productivity-and-focus-free",
+      "nameEn": "Productivity & Focus",
+      "nameVi": "Năng Suất & Tập Trung",
+      "tier": "free",
+      "hasData": true
+  },
+  "productivity-and-focus-vip1": {
+      "id": "productivity-and-focus-vip1",
+      "nameEn": "Productivity & Focus",
+      "nameVi": "Năng Suất & Tập Trung",
+      "tier": "vip1",
+      "hasData": true
+  },
+  "productivity-and-focus-vip2": {
+      "id": "productivity-and-focus-vip2",
+      "nameEn": "Productivity & Focus",
+      "nameVi": "Năng Suất & Tập Trung",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "productivity-and-focus-vip3": {
+      "id": "productivity-and-focus-vip3",
+      "nameEn": "Productivity & Focus",
+      "nameVi": "Năng Suất & Tập Trung",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "ptsd-support-free": {
+      "id": "ptsd-support-free",
+      "nameEn": "PTSD Support",
+      "nameVi": "Hỗ Trợ Rối Loạn Căng Thẳng Sau Sang Chấn",
+      "tier": "free",
+      "hasData": true
+  },
+  "relationship-healing-free": {
+      "id": "relationship-healing-free",
+      "nameEn": "Relationship Healing",
+      "nameVi": "Hàn Gắn Mối Quan Hệ",
+      "tier": "free",
+      "hasData": true
+  },
+  "resilience-and-adaptation-vip4": {
+      "id": "resilience-and-adaptation-vip4",
+      "nameEn": "Resilience and Adaptation",
+      "nameVi": "Khả Năng Phục Hồi và Thích Nghi",
+      "tier": "vip4",
+      "hasData": true
+  },
+  "self-love-free": {
+      "id": "self-love-free",
+      "nameEn": "Self Love",
+      "nameVi": "Yêu Thương Bản Thân",
+      "tier": "free",
+      "hasData": true
+  },
+  "sexuality-&-curiosity-&-culture-vip3": {
+      "id": "sexuality-&-curiosity-&-culture-vip3",
+      "nameEn": "Sexuality & Curiosity & Culture",
+      "nameVi": "Tính Dục, Sự Tò Mò & Văn Hóa",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "sexuality-&-curiosity-free": {
+      "id": "sexuality-&-curiosity-free",
+      "nameEn": "Sexuality & Curiosity",
+      "nameVi": "Tính Dục & Sự Tò Mò",
+      "tier": "free",
+      "hasData": true
+  },
+  "shadow-work-free": {
+      "id": "shadow-work-free",
+      "nameEn": "Shadow Work",
+      "nameVi": "Làm Việc Với Bóng Tối",
+      "tier": "free",
+      "hasData": true
+  },
+  "shadow-work-vip1": {
+      "id": "shadow-work-vip1",
+      "nameEn": "Shadow Work",
+      "nameVi": "Làm Việc Với Bóng Tối",
+      "tier": "vip1",
+      "hasData": true
+  },
+  "shadow-work-vip2": {
+      "id": "shadow-work-vip2",
+      "nameEn": "Shadow Work",
+      "nameVi": "Làm Việc Với Bóng Tối",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "shadow-work-vip3": {
+      "id": "shadow-work-vip3",
+      "nameEn": "Shadow Work",
+      "nameVi": "Làm Việc Với Bóng Tối",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "sleep-improvement-free": {
+      "id": "sleep-improvement-free",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "free",
+      "hasData": true
+  },
+  "sleep-improvement-vip1": {
+      "id": "sleep-improvement-vip1",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "vip1",
+      "hasData": true
+  },
+  "sleep-improvement-vip3": {
+      "id": "sleep-improvement-vip3",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "social-anxiety-free": {
+      "id": "social-anxiety-free",
+      "nameEn": "Social Anxiety",
+      "nameVi": "Lo Âu Xã Hội",
+      "tier": "free",
+      "hasData": true
+  },
+  "social-anxiety-vip2": {
+      "id": "social-anxiety-vip2",
+      "nameEn": "Social Anxiety",
+      "nameVi": "Lo Âu Xã Hội",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "social-anxiety-vip3": {
+      "id": "social-anxiety-vip3",
+      "nameEn": "Social Anxiety",
+      "nameVi": "Lo Âu Xã Hội",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "soulmate-free": {
+      "id": "soulmate-free",
+      "nameEn": "Find Your Soul Mate (Free)",
+      "nameVi": "Tìm Người Tri Kỷ (Miễn Phí)",
+      "tier": "free",
+      "hasData": true
+  },
+  "stoicism-free": {
+      "id": "stoicism-free",
+      "nameEn": "Stoic Philosophy (Free)",
+      "nameVi": "Triết Học Khắc Kỷ (Miễn Phí)",
+      "tier": "free",
+      "hasData": true
+  },
+  "strategy-in-life-1-vip3": {
+      "id": "strategy-in-life-1-vip3",
+      "nameEn": "Strategy in Life - Foundations",
+      "nameVi": "Chiến Lược Cuộc Sống - Nền Tảng",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "strategy-in-life-2-vip3": {
+      "id": "strategy-in-life-2-vip3",
+      "nameEn": "Strategy in Life - Advanced Tactics",
+      "nameVi": "Chiến Lược Cuộc Sống - Chiến Thuật Nâng Cao",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "strategy-in-life-3-vip3": {
+      "id": "strategy-in-life-3-vip3",
+      "nameEn": "Strategy in Life - Mastery & Legacy",
+      "nameVi": "Chiến Lược Cuộc Sống - Tinh Thông & Di Sản",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "stress-free": {
+      "id": "stress-free",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "free",
+      "hasData": true
+  },
+  "stress-vip2": {
+      "id": "stress-vip2",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "stress-vip3": {
+      "id": "stress-vip3",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "wealth-&-wisdom-vip3-preview-free": {
+      "id": "wealth-&-wisdom-vip3-preview-free",
+      "nameEn": "Wealth & Wisdom — VIP3 Preview",
+      "nameVi": "Giàu Có & Trí Tuệ — Giới Thiệu VIP3",
+      "tier": "free",
+      "hasData": true
+  },
+  "weight-loss-and-fitness-free": {
+      "id": "weight-loss-and-fitness-free",
+      "nameEn": "Weight Loss & Fitness",
+      "nameVi": "Giảm Cân & Thể Dục",
+      "tier": "free",
+      "hasData": true
+  },
+  "weight-loss-and-fitness-vip2": {
+      "id": "weight-loss-and-fitness-vip2",
+      "nameEn": "Weight Loss & Fitness",
+      "nameVi": "Giảm Cân & Thể Dục",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "weight-loss-and-fitness-vip3": {
+      "id": "weight-loss-and-fitness-vip3",
+      "nameEn": "Weight Loss & Fitness",
+      "nameVi": "Giảm Cân & Thể Dục",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "confidence-vip2": {
+      "id": "confidence-vip2",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "confidence-vip3": {
+      "id": "confidence-vip3",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "sleep-improvement-vip2": {
+      "id": "sleep-improvement-vip2",
+      "nameEn": "Unknown Room",
+      "nameVi": "Unknown Room",
+      "tier": "vip2",
+      "hasData": true
+  }
 };
