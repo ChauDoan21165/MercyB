@@ -436,9 +436,14 @@ const ChatHub = () => {
     const englishContent = parts[0]?.trim() || message.text;
     const vietnameseContent = parts[1]?.trim() || '';
 
-    // Compute audio URL if available
+    // Compute audio URL if available (normalized to /audio/...)
     const audioUrl = message.audioFile 
-      ? (message.audioFile.startsWith('/') ? message.audioFile : `/${message.audioFile}`)
+      ? (() => {
+          let p = String(message.audioFile).replace(/^\/+/, '').replace(/^public\//, '');
+          p = p.replace(/^audio\/(en|vi)\//, 'audio/');
+          if (!p.startsWith('audio/')) p = `audio/${p}`;
+          return `/${p}`;
+        })()
       : null;
 
     const handleAudioClick = () => {
