@@ -1,11 +1,10 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
-  "required": ["tier", "title", "content", "entries", "meta"],
+  "required": ["entries"],
   "properties": {
     "tier": {
-      "type": "string",
-      "pattern": "^(free|vip1|vip2|vip3|vip4)"
+      "type": "string"
     },
     "title": {
       "type": "object",
@@ -28,7 +27,7 @@
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["slug", "keywords_en", "keywords_vi", "copy", "tags", "audio"],
+        "required": ["slug", "copy"],
         "properties": {
           "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
           "keywords_en": {
@@ -57,7 +56,6 @@
     },
     "meta": {
       "type": "object",
-      "required": ["tier", "entry_count"],
       "properties": {
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
