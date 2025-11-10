@@ -28,18 +28,6 @@ function filenameToRoomId(filename) {
     .replace(/-(free|vip1|vip2|vip3|vip4)$/i, (match) => match.toLowerCase()); // normalize tier
 }
 
-// Helper to convert filename to room ID (kebab-case with tier)
-function filenameToRoomId(filename) {
-  // Remove .json extension
-  const base = filename.replace(/\.json$/i, '');
-  
-  // Convert to kebab-case and normalize tier suffix
-  return base
-    .toLowerCase()
-    .replace(/[_\s]+/g, '-') // underscores and spaces to hyphens
-    .replace(/-(free|vip1|vip2|vip3|vip4)$/i, (match) => match.toLowerCase()); // normalize tier
-}
-
 // Helper to extract display names from JSON
 function extractNames(jsonPath) {
   try {
