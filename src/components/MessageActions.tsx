@@ -62,29 +62,35 @@ export const MessageActions = ({ text, roomId }: MessageActionsProps) => {
   };
 
   return (
-    <div className="flex gap-2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+    <div className="flex gap-2 mt-3 opacity-70 hover:opacity-100 transition-opacity">
       <Button
-        variant="ghost"
-        size="icon"
+        variant="outline"
+        size="sm"
         onClick={handleCopy}
-        className="h-7 w-7"
+        className="h-8 px-3 gap-2 text-xs"
       >
         {copied ? (
-          <Check className="w-3 h-3" />
+          <>
+            <Check className="w-3 h-3" />
+            <span>Copied</span>
+          </>
         ) : (
-          <Copy className="w-3 h-3" />
+          <>
+            <Copy className="w-3 h-3" />
+            <span>Copy</span>
+          </>
         )}
       </Button>
       
       <Button
-        variant="ghost"
-        size="icon"
+        variant="outline"
+        size="sm"
         onClick={handleShare}
-        className="h-7 w-7"
+        className="h-8 px-3 gap-2 text-xs"
       >
         <Share2 className="w-3 h-3" />
+        <span>Share</span>
       </Button>
-
     </div>
   );
 };
