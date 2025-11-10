@@ -29,13 +29,27 @@ function filenameToRoomId(filename) {
 }
 
 // Helper to extract display names from JSON
-function extractNames(jsonPath) {
+function extractNames(jsonPath, filename) {
   try {
     const content = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
     
     // Try various name field patterns
-    const nameEn = content.name || content.nameEn || content.title?.en || 'Unknown Room';
-    const nameVi = content.name_vi || content.nameVi || content.title?.vi || nameEn;
+    let nameEn = content.name || content.nameEn || content.title?.en || null;
+    let nameVi = content.name_vi || content.nameVi || content.title?.vi || null;
+    
+    // If no name found in JSON, extract from filename
+    if (!nameEn) {
+      // Remove tier suffix and extension, convert to readable format
+      nameEn = filename
+        .replace(/\.(json)$/i, '')
+        .replace(/[_-](free|vip1|vip2|vip3|vip4)$/i, '')
+        .replace(/[_-]/g, ' ')
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ');
+    }
+    
+    nameVi = nameVi || nameEn;
     
     return { nameEn, nameVi };
   } catch (err) {
@@ -62,7 +76,7 @@ function scanRoomFiles() {
   for (const filename of roomFiles) {
     const roomId = filenameToRoomId(filename);
     const jsonPath = path.join(dataDir, filename);
-    const names = extractNames(jsonPath);
+    const names = extractNames(jsonPath, filename);
     
     if (!names) {
       console.warn(`⚠️  Skipping ${filename}: Could not extract names`);

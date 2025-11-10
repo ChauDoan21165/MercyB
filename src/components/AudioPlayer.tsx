@@ -54,6 +54,7 @@ export const AudioPlayer = ({
 
     const handleLoadedMetadata = () => {
       setDuration(audio.duration);
+      console.log('✅ Audio loaded successfully:', audioPath, 'Duration:', audio.duration);
     };
 
     const handleEnded = () => {
@@ -61,14 +62,30 @@ export const AudioPlayer = ({
       onEnded();
     };
 
+    const handleError = (e: Event) => {
+      console.error('❌ Audio failed to load:', audioPath);
+      console.error('Error details:', audio.error);
+      console.error('Error event:', e);
+    };
+
+    const handleCanPlay = () => {
+      console.log('✅ Audio can play:', audioPath);
+    };
+
     audio.addEventListener('timeupdate', handleTimeUpdate);
     audio.addEventListener('loadedmetadata', handleLoadedMetadata);
     audio.addEventListener('ended', handleEnded);
+    audio.addEventListener('error', handleError);
+    audio.addEventListener('canplay', handleCanPlay);
+
+    console.log('🔊 Loading audio:', audioPath);
 
     return () => {
       audio.removeEventListener('timeupdate', handleTimeUpdate);
       audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
       audio.removeEventListener('ended', handleEnded);
+      audio.removeEventListener('error', handleError);
+      audio.removeEventListener('canplay', handleCanPlay);
     };
   }, [audioPath, isDragging, onEnded]);
 
