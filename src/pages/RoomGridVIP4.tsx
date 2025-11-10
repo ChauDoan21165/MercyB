@@ -15,6 +15,7 @@ const VIP4_CAREER_ROOMS = [
   { id: "explore-world", color: "#2196F3", name: "Explore World" },
   { id: "build-skills", color: "#1E88E5", name: "Build Skills" },
   { id: "bridge-to-reality", color: "#FF6B35", name: "Bridge to Reality" },
+  { id: "resilience-and-adaptation", color: "#E91E63", name: "Resilience and Adaptation" },
   { id: "launch-career", color: "#FF5722", name: "Launch Career" },
   { id: "find-fit", color: "#9C27B0", name: "Find Fit" },
   { id: "grow-wealth", color: "#FF9800", name: "Grow Wealth" },
@@ -154,7 +155,7 @@ const RoomGridVIP4 = () => {
 
           <div className="flex flex-wrap justify-center gap-2 mt-4">
             <Badge variant="secondary" className="text-xs">
-              🌟 10 Career Rooms • 10 Phòng Nghề Nghiệp
+              🌟 11 Career Rooms • 11 Phòng Nghề Nghiệp
             </Badge>
             <Badge variant="secondary" className="text-xs">
               💼 Professional Guidance • Hướng Dẫn Chuyên Nghiệp

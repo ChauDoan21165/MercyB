@@ -107,6 +107,7 @@ export const roomDataMap: Record<string, RoomData> = {
   "relationship-healing-vip1": { id: "relationship-healing-vip1", nameEn: "Relationship Healing", nameVi: "Hàn Gắn Mối Quan Hệ", tier: "vip1", hasData: true },
   "relationship-healing-vip2": { id: "relationship-healing-vip2", nameEn: "Relationship Healing", nameVi: "Hàn Gắn Mối Quan Hệ", tier: "vip2", hasData: true },
   "relationship-healing-vip3": { id: "relationship-healing-vip3", nameEn: "Relationship Healing", nameVi: "Hàn Gắn Mối Quan Hệ", tier: "vip3", hasData: true },
+  "resilience-and-adaptation-vip4": { id: "resilience-and-adaptation-vip4", nameEn: "Resilience and Adaptation", nameVi: "Khả Năng Phục Hồi và Thích Nghi", tier: "vip4", hasData: true },
   "sexuality-and-curiosity-free": { id: "sexuality-and-curiosity-free", nameEn: "Sexuality & Curiosity", nameVi: "Tính Dục & Sự Tò Mò", tier: "free", hasData: true },
   "sexuality-and-curiosity-and-culture-vip3": { id: "sexuality-and-curiosity-and-culture-vip3", nameEn: "Sexuality & Curiosity & Culture", nameVi: "Tính Dục & Sự Tò Mò & Văn Hóa", tier: "vip3", hasData: true },
   "sexuality-curiosity-vip3-sub1": { id: "sexuality-curiosity-vip3-sub1", nameEn: "Sacred Body, Curious Self", nameVi: "Thân Thể Linh Thiêng, Bản Ngã Tò Mò", tier: "vip3", hasData: true },
