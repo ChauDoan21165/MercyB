@@ -9,24 +9,6 @@
     "emotional_arc": "from solo effort to shared legacy — 4 steps of belonging, lifting, and giving back",
     "note": "4 warm, social, purpose-driven essays (240–280 words). English: inviting mentor voice. Vietnamese: user-enhanced, heartfelt, native-level. Audio-ready with 4 MP3s. Keywords added."
   },
-  "keywords": {
-    "first-handshake": {
-      "en": ["networking", "first connection", "belonging", "community"],
-      "vi": ["mạng lưới", "kết nối đầu", "thuộc về", "cộng đồng"]
-    },
-    "finding-mentor": {
-      "en": ["mentorship", "guidance", "asking for help", "growth"],
-      "vi": ["cố vấn", "hướng dẫn", "xin giúp", "trưởng thành"]
-    },
-    "lifting-others": {
-      "en": ["pay it forward", "teaching", "impact", "legacy"],
-      "vi": ["trả ơn", "dạy lại", "tác động", "di sản"]
-    },
-    "community-as-home": {
-      "en": ["giving back", "shared purpose", "circle"],
-      "vi": ["trả lại", "mục đích chung", "vòng tròn"]
-    }
-  },
   "entries": [
     {
       "slug": "first-handshake",
