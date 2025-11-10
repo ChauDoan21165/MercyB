@@ -456,7 +456,7 @@ const ChatHub = () => {
         setIsAudioPlaying(!isAudioPlaying);
       } else {
         setCurrentAudio(url);
-        setIsAudioPlaying(true);
+        setIsAudioPlaying(false);
       }
     };
 
