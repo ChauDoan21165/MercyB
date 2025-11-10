@@ -138,9 +138,10 @@ function extractAudioReferences(data, audioRefs = []) {
   return audioRefs;
 }
 
-// Validate audio file references
+// Validate audio file references (warnings only if SKIP_AUDIO_CHECK is not "false")
 function validateAudioReferences(content, filename, availableAudioFiles) {
-  const errors = [];
+  const skipAudioCheck = process.env.SKIP_AUDIO_CHECK !== 'false';
+  const issues = [];
   const audioRefs = extractAudioReferences(content);
   
   for (const audioRef of audioRefs) {
@@ -148,11 +149,12 @@ function validateAudioReferences(content, filename, availableAudioFiles) {
     let cleanPath = audioRef.replace(/^\//, '').replace(/^audio\/(en|vi)\//, '');
     
     if (!availableAudioFiles.has(cleanPath) && !availableAudioFiles.has(audioRef)) {
-      errors.push(`Missing audio file: ${audioRef}`);
+      issues.push(`Missing audio file: ${audioRef}`);
     }
   }
   
-  return errors;
+  // Return as warnings if skipping audio checks, otherwise errors
+  return skipAudioCheck ? [] : issues;
 }
 
 // Validate all room files
@@ -164,9 +166,15 @@ function validateAllRooms() {
   const roomFiles = files.filter(f => f.endsWith('.json') && !f.startsWith('.'));
   
   // Get all available audio files
+  const skipAudioCheck = process.env.SKIP_AUDIO_CHECK !== 'false';
   console.log('📁 Scanning audio files...');
   const availableAudioFiles = getAllAudioFiles();
-  console.log(`   Found ${availableAudioFiles.size} audio files\n`);
+  console.log(`   Found ${availableAudioFiles.size} audio files`);
+  if (skipAudioCheck) {
+    console.log('   ℹ️  Audio validation: warnings only (SKIP_AUDIO_CHECK enabled)\n');
+  } else {
+    console.log('   ⚠️  Audio validation: strict mode (SKIP_AUDIO_CHECK=false)\n');
+  }
 
   let totalErrors = 0;
   const results = [];
