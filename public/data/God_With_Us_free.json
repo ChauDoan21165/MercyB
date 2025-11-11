@@ -1,6 +1,6 @@
 {
-  "name": "Spiritual Growth Free",
-  "name_vi": "Tăng Trưởng Tâm Linh Miễn Phí",
+  "name": "God With Us Free",
+  "name_vi": "Chúa Ở Cùng Chúng Ta Miễn Phí",
   "description": "Strengthen faith through daily prayer, meditation, holy texts, and spiritual journaling.",
   "entries": [
     {
@@ -21,7 +21,7 @@
       "reply_en": "Pray 5 minutes daily: 'God, give me strength today.' Focus on hope. Simple words build courage. Start now.",
       "reply_vi": "Cầu nguyện 5 phút mỗi ngày: 'Lạy Chúa, xin ban sức mạnh hôm nay.' Tập trung vào hy vọng. Lời đơn giản nuôi dưỡng can đảm. Bắt đầu ngay.",
       "dare": "Say one short prayer aloud.",
-      "audio": "01_praying_daily.mp3",
+      "audio": "god_with_us_free_praying_daily.mp3",
       "duration": "00:45"
     },
     {
@@ -42,7 +42,7 @@
       "reply_en": "Join one faith group monthly. Share one thought. Connect with one person. Community grows hope. Attend this month.",
       "reply_vi": "Tham gia một nhóm đức tin mỗi tháng. Chia sẻ một suy nghĩ. Kết nối với một người. Cộng đồng nuôi dưỡng hy vọng. Tham dự tháng này.",
       "dare": "Say hello to someone in faith.",
-      "audio": "02_faith_groups.mp3",
+      "audio": "god_with_us_free_faith_groups.mp3",
       "duration": "00:43"
     },
     {
@@ -63,7 +63,7 @@
       "reply_en": "Let go of one worry weekly in prayer. Recall God’s past help. Trust brings peace. Surrender one fear today.",
       "reply_vi": "Buông một nỗi lo mỗi tuần qua cầu nguyện. Nhớ lại sự giúp đỡ của Chúa. Tin cậy mang bình an. Dâng một nỗi sợ hôm nay.",
       "dare": "Release one worry to God.",
-      "audio": "03_divine_wisdom.mp3",
+      "audio": "god_with_us_free_divine_wisdom.mp3",
       "duration": "00:44"
     },
     {
@@ -84,7 +84,7 @@
       "reply_en": "Sit 5 minutes daily. Breathe deeply. Ask God for guidance. Clear mind brings peace. Meditate now.",
       "reply_vi": "Ngồi 5 phút mỗi ngày. Thở sâu. Cầu xin Chúa dẫn dắt. Tâm trí trong mang bình an. Thiền ngay.",
       "dare": "Take 3 deep breaths in silence.",
-      "audio": "04_meditating_peace.mp3",
+      "audio": "god_with_us_free_meditating_peace.mp3",
       "duration": "00:42"
     },
     {
@@ -105,7 +105,7 @@
       "reply_en": "Read one passage weekly. Reflect on its meaning. Let it guide decisions. Start with one verse today.",
       "reply_vi": "Đọc một đoạn kinh mỗi tuần. Suy ngẫm ý nghĩa. Để nó dẫn dắt quyết định. Bắt đầu với một câu hôm nay.",
       "dare": "Read one verse and pause.",
-      "audio": "05_reading_holy_texts.mp3",
+      "audio": "god_with_us_free_reading_holy_texts.mp3",
       "duration": "00:43"
     },
     {
@@ -126,9 +126,9 @@
       "reply_en": "Write one spiritual thought weekly. Reflect on God’s guidance. Clarity grows faith. Journal today.",
       "reply_vi": "Viết một suy nghĩ tâm linh mỗi tuần. Suy ngẫm sự dẫn dắt của Chúa. Rõ ràng nuôi dưỡng đức tin. Viết nhật ký hôm nay.",
       "dare": "Write one line of gratitude.",
-      "audio": "06_writing_thoughts.mp3",
+      "audio": "god_with_us_free_writing_thoughts.mp3",
       "duration": "00:44"
     }
   ],
-  "audio": "reading_holy_texts_free.mp3"
+  "audio": "god_with_us_free_main.mp3"
 }
