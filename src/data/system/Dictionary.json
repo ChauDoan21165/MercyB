@@ -344,6 +344,218 @@
     "fever": {
       "en": ["high temperature", "feverishness", "pyrexia"],
       "vi": ["sốt", "cơn sốt", "tăng thân nhiệt"]
+    },
+    "consent": {
+      "en": ["agreement", "permission", "approval", "assent"],
+      "vi": ["sự đồng ý", "cho phép", "chấp thuận", "tán thành"]
+    },
+    "boundaries": {
+      "en": ["limits", "borders", "restrictions", "guidelines"],
+      "vi": ["ranh giới", "giới hạn", "hạn chế", "nguyên tắc"]
+    },
+    "intimacy": {
+      "en": ["closeness", "connection", "affection", "familiarity"],
+      "vi": ["thân mật", "gần gũi", "tình cảm", "gắn kết"]
+    },
+    "desire": {
+      "en": ["longing", "craving", "want", "passion"],
+      "vi": ["khát khao", "mong muốn", "ham muốn", "đam mê"]
+    },
+    "pleasure": {
+      "en": ["enjoyment", "satisfaction", "delight", "gratification"],
+      "vi": ["k쾌 cảm", "thỏa mãn", "vui thú", "khoái cảm"]
+    },
+    "arousal": {
+      "en": ["excitement", "stimulation", "awakening"],
+      "vi": ["kích thích", "hứng thú", "khơi dậy"]
+    },
+    "orgasm": {
+      "en": ["climax", "peak", "release"],
+      "vi": ["cực khoái", "đỉnh điểm", "cảm giác tột đỉnh"]
+    },
+    "contraception": {
+      "en": ["birth control", "family planning", "protection"],
+      "vi": ["tránh thai", "kế hoạch hóa gia đình", "bảo vệ"]
+    },
+    "libido": {
+      "en": ["sex drive", "sexual desire", "passion"],
+      "vi": ["ham muốn tình dục", "bản năng tình dục", "dục vọng"]
+    },
+    "foreplay": {
+      "en": ["prelude", "warm-up", "intimacy building"],
+      "vi": ["simỗ dục", "khởi động", "xây dựng thân mật"]
+    },
+    "masturbation": {
+      "en": ["self-pleasure", "solo sex", "self-stimulation"],
+      "vi": ["thủ dâm", "tự kích thích", "tự thỏa mãn"]
+    },
+    "erectile_dysfunction": {
+      "en": ["impotence", "ED", "erection problem"],
+      "vi": ["rối loạn cương dương", "yếu sinh lý", "vấn đề cương cứng"]
+    },
+    "premature_ejaculation": {
+      "en": ["early climax", "PE", "quick finish"],
+      "vi": ["xuất tinh sớm", "phóng tinh sớm", "kết thúc nhanh"]
+    },
+    "vaginal_dryness": {
+      "en": ["lack of lubrication", "dryness", "insufficient moisture"],
+      "vi": ["khô âm đạo", "thiếu độ ẩm", "không đủ bôi trơn"]
+    },
+    "pelvic_floor": {
+      "en": ["kegel muscles", "pelvic muscles", "core muscles"],
+      "vi": ["cơ sàn chậu", "cơ kegel", "cơ vùng chậu"]
+    },
+    "gender_identity": {
+      "en": ["gender expression", "gender sense", "identity"],
+      "vi": ["bản dạng giới", "biểu hiện giới", "nhận dạng giới"]
+    },
+    "sexual_orientation": {
+      "en": ["attraction", "preference", "sexuality"],
+      "vi": ["xu hướng tình dục", "sở thích", "khuynh hướng"]
+    },
+    "lgbtq": {
+      "en": ["queer", "rainbow community", "sexual minorities"],
+      "vi": ["cộng đồng LGBTQ", "cộng đồng cầu vồng", "thiểu số tình dục"]
+    },
+    "coming_out": {
+      "en": ["disclosure", "revealing identity", "opening up"],
+      "vi": ["công khai", "tiết lộ bản dạng", "xuất hiện"]
+    },
+    "depression": {
+      "en": ["sadness", "melancholy", "low mood", "despair"],
+      "vi": ["trầm cảm", "buồn bã", "suy sụp", "tuyệt vọng"]
+    },
+    "stress": {
+      "en": ["tension", "pressure", "strain", "overwhelm"],
+      "vi": ["căng thẳng", "áp lực", "stress", "quá tải"]
+    },
+    "trauma": {
+      "en": ["psychological injury", "emotional wound", "shock"],
+      "vi": ["chấn thương", "sang chấn", "tổn thương tâm lý"]
+    },
+    "ptsd": {
+      "en": ["post-traumatic stress", "trauma disorder", "flashbacks"],
+      "vi": ["rối loạn stress sau chấn thương", "hậu quả tâm lý", "ám ảnh"]
+    },
+    "self_esteem": {
+      "en": ["self-worth", "self-confidence", "self-image"],
+      "vi": ["lòng tự trọng", "tự tin", "hình ảnh bản thân"]
+    },
+    "body_image": {
+      "en": ["self-perception", "body confidence", "appearance view"],
+      "vi": ["hình ảnh cơ thể", "nhận thức cơ thể", "tự tin ngoại hình"]
+    },
+    "eating_disorder": {
+      "en": ["disordered eating", "food issues", "anorexia", "bulimia"],
+      "vi": ["rối loạn ăn uống", "vấn đề thức ăn", "biếng ăn", "ăn nôn"]
+    },
+    "addiction": {
+      "en": ["dependency", "compulsion", "habit", "substance abuse"],
+      "vi": ["nghiện", "lệ thuộc", "cơn thèm", "lạm dụng"]
+    },
+    "therapy": {
+      "en": ["counseling", "treatment", "psychotherapy", "mental health care"],
+      "vi": ["trị liệu", "tư vấn", "điều trị tâm lý", "chăm sóc tâm thần"]
+    },
+    "meditation": {
+      "en": ["mindfulness practice", "contemplation", "reflection"],
+      "vi": ["thiền định", "thực hành chánh niệm", "suy ngẫm"]
+    },
+    "yoga": {
+      "en": ["stretching practice", "mind-body exercise", "asana"],
+      "vi": ["yoga", "luyện tập duỗi cơ", "tập thể dục tâm thân"]
+    },
+    "exercise": {
+      "en": ["workout", "physical activity", "fitness", "training"],
+      "vi": ["tập thể dục", "hoạt động thể chất", "thể lực", "luyện tập"]
+    },
+    "nutrition": {
+      "en": ["diet", "food intake", "nourishment", "eating habits"],
+      "vi": ["dinh dưỡng", "chế độ ăn", "nuôi dưỡng", "thói quen ăn"]
+    },
+    "pregnancy": {
+      "en": ["gestation", "expecting", "maternity", "carrying baby"],
+      "vi": ["mang thai", "thai kỳ", "có bầu", "chửa"]
+    },
+    "infertility": {
+      "en": ["sterility", "conception difficulty", "reproductive challenge"],
+      "vi": ["vô sinh", "hiếm muộn", "khó thụ thai"]
+    },
+    "miscarriage": {
+      "en": ["pregnancy loss", "spontaneous abortion", "fetal loss"],
+      "vi": ["sảy thai", "mất thai", "thai lưu"]
+    },
+    "postpartum": {
+      "en": ["after birth", "postnatal", "post-delivery"],
+      "vi": ["sau sinh", "hậu sản", "sau đẻ"]
+    },
+    "breastfeeding": {
+      "en": ["nursing", "lactation", "breast milk feeding"],
+      "vi": ["cho bú", "nuôi con bằng sữa mẹ", "bú mẹ"]
+    },
+    "parenting": {
+      "en": ["child-rearing", "raising children", "parenthood"],
+      "vi": ["làm cha mẹ", "nuôi dạy con", "trách nhiệm cha mẹ"]
+    },
+    "discipline": {
+      "en": ["guidance", "correction", "training", "behavior management"],
+      "vi": ["kỷ luật", "hướng dẫn", "sửa chữa", "quản lý hành vi"]
+    },
+    "attachment": {
+      "en": ["bonding", "connection", "emotional tie", "affection"],
+      "vi": ["gắn bó", "liên kết", "tình cảm", "sự dính líu"]
+    },
+    "jealousy": {
+      "en": ["envy", "possessiveness", "insecurity"],
+      "vi": ["ghen tuông", "ganh tị", "thiếu an toàn"]
+    },
+    "trust": {
+      "en": ["faith", "confidence", "reliance", "belief"],
+      "vi": ["tin tưởng", "niềm tin", "lòng tin", "tin cậy"]
+    },
+    "betrayal": {
+      "en": ["infidelity", "disloyalty", "breach of trust"],
+      "vi": ["phản bội", "không chung thủy", "phá vỡ lòng tin"]
+    },
+    "forgiveness": {
+      "en": ["pardon", "absolution", "letting go", "mercy"],
+      "vi": ["tha thứ", "tha lỗi", "buông bỏ", "khoan dung"]
+    },
+    "conflict_resolution": {
+      "en": ["dispute settlement", "problem solving", "mediation"],
+      "vi": ["giải quyết xung đột", "hòa giải", "trung gian"]
+    },
+    "empathy": {
+      "en": ["compassion", "understanding", "sympathy", "sensitivity"],
+      "vi": ["đồng cảm", "thấu hiểu", "cảm thông", "nhạy cảm"]
+    },
+    "assertiveness": {
+      "en": ["confidence", "self-advocacy", "directness"],
+      "vi": ["quyết đoán", "tự tin", "thẳng thắn"]
+    },
+    "codependency": {
+      "en": ["unhealthy dependence", "enabling", "enmeshment"],
+      "vi": ["phụ thuộc lẫn nhau", "lệ thuộc không lành mạnh", "dính dáng"]
+    },
+    "emotional_intelligence": {
+      "en": ["EQ", "emotional awareness", "social skills"],
+      "vi": ["trí tuệ cảm xúc", "nhận thức cảm xúc", "kỹ năng xã hội"]
+    },
+    "resilience": {
+      "en": ["toughness", "adaptability", "strength", "recovery"],
+      "vi": ["kiên cường", "khả năng thích ứng", "sức mạnh", "phục hồi"]
+    },
+    "self_care": {
+      "en": ["self-maintenance", "personal wellness", "self-nurture"],
+      "vi": ["tự chăm sóc", "an lành cá nhân", "nuôi dưỡng bản thân"]
+    },
+    "burnout": {
+      "en": ["exhaustion", "fatigue", "overwork syndrome"],
+      "vi": ["kiệt sức", "mệt mỏi", "hội chứng quá tải"]
+    },
+    "work_life_balance": {
+      "en": ["life balance", "work harmony", "priority balance"],
+      "vi": ["cân bằng công việc đời sống", "hài hòa", "cân bằng ưu tiên"]
     }
   }
 }
