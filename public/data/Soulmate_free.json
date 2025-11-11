@@ -65,12 +65,36 @@
         "openness"
       ],
       "audio": "soulmate_free_open_heart_check_in.mp3"
+    },
+    {
+      "slug": "gratitude-for-love",
+      "keywords_en": [
+        "gratitude",
+        "love",
+        "connection",
+        "energy"
+      ],
+      "keywords_vi": [
+        "biết ơn",
+        "tình yêu",
+        "kết nối",
+        "năng lượng"
+      ],
+      "copy": {
+        "en": "End each day by naming three moments when love appeared — a smile from a stranger, a kind message, or your own patience. Gratitude shifts your focus from longing to abundance. The more you notice love already surrounding you, the more your heart opens to receive. You might keep a small notebook by your bed and write a few lines before sleeping. This gentle ritual trains your energy to expect warmth instead of loneliness. Over time, gratitude becomes a signal to the universe: you are ready for mutual, grounded connection. Love grows where appreciation is practiced daily.",
+        "vi": "Kết thúc mỗi ngày bằng cách gọi tên ba khoảnh khắc khi tình yêu xuất hiện — một nụ cười từ người lạ, một tin nhắn tử tế hoặc chính sự kiên nhẫn của bạn. Lòng biết ơn chuyển sự chú ý của bạn từ thiếu thốn sang tràn đầy. Càng nhận ra tình yêu vốn đã bao quanh, trái tim bạn càng mở rộng để đón nhận. Bạn có thể đặt một cuốn sổ nhỏ bên giường và viết vài dòng trước khi ngủ. Nghi thức nhẹ nhàng này rèn luyện năng lượng để mong đợi sự ấm áp thay vì cô đơn. Theo thời gian, lòng biết ơn trở thành tín hiệu gửi đến vũ trụ rằng bạn đã sẵn sàng cho một kết nối bền vững và tương hỗ. Tình yêu lớn lên ở nơi lòng biết ơn được thực hành mỗi ngày."
+      },
+      "tags": [
+        "gratitude",
+        "love"
+      ],
+      "audio": "soulmate_free_gratitude_for_love.mp3"
     }
   ],
   "meta": {
     "created_at": "2025-11-12T04:38:00+07:00",
-    "updated_at": "2025-11-12T05:00:00+07:00",
-    "entry_count": 2,
+    "updated_at": "2025-11-12T05:15:00+07:00",
+    "entry_count": 3,
     "tier": "free",
     "room_color": "#FF6B9D"
   }
