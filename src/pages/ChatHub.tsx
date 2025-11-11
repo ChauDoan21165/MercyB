@@ -22,6 +22,7 @@ import { useCredits } from "@/hooks/useCredits";
 import { CreditLimitModal } from "@/components/CreditLimitModal";
 import { CreditsDisplay } from "@/components/CreditsDisplay";
 import { AudioPlayer } from "@/components/AudioPlayer";
+import { ProtectedContent } from "@/components/ProtectedContent";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { messageSchema } from "@/lib/inputValidation";
@@ -483,9 +484,10 @@ const ChatHub = () => {
           >
             {!message.isUser && vietnameseContent ? (
               <>
-                <div className="max-w-prose mx-auto">
-                  <p className="text-base leading-relaxed whitespace-pre-wrap">{englishContent}</p>
-                </div>
+                <ProtectedContent 
+                  content={englishContent}
+                  className="max-w-prose mx-auto"
+                />
                 
                 {/* Audio Player */}
                 {message.audioFile && audioUrl && (
@@ -516,18 +518,20 @@ const ChatHub = () => {
                 {showVietnamese && (
                   <>
                     <hr className="border-border my-4" />
-                    <div className="max-w-prose mx-auto">
-                      <p className="text-base leading-relaxed whitespace-pre-wrap">{vietnameseContent}</p>
-                    </div>
+                    <ProtectedContent 
+                      content={vietnameseContent}
+                      className="max-w-prose mx-auto"
+                    />
                     {!message.isUser && <MessageActions text={vietnameseContent} roomId={roomId || ""} />}
                   </>
                 )}
               </>
             ) : (
               <>
-                <div className="max-w-prose mx-auto">
-                  <p className="text-base leading-relaxed whitespace-pre-wrap">{message.text}</p>
-                </div>
+                <ProtectedContent 
+                  content={message.text}
+                  className="max-w-prose mx-auto"
+                />
                 
                 {/* Audio Player */}
                 {!message.isUser && message.audioFile && audioUrl && (

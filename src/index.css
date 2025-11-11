@@ -159,4 +159,30 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Copy protection for non-admin users */
+  .select-none {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Prevent text selection on protected content */
+  .protected-content {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .protected-content::selection {
+    background: transparent;
+  }
+  
+  .protected-content::-moz-selection {
+    background: transparent;
+  }
 }
