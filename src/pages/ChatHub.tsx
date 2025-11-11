@@ -674,7 +674,7 @@ const ChatHub = () => {
                   title="Copy JSON filename"
                 />
               )}
-              <h2 className="text-lg font-semibold">{currentRoom.nameEn}/{currentRoom.nameVi}</h2>
+              <h2 className="text-lg font-semibold">{currentRoom.nameEn} / {currentRoom.nameVi}</h2>
               {info && (
                 <Badge variant="secondary" className="text-xs">
                   {info.tier === 'free' ? 'Free' : info.tier === 'vip1' ? 'VIP 1' : info.tier === 'vip2' ? 'VIP 2' : info.tier === 'vip3' ? 'VIP 3' : 'VIP 4'}
@@ -708,11 +708,11 @@ const ChatHub = () => {
           <div className="text-center space-y-0 mb-4">
             {keywordMenu && keywordMenu.en && keywordMenu.en.length > 0 ? (
               <p className="text-sm text-foreground leading-tight">
-                Welcome to {currentRoom.nameEn} Room, please click the keyword of the topic you want to discover. / Chào mừng bạn đến với phòng {currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.
+                Welcome to {currentRoom.nameEn} Room, please click the keyword of the topic you want to discover / Chào mừng bạn đến với phòng {currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá
               </p>
             ) : (
               <p className="text-sm text-foreground leading-tight">
-                Welcome to {currentRoom.nameEn} Room. / Chào mừng bạn đến với phòng {currentRoom.nameVi}.
+                Welcome to {currentRoom.nameEn} Room / Chào mừng bạn đến với phòng {currentRoom.nameVi}
               </p>
             )}
           </div>
