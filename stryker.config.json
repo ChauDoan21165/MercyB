@@ -21,10 +21,8 @@
     "low": 60,
     "break": 50
   },
-  "checkers": ["typescript"],
-  "tsconfigFile": "tsconfig.json",
   "mutator": {
-    "plugins": ["typescript"],
+    "plugins": null,
     "excludedMutations": [
       "BlockStatement",
       "StringLiteral",

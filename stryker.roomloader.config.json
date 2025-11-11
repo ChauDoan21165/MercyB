@@ -18,10 +18,8 @@
     "low": 65,
     "break": 55
   },
-  "checkers": ["typescript"],
-  "tsconfigFile": "tsconfig.json",
   "mutator": {
-    "plugins": ["typescript"],
+    "plugins": null,
     "excludedMutations": []
   },
   "timeoutMS": 30000,

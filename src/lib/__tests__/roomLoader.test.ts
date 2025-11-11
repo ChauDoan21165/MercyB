@@ -46,13 +46,13 @@ describe('roomLoader', () => {
         error: null,
       };
 
-      vi.mocked(supabase.from).mockReturnValue({
-        select: vi.fn().mockReturnValue({
-          eq: vi.fn().mockReturnValue({
-            maybeSingle: vi.fn().mockResolvedValue(mockSupabaseResponse),
-          }),
-        }),
-      } as any);
+      const mockChain = {
+        select: vi.fn().mockReturnThis(),
+        eq: vi.fn().mockReturnThis(),
+        maybeSingle: vi.fn().mockResolvedValue(mockSupabaseResponse),
+      };
+      
+      (supabase.from as any).mockReturnValue(mockChain);
 
       const result = await loadMergedRoom('test-room', 'free');
 
@@ -77,13 +77,13 @@ describe('roomLoader', () => {
         ],
       };
 
-      vi.mocked(supabase.from).mockReturnValue({
-        select: vi.fn().mockReturnValue({
-          eq: vi.fn().mockReturnValue({
-            maybeSingle: vi.fn().mockResolvedValue({ data: null, error: new Error('DB error') }),
-          }),
-        }),
-      } as any);
+      const mockChain = {
+        select: vi.fn().mockReturnThis(),
+        eq: vi.fn().mockReturnThis(),
+        maybeSingle: vi.fn().mockResolvedValue({ data: null, error: new Error('DB error') }),
+      };
+      
+      (supabase.from as any).mockReturnValue(mockChain);
 
       (global.fetch as any).mockResolvedValueOnce({
         ok: true,
@@ -121,13 +121,13 @@ describe('roomLoader', () => {
         ],
       };
 
-      vi.mocked(supabase.from).mockReturnValue({
-        select: vi.fn().mockReturnValue({
-          eq: vi.fn().mockReturnValue({
-            maybeSingle: vi.fn().mockResolvedValue({ data: mockDbData, error: null }),
-          }),
-        }),
-      } as any);
+      const mockChain = {
+        select: vi.fn().mockReturnThis(),
+        eq: vi.fn().mockReturnThis(),
+        maybeSingle: vi.fn().mockResolvedValue({ data: mockDbData, error: null }),
+      };
+      
+      (supabase.from as any).mockReturnValue(mockChain);
 
       const result = await loadMergedRoom('audio-test', 'free');
 
@@ -159,13 +159,13 @@ describe('roomLoader', () => {
         ],
       };
 
-      vi.mocked(supabase.from).mockReturnValue({
-        select: vi.fn().mockReturnValue({
-          eq: vi.fn().mockReturnValue({
-            maybeSingle: vi.fn().mockResolvedValue({ data: mockDbData, error: null }),
-          }),
-        }),
-      } as any);
+      const mockChain = {
+        select: vi.fn().mockReturnThis(),
+        eq: vi.fn().mockReturnThis(),
+        maybeSingle: vi.fn().mockResolvedValue({ data: mockDbData, error: null }),
+      };
+      
+      (supabase.from as any).mockReturnValue(mockChain);
 
       const result = await loadMergedRoom('keywords-test', 'vip1');
 
@@ -182,13 +182,13 @@ describe('roomLoader', () => {
         entries: [],
       };
 
-      vi.mocked(supabase.from).mockReturnValue({
-        select: vi.fn().mockReturnValue({
-          eq: vi.fn().mockReturnValue({
-            maybeSingle: vi.fn().mockResolvedValue({ data: mockDbData, error: null }),
-          }),
-        }),
-      } as any);
+      const mockChain = {
+        select: vi.fn().mockReturnThis(),
+        eq: vi.fn().mockReturnThis(),
+        maybeSingle: vi.fn().mockResolvedValue({ data: mockDbData, error: null }),
+      };
+      
+      (supabase.from as any).mockReturnValue(mockChain);
 
       const result = await loadMergedRoom('empty-test', 'free');
 
@@ -197,13 +197,13 @@ describe('roomLoader', () => {
     });
 
     it('should return empty structure when all loading methods fail', async () => {
-      vi.mocked(supabase.from).mockReturnValue({
-        select: vi.fn().mockReturnValue({
-          eq: vi.fn().mockReturnValue({
-            maybeSingle: vi.fn().mockResolvedValue({ data: null, error: new Error('DB error') }),
-          }),
-        }),
-      } as any);
+      const mockChain = {
+        select: vi.fn().mockReturnThis(),
+        eq: vi.fn().mockReturnThis(),
+        maybeSingle: vi.fn().mockResolvedValue({ data: null, error: new Error('DB error') }),
+      };
+      
+      (supabase.from as any).mockReturnValue(mockChain);
 
       (global.fetch as any).mockRejectedValue(new Error('Fetch failed'));
 
