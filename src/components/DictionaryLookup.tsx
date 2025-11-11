@@ -12,6 +12,8 @@ interface DictionaryEntry {
   vi: string[];
   ipa_en?: string;
   ipa_vi?: string;
+  example_en?: string;
+  example_vi?: string;
 }
 
 interface Dictionary {
@@ -168,6 +170,11 @@ export const DictionaryLookup = () => {
                 {result.ipa_en && (
                   <p className="text-xs text-muted-foreground mt-1 font-mono">/{result.ipa_en}/</p>
                 )}
+                {result.example_en && (
+                  <p className="text-xs text-muted-foreground mt-2 italic border-l-2 border-primary/30 pl-2">
+                    "{result.example_en}"
+                  </p>
+                )}
               </div>
               <Button
                 size="sm"
@@ -189,6 +196,11 @@ export const DictionaryLookup = () => {
                 <p className="text-sm">{result.vi.join(", ")}</p>
                 {result.ipa_vi && (
                   <p className="text-xs text-muted-foreground mt-1 font-mono">/{result.ipa_vi}/</p>
+                )}
+                {result.example_vi && (
+                  <p className="text-xs text-muted-foreground mt-2 italic border-l-2 border-primary/30 pl-2">
+                    "{result.example_vi}"
+                  </p>
                 )}
               </div>
               <Button

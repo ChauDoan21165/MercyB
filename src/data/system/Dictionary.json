@@ -47,13 +47,17 @@
       ],
       "vi": ["đối thoại", "trao đổi", "giao tiếp", "trò chuyện", "truyền đạt"],
       "ipa_en": "kəˌmjuːnɪˈkeɪʃən",
-      "ipa_vi": "zaːw dəj"
+      "ipa_vi": "zaːw dəj",
+      "example_en": "Good communication is essential for healthy relationships",
+      "example_vi": "Giao tiếp tốt rất cần thiết cho các mối quan hệ lành mạnh"
     },
     "anxiety": {
       "en": ["worry", "unease", "nervousness", "fearfulness"],
       "vi": ["lo lắng", "bất an", "căng thẳng", "sợ hãi"],
       "ipa_en": "æŋˈzaɪəti",
-      "ipa_vi": "lo ləŋ"
+      "ipa_vi": "lo ləŋ",
+      "example_en": "Deep breathing can help reduce anxiety in stressful situations",
+      "example_vi": "Thở sâu có thể giúp giảm lo lắng trong các tình huống căng thẳng"
     },
     "tantrums": {
       "en": ["outbursts", "rages", "fits", "scenes"],
@@ -347,7 +351,9 @@
       "en": ["awareness", "attentiveness", "consciousness", "focus"],
       "vi": ["chánh niệm", "tỉnh thức", "chú tâm", "tập trung"],
       "ipa_en": "ˈmaɪndfəlnəs",
-      "ipa_vi": "t͡ɕaɲ ɲɛm"
+      "ipa_vi": "t͡ɕaɲ ɲɛm",
+      "example_en": "Practicing mindfulness daily can improve mental clarity and reduce stress",
+      "example_vi": "Thực hành chánh niệm hàng ngày có thể cải thiện sự minh mẫn và giảm căng thẳng"
     },
     "fever": {
       "en": ["high temperature", "feverishness", "pyrexia"],
@@ -357,13 +363,17 @@
       "en": ["agreement", "permission", "approval", "assent"],
       "vi": ["sự đồng ý", "cho phép", "chấp thuận", "tán thành"],
       "ipa_en": "kənˈsent",
-      "ipa_vi": "sɨ doŋ i"
+      "ipa_vi": "sɨ doŋ i",
+      "example_en": "Always ask for clear consent before any intimate activity",
+      "example_vi": "Luôn xin sự đồng ý rõ ràng trước bất kỳ hoạt động thân mật nào"
     },
     "boundaries": {
       "en": ["limits", "borders", "restrictions", "guidelines"],
       "vi": ["ranh giới", "giới hạn", "hạn chế", "nguyên tắc"],
       "ipa_en": "ˈbaʊndəriz",
-      "ipa_vi": "zaɲ zəj"
+      "ipa_vi": "zaɲ zəj",
+      "example_en": "Setting healthy boundaries helps protect your emotional well-being",
+      "example_vi": "Thiết lập ranh giới lành mạnh giúp bảo vệ sức khỏe tinh thần của bạn"
     },
     "intimacy": {
       "en": ["closeness", "connection", "affection", "familiarity"],
@@ -375,7 +385,9 @@
       "en": ["longing", "craving", "want", "passion"],
       "vi": ["khát khao", "mong muốn", "ham muốn", "đam mê"],
       "ipa_en": "dɪˈzaɪər",
-      "ipa_vi": "kʰat kʰaːw"
+      "ipa_vi": "kʰat kʰaːw",
+      "example_en": "Understanding your partner's desires strengthens emotional intimacy",
+      "example_vi": "Hiểu được mong muốn của bạn đời giúp tăng cường sự thân mật về mặt cảm xúc"
     },
     "pleasure": {
       "en": ["enjoyment", "satisfaction", "delight", "gratification"],
