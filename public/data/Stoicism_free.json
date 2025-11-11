@@ -1,9 +1,10 @@
 {
-  "version": "1.0",
-  "locale": "vi-en",
-  "name": "Stoic Philosophy (Free)",
-  "name_vi": "Triết Học Khắc Kỷ (Miễn Phí)",
+  "name": "Stoic Philosophy",
+  "name_vi": "Triết Học Khắc Kỷ",
   "description": "Foundation in Stoic wisdom: firm purpose, emotional control, inner strength, and natural flow.",
+  "description_vi": "Nền tảng triết lý khắc kỷ: mục đích vững chắc, làm chủ cảm xúc, sức mạnh nội tâm và dòng chảy tự nhiên.",
+  "keywords_en": ["stoicism", "purpose", "emotional control", "resilience"],
+  "keywords_vi": ["chủ nghĩa khắc kỷ", "mục đích", "làm chủ cảm xúc", "kiên cường"],
   "entries": [
     {
       "slug": "firm-purpose",
@@ -29,7 +30,7 @@
         "purpose",
         "values"
       ],
-      "audio": "/firm_purpose_free.mp3"
+      "audio": "stoicism_free_firm_purpose.mp3"
     },
     {
       "slug": "emotional-control",
@@ -55,29 +56,9 @@
         "emotional control",
         "resilience"
       ],
-      "audio": "/emotional_control_free.mp3"
+      "audio": "stoicism_free_emotional_control.mp3"
     }
   ],
-  "keywords": {
-    "stoic_wisdom": {
-      "en": [
-        "stoicism",
-        "firm purpose",
-        "emotional control",
-        "inner strength",
-        "resilience",
-        "values"
-      ],
-      "vi": [
-        "chủ nghĩa khắc kỷ",
-        "mục đích vững chắc",
-        "làm chủ cảm xúc",
-        "sức mạnh nội tâm",
-        "kiên cường",
-        "giá trị"
-      ]
-    }
-  },
   "meta": {
     "created_at": "2025-10-27T00:00:00+00:00",
     "updated_at": "2025-10-27T00:00:00+00:00",
