@@ -1,8 +1,26 @@
 # Room Update & Validation Guide
 
-## Quick Validation After Room Updates
+## 🚀 Auto-Validation (Recommended)
 
-After updating any room file, use this command to verify everything is working:
+Start the file watcher to automatically validate rooms when you save changes:
+
+```bash
+node scripts/watch-and-validate-rooms.js
+```
+
+This will:
+- 👁️ **Watch** `public/data/` for any JSON file changes
+- 🔄 **Auto-validate** rooms immediately after you save
+- ✅ **Auto-fix** manifest issues automatically
+- 💡 **Real-time feedback** - see validation results instantly
+
+**Leave it running while editing rooms!** Press `Ctrl+C` to stop.
+
+---
+
+## Manual Validation After Room Updates
+
+If not using the watcher, validate manually with:
 
 ```bash
 node scripts/validate-room-after-update.js <filename>
@@ -89,30 +107,40 @@ node scripts/validate-room-after-update.js <your-file.json>
 
 ## Workflow: Adding or Updating a Room
 
-### Step 1: Update Room Files
+### Option A: With Auto-Validation (Recommended)
 
-1. **Main data file**: Update `public/data/Your_Room_free.json`
-2. **Audio files**: Place in `public/audio/`
-3. **Edge function**: Update `supabase/functions/room-chat/data/Your_Room_free.json`
+1. **Start the watcher** (in a terminal):
+   ```bash
+   node scripts/watch-and-validate-rooms.js
+   ```
 
-### Step 2: Validate
+2. **Edit your room files** - validation runs automatically on save:
+   - Update `public/data/Your_Room_free.json`
+   - Add audio files to `public/audio/`
+   - Update `supabase/functions/room-chat/data/Your_Room_free.json`
 
-```bash
-node scripts/validate-room-after-update.js Your_Room_free.json
-```
+3. **Watch the terminal** - instant validation feedback after each save
 
-### Step 3: Review Results
+4. **Fix any issues** - the watcher catches problems immediately
 
-The script will show:
-- ✅ Green checkmarks for passing checks
-- ⚠️  Yellow warnings for non-critical issues (missing audio, etc.)
-- ❌ Red errors for critical failures
+### Option B: Manual Validation
 
-### Step 4: Auto-Fix
+1. **Update Room Files**
+   - Main data file: `public/data/Your_Room_free.json`
+   - Audio files: `public/audio/`
+   - Edge function: `supabase/functions/room-chat/data/Your_Room_free.json`
 
-If the script detects manifest issues, it will automatically:
-1. Regenerate the room registry
-2. Re-validate to confirm fixes
+2. **Run Validation**
+   ```bash
+   node scripts/validate-room-after-update.js Your_Room_free.json
+   ```
+
+3. **Review Results**
+   - ✅ Green checkmarks for passing checks
+   - ⚠️  Yellow warnings for non-critical issues (missing audio, etc.)
+   - ❌ Red errors for critical failures
+
+4. **Auto-Fix** - Script automatically regenerates registry if needed
 
 ## Other Validation Commands
 
