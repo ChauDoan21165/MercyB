@@ -112,7 +112,7 @@ export const DictionaryLookup = () => {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto mb-4 p-4 border-2 border-primary/20 rounded-lg bg-accent/5 shadow-sm">
+    <div className="w-full max-w-md mx-auto mb-4 p-4 border-2 border-primary/20 rounded-lg bg-accent/5 shadow-sm transition-all duration-300 hover:border-primary/40 hover:bg-accent/10 hover:shadow-md">
       <div className="relative">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
         <Input
