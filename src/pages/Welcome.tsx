@@ -206,32 +206,6 @@ const Welcome = () => {
                 </span>
               </Button>
               
-              <Button 
-                size="lg"
-                variant="outline"
-                className="border-2 border-secondary hover:bg-secondary/10 min-w-[200px]"
-                onClick={() => navigate("/audio-upload")}
-              >
-                <span className="flex flex-col items-center gap-1">
-                  <Music className="h-5 w-5" />
-                  <span className="text-base font-semibold">Upload Audio</span>
-                  <span className="text-sm opacity-90">Tải Âm Thanh</span>
-                </span>
-              </Button>
-              
-              <Button 
-                size="lg"
-                variant="outline"
-                className="border-2 border-accent hover:bg-accent/10 min-w-[200px]"
-                onClick={() => navigate("/audio-test")}
-              >
-                <span className="flex flex-col items-center gap-1">
-                  <TestTube className="h-5 w-5" />
-                  <span className="text-base font-semibold">Audio Test</span>
-                  <span className="text-sm opacity-90">Kiểm Tra Âm Thanh</span>
-                </span>
-              </Button>
-              
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button 

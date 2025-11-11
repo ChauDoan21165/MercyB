@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LayoutDashboard, Users, TrendingUp, MessageSquare, DollarSign, Music, Shield, FileText } from "lucide-react";
+import { LayoutDashboard, Users, TrendingUp, MessageSquare, DollarSign, Music, Shield, FileText, TestTube } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 import { AdminBreadcrumb } from "@/components/admin/AdminBreadcrumb";
@@ -271,14 +271,33 @@ const AdminDashboard = () => {
                   <Music className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <CardTitle>Audio Management</CardTitle>
-                  <CardDescription>Upload and manage audio</CardDescription>
+                  <CardTitle>Audio Upload</CardTitle>
+                  <CardDescription>Upload audio files</CardDescription>
                 </div>
               </div>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
                 Upload audio files for rooms and manage existing audio.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate("/audio-test")}>
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="p-3 bg-primary/10 rounded-lg">
+                  <TestTube className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <CardTitle>Audio Test</CardTitle>
+                  <CardDescription>Test audio files</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Test and verify audio files in VIP4 and other rooms.
               </p>
             </CardContent>
           </Card>
