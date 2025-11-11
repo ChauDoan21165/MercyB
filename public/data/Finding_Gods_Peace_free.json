@@ -1,6 +1,6 @@
 {
-  "name": "Finding_Gods_Peace_free.json",
-  "tier": "Free / Miễn phí",
+  "name": "Finding_Gods_Peace_free",
+  "tier": "free",
   "title": {
     "en": "Finding God's Peace",
     "vi": "Tìm Bình An Của Thiên Chúa"
@@ -9,6 +9,8 @@
     "en": "Simple, heart-centered lessons to help you find calm through prayer, gratitude, and reflection.",
     "vi": "Những bài học giản dị, từ tâm, giúp bạn tìm sự bình an qua cầu nguyện, biết ơn và suy ngẫm."
   },
+  "keywords_en": ["God", "peace", "prayer", "gratitude", "reflection", "faith", "serenity", "calm"],
+  "keywords_vi": ["Thiên Chúa", "bình an", "cầu nguyện", "biết ơn", "suy ngẫm", "đức tin", "tĩnh lặng", "an nhiên"],
   "entries": [
     {
       "slug": "one-minute-prayer",
@@ -49,7 +51,7 @@
       "keywords_vi": ["kiên nhẫn", "tin tưởng", "đức tin", "bình tĩnh", "chữa lành"],
       "copy": {
         "en": "Peace does not always come quickly. Some prayers bloom slowly, like seeds in hidden soil. Trust that silence is not neglect—it is nurturing. When life feels paused, breathe and remember: God works quietly, not absent. A slow season is not wasted; it deepens your roots. Faith is the art of waiting with grace. Light one candle tonight and whisper, ‘I still believe.’ The flame is small, but heaven sees it.",
-        "vi": "Bình an không phải lúc nào cũng đến nhanh. Có những lời cầu nguyện nở chậm như hạt giống trong lòng đất. Hãy tin rằng sự im lặng không phải là lãng quên—mà là nuôi dưỡng. Khi cuộc sống như dừng lại, hãy hít thở và nhớ: Thiên Chúa đang làm việc trong tĩnh lặng, không phải vắng mặt. Mùa chậm không vô ích; nó làm rễ bạn sâu hơn. Đức tin là nghệ thuật chờ đợi với ân sủng. Tối nay, hãy thắp một ngọn nến và thì thầm: ‘Con vẫn tin.’ Ngọn lửa nhỏ thôi, nhưng thiên đàng nhìn thấy.",
+        "vi": "Bình an không phải lúc nào cũng đến nhanh. Có những lời cầu nguyện nở chậm như hạt giống trong lòng đất. Hãy tin rằng sự im lặng không phải là lãng quên—mà là nuôi dưỡng. Khi cuộc sống như dừng lại, hãy hít thở và nhớ: Thiên Chúa đang làm việc trong tĩnh lặng, không phải vắng mặt. Mùa chậm không vô ích; nó làm rễ bạn sâu hơn. Đức tin là nghệ thuật chờ đợi với ân sủng. Tối nay, hãy thắp một ngọn nến và thì thầm: ‘Con vẫn tin.’ Ngọn lửa nhỏ thôi, nhưng thiên đàng nhìn thấy."
       },
       "tags": ["spirituality", "faith"],
       "audio": "gods_peace_free_4_en.mp3"
@@ -60,7 +62,7 @@
       "keywords_vi": ["lòng tốt", "phục vụ", "bình an", "đức tin", "biết ơn"],
       "copy": {
         "en": "Sometimes the fastest way to feel God’s peace is to bring it to someone else. Visit an elder, send a kind message, hold the door open. Service softens pride and opens the heart. As you comfort another, you feel comforted. Love shared multiplies peace. Remember, faith is not only felt in prayer—it’s lived through action. Today, be someone’s quiet blessing. In giving, you are gently healed too.",
-        "vi": "Đôi khi, cách nhanh nhất để cảm nhận bình an của Thiên Chúa là mang nó đến cho người khác. Hãy thăm một người già, gửi một tin nhắn tử tế, mở cửa cho ai đó. Phục vụ làm dịu sự kiêu hãnh và mở lòng. Khi bạn an ủi người khác, bạn cũng được an ủi. Tình yêu được chia sẻ sẽ nhân lên bình an. Hãy nhớ, đức tin không chỉ được cảm nhận trong lời cầu nguyện—mà trong hành động sống. Hôm nay, hãy trở thành một ân phúc lặng lẽ cho ai đó. Khi cho đi, bạn cũng được chữa lành.",
+        "vi": "Đôi khi, cách nhanh nhất để cảm nhận bình an của Thiên Chúa là mang nó đến cho người khác. Hãy thăm một người già, gửi một tin nhắn tử tế, mở cửa cho ai đó. Phục vụ làm dịu sự kiêu hãnh và mở lòng. Khi bạn an ủi người khác, bạn cũng được an ủi. Tình yêu được chia sẻ sẽ nhân lên bình an. Hãy nhớ, đức tin không chỉ được cảm nhận trong lời cầu nguyện—mà trong hành động sống. Hôm nay, hãy trở thành một ân phúc lặng lẽ cho ai đó. Khi cho đi, bạn cũng được chữa lành."
       },
       "tags": ["spirituality", "service"],
       "audio": "gods_peace_free_5_en.mp3"
