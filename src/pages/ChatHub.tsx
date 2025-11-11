@@ -721,42 +721,21 @@ const ChatHub = () => {
           </div>
         </div>
         
-        {/* Main Chat Area */}
+        {/* Welcome Message and Keywords Combined */}
         <Card className="p-4 shadow-soft bg-card border border-border">
-          <div className="space-y-3">
-            <ScrollArea className="h-[560px] pr-4" ref={mainScrollRef}>
-              <WelcomeBack lastRoomId={progress.lastVisit} currentRoomId={roomId || ""} />
-             
-              {/* Show welcome message first */}
-              {mainMessages.length > 0 && mainMessages[0].id === 'welcome' && (
-                <div className="mb-4">
-                  <div className="bg-card border shadow-sm rounded-2xl px-4 py-3">
-                    <p className="text-sm whitespace-pre-wrap">{mainMessages[0].text}</p>
-                  </div>
-                </div>
-              )}
-             
-              {/* Show response messages (excluding welcome) */}
-              {mainMessages.slice(1).length === 0 ? (
-                <div className="flex items-center justify-center text-center py-8">
-                  <div className="space-y-2">
-                    <p className="text-muted-foreground">Click a keyword to start</p>
-                    <p className="text-sm text-muted-foreground">Nhấp vào từ khóa để bắt đầu</p>
-                  </div>
-                </div>
-              ) : (
-                mainMessages.slice(1).map(msg => <MessageBubble key={msg.id} message={msg} />)
-              )}
-              <div ref={endRef} />
-            </ScrollArea>
+          <div className="text-center space-y-0 mb-4">
+            <p className="text-sm text-foreground leading-tight">
+              Welcome to {currentRoom.nameEn} Room, please click the keyword of the topic you want to discover.
+            </p>
+            <p className="text-sm text-muted-foreground leading-tight">
+              Chào mừng bạn đến với phòng {currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.
+            </p>
           </div>
-        </Card>
-        {/* Keyword Menu Section */}
-        {keywordMenu && keywordMenu.en && keywordMenu.vi && (
-          <Card className="p-4 shadow-soft">
+          
+          {keywordMenu && keywordMenu.en && keywordMenu.vi && (
             <div className="space-y-2">
-              <h4 className="text-sm font-semibold text-muted-foreground">Keywords / Từ Khóa</h4>
-              <div className="flex flex-wrap gap-2">
+              <h4 className="text-sm font-semibold text-center text-muted-foreground">Keywords / Từ Khóa</h4>
+              <div className="flex flex-wrap gap-2 justify-center">
                 {keywordMenu.en.map((keywordEn, idx) => {
                   const keywordVi = keywordMenu.vi[idx] || '';
                   const isClicked = clickedKeyword === keywordEn || clickedKeyword === keywordVi;
@@ -794,8 +773,30 @@ const ChatHub = () => {
                 })}
               </div>
             </div>
-          </Card>
-        )}
+          )}
+        </Card>
+        
+        {/* Main Chat Area */}
+        <Card className="p-4 shadow-soft bg-card border border-border">
+          <div className="space-y-3">
+            <ScrollArea className="h-[560px] pr-4" ref={mainScrollRef}>
+              <WelcomeBack lastRoomId={progress.lastVisit} currentRoomId={roomId || ""} />
+             
+              {/* Show response messages (excluding welcome) */}
+              {mainMessages.slice(1).length === 0 ? (
+                <div className="flex items-center justify-center text-center py-8">
+                  <div className="space-y-2">
+                    <p className="text-muted-foreground">Click a keyword to start</p>
+                    <p className="text-sm text-muted-foreground">Nhấp vào từ khóa để bắt đầu</p>
+                  </div>
+                </div>
+              ) : (
+                mainMessages.slice(1).map(msg => <MessageBubble key={msg.id} message={msg} />)
+              )}
+              <div ref={endRef} />
+            </ScrollArea>
+          </div>
+        </Card>
         {/* Feedback - Single Line at Bottom */}
         <Card className="p-3 shadow-soft">
           <div className="flex items-center gap-2">
