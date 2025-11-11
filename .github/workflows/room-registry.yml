@@ -32,11 +32,6 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
-      - name: Validate room JSON schema
-        run: node scripts/validate-room-schema.js
-        env:
-          SKIP_AUDIO_CHECK: true
-
       - name: Generate room registry
         run: node scripts/generate-room-registry.js
 

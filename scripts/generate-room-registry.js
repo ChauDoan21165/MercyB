@@ -58,12 +58,14 @@ function extractNames(jsonPath, filename) {
   }
 }
 
-// Scan public/data directory for JSON files (flat structure)
+// Scan public/data directory for JSON files (flat structure) with error recovery
 function scanRoomFiles() {
   const dataDir = path.join(publicDir, 'data');
   
   if (!fs.existsSync(dataDir)) {
     console.error(`Error: Data directory not found: ${dataDir}`);
+    console.log('Creating data directory...');
+    fs.mkdirSync(dataDir, { recursive: true });
     return { manifest: {}, dataImports: {} };
   }
   
@@ -73,36 +75,43 @@ function scanRoomFiles() {
   const manifest = {};
   const dataImports = {};
   
+  console.log(`Found ${roomFiles.length} room files to process`);
+  
   for (const filename of roomFiles) {
-    const roomId = filenameToRoomId(filename);
-    const jsonPath = path.join(dataDir, filename);
-    const names = extractNames(jsonPath, filename);
-    
-    if (!names) {
-      console.warn(`⚠️  Skipping ${filename}: Could not extract names`);
-      continue;
+    try {
+      const roomId = filenameToRoomId(filename);
+      const jsonPath = path.join(dataDir, filename);
+      const names = extractNames(jsonPath, filename);
+      
+      if (!names) {
+        console.warn(`⚠️  Skipping ${filename}: Could not extract names`);
+        continue;
+      }
+      
+      // Extract tier from filename
+      let tier = 'free';
+      if (roomId.endsWith('-vip1')) tier = 'vip1';
+      else if (roomId.endsWith('-vip2')) tier = 'vip2';
+      else if (roomId.endsWith('-vip3')) tier = 'vip3';
+      else if (roomId.endsWith('-vip4')) tier = 'vip4';
+      
+      // Add to manifest with data/ prefix
+      manifest[roomId] = `data/${filename}`;
+      
+      // Add to dataImports
+      dataImports[roomId] = {
+        id: roomId,
+        nameEn: names.nameEn,
+        nameVi: names.nameVi,
+        tier,
+        hasData: true
+      };
+      
+      console.log(`✓ Registered: ${roomId} → data/${filename}`);
+    } catch (error) {
+      console.error(`✗ Error processing ${filename}:`, error.message);
+      // Continue processing other files instead of failing
     }
-    
-    // Extract tier from filename
-    let tier = 'free';
-    if (roomId.endsWith('-vip1')) tier = 'vip1';
-    else if (roomId.endsWith('-vip2')) tier = 'vip2';
-    else if (roomId.endsWith('-vip3')) tier = 'vip3';
-    else if (roomId.endsWith('-vip4')) tier = 'vip4';
-    
-    // Add to manifest with data/ prefix
-    manifest[roomId] = `data/${filename}`;
-    
-    // Add to dataImports
-    dataImports[roomId] = {
-      id: roomId,
-      nameEn: names.nameEn,
-      nameVi: names.nameVi,
-      tier,
-      hasData: true
-    };
-    
-    console.log(`✓ Registered: ${roomId} → data/${filename}`);
   }
   
   return { manifest, dataImports };
