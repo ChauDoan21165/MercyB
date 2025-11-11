@@ -670,8 +670,8 @@ const ChatHub = () => {
             </Button>
           </div>
          
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-2 mb-2">
+          <div className="text-center space-y-1">
+            <div className="flex items-center justify-center gap-2">
               {isAdmin && roomId && (
                 <button
                   type="button"
@@ -689,20 +689,18 @@ const ChatHub = () => {
                   title="Copy JSON filename"
                 />
               )}
+              <h2 className="text-lg font-semibold">{currentRoom.nameEn}</h2>
+              {info && (
+                <Badge variant="secondary" className="text-xs">
+                  {info.tier === 'free' ? 'Free' : info.tier === 'vip1' ? 'VIP 1' : info.tier === 'vip2' ? 'VIP 2' : info.tier === 'vip3' ? 'VIP 3' : 'VIP 4'}
+                </Badge>
+              )}
             </div>
-            <h2 className="text-lg font-semibold">{currentRoom.nameEn}</h2>
-            {info && (
-              <Badge variant="secondary" className="text-xs">
-                {info.tier === 'free' ? 'Free' : info.tier === 'vip1' ? 'VIP 1' : info.tier === 'vip2' ? 'VIP 2' : info.tier === 'vip3' ? 'VIP 3' : 'VIP 4'}
-              </Badge>
-            )}
-            <p className="text-xs text-muted-foreground mb-1">{currentRoom.nameVi}</p>
-            {username && (
-              <p className="text-xs font-medium text-primary mb-1">
-                👤 {username}
-              </p>
-            )}
-            <RoomProgress totalRooms={progress.totalRooms} streak={progress.streak} />
+            <p className="text-xs text-muted-foreground">{currentRoom.nameVi}</p>
+            <div className="flex items-center justify-center gap-1 text-xs font-medium text-primary">
+              {username && <span>👤 {username},</span>}
+              <span>You have explored {progress.totalRooms} {progress.totalRooms === 1 ? 'topic' : 'topics'}, {progress.streak} day streak! 🔥</span>
+            </div>
           </div>
          
           <div className="flex items-center gap-2">
@@ -733,8 +731,7 @@ const ChatHub = () => {
           </div>
           
           {keywordMenu && keywordMenu.en && keywordMenu.vi && (
-            <div className="space-y-2">
-              <h4 className="text-sm font-semibold text-center text-muted-foreground">Keywords / Từ Khóa</h4>
+            <div>
               <div className="flex flex-wrap gap-2 justify-center">
                 {keywordMenu.en.map((keywordEn, idx) => {
                   const keywordVi = keywordMenu.vi[idx] || '';
