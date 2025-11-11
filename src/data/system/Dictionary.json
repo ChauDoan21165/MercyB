@@ -33,7 +33,9 @@
     },
     "rebellious": {
       "en": ["defiant", "unruly", "dissident", "insubordinate"],
-      "vi": ["chống đối", "đối kháng", "kháng cự", "phản ứng"]
+      "vi": ["chống đối", "đối kháng", "kháng cự", "phản ứng"],
+      "ipa_en": "rɪˈbeljəs",
+      "ipa_vi": "t͡ɕoŋ doj"
     },
     "communication": {
       "en": [
@@ -43,11 +45,15 @@
         "conversation",
         "message"
       ],
-      "vi": ["đối thoại", "trao đổi", "giao tiếp", "trò chuyện", "truyền đạt"]
+      "vi": ["đối thoại", "trao đổi", "giao tiếp", "trò chuyện", "truyền đạt"],
+      "ipa_en": "kəˌmjuːnɪˈkeɪʃən",
+      "ipa_vi": "zaːw dəj"
     },
     "anxiety": {
       "en": ["worry", "unease", "nervousness", "fearfulness"],
-      "vi": ["lo lắng", "bất an", "căng thẳng", "sợ hãi"]
+      "vi": ["lo lắng", "bất an", "căng thẳng", "sợ hãi"],
+      "ipa_en": "æŋˈzaɪəti",
+      "ipa_vi": "lo ləŋ"
     },
     "tantrums": {
       "en": ["outbursts", "rages", "fits", "scenes"],
@@ -339,7 +345,9 @@
     },
     "mindfulness": {
       "en": ["awareness", "attentiveness", "consciousness", "focus"],
-      "vi": ["chánh niệm", "tỉnh thức", "chú tâm", "tập trung"]
+      "vi": ["chánh niệm", "tỉnh thức", "chú tâm", "tập trung"],
+      "ipa_en": "ˈmaɪndfəlnəs",
+      "ipa_vi": "t͡ɕaɲ ɲɛm"
     },
     "fever": {
       "en": ["high temperature", "feverishness", "pyrexia"],
@@ -347,19 +355,27 @@
     },
     "consent": {
       "en": ["agreement", "permission", "approval", "assent"],
-      "vi": ["sự đồng ý", "cho phép", "chấp thuận", "tán thành"]
+      "vi": ["sự đồng ý", "cho phép", "chấp thuận", "tán thành"],
+      "ipa_en": "kənˈsent",
+      "ipa_vi": "sɨ doŋ i"
     },
     "boundaries": {
       "en": ["limits", "borders", "restrictions", "guidelines"],
-      "vi": ["ranh giới", "giới hạn", "hạn chế", "nguyên tắc"]
+      "vi": ["ranh giới", "giới hạn", "hạn chế", "nguyên tắc"],
+      "ipa_en": "ˈbaʊndəriz",
+      "ipa_vi": "zaɲ zəj"
     },
     "intimacy": {
       "en": ["closeness", "connection", "affection", "familiarity"],
-      "vi": ["thân mật", "gần gũi", "tình cảm", "gắn kết"]
+      "vi": ["sự gần gũi", "kết nối", "tình cảm", "thân mật"],
+      "ipa_en": "ˈɪntɪməsi",
+      "ipa_vi": "sɨ gən guĩ"
     },
     "desire": {
       "en": ["longing", "craving", "want", "passion"],
-      "vi": ["khát khao", "mong muốn", "ham muốn", "đam mê"]
+      "vi": ["khát khao", "mong muốn", "ham muốn", "đam mê"],
+      "ipa_en": "dɪˈzaɪər",
+      "ipa_vi": "kʰat kʰaːw"
     },
     "pleasure": {
       "en": ["enjoyment", "satisfaction", "delight", "gratification"],

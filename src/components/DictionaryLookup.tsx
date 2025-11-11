@@ -10,6 +10,8 @@ import dictionaryData from "@/data/system/Dictionary.json";
 interface DictionaryEntry {
   en: string[];
   vi: string[];
+  ipa_en?: string;
+  ipa_vi?: string;
 }
 
 interface Dictionary {
@@ -18,7 +20,7 @@ interface Dictionary {
 
 export const DictionaryLookup = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [result, setResult] = useState<{ en: string[]; vi: string[] } | null>(null);
+  const [result, setResult] = useState<DictionaryEntry | null>(null);
   const [loadingAudio, setLoadingAudio] = useState<'en' | 'vi' | null>(null);
   const [speed, setSpeed] = useState<number>(1.0);
   const { toast } = useToast();
@@ -163,6 +165,9 @@ export const DictionaryLookup = () => {
               <div className="flex-1">
                 <span className="text-xs font-semibold text-muted-foreground">English:</span>
                 <p className="text-sm">{result.en.join(", ")}</p>
+                {result.ipa_en && (
+                  <p className="text-xs text-muted-foreground mt-1 font-mono">/{result.ipa_en}/</p>
+                )}
               </div>
               <Button
                 size="sm"
@@ -182,6 +187,9 @@ export const DictionaryLookup = () => {
               <div className="flex-1">
                 <span className="text-xs font-semibold text-muted-foreground">Vietnamese:</span>
                 <p className="text-sm">{result.vi.join(", ")}</p>
+                {result.ipa_vi && (
+                  <p className="text-xs text-muted-foreground mt-1 font-mono">/{result.ipa_vi}/</p>
+                )}
               </div>
               <Button
                 size="sm"
