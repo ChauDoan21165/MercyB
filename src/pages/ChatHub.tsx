@@ -478,12 +478,13 @@ const ChatHub = () => {
               <>
                 <ProtectedContent 
                   content={englishContent}
-                  className="max-w-prose mx-auto"
+                  className="w-full"
                 />
                 
-                {/* Audio Player */}
-                {message.audioFile && audioUrl && (
-                  <div className="mt-4 mb-3">
+                {/* Copy and Audio Player */}
+                {(message.audioFile && audioUrl) && (
+                  <div className="mt-4 mb-3 flex items-center gap-2">
+                    <MessageActions text={englishContent} roomId={roomId || ""} />
                     <AudioPlayer
                       audioPath={audioUrl}
                       isPlaying={currentAudio === audioUrl && isAudioPlaying}
@@ -496,25 +497,16 @@ const ChatHub = () => {
                   </div>
                 )}
                 
-                <div className="flex gap-2 mt-3 flex-wrap">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setShowVietnamese(!showVietnamese)}
-                    className="h-8 px-3 gap-1.5"
-                  >
-                    <span className="text-xs">🇻🇳</span>
-                  </Button>
-                </div>
-                {!message.isUser && <MessageActions text={englishContent} roomId={roomId || ""} />}
                 {showVietnamese && (
                   <>
                     <hr className="border-border my-4" />
                     <ProtectedContent 
                       content={vietnameseContent}
-                      className="max-w-prose mx-auto"
+                      className="w-full"
                     />
-                    {!message.isUser && <MessageActions text={vietnameseContent} roomId={roomId || ""} />}
+                    <div className="mt-3">
+                      <MessageActions text={vietnameseContent} roomId={roomId || ""} />
+                    </div>
                   </>
                 )}
               </>
@@ -522,12 +514,13 @@ const ChatHub = () => {
               <>
                 <ProtectedContent 
                   content={message.text}
-                  className="max-w-prose mx-auto"
+                  className="w-full"
                 />
                 
-                {/* Audio Player */}
+                {/* Copy and Audio Player */}
                 {!message.isUser && message.audioFile && audioUrl && (
-                  <div className="mt-4 mb-3">
+                  <div className="mt-4 mb-3 flex items-center gap-2">
+                    <MessageActions text={message.text} roomId={roomId || ""} />
                     <AudioPlayer
                       audioPath={audioUrl}
                       isPlaying={currentAudio === audioUrl && isAudioPlaying}
@@ -540,7 +533,7 @@ const ChatHub = () => {
                   </div>
                 )}
                 
-                {!message.isUser && <MessageActions text={message.text} roomId={roomId || ""} />}
+                {!message.isUser && !message.audioFile && <MessageActions text={message.text} roomId={roomId || ""} />}
               </>
             )}
             {message.isUser && (
@@ -681,14 +674,13 @@ const ChatHub = () => {
                   title="Copy JSON filename"
                 />
               )}
-              <h2 className="text-lg font-semibold">{currentRoom.nameEn}</h2>
+              <h2 className="text-lg font-semibold">{currentRoom.nameEn}/{currentRoom.nameVi}</h2>
               {info && (
                 <Badge variant="secondary" className="text-xs">
                   {info.tier === 'free' ? 'Free' : info.tier === 'vip1' ? 'VIP 1' : info.tier === 'vip2' ? 'VIP 2' : info.tier === 'vip3' ? 'VIP 3' : 'VIP 4'}
                 </Badge>
               )}
             </div>
-            <p className="text-xs text-muted-foreground">{currentRoom.nameVi}</p>
             <div className="flex items-center justify-center gap-1 text-xs font-medium text-primary">
               {username && <span>👤 {username},</span>}
               <span>You have explored {progress.totalRooms} {progress.totalRooms === 1 ? 'topic' : 'topics'}, {progress.streak} day streak! 🔥</span>
@@ -715,23 +707,13 @@ const ChatHub = () => {
         <Card className="p-4 shadow-soft bg-card border border-border">
           <div className="text-center space-y-0 mb-4">
             {keywordMenu && keywordMenu.en && keywordMenu.en.length > 0 ? (
-              <>
-                <p className="text-sm text-foreground leading-tight">
-                  Welcome to {currentRoom.nameEn} Room, please click the keyword of the topic you want to discover.
-                </p>
-                <p className="text-sm text-muted-foreground leading-tight">
-                  Chào mừng bạn đến với phòng {currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.
-                </p>
-              </>
+              <p className="text-sm text-foreground leading-tight">
+                Welcome to {currentRoom.nameEn} Room, please click the keyword of the topic you want to discover. / Chào mừng bạn đến với phòng {currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.
+              </p>
             ) : (
-              <>
-                <p className="text-sm text-foreground leading-tight">
-                  Welcome to {currentRoom.nameEn} Room.
-                </p>
-                <p className="text-sm text-muted-foreground leading-tight">
-                  Chào mừng bạn đến với phòng {currentRoom.nameVi}.
-                </p>
-              </>
+              <p className="text-sm text-foreground leading-tight">
+                Welcome to {currentRoom.nameEn} Room. / Chào mừng bạn đến với phòng {currentRoom.nameVi}.
+              </p>
             )}
           </div>
           
