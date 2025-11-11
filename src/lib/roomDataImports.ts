@@ -796,12 +796,5 @@ export const roomDataMap: Record<string, RoomData> = {
       "nameVi": "Sleep Improvement",
       "tier": "vip2",
       "hasData": true
-  },
-  "finding-gods-peace-free": {
-      "id": "finding-gods-peace-free",
-      "nameEn": "Finding God's Peace",
-      "nameVi": "Tìm Bình An Của Thiên Chúa",
-      "tier": "free",
-      "hasData": true
   }
 };
