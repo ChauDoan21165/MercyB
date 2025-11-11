@@ -66,15 +66,11 @@ export const DictionaryLookup = () => {
         return;
       }
 
-      // Use appropriate voice for language
-      const voice = language === 'en' ? 'alloy' : 'nova';
-      
-      const { data, error } = await supabase.functions.invoke('text-to-speech', {
+      // Call the free dictionary-tts function (no VIP required)
+      const { data, error } = await supabase.functions.invoke('dictionary-tts', {
         body: {
           text: text,
-          voice: voice,
-          roomSlug: 'dictionary',
-          entrySlug: `${language}-${text.substring(0, 20).replace(/\s+/g, '-')}`,
+          language: language,
         },
       });
 
@@ -83,6 +79,10 @@ export const DictionaryLookup = () => {
       if (data?.audioUrl) {
         const audio = new Audio(data.audioUrl);
         audio.play();
+        toast({
+          title: "Playing pronunciation",
+          duration: 1500,
+        });
       }
     } catch (error: any) {
       console.error('Pronunciation error:', error);

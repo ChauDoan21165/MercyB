@@ -15,5 +15,8 @@ verify_jwt = true
 [functions.text-to-speech]
 verify_jwt = true
 
+[functions.dictionary-tts]
+verify_jwt = true
+
 [functions.verify-payment-screenshot]
 verify_jwt = true
