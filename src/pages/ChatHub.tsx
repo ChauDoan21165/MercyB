@@ -157,19 +157,27 @@ const ChatHub = () => {
           console.warn(`No merged entries for room ${roomId} tier ${tier}`);
         }
        
-        // Load welcome message with new format
-        const welcomeText = `Welcome to ${currentRoom.nameEn} Room, please click the keyword of the topic you want to discover.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.`;
+        // Set keyword menu from merged data (override for rooms without keywords)
+        const noKeywords = (roomId || '').toLowerCase() === 'finding-gods-peace-free';
+        const finalKeywordMenu = noKeywords ? { en: [], vi: [] } : result.keywordMenu;
+        setKeywordMenu(finalKeywordMenu);
+        
+        // Load welcome message with conditional text
+        const hasKeywords = !!finalKeywordMenu && finalKeywordMenu.en && finalKeywordMenu.en.length > 0;
+        const welcomeText = hasKeywords
+          ? `Welcome to ${currentRoom.nameEn} Room, please click the keyword of the topic you want to discover.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.`
+          : `Welcome to ${currentRoom.nameEn} Room.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}.`;
         const welcomeMessage: Message = { id: 'welcome', text: welcomeText, isUser: false, timestamp: new Date() };
         setMainMessages([welcomeMessage]);
-       
-        // Set keyword menu from merged data
-        setKeywordMenu(result.keywordMenu);
       } catch (error) {
-        console.error('Error loading room data:', error);
         // Fallback welcome message
+        const noKeywords = (roomId || '').toLowerCase() === 'finding-gods-peace-free';
+        const fallbackText = noKeywords
+          ? `Welcome to ${currentRoom.nameEn} Room.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}.`
+          : `Welcome to ${currentRoom.nameEn} Room, please click the keyword of the topic you want to discover.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.`;
         const welcomeMessage: Message = {
           id: 'welcome',
-          text: `Welcome to ${currentRoom.nameEn} Room, please click the keyword of the topic you want to discover.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.`,
+          text: fallbackText,
           isUser: false,
           timestamp: new Date()
         };
@@ -722,15 +730,28 @@ const ChatHub = () => {
         {/* Welcome Message and Keywords Combined */}
         <Card className="p-4 shadow-soft bg-card border border-border">
           <div className="text-center space-y-0 mb-4">
-            <p className="text-sm text-foreground leading-tight">
-              Welcome to {currentRoom.nameEn} Room, please click the keyword of the topic you want to discover.
-            </p>
-            <p className="text-sm text-muted-foreground leading-tight">
-              Chào mừng bạn đến với phòng {currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.
-            </p>
+            {keywordMenu && keywordMenu.en && keywordMenu.en.length > 0 ? (
+              <>
+                <p className="text-sm text-foreground leading-tight">
+                  Welcome to {currentRoom.nameEn} Room, please click the keyword of the topic you want to discover.
+                </p>
+                <p className="text-sm text-muted-foreground leading-tight">
+                  Chào mừng bạn đến với phòng {currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="text-sm text-foreground leading-tight">
+                  Welcome to {currentRoom.nameEn} Room.
+                </p>
+                <p className="text-sm text-muted-foreground leading-tight">
+                  Chào mừng bạn đến với phòng {currentRoom.nameVi}.
+                </p>
+              </>
+            )}
           </div>
           
-          {keywordMenu && keywordMenu.en && keywordMenu.vi && (
+          {keywordMenu && keywordMenu.en && keywordMenu.vi && keywordMenu.en.length > 0 && (
             <div>
               <div className="flex flex-wrap gap-2 justify-center">
                 {keywordMenu.en.map((keywordEn, idx) => {

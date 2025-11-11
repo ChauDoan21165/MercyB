@@ -198,6 +198,16 @@ function generateRoomInfo(): RoomInfo[] {
   
   console.log('generateRoomInfo called, roomDataMap keys:', Object.keys(roomDataMap));
   
+  const sanitize = (s?: string) => {
+    const raw = String(s || '').trim();
+    // Remove tier tokens like "free", "vip1", "vip 2", "VIP3" at end or in parentheses
+    return raw
+      .replace(/\s*\(?(?:free|vip\s*-?\s*[1-4])\)?$/i, '')
+      .replace(/\b(?:free|vip\s*-?\s*[1-4])\b/gi, '')
+      .replace(/\s{2,}/g, ' ')
+      .trim();
+  };
+  
   for (const [roomId, roomData] of Object.entries(roomDataMap)) {
     // Skip if no data
     if (!roomData) continue;
@@ -210,17 +220,17 @@ function generateRoomInfo(): RoomInfo[] {
     else if (roomId.endsWith('-vip4')) tier = 'vip4';
     
     // Fallback to the tier property if present
-    const dataTier = roomData.tier;
+    const dataTier = (roomData as any).tier;
     if (dataTier === 'vip1' || dataTier === 'vip2' || dataTier === 'vip3' || dataTier === 'vip4') {
       tier = dataTier;
     }
     
     rooms.push({
       id: roomId,
-      nameEn: roomData.nameEn,
-      nameVi: roomData.nameVi,
+      nameEn: sanitize((roomData as any).nameEn),
+      nameVi: sanitize((roomData as any).nameVi),
       tier,
-      hasData: roomData.hasData || false
+      hasData: (roomData as any).hasData || false
     });
   }
   
