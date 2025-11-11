@@ -415,28 +415,28 @@ export const roomDataMap: Record<string, RoomData> = {
   "nutrition-free": {
       "id": "nutrition-free",
       "nameEn": "Nutrition",
-      "nameVi": "Nutrition",
+      "nameVi": "Dinh Dưỡng",
       "tier": "free",
       "hasData": true
   },
   "nutrition-vip1": {
       "id": "nutrition-vip1",
       "nameEn": "Nutrition",
-      "nameVi": "Nutrition",
+      "nameVi": "Dinh Dưỡng",
       "tier": "vip1",
       "hasData": true
   },
   "nutrition-vip2": {
       "id": "nutrition-vip2",
       "nameEn": "Nutrition",
-      "nameVi": "Nutrition",
+      "nameVi": "Dinh Dưỡng",
       "tier": "vip2",
       "hasData": true
   },
   "nutrition-vip3": {
       "id": "nutrition-vip3",
       "nameEn": "Nutrition",
-      "nameVi": "Nutrition",
+      "nameVi": "Dinh Dưỡng",
       "tier": "vip3",
       "hasData": true
   },
@@ -450,49 +450,49 @@ export const roomDataMap: Record<string, RoomData> = {
   "obesity-management-vip1": {
       "id": "obesity-management-vip1",
       "nameEn": "Obesity Management",
-      "nameVi": "Obesity Management",
+      "nameVi": "Quản Lý Cân Nặng",
       "tier": "vip1",
       "hasData": true
   },
   "obesity-management-vip2": {
       "id": "obesity-management-vip2",
       "nameEn": "Obesity Management",
-      "nameVi": "Obesity Management",
+      "nameVi": "Quản Lý Cân Nặng",
       "tier": "vip2",
       "hasData": true
   },
   "obesity-management-vip3": {
       "id": "obesity-management-vip3",
       "nameEn": "Obesity Management",
-      "nameVi": "Obesity Management",
+      "nameVi": "Quản Lý Cân Nặng",
       "tier": "vip3",
       "hasData": true
   },
   "obesity-free": {
       "id": "obesity-free",
-      "nameEn": "Obesity",
-      "nameVi": "Obesity",
+      "nameEn": "Obesity Management",
+      "nameVi": "Quản Lý Cân Nặng",
       "tier": "free",
       "hasData": true
   },
   "obesity-vip1": {
       "id": "obesity-vip1",
-      "nameEn": "Obesity Management (VIP 1)",
-      "nameVi": "Obesity Management (VIP 1)",
+      "nameEn": "Obesity Management",
+      "nameVi": "Quản Lý Cân Nặng",
       "tier": "vip1",
       "hasData": true
   },
   "obesity-vip2": {
       "id": "obesity-vip2",
-      "nameEn": "Obesity Management (VIP 2)",
-      "nameVi": "Obesity Management (VIP 2)",
+      "nameEn": "Obesity Management",
+      "nameVi": "Quản Lý Cân Nặng",
       "tier": "vip2",
       "hasData": true
   },
   "obesity-vip3": {
       "id": "obesity-vip3",
-      "nameEn": "Obesity Management (VIP 3)",
-      "nameVi": "Obesity Management (VIP 3)",
+      "nameEn": "Obesity Management",
+      "nameVi": "Quản Lý Cân Nặng",
       "tier": "vip3",
       "hasData": true
   },

@@ -17,6 +17,7 @@ import { RelatedRooms } from "@/components/RelatedRooms";
 import { MessageActions } from "@/components/MessageActions";
 import { MatchmakingButton } from "@/components/MatchmakingButton";
 import { usePoints } from "@/hooks/usePoints";
+import { DictionaryLookup } from "@/components/DictionaryLookup";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useCredits } from "@/hooks/useCredits";
 import { CreditLimitModal } from "@/components/CreditLimitModal";
@@ -716,6 +717,9 @@ const ChatHub = () => {
               </p>
             )}
           </div>
+
+          {/* Dictionary Lookup */}
+          <DictionaryLookup />
           
           {keywordMenu && keywordMenu.en && keywordMenu.vi && keywordMenu.en.length > 0 && (
             <div>
