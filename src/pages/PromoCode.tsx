@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Shield } from "lucide-react";
+import { promoCodeSchema } from "@/lib/validation";
+import { z } from "zod";
 
 const PromoCode = () => {
   const [code, setCode] = useState("");
@@ -13,13 +15,11 @@ const PromoCode = () => {
   const navigate = useNavigate();
 
   const handleRedeem = async () => {
-    if (!code.trim()) {
-      toast.error("Please enter a promo code");
-      return;
-    }
-
     setIsLoading(true);
     try {
+      // Security: Validate and sanitize promo code
+      const validatedData = promoCodeSchema.parse({ code });
+      
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) {
         toast.error("Please login first");
@@ -29,7 +29,7 @@ const PromoCode = () => {
 
       // Validate code server-side using secure function
       const { data: validationResult, error: validationError } = await supabase
-        .rpc("validate_promo_code", { code_input: code.toUpperCase() });
+        .rpc("validate_promo_code", { code_input: validatedData.code });
 
       const result = validationResult as any;
 
@@ -73,8 +73,11 @@ const PromoCode = () => {
       setCode("");
       
     } catch (error: any) {
-      console.error("Redemption error:", error);
-      toast.error("Failed to redeem code. Please try again.");
+      if (error instanceof z.ZodError) {
+        toast.error(error.errors[0].message);
+      } else {
+        toast.error("Failed to redeem code. Please try again.");
+      }
     } finally {
       setIsLoading(false);
     }
@@ -98,16 +101,22 @@ const PromoCode = () => {
             <CardDescription>
               Enter your promotional code to unlock additional questions per day
             </CardDescription>
+            <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2 bg-muted/50 p-2 rounded">
+              <Shield className="h-3 w-3" />
+              <span>Promo codes are validated and sanitized for security</span>
+            </div>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Input
-                placeholder="Enter promo code"
+                placeholder="Enter promo code (e.g., SUMMER2024)"
                 value={code}
                 onChange={(e) => setCode(e.target.value.toUpperCase())}
                 className="text-lg"
+                maxLength={50}
                 disabled={isLoading}
               />
+              <p className="text-xs text-muted-foreground">Only letters, numbers, hyphens and underscores allowed</p>
             </div>
             <Button
               onClick={handleRedeem}

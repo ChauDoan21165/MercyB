@@ -8,8 +8,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import { ArrowLeft, Sparkles } from "lucide-react";
+import { ArrowLeft, Sparkles, Shield } from "lucide-react";
 import { useUserAccess } from "@/hooks/useUserAccess";
+import { vipTopicRequestSchema } from "@/lib/validation";
+import { z } from "zod";
 
 const VIPTopicRequest = () => {
   const [formData, setFormData] = useState({
@@ -55,19 +57,17 @@ const VIPTopicRequest = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.tier || !formData.topicTitle || !formData.topicDescription) {
-      toast.error("Please fill in all required fields");
-      return;
-    }
-
-    // Check if user has reached their limit
-    if (requestCount >= maxRequests) {
-      toast.error(`You've reached your limit of ${maxRequests} topic request${maxRequests > 1 ? 's' : ''}. Upgrade your tier for more requests!`);
-      return;
-    }
-
-    setIsLoading(true);
+    // Security: Validate and sanitize all inputs
     try {
+      const validatedData = vipTopicRequestSchema.parse(formData);
+
+      // Check if user has reached their limit
+      if (requestCount >= maxRequests) {
+        toast.error(`You've reached your limit of ${maxRequests} topic request${maxRequests > 1 ? 's' : ''}. Upgrade your tier for more requests!`);
+        return;
+      }
+
+      setIsLoading(true);
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) {
         toast.error("Please login first");
@@ -79,13 +79,13 @@ const VIPTopicRequest = () => {
         .from("vip_topic_requests_detailed")
         .insert({
           user_id: user.id,
-          tier: formData.tier,
-          topic_title: formData.topicTitle,
-          topic_description: formData.topicDescription,
-          specific_goals: formData.specificGoals,
-          target_audience: formData.targetAudience,
-          urgency: formData.urgency,
-          additional_notes: formData.additionalNotes
+          tier: validatedData.tier,
+          topic_title: validatedData.topicTitle,
+          topic_description: validatedData.topicDescription,
+          specific_goals: validatedData.specificGoals,
+          target_audience: validatedData.targetAudience,
+          urgency: validatedData.urgency,
+          additional_notes: validatedData.additionalNotes
         });
 
       if (error) throw error;
@@ -94,8 +94,11 @@ const VIPTopicRequest = () => {
       setRequestCount(prev => prev + 1);
       navigate("/");
     } catch (error: any) {
-      console.error("Submission error:", error);
-      toast.error("Failed to submit request. Please try again.");
+      if (error instanceof z.ZodError) {
+        toast.error(error.errors[0].message);
+      } else {
+        toast.error("Failed to submit request. Please try again.");
+      }
     } finally {
       setIsLoading(false);
     }
@@ -123,6 +126,10 @@ const VIPTopicRequest = () => {
                   Tell us exactly what you need - the more detail, the better we can serve you!
                 </CardDescription>
               </div>
+            </div>
+            <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2 bg-muted/50 p-2 rounded">
+              <Shield className="h-3 w-3" />
+              <span>All inputs are validated and sanitized for security</span>
             </div>
             {maxRequests > 0 && (
               <div className="mt-4 p-3 bg-primary/10 border border-primary/20 rounded-lg">
@@ -156,47 +163,55 @@ const VIPTopicRequest = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="topicTitle">Topic Title *</Label>
+                <Label htmlFor="topicTitle">Topic Title * (max 200 chars)</Label>
                 <Input
                   id="topicTitle"
                   placeholder="e.g., Managing Anxiety in Social Situations"
                   value={formData.topicTitle}
                   onChange={(e) => setFormData({...formData, topicTitle: e.target.value})}
+                  maxLength={200}
                   required
                 />
+                <p className="text-xs text-muted-foreground">{formData.topicTitle.length}/200</p>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="topicDescription">Detailed Description *</Label>
+                <Label htmlFor="topicDescription">Detailed Description * (max 3000 chars)</Label>
                 <Textarea
                   id="topicDescription"
                   placeholder="Describe what you want to learn about. Be as specific as possible - include your current challenges, what you've tried before, and what success looks like to you."
                   value={formData.topicDescription}
                   onChange={(e) => setFormData({...formData, topicDescription: e.target.value})}
                   rows={6}
+                  maxLength={3000}
                   required
                 />
+                <p className="text-xs text-muted-foreground">{formData.topicDescription.length}/3000</p>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="specificGoals">Specific Goals (Optional)</Label>
+                <Label htmlFor="specificGoals">Specific Goals (Optional, max 1000 chars)</Label>
                 <Textarea
                   id="specificGoals"
                   placeholder="What specific outcomes are you hoping for? e.g., 'Be able to speak in front of 20+ people without panic attacks'"
                   value={formData.specificGoals}
                   onChange={(e) => setFormData({...formData, specificGoals: e.target.value})}
                   rows={3}
+                  maxLength={1000}
                 />
+                <p className="text-xs text-muted-foreground">{formData.specificGoals.length}/1000</p>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="targetAudience">Who Is This For? (Optional)</Label>
+                <Label htmlFor="targetAudience">Who Is This For? (Optional, max 200 chars)</Label>
                 <Input
                   id="targetAudience"
                   placeholder="e.g., Working professionals in their 30s, Parents of toddlers, etc."
                   value={formData.targetAudience}
                   onChange={(e) => setFormData({...formData, targetAudience: e.target.value})}
+                  maxLength={200}
                 />
+                <p className="text-xs text-muted-foreground">{formData.targetAudience.length}/200</p>
               </div>
 
               <div className="space-y-2">
@@ -214,14 +229,16 @@ const VIPTopicRequest = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="additionalNotes">Additional Notes (Optional)</Label>
+                <Label htmlFor="additionalNotes">Additional Notes (Optional, max 1000 chars)</Label>
                 <Textarea
                   id="additionalNotes"
                   placeholder="Any other context, preferences, or questions you'd like to share with us"
                   value={formData.additionalNotes}
                   onChange={(e) => setFormData({...formData, additionalNotes: e.target.value})}
                   rows={3}
+                  maxLength={1000}
                 />
+                <p className="text-xs text-muted-foreground">{formData.additionalNotes.length}/1000</p>
               </div>
 
               <div className="bg-primary/10 border border-primary/20 rounded-lg p-4">

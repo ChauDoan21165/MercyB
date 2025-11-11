@@ -8,7 +8,9 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, Sparkles } from "lucide-react";
+import { ArrowLeft, Sparkles, Shield } from "lucide-react";
+import { vipRequestSchema } from "@/lib/validation";
+import { z } from "zod";
 
 const VIPRequestForm = () => {
   const navigate = useNavigate();
@@ -26,6 +28,9 @@ const VIPRequestForm = () => {
     setIsSubmitting(true);
 
     try {
+      // Security: Validate and sanitize all inputs
+      const validatedData = vipRequestSchema.parse(formData);
+
       const { data: { user } } = await supabase.auth.getUser();
       
       if (!user) {
@@ -41,7 +46,7 @@ const VIPRequestForm = () => {
         .from("vip_room_requests")
         .insert({
           user_id: user.id,
-          ...formData,
+          ...validatedData,
         });
 
       if (error) throw error;
@@ -53,12 +58,19 @@ const VIPRequestForm = () => {
 
       navigate("/vip-requests");
     } catch (error) {
-      console.error("Error submitting request:", error);
-      toast({
-        title: "Error",
-        description: "Failed to submit request. Please try again.",
-        variant: "destructive",
-      });
+      if (error instanceof z.ZodError) {
+        toast({
+          title: "Validation Error",
+          description: error.errors[0].message,
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "Failed to submit request. Please try again.",
+          variant: "destructive",
+        });
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -85,11 +97,15 @@ const VIPRequestForm = () => {
             <CardDescription>
               As a VIP1 member, you can request custom learning rooms tailored to your needs
             </CardDescription>
+            <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2 bg-muted/50 p-2 rounded">
+              <Shield className="h-3 w-3" />
+              <span>All inputs are validated and sanitized for security</span>
+            </div>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="topic_name">Topic Name (English) *</Label>
+                <Label htmlFor="topic_name">Topic Name (English) * (max 200 chars)</Label>
                 <Input
                   id="topic_name"
                   value={formData.topic_name}
@@ -97,12 +113,16 @@ const VIPRequestForm = () => {
                     setFormData({ ...formData, topic_name: e.target.value })
                   }
                   placeholder="e.g., Managing Type 2 Diabetes"
+                  maxLength={200}
                   required
                 />
+                <p className="text-xs text-muted-foreground">
+                  {formData.topic_name.length}/200
+                </p>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="topic_name_vi">Topic Name (Vietnamese)</Label>
+                <Label htmlFor="topic_name_vi">Topic Name (Vietnamese) (max 200 chars)</Label>
                 <Input
                   id="topic_name_vi"
                   value={formData.topic_name_vi}
@@ -110,11 +130,15 @@ const VIPRequestForm = () => {
                     setFormData({ ...formData, topic_name_vi: e.target.value })
                   }
                   placeholder="e.g., Quản lý tiểu đường type 2"
+                  maxLength={200}
                 />
+                <p className="text-xs text-muted-foreground">
+                  {formData.topic_name_vi.length}/200
+                </p>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="description">Detailed Description *</Label>
+                <Label htmlFor="description">Detailed Description * (max 2000 chars)</Label>
                 <Textarea
                   id="description"
                   value={formData.description}
@@ -123,8 +147,12 @@ const VIPRequestForm = () => {
                   }
                   placeholder="Describe what you'd like to learn, specific questions you have, or problems you're trying to solve..."
                   className="min-h-32"
+                  maxLength={2000}
                   required
                 />
+                <p className="text-xs text-muted-foreground">
+                  {formData.description.length}/2000
+                </p>
               </div>
 
               <div className="space-y-2">
