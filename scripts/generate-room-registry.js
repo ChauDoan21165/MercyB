@@ -33,13 +33,17 @@ function extractNames(jsonPath, filename) {
   try {
     const content = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
     
-    // Try various name field patterns
-    let nameEn = content.name || content.nameEn || content.title?.en || null;
-    let nameVi = content.name_vi || content.nameVi || content.title?.vi || null;
+    // Prioritize title field for display names (proper structure)
+    let nameEn = content.title?.en || content.nameEn || null;
+    let nameVi = content.title?.vi || content.nameVi || content.name_vi || null;
     
-    // If no name found in JSON, extract from filename
+    // If name field exists and doesn't look like a filename, use it as fallback
+    if (!nameEn && content.name && !content.name.includes('.json')) {
+      nameEn = content.name;
+    }
+    
+    // If still no name found, extract from filename
     if (!nameEn) {
-      // Remove tier suffix and extension, convert to readable format
       nameEn = filename
         .replace(/\.(json)$/i, '')
         .replace(/[_-](free|vip1|vip2|vip3|vip4)$/i, '')
