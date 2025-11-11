@@ -59,22 +59,37 @@ export const DictionaryLookup = () => {
       
       if (!session) {
         toast({
-          title: "Authentication required",
-          description: "Please sign in to use pronunciation",
+          title: "VIP Feature",
+          description: "Please sign in with a VIP subscription to use pronunciation",
           variant: "destructive",
         });
         return;
       }
 
-      // Call the free dictionary-tts function (no VIP required)
-      const { data, error } = await supabase.functions.invoke('dictionary-tts', {
+      // Determine voice based on language
+      const voice = language === 'en' ? 'alloy' : 'nova';
+
+      // Call the VIP-only text-to-speech function
+      const { data, error } = await supabase.functions.invoke('text-to-speech', {
         body: {
           text: text,
-          language: language,
+          voice: voice,
+          roomSlug: 'dictionary',
+          entrySlug: text.toLowerCase().replace(/\s+/g, '-'),
         },
       });
 
-      if (error) throw error;
+      if (error) {
+        if (error.message?.includes('VIP')) {
+          toast({
+            title: "VIP Feature",
+            description: "Dictionary pronunciation is available for VIP members only",
+            variant: "destructive",
+          });
+          return;
+        }
+        throw error;
+      }
 
       if (data?.audioUrl) {
         const audio = new Audio(data.audioUrl);
