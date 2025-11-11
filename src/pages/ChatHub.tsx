@@ -22,7 +22,7 @@ import { useCredits } from "@/hooks/useCredits";
 import { CreditLimitModal } from "@/components/CreditLimitModal";
 import { CreditsDisplay } from "@/components/CreditsDisplay";
 import { AudioPlayer } from "@/components/AudioPlayer";
-
+import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { messageSchema } from "@/lib/inputValidation";
 import { supabase } from "@/integrations/supabase/client";
@@ -672,14 +672,17 @@ const ChatHub = () => {
                 <button
                   type="button"
                   onClick={() => {
-                    navigator.clipboard.writeText(roomId);
+                    const key = roomId && (/(?:-(free|vip1|vip2|vip3|vip4))$/.test(roomId) ? roomId : (info?.tier ? `${roomId}-${info.tier}` : roomId));
+                    const manifestVal = key ? PUBLIC_ROOM_MANIFEST[key] : undefined;
+                    const fileName = manifestVal ? manifestVal.replace(/^data\//, '') : `${roomId.replace(/-/g, '_')}.json`;
+                    navigator.clipboard.writeText(fileName);
                     toast({
                       title: "Copied!",
-                      description: `Room ID: ${roomId}`,
+                      description: `JSON: ${fileName}`,
                     });
                   }}
                   className="w-[1em] h-[1em] rounded-full bg-primary hover:bg-primary/90 cursor-pointer flex-shrink-0 transition-colors"
-                  title="Copy room ID for JSON filename"
+                  title="Copy JSON filename"
                 />
               )}
             </div>
