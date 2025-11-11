@@ -40,6 +40,7 @@ import AdminRoomEditor from "./pages/AdminRoomEditor";
 import AdminRoomImport from "./pages/AdminRoomImport";
 import AdminUserRoles from "./pages/AdminUserRoles";
 import AudioTestPage from "./pages/AudioTestPage";
+import AudioUpload from "./pages/AudioUpload";
 
 const queryClient = new QueryClient();
 
@@ -88,6 +89,7 @@ const App = () => (
           <Route path="/admin/rooms/import" element={<AdminRoomImport />} />
           <Route path="/admin/users" element={<AdminUserRoles />} />
           <Route path="/audio-test" element={<AudioTestPage />} />
+          <Route path="/audio-upload" element={<AudioUpload />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
