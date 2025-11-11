@@ -316,8 +316,8 @@ export const roomDataMap: Record<string, RoomData> = {
   },
   "god-with-us-free": {
       "id": "god-with-us-free",
-      "nameEn": "Spiritual Growth Free",
-      "nameVi": "Tăng Trưởng Tâm Linh Miễn Phí",
+      "nameEn": "God With Us Free",
+      "nameVi": "Chúa Ở Cùng Chúng Ta Miễn Phí",
       "tier": "free",
       "hasData": true
   },
