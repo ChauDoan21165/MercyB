@@ -157,31 +157,15 @@ const ChatHub = () => {
           console.warn(`No merged entries for room ${roomId} tier ${tier}`);
         }
        
-        // Set keyword menu from merged data (override for rooms without keywords)
-        const noKeywords = (roomId || '').toLowerCase() === 'finding-gods-peace-free';
-        const finalKeywordMenu = noKeywords ? { en: [], vi: [] } : result.keywordMenu;
-        setKeywordMenu(finalKeywordMenu);
+        // Set keyword menu from merged data
+        setKeywordMenu(result.keywordMenu);
         
-        // Load welcome message with conditional text
-        const hasKeywords = !!finalKeywordMenu && finalKeywordMenu.en && finalKeywordMenu.en.length > 0;
-        const welcomeText = hasKeywords
-          ? `Welcome to ${currentRoom.nameEn} Room, please click the keyword of the topic you want to discover.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.`
-          : `Welcome to ${currentRoom.nameEn} Room.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}.`;
-        const welcomeMessage: Message = { id: 'welcome', text: welcomeText, isUser: false, timestamp: new Date() };
-        setMainMessages([welcomeMessage]);
+        // Don't add welcome message to chat - it's displayed in the card above
+        setMainMessages([]);
       } catch (error) {
-        // Fallback welcome message
-        const noKeywords = (roomId || '').toLowerCase() === 'finding-gods-peace-free';
-        const fallbackText = noKeywords
-          ? `Welcome to ${currentRoom.nameEn} Room.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}.`
-          : `Welcome to ${currentRoom.nameEn} Room, please click the keyword of the topic you want to discover.\n\nChào mừng bạn đến với phòng ${currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá.`;
-        const welcomeMessage: Message = {
-          id: 'welcome',
-          text: fallbackText,
+        // Fallback: no welcome message needed (shown in card)
           isUser: false,
-          timestamp: new Date()
-        };
-        setMainMessages([welcomeMessage]);
+        setMainMessages([]);
       }
     };
    
@@ -800,8 +784,8 @@ const ChatHub = () => {
             <ScrollArea className="h-[560px] pr-4" ref={mainScrollRef}>
               <WelcomeBack lastRoomId={progress.lastVisit} currentRoomId={roomId || ""} />
              
-              {/* Show response messages (excluding welcome) */}
-              {mainMessages.slice(1).length === 0 ? (
+              {/* Show response messages */}
+              {mainMessages.length === 0 ? (
                 <div className="flex items-center justify-center text-center py-8">
                   <div className="space-y-2">
                     <p className="text-muted-foreground">Click a keyword to start</p>
@@ -809,7 +793,7 @@ const ChatHub = () => {
                   </div>
                 </div>
               ) : (
-                mainMessages.slice(1).map(msg => <MessageBubble key={msg.id} message={msg} />)
+                mainMessages.map(msg => <MessageBubble key={msg.id} message={msg} />)
               )}
               <div ref={endRef} />
             </ScrollArea>
