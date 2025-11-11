@@ -38,21 +38,27 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
               let p = String(audioPath);
               // Remove leading slashes and public/ prefix
               p = p.replace(/^\/+/, '').replace(/^public\//, '');
-              // Remove audio/(en|vi)/ prefix if present
-              p = p.replace(/^audio\/(en|vi)\//, 'audio/');
-              // Remove audio/ prefix if present
-              p = p.replace(/^audio\//, '');
               
-              // Try different path variations based on tier
-              const tierMatch = roomId.match(/-(free|vip1|vip2|vip3|vip4)$/);
-              const currentTier = tierMatch ? tierMatch[1] : tier || 'free';
-              
-              // If filename doesn't have tier suffix, try adding it
-              if (!p.toLowerCase().includes(currentTier) && !p.toLowerCase().includes('_free') && !p.toLowerCase().includes('_vip')) {
-                const baseName = p.replace(/\.mp3$/i, '');
-                audioPath = `/audio/${baseName}_${currentTier.charAt(0).toUpperCase() + currentTier.slice(1)}.mp3`;
-              } else {
+              // If path starts with rooms/, just use it directly under /audio/
+              if (p.startsWith('rooms/')) {
                 audioPath = `/audio/${p}`;
+              } else {
+                // Remove audio/(en|vi)/ prefix if present
+                p = p.replace(/^audio\/(en|vi)\//, 'audio/');
+                // Remove audio/ prefix if present
+                p = p.replace(/^audio\//, '');
+                
+                // Try different path variations based on tier
+                const tierMatch = roomId.match(/-(free|vip1|vip2|vip3|vip4)$/);
+                const currentTier = tierMatch ? tierMatch[1] : tier || 'free';
+                
+                // If filename doesn't have tier suffix, try adding it
+                if (!p.toLowerCase().includes(currentTier) && !p.toLowerCase().includes('_free') && !p.toLowerCase().includes('_vip')) {
+                  const baseName = p.replace(/\.mp3$/i, '');
+                  audioPath = `/audio/${baseName}_${currentTier.charAt(0).toUpperCase() + currentTier.slice(1)}.mp3`;
+                } else {
+                  audioPath = `/audio/${p}`;
+                }
               }
               
               console.log('🎵 Audio path constructed:', audioPath, 'from raw:', audioRaw);
@@ -209,22 +215,28 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
         let p = String(audioPath);
         // Remove leading slashes and public/ prefix
         p = p.replace(/^\/+/, '').replace(/^public\//, '');
-        // Remove audio/(en|vi)/ prefix if present
-        p = p.replace(/^audio\/(en|vi)\//, 'audio/');
-        // Remove audio/ prefix if present
-        p = p.replace(/^audio\//, '');
         
-        // Try different path variations based on tier and room
-        const tierMatch = manifestKey.match(/-(free|vip1|vip2|vip3|vip4)$/);
-        const currentTier = tierMatch ? tierMatch[1] : 'free';
-        
-        // If filename doesn't have tier suffix, try adding it
-        if (!p.toLowerCase().includes(currentTier) && !p.toLowerCase().includes('_free') && !p.toLowerCase().includes('_vip')) {
-          const baseName = p.replace(/\.mp3$/i, '');
-          // Try with tier suffix
-          audioPath = `/audio/${baseName}_${currentTier.charAt(0).toUpperCase() + currentTier.slice(1)}.mp3`;
-        } else {
+        // If path starts with rooms/, just use it directly under /audio/
+        if (p.startsWith('rooms/')) {
           audioPath = `/audio/${p}`;
+        } else {
+          // Remove audio/(en|vi)/ prefix if present
+          p = p.replace(/^audio\/(en|vi)\//, 'audio/');
+          // Remove audio/ prefix if present
+          p = p.replace(/^audio\//, '');
+          
+          // Try different path variations based on tier and room
+          const tierMatch = manifestKey.match(/-(free|vip1|vip2|vip3|vip4)$/);
+          const currentTier = tierMatch ? tierMatch[1] : 'free';
+          
+          // If filename doesn't have tier suffix, try adding it
+          if (!p.toLowerCase().includes(currentTier) && !p.toLowerCase().includes('_free') && !p.toLowerCase().includes('_vip')) {
+            const baseName = p.replace(/\.mp3$/i, '');
+            // Try with tier suffix
+            audioPath = `/audio/${baseName}_${currentTier.charAt(0).toUpperCase() + currentTier.slice(1)}.mp3`;
+          } else {
+            audioPath = `/audio/${p}`;
+          }
         }
         
         console.log('🎵 Audio path constructed:', audioPath, 'from raw:', audioRaw);
