@@ -34,8 +34,20 @@
   },
   "keywords": {
     "basic_sleep_improvement": {
-      "en": ["bedtime routine", "simple relaxation", "stimulant limits", "beginner sleep habits", "easy rest steps"],
-      "vi": ["thói quen trước giờ ngủ", "thư giãn đơn giản", "giới hạn chất kích thích", "thói quen ngủ cho người mới", "bước nghỉ ngơi dễ dàng"]
+      "en": [
+        "bedtime routine",
+        "simple relaxation",
+        "stimulant limits",
+        "beginner sleep habits",
+        "easy rest steps"
+      ],
+      "vi": [
+        "thói quen trước giờ ngủ",
+        "thư giãn đơn giản",
+        "giới hạn chất kích thích",
+        "thói quen ngủ cho người mới",
+        "bước nghỉ ngơi dễ dàng"
+      ]
     }
   },
   "room_essay": {
@@ -59,7 +71,7 @@
       "severity": "mild",
       "systems": ["behavioral", "environmental"],
       "meta": {
-        "audio_file": "/audio/Starting_a_Bedtime_Routine_free.mp3",
+        "audio_file": "Starting_a_Bedtime_Routine_free.mp3",
         "created_at": "2025-10-25T13:07:00+09:00"
       }
     },
@@ -79,7 +91,7 @@
       "severity": "mild",
       "systems": ["behavioral"],
       "meta": {
-        "audio_file": "/audio/Trying_Simple_Relaxation_free.mp3",
+        "audio_file": "Trying_Simple_Relaxation_free.mp3",
         "created_at": "2025-10-25T13:07:00+09:00"
       }
     },
@@ -99,7 +111,7 @@
       "severity": "mild",
       "systems": ["dietary", "behavioral"],
       "meta": {
-        "audio_file": "/audio/Limiting_Evening_Stimulants_free.mp3",
+        "audio_file": "Limiting_Evening_Stimulants_free.mp3",
         "created_at": "2025-10-25T13:07:00+09:00"
       }
     }
