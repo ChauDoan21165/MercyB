@@ -94,6 +94,9 @@ const RoomGridVIP2 = () => {
             <p className="text-lg text-muted-foreground">
               Phòng Học VIP2
             </p>
+            <p className="text-sm text-muted-foreground/80">
+              Showing {ALL_ROOMS.filter(room => room.tier === "vip2").length} rooms
+            </p>
           </div>
         </div>
 

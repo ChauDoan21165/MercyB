@@ -153,6 +153,10 @@ const RoomGridVIP4 = () => {
             <br />
             Hành trình định hướng nghề nghiệp hoàn chỉnh từ khám phá bản thân đến tác động lãnh đạo
           </p>
+          
+          <p className="text-sm text-muted-foreground/80">
+            Showing {ALL_ROOMS.filter(room => room.tier === "vip4").length} rooms
+          </p>
 
           <div className="flex flex-wrap justify-center gap-2 mt-4">
             <Badge variant="secondary" className="text-xs">

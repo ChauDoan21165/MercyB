@@ -104,6 +104,9 @@ const RoomGridVIP3 = () => {
             <p className="text-lg text-[hsl(var(--vip3-gold))]/90">
               Phòng Học VIP3 Cao Cấp
             </p>
+            <p className="text-sm text-muted-foreground/80">
+              Showing {ALL_ROOMS.filter(room => room.tier === "vip3").length} rooms
+            </p>
           </div>
         </div>
 

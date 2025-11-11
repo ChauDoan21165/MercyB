@@ -164,6 +164,9 @@ const RoomGrid = () => {
             <p className="text-lg text-muted-foreground">
               Chọn Phòng Học Của Bạn
             </p>
+            <p className="text-sm text-muted-foreground/80">
+              Showing {ALL_ROOMS.filter(room => room.tier === "free").length} rooms
+            </p>
           </div>
         </div>
 
