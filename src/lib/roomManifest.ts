@@ -116,7 +116,8 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "weight-loss-and-fitness-vip3": "data/Weight_Loss_And_Fitness_vip3.json",
   "confidence-vip2": "data/confidence_vip2.json",
   "confidence-vip3": "data/confidence_vip3.json",
-  "sleep-improvement-vip2": "data/sleep_Improvement_vip2.json"
+  "sleep-improvement-vip2": "data/sleep_Improvement_vip2.json",
+  "finding-gods-peace-free": "data/Finding_Gods_Peace_free.json"
 };
 
 /**
