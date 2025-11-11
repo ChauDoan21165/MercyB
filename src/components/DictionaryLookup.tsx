@@ -155,7 +155,10 @@ export const DictionaryLookup = () => {
                   <div className="space-y-2">
                     <p className="text-2xl font-semibold text-foreground">{result.en.join(", ")}</p>
                     {result.ipa_en && (
-                      <p className="text-sm text-primary font-mono">/{result.ipa_en}/</p>
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-md">
+                        <span className="text-xs font-semibold text-muted-foreground">IPA:</span>
+                        <p className="text-base font-mono text-foreground">/{result.ipa_en}/</p>
+                      </div>
                     )}
                   </div>
                   {result.example_en && (
@@ -204,7 +207,10 @@ export const DictionaryLookup = () => {
                 <div className="space-y-2">
                   <p className="text-2xl font-semibold text-foreground">{result.vi.join(", ")}</p>
                   {result.ipa_vi && (
-                    <p className="text-sm text-primary font-mono">/{result.ipa_vi}/</p>
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-md">
+                      <span className="text-xs font-semibold text-muted-foreground">IPA:</span>
+                      <p className="text-base font-mono text-foreground">/{result.ipa_vi}/</p>
+                    </div>
                   )}
                 </div>
                 {result.example_vi && (
