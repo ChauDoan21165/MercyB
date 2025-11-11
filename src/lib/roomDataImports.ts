@@ -314,13 +314,6 @@ export const roomDataMap: Record<string, RoomData> = {
       "tier": "vip4",
       "hasData": true
   },
-  "god-with-us-free": {
-      "id": "god-with-us-free",
-      "nameEn": "God With Us Free",
-      "nameVi": "Chúa Ở Cùng Chúng Ta Miễn Phí",
-      "tier": "free",
-      "hasData": true
-  },
   "grief-healing-free": {
       "id": "grief-healing-free",
       "nameEn": "Grief Healing",
