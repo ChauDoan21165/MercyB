@@ -36,9 +36,23 @@ export const DictionaryLookup = () => {
 
     const term = searchTerm.toLowerCase().trim();
     
+    // Helper function to check if term matches at word boundaries
+    const matchesWord = (text: string, searchTerm: string): boolean => {
+      const lowerText = text.toLowerCase();
+      // Exact match
+      if (lowerText === searchTerm) return true;
+      // Starts with search term (followed by space or end)
+      if (lowerText.startsWith(searchTerm + ' ')) return true;
+      if (lowerText.startsWith(searchTerm)) return true;
+      // Word boundary match (preceded by space)
+      if (lowerText.includes(' ' + searchTerm + ' ')) return true;
+      if (lowerText.includes(' ' + searchTerm)) return true;
+      return false;
+    };
+    
     // Search in English terms
     for (const [key, entry] of Object.entries(dictionary)) {
-      const englishMatches = entry.en.some(word => word.toLowerCase().includes(term));
+      const englishMatches = entry.en.some(word => matchesWord(word, term));
       if (englishMatches) {
         setResult(entry);
         return;
@@ -47,7 +61,7 @@ export const DictionaryLookup = () => {
 
     // Search in Vietnamese terms
     for (const [key, entry] of Object.entries(dictionary)) {
-      const vietnameseMatches = entry.vi.some(word => word.toLowerCase().includes(term));
+      const vietnameseMatches = entry.vi.some(word => matchesWord(word, term));
       if (vietnameseMatches) {
         setResult(entry);
         return;
