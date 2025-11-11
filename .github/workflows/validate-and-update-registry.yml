@@ -1,0 +1,141 @@
+name: Validate and Update Room Registry
+
+on:
+  push:
+    branches: ['main', 'develop']
+    paths:
+      - 'public/data/**/*.json'
+      - 'scripts/generate-room-registry.js'
+  pull_request:
+    branches: ['main', 'develop']
+    paths:
+      - 'public/data/**/*.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  validate-and-update:
+    name: Validate Room Files & Update Registry
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Validate room JSON files
+        run: |
+          echo "📋 Validating room files in public/data/..."
+          
+          # Count JSON files
+          file_count=$(find public/data -name "*.json" -type f | wc -l)
+          echo "Found $file_count JSON files"
+          
+          # Check for files with incorrect naming
+          incorrect_files=$(find public/data -name "*.json" -type f | grep -v "_\(free\|vip[1-4]\)\.json$" || true)
+          if [ ! -z "$incorrect_files" ]; then
+            echo "⚠️  Warning: Files with non-standard naming found:"
+            echo "$incorrect_files"
+          fi
+          
+          # Validate JSON syntax
+          for file in public/data/*.json; do
+            if ! jq empty "$file" 2>/dev/null; then
+              echo "❌ Invalid JSON: $file"
+              exit 1
+            fi
+          done
+          
+          echo "✅ All JSON files are valid"
+
+      - name: Generate room registry
+        run: |
+          echo "🔄 Generating room registry..."
+          node scripts/generate-room-registry.js
+          
+          # Verify registry was created
+          if [ ! -f "src/lib/roomManifest.ts" ] || [ ! -f "src/lib/roomDataImports.ts" ]; then
+            echo "❌ Registry generation failed"
+            exit 1
+          fi
+          
+          echo "✅ Registry generated successfully"
+
+      - name: Validate registry integrity
+        run: |
+          echo "🔍 Validating registry integrity..."
+          
+          # Count entries in manifest
+          manifest_count=$(grep -c '".*": "data/.*\.json"' src/lib/roomManifest.ts || echo "0")
+          echo "Registry contains $manifest_count room entries"
+          
+          # Verify all paths have data/ prefix
+          missing_prefix=$(grep '".*": "[^"]*\.json"' src/lib/roomManifest.ts | grep -v 'data/' || true)
+          if [ ! -z "$missing_prefix" ]; then
+            echo "❌ Registry entries missing 'data/' prefix:"
+            echo "$missing_prefix"
+            exit 1
+          fi
+          
+          # Verify all referenced files exist
+          while IFS= read -r filepath; do
+            clean_path=$(echo "$filepath" | sed 's/.*"data\/\([^"]*\)".*/\1/')
+            if [ ! -f "public/data/$clean_path" ]; then
+              echo "❌ Referenced file not found: public/data/$clean_path"
+              exit 1
+            fi
+          done < <(grep '".*": "data/.*\.json"' src/lib/roomManifest.ts)
+          
+          echo "✅ Registry integrity validated"
+
+      - name: Check for registry changes
+        id: registry_check
+        run: |
+          if git diff --exit-code src/lib/roomManifest.ts src/lib/roomDataImports.ts; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "ℹ️  No registry changes detected"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "📝 Registry changes detected"
+            git diff src/lib/roomManifest.ts src/lib/roomDataImports.ts
+          fi
+
+      - name: Commit and push registry changes
+        if: steps.registry_check.outputs.changed == 'true' && github.event_name != 'pull_request'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add src/lib/roomManifest.ts src/lib/roomDataImports.ts
+          git commit -m "chore: auto-update room registry [skip ci]
+
+          - Updated registry with $(grep -c '".*": "data/.*\.json"' src/lib/roomManifest.ts) room entries
+          - All paths validated with data/ prefix
+          - JSON syntax validated"
+          git pull --rebase origin ${{ github.ref_name }}
+          git push
+
+      - name: Comment on PR
+        if: steps.registry_check.outputs.changed == 'true' && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const manifest_count = require('fs').readFileSync('src/lib/roomManifest.ts', 'utf8').match(/".*": "data\/.*\.json"/g).length;
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## 🔄 Room Registry Updated\n\n✅ Registry regenerated with **${manifest_count}** room entries\n\n**Changes detected in:**\n- \`src/lib/roomManifest.ts\`\n- \`src/lib/roomDataImports.ts\`\n\nPlease review the changes before merging.`
+            })
