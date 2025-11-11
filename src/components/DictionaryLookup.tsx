@@ -118,104 +118,102 @@ export const DictionaryLookup = () => {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto mb-4 p-4 border-2 border-primary/20 rounded-lg bg-accent/5 shadow-sm transition-all duration-300 hover:border-primary/40 hover:bg-accent/10 hover:shadow-md">
+    <div className="w-full max-w-2xl mx-auto mb-6">
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground/60" />
         <Input
           type="text"
-          placeholder="Type a word to translate / Nhập từ để dịch"
+          placeholder="Search English or Vietnamese / Tìm tiếng Anh hoặc tiếng Việt"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="pl-10"
+          className="pl-12 h-14 text-base border-2 focus:border-primary shadow-sm"
         />
       </div>
       
-      <div className="mt-2 flex items-center gap-2">
-        <span className="text-xs text-muted-foreground">Speed:</span>
-        <div className="flex gap-1">
-          <Button
-            size="sm"
-            variant={speed === 0.75 ? "default" : "outline"}
-            className="h-6 px-2 text-xs"
-            onClick={() => setSpeed(0.75)}
-          >
-            Slow
-          </Button>
-          <Button
-            size="sm"
-            variant={speed === 1.0 ? "default" : "outline"}
-            className="h-6 px-2 text-xs"
-            onClick={() => setSpeed(1.0)}
-          >
-            Normal
-          </Button>
-          <Button
-            size="sm"
-            variant={speed === 1.5 ? "default" : "outline"}
-            className="h-6 px-2 text-xs"
-            onClick={() => setSpeed(1.5)}
-          >
-            Fast
-          </Button>
-        </div>
-      </div>
-      
       {result && searchTerm && (
-        <Card className="mt-2 p-3 bg-muted/50">
-          <div className="space-y-3">
-            <div className="flex items-start justify-between gap-2">
-              <div className="flex-1">
-                <span className="text-xs font-semibold text-muted-foreground">English:</span>
-                <p className="text-sm">{result.en.join(", ")}</p>
-                {result.ipa_en && (
-                  <p className="text-xs text-muted-foreground mt-1 font-mono">/{result.ipa_en}/</p>
-                )}
-                {result.example_en && (
-                  <p className="text-xs text-muted-foreground mt-2 italic border-l-2 border-primary/30 pl-2">
-                    "{result.example_en}"
-                  </p>
-                )}
+        <Card className="mt-4 overflow-hidden border-2 shadow-lg">
+          <div className="divide-y divide-border">
+            <div className="p-6 bg-gradient-to-r from-background to-muted/20">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex-1 space-y-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">English</span>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="h-8 w-8 p-0 hover:bg-primary/10"
+                      onClick={() => playPronunciation(result.en[0], 'en')}
+                      disabled={loadingAudio !== null}
+                    >
+                      {loadingAudio === 'en' ? (
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      ) : (
+                        <Volume2 className="h-4 w-4" />
+                      )}
+                    </Button>
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-2xl font-semibold text-foreground">{result.en.join(", ")}</p>
+                    {result.ipa_en && (
+                      <p className="text-sm text-primary font-mono">/{result.ipa_en}/</p>
+                    )}
+                  </div>
+                  {result.example_en && (
+                    <div className="mt-4 p-3 bg-muted/40 rounded-md border-l-4 border-primary">
+                      <p className="text-xs font-semibold text-muted-foreground mb-1">EXAMPLE</p>
+                      <p className="text-sm text-foreground/90 italic">"{result.example_en}"</p>
+                    </div>
+                  )}
+                </div>
               </div>
-              <Button
-                size="sm"
-                variant="ghost"
-                className="h-7 w-7 p-0 flex-shrink-0"
-                onClick={() => playPronunciation(result.en[0], 'en')}
-                disabled={loadingAudio !== null}
-              >
-                {loadingAudio === 'en' ? (
-                  <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                ) : (
-                  <Volume2 className="h-3.5 w-3.5" />
-                )}
-              </Button>
+              
+              <div className="mt-4 pt-4 border-t border-border/50">
+                <span className="text-xs text-muted-foreground">Playback speed:</span>
+                <div className="flex gap-2 mt-2">
+                  <Button
+                    size="sm"
+                    variant={speed === 0.75 ? "default" : "outline"}
+                    className="h-7 px-3 text-xs"
+                    onClick={() => setSpeed(0.75)}
+                  >
+                    0.75×
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant={speed === 1.0 ? "default" : "outline"}
+                    className="h-7 px-3 text-xs"
+                    onClick={() => setSpeed(1.0)}
+                  >
+                    1.0×
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant={speed === 1.5 ? "default" : "outline"}
+                    className="h-7 px-3 text-xs"
+                    onClick={() => setSpeed(1.5)}
+                  >
+                    1.5×
+                  </Button>
+                </div>
+              </div>
             </div>
-            <div className="flex items-start justify-between gap-2">
-              <div className="flex-1">
-                <span className="text-xs font-semibold text-muted-foreground">Vietnamese:</span>
-                <p className="text-sm">{result.vi.join(", ")}</p>
-                {result.ipa_vi && (
-                  <p className="text-xs text-muted-foreground mt-1 font-mono">/{result.ipa_vi}/</p>
-                )}
+            
+            <div className="p-6 bg-gradient-to-r from-muted/20 to-background">
+              <div className="space-y-3">
+                <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Tiếng Việt</span>
+                <div className="space-y-2">
+                  <p className="text-2xl font-semibold text-foreground">{result.vi.join(", ")}</p>
+                  {result.ipa_vi && (
+                    <p className="text-sm text-primary font-mono">/{result.ipa_vi}/</p>
+                  )}
+                </div>
                 {result.example_vi && (
-                  <p className="text-xs text-muted-foreground mt-2 italic border-l-2 border-primary/30 pl-2">
-                    "{result.example_vi}"
-                  </p>
+                  <div className="mt-4 p-3 bg-muted/40 rounded-md border-l-4 border-primary">
+                    <p className="text-xs font-semibold text-muted-foreground mb-1">VÍ DỤ</p>
+                    <p className="text-sm text-foreground/90 italic">"{result.example_vi}"</p>
+                  </div>
                 )}
               </div>
-              <Button
-                size="sm"
-                variant="ghost"
-                className="h-7 w-7 p-0 flex-shrink-0"
-                onClick={() => playPronunciation(result.vi[0], 'vi')}
-                disabled={loadingAudio !== null}
-              >
-                {loadingAudio === 'vi' ? (
-                  <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                ) : (
-                  <Volume2 className="h-3.5 w-3.5" />
-                )}
-              </Button>
             </div>
           </div>
         </Card>
