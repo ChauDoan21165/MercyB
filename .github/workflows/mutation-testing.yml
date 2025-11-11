@@ -1,0 +1,103 @@
+name: Mutation Testing
+
+on:
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'src/lib/**'
+      - 'src/__tests__/**'
+  workflow_dispatch:
+
+jobs:
+  mutation-test:
+    name: Run Mutation Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Run mutation tests on room loader
+        id: mutation-test
+        run: npx stryker run --configFile stryker.roomloader.config.json
+        continue-on-error: true
+
+      - name: Upload mutation report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mutation-report
+          path: reports/mutation/html/
+          retention-days: 14
+
+      - name: Comment PR with results
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let reportSummary = '## 🧬 Mutation Testing Results\n\n';
+            
+            try {
+              const reportPath = 'reports/mutation/mutation.json';
+              if (fs.existsSync(reportPath)) {
+                const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+                const score = report.mutationScore || 0;
+                const killed = report.metrics?.killed || 0;
+                const survived = report.metrics?.survived || 0;
+                const timeout = report.metrics?.timeout || 0;
+                const noCoverage = report.metrics?.noCoverage || 0;
+                
+                const emoji = score >= 80 ? '✅' : score >= 60 ? '⚠️' : '❌';
+                
+                reportSummary += `${emoji} **Mutation Score: ${score.toFixed(2)}%**\n\n`;
+                reportSummary += `- 💀 Killed: ${killed}\n`;
+                reportSummary += `- 🏃 Survived: ${survived}\n`;
+                reportSummary += `- ⏱️ Timeout: ${timeout}\n`;
+                reportSummary += `- 📊 No Coverage: ${noCoverage}\n\n`;
+                
+                if (score < 60) {
+                  reportSummary += '⚠️ Mutation score is below threshold. Please improve test quality.\n';
+                }
+                
+                reportSummary += '\n📄 Full report available in the workflow artifacts.';
+              } else {
+                reportSummary += '⚠️ Mutation report not found. Check workflow logs for details.';
+              }
+            } catch (error) {
+              reportSummary += `⚠️ Error reading mutation report: ${error.message}`;
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: reportSummary
+            });
+
+      - name: Check mutation score threshold
+        if: always()
+        run: |
+          if [ -f "reports/mutation/mutation.json" ]; then
+            SCORE=$(node -pe "JSON.parse(require('fs').readFileSync('reports/mutation/mutation.json')).mutationScore || 0")
+            echo "Mutation Score: $SCORE%"
+            if (( $(echo "$SCORE < 55" | bc -l) )); then
+              echo "❌ Mutation score $SCORE% is below threshold (55%)"
+              exit 1
+            fi
+            echo "✅ Mutation score $SCORE% meets threshold"
+          else
+            echo "⚠️ Mutation report not found"
+          fi

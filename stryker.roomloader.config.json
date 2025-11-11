@@ -1,0 +1,32 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "packageManager": "npm",
+  "reporters": ["html", "clear-text", "progress"],
+  "testRunner": "vitest",
+  "vitest": {
+    "configFile": "vitest.config.ts"
+  },
+  "coverageAnalysis": "perTest",
+  "mutate": [
+    "src/lib/roomLoader.ts"
+  ],
+  "testFilter": [
+    "src/lib/__tests__/roomLoader.test.ts"
+  ],
+  "thresholds": {
+    "high": 85,
+    "low": 65,
+    "break": 55
+  },
+  "checkers": ["typescript"],
+  "tsconfigFile": "tsconfig.json",
+  "mutator": {
+    "plugins": ["typescript"],
+    "excludedMutations": []
+  },
+  "timeoutMS": 30000,
+  "timeoutFactor": 1.5,
+  "maxConcurrentTestRunners": 4,
+  "incremental": true,
+  "incrementalFile": ".stryker-tmp/incremental-roomloader.json"
+}
