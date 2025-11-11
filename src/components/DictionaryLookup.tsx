@@ -20,6 +20,7 @@ export const DictionaryLookup = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [result, setResult] = useState<{ en: string[]; vi: string[] } | null>(null);
   const [loadingAudio, setLoadingAudio] = useState<'en' | 'vi' | null>(null);
+  const [speed, setSpeed] = useState<number>(1.0);
   const { toast } = useToast();
   const dictionary = (dictionaryData as any).dictionary as Dictionary;
 
@@ -93,6 +94,7 @@ export const DictionaryLookup = () => {
 
       if (data?.audioUrl) {
         const audio = new Audio(data.audioUrl);
+        audio.playbackRate = speed;
         audio.play();
         toast({
           title: "Playing pronunciation",
@@ -122,6 +124,36 @@ export const DictionaryLookup = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="pl-10"
         />
+      </div>
+      
+      <div className="mt-2 flex items-center gap-2">
+        <span className="text-xs text-muted-foreground">Speed:</span>
+        <div className="flex gap-1">
+          <Button
+            size="sm"
+            variant={speed === 0.75 ? "default" : "outline"}
+            className="h-6 px-2 text-xs"
+            onClick={() => setSpeed(0.75)}
+          >
+            Slow
+          </Button>
+          <Button
+            size="sm"
+            variant={speed === 1.0 ? "default" : "outline"}
+            className="h-6 px-2 text-xs"
+            onClick={() => setSpeed(1.0)}
+          >
+            Normal
+          </Button>
+          <Button
+            size="sm"
+            variant={speed === 1.5 ? "default" : "outline"}
+            className="h-6 px-2 text-xs"
+            onClick={() => setSpeed(1.5)}
+          >
+            Fast
+          </Button>
+        </div>
       </div>
       
       {result && searchTerm && (
