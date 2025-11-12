@@ -314,7 +314,10 @@ const ChatHub = () => {
       const en = String(entry.essay_en || entry.replyEn || entry.copy?.en || '');
       const vi = String(entry.essay_vi || entry.replyVi || entry.copy?.vi || '');
       const text = vi ? `${en}\n\n---\n\n${vi}` : en;
-      const audioFile = entry.audio ? (entry.audio.startsWith('/') ? entry.audio : `/${entry.audio}`) : undefined;
+      // Automatically add /audio/ prefix if not already present
+      const audioFile = entry.audio 
+        ? (entry.audio.startsWith('/audio/') ? entry.audio : `/audio/${entry.audio.replace(/^\//, '')}`)
+        : undefined;
       
       console.log('=== MESSAGE BUILD DEBUG ===');
       console.log('English text length:', en.length);
@@ -783,7 +786,10 @@ const ChatHub = () => {
                               toast({ title: "No audio", description: "This entry has no audio filename" });
                               return;
                             }
-                            const out = audioFile.startsWith('/') ? audioFile : `/${audioFile}`;
+                            // Automatically add /audio/ prefix if not already present
+                            const out = audioFile.startsWith('/audio/') 
+                              ? audioFile 
+                              : `/audio/${audioFile.replace(/^\//, '')}`;
                             navigator.clipboard.writeText(out);
                             toast({ title: "Copied!", description: `Audio: ${out}` });
                           }}
