@@ -1,76 +1,89 @@
 {
-  "name": "Obesity Management VIP1",
-  "name_vi": "Quản Lý Béo Phì VIP1",
-  "description": "Echologic Mercy Blade room for VIP 1 users to start managing obesity with foundational strategies",
+  "tier": "VIP1 / VIP1",
+  "title": {
+    "en": "Obesity Management",
+    "vi": "Quản Lý Béo Phì"
+  },
+  "content": {
+    "en": "A gentle, sustainable path to a healthier weight. This VIP1 room gives you four proven micro-habits—one per week—around balanced meals, mindful eating, portion control, and daily movement. No diets, no guilt. Track a single metric each morning, adjust one tiny thing, and watch steady progress. Higher tiers add personalised coaching and advanced tracking.",
+    "vi": "Con đường nhẹ nhàng, bền vững tới cân nặng khỏe mạnh. Phòng VIP1 này cung cấp bốn thói quen vi mô đã được chứng minh—một mỗi tuần—về bữa ăn cân bằng, ăn chánh niệm, kiểm soát khẩu phần và vận động hàng ngày. Không chế độ ăn kiêng, không tự trách. Theo dõi một chỉ số mỗi sáng, điều chỉnh một điều nhỏ, và chứng kiến tiến bộ đều đặn. Các cấp cao hơn bổ sung huấn luyện cá nhân và theo dõi nâng cao."
+  },
   "keywords_en": [
+    "balanced meals",
+    "meal planning",
     "nutrition",
-    "mindful eating",
-    "portion control",
+    "active habits",
+    "daily movement",
     "exercise",
-    "habits",
-    "plate method",
-    "meal prep"
+    "mindful eating",
+    "eating awareness",
+    "slow eating",
+    "portion control",
+    "serving size",
+    "plate method"
   ],
   "keywords_vi": [
+    "bữa ăn cân bằng",
+    "lập kế hoạch bữa",
     "dinh dưỡng",
-    "ăn uống tỉnh táo",
+    "thói quen năng động",
+    "vận động hàng ngày",
+    "tập thể dục",
+    "ăn chánh niệm",
+    "nhận thức ăn",
+    "ăn chậm",
     "kiểm soát khẩu phần",
-    "tập luyện",
-    "thói quen",
-    "phương pháp đĩa",
-    "chuẩn bị bữa"
+    "kích thước phần",
+    "phương pháp đĩa"
   ],
   "entries": [
     {
-      "slug": "balanced-meal-planning",
-      "keywords_en": ["balanced meal planning", "plate method", "protein veggies grains", "meal prep"],
-      "keywords_vi": ["lập kế hoạch bữa ăn cân bằng", "phương pháp đĩa", "đạm rau ngũ cốc", "chuẩn bị bữa"],
+      "slug": "balanced-meals",
+      "keywords_en": ["balanced meals", "meal planning", "nutrition", "plate method"],
+      "keywords_vi": ["bữa ăn cân bằng", "lập kế hoạch bữa", "dinh dưỡng", "phương pháp đĩa"],
       "copy": {
         "en": "Plan balanced meals to support healthy weight management. Include vegetables, lean proteins, and whole grains in one daily meal using the plate method: half vegetables, one quarter protein, one quarter carbohydrates. Prepare two meals ahead each week to stay consistent and avoid last-minute choices. Record weekly reflections about energy levels and satisfaction. Ask a trusted friend for meal feedback monthly to stay accountable. Balanced meals reduce cravings and stabilize mood. Keep portions mindful rather than strict. Over time, these small actions reshape habits gently and naturally. Begin today by planning one nourishing meal that fits your routine. Ready to eat with purpose? Explore beyond VIP 1.",
         "vi": "Lập kế hoạch bữa ăn cân bằng để hỗ trợ quản lý cân nặng lành mạnh. Bao gồm rau, protein nạc và ngũ cốc nguyên hạt trong một bữa ăn hàng ngày sử dụng phương pháp đĩa: nửa rau, một phần tư protein, một phần tư carbohydrate. Chuẩn bị hai bữa ăn trước mỗi tuần để giữ nhất quán và tránh lựa chọn phút chót. Ghi lại phản ánh hàng tuần về mức năng lượng và sự hài lòng. Yêu cầu bạn đáng tin cậy phản hồi bữa ăn hàng tháng để giữ trách nhiệm. Bữa ăn cân bằng giảm cơn thèm và ổn định tâm trạng. Giữ khẩu phần tỉnh táo hơn là nghiêm ngặt. Theo thời gian, những hành động nhỏ này định hình lại thói quen nhẹ nhàng và tự nhiên. Bắt đầu hôm nay bằng cách lên kế hoạch một bữa ăn bổ dưỡng phù hợp với thói quen của bạn. Sẵn sàng ăn có mục đích? Khám phá xa hơn VIP 1."
       },
-      "tags": ["obesity", "nutrition"],
-      "audio": "planning_balanced_meals_vip1.mp3"
+      "tags": ["nutrition", "planning"],
+      "audio": "/audio/planning_balanced_meals_vip1.mp3",
+      "essay_ref": "planning_balanced_meals_vip1_essay.txt"
     },
     {
       "slug": "active-habits",
-      "keywords_en": ["active habits", "daily movement", "walk stretch", "light exercise"],
-      "keywords_vi": ["thói quen vận động", "vận động hằng ngày", "đi bộ duỗi người", "tập nhẹ"],
+      "keywords_en": ["active habits", "daily movement", "exercise"],
+      "keywords_vi": ["thói quen năng động", "vận động hàng ngày", "tập thể dục"],
       "copy": {
         "en": "Build active habits that fit your lifestyle to prevent obesity and improve vitality. Aim for at least fifteen minutes of daily movement—walking, stretching, or light yoga. Pair activity with music or nature to boost motivation. Record your exercise time and mood each week to recognize patterns. Join a monthly class or group walk for accountability and connection. Even light movement practiced consistently supports metabolism and relieves tension. When energy dips, focus on enjoyment instead of perfection. The goal is momentum, not exhaustion. Begin today with one uplifting movement you genuinely like. Ready to make motion a daily friend? Explore beyond VIP 1.",
         "vi": "Xây dựng thói quen vận động phù hợp với lối sống của bạn để ngăn ngừa béo phì và cải thiện sức sống. Nhắm đến ít nhất mười lăm phút vận động hàng ngày—đi bộ, duỗi người hoặc yoga nhẹ. Kết hợp hoạt động với âm nhạc hoặc thiên nhiên để tăng động lực. Ghi lại thời gian tập thể dục và tâm trạng mỗi tuần để nhận ra các mẫu. Tham gia lớp học hàng tháng hoặc đi bộ nhóm để có trách nhiệm và kết nối. Ngay cả chuyển động nhẹ thực hành nhất quán hỗ trợ trao đổi chất và giảm căng thẳng. Khi năng lượng giảm, tập trung vào sự thích thú thay vì hoàn hảo. Mục tiêu là động lực, không phải kiệt sức. Bắt đầu hôm nay với một chuyển động nâng cao mà bạn thực sự thích. Sẵn sàng biến chuyển động thành bạn hàng ngày? Khám phá xa hơn VIP 1."
       },
-      "tags": ["obesity", "exercise"],
-      "audio": "building_active_habits_vip1.mp3"
+      "tags": ["movement", "habits"],
+      "audio": "/audio/building_active_habits_vip1.mp3",
+      "essay_ref": "building_active_habits_vip1_essay.txt"
     },
     {
-      "slug": "mindful-eating-practice",
-      "keywords_en": ["mindful eating practice", "eat slowly", "hunger fullness cues", "no screens"],
-      "keywords_vi": ["thực hành ăn uống tỉnh táo", "ăn chậm", "tín hiệu đói no", "không màn hình"],
+      "slug": "mindful-eating",
+      "keywords_en": ["mindful eating", "eating awareness", "slow eating"],
+      "keywords_vi": ["ăn chánh niệm", "nhận thức ăn", "ăn chậm"],
       "copy": {
         "en": "Deepen mindful eating to prevent overeating and strengthen body awareness. Choose one meal each day to eat slowly without screens or distractions. Notice flavor, aroma, and fullness cues before taking another bite. Reflect weekly in a journal about what you discovered—comfort, stress triggers, or gratitude. Over time, awareness replaces impulse with calm intention. Practice a gentle pause before and after meals to sense satisfaction. This simple awareness reconnects you with balance and trust in your body. Start today with one mindful meal enjoyed fully in quiet presence. Ready to nourish with attention? Explore beyond VIP 1.",
         "vi": "Làm sâu sắc ăn uống tỉnh táo để ngăn ăn quá nhiều và tăng cường nhận thức cơ thể. Chọn một bữa ăn mỗi ngày để ăn chậm không có màn hình hoặc phân tâm. Chú ý hương vị, mùi thơm và tín hiệu no trước khi ăn miếng khác. Phản ánh hàng tuần trong nhật ký về những gì bạn khám phá—sự thoải mái, yếu tố kích thích căng thẳng hoặc lòng biết ơn. Theo thời gian, nhận thức thay thế bốc đồng bằng ý định bình tĩnh. Thực hành tạm dừng nhẹ nhàng trước và sau bữa ăn để cảm nhận sự hài lòng. Nhận thức đơn giản này kết nối lại bạn với sự cân bằng và tin tưởng vào cơ thể. Bắt đầu hôm nay với một bữa ăn tỉnh táo thưởng thức đầy đủ trong sự hiện diện yên tĩnh. Sẵn sàng nuôi dưỡng với sự chú ý? Khám phá xa hơn VIP 1."
       },
-      "tags": ["obesity", "mindfulness"],
-      "audio": "deepening_mindful_eating_vip1.mp3"
+      "tags": ["mindfulness", "eating"],
+      "audio": "/audio/deepening_mindful_eating_vip1.mp3",
+      "essay_ref": "deepening_mindful_eating_vip1_essay.txt"
     },
     {
       "slug": "portion-control",
-      "keywords_en": ["portion control", "smaller plate", "moderation", "meal portions"],
-      "keywords_vi": ["kiểm soát khẩu phần", "đĩa nhỏ", "điều độ", "khẩu phần bữa ăn"],
+      "keywords_en": ["portion control", "serving size", "plate method"],
+      "keywords_vi": ["kiểm soát khẩu phần", "kích thước phần", "phương pháp đĩa"],
       "copy": {
         "en": "Control portion sizes to support steady weight goals without strict restriction. Use smaller plates or bowls for one daily meal to naturally limit servings. Pause halfway to check hunger and satisfaction. Plan balanced portions of protein, fiber, and healthy fats to maintain energy. Keep a short weekly log of portion habits to notice progress. Preparing meals in advance reduces mindless snacking. Focus on comfort and moderation rather than deprivation. Each mindful serving trains your body to recognize sufficiency. Begin today by plating your next meal with intention and awareness. Ready to feel balanced after eating? Explore beyond VIP 1.",
         "vi": "Kiểm soát khẩu phần để hỗ trợ mục tiêu cân nặng ổn định không có hạn chế nghiêm ngặt. Sử dụng đĩa hoặc bát nhỏ hơn cho một bữa ăn hàng ngày để tự nhiên giới hạn khẩu phần. Tạm dừng giữa chừng để kiểm tra đói và sự hài lòng. Lập kế hoạch khẩu phần cân bằng protein, chất xơ và chất béo lành mạnh để duy trì năng lượng. Giữ nhật ký ngắn hàng tuần về thói quen khẩu phần để nhận thấy tiến bộ. Chuẩn bị bữa ăn trước giảm ăn vặt không chú ý. Tập trung vào sự thoải mái và điều độ hơn là thiếu thốn. Mỗi khẩu phần tỉnh táo rèn luyện cơ thể nhận ra sự đủ. Bắt đầu hôm nay bằng cách dọn bữa ăn tiếp theo với ý định và nhận thức. Sẵn sàng cảm thấy cân bằng sau khi ăn? Khám phá xa hơn VIP 1."
       },
-      "tags": ["obesity", "nutrition"],
-      "audio": "controlling_portion_sizes_vip1.mp3"
+      "tags": ["portion", "control"],
+      "audio": "/audio/controlling_portion_sizes_vip1.mp3",
+      "essay_ref": "controlling_portion_sizes_vip1_essay.txt"
     }
-  ],
-  "meta": {
-    "created_at": "2025-10-25T10:00:00+07:00",
-    "updated_at": "2025-10-25T10:00:00+07:00",
-    "entry_count": 4,
-    "tier": "vip1",
-    "room_color": "#FFE4B5"
-  }
+  ]
 }
