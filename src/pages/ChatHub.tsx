@@ -298,17 +298,30 @@ const ChatHub = () => {
       const entry = resolveEntryByKeyword(keyword);
       console.log('=== KEYWORD MATCH DEBUG ===');
       console.log('Keyword searched:', keyword);
+      console.log('All entries in mergedEntries:', mergedEntries.length);
       console.log('Entry found:', entry);
-      console.log('Audio in entry:', entry?.audio);
+      console.log('Entry slug:', entry?.slug);
+      console.log('Entry keywords_en:', entry?.keywords_en);
+      console.log('Entry audio field:', entry?.audio);
+      console.log('Entry copy.en:', entry?.copy?.en ? 'exists' : 'missing');
+      console.log('Entry replyEn:', entry?.replyEn ? 'exists' : 'missing');
+      console.log('Entry essay_en:', entry?.essay_en ? 'exists' : 'missing');
       console.log('=========================');
       
       if (!entry) throw new Error('No entry matched');
      
       // Build message: English Essay + Audio + Vietnamese Essay (if exists)
-      const en = String(entry.essay_en || entry.replyEn || '');
-      const vi = String(entry.essay_vi || entry.replyVi || '');
+      const en = String(entry.essay_en || entry.replyEn || entry.copy?.en || '');
+      const vi = String(entry.essay_vi || entry.replyVi || entry.copy?.vi || '');
       const text = vi ? `${en}\n\n---\n\n${vi}` : en;
       const audioFile = entry.audio ? (entry.audio.startsWith('/') ? entry.audio : `/${entry.audio}`) : undefined;
+      
+      console.log('=== MESSAGE BUILD DEBUG ===');
+      console.log('English text length:', en.length);
+      console.log('Vietnamese text length:', vi.length);
+      console.log('Final audioFile:', audioFile);
+      console.log('=========================');
+      
       setMainMessages(prev => prev.map(m => m.id === typingMessageId ? { ...m, text, audioFile } : m));
       trackKeyword(keyword);
     } catch (err) {
