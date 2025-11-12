@@ -680,7 +680,11 @@ const ChatHub = () => {
                   title="Copy JSON filename"
                 />
               )}
-              <h2 className="text-lg font-semibold">{currentRoom.nameEn} / {currentRoom.nameVi}</h2>
+              <h2 className="text-lg font-semibold">
+                {currentRoom.nameEn === currentRoom.nameVi 
+                  ? currentRoom.nameEn 
+                  : `${currentRoom.nameEn} / ${currentRoom.nameVi}`}
+              </h2>
               {info && (
                 <Badge variant="secondary" className="text-xs">
                   {info.tier === 'free' ? 'Free' : info.tier === 'vip1' ? 'VIP 1' : info.tier === 'vip2' ? 'VIP 2' : info.tier === 'vip3' ? 'VIP 3' : 'VIP 4'}
