@@ -78,8 +78,6 @@ const ChatHub = () => {
   const [matchedEntryId, setMatchedEntryId] = useState<string | null>(null);
   const [debugSearch, setDebugSearch] = useState("");
   const [isRefreshing, setIsRefreshing] = useState(false);
-  
-  const { isAdmin } = useUserAccess();
 
   // Use centralized room metadata
   const info = getRoomInfo(roomId || "");

@@ -40,7 +40,7 @@
         "self-love",
         "affirmation"
       ],
-      "audio": "soulmate_free_daily_self_love.mp3"
+      "audio": "soulmate/soulmate_free_daily_self_love.mp3"
     },
     {
       "slug": "open-heart-check-in",
@@ -64,7 +64,7 @@
         "heart",
         "openness"
       ],
-      "audio": "soulmate_free_open_heart_check_in.mp3"
+      "audio": "soulmate/soulmate_free_open_heart_check_in.mp3"
     },
     {
       "slug": "gratitude-for-love",
@@ -88,7 +88,7 @@
         "gratitude",
         "love"
       ],
-      "audio": "soulmate_free_gratitude_for_love.mp3"
+      "audio": "soulmate/soulmate_free_gratitude_for_love.mp3"
     }
   ],
   "meta": {

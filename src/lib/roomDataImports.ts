@@ -694,8 +694,8 @@ export const roomDataMap: Record<string, RoomData> = {
   },
   "soulmate-free": {
       "id": "soulmate-free",
-      "nameEn": "Find Your Soul Mate (Free)",
-      "nameVi": "Tìm Người Tri Kỷ (Miễn Phí)",
+      "nameEn": "Find Your Soul Mate",
+      "nameVi": "Tìm Người Tri Kỷ",
       "tier": "free",
       "hasData": true
   },
