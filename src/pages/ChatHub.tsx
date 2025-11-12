@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Send, ArrowLeft, MessageCircle, Mail, Users, Loader2, Volume2, RefreshCw } from "lucide-react";
+import { Send, ArrowLeft, MessageCircle, Mail, Users, Loader2, Volume2, RefreshCw, Bug } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomInfo } from "@/lib/roomData";
@@ -78,6 +78,8 @@ const ChatHub = () => {
   const [matchedEntryId, setMatchedEntryId] = useState<string | null>(null);
   const [debugSearch, setDebugSearch] = useState("");
   const [isRefreshing, setIsRefreshing] = useState(false);
+  
+  const { isAdmin } = useUserAccess();
 
   // Use centralized room metadata
   const info = getRoomInfo(roomId || "");
@@ -586,16 +588,21 @@ const ChatHub = () => {
       <div className="min-h-screen p-4" style={{ background: getBgColor() }}>
         <div className="max-w-7xl mx-auto space-y-4">
         
-        {/* Debug Mode Toggle */}
-        <button
-          onClick={() => setDebugMode(!debugMode)}
-          className="fixed top-4 right-4 z-50 px-3 py-1 bg-primary/10 text-primary text-xs rounded border border-primary/20 hover:bg-primary/20 transition-colors"
-        >
-          {debugMode ? 'Hide' : 'Show'} Debug
-        </button>
+        {/* Debug Mode Toggle - Admin Only */}
+        {isAdmin && (
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setDebugMode(!debugMode)}
+            className="fixed bottom-4 left-4 z-50 gap-2 shadow-lg"
+          >
+            <Bug className="h-4 w-4" />
+            {debugMode ? 'Hide Debug' : 'Show Debug'}
+          </Button>
+        )}
 
         {/* Debug Panel */}
-        {debugMode && mergedEntries.length > 0 && (
+        {isAdmin && debugMode && mergedEntries.length > 0 && (
           <div className="fixed top-16 right-4 z-50 w-96 max-h-[80vh] bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg">
             <div className="p-4 border-b border-border">
               <h3 className="text-sm font-semibold mb-3 text-foreground">Keyword Mappings ({mergedEntries.length} entries)</h3>
