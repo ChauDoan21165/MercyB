@@ -1,46 +1,13 @@
 {
-  "name": "Obesity Management VIP1",
-  "name_vi": "Quản Lý Béo Phì VIP1",
-  "description": {
+  "tier": "VIP1 / VIP1",
+  "title": {
+    "en": "Obesity Management VIP1",
+    "vi": "Quản Lý Béo Phì VIP1"
+  },
+  "content": {
     "en": "Echologic Mercy Blade room for VIP 1 users to start managing obesity with foundational strategies",
     "vi": "Phòng Mercy Blade dành cho người dùng VIP 1 để bắt đầu quản lý béo phì với chiến lược cơ bản"
   },
-  "keywords_en": [
-    "balanced meal planning",
-    "plate method",
-    "protein veggies grains",
-    "meal prep",
-    "active habits",
-    "daily movement",
-    "walk stretch",
-    "light exercise",
-    "mindful eating practice",
-    "eat slowly",
-    "hunger fullness cues",
-    "no screens",
-    "portion control",
-    "smaller plate",
-    "moderation",
-    "meal portions"
-  ],
-  "keywords_vi": [
-    "lập kế hoạch bữa ăn cân bằng",
-    "phương pháp đĩa",
-    "đạm rau ngũ cốc",
-    "chuẩn bị bữa",
-    "thói quen vận động",
-    "vận động hằng ngày",
-    "đi bộ duỗi người",
-    "tập nhẹ",
-    "thực hành ăn uống tỉnh táo",
-    "ăn chậm",
-    "tín hiệu đói no",
-    "không màn hình",
-    "kiểm soát khẩu phần",
-    "đĩa nhỏ",
-    "điều độ",
-    "khẩu phần bữa ăn"
-  ],
   "entries": [
     {
       "slug": "planning_balanced_meals",
@@ -86,12 +53,5 @@
       "tags": ["obesity", "nutrition"],
       "audio": "controlling_portion_sizes_vip1.mp3"
     }
-  ],
-  "meta": {
-    "created_at": "2025-10-25T10:00:00+07:00",
-    "updated_at": "2025-10-25T10:00:00+07:00",
-    "entry_count": 4,
-    "tier": "vip1",
-    "room_color": "#FFE4B5"
-  }
+  ]
 }
