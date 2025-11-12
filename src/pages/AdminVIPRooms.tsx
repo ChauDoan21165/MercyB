@@ -7,6 +7,8 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { MessageSquare, ChevronRight } from 'lucide-react';
 import { ALL_ROOMS, RoomInfo } from '@/lib/roomData';
+import { AnimatedTierBadge } from '@/components/AnimatedTierBadge';
+import { UserTier } from '@/hooks/useUserAccess';
 
 const AdminVIPRooms = () => {
   const navigate = useNavigate();
@@ -66,36 +68,32 @@ const AdminVIPRooms = () => {
     }
   };
 
-  const getTierBadgeColor = (tier: string) => {
-    switch (tier) {
-      case 'vip1':
-        return 'bg-blue-500 text-white';
-      case 'vip2':
-        return 'bg-purple-500 text-white';
-      case 'vip3':
-        return 'bg-amber-500 text-white';
-      default:
-        return 'bg-gray-500 text-white';
-    }
-  };
-
   const vip1Rooms = ALL_ROOMS.filter(room => room.tier === 'vip1');
   const vip2Rooms = ALL_ROOMS.filter(room => room.tier === 'vip2');
   const vip3Rooms = ALL_ROOMS.filter(room => room.tier === 'vip3');
 
-  const RoomCard = ({ room }: { room: RoomInfo }) => (
-    <Card className="hover:shadow-lg transition-all">
-      <CardHeader>
-        <div className="flex items-start justify-between gap-4">
-          <div className="flex-1">
-            <CardTitle className="text-lg mb-1">{room.nameEn}</CardTitle>
-            <CardDescription>{room.nameVi}</CardDescription>
+  const RoomCard = ({ room }: { room: RoomInfo }) => {
+    // Convert tier string to UserTier type
+    const tierMap: Record<string, UserTier> = {
+      'free': 'free',
+      'vip1': 'vip1',
+      'vip2': 'vip2',
+      'vip3': 'vip3',
+      'vip4': 'vip4'
+    };
+    const mappedTier = tierMap[room.tier] || 'free';
+    
+    return (
+      <Card className="hover:shadow-lg transition-all">
+        <CardHeader>
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex-1">
+              <CardTitle className="text-lg mb-1">{room.nameEn}</CardTitle>
+              <CardDescription>{room.nameVi}</CardDescription>
+            </div>
+            <AnimatedTierBadge tier={mappedTier} size="md" />
           </div>
-          <Badge className={getTierBadgeColor(room.tier)}>
-            {room.tier.toUpperCase()}
-          </Badge>
-        </div>
-      </CardHeader>
+        </CardHeader>
       <CardContent className="space-y-3">
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <MessageSquare className="w-4 h-4" />
@@ -115,6 +113,7 @@ const AdminVIPRooms = () => {
       </CardContent>
     </Card>
   );
+};
 
   if (loading) {
     return (

@@ -5,8 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
 import { ALL_ROOMS } from "@/lib/roomData";
-import { useUserAccess } from "@/hooks/useUserAccess";
+import { useUserAccess, UserTier } from "@/hooks/useUserAccess";
 import { useEffect, useState } from "react";
+import { AnimatedTierBadge } from "@/components/AnimatedTierBadge";
 
 const AllRooms = () => {
   const navigate = useNavigate();
@@ -29,14 +30,18 @@ const AllRooms = () => {
     }
   };
 
-  const getTierBadge = (tier: string) => {
-    switch (tier) {
-      case "free": return <Badge className="bg-primary text-primary-foreground text-[8px] px-1 py-0">FREE</Badge>;
-      case "vip1": return <Badge className="bg-secondary text-secondary-foreground text-[8px] px-1 py-0">VIP1</Badge>;
-      case "vip2": return <Badge className="bg-accent text-accent-foreground text-[8px] px-1 py-0">VIP2</Badge>;
-      case "vip3": return <Badge className="bg-gradient-to-r from-accent to-primary text-white text-[8px] px-1 py-0">VIP3</Badge>;
-      default: return null;
-    }
+  const getTierBadge = (roomTier: string) => {
+    // Convert room tier string to UserTier type
+    const tierMap: Record<string, UserTier> = {
+      'free': 'free',
+      'vip1': 'vip1',
+      'vip2': 'vip2',
+      'vip3': 'vip3',
+      'vip4': 'vip4'
+    };
+    
+    const mappedTier = tierMap[roomTier] || 'free';
+    return <AnimatedTierBadge tier={mappedTier} size="sm" showIcon={false} />;
   };
 
   return (
@@ -68,10 +73,10 @@ const AllRooms = () => {
 
           {/* Legend */}
           <div className="flex flex-wrap justify-center gap-3 pt-4">
-            <Badge className="bg-primary text-primary-foreground">FREE</Badge>
-            <Badge className="bg-secondary text-secondary-foreground">VIP1</Badge>
-            <Badge className="bg-accent text-accent-foreground">VIP2</Badge>
-            <Badge className="bg-gradient-to-r from-accent to-primary text-white">VIP3</Badge>
+            <AnimatedTierBadge tier="free" size="md" />
+            <AnimatedTierBadge tier="vip1" size="md" />
+            <AnimatedTierBadge tier="vip2" size="md" />
+            <AnimatedTierBadge tier="vip3" size="md" />
           </div>
         </div>
 

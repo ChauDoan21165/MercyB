@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { Check, Crown, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useUserAccess, UserTier } from "@/hooks/useUserAccess";
+import { AnimatedTierBadge } from "./AnimatedTierBadge";
 
 const tierInfo: Record<UserTier, {
   name: { en: string; vi: string };
@@ -79,9 +80,7 @@ export const VIPBenefitsDisplay = () => {
         </div>
         
         <div className="flex items-center gap-3">
-          <Badge className={`${currentTier.color} text-white px-3 py-1`}>
-            {currentTier.name.en}
-          </Badge>
+          <AnimatedTierBadge tier={tier} size="lg" />
           {isAdmin && (
             <Badge variant="outline" className="border-primary">
               Admin

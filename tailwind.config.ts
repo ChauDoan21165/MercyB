@@ -88,11 +88,51 @@ export default {
             opacity: "0.3",
           },
         },
+        "shine": {
+          "0%": {
+            backgroundPosition: "-200% 0",
+          },
+          "100%": {
+            backgroundPosition: "200% 0",
+          },
+        },
+        "glow": {
+          "0%, 100%": {
+            boxShadow: "0 0 5px currentColor, 0 0 10px currentColor",
+          },
+          "50%": {
+            boxShadow: "0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor",
+          },
+        },
+        "pulse-glow": {
+          "0%, 100%": {
+            opacity: "1",
+            transform: "scale(1)",
+          },
+          "50%": {
+            opacity: "0.8",
+            transform: "scale(1.05)",
+          },
+        },
+        "sparkle": {
+          "0%, 100%": {
+            opacity: "0",
+            transform: "scale(0) rotate(0deg)",
+          },
+          "50%": {
+            opacity: "1",
+            transform: "scale(1) rotate(180deg)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "blink": "blink 1.5s ease-in-out infinite",
+        "shine": "shine 3s linear infinite",
+        "glow": "glow 2s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        "sparkle": "sparkle 1.5s ease-in-out infinite",
       },
     },
   },

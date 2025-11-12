@@ -31,6 +31,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { roomDataMap } from "@/lib/roomDataImports";
 import { getParentRoute } from "@/lib/routeHelper";
 import { CareerProgressTracker } from "@/components/CareerProgressTracker";
+import { AnimatedTierBadge } from "@/components/AnimatedTierBadge";
 
 interface Message {
   id: string;
@@ -692,7 +693,12 @@ const ChatHub = () => {
               )}
             </div>
             <div className="flex items-center justify-center gap-1 text-xs font-medium text-primary">
-              {username && <span>👤 {username},</span>}
+              {username && (
+                <div className="flex items-center gap-2">
+                  <span>👤 {username}</span>
+                  <AnimatedTierBadge tier={tier} size="sm" />
+                </div>
+              )}
               <span>You have explored {progress.totalRooms} {progress.totalRooms === 1 ? 'topic' : 'topics'}, {progress.streak} day streak! 🔥</span>
             </div>
           </div>
