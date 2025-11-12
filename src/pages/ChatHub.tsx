@@ -574,22 +574,24 @@ const ChatHub = () => {
 
   return (
     <>
-      <AlertDialog open={showAccessDenied} onOpenChange={setShowAccessDenied}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>VIP Only / Chỉ Dành Cho VIP</AlertDialogTitle>
-            <AlertDialogDescription className="space-y-2">
-              <p>This room is for VIP members only. Please upgrade your subscription to access this content.</p>
-              <p className="text-sm">Phòng này chỉ dành cho thành viên VIP. Vui lòng nâng cấp gói đăng ký để truy cập nội dung này.</p>
-              <p className="font-semibold mt-4">Required tier: {info?.tier?.toUpperCase()}</p>
-              <p className="text-sm">Your tier: {tier?.toUpperCase()}</p>
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogAction onClick={handleAccessDenied}>Go Back / Quay Lại</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      {!isAdmin && (
+        <AlertDialog open={showAccessDenied} onOpenChange={setShowAccessDenied}>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>VIP Only / Chỉ Dành Cho VIP</AlertDialogTitle>
+              <AlertDialogDescription className="space-y-2">
+                <p>This room is for VIP members only. Please upgrade your subscription to access this content.</p>
+                <p className="text-sm">Phòng này chỉ dành cho thành viên VIP. Vui lòng nâng cấp gói đăng ký để truy cập nội dung này.</p>
+                <p className="font-semibold mt-4">Required tier: {info?.tier?.toUpperCase()}</p>
+                <p className="text-sm">Your tier: {tier?.toUpperCase()}</p>
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogAction onClick={handleAccessDenied}>Go Back / Quay Lại</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      )}
       <div className="min-h-screen p-4" style={{ background: getBgColor() }}>
         <div className="max-w-7xl mx-auto space-y-4">
         
