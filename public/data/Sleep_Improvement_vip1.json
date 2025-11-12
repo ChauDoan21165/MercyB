@@ -1,137 +1,61 @@
 {
-  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nSleep improvement for VIP 1, evidence-based\n\nEach entry: teach practical steps for better sleep\n\nPhilosophy: supportive, actionable, non-judgmental, humane language\n\nBeliefs:\n- Don’t overwhelm. Encourage restful habits.\n- Don’t judge. Foster calm.\n- Don’t rush. Build consistency.\n\nTalk points\n- Sleep routines enhance rest.\n- Environment supports quality sleep.\n- Relaxation reduces insomnia.\n\nTiny habits to teach:\n- Set one bedtime daily.\n- Avoid one screen before bed.\n- Practice one relaxation technique.",
-  "schema_version": "1.1",
-  "schema_id": "sleep_improvement_vip1",
-  "description": "Echologic Mercy Blade room for VIP 1 users to improve sleep with evidence-based strategies",
-  "description_vi": "Phòng Mercy Blade dành cho người dùng VIP 1 để cải thiện giấc ngủ với chiến lược dựa trên bằng chứng",
-  "supported_languages": ["en", "vi"],
-  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
-  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice.",
-  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn y tế chuyên nghiệp.",
-  "crisis_footer": {
-    "en": "For severe sleep issues or health concerns, contact a doctor or support line immediately.",
-    "vi": "Nếu gặp vấn đề giấc ngủ nghiêm trọng hoặc lo lắng sức khỏe, liên hệ bác sĩ hoặc đường dây hỗ trợ ngay."
+  "tier": "VIP1 / VIP1",
+  "title": {
+    "en": "Sleep Improvement",
+    "vi": "Cải Thiện Giấc Ngủ"
   },
-  "safety_footer": {
-    "en": "For persistent sleep problems, consult a healthcare professional.",
-    "vi": "Đối với vấn đề giấc ngủ kéo dài, tham khảo chuyên gia y tế."
-  },
-  "meta": {
-    "created_at": "2025-10-21T19:31:00+07:00",
-    "updated_at": "2025-10-21T19:31:00+07:00",
-    "checksum_sha256": "<placeholder>",
-    "meta_notes": "Keyword-driven; VIP 1 exclusive; light brown background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
-    "i18n_verified": true,
-    "entry_count": 3,
-    "artifact_set_id": "7c8d9e0f-1a2b-4c3d-a4e5-b6c7d8e9f0a1",
-    "data_format_version": "MercyBlade-Core-v1.2",
-    "room_color": "#D7CCC8",
-    "tier": "vip1"
-  },
-  "enums": {
-    "tags": [
-      "sleep",
-      "wellness",
-      "relaxation",
-      "health_management",
-      "sleep_hygiene"
-    ],
-    "urgency": ["immediate", "soon", "routine"],
-    "severity_level": [1, 2, 3, 4, 5],
-    "systems": ["health_management", "wellness"]
-  },
-  "keywords": {
-    "bedtime_routines": {
-      "en": ["bedtime routines for sleep", "how to improve sleep quality", "sleep hygiene tips", "better sleep habits", "night routine for rest"],
-      "vi": ["thói quen trước giờ ngủ", "cách cải thiện chất lượng giấc ngủ", "mẹo vệ sinh giấc ngủ", "thói quen ngủ tốt hơn", "thói quen đêm để nghỉ ngơi"]
-    },
-    "sleep_environment": {
-      "en": ["sleep environment tips", "how to optimize bedroom for sleep", "improve sleep setting", "create restful bedroom", "sleep space strategies"],
-      "vi": ["mẹo môi trường ngủ", "cách tối ưu phòng ngủ để ngủ", "cải thiện cài đặt giấc ngủ", "tạo phòng ngủ thư giãn", "chiến lược không gian ngủ"]
-    },
-    "relaxation_techniques": {
-      "en": ["relaxation for better sleep", "how to relax before bed", "sleep relaxation tips", "reduce insomnia techniques", "calm mind for sleep"],
-      "vi": ["thư giãn để ngủ tốt hơn", "cách thư giãn trước khi ngủ", "mẹo thư giãn giấc ngủ", "kỹ thuật giảm mất ngủ", "giữ tâm trí bình tĩnh để ngủ"]
-    }
-  },
-  "room_essay": {
-    "format": "markdown",
-    "en": "# Sleep Improvement VIP1\n\nBetter sleep starts with consistent, intentional habits. Research shows good sleep hygiene improves rest by 30% in 4 weeks. This VIP 1 room offers premium strategies to enhance your sleep quality.\n\n**Establish Bedtime Routines**\n- Set a fixed bedtime daily (e.g., 10 PM).\n- Avoid screens 1 hour before bed.\n- Example: Sarah’s routine bedtime improved her energy.\n\n**Optimize Your Sleep Environment**\n- Keep your room dark and cool (e.g., 65°F/18°C).\n- Use comfortable bedding.\n- Studies show a restful environment boosts sleep by 25%.\n\n**Practice Relaxation Techniques**\n- Try 5-minute deep breathing (inhale 4 seconds, exhale 4).\n- Listen to calming music before bed.\n- Example: Minh’s breathing exercises reduced insomnia.\n\n**Stay Consistent**\n- Track sleep patterns weekly with a journal.\n- Consult a doctor for persistent issues.\n\nStart today: set a bedtime or try a breathing exercise. Your VIP 1 tools will guide you to restful nights!\n\n*Word count: 404*",
-    "vi": "# Cải Thiện Giấc Ngủ VIP1\n\nGiấc ngủ tốt hơn bắt đầu từ thói quen nhất quán, có chủ ý. Nghiên cứu cho thấy vệ sinh giấc ngủ tốt cải thiện nghỉ ngơi 30% trong 4 tuần. Phòng VIP 1 này cung cấp chiến lược cao cấp để nâng cao chất lượng giấc ngủ.\n\n**Thiết Lập Thói Quen Trước Giờ Ngủ**\n- Đặt giờ đi ngủ cố định mỗi ngày (ví dụ, 22h).\n- Tránh màn hình 1 giờ trước khi ngủ.\n- Ví dụ: Lan đặt giờ ngủ đều, tăng năng lượng.\n\n**Tối Ưu Môi Trường Ngủ**\n- Giữ phòng tối và mát (ví dụ, 18°C).\n- Sử dụng chăn ga thoải mái.\n- Nghiên cứu cho thấy môi trường thư giãn tăng giấc ngủ 25%.\n\n**Thực Hành Kỹ Thuật Thư Giãn**\n- Thử thở sâu 5 phút (hít vào 4 giây, thở ra 4).\n- Nghe nhạc nhẹ trước khi ngủ.\n- Ví dụ: Hùng tập thở, giảm mất ngủ.\n\n**Giữ Nhất Quán**\n- Theo dõi mẫu giấc ngủ hàng tuần bằng nhật ký.\n- Tham khảo bác sĩ nếu vấn đề kéo dài.\n\nBắt đầu hôm nay: đặt giờ ngủ hoặc thử bài tập thở. Công cụ VIP 1 sẽ dẫn bạn đến những đêm yên giấc!\n\n*Số từ: 412*",
-    "word_count_en": 404,
-    "word_count_vi": 412,
-    "updated_at": "2025-10-21T19:31:00+07:00"
+  "content": {
+    "en": "Better sleep starts with small, kind habits you can keep. This VIP1 room gently guides you to rest deeper using proven steps: a steady bedtime, a calm bedroom, and simple ways to relax. You’ll practice one tiny habit at a time—set a sleep time, dim the lights, or breathe slowly—without pressure or rush. Track how you feel each morning with a short note. Over days, your body learns to wind down naturally. No judgment, no overload—just steady, humane steps that grow into restful nights. Deeper support awaits in higher tiers.",
+    "vi": "Giấc ngủ tốt bắt đầu từ thói quen nhỏ, tử tế mà bạn giữ được. Phòng VIP1 này nhẹ nhàng hướng bạn ngủ sâu hơn bằng các bước đã chứng minh: giờ ngủ đều, phòng yên tĩnh và cách thư giãn đơn giản. Bạn thực hành từng thói quen nhỏ—đặt giờ ngủ, tắt đèn, hoặc thở chậm—không áp lực, không vội. Ghi ngắn cảm giác mỗi sáng. Qua vài ngày, cơ thể tự học cách thư giãn. Không phán xét, không quá tải—chỉ những bước nhân văn, đều đặn dẫn đến đêm ngon. Hỗ trợ sâu hơn ở cấp cao hơn."
   },
   "entries": [
     {
-      "slug": "bedtime_routines",
-      "title": { "en": "Bedtime Routines for Sleep", "vi": "Thói Quen Trước Giờ Ngủ" },
+      "slug": "bedtime",
+      "keywords_en": ["bedtime", "sleep routine", "consistent sleep"],
+      "keywords_vi": ["giờ ngủ", "thói quen ngủ", "ngủ đều"],
       "copy": {
-        "en": "**Bedtime Routines for Sleep**\n\nConsistent routines improve sleep by 30%, per studies. Build habits with these steps:\n\n- **Set Bedtime**: Sleep at the same time daily (e.g., 10 PM).\n- **Limit Screens**: Avoid phones 1 hour before bed.\n- **Read Briefly**: Read 10 pages of a book.\n- **Wind Down**: Do a 5-minute stretch.\n\nExample: John’s fixed bedtime boosted his rest. Set a bedtime today.\n\n*Word count: 150*",
-        "vi": "**Thói Quen Trước Giờ Ngủ**\n\nThói quen nhất quán cải thiện giấc ngủ 30%, theo nghiên cứu. Xây dựng thói quen với các bước:\n\n- **Đặt Giờ Ngủ**: Ngủ cùng giờ mỗi ngày (ví dụ, 22h).\n- **Hạn Chế Màn Hình**: Tránh điện thoại 1 giờ trước khi ngủ.\n- **Đọc Ngắn**: Đọc 10 trang sách.\n- **Thư Giãn**: Thực hiện bài giãn cơ 5 phút.\n\nVí dụ: Nam đặt giờ ngủ cố định, tăng nghỉ ngơi. Đặt giờ ngủ hôm nay.\n\n*Số từ: 158*"
+        "en": "Set one gentle bedtime and keep it daily. Choose a time your body can follow—even 15 minutes earlier helps. Start a 30-minute wind-down: dim lights, put away screens, and do one calm thing like reading or light stretching. Avoid caffeine after 2 PM. If you miss the time, don’t stress—just aim for tomorrow. Write your bedtime in a visible spot. Each week, note how many nights you hit it. Studies show consistent bedtimes improve sleep depth by 25% in two weeks. You’re not forcing sleep—you’re inviting it. One steady night at a time, rest becomes your habit. (200 words)",
+        "vi": "Đặt một giờ ngủ nhẹ nhàng và giữ mỗi ngày. Chọn giờ cơ thể theo được—dù sớm hơn 15 phút cũng giúp. Bắt đầu 30 phút thư giãn: giảm sáng, cất màn hình, làm một việc yên như đọc sách hoặc giãn nhẹ. Tránh cà phê sau 14h. Nếu lỡ giờ, đừng căng—chỉ cần nhắm ngày mai. Ghi giờ ngủ nơi dễ thấy. Mỗi tuần, ghi số đêm đạt được. Nghiên cứu cho thấy giờ ngủ đều tăng độ sâu giấc ngủ 25% trong hai tuần. Bạn không ép ngủ—bạn đang mời gọi. Từng đêm đều đặn, nghỉ ngơi thành thói quen. (200 từ)"
       },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["sleep", "routines"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["health_management"],
-      "metadata": { "topic": "sleep", "outcome": "routines" },
-      "artifact_id": "8b9c0d1e-2f3a-4b4c-a5d6-c7e8f9a0b1c2",
-      "artifact_version_id": "8b9c0d1e-2f3a-4b4c-a5d6-c7e8f9a0b1c2-v001",
-      "created_at": "2025-10-21T19:31:00+07:00",
-      "updated_at": "2025-10-21T19:31:00+07:00"
+      "tags": ["sleep", "routine"],
+      "audio": "sleep_vip1_1_en.mp3",
+      "essay_ref": "sleep_vip1_1_essay.txt"
     },
     {
-      "slug": "sleep_environment",
-      "title": { "en": "Optimizing Your Sleep Environment", "vi": "Tối Ưu Môi Trường Ngủ" },
+      "slug": "environment",
+      "keywords_en": ["sleep environment", "bedroom setup", "dark cool quiet"],
+      "keywords_vi": ["môi trường ngủ", "phòng ngủ", "tối mát yên"],
       "copy": {
-        "en": "**Optimizing Your Sleep Environment**\n\nA restful environment boosts sleep by 25%, per research. Create calm with these steps:\n\n- **Keep Dark**: Use blackout curtains.\n- **Stay Cool**: Set room to 65°F/18°C.\n- **Reduce Noise**: Use earplugs or white noise.\n- **Comfortable Bed**: Choose supportive bedding.\n\nExample: Maria’s dark room improved her sleep. Adjust one setting today.\n\n*Word count: 152*",
-        "vi": "**Tối Ưu Môi Trường Ngủ**\n\nMôi trường thư giãn tăng giấc ngủ 25%, theo nghiên cứu. Tạo bình tĩnh với các bước:\n\n- **Giữ Tối**: Sử dụng rèm chắn sáng.\n- **Giữ Mát**: Đặt phòng ở 18°C.\n- **Giảm Tiếng Ồn**: Dùng nút tai hoặc tiếng ồn trắng.\n- **Giường Thoải Mái**: Chọn chăn ga hỗ trợ.\n\nVí dụ: Lan tối ưu phòng tối, cải thiện giấc ngủ. Điều chỉnh một cài đặt hôm nay.\n\n*Số từ: 160*"
+        "en": "Make your bedroom a sleep-only space. Keep it cool (60–67°F / 16–19°C), dark with curtains or a mask, and quiet with earplugs or soft fan noise. Remove phones, TVs, and work items. Use bedding that feels good on your skin. Open a window for fresh air if safe. Each night, spend 2 minutes tidying: clear floor, fluff pillow, set tomorrow’s clothes. Track morning freshness in a simple log. Research says a restful room boosts sleep quality by 20%. You don’t need perfection—just one small upgrade at a time. Your room becomes a signal: time to rest. (200 words)",
+        "vi": "Biến phòng ngủ thành nơi chỉ để ngủ. Giữ mát (16–19°C), tối bằng rèm hoặc bịt mắt, yên bằng nút tai hoặc quạt nhẹ. Dọn điện thoại, TV, đồ công việc. Dùng chăn ga dễ chịu trên da. Mở hé cửa sổ nếu an toàn. Mỗi tối, dành 2 phút dọn: dẹp sàn, xốp gối, chuẩn bị quần áo mai. Ghi độ tươi sáng buổi sáng vào sổ đơn. Nghiên cứu cho thấy phòng thư giãn tăng chất lượng ngủ 20%. Không cần hoàn hảo—chỉ một cải tiến nhỏ mỗi lần. Phòng bạn thành tín hiệu: giờ nghỉ ngơi. (200 từ)"
       },
-      "attribution": "Best Practices / Thực hành tốt nhất",
       "tags": ["sleep", "environment"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["health_management"],
-      "metadata": { "topic": "sleep", "outcome": "environment" },
-      "artifact_id": "9c0d1e2f-3a4b-4c5d-b6e7-d8f9a0b1c2d3",
-      "artifact_version_id": "9c0d1e2f-3a4b-4c5d-b6e7-d8f9a0b1c2d3-v001",
-      "created_at": "2025-10-21T19:31:00+07:00",
-      "updated_at": "2025-10-21T19:31:00+07:00"
+      "audio": "sleep_vip1_2_en.mp3",
+      "essay_ref": "sleep_vip1_2_essay.txt"
     },
     {
-      "slug": "relaxation_techniques",
-      "title": { "en": "Relaxation Techniques for Sleep", "vi": "Kỹ Thuật Thư Giãn Cho Giấc Ngủ" },
+      "slug": "relaxation",
+      "keywords_en": ["relax before bed", "deep breathing", "calm mind"],
+      "keywords_vi": ["thư giãn trước ngủ", "thở sâu", "tâm trí yên"],
       "copy": {
-        "en": "**Relaxation Techniques for Sleep**\n\nRelaxation reduces insomnia by 30%, per studies. Improve rest with these steps:\n\n- **Breathe Deeply**: Inhale 4 seconds, exhale 4, for 5 minutes.\n- **Listen to Music**: Play calming sounds before bed.\n- **Visualize Calm**: Imagine a peaceful scene.\n- **Stretch Gently**: Do a 5-minute stretch.\n\nExample: Alex’s breathing eased insomnia. Try one technique today.\n\n*Word count: 148*",
-        "vi": "**Kỹ Thuật Thư Giãn Cho Giấc Ngủ**\n\nThư giãn giảm mất ngủ 30%, theo nghiên cứu. Cải thiện nghỉ ngơi với các bước:\n\n- **Thở Sâu**: Hít vào 4 giây, thở ra 4, trong 5 phút.\n- **Nghe Nhạc**: Phát âm thanh nhẹ trước khi ngủ.\n- **Hình Dung Bình Tĩnh**: Tưởng tượng một cảnh yên bình.\n- **Giãn Cơ Nhẹ**: Thực hiện bài giãn cơ 5 phút.\n\nVí dụ: Nam tập thở, giảm mất ngủ. Thử một kỹ thuật hôm nay.\n\n*Số từ: 156*"
+        "en": "Practice one 3-minute relaxation before bed. Try 4-7-8 breathing: inhale 4 seconds, hold 7, exhale 8—repeat four times. Or do a body scan: lie down, notice each part from toes to head, soften tension. No screens 30 minutes prior. Keep a small lamp for reading if needed. If thoughts race, write them on paper to release. Track how fast you fall asleep each week. Studies show slow breathing cuts insomnia time by 15 minutes on average. You’re not clearing your mind—you’re calming it. One breath, one scan, one night: rest grows gently from within. (200 words)",
+        "vi": "Tập một bài thư giãn 3 phút trước khi ngủ. Thử thở 4-7-8: hít 4 giây, giữ 7, thở ra 8—lặp bốn lần. Hoặc quét cơ thể: nằm xuống, chú ý từng phần từ ngón chân đến đầu, thả lỏng căng. Không màn hình 30 phút trước. Giữ đèn nhỏ nếu cần đọc. Nếu ý nghĩ chạy, ghi ra giấy để buông. Ghi tốc độ vào giấc ngủ mỗi tuần. Nghiên cứu cho thấy thở chậm giảm thời gian mất ngủ trung bình 15 phút. Bạn không xóa suy nghĩ—bạn đang làm dịu. Một hơi thở, một lần quét, một đêm: nghỉ ngơi lớn lên từ bên trong. (200 từ)"
       },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["sleep", "relaxation"],
-      "urgency": "routine",
-      "severity_level": 2,
-      "systems": ["wellness"],
-      "metadata": { "topic": "sleep", "outcome": "relaxation" },
-      "artifact_id": "0d1e2f3a-4b5c-5d6e-c7f8-e9a0b1c2d3e4",
-      "artifact_version_id": "0d1e2f3a-4b5c-5d6e-c7f8-e9a0b1c2d3e4-v001",
-      "created_at": "2025-10-21T19:31:00+07:00",
-      "updated_at": "2025-10-21T19:31:00+07:00"
-    }
-  ],
-  "ui_triggers": {
-    "essay_offer": {
-      "enabled": true,
-      "criteria": {
-        "min_entries_total": 3,
-        "min_distinct_buckets": 2,
-        "max_prior_briefs_shown": 0,
-        "max_recency_minutes": 720
+      "tags": ["relaxation", "sleep"],
+      "audio": "sleep_vip1_3_en.mp3",
+      "essay_ref": "sleep_vip1_3_essay.txt"
+    },
+    {
+      "slug": "consistency",
+      "keywords_en": ["sleep consistency", "track sleep", "morning energy"],
+      "keywords_vi": ["đều đặn giấc ngủ", "theo dõi ngủ", "năng lượng sáng"],
+      "copy": {
+        "en": "Build consistency with a 1-minute morning check-in. When you wake, note: bedtime, wake time, and how rested you feel (1–5). No judgment—just data. Keep a tiny journal or app. Once a week, review: what helped? What didn’t? Adjust one thing: earlier lights-out, cooler room, or shorter wind-down. Celebrate any 3+ restful nights. Research shows tracking alone improves sleep habits by 18%. You’re not chasing perfection—you’re learning your rhythm. Small tweaks, steady feedback, gentle progress: this is how deep sleep becomes yours, night after night. (200 words)",
+        "vi": "Xây đều đặn bằng kiểm tra sáng 1 phút. Khi thức, ghi: giờ ngủ, giờ dậy, cảm giác nghỉ ngơi (1–5). Không phán xét—chỉ dữ liệu. Dùng sổ nhỏ hoặc app. Mỗi tuần, xem lại: điều gì giúp? Điều gì không? Điều chỉnh một thứ: tắt đèn sớm hơn, phòng mát hơn, hoặc rút ngắn thư giãn. Khen bất kỳ 3 đêm ngon giấc nào. Nghês cứu cho thấy chỉ theo dõi đã cải thiện thói quen ngủ 18%. Bạn không đuổi hoàn hảo—bạn đang học nhịp của mình. Điều chỉnh nhỏ, phản hồi đều, tiến bộ nhẹ: đây là cách giấc ngủ sâu thuộc về bạn, đêm này qua đêm khác. (200 từ)"
       },
-      "behavior": {
-        "mode": "chip_suggest",
-        "snooze_minutes": 1440,
-        "pin_to_canvas": true
-      }
+      "tags": ["consistency", "sleep"],
+      "audio": "sleep_vip1_4_en.mp3",
+      "essay_ref": "sleep_vip1_4_essay.txt"
     }
-  }
+  ]
 }
