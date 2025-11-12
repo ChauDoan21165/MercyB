@@ -295,6 +295,17 @@ const ChatHub = () => {
     });
     
     try {
+      console.log('=== BEFORE RESOLVE DEBUG ===');
+      console.log('Keyword to search:', keyword);
+      console.log('mergedEntries array:', mergedEntries);
+      console.log('mergedEntries length:', mergedEntries.length);
+      if (mergedEntries.length > 0) {
+        console.log('First entry structure:', mergedEntries[0]);
+        console.log('First entry keywordEn:', mergedEntries[0].keywordEn);
+        console.log('First entry keywords_en:', mergedEntries[0].keywords_en);
+      }
+      console.log('=========================');
+      
       const entry = resolveEntryByKeyword(keyword);
       console.log('=== KEYWORD MATCH DEBUG ===');
       console.log('Keyword searched:', keyword);
