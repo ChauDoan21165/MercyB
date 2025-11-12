@@ -149,8 +149,8 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
 
     for (const path of candidates) {
       try {
-        const cacheBust = `?v=${Date.now()}`;
-        const resp = await fetch(path + cacheBust);
+        const cacheBust = `?cb=${Date.now()}&r=${Math.random()}`;
+        const resp = await fetch(path + cacheBust, { cache: 'no-store' });
         if (!resp.ok) continue;
         const text = await resp.text();
         try {
