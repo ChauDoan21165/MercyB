@@ -44,7 +44,7 @@
       },
       "tags": ["affirmations", "strength"],
       "audio": {
-        "en": "refining_affirmations_for_strength_vip2.mp3"
+        "en": "audio/confidence-building/refining_affirmations_for_strength_vip2.mp3"
       }
     },
     {
@@ -67,7 +67,7 @@
       },
       "tags": ["social", "confidence"],
       "audio": {
-        "en": "mastering_social_confidence_vip2.mp3"
+        "en": "audio/confidence-building/mastering_social_confidence_vip2.mp3"
       }
     },
     {
@@ -90,7 +90,7 @@
       },
       "tags": ["goals", "growth"],
       "audio": {
-        "en": "planning_goals_for_growth_vip2.mp3"
+        "en": "audio/confidence-building/planning_goals_for_growth_vip2.mp3"
       }
     },
     {
@@ -113,7 +113,7 @@
       },
       "tags": ["mindfulness", "confidence"],
       "audio": {
-        "en": "mindful_confidence_building_vip2.mp3"
+        "en": "audio/confidence-building/mindful_confidence_building_vip2.mp3"
       }
     },
     {
@@ -136,7 +136,7 @@
       },
       "tags": ["community", "belonging"],
       "audio": {
-        "en": "engaging_communities_confidently_vip2.mp3"
+        "en": "audio/confidence-building/engaging_communities_confidently_vip2.mp3"
       }
     }
   ],
@@ -147,5 +147,5 @@
     "tier": "vip2",
     "room_color": "#D7CCC8"
   },
-  "audio": "refining_affirmations_for_strength_vip2.mp3"
+  "audio": "audio/confidence-building/refining_affirmations_for_strength_vip2.mp3"
 }
