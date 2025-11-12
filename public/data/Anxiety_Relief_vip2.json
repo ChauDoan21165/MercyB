@@ -70,13 +70,22 @@
       },
       "tags": ["lifestyle", "anxiety"],
       "audio": "anxiety_relief_vip2_lifestyle.mp3"
-    }
-  ],
-  "meta": {
-    "created_at": "2025-10-28T00:00:00+00:00",
-    "updated_at": "2025-10-28T00:00:00+00:00",
-    "entry_count": 6,
-    "tier": "vip2",
-    "room_color": "#4A90E2"
-  }
-}
+    },
+    {
+      "slug": "exposure-2",
+      "keywords_en": ["exposure", "facing fears", "anxiety"],
+      "keywords_vi": ["phơi nhiễm", "đối mặt nỗi sợ", "lo âu"],
+      "copy": {
+        "en": "Gradual exposure therapy teaches the brain that fear cues are survivable and controllable. Begin by listing anxiety triggers from mild to severe. Visualize the least distressing first—imagine handling it calmly. Once comfort grows, move to real-life exposure: visit the place, make the call, or face the task while practicing slow breathing. Stay until anxiety drops by half; this reprograms avoidance into mastery. Record successes, no matter how small, and celebrate each step. Work with a therapist if fear feels overwhelming—they provide structure and safety. Consistency is key: repeat exposures several times until calm replaces fear. Over months, your tolerance expands, daily functioning improves, and confidence rises. Exposure transforms anxiety from a threat into proof of courage and adaptability.",
+        "vi": "Liệu pháp phơi nhiễm từng bước dạy cho não rằng tín hiệu sợ hãi có thể vượt qua và kiểm soát được. Bắt đầu bằng cách liệt kê các tác nhân lo âu từ nhẹ đến nặng. Hãy hình dung tình huống ít căng thẳng nhất và tưởng tượng mình xử lý bình tĩnh. Khi đã quen, chuyển sang phơi nhiễm thực tế: đến nơi đó, thực hiện cuộc gọi hoặc đối diện công việc trong khi duy trì hơi thở chậm. Ở lại cho đến khi mức lo âu giảm một nửa; điều này tái lập phản xạ tránh né thành khả năng làm chủ. Ghi lại mọi thành công, dù nhỏ, và ăn mừng từng bước. Làm việc cùng chuyên gia nếu sợ hãi quá lớn—they sẽ đảm bảo cấu trúc và an toàn. Điều quan trọng là sự đều đặn: lặp lại phơi nhiễm nhiều lần cho đến khi bình tĩnh thay thế nỗi sợ. Sau vài tháng, khả năng chịu đựng tăng, sinh hoạt hàng ngày cải thiện và tự tin dâng cao. Phơi nhiễm biến lo âu từ mối đe dọa thành bằng chứng của lòng can đảm và khả năng thích ứng."
+      },
+      "tags": ["exposure", "anxiety"],
+      "audio": "anxiety_relief_vip2_exposure_2.mp3"
+    },
+    {
+      "slug": "lifestyle-2",
+      "keywords_en": ["lifestyle", "habits", "anxiety"],
+      "keywords_vi": ["lối sống", "thói quen", "lo âu"],
+      "copy": {
+        "en": "Lifestyle alignment prevents the buildup of chronic stress that fuels anxiety. Begin with the basics: consistent sleep, balanced meals, and regular movement. Aim for thirty minutes of moderate exercise five days a week to boost endorphins. Limit caffeine, alcohol, and late-night screen time that overstimulate the mind. Keep a daily mood tracker noting patterns between habits and anxiety spikes. Replace doom-scrolling with brief walks or mindful music breaks. Strengthen social connection by scheduling weekly check-ins with supportive friends or communities. Celebrate small habit wins—each reinforces safety and control. Consult a wellness coach if structure helps you stay accountable. Over time, these micro-choices compound into steady emotional stability. A calm lifestyle is not restrictive; it’s the architecture that allows creativity, focus, and joy to thrive beyond anxiety.",
+        "vi": "Cân bằng lối sống ngăn tích tụ căng thẳng mạn tính—theo thời gian là nguồn gốc của lo âu. Bắt đầu từ điều cơ bản: ngủ đủ, ăn cân đối và vận động đều đặn. Hướng tới 30 phút hoạt động vừa phải năm
