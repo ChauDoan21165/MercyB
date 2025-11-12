@@ -776,13 +776,6 @@ export const roomDataMap: Record<string, RoomData> = {
       "tier": "vip3",
       "hasData": true
   },
-  "confidence-vip2": {
-      "id": "confidence-vip2",
-      "nameEn": "Confidence",
-      "nameVi": "Confidence",
-      "tier": "vip2",
-      "hasData": true
-  },
   "confidence-vip3": {
       "id": "confidence-vip3",
       "nameEn": "Confidence",

@@ -113,7 +113,6 @@ const VIETNAMESE_NAME_FALLBACKS: Record<string, string> = {
   // Confidence
   'confidence-free': 'Tự Tin',
   'confidence-vip1': 'Tự Tin VIP1',
-  'confidence-vip2': 'Tự Tin VIP2',
   'confidence-vip3': 'Tự Tin VIP3',
   
   // Anxiety Relief
