@@ -79,7 +79,7 @@ export type Database = {
           priority: string | null
           status: string | null
           updated_at: string | null
-          user_id: string | null
+          user_id: string
         }
         Insert: {
           category?: string | null
@@ -89,7 +89,7 @@ export type Database = {
           priority?: string | null
           status?: string | null
           updated_at?: string | null
-          user_id?: string | null
+          user_id: string
         }
         Update: {
           category?: string | null
@@ -99,7 +99,7 @@ export type Database = {
           priority?: string | null
           status?: string | null
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Relationships: []
       }
@@ -671,6 +671,30 @@ export type Database = {
           rooms_accessed?: number | null
           usage_date?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      tts_usage_log: {
+        Row: {
+          created_at: string
+          id: string
+          text_length: number
+          user_id: string
+          voice: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          text_length: number
+          user_id: string
+          voice: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          text_length?: number
+          user_id?: string
+          voice?: string
         }
         Relationships: []
       }

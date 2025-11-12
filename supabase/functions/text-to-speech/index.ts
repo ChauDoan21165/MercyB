@@ -35,6 +35,25 @@ serve(async (req) => {
       )
     }
 
+    // Rate limiting: Check for recent TTS requests (max 50 per hour per user)
+    const oneHourAgo = new Date(Date.now() - 3600000).toISOString()
+    const { data: recentRequests, error: rateLimitError } = await supabaseClient
+      .from('tts_usage_log')
+      .select('id')
+      .eq('user_id', user.id)
+      .gte('created_at', oneHourAgo)
+
+    if (rateLimitError) {
+      console.error('Rate limit check error:', rateLimitError)
+    } else if (recentRequests && recentRequests.length >= 50) {
+      return new Response(
+        JSON.stringify({ 
+          error: 'Rate limit exceeded. Maximum 50 text-to-speech requests per hour. Please try again later.' 
+        }),
+        { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      )
+    }
+
     // Verify VIP3+ access
     const { data: subscription } = await supabaseClient
       .from('user_subscriptions')
@@ -69,15 +88,20 @@ serve(async (req) => {
       })
 
     if (existingFile && existingFile.length > 0) {
-      // Return existing audio URL
-      const { data: urlData } = supabaseClient
+      // Return existing audio with signed URL (24 hour expiry)
+      const { data: urlData, error: urlError } = await supabaseClient
         .storage
         .from('room-audio')
-        .getPublicUrl(fileName)
+        .createSignedUrl(fileName, 86400) // 24 hours
+      
+      if (urlError) {
+        console.error('Signed URL error:', urlError)
+        throw new Error('Failed to generate audio URL')
+      }
       
       console.log('Returning cached audio:', fileName)
       return new Response(
-        JSON.stringify({ audioUrl: urlData.publicUrl, cached: true }),
+        JSON.stringify({ audioUrl: urlData.signedUrl, cached: true }),
         {
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         },
@@ -133,16 +157,28 @@ serve(async (req) => {
       throw new Error(`Failed to store audio: ${uploadError.message}`)
     }
 
-    // Get public URL
-    const { data: urlData } = supabaseClient
+    // Get signed URL (24 hour expiry)
+    const { data: urlData, error: urlError } = await supabaseClient
       .storage
       .from('room-audio')
-      .getPublicUrl(fileName)
+      .createSignedUrl(fileName, 86400) // 24 hours
+
+    if (urlError) {
+      console.error('Signed URL error:', urlError)
+      throw new Error('Failed to generate audio URL')
+    }
+
+    // Log usage for rate limiting
+    await supabaseClient.from('tts_usage_log').insert({
+      user_id: user.id,
+      text_length: englishText.length,
+      voice: voice || 'alloy'
+    })
 
     console.log('Audio generated and stored:', fileName)
 
     return new Response(
-      JSON.stringify({ audioUrl: urlData.publicUrl, cached: false }),
+      JSON.stringify({ audioUrl: urlData.signedUrl, cached: false }),
       {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       },
