@@ -31,7 +31,7 @@ const tierConfig: Record<UserTier, {
     icon: Crown,
     baseClasses: "bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-white border-yellow-300",
     glowColor: "rgba(234, 179, 8, 0.5)",
-    animationClasses: "animate-pulse-glow",
+    animationClasses: "",
   },
   vip2: {
     label: "VIP2",
@@ -39,7 +39,7 @@ const tierConfig: Record<UserTier, {
     icon: Sparkles,
     baseClasses: "bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white border-blue-300",
     glowColor: "rgba(59, 130, 246, 0.5)",
-    animationClasses: "animate-glow",
+    animationClasses: "",
   },
   vip3: {
     label: "VIP3",
@@ -47,7 +47,7 @@ const tierConfig: Record<UserTier, {
     icon: Zap,
     baseClasses: "bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 text-white border-pink-300",
     glowColor: "rgba(168, 85, 247, 0.5)",
-    animationClasses: "animate-glow",
+    animationClasses: "",
   },
   vip4: {
     label: "VIP4",
@@ -55,7 +55,7 @@ const tierConfig: Record<UserTier, {
     icon: Crown,
     baseClasses: "bg-gradient-to-r from-orange-500 via-red-500 to-orange-600 text-white border-orange-300",
     glowColor: "rgba(249, 115, 22, 0.5)",
-    animationClasses: "animate-glow",
+    animationClasses: "",
   },
 };
 
