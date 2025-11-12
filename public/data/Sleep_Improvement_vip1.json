@@ -18,7 +18,7 @@
         "vi": "Đặt một giờ ngủ nhẹ nhàng và giữ mỗi ngày. Chọn giờ cơ thể theo được—dù sớm hơn 15 phút cũng giúp. Bắt đầu 30 phút thư giãn: giảm sáng, cất màn hình, làm một việc yên như đọc sách hoặc giãn nhẹ. Tránh cà phê sau 14h. Nếu lỡ giờ, đừng căng—chỉ cần nhắm ngày mai. Ghi giờ ngủ nơi dễ thấy. Mỗi tuần, ghi số đêm đạt được. Nghiên cứu cho thấy giờ ngủ đều tăng độ sâu giấc ngủ 25% trong hai tuần. Bạn không ép ngủ—bạn đang mời gọi. Từng đêm đều đặn, nghỉ ngơi thành thói quen. (200 từ)"
       },
       "tags": ["sleep", "routine"],
-      "audio": "sleep_vip1_1_en.mp3",
+      "audio_file": "sleep_vip1_1_en.mp3",
       "essay_ref": "sleep_vip1_1_essay.txt"
     },
     {
@@ -30,7 +30,7 @@
         "vi": "Biến phòng ngủ thành nơi chỉ để ngủ. Giữ mát (16–19°C), tối bằng rèm hoặc bịt mắt, yên bằng nút tai hoặc quạt nhẹ. Dọn điện thoại, TV, đồ công việc. Dùng chăn ga dễ chịu trên da. Mở hé cửa sổ nếu an toàn. Mỗi tối, dành 2 phút dọn: dẹp sàn, xốp gối, chuẩn bị quần áo mai. Ghi độ tươi sáng buổi sáng vào sổ đơn. Nghiên cứu cho thấy phòng thư giãn tăng chất lượng ngủ 20%. Không cần hoàn hảo—chỉ một cải tiến nhỏ mỗi lần. Phòng bạn thành tín hiệu: giờ nghỉ ngơi. (200 từ)"
       },
       "tags": ["sleep", "environment"],
-      "audio": "sleep_vip1_2_en.mp3",
+      "audio_file": "sleep_vip1_2_en.mp3",
       "essay_ref": "sleep_vip1_2_essay.txt"
     },
     {
@@ -42,7 +42,7 @@
         "vi": "Tập một bài thư giãn 3 phút trước khi ngủ. Thử thở 4-7-8: hít 4 giây, giữ 7, thở ra 8—lặp bốn lần. Hoặc quét cơ thể: nằm xuống, chú ý từng phần từ ngón chân đến đầu, thả lỏng căng. Không màn hình 30 phút trước. Giữ đèn nhỏ nếu cần đọc. Nếu ý nghĩ chạy, ghi ra giấy để buông. Ghi tốc độ vào giấc ngủ mỗi tuần. Nghiên cứu cho thấy thở chậm giảm thời gian mất ngủ trung bình 15 phút. Bạn không xóa suy nghĩ—bạn đang làm dịu. Một hơi thở, một lần quét, một đêm: nghỉ ngơi lớn lên từ bên trong. (200 từ)"
       },
       "tags": ["relaxation", "sleep"],
-      "audio": "sleep_vip1_3_en.mp3",
+      "audio_file": "sleep_vip1_3_en.mp3",
       "essay_ref": "sleep_vip1_3_essay.txt"
     },
     {
@@ -54,7 +54,7 @@
         "vi": "Xây đều đặn bằng kiểm tra sáng 1 phút. Khi thức, ghi: giờ ngủ, giờ dậy, cảm giác nghỉ ngơi (1–5). Không phán xét—chỉ dữ liệu. Dùng sổ nhỏ hoặc app. Mỗi tuần, xem lại: điều gì giúp? Điều gì không? Điều chỉnh một thứ: tắt đèn sớm hơn, phòng mát hơn, hoặc rút ngắn thư giãn. Khen bất kỳ 3 đêm ngon giấc nào. Nghês cứu cho thấy chỉ theo dõi đã cải thiện thói quen ngủ 18%. Bạn không đuổi hoàn hảo—bạn đang học nhịp của mình. Điều chỉnh nhỏ, phản hồi đều, tiến bộ nhẹ: đây là cách giấc ngủ sâu thuộc về bạn, đêm này qua đêm khác. (200 từ)"
       },
       "tags": ["consistency", "sleep"],
-      "audio": "sleep_vip1_4_en.mp3",
+      "audio_file": "sleep_vip1_4_en.mp3",
       "essay_ref": "sleep_vip1_4_essay.txt"
     }
   ]
