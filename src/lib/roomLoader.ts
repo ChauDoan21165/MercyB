@@ -200,7 +200,7 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       } else if (entry?.audio) {
         audioRaw = entry.audio;
       }
-      if (!audioRaw) audioRaw = entry?.audio_en || entry?.audio_vi || entry?.meta?.audio_file || entry?.audioFile || entry?.copy?.audio || entry?.content?.audio;
+      if (!audioRaw) audioRaw = entry?.audio_en || entry?.audio_vi || entry?.audio_file || entry?.meta?.audio_file || entry?.audioFile || entry?.copy?.audio || entry?.content?.audio;
 
       let audioPath = audioRaw;
       if (audioPath) {
