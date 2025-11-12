@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, CheckCircle, XCircle, Loader2, ExternalLink, Bell } from "lucide-react";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { toast as sonnerToast } from "sonner";
+import { StrictProtectedContent } from "@/components/StrictProtectedContent";
 
 interface PaymentSubmission {
   id: string;
@@ -261,7 +262,10 @@ const AdminPaymentVerification = () => {
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <h3 className="font-bold text-lg">{submission.username}</h3>
-                    <p className="text-sm text-muted-foreground">{submission.user_email}</p>
+                    <StrictProtectedContent 
+                      content={submission.user_email || 'N/A'} 
+                      className="text-sm text-muted-foreground"
+                    />
                   </div>
                   {getStatusBadge(submission.status)}
                 </div>
@@ -282,16 +286,28 @@ const AdminPaymentVerification = () => {
                     <p className="text-sm font-semibold mb-2">OCR Extracted Data (Confidence: {Math.round(submission.ocr_confidence * 100)}%)</p>
                     <div className="grid grid-cols-2 gap-2 text-sm">
                       <div>
-                        <span className="text-muted-foreground">Transaction ID:</span> {submission.extracted_transaction_id || 'N/A'}
+                        <span className="text-muted-foreground">Transaction ID:</span>{' '}
+                        <StrictProtectedContent 
+                          content={submission.extracted_transaction_id || 'N/A'} 
+                          className="inline"
+                        />
                       </div>
                       <div>
-                        <span className="text-muted-foreground">Amount:</span> ${submission.extracted_amount || 'N/A'}
+                        <span className="text-muted-foreground">Amount:</span> $
+                        <StrictProtectedContent 
+                          content={String(submission.extracted_amount || 'N/A')} 
+                          className="inline"
+                        />
                       </div>
                       <div>
                         <span className="text-muted-foreground">Date:</span> {submission.extracted_date ? new Date(submission.extracted_date).toLocaleDateString() : 'N/A'}
                       </div>
                       <div>
-                        <span className="text-muted-foreground">Email:</span> {submission.extracted_email || 'N/A'}
+                        <span className="text-muted-foreground">Email:</span>{' '}
+                        <StrictProtectedContent 
+                          content={submission.extracted_email || 'N/A'} 
+                          className="inline"
+                        />
                       </div>
                     </div>
                   </div>
@@ -342,7 +358,10 @@ const AdminPaymentVerification = () => {
                 {submission.admin_notes && (
                   <div className="mt-4 p-3 bg-muted rounded-lg">
                     <p className="text-sm font-semibold mb-1">Admin Notes</p>
-                    <p className="text-sm">{submission.admin_notes}</p>
+                    <StrictProtectedContent 
+                      content={submission.admin_notes} 
+                      className="text-sm"
+                    />
                   </div>
                 )}
               </Card>

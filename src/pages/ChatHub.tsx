@@ -23,7 +23,7 @@ import { useCredits } from "@/hooks/useCredits";
 import { CreditLimitModal } from "@/components/CreditLimitModal";
 import { CreditsDisplay } from "@/components/CreditsDisplay";
 import { AudioPlayer } from "@/components/AudioPlayer";
-import { ProtectedContent } from "@/components/ProtectedContent";
+import { StrictProtectedContent } from "@/components/StrictProtectedContent";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { messageSchema } from "@/lib/inputValidation";
@@ -478,7 +478,7 @@ const ChatHub = () => {
           >
             {!message.isUser && vietnameseContent ? (
               <>
-                <ProtectedContent 
+                <StrictProtectedContent 
                   content={englishContent}
                   className="w-full"
                 />
@@ -502,7 +502,7 @@ const ChatHub = () => {
                 {showVietnamese && (
                   <>
                     <hr className="border-border my-4" />
-                    <ProtectedContent 
+                    <StrictProtectedContent 
                       content={vietnameseContent}
                       className="w-full"
                     />
@@ -514,7 +514,7 @@ const ChatHub = () => {
               </>
             ) : (
               <>
-                <ProtectedContent 
+                <StrictProtectedContent 
                   content={message.text}
                   className="w-full"
                 />

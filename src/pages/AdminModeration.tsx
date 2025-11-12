@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { AlertCircle, DollarSign, MessageSquare, Ban, CheckCircle } from 'lucide-react';
 import { toast } from 'sonner';
 import { format } from 'date-fns';
+import { StrictProtectedContent } from '@/components/StrictProtectedContent';
 
 interface ModerationViolation {
   id: string;
@@ -250,7 +251,9 @@ const AdminModeration = () => {
                     </div>
                     <div className="mt-4">
                       <span className="text-muted-foreground">Message:</span>
-                      <p className="mt-1 p-3 bg-muted rounded">{violation.message_content}</p>
+                      <div className="mt-1 p-3 bg-muted rounded">
+                        <StrictProtectedContent content={violation.message_content} />
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -278,11 +281,17 @@ const AdminModeration = () => {
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
                         <span className="text-muted-foreground">Email:</span>
-                        <p className="font-medium">{payment.extracted_email}</p>
+                        <StrictProtectedContent 
+                          content={payment.extracted_email} 
+                          className="font-medium"
+                        />
                       </div>
                       <div>
-                        <span className="text-muted-foreground">Amount:</span>
-                        <p className="font-medium">${payment.extracted_amount}</p>
+                        <span className="text-muted-foreground">Amount:</span> $
+                        <StrictProtectedContent 
+                          content={String(payment.extracted_amount)} 
+                          className="font-medium inline"
+                        />
                       </div>
                       <div>
                         <span className="text-muted-foreground">Date:</span>
@@ -346,7 +355,9 @@ const AdminModeration = () => {
                     <div className="text-sm text-muted-foreground mb-2">
                       {format(new Date(fb.created_at), 'MMM dd, yyyy HH:mm')}
                     </div>
-                    <p className="p-3 bg-muted rounded">{fb.message}</p>
+                    <div className="p-3 bg-muted rounded">
+                      <StrictProtectedContent content={fb.message} />
+                    </div>
                   </CardContent>
                 </Card>
               ))
