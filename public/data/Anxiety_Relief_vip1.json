@@ -1,123 +1,75 @@
 {
-  "name": "Anxiety Relief",
-  "name_vi": "Giảm Lo Âu",
-  "description": "In-depth strategies for managing anxiety with daily tools",
+  "name": "Social Anxiety",
+  "name_vi": "Lo Âu Xã Hội",
+  "description": "Practical guidance for reducing social anxiety with simple steps",
+  "description_vi": "Hướng dẫn thực tế giúp giảm lo âu xã hội bằng các bước đơn giản",
   "keywords_en": [
-    "anxiety",
-    "calm",
-    "breathing",
-    "grounding"
+    "social anxiety",
+    "interaction",
+    "confidence",
+    "exposure"
   ],
   "keywords_vi": [
-    "lo âu",
-    "bình tĩnh",
-    "thở",
-    "tiếp đất"
+    "lo âu xã hội",
+    "tương tác",
+    "tự tin",
+    "phơi nhiễm"
   ],
   "entries": [
     {
-      "slug": "breathing",
+      "slug": "small-talk",
       "keywords_en": [
-        "breathing",
-        "calm",
+        "small talk",
+        "conversation",
         "anxiety"
       ],
       "keywords_vi": [
-        "thở",
-        "bình tĩnh",
+        "trò chuyện nhỏ",
+        "cuộc trò chuyện",
         "lo âu"
       ],
       "copy": {
-        "en": "Deep breathing is a powerful tool for anxiety relief. Inhale for four counts, hold for four, exhale for six to activate calm response. Repeat five to ten times during stress. Practice daily to build resilience. Connect with a friend or group for shared techniques, helping you stay grounded and reduce anxiety over time."
+        "en": "Small talk can gently ease social anxiety and build connection. Begin with a simple greeting like \"Hi, how's your day?\" Smile and listen with warmth. Practice once a day with one person—cashier, coworker, or neighbor. Invite a friend to role-play common scenarios: ordering coffee, asking for directions. Notice your body relax as words flow. Each short exchange trains your brain that interaction is safe. Over time, confidence grows naturally. Track one small win daily in a note. You’re not performing—you’re practicing humanity. Start today: one hello, one breath, one step toward ease. (100 words)",
+        "vi": "Trò chuyện nhỏ giúp giảm lo âu xã hội một cách nhẹ nhàng và xây dựng kết nối. Bắt đầu bằng lời chào đơn giản: “Chào, hôm nay bạn thế nào?” Mỉm cười và lắng nghe ấm áp. Luyện mỗi ngày một lần với một người—nhân viên thu ngân, đồng nghiệp, hàng xóm. Mời bạn đóng vai các tình huống quen thuộc: gọi cà phê, hỏi đường. Chú ý cơ thể thư giãn khi lời nói tuôn ra. Mỗi cuộc trao đổi ngắn rèn não bạn rằng tương tác là an toàn. Dần dần, tự tin tăng tự nhiên. Ghi lại một chiến thắng nhỏ mỗi ngày. Bạn không diễn—bạn đang tập làm người. Bắt đầu hôm nay: một lời chào, một hơi thở, một bước đến sự thoải mái. (100 từ)"
       },
       "tags": [
-        "breathing",
+        "talk",
         "anxiety"
       ],
-      "audio": {
-        "en": "anx_vip1_1_en.mp3"
-      },
-      "essay_ref": "anx_vip1_1_essay.txt"
+      "audio": "social_anxiety_free_small_talk.mp3"
     },
     {
-      "slug": "grounding",
+      "slug": "eye-contact",
       "keywords_en": [
-        "grounding",
-        "present",
-        "calm"
+        "eye contact",
+        "connection",
+        "confidence"
       ],
       "keywords_vi": [
-        "tiếp đất",
-        "hiện tại",
-        "bình tĩnh"
+        "giao tiếp mắt",
+        "kết nối",
+        "tự tin"
       ],
       "copy": {
-        "en": "Grounding techniques anchor you in the present during anxiety. Use the 5-4-3-2-1 method: five things you see, four you touch, three you hear, two you smell, one you taste. Practice regularly to interrupt panic. Journal progress to track improvement. Connect with a support group for encouragement, fostering long-term calm and emotional strength."
+        "en": "Eye contact quietly builds confidence and reduces avoidance. Hold someone’s gaze for three seconds, then look away naturally. Start in the mirror: smile, count, release. Next, try with a cashier or barista. Play an eye-contact game with a friend—take turns holding gaze while sharing one feeling. Notice warmth in your chest, not fear. Each second rewires your nervous system to see people as safe. Avoid staring; aim for gentle presence. Practice daily in low-stakes moments. Over weeks, social fear softens. You’re not forcing connection—you’re allowing it. One calm gaze at a time, you reclaim ease in the world. (100 words)",
+        "vi": "Giao tiếp bằng mắt giúp xây dựng tự tin và giảm né tránh một cách lặng lẽ. Giữ ánh nhìn ai đó trong ba giây, rồi nhìn đi tự nhiên. Bắt đầu trước gương: mỉm cười, đếm, thả lỏng. Tiếp theo, thử với nhân viên thu ngân hoặc pha chế. Chơi trò giao tiếp mắt với bạn—luân phiên giữ nhìn và chia sẻ một cảm xúc. Chú ý sự ấm áp trong ngực, không phải sợ hãi. Mỗi giây tái lập hệ thần kinh để thấy người khác là an toàn. Tránh nhìn chằm chằm; hướng đến sự hiện diện nhẹ nhàng. Luyện hàng ngày trong khoảnh khắc ít áp lực. Qua vài tuần, nỗi sợ xã hội dịu đi. Bạn không ép buộc kết nối—bạn đang cho phép nó. Từng ánh nhìn bình tĩnh, bạn lấy lại sự thoải mái với thế giới. (100 từ)"
       },
       "tags": [
-        "grounding",
+        "contact",
         "anxiety"
       ],
-      "audio": {
-        "en": "anx_vip1_2_en.mp3"
-      },
-      "essay_ref": "anx_vip1_2_essay.txt"
-    },
-    {
-      "slug": "thought-challenge",
-      "keywords_en": [
-        "thought challenge",
-        "cognitive",
-        "anxiety"
-      ],
-      "keywords_vi": [
-        "thách thức suy nghĩ",
-        "nhận thức",
-        "lo âu"
-      ],
-      "copy": {
-        "en": "Challenge anxious thoughts to reduce their power. Ask: Is this fact or fear? What evidence supports it? Replace with balanced view. Practice daily to rewire thinking. Connect with a friend to discuss thoughts, building clarity and resilience against anxiety."
-      },
-      "tags": [
-        "cognitive",
-        "anxiety"
-      ],
-      "audio": {
-        "en": "anx_vip1_3_en.mp3"
-      },
-      "essay_ref": "anx_vip1_3_essay.txt"
-    },
-    {
-      "slug": "body-scan",
-      "keywords_en": [
-        "body scan",
-        "relaxation",
-        "anxiety"
-      ],
-      "keywords_vi": [
-        "quét cơ thể",
-        "thư giãn",
-        "lo âu"
-      ],
-      "copy": {
-        "en": "Body scan relaxation eases physical anxiety. Lie down, tense and release each muscle group from toes to head. Breathe deeply during release. Practice nightly to reduce tension. Share with a partner for mutual support, enhancing calm and well-being."
-      },
-      "tags": [
-        "relaxation",
-        "anxiety"
-      ],
-      "audio": {
-        "en": "anx_vip1_4_en.mp3"
-      },
-      "essay_ref": "anx_vip1_4_essay.txt"
+      "audio": "social_anxiety_free_eye_contact.mp3"
     }
   ],
+  "essay": {
+    "en": "# A Quiet Path Out of Social Anxiety\n\nSocial anxiety feels like carrying an invisible weight in every room. Your mind races with \"what ifs,\" your body tenses, and simple moments become battles. But healing begins with tiny, repeatable actions—not grand gestures. This room offers two: small talk and eye contact. Each is a micro-exposure that trains your nervous system to relax around people. Start with one greeting per day. Hold one gaze for three seconds. Track progress in a note. Over time, the brain learns: interaction is safe, connection is possible. You’re not fixing yourself—you’re freeing yourself, one breath at a time.",
+    "vi": "# Con Đường Yên Lặng Thoát Lo Âu Xã Hội\n\nLo âu xã hội như mang một khối nặng vô hình trong mọi căn phòng. Tâm trí chạy đua với \"nếu như,\" cơ thể căng cứng, khoảnh khắc đơn giản thành trận chiến. Nhưng chữa lành bắt đầu từ hành động nhỏ, lặp lại—không phải cử chỉ lớn. Phòng này mang đến hai việc: trò chuyện nhỏ và giao tiếp mắt. Mỗi việc là phơi nhiễm vi mô, rèn hệ thần kinh thư giãn bên người khác. Bắt đầu một lời chào mỗi ngày. Giữ ánh nhìn ba giây. Ghi tiến độ vào sổ. Dần dần, não học: tương tác an toàn, kết nối có thể. Bạn không sửa mình—bạn đang tự giải phóng, từng hơi thở một."
+  },
   "meta": {
     "created_at": "2025-10-28T00:00:00+00:00",
-    "updated_at": "2025-10-28T00:00:00+00:00",
-    "entry_count": 4,
-    "tier": "vip1",
+    "updated_at": "2025-11-12T05:45:00+07:00",
+    "entry_count": 2,
+    "tier": "free",
     "room_color": "#4A90E2"
-  },
-  "audio": "anx_vip3_3_en.mp3"
+  }
 }
