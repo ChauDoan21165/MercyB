@@ -165,8 +165,7 @@ const ChatHub = () => {
         // Don't add welcome message to chat - it's displayed in the card above
         setMainMessages([]);
       } catch (error) {
-        // Fallback: no welcome message needed (shown in card)
-          isUser: false,
+        console.error('Failed to load room data', error);
         setMainMessages([]);
       }
     };
@@ -181,7 +180,14 @@ const ChatHub = () => {
   };
 
   // Helpers for direct keyword→entry mapping
-  const norm = (s: any) => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+  const norm = (s: any) =>
+    String(s ?? '')
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[\s\-_]+/g, ' ')
+      .replace(/[^\w\s]/g, '')
+      .trim();
   const extractBilingual = (entry: any) => {
     const read = (obj: any, path: string[]) => path.reduce((acc, k) => (acc ? acc[k] : undefined), obj);
     const candidates: Array<[string[], string[]]> = [
