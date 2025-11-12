@@ -1,10 +1,12 @@
 {
+  "schema_version": "1.0",
+  "schema_id": "obesity-management-vip1",
   "tier": "VIP1 / VIP1",
   "title": {
     "en": "Obesity Management",
     "vi": "Quản Lý Béo Phì"
   },
-  "content": {
+  "description": {
     "en": "A gentle, sustainable path to a healthier weight. This VIP1 room gives you four proven micro-habits—one per week—around balanced meals, mindful eating, portion control, and daily movement. No diets, no guilt. Track a single metric each morning, adjust one tiny thing, and watch steady progress. Higher tiers add personalised coaching and advanced tracking.",
     "vi": "Con đường nhẹ nhàng, bền vững tới cân nặng khỏe mạnh. Phòng VIP1 này cung cấp bốn thói quen vi mô đã được chứng minh—một mỗi tuần—về bữa ăn cân bằng, ăn chánh niệm, kiểm soát khẩu phần và vận động hàng ngày. Không chế độ ăn kiêng, không tự trách. Theo dõi một chỉ số mỗi sáng, điều chỉnh một điều nhỏ, và chứng kiến tiến bộ đều đặn. Các cấp cao hơn bổ sung huấn luyện cá nhân và theo dõi nâng cao."
   },
