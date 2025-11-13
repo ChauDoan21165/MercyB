@@ -40,13 +40,18 @@ export const AudioPlayer = ({
     const audio = audioRef.current;
     if (!audio) return;
 
-    // Only reset if the audio source actually changed
-    if (audio.src !== audioPath && !audio.src.endsWith(audioPath)) {
+    // Determine if the source actually changed
+    const isSameSource =
+      audio.src === audioPath || audio.src.endsWith(audioPath);
+
+    // Only reset and set src when the source changed
+    if (!isSameSource) {
       audio.pause();
-      audio.currentTime = 0;
+      audio.src = audioPath;
+      // Ensure a fresh load only when switching tracks
+      audio.load();
       setCurrentTime(0);
     }
-    audio.src = audioPath;
 
     const handleTimeUpdate = () => {
       if (!isDragging) {
