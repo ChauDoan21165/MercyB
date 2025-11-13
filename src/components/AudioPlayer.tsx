@@ -123,15 +123,42 @@ export const AudioPlayer = ({
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-      if (e.code === 'Space' && e.target === document.body) {
-        e.preventDefault();
-        onPlayPause();
+      const audio = audioRef.current;
+      if (!audio) return;
+
+      // Prevent shortcuts when typing in input fields
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+
+      switch (e.code) {
+        case 'Space':
+          e.preventDefault();
+          onPlayPause();
+          break;
+        case 'ArrowLeft':
+          e.preventDefault();
+          audio.currentTime = Math.max(0, audio.currentTime - 5);
+          break;
+        case 'ArrowRight':
+          e.preventDefault();
+          audio.currentTime = Math.min(duration, audio.currentTime + 5);
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          setVolume(prev => Math.min(1, prev + 0.1));
+          setIsMuted(false);
+          break;
+        case 'ArrowDown':
+          e.preventDefault();
+          setVolume(prev => Math.max(0, prev - 0.1));
+          break;
       }
     };
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [onPlayPause]);
+  }, [onPlayPause, duration]);
 
   const formatTime = (time: number) => {
     if (isNaN(time)) return "0:00";
