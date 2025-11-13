@@ -32,6 +32,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "career-community-vip4": "data/Career_Community_vip4.json",
   "career-consultant-free": "data/Career_Consultant_free.json",
   "choosing-your-path-vip4": "data/Choosing_Your_Path_vip4.json",
+  "confidence-building-vip2": "data/Confidence_Building_vip2.json",
   "courage-to-begin-vip4": "data/Courage_To_Begin_vip4.json",
   "depression-support-vip1": "data/Depression_Support_vip1.json",
   "depression-support-vip3": "data/Depression_Support_vip3.json",
