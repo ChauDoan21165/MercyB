@@ -43,7 +43,11 @@ const RoomGridVIP4 = () => {
 
     // Filter for VIP4 rooms and sort alphabetically
     const vip4Rooms = ALL_ROOMS.filter(room => room.tier === 'vip4');
-    const sortedRooms = vip4Rooms.sort((a, b) => a.name.localeCompare(b.name));
+    const sortedRooms = vip4Rooms.sort((a, b) => {
+      const aName = a.name || a.id;
+      const bName = b.name || b.id;
+      return aName.localeCompare(bName);
+    });
     
     setRooms(sortedRooms);
   }, [canAccessVIP4, isAdmin, loading, navigate]);
@@ -52,7 +56,11 @@ const RoomGridVIP4 = () => {
     // Listen for room data updates
     const handleRoomDataUpdate = () => {
       const vip4Rooms = ALL_ROOMS.filter(room => room.tier === 'vip4');
-      const sortedRooms = vip4Rooms.sort((a, b) => a.name.localeCompare(b.name));
+      const sortedRooms = vip4Rooms.sort((a, b) => {
+        const aName = a.name || a.id;
+        const bName = b.name || b.id;
+        return aName.localeCompare(bName);
+      });
       setRooms(sortedRooms);
     };
 
