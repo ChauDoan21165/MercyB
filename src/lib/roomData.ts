@@ -13,6 +13,7 @@ const VIETNAMESE_NAME_FALLBACKS: Record<string, string> = {
   // Philosophy & Stoicism
   'philosophy-of-everyday': 'Triết Học Đời Thường',
   'philosophy-of-everyday-vip1': 'Triết Học Đời Thường VIP1',
+  'philosophy-of-everyday-vip2': 'Triết Lý Cuộc Sống Hàng Ngày VIP2',
   'philosophy-of-everyday-vip3': 'Triết Học Đời Thường VIP3',
   'stoicism': 'Chủ Nghĩa Khắc Kỷ',
   'stoicism-vip1': 'Chủ Nghĩa Khắc Kỷ VIP1',
