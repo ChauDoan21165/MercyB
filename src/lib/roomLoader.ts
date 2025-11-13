@@ -18,11 +18,28 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       console.log('✅ Room loaded from database:', dbRoom.id);
       
       // Transform database format to expected format
-      const keywordMenu = {
-        en: dbRoom.keywords || [],
-        vi: dbRoom.keywords || []
-      };
-
+      let keywordMenu: { en: string[]; vi: string[] } = { en: [], vi: [] };
+      if (Array.isArray(dbRoom.entries)) {
+        const enList: string[] = [];
+        const viList: string[] = [];
+        (dbRoom.entries as any[]).forEach((entry: any) => {
+          const titleText = typeof entry.title === 'object' ? entry.title?.en : entry.title;
+          const en = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0
+            ? String(entry.keywords_en[0])
+            : String(titleText || entry.slug || '').trim();
+          const titleViText = typeof entry.title === 'object' ? entry.title?.vi : '';
+          const vi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0
+            ? String(entry.keywords_vi[0])
+            : (titleViText || entry.slug || '');
+          if (en) {
+            enList.push(en);
+            viList.push(vi);
+          }
+        });
+        keywordMenu = { en: enList, vi: viList };
+      } else if (Array.isArray(dbRoom.keywords) && dbRoom.keywords.length > 0) {
+        keywordMenu = { en: dbRoom.keywords, vi: dbRoom.keywords };
+      }
       const merged = Array.isArray(dbRoom.entries) 
         ? dbRoom.entries.map((entry: any, idx: number) => {
             // Extract audio path
