@@ -70,7 +70,6 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "obesity-management-vip1": "data/Obesity_Management_vip1.json",
   "obesity-management-vip3": "data/Obesity_Management_vip3.json",
   "obesity-free": "data/Obesity_free.json",
-  "obesity-vip1": "data/Obesity_vip1.json",
   "obesity-vip2": "data/Obesity_vip2.json",
   "obesity-vip3": "data/Obesity_vip3.json",
   "ocd-support-vip1": "data/Ocd_Support_vip1.json",
