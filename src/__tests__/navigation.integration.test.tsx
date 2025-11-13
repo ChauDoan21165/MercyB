@@ -215,7 +215,7 @@ describe('Navigation Integration Tests', () => {
         
         // Physical Health
         { id: 'nutrition-vip3', parent: '/rooms-vip3' },
-        { id: 'obesity-vip2', parent: '/rooms-vip2' },
+        { id: 'trigger-point-release-vip1', parent: '/rooms-vip1' },
         { id: 'sleep-improvement-vip1', parent: '/rooms-vip1' },
         
         // Personal Growth

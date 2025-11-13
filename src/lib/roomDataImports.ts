@@ -454,13 +454,6 @@ export const roomDataMap: Record<string, RoomData> = {
       "tier": "vip1",
       "hasData": true
   },
-  "obesity-management-vip2": {
-      "id": "obesity-management-vip2",
-      "nameEn": "Obesity Management",
-      "nameVi": "Quản Lý Cân Nặng",
-      "tier": "vip2",
-      "hasData": true
-  },
   "obesity-management-vip3": {
       "id": "obesity-management-vip3",
       "nameEn": "Obesity Management",
@@ -480,13 +473,6 @@ export const roomDataMap: Record<string, RoomData> = {
       "nameEn": "Obesity Management",
       "nameVi": "Quản Lý Cân Nặng",
       "tier": "vip1",
-      "hasData": true
-  },
-  "obesity-vip2": {
-      "id": "obesity-vip2",
-      "nameEn": "Obesity Management",
-      "nameVi": "Quản Lý Cân Nặng",
-      "tier": "vip2",
       "hasData": true
   },
   "obesity-vip3": {
@@ -746,6 +732,13 @@ export const roomDataMap: Record<string, RoomData> = {
       "nameEn": "Stress",
       "nameVi": "Stress",
       "tier": "vip3",
+      "hasData": true
+  },
+  "trigger-point-release-vip1": {
+      "id": "trigger-point-release-vip1",
+      "nameEn": "Trigger Point Release",
+      "nameVi": "Giải Phóng Điểm Kích Hoạt",
+      "tier": "vip1",
       "hasData": true
   },
   "wealth-&-wisdom-vip3-preview-free": {
