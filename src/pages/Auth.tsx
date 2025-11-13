@@ -27,6 +27,17 @@ const Auth = () => {
     if (savedEmail) setEmail(savedEmail);
   }, [setEmail]);
 
+  // Check for existing session and auto-redirect
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        navigate('/');
+      }
+    };
+    checkSession();
+  }, [navigate]);
+
   // If the user lands on /auth with recovery/error in the URL hash, route to /reset
   useEffect(() => {
     const rawHash = window.location.hash;
