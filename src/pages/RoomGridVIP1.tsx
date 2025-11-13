@@ -102,7 +102,7 @@ const RoomGridVIP1 = () => {
 
         {/* Room Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-          {ALL_ROOMS.filter(room => room.tier === "vip1").map((room) => (
+          {ALL_ROOMS.filter(room => room.tier === "vip1").sort((a, b) => a.name.localeCompare(b.name)).map((room) => (
             <Card
               key={room.id}
               className={`relative p-3 transition-all duration-300 cursor-pointer group ${
