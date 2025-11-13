@@ -6,12 +6,14 @@ import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { toast } from '@/hooks/use-toast';
+import { useSessionManagement } from '@/hooks/useSessionManagement';
 
 import { Eye, EyeOff } from 'lucide-react';
 
 
 const Auth = () => {
   const navigate = useNavigate();
+  const { registerSession } = useSessionManagement();
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [signInPassword, setSignInPassword] = useState('');
@@ -72,12 +74,17 @@ const Auth = () => {
       // Save email for next time
       localStorage.setItem('mercyblade_email', email);
       
-      const { error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password: signInPassword,
       });
 
       if (error) throw error;
+
+      // Register session to enforce device limit
+      if (data.session && data.user) {
+        await registerSession(data.user.id, data.session.access_token);
+      }
 
       toast({
         title: 'Welcome back! / Chào mừng trở lại!',
