@@ -1,13 +1,9 @@
 {
-  "tier": "VIP2 / VIP2",
-  "title": {
-    "en": "Productivity & Focus",
-    "vi": "Năng Suất & Tập Trung"
-  },
-  "content": {
-    "en": "This room helps you build steadier focus, calmer workflow, and sustainable productivity without burnout. Instead of forcing intensity, you will practice gentle systems that support clarity: planning tasks with intention, setting up an environment that reduces friction, and understanding your natural energy rhythm. Each entry offers a small, realistic action you can apply today, designed for real life, not perfection. Over time, these habits help you approach work with more presence, consistency, and confidence. Productivity becomes less about pressure and more about creating space for your best work to emerge.",
-    "vi": "Phòng này giúp bạn xây dựng sự tập trung ổn định hơn, quy trình làm việc bình tĩnh hơn và năng suất bền vững mà không kiệt sức. Thay vì ép mình làm việc mãnh liệt, bạn sẽ thực hành những hệ thống nhẹ nhàng hỗ trợ sự sáng rõ: lập kế hoạch nhiệm vụ có chủ đích, tạo môi trường giảm phân tâm và hiểu nhịp năng lượng tự nhiên của bản thân. Mỗi mục mang đến một hành động nhỏ, thực tế bạn có thể áp dụng ngay hôm nay. Theo thời gian, những thói quen này giúp bạn tiếp cận công việc với sự hiện diện, ổn định và tự tin hơn."
-  },
+  "name": "Productivity & Focus",
+  "name_vi": "Năng Suất & Tập Trung",
+  "description": "This room helps you build steadier focus, calmer workflow, and sustainable productivity without burnout. Instead of forcing intensity, you will practice gentle systems that support clarity: planning tasks with intention, setting up an environment that reduces friction, and understanding your natural energy rhythm. Each entry offers a small, realistic action you can apply today, designed for real life, not perfection. Over time, these habits help you approach work with more presence, consistency, and confidence. Productivity becomes less about pressure and more about creating space for your best work to emerge.",
+  "keywords_en": ["productivity", "focus", "task planning", "work environment", "energy management", "work-life balance"],
+  "keywords_vi": ["năng suất", "tập trung", "lập kế hoạch công việc", "môi trường làm việc", "quản lý năng lượng", "cân bằng công việc cuộc sống"],
   "entries": [
     {
       "slug": "task-list-clarity",

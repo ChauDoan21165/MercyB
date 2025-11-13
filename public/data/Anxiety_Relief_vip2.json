@@ -1,13 +1,9 @@
 {
-  "tier": "VIP2 / VIP2",
-  "title": {
-    "en": "Anxiety Relief",
-    "vi": "Giảm Lo Âu"
-  },
-  "content": {
-    "en": "Advanced, evidence-based tools for long-term anxiety relief. This VIP2 room teaches breathing, grounding, thought challenge, body scan, exposure, and lifestyle balance. Practice one skill daily. Track progress gently. Over weeks, anxiety softens. No pressure, just steady growth. Deeper support in higher tiers.",
-    "vi": "Công cụ nâng cao, dựa trên bằng chứng để giảm lo âu lâu dài. Phòng VIP2 dạy thở, tiếp đất, thách thức suy nghĩ, quét cơ thể, phơi nhiễm và cân bằng lối sống. Luyện một kỹ năng mỗi ngày. Theo dõi tiến bộ nhẹ nhàng. Sau vài tuần, lo âu dịu đi. Không áp lực, chỉ tăng trưởng đều đặn. Hỗ trợ sâu hơn ở cấp cao hơn."
-  },
+  "name": "Anxiety Relief",
+  "name_vi": "Giảm Lo Âu",
+  "description": "Advanced, evidence-based tools for long-term anxiety relief. This VIP2 room teaches breathing, grounding, thought challenge, body scan, exposure, and lifestyle balance. Practice one skill daily. Track progress gently. Over weeks, anxiety softens. No pressure, just steady growth. Deeper support in higher tiers.",
+  "keywords_en": ["anxiety", "breathing", "grounding", "cognitive therapy", "mindfulness", "exposure"],
+  "keywords_vi": ["lo âu", "thở", "tiếp đất", "liệu pháp nhận thức", "chánh niệm", "phơi nhiễm"],
   "entries": [
     {
       "slug": "breathing",

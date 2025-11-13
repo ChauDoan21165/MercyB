@@ -1,13 +1,9 @@
 {
-  "tier": "VIP2 / VIP2",
-  "title": {
-    "en": "Intermediate Sleep Improvement",
-    "vi": "Cải Thiện Giấc Ngủ Trung Cấp"
-  },
-  "content": {
-    "en": "This room deepens your sleep skills through gentle, practical techniques that help your body unwind and create consistent rest. We focus on four pillars: building a predictable sleep rhythm, practicing calming relaxation methods, supporting your body with an evening-friendly diet, and shaping an environment that signals comfort and safety. Nothing here is extreme or strict; each step is small, realistic, and designed to fit daily life. Over time, these habits help you fall asleep easier, wake more refreshed, and trust your own rhythm. Sleep becomes a supportive ritual instead of a struggle.",
-    "vi": "Phòng này giúp bạn nâng cao kỹ năng ngủ thông qua các kỹ thuật nhẹ nhàng và thực tế để cơ thể thư giãn và tạo giấc ngủ ổn định. Chúng ta tập trung vào bốn trụ cột: xây dựng nhịp ngủ đều đặn, thực hành các phương pháp thư giãn, hỗ trợ cơ thể bằng chế độ ăn tối phù hợp và tạo môi trường gửi tín hiệu an toàn, thoải mái. Không có bước nào quá gò ép; mỗi thói quen đều nhỏ, thực tế và dễ đưa vào đời sống. Theo thời gian, chúng giúp bạn dễ ngủ hơn, tỉnh dậy sảng khoái và tin tưởng vào nhịp tự nhiên của mình."
-  },
+  "name": "Intermediate Sleep Improvement",
+  "name_vi": "Cải Thiện Giấc Ngủ Trung Cấp",
+  "description": "This room deepens your sleep skills through gentle, practical techniques that help your body unwind and create consistent rest. We focus on four pillars: building a predictable sleep rhythm, practicing calming relaxation methods, supporting your body with an evening-friendly diet, and shaping an environment that signals comfort and safety. Nothing here is extreme or strict; each step is small, realistic, and designed to fit daily life. Over time, these habits help you fall asleep easier, wake more refreshed, and trust your own rhythm. Sleep becomes a supportive ritual instead of a struggle.",
+  "keywords_en": ["sleep improvement", "sleep rhythm", "relaxation", "diet", "sleep environment"],
+  "keywords_vi": ["cải thiện giấc ngủ", "nhịp ngủ", "thư giãn", "chế độ ăn", "môi trường ngủ"],
   "entries": [
     {
       "slug": "consistent-sleep-rhythm",

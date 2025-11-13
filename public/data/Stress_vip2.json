@@ -1,13 +1,9 @@
 {
-  "tier": "VIP2 / VIP2",
-  "title": {
-    "en": "Intermediate Stress Management",
-    "vi": "Quản Lý Căng Thẳng Trung Cấp"
-  },
-  "content": {
-    "en": "This room teaches practical techniques for calming the mind, steadying the body, and building emotional resilience. Each entry focuses on simple, repeatable methods you can use anywhere—deep breathing to reset your nervous system, mindful awareness to soften tension, soothing routines that create predictability, and supportive self-talk to encourage warmth instead of pressure. Nothing here requires perfection; these practices are meant for real days, busy schedules, and moments when stress feels heavy. Over time, these small actions create a calmer inner baseline, helping you think more clearly and respond with steadier confidence.",
-    "vi": "Phòng này hướng dẫn các kỹ thuật thực tế để làm dịu tâm trí, ổn định cơ thể và xây dựng khả năng chịu đựng cảm xúc. Mỗi mục tập trung vào những phương pháp đơn giản và có thể lặp lại ở bất cứ đâu—hít thở sâu để thiết lập lại hệ thần kinh, tỉnh thức để làm mềm căng thẳng, thói quen dịu nhẹ tạo sự ổn định và tự nói tích cực để nuôi dưỡng sự ấm áp thay vì áp lực. Bạn không cần sự hoàn hảo; những thực hành này dành cho những ngày bận rộn và những lúc căng thẳng nặng nề. Theo thời gian, chúng tạo nền tảng bình tĩnh hơn, giúp bạn suy nghĩ rõ ràng và phản ứng tự tin hơn."
-  },
+  "name": "Intermediate Stress Management",
+  "name_vi": "Quản Lý Căng Thẳng Trung Cấp",
+  "description": "This room teaches practical techniques for calming the mind, steadying the body, and building emotional resilience. Each entry focuses on simple, repeatable methods you can use anywhere—deep breathing to reset your nervous system, mindful awareness to soften tension, soothing routines that create predictability, and supportive self-talk to encourage warmth instead of pressure. Nothing here requires perfection; these practices are meant for real days, busy schedules, and moments when stress feels heavy. Over time, these small actions create a calmer inner baseline, helping you think more clearly and respond with steadier confidence.",
+  "keywords_en": ["stress management", "deep breathing", "mindfulness", "routines", "self-compassion", "resilience"],
+  "keywords_vi": ["quản lý căng thẳng", "hít thở sâu", "chánh niệm", "thói quen", "tự bi", "khả năng phục hồi"],
   "entries": [
     {
       "slug": "deep-breathing",
