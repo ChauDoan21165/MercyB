@@ -1,13 +1,27 @@
 {
-"tier": "VIP2 / VIP2",
-"title": {
-"en": "Philosophy of Everyday Life VIP2",
-"vi": "Triết Lý Cuộc Sống Hàng Ngày VIP2"
-},
-"content": {
-"en": "This room invites you to bring philosophy down from the bookshelf and into breakfast, bus rides, and late-night thoughts. Instead of chasing big answers, we explore small, honest questions: What is wisdom in this moment? How present am I with myself and others? What does real connection feel like in daily life? Through short reflections and gentle prompts, you will learn to pause, notice, and respond with more clarity. These practices are not about perfection or grand theories, but about living one ordinary day with a little more awareness, kindness, and meaning.",
-"vi": "Phòng này mời bạn đưa triết lý từ trang sách bước vào bữa sáng, chuyến xe buýt và những đêm trằn trọc. Thay vì đuổi theo câu trả lời vĩ đại, chúng ta đi cùng những câu hỏi nhỏ nhưng chân thành: Trí tuệ là gì trong khoảnh khắc này? Tôi đang hiện diện với bản thân và người khác đến đâu? Kết nối thật sự cảm giác như thế nào trong đời sống thường ngày? Qua những đoạn chiêm nghiệm ngắn và gợi ý nhẹ nhàng, bạn học cách dừng lại, nhận ra và đáp lại với nhiều sáng rõ hơn. Những thực hành này không nhằm sự hoàn hảo hay lý thuyết lớn, mà là sống một ngày bình thường với thêm chút nhận thức, tử tế và ý nghĩa."
-},
+  "name": "Philosophy of Everyday Life",
+  "name_vi": "Triết Lý Cuộc Sống Hàng Ngày",
+  "description": "This room invites you to bring philosophy down from the bookshelf and into breakfast, bus rides, and late-night thoughts. Instead of chasing big answers, we explore small, honest questions: What is wisdom in this moment? How present am I with myself and others? What does real connection feel like in daily life? Through short reflections and gentle prompts, you will learn to pause, notice, and respond with more clarity. These practices are not about perfection or grand theories, but about living one ordinary day with a little more awareness, kindness, and meaning.",
+  "keywords_en": [
+    "philosophy",
+    "wisdom",
+    "presence",
+    "awareness",
+    "connection",
+    "daily life",
+    "mindfulness",
+    "conscious living"
+  ],
+  "keywords_vi": [
+    "triết học",
+    "trí tuệ",
+    "hiện diện",
+    "nhận thức",
+    "kết nối",
+    "cuộc sống hàng ngày",
+    "chánh niệm",
+    "sống có ý thức"
+  ],
 "entries": [
 {
 "slug": "wisdom-in-daily-life",
@@ -112,6 +126,7 @@
 "mutual-presence"
 ],
 "audio": "philosophy_vip2_4_en.mp3"
-}
-]
+    }
+  ],
+  "tier": "vip2"
 }
