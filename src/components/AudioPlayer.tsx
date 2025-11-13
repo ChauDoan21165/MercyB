@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Play, Pause, RotateCcw, Volume2, VolumeX, Gauge, SkipBack, SkipForward } from "lucide-react";
+import { Play, Pause, RotateCcw, Volume2, VolumeX, Gauge, SkipBack, SkipForward, Keyboard } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
@@ -8,6 +8,14 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 interface AudioPlayerProps {
   audioPath: string;
@@ -31,6 +39,7 @@ export const AudioPlayer = ({
   const [isMuted, setIsMuted] = useState(false);
   const [previousVolume, setPreviousVolume] = useState(1);
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
+  const [showShortcuts, setShowShortcuts] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
 
@@ -351,6 +360,50 @@ export const AudioPlayer = ({
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
+
+      {/* Keyboard Shortcuts Help */}
+      <Dialog open={showShortcuts} onOpenChange={setShowShortcuts}>
+        <DialogTrigger asChild>
+          <Button
+            size="sm"
+            variant="ghost"
+            className="h-8 w-8 p-0 shrink-0"
+            title="Keyboard shortcuts"
+          >
+            <Keyboard className="h-4 w-4" />
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Keyboard Shortcuts</DialogTitle>
+            <DialogDescription>
+              Use these keyboard shortcuts to control audio playback
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-3 py-4">
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Play / Pause</span>
+              <kbd className="px-2 py-1 text-xs font-semibold bg-secondary rounded">Space</kbd>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Seek backward 5s</span>
+              <kbd className="px-2 py-1 text-xs font-semibold bg-secondary rounded">←</kbd>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Seek forward 5s</span>
+              <kbd className="px-2 py-1 text-xs font-semibold bg-secondary rounded">→</kbd>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Volume up</span>
+              <kbd className="px-2 py-1 text-xs font-semibold bg-secondary rounded">↑</kbd>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Volume down</span>
+              <kbd className="px-2 py-1 text-xs font-semibold bg-secondary rounded">↓</kbd>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
