@@ -108,6 +108,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "stress-free": "data/Stress_free.json",
   "stress-vip2": "data/Stress_vip2.json",
   "stress-vip3": "data/Stress_vip3.json",
+  "trigger-point-release-vip1": "data/Trigger_Point_Release_vip1.json",
   "wealth-&-wisdom-vip3-preview-free": "data/Wealth_&_Wisdom_VIP3_Preview_free.json",
   "weight-loss-and-fitness-free": "data/Weight_Loss_And_Fitness_free.json",
   "weight-loss-and-fitness-vip2": "data/Weight_Loss_And_Fitness_vip2.json",
