@@ -63,7 +63,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "mentors-who-light-the-way-vip4": "data/Mentors_Who_Light_the_Way_vip4.json",
   "mindfulness-vip1": "data/Mindfulness_vip1.json",
   "nutrition-free": "data/Nutrition_free.json",
-  "nutrition-vip1": "data/Nutrition_vip1.json",
+  "nutrition-your-health-vip1": "data/Nutrition-Your_Health_vip1.json",
   "nutrition-vip2": "data/Nutrition_vip2.json",
   "nutrition-vip3": "data/Nutrition_vip3.json",
   "ocd-support-free": "data/OCD_Support_free.json",

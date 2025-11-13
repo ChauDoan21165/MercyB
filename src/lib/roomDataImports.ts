@@ -419,10 +419,10 @@ export const roomDataMap: Record<string, RoomData> = {
       "tier": "free",
       "hasData": true
   },
-  "nutrition-vip1": {
-      "id": "nutrition-vip1",
-      "nameEn": "Nutrition",
-      "nameVi": "Dinh Dưỡng",
+  "nutrition-your-health-vip1": {
+      "id": "nutrition-your-health-vip1",
+      "nameEn": "Intermediate Nutrition",
+      "nameVi": "Dinh Dưỡng Trung Cấp",
       "tier": "vip1",
       "hasData": true
   },

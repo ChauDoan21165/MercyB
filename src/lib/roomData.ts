@@ -74,7 +74,7 @@ const VIETNAMESE_NAME_FALLBACKS: Record<string, string> = {
   
   // Nutrition
   'nutrition-free': 'Dinh Dưỡng',
-  'nutrition-vip1': 'Dinh Dưỡng VIP1',
+  'nutrition-your-health-vip1': 'Dinh Dưỡng Trung Cấp',
   'nutrition-vip2': 'Dinh Dưỡng VIP2',
   'nutrition-vip3': 'Dinh Dưỡng VIP3',
   
