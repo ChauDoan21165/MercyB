@@ -68,9 +68,9 @@ const AdminVIPRooms = () => {
     }
   };
 
-  const vip1Rooms = ALL_ROOMS.filter(room => room.tier === 'vip1');
-  const vip2Rooms = ALL_ROOMS.filter(room => room.tier === 'vip2');
-  const vip3Rooms = ALL_ROOMS.filter(room => room.tier === 'vip3');
+  const vip1Rooms = ALL_ROOMS.filter(room => room.tier === 'vip1').sort((a, b) => a.name.localeCompare(b.name));
+  const vip2Rooms = ALL_ROOMS.filter(room => room.tier === 'vip2').sort((a, b) => a.name.localeCompare(b.name));
+  const vip3Rooms = ALL_ROOMS.filter(room => room.tier === 'vip3').sort((a, b) => a.name.localeCompare(b.name));
 
   const RoomCard = ({ room }: { room: RoomInfo }) => {
     // Convert tier string to UserTier type
