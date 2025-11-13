@@ -503,6 +503,13 @@ export const roomDataMap: Record<string, RoomData> = {
       "tier": "free",
       "hasData": true
   },
+  "philosophy-of-everyday-vip2": {
+      "id": "philosophy-of-everyday-vip2",
+      "nameEn": "Philosophy of Everyday Life VIP2",
+      "nameVi": "Triết Lý Cuộc Sống Hàng Ngày VIP2",
+      "tier": "vip2",
+      "hasData": true
+  },
   "philosophy-of-everyday-vip3": {
       "id": "philosophy-of-everyday-vip3",
       "nameEn": "Philosophy Of Everyday",
