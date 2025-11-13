@@ -34,7 +34,7 @@
         "self-awareness",
         "muscle-tension"
       ],
-      "audio": "tpr_vip1_1_en.mp3"
+      "audio": "audio/tpr_vip1_1_en.mp3"
     },
     {
       "slug": "locating-trigger-points",
@@ -61,7 +61,7 @@
         "self-palpation",
         "body-exploration"
       ],
-      "audio": "tpr_vip1_2_en.mp3"
+      "audio": "audio/tpr_vip1_2_en.mp3"
     },
     {
       "slug": "tools-for-self-release",
@@ -88,7 +88,7 @@
         "self-help",
         "equipment"
       ],
-      "audio": "tpr_vip1_3_en.mp3"
+      "audio": "audio/tpr_vip1_3_en.mp3"
     },
     {
       "slug": "basic-technique",
@@ -115,7 +115,7 @@
         "compression",
         "self-application"
       ],
-      "audio": "tpr_vip1_4_en.mp3"
+      "audio": "audio/tpr_vip1_4_en.mp3"
     },
     {
       "slug": "pressure-and-duration",
@@ -142,7 +142,7 @@
         "duration",
         "adjustment"
       ],
-      "audio": "tpr_vip1_5_en.mp3"
+      "audio": "audio/tpr_vip1_5_en.mp3"
     },
     {
       "slug": "breathing-and-relaxation",
@@ -169,7 +169,7 @@
         "relaxation",
         "mindfulness"
       ],
-      "audio": "tpr_vip1_6_en.mp3"
+      "audio": "audio/tpr_vip1_6_en.mp3"
     },
     {
       "slug": "post-release-stretching",
@@ -196,7 +196,7 @@
         "aftercare",
         "flexibility"
       ],
-      "audio": "tpr_vip1_7_en.mp3"
+      "audio": "audio/tpr_vip1_7_en.mp3"
     },
     {
       "slug": "frequency-and-scheduling",
@@ -223,7 +223,7 @@
         "scheduling",
         "consistency"
       ],
-      "audio": "tpr_vip1_8_en.mp3"
+      "audio": "audio/tpr_vip1_8_en.mp3"
     },
     {
       "slug": "neck-trigger-points",
@@ -250,7 +250,7 @@
         "specific-areas",
         "tension-relief"
       ],
-      "audio": "tpr_vip1_9_en.mp3"
+      "audio": "audio/tpr_vip1_9_en.mp3"
     },
     {
       "slug": "shoulder-trigger-points",
@@ -277,7 +277,7 @@
         "specific-areas",
         "mobility"
       ],
-      "audio": "tpr_vip1_10_en.mp3"
+      "audio": "audio/tpr_vip1_10_en.mp3"
     },
     {
       "slug": "upper-back-trigger-points",
@@ -304,7 +304,7 @@
         "specific-areas",
         "posture"
       ],
-      "audio": "tpr_vip1_11_en.mp3"
+      "audio": "audio/tpr_vip1_11_en.mp3"
     },
     {
       "slug": "lower-back-trigger-points",
@@ -331,7 +331,7 @@
         "specific-areas",
         "stability"
       ],
-      "audio": "tpr_vip1_12_en.mp3"
+      "audio": "audio/tpr_vip1_12_en.mp3"
     },
     {
       "slug": "hip-and-glute-trigger-points",
@@ -358,7 +358,7 @@
         "glutes",
         "mobility"
       ],
-      "audio": "tpr_vip1_13_en.mp3"
+      "audio": "audio/tpr_vip1_13_en.mp3"
     },
     {
       "slug": "leg-trigger-points",
@@ -385,7 +385,7 @@
         "specific-areas",
         "movement"
       ],
-      "audio": "tpr_vip1_14_en.mp3"
+      "audio": "audio/tpr_vip1_14_en.mp3"
     },
     {
       "slug": "precautions-and-when-to-stop",
@@ -412,7 +412,7 @@
         "safety",
         "self-care"
       ],
-      "audio": "tpr_vip1_15_en.mp3"
+      "audio": "audio/tpr_vip1_15_en.mp3"
     }
   ]
 }
