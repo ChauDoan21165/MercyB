@@ -80,7 +80,6 @@ const VIETNAMESE_NAME_FALLBACKS: Record<string, string> = {
   
   // Obesity
   'obesity-free': 'Quản Lý Cân Nặng',
-  'obesity-vip1': 'Quản Lý Cân Nặng VIP1',
   'obesity-vip3': 'Quản Lý Cân Nặng VIP3',
   
   // Trigger Point Release
