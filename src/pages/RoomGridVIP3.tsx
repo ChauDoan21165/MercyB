@@ -132,7 +132,11 @@ const RoomGridVIP3 = () => {
                 return a.id.localeCompare(b.id);
               });
 
-            return vip3Rooms.sort((a, b) => a.name.localeCompare(b.name)).map((room) => {
+            return vip3Rooms.sort((a, b) => {
+              const aName = a.name || a.id;
+              const bName = b.name || b.id;
+              return aName.localeCompare(bName);
+            }).map((room) => {
               const isSpecialRoom = VIP3_SPECIAL_ROOMS[room.id];
               const isSexualityCultureRoom = room.id === 'sexuality-and-curiosity-and-culture-vip3';
               const isFinanceRoom = room.id === 'finance-glory-vip3';

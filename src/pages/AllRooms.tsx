@@ -82,7 +82,11 @@ const AllRooms = () => {
 
         {/* Room Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-          {[...ALL_ROOMS].sort((a, b) => a.name.localeCompare(b.name)).map((room) => {
+          {[...ALL_ROOMS].sort((a, b) => {
+            const aName = a.name || a.id;
+            const bName = b.name || b.id;
+            return aName.localeCompare(bName);
+          }).map((room) => {
             const isVIPRoom = room.tier !== 'free';
             const isFreeUser = tier === 'free';
             const tooltipText = isVIPRoom && isFreeUser ? "VIP only" : (room.hasData ? "Click to enter" : "Coming soon");
