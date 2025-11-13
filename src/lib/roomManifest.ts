@@ -75,7 +75,6 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "ocd-support-vip3": "data/Ocd_Support_vip3.json",
   "overcome-storm-vip3": "data/Overcome_Storm_vip3.json",
   "philosophy-of-everyday-free": "data/Philosophy_Of_Everyday_free.json",
-  "philosophy-of-everyday-vip2": "data/Philosophy_Of_Everyday_vip2.json",
   "philosophy-of-everyday-vip3": "data/Philosophy_Of_Everyday_vip3.json",
   "physical-fitness-and-nutrition-free": "data/Physical_Fitness_And_Nutrition_free.json",
   "productivity-and-focus-free": "data/Productivity_And_Focus_free.json",
