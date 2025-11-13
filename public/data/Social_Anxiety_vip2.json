@@ -1,1 +1,94 @@
-{"name":"Social Anxiety","name_vi":"Lo Âu Xã Hội","description":"Advanced strategies for overcoming social anxiety with practice","keywords_en":["social anxiety","interaction","confidence","exposure","cbt"],"keywords_vi":["lo âu xã hội","tương tác","tự tin","phơi nhiễm","cbt"],"entries":[{"slug":"small-talk","keywords_en":["small talk","conversation","anxiety"],"keywords_vi":["trò chuyện nhỏ","cuộc trò chuyện","lo âu"],"copy":{"en":"Develop smoother conversations using the ARO method—Acknowledge, Relate, Open. Keep three short stories ready to share. Practice weekly with new people and track your engagement score. Join a conversation club to build social ease through structured, real-world interaction."},"tags":["talk","anxiety"],"audio":{"en":"soc_vip2_1_en.mp3"}},{"slug":"eye-contact","keywords_en":["eye contact","connection","confidence"],"keywords_vi":["giao tiếp mắt","kết nối","tự tin"],"copy":{"en":"Train advanced eye contact with micro-expression awareness. Maintain gaze about sixty percent of the time. Record your practice and review connection quality. Work with a charisma coach to refine presence and emotional reading, creating calm confidence and visual strength."},"tags":["contact","anxiety"],"audio":{"en":"soc_vip2_2_en.mp3"}},{"slug":"exposure","keywords_en":["exposure","fear","anxiety"],"keywords_vi":["phơi nhiễm","nỗi sợ","lo âu"],"copy":{"en":"Use systematic exposure with SUDS tracking. Build a fear ladder from zero to one hundred and face each step weekly. Stay until your anxiety drops by half. Journal the change in thoughts and feelings. Partner with a therapist for guided sessions and safe progress."},"tags":["exposure","anxiety"],"audio":{"en":"soc_vip2_3_en.mp3"}},{"slug":"body-language","keywords_en":["body language","open","confidence"],"keywords_vi":["ngôn ngữ cơ thể","mở","tự tin"],"copy":{"en":"Practice power poses to boost confidence. Stand tall with open posture for two minutes before events. Keep your stance open through eighty percent of interactions. Analyze video recordings and seek expert feedback to build an authentic, relaxed alpha presence."},"tags":["language","anxiety"],"audio":{"en":"soc_vip2_4_en.mp3"}},{"slug":"cbt","keywords_en":["cbt","thoughts","anxiety"],"keywords_vi":["cbt","suy nghĩ","lo âu"],"copy":{"en":"Apply CBT to challenge social thoughts. Use a thought record: situation, emotion, belief, evidence, and alternative view. Review once a week and rate belief change. Join a CBT peer group to strengthen cognitive flexibility through shared insight and structured reflection."},"tags":["cbt","anxiety"],"audio":{"en":"soc_vip2_5_en.mp3"}},{"slug":"networking","keywords_en":["networking","events","anxiety"],"keywords_vi":["mạng lưới","sự kiện","lo âu"],"copy":{"en":"Follow a professional networking protocol. Research attendees, prepare three opening questions, and aim for three genuine connections. Follow up within twenty-four hours. Track network growth and learn strategy from a mentor to turn anxiety into confident relationship-building."},"tags":["networking","anxiety"],"audio":{"en":"soc_vip2_6_en.mp3"}}],"meta":{"created_at":"2025-10-28T00:00:00+00:00","updated_at":"2025-10-28T00:00:00+00:00","entry_count":6,"tier":"vip2","room_color":"#4A90E2"}}
+{
+  "name": "Social Anxiety",
+  "name_vi": "Lo Âu Xã Hội",
+  "description": "Advanced strategies for overcoming social anxiety with practice",
+  "keywords_en": ["social anxiety", "interaction", "confidence", "exposure", "cbt"],
+  "keywords_vi": ["lo âu xã hội", "tương tác", "tự tin", "phơi nhiễm", "cbt"],
+  "entries": [
+    {
+      "slug": "small-talk",
+      "keywords_en": ["small talk", "conversation", "anxiety"],
+      "keywords_vi": ["trò chuyện nhỏ", "cuộc trò chuyện", "lo âu"],
+      "copy": {
+        "en": "Develop smoother conversations using the ARO method—Acknowledge, Relate, Open. Keep three short stories ready to share. Practice weekly with new people and track your engagement score. Join a conversation club to build social ease through structured, real-world interaction.",
+        "vi": "Phát triển khả năng trò chuyện mượt mà hơn bằng phương pháp ARO—Nhận biết, Kết nối, Mở lời. Chuẩn bị sẵn ba câu chuyện ngắn để chia sẻ khi cần. Luyện tập mỗi tuần với người mới và theo dõi mức độ tham gia của bạn. Tham gia câu lạc bộ trò chuyện để xây dựng sự thoải mái xã hội thông qua các tương tác có cấu trúc và thực tế."
+      },
+      "tags": ["talk", "anxiety"],
+      "audio": {
+        "en": "soc_vip2_1_en.mp3"
+      }
+    },
+    {
+      "slug": "eye-contact",
+      "keywords_en": ["eye contact", "connection", "confidence"],
+      "keywords_vi": ["giao tiếp mắt", "kết nối", "tự tin"],
+      "copy": {
+        "en": "Train advanced eye contact with micro-expression awareness. Maintain gaze about sixty percent of the time. Record your practice and review connection quality. Work with a charisma coach to refine presence and emotional reading, creating calm confidence and visual strength.",
+        "vi": "Rèn luyện giao tiếp mắt nâng cao bằng cách quan sát vi biểu cảm. Duy trì ánh nhìn khoảng sáu mươi phần trăm thời gian khi trò chuyện. Ghi lại quá trình luyện tập và xem lại chất lượng kết nối. Làm việc với một huấn luyện viên về sức hút để cải thiện sự hiện diện và khả năng đọc cảm xúc, từ đó xây dựng sự tự tin nhẹ nhàng và sức mạnh biểu đạt."
+      },
+      "tags": ["contact", "anxiety"],
+      "audio": {
+        "en": "soc_vip2_2_en.mp3"
+      }
+    },
+    {
+      "slug": "exposure",
+      "keywords_en": ["exposure", "fear", "anxiety"],
+      "keywords_vi": ["phơi nhiễm", "nỗi sợ", "lo âu"],
+      "copy": {
+        "en": "Use systematic exposure with SUDS tracking. Build a fear ladder from zero to one hundred and face each step weekly. Stay until your anxiety drops by half. Journal the change in thoughts and feelings. Partner with a therapist for guided sessions and safe progress.",
+        "vi": "Sử dụng phương pháp phơi nhiễm có hệ thống kết hợp theo dõi SUDS. Xây dựng một thang nỗi sợ từ 0 đến 100 và đối mặt từng bước mỗi tuần. Ở lại trong tình huống cho đến khi mức lo âu giảm một nửa. Ghi chép lại sự thay đổi trong suy nghĩ và cảm xúc. Làm việc cùng chuyên gia trị liệu để có phiên phơi nhiễm an toàn và được hướng dẫn."
+      },
+      "tags": ["exposure", "anxiety"],
+      "audio": {
+        "en": "soc_vip2_3_en.mp3"
+      }
+    },
+    {
+      "slug": "body-language",
+      "keywords_en": ["body language", "open", "confidence"],
+      "keywords_vi": ["ngôn ngữ cơ thể", "mở", "tự tin"],
+      "copy": {
+        "en": "Practice power poses to boost confidence. Stand tall with open posture for two minutes before events. Keep your stance open through eighty percent of interactions. Analyze video recordings and seek expert feedback to build an authentic, relaxed alpha presence.",
+        "vi": "Thực hành các tư thế quyền lực để tăng sự tự tin. Đứng thẳng với tư thế mở trong hai phút trước sự kiện. Giữ tư thế cởi mở trong khoảng tám mươi phần trăm tương tác. Phân tích video ghi lại và tìm phản hồi từ chuyên gia để xây dựng sự hiện diện mạnh mẽ nhưng tự nhiên và thư thái."
+      },
+      "tags": ["language", "anxiety"],
+      "audio": {
+        "en": "soc_vip2_4_en.mp3"
+      }
+    },
+    {
+      "slug": "cbt",
+      "keywords_en": ["cbt", "thoughts", "anxiety"],
+      "keywords_vi": ["cbt", "suy nghĩ", "lo âu"],
+      "copy": {
+        "en": "Apply CBT to challenge social thoughts. Use a thought record: situation, emotion, belief, evidence, and alternative view. Review once a week and rate belief change. Join a CBT peer group to strengthen cognitive flexibility through shared insight and structured reflection.",
+        "vi": "Áp dụng CBT để thách thức những suy nghĩ liên quan đến lo âu xã hội. Sử dụng bảng ghi suy nghĩ gồm: tình huống, cảm xúc, niềm tin, bằng chứng và góc nhìn thay thế. Xem lại mỗi tuần và đánh giá mức độ thay đổi niềm tin. Tham gia nhóm CBT để nâng cao sự linh hoạt nhận thức thông qua chia sẻ hiểu biết và phản tư có cấu trúc."
+      },
+      "tags": ["cbt", "anxiety"],
+      "audio": {
+        "en": "soc_vip2_5_en.mp3"
+      }
+    },
+    {
+      "slug": "networking",
+      "keywords_en": ["networking", "events", "anxiety"],
+      "keywords_vi": ["mạng lưới", "sự kiện", "lo âu"],
+      "copy": {
+        "en": "Follow a professional networking protocol. Research attendees, prepare three opening questions, and aim for three genuine connections. Follow up within twenty-four hours. Track network growth and learn strategy from a mentor to turn anxiety into confident relationship-building.",
+        "vi": "Thực hiện quy trình networking chuyên nghiệp. Tìm hiểu trước về người tham dự, chuẩn bị ba câu hỏi mở đầu và đặt mục tiêu xây dựng ba kết nối thật sự. Theo dõi lại trong vòng hai mươi bốn giờ. Ghi nhận sự phát triển mạng lưới và học chiến lược từ người cố vấn để biến lo âu thành khả năng xây dựng quan hệ tự tin."
+      },
+      "tags": ["networking", "anxiety"],
+      "audio": {
+        "en": "soc_vip2_6_en.mp3"
+      }
+    }
+  ],
+  "meta": {
+    "created_at": "2025-10-28T00:00:00+00:00",
+    "updated_at": "2025-10-28T00:00:00+00:00",
+    "entry_count": 6,
+    "tier": "vip2",
+    "room_color": "#4A90E2"
+  }
+}
