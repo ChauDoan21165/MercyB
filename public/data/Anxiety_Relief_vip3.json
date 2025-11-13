@@ -1,1 +1,128 @@
-{"name":"Anxiety Relief","name_vi":"Giảm Lo Âu","description":"Expert strategies for mastering anxiety with comprehensive tools","keywords_en":["anxiety","calm","breathing","grounding","resilience","cbt"],"keywords_vi":["lo âu","bình tĩnh","thở","tiếp đất","kiên cường","cbt"],"entries":[{"slug":"breathing","keywords_en":["breathing","calm","anxiety"],"keywords_vi":["thở","bình tĩnh","lo âu"],"copy":{"en":"Master breathing for robust anxiety control. Combine 4-7-8 with box breathing—four in, four hold, four out, four hold. Use during high stress for quick regulation. Integrate morning and evening sessions. Track heart-rate variability to measure progress. Work with a biofeedback coach or peer group to refine technique and build durable resilience over time."},"tags":["breathing","anxiety"],"audio":{"en":"anx_vip3_1_en.mp3"},"essay_ref":"anx_vip3_1_essay.txt"},{"slug":"grounding","keywords_en":["grounding","present","calm"],"keywords_vi":["tiếp đất","hiện tại","bình tĩnh"],"copy":{"en":"Elevate grounding by pairing senses with supportive self-talk. Use 5-4-3-2-1, then say, “I am safe right now.” Practice in varied settings to generalize the skill. Journal triggers and wins to see patterns. Collaborate with a trauma-informed therapist for personalized plans and deeper resilience."},"tags":["grounding","anxiety"],"audio":{"en":"anx_vip3_2_en.mp3"},"essay_ref":"anx_vip3_2_essay.txt"},{"slug":"thought-challenge","keywords_en":["thought challenge","cognitive","anxiety"],"keywords_vi":["thách thức suy nghĩ","nhận thức","lo âu"],"copy":{"en":"Use full CBT cycles to restructure anxious thoughts: identify distortions, apply Socratic questions, run small behavioral experiments, and install a balanced belief. Practice weekly with real scenarios. Track belief-change percentages in a journal. Consult a CBT specialist to sharpen skills and sustain gains."},"tags":["cognitive","anxiety"],"audio":{"en":"anx_vip3_3_en.mp3"},"essay_ref":"anx_vip3_3_essay.txt"},{"slug":"body-scan","keywords_en":["body scan","relaxation","anxiety"],"keywords_vi":["quét cơ thể","thư giãn","lo âu"],"copy":{"en":"Advance progressive muscle relaxation with mindful labeling. Tense and release each muscle while noting sensations and emotions. Extend up to forty-five minutes with guided imagery. Log tension ratings before and after. Partner with a somatic therapist for tailored protocols and deeper body–mind integration."},"tags":["relaxation","anxiety"],"audio":{"en":"anx_vip3_4_en.mp3"},"essay_ref":"anx_vip3_4_essay.txt"},{"slug":"exposure","keywords_en":["exposure","facing fears","anxiety"],"keywords_vi":["phơi nhiễm","đối mặt nỗi sợ","lo âu"],"copy":{"en":"Apply systematic exposure for specific fears. Build a detailed hierarchy with SUDS ratings. Use imaginal and in-vivo exposure, staying until distress drops about 75%. Include interoceptive exercises for panic sensations. Graph progress and coordinate with an exposure-trained clinician for safety and effectiveness."},"tags":["exposure","anxiety"],"audio":{"en":"anx_vip3_5_en.mp3"},"essay_ref":"anx_vip3_5_essay.txt"},{"slug":"lifestyle","keywords_en":["lifestyle","habits","anxiety"],"keywords_vi":["lối sống","thói quen","lo âu"],"copy":{"en":"Optimize lifestyle for prevention: solid sleep hygiene, anti-inflammatory nutrition, and thirty minutes of aerobic movement most days. Track HRV and mood to spot trends. Consider evidence-based supplements as appropriate. Build a supportive social routine. An integrative coach can personalize steps for steady, anxiety-resistant health."},"tags":["lifestyle","anxiety"],"audio":{"en":"anx_vip3_6_en.mp3"},"essay_ref":"anx_vip3_6_essay.txt"},{"slug":"mindfulness","keywords_en":["mindfulness","acceptance","anxiety"],"keywords_vi":["chánh niệm","chấp nhận","lo âu"],"copy":{"en":"Deepen practice with MBSR principles: daily body scan, gentle yoga, and sitting meditation. Add loving-kindness to grow self-compassion. Track mindfulness minutes alongside anxiety levels to see correlations. Consider an eight-week MBSR course or group to strengthen consistency and support."},"tags":["mindfulness","anxiety"],"audio":{"en":"anx_vip3_7_en.mp3"},"essay_ref":"anx_vip3_7_essay.txt"},{"slug":"resilience","keywords_en":["resilience","strength","anxiety"],"keywords_vi":["kiên cường","sức mạnh","lo âu"],"copy":{"en":"Integrate CBT, exposure, mindfulness, and lifestyle into a single plan. Keep a daily resilience journal—wins, gratitudes, and next steps. Use monthly anxiety scales to measure change. Join a resilience coach or mastermind for accountability. Consistent integration builds long-term emotional freedom."},"tags":["resilience","anxiety"],"audio":{"en":"anx_vip3_8_en.mp3"},"essay_ref":"anx_vip3_8_essay.txt"}],"meta":{"created_at":"2025-10-28T00:00:00+00:00","updated_at":"2025-10-28T00:00:00+00:00","entry_count":8,"tier":"vip3","room_color":"#4A90E2"}}
+{
+  "name": "Anxiety Relief",
+  "name_vi": "Giảm Lo Âu",
+  "description": "Expert strategies for mastering anxiety with comprehensive tools",
+  "keywords_en": ["anxiety", "calm", "breathing", "grounding", "resilience", "cbt"],
+  "keywords_vi": ["lo âu", "bình tĩnh", "thở", "tiếp đất", "kiên cường", "cbt"],
+  "entries": [
+    {
+      "slug": "breathing",
+      "keywords_en": ["breathing", "calm", "anxiety"],
+      "keywords_vi": ["thở", "bình tĩnh", "lo âu"],
+      "copy": {
+        "en": "Master breathing for robust anxiety control. Combine 4-7-8 with box breathing—four in, four hold, four out, four hold. Use during high stress for quick regulation. Integrate morning and evening sessions. Track heart-rate variability to measure progress. Work with a biofeedback coach or peer group to refine technique and build durable resilience over time.",
+        "vi": "Làm chủ hơi thở để kiểm soát lo âu hiệu quả. Kết hợp kỹ thuật 4-7-8 với box breathing—hít bốn giây, giữ bốn giây, thở bốn giây, giữ bốn giây. Sử dụng trong lúc căng thẳng cao để điều hòa nhanh. Tích hợp các buổi sáng và tối để tạo nhịp ổn định. Theo dõi HRV để đánh giá tiến triển. Làm việc với chuyên gia phản hồi sinh học hoặc nhóm hỗ trợ để hoàn thiện kỹ thuật và xây dựng khả năng kiên cường lâu dài."
+      },
+      "tags": ["breathing", "anxiety"],
+      "audio": {
+        "en": "anx_vip3_1_en.mp3"
+      },
+      "essay_ref": "anx_vip3_1_essay.txt"
+    },
+    {
+      "slug": "grounding",
+      "keywords_en": ["grounding", "present", "calm"],
+      "keywords_vi": ["tiếp đất", "hiện tại", "bình tĩnh"],
+      "copy": {
+        "en": "Elevate grounding by pairing senses with supportive self-talk. Use 5-4-3-2-1, then say, “I am safe right now.” Practice in varied settings to generalize the skill. Journal triggers and wins to see patterns. Collaborate with a trauma-informed therapist for personalized plans and deeper resilience.",
+        "vi": "Nâng cao kỹ thuật tiếp đất bằng cách kết hợp giác quan với lời tự nhủ hỗ trợ. Sử dụng phương pháp 5-4-3-2-1 rồi nói: “Tôi đang an toàn lúc này.” Thực hành ở nhiều môi trường để mở rộng khả năng thích ứng. Ghi lại các yếu tố kích hoạt và những khoảnh khắc thành công để thấy rõ khuôn mẫu. Hợp tác với chuyên gia trị liệu hiểu về sang chấn để xây dựng kế hoạch cá nhân hóa và khả năng kiên cường sâu hơn."
+      },
+      "tags": ["grounding", "anxiety"],
+      "audio": {
+        "en": "anx_vip3_2_en.mp3"
+      },
+      "essay_ref": "anx_vip3_2_essay.txt"
+    },
+    {
+      "slug": "thought-challenge",
+      "keywords_en": ["thought challenge", "cognitive", "anxiety"],
+      "keywords_vi": ["thách thức suy nghĩ", "nhận thức", "lo âu"],
+      "copy": {
+        "en": "Use full CBT cycles to restructure anxious thoughts: identify distortions, apply Socratic questions, run small behavioral experiments, and install a balanced belief. Practice weekly with real scenarios. Track belief-change percentages in a journal. Consult a CBT specialist to sharpen skills and sustain gains.",
+        "vi": "Sử dụng đầy đủ chu trình CBT để tái cấu trúc suy nghĩ lo âu: xác định méo mó nhận thức, đặt câu hỏi kiểu Socrates, thực hiện các thử nghiệm hành vi nhỏ và xây dựng niềm tin cân bằng. Thực hành hàng tuần với tình huống thực tế. Ghi lại mức độ thay đổi niềm tin theo phần trăm. Tham khảo chuyên gia CBT để nâng cao kỹ năng và duy trì sự tiến bộ."
+      },
+      "tags": ["cognitive", "anxiety"],
+      "audio": {
+        "en": "anx_vip3_3_en.mp3"
+      },
+      "essay_ref": "anx_vip3_3_essay.txt"
+    },
+    {
+      "slug": "body-scan",
+      "keywords_en": ["body scan", "relaxation", "anxiety"],
+      "keywords_vi": ["quét cơ thể", "thư giãn", "lo âu"],
+      "copy": {
+        "en": "Advance progressive muscle relaxation with mindful labeling. Tense and release each muscle while noting sensations and emotions. Extend up to forty-five minutes with guided imagery. Log tension ratings before and after. Partner with a somatic therapist for tailored protocols and deeper body–mind integration.",
+        "vi": "Nâng cao bài tập thư giãn cơ tiến bộ bằng cách gắn nhãn chánh niệm. Siết và thả lỏng từng nhóm cơ trong khi ghi nhận cảm giác và cảm xúc. Có thể kéo dài đến bốn mươi lăm phút với hình ảnh dẫn dắt. Ghi lại mức độ căng trước và sau buổi tập. Làm việc với chuyên gia trị liệu soma để xây dựng phác đồ phù hợp và tăng cường kết nối thân–tâm sâu sắc."
+      },
+      "tags": ["relaxation", "anxiety"],
+      "audio": {
+        "en": "anx_vip3_4_en.mp3"
+      },
+      "essay_ref": "anx_vip3_4_essay.txt"
+    },
+    {
+      "slug": "exposure",
+      "keywords_en": ["exposure", "facing fears", "anxiety"],
+      "keywords_vi": ["phơi nhiễm", "đối mặt nỗi sợ", "lo âu"],
+      "copy": {
+        "en": "Apply systematic exposure for specific fears. Build a detailed hierarchy with SUDS ratings. Use imaginal and in-vivo exposure, staying until distress drops about 75%. Include interoceptive exercises for panic sensations. Graph progress and coordinate with an exposure-trained clinician for safety and effectiveness.",
+        "vi": "Áp dụng phơi nhiễm có hệ thống cho những nỗi sợ cụ thể. Xây dựng thang sợ chi tiết dựa trên điểm SUDS. Sử dụng phơi nhiễm tưởng tượng và phơi nhiễm thực tế, duy trì cho đến khi mức khó chịu giảm khoảng 75%. Kết hợp bài tập phơi nhiễm nội thân cho các cảm giác hoảng loạn. Vẽ biểu đồ tiến trình và phối hợp với chuyên gia trị liệu chuyên về phơi nhiễm để đảm bảo an toàn và hiệu quả."
+      },
+      "tags": ["exposure", "anxiety"],
+      "audio": {
+        "en": "anx_vip3_5_en.mp3"
+      },
+      "essay_ref": "anx_vip3_5_essay.txt"
+    },
+    {
+      "slug": "lifestyle",
+      "keywords_en": ["lifestyle", "habits", "anxiety"],
+      "keywords_vi": ["lối sống", "thói quen", "lo âu"],
+      "copy": {
+        "en": "Optimize lifestyle for prevention: solid sleep hygiene, anti-inflammatory nutrition, and thirty minutes of aerobic movement most days. Track HRV and mood to spot trends. Consider evidence-based supplements as appropriate. Build a supportive social routine. An integrative coach can personalize steps for steady, anxiety-resistant health.",
+        "vi": "Tối ưu hóa lối sống để phòng ngừa lo âu: đảm bảo vệ sinh giấc ngủ tốt, dinh dưỡng chống viêm và 30 phút vận động aerobic hầu hết các ngày. Theo dõi HRV và tâm trạng để nhận ra xu hướng. Cân nhắc bổ sung dựa trên bằng chứng khi phù hợp. Xây dựng các thói quen xã hội hỗ trợ. Một huấn luyện viên sức khỏe tích hợp có thể cá nhân hóa lộ trình giúp bạn đạt sức khỏe bền vững, ít bị ảnh hưởng bởi lo âu."
+      },
+      "tags": ["lifestyle", "anxiety"],
+      "audio": {
+        "en": "anx_vip3_6_en.mp3"
+      },
+      "essay_ref": "anx_vip3_6_essay.txt"
+    },
+    {
+      "slug": "mindfulness",
+      "keywords_en": ["mindfulness", "acceptance", "anxiety"],
+      "keywords_vi": ["chánh niệm", "chấp nhận", "lo âu"],
+      "copy": {
+        "en": "Deepen practice with MBSR principles: daily body scan, gentle yoga, and sitting meditation. Add loving-kindness to grow self-compassion. Track mindfulness minutes alongside anxiety levels to see correlations. Consider an eight-week MBSR course or group to strengthen consistency and support.",
+        "vi": "Đào sâu thực hành với nguyên tắc MBSR: quét cơ thể hằng ngày, yoga nhẹ nhàng và thiền ngồi. Thêm thực hành từ bi để nuôi dưỡng lòng tự thương. Theo dõi số phút chánh niệm song song với mức lo âu để nhận thấy mối tương quan. Hãy cân nhắc tham gia khóa MBSR tám tuần hoặc nhóm thực hành để tăng sự nhất quán và hỗ trợ."
+      },
+      "tags": ["mindfulness", "anxiety"],
+      "audio": {
+        "en": "anx_vip3_7_en.mp3"
+      },
+      "essay_ref": "anx_vip3_7_essay.txt"
+    },
+    {
+      "slug": "resilience",
+      "keywords_en": ["resilience", "strength", "anxiety"],
+      "keywords_vi": ["kiên cường", "sức mạnh", "lo âu"],
+      "copy": {
+        "en": "Integrate CBT, exposure, mindfulness, and lifestyle into a single plan. Keep a daily resilience journal—wins, gratitudes, and next steps. Use monthly anxiety scales to measure change. Join a resilience coach or mastermind for accountability. Consistent integration builds long-term emotional freedom.",
+        "vi": "Kết hợp CBT, phơi nhiễm, chánh niệm và lối sống vào một kế hoạch thống nhất. Giữ một nhật ký kiên cường hằng ngày—những điểm tích cực, lòng biết ơn và bước tiếp theo. Sử dụng thang đo lo âu hàng tháng để đánh giá thay đổi. Tham gia nhóm huấn luyện kiên cường hoặc mastermind để tăng trách nhiệm. Sự tích hợp nhất quán giúp xây dựng tự do cảm xúc lâu dài."
+      },
+      "tags": ["resilience", "anxiety"],
+      "audio": {
+        "en": "anx_vip3_8_en.mp3"
+      },
+      "essay_ref": "anx_vip3_8_essay.txt"
+    }
+  ],
+  "meta": {
+    "created_at": "2025-10-28T00:00:00+00:00",
+    "updated_at": "2025-10-28T00:00:00+00:00",
+    "entry_count": 8,
+    "tier": "vip3",
+    "room_color": "#4A90E2"
+  }
+}
