@@ -1,1 +1,145 @@
-{"name":"Productivity & Focus","name_vi":"Năng Suất & Tập Trung","description":"Advanced strategies for peak productivity and focus with systems","keywords_en":["productivity","focus","task","routine","system"],"keywords_vi":["năng suất","tập trung","nhiệm vụ","thói quen","hệ thống"],"entries":[{"slug":"task-list","keywords_en":["task list","priority","productivity"],"keywords_vi":["danh sách nhiệm vụ","ưu tiên","năng suất"],"copy":{"en":"Master task flow with the GTD system. Capture everything, clarify each action, organize by context, review weekly, and execute. Use a digital tool with tagging and track your velocity. Partner with a GTD coach for workflow audits to maintain zero inbox and achieve high-leverage output."},"tags":["task","productivity"],"audio":{"en":"paf_vip2_1_en.mp3"},"essay_ref":"paf_vip2_1_essay.txt"},{"slug":"pomodoro","keywords_en":["pomodoro","focus","break"],"keywords_vi":["pomodoro","tập trung","nghỉ"],"copy":{"en":"Upgrade to a flow-state Pomodoro routine. Work in ninety-minute cycles with twenty-minute recovery aligned to ultradian rhythm. Begin with a short breathing ritual and end with reflection. Track your flow score and exchange techniques with a focus mastermind to enhance deep work performance."},"tags":["pomodoro","focus"],"audio":{"en":"paf_vip2_2_en.mp3"},"essay_ref":"paf_vip2_2_essay.txt"},{"slug":"environment","keywords_en":["environment","distraction","productivity"],"keywords_vi":["môi trường","phân tâm","năng suất"],"copy":{"en":"Engineer your workspace for total focus. Use dual monitors, ergonomic setup, and daylight-balanced lighting. Apply app blockers and keep your phone in another room. Track total focus hours and consult a productivity expert for workspace redesign, creating a distraction-proof zone for high performance."},"tags":["environment","productivity"],"audio":{"en":"paf_vip2_3_en.mp3"},"essay_ref":"paf_vip2_3_essay.txt"},{"slug":"energy","keywords_en":["energy","peak","focus"],"keywords_vi":["năng lượng","đỉnh","tập trung"],"copy":{"en":"Map your energy to find natural focus peaks. Log hourly energy levels for one week and identify your top three-hour window. Schedule deep work during that period and use HRV tracking to manage recovery. Collaborate with a biohacker to align your workflow with circadian and ultradian rhythms."},"tags":["energy","focus"],"audio":{"en":"paf_vip2_4_en.mp3"},"essay_ref":"paf_vip2_4_essay.txt"},{"slug":"deep-work","keywords_en":["deep work","concentration","productivity"],"keywords_vi":["làm việc sâu","tập trung","năng suất"],"copy":{"en":"Schedule four-hour deep work sessions for high-value creation. Silence notifications and use a 'do not disturb' ritual to protect focus. Set clear objectives before each session and log output quality. Join a deep work community for accountability and mastery of distraction-free creation."},"tags":["deep work","productivity"],"audio":{"en":"paf_vip2_5_en.mp3"},"essay_ref":"paf_vip2_5_essay.txt"},{"slug":"review","keywords_en":["review","reflection","productivity"],"keywords_vi":["xem xét","phản ánh","năng suất"],"copy":{"en":"Run a weekly review to prevent productivity leaks. Every Sunday, spend sixty minutes capturing loose ends, reviewing goals, and planning your week. Track wins and lessons learned. Partner with a review buddy to audit progress and maintain continuous improvement through structured reflection."},"tags":["review","productivity"],"audio":{"en":"paf_vip2_6_en.mp3"},"essay_ref":"paf_vip2_6_essay.txt"}],"meta":{"created_at":"2025-10-28T00:00:00+00:00","updated_at":"2025-10-28T00:00:00+00:00","entry_count":6,"tier":"vip2","room_color":"#4A90E2"}}
+{
+  "tier": "VIP2 / VIP2",
+  "title": {
+    "en": "Productivity & Focus",
+    "vi": "Năng Suất & Tập Trung"
+  },
+  "content": {
+    "en": "This room helps you build steadier focus, calmer workflow, and sustainable productivity without burnout. Instead of forcing intensity, you will practice gentle systems that support clarity: planning tasks with intention, setting up an environment that reduces friction, and understanding your natural energy rhythm. Each entry offers a small, realistic action you can apply today, designed for real life, not perfection. Over time, these habits help you approach work with more presence, consistency, and confidence. Productivity becomes less about pressure and more about creating space for your best work to emerge.",
+    "vi": "Phòng này giúp bạn xây dựng sự tập trung ổn định hơn, quy trình làm việc bình tĩnh hơn và năng suất bền vững mà không kiệt sức. Thay vì ép mình làm việc mãnh liệt, bạn sẽ thực hành những hệ thống nhẹ nhàng hỗ trợ sự sáng rõ: lập kế hoạch nhiệm vụ có chủ đích, tạo môi trường giảm phân tâm và hiểu nhịp năng lượng tự nhiên của bản thân. Mỗi mục mang đến một hành động nhỏ, thực tế bạn có thể áp dụng ngay hôm nay, phù hợp với đời sống thật thay vì sự hoàn hảo. Theo thời gian, những thói quen này giúp bạn tiếp cận công việc với nhiều hiện diện, ổn định và tự tin hơn. Năng suất không còn là áp lực, mà là tạo không gian để công việc tốt nhất của bạn xuất hiện."
+  },
+  "entries": [
+    {
+      "slug": "task-list-clarity",
+      "keywords_en": [
+        "Task List",
+        "priorities",
+        "work clarity",
+        "task planning"
+      ],
+      "keywords_vi": [
+        "Danh Sách Nhiệm Vụ",
+        "ưu tiên",
+        "sáng rõ công việc",
+        "lập kế hoạch nhiệm vụ"
+      ],
+      "copy": {
+        "en": "A clear task list reduces overwhelm and brings structure to your day. Start by capturing everything on your mind, then choose the three tasks that truly matter. Sort the rest into simple categories such as quick actions, later items, or optional ideas. Keep your list visible, review it briefly each morning, and adjust without judgment. This practice helps you focus on what moves life forward instead of reacting to noise. Over time, your workflow becomes lighter, calmer, and more intentional.",
+        "vi": "Một danh sách nhiệm vụ rõ ràng giúp giảm quá tải và tạo cấu trúc cho ngày làm việc. Bắt đầu bằng cách ghi lại mọi việc đang chạy trong đầu, sau đó chọn ba nhiệm vụ thật sự quan trọng. Phần còn lại hãy phân vào các nhóm đơn giản như việc nhanh, việc để sau hoặc ý tưởng tùy chọn. Giữ danh sách ở nơi dễ thấy, xem nhanh mỗi sáng và điều chỉnh mà không tự trách. Thói quen này giúp bạn tập trung vào điều đưa cuộc sống tiến lên thay vì phản ứng với những thứ gây nhiễu. Theo thời gian, quy trình làm việc trở nên nhẹ nhàng, bình tĩnh và có chủ đích hơn."
+      },
+      "tags": ["task-management", "clarity", "planning"],
+      "audio": "paf_vip2_1_en.mp3",
+      "essay_ref": "paf_vip2_1_essay.txt"
+    },
+    {
+      "slug": "pomodoro-flow",
+      "keywords_en": [
+        "Pomodoro",
+        "focus cycles",
+        "work rhythm",
+        "deep focus"
+      ],
+      "keywords_vi": [
+        "Pomodoro",
+        "chu kỳ tập trung",
+        "nhịp làm việc",
+        "tập trung sâu"
+      ],
+      "copy": {
+        "en": "Short focus cycles help your mind stay engaged without burning out. Try working for twenty to twenty-five minutes, then resting for a few minutes. Use a gentle timer and begin each cycle with one slow breath to reset your attention. After four rounds, take a longer break to recharge. Notice which times of day feel easiest for focus and schedule harder tasks there. These rhythms support steady progress and reduce the pressure to work nonstop.",
+        "vi": "Các chu kỳ tập trung ngắn giúp tâm trí duy trì sự chú ý mà không kiệt sức. Hãy làm việc trong hai mươi đến hai mươi lăm phút, sau đó nghỉ vài phút. Dùng một bộ hẹn giờ nhẹ nhàng và bắt đầu mỗi chu kỳ bằng một hơi thở chậm để thiết lập lại sự chú ý. Sau bốn vòng, hãy nghỉ dài hơn để hồi phục. Chú ý thời điểm nào trong ngày bạn dễ tập trung nhất và sắp xếp nhiệm vụ khó vào lúc đó. Nhịp này giúp bạn tiến bộ đều đặn và giảm áp lực phải làm việc liên tục."
+      },
+      "tags": ["focus", "routine", "cycles"],
+      "audio": "paf_vip2_2_en.mp3",
+      "essay_ref": "paf_vip2_2_essay.txt"
+    },
+    {
+      "slug": "environment-design",
+      "keywords_en": [
+        "Environment",
+        "distraction-free",
+        "workspace setup",
+        "focus habits"
+      ],
+      "keywords_vi": [
+        "Môi Trường",
+        "không phân tâm",
+        "bố trí không gian",
+        "thói quen tập trung"
+      ],
+      "copy": {
+        "en": "Your environment shapes how easily you focus. Choose a workspace with good lighting, a clean surface, and only the essentials within reach. Place your phone out of sight and close distracting tabs or apps. A simple ritual—such as clearing your desk for one minute—signals your brain it’s time to work. Small adjustments create big changes in how calm and centered you feel while working.",
+        "vi": "Môi trường ảnh hưởng mạnh đến khả năng tập trung. Hãy chọn một không gian làm việc có ánh sáng tốt, mặt bàn gọn gàng và chỉ để những vật dụng cần thiết trong tầm tay. Để điện thoại xa tầm mắt và đóng các tab hoặc ứng dụng gây phân tâm. Một nghi thức đơn giản—như dọn bàn trong một phút—gửi tín hiệu cho não rằng đã đến lúc làm việc. Những điều chỉnh nhỏ tạo nên thay đổi lớn về sự bình tĩnh và tập trung khi làm việc."
+      },
+      "tags": ["workspace", "environment", "focus"],
+      "audio": "paf_vip2_3_en.mp3",
+      "essay_ref": "paf_vip2_3_essay.txt"
+    },
+    {
+      "slug": "energy-mapping",
+      "keywords_en": [
+        "Energy",
+        "peak hours",
+        "natural rhythm",
+        "focus window"
+      ],
+      "keywords_vi": [
+        "Năng Lượng",
+        "giờ đỉnh",
+        "nhịp tự nhiên",
+        "khoảng tập trung"
+      ],
+      "copy": {
+        "en": "Your focus rises and falls naturally throughout the day. Spend one week noticing when your energy feels highest, then choose one daily task to place in that window. Protect it as your quiet zone for meaningful work. When your energy dips, switch to lighter tasks or take a mindful break. Working with your rhythm instead of against it makes productivity feel more humane and sustainable.",
+        "vi": "Khả năng tập trung của bạn lên xuống tự nhiên trong ngày. Hãy dành một tuần để quan sát thời điểm năng lượng của bạn cao nhất, rồi đặt một nhiệm vụ quan trọng vào khung giờ đó. Bảo vệ khoảng thời gian này như vùng yên tĩnh dành cho công việc ý nghĩa. Khi năng lượng giảm, hãy chuyển sang nhiệm vụ nhẹ hơn hoặc nghỉ ngơi chánh niệm. Làm việc theo nhịp tự nhiên thay vì chống lại nó giúp năng suất trở nên nhẹ nhàng và bền vững."
+      },
+      "tags": ["energy", "rhythm", "productivity"],
+      "audio": "paf_vip2_4_en.mp3",
+      "essay_ref": "paf_vip2_4_essay.txt"
+    },
+    {
+      "slug": "deep-work-blocks",
+      "keywords_en": [
+        "Deep Work",
+        "concentration",
+        "distraction-free",
+        "high-value work"
+      ],
+      "keywords_vi": [
+        "Làm Việc Sâu",
+        "tập trung cao độ",
+        "không phân tâm",
+        "công việc giá trị"
+      ],
+      "copy": {
+        "en": "Deep work requires protected time and intention. Choose one or two blocks each week where you silence notifications, set a clear goal, and work without switching tasks. Begin with shorter sessions and extend them as it becomes easier. Even small pockets of deep focus can move your most important projects forward and build confidence in your ability to create meaningful work.",
+        "vi": "Làm việc sâu cần thời gian được bảo vệ và có chủ đích. Hãy chọn một hoặc hai khung giờ mỗi tuần để tắt thông báo, đặt mục tiêu rõ ràng và làm việc mà không chuyển đổi nhiệm vụ. Bắt đầu bằng các phiên ngắn và kéo dài dần khi thấy dễ hơn. Ngay cả những khoảng tập trung sâu nhỏ cũng có thể thúc đẩy các dự án quan trọng và xây dựng sự tự tin vào khả năng tạo ra công việc có ý nghĩa."
+      },
+      "tags": ["deep-work", "focus", "intentional"],
+      "audio": "paf_vip2_5_en.mp3",
+      "essay_ref": "paf_vip2_5_essay.txt"
+    },
+    {
+      "slug": "weekly-review",
+      "keywords_en": [
+        "Weekly Review",
+        "reflection",
+        "planning",
+        "continuous improvement"
+      ],
+      "keywords_vi": [
+        "Xem Lại Tuần",
+        "phản ánh",
+        "lập kế hoạch",
+        "cải thiện liên tục"
+      ],
+      "copy": {
+        "en": "A weekly review keeps your system fresh and prevents important tasks from slipping through the cracks. Choose a quiet moment each week to gather loose notes, review goals, and set intentions for the coming days. Celebrate small wins and notice what felt difficult. This gentle ritual strengthens clarity, reduces stress, and helps you enter each week with direction and calm.",
+        "vi": "Một buổi xem lại tuần giúp hệ thống của bạn luôn mới và ngăn nhiệm vụ quan trọng bị bỏ sót. Hãy chọn một khoảnh khắc yên tĩnh mỗi tuần để gom lại ghi chú, xem lại mục tiêu và đặt ý định cho những ngày tới. Ăn mừng các tiến bộ nhỏ và nhận ra điều gì đã khó khăn. Nghi thức nhẹ nhàng này tăng sự sáng rõ, giảm căng thẳng và giúp bạn bước vào tuần mới với định hướng và bình an."
+      },
+      "tags": ["review", "planning", "reflection"],
+      "audio": "paf_vip2_6_en.mp3",
+      "essay_ref": "paf_vip2_6_essay.txt"
+    }
+  ]
+}
