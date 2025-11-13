@@ -33,13 +33,24 @@ function extractNames(jsonPath, filename) {
   try {
     const content = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
     
-    // Prioritize title field for display names (proper structure)
-    let nameEn = content.title?.en || content.nameEn || null;
-    let nameVi = content.title?.vi || content.nameVi || content.name_vi || null;
+    // NEW STRUCTURE (VIP2 standardized): Prioritize name/name_vi fields
+    let nameEn = content.name || null;
+    let nameVi = content.name_vi || null;
     
-    // If name field exists and doesn't look like a filename, use it as fallback
-    if (!nameEn && content.name && !content.name.includes('.json')) {
-      nameEn = content.name;
+    // OLD STRUCTURE: Fallback to title.en/title.vi for backwards compatibility
+    if (!nameEn && content.title) {
+      nameEn = content.title?.en || content.title;
+    }
+    if (!nameVi && content.title) {
+      nameVi = content.title?.vi || content.title;
+    }
+    
+    // Additional fallbacks
+    if (!nameEn) {
+      nameEn = content.nameEn || null;
+    }
+    if (!nameVi) {
+      nameVi = content.nameVi || null;
     }
     
     // If still no name found, extract from filename
