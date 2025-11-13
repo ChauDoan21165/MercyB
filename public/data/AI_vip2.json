@@ -1,23 +1,17 @@
 {
-  "tier": "VIP2 / VIP2",
+  "name": "AI Mastery",
+  "name_vi": "Thành Thạo AI",
+  "description": "AI mastery is not about coding machines—it's about understanding the mind of intelligence itself. The more we learn how AI perceives, creates, and evolves, the more we uncover about human thought and emotion. This room explores AI as both mirror and partner, helping us imagine smarter tools, deeper empathy, and a future where technology becomes a quiet extension of awareness rather than its replacement.",
+  "description_vi": "Thành thạo AI không chỉ là lập trình máy móc mà là hiểu tâm trí của trí tuệ. Càng khám phá cách AI nhận biết, sáng tạo và phát triển, ta càng hiểu sâu hơn về tư duy và cảm xúc con người. Phòng này xem AI như tấm gương và người đồng hành, giúp ta hình dung những công cụ thông minh hơn, lòng đồng cảm sâu hơn, và một tương lai nơi công nghệ là sự mở rộng của nhận thức chứ không phải thay thế nó.",
   "keywords_en": ["AI", "mastery", "creativity", "emotion", "humanity"],
   "keywords_vi": ["AI", "thành thạo", "sáng tạo", "cảm xúc", "nhân tính"],
-  "title": {
-    "en": "AI Mastery",
-    "vi": "Thành Thạo AI"
-  },
-  "content": {
-    "en": "AI mastery is not about coding machines—it’s about understanding the mind of intelligence itself. The more we learn how AI perceives, creates, and evolves, the more we uncover about human thought and emotion. This room explores AI as both mirror and partner, helping us imagine smarter tools, deeper empathy, and a future where technology becomes a quiet extension of awareness rather than its replacement.",
-    "vi": "Thành thạo AI không chỉ là lập trình máy móc mà là hiểu tâm trí của trí tuệ. Càng khám phá cách AI nhận biết, sáng tạo và phát triển, ta càng hiểu sâu hơn về tư duy và cảm xúc con người. Phòng này xem AI như tấm gương và người đồng hành, giúp ta hình dung những công cụ thông minh hơn, lòng đồng cảm sâu hơn, và một tương lai nơi công nghệ là sự mở rộng của nhận thức chứ không phải thay thế nó.",
-    "audio": "ai_mastery_intro_vip2.mp3"
-  },
   "entries": [
     {
       "slug": "why-ai-fascinates-us",
       "keywords_en": ["wonder", "curiosity", "intelligence", "learning"],
       "keywords_vi": ["kỳ diệu", "tò mò", "trí tuệ", "học hỏi"],
       "copy": {
-        "en": "AI fascinates us because it reflects our endless curiosity to understand how thinking works. Watching a system learn patterns, make choices, and even surprise its creators reminds us of the mystery of life itself. Each experiment in AI feels like holding up a mirror to the human mind—sometimes precise, sometimes unpredictable, always evolving. It’s not just technology; it’s our attempt to translate imagination into something that can think back.",
+        "en": "AI fascinates us because it reflects our endless curiosity to understand how thinking works. Watching a system learn patterns, make choices, and even surprise its creators reminds us of the mystery of life itself. Each experiment in AI feels like holding up a mirror to the human mind—sometimes precise, sometimes unpredictable, always evolving. It's not just technology; it's our attempt to translate imagination into something that can think back.",
         "vi": "AI cuốn hút ta vì nó phản chiếu sự tò mò vô tận trong việc hiểu cách tư duy vận hành. Khi chứng kiến hệ thống học, lựa chọn và đôi khi khiến chính người tạo ra nó ngạc nhiên, ta nhớ rằng trí tuệ là điều kỳ diệu của sự sống. Mỗi thử nghiệm AI như soi gương vào tâm trí con người — lúc chính xác, lúc khó lường, luôn phát triển. Đó không chỉ là công nghệ, mà là nỗ lực biến tưởng tượng thành điều biết suy nghĩ lại với ta."
       },
       "tags": ["curiosity", "intelligence"],
