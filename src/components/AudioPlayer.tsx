@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Play, Pause, RotateCcw, Volume2, VolumeX, Gauge } from "lucide-react";
+import { Play, Pause, RotateCcw, Volume2, VolumeX, Gauge, SkipBack, SkipForward } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
@@ -121,6 +121,18 @@ export const AudioPlayer = ({
     audio.playbackRate = playbackSpeed;
   }, [playbackSpeed]);
 
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.code === 'Space' && e.target === document.body) {
+        e.preventDefault();
+        onPlayPause();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [onPlayPause]);
+
   const formatTime = (time: number) => {
     if (isNaN(time)) return "0:00";
     const minutes = Math.floor(time / 60);
@@ -171,24 +183,59 @@ export const AudioPlayer = ({
     }
   };
 
+  const handleSkipBackward = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.currentTime = Math.max(0, audio.currentTime - 10);
+  };
+
+  const handleSkipForward = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.currentTime = Math.min(duration, audio.currentTime + 10);
+  };
+
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
     <div className={cn("flex items-center gap-2 w-full", className)}>
       <audio ref={audioRef} />
       
+      {/* Skip Backward Button */}
+      <Button
+        onClick={handleSkipBackward}
+        size="sm"
+        variant="ghost"
+        className="h-8 w-8 p-0 shrink-0"
+        title="Skip backward 10s"
+      >
+        <SkipBack className="h-4 w-4" />
+      </Button>
+
       {/* Play/Pause Button */}
       <Button
         onClick={onPlayPause}
         size="sm"
         variant="ghost"
         className="h-8 w-8 p-0 shrink-0"
+        title="Play/Pause (Space)"
       >
         {isPlaying ? (
           <Pause className="h-4 w-4" />
         ) : (
           <Play className="h-4 w-4" />
         )}
+      </Button>
+
+      {/* Skip Forward Button */}
+      <Button
+        onClick={handleSkipForward}
+        size="sm"
+        variant="ghost"
+        className="h-8 w-8 p-0 shrink-0"
+        title="Skip forward 10s"
+      >
+        <SkipForward className="h-4 w-4" />
       </Button>
 
       {/* Time Display */}
