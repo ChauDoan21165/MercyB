@@ -113,53 +113,69 @@ const AdminDashboard = () => {
       <div className="max-w-7xl mx-auto">
         <AdminBreadcrumb items={[{ label: "Dashboard" }]} />
         
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold">Admin Dashboard</h1>
-          <p className="text-muted-foreground mt-1">Manage your application and monitor activity</p>
+        <div className="mb-8 p-8 rounded-2xl" style={{ 
+          background: 'var(--gradient-admin)',
+          boxShadow: 'var(--shadow-rainbow)'
+        }}>
+          <h1 className="text-5xl font-bold text-white drop-shadow-lg">
+            <span style={{ color: '#E91E63' }}>M</span>
+            <span style={{ color: '#9C27B0' }}>e</span>
+            <span style={{ color: '#3F51B5' }}>r</span>
+            <span style={{ color: '#2196F3' }}>c</span>
+            <span style={{ color: '#00BCD4' }}>y</span>
+            {' '}
+            <span style={{ color: '#009688' }}>B</span>
+            <span style={{ color: '#4CAF50' }}>l</span>
+            <span style={{ color: '#8BC34A' }}>a</span>
+            <span style={{ color: '#FFC107' }}>d</span>
+            <span style={{ color: '#FF9800' }}>e</span>
+            {' Admin Dashboard'}
+          </h1>
+          <p className="text-white/90 mt-2 text-lg">Manage your application with colorful rainbow power</p>
         </div>
 
-        {/* Quick Stats */}
+        {/* Quick Stats - Rainbow themed */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card>
+          <Card className="border-2 hover:shadow-lg transition-all" style={{ borderColor: '#E91E63' }}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Rooms</CardTitle>
-              <LayoutDashboard className="h-4 w-4 text-muted-foreground" />
+              <LayoutDashboard className="h-4 w-4" style={{ color: '#E91E63' }} />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stats.totalRooms}</div>
+              <div className="text-3xl font-bold" style={{ color: '#E91E63' }}>{stats.totalRooms}</div>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="border-2 hover:shadow-lg transition-all" style={{ borderColor: '#2196F3' }}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Users</CardTitle>
-              <Users className="h-4 w-4 text-muted-foreground" />
+              <Users className="h-4 w-4" style={{ color: '#2196F3' }} />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stats.totalUsers}</div>
+              <div className="text-3xl font-bold" style={{ color: '#2196F3' }}>{stats.totalUsers}</div>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="border-2 hover:shadow-lg transition-all" style={{ borderColor: '#4CAF50' }}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Pending Requests</CardTitle>
-              <MessageSquare className="h-4 w-4 text-muted-foreground" />
+              <MessageSquare className="h-4 w-4" style={{ color: '#4CAF50' }} />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stats.pendingRequests}</div>
+              <div className="text-3xl font-bold" style={{ color: '#4CAF50' }}>{stats.pendingRequests}</div>
               {stats.pendingRequests > 0 && (
                 <Badge variant="destructive" className="mt-2">Needs Attention</Badge>
               )}
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="border-2 hover:shadow-lg transition-all" style={{ borderColor: '#FF9800' }}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Suspended Users</CardTitle>
-              <Shield className="h-4 w-4 text-muted-foreground" />
+              <Shield className="h-4 w-4" style={{ color: '#FF9800' }} />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stats.suspendedUsers}</div>
+              <div className="text-3xl font-bold" style={{ color: '#FF9800' }}>{stats.suspendedUsers}</div>
             </CardContent>
           </Card>
         </div>
