@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AdminFloatingButton } from "@/components/AdminFloatingButton";
 import Welcome from "./pages/Welcome";
 import Homepage from "./pages/Homepage";
+import Tiers from "./pages/Tiers";
 import MeaningOfLife from "./pages/MeaningOfLife";
 import RoomGrid from "./pages/RoomGrid";
 import RoomGridVIP1 from "./pages/RoomGridVIP1";
@@ -56,6 +57,7 @@ const App = () => (
         <AdminFloatingButton />
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/tiers" element={<Tiers />} />
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/meaning-of-life" element={<MeaningOfLife />} />
           <Route path="/auth" element={<Auth />} />
