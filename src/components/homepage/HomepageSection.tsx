@@ -1,9 +1,7 @@
 import { useRef, useState } from 'react';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
-
 import { cn } from '@/lib/utils';
-import { Play, Pause } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { AudioPlayer } from '@/components/AudioPlayer';
 
 interface HomepageSectionProps {
   id: string;
@@ -34,10 +32,8 @@ export const HomepageSection = ({
   audio,
 }: HomepageSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
-  const audioEnRef = useRef<HTMLAudioElement>(null);
-  const audioViRef = useRef<HTMLAudioElement>(null);
-  const [playingEn, setPlayingEn] = useState(false);
-  const [playingVi, setPlayingVi] = useState(false);
+  const [currentAudio, setCurrentAudio] = useState<'en' | 'vi' | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const isVisible = useIntersectionObserver(sectionRef, {
     threshold: 0.15,
