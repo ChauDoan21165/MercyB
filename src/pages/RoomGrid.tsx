@@ -9,20 +9,13 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useEffect, useState } from "react";
 
-// VIP3 exclusive rooms with special thematic colors
-const VIP3_SPECIAL_ROOMS: Record<string, string> = {
-  'sexuality-and-curiosity-and-culture-vip3': '#D946A6', // Deep sensual magenta
-  'finance-glory-vip3': '#FBBF24', // Golden glory
-  'strategy-in-life-1-vip3': '#1E40AF', // Strategic deep blue
-  'strategy-in-life-2-vip3': '#7C3AED', // Strategic purple
-  'strategy-in-life-3-vip3': '#059669', // Strategic emerald
-};
+import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
 
-// Free introduction rooms with golden styling to attract attention
+// Free introduction rooms (still use golden to attract attention)
 const FREE_INTRO_ROOMS: Record<string, string> = {
-  'finance-calm-money-clear-future-preview-free': '#FFD700', // Golden
-  'sexuality-and-curiosity-free': '#FFD700', // Golden
-  'career-consultant-free': '#FFD700', // Golden
+  'finance-calm-money-clear-future-preview-free': '#FFD700',
+  'sexuality-and-curiosity-free': '#FFD700',
+  'career-consultant-free': '#FFD700',
 };
 
 const RoomGrid = () => {
@@ -176,7 +169,13 @@ const RoomGrid = () => {
             const aName = a.name || a.id;
             const bName = b.name || b.id;
             return aName.localeCompare(bName);
-          }).map((room) => (
+          }).map((room) => {
+            const roomColor = FREE_INTRO_ROOMS[room.id] || getRoomColor(room.id);
+            const textColor = getContrastTextColor(roomColor);
+            const headingColor = getHeadingColor(roomColor);
+            const isFreeIntro = !!FREE_INTRO_ROOMS[room.id];
+            
+            return (
             <Tooltip key={room.id}>
               <TooltipTrigger asChild>
                 <Card
@@ -185,11 +184,13 @@ const RoomGrid = () => {
                       ? "hover:scale-110 hover:shadow-hover hover:z-10 cursor-pointer" 
                       : "opacity-30 cursor-not-allowed grayscale"
                   }`}
-                  style={FREE_INTRO_ROOMS[room.id] ? {
-                    border: `2px solid ${FREE_INTRO_ROOMS[room.id]}`,
-                    background: `linear-gradient(135deg, ${FREE_INTRO_ROOMS[room.id]}20, ${FREE_INTRO_ROOMS[room.id]}10)`,
-                    boxShadow: `0 0 20px ${FREE_INTRO_ROOMS[room.id]}60`
-                  } : undefined}
+                  style={isFreeIntro ? {
+                    border: `2px solid ${roomColor}`,
+                    background: `linear-gradient(135deg, ${roomColor}20, ${roomColor}10)`,
+                    boxShadow: `0 0 20px ${roomColor}60`
+                  } : {
+                    background: roomColor
+                  }}
                   onClick={() => handleRoomClick(room)}
                 >
                   {/* Status Badge */}
@@ -208,10 +209,10 @@ const RoomGrid = () => {
                   <div className="space-y-2">
                     {/* Room Names */}
                     <div className="space-y-1">
-                      <p className="text-xs font-semibold text-foreground leading-tight line-clamp-2">
+                      <p className="text-xs font-semibold leading-tight line-clamp-2" style={{ color: headingColor }}>
                         {room.nameEn}
                       </p>
-                      <p className="text-[10px] text-muted-foreground leading-tight line-clamp-2">
+                      <p className="text-[10px] leading-tight line-clamp-2" style={{ color: textColor }}>
                         {room.nameVi}
                       </p>
                     </div>
@@ -219,7 +220,8 @@ const RoomGrid = () => {
 
                   {/* Hover Effect */}
                   {room.hasData && (
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" 
+                         style={{ background: `linear-gradient(to bottom right, ${roomColor}20, ${roomColor}10)` }} />
                   )}
                 </Card>
               </TooltipTrigger>
@@ -227,7 +229,7 @@ const RoomGrid = () => {
                 <p>{room.hasData ? "Click to enter" : "Coming soon"}</p>
               </TooltipContent>
             </Tooltip>
-          ))}
+          )})}
         </div>
 
       </div>

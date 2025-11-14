@@ -9,15 +9,7 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useToast } from "@/hooks/use-toast";
-
-// VIP3 exclusive rooms with special thematic colors
-const VIP3_SPECIAL_ROOMS: Record<string, string> = {
-  'sexuality-and-curiosity-and-culture-vip3': '#D946A6',
-  'finance-glory-vip3': '#FBBF24',
-  'strategy-in-life-1-vip3': '#1E40AF',
-  'strategy-in-life-2-vip3': '#7C3AED',
-  'strategy-in-life-3-vip3': '#059669',
-};
+import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
 
 const RoomGridVIP3 = () => {
   const navigate = useNavigate();
