@@ -32,7 +32,6 @@ export const HomepageSection = ({
   audio,
 }: HomepageSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
-  const [currentAudio, setCurrentAudio] = useState<'en' | 'vi' | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const isVisible = useIntersectionObserver(sectionRef, {
@@ -76,15 +75,8 @@ export const HomepageSection = ({
           </p>
           <AudioPlayer
             audioPath={`/audio/${audio.en}`}
-            isPlaying={currentAudio === 'en' && isPlaying}
-            onPlayPause={() => {
-              if (currentAudio === 'en' && isPlaying) {
-                setIsPlaying(false);
-              } else {
-                setCurrentAudio('en');
-                setIsPlaying(true);
-              }
-            }}
+            isPlaying={isPlaying}
+            onPlayPause={() => setIsPlaying(!isPlaying)}
             onEnded={() => setIsPlaying(false)}
           />
         </div>
@@ -100,19 +92,6 @@ export const HomepageSection = ({
           <p className="text-[15px] leading-relaxed" style={{ color: 'rgba(0, 0, 0, 0.70)' }}>
             {body.vi}
           </p>
-          <AudioPlayer
-            audioPath={`/audio/${audio.vi}`}
-            isPlaying={currentAudio === 'vi' && isPlaying}
-            onPlayPause={() => {
-              if (currentAudio === 'vi' && isPlaying) {
-                setIsPlaying(false);
-              } else {
-                setCurrentAudio('vi');
-                setIsPlaying(true);
-              }
-            }}
-            onEnded={() => setIsPlaying(false)}
-          />
         </div>
       </div>
     </section>
