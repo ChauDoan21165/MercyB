@@ -35,6 +35,7 @@ export const AudioPlayer = ({
   const progressBarRef = useRef<HTMLDivElement>(null);
 
   const speedOptions = [0.5, 0.75, 1, 1.25, 1.5, 2];
+  const storageKey = (path: string) => `audio-pos:${path}`;
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -57,15 +58,27 @@ export const AudioPlayer = ({
       if (!isDragging) {
         setCurrentTime(audio.currentTime);
       }
+      try {
+        sessionStorage.setItem(storageKey(audioPath), String(audio.currentTime));
+      } catch {}
     };
 
     const handleLoadedMetadata = () => {
       setDuration(audio.duration);
+      // Restore saved position if available
+      try {
+        const saved = parseFloat(sessionStorage.getItem(storageKey(audioPath)) || '0');
+        if (!isNaN(saved) && saved > 0 && saved < audio.duration - 0.2) {
+          audio.currentTime = saved;
+          setCurrentTime(saved);
+        }
+      } catch {}
       console.log('✅ Audio loaded successfully:', audioPath, 'Duration:', audio.duration);
     };
 
     const handleEnded = () => {
       setCurrentTime(0);
+      try { sessionStorage.removeItem(storageKey(audioPath)); } catch {}
       onEnded();
     };
 
@@ -103,6 +116,8 @@ export const AudioPlayer = ({
     if (isPlaying) {
       audio.play().catch(console.error);
     } else {
+      // Save position on pause
+      try { sessionStorage.setItem(storageKey(audioPath), String(audio.currentTime)); } catch {}
       audio.pause();
     }
   }, [isPlaying]);
