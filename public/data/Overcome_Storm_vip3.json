@@ -1,81 +1,117 @@
 {
-"tier": "VIP 3 / Cấp VIP 3",
-"default_entry_id": "build_resilience_challenges",
-"welcome": {
-"en": "Hello! Welcome to Emotional Growth VIP3 room. How can I help you today?\n\nTopic keywords you can type are below:\n- build_resilience_challenges\n- seek_support_tough_times\n- cultivate_positive_mindset",
-"vi": "Xin chào! Chào mừng bạn đến với phòng Phát Triển Cảm Xúc VIP3. Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:\n- xay_dung_suc_ben_noi_tam\n- tim_kiem_ho_tro\n- nuoi_duong_tu_duy_tich_cuc"
-},
-"search": {
-"normalize_case": true,
-"normalize_accents": true,
-"tokenize_on": [" ", "_"]
-},
-"keyword_menu": {
-"en": [
-"build_resilience_challenges",
-"seek_support_tough_times",
-"cultivate_positive_mindset"
-],
-"vi": [
-"xay_dung_suc_ben_noi_tam",
-"tim_kiem_ho_tro",
-"nuoi_duong_tu_duy_tich_cuc"
-]
-},
-"keywords_dict": {
-"en": {
-"build_resilience_challenges": ["resilience", "challenges", "gratitude", "strength", "growth", "overcome", "hardship", "storm"],
-"seek_support_tough_times": ["support", "tough", "times", "help", "connection", "network", "friends", "crisis", "reach out"],
-"cultivate_positive_mindset": ["positive", "mindset", "optimistic", "reframe", "lessons", "growth", "hope", "visualization"]
-},
-"vi": {
-"xay_dung_suc_ben_noi_tam": ["sức bền", "thử thách", "biết ơn", "sức mạnh", "trưởng thành", "vượt qua", "khó khăn", "giông bão"],
-"tim_kiem_ho_tro": ["hỗ trợ", "khó khăn", "giúp đỡ", "kết nối", "mạng lưới", "bạn bè", "khủng hoảng", "chia sẻ"],
-"nuoi_duong_tu_duy_tich_cuc": ["tích cực", "tư duy", "lạc quan", "nhìn lại", "bài học", "phát triển", "hy vọng", "hình dung"]
-}
-},
-"entries": [
-{
-"id": "build_resilience_challenges",
-"title": {
-"en": "Build Resilience in Challenges",
-"vi": "Xây Dựng Sức Bền Trong Thử Thách"
-},
-"content": {
-"en": "Resilience grows 35%, per studies. Overcome storms with these steps: Practice one gratitude daily to shift focus. Journal one challenge weekly, noting lessons. Seek one support monthly for empathy. Maria’s gratitude calmed her during hardship. This empathetic practice builds strength gently. Don’t rush; embrace growth. Start one gratitude today. Ready to foster resilience? Discover deeper insights beyond VIP 3.",
-"vi": "Sức bền nội tâm có thể tăng 35%, theo nghiên cứu. Vượt qua giông bão bằng các bước: Thực hành lòng biết ơn mỗi ngày để chuyển hướng tập trung. Ghi lại một thử thách mỗi tuần và bài học nhận được. Tìm một nguồn hỗ trợ mỗi tháng để nuôi dưỡng sự đồng cảm. Lòng biết ơn của Maria giúp cô bình tâm trong khó khăn. Thói quen này nuôi dưỡng sức mạnh nhẹ nhàng. Đừng vội vàng; hãy ôm trọn hành trình trưởng thành. Bắt đầu hôm nay bằng một điều biết ơn. Sẵn sàng vun bồi sức bền chưa? Khám phá sâu hơn ngoài cấp VIP 3."
-},
-"audio": {
-"en": "Build_Resilience_in_Challenges_VIP3.mp3"
-}
-},
-{
-"id": "seek_support_tough_times",
-"title": {
-"en": "Seek Support in Tough Times",
-"vi": "Tìm Kiếm Sự Hỗ Trợ Khi Khó Khăn"
-},
-"content": {
-"en": "Support aids recovery by 30%, research shows. Build networks with these steps: Reach out to one friend monthly for conversation. Join one group for shared experiences. Share one challenge weekly honestly. Minh’s support calmed his soul in crisis. This supportive practice drives hope without judgment. Don’t despair; foster connections. Start reaching out today. Ready to drive hope? Discover deeper insights beyond VIP 3.",
-"vi": "Sự hỗ trợ giúp phục hồi 30%, theo nghiên cứu. Xây dựng mạng lưới gắn kết bằng các bước: Liên hệ với một người bạn mỗi tháng để trò chuyện. Tham gia một nhóm để chia sẻ trải nghiệm. Thành thật chia sẻ một thử thách mỗi tuần. Sự hỗ trợ của Minh đã giúp anh bình tâm trong khủng hoảng. Thói quen kết nối này thắp lại hy vọng mà không phán xét. Đừng tuyệt vọng; hãy nuôi dưỡng mối liên hệ. Bắt đầu bằng việc mở lòng hôm nay. Sẵn sàng khơi dậy hy vọng chưa? Khám phá sâu hơn ngoài cấp VIP 3."
-},
-"audio": {
-"en": "Seek_Support_in_Tough_Times_VIP3.mp3"
-}
-},
-{
-"id": "cultivate_positive_mindset",
-"title": {
-"en": "Cultivating Positive Mindset",
-"vi": "Nuôi Dưỡng Tư Duy Tích Cực"
-},
-"content": {
-"en": "Positive mindset shifts outcomes by 35%, per studies. Drive growth with these steps: Reframe setbacks as lessons daily. Visualize one positive outcome weekly. Practice one gratitude monthly to stay optimistic. Hùng’s reframing overcame obstacles. This actionable habit fosters hope gently. Don’t judge; embrace mindset shifts. Start reframing today. Ready to cultivate positivity? Discover deeper insights beyond VIP 3.",
-"vi": "Tư duy tích cực có thể thay đổi kết quả tới 35%, theo nghiên cứu. Thúc đẩy sự phát triển bằng các bước: Xem thất bại như bài học mỗi ngày. Hình dung một kết quả tích cực mỗi tuần. Thực hành lòng biết ơn mỗi tháng để duy trì sự lạc quan. Cách nhìn mới mẻ của Hùng đã giúp anh vượt qua khó khăn. Thói quen hành động này nhẹ nhàng nuôi dưỡng hy vọng. Đừng phán xét; hãy đón nhận sự thay đổi trong tư duy. Bắt đầu hôm nay bằng việc nhìn mọi việc tích cực hơn. Sẵn sàng gieo mầm lạc quan chưa? Khám phá sâu hơn ngoài cấp VIP 3."
-},
-"audio": {
-"en": "Cultivating_Positive_Mindset_VIP3.mp3"
-}
-}
-]
+  "tier": "VIP 3 / Cấp VIP 3",
+  "default_entry_id": "build_resilience_challenges",
+  "welcome": {
+    "en": "Hello! Welcome to Emotional Growth VIP3 room. How can I help you today?\n\nTopic keywords you can type are below:\n- build_resilience_challenges\n- seek_support_tough_times\n- cultivate_positive_mindset\n- emotional_flexibility\n- purpose_driven_resilience",
+    "vi": "Xin chào! Chào mừng bạn đến với phòng Phát Triển Cảm Xúc VIP3. Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:\n- xay_dung_suc_ben_noi_tam\n- tim_kiem_ho_tro\n- nuoi_duong_tu_duy_tich_cuc\n- linh_hoat_cam_xuc\n- suc_ben_dua_tren_muc_dich"
+  },
+  "search": {
+    "normalize_case": true,
+    "normalize_accents": true,
+    "tokenize_on": [" ", "_"]
+  },
+  "keyword_menu": {
+    "en": [
+      "build_resilience_challenges",
+      "seek_support_tough_times",
+      "cultivate_positive_mindset",
+      "emotional_flexibility",
+      "purpose_driven_resilience"
+    ],
+    "vi": [
+      "xay_dung_suc_ben_noi_tam",
+      "tim_kiem_ho_tro",
+      "nuoi_duong_tu_duy_tich_cuc",
+      "linh_hoat_cam_xuc",
+      "suc_ben_dua_tren_muc_dich"
+    ]
+  },
+  "keywords_dict": {
+    "en": {
+      "build_resilience_challenges": ["resilience", "challenges", "gratitude", "strength", "growth", "overcome", "hardship", "storm"],
+      "seek_support_tough_times": ["support", "tough times", "connection", "network", "friends", "crisis", "help", "reach out"],
+      "cultivate_positive_mindset": ["positive", "mindset", "optimistic", "reframe", "lessons", "growth", "hope", "visualization"],
+      "emotional_flexibility": ["flexibility", "adaptation", "calm", "regulation", "shifts", "emotions"],
+      "purpose_driven_resilience": ["purpose", "meaning", "resilience", "values", "motivation", "growth"]
+    },
+    "vi": {
+      "xay_dung_suc_ben_noi_tam": ["sức bền", "thử thách", "biết ơn", "sức mạnh", "trưởng thành", "vượt qua", "khó khăn", "giông bão"],
+      "tim_kiem_ho_tro": ["hỗ trợ", "khó khăn", "giúp đỡ", "kết nối", "mạng lưới", "bạn bè", "khủng hoảng", "chia sẻ"],
+      "nuoi_duong_tu_duy_tich_cuc": ["tích cực", "tư duy", "lạc quan", "nhìn lại", "bài học", "phát triển", "hy vọng", "hình dung"],
+      "linh_hoat_cam_xuc": ["linh hoạt", "thích nghi", "bình tĩnh", "điều hòa", "chuyển hóa", "cảm xúc"],
+      "suc_ben_dua_tren_muc_dich": ["mục đích", "ý nghĩa", "sức bền", "giá trị", "động lực", "phát triển"]
+    }
+  },
+  "entries": [
+    {
+      "id": "build_resilience_challenges",
+      "title": {
+        "en": "Build Resilience in Challenges",
+        "vi": "Xây Dựng Sức Bền Trong Thử Thách"
+      },
+      "content": {
+        "en": "Resilience grows through consistent practice, not sudden breakthroughs. Studies show a 35% increase in emotional stability when individuals intentionally reflect on challenges instead of avoiding them. Begin by naming one difficulty you faced today and writing down the lesson it offered, even if small. Add a daily gratitude note to balance your perspective and remind your mind of strength, not just stress. Once a week, share one challenge with someone you trust; connection reduces emotional load by up to 40%. If setbacks appear, don’t force progress—honor the pace of growth. Over time, these small habits create a deeper internal foundation, helping you face storms with steadier breath and clearer mind. Start today with one sentence of gratitude and let resilience grow naturally within you.",
+        "vi": "Sức bền nội tâm phát triển từ thực hành đều đặn, không phải từ những đột phá bất ngờ. Nghiên cứu cho thấy sự ổn định cảm xúc có thể tăng 35% khi con người chủ động suy ngẫm về thử thách thay vì né tránh chúng. Bắt đầu bằng cách gọi tên một khó khăn bạn đã gặp hôm nay và ghi lại bài học mà nó mang đến, dù nhỏ đến đâu. Thêm một ghi chú biết ơn mỗi ngày để cân bằng góc nhìn và nhắc nhở tâm trí về sức mạnh thay vì căng thẳng. Mỗi tuần một lần, hãy chia sẻ một thử thách với người bạn tin cậy; sự kết nối có thể giảm tải cảm xúc tới 40%. Khi gặp trở ngại, đừng ép bản thân tiến nhanh—hãy tôn trọng nhịp trưởng thành tự nhiên. Theo thời gian, những thói quen nhỏ này tạo ra nền tảng vững chắc, giúp bạn đối diện giông bão với hơi thở bình an và tâm trí sáng rõ. Hãy bắt đầu hôm nay bằng một câu biết ơn và để sức bền lớn lên trong bạn."
+      },
+      "audio": {
+        "en": "Build_Resilience_in_Challenges_VIP3.mp3"
+      }
+    },
+    {
+      "id": "seek_support_tough_times",
+      "title": {
+        "en": "Seek Support in Tough Times",
+        "vi": "Tìm Kiếm Sự Hỗ Trợ Khi Khó Khăn"
+      },
+      "content": {
+        "en": "Support is one of the strongest predictors of emotional recovery, improving resilience by up to 30%. Begin by identifying one person you feel safe with and reach out for a simple conversation—not to solve anything, but to stay connected. Join a supportive group or community that shares similar goals; shared experience reduces isolation and gives perspective. Practice expressing one challenge honestly each week to normalize vulnerability. Research shows that naming a difficult feeling can reduce its intensity by 40%. When worry rises, take a slow breath and remind yourself you don’t have to carry everything alone. Over time, support builds a bridge between who you are today and who you are becoming. Start small: message one person now and open a tiny door to connection.",
+        "vi": "Sự hỗ trợ là yếu tố dự đoán mạnh mẽ cho khả năng phục hồi cảm xúc, có thể cải thiện sức bền tới 30%. Hãy bắt đầu bằng cách xác định một người mà bạn cảm thấy an toàn và kết nối chỉ để trò chuyện—không phải để giải quyết vấn đề, mà để duy trì sự gắn kết. Tham gia một nhóm hoặc cộng đồng có cùng mục tiêu; trải nghiệm chung giúp giảm cô lập và mở rộng góc nhìn. Hãy luyện tập chia sẻ một thử thách mỗi tuần để bình thường hóa sự dễ tổn thương. Nghiên cứu cho thấy việc gọi tên cảm xúc khó chịu có thể giảm cường độ của nó đến 40%. Khi lo âu trỗi dậy, hãy thở chậm và nhắc mình rằng bạn không phải mang mọi thứ một mình. Theo thời gian, sự hỗ trợ tạo cây cầu giữa con người hiện tại và con người bạn đang trở thành. Hãy bắt đầu nhỏ: gửi một tin nhắn ngay bây giờ và mở cánh cửa nhỏ của sự kết nối."
+      },
+      "audio": {
+        "en": "Seek_Support_in_Tough_Times_VIP3.mp3"
+      }
+    },
+    {
+      "id": "cultivate_positive_mindset",
+      "title": {
+        "en": "Cultivating Positive Mindset",
+        "vi": "Nuôi Dưỡng Tư Duy Tích Cực"
+      },
+      "content": {
+        "en": "A positive mindset does not mean ignoring pain; it means choosing a perspective that empowers growth. Research shows that reframing setbacks as lessons can shift emotional outcomes by up to 35%. Begin each morning by asking: “What is one thing I can approach with curiosity today?” Once a week, visualize a positive outcome for a challenge you’re facing—your brain responds to visualization similarly to real progress. Practice gratitude monthly to strengthen optimism. When negativity arises, pause and reframe: “What is one thing this experience is teaching me?” Over time, these micro-shifts create a quieter mind, steadier emotions, and a more hopeful outlook. Start today by reframing one thought with kindness.",
+        "vi": "Tư duy tích cực không có nghĩa là bỏ qua nỗi đau; nó là lựa chọn góc nhìn giúp bạn phát triển. Nghiên cứu cho thấy việc xem thất bại như bài học có thể thay đổi kết quả cảm xúc tới 35%. Mỗi sáng, hãy bắt đầu bằng câu hỏi: “Hôm nay tôi có thể tiếp cận điều gì với sự tò mò?” Mỗi tuần một lần, hãy hình dung kết quả tích cực cho thử thách bạn đang đối mặt—não bộ phản ứng với hình dung gần như giống hệt tiến bộ thực. Thực hành lòng biết ơn mỗi tháng để nuôi dưỡng sự lạc quan. Khi suy nghĩ tiêu cực xuất hiện, hãy tạm dừng và hỏi: “Kinh nghiệm này đang dạy tôi điều gì?” Theo thời gian, những thay đổi nhỏ này tạo ra tâm trí tĩnh lặng hơn, cảm xúc ổn định hơn và góc nhìn hy vọng hơn. Hãy bắt đầu hôm nay bằng cách nhìn lại một suy nghĩ bằng lòng tử tế."
+      },
+      "audio": {
+        "en": "Cultivating_Positive_Mindset_VIP3.mp3"
+      }
+    },
+    {
+      "id": "emotional_flexibility",
+      "title": {
+        "en": "Emotional Flexibility",
+        "vi": "Linh Hoạt Cảm Xúc"
+      },
+      "content": {
+        "en": "Emotional flexibility is the capacity to shift your response based on what the moment needs, not what your habits dictate. It is a major predictor of long-term well-being. Begin by noticing when your emotional state changes—tight chest, faster breath, irritability. Instead of reacting, pause for ten seconds and ask: “What emotion is here, and what does it need?” This simple question reduces emotional impulsivity by up to 45%. Practice three strategies weekly: acceptance (allowing feelings), redirection (shifting focus), and grounding (returning to breath). Over time, flexibility replaces rigidity with choice. Even during stressful moments, you gain the ability to soften, pivot, or open. Emotional flexibility doesn’t remove difficulty—it gives you more ways to move through it.",
+        "vi": "Linh hoạt cảm xúc là khả năng thay đổi phản ứng dựa trên nhu cầu của khoảnh khắc, không phải dựa trên thói quen cũ. Đây là yếu tố quan trọng dự đoán hạnh phúc lâu dài. Hãy bắt đầu bằng việc nhận ra khi trạng thái cảm xúc thay đổi—ngực căng, hơi thở nhanh, sự khó chịu. Thay vì phản ứng ngay, hãy dừng lại 10 giây và hỏi: “Cảm xúc nào đang có mặt, và nó cần điều gì?” Câu hỏi đơn giản này có thể giảm phản ứng bộc phát tới 45%. Hãy thực hành 3 chiến lược mỗi tuần: chấp nhận (cho phép cảm xúc tồn tại), chuyển hướng (đổi trọng tâm), và tiếp đất (quay về hơi thở). Theo thời gian, sự linh hoạt thay thế cứng nhắc bằng lựa chọn. Ngay cả khi căng thẳng, bạn vẫn có thể mềm lại, xoay chuyển hoặc mở lòng. Linh hoạt cảm xúc không loại bỏ khó khăn—nó cho bạn nhiều cách hơn để vượt qua."
+      },
+      "audio": {
+        "en": "Emotional_Flexibility_VIP3.mp3"
+      }
+    },
+    {
+      "id": "purpose_driven_resilience",
+      "title": {
+        "en": "Purpose-Driven Resilience",
+        "vi": "Sức Bền Dựa Trên Mục Đích"
+      },
+      "content": {
+        "en": "Resilience becomes far stronger when it is tied to purpose. Purpose acts like an inner compass, stabilizing you during uncertainty and renewing motivation even when effort feels heavy. Begin by identifying three values that matter most—growth, kindness, stability, creativity, or service. Each week, choose one action that reflects those values. Purpose-aligned behavior increases long-term resilience by up to 40%. When difficulty appears, ask: “How does this challenge connect to what I care about?” This reframing transforms struggle into meaningful effort. Keep a monthly reflection to track which actions made you feel proud or aligned. Over time, living with purpose doesn’t just help you endure storms—it gives you a reason to rise through them.",
+        "vi": "Sức bền trở nên mạnh mẽ hơn nhiều khi được gắn với mục đích. Mục đích giống như chiếc la bàn nội tâm, giữ bạn ổn định giữa bất định và làm mới động lực ngay cả khi nỗ lực trở nên nặng nề. Bắt đầu bằng cách xác định ba giá trị quan trọng nhất—phát triển, tử tế, ổn định, sáng tạo hoặc cống hiến. Mỗi tuần, hãy chọn một hành động phản ánh các giá trị đó. Hành vi phù hợp với mục đích có thể tăng sức bền dài hạn tới 40%. Khi gặp khó khăn, hãy hỏi: “Thử thách này liên quan thế nào đến điều tôi coi trọng?” Cách nhìn này biến nỗ lực thành hành trình có ý nghĩa. Giữ một bản ghi hàng tháng để theo dõi những hành động khiến bạn tự hào hoặc cảm thấy phù hợp. Theo thời gian, sống có mục đích không chỉ giúp bạn chịu đựng bão tố—nó cho bạn lý do để bước qua chúng."
+      },
+      "audio": {
+        "en": "Purpose_Driven_Resilience_VIP3.mp3"
+      }
+    }
+  ]
 }
