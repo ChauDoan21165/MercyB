@@ -40,6 +40,7 @@ import AdminRoomEditor from "./pages/AdminRoomEditor";
 import AdminRoomImport from "./pages/AdminRoomImport";
 import RoomSyncHealth from "./pages/RoomSyncHealth";
 import AdminUserRoles from "./pages/AdminUserRoles";
+import AdminCodeEditor from "./pages/AdminCodeEditor";
 import AudioTestPage from "./pages/AudioTestPage";
 import AudioUpload from "./pages/AudioUpload";
 
@@ -90,6 +91,7 @@ const App = () => (
           <Route path="/admin/rooms/import" element={<AdminRoomImport />} />
           <Route path="/admin/rooms/health" element={<RoomSyncHealth />} />
           <Route path="/admin/users" element={<AdminUserRoles />} />
+          <Route path="/admin/code-editor" element={<AdminCodeEditor />} />
           <Route path="/audio-test" element={<AudioTestPage />} />
           <Route path="/audio-upload" element={<AudioUpload />} />
           <Route path="*" element={<NotFound />} />
