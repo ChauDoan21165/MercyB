@@ -14,7 +14,7 @@ export const useParallax = (elementRef: RefObject<HTMLElement>, speed: number = 
       // Calculate parallax offset when element is in viewport
       if (elementTop < windowHeight && elementTop > -rect.height) {
         const scrolled = windowHeight - elementTop;
-        const parallaxOffset = scrolled * speed;
+        const parallaxOffset = -scrolled * speed;
         setOffset(parallaxOffset);
       }
     };
