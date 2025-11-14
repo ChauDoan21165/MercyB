@@ -360,6 +360,90 @@ const PaymentTest = () => {
               Tất cả thanh toán được xử lý an toàn qua PayPal. Gói đăng ký sẽ được kích hoạt ngay sau khi thanh toán thành công.
             </p>
           </div>
+
+          {/* All Tiers Overview */}
+          <div className="mt-16 max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-3 bg-gradient-to-r from-green-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Explore All Membership Tiers
+            </h2>
+            <p className="text-center text-gray-600 mb-8">Khám Phá Tất Cả Các Gói Thành Viên</p>
+            
+            <div className="grid md:grid-cols-4 gap-6">
+              {/* Free Tier */}
+              <Card 
+                className="p-6 bg-gradient-to-br from-green-50 to-teal-50 border-2 border-green-300 shadow-lg hover:scale-105 transition-transform cursor-pointer"
+                onClick={() => navigate('/rooms')}
+              >
+                <div className="text-center space-y-3">
+                  <div className="text-3xl">🆓</div>
+                  <h3 className="text-xl font-bold text-green-700">Free</h3>
+                  <p className="text-2xl font-bold text-gray-900">$0<span className="text-sm">/mo</span></p>
+                  <p className="text-sm text-gray-600">Access basic rooms</p>
+                  <Button className="w-full bg-green-600 hover:bg-green-700">
+                    Explore Free
+                  </Button>
+                </div>
+              </Card>
+
+              {/* VIP1 Tier */}
+              <Card 
+                className="p-6 bg-gradient-to-br from-yellow-50 to-orange-50 border-2 border-yellow-300 shadow-lg hover:scale-105 transition-transform cursor-pointer"
+                onClick={() => navigate('/subscribe?tier=vip1')}
+              >
+                <div className="text-center space-y-3">
+                  <div className="text-3xl">⭐</div>
+                  <h3 className="text-xl font-bold text-orange-700">VIP1</h3>
+                  <p className="text-2xl font-bold text-gray-900">$10<span className="text-sm">/mo</span></p>
+                  <p className="text-sm text-gray-600">10 rooms/month</p>
+                  <Button className="w-full bg-orange-600 hover:bg-orange-700">
+                    Get VIP1
+                  </Button>
+                </div>
+              </Card>
+
+              {/* VIP2 Tier */}
+              <Card 
+                className="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-300 shadow-lg hover:scale-105 transition-transform cursor-pointer"
+                onClick={() => navigate('/subscribe?tier=vip2')}
+              >
+                <div className="text-center space-y-3">
+                  <div className="text-3xl">💎</div>
+                  <h3 className="text-xl font-bold text-blue-700">VIP2</h3>
+                  <p className="text-2xl font-bold text-gray-900">$20<span className="text-sm">/mo</span></p>
+                  <p className="text-sm text-gray-600">25 rooms/month</p>
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                    Get VIP2
+                  </Button>
+                </div>
+              </Card>
+
+              {/* VIP3 Tier */}
+              <Card 
+                className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-300 shadow-lg hover:scale-105 transition-transform cursor-pointer"
+                onClick={() => navigate('/subscribe?tier=vip3')}
+              >
+                <div className="text-center space-y-3">
+                  <div className="text-3xl">👑</div>
+                  <h3 className="text-xl font-bold text-purple-700">VIP3</h3>
+                  <p className="text-2xl font-bold text-gray-900">$40<span className="text-sm">/mo</span></p>
+                  <p className="text-sm text-gray-600">Unlimited rooms</p>
+                  <Button className="w-full bg-purple-600 hover:bg-purple-700">
+                    Get VIP3
+                  </Button>
+                </div>
+              </Card>
+            </div>
+
+            <div className="mt-8 text-center">
+              <Button
+                onClick={() => navigate('/tiers')}
+                variant="outline"
+                className="text-lg px-8 py-6 border-2"
+              >
+                View Detailed Tier Comparison / Xem So Sánh Chi Tiết
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
