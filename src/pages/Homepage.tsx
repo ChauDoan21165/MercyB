@@ -1,7 +1,7 @@
 import { useHomepageConfig } from '@/hooks/useHomepageConfig';
 import { HomepageSection } from '@/components/homepage/HomepageSection';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, LogIn } from 'lucide-react';
+import { ArrowRight, LogIn, RotateCcw } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
@@ -10,6 +10,11 @@ const Homepage = () => {
   const navigate = useNavigate();
   const [headerBg, setHeaderBg] = useState('#ffffff');
   const [textColor, setTextColor] = useState('#111827');
+
+  const handleResetConfig = () => {
+    localStorage.removeItem('pinnedHomepageConfig');
+    window.location.reload();
+  };
 
   // Enable smooth scrolling
   useEffect(() => {
@@ -78,6 +83,18 @@ const Homepage = () => {
 
   return (
     <div className="min-h-screen">
+      {/* Reset Configuration Button */}
+      <Button
+        onClick={handleResetConfig}
+        variant="outline"
+        size="sm"
+        className="fixed top-4 right-4 z-50 gap-2 shadow-lg"
+        title="Reset cached configuration"
+      >
+        <RotateCcw className="w-4 h-4" />
+        Reset
+      </Button>
+
       {/* Main content - sections */}
       <main>
         {config.sections.map((section) => (
