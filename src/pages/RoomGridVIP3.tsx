@@ -12,6 +12,15 @@ import { toast } from "sonner";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
 
+// Special VIP3 rooms with custom styling
+const VIP3_SPECIAL_ROOMS: Record<string, string> = {
+  'finance-glory-vip3': '#FFD700',
+  'sexuality-and-curiosity-and-culture-vip3': '#FF1493',
+  'strategy-in-life-1-vip3': '#9B59B6',
+  'strategy-in-life-2-vip3': '#3498DB',
+  'strategy-in-life-3-vip3': '#E74C3C',
+};
+
 const RoomGridVIP3 = () => {
   const navigate = useNavigate();
   const { canAccessVIP3, isAdmin, loading } = useUserAccess();
