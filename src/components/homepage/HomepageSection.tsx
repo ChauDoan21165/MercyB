@@ -39,7 +39,7 @@ export const HomepageSection = ({
       ref={sectionRef}
       id={id}
       className={cn(
-        "w-full py-16 px-6 transition-all duration-700 relative overflow-hidden",
+        "w-full py-12 px-6 transition-all duration-700 relative overflow-hidden",
         isVisible 
           ? "opacity-100 translate-y-0" 
           : "opacity-0 translate-y-8"
@@ -54,25 +54,29 @@ export const HomepageSection = ({
           transition: 'transform 0.1s ease-out'
         }}
       />
-      <div className="max-w-[640px] mx-auto space-y-6">
-        {/* Title */}
-        <h2
-          className="text-2xl font-semibold leading-relaxed"
-          style={{ color: headingColor }}
-        >
-          {title.en}
-        </h2>
-
-        {/* English body */}
+      <div className="max-w-[640px] mx-auto space-y-10">
+        {/* English Section */}
         <div className="space-y-4">
-          <p className="text-[15px] leading-relaxed text-gray-700 dark:text-gray-300">
+          <h2
+            className="text-[22px] font-semibold leading-relaxed"
+            style={{ color: headingColor }}
+          >
+            {title.en}
+          </h2>
+          <p className="text-[15px] leading-relaxed" style={{ color: 'rgba(0, 0, 0, 0.75)' }}>
             {body.en}
           </p>
         </div>
 
-        {/* Vietnamese body */}
-        <div className="space-y-4 pt-6 border-t border-gray-300/30 dark:border-gray-600/30">
-          <p className="text-[15px] leading-relaxed text-gray-700 dark:text-gray-300">
+        {/* Vietnamese Section */}
+        <div className="space-y-4">
+          <h3
+            className="text-[19px] font-semibold leading-relaxed"
+            style={{ color: `${headingColor}cc` }}
+          >
+            {title.vi}
+          </h3>
+          <p className="text-[15px] leading-relaxed" style={{ color: 'rgba(0, 0, 0, 0.70)' }}>
             {body.vi}
           </p>
         </div>

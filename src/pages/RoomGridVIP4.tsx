@@ -9,19 +9,21 @@ import { VIPNavigation } from "@/components/VIPNavigation";
 import { Briefcase, Crown, Lock, RefreshCw } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
+import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
+
 const VIP4_CAREER_ROOMS = [
-  { id: "courage-to-begin", color: "#9b87f5", name: "Courage to Begin" },
-  { id: "discover-self", color: "#4CAF50", name: "Discover Self" },
-  { id: "explore-world", color: "#2196F3", name: "Explore World" },
-  { id: "build-skills", color: "#1E88E5", name: "Build Skills" },
-  { id: "bridge-to-reality", color: "#FF6B35", name: "Bridge to Reality" },
-  { id: "resilience-and-adaptation", color: "#E91E63", name: "Resilience and Adaptation" },
-  { id: "career-community", color: "#00BCD4", name: "Career Community" },
-  { id: "launch-career", color: "#FF5722", name: "Launch Career" },
-  { id: "find-fit", color: "#9C27B0", name: "Find Fit" },
-  { id: "grow-wealth", color: "#FF9800", name: "Grow Wealth" },
-  { id: "master-climb", color: "#009688", name: "Master Climb" },
-  { id: "lead-impact", color: "#673AB7", name: "Lead Impact" }
+  { id: "courage-to-begin", name: "Courage to Begin" },
+  { id: "discover-self", name: "Discover Self" },
+  { id: "explore-world", name: "Explore World" },
+  { id: "build-skills", name: "Build Skills" },
+  { id: "bridge-to-reality", name: "Bridge to Reality" },
+  { id: "resilience-and-adaptation", name: "Resilience and Adaptation" },
+  { id: "career-community", name: "Career Community" },
+  { id: "launch-career", name: "Launch Career" },
+  { id: "find-fit", name: "Find Fit" },
+  { id: "grow-wealth", name: "Grow Wealth" },
+  { id: "master-climb", name: "Master Climb" },
+  { id: "lead-impact", name: "Lead Impact" }
 ];
 
 const RoomGridVIP4 = () => {
@@ -81,9 +83,8 @@ const RoomGridVIP4 = () => {
     return null;
   }
 
-  const getRoomColor = (roomId: string): string => {
-    const careerRoom = VIP4_CAREER_ROOMS.find(r => roomId.toLowerCase().includes(r.id));
-    return careerRoom?.color || "#FF6B6B";
+  const getRoomColorValue = (roomId: string): string => {
+    return getRoomColor(roomId, 'career');
   };
 
   const getRoomStatus = (room: Room) => {
@@ -175,19 +176,27 @@ const RoomGridVIP4 = () => {
             Your Career Journey • Hành Trình Nghề Nghiệp
           </h2>
           <div className="flex flex-wrap justify-center gap-2 text-sm">
-            {VIP4_CAREER_ROOMS.map((room, idx) => (
-              <div key={room.id} className="flex items-center gap-2">
-                <Badge 
-                  style={{ backgroundColor: room.color, color: '#fff' }}
-                  className="px-3 py-1"
-                >
-                  {idx + 1}. {room.name}
-                </Badge>
-                {idx < VIP4_CAREER_ROOMS.length - 1 && (
-                  <span className="text-orange-400">→</span>
-                )}
-              </div>
-            ))}
+            {VIP4_CAREER_ROOMS.map((room, idx) => {
+              const roomColor = getRoomColorValue(room.id);
+              const headingColor = getHeadingColor(roomColor);
+              return (
+                <div key={room.id} className="flex items-center gap-2">
+                  <Badge 
+                    style={{ 
+                      backgroundColor: roomColor, 
+                      color: headingColor,
+                      borderColor: headingColor
+                    }}
+                    className="px-3 py-1 border"
+                  >
+                    {idx + 1}. {room.name}
+                  </Badge>
+                  {idx < VIP4_CAREER_ROOMS.length - 1 && (
+                    <span className="text-orange-400">→</span>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
 
@@ -202,7 +211,9 @@ const RoomGridVIP4 = () => {
           ) : (
             rooms.map((room) => {
               const status = getRoomStatus(room);
-              const roomColor = getRoomColor(room.id);
+              const roomColor = getRoomColorValue(room.id);
+              const textColor = getContrastTextColor(roomColor);
+              const headingColor = getHeadingColor(roomColor);
               const isLocked = status === "locked";
 
               return (
@@ -217,7 +228,7 @@ const RoomGridVIP4 = () => {
                     borderLeft: `4px solid ${roomColor}`,
                     background: isLocked
                       ? 'rgba(0,0,0,0.05)'
-                      : `linear-gradient(135deg, ${roomColor}15 0%, ${roomColor}05 100%)`
+                      : roomColor
                   }}
                   onClick={() => !isLocked && navigate(`/chat/${room.id}`)}
                 >
@@ -233,15 +244,15 @@ const RoomGridVIP4 = () => {
 
                   <div className="p-6 space-y-3">
                     <div className="space-y-2">
-                      <h3 className="font-bold text-lg leading-tight">
+                      <h3 className="font-bold text-lg leading-tight" style={{ color: headingColor }}>
                         {room.nameEn}
                       </h3>
-                      <p className="text-sm text-muted-foreground leading-tight">
+                      <p className="text-sm leading-tight" style={{ color: textColor }}>
                         {room.nameVi}
                       </p>
                     </div>
 
-                    <p className="text-sm text-muted-foreground line-clamp-2">
+                    <p className="text-sm line-clamp-2" style={{ color: textColor }}>
                       {room.description}
                     </p>
                   </div>

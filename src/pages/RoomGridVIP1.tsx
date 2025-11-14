@@ -9,6 +9,7 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useToast } from "@/hooks/use-toast";
+import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
 
 const RoomGridVIP1 = () => {
   const navigate = useNavigate();
