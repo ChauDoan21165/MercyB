@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
-import { useParallax } from '@/hooks/useParallax';
+
 import { cn } from '@/lib/utils';
 import { Play, Pause } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -44,7 +44,7 @@ export const HomepageSection = ({
     rootMargin: '-50px',
     freezeOnceVisible: true
   });
-  const parallaxOffset = useParallax(sectionRef, 0.2);
+  const parallaxOffset = 0;
 
   const toggleAudioEn = () => {
     if (!audioEnRef.current) return;
@@ -93,9 +93,7 @@ export const HomepageSection = ({
       <div 
         className="absolute inset-0 -z-10"
         style={{ 
-          backgroundColor,
-          transform: `translateY(${parallaxOffset}px)`,
-          transition: 'transform 0.1s ease-out'
+          backgroundColor
         }}
       />
       
