@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Search, Volume2, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { useUserAccess } from "@/hooks/useUserAccess";
 import dictionaryData from "@/data/system/Dictionary.json";
 
 interface DictionaryEntry {
@@ -26,6 +27,7 @@ export const DictionaryLookup = () => {
   const [loadingAudio, setLoadingAudio] = useState<'en' | 'vi' | null>(null);
   const [speed, setSpeed] = useState<number>(1.0);
   const { toast } = useToast();
+  const { access } = useUserAccess();
   const dictionary = (dictionaryData as any).dictionary as Dictionary;
 
   useEffect(() => {
@@ -78,10 +80,21 @@ export const DictionaryLookup = () => {
       
       if (!session) {
         toast({
-          title: "VIP Feature",
-          description: "Please sign in with a VIP subscription to use pronunciation",
+          title: "VIP3 Feature",
+          description: "Please sign in to use pronunciation",
           variant: "destructive",
         });
+        return;
+      }
+
+      // Check for VIP3 access
+      if (!access.isVip3) {
+        toast({
+          title: "VIP3 Feature",
+          description: "This function is for VIP3 users",
+          variant: "destructive",
+        });
+        setLoadingAudio(null);
         return;
       }
 
