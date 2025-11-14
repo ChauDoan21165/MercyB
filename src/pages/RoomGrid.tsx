@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { CheckCircle2, Lock, RefreshCw } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -118,37 +119,34 @@ const RoomGrid = () => {
 
   return (
     <TooltipProvider>
-      <div className="min-h-screen" style={{ background: 'hsl(var(--page-roomgrid))' }}>
-        <div className="container mx-auto px-4 py-8 max-w-7xl">
-        {/* Header */}
-        <div className="mb-8 space-y-4">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center">
-              <Button
-                variant="ghost"
-                onClick={() => navigate("/")}
-                className="flex items-center gap-2"
-              >
-                ← Back / Quay Lại
-              </Button>
-              <span className="ml-3 text-sm text-muted-foreground">
-                You are in free of charge area / Bạn đang ở khu vực miễn phí
-              </span>
-            </div>
-            
-            {isAdmin && (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleRefreshRooms}
-                disabled={isRefreshing}
-                className="flex items-center gap-2"
-              >
-                <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
-                Refresh Rooms
-              </Button>
-            )}
-          </div>
+      <div className="min-h-screen">
+        <ColorfulMercyBladeHeader
+          subtitle="Free Rooms"
+          showBackButton={true}
+        />
+        
+        <div className="bg-gradient-to-b from-green-50 via-teal-50 to-blue-50 min-h-screen">
+          <div className="container mx-auto px-4 py-8 max-w-7xl">
+            {/* Header */}
+            <div className="mb-8 space-y-4">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-lg text-gray-700 font-medium">
+                  You are in free of charge area / Bạn đang ở khu vực miễn phí
+                </span>
+                
+                {isAdmin && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={handleRefreshRooms}
+                    disabled={isRefreshing}
+                    className="flex items-center gap-2 bg-white/80"
+                  >
+                    <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+                    Refresh Rooms
+                  </Button>
+                )}
+              </div>
           
           <div className="text-center space-y-2">
             <h1 className="text-4xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
@@ -232,6 +230,7 @@ const RoomGrid = () => {
           )})}
         </div>
 
+        </div>
       </div>
     </div>
     </TooltipProvider>

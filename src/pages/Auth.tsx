@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
+import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
@@ -136,111 +137,119 @@ const Auth = () => {
 
   if (showReset) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center p-4">
-        <Card className="w-full max-w-md p-6">
-          <div className="text-center mb-6">
-            <h1 className="text-3xl font-bold">Reset Password</h1>
-            <p className="text-muted-foreground mt-2">Enter your email to receive reset instructions</p>
-          </div>
-
-          <form onSubmit={handleResetPassword} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="reset-email">Email</Label>
-              <Input
-                id="reset-email"
-                type="email"
-                placeholder="your@email.com"
-                value={resetEmail}
-                onChange={(e) => setResetEmail(e.target.value)}
-                required
-              />
+      <div className="min-h-screen">
+        <ColorfulMercyBladeHeader
+          subtitle="Reset Your Password"
+          showBackButton={true}
+        />
+        <div className="bg-gradient-to-b from-blue-50 via-purple-50 to-pink-50 min-h-screen flex items-center justify-center p-4">
+          <Card className="w-full max-w-md p-8 bg-white/80 backdrop-blur border-2 border-blue-200 shadow-xl">
+            <div className="text-center mb-6">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Reset Password</h1>
+              <p className="text-gray-700 mt-2">Enter your email to receive reset instructions</p>
+              <p className="text-gray-600 text-sm">Nhập email để nhận hướng dẫn đặt lại mật khẩu</p>
             </div>
-            <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? 'Sending...' : 'Send Reset Link'}
-            </Button>
-          </form>
 
-          <div className="mt-4 text-center">
-            <Button 
-              variant="ghost" 
-              onClick={() => setShowReset(false)}
-            >
-              Back to Sign In
-            </Button>
-          </div>
-        </Card>
+            <form onSubmit={handleResetPassword} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="reset-email" className="text-gray-900">Email</Label>
+                <Input
+                  id="reset-email"
+                  type="email"
+                  placeholder="your@email.com"
+                  value={resetEmail}
+                  onChange={(e) => setResetEmail(e.target.value)}
+                  required
+                  className="bg-white"
+                />
+              </div>
+              <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700" disabled={loading}>
+                {loading ? 'Sending... / Đang gửi...' : 'Send Reset Link / Gửi Liên Kết'}
+              </Button>
+            </form>
+
+            <div className="mt-4 text-center">
+              <Button 
+                variant="ghost" 
+                onClick={() => setShowReset(false)}
+                className="text-gray-700"
+              >
+                Back to Sign In / Quay Lại Đăng Nhập
+              </Button>
+            </div>
+          </Card>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4">
-      <Card className="w-full max-w-md p-6">
-        <div className="text-center mb-6">
-          <h1 className="text-3xl font-bold">Welcome</h1>
-        </div>
+    <div className="min-h-screen">
+      <ColorfulMercyBladeHeader
+        subtitle="Sign In to Your Account"
+        showBackButton={true}
+      />
+      <div className="bg-gradient-to-b from-teal-50 via-blue-50 to-purple-50 min-h-screen flex items-center justify-center p-4">
+        <Card className="w-full max-w-md p-8 bg-white/80 backdrop-blur border-2 border-teal-200 shadow-xl">
+          <div className="text-center mb-6">
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">Welcome</h1>
+            <p className="text-gray-700 mt-2">Sign in to continue</p>
+            <p className="text-gray-600 text-sm">Đăng nhập để tiếp tục</p>
+          </div>
 
-        <div className="w-full">
-          <form onSubmit={handleSignIn} className="space-y-4 mt-4">
-            <div className="space-y-2">
-              <Label htmlFor="signin-email">Email</Label>
-              <Input
-                id="signin-email"
-                type="email"
-                placeholder="your@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="w-full"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="signin-password">Password</Label>
-              <div className="relative w-full">
+          <div className="w-full">
+            <form onSubmit={handleSignIn} className="space-y-4 mt-4">
+              <div className="space-y-2">
+                <Label htmlFor="signin-email" className="text-gray-900">Email</Label>
                 <Input
-                  id="signin-password"
-                  type={showSignInPassword ? "text" : "password"}
-                  placeholder="••••••••"
-                  value={signInPassword}
-                  onChange={(e) => setSignInPassword(e.target.value)}
+                  id="signin-email"
+                  type="email"
+                  placeholder="your@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full pr-10"
+                  className="w-full bg-white"
                 />
-                <button
-                  type="button"
-                  onClick={() => setShowSignInPassword(!showSignInPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground z-10"
-                  tabIndex={-1}
-                >
-                  {showSignInPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                </button>
               </div>
-            </div>
-            <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? 'Signing in...' : 'Sign In'}
-            </Button>
-            <div className="text-center mt-2">
-              <Button 
-                variant="link" 
-                type="button"
-                onClick={() => setShowReset(true)}
-                className="text-sm"
-              >
-                Forgot password?
+              <div className="space-y-2">
+                <Label htmlFor="signin-password" className="text-gray-900">Password / Mật Khẩu</Label>
+                <div className="relative w-full">
+                  <Input
+                    id="signin-password"
+                    type={showSignInPassword ? "text" : "password"}
+                    placeholder="••••••••"
+                    value={signInPassword}
+                    onChange={(e) => setSignInPassword(e.target.value)}
+                    required
+                    className="w-full pr-10 bg-white"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowSignInPassword(!showSignInPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-gray-900 z-10"
+                    tabIndex={-1}
+                  >
+                    {showSignInPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  </button>
+                </div>
+              </div>
+              <Button type="submit" className="w-full bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-700 hover:to-blue-700" disabled={loading}>
+                {loading ? 'Signing in... / Đang đăng nhập...' : 'Sign In / Đăng Nhập'}
               </Button>
-            </div>
-          </form>
-        </div>
-
-        <div className="mt-4 text-center">
-          <Button 
-            variant="ghost" 
-            onClick={() => navigate('/')}
-          >
-            Back to Home
-          </Button>
-        </div>
-      </Card>
+              <div className="text-center mt-2">
+                <Button 
+                  variant="link" 
+                  type="button"
+                  onClick={() => setShowReset(true)}
+                  className="text-sm text-teal-600 hover:text-teal-700"
+                >
+                  Forgot password? / Quên mật khẩu?
+                </Button>
+              </div>
+            </form>
+          </div>
+        </Card>
+      </div>
     </div>
   );
 };

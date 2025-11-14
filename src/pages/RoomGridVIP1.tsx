@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, Lock, Crown, RefreshCw } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -53,51 +54,48 @@ const RoomGridVIP1 = () => {
   }
 
   return (
-    <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip1))' }}>
-      <div className="container mx-auto px-4 py-8 max-w-7xl">
-        {/* Header */}
-        <div className="mb-8 space-y-4">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center">
-              <Button
-                variant="ghost"
-                onClick={() => navigate("/")}
-                className="flex items-center gap-2"
-              >
-                ← Back / Quay Lại
-              </Button>
-              <span className="ml-3 text-sm text-muted-foreground">
+    <div className="min-h-screen">
+      <ColorfulMercyBladeHeader
+        subtitle="VIP1 Learning Rooms"
+        showBackButton={true}
+      />
+      
+      <div className="bg-gradient-to-b from-yellow-50 via-orange-50 to-red-50 min-h-screen">
+        <div className="container mx-auto px-4 py-8 max-w-7xl">
+          {/* Header */}
+          <div className="mb-8 space-y-4">
+            <div className="flex items-center justify-between mb-4">
+              <span className="text-lg text-gray-700 font-medium">
                 You are in VIP 1 area / Bạn đang ở khu vực VIP 1
               </span>
+              
+              {isAdmin && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleRefreshRooms}
+                  disabled={isRefreshing}
+                  className="flex items-center gap-2 bg-white/80"
+                >
+                  <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+                  Refresh Rooms
+                </Button>
+              )}
             </div>
             
-            {isAdmin && (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleRefreshRooms}
-                disabled={isRefreshing}
-                className="flex items-center gap-2"
-              >
-                <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
-                Refresh Rooms
-              </Button>
-            )}
-          </div>
-          
-          <div className="text-center space-y-2">
-            <div className="flex items-center justify-center gap-2">
-              <Crown className="h-8 w-8 text-secondary" />
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
-                VIP1 Learning Rooms
-              </h1>
-            </div>
-            <p className="text-lg text-muted-foreground">
-              Phòng Học VIP1
-            </p>
-            <p className="text-sm text-muted-foreground/80">
-              Showing {ALL_ROOMS.filter(room => room.tier === "vip1").length} rooms
-            </p>
+            <div className="text-center space-y-2">
+              <div className="flex items-center justify-center gap-2">
+                <Crown className="h-8 w-8 text-orange-600" />
+                <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+                  VIP1 Learning Rooms
+                </h1>
+              </div>
+              <p className="text-lg text-gray-700">
+                Phòng Học VIP1
+              </p>
+              <p className="text-sm text-gray-600">
+                Showing {ALL_ROOMS.filter(room => room.tier === "vip1").length} rooms
+              </p>
           </div>
         </div>
 
