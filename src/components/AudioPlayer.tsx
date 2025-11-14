@@ -101,11 +101,17 @@ export const AudioPlayer = ({
     if (!audio) return;
 
     if (isPlaying) {
+      // Ensure we resume from the last known position
+      if (!isNaN(currentTime) && currentTime > 0 && Math.abs(audio.currentTime - currentTime) > 0.25) {
+        audio.currentTime = currentTime;
+      }
       audio.play().catch(console.error);
     } else {
+      // Cache current time on pause to prevent resets
+      setCurrentTime(audio.currentTime);
       audio.pause();
     }
-  }, [isPlaying]);
+  }, [isPlaying, currentTime]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -179,6 +185,10 @@ export const AudioPlayer = ({
     
     audio.currentTime = newTime;
     setCurrentTime(newTime);
+    // If currently paused, start playing from the selected position
+    if (!isPlaying) {
+      onPlayPause();
+    }
   };
 
   const handleReplay = () => {
@@ -226,7 +236,7 @@ export const AudioPlayer = ({
 
   return (
     <div className={cn("flex items-center gap-2 w-full", className)}>
-      <audio ref={audioRef} />
+      <audio ref={audioRef} preload="metadata" />
       
       {/* Skip Backward Button */}
       <Button
