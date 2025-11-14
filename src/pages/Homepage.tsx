@@ -1,7 +1,5 @@
 import { useHomepageConfig } from '@/hooks/useHomepageConfig';
-import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { HomepageSection } from '@/components/homepage/HomepageSection';
-import { SectionNav } from '@/components/homepage/SectionNav';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, LogIn } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -10,9 +8,6 @@ import { useEffect } from 'react';
 const Homepage = () => {
   const { config, loading, error } = useHomepageConfig();
   const navigate = useNavigate();
-  
-  const sectionIds = config?.sections.map(s => s.id) || [];
-  const activeSection = useScrollSpy(sectionIds);
 
   // Enable smooth scrolling
   useEffect(() => {
@@ -46,11 +41,6 @@ const Homepage = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Section navigation */}
-      {config && (
-        <SectionNav sections={config.sections} activeSection={activeSection} />
-      )}
-
       {/* Fixed header with navigation */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-[640px] mx-auto px-6 py-4 flex justify-between items-center">
