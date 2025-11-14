@@ -143,6 +143,23 @@
       "audio": {
         "en": "homepage_cta_en.mp3"
       }
+    },
+    {
+      "id": "method_mercy_blade_english",
+      "background_color": "#FFF7ED",
+      "heading_color": "#7C2D12",
+      "accent_color": "#EA580C",
+      "title": {
+        "en": "Method of Mercy Blade English",
+        "vi": "Phương Pháp Mercy Blade English"
+      },
+      "body": {
+        "en": "Mercy Blade uses the natural plasticity of your brain: the more often you hear and repeat meaningful sentences, the easier they become part of you. In each room, you first read the English with Vietnamese beside it so your mind feels safe and clear. Then you tap the audio and repeat after it—slowly, many times, without shame. This trains your tongue, your ear, and your confidence at the same time. You are not memorizing for an exam; you are building real sentences you can use when talking about health, money, emotions, relationships, and your future. Even if your pronunciation is not perfect at first, every gentle repetition carves a new pathway in your brain. Over weeks and months, your mouth finds the sounds more easily, and your fear of speaking slowly melts.",
+        "vi": "Mercy Blade tận dụng khả năng dẻo của não bộ: càng nghe và lặp lại nhiều câu có ý nghĩa, chúng càng trở thành một phần tự nhiên trong bạn. Ở mỗi phòng, bạn đọc tiếng Anh với tiếng Việt ngay bên cạnh để tâm trí cảm thấy an toàn và sáng rõ. Sau đó, bạn bấm nghe audio và lặp lại—chậm rãi, nhiều lần, không xấu hổ. Cách này vừa luyện lưỡi, vừa luyện tai, vừa xây tự tin cùng lúc. Bạn không học thuộc để đi thi; bạn đang xây những câu thật có thể dùng khi nói về sức khỏe, tiền bạc, cảm xúc, mối quan hệ và tương lai. Dù phát âm chưa hoàn hảo lúc ban đầu, mỗi lần lặp lại dịu dàng là một nét khắc mới trong não bộ. Qua vài tuần, vài tháng, miệng bạn tự nhiên tìm đúng âm hơn và nỗi sợ nói sẽ tan dần."
+      },
+      "audio": {
+        "en": "homepage_method_en.mp3"
+      }
     }
   ]
 }
