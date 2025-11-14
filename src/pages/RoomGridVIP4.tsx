@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
@@ -108,75 +109,73 @@ const RoomGridVIP4 = () => {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip4))' }}>
-      <div className="container mx-auto px-4 py-8 max-w-7xl">
-        {/* Header */}
-        <div className="mb-12 text-center space-y-4">
-          <div className="flex items-center justify-between mb-4">
-            <Button
-              variant="ghost"
-              onClick={() => navigate("/")}
-              className="flex items-center gap-2"
-            >
-              ← Home / Trang Chủ
-            </Button>
+    <div className="min-h-screen">
+      <ColorfulMercyBladeHeader
+        subtitle="VIP4 Career Consultance"
+        showBackButton={true}
+      />
+      
+      <div className="bg-gradient-to-b from-purple-50 via-pink-50 to-rose-50 min-h-screen">
+        <div className="container mx-auto px-4 py-8 max-w-7xl">
+          {/* Header */}
+          <div className="mb-12 text-center space-y-4">
+            <div className="flex items-center justify-end mb-4">
+              {isAdmin && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleRefreshRooms}
+                  disabled={isRefreshing}
+                  className="flex items-center gap-2 bg-white/80"
+                >
+                  <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+                  Refresh Rooms
+                </Button>
+              )}
+            </div>
+
+            <div className="flex items-center justify-center gap-3">
+              <Briefcase className="h-12 w-12 text-purple-600" />
+              <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                CareerZ - VIP4
+              </h1>
+              <Crown className="h-12 w-12 text-pink-600" />
+            </div>
+
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+              Career Consultance • Tư Vấn Nghề Nghiệp
+            </p>
             
-            {isAdmin && (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleRefreshRooms}
-                disabled={isRefreshing}
-                className="flex items-center gap-2"
-              >
-                <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
-                Refresh Rooms
-              </Button>
-            )}
+            <p className="text-sm text-gray-600 max-w-2xl mx-auto">
+              🎓 Your complete career guidance journey from self-discovery to leadership impact
+              <br />
+              Hành trình định hướng nghề nghiệp hoàn chỉnh từ khám phá bản thân đến tác động lãnh đạo
+            </p>
+            
+            <p className="text-sm text-gray-600">
+              Showing {ALL_ROOMS.filter(room => room.tier === "vip4").length} rooms
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-2 mt-4">
+              <Badge variant="secondary" className="text-xs bg-purple-100 text-purple-700">
+                🌟 12 Career Rooms • 12 Phòng Nghề Nghiệp
+              </Badge>
+              <Badge variant="secondary" className="text-xs bg-pink-100 text-pink-700">
+                💼 Professional Guidance • Hướng Dẫn Chuyên Nghiệp
+              </Badge>
+              <Badge variant="secondary" className="text-xs bg-rose-100 text-rose-700">
+                🚀 Career Growth • Phát Triển Sự Nghiệp
+              </Badge>
+            </div>
           </div>
 
-          <div className="flex items-center justify-center gap-3">
-            <Briefcase className="h-12 w-12 text-accent" />
-            <h1 className="text-4xl md:text-5xl font-bold" style={{ color: 'hsl(var(--vip4-gold))' }}>
-              CareerZ - VIP4
-            </h1>
-            <Crown className="h-12 w-12" style={{ color: 'hsl(var(--vip4-gold))' }} />
-          </div>
-
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Career Consultance • Tư Vấn Nghề Nghiệp
-          </p>
-          
-          <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
-            🎓 Your complete career guidance journey from self-discovery to leadership impact
-            <br />
-            Hành trình định hướng nghề nghiệp hoàn chỉnh từ khám phá bản thân đến tác động lãnh đạo
-          </p>
-          
-          <p className="text-sm text-muted-foreground/80">
-            Showing {ALL_ROOMS.filter(room => room.tier === "vip4").length} rooms
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-2 mt-4">
-            <Badge variant="secondary" className="text-xs">
-              🌟 12 Career Rooms • 12 Phòng Nghề Nghiệp
-            </Badge>
-            <Badge variant="secondary" className="text-xs">
-              💼 Professional Guidance • Hướng Dẫn Chuyên Nghiệp
-            </Badge>
-            <Badge variant="secondary" className="text-xs">
-              🚀 Career Growth • Phát Triển Sự Nghiệp
-            </Badge>
-          </div>
-        </div>
-
-        {/* Career Journey Path */}
-        <div className="mb-8 text-center">
-          <h2 className="text-2xl font-semibold mb-4" style={{ color: 'hsl(var(--vip4-gold))' }}>
-            Your Career Journey • Hành Trình Nghề Nghiệp
-          </h2>
-          <div className="flex flex-wrap justify-center gap-2 text-sm">
-            {VIP4_CAREER_ROOMS.map((room, idx) => {
+          {/* Career Journey Path */}
+          <div className="mb-8 text-center">
+            <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              Your Career Journey • Hành Trình Nghề Nghiệp
+            </h2>
+            <div className="flex flex-wrap justify-center gap-2 text-sm">
+              {VIP4_CAREER_ROOMS.map((room, idx) => {
               const roomColor = getRoomColorValue(room.id);
               const headingColor = getHeadingColor(roomColor);
               return (
