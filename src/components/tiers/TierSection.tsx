@@ -1,4 +1,5 @@
-import { AudioPlayer } from '@/components/audio/AudioPlayer';
+import { AudioPlayer } from '@/components/AudioPlayer';
+import { useState } from 'react';
 
 interface TierSectionProps {
   id: string;
@@ -22,6 +23,8 @@ export const TierSection = ({
   audio,
   price,
 }: TierSectionProps) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
   return (
     <section
       id={id}
@@ -72,7 +75,12 @@ export const TierSection = ({
             <h3 className="text-lg font-semibold text-gray-900">
               Listen in English
             </h3>
-            <AudioPlayer audioSrc={`/audio/${audio}`} />
+            <AudioPlayer
+              audioPath={`/audio/${audio}`}
+              isPlaying={isPlaying}
+              onPlayPause={() => setIsPlaying(!isPlaying)}
+              onEnded={() => setIsPlaying(false)}
+            />
           </div>
         )}
       </div>
