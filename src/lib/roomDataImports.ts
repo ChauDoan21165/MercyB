@@ -468,13 +468,6 @@ export const roomDataMap: Record<string, RoomData> = {
       "tier": "free",
       "hasData": true
   },
-  "obesity-vip3": {
-      "id": "obesity-vip3",
-      "nameEn": "Obesity Management",
-      "nameVi": "Quản Lý Cân Nặng",
-      "tier": "vip3",
-      "hasData": true
-  },
   "ocd-support-vip1": {
       "id": "ocd-support-vip1",
       "nameEn": "OCD Support",
