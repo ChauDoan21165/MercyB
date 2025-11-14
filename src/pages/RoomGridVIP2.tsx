@@ -150,6 +150,7 @@ const RoomGridVIP2 = () => {
 
         {/* Navigation */}
         <VIPNavigation currentPage="vip2" />
+        </div>
       </div>
     </div>
   );
