@@ -449,15 +449,22 @@ export const roomDataMap: Record<string, RoomData> = {
   },
   "obesity-management-vip3": {
       "id": "obesity-management-vip3",
-      "nameEn": "Obesity Management",
-      "nameVi": "Quản Lý Cân Nặng",
+      "nameEn": "Obesity Management VIP3",
+      "nameVi": "Quản Lý Béo Phì VIP3",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "obesity-management-ii-vip3": {
+      "id": "obesity-management-ii-vip3",
+      "nameEn": "Obesity Management II VIP3",
+      "nameVi": "Quản Lý Béo Phì II VIP3",
       "tier": "vip3",
       "hasData": true
   },
   "obesity-free": {
       "id": "obesity-free",
-      "nameEn": "Obesity Management",
-      "nameVi": "Quản Lý Cân Nặng",
+      "nameEn": "Obesity",
+      "nameVi": "Béo Phì",
       "tier": "free",
       "hasData": true
   },
