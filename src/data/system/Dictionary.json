@@ -592,6 +592,54 @@
       "ipa_vi": "zək mɔ",
       "example_en": "Never give up on your dreams, no matter how hard it gets",
       "example_vi": "Đừng bao giờ từ bỏ ước mơ của bạn, dù có khó khăn đến đâu"
+    },
+    "hope": {
+      "en": ["hope", "wish", "expectation", "optimism", "faith"],
+      "vi": ["hy vọng", "mong muốn", "kỳ vọng", "lạc quan", "niềm tin"],
+      "ipa_en": "həʊp",
+      "ipa_vi": "hi vɔŋ",
+      "example_en": "There is always hope for a better tomorrow",
+      "example_vi": "Luôn có hy vọng cho một ngày mai tốt đẹp hơn"
+    },
+    "fear": {
+      "en": ["fear", "fright", "terror", "dread", "phobia"],
+      "vi": ["sợ hãi", "lo sợ", "kinh hoàng", "nỗi sợ", "ám ảnh"],
+      "ipa_en": "fɪər",
+      "ipa_vi": "sɤ̰ haːj",
+      "example_en": "Courage is not the absence of fear, but the triumph over it",
+      "example_vi": "Dũng cảm không phải là không có nỗi sợ, mà là chiến thắng được nó"
+    },
+    "love": {
+      "en": ["love", "affection", "care", "devotion", "fondness"],
+      "vi": ["yêu thương", "tình yêu", "yêu mến", "quan tâm", "tình cảm"],
+      "ipa_en": "lʌv",
+      "ipa_vi": "iəw tʰɨəŋ",
+      "example_en": "Love is the most powerful force in the universe",
+      "example_vi": "Tình yêu là sức mạnh mạnh mẽ nhất trong vũ trụ"
+    },
+    "peace": {
+      "en": ["peace", "calm", "tranquility", "serenity", "harmony"],
+      "vi": ["hòa bình", "bình yên", "thanh thản", "an lành", "hài hòa"],
+      "ipa_en": "piːs",
+      "ipa_vi": "hwa ɓiŋ",
+      "example_en": "Inner peace comes from accepting yourself as you are",
+      "example_vi": "Bình yên nội tâm đến từ việc chấp nhận bản thân như bạn đang là"
+    },
+    "success": {
+      "en": ["success", "achievement", "accomplishment", "triumph", "victory"],
+      "vi": ["thành công", "thành tựu", "chiến thắng", "đạt được", "hoàn thành"],
+      "ipa_en": "səkˈses",
+      "ipa_vi": "tʰajŋ kɔŋ",
+      "example_en": "Success is not final, failure is not fatal",
+      "example_vi": "Thành công không phải là điểm cuối, thất bại không phải là định mệnh"
+    },
+    "failure": {
+      "en": ["failure", "defeat", "setback", "disappointment", "loss"],
+      "vi": ["thất bại", "thất vọng", "trở ngại", "thất cơ lỡ vận", "mất mát"],
+      "ipa_en": "ˈfeɪljər",
+      "ipa_vi": "tʰət ɓaːj",
+      "example_en": "Failure is simply the opportunity to begin again, this time more intelligently",
+      "example_vi": "Thất bại chỉ đơn giản là cơ hội để bắt đầu lại, lần này thông minh hơn"
     }
   }
 }
