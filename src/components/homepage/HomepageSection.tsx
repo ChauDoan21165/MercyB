@@ -1,4 +1,7 @@
+import { useRef } from 'react';
 import { AudioPlayer } from './AudioPlayer';
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import { cn } from '@/lib/utils';
 
 interface HomepageSectionProps {
   id: string;
@@ -28,10 +31,23 @@ export const HomepageSection = ({
   body,
   audio,
 }: HomepageSectionProps) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isVisible = useIntersectionObserver(sectionRef, {
+    threshold: 0.15,
+    rootMargin: '-50px',
+    freezeOnceVisible: true
+  });
+
   return (
     <section
+      ref={sectionRef}
       id={id}
-      className="w-full py-16 px-6 transition-colors duration-500"
+      className={cn(
+        "w-full py-16 px-6 transition-all duration-700",
+        isVisible 
+          ? "opacity-100 translate-y-0" 
+          : "opacity-0 translate-y-8"
+      )}
       style={{ backgroundColor }}
     >
       <div className="max-w-[640px] mx-auto space-y-6">
