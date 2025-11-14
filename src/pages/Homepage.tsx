@@ -78,18 +78,21 @@ const Homepage = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Adaptive sticky header */}
+      {/* Adaptive sticky header with better contrast */}
       <header 
-        className="fixed top-0 left-0 right-0 z-50 border-b shadow-sm transition-all duration-500"
+        className="fixed top-0 left-0 right-0 z-50 border-b shadow-sm transition-all duration-500 backdrop-blur-sm"
         style={{ 
-          backgroundColor: headerBg,
-          borderColor: textColor === '#ffffff' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)'
+          backgroundColor: headerBg + 'E6', // Add slight transparency
+          borderColor: textColor === '#ffffff' ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.2)'
         }}
       >
         <div className="max-w-[640px] mx-auto px-6 py-4 flex justify-between items-center">
           <h1 
-            className="text-lg font-semibold transition-colors duration-500"
-            style={{ color: textColor }}
+            className="text-lg font-semibold transition-colors duration-500 drop-shadow-sm"
+            style={{ 
+              color: textColor,
+              textShadow: textColor === '#ffffff' ? '0 1px 3px rgba(0,0,0,0.3)' : '0 1px 2px rgba(255,255,255,0.5)'
+            }}
           >
             Mercy Blade
           </h1>
@@ -97,11 +100,12 @@ const Homepage = () => {
             variant="outline"
             size="sm"
             onClick={() => navigate('/auth')}
-            className="gap-2 transition-colors duration-500"
+            className="gap-2 transition-all duration-500 hover:scale-105"
             style={{ 
-              borderColor: textColor === '#ffffff' ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.3)',
+              borderColor: textColor === '#ffffff' ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.4)',
               color: textColor,
-              backgroundColor: 'transparent'
+              backgroundColor: textColor === '#ffffff' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)',
+              textShadow: textColor === '#ffffff' ? '0 1px 2px rgba(0,0,0,0.2)' : 'none'
             }}
           >
             <LogIn className="w-4 h-4" />
@@ -127,12 +131,12 @@ const Homepage = () => {
       </main>
 
       {/* Footer CTA */}
-      <footer className="py-12 px-6 bg-gradient-to-b from-teal-100 to-teal-200 dark:from-teal-900 dark:to-teal-950">
+      <footer className="py-12 px-6 bg-gradient-to-b from-teal-100 to-teal-200">
         <div className="max-w-[640px] mx-auto text-center space-y-6">
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+          <h3 className="text-xl font-semibold text-gray-900">
             Ready to begin your journey?
           </h3>
-          <p className="text-sm text-gray-700 dark:text-gray-300">
+          <p className="text-sm text-gray-700">
             Sẵn sàng bắt đầu hành trình của bạn?
           </p>
           <Button
