@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { AudioPlayer } from './AudioPlayer';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import { useParallax } from '@/hooks/useParallax';
 import { cn } from '@/lib/utils';
 
 interface HomepageSectionProps {
@@ -37,19 +38,28 @@ export const HomepageSection = ({
     rootMargin: '-50px',
     freezeOnceVisible: true
   });
+  const parallaxOffset = useParallax(sectionRef, 0.3);
 
   return (
     <section
       ref={sectionRef}
       id={id}
       className={cn(
-        "w-full py-16 px-6 transition-all duration-700",
+        "w-full py-16 px-6 transition-all duration-700 relative overflow-hidden",
         isVisible 
           ? "opacity-100 translate-y-0" 
           : "opacity-0 translate-y-8"
       )}
-      style={{ backgroundColor }}
     >
+      {/* Parallax background layer */}
+      <div 
+        className="absolute inset-0 -z-10"
+        style={{ 
+          backgroundColor,
+          transform: `translateY(${parallaxOffset}px)`,
+          transition: 'transform 0.1s ease-out'
+        }}
+      />
       <div className="max-w-[640px] mx-auto space-y-6">
         {/* Title */}
         <h2
