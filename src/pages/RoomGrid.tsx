@@ -125,7 +125,7 @@ const RoomGrid = () => {
           showBackButton={true}
         />
         
-        <div className="bg-gradient-to-b from-green-50 via-teal-50 to-blue-50 min-h-screen">
+        <div className="min-h-screen" style={{ background: 'hsl(var(--page-roomgrid))' }}>
           <div className="container mx-auto px-4 py-8 max-w-7xl">
             {/* Header */}
             <div className="mb-8 space-y-4">
