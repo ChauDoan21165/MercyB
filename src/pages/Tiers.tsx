@@ -1,7 +1,7 @@
 import { useTiersConfig } from '@/hooks/useTiersConfig';
 import { TierSection } from '@/components/tiers/TierSection';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
@@ -43,7 +43,17 @@ const Tiers = () => {
     <div className="min-h-screen">
       {/* Colorful Mercy Blade Header */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-200 py-4 px-6">
-        <div className="max-w-[640px] mx-auto">
+        <div className="max-w-[640px] mx-auto relative">
+          {/* Back Button */}
+          <Button
+            onClick={() => navigate('/')}
+            size="sm"
+            className="absolute left-0 top-1/2 -translate-y-1/2 gap-2 bg-gray-900 hover:bg-gray-800 text-white"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back
+          </Button>
+
           <h1 className="text-3xl md:text-4xl font-bold text-center tracking-tight">
             <span className="inline-block animate-fade-in" style={{ color: '#E91E63' }}>M</span>
             <span className="inline-block animate-fade-in" style={{ color: '#9C27B0', animationDelay: '0.1s' }}>e</span>
@@ -68,8 +78,10 @@ const Tiers = () => {
             key={section.slug}
             id={section.slug}
             backgroundColor={section.background_color}
-            title={section.title.en}
-            content={section.content.en}
+            titleEn={section.title.en}
+            titleVi={section.title.vi}
+            contentEn={section.content.en}
+            contentVi={section.content.vi}
             audio={section.audio.en}
             price={section.price}
           />
