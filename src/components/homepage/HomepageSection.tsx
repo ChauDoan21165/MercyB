@@ -75,7 +75,7 @@ export const HomepageSection = ({
             {body.en}
           </p>
           <AudioPlayer
-            audioSrc={`/audio/${audio.en}`}
+            audioPath={`/audio/${audio.en}`}
             isPlaying={currentAudio === 'en' && isPlaying}
             onPlayPause={() => {
               if (currentAudio === 'en' && isPlaying) {
@@ -85,6 +85,7 @@ export const HomepageSection = ({
                 setIsPlaying(true);
               }
             }}
+            onEnded={() => setIsPlaying(false)}
           />
         </div>
 
@@ -100,7 +101,7 @@ export const HomepageSection = ({
             {body.vi}
           </p>
           <AudioPlayer
-            audioSrc={`/audio/${audio.vi}`}
+            audioPath={`/audio/${audio.vi}`}
             isPlaying={currentAudio === 'vi' && isPlaying}
             onPlayPause={() => {
               if (currentAudio === 'vi' && isPlaying) {
@@ -110,6 +111,7 @@ export const HomepageSection = ({
                 setIsPlaying(true);
               }
             }}
+            onEnded={() => setIsPlaying(false)}
           />
         </div>
       </div>
