@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import { AudioPlayer } from './AudioPlayer';
+import { useRef, useState } from 'react';
+import { AudioPlayer } from '@/components/AudioPlayer';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import { useParallax } from '@/hooks/useParallax';
 import { cn } from '@/lib/utils';
@@ -33,12 +33,21 @@ export const HomepageSection = ({
   audio,
 }: HomepageSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   const isVisible = useIntersectionObserver(sectionRef, {
     threshold: 0.15,
     rootMargin: '-50px',
     freezeOnceVisible: true
   });
   const parallaxOffset = useParallax(sectionRef, 0.3);
+
+  const handlePlayPause = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  const handleEnded = () => {
+    setIsPlaying(false);
+  };
 
   return (
     <section
@@ -77,9 +86,11 @@ export const HomepageSection = ({
           
           {audio && (
             <AudioPlayer
-              audioFile={audio.en}
-              language="EN"
-              accentColor={accentColor}
+              audioPath={`/audio/${audio.en}`}
+              isPlaying={isPlaying}
+              onPlayPause={handlePlayPause}
+              onEnded={handleEnded}
+              className="mt-4"
             />
           )}
         </div>
@@ -89,14 +100,6 @@ export const HomepageSection = ({
           <p className="text-[15px] leading-relaxed text-gray-700 dark:text-gray-300">
             {body.vi}
           </p>
-          
-          {audio && (
-            <AudioPlayer
-              audioFile={audio.vi}
-              language="VI"
-              accentColor={accentColor}
-            />
-          )}
         </div>
       </div>
     </section>
