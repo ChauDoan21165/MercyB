@@ -39,24 +39,30 @@ export const useHomepageConfig = () => {
   useEffect(() => {
     const loadConfig = async () => {
       try {
-        // Check if there's a pinned version in localStorage
-        const pinnedConfig = localStorage.getItem('pinnedHomepageConfig');
-        if (pinnedConfig) {
-          setConfig(JSON.parse(pinnedConfig));
-          setLoading(false);
-          return;
+        // Attempt to reset pinned config via query flag
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('reset') === '1' || params.get('unpin') === '1') {
+          localStorage.removeItem('pinnedHomepageConfig');
         }
 
-        // Otherwise fetch from JSON
-        const response = await fetch('/data/Mercy_Blade_home_page.json');
-        if (!response.ok) {
-          throw new Error('Failed to load homepage config');
+        // Always prefer fresh JSON; fallback to pinned if fetch fails
+        let data: HomepageConfig | null = null;
+        try {
+          const response = await fetch('/data/Mercy_Blade_home_page.json', { cache: 'no-store' });
+          if (!response.ok) {
+            throw new Error('Failed to load homepage config');
+          }
+          data = await response.json();
+          setConfig(data);
+        } catch (fetchErr) {
+          const pinned = localStorage.getItem('pinnedHomepageConfig');
+          if (pinned) {
+            console.warn('Using pinned homepage config due to fetch error');
+            setConfig(JSON.parse(pinned));
+          } else {
+            throw fetchErr instanceof Error ? fetchErr : new Error('Unknown error');
+          }
         }
-        const data = await response.json();
-        setConfig(data);
-        
-        // Auto-pin the fetched config to prevent future auto-updates
-        localStorage.setItem('pinnedHomepageConfig', JSON.stringify(data));
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Unknown error');
       } finally {
