@@ -716,7 +716,12 @@ const ChatHub = () => {
                   title="Copy JSON filename"
                 />
               )}
-              <h2 className="text-lg font-semibold">
+              <h2 className="text-lg font-semibold" style={{
+                background: 'var(--gradient-rainbow)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}>
                 {currentRoom.nameEn === currentRoom.nameVi 
                   ? currentRoom.nameEn 
                   : `${currentRoom.nameEn} / ${currentRoom.nameVi}`}
