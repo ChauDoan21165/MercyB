@@ -106,9 +106,8 @@ const Homepage = () => {
       {/* Reset Configuration Button */}
       <Button
         onClick={handleResetConfig}
-        variant="outline"
         size="sm"
-        className="fixed top-4 right-4 z-50 gap-2 shadow-lg"
+        className="fixed top-4 right-4 z-50 gap-2 shadow-lg bg-gray-900 hover:bg-gray-800 text-white"
         title="Reset cached configuration"
       >
         <RotateCcw className="w-4 h-4" />
