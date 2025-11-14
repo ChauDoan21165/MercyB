@@ -33,6 +33,17 @@ export const HomepageSection = ({
     freezeOnceVisible: true
   });
   const parallaxOffset = useParallax(sectionRef, 0.2);
+  
+  // Make section background a subtle tint instead of a solid block
+  const toRGBA = (hex: string, alpha = 0.02) => {
+    const clean = hex.replace('#', '');
+    const full = clean.length === 3 ? clean.split('').map(c => c + c).join('') : clean;
+    const bigint = parseInt(full, 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  };
 
   return (
     <section
@@ -49,7 +60,7 @@ export const HomepageSection = ({
       <div 
         className="absolute inset-0 -z-10"
         style={{ 
-          backgroundColor,
+          backgroundColor: toRGBA(backgroundColor, 0.02),
           transform: `translateY(${parallaxOffset}px)`,
           transition: 'transform 0.1s ease-out'
         }}
