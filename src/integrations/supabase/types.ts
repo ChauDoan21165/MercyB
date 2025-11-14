@@ -940,6 +940,36 @@ export type Database = {
         }
         Relationships: []
       }
+      user_sessions: {
+        Row: {
+          created_at: string
+          device_info: Json | null
+          device_type: Database["public"]["Enums"]["device_type"]
+          id: string
+          last_activity: string
+          session_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          device_info?: Json | null
+          device_type: Database["public"]["Enums"]["device_type"]
+          id?: string
+          last_activity?: string
+          session_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          device_info?: Json | null
+          device_type?: Database["public"]["Enums"]["device_type"]
+          id?: string
+          last_activity?: string
+          session_id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_subscriptions: {
         Row: {
           created_at: string | null
@@ -1132,6 +1162,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      device_type: "desktop" | "mobile"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -1260,6 +1291,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      device_type: ["desktop", "mobile"],
     },
   },
 } as const
