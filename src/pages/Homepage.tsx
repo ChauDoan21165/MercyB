@@ -3,11 +3,13 @@ import { HomepageSection } from '@/components/homepage/HomepageSection';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, LogIn } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const Homepage = () => {
   const { config, loading, error } = useHomepageConfig();
   const navigate = useNavigate();
+  const [headerBg, setHeaderBg] = useState('#ffffff');
+  const [textColor, setTextColor] = useState('#111827');
 
   // Enable smooth scrolling
   useEffect(() => {
@@ -16,6 +18,41 @@ const Homepage = () => {
       document.documentElement.style.scrollBehavior = 'auto';
     };
   }, []);
+
+  // Adapt header color based on section in view
+  useEffect(() => {
+    if (!config) return;
+
+    const observers = config.sections.map((section) => {
+      const element = document.getElementById(section.id);
+      if (!element) return null;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+              setHeaderBg(section.background_color);
+              // Determine text color based on background brightness
+              const rgb = parseInt(section.background_color.slice(1), 16);
+              const r = (rgb >> 16) & 0xff;
+              const g = (rgb >> 8) & 0xff;
+              const b = (rgb >> 0) & 0xff;
+              const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+              setTextColor(brightness > 128 ? '#111827' : '#ffffff');
+            }
+          });
+        },
+        { threshold: [0, 0.3, 0.5, 0.7, 1.0] }
+      );
+
+      observer.observe(element);
+      return observer;
+    });
+
+    return () => {
+      observers.forEach((observer) => observer?.disconnect());
+    };
+  }, [config]);
 
   if (loading) {
     return (
@@ -41,17 +78,31 @@ const Homepage = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Fixed header with navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+      {/* Adaptive sticky header */}
+      <header 
+        className="fixed top-0 left-0 right-0 z-50 border-b shadow-sm transition-all duration-500"
+        style={{ 
+          backgroundColor: headerBg,
+          borderColor: textColor === '#ffffff' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)'
+        }}
+      >
         <div className="max-w-[640px] mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-lg font-semibold text-gray-900">
+          <h1 
+            className="text-lg font-semibold transition-colors duration-500"
+            style={{ color: textColor }}
+          >
             Mercy Blade
           </h1>
           <Button
             variant="outline"
             size="sm"
             onClick={() => navigate('/auth')}
-            className="gap-2 border-gray-300 text-gray-900 hover:bg-gray-100"
+            className="gap-2 transition-colors duration-500"
+            style={{ 
+              borderColor: textColor === '#ffffff' ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.3)',
+              color: textColor,
+              backgroundColor: 'transparent'
+            }}
           >
             <LogIn className="w-4 h-4" />
             Login
