@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { ArrowLeft, Upload, Loader2, CheckCircle, AlertCircle } from "lucide-react";
+import { Upload, Loader2, CheckCircle, AlertCircle } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const ManualPayment = () => {
@@ -147,104 +148,109 @@ const ManualPayment = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-background/80 p-4">
-      <div className="max-w-2xl mx-auto">
-        <Button
-          variant="ghost"
-          onClick={() => navigate(-1)}
-          className="mb-4"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back
-        </Button>
+    <div className="min-h-screen">
+      <ColorfulMercyBladeHeader
+        subtitle="Manual Payment Verification"
+        showBackButton={true}
+      />
 
-        <Card className="p-6">
-          <h1 className="text-2xl font-bold mb-2">Manual Payment Verification</h1>
-          <p className="text-muted-foreground mb-6">
-            {tierName} - ${price}/year
-          </p>
+      <div className="bg-gradient-to-b from-orange-50 via-yellow-50 to-amber-50 min-h-screen p-6">
+        <div className="max-w-2xl mx-auto">
+          <Card className="p-8 bg-white/80 backdrop-blur border-2 border-orange-200 shadow-xl">
+            <h1 className="text-3xl font-bold mb-2 text-center bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
+              Manual Payment Verification
+            </h1>
+            <p className="text-center text-gray-700 mb-2">
+              {tierName} - ${price}/year
+            </p>
+            <p className="text-center text-gray-600 mb-6 text-sm">
+              Xác Minh Thanh Toán Thủ Công
+            </p>
 
-          <Alert className="mb-6">
-            <AlertCircle className="h-4 w-4" />
-            <AlertDescription>
-              <strong>Instructions:</strong>
-              <ol className="list-decimal list-inside mt-2 space-y-1">
-                <li>Send payment to our PayPal: <strong>cd12536@gmail.com</strong></li>
-                <li>Take a screenshot of the completed transaction</li>
-                <li>Enter your username and upload the screenshot below</li>
-                <li>Wait for verification (usually instant with OCR, may require admin review)</li>
-              </ol>
-            </AlertDescription>
-          </Alert>
-
-          {result && (
-            <Alert className={`mb-6 ${result.status === 'auto_approved' ? 'border-green-500 bg-green-50' : 'border-yellow-500 bg-yellow-50'}`}>
-              {result.status === 'auto_approved' ? (
-                <CheckCircle className="h-4 w-4 text-green-600" />
-              ) : (
-                <AlertCircle className="h-4 w-4 text-yellow-600" />
-              )}
-              <AlertDescription>
-                <strong>{result.message}</strong>
-                {result.extracted && (
-                  <div className="mt-2 text-sm space-y-1">
-                    <p>Transaction ID: {result.extracted.transaction_id || 'N/A'}</p>
-                    <p>Amount: ${result.extracted.amount || 'N/A'}</p>
-                    <p>Confidence: {Math.round(result.confidence * 100)}%</p>
-                  </div>
-                )}
+            <Alert className="mb-6 border-blue-200 bg-blue-50">
+              <AlertCircle className="h-4 w-4 text-blue-600" />
+              <AlertDescription className="text-gray-800">
+                <strong>Instructions / Hướng dẫn:</strong>
+                <ol className="list-decimal list-inside mt-2 space-y-1">
+                  <li>Send payment to our PayPal: <strong>cd12536@gmail.com</strong></li>
+                  <li>Take a screenshot of the completed transaction / Chụp màn hình giao dịch hoàn tất</li>
+                  <li>Enter your username and upload the screenshot below / Nhập tên người dùng và tải lên ảnh chụp màn hình</li>
+                  <li>Wait for verification (usually instant with OCR, may require admin review) / Chờ xác minh (thường ngay lập tức với OCR, có thể cần xem xét của quản trị viên)</li>
+                </ol>
               </AlertDescription>
             </Alert>
-          )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <Label htmlFor="username">Username</Label>
-              <Input
-                id="username"
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Enter your username"
+            {result && (
+              <Alert className={`mb-6 ${result.status === 'auto_approved' ? 'border-green-500 bg-green-50' : 'border-yellow-500 bg-yellow-50'}`}>
+                {result.status === 'auto_approved' ? (
+                  <CheckCircle className="h-4 w-4 text-green-600" />
+                ) : (
+                  <AlertCircle className="h-4 w-4 text-yellow-600" />
+                )}
+                <AlertDescription>
+                  <strong>{result.message}</strong>
+                  {result.extracted && (
+                    <div className="mt-2 text-sm space-y-1">
+                      <p>Transaction ID: {result.extracted.transaction_id || 'N/A'}</p>
+                      <p>Amount: ${result.extracted.amount || 'N/A'}</p>
+                      <p>Confidence: {Math.round(result.confidence * 100)}%</p>
+                    </div>
+                  )}
+                </AlertDescription>
+              </Alert>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <Label htmlFor="username" className="text-gray-900">Username / Tên người dùng</Label>
+                <Input
+                  id="username"
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Enter your username"
+                  disabled={isUploading || result?.status === 'auto_approved'}
+                  className="bg-white"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="screenshot" className="text-gray-900">Payment Screenshot / Ảnh chụp màn hình thanh toán</Label>
+                <Input
+                  id="screenshot"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  disabled={isUploading || result?.status === 'auto_approved'}
+                  className="bg-white"
+                />
+                {screenshot && (
+                  <p className="text-sm text-gray-600 mt-1">
+                    Selected: {screenshot.name}
+                  </p>
+                )}
+              </div>
+
+              <Button 
+                type="submit" 
+                className="w-full bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white py-6 text-lg"
                 disabled={isUploading || result?.status === 'auto_approved'}
-              />
-            </div>
-
-            <div>
-              <Label htmlFor="screenshot">Payment Screenshot</Label>
-              <Input
-                id="screenshot"
-                type="file"
-                accept="image/*"
-                onChange={handleFileChange}
-                disabled={isUploading || result?.status === 'auto_approved'}
-              />
-              {screenshot && (
-                <p className="text-sm text-muted-foreground mt-1">
-                  Selected: {screenshot.name}
-                </p>
-              )}
-            </div>
-
-            <Button 
-              type="submit" 
-              className="w-full"
-              disabled={isUploading || result?.status === 'auto_approved'}
-            >
-              {isUploading ? (
-                <>
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                  Verifying...
-                </>
-              ) : (
-                <>
-                  <Upload className="w-4 h-4 mr-2" />
-                  Submit Payment Proof
-                </>
-              )}
-            </Button>
-          </form>
-        </Card>
+              >
+                {isUploading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    Verifying... / Đang xác minh...
+                  </>
+                ) : (
+                  <>
+                    <Upload className="w-4 h-4 mr-2" />
+                    Submit Payment Proof / Gửi Chứng Từ Thanh Toán
+                  </>
+                )}
+              </Button>
+            </form>
+          </Card>
+        </div>
       </div>
     </div>
   );

@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
+import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from 'sonner';
+import { Check } from 'lucide-react';
 
 declare global {
   interface Window {
@@ -209,51 +211,153 @@ const PaymentTest = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background p-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-8">
-          <Button variant="outline" onClick={() => navigate('/')}>
-            ← Back to Home / Quay lại Trang chủ
-          </Button>
-        </div>
+    <div className="min-h-screen">
+      <ColorfulMercyBladeHeader
+        subtitle="Choose Your VIP Package"
+        showBackButton={true}
+      />
 
-        <h1 className="text-4xl font-bold mb-4 text-center">
-          {searchParams.get('tier') 
-            ? `Payment for ${searchParams.get('tier')?.toUpperCase()} / Thanh toán cho ${searchParams.get('tier')?.toUpperCase()}`
-            : 'Choose Your VIP Package / Chọn Gói VIP Của Bạn'
-          }
-        </h1>
+      {/* Colorful gradient background */}
+      <div className="bg-gradient-to-b from-purple-50 via-blue-50 to-teal-50 min-h-screen py-12 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-4xl font-bold mb-4 text-center bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">
+            {searchParams.get('tier') 
+              ? `Payment for ${searchParams.get('tier')?.toUpperCase()}`
+              : 'Choose Your VIP Membership'
+            }
+          </h1>
+          <p className="text-center text-lg mb-2">Chọn Gói VIP Của Bạn</p>
 
-        <div className="max-w-4xl mx-auto">
-          <p className="text-lg mb-6 text-center text-muted-foreground">
-            You have two ways to transfer money: / Bạn có hai cách chuyển tiền:
-          </p>
-          
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <Card className="p-6 bg-card/50 backdrop-blur border-primary/20">
-              <div className="flex items-start gap-3">
-                <span className="text-3xl">⚡</span>
-                <div>
-                  <h3 className="text-xl font-bold mb-1">Fast PayPal / PayPal Nhanh Chóng</h3>
-                  <p className="text-sm text-muted-foreground">Pay via app, activate instantly / Thanh toán qua app, kích hoạt ngay lập tức</p>
+          {/* Payment Methods Info */}
+          <div className="max-w-4xl mx-auto mb-12">
+            <p className="text-lg mb-6 text-center text-gray-700">
+              You have two ways to transfer money / Bạn có hai cách chuyển tiền:
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card className="p-6 bg-white/80 backdrop-blur border-purple-200 shadow-lg">
+                <div className="flex items-start gap-3">
+                  <span className="text-3xl">⚡</span>
+                  <div>
+                    <h3 className="text-xl font-bold mb-1 text-gray-900">Fast PayPal</h3>
+                    <p className="text-sm text-gray-700">Pay via app, activate instantly</p>
+                    <p className="text-sm text-gray-600">Thanh toán qua app, kích hoạt ngay lập tức</p>
+                  </div>
                 </div>
-              </div>
-            </Card>
-            <Card className="p-6 bg-card/50 backdrop-blur border-primary/20">
-              <div className="flex items-start gap-3">
-                <span className="text-3xl">💰</span>
-                <div>
-                  <h3 className="text-xl font-bold mb-1">Manual Transfer / Chuyển Khoản Thủ Công</h3>
-                  <p className="text-sm text-muted-foreground">You can pay yourself via PayPal, give app the transaction screenshot / Bạn có thể tự trả bằng PayPal, cho app màn hình giao dịch</p>
+              </Card>
+              <Card className="p-6 bg-white/80 backdrop-blur border-blue-200 shadow-lg">
+                <div className="flex items-start gap-3">
+                  <span className="text-3xl">💰</span>
+                  <div>
+                    <h3 className="text-xl font-bold mb-1 text-gray-900">Manual Transfer</h3>
+                    <p className="text-sm text-gray-700">Pay yourself via PayPal, give app the transaction screenshot</p>
+                    <p className="text-sm text-gray-600">Bạn có thể tự trả bằng PayPal, cho app màn hình giao dịch</p>
+                  </div>
                 </div>
-              </div>
+              </Card>
+            </div>
+          </div>
+
+          {/* Tier Selection Cards */}
+          {tiers.length > 0 ? (
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {tiers.map((tier, index) => {
+                const colors = ['#E91E63', '#3F51B5', '#00BCD4', '#4CAF50'];
+                const bgColors = ['from-pink-100 to-pink-200', 'from-blue-100 to-blue-200', 'from-cyan-100 to-cyan-200', 'from-green-100 to-green-200'];
+                const borderColors = ['border-pink-300', 'border-blue-300', 'border-cyan-300', 'border-green-300'];
+                
+                return (
+                  <Card 
+                    key={tier.id} 
+                    className={`p-6 bg-gradient-to-br ${bgColors[index % 4]} backdrop-blur border-2 ${borderColors[index % 4]} shadow-xl hover:scale-105 transition-transform duration-300`}
+                  >
+                    <CardHeader className="pb-4">
+                      <CardTitle className="text-2xl font-bold text-center" style={{ color: colors[index % 4] }}>
+                        {tier.name}
+                      </CardTitle>
+                      <div className="text-center mt-4">
+                        <div className="text-4xl font-bold text-gray-900">
+                          ${tier.price}
+                          <span className="text-lg font-normal text-gray-600">/month</span>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3 mb-6">
+                        <div className="flex items-start gap-2">
+                          <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                          <p className="text-sm text-gray-700">{tier.rooms_per_month} rooms per month</p>
+                        </div>
+                        {tier.description && (
+                          <div className="flex items-start gap-2">
+                            <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                            <p className="text-sm text-gray-700">{tier.description}</p>
+                          </div>
+                        )}
+                        {tier.features && JSON.parse(tier.features).map((feature: string, idx: number) => (
+                          <div key={idx} className="flex items-start gap-2">
+                            <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                            <p className="text-sm text-gray-700">{feature}</p>
+                          </div>
+                        ))}
+                      </div>
+                      
+                      {/* PayPal Button Container */}
+                      <div 
+                        id={`paypal-button-${tier.id}`}
+                        className="min-h-[50px] bg-white/50 rounded-lg p-2"
+                        ref={(el) => {
+                          tierRefs.current[tier.id] = el;
+                        }}
+                      />
+                      
+                      <Button
+                        onClick={() => handlePayment(tier.id)}
+                        disabled={loading && selectedTier === tier.id}
+                        className="w-full mt-4"
+                        style={{ backgroundColor: colors[index % 4] }}
+                      >
+                        {loading && selectedTier === tier.id ? 'Loading...' : 'Select This Plan'}
+                      </Button>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-gray-600">Loading payment options...</p>
+              <p className="text-gray-500 text-sm">Đang tải các tùy chọn thanh toán...</p>
+            </div>
+          )}
+
+          {/* Manual Payment Option */}
+          <div className="mt-12 max-w-2xl mx-auto">
+            <Card className="p-8 bg-white/80 backdrop-blur border-2 border-orange-200 shadow-xl">
+              <h3 className="text-2xl font-bold mb-4 text-center text-orange-600">
+                💰 Manual Payment / Chuyển Khoản Thủ Công
+              </h3>
+              <p className="text-center text-gray-700 mb-6">
+                Prefer to pay manually? Upload your payment proof here. / Muốn thanh toán thủ công? Tải lên chứng từ thanh toán tại đây.
+              </p>
+              <Button
+                onClick={() => navigate('/manual-payment')}
+                variant="outline"
+                className="w-full text-lg py-6 border-2 border-orange-400 hover:bg-orange-50"
+              >
+                Go to Manual Payment / Chuyển đến Thanh toán Thủ công
+              </Button>
             </Card>
           </div>
 
-          <div className="mt-8 p-4 bg-muted rounded-lg">
-            <h3 className="font-semibold mb-2">💳 Secure Payment / Thanh toán An toàn</h3>
-            <p className="text-sm text-muted-foreground">
-              All payments are securely processed via PayPal. Your subscription will be activated immediately after successful payment. / Tất cả thanh toán được xử lý an toàn qua PayPal. Gói đăng ký sẽ được kích hoạt ngay sau khi thanh toán thành công.
+          {/* Security Info */}
+          <div className="mt-8 max-w-2xl mx-auto p-6 bg-white/70 backdrop-blur rounded-lg border border-gray-200">
+            <h3 className="font-semibold mb-2 text-gray-900">💳 Secure Payment / Thanh toán An toàn</h3>
+            <p className="text-sm text-gray-700">
+              All payments are securely processed via PayPal. Your subscription will be activated immediately after successful payment.
+            </p>
+            <p className="text-sm text-gray-600 mt-2">
+              Tất cả thanh toán được xử lý an toàn qua PayPal. Gói đăng ký sẽ được kích hoạt ngay sau khi thanh toán thành công.
             </p>
           </div>
         </div>
