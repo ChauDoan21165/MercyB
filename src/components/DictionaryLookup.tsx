@@ -153,8 +153,17 @@ export const DictionaryLookup = () => {
           placeholder="Search English or Vietnamese / Tìm tiếng Anh hoặc tiếng Việt"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="pl-12 h-14 text-base border-2 focus:border-primary shadow-sm"
+          className="pl-12 pr-28 h-14 text-base border-2 focus:border-primary shadow-sm"
         />
+        {result && (result.ipa_en || result.ipa_vi) && (
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-xs text-muted-foreground bg-muted/60 border border-border/50 rounded px-2 py-0.5">
+            <span className="font-mono">
+              {result.ipa_en ? `{/${result.ipa_en}/}` : ''}
+              {result.ipa_en && result.ipa_vi ? ' ' : ''}
+              {result.ipa_vi ? `{/${result.ipa_vi}/}` : ''}
+            </span>
+          </div>
+        )}
       </div>
       
       {result && searchTerm && (
