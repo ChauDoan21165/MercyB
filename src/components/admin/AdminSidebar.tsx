@@ -8,6 +8,7 @@ import {
   Shield,
   FileText,
   Home,
+  Code,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 
@@ -26,6 +27,7 @@ import {
 const adminItems = [
   { title: "Dashboard", url: "/admin", icon: Home, end: true },
   { title: "Room Management", url: "/admin/rooms", icon: LayoutDashboard },
+  { title: "Code Editor", url: "/admin/code-editor", icon: Code },
   { title: "User Roles", url: "/admin/users", icon: Users },
   { title: "Statistics", url: "/admin/stats", icon: TrendingUp },
   { title: "VIP Requests", url: "/vip-requests", icon: MessageSquare },
