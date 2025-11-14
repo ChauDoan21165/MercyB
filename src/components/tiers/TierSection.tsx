@@ -28,6 +28,7 @@ export const TierSection = ({
   price,
 }: TierSectionProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlayingVi, setIsPlayingVi] = useState(false);
 
   return (
     <section
@@ -78,7 +79,13 @@ export const TierSection = ({
             <AudioPlayer
               audioPath={`/audio/${audio}`}
               isPlaying={isPlaying}
-              onPlayPause={() => setIsPlaying(!isPlaying)}
+              onPlayPause={() => {
+                // Stop Vietnamese audio if English is starting
+                if (!isPlaying) {
+                  setIsPlayingVi(false);
+                }
+                setIsPlaying(!isPlaying);
+              }}
               onEnded={() => setIsPlaying(false)}
             />
           )}
@@ -94,6 +101,22 @@ export const TierSection = ({
               {contentVi}
             </p>
           </div>
+          
+          {/* Vietnamese Audio Player - using same audio file */}
+          {audio && (
+            <AudioPlayer
+              audioPath={`/audio/${audio}`}
+              isPlaying={isPlayingVi}
+              onPlayPause={() => {
+                // Stop English audio if Vietnamese is starting
+                if (!isPlayingVi) {
+                  setIsPlaying(false);
+                }
+                setIsPlayingVi(!isPlayingVi);
+              }}
+              onEnded={() => setIsPlayingVi(false)}
+            />
+          )}
         </div>
       </div>
     </section>
