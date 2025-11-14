@@ -42,37 +42,6 @@ export const HomepageSection = ({
   });
   const parallaxOffset = 0;
 
-  const toggleAudioEn = () => {
-    if (!audioEnRef.current) return;
-    if (playingEn) {
-      audioEnRef.current.pause();
-      setPlayingEn(false);
-    } else {
-      // Pause Vietnamese if playing
-      if (audioViRef.current) {
-        audioViRef.current.pause();
-        setPlayingVi(false);
-      }
-      audioEnRef.current.play();
-      setPlayingEn(true);
-    }
-  };
-
-  const toggleAudioVi = () => {
-    if (!audioViRef.current) return;
-    if (playingVi) {
-      audioViRef.current.pause();
-      setPlayingVi(false);
-    } else {
-      // Pause English if playing
-      if (audioEnRef.current) {
-        audioEnRef.current.pause();
-        setPlayingEn(false);
-      }
-      audioViRef.current.play();
-      setPlayingVi(true);
-    }
-  };
 
   return (
     <section
@@ -92,70 +61,56 @@ export const HomepageSection = ({
           backgroundColor
         }}
       />
-      
-      {/* Audio elements */}
-      <audio
-        ref={audioEnRef}
-        src={`/audio/${audio.en}`}
-        onEnded={() => setPlayingEn(false)}
-        onPause={() => setPlayingEn(false)}
-      />
-      <audio
-        ref={audioViRef}
-        src={`/audio/${audio.vi}`}
-        onEnded={() => setPlayingVi(false)}
-        onPause={() => setPlayingVi(false)}
-      />
 
       <div className="max-w-[640px] mx-auto space-y-10">
         {/* English Section */}
         <div className="space-y-4">
-          <div className="flex items-center justify-between gap-4">
-            <h2
-              className="text-[22px] font-semibold leading-relaxed"
-              style={{ color: headingColor }}
-            >
-              {title.en}
-            </h2>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleAudioEn}
-              className="flex-shrink-0 gap-2"
-              style={{ color: accentColor }}
-            >
-              {playingEn ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
-              <span className="text-xs">EN</span>
-            </Button>
-          </div>
+          <h2
+            className="text-[22px] font-semibold leading-relaxed"
+            style={{ color: headingColor }}
+          >
+            {title.en}
+          </h2>
           <p className="text-[15px] leading-relaxed" style={{ color: 'rgba(0, 0, 0, 0.75)' }}>
             {body.en}
           </p>
+          <AudioPlayer
+            audioSrc={`/audio/${audio.en}`}
+            isPlaying={currentAudio === 'en' && isPlaying}
+            onPlayPause={() => {
+              if (currentAudio === 'en' && isPlaying) {
+                setIsPlaying(false);
+              } else {
+                setCurrentAudio('en');
+                setIsPlaying(true);
+              }
+            }}
+          />
         </div>
 
         {/* Vietnamese Section */}
         <div className="space-y-4">
-          <div className="flex items-center justify-between gap-4">
-            <h3
-              className="text-[19px] font-semibold leading-relaxed"
-              style={{ color: `${headingColor}cc` }}
-            >
-              {title.vi}
-            </h3>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleAudioVi}
-              className="flex-shrink-0 gap-2"
-              style={{ color: accentColor }}
-            >
-              {playingVi ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
-              <span className="text-xs">VI</span>
-            </Button>
-          </div>
+          <h3
+            className="text-[19px] font-semibold leading-relaxed"
+            style={{ color: `${headingColor}cc` }}
+          >
+            {title.vi}
+          </h3>
           <p className="text-[15px] leading-relaxed" style={{ color: 'rgba(0, 0, 0, 0.70)' }}>
             {body.vi}
           </p>
+          <AudioPlayer
+            audioSrc={`/audio/${audio.vi}`}
+            isPlaying={currentAudio === 'vi' && isPlaying}
+            onPlayPause={() => {
+              if (currentAudio === 'vi' && isPlaying) {
+                setIsPlaying(false);
+              } else {
+                setCurrentAudio('vi');
+                setIsPlaying(true);
+              }
+            }}
+          />
         </div>
       </div>
     </section>
