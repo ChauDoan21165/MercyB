@@ -74,14 +74,15 @@ export const AdminFloatingButton = () => {
     <div className="fixed bottom-6 right-6 z-50">
       <Button
         onClick={() => navigate('/admin/stats')}
-        size="lg"
-        className="rounded-full shadow-lg h-14 w-14 relative"
+        size="sm"
+        variant="outline"
+        className="rounded-full shadow-sm h-5 w-5 p-0 bg-gray-400 hover:bg-gray-500 border-gray-500 relative"
       >
-        <Settings className="h-6 w-6" />
+        <Settings className="h-3 w-3 text-white" />
         {unreadCount > 0 && (
           <Badge
             variant="destructive"
-            className="absolute -top-2 -right-2 h-6 w-6 flex items-center justify-center p-0 rounded-full"
+            className="absolute -top-1 -right-1 h-3 w-3 flex items-center justify-center p-0 rounded-full text-[8px]"
           >
             {unreadCount > 9 ? '9+' : unreadCount}
           </Badge>
