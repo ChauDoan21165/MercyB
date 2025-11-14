@@ -39,12 +39,24 @@ export const useHomepageConfig = () => {
   useEffect(() => {
     const loadConfig = async () => {
       try {
+        // Check if there's a pinned version in localStorage
+        const pinnedConfig = localStorage.getItem('pinnedHomepageConfig');
+        if (pinnedConfig) {
+          setConfig(JSON.parse(pinnedConfig));
+          setLoading(false);
+          return;
+        }
+
+        // Otherwise fetch from JSON
         const response = await fetch('/data/Mercy_Blade_home_page.json');
         if (!response.ok) {
           throw new Error('Failed to load homepage config');
         }
         const data = await response.json();
         setConfig(data);
+        
+        // Auto-pin the fetched config to prevent future auto-updates
+        localStorage.setItem('pinnedHomepageConfig', JSON.stringify(data));
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Unknown error');
       } finally {
