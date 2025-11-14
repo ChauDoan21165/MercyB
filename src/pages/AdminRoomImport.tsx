@@ -14,6 +14,7 @@ export default function AdminRoomImport() {
   const navigate = useNavigate();
   const [jsonInput, setJsonInput] = useState("");
   const [importResults, setImportResults] = useState<string[]>([]);
+  const [validationWarnings, setValidationWarnings] = useState<string[]>([]);
 
   const importMutation = useMutation({
     mutationFn: async (jsonData: any) => {
@@ -111,9 +112,47 @@ export default function AdminRoomImport() {
     },
   });
 
+  const validateRoomData = (data: any) => {
+    const warnings: string[] = [];
+    const rooms = Array.isArray(data) ? data : [data];
+    
+    rooms.forEach((room: any) => {
+      const roomId = room.id || room.schema_id || room.name?.toLowerCase().replace(/\s+/g, '-');
+      const schemaId = room.schema_id;
+      const id = room.id;
+      
+      if (!roomId) {
+        warnings.push(`⚠️ Room missing ID: Cannot determine room identifier`);
+      } else {
+        // Check for ID mismatch
+        if (id && schemaId && id !== schemaId) {
+          warnings.push(`⚠️ ID mismatch in "${room.title?.en || roomId}": id="${id}" but schema_id="${schemaId}". Will use: "${roomId}"`);
+        }
+        
+        // Check if filename convention matches
+        const titleSlug = room.title?.en?.toLowerCase().replace(/\s+/g, '-');
+        if (titleSlug && roomId !== titleSlug && !roomId.includes(titleSlug)) {
+          warnings.push(`ℹ️ Room "${room.title?.en}": ID is "${roomId}" which may not match expected filename pattern`);
+        }
+      }
+    });
+    
+    return warnings;
+  };
+
   const handleImport = () => {
     try {
       const data = JSON.parse(jsonInput);
+      const warnings = validateRoomData(data);
+      setValidationWarnings(warnings);
+      
+      if (warnings.length > 0) {
+        toast({
+          title: "Validation Warnings",
+          description: `Found ${warnings.length} potential issue(s). Check below before importing.`,
+        });
+      }
+      
       importMutation.mutate(data);
     } catch (error) {
       toast({
@@ -176,6 +215,19 @@ export default function AdminRoomImport() {
             </Button>
           </div>
         </Card>
+
+        {validationWarnings.length > 0 && (
+          <Card className="p-6 mb-6 border-yellow-500">
+            <h3 className="font-semibold mb-4 text-yellow-600">Validation Warnings</h3>
+            <div className="space-y-2">
+              {validationWarnings.map((warning, index) => (
+                <div key={index} className="text-sm text-yellow-700">
+                  {warning}
+                </div>
+              ))}
+            </div>
+          </Card>
+        )}
 
         {importResults.length > 0 && (
           <Card className="p-6">
