@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AdminFloatingButton } from "@/components/AdminFloatingButton";
 import Welcome from "./pages/Welcome";
+import Homepage from "./pages/Homepage";
 import MeaningOfLife from "./pages/MeaningOfLife";
 import RoomGrid from "./pages/RoomGrid";
 import RoomGridVIP1 from "./pages/RoomGridVIP1";
@@ -54,7 +55,8 @@ const App = () => (
       <BrowserRouter>
         <AdminFloatingButton />
         <Routes>
-          <Route path="/" element={<Welcome />} />
+          <Route path="/" element={<Homepage />} />
+          <Route path="/welcome" element={<Welcome />} />
           <Route path="/meaning-of-life" element={<MeaningOfLife />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/reset" element={<ResetPassword />} />
