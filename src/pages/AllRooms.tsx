@@ -134,10 +134,21 @@ const AllRooms = () => {
                           </>
                         ) : (
                           <>
-                            <p className="text-xs font-semibold text-foreground leading-tight line-clamp-2">
+                            <p className="text-xs font-semibold leading-tight line-clamp-2" style={{
+                              background: 'var(--gradient-rainbow)',
+                              WebkitBackgroundClip: 'text',
+                              WebkitTextFillColor: 'transparent',
+                              backgroundClip: 'text'
+                            }}>
                               {room.nameEn}
                             </p>
-                            <p className="text-[10px] text-muted-foreground leading-tight line-clamp-2">
+                            <p className="text-[10px] leading-tight line-clamp-2" style={{
+                              background: 'var(--gradient-rainbow)',
+                              WebkitBackgroundClip: 'text',
+                              WebkitTextFillColor: 'transparent',
+                              backgroundClip: 'text',
+                              opacity: 0.7
+                            }}>
                               {room.nameVi}
                             </p>
                           </>
