@@ -13,7 +13,7 @@ interface HomepageSection {
     en: string;
     vi: string;
   };
-  audio: {
+  audio?: {
     en: string;
     vi: string;
   };
