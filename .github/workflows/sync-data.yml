@@ -39,8 +39,77 @@ jobs:
           echo "✅ Room data synced successfully!"
           echo "All JSON files in public/data/ have been synced to the database"
           
-      - name: Notify on failure
-        if: failure()
+      - name: Send success notification to Slack
+        if: success() && secrets.SLACK_WEBHOOK_URL != ''
         run: |
-          echo "❌ Sync failed!"
-          echo "Check the logs above for details"
+          curl -X POST ${{ secrets.SLACK_WEBHOOK_URL }} \
+            -H 'Content-Type: application/json' \
+            -d '{
+              "text": "✅ Room Data Sync Successful",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Room Data Sync Completed* ✅\n\n*Repository:* ${{ github.repository }}\n*Branch:* ${{ github.ref_name }}\n*Commit:* <${{ github.event.head_commit.url }}|${{ github.event.head_commit.message }}>\n*Author:* ${{ github.actor }}"
+                  }
+                }
+              ]
+            }'
+            
+      - name: Send success notification to Discord
+        if: success() && secrets.DISCORD_WEBHOOK_URL != ''
+        run: |
+          curl -X POST ${{ secrets.DISCORD_WEBHOOK_URL }} \
+            -H 'Content-Type: application/json' \
+            -d '{
+              "embeds": [{
+                "title": "✅ Room Data Sync Successful",
+                "color": 3066993,
+                "fields": [
+                  {"name": "Repository", "value": "${{ github.repository }}", "inline": true},
+                  {"name": "Branch", "value": "${{ github.ref_name }}", "inline": true},
+                  {"name": "Author", "value": "${{ github.actor }}", "inline": true},
+                  {"name": "Commit", "value": "${{ github.event.head_commit.message }}", "inline": false}
+                ],
+                "timestamp": "${{ github.event.head_commit.timestamp }}"
+              }]
+            }'
+          
+      - name: Send failure notification to Slack
+        if: failure() && secrets.SLACK_WEBHOOK_URL != ''
+        run: |
+          curl -X POST ${{ secrets.SLACK_WEBHOOK_URL }} \
+            -H 'Content-Type: application/json' \
+            -d '{
+              "text": "❌ Room Data Sync Failed",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Room Data Sync Failed* ❌\n\n*Repository:* ${{ github.repository }}\n*Branch:* ${{ github.ref_name }}\n*Commit:* <${{ github.event.head_commit.url }}|${{ github.event.head_commit.message }}>\n*Author:* ${{ github.actor }}\n*Logs:* <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View Logs>"
+                  }
+                }
+              ]
+            }'
+            
+      - name: Send failure notification to Discord
+        if: failure() && secrets.DISCORD_WEBHOOK_URL != ''
+        run: |
+          curl -X POST ${{ secrets.DISCORD_WEBHOOK_URL }} \
+            -H 'Content-Type: application/json' \
+            -d '{
+              "embeds": [{
+                "title": "❌ Room Data Sync Failed",
+                "color": 15158332,
+                "fields": [
+                  {"name": "Repository", "value": "${{ github.repository }}", "inline": true},
+                  {"name": "Branch", "value": "${{ github.ref_name }}", "inline": true},
+                  {"name": "Author", "value": "${{ github.actor }}", "inline": true},
+                  {"name": "Commit", "value": "${{ github.event.head_commit.message }}", "inline": false}
+                ],
+                "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+                "timestamp": "${{ github.event.head_commit.timestamp }}"
+              }]
+            }'
