@@ -42,16 +42,16 @@ const Homepage = () => {
   return (
     <div className="min-h-screen">
       {/* Fixed header with navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="max-w-[640px] mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <h1 className="text-lg font-semibold text-gray-900">
             Mercy Blade
           </h1>
           <Button
-            variant="ghost"
+            variant="outline"
             size="sm"
             onClick={() => navigate('/auth')}
-            className="gap-2"
+            className="gap-2 border-gray-300 text-gray-900 hover:bg-gray-100"
           >
             <LogIn className="w-4 h-4" />
             Login
