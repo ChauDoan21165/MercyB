@@ -35,15 +35,29 @@ export const AudioPlayer = ({
   const progressBarRef = useRef<HTMLDivElement>(null);
 
   const speedOptions = [0.5, 0.75, 1, 1.25, 1.5, 2];
-  const storageKey = (path: string) => `audio-pos:${path}`;
+  const stripQuery = (url: string) => {
+    try {
+      // Handle absolute or relative URLs
+      const qIndex = url.indexOf('?');
+      const hashIndex = url.indexOf('#');
+      let out = qIndex === -1 ? url : url.slice(0, qIndex);
+      out = hashIndex === -1 ? out : out.slice(0, hashIndex);
+      return out;
+    } catch {
+      return url;
+    }
+  };
+  const storageKey = (path: string) => `audio-pos:${stripQuery(path)}`;
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    // Determine if the source actually changed
+    // Determine if the source actually changed (ignore query params/signatures)
+    const currentSrcNoQuery = stripQuery(audio.src);
+    const newSrcNoQuery = stripQuery(audioPath);
     const isSameSource =
-      audio.src === audioPath || audio.src.endsWith(audioPath);
+      currentSrcNoQuery === newSrcNoQuery || currentSrcNoQuery.endsWith(newSrcNoQuery);
 
     // Only reset and set src when the source changed
     if (!isSameSource) {
@@ -90,6 +104,14 @@ export const AudioPlayer = ({
 
     const handleCanPlay = () => {
       console.log('✅ Audio can play:', audioPath);
+      // Double-check resume in case metadata loaded earlier
+      try {
+        const saved = parseFloat(sessionStorage.getItem(storageKey(audioPath)) || '0');
+        if (!isNaN(saved) && saved > 0.1 && Math.abs((audio.currentTime || 0) - saved) > 0.2 && saved < (audio.duration || Infinity) - 0.2) {
+          audio.currentTime = saved;
+          setCurrentTime(saved);
+        }
+      } catch {}
     };
 
     audio.addEventListener('timeupdate', handleTimeUpdate);
