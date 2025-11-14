@@ -38,6 +38,7 @@ import FinanceCalmRoom from "./pages/FinanceCalmRoom";
 import AdminRooms from "./pages/AdminRooms";
 import AdminRoomEditor from "./pages/AdminRoomEditor";
 import AdminRoomImport from "./pages/AdminRoomImport";
+import RoomSyncHealth from "./pages/RoomSyncHealth";
 import AdminUserRoles from "./pages/AdminUserRoles";
 import AudioTestPage from "./pages/AudioTestPage";
 import AudioUpload from "./pages/AudioUpload";
@@ -87,6 +88,7 @@ const App = () => (
           <Route path="/admin/rooms/new" element={<AdminRoomEditor />} />
           <Route path="/admin/rooms/edit/:roomId" element={<AdminRoomEditor />} />
           <Route path="/admin/rooms/import" element={<AdminRoomImport />} />
+          <Route path="/admin/rooms/health" element={<RoomSyncHealth />} />
           <Route path="/admin/users" element={<AdminUserRoles />} />
           <Route path="/audio-test" element={<AudioTestPage />} />
           <Route path="/audio-upload" element={<AudioUpload />} />
