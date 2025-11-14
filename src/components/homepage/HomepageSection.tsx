@@ -1,4 +1,5 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { AudioPlayer } from '@/components/AudioPlayer';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import { useParallax } from '@/hooks/useParallax';
 import { cn } from '@/lib/utils';
@@ -16,6 +17,10 @@ interface HomepageSectionProps {
     en: string;
     vi: string;
   };
+  audio?: {
+    en: string;
+    vi: string;
+  };
 }
 
 export const HomepageSection = ({
@@ -25,14 +30,24 @@ export const HomepageSection = ({
   accentColor,
   title,
   body,
+  audio,
 }: HomepageSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   const isVisible = useIntersectionObserver(sectionRef, {
     threshold: 0.15,
     rootMargin: '-50px',
     freezeOnceVisible: true
   });
   const parallaxOffset = useParallax(sectionRef, 0.2);
+
+  const handlePlayPause = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  const handleEnded = () => {
+    setIsPlaying(false);
+  };
 
   return (
     <section
@@ -66,6 +81,16 @@ export const HomepageSection = ({
           <p className="text-[15px] leading-relaxed" style={{ color: 'rgba(0, 0, 0, 0.75)' }}>
             {body.en}
           </p>
+          
+          {audio && (
+            <AudioPlayer
+              audioPath={`/audio/${audio.en}`}
+              isPlaying={isPlaying}
+              onPlayPause={handlePlayPause}
+              onEnded={handleEnded}
+              className="mt-4"
+            />
+          )}
         </div>
 
         {/* Vietnamese Section */}
