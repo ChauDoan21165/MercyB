@@ -584,6 +584,14 @@
     "work_life_balance": {
       "en": ["life balance", "work harmony", "priority balance"],
       "vi": ["cân bằng công việc đời sống", "hài hòa", "cân bằng ưu tiên"]
+    },
+    "dream": {
+      "en": ["dream", "aspiration", "vision", "goal", "ambition"],
+      "vi": ["giấc mơ", "ước mơ", "khát vọng", "tầm nhìn", "hoài bão"],
+      "ipa_en": "driːm",
+      "ipa_vi": "zək mɔ",
+      "example_en": "Never give up on your dreams, no matter how hard it gets",
+      "example_vi": "Đừng bao giờ từ bỏ ước mơ của bạn, dù có khó khăn đến đâu"
     }
   }
 }
