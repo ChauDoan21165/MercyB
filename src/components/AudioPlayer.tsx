@@ -101,17 +101,11 @@ export const AudioPlayer = ({
     if (!audio) return;
 
     if (isPlaying) {
-      // Ensure we resume from the last known position
-      if (!isNaN(currentTime) && currentTime > 0 && Math.abs(audio.currentTime - currentTime) > 0.25) {
-        audio.currentTime = currentTime;
-      }
       audio.play().catch(console.error);
     } else {
-      // Cache current time on pause to prevent resets
-      setCurrentTime(audio.currentTime);
       audio.pause();
     }
-  }, [isPlaying, currentTime]);
+  }, [isPlaying]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -243,10 +237,10 @@ export const AudioPlayer = ({
         onClick={handleSkipBackward}
         size="sm"
         variant="ghost"
-        className="h-8 w-8 p-0 shrink-0"
+        className="h-6 w-6 p-0 shrink-0"
         title="Skip backward 10s"
       >
-        <SkipBack className="h-4 w-4" />
+        <SkipBack className="h-3 w-3" />
       </Button>
 
       {/* Play/Pause Button */}
@@ -254,13 +248,13 @@ export const AudioPlayer = ({
         onClick={onPlayPause}
         size="sm"
         variant="ghost"
-        className="h-8 w-8 p-0 shrink-0"
+        className="h-6 w-6 p-0 shrink-0"
         title="Play/Pause (Space)"
       >
         {isPlaying ? (
-          <Pause className="h-4 w-4" />
+          <Pause className="h-3 w-3" />
         ) : (
-          <Play className="h-4 w-4" />
+          <Play className="h-3 w-3" />
         )}
       </Button>
 
@@ -269,10 +263,10 @@ export const AudioPlayer = ({
         onClick={handleSkipForward}
         size="sm"
         variant="ghost"
-        className="h-8 w-8 p-0 shrink-0"
+        className="h-6 w-6 p-0 shrink-0"
         title="Skip forward 10s"
       >
-        <SkipForward className="h-4 w-4" />
+        <SkipForward className="h-3 w-3" />
       </Button>
 
       {/* Time Display */}
@@ -304,9 +298,9 @@ export const AudioPlayer = ({
         onClick={handleReplay}
         size="sm"
         variant="ghost"
-        className="h-8 w-8 p-0 shrink-0"
+        className="h-6 w-6 p-0 shrink-0"
       >
-        <RotateCcw className="h-4 w-4" />
+        <RotateCcw className="h-3 w-3" />
       </Button>
 
       {/* Volume Control */}
@@ -315,12 +309,12 @@ export const AudioPlayer = ({
           onClick={toggleMute}
           size="sm"
           variant="ghost"
-          className="h-8 w-8 p-0"
+          className="h-6 w-6 p-0"
         >
           {isMuted || volume === 0 ? (
-            <VolumeX className="h-4 w-4" />
+            <VolumeX className="h-3 w-3" />
           ) : (
-            <Volume2 className="h-4 w-4" />
+            <Volume2 className="h-3 w-3" />
           )}
         </Button>
         <input
@@ -340,9 +334,9 @@ export const AudioPlayer = ({
           <Button
             size="sm"
             variant="ghost"
-            className="h-8 px-2 shrink-0 text-xs font-medium"
+            className="h-6 px-2 shrink-0 text-xs font-medium"
           >
-            <Gauge className="h-4 w-4 mr-1" />
+            <Gauge className="h-3 w-3 mr-1" />
             {playbackSpeed}x
           </Button>
         </DropdownMenuTrigger>
