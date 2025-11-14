@@ -8,89 +8,96 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Base colors - Free/Page 1 theme (cyan to blue gradient) - DARK with BRIGHT text */
-    --background: 210 70% 15%;
-    --foreground: 190 40% 95%;
+    /* Mercy Blade Rainbow Theme - Vibrant and colorful */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 10%;
 
-    --card: 210 60% 20%;
-    --card-foreground: 190 40% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 10%;
 
-    --popover: 210 60% 20%;
-    --popover-foreground: 190 40% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 10%;
 
-    --primary: 200 80% 50%;
+    /* Primary: Pink (M) - #E91E63 */
+    --primary: 340 82% 52%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 200 70% 60%;
+    --primary-glow: 340 82% 65%;
 
-    --secondary: 190 60% 45%;
+    /* Secondary: Purple (e) - #9C27B0 */
+    --secondary: 291 64% 42%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 50% 25%;
-    --muted-foreground: 190 30% 70%;
+    /* Muted: Light backgrounds */
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
 
-    --accent: 180 65% 55%;
+    /* Accent: Blue (c) - #2196F3 */
+    --accent: 207 90% 54%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 40% 30%;
-    --input: 210 40% 30%;
-    --ring: 200 80% 50%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 340 82% 52%;
 
     --radius: 0.75rem;
     
-    --gradient-hero: linear-gradient(135deg, hsl(200 80% 50%), hsl(200 70% 60%));
-    --gradient-card: linear-gradient(135deg, hsl(210 60% 20%), hsl(210 50% 25%));
-    --shadow-soft: 0 4px 20px -4px hsl(200 80% 50% / 0.25);
-    --shadow-hover: 0 8px 30px -4px hsl(200 80% 50% / 0.35);
+    /* Mercy Blade Rainbow Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(340 82% 52%), hsl(291 64% 42%), hsl(231 48% 48%), hsl(207 90% 54%), hsl(184 91% 41%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(240 5% 96%));
+    --gradient-rainbow: linear-gradient(90deg, hsl(340 82% 52%), hsl(291 64% 42%), hsl(231 48% 48%), hsl(207 90% 54%), hsl(184 91% 41%), hsl(174 62% 47%), hsl(122 39% 49%), hsl(88 50% 53%), hsl(45 100% 51%), hsl(36 100% 50%));
+    --shadow-soft: 0 4px 20px -4px hsl(340 82% 52% / 0.25);
+    --shadow-hover: 0 8px 30px -4px hsl(340 82% 52% / 0.35);
+    --shadow-rainbow: 0 4px 30px -4px hsl(340 82% 52% / 0.2), 0 4px 30px -4px hsl(207 90% 54% / 0.2);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --sidebar-background: 210 65% 18%;
-    --sidebar-foreground: 190 40% 90%;
-    --sidebar-primary: 200 80% 50%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 240 10% 10%;
+    --sidebar-primary: 340 82% 52%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 50% 25%;
-    --sidebar-accent-foreground: 190 40% 90%;
-    --sidebar-border: 210 40% 30%;
-    --sidebar-ring: 200 80% 50%;
+    --sidebar-accent: 240 5% 96%;
+    --sidebar-accent-foreground: 240 10% 10%;
+    --sidebar-border: 240 6% 90%;
+    --sidebar-ring: 340 82% 52%;
     
-    /* Page-specific backgrounds - DARK */
-    --page-welcome: 210 70% 18%;
-    --page-allrooms: 200 65% 22%;
-    --page-roomgrid: 210 60% 25%;
+    /* Mercy Blade Rainbow Page Colors */
+    --page-welcome: 340 82% 97%;
+    --page-allrooms: 291 64% 97%;
+    --page-roomgrid: 207 90% 97%;
     
-    /* VIP1 colors (turquoise to deep blue) - DARK */
-    --page-vip1: 168 60% 22%;
-    --vip1-primary: 168 80% 45%;
-    --vip1-secondary: 196 75% 40%;
-    --vip1-accent: 228 85% 55%;
+    /* VIP1 colors - Yellow/Amber theme */
+    --page-vip1: 45 100% 96%;
+    --vip1-primary: 45 100% 51%;
+    --vip1-secondary: 36 100% 50%;
+    --vip1-accent: 45 100% 60%;
     
-    /* VIP2 colors (bright green to blue) - DARK */
-    --page-vip2: 156 65% 20%;
-    --vip2-primary: 156 85% 45%;
-    --vip2-secondary: 186 80% 42%;
-    --vip2-accent: 217 90% 55%;
+    /* VIP2 colors - Blue/Indigo theme */
+    --page-vip2: 207 90% 97%;
+    --vip2-primary: 207 90% 54%;
+    --vip2-secondary: 231 48% 48%;
+    --vip2-accent: 207 90% 65%;
     
-    /* VIP3 colors (bright green to blue) - DARK */
-    --page-vip3: 148 65% 18%;
-    --vip3-primary: 148 85% 45%;
-    --vip3-secondary: 177 80% 40%;
-    --vip3-accent: 207 90% 55%;
-    --vip3-gold: 46 90% 55%;
+    /* VIP3 colors - Purple/Pink theme */
+    --page-vip3: 291 64% 97%;
+    --vip3-primary: 291 64% 42%;
+    --vip3-secondary: 340 82% 52%;
+    --vip3-accent: 291 64% 55%;
+    --vip3-gold: 45 100% 51%;
     
-    /* VIP4 colors (same as VIP3 for consistency) - DARK */
-    --page-vip4: 148 65% 18%;
-    --vip4-primary: 148 85% 45%;
-    --vip4-secondary: 177 80% 40%;
-    --vip4-accent: 207 90% 55%;
-    --vip4-gold: 46 90% 55%;
+    /* VIP4 colors - Orange/Amber theme */
+    --page-vip4: 36 100% 97%;
+    --vip4-primary: 36 100% 50%;
+    --vip4-secondary: 45 100% 51%;
+    --vip4-accent: 36 100% 60%;
+    --vip4-gold: 45 100% 51%;
     
-    /* Admin page colors (red-orange to lime gradient from DB2800, DB9600, B3DB00) - DARK */
-    --admin-primary: 11 100% 43%;
-    --admin-secondary: 41 100% 43%;
-    --admin-accent: 71 100% 43%;
-    --gradient-admin: linear-gradient(135deg, hsl(11 100% 43%), hsl(41 100% 43%), hsl(71 100% 43%));
+    /* Admin page colors - Full Rainbow gradient */
+    --admin-primary: 340 82% 52%;
+    --admin-secondary: 207 90% 54%;
+    --admin-accent: 122 39% 49%;
+    --gradient-admin: linear-gradient(135deg, hsl(340 82% 52%), hsl(291 64% 42%), hsl(231 48% 48%), hsl(207 90% 54%), hsl(184 91% 41%), hsl(174 62% 47%), hsl(122 39% 49%), hsl(88 50% 53%), hsl(45 100% 51%), hsl(36 100% 50%));
   }
 
   .dark {
