@@ -1,10 +1,18 @@
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, RotateCcw, UserPlus } from 'lucide-react';
+import { ArrowLeft, RotateCcw, UserPlus, Crown, Star, Gem, Sparkles, Rocket } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useEffect, useState } from 'react';
 import { AnimatedTierBadge } from './AnimatedTierBadge';
 import { useUserAccess } from '@/hooks/useUserAccess';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 interface ColorfulMercyBladeHeaderProps {
   subtitle?: string;
@@ -98,9 +106,82 @@ export const ColorfulMercyBladeHeader = ({
               <span className="hidden sm:inline text-xs">/ Đăng ký</span>
             </Button>
           ) : (
-            <div className="flex items-center gap-2">
-              <AnimatedTierBadge tier={tier} size="sm" />
-            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="sm" className="gap-2 border-2">
+                  <AnimatedTierBadge tier={tier} size="sm" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56 bg-white dark:bg-gray-800 z-50">
+                <DropdownMenuLabel className="text-center font-bold">
+                  Explore Tiers / Khám Phá Gói
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                
+                <DropdownMenuItem 
+                  onClick={() => navigate('/rooms')}
+                  className="cursor-pointer hover:bg-green-50 dark:hover:bg-green-900"
+                >
+                  <Crown className="mr-2 h-4 w-4 text-green-600" />
+                  <div className="flex flex-col">
+                    <span className="font-semibold">Free</span>
+                    <span className="text-xs text-muted-foreground">Basic rooms</span>
+                  </div>
+                </DropdownMenuItem>
+
+                <DropdownMenuItem 
+                  onClick={() => navigate('/rooms-vip1')}
+                  className="cursor-pointer hover:bg-yellow-50 dark:hover:bg-yellow-900"
+                >
+                  <Star className="mr-2 h-4 w-4 text-yellow-600" />
+                  <div className="flex flex-col">
+                    <span className="font-semibold">VIP1</span>
+                    <span className="text-xs text-muted-foreground">10 rooms/month</span>
+                  </div>
+                </DropdownMenuItem>
+
+                <DropdownMenuItem 
+                  onClick={() => navigate('/rooms-vip2')}
+                  className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900"
+                >
+                  <Gem className="mr-2 h-4 w-4 text-blue-600" />
+                  <div className="flex flex-col">
+                    <span className="font-semibold">VIP2</span>
+                    <span className="text-xs text-muted-foreground">25 rooms/month</span>
+                  </div>
+                </DropdownMenuItem>
+
+                <DropdownMenuItem 
+                  onClick={() => navigate('/rooms-vip3')}
+                  className="cursor-pointer hover:bg-purple-50 dark:hover:bg-purple-900"
+                >
+                  <Sparkles className="mr-2 h-4 w-4 text-purple-600" />
+                  <div className="flex flex-col">
+                    <span className="font-semibold">VIP3</span>
+                    <span className="text-xs text-muted-foreground">Unlimited rooms</span>
+                  </div>
+                </DropdownMenuItem>
+
+                <DropdownMenuItem 
+                  onClick={() => navigate('/rooms-vip4')}
+                  className="cursor-pointer hover:bg-orange-50 dark:hover:bg-orange-900"
+                >
+                  <Rocket className="mr-2 h-4 w-4 text-orange-600" />
+                  <div className="flex flex-col">
+                    <span className="font-semibold">VIP4 CareerZ</span>
+                    <span className="text-xs text-muted-foreground">Career coaching</span>
+                  </div>
+                </DropdownMenuItem>
+
+                <DropdownMenuSeparator />
+                <DropdownMenuItem 
+                  onClick={() => navigate('/subscribe')}
+                  className="cursor-pointer hover:bg-primary/10"
+                >
+                  <span className="font-semibold text-primary">Upgrade / Nâng cấp</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           )}
         </div>
       </div>
