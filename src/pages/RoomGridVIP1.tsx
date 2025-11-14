@@ -60,7 +60,7 @@ const RoomGridVIP1 = () => {
         showBackButton={true}
       />
       
-      <div className="bg-gradient-to-b from-yellow-50 via-orange-50 to-red-50 min-h-screen">
+      <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip1))' }}>
         <div className="container mx-auto px-4 py-8 max-w-7xl">
           {/* Header */}
           <div className="mb-8 space-y-4">
@@ -85,8 +85,13 @@ const RoomGridVIP1 = () => {
             
             <div className="text-center space-y-2">
               <div className="flex items-center justify-center gap-2">
-                <Crown className="h-8 w-8 text-orange-600" />
-                <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+                <Crown className="h-8 w-8" style={{ color: 'hsl(var(--vip1-primary))' }} />
+                <h1 className="text-4xl font-bold" style={{ 
+                  background: 'linear-gradient(to right, hsl(var(--vip1-primary)), hsl(var(--vip1-secondary)))',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}>
                   VIP1 Learning Rooms
                 </h1>
               </div>

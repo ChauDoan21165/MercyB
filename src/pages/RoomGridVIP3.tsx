@@ -60,7 +60,7 @@ const RoomGridVIP3 = () => {
         showBackButton={true}
       />
       
-      <div className="bg-gradient-to-b from-amber-50 via-yellow-50 to-orange-50 min-h-screen">
+      <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip3))' }}>
         <div className="container mx-auto px-4 py-8 max-w-7xl">
           {/* Header */}
           <div className="mb-8 space-y-4">
@@ -85,9 +85,14 @@ const RoomGridVIP3 = () => {
             
             <div className="text-center space-y-2">
               <div className="flex items-center justify-center gap-2">
-                <Crown className="h-8 w-8 text-amber-600" />
-                <Sparkles className="h-8 w-8 text-yellow-600" />
-                <h1 className="text-4xl font-bold bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text text-transparent">
+                <Crown className="h-8 w-8" style={{ color: 'hsl(var(--vip3-primary))' }} />
+                <Sparkles className="h-8 w-8" style={{ color: 'hsl(var(--vip3-gold))' }} />
+                <h1 className="text-4xl font-bold" style={{ 
+                  background: 'linear-gradient(to right, hsl(var(--vip3-primary)), hsl(var(--vip3-gold)))',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}>
                   VIP3 Premium Rooms
                 </h1>
               </div>

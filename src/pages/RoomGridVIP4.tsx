@@ -115,7 +115,7 @@ const RoomGridVIP4 = () => {
         showBackButton={true}
       />
       
-      <div className="bg-gradient-to-b from-purple-50 via-pink-50 to-rose-50 min-h-screen">
+      <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip4))' }}>
         <div className="container mx-auto px-4 py-8 max-w-7xl">
           {/* Header */}
           <div className="mb-12 text-center space-y-4">
@@ -135,11 +135,16 @@ const RoomGridVIP4 = () => {
             </div>
 
             <div className="flex items-center justify-center gap-3">
-              <Briefcase className="h-12 w-12 text-purple-600" />
-              <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <Briefcase className="h-12 w-12" style={{ color: 'hsl(var(--vip4-primary))' }} />
+              <h1 className="text-4xl md:text-5xl font-bold" style={{ 
+                background: 'linear-gradient(to right, hsl(var(--vip4-primary)), hsl(var(--vip4-secondary)))',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}>
                 CareerZ - VIP4
               </h1>
-              <Crown className="h-12 w-12 text-pink-600" />
+              <Crown className="h-12 w-12" style={{ color: 'hsl(var(--vip4-gold))' }} />
             </div>
 
             <p className="text-lg text-gray-700 max-w-3xl mx-auto">

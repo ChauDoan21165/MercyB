@@ -60,7 +60,7 @@ const RoomGridVIP2 = () => {
         showBackButton={true}
       />
       
-      <div className="bg-gradient-to-b from-blue-50 via-indigo-50 to-purple-50 min-h-screen">
+      <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip2))' }}>
         <div className="container mx-auto px-4 py-8 max-w-7xl">
           {/* Header */}
           <div className="mb-8 space-y-4">
@@ -85,8 +85,13 @@ const RoomGridVIP2 = () => {
             
             <div className="text-center space-y-2">
               <div className="flex items-center justify-center gap-2">
-                <Gem className="h-8 w-8 text-indigo-600" />
-                <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <Gem className="h-8 w-8" style={{ color: 'hsl(var(--vip2-primary))' }} />
+                <h1 className="text-4xl font-bold" style={{ 
+                  background: 'linear-gradient(to right, hsl(var(--vip2-primary)), hsl(var(--vip2-secondary)))',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}>
                   VIP2 Learning Rooms
                 </h1>
               </div>
