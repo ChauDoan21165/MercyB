@@ -1,197 +1,160 @@
 {
-  "tier": "VIP 3",
+  "tier": "VIP3 / VIP3",
   "title": {
-    "en": "Strategy in Life - Advanced Tactics",
-    "vi": "Chiến Lược Cuộc Sống - Chiến Thuật Nâng Cao"
+    "en": "Strategy in Life - Foundations II",
+    "vi": "Chiến Lược Cuộc Sống - Nền Tảng II"
   },
   "content": {
-    "en": "Advanced strategic frameworks for complex life challenges. Master the subtle art of influence, negotiation, and power dynamics.",
-    "vi": "Khung chiến lược nâng cao cho những thử thách phức tạp trong cuộc sống. Làm chủ nghệ thuật tinh tế của ảnh hưởng, đàm phán và động lực quyền lực."
+    "en": "Master the art of strategic thinking and decision-making. Learn to plan, execute, and win in life's most important battles.",
+    "vi": "Làm chủ nghệ thuật tư duy chiến lược và ra quyết định. Học cách lập kế hoạch, thực hiện và chiến thắng trong những trận chiến quan trọng nhất của cuộc đời."
   },
+  "id": "strategy_life_foundations_ii_vip3",
+  "schema_id": "strategy_life_foundations_ii_vip3",
+  "name": "Strategy in Life - Foundations II",
   "entries": [
     {
-      "title": "Room 1 - Advanced Planning",
-      "content": "Content pending. Multi-dimensional strategy.",
-      "audio": "strategy_life_2_vip3_room_01.mp3"
+      "slug": "system-thinking",
+      "keywords_en": ["systems", "interconnections", "holistic", "feedback"],
+      "keywords_vi": ["hệ thống", "liên kết", "toàn diện", "phản hồi"],
+      "copy": {
+        "en": "System thinking sees life as networks, not isolated parts. A career setback may strengthen resilience; a delayed flight may spark a life-changing conversation. Map your life as a system: health, wealth, relationships, learning, purpose. Identify feedback loops—how does better sleep improve focus, which boosts income, which funds learning? Find bottlenecks: one weak link (stress, debt, toxic ties) can choke the whole. Optimize the system, not the symptom. Ask: 'What small change ripples everywhere?' A 15-minute daily walk improves mood, energy, creativity, and relationships. System thinkers don’t fight fires—they redesign the wiring. Over time, this holistic lens turns complex problems into elegant solutions. You stop fixing and start engineering. Life becomes a machine that runs smoother with every strategic tweak.",
+        "vi": "Tư duy hệ thống nhìn cuộc sống như mạng lưới, không phải phần rời rạc. Thất bại nghề nghiệp có thể tăng cường khả năng phục hồi; chuyến bay trễ có thể khơi dậy cuộc trò chuyện thay đổi đời. Vẽ bản đồ cuộc sống như hệ thống: sức khỏe, tài chính, mối quan hệ, học tập, mục đích. Xác định vòng phản hồi—ngủ ngon hơn cải thiện tập trung thế nào, từ đó tăng thu nhập, rồi tài trợ học tập? Tìm nút thắt: một mắt xích yếu (căng thẳng, nợ, mối quan hệ độc hại) có thể bóp nghẹt toàn bộ. Tối ưu hệ thống, không phải triệu chứng. Hỏi: 'Thay đổi nhỏ nào lan tỏa khắp nơi?' Đi bộ 15 phút mỗi ngày cải thiện tâm trạng, năng lượng, sáng tạo và mối quan hệ. Người tư duy hệ thống không chữa cháy—họ thiết kế lại dây điện. Theo thời gian, lăng kính toàn diện biến vấn đề phức tạp thành giải pháp thanh lịch. Bạn ngừng sửa chữa và bắt đầu kỹ thuật. Cuộc sống trở thành cỗ máy chạy mượt hơn với mỗi tinh chỉnh chiến lược."
+      },
+      "tags": ["systems", "feedback", "holistic", "optimization"],
+      "audio": "strategy_life_vip3_13_en.mp3",
+      "essay_ref": "system-thinking_vip3_essay.txt"
     },
     {
-      "title": "Room 2 - Power Dynamics",
-      "content": "Content pending. Understanding influence.",
-      "audio": "strategy_life_2_vip3_room_02.mp3"
+      "slug": "leverage-points",
+      "keywords_en": ["leverage", "impact", "efficiency", "multiplier"],
+      "keywords_vi": ["đòn bẩy", "tác động", "hiệu quả", "nhân tố"],
+      "copy": {
+        "en": "Leverage points are actions with outsized impact. A single habit—daily writing, public speaking, coding—can open doors for decades. Identify yours by asking: 'What activity gives 10x return on time?' Then protect it like oxygen. The strategic mind seeks multipliers: teach once, reach thousands; automate once, save years; invest once, compound forever. Use the 1% rule: improve one high-leverage skill by 1% weekly—after a year, you’re 37% better. A writer who refines their voice weekly becomes magnetic. A leader who masters storytelling influences millions. Leverage turns effort into exponential growth. You don’t work harder—you work smarter. Over time, a few high-leverage moves create results others spend lifetimes chasing. The game isn’t about effort; it’s about placement. Put your energy where the return is infinite.",
+        "vi": "Điểm đòn bẩy là hành động có tác động vượt trội. Một thói quen duy nhất—viết hàng ngày, nói trước đám đông, lập trình—có thể mở cửa hàng thập kỷ. Xác định của bạn bằng câu hỏi: 'Hoạt động nào cho lợi tức gấp 10 lần thời gian?' Rồi bảo vệ nó như oxy. Tư duy chiến lược tìm nhân tố nhân: dạy một lần, tiếp cận hàng ngàn; tự động hóa một lần, tiết kiệm hàng năm; đầu tư một lần, tích lũy mãi mãi. Dùng quy tắc 1%: cải thiện một kỹ năng đòn bẩy cao 1% mỗi tuần—sau một năm, bạn giỏi hơn 37%. Nhà văn tinh chỉnh giọng nói hàng tuần trở nên cuốn hút. Lãnh đạo làm chủ kể chuyện ảnh hưởng hàng triệu. Đòn bẩy biến nỗ lực thành tăng trưởng lũy tiến. Bạn không làm việc chăm chỉ hơn—bạn làm việc thông minh hơn. Theo thời gian, vài nước đi đòn bẩy cao tạo kết quả người khác mất cả đời theo đuổi. Trò chơi không phải nỗ lực; mà là vị trí. Đặt năng lượng nơi lợi tức vô hạn."
+      },
+      "tags": ["leverage", "impact", "efficiency", "compounding"],
+      "audio": "strategy_life_vip3_14_en.mp3",
+      "essay_ref": "leverage-points_vip3_essay.txt"
     },
     {
-      "title": "Room 3 - Negotiation Mastery",
-      "content": "Content pending. Win-win outcomes.",
-      "audio": "strategy_life_2_vip3_room_03.mp3"
+      "slug": "strategic-retreat",
+      "keywords_en": ["retreat", "reset", "clarity", "renewal"],
+      "keywords_vi": ["rút lui", "đặt lại", "rõ ràng", "tái tạo"],
+      "copy": {
+        "en": "Strategic retreat is not surrender—it’s recalibration. When momentum stalls, step back to see the board clearly. A weekend alone, a month without social media, a year in a new city—these are investments in clarity. Use retreat to audit: What’s working? What’s draining? What’s next? Write the answers. Burn what no longer serves. The strategic mind knows that rest is preparation. Alexander the Great retreated to regroup; Jobs left Apple to return stronger. Retreat sharpens your edge. It turns burnout into breakthrough. Schedule micro-retreats: one silent morning weekly, one device-free day monthly. Protect them fiercely. The world pulls you outward; retreat pulls you inward to realign with your North Star. From silence comes strategy. The greatest moves are made not in noise, but in stillness.",
+        "vi": "Rút lui chiến lược không phải đầu hàng—mà là hiệu chỉnh lại. Khi đà tiến bị kẹt, lùi bước để nhìn rõ bàn cờ. Một cuối tuần một mình, một tháng không mạng xã hội, một năm ở thành phố mới—đây là đầu tư vào sự rõ ràng. Dùng rút lui để kiểm toán: Cái gì đang hiệu quả? Cái gì đang rút cạn? Bước tiếp theo là gì? Viết câu trả lời. Đốt bỏ điều không còn phục vụ. Tư duy chiến lược biết nghỉ ngơi là chuẩn bị. Alexander Đại đế rút lui để tái nhóm; Jobs rời Apple để trở lại mạnh hơn. Rút lui mài sắc lưỡi dao của bạn. Nó biến kiệt sức thành đột phá. Lên lịch rút lui vi mô: một buổi sáng im lặng hàng tuần, một ngày không thiết bị hàng tháng. Bảo vệ chúng quyết liệt. Thế giới kéo bạn ra ngoài; rút lui kéo bạn vào trong để tái căn chỉnh với Ngôi sao Bắc Đẩu. Từ im lặng sinh ra chiến lược. Những nước đi vĩ đại nhất không được thực hiện trong ồn ào, mà trong tĩnh lặng."
+      },
+      "tags": ["retreat", "clarity", "reset", "renewal"],
+      "audio": "strategy_life_vip3_15_en.mp3",
+      "essay_ref": "strategic-retreat_vip3_essay.txt"
     },
     {
-      "title": "Room 4 - Strategic Persuasion",
-      "content": "Content pending. Changing minds effectively.",
-      "audio": "strategy_life_2_vip3_room_04.mp3"
+      "slug": "information-warfare",
+      "keywords_en": ["information", "knowledge", "intelligence", "edge"],
+      "keywords_vi": ["thông tin", "kiến thức", "tình báo", "lợi thế"],
+      "copy": {
+        "en": "Information is the new oil—and the strategic mind drills relentlessly. Curate your inputs: follow 5 world-class sources per domain, ignore the rest. Build a second brain: capture insights, tag, review weekly. Ask: 'What don’t I know that could 10x my results?' Then hunt it. Read the book everyone references but no one reads. Attend the conference no one knows about. Talk to the person everyone ignores. Information asymmetry is your moat. In a world of noise, signal is currency. The strategic mind doesn’t consume—it extracts. It turns data into decisions, insight into income. Build an intelligence system: daily scan, weekly synthesis, monthly deep dive. Over time, you know before others do. You act while they react. Knowledge isn’t power—applied knowledge is.",
+        "vi": "Thông tin là dầu mỏ mới—và tư duy chiến lược khoan không ngừng. Chọn lọc đầu vào: theo dõi 5 nguồn hàng đầu mỗi lĩnh vực, bỏ qua phần còn lại. Xây não thứ hai: thu thập insight, gắn thẻ, xem lại hàng tuần. Hỏi: 'Tôi chưa biết gì có thể nhân 10 kết quả?' Rồi săn lùng. Đọc cuốn sách mọi người nhắc nhưng không ai đọc. Tham gia hội nghị không ai biết. Nói chuyện với người mọi người bỏ qua. Bất đối xứng thông tin là hào của bạn. Trong thế giới nhiễu, tín hiệu là tiền tệ. Tư duy chiến lược không tiêu thụ—mà chiết xuất. Nó biến dữ liệu thành quyết định, insight thành thu nhập. Xây hệ thống tình báo: quét hàng ngày, tổng hợp hàng tuần, nghiên cứu sâu hàng tháng. Theo thời gian, bạn biết trước người khác. Bạn hành động trong khi họ phản ứng. Kiến thức không phải sức mạnh—kiến thức áp dụng mới là."
+      },
+      "tags": ["information", "intelligence", "curation", "asymmetry"],
+      "audio": "strategy_life_vip3_16_en.mp3",
+      "essay_ref": "information-warfare_vip3_essay.txt"
     },
     {
-      "title": "Room 5 - Conflict Resolution",
-      "content": "Content pending. Turning tension into opportunity.",
-      "audio": "strategy_life_2_vip3_room_05.mp3"
+      "slug": "alliance-building",
+      "keywords_en": ["alliances", "network", "relationships", "trust"],
+      "keywords_vi": ["liên minh", "mạng lưới", "mối quan hệ", "tin cậy"],
+      "copy": {
+        "en": "No one wins alone. Strategic alliances are force multipliers. Build your council: 3 mentors ahead, 3 peers beside, 3 mentees behind. Meet quarterly. Give first—introductions, insights, favors. Trust compounds. Map your network: who opens doors, who sharpens thinking, who provides cover? Nurture the top 10. Use the '3-touch rule': connect every 90 days or lose relevance. Attend niche events, send handwritten notes, remember birthdays. Relationships are assets—invest early, maintain consistently. The strategic mind knows that opportunity flows through people. A coffee today becomes a partnership tomorrow. A favor given returns tenfold in crisis. Build your tribe before you need it. In the game of life, your network is your net worth. The strongest empires were built on alliances, not armies.",
+        "vi": "Không ai thắng một mình. Liên minh chiến lược là nhân tố nhân lực. Xây hội đồng: 3 cố vấn đi trước, 3 đồng nghiệp bên cạnh, 3 học trò phía sau. Gặp hàng quý. Cho trước—giới thiệu, insight, ưu ái. Tin cậy tích lũy. Vẽ bản đồ mạng lưới: ai mở cửa, ai mài sắc tư duy, ai che chắn? Nuôi dưỡng top 10. Dùng 'quy tắc 3 chạm': kết nối mỗi 90 ngày hoặc mất liên quan. Tham gia sự kiện ngách, gửi thư tay, nhớ sinh nhật. Mối quan hệ là tài sản—đầu tư sớm, duy trì đều đặn. Tư duy chiến lược biết cơ hội chảy qua con người. Một ly cà phê hôm nay thành đối tác ngày mai. Ưu ái cho đi trả lại gấp mười trong khủng hoảng. Xây bộ lạc trước khi cần. Trong trò chơi cuộc sống, mạng lưới là giá trị ròng. Đế chế mạnh nhất được xây trên liên minh, không phải quân đội."
+      },
+      "tags": ["alliances", "network", "trust", "reciprocity"],
+      "audio": "strategy_life_vip3_17_en.mp3",
+      "essay_ref": "alliance-building_vip3_essay.txt"
     },
     {
-      "title": "Room 6 - Network Strategy",
-      "content": "Content pending. Building powerful connections.",
-      "audio": "strategy_life_2_vip3_room_06.mp3"
+      "slug": "momentum-creation",
+      "keywords_en": ["momentum", "flywheel", "consistency", "acceleration"],
+      "keywords_vi": ["đà tiến", "bánh đà", "nhất quán", "tăng tốc"],
+      "copy": {
+        "en": "Momentum is the flywheel of success. Start small, win early, stack victories. A 5-minute workout becomes 50. One published post becomes 100. The strategic mind engineers early wins to fuel the flywheel. Use the '2-day rule': never miss twice. One slip is human; two starts a new habit of failure. Track streaks publicly—accountability accelerates. Celebrate micro-milestones: 10 workouts, 10k saved, 10 clients. Dopamine compounds commitment. Momentum turns effort into ease. What feels hard at day 1 feels inevitable at day 100. Build systems that self-reinforce: auto-schedule workouts, auto-invest savings, auto-publish content. The flywheel spins itself. Over months, small consistent actions create unstoppable force. You don’t push the boulder—you ride the avalanche. The strategic life is built on momentum, not motivation.",
+        "vi": "Đà tiến là bánh đà thành công. Bắt đầu nhỏ, thắng sớm, chồng chất chiến thắng. Bài tập 5 phút thành 50. Một bài đăng thành 100. Tư duy chiến lược thiết kế chiến thắng sớm để nạp nhiên liệu bánh đà. Dùng 'quy tắc 2 ngày': không bỏ lỡ hai lần. Một lần là con người; hai lần khởi đầu thói quen thất bại. Theo dõi chuỗi công khai—trách nhiệm tăng tốc. Kỷ niệm cột mốc vi mô: 10 buổi tập, 10 triệu tiết kiệm, 10 khách hàng. Dopamine tăng cam kết. Đà tiến biến nỗ lực thành dễ dàng. Điều khó ngày 1 thành tất yếu ngày 100. Xây hệ thống tự củng cố: tự động lên lịch tập, tự động đầu tư tiết kiệm, tự động đăng nội dung. Bánh đà tự quay. Qua vài tháng, hành động nhất quán nhỏ tạo lực không thể dừng. Bạn không đẩy tảng đá—bạn cưỡi lở tuyết. Cuộc sống chiến lược được xây trên đà tiến, không phải động lực."
+      },
+      "tags": ["momentum", "flywheel", "consistency", "streaks"],
+      "audio": "strategy_life_vip3_18_en.mp3",
+      "essay_ref": "momentum-creation_vip3_essay.txt"
     },
     {
-      "title": "Room 7 - Brand Building",
-      "content": "Content pending. Creating your reputation.",
-      "audio": "strategy_life_2_vip3_room_07.mp3"
+      "slug": "strategic-positioning",
+      "keywords_en": ["positioning", "location", "context", "advantage"],
+      "keywords_vi": ["định vị", "vị trí", "bối cảnh", "lợi thế"],
+      "copy": {
+        "en": "Positioning is choosing the battlefield. A great strategy in the wrong arena is defeat. The strategic mind asks: 'Where do my strengths shine brightest?' Then moves there. A writer in a visual world pivots to video. A quiet introvert builds influence through writing, not stages. Geography matters: move to the city where your industry breathes. Community matters: join the room where your future peers already gather. Positioning is proactive relocation—physical, digital, social. Audit your environments: do they amplify or mute you? Change the ones that mute. The same effort in a high-leverage context yields 10x results. A coder in Silicon Valley learns faster than in isolation. A designer in Milan sees trends first. Position yourself where the game is already tilted in your favor. The strategic life is won before the battle begins.",
+        "vi": "Định vị là chọn chiến trường. Chiến lược tuyệt vời ở đấu trường sai là thất bại. Tư duy chiến lược hỏi: 'Điểm mạnh của tôi tỏa sáng nhất ở đâu?' Rồi di chuyển đến đó. Nhà văn trong thế giới hình ảnh chuyển sang video. Người hướng nội trầm lặng xây ảnh hưởng qua viết, không phải sân khấu. Địa lý quan trọng: chuyển đến thành phố nơi ngành bạn thở. Cộng đồng quan trọng: tham gia phòng nơi đồng nghiệp tương lai đã tụ họp. Định vị là di dời chủ động—vật lý, số, xã hội. Kiểm toán môi trường: chúng khuếch đại hay làm tắt tiếng bạn? Thay đổi cái làm tắt. Cùng nỗ lực ở bối cảnh đòn bẩy cao cho kết quả gấp 10. Lập trình viên ở Thung lũng Silicon học nhanh hơn cô lập. Nhà thiết kế ở Milan thấy xu hướng đầu tiên. Định vị bản thân nơi trò chơi đã nghiêng về bạn. Cuộc sống chiến lược thắng trước khi trận chiến bắt đầu."
+      },
+      "tags": ["positioning", "context", "environment", "leverage"],
+      "audio": "strategy_life_vip3_19_en.mp3",
+      "essay_ref": "strategic-positioning_vip3_essay.txt"
     },
     {
-      "title": "Room 8 - Time Mastery",
-      "content": "Content pending. Strategic time management.",
-      "audio": "strategy_life_2_vip3_room_08.mp3"
+      "slug": "scenario-planning",
+      "keywords_en": ["scenarios", "futures", "preparation", "resilience"],
+      "keywords_vi": ["kịch bản", "tương lai", "chuẩn bị", "phục hồi"],
+      "copy": {
+        "en": "Scenario planning prepares you for multiple futures. Write three stories: Best Case (everything goes right), Base Case (trend continues), Worst Case (everything breaks). For each, list triggers and responses. The strategic mind doesn’t predict—it preloads. Build optionality: multiple income streams, skills, locations. Stress-test your life: what breaks if you lose your job? Your health? Your key relationship? Fix the single points of failure. Use pre-mortems: assume the plan failed—why? Adjust before launch. Scenario planning turns uncertainty into strategy. It replaces hope with readiness. In a volatile world, the resilient don’t just survive—they thrive in every version of tomorrow. You don’t need to be right about the future—you need to be ready for any future. The strategic life is antifragile by design.",
+        "vi": "Lập kế hoạch kịch bản chuẩn bị bạn cho nhiều tương lai. Viết ba câu chuyện: Trường hợp Tốt nhất (mọi thứ suôn sẻ), Trường hợp Cơ bản (xu hướng tiếp diễn), Trường hợp Tệ nhất (mọi thứ đổ vỡ). Với mỗi cái, liệt kê tín hiệu và phản ứng. Tư duy chiến lược không dự đoán—mà nạp trước. Xây tùy chọn: nhiều nguồn thu, kỹ năng, địa điểm. Kiểm tra áp lực cuộc sống: cái gì vỡ nếu mất việc? Sức khỏe? Mối quan hệ chính? Sửa các điểm thất bại đơn lẻ. Dùng tiền phúng điếu: giả sử kế hoạch thất bại—tại sao? Điều chỉnh trước khi khởi động. Lập kế hoạch kịch bản biến bất định thành chiến lược. Nó thay hy vọng bằng sẵn sàng. Trong thế giới biến động, người phục hồi không chỉ sống sót—họ thịnh vượng ở mọi phiên bản ngày mai. Bạn không cần đúng về tương lai—bạn cần sẵn sàng cho mọi tương lai. Cuộc sống chiến lược là chống gãy bằng thiết kế."
+      },
+      "tags": ["scenarios", "resilience", "preparation", "optionality"],
+      "audio": "strategy_life_vip3_20_en.mp3",
+      "essay_ref": "scenario-planning_vip3_essay.txt"
     },
     {
-      "title": "Room 9 - Energy Management",
-      "content": "Content pending. Peak performance systems.",
-      "audio": "strategy_life_2_vip3_room_09.mp3"
+      "slug": "counter-strategy",
+      "keywords_en": ["counter", "opposition", "defense", "judo"],
+      "keywords_vi": ["phản công", "đối thủ", "phòng thủ", "judo"],
+      "copy": {
+        "en": "Counter-strategy turns opposition into advantage. Use judo, not boxing—let their force defeat them. When criticized, ask: 'What truth is here?' Then improve. When blocked, find the side door. When attacked, go public—sunlight disinfects. The strategic mind studies adversaries: what do they fear, value, assume? Exploit the gap. A competitor copies your product? Open-source it and sell the enterprise version. A boss micromanages? Over-communicate until they beg you to stop. Counter-strategy is proactive defense. Build tripwires: early warning systems for threats. Practice objection-handling in advance. The best defense is a strong offense elsewhere—while they focus on your decoy, you capture the castle. In life’s chess game, the master doesn’t block every attack—they make the attacker regret moving. Turn resistance into rocket fuel.",
+        "vi": "Phản công chiến lược biến đối thủ thành lợi thế. Dùng judo, không đấm bốc—để lực của họ đánh bại họ. Khi bị chỉ trích, hỏi: 'Sự thật nào ở đây?' Rồi cải thiện. Khi bị chặn, tìm cửa bên. Khi bị tấn công, công khai—ánh sáng khử trùng. Tư duy chiến lược nghiên cứu đối thủ: họ sợ gì, coi trọng gì, giả định gì? Khai thác khoảng cách. Đối thủ sao chép sản phẩm? Mở mã nguồn và bán phiên bản doanh nghiệp. Sếp quản lý vi mô? Giao tiếp quá mức đến khi họ cầu xin dừng. Phản công là phòng thủ chủ động. Xây bẫy: hệ thống cảnh báo sớm cho mối đe dọa. Luyện xử lý phản đối trước. Phòng thủ tốt nhất là tấn công mạnh ở nơi khác—trong khi họ tập trung mồi nhử, bạn chiếm lâu đài. Trong cờ đời, bậc thầy không chặn mọi đòn—họ khiến kẻ tấn công hối hận. Biến kháng cự thành nhiên liệu tên lửa."
+      },
+      "tags": ["counter", "judo", "defense", "exploitation"],
+      "audio": "strategy_life_vip3_21_en.mp3",
+      "essay_ref": "counter-strategy_vip3_essay.txt"
     },
     {
-      "title": "Room 10 - Strategic Pivots",
-      "content": "Content pending. Changing direction wisely.",
-      "audio": "strategy_life_2_vip3_room_10.mp3"
+      "slug": "strategic-communication",
+      "keywords_en": ["communication", "influence", "clarity", "persuasion"],
+      "keywords_vi": ["giao tiếp", "ảnh hưởng", "rõ ràng", "thuyết phục"],
+      "copy": {
+        "en": "Strategic communication is influence engineered. Speak to be understood, not admired. Use the '3W framework': What do they need to know? Why do they need to care? What should they do next? Lead with the headline, follow with proof, end with action. Master silence—pause after key points to let them fill the gap. Use stories, not stats: 'Imagine waking up debt-free' beats 'Compound interest saves 47%.' Tailor to their model of the world. The strategic mind communicates outcomes, not effort. It turns 'I worked hard' into 'Here’s what you gain.' Practice the 5-second pitch: can you hook in one breath? Refine until yes. Words shape reality. The right message at the right time changes everything. Influence is the ultimate leverage—master it, and doors open themselves.",
+        "vi": "Giao tiếp chiến lược là ảnh hưởng được kỹ thuật. Nói để được hiểu, không phải để được ngưỡng mộ. Dùng khung '3W': Họ cần biết gì? Tại sao phải quan tâm? Họ nên làm gì tiếp? Dẫn đầu bằng tiêu đề, theo sau bằng chứng, kết thúc bằng hành động. Làm chủ im lặng—dừng sau điểm chính để họ tự điền khoảng trống. Dùng câu chuyện, không số liệu: 'Hãy tưởng tượng thức dậy không nợ' mạnh hơn 'Lãi kép tiết kiệm 47%.' Điều chỉnh theo mô hình thế giới của họ. Tư duy chiến lược truyền đạt kết quả, không nỗ lực. Nó biến 'Tôi làm việc chăm' thành 'Đây là lợi ích của bạn.' Luyện pitch 5 giây: có thể thu hút trong một hơi thở? Tinh chỉnh đến khi có. Lời nói định hình thực tại. Thông điệp đúng vào thời điểm đúng thay đổi mọi thứ. Ảnh hưởng là đòn bẩy tối thượng—làm chủ nó, cửa tự mở."
+      },
+      "tags": ["communication", "influence", "clarity", "persuasion"],
+      "audio": "strategy_life_vip3_22_en.mp3",
+      "essay_ref": "strategic-communication_vip3_essay.txt"
     },
     {
-      "title": "Room 11 - Opportunity Recognition",
-      "content": "Content pending. Seeing hidden chances.",
-      "audio": "strategy_life_2_vip3_room_11.mp3"
+      "slug": "mental-models",
+      "keywords_en": ["models", "frameworks", "thinking", "tools"],
+      "keywords_vi": ["mô hình", "khung", "tư duy", "công cụ"],
+      "copy": {
+        "en": "Mental models are the operating system of the strategic mind. Collect the best: inversion, first principles, circle of competence, margin of safety. Use them like apps—pull the right one for the problem. Inversion: solve by avoiding failure. First principles: break to atoms, rebuild. Circle of competence: play where you’re strong. Margin of safety: plan for worse than expected. Study one model deeply per month. Apply it to a real decision. Journal results. Over years, your mind becomes a Swiss Army knife of thinking tools. Complex problems simplify. Bad ideas die fast. The strategic mind doesn’t think harder—it thinks better. Mental models are cheat codes for reality. The more you collect, the clearer the game. Master 100 models, and life becomes predictable in the best way.",
+        "vi": "Mô hình tinh thần là hệ điều hành của tư duy chiến lược. Thu thập tốt nhất: đảo ngược, nguyên lý đầu tiên, vòng năng lực, biên an toàn. Dùng như ứng dụng—kéo đúng cái cho vấn đề. Đảo ngược: giải bằng tránh thất bại. Nguyên lý đầu tiên: chia thành nguyên tử, xây lại. Vòng năng lực: chơi nơi bạn mạnh. Biên an toàn: lập kế hoạch cho tệ hơn kỳ vọng. Nghiên cứu sâu một mô hình mỗi tháng. Áp dụng vào quyết định thực. Ghi nhật ký kết quả. Qua vài năm, tâm trí thành dao Thụy Sĩ của công cụ tư duy. Vấn đề phức tạp đơn giản hóa. Ý tưởng xấu chết nhanh. Tư duy chiến lược không nghĩ chăm hơn—mà nghĩ tốt hơn. Mô hình tinh thần là mã gian lận cho thực tại. Càng thu thập nhiều, trò chơi càng rõ. Làm chủ 100 mô hình, cuộc sống trở nên dự đoán được theo cách tốt nhất."
+      },
+      "tags": ["models", "frameworks", "thinking", "tools"],
+      "audio": "strategy_life_vip3_23_en.mp3",
+      "essay_ref": "mental-models_vip3_essay.txt"
     },
     {
-      "title": "Room 12 - Strategic Silence",
-      "content": "Content pending. Power of not speaking.",
-      "audio": "strategy_life_2_vip3_room_12.mp3"
-    },
-    {
-      "title": "Room 13 - Influence Architecture",
-      "content": "Content pending. Designing impact systems.",
-      "audio": "strategy_life_2_vip3_room_13.mp3"
-    },
-    {
-      "title": "Room 14 - Strategic Vulnerability",
-      "content": "Content pending. Strength in openness.",
-      "audio": "strategy_life_2_vip3_room_14.mp3"
-    },
-    {
-      "title": "Room 15 - Alliance Strategy",
-      "content": "Content pending. Partnership dynamics.",
-      "audio": "strategy_life_2_vip3_room_15.mp3"
-    },
-    {
-      "title": "Room 16 - Competitive Intelligence",
-      "content": "Content pending. Understanding the field.",
-      "audio": "strategy_life_2_vip3_room_16.mp3"
-    },
-    {
-      "title": "Room 17 - Strategic Positioning 2.0",
-      "content": "Content pending. Advanced market placement.",
-      "audio": "strategy_life_2_vip3_room_17.mp3"
-    },
-    {
-      "title": "Room 18 - Momentum Amplification",
-      "content": "Content pending. Accelerating success.",
-      "audio": "strategy_life_2_vip3_room_18.mp3"
-    },
-    {
-      "title": "Room 19 - Strategic Reputation",
-      "content": "Content pending. Managing perception.",
-      "audio": "strategy_life_2_vip3_room_19.mp3"
-    },
-    {
-      "title": "Room 20 - Complex Systems",
-      "content": "Content pending. Navigating chaos.",
-      "audio": "strategy_life_2_vip3_room_20.mp3"
-    },
-    {
-      "title": "Room 21 - Strategic Resilience",
-      "content": "Content pending. Bouncing back stronger.",
-      "audio": "strategy_life_2_vip3_room_21.mp3"
-    },
-    {
-      "title": "Room 22 - Influence Multiplication",
-      "content": "Content pending. Extending your reach.",
-      "audio": "strategy_life_2_vip3_room_22.mp3"
-    },
-    {
-      "title": "Room 23 - Strategic Timing",
-      "content": "Content pending. Perfect moment execution.",
-      "audio": "strategy_life_2_vip3_room_23.mp3"
-    },
-    {
-      "title": "Room 24 - Crisis Transformation",
-      "content": "Content pending. Turning problems into wins.",
-      "audio": "strategy_life_2_vip3_room_24.mp3"
-    },
-    {
-      "title": "Room 25 - Strategic Innovation",
-      "content": "Content pending. Creating new categories.",
-      "audio": "strategy_life_2_vip3_room_25.mp3"
-    },
-    {
-      "title": "Room 26 - Legacy Strategy",
-      "content": "Content pending. Building lasting impact.",
-      "audio": "strategy_life_2_vip3_room_26.mp3"
-    },
-    {
-      "title": "Room 27 - Strategic Collaboration",
-      "content": "Content pending. Synergy creation.",
-      "audio": "strategy_life_2_vip3_room_27.mp3"
-    },
-    {
-      "title": "Room 28 - Advanced Execution",
-      "content": "Content pending. Flawless implementation.",
-      "audio": "strategy_life_2_vip3_room_28.mp3"
-    },
-    {
-      "title": "Room 29 - Strategic Mastery",
-      "content": "Content pending. Becoming a strategist.",
-      "audio": "strategy_life_2_vip3_room_29.mp3"
-    },
-    {
-      "title": "Room 30 - Integration & Flow",
-      "content": "Content pending. Living strategically.",
-      "audio": "strategy_life_2_vip3_room_30.mp3"
+      "slug": "strategic-leadership",
+      "keywords_en": ["leadership", "vision", "influence", "team"],
+      "keywords_vi": ["lãnh đạo", "tầm nhìn", "ảnh hưởng", "đội nhóm"],
+      "copy": {
+        "en": "Strategic leadership is vision made contagious. Paint the future so vividly others see themselves in it. Then give them ownership: 'Your role creates this outcome.' Lead with questions, not answers—'How might we?' unlocks creativity. Build psychological safety: no idea is dumb, failure is data. The strategic leader hires for slope, not intercept—potential over pedigree. Delegate outcomes, not tasks. Trust but verify. Celebrate process wins, not just results. Use the 'one-page plan': vision, 3 priorities, 90-day actions. Review monthly. Leadership is not control—it’s alignment. The best teams self-organize around a shared North Star. Your job is to keep it visible and protect belief. Great leaders don’t create followers—they create more leaders. The strategic life scales through others. Lead well, and your impact outlives your effort.",
+        "vi": "Lãnh đạo chiến lược là tầm nhìn lan truyền. Vẽ tương lai sống động đến mức người khác thấy mình trong đó. Rồi trao quyền sở hữu: 'Vai trò của bạn tạo ra kết quả này.' Dẫn dắt bằng câu hỏi, không câu trả lời—'Chúng ta có thể thế nào?' mở khóa sáng tạo. Xây an toàn tâm lý: không ý tưởng nào ngu, thất bại là dữ liệu. Lãnh đạo chiến lược tuyển theo độ dốc, không điểm chặn—tiềm năng hơn lý lịch. Ủy quyền kết quả, không nhiệm vụ. Tin tưởng nhưng xác minh. Kỷ niệm chiến thắng quy trình, không chỉ kết quả. Dùng 'kế hoạch một trang': tầm nhìn, 3 ưu tiên, hành động 90 ngày. Xem lại hàng tháng. Lãnh đạo không phải kiểm soát—mà là căn chỉnh. Đội nhóm tốt nhất tự tổ chức quanh Ngôi sao Bắc Đẩu chung. Nhiệm vụ bạn là giữ nó hiện hữu và bảo vệ niềm tin. Lãnh đạo vĩ đại không tạo người theo—mà tạo thêm lãnh đạo. Cuộc sống chiến lược mở rộng qua người khác. Dẫn dắt tốt, tác động của bạn sống lâu hơn nỗ lực."
+      },
+      "tags": ["leadership", "vision", "alignment", "trust"],
+      "audio": "strategy_life_vip3_24_en.mp3",
+      "essay_ref": "strategic-leadership_vip3_essay.txt"
     }
-  ],
-  "keywords": {
-    "personalized_strategy_life_2": {
-      "en": [
-        "advanced strategy",
-        "tactics",
-        "influence",
-        "power",
-        "negotiation",
-        "mastery",
-        "execution",
-        "impact"
-      ],
-      "vi": [
-        "chiến lược nâng cao",
-        "chiến thuật",
-        "ảnh hưởng",
-        "quyền lực",
-        "đàm phán",
-        "tinh thông",
-        "thực thi",
-        "tác động"
-      ]
-    }
-  },
-  "meta": {
-    "created_at": "2025-01-15T10:00:00+00:00",
-    "updated_at": "2025-01-15T10:00:00+00:00",
-    "entry_count": 30,
-    "artifact_set_id": "strategy-life-2-vip3-2025",
-    "data_format_version": "MercyBlade-Core-v1.2",
-    "room_color": "#7C3AED",
-    "special_theme": "strategic",
-    "tier": "vip3"
-  }
+  ]
 }
