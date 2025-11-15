@@ -145,17 +145,36 @@ All colors MUST be HSL.
     --sidebar-ring: 217.2 91.2% 59.8%;
     
     /* Page-specific backgrounds - dark mode */
-    --page-welcome: 120 30% 25%;
-    --page-allrooms: 160 35% 20%;
-    --page-roomgrid: 210 45% 25%;
-    --page-vip1: 160 60% 25%;
-    --page-vip2: 216 70% 35%;
-    --page-vip3: 245 70% 35%;
-    --vip3-gold: 46 90% 60%;
+    --page-welcome: 200 20% 12%;
+    --page-allrooms: 200 18% 14%;
+    --page-roomgrid: 200 18% 16%;
+    --page-free: 184 25% 18%; /* Teal tint for free tier rooms - dark mode */
     
-    /* VIP4 dark mode - align with green theme */
-    --page-vip4: 148 65% 18%;
-    --vip4-gold: 46 90% 60%;
+    /* VIP1 dark mode - Yellow/Amber theme */
+    --page-vip1: 45 40% 15%;
+    --vip1-primary: 45 90% 55%;
+    --vip1-secondary: 36 90% 50%;
+    --vip1-accent: 45 100% 65%;
+    
+    /* VIP2 dark mode - Blue/Indigo theme */
+    --page-vip2: 207 35% 18%;
+    --vip2-primary: 207 85% 60%;
+    --vip2-secondary: 231 45% 55%;
+    --vip2-accent: 207 90% 70%;
+    
+    /* VIP3 dark mode - Purple/Pink theme */
+    --page-vip3: 291 30% 18%;
+    --vip3-primary: 291 60% 50%;
+    --vip3-secondary: 340 75% 60%;
+    --vip3-accent: 291 64% 60%;
+    --vip3-gold: 45 90% 60%;
+    
+    /* VIP4 dark mode - Orange/Amber theme */
+    --page-vip4: 36 35% 16%;
+    --vip4-primary: 36 90% 55%;
+    --vip4-secondary: 45 90% 55%;
+    --vip4-accent: 36 100% 65%;
+    --vip4-gold: 45 90% 60%;
   }
 }
 
