@@ -96,12 +96,7 @@ const RoomGridVIP3 = () => {
               <div className="flex items-center justify-center gap-2">
                 <Crown className="h-8 w-8" style={{ color: 'hsl(var(--vip3-primary))' }} />
                 <Sparkles className="h-8 w-8" style={{ color: 'hsl(var(--vip3-gold))' }} />
-                <h1 className="text-4xl font-bold" style={{ 
-                  background: 'linear-gradient(to right, hsl(var(--vip3-primary)), hsl(var(--vip3-gold)))',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}>
+                <h1 className="text-4xl font-bold bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
                   VIP3 Premium Rooms
                 </h1>
               </div>

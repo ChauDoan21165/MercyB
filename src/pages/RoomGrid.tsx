@@ -149,7 +149,7 @@ const RoomGrid = () => {
               </div>
           
           <div className="text-center space-y-2">
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
               Choose Your Learning Room
             </h1>
             <p className="text-lg text-muted-foreground">

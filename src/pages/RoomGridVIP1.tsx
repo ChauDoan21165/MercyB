@@ -86,12 +86,7 @@ const RoomGridVIP1 = () => {
             <div className="text-center space-y-2">
               <div className="flex items-center justify-center gap-2">
                 <Crown className="h-8 w-8" style={{ color: 'hsl(var(--vip1-primary))' }} />
-                <h1 className="text-4xl font-bold" style={{ 
-                  background: 'linear-gradient(to right, hsl(var(--vip1-primary)), hsl(var(--vip1-secondary)))',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}>
+                <h1 className="text-4xl font-bold bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
                   VIP1 Learning Rooms
                 </h1>
               </div>
