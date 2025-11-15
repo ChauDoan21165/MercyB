@@ -1,6 +1,7 @@
 import { getRoomInfo } from "@/lib/roomData";
 import { roomDataMap } from "@/lib/roomDataImports";
 import { AlertCircle } from "lucide-react";
+import { HighlightedContent } from "./HighlightedContent";
 
 interface RoomDisclaimerProps {
   roomId: string;
@@ -22,10 +23,26 @@ export const RoomDisclaimer = ({ roomId }: RoomDisclaimerProps) => {
       <div className="flex items-start gap-2">
         <AlertCircle className="h-4 w-4 text-yellow-600 dark:text-yellow-500 mt-0.5 flex-shrink-0" />
         <div className="space-y-1.5 text-xs leading-relaxed text-yellow-900 dark:text-yellow-100">
-          {safetyEn && <p className="font-medium">{safetyEn}</p>}
-          {safetyVi && <p className="font-medium">{safetyVi}</p>}
-          {crisisEn && <p className="font-semibold text-red-600 dark:text-red-400">{crisisEn}</p>}
-          {crisisVi && <p className="font-semibold text-red-600 dark:text-red-400">{crisisVi}</p>}
+          {safetyEn && (
+            <div className="font-medium">
+              <HighlightedContent content={safetyEn} />
+            </div>
+          )}
+          {safetyVi && (
+            <div className="font-medium">
+              <HighlightedContent content={safetyVi} />
+            </div>
+          )}
+          {crisisEn && (
+            <div className="font-semibold text-red-600 dark:text-red-400">
+              <HighlightedContent content={crisisEn} />
+            </div>
+          )}
+          {crisisVi && (
+            <div className="font-semibold text-red-600 dark:text-red-400">
+              <HighlightedContent content={crisisVi} />
+            </div>
+          )}
         </div>
       </div>
     </div>
