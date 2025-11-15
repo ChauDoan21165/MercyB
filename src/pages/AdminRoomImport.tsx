@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, Upload, FileJson, AlertTriangle } from "lucide-react";
+import { ArrowLeft, Upload, FileJson, AlertTriangle, RefreshCw } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
@@ -17,6 +17,30 @@ export default function AdminRoomImport() {
   const [importResults, setImportResults] = useState<string[]>([]);
   const [validationWarnings, setValidationWarnings] = useState<string[]>([]);
   const [registryWarnings, setRegistryWarnings] = useState<string[]>([]);
+
+  const regenerateRegistryMutation = useMutation({
+    mutationFn: async () => {
+      const { data, error } = await supabase.functions.invoke('regenerate-registry');
+      
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: (data) => {
+      toast({
+        title: "Registry Regenerated",
+        description: `Successfully updated registry with ${data.roomsProcessed} rooms. Refreshing page...`,
+      });
+      // Refresh the page to load the updated registry
+      setTimeout(() => window.location.reload(), 1500);
+    },
+    onError: (error: any) => {
+      toast({
+        title: "Registry Regeneration Failed",
+        description: error.message,
+        variant: "destructive",
+      });
+    },
+  });
 
   const importMutation = useMutation({
     mutationFn: async (jsonData: any) => {
@@ -276,9 +300,17 @@ export default function AdminRoomImport() {
                     </div>
                   ))}
                 </div>
-                <div className="mt-4 p-3 bg-muted rounded-lg text-sm">
-                  <div className="font-medium mb-1">To add missing rooms to the registry:</div>
-                  <code className="bg-background px-2 py-1 rounded">npm run registry:generate</code>
+                <div className="mt-4 p-3 bg-muted rounded-lg">
+                  <div className="font-medium mb-2 text-sm">To add missing rooms to the registry:</div>
+                  <Button
+                    onClick={() => regenerateRegistryMutation.mutate()}
+                    disabled={regenerateRegistryMutation.isPending}
+                    size="sm"
+                    className="w-full"
+                  >
+                    <RefreshCw className={`h-4 w-4 mr-2 ${regenerateRegistryMutation.isPending ? 'animate-spin' : ''}`} />
+                    {regenerateRegistryMutation.isPending ? "Regenerating Registry..." : "Regenerate Registry Now"}
+                  </Button>
                   <div className="text-muted-foreground mt-2 text-xs">
                     This will scan public/data and update roomManifest.ts with all JSON files
                   </div>
