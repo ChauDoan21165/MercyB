@@ -706,6 +706,13 @@ export const roomDataMap: Record<string, RoomData> = {
       "tier": "vip3",
       "hasData": true
   },
+  "strategy-in-life-foundations-ii-vip3": {
+      "id": "strategy-in-life-foundations-ii-vip3",
+      "nameEn": "Strategy in Life - Foundations II",
+      "nameVi": "Chiến Lược Cuộc Sống - Nền Tảng II",
+      "tier": "vip3",
+      "hasData": true
+  },
   "stress-free": {
       "id": "stress-free",
       "nameEn": "Stress",
