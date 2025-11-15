@@ -1,92 +1,144 @@
 /**
- * Gentle, pastel color system for all rooms
- * Each category has thematic colors that are soft and readable
+ * Color Psychology-Based Palette for Mercy Blade
+ * 
+ * Each color is carefully selected based on psychological research:
+ * - Blues: Calm, trust, mental clarity (mental health, focus)
+ * - Pinks/Peaches: Warmth, connection, romance (relationships, intimacy)
+ * - Greens: Healing, growth, vitality (health, recovery)
+ * - Yellows: Optimism, abundance, clarity (finance, prosperity)
+ * - Oranges: Motivation, energy, creativity (career, productivity)
+ * - Purples: Wisdom, spirituality, introspection (meaning, philosophy)
+ * 
+ * All colors maintain WCAG AA accessibility with dark text (rgba(0,0,0,0.85))
  */
 
 export const ROOM_COLOR_THEMES = {
-  // Mental Health & Well-being - Calm blues, soft purples
-  mental_health: '#B8D4F1',
-  anxiety: '#C9E4FF',
-  depression: '#D4E4F7',
-  stress: '#B5D6F0',
-  burnout: '#A8C9E8',
-  mindfulness: '#BDD9F2',
-  ocd: '#C1D8F4',
-  ptsd: '#B0D0EE',
-  bipolar: '#C5DCEF',
-  adhd: '#B3D1ED',
-  shadow_work: '#D0DDEE',
-  mens_mental_health: '#BAD5F0',
+  // ═══════════════════════════════════════════════════════════
+  // MENTAL HEALTH & EMOTIONAL WELL-BEING
+  // Blues promote calm, reduce stress, aid focus
+  // ═══════════════════════════════════════════════════════════
   
-  // Relationships & Social - Soft pinks, warm peaches
-  relationships: '#FFD4E5',
-  soulmate: '#FFE0EC',
-  loneliness: '#FDD5E3',
-  social_anxiety: '#FFDCE8',
-  relational_intelligence: '#FFD9E6',
+  mental_health: '#B8D4F1', // Soft Sky Blue - General mental wellness
+  anxiety: '#B8D4F1', // Soft Sky Blue - Promotes calm, reduces stress
+  depression: '#C9E4FF', // Light Azure - Uplifting without overwhelming
+  adhd: '#B3D1ED', // Gentle Cerulean - Aids focus, reduces overstimulation
+  stress: '#B5D6F0', // Pale Periwinkle - Tranquility and peace
+  burnout: '#A8C9E8', // Misty Blue - Restorative, encourages rest
+  ocd: '#C1D8F4', // Serenity Blue - Order and calm
+  ptsd: '#B0D0EE', // Powder Blue - Safety and emotional distance
+  bipolar: '#C5DCEF', // Cloud Blue - Stability and balance
+  shadow_work: '#D0DDEE', // Moonstone - Introspection, gentle exploration
+  mens_mental_health: '#BAD5F0', // Steel Blue Tint - Approachable vulnerability
+  mindfulness: '#BDD9F2', // Periwinkle - Present moment awareness
   
-  // Health & Body - Fresh greens, mint tones
-  health: '#C8E6C9',
-  nutrition: '#D4EED5',
-  physical_fitness: '#C0E4C1',
-  sleep: '#B8E0B9',
-  weight_loss: '#CFE9D0',
-  obesity: '#C4E6C5',
-  eating_disorder: '#D0EBCD',
-  trigger_point: '#BCE1BD',
-  mental_sharpness: '#C5E7C6',
+  // ═══════════════════════════════════════════════════════════
+  // RELATIONSHIPS & CONNECTION
+  // Pinks evoke warmth, romance, emotional intimacy
+  // ═══════════════════════════════════════════════════════════
   
-  // Finance & Wealth - Warm yellows, gentle golds
-  finance: '#FFF4CC',
-  finance_calm: '#FFEFC2',
-  wealth_wisdom: '#FFF5D1',
-  investing: '#FFF2C8',
-  money_basics: '#FFF6D4',
-  growing_money: '#FFF3CC',
-  legacy_peace: '#FFF7D7',
+  relationships: '#FFD4E5', // Soft Pink - General relationship warmth
+  soulmate: '#FFE0EC', // Blush Pink - Romance and tenderness
+  loneliness: '#FDD5E3', // Rose Quartz - Comfort and connection
+  social_anxiety: '#FFDCE8', // Cotton Candy - Gentle social warmth
+  relational_intelligence: '#FFD9E6', // Petal Pink - Empathy and understanding
   
-  // Career & Growth - Energetic oranges, coral tones
-  career: '#FFE0CC',
-  courage_to_begin: '#FFD7BA',
-  discover_self: '#FFE5D4',
-  explore_world: '#FFD9C1',
-  build_skills: '#FFDDC7',
-  resilience: '#FFE2CF',
-  career_community: '#FFDBC4',
-  launch_career: '#FFE4D2',
-  grow_wealth: '#FFD5B8',
+  // ═══════════════════════════════════════════════════════════
+  // HEALTH & VITALITY
+  // Greens represent healing, growth, natural wellness
+  // ═══════════════════════════════════════════════════════════
   
-  // Spirituality & Meaning - Soft lavenders, light purples
-  spirituality: '#E8D4F5',
-  meaning_of_life: '#EDD9F7',
-  finding_peace: '#E5D0F3',
-  god_with_us: '#EAD6F6',
-  philosophy: '#E7D3F4',
-  stoicism: '#EBDAF7',
+  health: '#C8E6C9', // Pale Green - General health and wellness
+  nutrition: '#D4EED5', // Mint Cream - Fresh, natural health
+  physical_fitness: '#C0E4C1', // Spring Green - Energy and renewal
+  sleep: '#B8E0B9', // Sage Mint - Rest and rejuvenation
+  weight_loss: '#CFE9D0', // Celadon - Balance and patience
+  obesity: '#C4E6C5', // Soft Jade - Body acceptance
+  eating_disorder: '#D0EBCD', // Tea Green - Gentle healing
+  trigger_point: '#BCE1BD', // Mint - Physical release
+  mental_sharpness: '#C5E7C6', // Pistachio - Cognitive vitality
   
-  // Sexuality & Intimacy - Gentle rose, warm blush
-  sexuality: '#FFD9E8',
-  sexuality_curiosity: '#FFE0ED',
-  sacred_body: '#FFD6E4',
-  erotic_wisdom: '#FFDCE9',
-  diverse_desires: '#FFD8E6',
+  // ═══════════════════════════════════════════════════════════
+  // FINANCE & PROSPERITY
+  // Warm yellows suggest abundance, optimism, clarity
+  // ═══════════════════════════════════════════════════════════
   
-  // Productivity & Focus - Light teals, soft aquas
-  productivity: '#B8E6E6',
-  focus: '#C4EAEA',
-  confidence: '#BADFDF',
-  strategy: '#C0E8E8',
+  finance: '#FFF4CC', // Cream Yellow - General financial wellness
+  finance_calm: '#FFEFC2', // Soft Gold - Calm abundance
+  wealth_wisdom: '#FFF5D1', // Vanilla - Long-term prosperity
+  investing: '#FFF2C8', // Buttercream - Growth and calculated risk
+  money_basics: '#FFF6D4', // Champagne - Financial clarity
+  growing_money: '#FFF3CC', // Pale Yellow - Gradual wealth building
+  legacy_peace: '#FFF7D7', // Eggshell - Generational wealth
   
-  // Addiction & Recovery - Calming sage, soft grey-greens
-  addiction: '#D5E8D5',
-  grief: '#D9EBDB',
+  // ═══════════════════════════════════════════════════════════
+  // CAREER & PERSONAL GROWTH
+  // Peach/Orange tones inspire motivation, creativity, warmth
+  // ═══════════════════════════════════════════════════════════
   
-  // Self-Development - Warm peach-pink
-  self_love: '#FFE5D9',
-  confidence_building: '#FFE0D4',
+  career: '#FFE0CC', // Peach Cream - Professional motivation
+  courage_to_begin: '#FFD7BA', // Apricot - Gentle boldness
+  discover_self: '#FFE5D4', // Seashell - Self-exploration
+  explore_world: '#FFD9C1', // Light Peach - Openness to experiences
+  build_skills: '#FFDDC7', // Champagne Pink - Craftsmanship
+  resilience: '#FFE2CF', // Linen - Endurance and flexibility
+  career_community: '#FFDBC4', // Warm Bisque - Professional connection
+  launch_career: '#FFE4D2', // Bisque - New professional beginnings
+  grow_wealth: '#FFD5B8', // Pale Apricot - Career prosperity
   
-  // Default fallback
-  default: '#E8F0F2'
+  // ═══════════════════════════════════════════════════════════
+  // SPIRITUALITY & MEANING
+  // Lavenders inspire wisdom, transcendence, contemplation
+  // ═══════════════════════════════════════════════════════════
+  
+  spirituality: '#E8D4F5', // Soft Lavender - Spiritual connection
+  meaning_of_life: '#EDD9F7', // Mauve - Existential inquiry
+  finding_peace: '#E5D0F3', // Lavender Mist - Spiritual calm
+  god_with_us: '#EAD6F6', // Thistle - Divine presence
+  philosophy: '#E7D3F4', // Wisteria - Philosophical contemplation
+  stoicism: '#EBDAF7', // Pale Lilac - Virtue and rational calm
+  
+  // ═══════════════════════════════════════════════════════════
+  // SEXUALITY & INTIMACY
+  // Warm pinks/peach suggest sensuality, connection, openness
+  // ═══════════════════════════════════════════════════════════
+  
+  sexuality: '#FFD9E8', // Pink Lace - General sexuality topics
+  sexuality_curiosity: '#FFE0ED', // Pink Lace - Exploration and openness
+  sacred_body: '#FFD6E4', // Cherry Blossom - Body reverence
+  erotic_wisdom: '#FFDCE9', // Ballet Slipper - Mature intimacy
+  diverse_desires: '#FFD8E6', // Fairy Tale - Sexual spectrum acceptance
+  
+  // ═══════════════════════════════════════════════════════════
+  // PRODUCTIVITY & STRATEGY
+  // Aqua/Teal promote clarity, focus, tactical thinking
+  // ═══════════════════════════════════════════════════════════
+  
+  productivity: '#B8E6E6', // Powder Aqua - Mental efficiency
+  focus: '#C4EAEA', // Aqua Haze - Concentration
+  strategy: '#C0E8E8', // Morning Mist - Clear tactical planning
+  confidence: '#BADFDF', // Soft Turquoise - Self-assurance (kept for compatibility)
+  confidence_building: '#FFE0D4', // Pale Peach - Warm self-assurance
+  
+  // ═══════════════════════════════════════════════════════════
+  // RECOVERY & TRANSFORMATION
+  // Sage greens suggest healing through growth and renewal
+  // ═══════════════════════════════════════════════════════════
+  
+  addiction: '#D5E8D5', // Moss Green - Healing and renewal
+  grief: '#D9EBDB', // Pale Jade - Gentle sadness, growth through loss
+  
+  // ═══════════════════════════════════════════════════════════
+  // SELF-DEVELOPMENT
+  // Warm coral suggests self-compassion and inner warmth
+  // ═══════════════════════════════════════════════════════════
+  
+  self_love: '#FFE5D9', // Coral Cream - Self-compassion and acceptance
+  
+  // ═══════════════════════════════════════════════════════════
+  // DEFAULT FALLBACK
+  // ═══════════════════════════════════════════════════════════
+  
+  default: '#E8F0F2' // Pale Blue Grey - Neutral calm
 };
 
 /**
