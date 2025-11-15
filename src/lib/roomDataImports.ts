@@ -342,6 +342,13 @@ export const roomDataMap: Record<string, RoomData> = {
       "tier": "free",
       "hasData": true
   },
+  "lullabies-for-a-tired-heart-vip3": {
+      "id": "lullabies-for-a-tired-heart-vip3",
+      "nameEn": "Lullabies For A Tired Heart",
+      "nameVi": "Khúc Ru Cho Trái Tim Mệt Mỏi",
+      "tier": "vip3",
+      "hasData": true
+  },
   "meaning-of-life-free": {
       "id": "meaning-of-life-free",
       "nameEn": "The Meaning of Life: Foundations of Balance",
