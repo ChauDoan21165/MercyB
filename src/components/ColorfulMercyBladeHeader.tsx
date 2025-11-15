@@ -5,6 +5,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useEffect, useState } from 'react';
 import { AnimatedTierBadge } from './AnimatedTierBadge';
 import { useUserAccess } from '@/hooks/useUserAccess';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -83,7 +84,9 @@ export const ColorfulMercyBladeHeader = ({
         </div>
 
         {/* Right side - Sign Up / User Info / Reset */}
-        <div className="flex-none w-24 flex justify-end gap-2">
+        <div className="flex-none w-24 flex justify-end items-center gap-2">
+          <ThemeToggle />
+          
           {showResetButton && onReset && (
             <Button
               onClick={onReset}
