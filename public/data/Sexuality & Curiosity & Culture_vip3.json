@@ -1,242 +1,231 @@
 {
   "tier": "VIP 3",
-  "name": "Sexuality, Curiosity & Culture — Core Foundations",
-  "name_vi": "Tính Dục, Sự Tò Mò & Văn Hóa — Nền Tảng Cốt Lõi",
-  "description": "A gentle, evidence-informed room for adults to explore sexuality as part of whole-person wellbeing: body, emotions, relationships, culture, and meaning.",
-  "description_vi": "Một phòng nhẹ nhàng, dựa trên hiểu biết khoa học dành cho người trưởng thành khám phá tính dục như một phần của sức khỏe toàn diện: cơ thể, cảm xúc, mối quan hệ, văn hóa và ý nghĩa.",
-  "keywords_en": [
-    "sexuality",
-    "intimacy",
-    "identity",
-    "boundaries",
-    "culture",
-    "consent",
-    "health",
-    "healing",
-    "emotions",
-    "relationships"
-  ],
-  "keywords_vi": [
-    "tính dục",
-    "sự thân mật",
-    "bản dạng",
-    "ranh giới",
-    "văn hóa",
-    "đồng thuận",
-    "sức khỏe",
-    "chữa lành",
-    "cảm xúc",
-    "mối quan hệ"
-  ],
+  "title": {
+    "en": "Sexuality & Curiosity & Culture",
+    "vi": "Tính Dục, Sự Tò Mò & Văn Hóa"
+  },
+  "content": {
+    "en": "An exclusive, mature exploration space for adults seeking comprehensive understanding of sexuality across cultural, emotional, psychological, and spiritual dimensions. This collection gathers ten core themes that shape how we experience desire, connection, identity, and meaning, written in gentle, accessible English for Vietnamese learners.",
+    "vi": "Không gian khám phá trưởng thành dành cho người lớn tìm kiếm sự hiểu biết toàn diện về tính dục qua các khía cạnh văn hóa, cảm xúc, tâm lý và tâm linh. Bộ sưu tập này chọn ra mười chủ đề cốt lõi định hình cách chúng ta trải nghiệm ham muốn, kết nối, bản dạng và ý nghĩa, được viết bằng tiếng Anh nhẹ nhàng, dễ tiếp cận cho người học tiếng Anh là người Việt."
+  },
   "entries": [
     {
-      "slug": "foundations-whole-person-sexuality",
-      "title": {
-        "en": "Foundations of Whole-Person Sexuality",
-        "vi": "Nền Tảng Tính Dục Toàn Diện"
-      },
-      "copy": {
-        "en": "Sexuality is more than what happens in a bedroom; it is the living intersection of body, heart, mind, story, and culture. From childhood onward, we absorb messages about what is allowed, what is forbidden, what is beautiful, and what is shameful. Some of these messages protect us, and some quietly wound us. A whole-person approach begins with curiosity instead of judgment. You are invited to see sexuality not as a test you must pass, but as a language your body and soul have been speaking for years. In this room, we treat desire, limits, questions, and confusion as information, not flaws. You can notice how stress, sleep, food, hormones, beliefs, and relationships all shape your experience. As you learn gentle words in English and Vietnamese for these inner landscapes, you also learn to breathe a little softer inside your own story. The foundation is simple but powerful: your sexuality is part of your humanity, not an enemy of it.",
-        "vi": "Tính dục không chỉ là những gì xảy ra trong phòng ngủ; đó là giao điểm sống động giữa cơ thể, trái tim, tâm trí, câu chuyện và nền văn hóa mà bạn thuộc về. Từ khi còn nhỏ, chúng ta đã hấp thụ vô số thông điệp về điều gì được phép, điều gì bị cấm, điều gì đẹp đẽ và điều gì đáng xấu hổ. Một số thông điệp bảo vệ chúng ta, nhưng một số lại âm thầm làm tổn thương. Cách tiếp cận toàn diện bắt đầu bằng sự tò mò thay vì phán xét. Bạn được mời nhìn tính dục không phải như một bài kiểm tra phải vượt qua, mà như một ngôn ngữ mà cơ thể và tâm hồn đã nói suốt bao năm. Trong phòng này, khao khát, giới hạn, câu hỏi và cả sự bối rối đều được xem là thông tin, không phải sai sót. Bạn có thể nhận ra căng thẳng, giấc ngủ, thức ăn, hormone, niềm tin và các mối quan hệ đều ảnh hưởng đến trải nghiệm của mình. Khi học những từ ngữ dịu dàng bằng cả tiếng Anh và tiếng Việt cho thế giới bên trong này, bạn cũng học cách thở mềm hơn trong chính câu chuyện của mình. Nền tảng rất đơn giản nhưng mạnh mẽ: tính dục là một phần của nhân tính, không phải kẻ thù của bạn."
-      },
-      "tags": [
+      "title": "Foundations of Sexuality: Body, Heart, and Story",
+      "content": "Sexuality is more than technique or performance; it is the living conversation between your body, your heart, your mind, and the stories you grew up with. From childhood, you received silent messages from family, school, religion, friends, and media about what is acceptable, forbidden, pure, or shameful. Some of those messages protected you; others may have wrapped your natural curiosity in fear. A healthier foundation begins with curiosity instead of self-attack. You can gently ask yourself: What did I first learn about desire and attraction? Who were my teachers—directly or indirectly? Which beliefs feel kind and true to me now, and which ones feel heavy, confusing, or painful? Writing these reflections in a private journal helps you separate your own voice from inherited rules. It is normal for sexuality to shift over time with stress, health, relationships, medication, and age. Change does not mean you are broken; it simply means you are alive. When you see sexuality as a living, evolving part of your humanity, you create space for softness, honesty, and steady growth instead of pressure, panic, or pretending.",
+      "keywords_en": [
         "foundations",
-        "education",
-        "self-understanding"
+        "sexuality basics",
+        "shame",
+        "curiosity",
+        "personal story"
       ],
-      "audio": {
-        "en": "sexuality_culture_core_01_en.mp3",
-        "vi": "sexuality_culture_core_01_vi.mp3"
-      }
+      "keywords_vi": [
+        "nền tảng",
+        "cơ bản về tính dục",
+        "xấu hổ",
+        "tò mò",
+        "câu chuyện cá nhân"
+      ],
+      "audio": "sexuality_culture_vip3_core_01.mp3"
     },
     {
-      "slug": "body-awareness-and-acceptance",
-      "title": {
-        "en": "Body Awareness and Gentle Acceptance",
-        "vi": "Nhận Thức Cơ Thể Và Sự Chấp Nhận Dịu Dàng"
-      },
-      "copy": {
-        "en": "Your body is the first home of your sexuality, yet many people learn to live in that home like a stranger. You may have been taught to ignore sensations, to distrust pleasure, or to see only flaws in the mirror. Body awareness does not mean constant analysis; it means quietly returning to simple signals: warmth, tension, relaxation, hunger, fullness, comfort, discomfort. Today you can begin by noticing how your body says yes and how it says no, even before words appear. Perhaps your shoulders soften around safety and tighten around pressure. Perhaps your breath feels shallow when you push yourself to please others. Gentle acceptance starts with this noticing, not with forcing yourself to love every part overnight. As you respect your body’s signals, you slowly rebuild trust with yourself. In both languages, you can practice new sentences: \"This is my body.\" \"It has a story.\" \"I am allowed to care for it.\" Over time, curiosity and kindness can soften the harsh inner commentary and open space for a more peaceful relationship with your own skin.",
-        "vi": "Cơ thể là ngôi nhà đầu tiên của tính dục, nhưng rất nhiều người lại sống trong ngôi nhà đó như một người xa lạ. Có thể bạn đã được dạy phải phớt lờ cảm giác, nghi ngờ khoái cảm hoặc chỉ nhìn thấy khuyết điểm trong gương. Nhận thức cơ thể không phải là phân tích liên tục; đó là quay về nhẹ nhàng với những tín hiệu đơn giản: ấm, căng, thư giãn, đói, no, dễ chịu, khó chịu. Hôm nay, bạn có thể bắt đầu bằng cách nhận ra cơ thể nói “có” và “không” như thế nào, ngay cả trước khi ngôn từ xuất hiện. Có thể vai bạn mềm lại khi cảm thấy an toàn và căng lên khi bị ép buộc. Có thể hơi thở nông đi khi bạn cố gắng làm hài lòng người khác. Sự chấp nhận dịu dàng bắt đầu từ việc nhận ra chứ không phải ép mình yêu mọi phần ngay lập tức. Khi tôn trọng tín hiệu của cơ thể, bạn từ từ xây lại niềm tin với chính mình. Bằng cả hai thứ tiếng, bạn có thể tập nói những câu mới: “Đây là cơ thể của tôi.” “Nó có câu chuyện riêng.” “Tôi có quyền chăm sóc nó.” Theo thời gian, sự tò mò và tử tế sẽ làm dịu tiếng nói phán xét, mở ra không gian cho một mối quan hệ yên bình hơn với làn da và hình hài của chính bạn."
-      },
-      "tags": [
-        "body-awareness",
+      "title": "Body Awareness and Gentle Acceptance",
+      "content": "Many people carry a quiet war with their own bodies, shaped by comments, comparison, and unrealistic images. Sexuality becomes painful when the body feels like an enemy or a project to fix. Body awareness is a soft practice of returning home to your own skin with less judgment and more patience. You can start by noticing simple sensations without trying to change them: the weight of your feet on the floor, the warmth of your hands, the rise and fall of your breath. When harsh thoughts appear, such as this part is ugly or nobody could love this, you can answer with a neutral or kinder sentence: this is my body today, doing its best to carry me. Awareness also includes understanding how your body responds to stress, safety, touch, and rest. Some people need time and distance before they feel safe; others relax slowly with warmth and steady presence. There is no single correct pattern, only your nervous system trying to protect you. As you learn to listen instead of fight, the body becomes less of a battlefield and more of a partner, making future intimacy feel more grounded and real.",
+      "keywords_en": [
+        "body awareness",
         "self-acceptance",
-        "somatic"
+        "anatomy",
+        "physical health"
       ],
-      "audio": {
-        "en": "sexuality_culture_core_02_en.mp3",
-        "vi": "sexuality_culture_core_02_vi.mp3"
-      }
+      "keywords_vi": [
+        "nhận thức cơ thể",
+        "chấp nhận bản thân",
+        "giải phẫu",
+        "sức khỏe thể chất"
+      ],
+      "audio": "sexuality_culture_vip3_core_02.mp3"
     },
     {
-      "slug": "emotions-attachment-and-desire",
-      "title": {
-        "en": "Emotions, Attachment, and Desire",
-        "vi": "Cảm Xúc, Gắn Bó Và Khao Khát"
-      },
-      "copy": {
-        "en": "Desire never travels alone; it often walks hand in hand with longing, fear, shame, hope, and the old echoes of how you were loved or ignored. When someone moves closer, your nervous system remembers every closeness that felt safe and every closeness that hurt. This is why you might want intimacy and at the same time feel like running away. In this room, we normalize that complexity. You can begin to map your patterns: Do you chase, withdraw, freeze, joke, over-give, or numb out when things get emotionally intense. These are not defects; they are strategies your younger self created to survive. Naming them in gentle English and Vietnamese gives you a little space between who you are now and what you learned long ago. Over time, you can experiment with new responses: taking one deeper breath before replying, saying “I feel nervous but I want to try”, or asking for reassurance without apology. As emotional intelligence grows, sexuality becomes less about performance and more about honest connection between two tender nervous systems trying to feel safe together.",
-        "vi": "Khao khát không bao giờ đi một mình; nó thường nắm tay cùng nỗi mong chờ, sợ hãi, xấu hổ, hy vọng và những tiếng vọng cũ của cách bạn từng được yêu thương hay bị bỏ quên. Khi ai đó tiến lại gần, hệ thần kinh của bạn nhớ lại mọi lần gần gũi từng an toàn và mọi lần gần gũi từng gây đau. Vì thế, bạn có thể vừa muốn thân mật, vừa chỉ muốn trốn đi. Trong phòng này, sự phức tạp đó được xem là bình thường. Bạn có thể bắt đầu vẽ lại bản đồ phản ứng của mình: bạn có đuổi theo, rút lui, đóng băng, bông đùa, cho đi quá nhiều hay tê liệt khi cảm xúc trở nên căng? Đó không phải là lỗi, mà là chiến lược cái tôi nhỏ ngày xưa tạo ra để tồn tại. Khi gọi tên chúng bằng những từ dịu dàng trong tiếng Anh và tiếng Việt, bạn tạo ra một khoảng cách nhỏ giữa con người hiện tại và những điều từng học. Theo thời gian, bạn có thể thử những phản ứng mới: hít sâu hơn trước khi trả lời, nói “Em thấy lo nhưng vẫn muốn thử”, hoặc xin được trấn an mà không xin lỗi. Khi trí tuệ cảm xúc lớn dần, tính dục bớt là “màn trình diễn” và trở thành sự kết nối trung thực giữa hai hệ thần kinh mong được an toàn bên nhau."
-      },
-      "tags": [
+      "title": "Emotional Intelligence in Desire and Connection",
+      "content": "Sexuality is deeply emotional, even when people pretend it is casual or purely physical. Underneath attraction there may be longing to be seen, fear of rejection, hunger for comfort, or a wish to feel powerful for a moment. Emotional intelligence in sexuality means recognizing what your feelings are trying to say before, during, and after connection. You can pause and ask yourself gentle questions: right now, do I feel truly curious about this person, or mostly lonely and afraid to be alone? Am I using this moment to run away from sadness or to move closer to real intimacy? There is no need to blame yourself for any answer; the goal is clarity, not punishment. You can also notice patterns: perhaps you pull away when things get close, or you say yes when you mean maybe, or you feel numb until after everything is over. Writing these patterns down helps you see that they are learnable, not fixed destiny. Over time, emotional honesty allows you to choose encounters that match your real needs instead of repeating old scripts. Desire then becomes less of a storm and more of a language you can understand and speak with care.",
+      "keywords_en": [
         "emotions",
-        "attachment",
-        "desire"
+        "feelings",
+        "emotional intelligence",
+        "self-awareness"
       ],
-      "audio": {
-        "en": "sexuality_culture_core_03_en.mp3",
-        "vi": "sexuality_culture_core_03_vi.mp3"
-      }
+      "keywords_vi": [
+        "cảm xúc",
+        "tình cảm",
+        "trí tuệ cảm xúc",
+        "tự nhận thức"
+      ],
+      "audio": "sexuality_culture_vip3_core_03.mp3"
     },
     {
-      "slug": "communication-boundaries-consent",
-      "title": {
-        "en": "Communication, Boundaries, and Consent",
-        "vi": "Giao Tiếp, Ranh Giới Và Sự Đồng Thuận"
-      },
-      "copy": {
-        "en": "Healthy sexuality rests on three quiet pillars: clear words, kind boundaries, and real consent. Many of us grew up without examples of any of these. We learned to guess, to please, or to stay silent. This room invites you to slowly practice new language: stating what you enjoy, what feels unsure, and what is a clear no. Consent is not only “yes or no to an act”; it is an ongoing, living conversation where both people are allowed to change their mind. A respectful partner will welcome questions like “Can we slow down”, “Can we stop for a moment”, or “Can we talk first”. You can rehearse simple English and Vietnamese sentences that protect both your body and your dignity. Boundaries are not walls against love; they are the shape of how love can meet you safely. When you begin to trust that your no will be respected, your yes can become more relaxed and wholehearted. Over time, communication and consent turn sexuality from guessing in the dark into walking gently in the same direction.",
-        "vi": "Tính dục lành mạnh dựa trên ba trụ cột lặng lẽ: lời nói rõ ràng, ranh giới tử tế và sự đồng thuận thực sự. Nhiều người lớn lên mà không có bất kỳ mẫu hình nào cho những điều này. Ta học cách đoán ý, làm hài lòng hoặc im lặng. Phòng này mời bạn tập dần ngôn ngữ mới: nói điều mình thích, điều còn băn khoăn và điều rõ ràng là “không”. Đồng thuận không chỉ là “đồng ý hay không với một hành động”, mà là cuộc trò chuyện sống động, nơi cả hai đều có quyền đổi ý. Một người bạn tôn trọng sẽ đón nhận những câu như “Mình có thể chậm lại được không”, “Cho em dừng một chút nhé” hoặc “Mình nói chuyện trước đã được không”. Bạn có thể tập các câu đơn giản bằng tiếng Anh và tiếng Việt để bảo vệ cả cơ thể lẫn phẩm giá. Ranh giới không phải là bức tường chống lại tình yêu; đó là hình dạng an toàn để tình yêu có thể chạm vào bạn. Khi bắt đầu tin rằng “không” của mình được tôn trọng, “có” của bạn cũng sẽ thư giãn và trọn vẹn hơn. Theo thời gian, giao tiếp và đồng thuận biến tính dục từ trò đoán mò trong bóng tối thành cùng nhau bước đi nhẹ nhàng về một hướng.",
-      },
-      "tags": [
+      "title": "Communication, Boundaries, and Honest Words",
+      "content": "Many of us learned about sexuality in silence, jokes, or warnings, not in calm conversation. That is why speaking about needs, limits, and desires can feel terrifying or impossible. Yet communication is the bridge between safety and intimacy. A boundary is not a wall; it is a clear line that helps both people relax. You can begin with simple sentences that respect both sides: I am comfortable with this, I am not ready for that yet, I need to slow down, can we talk about protection. Practicing these phrases alone or on paper can make them easier to say later. Good communication also includes listening to the other person’s yes and no without pushing. Consent is not a one-time checkbox; it is an ongoing dialogue where either person can change their mind. If your body says no but your mouth says yes out of fear, your nervous system will remember the conflict. With time, you can learn that saying no does not make you unlovable, and saying yes is meaningful only when it is free. Honest words may feel awkward at first, but they are far kinder than silent resentment or quiet panic.",
+      "keywords_en": [
         "communication",
         "boundaries",
-        "consent"
+        "consent",
+        "talking",
+        "conversation"
       ],
-      "audio": {
-        "en": "sexuality_culture_core_04_en.mp3",
-        "vi": "sexuality_culture_core_04_vi.mp3"
-      }
+      "keywords_vi": [
+        "giao tiếp",
+        "ranh giới",
+        "đồng thuận",
+        "nói chuyện",
+        "hội thoại"
+      ],
+      "audio": "sexuality_culture_vip3_core_04.mp3"
     },
     {
-      "slug": "cultural-stories-and-shame",
-      "title": {
-        "en": "Cultural Stories and Quiet Shame",
-        "vi": "Câu Chuyện Văn Hóa Và Sự Xấu Hổ Lặng Lẽ"
-      },
-      "copy": {
-        "en": "No one arrives at adulthood with a neutral textbook in their head; we arrive carrying stories. Some come from family, some from religion, some from media, some from whispered warnings between friends. These stories can be beautiful, protective, confusing, or deeply shaming. In many cultures, especially in Asia, sexuality is wrapped in silence: you are expected to know everything and yet never speak of it. Shame grows strongest in the dark. This room gives you a soft lantern to look at those messages one by one. Which ones still feel true for you. Which ones feel like tight clothing you no longer want to wear. In English and Vietnamese, you can gently rewrite sentences you inherited: from “Good people do not feel this” to “Good people sometimes feel this and still choose kindness and responsibility”. Culture is not a prison; it is a river of stories you are allowed to question, honor, or update. As you see the difference between your own values and old scripts, shame slowly loosens its grip and there is more room for honest, grounded choice.",
-        "vi": "Không ai bước vào tuổi trưởng thành với một cuốn giáo trình trung lập trong đầu; ta bước vào đời mang theo những câu chuyện. Có câu đến từ gia đình, tôn giáo, phim ảnh, có câu đến từ những lời cảnh báo thì thầm giữa bạn bè. Những câu chuyện này có thể đẹp, bảo vệ, gây rối hoặc khiến ta xấu hổ sâu sắc. Ở nhiều nền văn hóa, đặc biệt là châu Á, tính dục được bọc trong im lặng: bạn phải “biết hết” nhưng lại không được nói. Xấu hổ mạnh nhất khi ở trong bóng tối. Phòng này đưa cho bạn một chiếc đèn mềm để nhìn từng thông điệp một. Cái nào vẫn đúng với bạn. Cái nào giống bộ đồ chật bạn không còn muốn mặc nữa. Bằng tiếng Anh và tiếng Việt, bạn có thể viết lại nhẹ nhàng những câu từng thừa hưởng: từ “Người tốt không được thấy thế này” thành “Người tốt cũng có lúc thấy thế này và vẫn có thể chọn tử tế, có trách nhiệm”. Văn hóa không phải nhà tù; đó là con sông câu chuyện mà bạn có quyền đặt câu hỏi, trân trọng hoặc cập nhật. Khi nhận ra khác biệt giữa giá trị của mình và kịch bản cũ, sự xấu hổ dần nới lỏng và nhường chỗ cho lựa chọn trung thực, vững vàng hơn."
-      },
-      "tags": [
+      "title": "Cultural Stories and Silent Expectations",
+      "content": "Every culture carries stories about who should desire whom, how often, in what order, and with how much modesty or passion. These stories shape our inner world even when we think we are modern and free. You may have heard that a good woman must be pure yet somehow experienced, or that a real man must always be ready and never show fear. Such messages can create deep conflict inside, where natural feelings collide with inherited roles. It can be healing to name the scripts you received: in my community, what is praised, what is shamed, and what is never spoken about at all. You do not have to reject your culture to grow; you can respectfully question which parts still support your wellbeing and which parts cause quiet suffering. Talking with trusted friends or reading diverse perspectives can widen the map. When you realize that norms differ across families, regions, and generations, you may feel less broken and more human. Culture becomes a context, not a prison, and you gain the freedom to write your own chapter with more kindness and awareness.",
+      "keywords_en": [
         "culture",
-        "shame",
-        "narratives"
+        "society",
+        "traditions",
+        "diversity",
+        "cultural views"
       ],
-      "audio": {
-        "en": "sexuality_culture_core_05_en.mp3",
-        "vi": "sexuality_culture_core_05_vi.mp3"
-      }
+      "keywords_vi": [
+        "văn hóa",
+        "xã hội",
+        "truyền thống",
+        "đa dạng",
+        "quan điểm văn hóa"
+      ],
+      "audio": "sexuality_culture_vip3_core_05.mp3"
     },
     {
-      "slug": "identity-and-orientation",
-      "title": {
-        "en": "Identity, Orientation, and Becoming Yourself",
-        "vi": "Bản Dạng, Xu Hướng Và Trở Thành Chính Mình"
-      },
-      "copy": {
-        "en": "Sexuality always raises quiet questions of identity: Who am I attracted to. How do I want to be seen. Where do I locate myself between old labels and my real experience. For some people, the answers feel simple and stable. For others, they change over time, or refuse to fit into any ready-made box. This room offers language and space, not pressure. You are allowed to be in the middle of the journey, unsure of the final name. You are allowed to hold love for your family and culture while also listening honestly to your own heart. In both English and Vietnamese, you can practice saying: “I am still learning who I am.” “My feelings deserve respect, even when I keep them private.” Identity is not a race; it is a slow unfolding. When you treat yourself with patience instead of harshness, curiosity instead of panic, you create a safer inner ground from which true answers can emerge in their own time.",
-        "vi": "Tính dục luôn kéo theo những câu hỏi lặng lẽ về bản dạng: Mình bị thu hút bởi ai. Mình muốn được nhìn nhận như thế nào. Mình đứng ở đâu giữa các nhãn cũ và trải nghiệm thật của mình. Với một số người, câu trả lời đơn giản và ổn định. Với người khác, nó thay đổi dần, hoặc không chịu chui vào bất kỳ chiếc hộp có sẵn nào. Phòng này mang đến ngôn ngữ và không gian, chứ không phải áp lực. Bạn được phép đang ở giữa hành trình, chưa rõ cái tên cuối cùng. Bạn được phép vừa yêu gia đình, văn hóa của mình, vừa lắng nghe trung thực trái tim mình. Bằng tiếng Anh và tiếng Việt, bạn có thể tập nói: “Tôi vẫn đang học về chính mình.” “Cảm xúc của tôi xứng đáng được tôn trọng, ngay cả khi tôi vẫn giữ riêng.” Bản dạng không phải cuộc đua; đó là sự hé mở chậm rãi. Khi đối xử với mình bằng kiên nhẫn thay vì khắc nghiệt, bằng tò mò thay vì hoảng loạn, bạn tạo ra một mặt đất bên trong an toàn hơn, nơi câu trả lời thật có thể xuất hiện theo nhịp riêng của nó."
-      },
-      "tags": [
+      "title": "Identity, Orientation, and Self-Expression",
+      "content": "For many people, questions of who I am drawn to and how I want to express myself arrive quietly and early, sometimes long before language is available. Identity around gender and orientation can be a source of beauty, creativity, and connection, but also of fear when the surrounding environment is rigid or unsafe. Exploring identity does not require immediate labels; it can begin with simple noticing: whose energy do I feel comfortable around, what kind of closeness feels natural or forced, how do I feel in my own clothes and gestures. Journaling or creating art around these questions can provide a private space to experiment with honesty. Remember that orientation and identity are not problems to fix but parts of your human landscape. If you grew up hearing that certain identities are wrong or disgusting, it is understandable to feel shame even about your own curiosity. Over time, meeting stories from diverse communities can soften internalized hatred and open space for compassion. You are not obligated to come out, to explain, or to educate anyone; your first task is to stand gently beside yourself, exactly as you are today.",
+      "keywords_en": [
         "identity",
-        "orientation",
-        "self-discovery"
+        "self-expression",
+        "who am I",
+        "personal identity"
       ],
-      "audio": {
-        "en": "sexuality_culture_core_06_en.mp3",
-        "vi": "sexuality_culture_core_06_vi.mp3"
-      }
+      "keywords_vi": [
+        "bản dạng",
+        "thể hiện bản thân",
+        "tôi là ai",
+        "danh tính cá nhân"
+      ],
+      "audio": "sexuality_culture_vip3_core_06.mp3"
     },
     {
-      "slug": "intimacy-and-connection",
-      "title": {
-        "en": "Intimacy as Safe Connection",
-        "vi": "Sự Thân Mật Như Một Kết Nối An Toàn"
-      },
-      "copy": {
-        "en": "Intimacy is often mistaken for technique or performance, but at its core, it is the feeling that it is safe to be seen. You can be fully clothed and deeply intimate, or physically close but emotionally far away. This room invites you to redefine intimacy as moments where you can relax your armor: honest conversation, shared laughter, quiet eye contact, a long exhale together. Sexual connection becomes richer when it grows from this soil of trust. You can start by noticing with whom you feel most like yourself, even outside of romance. What qualities do those relationships have. Warmth, patience, respect, curiosity. These are the same qualities that nourish intimacy in adult relationships. In English and Vietnamese reflections, you will explore how to bring more of this softness into your connections: asking real questions, listening without fixing, sharing small truths instead of polished masks. When intimacy is rooted in emotional safety, physical closeness no longer feels like a test; it becomes a natural extension of two people feeling welcome in each other’s presence.",
-        "vi": "Sự thân mật thường bị nhầm với kỹ thuật hay màn trình diễn, nhưng ở tầng sâu nhất, đó là cảm giác được an toàn khi bị nhìn thấy. Bạn có thể mặc đầy đủ nhưng vẫn rất thân mật, hoặc ở gần thể xác mà lại xa vời cảm xúc. Phòng này mời bạn định nghĩa lại sự thân mật như những khoảnh khắc bạn có thể hạ giáp: một cuộc trò chuyện chân thật, một tràng cười chung, ánh mắt nhìn thẳng yên lặng, một hơi thở dài cùng nhau. Kết nối tình dục trở nên phong phú hơn khi lớn lên từ mảnh đất niềm tin này. Bạn có thể bắt đầu bằng cách nhận ra mình cảm thấy là chính mình nhất bên cạnh ai, ngay cả ngoài chuyện yêu đương. Những mối quan hệ đó có gì chung. Sự ấm áp, kiên nhẫn, tôn trọng, tò mò. Đó cũng là những phẩm chất nuôi dưỡng thân mật trong mối quan hệ người lớn. Qua các đoạn gợi ý tiếng Anh và tiếng Việt, bạn sẽ khám phá cách mang thêm sự mềm mại này vào kết nối của mình: hỏi câu hỏi thật, lắng nghe mà không vội sửa, chia sẻ những sự thật nhỏ thay vì chiếc mặt nạ hoàn hảo. Khi sự thân mật được neo trong an toàn cảm xúc, gần gũi thể xác không còn là bài kiểm tra; nó trở thành sự tiếp nối tự nhiên của hai con người thấy mình được chào đón trong không gian của nhau."
-      },
-      "tags": [
+      "title": "Intimacy, Vulnerability, and Feeling Truly Seen",
+      "content": "Intimacy is not only physical closeness; it is the experience of being known and accepted in your tenderness. Many people chase intense attraction or performance-based encounters yet still feel lonely afterwards, because the deeper need was to be seen, not just touched. Vulnerability is the courage to let someone witness your real feelings, confusion, or fear without editing everything to appear perfect. This does not mean oversharing with everyone; it means choosing a few people who have earned your trust over time. You can practice intimacy in small ways: admitting when you are nervous, saying I do not know, sharing a memory that shaped you, or allowing someone to comfort you without apologizing for your tears. Sexual connection built on this kind of emotional ground tends to feel safer and more nourishing. If intimacy feels frightening, that is often because past experiences taught you that opening leads to rejection, ridicule, or control. Going slowly, choosing kind people, and honoring your own pace are all valid forms of self-protection. Intimacy is not a race; it is a slow unfolding where both people can breathe.",
+      "keywords_en": [
         "intimacy",
         "connection",
-        "emotional-safety"
+        "closeness",
+        "bonding",
+        "deep connection"
       ],
-      "audio": {
-        "en": "sexuality_culture_core_07_en.mp3",
-        "vi": "sexuality_culture_core_07_vi.mp3"
-      }
+      "keywords_vi": [
+        "sự thân mật",
+        "kết nối",
+        "gần gũi",
+        "gắn kết",
+        "kết nối sâu sắc"
+      ],
+      "audio": "sexuality_culture_vip3_core_07.mp3"
     },
     {
-      "slug": "pleasure-and-wellbeing",
-      "title": {
-        "en": "Pleasure, Nervous System, and Wellbeing",
-        "vi": "Khoái Cảm, Hệ Thần Kinh Và Sức Khỏe Toàn Diện"
-      },
-      "copy": {
-        "en": "Pleasure is often reduced to a narrow physical script, yet your nervous system understands pleasure much more widely: a stretch after sitting too long, warm water on skin, a kind message received at the right moment, laughter that loosens your chest. Sexual pleasure is one branch on this larger tree of aliveness. When pleasure is shamed or rushed, the body may tighten, numb, or disconnect. When pleasure is welcomed as information about what feels nourishing, your system can relax. This room invites you to notice small, non-sexual pleasures throughout your day and name them in English and Vietnamese. Doing so teaches your brain that feeling good is not automatically dangerous. Over time, a regulated nervous system makes deeper intimacy safer and more enjoyable. You are not chasing fireworks; you are learning to let waves of comfort and connection move through you without fear.",
-        "vi": "Khoái cảm thường bị thu hẹp thành một kịch bản thể xác rất nhỏ, nhưng hệ thần kinh của bạn hiểu khoái cảm theo nghĩa rộng hơn nhiều: vươn người sau khi ngồi lâu, dòng nước ấm trên da, một tin nhắn tử tế đến đúng lúc, tiếng cười làm lồng ngực nhẹ ra. Khoái cảm tình dục chỉ là một nhánh trên cái cây lớn của sự sống động. Khi khoái cảm bị xấu hổ hoặc bị thúc ép, cơ thể có thể căng cứng, tê liệt hoặc tách rời. Khi khoái cảm được nhìn như thông tin về điều nuôi dưỡng mình, hệ thống bên trong có thể thư giãn. Phòng này mời bạn chú ý đến những niềm dễ chịu nhỏ không liên quan đến tình dục trong ngày và gọi tên chúng bằng tiếng Anh và tiếng Việt. Làm vậy dạy cho não rằng cảm thấy dễ chịu không tự động đồng nghĩa với nguy hiểm. Theo thời gian, một hệ thần kinh được điều hòa giúp sự thân mật sâu trở nên an toàn và dễ tận hưởng hơn. Bạn không chạy theo pháo hoa, bạn đang học cách để những làn sóng dễ chịu và kết nối đi qua mình mà không sợ hãi."
-      },
-      "tags": [
-        "pleasure",
-        "nervous-system",
-        "wellbeing"
+      "title": "Consent, Ethics, and Respectful Power",
+      "content": "Consent is more than a quick yes or no; it is the ongoing freedom to choose what happens with your body and your time. Ethical sexuality is built on the belief that both people deserve clarity, safety, and the option to change their minds. Real consent feels calm enough for you to notice your own signals. If you are frozen, terrified of losing someone, or pressured by constant persuasion, it is not truly free. Practicing consent begins with yourself: can you notice when your body leans forward in curiosity versus when it pulls back in discomfort. You are allowed to stop at any point, even if you previously said yes, even if you worry about disappointing the other person. An ethical partner will treat your boundaries as information, not as a personal insult. Power also shows up in age, status, money, and knowledge; the more uneven the power, the more carefully consent must be protected. Speaking openly about expectations, protection, and emotional impact may feel unromantic, but in truth it is a deep form of respect. Desire without respect feels unsafe; desire with respect can become a safe home.",
+      "keywords_en": [
+        "consent",
+        "ethics",
+        "morality",
+        "boundaries",
+        "respect"
       ],
-      "audio": {
-        "en": "sexuality_culture_core_08_en.mp3",
-        "vi": "sexuality_culture_core_08_vi.mp3"
-      }
+      "keywords_vi": [
+        "sự đồng thuận",
+        "đạo đức",
+        "luân lý",
+        "ranh giới",
+        "tôn trọng"
+      ],
+      "audio": "sexuality_culture_vip3_core_08.mp3"
     },
     {
-      "slug": "health-safety-and-care",
-      "title": {
-        "en": "Health, Safety, and Caring for Your Future Self",
-        "vi": "Sức Khỏe, An Toàn Và Chăm Sóc Bản Thân Tương Lai"
-      },
-      "copy": {
-        "en": "Sexual health is not only about avoiding disease; it is about caring for your present and future self with respect. This includes regular health checkups when needed, honest information about protection, and the courage to ask questions even when you feel shy. In many cultures, people are taught to stay silent rather than risk being judged, but silence does not protect the body. Knowledge does. This room guides you to see basic health decisions as acts of kindness, not fear: choosing testing when appropriate, discussing contraception with a partner, or saying no to situations where you feel unsafe or pressured. In English and Vietnamese, you can practice phrases for clinics, conversations, and self-advocacy. The more you treat your body as precious, the easier it becomes to choose people and situations that treat you the same way. Safety is not the opposite of intimacy; it is the ground that allows intimacy to grow without breaking you.",
-        "vi": "Sức khỏe tình dục không chỉ là tránh bệnh; đó là việc chăm sóc bản thân hiện tại và tương lai bằng sự tôn trọng. Điều này bao gồm kiểm tra sức khỏe định kỳ khi cần, hiểu biết trung thực về bảo vệ và dũng khí đặt câu hỏi ngay cả khi thấy ngại. Trong nhiều nền văn hóa, người ta được dạy im lặng để khỏi bị phán xét, nhưng im lặng không bảo vệ được cơ thể. Hiểu biết mới làm được điều đó. Phòng này giúp bạn nhìn những quyết định sức khỏe cơ bản như hành động tử tế, không phải từ sợ hãi: đi xét nghiệm khi phù hợp, trao đổi về biện pháp tránh thai với bạn đời, hoặc nói không với tình huống bạn thấy không an toàn hay bị ép buộc. Bằng tiếng Anh và tiếng Việt, bạn có thể tập các câu dùng khi đến phòng khám, khi trò chuyện và khi tự bảo vệ mình. Càng coi cơ thể là quý giá, bạn càng dễ chọn những người và hoàn cảnh cũng đối xử với bạn như vậy. An toàn không đối lập với thân mật; nó là nền đất cho sự thân mật phát triển mà không làm bạn gãy vỡ."
-      },
-      "tags": [
-        "health",
-        "safety",
-        "self-care"
-      ],
-      "audio": {
-        "en": "sexuality_culture_core_09_en.mp3",
-        "vi": "sexuality_culture_core_09_vi.mp3"
-      }
-    },
-    {
-      "slug": "healing-trauma-and-reclaiming-self",
-      "title": {
-        "en": "Healing Wounds and Reclaiming Your Sexual Self",
-        "vi": "Chữa Lành Vết Thương Và Đòi Lại Phần Tính Dục Của Mình"
-      },
-      "copy": {
-        "en": "For many people, sexuality is tied not only to curiosity and connection, but also to memories of discomfort, coercion, or harm. If this is true for you, it is not because you are broken; it is because something painful happened in a place that should have been safe. Healing is possible, but it is slow and deserves support. This room does not ask you to revisit details; instead it honors your nervous system. You may notice freeze, numbness, disgust, or panic when certain topics arise. Those are survival responses, not defects. With the help of trusted professionals, supportive communities, and your own gentle pacing, you can begin to separate your worth from what was done to you. In English and Vietnamese, we offer language like “What happened to me was not my fault”, “My body has the right to heal”, “I can move at my own pace”. Over time, minor moments of safety, kindness, and chosen touch can slowly rewire what intimacy means. Reclaiming your sexual self does not mean returning to who you were before; it means becoming someone even wiser, who knows both pain and the deep right to tenderness.",
-        "vi": "Với nhiều người, tính dục không chỉ gắn với tò mò và kết nối, mà còn gắn với ký ức khó chịu, bị ép buộc hoặc tổn thương. Nếu điều này đúng với bạn, đó không phải vì bạn hỏng, mà vì đã có điều đau đớn xảy ra ở nơi lẽ ra phải an toàn. Chữa lành là có thể, nhưng chậm và cần được nâng đỡ. Phòng này không yêu cầu bạn nhớ lại chi tiết, mà tôn trọng hệ thần kinh của bạn. Bạn có thể nhận thấy mình đóng băng, tê liệt, ghê sợ hoặc hoảng loạn khi một số chủ đề xuất hiện. Đó là phản ứng sinh tồn, không phải lỗi. Với sự giúp đỡ của chuyên gia đáng tin, cộng đồng hỗ trợ và nhịp độ tự bạn chọn, bạn có thể bắt đầu tách giá trị bản thân khỏi những gì đã xảy ra. Bằng tiếng Anh và tiếng Việt, chúng tôi gợi ý những câu như “Điều đã xảy ra không phải lỗi của tôi”, “Cơ thể tôi có quyền được chữa lành”, “Tôi được phép đi chậm theo nhịp của mình”. Theo thời gian, những khoảnh khắc nhỏ của an toàn, tử tế và sự chạm do chính bạn chọn có thể dần dần lập trình lại ý nghĩa của thân mật. Đòi lại phần tính dục của mình không phải quay về con người trước đây, mà là trở thành một người còn khôn ngoan hơn, người vừa biết đến nỗi đau, vừa biết mình xứng đáng được dịu dàng đến mức nào."
-      },
-      "tags": [
+      "title": "Trauma, Safety, and the Slow Road of Healing",
+      "content": "For some people, sexuality is not primarily linked with pleasure or curiosity but with fear, numbness, or painful memories. This may come from direct harm, coercion, or subtle experiences that crossed your boundaries before you had words to protest. Trauma can show up as sudden panic, dissociation, blankness, or difficulty staying present during touch. There is nothing weak or strange about these reactions; they are evidence of a nervous system that tried to protect you the best way it knew how. Healing begins with safety, not with forcing yourself to be more open. That safety might come from therapy, trusted friends, survivor communities, or spiritual spaces where your story is believed and honored. You do not have to rush into sexual situations to prove that you are healed. Instead, you can rebuild trust with yourself first: noticing your body’s signals, stopping when overwhelmed, and treating triggers with kindness instead of blame. Over time, with gentle support, many people find that their capacity for pleasure and connection can grow again, not by erasing the past, but by weaving new experiences of respect and care into the fabric of their story.",
+      "keywords_en": [
         "trauma",
         "healing",
-        "self-worth"
+        "recovery",
+        "therapy",
+        "support"
       ],
-      "audio": {
-        "en": "sexuality_culture_core_10_en.mp3",
-        "vi": "sexuality_culture_core_10_vi.mp3"
-      }
+      "keywords_vi": [
+        "chấn thương",
+        "chữa lành",
+        "hồi phục",
+        "trị liệu",
+        "hỗ trợ"
+      ],
+      "audio": "sexuality_culture_vip3_core_09.mp3"
+    },
+    {
+      "title": "Mindfulness, Presence, and Conscious Connection",
+      "content": "Mindfulness in sexuality is the practice of actually being there for your own experience instead of rushing, performing, or disappearing in your head. Presence turns habitual patterns into living moments where you can choose. You can begin with simple anchoring: paying attention to the rhythm of your breath, the feeling of your hands, the sound of your surroundings. When your mind starts to worry about how you look, whether you are doing enough, or what the other person is thinking, you can gently return to one small sensation. Conscious connection is less about perfect technique and more about shared awareness: are we both here, do we both feel safe, can we slow down if needed. Meditation outside the bedroom—like sitting quietly for five minutes a day—can strengthen your capacity to stay present later. Over time, mindfulness reduces automatic shame and opens space for curiosity, gratitude, and playfulness. Sexuality then becomes not a performance to judge but a conversation to explore, where each moment can be met with a little more breath and a little more truth.",
+      "keywords_en": [
+        "mindfulness",
+        "presence",
+        "awareness",
+        "meditation",
+        "conscious"
+      ],
+      "keywords_vi": [
+        "chánh niệm",
+        "hiện diện",
+        "nhận thức",
+        "thiền định",
+        "có ý thức"
+      ],
+      "audio": "sexuality_culture_vip3_core_10.mp3"
     }
   ],
+  "keywords": {
+    "personalized_sexuality_culture": {
+      "en": [
+        "sexuality",
+        "culture",
+        "intimacy",
+        "relationships",
+        "identity",
+        "wellbeing",
+        "education",
+        "consciousness"
+      ],
+      "vi": [
+        "tính dục",
+        "văn hóa",
+        "sự thân mật",
+        "mối quan hệ",
+        "bản dạng",
+        "hạnh phúc",
+        "giáo dục",
+        "ý thức"
+      ]
+    }
+  },
   "meta": {
-    "created_at": "2025-11-15T10:00:00+07:00",
-    "updated_at": "2025-11-15T10:00:00+07:00",
+    "created_at": "2025-01-15T10:00:00+00:00",
+    "updated_at": "2025-01-15T10:00:00+00:00",
     "entry_count": 10,
-    "artifact_set_id": "sexuality_culture_core_vip3_2025_11_15",
+    "artifact_set_id": "sexuality-culture-vip3-2025-core",
     "data_format_version": "MercyBlade-Core-v1.2",
-    "room_color": "#F9E0F2",
+    "room_color": "#D946A6",
+    "special_theme": "sensual",
     "tier": "vip3"
   }
 }
