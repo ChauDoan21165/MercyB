@@ -53,6 +53,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "know-yourself-deeply-vip4": "data/Know_Yourself_Deeply_vip4.json",
   "legacy-and-impact-vip4": "data/Legacy_and_Impact_vip4.json",
   "loneliness-comfort-free": "data/Loneliness_Comfort_free.json",
+  "lullabies-for-a-tired-heart-vip3": "data/Lullabies_For_A_Tired_Heart_vip3.json",
   "meaning-of-life-free": "data/Meaning_Of_Life_free.json",
   "meaning-of-life-vip3": "data/Meaning_Of_Life_vip3.json",
   "mens-mental-health-free": "data/Mens_Mental_Health_free.json",
