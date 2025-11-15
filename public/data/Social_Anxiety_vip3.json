@@ -1,1 +1,246 @@
-{"name":"Social Anxiety","name_vi":"Lo Âu Xã Hội","description":"Expert strategies for mastering social anxiety with therapy","keywords_en":["social anxiety","interaction","confidence","exposure","cbt","therapy"],"keywords_vi":["lo âu xã hội","tương tác","tự tin","phơi nhiễm","cbt","trị liệu"],"entries":[{"slug":"small-talk","keywords_en":["small talk","conversation","anxiety"],"keywords_vi":["trò chuyện nhỏ","cuộc trò chuyện","lo âu"],"copy":{"en":"Master conversation through neuro-linguistic programming. Match representational systems and use rapport anchors. Build five levels of connection depth. Record sessions for analysis and track rapport scores. Work with an NLP practitioner to refine subconscious communication for authentic influence."},"tags":["talk","anxiety"],"audio":{"en":"soc_vip3_1_en.mp3"}},{"slug":"eye-contact","keywords_en":["eye contact","connection","confidence"],"keywords_vi":["giao tiếp mắt","kết nối","tự tin"],"copy":{"en":"Train oculomotor control for calm presence. Read eye-accessing cues and micro-expressions while keeping peripheral awareness. Practice with VR simulations and review dominance metrics. Learn techniques from behavioral experts to gain steady, confident visual intelligence."},"tags":["contact","anxiety"],"audio":{"en":"soc_vip3_2_en.mp3"}},{"slug":"exposure","keywords_en":["exposure","fear","anxiety"],"keywords_vi":["phơi nhiễm","nỗi sợ","lo âu"],"copy":{"en":"Use VR-based exposure therapy for precision desensitization. Create a hierarchy from 0-100 SUDS. Alternate weekly between virtual and real scenarios. Monitor anxiety with biofeedback. Partner with a licensed clinic to ensure gradual, measurable fear reduction."},"tags":["exposure","anxiety"],"audio":{"en":"soc_vip3_3_en.mp3"}},{"slug":"body-language","keywords_en":["body language","open","confidence"],"keywords_vi":["ngôn ngữ cơ thể","mở","tự tin"],"copy":{"en":"Train kinesic awareness for nonverbal mastery. Practice open posture and power poses before interactions. Analyze recordings with motion-capture or posture apps. Seek professional feedback to project calm authority and authentic self-assurance."},"tags":["language","anxiety"],"audio":{"en":"soc_vip3_4_en.mp3"}},{"slug":"cbt","keywords_en":["cbt","thoughts","anxiety"],"keywords_vi":["cbt","suy nghĩ","lo âu"],"copy":{"en":"Apply third-wave CBT principles—Acceptance and Commitment Therapy. Clarify values, practice defusion, and observe thoughts mindfully. Take one committed action each week. Track acceptance growth and consult an ACT therapist to expand psychological flexibility."},"tags":["cbt","anxiety"],"audio":{"en":"soc_vip3_5_en.mp3"}},{"slug":"networking","keywords_en":["networking","events","anxiety"],"keywords_vi":["mạng lưới","sự kiện","lo âu"],"copy":{"en":"Use strategic networking systems. Gather event intel, set three-touch follow-ups, and log contacts in a CRM. Measure growth and ROI. Work with an executive mentor to refine relationship strategy and convert anxiety into social confidence."},"tags":["networking","anxiety"],"audio":{"en":"soc_vip3_6_en.mp3"}},{"slug":"public-speaking","keywords_en":["public speaking","speech","anxiety"],"keywords_vi":["nói trước đám đông","bài nói","lo âu"],"copy":{"en":"Join a Toastmasters-style program for public speaking mastery. Deliver weekly speeches with structured feedback. Use VR audience training to measure progress. Collaborate with professional coaches to transform fear into stage charisma and persuasive presence."},"tags":["speaking","anxiety"],"audio":{"en":"soc_vip3_7_en.mp3"}},{"slug":"resilience","keywords_en":["resilience","rejection","anxiety"],"keywords_vi":["kiên cường","từ chối","lo âu"],"copy":{"en":"Build social resilience with a 100-day rejection challenge. Seek feedback after each exposure and reframe outcomes cognitively. Track resilience scores and consult a coach to reinforce emotional hardiness. Each rejection becomes proof of unbreakable confidence."},"tags":["resilience","anxiety"],"audio":{"en":"soc_vip3_8_en.mp3"}}],"keywords":{"expert_social_anxiety":{"en":["social anxiety mastery","NLP techniques","exposure therapy","CBT","public speaking","networking strategies","body language","resilience building"],"vi":["làm chủ lo âu xã hội","kỹ thuật NLP","liệu pháp phơi nhiễm","CBT","nói trước đám đông","chiến lược mạng lưới","ngôn ngữ cơ thể","xây dựng kiên cường"]}},"meta":{"created_at":"2025-10-28T00:00:00+00:00","updated_at":"2025-10-28T00:00:00+00:00","entry_count":8,"tier":"vip3","room_color":"#4A90E2"}}
+{
+"name": "Social Anxiety",
+"name_vi": "Lo Âu Xã Hội",
+"description": "Expert strategies for mastering social anxiety with therapy",
+"keywords_en": [
+"social anxiety",
+"interaction",
+"confidence",
+"exposure",
+"cbt",
+"therapy"
+],
+"keywords_vi": [
+"lo âu xã hội",
+"tương tác",
+"tự tin",
+"phơi nhiễm",
+"cbt",
+"trị liệu"
+],
+"entries": [
+{
+"slug": "small-talk",
+"keywords_en": [
+"small talk",
+"conversation",
+"anxiety"
+],
+"keywords_vi": [
+"trò chuyện nhỏ",
+"cuộc trò chuyện",
+"lo âu"
+],
+"copy": {
+"en": "Master conversation through neuro-linguistic programming. Match representational systems and use rapport anchors. Build five levels of connection depth. Record sessions for analysis and track rapport scores. Work with an NLP practitioner to refine subconscious communication for authentic influence.",
+"vi": "Làm chủ cuộc trò chuyện thông qua lập trình ngôn ngữ tư duy (NLP). Ghép khớp hệ biểu đạt giác quan của người đối diện và sử dụng các “neo” tạo thiện cảm. Xây dựng năm tầng độ sâu kết nối, từ trao đổi xã giao đến chia sẻ cá nhân. Ghi âm các buổi trò chuyện để phân tích và theo dõi mức điểm kết nối theo thời gian. Làm việc với một chuyên gia NLP để tinh chỉnh giao tiếp ở tầng vô thức, giúp bạn tạo ảnh hưởng chân thật thay vì gượng ép."
+},
+"tags": [
+"talk",
+"anxiety"
+],
+"audio": {
+"en": "soc_vip3_1_en.mp3"
+}
+},
+{
+"slug": "eye-contact",
+"keywords_en": [
+"eye contact",
+"connection",
+"confidence"
+],
+"keywords_vi": [
+"giao tiếp mắt",
+"kết nối",
+"tự tin"
+],
+"copy": {
+"en": "Train oculomotor control for calm presence. Read eye-accessing cues and micro-expressions while keeping peripheral awareness. Practice with VR simulations and review dominance metrics. Learn techniques from behavioral experts to gain steady, confident visual intelligence.",
+"vi": "Rèn luyện khả năng kiểm soát chuyển động mắt để tạo sự hiện diện bình tĩnh. Học cách đọc dấu hiệu hướng mắt và các biểu cảm vi mô trong khi vẫn giữ được nhận biết ngoại vi. Luyện tập bằng mô phỏng thực tế ảo (VR) và xem lại các chỉ số về mức độ chiếm ưu thế hay né tránh trong giao tiếp mắt. Áp dụng các kỹ thuật từ chuyên gia hành vi để xây dựng “trí tuệ thị giác” ổn định, giúp ánh nhìn vững vàng, tự tin mà không gây áp lực cho người đối diện."
+},
+"tags": [
+"contact",
+"anxiety"
+],
+"audio": {
+"en": "soc_vip3_2_en.mp3"
+}
+},
+{
+"slug": "exposure",
+"keywords_en": [
+"exposure",
+"fear",
+"anxiety"
+],
+"keywords_vi": [
+"phơi nhiễm",
+"nỗi sợ",
+"lo âu"
+],
+"copy": {
+"en": "Use VR-based exposure therapy for precision desensitization. Create a hierarchy from 0-100 SUDS. Alternate weekly between virtual and real scenarios. Monitor anxiety with biofeedback. Partner with a licensed clinic to ensure gradual, measurable fear reduction.",
+"vi": "Sử dụng trị liệu phơi nhiễm dựa trên VR để giảm nhạy cảm một cách có kiểm soát. Xây dựng thang bậc tình huống gây sợ từ 0–100 theo thang SUDS. Luân phiên mỗi tuần giữa kịch bản giả lập trong thế giới ảo và tình huống đời thực tương ứng. Theo dõi mức lo âu bằng các chỉ số sinh lý (biofeedback) như nhịp tim, nhịp thở hoặc độ căng cơ. Hợp tác với phòng khám hoặc chuyên gia đã được cấp phép để đảm bảo quá trình phơi nhiễm diễn ra từ từ, an toàn và có thể đo lường được mức giảm của nỗi sợ."
+},
+"tags": [
+"exposure",
+"anxiety"
+],
+"audio": {
+"en": "soc_vip3_3_en.mp3"
+}
+},
+{
+"slug": "body-language",
+"keywords_en": [
+"body language",
+"open",
+"confidence"
+],
+"keywords_vi": [
+"ngôn ngữ cơ thể",
+"mở",
+"tự tin"
+],
+"copy": {
+"en": "Train kinesic awareness for nonverbal mastery. Practice open posture and power poses before interactions. Analyze recordings with motion-capture or posture apps. Seek professional feedback to project calm authority and authentic self-assurance.",
+"vi": "Rèn luyện nhận thức về vận động cơ thể để làm chủ ngôn ngữ phi ngôn từ. Thực hành tư thế mở, thả lỏng vai, hướng thân người về phía người đối diện và sử dụng các “tư thế sức mạnh” trước khi bước vào tương tác khó. Quay video lại để phân tích bằng ứng dụng theo dõi tư thế hoặc công cụ ghi chuyển động. Nhờ chuyên gia hoặc huấn luyện viên góp ý, giúp bạn truyền tải được sự bình tĩnh, vững vàng và tự tin một cách tự nhiên, không gồng mình."
+},
+"tags": [
+"language",
+"anxiety"
+],
+"audio": {
+"en": "soc_vip3_4_en.mp3"
+}
+},
+{
+"slug": "cbt",
+"keywords_en": [
+"cbt",
+"thoughts",
+"anxiety"
+],
+"keywords_vi": [
+"cbt",
+"suy nghĩ",
+"lo âu"
+],
+"copy": {
+"en": "Apply third-wave CBT principles—Acceptance and Commitment Therapy. Clarify values, practice defusion, and observe thoughts mindfully. Take one committed action each week. Track acceptance growth and consult an ACT therapist to expand psychological flexibility.",
+"vi": "Áp dụng các nguyên tắc CBT thế hệ ba – đặc biệt là Liệu pháp Chấp nhận và Cam kết (ACT). Làm rõ các giá trị quan trọng với bạn, luyện tập tách mình khỏi suy nghĩ (defusion) và quan sát chúng một cách chánh niệm thay vì tin hoàn toàn. Mỗi tuần chọn ít nhất một hành động nhỏ nhưng phù hợp với giá trị để thực hiện, dù vẫn còn lo âu. Theo dõi sự thay đổi về mức chấp nhận cảm xúc khó chịu qua thời gian và, nếu có thể, làm việc với một nhà trị liệu ACT để mở rộng khả năng linh hoạt tâm lý trong tình huống xã hội."
+},
+"tags": [
+"cbt",
+"anxiety"
+],
+"audio": {
+"en": "soc_vip3_5_en.mp3"
+}
+},
+{
+"slug": "networking",
+"keywords_en": [
+"networking",
+"events",
+"anxiety"
+],
+"keywords_vi": [
+"mạng lưới",
+"sự kiện",
+"lo âu"
+],
+"copy": {
+"en": "Use strategic networking systems. Gather event intel, set three-touch follow-ups, and log contacts in a CRM. Measure growth and ROI. Work with an executive mentor to refine relationship strategy and convert anxiety into social confidence.",
+"vi": "Sử dụng cách tiếp cận xây dựng mạng lưới một cách có chiến lược. Tìm hiểu trước về sự kiện, khách tham dự và vài chủ đề an toàn để mở lời. Đặt mục tiêu theo mô hình “ba lần chạm”: gặp trực tiếp, nhắn tin hoặc email theo sau, rồi kết nối lại sau một thời gian. Ghi lại thông tin liên hệ và ghi chú cảm nhận trong một hệ thống hoặc ứng dụng quản lý đơn giản. Định kỳ nhìn lại để đo sự tiến bộ và hiệu quả. Nếu có điều kiện, làm việc với một mentor hoặc người có kinh nghiệm để tinh chỉnh chiến lược xây quan hệ, dần dần biến lo âu thành sự tự tin khi xuất hiện trong môi trường đông người."
+},
+"tags": [
+"networking",
+"anxiety"
+],
+"audio": {
+"en": "soc_vip3_6_en.mp3"
+}
+},
+{
+"slug": "public-speaking",
+"keywords_en": [
+"public speaking",
+"speech",
+"anxiety"
+],
+"keywords_vi": [
+"nói trước đám đông",
+"bài nói",
+"lo âu"
+],
+"copy": {
+"en": "Join a Toastmasters-style program for public speaking mastery. Deliver weekly speeches with structured feedback. Use VR audience training to measure progress. Collaborate with professional coaches to transform fear into stage charisma and persuasive presence.",
+"vi": "Tham gia một câu lạc bộ luyện nói kiểu Toastmasters hoặc nhóm tương tự để rèn kỹ năng nói trước đám đông. Mỗi tuần chuẩn bị và trình bày một bài nói ngắn, nhận phản hồi có cấu trúc về nội dung, giọng nói và ngôn ngữ cơ thể. Kết hợp tập luyện với các ứng dụng giả lập khán giả (VR hoặc video) để so sánh mức lo âu và sự tự tin theo thời gian. Khi sẵn sàng, bạn có thể làm việc thêm với huấn luyện viên chuyên nghiệp để tinh chỉnh phong thái, giúp nỗi sợ sân khấu dần chuyển hóa thành sự hiện diện thu hút và sức thuyết phục tự nhiên."
+},
+"tags": [
+"speaking",
+"anxiety"
+],
+"audio": {
+"en": "soc_vip3_7_en.mp3"
+}
+},
+{
+"slug": "resilience",
+"keywords_en": [
+"resilience",
+"rejection",
+"anxiety"
+],
+"keywords_vi": [
+"kiên cường",
+"từ chối",
+"lo âu"
+],
+"copy": {
+"en": "Build social resilience with a 100-day rejection challenge. Seek feedback after each exposure and reframe outcomes cognitively. Track resilience scores and consult a coach to reinforce emotional hardiness. Each rejection becomes proof of unbreakable confidence.",
+"vi": "Xây dựng sức bền xã hội bằng thử thách 100 ngày “đón nhận từ chối”. Mỗi ngày, chủ động tạo một tình huống nhỏ có khả năng bị từ chối (xin giảm giá, hỏi đường, đề nghị hỗ trợ...), sau đó ghi lại kết quả và cảm xúc. Sau mỗi lần, hỏi phản hồi nếu phù hợp và tập nhìn lại sự việc bằng góc nhìn nhận thức: mình học được gì, nỗi sợ đã giảm bao nhiêu, điều tệ nhất thực sự có xảy ra không. Theo dõi mức độ kiên cường của bản thân theo thời gian, và nếu có thể, làm việc với một coach để củng cố kỹ năng tự an ủi và phục hồi sau thất bại. Mỗi lần bị từ chối dần trở thành bằng chứng rằng bạn vẫn đứng vững, thay vì là lý do để rút lui."
+},
+"tags": [
+"resilience",
+"anxiety"
+],
+"audio": {
+"en": "soc_vip3_8_en.mp3"
+}
+}
+],
+"keywords": {
+"expert_social_anxiety": {
+"en": [
+"social anxiety mastery",
+"NLP techniques",
+"exposure therapy",
+"CBT",
+"public speaking",
+"networking strategies",
+"body language",
+"resilience building"
+],
+"vi": [
+"làm chủ lo âu xã hội",
+"kỹ thuật NLP",
+"liệu pháp phơi nhiễm",
+"CBT",
+"nói trước đám đông",
+"chiến lược mạng lưới",
+"ngôn ngữ cơ thể",
+"xây dựng kiên cường"
+]
+}
+},
+"meta": {
+"created_at": "2025-10-28T00:00:00+00:00",
+"updated_at": "2025-10-28T00:00:00+00:00",
+"entry_count": 8,
+"tier": "vip3",
+"room_color": "#4A90E2"
+}
+}
