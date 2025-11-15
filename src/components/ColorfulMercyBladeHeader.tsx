@@ -46,7 +46,7 @@ export const ColorfulMercyBladeHeader = ({
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-200 py-4 px-6">
+    <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border py-4 px-6">
       <div className="max-w-7xl mx-auto relative flex items-center justify-between">
         {/* Left side - Back Button */}
         <div className="flex-none w-24">
@@ -112,7 +112,7 @@ export const ColorfulMercyBladeHeader = ({
                   <AnimatedTierBadge tier={tier} size="sm" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56 bg-white dark:bg-gray-800 z-50">
+              <DropdownMenuContent align="end" className="w-56 bg-popover z-50">
                 <DropdownMenuLabel className="text-center font-bold">
                   Explore Tiers / Khám Phá Gói
                 </DropdownMenuLabel>

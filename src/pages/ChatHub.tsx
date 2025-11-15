@@ -589,13 +589,14 @@ const ChatHub = () => {
   // Get background color based on room tier
   const roomInfo = getRoomInfo(roomId || "");
   const getBgColor = () => {
-    if (!roomInfo) return 'hsl(var(--background))';
+    if (!roomInfo) return 'hsl(var(--page-free))';
     switch (roomInfo.tier) {
+      case 'free': return 'hsl(var(--page-free))';
       case 'vip1': return 'hsl(var(--page-vip1))';
       case 'vip2': return 'hsl(var(--page-vip2))';
       case 'vip3': return 'hsl(var(--page-vip3))';
       case 'vip4': return 'hsl(var(--page-vip4))';
-      default: return 'hsl(var(--background))';
+      default: return 'hsl(var(--page-free))';
     }
   };
 

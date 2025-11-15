@@ -44,7 +44,7 @@ export const TierSection = ({
 
           {/* Price Card (if applicable) */}
           {price && (
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-200">
+            <div className="bg-card/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-border">
               <div className="text-center space-y-2">
                 <div className="text-4xl font-bold text-gray-900">
                   ${price.monthly}
