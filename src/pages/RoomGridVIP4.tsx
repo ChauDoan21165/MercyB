@@ -136,12 +136,7 @@ const RoomGridVIP4 = () => {
 
             <div className="flex items-center justify-center gap-3">
               <Briefcase className="h-12 w-12" style={{ color: 'hsl(var(--vip4-primary))' }} />
-              <h1 className="text-4xl md:text-5xl font-bold" style={{ 
-                background: 'linear-gradient(to right, hsl(var(--vip4-primary)), hsl(var(--vip4-secondary)))',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}>
+              <h1 className="text-4xl md:text-5xl font-bold bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
                 CareerZ - VIP4
               </h1>
               <Crown className="h-12 w-12" style={{ color: 'hsl(var(--vip4-gold))' }} />

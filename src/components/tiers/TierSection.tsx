@@ -38,7 +38,7 @@ export const TierSection = ({
       <div className="max-w-[640px] w-full space-y-8">
         {/* English Section */}
         <div className="space-y-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          <h2 className="text-3xl md:text-4xl font-bold bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
             {titleEn}
           </h2>
 
@@ -86,7 +86,7 @@ export const TierSection = ({
 
         {/* Vietnamese Section */}
         <div className="space-y-4 pt-6 border-t border-gray-300/50">
-          <h3 className="text-2xl md:text-3xl font-semibold text-gray-800">
+          <h3 className="text-2xl md:text-3xl font-semibold bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
             {titleVi}
           </h3>
           <div className="prose prose-lg max-w-none">
