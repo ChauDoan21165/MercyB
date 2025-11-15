@@ -1,102 +1,143 @@
-[
-  {
-    "id": "stress-management-vip3",
-    "tier": "VIP 3 / VIP 3",
-    "entries": [
-      {
-        "title": {
-          "en": "Mastering Deep Breathing for Calm",
-          "vi": "Làm Chủ Hơi Thở Sâu Để Tạo Sự Bình An"
-        },
-        "content": {
-          "en": "Mastering deep breathing allows you to shift stress into calm awareness. Find a quiet space, sit tall, and inhale slowly through your nose for five counts. Hold gently for another five, then exhale through your mouth for eight. Feel your chest soften and your heartbeat slow. Each round invites your nervous system to relax and re-center. Practice this at least once daily, or during moments of tension, to restore equilibrium. Keep a weekly journal of how your breathing practice affects clarity and energy. Once a month, practice outdoors to connect with natural rhythm. Over time, this simple method becomes second nature—a pause between chaos and peace. Begin today with one mindful breath and notice how serenity rises within. Ready to master inner calm? Explore beyond VIP 3.",
-          "vi": "Làm chủ hơi thở sâu giúp bạn chuyển căng thẳng thành trạng thái bình an. Hãy tìm một nơi yên tĩnh, ngồi thẳng lưng và hít vào bằng mũi trong năm nhịp. Giữ nhẹ trong năm nhịp nữa, sau đó thở ra bằng miệng trong tám nhịp. Cảm nhận ngực mềm lại và nhịp tim chậm dần. Mỗi vòng thở mời hệ thần kinh thư giãn và tái lập cân bằng. Thực hành mỗi ngày hoặc trong lúc áp lực để khôi phục sự ổn định. Ghi chép hàng tuần về cách hơi thở ảnh hưởng sự minh mẫn và năng lượng. Mỗi tháng, hãy tập ngoài trời để hòa nhịp tự nhiên. Theo thời gian, phương pháp đơn giản này trở thành phản xạ—một khoảng dừng giữa hỗn loạn và bình yên. Bắt đầu hôm nay bằng một hơi thở chánh niệm và cảm nhận sự tĩnh lặng dâng lên. Sẵn sàng làm chủ bình an nội tại? Khám phá sâu hơn ngoài VIP 3."
-        },
-        "audio": "mastering_deep_breathing_for_calm_vip3.mp3"
+{
+  "name": "Stress Management & Resilience",
+  "name_vi": "Quản Lý Căng Thẳng & Sức Bền Tinh Thần",
+  "description": "Expert techniques to master stress reduction, mindfulness, and inner calm",
+  "description_vi": "Các kỹ thuật chuyên gia để làm chủ giảm căng thẳng, chánh niệm và bình an nội tại",
+  "keywords_en": [
+    "mastered breathing",
+    "deep mindfulness practices",
+    "sustained stress routines",
+    "resilience self-talk",
+    "exercise for stress",
+    "social support stress relief"
+  ],
+  "keywords_vi": [
+    "làm chủ hít thở",
+    "thực hành chánh niệm sâu sắc",
+    "thói quen giảm căng thẳng bền vững",
+    "tự nói kiên cường",
+    "tập thể dục giảm căng thẳng",
+    "hỗ trợ xã hội giảm căng thẳng"
+  ],
+  "entries": [
+    {
+      "slug": "mastering-deep-breathing",
+      "keywords_en": ["mastered breathing"],
+      "keywords_vi": ["làm chủ hít thở"],
+      "copy": {
+        "en": "Mastering deep breathing allows you to shift stress into calm awareness. Find a quiet space, sit tall, and inhale slowly through your nose for five counts. Hold gently for another five, then exhale through your mouth for eight. Feel your chest soften and your heartbeat slow. Each round invites your nervous system to relax and re-center. Practice this at least once daily, or during moments of tension, to restore equilibrium. Keep a weekly journal of how your breathing practice affects clarity and energy. Once a month, practice outdoors to connect with natural rhythm. Over time, this simple method becomes second nature—a pause between chaos and peace. Begin today with one mindful breath and notice how serenity rises within. Ready to master inner calm? Explore beyond VIP 3.",
+        "vi": "Làm chủ hơi thở sâu giúp bạn chuyển căng thẳng thành trạng thái bình an. Hãy tìm một nơi yên tĩnh, ngồi thẳng lưng và hít vào bằng mũi trong năm nhịp. Giữ nhẹ trong năm nhịp nữa, sau đó thở ra bằng miệng trong tám nhịp. Cảm nhận ngực mềm lại và nhịp tim chậm dần. Mỗi vòng thở mời hệ thần kinh thư giãn và tái lập cân bằng. Thực hành mỗi ngày hoặc trong lúc áp lực để khôi phục sự ổn định. Ghi chép hàng tuần về cách hơi thở ảnh hưởng sự minh mẫn và năng lượng. Mỗi tháng, hãy tập ngoài trời để hòa nhịp tự nhiên. Theo thời gian, phương pháp đơn giản này trở thành phản xạ—một khoảng dừng giữa hỗn loạn và bình yên. Bắt đầu hôm nay bằng một hơi thở chánh niệm và cảm nhận sự tĩnh lặng dâng lên. Sẵn sàng làm chủ bình an nội tại? Khám phá sâu hơn ngoài VIP 3."
       },
-      {
-        "title": {
-          "en": "Deepening Mindfulness for Stress Relief",
-          "vi": "Tăng Cường Chánh Niệm Để Giảm Căng Thẳng"
-        },
-        "content": {
-          "en": "Deep mindfulness is the art of being fully present even amid pressure. Set aside three quiet minutes each day to notice your breath or sensations around you. Let thoughts drift past like clouds, acknowledging them without judgment. This daily anchor restores focus and softens anxiety. Once a week, reflect in writing on moments when mindfulness helped you stay composed. Each month, extend your practice to a longer session, perhaps outdoors or with gentle music. Mindfulness is not escape—it is engagement with clarity. Over time, it rewires your response to stress, replacing reaction with awareness. Start today with three calm minutes of observation. Ready to cultivate deep, unshakable peace? Explore beyond VIP 3.",
-          "vi": "Chánh niệm sâu là nghệ thuật hiện diện trọn vẹn ngay cả khi áp lực. Mỗi ngày, hãy dành ba phút yên tĩnh để chú ý hơi thở hoặc cảm giác quanh bạn. Hãy để suy nghĩ trôi qua như mây, chỉ ghi nhận mà không phán xét. Nghi thức nhỏ này phục hồi sự tập trung và làm dịu lo âu. Mỗi tuần, hãy viết lại những khoảnh khắc chánh niệm giúp bạn giữ bình tĩnh. Mỗi tháng, kéo dài buổi thực hành, có thể ngoài trời hoặc cùng âm nhạc nhẹ. Chánh niệm không phải trốn tránh—đó là sự hiện diện sáng rõ. Theo thời gian, nó tái định hình cách bạn phản ứng với căng thẳng, thay phản ứng vội vã bằng nhận biết. Bắt đầu hôm nay với ba phút quan sát bình yên. Sẵn sàng nuôi dưỡng sự tĩnh tại bền vững? Khám phá xa hơn ngoài VIP 3."
-        },
-        "audio": "deepening_mindfulness_for_stress_relief_vip3.mp3"
+      "tags": ["stress", "breathing"],
+      "audio": {
+        "en": "mastering_deep_breathing_for_calm_vip3.mp3",
+        "vi": "mastering_deep_breathing_for_calm_vip3.mp3"
       },
-      {
-        "title": {
-          "en": "Sustaining Stress-Reducing Routines",
-          "vi": "Duy Trì Các Thói Quen Giảm Căng Thẳng"
-        },
-        "content": {
-          "en": "Consistency transforms relief into resilience. Choose one daily activity—a twenty-minute walk, morning stretching, or evening journaling—that signals safety to your body. Protect this time as you would an appointment. Track its effects on mood and sleep each week to measure calm gained. Once a month, refresh your ritual by changing scenery or adding gentle music. These small patterns become anchors when life intensifies. Over time, structure teaches the nervous system that calm is repeatable, not random. Let each routine remind you that peace is built, not found. Begin tonight by scheduling tomorrow’s calm time. Ready to sustain balance through rhythm? Explore beyond VIP 3.",
-          "vi": "Tính đều đặn biến sự giảm căng thẳng thành sức bền. Chọn một hoạt động mỗi ngày—đi bộ hai mươi phút, duỗi cơ buổi sáng hoặc viết nhật ký buổi tối—để gửi tín hiệu an toàn cho cơ thể. Hãy bảo vệ thời gian này như một cuộc hẹn quan trọng. Theo dõi ảnh hưởng của nó lên tâm trạng và giấc ngủ mỗi tuần để đo mức độ bình an đạt được. Mỗi tháng, làm mới nghi thức bằng cách thay đổi không gian hoặc thêm âm nhạc nhẹ. Những mô thức nhỏ này trở thành điểm tựa khi cuộc sống căng thẳng. Theo thời gian, cấu trúc dạy hệ thần kinh rằng sự bình tĩnh là có thể lặp lại, không phải may mắn. Hãy để mỗi thói quen nhắc bạn rằng bình yên được xây dựng, không phải tìm thấy. Bắt đầu tối nay bằng cách lên lịch cho thời gian yên bình của ngày mai. Sẵn sàng duy trì cân bằng bằng nhịp sống ổn định? Khám phá sâu hơn ngoài VIP 3."
-        },
-        "audio": "sustaining_stress_reducing_routines_vip3.mp3"
-      },
-      {
-        "title": {
-          "en": "Building Resilience through Self-Talk",
-          "vi": "Xây Dựng Sức Bền Tinh Thần Qua Tự Đối Thoại"
-        },
-        "content": {
-          "en": "Resilience grows from how you speak to yourself when challenged. Replace harsh inner voices with supportive truths like “I adapt with strength” or “I am learning calm.” Repeat these phrases during tension to reframe fear into steadiness. Write affirmations on notes or record them as reminders. Reflect weekly on situations where positive self-talk shifted your response. Each month, share one affirmation with a trusted peer to strengthen commitment. Over time, these small sentences reshape the mind’s tone from doubt to trust. Begin now with one compassionate phrase and a slow breath. Ready to strengthen calm from within? Explore beyond VIP 3.",
-          "vi": "Sự kiên cường được nuôi dưỡng từ cách bạn tự nói với chính mình khi đối mặt thách thức. Hãy thay những giọng nói khắt khe bằng những sự thật nâng đỡ như “Tôi thích nghi bằng sức mạnh” hoặc “Tôi đang học cách bình tĩnh”. Lặp lại những câu này trong lúc căng thẳng để chuyển hóa sợ hãi thành vững vàng. Viết các câu khẳng định ra giấy hoặc thu âm làm lời nhắc. Mỗi tuần, suy ngẫm về những tình huống mà tự đối thoại tích cực đã thay đổi phản ứng của bạn. Mỗi tháng, chia sẻ một câu khẳng định với người bạn tin tưởng để củng cố cam kết. Theo thời gian, những câu nói nhỏ này định hình lại giọng điệu nội tâm từ nghi hoặc thành tin tưởng. Bắt đầu ngay bằng một câu đầy yêu thương và một hơi thở chậm. Sẵn sàng củng cố sự bình an từ bên trong? Khám phá tiếp ngoài VIP 3."
-        },
-        "audio": "building_resilience_through_self_talk_vip3.mp3"
-      },
-      {
-        "title": {
-          "en": "Using Exercise to Manage Stress",
-          "vi": "Sử Dụng Vận Động Để Giảm Căng Thẳng"
-        },
-        "content": {
-          "en": "Movement is a natural stress antidote. Engage in one twenty-minute activity daily—walk, yoga, dance, or gentle jogging—to release stored tension. Focus on rhythm rather than results. Let each step or stretch become a moving meditation. Journal weekly about how exercise shifts mood and energy. Join a community class monthly to stay motivated and inspired. Physical activity balances hormones, clears thought, and reminds you of embodied strength. If motivation fades, start small—just lace your shoes and breathe. Progress lies in showing up. Begin today with one mindful movement session. Ready to move your body into calm? Explore beyond VIP 3.",
-          "vi": "Vận động là liều thuốc tự nhiên chống căng thẳng. Hãy chọn một hoạt động hai mươi phút mỗi ngày—đi bộ, yoga, nhảy hoặc chạy nhẹ—để giải phóng căng thẳng tích tụ. Tập trung vào nhịp điệu hơn là kết quả. Hãy để mỗi bước hoặc động tác kéo giãn trở thành thiền động. Ghi chép hàng tuần về cách vận động thay đổi tâm trạng và năng lượng. Tham gia một lớp cộng đồng hàng tháng để duy trì động lực. Hoạt động thể chất giúp cân bằng hormone, làm sáng suy nghĩ và nhắc bạn về sức mạnh của cơ thể. Nếu động lực giảm, hãy bắt đầu nhỏ—xỏ giày và thở. Tiến bộ nằm ở sự hiện diện. Bắt đầu hôm nay với một buổi vận động chánh niệm. Sẵn sàng đưa cơ thể vào trạng thái bình yên? Khám phá thêm ngoài VIP 3."
-        },
-        "audio": "using_exercise_to_manage_stress_vip3.mp3"
-      },
-      {
-        "title": {
-          "en": "Fostering Social Support for Stress",
-          "vi": "Xây Dựng Hỗ Trợ Xã Hội Để Giảm Căng Thẳng"
-        },
-        "content": {
-          "en": "Connection heals what isolation amplifies. Reach out weekly to one friend or colleague for genuine conversation—no fixing, just listening. Share thoughts, laughter, or silence to lighten emotional weight. Reflect weekly on how these interactions affect mood. Once a month, join a supportive group, class, or online circle to nurture belonging. Social contact steadies perspective and reminds you that struggle is universal. Practice active listening to build trust and reciprocity. Over time, companionship becomes a source of peace rather than obligation. Begin today with one meaningful message or call. Ready to anchor calm in connection? Explore beyond VIP 3.",
-          "vi": "Kết nối chữa lành những gì sự cô lập khuếch đại. Mỗi tuần, hãy liên hệ với một người bạn hoặc đồng nghiệp để trò chuyện chân thành—không sửa chữa, chỉ lắng nghe. Chia sẻ suy nghĩ, tiếng cười hoặc sự im lặng để làm nhẹ gánh nặng cảm xúc. Mỗi tuần, suy ngẫm về cách những tương tác này ảnh hưởng tâm trạng. Mỗi tháng, tham gia một nhóm, lớp hoặc cộng đồng trực tuyến để nuôi dưỡng sự gắn kết. Tiếp xúc xã hội giúp ổn định góc nhìn và nhắc bạn rằng khó khăn là điều phổ quát. Hãy rèn luyện lắng nghe chủ động để xây dựng tin cậy và sự trao đổi qua lại. Theo thời gian, tình bạn trở thành nguồn bình an chứ không phải nghĩa vụ. Bắt đầu hôm nay bằng một tin nhắn hoặc cuộc gọi ý nghĩa. Sẵn sàng neo bình yên trong kết nối? Khám phá sâu hơn ngoài VIP 3."
-        },
-        "audio": "fostering_social_support_for_stress_vip3.mp3"
-      }
-    ],
-    "keywords": {
-      "personalized_stress_management": {
-        "en": [
-          "mastered breathing",
-          "deep mindfulness practices",
-          "sustained stress routines",
-          "resilience self-talk",
-          "exercise for stress",
-          "social support stress relief"
-        ],
-        "vi": [
-          "làm chủ hít thở",
-          "thực hành chánh niệm sâu sắc",
-          "thói quen giảm căng thẳng bền vững",
-          "tự nói kiên cường",
-          "tập thể dục giảm căng thẳng",
-          "hỗ trợ xã hội giảm căng thẳng"
-        ]
-      }
+      "essay_ref": ""
     },
-    "meta": {
-      "created_at": "2025-10-25T11:12:00+09:00",
-      "updated_at": "2025-10-25T11:55:00+09:00",
-      "entry_count": 6,
-      "artifact_set_id": "9c0d1e2f-3a4b-4c5d-b6e7-d8f9a0b1c2d4",
-      "data_format_version": "MercyBlade-Core-v1.2",
-      "room_color": "#C5A671"
+    {
+      "slug": "deepening-mindfulness",
+      "keywords_en": ["deep mindfulness practices"],
+      "keywords_vi": ["thực hành chánh niệm sâu sắc"],
+      "copy": {
+        "en": "Deep mindfulness is the art of being fully present even amid pressure. Set aside three quiet minutes each day to notice your breath or sensations around you. Let thoughts drift past like clouds, acknowledging them without judgment. This daily anchor restores focus and softens anxiety. Once a week, reflect in writing on moments when mindfulness helped you stay composed. Each month, extend your practice to a longer session, perhaps outdoors or with gentle music. Mindfulness is not escape—it is engagement with clarity. Over time, it rewires your response to stress, replacing reaction with awareness. Start today with three calm minutes of observation. Ready to cultivate deep, unshakable peace? Explore beyond VIP 3.",
+        "vi": "Chánh niệm sâu là nghệ thuật hiện diện trọn vẹn ngay cả khi áp lực. Mỗi ngày, hãy dành ba phút yên tĩnh để chú ý hơi thở hoặc cảm giác quanh bạn. Hãy để suy nghĩ trôi qua như mây, chỉ ghi nhận mà không phán xét. Nghi thức nhỏ này phục hồi sự tập trung và làm dịu lo âu. Mỗi tuần, hãy viết lại những khoảnh khắc chánh niệm giúp bạn giữ bình tĩnh. Mỗi tháng, kéo dài buổi thực hành, có thể ngoài trời hoặc cùng âm nhạc nhẹ. Chánh niệm không phải trốn tránh—đó là sự hiện diện sáng rõ. Theo thời gian, nó tái định hình cách bạn phản ứng với căng thẳng, thay phản ứng vội vã bằng nhận biết. Bắt đầu hôm nay với ba phút quan sát bình yên. Sẵn sàng nuôi dưỡng sự tĩnh tại bền vững? Khám phá xa hơn ngoài VIP 3."
+      },
+      "tags": ["stress", "mindfulness"],
+      "audio": {
+        "en": "deepening_mindfulness_for_stress_relief_vip3.mp3",
+        "vi": "deepening_mindfulness_for_stress_relief_vip3.mp3"
+      },
+      "essay_ref": ""
+    },
+    {
+      "slug": "sustaining-stress-routines",
+      "keywords_en": ["sustained stress routines"],
+      "keywords_vi": ["thói quen giảm căng thẳng bền vững"],
+      "copy": {
+        "en": "Consistency transforms relief into resilience. Choose one daily activity—a twenty-minute walk, morning stretching, or evening journaling—that signals safety to your body. Protect this time as you would an appointment. Track its effects on mood and sleep each week to measure calm gained. Once a month, refresh your ritual by changing scenery or adding gentle music. These small patterns become anchors when life intensifies. Over time, structure teaches the nervous system that calm is repeatable, not random. Let each routine remind you that peace is built, not found. Begin tonight by scheduling tomorrow’s calm time. Ready to sustain balance through rhythm? Explore beyond VIP 3.",
+        "vi": "Tính đều đặn biến sự giảm căng thẳng thành sức bền. Chọn một hoạt động mỗi ngày—đi bộ hai mươi phút, duỗi cơ buổi sáng hoặc viết nhật ký buổi tối—để gửi tín hiệu an toàn cho cơ thể. Hãy bảo vệ thời gian này như một cuộc hẹn quan trọng. Theo dõi ảnh hưởng của nó lên tâm trạng và giấc ngủ mỗi tuần để đo mức độ bình an đạt được. Mỗi tháng, làm mới nghi thức bằng cách thay đổi không gian hoặc thêm âm nhạc nhẹ. Những mô thức nhỏ này trở thành điểm tựa khi cuộc sống căng thẳng. Theo thời gian, cấu trúc dạy hệ thần kinh rằng sự bình tĩnh là có thể lặp lại, không phải may mắn. Hãy để mỗi thói quen nhắc bạn rằng bình yên được xây dựng, không phải tìm thấy. Bắt đầu tối nay bằng cách lên lịch cho thời gian yên bình của ngày mai. Sẵn sàng duy trì cân bằng bằng nhịp sống ổn định? Khám phá sâu hơn ngoài VIP 3."
+      },
+      "tags": ["stress", "routines"],
+      "audio": {
+        "en": "sustaining_stress_reducing_routines_vip3.mp3",
+        "vi": "sustaining_stress_reducing_routines_vip3.mp3"
+      },
+      "essay_ref": ""
+    },
+    {
+      "slug": "building-resilience-self-talk",
+      "keywords_en": ["resilience self-talk"],
+      "keywords_vi": ["tự nói kiên cường"],
+      "copy": {
+        "en": "Resilience grows from how you speak to yourself when challenged. Replace harsh inner voices with supportive truths like “I adapt with strength” or “I am learning calm.” Repeat these phrases during tension to reframe fear into steadiness. Write affirmations on notes or record them as reminders. Reflect weekly on situations where positive self-talk shifted your response. Each month, share one affirmation with a trusted peer to strengthen commitment. Over time, these small sentences reshape the mind’s tone from doubt to trust. Begin now with one compassionate phrase and a slow breath. Ready to strengthen calm from within? Explore beyond VIP 3.",
+        "vi": "Sự kiên cường được nuôi dưỡng từ cách bạn tự nói với chính mình khi đối mặt thách thức. Hãy thay những giọng nói khắt khe bằng những sự thật nâng đỡ như “Tôi thích nghi bằng sức mạnh” hoặc “Tôi đang học cách bình tĩnh”. Lặp lại những câu này trong lúc căng thẳng để chuyển hóa sợ hãi thành vững vàng. Viết các câu khẳng định ra giấy hoặc thu âm làm lời nhắc. Mỗi tuần, suy ngẫm về những tình huống mà tự đối thoại tích cực đã thay đổi phản ứng của bạn. Mỗi tháng, chia sẻ một câu khẳng định với người bạn tin tưởng để củng cố cam kết. Theo thời gian, những câu nói nhỏ này định hình lại giọng điệu nội tâm từ nghi hoặc thành tin tưởng. Bắt đầu ngay bằng một câu đầy yêu thương và một hơi thở chậm. Sẵn sàng củng cố sự bình an từ bên trong? Khám phá tiếp ngoài VIP 3."
+      },
+      "tags": ["stress", "resilience"],
+      "audio": {
+        "en": "building_resilience_through_self_talk_vip3.mp3",
+        "vi": "building_resilience_through_self_talk_vip3.mp3"
+      },
+      "essay_ref": ""
+    },
+    {
+      "slug": "exercise-for-stress",
+      "keywords_en": ["exercise for stress"],
+      "keywords_vi": ["tập thể dục giảm căng thẳng"],
+      "copy": {
+        "en": "Movement is a natural stress antidote. Engage in one twenty-minute activity daily—walk, yoga, dance, or gentle jogging—to release stored tension. Focus on rhythm rather than results. Let each step or stretch become a moving meditation. Journal weekly about how exercise shifts mood and energy. Join a community class monthly to stay motivated and inspired. Physical activity balances hormones, clears thought, and reminds you of embodied strength. If motivation fades, start small—just lace your shoes and breathe. Progress lies in showing up. Begin today with one mindful movement session. Ready to move your body into calm? Explore beyond VIP 3.",
+        "vi": "Vận động là liều thuốc tự nhiên chống căng thẳng. Hãy chọn một hoạt động hai mươi phút mỗi ngày—đi bộ, yoga, nhảy hoặc chạy nhẹ—để giải phóng căng thẳng tích tụ. Tập trung vào nhịp điệu hơn là kết quả. Hãy để mỗi bước hoặc động tác kéo giãn trở thành thiền động. Ghi chép hàng tuần về cách vận động thay đổi tâm trạng và năng lượng. Tham gia một lớp cộng đồng hàng tháng để duy trì động lực. Hoạt động thể chất giúp cân bằng hormone, làm sáng suy nghĩ và nhắc bạn về sức mạnh của cơ thể. Nếu động lực giảm, hãy bắt đầu nhỏ—xỏ giày và thở. Tiến bộ nằm ở sự hiện diện. Bắt đầu hôm nay với một buổi vận động chánh niệm. Sẵn sàng đưa cơ thể vào trạng thái bình yên? Khám phá thêm ngoài VIP 3."
+      },
+      "tags": ["stress", "exercise"],
+      "audio": {
+        "en": "using_exercise_to_manage_stress_vip3.mp3",
+        "vi": "using_exercise_to_manage_stress_vip3.mp3"
+      },
+      "essay_ref": ""
+    },
+    {
+      "slug": "social-support-for-stress",
+      "keywords_en": ["social support stress relief"],
+      "keywords_vi": ["hỗ trợ xã hội giảm căng thẳng"],
+      "copy": {
+        "en": "Connection heals what isolation amplifies. Reach out weekly to one friend or colleague for genuine conversation—no fixing, just listening. Share thoughts, laughter, or silence to lighten emotional weight. Reflect weekly on how these interactions affect mood. Once a month, join a supportive group, class, or online circle to nurture belonging. Social contact steadies perspective and reminds you that struggle is universal. Practice active listening to build trust and reciprocity. Over time, companionship becomes a source of peace rather than obligation. Begin today with one meaningful message or call. Ready to anchor calm in connection? Explore beyond VIP 3.",
+        "vi": "Kết nối chữa lành những gì sự cô lập khuếch đại. Mỗi tuần, hãy liên hệ với một người bạn hoặc đồng nghiệp để trò chuyện chân thành—không sửa chữa, chỉ lắng nghe. Chia sẻ suy nghĩ, tiếng cười hoặc sự im lặng để làm nhẹ gánh nặng cảm xúc. Mỗi tuần, suy ngẫm về cách những tương tác này ảnh hưởng tâm trạng. Mỗi tháng, tham gia một nhóm, lớp hoặc cộng đồng trực tuyến để nuôi dưỡng sự gắn kết. Tiếp xúc xã hội giúp ổn định góc nhìn và nhắc bạn rằng khó khăn là điều phổ quát. Hãy rèn luyện lắng nghe chủ động để xây dựng tin cậy và sự trao đổi qua lại. Theo thời gian, tình bạn trở thành nguồn bình an chứ không phải nghĩa vụ. Bắt đầu hôm nay bằng một tin nhắn hoặc cuộc gọi ý nghĩa. Sẵn sàng neo bình yên trong kết nối? Khám phá sâu hơn ngoài VIP 3."
+      },
+      "tags": ["stress", "social"],
+      "audio": {
+        "en": "fostering_social_support_for_stress_vip3.mp3",
+        "vi": "fostering_social_support_for_stress_vip3.mp3"
+      },
+      "essay_ref": ""
     }
+  ],
+  "keywords": {
+    "personalized_stress_management": {
+      "en": [
+        "mastered breathing",
+        "deep mindfulness practices",
+        "sustained stress routines",
+        "resilience self-talk",
+        "exercise for stress",
+        "social support stress relief"
+      ],
+      "vi": [
+        "làm chủ hít thở",
+        "thực hành chánh niệm sâu sắc",
+        "thói quen giảm căng thẳng bền vững",
+        "tự nói kiên cường",
+        "tập thể dục giảm căng thẳng",
+        "hỗ trợ xã hội giảm căng thẳng"
+      ]
+    }
+  },
+  "meta": {
+    "created_at": "2025-10-25T11:12:00+09:00",
+    "updated_at": "2025-10-25T11:55:00+09:00",
+    "entry_count": 6,
+    "artifact_set_id": "9c0d1e2f-3a4b-4c5d-b6e7-d8f9a0b1c2d4",
+    "data_format_version": "MercyBlade-Core-v1.2",
+    "room_color": "#C5A671",
+    "tier": "vip3"
   }
-]
+}
