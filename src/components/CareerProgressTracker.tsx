@@ -110,8 +110,8 @@ export const CareerProgressTracker = ({ currentRoomId }: CareerProgressTrackerPr
                 disabled={!isAccessible}
                 className={`
                   flex items-center gap-2 px-3 py-2 rounded-lg transition-all flex-1
-                  ${isCurrent ? 'bg-white dark:bg-gray-800 shadow-md' : ''}
-                  ${isAccessible ? 'cursor-pointer hover:bg-white/50 dark:hover:bg-gray-800/50' : 'cursor-not-allowed opacity-50'}
+                  ${isCurrent ? 'bg-card shadow-md' : ''}
+                  ${isAccessible ? 'cursor-pointer hover:bg-card/50' : 'cursor-not-allowed opacity-50'}
                 `}
               >
                 {/* Icon */}

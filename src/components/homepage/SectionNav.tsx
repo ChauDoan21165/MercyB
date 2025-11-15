@@ -40,7 +40,7 @@ export const SectionNav = ({ sections, activeSection }: SectionNavProps) => {
         variant="ghost"
         size="icon"
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:scale-110 transition-transform lg:hidden"
+        className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-background shadow-lg hover:scale-110 transition-transform lg:hidden"
       >
         {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
       </Button>
@@ -55,7 +55,7 @@ export const SectionNav = ({ sections, activeSection }: SectionNavProps) => {
             : "bottom-24 opacity-0 pointer-events-none lg:pointer-events-auto lg:opacity-100"
         )}
       >
-        <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl shadow-xl p-2 space-y-1 max-w-[200px]">
+        <div className="bg-background/90 backdrop-blur-sm rounded-2xl shadow-xl p-2 space-y-1 max-w-[200px]">
           {sections.map((section) => {
             const isActive = activeSection === section.id;
             return (

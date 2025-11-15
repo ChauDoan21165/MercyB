@@ -66,6 +66,7 @@ All colors MUST be HSL.
     --page-welcome: 340 82% 97%;
     --page-allrooms: 291 64% 97%;
     --page-roomgrid: 207 90% 97%;
+    --page-free: 184 91% 97%; /* Teal tint for free tier rooms */
     
     /* VIP1 colors - Yellow/Amber theme */
     --page-vip1: 45 100% 96%;
