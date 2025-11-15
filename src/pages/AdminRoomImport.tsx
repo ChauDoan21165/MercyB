@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, Upload, FileJson } from "lucide-react";
+import { ArrowLeft, Upload, FileJson, AlertTriangle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 
 export default function AdminRoomImport() {
   const { toast } = useToast();
@@ -15,6 +16,7 @@ export default function AdminRoomImport() {
   const [jsonInput, setJsonInput] = useState("");
   const [importResults, setImportResults] = useState<string[]>([]);
   const [validationWarnings, setValidationWarnings] = useState<string[]>([]);
+  const [registryWarnings, setRegistryWarnings] = useState<string[]>([]);
 
   const importMutation = useMutation({
     mutationFn: async (jsonData: any) => {
@@ -140,16 +142,46 @@ export default function AdminRoomImport() {
     return warnings;
   };
 
+  const checkRegistryStatus = (data: any) => {
+    const warnings: string[] = [];
+    const rooms = Array.isArray(data) ? data : [data];
+    const manifestRoomIds = Object.keys(PUBLIC_ROOM_MANIFEST);
+    
+    rooms.forEach((room: any) => {
+      const roomId = room.id || room.schema_id || room.name?.toLowerCase().replace(/\s+/g, '-');
+      if (roomId && !manifestRoomIds.includes(roomId)) {
+        const title = room.title?.en || room.name || roomId;
+        const tier = room.tier || room.meta?.tier || 'free';
+        warnings.push(
+          `📦 "${title}" (${roomId}, tier: ${tier}) is not in the frontend registry yet. ` +
+          `It will be imported to the database but won't appear in the app until added to the registry.`
+        );
+      }
+    });
+    
+    return warnings;
+  };
+
   const handleImport = () => {
     try {
       const data = JSON.parse(jsonInput);
       const warnings = validateRoomData(data);
+      const registryIssues = checkRegistryStatus(data);
+      
       setValidationWarnings(warnings);
+      setRegistryWarnings(registryIssues);
       
       if (warnings.length > 0) {
         toast({
           title: "Validation Warnings",
           description: `Found ${warnings.length} potential issue(s). Check below before importing.`,
+        });
+      }
+      
+      if (registryIssues.length > 0) {
+        toast({
+          title: "Registry Check",
+          description: `${registryIssues.length} room(s) not found in frontend registry`,
         });
       }
       
@@ -221,10 +253,37 @@ export default function AdminRoomImport() {
             <h3 className="font-semibold mb-4 text-yellow-600">Validation Warnings</h3>
             <div className="space-y-2">
               {validationWarnings.map((warning, index) => (
-                <div key={index} className="text-sm text-yellow-700">
+                <div key={index} className="text-sm text-yellow-700 dark:text-yellow-300">
                   {warning}
                 </div>
               ))}
+            </div>
+          </Card>
+        )}
+
+        {registryWarnings.length > 0 && (
+          <Card className="p-6 mb-6 border-orange-500">
+            <div className="flex items-start gap-3">
+              <AlertTriangle className="h-5 w-5 text-orange-500 mt-0.5 flex-shrink-0" />
+              <div className="flex-1">
+                <h3 className="font-semibold mb-3 text-orange-600 dark:text-orange-400">
+                  Registry Status Check
+                </h3>
+                <div className="space-y-3">
+                  {registryWarnings.map((warning, i) => (
+                    <div key={i} className="text-sm text-orange-700 dark:text-orange-300">
+                      {warning}
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 p-3 bg-muted rounded-lg text-sm">
+                  <div className="font-medium mb-1">To add missing rooms to the registry:</div>
+                  <code className="bg-background px-2 py-1 rounded">npm run registry:generate</code>
+                  <div className="text-muted-foreground mt-2 text-xs">
+                    This will scan public/data and update roomManifest.ts with all JSON files
+                  </div>
+                </div>
+              </div>
             </div>
           </Card>
         )}
