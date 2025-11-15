@@ -109,7 +109,7 @@ const Homepage = () => {
       {/* Footer CTA */}
       <footer className="py-12 px-6 bg-gradient-to-b from-teal-100 to-teal-200">
         <div className="max-w-[640px] mx-auto text-center space-y-6">
-          <h3 className="text-xl font-semibold text-gray-900">
+          <h3 className="text-xl font-semibold bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
             Ready to begin your journey?
           </h3>
           <p className="text-sm text-gray-700">
