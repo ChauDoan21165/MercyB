@@ -124,8 +124,6 @@ export const AudioPlayer = ({
     audio.addEventListener('error', handleError);
     audio.addEventListener('canplay', handleCanPlay);
 
-    console.log('🔊 Loading audio:', audioPath);
-
     return () => {
       audio.removeEventListener('timeupdate', handleTimeUpdate);
       audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
@@ -133,7 +131,7 @@ export const AudioPlayer = ({
       audio.removeEventListener('error', handleError);
       audio.removeEventListener('canplay', handleCanPlay);
     };
-  }, [audioPath, isDragging, onEnded]);
+  }, [audioPath, isDragging]);
 
   useEffect(() => {
     const audio = audioRef.current;
