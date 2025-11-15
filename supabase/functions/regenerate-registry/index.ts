@@ -113,7 +113,8 @@ async function scanRoomFiles() {
     }
   } catch (error) {
     console.error('Error scanning directory:', error);
-    throw new Error(`Failed to scan data directory: ${error.message}`);
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    throw new Error(`Failed to scan data directory: ${message}`);
   }
   
   return { manifest, dataImports };
@@ -207,10 +208,11 @@ serve(async (req) => {
     );
   } catch (error) {
     console.error('Error regenerating registry:', error);
+    const message = error instanceof Error ? error.message : 'Unknown error';
     return new Response(
       JSON.stringify({ 
         success: false, 
-        error: error.message 
+        error: message
       }),
       {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
