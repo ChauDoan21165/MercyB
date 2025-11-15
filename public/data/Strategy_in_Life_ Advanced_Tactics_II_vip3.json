@@ -1,0 +1,149 @@
+{
+  "name": "Strategy in Life - Advanced Tactics II",
+  "name_vi": "Chiến Lược Cuộc Sống - Chiến Thuật Nâng Cao II",
+  "description": "Advanced strategic frameworks for life mastery and decision excellence",
+  "description_vi": "Khung chiến lược nâng cao để làm chủ cuộc sống và ra quyết định xuất sắc",
+  "keywords_en": ["strategy", "tactics", "life planning", "decision making", "advanced methods", "strategic thinking", "life mastery", "goal achievement"],
+  "keywords_vi": ["chiến lược", "chiến thuật", "lập kế hoạch cuộc sống", "ra quyết định", "phương pháp nâng cao", "tư duy chiến lược", "làm chủ cuộc sống", "đạt mục tiêu"],
+  "entries": [
+    {
+      "slug": "strategic-vision-clarity",
+      "keywords_en": ["Strategic Vision", "vision", "clarity", "long-term thinking", "future planning"],
+      "keywords_vi": ["Tầm Nhìn Chiến Lược", "tầm nhìn", "rõ ràng", "tư duy dài hạn", "kế hoạch tương lai"],
+      "copy": {
+        "en": "I develop crystal-clear strategic vision that guides my every decision. My long-term perspective illuminates the path forward, helping me navigate complexity with confidence and purpose.",
+        "vi": "Tôi phát triển tầm nhìn chiến lược rõ ràng như pha lê để định hướng mọi quyết định. Góc nhìn dài hạn của tôi soi sáng con đường phía trước, giúp tôi vượt qua sự phức tạp với tự tin và mục đích."
+      },
+      "tags": ["vision", "strategy", "planning"],
+      "audio": "strategy_life_advanced_2_01.mp3"
+    },
+    {
+      "slug": "tactical-execution",
+      "keywords_en": ["Tactical Execution", "execution", "action", "implementation", "results"],
+      "keywords_vi": ["Thực Thi Chiến Thuật", "thực thi", "hành động", "triển khai", "kết quả"],
+      "copy": {
+        "en": "I excel at tactical execution, transforming strategic vision into concrete results. Each action I take is deliberate, measured, and aligned with my greater purpose.",
+        "vi": "Tôi xuất sắc trong việc thực thi chiến thuật, biến tầm nhìn chiến lược thành kết quả cụ thể. Mỗi hành động tôi thực hiện đều có chủ đích, được cân nhắc và phù hợp với mục đích lớn hơn."
+      },
+      "tags": ["execution", "action", "implementation"],
+      "audio": "strategy_life_advanced_2_02.mp3"
+    },
+    {
+      "slug": "adaptive-strategy",
+      "keywords_en": ["Adaptive Strategy", "flexibility", "adaptation", "resilience", "change management"],
+      "keywords_vi": ["Chiến Lược Thích Ứng", "linh hoạt", "thích nghi", "kiên cường", "quản lý thay đổi"],
+      "copy": {
+        "en": "I embrace adaptive strategy, adjusting my approach while maintaining my core objectives. I flow with change, turning obstacles into opportunities through strategic flexibility.",
+        "vi": "Tôi áp dụng chiến lược thích ứng, điều chỉnh cách tiếp cận trong khi duy trì các mục tiêu cốt lõi. Tôi thích nghi với sự thay đổi, biến chướng ngại thành cơ hội thông qua sự linh hoạt chiến lược."
+      },
+      "tags": ["adaptation", "flexibility", "resilience"],
+      "audio": "strategy_life_advanced_2_03.mp3"
+    },
+    {
+      "slug": "resource-optimization",
+      "keywords_en": ["Resource Optimization", "efficiency", "resources", "optimization", "productivity"],
+      "keywords_vi": ["Tối Ưu Hóa Nguồn Lực", "hiệu quả", "nguồn lực", "tối ưu hóa", "năng suất"],
+      "copy": {
+        "en": "I master resource optimization, maximizing impact with available means. I allocate time, energy, and resources strategically, achieving exceptional results through intelligent efficiency.",
+        "vi": "Tôi thành thạo việc tối ưu hóa nguồn lực, tối đa hóa tác động với các phương tiện hiện có. Tôi phân bổ thời gian, năng lượng và nguồn lực một cách chiến lược, đạt được kết quả xuất sắc thông qua hiệu quả thông minh."
+      },
+      "tags": ["optimization", "efficiency", "resources"],
+      "audio": "strategy_life_advanced_2_04.mp3"
+    },
+    {
+      "slug": "competitive-advantage",
+      "keywords_en": ["Competitive Advantage", "advantage", "differentiation", "uniqueness", "edge"],
+      "keywords_vi": ["Lợi Thế Cạnh Tranh", "lợi thế", "sự khác biệt", "độc đáo", "ưu thế"],
+      "copy": {
+        "en": "I cultivate unique competitive advantages that set me apart. I identify and leverage my distinctive strengths, creating value that others cannot easily replicate.",
+        "vi": "Tôi nuôi dưỡng lợi thế cạnh tranh độc đáo khiến tôi nổi bật. Tôi xác định và tận dụng những điểm mạnh đặc biệt của mình, tạo ra giá trị mà người khác không thể dễ dàng sao chép."
+      },
+      "tags": ["advantage", "differentiation", "strategy"],
+      "audio": "strategy_life_advanced_2_05.mp3"
+    },
+    {
+      "slug": "risk-intelligence",
+      "keywords_en": ["Risk Intelligence", "risk management", "calculated risks", "decision quality", "risk assessment"],
+      "keywords_vi": ["Trí Tuệ Rủi Ro", "quản lý rủi ro", "rủi ro tính toán", "chất lượng quyết định", "đánh giá rủi ro"],
+      "copy": {
+        "en": "I develop sophisticated risk intelligence, making calculated decisions with wisdom. I assess probabilities, prepare for contingencies, and move forward with informed courage.",
+        "vi": "Tôi phát triển trí tuệ rủi ro tinh vi, đưa ra quyết định tính toán với sự khôn ngoan. Tôi đánh giá xác suất, chuẩn bị cho các tình huống bất ngờ và tiến lên với lòng can đảm có cơ sở."
+      },
+      "tags": ["risk", "intelligence", "decision-making"],
+      "audio": "strategy_life_advanced_2_06.mp3"
+    },
+    {
+      "slug": "systematic-thinking",
+      "keywords_en": ["Systematic Thinking", "systems", "patterns", "holistic view", "interconnections"],
+      "keywords_vi": ["Tư Duy Hệ Thống", "hệ thống", "mẫu hình", "tầm nhìn toàn diện", "mối liên kết"],
+      "copy": {
+        "en": "I think systematically, understanding how all elements connect and influence each other. I see patterns, leverage interconnections, and create synergies that multiply my effectiveness.",
+        "vi": "Tôi tư duy có hệ thống, hiểu cách tất cả các yếu tố kết nối và ảnh hưởng lẫn nhau. Tôi nhìn thấy các mẫu hình, tận dụng mối liên kết và tạo ra sự phối hợp nhân lên hiệu quả của mình."
+      },
+      "tags": ["systems", "thinking", "patterns"],
+      "audio": "strategy_life_advanced_2_07.mp3"
+    },
+    {
+      "slug": "strategic-partnerships",
+      "keywords_en": ["Strategic Partnerships", "alliances", "collaboration", "mutual benefit", "networking"],
+      "keywords_vi": ["Quan Hệ Đối Tác Chiến Lược", "liên minh", "hợp tác", "lợi ích chung", "mạng lưới"],
+      "copy": {
+        "en": "I build strategic partnerships that amplify my capabilities. I create win-win collaborations, leveraging complementary strengths to achieve goals beyond individual capacity.",
+        "vi": "Tôi xây dựng quan hệ đối tác chiến lược khuếch đại năng lực của mình. Tôi tạo ra sự hợp tác đôi bên cùng có lợi, tận dụng các điểm mạnh bổ sung để đạt được mục tiêu vượt quá khả năng cá nhân."
+      },
+      "tags": ["partnerships", "collaboration", "strategy"],
+      "audio": "strategy_life_advanced_2_08.mp3"
+    },
+    {
+      "slug": "momentum-building",
+      "keywords_en": ["Momentum Building", "momentum", "progress", "acceleration", "compounding"],
+      "keywords_vi": ["Xây Dựng Động Lực", "động lực", "tiến bộ", "tăng tốc", "tích lũy"],
+      "copy": {
+        "en": "I master the art of building momentum, creating self-reinforcing cycles of success. Each achievement fuels the next, compounding my progress exponentially over time.",
+        "vi": "Tôi thành thạo nghệ thuật xây dựng động lực, tạo ra chu kỳ thành công tự củng cố. Mỗi thành tựu thúc đẩy thành tựu tiếp theo, tích lũy tiến bộ của tôi một cách mũi theo thời gian."
+      },
+      "tags": ["momentum", "progress", "growth"],
+      "audio": "strategy_life_advanced_2_09.mp3"
+    },
+    {
+      "slug": "strategic-timing",
+      "keywords_en": ["Strategic Timing", "timing", "opportunity", "patience", "decisive action"],
+      "keywords_vi": ["Thời Điểm Chiến Lược", "thời điểm", "cơ hội", "kiên nhẫn", "hành động quyết đoán"],
+      "copy": {
+        "en": "I excel at strategic timing, knowing when to act and when to wait. I recognize windows of opportunity, exercising patience and decisiveness in perfect balance.",
+        "vi": "Tôi xuất sắc trong việc nắm bắt thời điểm chiến lược, biết khi nào hành động và khi nào chờ đợi. Tôi nhận ra cửa sổ cơ hội, thực hành sự kiên nhẫn và quyết đoán trong sự cân bằng hoàn hảo."
+      },
+      "tags": ["timing", "opportunity", "patience"],
+      "audio": "strategy_life_advanced_2_10.mp3"
+    },
+    {
+      "slug": "strategic-learning",
+      "keywords_en": ["Strategic Learning", "learning", "knowledge acquisition", "skill development", "continuous improvement"],
+      "keywords_vi": ["Học Tập Chiến Lược", "học tập", "thu thập kiến thức", "phát triển kỹ năng", "cải tiến liên tục"],
+      "copy": {
+        "en": "I engage in strategic learning, acquiring knowledge that multiplies my effectiveness. I invest in high-leverage skills, turning learning into competitive advantage and lasting capability.",
+        "vi": "Tôi tham gia học tập chiến lược, thu thập kiến thức nhân lên hiệu quả của mình. Tôi đầu tư vào các kỹ năng có đòn bẩy cao, biến việc học thành lợi thế cạnh tranh và năng lực lâu dài."
+      },
+      "tags": ["learning", "development", "growth"],
+      "audio": "strategy_life_advanced_2_11.mp3"
+    },
+    {
+      "slug": "strategic-resilience",
+      "keywords_en": ["Strategic Resilience", "resilience", "recovery", "antifragility", "strength"],
+      "keywords_vi": ["Khả Năng Phục Hồi Chiến Lược", "khả năng phục hồi", "hồi phục", "phản mong manh", "sức mạnh"],
+      "copy": {
+        "en": "I cultivate strategic resilience that turns challenges into growth opportunities. I emerge stronger from setbacks, using adversity as fuel for development and transformation.",
+        "vi": "Tôi nuôi dưỡng khả năng phục hồi chiến lược biến thách thức thành cơ hội phát triển. Tôi trở nên mạnh mẽ hơn từ những thất bại, sử dụng nghịch cảnh làm nhiên liệu cho sự phát triển và chuyển đổi."
+      },
+      "tags": ["resilience", "strength", "growth"],
+      "audio": "strategy_life_advanced_2_12.mp3"
+    }
+  ],
+  "meta": {
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z",
+    "entry_count": 12,
+    "tier": "vip3",
+    "room_color": "#9b87f5"
+  }
+}
