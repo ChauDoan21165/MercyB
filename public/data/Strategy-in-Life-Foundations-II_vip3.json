@@ -1,0 +1,161 @@
+{
+  "tier": "VIP3 / VIP3",
+  "title": {
+    "en": "Strategy in Life - Foundations II",
+    "vi": "Chiến Lược Cuộc Sống - Nền Tảng II"
+  },
+  "content": {
+    "en": "Master the art of strategic thinking and decision-making. Learn to plan, execute, and win in life's most important battles.",
+    "vi": "Làm chủ nghệ thuật tư duy chiến lược và ra quyết định. Học cách lập kế hoạch, thực hiện và chiến thắng trong những trận chiến quan trọng nhất của cuộc đời."
+  },
+  "id": "strategy-in-life-foundations-ii_vip3",
+  "schema_id": "strategy-in-life-foundations-ii_vip3",
+  "name": "Strategy in Life - Foundations II",
+  "entries": [
+    {
+      "slug": "system-thinking",
+      "keywords_en": ["systems", "interconnections", "holistic", "feedback"],
+      "keywords_vi": ["hệ thống", "liên kết", "toàn diện", "phản hồi"],
+      "copy": {
+        "en": "System thinking sees life as networks, not isolated parts. A career setback may strengthen resilience; a delayed flight may spark a life-changing conversation. Map your life as a system: health, wealth, relationships, learning, purpose. Identify feedback loops—how does better sleep improve focus, which boosts income, which funds learning? Find bottlenecks: one weak link (stress, debt, toxic ties) can choke the whole. Optimize the system, not the symptom. Ask: 'What small change ripples everywhere?' A 15-minute daily walk improves mood, energy, creativity, and relationships. System thinkers don't fight fires—they redesign the wiring. Over time, this holistic lens turns complex problems into elegant solutions. You stop fixing and start engineering. Life becomes a machine that runs smoother with every strategic tweak.",
+        "vi": "Tư duy hệ thống nhìn cuộc sống như mạng lưới, không phải phần rời rạc. Thất bại nghề nghiệp có thể tăng cường khả năng phục hồi; chuyến bay trễ có thể khơi dậy cuộc trò chuyện thay đổi đời. Vẽ bản đồ cuộc sống như hệ thống: sức khỏe, tài chính, mối quan hệ, học tập, mục đích. Xác định vòng phản hồi—ngủ ngon hơn cải thiện tập trung thế nào, từ đó tăng thu nhập, rồi tài trợ học tập? Tìm nút thắt: một mắt xích yếu (căng thẳng, nợ, mối quan hệ độc hại) có thể bóp nghẹt toàn bộ. Tối ưu hệ thống, không phải triệu chứng. Hỏi: 'Thay đổi nhỏ nào lan tỏa khắp nơi?' Đi bộ 15 phút mỗi ngày cải thiện tâm trạng, năng lượng, sáng tạo và mối quan hệ. Người tư duy hệ thống không chữa cháy—họ thiết kế lại dây điện. Theo thời gian, lăng kính toàn diện biến vấn đề phức tạp thành giải pháp thanh lịch. Bạn ngừng sửa chữa và bắt đầu kỹ thuật. Cuộc sống trở thành cỗ máy chạy mượt hơn với mỗi tinh chỉnh chiến lược."
+      },
+      "tags": ["systems", "feedback", "holistic", "optimization"],
+      "audio": "strategy_life_vip3_13_en.mp3",
+      "essay_ref": "system-thinking_vip3_essay.txt"
+    },
+    {
+      "slug": "leverage-points",
+      "keywords_en": ["leverage", "impact", "efficiency", "multiplier"],
+      "keywords_vi": ["đòn bẩy", "tác động", "hiệu quả", "nhân tố"],
+      "copy": {
+        "en": "Leverage points are actions with outsized impact. A single habit—daily writing, public speaking, coding—can open doors for decades. Identify yours by asking: 'What activity gives 10x return on time?' Then protect it like oxygen. The strategic mind seeks multipliers: teach once, reach thousands; automate once, save years; invest once, compound forever. Use the 1% rule: improve one high-leverage skill by 1% weekly—after a year, you're 37% better. A writer who refines their voice weekly becomes magnetic. A leader who masters storytelling influences millions. Leverage turns effort into exponential growth. You don't work harder—you work smarter. Over time, a few high-leverage moves create results others spend lifetimes chasing. The game isn't about effort; it's about placement. Put your energy where the return is infinite.",
+        "vi": "Điểm đòn bẩy là hành động với tác động ngoại cỡ. Một thói quen duy nhất—viết hàng ngày, nói trước công chúng, lập trình—có thể mở cửa hàng thập kỷ. Xác định của bạn bằng cách hỏi: 'Hoạt động nào cho lợi tức 10x về thời gian?' Sau đó bảo vệ nó như oxy. Tâm trí chiến lược tìm nhân tố nhân: dạy một lần, tiếp cận hàng nghìn; tự động hóa một lần, tiết kiệm nhiều năm; đầu tư một lần, lãi kép mãi mãi. Dùng quy tắc 1%: cải thiện kỹ năng đòn bẩy cao 1% mỗi tuần—sau một năm, bạn tốt hơn 37%. Nhà văn tinh chỉnh giọng nói hàng tuần trở nên hấp dẫn. Nhà lãnh đạo làm chủ kể chuyện ảnh hưởng hàng triệu. Đòn bẩy biến nỗ lực thành tăng trưởng mũ. Bạn không làm việc chăm hơn—bạn làm thông minh hơn. Theo thời gian, vài nước đi đòn bẩy cao tạo kết quả người khác đuổi theo cả đời. Trò chơi không phải về nỗ lực; mà về vị trí. Đặt năng lượng nơi lợi tức vô hạn."
+      },
+      "tags": ["leverage", "efficiency", "multiplier", "optimization"],
+      "audio": "strategy_life_vip3_14_en.mp3",
+      "essay_ref": "leverage-points_vip3_essay.txt"
+    },
+    {
+      "slug": "timing",
+      "keywords_en": ["timing", "opportunity", "readiness", "momentum"],
+      "keywords_vi": ["thời điểm", "cơ hội", "sẵn sàng", "đà"],
+      "copy": {
+        "en": "Timing is invisible leverage. The same action at different times yields vastly different results. Launch a product too early, you bleed resources; too late, the market moves on. Marry too young, you outgrow each other; too late, you settle. Strategic timing requires three elements: readiness (your state), ripeness (market state), and rhythm (natural cycles). Study your own energy cycles—when are you sharpest? Most creative? Schedule high-stakes decisions then. Study market cycles—is this sector contracting or expanding? Move with the tide, not against it. Study life seasons—is this a time to build or consolidate? Push or rest? Great strategists feel the rhythm of systems and strike when all three align. You don't force doors—you arrive when they're unlocked. Patience becomes power. Over years, this sensitivity to timing transforms average moves into legendary ones. You become unstoppable not through force, but through flow.",
+        "vi": "Thời điểm là đòn bẩy vô hình. Cùng hành động ở thời điểm khác nhau cho kết quả rất khác. Ra mắt sản phẩm quá sớm, bạn chảy máu tài nguyên; quá muộn, thị trường chuyển đi. Kết hôn quá trẻ, bạn vượt qua nhau; quá muộn, bạn chấp nhận. Thời điểm chiến lược yêu cầu ba yếu tố: sẵn sàng (trạng thái của bạn), chín (trạng thái thị trường) và nhịp (chu kỳ tự nhiên). Nghiên cứu chu kỳ năng lượng của bạn—khi nào bạn sắc nhất? Sáng tạo nhất? Lên lịch quyết định quan trọng khi đó. Nghiên cứu chu kỳ thị trường—lĩnh vực này co hay mở? Di chuyển theo thủy triều, không chống lại. Nghiên cứu mùa cuộc sống—đây là lúc xây hay củng cố? Đẩy hay nghỉ? Nhà chiến lược vĩ đại cảm nhận nhịp của hệ thống và tấn công khi cả ba sắp hàng. Bạn không ép cửa—bạn đến khi chúng mở. Kiên nhẫn trở thành sức mạnh. Qua nhiều năm, độ nhạy thời điểm biến nước đi trung bình thành huyền thoại. Bạn trở nên không ngừng không qua lực, mà qua dòng chảy."
+      },
+      "tags": ["timing", "opportunity", "readiness", "flow"],
+      "audio": "strategy_life_vip3_15_en.mp3",
+      "essay_ref": "timing_vip3_essay.txt"
+    },
+    {
+      "slug": "resource-allocation",
+      "keywords_en": ["resources", "allocation", "priorities", "investment"],
+      "keywords_vi": ["tài nguyên", "phân bổ", "ưu tiên", "đầu tư"],
+      "copy": {
+        "en": "Your life is a portfolio of finite resources: time, energy, money, attention, social capital. Winners allocate ruthlessly. Losers spread thin. Track your resource flow monthly: where did 100 hours go? $5,000? Most will be shocked—random browsing, status purchases, toxic people. Strategic allocation means saying no to 99% to say yes to the 1% that compounds. Invest 80% of effort in your top skill, not weaknesses. Invest money in learning, not comfort. Invest social capital connecting high-performers, not maintaining mediocre ties. Every yes to one thing is a no to another. Choose with violence. Ask: 'Will this matter in 10 years?' If not, it's a distraction. Create a 'hell yes or no' filter for opportunities. This focus is painful at first—you'll disappoint people. But over years, concentrated allocation builds empires while diversified losers stay stuck. You don't win by doing everything—you win by doing the right thing relentlessly.",
+        "vi": "Cuộc sống của bạn là danh mục đầu tư tài nguyên hữu hạn: thời gian, năng lượng, tiền, chú ý, vốn xã hội. Người thắng phân bổ tàn nhẫn. Người thua dàn mỏng. Theo dõi dòng tài nguyên hàng tháng: 100 giờ đi đâu? 5.000$? Hầu hết sẽ sốc—lướt ngẫu nhiên, mua địa vị, người độc hại. Phân bổ chiến lược nghĩa là nói không với 99% để nói có với 1% lãi kép. Đầu tư 80% nỗ lực vào kỹ năng hàng đầu, không phải điểm yếu. Đầu tư tiền vào học, không phải thoải mái. Đầu tư vốn xã hội kết nối người có hiệu suất cao, không phải duy trì mối quan hệ tầm thường. Mỗi có cho một thứ là không cho cái khác. Chọn bằng bạo lực. Hỏi: 'Điều này có quan trọng trong 10 năm?' Nếu không, đó là sao nhãng. Tạo bộ lọc 'địa ngục có hoặc không' cho cơ hội. Sự tập trung này đau đớn lúc đầu—bạn sẽ làm người thất vọng. Nhưng qua nhiều năm, phân bổ tập trung xây đế chế trong khi kẻ thua đa dạng hóa mắc kẹt. Bạn không thắng bằng làm mọi thứ—bạn thắng bằng làm đúng thứ không ngừng."
+      },
+      "tags": ["resources", "allocation", "focus", "priorities"],
+      "audio": "strategy_life_vip3_16_en.mp3",
+      "essay_ref": "resource-allocation_vip3_essay.txt"
+    },
+    {
+      "slug": "game-theory",
+      "keywords_en": ["game theory", "strategy", "cooperation", "competition"],
+      "keywords_vi": ["lý thuyết trò chơi", "chiến lược", "hợp tác", "cạnh tranh"],
+      "copy": {
+        "en": "Life is a multi-player game where every action affects others' moves. Game theory teaches: cooperate with cooperators, punish defectors immediately. In relationships, reward good behavior fast, ignore bad behavior (don't reward with attention). In business, collaborate openly but keep leverage hidden—trust is good, verification is better. Study the iterated prisoner's dilemma: short-term selfishness loses; tit-for-tat with forgiveness wins. When someone betrays once, test them. Twice? Cut ties. Play long games with long-term thinkers. Avoid zero-sum thinkers who believe 'I win, you lose.' Seek positive-sum players who create mutual value. Your reputation is your most valuable game asset—once lost, nearly impossible to rebuild. Signal trustworthiness early: deliver more than promised, admit mistakes fast. Over years, the best players congregate around you. Life's biggest wins come from playing infinite games with other infinite players. The goal isn't to beat others—it's to keep playing with those who elevate the game.",
+        "vi": "Cuộc sống là trò chơi nhiều người chơi nơi mọi hành động ảnh hưởng nước đi của người khác. Lý thuyết trò chơi dạy: hợp tác với người hợp tác, trừng phạt kẻ phản bội ngay. Trong mối quan hệ, thưởng hành vi tốt nhanh, bỏ qua hành vi xấu (đừng thưởng bằng chú ý). Trong kinh doanh, hợp tác công khai nhưng giữ đòn bẩy ẩn—tin tốt, xác minh tốt hơn. Nghiên cứu tù nhân lặp lại: ích kỷ ngắn hạn thua; tương ứng với tha thứ thắng. Khi ai đó phản bội một lần, thử nghiệm họ. Hai lần? Cắt quan hệ. Chơi trò chơi dài với người suy nghĩ dài hạn. Tránh người suy nghĩ tổng bằng không tin 'Tôi thắng, bạn thua.' Tìm người chơi tổng dương tạo giá trị chung. Danh tiếng là tài sản trò chơi có giá trị nhất—một khi mất, gần như không thể xây lại. Báo hiệu đáng tin sớm: giao nhiều hơn hứa, thừa nhận lỗi nhanh. Qua nhiều năm, người chơi tốt nhất tụ tập quanh bạn. Chiến thắng lớn nhất cuộc đời đến từ chơi trò chơi vô hạn với người chơi vô hạn khác. Mục tiêu không phải đánh bại người khác—mà tiếp tục chơi với những người nâng tầm trò chơi."
+      },
+      "tags": ["game-theory", "cooperation", "reputation", "long-term"],
+      "audio": "strategy_life_vip3_17_en.mp3",
+      "essay_ref": "game-theory_vip3_essay.txt"
+    },
+    {
+      "slug": "competitive-advantage",
+      "keywords_en": ["advantage", "uniqueness", "differentiation", "strength"],
+      "keywords_vi": ["lợi thế", "độc đáo", "khác biệt", "sức mạnh"],
+      "copy": {
+        "en": "Competitive advantage is what you do better than others can copy. Not talent—those are temporary. Look for intersections: unique skill combos others don't have. A coder who writes well. A therapist who understands business. A marketer with philosophy depth. Your edge lives at crossroads. Identify yours: list 3 skills you're top 10% in. Now combine them—you're likely top 1% in that intersection. Double down there. Protect advantages through constant upgrading: read 2x your competitors, practice 2x, reflect 2x. Build a moat: reputation, rare skills, exclusive networks, proprietary systems. Make yourself irreplaceable in narrow niches before expanding. The strategic error is trying to compete everywhere. You can't. You win by owning one tiny hill so completely that everyone else gives up. Then you take another hill. Over decades, you control the mountains. Competitive advantage isn't what you're born with—it's what you engineer through strategic positioning and relentless refinement.",
+        "vi": "Lợi thế cạnh tranh là điều bạn làm tốt hơn người khác có thể sao. Không phải tài năng—chúng tạm thời. Tìm giao điểm: kết hợp kỹ năng độc đáo người khác không có. Lập trình viên viết tốt. Nhà trị liệu hiểu kinh doanh. Marketer với độ sâu triết học. Lợi thế của bạn sống ở ngã tư. Xác định của bạn: liệt kê 3 kỹ năng bạn top 10%. Bây giờ kết hợp—bạn có thể top 1% ở giao điểm đó. Tăng gấp đôi ở đó. Bảo vệ lợi thế qua nâng cấp liên tục: đọc 2x đối thủ, thực hành 2x, phản ánh 2x. Xây hào: danh tiếng, kỹ năng hiếm, mạng độc quyền, hệ thống độc quyền. Làm bản thân không thể thay thế ở ngách hẹp trước khi mở rộng. Lỗi chiến lược là cố cạnh tranh khắp nơi. Bạn không thể. Bạn thắng bằng sở hữu một đồi nhỏ hoàn toàn đến mức mọi người khác bỏ cuộc. Sau đó bạn lấy đồi khác. Qua thập kỷ, bạn kiểm soát núi. Lợi thế cạnh tranh không phải cái bạn sinh ra—mà cái bạn kỹ thuật qua định vị chiến lược và tinh chỉnh không ngừng."
+      },
+      "tags": ["advantage", "differentiation", "positioning", "mastery"],
+      "audio": "strategy_life_vip3_18_en.mp3",
+      "essay_ref": "competitive-advantage_vip3_essay.txt"
+    },
+    {
+      "slug": "decision-making-frameworks",
+      "keywords_en": ["decisions", "frameworks", "clarity", "process"],
+      "keywords_vi": ["quyết định", "khung", "rõ ràng", "quy trình"],
+      "copy": {
+        "en": "Great strategists don't make better decisions—they use better frameworks. Build a decision toolkit: 1) Reversible vs. irreversible decisions: move fast on reversible ones, slow on irreversible. 2) Second-order thinking: ask 'and then what?' three times. 3) Pre-mortems: before acting, imagine it failed—why? Fix that. 4) Regret minimization: at 80, which choice would you regret not taking? 5) Expected value: multiply probability by outcome—bet on high EV, not certainty. Use forcing functions: set decision deadlines to avoid analysis paralysis. Create decision journals: log choices, predictions, outcomes—review quarterly to calibrate your judgment. Over time, you'll recognize your biases (confirmation bias, sunk cost fallacy, recency bias) and correct them. Decision-making is a trainable skill. The master strategist has 20 mental models ready for any situation. You don't wing it—you deploy proven frameworks at speed. Life becomes a series of high-quality decisions that compound into extraordinary outcomes.",
+        "vi": "Nhà chiến lược vĩ đại không ra quyết định tốt hơn—họ dùng khung tốt hơn. Xây bộ công cụ quyết định: 1) Quyết định thuận nghịch so với không thuận nghịch: di chuyển nhanh về thuận nghịch, chậm về không thuận nghịch. 2) Tư duy thứ tự hai: hỏi 'và sau đó gì?' ba lần. 3) Tiền tử vong: trước khi hành động, tưởng tượng nó thất bại—tại sao? Sửa đó. 4) Giảm thiểu hối tiếc: ở 80, lựa chọn nào bạn hối tiếc không lấy? 5) Giá trị kỳ vọng: nhân xác suất với kết quả—đặt cược EV cao, không phải chắc chắn. Dùng hàm ép buộc: đặt thời hạn quyết định để tránh tê liệt phân tích. Tạo tạp chí quyết định: ghi lựa chọn, dự đoán, kết quả—xem lại hàng quý để hiệu chỉnh phán đoán. Theo thời gian, bạn sẽ nhận ra thiên lệch (thiên lệch xác nhận, ngụy biện chi phí chìm, thiên lệch gần đây) và sửa chúng. Ra quyết định là kỹ năng có thể đào tạo. Nhà chiến lược bậc thầy có 20 mô hình tinh thần sẵn sàng cho mọi tình huống. Bạn không ngẫu hứng—bạn triển khai khung đã chứng minh với tốc độ. Cuộc sống trở thành chuỗi quyết định chất lượng cao lãi kép thành kết quả phi thường."
+      },
+      "tags": ["decisions", "frameworks", "judgment", "systems"],
+      "audio": "strategy_life_vip3_19_en.mp3",
+      "essay_ref": "decision-frameworks_vip3_essay.txt"
+    },
+    {
+      "slug": "resilience-and-adaptation",
+      "keywords_en": ["resilience", "adaptation", "flexibility", "growth"],
+      "keywords_vi": ["kiên cường", "thích nghi", "linh hoạt", "tăng trưởng"],
+      "copy": {
+        "en": "Strategic resilience isn't bouncing back—it's bouncing forward. Every setback contains leverage for the next level. Lost a job? Leverage: time to build what you always wanted. Relationship ended? Leverage: freedom to become who you're meant to be. Health crisis? Leverage: forced prioritization of what matters. The resilient strategist asks: 'How is this perfect?' not 'Why me?' Build antifragility: systems that gain from stress. Lift weights to build muscle. Face fears to build courage. Lose money to learn caution. The more you expose yourself to manageable stress, the stronger you become. Create backup systems for critical areas: multiple income streams, diverse skills, global network. When one fails, others carry you. Adaptation beats prediction. You can't predict the future, but you can build a self that thrives in any future. The ultimate strategy is becoming someone who wins regardless of circumstances. That person isn't born—they're forged through deliberately seeking challenges and extracting lessons from every fall.",
+        "vi": "Kiên cường chiến lược không phải nảy lại—mà nảy về phía trước. Mọi thất bại chứa đòn bẩy cho cấp tiếp theo. Mất việc? Đòn bẩy: thời gian xây những gì bạn luôn muốn. Mối quan hệ kết thúc? Đòn bẩy: tự do trở thành người bạn có nghĩa là. Khủng hoảng sức khỏe? Đòn bẩy: ưu tiên bắt buộc điều quan trọng. Nhà chiến lược kiên cường hỏi: 'Điều này hoàn hảo thế nào?' không phải 'Tại sao tôi?' Xây phản giòn: hệ thống đạt từ căng thẳng. Nâng tạ xây cơ. Đối mặt sợ hãi xây dũng khí. Mất tiền học thận trọng. Càng tiếp xúc căng thẳng quản lý, bạn càng mạnh. Tạo hệ thống dự phòng cho khu vực quan trọng: dòng thu nhập nhiều, kỹ năng đa dạng, mạng toàn cầu. Khi một thất bại, cái khác mang bạn. Thích nghi đánh bại dự đoán. Bạn không thể dự đoán tương lai, nhưng bạn có thể xây bản thân thịnh vượng ở bất kỳ tương lai nào. Chiến lược cuối cùng là trở thành người thắng bất kể hoàn cảnh. Người đó không sinh ra—họ rèn qua cố ý tìm thách thức và trích xuất bài học từ mọi ngã."
+      },
+      "tags": ["resilience", "antifragility", "adaptation", "growth"],
+      "audio": "strategy_life_vip3_20_en.mp3",
+      "essay_ref": "resilience-adaptation_vip3_essay.txt"
+    },
+    {
+      "slug": "network-effects",
+      "keywords_en": ["network", "connections", "relationships", "influence"],
+      "keywords_vi": ["mạng", "kết nối", "mối quan hệ", "ảnh hưởng"],
+      "copy": {
+        "en": "Your network isn't who you know—it's who knows what you can do. Strategic networking builds value before asking for it. Contribute first: share insights, make introductions, solve problems. When you need help, the network activates. Quality over quantity: 10 deep relationships beat 1,000 shallow ones. Curate your network by proximity to your goals: want to write? Befriend writers. Want wealth? Hang with builders. Your income is the average of your 5 closest friends—choose wisely. Network in layers: Layer 1 (close allies, weekly contact), Layer 2 (strong contacts, monthly), Layer 3 (weak ties, yearly). Weak ties often provide the biggest opportunities—they bridge different worlds. Maintain your network: send quarterly updates, celebrate others' wins, remember birthdays. Over time, your network becomes your net worth. The strategic networker plants 100 seeds knowing 5 will bloom. You don't chase opportunities—they flow through relationships you've nurtured for years. The greatest career moves happen through warm introductions, not cold emails.",
+        "vi": "Mạng của bạn không phải người bạn biết—mà người biết bạn có thể làm gì. Xây mạng chiến lược xây giá trị trước khi yêu cầu. Đóng góp trước: chia sẻ hiểu biết, giới thiệu, giải quyết vấn đề. Khi bạn cần giúp, mạng kích hoạt. Chất lượng hơn số lượng: 10 mối quan hệ sâu đánh bại 1.000 nông. Quản lý mạng bằng gần với mục tiêu: muốn viết? Kết bạn nhà văn. Muốn giàu? Đi với người xây. Thu nhập của bạn là trung bình 5 bạn gần nhất—chọn khôn ngoan. Mạng theo lớp: Lớp 1 (đồng minh gần, liên lạc hàng tuần), Lớp 2 (liên lạc mạnh, hàng tháng), Lớp 3 (mối quan hệ yếu, hàng năm). Mối quan hệ yếu thường cung cấp cơ hội lớn nhất—chúng bắc cầu thế giới khác. Duy trì mạng: gửi cập nhật hàng quý, ăn mừng chiến thắng người khác, nhớ sinh nhật. Theo thời gian, mạng của bạn trở thành giá trị ròng. Người xây mạng chiến lược trồng 100 hạt biết 5 sẽ nở. Bạn không đuổi cơ hội—chúng chảy qua mối quan hệ bạn nuôi dưỡng nhiều năm. Nước đi nghề nghiệp vĩ đại nhất xảy ra qua giới thiệu ấm, không phải email lạnh."
+      },
+      "tags": ["network", "relationships", "social-capital", "connections"],
+      "audio": "strategy_life_vip3_21_en.mp3",
+      "essay_ref": "network-effects_vip3_essay.txt"
+    },
+    {
+      "slug": "long-term-thinking",
+      "keywords_en": ["long-term", "patience", "compound", "vision"],
+      "keywords_vi": ["dài hạn", "kiên nhẫn", "lãi kép", "tầm nhìn"],
+      "copy": {
+        "en": "Long-term thinking is the ultimate competitive advantage in a world optimizing for quarterly results. While others chase quick wins, you build compounding systems. The math is brutal: 1% daily improvement = 37x better in a year. 10 years? Unfathomable advantage. Start with a 10-year vision: where do you want to be? Work backward to today. Then ignore the vision and focus on daily systems: read 30 minutes, move 30 minutes, create 2 hours. The vision guides, but systems deliver. Delayed gratification is your secret weapon: skip the vacation to build skills, skip the car to invest, skip the party to create. Early sacrifice buys late freedom. Track leading indicators (input) not lagging indicators (output): hours practiced, not money earned; pages written, not books published. Trust that inputs compound into outputs. Long-term thinkers are calm in chaos because they're playing a different game. Short-term volatility is noise. Over decades, signal wins. You're not competing with others—you're becoming your 80-year-old self's hero.",
+        "vi": "Tư duy dài hạn là lợi thế cạnh tranh cuối cùng trong thế giới tối ưu cho kết quả hàng quý. Trong khi người khác đuổi chiến thắng nhanh, bạn xây hệ thống lãi kép. Toán tàn bạo: cải thiện 1% hàng ngày = tốt hơn 37x trong một năm. 10 năm? Lợi thế không thể hiểu. Bắt đầu với tầm nhìn 10 năm: bạn muốn ở đâu? Làm ngược về hôm nay. Sau đó bỏ qua tầm nhìn và tập trung hệ thống hàng ngày: đọc 30 phút, di chuyển 30 phút, tạo 2 giờ. Tầm nhìn hướng dẫn, nhưng hệ thống giao. Trì hoãn thỏa mãn là vũ khí bí mật: bỏ kỳ nghỉ xây kỹ năng, bỏ xe đầu tư, bỏ tiệc tạo. Hy sinh sớm mua tự do muộn. Theo dõi chỉ số dẫn (đầu vào) không phải chỉ số trễ (đầu ra): giờ thực hành, không phải tiền kiếm; trang viết, không phải sách xuất bản. Tin rằng đầu vào lãi kép thành đầu ra. Người suy nghĩ dài hạn bình tĩnh trong hỗn loạn vì họ chơi trò chơi khác. Biến động ngắn hạn là nhiễu. Qua thập kỷ, tín hiệu thắng. Bạn không cạnh tranh với người khác—bạn trở thành người hùng của bản thể 80 tuổi."
+      },
+      "tags": ["long-term", "compound", "patience", "systems"],
+      "audio": "strategy_life_vip3_22_en.mp3",
+      "essay_ref": "long-term-thinking_vip3_essay.txt"
+    },
+    {
+      "slug": "strategic-retreat",
+      "keywords_en": ["retreat", "rest", "reset", "strategic-pause"],
+      "keywords_vi": ["rút lui", "nghỉ", "đặt lại", "tạm dừng chiến lược"],
+      "copy": {
+        "en": "Strategic retreat is not failure—it's preparation for the next advance. Knowing when to stop pushing is as critical as knowing when to charge. Burnout is a tactical error, not a badge of honor. The strategic life includes deliberate rest: daily (8-hour sleep), weekly (one full rest day), quarterly (3-day retreat), annually (2-week reset). Use retreats to audit: What's working? What's draining energy? What needs to die? Cut ruthlessly. The best strategists quit often—bad projects, toxic people, dying markets. They reallocate fast. Rest isn't laziness—it's sharpening the blade. A rested mind sees opportunities an exhausted one misses. Schedule white space: blocks of nothing. Let ideas simmer. The breakthrough often comes in the pause, not the push. Marathon runners don't sprint the whole race. Life is long. Pace yourself. Strategic retreat recharges, recalibrates, and repositions you for the next surge. Over a lifetime, those who rest strategically outperform those who grind mindlessly. Wisdom knows when to press and when to pause.",
+        "vi": "Rút lui chiến lược không phải thất bại—mà chuẩn bị cho tiến bước tiếp theo. Biết khi nào ngừng đẩy quan trọng như biết khi nào xung phong. Kiệt sức là lỗi chiến thuật, không phải huy hiệu danh dự. Cuộc sống chiến lược bao gồm nghỉ cố ý: hàng ngày (ngủ 8 giờ), hàng tuần (một ngày nghỉ đầy), hàng quý (rút lui 3 ngày), hàng năm (đặt lại 2 tuần). Dùng rút lui để kiểm toán: Cái gì hoạt động? Cái gì thoát năng lượng? Cái gì cần chết? Cắt tàn nhẫn. Nhà chiến lược tốt nhất bỏ thường xuyên—dự án xấu, người độc hại, thị trường chết. Họ phân bổ lại nhanh. Nghỉ không phải lười—mà mài lưỡi dao. Tâm trí nghỉ thấy cơ hội tâm trí kiệt bỏ lỡ. Lên lịch không gian trắng: khối không gì. Để ý tưởng om. Đột phá thường đến trong tạm dừng, không phải đẩy. Người chạy marathon không chạy nước rút cả cuộc đua. Cuộc sống dài. Tự nhịp. Rút lui chiến lược sạc lại, hiệu chỉnh lại và định vị lại bạn cho đợt tăng tiếp. Qua cả đời, những người nghỉ chiến lược vượt trội những người nghiền vô tâm. Trí tuệ biết khi nào ép và khi nào tạm dừng."
+      },
+      "tags": ["retreat", "rest", "recovery", "strategic-pause"],
+      "audio": "strategy_life_vip3_23_en.mp3",
+      "essay_ref": "strategic-retreat_vip3_essay.txt"
+    },
+    {
+      "slug": "legacy-planning",
+      "keywords_en": ["legacy", "impact", "contribution", "meaning"],
+      "keywords_vi": ["di sản", "tác động", "đóng góp", "ý nghĩa"],
+      "copy": {
+        "en": "Strategic legacy planning isn't about monuments—it's about ripples. What will outlive you? Ideas, systems, people you've influenced. The ultimate strategy is building something that compounds after you're gone. Start asking legacy questions now: What do I want to be remembered for? What problem am I here to solve? Whose life will be better because I existed? Then align daily actions to those answers. Legacy lives in layers: 1) Personal: the memories you leave loved ones. 2) Professional: the work that continues. 3) Cultural: the ideas that spread. Invest in all three. Mentor someone—your wisdom lives in them. Create content—your ideas outlive you. Build systems—they run without you. Document your principles so others can learn. The greatest strategists plant trees they'll never sit under. They think in generations, not quarters. Legacy planning removes ego from the equation: it's not about you being remembered—it's about others being lifted. When you shift from 'How do I win?' to 'How do we all win?', you've unlocked the final strategy. Your life becomes a gift that keeps giving, long after you've moved on.",
+        "vi": "Lập kế hoạch di sản chiến lược không phải về tượng đài—mà về gợn sóng. Cái gì sẽ sống lâu hơn bạn? Ý tưởng, hệ thống, người bạn đã ảnh hưởng. Chiến lược cuối cùng là xây thứ gì đó lãi kép sau khi bạn đi. Bắt đầu hỏi câu hỏi di sản bây giờ: Tôi muốn được nhớ vì điều gì? Vấn đề nào tôi ở đây để giải quyết? Cuộc sống của ai sẽ tốt hơn vì tôi tồn tại? Sau đó sắp hàng hành động hàng ngày với câu trả lời đó. Di sản sống theo lớp: 1) Cá nhân: ký ức bạn để lại người thân. 2) Nghề nghiệp: công việc tiếp tục. 3) Văn hóa: ý tưởng lan truyền. Đầu tư vào cả ba. Cố vấn ai đó—trí tuệ của bạn sống trong họ. Tạo nội dung—ý tưởng của bạn sống lâu hơn bạn. Xây hệ thống—chúng chạy không có bạn. Ghi lại nguyên tắc để người khác học. Nhà chiến lược vĩ đại nhất trồng cây họ sẽ không bao giờ ngồi dưới. Họ nghĩ theo thế hệ, không phải quý. Lập kế hoạch di sản loại bỏ cái tôi khỏi phương trình: không phải về bạn được nhớ—mà về người khác được nâng lên. Khi bạn chuyển từ 'Làm sao tôi thắng?' sang 'Làm sao chúng ta tất cả thắng?', bạn đã mở khóa chiến lược cuối. Cuộc sống của bạn trở thành món quà tiếp tục tặng, rất lâu sau khi bạn đã đi tiếp."
+      },
+      "tags": ["legacy", "impact", "contribution", "meaning"],
+      "audio": "strategy_life_vip3_24_en.mp3",
+      "essay_ref": "legacy-planning_vip3_essay.txt"
+    }
+  ],
+  "background": "#E8F4F8"
+}
