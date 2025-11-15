@@ -62,7 +62,11 @@ export const AudioPlayer = ({
     // Only reset and set src when the source changed
     if (!isSameSource) {
       audio.pause();
-      audio.src = audioPath;
+      // Add cache-busting parameter to force reload of updated audio
+      const cacheBustedPath = audioPath.includes('?') 
+        ? `${audioPath}&v=${Date.now()}` 
+        : `${audioPath}?v=${Date.now()}`;
+      audio.src = cacheBustedPath;
       // Ensure a fresh load only when switching tracks
       audio.load();
       setCurrentTime(0);
