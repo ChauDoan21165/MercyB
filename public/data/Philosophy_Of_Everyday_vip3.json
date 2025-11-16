@@ -75,17 +75,284 @@
 "audio": {"en": "authentic_self_vip3.mp3"}
 }
 },
-"ui_triggers": {
-"essay_offer": {
-"enabled": true,
-"criteria": {
-"min_entries_total": 1,
-"min_distinct_buckets": 1
-},
-"behavior": {
-"mode": "chip_suggest",
-"pin_to_canvas": true
-}
-}
-}
+  "highlighted_words": [
+    {
+      "en": ["harmony", "harmonious"],
+      "vi": ["hòa điệu", "hoa dieu"],
+      "color": "#B8D4F1"
+    },
+    {
+      "en": ["awareness", "aware"],
+      "vi": ["tỉnh thức", "tinh thuc", "nhận thức", "nhan thuc"],
+      "color": "#90EE90"
+    },
+    {
+      "en": ["pain", "painful"],
+      "vi": ["nỗi đau", "noi dau", "đau đớn", "dau don"],
+      "color": "#FFD8E6"
+    },
+    {
+      "en": ["beauty", "beautiful"],
+      "vi": ["vẻ đẹp", "ve dep", "đẹp"],
+      "color": "#FFF8D8"
+    },
+    {
+      "en": ["integration", "integrate"],
+      "vi": ["hòa hợp", "hoa hop", "hợp nhất", "hop nhat"],
+      "color": "#C8E6F5"
+    },
+    {
+      "en": ["integrity"],
+      "vi": ["chính trực", "chinh truc"],
+      "color": "#E0D8F5"
+    },
+    {
+      "en": ["balance", "balanced"],
+      "vi": ["cân bằng", "can bang"],
+      "color": "#C4EAEA"
+    },
+    {
+      "en": ["devotion"],
+      "vi": ["dâng hiến", "dang hien"],
+      "color": "#FFE0ED"
+    },
+    {
+      "en": ["practice"],
+      "vi": ["thực hành", "thuc hanh"],
+      "color": "#D8F0E6"
+    },
+    {
+      "en": ["presence", "present"],
+      "vi": ["hiện diện", "hien dien"],
+      "color": "#A8E6F5"
+    },
+    {
+      "en": ["suffering", "suffer"],
+      "vi": ["đau khổ", "dau kho"],
+      "color": "#FFE0EC"
+    },
+    {
+      "en": ["signal"],
+      "vi": ["tín hiệu", "tin hieu"],
+      "color": "#D8F0F5"
+    },
+    {
+      "en": ["attached", "attachment"],
+      "vi": ["bám chặt", "bam chat"],
+      "color": "#FFD8B8"
+    },
+    {
+      "en": ["resist", "resistance"],
+      "vi": ["chống cự", "chong cu"],
+      "color": "#FFC4C4"
+    },
+    {
+      "en": ["discomfort", "uncomfortable"],
+      "vi": ["khó chịu", "kho chiu"],
+      "color": "#FFE0D8"
+    },
+    {
+      "en": ["fatigue", "tired"],
+      "vi": ["mệt mỏi", "met moi"],
+      "color": "#FFD8E0"
+    },
+    {
+      "en": ["boundaries", "boundary"],
+      "vi": ["ranh giới", "ranh gioi"],
+      "color": "#D9C8F0"
+    },
+    {
+      "en": ["jealousy", "jealous"],
+      "vi": ["ghen tị", "ghen ti"],
+      "color": "#FFDAB9"
+    },
+    {
+      "en": ["worth", "worthy"],
+      "vi": ["giá trị", "gia tri"],
+      "color": "#F0E68C"
+    },
+    {
+      "en": ["loneliness", "lonely"],
+      "vi": ["cô đơn", "co don"],
+      "color": "#E6E6FA"
+    },
+    {
+      "en": ["understanding", "understand"],
+      "vi": ["hiểu biết", "hieu biet"],
+      "color": "#B0E0E6"
+    },
+    {
+      "en": ["ordinary joy", "simple joy"],
+      "vi": ["niềm vui bình thường", "niem vui binh thuong", "niềm vui đơn giản"],
+      "color": "#FFE0CC"
+    },
+    {
+      "en": ["gratitude", "grateful"],
+      "vi": ["biết ơn", "biet on", "lòng biết ơn"],
+      "color": "#FFF4D8"
+    },
+    {
+      "en": ["intensity", "intense"],
+      "vi": ["cảm xúc mạnh", "cam xuc manh"],
+      "color": "#FFB6C1"
+    },
+    {
+      "en": ["distraction"],
+      "vi": ["xao lãng", "xao lang"],
+      "color": "#D8BFD8"
+    },
+    {
+      "en": ["doorway", "door"],
+      "vi": ["cánh cửa", "canh cua"],
+      "color": "#98FB98"
+    },
+    {
+      "en": ["pleasure"],
+      "vi": ["niềm vui", "niem vui"],
+      "color": "#FFEC8B"
+    },
+    {
+      "en": ["concept"],
+      "vi": ["khái niệm", "khai niem"],
+      "color": "#B0C4DE"
+    },
+    {
+      "en": ["experience"],
+      "vi": ["cảm giác", "cam giac", "trải nghiệm", "trai nghiem"],
+      "color": "#DDA0DD"
+    },
+    {
+      "en": ["gentle", "gentleness"],
+      "vi": ["dịu dàng", "diu dang"],
+      "color": "#F0F8FF"
+    },
+    {
+      "en": ["candles", "candle"],
+      "vi": ["nến", "nen", "ngọn nến", "ngon nen"],
+      "color": "#FAFAD2"
+    },
+    {
+      "en": ["light"],
+      "vi": ["ánh sáng", "anh sang"],
+      "color": "#FFFACD"
+    },
+    {
+      "en": ["freedom", "free"],
+      "vi": ["tự do", "tu do"],
+      "color": "#E0D8F5"
+    },
+    {
+      "en": ["limits", "limit"],
+      "vi": ["giới hạn", "gioi han"],
+      "color": "#C8E6F5"
+    },
+    {
+      "en": ["drifting", "drift"],
+      "vi": ["trôi dạt", "troi dat"],
+      "color": "#B0E0E6"
+    },
+    {
+      "en": ["choice", "choose"],
+      "vi": ["lựa chọn", "lua chon", "chọn"],
+      "color": "#DDA0DD"
+    },
+    {
+      "en": ["promise"],
+      "vi": ["lời hứa", "loihua"],
+      "color": "#FFE4E1"
+    },
+    {
+      "en": ["responsibilities", "responsibility"],
+      "vi": ["trách nhiệm", "trach nhiem"],
+      "color": "#D9C8F0"
+    },
+    {
+      "en": ["honesty", "honest"],
+      "vi": ["trung thực", "trung thuc"],
+      "color": "#A8F0A8"
+    },
+    {
+      "en": ["love"],
+      "vi": ["tình yêu", "tinh yeu"],
+      "color": "#FFE0ED"
+    },
+    {
+      "en": ["growth", "grow"],
+      "vi": ["trưởng thành", "truong thanh"],
+      "color": "#90EE90"
+    },
+    {
+      "en": ["peace", "peaceful"],
+      "vi": ["bình an", "binh an"],
+      "color": "#C4EAEA"
+    },
+    {
+      "en": ["masks", "mask"],
+      "vi": ["mặt nạ", "mat na"],
+      "color": "#E6E6FA"
+    },
+    {
+      "en": ["roles", "role"],
+      "vi": ["vai diễn", "vai dien", "vai"],
+      "color": "#DEB887"
+    },
+    {
+      "en": ["survival", "survive"],
+      "vi": ["sinh tồn", "sinh ton"],
+      "color": "#F0E68C"
+    },
+    {
+      "en": ["ache"],
+      "vi": ["nhức", "nhuc"],
+      "color": "#FFD8E6"
+    },
+    {
+      "en": ["authenticity", "authentic"],
+      "vi": ["chân thật", "chan that"],
+      "color": "#98FB98"
+    },
+    {
+      "en": ["alignment", "align"],
+      "vi": ["nhất quán", "nhat quan"],
+      "color": "#B8D4F1"
+    },
+    {
+      "en": ["approval", "approve"],
+      "vi": ["công nhận", "cong nhan"],
+      "color": "#FFDAB9"
+    },
+    {
+      "en": ["coherent", "coherence"],
+      "vi": ["nhất quán", "nhat quan"],
+      "color": "#D8F0F5"
+    },
+    {
+      "en": ["thoughts", "thinking"],
+      "vi": ["suy nghĩ", "suy nghi"],
+      "color": "#E0D8F5"
+    },
+    {
+      "en": ["feelings", "feeling", "emotion"],
+      "vi": ["cảm xúc", "cam xuc"],
+      "color": "#FFB6C1"
+    },
+    {
+      "en": ["actions", "action"],
+      "vi": ["hành động", "hanh dong"],
+      "color": "#A8E6F5"
+    }
+  ],
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 1,
+        "min_distinct_buckets": 1
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "pin_to_canvas": true
+      }
+    }
+  }
 }
