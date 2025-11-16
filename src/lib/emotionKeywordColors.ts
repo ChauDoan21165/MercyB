@@ -117,6 +117,14 @@ export const emotionKeywordGroups: EmotionKeywordGroup[] = [
 ];
 
 /**
+ * Normalize text for consistent matching across different Unicode representations
+ * Vietnamese can use composed (NFC) or decomposed (NFD) forms
+ */
+const normalizeText = (text: string): string => {
+  return text.toLowerCase().trim().normalize('NFC');
+};
+
+/**
  * Build a flat map of all keywords to their colors
  * This allows fast O(1) lookup
  */
@@ -126,14 +134,16 @@ export const buildEmotionColorMap = (): Map<string, string> => {
   emotionKeywordGroups.forEach(group => {
     // Add English keywords
     group.en.forEach(keyword => {
-      const normalized = keyword.toLowerCase().trim();
+      const normalized = normalizeText(keyword);
       colorMap.set(normalized, group.color);
     });
     
-    // Add Vietnamese keywords
+    // Add Vietnamese keywords with both NFC and NFD normalization
     group.vi.forEach(keyword => {
-      const normalized = keyword.toLowerCase().trim();
-      colorMap.set(normalized, group.color);
+      const normalizedNFC = normalizeText(keyword);
+      const normalizedNFD = keyword.toLowerCase().trim().normalize('NFD');
+      colorMap.set(normalizedNFC, group.color);
+      colorMap.set(normalizedNFD, group.color);
     });
   });
   
@@ -148,8 +158,9 @@ const emotionColorMap = buildEmotionColorMap();
  * Returns the emotion-based color or null if not found
  */
 export const getEmotionKeywordColor = (keyword: string): string | null => {
-  const normalized = keyword.toLowerCase().trim();
-  return emotionColorMap.get(normalized) || null;
+  const normalizedNFC = normalizeText(keyword);
+  const normalizedNFD = keyword.toLowerCase().trim().normalize('NFD');
+  return emotionColorMap.get(normalizedNFC) || emotionColorMap.get(normalizedNFD) || null;
 };
 
 /**
