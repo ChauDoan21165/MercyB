@@ -43,6 +43,14 @@ const tierInfo: Record<UserTier, {
     },
     color: "bg-gradient-to-br from-yellow-500 via-yellow-700 to-yellow-900"
   },
+  vip3_ii: {
+    name: { en: "VIP3 II", vi: "VIP3 II" },
+    benefits: {
+      en: ["English Specialization Mastery", "Advanced Grammar Rooms", "Academic English", "All VIP3 benefits", "🤖 AI Content"],
+      vi: ["Làm Chủ Chuyên Ngành Tiếng Anh", "Phòng Ngữ Pháp Nâng Cao", "Tiếng Anh Học Thuật", "Tất cả quyền lợi VIP3", "🤖 Nội dung AI"]
+    },
+    color: "bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-700"
+  },
   vip4: {
     name: { en: "VIP4 CareerZ", vi: "VIP4 Nghề Nghiệp" },
     benefits: {
@@ -54,10 +62,11 @@ const tierInfo: Record<UserTier, {
 };
 
 const upgradePaths: Record<UserTier, UserTier[]> = {
-  free: ["vip1", "vip2", "vip3"],
-  vip1: ["vip2", "vip3"],
-  vip2: ["vip3"],
-  vip3: [],
+  free: ["vip1", "vip2", "vip3", "vip3_ii"],
+  vip1: ["vip2", "vip3", "vip3_ii"],
+  vip2: ["vip3", "vip3_ii"],
+  vip3: ["vip3_ii"],
+  vip3_ii: [],
   vip4: []
 };
 
