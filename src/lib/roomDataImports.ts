@@ -181,6 +181,20 @@ export const roomDataMap: Record<string, RoomData> = {
       "tier": "vip3",
       "hasData": true
   },
+  "calm-body-calm-money-vip3-sub1": {
+      "id": "calm-body-calm-money-vip3-sub1",
+      "nameEn": "Calm Body, Calm Money",
+      "nameVi": "Thân Thể Bình An, Tiền Bạc Yên Tâm",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "calm-confident-sexual-health-vip3-sub3-sex": {
+      "id": "calm-confident-sexual-health-vip3-sub3-sex",
+      "nameEn": "Calm Confident Sexual Health",
+      "nameVi": "Sức Khỏe Tình Dục Bình Tĩnh & Tự Tin",
+      "tier": "vip3",
+      "hasData": true
+  },
   "career-community-vip4": {
       "id": "career-community-vip4",
       "nameEn": "Career Community",
@@ -223,6 +237,13 @@ export const roomDataMap: Record<string, RoomData> = {
       "tier": "vip3",
       "hasData": true
   },
+  "diverse-desires-&-belonging-vip3-sub5-sex": {
+      "id": "diverse-desires-&-belonging-vip3-sub5-sex",
+      "nameEn": "Diverse Desires & Belonging",
+      "nameVi": "Khao Khát Đa Dạng & Thuộc Về",
+      "tier": "vip3",
+      "hasData": true
+  },
   "eating-disorder-support-free": {
       "id": "eating-disorder-support-free",
       "nameEn": "Eating Disorder Support",
@@ -248,6 +269,13 @@ export const roomDataMap: Record<string, RoomData> = {
       "id": "eating-disorder-support-vip3",
       "nameEn": "Eating Disorder Support",
       "nameVi": "Hỗ Trợ Rối Loạn Ăn Uống",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "erotic-wisdom-for-life-vip3-sub-6-sex": {
+      "id": "erotic-wisdom-for-life-vip3-sub-6-sex",
+      "nameEn": "Erotic Wisdom for Life",
+      "nameVi": "Trí Tuệ Gợi Cảm Trọn Đời",
       "tier": "vip3",
       "hasData": true
   },
@@ -346,6 +374,13 @@ export const roomDataMap: Record<string, RoomData> = {
       "id": "grammar-native-logic-vip3-ii",
       "nameEn": "Grammar: Native Logic II",
       "nameVi": "Ngữ Pháp: Logic Bản Ngữ II",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "growing-bigger-when-ready-vip3-5-finance": {
+      "id": "growing-bigger-when-ready-vip3-5-finance",
+      "nameEn": "Protecting What Matters",
+      "nameVi": "Bảo Vệ Điều Quan Trọng",
       "tier": "vip3",
       "hasData": true
   },
@@ -622,11 +657,32 @@ export const roomDataMap: Record<string, RoomData> = {
       "tier": "vip3",
       "hasData": true
   },
+  "protecting-what-matters-vip3-4-finance": {
+      "id": "protecting-what-matters-vip3-4-finance",
+      "nameEn": "Protecting What Matters",
+      "nameVi": "Bảo Vệ Điều Quan Trọng",
+      "tier": "vip3",
+      "hasData": true
+  },
   "ptsd-support-free": {
       "id": "ptsd-support-free",
       "nameEn": "PTSD Support",
       "nameVi": "Hỗ Trợ Rối Loạn Căng Thẳng Sau Sang Chấn",
       "tier": "free",
+      "hasData": true
+  },
+  "quiet-growth-simple-investing-vip3-3-finance": {
+      "id": "quiet-growth-simple-investing-vip3-3-finance",
+      "nameEn": "Quiet Growth: Simple Investing",
+      "nameVi": "Tăng Trưởng Lặng Lẽ: Đầu Tư Đơn Giản",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "relational-intelligence-&-erotic-communication-vip3-sub2-sex": {
+      "id": "relational-intelligence-&-erotic-communication-vip3-sub2-sex",
+      "nameEn": "Relational Intelligence & Erotic Communication",
+      "nameVi": "Thông Minh Quan Hệ & Giao Tiếp Gợi Cảm",
+      "tier": "vip3",
       "hasData": true
   },
   "relationship-healing-free": {
@@ -641,6 +697,20 @@ export const roomDataMap: Record<string, RoomData> = {
       "nameEn": "Resilience and Adaptation",
       "nameVi": "Khả Năng Phục Hồi và Thích Nghi",
       "tier": "vip4",
+      "hasData": true
+  },
+  "sacred-body-curious-self-vip3-sub2-sex": {
+      "id": "sacred-body-curious-self-vip3-sub2-sex",
+      "nameEn": "Sacred Body, Curious Self",
+      "nameVi": "Thân Thể Linh Thiêng, Bản Ngã Tò Mò",
+      "tier": "vip3",
+      "hasData": true
+  },
+  "see-your-money-clearly-vip3-2-finance": {
+      "id": "see-your-money-clearly-vip3-2-finance",
+      "nameEn": "Money Basics You Should've Learned",
+      "nameVi": "Kiến Thức Tiền Bạc Nên Được Dạy",
+      "tier": "vip3",
       "hasData": true
   },
   "self-love-free": {
@@ -662,6 +732,13 @@ export const roomDataMap: Record<string, RoomData> = {
       "nameEn": "Sexuality & Curiosity",
       "nameVi": "Tính Dục & Sự Tò Mò",
       "tier": "free",
+      "hasData": true
+  },
+  "sexuality-curiosity-vip3-sub4": {
+      "id": "sexuality-curiosity-vip3-sub4",
+      "nameEn": "Sexual Health and Safety",
+      "nameVi": "Sức Khỏe và An Toàn Tình Dục",
+      "tier": "vip3",
       "hasData": true
   },
   "shadow-work-free": {
