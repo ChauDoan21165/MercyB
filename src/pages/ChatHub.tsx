@@ -525,6 +525,7 @@ const ChatHub = () => {
                 <HighlightedContent 
                   content={englishContent}
                   className="w-full"
+                  showShadowingReminder={!!(message.audioFile && audioUrl)}
                 />
                 
                 {/* Copy and Audio Player */}
@@ -561,6 +562,7 @@ const ChatHub = () => {
                 <HighlightedContent 
                   content={message.text}
                   className="w-full"
+                  showShadowingReminder={!!(message.audioFile && audioUrl)}
                 />
                 
                 {/* Copy and Audio Player */}
