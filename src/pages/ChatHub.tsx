@@ -845,8 +845,9 @@ const ChatHub = () => {
         </Card>
         
         {/* Main Chat Area */}
-        <Card className="p-4 shadow-soft bg-card border border-border">
-          <div className="space-y-3">
+        <Card className="relative p-4 shadow-soft bg-card border border-border">
+          <RoomBorderDecoration />
+          <div className="space-y-3 relative z-10">
             <ScrollArea className="h-[560px] pr-4" ref={mainScrollRef}>
               <WelcomeBack lastRoomId={progress.lastVisit} currentRoomId={roomId || ""} />
              
