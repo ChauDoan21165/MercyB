@@ -321,6 +321,13 @@ export const roomDataMap: Record<string, RoomData> = {
       "tier": "free",
       "hasData": true
   },
+  "grammar-accelerator-vip1": {
+      "id": "grammar-accelerator-vip1",
+      "nameEn": "Grammar Accelerator: Fast, Clear, Automatic",
+      "nameVi": "Tăng Tốc Ngữ Pháp: Nhanh, Rõ, Tự Động",
+      "tier": "vip1",
+      "hasData": true
+  },
   "know-yourself-deeply-vip4": {
       "id": "know-yourself-deeply-vip4",
       "nameEn": "Know Yourself Deeply",

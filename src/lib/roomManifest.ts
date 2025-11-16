@@ -50,6 +50,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "finance-glory-vip3": "data/Finance_Glory_vip3.json",
   "find-what-you-love-vip4": "data/Find_What_You_Love_vip4.json",
   "grief-healing-free": "data/Grief_Healing_free.json",
+  "grammar-accelerator-vip1": "data/grammar_accelerator_vip1.json",
   "know-yourself-deeply-vip4": "data/Know_Yourself_Deeply_vip4.json",
   "legacy-and-impact-vip4": "data/Legacy_and_Impact_vip4.json",
   "loneliness-comfort-free": "data/Loneliness_Comfort_free.json",
