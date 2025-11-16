@@ -328,6 +328,27 @@ export const roomDataMap: Record<string, RoomData> = {
       "tier": "vip1",
       "hasData": true
   },
+  "grammar-fluency-structure-vip2": {
+      "id": "grammar-fluency-structure-vip2",
+      "nameEn": "Grammar for Fluency & Structure",
+      "nameVi": "Ngữ Pháp Cho Độ Trôi Chảy & Cấu Trúc",
+      "tier": "vip2",
+      "hasData": true
+  },
+  "grammar-foundations-free": {
+      "id": "grammar-foundations-free",
+      "nameEn": "Grammar Foundations: The Essentials",
+      "nameVi": "Nền Tảng Ngữ Pháp: Những Điều Quan Trọng Nhất",
+      "tier": "free",
+      "hasData": true
+  },
+  "grammar-native-logic-vip3-ii": {
+      "id": "grammar-native-logic-vip3-ii",
+      "nameEn": "Grammar: Native Logic II",
+      "nameVi": "Ngữ Pháp: Logic Bản Ngữ II",
+      "tier": "vip3",
+      "hasData": true
+  },
   "know-yourself-deeply-vip4": {
       "id": "know-yourself-deeply-vip4",
       "nameEn": "Know Yourself Deeply",
