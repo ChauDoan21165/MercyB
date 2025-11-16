@@ -1,0 +1,150 @@
+{
+  "id": "vip3_ii_english_specialization_mastery_vip3",
+  "tier": "vip3",
+  "apartment": "VIP3 II",
+  "apartment_theme": "English Specialization Mastery",
+  "title": {
+    "en": "VIP3 II – English Specialization Mastery",
+    "vi": "VIP3 II – Thành Thạo Chuyên Sâu Tiếng Anh"
+  },
+  "content": {
+    "en": "Master advanced English grammar structures that distinguish native-level fluency. This specialized apartment focuses exclusively on sophisticated grammatical patterns used in academic writing, professional communication, and eloquent speech.",
+    "vi": "Làm chủ các cấu trúc ngữ pháp tiếng Anh nâng cao phân biệt trình độ thành thạo như người bản xứ. Khu căn hộ chuyên biệt này tập trung hoàn toàn vào các mẫu ngữ pháp tinh vi được sử dụng trong viết học thuật, giao tiếp chuyên nghiệp và diễn đạt hùng hồn."
+  },
+  "entries": [
+    {
+      "slug": "macro-grammar",
+      "keywords": {
+        "en": ["macro patterns", "discourse structure", "text organization", "cohesion"],
+        "vi": ["mẫu vĩ mô", "cấu trúc diễn ngôn", "tổ chức văn bản", "liên kết"]
+      },
+      "copy": {
+        "en": "Macro-grammar refers to the overarching structures that organize entire texts and discourses. Learn how to build sophisticated arguments, create compelling narratives, and structure complex ideas across paragraphs and sections.",
+        "vi": "Ngữ pháp vĩ mô đề cập đến các cấu trúc tổng thể tổ chức toàn bộ văn bản và diễn ngôn. Học cách xây dựng lập luận tinh vi, tạo câu chuyện hấp dẫn và cấu trúc ý tưởng phức tạp xuyên suốt các đoạn và phần."
+      },
+      "tags": ["advanced-grammar", "discourse", "text-structure"],
+      "audio": "vip3ii_grammar_macro.mp3"
+    },
+    {
+      "slug": "cleft-sentences",
+      "keywords": {
+        "en": ["cleft structures", "emphasis", "information focus", "it-clefts", "wh-clefts"],
+        "vi": ["cấu trúc tách", "nhấn mạnh", "trọng tâm thông tin", "it-clefts", "wh-clefts"]
+      },
+      "copy": {
+        "en": "Master cleft sentences (It was John who..., What I need is...) to control information flow and create emphasis in your communication. These structures are essential for sophisticated academic and professional English.",
+        "vi": "Làm chủ câu tách (It was John who..., What I need is...) để kiểm soát luồng thông tin và tạo sự nhấn mạnh trong giao tiếp của bạn. Các cấu trúc này là thiết yếu cho tiếng Anh học thuật và chuyên nghiệp tinh vi."
+      },
+      "tags": ["advanced-grammar", "emphasis", "academic-writing"],
+      "audio": "vip3ii_grammar_cleft.mp3"
+    },
+    {
+      "slug": "inversion",
+      "keywords": {
+        "en": ["inverted structures", "formal English", "negative inversion", "emphasis"],
+        "vi": ["cấu trúc đảo ngữ", "tiếng Anh trang trọng", "đảo ngữ phủ định", "nhấn mạnh"]
+      },
+      "copy": {
+        "en": "Inversion patterns (Never have I seen..., Only then did she realize...) add formality and dramatic effect to your English. Essential for formal writing, speeches, and professional presentations.",
+        "vi": "Các mẫu đảo ngữ (Never have I seen..., Only then did she realize...) thêm tính trang trọng và hiệu ứng kịch tính cho tiếng Anh của bạn. Thiết yếu cho viết trang trọng, diễn thuyết và thuyết trình chuyên nghiệp."
+      },
+      "tags": ["advanced-grammar", "formal-style", "emphasis"],
+      "audio": "vip3ii_grammar_inversion.mp3"
+    },
+    {
+      "slug": "nominalization",
+      "keywords": {
+        "en": ["nominalizations", "academic style", "formal register", "abstract nouns"],
+        "vi": ["danh hóa", "phong cách học thuật", "văn phong trang trọng", "danh từ trừu tượng"]
+      },
+      "copy": {
+        "en": "Transform verbs and adjectives into abstract nouns (fail → failure, responsible → responsibility) to achieve the dense, formal style characteristic of academic and professional writing.",
+        "vi": "Chuyển đổi động từ và tính từ thành danh từ trừu tượng (fail → failure, responsible → responsibility) để đạt được phong cách dày đặc, trang trọng đặc trưng của viết học thuật và chuyên nghiệp."
+      },
+      "tags": ["advanced-grammar", "academic-writing", "formal-style"],
+      "audio": "vip3ii_grammar_nominalization.mp3"
+    },
+    {
+      "slug": "hedging",
+      "keywords": {
+        "en": ["hedging language", "tentative expressions", "academic caution", "modality"],
+        "vi": ["ngôn ngữ dè dặt", "diễn đạt thăm dò", "thận trọng học thuật", "tình thái"]
+      },
+      "copy": {
+        "en": "Master hedging devices (may, might, seems to, appears that) to express appropriate levels of certainty in academic and professional contexts. Learn when to be definitive and when to be cautious.",
+        "vi": "Làm chủ các công cụ dè dặt (may, might, seems to, appears that) để diễn đạt mức độ chắc chắn phù hợp trong bối cảnh học thuật và chuyên nghiệp. Học khi nào cần dứt khoát và khi nào cần thận trọng."
+      },
+      "tags": ["advanced-grammar", "academic-writing", "modality"],
+      "audio": "vip3ii_grammar_hedging.mp3"
+    },
+    {
+      "slug": "subordination",
+      "keywords": {
+        "en": ["complex sentences", "subordinate clauses", "dependent clauses", "sentence complexity"],
+        "vi": ["câu phức", "mệnh đề phụ thuộc", "mệnh đề tùy thuộc", "độ phức tạp câu"]
+      },
+      "copy": {
+        "en": "Build sophisticated sentence structures using multiple levels of subordination. Learn to create elegant, complex sentences that express intricate relationships between ideas without losing clarity.",
+        "vi": "Xây dựng cấu trúc câu tinh vi sử dụng nhiều cấp độ phụ thuộc. Học cách tạo câu phức tạp thanh lịch diễn đạt mối quan hệ phức tạp giữa các ý tưởng mà không mất đi sự rõ ràng."
+      },
+      "tags": ["advanced-grammar", "sentence-structure", "complexity"],
+      "audio": "vip3ii_grammar_subordination.mp3"
+    },
+    {
+      "slug": "parallel-structures",
+      "keywords": {
+        "en": ["parallelism", "balanced structures", "rhetorical devices", "stylistic balance"],
+        "vi": ["song hành", "cấu trúc cân bằng", "biện pháp tu từ", "cân bằng phong cách"]
+      },
+      "copy": {
+        "en": "Create powerful parallel structures for emphasis and memorability. Master the art of balanced phrases and clauses that enhance persuasiveness in speeches, essays, and professional writing.",
+        "vi": "Tạo cấu trúc song hành mạnh mẽ để nhấn mạnh và dễ nhớ. Làm chủ nghệ thuật cụm từ và mệnh đề cân bằng tăng cường sức thuyết phục trong diễn thuyết, tiểu luận và viết chuyên nghiệp."
+      },
+      "tags": ["advanced-grammar", "rhetoric", "style"],
+      "audio": "vip3ii_grammar_parallel.mp3"
+    },
+    {
+      "slug": "reduction",
+      "keywords": {
+        "en": ["clause reduction", "participial phrases", "ellipsis", "conciseness"],
+        "vi": ["rút gọn mệnh đề", "cụm phân từ", "lược bỏ", "súc tích"]
+      },
+      "copy": {
+        "en": "Master advanced reduction techniques to create concise, elegant prose. Learn when and how to reduce clauses to phrases, creating the sophisticated compression characteristic of expert writing.",
+        "vi": "Làm chủ kỹ thuật rút gọn nâng cao để tạo văn xuôi súc tích, thanh lịch. Học khi nào và cách rút gọn mệnh đề thành cụm từ, tạo sự nén chặt tinh vi đặc trưng của viết chuyên gia."
+      },
+      "tags": ["advanced-grammar", "conciseness", "style"],
+      "audio": "vip3ii_grammar_reduction.mp3"
+    },
+    {
+      "slug": "thematic-progression",
+      "keywords": {
+        "en": ["theme-rheme", "information structure", "topic continuity", "text flow"],
+        "vi": ["đề-thuyết", "cấu trúc thông tin", "liên tục chủ đề", "dòng chảy văn bản"]
+      },
+      "copy": {
+        "en": "Control how information flows through your text using thematic progression. Learn to guide readers smoothly from known to new information, creating coherent and persuasive arguments.",
+        "vi": "Kiểm soát cách thông tin chảy qua văn bản của bạn sử dụng tiến triển chủ đề. Học cách dẫn dắt người đọc trôi chảy từ thông tin đã biết sang mới, tạo lập luận mạch lạc và thuyết phục."
+      },
+      "tags": ["advanced-grammar", "discourse", "coherence"],
+      "audio": "vip3ii_grammar_thematic.mp3"
+    }
+  ],
+  "keywords": {
+    "en": ["advanced grammar", "English specialization", "academic English", "professional writing", "sophisticated structures", "native-level fluency"],
+    "vi": ["ngữ pháp nâng cao", "chuyên sâu tiếng Anh", "tiếng Anh học thuật", "viết chuyên nghiệp", "cấu trúc tinh vi", "thành thạo như người bản xứ"]
+  },
+  "meta": {
+    "created_at": "2025-01-16",
+    "updated_at": "2025-01-16",
+    "entry_count": 9,
+    "artifact_set_id": "vip3_ii_english_specialization",
+    "data_format_version": "2.0",
+    "room_color": "#9333EA",
+    "special_theme": "grammar-mastery",
+    "tier": "vip3",
+    "apartment": "VIP3 II",
+    "origin": "english_specialization_curriculum",
+    "audio_naming_convention": "vip3ii_grammar_{topic}.mp3"
+  }
+}

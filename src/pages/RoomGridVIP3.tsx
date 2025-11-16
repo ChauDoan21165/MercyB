@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, Lock, Crown, Sparkles, RefreshCw } from "lucide-react";
+import { CheckCircle2, Lock, Crown, Sparkles, RefreshCw, Building2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ALL_ROOMS } from "@/lib/roomData";
@@ -95,47 +95,69 @@ const RoomGridVIP3 = () => {
             <div className="text-center space-y-2">
               <div className="flex items-center justify-center gap-2">
                 <Crown className="h-8 w-8" style={{ color: 'hsl(var(--vip3-primary))' }} />
+                <Building2 className="h-8 w-8" style={{ color: 'hsl(var(--vip3-primary))' }} />
                 <Sparkles className="h-8 w-8" style={{ color: 'hsl(var(--vip3-gold))' }} />
                 <h1 className="text-4xl font-bold bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
-                  VIP3 Premium Rooms
+                  VIP3 Apartments
                 </h1>
               </div>
               <p className="text-lg text-gray-700">
-                Phòng Học VIP3 Cao Cấp
+                Căn Hộ VIP3 Chuyên Biệt
               </p>
               <p className="text-sm text-gray-600">
-                Showing {ALL_ROOMS.filter(room => room.tier === "vip3").length} rooms
-            </p>
+                {(() => {
+                  const vip3Rooms = ALL_ROOMS.filter(r => r.tier === 'vip3');
+                  const apartments = new Set(vip3Rooms.map(r => 
+                    r.id.includes('vip3_ii') ? 'VIP3 II' : 'VIP3 I'
+                  ));
+                  return `${apartments.size} apartments with ${vip3Rooms.length} exclusive rooms`;
+                })()}
+              </p>
+            </div>
           </div>
-        </div>
 
-        {/* Room Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+          {/* Apartments - organized by specialization */}
           {(() => {
-            // Prioritize Finance first, then other special rooms
-            const priority = [
-              'finance-glory-vip3',
-              'sexuality-and-curiosity-and-culture-vip3',
-              'strategy-in-life-1-vip3',
-              'strategy-in-life-2-vip3',
-              'strategy-in-life-3-vip3',
-            ];
-            const vip3Rooms = ALL_ROOMS
-              .filter((room) => room.tier === 'vip3')
-              .sort((a, b) => {
-                const ai = priority.indexOf(a.id);
-                const bi = priority.indexOf(b.id);
-                const ap = ai === -1 ? Number.MAX_SAFE_INTEGER : ai;
-                const bp = bi === -1 ? Number.MAX_SAFE_INTEGER : bi;
-                if (ap !== bp) return ap - bp;
-                return a.id.localeCompare(b.id);
-              });
+            const vip3Rooms = ALL_ROOMS.filter(r => r.tier === 'vip3');
+            
+            // Group rooms by apartment
+            const roomsByApartment: Record<string, typeof vip3Rooms> = {};
+            vip3Rooms.forEach(room => {
+              const apartment = room.id.includes('vip3_ii') 
+                ? 'VIP3 II – English Specialization Mastery' 
+                : 'VIP3 I – Core Premium Rooms';
+              if (!roomsByApartment[apartment]) {
+                roomsByApartment[apartment] = [];
+              }
+              roomsByApartment[apartment].push(room);
+            });
+            
+            // Sort apartments to show VIP3 I first
+            const sortedApartments = Object.entries(roomsByApartment).sort(([a], [b]) => {
+              if (a.includes('VIP3 I')) return -1;
+              if (b.includes('VIP3 I')) return 1;
+              return a.localeCompare(b);
+            });
 
-            return vip3Rooms.sort((a, b) => {
-              const aName = a.name || a.id;
-              const bName = b.name || b.id;
-              return aName.localeCompare(bName);
-            }).map((room) => {
+            return sortedApartments.map(([apartmentName, rooms]) => (
+              <div key={apartmentName} className="mb-12">
+                {/* Apartment Header */}
+                <div className="mb-6 bg-white/50 backdrop-blur-sm rounded-lg p-6 border-2" style={{ borderColor: 'hsl(var(--vip3-primary))' }}>
+                  <div className="flex items-center gap-3 mb-2">
+                    <Building2 className="h-8 w-8" style={{ color: 'hsl(var(--vip3-primary))' }} />
+                    <h2 className="text-3xl font-bold text-gray-800">
+                      {apartmentName}
+                    </h2>
+                  </div>
+                  <p className="text-gray-600 ml-11">
+                    {rooms.length} specialized room{rooms.length !== 1 ? 's' : ''} • 
+                    {apartmentName.includes('English') ? ' Advanced Grammar & Academic English' : ' Diverse Premium Topics'}
+                  </p>
+                </div>
+
+                {/* Room Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+                  {rooms.map((room) => {
               const isSpecialRoom = VIP3_SPECIAL_ROOMS[room.id];
               const isSexualityCultureRoom = room.id === 'sexuality-and-curiosity-and-culture-vip3';
               const isFinanceRoom = room.id === 'finance-glory-vip3';
