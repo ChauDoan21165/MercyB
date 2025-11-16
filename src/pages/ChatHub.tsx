@@ -772,8 +772,9 @@ const ChatHub = () => {
         </div>
         
         {/* Welcome Message and Keywords Combined */}
-        <Card className="p-4 shadow-soft bg-card border border-border">
-          <div className="text-center space-y-0 mb-4">
+        <Card className="relative p-4 shadow-soft bg-card border border-border">
+          <RoomBorderDecoration />
+          <div className="text-center space-y-0 mb-4 relative z-10">
             {keywordMenu && keywordMenu.en && keywordMenu.en.length > 0 ? (
               <p className="text-sm text-foreground leading-tight">
                 Welcome to {currentRoom.nameEn} Room, please click the keyword of the topic you want to discover / Chào mừng bạn đến với phòng {currentRoom.nameVi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá
@@ -786,10 +787,11 @@ const ChatHub = () => {
           </div>
 
           {/* Dictionary Lookup */}
+          <div className="relative z-10">
           <DictionaryLookup />
           
           {keywordMenu && keywordMenu.en && keywordMenu.vi && keywordMenu.en.length > 0 && (
-            <div>
+            <div className="relative z-10">
               <div className="flex flex-wrap gap-2 justify-center">
                 {keywordMenu.en.map((keywordEn, idx) => {
                   const keywordVi = keywordMenu.vi[idx] || '';
@@ -832,11 +834,13 @@ const ChatHub = () => {
               </div>
             </div>
           )}
+          </div>
         </Card>
         
         {/* Main Chat Area */}
-        <Card className="p-4 shadow-soft bg-card border border-border">
-          <div className="space-y-3">
+        <Card className="relative p-4 shadow-soft bg-card border border-border">
+          <RoomBorderDecoration />
+          <div className="space-y-3 relative z-10">
             <ScrollArea className="h-[560px] pr-4" ref={mainScrollRef}>
               <WelcomeBack lastRoomId={progress.lastVisit} currentRoomId={roomId || ""} />
              
