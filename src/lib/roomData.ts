@@ -220,7 +220,7 @@ function generateRoomInfo(): RoomInfo[] {
     
     // Fallback to the tier property if present
     const dataTier = (roomData as any).tier;
-    if (dataTier === 'vip1' || dataTier === 'vip2' || dataTier === 'vip3' || dataTier === 'vip4') {
+    if (dataTier === 'vip1' || dataTier === 'vip2' || dataTier === 'vip3' || dataTier === 'vip3_ii' || dataTier === 'vip4') {
       tier = dataTier;
     }
     
