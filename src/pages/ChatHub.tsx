@@ -34,6 +34,8 @@ import { CareerProgressTracker } from "@/components/CareerProgressTracker";
 import { AnimatedTierBadge } from "@/components/AnimatedTierBadge";
 import { loadRoomKeywords } from "@/lib/roomKeywords";
 import { setCustomKeywordMappings, clearCustomKeywordMappings } from "@/lib/keywordColors";
+import { loadEnhancedKeywords, clearEnhancedKeywords } from "@/lib/enhancedKeywordColors";
+import { RoomBorderDecoration } from "@/components/RoomBorderDecoration";
 
 interface Message {
   id: string;

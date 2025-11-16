@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { toast } from '@/hooks/use-toast';
 import { getKeywordColor } from '@/lib/keywordColors';
+import { getEnhancedKeywordColor } from '@/lib/enhancedKeywordColors';
 
 interface HighlightedContentProps {
   content: string;
@@ -69,6 +70,7 @@ export const HighlightedContent = ({
   /**
    * Highlight keywords in the content with their psychology-based colors
    * Supports both English and Vietnamese text with proper Unicode handling
+   * Enhanced version: Uses emotion colors for adjectives, grayscale for verbs
    */
   const highlightKeywords = (text: string): JSX.Element[] => {
     if (!enableHighlighting) {
@@ -96,18 +98,31 @@ export const HighlightedContent = ({
       // Split into words and try different combinations
       const words = matchedText.split(/\s+/);
       
-      // Try full phrase first
-      color = getKeywordColor(matchedText);
+      // Try enhanced keywords first (room-specific with emotion/verb distinction)
+      color = getEnhancedKeywordColor(matchedText);
       if (color) {
         bestMatch = matchedText;
       } else {
-        // Try progressively shorter phrases from the start
-        for (let len = words.length; len >= 1; len--) {
-          const phrase = words.slice(0, len).join(' ');
-          color = getKeywordColor(phrase);
-          if (color) {
-            bestMatch = phrase;
-            break;
+        // Try full phrase with standard keyword system
+        color = getKeywordColor(matchedText);
+        if (color) {
+          bestMatch = matchedText;
+        } else {
+          // Try progressively shorter phrases from the start
+          for (let len = words.length; len >= 1; len--) {
+            const phrase = words.slice(0, len).join(' ');
+            // Try enhanced first
+            color = getEnhancedKeywordColor(phrase);
+            if (color) {
+              bestMatch = phrase;
+              break;
+            }
+            // Fall back to standard
+            color = getKeywordColor(phrase);
+            if (color) {
+              bestMatch = phrase;
+              break;
+            }
           }
         }
       }
@@ -137,15 +152,17 @@ export const HighlightedContent = ({
         );
       }
 
-      // Add the highlighted keyword
+      // Add the highlighted keyword with enhanced styling
       parts.push(
         <span
           key={`keyword-${startIndex}-${idx}`}
           style={{
             backgroundColor: color,
             padding: '2px 6px',
-            borderRadius: '3px',
-            fontWeight: '500'
+            borderRadius: '4px',
+            fontWeight: '500',
+            transition: 'all 0.2s ease',
+            display: 'inline-block'
           }}
         >
           {matchedText}
