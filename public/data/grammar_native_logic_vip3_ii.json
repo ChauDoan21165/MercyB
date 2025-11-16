@@ -1,0 +1,113 @@
+{
+  "id":"grammar_native_logic_vip3_ii",
+  "tier":"VIP 3",
+  "title":{
+    "en":"Advanced Grammar Logic & Native Patterns",
+    "vi":"Logic Ngữ Pháp Nâng Cao & Mẫu Câu Bản Ngữ"
+  },
+  "content":{
+    "en":"This VIP3 II room unlocks native-level grammar thinking: subordination, inversion, emphasis, thematic flow, high-register structures, reduced forms, and macro-sentence logic. These patterns shape clarity, persuasion, and academic precision.",
+    "vi":"Phòng VIP3 II này mở khóa tư duy ngữ pháp của người bản xứ: câu phụ thuộc, đảo ngữ, nhấn mạnh, mạch chủ đề, cấu trúc trang trọng, dạng rút gọn và logic câu dài. Những mẫu này tạo nên sự rõ ràng, thuyết phục và chuẩn mực học thuật."
+  },
+  "entries":[
+    {
+      "slug":"subordination-flow",
+      "keywords_en":["subordination","flow","logic"],
+      "keywords_vi":["mệnh đề phụ","mạch ý","logic"],
+      "copy":{
+        "en":"Subordination is the foundation of native fluency. Instead of placing ideas in equal short sentences, English uses dependent clauses to show order, cause, contrast, and conditions. Patterns such as “although,” “even though,” “as long as,” “whereas,” and “in case” allow you to express layered meaning without sounding mechanical. For example: “Although the plan was risky, the team decided to proceed,” or “We will continue the project as long as the results remain stable.” These structures help the listener instantly understand relationship and priority. Practice by combining three short ideas into one subordination chain. The goal is not complexity but flow: one main idea supported by reasons, limits, or contrasts. Mastering subordination gives your speech and writing a calm, intelligent rhythm.",
+        "vi":"Mệnh đề phụ là nền tảng của độ trôi chảy bản ngữ. Thay vì xếp ý thành các câu ngắn ngang hàng, tiếng Anh dùng mệnh đề phụ để thể hiện thứ tự, nguyên nhân, tương phản và điều kiện. Các mẫu như “although”, “even though”, “as long as”, “whereas”, “in case” giúp diễn đạt ý nhiều tầng mà không thô cứng. Ví dụ: “Although the plan was risky, the team decided to proceed”, hoặc “We will continue the project as long as the results remain stable.” Những cấu trúc này giúp người nghe hiểu ngay quan hệ ý. Hãy tập ghép ba ý ngắn thành một chuỗi mệnh đề phụ. Mục tiêu không phải phức tạp mà là mạch lạc: một ý chính và các lý do, giới hạn hoặc tương phản hỗ trợ."
+      },
+      "tags":["subordination","advanced"],
+      "audio":"vip3ii_grammar_subordination.mp3"
+    },
+    {
+      "slug":"inversion-emphasis",
+      "keywords_en":["inversion","emphasis","formal"],
+      "keywords_vi":["đảo ngữ","nhấn mạnh","trang trọng"],
+      "copy":{
+        "en":"Inversion adds emphasis and formality by reversing normal word order. It is common in reports, presentations, and academic writing. Patterns such as “Never have I…,” “Rarely do we see…,” “Not only… but also…,” and conditionals without if (“Had I known…”) signal importance and highlight contrast. For example: “Not only did the results exceed expectations, but they also revealed new opportunities.” Use inversion to spotlight exceptional situations or introduce strong conclusions. Practice rewriting strong statements into inverted forms. When used strategically, inversion gives your English precision, authority, and elegance without sounding unnatural.",
+        "vi":"Đảo ngữ tạo nhấn mạnh và sắc thái trang trọng bằng cách đảo trật tự từ. Nó phổ biến trong báo cáo, thuyết trình và văn bản học thuật. Các mẫu như “Never have I…”, “Rarely do we see…”, “Not only… but also…”, và điều kiện không if (“Had I known…”) báo hiệu tầm quan trọng. Ví dụ: “Not only did the results exceed expectations, but they also revealed new opportunities.” Hãy dùng đảo ngữ để làm nổi bật tình huống đặc biệt hoặc kết luận mạnh. Luyện viết lại câu thường thành dạng đảo. Khi dùng đúng, đảo ngữ giúp tiếng Anh chính xác, uy tín và thanh nhã."
+      },
+      "tags":["inversion","emphasis"],
+      "audio":"vip3ii_grammar_inversion.mp3"
+    },
+    {
+      "slug":"cleft-emphasis",
+      "keywords_en":["cleft sentences","highlight","focus"],
+      "keywords_vi":["câu chẻ","nhấn mạnh","tập trung"],
+      "copy":{
+        "en":"Cleft sentences allow you to highlight exactly the part of the message you want the listener to notice. Patterns include “It is/was… that…,” “What… is…,” and “The thing that… is….” For example: “It was the timing that caused the problem,” or “What impressed me most was her calmness.” Clefts are powerful because they reorganize information to foreground importance. Use clefts when giving feedback, making arguments, or clarifying misunderstandings. Practice by turning neutral sentences into focused ones. The ability to control focus makes your communication clearer, more persuasive, and emotionally precise.",
+        "vi":"Câu chẻ giúp bạn nhấn vào đúng phần thông tin muốn người nghe chú ý. Các mẫu gồm “It is/was… that…”, “What… is…”, và “The thing that… is…”. Ví dụ: “It was the timing that caused the problem”, hoặc “What impressed me most was her calmness.” Câu chẻ mạnh vì chúng tái tổ chức thông tin để đẩy điểm quan trọng lên trước. Dùng câu chẻ khi phản hồi, lập luận hoặc làm rõ hiểu lầm. Luyện chuyển câu trung tính thành câu nhấn mạnh. Khả năng điều khiển trọng tâm giúp giao tiếp rõ và thuyết phục hơn."
+      },
+      "tags":["emphasis","cleft"],
+      "audio":"vip3ii_grammar_cleft.mp3"
+    },
+    {
+      "slug":"reduced-clauses",
+      "keywords_en":["reduced clauses","advanced","natural"],
+      "keywords_vi":["mệnh đề rút gọn","nâng cao","tự nhiên"],
+      "copy":{
+        "en":"Reduced clauses make your English concise and elegant by shortening relative or adverbial clauses into -ing or past participle phrases. For example: “The man who works here” → “The man working here,” or “The documents that were sent yesterday” → “The documents sent yesterday.” These structures are common in professional writing, headlines, reports, and presentations. They reduce clutter and increase processing speed for the listener. Practice by reducing clauses from articles or emails. The key is ensuring the reduced phrase still clearly links to the noun. Proper use gives your English a polished, efficient tone.",
+        "vi":"Mệnh đề rút gọn làm tiếng Anh ngắn gọn và thanh nhã hơn bằng cách rút mệnh đề quan hệ hoặc trạng ngữ thành cụm -ing hoặc quá khứ phân từ. Ví dụ: “The man who works here” → “The man working here”, hoặc “The documents that were sent yesterday” → “The documents sent yesterday.” Những cấu trúc này phổ biến trong báo cáo, tiêu đề và thuyết trình. Chúng giảm rườm rà và tăng tốc độ hiểu. Luyện bằng cách rút gọn mệnh đề trong bài báo hoặc email. Quan trọng là cụm rút gọn vẫn liên kết rõ ràng với danh từ. Dùng đúng giúp tiếng Anh của bạn tinh tế và hiệu quả."
+      },
+      "tags":["reduction","advanced"],
+      "audio":"vip3ii_grammar_reduction.mp3"
+    },
+    {
+      "slug":"parallel-structure",
+      "keywords_en":["parallelism","clarity","balance"],
+      "keywords_vi":["song song","rõ ràng","cân đối"],
+      "copy":{
+        "en":"Parallel structure creates balance and clarity by matching grammatical forms in lists or comparisons. Patterns like “to learn, to practice, and to apply” or “efficient, reliable, and affordable” improve rhythm and readability. Parallelism is essential in professional writing, persuasive presentations, and academic arguments. It helps the listener follow your ideas without effort. Practice by checking lists, comparisons, and repeated structures for consistency. Rewrite non-parallel phrases into balanced forms. Mastering parallel structure adds polish and credibility to your English, making your message sound intentional and well-formed.",
+        "vi":"Cấu trúc song song tạo sự cân đối và rõ ràng bằng cách đồng nhất dạng ngữ pháp trong các danh sách hoặc so sánh. Các mẫu như “to learn, to practice, and to apply” hoặc “efficient, reliable, and affordable” giúp nhịp câu tự nhiên và dễ theo dõi. Cấu trúc song song rất quan trọng trong viết chuyên nghiệp, thuyết trình thuyết phục và lập luận học thuật. Hãy kiểm tra danh sách và cấu trúc lặp xem có đồng nhất không. Viết lại cụm không song song thành dạng cân đối. Dùng thuần thục tạo sự tinh tế và đáng tin cậy cho câu tiếng Anh."
+      },
+      "tags":["parallelism","clarity"],
+      "audio":"vip3ii_grammar_parallel.mp3"
+    },
+    {
+      "slug":"theme-rheme-flow",
+      "keywords_en":["theme","rheme","information flow"],
+      "keywords_vi":["chủ đề","bình luận","mạch thông tin"],
+      "copy":{
+        "en":"Native speakers structure sentences based on information flow, not grammar rules. The theme (old information) comes first, followed by the rheme (new information). For example: “This proposal (theme) outlines three priorities (rheme).” This pattern keeps communication predictable and easy to process. When you place new information first, sentences may feel sudden or confusing. Practice by identifying the theme in texts you read and rewriting sentences to highlight logical flow. Understanding theme–rheme makes your English smoother, more coherent, and more aligned with native patterns.",
+        "vi":"Người bản ngữ xây câu dựa trên dòng thông tin chứ không chỉ quy tắc. Chủ đề (thông tin cũ) đứng trước, bình luận (thông tin mới) theo sau. Ví dụ: “This proposal (chủ đề) outlines three priorities (bình luận).” Mẫu này giúp người nghe dễ theo dõi. Nếu đặt thông tin mới trước, câu có thể đột ngột hoặc khó hiểu. Hãy luyện xác định chủ đề trong đoạn văn và viết lại câu cho mạch lạc. Hiểu theme–rheme giúp tiếng Anh trơn tru và đúng logic bản ngữ."
+      },
+      "tags":["flow","information"],
+      "audio":"vip3ii_grammar_thematic.mp3"
+    },
+    {
+      "slug":"nominalization",
+      "keywords_en":["nominalization","academic","professional"],
+      "keywords_vi":["danh từ hóa","học thuật","chuyên nghiệp"],
+      "copy":{
+        "en":"Nominalization transforms verbs and adjectives into nouns, creating more formal and abstract language. For example: “decide” → “decision,” “analyze” → “analysis,” “effective” → “effectiveness.” It is common in academic writing, reports, policies, and presentations. Nominalization lets you discuss ideas as objects and organize complex arguments more efficiently: “The improvement of performance requires…” Practice identifying nominalized forms and rewriting sentences to vary tone. Use nominalization when presenting concepts, but avoid overuse, which can make writing heavy. Balanced correctly, it strengthens clarity, precision, and authority.",
+        "vi":"Danh từ hóa chuyển động từ và tính từ thành danh từ, tạo ngôn ngữ trang trọng và trừu tượng hơn. Ví dụ: “decide” → “decision”, “analyze” → “analysis”, “effective” → “effectiveness”. Nó phổ biến trong học thuật, báo cáo, chính sách và thuyết trình. Danh từ hóa giúp bạn nói về ý niệm như đối tượng và tổ chức lập luận phức tạp hiệu quả hơn: “The improvement of performance requires…”. Hãy luyện nhận dạng dạng danh từ hóa và viết lại câu để thay đổi sắc thái. Dùng khi trình bày khái niệm nhưng tránh lạm dụng để không nặng nề. Khi cân bằng, nó tăng độ rõ, chính xác và uy tín."
+      },
+      "tags":["academic","formal"],
+      "audio":"vip3ii_grammar_nominalization.mp3"
+    },
+    {
+      "slug":"hedging-precision",
+      "keywords_en":["hedging","precision","academic tone"],
+      "keywords_vi":["giảm sắc thái","chính xác","giọng học thuật"],
+      "copy":{
+        "en":"VIP3 II hedging focuses on precision rather than politeness. Phrases such as “suggests that,” “appears to,” “may indicate,” and “is likely to” allow you to describe uncertainty accurately—essential in research, presentations, and critical discussions. Hedging protects credibility by avoiding absolute claims when evidence is incomplete. For example: “The data suggests that productivity may increase under flexible schedules.” Practice rewriting strong claims into balanced statements. Mastering hedging makes your English more professional, analytical, and trustworthy.",
+        "vi":"Hedging ở VIP3 II tập trung vào độ chính xác hơn là lịch sự. Các cụm như “suggests that”, “appears to”, “may indicate”, “is likely to” giúp mô tả mức độ chắc chắn—rất quan trọng trong nghiên cứu, thuyết trình và thảo luận phản biện. Hedging bảo vệ độ tin cậy bằng cách tránh khẳng định tuyệt đối khi bằng chứng chưa đầy đủ. Ví dụ: “The data suggests that productivity may increase under flexible schedules.” Hãy luyện viết lại câu khẳng định mạnh thành câu cân bằng. Điều này giúp tiếng Anh chuyên nghiệp, phân tích và đáng tin cậy hơn."
+      },
+      "tags":["hedging","precision"],
+      "audio":"vip3ii_grammar_hedging.mp3"
+    },
+    {
+      "slug":"macro-sentences",
+      "keywords_en":["macro sentences","advanced","structure"],
+      "keywords_vi":["câu dài","nâng cao","cấu trúc"],
+      "copy":{
+        "en":"Macro-sentences combine multiple ideas into one controlled, logical structure. They are common in academic writing, leadership communication, and expert discussions. A macro-sentence typically contains a main clause, a reason clause, and a contrast or condition: “The proposal was approved because it aligned with long-term goals, although several members requested additional data.” These sentences express complexity without confusion. Practice by expanding simple ideas into a three-part structure: main idea → support → contrast or limit. When used intentionally, macro-sentences demonstrate maturity, clarity, and intellectual control.",
+        "vi":"Câu dài kết hợp nhiều ý trong một cấu trúc mạch lạc, có kiểm soát. Chúng phổ biến trong học thuật, giao tiếp lãnh đạo và thảo luận chuyên môn. Một câu dài điển hình gồm mệnh đề chính, mệnh đề nguyên nhân và phần tương phản hoặc điều kiện: “The proposal was approved because it aligned with long-term goals, although several members requested additional data.” Hãy luyện mở rộng ý đơn thành cấu trúc ba phần: ý chính → hỗ trợ → giới hạn hoặc tương phản. Dùng đúng lúc, câu dài thể hiện sự chín chắn và tư duy rõ ràng."
+      },
+      "tags":["macro","advanced"],
+      "audio":"vip3ii_grammar_macro.mp3"
+    }
+  ]
+}
