@@ -631,8 +631,46 @@ const ChatHub = () => {
           </AlertDialogContent>
         </AlertDialog>
       )}
-      <div className="min-h-screen p-4" style={{ background: getBgColor() }}>
-        <div className="max-w-7xl mx-auto space-y-4">
+      <div className="min-h-screen p-4 relative overflow-hidden" style={{ background: getBgColor() }}>
+        {/* Subtle flower decorations */}
+        <div className="absolute top-4 left-4 w-12 h-12 opacity-10 pointer-events-none">
+          <svg viewBox="0 0 100 100" className="w-full h-full text-primary">
+            <path d="M50 20 Q40 30 50 40 Q60 30 50 20" fill="currentColor"/>
+            <path d="M50 60 Q40 50 50 40 Q60 50 50 60" fill="currentColor"/>
+            <path d="M30 40 Q40 30 50 40 Q40 50 30 40" fill="currentColor"/>
+            <path d="M70 40 Q60 30 50 40 Q60 50 70 40" fill="currentColor"/>
+            <circle cx="50" cy="40" r="6" fill="currentColor" opacity="0.6"/>
+          </svg>
+        </div>
+        <div className="absolute top-20 right-6 w-10 h-10 opacity-8 pointer-events-none">
+          <svg viewBox="0 0 100 100" className="w-full h-full text-secondary">
+            <path d="M50 25 Q42 32 50 40 Q58 32 50 25" fill="currentColor"/>
+            <path d="M50 55 Q42 48 50 40 Q58 48 50 55" fill="currentColor"/>
+            <path d="M35 40 Q42 32 50 40 Q42 48 35 40" fill="currentColor"/>
+            <path d="M65 40 Q58 32 50 40 Q58 48 65 40" fill="currentColor"/>
+            <circle cx="50" cy="40" r="5" fill="currentColor" opacity="0.5"/>
+          </svg>
+        </div>
+        <div className="absolute bottom-24 left-8 w-14 h-14 opacity-10 pointer-events-none">
+          <svg viewBox="0 0 100 100" className="w-full h-full text-accent">
+            <path d="M50 15 Q38 25 50 38 Q62 25 50 15" fill="currentColor"/>
+            <path d="M50 63 Q38 53 50 38 Q62 53 50 63" fill="currentColor"/>
+            <path d="M25 38 Q38 25 50 38 Q38 53 25 38" fill="currentColor"/>
+            <path d="M75 38 Q62 25 50 38 Q62 53 75 38" fill="currentColor"/>
+            <circle cx="50" cy="38" r="7" fill="currentColor" opacity="0.6"/>
+          </svg>
+        </div>
+        <div className="absolute bottom-40 right-10 w-11 h-11 opacity-9 pointer-events-none">
+          <svg viewBox="0 0 100 100" className="w-full h-full text-primary">
+            <path d="M50 22 Q40 30 50 40 Q60 30 50 22" fill="currentColor"/>
+            <path d="M50 58 Q40 50 50 40 Q60 50 50 58" fill="currentColor"/>
+            <path d="M32 40 Q40 30 50 40 Q40 50 32 40" fill="currentColor"/>
+            <path d="M68 40 Q60 30 50 40 Q60 50 68 40" fill="currentColor"/>
+            <circle cx="50" cy="40" r="5.5" fill="currentColor" opacity="0.5"/>
+          </svg>
+        </div>
+        
+        <div className="max-w-7xl mx-auto space-y-4 relative z-10">
         
         {/* Debug Mode Toggle - Admin Only */}
         {isAdmin && (
