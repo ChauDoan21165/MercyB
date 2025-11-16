@@ -50,8 +50,8 @@ const RoomGridVIP3II = () => {
     );
   }
 
-  // Filter only VIP3 II rooms (rooms with 'vip3_ii' in their ID)
-  const vip3IIRooms = ALL_ROOMS.filter(r => r.id.includes('vip3_ii'));
+  // Filter only VIP3 II rooms (rooms with '-vip3-ii' in their ID)
+  const vip3IIRooms = ALL_ROOMS.filter(r => r.id.includes('-vip3-ii'));
 
   return (
     <div className="min-h-screen">
