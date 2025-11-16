@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 
-export type UserTier = 'free' | 'vip1' | 'vip2' | 'vip3' | 'vip4';
+export type UserTier = 'free' | 'vip1' | 'vip2' | 'vip3' | 'vip3_ii' | 'vip4';
 
-interface UserAccess {
+export interface UserAccess {
   isAdmin: boolean;
   tier: UserTier;
   canAccessVIP1: boolean;
   canAccessVIP2: boolean;
   canAccessVIP3: boolean;
+  canAccessVIP3II: boolean;
   canAccessVIP4: boolean;
   loading: boolean;
 }
@@ -20,6 +21,7 @@ export const useUserAccess = (): UserAccess => {
     canAccessVIP1: false,
     canAccessVIP2: false,
     canAccessVIP3: false,
+    canAccessVIP3II: false,
     canAccessVIP4: false,
     loading: true,
   });
@@ -39,6 +41,7 @@ export const useUserAccess = (): UserAccess => {
           canAccessVIP1: false,
           canAccessVIP2: false,
           canAccessVIP3: false,
+          canAccessVIP3II: false,
           canAccessVIP4: false,
           loading: false,
         });
@@ -63,6 +66,7 @@ export const useUserAccess = (): UserAccess => {
 
       const tierName = subscription?.subscription_tiers?.name?.toLowerCase() || 'free';
       const tier = (tierName.includes('vip4') ? 'vip4' :
+                   tierName.includes('vip3 ii') || tierName.includes('vip3_ii') ? 'vip3_ii' :
                    tierName.includes('vip1') ? 'vip1' : 
                    tierName.includes('vip2') ? 'vip2' : 
                    tierName.includes('vip3') ? 'vip3' : 'free') as UserTier;
@@ -70,9 +74,10 @@ export const useUserAccess = (): UserAccess => {
       setAccess({
         isAdmin,
         tier: isAdmin ? 'vip4' : tier,
-        canAccessVIP1: isAdmin || tier === 'vip1' || tier === 'vip2' || tier === 'vip3' || tier === 'vip4',
-        canAccessVIP2: isAdmin || tier === 'vip2' || tier === 'vip3' || tier === 'vip4',
-        canAccessVIP3: isAdmin || tier === 'vip3' || tier === 'vip4',
+        canAccessVIP1: isAdmin || tier === 'vip1' || tier === 'vip2' || tier === 'vip3' || tier === 'vip3_ii' || tier === 'vip4',
+        canAccessVIP2: isAdmin || tier === 'vip2' || tier === 'vip3' || tier === 'vip3_ii' || tier === 'vip4',
+        canAccessVIP3: isAdmin || tier === 'vip3' || tier === 'vip3_ii' || tier === 'vip4',
+        canAccessVIP3II: isAdmin || tier === 'vip3_ii' || tier === 'vip4',
         canAccessVIP4: isAdmin || tier === 'vip4',
         loading: false,
       });
@@ -84,6 +89,7 @@ export const useUserAccess = (): UserAccess => {
         canAccessVIP1: false,
         canAccessVIP2: false,
         canAccessVIP3: false,
+        canAccessVIP3II: false,
         canAccessVIP4: false,
         loading: false,
       });
