@@ -13,253 +13,47 @@
   "entries": [
     {
       "slug": "immersion-comprehensible-input",
-      "keywords_en": [
-        "comprehensible input",
-        "immersion",
-        "daily exposure",
-        "natural acquisition"
-      ],
-      "keywords_vi": [
-        "đầu vào dễ hiểu",
-        "tắm ngôn ngữ",
-        "tiếp xúc hàng ngày",
-        "học tự nhiên"
-      ],
+      "keywords_en": ["comprehensible input", "immersion", "daily exposure", "natural acquisition"],
+      "keywords_vi": ["đầu vào dễ hiểu", "tắm ngôn ngữ", "tiếp xúc hàng ngày", "học tự nhiên"],
       "copy": {
         "en": "The fastest way to transform your English is high-volume **comprehensible input**—material you understand around 70–90%. At this level, your brain can relax and notice patterns instead of fighting for every word. Choose podcasts like 6 Minute English, simple interview channels, or YouTube teachers who speak clearly with subtitles. If you understand less than 60%, switch to easier content; if more than 95%, move slightly up. Build a daily menu: 10–15 minutes while getting ready, 20 minutes on the bus, 15 minutes before sleep. Listen or watch without pausing or translating every word—just follow the main idea. Set your phone, apps, and social media to English so you see **micro-input** all day. Once a week, write a short reflection in English: what you listened to, new phrases you noticed, how it felt. After 4–6 weeks of steady **exposure**, you will feel faster processing, clearer accent perception, and more **automatic vocabulary recall** without forcing it.",
         "vi": "Cách nhanh nhất để bứt phá tiếng Anh là nhận thật nhiều **đầu vào dễ hiểu**—nội dung bạn hiểu khoảng 70–90%. Ở mức này, não có thể thư giãn và tự nhận ra mẫu câu thay vì phải vật lộn với từng từ. Hãy chọn podcast như 6 Minute English, các kênh phỏng vấn đơn giản hoặc giáo viên YouTube nói chậm, có phụ đề tiếng Anh. Nếu bạn hiểu dưới 60%, hãy giảm độ khó; nếu trên 95%, tăng nhẹ mức. Xây thực đơn mỗi ngày: 10–15 phút lúc chuẩn bị buổi sáng, 20 phút trên xe, 15 phút trước khi ngủ. Nghe hoặc xem mà không dừng và không dịch từng từ—chỉ cần bám ý chính. Đặt điện thoại, ứng dụng và mạng xã hội sang tiếng Anh để nhận **đầu vào nhỏ**, rải rác cả ngày. Mỗi tuần, viết một đoạn phản chiếu bằng tiếng Anh: bạn đã nghe gì, ghi được cụm nào mới, cảm giác ra sao. Sau 4–6 tuần **tiếp xúc ổn định**, bạn sẽ cảm thấy tốc độ xử lý tăng lên, nghe giọng rõ hơn và **nhớ từ tự động** hơn mà không phải gồng mình."
       },
-      "tags": [
-        "immersion",
-        "input",
-        "listening"
-      ],
-      "audio": "eng_01.mp3"
+      "tags": ["immersion", "input", "listening"],
+      "audio": "/audio/eng_01.mp3"
     },
     {
       "slug": "shadowing-method",
-      "keywords_en": [
-        "shadowing",
-        "pronunciation",
-        "rhythm",
-        "automaticity"
-      ],
-      "keywords_vi": [
-        "shadowing",
-        "phát âm",
-        "nhịp điệu",
-        "tự động"
-      ],
+      "keywords_en": ["shadowing", "pronunciation", "rhythm", "automaticity"],
+      "keywords_vi": ["shadowing", "phát âm", "nhịp điệu", "tự động"],
       "copy": {
-        "en": "**Shadowing** means listening to native speech and repeating it in real time—mimicking tone, pauses, and emotional inflection. Pick short clips (30–90 seconds) from podcasts or YouTube. Play it once, then replay and speak along, matching the rhythm as closely as possible. Don't worry about perfection; focus on the **melody of English**—stress patterns, rising and falling pitch, natural pauses. Do this daily for 5–10 minutes. At first, it will feel clumsy, but within 2–3 weeks, your mouth starts anticipating sounds before your conscious brain does. This is muscle memory for language. Shadowing trains your mouth to produce English **automatically**, not just understand it. Record yourself shadowing to hear your progress over time. Gradually move to longer or faster audio as you improve. Shadowing is one of the fastest routes to sounding **natural** and building speaking fluency.",
-        "vi": "**Shadowing** là nghe người bản xứ nói và lặp lại ngay trong thời gian thực—bắt chước giọng điệu, ngắt nghỉ và cảm xúc. Chọn đoạn ngắn (30–90 giây) từ podcast hoặc YouTube. Nghe một lần, rồi phát lại và nói theo, sao cho khớp nhịp nhất có thể. Đừng lo hoàn hảo; tập trung vào **giai điệu của tiếng Anh**—mẫu nhấn âm, giọng lên xuống, ngắt nghỉ tự nhiên. Làm mỗi ngày 5–10 phút. Lúc đầu sẽ vụng, nhưng sau 2–3 tuần, miệng bạn sẽ bắt đầu đoán trước âm thanh trước cả khi não nghĩ. Đó là **trí nhớ cơ bắp cho ngôn ngữ**. Shadowing giúp miệng tạo tiếng Anh **tự động**, không chỉ hiểu nó. Ghi âm mình shadowing để nghe tiến bộ. Dần dần chuyển sang audio dài hơn hoặc nhanh hơn khi tiến bộ. Shadowing là con đường nhanh nhất để nghe **tự nhiên** và xây dựng khả năng nói trôi chảy."
+        "en": "**Shadowing** means listening to native English and repeating it in real-time, copying not just the words, but also the tone, speed, and rhythm. This technique forces your mouth and brain to work together at natural speed. Pick a short YouTube clip, podcast excerpt, or TED Talk section. Listen to 10–30 seconds multiple times until you understand most of it. Then, play it again and speak along at the exact same pace. Do not pause—let your voice overlap theirs, imitating their melody and stress patterns. At first, you may stumble, but that struggle is where learning happens. Do this for 5–10 minutes every day with different speakers. This method trains muscle memory for pronunciation and rhythm, builds speech confidence, and eliminates the mental translation step. Within 2–3 weeks, you will notice improved flow and reduced hesitation in your own speaking.",
+        "vi": "**Shadowing** nghĩa là nghe người bản ngữ và nhắc lại ngay tức thì, sao chép không chỉ từ ngữ mà cả ngữ điệu, tốc độ và nhịp điệu. Kỹ thuật này buộc miệng và não phải phối hợp ở tốc độ tự nhiên. Chọn clip YouTube ngắn, đoạn podcast, hoặc một phần TED Talk. Nghe 10–30 giây nhiều lần cho tới khi hiểu hầu hết. Sau đó, phát lại và nói theo đúng tốc độ. Đừng dừng—để giọng bạn chồng lên giọng họ, bắt chước giai điệu và nhấn nhá. Lúc đầu bạn có thể vấp, nhưng đấy là lúc bạn học được. Luyện 5–10 phút mỗi ngày với nhiều người khác nhau. Phương pháp này huấn luyện cơ nhớ phát âm và nhịp điệu, xây tự tin nói, và loại bỏ bước dịch trong đầu. Trong 2–3 tuần, bạn sẽ thấy trôi chảy hơn và do dự ít hơn khi nói."
       },
-      "tags": [
-        "pronunciation",
-        "speaking",
-        "fluency"
-      ],
-      "audio": "eng_02.mp3"
+      "tags": ["shadowing", "pronunciation", "speaking"],
+      "audio": "/audio/eng_02.mp3"
     },
     {
-      "slug": "output-before-perfection",
-      "keywords_en": [
-        "output",
-        "speaking practice",
-        "writing practice",
-        "error tolerance"
-      ],
-      "keywords_vi": [
-        "đầu ra",
-        "luyện nói",
-        "luyện viết",
-        "chấp nhận sai"
-      ],
+      "slug": "retrieval-writing",
+      "keywords_en": ["retrieval practice", "active recall", "writing output", "error correction"],
+      "keywords_vi": ["luyện lấy lại", "nhớ chủ động", "đầu ra viết", "sửa lỗi"],
       "copy": {
-        "en": "Language mastery requires **output**, not just input. From your first week, start speaking and writing in English—even if it's messy. Use voice memos to narrate your day in English for 2–3 minutes. Write a short daily journal in English about your thoughts, plans, or what you learned. Join online language exchange groups on apps like HelloTalk or Tandem. Don't wait until you're 'ready'—that moment never comes. The key is **volume over correctness**. Make 100 mistakes in 100 days rather than avoiding output until you feel perfect. Each mistake is data your brain uses to refine future attempts. Record yourself weekly and notice improvement. Pair output with brief reflection: What felt hard? Which words did I repeat? Where did I hesitate? This self-awareness speeds up progress. **Output transforms passive knowledge into active skill**—it's the bridge between understanding English and owning it.",
-        "vi": "Thành thạo ngôn ngữ cần **đầu ra**, không chỉ đầu vào. Từ tuần đầu, hãy bắt đầu nói và viết tiếng Anh—dù nó lộn xộn. Dùng ghi âm giọng nói để kể ngày của bạn bằng tiếng Anh 2–3 phút. Viết nhật ký ngắn hàng ngày bằng tiếng Anh về suy nghĩ, kế hoạch hoặc điều bạn học được. Tham gia nhóm trao đổi ngôn ngữ trên app như HelloTalk hay Tandem. Đừng chờ đến khi 'sẵn sàng'—thời điểm đó không bao giờ đến. Điểm mấu chốt là **số lượng hơn độ chính xác**. Làm 100 lỗi trong 100 ngày thay vì né tránh đầu ra cho đến khi cảm thấy hoàn hảo. Mỗi lỗi là dữ liệu não dùng để tinh chỉnh lần sau. Ghi âm mình mỗi tuần và thấy tiến bộ. Kết hợp đầu ra với suy ngẫm ngắn: Cái gì khó? Từ nào tôi lặp lại? Tôi ngập ngừng chỗ nào? **Tự nhận thức** này tăng tốc tiến bộ. **Đầu ra biến kiến thức thụ động thành kỹ năng chủ động**—đó là cầu nối giữa hiểu tiếng Anh và sở hữu nó."
+        "en": "**Retrieval writing** turns your passive knowledge into active, usable English. Instead of copying or translating, you ask your brain to produce language from memory. Choose a simple daily prompt: *My morning routine*, *One thing I learned today*, or *A problem I am facing*. Set a 5-minute timer and write as much as you can without using a dictionary or translator. It is okay to be simple—clarity is more important than complexity. When you finish, *then* use tools like Grammarly, AI, or a teacher to correct your text. Highlight repeated errors in articles, prepositions, or word choice and record them in a small error log notebook or file. Each week, quickly review your most common mistakes and write one new correct example for each. Over time, you will see those errors disappear from your writing. Research in language teaching shows that this cycle of active recall, feedback, and reflection builds long-term accuracy and fluency much more effectively than only reading grammar explanations.",
+        "vi": "**Viết luyện lấy lại** biến kiến thức thụ động thành tiếng Anh chủ động và sử dụng được. Thay vì chép hoặc dịch, bạn yêu cầu não tạo ngôn ngữ từ trí nhớ. Chọn câu hỏi đơn giản mỗi ngày: *Thói quen buổi sáng*, *Một điều học hôm nay*, hoặc *Vấn đề đang gặp*. Bật đồng hồ 5 phút và viết tối đa không dùng từ điển hay công cụ dịch. Đơn giản không sao—rõ ràng quan trọng hơn phức tạp. Khi xong, *lúc đó* dùng Grammarly, AI, hoặc giáo viên để sửa văn bản. Đánh dấu lỗi lặp lại về mạo từ, giới từ, hoặc chọn từ và ghi vào sổ lỗi nhỏ hoặc file. Mỗi tuần, xem nhanh lỗi phổ biến nhất và viết một ví dụ đúng mới cho mỗi lỗi. Theo thời gian, bạn sẽ thấy lỗi biến mất khỏi bài viết. Nghiên cứu giảng dạy ngôn ngữ cho thấy chu trình nhớ lại chủ động, phản hồi và suy ngẫm xây dựng độ chính xác và lưu loát lâu dài hiệu quả hơn nhiều so với chỉ đọc giải thích ngữ pháp."
       },
-      "tags": [
-        "output",
-        "practice",
-        "confidence"
-      ],
-      "audio": "eng_03.mp3"
+      "tags": ["writing", "output", "retrieval"],
+      "audio": "/audio/eng_04.mp3"
     },
     {
       "slug": "ai-feedback-loop",
-      "keywords_en": [
-        "AI correction",
-        "ChatGPT",
-        "real-time feedback",
-        "personalized learning"
-      ],
-      "keywords_vi": [
-        "sửa lỗi AI",
-        "ChatGPT",
-        "phản hồi tức thì",
-        "học cá nhân hóa"
-      ],
+      "keywords_en": ["AI correction", "ChatGPT", "real-time feedback", "personalized learning"],
+      "keywords_vi": ["sửa lỗi AI", "ChatGPT", "phản hồi tức thì", "học cá nhân hóa"],
       "copy": {
         "en": "Use AI tools like **ChatGPT** or language models to get instant, personalized feedback on your English. Write a paragraph about your day, then ask: 'Correct my grammar and suggest more natural phrasing.' Record a voice memo, transcribe it with Whisper or similar tools, and ask ChatGPT: 'How can I make this sound more fluent?' This creates a **feedback loop** where every output becomes a learning moment. You can also ask AI to generate realistic conversations for specific situations—job interviews, ordering food, making small talk—then practice those scripts aloud. Set weekly goals with AI: 'Give me 5 vocabulary words related to work and example sentences.' Review the examples and use them in your daily output. AI doesn't replace human interaction, but it gives you **unlimited, judgment-free practice** before you step into real conversations. Over time, this accelerates your ability to notice and fix your own mistakes naturally.",
         "vi": "Dùng công cụ AI như **ChatGPT** hoặc các mô hình ngôn ngữ để nhận phản hồi tức thì, cá nhân hóa về tiếng Anh của bạn. Viết một đoạn về ngày của bạn, rồi hỏi: 'Sửa ngữ pháp và gợi ý cách diễn đạt tự nhiên hơn.' Ghi âm giọng nói, chuyển văn bản với Whisper hay công cụ tương tự, và hỏi ChatGPT: 'Làm sao để nghe trôi chảy hơn?' Điều này tạo **vòng phản hồi** nơi mỗi đầu ra trở thành khoảnh khắc học hỏi. Bạn cũng có thể yêu cầu AI tạo hội thoại thực tế cho tình huống cụ thể—phỏng vấn việc, gọi đồ ăn, trò chuyện phiếm—rồi luyện các kịch bản đó to. Đặt mục tiêu hàng tuần với AI: 'Cho tôi 5 từ vựng liên quan công việc và câu ví dụ.' Xem lại ví dụ và dùng chúng trong đầu ra hàng ngày. AI không thay thế tương tác con người, nhưng cho bạn **luyện tập không giới hạn, không phán xét** trước khi bước vào hội thoại thực. Theo thời gian, điều này tăng tốc khả năng nhận ra và tự sửa lỗi một cách tự nhiên."
       },
-      "tags": [
-        "AI",
-        "feedback",
-        "technology"
-      ],
-      "audio": "eng_04.mp3"
-    },
-    {
-      "slug": "spaced-repetition-vocabulary",
-      "keywords_en": [
-        "spaced repetition",
-        "Anki",
-        "vocabulary retention",
-        "memory science"
-      ],
-      "keywords_vi": [
-        "lặp lại cách quãng",
-        "Anki",
-        "ghi nhớ từ vựng",
-        "khoa học trí nhớ"
-      ],
-      "copy": {
-        "en": "**Spaced repetition** is the most scientifically proven method for long-term vocabulary retention. Use apps like **Anki** or Quizlet with spaced repetition algorithms. Instead of cramming 50 words in one night, the system shows you each word at increasing intervals—tomorrow, then 3 days later, then a week, then a month. This timing matches your brain's forgetting curve, so you review words right before you'd forget them. Create your own deck with words you encounter in real life—not random lists. Add context: instead of just 'resilient,' write: 'She remained resilient despite setbacks.' Include audio clips if possible. Spend 10–15 minutes daily reviewing. Within 3 months of consistent spaced repetition, you can internalize 1,000+ words in a way that sticks permanently. Pair this with immersion and output—seeing the words in podcasts, using them in writing—and your **active vocabulary** will grow exponentially faster than passive study alone.",
-        "vi": "**Lặp lại cách quãng** là phương pháp khoa học chứng minh nhất để ghi nhớ từ vựng lâu dài. Dùng app như **Anki** hoặc Quizlet với thuật toán lặp lại cách quãng. Thay vì nhồi 50 từ trong một đêm, hệ thống hiện mỗi từ với khoảng cách tăng dần—ngày mai, rồi 3 ngày sau, rồi một tuần, rồi một tháng. Thời điểm này khớp với đường cong quên của não, nên bạn ôn lại từ đúng lúc sắp quên. Tạo bộ thẻ riêng với từ bạn gặp trong đời thực—không phải danh sách ngẫu nhiên. Thêm ngữ cảnh: thay vì chỉ 'resilient,' viết: 'She remained resilient despite setbacks.' Thêm clip âm thanh nếu có thể. Dành 10–15 phút mỗi ngày ôn. Trong 3 tháng lặp lại cách quãng đều đặn, bạn có thể nội hóa 1,000+ từ theo cách bền vững. Kết hợp với tắm ngôn ngữ và đầu ra—thấy từ trong podcast, dùng chúng khi viết—và **từ vựng chủ động** của bạn sẽ tăng theo cấp số nhân nhanh hơn học thụ động."
-      },
-      "tags": [
-        "vocabulary",
-        "memory",
-        "retention"
-      ],
-      "audio": "eng_05.mp3"
-    },
-    {
-      "slug": "accent-awareness-not-perfection",
-      "keywords_en": [
-        "accent",
-        "clarity",
-        "comprehensibility",
-        "confidence"
-      ],
-      "keywords_vi": [
-        "giọng",
-        "rõ ràng",
-        "dễ hiểu",
-        "tự tin"
-      ],
-      "copy": {
-        "en": "Your goal is not to sound like a native speaker—it's to be **clear and confident**. Many successful English speakers keep their accent and still communicate beautifully because they focus on **comprehensibility**, not perfection. Record yourself speaking and listen for words where you're unclear. Are you swallowing endings? Rushing through syllables? Missing key stress patterns? Focus on fixing those specific issues rather than trying to mimic an entire accent. Practice **minimal pairs**—words like 'ship' vs. 'sheep' or 'bit' vs. 'beat'—to sharpen distinctions that matter. Use tools like ELSA Speak or YouGlish to hear how specific words are pronounced in real contexts. Remember: native speakers have diverse accents too. What matters is that people understand you easily and that you speak with confidence. Over time, through immersion and shadowing, your accent will naturally become clearer—but the real breakthrough is when you stop worrying about sounding 'perfect' and start enjoying **communicating freely**.",
-        "vi": "Mục tiêu của bạn không phải nghe như người bản xứ—mà là **rõ ràng và tự tin**. Nhiều người nói tiếng Anh thành công vẫn giữ giọng của mình và vẫn giao tiếp đẹp vì họ tập trung vào **khả năng hiểu được**, không phải hoàn hảo. Ghi âm mình nói và nghe những từ bạn không rõ. Bạn có nuốt đuôi từ không? Vội vã qua âm tiết? Bỏ mẫu nhấn trọng âm quan trọng? Tập trung sửa những vấn đề cụ thể đó thay vì cố bắt chước cả giọng. Luyện **cặp tối thiểu**—từ như 'ship' vs. 'sheep' hay 'bit' vs. 'beat'—để mài giũa sự khác biệt quan trọng. Dùng công cụ như ELSA Speak hay YouGlish để nghe từ cụ thể được phát âm trong ngữ cảnh thực. Nhớ rằng: người bản xứ cũng có giọng đa dạng. Điều quan trọng là mọi người hiểu bạn dễ dàng và bạn nói với tự tin. Theo thời gian, qua tắm ngôn ngữ và shadowing, giọng bạn sẽ tự nhiên trở nên rõ hơn—nhưng bước đột phá thực sự là khi bạn ngừng lo 'hoàn hảo' và bắt đầu tận hưởng **giao tiếp tự do**."
-      },
-      "tags": [
-        "pronunciation",
-        "accent",
-        "confidence"
-      ],
-      "audio": "eng_06.mp3"
-    },
-    {
-      "slug": "active-listening-note-taking",
-      "keywords_en": [
-        "active listening",
-        "note-taking",
-        "phrase collection",
-        "real-world input"
-      ],
-      "keywords_vi": [
-        "nghe chủ động",
-        "ghi chú",
-        "sưu tập cụm từ",
-        "đầu vào thực tế"
-      ],
-      "copy": {
-        "en": "Move beyond passive listening by turning input into **active learning**. While listening to podcasts, interviews, or talks, pause when you hear a phrase that sounds natural but unfamiliar. Write it down: 'That's a fair point,' 'I couldn't agree more,' 'It slipped my mind.' These are **chunks**—multi-word expressions that native speakers use automatically. Keep a notebook or digital note (phone notes, Notion, Google Doc) where you collect 3–5 chunks per day. Once a week, review your collection and use each chunk in a sentence you write yourself. This process shifts you from recognizing phrases to **producing them naturally**. You'll notice that fluent speakers don't build sentences word by word—they use pre-fabricated chunks. By collecting and practicing these, you sound more natural faster. Bonus: Pair chunks with their emotional tone. 'I'm over the moon' is excitement; 'I'm at my wit's end' is frustration. This helps you use phrases appropriately in real conversations.",
-        "vi": "Vượt qua nghe thụ động bằng cách biến đầu vào thành **học chủ động**. Khi nghe podcast, phỏng vấn hay bài nói, dừng lại khi nghe cụm từ nghe tự nhiên nhưng lạ. Viết lại: 'That's a fair point,' 'I couldn't agree more,' 'It slipped my mind.' Đây là **cụm**—biểu thức nhiều từ mà người bản xứ dùng tự động. Giữ sổ tay hoặc ghi chú số (ghi chú điện thoại, Notion, Google Doc) nơi bạn thu thập 3–5 cụm mỗi ngày. Mỗi tuần, xem lại bộ sưu tập và dùng mỗi cụm trong câu bạn tự viết. Quá trình này chuyển bạn từ nhận ra cụm từ sang **tạo ra chúng tự nhiên**. Bạn sẽ thấy người nói trôi chảy không xây câu từng từ—họ dùng cụm sẵn. Bằng cách thu thập và luyện những cụm này, bạn nghe tự nhiên hơn nhanh hơn. Thêm: Ghép cụm với giọng cảm xúc. 'I'm over the moon' là hào hứng; 'I'm at my wit's end' là bực bội. Điều này giúp bạn dùng cụm từ đúng trong hội thoại thực."
-      },
-      "tags": [
-        "listening",
-        "phrases",
-        "vocabulary"
-      ],
-      "audio": "eng_07.mp3"
-    },
-    {
-      "slug": "reading-for-structure",
-      "keywords_en": [
-        "reading",
-        "sentence structure",
-        "grammar patterns",
-        "writing improvement"
-      ],
-      "keywords_vi": [
-        "đọc",
-        "cấu trúc câu",
-        "mẫu ngữ pháp",
-        "cải thiện viết"
-      ],
-      "copy": {
-        "en": "Reading isn't just for vocabulary—it's for absorbing **sentence structure** and grammar patterns unconsciously. Choose materials slightly above your level: short articles on Medium, simplified news from News in Levels, or graded readers. As you read, don't translate every word. Instead, notice how ideas connect: 'Although...', 'On the other hand...', 'Despite this...'. These **discourse markers** show you how native speakers organize thoughts. After reading a paragraph, try to rewrite it in your own words without looking. This forces you to internalize structure, not just copy it. Read daily for 15–20 minutes. Over time, you'll notice that when you write or speak, complex structures start appearing naturally—because your brain has seen them hundreds of times. Reading builds a mental library of **how English works**, which speeds up both comprehension and production. Pair reading with output: write a short summary or reaction after each article.",
-        "vi": "Đọc không chỉ để học từ vựng—mà để hấp thụ **cấu trúc câu** và mẫu ngữ pháp vô thức. Chọn tài liệu hơi cao hơn trình độ: bài ngắn trên Medium, tin đơn giản từ News in Levels, hay sách phân cấp. Khi đọc, đừng dịch từng từ. Thay vào đó, chú ý cách ý nối: 'Although...', 'On the other hand...', 'Despite this...'. Những **dấu hiệu diễn ngôn** này chỉ cách người bản xứ tổ chức suy nghĩ. Sau khi đọc một đoạn, thử viết lại bằng từ của bạn mà không nhìn. Điều này ép bạn nội hóa cấu trúc, không chỉ sao chép. Đọc hàng ngày 15–20 phút. Theo thời gian, bạn sẽ thấy khi viết hoặc nói, cấu trúc phức tạp bắt đầu xuất hiện tự nhiên—vì não đã thấy chúng hàng trăm lần. Đọc xây thư viện tâm trí về **cách tiếng Anh hoạt động**, tăng tốc cả hiểu và tạo. Kết hợp đọc với đầu ra: viết tóm tắt ngắn hoặc phản ứng sau mỗi bài."
-      },
-      "tags": [
-        "reading",
-        "grammar",
-        "structure"
-      ],
-      "audio": "eng_08.mp3"
-    },
-    {
-      "slug": "conversation-partners-real-practice",
-      "keywords_en": [
-        "conversation practice",
-        "language exchange",
-        "speaking confidence",
-        "real interaction"
-      ],
-      "keywords_vi": [
-        "luyện hội thoại",
-        "trao đổi ngôn ngữ",
-        "tự tin nói",
-        "tương tác thực"
-      ],
-      "copy": {
-        "en": "All the immersion, shadowing, and output in the world won't replace **real conversation**. Find conversation partners through apps like Tandem, HelloTalk, or italki. Start with language exchange (free) where you help someone with your native language in exchange for English practice. If budget allows, book 1–2 sessions per week with an online tutor (italki teachers cost $5–15/hour). In conversations, don't aim for perfection—aim for **communication**. If you don't know a word, describe it: 'The thing you use to open bottles' instead of giving up. Ask your partner to correct major mistakes but not interrupt constantly. Record sessions (with permission) and review them later. Notice where you hesitated, which words you avoided, and which topics felt easiest. Over time, real conversation builds **fluency under pressure**—the ability to think and speak at the same time. Pair this with solo practice and AI feedback, and your progress accelerates dramatically. The goal: 2–3 real conversations per week, even if they're just 15 minutes.",
-        "vi": "Tất cả tắm ngôn ngữ, shadowing và đầu ra trên đời không thay thế **hội thoại thực**. Tìm đối tác hội thoại qua app như Tandem, HelloTalk hay italki. Bắt đầu với trao đổi ngôn ngữ (miễn phí) nơi bạn giúp ai đó với tiếng mẹ đẻ đổi lấy luyện tiếng Anh. Nếu ngân sách cho phép, đặt 1–2 buổi mỗi tuần với gia sư online (giáo viên italki giá $5–15/giờ). Trong hội thoại, đừng nhắm hoàn hảo—nhắm **giao tiếp**. Nếu không biết từ, hãy mô tả: 'The thing you use to open bottles' thay vì bỏ cuộc. Yêu cầu đối tác sửa lỗi lớn nhưng đừng ngắt liên tục. Ghi âm buổi (có cho phép) và xem lại sau. Chú ý nơi bạn ngập ngừng, từ nào bạn tránh, và chủ đề nào dễ nhất. Theo thời gian, hội thoại thực xây **khả năng trôi chảy dưới áp lực**—khả năng suy nghĩ và nói cùng lúc. Kết hợp với luyện solo và phản hồi AI, tiến bộ tăng tốc đáng kể. Mục tiêu: 2–3 hội thoại thực mỗi tuần, dù chỉ 15 phút."
-      },
-      "tags": [
-        "conversation",
-        "speaking",
-        "practice"
-      ],
-      "audio": "eng_09.mp3"
-    },
-    {
-      "slug": "building-daily-system",
-      "keywords_en": [
-        "daily routine",
-        "habit stacking",
-        "consistency",
-        "long-term progress"
-      ],
-      "keywords_vi": [
-        "thói quen hàng ngày",
-        "xếp chồng thói quen",
-        "kiên trì",
-        "tiến bộ lâu dài"
-      ],
-      "copy": {
-        "en": "The secret to fluency is not intensity—it's **consistency**. Build a daily English system that fits your life: 10 minutes of comprehensible input while getting ready, 5 minutes of shadowing on your commute, 10 minutes of Anki during lunch, 15 minutes of output (writing or speaking) before bed. Use **habit stacking**: pair English practice with existing routines. 'After I pour my coffee, I'll listen to a podcast.' 'Before I check social media, I'll review my flashcards.' Track your streak—30 days, 60 days, 90 days. The goal is not perfection but **presence**: showing up every day, even if just for 10 minutes. Studies show that 20 minutes daily for 6 months beats 2 hours twice a week. Your brain needs repeated, spaced exposure to rewire itself. Set weekly reviews: What went well? What felt hard? Adjust your system as needed. Over time, English stops feeling like study and starts feeling like **part of your life**. That's when real transformation happens—when practice becomes automatic, not effortful.",
-        "vi": "Bí mật đến khả năng trôi chảy không phải cường độ—mà là **kiên trì**. Xây hệ thống tiếng Anh hàng ngày phù hợp với đời sống: 10 phút đầu vào dễ hiểu lúc chuẩn bị sáng, 5 phút shadowing trên đường đi, 10 phút Anki lúc ăn trưa, 15 phút đầu ra (viết hoặc nói) trước khi ngủ. Dùng **xếp chồng thói quen**: ghép luyện tiếng Anh với thói quen sẵn có. 'Sau khi rót cà phê, tôi sẽ nghe podcast.' 'Trước khi check mạng xã hội, tôi sẽ xem lại thẻ ghi nhớ.' Theo dõi chuỗi—30 ngày, 60 ngày, 90 ngày. Mục tiêu không phải hoàn hảo mà **có mặt**: xuất hiện mỗi ngày, dù chỉ 10 phút. Nghiên cứu cho thấy 20 phút mỗi ngày trong 6 tháng thắng 2 giờ hai lần một tuần. Não cần tiếp xúc lặp lại, cách quãng để tự dây lại. Đặt đánh giá hàng tuần: Cái gì tốt? Cái gì khó? Điều chỉnh hệ thống khi cần. Theo thời gian, tiếng Anh ngừng cảm giác như học và bắt đầu cảm giác như **một phần đời sống**. Đó là lúc biến đổi thực sự xảy ra—khi luyện tập trở nên tự động, không gồng."
-      },
-      "tags": [
-        "habits",
-        "routine",
-        "consistency"
-      ],
-      "audio": "eng_10.mp3"
+      "tags": ["AI", "feedback", "technology"],
+      "audio": "/audio/eng_03.mp3"
     }
   ]
 }
