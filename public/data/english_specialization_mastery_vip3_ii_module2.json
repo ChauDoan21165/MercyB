@@ -1,0 +1,165 @@
+{
+  "id": "english_specialization_mastery_vip3_ii_module2",
+  "tier": "VIP 3",
+  "title": {
+    "en": "VIP3 II – English Specialization Mastery: Advanced Module",
+    "vi": "VIP3 II – Tinh Thông Tiếng Anh Chuyên Sâu: Mô-đun Nâng Cao"
+  },
+  "content": {
+    "en": "A second advanced module of VIP3 II – English Specialization Mastery. These ten systems train expert-level processing: cognitive load control, semantic density, discourse markers, genre awareness, argument frameworks, abstract text handling, high-level paraphrasing, data expression, metacognitive training, and register shifting.",
+    "vi": "Mô-đun nâng cao thứ hai của VIP3 II – Tinh Thông Tiếng Anh Chuyên Sâu. Mười hệ thống này rèn luyện xử lý ở mức chuyên gia: kiểm soát tải nhận thức, mật độ nghĩa, liên từ diễn ngôn, nhận diện thể loại, khung lập luận, xử lý văn bản trừu tượng, diễn đạt lại nâng cao, nói về số liệu, luyện siêu nhận thức và chuyển đổi sắc thái."
+  },
+  "entries": [
+    {
+      "slug": "cognitive-load-management",
+      "keywords_en": ["cognitive load", "processing", "fluency"],
+      "keywords_vi": ["tải nhận thức", "xử lý", "trôi chảy"],
+      "copy": {
+        "en": "High-level English performance depends less on vocabulary size and more on managing cognitive load, the mental effort needed to process meaning, structure, and expression at the same time. When load is too high, fluency breaks down even if your grammar is strong. The key is reducing the number of decisions your brain must make. First, rely on pre-built language chunks instead of building every sentence from zero: The main point is that…, One factor to consider is…, From my perspective…. These patterns lower effort and free attention for ideas. Second, group information into thought units with soft pauses: idea | detail | example. This prevents overwhelm and keeps your message clear for the listener. Third, avoid mental multitasking; focus either on accuracy or on speed in each exercise, not both. Alternate slow, careful production with faster, approximate production to build dual-channel control. Over time, cognitive load drops and you can handle long explanations, complex questions, and spontaneous discussions with stable, confident flow.",
+        "vi": "Hiệu suất tiếng Anh nâng cao phụ thuộc ít vào lượng từ vựng và nhiều hơn vào quản lý tải nhận thức, tức là nỗ lực tinh thần để xử lý ý nghĩa, cấu trúc và cách diễn đạt cùng lúc. Khi tải quá cao, độ trôi chảy sụp đổ dù ngữ pháp vẫn vững. Mấu chốt là giảm số quyết định mà não phải đưa ra. Đầu tiên, dựa vào cụm từ dựng sẵn thay vì tự xây mọi câu từ số 0: The main point is that…, One factor to consider is…, From my perspective…. Những mẫu này giảm nặng nề và giải phóng sự chú ý cho ý tưởng. Thứ hai, chia thông tin thành đơn vị bằng nhịp ngắt nhẹ: ý chính | chi tiết | ví dụ. Điều này tránh quá tải và giúp thông điệp rõ hơn với người nghe. Thứ ba, tránh đa nhiệm trong đầu; mỗi lần luyện chỉ tập trung hoặc vào độ chính xác, hoặc vào tốc độ. Luân phiên giai đoạn chậm, cẩn thận với giai đoạn nhanh, tương đối để xây khả năng kiểm soát kép. Lâu dần, tải nhận thức giảm, cho phép bạn xử lý diễn giải dài, câu hỏi phức tạp và thảo luận tự phát với sự ổn định và tự tin."
+      },
+      "tags": ["cognition", "fluency", "advanced"],
+      "audio": "En_Spe_mas_vip3_ii_cog.mp3"
+    },
+    {
+      "slug": "semantic-density-precision",
+      "keywords_en": ["semantic density", "precision", "word choice"],
+      "keywords_vi": ["mật độ nghĩa", "chính xác", "chọn từ"],
+      "copy": {
+        "en": "Semantic density is the ability to pack a lot of meaning into few words. Specialists choose words that carry function, emotion, and nuance at the same time. Instead of saying very big change, you might say a major shift; instead of makes things better, improves outcomes. To train this, take a long sentence and compress it into a shorter version without losing core meaning. Ask: which words are essential payload and which are decoration? Build a small bank of high-density words such as crucial, robust, subtle, significant, fragile, systemic. Then practice upgrading simple phrases in your writing and speaking. Avoid overloading every sentence; the goal is not to sound fancy but to express ideas sharply. Over time, you will speak and write with fewer words, clearer impact, and a more professional voice.",
+        "vi": "Mật độ nghĩa là khả năng nén nhiều ý vào ít từ. Người dùng tiếng Anh chuyên sâu chọn từ vừa mang chức năng, cảm xúc vừa có sắc thái. Thay vì nói very big change, bạn có thể dùng a major shift; thay cho makes things better, dùng improves outcomes. Để luyện, hãy lấy một câu dài và rút gọn thành phiên bản ngắn mà không mất ý chính. Hãy hỏi: từ nào là tải trọng chính, từ nào chỉ là trang trí? Xây ngân hàng nhỏ các từ dày nghĩa như crucial, robust, subtle, significant, fragile, systemic. Sau đó luyện nâng cấp cụm đơn giản trong bài viết và lời nói. Tránh nhồi nhét mọi câu; mục tiêu không phải hoa mỹ mà là diễn đạt sắc nét. Lâu dần, bạn nói và viết ít từ hơn nhưng tác động rõ hơn và giọng chuyên nghiệp hơn."
+      },
+      "tags": ["vocabulary", "precision"],
+      "audio": "En_Spe_mas_vip3_ii_dense.mp3"
+    },
+    {
+      "slug": "expert-discourse-markers",
+      "keywords_en": ["discourse markers", "flow", "reasoning"],
+      "keywords_vi": ["liên từ diễn ngôn", "mạch ý", "lập luận"],
+      "copy": {
+        "en": "Discourse markers are the steering wheel of expert English. They guide the listener through contrast, cause, concession, and progression. At specialization level, you move beyond basic but and because into markers like nonetheless, in contrast, consequently, moreover, on the other hand, nevertheless, subsequently. Each one quietly signals how ideas relate. Build mini-chains such as: claim + however + limit, or background + therefore + decision. Practice by taking a paragraph and rewriting it with clearer markers, then reading it aloud to feel the improved flow. In speaking, start using these markers as anchors when you change direction: On the other hand, there is a risk…, Meanwhile, the team was…. Mastery of discourse markers makes your reasoning sound structured, calm, and persuasive.",
+        "vi": "Liên từ diễn ngôn là tay lái của tiếng Anh ở mức chuyên sâu. Chúng dẫn người nghe qua các mối quan hệ tương phản, nguyên nhân, nhượng bộ và tiến trình. Ở mức này, bạn vượt khỏi but và because để dùng các từ như nonetheless, in contrast, consequently, moreover, on the other hand, nevertheless, subsequently. Mỗi từ âm thầm báo hiệu cách ý tưởng liên kết. Hãy xây chuỗi nhỏ như: luận điểm + however + giới hạn, hoặc bối cảnh + therefore + quyết định. Luyện bằng cách viết lại một đoạn văn với liên từ rõ hơn rồi đọc to để cảm nhận nhịp mượt hơn. Khi nói, dùng các liên từ này như mốc khi đổi hướng: On the other hand, there is a risk…, Meanwhile, the team was…. Làm chủ liên từ diễn ngôn khiến lập luận của bạn có cấu trúc, bình tĩnh và thuyết phục."
+      },
+      "tags": ["connectors", "reasoning"],
+      "audio": "En_Spe_mas_vip3_ii_markers.mp3"
+    },
+    {
+      "slug": "genre-based-mastery",
+      "keywords_en": ["genre", "adaptation", "flexibility"],
+      "keywords_vi": ["thể loại", "thích nghi", "linh hoạt"],
+      "copy": {
+        "en": "Different English genres follow different rules of expectation. An email, a lab report, a policy note, and a conference talk each use distinct patterns of tone, structure, and detail. Specialized learners train genre awareness: before producing language, they ask What is this text trying to do and for whom?. Build a genre map with four or five key types you use most, such as academic essays, business emails, slide decks, and summaries. For each, collect example openings, typical verbs, and common structures. Then practice rewriting one message into multiple genres, for instance a research result as an academic paragraph, a manager email, and a slide caption. Genre-based mastery lets you adapt quickly to new contexts without rewriting your entire mental grammar each time.",
+        "vi": "Mỗi thể loại tiếng Anh có bộ quy ước riêng. Email, báo cáo thí nghiệm, công văn và bài nói hội nghị đều có mẫu giọng điệu, cấu trúc và độ chi tiết khác nhau. Người học chuyên sâu rèn khả năng nhận diện thể loại: trước khi tạo ngôn ngữ, họ hỏi Văn bản này cố làm gì và cho ai?. Hãy lập bản đồ thể loại với bốn hoặc năm loại bạn dùng nhiều nhất như bài luận học thuật, email công việc, slide thuyết trình và bản tóm tắt. Với mỗi loại, sưu tầm mẫu mở đầu, động từ thường gặp và cấu trúc điển hình. Sau đó luyện viết lại cùng một nội dung theo nhiều thể loại, ví dụ kết quả nghiên cứu dưới dạng đoạn học thuật, email gửi cấp trên và chú thích slide. Làm chủ thể loại giúp bạn thích nghi nhanh mà không phải xây lại toàn bộ ngữ pháp trong đầu."
+      },
+      "tags": ["genre", "adaptation"],
+      "audio": "En_Spe_mas_vip3_ii_genre.mp3"
+    },
+    {
+      "slug": "argumentation-frameworks",
+      "keywords_en": ["argumentation", "frameworks", "logic"],
+      "keywords_vi": ["lập luận", "khung", "logic"],
+      "copy": {
+        "en": "Argumentation frameworks turn opinions into structured reasoning. At an advanced level, you stop saying I think repeatedly and start building claim chains. Three practical frameworks are: PREP (Point, Reason, Example, Point again), Problem–Cause–Solution, and Claim–Counterclaim–Rebuttal. For example, in a meeting you might say: point, why it matters, a brief example, and a clear restatement. In writing, you can dedicate one paragraph to each step. Practice by taking a topic you care about and drafting a PREP response, then rewriting it as Problem–Cause–Solution. This builds flexibility and prevents circular arguments. With time, your English arguments feel less emotional and more evidence-based, which increases your influence in academic and professional settings.",
+        "vi": "Khung lập luận biến ý kiến thành lý lẽ có cấu trúc. Ở mức nâng cao, bạn ngừng chỉ lặp lại I think và bắt đầu xây chuỗi luận điểm. Ba khung thực dụng là: PREP (Point, Reason, Example, Point again), Vấn đề–Nguyên nhân–Giải pháp và Luận điểm–Phản biện–Bác bỏ. Ví dụ trong cuộc họp, bạn có thể nêu ý chính, giải thích tầm quan trọng, đưa ví dụ ngắn rồi nhấn lại. Trong bài viết, mỗi bước có thể là một đoạn. Hãy luyện với một chủ đề bạn quan tâm, viết theo PREP rồi viết lại theo Vấn đề–Nguyên nhân–Giải pháp. Điều này tăng độ linh hoạt và tránh lập luận vòng vo. Lâu dần, lập luận tiếng Anh bớt cảm tính và dựa nhiều hơn vào bằng chứng, giúp bạn có sức nặng hơn trong môi trường học thuật và chuyên nghiệp."
+      },
+      "tags": ["argumentation", "logic"],
+      "audio": "En_Spe_mas_vip3_ii_arg.mp3"
+    },
+    {
+      "slug": "abstract-theoretical-processing",
+      "keywords_en": ["abstract", "theoretical", "comprehension"],
+      "keywords_vi": ["trừu tượng", "lý thuyết", "hiểu"],
+      "copy": {
+        "en": "Abstract and theoretical English often feels heavy because the language names relationships between ideas, not physical objects. Words like framework, dimension, paradigm, implication, assumption point to mental structures. To process these texts, stop trying to visualize every noun. Instead, map roles: which concept is the container, which is the example, which is the cause, which is the effect? Use simple 3D shapes on paper if needed: boxes for concepts, arrows for influence. Summarize each dense paragraph with a plain-language version, as if explaining to a friend outside the field. Over time, you build an internal library of abstract patterns and theoretical English stops feeling like a fog and starts feeling like a set of familiar moves.",
+        "vi": "Tiếng Anh trừu tượng và lý thuyết thường nặng nề vì ngôn ngữ mô tả quan hệ giữa ý tưởng, không phải vật cụ thể. Các từ như framework, dimension, paradigm, implication, assumption chỉ cấu trúc trong đầu. Để xử lý dạng văn này, đừng cố hình dung mọi danh từ. Thay vào đó, hãy gắn vai trò: khái niệm nào là khung chứa, cái nào là ví dụ, cái nào là nguyên nhân, cái nào là hệ quả? Nếu cần, hãy vẽ hình đơn giản: ô vuông cho khái niệm, mũi tên cho tác động. Tóm tắt mỗi đoạn dày bằng phiên bản ngôn ngữ đời thường như đang giải thích cho người ngoài ngành. Lâu dần, bạn xây được thư viện mẫu trừu tượng bên trong, và tiếng Anh lý thuyết không còn mù mờ mà trở thành chuỗi động tác quen thuộc."
+      },
+      "tags": ["abstract", "reading"],
+      "audio": "En_Spe_mas_vip3_ii_abs.mp3"
+    },
+    {
+      "slug": "high-level-paraphrasing",
+      "keywords_en": ["paraphrasing", "reframing", "clarity"],
+      "keywords_vi": ["diễn đạt lại", "tái khung", "rõ ràng"],
+      "copy": {
+        "en": "High-level paraphrasing is more than changing words; it re-expresses meaning for a new audience or purpose. You might simplify dense theory for a client, or restate a complex question before answering it. Use three moves: compression (shorten), expansion (add clarity), and angle-shift (change perspective). For example, a technical line such as The intervention yielded marginal but statistically significant improvements can become The method made a small but reliable difference. Practice by taking sentences from articles and rewriting them in two styles: plain and professional. In conversation, try restating what someone said before replying: So if I understand correctly, you are worried about…. This proves understanding and buys processing time, while also training your brain to control meaning flexibly.",
+        "vi": "Diễn đạt lại nâng cao không chỉ là thay từ mà là biểu đạt lại ý cho đối tượng hoặc mục đích mới. Bạn có thể phải đơn giản hóa lý thuyết cho khách hàng, hoặc lặp lại một câu hỏi phức tạp trước khi trả lời. Hãy dùng ba động tác: nén (rút ngắn), mở (thêm rõ ràng) và đổi góc nhìn (thay điểm nhấn). Ví dụ câu kỹ thuật The intervention yielded marginal but statistically significant improvements có thể thành The method made a small but reliable difference. Hãy luyện lấy câu trong bài báo và viết lại theo hai kiểu: giản dị và chuyên nghiệp. Khi trò chuyện, thử, thử lặp lại ý người khác trước khi phản hồi: So if I understand correctly, you are worried about…. Điều này chứng minh bạn hiểu, tạo thêm thời gian xử lý và rèn khả năng điều khiển ý nghĩa linh hoạt."
+      },
+      "tags": ["paraphrasing", "clarity"],
+      "audio": "En_Spe_mas_vip3_ii_para.mp3"
+    },
+    {
+      "slug": "data-driven-expression",
+      "keywords_en": ["data", "numbers", "description"],
+      "keywords_vi": ["dữ liệu", "con số", "mô tả"],
+      "copy": {
+        "en": "Data-driven English is the skill of talking about numbers without drowning people in detail. Instead of reading every figure, highlight pattern, direction, and impact. Use frames such as overall trend, compared to, slightly higher, roughly one in three, a sharp drop, a gradual increase. For example, instead of The percentage went from 17.2 to 19.8, say There was a modest increase of just over two percentage points. Practice by turning raw tables or charts into short spoken summaries: one sentence for trend, one for contrast, one for implication. This makes your English sound analytical, calm, and decision-focused, especially in meetings and presentations.",
+        "vi": "Tiếng Anh về dữ liệu là kỹ năng nói về con số mà không làm người nghe chìm trong chi tiết. Thay vì đọc mọi giá trị, hãy nhấn mẫu hình, hướng thay đổi và tác động. Dùng khung như overall trend, compared to, slightly higher, roughly one in three, a sharp drop, a gradual increase. Ví dụ, thay vì The percentage went from 17.2 to 19.8, bạn có thể nói There was a modest increase of just over two percentage points. Hãy luyện biến bảng số hoặc biểu đồ thành đoạn tóm tắt ngắn: một câu cho xu hướng, một câu cho tương phản, một câu cho hàm ý. Điều này khiến tiếng Anh của bạn phân tích, bình tĩnh và hướng quyết định hơn, đặc biệt trong họp và thuyết trình."
+      },
+      "tags": ["data", "speaking"],
+      "audio": "En_Spe_mas_vip3_ii_data.mp3"
+    },
+    {
+      "slug": "metacognitive-training",
+      "keywords_en": ["metacognition", "awareness", "learning"],
+      "keywords_vi": ["siêu nhận thức", "nhận biết", "học"],
+      "copy": {
+        "en": "Metacognitive training means watching how you use English while you use it. Specialists regularly zoom out and ask: What exactly is difficult here? Word choice, structure, speed, or confidence?. During reading, notice where your attention drops. During listening, mark the moment you get lost. During speaking, observe whether you freeze at the level of grammar, vocabulary, or ideas. Keep a simple reflection log after key tasks with three lines: what worked, what was hard, what you will try next time. This habit turns every activity into data for improvement instead of a pass or fail experience. Over time, you become your own coach, adjusting methods and focus instead of repeating the same practice and hoping for different results.",
+        "vi": "Luyện siêu nhận thức nghĩa là quan sát cách bạn dùng tiếng Anh ngay trong lúc dùng. Người học chuyên sâu thường xuyên thu nhỏ màn hình và tự hỏi: Chính xác thì chỗ khó là gì? Chọn từ, cấu trúc, tốc độ hay sự tự tin?. Khi đọc, để ý đoạn bạn mất tập trung. Khi nghe, đánh dấu khoảnh khắc bạn bị lạc. Khi nói, quan sát xem bạn đứng hình vì ngữ pháp, từ vựng hay ý tưởng. Giữ một nhật ký phản chiếu đơn giản sau các hoạt động quan trọng với ba dòng: điều làm tốt, điều khó, điều sẽ thử lần tới. Thói quen này biến mọi hoạt động thành dữ liệu cải thiện thay vì trải nghiệm đỗ–trượt. Lâu dần, bạn trở thành huấn luyện viên của chính mình, điều chỉnh cách học và trọng tâm thay vì lặp lại cùng một kiểu luyện tập rồi hy vọng kết quả khác."
+      },
+      "tags": ["metacognition", "learning"],
+      "audio": "En_Spe_mas_vip3_ii_meta.mp3"
+    },
+    {
+      "slug": "register-shifting-style-control",
+      "keywords_en": ["register", "style", "context"],
+      "keywords_vi": ["sắc thái", "phong cách", "bối cảnh"],
+      "copy": {
+        "en": "Register shifting is the art of adjusting formality and style without changing your core message. In English, the same idea can sound casual, neutral, or formal. Casual: Can you send it over?; neutral: Could you send it to me?; formal: I would appreciate it if you could send it at your convenience. Specialists build three bands of expression and move between them smoothly depending on audience, medium, and stakes. Practice by writing one message in three registers, then reading them aloud and noticing posture, tone, and speed changes. In real life, start slightly more formal and relax if the other person does. Controlled register shifting protects relationships, avoids offence, and makes you sound socially intelligent across cultures.",
+        "vi": "Chuyển đổi sắc thái là nghệ thuật thay đổi mức độ trang trọng và phong cách mà không đổi nội dung. Cùng một ý trong tiếng Anh có thể nghe thân mật, trung tính hoặc trang trọng. Thân mật: Can you send it over?; trung tính: Could you send it to me?; trang trọng: I would appreciate it if you could send it at your convenience. Người dùng chuyên sâu xây ba dải biểu đạt và di chuyển mượt giữa chúng tùy đối tượng, kênh giao tiếp và mức độ quan trọng. Hãy luyện viết một thông điệp theo ba sắc thái rồi đọc to để cảm nhận sự khác biệt về tư thế, giọng và nhịp. Trong thực tế, hãy bắt đầu hơi trang trọng rồi nới lỏng nếu người kia thân mật hơn. Khả năng chuyển sắc thái có kiểm soát bảo vệ mối quan hệ, tránh gây khó chịu và giúp bạn trông tinh tế trong nhiều nền văn hóa."
+      },
+      "tags": ["register", "style"],
+      "audio": "En_Spe_mas_vip3_ii_reg.mp3"
+    }
+  ],
+  "keywords": {
+    "english_specialization_mastery_vip3_ii_module2": {
+      "en": [
+        "cognitive load",
+        "semantic density",
+        "discourse markers",
+        "genre mastery",
+        "argument frameworks",
+        "abstract processing",
+        "paraphrasing",
+        "data expression",
+        "metacognition",
+        "register shift"
+      ],
+      "vi": [
+        "tải nhận thức",
+        "mật độ nghĩa",
+        "liên từ diễn ngôn",
+        "thể loại",
+        "khung lập luận",
+        "trừu tượng",
+        "diễn đạt lại",
+        "dữ liệu",
+        "siêu nhận thức",
+        "chuyển sắc thái"
+      ]
+    }
+  },
+  "meta": {
+    "created_at": "2025-11-17T02:11:00+07:00",
+    "updated_at": "2025-11-17T02:11:00+07:00",
+    "entry_count": 10,
+    "artifact_set_id": "english-specialization-mastery-vip3-ii-module2-2025",
+    "data_format_version": "MercyBlade-Core-v1.3",
+    "room_color": "#7C3AED",
+    "special_theme": "advanced-specialization",
+    "tier": "vip3",
+    "origin": "vip3_ii_module2 + short_audio_names",
+    "audio_naming_convention": "short_abbrev",
+    "validation_script": "node scripts/validate-audio-content-match.js public/data/rooms/english_specialization_mastery_vip3_ii_module2.json"
+  }
+}
