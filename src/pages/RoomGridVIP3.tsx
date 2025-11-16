@@ -98,60 +98,60 @@ const RoomGridVIP3 = () => {
                 <Building2 className="h-8 w-8" style={{ color: 'hsl(var(--vip3-primary))' }} />
                 <Sparkles className="h-8 w-8" style={{ color: 'hsl(var(--vip3-gold))' }} />
                 <h1 className="text-4xl font-bold bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
-                  VIP3 Apartments
+                  VIP3 Premium Rooms
                 </h1>
               </div>
               <p className="text-lg text-gray-700">
-                Căn Hộ VIP3 Chuyên Biệt
+                Phòng VIP3 Chuyên Biệt
               </p>
               <p className="text-sm text-gray-600">
                 {(() => {
                   const vip3Rooms = ALL_ROOMS.filter(r => r.tier === 'vip3');
-                  const apartments = new Set(vip3Rooms.map(r => 
+                  const groups = new Set(vip3Rooms.map(r => 
                     r.id.includes('vip3_ii') ? 'VIP3 II' : 'VIP3 I'
                   ));
-                  return `${apartments.size} apartments with ${vip3Rooms.length} exclusive rooms`;
+                  return `${groups.size} specialized collections with ${vip3Rooms.length} exclusive rooms`;
                 })()}
               </p>
             </div>
           </div>
 
-          {/* Apartments - organized by specialization */}
+          {/* VIP3 Collections - organized by specialization */}
           {(() => {
             const vip3Rooms = ALL_ROOMS.filter(r => r.tier === 'vip3');
             
-            // Group rooms by apartment
-            const roomsByApartment: Record<string, typeof vip3Rooms> = {};
+            // Group rooms by collection
+            const roomsByCollection: Record<string, typeof vip3Rooms> = {};
             vip3Rooms.forEach(room => {
-              const apartment = room.id.includes('vip3_ii') 
+              const collection = room.id.includes('vip3_ii') 
                 ? 'VIP3 II – English Specialization Mastery' 
                 : 'VIP3 I – Core Premium Rooms';
-              if (!roomsByApartment[apartment]) {
-                roomsByApartment[apartment] = [];
+              if (!roomsByCollection[collection]) {
+                roomsByCollection[collection] = [];
               }
-              roomsByApartment[apartment].push(room);
+              roomsByCollection[collection].push(room);
             });
             
-            // Sort apartments to show VIP3 I first
-            const sortedApartments = Object.entries(roomsByApartment).sort(([a], [b]) => {
+            // Sort collections to show VIP3 I first
+            const sortedCollections = Object.entries(roomsByCollection).sort(([a], [b]) => {
               if (a.includes('VIP3 I')) return -1;
               if (b.includes('VIP3 I')) return 1;
               return a.localeCompare(b);
             });
 
-            return sortedApartments.map(([apartmentName, rooms]) => (
-              <div key={apartmentName} className="mb-12">
-                {/* Apartment Header */}
+            return sortedCollections.map(([collectionName, rooms]) => (
+              <div key={collectionName} className="mb-12">
+                {/* Collection Header */}
                 <div className="mb-6 bg-white/50 backdrop-blur-sm rounded-lg p-6 border-2" style={{ borderColor: 'hsl(var(--vip3-primary))' }}>
                   <div className="flex items-center gap-3 mb-2">
                     <Building2 className="h-8 w-8" style={{ color: 'hsl(var(--vip3-primary))' }} />
                     <h2 className="text-3xl font-bold text-gray-800">
-                      {apartmentName}
+                      {collectionName}
                     </h2>
                   </div>
                   <p className="text-gray-600 ml-11">
                     {rooms.length} specialized room{rooms.length !== 1 ? 's' : ''} • 
-                    {apartmentName.includes('English') ? ' Advanced Grammar & Academic English' : ' Diverse Premium Topics'}
+                    {collectionName.includes('English') ? ' Advanced Grammar & Academic English' : ' Diverse Premium Topics'}
                   </p>
                 </div>
 
