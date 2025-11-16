@@ -140,7 +140,16 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "weight-loss-and-fitness-vip3": "data/Weight_Loss_And_Fitness_vip3.json",
   "confidence-vip3": "data/confidence_vip3.json",
   "sleep-improvement-vip2": "data/sleep_Improvement_vip2.json",
-  "finding-gods-peace-free": "data/Finding_Gods_Peace_free.json"
+  "finding-gods-peace-free": "data/Finding_Gods_Peace_free.json",
+  "build-skills-vip4-career-3": "data/Build_Skills_vip4_career_3.json",
+  "build-skills-vip4-career-3-ii": "data/Build_Skills_vip4_career_3_II.json",
+  "discover-self-vip4-career-1": "data/Discover_Self_vip4_career_1.json",
+  "explore-world-vip4-career-i-2": "data/Explore_World_vip4_career_I_2.json",
+  "explore-world-vip4-career-ii-2": "data/Explore_World_vip4_career_II_2.json",
+  "god-with-us-free": "data/God_With_Us_free.json",
+  "grow-wealth-vip4-career-6": "data/Grow_Wealth_vip4_career_6.json",
+  "launch-career-vip4-career-4-ii": "data/Launch_Career_vip4_career_4_II.json",
+  "strategy-in-life-advanced-tactics-ii-alt-vip3": "data/Strategy_in_Life_Advanced_Tactics_II_vip3.json"
 };
 
 /**

@@ -957,5 +957,68 @@ export const roomDataMap: Record<string, RoomData> = {
       "nameVi": "Tìm Bình An Của Thiên Chúa",
       "tier": "free",
       "hasData": true
+  },
+  "build-skills-vip4-career-3": {
+      "id": "build-skills-vip4-career-3",
+      "nameEn": "Build Skills (Career 3)",
+      "nameVi": "Xây Dựng Kỹ Năng (Nghề Nghiệp 3)",
+      "tier": "vip4",
+      "hasData": true
+  },
+  "build-skills-vip4-career-3-ii": {
+      "id": "build-skills-vip4-career-3-ii",
+      "nameEn": "Build Skills II (Career 3)",
+      "nameVi": "Xây Dựng Kỹ Năng II (Nghề Nghiệp 3)",
+      "tier": "vip4",
+      "hasData": true
+  },
+  "discover-self-vip4-career-1": {
+      "id": "discover-self-vip4-career-1",
+      "nameEn": "Discover Self (Career 1)",
+      "nameVi": "Khám Phá Bản Thân (Nghề Nghiệp 1)",
+      "tier": "vip4",
+      "hasData": true
+  },
+  "explore-world-vip4-career-i-2": {
+      "id": "explore-world-vip4-career-i-2",
+      "nameEn": "Explore World I (Career 2)",
+      "nameVi": "Khám Phá Thế Giới I (Nghề Nghiệp 2)",
+      "tier": "vip4",
+      "hasData": true
+  },
+  "explore-world-vip4-career-ii-2": {
+      "id": "explore-world-vip4-career-ii-2",
+      "nameEn": "Explore World II (Career 2)",
+      "nameVi": "Khám Phá Thế Giới II (Nghề Nghiệp 2)",
+      "tier": "vip4",
+      "hasData": true
+  },
+  "god-with-us-free": {
+      "id": "god-with-us-free",
+      "nameEn": "God With Us",
+      "nameVi": "Chúa Ở Cùng Chúng Ta",
+      "tier": "free",
+      "hasData": true
+  },
+  "grow-wealth-vip4-career-6": {
+      "id": "grow-wealth-vip4-career-6",
+      "nameEn": "Grow Wealth (Career 6)",
+      "nameVi": "Phát Triển Tài Sản (Nghề Nghiệp 6)",
+      "tier": "vip4",
+      "hasData": true
+  },
+  "launch-career-vip4-career-4-ii": {
+      "id": "launch-career-vip4-career-4-ii",
+      "nameEn": "Launch Career II (Career 4)",
+      "nameVi": "Khởi Nghiệp II (Nghề Nghiệp 4)",
+      "tier": "vip4",
+      "hasData": true
+  },
+  "strategy-in-life-advanced-tactics-ii-alt-vip3": {
+      "id": "strategy-in-life-advanced-tactics-ii-alt-vip3",
+      "nameEn": "Strategy in Life: Advanced Tactics II (Alt)",
+      "nameVi": "Chiến Lược Trong Đời: Chiến Thuật Nâng Cao II (Thay Thế)",
+      "tier": "vip3",
+      "hasData": true
   }
 };
