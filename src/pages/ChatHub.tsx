@@ -175,6 +175,14 @@ const ChatHub = () => {
           clearCustomKeywordMappings();
         }
         
+        // Load enhanced keywords (emotion-based colors for adjectives, grayscale for verbs)
+        if (result.merged && result.merged.length > 0 && result.merged[0].highlighted_words) {
+          loadEnhancedKeywords(result.merged[0].highlighted_words);
+          console.log(`Loaded enhanced keyword colors for ${roomId}`);
+        } else {
+          clearEnhancedKeywords();
+        }
+        
         // Don't add welcome message to chat - it's displayed in the card above
         setMainMessages([]);
       } catch (error) {
