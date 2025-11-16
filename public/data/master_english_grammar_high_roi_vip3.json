@@ -1,0 +1,113 @@
+{
+  "id":"master_english_grammar_high_roi_vip3",
+  "tier":"VIP 3",
+  "title":{
+    "en":"Master English Grammar: The High-ROI Systems",
+    "vi":"Làm Chủ Ngữ Pháp Tiếng Anh: Hệ Thống Hiệu Suất Cao"
+  },
+  "content":{
+    "en":"This VIP3 room teaches the 20% of English grammar that produces 80% of real-world fluency: simplified tenses, modal nuance, high-frequency conditionals, essential passives, article logic, structural templates, and advanced expression frames. These systems elevate clarity, accuracy, and confidence in both speaking and writing.",
+    "vi":"Phòng VIP3 này dạy 20% ngữ pháp tiếng Anh mang lại 80% độ trôi chảy thực tế: thì rút gọn, sắc thái với modal, điều kiện thông dụng, bị động thiết yếu, logic mạo từ, mẫu cấu trúc và khung diễn đạt nâng cao. Những hệ thống này giúp bạn nói và viết rõ ràng, chính xác và tự tin hơn."
+  },
+  "entries":[
+    {
+      "slug":"core-tenses",
+      "keywords_en":["tenses","simplicity","time markers"],
+      "keywords_vi":["thì","đơn giản","từ chỉ thời gian"],
+      "copy":{
+        "en":"Most learners try to master all 12 English tenses, but fluent speakers rely heavily on four: present simple, present continuous, past simple, and future simple. These are enough for 95% of conversations, storytelling, and daily communication. What truly determines correctness is not the tense but the time marker: yesterday, right now, already, since 2018, tomorrow. The brain processes time faster than rules, so anchor every sentence with time first, then choose the simplest tense that matches. Patterns: “I usually…,” “I’m currently…,” “I went…,” “I’ll probably….” Practice by rewriting complex textbook examples into simple versions. The goal isn’t to sound academic—it’s to sound natural, direct, and effortless.",
+        "vi":"Nhiều người cố học cả 12 thì tiếng Anh, nhưng người nói trôi chảy chủ yếu dùng bốn thì: hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn và tương lai đơn. Chỉ bốn thì này đã đủ cho 95% hội thoại, kể chuyện và giao tiếp hằng ngày. Điều quyết định đúng–sai không phải thì, mà là từ chỉ thời gian: yesterday, right now, already, since 2018, tomorrow. Não xử lý thời gian nhanh hơn quy tắc, nên luôn gắn mốc thời gian trước rồi chọn thì đơn giản nhất. Mẫu: “I usually…”, “I’m currently…”, “I went…”, “I’ll probably…”. Hãy luyện viết lại câu phức thành câu đơn giản. Mục tiêu không phải học thuật mà là tự nhiên, rõ ràng và nhẹ nhàng."
+      },
+      "tags":["tenses","foundation"],
+      "audio":"vip3_grammar_tenses.mp3"
+    },
+    {
+      "slug":"modal-mastery",
+      "keywords_en":["modals","nuance","tone"],
+      "keywords_vi":["động từ khiếm khuyết","sắc thái","giọng điệu"],
+      "copy":{
+        "en":"Modal verbs—can, could, should, would, might, must—are the engines of nuance. They instantly change tone, politeness, and emotional distance. “You should try” is softer than “Try it,” and “Could you help me?” is far gentler than “Help me.” At a VIP3 level, modals are tools of social intelligence, not grammar items. Practice switching intensity: “I can” (ability), “I could” (possibility), “I might” (uncertainty), “I must” (necessity). Learn 10 high-frequency modal frames: “You might want to…,” “It would be better if…,” “I should probably….” Using modals consciously makes your English more diplomatic, more natural, and far closer to native social rhythm.",
+        "vi":"Động từ khiếm khuyết—can, could, should, would, might, must—là động cơ tạo sắc thái. Chúng thay đổi mức độ lịch sự, khoảng cách và cảm xúc ngay lập tức. “You should try” mềm hơn “Try it,” còn “Could you help me?” nhẹ nhàng hơn nhiều so với “Help me.” Ở mức VIP3, modal là công cụ trí tuệ xã hội chứ không chỉ là ngữ pháp. Hãy luyện chuyển mức độ: “I can” (khả năng), “I could” (khả năng thấp), “I might” (chưa chắc), “I must” (bắt buộc). Học 10 mẫu modal thông dụng: “You might want to…”, “It would be better if…”, “I should probably…”. Dùng modal có ý thức giúp tiếng Anh tự nhiên, tinh tế và chuẩn nhịp giao tiếp bản ngữ."
+      },
+      "tags":["modals","nuance"],
+      "audio":"vip3_grammar_modals.mp3"
+    },
+    {
+      "slug":"high-frequency-conditionals",
+      "keywords_en":["conditionals","if","real situations"],
+      "keywords_vi":["câu điều kiện","if","tình huống thực"],
+      "copy":{
+        "en":"Textbooks teach long conditional structures, but native speakers rely on simplified, high-frequency patterns. Zero conditional: “If you heat ice, it melts.” First conditional: “If it rains, I’ll stay home.” Second conditional: “If I were you, I’d…” These three cover nearly all practical use cases. The key is not memorizing forms but matching real-world intention: fact (0), possibility (1), imagination (2). Replace long academic patterns with short ones: “If you need help, tell me,” “If it doesn’t work, restart it.” Practice by turning everyday situations into if-sentences. The more you think in conditional shortcuts, the faster your problem-solving English becomes.",
+        "vi":"Sách dạy các mẫu điều kiện dài, nhưng người bản ngữ dùng phiên bản ngắn, tần suất cao. Điều kiện loại 0: “If you heat ice, it melts.” Loại 1: “If it rains, I’ll stay home.” Loại 2: “If I were you, I’d…”. Ba mẫu này bao phủ hầu hết tình huống thực tế. Điều quan trọng không phải ghi nhớ cấu trúc mà là ghép đúng ý định: sự thật (0), khả năng (1), tưởng tượng (2). Hãy thay câu học thuật dài bằng câu ngắn: “If you need help, tell me,” “If it doesn’t work, restart it.” Hãy luyện biến tình huống hằng ngày thành câu điều kiện. Bạn càng quen với dạng rút gọn, tốc độ suy nghĩ tiếng Anh càng nhanh."
+      },
+      "tags":["conditionals","fluency"],
+      "audio":"vip3_grammar_conditionals.mp3"
+    },
+    {
+      "slug":"essential-passives",
+      "keywords_en":["passive","be + V3","get passive"],
+      "keywords_vi":["bị động","be + V3","bị động get"],
+      "copy":{
+        "en":"Passive voice is crucial for advanced communication because it shifts focus from the doer to the action. Four patterns matter most: (1) be + V3 (“The project was completed”), (2) get + V3 (“He got promoted”), (3) impersonal passive (“It is believed that…”), and (4) reporting passive (“He was told to wait”). These appear constantly in business, academics, news, and professional writing. To master them, create two versions of the same message—active and passive—and compare tone differences. Use passive when the actor is unknown, unimportant, or intentionally hidden. When used correctly, passive voice increases professionalism and emotional neutrality.",
+        "vi":"Câu bị động cực kỳ quan trọng trong giao tiếp nâng cao vì nó chuyển trọng tâm từ người làm sang hành động. Bốn mẫu quan trọng nhất: (1) be + V3 (“The project was completed”), (2) get + V3 (“He got promoted”), (3) bị động vô nhân xưng (“It is believed that…”), và (4) bị động tường thuật (“He was told to wait”). Chúng xuất hiện liên tục trong kinh doanh, học thuật, tin tức và văn bản chuyên nghiệp. Để làm chủ, hãy tạo hai phiên bản chủ động và bị động của cùng thông điệp rồi so sánh sắc thái. Dùng bị động khi người thực hiện không rõ, không quan trọng hoặc cố ý ẩn đi. Khi dùng đúng, bị động làm văn phong chuyên nghiệp và trung tính hơn."
+      },
+      "tags":["passive","advanced"],
+      "audio":"vip3_grammar_passives.mp3"
+    },
+    {
+      "slug":"article-logic",
+      "keywords_en":["articles","a/an","the","zero"],
+      "keywords_vi":["mạo từ","a/an","the","zero"],
+      "copy":{
+        "en":"Articles seem complicated, but they follow one simple logic: A/An = new information, The = known information, Zero article = general concept. “I saw a dog” introduces something new. “The dog was loud” continues the same topic. “Dogs are loyal” describes a general truth. Train this by asking: Is the listener aware of this thing yet? If yes, use “the.” If not, use “a/an.” If talking in general, use zero article. This rule solves most article confusion and makes your speech clearer, more structured, and more native-like.",
+        "vi":"Mạo từ tưởng phức tạp nhưng tuân theo một logic đơn giản: A/An = thông tin mới, The = thông tin đã biết, Zero article = khái niệm chung. “I saw a dog” giới thiệu thứ mới. “The dog was loud” tiếp tục chủ đề. “Dogs are loyal” mô tả sự thật chung. Hãy tự hỏi: người nghe đã biết vật này chưa? Nếu rồi, dùng “the.” Nếu chưa, dùng “a/an.” Nếu nói chung chung, dùng zero article. Quy tắc này giải quyết phần lớn lỗi mạo từ, giúp câu rõ ràng và tự nhiên."
+      },
+      "tags":["articles","clarity"],
+      "audio":"vip3_grammar_articles.mp3"
+    },
+    {
+      "slug":"preposition-chunks",
+      "keywords_en":["prepositions","chunks","collocations"],
+      "keywords_vi":["giới từ","cụm từ","kết hợp từ"],
+      "copy":{
+        "en":"The secret to mastering prepositions is understanding that English uses fixed chunks, not rules. Native speakers store phrases as units: “in charge of,” “on purpose,” “at risk,” “in the long run,” “by accident,” “under pressure.” Learning 25–30 core preposition chunks covers almost every real-life scenario. Instead of memorizing grammar explanations, collect phrases from reading and listening. Write them with example sentences from your life. With enough chunk exposure, your brain begins choosing prepositions automatically, just like a native speaker.",
+        "vi":"Bí quyết làm chủ giới từ là hiểu rằng tiếng Anh dùng cụm cố định, không phải quy tắc. Người bản ngữ ghi nhớ cụm: “in charge of”, “on purpose”, “at risk”, “in the long run”, “by accident”, “under pressure”. Học khoảng 25–30 cụm lõi là đủ cho hầu hết tình huống thực tế. Thay vì học quy tắc, hãy sưu tầm cụm từ khi đọc và nghe. Viết lại cùng câu ví dụ liên quan đến cuộc sống của bạn. Khi tiếp xúc đủ nhiều, não sẽ chọn giới từ tự động giống người bản ngữ."
+      },
+      "tags":["prepositions","chunks"],
+      "audio":"vip3_grammar_prepositions.mp3"
+    },
+    {
+      "slug":"sentence-engine",
+      "keywords_en":["sentence structure","templates","clarity"],
+      "keywords_vi":["cấu trúc câu","mẫu câu","rõ ràng"],
+      "copy":{
+        "en":"Fluent English comes from stable structure, not advanced grammar. The core engine is: Subject + Verb + Object + extra information. Everything else—adverbs, phrases, clauses—attaches onto this frame. Practice building long sentences by stacking extras: “I met a woman (S + V + O) at the conference (place) yesterday (time) who works in biotech (relative clause).” Use templates: “The reason… is that…,” “One thing I noticed is…,” “What surprised me was….” Structural templates reduce thinking time and let your ideas flow smoothly.",
+        "vi":"Tiếng Anh trôi chảy đến từ cấu trúc ổn định, không phải ngữ pháp phức tạp. Lõi của câu là: Chủ ngữ + Động từ + Tân ngữ + thông tin thêm. Mọi phần khác—trạng từ, cụm giới từ, mệnh đề—chỉ gắn vào khung này. Hãy luyện tạo câu dài bằng cách xếp thêm phần: “I met a woman (S + V + O) at the conference (địa điểm) yesterday (thời gian) who works in biotech (mệnh đề quan hệ).” Dùng mẫu: “The reason… is that…”, “One thing I noticed is…”, “What surprised me was…”. Khung mẫu giảm thời gian suy nghĩ và giúp mạch ý tuôn chảy."
+      },
+      "tags":["structure","fluency"],
+      "audio":"vip3_grammar_structure.mp3"
+    },
+    {
+      "slug":"relative-clauses",
+      "keywords_en":["relative clauses","who/that","complex sentences"],
+      "keywords_vi":["mệnh đề quan hệ","who/that","câu phức"],
+      "copy":{
+        "en":"Relative clauses allow you to build rich, detailed sentences without stopping your flow. Use “who” for people, “that/which” for things. Keep patterns simple: “the person who helped me,” “the book that changed my life,” “the idea that surprised everyone.” VIP3 learners benefit from using relative clauses to combine short, choppy sentences into one fluent thought. Practice by merging two sentences: “I met a man. He teaches psychology.” → “I met a man who teaches psychology.” With enough repetition, relative clauses become a natural part of your speech architecture.",
+        "vi":"Mệnh đề quan hệ giúp bạn tạo câu giàu thông tin mà không bị gián đoạn. Dùng “who” cho người, “that/which” cho vật. Giữ mẫu đơn giản: “the person who helped me”, “the book that changed my life”, “the idea that surprised everyone”. Người học VIP3 nên dùng mệnh đề quan hệ để ghép nhiều câu ngắn rời rạc thành một ý trôi chảy. Luyện bằng cách gộp hai câu: “I met a man. He teaches psychology.” → “I met a man who teaches psychology.” Luyện nhiều sẽ khiến mệnh đề quan hệ trở thành phần tự nhiên của cấu trúc câu."
+      },
+      "tags":["clauses","advanced"],
+      "audio":"vip3_grammar_relative.mp3"
+    },
+    {
+      "slug":"hedging-softening-grammar",
+      "keywords_en":["hedging","softening","politeness"],
+      "keywords_vi":["giảm sắc thái","lịch sự","mềm hóa"],
+      "copy":{
+        "en":"Hedging is the advanced grammar of diplomacy. It lets you sound polite, professional, and emotionally intelligent. Use softening phrases like: “It seems that…,” “It appears that…,” “It might be better to…,” “I’m not entirely sure, but…,” “From my perspective….” These protect relationships and prevent misunderstandings, especially in disagreement or correction. Practice transforming strong statements into soft ones: “You’re wrong” → “I might see it a little differently.” “Do this now” → “It could be good to do this now.” Mastering hedging makes your communication smoother, safer, and more persuasive.",
+        "vi":"Hedging là ngữ pháp nâng cao của sự tinh tế. Nó giúp bạn lịch sự, chuyên nghiệp và thông minh cảm xúc. Dùng cụm mềm hóa như: “It seems that…”, “It appears that…”, “It might be better to…”, “I’m not entirely sure, but…”, “From my perspective…”. Chúng bảo vệ mối quan hệ và tránh hiểu lầm, đặc biệt khi bất đồng hoặc góp ý. Hãy luyện chuyển câu mạnh thành câu nhẹ: “You’re wrong” → “I might see it a little differently.” “Do this now” → “It could be good to do this now.” Làm chủ hedging giúp giao tiếp mượt, an toàn và thuyết phục hơn."
+      },
+      "tags":["politeness","nuance"],
+      "audio":"vip3_grammar_hedging.mp3"
+    }
+  ]
+}
