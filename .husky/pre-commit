@@ -1,17 +1,12 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# Check if any room JSON files were modified
-ROOM_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep "^public/data/.*\.json$" || true)
+echo "🔄 Auto-generating room registry..."
 
-if [ ! -z "$ROOM_FILES" ]; then
-  echo "🔍 Room JSON files modified, regenerating registry..."
-  
-  # Run registry generation
-  node scripts/generate-room-registry.js
-  
-  # Add generated files to commit
-  git add src/lib/roomManifest.ts src/lib/roomDataImports.ts
-  
-  echo "✅ Room registry updated and staged"
-fi
+# Always run registry generation to ensure sync
+node scripts/generate-room-registry.js
+
+# Add the generated files to the commit if they changed
+git add src/lib/roomManifest.ts src/lib/roomDataImports.ts
+
+echo "✅ Registry updated and staged"
