@@ -107,7 +107,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "strategy-in-life-3-vip3": "data/Strategy_In_Life_3_vip3.json",
   "strategy-in-life-advanced-tactics-ii-vip3": "data/Strategy_in_Life_ Advanced_Tactics_II_vip3.json",
   "strategy-in-life-foundations-ii-vip3": "data/Strategy_in_Life_Foundations_II_vip3.json",
-  "strategy-in-life-mastery-legacy-ii-vip3": "data/Strategy_In_Life_Mastery_Legacy_II_vip3.json",
+  "strategy-in-life-mastery-legacy-ii-vip3": "data/strategy_in_life_mastery_legacy_vip3_II.json",
   "stress-free": "data/Stress_free.json",
   "stress-vip2": "data/Stress_vip2.json",
   "stress-vip3": "data/Stress_vip3.json",
