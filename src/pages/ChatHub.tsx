@@ -24,7 +24,6 @@ import { CreditLimitModal } from "@/components/CreditLimitModal";
 import { CreditsDisplay } from "@/components/CreditsDisplay";
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { HighlightedContent } from "@/components/HighlightedContent";
-import { EmotionalThemeAnalysis } from "@/components/EmotionalThemeAnalysis";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { messageSchema } from "@/lib/inputValidation";
@@ -523,12 +522,6 @@ const ChatHub = () => {
           >
             {!message.isUser && vietnameseContent ? (
               <>
-                {/* Emotional Theme Analysis */}
-                <EmotionalThemeAnalysis 
-                  text={englishContent}
-                  className="mb-4"
-                />
-                
                 <HighlightedContent 
                   content={englishContent}
                   className="w-full"
@@ -566,14 +559,6 @@ const ChatHub = () => {
               </>
             ) : (
               <>
-                {/* Emotional Theme Analysis - only for AI responses */}
-                {!message.isUser && (
-                  <EmotionalThemeAnalysis 
-                    text={message.text}
-                    className="mb-4"
-                  />
-                )}
-                
                 <HighlightedContent 
                   content={message.text}
                   className="w-full"
