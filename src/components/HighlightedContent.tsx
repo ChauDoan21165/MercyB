@@ -203,7 +203,7 @@ export const HighlightedContent = ({
       {showShadowingReminder && (
         <div className="mt-6 pt-4 border-t border-border/30">
           <p 
-            className="text-sm leading-relaxed"
+            className="text-sm leading-relaxed text-center"
             style={{
               background: 'var(--gradient-rainbow)',
               WebkitBackgroundClip: 'text',

@@ -15,25 +15,25 @@ export const emotionKeywordGroups: EmotionKeywordGroup[] = [
   {
     emotion: "joy",
     color: "hsl(var(--emotion-joy))",
-    en: ["joy", "joys", "happiness", "happy", "delight", "cheerful"],
+    en: ["joy", "joys", "happiness", "happy", "delight", "cheerful", "joyful"],
     vi: ["niềm vui", "niem vui", "hạnh phúc", "hanh phuc", "vui", "vui vẻ", "vui ve"]
   },
   {
     emotion: "warmth",
     color: "hsl(var(--emotion-warmth))",
-    en: ["warmth", "warm", "softness", "soft", "gentle", "comfort", "cozy"],
+    en: ["warmth", "warm", "softness", "soft", "gentle", "comfort", "cozy", "tenderness", "tender"],
     vi: ["ấm", "am", "mềm mại", "mem mai", "dịu dàng", "diu dang", "thoải mái", "thoai mai"]
   },
   {
     emotion: "peace",
     color: "hsl(var(--emotion-peace))",
-    en: ["peace", "peaceful", "calm", "quiet", "serene", "tranquil", "stillness", "steady"],
+    en: ["peace", "peaceful", "calm", "quiet", "serene", "tranquil", "stillness", "steady", "quieter"],
     vi: ["bình an", "binh an", "yên tĩnh", "yen tinh", "lặng", "lang", "thanh thản", "thanh than", "vững", "vung"]
   },
   {
     emotion: "struggle",
     color: "hsl(var(--emotion-struggle))",
-    en: ["struggle", "difficulty", "difficult", "challenge", "hard", "burden"],
+    en: ["struggle", "difficulty", "difficult", "challenge", "hard", "burden", "weight"],
     vi: ["khó khăn", "kho khan", "gian nan", "gánh nặng", "ganh nang", "thử thách", "thu thach"]
   },
   {
@@ -51,7 +51,7 @@ export const emotionKeywordGroups: EmotionKeywordGroup[] = [
   {
     emotion: "awareness",
     color: "hsl(var(--emotion-awareness))",
-    en: ["awareness", "aware", "presence", "present", "mindful", "attention", "notice", "recognize"],
+    en: ["awareness", "aware", "presence", "present", "mindful", "attention", "notice", "recognize", "pay attention", "notice", "noticing"],
     vi: ["nhận biết", "nhan biet", "hiện diện", "hien dien", "tỉnh thức", "tinh thuc", "chú ý", "chu y"]
   },
   {
@@ -81,13 +81,13 @@ export const emotionKeywordGroups: EmotionKeywordGroup[] = [
   {
     emotion: "action",
     color: "hsl(var(--emotion-action))",
-    en: ["choose", "choosing", "act", "action", "move", "practice", "become", "shape", "create"],
+    en: ["choose", "choosing", "chose", "act", "action", "move", "practice", "become", "becoming", "shape", "create", "made", "grows", "allowing", "show up"],
     vi: ["chọn", "chon", "lựa chọn", "lua chon", "hành động", "hanh dong", "di chuyển", "di chuyen", "thực hành", "thuc hanh", "trở thành", "tro thanh"]
   },
   {
     emotion: "connection",
     color: "hsl(var(--emotion-connection))",
-    en: ["love", "connection", "belonging", "compassion", "kindness", "devotion", "care"],
+    en: ["love", "connection", "belonging", "compassion", "kindness", "devotion", "care", "kind"],
     vi: ["tình yêu", "tinh yeu", "kết nối", "ket noi", "gắn bó", "gan bo", "từ bi", "tu bi", "tử tế", "tu te", "quan tâm", "quan tam"]
   },
   {
@@ -95,6 +95,24 @@ export const emotionKeywordGroups: EmotionKeywordGroup[] = [
     color: "hsl(var(--emotion-release))",
     en: ["release", "let go", "surrender", "accept", "allow", "breathe", "soften"],
     vi: ["buông", "buong", "thả lỏng", "tha long", "chấp nhận", "chap nhan", "cho phép", "cho phep", "hít thở", "hit tho", "mềm lại", "mem lai"]
+  },
+  {
+    emotion: "meaning",
+    color: "hsl(var(--emotion-awareness))",
+    en: ["meaning", "purpose", "intentional", "value", "believe"],
+    vi: ["ý nghĩa", "y nghia", "mục đích", "muc dich", "giá trị", "gia tri"]
+  },
+  {
+    emotion: "moments",
+    color: "hsl(var(--emotion-peace))",
+    en: ["moment", "moments", "dramatic", "quietly", "distant", "here", "far away", "small", "empty", "rich"],
+    vi: ["khoảnh khắc", "khoanh khac", "phút", "phut", "giây", "giay"]
+  },
+  {
+    emotion: "being",
+    color: "hsl(var(--emotion-warmth))",
+    en: ["plan", "alignment", "watching", "feels", "appears", "need", "discovered"],
+    vi: ["kế hoạch", "ke hoach", "cảm giác", "cam giac"]
   }
 ];
 
