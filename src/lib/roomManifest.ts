@@ -57,6 +57,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "master-english-high-efficiency-vip1": "data/master_english_high_efficiency_vip1.json",
   "master-english-high-efficiency-vip2": "data/master_english_high_efficiency_vip2.json",
   "master-english-high-efficiency-vip3": "data/Master_English_High_Efficiency_vip3.json",
+  "master-english-high-efficiency-vip3-ii": "data/master_english_high_efficiency_vip3_II.json",
   "meaning-of-life-free": "data/Meaning_Of_Life_free.json",
   "meaning-of-life-vip3": "data/Meaning_Of_Life_vip3.json",
   "mens-mental-health-free": "data/Mens_Mental_Health_free.json",
