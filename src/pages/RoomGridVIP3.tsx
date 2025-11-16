@@ -263,7 +263,10 @@ const RoomGridVIP3 = () => {
                   )}
                 </Card>
               );
-            });
+            })}
+                </div>
+              </div>
+            ));
           })()}
         </div>
 
