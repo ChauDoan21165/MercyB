@@ -173,6 +173,72 @@ export const emotionKeywordGroups: EmotionKeywordGroup[] = [
     color: "hsl(var(--emotion-meaning))",
     en: ["goal", "micro-goal", "target", "objective", "aim", "purpose", "tool"],
     vi: ["mục tiêu", "muc tieu", "tiểu mục tiêu", "tieu muc tieu", "đích", "dich", "mục đích", "muc dich", "công cụ", "cong cu"]
+  },
+  {
+    emotion: "recovery",
+    color: "hsl(var(--emotion-action))",
+    en: ["recovery", "recovering", "healing", "heal", "sobriety", "sober", "overcome", "reclaim", "restore"],
+    vi: ["phục hồi", "phuc hoi", "chữa lành", "chua lanh", "hồi phục", "hoi phuc", "tỉnh táo", "tinh tao", "vượt qua", "vuot qua", "lấy lại", "lay lai"]
+  },
+  {
+    emotion: "support",
+    color: "hsl(var(--emotion-connection))",
+    en: ["support", "help", "assistance", "community", "group", "groups", "peer", "professional", "guidance"],
+    vi: ["hỗ trợ", "ho tro", "giúp đỡ", "giup do", "cộng đồng", "cong dong", "nhóm", "nhom", "hướng dẫn", "huong dan", "chuyên gia", "chuyen gia"]
+  },
+  {
+    emotion: "compassion",
+    color: "hsl(var(--emotion-warmth))",
+    en: ["compassion", "self-compassion", "empathy", "understanding", "acceptance", "forgiveness", "without shame"],
+    vi: ["lòng thương", "long thuong", "tự thương", "tu thuong", "cảm thông", "cam thong", "thấu hiểu", "thau hieu", "chấp nhận", "chap nhan", "tha thứ", "tha thu"]
+  },
+  {
+    emotion: "hope",
+    color: "hsl(var(--emotion-joy))",
+    en: ["hope", "hopeful", "optimism", "inspire", "empower", "empowering", "resilience", "momentum"],
+    vi: ["hy vọng", "hy vong", "lạc quan", "lac quan", "truyền cảm hứng", "truyen cam hung", "trao quyền", "trao quyen", "sức bền", "suc ben"]
+  },
+  {
+    emotion: "challenge",
+    color: "hsl(var(--emotion-struggle))",
+    en: ["struggle", "struggles", "challenge", "challenges", "addiction", "trigger", "triggers", "craving", "relapse"],
+    vi: ["đấu tranh", "dau tranh", "thử thách", "thu thach", "nghiện", "nghien", "kích hoạt", "kich hoat", "thèm", "them", "tái phát", "tai phat"]
+  },
+  {
+    emotion: "habits",
+    color: "hsl(var(--emotion-action))",
+    en: ["habit", "habits", "behavior", "pattern", "routine", "step", "steps", "consistent", "consistency"],
+    vi: ["thói quen", "thoi quen", "hành vi", "hanh vi", "mẫu hình", "mau hinh", "nhất quán", "nhat quan", "bước", "buoc"]
+  },
+  {
+    emotion: "celebration",
+    color: "hsl(var(--emotion-joy))",
+    en: ["celebrate", "milestone", "milestones", "achievement", "victory", "success", "progress"],
+    vi: ["ăn mừng", "an mung", "cột mốc", "cot moc", "thành tựu", "thanh tuu", "chiến thắng", "chien thang", "thành công", "thanh cong"]
+  },
+  {
+    emotion: "therapy",
+    color: "hsl(var(--emotion-awareness))",
+    en: ["therapy", "cognitive behavioral therapy", "cbt", "reframe", "journaling", "journal", "self-awareness", "awareness"],
+    vi: ["liệu pháp", "lieu phap", "trị liệu", "tri lieu", "nhận thức hành vi", "nhan thuc hanh vi", "viết nhật ký", "viet nhat ky", "tự nhận thức", "tu nhan thuc"]
+  },
+  {
+    emotion: "control",
+    color: "hsl(var(--emotion-strength))",
+    en: ["control", "discipline", "willpower", "determination", "commit", "commitment", "dedicated"],
+    vi: ["kiểm soát", "kiem soat", "kỷ luật", "ky luat", "ý chí", "y chi", "quyết tâm", "quyet tam", "cam kết", "cam ket"]
+  },
+  {
+    emotion: "influence",
+    color: "hsl(var(--emotion-connection))",
+    en: ["influence", "influences", "surround", "environment", "positive", "negative", "relationship", "relationships"],
+    vi: ["ảnh hưởng", "anh huong", "bao quanh", "môi trường", "moi truong", "tích cực", "tich cuc", "tiêu cực", "tieu cuc", "mối quan hệ", "moi quan he"]
+  },
+  {
+    emotion: "journey",
+    color: "hsl(var(--emotion-peace))",
+    en: ["journey", "path", "process", "unique", "personal", "experience", "lasting"],
+    vi: ["hành trình", "hanh trinh", "con đường", "con duong", "quá trình", "qua trinh", "độc đáo", "doc dao", "cá nhân", "ca nhan", "trải nghiệm", "trai nghiem"]
   }
 ];
 
