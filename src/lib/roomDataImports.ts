@@ -852,5 +852,12 @@ export const roomDataMap: Record<string, RoomData> = {
       "nameVi": "Tìm Bình An Của Thiên Chúa",
       "tier": "free",
       "hasData": true
+  },
+  "grammar-foundations-free": {
+      "id": "grammar-foundations-free",
+      "nameEn": "Grammar Foundations: The Essentials",
+      "nameVi": "Nền Tảng Ngữ Pháp: Những Điều Quan Trọng Nhất",
+      "tier": "free",
+      "hasData": true
   }
 };
