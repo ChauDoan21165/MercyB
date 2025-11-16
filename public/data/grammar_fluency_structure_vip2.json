@@ -1,0 +1,102 @@
+{
+  "id":"grammar_fluency_structure_vip2",
+  "tier":"VIP 2",
+  "title":{
+    "en":"Grammar for Fluency & Structure",
+    "vi":"Ngữ Pháp Cho Độ Trôi Chảy & Cấu Trúc"
+  },
+  "content":{
+    "en":"VIP2 builds the bridge between basic correctness and fluent, confident expression. You will learn structural patterns, upgrade verb usage, use connectors naturally, build complex sentences, and control tone through grammar choices. These systems create fluency—not by memorizing rules but by mastering how grammar flows in real communication.",
+    "vi":"VIP2 tạo cây cầu giữa đúng ngữ pháp cơ bản và diễn đạt trôi chảy, tự tin. Bạn sẽ học mẫu cấu trúc, nâng cấp cách dùng động từ, dùng liên từ tự nhiên, xây câu phức và kiểm soát sắc thái qua lựa chọn ngữ pháp. Những hệ thống này tạo nên độ trôi chảy—not bằng học thuộc quy tắc mà bằng hiểu cách ngữ pháp vận hành trong giao tiếp thực."
+  },
+  "entries":[
+    {
+      "slug":"complex-sentence-starters",
+      "keywords_en":["complex sentences","fluency","starters"],
+      "keywords_vi":["câu phức","trôi chảy","mở câu"],
+      "copy":{
+        "en":"Complex sentence starters help you speak with smoother flow and clearer logic. Instead of short, disconnected sentences, use high-frequency starters such as “When…,” “While…,” “Before…,” “After…,” and “Because….” For example: “When I arrived, the meeting had already started,” or “Because I was tired, I took a short break.” These frames allow you to express cause, time, and contrast naturally. Practice by rewriting simple sentences into connected ones: “I cooked dinner. I was hungry.” → “I cooked dinner because I was hungry.” Using these starters regularly helps you sound more organized and professional, especially in work and study contexts.",
+        "vi":"Các cụm mở câu phức giúp bạn nói liền mạch và rõ ràng hơn. Thay vì câu ngắn rời rạc, hãy dùng các cụm thường gặp như “When…”, “While…”, “Before…”, “After…”, “Because…”. Ví dụ: “When I arrived, the meeting had already started”, hoặc “Because I was tired, I took a short break.” Những khung câu này giúp diễn đạt nguyên nhân, thời gian và tương phản tự nhiên. Luyện bằng cách nối hai câu đơn: “I cooked dinner. I was hungry.” → “I cooked dinner because I was hungry.” Dùng thường xuyên giúp bạn trông chuyên nghiệp hơn trong công việc và học tập."
+      },
+      "tags":["structure","complex"],
+      "audio":"vip2_grammar_starters.mp3"
+    },
+    {
+      "slug":"verb-nuance",
+      "keywords_en":["verbs","nuance","precision"],
+      "keywords_vi":["động từ","sắc thái","chính xác"],
+      "copy":{
+        "en":"At VIP2, verbs unlock fluency through nuance and precision. Upgrade basic verbs—do, make, get, take—into natural expressions: “make progress,” “take responsibility,” “get excited,” “do research.” These collocations are how native speakers think and speak. A powerful strategy is collecting verb–noun pairs from what you read and hear. Store them in groups: communication (“make a suggestion”), emotions (“feel relieved”), work (“take action”). Using these combinations makes your English sound smoother and more accurate because the verb supports the exact idea you want to express. The more collocations you know, the faster your sentences form in your mind.",
+        "vi":"Ở VIP2, động từ giúp bạn trôi chảy hơn nhờ sắc thái và độ chính xác. Hãy nâng cấp các động từ cơ bản—do, make, get, take—thành cụm tự nhiên: “make progress”, “take responsibility”, “get excited”, “do research”. Đây là cách người bản ngữ suy nghĩ và nói. Chiến lược mạnh là sưu tầm cặp động từ–danh từ từ những gì bạn đọc hoặc nghe. Nhóm chúng theo chủ đề: giao tiếp (“make a suggestion”), cảm xúc (“feel relieved”), công việc (“take action”). Dùng collocation giúp câu mượt và chính xác vì động từ thể hiện đúng ý bạn muốn nói. Collocation càng nhiều, câu càng nhanh."
+      },
+      "tags":["verbs","nuance"],
+      "audio":"vip2_grammar_verbs.mp3"
+    },
+    {
+      "slug":"connectors-fluency",
+      "keywords_en":["connectors","flow","cohesion"],
+      "keywords_vi":["liên từ","mạch ý","liên kết"],
+      "copy":{
+        "en":"Connectors are essential tools for fluency. VIP2 expands beyond basic ones and introduces higher-level connectors like however (contrast), therefore (result), although (contrast), meanwhile (time), and in addition (extra). These help your ideas move smoothly and logically. For example: “I wanted to join the trip; however, I was too busy,” or “The results improved; therefore, we continued the project.” Practice by linking your thoughts in voice recordings or writing short explanations. Using strong connectors makes your English clearer, more professional, and more persuasive in both speaking and writing.",
+        "vi":"Liên từ là công cụ quan trọng cho độ trôi chảy. VIP2 mở rộng ngoài các liên từ cơ bản và giới thiệu những liên từ cấp cao hơn như however (tương phản), therefore (kết quả), although (tương phản), meanwhile (thời gian), in addition (thêm). Chúng giúp ý chuyển mượt và logic hơn. Ví dụ: “I wanted to join the trip; however, I was too busy”, hoặc “The results improved; therefore, we continued the project.” Hãy luyện nối ý trong thu âm hoặc đoạn viết ngắn. Dùng liên từ mạnh giúp tiếng Anh rõ ràng, chuyên nghiệp và thuyết phục hơn."
+      },
+      "tags":["connectors","fluency"],
+      "audio":"vip2_grammar_connectors.mp3"
+    },
+    {
+      "slug":"adjective-adverb-upgrade",
+      "keywords_en":["adjectives","adverbs","description"],
+      "keywords_vi":["tính từ","trạng từ","mô tả"],
+      "copy":{
+        "en":"Adjectives and adverbs add color and precision to your English. VIP2 teaches you to upgrade simple words to clearer, more expressive ones. Instead of “very big,” use “huge.” Instead of “very good,” try “excellent,” “helpful,” or “effective” depending on context. Adverbs such as “clearly,” “deeply,” “strongly,” and “gradually” let you express degree and emotion accurately. Practice by improving simple sentences: “She is very tired” → “She is completely exhausted.” Focus on choosing words that fit the exact meaning rather than sounding fancy. This makes your communication sharper and easier to understand.",
+        "vi":"Tính từ và trạng từ giúp tiếng Anh chính xác và sinh động hơn. VIP2 hướng dẫn nâng cấp các từ đơn giản thành từ rõ ràng và giàu sắc thái hơn. Thay vì “very big”, hãy dùng “huge.” Thay “very good”, hãy chọn “excellent”, “helpful” hoặc “effective” tùy ngữ cảnh. Trạng từ như “clearly”, “deeply”, “strongly”, “gradually” giúp diễn đạt mức độ và cảm xúc. Hãy luyện nâng cấp câu: “She is very tired” → “She is completely exhausted.” Tập trung chọn từ đúng ý thay vì từ hoa mỹ. Điều này giúp bạn giao tiếp sắc nét và dễ hiểu hơn."
+      },
+      "tags":["adjectives","adverbs"],
+      "audio":"vip2_grammar_adjadv.mp3"
+    },
+    {
+      "slug":"relative-clauses-fluency",
+      "keywords_en":["relative clauses","who/that","complex"],
+      "keywords_vi":["mệnh đề quan hệ","who/that","câu phức"],
+      "copy":{
+        "en":"Relative clauses allow you to add information smoothly without breaking the flow. VIP2 focuses on simple, natural patterns: “the person who…,” “the thing that…,” “the place where….” These help you describe people, objects, and situations in more detail: “She met a designer who works in New York,” or “This is the book that changed my thinking.” Practice by expanding short sentences: “I know a man. He teaches physics.” → “I know a man who teaches physics.” Using relative clauses makes your English richer, more fluent, and more professional in both speaking and writing.",
+        "vi":"Mệnh đề quan hệ giúp bạn thêm thông tin tự nhiên mà không làm câu bị đứt đoạn. VIP2 tập trung vào các mẫu đơn giản, tự nhiên: “the person who…”, “the thing that…”, “the place where…”. Chúng giúp mô tả người, vật và tình huống chi tiết hơn: “She met a designer who works in New York”, hoặc “This is the book that changed my thinking.” Hãy luyện mở rộng câu: “I know a man. He teaches physics.” → “I know a man who teaches physics.” Mệnh đề quan hệ làm tiếng Anh phong phú và chuyên nghiệp hơn."
+      },
+      "tags":["clauses","fluency"],
+      "audio":"vip2_grammar_relative.mp3"
+    },
+    {
+      "slug":"passive-clarity",
+      "keywords_en":["passive","be + V3","formal"],
+      "keywords_vi":["bị động","be + V3","trang trọng"],
+      "copy":{
+        "en":"Passive voice becomes essential at VIP2 because it is common in reports, work communication, and explanations. Use it when the action matters more than the person doing it: “The documents were sent yesterday,” “The problem was solved quickly.” The pattern is simple: be + V3. Practice by converting active sentences to passive ones: “Someone cleaned the office” → “The office was cleaned.” Avoid overusing the passive—use it only when you don’t need to mention the doer. When used well, passive voice adds clarity and professionalism to your English.",
+        "vi":"Câu bị động trở nên quan trọng ở VIP2 vì chúng phổ biến trong báo cáo, công việc và giải thích. Dùng bị động khi hành động quan trọng hơn người thực hiện: “The documents were sent yesterday”, “The problem was solved quickly.” Mẫu đơn giản: be + V3. Hãy luyện đổi câu chủ động thành bị động: “Someone cleaned the office” → “The office was cleaned.” Tránh lạm dụng—chỉ dùng khi không cần nêu người làm. Khi dùng đúng, câu bị động tạo sự rõ ràng và chuyên nghiệp."
+      },
+      "tags":["passive","clarity"],
+      "audio":"vip2_grammar_passive.mp3"
+    },
+    {
+      "slug":"gerunds-infinitives",
+      "keywords_en":["gerunds","infinitives","verb forms"],
+      "keywords_vi":["dạng -ing","to verb","dạng động từ"],
+      "copy":{
+        "en":"Gerunds (-ing) and infinitives (to + verb) shape meaning and tone in English. VIP2 teaches a clear, practical rule: use to when speaking about intention (“I hope to travel,” “I plan to improve”) and use ing for activities or general actions (“I enjoy reading,” “He avoids driving at night”). Some verbs allow both with slight changes in meaning: “I stopped smoking” (quit) vs. “I stopped to smoke” (pause to do something). Build a list of verbs you use often and note whether they take to or ing. With practice, choosing the right form becomes automatic and intuitive.",
+        "vi":"Dạng -ing và to + verb tạo sắc thái và ý nghĩa trong tiếng Anh. VIP2 dạy quy tắc rõ ràng, thực tế: dùng to khi nói về ý định (“I hope to travel”, “I plan to improve”) và dùng ing cho hoạt động hoặc hành động chung (“I enjoy reading”, “He avoids driving at night”). Một số động từ dùng cả hai nhưng khác nghĩa: “I stopped smoking” (bỏ) và “I stopped to smoke” (dừng lại để làm gì). Hãy tạo danh sách động từ bạn hay dùng và ghi chú chúng đi với to hay ing. Khi luyện đủ, việc chọn dạng đúng sẽ tự nhiên."
+      },
+      "tags":["verb-forms","fluency"],
+      "audio":"vip2_grammar_gerunds.mp3"
+    },
+    {
+      "slug":"tone-control",
+      "keywords_en":["tone","politeness","softening"],
+      "keywords_vi":["sắc thái","lịch sự","mềm hóa"],
+      "copy":{
+        "en":"Tone control through grammar helps you sound polite, confident, or diplomatic depending on the situation. VIP2 focuses on softening phrases like “Could you…,” “Would it be possible…,” “I was wondering if…,” and “It seems that….” These are essential in work, customer service, and international communication. Compare: “Send me the file” vs. “Could you send me the file when you have a moment?” Practice rewriting strong commands into soft requests. Tone control builds trust and reduces misunderstanding, making your English more effective and culturally appropriate.",
+        "vi":"Kiểm soát sắc thái qua ngữ pháp giúp bạn lịch sự, tự tin hoặc ngoại giao tùy tình huống. VIP2 tập trung vào các cụm mềm hóa như “Could you…”, “Would it be possible…”, “I was wondering if…”, “It seems that…”. Chúng rất quan trọng trong công việc và giao tiếp quốc tế. So sánh: “Send me the file” và “Could you send me the file when you have a moment?”. Hãy luyện viết lại câu mệnh lệnh thành yêu cầu nhẹ. Kiểm soát sắc thái giúp xây dựng niềm tin và giảm hiểu lầm."
+      },
+      "tags":["tone","politeness"],
+      "audio":"vip2_grammar_tone.mp3"
+    }
+  ]
+}
