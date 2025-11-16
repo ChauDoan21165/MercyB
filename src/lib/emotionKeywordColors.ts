@@ -113,6 +113,66 @@ export const emotionKeywordGroups: EmotionKeywordGroup[] = [
     color: "hsl(var(--emotion-warmth))",
     en: ["plan", "alignment", "watching", "feels", "appears", "need", "discovered"],
     vi: ["kế hoạch", "ke hoach", "cảm giác", "cam giac"]
+  },
+  {
+    emotion: "learning",
+    color: "hsl(var(--emotion-action))",
+    en: ["learn", "learning", "study", "practice", "training", "improve", "improvement", "progress", "mastery", "mastered", "skill", "develop", "developing"],
+    vi: ["học", "hoc", "học tập", "hoc tap", "thực hành", "thuc hanh", "luyện tập", "luyen tap", "cải thiện", "cai thien", "tiến bộ", "tien bo", "thành thạo", "thanh thao", "kỹ năng", "ky nang"]
+  },
+  {
+    emotion: "method",
+    color: "hsl(var(--emotion-honesty))",
+    en: ["method", "approach", "strategy", "technique", "ritual", "routine", "habit", "system", "process", "loop", "repeat"],
+    vi: ["phương pháp", "phuong phap", "cách tiếp cận", "cach tiep can", "chiến lược", "chien luoc", "kỹ thuật", "ky thuat", "nghi lễ", "nghi le", "thói quen", "thoi quen", "hệ thống", "he thong"]
+  },
+  {
+    emotion: "focus",
+    color: "hsl(var(--emotion-awareness))",
+    en: ["focus", "focused", "attention", "concentrate", "concentration", "mindset", "deliberate", "deliberately", "intentional", "mindful"],
+    vi: ["tập trung", "tap trung", "chú ý", "chu y", "chánh niệm", "chanh niem", "có chủ ý", "co chu y", "suy nghĩ", "suy nghi", "tâm thế", "tam the"]
+  },
+  {
+    emotion: "quality",
+    color: "hsl(var(--emotion-strength))",
+    en: ["depth", "deep", "deeply", "quality", "valuable", "excellence", "mastery", "refined", "precise", "thorough"],
+    vi: ["chiều sâu", "chieu sau", "sâu", "sau", "chất lượng", "chat luong", "giá trị", "gia tri", "xuất sắc", "xuat sac", "tinh tế", "tinh te", "chính xác", "chinh xac"]
+  },
+  {
+    emotion: "analysis",
+    color: "hsl(var(--emotion-awareness))",
+    en: ["analyze", "analysis", "examine", "review", "reflect", "reflection", "evaluate", "assess", "measure", "reasoning"],
+    vi: ["phân tích", "phan tich", "xem xét", "xem xet", "đánh giá", "danh gia", "suy ngẫm", "suy ngam", "đo lường", "do luong", "lý luận", "ly luan"]
+  },
+  {
+    emotion: "output",
+    color: "hsl(var(--emotion-action))",
+    en: ["output", "produce", "write", "speak", "express", "expression", "communicate", "create", "build"],
+    vi: ["đầu ra", "dau ra", "tạo ra", "tao ra", "viết", "viet", "nói", "noi", "diễn đạt", "dien dat", "giao tiếp", "giao tiep", "xây dựng", "xay dung"]
+  },
+  {
+    emotion: "input",
+    color: "hsl(var(--emotion-awareness))",
+    en: ["input", "collect", "gather", "listen", "listening", "read", "reading", "absorb", "receive"],
+    vi: ["đầu vào", "dau vao", "thu thập", "thu thap", "nghe", "lắng nghe", "lang nghe", "đọc", "doc", "tiếp nhận", "tiep nhan"]
+  },
+  {
+    emotion: "growth",
+    color: "hsl(var(--emotion-action))",
+    en: ["grow", "growth", "transform", "transforming", "evolve", "develop", "compound", "refine", "improve"],
+    vi: ["phát triển", "phat trien", "tăng trưởng", "tang truong", "biến đổi", "bien doi", "tiến hóa", "tien hoa", "cải thiện", "cai thien"]
+  },
+  {
+    emotion: "error",
+    color: "hsl(var(--emotion-pain))",
+    en: ["error", "errors", "mistake", "mistakes", "weakness", "weaknesses", "flaw", "gap"],
+    vi: ["lỗi", "loi", "sai lầm", "sai lam", "điểm yếu", "diem yeu", "khuyết điểm", "khuyet diem", "khoảng trống", "khoang trong"]
+  },
+  {
+    emotion: "goal",
+    color: "hsl(var(--emotion-meaning))",
+    en: ["goal", "micro-goal", "target", "objective", "aim", "purpose", "tool"],
+    vi: ["mục tiêu", "muc tieu", "tiểu mục tiêu", "tieu muc tieu", "đích", "dich", "mục đích", "muc dich", "công cụ", "cong cu"]
   }
 ];
 
