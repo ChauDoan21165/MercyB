@@ -112,7 +112,7 @@ export const ColorfulMercyBladeHeader = ({
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" size="sm" className="gap-2 border-2">
-                  Choose Tier
+                  Tier/Gói
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56 bg-popover z-50">
