@@ -43,6 +43,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "eating-disorder-support-vip1": "data/Eating_Disorder_Support_vip1.json",
   "eating-disorder-support-vip2": "data/Eating_Disorder_Support_vip2.json",
   "eating-disorder-support-vip3": "data/Eating_Disorder_Support_vip3.json",
+  "english-specialization-mastery-vip3-ii": "data/english_specialization_mastery_vip3_ii.json",
   "erotic-wisdom-for-life-vip3-sub-6-sex": "data/Erotic_Wisdom_for_Life_vip3_sub_6_sex.json",
   "finance-calm-money-clear-future-preview-free": "data/Finance_Calm_Money_Clear_Future_Preview_free.json",
   "finance-calm-money-sub1-nervous-system-vip3": "data/Finance_Calm_Money_Sub1_Nervous_System_vip3.json",
@@ -159,7 +160,7 @@ export function getRoomBaseNames(): string[] {
   const baseNames = new Set<string>();
   
   for (const roomId of Object.keys(PUBLIC_ROOM_MANIFEST)) {
-    const baseName = roomId.replace(/-(free|vip1|vip2|vip3|vip4)$/, '');
+    const baseName = roomId.replace(/-(free|vip1|vip2|vip3|vip3-ii|vip4)$/, '');
     baseNames.add(baseName);
   }
   
@@ -172,12 +173,13 @@ export function getRoomBaseNames(): string[] {
 export function getAvailableTiers(roomBaseName: string): string[] {
   const tiers: string[] = [];
   
-  for (const tier of ['free', 'vip1', 'vip2', 'vip3', 'vip4']) {
-    const roomId = `${roomBaseName}-${tier}`;
+  for (const tier of ['free', 'vip1', 'vip2', 'vip3', 'vip3_ii', 'vip4']) {
+    const roomId = `${roomBaseName}-${tier.replace('_', '-')}`;
     if (PUBLIC_ROOM_MANIFEST[roomId]) {
       tiers.push(tier);
     }
   }
   
   return tiers;
+}
 }
