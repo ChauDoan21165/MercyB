@@ -1,0 +1,102 @@
+{
+  "id":"master_english_high_efficiency_vip2",
+  "tier":"VIP 2",
+  "title":{
+    "en":"Master English: High-Efficiency Intermediate Accelerator",
+    "vi":"Làm Chủ Tiếng Anh: Bộ Tăng Tốc Trung Cấp Hiệu Quả Cao"
+  },
+  "content":{
+    "en":"Level up your English with intermediate systems that build fluency, structure, and cognitive speed. VIP2 focuses on acceleration: smarter listening, structured speaking, chunk fluency, paraphrasing control, and memory systems that make learning automatic.",
+    "vi":"Nâng cấp tiếng Anh của bạn với các hệ thống trung cấp giúp tăng lưu loát, cấu trúc và tốc độ xử lý. VIP2 tập trung vào tăng tốc: nghe thông minh hơn, nói có cấu trúc, dùng cụm linh hoạt, làm chủ diễn đạt lại và hệ thống ghi nhớ tự động."
+  },
+  "entries":[
+    {
+      "slug":"listening-system",
+      "keywords_en":["listening","active input","noticing"],
+      "keywords_vi":["nghe","đầu vào chủ động","nhận diện"],
+      "copy":{
+        "en":"Intermediate listening requires both exposure and intentional noticing. Choose content slightly above your level and listen twice. First pass: focus only on general meaning. Second pass: identify specific elements—stress, linking, reductions, and repeated phrases. Pause only after each segment, not every sentence, to keep a natural flow. Write three things you noticed: a new chunk, a pronunciation pattern, and a sentence you want to reuse. This builds the bridge between passive hearing and active understanding. Over weeks, you’ll start predicting what speakers say before they finish, a key marker of intermediate fluency.",
+        "vi":"Nghe ở mức trung cấp cần cả tiếp xúc và quan sát có chủ đích. Hãy chọn nội dung hơi cao hơn trình độ và nghe hai lần. Lượt đầu: chỉ hiểu ý chung. Lượt hai: chú ý các yếu tố cụ thể—trọng âm, nối âm, lược âm và cụm lặp lại. Chỉ dừng sau mỗi đoạn, không dừng từng câu, để giữ dòng tự nhiên. Ghi lại ba điều bạn nhận ra: một cụm mới, một mẫu phát âm và một câu muốn dùng lại. Điều này tạo cầu nối giữa nghe thụ động và hiểu chủ động. Sau vài tuần, bạn sẽ bắt đầu dự đoán lời nói trước khi người nói kết thúc—dấu hiệu quan trọng của mức trung cấp."
+      },
+      "tags":["listening","intermediate"],
+      "audio":"vip2_listening.mp3"
+    },
+    {
+      "slug":"shadowing-plus",
+      "keywords_en":["shadowing 2.0","pronunciation","automaticity"],
+      "keywords_vi":["shadowing nâng cao","phát âm","tự động"],
+      "copy":{
+        "en":"Shadowing at the intermediate level focuses on precision and flow. Use a 45–90 second clip and practice in three layers. Layer 1: whisper shadowing—copy rhythm and intonation quietly to reduce pressure. Layer 2: full-voice shadowing—match the speaker as closely as possible, even if imperfect. Layer 3: delayed shadowing—wait half a second behind the speaker to build memory and processing speed. Record a weekly comparison to measure progress. This upgraded shadowing method reinforces connected speech, improves breath control, and creates a smoother, more confident speaking rhythm.",
+        "vi":"Shadowing ở mức trung cấp tập trung vào độ chính xác và độ trôi chảy. Dùng đoạn 45–90 giây và luyện theo ba lớp. Lớp 1: shadowing thì thầm—bắt chước nhịp và ngữ điệu nhẹ nhàng để giảm áp lực. Lớp 2: nói đầy đủ—khớp tối đa với người nói dù chưa hoàn hảo. Lớp 3: shadowing trễ—chậm hơn nửa giây để tăng trí nhớ và tốc độ xử lý. Thu âm so sánh mỗi tuần để thấy tiến bộ. Phương pháp shadowing nâng cao này củng cố nối âm, cải thiện hơi thở và tạo nhịp nói tự tin, mượt mà."
+      },
+      "tags":["speaking","shadowing"],
+      "audio":"vip2_shadowing2.mp3"
+    },
+    {
+      "slug":"chunk-fluency",
+      "keywords_en":["chunks","fluency","response speed"],
+      "keywords_vi":["cụm từ","trôi chảy","tốc độ phản hồi"],
+      "copy":{
+        "en":"To speak faster and more naturally, expand your chunk fluency. Build sets of chunks by situation: agreeing, softening opinions, buying time, expressing uncertainty, and switching topics. Practice combining 2–3 chunks into quick responses: “As far as I know… but I might be wrong,” or “Let me think… okay, here’s what I mean.” Do 3-minute rapid-fire drills: pick a random topic and respond only using chunks. This activates automatic language pathways. Over time, you’ll rely less on grammar thinking and more on ready-made language blocks that make speaking smoother and quicker.",
+        "vi":"Để nói nhanh và tự nhiên hơn, hãy mở rộng khả năng dùng cụm. Xây bộ cụm theo ngữ cảnh: đồng ý, làm mềm ý kiến, kéo dài thời gian suy nghĩ, thể hiện không chắc chắn và đổi chủ đề. Luyện ghép 2–3 cụm thành phản hồi nhanh: “As far as I know… but I might be wrong” hoặc “Let me think… okay, here’s what I mean.” Tập 3 phút phản xạ nhanh: chọn chủ đề bất kỳ và chỉ dùng cụm để trả lời. Điều này kích hoạt các đường ngôn ngữ tự động. Dần dần, bạn sẽ nghĩ ít về ngữ pháp và dùng các khối câu có sẵn giúp nói mượt và nhanh."
+      },
+      "tags":["speaking","chunks"],
+      "audio":"vip2_chunks2.mp3"
+    },
+    {
+      "slug":"paraphrasing-skill",
+      "keywords_en":["paraphrasing","expression","clarity"],
+      "keywords_vi":["diễn đạt lại","biểu đạt","rõ ràng"],
+      "copy":{
+        "en":"Paraphrasing is the core intermediate skill that boosts clarity and flexibility. Start with one sentence and rewrite it in two or three ways. Example: “I didn’t understand that” → “Can you explain that again?” → “I’m not sure I got your point.” Practice with short news sentences or video subtitles. When speaking, if you can’t find the perfect word, paraphrase using simpler phrases instead of freezing. This prevents conversation breakdowns and keeps communication smooth. Over time, paraphrasing builds confidence, helps avoid vocabulary gaps, and makes you sound more natural and expressive.",
+        "vi":"Diễn đạt lại là kỹ năng trung cấp cốt lõi giúp nói rõ ràng và linh hoạt. Bắt đầu với một câu và viết lại 2–3 phiên bản khác nhau. Ví dụ: “I didn’t understand that” → “Can you explain that again?” → “I’m not sure I got your point.” Luyện với câu ngắn từ báo hoặc phụ đề video. Khi nói, nếu không nhớ từ hoàn hảo, hãy diễn đạt lại bằng cụm đơn giản thay vì bị đứng hình. Điều này tránh ngắt quãng hội thoại và giữ dòng giao tiếp tự nhiên. Lâu dần, kỹ năng diễn đạt lại giúp tăng tự tin, lấp khoảng trống từ vựng và tạo phong cách nói tự nhiên, biểu cảm hơn."
+      },
+      "tags":["speaking","paraphrasing"],
+      "audio":"vip2_paraphrase.mp3"
+    },
+    {
+      "slug":"reading-flow",
+      "keywords_en":["reading","flow","context"],
+      "keywords_vi":["đọc","dòng chảy","ngữ cảnh"],
+      "copy":{
+        "en":"Intermediate reading focuses on flow, not perfection. Choose articles or graded readers where you understand about 90–95%. Read one full paragraph without stopping, then summarize in one or two sentences. Circle useful chunks or transitional phrases like “in contrast,” “as a result,” or “on top of that.” These phrases build structure in your own speaking and writing. Once a week, do a “fast read”: set a timer for 5 minutes and read as far as you can, focusing only on global meaning. This trains your eyes to process English more naturally and reduces overthinking.",
+        "vi":"Đọc ở mức trung cấp tập trung vào dòng chảy, không phải sự hoàn hảo. Chọn bài hoặc sách phân cấp bạn hiểu 90–95%. Đọc trọn đoạn mà không dừng, rồi tóm tắt 1–2 câu. Khoanh các cụm hữu ích hoặc cụm chuyển ý như “in contrast”, “as a result”, “on top of that”. Những cụm này giúp bạn xây cấu trúc khi nói và viết. Mỗi tuần một lần, hãy đọc nhanh: đặt hẹn giờ 5 phút và đọc xa nhất có thể, chỉ chú trọng ý chính. Điều này rèn mắt xử lý tiếng Anh tự nhiên và giảm suy nghĩ quá mức."
+      },
+      "tags":["reading","intermediate"],
+      "audio":"vip2_reading2.mp3"
+    },
+    {
+      "slug":"structured-speaking",
+      "keywords_en":["speaking structure","frameworks","clarity"],
+      "keywords_vi":["nói có cấu trúc","khung trình bày","rõ ràng"],
+      "copy":{
+        "en":"Structured speaking makes you sound clearer and more confident. Use simple frameworks like PREP: Point → Reason → Example → Point again. Practice with daily questions: “Why is exercise important?” or “What makes a good friend?” Record 60-second answers following PREP. This helps organize ideas quickly and reduces rambling. Another method: Problem → Solution → Result. These frameworks act like a roadmap for your brain, making it easier to speak under pressure. With repetition, your mind naturally organizes thoughts in English without translation.",
+        "vi":"Nói có cấu trúc giúp bạn rõ ràng và tự tin hơn. Hãy dùng các khung đơn giản như PREP: Quan điểm → Lý do → Ví dụ → Nhắc lại quan điểm. Luyện với câu hỏi hằng ngày: “Vì sao tập thể dục quan trọng?” hoặc “Một người bạn tốt là như thế nào?” Thu âm câu trả lời 60 giây theo PREP. Điều này giúp sắp xếp ý nhanh và giảm nói lan man. Một cách khác: Vấn đề → Giải pháp → Kết quả. Các khung này như bản đồ cho não, giúp nói dễ hơn khi bị áp lực. Luyện nhiều sẽ khiến bạn tự sắp ý bằng tiếng Anh mà không dịch."
+      },
+      "tags":["speaking","structure"],
+      "audio":"vip2_speaking2.mp3"
+    },
+    {
+      "slug":"memory-system",
+      "keywords_en":["memory","review system","SRS"],
+      "keywords_vi":["trí nhớ","hệ ôn tập","SRS"],
+      "copy":{
+        "en":"Intermediate learners need a stable memory system to handle growing vocabulary. Use a weekly cycle: Day 1 new words, Day 2 review, Day 3 rest, Day 4 apply in sentences, Day 5 speak using them, Day 6 review again, Day 7 break. This rhythm prevents overload and reinforces long-term retention. Store chunks, not isolated words. Use spaced repetition apps for review, but always add personal example sentences. When speaking or writing, deliberately use 2–3 new chunks to activate them. Memory is built through repeated, meaningful use—not memorizing lists.",
+        "vi":"Người học trung cấp cần hệ thống ghi nhớ ổn định để xử lý lượng từ vựng tăng dần. Hãy dùng chu kỳ 7 ngày: Ngày 1 học từ mới, Ngày 2 ôn, Ngày 3 nghỉ, Ngày 4 dùng trong câu, Ngày 5 nói với chúng, Ngày 6 ôn lại, Ngày 7 nghỉ. Nhịp này tránh quá tải và củng cố trí nhớ dài hạn. Lưu cụm từ thay vì từ đơn. Dùng ứng dụng SRS để ôn, nhưng luôn thêm câu ví dụ cá nhân. Khi nói hoặc viết, cố ý dùng 2–3 cụm mới để kích hoạt chúng. Trí nhớ được xây nhờ sử dụng lặp lại có ý nghĩa—không phải học thuộc danh sách."
+      },
+      "tags":["memory","vocabulary"],
+      "audio":"vip2_memory2.mp3"
+    },
+    {
+      "slug":"progress-cycle",
+      "keywords_en":["progress","cycle","reflection"],
+      "keywords_vi":["tiến bộ","chu kỳ","phản chiếu"],
+      "copy":{
+        "en":"Use a simple weekly progress cycle to maintain momentum. Choose one focus skill each week: listening, speaking, reading, vocabulary, or writing. Set one measurable target like “Listen 60 minutes this week” or “Record three speaking clips.” At the end of the week, reflect: What improved? What felt easier? What frustrated you? Adjust next week’s goal accordingly. Progress happens when goals, actions, and reflection align. This cycle keeps you motivated, prevents burnout, and helps you see your English development clearly over months.",
+        "vi":"Hãy dùng chu kỳ tiến bộ hằng tuần để giữ đà học. Mỗi tuần chọn một kỹ năng trọng tâm: nghe, nói, đọc, từ vựng hoặc viết. Đặt mục tiêu đo lường được như “Nghe 60 phút trong tuần” hoặc “Thu ba đoạn nói.” Cuối tuần, tự hỏi: Điều gì cải thiện? Điều gì dễ hơn? Điều gì làm bạn khó chịu? Điều chỉnh mục tiêu tuần sau dựa trên câu trả lời. Tiến bộ đến khi mục tiêu, hành động và phản chiếu thống nhất. Chu kỳ này giúp duy trì động lực, tránh kiệt sức và nhìn rõ sự phát triển của bạn sau vài tháng."
+      },
+      "tags":["progress","reflection"],
+      "audio":"vip2_progress2.mp3"
+    }
+  ]
+}
