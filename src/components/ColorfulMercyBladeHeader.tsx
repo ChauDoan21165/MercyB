@@ -115,17 +115,17 @@ export const ColorfulMercyBladeHeader = ({
                   Tier/Gói
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56 bg-popover z-50">
-                <DropdownMenuLabel className="text-center font-bold">
+              <DropdownMenuContent align="end" className="w-56 bg-popover z-50 animate-scale-in">
+                <DropdownMenuLabel className="text-center font-bold animate-fade-in">
                   Explore Tiers / Khám Phá Gói
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 
                 <DropdownMenuItem 
                   onClick={() => navigate('/rooms')}
-                  className="cursor-pointer hover:bg-green-50 dark:hover:bg-green-900"
+                  className="cursor-pointer hover:bg-green-50 dark:hover:bg-green-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
                 >
-                  <Crown className="mr-2 h-4 w-4 text-green-600" />
+                  <Crown className="mr-2 h-4 w-4 text-green-600 transition-transform duration-200 group-hover:scale-110" />
                   <div className="flex flex-col">
                     <span className="font-semibold">Free</span>
                     <span className="text-xs text-muted-foreground">Basic rooms</span>
@@ -134,9 +134,9 @@ export const ColorfulMercyBladeHeader = ({
 
                 <DropdownMenuItem 
                   onClick={() => navigate('/rooms-vip1')}
-                  className="cursor-pointer hover:bg-yellow-50 dark:hover:bg-yellow-900"
+                  className="cursor-pointer hover:bg-yellow-50 dark:hover:bg-yellow-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
                 >
-                  <Star className="mr-2 h-4 w-4 text-yellow-600" />
+                  <Star className="mr-2 h-4 w-4 text-yellow-600 transition-transform duration-200 group-hover:scale-110" />
                   <div className="flex flex-col">
                     <span className="font-semibold">VIP1</span>
                     <span className="text-xs text-muted-foreground">10 rooms/month</span>
@@ -145,9 +145,9 @@ export const ColorfulMercyBladeHeader = ({
 
                 <DropdownMenuItem 
                   onClick={() => navigate('/rooms-vip2')}
-                  className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900"
+                  className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
                 >
-                  <Gem className="mr-2 h-4 w-4 text-blue-600" />
+                  <Gem className="mr-2 h-4 w-4 text-blue-600 transition-transform duration-200 group-hover:scale-110" />
                   <div className="flex flex-col">
                     <span className="font-semibold">VIP2</span>
                     <span className="text-xs text-muted-foreground">25 rooms/month</span>
@@ -156,9 +156,9 @@ export const ColorfulMercyBladeHeader = ({
 
                 <DropdownMenuItem 
                   onClick={() => navigate('/rooms-vip3')}
-                  className="cursor-pointer hover:bg-purple-50 dark:hover:bg-purple-900"
+                  className="cursor-pointer hover:bg-purple-50 dark:hover:bg-purple-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
                 >
-                  <Sparkles className="mr-2 h-4 w-4 text-purple-600" />
+                  <Sparkles className="mr-2 h-4 w-4 text-purple-600 transition-transform duration-200 group-hover:scale-110" />
                   <div className="flex flex-col">
                     <span className="font-semibold">VIP3</span>
                     <span className="text-xs text-muted-foreground">Unlimited rooms</span>
@@ -167,9 +167,9 @@ export const ColorfulMercyBladeHeader = ({
 
                 <DropdownMenuItem 
                   onClick={() => navigate('/rooms-vip4')}
-                  className="cursor-pointer hover:bg-orange-50 dark:hover:bg-orange-900"
+                  className="cursor-pointer hover:bg-orange-50 dark:hover:bg-orange-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
                 >
-                  <Rocket className="mr-2 h-4 w-4 text-orange-600" />
+                  <Rocket className="mr-2 h-4 w-4 text-orange-600 transition-transform duration-200 group-hover:scale-110" />
                   <div className="flex flex-col">
                     <span className="font-semibold">VIP4 CareerZ</span>
                     <span className="text-xs text-muted-foreground">Career coaching</span>
@@ -179,7 +179,7 @@ export const ColorfulMercyBladeHeader = ({
                 <DropdownMenuSeparator />
                 <DropdownMenuItem 
                   onClick={() => navigate('/subscribe')}
-                  className="cursor-pointer hover:bg-primary/10"
+                  className="cursor-pointer hover:bg-primary/10 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
                 >
                   <span className="font-semibold text-primary">Upgrade / Nâng cấp</span>
                 </DropdownMenuItem>
