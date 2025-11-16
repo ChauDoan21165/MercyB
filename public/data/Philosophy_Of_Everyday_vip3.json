@@ -1,0 +1,181 @@
+{
+  "id": "philosophy-of-everyday-vip3",
+  "tier": "vip3",
+  "room_welcome": {
+    "en": "Hello! Welcome to Philosophy of Everyday VIP3 room. How can I help you today?\n\nTopic keywords you can type are below:",
+    "vi": "Xin chào! Chào mừng bạn đến với phòng Triết Học Đời Thường VIP3. Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:"
+  },
+  "keyword_menu": {
+    "en": ["meaning_of_life", "everyday_suffering", "ordinary_joy", "freedom_and_responsibility", "authentic_self"],
+    "vi": ["y_nghia_cuoc_song", "noi_dau_hang_ngay", "niem_vui_binh_thuong", "tu_do_va_trach_nhiem", "con_nguoi_chan_that"]
+  },
+  "default_entry_id": "meaning_of_life",
+  "search": {
+    "normalize_case": true,
+    "normalize_accents": true,
+    "tokenize_on": [" ", "_"]
+  },
+  "keywords_dict": {
+    "meaning_of_life": {
+      "en": ["meaning_of_life", "meaning of life", "life meaning", "purpose of life", "meaning", "purpose"],
+      "vi": ["y_nghia_cuoc_song", "ý nghĩa cuộc sống", "y nghia cuoc song", "muc_dich_cuoc_song", "mục đích cuộc sống"]
+    },
+    "everyday_suffering": {
+      "en": ["everyday_suffering", "everyday suffering", "daily suffering", "pain of life", "stress of life"],
+      "vi": ["noi_dau_hang_ngay", "nỗi đau hằng ngày", "dau_kho_thuong_nhat", "đau khổ thường nhật"]
+    },
+    "ordinary_joy": {
+      "en": ["ordinary_joy", "ordinary joy", "simple joy", "small joys", "everyday joy", "gratitude"],
+      "vi": ["niem_vui_binh_thuong", "niềm vui bình thường", "niem_vui_nho", "niềm vui nhỏ"]
+    },
+    "freedom_and_responsibility": {
+      "en": ["freedom_and_responsibility", "freedom and responsibility", "freedom", "responsibility"],
+      "vi": ["tu_do_va_trach_nhiem", "tự do và trách nhiệm", "tu_do_ca_nhan", "tự do cá nhân"]
+    },
+    "authentic_self": {
+      "en": ["authentic_self", "authentic self", "true self", "being yourself", "identity"],
+      "vi": ["con_nguoi_chan_that", "con người chân thật", "chinh_minh", "chính mình"]
+    }
+  },
+  "highlighted_words": [
+    {"en": ["meaning"], "vi": ["ý nghĩa"], "color": "hsl(280, 70%, 75%)", "type": "emotion"},
+    {"en": ["quiet"], "vi": ["lặng lẽ"], "color": "hsl(200, 60%, 80%)", "type": "emotion"},
+    {"en": ["dramatic"], "vi": ["kịch tính"], "color": "hsl(0, 70%, 75%)", "type": "emotion"},
+    {"en": ["empty"], "vi": ["trống rỗng"], "color": "hsl(220, 20%, 70%)", "type": "emotion"},
+    {"en": ["rich"], "vi": ["phong phú"], "color": "hsl(45, 80%, 65%)", "type": "emotion"},
+    {"en": ["gentle"], "vi": ["nhẹ nhàng"], "color": "hsl(150, 50%, 75%)", "type": "emotion"},
+    {"en": ["perfect"], "vi": ["hoàn hảo"], "color": "hsl(290, 60%, 80%)", "type": "emotion"},
+    {"en": ["subtle"], "vi": ["nhẹ"], "color": "hsl(180, 40%, 75%)", "type": "emotion"},
+    {"en": ["tired"], "vi": ["mệt mỏi"], "color": "hsl(30, 30%, 65%)", "type": "emotion"},
+    {"en": ["heavy"], "vi": ["nặng nề"], "color": "hsl(240, 20%, 60%)", "type": "emotion"},
+    {"en": ["ordinary"], "vi": ["bình thường"], "color": "hsl(50, 70%, 70%)", "type": "emotion"},
+    {"en": ["warm"], "vi": ["ấm"], "color": "hsl(25, 75%, 70%)", "type": "emotion"},
+    {"en": ["soft"], "vi": ["mềm mại"], "color": "hsl(330, 50%, 80%)", "type": "emotion"},
+    {"en": ["simple"], "vi": ["đơn giản"], "color": "hsl(160, 40%, 75%)", "type": "emotion"},
+    {"en": ["quieter"], "vi": ["yên ổn hơn"], "color": "hsl(190, 50%, 75%)", "type": "emotion"},
+    {"en": ["steadier"], "vi": ["vững vàng hơn"], "color": "hsl(120, 45%, 65%)", "type": "emotion"},
+    {"en": ["real"], "vi": ["thật sự"], "color": "hsl(270, 55%, 70%)", "type": "emotion"},
+    {"en": ["uncomfortable"], "vi": ["khó chịu"], "color": "hsl(15, 50%, 65%)", "type": "emotion"},
+    {"en": ["temporary"], "vi": ["tạm thời"], "color": "hsl(60, 40%, 70%)", "type": "emotion"},
+    {"en": ["true"], "vi": ["chân thật"], "color": "hsl(210, 70%, 75%)", "type": "emotion"},
+    {"en": ["honest"], "vi": ["trung thực"], "color": "hsl(195, 60%, 72%)", "type": "emotion"},
+    {"en": ["lighter"], "vi": ["nhẹ nhàng hơn"], "color": "hsl(55, 75%, 78%)", "type": "emotion"},
+    {"en": ["discovered"], "vi": ["được tìm thấy"], "color": "hsl(0, 0%, 60%)", "type": "verb"},
+    {"en": ["appears"], "vi": ["xuất hiện"], "color": "hsl(0, 0%, 55%)", "type": "verb"},
+    {"en": ["show up"], "vi": ["hiện diện"], "color": "hsl(0, 0%, 58%)", "type": "verb"},
+    {"en": ["take"], "vi": ["chịu"], "color": "hsl(0, 0%, 52%)", "type": "verb"},
+    {"en": ["choose"], "vi": ["chọn"], "color": "hsl(0, 0%, 57%)", "type": "verb"},
+    {"en": ["watching"], "vi": ["nhìn thấy"], "color": "hsl(0, 0%, 54%)", "type": "verb"},
+    {"en": ["chase"], "vi": ["đuổi theo"], "color": "hsl(0, 0%, 50%)", "type": "verb"},
+    {"en": ["pay attention"], "vi": ["chú ý"], "color": "hsl(0, 0%, 62%)", "type": "verb"},
+    {"en": ["believe"], "vi": ["tin"], "color": "hsl(0, 0%, 56%)", "type": "verb"},
+    {"en": ["value"], "vi": ["trân trọng"], "color": "hsl(0, 0%, 59%)", "type": "verb"},
+    {"en": ["act"], "vi": ["hành động"], "color": "hsl(0, 0%, 53%)", "type": "verb"},
+    {"en": ["grows"], "vi": ["lớn lên"], "color": "hsl(0, 0%, 61%)", "type": "verb"},
+    {"en": ["made"], "vi": ["tạo ra"], "color": "hsl(0, 0%, 55%)", "type": "verb"},
+    {"en": ["arrives"], "vi": ["đến"], "color": "hsl(0, 0%, 58%)", "type": "verb"},
+    {"en": ["treating"], "vi": ["xem"], "color": "hsl(0, 0%, 52%)", "type": "verb"},
+    {"en": ["consider"], "vi": ["xem"], "color": "hsl(0, 0%, 54%)", "type": "verb"},
+    {"en": ["shows"], "vi": ["cho thấy"], "color": "hsl(0, 0%, 60%)", "type": "verb"},
+    {"en": ["points"], "vi": ["chỉ vào"], "color": "hsl(0, 0%, 56%)", "type": "verb"},
+    {"en": ["ignored"], "vi": ["bỏ quên"], "color": "hsl(0, 0%, 51%)", "type": "verb"},
+    {"en": ["pushed away"], "vi": ["gạt sang bên"], "color": "hsl(0, 0%, 53%)", "type": "verb"},
+    {"en": ["running"], "vi": ["chạy trốn"], "color": "hsl(0, 0%, 49%)", "type": "verb"},
+    {"en": ["allow"], "vi": ["cho phép"], "color": "hsl(0, 0%, 57%)", "type": "verb"},
+    {"en": ["feel"], "vi": ["cảm nhận"], "color": "hsl(0, 0%, 59%)", "type": "verb"},
+    {"en": ["listen"], "vi": ["lắng nghe"], "color": "hsl(0, 0%, 61%)", "type": "verb"},
+    {"en": ["transforms"], "vi": ["biến thành"], "color": "hsl(0, 0%, 55%)", "type": "verb"},
+    {"en": ["overlook"], "vi": ["bỏ qua"], "color": "hsl(0, 0%, 52%)", "type": "verb"},
+    {"en": ["remind"], "vi": ["nhắc nhở"], "color": "hsl(0, 0%, 58%)", "type": "verb"},
+    {"en": ["notice"], "vi": ["chú ý"], "color": "hsl(0, 0%, 60%)", "type": "verb"},
+    {"en": ["reconnect"], "vi": ["kết nối lại"], "color": "hsl(0, 0%, 56%)", "type": "verb"},
+    {"en": ["becomes"], "vi": ["trở thành"], "color": "hsl(0, 0%, 54%)", "type": "verb"},
+    {"en": ["release"], "vi": ["thả lỏng"], "color": "hsl(0, 0%, 57%)", "type": "verb"},
+    {"en": ["deepens"], "vi": ["sâu hơn"], "color": "hsl(0, 0%, 59%)", "type": "verb"},
+    {"en": ["opens"], "vi": ["mở ra"], "color": "hsl(0, 0%, 61%)", "type": "verb"},
+    {"en": ["contain"], "vi": ["có"], "color": "hsl(0, 0%, 53%)", "type": "verb"},
+    {"en": ["recognize"], "vi": ["nhận ra"], "color": "hsl(0, 0%, 60%)", "type": "verb"},
+    {"en": ["gives"], "vi": ["tạo cho"], "color": "hsl(0, 0%, 58%)", "type": "verb"},
+    {"en": ["returning"], "vi": ["trở về"], "color": "hsl(0, 0%, 55%)", "type": "verb"},
+    {"en": ["imagined"], "vi": ["tưởng tượng"], "color": "hsl(0, 0%, 52%)", "type": "verb"},
+    {"en": ["shapes"], "vi": ["định hình"], "color": "hsl(0, 0%, 56%)", "type": "verb"},
+    {"en": ["carries"], "vi": ["mang"], "color": "hsl(0, 0%, 54%)", "type": "verb"},
+    {"en": ["accept"], "vi": ["chấp nhận"], "color": "hsl(0, 0%, 57%)", "type": "verb"},
+    {"en": ["stops"], "vi": ["không còn"], "color": "hsl(0, 0%, 50%)", "type": "verb"},
+    {"en": ["complete"], "vi": ["hoàn thiện"], "color": "hsl(0, 0%, 59%)", "type": "verb"},
+    {"en": ["saying"], "vi": ["nói"], "color": "hsl(0, 0%, 55%)", "type": "verb"},
+    {"en": ["choosing"], "vi": ["chọn"], "color": "hsl(0, 0%, 57%)", "type": "verb"},
+    {"en": ["accepting"], "vi": ["chấp nhận"], "color": "hsl(0, 0%, 56%)", "type": "verb"},
+    {"en": ["embracing"], "vi": ["đón nhận"], "color": "hsl(0, 0%, 60%)", "type": "verb"},
+    {"en": ["control"], "vi": ["kiểm soát"], "color": "hsl(0, 0%, 53%)", "type": "verb"},
+    {"en": ["understand"], "vi": ["hiểu"], "color": "hsl(0, 0%, 61%)", "type": "verb"},
+    {"en": ["rejection"], "vi": ["từ chối"], "color": "hsl(0, 0%, 51%)", "type": "verb"},
+    {"en": ["alignment"], "vi": ["hòa hợp"], "color": "hsl(0, 0%, 58%)", "type": "verb"},
+    {"en": ["noticing"], "vi": ["nhận ra"], "color": "hsl(0, 0%, 60%)", "type": "verb"},
+    {"en": ["practice"], "vi": ["thực hành"], "color": "hsl(0, 0%, 57%)", "type": "verb"},
+    {"en": ["speaking"], "vi": ["nói"], "color": "hsl(0, 0%, 54%)", "type": "verb"},
+    {"en": ["being"], "vi": ["là"], "color": "hsl(0, 0%, 59%)", "type": "verb"},
+    {"en": ["gain"], "vi": ["nhận lại"], "color": "hsl(0, 0%, 56%)", "type": "verb"},
+    {"en": ["coming home"], "vi": ["trở về"], "color": "hsl(0, 0%, 62%)", "type": "verb"},
+    {"en": ["match"], "vi": ["phù hợp"], "color": "hsl(0, 0%, 58%)", "type": "verb"},
+    {"en": ["performing"], "vi": ["diễn"], "color": "hsl(0, 0%, 52%)", "type": "verb"},
+    {"en": ["living"], "vi": ["sống"], "color": "hsl(0, 0%, 61%)", "type": "verb"}
+  ],
+  "entries": {
+    "meaning_of_life": {
+      "summary": {
+        "en": "A reflection on finding meaning through presence and intentional choices.",
+        "vi": "Suy ngẫm về việc tìm ý nghĩa qua sự hiện diện và những lựa chọn có chủ ý."
+      },
+      "essay": {
+        "en": "Meaning is rarely discovered in dramatic moments. It appears quietly—through the way you show up for others, how you take responsibility, and how you choose kindness even when no one is watching. Life feels empty when you chase something distant, but becomes rich when you pay attention to what is already here. You do not need a perfect plan; you need gentle alignment between what you believe, what you value, and how you act each day. Meaning grows from presence, from choosing honesty, and from allowing both joy and pain to shape the person you are becoming. Purpose is not found far away; it is made in small, intentional choices.",
+        "vi": "Ý nghĩa hiếm khi được tìm thấy trong những khoảnh khắc kịch tính. Nó xuất hiện rất khẽ—qua cách bạn hiện diện vì người khác, cách bạn chịu trách nhiệm, và cách bạn chọn tử tế ngay cả khi không ai nhìn thấy. Cuộc sống trở nên trống rỗng khi bạn đuổi theo điều gì quá xa, nhưng trở nên phong phú khi bạn chú ý đến những gì đang có mặt. Bạn không cần một kế hoạch hoàn hảo; bạn cần sự hòa hợp nhẹ nhàng giữa điều bạn tin, điều bạn trân trọng và cách bạn hành động mỗi ngày. Ý nghĩa lớn lên từ sự hiện diện, từ sự trung thực, và từ việc cho phép cả vui lẫn buồn định hình con người bạn đang trở thành. Mục đích không nằm ở nơi xa; nó được tạo ra trong những lựa chọn nhỏ và có chủ ý."
+      },
+      "audio": {"en": "philosophy_vip3_1_en.mp3"}
+    },
+    "everyday_suffering": {
+      "summary": {
+        "en": "How everyday pain can become a teacher instead of just a weight.",
+        "vi": "Cách nỗi đau thường nhật có thể trở thành người thầy thay vì chỉ là gánh nặng."
+      },
+      "essay": {
+        "en": "Everyday suffering often arrives in subtle forms: a tired body, an unanswered message, a heaviness you cannot name. Instead of treating these as signs that something is wrong with you, consider them signals. Pain shows where you need boundaries, rest, or honesty. It points to needs you have ignored and emotions you have pushed away. When you stop running from discomfort and allow yourself to feel it gently, insight appears. You begin to understand what your heart has been trying to say. Suffering becomes a teacher, not an enemy, when you listen with patience. In this quiet space of awareness, pain softens and transforms into guidance.",
+        "vi": "Nỗi đau hằng ngày thường đến dưới những dạng rất nhẹ: cơ thể mệt mỏi, tin nhắn chưa được trả lời, hoặc một cảm giác nặng nề không gọi tên được. Thay vì xem chúng là dấu hiệu bạn đang có vấn đề, hãy xem chúng như tín hiệu. Nỗi đau cho thấy bạn cần ranh giới, nghỉ ngơi hoặc sự trung thực. Nó chỉ vào những nhu cầu bị bỏ quên và những cảm xúc bạn từng gạt sang bên. Khi bạn ngừng chạy trốn khó chịu và cho phép mình cảm nhận nó một cách dịu dàng, sự thấu hiểu xuất hiện. Bạn bắt đầu nhận ra điều trái tim muốn nói. Khi biết lắng nghe, đau khổ trở thành người thầy chứ không phải kẻ thù. Trong không gian tĩnh lặng của nhận biết, nỗi đau mềm lại và biến thành sự dẫn dắt."
+      },
+      "audio": {"en": "philosophy_vip3_2_en.mp3"}
+    },
+    "ordinary_joy": {
+      "summary": {
+        "en": "The power of simple, overlooked joys in sustaining a meaningful life.",
+        "vi": "Sức mạnh của những niềm vui giản dị, dễ bỏ qua trong việc nuôi dưỡng cuộc sống ý nghĩa."
+      },
+      "essay": {
+        "en": "Ordinary joy is easy to overlook because it arrives without noise: the warmth of a morning cup, a breeze through the window, the softness in someone's voice when they say your name. These moments do not solve your problems, but they remind you that life is more than struggle. When you allow yourself to truly notice simple joys, you reconnect with a quieter, steadier part of yourself. Gratitude becomes not an idea but a physical shift—the shoulders release, the breath deepens, the heart opens. Life will always contain difficulty, but the ability to recognize small joys gives you strength. It is a gentle way of returning to yourself.",
+        "vi": "Niềm vui bình thường rất dễ bị bỏ qua vì nó đến không ồn ào: hơi ấm của tách trà buổi sáng, làn gió qua khung cửa, sự mềm mại trong giọng ai đó khi họ gọi tên bạn. Những khoảnh khắc ấy không giải quyết vấn đề của bạn, nhưng nhắc nhở rằng cuộc sống lớn hơn những khó khăn. Khi bạn thực sự chú ý đến những niềm vui nhỏ, bạn kết nối lại với phần yên ổn hơn bên trong mình. Lòng biết ơn trở thành cảm giác chứ không chỉ là khái niệm—vai thả lỏng, hơi thở sâu hơn, trái tim mở ra. Cuộc sống luôn có khó khăn, nhưng khả năng nhận ra niềm vui nhỏ tạo cho bạn sức mạnh. Đó là cách dịu dàng để trở về với chính mình."
+      },
+      "audio": {"en": "philosophy_vip3_3_en.mp3"}
+    },
+    "freedom_and_responsibility": {
+      "summary": {
+        "en": "Understanding how freedom and responsibility complete each other.",
+        "vi": "Hiểu cách tự do và trách nhiệm bổ sung cho nhau."
+      },
+      "essay": {
+        "en": "Freedom is often imagined as doing whatever you want, but real freedom is the ability to choose with awareness. Every choice shapes your future, and each path carries its own weight. When you accept this truth, responsibility stops feeling like a burden and becomes a form of power. Saying yes means saying no to something else; choosing honesty means accepting uncomfortable conversations; choosing growth means embracing temporary discomfort. Freedom and responsibility are not opposites—they complete each other. When you act with clarity and integrity, life becomes simpler. You understand that you cannot control everything, but you can control how you show up. And that is true freedom.",
+        "vi": "Tự do thường được tưởng tượng như làm bất cứ điều gì mình muốn, nhưng tự do thật sự là khả năng lựa chọn trong tỉnh thức. Mỗi lựa chọn định hình tương lai của bạn, và mỗi con đường đều mang trọng lượng riêng. Khi chấp nhận điều này, trách nhiệm không còn là gánh nặng mà trở thành sức mạnh. Nói đồng ý nghĩa là từ chối điều khác; chọn trung thực nghĩa là chấp nhận những cuộc trò chuyện khó; chọn trưởng thành nghĩa là đón nhận sự khó chịu tạm thời. Tự do và trách nhiệm không đối lập—chúng hoàn thiện nhau. Khi hành động với rõ ràng và chính trực, cuộc sống trở nên đơn giản hơn. Bạn hiểu rằng mình không kiểm soát được tất cả, nhưng bạn kiểm soát được cách mình hiện diện. Và đó là tự do thật sự."
+      },
+      "audio": {"en": "philosophy_vip3_4_en.mp3"}
+    },
+    "authentic_self": {
+      "summary": {
+        "en": "The journey from wearing masks to coming home to yourself.",
+        "vi": "Hành trình từ đeo mặt nạ đến trở về với bản thân."
+      },
+      "essay": {
+        "en": "Authenticity is not a dramatic rejection of all expectations. It is the slow, gentle alignment between your inner truth and your outer life. You begin by noticing when your yes is actually a no, when your smile is actually a mask, when your silence is actually fear. Then you practice small acts of honesty—speaking softer, not louder. Being authentic does not mean being perfect; it means being consistent with yourself. You may lose certain approvals, but you gain something far more important: the feeling of coming home to who you really are. When your actions match your inner truth, life becomes lighter. You stop performing and start living.",
+        "vi": "Sống chân thật không phải là sự từ chối kịch tính mọi kỳ vọng. Đó là sự hòa hợp chậm rãi và dịu dàng giữa sự thật bên trong và đời sống bên ngoài. Bạn bắt đầu bằng việc nhận ra khi nào lời đồng ý của mình thật ra là một sự từ chối, khi nào nụ cười là chiếc mặt nạ, khi nào sự im lặng xuất phát từ nỗi sợ. Sau đó bạn thực hành những hành động trung thực nhỏ—nói nhẹ nhàng hơn, không phải lớn tiếng hơn. Chân thật không phải là hoàn hảo; đó là nhất quán với chính mình. Bạn có thể mất đi vài sự công nhận, nhưng nhận lại điều quý giá hơn nhiều: cảm giác được trở về đúng bản thể của mình. Khi hành động phù hợp với sự thật bên trong, cuộc sống trở nên nhẹ nhàng hơn. Bạn ngừng 'diễn' và bắt đầu sống thật."
+      },
+      "audio": {"en": "philosophy_vip3_5_en.mp3"}
+    }
+  }
+}
