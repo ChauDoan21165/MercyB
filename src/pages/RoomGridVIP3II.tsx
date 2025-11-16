@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
-import { CheckCircle2, Lock, Crown, Sparkles, RefreshCw, BookOpen } from "lucide-react";
+import { CheckCircle2, Lock, Crown, Sparkles, RefreshCw, BookOpen, ChevronLeft, Building2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ALL_ROOMS } from "@/lib/roomData";
@@ -93,12 +93,44 @@ const RoomGridVIP3II = () => {
                 </h1>
               </div>
               <p className="text-lg text-gray-700">
-                Căn Hộ VIP3 II – Làm Chủ Chuyên Ngành Tiếng Anh
+                VIP3 II – Làm Chủ Chuyên Ngành Tiếng Anh
               </p>
               <p className="text-sm text-gray-600">
                 {vip3IIRooms.length} specialized English grammar & academic rooms
               </p>
             </div>
+          </div>
+
+          {/* Back to VIP3 Navigation Card */}
+          <div className="mb-8">
+            <Card 
+              className="p-6 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl border-2"
+              style={{ 
+                borderColor: 'hsl(var(--vip3-primary))',
+                background: 'linear-gradient(135deg, hsl(var(--vip3-primary) / 0.1), hsl(var(--vip3-gold) / 0.1))'
+              }}
+              onClick={() => navigate('/rooms-vip3')}
+            >
+              <div className="flex items-center justify-between">
+                <ChevronLeft className="h-8 w-8 text-gray-400" />
+                <div className="flex items-center gap-4 flex-1 ml-4">
+                  <div className="p-3 rounded-full" style={{ background: 'hsl(var(--gradient-rainbow))' }}>
+                    <Building2 className="h-8 w-8 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-1">
+                      Back to VIP3 Main Collection
+                    </h3>
+                    <p className="text-gray-600">
+                      Core Premium Rooms • Diverse Topics
+                    </p>
+                    <p className="text-sm text-gray-500 mt-1">
+                      Quay lại Bộ sưu tập VIP3 Chính • Chủ đề Đa dạng
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Card>
           </div>
 
           {/* Rooms Grid */}
