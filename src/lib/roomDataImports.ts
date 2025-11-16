@@ -349,6 +349,13 @@ export const roomDataMap: Record<string, RoomData> = {
       "tier": "vip3",
       "hasData": true
   },
+  "master-english-high-efficiency-vip1": {
+      "id": "master-english-high-efficiency-vip1",
+      "nameEn": "Master English: High-Efficiency Foundations",
+      "nameVi": "Làm Chủ Tiếng Anh: Nền Tảng Hiệu Quả Cao",
+      "tier": "vip1",
+      "hasData": true
+  },
   "master-english-high-efficiency-vip3": {
       "id": "master-english-high-efficiency-vip3",
       "nameEn": "Master English: High-Efficiency Learning",
