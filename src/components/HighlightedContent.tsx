@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { toast } from '@/hooks/use-toast';
-import { getKeywordColor } from '@/lib/keywordColors';
+import { getEmotionKeywordColor } from '@/lib/emotionKeywordColors';
 
 interface HighlightedContentProps {
   content: string;
@@ -97,14 +97,14 @@ export const HighlightedContent = ({
       const words = matchedText.split(/\s+/);
       
       // Try full phrase first
-      color = getKeywordColor(matchedText);
+      color = getEmotionKeywordColor(matchedText);
       if (color) {
         bestMatch = matchedText;
       } else {
         // Try progressively shorter phrases from the start
         for (let len = words.length; len >= 1; len--) {
           const phrase = words.slice(0, len).join(' ');
-          color = getKeywordColor(phrase);
+          color = getEmotionKeywordColor(phrase);
           if (color) {
             bestMatch = phrase;
             break;
