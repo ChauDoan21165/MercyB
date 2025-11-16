@@ -11,6 +11,30 @@ export interface KeywordColor {
   rationale: string;
 }
 
+export interface CustomKeywordMapping {
+  en: string[];
+  vi: string[];
+  color: string;
+}
+
+// Custom keyword mappings from room data (set by setCustomKeywordMappings)
+let customKeywordMappings: CustomKeywordMapping[] = [];
+
+/**
+ * Set custom keyword color mappings from room data
+ * This allows rooms to define their own highlighted words with specific colors
+ */
+export function setCustomKeywordMappings(mappings: CustomKeywordMapping[]) {
+  customKeywordMappings = mappings;
+}
+
+/**
+ * Clear custom keyword mappings (useful when switching rooms)
+ */
+export function clearCustomKeywordMappings() {
+  customKeywordMappings = [];
+}
+
 export const KEYWORD_COLORS: KeywordColor[] = [
   // Mental Health & Emotional Well-being
   { keyword: 'emotional', keywordVi: 'cảm xúc', color: '#FFB6C1', rationale: 'Warmth, empathy, emotional connection' },
@@ -143,14 +167,25 @@ export const KEYWORD_COLORS: KeywordColor[] = [
 /**
  * Get the color for a specific keyword (case-insensitive)
  * Supports both English and Vietnamese keywords
+ * Checks custom mappings first, then falls back to default colors
  */
 export function getKeywordColor(keyword: string): string | null {
   const normalized = keyword.toLowerCase().trim();
+  
+  // Check custom keyword mappings first (from room data)
+  for (const mapping of customKeywordMappings) {
+    const allKeywords = [...mapping.en, ...mapping.vi].map(k => k.toLowerCase().trim());
+    if (allKeywords.includes(normalized)) {
+      return mapping.color;
+    }
+  }
+  
+  // Fall back to default keyword colors
   const match = KEYWORD_COLORS.find(
-    (kc) => 
-      kc.keyword.toLowerCase() === normalized ||
-      (kc.keywordVi && kc.keywordVi.toLowerCase() === normalized)
+    kc => kc.keyword.toLowerCase() === normalized || 
+          (kc.keywordVi && kc.keywordVi.toLowerCase() === normalized)
   );
+  
   return match ? match.color : null;
 }
 
@@ -159,6 +194,16 @@ export function getKeywordColor(keyword: string): string | null {
  */
 export function isKeyword(word: string): boolean {
   const normalized = word.toLowerCase().trim();
+  
+  // Check custom mappings first
+  for (const mapping of customKeywordMappings) {
+    const allKeywords = [...mapping.en, ...mapping.vi].map(k => k.toLowerCase().trim());
+    if (allKeywords.includes(normalized)) {
+      return true;
+    }
+  }
+  
+  // Check default keywords
   return KEYWORD_COLORS.some((kc) => kc.keyword.toLowerCase() === normalized);
 }
 

@@ -1,6 +1,58 @@
 {
   "id": "english_specialization_mastery_vip3_ii",
   "tier": "vip3_ii",
+  "highlighted_words": [
+    {
+      "en": ["Chunk-stacking", "chunk stacking", "stacking"],
+      "vi": ["Xếp cụm", "xếp cụm từ"],
+      "color": "#A8F0A8"
+    },
+    {
+      "en": ["argue", "argument", "I'd argue"],
+      "vi": ["lập luận", "tôi cho rằng"],
+      "color": "#FFD8B8"
+    },
+    {
+      "en": ["Honestly", "honestly I feel"],
+      "vi": ["Thành thật", "thành thật mà nói"],
+      "color": "#FFE0CC"
+    },
+    {
+      "en": ["productivity", "productive"],
+      "vi": ["năng suất", "hiệu quả"],
+      "color": "#FFF4D8"
+    },
+    {
+      "en": ["momentum", "linguistic momentum"],
+      "vi": ["động lực", "động lực ngôn ngữ"],
+      "color": "#FFB8A3"
+    },
+    {
+      "en": ["fluency", "fluid speech", "flowing"],
+      "vi": ["lưu loát", "trôi chảy"],
+      "color": "#B8D4F1"
+    },
+    {
+      "en": ["cognitive", "cognitive flow", "cognitive load"],
+      "vi": ["nhận thức", "luồng nhận thức"],
+      "color": "#D9C8F0"
+    },
+    {
+      "en": ["precision", "precise", "accuracy"],
+      "vi": ["chính xác", "độ chính xác"],
+      "color": "#98FB98"
+    },
+    {
+      "en": ["layered speech", "multi-layered"],
+      "vi": ["lời nói nhiều tầng"],
+      "color": "#E0D8F5"
+    },
+    {
+      "en": ["nuanced", "nuance", "subtle"],
+      "vi": ["tinh tế", "sắc thái"],
+      "color": "#D4EED5"
+    }
+  ],
   "title": {
     "en": "VIP3 II – English Specialization Mastery",
     "vi": "VIP3 II – Tinh Thông Tiếng Anh Chuyên Sâu"

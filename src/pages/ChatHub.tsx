@@ -32,6 +32,8 @@ import { roomDataMap } from "@/lib/roomDataImports";
 import { getParentRoute } from "@/lib/routeHelper";
 import { CareerProgressTracker } from "@/components/CareerProgressTracker";
 import { AnimatedTierBadge } from "@/components/AnimatedTierBadge";
+import { loadRoomKeywords } from "@/lib/roomKeywords";
+import { setCustomKeywordMappings, clearCustomKeywordMappings } from "@/lib/keywordColors";
 
 interface Message {
   id: string;
@@ -161,6 +163,15 @@ const ChatHub = () => {
        
         // Set keyword menu from merged data
         setKeywordMenu(result.keywordMenu);
+        
+        // Load custom keyword colors for this room
+        const customKeywords = await loadRoomKeywords(roomId || '');
+        if (customKeywords.length > 0) {
+          setCustomKeywordMappings(customKeywords);
+          console.log(`Loaded ${customKeywords.length} custom keyword color mappings for ${roomId}`);
+        } else {
+          clearCustomKeywordMappings();
+        }
         
         // Don't add welcome message to chat - it's displayed in the card above
         setMainMessages([]);
