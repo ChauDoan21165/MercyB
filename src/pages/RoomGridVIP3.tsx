@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, Lock, Crown, Sparkles, RefreshCw, Building2 } from "lucide-react";
+import { CheckCircle2, Lock, Crown, Sparkles, RefreshCw, Building2, BookOpen, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ALL_ROOMS } from "@/lib/roomData";
@@ -115,6 +115,40 @@ const RoomGridVIP3 = () => {
               </p>
             </div>
           </div>
+
+          {/* VIP3 II Navigation Card */}
+          {canAccessVIP3 && (
+            <div className="mb-8">
+              <Card 
+                className="p-6 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl border-2"
+                style={{ 
+                  borderColor: 'hsl(220, 70%, 60%)',
+                  background: 'linear-gradient(135deg, hsl(220, 70%, 98%), hsl(250, 70%, 98%))'
+                }}
+                onClick={() => navigate('/rooms-vip3-ii')}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 rounded-full bg-gradient-to-br from-blue-500 to-purple-500">
+                      <BookOpen className="h-8 w-8 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-gray-800 mb-1">
+                        VIP3 II – English Specialization Mastery
+                      </h3>
+                      <p className="text-gray-600">
+                        Advanced Grammar & Academic English • Click to explore
+                      </p>
+                      <p className="text-sm text-gray-500 mt-1">
+                        Làm Chủ Chuyên Ngành Tiếng Anh • Nhấp để khám phá
+                      </p>
+                    </div>
+                  </div>
+                  <ChevronRight className="h-8 w-8 text-gray-400" />
+                </div>
+              </Card>
+            </div>
+          )}
 
           {/* VIP3 Collections - organized by specialization */}
           {(() => {
