@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
+import { ColorIntensityProvider } from "@/contexts/ColorIntensityContext";
 import { AdminFloatingButton } from "@/components/AdminFloatingButton";
 import Welcome from "./pages/Welcome";
 import Homepage from "./pages/Homepage";
