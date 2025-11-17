@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Pencil, Trash2, Plus, ArrowLeft, Users, Activity } from "lucide-react";
+import { Pencil, Trash2, Plus, ArrowLeft, Users, Activity, Stethoscope } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { useUserAccess } from "@/hooks/useUserAccess";
@@ -155,6 +155,14 @@ export default function AdminRooms() {
             >
               <Activity className="h-4 w-4" />
               Health Check
+            </Button>
+            <Button
+              onClick={() => navigate("/admin/rooms/data-health")}
+              variant="outline"
+              className="gap-2"
+            >
+              <Stethoscope className="h-4 w-4" />
+              Data Health
             </Button>
             <Button
               onClick={() => navigate("/admin/rooms/new")}
