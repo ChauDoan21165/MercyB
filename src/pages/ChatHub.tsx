@@ -528,6 +528,11 @@ const ChatHub = () => {
                   showShadowingReminder={!!(message.audioFile && audioUrl)}
                 />
                 
+                {/* Copy button for English essay */}
+                <div className="mt-3">
+                  <MessageActions text={englishContent} roomId={roomId || ""} />
+                </div>
+                
                 {showVietnamese && (
                   <>
                     <hr className="border-border my-4" />
@@ -538,10 +543,9 @@ const ChatHub = () => {
                   </>
                 )}
                 
-                {/* Audio Player and Actions - After both languages */}
+                {/* Audio Player - After both languages */}
                 {(message.audioFile && audioUrl) && (
-                  <div className="mt-4 flex items-center gap-2">
-                    <MessageActions text={englishContent} roomId={roomId || ""} />
+                  <div className="mt-4">
                     <AudioPlayer
                       audioPath={audioUrl}
                       isPlaying={currentAudio === audioUrl && isAudioPlaying}
