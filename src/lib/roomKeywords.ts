@@ -4,6 +4,7 @@
  */
 
 import { CustomKeywordMapping } from './keywordColors';
+import { PUBLIC_ROOM_MANIFEST } from './roomManifest';
 
 export interface RoomKeywordConfig {
   highlighted_words?: {
@@ -14,27 +15,74 @@ export interface RoomKeywordConfig {
 }
 
 /**
+ * Resolve candidate JSON paths for a given roomId, matching roomLoader logic
+ */
+const buildRoomJsonCandidates = (roomId: string): string[] => {
+  const candidates: string[] = [];
+  const hasTier = /(\-|_)(free|vip1|vip2|vip3|vip4)($|\-)/.test(roomId);
+  const manifestKey = hasTier ? roomId.replace(/_/g, '-') : `${roomId.replace(/_/g, '-')}-free`;
+  const directKey = roomId ? roomId.replace(/_/g, '-') : '';
+  const filename = PUBLIC_ROOM_MANIFEST[manifestKey] || (directKey ? PUBLIC_ROOM_MANIFEST[directKey] : undefined);
+  if (filename) candidates.push(`/${encodeURI(filename)}`);
+
+  const base = manifestKey.replace(/-/g, '_');
+  const directBase = (roomId || '').replace(/-/g, '_');
+  candidates.push(`/data/${base}.json`);
+  candidates.push(`/data/${base.toLowerCase()}.json`);
+  if (directBase) {
+    candidates.push(`/data/${directBase}.json`);
+    candidates.push(`/data/${directBase.toLowerCase()}.json`);
+  }
+  const parts = base.split('_');
+  const tierIndex = parts.findIndex(p => ['free','vip1','vip2','vip3','vip4'].includes(p.toLowerCase()));
+  if (tierIndex > 0) {
+    const beforeTier = parts.slice(0, tierIndex)
+      .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
+    const tierPart = parts[tierIndex].toLowerCase();
+    const titleCaseWithLowerTier = [...beforeTier, tierPart].join('_');
+    candidates.push(`/data/${titleCaseWithLowerTier}.json`);
+  }
+  const titleCase = base.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('_');
+  candidates.push(`/data/${titleCase}.json`);
+  if (tierIndex >= 0) {
+    const tierFolder = parts[tierIndex].toLowerCase();
+    candidates.push(`/data/${tierFolder}/${base}.json`);
+    candidates.push(`/data/${tierFolder}/${base.toLowerCase()}.json`);
+    if (tierIndex > 0) {
+      const beforeTier = parts.slice(0, tierIndex)
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
+      const tierPart = parts[tierIndex].toLowerCase();
+      const titleCaseWithLowerTier = [...beforeTier, tierPart].join('_');
+      candidates.push(`/data/${tierFolder}/${titleCaseWithLowerTier}.json`);
+    }
+    candidates.push(`/data/${tierFolder}/${titleCase}.json`);
+  }
+  return candidates;
+};
+
+/**
  * Load keyword highlighting configuration from room data
  */
 export async function loadRoomKeywords(roomId: string): Promise<CustomKeywordMapping[]> {
   try {
-    // Try to fetch room data from public/data
-    const response = await fetch(`/data/${roomId}.json`);
-    if (!response.ok) {
-      return [];
+    const paths = buildRoomJsonCandidates(roomId);
+    for (const path of paths) {
+      try {
+        const cacheBust = `?cb=${Date.now()}&r=${Math.random()}`;
+        const response = await fetch(path + cacheBust, { cache: 'no-store' });
+        if (!response.ok) continue;
+        const json = await response.json() as RoomKeywordConfig;
+        if (json.highlighted_words && Array.isArray(json.highlighted_words)) {
+          return json.highlighted_words.map(hw => ({
+            en: hw.en || [],
+            vi: hw.vi || [],
+            color: hw.color
+          }));
+        }
+      } catch {
+        // try next path
+      }
     }
-    
-    const roomData = await response.json() as RoomKeywordConfig;
-    
-    // Extract highlighted_words configuration if it exists
-    if (roomData.highlighted_words && Array.isArray(roomData.highlighted_words)) {
-      return roomData.highlighted_words.map(hw => ({
-        en: hw.en || [],
-        vi: hw.vi || [],
-        color: hw.color
-      }));
-    }
-    
     return [];
   } catch (error) {
     console.error(`Failed to load room keywords for ${roomId}:`, error);
