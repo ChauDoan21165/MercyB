@@ -15,8 +15,8 @@
       "keywords_en": ["rest day", "recovery", "burnout"],
       "keywords_vi": ["ngày nghỉ", "phục hồi", "kiệt sức"],
       "copy": {
-        "en": "A full rest day helps prevent burnout. Unplug completely one day a week—no work, only light walking. Sleep longer, enjoy simple meals, and connect with a friend for relaxed conversation. Let your body and mind recharge naturally.",
-        "vi": "Ngày nghỉ trọn vẹn giúp ngăn kiệt sức. Ngắt kết nối hoàn toàn một ngày mỗi tuần—không làm việc, chỉ đi bộ nhẹ. Ngủ lâu hơn, thưởng thức bữa ăn đơn giản, và trò chuyện thoải mái với bạn bè. Hãy để cơ thể và tâm trí phục hồi tự nhiên."
+        "en": "Take one full rest day each week to prevent burnout. Step away from screens and responsibilities. Go for a light walk, sleep extra, and enjoy slow, simple moments. Spend time with a friend in easy conversation. Let this pause renew your energy and restore calm.",
+        "vi": "Hãy dành một ngày nghỉ trọn vẹn mỗi tuần để ngăn ngừa kiệt sức. Tạm rời màn hình và trách nhiệm. Đi bộ nhẹ, ngủ nhiều hơn và tận hưởng những khoảnh khắc chậm rãi, đơn giản. Dành thời gian trò chuyện thoải mái với một người bạn. Hãy để khoảng dừng này làm mới năng lượng và khôi phục sự bình yên."
       },
       "tags": ["rest", "burnout"],
       "audio": "bur_free_1_en.mp3"
@@ -31,6 +31,17 @@
       },
       "tags": ["boundary", "burnout"],
       "audio": "bur_free_2_en.mp3"
+    },
+    {
+      "slug": "energy-reset",
+      "keywords_en": ["energy", "reset", "calm"],
+      "keywords_vi": ["năng lượng", "tái tạo", "bình tĩnh"],
+      "copy": {
+        "en": "When burnout builds quietly, a simple energy reset can help you feel grounded again. Begin by slowing your breathing and noticing how your body feels. Step outside for a few minutes to reconnect with fresh air and natural light. Drink water slowly, letting your mind settle. Write down one small task you can complete today, and release the pressure to do more. Reach out to someone supportive just to say hello. These gentle steps signal safety to your nervous system and help your energy return gradually, creating space for clarity and steadiness.",
+        "vi": "Khi kiệt sức âm thầm tích tụ, một lần tái tạo năng lượng đơn giản có thể giúp bạn cảm thấy vững vàng trở lại. Bắt đầu bằng cách chậm nhịp thở và nhận biết cảm giác trong cơ thể. Ra ngoài vài phút để kết nối với không khí và ánh sáng tự nhiên. Uống nước chậm rãi để tâm trí dịu xuống. Viết ra một việc nhỏ bạn có thể làm hôm nay và buông bỏ áp lực phải làm nhiều hơn. Liên lạc với một người bạn chỉ để chào hỏi. Những bước nhẹ nhàng này gửi tín hiệu an toàn đến hệ thần kinh, giúp năng lượng trở lại từ từ và tạo không gian cho sự rõ ràng và ổn định."
+      },
+      "tags": ["energy", "calm", "burnout"],
+      "audio": "bur_free_3_en.mp3"
     }
   ]
 }
