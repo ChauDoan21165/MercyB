@@ -830,6 +830,9 @@ const ChatHub = () => {
           {/* Dictionary Lookup */}
           <DictionaryLookup />
           
+          {/* Color Intensity Slider */}
+          <ColorIntensitySlider />
+          
           {keywordMenu && keywordMenu.en && keywordMenu.vi && keywordMenu.en.length > 0 && (
             <div>
               <div className="flex flex-wrap gap-2 justify-center">
