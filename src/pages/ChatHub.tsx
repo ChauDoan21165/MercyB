@@ -800,14 +800,14 @@ const ChatHub = () => {
             )}
           </div>
 
-          {/* Room Essay with Highlighting */}
+          {/* Room Essay with Highlighting - Always Visible */}
           {roomEssay && (roomEssay.en || roomEssay.vi) && (
-            <div className="mb-4 p-4 bg-muted/30 rounded-lg border border-border/50">
+            <div className="mb-4 p-4 bg-muted/30 rounded-lg border border-border/50" key="room-essay-permanent">
               {roomEssay.en && (
                 <div className="mb-3">
                   <HighlightedContent 
                     content={roomEssay.en}
-                    className="text-sm"
+                    className="text-sm leading-relaxed"
                     enableHighlighting={true}
                   />
                 </div>
@@ -819,7 +819,7 @@ const ChatHub = () => {
                 <div>
                   <HighlightedContent 
                     content={roomEssay.vi}
-                    className="text-sm"
+                    className="text-sm leading-relaxed"
                     enableHighlighting={true}
                   />
                 </div>
