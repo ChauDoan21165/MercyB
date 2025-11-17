@@ -153,7 +153,8 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "launch-career-vip4-career-4-ii": "data/Launch_Career_vip4_career_4_II.json",
   "strategy-in-life-advanced-tactics-ii-alt-vip3": "data/Strategy_in_Life_Advanced_Tactics_II_vip3.json",
   "schizophrenia-support-free": "data/schizophrenia-support-free.json",
-  "schizophrenia-understanding-vip1": "data/schizophrenia-understanding-vip1.json"
+  "schizophrenia-understanding-vip1": "data/schizophrenia-understanding-vip1.json",
+  "schizophrenia-understanding-vip2": "data/schizophrenia-understanding-vip2.json"
 };
 
 /**
