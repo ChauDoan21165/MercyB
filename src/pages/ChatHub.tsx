@@ -528,9 +528,20 @@ const ChatHub = () => {
                   showShadowingReminder={!!(message.audioFile && audioUrl)}
                 />
                 
-                {/* Copy button for English essay */}
-                <div className="mt-3">
+                {/* Copy button and Audio Player - After English essay */}
+                <div className="mt-3 flex items-center gap-2">
                   <MessageActions text={englishContent} roomId={roomId || ""} />
+                  {(message.audioFile && audioUrl) && (
+                    <AudioPlayer
+                      audioPath={audioUrl}
+                      isPlaying={currentAudio === audioUrl && isAudioPlaying}
+                      onPlayPause={handleAudioClick}
+                      onEnded={() => {
+                        setIsAudioPlaying(false);
+                        setCurrentAudio(null);
+                      }}
+                    />
+                  )}
                 </div>
                 
                 {showVietnamese && (
@@ -541,21 +552,6 @@ const ChatHub = () => {
                       className="w-full"
                     />
                   </>
-                )}
-                
-                {/* Audio Player - After both languages */}
-                {(message.audioFile && audioUrl) && (
-                  <div className="mt-4">
-                    <AudioPlayer
-                      audioPath={audioUrl}
-                      isPlaying={currentAudio === audioUrl && isAudioPlaying}
-                      onPlayPause={handleAudioClick}
-                      onEnded={() => {
-                        setIsAudioPlaying(false);
-                        setCurrentAudio(null);
-                      }}
-                    />
-                  </div>
                 )}
               </>
             ) : (
