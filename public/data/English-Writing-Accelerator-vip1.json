@@ -1,0 +1,69 @@
+{
+  "id": "English-Writing-Accelerator-vip1",
+  "tier": "VIP1 / VIP1",
+  "title": {
+    "en": "English Writing Accelerator",
+    "vi": "Tăng Tốc Viết Tiếng Anh"
+  },
+  "content": {
+    "en": "Writing becomes easier and faster when you learn the right habits. This VIP1 room helps you build practical skills for clearer sentences, stronger ideas, and confident expression. Through simple techniques like sentence patterns, idea expansion, and guided practice, you will accelerate your writing progress and feel more fluent each week.",
+    "vi": "Kỹ năng viết trở nên dễ dàng và nhanh hơn khi bạn áp dụng đúng thói quen. Phòng VIP1 này giúp bạn xây dựng các kỹ năng thực tế để viết câu rõ ràng hơn, ý tưởng mạnh mẽ hơn và diễn đạt tự tin hơn. Thông qua các kỹ thuật như mẫu câu, mở rộng ý và luyện tập có hướng dẫn, bạn sẽ tăng tốc tiến bộ và cảm thấy trôi chảy hơn từng tuần."
+  },
+  "entries": [
+    {
+      "slug": "sentence-patterns",
+      "keywords_en": ["sentence patterns", "structure", "clarity"],
+      "keywords_vi": ["mẫu câu", "cấu trúc", "rõ ràng"],
+      "copy": {
+        "en": "Learning sentence patterns helps you write faster and with more clarity. English has common structures like “There are…”, “One reason is…”, and “In my experience…”. Mastering these patterns reduces hesitation because you start each sentence with confidence. Choose three patterns and use them daily to express ideas in short paragraphs. As you repeat them, the structures become natural, freeing your mind to focus on meaning instead of grammar. Clear patterns also help readers follow your thinking smoothly. This simple technique is one of the fastest ways to improve fluency, especially when writing under time pressure.",
+        "vi": "Học các mẫu câu giúp bạn viết nhanh hơn và rõ ràng hơn. Tiếng Anh có nhiều cấu trúc phổ biến như “There are…”, “One reason is…” và “In my experience…”. Khi làm chủ những mẫu này, bạn giảm do dự vì có thể bắt đầu câu với sự tự tin. Hãy chọn ba mẫu và dùng chúng mỗi ngày để viết các đoạn văn ngắn. Khi lặp lại, cấu trúc sẽ trở nên tự nhiên, giúp bạn tập trung vào ý nghĩa thay vì ngữ pháp. Mẫu câu rõ ràng cũng giúp người đọc theo dõi suy nghĩ của bạn mạch lạc hơn. Đây là kỹ thuật nhanh nhất để cải thiện độ trôi chảy, đặc biệt khi viết dưới áp lực thời gian."
+      },
+      "tags": ["writing", "structure"],
+      "audio": "eng_write_vip1_1_en.mp3"
+    },
+    {
+      "slug": "idea-expansion",
+      "keywords_en": ["idea expansion", "clarity", "detail"],
+      "keywords_vi": ["mở rộng ý", "rõ ràng", "chi tiết"],
+      "copy": {
+        "en": "Good writing comes from taking one small idea and expanding it clearly. Use the simple pattern: idea → explanation → example. Start with a clear statement, then explain why it matters, and finish with one real or imagined example. This structure makes even short writing sound thoughtful and complete. Practice by taking a basic sentence like “Reading helps me relax” and expanding it into a short paragraph. With repetition, your writing becomes richer, more organized, and easier for others to understand. This technique is essential for emails, essays, and social media posts.",
+        "vi": "Viết tốt bắt đầu từ một ý nhỏ được mở rộng rõ ràng. Hãy dùng mô hình đơn giản: ý → giải thích → ví dụ. Bắt đầu bằng câu khẳng định, sau đó giải thích vì sao điều đó quan trọng, và kết thúc với một ví dụ thực tế hoặc giả định. Cấu trúc này khiến đoạn viết ngắn trông sâu sắc và trọn vẹn. Hãy luyện tập bằng cách lấy câu cơ bản như “Reading helps me relax” và mở rộng thành đoạn văn ngắn. Khi lặp lại, bài viết của bạn sẽ phong phú, mạch lạc và dễ được người khác hiểu. Kỹ thuật này rất quan trọng cho email, bài luận và bài đăng mạng xã hội."
+      },
+      "tags": ["clarity", "expansion"],
+      "audio": "eng_write_vip1_2_en.mp3"
+    },
+    {
+      "slug": "daily-writing-routine",
+      "keywords_en": ["writing routine", "habit", "fluency"],
+      "keywords_vi": ["thói quen viết", "thói quen", "trôi chảy"],
+      "copy": {
+        "en":": Establishing a daily writing routine strengthens fluency. Choose a small, consistent goal such as 80–120 words each day. Write about your morning, a memory, or something you learned. Do not aim for perfection—focus on flow. The more often you write, the more natural English becomes in your thinking. Over time, you will notice that ideas appear faster and sentences form with less effort. A simple routine builds confidence and transforms writing from a difficult task into a familiar, calming practice.",
+        "vi":"Thiết lập thói quen viết hàng ngày giúp bạn tăng độ trôi chảy. Hãy chọn mục tiêu nhỏ và đều đặn như 80–120 từ mỗi ngày. Viết về buổi sáng của bạn, một kỷ niệm hoặc điều gì đó bạn vừa học được. Đừng cố gắng hoàn hảo—hãy tập trung vào sự liền mạch. Khi viết thường xuyên, tiếng Anh sẽ trở nên tự nhiên trong suy nghĩ của bạn. Theo thời gian, bạn sẽ nhận thấy ý tưởng xuất hiện nhanh hơn và câu văn hình thành dễ dàng hơn. Một thói quen đơn giản xây dựng sự tự tin và biến việc viết từ khó khăn thành một hoạt động quen thuộc, dễ chịu."
+      },
+      "tags": ["habit", "fluency"],
+      "audio": "eng_write_vip1_3_en.mp3"
+    },
+    {
+      "slug": "vocabulary-in-writing",
+      "keywords_en": ["vocabulary", "expression", "word choice"],
+      "keywords_vi": ["từ vựng", "diễn đạt", "chọn từ"],
+      "copy": {
+        "en": "Writing is one of the best ways to build real vocabulary. When you use a new word in a sentence, you create memory links that are stronger than memorizing lists. Choose five useful words each week and write a short paragraph using all of them. Focus on clarity, not complex grammar. Look at how native writers use the same words in articles or books, then model your sentences. This active practice teaches you shades of meaning and helps you choose words more naturally. Over time, your writing becomes more expressive and precise.",
+        "vi": "Viết là một trong những cách tốt nhất để xây dựng vốn từ thật sự. Khi bạn dùng từ mới trong câu, bạn tạo ra liên kết ghi nhớ mạnh hơn nhiều so với việc học danh sách từ vựng. Hãy chọn năm từ hữu ích mỗi tuần và viết một đoạn văn ngắn dùng tất cả chúng. Tập trung vào sự rõ ràng, không cần ngữ pháp phức tạp. Quan sát cách người bản xứ sử dụng từ trong bài báo hoặc sách, rồi mô phỏng cách họ viết. Luyện tập chủ động giúp bạn hiểu sắc thái nghĩa và chọn từ tự nhiên hơn. Theo thời gian, bài viết của bạn sẽ biểu cảm và chính xác hơn."
+      },
+      "tags": ["vocabulary", "expression"],
+      "audio": "eng_write_vip1_4_en.mp3"
+    },
+    {
+      "slug": "feedback-loop",
+      "keywords_en": ["feedback", "improvement", "self-editing"],
+      "keywords_vi": ["phản hồi", "cải thiện", "tự chỉnh sửa"],
+      "copy": {
+        "en": "Improving writing requires a simple feedback loop: write, review, adjust. After finishing a paragraph, read it aloud to notice awkward sentences or unclear ideas. Use basic self-editing steps like shortening long sentences, replacing vague words, and checking the subject–verb agreement. You can also ask a friend or tutor for a short review. Each small correction teaches your brain a better pattern. Over time, this loop becomes automatic, and your writing improves naturally without needing to study grammar deeply. Consistency matters more than perfection.",
+        "vi": "Cải thiện kỹ năng viết cần một vòng phản hồi đơn giản: viết, xem lại, điều chỉnh. Sau khi hoàn thành đoạn văn, hãy đọc to để nhận ra câu vụng về hoặc ý chưa rõ. Áp dụng các bước tự chỉnh sửa cơ bản như rút ngắn câu dài, thay từ mơ hồ và kiểm tra sự hòa hợp chủ ngữ–động từ. Bạn cũng có thể nhờ bạn bè hoặc gia sư xem qua. Mỗi chỉnh sửa nhỏ dạy cho não bạn một mẫu câu tốt hơn. Theo thời gian, vòng phản hồi này trở nên tự động và kỹ năng viết cải thiện tự nhiên mà không cần học ngữ pháp sâu. Sự đều đặn quan trọng hơn sự hoàn hảo."
+      },
+      "tags": ["feedback", "improvement"],
+      "audio": "eng_write_vip1_5_en.mp3"
+    }
+  ]
+}
