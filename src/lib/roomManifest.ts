@@ -147,6 +147,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "english-writing-mastery-vip3": "data/English-Writing-Mastery-vip3.json",
   "english-writing-deep-dive-vip3-ii": "data/english-writing-deep-dive-vip3II.json",
   "english-writing-deep-dive-vip3-ii-ii": "data/english-writing-deep-dive-vip3II-II.json",
+  "english-writing-deep-dive-vip3-ii-iii": "data/english-writing-deep-dive-vip3II-III.json",
   "finding-gods-peace-free": "data/Finding_Gods_Peace_free.json",
   "build-skills-vip4-career-3": "data/Build_Skills_vip4_career_3.json",
   "build-skills-vip4-career-3-ii": "data/Build_Skills_vip4_career_3_II.json",
