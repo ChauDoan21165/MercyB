@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Pencil, Trash2, Plus, ArrowLeft, Users, Activity, Stethoscope } from "lucide-react";
+import { Pencil, Trash2, Plus, ArrowLeft, Users, Activity, Stethoscope, Lock, Unlock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { useUserAccess } from "@/hooks/useUserAccess";
@@ -21,6 +21,7 @@ interface Room {
   keywords: string[];
   room_essay_en?: string;
   room_essay_vi?: string;
+  is_locked?: boolean;
 }
 
 export default function AdminRooms() {
@@ -59,6 +60,32 @@ export default function AdminRooms() {
       toast({
         title: "Success",
         description: "Room deleted successfully",
+      });
+    },
+    onError: (error: any) => {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
+    },
+  });
+
+  // Toggle lock mutation
+  const toggleLockMutation = useMutation({
+    mutationFn: async ({ roomId, lockState }: { roomId: string; lockState: boolean }) => {
+      const { error } = await supabase.rpc('toggle_room_lock', {
+        room_id_param: roomId,
+        lock_state: lockState
+      });
+      
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["admin-rooms"] });
+      toast({
+        title: "Success",
+        description: "Room lock status updated successfully",
       });
     },
     onError: (error: any) => {
@@ -190,7 +217,16 @@ export default function AdminRooms() {
         ) : (
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {filteredRooms?.map((room) => (
-              <Card key={room.id} className="p-6 hover:border-primary transition-colors">
+              <Card key={room.id} className="p-6 hover:border-primary transition-colors relative">
+                {room.is_locked && (
+                  <div className="absolute top-2 right-2">
+                    <Badge variant="secondary" className="bg-yellow-500/10 text-yellow-700 border-yellow-500/20 flex items-center gap-1">
+                      <Lock className="h-3 w-3" />
+                      Locked
+                    </Badge>
+                  </div>
+                )}
+                
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
                     <Badge className={`${getTierColor(room.tier)} mb-2`}>
@@ -215,9 +251,24 @@ export default function AdminRooms() {
                     size="sm"
                     className="flex-1"
                     onClick={() => navigate(`/admin/rooms/edit/${room.id}`)}
+                    disabled={room.is_locked}
+                    title={room.is_locked ? "Unlock room first to edit" : "Edit room"}
                   >
                     <Pencil className="h-4 w-4 mr-2" />
                     Edit
+                  </Button>
+                  <Button
+                    variant={room.is_locked ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => {
+                      toggleLockMutation.mutate({
+                        roomId: room.id,
+                        lockState: !room.is_locked
+                      });
+                    }}
+                    title={room.is_locked ? "Unlock room" : "Lock room"}
+                  >
+                    {room.is_locked ? <Unlock className="h-4 w-4" /> : <Lock className="h-4 w-4" />}
                   </Button>
                   <Button
                     variant="destructive"
@@ -227,6 +278,8 @@ export default function AdminRooms() {
                         deleteMutation.mutate(room.id);
                       }
                     }}
+                    disabled={room.is_locked}
+                    title={room.is_locked ? "Unlock room first to delete" : "Delete room"}
                   >
                     <Trash2 className="h-4 w-4" />
                   </Button>
