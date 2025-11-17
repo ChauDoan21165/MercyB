@@ -75,6 +75,7 @@ const ChatHub = () => {
   
   const [keywordMenu, setKeywordMenu] = useState<{ en: string[]; vi: string[] } | null>(null);
   const [clickedKeyword, setClickedKeyword] = useState<string | null>(null);
+  const [roomEssay, setRoomEssay] = useState<{ en: string; vi: string } | null>(null);
   const [mergedEntries, setMergedEntries] = useState<any[]>([]);
   const [audioBasePath, setAudioBasePath] = useState<string>('/');
   const [debugMode, setDebugMode] = useState(false);
@@ -147,6 +148,7 @@ const ChatHub = () => {
       // Reset state when switching rooms
       setMainMessages([]);
       setKeywordMenu(null);
+      setRoomEssay(null);
       setCurrentAudio(null);
       setIsAudioPlaying(false);
       setMergedEntries([]);
@@ -163,6 +165,20 @@ const ChatHub = () => {
        
         // Set keyword menu from merged data
         setKeywordMenu(result.keywordMenu);
+        
+        // Load room essay from database
+        const { data: dbRoom } = await supabase
+          .from('rooms')
+          .select('room_essay_en, room_essay_vi')
+          .eq('id', roomId)
+          .maybeSingle();
+        
+        if (dbRoom?.room_essay_en || dbRoom?.room_essay_vi) {
+          setRoomEssay({
+            en: dbRoom.room_essay_en || '',
+            vi: dbRoom.room_essay_vi || ''
+          });
+        }
         
         // Load custom keyword colors for this room
         const customKeywords = await loadRoomKeywords(roomId || '');
@@ -783,6 +799,33 @@ const ChatHub = () => {
               </p>
             )}
           </div>
+
+          {/* Room Essay with Highlighting */}
+          {roomEssay && (roomEssay.en || roomEssay.vi) && (
+            <div className="mb-4 p-4 bg-muted/30 rounded-lg border border-border/50">
+              {roomEssay.en && (
+                <div className="mb-3">
+                  <HighlightedContent 
+                    content={roomEssay.en}
+                    className="text-sm"
+                    enableHighlighting={true}
+                  />
+                </div>
+              )}
+              {roomEssay.vi && roomEssay.en && (
+                <hr className="border-border my-3" />
+              )}
+              {roomEssay.vi && (
+                <div>
+                  <HighlightedContent 
+                    content={roomEssay.vi}
+                    className="text-sm"
+                    enableHighlighting={true}
+                  />
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Dictionary Lookup */}
           <DictionaryLookup />
