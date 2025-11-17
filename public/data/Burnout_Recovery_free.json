@@ -1,1 +1,36 @@
-{"name":"Burnout Recovery","name_vi":"Phục Hồi Kiệt Sức","description":"Practical guidance for recovering from burnout with rest and balance","keywords_en":["burnout","recovery","rest","balance"],"keywords_vi":["kiệt sức","phục hồi","nghỉ ngơi","cân bằng"],"entries":[{"slug":"rest-day","keywords_en":["rest day","recovery","burnout"],"keywords_vi":["ngày nghỉ","phục hồi","kiệt sức"],"copy":{"en":"A full rest day helps prevent burnout. Unplug completely one day a week—no work, only light walking. Sleep longer, enjoy simple meals, and connect with a friend for relaxed conversation. Let your body and mind recharge naturally.","vi":"Ngày nghỉ trọn vẹn giúp ngăn kiệt sức. Ngắt kết nối hoàn toàn một ngày mỗi tuần—không làm việc, chỉ đi bộ nhẹ. Ngủ lâu hơn, thưởng thức bữa ăn đơn giản, và trò chuyện thoải mái với bạn bè. Hãy để cơ thể và tâm trí phục hồi tự nhiên."},"tags":["rest","burnout"],"audio":{"en":"bur_free_1_en.mp3"}},{"slug":"boundary","keywords_en":["boundary","no","balance"],"keywords_vi":["ranh giới","không","cân bằng"],"copy":{"en":"Setting boundaries protects your energy. Politely say no to extra work and set a clear end time each day. Use gentle language like 'I can't right now' without guilt. Share your boundaries with supportive friends to build lasting balance.","vi":"Thiết lập ranh giới bảo vệ năng lượng. Lịch sự nói không với công việc thêm và đặt giờ kết thúc rõ ràng mỗi ngày. Dùng ngôn ngữ nhẹ nhàng như 'Tôi không thể bây giờ' mà không cảm thấy tội lỗi. Chia sẻ ranh giới của bạn với bạn bè hỗ trợ để xây dựng sự cân bằng bền vững."},"tags":["boundary","burnout"],"audio":{"en":"bur_free_2_en.mp3"}}],"meta":{"created_at":"2025-10-28T00:00:00+00:00","updated_at":"2025-10-28T00:00:00+00:00","entry_count":2,"tier":"free","room_color":"#4A90E2"}}
+{
+  "id": "burn-out-recovery-free",
+  "tier": "Free / Miễn phí",
+  "title": {
+    "en": "Burnout Recovery",
+    "vi": "Phục Hồi Kiệt Sức"
+  },
+  "content": {
+    "en": "Practical guidance for recovering from burnout through rest, balance, and gentle daily adjustments. This room teaches simple habits that help reset your energy and rebuild stability. Explore deeper skills in higher tiers.",
+    "vi": "Hướng dẫn thực tế để phục hồi kiệt sức thông qua nghỉ ngơi, cân bằng và những điều chỉnh nhẹ nhàng mỗi ngày. Phòng này giúp bạn xây dựng những thói quen đơn giản để tái tạo năng lượng và lấy lại sự ổn định. Khám phá thêm kỹ năng sâu hơn ở cấp độ cao hơn."
+  },
+  "entries": [
+    {
+      "slug": "rest-day",
+      "keywords_en": ["rest day", "recovery", "burnout"],
+      "keywords_vi": ["ngày nghỉ", "phục hồi", "kiệt sức"],
+      "copy": {
+        "en": "A full rest day helps prevent burnout. Unplug completely one day a week—no work, only light walking. Sleep longer, enjoy simple meals, and connect with a friend for relaxed conversation. Let your body and mind recharge naturally.",
+        "vi": "Ngày nghỉ trọn vẹn giúp ngăn kiệt sức. Ngắt kết nối hoàn toàn một ngày mỗi tuần—không làm việc, chỉ đi bộ nhẹ. Ngủ lâu hơn, thưởng thức bữa ăn đơn giản, và trò chuyện thoải mái với bạn bè. Hãy để cơ thể và tâm trí phục hồi tự nhiên."
+      },
+      "tags": ["rest", "burnout"],
+      "audio": "bur_free_1_en.mp3"
+    },
+    {
+      "slug": "boundary",
+      "keywords_en": ["boundary", "no", "balance"],
+      "keywords_vi": ["ranh giới", "không", "cân bằng"],
+      "copy": {
+        "en": "Setting boundaries protects your energy. Politely say no to extra work and set a clear end time each day. Use gentle language like 'I can't right now' without guilt. Share your boundaries with supportive friends to build lasting balance.",
+        "vi": "Thiết lập ranh giới bảo vệ năng lượng. Lịch sự nói không với công việc thêm và đặt giờ kết thúc rõ ràng mỗi ngày. Dùng ngôn ngữ nhẹ nhàng như 'Tôi không thể bây giờ' mà không cảm thấy tội lỗi. Chia sẻ ranh giới của bạn với bạn bè hỗ trợ để xây dựng sự cân bằng bền vững."
+      },
+      "tags": ["boundary", "burnout"],
+      "audio": "bur_free_2_en.mp3"
+    }
+  ]
+}
