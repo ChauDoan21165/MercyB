@@ -18,6 +18,7 @@ import { MessageActions } from "@/components/MessageActions";
 import { MatchmakingButton } from "@/components/MatchmakingButton";
 import { usePoints } from "@/hooks/usePoints";
 import { DictionaryLookup } from "@/components/DictionaryLookup";
+import { ColorIntensitySlider } from "@/components/ColorIntensitySlider";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useCredits } from "@/hooks/useCredits";
 import { CreditLimitModal } from "@/components/CreditLimitModal";
