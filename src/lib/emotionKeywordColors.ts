@@ -267,8 +267,8 @@ export const emotionKeywordGroups: EmotionKeywordGroup[] = [
   {
     emotion: "philosophy-wisdom",
     color: "hsl(var(--emotion-awareness))",
-    en: ["philosophy", "wisdom", "wise", "insight", "understanding", "truth", "meaning", "purpose", "values", "principles", "ethics", "morals", "virtue", "knowledge", "contemplation", "reflection", "inner guidance", "life lessons"],
-    vi: ["triết học", "triet hoc", "trí tuệ", "tri tue", "khôn ngoan", "khon ngoan", "thấu hiểu", "thau hieu", "hiểu biết", "hieu biet", "sự thật", "su that", "ý nghĩa", "y nghia", "mục đích", "muc dich", "giá trị", "gia tri", "nguyên tắc", "nguyen tac", "đạo đức", "dao duc", "phẩm chất", "pham chat", "kiến thức", "kien thuc", "suy ngẫm", "suy ngam", "phản ánh", "phan anh", "dẫn đường nội tâm", "dan duong noi tam", "bài học cuộc sống", "bai hoc cuoc song"]
+    en: ["philosophy", "wisdom", "wise", "insight", "understanding", "truth", "meaning", "purpose", "values", "principles", "ethics", "morals", "virtue", "knowledge", "contemplation", "reflection", "inner guidance", "life lessons", "introspection", "self-reflection", "clarity", "balance", "equilibrium", "harmony", "inner peace", "serenity", "tranquility", "perspective", "discernment"],
+    vi: ["triết học", "triet hoc", "trí tuệ", "tri tue", "khôn ngoan", "khon ngoan", "thấu hiểu", "thau hieu", "hiểu biết", "hieu biet", "sự thật", "su that", "ý nghĩa", "y nghia", "mục đích", "muc dich", "giá trị", "gia tri", "nguyên tắc", "nguyen tac", "đạo đức", "dao duc", "phẩm chất", "pham chat", "kiến thức", "kien thuc", "suy ngẫm", "suy ngam", "phản ánh", "phan anh", "dẫn đường nội tâm", "dan duong noi tam", "bài học cuộc sống", "bai hoc cuoc song", "nội quan", "noi quan", "tự soi xét", "tu soi xet", "rõ ràng", "ro rang", "cân bằng", "can bang", "thăng bằng", "thang bang", "hài hòa", "hai hoa", "bình an nội tâm", "binh an noi tam", "thanh thản", "thanh than", "yên bình", "yen binh", "góc nhìn", "goc nhin", "phân biệt", "phan biet"]
   },
   {
     emotion: "philosophy-presence",
