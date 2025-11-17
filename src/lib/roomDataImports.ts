@@ -300,6 +300,13 @@ export const roomDataMap: Record<string, RoomData> = {
       "tier": "vip3_ii",
       "hasData": true
   },
+  "english-writing-deep-dive-vip3-ii-ii": {
+      "id": "english-writing-deep-dive-vip3-ii-ii",
+      "nameEn": "Writing Deep Dive VIP3 II (Advanced)",
+      "nameVi": "Viết Chuyên Sâu VIP3 II (Nâng Cao)",
+      "tier": "vip3_ii",
+      "hasData": true
+  },
   "english-specialization-mastery-vip3-ii": {
       "id": "english-specialization-mastery-vip3-ii",
       "nameEn": "VIP3 II – English Specialization Mastery",
