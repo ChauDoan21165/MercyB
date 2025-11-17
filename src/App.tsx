@@ -47,6 +47,7 @@ import AdminUserRoles from "./pages/AdminUserRoles";
 import AdminCodeEditor from "./pages/AdminCodeEditor";
 import AudioTestPage from "./pages/AudioTestPage";
 import AudioUpload from "./pages/AudioUpload";
+import RoomHealthChecker from "./pages/RoomHealthChecker";
 
 const queryClient = new QueryClient();
 
@@ -98,6 +99,7 @@ const App = () => (
           <Route path="/admin/rooms/edit/:roomId" element={<AdminRoomEditor />} />
           <Route path="/admin/rooms/import" element={<AdminRoomImport />} />
           <Route path="/admin/rooms/health" element={<RoomSyncHealth />} />
+          <Route path="/admin/rooms/data-health" element={<RoomHealthChecker />} />
           <Route path="/admin/users" element={<AdminUserRoles />} />
           <Route path="/admin/code-editor" element={<AdminCodeEditor />} />
           <Route path="/audio-test" element={<AudioTestPage />} />
