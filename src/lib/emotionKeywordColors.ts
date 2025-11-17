@@ -166,6 +166,46 @@ export const emotionKeywordGroups: EmotionKeywordGroup[] = [
     color: "#c9a0dc",
     en: ["passive", "active", "voice", "tense", "grammar", "sentence", "sentences", "verb", "pattern", "patterns", "structure", "form", "construction", "usage", "communication", "reports", "report", "documents", "document", "explanation", "explanations", "clarity", "professionalism", "professional", "sent", "solved", "cleaned", "converted", "converting", "convert", "practice", "essential", "common", "simple", "quickly", "well", "avoid", "overusing", "mention", "adds", "matters", "doer", "action", "person", "yesterday", "problem", "office", "someone", "used", "when", "only", "work"],
     vi: ["bị động", "bi dong", "chủ động", "chu dong", "giọng", "giong", "thì", "thi", "ngữ pháp", "ngu phap", "câu", "cau", "động từ", "dong tu", "mẫu", "mau", "cấu trúc", "cau truc", "hình thức", "hinh thuc", "xây dựng", "xay dung", "cách dùng", "cach dung", "giao tiếp", "giao tiep", "báo cáo", "bao cao", "tài liệu", "tai lieu", "giải thích", "giai thich", "rõ ràng", "ro rang", "chuyên nghiệp", "chuyen nghiep", "gửi", "gui", "đã gửi", "da gui", "giải quyết", "giai quyet", "đã giải quyết", "da giai quyet", "dọn dẹp", "don dep", "chuyển đổi", "chuyen doi", "luyện tập", "luyen tap", "cần thiết", "can thiet", "phổ biến", "pho bien", "đơn giản", "don gian", "nhanh chóng", "nhanh chong", "tốt", "tot", "tránh", "tranh", "dùng quá nhiều", "dung qua nhieu", "đề cập", "de cap", "thêm vào", "them vao", "quan trọng", "quan trong", "người làm", "nguoi lam", "hành động", "hanh dong", "người", "nguoi", "hôm qua", "hom qua", "vấn đề", "van de", "văn phòng", "van phong", "ai đó", "ai do", "được dùng", "duoc dung", "khi", "chỉ", "chi", "công việc", "cong viec"]
+  },
+  
+  // ADVERBS - Calm / Neutral / Balanced
+  {
+    emotion: "adverb-calm-neutral",
+    color: "#AFC6D9",
+    en: ["calmly", "quietly", "gently", "softly", "smoothly", "evenly", "steadily", "slowly", "peacefully", "delicately", "fully", "clearly", "simply", "truly", "purely", "lightly", "naturally", "wisely", "patiently", "openly"],
+    vi: ["một cách bình tĩnh", "mot cach binh tinh", "lặng lẽ", "lang le", "nhẹ nhàng", "nhe nhang", "mềm mại", "mem mai", "trơn tru", "tron tru", "đều đặn", "deu dan", "vững vàng", "vung vang", "chậm rãi", "cham rai", "yên bình", "yen binh", "tinh tế", "tinh te", "đầy đủ", "day du", "rõ ràng", "ro rang", "đơn giản", "don gian", "thực sự", "thuc su", "thuần khiết", "thuan khiet", "nhẹ nhàng", "nhe nhang", "tự nhiên", "tu nhien", "khôn ngoan", "khon ngoan", "kiên nhẫn", "kien nhan", "cởi mở", "coi mo"]
+  },
+  
+  // ADVERBS - Warm / Expressive / Emotional
+  {
+    emotion: "adverb-warm-expressive",
+    color: "#F5C2A5",
+    en: ["warmly", "kindly", "lovingly", "brightly", "happily", "cheerfully", "bravely", "boldly", "proudly", "confidently", "playfully", "tenderly", "gracefully", "softheartedly", "encouragingly", "joyfully", "gratefully", "hopefully", "sincerely", "compassionately"],
+    vi: ["ấm áp", "am ap", "tử tế", "tu te", "yêu thương", "yeu thuong", "rạng rỡ", "rang ro", "vui vẻ", "vui ve", "phấn khởi", "phan khoi", "dũng cảm", "dung cam", "táo bạo", "tao bao", "tự hào", "tu hao", "tự tin", "tu tin", "vui tươi", "vui tuoi", "dịu dàng", "diu dang", "duyên dáng", "duyen dang", "hiền lành", "hien lanh", "khích lệ", "khich le", "vui vẻ", "vui ve", "biết ơn", "biet on", "đầy hy vọng", "day hy vong", "chân thành", "chan thanh", "nhân từ", "nhan tu"]
+  },
+  
+  // ADVERBS - High Energy / Motivation
+  {
+    emotion: "adverb-high-energy",
+    color: "#7BC9B6",
+    en: ["actively", "quickly", "sharply", "efficiently", "powerfully", "strongly", "purposefully", "assertively", "deeply", "mindfully", "energetically", "focusedly", "deliberately", "determinedly", "decisively", "resiliently", "persistently", "consistently", "consciously"],
+    vi: ["tích cực", "tich cuc", "nhanh chóng", "nhanh chong", "sắc bén", "sac ben", "hiệu quả", "hieu qua", "mạnh mẽ", "manh me", "mạnh mẽ", "manh me", "có mục đích", "co muc dich", "quyết đoán", "quyet doan", "sâu sắc", "sau sac", "chánh niệm", "chanh niem", "tràn đầy năng lượng", "tran day nang luong", "tập trung", "tap trung", "cố ý", "co y", "quyết tâm", "quyet tam", "dứt khoát", "dut khoat", "kiên cường", "kien cuong", "kiên trì", "kien tri", "nhất quán", "nhat quan", "có ý thức", "co y thuc"]
+  },
+  
+  // ADVERBS - Negative / Stress / Hard Emotions
+  {
+    emotion: "adverb-negative-stress",
+    color: "#9FA8BE",
+    en: ["sadly", "hesitantly", "fearfully", "anxiously", "nervously", "tiredly", "uncertainly", "weakly", "wearily", "regretfully", "shamefully", "awkwardly", "guiltily", "bitterly", "angrily", "harshly", "defensively", "coldly", "reluctantly"],
+    vi: ["buồn bã", "buon ba", "do dự", "do du", "sợ hãi", "so hai", "lo lắng", "lo lang", "bồn chồn", "bon chon", "mệt mỏi", "met moi", "không chắc chắn", "khong chac chan", "yếu đuối", "yeu duoi", "mệt nhọc", "met nhoc", "hối tiếc", "hoi tiec", "xấu hổ", "xau ho", "vụng về", "vung ve", "tội lỗi", "toi loi", "cay đắng", "cay dang", "giận dữ", "gian du", "khắc nghiệt", "khac nghiet", "phòng thủ", "phong thu", "lạnh lùng", "lanh lung", "miễn cưỡng", "mien cuong"]
+  },
+  
+  // ADVERBS - Reflective / Cognitive / Insightful
+  {
+    emotion: "adverb-reflective-cognitive",
+    color: "#CFC3EB",
+    en: ["reflectively", "thoughtfully", "introspectively", "philosophically", "rationally", "logically", "analytically", "systematically", "carefully", "precisely", "honestly", "curiously", "creatively", "open-mindedly", "insightfully", "spiritually", "harmoniously", "deliberately", "conscientiously"],
+    vi: ["suy ngẫm", "suy ngam", "suy tư", "suy tu", "nội tâm", "noi tam", "triết học", "triet hoc", "hợp lý", "hop ly", "logic", "logic", "phân tích", "phan tich", "có hệ thống", "co he thong", "cẩn thận", "can than", "chính xác", "chinh xac", "trung thực", "trung thuc", "tò mò", "to mo", "sáng tạo", "sang tao", "cởi mở", "coi mo", "sâu sắc", "sau sac", "tâm linh", "tam linh", "hài hòa", "hai hoa", "có chủ ý", "co chu y", "tận tâm", "tan tam"]
   }
 ];
 
