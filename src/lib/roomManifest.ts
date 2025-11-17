@@ -143,6 +143,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "weight-loss-and-fitness-vip3": "data/Weight_Loss_And_Fitness_vip3.json",
   "confidence-vip3": "data/confidence_vip3.json",
   "sleep-improvement-vip2": "data/sleep_Improvement_vip2.json",
+  "english-writing-structure-vip2": "data/English-Writing-Structure-vip2.json",
   "finding-gods-peace-free": "data/Finding_Gods_Peace_free.json",
   "build-skills-vip4-career-3": "data/Build_Skills_vip4_career_3.json",
   "build-skills-vip4-career-3-ii": "data/Build_Skills_vip4_career_3_II.json",
