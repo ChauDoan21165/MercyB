@@ -14,283 +14,163 @@ export interface EmotionKeywordGroup {
 export const emotionKeywordGroups: EmotionKeywordGroup[] = [
   {
     emotion: "joy",
-    color: "hsl(var(--emotion-joy))",
+    color: "#ffeb99", // Soft lemon yellow
     en: ["joy", "joys", "happiness", "happy", "delight", "cheerful", "joyful"],
     vi: ["niềm vui", "niem vui", "hạnh phúc", "hanh phuc", "vui", "vui vẻ", "vui ve"]
   },
   {
     emotion: "warmth",
-    color: "hsl(var(--emotion-warmth))",
+    color: "#ff9999", // Soft coral red
     en: ["warmth", "warm", "softness", "soft", "gentle", "comfort", "cozy", "tenderness", "tender"],
     vi: ["ấm", "am", "mềm mại", "mem mai", "dịu dàng", "diu dang", "thoải mái", "thoai mai"]
   },
   {
     emotion: "peace",
-    color: "hsl(var(--emotion-peace))",
+    color: "#99ddcc", // Soft mint turquoise
     en: ["peace", "peaceful", "calm", "quiet", "serene", "tranquil", "stillness", "steady", "quieter"],
     vi: ["bình an", "binh an", "yên tĩnh", "yen tinh", "lặng", "lang", "thanh thản", "thanh than", "vững", "vung"]
   },
   {
     emotion: "struggle",
-    color: "hsl(var(--emotion-struggle))",
+    color: "#c2b3d4", // Soft dusty purple
     en: ["struggle", "difficulty", "difficult", "challenge", "hard", "burden", "weight"],
     vi: ["khó khăn", "kho khan", "gian nan", "gánh nặng", "ganh nang", "thử thách", "thu thach"]
   },
   {
     emotion: "pain",
-    color: "hsl(var(--emotion-pain))",
+    color: "#e6b3cc", // Soft mauve
     en: ["pain", "suffering", "hurt", "ache", "wound", "heartbreak", "discomfort"],
     vi: ["nỗi đau", "noi dau", "đau khổ", "dau kho", "đau", "dau", "tan vỡ", "tan vo"]
   },
   {
     emotion: "strength",
-    color: "hsl(var(--emotion-strength))",
+    color: "#ffb366", // Soft peach orange
     en: ["strength", "strong", "power", "powerful", "courage", "resilience", "endurance"],
     vi: ["sức mạnh", "suc manh", "mạnh", "manh", "can đảm", "can dam", "bền bỉ", "ben bi"]
   },
   {
     emotion: "awareness",
-    color: "hsl(var(--emotion-awareness))",
+    color: "#99ccff", // Soft sky blue
     en: ["awareness", "aware", "presence", "present", "mindful", "attention", "notice", "recognize", "pay attention", "notice", "noticing"],
     vi: ["nhận biết", "nhan biet", "hiện diện", "hien dien", "tỉnh thức", "tinh thuc", "chú ý", "chu y"]
   },
   {
     emotion: "gratitude",
-    color: "hsl(var(--emotion-gratitude))",
+    color: "#ffc299", // Soft apricot orange
     en: ["gratitude", "grateful", "thankful", "appreciation", "appreciate"],
     vi: ["biết ơn", "biet on", "lòng biết ơn", "long biet on", "trân trọng", "tran trong"]
   },
   {
     emotion: "honesty",
-    color: "hsl(var(--emotion-honesty))",
+    color: "#99d6ff", // Soft cerulean blue
     en: ["honesty", "honest", "truth", "true", "authentic", "genuine", "integrity"],
     vi: ["trung thực", "trung thuc", "sự thật", "su that", "chân thật", "chan that", "thật", "that", "chính trực", "chinh truc"]
   },
   {
     emotion: "freedom",
-    color: "hsl(var(--emotion-freedom))",
+    color: "#d4c5f9", // Soft periwinkle
     en: ["freedom", "free", "liberation", "release", "independent"],
     vi: ["tự do", "tu do", "giải phóng", "giai phong", "độc lập", "doc lap"]
   },
   {
     emotion: "responsibility",
-    color: "hsl(var(--emotion-responsibility))",
+    color: "#c9e4ca", // Soft pistachio green
     en: ["responsibility", "responsible", "duty", "obligation", "commitment"],
     vi: ["trách nhiệm", "trach nhiem", "nghĩa vụ", "nghia vu", "cam kết", "cam ket"]
   },
   {
     emotion: "action",
-    color: "hsl(var(--emotion-action))",
+    color: "#a8d5ba", // Soft sage green
     en: ["choose", "choosing", "chose", "act", "action", "move", "practice", "become", "becoming", "shape", "create", "made", "grows", "allowing", "show up"],
     vi: ["chọn", "chon", "lựa chọn", "lua chon", "hành động", "hanh dong", "di chuyển", "di chuyen", "thực hành", "thuc hanh", "trở thành", "tro thanh"]
   },
   {
     emotion: "connection",
-    color: "hsl(var(--emotion-connection))",
+    color: "#ff99cc", // Soft rose pink
     en: ["love", "connection", "belonging", "compassion", "kindness", "devotion", "care", "kind"],
     vi: ["tình yêu", "tinh yeu", "kết nối", "ket noi", "gắn bó", "gan bo", "từ bi", "tu bi", "tử tế", "tu te", "quan tâm", "quan tam"]
   },
   {
-    emotion: "release",
-    color: "hsl(var(--emotion-release))",
-    en: ["release", "let go", "surrender", "accept", "allow", "breathe", "soften"],
-    vi: ["buông", "buong", "thả lỏng", "tha long", "chấp nhận", "chap nhan", "cho phép", "cho phep", "hít thở", "hit tho", "mềm lại", "mem lai"]
-  },
-  {
-    emotion: "meaning",
-    color: "hsl(var(--emotion-awareness))",
-    en: ["meaning", "purpose", "intentional", "value", "believe"],
-    vi: ["ý nghĩa", "y nghia", "mục đích", "muc dich", "giá trị", "gia tri"]
-  },
-  {
-    emotion: "moments",
-    color: "hsl(var(--emotion-peace))",
-    en: ["moment", "moments", "dramatic", "quietly", "distant", "here", "far away", "small", "empty", "rich"],
-    vi: ["khoảnh khắc", "khoanh khac", "phút", "phut", "giây", "giay"]
-  },
-  {
-    emotion: "being",
-    color: "hsl(var(--emotion-warmth))",
-    en: ["plan", "alignment", "watching", "feels", "appears", "need", "discovered"],
-    vi: ["kế hoạch", "ke hoach", "cảm giác", "cam giac"]
-  },
-  {
-    emotion: "learning",
-    color: "hsl(var(--emotion-action))",
-    en: ["learn", "learning", "study", "practice", "training", "improve", "improvement", "progress", "mastery", "mastered", "skill", "develop", "developing"],
-    vi: ["học", "hoc", "học tập", "hoc tap", "thực hành", "thuc hanh", "luyện tập", "luyen tap", "cải thiện", "cai thien", "tiến bộ", "tien bo", "thành thạo", "thanh thao", "kỹ năng", "ky nang"]
-  },
-  {
-    emotion: "method",
-    color: "hsl(var(--emotion-honesty))",
-    en: ["method", "approach", "strategy", "technique", "ritual", "routine", "habit", "system", "process", "loop", "repeat"],
-    vi: ["phương pháp", "phuong phap", "cách tiếp cận", "cach tiep can", "chiến lược", "chien luoc", "kỹ thuật", "ky thuat", "nghi lễ", "nghi le", "thói quen", "thoi quen", "hệ thống", "he thong"]
-  },
-  {
-    emotion: "focus",
-    color: "hsl(var(--emotion-awareness))",
-    en: ["focus", "focused", "attention", "concentrate", "concentration", "mindset", "deliberate", "deliberately", "intentional", "mindful"],
-    vi: ["tập trung", "tap trung", "chú ý", "chu y", "chánh niệm", "chanh niem", "có chủ ý", "co chu y", "suy nghĩ", "suy nghi", "tâm thế", "tam the"]
-  },
-  {
-    emotion: "quality",
-    color: "hsl(var(--emotion-strength))",
-    en: ["depth", "deep", "deeply", "quality", "valuable", "excellence", "mastery", "refined", "precise", "thorough"],
-    vi: ["chiều sâu", "chieu sau", "sâu", "sau", "chất lượng", "chat luong", "giá trị", "gia tri", "xuất sắc", "xuat sac", "tinh tế", "tinh te", "chính xác", "chinh xac"]
-  },
-  {
-    emotion: "analysis",
-    color: "hsl(var(--emotion-awareness))",
-    en: ["analyze", "analysis", "examine", "review", "reflect", "reflection", "evaluate", "assess", "measure", "reasoning"],
-    vi: ["phân tích", "phan tich", "xem xét", "xem xet", "đánh giá", "danh gia", "suy ngẫm", "suy ngam", "đo lường", "do luong", "lý luận", "ly luan"]
-  },
-  {
-    emotion: "output",
-    color: "hsl(var(--emotion-action))",
-    en: ["output", "produce", "write", "speak", "express", "expression", "communicate", "create", "build"],
-    vi: ["đầu ra", "dau ra", "tạo ra", "tao ra", "viết", "viet", "nói", "noi", "diễn đạt", "dien dat", "giao tiếp", "giao tiep", "xây dựng", "xay dung"]
-  },
-  {
-    emotion: "input",
-    color: "hsl(var(--emotion-awareness))",
-    en: ["input", "collect", "gather", "listen", "listening", "read", "reading", "absorb", "receive"],
-    vi: ["đầu vào", "dau vao", "thu thập", "thu thap", "nghe", "lắng nghe", "lang nghe", "đọc", "doc", "tiếp nhận", "tiep nhan"]
-  },
-  {
-    emotion: "growth",
-    color: "hsl(var(--emotion-action))",
-    en: ["grow", "growth", "transform", "transforming", "evolve", "develop", "compound", "refine", "improve"],
-    vi: ["phát triển", "phat trien", "tăng trưởng", "tang truong", "biến đổi", "bien doi", "tiến hóa", "tien hoa", "cải thiện", "cai thien"]
-  },
-  {
-    emotion: "error",
-    color: "hsl(var(--emotion-pain))",
-    en: ["error", "errors", "mistake", "mistakes", "weakness", "weaknesses", "flaw", "gap"],
-    vi: ["lỗi", "loi", "sai lầm", "sai lam", "điểm yếu", "diem yeu", "khuyết điểm", "khuyet diem", "khoảng trống", "khoang trong"]
-  },
-  {
-    emotion: "goal",
-    color: "hsl(var(--emotion-meaning))",
-    en: ["goal", "micro-goal", "target", "objective", "aim", "purpose", "tool"],
-    vi: ["mục tiêu", "muc tieu", "tiểu mục tiêu", "tieu muc tieu", "đích", "dich", "mục đích", "muc dich", "công cụ", "cong cu"]
-  },
-  {
-    emotion: "recovery",
-    color: "hsl(var(--emotion-action))",
-    en: ["recovery", "recovering", "healing", "heal", "sobriety", "sober", "overcome", "reclaim", "restore"],
-    vi: ["phục hồi", "phuc hoi", "chữa lành", "chua lanh", "hồi phục", "hoi phuc", "tỉnh táo", "tinh tao", "vượt qua", "vuot qua", "lấy lại", "lay lai"]
-  },
-  {
-    emotion: "support",
-    color: "hsl(var(--emotion-connection))",
-    en: ["support", "help", "assistance", "community", "group", "groups", "peer", "professional", "guidance"],
-    vi: ["hỗ trợ", "ho tro", "giúp đỡ", "giup do", "cộng đồng", "cong dong", "nhóm", "nhom", "hướng dẫn", "huong dan", "chuyên gia", "chuyen gia"]
-  },
-  {
-    emotion: "compassion",
-    color: "hsl(var(--emotion-warmth))",
-    en: ["compassion", "self-compassion", "empathy", "understanding", "acceptance", "forgiveness", "without shame"],
-    vi: ["lòng thương", "long thuong", "tự thương", "tu thuong", "cảm thông", "cam thong", "thấu hiểu", "thau hieu", "chấp nhận", "chap nhan", "tha thứ", "tha thu"]
+    emotion: "transformation",
+    color: "#ccb3ff", // Soft violet
+    en: ["transformation", "transform", "growth", "change", "evolve", "shift", "transition"],
+    vi: ["biến đổi", "bien doi", "chuyển đổi", "chuyen doi", "phát triển", "phat trien", "thay đổi", "thay doi"]
   },
   {
     emotion: "hope",
-    color: "hsl(var(--emotion-joy))",
-    en: ["hope", "hopeful", "optimism", "inspire", "empower", "empowering", "resilience", "momentum"],
-    vi: ["hy vọng", "hy vong", "lạc quan", "lac quan", "truyền cảm hứng", "truyen cam hung", "trao quyền", "trao quyen", "sức bền", "suc ben"]
+    color: "#ffd699", // Soft golden yellow
+    en: ["hope", "hopeful", "optimism", "optimistic", "potential", "possibility", "future"],
+    vi: ["hy vọng", "hy vong", "lạc quan", "lac quan", "tiềm năng", "tiem nang", "tương lai", "tuong lai"]
   },
   {
-    emotion: "challenge",
-    color: "hsl(var(--emotion-struggle))",
-    en: ["struggle", "struggles", "challenge", "challenges", "addiction", "trigger", "triggers", "craving", "relapse"],
-    vi: ["đấu tranh", "dau tranh", "thử thách", "thu thach", "nghiện", "nghien", "kích hoạt", "kich hoat", "thèm", "them", "tái phát", "tai phat"]
+    emotion: "vulnerability",
+    color: "#ffd4e5", // Soft baby pink
+    en: ["vulnerability", "vulnerable", "sensitive", "fragile", "exposed", "tender"],
+    vi: ["mỏng manh", "mong manh", "nhạy cảm", "nhay cam", "dễ tổn thương", "de ton thuong"]
   },
   {
-    emotion: "habits",
-    color: "hsl(var(--emotion-action))",
-    en: ["habit", "habits", "behavior", "pattern", "routine", "step", "steps", "consistent", "consistency"],
-    vi: ["thói quen", "thoi quen", "hành vi", "hanh vi", "mẫu hình", "mau hinh", "nhất quán", "nhat quan", "bước", "buoc"]
+    emotion: "acceptance",
+    color: "#c2e0c6", // Soft sea green
+    en: ["acceptance", "accept", "allow", "embrace", "welcome", "receive"],
+    vi: ["chấp nhận", "chap nhan", "cho phép", "cho phep", "đón nhận", "don nhan"]
   },
   {
-    emotion: "celebration",
-    color: "hsl(var(--emotion-joy))",
-    en: ["celebrate", "milestone", "milestones", "achievement", "victory", "success", "progress"],
-    vi: ["ăn mừng", "an mung", "cột mốc", "cot moc", "thành tựu", "thanh tuu", "chiến thắng", "chien thang", "thành công", "thanh cong"]
+    emotion: "clarity",
+    color: "#b3e0f2", // Soft aqua cyan
+    en: ["clarity", "clear", "understanding", "insight", "wisdom", "see", "vision"],
+    vi: ["rõ ràng", "ro rang", "hiểu biết", "hieu biet", "cái nhìn", "cai nhin", "thấy", "thay"]
   },
   {
-    emotion: "therapy",
-    color: "hsl(var(--emotion-awareness))",
-    en: ["therapy", "cognitive behavioral therapy", "cbt", "reframe", "journaling", "journal", "self-awareness", "awareness"],
-    vi: ["liệu pháp", "lieu phap", "trị liệu", "tri lieu", "nhận thức hành vi", "nhan thuc hanh vi", "viết nhật ký", "viet nhat ky", "tự nhận thức", "tu nhan thuc"]
+    emotion: "balance",
+    color: "#c2d4dd", // Soft slate blue
+    en: ["balance", "harmony", "equilibrium", "centered", "stable", "steady"],
+    vi: ["cân bằng", "can bang", "hài hòa", "hai hoa", "ổn định", "on dinh"]
   },
   {
-    emotion: "control",
-    color: "hsl(var(--emotion-strength))",
-    en: ["control", "discipline", "willpower", "determination", "commit", "commitment", "dedicated"],
-    vi: ["kiểm soát", "kiem soat", "kỷ luật", "ky luat", "ý chí", "y chi", "quyết tâm", "quyet tam", "cam kết", "cam ket"]
+    emotion: "trust",
+    color: "#b3d4e6", // Soft powder blue
+    en: ["trust", "faith", "believe", "confidence", "rely", "depend"],
+    vi: ["tin tưởng", "tin tuong", "đức tin", "duc tin", "tin cậy", "tin cay", "tin"]
   },
   {
-    emotion: "influence",
-    color: "hsl(var(--emotion-connection))",
-    en: ["influence", "influences", "surround", "environment", "positive", "negative", "relationship", "relationships"],
-    vi: ["ảnh hưởng", "anh huong", "bao quanh", "môi trường", "moi truong", "tích cực", "tich cuc", "tiêu cực", "tieu cuc", "mối quan hệ", "moi quan he"]
+    emotion: "purpose",
+    color: "#f9d5a7", // Soft sand
+    en: ["purpose", "meaning", "mission", "calling", "intention", "goal"],
+    vi: ["mục đích", "muc dich", "ý nghĩa", "y nghia", "sứ mệnh", "su menh"]
   },
   {
-    emotion: "journey",
-    color: "hsl(var(--emotion-peace))",
-    en: ["journey", "path", "process", "unique", "personal", "experience", "lasting"],
-    vi: ["hành trình", "hanh trinh", "con đường", "con duong", "quá trình", "qua trinh", "độc đáo", "doc dao", "cá nhân", "ca nhan", "trải nghiệm", "trai nghiem"]
+    emotion: "patience",
+    color: "#d4f0d4", // Soft celadon green
+    en: ["patience", "patient", "wait", "endure", "tolerate", "persevere"],
+    vi: ["kiên nhẫn", "kien nhan", "chờ đợi", "cho doi", "chịu đựng", "chiu dung"]
   },
   {
-    emotion: "language-skills",
-    color: "hsl(var(--emotion-learning))",
-    en: ["fluency", "pronunciation", "grammar", "vocabulary", "speaking", "listening", "reading", "writing", "comprehension", "communication", "conversation", "accent", "intonation", "rhythm", "stress", "clarity"],
-    vi: ["trôi chảy", "troi chay", "phát âm", "phat am", "ngữ pháp", "ngu phap", "từ vựng", "tu vung", "nói", "noi", "nghe", "đọc", "doc", "viết", "viet", "hiểu", "hieu", "giao tiếp", "giao tiep", "hội thoại", "hoi thoai", "giọng", "giong", "ngữ điệu", "ngu dieu", "nhịp điệu", "nhip dieu"]
+    emotion: "inspiration",
+    color: "#ffe6b3", // Soft champagne
+    en: ["inspiration", "inspire", "motivate", "encourage", "uplift"],
+    vi: ["cảm hứng", "cam hung", "truyền cảm hứng", "truyen cam hung", "khuyến khích", "khuyen khich"]
   },
   {
-    emotion: "learning-process",
-    color: "hsl(var(--emotion-action))",
-    en: ["practice", "repetition", "study", "learn", "memorize", "understand", "immersion", "native", "learner", "sentence", "phrase", "language", "english", "express", "articulate", "master", "mastered"],
-    vi: ["thực hành", "thuc hanh", "lặp lại", "lap lai", "học", "hoc", "nghiên cứu", "nghien cuu", "ghi nhớ", "ghi nho", "hiểu", "hieu", "đắm chìm", "dam chim", "bản ngữ", "ban ngu", "người học", "nguoi hoc", "câu", "cau", "cụm từ", "cum tu", "ngôn ngữ", "ngon ngu", "tiếng anh", "tieng anh", "diễn đạt", "dien dat", "thành thạo", "thanh thao"]
+    emotion: "philosophy",
+    color: "#e6b3ff", // Soft orchid
+    en: ["philosophy", "philosophical", "ethics", "morality", "virtue", "good", "right"],
+    vi: ["triết học", "triet hoc", "triết lý", "triet ly", "đạo đức", "dao duc", "đức hạnh", "duc hanh"]
   },
   {
-    emotion: "language-structure",
-    color: "hsl(var(--emotion-awareness))",
-    en: ["tense", "verb", "noun", "adjective", "syntax", "structure", "grammar", "idiom", "expression", "colloquial", "formal", "informal", "connector", "connectors"],
-    vi: ["thì", "thi", "động từ", "dong tu", "danh từ", "danh tu", "tính từ", "tinh tu", "cú pháp", "cu phap", "cấu trúc", "cau truc", "thành ngữ", "thanh ngu", "diễn đạt", "dien dat", "thông tục", "thong tuc", "chính thức", "chinh thuc", "không chính thức", "khong chinh thuc", "liên từ", "lien tu"]
+    emotion: "curiosity",
+    color: "#e6ccff", // Soft lilac
+    en: ["curious", "curiosity", "wonder", "question", "explore", "discover"],
+    vi: ["tò mò", "to mo", "hiếu kỳ", "hieu ky", "khám phá", "kham pha"]
   },
   {
-    emotion: "language-expertise",
-    color: "hsl(var(--emotion-strength))",
-    en: ["specialization", "expert", "deliberately", "progress", "focus", "depth", "mastered", "valuable", "ritual", "transforming", "expression", "reasoning", "professional", "tool"],
-    vi: ["chuyên môn", "chuyen mon", "chuyên gia", "chuyen gia", "có chủ đích", "co chu dich", "tiến bộ", "tien bo", "tập trung", "tap trung", "chiều sâu", "chieu sau", "thành thạo", "thanh thao", "giá trị", "gia tri", "nghi lễ", "nghi le", "biến đổi", "bien doi", "diễn đạt", "dien dat", "suy luận", "suy luan", "chuyên nghiệp", "chuyen nghiep", "công cụ", "cong cu"]
-  },
-  {
-    emotion: "philosophy-wisdom",
-    color: "hsl(var(--emotion-awareness))",
-    en: ["philosophy", "wisdom", "wise", "insight", "understanding", "truth", "meaning", "purpose", "values", "principles", "ethics", "morals", "virtue", "knowledge", "contemplation", "reflection", "inner guidance", "life lessons", "introspection", "self-reflection", "clarity", "balance", "equilibrium", "harmony", "inner peace", "serenity", "tranquility", "perspective", "discernment"],
-    vi: ["triết học", "triet hoc", "trí tuệ", "tri tue", "khôn ngoan", "khon ngoan", "thấu hiểu", "thau hieu", "hiểu biết", "hieu biet", "sự thật", "su that", "ý nghĩa", "y nghia", "mục đích", "muc dich", "giá trị", "gia tri", "nguyên tắc", "nguyen tac", "đạo đức", "dao duc", "phẩm chất", "pham chat", "kiến thức", "kien thuc", "suy ngẫm", "suy ngam", "phản ánh", "phan anh", "dẫn đường nội tâm", "dan duong noi tam", "bài học cuộc sống", "bai hoc cuoc song", "nội quan", "noi quan", "tự soi xét", "tu soi xet", "rõ ràng", "ro rang", "cân bằng", "can bang", "thăng bằng", "thang bang", "hài hòa", "hai hoa", "bình an nội tâm", "binh an noi tam", "thanh thản", "thanh than", "yên bình", "yen binh", "góc nhìn", "goc nhin", "phân biệt", "phan biet"]
-  },
-  {
-    emotion: "philosophy-presence",
-    color: "hsl(var(--emotion-peace))",
-    en: ["presence", "present", "being here", "now", "attention", "awareness", "mindfulness", "conscious", "consciousness", "moment", "here", "fully", "engage", "focused", "alert", "awake", "everyday moments"],
-    vi: ["hiện diện", "hien dien", "hiện tại", "hien tai", "ở đây", "o day", "bây giờ", "bay gio", "chú ý", "chu y", "nhận thức", "nhan thuc", "chánh niệm", "chanh niem", "có ý thức", "co y thuc", "ý thức", "y thuc", "khoảnh khắc", "khoanh khac", "tập trung", "tap trung", "tỉnh táo", "tinh tao", "khoảnh khắc đời thường", "khoanh khac doi thuong"]
-  },
-  {
-    emotion: "philosophy-connection",
-    color: "hsl(var(--emotion-connection))",
-    en: ["connection", "connected", "relationship", "belonging", "intimacy", "vulnerability", "trust", "authenticity", "genuine", "real", "honest", "openness", "togetherness", "community", "shared", "mutual"],
-    vi: ["kết nối", "ket noi", "mối quan hệ", "moi quan he", "thuộc về", "thuoc ve", "sự gần gũi", "su gan gui", "dễ tổn thương", "de ton thuong", "tin tưởng", "tin tuong", "tin cậy", "tin cay", "cởi mở", "coi mo", "gắn kết", "gan ket", "cộng đồng", "cong dong", "chia sẻ", "chia se", "lẫn nhau", "lan nhau"]
-  },
-  {
-    emotion: "philosophy-living",
-    color: "hsl(var(--emotion-action))",
-    en: ["daily life", "everyday", "ordinary", "simple", "practice", "habits", "routine", "choices", "actions", "living", "life", "existence", "experience", "conscious living", "intentional", "deliberate"],
-    vi: ["cuộc sống hàng ngày", "cuoc song hang ngay", "đời thường", "doi thuong", "bình thường", "binh thuong", "đơn giản", "don gian", "thực hành", "thuc hanh", "thói quen", "thoi quen", "lịch trình", "lich trinh", "lựa chọn", "lua chon", "hành động", "hanh dong", "sống", "song", "cuộc sống", "cuoc song", "tồn tại", "ton tai", "trải nghiệm", "trai nghiem", "sống có ý thức", "song co y thuc", "có chủ đích", "co chu dich"]
+    emotion: "resilience",
+    color: "#ffb3b3", // Soft salmon
+    en: ["resilience", "resilient", "persevere", "persist", "overcome", "endure"],
+    vi: ["kiên cường", "kien cuong", "bền bỉ", "ben bi", "vượt qua", "vuot qua"]
   },
   {
     emotion: "grammar-language",
-    color: "#9b87f5",
+    color: "#c9a0dc", // Soft amethyst
     en: ["passive", "active", "voice", "tense", "grammar", "sentence", "sentences", "verb", "pattern", "patterns", "structure", "form", "construction", "usage", "communication", "reports", "report", "documents", "document", "explanation", "explanations", "clarity", "professionalism", "professional", "sent", "solved", "cleaned", "converted", "converting", "convert", "practice", "essential", "common", "simple", "quickly", "well", "avoid", "overusing", "mention", "adds", "matters", "doer", "action", "person", "yesterday", "problem", "office", "someone", "used", "when", "only", "adds", "work"],
     vi: ["bị động", "bi dong", "chủ động", "chu dong", "giọng", "giong", "thì", "thi", "ngữ pháp", "ngu phap", "câu", "cau", "động từ", "dong tu", "mẫu", "mau", "cấu trúc", "cau truc", "hình thức", "hinh thuc", "xây dựng", "xay dung", "cách dùng", "cach dung", "giao tiếp", "giao tiep", "báo cáo", "bao cao", "tài liệu", "tai lieu", "giải thích", "giai thich", "rõ ràng", "ro rang", "chuyên nghiệp", "chuyen nghiep", "gửi", "gui", "đã gửi", "da gui", "giải quyết", "giai quyet", "đã giải quyết", "da giai quyet", "dọn dẹp", "don dep", "chuyển đổi", "chuyen doi", "luyện tập", "luyen tap", "cần thiết", "can thiet", "phổ biến", "pho bien", "đơn giản", "don gian", "nhanh chóng", "nhanh chong", "tốt", "tot", "tránh", "tranh", "dùng quá nhiều", "dung qua nhieu", "đề cập", "de cap", "thêm vào", "them vao", "quan trọng", "quan trong", "người làm", "nguoi lam", "hành động", "hanh dong", "người", "nguoi", "hôm qua", "hom qua", "vấn đề", "van de", "văn phòng", "van phong", "ai đó", "ai do", "được dùng", "duoc dung", "khi", "chỉ", "chi", "công việc", "cong viec"]
   }
