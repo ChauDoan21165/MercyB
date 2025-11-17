@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { toast } from '@/hooks/use-toast';
-import { getEmotionKeywordColor } from '@/lib/emotionKeywordColors';
+import { getKeywordColor } from '@/lib/customKeywordLoader';
 
 interface HighlightedContentProps {
   content: string;
@@ -69,7 +69,7 @@ export const HighlightedContent = ({
   }, []);
 
   /**
-   * Highlight keywords in the content with their psychology-based colors
+   * Highlight keywords in the content with their semantic category-based colors
    * Supports both English and Vietnamese text with proper Unicode handling
    */
   const highlightKeywords = (text: string): JSX.Element[] => {
@@ -99,14 +99,14 @@ export const HighlightedContent = ({
       const words = matchedText.split(/\s+/);
       
       // Try full phrase first
-      color = getEmotionKeywordColor(matchedText);
+      color = getKeywordColor(matchedText);
       if (color) {
         bestMatch = matchedText;
       } else {
         // Try progressively shorter phrases from the start
         for (let len = words.length; len >= 1; len--) {
           const phrase = words.slice(0, len).join(' ');
-          color = getEmotionKeywordColor(phrase);
+          color = getKeywordColor(phrase);
           if (color) {
             bestMatch = phrase;
             break;
