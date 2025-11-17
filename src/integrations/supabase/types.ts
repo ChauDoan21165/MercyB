@@ -515,6 +515,38 @@ export type Database = {
           },
         ]
       }
+      room_pins: {
+        Row: {
+          created_at: string
+          id: string
+          pin_hash: string
+          room_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          pin_hash: string
+          room_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          pin_hash?: string
+          room_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "room_pins_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: true
+            referencedRelation: "rooms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       room_usage_analytics: {
         Row: {
           completed_room: boolean | null
@@ -1204,12 +1236,24 @@ export type Database = {
         Returns: string
       }
       purge_old_payment_proofs: { Args: never; Returns: undefined }
+      remove_room_pin: {
+        Args: { _pin: string; _room_id: string }
+        Returns: undefined
+      }
+      set_room_pin: {
+        Args: { _pin: string; _room_id: string }
+        Returns: undefined
+      }
       setup_admin_user: { Args: never; Returns: undefined }
       toggle_room_lock: {
         Args: { lock_state: boolean; room_id_param: string }
         Returns: undefined
       }
       validate_promo_code: { Args: { code_input: string }; Returns: Json }
+      validate_room_pin: {
+        Args: { _pin: string; _room_id: string }
+        Returns: boolean
+      }
     }
     Enums: {
       app_role: "admin" | "user"

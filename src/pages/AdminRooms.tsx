@@ -77,30 +77,31 @@ export default function AdminRooms() {
   // Toggle lock mutation with PIN
   const toggleLockMutation = useMutation({
     mutationFn: async ({ roomId, lockState, pin }: { roomId: string; lockState: boolean; pin: string }) => {
-      // Store PIN hash in localStorage for this session (in real app, would validate server-side)
-      const storedPin = localStorage.getItem(`room_pin_${roomId}`);
-      
       if (lockState) {
-        // Locking: store the PIN
-        localStorage.setItem(`room_pin_${roomId}`, pin);
+        // Locking: set the hashed PIN in the database
+        const { error: pinError } = await supabase.rpc('set_room_pin', {
+          _room_id: roomId,
+          _pin: pin
+        });
+        
+        if (pinError) throw pinError;
       } else {
-        // Unlocking: verify the PIN matches
-        if (storedPin !== pin) {
-          throw new Error("Incorrect PIN. Please try again.");
-        }
+        // Unlocking: validate and remove the PIN from the database
+        const { error: removeError } = await supabase.rpc('remove_room_pin', {
+          _room_id: roomId,
+          _pin: pin
+        });
+        
+        if (removeError) throw removeError;
       }
       
+      // Toggle the lock state
       const { error } = await supabase.rpc('toggle_room_lock', {
         room_id_param: roomId,
         lock_state: lockState
       });
       
       if (error) throw error;
-      
-      // If unlocking successfully, remove the PIN
-      if (!lockState) {
-        localStorage.removeItem(`room_pin_${roomId}`);
-      }
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin-rooms"] });
