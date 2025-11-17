@@ -115,6 +115,7 @@ All colors MUST be HSL.
     --emotion-action: 100 50% 65%;         /* fresh green - action verbs, movement */
     --emotion-connection: 320 55% 75%;     /* rose - connection, belonging, love */
     --emotion-release: 190 45% 75%;        /* light aqua - release, letting go, surrender */
+    --emotion-learning: 240 60% 70%;       /* vibrant blue - learning, education, fluency */
   }
 
   .dark {
