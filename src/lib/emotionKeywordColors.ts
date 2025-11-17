@@ -263,6 +263,30 @@ export const emotionKeywordGroups: EmotionKeywordGroup[] = [
     color: "hsl(var(--emotion-strength))",
     en: ["specialization", "expert", "deliberately", "progress", "focus", "depth", "mastered", "valuable", "ritual", "transforming", "expression", "reasoning", "professional", "tool"],
     vi: ["chuyên môn", "chuyen mon", "chuyên gia", "chuyen gia", "có chủ đích", "co chu dich", "tiến bộ", "tien bo", "tập trung", "tap trung", "chiều sâu", "chieu sau", "thành thạo", "thanh thao", "giá trị", "gia tri", "nghi lễ", "nghi le", "biến đổi", "bien doi", "diễn đạt", "dien dat", "suy luận", "suy luan", "chuyên nghiệp", "chuyen nghiep", "công cụ", "cong cu"]
+  },
+  {
+    emotion: "philosophy-wisdom",
+    color: "hsl(var(--emotion-awareness))",
+    en: ["philosophy", "wisdom", "wise", "insight", "understanding", "truth", "meaning", "purpose", "values", "principles", "ethics", "morals", "virtue", "knowledge", "contemplation", "reflection", "inner guidance", "life lessons"],
+    vi: ["triết học", "triet hoc", "trí tuệ", "tri tue", "khôn ngoan", "khon ngoan", "thấu hiểu", "thau hieu", "hiểu biết", "hieu biet", "sự thật", "su that", "ý nghĩa", "y nghia", "mục đích", "muc dich", "giá trị", "gia tri", "nguyên tắc", "nguyen tac", "đạo đức", "dao duc", "phẩm chất", "pham chat", "kiến thức", "kien thuc", "suy ngẫm", "suy ngam", "phản ánh", "phan anh", "dẫn đường nội tâm", "dan duong noi tam", "bài học cuộc sống", "bai hoc cuoc song"]
+  },
+  {
+    emotion: "philosophy-presence",
+    color: "hsl(var(--emotion-peace))",
+    en: ["presence", "present", "being here", "now", "attention", "awareness", "mindfulness", "conscious", "consciousness", "moment", "here", "fully", "engage", "focused", "alert", "awake", "everyday moments"],
+    vi: ["hiện diện", "hien dien", "hiện tại", "hien tai", "ở đây", "o day", "bây giờ", "bay gio", "chú ý", "chu y", "nhận thức", "nhan thuc", "chánh niệm", "chanh niem", "có ý thức", "co y thuc", "ý thức", "y thuc", "khoảnh khắc", "khoanh khac", "tập trung", "tap trung", "tỉnh táo", "tinh tao", "khoảnh khắc đời thường", "khoanh khac doi thuong"]
+  },
+  {
+    emotion: "philosophy-connection",
+    color: "hsl(var(--emotion-connection))",
+    en: ["connection", "connected", "relationship", "belonging", "intimacy", "vulnerability", "trust", "authenticity", "genuine", "real", "honest", "openness", "togetherness", "community", "shared", "mutual"],
+    vi: ["kết nối", "ket noi", "mối quan hệ", "moi quan he", "thuộc về", "thuoc ve", "sự gần gũi", "su gan gui", "dễ tổn thương", "de ton thuong", "tin tưởng", "tin tuong", "chân thật", "chan that", "thật sự", "that su", "trung thực", "trung thuc", "cởi mở", "coi mo", "gắn kết", "gan ket", "cộng đồng", "cong dong", "chia sẻ", "chia se", "lẫn nhau", "lan nhau"]
+  },
+  {
+    emotion: "philosophy-living",
+    color: "hsl(var(--emotion-action))",
+    en: ["daily life", "everyday", "ordinary", "simple", "practice", "habits", "routine", "choices", "actions", "living", "life", "existence", "experience", "conscious living", "intentional", "deliberate"],
+    vi: ["cuộc sống hàng ngày", "cuoc song hang ngay", "đời thường", "doi thuong", "bình thường", "binh thuong", "đơn giản", "don gian", "thực hành", "thuc hanh", "thói quen", "thoi quen", "lịch trình", "lich trinh", "lựa chọn", "lua chon", "hành động", "hanh dong", "sống", "song", "cuộc sống", "cuoc song", "tồn tại", "ton tai", "trải nghiệm", "trai nghiem", "sống có ý thức", "song co y thuc", "có chủ đích", "co chu dich"]
   }
 ];
 
