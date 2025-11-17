@@ -159,7 +159,7 @@ export const HighlightedContent = ({
         <span
           key={`keyword-${startIndex}-${idx}`}
           style={{
-            backgroundColor: color,
+            backgroundColor: adjustColorIntensity(color, intensity),
             padding: '2px 6px',
             borderRadius: '3px',
             fontWeight: '500'
