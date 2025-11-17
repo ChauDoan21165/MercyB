@@ -280,7 +280,7 @@ export const emotionKeywordGroups: EmotionKeywordGroup[] = [
     emotion: "philosophy-connection",
     color: "hsl(var(--emotion-connection))",
     en: ["connection", "connected", "relationship", "belonging", "intimacy", "vulnerability", "trust", "authenticity", "genuine", "real", "honest", "openness", "togetherness", "community", "shared", "mutual"],
-    vi: ["kết nối", "ket noi", "mối quan hệ", "moi quan he", "thuộc về", "thuoc ve", "sự gần gũi", "su gan gui", "dễ tổn thương", "de ton thuong", "tin tưởng", "tin tuong", "chân thật", "chan that", "thật sự", "that su", "trung thực", "trung thuc", "cởi mở", "coi mo", "gắn kết", "gan ket", "cộng đồng", "cong dong", "chia sẻ", "chia se", "lẫn nhau", "lan nhau"]
+    vi: ["kết nối", "ket noi", "mối quan hệ", "moi quan he", "thuộc về", "thuoc ve", "sự gần gũi", "su gan gui", "dễ tổn thương", "de ton thuong", "tin tưởng", "tin tuong", "tin cậy", "tin cay", "cởi mở", "coi mo", "gắn kết", "gan ket", "cộng đồng", "cong dong", "chia sẻ", "chia se", "lẫn nhau", "lan nhau"]
   },
   {
     emotion: "philosophy-living",
