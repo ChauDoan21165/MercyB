@@ -558,6 +558,7 @@ export type Database = {
           crisis_footer_vi: string | null
           entries: Json | null
           id: string
+          is_locked: boolean | null
           keywords: string[] | null
           room_essay_en: string | null
           room_essay_vi: string | null
@@ -575,6 +576,7 @@ export type Database = {
           crisis_footer_vi?: string | null
           entries?: Json | null
           id: string
+          is_locked?: boolean | null
           keywords?: string[] | null
           room_essay_en?: string | null
           room_essay_vi?: string | null
@@ -592,6 +594,7 @@ export type Database = {
           crisis_footer_vi?: string | null
           entries?: Json | null
           id?: string
+          is_locked?: boolean | null
           keywords?: string[] | null
           room_essay_en?: string | null
           room_essay_vi?: string | null
@@ -1202,6 +1205,10 @@ export type Database = {
       }
       purge_old_payment_proofs: { Args: never; Returns: undefined }
       setup_admin_user: { Args: never; Returns: undefined }
+      toggle_room_lock: {
+        Args: { lock_state: boolean; room_id_param: string }
+        Returns: undefined
+      }
       validate_promo_code: { Args: { code_input: string }; Returns: Json }
     }
     Enums: {
