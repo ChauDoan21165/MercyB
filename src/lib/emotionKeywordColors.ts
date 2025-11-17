@@ -239,6 +239,30 @@ export const emotionKeywordGroups: EmotionKeywordGroup[] = [
     color: "hsl(var(--emotion-peace))",
     en: ["journey", "path", "process", "unique", "personal", "experience", "lasting"],
     vi: ["hành trình", "hanh trinh", "con đường", "con duong", "quá trình", "qua trinh", "độc đáo", "doc dao", "cá nhân", "ca nhan", "trải nghiệm", "trai nghiem"]
+  },
+  {
+    emotion: "language-skills",
+    color: "hsl(var(--emotion-learning))",
+    en: ["fluency", "pronunciation", "grammar", "vocabulary", "speaking", "listening", "reading", "writing", "comprehension", "communication", "conversation", "accent", "intonation", "rhythm", "stress", "clarity"],
+    vi: ["trôi chảy", "troi chay", "phát âm", "phat am", "ngữ pháp", "ngu phap", "từ vựng", "tu vung", "nói", "noi", "nghe", "đọc", "doc", "viết", "viet", "hiểu", "hieu", "giao tiếp", "giao tiep", "hội thoại", "hoi thoai", "giọng", "giong", "ngữ điệu", "ngu dieu", "nhịp điệu", "nhip dieu"]
+  },
+  {
+    emotion: "learning-process",
+    color: "hsl(var(--emotion-action))",
+    en: ["practice", "repetition", "study", "learn", "memorize", "understand", "immersion", "native", "learner", "sentence", "phrase", "language", "english", "express", "articulate", "master", "mastered"],
+    vi: ["thực hành", "thuc hanh", "lặp lại", "lap lai", "học", "hoc", "nghiên cứu", "nghien cuu", "ghi nhớ", "ghi nho", "hiểu", "hieu", "đắm chìm", "dam chim", "bản ngữ", "ban ngu", "người học", "nguoi hoc", "câu", "cau", "cụm từ", "cum tu", "ngôn ngữ", "ngon ngu", "tiếng anh", "tieng anh", "diễn đạt", "dien dat", "thành thạo", "thanh thao"]
+  },
+  {
+    emotion: "language-structure",
+    color: "hsl(var(--emotion-awareness))",
+    en: ["tense", "verb", "noun", "adjective", "syntax", "structure", "grammar", "idiom", "expression", "colloquial", "formal", "informal", "connector", "connectors"],
+    vi: ["thì", "thi", "động từ", "dong tu", "danh từ", "danh tu", "tính từ", "tinh tu", "cú pháp", "cu phap", "cấu trúc", "cau truc", "thành ngữ", "thanh ngu", "diễn đạt", "dien dat", "thông tục", "thong tuc", "chính thức", "chinh thuc", "không chính thức", "khong chinh thuc", "liên từ", "lien tu"]
+  },
+  {
+    emotion: "language-expertise",
+    color: "hsl(var(--emotion-strength))",
+    en: ["specialization", "expert", "deliberately", "progress", "focus", "depth", "mastered", "valuable", "ritual", "transforming", "expression", "reasoning", "professional", "tool"],
+    vi: ["chuyên môn", "chuyen mon", "chuyên gia", "chuyen gia", "có chủ đích", "co chu dich", "tiến bộ", "tien bo", "tập trung", "tap trung", "chiều sâu", "chieu sau", "thành thạo", "thanh thao", "giá trị", "gia tri", "nghi lễ", "nghi le", "biến đổi", "bien doi", "diễn đạt", "dien dat", "suy luận", "suy luan", "chuyên nghiệp", "chuyen nghiep", "công cụ", "cong cu"]
   }
 ];
 
