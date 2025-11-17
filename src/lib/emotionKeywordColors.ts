@@ -287,6 +287,12 @@ export const emotionKeywordGroups: EmotionKeywordGroup[] = [
     color: "hsl(var(--emotion-action))",
     en: ["daily life", "everyday", "ordinary", "simple", "practice", "habits", "routine", "choices", "actions", "living", "life", "existence", "experience", "conscious living", "intentional", "deliberate"],
     vi: ["cuộc sống hàng ngày", "cuoc song hang ngay", "đời thường", "doi thuong", "bình thường", "binh thuong", "đơn giản", "don gian", "thực hành", "thuc hanh", "thói quen", "thoi quen", "lịch trình", "lich trinh", "lựa chọn", "lua chon", "hành động", "hanh dong", "sống", "song", "cuộc sống", "cuoc song", "tồn tại", "ton tai", "trải nghiệm", "trai nghiem", "sống có ý thức", "song co y thuc", "có chủ đích", "co chu dich"]
+  },
+  {
+    emotion: "grammar-language",
+    color: "#9b87f5",
+    en: ["passive", "active", "voice", "tense", "grammar", "sentence", "sentences", "verb", "pattern", "patterns", "structure", "form", "construction", "usage", "communication", "reports", "report", "documents", "document", "explanation", "explanations", "clarity", "professionalism", "professional", "sent", "solved", "cleaned", "converted", "converting", "convert", "practice", "essential", "common", "simple", "quickly", "well", "avoid", "overusing", "mention", "adds", "matters", "doer", "action", "person", "yesterday", "problem", "office", "someone", "used", "when", "only", "adds", "work"],
+    vi: ["bị động", "bi dong", "chủ động", "chu dong", "giọng", "giong", "thì", "thi", "ngữ pháp", "ngu phap", "câu", "cau", "động từ", "dong tu", "mẫu", "mau", "cấu trúc", "cau truc", "hình thức", "hinh thuc", "xây dựng", "xay dung", "cách dùng", "cach dung", "giao tiếp", "giao tiep", "báo cáo", "bao cao", "tài liệu", "tai lieu", "giải thích", "giai thich", "rõ ràng", "ro rang", "chuyên nghiệp", "chuyen nghiep", "gửi", "gui", "đã gửi", "da gui", "giải quyết", "giai quyet", "đã giải quyết", "da giai quyet", "dọn dẹp", "don dep", "chuyển đổi", "chuyen doi", "luyện tập", "luyen tap", "cần thiết", "can thiet", "phổ biến", "pho bien", "đơn giản", "don gian", "nhanh chóng", "nhanh chong", "tốt", "tot", "tránh", "tranh", "dùng quá nhiều", "dung qua nhieu", "đề cập", "de cap", "thêm vào", "them vao", "quan trọng", "quan trong", "người làm", "nguoi lam", "hành động", "hanh dong", "người", "nguoi", "hôm qua", "hom qua", "vấn đề", "van de", "văn phòng", "van phong", "ai đó", "ai do", "được dùng", "duoc dung", "khi", "chỉ", "chi", "công việc", "cong viec"]
   }
 ];
 
