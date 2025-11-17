@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { AdminBreadcrumb } from "@/components/admin/AdminBreadcrumb";
+import { RoomLockPinDialog } from "@/components/admin/RoomLockPinDialog";
 
 interface Room {
   id: string;
@@ -30,6 +31,8 @@ export default function AdminRooms() {
   const queryClient = useQueryClient();
   const [searchQuery, setSearchQuery] = useState("");
   const { isAdmin, loading: accessLoading } = useUserAccess();
+  const [lockDialogOpen, setLockDialogOpen] = useState(false);
+  const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
 
   // Fetch all rooms
   const { data: rooms, isLoading } = useQuery({
@@ -71,15 +74,33 @@ export default function AdminRooms() {
     },
   });
 
-  // Toggle lock mutation
+  // Toggle lock mutation with PIN
   const toggleLockMutation = useMutation({
-    mutationFn: async ({ roomId, lockState }: { roomId: string; lockState: boolean }) => {
+    mutationFn: async ({ roomId, lockState, pin }: { roomId: string; lockState: boolean; pin: string }) => {
+      // Store PIN hash in localStorage for this session (in real app, would validate server-side)
+      const storedPin = localStorage.getItem(`room_pin_${roomId}`);
+      
+      if (lockState) {
+        // Locking: store the PIN
+        localStorage.setItem(`room_pin_${roomId}`, pin);
+      } else {
+        // Unlocking: verify the PIN matches
+        if (storedPin !== pin) {
+          throw new Error("Incorrect PIN. Please try again.");
+        }
+      }
+      
       const { error } = await supabase.rpc('toggle_room_lock', {
         room_id_param: roomId,
         lock_state: lockState
       });
       
       if (error) throw error;
+      
+      // If unlocking successfully, remove the PIN
+      if (!lockState) {
+        localStorage.removeItem(`room_pin_${roomId}`);
+      }
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin-rooms"] });
@@ -96,6 +117,21 @@ export default function AdminRooms() {
       });
     },
   });
+
+  const handleLockToggle = (room: Room) => {
+    setSelectedRoom(room);
+    setLockDialogOpen(true);
+  };
+
+  const handlePinConfirm = (pin: string) => {
+    if (!selectedRoom) return;
+    
+    toggleLockMutation.mutate({
+      roomId: selectedRoom.id,
+      lockState: !selectedRoom.is_locked,
+      pin
+    });
+  };
 
   const filteredRooms = rooms?.filter(room =>
     room.title_en.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -260,13 +296,8 @@ export default function AdminRooms() {
                   <Button
                     variant={room.is_locked ? "default" : "outline"}
                     size="sm"
-                    onClick={() => {
-                      toggleLockMutation.mutate({
-                        roomId: room.id,
-                        lockState: !room.is_locked
-                      });
-                    }}
-                    title={room.is_locked ? "Unlock room" : "Lock room"}
+                    onClick={() => handleLockToggle(room)}
+                    title={room.is_locked ? "Unlock room with PIN" : "Lock room with PIN"}
                   >
                     {room.is_locked ? <Unlock className="h-4 w-4" /> : <Lock className="h-4 w-4" />}
                   </Button>
@@ -296,6 +327,14 @@ export default function AdminRooms() {
             </p>
           </div>
         )}
+
+        <RoomLockPinDialog
+          open={lockDialogOpen}
+          onOpenChange={setLockDialogOpen}
+          roomTitle={selectedRoom?.title_en || ""}
+          isCurrentlyLocked={selectedRoom?.is_locked || false}
+          onConfirm={handlePinConfirm}
+        />
       </div>
     </div>
   );
