@@ -1041,5 +1041,12 @@ export const roomDataMap: Record<string, RoomData> = {
       "nameVi": "Hỗ Trợ Tâm Thần Phân Liệt",
       "tier": "free",
       "hasData": true
+  },
+  "schizophrenia-understanding-vip1": {
+      "id": "schizophrenia-understanding-vip1",
+      "nameEn": "Understanding Schizophrenia",
+      "nameVi": "Hiểu Về Tâm Thần Phân Liệt",
+      "tier": "vip1",
+      "hasData": true
   }
 };
