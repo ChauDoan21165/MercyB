@@ -43,6 +43,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "eating-disorder-support-vip1": "data/Eating_Disorder_Support_vip1.json",
   "eating-disorder-support-vip2": "data/Eating_Disorder_Support_vip2.json",
   "eating-disorder-support-vip3": "data/Eating_Disorder_Support_vip3.json",
+  "english-writing-free": "data/english-writing-free.json",
   "english-specialization-mastery-vip3-ii": "data/english_specialization_mastery_vip3_ii.json",
   "english-specialization-mastery-module2-vip3-ii": "data/English_Specialization_Mastery_Module2_vip3_ii.json",
   "erotic-wisdom-for-life-vip3-sub-6-sex": "data/Erotic_Wisdom_for_Life_vip3_sub_6_sex.json",
