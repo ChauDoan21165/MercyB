@@ -123,6 +123,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "social-anxiety-free": "data/Social_Anxiety_free.json",
   "social-anxiety-vip2": "data/Social_Anxiety_vip2.json",
   "social-anxiety-vip3": "data/Social_Anxiety_vip3.json",
+  "schizophrenia-support-free": "data/schizophrenia-support-free.json",
   "soulmate-free": "data/Soulmate_free.json",
   "stoicism-free": "data/Stoicism_free.json",
   "strategy-in-life-1-vip3": "data/Strategy_In_Life_1_vip3.json",
