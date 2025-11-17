@@ -1153,5 +1153,12 @@ export const roomDataMap: Record<string, RoomData> = {
       "nameVi": "Đi Sâu Viết Lách: Phần X — Kỹ Thuật Lập Luận Chuyên Nghiệp",
       "tier": "vip3_ii",
       "hasData": true
+  },
+  "writing-logic-vip3-ii": {
+      "id": "writing-logic-vip3-ii",
+      "nameEn": "Expert Logic Systems for Writing",
+      "nameVi": "Hệ Thống Lập Luận Chuyên Sâu Cho Viết Học",
+      "tier": "vip3_ii",
+      "hasData": true
   }
 };
