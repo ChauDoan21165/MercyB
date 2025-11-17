@@ -234,8 +234,6 @@ export const emotionKeywordGroups: EmotionKeywordGroup[] = [
     color: "#B4E7F0", // Light Cyan (Special for breathing)
     en: ["breath", "breathe", "breathing", "inhale", "exhale", "respiration", "air", "oxygen", "breaths", "breathwork"],
     vi: ["hơi thở", "hoi tho", "thở", "tho", "hít vào", "hit vao", "thở ra", "tho ra", "hô hấp", "ho hap", "không khí", "khong khi", "oxy", "oxy", "các hơi thở", "cac hoi tho", "công tác thở", "cong tac tho"]
-  }
-    vi: ["độc lập", "doc lap", "quyết đoán", "quyet doan", "hướng ngoại", "huong ngoai", "dè dặt", "de dat", "hướng nội", "huong noi", "hướng ngoại", "huong ngoai", "thực nghiệm", "thuc nghiem", "thử nghiệm", "thu nghiem", "chú ý chi tiết", "chu y chi tiet", "tầm nhìn tổng thể", "tam nhin tong the"]
   },
   
   // Transformation / Higher Mind
