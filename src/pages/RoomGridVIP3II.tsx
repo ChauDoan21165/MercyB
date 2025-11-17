@@ -11,15 +11,12 @@ import { useToast } from "@/hooks/use-toast";
 
 const RoomGridVIP3II = () => {
   const navigate = useNavigate();
-  const { canAccessVIP3II, isAdmin, loading } = useUserAccess();
+  const { canAccessVIP3II, isAdmin, isAuthenticated, loading } = useUserAccess();
   const { toast } = useToast();
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  useEffect(() => {
-    if (!loading && !canAccessVIP3II) {
-      navigate('/');
-    }
-  }, [canAccessVIP3II, loading, navigate]);
+  // Allow browsing for all users - they'll see restrictions in individual rooms
+  // No redirect for unauthenticated users
 
   const [roomsVersion, setRoomsVersion] = useState(0);
   useEffect(() => {
@@ -42,7 +39,7 @@ const RoomGridVIP3II = () => {
     }, 500);
   };
 
-  if (loading || !canAccessVIP3II) {
+  if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <p className="text-muted-foreground">Loading...</p>

@@ -14,15 +14,12 @@ import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomC
 
 const RoomGridVIP2 = () => {
   const navigate = useNavigate();
-  const { canAccessVIP2, isAdmin, loading } = useUserAccess();
+  const { canAccessVIP2, isAdmin, isAuthenticated, loading } = useUserAccess();
   const { toast: toastHook } = useToast();
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  useEffect(() => {
-    if (!loading && !canAccessVIP2) {
-      navigate('/');
-    }
-  }, [canAccessVIP2, loading, navigate]);
+  // Allow browsing for all users - they'll see restrictions in individual rooms
+  // No redirect for unauthenticated users
 
   const [roomsVersion, setRoomsVersion] = useState(0);
   useEffect(() => {
@@ -45,7 +42,7 @@ const RoomGridVIP2 = () => {
     }, 500);
   };
 
-  if (loading || !canAccessVIP2) {
+  if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <p className="text-muted-foreground">Loading...</p>
