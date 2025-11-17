@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { toast } from '@/hooks/use-toast';
 import { getEmotionKeywordColor } from '@/lib/emotionKeywordColors';
+import { useColorIntensity } from '@/contexts/ColorIntensityContext';
 
 interface HighlightedContentProps {
   content: string;
@@ -21,6 +22,20 @@ export const HighlightedContent = ({
   showShadowingReminder = false
 }: HighlightedContentProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
+  const { intensity } = useColorIntensity();
+  
+  // Helper function to adjust color opacity based on intensity
+  const adjustColorIntensity = (color: string, intensityValue: number): string => {
+    // Convert hex to rgba with intensity-based opacity
+    const hex = color.replace('#', '');
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    
+    // Intensity affects both opacity and color vibrancy
+    const alpha = 0.2 + (intensityValue * 0.8); // 20% to 100% opacity
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  };
 
   useEffect(() => {
     if (!contentRef.current) return;
