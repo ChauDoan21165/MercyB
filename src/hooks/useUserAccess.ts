@@ -5,6 +5,7 @@ export type UserTier = 'free' | 'vip1' | 'vip2' | 'vip3' | 'vip3_ii' | 'vip4';
 
 export interface UserAccess {
   isAdmin: boolean;
+  isAuthenticated: boolean;
   tier: UserTier;
   canAccessVIP1: boolean;
   canAccessVIP2: boolean;
@@ -17,6 +18,7 @@ export interface UserAccess {
 export const useUserAccess = (): UserAccess => {
   const [access, setAccess] = useState<UserAccess>({
     isAdmin: false,
+    isAuthenticated: false,
     tier: 'free',
     canAccessVIP1: false,
     canAccessVIP2: false,
@@ -37,6 +39,7 @@ export const useUserAccess = (): UserAccess => {
       if (!user) {
         setAccess({
           isAdmin: false,
+          isAuthenticated: false,
           tier: 'free',
           canAccessVIP1: false,
           canAccessVIP2: false,
@@ -73,6 +76,7 @@ export const useUserAccess = (): UserAccess => {
 
       setAccess({
         isAdmin,
+        isAuthenticated: true,
         tier: isAdmin ? 'vip4' : tier,
         canAccessVIP1: isAdmin || tier === 'vip1' || tier === 'vip2' || tier === 'vip3' || tier === 'vip3_ii' || tier === 'vip4',
         canAccessVIP2: isAdmin || tier === 'vip2' || tier === 'vip3' || tier === 'vip3_ii' || tier === 'vip4',
@@ -85,6 +89,7 @@ export const useUserAccess = (): UserAccess => {
       console.error('Error checking user access:', error);
       setAccess({
         isAdmin: false,
+        isAuthenticated: false,
         tier: 'free',
         canAccessVIP1: false,
         canAccessVIP2: false,

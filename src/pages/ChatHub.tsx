@@ -34,6 +34,7 @@ import { CareerProgressTracker } from "@/components/CareerProgressTracker";
 import { AnimatedTierBadge } from "@/components/AnimatedTierBadge";
 import { loadRoomKeywords } from "@/lib/roomKeywords";
 import { setCustomKeywordMappings, clearCustomKeywordMappings } from "@/lib/keywordColors";
+import { UnauthenticatedBanner } from "@/components/UnauthenticatedBanner";
 
 interface Message {
   id: string;
@@ -64,7 +65,7 @@ const ChatHub = () => {
   const progress = useRoomProgress(roomId);
   const { trackMessage, trackKeyword, trackCompletion } = useBehaviorTracking(roomId || "");
   const { awardPoints } = usePoints();
-  const { canAccessVIP1, canAccessVIP2, canAccessVIP3, canAccessVIP4, tier, isAdmin, loading: accessLoading } = useUserAccess();
+  const { canAccessVIP1, canAccessVIP2, canAccessVIP3, canAccessVIP4, tier, isAdmin, isAuthenticated, loading: accessLoading } = useUserAccess();
   const { creditInfo, hasCreditsRemaining, incrementUsage, refreshCredits } = useCredits();
   const [showAccessDenied, setShowAccessDenied] = useState(false);
   const [showCreditLimit, setShowCreditLimit] = useState(false);
@@ -201,6 +202,14 @@ const ChatHub = () => {
   }, [roomId]);
 
   const handleKeywordClick = async (keyword: string) => {
+    if (!isAuthenticated) {
+      toast({
+        title: "Sign Up Required / Yêu Cầu Đăng Ký",
+        description: "Please create a free account to interact with this room / Vui lòng tạo tài khoản miễn phí để tương tác với phòng này",
+        variant: "destructive"
+      });
+      return;
+    }
     if (isLoading) return;
     setClickedKeyword(keyword);
     await sendEntryForKeyword(keyword);
@@ -375,6 +384,17 @@ const ChatHub = () => {
   const sendMainMessage = async (keywordText?: string) => {
     const messageText = keywordText || mainInput.trim();
     if (!messageText || isLoading) return;
+    
+    // Check authentication first
+    if (!isAuthenticated) {
+      toast({
+        title: "Sign Up Required / Yêu Cầu Đăng Ký",
+        description: "Please create a free account to send messages / Vui lòng tạo tài khoản miễn phí để gửi tin nhắn",
+        variant: "destructive"
+      });
+      return;
+    }
+    
     // Get current user
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
@@ -786,6 +806,13 @@ const ChatHub = () => {
           </div>
         </div>
         
+        {/* Unauthenticated User Banner */}
+        {!isAuthenticated && (
+          <div className="animate-fade-in">
+            <UnauthenticatedBanner />
+          </div>
+        )}
+        
         {/* Welcome Message and Keywords Combined */}
         <Card className="p-4 shadow-soft bg-card border border-border">
           <div className="text-center space-y-0 mb-4">
@@ -843,7 +870,7 @@ const ChatHub = () => {
                       size="sm"
                       className="text-xs cursor-pointer"
                       onClick={() => handleKeywordClick(keywordEn)}
-                      disabled={isLoading}
+                      disabled={isLoading || !isAuthenticated}
                     >
                       {isAdmin && (
                         <span
@@ -902,11 +929,11 @@ const ChatHub = () => {
           <div className="flex items-center gap-2">
             <MessageCircle className="w-4 h-4 text-secondary flex-shrink-0" />
             <Input
-              placeholder="Feedback / Phản Hồi..."
+              placeholder={isAuthenticated ? "Feedback / Phản Hồi..." : "Sign up to send feedback / Đăng ký để gửi phản hồi..."}
               value={feedbackInput}
               onChange={(e) => setFeedbackInput(e.target.value)}
               onKeyPress={(e) => {
-                if (e.key === "Enter") {
+                if (e.key === "Enter" && isAuthenticated) {
                   sendMessage(feedbackInput, setFeedbackInput, () => {
                     toast({
                       title: "Thank you! / Cảm ơn!",
@@ -916,16 +943,28 @@ const ChatHub = () => {
                 }
               }}
               className="text-sm flex-1"
+              disabled={!isAuthenticated}
             />
             <Button
               size="sm"
               variant="outline"
-              onClick={() => sendMessage(feedbackInput, setFeedbackInput, () => {
-                toast({
-                  title: "Thank you! / Cảm ơn!",
-                  description: "Your feedback has been submitted / Phản hồi của bạn đã được gửi"
-                });
-              }, "feedback")}
+              onClick={() => {
+                if (!isAuthenticated) {
+                  toast({
+                    title: "Sign Up Required / Yêu Cầu Đăng Ký",
+                    description: "Please create a free account to send feedback / Vui lòng tạo tài khoản miễn phí để gửi phản hồi",
+                    variant: "destructive"
+                  });
+                  return;
+                }
+                sendMessage(feedbackInput, setFeedbackInput, () => {
+                  toast({
+                    title: "Thank you! / Cảm ơn!",
+                    description: "Your feedback has been submitted / Phản hồi của bạn đã được gửi"
+                  });
+                }, "feedback");
+              }}
+              disabled={!isAuthenticated}
             >
               <Send className="w-3 h-3" />
             </Button>

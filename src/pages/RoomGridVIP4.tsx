@@ -29,10 +29,13 @@ const VIP4_CAREER_ROOMS = [
 
 const RoomGridVIP4 = () => {
   const navigate = useNavigate();
-  const { canAccessVIP4, isAdmin, loading } = useUserAccess();
+  const { canAccessVIP4, isAdmin, isAuthenticated, loading } = useUserAccess();
   const [rooms, setRooms] = useState<Room[]>([]);
   const { toast } = useToast();
   const [isRefreshing, setIsRefreshing] = useState(false);
+
+  // Allow browsing for all users - they'll see restrictions in individual rooms
+  // No redirect for unauthenticated users
 
   useEffect(() => {
     // Wait for access check to complete before redirecting

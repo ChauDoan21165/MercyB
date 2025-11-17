@@ -50,40 +50,34 @@ const RoomGrid = () => {
       return;
     }
 
-    // Check authentication for free rooms
-    if (room.tier === 'free' && !isAuthenticated) {
-      toast({
-        title: "Please register first / Vui lòng đăng ký trước",
-        description: "You need to sign in to access this room / Bạn cần đăng nhập để truy cập phòng này",
-        variant: "destructive"
-      });
-      return;
-    }
-    
-    // Check VIP access
-    if (room.tier === 'vip1' && !canAccessVIP1) {
-      toast({
-        title: "VIP Only / Chỉ Dành Cho VIP",
-        description: "This room requires VIP1 subscription / Phòng này yêu cầu gói VIP1",
-        variant: "destructive"
-      });
-      return;
-    }
-    if (room.tier === 'vip2' && !canAccessVIP2) {
-      toast({
-        title: "VIP Only / Chỉ Dành Cho VIP",
-        description: "This room requires VIP2 subscription / Phòng này yêu cầu gói VIP2",
-        variant: "destructive"
-      });
-      return;
-    }
-    if (room.tier === 'vip3' && !canAccessVIP3) {
-      toast({
-        title: "VIP Only / Chỉ Dành Cho VIP",
-        description: "This room requires VIP3 subscription / Phòng này yêu cầu gói VIP3",
-        variant: "destructive"
-      });
-      return;
+    // Allow viewing all rooms (users will see sign-up banner in ChatHub if not authenticated)
+    // Only check VIP access for higher tier rooms when user is authenticated
+    if (isAuthenticated) {
+      // Check VIP access for authenticated users
+      if (room.tier === 'vip1' && !canAccessVIP1) {
+        toast({
+          title: "VIP Only / Chỉ Dành Cho VIP",
+          description: "This room requires VIP1 subscription / Phòng này yêu cầu gói VIP1",
+          variant: "destructive"
+        });
+        return;
+      }
+      if (room.tier === 'vip2' && !canAccessVIP2) {
+        toast({
+          title: "VIP Only / Chỉ Dành Cho VIP",
+          description: "This room requires VIP2 subscription / Phòng này yêu cầu gói VIP2",
+          variant: "destructive"
+        });
+        return;
+      }
+      if (room.tier === 'vip3' && !canAccessVIP3) {
+        toast({
+          title: "VIP Only / Chỉ Dành Cho VIP",
+          description: "This room requires VIP3 subscription / Phòng này yêu cầu gói VIP3",
+          variant: "destructive"
+        });
+        return;
+      }
     }
     
     navigate(`/chat/${room.id}`);

@@ -23,15 +23,12 @@ const VIP3_SPECIAL_ROOMS: Record<string, string> = {
 
 const RoomGridVIP3 = () => {
   const navigate = useNavigate();
-  const { canAccessVIP3, isAdmin, loading } = useUserAccess();
+  const { canAccessVIP3, isAdmin, isAuthenticated, loading } = useUserAccess();
   const { toast: toastHook } = useToast();
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  useEffect(() => {
-    if (!loading && !canAccessVIP3) {
-      navigate('/');
-    }
-  }, [canAccessVIP3, loading, navigate]);
+  // Allow browsing for all users - they'll see restrictions in individual rooms
+  // No redirect for unauthenticated users
 
   const [roomsVersion, setRoomsVersion] = useState(0);
   useEffect(() => {
@@ -54,7 +51,7 @@ const RoomGridVIP3 = () => {
     }, 500);
   };
 
-  if (loading || !canAccessVIP3) {
+  if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <p className="text-muted-foreground">Loading...</p>
