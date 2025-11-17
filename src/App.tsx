@@ -56,11 +56,12 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
       <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-        <AdminFloatingButton />
-        <Routes>
+        <ColorIntensityProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+          <AdminFloatingButton />
+          <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/tiers" element={<Tiers />} />
           <Route path="/welcome" element={<Welcome />} />
