@@ -16,92 +16,99 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
 
     if (dbRoom && !error) {
       console.log('✅ Room loaded from database:', dbRoom.id);
-      
-      // Transform database format to expected format
-      let keywordMenu: { en: string[]; vi: string[] } = { en: [], vi: [] };
-      if (Array.isArray(dbRoom.entries)) {
-        const enList: string[] = [];
-        const viList: string[] = [];
-        (dbRoom.entries as any[]).forEach((entry: any) => {
-          const titleText = typeof entry.title === 'object' ? entry.title?.en : entry.title;
-          const en = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0
-            ? String(entry.keywords_en[0])
-            : String(titleText || entry.slug || '').trim();
-          const titleViText = typeof entry.title === 'object' ? entry.title?.vi : '';
-          const vi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0
-            ? String(entry.keywords_vi[0])
-            : (titleViText || entry.slug || '');
-          if (en) {
-            enList.push(en);
-            viList.push(vi);
-          }
-        });
-        keywordMenu = { en: enList, vi: viList };
-      } else if (Array.isArray(dbRoom.keywords) && dbRoom.keywords.length > 0) {
-        keywordMenu = { en: dbRoom.keywords, vi: dbRoom.keywords };
-      }
-      const merged = Array.isArray(dbRoom.entries) 
-        ? dbRoom.entries.map((entry: any, idx: number) => {
-            // Extract audio path
-            let audioRaw: any;
-            if (entry?.audio && typeof entry.audio === 'object') {
-              audioRaw = entry.audio.en ?? entry.audio.vi ?? Object.values(entry.audio)[0];
-            } else if (entry?.audio) {
-              audioRaw = entry.audio;
-            }
+      const hasEntries = Array.isArray(dbRoom.entries) && dbRoom.entries.length > 0;
+      const hasKeywords = Array.isArray(dbRoom.keywords) && dbRoom.keywords.length > 0;
 
-            let audioPath = audioRaw;
-            if (audioPath) {
-              let p = String(audioPath);
-              // Remove leading slashes and public/ prefix
-              p = p.replace(/^\/+/, '').replace(/^public\//, '');
-              
-              // If path starts with rooms/, just use it directly under /audio/
-              if (p.startsWith('rooms/')) {
-                audioPath = `/audio/${p}`;
-              } else {
-                // Remove audio/(en|vi)/ prefix if present
-                p = p.replace(/^audio\/(en|vi)\//, 'audio/');
-                // Remove audio/ prefix if present
-                p = p.replace(/^audio\//, '');
-                
-                // Use the path as-is, just prepend /audio/
-                audioPath = `/audio/${p}`;
+      if (hasEntries || hasKeywords) {
+        // Transform database format to expected format
+        let keywordMenu: { en: string[]; vi: string[] } = { en: [], vi: [] };
+        if (hasEntries) {
+          const enList: string[] = [];
+          const viList: string[] = [];
+          (dbRoom.entries as any[]).forEach((entry: any) => {
+            const titleText = typeof entry.title === 'object' ? entry.title?.en : entry.title;
+            const en = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0
+              ? String(entry.keywords_en[0])
+              : String(titleText || entry.slug || '').trim();
+            const titleViText = typeof entry.title === 'object' ? entry.title?.vi : '';
+            const vi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0
+              ? String(entry.keywords_vi[0])
+              : (titleViText || entry.slug || '');
+            if (en) {
+              enList.push(en);
+              viList.push(vi);
+            }
+          });
+          keywordMenu = { en: enList, vi: viList };
+        } else if (hasKeywords) {
+          keywordMenu = { en: dbRoom.keywords, vi: dbRoom.keywords };
+        }
+
+        const merged = hasEntries 
+          ? dbRoom.entries.map((entry: any, idx: number) => {
+              // Extract audio path
+              let audioRaw: any;
+              if (entry?.audio && typeof entry.audio === 'object') {
+                audioRaw = entry.audio.en ?? entry.audio.vi ?? Object.values(entry.audio)[0];
+              } else if (entry?.audio) {
+                audioRaw = entry.audio;
               }
-              
-              console.log('🎵 Audio path constructed:', audioPath, 'from raw:', audioRaw);
-            }
 
-            const keywordEn = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0 
-              ? entry.keywords_en[0] 
-              : entry.slug || `entry-${idx}`;
-            const keywordVi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0 
-              ? entry.keywords_vi[0] 
-              : entry.slug || '';
+              let audioPath = audioRaw;
+              if (audioPath) {
+                let p = String(audioPath);
+                // Remove leading slashes and public/ prefix
+                p = p.replace(/^\/+/, '').replace(/^public\//, '');
+                
+                // If path starts with rooms/, just use it directly under /audio/
+                if (p.startsWith('rooms/')) {
+                  audioPath = `/audio/${p}`;
+                } else {
+                  // Remove audio/(en|vi)/ prefix if present
+                  p = p.replace(/^audio\/(en|vi)\//, 'audio/');
+                  // Remove audio/ prefix if present
+                  p = p.replace(/^audio\//, '');
+                  
+                  // Use the path as-is, just prepend /audio/
+                  audioPath = `/audio/${p}`;
+                }
+                
+                console.log('🎵 Audio path constructed:', audioPath, 'from raw:', audioRaw);
+              }
 
-            const replyEn = entry.reply_en || entry.essay_en || entry.essay?.en || 
-                            entry.copy?.en || entry.content?.en || 
-                            entry.copy_en || entry.content_en || '';
-            const replyVi = entry.reply_vi || entry.essay_vi || entry.essay?.vi || 
-                            entry.copy?.vi || entry.content?.vi || 
-                            entry.copy_vi || entry.content_vi || '';
+              const keywordEn = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0 
+                ? entry.keywords_en[0] 
+                : entry.slug || `entry-${idx}`;
+              const keywordVi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0 
+                ? entry.keywords_vi[0] 
+                : entry.slug || '';
 
-            return {
-              ...entry,
-              audio: audioPath || undefined,
-              keywordEn,
-              keywordVi,
-              replyEn,
-              replyVi
-            };
-          })
-        : [];
+              const replyEn = entry.reply_en || entry.essay_en || entry.essay?.en || 
+                              entry.copy?.en || entry.content?.en || 
+                              entry.copy_en || entry.content_en || '';
+              const replyVi = entry.reply_vi || entry.essay_vi || entry.essay?.vi || 
+                              entry.copy?.vi || entry.content?.vi || 
+                              entry.copy_vi || entry.content_vi || '';
 
-      return {
-        merged,
-        keywordMenu,
-        audioBasePath: '/audio/'
-      };
+              return {
+                ...entry,
+                audio: audioPath || undefined,
+                keywordEn,
+                keywordVi,
+                replyEn,
+                replyVi
+              };
+            })
+          : [];
+
+        return {
+          merged,
+          keywordMenu,
+          audioBasePath: '/audio/'
+        };
+      } else {
+        console.warn('⚠️ DB room exists but has no entries/keywords; falling back to static files');
+      }
     }
   } catch (dbError) {
     console.log('⚠️ Database load failed, falling back to static files:', dbError);
