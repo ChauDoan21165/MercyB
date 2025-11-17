@@ -133,6 +133,108 @@ export const emotionKeywordGroups: EmotionKeywordGroup[] = [
     emotion: "life-growth",
     color: "#C9D2D4",
     en: ["independent", "assertive", "outgoing", "reserved", "introverted", "extroverted", "empirical", "experimental", "detail-oriented", "big-picture"],
+    vi: ["độc lập", "doc lap", "quyết đoán", "quyet doan", "hướng ngoại", "huong ngoai", "dè dặt", "de dat", "hướng nội", "huong noi", "hướng ngoại", "huong ngoai", "thực nghiệm", "thuc nghiem", "thử nghiệm", "thu nghiem", "chi tiết", "chi tiet", "tổng thể", "tong the"]
+  },
+  
+  // Common Adjectives - Rainbow Colors
+  {
+    emotion: "adjectives-positive-1",
+    color: "#FF6B9D", // Pink
+    en: ["beautiful", "wonderful", "amazing", "fantastic", "excellent", "perfect", "brilliant", "magnificent", "spectacular", "marvelous"],
+    vi: ["đẹp", "dep", "tuyệt vời", "tuyet voi", "tuyệt diệu", "tuyet dieu", "tuyệt hảo", "tuyet hao", "xuất sắc", "xuat sac", "hoàn hảo", "hoan hao", "lỗi lạc", "loi lac", "tráng lệ", "trang le", "hùng vĩ", "hung vi", "kỳ diệu", "ky dieu"]
+  },
+  {
+    emotion: "adjectives-positive-2",
+    color: "#FF9E6B", // Orange
+    en: ["bright", "vibrant", "colorful", "radiant", "glowing", "luminous", "sparkling", "shining", "dazzling", "gleaming"],
+    vi: ["sáng", "sang", "rực rỡ", "ruc ro", "đầy màu sắc", "day mau sac", "rạng rỡ", "rang ro", "tỏa sáng", "toa sang", "phát sáng", "phat sang", "lấp lánh", "lap lanh", "chiếu sáng", "chieu sang", "chói lọi", "choi loi", "lấp lánh", "lap lanh"]
+  },
+  {
+    emotion: "adjectives-positive-3",
+    color: "#FFD666", // Yellow
+    en: ["fresh", "new", "young", "pure", "clean", "clear", "crisp", "neat", "tidy", "pristine"],
+    vi: ["tươi", "tuoi", "mới", "moi", "trẻ", "tre", "thuần khiết", "thuan khiet", "sạch", "sach", "trong", "trong", "giòn", "gion", "gọn gàng", "gon gang", "ngăn nắp", "ngan nap", "nguyên sơ", "nguyen so"]
+  },
+  {
+    emotion: "adjectives-positive-4",
+    color: "#9EE6A8", // Green
+    en: ["natural", "organic", "healthy", "vital", "lively", "alive", "thriving", "flourishing", "blooming", "verdant"],
+    vi: ["tự nhiên", "tu nhien", "hữu cơ", "huu co", "khỏe mạnh", "khoe manh", "sống động", "song dong", "năng động", "nang dong", "sống", "song", "phát triển", "phat trien", "thịnh vượng", "thinh vuong", "nở rộ", "no ro", "tươi tốt", "tuoi tot"]
+  },
+  {
+    emotion: "adjectives-positive-5",
+    color: "#6BCDFF", // Sky Blue
+    en: ["free", "open", "wide", "vast", "spacious", "broad", "expansive", "infinite", "boundless", "unlimited"],
+    vi: ["tự do", "tu do", "mở", "mo", "rộng", "rong", "bao la", "bao la", "rộng rãi", "rong rai", "bao trùm", "bao trum", "mở rộng", "mo rong", "vô tận", "vo tan", "vô biên", "vo bien", "không giới hạn", "khong gioi han"]
+  },
+  {
+    emotion: "adjectives-positive-6",
+    color: "#9D6BFF", // Purple
+    en: ["deep", "profound", "meaningful", "significant", "important", "valuable", "precious", "treasured", "sacred", "divine"],
+    vi: ["sâu", "sau", "sâu sắc", "sau sac", "có ý nghĩa", "co y nghia", "quan trọng", "quan trong", "quan trọng", "quan trong", "có giá trị", "co gia tri", "quý giá", "quy gia", "trân quý", "tran quy", "thiêng liêng", "thieng lieng", "thần thánh", "than thanh"]
+  },
+  {
+    emotion: "adjectives-descriptive-1",
+    color: "#FF8FA3", // Rose
+    en: ["soft", "gentle", "smooth", "delicate", "tender", "mild", "subtle", "fine", "light", "airy"],
+    vi: ["mềm", "mem", "dịu dàng", "diu dang", "mịn", "min", "tinh tế", "tinh te", "mềm mại", "mem mai", "nhẹ nhàng", "nhe nhang", "tinh vi", "tinh vi", "mịn màng", "min mang", "nhẹ", "nhe", "thoáng", "thoang"]
+  },
+  {
+    emotion: "adjectives-descriptive-2",
+    color: "#FFB86F", // Peach
+    en: ["warm", "cozy", "comfortable", "pleasant", "nice", "agreeable", "welcoming", "inviting", "friendly", "cordial"],
+    vi: ["ấm", "am", "ấm cúng", "am cung", "thoải mái", "thoai mai", "dễ chịu", "de chiu", "đẹp", "dep", "dễ chịu", "de chiu", "chào đón", "chao don", "mời gọi", "moi goi", "thân thiện", "than thien", "thân mật", "than mat"]
+  },
+  {
+    emotion: "adjectives-descriptive-3",
+    color: "#C1E1C1", // Mint
+    en: ["quiet", "still", "silent", "peaceful", "tranquil", "serene", "placid", "undisturbed", "untroubled", "restful"],
+    vi: ["yên tĩnh", "yen tinh", "im lặng", "im lang", "yên lặng", "yen lang", "hòa bình", "hoa binh", "thanh bình", "thanh binh", "thanh thản", "thanh than", "điềm tĩnh", "diem tinh", "không bị quấy rầy", "khong bi quay ray", "không lo lắng", "khong lo lang", "nghỉ ngơi", "nghi ngoi"]
+  },
+  
+  // Common Adverbs - Rainbow Colors
+  {
+    emotion: "adverbs-manner-1",
+    color: "#FF77A9", // Hot Pink
+    en: ["slowly", "quickly", "rapidly", "swiftly", "fast", "speedily", "hastily", "gradually", "steadily", "gently"],
+    vi: ["chậm", "cham", "nhanh", "nhanh", "nhanh chóng", "nhanh chong", "mau lẹ", "mau le", "mau", "mau", "nhanh nhẹn", "nhanh nhen", "vội vàng", "voi vang", "dần dần", "dan dan", "đều đặn", "deu dan", "nhẹ nhàng", "nhe nhang"]
+  },
+  {
+    emotion: "adverbs-frequency-1",
+    color: "#FFA866", // Coral
+    en: ["always", "never", "often", "sometimes", "rarely", "seldom", "frequently", "occasionally", "usually", "regularly"],
+    vi: ["luôn luôn", "luon luon", "không bao giờ", "khong bao gio", "thường", "thuong", "đôi khi", "doi khi", "hiếm khi", "hiem khi", "ít khi", "it khi", "thường xuyên", "thuong xuyen", "thỉnh thoảng", "thinh thoang", "thường", "thuong", "đều đặn", "deu dan"]
+  },
+  {
+    emotion: "adverbs-degree-1",
+    color: "#FFCC66", // Gold
+    en: ["very", "extremely", "incredibly", "remarkably", "exceptionally", "particularly", "especially", "truly", "really", "absolutely"],
+    vi: ["rất", "rat", "cực kỳ", "cuc ky", "không thể tin", "khong the tin", "đáng chú ý", "dang chu y", "đặc biệt", "dac biet", "đặc biệt", "dac biet", "đặc biệt", "dac biet", "thực sự", "thuc su", "thật sự", "that su", "hoàn toàn", "hoan toan"]
+  },
+  {
+    emotion: "adverbs-manner-2",
+    color: "#88DD99", // Light Green
+    en: ["easily", "simply", "naturally", "effortlessly", "smoothly", "freely", "openly", "directly", "plainly", "clearly"],
+    vi: ["dễ dàng", "de dang", "đơn giản", "don gian", "tự nhiên", "tu nhien", "không nỗ lực", "khong no luc", "mượt mà", "muot ma", "tự do", "tu do", "công khai", "cong khai", "trực tiếp", "truc tiep", "rõ ràng", "ro rang", "rõ ràng", "ro rang"]
+  },
+  {
+    emotion: "adverbs-manner-3",
+    color: "#77CCFF", // Light Blue
+    en: ["deeply", "profoundly", "thoroughly", "completely", "entirely", "fully", "totally", "wholly", "utterly", "perfectly"],
+    vi: ["sâu sắc", "sau sac", "sâu xa", "sau xa", "kỹ lưỡng", "ky luong", "hoàn toàn", "hoan toan", "toàn bộ", "toan bo", "đầy đủ", "day du", "hoàn toàn", "hoan toan", "toàn thể", "toan the", "hoàn toàn", "hoan toan", "hoàn hảo", "hoan hao"]
+  },
+  {
+    emotion: "adverbs-manner-4",
+    color: "#AA77FF", // Lavender
+    en: ["carefully", "thoughtfully", "mindfully", "consciously", "deliberately", "intentionally", "purposefully", "attentively", "wisely", "prudently"],
+    vi: ["cẩn thận", "can than", "chu đáo", "chu dao", "chánh niệm", "chanh niem", "có ý thức", "co y thuc", "cố ý", "co y", "có chủ ý", "co chu y", "có mục đích", "co muc dich", "chú ý", "chu y", "khôn ngoan", "khon ngoan", "thận trọng", "than trong"]
+  },
+  {
+    emotion: "breathing-keywords",
+    color: "#B4E7F0", // Light Cyan (Special for breathing)
+    en: ["breath", "breathe", "breathing", "inhale", "exhale", "respiration", "air", "oxygen", "breaths", "breathwork"],
+    vi: ["hơi thở", "hoi tho", "thở", "tho", "hít vào", "hit vao", "thở ra", "tho ra", "hô hấp", "ho hap", "không khí", "khong khi", "oxy", "oxy", "các hơi thở", "cac hoi tho", "công tác thở", "cong tac tho"]
+  }
     vi: ["độc lập", "doc lap", "quyết đoán", "quyet doan", "hướng ngoại", "huong ngoai", "dè dặt", "de dat", "hướng nội", "huong noi", "hướng ngoại", "huong ngoai", "thực nghiệm", "thuc nghiem", "thử nghiệm", "thu nghiem", "chú ý chi tiết", "chu y chi tiet", "tầm nhìn tổng thể", "tam nhin tong the"]
   },
   
