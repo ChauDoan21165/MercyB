@@ -1034,5 +1034,12 @@ export const roomDataMap: Record<string, RoomData> = {
       "nameVi": "Chiến Lược Trong Đời: Chiến Thuật Nâng Cao II (Thay Thế)",
       "tier": "vip3",
       "hasData": true
+  },
+  "schizophrenia-support-free": {
+      "id": "schizophrenia-support-free",
+      "nameEn": "Schizophrenia Support",
+      "nameVi": "Hỗ Trợ Tâm Thần Phân Liệt",
+      "tier": "free",
+      "hasData": true
   }
 };

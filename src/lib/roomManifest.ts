@@ -151,7 +151,8 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "god-with-us-free": "data/God_With_Us_free.json",
   "grow-wealth-vip4-career-6": "data/Grow_Wealth_vip4_career_6.json",
   "launch-career-vip4-career-4-ii": "data/Launch_Career_vip4_career_4_II.json",
-  "strategy-in-life-advanced-tactics-ii-alt-vip3": "data/Strategy_in_Life_Advanced_Tactics_II_vip3.json"
+  "strategy-in-life-advanced-tactics-ii-alt-vip3": "data/Strategy_in_Life_Advanced_Tactics_II_vip3.json",
+  "schizophrenia-support-free": "data/schizophrenia-support-free.json"
 };
 
 /**
