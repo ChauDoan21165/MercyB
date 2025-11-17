@@ -31,6 +31,7 @@ export const AudioPlayer = ({
   const [isMuted, setIsMuted] = useState(false);
   const [previousVolume, setPreviousVolume] = useState(1);
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
+  const [isAudioReady, setIsAudioReady] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
 
@@ -62,6 +63,7 @@ export const AudioPlayer = ({
     // Only reset and set src when the source changed
     if (!isSameSource) {
       audio.pause();
+      setIsAudioReady(false);
       // Add cache-busting parameter to force reload of updated audio
       const cacheBustedPath = audioPath.includes('?') 
         ? `${audioPath}&v=${Date.now()}` 
@@ -83,6 +85,7 @@ export const AudioPlayer = ({
 
     const handleLoadedMetadata = () => {
       setDuration(audio.duration);
+      setIsAudioReady(true);
       // Restore saved position if available
       try {
         const saved = parseFloat(sessionStorage.getItem(storageKey(audioPath)) || '0');
@@ -137,14 +140,14 @@ export const AudioPlayer = ({
     const audio = audioRef.current;
     if (!audio) return;
 
-    if (isPlaying) {
+    if (isPlaying && isAudioReady) {
       audio.play().catch(console.error);
-    } else {
+    } else if (!isPlaying) {
       // Save position on pause
       try { sessionStorage.setItem(storageKey(audioPath), String(audio.currentTime)); } catch {}
       audio.pause();
     }
-  }, [isPlaying]);
+  }, [isPlaying, isAudioReady, audioPath]);
 
   useEffect(() => {
     const audio = audioRef.current;
