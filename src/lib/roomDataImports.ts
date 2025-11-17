@@ -1146,5 +1146,12 @@ export const roomDataMap: Record<string, RoomData> = {
       "nameVi": "Thành Thạo Tâm Thần Phân Liệt",
       "tier": "vip3",
       "hasData": true
+  },
+  "english-writing-deepdive-part10-vip3-ii": {
+      "id": "english-writing-deepdive-part10-vip3-ii",
+      "nameEn": "Writing Deep-Dive: Part X — Professional Argument Engineering",
+      "nameVi": "Đi Sâu Viết Lách: Phần X — Kỹ Thuật Lập Luận Chuyên Nghiệp",
+      "tier": "vip3_ii",
+      "hasData": true
   }
 };
