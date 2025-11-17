@@ -1160,5 +1160,12 @@ export const roomDataMap: Record<string, RoomData> = {
       "nameVi": "Hệ Thống Lập Luận Chuyên Sâu Cho Viết Học",
       "tier": "vip3_ii",
       "hasData": true
+  },
+  "writing-deepdive-part12-vip3-ii": {
+      "id": "writing-deepdive-part12-vip3-ii",
+      "nameEn": "Advanced Evidence Architecture: Data, Examples & Intellectual Proofs",
+      "nameVi": "Kiến Trúc Bằng Chứng Nâng Cao: Dữ Liệu, Ví Dụ & Lập Luận Trí Tuệ",
+      "tier": "vip3_ii",
+      "hasData": true
   }
 };
