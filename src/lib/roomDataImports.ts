@@ -314,8 +314,8 @@ export const roomDataMap: Record<string, RoomData> = {
       "tier": "vip3_iii",
       "hasData": true
   },
-  "english-writing-deepdive-part4-vip3ii": {
-      "id": "english-writing-deepdive-part4-vip3ii",
+  "english-writing-deepdive-part4-vip3-ii": {
+      "id": "english-writing-deepdive-part4-vip3-ii",
       "nameEn": "Writing Deep-Dive: Part IV — Master Editor",
       "nameVi": "Đi Sâu Viết Lách: Phần IV — Bậc Thầy Chỉnh Sửa",
       "tier": "vip3_ii",
