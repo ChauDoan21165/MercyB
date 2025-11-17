@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Users, DollarSign, Crown, MessageSquare, TrendingUp } from 'lucide-react';
+import { Users, DollarSign, Crown, MessageSquare, TrendingUp, LayoutDashboard } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface Stats {
@@ -147,9 +147,15 @@ const AdminStats = () => {
             <h1 className="text-4xl font-bold mb-2">Admin Dashboard</h1>
             <p className="text-muted-foreground">Mercy Mind Link Statistics</p>
           </div>
-          <Button variant="outline" onClick={() => navigate('/')}>
-            ← Back to Home
-          </Button>
+          <div className="flex gap-2">
+            <Button onClick={() => navigate('/admin/rooms')}>
+              <LayoutDashboard className="h-4 w-4 mr-2" />
+              Room Management
+            </Button>
+            <Button variant="outline" onClick={() => navigate('/')}>
+              ← Back to Home
+            </Button>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
