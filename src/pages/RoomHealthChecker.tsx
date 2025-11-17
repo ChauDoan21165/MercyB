@@ -4,10 +4,12 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Database, FileJson, AlertCircle, CheckCircle, RefreshCw } from "lucide-react";
+import { ArrowLeft, Database, FileJson, AlertCircle, CheckCircle, RefreshCw, Wrench } from "lucide-react";
 import { AdminBreadcrumb } from "@/components/admin/AdminBreadcrumb";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 interface RoomHealth {
   id: string;
@@ -26,6 +28,8 @@ interface RoomHealth {
 export default function RoomHealthChecker() {
   const navigate = useNavigate();
   const { isAdmin, loading: accessLoading } = useUserAccess();
+  const { toast } = useToast();
+  const [isRepairing, setIsRepairing] = useState(false);
 
   const { data: healthReport, isLoading, refetch } = useQuery({
     queryKey: ["room-health"],
@@ -113,6 +117,82 @@ export default function RoomHealthChecker() {
   const warningCount = healthReport?.filter(r => r.status === 'warning').length || 0;
   const errorCount = healthReport?.filter(r => r.status === 'error').length || 0;
 
+  const extractKeywords = (entries: any[]): string[] => {
+    const keywords = new Set<string>();
+    entries.forEach((entry: any) => {
+      if (entry.question?.en) keywords.add(entry.question.en.toLowerCase());
+      if (entry.question?.vi) keywords.add(entry.question.vi.toLowerCase());
+      if (entry.replies) {
+        entry.replies.forEach((reply: any) => {
+          if (reply.en) keywords.add(reply.en.toLowerCase());
+          if (reply.vi) keywords.add(reply.vi.toLowerCase());
+        });
+      }
+    });
+    return Array.from(keywords).slice(0, 50);
+  };
+
+  const repairRoom = async (room: RoomHealth) => {
+    if (!room.jsonPath) return;
+
+    try {
+      const response = await fetch(`/${room.jsonPath}`);
+      if (!response.ok) throw new Error('Failed to fetch JSON file');
+      
+      const data = await response.json();
+      const entries = data.merged || [];
+      const keywords = extractKeywords(entries);
+
+      await supabase
+        .from('rooms')
+        .update({
+          entries,
+          keywords,
+          room_essay_en: data.room_essay?.en || null,
+          room_essay_vi: data.room_essay?.vi || null,
+          safety_disclaimer_en: data.safety_disclaimer?.en || null,
+          safety_disclaimer_vi: data.safety_disclaimer?.vi || null,
+          crisis_footer_en: data.crisis_footer?.en || null,
+          crisis_footer_vi: data.crisis_footer?.vi || null,
+          updated_at: new Date().toISOString()
+        })
+        .eq('id', room.id);
+
+      return { success: true, room: room.id };
+    } catch (error) {
+      console.error(`Failed to repair room ${room.id}:`, error);
+      return { success: false, room: room.id, error };
+    }
+  };
+
+  const handleBatchRepair = async () => {
+    const roomsNeedingRepair = healthReport?.filter(
+      r => (r.status === 'warning' || r.status === 'error') && r.hasJsonFile
+    ) || [];
+
+    if (roomsNeedingRepair.length === 0) {
+      toast({
+        title: "No repairs needed",
+        description: "All rooms with JSON files are already synced to the database.",
+      });
+      return;
+    }
+
+    setIsRepairing(true);
+    const results = await Promise.all(roomsNeedingRepair.map(repairRoom));
+    
+    const successCount = results.filter(r => r.success).length;
+    const failCount = results.filter(r => !r.success).length;
+
+    toast({
+      title: "Batch repair completed",
+      description: `Successfully repaired ${successCount} rooms. ${failCount > 0 ? `Failed: ${failCount}` : ''}`,
+    });
+
+    setIsRepairing(false);
+    refetch();
+  };
+
   return (
     <div className="min-h-screen bg-background p-4 md:p-8">
       <div className="max-w-7xl mx-auto space-y-6">
@@ -130,10 +210,20 @@ export default function RoomHealthChecker() {
               Diagnose room data sources and missing content
             </p>
           </div>
-          <Button onClick={() => refetch()} variant="outline" size="sm">
-            <RefreshCw className="h-4 w-4 mr-2" />
-            Refresh
-          </Button>
+          <div className="flex gap-2">
+            <Button 
+              onClick={handleBatchRepair} 
+              disabled={isRepairing || warningCount + errorCount === 0}
+              size="sm"
+            >
+              <Wrench className="h-4 w-4 mr-2" />
+              {isRepairing ? 'Repairing...' : 'Batch Repair'}
+            </Button>
+            <Button onClick={() => refetch()} variant="outline" size="sm">
+              <RefreshCw className="h-4 w-4 mr-2" />
+              Refresh
+            </Button>
+          </div>
         </div>
 
         {/* Summary Cards */}
