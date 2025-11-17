@@ -32,8 +32,7 @@ import { roomDataMap } from "@/lib/roomDataImports";
 import { getParentRoute } from "@/lib/routeHelper";
 import { CareerProgressTracker } from "@/components/CareerProgressTracker";
 import { AnimatedTierBadge } from "@/components/AnimatedTierBadge";
-import { loadRoomKeywords } from "@/lib/roomKeywords";
-import { setCustomKeywordMappings, clearCustomKeywordMappings } from "@/lib/keywordColors";
+import { setCustomKeywordMappings, clearCustomKeywordMappings, loadRoomKeywords } from "@/lib/customKeywordLoader";
 import { UnauthenticatedBanner } from "@/components/UnauthenticatedBanner";
 
 interface Message {
