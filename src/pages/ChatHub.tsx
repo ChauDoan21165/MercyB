@@ -594,7 +594,11 @@ const ChatHub = () => {
                 
                 {!message.audioFile && !audioUrl && (
                   <div className="mt-3">
-                    <MessageActions text={englishContent} roomId={roomId || ""} />
+                    <MessageActions 
+                      text={englishContent} 
+                      viText={vietnameseContent} 
+                      roomId={roomId || ""} 
+                    />
                   </div>
                 )}
               </>
