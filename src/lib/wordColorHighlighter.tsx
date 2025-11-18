@@ -6,37 +6,25 @@ interface ColoredWord {
   category: string;
 }
 
-// Build English-to-Vietnamese mapping from the new color rules
-const enToViEquivalents: Record<string, string> = {};
-const viToEnEquivalents: Record<string, string> = {};
-
-// Build mappings from the categories in the JSON
-Object.entries(wordColorRules.categories).forEach(([categoryKey, categoryData]: [string, any]) => {
-  const enWords = categoryData.words_en || [];
-  const viWords = categoryData.words_vi || [];
-  
-  // Map each English word to its Vietnamese equivalent at the same index
-  enWords.forEach((enWord: string, index: number) => {
-    if (viWords[index]) {
-      enToViEquivalents[enWord.toLowerCase()] = viWords[index].toLowerCase();
-      viToEnEquivalents[viWords[index].toLowerCase()] = enWord.toLowerCase();
-    }
-  });
-});
-
 function findWordInCategories(word: string): ColoredWord | null {
   const lowerWord = word.toLowerCase();
   
   // Check all categories for this word
-  for (const [categoryKey, categoryData] of Object.entries(wordColorRules.categories) as [string, any][]) {
-    const enWords = (categoryData.words_en || []).map((w: string) => w.toLowerCase());
-    const viWords = (categoryData.words_vi || []).map((w: string) => w.toLowerCase());
+  for (const categoryData of wordColorRules.categories as any[]) {
+    // Collect all words from adjectives, adverbs, and verbs
+    const allWords = [
+      ...(categoryData.adjectives || []),
+      ...(categoryData.adverbs || []),
+      ...(categoryData.verbs_light || []),
+      ...(categoryData.verbs_medium || []),
+      ...(categoryData.verbs_strong || [])
+    ].map((w: string) => w.toLowerCase());
     
-    if (enWords.includes(lowerWord) || viWords.includes(lowerWord)) {
+    if (allWords.includes(lowerWord)) {
       return { 
         word, 
-        color: categoryData.color, 
-        category: categoryKey 
+        color: categoryData.hex, 
+        category: categoryData.id 
       };
     }
   }
@@ -59,51 +47,9 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
     }
     
     const cleanWord = segment.trim().toLowerCase();
-    let coloredWord: ColoredWord | null = null;
     
-    if (isVietnamese) {
-      // Try single word equivalence first
-      const enEquivalent = viToEnEquivalents[cleanWord];
-      if (enEquivalent) {
-        coloredWord = findWordInCategories(enEquivalent);
-      }
-      
-      // Try phrase equivalence: current + space + next word (e.g., "bình yên")
-      if (!coloredWord && i + 2 < segments.length) {
-        const maybeSpace = segments[i + 1];
-        const nextSeg = segments[i + 2];
-        if (/^\s+$/.test(maybeSpace || '') && nextSeg && nextSeg.trim() !== '') {
-          const phrase = `${cleanWord} ${nextSeg.trim().toLowerCase()}`;
-          const enEqPhrase = viToEnEquivalents[phrase];
-          if (enEqPhrase) {
-            const cat = findWordInCategories(enEqPhrase);
-            if (cat) {
-              result.push(
-                <span key={i} style={{ backgroundColor: cat.color, padding: '2px 4px', borderRadius: '3px', fontWeight: 500 }}>
-                  {segment}
-                </span>
-              );
-              result.push(<span key={i + 1}>{maybeSpace}</span>);
-              result.push(
-                <span key={i + 2} style={{ backgroundColor: cat.color, padding: '2px 4px', borderRadius: '3px', fontWeight: 500 }}>
-                  {nextSeg}
-                </span>
-              );
-              i += 2;
-              continue;
-            }
-          }
-        }
-      }
-      
-      // Also check if the Vietnamese word itself matches a category directly
-      if (!coloredWord) {
-        coloredWord = findWordInCategories(cleanWord);
-      }
-    } else {
-      // For English, directly check the word
-      coloredWord = findWordInCategories(cleanWord);
-    }
+    // Check the word directly (works for both English and Vietnamese)
+    const coloredWord = findWordInCategories(cleanWord);
     
     if (coloredWord) {
       result.push(
