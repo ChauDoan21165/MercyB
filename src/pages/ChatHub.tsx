@@ -43,6 +43,7 @@ interface Message {
   timestamp: Date;
   relatedRooms?: string[];
   audioFile?: string;
+  audioPlaylist?: string[];
 }
 
 const ChatHub = () => {
@@ -250,6 +251,33 @@ const ChatHub = () => {
 
     const by = (s: any) => norm(String(s || ''));
 
+    // Special case: "all" keyword combines all entries
+    if (k === 'all') {
+      const allEnglish = mergedEntries
+        .map(e => String(e.essay_en || e.replyEn || e.copy?.en || '').trim())
+        .filter(Boolean)
+        .join('\n\n---\n\n');
+      
+      const allVietnamese = mergedEntries
+        .map(e => String(e.essay_vi || e.replyVi || e.copy?.vi || '').trim())
+        .filter(Boolean)
+        .join('\n\n---\n\n');
+      
+      const allAudioFiles = mergedEntries
+        .map(e => e.audio)
+        .filter(Boolean)
+        .map(audio => audio.startsWith('/audio/') ? audio : `/audio/${audio.replace(/^\//, '')}`);
+      
+      return {
+        slug: 'all',
+        keywordEn: 'all',
+        essay_en: allEnglish,
+        essay_vi: allVietnamese,
+        audio: allAudioFiles[0], // First audio for initial play
+        audioPlaylist: allAudioFiles, // All audio files for sequential play
+      };
+    }
+
     // 0) Exact match on slug
     let entry = mergedEntries.find(e => by(e.slug) === k);
     if (entry) {
@@ -363,13 +391,17 @@ const ChatHub = () => {
         ? (entry.audio.startsWith('/audio/') ? entry.audio : `/audio/${entry.audio.replace(/^\//, '')}`)
         : undefined;
       
+      // Store playlist for "all" keyword
+      const audioPlaylist = entry.audioPlaylist || (audioFile ? [audioFile] : []);
+      
       console.log('=== MESSAGE BUILD DEBUG ===');
       console.log('English text length:', en.length);
       console.log('Vietnamese text length:', vi.length);
       console.log('Final audioFile:', audioFile);
+      console.log('Audio playlist:', audioPlaylist);
       console.log('=========================');
       
-      setMainMessages(prev => prev.map(m => m.id === typingMessageId ? { ...m, text, audioFile } : m));
+      setMainMessages(prev => prev.map(m => m.id === typingMessageId ? { ...m, text, audioFile, audioPlaylist } : m));
       trackKeyword(keyword);
     } catch (err) {
       console.error('Keyword mapping failed', err);
@@ -574,6 +606,7 @@ const ChatHub = () => {
                           setIsAudioPlaying(false);
                           setCurrentAudio(null);
                         }}
+                        playlist={message.audioPlaylist}
                       />
                     </div>
                   </div>
@@ -605,6 +638,7 @@ const ChatHub = () => {
                         setIsAudioPlaying(false);
                         setCurrentAudio(null);
                       }}
+                      playlist={message.audioPlaylist}
                     />
                   </div>
                 )}
