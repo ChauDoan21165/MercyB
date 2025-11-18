@@ -11,14 +11,8 @@ function findWordInCategories(word: string, isVietnamese: boolean = false): Colo
   
   // Check all categories for this word
   for (const categoryData of wordColorRules.categories as any[]) {
-    // Collect words based on language
-    const allWords = isVietnamese ? [
-      ...(categoryData.adjectives_vi || []),
-      ...(categoryData.adverbs_vi || []),
-      ...(categoryData.verbs_light_vi || []),
-      ...(categoryData.verbs_medium_vi || []),
-      ...(categoryData.verbs_strong_vi || [])
-    ] : [
+    // Collect all words from the category (combined English & Vietnamese)
+    const allWords = [
       ...(categoryData.adjectives || []),
       ...(categoryData.adverbs || []),
       ...(categoryData.verbs_light || []),
@@ -26,13 +20,11 @@ function findWordInCategories(word: string, isVietnamese: boolean = false): Colo
       ...(categoryData.verbs_strong || [])
     ];
     
-    // For Vietnamese, also include individual words from multi-word phrases
-    const expandedWords = isVietnamese 
-      ? allWords.flatMap(w => {
-          const parts = w.split(/\s+/);
-          return parts.length > 1 ? [w, ...parts] : [w];
-        })
-      : allWords;
+    // Expand multi-word phrases into individual words
+    const expandedWords = allWords.flatMap(w => {
+      const parts = w.split(/\s+/);
+      return parts.length > 1 ? [w, ...parts] : [w];
+    });
     
     const lowerWords = expandedWords.map((w: string) => w.toLowerCase());
     
