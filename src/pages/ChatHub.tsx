@@ -24,6 +24,7 @@ import { CreditLimitModal } from "@/components/CreditLimitModal";
 import { CreditsDisplay } from "@/components/CreditsDisplay";
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { HighlightedContent } from "@/components/HighlightedContent";
+import { PairedHighlightedContent } from "@/components/PairedHighlightedContent";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { messageSchema } from "@/lib/inputValidation";
@@ -827,29 +828,12 @@ const ChatHub = () => {
           </div>
 
           {/* Room Essay with Highlighting - Always Visible */}
-          {roomEssay && (roomEssay.en || roomEssay.vi) && (
+          {roomEssay && roomEssay.en && roomEssay.vi && (
             <div className="mb-4 p-4 bg-muted/30 rounded-lg border border-border/50" key="room-essay-permanent">
-              {roomEssay.en && (
-                <div className="mb-3">
-                  <HighlightedContent 
-                    content={roomEssay.en}
-                    className="text-sm leading-relaxed"
-                    enableHighlighting={true}
-                  />
-                </div>
-              )}
-              {roomEssay.vi && roomEssay.en && (
-                <hr className="border-border my-3" />
-              )}
-              {roomEssay.vi && (
-                <div>
-                  <HighlightedContent 
-                    content={roomEssay.vi}
-                    className="text-sm leading-relaxed"
-                    enableHighlighting={true}
-                  />
-                </div>
-              )}
+              <PairedHighlightedContent 
+                englishContent={roomEssay.en}
+                vietnameseContent={roomEssay.vi}
+              />
             </div>
           )}
 
