@@ -25,6 +25,7 @@ import { CreditsDisplay } from "@/components/CreditsDisplay";
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { HighlightedContent } from "@/components/HighlightedContent";
 import { PairedHighlightedContent } from "@/components/PairedHighlightedContent";
+import { ColorLegend } from "@/components/ColorLegend";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { messageSchema } from "@/lib/inputValidation";
@@ -825,6 +826,9 @@ const ChatHub = () => {
                 englishContent={roomEssay.en}
                 vietnameseContent={roomEssay.vi}
               />
+              <div className="mt-3 pt-3 border-t border-border/30">
+                <ColorLegend compact={true} showVietnamese={true} />
+              </div>
             </div>
           )}
 
