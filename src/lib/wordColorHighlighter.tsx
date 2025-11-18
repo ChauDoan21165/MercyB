@@ -6,21 +6,29 @@ interface ColoredWord {
   category: string;
 }
 
-function findWordInCategories(word: string): ColoredWord | null {
+function findWordInCategories(word: string, isVietnamese: boolean = false): ColoredWord | null {
   const lowerWord = word.toLowerCase();
   
   // Check all categories for this word
   for (const categoryData of wordColorRules.categories as any[]) {
-    // Collect all words from adjectives, adverbs, and verbs
-    const allWords = [
+    // Collect words based on language
+    const allWords = isVietnamese ? [
+      ...(categoryData.adjectives_vi || []),
+      ...(categoryData.adverbs_vi || []),
+      ...(categoryData.verbs_light_vi || []),
+      ...(categoryData.verbs_medium_vi || []),
+      ...(categoryData.verbs_strong_vi || [])
+    ] : [
       ...(categoryData.adjectives || []),
       ...(categoryData.adverbs || []),
       ...(categoryData.verbs_light || []),
       ...(categoryData.verbs_medium || []),
       ...(categoryData.verbs_strong || [])
-    ].map((w: string) => w.toLowerCase());
+    ];
     
-    if (allWords.includes(lowerWord)) {
+    const lowerWords = allWords.map((w: string) => w.toLowerCase());
+    
+    if (lowerWords.includes(lowerWord)) {
       return { 
         word, 
         color: categoryData.hex, 
@@ -48,8 +56,8 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
     
     const cleanWord = segment.trim().toLowerCase();
     
-    // Check the word directly (works for both English and Vietnamese)
-    const coloredWord = findWordInCategories(cleanWord);
+    // Check the word with language context
+    const coloredWord = findWordInCategories(cleanWord, isVietnamese);
     
     if (coloredWord) {
       result.push(
