@@ -23,7 +23,20 @@ function seededRandom(seed: number): number {
 }
 
 export function highlightTextByRules(text: string, isVietnamese: boolean = false): JSX.Element[] {
-  const lines = text.split('\n');
+  // Treat each sentence as a "line" so essays get multiple groups of 3 colored words
+  const sentenceLines: string[] = [];
+  const rawLines = text.split('\n');
+
+  rawLines.forEach((raw) => {
+    if (!raw.trim()) {
+      sentenceLines.push(raw);
+      return;
+    }
+    const parts = raw.split(/(?<=[.!?])\s+/);
+    sentenceLines.push(...parts);
+  });
+
+  const lines = sentenceLines;
   const result: JSX.Element[] = [];
   let globalIndex = 0;
 
