@@ -62,7 +62,10 @@ export const PairedHighlightedContent = ({
         <>
           <hr className="border-border my-3" />
           <div className="relative">
-            <div className="flex justify-end mb-2">
+            <div className="text-sm leading-relaxed mb-2">
+              {viHighlighted}
+            </div>
+            <div className="flex justify-start">
               <Button
                 variant="ghost"
                 size="sm"
@@ -81,9 +84,6 @@ export const PairedHighlightedContent = ({
                   </>
                 )}
               </Button>
-            </div>
-            <div className="text-sm leading-relaxed">
-              {viHighlighted}
             </div>
           </div>
         </>
