@@ -15,6 +15,7 @@ interface AudioPlayerProps {
   onPlayPause: () => void;
   onEnded: () => void;
   className?: string;
+  playlist?: string[];
 }
 
 export const AudioPlayer = ({ 
@@ -22,7 +23,8 @@ export const AudioPlayer = ({
   isPlaying, 
   onPlayPause, 
   onEnded,
-  className 
+  className,
+  playlist = []
 }: AudioPlayerProps) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -32,8 +34,13 @@ export const AudioPlayer = ({
   const [previousVolume, setPreviousVolume] = useState(1);
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
   const [isAudioReady, setIsAudioReady] = useState(false);
+  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
+
+  // Use playlist if available, otherwise single audio
+  const isPlaylist = playlist.length > 1;
+  const currentAudioPath = isPlaylist ? playlist[currentTrackIndex] : audioPath;
 
   const speedOptions = [0.5, 0.75, 1, 1.25, 1.5, 2];
   const stripQuery = (url: string) => {
@@ -56,7 +63,7 @@ export const AudioPlayer = ({
 
     // Determine if the source actually changed (ignore query params/signatures)
     const currentSrcNoQuery = stripQuery(audio.src);
-    const newSrcNoQuery = stripQuery(audioPath);
+    const newSrcNoQuery = stripQuery(currentAudioPath);
     const isSameSource =
       currentSrcNoQuery === newSrcNoQuery || currentSrcNoQuery.endsWith(newSrcNoQuery);
 
@@ -65,9 +72,9 @@ export const AudioPlayer = ({
       audio.pause();
       setIsAudioReady(false);
       // Add cache-busting parameter to force reload of updated audio
-      const cacheBustedPath = audioPath.includes('?') 
-        ? `${audioPath}&v=${Date.now()}` 
-        : `${audioPath}?v=${Date.now()}`;
+      const cacheBustedPath = currentAudioPath.includes('?') 
+        ? `${currentAudioPath}&v=${Date.now()}` 
+        : `${currentAudioPath}?v=${Date.now()}`;
       audio.src = cacheBustedPath;
       // Ensure a fresh load only when switching tracks
       audio.load();
@@ -79,7 +86,7 @@ export const AudioPlayer = ({
         setCurrentTime(audio.currentTime);
       }
       try {
-        sessionStorage.setItem(storageKey(audioPath), String(audio.currentTime));
+        sessionStorage.setItem(storageKey(currentAudioPath), String(audio.currentTime));
       } catch {}
     };
 
@@ -88,32 +95,38 @@ export const AudioPlayer = ({
       setIsAudioReady(true);
       // Restore saved position if available
       try {
-        const saved = parseFloat(sessionStorage.getItem(storageKey(audioPath)) || '0');
+        const saved = parseFloat(sessionStorage.getItem(storageKey(currentAudioPath)) || '0');
         if (!isNaN(saved) && saved > 0 && saved < audio.duration - 0.2) {
           audio.currentTime = saved;
           setCurrentTime(saved);
         }
       } catch {}
-      console.log('✅ Audio loaded successfully:', audioPath, 'Duration:', audio.duration);
+      console.log('✅ Audio loaded successfully:', currentAudioPath, 'Duration:', audio.duration);
     };
 
     const handleEnded = () => {
       setCurrentTime(0);
-      try { sessionStorage.removeItem(storageKey(audioPath)); } catch {}
-      onEnded();
+      try { sessionStorage.removeItem(storageKey(currentAudioPath)); } catch {}
+      
+      // Auto-play next track in playlist
+      if (isPlaylist && currentTrackIndex < playlist.length - 1) {
+        setCurrentTrackIndex(prev => prev + 1);
+      } else {
+        onEnded();
+      }
     };
 
     const handleError = (e: Event) => {
-      console.error('❌ Audio failed to load:', audioPath);
+      console.error('❌ Audio failed to load:', currentAudioPath);
       console.error('Error details:', audio.error);
       console.error('Error event:', e);
     };
 
     const handleCanPlay = () => {
-      console.log('✅ Audio can play:', audioPath);
+      console.log('✅ Audio can play:', currentAudioPath);
       // Double-check resume in case metadata loaded earlier
       try {
-        const saved = parseFloat(sessionStorage.getItem(storageKey(audioPath)) || '0');
+        const saved = parseFloat(sessionStorage.getItem(storageKey(currentAudioPath)) || '0');
         if (!isNaN(saved) && saved > 0.1 && Math.abs((audio.currentTime || 0) - saved) > 0.2 && saved < (audio.duration || Infinity) - 0.2) {
           audio.currentTime = saved;
           setCurrentTime(saved);
@@ -134,7 +147,18 @@ export const AudioPlayer = ({
       audio.removeEventListener('error', handleError);
       audio.removeEventListener('canplay', handleCanPlay);
     };
-  }, [audioPath, isDragging]);
+  }, [currentAudioPath, isDragging, isPlaylist, currentTrackIndex]);
+
+  // Auto-play when track changes in playlist
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio || !isPlaylist) return;
+
+    // If a track changed and we were playing, continue playing the new track
+    if (isPlaying && isAudioReady) {
+      audio.play().catch(console.error);
+    }
+  }, [currentTrackIndex, isPlaylist, isPlaying, isAudioReady]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -144,10 +168,10 @@ export const AudioPlayer = ({
       audio.play().catch(console.error);
     } else if (!isPlaying) {
       // Save position on pause
-      try { sessionStorage.setItem(storageKey(audioPath), String(audio.currentTime)); } catch {}
+      try { sessionStorage.setItem(storageKey(currentAudioPath), String(audio.currentTime)); } catch {}
       audio.pause();
     }
-  }, [isPlaying, isAudioReady, audioPath]);
+  }, [isPlaying, isAudioReady, currentAudioPath]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -268,6 +292,20 @@ export const AudioPlayer = ({
     audio.currentTime = Math.min(duration, audio.currentTime + 10);
   };
 
+  const handlePreviousTrack = () => {
+    if (currentTrackIndex > 0) {
+      setCurrentTrackIndex(prev => prev - 1);
+      setCurrentTime(0);
+    }
+  };
+
+  const handleNextTrack = () => {
+    if (currentTrackIndex < playlist.length - 1) {
+      setCurrentTrackIndex(prev => prev + 1);
+      setCurrentTime(0);
+    }
+  };
+
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
@@ -310,6 +348,36 @@ export const AudioPlayer = ({
       >
         <SkipForward className="h-3 w-3" />
       </Button>
+
+      {/* Track Navigation (only for playlists) */}
+      {isPlaylist && (
+        <>
+          <div className="h-4 w-px bg-border mx-1" />
+          <Button
+            onClick={handlePreviousTrack}
+            size="sm"
+            variant="ghost"
+            className="h-6 w-6 p-0 shrink-0"
+            disabled={currentTrackIndex === 0}
+            title="Previous track"
+          >
+            <SkipBack className="h-3 w-3" />
+          </Button>
+          <span className="text-xs text-muted-foreground shrink-0 px-1">
+            {currentTrackIndex + 1}/{playlist.length}
+          </span>
+          <Button
+            onClick={handleNextTrack}
+            size="sm"
+            variant="ghost"
+            className="h-6 w-6 p-0 shrink-0"
+            disabled={currentTrackIndex === playlist.length - 1}
+            title="Next track"
+          >
+            <SkipForward className="h-3 w-3" />
+          </Button>
+        </>
+      )}
 
       {/* Time Display */}
       <span className="text-xs text-muted-foreground shrink-0 w-12">
