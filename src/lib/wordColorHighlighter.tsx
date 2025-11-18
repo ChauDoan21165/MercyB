@@ -9,6 +9,9 @@ interface ColoredWord {
 function findWordInCategories(word: string, isVietnamese: boolean = false): ColoredWord | null {
   const lowerWord = word.toLowerCase();
   
+  // Debug logging
+  console.log('Checking word:', lowerWord, 'isVietnamese:', isVietnamese);
+  
   // Check all categories for this word
   for (const categoryData of wordColorRules.categories as any[]) {
     // Collect words based on language
@@ -26,9 +29,12 @@ function findWordInCategories(word: string, isVietnamese: boolean = false): Colo
       ...(categoryData.verbs_strong || [])
     ];
     
+    console.log('Category:', categoryData.id, 'word count:', allWords.length);
+    
     const lowerWords = allWords.map((w: string) => w.toLowerCase());
     
     if (lowerWords.includes(lowerWord)) {
+      console.log('✓ MATCH FOUND:', lowerWord, 'in', categoryData.id, 'color:', categoryData.hex);
       return { 
         word, 
         color: categoryData.hex, 
