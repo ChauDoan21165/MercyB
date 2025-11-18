@@ -3,6 +3,7 @@ import { useAdminCheck } from '@/hooks/useAdminCheck';
 import { Button } from './ui/button';
 import { Copy } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
+import { highlightTextByRules } from '@/lib/wordColorHighlighter';
 
 interface ProtectedContentProps {
   content: string;
@@ -83,7 +84,7 @@ export const ProtectedContent = ({ content, className = '' }: ProtectedContentPr
       onMouseEnter={() => isAdmin && setShowCopyButton(true)}
       onMouseLeave={() => setShowCopyButton(false)}
     >
-      <p 
+      <div 
         className={`text-base leading-relaxed whitespace-pre-wrap ${
           !isAdmin ? 'select-none cursor-default' : ''
         }`}
@@ -94,8 +95,8 @@ export const ProtectedContent = ({ content, className = '' }: ProtectedContentPr
           msUserSelect: 'none'
         } : undefined}
       >
-        {content}
-      </p>
+        {highlightTextByRules(content, false)}
+      </div>
       
       {isAdmin && showCopyButton && (
         <Button
