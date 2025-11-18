@@ -1,132 +1,86 @@
 {
-  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nObesity management for Free tier, foundational awareness\n\nEach entry: introduce basic concepts for managing obesity\n\nPhilosophy: accessible, encouraging, non-judgmental, simple language\n\nBeliefs:\n- Don't overwhelm. Start small.\n- Don't judge. Build awareness.\n- Don't complicate. Keep it simple.\n\nTalk points\n- Healthy meals support your body.\n- Movement brings energy.\n- Mindful eating builds awareness.\n- Small steps create change.\n\nSimple habits to introduce:\n- Choose one healthy meal.\n- Move for ten minutes.\n- Eat mindfully once.\n- Notice how you feel.",
-  "schema_version": "1.1",
-  "schema_id": "obesity_free",
-  "description": "Echologic Mercy Blade room for Free users to begin understanding obesity management basics",
-  "description_vi": "Phòng Mercy Blade dành cho người dùng miễn phí để bắt đầu hiểu cơ bản quản lý béo phì",
-  "supported_languages": ["en", "vi"],
-  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
-  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice.",
-  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn y tế chuyên nghiệp.",
-  "crisis_footer": {
-    "en": "For serious health concerns or obesity-related issues, contact a doctor or support line immediately.",
-    "vi": "Nếu gặp vấn đề sức khỏe nghiêm trọng hoặc liên quan đến béo phì, liên hệ bác sĩ hoặc đường dây hỗ trợ ngay."
+  "id": "obesity-free",
+  "tier": "Free / Miễn phí",
+  "title": {
+    "en": "Obesity Management",
+    "vi": "Quản Lý Béo Phì"
   },
-  "safety_footer": {
-    "en": "For personalized obesity management, consult a healthcare professional.",
-    "vi": "Để quản lý béo phì cá nhân hóa, tham khảo chuyên gia y tế."
-  },
-  "meta": {
-    "created_at": "2025-10-25T12:22:00+09:00",
-    "updated_at": "2025-10-25T12:22:00+09:00",
-    "checksum_sha256": "<placeholder>",
-    "meta_notes": "Keyword-driven; Free tier; light background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
-    "i18n_verified": true,
-    "entry_count": 3,
-    "artifact_set_id": "e7b8c9d0-1f2a-4b3c-c4d5-e6f7a8b9c0d1",
-    "data_format_version": "MercyBlade-Core-v1.2",
-    "room_color": "#F5F5F5",
-    "tier": "free"
-  },
-  "enums": {
-    "tags": [
-      "obesity",
-      "nutrition",
-      "movement",
-      "mindfulness",
-      "health_basics"
-    ],
-    "urgency": ["immediate", "soon", "routine"],
-    "severity_level": [1, 2, 3, 4, 5],
-    "systems": ["health_management", "wellness"]
-  },
-  "keywords": {
-    "basic_obesity_management": {
-      "en": ["healthy meal choices", "daily movement", "beginner mindful eating", "simple obesity prevention", "easy health habits"],
-      "vi": ["lựa chọn bữa ăn lành mạnh", "vận động hàng ngày", "ăn uống tỉnh táo cho người mới", "phòng ngừa béo phì đơn giản", "thói quen sức khỏe dễ dàng"]
-    }
-  },
-  "room_essay": {
-    "format": "markdown",
-    "en": "# Obesity Management Free\n\nManaging obesity starts with simple awareness and small actions. Everyone can take basic steps toward better health through mindful meal choices, daily movement, and conscious eating. This Free room introduces foundational concepts to help you begin.\n\n**Choose Healthy Meals**\n- Plan one balanced meal today.\n- Use the plate method: half vegetables, quarter protein, quarter carbs.\n- Example: Simple meal planning helps you feel better.\n\n**Move Daily**\n- Walk for ten minutes.\n- Any movement counts.\n- Small steps build energy over time.\n\n**Eat Mindfully**\n- Notice your food without distractions.\n- Chew slowly and taste each bite.\n- Awareness helps you eat the right amount.\n\n**Start Today**\n- Choose one simple action.\n- Notice how you feel.\n\nBegin today: plan one healthy meal or take a ten-minute walk. Ready to explore more? Upgrade to access deeper strategies and personalized guidance!\n\n*Word count: 278*",
-    "vi": "# Quản Lý Béo Phì Miễn Phí\n\nQuản lý béo phì bắt đầu từ nhận thức đơn giản và hành động nhỏ. Mọi người có thể thực hiện các bước cơ bản hướng tới sức khỏe tốt hơn thông qua lựa chọn bữa ăn tỉnh táo, vận động hàng ngày và ăn uống có ý thức. Phòng Miễn phí này giới thiệu các khái niệm nền tảng để giúp bạn bắt đầu.\n\n**Chọn Bữa Ăn Lành Mạnh**\n- Lên kế hoạch một bữa ăn cân bằng hôm nay.\n- Dùng phương pháp đĩa: nửa rau, một phần tư protein, một phần tư carb.\n- Ví dụ: Lập kế hoạch bữa ăn đơn giản giúp bạn cảm thấy tốt hơn.\n\n**Vận Động Hàng Ngày**\n- Đi bộ mười phút.\n- Bất kỳ chuyển động nào cũng được.\n- Bước nhỏ tạo năng lượng theo thời gian.\n\n**Ăn Tỉnh Táo**\n- Chú ý thức ăn không bị phân tâm.\n- Nhai chậm và nếm từng miếng.\n- Nhận thức giúp bạn ăn đúng lượng.\n\n**Bắt Đầu Hôm Nay**\n- Chọn một hành động đơn giản.\n- Chú ý cảm giác của bạn.\n\nBắt đầu hôm nay: lên kế hoạch một bữa ăn lành mạnh hoặc đi bộ mười phút. Sẵn sàng khám phá thêm? Nâng cấp để truy cập chiến lược sâu hơn và hướng dẫn cá nhân hóa!\n\n*Số từ: 286*",
-    "word_count_en": 278,
-    "word_count_vi": 286,
-    "updated_at": "2025-10-25T12:22:00+09:00"
+  "content": {
+    "en": "Managing obesity starts with gentle, judgment-free steps. This Free room gives you three simple, proven habits: healthier daily meals, easy movement, and mindful eating. No pressure, no shame — just small actions that add up. Begin with one change today and notice how you feel. These basics build real confidence and lasting progress.",
+    "vi": "Quản lý béo phì bắt đầu từ những bước nhẹ nhàng, không phán xét. Phòng Miễn phí này mang đến ba thói quen đơn giản, đã được chứng minh hiệu quả: bữa ăn lành mạnh hằng ngày, vận động nhẹ nhàng và ăn uống tỉnh thức. Không áp lực, không xấu hổ — chỉ là những hành động nhỏ tích lũy theo thời gian. Hãy bắt đầu một thay đổi hôm nay và cảm nhận sự khác biệt. Những nền tảng này nuôi dưỡng sự tự tin và tiến bộ lâu dài."
   },
   "entries": [
     {
-      "slug": "starting_healthy_meal_choices",
-      "title": { "en": "Starting Healthy Meal Choices", "vi": "Bắt Đầu Lựa Chọn Bữa Ăn Lành Mạnh" },
+      "slug": "starting-healthy-meal-choices",
+      "keywords_en": [
+        "healthy meal choices",
+        "balanced plate",
+        "weight management meals",
+        "simple eating habits"
+      ],
+      "keywords_vi": [
+        "lựa chọn bữa ăn lành mạnh",
+        "đĩa ăn cân bằng",
+        "bữa ăn quản lý cân nặng",
+        "thói quen ăn uống đơn giản"
+      ],
       "copy": {
-        "en": "**Starting Healthy Meal Choices**\n\nBegin managing obesity with healthy meal choices. Plan one daily meal with vegetables, lean protein, and whole grains, following a simple plate method: half vegetables, one quarter protein, one quarter carbohydrates. Preparing balanced meals helps control hunger and stabilize energy. Schedule a weekly prep day to stay consistent and avoid impulsive eating. Keep a brief journal of food choices to notice progress. Small, realistic steps make healthy habits stick. Start by planning one balanced meal today to support your body and mind. Ready to eat better? Explore more beyond Free.\n\n*Word count: 145*",
-        "vi": "**Bắt Đầu Lựa Chọn Bữa Ăn Lành Mạnh**\n\nBắt đầu quản lý béo phì bằng lựa chọn bữa ăn lành mạnh. Lên kế hoạch một bữa ăn hàng ngày với rau, protein nạc và ngũ cốc nguyên hạt, theo phương pháp đĩa đơn giản: nửa rau, một phần tư protein, một phần tư carbohydrate. Chuẩn bị bữa ăn cân bằng giúp kiểm soát đói và ổn định năng lượng. Lên lịch một ngày chuẩn bị hàng tuần để giữ nhất quán và tránh ăn bốc đồng. Giữ nhật ký ngắn về lựa chọn thực phẩm để nhận thấy tiến bộ. Các bước nhỏ, thực tế làm cho thói quen lành mạnh bền vững. Bắt đầu bằng cách lên kế hoạch một bữa ăn cân bằng hôm nay để hỗ trợ cơ thể và tâm trí. Sẵn sàng ăn tốt hơn? Khám phá thêm ngoài Miễn phí.\n\n*Số từ: 153*"
+        "en": "Begin managing obesity with healthy meal choices. Plan one daily meal using the simple plate method: half vegetables, one quarter lean protein, one quarter whole grains. Preparing balanced meals helps control hunger and keeps energy steady. Schedule a quick weekly prep to make good choices effortless. Small, realistic steps create lasting habits. Start today with one balanced meal and feel the difference it makes.",
+        "vi": "Hãy bắt đầu quản lý béo phì bằng những lựa chọn bữa ăn lành mạnh. Lên kế hoạch một bữa mỗi ngày theo phương pháp \"đĩa cân bằng\": một nửa là rau củ, một phần tư là protein nạc, một phần tư là ngũ cốc nguyên hạt. Chuẩn bị bữa ăn cân đối giúp kiểm soát cơn đói và giữ năng lượng ổn định. Hãy dành chút thời gian mỗi tuần để chuẩn bị trước, giúp việc lựa chọn tốt trở nên dễ dàng. Những bước nhỏ và thực tế sẽ tạo nên thói quen bền vững. Hãy bắt đầu hôm nay với một bữa ăn cân bằng và cảm nhận sự khác biệt."
       },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["obesity", "nutrition"],
-      "urgency": "routine",
-      "severity_level": 1,
-      "systems": ["health_management"],
-      "metadata": { "topic": "obesity", "outcome": "nutrition" },
-      "artifact_id": "e8b9c0d1-2f3a-4b4c-d5e6-f7a8b9c0d1e2",
-      "artifact_version_id": "e8b9c0d1-2f3a-4b4c-d5e6-f7a8b9c0d1e2-v001",
-      "created_at": "2025-10-25T12:22:00+09:00",
-      "updated_at": "2025-10-25T12:22:00+09:00",
+      "tags": [
+        "obesity",
+        "nutrition"
+      ],
       "audio": "Starting_Healthy_Meal_Choices_free.mp3"
     },
     {
-      "slug": "trying_daily_movement",
-      "title": { "en": "Trying Daily Movement", "vi": "Thử Vận Động Hàng Ngày" },
+      "slug": "trying-daily-movement",
+      "keywords_en": [
+        "daily movement",
+        "light exercise",
+        "walking habit",
+        "beginner activity"
+      ],
+      "keywords_vi": [
+        "vận động hằng ngày",
+        "tập luyện nhẹ",
+        "thói quen đi bộ",
+        "hoạt động cho người mới bắt đầu"
+      ],
       "copy": {
-        "en": "**Trying Daily Movement**\n\nReduce obesity risk through daily movement. Begin with a short ten-minute activity—walking, stretching, or dancing—to stay active and lift your mood. Consistent movement improves metabolism and reduces stress. Keep a weekly record of activity time and how you feel afterward. Small actions practiced regularly create lasting energy and resilience. If motivation fades, remind yourself that even light movement counts. Start with one short walk today and celebrate completion, not perfection. Ready to bring more energy into your day? Explore more beyond Free.\n\n*Word count: 144*",
-        "vi": "**Thử Vận Động Hàng Ngày**\n\nGiảm nguy cơ béo phì thông qua vận động hàng ngày. Bắt đầu với hoạt động ngắn mười phút—đi bộ, duỗi người hoặc khiêu vũ—để giữ năng động và nâng tâm trạng. Vận động nhất quán cải thiện trao đổi chất và giảm căng thẳng. Giữ bản ghi hàng tuần về thời gian hoạt động và cảm giác sau đó. Hành động nhỏ thực hành thường xuyên tạo năng lượng và khả năng phục hồi lâu dài. Nếu động lực mờ dần, nhắc nhở bản thân rằng ngay cả chuyển động nhẹ cũng có giá trị. Bắt đầu với một đoạn đi bộ ngắn hôm nay và ăn mừng hoàn thành, không phải hoàn hảo. Sẵn sàng mang nhiều năng lượng hơn vào ngày của bạn? Khám phá thêm ngoài Miễn phí.\n\n*Số từ: 152*"
+        "en": "Daily movement is one of the kindest things you can do for your body. Start with just ten minutes — walking, stretching, or dancing at home. Any movement counts and lifts your mood. Consistency matters more than intensity. Keep it gentle and regular, and energy naturally returns. Begin today with one short, enjoyable activity and celebrate showing up for yourself.",
+        "vi": "Vận động hằng ngày là một trong những điều tử tế nhất bạn có thể dành cho cơ thể. Hãy bắt đầu chỉ với mười phút — đi bộ, giãn cơ hoặc nhảy theo nhạc tại nhà. Mọi chuyển động đều có giá trị và giúp nâng đỡ tâm trạng. Sự đều đặn quan trọng hơn cường độ. Giữ cho việc vận động nhẹ nhàng và thường xuyên, năng lượng sẽ tự nhiên quay trở lại. Hãy bắt đầu hôm nay với một hoạt động ngắn và dễ chịu — và tự khen ngợi vì bạn đã hiện diện cho chính mình."
       },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["obesity", "movement"],
-      "urgency": "routine",
-      "severity_level": 1,
-      "systems": ["health_management"],
-      "metadata": { "topic": "obesity", "outcome": "exercise" },
-      "artifact_id": "f9c0d1e2-3a4b-5c5d-e6f7-a8b9c0d1e2f3",
-      "artifact_version_id": "f9c0d1e2-3a4b-5c5d-e6f7-a8b9c0d1e2f3-v001",
-      "created_at": "2025-10-25T12:22:00+09:00",
-      "updated_at": "2025-10-25T12:22:00+09:00",
+      "tags": [
+        "obesity",
+        "movement"
+      ],
       "audio": "Trying_Daily_Movement_free.mp3"
     },
     {
-      "slug": "practicing_mindful_eating",
-      "title": { "en": "Practicing Mindful Eating", "vi": "Thực Hành Ăn Uống Tỉnh Táo" },
+      "slug": "practicing-mindful-eating",
+      "keywords_en": [
+        "mindful eating",
+        "eating awareness",
+        "slow eating",
+        "hunger cues"
+      ],
+      "keywords_vi": [
+        "ăn uống tỉnh thức",
+        "nhận biết khi ăn",
+        "ăn chậm",
+        "tín hiệu đói"
+      ],
       "copy": {
-        "en": "**Practicing Mindful Eating**\n\nMindful eating helps manage weight by reconnecting you with natural hunger cues. Sit down for one meal without screens or distractions, chewing slowly and savoring each flavor. Notice textures, aromas, and the feeling of fullness. This awareness curbs overeating and improves digestion. Keep a short weekly note about what mindful meals taught you. Small, conscious habits build healthier relationships with food over time. Begin today by eating your next meal mindfully and observing how your body responds. Ready to enjoy food with awareness? Explore more beyond Free.\n\n*Word count: 143*",
-        "vi": "**Thực Hành Ăn Uống Tỉnh Táo**\n\nĂn uống tỉnh táo giúp quản lý cân nặng bằng cách kết nối lại bạn với tín hiệu đói tự nhiên. Ngồi xuống cho một bữa ăn không có màn hình hoặc phân tâm, nhai chậm và thưởng thức từng hương vị. Chú ý kết cấu, mùi thơm và cảm giác no. Nhận thức này kiềm chế ăn quá nhiều và cải thiện tiêu hóa. Giữ ghi chú ngắn hàng tuần về những gì bữa ăn tỉnh táo dạy bạn. Thói quen nhỏ, có ý thức xây dựng mối quan hệ lành mạnh hơn với thực phẩm theo thời gian. Bắt đầu hôm nay bằng cách ăn bữa ăn tiếp theo một cách tỉnh táo và quan sát cơ thể phản ứng như thế nào. Sẵn sàng tận hưởng thức ăn với nhận thức? Khám phá thêm ngoài Miễn phí.\n\n*Số từ: 151*"
+        "en": "Mindful eating helps you reconnect with your body’s natural signals. Choose one meal today to eat without screens. Chew slowly, taste each bite, and notice when you feel satisfied. This gentle practice reduces overeating and brings peace around food. No rules — just awareness. Start with a single mindful meal and listen to what your body is quietly telling you.",
+        "vi": "Ăn uống tỉnh thức giúp bạn kết nối lại với những tín hiệu tự nhiên của cơ thể. Hãy chọn một bữa ăn hôm nay để thưởng thức mà không có màn hình. Nhai chậm, cảm nhận từng miếng và chú ý khoảnh khắc bạn thấy đủ. Thực hành nhẹ nhàng này giúp giảm ăn quá mức và mang đến sự bình yên với thức ăn. Không có quy tắc — chỉ có sự chú tâm. Hãy bắt đầu với một bữa ăn tỉnh thức và lắng nghe điều cơ thể đang nhẹ nhàng gửi gắm."
       },
-      "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["obesity", "mindfulness"],
-      "urgency": "routine",
-      "severity_level": 1,
-      "systems": ["wellness"],
-      "metadata": { "topic": "obesity", "outcome": "mindfulness" },
-      "artifact_id": "a0d1e2f3-4b5c-6d6e-f7a8-b9c0d1e2f3a4",
-      "artifact_version_id": "a0d1e2f3-4b5c-6d6e-f7a8-b9c0d1e2f3a4-v001",
-      "created_at": "2025-10-25T12:22:00+09:00",
-      "updated_at": "2025-10-25T12:22:00+09:00",
-      "audio": "Practicing_Mindful_Eating_free.mp3"
+      "tags": [
+        "obesity",
+        "mindfulness"
+      ],
+      "audio": "practicing_mindful_eating_free.mp3"
     }
-  ],
-  "ui_triggers": {
-    "essay_offer": {
-      "enabled": true,
-      "criteria": {
-        "min_entries_total": 3,
-        "min_distinct_buckets": 2,
-        "max_prior_briefs_shown": 0,
-        "max_recency_minutes": 720
-      },
-      "behavior": {
-        "mode": "chip_suggest",
-        "snooze_minutes": 1440,
-        "pin_to_canvas": true
-      }
-    }
-  }
+  ]
 }
