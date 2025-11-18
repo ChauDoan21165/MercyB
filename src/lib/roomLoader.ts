@@ -55,25 +55,42 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
               }
 
               let audioPath = audioRaw;
+              let audioPlaylist: string[] = [];
+              
               if (audioPath) {
-                let p = String(audioPath);
-                // Remove leading slashes and public/ prefix
-                p = p.replace(/^\/+/, '').replace(/^public\//, '');
+                const rawString = String(audioPath);
+                // Check if audio field contains multiple space-separated files
+                const audioFiles = rawString.trim().split(/\s+/).filter(Boolean);
                 
-                // If path starts with rooms/, just use it directly under /audio/
-                if (p.startsWith('rooms/')) {
-                  audioPath = `/audio/${p}`;
+                if (audioFiles.length > 1) {
+                  // Multiple files - create playlist
+                  audioPlaylist = audioFiles.map(file => {
+                    let p = file.replace(/^\/+/, '').replace(/^public\//, '');
+                    if (p.startsWith('rooms/')) {
+                      return `/audio/${p}`;
+                    } else {
+                      p = p.replace(/^audio\/(en|vi)\//, 'audio/');
+                      p = p.replace(/^audio\//, '');
+                      return `/audio/${p}`;
+                    }
+                  });
+                  audioPath = audioPlaylist[0]; // First file is the main audio
+                  console.log('🎵 Audio playlist constructed:', audioPlaylist, 'from raw:', audioRaw);
                 } else {
-                  // Remove audio/(en|vi)/ prefix if present
-                  p = p.replace(/^audio\/(en|vi)\//, 'audio/');
-                  // Remove audio/ prefix if present
-                  p = p.replace(/^audio\//, '');
+                  // Single file
+                  let p = rawString;
+                  p = p.replace(/^\/+/, '').replace(/^public\//, '');
                   
-                  // Use the path as-is, just prepend /audio/
-                  audioPath = `/audio/${p}`;
+                  if (p.startsWith('rooms/')) {
+                    audioPath = `/audio/${p}`;
+                  } else {
+                    p = p.replace(/^audio\/(en|vi)\//, 'audio/');
+                    p = p.replace(/^audio\//, '');
+                    audioPath = `/audio/${p}`;
+                  }
+                  audioPlaylist = [audioPath];
+                  console.log('🎵 Audio path constructed:', audioPath, 'from raw:', audioRaw);
                 }
-                
-                console.log('🎵 Audio path constructed:', audioPath, 'from raw:', audioRaw);
               }
 
               const keywordEn = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0 
@@ -93,6 +110,7 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
               return {
                 ...entry,
                 audio: audioPath || undefined,
+                audioPlaylist: audioPlaylist.length > 0 ? audioPlaylist : undefined,
                 keywordEn,
                 keywordVi,
                 replyEn,
@@ -227,25 +245,42 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       if (!audioRaw) audioRaw = entry?.audio_en || entry?.audio_vi || entry?.audio_file || entry?.meta?.audio_file || entry?.audioFile || entry?.copy?.audio || entry?.content?.audio;
 
       let audioPath = audioRaw;
+      let audioPlaylist: string[] = [];
+      
       if (audioPath) {
-        let p = String(audioPath);
-        // Remove leading slashes and public/ prefix
-        p = p.replace(/^\/+/, '').replace(/^public\//, '');
+        const rawString = String(audioPath);
+        // Check if audio field contains multiple space-separated files
+        const audioFiles = rawString.trim().split(/\s+/).filter(Boolean);
         
-        // If path starts with rooms/, just use it directly under /audio/
-        if (p.startsWith('rooms/')) {
-          audioPath = `/audio/${p}`;
+        if (audioFiles.length > 1) {
+          // Multiple files - create playlist
+          audioPlaylist = audioFiles.map(file => {
+            let p = file.replace(/^\/+/, '').replace(/^public\//, '');
+            if (p.startsWith('rooms/')) {
+              return `/audio/${p}`;
+            } else {
+              p = p.replace(/^audio\/(en|vi)\//, 'audio/');
+              p = p.replace(/^audio\//, '');
+              return `/audio/${p}`;
+            }
+          });
+          audioPath = audioPlaylist[0]; // First file is the main audio
+          console.log('🎵 Audio playlist constructed:', audioPlaylist, 'from raw:', audioRaw);
         } else {
-          // Remove audio/(en|vi)/ prefix if present
-          p = p.replace(/^audio\/(en|vi)\//, 'audio/');
-          // Remove audio/ prefix if present
-          p = p.replace(/^audio\//, '');
+          // Single file
+          let p = rawString;
+          p = p.replace(/^\/+/, '').replace(/^public\//, '');
           
-          // Use the path as-is, just prepend /audio/
-          audioPath = `/audio/${p}`;
+          if (p.startsWith('rooms/')) {
+            audioPath = `/audio/${p}`;
+          } else {
+            p = p.replace(/^audio\/(en|vi)\//, 'audio/');
+            p = p.replace(/^audio\//, '');
+            audioPath = `/audio/${p}`;
+          }
+          audioPlaylist = [audioPath];
+          console.log('🎵 Audio path constructed:', audioPath, 'from raw:', audioRaw);
         }
-        
-        console.log('🎵 Audio path constructed:', audioPath, 'from raw:', audioRaw);
       }
 
       const keywordEn = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0 
@@ -265,6 +300,7 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       return {
         ...entry,
         audio: audioPath || undefined,
+        audioPlaylist: audioPlaylist.length > 0 ? audioPlaylist : undefined,
         keywordEn,
         keywordVi,
         replyEn,

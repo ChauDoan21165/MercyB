@@ -362,12 +362,9 @@ const ChatHub = () => {
       const en = String(entry.essay_en || entry.replyEn || entry.copy?.en || '');
       const vi = String(entry.essay_vi || entry.replyVi || entry.copy?.vi || '');
       const text = vi ? `${en}\n\n---\n\n${vi}` : en;
-      // Automatically add /audio/ prefix if not already present
-      const audioFile = entry.audio 
-        ? (entry.audio.startsWith('/audio/') ? entry.audio : `/audio/${entry.audio.replace(/^\//, '')}`)
-        : undefined;
       
-      // Store playlist for "all" keyword
+      // Use audioFile and audioPlaylist from entry (already processed by roomLoader)
+      const audioFile = entry.audio;
       const audioPlaylist = entry.audioPlaylist || (audioFile ? [audioFile] : []);
       
       console.log('=== MESSAGE BUILD DEBUG ===');
