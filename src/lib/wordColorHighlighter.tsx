@@ -4,149 +4,40 @@ interface ColoredWord {
   word: string;
   color: string;
   category: string;
-  intensity?: 'light' | 'medium' | 'strong';
 }
 
-// Map of English to Vietnamese equivalent words (supports multi-word + variants)
-const enToViEquivalents: Record<string, string | string[]> = {
-  // Calm & Grounded
-  "calm": ["bình an", "bình yên"],
-  "peaceful": ["yên bình", "bình yên"],
-  "gentle": "nhẹ nhàng",
-  "grounded": ["vững chãi", "vững vàng"],
-  "steady": "vững vàng",
-  "patient": "kiên nhẫn",
-  "gently": "nhẹ nhàng",
-  "slowly": "từ từ",
-  "steadily": "đều đặn",
-  "breathe": "thở",
-  "relax": "thư giãn",
-  "rest": "nghỉ ngơi",
-  "pause": "tạm dừng",
-  "listen": "lắng nghe",
-  "notice": "chú ý",
-
-  // Warm Connection
-  "warm": "ấm áp",
-  "kind": "tử tế",
-  "caring": "quan tâm",
-  "loving": "yêu thương",
-  "compassionate": "trắc ẩn",
-  "supportive": "ủng hộ",
-  "hopeful": "hy vọng",
-  "warmly": "ấm áp",
-  "kindly": "tử tế",
-  "deeply": "sâu sắc",
-  "truly": "thật sự",
-  "care": "quan tâm",
-  "support": "hỗ trợ",
-  "encourage": "khuyến khích",
-  "connect": "kết nối",
-  "share": "chia sẻ",
-  "love": "yêu",
-
-  // Power & Motivation
-  "bold": "táo bạo",
-  "strong": "mạnh mẽ",
-  "confident": "tự tin",
-  "powerful": "quyền lực",
-  "energetic": "năng động",
-  "driven": "động lực",
-  "motivated": "có động lực",
-  "brave": "dũng cảm",
-  "courageous": "can đảm",
-  "firmly": "vững chắc",
-  "boldly": "táo bạo",
-  "bravely": "dũng cảm",
-  "decisively": "quyết đoán",
-  "strongly": "mạnh mẽ",
-  "move": "di chuyển",
-  "act": "hành động",
-  "stand": "đứng vững",
-  "build": "xây dựng",
-  "create": "sáng tạo",
-  "grow": "phát triển",
-  "choose": "chọn lựa",
-  "rise": "vươn lên",
-  "fight": "chiến đấu",
-
-  // Healing & Clarity
-  "bright": "sáng sủa",
-  "joyful": "vui vẻ",
-  "cheerful": "phấn khởi",
-  "curious": "tò mò",
-  "clear": "rõ ràng",
-  "focused": "tập trung",
-  "present": "hiện diện",
-  "aware": "nhận thức",
-  "mindful": "chánh niệm",
-  "honest": "chân thật",
-  "authentic": "xác thực",
-  "resilient": "kiên cường",
-  "clearly": "rõ ràng",
-  "brightly": "sáng sủa",
-  "mindfully": "chánh niệm",
-  "consciously": "có ý thức",
-  "carefully": "cẩn thận",
-  "honestly": "thành thật",
-  "heal": "chữa lành",
-  "reflect": "phản ánh",
-  "learn": "học hỏi",
-  "understand": "hiểu",
-  "release": "giải phóng",
-  "forgive": "tha thứ",
-
-  // VIP3 II specific terms
-  "mastery": "làm chủ",
-  "specialization": "chuyên ngành",
-  "highest": "cao nhất",
-  "tier": "cấp độ",
-  "advanced": "nâng cao",
-  "academic": "học thuật",
-  "thinking": "tư duy",
-  "professional": "chuyên nghiệp",
-  "excellence": "xuất sắc",
-  "precision": "chính xác",
-  "sophisticated": "tinh tế",
-  "nuanced": "tinh tế",
-  "comprehensive": "toàn diện",
-  "intensive": "chuyên sâu",
-  "rigorous": "nghiêm ngặt",
-};
-
-// Create reverse mapping (supports string or string[] variants)
+// Build English-to-Vietnamese mapping from the new color rules
+const enToViEquivalents: Record<string, string> = {};
 const viToEnEquivalents: Record<string, string> = {};
-for (const [en, vi] of Object.entries(enToViEquivalents)) {
-  if (Array.isArray(vi)) {
-    vi.forEach(v => { viToEnEquivalents[v.toLowerCase()] = en; });
-  } else {
-    viToEnEquivalents[vi.toLowerCase()] = en;
-  }
-}
+
+// Build mappings from the categories in the JSON
+Object.entries(wordColorRules.categories).forEach(([categoryKey, categoryData]: [string, any]) => {
+  const enWords = categoryData.words_en || [];
+  const viWords = categoryData.words_vi || [];
+  
+  // Map each English word to its Vietnamese equivalent at the same index
+  enWords.forEach((enWord: string, index: number) => {
+    if (viWords[index]) {
+      enToViEquivalents[enWord.toLowerCase()] = viWords[index].toLowerCase();
+      viToEnEquivalents[viWords[index].toLowerCase()] = enWord.toLowerCase();
+    }
+  });
+});
 
 function findWordInCategories(word: string): ColoredWord | null {
   const lowerWord = word.toLowerCase();
   
-  for (const category of wordColorRules.categories) {
-    // Check adjectives
-    if (category.adjectives.includes(lowerWord)) {
-      return { word, color: category.hex, category: category.id };
-    }
+  // Check all categories for this word
+  for (const [categoryKey, categoryData] of Object.entries(wordColorRules.categories) as [string, any][]) {
+    const enWords = (categoryData.words_en || []).map((w: string) => w.toLowerCase());
+    const viWords = (categoryData.words_vi || []).map((w: string) => w.toLowerCase());
     
-    // Check adverbs
-    if (category.adverbs.includes(lowerWord)) {
-      return { word, color: category.hex, category: category.id };
-    }
-    
-    // Check verbs with intensity levels
-    if (category.verbs_light.includes(lowerWord)) {
-      return { word, color: category.hex, category: category.id, intensity: 'light' };
-    }
-    if (category.verbs_medium.includes(lowerWord)) {
-      return { word, color: category.hex, category: category.id, intensity: 'medium' };
-    }
-    if (category.verbs_strong.includes(lowerWord)) {
-      return { word, color: category.hex, category: category.id, intensity: 'strong' };
+    if (enWords.includes(lowerWord) || viWords.includes(lowerWord)) {
+      return { 
+        word, 
+        color: categoryData.color, 
+        category: categoryKey 
+      };
     }
   }
   
@@ -187,30 +78,14 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
           if (enEqPhrase) {
             const cat = findWordInCategories(enEqPhrase);
             if (cat) {
-              // Calculate opacity for phrases (use same intensity logic)
-              let opacity = 1;
-              if (cat.intensity) {
-                switch (cat.intensity) {
-                  case 'light':
-                    opacity = 0.5;
-                    break;
-                  case 'medium':
-                    opacity = 0.75;
-                    break;
-                  case 'strong':
-                    opacity = 1;
-                    break;
-                }
-              }
-              
               result.push(
-                <span key={i} style={{ backgroundColor: cat.color, opacity: opacity, padding: '2px 4px', borderRadius: '3px', fontWeight: cat.intensity === 'strong' ? 600 : 500 }}>
+                <span key={i} style={{ backgroundColor: cat.color, padding: '2px 4px', borderRadius: '3px', fontWeight: 500 }}>
                   {segment}
                 </span>
               );
               result.push(<span key={i + 1}>{maybeSpace}</span>);
               result.push(
-                <span key={i + 2} style={{ backgroundColor: cat.color, opacity: opacity, padding: '2px 4px', borderRadius: '3px', fontWeight: cat.intensity === 'strong' ? 600 : 500 }}>
+                <span key={i + 2} style={{ backgroundColor: cat.color, padding: '2px 4px', borderRadius: '3px', fontWeight: 500 }}>
                   {nextSeg}
                 </span>
               );
@@ -231,31 +106,14 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
     }
     
     if (coloredWord) {
-      // Calculate opacity based on intensity for verbs
-      let opacity = 1;
-      if (coloredWord.intensity) {
-        switch (coloredWord.intensity) {
-          case 'light':
-            opacity = 0.5;
-            break;
-          case 'medium':
-            opacity = 0.75;
-            break;
-          case 'strong':
-            opacity = 1;
-            break;
-        }
-      }
-      
       result.push(
         <span 
           key={i}
           style={{ 
             backgroundColor: coloredWord.color,
-            opacity: opacity,
             padding: '2px 4px',
             borderRadius: '3px',
-            fontWeight: coloredWord.intensity === 'strong' ? 600 : 500
+            fontWeight: 500
           }}
         >
           {segment}
