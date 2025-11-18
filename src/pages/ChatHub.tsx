@@ -256,12 +256,12 @@ const ChatHub = () => {
       const allEnglish = mergedEntries
         .map(e => String(e.essay_en || e.replyEn || e.copy?.en || '').trim())
         .filter(Boolean)
-        .join('\n\n---\n\n');
+        .join('\n\n');
       
       const allVietnamese = mergedEntries
         .map(e => String(e.essay_vi || e.replyVi || e.copy?.vi || '').trim())
         .filter(Boolean)
-        .join('\n\n---\n\n');
+        .join('\n\n');
       
       const allAudioFiles = mergedEntries
         .map(e => e.audio)
