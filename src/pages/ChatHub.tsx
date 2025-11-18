@@ -35,7 +35,6 @@ import { getParentRoute } from "@/lib/routeHelper";
 import { CareerProgressTracker } from "@/components/CareerProgressTracker";
 import { AnimatedTierBadge } from "@/components/AnimatedTierBadge";
 import { setCustomKeywordMappings, clearCustomKeywordMappings, loadRoomKeywords } from "@/lib/customKeywordLoader";
-import { UnauthenticatedBanner } from "@/components/UnauthenticatedBanner";
 
 interface Message {
   id: string;
@@ -70,6 +69,7 @@ const ChatHub = () => {
   const { creditInfo, hasCreditsRemaining, incrementUsage, refreshCredits } = useCredits();
   const [showAccessDenied, setShowAccessDenied] = useState(false);
   const [showCreditLimit, setShowCreditLimit] = useState(false);
+  const [showSignupPrompt, setShowSignupPrompt] = useState(false);
   const contentMode = "keyword"; // Always use keyword mode
   const [currentAudio, setCurrentAudio] = useState<string | null>(null);
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
@@ -204,11 +204,7 @@ const ChatHub = () => {
 
   const handleKeywordClick = async (keyword: string) => {
     if (!isAuthenticated) {
-      toast({
-        title: "Sign Up Required / Yêu Cầu Đăng Ký",
-        description: "Please create a free account to interact with this room / Vui lòng tạo tài khoản miễn phí để tương tác với phòng này",
-        variant: "destructive"
-      });
+      setShowSignupPrompt(true);
       return;
     }
     if (isLoading) return;
@@ -388,11 +384,7 @@ const ChatHub = () => {
     
     // Check authentication first
     if (!isAuthenticated) {
-      toast({
-        title: "Sign Up Required / Yêu Cầu Đăng Ký",
-        description: "Please create a free account to send messages / Vui lòng tạo tài khoản miễn phí để gửi tin nhắn",
-        variant: "destructive"
-      });
+      setShowSignupPrompt(true);
       return;
     }
     
@@ -798,13 +790,6 @@ const ChatHub = () => {
           </div>
         </div>
         
-        {/* Unauthenticated User Banner */}
-        {!isAuthenticated && (
-          <div className="animate-fade-in">
-            <UnauthenticatedBanner />
-          </div>
-        )}
-        
         {/* Welcome Message and Keywords Combined */}
         <Card className="p-4 shadow-soft bg-card border border-border">
           <div className="text-center space-y-0 mb-4">
@@ -957,6 +942,40 @@ const ChatHub = () => {
       questionsUsed={creditInfo.questionsUsed}
       questionsLimit={creditInfo.questionsLimit}
     />
+    
+    {/* Signup Prompt Modal - Only shown when unauthenticated users try to interact */}
+    <AlertDialog open={showSignupPrompt} onOpenChange={setShowSignupPrompt}>
+      <AlertDialogContent className="max-w-2xl">
+        <AlertDialogHeader>
+          <AlertDialogTitle className="text-xl">Sign Up to Start Your Journey</AlertDialogTitle>
+          <AlertDialogDescription asChild>
+            <div className="space-y-3 pt-2">
+              <p className="text-base">
+                You're viewing this room as a guest. Create a free account to interact with the content, track your progress, and unlock personalized features.
+              </p>
+              <p className="text-sm text-muted-foreground italic">
+                Bạn đang xem phòng này với tư cách khách. Tạo tài khoản miễn phí để tương tác với nội dung, theo dõi tiến trình và mở khóa các tính năng cá nhân hóa.
+              </p>
+            </div>
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter className="flex-col sm:flex-row gap-2">
+          <Button
+            variant="outline"
+            onClick={() => setShowSignupPrompt(false)}
+            className="w-full sm:w-auto"
+          >
+            Continue Browsing / Tiếp tục duyệt
+          </Button>
+          <Button
+            onClick={() => navigate('/auth')}
+            className="w-full sm:w-auto bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600"
+          >
+            Sign Up Free / Đăng ký miễn phí
+          </Button>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
     </>
   );
 };
