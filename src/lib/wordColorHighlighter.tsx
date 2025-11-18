@@ -52,13 +52,6 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
   // Split by common punctuation while preserving the punctuation
   const segments = text.split(/(\s+|[.,;:!?()""—–-])/);
   const result: JSX.Element[] = [];
-
-  // Limit how many words are colored based on config (7–11 per 150 words)
-  const wordsOnly = segments.filter((seg) => seg && seg.trim() !== "" && !/(\s+|[.,;:!?()""—–-])/.test(seg));
-  const totalWords = wordsOnly.length || 1;
-  const maxPer150 = (wordColorRules as any).rules?.max_colored_per_150_words ?? 11;
-  const maxColored = Math.ceil((totalWords / 150) * maxPer150);
-  let coloredCount = 0;
   for (let i = 0; i < segments.length; i++) {
     const segment = segments[i];
 
@@ -72,8 +65,7 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
     // Check the word with language context
     const coloredWord = findWordInCategories(cleanWord, isVietnamese);
     
-    if (coloredWord && coloredCount < maxColored) {
-      coloredCount++;
+    if (coloredWord) {
       result.push(
         <span 
           key={i}
