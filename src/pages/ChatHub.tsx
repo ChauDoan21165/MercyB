@@ -590,9 +590,6 @@ const ChatHub = () => {
                   <div className="text-sm leading-relaxed">
                     <HighlightedContent content={vietnameseContent} />
                   </div>
-                </div>
-                
-                {!message.audioFile && !audioUrl && (
                   <div className="mt-3">
                     <MessageActions 
                       text={englishContent} 
@@ -600,7 +597,7 @@ const ChatHub = () => {
                       roomId={roomId || ""} 
                     />
                   </div>
-                )}
+                </div>
               </>
             ) : (
               <>
