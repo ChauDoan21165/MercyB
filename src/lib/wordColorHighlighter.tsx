@@ -4,6 +4,7 @@ interface ColoredWord {
   word: string;
   color: string;
   category: string;
+  intensity?: 'light' | 'medium' | 'strong';
 }
 
 // Map of English to Vietnamese equivalent words (supports multi-word + variants)
@@ -137,11 +138,15 @@ function findWordInCategories(word: string): ColoredWord | null {
       return { word, color: category.hex, category: category.id };
     }
     
-    // Check verbs (all intensity levels)
-    if (category.verbs_light.includes(lowerWord) ||
-        category.verbs_medium.includes(lowerWord) ||
-        category.verbs_strong.includes(lowerWord)) {
-      return { word, color: category.hex, category: category.id };
+    // Check verbs with intensity levels
+    if (category.verbs_light.includes(lowerWord)) {
+      return { word, color: category.hex, category: category.id, intensity: 'light' };
+    }
+    if (category.verbs_medium.includes(lowerWord)) {
+      return { word, color: category.hex, category: category.id, intensity: 'medium' };
+    }
+    if (category.verbs_strong.includes(lowerWord)) {
+      return { word, color: category.hex, category: category.id, intensity: 'strong' };
     }
   }
   
@@ -182,14 +187,30 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
           if (enEqPhrase) {
             const cat = findWordInCategories(enEqPhrase);
             if (cat) {
+              // Calculate opacity for phrases (use same intensity logic)
+              let opacity = 1;
+              if (cat.intensity) {
+                switch (cat.intensity) {
+                  case 'light':
+                    opacity = 0.5;
+                    break;
+                  case 'medium':
+                    opacity = 0.75;
+                    break;
+                  case 'strong':
+                    opacity = 1;
+                    break;
+                }
+              }
+              
               result.push(
-                <span key={i} style={{ backgroundColor: cat.color, padding: '2px 4px', borderRadius: '3px', fontWeight: 500 }}>
+                <span key={i} style={{ backgroundColor: cat.color, opacity: opacity, padding: '2px 4px', borderRadius: '3px', fontWeight: cat.intensity === 'strong' ? 600 : 500 }}>
                   {segment}
                 </span>
               );
               result.push(<span key={i + 1}>{maybeSpace}</span>);
               result.push(
-                <span key={i + 2} style={{ backgroundColor: cat.color, padding: '2px 4px', borderRadius: '3px', fontWeight: 500 }}>
+                <span key={i + 2} style={{ backgroundColor: cat.color, opacity: opacity, padding: '2px 4px', borderRadius: '3px', fontWeight: cat.intensity === 'strong' ? 600 : 500 }}>
                   {nextSeg}
                 </span>
               );
@@ -210,14 +231,31 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
     }
     
     if (coloredWord) {
+      // Calculate opacity based on intensity for verbs
+      let opacity = 1;
+      if (coloredWord.intensity) {
+        switch (coloredWord.intensity) {
+          case 'light':
+            opacity = 0.5;
+            break;
+          case 'medium':
+            opacity = 0.75;
+            break;
+          case 'strong':
+            opacity = 1;
+            break;
+        }
+      }
+      
       result.push(
         <span 
           key={i}
           style={{ 
             backgroundColor: coloredWord.color,
+            opacity: opacity,
             padding: '2px 4px',
             borderRadius: '3px',
-            fontWeight: 500
+            fontWeight: coloredWord.intensity === 'strong' ? 600 : 500
           }}
         >
           {segment}
