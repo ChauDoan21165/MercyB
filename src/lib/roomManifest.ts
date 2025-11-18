@@ -170,7 +170,8 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "schizophrenia-understanding-vip2": "data/schizophrenia-understanding-vip2.json",
   "schizophrenia-mastery-vip3": "data/schizophrenia-mastery-vip3.json",
   "writing-logic-vip3-ii": "data/writing-logic-vip3ii.json",
-  "writing-deepdive-part12-vip3-ii": "data/writing-deepdive-part12-vip3-ii.json"
+  "writing-deepdive-part12-vip3-ii": "data/writing-deepdive-part12-vip3-ii.json",
+  "writing-vip3ii-part14": "data/writing-vip3ii-part14.json"
 };
 
 /**

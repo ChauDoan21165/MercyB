@@ -1167,5 +1167,12 @@ export const roomDataMap: Record<string, RoomData> = {
       "nameVi": "Kiến Trúc Bằng Chứng Nâng Cao: Dữ Liệu, Ví Dụ & Lập Luận Trí Tuệ",
       "tier": "vip3_ii",
       "hasData": true
+  },
+  "writing-vip3ii-part14": {
+      "id": "writing-vip3ii-part14",
+      "nameEn": "Meta-Cognition for Writers: Thinking About How You Think",
+      "nameVi": "Siêu Nhận Thức Cho Người Viết: Nghĩ Về Cách Bạn Nghĩ",
+      "tier": "vip3_ii",
+      "hasData": true
   }
 };
