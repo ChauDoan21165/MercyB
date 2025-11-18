@@ -33,12 +33,6 @@ export const PairedHighlightedContent = ({
         </div>
       </div>
       
-      {showShadowingReminder && (
-        <p className="text-xs text-muted-foreground italic mt-2 mb-3">
-          💡 Try shadowing: Listen and repeat along with the audio to improve your pronunciation and fluency.
-        </p>
-      )}
-      
       {showVietnamese && (
         <>
           <hr className="border-border my-3" />
