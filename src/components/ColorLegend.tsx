@@ -66,27 +66,70 @@ export const ColorLegend = ({ showVietnamese = true, compact = false }: ColorLeg
           </button>
         </PopoverTrigger>
         <PopoverContent className="w-80" align="start">
-          <div className="space-y-3">
-            <h4 className="font-medium text-sm mb-2">Word Color Categories</h4>
-            {categories.map((category) => (
-              <div key={category.id} className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <div 
-                    className="w-4 h-4 rounded flex-shrink-0" 
-                    style={{ backgroundColor: category.hex }}
-                  />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium">{category.label_en}</p>
-                    {showVietnamese && (
-                      <p className="text-xs text-muted-foreground">{category.label_vi}</p>
-                    )}
+          <div className="space-y-4">
+            <div className="space-y-3">
+              <h4 className="font-medium text-sm mb-2">Word Color Categories</h4>
+              {categories.map((category) => (
+                <div key={category.id} className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <div 
+                      className="w-4 h-4 rounded flex-shrink-0" 
+                      style={{ backgroundColor: category.hex }}
+                    />
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium">{category.label_en}</p>
+                      {showVietnamese && (
+                        <p className="text-xs text-muted-foreground">{category.label_vi}</p>
+                      )}
+                    </div>
                   </div>
+                  <p className="text-xs text-muted-foreground pl-6">
+                    {showVietnamese ? category.description_vi : category.description_en}
+                  </p>
                 </div>
-                <p className="text-xs text-muted-foreground pl-6">
-                  {showVietnamese ? category.description_vi : category.description_en}
-                </p>
+              ))}
+            </div>
+            
+            <div className="pt-3 border-t border-border/50 space-y-2">
+              <h4 className="font-medium text-sm">
+                {showVietnamese ? "Cường Độ Động Từ" : "Verb Intensity"}
+              </h4>
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-2">
+                  <span 
+                    className="px-2 py-0.5 rounded text-xs"
+                    style={{ backgroundColor: '#E9893A', opacity: 0.5 }}
+                  >
+                    light
+                  </span>
+                  <span className="text-xs text-muted-foreground">
+                    {showVietnamese ? "Nhẹ nhàng" : "Gentle action"}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span 
+                    className="px-2 py-0.5 rounded text-xs"
+                    style={{ backgroundColor: '#E9893A', opacity: 0.75 }}
+                  >
+                    medium
+                  </span>
+                  <span className="text-xs text-muted-foreground">
+                    {showVietnamese ? "Vừa phải" : "Moderate action"}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span 
+                    className="px-2 py-0.5 rounded text-xs font-semibold"
+                    style={{ backgroundColor: '#E9893A', opacity: 1 }}
+                  >
+                    strong
+                  </span>
+                  <span className="text-xs text-muted-foreground">
+                    {showVietnamese ? "Mạnh mẽ" : "Powerful action"}
+                  </span>
+                </div>
               </div>
-            ))}
+            </div>
           </div>
         </PopoverContent>
       </Popover>
@@ -119,6 +162,48 @@ export const ColorLegend = ({ showVietnamese = true, compact = false }: ColorLeg
             </div>
           </div>
         ))}
+      </div>
+      
+      <div className="mt-4 pt-4 border-t border-border/50 space-y-2">
+        <h4 className="text-sm font-semibold flex items-center gap-2">
+          <Info className="h-3.5 w-3.5 text-muted-foreground" />
+          {showVietnamese ? "Cường Độ Động Từ" : "Verb Intensity"}
+        </h4>
+        <div className="space-y-2">
+          <div className="flex items-center gap-3">
+            <span 
+              className="px-3 py-1 rounded text-xs"
+              style={{ backgroundColor: '#E9893A', opacity: 0.5 }}
+            >
+              light
+            </span>
+            <span className="text-xs text-muted-foreground">
+              {showVietnamese ? "Nhẹ nhàng - hành động dịu dàng" : "Gentle action"}
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            <span 
+              className="px-3 py-1 rounded text-xs"
+              style={{ backgroundColor: '#E9893A', opacity: 0.75 }}
+            >
+              medium
+            </span>
+            <span className="text-xs text-muted-foreground">
+              {showVietnamese ? "Vừa phải - hành động trung bình" : "Moderate action"}
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            <span 
+              className="px-3 py-1 rounded text-xs font-semibold"
+              style={{ backgroundColor: '#E9893A', opacity: 1 }}
+            >
+              strong
+            </span>
+            <span className="text-xs text-muted-foreground">
+              {showVietnamese ? "Mạnh mẽ - hành động quyết liệt" : "Powerful action"}
+            </span>
+          </div>
+        </div>
       </div>
     </Card>
   );
