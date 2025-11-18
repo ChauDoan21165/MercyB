@@ -1,7 +1,11 @@
 {
+  "id": "loneliness-comfort-free",
   "name": "Loneliness Comfort",
   "name_vi": "An Ủi Nỗi Cô Đơn",
-  "description": "Practical guidance for finding comfort in loneliness through connection and compassion",
+  "description": {
+    "en": "Practical guidance for finding comfort in loneliness through connection and compassion.",
+    "vi": "Hướng dẫn thực tế giúp bạn tìm sự an ủi trong nỗi cô đơn thông qua kết nối và lòng trắc ẩn."
+  },
   "keywords_en": [
     "loneliness",
     "connection",
@@ -29,16 +33,10 @@
       ],
       "copy": {
         "en": "Finding comfort in loneliness starts with building connection. Reach out to a friend or join a group activity to foster empathy. Share your feelings openly to build trust. Small interactions can ease isolation, helping you feel supported and valued.",
-        "vi": "Tìm sự an ủi trong cô đơn bắt đầu bằng việc xây dựng kết nối. Hãy liên lạc với bạn bè hoặc tham gia các hoạt động nhóm để nuôi dưỡng sự đồng cảm. Chia sẻ cảm xúc một cách cởi mở để xây dựng niềm tin. Những tương tác nhỏ có thể làm dịu cảm giác cô lập, giúp bạn cảm thấy được hỗ trợ và trân trọng."
+        "vi": "Tìm sự an ủi trong cô đơn bắt đầu từ việc xây dựng kết nối. Hãy liên hệ với bạn bè hoặc tham gia các hoạt động nhóm để nuôi dưỡng sự đồng cảm. Chia sẻ cảm xúc một cách cởi mở để tạo dựng niềm tin. Những tương tác nhỏ có thể làm dịu cảm giác cô lập, giúp bạn cảm thấy được lắng nghe và trân trọng."
       },
-      "tags": [
-        "connection",
-        "loneliness"
-      ],
-      "audio": {
-        "en": "loneliness_comfort_free_connection_en.mp3",
-        "vi": "loneliness_comfort_free_connection_vi.mp3"
-      }
+      "tags": ["connection", "loneliness"],
+      "audio": "loneliness_comfort_free_connection_en.mp3"
     },
     {
       "slug": "self-compassion",
@@ -54,16 +52,10 @@
       ],
       "copy": {
         "en": "Self-compassion eases loneliness. Be kind to yourself, accepting your feelings without judgment. Practice affirmations like “I am enough” to build self-worth. Journal to process emotions. These steps foster resilience, helping you find comfort within yourself.",
-        "vi": "Tự trắc ẩn giúp xoa dịu nỗi cô đơn. Hãy đối xử tử tế với chính mình, chấp nhận cảm xúc mà không phán xét. Thực hành những lời khẳng định như “Tôi đủ tốt” để củng cố giá trị bản thân. Viết nhật ký để xử lý cảm xúc. Những bước này nuôi dưỡng nghị lực, giúp bạn tìm thấy sự an ủi từ bên trong."
+        "vi": "Lòng tự trắc ẩn giúp xoa dịu nỗi cô đơn. Hãy đối xử dịu dàng với chính mình, chấp nhận cảm xúc mà không tự phán xét. Thực hành các câu khẳng định như “Tôi đủ tốt” để nuôi dưỡng giá trị bản thân. Viết nhật ký để xử lý cảm xúc. Những bước này giúp tăng sức bền tinh thần và mang lại sự an ủi từ bên trong."
       },
-      "tags": [
-        "self-compassion",
-        "loneliness"
-      ],
-      "audio": {
-        "en": "loneliness_comfort_free_self_compassion_en.mp3",
-        "vi": "loneliness_comfort_free_self_compassion_vi.mp3"
-      }
+      "tags": ["self-compassion", "loneliness"],
+      "audio": "loneliness_comfort_free_self_compassion_en.mp3"
     },
     {
       "slug": "community-engagement",
@@ -79,16 +71,10 @@
       ],
       "copy": {
         "en": "Community engagement reduces loneliness. Join a local group or online forum to connect with others. Share your experiences to build empathy. Regular participation fosters a sense of belonging, helping you feel supported and less isolated daily.",
-        "vi": "Tham gia cộng đồng giúp giảm bớt cảm giác cô đơn. Hãy tham gia một nhóm địa phương hoặc diễn đàn trực tuyến để kết nối với người khác. Chia sẻ trải nghiệm của bạn để xây dựng sự đồng cảm. Việc tham gia thường xuyên nuôi dưỡng cảm giác thuộc về, giúp bạn cảm thấy được hỗ trợ và bớt cô lập hơn mỗi ngày."
+        "vi": "Tham gia cộng đồng giúp giảm bớt nỗi cô đơn. Hãy tham gia một nhóm địa phương hoặc một diễn đàn trực tuyến để kết nối với người khác. Chia sẻ trải nghiệm của bạn để xây dựng sự đồng cảm. Việc tham gia thường xuyên tạo cảm giác thuộc về, giúp bạn cảm thấy được hỗ trợ và bớt cô lập hơn mỗi ngày."
       },
-      "tags": [
-        "community",
-        "loneliness"
-      ],
-      "audio": {
-        "en": "loneliness_comfort_free_community_engagement_en.mp3",
-        "vi": "loneliness_comfort_free_community_engagement_vi.mp3"
-      }
+      "tags": ["community", "loneliness"],
+      "audio": "loneliness_comfort_free_community_engagement_en.mp3"
     }
   ],
   "meta": {
