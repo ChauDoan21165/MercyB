@@ -18,17 +18,9 @@ function findWordInCategories(word: string, isVietnamese: boolean = false): Colo
       ...(categoryData.verbs_light || []),
       ...(categoryData.verbs_medium || []),
       ...(categoryData.verbs_strong || [])
-    ];
-    
-    // Expand multi-word phrases into individual words
-    const expandedWords = allWords.flatMap(w => {
-      const parts = w.split(/\s+/);
-      return parts.length > 1 ? [w, ...parts] : [w];
-    });
-    
-    const lowerWords = expandedWords.map((w: string) => w.toLowerCase());
-    
-    if (lowerWords.includes(lowerWord)) {
+    ].map((w: string) => w.toLowerCase());
+
+    if (allWords.includes(lowerWord)) {
       return { 
         word, 
         color: categoryData.hex, 
