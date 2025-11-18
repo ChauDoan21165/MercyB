@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
+import { highlightTextByRules } from "@/lib/wordColorHighlighter";
 
 // Special VIP3 rooms with custom styling
 const VIP3_SPECIAL_ROOMS: Record<string, string> = {

@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Loader2, Heart, X, Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
+import { highlightTextByRules } from '@/lib/wordColorHighlighter';
 
 const MatchmakingHub = () => {
   const navigate = useNavigate();
@@ -74,14 +75,14 @@ const MatchmakingHub = () => {
               <div>
                 <h3 className="font-semibold text-lg mb-2">English</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Unlock elite learning with our VIP 3 Exclusive Matchmaking! This premium feature pairs you with learning partners perfectly suited to your interests—health, career, wellness, or personal growth. Find partners at your level, from novice to expert, based on your learning style (visual, hands-on, or goal-driven). Earn points by engaging in chats, sharing insights, and completing goals together, unlocking exclusive resources. For example, if you're passionate about fitness, connect with a buddy to swap workout plans. Our advanced algorithm matches you with eager learners for meaningful collaboration. Join now and elevate your learning journey!
+                  {highlightTextByRules("Unlock elite learning with our VIP 3 Exclusive Matchmaking! This premium feature pairs you with learning partners perfectly suited to your interests—health, career, wellness, or personal growth. Find partners at your level, from novice to expert, based on your learning style (visual, hands-on, or goal-driven). Earn points by engaging in chats, sharing insights, and completing goals together, unlocking exclusive resources. For example, if you're passionate about fitness, connect with a buddy to swap workout plans. Our advanced algorithm matches you with eager learners for meaningful collaboration. Join now and elevate your learning journey!", false)}
                 </p>
               </div>
               
               <div>
                 <h3 className="font-semibold text-lg mb-2">Vietnamese</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Mở khóa học tập đỉnh cao với Tính Năng Ghép Đôi Độc Quyền VIP 3! Tính năng cao cấp này kết nối bạn với các bạn học phù hợp hoàn hảo với sở thích—sức khỏe, sự nghiệp, phúc lợi, hoặc phát triển cá nhân. Tìm bạn học cùng trình độ, từ mới bắt đầu đến chuyên gia, dựa trên phong cách học (hình ảnh, thực hành, hoặc định hướng mục tiêu). Kiếm điểm qua trò chuyện, chia sẻ hiểu biết và hoàn thành mục tiêu cùng nhau, mở khóa tài nguyên độc quyền. Ví dụ, nếu bạn đam mê thể dục, kết nối với một người bạn để chia sẻ kế hoạch tập luyện. Thuật toán tiên tiến của chúng tôi ghép bạn với những người học nhiệt tình để hợp tác ý nghĩa. Tham gia ngay để nâng tầm hành trình học tập!
+                  {highlightTextByRules("Mở khóa học tập đỉnh cao với Tính Năng Ghép Đôi Độc Quyền VIP 3! Tính năng cao cấp này kết nối bạn với các bạn học phù hợp hoàn hảo với sở thích—sức khỏe, sự nghiệp, phúc lợi, hoặc phát triển cá nhân. Tìm bạn học cùng trình độ, từ mới bắt đầu đến chuyên gia, dựa trên phong cách học (hình ảnh, thực hành, hoặc định hướng mục tiêu). Kiếm điểm qua trò chuyện, chia sẻ hiểu biết và hoàn thành mục tiêu cùng nhau, mở khóa tài nguyên độc quyền. Ví dụ, nếu bạn đam mê thể dục, kết nối với một người bạn để chia sẻ kế hoạch tập luyện. Thuật toán tiên tiến của chúng tôi ghép bạn với những người học nhiệt tình để hợp tác ý nghĩa. Tham gia ngay để nâng tầm hành trình học tập!", true)}
                 </p>
               </div>
             </div>
