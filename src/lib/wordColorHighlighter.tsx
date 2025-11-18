@@ -6,13 +6,13 @@ interface ColoredWord {
   category: string;
 }
 
-// Map of English to Vietnamese equivalent words
-const enToViEquivalents: Record<string, string> = {
+// Map of English to Vietnamese equivalent words (supports multi-word + variants)
+const enToViEquivalents: Record<string, string | string[]> = {
   // Calm & Grounded
-  "calm": "bình an",
-  "peaceful": "yên bình",
+  "calm": ["bình an", "bình yên"],
+  "peaceful": ["yên bình", "bình yên"],
   "gentle": "nhẹ nhàng",
-  "grounded": "vững chãi",
+  "grounded": ["vững chãi", "vững vàng"],
   "steady": "vững vàng",
   "patient": "kiên nhẫn",
   "gently": "nhẹ nhàng",
@@ -24,7 +24,7 @@ const enToViEquivalents: Record<string, string> = {
   "pause": "tạm dừng",
   "listen": "lắng nghe",
   "notice": "chú ý",
-  
+
   // Warm Connection
   "warm": "ấm áp",
   "kind": "tử tế",
@@ -43,7 +43,7 @@ const enToViEquivalents: Record<string, string> = {
   "connect": "kết nối",
   "share": "chia sẻ",
   "love": "yêu",
-  
+
   // Power & Motivation
   "bold": "táo bạo",
   "strong": "mạnh mẽ",
@@ -68,7 +68,7 @@ const enToViEquivalents: Record<string, string> = {
   "choose": "chọn lựa",
   "rise": "vươn lên",
   "fight": "chiến đấu",
-  
+
   // Healing & Clarity
   "bright": "sáng sủa",
   "joyful": "vui vẻ",
@@ -76,7 +76,7 @@ const enToViEquivalents: Record<string, string> = {
   "curious": "tò mò",
   "clear": "rõ ràng",
   "focused": "tập trung",
-  "present": "hiện tại",
+  "present": "hiện diện",
   "aware": "nhận thức",
   "mindful": "chánh niệm",
   "honest": "chân thật",
@@ -94,7 +94,7 @@ const enToViEquivalents: Record<string, string> = {
   "understand": "hiểu",
   "release": "giải phóng",
   "forgive": "tha thứ",
-  
+
   // VIP3 II specific terms
   "mastery": "làm chủ",
   "specialization": "chuyên ngành",
@@ -113,10 +113,15 @@ const enToViEquivalents: Record<string, string> = {
   "rigorous": "nghiêm ngặt",
 };
 
-// Create reverse mapping
-const viToEnEquivalents: Record<string, string> = Object.fromEntries(
-  Object.entries(enToViEquivalents).map(([en, vi]) => [vi, en])
-);
+// Create reverse mapping (supports string or string[] variants)
+const viToEnEquivalents: Record<string, string> = {};
+for (const [en, vi] of Object.entries(enToViEquivalents)) {
+  if (Array.isArray(vi)) {
+    vi.forEach(v => { viToEnEquivalents[v.toLowerCase()] = en; });
+  } else {
+    viToEnEquivalents[vi.toLowerCase()] = en;
+  }
+}
 
 function findWordInCategories(word: string): ColoredWord | null {
   const lowerWord = word.toLowerCase();
@@ -145,25 +150,57 @@ function findWordInCategories(word: string): ColoredWord | null {
 
 export function highlightTextByRules(text: string, isVietnamese: boolean = false): JSX.Element[] {
   // Split by common punctuation while preserving the punctuation
+  // Split by common punctuation while preserving the punctuation
   const segments = text.split(/(\s+|[.,;:!?()""—–-])/);
   const result: JSX.Element[] = [];
   
-  segments.forEach((segment, index) => {
+  for (let i = 0; i < segments.length; i++) {
+    const segment = segments[i];
+
     if (!segment || segment.trim() === '') {
-      result.push(<span key={index}>{segment}</span>);
-      return;
+      result.push(<span key={i}>{segment}</span>);
+      continue;
     }
     
     const cleanWord = segment.trim().toLowerCase();
     let coloredWord: ColoredWord | null = null;
     
     if (isVietnamese) {
-      // Check if this Vietnamese word has an English equivalent
+      // Try single word equivalence first
       const enEquivalent = viToEnEquivalents[cleanWord];
       if (enEquivalent) {
         coloredWord = findWordInCategories(enEquivalent);
       }
-      // Also check if the Vietnamese word itself is in the categories
+      
+      // Try phrase equivalence: current + space + next word (e.g., "bình yên")
+      if (!coloredWord && i + 2 < segments.length) {
+        const maybeSpace = segments[i + 1];
+        const nextSeg = segments[i + 2];
+        if (/^\s+$/.test(maybeSpace || '') && nextSeg && nextSeg.trim() !== '') {
+          const phrase = `${cleanWord} ${nextSeg.trim().toLowerCase()}`;
+          const enEqPhrase = viToEnEquivalents[phrase];
+          if (enEqPhrase) {
+            const cat = findWordInCategories(enEqPhrase);
+            if (cat) {
+              result.push(
+                <span key={i} style={{ backgroundColor: cat.color, padding: '2px 4px', borderRadius: '3px', fontWeight: 500 }}>
+                  {segment}
+                </span>
+              );
+              result.push(<span key={i + 1}>{maybeSpace}</span>);
+              result.push(
+                <span key={i + 2} style={{ backgroundColor: cat.color, padding: '2px 4px', borderRadius: '3px', fontWeight: 500 }}>
+                  {nextSeg}
+                </span>
+              );
+              i += 2;
+              continue;
+            }
+          }
+        }
+      }
+      
+      // Also check if the Vietnamese word itself matches a category directly
       if (!coloredWord) {
         coloredWord = findWordInCategories(cleanWord);
       }
@@ -175,21 +212,21 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
     if (coloredWord) {
       result.push(
         <span 
-          key={index}
+          key={i}
           style={{ 
             backgroundColor: coloredWord.color,
             padding: '2px 4px',
             borderRadius: '3px',
-            fontWeight: '500'
+            fontWeight: 500
           }}
         >
           {segment}
         </span>
       );
     } else {
-      result.push(<span key={index}>{segment}</span>);
+      result.push(<span key={i}>{segment}</span>);
     }
-  });
+  }
   
   return result;
 }
