@@ -19,50 +19,50 @@
 "hex": "#9CC7E8",
 "label_en": "Calm & Grounded",
 "label_vi": "Bình An & Vững Chãi",
-"adjectives": [
-"calm",
-"peaceful",
-"gentle",
-"soft",
-"quiet",
-"still",
-"relaxed",
-"soothing",
-"balanced",
-"grounded",
-"steady",
-"patient",
-"stable",
-"safe"
-],
-"adverbs": [
-"gently",
-"softly",
-"quietly",
-"slowly",
-"calmly",
-"smoothly",
-"gradually",
-"evenly",
-"steadily",
-"patiently"
-],
-"verbs_light": [
-"breathe",
-"inhale",
-"exhale",
-"rest",
-"relax",
-"soften",
-"settle",
-"pause",
-"listen"
-],
-"verbs_medium": [
-"ground",
-"notice",
-"observe"
-],
+  "adjectives": [
+    "calm", "bình tĩnh", "điềm tĩnh",
+    "peaceful", "yên bình", "thanh bình",
+    "gentle", "nhẹ nhàng", "dịu dàng",
+    "soft", "mềm mại",
+    "quiet", "yên lặng", "tĩnh lặng",
+    "still", "bất động",
+    "relaxed", "thư giãn", "thoải mái",
+    "soothing", "dịu dàng", "êm dịu",
+    "balanced", "cân bằng",
+    "grounded", "vững chãi", "ổn định",
+    "steady", "vững vàng", "bền vững",
+    "patient", "kiên nhẫn",
+    "stable", "ổn định",
+    "safe", "an toàn"
+  ],
+  "adverbs": [
+    "gently", "nhẹ nhàng",
+    "softly", "mềm mại",
+    "quietly", "lặng lẽ", "thầm lặng",
+    "slowly", "chậm rãi", "từ từ",
+    "calmly", "bình tĩnh",
+    "smoothly", "trôi chảy", "mượt mà",
+    "gradually", "dần dần", "từ từ",
+    "evenly", "đều đặn",
+    "steadily", "đều đặn", "vững chắc",
+    "patiently", "kiên nhẫn"
+  ],
+  "verbs_light": [
+    "breathe", "thở", "hít thở",
+    "inhale", "hít vào",
+    "exhale", "thở ra",
+    "rest", "nghỉ ngơi",
+    "relax", "thư giãn",
+    "soften", "làm mềm",
+    "settle", "lắng xuống",
+    "pause", "tạm dừng",
+    "listen", "lắng nghe"
+  ],
+  "verbs_medium": [
+    "ground", "nền tảng",
+    "notice", "nhận ra", "chú ý",
+    "observe", "quan sát"
+  ],
 "verbs_strong": []
 },
 {
@@ -70,161 +70,161 @@
 "hex": "#F4C4A6",
 "label_en": "Warmth & Connection",
 "label_vi": "Ấm Áp & Kết Nối",
-"adjectives": [
-"warm",
-"kind",
-"caring",
-"loving",
-"compassionate",
-"tender",
-"friendly",
-"supportive",
-"hopeful",
-"welcoming",
-"openhearted"
-],
-"adverbs": [
-"warmly",
-"kindly",
-"tenderly",
-"lovingly",
-"genuinely",
-"openly",
-"closely",
-"deeply",
-"truly",
-"fully"
-],
-"verbs_light": [
-"smile",
-"hug"
-],
-"verbs_medium": [
-"open",
-"care",
-"support",
-"encourage",
-"comfort",
-"welcome",
-"connect",
-"share",
-"embrace"
-],
-"verbs_strong": [
-"love",
-"protect"
-]
+  "adjectives": [
+    "warm", "ấm áp",
+    "kind", "tử tế", "tốt bụng",
+    "caring", "quan tâm", "chăm sóc",
+    "loving", "yêu thương",
+    "compassionate", "từ bi", "thương cảm",
+    "tender", "dịu dàng", "mềm mỏng",
+    "friendly", "thân thiện",
+    "supportive", "hỗ trợ", "ủng hộ",
+    "hopeful", "hy vọng",
+    "welcoming", "chào đón", "niềm nở",
+    "openhearted", "rộng lượng", "chân thành"
+  ],
+  "adverbs": [
+    "warmly", "ấm áp",
+    "kindly", "tử tế", "tốt bụng",
+    "tenderly", "dịu dàng",
+    "lovingly", "yêu thương",
+    "genuinely", "chân thành",
+    "openly", "cởi mở",
+    "closely", "gần gũi", "thân thiết",
+    "deeply", "sâu sắc", "sâu xa",
+    "truly", "thật sự", "thực sự",
+    "fully", "hoàn toàn", "trọn vẹn"
+  ],
+  "verbs_light": [
+    "smile", "mỉm cười", "cười",
+    "hug", "ôm"
+  ],
+  "verbs_medium": [
+    "open", "mở",
+    "care", "quan tâm", "chăm sóc",
+    "support", "hỗ trợ", "ủng hộ",
+    "encourage", "khuyến khích", "động viên",
+    "comfort", "an ủi",
+    "welcome", "chào đón",
+    "connect", "kết nối",
+    "share", "chia sẻ",
+    "embrace", "ôm", "chấp nhận"
+  ],
+  "verbs_strong": [
+    "love", "yêu", "yêu thương",
+    "protect", "bảo vệ"
+  ]
 },
 {
 "id": "power_motivation",
 "hex": "#E9893A",
 "label_en": "Power & Motivation",
 "label_vi": "Sức Mạnh & Động Lực",
-"adjectives": [
-"bold",
-"strong",
-"confident",
-"powerful",
-"fierce",
-"intense",
-"energetic",
-"dynamic",
-"driven",
-"motivated",
-"brave",
-"courageous",
-"tenacious",
-"unstoppable"
-],
-"adverbs": [
-"strongly",
-"firmly",
-"boldly",
-"bravely",
-"decisively",
-"quickly",
-"swiftly",
-"powerfully",
-"passionately",
-"intensely"
-],
-"verbs_light": [],
-"verbs_medium": [
-"move",
-"act",
-"stand",
-"build",
-"create",
-"shape",
-"grow",
-"choose",
-"commit"
-],
-"verbs_strong": [
-"rise",
-"push",
-"pull",
-"run",
-"jump",
-"leap",
-"kick",
-"punch",
-"fight"
-]
+  "adjectives": [
+    "bold", "dũng cảm", "táo bạo",
+    "strong", "mạnh mẽ", "khỏe mạnh",
+    "confident", "tự tin",
+    "powerful", "quyền lực", "mạnh mẽ",
+    "fierce", "mãnh liệt", "dữ dội",
+    "intense", "mạnh mẽ", "sâu sắc",
+    "energetic", "năng động", "tràn đầy năng lượng",
+    "dynamic", "năng động", "linh hoạt",
+    "driven", "quyết tâm", "có động lực",
+    "motivated", "có động lực", "hăng hái",
+    "brave", "dũng cảm",
+    "courageous", "can đảm", "dũng cảm",
+    "tenacious", "kiên trì", "bền bỉ",
+    "unstoppable", "không thể ngăn cản", "không thể dừng"
+  ],
+  "adverbs": [
+    "strongly", "mạnh mẽ",
+    "firmly", "kiên quyết", "vững chắc",
+    "boldly", "táo bạo", "dũng cảm",
+    "bravely", "dũng cảm",
+    "decisively", "quyết đoán",
+    "quickly", "nhanh chóng",
+    "swiftly", "nhanh lẹ", "mau chóng",
+    "powerfully", "mạnh mẽ",
+    "passionately", "đam mê", "nhiệt tình",
+    "intensely", "mạnh mẽ", "dữ dội"
+  ],
+  "verbs_light": [],
+  "verbs_medium": [
+    "move", "di chuyển", "chuyển động",
+    "act", "hành động",
+    "stand", "đứng",
+    "build", "xây dựng",
+    "create", "tạo ra", "sáng tạo",
+    "shape", "định hình",
+    "grow", "phát triển", "lớn lên",
+    "choose", "chọn",
+    "commit", "cam kết"
+  ],
+  "verbs_strong": [
+    "rise", "vươn lên", "trỗi dậy",
+    "push", "đẩy",
+    "pull", "kéo",
+    "run", "chạy",
+    "jump", "nhảy",
+    "leap", "nhảy vọt",
+    "kick", "đá",
+    "punch", "đấm",
+    "fight", "chiến đấu", "đấu tranh"
+  ]
 },
 {
 "id": "healing_clarity",
 "hex": "#6CC7C0",
 "label_en": "Healing & Clarity",
 "label_vi": "Chữa Lành & Sáng Rõ",
-"adjectives": [
-"bright",
-"joyful",
-"playful",
-"cheerful",
-"curious",
-"clear",
-"focused",
-"sharp",
-"present",
-"aware",
-"mindful",
-"reflective",
-"honest",
-"authentic",
-"resilient",
-"insightful"
-],
-"adverbs": [
-"clearly",
-"brightly",
-"sharply",
-"mindfully",
-"consciously",
-"intentionally",
-"attentively",
-"carefully",
-"honestly",
-"open-heartedly"
-],
-"verbs_light": [
-"sense",
-"accept"
-],
-"verbs_medium": [
-"heal",
-"integrate",
-"reflect",
-"journal",
-"align",
-"clarify",
-"learn",
-"understand",
-"release",
-"forgive",
-"reframe",
-"regulate"
-],
+  "adjectives": [
+    "bright", "sáng", "rạng rỡ",
+    "joyful", "vui vẻ", "hạnh phúc",
+    "playful", "vui tươi", "tinh nghịch",
+    "cheerful", "vui vẻ", "phấn khởi",
+    "curious", "tò mò", "hiếu kỳ",
+    "clear", "rõ ràng", "sáng sủa",
+    "focused", "tập trung", "chú tâm",
+    "sharp", "sắc bén", "tinh tường",
+    "present", "hiện diện", "có mặt",
+    "aware", "nhận thức", "tỉnh giác",
+    "mindful", "chánh niệm", "tỉnh thức",
+    "reflective", "phản ánh", "suy ngẫm",
+    "honest", "trung thực", "chân thật",
+    "authentic", "chân thật", "xác thực",
+    "resilient", "kiên cường", "bền bỉ",
+    "insightful", "sáng suốt", "thấu đáo"
+  ],
+  "adverbs": [
+    "clearly", "rõ ràng", "sáng tỏ",
+    "brightly", "sáng sủa", "rạng rỡ",
+    "sharply", "sắc bén",
+    "mindfully", "chánh niệm", "tỉnh thức",
+    "consciously", "có ý thức", "cố ý",
+    "intentionally", "chủ ý", "cố ý",
+    "attentively", "chăm chú", "chú ý",
+    "carefully", "cẩn thận", "kỹ lưỡng",
+    "honestly", "trung thực", "thật thà",
+    "open-heartedly", "rộng lượng", "cởi mở"
+  ],
+  "verbs_light": [
+    "sense", "cảm nhận",
+    "accept", "chấp nhận", "tiếp nhận"
+  ],
+  "verbs_medium": [
+    "heal", "chữa lành", "hồi phục",
+    "integrate", "tích hợp", "hòa nhập",
+    "reflect", "phản ánh", "suy ngẫm",
+    "journal", "ghi chép",
+    "align", "sắp hàng", "phù hợp",
+    "clarify", "làm rõ", "làm sáng tỏ",
+    "learn", "học", "học hỏi",
+    "understand", "hiểu", "thấu hiểu",
+    "release", "giải phóng", "thả lỏng",
+    "forgive", "tha thứ", "thứ tha",
+    "reframe", "tái định hình", "định nghĩa lại",
+    "regulate", "điều chỉnh", "điều tiết"
+  ],
 "verbs_strong": []
 }
 ]
