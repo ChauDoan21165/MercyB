@@ -8,6 +8,7 @@ import { VIPNavigation } from "@/components/VIPNavigation";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { highlightTextByRules } from "@/lib/wordColorHighlighter";
 
 const RoomGridVIP3II = () => {
   const navigate = useNavigate();
@@ -86,11 +87,11 @@ const RoomGridVIP3II = () => {
                 <BookOpen className="h-8 w-8 text-blue-600" />
                 <Sparkles className="h-8 w-8 text-indigo-600" />
                 <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                  VIP3 II – English Specialization Mastery
+                  {highlightTextByRules("VIP3 II – English Specialization Mastery", false)}
                 </h1>
               </div>
               <p className="text-lg text-gray-700">
-                VIP3 II – Làm Chủ Chuyên Ngành Tiếng Anh
+                {highlightTextByRules("VIP3 II – Làm Chủ Chuyên Ngành Tiếng Anh", true)}
               </p>
               <p className="text-sm text-gray-600">
                 {vip3IIRooms.length} specialized English grammar & academic rooms
@@ -109,11 +110,7 @@ const RoomGridVIP3II = () => {
                   <div>
                     <h2 className="text-xl font-bold text-gray-900 mb-3">Introduction for VIP3 II – English Specialization Mastery</h2>
                     <p className="text-gray-800 leading-relaxed mb-4">
-                      <span style={{ backgroundColor: '#E8D5F2', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>VIP3 II – English Specialization Mastery</span> is the <span style={{ backgroundColor: '#FFE5CC', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>highest tier</span> of English <span style={{ backgroundColor: '#D4E8F7', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>training</span> in this entire ecosystem.
-                      Here, you go beyond learning English—you <span style={{ backgroundColor: '#FFF4CC', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>think in English</span>, <span style={{ backgroundColor: '#E5F5E0', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>write with precision</span>, and <span style={{ backgroundColor: '#FFE0E0', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>command language</span> at a <span style={{ backgroundColor: '#E0F2FF', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>professional, academic, and creative level</span>.
-                      This room brings together everything we have built: <span style={{ backgroundColor: '#F5E8FF', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>advanced writing science</span>, <span style={{ backgroundColor: '#E8F5E9', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>deep grammar logic</span>, <span style={{ backgroundColor: '#FFF9E6', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>meta-cognition</span>, <span style={{ backgroundColor: '#FFE8F0', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>sentence engineering</span>, and <span style={{ backgroundColor: '#E6F4F1', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>long-form mastery</span>.
-                      From <span style={{ backgroundColor: '#F0E8FF', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>foundational structure</span> to <span style={{ backgroundColor: '#FFE8E0', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>elite expression</span>, from <span style={{ backgroundColor: '#E8F0FF', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>technical clarity</span> to <span style={{ backgroundColor: '#FFE8F5', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>artistic fluency</span>—you will train like a true <span style={{ backgroundColor: '#E8FFE8', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>language specialist</span>.
-                      If VIP1 and VIP2 help you <span style={{ backgroundColor: '#FFF0E8', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>speak and write better</span>, VIP3 II transforms you into someone who <span style={{ backgroundColor: '#E8E8FF', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>understands English at its core</span>.
+                      {highlightTextByRules("VIP3 II – English Specialization Mastery is the highest tier of English training in this entire ecosystem. Here, you go beyond learning English—you think in English, write with precision, and command language at a professional, academic, and creative level. This room brings together everything we have built: advanced writing science, deep grammar logic, meta-cognition, sentence engineering, and long-form mastery. From foundational structure to elite expression, from technical clarity to artistic fluency—you will train like a true language specialist. If VIP1 and VIP2 help you speak and write better, VIP3 II transforms you into someone who understands English at its core.", false)}
                     </p>
                     <div className="bg-gradient-to-r from-purple-50 to-indigo-50 p-4 rounded-lg border border-purple-200">
                       <audio controls className="w-full">
@@ -125,11 +122,7 @@ const RoomGridVIP3II = () => {
                   <div>
                     <h2 className="text-xl font-bold text-gray-900 mb-3">Giới Thiệu Cho VIP3 II – Làm Chủ Chuyên Ngành Tiếng Anh</h2>
                     <p className="text-gray-800 leading-relaxed">
-                      <span style={{ backgroundColor: '#E8D5F2', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>VIP3 II – Làm Chủ Chuyên Ngành Tiếng Anh</span> là <span style={{ backgroundColor: '#FFE5CC', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>cấp độ cao nhất</span> trong toàn bộ hệ thống <span style={{ backgroundColor: '#D4E8F7', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>đào tạo</span> tiếng Anh.
-                      Tại đây, bạn không chỉ học tiếng Anh—bạn <span style={{ backgroundColor: '#FFF4CC', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>tư duy bằng tiếng Anh</span>, <span style={{ backgroundColor: '#E5F5E0', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>viết với độ chính xác cao</span>, và <span style={{ backgroundColor: '#FFE0E0', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>làm chủ ngôn ngữ</span> ở <span style={{ backgroundColor: '#E0F2FF', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>mức chuyên nghiệp, học thuật và sáng tạo</span>.
-                      Phòng này kết nối tất cả những gì chúng ta đã xây dựng: <span style={{ backgroundColor: '#F5E8FF', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>khoa học viết nâng cao</span>, <span style={{ backgroundColor: '#E8F5E9', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>tư duy ngữ pháp sâu</span>, <span style={{ backgroundColor: '#FFF9E6', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>siêu nhận thức</span>, <span style={{ backgroundColor: '#FFE8F0', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>kỹ thuật kiến tạo câu</span>, và <span style={{ backgroundColor: '#E6F4F1', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>làm chủ bài viết dài</span>.
-                      Từ <span style={{ backgroundColor: '#F0E8FF', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>nền tảng</span> đến <span style={{ backgroundColor: '#FFE8E0', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>đỉnh cao</span>, từ <span style={{ backgroundColor: '#E8F0FF', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>sự rõ ràng kỹ thuật</span> đến <span style={{ backgroundColor: '#FFE8F5', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>biểu đạt tinh tế</span>—bạn sẽ được rèn luyện như một <span style={{ backgroundColor: '#E8FFE8', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>chuyên gia ngôn ngữ</span> thực thụ.
-                      Nếu VIP1 và VIP2 giúp bạn <span style={{ backgroundColor: '#FFF0E8', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>nói và viết tốt hơn</span>, VIP3 II biến bạn thành người <span style={{ backgroundColor: '#E8E8FF', padding: '2px 6px', borderRadius: '3px', fontWeight: '500' }}>hiểu tiếng Anh tận gốc</span>.
+                      {highlightTextByRules("VIP3 II – Làm Chủ Chuyên Ngành Tiếng Anh là cấp độ cao nhất trong toàn bộ hệ thống đào tạo tiếng Anh. Tại đây, bạn không chỉ học tiếng Anh—bạn tư duy bằng tiếng Anh, viết với độ chính xác cao, và làm chủ ngôn ngữ ở mức chuyên nghiệp, học thuật và sáng tạo. Phòng này kết nối tất cả những gì chúng ta đã xây dựng: khoa học viết nâng cao, tư duy ngữ pháp sâu, siêu nhận thức, kỹ thuật kiến tạo câu, và làm chủ bài viết dài. Từ nền tảng đến đỉnh cao, từ sự rõ ràng kỹ thuật đến biểu đạt tinh tế—bạn sẽ được rèn luyện như một chuyên gia ngôn ngữ thực thụ. Nếu VIP1 và VIP2 giúp bạn nói và viết tốt hơn, VIP3 II biến bạn thành người hiểu tiếng Anh tận gốc.", true)}
                     </p>
                   </div>
                 </div>
