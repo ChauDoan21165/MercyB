@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { toast } from '@/hooks/use-toast';
+import { highlightTextByRules } from '@/lib/wordColorHighlighter';
 
 interface StrictProtectedContentProps {
   content: string;
@@ -60,7 +61,7 @@ export const StrictProtectedContent = ({ content, className = '' }: StrictProtec
       ref={contentRef}
       className={`relative ${className}`}
     >
-      <span 
+      <div 
         className="text-base leading-relaxed whitespace-pre-wrap select-none cursor-default"
         style={{ 
           userSelect: 'none',
@@ -69,8 +70,8 @@ export const StrictProtectedContent = ({ content, className = '' }: StrictProtec
           msUserSelect: 'none'
         }}
       >
-        {content}
-      </span>
+        {highlightTextByRules(content, false)}
+      </div>
     </div>
   );
 };
