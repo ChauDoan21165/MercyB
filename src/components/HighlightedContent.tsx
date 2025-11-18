@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { toast } from '@/hooks/use-toast';
-import { getKeywordColor } from '@/lib/customKeywordLoader';
+import { highlightTextByRules } from '@/lib/wordColorHighlighter';
 
 interface HighlightedContentProps {
   content: string;
@@ -70,103 +70,16 @@ export const HighlightedContent = ({
 
   /**
    * Highlight keywords in the content with their semantic category-based colors
-   * Supports both English and Vietnamese text with proper Unicode handling
+   * Uses the word-color-rule.json system for consistent coloring
    */
   const highlightKeywords = (text: string): JSX.Element[] => {
     if (!enableHighlighting) {
       return [<span key="0">{text}</span>];
     }
 
-    const parts: JSX.Element[] = [];
-    let currentIndex = 0;
-    
-    // Enhanced regex that supports Vietnamese Unicode characters
-    // Matches single words and multi-word phrases (up to 5 words)
-    const wordRegex = /[\p{L}\p{M}'-]+(?:\s+[\p{L}\p{M}'-]+){0,4}/gu;
-    let match;
-    const matches: Array<{ text: string; index: number; color: string | null }> = [];
-
-    // First pass: collect all potential matches
-    while ((match = wordRegex.exec(text)) !== null) {
-      const matchedText = match[0];
-      const startIndex = match.index;
-      
-      // Try to match the full phrase first, then progressively shorter versions
-      let color = null;
-      let bestMatch = '';
-      
-      // Split into words and try different combinations
-      const words = matchedText.split(/\s+/);
-      
-      // Try full phrase first
-      color = getKeywordColor(matchedText);
-      if (color) {
-        bestMatch = matchedText;
-      } else {
-        // Try progressively shorter phrases from the start
-        for (let len = words.length; len >= 1; len--) {
-          const phrase = words.slice(0, len).join(' ');
-          color = getKeywordColor(phrase);
-          if (color) {
-            bestMatch = phrase;
-            break;
-          }
-        }
-      }
-      
-      if (bestMatch) {
-        matches.push({
-          text: bestMatch,
-          index: startIndex,
-          color: color!
-        });
-      }
-    }
-
-    // Sort matches by index to process in order
-    matches.sort((a, b) => a.index - b.index);
-
-    // Second pass: build the highlighted content
-    matches.forEach((matchData, idx) => {
-      const { text: matchedText, index: startIndex, color } = matchData;
-      
-      // Add text before this match
-      if (startIndex > currentIndex) {
-        parts.push(
-          <span key={`text-${currentIndex}-${idx}`}>
-            {text.substring(currentIndex, startIndex)}
-          </span>
-        );
-      }
-
-      // Add the highlighted keyword
-      parts.push(
-        <span
-          key={`keyword-${startIndex}-${idx}`}
-          style={{
-            backgroundColor: color,
-            padding: '2px 6px',
-            borderRadius: '3px',
-            fontWeight: '500'
-          }}
-        >
-          {matchedText}
-        </span>
-      );
-
-      currentIndex = startIndex + matchedText.length;
-    });
-
-    // Add remaining text
-    if (currentIndex < text.length) {
-      parts.push(
-        <span key={`text-end-${currentIndex}`}>
-          {text.substring(currentIndex)}
-        </span>
-      );
-    }
-
-    return parts.length > 0 ? parts : [<span key="0">{text}</span>];
+    // Auto-detect language: if text contains Vietnamese characters, treat as Vietnamese
+    const isVietnamese = /[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/i.test(text);
+    return highlightTextByRules(text, isVietnamese);
   };
 
   /**
