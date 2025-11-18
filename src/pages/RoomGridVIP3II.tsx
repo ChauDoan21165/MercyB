@@ -108,13 +108,19 @@ const RoomGridVIP3II = () => {
                 <div className="flex-1 space-y-4">
                   <div>
                     <h2 className="text-xl font-bold text-gray-900 mb-3">Introduction for VIP3 II – English Specialization Mastery</h2>
-                    <p className="text-gray-800 leading-relaxed">
+                    <p className="text-gray-800 leading-relaxed mb-4">
                       VIP3 II – English Specialization Mastery is the highest tier of English training in this entire ecosystem.
                       Here, you go beyond learning English—you think in English, write with precision, and command language at a professional, academic, and creative level.
                       This room brings together everything we have built: advanced writing science, deep grammar logic, meta-cognition, sentence engineering, and long-form mastery.
                       From foundational structure to elite expression, from technical clarity to artistic fluency—you will train like a true language specialist.
                       If VIP1 and VIP2 help you speak and write better, VIP3 II transforms you into someone who understands English at its core.
                     </p>
+                    <div className="bg-gradient-to-r from-purple-50 to-indigo-50 p-4 rounded-lg border border-purple-200">
+                      <audio controls className="w-full">
+                        <source src="/audio/vip3_ii_english_specialization_mastery.mp3" type="audio/mpeg" />
+                        Your browser does not support the audio element.
+                      </audio>
+                    </div>
                   </div>
                   <div>
                     <h2 className="text-xl font-bold text-gray-900 mb-3">Giới Thiệu Cho VIP3 II – Làm Chủ Chuyên Ngành Tiếng Anh</h2>
@@ -123,14 +129,8 @@ const RoomGridVIP3II = () => {
                       Tại đây, bạn không chỉ học tiếng Anh—bạn tư duy bằng tiếng Anh, viết với độ chính xác cao, và làm chủ ngôn ngữ ở mức chuyên nghiệp, học thuật và sáng tạo.
                       Phòng này kết nối tất cả những gì chúng ta đã xây dựng: khoa học viết nâng cao, tư duy ngữ pháp sâu, siêu nhận thức, kỹ thuật kiến tạo câu và làm chủ bài viết dài.
                       Từ nền tảng đến đỉnh cao, từ sự rõ ràng kỹ thuật đến biểu đạt tinh tế—bạn sẽ được rèn luyện như một chuyên gia ngôn ngữ thực thụ.
-                      Nếu VIP1 và VIP2 giúp bạn nói và viết tốt hơn, VIP3 II biến bạn thành người hiểu tiếng Anh tận gốc.
+                      Nếu VIP1 và VIP2 giúp bạn nói và viết tốt hơr, VIP3 II biến bạn thành người hiểu tiếng Anh tận gốc.
                     </p>
-                  </div>
-                  <div className="bg-gradient-to-r from-purple-50 to-indigo-50 p-4 rounded-lg border border-purple-200">
-                    <audio controls className="w-full">
-                      <source src="/audio/vip3_ii_english_specialization_mastery.mp3" type="audio/mpeg" />
-                      Your browser does not support the audio element.
-                    </audio>
                   </div>
                 </div>
               </div>
