@@ -558,9 +558,10 @@ const ChatHub = () => {
           >
             {!message.isUser && vietnameseContent ? (
               <>
-                <HighlightedContent 
-                  content={englishContent}
-                  className="w-full"
+                <PairedHighlightedContent 
+                  englishText={englishContent}
+                  vietnameseText={vietnameseContent}
+                  showVietnamese={showVietnamese}
                   showShadowingReminder={!!(message.audioFile && audioUrl)}
                 />
                 
@@ -579,16 +580,6 @@ const ChatHub = () => {
                     />
                   )}
                 </div>
-                
-                {showVietnamese && (
-                  <>
-                    <hr className="border-border my-4" />
-                    <HighlightedContent 
-                      content={vietnameseContent}
-                      className="w-full"
-                    />
-                  </>
-                )}
               </>
             ) : (
               <>

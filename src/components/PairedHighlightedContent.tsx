@@ -1,17 +1,29 @@
 import { highlightPairedText } from "@/lib/wordColorHighlighter";
 
 interface PairedHighlightedContentProps {
-  englishContent: string;
-  vietnameseContent: string;
+  englishText?: string;
+  vietnameseText?: string;
+  englishContent?: string;
+  vietnameseContent?: string;
+  showVietnamese?: boolean;
+  showShadowingReminder?: boolean;
   className?: string;
 }
 
 export const PairedHighlightedContent = ({ 
-  englishContent, 
-  vietnameseContent, 
+  englishText,
+  vietnameseText,
+  englishContent,
+  vietnameseContent,
+  showVietnamese = true,
+  showShadowingReminder = false,
   className = "" 
 }: PairedHighlightedContentProps) => {
-  const { enHighlighted, viHighlighted } = highlightPairedText(englishContent, vietnameseContent);
+  // Support both prop naming conventions
+  const enText = englishText || englishContent || "";
+  const viText = vietnameseText || vietnameseContent || "";
+  
+  const { enHighlighted, viHighlighted } = highlightPairedText(enText, viText);
   
   return (
     <div className={className}>
@@ -20,12 +32,23 @@ export const PairedHighlightedContent = ({
           {enHighlighted}
         </div>
       </div>
-      <hr className="border-border my-3" />
-      <div>
-        <div className="text-sm leading-relaxed">
-          {viHighlighted}
-        </div>
-      </div>
+      
+      {showShadowingReminder && (
+        <p className="text-xs text-muted-foreground italic mt-2 mb-3">
+          💡 Try shadowing: Listen and repeat along with the audio to improve your pronunciation and fluency.
+        </p>
+      )}
+      
+      {showVietnamese && (
+        <>
+          <hr className="border-border my-3" />
+          <div>
+            <div className="text-sm leading-relaxed">
+              {viHighlighted}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
