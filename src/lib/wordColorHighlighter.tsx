@@ -83,7 +83,6 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
           {segment}
         </span>
       );
-      );
     } else {
       result.push(<span key={i}>{segment}</span>);
     }
