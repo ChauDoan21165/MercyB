@@ -61,26 +61,26 @@ export const PairedHighlightedContent = ({
       {showVietnamese && (
         <>
           <hr className="border-border my-3" />
-          <div className="relative">
-            <div className="text-sm leading-relaxed mb-2">
+          <div>
+            <div className="text-sm leading-relaxed">
               {viHighlighted}
             </div>
-            <div className="flex justify-start">
+            <div className="mt-3 flex gap-2 opacity-70 hover:opacity-100 transition-opacity">
               <Button
-                variant="ghost"
+                variant="outline"
                 size="sm"
                 onClick={handleCopy}
-                className="h-8 px-2 text-xs"
+                className="h-8 px-3 gap-2 text-xs"
               >
                 {copied ? (
                   <>
-                    <Check className="w-3 h-3 mr-1" />
+                    <Check className="w-3 h-3" />
                     <span>Copied</span>
                   </>
                 ) : (
                   <>
-                    <Copy className="w-3 h-3 mr-1" />
-                    <span>Copy VN</span>
+                    <Copy className="w-3 h-3" />
+                    <span>Copy</span>
                   </>
                 )}
               </Button>
