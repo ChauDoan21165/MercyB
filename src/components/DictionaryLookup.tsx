@@ -38,33 +38,21 @@ export const DictionaryLookup = () => {
 
     const term = searchTerm.toLowerCase().trim();
     
-    // Helper function to check if term matches at word boundaries
-    const matchesWord = (text: string, searchTerm: string): boolean => {
-      const lowerText = text.toLowerCase();
-      // Exact match
-      if (lowerText === searchTerm) return true;
-      // Starts with search term (followed by space or end)
-      if (lowerText.startsWith(searchTerm + ' ')) return true;
-      if (lowerText.startsWith(searchTerm)) return true;
-      // Word boundary match (preceded by space)
-      if (lowerText.includes(' ' + searchTerm + ' ')) return true;
-      if (lowerText.includes(' ' + searchTerm)) return true;
-      return false;
-    };
-    
-    // Search in English terms
+    // First try exact word match
     for (const [key, entry] of Object.entries(dictionary)) {
-      const englishMatches = entry.en.some(word => matchesWord(word, term));
-      if (englishMatches) {
+      const exactMatch = entry.en.some(word => word.toLowerCase() === term) ||
+                         entry.vi.some(word => word.toLowerCase() === term);
+      if (exactMatch) {
         setResult(entry);
         return;
       }
     }
-
-    // Search in Vietnamese terms
+    
+    // Then try partial match (word contains the search term)
     for (const [key, entry] of Object.entries(dictionary)) {
-      const vietnameseMatches = entry.vi.some(word => matchesWord(word, term));
-      if (vietnameseMatches) {
+      const partialMatch = entry.en.some(word => word.toLowerCase().includes(term)) ||
+                          entry.vi.some(word => word.toLowerCase().includes(term));
+      if (partialMatch) {
         setResult(entry);
         return;
       }

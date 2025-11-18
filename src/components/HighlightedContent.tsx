@@ -112,25 +112,6 @@ export const HighlightedContent = ({
       >
         {renderHighlightedContent()}
       </span>
-      
-      {showShadowingReminder && (
-        <div className="mt-6 pt-4 border-t border-border/30">
-          <p 
-            className="text-sm leading-relaxed text-center"
-            style={{
-              background: 'var(--gradient-rainbow)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              fontWeight: 500
-            }}
-          >
-            <strong>EN:</strong> Shadowing practice: repeat aloud with the audio 3–7 times for best improvement.
-            <br />
-            <strong>VI:</strong> Luyện shadowing: lặp lại cùng audio từ 3 đến 7 lần để tiến bộ tốt nhất.
-          </p>
-        </div>
-      )}
     </div>
   );
 };

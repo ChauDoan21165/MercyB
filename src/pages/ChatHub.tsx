@@ -555,24 +555,34 @@ const ChatHub = () => {
                   englishText={englishContent}
                   vietnameseText={vietnameseContent}
                   showVietnamese={showVietnamese}
-                  showShadowingReminder={!!(message.audioFile && audioUrl)}
                 />
                 
-                {/* Copy button and Audio Player - After English essay */}
-                <div className="mt-3 flex items-center gap-2">
-                  <MessageActions text={englishContent} roomId={roomId || ""} />
-                  {(message.audioFile && audioUrl) && (
-                    <AudioPlayer
-                      audioPath={audioUrl}
-                      isPlaying={currentAudio === audioUrl && isAudioPlaying}
-                      onPlayPause={handleAudioClick}
-                      onEnded={() => {
-                        setIsAudioPlaying(false);
-                        setCurrentAudio(null);
-                      }}
-                    />
-                  )}
-                </div>
+                {/* Shadowing reminder and Audio Player - Right below English essay */}
+                {(message.audioFile && audioUrl) && (
+                  <div className="mt-3">
+                    <p className="text-xs text-muted-foreground italic mb-2 text-center">
+                      💡 Try shadowing: Listen and repeat along with the audio to improve your pronunciation and fluency.
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <MessageActions text={englishContent} roomId={roomId || ""} />
+                      <AudioPlayer
+                        audioPath={audioUrl}
+                        isPlaying={currentAudio === audioUrl && isAudioPlaying}
+                        onPlayPause={handleAudioClick}
+                        onEnded={() => {
+                          setIsAudioPlaying(false);
+                          setCurrentAudio(null);
+                        }}
+                      />
+                    </div>
+                  </div>
+                )}
+                
+                {!message.audioFile && !audioUrl && (
+                  <div className="mt-3">
+                    <MessageActions text={englishContent} roomId={roomId || ""} />
+                  </div>
+                )}
               </>
             ) : (
               <>
