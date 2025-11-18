@@ -551,17 +551,18 @@ const ChatHub = () => {
           >
             {!message.isUser && vietnameseContent ? (
               <>
-                <PairedHighlightedContent 
-                  englishText={englishContent}
-                  vietnameseText={vietnameseContent}
-                  showVietnamese={showVietnamese}
-                />
+                {/* English content */}
+                <div className="mb-3">
+                  <div className="text-sm leading-relaxed">
+                    <HighlightedContent content={englishContent} />
+                  </div>
+                </div>
                 
                 {/* Shadowing reminder and Audio Player - Right below English essay */}
                 {(message.audioFile && audioUrl) && (
-                  <div className="mt-3">
+                  <div className="my-3">
                     <p className="text-xs text-muted-foreground italic mb-2 text-center">
-                      💡 Try shadowing: Listen and repeat along with the audio to improve your pronunciation and fluency.
+                      💡 Try shadowing: Listen and repeat along with the audio to improve your pronunciation and fluency. / 💡 Hãy thử bóng: Nghe và lặp lại cùng với âm thanh để cải thiện phát âm và sự trôi chảy của bạn.
                     </p>
                     <div className="flex items-center gap-2">
                       <MessageActions text={englishContent} roomId={roomId || ""} />
