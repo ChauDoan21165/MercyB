@@ -1,13 +1,14 @@
-// Pastel color palette as specified
-const SOFT_BLUES = ['#8EC6E8', '#6FB4E3', '#4D9FD9'];
-const FRESH_GREENS = ['#A8E6CF', '#7FD9BC', '#5CC7A8'];
-const WARM_PEACH = ['#FFCCB6', '#FFB59E', '#FF9F8A'];
-const LAVENDER = ['#D7CFF2', '#C7B9EE', '#B3A4E8'];
-const GOLDEN_SAND = ['#F6E3B4', '#F3D89B', '#F1CD85'];
-const ACCENTS = ['#FF8C7A', '#F4A261', '#6A57D5', '#2A9D8F', '#44A7C4', '#FF9E7C', '#A875E8', '#53C1C9', '#E79F62', '#F27D72'];
-const NEUTRALS = ['#A7B4C2', '#C9D1D9', '#E5E7EB', '#D9CFC3', '#C9B9A8'];
-
-const SOFT_PASTELS = [...SOFT_BLUES, ...FRESH_GREENS, ...WARM_PEACH, ...LAVENDER, ...GOLDEN_SAND, ...NEUTRALS];
+// 48 decorative pastel colors
+const COLORS = [
+  '#8EC6E8', '#6FB4E3', '#4D9FD9', '#A8E6CF', '#7FD9BC', '#5CC7A8',
+  '#FFCCB6', '#FFB59E', '#FF9F8A', '#D7CFF2', '#C7B9EE', '#B3A4E8',
+  '#F6E3B4', '#F3D89B', '#F1CD85', '#FF8C7A', '#F4A261', '#6A57D5',
+  '#2A9D8F', '#44A7C4', '#FF9E7C', '#A875E8', '#53C1C9', '#E79F62',
+  '#F27D72', '#A7B4C2', '#C9D1D9', '#E5E7EB', '#D9CFC3', '#C9B9A8',
+  '#A0D8F1', '#7EC9E6', '#F2BAC9', '#FFDEE2', '#F7D6C4', '#C3E6CB',
+  '#B2DFDB', '#FFE3E0', '#FAD6D6', '#E6C9F0', '#D9E8FF', '#C2E9FB',
+  '#FCEECF', '#EAD7C2', '#F8D5BA', '#E2F0D9', '#FCFAE1', '#F5E6FF'
+];
 
 // Filler words to exclude (English + Vietnamese)
 const FILLER_WORDS = new Set([
@@ -53,7 +54,7 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
     const seed = lineIndex * 1000 + line.length;
     let currentSeed = seed;
     
-    // Randomly pick keywords
+    // Randomly pick 3 keywords
     const shuffled = [...keywordIndices];
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(seededRandom(currentSeed++) * (i + 1));
@@ -61,19 +62,11 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
     }
     shuffled.slice(0, numToColor).forEach(idx => selectedIndices.add(idx));
 
-    // Pick colors: 2 soft pastels + 1 accent
+    // Pick 3 different colors from the palette
     const colors: string[] = [];
-    if (numToColor >= 1) {
-      const soft1Index = Math.floor(seededRandom(seed + 1) * SOFT_PASTELS.length);
-      colors.push(SOFT_PASTELS[soft1Index]);
-    }
-    if (numToColor >= 2) {
-      const soft2Index = Math.floor(seededRandom(seed + 2) * SOFT_PASTELS.length);
-      colors.push(SOFT_PASTELS[soft2Index]);
-    }
-    if (numToColor >= 3) {
-      const accentIndex = Math.floor(seededRandom(seed + 3) * ACCENTS.length);
-      colors.push(ACCENTS[accentIndex]);
+    const colorStartIndex = (lineIndex * 3 + globalIndex) % COLORS.length;
+    for (let i = 0; i < numToColor; i++) {
+      colors.push(COLORS[(colorStartIndex + i) % COLORS.length]);
     }
 
     // Render segments
