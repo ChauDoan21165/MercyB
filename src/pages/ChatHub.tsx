@@ -773,6 +773,20 @@ const ChatHub = () => {
                   title="Copy JSON filename"
                 />
               )}
+              {isAdmin && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigator.clipboard.writeText(roomId || '');
+                    toast({
+                      title: "Copied!",
+                      description: `Room ID: ${roomId}`,
+                    });
+                  }}
+                  className="w-[1em] h-[1em] rounded-full bg-blue-600 hover:bg-blue-700 cursor-pointer flex-shrink-0 transition-colors"
+                  title="Copy Room ID"
+                />
+              )}
               <h2 className="text-lg font-semibold" style={{
                 background: 'var(--gradient-rainbow)',
                 WebkitBackgroundClip: 'text',
