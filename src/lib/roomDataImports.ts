@@ -993,13 +993,6 @@ export const roomDataMap: Record<string, RoomData> = {
       "tier": "vip3",
       "hasData": true
   },
-  "strategy-in-life-mastery-legacy-ii-vip3": {
-      "id": "strategy-in-life-mastery-legacy-ii-vip3",
-      "nameEn": "Strategy in Life - Mastery & Legacy II",
-      "nameVi": "Chiến Lược Cuộc Sống - Tinh Thông & Di Sản II",
-      "tier": "vip3",
-      "hasData": true
-  },
   "trigger-point-release-vip1": {
       "id": "trigger-point-release-vip1",
       "nameEn": "Trigger Point Release",
