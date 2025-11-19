@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import dictionaryData from '@/data/system/Dictionary.json';
-import pronunciationGuide from '@/../../public/data/pronunciation-guide.json';
+import pronunciationGuide from '@/data/pronunciation-guide.json';
 
 interface PronunciationData {
   ipa_en?: string;
