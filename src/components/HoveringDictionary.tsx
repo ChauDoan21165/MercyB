@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
+import { Volume2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 import dictionaryData from "@/data/system/Dictionary.json";
 
 interface DictionaryEntry {
@@ -21,6 +24,8 @@ interface HoveringDictionaryProps {
 
 export const HoveringDictionary = ({ word, children, roomKeywords }: HoveringDictionaryProps) => {
   const [showTooltip, setShowTooltip] = useState(false);
+  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+  const { toast } = useToast();
   const dictionary = (dictionaryData as any).dictionary as Dictionary;
   
   // Filter dictionary to only room-relevant keywords
@@ -61,6 +66,61 @@ export const HoveringDictionary = ({ word, children, roomKeywords }: HoveringDic
 
   const translation = findTranslation();
 
+  const playPronunciation = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    
+    if (isPlayingAudio) return;
+    
+    setIsPlayingAudio(true);
+    
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      if (!session) {
+        toast({
+          title: "Authentication required",
+          description: "Please log in to use audio pronunciation",
+          variant: "destructive",
+        });
+        setIsPlayingAudio(false);
+        return;
+      }
+
+      const { data, error } = await supabase.functions.invoke('text-to-speech', {
+        body: { 
+          text: word,
+          voice: 'alloy',
+          roomSlug: 'dictionary',
+          entrySlug: word.toLowerCase()
+        }
+      });
+
+      if (error) throw error;
+
+      if (data?.audioUrl) {
+        const audio = new Audio(data.audioUrl);
+        audio.onended = () => setIsPlayingAudio(false);
+        audio.onerror = () => {
+          setIsPlayingAudio(false);
+          toast({
+            title: "Playback error",
+            description: "Could not play audio",
+            variant: "destructive",
+          });
+        };
+        await audio.play();
+      }
+    } catch (error) {
+      console.error('Error playing pronunciation:', error);
+      toast({
+        title: "Error",
+        description: "Failed to load pronunciation",
+        variant: "destructive",
+      });
+      setIsPlayingAudio(false);
+    }
+  };
+
   // If no translation exists, just render children without hover functionality
   if (!translation) {
     return <>{children}</>;
@@ -72,17 +132,29 @@ export const HoveringDictionary = ({ word, children, roomKeywords }: HoveringDic
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
     >
-      <span className="hover:bg-primary/10 transition-colors rounded px-0.5">
+      <span 
+        className="hover:bg-primary/10 transition-colors rounded px-0.5 cursor-pointer"
+        onClick={playPronunciation}
+      >
         {children}
       </span>
       
       {showTooltip && (
         <Card className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 p-3 shadow-lg border-border z-50 w-64 bg-background">
           <div className="space-y-2 text-sm">
-            <div>
-              <p className="font-semibold text-foreground">
+            <div className="flex items-center justify-between gap-2">
+              <p className="font-semibold text-foreground flex-1">
                 {translation.en.join(", ")}
               </p>
+              <button
+                onClick={playPronunciation}
+                disabled={isPlayingAudio}
+                className="p-1 hover:bg-primary/10 rounded transition-colors disabled:opacity-50"
+                title="Play pronunciation"
+              >
+                <Volume2 className={`w-4 h-4 text-primary ${isPlayingAudio ? 'animate-pulse' : ''}`} />
+              </button>
+            </div>
               {translation.ipa_en && (
                 <p className="text-xs text-muted-foreground italic">
                   /{translation.ipa_en}/
