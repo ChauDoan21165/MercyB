@@ -142,21 +142,22 @@ export const HoveringDictionary = ({ word, children, roomKeywords }: HoveringDic
       {showTooltip && (
         <Card className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 p-3 shadow-lg border-border z-50 w-64 bg-background">
           <div className="space-y-2 text-sm">
-            <div className="flex items-center justify-between gap-2">
-              <p className="font-semibold text-foreground flex-1">
-                {translation.en.join(", ")}
-              </p>
-              <button
-                onClick={playPronunciation}
-                disabled={isPlayingAudio}
-                className="p-1 hover:bg-primary/10 rounded transition-colors disabled:opacity-50"
-                title="Play pronunciation"
-              >
-                <Volume2 className={`w-4 h-4 text-primary ${isPlayingAudio ? 'animate-pulse' : ''}`} />
-              </button>
-            </div>
+            <div>
+              <div className="flex items-center justify-between gap-2">
+                <p className="font-semibold text-foreground flex-1">
+                  {translation.en.join(", ")}
+                </p>
+                <button
+                  onClick={playPronunciation}
+                  disabled={isPlayingAudio}
+                  className="p-1 hover:bg-primary/10 rounded transition-colors disabled:opacity-50"
+                  title="Play pronunciation"
+                >
+                  <Volume2 className={`w-4 h-4 text-primary ${isPlayingAudio ? 'animate-pulse' : ''}`} />
+                </button>
+              </div>
               {translation.ipa_en && (
-                <p className="text-xs text-muted-foreground italic">
+                <p className="text-xs text-muted-foreground italic mt-1">
                   /{translation.ipa_en}/
                 </p>
               )}
@@ -167,7 +168,7 @@ export const HoveringDictionary = ({ word, children, roomKeywords }: HoveringDic
                 {translation.vi.join(", ")}
               </p>
               {translation.ipa_vi && (
-                <p className="text-xs text-muted-foreground italic">
+                <p className="text-xs text-muted-foreground italic mt-1">
                   /{translation.ipa_vi}/
                 </p>
               )}
