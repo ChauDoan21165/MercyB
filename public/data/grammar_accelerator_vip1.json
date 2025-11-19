@@ -1,80 +1,91 @@
 {
-  "id":"grammar_accelerator_vip1",
-  "tier":"VIP 1",
-  "title":{
-    "en":"Grammar Accelerator: Fast, Clear, Automatic",
-    "vi":"Tăng Tốc Ngữ Pháp: Nhanh, Rõ, Tự Động"
+  "id": "grammar-accelerator-vip1",
+  "tier": "VIP1 / VIP1",
+  "title": {
+    "en": "Grammar Accelerator: Fast, Clear, Automatic",
+    "vi": "Tăng Tốc Ngữ Pháp: Nhanh, Rõ, Tự Động"
   },
-  "content":{
-    "en":"VIP1 accelerates your grammar foundation by focusing on the high-impact systems that eliminate hesitation and build automatic correctness. You will master tense clarity with instant time markers, learn verb patterns that prevent common mistakes, use sentence templates for consistent structure, achieve pronoun accuracy for natural flow, build confident questions without translation, and connect ideas smoothly with high-frequency linking words. These systems create fast improvement—not by studying endless rules but by mastering the grammar patterns that appear most often in real communication and conversation.",
-    "vi":"VIP1 tăng tốc nền tảng ngữ pháp bằng cách tập trung vào các hệ thống hiệu quả cao giúp loại bỏ do dự và tạo sự đúng đắn tự động. Bạn sẽ làm chủ sự rõ ràng về thì với từ chỉ thời gian tức thì, học mẫu động từ giúp tránh lỗi phổ biến, dùng khung câu cho cấu trúc nhất quán, đạt độ chính xác với đại từ để nói trôi chảy, xây câu hỏi tự tin mà không cần dịch, và nối ý mượt mà với liên từ thông dụng. Những hệ thống này tạo cải thiện nhanh—không bằng học vô số quy tắc mà bằng làm chủ mẫu ngữ pháp xuất hiện nhiều nhất trong giao tiếp và hội thoại thực tế."
+  "content": {
+    "en": "VIP1 accelerates your grammar foundation by focusing on the high-impact systems that eliminate hesitation and build automatic correctness. You will master tense clarity with instant time markers, learn verb patterns that prevent common mistakes, use sentence templates for consistent structure, achieve pronoun accuracy for natural flow, build confident questions without translation, and connect ideas smoothly with high-frequency linking words. These systems create fast improvement—not by studying endless rules but by mastering the grammar patterns that appear most often in real communication and conversation.",
+    "vi": "VIP1 tăng tốc nền tảng ngữ pháp bằng cách tập trung vào các hệ thống hiệu quả cao giúp loại bỏ do dự và tạo sự đúng đắn tự động. Bạn sẽ làm chủ sự rõ ràng về thì với từ chỉ thời gian tức thì, học mẫu động từ giúp tránh lỗi phổ biến, dùng khung câu cho cấu trúc nhất quán, đạt độ chính xác với đại từ để nói trôi chảy, xây câu hỏi tự tin mà không cần dịch, và nối ý mượt mà với liên từ thông dụng. Những hệ thống này tạo cải thiện nhanh—không bằng học vô số quy tắc mà bằng làm chủ mẫu ngữ pháp xuất hiện nhiều nhất trong giao tiếp và hội thoại thực tế."
   },
-  "entries":[
+  "entries": [
     {
-      "slug":"tense-clarity",
-      "keywords_en":["tenses","clarity","usage"],
-      "keywords_vi":["thì","rõ ràng","sử dụng"],
-      "copy":{
-        "en":"VIP1 tense clarity means knowing which tense to use without hesitation. Focus on the three essential tenses: present simple for routines and facts, present continuous for actions happening now, and past simple for completed events. The key is linking your tense to a clear time signal: now, usually, today, yesterday, last night. Avoid overthinking. Choose the simplest tense that matches your time word. Practice by describing your day in three versions: routine (present simple), right now (present continuous), and a memory (past simple). Mastering this removes most beginner errors and gives you clean, confident sentences.",
-        "vi":"Sự rõ ràng về thì ở VIP1 nghĩa là chọn đúng thì mà không do dự. Tập trung vào ba thì cốt lõi: hiện tại đơn cho thói quen và sự thật, hiện tại tiếp diễn cho hành động đang xảy ra, và quá khứ đơn cho việc đã hoàn thành. Bí quyết là ghép thì với từ chỉ thời gian: now, usually, today, yesterday, last night. Đừng nghĩ quá nhiều. Chọn thì đơn giản nhất phù hợp. Hãy mô tả ngày của bạn bằng ba phiên bản: thói quen (hiện tại đơn), ngay lúc này (hiện tại tiếp diễn), và ký ức (quá khứ đơn). Điều này loại bỏ phần lớn lỗi cơ bản."
+      "slug": "tense-clarity",
+      "keywords_en": ["tenses", "clarity", "usage"],
+      "keywords_vi": ["thì", "rõ ràng", "sử dụng"],
+      "copy": {
+        "en": "VIP1 tense clarity means knowing which tense to use without hesitation. Focus on the three essential tenses: present simple for routines and facts, present continuous for actions happening now, and past simple for completed events. The key is linking your tense to a clear time signal: now, usually, today, yesterday, last night. Avoid overthinking. Choose the simplest tense that matches your time word. Practice by describing your day in three versions: routine (present simple), right now (present continuous), and a memory (past simple). Mastering this removes most beginner errors and gives you clean, confident sentences.",
+        "vi": "Sự rõ ràng về thì ở VIP1 nghĩa là chọn đúng thì mà không do dự. Tập trung vào ba thì cốt lõi: hiện tại đơn cho thói quen và sự thật, hiện tại tiếp diễn cho hành động đang xảy ra, và quá khứ đơn cho việc đã hoàn thành. Bí quyết là ghép thì với từ chỉ thời gian: now, usually, today, yesterday, last night. Đừng nghĩ quá nhiều. Chọn thì đơn giản nhất phù hợp. Hãy mô tả ngày của bạn bằng ba phiên bản: thói quen (hiện tại đơn), ngay lúc này (hiện tại tiếp diễn), và ký ức (quá khứ đơn). Điều này loại bỏ phần lớn lỗi cơ bản."
       },
-      "tags":["tenses","foundation"],
-      "audio":"vip1_grammar_tenses.mp3"
+      "tags": ["tenses", "foundation"],
+      "audio": "vip1_grammar_tenses.mp3"
     },
     {
-      "slug":"verb-patterns",
-      "keywords_en":["verbs","patterns","to/ing"],
-      "keywords_vi":["động từ","mẫu động từ","to/ing"],
-      "copy":{
-        "en":"Verb patterns help you sound natural and avoid common mistakes. Some verbs take “to”: want to, need to, plan to. Others take “ing”: enjoy doing, avoid doing, consider doing. A simple rule for VIP1: verbs about preference usually take ing, while verbs about intention take to. Practice with real-life examples: “I want to improve,” “I enjoy learning,” “I need to finish,” “I avoid rushing.” Build a small personal list of 10–15 patterns you use often. The more you repeat them in speaking and writing, the faster they become automatic and mistake-free.",
-        "vi":"Mẫu động từ giúp bạn nói tự nhiên và tránh lỗi phổ biến. Một số động từ đi với “to”: want to, need to, plan to. Số khác đi với “ing”: enjoy doing, avoid doing, consider doing. Quy tắc VIP1 đơn giản: động từ nói về sở thích thường đi với ing, động từ nói về ý định thường đi với to. Luyện bằng ví dụ thực tế: “I want to improve”, “I enjoy learning”, “I need to finish”, “I avoid rushing.” Hãy tạo danh sách 10–15 mẫu bạn hay dùng. Lặp lại nhiều giúp chúng trở nên tự động."
+      "slug": "verb-patterns",
+      "keywords_en": ["verbs", "patterns", "to/ing"],
+      "keywords_vi": ["động từ", "mẫu động từ", "to/ing"],
+      "copy": {
+        "en": "Verb patterns help you sound natural and avoid common mistakes. Some verbs take “to”: want to, need to, plan to. Others take “ing”: enjoy doing, avoid doing, consider doing. A simple rule for VIP1: verbs about preference usually take ing, while verbs about intention take to. Practice with real-life examples: “I want to improve,” “I enjoy learning,” “I need to finish,” “I avoid rushing.” Build a small personal list of 10–15 patterns you use often. The more you repeat them in speaking and writing, the faster they become automatic and mistake-free.",
+        "vi": "Mẫu động từ giúp bạn nói tự nhiên và tránh lỗi phổ biến. Một số động từ đi với “to”: want to, need to, plan to. Số khác đi với “ing”: enjoy doing, avoid doing, consider doing. Quy tắc VIP1 đơn giản: động từ nói về sở thích thường đi với ing, động từ nói về ý định thường đi với to. Luyện bằng ví dụ thực tế: “I want to improve”, “I enjoy learning”, “I need to finish”, “I avoid rushing.” Hãy tạo danh sách 10–15 mẫu bạn hay dùng. Lặp lại nhiều giúp chúng trở nên tự động."
       },
-      "tags":["verbs","patterns"],
-      "audio":"vip1_grammar_verbs.mp3"
+      "tags": ["verbs", "patterns"],
+      "audio": "vip1_grammar_verbs.mp3"
     },
     {
-      "slug":"sentence-templates",
-      "keywords_en":["structure","templates","fluency"],
-      "keywords_vi":["cấu trúc","mẫu câu","trôi chảy"],
-      "copy":{
-        "en":"Using sentence templates makes your grammar stable and your speech more fluent. VIP1 focuses on three high-value templates: (1) “I think that…” for opinions, (2) “The reason is that…” for explanations, and (3) “One thing I noticed is…” for descriptions. These patterns organize your ideas automatically and reduce the mental load of building sentences from scratch. Practice creating three examples for each template about your life or day. The more you reuse templates, the faster your English becomes—even with simple grammar.",
-        "vi":"Dùng mẫu câu giúp ngữ pháp vững và nói trôi chảy hơn. VIP1 tập trung vào ba mẫu giá trị cao: (1) “I think that…” cho ý kiến, (2) “The reason is that…” cho giải thích, (3) “One thing I noticed is…” cho mô tả. Những mẫu này tự động tổ chức ý tưởng và giảm áp lực khi tạo câu mới. Hãy tạo ba ví dụ cho mỗi mẫu về cuộc sống của bạn. Bạn càng dùng lại các mẫu này nhiều, tiếng Anh càng nhanh và tự nhiên hơn."
+      "slug": "sentence-templates",
+      "keywords_en": ["structure", "templates", "fluency"],
+      "keywords_vi": ["cấu trúc", "mẫu câu", "trôi chảy"],
+      "copy": {
+        "en": "Using sentence templates makes your grammar stable and your speech more fluent. VIP1 focuses on three high-value templates: (1) “I think that…” for opinions, (2) “The reason is that…” for explanations, and (3) “One thing I noticed is…” for descriptions. These patterns organize your ideas automatically and reduce the mental load of building sentences from scratch. Practice creating three examples for each template about your life or day. The more you reuse templates, the faster your English becomes—even with simple grammar.",
+        "vi": "Dùng mẫu câu giúp ngữ pháp vững và nói trôi chảy hơn. VIP1 tập trung vào ba mẫu giá trị cao: (1) “I think that…” cho ý kiến, (2) “The reason is that…” cho giải thích, (3) “One thing I noticed is…” cho mô tả. Những mẫu này tự động tổ chức ý tưởng và giảm áp lực khi tạo câu mới. Hãy tạo ba ví dụ cho mỗi mẫu về cuộc sống của bạn. Bạn càng dùng lại các mẫu này nhiều, tiếng Anh càng nhanh và tự nhiên hơn."
       },
-      "tags":["structure","templates"],
-      "audio":"vip1_grammar_structure.mp3"
+      "tags": ["structure", "templates"],
+      "audio": "vip1_grammar_structure.mp3"
     },
     {
-      "slug":"pronouns-accuracy",
-      "keywords_en":["pronouns","accuracy","reference"],
-      "keywords_vi":["đại từ","chính xác","tham chiếu"],
-      "copy":{
-        "en":"Pronoun accuracy keeps your sentences clean and smooth. Use he/she/they for people, it for things, and we/they for groups. A common VIP1 mistake is switching pronouns mid-sentence or forgetting number agreement. Practice by describing photos, objects, or people: “This is Anna. She is my friend. She likes travel.” Then expand: “This is my laptop. It is old but fast.” Changing nouns to pronouns reduces repetition and improves sentence flow. The more consistent your pronoun use becomes, the more professional your English sounds.",
-        "vi":"Đại từ chính xác giúp câu gọn và mượt. Dùng he/she/they cho người, it cho vật, và we/they cho nhóm. Lỗi VIP1 thường gặp là đổi đại từ giữa câu hoặc sai số ít–nhiều. Hãy luyện mô tả ảnh, vật hoặc người: “This is Anna. She is my friend. She likes travel.” Sau đó mở rộng: “This is my laptop. It is old but fast.” Thay danh từ bằng đại từ giúp câu tự nhiên và tránh lặp. Đại từ càng đúng, tiếng Anh càng chuyên nghiệp."
+      "slug": "pronouns-accuracy",
+      "keywords_en": ["pronouns", "accuracy", "reference"],
+      "keywords_vi": ["đại từ", "chính xác", "tham chiếu"],
+      "copy": {
+        "en": "Pronoun accuracy keeps your sentences clean and smooth. Use he/she/they for people, it for things, and we/they for groups. A common VIP1 mistake is switching pronouns mid-sentence or forgetting number agreement. Practice by describing photos, objects, or people: “This is Anna. She is my friend. She likes travel.” Then expand: “This is my laptop. It is old but fast.” Changing nouns to pronouns reduces repetition and improves sentence flow. The more consistent your pronoun use becomes, the more professional your English sounds.",
+        "vi": "Đại từ chính xác giúp câu gọn và mượt. Dùng he/she/they cho người, it cho vật, và we/they cho nhóm. Lỗi VIP1 thường gặp là đổi đại từ giữa câu hoặc sai số ít–nhiều. Hãy luyện mô tả ảnh, vật hoặc người: “This is Anna. She is my friend. She likes travel.” Sau đó mở rộng: “This is my laptop. It is old but fast.” Thay danh từ bằng đại từ giúp câu tự nhiên và tránh lặp. Đại từ càng đúng, tiếng Anh càng chuyên nghiệp."
       },
-      "tags":["pronouns","accuracy"],
-      "audio":"vip1_grammar_pronouns.mp3"
+      "tags": ["pronouns", "accuracy"],
+      "audio": "vip1_grammar_pronouns.mp3"
     },
     {
-      "slug":"question-confidence",
-      "keywords_en":["questions","do/does","speaking"],
-      "keywords_vi":["câu hỏi","do/does","giao tiếp"],
-      "copy":{
-        "en":"Building question confidence helps conversations flow naturally. Use do/does for most questions: “Do you work here?” “Does he like sports?” For details, start with WH-words: what, why, where, when, who, how. Remember: in questions, the main verb stays simple—no “s.” Practice creating questions about people you know: “Where does she live?” “What do they study?” The more questions you can form automatically, the easier it becomes to start conversations and keep them moving.",
-        "vi":"Tự tin đặt câu hỏi giúp hội thoại diễn ra tự nhiên. Dùng do/does cho hầu hết câu hỏi: “Do you work here?” “Does he like sports?” Với chi tiết, dùng từ hỏi what, why, where, when, who, how. Lưu ý: trong câu hỏi, động từ chính không thêm “s.” Hãy luyện đặt câu hỏi về người bạn quen: “Where does she live?” “What do they study?” Bạn càng đặt câu hỏi nhanh, giao tiếp càng dễ."
+      "slug": "question-confidence",
+      "keywords_en": ["questions", "do/does", "speaking"],
+      "keywords_vi": ["câu hỏi", "do/does", "giao tiếp"],
+      "copy": {
+        "en": "Building question confidence helps conversations flow naturally. Use do/does for most questions: “Do you work here?” “Does he like sports?” For details, start with WH-words: what, why, where, when, who, how. Remember: in questions, the main verb stays simple—no “s.” Practice creating questions about people you know: “Where does she live?” “What do they study?” The more questions you can form automatically, the easier it becomes to start conversations and keep them moving.",
+        "vi": "Tự tin đặt câu hỏi giúp hội thoại diễn ra tự nhiên. Dùng do/does cho hầu hết câu hỏi: “Do you work here?” “Does he like sports?” Với chi tiết, dùng từ hỏi what, why, where, when, who, how. Lưu ý: trong câu hỏi, động từ chính không thêm “s.” Hãy luyện đặt câu hỏi về người bạn quen: “Where does she live?” “What do they study?” Bạn càng đặt câu hỏi nhanh, giao tiếp càng dễ."
       },
-      "tags":["questions","communication"],
-      "audio":"vip1_grammar_questions.mp3"
+      "tags": ["questions", "communication"],
+      "audio": "vip1_grammar_questions.mp3"
     },
     {
-      "slug":"basic-connectors",
-      "keywords_en":["connectors","flow","writing"],
-      "keywords_vi":["liên từ","mạch ý","viết"],
-      "copy":{
-        "en":"Connectors help your ideas flow and make sentences sound mature. VIP1 focuses on high-frequency ones: and (add), but (contrast), because (reason), so (result), then (sequence). Practice linking two short sentences: “I was tired but I finished my work.” “I didn’t eat breakfast because I woke up late.” Start using connectors in short paragraphs and voice recordings. As your brain gets used to them, your English becomes clearer and more connected.",
-        "vi":"Liên từ giúp ý mạch lạc và câu trưởng thành hơn. VIP1 tập trung vào các liên từ phổ biến: and (thêm), but (tương phản), because (lý do), so (kết quả), then (trình tự). Hãy luyện nối hai câu ngắn: “I was tired but I finished my work.” “I didn’t eat breakfast because I woke up late.” Dùng liên từ trong đoạn ngắn hoặc khi thu âm. Khi não quen, tiếng Anh sẽ rõ ràng và liền mạch hơn."
+      "slug": "basic-connectors",
+      "keywords_en": ["connectors", "flow", "writing"],
+      "keywords_vi": ["liên từ", "mạch ý", "viết"],
+      "copy": {
+        "en": "Connectors help your ideas flow and make sentences sound mature. VIP1 focuses on high-frequency ones: and (add), but (contrast), because (reason), so (result), then (sequence). Practice linking two short sentences: “I was tired but I finished my work.” “I didn’t eat breakfast because I woke up late.” Start using connectors in short paragraphs and voice recordings. As your brain gets used to them, your English becomes clearer and more connected.",
+        "vi": "Liên từ giúp ý mạch lạc và câu trưởng thành hơn. VIP1 tập trung vào các liên từ phổ biến: and (thêm), but (tương phản), because (lý do), so (kết quả), then (trình tự). Hãy luyện nối hai câu ngắn: “I was tired but I finished my work.” “I didn’t eat breakfast because I woke up late.” Dùng liên từ trong đoạn ngắn hoặc khi thu âm. Khi não quen, tiếng Anh sẽ rõ ràng và liền mạch hơn."
       },
-      "tags":["connectors","flow"],
-      "audio":"vip1_grammar_connectors.mp3"
+      "tags": ["connectors", "flow"],
+      "audio": "vip1_grammar_connectors.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full sequence", "complete", "combined", "grammar accelerator"],
+      "keywords_vi": ["tất cả", "chuỗi đầy đủ", "hoàn chỉnh", "kết hợp", "tăng tốc ngữ pháp"],
+      "copy": {
+        "en": "VIP1 tense clarity means knowing which tense to use without hesitation. Focus on the three essential tenses: present simple for routines and facts, present continuous for actions happening now, and past simple for completed events. The key is linking your tense to a clear time signal: now, usually, today, yesterday, last night. Avoid overthinking. Choose the simplest tense that matches your time word. Practice by describing your day in three versions: routine (present simple), right now (present continuous), and a memory (past simple). Mastering this removes most beginner errors and gives you clean, confident sentences. Verb patterns help you sound natural and avoid common mistakes. Some verbs take “to”: want to, need to, plan to. Others take “ing”: enjoy doing, avoid doing, consider doing. A simple rule for VIP1: verbs about preference usually take ing, while verbs about intention take to. Practice with real-life examples: “I want to improve,” “I enjoy learning,” “I need to finish,” “I avoid rushing.” Build a small personal list of 10–15 patterns you use often. The more you repeat them in speaking and writing, the faster they become automatic and mistake-free. Using sentence templates makes your grammar stable and your speech more fluent. VIP1 focuses on three high-value templates: (1) “I think that…” for opinions, (2) “The reason is that…” for explanations, and (3) “One thing I noticed is…” for descriptions. These patterns organize your ideas automatically and reduce the mental load of building sentences from scratch. Practice creating three examples for each template about your life or day. The more you reuse templates, the faster your English becomes—even with simple grammar. Pronoun accuracy keeps your sentences clean and smooth. Use he/she/they for people, it for things, and we/they for groups. A common VIP1 mistake is switching pronouns mid-sentence or forgetting number agreement. Practice by describing photos, objects, or people: “This is Anna. She is my friend. She likes travel.” Then expand: “This is my laptop. It is old but fast.” Changing nouns to pronouns reduces repetition and improves sentence flow. The more consistent your pronoun use becomes, the more professional your English sounds. Building question confidence helps conversations flow naturally. Use do/does for most questions: “Do you work here?” “Does he like sports?” For details, start with WH-words: what, why, where, when, who, how. Remember: in questions, the main verb stays simple—no “s.” Practice creating questions about people you know: “Where does she live?” “What do they study?” The more questions you can form automatically, the easier it becomes to start conversations and keep them moving. Connectors help your ideas flow and make sentences sound mature. VIP1 focuses on high-frequency ones: and (add), but (contrast), because (reason), so (result), then (sequence). Practice linking two short sentences: “I was tired but I finished my work.” “I didn’t eat breakfast because I woke up late.” Start using connectors in short paragraphs and voice recordings. As your brain gets used to them, your English becomes clearer and more connected.",
+        "vi": "Sự rõ ràng về thì ở VIP1 nghĩa là chọn đúng thì mà không do dự. Tập trung vào ba thì cốt lõi: hiện tại đơn cho thói quen và sự thật, hiện tại tiếp diễn cho hành động đang xảy ra, và quá khứ đơn cho việc đã hoàn thành. Bí quyết là ghép thì với từ chỉ thời gian: now, usually, today, yesterday, last night. Đừng nghĩ quá nhiều. Chọn thì đơn giản nhất phù hợp. Hãy mô tả ngày của bạn bằng ba phiên bản: thói quen (hiện tại đơn), ngay lúc này (hiện tại tiếp diễn), và ký ức (quá khứ đơn). Điều này loại bỏ phần lớn lỗi cơ bản. Mẫu động từ giúp bạn nói tự nhiên và tránh lỗi phổ biến. Một số động từ đi với “to”: want to, need to, plan to. Số khác đi với “ing”: enjoy doing, avoid doing, consider doing. Quy tắc VIP1 đơn giản: động từ nói về sở thích thường đi với ing, động từ nói về ý định thường đi với to. Luyện bằng ví dụ thực tế: “I want to improve”, “I enjoy learning”, “I need to finish”, “I avoid rushing.” Hãy tạo danh sách 10–15 mẫu bạn hay dùng. Lặp lại nhiều giúp chúng trở nên tự động. Dùng mẫu câu giúp ngữ pháp vững và nói trôi chảy hơn. VIP1 tập trung vào ba mẫu giá trị cao: (1) “I think that…” cho ý kiến, (2) “The reason is that…” cho giải thích, (3) “One thing I noticed is…” cho mô tả. Những mẫu này tự động tổ chức ý tưởng và giảm áp lực khi tạo câu mới. Hãy tạo ba ví dụ cho mỗi mẫu về cuộc sống của bạn. Bạn càng dùng lại các mẫu này nhiều, tiếng Anh càng nhanh và tự nhiên hơn. Đại từ chính xác giúp câu gọn và mượt. Dùng he/she/they cho người, it cho vật, và we/they cho nhóm. Lỗi VIP1 thường gặp là đổi đại từ giữa câu hoặc sai số ít–nhiều. Hãy luyện mô tả ảnh, vật hoặc người: “This is Anna. She is my friend. She likes travel.” Sau đó mở rộng: “This is my laptop. It is old but fast.” Thay danh từ bằng đại từ giúp câu tự nhiên và tránh lặp. Đại từ càng đúng, tiếng Anh càng chuyên nghiệp. Tự tin đặt câu hỏi giúp hội thoại diễn ra tự nhiên. Dùng do/does cho hầu hết câu hỏi: “Do you work here?” “Does he like sports?” Với chi tiết, dùng từ hỏi what, why, where, when, who, how. Lưu ý: trong câu hỏi, động từ chính không thêm “s.” Hãy luyện đặt câu hỏi về người bạn quen: “Where does she live?” “What do they study?” Bạn càng đặt câu hỏi nhanh, giao tiếp càng dễ. Liên từ giúp ý mạch lạc và câu trưởng thành hơn. VIP1 tập trung vào các liên từ phổ biến: and (thêm), but (tương phản), because (lý do), so (kết quả), then (trình tự). Hãy luyện nối hai câu ngắn: “I was tired but I finished my work.” “I didn’t eat breakfast because I woke up late.” Dùng liên từ trong đoạn ngắn hoặc khi thu âm. Khi não quen, tiếng Anh sẽ rõ ràng và liền mạch hơn."
+      },
+      "tags": ["all", "combined", "full sequence", "complete"],
+      "audio": "vip1_grammar_tenses.mp3 vip1_grammar_verbs.mp3 vip1_grammar_structure.mp3 vip1_grammar_pronouns.mp3 vip1_grammar_questions.mp3 vip1_grammar_connectors.mp3"
     }
   ]
 }
