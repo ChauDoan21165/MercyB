@@ -245,7 +245,7 @@ export const DictionaryLookup = ({ roomId, roomKeywords, externalSearch }: Dicti
               </div>
             </div>
 
-            <div className="p-4 bg-muted/5">
+            <div className="px-4 py-2 border-t">
               <KeywordPronunciation keyword={result.en[0]} compact={true} />
             </div>
           </div>
