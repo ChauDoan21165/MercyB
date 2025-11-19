@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { RoomSearch } from '@/components/RoomSearch';
 
 const Homepage = () => {
   const { config, loading, error } = useHomepageConfig();
@@ -89,6 +90,11 @@ const Homepage = () => {
         showResetButton={true}
         onReset={handleResetConfig}
       />
+
+      {/* Search box - top right corner */}
+      <div className="fixed top-20 right-6 z-30 w-80">
+        <RoomSearch />
+      </div>
 
       {/* Main content - sections */}
       <main>
