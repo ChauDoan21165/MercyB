@@ -1,102 +1,65 @@
 {
-  "name": "Physical Fitness and Nutrition",
-  "name_vi": "Thể Chất và Dinh Dưỡng",
-  "description": "Practical guidance for improving fitness and nutrition for lasting well-being",
-  "keywords_en": [
-    "fitness",
-    "nutrition",
-    "healthy eating",
-    "exercise"
-  ],
-  "keywords_vi": [
-    "thể chất",
-    "dinh dưỡng",
-    "ăn uống lành mạnh",
-    "tập luyện"
-  ],
+  "id": "physical-fitness-and-nutrition-free",
+  "tier": "Free / Miễn phí",
+  "title": {
+    "en": "Physical Fitness and Nutrition",
+    "vi": "Thể Chất và Dinh Dưỡng"
+  },
+  "content": {
+    "en": "Practical guidance for improving fitness and nutrition for lasting well-being.",
+    "vi": "Hướng dẫn thực tế để cải thiện thể chất và dinh dưỡng vì sức khỏe bền vững."
+  },
   "entries": [
     {
       "slug": "healthy-eating",
-      "keywords_en": [
-        "healthy eating",
-        "nutrition",
-        "well-being"
-      ],
-      "keywords_vi": [
-        "ăn uống lành mạnh",
-        "dinh dưỡng",
-        "sức khỏe"
-      ],
+      "keywords_en": ["healthy eating", "nutrition", "well-being"],
+      "keywords_vi": ["ăn uống lành mạnh", "dinh dưỡng", "sức khỏe"],
       "copy": {
         "en": "Healthy eating fuels physical fitness. Choose whole foods like vegetables, fruits, and lean proteins. Plan balanced meals to sustain energy and focus. Stay hydrated every day. Connect with a nutritionist or supportive friend to stay consistent, fostering resilience and better health choices over time.",
         "vi": "Ăn uống lành mạnh là nguồn năng lượng cho sức khỏe thể chất. Hãy chọn thực phẩm nguyên cám như rau củ, trái cây và protein nạc. Lên kế hoạch bữa ăn cân bằng để duy trì năng lượng và sự tập trung. Uống đủ nước mỗi ngày. Kết nối với chuyên gia dinh dưỡng hoặc bạn bè hỗ trợ để duy trì thói quen, giúp bạn xây dựng nghị lực và lựa chọn sức khỏe tốt hơn theo thời gian."
       },
-      "tags": [
-        "nutrition",
-        "fitness"
-      ],
-      "audio": {
-        "en": "physical_fitness_and_nutrition_free_healthy_eating_en.mp3",
-        "vi": "physical_fitness_and_nutrition_free_healthy_eating_vi.mp3"
-      }
+      "tags": ["nutrition", "fitness"],
+      "audio": "physical_fitness_and_nutrition_free_healthy_eating_en.mp3"
     },
     {
       "slug": "exercise-routines",
-      "keywords_en": [
-        "exercise",
-        "fitness",
-        "strength"
-      ],
-      "keywords_vi": [
-        "tập luyện",
-        "thể chất",
-        "sức mạnh"
-      ],
+      "keywords_en": ["exercise", "fitness", "strength"],
+      "keywords_vi": ["tập luyện", "thể chất", "sức mạnh"],
       "copy": {
         "en": "Exercise routines strengthen both body and mind. Start with short, enjoyable activities like walking, yoga, or stretching. Aim for consistency with daily movement. Connect with a fitness group or partner for motivation. These steps build resilience, improving your strength, mood, and overall well-being each day.",
         "vi": "Thói quen tập luyện giúp tăng cường cả thể chất lẫn tinh thần. Hãy bắt đầu với các hoạt động ngắn và thú vị như đi bộ, yoga hoặc giãn cơ. Duy trì sự đều đặn với vận động mỗi ngày. Kết nối với nhóm thể thao hoặc bạn tập để có động lực. Những bước này xây dựng nghị lực, cải thiện sức mạnh, tâm trạng và sức khỏe toàn diện mỗi ngày."
       },
-      "tags": [
-        "exercise",
-        "fitness"
-      ],
-      "audio": {
-        "en": "physical_fitness_and_nutrition_free_exercise_routines_en.mp3",
-        "vi": "physical_fitness_and_nutrition_free_exercise_routines_vi.mp3"
-      }
+      "tags": ["exercise", "fitness"],
+      "audio": "physical_fitness_and_nutrition_free_exercise_routines_en.mp3"
     },
     {
       "slug": "hydration",
-      "keywords_en": [
-        "hydration",
-        "health",
-        "well-being"
-      ],
-      "keywords_vi": [
-        "bù nước",
-        "sức khỏe",
-        "tập trung"
-      ],
+      "keywords_en": ["hydration", "health", "well-being"],
+      "keywords_vi": ["bù nước", "sức khỏe", "tập trung"],
       "copy": {
         "en": "Hydration supports every aspect of fitness and nutrition. Drink water regularly to maintain energy, focus, and circulation. Track your intake to form lasting habits. Add fruits like lemon or cucumber for flavor. These small steps strengthen resilience, helping you sustain well-being and balance daily.",
         "vi": "Bù nước hỗ trợ mọi khía cạnh của thể chất và dinh dưỡng. Uống nước đều đặn để duy trì năng lượng, sự tập trung và tuần hoàn cơ thể. Theo dõi lượng nước uống để hình thành thói quen lâu dài. Thêm trái cây như chanh hoặc dưa leo để tăng hương vị. Những bước nhỏ này giúp bạn nuôi dưỡng nghị lực, duy trì sức khỏe và cân bằng mỗi ngày."
       },
-      "tags": [
-        "hydration",
-        "fitness"
-      ],
-      "audio": {
-        "en": "physical_fitness_and_nutrition_free_hydration_en.mp3",
-        "vi": "physical_fitness_and_nutrition_free_hydration_vi.mp3"
-      }
+      "tags": ["hydration", "fitness"],
+      "audio": "physical_fitness_and_nutrition_free_hydration_en.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "combined", "full-room"],
+      "keywords_vi": ["tất cả", "kết hợp", "toàn bộ phòng"],
+      "copy": {
+        "en": "This combined entry gathers all three practices from the Physical Fitness and Nutrition room. Healthy eating fuels the body with whole foods, balanced meals, hydration, and supportive routines. Exercise routines strengthen both body and mind, encouraging consistency through enjoyable daily movement and community motivation. Hydration supports every aspect of health—boosting energy, focus, circulation, and long-term well-being. Taken together, these practices create a simple foundation for resilience, balance, and sustainable wellness.",
+        "vi": "Mục này tổng hợp cả ba thực hành trong phòng Thể Chất và Dinh Dưỡng. Ăn uống lành mạnh nuôi dưỡng cơ thể bằng thực phẩm nguyên cám, bữa ăn cân bằng, bù nước và thói quen điều độ. Thói quen tập luyện tăng cường cả thể chất lẫn tinh thần, khuyến khích sự đều đặn qua những hoạt động thú vị mỗi ngày và tinh thần đồng hành. Bù nước hỗ trợ mọi mặt của sức khỏe — tăng năng lượng, sự tập trung, tuần hoàn và duy trì sức khỏe lâu dài. Khi kết hợp, ba thực hành này tạo nên nền tảng đơn giản cho sự cân bằng, nghị lực và sức khỏe bền vững."
+      },
+      "tags": ["all"],
+      "audio": "physical_fitness_and_nutrition_free_healthy_eating_en.mp3 physical_fitness_and_nutrition_free_exercise_routines_en.mp3 physical_fitness_and_nutrition_free_hydration_en.mp3"
     }
   ],
   "meta": {
     "created_at": "2025-10-27T00:00:00+00:00",
     "updated_at": "2025-10-27T00:00:00+00:00",
-    "entry_count": 3,
+    "entry_count": 4,
     "tier": "free",
     "room_color": "#4A90E2"
-  },
-  "audio": "physical_fitness_and_nutrition_free_hydration_en.mp3"
+  }
 }
