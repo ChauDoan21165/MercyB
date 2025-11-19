@@ -18,7 +18,7 @@ const FILLER_WORDS = new Set([
 
 
 export function highlightTextByRules(text: string, isVietnamese: boolean = false): JSX.Element[] {
-  // Treat each sentence as a "line" so essays get multiple groups of 3 colored words
+  // Treat each sentence as a "line" so essays get multiple groups of colored words
   const sentenceLines: string[] = [];
   const rawLines = text.split('\n');
 
@@ -56,27 +56,49 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
       }
     });
 
-    // Select first 3 keywords from this line
-    const numToColor = Math.min(3, keywordIndices.length);
+    // Gentle wave effect: color 1-2 keywords sparingly, skip some lines
+    const totalLines = lines.length;
+    const shouldColorThisLine = keywordIndices.length > 0 && (lineIndex % 2 === 0 || keywordIndices.length > 5);
+    const numToColor = shouldColorThisLine ? Math.min(1 + Math.floor(Math.random() * 2), keywordIndices.length) : 0;
+    
+    // Select keywords with some spacing between them
     const selectedIndices = new Set<number>();
-    keywordIndices.slice(0, numToColor).forEach(idx => selectedIndices.add(idx));
+    if (numToColor > 0) {
+      const step = Math.max(1, Math.floor(keywordIndices.length / numToColor));
+      for (let i = 0; i < numToColor && i * step < keywordIndices.length; i++) {
+        selectedIndices.add(keywordIndices[i * step]);
+      }
+    }
+
+    // Calculate opacity for gentle fade effect (top to bottom)
+    const progressRatio = lineIndex / Math.max(1, totalLines - 1);
+    const baseOpacity = 0.75 + (0.25 * Math.sin(progressRatio * Math.PI)); // Gentle wave 0.75-1.0
 
     // Assign colors sequentially from global color index
-    const colorMap = new Map<number, string>();
+    const colorMap = new Map<number, { color: string; opacity: number }>();
     selectedIndices.forEach(idx => {
-      colorMap.set(idx, COLORS[globalColorIndex % COLORS.length]);
+      const color = COLORS[globalColorIndex % COLORS.length];
+      // Add slight variation to opacity for organic feel
+      const opacityVariation = 0.95 + (Math.random() * 0.1);
+      colorMap.set(idx, { 
+        color, 
+        opacity: baseOpacity * opacityVariation 
+      });
       globalColorIndex++;
     });
 
     // Render segments
     segments.forEach((segment, segIndex) => {
       if (colorMap.has(segIndex)) {
+        const { color, opacity } = colorMap.get(segIndex)!;
         result.push(
           <span
             key={`word-${globalIndex++}`}
             style={{
-              color: colorMap.get(segIndex),
-              fontWeight: 600,
+              color,
+              opacity,
+              fontWeight: 500,
+              transition: 'opacity 0.3s ease',
             }}
           >
             {segment}
