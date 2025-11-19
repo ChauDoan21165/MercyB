@@ -60,7 +60,12 @@ export const PairedHighlightedContentWithDictionary = ({
       
       // Otherwise, wrap word with dictionary
       return (
-        <HoveringDictionary key={idx} word={token} roomKeywords={roomKeywords}>
+        <HoveringDictionary 
+          key={idx} 
+          word={token} 
+          roomKeywords={roomKeywords}
+          roomContent={enText}
+        >
           {token}
         </HoveringDictionary>
       );

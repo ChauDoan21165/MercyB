@@ -20,9 +20,10 @@ interface HoveringDictionaryProps {
   word: string;
   children: React.ReactNode;
   roomKeywords?: string[];
+  roomContent?: string;
 }
 
-export const HoveringDictionary = ({ word, children, roomKeywords }: HoveringDictionaryProps) => {
+export const HoveringDictionary = ({ word, children, roomKeywords, roomContent }: HoveringDictionaryProps) => {
   const [showTooltip, setShowTooltip] = useState(false);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const { toast } = useToast();
@@ -65,6 +66,20 @@ export const HoveringDictionary = ({ word, children, roomKeywords }: HoveringDic
   };
 
   const translation = findTranslation();
+
+  // Find example sentences containing the word
+  const findExampleSentences = (): string[] => {
+    if (!roomContent) return [];
+    
+    const sentences = roomContent.split(/[.!?]+/).map(s => s.trim()).filter(s => s.length > 0);
+    const wordLower = word.toLowerCase();
+    
+    return sentences
+      .filter(sentence => sentence.toLowerCase().includes(wordLower))
+      .slice(0, 2); // Limit to 2 examples
+  };
+
+  const exampleSentences = findExampleSentences();
 
   const playPronunciation = async (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -172,6 +187,20 @@ export const HoveringDictionary = ({ word, children, roomKeywords }: HoveringDic
                 </p>
               )}
             </div>
+            
+            {exampleSentences.length > 0 && (
+              <>
+                <hr className="border-border" />
+                <div className="space-y-1">
+                  <p className="text-xs font-semibold text-muted-foreground">Examples:</p>
+                  {exampleSentences.map((sentence, idx) => (
+                    <p key={idx} className="text-xs text-muted-foreground italic">
+                      "{sentence}."
+                    </p>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
           {/* Arrow pointer */}
           <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px">
