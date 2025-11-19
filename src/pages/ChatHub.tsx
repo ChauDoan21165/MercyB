@@ -571,7 +571,6 @@ const ChatHub = () => {
                       💡 Try shadowing: Listen and repeat along with the audio to improve your pronunciation and fluency. / 💡 Hãy thử bóng: Nghe và lặp lại cùng với âm thanh để cải thiện phát âm và sự trôi chảy của bạn.
                     </p>
                     <div className="flex items-center gap-2">
-                      <MessageActions text={englishContent} roomId={roomId || ""} />
                       <AudioPlayer
                         audioPath={audioUrl}
                         isPlaying={currentAudio === audioUrl && isAudioPlaying}

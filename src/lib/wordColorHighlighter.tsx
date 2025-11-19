@@ -35,6 +35,7 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
   const result: JSX.Element[] = [];
   let globalIndex = 0;
   let globalColorIndex = 0;
+  const totalLines = lines.length || 1;
 
   lines.forEach((line, lineIndex) => {
     if (!line.trim()) {
@@ -48,20 +49,31 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
     const keywordIndices: number[] = [];
     segments.forEach((seg, idx) => {
       const cleaned = seg.trim().toLowerCase();
-      if (cleaned && 
-          !/^[.,;:!?()""—–-]+$/.test(seg) && 
-          seg.length > 2 &&
-          !FILLER_WORDS.has(cleaned)) {
+      if (
+        cleaned &&
+        !/^[.,;:!?()""—–-]+$/.test(seg) &&
+        seg.length > 2 &&
+        !FILLER_WORDS.has(cleaned)
+      ) {
         keywordIndices.push(idx);
       }
     });
 
-    // Gentle wave effect: color 1-2 keywords sparingly, skip some lines
-    const totalLines = lines.length;
-    const shouldColorThisLine = keywordIndices.length > 0 && (lineIndex % 2 === 0 || keywordIndices.length > 5);
-    const numToColor = shouldColorThisLine ? Math.min(1 + Math.floor(Math.random() * 2), keywordIndices.length) : 0;
-    
-    // Select keywords with some spacing between them
+    // Gentle wave effect: color 1–2 keywords per line, skipping some lines for calm spacing
+    const hasKeywords = keywordIndices.length > 0;
+    const shouldColorThisLine =
+      hasKeywords && (lineIndex % 2 === 0 || keywordIndices.length > 5);
+
+    let numToColor = 0;
+    if (shouldColorThisLine) {
+      if (keywordIndices.length > 8) {
+        numToColor = 2;
+      } else {
+        numToColor = 1;
+      }
+      numToColor = Math.min(numToColor, keywordIndices.length);
+    }
+
     const selectedIndices = new Set<number>();
     if (numToColor > 0) {
       const step = Math.max(1, Math.floor(keywordIndices.length / numToColor));
@@ -70,19 +82,16 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
       }
     }
 
-    // Calculate opacity for gentle fade effect (top to bottom)
+    // Calculate opacity for gentle fade effect (top to bottom), fully deterministic
     const progressRatio = lineIndex / Math.max(1, totalLines - 1);
-    const baseOpacity = 0.75 + (0.25 * Math.sin(progressRatio * Math.PI)); // Gentle wave 0.75-1.0
+    const baseOpacity = 0.75 + 0.25 * Math.sin(progressRatio * Math.PI);
 
-    // Assign colors sequentially from global color index
     const colorMap = new Map<number, { color: string; opacity: number }>();
-    selectedIndices.forEach(idx => {
+    selectedIndices.forEach((idx) => {
       const color = COLORS[globalColorIndex % COLORS.length];
-      // Add slight variation to opacity for organic feel
-      const opacityVariation = 0.95 + (Math.random() * 0.1);
-      colorMap.set(idx, { 
-        color, 
-        opacity: baseOpacity * opacityVariation 
+      colorMap.set(idx, {
+        color,
+        opacity: baseOpacity,
       });
       globalColorIndex++;
     });
