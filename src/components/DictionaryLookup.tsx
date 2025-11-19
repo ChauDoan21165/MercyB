@@ -6,6 +6,7 @@ import { Search, Volume2, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useUserAccess } from "@/hooks/useUserAccess";
+import { KeywordPronunciation } from "@/components/KeywordPronunciation";
 import dictionaryData from "@/data/system/Dictionary.json";
 
 interface DictionaryEntry {
@@ -242,6 +243,10 @@ export const DictionaryLookup = ({ roomId, roomKeywords, externalSearch }: Dicti
                   </div>
                 )}
               </div>
+            </div>
+
+            <div className="p-4 bg-muted/5">
+              <KeywordPronunciation keyword={result.en[0]} compact={true} />
             </div>
           </div>
         </Card>
