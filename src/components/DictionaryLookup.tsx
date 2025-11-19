@@ -21,7 +21,12 @@ interface Dictionary {
   [key: string]: DictionaryEntry;
 }
 
-export const DictionaryLookup = () => {
+interface DictionaryLookupProps {
+  roomId?: string;
+  roomKeywords?: string[];
+}
+
+export const DictionaryLookup = ({ roomId, roomKeywords }: DictionaryLookupProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [result, setResult] = useState<DictionaryEntry | null>(null);
   const [loadingAudio, setLoadingAudio] = useState<'en' | 'vi' | null>(null);
@@ -29,6 +34,25 @@ export const DictionaryLookup = () => {
   const { toast } = useToast();
   const { access } = useUserAccess();
   const dictionary = (dictionaryData as any).dictionary as Dictionary;
+  
+  // Filter dictionary to only room-relevant keywords
+  const relevantDictionary: Dictionary = {};
+  if (roomKeywords && roomKeywords.length > 0) {
+    for (const [key, entry] of Object.entries(dictionary)) {
+      // Check if this dictionary key matches any room keyword
+      const keyLower = key.toLowerCase();
+      const isRelevant = roomKeywords.some(keyword => {
+        const kwLower = keyword.toLowerCase().replace(/_/g, ' ');
+        return keyLower.includes(kwLower) || kwLower.includes(keyLower);
+      });
+      if (isRelevant) {
+        relevantDictionary[key] = entry;
+      }
+    }
+  } else {
+    // If no room keywords provided, use full dictionary
+    Object.assign(relevantDictionary, dictionary);
+  }
 
   useEffect(() => {
     if (!searchTerm.trim()) {
@@ -38,8 +62,8 @@ export const DictionaryLookup = () => {
 
     const term = searchTerm.toLowerCase().trim();
     
-    // First try exact word match
-    for (const [key, entry] of Object.entries(dictionary)) {
+    // First try exact word match in relevant dictionary
+    for (const [key, entry] of Object.entries(relevantDictionary)) {
       const exactMatch = entry.en.some(word => word.toLowerCase() === term) ||
                          entry.vi.some(word => word.toLowerCase() === term);
       if (exactMatch) {
@@ -49,7 +73,7 @@ export const DictionaryLookup = () => {
     }
     
     // Then try partial match (word contains the search term)
-    for (const [key, entry] of Object.entries(dictionary)) {
+    for (const [key, entry] of Object.entries(relevantDictionary)) {
       const partialMatch = entry.en.some(word => word.toLowerCase().includes(term)) ||
                           entry.vi.some(word => word.toLowerCase().includes(term));
       if (partialMatch) {
@@ -59,7 +83,7 @@ export const DictionaryLookup = () => {
     }
 
     setResult(null);
-  }, [searchTerm, dictionary]);
+  }, [searchTerm, relevantDictionary]);
 
   const playPronunciation = async (text: string, language: 'en' | 'vi') => {
     setLoadingAudio(language);

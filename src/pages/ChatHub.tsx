@@ -844,7 +844,10 @@ const ChatHub = () => {
           )}
 
           {/* Dictionary Lookup */}
-          <DictionaryLookup />
+          <DictionaryLookup 
+            roomId={roomId} 
+            roomKeywords={keywordMenu?.en || []} 
+          />
           
           {keywordMenu && keywordMenu.en && keywordMenu.vi && keywordMenu.en.length > 0 && (
             <div>
