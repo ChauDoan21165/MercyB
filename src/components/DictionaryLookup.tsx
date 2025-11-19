@@ -24,9 +24,10 @@ interface Dictionary {
 interface DictionaryLookupProps {
   roomId?: string;
   roomKeywords?: string[];
+  externalSearch?: string;
 }
 
-export const DictionaryLookup = ({ roomId, roomKeywords }: DictionaryLookupProps) => {
+export const DictionaryLookup = ({ roomId, roomKeywords, externalSearch }: DictionaryLookupProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [result, setResult] = useState<DictionaryEntry | null>(null);
   const [loadingAudio, setLoadingAudio] = useState<'en' | 'vi' | null>(null);
@@ -34,6 +35,13 @@ export const DictionaryLookup = ({ roomId, roomKeywords }: DictionaryLookupProps
   const { toast } = useToast();
   const { access } = useUserAccess();
   const dictionary = (dictionaryData as any).dictionary as Dictionary;
+  
+  // Update search term when external search is provided
+  useEffect(() => {
+    if (externalSearch) {
+      setSearchTerm(externalSearch);
+    }
+  }, [externalSearch]);
   
   // Filter dictionary to only room-relevant keywords
   const relevantDictionary: Dictionary = {};
