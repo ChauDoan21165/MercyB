@@ -3,6 +3,7 @@ import { Copy, Check } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { HoveringDictionary } from "@/components/HoveringDictionary";
+import { useAdminCheck } from "@/hooks/useAdminCheck";
 
 interface PairedHighlightedContentWithDictionaryProps {
   englishText?: string;
@@ -25,6 +26,7 @@ export const PairedHighlightedContentWithDictionary = ({
 }: PairedHighlightedContentWithDictionaryProps) => {
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
+  const { isAdmin } = useAdminCheck();
 
   const enText = englishText || englishContent || "";
   const viText = vietnameseText || vietnameseContent || "";
@@ -87,26 +89,28 @@ export const PairedHighlightedContentWithDictionary = ({
             <div className="text-sm leading-relaxed">
               {viText}
             </div>
-            <div className="mt-3 flex gap-2 opacity-70 hover:opacity-100 transition-opacity">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleCopy}
-                className="h-8 px-3 gap-2 text-xs"
-              >
-                {copied ? (
-                  <>
-                    <Check className="w-3 h-3" />
-                    <span>Copied</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3 h-3" />
-                    <span>Copy</span>
-                  </>
-                )}
-              </Button>
-            </div>
+            {isAdmin && (
+              <div className="mt-3 flex gap-2 opacity-70 hover:opacity-100 transition-opacity">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleCopy}
+                  className="h-8 px-3 gap-2 text-xs"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-3 h-3" />
+                      <span>Copied</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3 h-3" />
+                      <span>Copy</span>
+                    </>
+                  )}
+                </Button>
+              </div>
+            )}
           </div>
         </>
       )}
