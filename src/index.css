@@ -38,8 +38,8 @@ All colors MUST be HSL.
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
+    --border: 194 41% 80%;
+    --input: 194 41% 80%;
     --ring: 340 82% 52%;
 
     --radius: 0.75rem;
@@ -59,7 +59,7 @@ All colors MUST be HSL.
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 5% 96%;
     --sidebar-accent-foreground: 240 10% 10%;
-    --sidebar-border: 240 6% 90%;
+    --sidebar-border: 194 41% 80%;
     --sidebar-ring: 340 82% 52%;
     
     /* Mercy Blade Rainbow Page Colors */
@@ -144,8 +144,8 @@ All colors MUST be HSL.
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 200 15% 25%;
-    --input: 200 15% 25%;
+    --border: 194 41% 25%;
+    --input: 194 41% 25%;
     --ring: 180 50% 55%;
     
     --gradient-hero: linear-gradient(135deg, hsl(180 45% 35%), hsl(180 50% 50%));
@@ -158,7 +158,7 @@ All colors MUST be HSL.
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-border: 194 41% 25%;
     --sidebar-ring: 217.2 91.2% 59.8%;
     
     /* Page-specific backgrounds - dark mode */
