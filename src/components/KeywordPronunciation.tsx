@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import dictionaryData from '@/data/system/Dictionary.json';
+import pronunciationGuide from '@/../../public/data/pronunciation-guide.json';
 
 interface PronunciationData {
   ipa_en?: string;
@@ -60,6 +61,18 @@ export const KeywordPronunciation = ({ keyword, compact = false }: KeywordPronun
       return;
     }
 
+    // Check pronunciation guide (case-insensitive)
+    const guideData = pronunciationGuide.pronunciation;
+    const guidePronunciation = Object.keys(guideData).find(
+      key => key.toLowerCase() === normalizedKeyword
+    );
+    if (guidePronunciation) {
+      setPronunciation({
+        breakdown: guideData[guidePronunciation as keyof typeof guideData]
+      });
+      return;
+    }
+
     // Then check the main dictionary
     const dictEntry = (dictionaryData as any).dictionary[normalizedKeyword];
     if (dictEntry?.ipa_en) {
@@ -70,12 +83,12 @@ export const KeywordPronunciation = ({ keyword, compact = false }: KeywordPronun
     }
   }, [keyword]);
 
-  if (!pronunciation?.ipa_en) return null;
+  if (!pronunciation?.ipa_en && !pronunciation?.breakdown) return null;
 
   if (compact) {
     return (
       <div className="text-xs text-muted-foreground mt-1 space-y-0.5">
-        <div className="font-mono">{pronunciation.ipa_en}</div>
+        {pronunciation.ipa_en && <div className="font-mono">{pronunciation.ipa_en}</div>}
         {pronunciation.breakdown && (
           <div className="italic">{pronunciation.breakdown}</div>
         )}
@@ -85,7 +98,7 @@ export const KeywordPronunciation = ({ keyword, compact = false }: KeywordPronun
 
   return (
     <div className="text-xs text-muted-foreground mt-1 space-y-1 text-left w-full">
-      <div className="font-mono font-medium">{pronunciation.ipa_en}</div>
+      {pronunciation.ipa_en && <div className="font-mono font-medium">{pronunciation.ipa_en}</div>}
       {pronunciation.breakdown && (
         <div className="italic text-foreground/80">{pronunciation.breakdown}</div>
       )}
