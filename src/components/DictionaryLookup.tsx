@@ -165,114 +165,80 @@ export const DictionaryLookup = ({ roomId, roomKeywords, externalSearch }: Dicti
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto mb-6">
+    <div className="w-full max-w-xl mx-auto mb-4">
       <div className="relative">
-        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground/60" />
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground/60" />
         <Input
           type="text"
-          placeholder="Search English or Vietnamese / Tìm tiếng Anh hoặc tiếng Việt"
+          placeholder="Search keyword"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="pl-12 pr-28 h-14 text-base border-2 focus:border-primary shadow-sm"
+          className="pl-10 pr-4 h-11 text-sm border focus:border-primary"
         />
-        {result && (result.ipa_en || result.ipa_vi) && (
-          <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-xs text-muted-foreground bg-muted/60 border border-border/50 rounded px-2 py-0.5">
-            <span className="font-mono">
-              {result.ipa_en ? `{/${result.ipa_en}/}` : ''}
-              {result.ipa_en && result.ipa_vi ? ' ' : ''}
-              {result.ipa_vi ? `{/${result.ipa_vi}/}` : ''}
-            </span>
-          </div>
-        )}
       </div>
       
       {result && searchTerm && (
-        <Card className="mt-4 overflow-hidden border-2 shadow-lg">
+        <Card className="mt-3 overflow-hidden border shadow-md">
           <div className="divide-y divide-border">
-            <div className="p-6 bg-gradient-to-r from-background to-muted/20">
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex-1 space-y-3">
-                  <div className="flex items-center gap-3">
-                    <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">English</span>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      className="h-8 w-8 p-0 hover:bg-primary/10"
-                      onClick={() => playPronunciation(result.en[0], 'en')}
-                      disabled={loadingAudio !== null}
-                    >
-                      {loadingAudio === 'en' ? (
-                        <Loader2 className="h-4 w-4 animate-spin" />
-                      ) : (
-                        <Volume2 className="h-4 w-4" />
-                      )}
-                    </Button>
-                  </div>
-                  <div className="space-y-2">
-                    <p className="text-2xl font-semibold text-foreground">{result.en.join(", ")}</p>
-                    {result.ipa_en && (
-                      <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-md">
-                        <span className="text-xs font-semibold text-muted-foreground">IPA:</span>
-                        <p className="text-base font-mono text-foreground">/{result.ipa_en}/</p>
-                      </div>
+            <div className="p-4 bg-gradient-to-r from-background to-muted/10">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">English</span>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="h-6 w-6 p-0 hover:bg-primary/10"
+                    onClick={() => playPronunciation(result.en[0], 'en')}
+                    disabled={loadingAudio !== null}
+                  >
+                    {loadingAudio === 'en' ? (
+                      <Loader2 className="h-3 w-3 animate-spin" />
+                    ) : (
+                      <Volume2 className="h-3 w-3" />
                     )}
+                  </Button>
+                </div>
+                <p className="text-lg font-semibold text-foreground">{result.en.join(", ")}</p>
+                {result.ipa_en && (
+                  <div className="text-xs space-y-0.5 text-muted-foreground">
+                    <p className="font-mono">/{result.ipa_en}/</p>
                   </div>
-                  {result.example_en && (
-                    <div className="mt-4 p-3 bg-muted/40 rounded-md border-l-4 border-primary">
-                      <p className="text-xs font-semibold text-muted-foreground mb-1">EXAMPLE</p>
-                      <p className="text-sm text-foreground/90 italic">"{result.example_en}"</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-              
-              <div className="mt-4 pt-4 border-t border-border/50">
-                <span className="text-xs text-muted-foreground">Playback speed:</span>
-                <div className="flex gap-2 mt-2">
-                  <Button
-                    size="sm"
-                    variant={speed === 0.75 ? "default" : "outline"}
-                    className="h-7 px-3 text-xs"
-                    onClick={() => setSpeed(0.75)}
-                  >
-                    0.75×
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant={speed === 1.0 ? "default" : "outline"}
-                    className="h-7 px-3 text-xs"
-                    onClick={() => setSpeed(1.0)}
-                  >
-                    1.0×
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant={speed === 1.5 ? "default" : "outline"}
-                    className="h-7 px-3 text-xs"
-                    onClick={() => setSpeed(1.5)}
-                  >
-                    1.5×
-                  </Button>
-                </div>
+                )}
+                {result.example_en && (
+                  <div className="mt-2 p-2 bg-muted/30 rounded border-l-2 border-primary">
+                    <p className="text-xs text-foreground/80 italic">"{result.example_en}"</p>
+                  </div>
+                )}
               </div>
             </div>
-            
-            <div className="p-6 bg-gradient-to-r from-muted/20 to-background">
-              <div className="space-y-3">
-                <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Tiếng Việt</span>
-                <div className="space-y-2">
-                  <p className="text-2xl font-semibold text-foreground">{result.vi.join(", ")}</p>
-                  {result.ipa_vi && (
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-md">
-                      <span className="text-xs font-semibold text-muted-foreground">IPA:</span>
-                      <p className="text-base font-mono text-foreground">/{result.ipa_vi}/</p>
-                    </div>
-                  )}
+
+            <div className="p-4 bg-gradient-to-r from-background to-muted/10">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Tiếng Việt</span>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="h-6 w-6 p-0 hover:bg-primary/10"
+                    onClick={() => playPronunciation(result.vi[0], 'vi')}
+                    disabled={loadingAudio !== null}
+                  >
+                    {loadingAudio === 'vi' ? (
+                      <Loader2 className="h-3 w-3 animate-spin" />
+                    ) : (
+                      <Volume2 className="h-3 w-3" />
+                    )}
+                  </Button>
                 </div>
+                <p className="text-lg font-semibold text-foreground">{result.vi.join(", ")}</p>
+                {result.ipa_vi && (
+                  <div className="text-xs space-y-0.5 text-muted-foreground">
+                    <p className="font-mono">/{result.ipa_vi}/</p>
+                  </div>
+                )}
                 {result.example_vi && (
-                  <div className="mt-4 p-3 bg-muted/40 rounded-md border-l-4 border-primary">
-                    <p className="text-xs font-semibold text-muted-foreground mb-1">VÍ DỤ</p>
-                    <p className="text-sm text-foreground/90 italic">"{result.example_vi}"</p>
+                  <div className="mt-2 p-2 bg-muted/30 rounded border-l-2 border-primary">
+                    <p className="text-xs text-foreground/80 italic">"{result.example_vi}"</p>
                   </div>
                 )}
               </div>

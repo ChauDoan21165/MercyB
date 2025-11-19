@@ -1,12 +1,12 @@
-// Vibrant, fun color palette for learning
+// Darker, bolder color palette for better visibility on white background
 const COLORS = [
-  '#FF6B9D', '#FF8E53', '#FFD93D', '#6BCF7F', '#4ECDC4', '#95E1D3',
-  '#F38181', '#AA96DA', '#FCBAD3', '#A8E6CF', '#FFD1DC', '#FDCB6E',
-  '#6C5CE7', '#00B894', '#00CEC9', '#0984E3', '#FD79A8', '#FDCB6E',
-  '#74B9FF', '#A29BFE', '#FF7675', '#FD79A8', '#FDCB6E', '#55EFC4',
-  '#FF6348', '#FF9F43', '#FFDD59', '#26DE81', '#2BCBBA', '#45AAF2',
-  '#FC5C65', '#EB3B5A', '#FA8231', '#FED330', '#20BF6B', '#0FB9B1',
-  '#A55EEA', '#8854D0', '#F7B731', '#FED330', '#4B7BEC', '#3867D6'
+  '#D9185F', '#E66B2F', '#E5B800', '#4FA865', '#2BA89F', '#6BC4BC',
+  '#C85A5A', '#7B5FB8', '#E08FB8', '#72C9A9', '#EAA0B0', '#E09F42',
+  '#5243B8', '#008F6E', '#00A6A3', '#0661B8', '#D94580', '#E09F42',
+  '#3D8CDB', '#7B6FDB', '#D94947', '#D94580', '#E09F42', '#2EC99E',
+  '#D93E28', '#E67520', '#E5B800', '#18A856', '#18A095', '#2681CC',
+  '#C83A4D', '#B81F35', '#D45610', '#E5A600', '#158F4E', '#0C8F88',
+  '#7D34C2', '#623FA8', '#D48F0F', '#E5A600', '#2954B8', '#1F3EB8'
 ];
 
 // Filler words to exclude (English + Vietnamese)
@@ -82,8 +82,8 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
       }
     }
 
-    // High opacity for vibrant, fun colors
-    const baseOpacity = 0.95; // Bright and clear for better visibility
+    // Full opacity for dark, bold colors
+    const baseOpacity = 1.0; // Maximum visibility on white background
 
     const colorMap = new Map<number, { color: string; opacity: number }>();
     selectedIndices.forEach((idx) => {
@@ -105,7 +105,7 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
             style={{
               color,
               opacity,
-              fontWeight: 600,
+              fontWeight: 700,
               transition: 'opacity 0.3s ease',
             }}
           >
