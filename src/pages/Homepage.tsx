@@ -92,7 +92,7 @@ const Homepage = () => {
       />
 
       {/* Search box - top right corner */}
-      <div className="fixed top-20 right-6 z-30 w-80">
+      <div className="fixed top-28 right-6 z-30 w-80">
         <RoomSearch />
       </div>
 
