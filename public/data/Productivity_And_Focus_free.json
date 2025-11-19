@@ -1,4 +1,5 @@
 {
+  "id": "productivity-and-focus-free",
   "tier": "Free / Miễn phí",
   "title": {
     "en": "Productivity & Focus",
@@ -11,47 +12,36 @@
   "entries": [
     {
       "slug": "task-list",
-      "keywords_en": [
-        "task list",
-        "priority",
-        "productivity"
-      ],
-      "keywords_vi": [
-        "danh sách nhiệm vụ",
-        "ưu tiên",
-        "năng suất"
-      ],
+      "keywords_en": ["task list", "priority", "productivity"],
+      "keywords_vi": ["danh sách nhiệm vụ", "ưu tiên", "năng suất"],
       "copy": {
         "en": "A daily task list boosts productivity and clarity. Write three key tasks every morning and start with the one that has the biggest impact. Check them off as you go to build momentum. Share your list with a friend for accountability and motivation.",
         "vi": "Danh sách nhiệm vụ hàng ngày tăng cường năng suất và sự rõ ràng. Viết ba nhiệm vụ chính mỗi sáng và bắt đầu với nhiệm vụ có tác động lớn nhất. Đánh dấu khi hoàn thành để xây dựng đà. Chia sẻ danh sách với bạn bè để có trách nhiệm và động lực."
       },
-      "tags": [
-        "task",
-        "productivity"
-      ],
+      "tags": ["task", "productivity"],
       "audio": "paf_free_1_en.mp3"
     },
     {
       "slug": "pomodoro",
-      "keywords_en": [
-        "pomodoro",
-        "focus",
-        "break"
-      ],
-      "keywords_vi": [
-        "pomodoro",
-        "tập trung",
-        "nghỉ"
-      ],
+      "keywords_en": ["pomodoro", "focus", "break"],
+      "keywords_vi": ["pomodoro", "tập trung", "nghỉ"],
       "copy": {
         "en": "Use the Pomodoro technique to sharpen focus. Work for twenty-five minutes, then rest for five. After four rounds, take a longer break. Set a timer to stay consistent and study with a friend to strengthen focus through shared rhythm and accountability.",
         "vi": "Sử dụng kỹ thuật Pomodoro để tăng cường sự tập trung. Làm việc trong hai mươi lăm phút, sau đó nghỉ năm phút. Sau bốn vòng, nghỉ dài hơn. Đặt đồng hồ để duy trì sự nhất quán và học cùng bạn bè để củng cố sự tập trung qua nhịp điệu chia sẻ và trách nhiệm."
       },
-      "tags": [
-        "pomodoro",
-        "focus"
-      ],
+      "tags": ["pomodoro", "focus"],
       "audio": "paf_free_2_en.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full collection"],
+      "keywords_vi": ["tất cả", "toàn bộ"],
+      "copy": {
+        "en": "A daily task list boosts productivity and clarity. Write three key tasks every morning and start with the one that has the biggest impact. Check them off as you go to build momentum. Share your list with a friend for accountability and motivation.\n\nUse the Pomodoro technique to sharpen focus. Work for twenty-five minutes, then rest for five. After four rounds, take a longer break. Set a timer to stay consistent and study with a friend to strengthen focus through shared rhythm and accountability.",
+        "vi": "Danh sách nhiệm vụ hàng ngày tăng cường năng suất và sự rõ ràng. Viết ba nhiệm vụ chính mỗi sáng và bắt đầu với nhiệm vụ có tác động lớn nhất. Đánh dấu khi hoàn thành để xây dựng đà. Chia sẻ danh sách với bạn bè để có trách nhiệm và động lực.\n\nSử dụng kỹ thuật Pomodoro để tăng cường sự tập trung. Làm việc trong hai mươi lăm phút, sau đó nghỉ năm phút. Sau bốn vòng, nghỉ dài hơn. Đặt đồng hồ để duy trì sự nhất quán và học cùng bạn bè để củng cố sự tập trung qua nhịp điệu chia sẻ và trách nhiệm."
+      },
+      "tags": ["all"],
+      "audio": "paf_free_1_en.mp3 paf_free_2_en.mp3"
     }
   ]
 }
