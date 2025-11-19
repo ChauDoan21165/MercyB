@@ -1,13 +1,13 @@
-// 48 decorative pastel colors
+// Color list in exact order
 const COLORS = [
-  '#8EC6E8', '#6FB4E3', '#4D9FD9', '#A8E6CF', '#7FD9BC', '#5CC7A8',
-  '#FFCCB6', '#FFB59E', '#FF9F8A', '#D7CFF2', '#C7B9EE', '#B3A4E8',
-  '#F6E3B4', '#F3D89B', '#F1CD85', '#FF8C7A', '#F4A261', '#6A57D5',
-  '#2A9D8F', '#44A7C4', '#FF9E7C', '#A875E8', '#53C1C9', '#E79F62',
-  '#F27D72', '#A7B4C2', '#C9D1D9', '#E5E7EB', '#D9CFC3', '#C9B9A8',
-  '#A0D8F1', '#7EC9E6', '#F2BAC9', '#FFDEE2', '#F7D6C4', '#C3E6CB',
-  '#B2DFDB', '#FFE3E0', '#FAD6D6', '#E6C9F0', '#D9E8FF', '#C2E9FB',
-  '#FCEECF', '#EAD7C2', '#F8D5BA', '#E2F0D9', '#FCFAE1', '#F5E6FF'
+  '#4D9FD9', '#2F88C9', '#1C74B8', '#3FA9D7', '#008BBF', '#0077A8',
+  '#2A9D8F', '#3CAEA3', '#2F8F83', '#4BBDAF', '#1F8173', '#3C9E72',
+  '#6A57D5', '#7F63E3', '#8A5FDB', '#9A6AE8', '#7C52C4', '#A574E3',
+  '#FF9F8A', '#FF8C7A', '#F27D72', '#E6655A', '#FF7A66', '#D85A54',
+  '#F4A261', '#E99343', '#D68028', '#E8A046', '#F28E3D', '#CC7B23',
+  '#E85A70', '#D94D64', '#C53E58', '#F06478', '#B7324B', '#E14F60',
+  '#4A9E51', '#3F8C45', '#59AC63', '#2F7134', '#5CB572', '#3A7F42',
+  '#2E5EAA', '#234A87', '#3A63B4', '#1F4C7A', '#2D6ACF', '#1C3D73'
 ];
 
 // Filler words to exclude (English + Vietnamese)
@@ -16,11 +16,6 @@ const FILLER_WORDS = new Set([
   'là', 'và', 'có', 'thì', 'của', 'được', 'cho', 'với', 'từ', 'trong', 'trên', 'dưới', 'về', 'đã', 'sẽ', 'đang', 'các', 'những', 'này', 'đó', 'kia', 'mà', 'như'
 ]);
 
-// Seeded random function for consistency
-function seededRandom(seed: number): number {
-  const x = Math.sin(seed++) * 10000;
-  return x - Math.floor(x);
-}
 
 export function highlightTextByRules(text: string, isVietnamese: boolean = false): JSX.Element[] {
   // Treat each sentence as a "line" so essays get multiple groups of 3 colored words
@@ -39,6 +34,7 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
   const lines = sentenceLines;
   const result: JSX.Element[] = [];
   let globalIndex = 0;
+  let globalColorIndex = 0;
 
   lines.forEach((line, lineIndex) => {
     if (!line.trim()) {
@@ -60,37 +56,26 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
       }
     });
 
-    // Select exactly 3 keywords (or fewer if line has less)
+    // Select first 3 keywords from this line
     const numToColor = Math.min(3, keywordIndices.length);
     const selectedIndices = new Set<number>();
-    
-    const seed = lineIndex * 1000 + line.length;
-    let currentSeed = seed;
-    
-    // Randomly pick 3 keywords
-    const shuffled = [...keywordIndices];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(seededRandom(currentSeed++) * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    shuffled.slice(0, numToColor).forEach(idx => selectedIndices.add(idx));
+    keywordIndices.slice(0, numToColor).forEach(idx => selectedIndices.add(idx));
 
-    // Pick 3 different colors from the palette
-    const colors: string[] = [];
-    const colorStartIndex = (lineIndex * 3 + globalIndex) % COLORS.length;
-    for (let i = 0; i < numToColor; i++) {
-      colors.push(COLORS[(colorStartIndex + i) % COLORS.length]);
-    }
+    // Assign colors sequentially from global color index
+    const colorMap = new Map<number, string>();
+    selectedIndices.forEach(idx => {
+      colorMap.set(idx, COLORS[globalColorIndex % COLORS.length]);
+      globalColorIndex++;
+    });
 
     // Render segments
-    let colorIndex = 0;
     segments.forEach((segment, segIndex) => {
-      if (selectedIndices.has(segIndex)) {
+      if (colorMap.has(segIndex)) {
         result.push(
           <span
             key={`word-${globalIndex++}`}
             style={{
-              color: colors[colorIndex++],
+              color: colorMap.get(segIndex),
               fontWeight: 600,
             }}
           >
