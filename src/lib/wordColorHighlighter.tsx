@@ -1,13 +1,12 @@
-// Color list in exact order
+// Vibrant, fun color palette for learning
 const COLORS = [
-  '#4D9FD9', '#2F88C9', '#1C74B8', '#3FA9D7', '#008BBF', '#0077A8',
-  '#2A9D8F', '#3CAEA3', '#2F8F83', '#4BBDAF', '#1F8173', '#3C9E72',
-  '#6A57D5', '#7F63E3', '#8A5FDB', '#9A6AE8', '#7C52C4', '#A574E3',
-  '#FF9F8A', '#FF8C7A', '#F27D72', '#E6655A', '#FF7A66', '#D85A54',
-  '#F4A261', '#E99343', '#D68028', '#E8A046', '#F28E3D', '#CC7B23',
-  '#E85A70', '#D94D64', '#C53E58', '#F06478', '#B7324B', '#E14F60',
-  '#4A9E51', '#3F8C45', '#59AC63', '#2F7134', '#5CB572', '#3A7F42',
-  '#2E5EAA', '#234A87', '#3A63B4', '#1F4C7A', '#2D6ACF', '#1C3D73'
+  '#FF6B9D', '#FF8E53', '#FFD93D', '#6BCF7F', '#4ECDC4', '#95E1D3',
+  '#F38181', '#AA96DA', '#FCBAD3', '#A8E6CF', '#FFD1DC', '#FDCB6E',
+  '#6C5CE7', '#00B894', '#00CEC9', '#0984E3', '#FD79A8', '#FDCB6E',
+  '#74B9FF', '#A29BFE', '#FF7675', '#FD79A8', '#FDCB6E', '#55EFC4',
+  '#FF6348', '#FF9F43', '#FFDD59', '#26DE81', '#2BCBBA', '#45AAF2',
+  '#FC5C65', '#EB3B5A', '#FA8231', '#FED330', '#20BF6B', '#0FB9B1',
+  '#A55EEA', '#8854D0', '#F7B731', '#FED330', '#4B7BEC', '#3867D6'
 ];
 
 // Filler words to exclude (English + Vietnamese)
@@ -59,17 +58,18 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
       }
     });
 
-    // Gentle wave effect: color 1–2 keywords per line, skipping some lines for calm spacing
+    // Fun, colorful highlighting: color 2-4 keywords per line for vibrant learning
     const hasKeywords = keywordIndices.length > 0;
-    const shouldColorThisLine =
-      hasKeywords && (lineIndex % 2 === 0 || keywordIndices.length > 5);
+    const shouldColorThisLine = hasKeywords; // Color every line that has keywords
 
     let numToColor = 0;
     if (shouldColorThisLine) {
-      if (keywordIndices.length > 8) {
-        numToColor = 2;
+      if (keywordIndices.length > 10) {
+        numToColor = 4;
+      } else if (keywordIndices.length > 5) {
+        numToColor = 3;
       } else {
-        numToColor = 1;
+        numToColor = 2;
       }
       numToColor = Math.min(numToColor, keywordIndices.length);
     }
@@ -82,9 +82,8 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
       }
     }
 
-    // Calculate opacity for gentle fade effect (top to bottom), fully deterministic
-    const progressRatio = lineIndex / Math.max(1, totalLines - 1);
-    const baseOpacity = 0.75 + 0.25 * Math.sin(progressRatio * Math.PI);
+    // High opacity for vibrant, fun colors
+    const baseOpacity = 0.95; // Bright and clear for better visibility
 
     const colorMap = new Map<number, { color: string; opacity: number }>();
     selectedIndices.forEach((idx) => {
@@ -106,7 +105,7 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
             style={{
               color,
               opacity,
-              fontWeight: 500,
+              fontWeight: 600,
               transition: 'opacity 0.3s ease',
             }}
           >
