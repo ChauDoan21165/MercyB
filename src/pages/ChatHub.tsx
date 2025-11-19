@@ -864,7 +864,10 @@ const ChatHub = () => {
                       className="text-xs cursor-pointer"
                       onClick={() => {
                         handleKeywordClick(keywordEn);
-                        setDictionarySearch(keywordEn.replace(/_/g, ' '));
+                        // Skip "All" from dictionary lookups - it's not a real keyword
+                        if (keywordEn !== 'All') {
+                          setDictionarySearch(keywordEn.replace(/_/g, ' '));
+                        }
                       }}
                       disabled={isLoading || !isAuthenticated}
                     >
