@@ -1,58 +1,67 @@
 {
-  "id": "physical-fitness-and-nutrition-free",
-  "tier": "Free / Miễn phí",
-  "title": {
-    "en": "Physical Fitness and Nutrition",
-    "vi": "Thể Chất và Dinh Dưỡng"
+  "id": "loneliness-comfort-free",
+  "name": "Loneliness Comfort",
+  "name_vi": "An Ủi Nỗi Cô Đơn",
+  "description": {
+    "en": "Practical guidance for finding comfort in loneliness through connection and compassion.",
+    "vi": "Hướng dẫn thực tế giúp bạn tìm sự an ủi trong nỗi cô đơn thông qua kết nối và lòng trắc ẩn."
   },
-  "content": {
-    "en": "Practical guidance for improving fitness and nutrition for lasting well-being.",
-    "vi": "Hướng dẫn thực tế để cải thiện thể chất và dinh dưỡng vì sức khỏe bền vững."
-  },
+  "keywords_en": [
+    "loneliness",
+    "connection",
+    "self-compassion",
+    "community"
+  ],
+  "keywords_vi": [
+    "cô đơn",
+    "kết nối",
+    "tự trắc ẩn",
+    "cộng đồng"
+  ],
   "entries": [
     {
-      "slug": "healthy-eating",
-      "keywords_en": ["healthy eating", "nutrition", "well-being"],
-      "keywords_vi": ["ăn uống lành mạnh", "dinh dưỡng", "sức khỏe"],
+      "slug": "connection",
+      "keywords_en": ["connection", "relationships", "empathy"],
+      "keywords_vi": ["kết nối", "mối quan hệ", "đồng cảm"],
       "copy": {
-        "en": "Healthy eating fuels physical fitness. Choose whole foods like vegetables, fruits, and lean proteins. Plan balanced meals to sustain energy and focus. Stay hydrated every day. Connect with a nutritionist or supportive friend to stay consistent, fostering resilience and better health choices over time.",
-        "vi": "Ăn uống lành mạnh là nguồn năng lượng cho sức khỏe thể chất. Hãy chọn thực phẩm nguyên cám như rau củ, trái cây và protein nạc. Lên kế hoạch bữa ăn cân bằng để duy trì năng lượng và sự tập trung. Uống đủ nước mỗi ngày. Kết nối với chuyên gia dinh dưỡng hoặc bạn bè hỗ trợ để duy trì thói quen, giúp bạn xây dựng nghị lực và lựa chọn sức khỏe tốt hơn theo thời gian."
+        "en": "Finding comfort in loneliness starts with building connection. Reach out to a friend or join a group activity to foster empathy. Share your feelings openly to build trust. Small interactions can ease isolation, helping you feel supported and valued.",
+        "vi": "Tìm sự an ủi trong cô đơn bắt đầu từ việc xây dựng kết nối. Hãy liên hệ với bạn bè hoặc tham gia các hoạt động nhóm để nuôi dưỡng sự đồng cảm. Chia sẻ cảm xúc một cách cởi mở để tạo dựng niềm tin. Những tương tác nhỏ có thể làm dịu cảm giác cô lập, giúp bạn cảm thấy được lắng nghe và trân trọng."
       },
-      "tags": ["nutrition", "fitness"],
-      "audio": "physical_fitness_and_nutrition_free_healthy_eating_en.mp3"
+      "tags": ["connection", "loneliness"],
+      "audio": "loneliness_comfort_free_connection_en.mp3"
     },
     {
-      "slug": "exercise-routines",
-      "keywords_en": ["exercise", "fitness", "strength"],
-      "keywords_vi": ["tập luyện", "thể chất", "sức mạnh"],
+      "slug": "self-compassion",
+      "keywords_en": ["self-compassion", "self-care", "empathy"],
+      "keywords_vi": ["tự trắc ẩn", "tự chăm sóc", "đồng cảm"],
       "copy": {
-        "en": "Exercise routines strengthen both body and mind. Start with short, enjoyable activities like walking, yoga, or stretching. Aim for consistency with daily movement. Connect with a fitness group or partner for motivation. These steps build resilience, improving your strength, mood, and overall well-being each day.",
-        "vi": "Thói quen tập luyện giúp tăng cường cả thể chất lẫn tinh thần. Hãy bắt đầu với các hoạt động ngắn và thú vị như đi bộ, yoga hoặc giãn cơ. Duy trì sự đều đặn với vận động mỗi ngày. Kết nối với nhóm thể thao hoặc bạn tập để có động lực. Những bước này xây dựng nghị lực, cải thiện sức mạnh, tâm trạng và sức khỏe toàn diện mỗi ngày."
+        "en": "Self-compassion eases loneliness. Be kind to yourself, accepting your feelings without judgment. Practice affirmations like “I am enough” to build self-worth. Journal to process emotions. These steps foster resilience, helping you find comfort within yourself.",
+        "vi": "Lòng tự trắc ẩn giúp xoa dịu nỗi cô đơn. Hãy đối xử dịu dàng với chính mình, chấp nhận cảm xúc mà không tự phán xét. Thực hành các câu khẳng định như “Tôi đủ tốt” để nuôi dưỡng giá trị bản thân. Viết nhật ký để xử lý cảm xúc. Những bước này giúp tăng sức bền tinh thần và mang lại sự an ủi từ bên trong."
       },
-      "tags": ["exercise", "fitness"],
-      "audio": "physical_fitness_and_nutrition_free_exercise_routines_en.mp3"
+      "tags": ["self-compassion", "loneliness"],
+      "audio": "loneliness_comfort_free_self_compassion_en.mp3"
     },
     {
-      "slug": "hydration",
-      "keywords_en": ["hydration", "health", "well-being"],
-      "keywords_vi": ["bù nước", "sức khỏe", "tập trung"],
+      "slug": "community-engagement",
+      "keywords_en": ["community", "connection", "support"],
+      "keywords_vi": ["cộng đồng", "kết nối", "hỗ trợ"],
       "copy": {
-        "en": "Hydration supports every aspect of fitness and nutrition. Drink water regularly to maintain energy, focus, and circulation. Track your intake to form lasting habits. Add fruits like lemon or cucumber for flavor. These small steps strengthen resilience, helping you sustain well-being and balance daily.",
-        "vi": "Bù nước hỗ trợ mọi khía cạnh của thể chất và dinh dưỡng. Uống nước đều đặn để duy trì năng lượng, sự tập trung và tuần hoàn cơ thể. Theo dõi lượng nước uống để hình thành thói quen lâu dài. Thêm trái cây như chanh hoặc dưa leo để tăng hương vị. Những bước nhỏ này giúp bạn nuôi dưỡng nghị lực, duy trì sức khỏe và cân bằng mỗi ngày."
+        "en": "Community engagement reduces loneliness. Join a local group or online forum to connect with others. Share your experiences to build empathy. Regular participation fosters a sense of belonging, helping you feel supported and less isolated daily.",
+        "vi": "Tham gia cộng đồng giúp giảm bớt nỗi cô đơn. Hãy tham gia một nhóm địa phương hoặc một diễn đàn trực tuyến để kết nối với người khác. Chia sẻ trải nghiệm của bạn để xây dựng sự đồng cảm. Việc tham gia thường xuyên tạo cảm giác thuộc về, giúp bạn cảm thấy được hỗ trợ và bớt cô lập hơn mỗi ngày."
       },
-      "tags": ["hydration", "fitness"],
-      "audio": "physical_fitness_and_nutrition_free_hydration_en.mp3"
+      "tags": ["community", "loneliness"],
+      "audio": "loneliness_comfort_free_community_engagement_en.mp3"
     },
     {
       "slug": "all",
       "keywords_en": ["all"],
       "keywords_vi": ["tất cả"],
       "copy": {
-        "en": "Healthy eating fuels physical fitness. Choose whole foods like vegetables, fruits, and lean proteins. Plan balanced meals to sustain energy and focus. Stay hydrated every day. Connect with a nutritionist or supportive friend to stay consistent, fostering resilience and better health choices over time.\n\nExercise routines strengthen both body and mind. Start with short, enjoyable activities like walking, yoga, or stretching. Aim for consistency with daily movement. Connect with a fitness group or partner for motivation. These steps build resilience, improving your strength, mood, and overall well-being each day.\n\nHydration supports every aspect of fitness and nutrition. Drink water regularly to maintain energy, focus, and circulation. Track your intake to form lasting habits. Add fruits like lemon or cucumber for flavor. These small steps strengthen resilience, helping you sustain well-being and balance daily.",
-        "vi": "Ăn uống lành mạnh là nguồn năng lượng cho sức khỏe thể chất. Hãy chọn thực phẩm nguyên cám như rau củ, trái cây và protein nạc. Lên kế hoạch bữa ăn cân bằng để duy trì năng lượng và sự tập trung. Uống đủ nước mỗi ngày. Kết nối với chuyên gia dinh dưỡng hoặc bạn bè hỗ trợ để duy trì thói quen, giúp bạn xây dựng nghị lực và lựa chọn sức khỏe tốt hơn theo thời gian.\n\nThói quen tập luyện giúp tăng cường cả thể chất lẫn tinh thần. Hãy bắt đầu với các hoạt động ngắn và thú vị như đi bộ, yoga hoặc giãn cơ. Duy trì sự đều đặn với vận động mỗi ngày. Kết nối với nhóm thể thao hoặc bạn tập để có động lực. Những bước này xây dựng nghị lực, cải thiện sức mạnh, tâm trạng và sức khỏe toàn diện mỗi ngày.\n\nBù nước hỗ trợ mọi khía cạnh của thể chất và dinh dưỡng. Uống nước đều đặn để duy trì năng lượng, sự tập trung và tuần hoàn cơ thể. Theo dõi lượng nước uống để hình thành thói quen lâu dài. Thêm trái cây như chanh hoặc dưa leo để tăng hương vị. Những bước nhỏ này giúp bạn nuôi dưỡng nghị lực, duy trì sức khỏe và cân bằng mỗi ngày."
+        "en": "Finding comfort in loneliness starts with building connection. Reach out to a friend or join a group activity to foster empathy. Share your feelings openly to build trust. Small interactions can ease isolation, helping you feel supported and valued.\n\nSelf-compassion eases loneliness. Be kind to yourself, accepting your feelings without judgment. Practice affirmations like “I am enough” to build self-worth. Journal to process emotions. These steps foster resilience, helping you find comfort within yourself.\n\nCommunity engagement reduces loneliness. Join a local group or online forum to connect with others. Share your experiences to build empathy. Regular participation fosters a sense of belonging, helping you feel supported and less isolated daily.",
+        "vi": "Tìm sự an ủi trong cô đơn bắt đầu từ việc xây dựng kết nối. Hãy liên hệ với bạn bè hoặc tham gia các hoạt động nhóm để nuôi dưỡng sự đồng cảm. Chia sẻ cảm xúc một cách cởi mở để tạo dựng niềm tin. Những tương tác nhỏ có thể làm dịu cảm giác cô lập, giúp bạn cảm thấy được lắng nghe và trân trọng.\n\nLòng tự trắc ẩn giúp xoa dịu nỗi cô đơn. Hãy đối xử dịu dàng với chính mình, chấp nhận cảm xúc mà không tự phán xét. Thực hành các câu khẳng định như “Tôi đủ tốt” để nuôi dưỡng giá trị bản thân. Viết nhật ký để xử lý cảm xúc. Những bước này giúp tăng sức bền tinh thần và mang lại sự an ủi từ bên trong.\n\nTham gia cộng đồng giúp giảm bớt nỗi cô đơn. Hãy tham gia một nhóm địa phương hoặc một diễn đàn trực tuyến để kết nối với người khác. Chia sẻ trải nghiệm của bạn để xây dựng sự đồng cảm. Việc tham gia thường xuyên tạo cảm giác thuộc về, giúp bạn cảm thấy được hỗ trợ và bớt cô lập hơn mỗi ngày."
       },
       "tags": ["all"],
-      "audio": "physical_fitness_and_nutrition_free_healthy_eating_en.mp3 physical_fitness_and_nutrition_free_exercise_routines_en.mp3 physical_fitness_and_nutrition_free_hydration_en.mp3"
+      "audio": "loneliness_comfort_free_connection_en.mp3 loneliness_comfort_free_self_compassion_en.mp3 loneliness_comfort_free_community_engagement_en.mp3"
     }
   ],
   "meta": {
@@ -61,5 +70,6 @@
     "entry_count": 4,
     "tier": "free",
     "room_color": "#4A90E2"
-  }
+  },
+  "audio": "loneliness_comfort_free_community_engagement_en.mp3"
 }
