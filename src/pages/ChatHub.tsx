@@ -85,6 +85,7 @@ const ChatHub = () => {
   const [matchedEntryId, setMatchedEntryId] = useState<string | null>(null);
   const [debugSearch, setDebugSearch] = useState("");
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [dictionarySearch, setDictionarySearch] = useState<string>("");
 
   // Use centralized room metadata
   const info = getRoomInfo(roomId || "");
@@ -846,7 +847,8 @@ const ChatHub = () => {
           {/* Dictionary Lookup */}
           <DictionaryLookup 
             roomId={roomId} 
-            roomKeywords={keywordMenu?.en || []} 
+            roomKeywords={keywordMenu?.en || []}
+            externalSearch={dictionarySearch}
           />
           
           {keywordMenu && keywordMenu.en && keywordMenu.vi && keywordMenu.en.length > 0 && (
@@ -861,7 +863,10 @@ const ChatHub = () => {
                       variant={isClicked ? "default" : "outline"}
                       size="sm"
                       className="text-xs cursor-pointer"
-                      onClick={() => handleKeywordClick(keywordEn)}
+                      onClick={() => {
+                        handleKeywordClick(keywordEn);
+                        setDictionarySearch(keywordEn.replace(/_/g, ' '));
+                      }}
                       disabled={isLoading || !isAuthenticated}
                     >
                       {isAdmin && (
