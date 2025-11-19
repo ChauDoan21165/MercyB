@@ -17,7 +17,7 @@ import { RelatedRooms } from "@/components/RelatedRooms";
 import { MessageActions } from "@/components/MessageActions";
 import { MatchmakingButton } from "@/components/MatchmakingButton";
 import { usePoints } from "@/hooks/usePoints";
-import { DictionaryLookup } from "@/components/DictionaryLookup";
+import { PairedHighlightedContentWithDictionary } from "@/components/PairedHighlightedContentWithDictionary";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useCredits } from "@/hooks/useCredits";
 import { CreditLimitModal } from "@/components/CreditLimitModal";
@@ -25,7 +25,6 @@ import { CreditsDisplay } from "@/components/CreditsDisplay";
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { HighlightedContent } from "@/components/HighlightedContent";
 import { PairedHighlightedContent } from "@/components/PairedHighlightedContent";
-import { ColorLegend } from "@/components/ColorLegend";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { messageSchema } from "@/lib/inputValidation";
@@ -85,7 +84,6 @@ const ChatHub = () => {
   const [matchedEntryId, setMatchedEntryId] = useState<string | null>(null);
   const [debugSearch, setDebugSearch] = useState("");
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const [dictionarySearch, setDictionarySearch] = useState<string>("");
 
   // Use centralized room metadata
   const info = getRoomInfo(roomId || "");
@@ -844,25 +842,16 @@ const ChatHub = () => {
             )}
           </div>
 
-          {/* Room Essay with Highlighting - Always Visible */}
+          {/* Room Essay with Hovering Dictionary - Always Visible */}
           {roomEssay && roomEssay.en && roomEssay.vi && (
             <div className="mb-4 p-4 bg-muted/30 rounded-lg border border-border/50" key="room-essay-permanent">
-              <PairedHighlightedContent 
+              <PairedHighlightedContentWithDictionary
                 englishContent={roomEssay.en}
                 vietnameseContent={roomEssay.vi}
+                roomKeywords={keywordMenu?.en || []}
               />
-              <div className="mt-3 pt-3 border-t border-border/30">
-                <ColorLegend compact={true} showVietnamese={true} />
-              </div>
             </div>
           )}
-
-          {/* Dictionary Lookup */}
-          <DictionaryLookup 
-            roomId={roomId} 
-            roomKeywords={keywordMenu?.en || []}
-            externalSearch={dictionarySearch}
-          />
           
           {keywordMenu && keywordMenu.en && keywordMenu.vi && keywordMenu.en.length > 0 && (
             <div>
@@ -878,10 +867,6 @@ const ChatHub = () => {
                       className="text-xs cursor-pointer"
                       onClick={() => {
                         handleKeywordClick(keywordEn);
-                        // Skip "All" from dictionary lookups - it's not a real keyword
-                        if (keywordEn !== 'All') {
-                          setDictionarySearch(keywordEn.replace(/_/g, ' '));
-                        }
                       }}
                       disabled={isLoading || !isAuthenticated}
                     >
