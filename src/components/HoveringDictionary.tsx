@@ -170,6 +170,7 @@ export const HoveringDictionary = ({ word, children, roomKeywords, roomContent }
                 <Volume2 className={`w-4 h-4 text-primary ${isPlayingAudio ? 'animate-pulse' : ''}`} />
               </button>
             </div>
+            <div>
               {translation.ipa_en && (
                 <p className="text-xs text-muted-foreground italic">
                   /{translation.ipa_en}/
