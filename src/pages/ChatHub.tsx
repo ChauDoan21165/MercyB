@@ -26,7 +26,6 @@ import { AudioPlayer } from "@/components/AudioPlayer";
 import { HighlightedContent } from "@/components/HighlightedContent";
 import { PairedHighlightedContent } from "@/components/PairedHighlightedContent";
 import { ColorLegend } from "@/components/ColorLegend";
-import { KeywordPronunciation } from "@/components/KeywordPronunciation";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { messageSchema } from "@/lib/inputValidation";
@@ -868,14 +867,7 @@ const ChatHub = () => {
                         setDictionarySearch(keywordEn.replace(/_/g, ' '));
                       }}
                       disabled={isLoading || !isAuthenticated}
-                      className="flex flex-col items-start gap-0 h-auto py-2"
                     >
-                      <div className="w-full">
-                        <div className="flex items-center gap-2 w-full">
-                          <span className="font-medium">✅ {keywordEn.replace(/_/g, ' ')}</span>
-                        </div>
-                        <KeywordPronunciation keyword={keywordEn} compact={true} />
-                      </div>
                       {isAdmin && (
                         <span
                           role="button"
