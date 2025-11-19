@@ -48,6 +48,7 @@ import AdminCodeEditor from "./pages/AdminCodeEditor";
 import AudioTestPage from "./pages/AudioTestPage";
 import AudioUpload from "./pages/AudioUpload";
 import RoomHealthChecker from "./pages/RoomHealthChecker";
+import AdminFeedbackAnalytics from "./pages/AdminFeedbackAnalytics";
 
 const queryClient = new QueryClient();
 
@@ -102,6 +103,7 @@ const App = () => (
           <Route path="/admin/rooms/data-health" element={<RoomHealthChecker />} />
           <Route path="/admin/users" element={<AdminUserRoles />} />
           <Route path="/admin/code-editor" element={<AdminCodeEditor />} />
+          <Route path="/admin/feedback-analytics" element={<AdminFeedbackAnalytics />} />
           <Route path="/audio-test" element={<AudioTestPage />} />
           <Route path="/audio-upload" element={<AudioUpload />} />
           <Route path="*" element={<NotFound />} />
