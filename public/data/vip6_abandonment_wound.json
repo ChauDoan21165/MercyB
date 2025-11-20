@@ -1,0 +1,83 @@
+{
+  "id": "vip6_abandonment_wound",
+  "tier": "VIP6",
+  "title": {
+    "en": "The Abandonment Wound",
+    "vi": "Vết Thương Bị Bỏ Rơi"
+  },
+  "content": {
+    "en": "This room explores the abandonment wound—the deep fear of being left emotionally or physically, and the shadow patterns that form to protect you from that pain.",
+    "vi": "Phòng này khám phá vết thương bị bỏ rơi—nỗi sợ sâu sắc bị rời bỏ về mặt cảm xúc hoặc thể chất, và những mô thức bóng tối được tạo ra để bảo vệ bạn khỏi nỗi đau đó."
+  },
+  "entries": [
+    {
+      "slug": "fear-of-disappearing",
+      "keywords_en": ["fear", "abandonment", "loss"],
+      "keywords_vi": ["nỗi sợ", "bị bỏ rơi", "mất mát"],
+      "copy": {
+        "en": "The abandonment wound begins with the fear that you could disappear from someone’s heart at any moment. You learned early that love was unstable, conditional, or unpredictable, so you became hyper-aware of shifts in tone, expression, or distance. You anticipate loss before it happens and brace for emotional impact long before anyone leaves. This fear makes closeness feel dangerous—not because you don’t want connection, but because losing it feels unbearable. The wound teaches you to expect departure, even in relationships that are safe.",
+        "vi": "Vết thương bị bỏ rơi bắt đầu từ nỗi sợ rằng bạn có thể biến mất khỏi trái tim ai đó bất cứ lúc nào. Bạn học từ sớm rằng tình yêu không ổn định, có điều kiện hoặc khó đoán, nên bạn trở nên nhạy cảm với từng thay đổi nhỏ trong giọng nói, nét mặt hay khoảng cách. Bạn dự đoán mất mát trước khi nó xảy ra và chuẩn bị cho cú đau cảm xúc từ lâu trước khi ai đó rời đi. Nỗi sợ này khiến sự gần gũi trở nên nguy hiểm—không phải vì bạn không muốn kết nối, mà vì mất nó là điều không chịu nổi. Vết thương khiến bạn luôn mong chờ sự rời bỏ, ngay cả trong những mối quan hệ an toàn."
+      },
+      "tags": ["fear", "abandonment"],
+      "audio": "vip6_aw_1.mp3"
+    },
+    {
+      "slug": "over-attachment-and-anxiety",
+      "keywords_en": ["attachment", "anxiety", "clinging"],
+      "keywords_vi": ["gắn bó", "lo âu", "bám víu"],
+      "copy": {
+        "en": "When you fear being abandoned, you may attach too quickly, too deeply, or too anxiously. You cling to relationships, overgive, or over-romanticize connections because you believe closeness must be secured constantly. You feel threatened when someone pulls back even briefly. This is not neediness—it is survival. Your nervous system learned that distance equals danger, so any emotional gap feels like loss. Over-attachment is your attempt to hold on to love before it slips away again.",
+        "vi": "Khi bạn sợ bị bỏ rơi, bạn có thể gắn bó quá nhanh, quá sâu hoặc quá lo âu. Bạn bám vào các mối quan hệ, cho đi quá mức hoặc lý tưởng hóa người khác vì tin rằng sự gần gũi phải được giữ chặt liên tục. Bạn thấy bị đe dọa khi ai đó lùi lại—even trong chốc lát. Điều này không phải yếu đuối—đó là sinh tồn. Hệ thần kinh của bạn học rằng khoảng cách đồng nghĩa với nguy hiểm, nên bất kỳ sự xa cách nào cũng cảm giác như mất mát. Sự bám víu là cách bạn cố giữ tình yêu trước khi nó lại trôi đi."
+      },
+      "tags": ["attachment", "anxiety"],
+      "audio": "vip6_aw_2.mp3"
+    },
+    {
+      "slug": "self-sabotage-before-loss",
+      "keywords_en": ["self-sabotage", "fear", "defense"],
+      "keywords_vi": ["tự phá hoại", "nỗi sợ", "phòng vệ"],
+      "copy": {
+        "en": "Some respond to the abandonment wound by ending things before the pain arrives. You pull away first, withdraw emotionally, or sabotage relationships that begin to matter. If you are the one who leaves, you cannot be left. This pattern is not cruelty—it is protection. You hope that controlling the ending will hurt less than being surprised by loss. But self-sabotage creates the very loneliness you fear. You rehearse abandonment by abandoning yourself.",
+        "vi": "Một số người phản ứng với vết thương bị bỏ rơi bằng cách kết thúc mọi thứ trước khi nỗi đau kịp đến. Bạn rút lui trước, đóng cửa cảm xúc hoặc phá hoại những mối quan hệ bắt đầu trở nên quan trọng. Nếu bạn là người rời đi, bạn sẽ không bị bỏ lại. Mô thức này không phải tàn nhẫn—mà là tự bảo vệ. Bạn hy vọng rằng kiểm soát cái kết sẽ đau ít hơn bị mất mát bất ngờ. Nhưng tự phá hoại tạo ra chính sự cô đơn mà bạn sợ. Bạn luyện tập sự bị bỏ rơi bằng cách tự bỏ rơi chính mình."
+      },
+      "tags": ["fear", "sabotage"],
+      "audio": "vip6_aw_3.mp3"
+    },
+    {
+      "slug": "the-wound-of-not-being-chosen",
+      "keywords_en": ["worth", "choice", "pain"],
+      "keywords_vi": ["giá trị", "được chọn", "nỗi đau"],
+      "copy": {
+        "en": "The abandonment wound often forms from not being chosen—by a parent, a caregiver, or someone whose presence you depended on. You learned that your needs were too heavy or your existence too small to keep love close. This creates a lifelong ache: the fear that you are replaceable. You may chase validation or people who repeatedly hurt you, hoping they will finally choose you. But healing begins when you stop seeking proof that you matter and start treating yourself like someone worth staying for.",
+        "vi": "Vết thương bị bỏ rơi thường hình thành từ việc không được chọn—bởi cha mẹ, người chăm sóc hoặc ai đó mà bạn phụ thuộc vào sự hiện diện của họ. Bạn học rằng nhu cầu của mình quá nặng hoặc sự tồn tại của mình quá nhỏ để giữ tình yêu ở lại. Điều này tạo ra nỗi đau cả đời: sợ rằng mình có thể bị thay thế. Bạn có thể chạy theo sự công nhận hoặc những người khiến bạn đau hết lần này đến lần khác, hy vọng họ sẽ chọn bạn một lần. Nhưng chữa lành bắt đầu khi bạn ngừng tìm bằng chứng rằng mình quan trọng và bắt đầu đối xử với bản thân như người xứng đáng để ở lại."
+      },
+      "tags": ["worth", "choice"],
+      "audio": "vip6_aw_4.mp3"
+    },
+    {
+      "slug": "healing-the-abandonment-wound",
+      "keywords_en": ["healing", "safety", "self-trust"],
+      "keywords_vi": ["chữa lành", "an toàn", "tự tin"],
+      "copy": {
+        "en": "Healing the abandonment wound requires building inner safety. You learn to soothe your nervous system, express your needs directly, and form relationships where reciprocity exists. You stop chasing unavailable people and start trusting your ability to survive loss. As inner safety grows, connection feels less threatening and more nourishing. You discover that you can be held without disappearing, and you can love without losing yourself.",
+        "vi": "Chữa lành vết thương bị bỏ rơi đòi hỏi xây dựng cảm giác an toàn bên trong. Bạn học cách xoa dịu hệ thần kinh, bày tỏ nhu cầu một cách rõ ràng và tạo dựng các mối quan hệ có sự trao đổi hai chiều. Bạn ngừng chạy theo những người không sẵn sàng và bắt đầu tin vào khả năng vượt qua mất mát của mình. Khi sự an toàn nội tâm tăng lên, kết nối trở nên ít đáng sợ hơn và giàu nuôi dưỡng hơn. Bạn khám phá rằng mình có thể được ôm giữ mà không biến mất, và có thể yêu mà không đánh mất bản thân."
+      },
+      "tags": ["healing", "safety"],
+      "audio": "vip6_aw_5.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full sequence", "combined"],
+      "keywords_vi": ["tất cả", "chuỗi đầy đủ", "kết hợp"],
+      "copy": {
+        "en": "The abandonment wound grows from unstable love, emotional distance, or feeling unchosen. It creates fear of disappearing, over-attachment, self-sabotage, and the belief that you must chase connection to keep it. But suffering is not your destiny. Healing comes from building inner safety, trusting your worth, and forming relationships where you do not have to earn your place. You are not replaceable. You are not too much. You are someone worth staying for—beginning with yourself.",
+        "vi": "Vết thương bị bỏ rơi lớn lên từ tình yêu không ổn định, sự xa cách cảm xúc hoặc cảm giác không được chọn. Nó tạo ra nỗi sợ biến mất, gắn bó lo âu, tự phá hoại và niềm tin rằng bạn phải chạy theo để giữ kết nối. Nhưng chịu đựng không phải định mệnh của bạn. Chữa lành đến từ việc xây dựng an toàn nội tâm, tin vào giá trị của mình và tạo những mối quan hệ nơi bạn không phải giành chỗ. Bạn không thể bị thay thế. Bạn không quá nhiều. Bạn là người xứng đáng để ở lại—bắt đầu từ chính bạn."
+      },
+      "tags": ["all", "combined"],
+      "audio": "vip6_aw_1.mp3 vip6_aw_2.mp3 vip6_aw_3.mp3 vip6_aw_4.mp3 vip6_aw_5.mp3"
+    }
+  ],
+  "meta": {
+    "entry_count": 6
+  }
+}
