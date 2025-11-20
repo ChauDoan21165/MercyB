@@ -262,17 +262,17 @@ const PaymentTest = () => {
           {tiers.length > 0 ? (
             <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {tiers.map((tier, index) => {
-                const colors = ['#E91E63', '#3F51B5', '#00BCD4', '#4CAF50'];
-                const bgColors = ['from-pink-100 to-pink-200', 'from-blue-100 to-blue-200', 'from-cyan-100 to-cyan-200', 'from-green-100 to-green-200'];
-                const borderColors = ['border-pink-300', 'border-blue-300', 'border-cyan-300', 'border-green-300'];
+                const colors = ['#E91E63', '#3F51B5', '#00BCD4', '#4CAF50', '#10B981', '#9333EA'];
+                const bgColors = ['from-pink-100 to-pink-200', 'from-blue-100 to-blue-200', 'from-cyan-100 to-cyan-200', 'from-green-100 to-green-200', 'from-emerald-100 to-emerald-200', 'from-purple-100 to-violet-200'];
+                const borderColors = ['border-pink-300', 'border-blue-300', 'border-cyan-300', 'border-green-300', 'border-emerald-400', 'border-purple-400'];
                 
                 return (
                   <Card 
                     key={tier.id} 
-                    className={`p-6 bg-gradient-to-br ${bgColors[index % 4]} backdrop-blur border-2 ${borderColors[index % 4]} shadow-xl hover:scale-105 transition-transform duration-300`}
+                    className={`p-6 bg-gradient-to-br ${bgColors[index % 6]} backdrop-blur border-2 ${borderColors[index % 6]} shadow-xl hover:scale-105 transition-transform duration-300`}
                   >
                     <CardHeader className="pb-4">
-                      <CardTitle className="text-2xl font-bold text-center" style={{ color: colors[index % 4] }}>
+                      <CardTitle className="text-2xl font-bold text-center" style={{ color: colors[index % 6] }}>
                         {tier.name}
                       </CardTitle>
                       <div className="text-center mt-4">
