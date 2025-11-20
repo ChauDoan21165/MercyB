@@ -156,6 +156,10 @@ const VIETNAMESE_NAME_FALLBACKS: Record<string, string> = {
   'weight-loss-and-fitness-vip1': 'Giảm Cân & Thể Hình VIP1',
   'weight-loss-and-fitness-vip2': 'Giảm Cân & Thể Hình VIP2',
   'weight-loss-and-fitness-vip3': 'Giảm Cân & Thể Hình VIP3',
+  
+  // VIP6 Rooms
+  'vip6-pride-ego-shadow': 'Bóng Tối Kiêu Ngạo & Cái Tôi VIP6',
+  'vip6-martyr-complex': 'Phức Cảm Hy Sinh VIP6',
 };
 
 // Metadata interface for room listing
