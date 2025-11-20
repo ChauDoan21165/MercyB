@@ -15,6 +15,7 @@ import RoomGridVIP2 from "./pages/RoomGridVIP2";
 import RoomGridVIP3 from "./pages/RoomGridVIP3";
 import RoomGridVIP3II from "./pages/RoomGridVIP3II";
 import RoomGridVIP4 from "./pages/RoomGridVIP4";
+import RoomGridVIP5 from "./pages/RoomGridVIP5";
 import AllRooms from "./pages/AllRooms";
 import ChatHub from "./pages/ChatHub";
 import NotFound from "./pages/NotFound";
@@ -73,6 +74,7 @@ const App = () => (
           <Route path="/rooms-vip3" element={<RoomGridVIP3 />} />
           <Route path="/rooms-vip3-ii" element={<RoomGridVIP3II />} />
           <Route path="/rooms-vip4" element={<RoomGridVIP4 />} />
+          <Route path="/rooms-vip5" element={<RoomGridVIP5 />} />
           <Route path="/sexuality-culture" element={<SexualityCultureRoom />} />
           <Route path="/finance-calm" element={<FinanceCalmRoom />} />
           <Route path="/all-rooms" element={<AllRooms />} />
