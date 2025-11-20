@@ -1,12 +1,12 @@
 {
-"id": "god-with-us-free",
-"tier": "Free / Miễn phí",
-"name": "Universe With Us",
-"name_vi": "Vũ Trụ Ở Cùng Chúng Ta",
-"title": {
-"en": "Universe With Us",
-"vi": "Vũ Trụ Ở Cùng Chúng Ta"
-},
+  "id": "god-with-us-free",
+  "tier": "Free / Miễn phí",
+  "name": "Universe With US",
+  "name_vi": "Vũ Trụ Ở Cùng Chúng Ta",
+  "title": {
+    "en": "Universe With US",
+    "vi": "Vũ Trụ Ở Cùng Chúng Ta"
+  },
 "description": "A gentle room of presence, holiness, and cosmic peace.",
 "description_vi": "Một không gian dịu dàng của sự hiện diện, thiêng liêng và bình an vũ trụ.",
 "keywords_en": [
