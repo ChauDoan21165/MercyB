@@ -179,6 +179,10 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "vip6-repressed-desires": "data/vip6_repressed_desires.json",
   "vip6-fear-intimacy": "data/vip6_fear_intimacy.json",
   "vip6-fear-abandonment": "data/vip6_fear_abandonment.json",
+  "vip6-guilt-hidden-shame": "data/vip6_guilt_hidden_shame.json",
+  "vip6-attachment-wounds": "data/vip6_attachment_wounds.json",
+  "vip6-shadow-in-love": "data/vip6_shadow_in_love.json",
+  "vip6-control-patterns": "data/vip6_control_patterns.json",
   "vip6-suppressed-rage": "data/vip6_suppressed_rage.json",
   "vip6-self-sabotage-relationship": "data/vip6_self_sabotage_relationship.json",
   "vip6-avoidant-behaviors": "data/vip6_avoidant_behaviors.json",
@@ -186,8 +190,18 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "vip6-fear-failure": "data/vip6_fear_failure.json",
   "vip6-perfectionism-shadows": "data/vip6_perfectionism_shadows.json",
   "vip6-people-pleasing": "data/vip6_people_pleasing.json",
-  "vip6-martyr-complex": "data/vip6_martyr_complex.json",
-  "vip6-pride-ego-shadow": "data/vip6_pride_ego_shadow.json"
+  "vip6-pride-ego-shadow": "data/vip6_pride_ego_shadow.json",
+  "vip6-abandonment-wound": "data/vip6_abandonment_wound.json",
+  "vip6-attachment-trauma": "data/vip6_attachment_trauma.json",
+  "vip6-inner-saboteur": "data/vip6_inner_saboteur.json",
+  "vip6-reclaim-power": "data/vip6_reclaim_power.json",
+  "vip6-fear-success": "data/vip6_fear_success.json",
+  "vip6-freeze-response": "data/vip6_freeze_response.json",
+  "vip6-imposter-wounds": "data/vip6_imposter_wounds.json",
+  "vip6-not-enough-wound": "data/vip6_not_enough_wound.json",
+  "vip6-self-worth-distortions": "data/vip6_self_worth_distortions.json",
+  "vip6-shadow-envy": "data/vip6_shadow_envy.json",
+  "vip6-shadow-perfectionism": "data/vip6_shadow_perfectionism.json"
 };
 
 /**
