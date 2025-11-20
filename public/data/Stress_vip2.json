@@ -1,53 +1,74 @@
 {
+  "id": "stress-vip2",
+  "tier": "VIP2 / VIP2",
   "name": "Intermediate Stress Management",
   "name_vi": "Quản Lý Căng Thẳng Trung Cấp",
   "description": "This room teaches practical techniques for calming the mind, steadying the body, and building emotional resilience. Each entry focuses on simple, repeatable methods you can use anywhere—deep breathing to reset your nervous system, mindful awareness to soften tension, soothing routines that create predictability, and supportive self-talk to encourage warmth instead of pressure. Nothing here requires perfection; these practices are meant for real days, busy schedules, and moments when stress feels heavy. Over time, these small actions create a calmer inner baseline, helping you think more clearly and respond with steadier confidence.",
-  "keywords_en": ["stress management", "deep breathing", "mindfulness", "routines", "self-compassion", "resilience"],
-  "keywords_vi": ["quản lý căng thẳng", "hít thở sâu", "chánh niệm", "thói quen", "tự bi", "khả năng phục hồi"],
+  "description_vi": "Phòng này hướng dẫn các kỹ thuật thực tế để làm dịu tâm trí, ổn định cơ thể và xây dựng sức bền cảm xúc. Mỗi phần đều là những phương pháp đơn giản, lặp lại được ở bất cứ đâu: hít thở sâu để tái khởi động hệ thần kinh, chánh niệm để làm mềm căng thẳng, thói quen dịu nhẹ tạo sự dự đoán được, và tự nói chuyện tích cực để mang lại sự ấm áp thay vì áp lực. Không đòi hỏi hoàn hảo – tất cả đều dành cho những ngày thật, lịch trình bận rộn và lúc căng thẳng nặng nề. Dần dần, những hành động nhỏ này tạo nên một mức bình tĩnh nội tại ổn định hơn, giúp bạn suy nghĩ rõ ràng và phản ứng với sự tự tin vững vàng.",
+  "keywords_en": ["stress management","deep breathing","mindfulness","routines","self-compassion","resilience"],
+  "keywords_vi": ["quản lý căng thẳng","hít thở sâu","chánh niệm","thói quen","tự bi","khả năng phục hồi"],
   "entries": [
     {
       "slug": "deep-breathing",
-      "keywords_en": ["Deep Breathing", "relaxation", "nervous system"],
-      "keywords_vi": ["Hít Thở Sâu", "thư giãn", "hệ thần kinh"],
+      "keywords_en": ["Deep Breathing","relaxation","nervous system"],
+      "keywords_vi": ["Hít Thở Sâu","thư giãn","hệ thần kinh"],
       "copy": {
         "en": "Deep breathing is a reliable anchor for calming stress quickly and gently. Sit comfortably, inhale through your nose for four counts, pause briefly, then exhale for six to soften your shoulders and slow your heartbeat. Repeat this pattern for a few minutes whenever tension builds. With practice, your body begins recognizing the rhythm as a cue for safety and ease. Keep a small log of when you use deep breathing and how it shifts your mood. Over time, this simple technique becomes a steady tool you can rely on anywhere, helping you return to clarity even in stressful moments.",
         "vi": "Hít thở sâu là một điểm tựa đáng tin cậy giúp làm dịu căng thẳng nhanh chóng và nhẹ nhàng. Ngồi thoải mái, hít vào bằng mũi trong bốn nhịp, dừng lại ngắn, rồi thở ra trong sáu nhịp để làm mềm vai và làm chậm nhịp tim. Lặp lại vài phút mỗi khi căng thẳng tăng lên. Khi thực hành đều, cơ thể sẽ nhận ra nhịp thở này như một tín hiệu của sự an toàn và thư thái. Bạn có thể ghi chú thời điểm sử dụng và cảm giác thay đổi ra sao. Theo thời gian, kỹ thuật đơn giản này trở thành công cụ ổn định, giúp bạn trở lại sự sáng suốt ngay cả trong lúc căng thẳng."
       },
-      "tags": ["breathing", "relaxation", "stress-management"],
+      "tags": ["breathing","relaxation","stress-management"],
       "audio": "str_vip2_1_en.mp3"
     },
     {
       "slug": "mindful-awareness",
-      "keywords_en": ["Mindfulness", "awareness", "presence"],
-      "keywords_vi": ["Chánh Niệm", "nhận biết", "hiện diện"],
+      "keywords_en": ["Mindfulness","awareness","presence"],
+      "keywords_vi": ["Chánh Niệm","nhận biết","hiện diện"],
       "copy": {
         "en": "Mindful awareness helps soften stress by bringing your attention into the present moment. Once a day, pause for a minute to notice something real—your breath, light in the room, or a sound in the background. Allow thoughts to drift without forcing them away. This simple practice interrupts mental overload and brings you back into your body. At the end of the week, reflect on what these pauses revealed about your mood or energy. With time, mindful awareness creates space between you and your stress, helping you respond with greater clarity instead of reacting automatically.",
         "vi": "Tỉnh thức giúp làm dịu căng thẳng bằng cách đưa sự chú ý trở lại khoảnh khắc hiện tại. Mỗi ngày, tạm dừng một phút để nhận biết điều gì đó thực—hơi thở, ánh sáng trong phòng hoặc âm thanh nền. Để suy nghĩ trôi qua mà không ép buộc. Thói quen nhỏ này cắt ngang tình trạng quá tải tinh thần và đưa bạn trở lại với cơ thể. Cuối tuần, hãy suy ngẫm xem những khoảnh khắc tạm dừng đó cho bạn thấy gì về tâm trạng hoặc năng lượng. Theo thời gian, sự tỉnh thức tạo khoảng cách giữa bạn và căng thẳng, giúp bạn phản ứng rõ ràng hơn thay vì phản ứng tự động."
       },
-      "tags": ["mindfulness", "awareness", "stress-management"],
+      "tags": ["mindfulness","awareness","stress-management"],
       "audio": "str_vip2_2_en.mp3"
     },
     {
       "slug": "stress-soothing-routines",
-      "keywords_en": ["Stress Routines", "calm habits", "consistency"],
-      "keywords_vi": ["Thói Quen Giảm Căng Thẳng", "thói quen bình yên", "nhất quán"],
+      "keywords_en": ["Stress Routines","calm habits","consistency"],
+      "keywords_vi": ["Thói Quen Giảm Căng Thẳng","thói quen bình yên","nhất quán"],
       "copy": {
         "en": "Routines help create emotional predictability during stressful times. Choose one gentle daily habit—a short walk, a warm drink without distractions, or five minutes of journaling—to signal your body that it can unwind. Record how each session affects your mood so you can adjust the routine over time. Consistency matters more than intensity; small rituals practiced regularly teach your nervous system to expect moments of calm. When difficult days arise, these habits provide grounding and stability. Start with one simple action today, and let it become a steady thread of peace in your weekly rhythm.",
         "vi": "Thói quen tạo ra sự ổn định cảm xúc trong những thời điểm căng thẳng. Hãy chọn một hoạt động nhẹ nhàng mỗi ngày—đi bộ ngắn, uống một tách trà ấm không phân tâm hoặc viết nhật ký năm phút—để gửi tín hiệu cho cơ thể rằng nó có thể thư giãn. Ghi lại ảnh hưởng của mỗi buổi để điều chỉnh theo thời gian. Sự nhất quán quan trọng hơn cường độ; những nghi thức nhỏ được lặp lại đều đặn sẽ dạy hệ thần kinh mong đợi các khoảnh khắc bình yên. Khi ngày khó khăn đến, thói quen này đem lại sự vững vàng. Hãy bắt đầu hôm nay bằng một hành động đơn giản và để nó trở thành sợi chỉ bình yên trong tuần của bạn."
       },
-      "tags": ["routine", "calm", "stress-management"],
+      "tags": ["routine","calm","stress-management"],
       "audio": "str_vip2_3_en.mp3"
     },
     {
       "slug": "supportive-self-talk",
-      "keywords_en": ["Self-Talk", "compassion", "resilience"],
-      "keywords_vi": ["Tự Nói Tích Cực", "lòng trắc ẩn", "kiên cường"],
+      "keywords_en": ["Self-Talk","compassion","resilience"],
+      "keywords_vi": ["Tự Nói Tích Cực","lòng trắc ẩn","kiên cường"],
       "copy": {
         "en": "The way you talk to yourself shapes how you experience stress. Replace harsh inner dialogue with kind, realistic phrases like “I’m doing my best” or “I can take this one step at a time.” Say one supportive line aloud each morning or during tense moments. Notice how your posture and breathing shift when words become gentler. Track which phrases help you feel grounded throughout the week. Supportive self-talk doesn’t ignore challenges—it gives you courage to face them with steadiness. This simple practice strengthens emotional resilience from within, helping you move through stress with more openness and self-trust.",
         "vi": "Cách bạn trò chuyện với chính mình định hình cách bạn trải nghiệm căng thẳng. Hãy thay thế những lời tự trách bằng các câu nhẹ nhàng, thực tế như “Tôi đang cố gắng hết sức” hoặc “Tôi có thể xử lý từng bước một.” Nói thành tiếng một câu ủng hộ mỗi sáng hoặc trong khoảnh khắc căng thẳng. Chú ý cách tư thế và hơi thở thay đổi khi lời nói trở nên dịu dàng hơn. Ghi lại những câu giúp bạn cảm thấy vững vàng hơn trong tuần. Tự nói tích cực không phủ nhận thử thách—nó mang lại can đảm để đối mặt nhẹ nhàng. Thói quen này tăng cường sức bền cảm xúc, giúp bạn đi qua căng thẳng với sự tin tưởng và mở lòng hơn."
       },
-      "tags": ["self-talk", "compassion", "stress-management"],
+      "tags": ["self-talk","compassion","stress-management"],
       "audio": "str_vip2_4_en.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all","full sequence","combined","complete","stress management"],
+      "keywords_vi": ["tất cả","chuỗi đầy đủ","kết hợp","hoàn chỉnh","quản lý căng thẳng"],
+      "copy": {
+        "en": "Deep breathing is a reliable anchor for calming stress quickly and gently. Sit comfortably, inhale through your nose for four counts, pause briefly, then exhale for six to soften your shoulders and slow your heartbeat. Repeat this pattern for a few minutes whenever tension builds. With practice, your body begins recognizing the rhythm as a cue for safety and ease. Keep a small log of when you use deep breathing and how it shifts your mood. Over time, this simple technique becomes a steady tool you can rely on anywhere, helping you return to clarity even in stressful moments. Mindful awareness helps soften stress by bringing your attention into the present moment. Once a day, pause for a minute to notice something real—your breath, light in the room, or a sound in the background. Allow thoughts to drift without forcing them away. This simple practice interrupts mental overload and brings you back into your body. At the end of the week, reflect on what these pauses revealed about your mood or energy. With time, mindful awareness creates space between you and your stress, helping you respond with greater clarity instead of reacting automatically. Routines help create emotional predictability during stressful times. Choose one gentle daily habit—a short walk, a warm drink without distractions, or five minutes of journaling—to signal your body that it can unwind. Record how each session affects your mood so you can adjust the routine over time. Consistency matters more than intensity; small rituals practiced regularly teach your nervous system to expect moments of calm. When difficult days arise, these habits provide grounding and stability. Start with one simple action today, and let it become a steady thread of peace in your weekly rhythm. The way you talk to yourself shapes how you experience stress. Replace harsh inner dialogue with kind, realistic phrases like “I’m doing my best” or “I can take this one step at a time.” Say one supportive line aloud each morning or during tense moments. Notice how your posture and breathing shift when words become gentler. Track which phrases help you feel grounded throughout the week. Supportive self-talk doesn’t ignore challenges—it gives you courage to face them with steadiness. This simple practice strengthens emotional resilience from within, helping you move through stress with more openness and self-trust.",
+        "vi": "Hít thở sâu là một điểm tựa đáng tin cậy giúp làm dịu căng thẳng nhanh chóng và nhẹ nhàng. Ngồi thoải mái, hít vào bằng mũi trong bốn nhịp, dừng lại ngắn, rồi thở ra trong sáu nhịp để làm mềm vai và làm chậm nhịp tim. Lặp lại vài phút mỗi khi căng thẳng tăng lên. Khi thực hành đều, cơ thể sẽ nhận ra nhịp thở này như một tín hiệu của sự an toàn và thư thái. Bạn có thể ghi chú thời điểm sử dụng và cảm giác thay đổi ra sao. Theo thời gian, kỹ thuật đơn giản này trở thành công cụ ổn định, giúp bạn trở lại sự sáng suốt ngay cả trong lúc căng thẳng. Tỉnh thức giúp làm dịu căng thẳng bằng cách đưa sự chú ý trở lại khoảnh khắc hiện tại. Mỗi ngày, tạm dừng một phút để nhận biết điều gì đó thực—hơi thở, ánh sáng trong phòng hoặc âm thanh nền. Để suy nghĩ trôi qua mà không ép buộc. Thói quen nhỏ này cắt ngang tình trạng quá tải tinh thần và đưa bạn trở lại với cơ thể. Cuối tuần, hãy suy ngẫm xem những khoảnh khắc tạm dừng đó cho bạn thấy gì về tâm trạng hoặc năng lượng. Theo thời gian, sự tỉnh thức tạo khoảng cách giữa bạn và căng thẳng, giúp bạn phản ứng rõ ràng hơn thay vì phản ứng tự động. Thói quen tạo ra sự ổn định cảm xúc trong những thời điểm căng thẳng. Hãy chọn một hoạt động nhẹ nhàng mỗi ngày—đi bộ ngắn, uống một tách trà ấm không phân tâm hoặc viết nhật ký năm phút—để gửi tín hiệu cho cơ thể rằng nó có thể thư giãn. Ghi lại ảnh hưởng của mỗi buổi để điều chỉnh theo thời gian. Sự nhất quán quan trọng hơn cường độ; những nghi thức nhỏ được lặp lại đều đặn sẽ dạy hệ thần kinh mong đợi các khoảnh khắc bình yên. Khi ngày khó khăn đến, thói quen này đem lại sự vững vàng. Hãy bắt đầu hôm nay bằng một hành động đơn giản và để nó trở thành sợi chỉ bình yên trong tuần của bạn. Cách bạn trò chuyện với chính mình định hình cách bạn trải nghiệm căng thẳng. Hãy thay thế những lời tự trách bằng các câu nhẹ nhàng, thực tế như “Tôi đang cố gắng hết sức” hoặc “Tôi có thể xử lý từng bước một.” Nói thành tiếng một câu ủng hộ mỗi sáng hoặc trong khoảnh khắc căng thẳng. Chú ý cách tư thế và hơi thở thay đổi khi lời nói trở nên dịu dàng hơn. Ghi lại những câu giúp bạn cảm thấy vững vàng hơn trong tuần. Tự nói tích cực không phủ nhận thử thách—nó mang lại can đảm để đối mặt nhẹ nhàng. Thói quen này tăng cường sức bền cảm xúc, giúp bạn đi qua căng thẳng với sự tin tưởng và mở lòng hơn."
+      },
+      "tags": ["all","combined","full","complete","stress"],
+      "audio": "str_vip2_1_en.mp3 str_vip2_2_en.mp3 str_vip2_3_en.mp3 str_vip2_4_en.mp3"
     }
-  ]
+  ],
+  "meta": {
+    "created_at": "2025-11-20T00:00:00+09:00",
+    "updated_at": "2025-11-20T00:00:00+09:00",
+    "entry_count": 5,
+    "tier": "vip2",
+    "room_color": "#8D8D8D"
+  }
 }
