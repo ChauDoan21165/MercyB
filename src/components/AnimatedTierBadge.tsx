@@ -65,6 +65,30 @@ const tierConfig: Record<UserTier, {
     glowColor: "rgba(16, 185, 129, 0.5)",
     animationClasses: "",
   },
+  vip6: {
+    label: "VIP6",
+    labelVi: "VIP6",
+    icon: Crown,
+    baseClasses: "bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-700 text-white border-violet-400",
+    glowColor: "rgba(124, 58, 237, 0.6)",
+    animationClasses: "",
+  },
+  demo: {
+    label: "Demo",
+    labelVi: "Dùng thử",
+    icon: Star,
+    baseClasses: "bg-muted text-muted-foreground border-muted-foreground/20",
+    glowColor: "transparent",
+    animationClasses: "",
+  },
+  vip3_ii: {
+    label: "VIP3 II",
+    labelVi: "VIP3 II",
+    icon: Zap,
+    baseClasses: "bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 text-white border-pink-300",
+    glowColor: "rgba(168, 85, 247, 0.5)",
+    animationClasses: "",
+  },
 };
 
 const sizeClasses = {
@@ -121,7 +145,7 @@ export const AnimatedTierBadge = ({
       <span className="relative z-10">{config.label}</span>
       
       {/* Sparkle effects for high-tier VIPs */}
-      {(tier === "vip3" || tier === "vip4" || tier === "vip5") && (
+      {(tier === "vip3" || tier === "vip4" || tier === "vip5" || tier === "vip6" || tier === "vip3_ii") && (
         <>
           <Sparkles className={cn(iconSizeClasses[size], "absolute -top-1 -right-1 animate-sparkle")} />
           <Sparkles className={cn(iconSizeClasses[size], "absolute -bottom-1 -left-1 animate-sparkle")} style={{ animationDelay: "0.75s" }} />
