@@ -1286,5 +1286,12 @@ export const roomDataMap: Record<string, RoomData> = {
     "nameVi": "Mô Thức Làm Hài Lòng Người Khác",
     "tier": "vip6",
     "hasData": true
+  },
+  "vip6-martyr-complex": {
+    "id": "vip6-martyr-complex",
+    "nameEn": "Martyr Complex",
+    "nameVi": "Tổn Thương Tử Đạo",
+    "tier": "vip6",
+    "hasData": true
   }
 };

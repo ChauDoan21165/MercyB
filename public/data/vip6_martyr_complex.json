@@ -1,0 +1,83 @@
+{
+  "id": "vip6_martyr_complex",
+  "tier": "VIP6",
+  "title": {
+    "en": "Martyr Complex",
+    "vi": "Tổn Thương Tử Đạo"
+  },
+  "content": {
+    "en": "This room explores the martyr complex—the shadow that convinces you suffering is noble, self-sacrifice is love, and your needs must always come last.",
+    "vi": "Phòng này khám phá tổn thương tử đạo—bóng tối khiến bạn tin rằng chịu đựng là cao quý, hy sinh là tình yêu và nhu cầu của bạn luôn phải đứng sau cùng."
+  },
+  "entries": [
+    {
+      "slug": "why-you-suffer-in-silence",
+      "keywords_en": ["silence", "self-sacrifice", "pain"],
+      "keywords_vi": ["im lặng", "hy sinh", "đau đớn"],
+      "copy": {
+        "en": "The martyr complex begins when you learn that suffering earns acceptance, attention, or belonging. You internalize the belief that enduring pain quietly makes you good, worthy, or strong. You take on responsibilities that are not yours, absorb emotions that overwhelm you, and carry burdens you never voice. Silence becomes your shield—if you do not complain, you cannot be rejected. But suffering in silence does not make you noble; it makes you disappear. The world cannot care for wounds it cannot see.",
+        "vi": "Tổn thương tử đạo bắt đầu khi bạn học rằng chịu đựng sẽ mang lại sự chấp nhận, sự chú ý hoặc cảm giác thuộc về. Bạn tiếp thu niềm tin rằng chịu đau trong im lặng khiến bạn tốt đẹp, xứng đáng hoặc mạnh mẽ. Bạn gánh những trách nhiệm không thuộc về mình, hấp thụ những cảm xúc quá sức chịu đựng và mang những gánh nặng không bao giờ nói ra. Im lặng trở thành chiếc khiên—nếu bạn không than thở, bạn sẽ không bị từ chối. Nhưng chịu đựng âm thầm không khiến bạn cao quý; nó khiến bạn biến mất. Thế giới không thể chăm sóc những vết thương mà nó không nhìn thấy."
+      },
+      "tags": ["sacrifice", "silence"],
+      "audio": "vip6_mc_1.mp3"
+    },
+    {
+      "slug": "carrying-everyone’s-weight",
+      "keywords_en": ["responsibility", "burden", "overgiving"],
+      "keywords_vi": ["trách nhiệm", "gánh nặng", "cho đi quá mức"],
+      "copy": {
+        "en": "Martyrs often believe it is their duty to carry the emotional weight of everyone around them. You step into the role of healer, stabilizer, or fixer because you fear what will happen if you stop. You rescue others before they even ask, and exhaust yourself trying to hold everything together. Yet beneath the generosity lies fear—fear that if you stop overgiving, you will lose connection, purpose, or worth. Carrying everyone’s weight feels noble, but it comes at the cost of your own life force.",
+        "vi": "Những người mang tổn thương tử đạo thường tin rằng họ có trách nhiệm gánh sức nặng cảm xúc của mọi người xung quanh. Bạn bước vào vai người chữa lành, người giữ ổn định hoặc người sửa chữa vì sợ điều gì sẽ xảy ra nếu bạn ngừng lại. Bạn cứu người khác trước cả khi họ yêu cầu và kiệt sức vì cố gắng giữ mọi thứ ổn định. Nhưng dưới sự hào phóng là nỗi sợ—sợ rằng nếu bạn ngừng cho đi quá mức, bạn sẽ mất kết nối, mất mục đích hoặc mất giá trị. Gánh nặng của mọi người có vẻ cao quý, nhưng nó đánh đổi bằng sinh lực của chính bạn."
+      },
+      "tags": ["burden", "responsibility"],
+      "audio": "vip6_mc_2.mp3"
+    },
+    {
+      "slug": "when-love-becomes-self-erasure",
+      "keywords_en": ["love", "self-loss", "shadow"],
+      "keywords_vi": ["tình yêu", "đánh mất bản thân", "bóng tối"],
+      "copy": {
+        "en": "The martyr believes love requires self-erasure. You give beyond your capacity, believing sacrifice proves devotion. You prioritize others even when it harms you. You tolerate mistreatment because you fear that setting boundaries will make you unlovable. But love that demands your disappearance is not love—it is fear disguised as loyalty. True connection cannot grow where one person must shrink to keep the relationship alive.",
+        "vi": "Người tử đạo tin rằng tình yêu đòi hỏi phải xóa đi bản thân. Bạn cho đi vượt quá khả năng, tin rằng hy sinh chứng minh sự tận tâm. Bạn ưu tiên người khác ngay cả khi điều đó làm tổn hại bạn. Bạn chịu đựng sự đối xử tệ bạc vì sợ rằng đặt ranh giới sẽ khiến bạn không được yêu. Nhưng tình yêu đòi hỏi bạn biến mất không phải là tình yêu—đó là nỗi sợ đội lốt sự trung thành. Kết nối thật không thể nảy nở nơi một người phải thu nhỏ để giữ mối quan hệ tồn tại."
+      },
+      "tags": ["love", "self-loss"],
+      "audio": "vip6_mc_3.mp3"
+    },
+    {
+      "slug": "the-identity-of-the-sufferer",
+      "keywords_en": ["identity", "pain", "self-perception"],
+      "keywords_vi": ["bản sắc", "đau đớn", "nhận thức"],
+      "copy": {
+        "en": "For many, suffering becomes an identity. You believe endurance makes you valuable, and hardship makes you meaningful. You associate worth with struggle and fear ease, joy, or support because they feel unfamiliar. When pain becomes your story, you unconsciously recreate situations where you must sacrifice again. The martyr identity keeps you trapped in cycles of exhaustion, even as you long for relief. Healing begins when you no longer measure your worth by how much you can endure.",
+        "vi": "Với nhiều người, chịu đựng trở thành bản sắc. Bạn tin rằng kiên nhẫn vượt qua khó khăn khiến bạn có giá trị và gian khổ mang lại ý nghĩa. Bạn gắn giá trị với đấu tranh và sợ sự dễ dàng, niềm vui hoặc sự hỗ trợ vì chúng quá xa lạ. Khi đau đớn trở thành câu chuyện sống, bạn vô thức lặp lại những tình huống buộc bạn hy sinh lần nữa. Bản sắc tử đạo giữ bạn mắc kẹt trong chu kỳ kiệt sức dù bạn khao khát được nhẹ nhõm. Chữa lành bắt đầu khi bạn không còn đo giá trị bằng mức độ chịu đựng."
+      },
+      "tags": ["identity", "pain"],
+      "audio": "vip6_mc_4.mp3"
+    },
+    {
+      "slug": "choosing-yourself-without-guilt",
+      "keywords_en": ["healing", "boundaries", "freedom"],
+      "keywords_vi": ["chữa lành", "ranh giới", "tự do"],
+      "copy": {
+        "en": "Healing the martyr complex means choosing yourself without guilt. You learn that your needs are not burdens, your boundaries are not betrayals, and your rest is not selfish. You begin allowing support instead of carrying everything alone. As you release the belief that suffering is noble, you make room for joy, ease, and reciprocity. Choosing yourself is not abandoning others—it is honoring the truth that you deserve to exist fully, freely, and without self-erasure.",
+        "vi": "Chữa lành tổn thương tử đạo nghĩa là chọn bản thân mà không cảm thấy tội lỗi. Bạn học rằng nhu cầu của mình không phải gánh nặng, ranh giới không phải phản bội và nghỉ ngơi không phải ích kỷ. Bạn bắt đầu cho phép mình được hỗ trợ thay vì gánh tất cả một mình. Khi bạn buông niềm tin rằng chịu đựng là cao quý, bạn mở chỗ cho niềm vui, sự nhẹ nhàng và sự trao đổi lành mạnh. Chọn bản thân không phải bỏ rơi người khác—mà là tôn trọng sự thật rằng bạn xứng đáng được sống trọn vẹn, tự do và không phải xoá mình."
+      },
+      "tags": ["healing", "freedom"],
+      "audio": "vip6_mc_5.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full sequence", "combined"],
+      "keywords_vi": ["tất cả", "chuỗi đầy đủ", "kết hợp"],
+      "copy": {
+        "en": "The martyr complex grows from environments where suffering felt safer than being seen, where silence protected you, and where self-sacrifice was rewarded. You carry everyone’s weight, erase your needs, and mistake endurance for worth. You believe love requires shrinking yourself and that rest is selfish. But suffering does not make you noble—it makes you invisible. Healing means choosing yourself without guilt, setting boundaries, and allowing others to meet you with care. You are worthy not because you endure, but because you exist.",
+        "vi": "Tổn thương tử đạo lớn lên trong môi trường nơi chịu đựng an toàn hơn là được nhìn thấy, nơi im lặng bảo vệ bạn và nơi hy sinh được xem trọng. Bạn gánh nặng giúp người khác, xóa nhu cầu của mình và nhầm lẫn chịu đựng với giá trị. Bạn tin rằng tình yêu đòi hỏi thu nhỏ bản thân và nghỉ ngơi là ích kỷ. Nhưng chịu đựng không khiến bạn cao quý—nó khiến bạn vô hình. Chữa lành nghĩa là chọn bản thân mà không tội lỗi, đặt ranh giới và cho phép người khác chăm sóc bạn. Bạn xứng đáng không phải vì bạn chịu đựng, mà vì bạn tồn tại."
+      },
+      "tags": ["all", "combined"],
+      "audio": "vip6_mc_1.mp3 vip6_mc_2.mp3 vip6_mc_3.mp3 vip6_mc_4.mp3 vip6_mc_5.mp3"
+    }
+  ],
+  "meta": {
+    "entry_count": 6
+  }
+}
