@@ -1300,5 +1300,12 @@ export const roomDataMap: Record<string, RoomData> = {
     "nameVi": "Bóng Tối của Kiêu Hãnh & Bản Ngã",
     "tier": "vip6",
     "hasData": true
+  },
+  "vip6-inner-saboteur": {
+    "id": "vip6-inner-saboteur",
+    "nameEn": "Inner War: Saboteur vs. Self",
+    "nameVi": "Cuộc Chiến Bên Trong: Kẻ Phá Hoại Và Bản Thân",
+    "tier": "vip6",
+    "hasData": true
   }
 };
