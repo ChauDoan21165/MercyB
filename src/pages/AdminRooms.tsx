@@ -77,35 +77,20 @@ export default function AdminRooms() {
   // Toggle lock mutation with PIN
   const toggleLockMutation = useMutation({
     mutationFn: async ({ roomId, lockState, pin }: { roomId: string; lockState: boolean; pin: string }) => {
-      console.log('Lock mutation started:', { roomId, lockState, pin: '****' });
-      
-      if (lockState) {
-        // Locking: set the hashed PIN in the database
-        console.log('Setting PIN for room lock...');
-        const { error: pinError } = await supabase.rpc('set_room_pin', {
-          _room_id: roomId,
-          _pin: pin
-        });
-        
-        if (pinError) {
-          console.error('Error setting PIN:', pinError);
-          throw new Error(`Failed to set PIN: ${pinError.message}`);
-        }
-        console.log('PIN set successfully');
-      }
-      
-      // Toggle the lock state (unlock without PIN validation)
-      console.log('Toggling room lock state...');
+      console.log('Lock mutation (PIN ignored) started:', { roomId, lockState, pin: '****' });
+
+      // Directly toggle lock state without any PIN checks or PIN storage
       const { error } = await supabase.rpc('toggle_room_lock', {
         room_id_param: roomId,
-        lock_state: lockState
+        lock_state: lockState,
       });
-      
+
       if (error) {
         console.error('Error toggling lock:', error);
         throw new Error(`Failed to toggle lock: ${error.message}`);
       }
-      console.log('Lock state toggled successfully');
+
+      console.log('Lock state toggled successfully (no-PIN)');
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin-rooms"] });
