@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { AccessCodeRedemption } from '@/components/AccessCodeRedemption';
 
 const Tiers = () => {
   const { config, loading, error } = useTiersConfig();
@@ -66,20 +67,24 @@ const Tiers = () => {
 
       {/* Footer CTA */}
       <footer className="py-12 px-6 bg-gradient-to-b from-purple-100 to-purple-200">
-        <div className="max-w-[640px] mx-auto text-center space-y-6">
-          <h3 className="text-xl font-semibold text-gray-900">
-            Ready to choose your tier?
-          </h3>
-          <p className="text-sm text-gray-700">
-            Create your account and select a payment plan
-          </p>
-          <Button
-            size="lg"
-            onClick={() => navigate('/subscribe')}
-            className="gap-2 bg-purple-600 hover:bg-purple-700 text-white"
-          >
-            Sign Up Now <ArrowRight className="w-4 h-4" />
-          </Button>
+        <div className="max-w-[640px] mx-auto space-y-8">
+          <AccessCodeRedemption />
+          
+          <div className="text-center space-y-6">
+            <h3 className="text-xl font-semibold text-gray-900">
+              Ready to choose your tier?
+            </h3>
+            <p className="text-sm text-gray-700">
+              Create your account and select a payment plan
+            </p>
+            <Button
+              size="lg"
+              onClick={() => navigate('/subscribe')}
+              className="gap-2 bg-purple-600 hover:bg-purple-700 text-white"
+            >
+              Sign Up Now <ArrowRight className="w-4 h-4" />
+            </Button>
+          </div>
         </div>
       </footer>
     </div>
