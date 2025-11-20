@@ -92,28 +92,6 @@ export const PairedHighlightedContentWithDictionary = ({
             <div className="text-sm leading-relaxed">
               {viText}
             </div>
-            {isAdmin && (
-              <div className="mt-3 flex gap-2 opacity-70 hover:opacity-100 transition-opacity">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleCopy}
-                  className="h-8 px-3 gap-2 text-xs"
-                >
-                  {copied ? (
-                    <>
-                      <Check className="w-3 h-3" />
-                      <span>Copied</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3 h-3" />
-                      <span>Copy</span>
-                    </>
-                  )}
-                </Button>
-              </div>
-            )}
           </div>
         </>
       )}
