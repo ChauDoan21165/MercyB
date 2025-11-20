@@ -62,10 +62,28 @@ const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => {
-    // Remove fbclid from URL if present
+    // Remove tracking parameters from URL if present
     const url = new URL(window.location.href);
-    if (url.searchParams.has('fbclid')) {
-      url.searchParams.delete('fbclid');
+    const trackingParams = [
+      'fbclid',
+      'gclid',
+      'msclkid',
+      'utm_source',
+      'utm_medium',
+      'utm_campaign',
+      'utm_term',
+      'utm_content',
+    ];
+    
+    let hasTrackingParams = false;
+    trackingParams.forEach(param => {
+      if (url.searchParams.has(param)) {
+        url.searchParams.delete(param);
+        hasTrackingParams = true;
+      }
+    });
+    
+    if (hasTrackingParams) {
       window.history.replaceState({}, '', url.toString());
     }
   }, []);
