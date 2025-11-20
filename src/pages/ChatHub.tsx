@@ -598,8 +598,7 @@ const ChatHub = () => {
                   </div>
                   <div className="mt-3">
                     <MessageActions 
-                      text={englishContent} 
-                      viText={vietnameseContent} 
+                      text={englishContent}
                       roomId={roomId || ""} 
                     />
                   </div>

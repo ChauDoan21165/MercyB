@@ -4,13 +4,11 @@ import { Copy, Check } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 interface MessageActionsProps {
   text: string;
-  viText?: string;
   roomId: string;
 }
 
-export const MessageActions = ({ text, viText, roomId }: MessageActionsProps) => {
+export const MessageActions = ({ text, roomId }: MessageActionsProps) => {
   const [copiedEn, setCopiedEn] = useState(false);
-  const [copiedVi, setCopiedVi] = useState(false);
   const { toast } = useToast();
 
   const handleCopyEn = async () => {
@@ -21,26 +19,6 @@ export const MessageActions = ({ text, viText, roomId }: MessageActionsProps) =>
       toast({
         title: "Copied! / Đã sao chép!",
         description: "Advice copied to clipboard / Lời khuyên đã được sao chép",
-        duration: 2000,
-      });
-    } catch (err) {
-      toast({
-        title: "Failed to copy / Sao chép thất bại",
-        variant: "destructive",
-        duration: 2000,
-      });
-    }
-  };
-
-  const handleCopyVi = async () => {
-    if (!viText) return;
-    try {
-      await navigator.clipboard.writeText(viText);
-      setCopiedVi(true);
-      setTimeout(() => setCopiedVi(false), 2000);
-      toast({
-        title: "Copied! / Đã sao chép!",
-        description: "Vietnamese advice copied / Lời khuyên tiếng Việt đã được sao chép",
         duration: 2000,
       });
     } catch (err) {
@@ -73,26 +51,6 @@ export const MessageActions = ({ text, viText, roomId }: MessageActionsProps) =>
         )}
       </Button>
 
-      {viText && (
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={handleCopyVi}
-          className="h-8 px-3 gap-2 text-xs"
-        >
-          {copiedVi ? (
-            <>
-              <Check className="w-3 h-3" />
-              <span>Copied VN</span>
-            </>
-          ) : (
-            <>
-              <Copy className="w-3 h-3" />
-              <span>Copy VN</span>
-            </>
-          )}
-        </Button>
-      )}
     </div>
   );
 };
