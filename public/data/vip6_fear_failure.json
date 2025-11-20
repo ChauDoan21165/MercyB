@@ -1,0 +1,83 @@
+{
+  "id": "vip6_fear_failure",
+  "tier": "VIP6",
+  "title": {
+    "en": "Fear of Failure",
+    "vi": "Sợ Thất Bại"
+  },
+  "content": {
+    "en": "This room explores the fear of failure—the dread of falling short, disappointing others, or confirming the deepest belief that you are not enough.",
+    "vi": "Phòng này khám phá nỗi sợ thất bại—nỗi lo sợ không đạt kỳ vọng, làm người khác thất vọng hoặc chứng minh niềm tin sâu xa rằng bạn không đủ tốt."
+  },
+  "entries": [
+    {
+      "slug": "the-roots-of-failure-fear",
+      "keywords_en": ["failure", "fear", "origins"],
+      "keywords_vi": ["thất bại", "nỗi sợ", "gốc rễ"],
+      "copy": {
+        "en": "Fear of failure often begins in childhood, where mistakes brought punishment, shame, or withdrawal of affection. Your nervous system learned that errors were dangerous, not educational. Over time, failure became associated with identity, not behavior. A simple mistake felt like proof that you were inadequate. This fear follows you into adulthood, making every decision feel high stakes. Instead of trying and risking failure, you avoid, delay, or choose smaller dreams to stay safe. Fear of failure is not weakness—it is a protective reflex against old wounds that once hurt too deeply to bear.",
+        "vi": "Nỗi sợ thất bại thường bắt đầu từ thời thơ ấu, khi sai lầm dẫn đến trách phạt, xấu hổ hoặc mất đi sự yêu thương. Hệ thần kinh của bạn học rằng lỗi lầm nguy hiểm chứ không phải để học hỏi. Theo thời gian, thất bại gắn với con người bạn chứ không phải hành vi của bạn. Một sai sót nhỏ cảm giác như bằng chứng rằng bạn không đủ tốt. Nỗi sợ này theo bạn đến trưởng thành, khiến mỗi quyết định đều mang tính sống còn. Thay vì thử và chấp nhận rủi ro thất bại, bạn tránh né, trì hoãn hoặc chọn những ước mơ nhỏ hơn. Sợ thất bại không phải yếu đuối—đó là phản xạ bảo vệ trước vết thương cũ từng quá đau để chịu đựng."
+      },
+      "tags": ["fear", "failure"],
+      "audio": "vip6_ff_1.mp3"
+    },
+    {
+      "slug": "fear-of-disappointing-others",
+      "keywords_en": ["expectations", "pressure", "others"],
+      "keywords_vi": ["kỳ vọng", "áp lực", "người khác"],
+      "copy": {
+        "en": "Many fear failure not because of the failure itself, but because of disappointing others. You may carry the weight of expectations from family, teachers, or society. Being seen as capable became part of your identity, so falling short feels like betrayal. You fear being judged, pitied, or losing respect. This pressure makes every goal feel heavier than it should be. Instead of pursuing what matters to you, you pursue what keeps others proud. The fear of disappointing people becomes stronger than the desire to grow.",
+        "vi": "Nhiều người sợ thất bại không phải vì bản thân thất bại, mà vì làm người khác thất vọng. Bạn mang theo sức nặng của kỳ vọng từ gia đình, thầy cô hoặc xã hội. Việc được xem là giỏi giang trở thành một phần bản sắc, nên không đạt được mục tiêu cảm giác như phản bội. Bạn sợ bị phán xét, thương hại hoặc mất đi sự tôn trọng. Áp lực này khiến mọi mục tiêu đều trở nên nặng nề. Thay vì theo đuổi điều quan trọng với mình, bạn theo đuổi điều khiến người khác tự hào. Nỗi sợ làm người khác thất vọng trở nên mạnh hơn cả mong muốn phát triển."
+      },
+      "tags": ["pressure", "expectations"],
+      "audio": "vip6_ff_2.mp3"
+    },
+    {
+      "slug": "the-paralysis-of-perfection",
+      "keywords_en": ["perfectionism", "freeze", "avoidance"],
+      "keywords_vi": ["chủ nghĩa hoàn hảo", "tê liệt", "tránh né"],
+      "copy": {
+        "en": "Perfectionism is often fear of failure wearing a mask. When failure feels unbearable, you strive to make everything flawless. But the pressure to be perfect creates paralysis—you hesitate, overthink, and wait for ideal conditions that never come. Perfectionism keeps you safe from criticism, but also keeps you from progress. It traps you in endless preparation with no action. Beneath it is a belief: if you cannot do something perfectly, you should not do it at all. True healing begins when you allow yourself to be human, not flawless.",
+        "vi": "Chủ nghĩa hoàn hảo thường là nỗi sợ thất bại đội lốt. Khi thất bại trở nên không thể chịu đựng, bạn cố gắng làm mọi thứ hoàn hảo. Nhưng áp lực hoàn hảo tạo ra sự tê liệt—bạn do dự, suy nghĩ quá mức và chờ điều kiện lý tưởng không bao giờ đến. Chủ nghĩa hoàn hảo giữ bạn an toàn khỏi chỉ trích nhưng cũng tước đi tiến bộ. Nó nhốt bạn trong chuẩn bị vô tận mà không hành động. Ẩn dưới đó là niềm tin: nếu không làm hoàn hảo thì tốt nhất đừng làm. Chữa lành bắt đầu khi bạn cho phép mình là con người, không phải một phiên bản không tì vết."
+      },
+      "tags": ["perfectionism", "avoidance"],
+      "audio": "vip6_ff_3.mp3"
+    },
+    {
+      "slug": "fear-of-starting",
+      "keywords_en": ["beginning", "hesitation", "self-doubt"],
+      "keywords_vi": ["bắt đầu", "do dự", "nghi ngờ bản thân"],
+      "copy": {
+        "en": "For many, the real fear is not failing, but starting. Beginnings expose you to uncertainty. You worry that once you begin, you will discover you are not as capable as you hoped. You fear confirming the belief that you are not talented, smart, or disciplined enough. So you stay in planning mode where everything is still possible and nothing is yet proven. Starting threatens the comfort of potential, replacing imagination with reality. But no path becomes clear until your feet touch it.",
+        "vi": "Với nhiều người, nỗi sợ thực sự không phải thất bại mà là bắt đầu. Khởi đầu khiến bạn đối mặt với sự bất định. Bạn lo rằng khi đã bắt tay vào, bạn sẽ phát hiện mình không giỏi như mong đợi. Bạn sợ xác nhận niềm tin rằng mình không đủ tài năng, thông minh hoặc kỷ luật. Vì vậy bạn ở mãi trong giai đoạn lên kế hoạch—nơi mọi thứ đều còn có thể và chưa gì được kiểm chứng. Bắt đầu đe dọa sự thoải mái của khả năng tiềm năng, thay trí tưởng tượng bằng thực tế. Nhưng con đường chỉ hiện ra khi bạn bước lên nó."
+      },
+      "tags": ["hesitation", "self-doubt"],
+      "audio": "vip6_ff_4.mp3"
+    },
+    {
+      "slug": "redefining-failure",
+      "keywords_en": ["growth", "learning", "healing"],
+      "keywords_vi": ["phát triển", "học hỏi", "chữa lành"],
+      "copy": {
+        "en": "Healing fear of failure requires redefining what failure means. Instead of seeing it as proof of inadequacy, you learn to view it as a teacher. Failure becomes data, not identity. You allow yourself to try imperfectly, learn gradually, and grow authentically. The goal shifts from being flawless to being courageous. When failure is no longer catastrophic, your true potential begins to breathe. Every attempt becomes progress, not judgment.",
+        "vi": "Chữa lành nỗi sợ thất bại đòi hỏi bạn phải định nghĩa lại thất bại. Thay vì xem đó là bằng chứng của sự kém cỏi, bạn học coi nó như người thầy. Thất bại trở thành dữ liệu, không phải bản sắc. Bạn cho phép mình thử không hoàn hảo, học từng chút và phát triển chân thật. Mục tiêu chuyển từ hoàn hảo sang dũng khí. Khi thất bại không còn thảm họa, tiềm năng thật sự của bạn mới được thở. Mọi nỗ lực đều trở thành tiến bộ, không phải phán xét."
+      },
+      "tags": ["growth", "healing"],
+      "audio": "vip6_ff_5.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full sequence", "combined"],
+      "keywords_vi": ["tất cả", "chuỗi đầy đủ", "kết hợp"],
+      "copy": {
+        "en": "Fear of failure grows from childhood wounds, fear of disappointing others, perfectionism, and fear of discovering your limits. It turns every decision into a test of worth. You avoid beginnings to avoid confirming your doubts. You stay small to stay safe. But failure is not proof of inadequacy—it is part of becoming. When you allow yourself to try, learn, and grow imperfectly, failure loses its power. Courage replaces perfection. Progress replaces fear.",
+        "vi": "Nỗi sợ thất bại lớn lên từ vết thương thời thơ ấu, nỗi sợ làm người khác thất vọng, chủ nghĩa hoàn hảo và nỗi sợ nhìn thấy giới hạn của mình. Nó biến mọi quyết định thành bài kiểm tra giá trị. Bạn tránh bắt đầu để tránh xác nhận nghi ngờ. Bạn giữ mình nhỏ bé để an toàn. Nhưng thất bại không chứng minh bạn kém cỏi—nó là một phần của hành trình trưởng thành. Khi bạn cho phép mình thử, học và phát triển một cách không hoàn hảo, thất bại mất sức mạnh. Dũng khí thay thế hoàn hảo. Tiến bộ thay thế nỗi sợ."
+      },
+      "tags": ["all", "combined"],
+      "audio": "vip6_ff_1.mp3 vip6_ff_2.mp3 vip6_ff_3.mp3 vip6_ff_4.mp3 vip6_ff_5.mp3"
+    }
+  ],
+  "meta": {
+    "entry_count": 6
+  }
+}
