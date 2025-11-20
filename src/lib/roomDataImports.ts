@@ -1272,5 +1272,12 @@ export const roomDataMap: Record<string, RoomData> = {
     "nameVi": "Sợ Thất Bại",
     "tier": "vip6",
     "hasData": true
+  },
+  "vip6-perfectionism-shadows": {
+    "id": "vip6-perfectionism-shadows",
+    "nameEn": "Perfectionism Shadows",
+    "nameVi": "Bóng Tối Chủ Nghĩa Hoàn Hảo",
+    "tier": "vip6",
+    "hasData": true
   }
 };
