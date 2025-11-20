@@ -90,7 +90,7 @@ const RoomGridVIP6 = () => {
         <div className="mt-8 text-center">
           <div className="inline-flex items-center justify-center gap-2 mb-4">
             <Brain className="w-8 h-8" style={{ color: 'hsl(var(--vip6-primary))' }} />
-            <h1 className="text-3xl font-bold" style={{ color: getHeadingColor('vip6', 'shadow') }}>
+            <h1 className="text-3xl font-bold" style={{ color: 'hsl(var(--vip6-primary))' }}>
               VIP6 — Shadow & Deep Psychology
             </h1>
           </div>
