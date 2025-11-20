@@ -176,12 +176,12 @@ describe('JSON Parsing Integration', () => {
 
       expect(registryEntry.id).toBeTruthy();
       expect(registryEntry.nameEn).toBeTruthy();
-      expect(registryEntry.tier).toMatch(/^(free|vip1|vip2|vip3|vip4)$/);
+      expect(registryEntry.tier).toMatch(/^(free|vip1|vip2|vip3|vip4|vip5)$/);
       expect(registryEntry.path).toContain('.json');
     });
 
     it('should handle multiple tier variations', () => {
-      const tiers = ['free', 'vip1', 'vip2', 'vip3', 'vip4'];
+      const tiers = ['free', 'vip1', 'vip2', 'vip3', 'vip4', 'vip5'];
       
       tiers.forEach(tier => {
         const registryEntry = {

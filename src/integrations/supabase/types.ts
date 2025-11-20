@@ -677,12 +677,15 @@ export type Database = {
         Row: {
           created_at: string | null
           custom_topics_allowed: number | null
+          description_en: string | null
+          description_vi: string | null
           display_order: number
           id: string
           is_active: boolean | null
           name: string
           name_vi: string
           price_monthly: number
+          price_yearly: number | null
           priority_support: boolean | null
           room_access_per_day: number | null
           updated_at: string | null
@@ -690,12 +693,15 @@ export type Database = {
         Insert: {
           created_at?: string | null
           custom_topics_allowed?: number | null
+          description_en?: string | null
+          description_vi?: string | null
           display_order: number
           id?: string
           is_active?: boolean | null
           name: string
           name_vi: string
           price_monthly: number
+          price_yearly?: number | null
           priority_support?: boolean | null
           room_access_per_day?: number | null
           updated_at?: string | null
@@ -703,12 +709,15 @@ export type Database = {
         Update: {
           created_at?: string | null
           custom_topics_allowed?: number | null
+          description_en?: string | null
+          description_vi?: string | null
           display_order?: number
           id?: string
           is_active?: boolean | null
           name?: string
           name_vi?: string
           price_monthly?: number
+          price_yearly?: number | null
           priority_support?: boolean | null
           room_access_per_day?: number | null
           updated_at?: string | null

@@ -94,6 +94,13 @@ All colors MUST be HSL.
     --vip4-accent: 36 100% 60%;
     --vip4-gold: 45 100% 51%;
     
+    /* VIP5 colors - Emerald/Teal theme */
+    --page-vip5: 160 84% 90%;
+    --vip5-primary: 160 84% 39%;
+    --vip5-secondary: 173 80% 40%;
+    --vip5-accent: 160 84% 50%;
+    --vip5-gold: 45 100% 51%;
+    
     /* Admin page colors - Full Rainbow gradient */
     --admin-primary: 340 82% 52%;
     --admin-secondary: 207 90% 54%;
@@ -192,6 +199,13 @@ All colors MUST be HSL.
     --vip4-secondary: 45 90% 55%;
     --vip4-accent: 36 100% 65%;
     --vip4-gold: 45 90% 60%;
+    
+    /* VIP5 dark mode - Emerald/Teal theme */
+    --page-vip5: 160 30% 18%;
+    --vip5-primary: 160 75% 45%;
+    --vip5-secondary: 173 70% 45%;
+    --vip5-accent: 160 84% 55%;
+    --vip5-gold: 45 90% 60%;
   }
 }
 
