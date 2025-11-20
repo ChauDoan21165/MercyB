@@ -1203,6 +1203,13 @@ export const roomDataMap: Record<string, RoomData> = {
     "tier": "vip6",
     "hasData": true
   },
+  "vip6-fear-intimacy": {
+    "id": "vip6-fear-intimacy",
+    "nameEn": "Fear of Intimacy",
+    "nameVi": "Nỗi Sợ Gần Gũi",
+    "tier": "vip6",
+    "hasData": true
+  },
   "vip6-fear-abandonment": {
     "id": "vip6-fear-abandonment",
     "nameEn": "Fear of Abandonment",
@@ -1287,17 +1294,87 @@ export const roomDataMap: Record<string, RoomData> = {
     "tier": "vip6",
     "hasData": true
   },
-  "vip6-martyr-complex": {
-    "id": "vip6-martyr-complex",
-    "nameEn": "Martyr Complex",
-    "nameVi": "Tổn Thương Tử Đạo",
-    "tier": "vip6",
-    "hasData": true
-  },
   "vip6-pride-ego-shadow": {
     "id": "vip6-pride-ego-shadow",
     "nameEn": "Shadow of Pride & Ego",
     "nameVi": "Bóng Tối của Kiêu Hãnh & Bản Ngã",
+    "tier": "vip6",
+    "hasData": true
+  },
+  "vip6-abandonment-wound": {
+    "id": "vip6-abandonment-wound",
+    "nameEn": "The Abandonment Wound",
+    "nameVi": "Vết Thương Bị Bỏ Rơi",
+    "tier": "vip6",
+    "hasData": true
+  },
+  "vip6-attachment-trauma": {
+    "id": "vip6-attachment-trauma",
+    "nameEn": "Attachment Trauma Patterns",
+    "nameVi": "Mô Thức Tổn Thương Gắn Bó",
+    "tier": "vip6",
+    "hasData": true
+  },
+  "vip6-inner-saboteur": {
+    "id": "vip6-inner-saboteur",
+    "nameEn": "Inner War: Saboteur vs. Self",
+    "nameVi": "Cuộc Chiến Bên Trong: Kẻ Phá Hoại Và Bản Thân",
+    "tier": "vip6",
+    "hasData": true
+  },
+  "vip6-reclaim-power": {
+    "id": "vip6-reclaim-power",
+    "nameEn": "Reclaiming Inner Power",
+    "nameVi": "Giành Lại Sức Mạnh Nội Tại",
+    "tier": "vip6",
+    "hasData": true
+  },
+  "vip6-fear-success": {
+    "id": "vip6-fear-success",
+    "nameEn": "Fear of Success",
+    "nameVi": "Sợ Thành Công",
+    "tier": "vip6",
+    "hasData": true
+  },
+  "vip6-freeze-response": {
+    "id": "vip6-freeze-response",
+    "nameEn": "The Freeze Response",
+    "nameVi": "Phản Ứng Đóng Băng",
+    "tier": "vip6",
+    "hasData": true
+  },
+  "vip6-imposter-wounds": {
+    "id": "vip6-imposter-wounds",
+    "nameEn": "Imposter Wounds",
+    "nameVi": "Vết Thương Kẻ Giả Mạo",
+    "tier": "vip6",
+    "hasData": true
+  },
+  "vip6-not-enough-wound": {
+    "id": "vip6-not-enough-wound",
+    "nameEn": "The Wound of Feeling 'Not Enough'",
+    "nameVi": "Vết Thương Cảm Giác 'Không Đủ Tốt'",
+    "tier": "vip6",
+    "hasData": true
+  },
+  "vip6-self-worth-distortions": {
+    "id": "vip6-self-worth-distortions",
+    "nameEn": "Self-Worth Distortions",
+    "nameVi": "Biến Dạng Giá Trị Bản Thân",
+    "tier": "vip6",
+    "hasData": true
+  },
+  "vip6-shadow-envy": {
+    "id": "vip6-shadow-envy",
+    "nameEn": "The Shadow of Envy",
+    "nameVi": "Bóng Tối của Sự Ghen Tị",
+    "tier": "vip6",
+    "hasData": true
+  },
+  "vip6-shadow-perfectionism": {
+    "id": "vip6-shadow-perfectionism",
+    "nameEn": "Shadow of Perfectionism",
+    "nameVi": "Bóng Tối của Chủ Nghĩa Hoàn Hảo",
     "tier": "vip6",
     "hasData": true
   }
