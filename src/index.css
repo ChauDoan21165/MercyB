@@ -101,6 +101,13 @@ All colors MUST be HSL.
     --vip5-accent: 160 84% 50%;
     --vip5-gold: 45 100% 51%;
     
+    /* VIP6 colors - Indigo/Purple/Pink theme for Shadow & Deep Psychology */
+    --page-vip6: 260 60% 90%;
+    --vip6-primary: 260 60% 50%;
+    --vip6-secondary: 280 60% 55%;
+    --vip6-accent: 330 65% 60%;
+    --vip6-gold: 45 100% 51%;
+    
     /* Admin page colors - Full Rainbow gradient */
     --admin-primary: 340 82% 52%;
     --admin-secondary: 207 90% 54%;

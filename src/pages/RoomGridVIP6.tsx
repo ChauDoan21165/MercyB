@@ -54,7 +54,7 @@ const RoomGridVIP6 = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-violet-100">
+      <div className="min-h-screen flex items-center justify-center" style={{ background: 'hsl(var(--page-vip6))' }}>
         <p className="text-muted-foreground">Loading... / Đang Tải...</p>
       </div>
     );
@@ -83,21 +83,21 @@ const RoomGridVIP6 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-violet-100">
+    <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip6))' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <ColorfulMercyBladeHeader />
         
         <div className="mt-8 text-center">
           <div className="inline-flex items-center justify-center gap-2 mb-4">
-            <Brain className="w-8 h-8 text-purple-600" />
-            <h1 className="text-3xl font-bold text-purple-900">
+            <Brain className="w-8 h-8" style={{ color: 'hsl(var(--vip6-primary))' }} />
+            <h1 className="text-3xl font-bold" style={{ color: getHeadingColor('vip6', 'shadow') }}>
               VIP6 — Shadow & Deep Psychology
             </h1>
           </div>
-          <p className="text-base text-gray-700 max-w-3xl mx-auto mb-2">
+          <p className="text-base text-muted-foreground max-w-3xl mx-auto mb-2">
             VIP6 opens a dedicated universe for shadow work, inner child healing, trauma patterns, subconscious identity, and emotional integration. This tier helps users understand the hidden forces shaping their reactions, choices, relationships, and life direction.
           </p>
-          <p className="text-base text-gray-700 max-w-3xl mx-auto mb-8">
+          <p className="text-base text-muted-foreground max-w-3xl mx-auto mb-8">
             VIP6 mở ra một vũ trụ riêng dành cho bóng tối nội tâm, chữa lành đứa trẻ bên trong, mô thức tổn thương, bản sắc tiềm thức và sự tích hợp cảm xúc. Cấp độ này giúp người dùng hiểu những lực vô hình đang định hình phản ứng, lựa chọn, các mối quan hệ và hướng đi cuộc sống.
           </p>
         </div>
@@ -106,7 +106,7 @@ const RoomGridVIP6 = () => {
 
         <div className="flex items-center justify-between mb-6 mt-8">
           <div>
-            <h2 className="text-2xl font-semibold text-purple-900">
+            <h2 className="text-2xl font-semibold" style={{ color: 'hsl(var(--vip6-primary))' }}>
               Shadow Work & Deep Psychology Rooms
             </h2>
             <p className="text-sm text-muted-foreground mt-1">
@@ -146,9 +146,10 @@ const RoomGridVIP6 = () => {
               return (
                 <Card
                   key={room.id}
-                  className="group relative overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border-2 hover:border-purple-400"
+                  className="group relative overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border-2"
                   style={{
                     background: `linear-gradient(135deg, ${roomColor}15 0%, ${roomColor}25 100%)`,
+                    borderColor: 'hsl(var(--vip6-accent) / 0.3)',
                   }}
                   onClick={() => !isLocked && navigate(`/chat/${room.id}`)}
                 >
@@ -156,21 +157,28 @@ const RoomGridVIP6 = () => {
                     <div className="flex items-start justify-between mb-3">
                       <Badge
                         variant="secondary"
-                        className="bg-purple-100 text-purple-800 border-purple-200"
+                        style={{
+                          backgroundColor: 'hsl(var(--vip6-primary) / 0.15)',
+                          color: 'hsl(var(--vip6-primary))',
+                          borderColor: 'hsl(var(--vip6-primary) / 0.3)',
+                        }}
                       >
                         VIP6
                       </Badge>
                       {isLocked && (
-                        <Lock className="w-5 h-5 text-purple-600" />
+                        <Lock className="w-5 h-5" style={{ color: 'hsl(var(--vip6-primary))' }} />
                       )}
                     </div>
 
-                    <h3 className="text-xl font-bold mb-2 text-purple-900 group-hover:text-purple-700 transition-colors">
+                    <h3 
+                      className="text-xl font-bold mb-2 transition-colors"
+                      style={{ color: 'hsl(var(--vip6-primary))' }}
+                    >
                       {room.name || room.id}
                     </h3>
 
                     {room.description && (
-                      <p className="text-sm text-gray-700 mb-4 line-clamp-3">
+                      <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
                         {room.description}
                       </p>
                     )}
