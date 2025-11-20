@@ -171,7 +171,14 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "schizophrenia-mastery-vip3": "data/schizophrenia-mastery-vip3.json",
   "writing-logic-vip3-ii": "data/writing-logic-vip3ii.json",
   "writing-deepdive-part12-vip3-ii": "data/writing-deepdive-part12-vip3-ii.json",
-  "writing-vip3ii-part14": "data/writing-vip3ii-part14.json"
+  "writing-vip3ii-part14": "data/writing-vip3ii-part14.json",
+  "vip6-shadow-self": "data/vip6_shadow_self.json",
+  "vip6-projection-triggers": "data/vip6_projection_triggers.json",
+  "vip6-emotional-blindspots": "data/vip6_emotional_blindspots.json",
+  "vip6-inner-fragmentation": "data/vip6_inner_fragmentation.json",
+  "vip6-repressed-desires": "data/vip6_repressed_desires.json",
+  "vip6-fear-intimacy": "data/vip6_fear_intimacy.json",
+  "vip6-fear-abandonment": "data/vip6_fear_abandonment.json"
 };
 
 /**
@@ -181,7 +188,7 @@ export function getRoomBaseNames(): string[] {
   const baseNames = new Set<string>();
   
   for (const roomId of Object.keys(PUBLIC_ROOM_MANIFEST)) {
-    const baseName = roomId.replace(/-(free|vip1|vip2|vip3|vip3-ii|vip4)$/, '');
+    const baseName = roomId.replace(/-(free|vip1|vip2|vip3|vip3-ii|vip4|vip5|vip6)$/, '');
     baseNames.add(baseName);
   }
   
@@ -194,7 +201,7 @@ export function getRoomBaseNames(): string[] {
 export function getAvailableTiers(roomBaseName: string): string[] {
   const tiers: string[] = [];
   
-  for (const tier of ['free', 'vip1', 'vip2', 'vip3', 'vip3_ii', 'vip4']) {
+  for (const tier of ['free', 'vip1', 'vip2', 'vip3', 'vip3_ii', 'vip4', 'vip5', 'vip6']) {
     const roomId = `${roomBaseName}-${tier.replace('_', '-')}`;
     if (PUBLIC_ROOM_MANIFEST[roomId]) {
       tiers.push(tier);
