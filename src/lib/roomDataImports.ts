@@ -1209,5 +1209,12 @@ export const roomDataMap: Record<string, RoomData> = {
     "nameVi": "Nỗi Sợ Bị Bỏ Rơi",
     "tier": "vip6",
     "hasData": true
+  },
+  "vip6-guilt-hidden-shame": {
+    "id": "vip6-guilt-hidden-shame",
+    "nameEn": "Guilt & Hidden Shame",
+    "nameVi": "Tội Lỗi & Nỗi Xấu Hổ Ẩn Giấu",
+    "tier": "vip6",
+    "hasData": true
   }
 };
