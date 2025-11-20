@@ -6,63 +6,51 @@
 import { z } from 'zod';
 
 /**
- * Audio file naming convention: <roomId>_<entryNumber>_en.mp3
- */
-const audioFilenameSchema = z.string().regex(
-  /^level[1-3]-[\w-]+-\d+_en\.mp3$/,
-  "Audio filename must follow format: <roomId>_<entryNumber>_en.mp3"
-);
-
-/**
- * Single entry validation (120 words EN + full VI translation)
+ * Single entry validation (from user's format)
  */
 const kidsEntrySchema = z.object({
-  display_order: z.number().int().min(1).max(5),
-  content_en: z.string()
-    .trim()
-    .min(50, "English content must be at least 50 characters")
-    .max(1000, "English content must not exceed 1000 characters")
-    .refine(
-      (text) => {
-        const wordCount = text.split(/\s+/).filter(w => w.length > 0).length;
-        return wordCount >= 100 && wordCount <= 150;
-      },
-      "English content must be approximately 120 words (100-150 range)"
-    ),
-  content_vi: z.string()
-    .trim()
-    .min(50, "Vietnamese translation must be at least 50 characters")
-    .max(1500, "Vietnamese translation must not exceed 1500 characters"),
-  audio_filename: audioFilenameSchema.optional(),
-  includes_try_this: z.boolean().default(false)
+  slug: z.string().min(1),
+  keywords_en: z.array(z.string()).optional(),
+  keywords_vi: z.array(z.string()).optional(),
+  copy: z.object({
+    en: z.string()
+      .trim()
+      .min(50, "English content must be at least 50 characters")
+      .max(1500, "English content must not exceed 1500 characters"),
+    vi: z.string()
+      .trim()
+      .min(50, "Vietnamese translation must be at least 50 characters")
+      .max(2000, "Vietnamese translation must not exceed 2000 characters")
+  }),
+  tags: z.array(z.string()).optional(),
+  audio: z.string().min(1, "Audio filename required")
 });
 
 /**
- * Kids room JSON structure validation
+ * Kids room JSON structure validation (user's format)
  */
 export const kidsRoomJsonSchema = z.object({
   id: z.string()
-    .regex(/^level[1-3]-[\w-]+$/, "Room ID must follow format: level1-room-name"),
-  level_id: z.enum(['level1', 'level2', 'level3'], {
-    errorMap: () => ({ message: "Level must be level1, level2, or level3" })
+    .min(1, "Room ID required")
+    .regex(/^[\w_]+$/, "Room ID must be alphanumeric with underscores"),
+  tier: z.string().min(1, "Tier required"),
+  title: z.object({
+    en: z.string().trim().min(3).max(100),
+    vi: z.string().trim().min(3).max(100)
   }),
-  title_en: z.string().trim().min(3).max(100),
-  title_vi: z.string().trim().min(3).max(100),
-  description_en: z.string().trim().max(500).optional(),
-  description_vi: z.string().trim().max(500).optional(),
-  icon: z.string().optional(),
+  content: z.object({
+    en: z.string().trim().min(10).max(1000),
+    vi: z.string().trim().min(10).max(1500),
+    audio: z.string().optional()
+  }),
   entries: z.array(kidsEntrySchema)
-    .length(5, "Must have exactly 5 entries per room")
-    .refine(
-      (entries) => {
-        const orders = entries.map(e => e.display_order).sort();
-        return JSON.stringify(orders) === JSON.stringify([1, 2, 3, 4, 5]);
-      },
-      "Entries must have display_order values 1, 2, 3, 4, 5"
-    ),
+    .length(5, "Must have exactly 5 entries per room"),
   meta: z.object({
-    tier: z.enum(['level1', 'level2', 'level3']),
-    age_range: z.enum(['4-7', '7-10', '10-13']),
+    age_range: z.string(),
+    level: z.string(),
+    created_at: z.string().optional(),
+    updated_at: z.string().optional(),
+    entry_count: z.number().int().min(5).max(5),
     room_color: z.string().regex(/^#[0-9A-Fa-f]{6}$/, "Must be valid hex color")
   })
 });
@@ -87,30 +75,26 @@ export function validateKidsRoomBatch(data: unknown) {
 }
 
 /**
- * Validate audio filename matches room ID and entry number
+ * Extract level from tier string
  */
-export function validateAudioFilename(
-  roomId: string, 
-  entryNumber: number, 
-  audioFilename: string
-): boolean {
-  const expected = `${roomId}_${entryNumber}_en.mp3`;
-  return audioFilename === expected;
+export function extractLevelFromTier(tier: string): string {
+  if (tier.includes('Level 1') || tier.includes('Cấp 1')) return 'level1';
+  if (tier.includes('Level 2') || tier.includes('Cấp 2')) return 'level2';
+  if (tier.includes('Level 3') || tier.includes('Cấp 3')) return 'level3';
+  return 'level1';
 }
 
 /**
- * Generate expected audio filename
+ * Convert user ID format to database ID format
+ * Example: "alphabet_adventure_kids_l1" → "level1-alphabet-adventure"
  */
-export function generateAudioFilename(roomId: string, entryNumber: number): string {
-  return `${roomId}_${entryNumber}_en.mp3`;
-}
-
-/**
- * Extract room level from room ID
- */
-export function extractLevelFromRoomId(roomId: string): string | null {
-  const match = roomId.match(/^(level[1-3])-/);
-  return match ? match[1] : null;
+export function convertRoomIdToDbFormat(id: string, tier: string): string {
+  const level = extractLevelFromTier(tier);
+  // Remove trailing _kids_l1, _kids_l2, _kids_l3
+  const cleanId = id.replace(/_kids_l[1-3]$/, '');
+  // Convert underscores to hyphens
+  const dashedId = cleanId.replace(/_/g, '-');
+  return `${level}-${dashedId}`;
 }
 
 /**

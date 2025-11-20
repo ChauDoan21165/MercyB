@@ -77,56 +77,23 @@ export default function AdminKidsImport() {
     try {
       const roomData = validationResult.data;
 
-      // Check if room already exists
-      const { data: existingRoom } = await supabase
-        .from('kids_rooms')
-        .select('id')
-        .eq('id', roomData.id)
-        .single();
+      // Call edge function to process the room
+      const { data, error } = await supabase.functions.invoke('process-kids-room', {
+        body: {
+          roomData,
+          mode: 'upsert'
+        }
+      });
 
-      if (existingRoom) {
-        // Update existing room
-        const { error: updateError } = await supabase
-          .from('kids_rooms')
-          .update({
-            title_en: roomData.title_en,
-            title_vi: roomData.title_vi,
-            description_en: roomData.description_en,
-            description_vi: roomData.description_vi,
-            icon: roomData.icon,
-            updated_at: new Date().toISOString()
-          })
-          .eq('id', roomData.id);
+      if (error) throw error;
 
-        if (updateError) throw updateError;
-
-        // Delete existing entries
-        await supabase
-          .from('kids_entries')
-          .delete()
-          .eq('room_id', roomData.id);
+      if (!data.success) {
+        throw new Error(data.error || 'Unknown error');
       }
-
-      // Insert entries
-      const entries = roomData.entries.map((entry: any) => ({
-        id: `${roomData.id}-entry-${entry.display_order}`,
-        room_id: roomData.id,
-        content_en: entry.content_en,
-        content_vi: entry.content_vi,
-        audio_url: entry.audio_filename ? `/audio/kids/${entry.audio_filename}` : null,
-        display_order: entry.display_order,
-        is_active: true
-      }));
-
-      const { error: entriesError } = await supabase
-        .from('kids_entries')
-        .insert(entries);
-
-      if (entriesError) throw entriesError;
 
       toast({
         title: "✅ Import Successful",
-        description: `Room "${roomData.title_en}" with ${entries.length} entries has been imported.`,
+        description: `Room "${roomData.title.en}" with ${data.entries_count} entries has been imported.`,
       });
 
       setJsonInput('');
@@ -234,9 +201,9 @@ export default function AdminKidsImport() {
                 {validationResult.success && validationResult.data && (
                   <div className="space-y-2 text-sm">
                     <p><strong>Room ID:</strong> {validationResult.data.id}</p>
-                    <p><strong>Title EN:</strong> {validationResult.data.title_en}</p>
-                    <p><strong>Title VI:</strong> {validationResult.data.title_vi}</p>
-                    <p><strong>Level:</strong> {validationResult.data.level_id}</p>
+                    <p><strong>Title EN:</strong> {validationResult.data.title.en}</p>
+                    <p><strong>Title VI:</strong> {validationResult.data.title.vi}</p>
+                    <p><strong>Tier:</strong> {validationResult.data.tier}</p>
                     <p><strong>Entries:</strong> {validationResult.data.entries.length}</p>
                   </div>
                 )}
@@ -265,13 +232,13 @@ export default function AdminKidsImport() {
         <Card className="p-6 space-y-3">
           <h3 className="text-lg font-semibold">Validation Rules</h3>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li>✓ Room ID must match format: <code>level1-room-name</code></li>
-            <li>✓ Level must be: <code>level1</code>, <code>level2</code>, or <code>level3</code></li>
-            <li>✓ Exactly 5 entries with display_order 1-5</li>
-            <li>✓ English content: ~120 words (100-150 range)</li>
-            <li>✓ Vietnamese: full translation</li>
-            <li>✓ Audio format: <code>roomId_entryNumber_en.mp3</code></li>
-            <li>✓ Bilingual titles and descriptions required</li>
+            <li>✓ Room ID format: <code>room_name_kids_l[1-3]</code></li>
+            <li>✓ Tier must include "Kids Level 1/2/3"</li>
+            <li>✓ Exactly 5 entries required</li>
+            <li>✓ Bilingual title object: <code>{`{en, vi}`}</code></li>
+            <li>✓ Bilingual content object with optional audio</li>
+            <li>✓ Each entry needs: slug, copy (en/vi), audio filename</li>
+            <li>✓ Meta must include: age_range, level, entry_count, room_color</li>
           </ul>
         </Card>
       </div>

@@ -7,26 +7,54 @@ const corsHeaders = {
 };
 
 interface KidsEntry {
-  display_order: number;
-  content_en: string;
-  content_vi: string;
-  audio_filename?: string;
+  slug: string;
+  keywords_en?: string[];
+  keywords_vi?: string[];
+  copy: {
+    en: string;
+    vi: string;
+  };
+  tags?: string[];
+  audio: string;
 }
 
 interface KidsRoomData {
   id: string;
-  level_id: string;
-  title_en: string;
-  title_vi: string;
-  description_en?: string;
-  description_vi?: string;
-  icon?: string;
+  tier: string;
+  title: {
+    en: string;
+    vi: string;
+  };
+  content: {
+    en: string;
+    vi: string;
+    audio?: string;
+  };
   entries: KidsEntry[];
   meta: {
-    tier: string;
     age_range: string;
+    level: string;
+    created_at?: string;
+    updated_at?: string;
+    entry_count: number;
     room_color: string;
   };
+}
+
+// Helper to extract level from tier
+function extractLevelFromTier(tier: string): string {
+  if (tier.includes('Level 1') || tier.includes('Cấp 1')) return 'level1';
+  if (tier.includes('Level 2') || tier.includes('Cấp 2')) return 'level2';
+  if (tier.includes('Level 3') || tier.includes('Cấp 3')) return 'level3';
+  return 'level1';
+}
+
+// Helper to convert room ID
+function convertRoomIdToDbFormat(id: string, tier: string): string {
+  const level = extractLevelFromTier(tier);
+  const cleanId = id.replace(/_kids_l[1-3]$/, '');
+  const dashedId = cleanId.replace(/_/g, '-');
+  return `${level}-${dashedId}`;
 }
 
 serve(async (req) => {
@@ -46,9 +74,13 @@ serve(async (req) => {
     };
 
     // Validate basic structure
-    if (!roomData.id || !roomData.level_id || !roomData.entries || roomData.entries.length !== 5) {
+    if (!roomData.id || !roomData.tier || !roomData.entries || roomData.entries.length !== 5) {
       throw new Error('Invalid room data structure');
     }
+
+    // Convert ID format and extract level
+    const dbRoomId = convertRoomIdToDbFormat(roomData.id, roomData.tier);
+    const levelId = extractLevelFromTier(roomData.tier);
 
     // Check if user is admin
     const authHeader = req.headers.get('Authorization');
@@ -82,7 +114,7 @@ serve(async (req) => {
       const { data: existingRoom } = await supabaseClient
         .from('kids_rooms')
         .select('id')
-        .eq('id', roomData.id)
+        .eq('id', dbRoomId)
         .single();
 
       if (existingRoom) {
@@ -90,14 +122,13 @@ serve(async (req) => {
         const { error: updateError } = await supabaseClient
           .from('kids_rooms')
           .update({
-            title_en: roomData.title_en,
-            title_vi: roomData.title_vi,
-            description_en: roomData.description_en,
-            description_vi: roomData.description_vi,
-            icon: roomData.icon,
+            title_en: roomData.title.en,
+            title_vi: roomData.title.vi,
+            description_en: roomData.content.en,
+            description_vi: roomData.content.vi,
             updated_at: new Date().toISOString()
           })
-          .eq('id', roomData.id);
+          .eq('id', dbRoomId);
 
         if (updateError) throw updateError;
 
@@ -105,7 +136,7 @@ serve(async (req) => {
         await supabaseClient
           .from('kids_entries')
           .delete()
-          .eq('room_id', roomData.id);
+          .eq('room_id', dbRoomId);
 
         roomResult = { updated: true };
       } else if (mode === 'upsert') {
@@ -113,14 +144,13 @@ serve(async (req) => {
         const { error: insertError } = await supabaseClient
           .from('kids_rooms')
           .insert({
-            id: roomData.id,
-            level_id: roomData.level_id,
-            title_en: roomData.title_en,
-            title_vi: roomData.title_vi,
-            description_en: roomData.description_en,
-            description_vi: roomData.description_vi,
-            icon: roomData.icon,
-            display_order: roomData.entries.length,
+            id: dbRoomId,
+            level_id: levelId,
+            title_en: roomData.title.en,
+            title_vi: roomData.title.vi,
+            description_en: roomData.content.en,
+            description_vi: roomData.content.vi,
+            display_order: 1,
             is_active: true
           });
 
@@ -132,15 +162,13 @@ serve(async (req) => {
     }
 
     // Process entries
-    const entries = roomData.entries.map((entry) => ({
-      id: `${roomData.id}-entry-${entry.display_order}`,
-      room_id: roomData.id,
-      content_en: entry.content_en,
-      content_vi: entry.content_vi,
-      audio_url: entry.audio_filename 
-        ? `/audio/kids/${entry.audio_filename}` 
-        : null,
-      display_order: entry.display_order,
+    const entries = roomData.entries.map((entry, index) => ({
+      id: `${dbRoomId}-entry-${index + 1}`,
+      room_id: dbRoomId,
+      content_en: entry.copy.en,
+      content_vi: entry.copy.vi,
+      audio_url: entry.audio ? `/audio/kids/${entry.audio}` : null,
+      display_order: index + 1,
       is_active: true
     }));
 
@@ -153,8 +181,9 @@ serve(async (req) => {
     return new Response(
       JSON.stringify({
         success: true,
-        message: `Room "${roomData.title_en}" processed successfully`,
-        room_id: roomData.id,
+        message: `Room "${roomData.title.en}" processed successfully`,
+        room_id: dbRoomId,
+        original_id: roomData.id,
         entries_count: entries.length,
         result: roomResult
       }),
