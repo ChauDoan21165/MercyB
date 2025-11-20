@@ -1,9 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { Copy, Check } from "lucide-react";
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
 import { HoveringDictionary } from "@/components/HoveringDictionary";
-import { useAdminCheck } from "@/hooks/useAdminCheck";
 
 interface PairedHighlightedContentWithDictionaryProps {
   englishText?: string;
@@ -26,30 +21,8 @@ export const PairedHighlightedContentWithDictionary = ({
   className = "",
   onWordClick
 }: PairedHighlightedContentWithDictionaryProps) => {
-  const [copied, setCopied] = useState(false);
-  const { toast } = useToast();
-  const { isAdmin } = useAdminCheck();
-
   const enText = englishText || englishContent || "";
   const viText = vietnameseText || vietnameseContent || "";
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(viText);
-      setCopied(true);
-      toast({
-        title: "Copied / Đã sao chép",
-        description: "Vietnamese text copied to clipboard / Văn bản tiếng Việt đã được sao chép",
-      });
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      toast({
-        title: "Failed to copy / Sao chép thất bại",
-        description: "Could not copy text / Không thể sao chép văn bản",
-        variant: "destructive",
-      });
-    }
-  };
 
   // Split text into words and wrap each with dictionary
   const renderTextWithDictionary = (text: string) => {
