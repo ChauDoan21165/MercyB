@@ -1,93 +1,203 @@
 {
-  "id": "productivity-and-focus-vip2",
-  "name": "Productivity & Focus",
-  "name_vi": "Năng Suất & Tập Trung",
-  "description": "This room helps you build steadier focus, calmer workflow, and sustainable productivity without burnout. Instead of forcing intensity, you will practice gentle systems that support clarity: planning tasks with intention, setting up an environment that reduces friction, and understanding your natural energy rhythm. Each entry offers a small, realistic action you can apply today, designed for real life, not perfection. Over time, these habits help you approach work with more presence, consistency, and confidence. Productivity becomes less about pressure and more about creating space for your best work to emerge.",
-  "keywords_en": ["productivity", "focus", "task planning", "work environment", "energy management", "work-life balance"],
-  "keywords_vi": ["năng suất", "tập trung", "lập kế hoạch công việc", "môi trường làm việc", "quản lý năng lượng", "cân bằng công việc cuộc sống"],
-  "entries": [
-    {
-      "slug": "task-list-clarity",
-      "keywords_en": ["Task List","priorities","work clarity","task planning"],
-      "keywords_vi": ["Danh Sách Nhiệm Vụ","ưu tiên","sáng rõ công việc","lập kế hoạch nhiệm vụ"],
-      "copy": {
-        "en": "A clear task list creates structure and frees mental space. Begin by gathering every task, idea, or responsibility in one safe place. From there, select the three items that will genuinely move your life forward today. Sort the rest into simple categories to reduce stress. Keep the list visible and adjust gently without guilt. Over time, this simple practice cuts noise and helps you understand what truly matters. A calm task list is not about doing everything—it’s about giving your attention direction, protecting your focus, and supporting a more intentional, centered work rhythm each day.",
-        "vi": "Một danh sách nhiệm vụ rõ ràng giúp tạo cấu trúc và giải phóng không gian tinh thần. Hãy bắt đầu bằng cách gom mọi nhiệm vụ, ý tưởng hoặc trách nhiệm vào một nơi an toàn. Từ đó, hãy chọn ba mục thực sự giúp cuộc sống tiến lên trong hôm nay. Phần còn lại hãy phân nhóm để giảm căng thẳng. Giữ danh sách ở nơi dễ thấy và điều chỉnh nhẹ nhàng mà không tự trách. Theo thời gian, thói quen này giảm nhiễu và giúp bạn hiểu điều gì thật sự quan trọng. Một danh sách bình tĩnh không nhằm làm hết mọi việc, mà là hướng sự chú ý đúng chỗ."
-      },
-      "tags": ["task-management","clarity","planning"],
-      "audio": "paf_vip2_1_en.mp3",
-      "essay_ref": "paf_vip2_1_essay.txt"
-    },
-    {
-      "slug": "pomodoro-flow",
-      "keywords_en": ["Pomodoro","focus cycles","work rhythm","deep focus"],
-      "keywords_vi": ["Pomodoro","chu kỳ tập trung","nhịp làm việc","tập trung sâu"],
-      "copy": {
-        "en": "Focus cycles help you work with your mind rather than against it. Try a gentle Pomodoro routine: twenty-five minutes of steady attention followed by a short relaxing break. Begin each cycle with one slow breath to settle in. After several rounds, take a longer pause to recharge. Pay attention to the times of day when concentration feels easy and protect those windows for meaningful tasks. With consistent practice, focus cycles reduce overwhelm, prevent burnout, and create a smoother rhythm. The goal is not perfection, but building a reliable pattern that helps you return to your work with clarity.",
-        "vi": "Các chu kỳ tập trung giúp bạn làm việc thuận theo bộ não thay vì ép buộc nó. Hãy thử Pomodoro nhẹ nhàng: hai mươi lăm phút tập trung ổn định rồi nghỉ ngắn thư giãn. Bắt đầu mỗi chu kỳ bằng một hơi thở chậm để ổn định tâm trí. Sau vài vòng, hãy nghỉ dài hơn để hồi phục. Hãy chú ý thời điểm trong ngày bạn dễ tập trung nhất và bảo vệ khung giờ đó cho nhiệm vụ quan trọng. Khi duy trì đều đặn, chu kỳ tập trung giúp giảm căng thẳng, ngăn kiệt sức và tạo nhịp làm việc mượt mà hơn. Mục tiêu không phải hoàn hảo mà là xây thói quen đáng tin cậy."
-      },
-      "tags": ["focus","routine","cycles"],
-      "audio": "paf_vip2_2_en.mp3",
-      "essay_ref": "paf_vip2_2_essay.txt"
-    },
-    {
-      "slug": "environment-design",
-      "keywords_en": ["Environment","distraction-free","workspace setup","focus habits"],
-      "keywords_vi": ["Môi Trường","không phân tâm","bố trí không gian","thói quen tập trung"],
-      "copy": {
-        "en": "Your workspace quietly shapes your attention. A bright, uncluttered area can lower stress and make focus easier. Start by removing items you don’t need and keep only essentials within reach. Place your phone out of sight and close distracting tabs before beginning work. A one-minute ritual—like clearing your desk or aligning a few objects—signals your mind to settle. Over time, these small adjustments create surprising improvements in concentration and mood. The goal isn’t aesthetic perfection but a supportive environment that helps you think clearly, stay present, and feel grounded as you move through your daily tasks.",
-        "vi": "Không gian làm việc âm thầm định hình cách bạn chú ý. Một khu vực sáng sủa và gọn gàng có thể giảm căng thẳng và giúp tập trung dễ hơn. Hãy bắt đầu bằng cách bỏ bớt những vật dụng không cần thiết và chỉ giữ những thứ quan trọng trong tầm tay. Đặt điện thoại xa tầm mắt và đóng các tab gây phân tâm trước khi làm việc. Một nghi thức một phút—như dọn bàn hoặc xếp lại vài vật dụng—gửi tín hiệu để tâm trí ổn định. Theo thời gian, những điều chỉnh nhỏ này tạo cải thiện rõ rệt về tập trung và tâm trạng. Mục tiêu không phải hoàn hảo mà là môi trường hỗ trợ suy nghĩ sáng rõ."
-      },
-      "tags": ["workspace","environment","focus"],
-      "audio": "paf_vip2_3_en.mp3",
-      "essay_ref": "paf_vip2_3_essay.txt"
-    },
-    {
-      "slug": "energy-mapping",
-      "keywords_en": ["Energy","peak hours","natural rhythm","focus window"],
-      "keywords_vi": ["Năng Lượng","giờ đỉnh","nhịp tự nhiên","khoảng tập trung"],
-      "copy": {
-        "en": "Your energy naturally rises and falls throughout the day. Spend a week noticing when you feel most alert, then schedule one meaningful task during that window. Treat it as your protected focus zone. When energy drops, shift to lighter tasks or take a short mindful break. Working with your rhythm keeps work sustainable and reduces frustration. This approach helps you understand your body’s signals rather than pushing against them. Over time, matching tasks to energy levels builds confidence, efficiency, and a kinder relationship with productivity—one that honors how you function rather than forcing constant output.",
-        "vi": "Năng lượng của bạn tự nhiên lên xuống trong ngày. Hãy dành một tuần quan sát thời điểm bạn tỉnh táo nhất, rồi đặt một nhiệm vụ quan trọng vào đúng khung giờ đó. Hãy xem đó là vùng tập trung được bảo vệ. Khi năng lượng giảm, hãy chuyển sang việc nhẹ hơn hoặc nghỉ chánh niệm ngắn. Làm việc theo nhịp tự nhiên giúp công việc bền vững hơn và giảm bực bội. Cách này giúp bạn hiểu tín hiệu cơ thể thay vì ép buộc nó. Theo thời gian, việc ghép nhiệm vụ với mức năng lượng tạo sự tự tin, hiệu quả và mối quan hệ nhẹ nhàng hơn với năng suất."
-      },
-      "tags": ["energy","rhythm","productivity"],
-      "audio": "paf_vip2_4_en.mp3",
-      "essay_ref": "paf_vip2_4_essay.txt"
-    },
-    {
-      "slug": "deep-work-blocks",
-      "keywords_en": ["Deep Work","concentration","distraction-free","high-value work"],
-      "keywords_vi": ["Làm Việc Sâu","tập trung cao độ","không phân tâm","công việc giá trị"],
-      "copy": {
-        "en": "Deep work thrives when you create protected time and clear intention. Choose one or two blocks each week where you silence notifications, set a simple goal, and focus without switching tasks. Begin with shorter sessions and extend them gently as it feels natural. Even a small period of uninterrupted attention can advance important projects. This practice builds discipline without pressure, helping you trust your ability to enter concentration when needed. Over time, deep work becomes a grounding ritual—a quiet place where meaningful ideas can unfold without noise, hurry, or fragmentation.",
-        "vi": "Làm việc sâu phát huy hiệu quả khi bạn có thời gian được bảo vệ và mục tiêu rõ ràng. Hãy chọn một hoặc hai khung giờ mỗi tuần để tắt thông báo, đặt mục tiêu đơn giản và tập trung mà không đổi nhiệm vụ. Bắt đầu bằng những phiên ngắn và tăng dần khi cảm thấy tự nhiên. Ngay cả một khoảng tập trung không gián đoạn nhỏ cũng có thể thúc đẩy các dự án quan trọng. Thói quen này xây dựng kỷ luật nhẹ nhàng và giúp bạn tin vào khả năng tập trung khi cần. Theo thời gian, làm việc sâu trở thành nghi thức neo lại—một nơi yên tĩnh để ý tưởng phát triển mà không bị nhiễu."
-      },
-      "tags": ["deep-work","focus","intentional"],
-      "audio": "paf_vip2_5_en.mp3",
-      "essay_ref": "paf_vip2_5_essay.txt"
-    },
-    {
-      "slug": "weekly-review",
-      "keywords_en": ["Weekly Review","reflection","planning","continuous improvement"],
-      "keywords_vi": ["Xem Lại Tuần","phản ánh","lập kế hoạch","cải thiện liên tục"],
-      "copy": {
-        "en": "A weekly review helps you stay organized, calm, and aware of your progress. Choose a quiet moment to gather loose notes, check unfinished tasks, and reconnect with your goals. Celebrate small wins and acknowledge difficulties without judgment. This simple ritual strengthens clarity and prevents overwhelm. It teaches you to adjust gently rather than react under pressure. Over time, weekly reviews become an anchor that resets your direction, reduces stress, and helps you start each week with steadiness and purpose. The aim is not perfection—only a clear, kind rhythm that supports your growth.",
-        "vi": "Một buổi xem lại tuần giúp bạn giữ trật tự, bình tĩnh và nhận biết tiến bộ của mình. Hãy chọn một khoảnh khắc yên tĩnh để gom ghi chú, kiểm tra nhiệm vụ dang dở và kết nối lại với mục tiêu. Hãy ăn mừng những tiến bộ nhỏ và ghi nhận khó khăn mà không phán xét. Nghi thức đơn giản này tăng sự rõ ràng và ngăn quá tải. Nó dạy bạn điều chỉnh nhẹ nhàng thay vì phản ứng dưới áp lực. Theo thời gian, việc xem lại tuần trở thành điểm neo giúp bạn đặt lại hướng đi, giảm căng thẳng và bắt đầu tuần mới với sự vững vàng và mục đích."
-      },
-      "tags": ["review","planning","reflection"],
-      "audio": "paf_vip2_6_en.mp3",
-      "essay_ref": "paf_vip2_6_essay.txt"
-    },
-    {
-      "slug": "all",
-      "keywords_en": ["all", "full sequence", "combined"],
-      "keywords_vi": ["tất cả", "chuỗi đầy đủ", "kết hợp"],
-      "copy": {
-        "en": "A clear task list creates structure and frees mental space. Begin by gathering every task, idea, or responsibility in one safe place. From there, select the three items that will genuinely move your life forward today. Sort the rest into simple categories to reduce stress. Keep the list visible and adjust gently without guilt. Over time, this simple practice cuts noise and helps you understand what truly matters. A calm task list is not about doing everything—it’s about giving your attention direction, protecting your focus, and supporting a more intentional, centered work rhythm each day.\n\nFocus cycles help you work with your mind rather than against it. Try a gentle Pomodoro routine: twenty-five minutes of steady attention followed by a short relaxing break. Begin each cycle with one slow breath to settle in. After several rounds, take a longer pause to recharge. Pay attention to the times of day when concentration feels easy and protect those windows for meaningful tasks. With consistent practice, focus cycles reduce overwhelm, prevent burnout, and create a smoother rhythm. The goal is not perfection, but building a reliable pattern that helps you return to your work with clarity.\n\nYour workspace quietly shapes your attention. A bright, uncluttered area can lower stress and make focus easier. Start by removing items you don’t need and keep only essentials within reach. Place your phone out of sight and close distracting tabs before beginning work. A one-minute ritual—like clearing your desk or aligning a few objects—signals your mind to settle. Over time, these small adjustments create surprising improvements in concentration and mood. The goal isn’t aesthetic perfection but a supportive environment that helps you think clearly, stay present, and feel grounded as you move through your daily tasks.\n\nYour energy naturally rises and falls throughout the day. Spend a week noticing when you feel most alert, then schedule one meaningful task during that window. Treat it as your protected focus zone. When energy drops, shift to lighter tasks or take a short mindful break. Working with your rhythm keeps work sustainable and reduces frustration. This approach helps you understand your body’s signals rather than pushing against them. Over time, matching tasks to energy levels builds confidence, efficiency, and a kinder relationship with productivity—one that honors how you function rather than forcing constant output.\n\nDeep work thrives when you create protected time and clear intention. Choose one or two blocks each week where you silence notifications, set a simple goal, and focus without switching tasks. Begin with shorter sessions and extend them gently as it feels natural. Even a small period of uninterrupted attention can advance important projects. This practice builds discipline without pressure, helping you trust your ability to enter concentration when needed. Over time, deep work becomes a grounding ritual—a quiet place where meaningful ideas can unfold without noise, hurry, or fragmentation.\n\nA weekly review helps you stay organized, calm, and aware of your progress. Choose a quiet moment to gather loose notes, check unfinished tasks, and reconnect with your goals. Celebrate small wins and acknowledge difficulties without judgment. This simple ritual strengthens clarity and prevents overwhelm. It teaches you to adjust gently rather than react under pressure. Over time, weekly reviews become an anchor that resets your direction, reduces stress, and helps you start each week with steadiness and purpose. The aim is not perfection—only a clear, kind rhythm that supports your growth.",
-        "vi": "Một danh sách nhiệm vụ rõ ràng giúp tạo cấu trúc và giải phóng không gian tinh thần. Hãy bắt đầu bằng cách gom mọi nhiệm vụ, ý tưởng hoặc trách nhiệm vào một nơi an toàn. Từ đó, hãy chọn ba mục thực sự giúp cuộc sống tiến lên trong hôm nay. Phần còn lại hãy phân nhóm để giảm căng thẳng. Giữ danh sách ở nơi dễ thấy và điều chỉnh nhẹ nhàng mà không tự trách. Theo thời gian, thói quen này giảm nhiễu và giúp bạn hiểu điều gì thật sự quan trọng. Một danh sách bình tĩnh không nhằm làm hết mọi việc, mà là hướng sự chú ý đúng chỗ.\n\nCác chu kỳ tập trung giúp bạn làm việc thuận theo bộ não thay vì ép buộc nó. Hãy thử Pomodoro nhẹ nhàng: hai mươi lăm phút tập trung ổn định rồi nghỉ ngắn thư giãn. Bắt đầu mỗi chu kỳ bằng một hơi thở chậm để ổn định tâm trí. Sau vài vòng, hãy nghỉ dài hơn để hồi phục. Hãy chú ý thời điểm trong ngày bạn dễ tập trung nhất và bảo vệ khung giờ đó cho nhiệm vụ quan trọng. Khi duy trì đều đặn, chu kỳ tập trung giúp giảm căng thẳng, ngăn kiệt sức và tạo nhịp làm việc mượt mà hơn. Mục tiêu không phải hoàn hảo mà là xây thói quen đáng tin cậy.\n\nKhông gian làm việc âm thầm định hình cách bạn chú ý. Một khu vực sáng sủa và gọn gàng có thể giảm căng thẳng và giúp tập trung dễ hơn. Hãy bắt đầu bằng cách bỏ bớt những vật dụng không cần thiết và chỉ giữ những thứ quan trọng trong tầm tay. Đặt điện thoại xa tầm mắt và đóng các tab gây phân tâm trước khi làm việc. Một nghi thức một phút—như dọn bàn hoặc xếp lại vài vật dụng—gửi tín hiệu để tâm trí ổn định. Theo thời gian, những điều chỉnh nhỏ này tạo cải thiện rõ rệt về tập trung và tâm trạng. Mục tiêu không phải hoàn hảo mà là môi trường hỗ trợ suy nghĩ sáng rõ.\n\nNăng lượng của bạn tự nhiên lên xuống trong ngày. Hãy dành một tuần quan sát thời điểm bạn tỉnh táo nhất, rồi đặt một nhiệm vụ quan trọng vào đúng khung giờ đó. Hãy xem đó là vùng tập trung được bảo vệ. Khi năng lượng giảm, hãy chuyển sang việc nhẹ hơn hoặc nghỉ chánh niệm ngắn. Làm việc theo nhịp tự nhiên giúp công việc bền vững hơn và giảm bực bội. Cách này giúp bạn hiểu tín hiệu cơ thể thay vì ép buộc nó. Theo thời gian, việc ghép nhiệm vụ với mức năng lượng tạo sự tự tin, hiệu quả và mối quan hệ nhẹ nhàng hơn với năng suất.\n\nLàm việc sâu phát huy hiệu quả khi bạn có thời gian được bảo vệ và mục tiêu rõ ràng. Hãy chọn một hoặc hai khung giờ mỗi tuần để tắt thông báo, đặt mục tiêu đơn giản và tập trung mà không đổi nhiệm vụ. Bắt đầu bằng những phiên ngắn và tăng dần khi cảm thấy tự nhiên. Ngay cả một khoảng tập trung không gián đoạn nhỏ cũng có thể thúc đẩy các dự án quan trọng. Thói quen này xây dựng kỷ luật nhẹ nhàng và giúp bạn tin vào khả năng tập trung khi cần. Theo thời gian, làm việc sâu trở thành nghi thức neo lại—một nơi yên tĩnh để ý tưởng phát triển mà không bị nhiễu.\n\nMột buổi xem lại tuần giúp bạn giữ trật tự, bình tĩnh và nhận biết tiến bộ của mình. Hãy chọn một khoảnh khắc yên tĩnh để gom ghi chú, kiểm tra nhiệm vụ dang dở và kết nối lại với mục tiêu. Hãy ăn mừng những tiến bộ nhỏ và ghi nhận khó khăn mà không phán xét. Nghi thức đơn giản này tăng sự rõ ràng và ngăn quá tải. Nó dạy bạn điều chỉnh nhẹ nhàng thay vì phản ứng dưới áp lực. Theo thời gian, việc xem lại tuần trở thành điểm neo giúp bạn đặt lại hướng đi, giảm căng thẳng và bắt đầu tuần mới với sự vững vàng và mục đích."
-      },
-      "tags": ["all", "combined"],
-      "audio": "paf_vip2_1_en.mp3 paf_vip2_2_en.mp3 paf_vip2_3_en.mp3 paf_vip2_4_en.mp3 paf_vip2_5_en.mp3 paf_vip2_6_en.mp3"
-    }
-  ]
+"id": "productivity-and-focus-vip2",
+"name": "Productivity & Focus",
+"name_vi": "Năng Suất & Tập Trung",
+"description": "This room helps you build steadier focus, calmer workflow, and sustainable productivity without burnout. Instead of forcing intensity, you will practice gentle systems that support clarity: planning tasks with intention, setting up an environment that reduces friction, and understanding your natural energy rhythm. Each entry offers a small, realistic action you can apply today, designed for real life, not perfection. Over time, these habits help you approach work with more presence, consistency, and confidence. Productivity becomes less about pressure and more about creating space for your best work to emerge.",
+"description_vi": "Phòng này giúp bạn xây dựng sự tập trung vững hơn, quy trình làm việc bình tĩnh hơn và mức năng suất bền vững mà không kiệt sức. Thay vì ép mình làm việc với cường độ cao, bạn sẽ tập các hệ thống nhẹ nhàng hỗ trợ sự sáng rõ: lập kế hoạch công việc có chủ đích, thiết kế môi trường làm việc giảm ma sát và hiểu nhịp năng lượng tự nhiên của chính mình. Mỗi mục nội dung mang đến một hành động nhỏ, thực tế mà bạn có thể áp dụng ngay hôm nay, được thiết kế cho đời sống thật chứ không phải sự hoàn hảo. Theo thời gian, những thói quen này giúp bạn đến với công việc với nhiều hiện diện, đều đặn và tự tin hơn. Năng suất dần bớt gắn với áp lực và trở thành việc tạo không gian để phần công việc tốt nhất của bạn được bộc lộ.",
+"keywords_en": [
+"productivity",
+"focus",
+"task planning",
+"work environment",
+"energy management",
+"work-life balance"
+],
+"keywords_vi": [
+"năng suất",
+"tập trung",
+"lập kế hoạch công việc",
+"môi trường làm việc",
+"quản lý năng lượng",
+"cân bằng công việc cuộc sống"
+],
+"entries": [
+{
+"slug": "task-list-clarity",
+"keywords_en": [
+"Task List",
+"priorities",
+"work clarity",
+"task planning"
+],
+"keywords_vi": [
+"Danh Sách Nhiệm Vụ",
+"ưu tiên",
+"sáng rõ công việc",
+"lập kế hoạch nhiệm vụ"
+],
+"copy": {
+"en": "A clear task list creates structure and frees mental space. Begin by gathering every task, idea, or responsibility in one safe place. From there, select the three items that will genuinely move your life forward today. Sort the rest into simple categories to reduce stress. Keep the list visible and adjust gently without guilt. Over time, this simple practice cuts noise and helps you understand what truly matters. A calm task list is not about doing everything—it’s about giving your attention direction, protecting your focus, and supporting a more intentional, centered work rhythm each day.",
+"vi": "Một danh sách nhiệm vụ rõ ràng giúp tạo cấu trúc và giải phóng không gian tinh thần. Hãy bắt đầu bằng cách gom mọi nhiệm vụ, ý tưởng hoặc trách nhiệm vào một nơi an toàn. Từ đó, hãy chọn ba mục thực sự giúp cuộc sống tiến lên trong hôm nay. Phần còn lại hãy phân nhóm để giảm căng thẳng. Giữ danh sách ở nơi dễ thấy và điều chỉnh nhẹ nhàng mà không tự trách. Theo thời gian, thói quen này giảm nhiễu và giúp bạn hiểu điều gì thật sự quan trọng. Một danh sách bình tĩnh không nhằm làm hết mọi việc, mà là hướng sự chú ý đúng chỗ."
+},
+"tags": [
+"task-management",
+"clarity",
+"planning"
+],
+"audio": "paf_vip2_1_en.mp3",
+"essay_ref": "paf_vip2_1_essay.txt"
+},
+{
+"slug": "pomodoro-flow",
+"keywords_en": [
+"Pomodoro",
+"focus cycles",
+"work rhythm",
+"deep focus"
+],
+"keywords_vi": [
+"Pomodoro",
+"chu kỳ tập trung",
+"nhịp làm việc",
+"tập trung sâu"
+],
+"copy": {
+"en": "Focus cycles help you work with your mind rather than against it. Try a gentle Pomodoro routine: twenty-five minutes of steady attention followed by a short relaxing break. Begin each cycle with one slow breath to settle in. After several rounds, take a longer pause to recharge. Pay attention to the times of day when concentration feels easy and protect those windows for meaningful tasks. With consistent practice, focus cycles reduce overwhelm, prevent burnout, and create a smoother rhythm. The goal is not perfection, but building a reliable pattern that helps you return to your work with clarity.",
+"vi": "Các chu kỳ tập trung giúp bạn làm việc thuận theo bộ não thay vì ép buộc nó. Hãy thử Pomodoro nhẹ nhàng: hai mươi lăm phút tập trung ổn định rồi nghỉ ngắn thư giãn. Bắt đầu mỗi chu kỳ bằng một hơi thở chậm để ổn định tâm trí. Sau vài vòng, hãy nghỉ dài hơn để hồi phục. Hãy chú ý thời điểm trong ngày bạn dễ tập trung nhất và bảo vệ khung giờ đó cho nhiệm vụ quan trọng. Khi duy trì đều đặn, chu kỳ tập trung giúp giảm căng thẳng, ngăn kiệt sức và tạo nhịp làm việc mượt mà hơn. Mục tiêu không phải hoàn hảo mà là xây thói quen đáng tin cậy."
+},
+"tags": [
+"focus",
+"routine",
+"cycles"
+],
+"audio": "paf_vip2_2_en.mp3",
+"essay_ref": "paf_vip2_2_essay.txt"
+},
+{
+"slug": "environment-design",
+"keywords_en": [
+"Environment",
+"distraction-free",
+"workspace setup",
+"focus habits"
+],
+"keywords_vi": [
+"Môi Trường",
+"không phân tâm",
+"bố trí không gian",
+"thói quen tập trung"
+],
+"copy": {
+"en": "Your workspace quietly shapes your attention. A bright, uncluttered area can lower stress and make focus easier. Start by removing items you don’t need and keep only essentials within reach. Place your phone out of sight and close distracting tabs before beginning work. A one-minute ritual—like clearing your desk or aligning a few objects—signals your mind to settle. Over time, these small adjustments create surprising improvements in concentration and mood. The goal isn’t aesthetic perfection but a supportive environment that helps you think clearly, stay present, and feel grounded as you move through your daily tasks.",
+"vi": "Không gian làm việc âm thầm định hình cách bạn chú ý. Một khu vực sáng sủa và gọn gàng có thể giảm căng thẳng và giúp tập trung dễ hơn. Hãy bắt đầu bằng cách bỏ bớt những vật dụng không cần thiết và chỉ giữ những thứ quan trọng trong tầm tay. Đặt điện thoại xa tầm mắt và đóng các tab gây phân tâm trước khi làm việc. Một nghi thức một phút—như dọn bàn hoặc xếp lại vài vật dụng—gửi tín hiệu để tâm trí ổn định. Theo thời gian, những điều chỉnh nhỏ này tạo cải thiện rõ rệt về tập trung và tâm trạng. Mục tiêu không phải hoàn hảo mà là môi trường hỗ trợ suy nghĩ sáng rõ."
+},
+"tags": [
+"workspace",
+"environment",
+"focus"
+],
+"audio": "paf_vip2_3_en.mp3",
+"essay_ref": "paf_vip2_3_essay.txt"
+},
+{
+"slug": "energy-mapping",
+"keywords_en": [
+"Energy",
+"peak hours",
+"natural rhythm",
+"focus window"
+],
+"keywords_vi": [
+"Năng Lượng",
+"giờ đỉnh",
+"nhịp tự nhiên",
+"khoảng tập trung"
+],
+"copy": {
+"en": "Your energy naturally rises and falls throughout the day. Spend a week noticing when you feel most alert, then schedule one meaningful task during that window. Treat it as your protected focus zone. When energy drops, shift to lighter tasks or take a short mindful break. Working with your rhythm keeps work sustainable and reduces frustration. This approach helps you understand your body’s signals rather than pushing against them. Over time, matching tasks to energy levels builds confidence, efficiency, and a kinder relationship with productivity—one that honors how you function rather than forcing constant output.",
+"vi": "Năng lượng của bạn tự nhiên lên xuống trong ngày. Hãy dành một tuần quan sát thời điểm bạn tỉnh táo nhất, rồi đặt một nhiệm vụ quan trọng vào đúng khung giờ đó. Hãy xem đó là vùng tập trung được bảo vệ. Khi năng lượng giảm, hãy chuyển sang việc nhẹ hơn hoặc nghỉ chánh niệm ngắn. Làm việc theo nhịp tự nhiên giúp công việc bền vững hơn và giảm bực bội. Cách này giúp bạn hiểu tín hiệu cơ thể thay vì ép buộc nó. Theo thời gian, việc ghép nhiệm vụ với mức năng lượng tạo sự tự tin, hiệu quả và mối quan hệ nhẹ nhàng hơn với năng suất."
+},
+"tags": [
+"energy",
+"rhythm",
+"productivity"
+],
+"audio": "paf_vip2_4_en.mp3",
+"essay_ref": "paf_vip2_4_essay.txt"
+},
+{
+"slug": "deep-work-blocks",
+"keywords_en": [
+"Deep Work",
+"concentration",
+"distraction-free",
+"high-value work"
+],
+"keywords_vi": [
+"Làm Việc Sâu",
+"tập trung cao độ",
+"không phân tâm",
+"công việc giá trị"
+],
+"copy": {
+"en": "Deep work thrives when you create protected time and clear intention. Choose one or two blocks each week where you silence notifications, set a simple goal, and focus without switching tasks. Begin with shorter sessions and extend them gently as it feels natural. Even a small period of uninterrupted attention can advance important projects. This practice builds discipline without pressure, helping you trust your ability to enter concentration when needed. Over time, deep work becomes a grounding ritual—a quiet place where meaningful ideas can unfold without noise, hurry, or fragmentation.",
+"vi": "Làm việc sâu phát huy hiệu quả khi bạn có thời gian được bảo vệ và mục tiêu rõ ràng. Hãy chọn một hoặc hai khung giờ mỗi tuần để tắt thông báo, đặt mục tiêu đơn giản và tập trung mà không đổi nhiệm vụ. Bắt đầu bằng những phiên ngắn và tăng dần khi cảm thấy tự nhiên. Ngay cả một khoảng tập trung không gián đoạn nhỏ cũng có thể thúc đẩy các dự án quan trọng. Thói quen này xây dựng kỷ luật nhẹ nhàng và giúp bạn tin vào khả năng tập trung khi cần. Theo thời gian, làm việc sâu trở thành nghi thức neo lại—một nơi yên tĩnh để ý tưởng phát triển mà không bị nhiễu."
+},
+"tags": [
+"deep-work",
+"focus",
+"intentional"
+],
+"audio": "paf_vip2_5_en.mp3",
+"essay_ref": "paf_vip2_5_essay.txt"
+},
+{
+"slug": "weekly-review",
+"keywords_en": [
+"Weekly Review",
+"reflection",
+"planning",
+"continuous improvement"
+],
+"keywords_vi": [
+"Xem Lại Tuần",
+"phản ánh",
+"lập kế hoạch",
+"cải thiện liên tục"
+],
+"copy": {
+"en": "A weekly review helps you stay organized, calm, and aware of your progress. Choose a quiet moment to gather loose notes, check unfinished tasks, and reconnect with your goals. Celebrate small wins and acknowledge difficulties without judgment. This simple ritual strengthens clarity and prevents overwhelm. It teaches you to adjust gently rather than react under pressure. Over time, weekly reviews become an anchor that resets your direction, reduces stress, and helps you start each week with steadiness and purpose. The aim is not perfection—only a clear, kind rhythm that supports your growth.",
+"vi": "Một buổi xem lại tuần giúp bạn giữ trật tự, bình tĩnh và nhận biết tiến bộ của mình. Hãy chọn một khoảnh khắc yên tĩnh để gom ghi chú, kiểm tra nhiệm vụ dang dở và kết nối lại với mục tiêu. Hãy ăn mừng những tiến bộ nhỏ và ghi nhận khó khăn mà không phán xét. Nghi thức đơn giản này tăng sự rõ ràng và ngăn quá tải. Nó dạy bạn điều chỉnh nhẹ nhàng thay vì phản ứng dưới áp lực. Theo thời gian, việc xem lại tuần trở thành điểm neo giúp bạn đặt lại hướng đi, giảm căng thẳng và bắt đầu tuần mới với sự vững vàng và mục đích."
+},
+"tags": [
+"review",
+"planning",
+"reflection"
+],
+"audio": "paf_vip2_6_en.mp3",
+"essay_ref": "paf_vip2_6_essay.txt"
+},
+{
+"slug": "all",
+"keywords_en": [
+"all",
+"full sequence",
+"combined"
+],
+"keywords_vi": [
+"tất cả",
+"chuỗi đầy đủ",
+"kết hợp"
+],
+"copy": {
+"en": "A clear task list creates structure and frees mental space. Begin by gathering every task, idea, or responsibility in one safe place. From there, select the three items that will genuinely move your life forward today. Sort the rest into simple categories to reduce stress. Keep the list visible and adjust gently without guilt. Over time, this simple practice cuts noise and helps you understand what truly matters. A calm task list is not about doing everything—it’s about giving your attention direction, protecting your focus, and supporting a more intentional, centered work rhythm each day.\n\nFocus cycles help you work with your mind rather than against it. Try a gentle Pomodoro routine: twenty-five minutes of steady attention followed by a short relaxing break. Begin each cycle with one slow breath to settle in. After several rounds, take a longer pause to recharge. Pay attention to the times of day when concentration feels easy and protect those windows for meaningful tasks. With consistent practice, focus cycles reduce overwhelm, prevent burnout, and create a smoother rhythm. The goal is not perfection, but building a reliable pattern that helps you return to your work with clarity.\n\nYour workspace quietly shapes your attention. A bright, uncluttered area can lower stress and make focus easier. Start by removing items you don’t need and keep only essentials within reach. Place your phone out of sight and close distracting tabs before beginning work. A one-minute ritual—like clearing your desk or aligning a few objects—signals your mind to settle. Over time, these small adjustments create surprising improvements in concentration and mood. The goal isn’t aesthetic perfection but a supportive environment that helps you think clearly, stay present, and feel grounded as you move through your daily tasks.\n\nYour energy naturally rises and falls throughout the day. Spend a week noticing when you feel most alert, then schedule one meaningful task during that window. Treat it as your protected focus zone. When energy drops, shift to lighter tasks or take a short mindful break. Working with your rhythm keeps work sustainable and reduces frustration. This approach helps you understand your body’s signals rather than pushing against them. Over time, matching tasks to energy levels builds confidence, efficiency, and a kinder relationship with productivity—one that honors how you function rather than forcing constant output.\n\nDeep work thrives when you create protected time and clear intention. Choose one or two blocks each week where you silence notifications, set a simple goal, and focus without switching tasks. Begin with shorter sessions and extend them gently as it feels natural. Even a small period of uninterrupted attention can advance important projects. This practice builds discipline without pressure, helping you trust your ability to enter concentration when needed. Over time, deep work becomes a grounding ritual—a quiet place where meaningful ideas can unfold without noise, hurry, or fragmentation.\n\nA weekly review helps you stay organized, calm, and aware of your progress. Choose a quiet moment to gather loose notes, check unfinished tasks, and reconnect with your goals. Celebrate small wins and acknowledge difficulties without judgment. This simple ritual strengthens clarity and prevents overwhelm. It teaches you to adjust gently rather than react under pressure. Over time, weekly reviews become an anchor that resets your direction, reduces stress, and helps you start each week with steadiness and purpose. The aim is not perfection—only a clear, kind rhythm that supports your growth.",
+"vi": "Một danh sách nhiệm vụ rõ ràng giúp tạo cấu trúc và giải phóng không gian tinh thần. Hãy bắt đầu bằng cách gom mọi nhiệm vụ, ý tưởng hoặc trách nhiệm vào một nơi an toàn. Từ đó, hãy chọn ba mục thực sự giúp cuộc sống tiến lên trong hôm nay. Phần còn lại hãy phân nhóm để giảm căng thẳng. Giữ danh sách ở nơi dễ thấy và điều chỉnh nhẹ nhàng mà không tự trách. Theo thời gian, thói quen này giảm nhiễu và giúp bạn hiểu điều gì thật sự quan trọng. Một danh sách bình tĩnh không nhằm làm hết mọi việc, mà là hướng sự chú ý đúng chỗ.\n\nCác chu kỳ tập trung giúp bạn làm việc thuận theo bộ não thay vì ép buộc nó. Hãy thử Pomodoro nhẹ nhàng: hai mươi lăm phút tập trung ổn định rồi nghỉ ngắn thư giãn. Bắt đầu mỗi chu kỳ bằng một hơi thở chậm để ổn định tâm trí. Sau vài vòng, hãy nghỉ dài hơn để hồi phục. Hãy chú ý thời điểm trong ngày bạn dễ tập trung nhất và bảo vệ khung giờ đó cho nhiệm vụ quan trọng. Khi duy trì đều đặn, chu kỳ tập trung giúp giảm căng thẳng, ngăn kiệt sức và tạo nhịp làm việc mượt mà hơn. Mục tiêu không phải hoàn hảo mà là xây thói quen đáng tin cậy.\n\nKhông gian làm việc âm thầm định hình cách bạn chú ý. Một khu vực sáng sủa và gọn gàng có thể giảm căng thẳng và giúp tập trung dễ hơn. Hãy bắt đầu bằng cách bỏ bớt những vật dụng không cần thiết và chỉ giữ những thứ quan trọng trong tầm tay. Đặt điện thoại xa tầm mắt và đóng các tab gây phân tâm trước khi làm việc. Một nghi thức một phút—như dọn bàn hoặc xếp lại vài vật dụng—gửi tín hiệu để tâm trí ổn định. Theo thời gian, những điều chỉnh nhỏ này tạo cải thiện rõ rệt về tập trung và tâm trạng. Mục tiêu không phải hoàn hảo mà là môi trường hỗ trợ suy nghĩ sáng rõ.\n\nNăng lượng của bạn tự nhiên lên xuống trong ngày. Hãy dành một tuần quan sát thời điểm bạn tỉnh táo nhất, rồi đặt một nhiệm vụ quan trọng vào đúng khung giờ đó. Hãy xem đó là vùng tập trung được bảo vệ. Khi năng lượng giảm, hãy chuyển sang việc nhẹ hơn hoặc nghỉ chánh niệm ngắn. Làm việc theo nhịp tự nhiên giúp công việc bền vững hơn và giảm bực bội. Cách này giúp bạn hiểu tín hiệu cơ thể thay vì ép buộc nó. Theo thời gian, việc ghép nhiệm vụ với mức năng lượng tạo sự tự tin, hiệu quả và mối quan hệ nhẹ nhàng hơn với năng suất.\n\nLàm việc sâu phát huy hiệu quả khi bạn có thời gian được bảo vệ và mục tiêu rõ ràng. Hãy chọn một hoặc hai khung giờ mỗi tuần để tắt thông báo, đặt mục tiêu đơn giản và tập trung mà không đổi nhiệm vụ. Bắt đầu bằng những phiên ngắn và tăng dần khi cảm thấy tự nhiên. Ngay cả một khoảng tập trung không gián đoạn nhỏ cũng có thể thúc đẩy các dự án quan trọng. Thói quen này xây dựng kỷ luật nhẹ nhàng và giúp bạn tin vào khả năng tập trung khi cần. Theo thời gian, làm việc sâu trở thành nghi thức neo lại—một nơi yên tĩnh để ý tưởng phát triển mà không bị nhiễu.\n\nMột buổi xem lại tuần giúp bạn giữ trật tự, bình tĩnh và nhận biết tiến bộ của mình. Hãy chọn một khoảnh khắc yên tĩnh để gom ghi chú, kiểm tra nhiệm vụ dang dở và kết nối lại với mục tiêu. Hãy ăn mừng những tiến bộ nhỏ và ghi nhận khó khăn mà không phán xét. Nghi thức đơn giản này tăng sự rõ ràng và ngăn quá tải. Nó dạy bạn điều chỉnh nhẹ nhàng thay vì phản ứng dưới áp lực. Theo thời gian, việc xem lại tuần trở thành điểm neo giúp bạn đặt lại hướng đi, giảm căng thẳng và bắt đầu tuần mới với sự vững vàng và mục đích."
+},
+"tags": [
+"all",
+"combined"
+],
+"audio": "paf_vip2_1_en.mp3 paf_vip2_2_en.mp3 paf_vip2_3_en.mp3 paf_vip2_4_en.mp3 paf_vip2_5_en.mp3 paf_vip2_6_en.mp3"
+}
+]
 }
