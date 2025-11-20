@@ -1244,5 +1244,12 @@ export const roomDataMap: Record<string, RoomData> = {
     "nameVi": "Giận Dữ & Cơn Thịnh Nộ Bị Kìm Nén",
     "tier": "vip6",
     "hasData": true
+  },
+  "vip6-self-sabotage-relationship": {
+    "id": "vip6-self-sabotage-relationship",
+    "nameEn": "Self-Sabotage in Relationships",
+    "nameVi": "Tự Phá Hoại Trong Tình Yêu",
+    "tier": "vip6",
+    "hasData": true
   }
 };
