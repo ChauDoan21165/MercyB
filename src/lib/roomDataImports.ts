@@ -1167,5 +1167,26 @@ export const roomDataMap: Record<string, RoomData> = {
       "nameVi": "Siêu Nhận Thức Cho Người Viết: Nghĩ Về Cách Bạn Nghĩ",
       "tier": "vip3_ii",
       "hasData": true
+  },
+  "vip6-shadow-self": {
+      "id": "vip6-shadow-self",
+      "nameEn": "The Shadow Self",
+      "nameVi": "Bóng Tối Bên Trong",
+      "tier": "vip6",
+      "hasData": true
+  },
+  "vip6-projection-triggers": {
+      "id": "vip6-projection-triggers",
+      "nameEn": "Projection & Triggers",
+      "nameVi": "Sự Chiếu & Kích Hoạt",
+      "tier": "vip6",
+      "hasData": true
+  },
+  "vip6-emotional-blindspots": {
+      "id": "vip6-emotional-blindspots",
+      "nameEn": "Emotional Blindspots",
+      "nameVi": "Điểm Mù Cảm Xúc",
+      "tier": "vip6",
+      "hasData": true
   }
 };

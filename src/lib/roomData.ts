@@ -164,9 +164,12 @@ export interface RoomInfo {
   nameVi: string;
   nameEn: string;
   hasData: boolean;
-  tier: 'free' | 'vip1' | 'vip2' | 'vip3' | 'vip4';
+  tier: 'free' | 'vip1' | 'vip2' | 'vip3' | 'vip4' | 'vip5' | 'vip6';
   dataFile?: string;
 }
+
+// Type alias for backward compatibility
+export type Room = RoomInfo;
 
 // Full room data structure from JSON files
 export interface RoomData {
@@ -217,10 +220,12 @@ function generateRoomInfo(): RoomInfo[] {
     else if (roomId.endsWith('-vip2')) tier = 'vip2';
     else if (roomId.endsWith('-vip3')) tier = 'vip3';
     else if (roomId.endsWith('-vip4')) tier = 'vip4';
+    else if (roomId.endsWith('-vip5')) tier = 'vip5';
+    else if (roomId.endsWith('-vip6')) tier = 'vip6';
     
     // Fallback to the tier property if present
     const dataTier = (roomData as any).tier;
-    if (dataTier === 'vip1' || dataTier === 'vip2' || dataTier === 'vip3' || dataTier === 'vip3_ii' || dataTier === 'vip4') {
+    if (dataTier === 'vip1' || dataTier === 'vip2' || dataTier === 'vip3' || dataTier === 'vip3_ii' || dataTier === 'vip4' || dataTier === 'vip5' || dataTier === 'vip6') {
       tier = dataTier;
     }
     

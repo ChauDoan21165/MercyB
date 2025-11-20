@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 // Get project root (one level up from scripts/)
 const projectRoot = path.resolve(__dirname, '..');
 const publicDir = path.join(projectRoot, 'public');
-const ROOM_FILE_REGEX = /(free|vip1|vip2|vip3|vip3_ii|vip4)\.json$/i;
+const ROOM_FILE_REGEX = /(free|vip1|vip2|vip3|vip3_ii|vip4|vip5|vip6)\.json$/i;
 
 // Helper to convert filename to room ID (kebab-case with tier)
 function filenameToRoomId(filename) {
@@ -25,7 +25,7 @@ function filenameToRoomId(filename) {
   return base
     .toLowerCase()
     .replace(/[_\s]+/g, '-') // underscores and spaces to hyphens
-    .replace(/-(free|vip1|vip2|vip3|vip3[-_]ii|vip4)$/i, (match) => match.toLowerCase()); // normalize tier
+    .replace(/-(free|vip1|vip2|vip3|vip3[-_]ii|vip4|vip5|vip6)$/i, (match) => match.toLowerCase()); // normalize tier
 }
 
 // Helper to extract display names from JSON
