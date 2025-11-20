@@ -77,43 +77,62 @@ export default function AdminRooms() {
   // Toggle lock mutation with PIN
   const toggleLockMutation = useMutation({
     mutationFn: async ({ roomId, lockState, pin }: { roomId: string; lockState: boolean; pin: string }) => {
+      console.log('Lock mutation started:', { roomId, lockState, pin: '****' });
+      
       if (lockState) {
         // Locking: set the hashed PIN in the database
+        console.log('Setting PIN for room lock...');
         const { error: pinError } = await supabase.rpc('set_room_pin', {
           _room_id: roomId,
           _pin: pin
         });
         
-        if (pinError) throw pinError;
+        if (pinError) {
+          console.error('Error setting PIN:', pinError);
+          throw new Error(`Failed to set PIN: ${pinError.message}`);
+        }
+        console.log('PIN set successfully');
       } else {
         // Unlocking: validate and remove the PIN from the database
+        console.log('Validating and removing PIN for room unlock...');
         const { error: removeError } = await supabase.rpc('remove_room_pin', {
           _room_id: roomId,
           _pin: pin
         });
         
-        if (removeError) throw removeError;
+        if (removeError) {
+          console.error('Error removing PIN:', removeError);
+          throw new Error(`Incorrect PIN: ${removeError.message}`);
+        }
+        console.log('PIN validated and removed successfully');
       }
       
       // Toggle the lock state
+      console.log('Toggling room lock state...');
       const { error } = await supabase.rpc('toggle_room_lock', {
         room_id_param: roomId,
         lock_state: lockState
       });
       
-      if (error) throw error;
+      if (error) {
+        console.error('Error toggling lock:', error);
+        throw new Error(`Failed to toggle lock: ${error.message}`);
+      }
+      console.log('Lock state toggled successfully');
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin-rooms"] });
       toast({
         title: "Success",
-        description: "Room lock status updated successfully",
+        description: selectedRoom?.is_locked ? "Room unlocked successfully" : "Room locked successfully",
       });
+      setSelectedRoom(null);
     },
     onError: (error: any) => {
+      console.error('Lock mutation error:', error);
       toast({
         title: "Error",
-        description: error.message,
+        description: error.message || "Failed to update room lock status",
         variant: "destructive",
       });
     },
