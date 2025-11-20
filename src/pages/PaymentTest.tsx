@@ -368,7 +368,7 @@ const PaymentTest = () => {
             </h2>
             <p className="text-center text-gray-600 mb-8">Khám Phá Tất Cả Các Gói Thành Viên</p>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 gap-6">
               {/* Free Tier */}
               <Card 
                 className="p-6 bg-gradient-to-br from-green-50 to-teal-50 border-2 border-green-300 shadow-lg hover:scale-105 transition-transform cursor-pointer"
@@ -445,6 +445,38 @@ const PaymentTest = () => {
                   <p className="text-sm text-gray-600">Career coaching</p>
                   <Button className="w-full bg-orange-600 hover:bg-orange-700">
                     Get VIP4
+                  </Button>
+                </div>
+              </Card>
+
+              {/* VIP5 Writing Tier */}
+              <Card 
+                className="p-6 bg-gradient-to-br from-emerald-50 to-green-50 border-2 border-emerald-400 shadow-lg hover:scale-105 transition-transform cursor-pointer"
+                onClick={() => navigate('/subscribe?tier=vip5')}
+              >
+                <div className="text-center space-y-3">
+                  <div className="text-3xl">✍️</div>
+                  <h3 className="text-xl font-bold text-emerald-700">VIP5 Writing</h3>
+                  <p className="text-2xl font-bold text-gray-900">$20<span className="text-sm">/mo</span></p>
+                  <p className="text-sm text-gray-600">Writing support</p>
+                  <Button className="w-full bg-emerald-600 hover:bg-emerald-700">
+                    Get VIP5
+                  </Button>
+                </div>
+              </Card>
+
+              {/* VIP6 Psychology Tier */}
+              <Card 
+                className="p-6 bg-gradient-to-br from-purple-100 to-violet-100 border-2 border-purple-400 shadow-lg hover:scale-105 transition-transform cursor-pointer"
+                onClick={() => navigate('/subscribe?tier=vip6')}
+              >
+                <div className="text-center space-y-3">
+                  <div className="text-3xl">🧠</div>
+                  <h3 className="text-xl font-bold text-purple-800">VIP6 Psychology</h3>
+                  <p className="text-2xl font-bold text-gray-900">$90<span className="text-sm">/mo</span></p>
+                  <p className="text-sm text-gray-600">Deep psychology</p>
+                  <Button className="w-full bg-purple-700 hover:bg-purple-800">
+                    Get VIP6
                   </Button>
                 </div>
               </Card>
