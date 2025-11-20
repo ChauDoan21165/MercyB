@@ -7,7 +7,6 @@ import { ThemeProvider } from "next-themes";
 import { AdminFloatingButton } from "@/components/AdminFloatingButton";
 import Welcome from "./pages/Welcome";
 import Homepage from "./pages/Homepage";
-import LandingPage from "./pages/LandingPage";
 import Tiers from "./pages/Tiers";
 import MeaningOfLife from "./pages/MeaningOfLife";
 import RoomGrid from "./pages/RoomGrid";
@@ -70,7 +69,6 @@ const App = () => (
         <AdminFloatingButton />
         <Routes>
           <Route path="/" element={<RoomGrid />} />
-          <Route path="/landing" element={<LandingPage />} />
           <Route path="/homepage" element={<Homepage />} />
           <Route path="/tiers" element={<Tiers />} />
           <Route path="/welcome" element={<Welcome />} />
