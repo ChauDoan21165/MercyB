@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, RotateCcw, UserPlus, Crown, Star, Gem, Sparkles, Rocket } from 'lucide-react';
+import { ArrowLeft, RotateCcw, UserPlus, Crown, Star, Gem, Sparkles, Rocket, Feather, Brain } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useEffect, useState } from 'react';
@@ -173,6 +173,28 @@ export const ColorfulMercyBladeHeader = ({
                   <div className="flex flex-col">
                     <span className="font-semibold">VIP4 CareerZ</span>
                     <span className="text-xs text-muted-foreground">Career coaching</span>
+                  </div>
+                </DropdownMenuItem>
+
+                <DropdownMenuItem 
+                  onClick={() => navigate('/rooms-vip5')}
+                  className="cursor-pointer hover:bg-emerald-50 dark:hover:bg-emerald-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                >
+                  <Feather className="mr-2 h-4 w-4 text-emerald-600 transition-transform duration-200 group-hover:scale-110" />
+                  <div className="flex flex-col">
+                    <span className="font-semibold">VIP5 Writing</span>
+                    <span className="text-xs text-muted-foreground">Writing support</span>
+                  </div>
+                </DropdownMenuItem>
+
+                <DropdownMenuItem 
+                  onClick={() => navigate('/vip6')}
+                  className="cursor-pointer hover:bg-purple-50 dark:hover:bg-purple-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                >
+                  <Brain className="mr-2 h-4 w-4 text-purple-600 transition-transform duration-200 group-hover:scale-110" />
+                  <div className="flex flex-col">
+                    <span className="font-semibold">VIP6 Psychology</span>
+                    <span className="text-xs text-muted-foreground">Deep psychology</span>
                   </div>
                 </DropdownMenuItem>
 
