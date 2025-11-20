@@ -9,6 +9,7 @@ import {
   FileText,
   Home,
   Code,
+  Activity,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 
@@ -31,6 +32,7 @@ const adminItems = [
   { title: "Users", url: "/admin/users", icon: Users },
   { title: "Security", url: "/admin/security", icon: Shield },
   { title: "Statistics", url: "/admin/stats", icon: TrendingUp },
+  { title: "System Metrics", url: "/admin/system-metrics", icon: Activity },
   { title: "VIP Requests", url: "/vip-requests", icon: MessageSquare },
   { title: "Payment Verification", url: "/admin/payments", icon: DollarSign },
   { title: "Audio Management", url: "/admin/audio-upload", icon: Music },
