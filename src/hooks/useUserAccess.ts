@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 
-export type UserTier = 'free' | 'vip1' | 'vip2' | 'vip3' | 'vip3_ii' | 'vip4' | 'vip5';
+export type UserTier = 'demo' | 'free' | 'vip1' | 'vip2' | 'vip3' | 'vip3_ii' | 'vip4' | 'vip5';
 
 export interface UserAccess {
   isAdmin: boolean;
   isAuthenticated: boolean;
+  isDemoMode: boolean;
   tier: UserTier;
   canAccessVIP1: boolean;
   canAccessVIP2: boolean;
@@ -20,7 +21,8 @@ export const useUserAccess = (): UserAccess => {
   const [access, setAccess] = useState<UserAccess>({
     isAdmin: false,
     isAuthenticated: false,
-    tier: 'free',
+    isDemoMode: true,
+    tier: 'demo',
     canAccessVIP1: false,
     canAccessVIP2: false,
     canAccessVIP3: false,
@@ -42,7 +44,8 @@ export const useUserAccess = (): UserAccess => {
         setAccess({
           isAdmin: false,
           isAuthenticated: false,
-          tier: 'free',
+          isDemoMode: true,
+          tier: 'demo',
           canAccessVIP1: false,
           canAccessVIP2: false,
           canAccessVIP3: false,
@@ -81,6 +84,7 @@ export const useUserAccess = (): UserAccess => {
       setAccess({
         isAdmin,
         isAuthenticated: true,
+        isDemoMode: false,
         tier: isAdmin ? 'vip5' : tier,
         canAccessVIP1: isAdmin || tier === 'vip1' || tier === 'vip2' || tier === 'vip3' || tier === 'vip3_ii' || tier === 'vip4' || tier === 'vip5',
         canAccessVIP2: isAdmin || tier === 'vip2' || tier === 'vip3' || tier === 'vip3_ii' || tier === 'vip4' || tier === 'vip5',
@@ -95,7 +99,8 @@ export const useUserAccess = (): UserAccess => {
       setAccess({
         isAdmin: false,
         isAuthenticated: false,
-        tier: 'free',
+        isDemoMode: true,
+        tier: 'demo',
         canAccessVIP1: false,
         canAccessVIP2: false,
         canAccessVIP3: false,

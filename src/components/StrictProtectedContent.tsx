@@ -1,6 +1,9 @@
 import { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from '@/hooks/use-toast';
 import { highlightTextByRules } from '@/lib/wordColorHighlighter';
+import { useDemoMode } from '@/hooks/useDemoMode';
+import { DemoFeatureBlocker } from '@/components/DemoFeatureBlocker';
 
 interface StrictProtectedContentProps {
   content: string;
@@ -9,6 +12,19 @@ interface StrictProtectedContentProps {
 
 export const StrictProtectedContent = ({ content, className = '' }: StrictProtectedContentProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
+  const { isDemoMode } = useDemoMode();
+
+  // Block demo users from accessing protected content
+  if (isDemoMode) {
+    return (
+      <div className={className}>
+        <DemoFeatureBlocker 
+          featureName="Protected Content"
+          description="This content is only available to registered users. Sign up for free to access all content."
+        />
+      </div>
+    );
+  }
 
   useEffect(() => {
     if (!contentRef.current) return;

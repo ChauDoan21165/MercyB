@@ -781,6 +781,7 @@ export type Database = {
           crisis_footer_vi: string | null
           entries: Json | null
           id: string
+          is_demo: boolean
           is_locked: boolean | null
           keywords: string[] | null
           room_essay_en: string | null
@@ -799,6 +800,7 @@ export type Database = {
           crisis_footer_vi?: string | null
           entries?: Json | null
           id: string
+          is_demo?: boolean
           is_locked?: boolean | null
           keywords?: string[] | null
           room_essay_en?: string | null
@@ -817,6 +819,7 @@ export type Database = {
           crisis_footer_vi?: string | null
           entries?: Json | null
           id?: string
+          is_demo?: boolean
           is_locked?: boolean | null
           keywords?: string[] | null
           room_essay_en?: string | null
