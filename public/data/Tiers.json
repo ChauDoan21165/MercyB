@@ -145,6 +145,26 @@
       }
     },
     {
+      "slug": "vip6-tier",
+      "background_color": "#F3E5F5",
+      "title": {
+        "en": "VIP6 — Shadow & Deep Psychology",
+        "vi": "VIP6 — Tâm Lý Bóng Tối & Sâu"
+      },
+      "content": {
+        "en": "VIP6 opens a dedicated universe for shadow work, inner child healing, trauma patterns, subconscious identity, and emotional integration. This tier helps users understand the hidden forces shaping their reactions, choices, relationships, and life direction. VIP6 members may also request one custom deep-content piece per month. A private space for anyone seeking psychological clarity and inner transformation.",
+        "vi": "VIP6 mở ra một vũ trụ riêng dành cho bóng tối nội tâm, chữa lành đứa trẻ bên trong, mô thức tổn thương, bản sắc tiềm thức và sự tích hợp cảm xúc. Cấp độ này giúp người dùng hiểu những lực vô hình đang định hình phản ứng, lựa chọn, các mối quan hệ và hướng đi cuộc sống. Thành viên VIP6 cũng có thể yêu cầu một nội dung chuyên sâu tùy chỉnh mỗi tháng. Một không gian riêng tư cho những ai tìm kiếm sự sáng rõ tâm lý và chuyển hóa nội tâm."
+      },
+      "audio": {
+        "en": "audio/tiers_vip6_intro_en.mp3"
+      },
+      "pricing": {
+        "usd_per_month": 90,
+        "rooms_per_month": "unlimited",
+        "custom_topics_per_month": 1
+      }
+    },
+    {
       "slug": "tiers-cta",
       "background_color": "#FFFFFF",
       "title": {
