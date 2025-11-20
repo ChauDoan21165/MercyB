@@ -59,8 +59,12 @@ const ChatHub = () => {
   const [userMessageCount, setUserMessageCount] = useState(0);
   const mainScrollRef = useRef<HTMLDivElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
+  const audioPlayerRef = useRef<HTMLDivElement>(null);
   const scrollToBottom = () => {
     endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  };
+  const scrollToAudioPlayer = () => {
+    audioPlayerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
   const progress = useRoomProgress(roomId);
   const { trackMessage, trackKeyword, trackCompletion } = useBehaviorTracking(roomId || "");
@@ -210,6 +214,10 @@ const ChatHub = () => {
     if (isLoading) return;
     setClickedKeyword(keyword);
     await sendEntryForKeyword(keyword);
+    // Scroll to audio player after message is added
+    setTimeout(() => {
+      scrollToAudioPlayer();
+    }, 200);
   };
 
   // Helpers for direct keyword→entry mapping
@@ -564,7 +572,7 @@ const ChatHub = () => {
                 
                 {/* Shadowing reminder and Audio Player - Right below English essay */}
                 {(message.audioFile && audioUrl) && (
-                  <div className="my-3">
+                  <div className="my-3" ref={audioPlayerRef}>
                     <p className="text-xs text-muted-foreground italic mb-2 text-center">
                       💡 Try shadowing: Listen and repeat along with the audio to improve your pronunciation and fluency. / 💡 Hãy thử bóng: Nghe và lặp lại cùng với âm thanh để cải thiện phát âm và sự trôi chảy của bạn.
                     </p>
@@ -607,7 +615,7 @@ const ChatHub = () => {
                 
                 {/* Copy and Audio Player */}
                 {!message.isUser && message.audioFile && audioUrl && (
-                  <div className="mt-4 mb-3 flex items-center gap-2">
+                  <div className="mt-4 mb-3 flex items-center gap-2" ref={audioPlayerRef}>
                     <MessageActions text={message.text} roomId={roomId || ""} />
                     <AudioPlayer
                       audioPath={audioUrl}
