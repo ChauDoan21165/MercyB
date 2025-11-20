@@ -1183,10 +1183,17 @@ export const roomDataMap: Record<string, RoomData> = {
       "hasData": true
   },
   "vip6-emotional-blindspots": {
-      "id": "vip6-emotional-blindspots",
-      "nameEn": "Emotional Blindspots",
-      "nameVi": "Điểm Mù Cảm Xúc",
-      "tier": "vip6",
-      "hasData": true
+    "id": "vip6-emotional-blindspots",
+    "nameEn": "Emotional Blindspots",
+    "nameVi": "Điểm Mù Cảm Xúc",
+    "tier": "vip6",
+    "hasData": true
+  },
+  "vip6-inner-fragmentation": {
+    "id": "vip6-inner-fragmentation",
+    "nameEn": "Inner Fragmentation",
+    "nameVi": "Sự Phân Mảnh Nội Tâm",
+    "tier": "vip6",
+    "hasData": true
   }
 };
