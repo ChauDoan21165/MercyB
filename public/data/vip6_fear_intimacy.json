@@ -1,0 +1,83 @@
+{
+  "id": "vip6_fear_intimacy",
+  "tier": "VIP6",
+  "title": {
+    "en": "Fear of Intimacy",
+    "vi": "Nỗi Sợ Gần Gũi"
+  },
+  "content": {
+    "en": "This room explores the fear of being deeply known, held, or loved—where closeness feels dangerous, overwhelming, or exposing.",
+    "vi": "Phòng này khám phá nỗi sợ bị nhìn thấu, được ôm giữ hay được yêu thương—nơi sự gần gũi trở thành điều nguy hiểm, choáng ngợp hoặc phơi bày."
+  },
+  "entries": [
+    {
+      "slug": "when-love-feels-dangerous",
+      "keywords_en": ["intimacy", "fear", "connection"],
+      "keywords_vi": ["gần gũi", "nỗi sợ", "kết nối"],
+      "copy": {
+        "en": "Fear of intimacy is not fear of love—it is fear of what love awakens. When someone gets close, it stirs the memories of past betrayals, disappointments, or losses. Your mind tells you that closeness is dangerous, that vulnerability leads to hurt, that letting someone see your softness is unsafe. You may long to be understood yet pull away when it finally begins to happen. This push-and-pull is not confusion; it is self-protection learned long ago. Love feels risky because your nervous system remembers when opening up meant pain. But fear does not mean you are incapable of closeness—it simply reveals where your heart is still healing. When you approach this fear gently, without shame, a bridge forms. Little by little, you learn that being seen does not equal being destroyed; sometimes it is the beginning of being free.",
+        "vi": "Nỗi sợ gần gũi không phải nỗi sợ yêu—mà là nỗi sợ những gì tình yêu đánh thức. Khi ai đó đến gần, nó khơi dậy ký ức về phản bội, thất vọng hay mất mát. Tâm trí bạn bảo rằng gần gũi là nguy hiểm, rằng dễ tổn thương sẽ dẫn đến đau đớn, rằng để ai nhìn thấy sự mềm yếu của mình là không an toàn. Bạn có thể khao khát được hiểu nhưng lại rút lui khi điều đó sắp xảy ra. Sự kéo-đẩy này không phải mâu thuẫn; nó là cơ chế tự bảo vệ học từ lâu. Tình yêu trở nên rủi ro vì hệ thần kinh của bạn nhớ khi mở lòng từng đồng nghĩa với đau đớn. Nhưng nỗi sợ không có nghĩa bạn không thể gần gũi—nó chỉ cho thấy trái tim bạn vẫn đang chữa lành. Khi bạn đến gần nỗi sợ này bằng sự nhẹ nhàng, không phán xét, một cây cầu được hình thành. Từng chút một, bạn học rằng được nhìn thấy không phải bị phá hủy; đôi khi đó là khởi đầu của sự tự do."
+      },
+      "tags": ["intimacy", "fear"],
+      "audio": "vip6_fi_1.mp3"
+    },
+    {
+      "slug": "walls-built-from-wounds",
+      "keywords_en": ["defense", "heart walls", "protection"],
+      "keywords_vi": ["phòng vệ", "bức tường cảm xúc", "bảo vệ"],
+      "copy": {
+        "en": "Emotional walls are not signs of coldness—they are signs of injury. You built them at a time when closeness felt unsafe. Perhaps you learned that love was conditional, or that affection came with rejection, or that being open invited criticism. Over time, you become skilled at keeping people at a distance. You stay agreeable but never reveal your depth. You stay present but never fully available. You give pieces of yourself while hiding the rest behind practiced calmness or independence. These walls were built to protect the child who once felt unprotected. The goal is not to tear them down but to understand the wound beneath them. When you meet your own walls with compassion, they soften. The heart opens not by force, but by feeling safe again.",
+        "vi": "Những bức tường cảm xúc không phải dấu hiệu của sự lạnh lùng—mà là dấu hiệu của tổn thương. Bạn dựng chúng vào lúc sự gần gũi trở nên không an toàn. Có thể bạn từng học rằng tình yêu là điều kiện, rằng sự trìu mến kéo theo sự từ chối, hoặc rằng mở lòng đồng nghĩa với bị phán xét. Theo thời gian, bạn trở nên thành thạo trong việc giữ mọi người ở khoảng cách an toàn. Bạn thân thiện nhưng không bao giờ để lộ chiều sâu. Bạn hiện diện nhưng không bao giờ thật sự mở lòng. Bạn trao chút ít của mình trong khi ẩn phần còn lại sau vẻ bình thản được luyện tập hoặc sự độc lập mạnh mẽ. Những bức tường này được tạo ra để bảo vệ đứa trẻ từng không được bảo vệ. Mục tiêu không phải phá bỏ mà là hiểu nỗi đau nằm bên dưới. Khi bạn đối diện bức tường của chính mình bằng sự từ bi, nó mềm lại. Trái tim mở ra không nhờ ép buộc, mà nhờ cảm giác an toàn."
+      },
+      "tags": ["walls", "protection"],
+      "audio": "vip6_fi_2.mp3"
+    },
+    {
+      "slug": "fear-of-being-seen",
+      "keywords_en": ["vulnerability", "shame", "exposure"],
+      "keywords_vi": ["dễ tổn thương", "xấu hổ", "phơi bày"],
+      "copy": {
+        "en": "To be loved deeply means to be seen deeply—and for many, that is the greatest fear. Intimacy exposes the truths you hide: your insecurities, your longing, your imperfect humanity. The fear is not really about the other person; it is about your belief that if someone saw you fully, they might withdraw their love. So you offer curated versions of yourself—strong but not too strong, soft but not too soft, open but never fully exposed. This guardedness creates distance even when you crave closeness. But being seen is not a threat; it is a relief. The parts you fear are “too much” are often the parts others find most human. When you let yourself be seen gently, you learn that love can meet the truth of you—not the mask.",
+        "vi": "Được yêu sâu sắc nghĩa là được nhìn thấy sâu sắc—và với nhiều người, đó là nỗi sợ lớn nhất. Sự gần gũi phơi bày những sự thật bạn giấu kín: bất an, khao khát, sự không hoàn hảo rất con người. Nỗi sợ không thực sự liên quan đến người kia; nó đến từ niềm tin rằng nếu ai đó nhìn thấy toàn bộ con người bạn, họ có thể rút lại tình yêu. Vì vậy bạn trao đi phiên bản đã chọn lọc—mạnh nhưng không quá mạnh, mềm nhưng không quá mềm, mở lòng nhưng không bao giờ hoàn toàn. Sự phòng thủ này tạo ra khoảng cách ngay cả khi bạn khao khát gần gũi. Nhưng được nhìn thấy không phải mối đe dọa; nó là sự giải thoát. Những phần bạn nghĩ là “quá nhiều” thường là những phần người khác thấy rất con người. Khi bạn cho phép mình được nhìn thấy một cách nhẹ nhàng, bạn học rằng tình yêu có thể gặp gỡ sự thật trong bạn—chứ không phải chiếc mặt nạ."
+      },
+      "tags": ["vulnerability", "fear"],
+      "audio": "vip6_fi_3.mp3"
+    },
+    {
+      "slug": "receiving-love-is-hard",
+      "keywords_en": ["receiving", "love", "difficulty"],
+      "keywords_vi": ["đón nhận", "tình yêu", "khó khăn"],
+      "copy": {
+        "en": "For many, the hardest part of intimacy is not giving love—it is receiving it. When someone offers care, affection, or consistency, you may feel overwhelmed or suspicious. Your body tenses, the mind searches for danger, and old beliefs whisper, “This will not last,” or “You don’t deserve this.” Receiving love requires trust, and trust requires safety—a safety many people never learned. You might intellectualize love instead of feeling it, or turn affection into a joke, or push it away before it can reach you. But receiving love is a skill. It grows slowly as you expose yourself to small moments of softness. You let someone hold the door, offer support, stay when you expect them to leave. In these tiny openings, the heart relearns how to receive what it once feared.",
+        "vi": "Với nhiều người, phần khó nhất của sự gần gũi không phải là trao yêu thương—mà là đón nhận nó. Khi ai đó trao sự quan tâm, trìu mến hoặc nhất quán, bạn có thể thấy choáng ngợp hoặc nghi ngờ. Cơ thể căng lên, tâm trí tìm kiếm nguy hiểm, và những niềm tin cũ thì thầm, “Điều này sẽ không kéo dài,” hoặc “Bạn không xứng đáng.” Đón nhận yêu thương đòi hỏi sự tin tưởng, và tin tưởng đòi hỏi cảm giác an toàn—một cảm giác nhiều người chưa bao giờ được học. Bạn có thể lý trí hóa tình yêu thay vì cảm nhận, hoặc biến sự trìu mến thành trò đùa, hoặc đẩy nó đi trước khi nó kịp chạm đến bạn. Nhưng đón nhận yêu thương là một kỹ năng. Nó lớn dần khi bạn cho phép mình tiếp xúc với những khoảnh khắc mềm mại nhỏ. Bạn để ai đó giữ cửa, đưa tay giúp, hoặc ở lại khi bạn nghĩ họ sẽ rời đi. Trong những khe hở nhỏ ấy, trái tim học lại cách đón nhận điều mà trước đây nó từng sợ hãi."
+      },
+      "tags": ["receiving", "love"],
+      "audio": "vip6_fi_4.mp3"
+    },
+    {
+      "slug": "slow-opening",
+      "keywords_en": ["healing", "openness", "gentleness"],
+      "keywords_vi": ["chữa lành", "mở lòng", "nhẹ nhàng"],
+      "copy": {
+        "en": "Healing fear of intimacy happens slowly, at the speed of safety. You do not need to tear down your defenses; you only need to understand them. When you let connection unfold gently, the body relaxes. You begin sharing small truths, expressing needs softly, allowing yourself to be held in moments that once felt unbearable. Intimacy is not a leap but a series of openings—tiny acts of trust that accumulate into something steady. You learn to stay present when the instinct is to flee, to breathe when the heart tightens, to remain when discomfort rises. Over time, closeness no longer feels like a threat but like a place you can rest. Intimacy becomes less about exposure and more about belonging—to yourself and to another.",
+        "vi": "Chữa lành nỗi sợ gần gũi diễn ra chậm rãi, với tốc độ của sự an toàn. Bạn không cần phá bỏ hàng rào phòng thủ; bạn chỉ cần hiểu chúng. Khi bạn để kết nối diễn ra nhẹ nhàng, cơ thể thư giãn. Bạn bắt đầu chia sẻ những sự thật nhỏ, bày tỏ nhu cầu một cách mềm mại, cho phép mình được ôm khi trước đây điều đó từng không thể chịu nổi. Sự gần gũi không phải bước nhảy mà là chuỗi mở lòng—những hành động tin tưởng nhỏ tích lũy thành điều bền vững. Bạn học cách ở lại khi bản năng bảo chạy trốn, hít thở khi tim thắt lại và hiện diện khi sự khó chịu trỗi dậy. Theo thời gian, gần gũi không còn là mối đe dọa mà trở thành nơi bạn có thể nghỉ ngơi. Sự thân mật không còn là phơi bày mà là thuộc về—thuộc về chính bạn và thuộc về một người khác."
+      },
+      "tags": ["healing", "intimacy"],
+      "audio": "vip6_fi_5.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full sequence", "combined"],
+      "keywords_vi": ["tất cả", "chuỗi đầy đủ", "kết hợp"],
+      "copy": {
+        "en": "Fear of intimacy is not fear of love but fear of what love awakens. When someone comes close, old wounds stir, walls rise, and the heart retreats. These defenses were built long ago to protect the child who once felt unsafe. You long to be understood yet pull away when it begins to happen. You fear being seen, believing that full exposure may lead to rejection. You offer curated versions of yourself, staying present but never fully open. Receiving love becomes harder than giving it; the body searches for danger even in kindness. Healing happens slowly, through gentle openings—breathing through the fear, letting small moments of closeness land, allowing someone to stay when you expect them to leave. Intimacy becomes possible when safety returns. Slowly, you learn that being seen does not destroy you—it frees you.",
+        "vi": "Nỗi sợ gần gũi không phải sợ yêu mà là sợ điều tình yêu đánh thức. Khi ai đó đến gần, vết thương cũ chuyển động, bức tường dựng lên và trái tim rút lui. Những cơ chế phòng vệ này được tạo ra từ lâu để bảo vệ đứa trẻ từng không an toàn. Bạn khao khát được hiểu nhưng lại rời đi khi điều đó sắp xảy ra. Bạn sợ bị nhìn thấy, tin rằng phơi bày sẽ dẫn đến bị từ chối. Bạn trao đi phiên bản đã chọn lọc của mình, hiện diện nhưng không mở lòng. Đón nhận yêu thương khó hơn trao yêu thương; cơ thể tìm kiếm nguy hiểm ngay cả trong sự dịu dàng. Chữa lành diễn ra chậm rãi, qua những mở lòng nhỏ—hít thở khi sợ hãi, cho phép sự gần gũi chạm đến, để ai đó ở lại khi bạn nghĩ họ sẽ rời đi. Gần gũi trở nên khả thi khi cảm giác an toàn quay trở lại. Từng chút một, bạn học rằng được nhìn thấy không phá hủy bạn—mà giải phóng bạn."
+      },
+      "tags": ["all", "combined"],
+      "audio": "vip6_fi_1.mp3 vip6_fi_2.mp3 vip6_fi_3.mp3 vip6_fi_4.mp3 vip6_fi_5.mp3"
+    }
+  ],
+  "meta": {
+    "entry_count": 6
+  }
+}
