@@ -5,12 +5,12 @@ import { useUserAccess } from '@/hooks/useUserAccess';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
 
 interface VIPNavigationProps {
-  currentPage?: 'vip1' | 'vip2' | 'vip3' | 'vip3_ii' | 'vip4' | 'vip5';
+  currentPage?: 'vip1' | 'vip2' | 'vip3' | 'vip3_ii' | 'vip4' | 'vip5' | 'vip6';
 }
 
 export const VIPNavigation = ({ currentPage }: VIPNavigationProps) => {
   const navigate = useNavigate();
-  const { isAdmin, canAccessVIP1, canAccessVIP2, canAccessVIP3, canAccessVIP3II, canAccessVIP4, canAccessVIP5 } = useUserAccess();
+  const { isAdmin, canAccessVIP1, canAccessVIP2, canAccessVIP3, canAccessVIP3II, canAccessVIP4, canAccessVIP5, canAccessVIP6 } = useUserAccess();
 
   const pages = [
     { name: 'vip1', path: '/rooms-vip1', label: 'VIP1', canAccess: canAccessVIP1 },
@@ -19,6 +19,7 @@ export const VIPNavigation = ({ currentPage }: VIPNavigationProps) => {
     { name: 'vip3_ii', path: '/rooms-vip3-ii', label: 'VIP3 II', canAccess: canAccessVIP3II },
     { name: 'vip4', path: '/rooms-vip4', label: 'VIP4 CareerZ', canAccess: canAccessVIP4 },
     { name: 'vip5', path: '/rooms-vip5', label: 'VIP5 Writing', canAccess: canAccessVIP5 },
+    { name: 'vip6', path: '/vip6', label: 'VIP6 Psychology', canAccess: canAccessVIP6 },
   ];
 
   const currentIndex = currentPage ? pages.findIndex(p => p.name === currentPage) : -1;
