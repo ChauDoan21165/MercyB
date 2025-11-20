@@ -184,7 +184,8 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "vip6-avoidant-behaviors": "data/vip6_avoidant_behaviors.json",
   "vip6-emotional-dependency": "data/vip6_emotional_dependency.json",
   "vip6-fear-failure": "data/vip6_fear_failure.json",
-  "vip6-perfectionism-shadows": "data/vip6_perfectionism_shadows.json"
+  "vip6-perfectionism-shadows": "data/vip6_perfectionism_shadows.json",
+  "vip6-people-pleasing": "data/vip6_people_pleasing.json"
 };
 
 /**
