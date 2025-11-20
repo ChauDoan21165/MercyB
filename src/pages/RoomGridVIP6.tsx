@@ -29,8 +29,8 @@ const RoomGridVIP6 = () => {
 
     const vip6Rooms = ALL_ROOMS.filter(room => room.tier === 'vip6');
     const sortedRooms = vip6Rooms.sort((a, b) => {
-      const aName = a.name || a.id;
-      const bName = b.name || b.id;
+      const aName = a.nameEn || a.id;
+      const bName = b.nameEn || b.id;
       return aName.localeCompare(bName);
     });
     
@@ -41,8 +41,8 @@ const RoomGridVIP6 = () => {
     const handleRoomDataUpdate = () => {
       const vip6Rooms = ALL_ROOMS.filter(room => room.tier === 'vip6');
       const sortedRooms = vip6Rooms.sort((a, b) => {
-        const aName = a.name || a.id;
-        const bName = b.name || b.id;
+        const aName = a.nameEn || a.id;
+        const bName = b.nameEn || b.id;
         return aName.localeCompare(bName);
       });
       setRooms(sortedRooms);
@@ -166,8 +166,11 @@ const RoomGridVIP6 = () => {
                     </div>
 
                     <h3 className="text-xl font-bold mb-2 text-purple-900 group-hover:text-purple-700 transition-colors">
-                      {room.name || room.id}
+                      {room.nameEn}
                     </h3>
+                    <p className="text-sm text-purple-700 mb-2">
+                      {room.nameVi}
+                    </p>
 
                     {room.description && (
                       <p className="text-sm text-gray-700 mb-4 line-clamp-3">
