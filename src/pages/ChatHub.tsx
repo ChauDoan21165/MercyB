@@ -849,6 +849,12 @@ const ChatHub = () => {
                 englishContent={roomEssay.en}
                 vietnameseContent={roomEssay.vi}
                 roomKeywords={keywordMenu?.en || []}
+                onWordClick={() => {
+                  const messageWithAudio = mainMessages.find(m => m.audioFile);
+                  if (messageWithAudio) {
+                    handleAudioClick(messageWithAudio);
+                  }
+                }}
               />
             </div>
           )}

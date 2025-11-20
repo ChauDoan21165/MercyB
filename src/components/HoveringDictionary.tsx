@@ -21,9 +21,10 @@ interface HoveringDictionaryProps {
   children: React.ReactNode;
   roomKeywords?: string[];
   roomContent?: string;
+  onWordClick?: () => void;
 }
 
-export const HoveringDictionary = ({ word, children, roomKeywords, roomContent }: HoveringDictionaryProps) => {
+export const HoveringDictionary = ({ word, children, roomKeywords, roomContent, onWordClick }: HoveringDictionaryProps) => {
   const [showTooltip, setShowTooltip] = useState(false);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const { toast } = useToast();
@@ -149,7 +150,13 @@ export const HoveringDictionary = ({ word, children, roomKeywords, roomContent }
     >
       <span 
         className="hover:bg-primary/10 transition-colors rounded px-0.5 cursor-pointer"
-        onClick={playPronunciation}
+        onClick={(e) => {
+          if (onWordClick) {
+            onWordClick();
+          } else {
+            playPronunciation(e);
+          }
+        }}
       >
         {children}
       </span>

@@ -13,6 +13,7 @@ interface PairedHighlightedContentWithDictionaryProps {
   showVietnamese?: boolean;
   roomKeywords?: string[];
   className?: string;
+  onWordClick?: () => void;
 }
 
 export const PairedHighlightedContentWithDictionary = ({ 
@@ -22,7 +23,8 @@ export const PairedHighlightedContentWithDictionary = ({
   vietnameseContent,
   showVietnamese = true,
   roomKeywords = [],
-  className = "" 
+  className = "",
+  onWordClick
 }: PairedHighlightedContentWithDictionaryProps) => {
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
@@ -67,6 +69,7 @@ export const PairedHighlightedContentWithDictionary = ({
           word={token} 
           roomKeywords={roomKeywords}
           roomContent={enText}
+          onWordClick={onWordClick}
         >
           {token}
         </HoveringDictionary>
