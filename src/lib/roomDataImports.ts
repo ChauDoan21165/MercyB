@@ -1300,5 +1300,12 @@ export const roomDataMap: Record<string, RoomData> = {
     "nameVi": "Bóng Tối của Kiêu Hãnh & Bản Ngã",
     "tier": "vip6",
     "hasData": true
+  },
+  "vip6-attachment-trauma": {
+    "id": "vip6-attachment-trauma",
+    "nameEn": "Attachment Trauma Patterns",
+    "nameVi": "Mô Thức Tổn Thương Gắn Bó",
+    "tier": "vip6",
+    "hasData": true
   }
 };
