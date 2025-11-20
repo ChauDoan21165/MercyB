@@ -58,6 +58,7 @@ import AdminUserDetail from "./pages/AdminUserDetail";
 import AdminSecurity from "./pages/AdminSecurity";
 import JoinCode from "./pages/JoinCode";
 import AdminSystemMetrics from "./pages/AdminSystemMetrics";
+import AdminRoomsDashboard from "./pages/AdminRoomsDashboard";
 
 const queryClient = new QueryClient();
 
@@ -148,6 +149,7 @@ const App = () => {
           <Route path="/admin/code-editor" element={<AdminCodeEditor />} />
           <Route path="/admin/payments" element={<AdminPayments />} />
           <Route path="/admin/system-metrics" element={<AdminSystemMetrics />} />
+          <Route path="/admin/rooms-dashboard" element={<AdminRoomsDashboard />} />
           <Route path="/audio-test" element={<AudioTestPage />} />
           <Route path="/audio-upload" element={<AudioUpload />} />
           <Route path="*" element={<NotFound />} />
