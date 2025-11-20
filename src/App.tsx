@@ -60,6 +60,7 @@ import JoinCode from "./pages/JoinCode";
 import AdminSystemMetrics from "./pages/AdminSystemMetrics";
 import AdminRoomsDashboard from "./pages/AdminRoomsDashboard";
 import KidsDesignPack from "./pages/KidsDesignPack";
+import AdminKidsImport from "./pages/AdminKidsImport";
 
 const queryClient = new QueryClient();
 
@@ -154,6 +155,7 @@ const App = () => {
           <Route path="/audio-test" element={<AudioTestPage />} />
           <Route path="/audio-upload" element={<AudioUpload />} />
           <Route path="/kids-design-pack" element={<KidsDesignPack />} />
+          <Route path="/admin/kids-import" element={<AdminKidsImport />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         </BrowserRouter>
