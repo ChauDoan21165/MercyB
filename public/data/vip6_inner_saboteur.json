@@ -1,0 +1,83 @@
+{
+  "id": "vip6_inner_saboteur",
+  "tier": "VIP6",
+  "title": {
+    "en": "Inner War: Saboteur vs. Self",
+    "vi": "Cuộc Chiến Bên Trong: Kẻ Phá Hoại Và Bản Thân"
+  },
+  "content": {
+    "en": "This room explores the inner saboteur—the voice that undermines your progress, disrupts your peace, and pulls you away from the life you are trying to build.",
+    "vi": "Phòng này khám phá kẻ phá hoại bên trong—giọng nói làm suy yếu tiến trình, quấy rối bình yên và kéo bạn khỏi cuộc sống bạn đang cố gắng xây dựng."
+  },
+  "entries": [
+    {
+      "slug": "origin-of-the-saboteur",
+      "keywords_en": ["saboteur", "origin", "fear"],
+      "keywords_vi": ["kẻ phá hoại", "nguồn gốc", "nỗi sợ"],
+      "copy": {
+        "en": "The inner saboteur is born from fear—fear of failure, fear of disappointment, fear of repeating old wounds. It appears as hesitation, impulsivity, procrastination, or self-criticism. It learned long ago that preventing you from trying is safer than risking pain. What looks like destruction is often protection gone wrong. The saboteur is not your enemy; it is a frightened part of you trying to keep you from hurt that has already happened.",
+        "vi": "Kẻ phá hoại bên trong sinh ra từ nỗi sợ—sợ thất bại, sợ thất vọng, sợ lặp lại những vết thương cũ. Nó xuất hiện dưới dạng do dự, bốc đồng, trì hoãn hoặc tự chỉ trích. Nó học từ lâu rằng ngăn bạn thử còn an toàn hơn đối mặt tổn thương. Điều tưởng như phá hoại thật ra là sự bảo vệ sai hướng. Kẻ phá hoại không phải kẻ thù—đó là phần sợ hãi trong bạn, cố ngăn bạn khỏi nỗi đau từng xảy ra."
+      },
+      "tags": ["origin", "fear"],
+      "audio": "vip6_is_1.mp3"
+    },
+    {
+      "slug": "how-self-sabotage-operates",
+      "keywords_en": ["patterns", "sabotage", "behavior"],
+      "keywords_vi": ["mô thức", "tự phá hoại", "hành vi"],
+      "copy": {
+        "en": "Self-sabotage works in subtle ways. You pick the wrong partners, delay meaningful work, create conflict when things go well, or abandon projects right before they succeed. You break your own momentum because growth feels unfamiliar. The saboteur acts when your life expands beyond what you were taught to expect. It disrupts stability to return you to the emotional environment it understands—even if that place was painful.",
+        "vi": "Tự phá hoại hoạt động theo những cách tinh vi. Bạn chọn sai người, trì hoãn công việc quan trọng, tạo xung đột khi mọi thứ suôn sẻ hoặc bỏ dở dự án ngay trước khi thành công. Bạn tự làm đứt quãng đà tiến vì sự trưởng thành cảm thấy lạ lẫm. Kẻ phá hoại hành động khi cuộc sống vượt quá những gì bạn từng được dạy là có thể. Nó khuấy động sự ổn định để đưa bạn về môi trường cảm xúc quen thuộc—dù nơi ấy từng đau đớn."
+      },
+      "tags": ["patterns", "sabotage"],
+      "audio": "vip6_is_2.mp3"
+    },
+    {
+      "slug": "the-inner-war-it-creates",
+      "keywords_en": ["inner conflict", "identity", "fear"],
+      "keywords_vi": ["xung đột nội tâm", "bản ngã", "nỗi sợ"],
+      "copy": {
+        "en": "The inner saboteur creates a war between who you are and who you are becoming. One part of you longs for expansion, expression, and peace; another part fears being seen, rejected, or disappointed. This push-pull dynamic makes your progress inconsistent and your confidence fragile. The conflict is not weakness—it is the tension between old survival patterns and your emerging, healthier self.",
+        "vi": "Kẻ phá hoại tạo ra cuộc chiến giữa con người bạn hiện tại và con người bạn đang trở thành. Một phần bạn khao khát mở rộng, thể hiện và bình yên; phần khác lại sợ bị nhìn thấy, bị từ chối hoặc thất vọng. Sự kéo-đẩy này làm tiến trình của bạn chập chờn và sự tự tin mong manh. Xung đột ấy không phải yếu đuối—mà là căng giữa mô thức sinh tồn cũ và phiên bản lành mạnh đang trỗi dậy."
+      },
+      "tags": ["conflict", "fear"],
+      "audio": "vip6_is_3.mp3"
+    },
+    {
+      "slug": "meeting-the-saboteur-with-compassion",
+      "keywords_en": ["compassion", "healing", "self-awareness"],
+      "keywords_vi": ["từ bi", "chữa lành", "tự nhận thức"],
+      "copy": {
+        "en": "The saboteur softens when you meet it with compassion. Instead of fighting or suppressing it, you listen to its fears and understand the memories behind them. You recognize that its warnings are echoes of old pain, not predictions of your future. When you respond with gentleness rather than judgment, the saboteur shifts from an attacker into a messenger revealing where you still hurt and where you still need safety.",
+        "vi": "Kẻ phá hoại dịu lại khi bạn gặp nó bằng lòng từ bi. Thay vì chống lại hoặc đàn áp, bạn lắng nghe nỗi sợ và hiểu ký ức đứng sau đó. Bạn nhận ra lời cảnh báo của nó chỉ là tiếng vọng của nỗi đau cũ, không phải dự đoán tương lai. Khi bạn phản ứng bằng sự dịu dàng thay vì xét đoán, kẻ phá hoại chuyển từ kẻ tấn công thành người đưa tin, hé lộ nơi bạn còn đau và nơi bạn còn cần an toàn."
+      },
+      "tags": ["compassion", "healing"],
+      "audio": "vip6_is_4.mp3"
+    },
+    {
+      "slug": "transforming-the-inner-war",
+      "keywords_en": ["transformation", "integration", "growth"],
+      "keywords_vi": ["chuyển hóa", "hợp nhất", "trưởng thành"],
+      "copy": {
+        "en": "Transformation happens when you integrate the saboteur instead of exiling it. You build new habits of safety, allow yourself to succeed, and treat progress as a right—not something you must sabotage. You replace self-punishment with responsibility, avoidance with courage, chaos with clarity. As the inner war dissolves, your energy returns to creation instead of defense. You discover that the saboteur was never trying to stop your growth—it was asking for healing.",
+        "vi": "Sự chuyển hóa xảy ra khi bạn hợp nhất kẻ phá hoại thay vì trục xuất nó. Bạn xây những thói quen tạo an toàn mới, cho phép mình thành công và xem tiến bộ là quyền lợi—không phải điều phải tự phá hủy. Bạn thay sự tự trừng phạt bằng trách nhiệm, né tránh bằng can đảm, hỗn loạn bằng sáng rõ. Khi cuộc chiến bên trong tan dần, năng lượng của bạn trở lại với sự sáng tạo thay vì phòng thủ. Bạn nhận ra kẻ phá hoại chưa từng muốn ngăn sự trưởng thành—nó chỉ đang đòi chữa lành."
+      },
+      "tags": ["transformation", "integration"],
+      "audio": "vip6_is_5.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "combined", "full sequence"],
+      "keywords_vi": ["tất cả", "kết hợp", "chuỗi đầy đủ"],
+      "copy": {
+        "en": "The inner saboteur forms from fear, old wounds, and patterns meant to keep you safe. It disrupts progress, creates inner conflict, and repeats survival strategies long after they are needed. Healing begins with compassion, awareness, and integration. As you learn to understand rather than fight your inner saboteur, the war inside dissolves. What once felt like self-destruction becomes a path toward clarity, safety, and emotional freedom.",
+        "vi": "Kẻ phá hoại bên trong sinh ra từ nỗi sợ, vết thương cũ và mô thức từng giúp bạn sinh tồn. Nó làm gián đoạn tiến trình, tạo xung đột nội tâm và lặp lại chiến lược sinh tồn dù chúng đã không còn cần thiết. Chữa lành bắt đầu bằng lòng từ bi, nhận thức và hợp nhất. Khi bạn hiểu thay vì chống lại kẻ phá hoại, cuộc chiến bên trong tan biến. Điều từng giống tự hủy hoại trở thành con đường dẫn đến sáng rõ, an toàn và tự do cảm xúc."
+      },
+      "tags": ["all", "combined"],
+      "audio": "vip6_is_1.mp3 vip6_is_2.mp3 vip6_is_3.mp3 vip6_is_4.mp3 vip6_is_5.mp3"
+    }
+  ],
+  "meta": {
+    "entry_count": 6
+  }
+}
