@@ -92,22 +92,9 @@ export default function AdminRooms() {
           throw new Error(`Failed to set PIN: ${pinError.message}`);
         }
         console.log('PIN set successfully');
-      } else {
-        // Unlocking: validate and remove the PIN from the database
-        console.log('Validating and removing PIN for room unlock...');
-        const { error: removeError } = await supabase.rpc('remove_room_pin', {
-          _room_id: roomId,
-          _pin: pin
-        });
-        
-        if (removeError) {
-          console.error('Error removing PIN:', removeError);
-          throw new Error(`Incorrect PIN: ${removeError.message}`);
-        }
-        console.log('PIN validated and removed successfully');
       }
       
-      // Toggle the lock state
+      // Toggle the lock state (unlock without PIN validation)
       console.log('Toggling room lock state...');
       const { error } = await supabase.rpc('toggle_room_lock', {
         room_id_param: roomId,
