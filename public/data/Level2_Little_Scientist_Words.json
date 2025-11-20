@@ -1,0 +1,14 @@
+{
+  "id": "level2-little-scientist-words",
+  "name": "Little Scientist Words",
+  "name_vi": "Từ Vựng Nhà Khoa Học Nhỏ",
+  "description": "Empty room placeholder - content to be added",
+  "keywords_en": ["science", "experiment", "discovery"],
+  "keywords_vi": ["khoa học", "thí nghiệm"],
+  "entries": [],
+  "meta": {
+    "tier": "level2",
+    "age_range": "7-10",
+    "room_color": "#A8E6CF"
+  }
+}

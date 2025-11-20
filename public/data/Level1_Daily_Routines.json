@@ -1,0 +1,14 @@
+{
+  "id": "level1-daily-routines",
+  "name": "Daily Routines",
+  "name_vi": "Thói Quen Hàng Ngày",
+  "description": "Empty room placeholder - content to be added",
+  "keywords_en": ["daily", "routines", "habits"],
+  "keywords_vi": ["hàng ngày", "thói quen"],
+  "entries": [],
+  "meta": {
+    "tier": "level1",
+    "age_range": "4-7",
+    "room_color": "#FFB4E5"
+  }
+}

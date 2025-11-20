@@ -1,0 +1,14 @@
+{
+  "id": "level3-mini-projects-presentations",
+  "name": "Mini Projects & Presentations",
+  "name_vi": "Dự Án Nhỏ & Thuyết Trình",
+  "description": "Empty room placeholder - content to be added",
+  "keywords_en": ["projects", "presentations", "speaking"],
+  "keywords_vi": ["dự án", "thuyết trình"],
+  "entries": [],
+  "meta": {
+    "tier": "level3",
+    "age_range": "10-13",
+    "room_color": "#FFD89C"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "level2-short-story-builder",
+  "name": "Short Story Builder",
+  "name_vi": "Xây Dựng Câu Chuyện Ngắn",
+  "description": "Empty room placeholder - content to be added",
+  "keywords_en": ["story", "writing", "narrative"],
+  "keywords_vi": ["câu chuyện", "viết"],
+  "entries": [],
+  "meta": {
+    "tier": "level2",
+    "age_range": "7-10",
+    "room_color": "#A8E6CF"
+  }
+}

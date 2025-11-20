@@ -1,0 +1,14 @@
+{
+  "id": "level1-family-home-words",
+  "name": "Family & Home Words",
+  "name_vi": "Từ Vựng Gia Đình & Nhà",
+  "description": "Empty room placeholder - content to be added",
+  "keywords_en": ["family", "home", "house"],
+  "keywords_vi": ["gia đình", "nhà"],
+  "entries": [],
+  "meta": {
+    "tier": "level1",
+    "age_range": "4-7",
+    "room_color": "#FFB4E5"
+  }
+}
