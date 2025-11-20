@@ -1,0 +1,83 @@
+{
+  "id": "vip6_shadow_in_love",
+  "tier": "VIP6",
+  "title": {
+    "en": "Shadow in Love",
+    "vi": "Bóng Tối Trong Tình Yêu"
+  },
+  "content": {
+    "en": "This room explores how hidden wounds, unmet needs, and unconscious patterns shape the way you love, give, cling, withdraw, and search for connection.",
+    "vi": "Phòng này khám phá những vết thương ẩn, nhu cầu chưa được đáp ứng và mô thức vô thức định hình cách bạn yêu, trao đi, bám víu, rút lui và tìm kiếm kết nối."
+  },
+  "entries": [
+    {
+      "slug": "love-as-a-mirror",
+      "keywords_en": ["mirror", "relationship", "shadow"],
+      "keywords_vi": ["tấm gương", "mối quan hệ", "bóng tối"],
+      "copy": {
+        "en": "Love is one of the most powerful mirrors of the shadow. In romance, the parts of yourself you hide are the first to surface. A partner’s warmth may awaken forgotten longing; their distance may trigger old fears; their affection may stir guilt, shame, or disbelief. You do not react merely to them—you react to every memory their presence evokes. Love magnifies the invisible. It exposes your unmet needs, your wounds around worthiness, and the protective patterns you use to survive. This is why love feels overwhelming: it touches the places you guard the most. Yet this mirror is not punishment—it is invitation. Love invites you to see yourself honestly, to witness the parts that ache, to meet the pieces you once exiled. Through this reflection, intimacy becomes not only connection with another but reconciliation with yourself.",
+        "vi": "Tình yêu là một trong những tấm gương mạnh mẽ nhất của bóng tối nội tâm. Trong tình cảm, những phần bạn giấu kín lại là những phần trồi lên đầu tiên. Sự ấm áp của người kia có thể đánh thức khao khát bị lãng quên; sự xa cách của họ có thể kích hoạt nỗi sợ xưa cũ; sự trìu mến của họ có thể khơi dậy tội lỗi, xấu hổ hoặc hoài nghi. Bạn không chỉ phản ứng với họ—mà phản ứng với mọi ký ức mà sự hiện diện của họ gợi lên. Tình yêu phóng đại những thứ vô hình. Nó phơi bày nhu cầu chưa được đáp ứng, vết thương về giá trị bản thân và những mô thức bảo vệ bạn từng dùng để sinh tồn. Đó là lý do tình yêu choáng ngợp: nó chạm vào những nơi bạn bảo vệ nhiều nhất. Nhưng tấm gương này không phải sự trừng phạt—mà là lời mời. Tình yêu mời bạn nhìn chính mình một cách chân thật, chứng kiến những phần đang đau, và gặp lại những mảnh ghép bạn từng ruồng bỏ. Qua sự phản chiếu này, sự thân mật trở thành kết nối với người khác và hòa giải với chính mình."
+      },
+      "tags": ["shadow", "love"],
+      "audio": "vip6_sil_1.mp3"
+    },
+    {
+      "slug": "the-need-behind-the-need",
+      "keywords_en": ["needs", "emotional depth", "relationships"],
+      "keywords_vi": ["nhu cầu", "chiều sâu cảm xúc", "mối quan hệ"],
+      "copy": {
+        "en": "The shadow in love reveals itself through the needs beneath your spoken needs. You may ask for attention but truly crave reassurance. You may seek affection but truly need safety. You may demand clarity but truly long for emotional presence. When these deeper needs go unrecognized, you express them indirectly—through frustration, testing, withdrawal, or overgiving. These behaviors are not manipulation; they are coded cries for connection. But when your partner responds only to the behavior, not the wound beneath it, both of you feel misunderstood. Healing requires translating your emotional language: turning “Why didn’t you text me?” into “I felt forgotten.” Turning “You never listen” into “I need to feel important to you.” When you speak from the wound instead of the defense, love becomes clearer, softer, and more honest.",
+        "vi": "Bóng tối trong tình yêu bộc lộ qua nhu cầu nằm dưới nhu cầu bạn nói ra. Bạn có thể đòi hỏi sự chú ý nhưng thực sự cần sự trấn an. Bạn có thể tìm kiếm sự âu yếm nhưng thực sự cần cảm giác an toàn. Bạn có thể yêu cầu sự rõ ràng nhưng thực sự khao khát sự hiện diện cảm xúc. Khi những nhu cầu sâu hơn không được nhận diện, bạn bộc lộ chúng gián tiếp—qua sự thất vọng, thử thách, rút lui hoặc cho đi quá mức. Những hành vi này không phải thao túng; chúng là tiếng kêu mã hóa cho sự kết nối. Nhưng khi người kia chỉ phản ứng với hành vi, không phải vết thương bên dưới, cả hai đều cảm thấy bị hiểu sai. Chữa lành đòi hỏi dịch ngôn ngữ cảm xúc bên trong bạn: biến “Sao anh không nhắn cho em?” thành “Em thấy mình bị quên.” Biến “Anh chẳng bao giờ lắng nghe” thành “Em cần cảm giác mình quan trọng với anh.” Khi bạn nói từ vết thương thay vì hàng rào phòng vệ, tình yêu trở nên rõ ràng, mềm mại và chân thật hơn."
+      },
+      "tags": ["needs", "communication"],
+      "audio": "vip6_sil_2.mp3"
+    },
+    {
+      "slug": "why-you-fall-for-the-same-person",
+      "keywords_en": ["patterns", "attraction", "repetition"],
+      "keywords_vi": ["mô thức", "thu hút", "lặp lại"],
+      "copy": {
+        "en": "Shadow patterns often determine who you are drawn to. You may find yourself repeatedly attracted to partners who resemble the emotional imprint of your childhood—the unavailable parent, the unpredictable caregiver, the person whose love felt uncertain. This is not coincidence; it is repetition. The psyche tries to resolve old wounds by recreating them, hoping this time the story ends differently. You chase what hurt you, cling to what confuses you, or feel bored by what feels safe. Attraction becomes entangled with familiarity, even when familiarity is painful. Healing requires breaking the cycle: choosing partners who do not ignite old wounds but nurture new possibilities. It is choosing safety even when your nervous system calls it “boring,” choosing kindness even when your body doesn’t recognize it yet. Love expands when you stop recreating the past.",
+        "vi": "Các mô thức bóng tối thường quyết định bạn bị thu hút bởi ai. Bạn có thể liên tục chú ý đến những người giống dấu ấn cảm xúc thời thơ ấu—người cha/mẹ xa cách, người chăm sóc khó đoán, người mà tình yêu của họ từng không chắc chắn. Đây không phải ngẫu nhiên; đây là sự lặp lại. Tâm lý cố gắng sửa chữa vết thương cũ bằng cách tái tạo nó, hy vọng lần này câu chuyện sẽ kết thúc khác. Bạn đuổi theo điều từng làm bạn đau, bám vào điều khiến bạn bối rối hoặc thấy nhàm chán trước điều an toàn. Sự thu hút bị buộc vào sự quen thuộc, ngay cả khi sự quen thuộc đó đầy tổn thương. Chữa lành đòi hỏi phá vỡ vòng lặp: chọn người không kích hoạt vết thương cũ mà nuôi dưỡng khả năng mới. Đó là chọn sự an toàn ngay cả khi hệ thần kinh gọi nó là “nhàm chán,” chọn sự tử tế ngay cả khi cơ thể bạn chưa quen. Tình yêu mở rộng khi bạn dừng tái tạo quá khứ."
+      },
+      "tags": ["patterns", "shadow"],
+      "audio": "vip6_sil_3.mp3"
+    },
+    {
+      "slug": "love-as-trigger",
+      "keywords_en": ["trigger", "wounds", "reaction"],
+      "keywords_vi": ["kích hoạt", "vết thương", "phản ứng"],
+      "copy": {
+        "en": "Love triggers you not because it is wrong, but because it is intimate. The closer someone gets, the more they touch the places you buried. A gentle question may trigger defensiveness. A loving gesture may trigger fear. A moment of silence may trigger panic. You interpret small moments through old stories—stories of abandonment, criticism, unpredictability, or emotional hunger. Your partner becomes the symbol of everyone who came before. But triggers are not signs to run—they are signs to look within. Each reaction points to a wound asking to be acknowledged. When you stop blaming your partner for past pain and instead meet your own fear with curiosity, love becomes a healing space rather than a battlefield.",
+        "vi": "Tình yêu kích hoạt bạn không phải vì nó sai, mà vì nó thân mật. Ai đó càng đến gần, họ càng chạm vào những nơi bạn chôn giấu. Một câu hỏi nhẹ nhàng có thể khiến bạn phòng thủ. Một cử chỉ trìu mến có thể khơi dậy nỗi sợ. Một khoảnh khắc im lặng có thể gây hoảng loạn. Bạn diễn giải những điều nhỏ qua các câu chuyện cũ—những câu chuyện về bị bỏ rơi, bị chỉ trích, sự khó đoán hoặc cơn đói cảm xúc. Người yêu trở thành biểu tượng của tất cả những người đến trước. Nhưng sự kích hoạt không phải dấu hiệu để chạy—mà là dấu hiệu để nhìn vào bên trong. Mỗi phản ứng chỉ đến một vết thương đang chờ được công nhận. Khi bạn ngừng đổ lỗi cho người kia về nỗi đau quá khứ và thay vào đó gặp nỗi sợ của chính mình bằng sự tò mò, tình yêu trở thành nơi chữa lành chứ không phải chiến trường."
+      },
+      "tags": ["trigger", "healing"],
+      "audio": "vip6_sil_4.mp3"
+    },
+    {
+      "slug": "loving-with-awareness",
+      "keywords_en": ["awareness", "growth", "conscious love"],
+      "keywords_vi": ["nhận thức", "trưởng thành", "tình yêu có ý thức"],
+      "copy": {
+        "en": "Healing the shadow in love requires awareness—not perfection. You do not need to eliminate every wound to be loving; you only need to know when your wounds are speaking. Awareness allows you to pause before reacting, to name the fear beneath the anger, to soften instead of defend. When both partners bring awareness, love becomes a shared journey rather than a cycle of reactivity. You learn to communicate from the heart instead of the wound, to ask for reassurance instead of demanding control, to take responsibility instead of projecting. Conscious love is not flawless—it is honest. It is choosing understanding over ego, connection over pride, and presence over fear. With awareness, love becomes the place where your shadow is not hidden but held.",
+        "vi": "Chữa lành bóng tối trong tình yêu đòi hỏi sự nhận thức—không phải sự hoàn hảo. Bạn không cần xóa bỏ mọi vết thương để yêu thương; bạn chỉ cần biết khi nào vết thương lên tiếng. Nhận thức cho phép bạn dừng lại trước khi phản ứng, gọi tên nỗi sợ dưới cơn giận, mềm lại thay vì phòng thủ. Khi cả hai cùng có nhận thức, tình yêu trở thành hành trình chung thay vì vòng lặp phản ứng. Bạn học cách giao tiếp từ trái tim thay vì từ vết thương, yêu cầu được trấn an thay vì kiểm soát, chịu trách nhiệm thay vì chiếu lên người khác. Tình yêu có ý thức không hoàn mỹ—nhưng chân thật. Nó là chọn thấu hiểu thay cho cái tôi, kết nối thay cho kiêu hãnh và hiện diện thay cho nỗi sợ. Với sự nhận thức, tình yêu trở thành nơi bóng tối của bạn không bị che giấu mà được ôm ấp."
+      },
+      "tags": ["awareness", "growth"],
+      "audio": "vip6_sil_5.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full sequence", "combined"],
+      "keywords_vi": ["tất cả", "chuỗi đầy đủ", "kết hợp"],
+      "copy": {
+        "en": "Love is a mirror that reflects your unmet needs, hidden wounds, and unconscious patterns. You react not just to your partner but to every memory their presence awakens. The shadow appears in indirect needs, repeated attraction to familiar pain, and triggers that resurrect old stories. You chase what hurt you, fear what soothes you, or misinterpret silence as danger. Yet none of these reactions are flaws—they are invitations. Healing begins when you speak from the wound rather than the defense, when you choose partners who nurture instead of recreate the past, when you allow awareness to interrupt reactivity. With consciousness, love shifts from reenacting history to rewriting it. The shadow softens when met with honesty, compassion, and a safe connection that lets you be fully seen.",
+        "vi": "Tình yêu là tấm gương phản chiếu những nhu cầu chưa được đáp ứng, vết thương ẩn và mô thức vô thức của bạn. Bạn không chỉ phản ứng với người yêu mà với mọi ký ức mà họ khơi dậy. Bóng tối hiện ra qua nhu cầu gián tiếp, sự thu hút lặp lại với nỗi đau quen thuộc và những kích hoạt khơi lại câu chuyện cũ. Bạn đuổi theo điều từng làm bạn đau, sợ điều làm bạn dễ chịu hoặc hiểu sai im lặng thành nguy hiểm. Nhưng không phản ứng nào là lỗi—chúng là lời mời. Chữa lành bắt đầu khi bạn nói từ vết thương thay vì hàng rào phòng vệ, khi bạn chọn người nuôi dưỡng thay vì tái tạo quá khứ, khi bạn để nhận thức ngắt vòng phản ứng. Với ý thức, tình yêu chuyển từ tái hiện lịch sử thành viết lại nó. Bóng tối mềm lại khi được gặp bằng sự chân thật, lòng từ bi và một kết nối an toàn nơi bạn được nhìn thấy trọn vẹn."
+      },
+      "tags": ["all", "combined"],
+      "audio": "vip6_sil_1.mp3 vip6_sil_2.mp3 vip6_sil_3.mp3 vip6_sil_4.mp3 vip6_sil_5.mp3"
+    }
+  ],
+  "meta": {
+    "entry_count": 6
+  }
+}
