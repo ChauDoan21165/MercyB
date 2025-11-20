@@ -1216,5 +1216,19 @@ export const roomDataMap: Record<string, RoomData> = {
     "nameVi": "Tội Lỗi & Nỗi Xấu Hổ Ẩn Giấu",
     "tier": "vip6",
     "hasData": true
+  },
+  "vip6-attachment-wounds": {
+    "id": "vip6-attachment-wounds",
+    "nameEn": "Attachment Wounds",
+    "nameVi": "Vết Thương Gắn Bó",
+    "tier": "vip6",
+    "hasData": true
+  },
+  "vip6-shadow-in-love": {
+    "id": "vip6-shadow-in-love",
+    "nameEn": "Shadow in Love",
+    "nameVi": "Bóng Tối Trong Tình Yêu",
+    "tier": "vip6",
+    "hasData": true
   }
 };
