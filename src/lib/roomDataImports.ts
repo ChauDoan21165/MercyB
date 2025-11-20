@@ -1300,5 +1300,26 @@ export const roomDataMap: Record<string, RoomData> = {
     "nameVi": "Bóng Tối của Kiêu Hãnh & Bản Ngã",
     "tier": "vip6",
     "hasData": true
+  },
+  "vip6-freeze-response": {
+    "id": "vip6-freeze-response",
+    "nameEn": "Freeze Response",
+    "nameVi": "Phản Ứng Đóng Băng",
+    "tier": "vip6",
+    "hasData": true
+  },
+  "vip6-abandonment-wound": {
+    "id": "vip6-abandonment-wound",
+    "nameEn": "Abandonment Wound",
+    "nameVi": "Vết Thương Bị Bỏ Rơi",
+    "tier": "vip6",
+    "hasData": true
+  },
+  "vip6-shadow-envy": {
+    "id": "vip6-shadow-envy",
+    "nameEn": "The Shadow of Envy",
+    "nameVi": "Bóng Tối của Sự Ghen Tị",
+    "tier": "vip6",
+    "hasData": true
   }
 };
