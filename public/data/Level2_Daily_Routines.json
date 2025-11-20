@@ -1,0 +1,14 @@
+{
+  "id": "level2-daily-routines",
+  "name": "Daily Routines",
+  "name_vi": "Thói Quen Hằng Ngày",
+  "description": "Talk about daily routines",
+  "keywords_en": ["routine", "daily", "habits", "kids"],
+  "keywords_vi": ["thói quen", "hằng ngày", "thói quen", "trẻ em"],
+  "entries": [],
+  "meta": {
+    "tier": "level2",
+    "age_range": "7-10",
+    "room_color": "#A8E6CF"
+  }
+}

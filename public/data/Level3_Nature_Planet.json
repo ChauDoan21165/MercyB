@@ -1,0 +1,14 @@
+{
+  "id": "level3-nature-planet",
+  "name": "Nature & the Planet",
+  "name_vi": "Thiên Nhiên & Hành Tinh",
+  "description": "Learn about nature and environmental issues",
+  "keywords_en": ["nature", "planet", "environment", "kids"],
+  "keywords_vi": ["thiên nhiên", "hành tinh", "môi trường", "trẻ em"],
+  "entries": [],
+  "meta": {
+    "tier": "level3",
+    "age_range": "10-13",
+    "room_color": "#FFD89C"
+  }
+}

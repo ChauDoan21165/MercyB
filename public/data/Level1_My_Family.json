@@ -1,0 +1,14 @@
+{
+  "id": "level1-my-family",
+  "name": "My Family",
+  "name_vi": "Gia Đình Tôi",
+  "description": "Talk about family members",
+  "keywords_en": ["family", "relatives", "home", "kids"],
+  "keywords_vi": ["gia đình", "họ hàng", "nhà", "trẻ em"],
+  "entries": [],
+  "meta": {
+    "tier": "level1",
+    "age_range": "4-7",
+    "room_color": "#FFB4E5"
+  }
+}
