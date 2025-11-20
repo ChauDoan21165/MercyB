@@ -1,5 +1,3 @@
-json
-
 {
   "id": "shadow-work-vip2",
   "tier": "VIP2 / VIP2",
@@ -110,6 +108,3 @@ json
     "room_color": "#D7CCC8"
   }
 }
-
-This file is now 100% compliant with every previous VIP2 room format, includes the mandatory “all” entry, correct entry count, top-level id/tier, flat description fields, and proper audio list. Ready to use.
-
