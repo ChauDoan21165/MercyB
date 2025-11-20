@@ -158,8 +158,26 @@ const VIETNAMESE_NAME_FALLBACKS: Record<string, string> = {
   'weight-loss-and-fitness-vip3': 'Giảm Cân & Thể Hình VIP3',
   
   // VIP6 Rooms
-  'vip6-pride-ego-shadow': 'Bóng Tối Kiêu Ngạo & Cái Tôi VIP6',
+  'vip6-shadow-self': 'Bản Ngã Bóng Tối VIP6',
+  'vip6-projection-triggers': 'Kích Hoạt Phản Chiếu VIP6',
+  'vip6-emotional-blindspots': 'Điểm Mù Cảm Xúc VIP6',
+  'vip6-inner-fragmentation': 'Sự Phân Mảnh Nội Tại VIP6',
+  'vip6-repressed-desires': 'Khát Vọng Bị Kìm Nén VIP6',
+  'vip6-fear-intimacy': 'Sợ Thân Mật VIP6',
+  'vip6-fear-abandonment': 'Sợ Bị Bỏ Rơi VIP6',
+  'vip6-suppressed-rage': 'Cơn Giận Bị Đè Nén VIP6',
+  'vip6-self-sabotage-relationship': 'Tự Phá Hoại Mối Quan Hệ VIP6',
+  'vip6-avoidant-behaviors': 'Hành Vi Trốn Tránh VIP6',
+  'vip6-emotional-dependency': 'Phụ Thuộc Cảm Xúc VIP6',
+  'vip6-fear-failure': 'Sợ Thất Bại VIP6',
+  'vip6-perfectionism-shadows': 'Bóng Tối Hoàn Hảo Chủ Nghĩa VIP6',
+  'vip6-people-pleasing': 'Làm Vừa Lòng Người Khác VIP6',
   'vip6-martyr-complex': 'Phức Cảm Hy Sinh VIP6',
+  'vip6-pride-ego-shadow': 'Bóng Tối Kiêu Ngạo & Cái Tôi VIP6',
+  'vip6-imposter-wounds': 'Vết Thương Kẻ Mạo Danh VIP6',
+  'vip6-freeze-response': 'Phản Ứng Đóng Băng VIP6',
+  'vip6-abandonment-wound': 'Vết Thương Bị Bỏ Rơi VIP6',
+  'vip6-shadow-envy': 'Bóng Tối của Sự Ghen Tị VIP6',
 };
 
 // Metadata interface for room listing

@@ -1,0 +1,83 @@
+{
+  "id": "vip6_shadow_envy",
+  "tier": "VIP6",
+  "title": {
+    "en": "The Shadow of Envy",
+    "vi": "Bóng Tối của Sự Ghen Tị"
+  },
+  "content": {
+    "en": "This room explores the shadow of envy—the quiet ache that appears when someone embodies what you fear you cannot become.",
+    "vi": "Phòng này khám phá bóng tối của sự ghen tị—nỗi nhói âm thầm xuất hiện khi ai đó thể hiện điều bạn sợ rằng mình không thể trở thành."
+  },
+  "entries": [
+    {
+      "slug": "the-pain-under-envy",
+      "keywords_en": ["envy", "pain", "comparison"],
+      "keywords_vi": ["ghen tị", "nỗi đau", "so sánh"],
+      "copy": {
+        "en": "Envy is not hatred—it is grief. When you envy someone, you are seeing a version of yourself that feels out of reach. Their success awakens your buried longings; their beauty triggers forgotten wounds; their progress highlights the places where you feel behind. The ache of envy is the ache of self-disconnection. Instead of punishing yourself, recognize the truth beneath it: envy points to the unlived life within you.",
+        "vi": "Ghen tị không phải thù ghét—mà là nỗi buồn. Khi bạn ghen tị ai đó, bạn đang nhìn thấy một phiên bản của chính mình mà bạn cảm giác không thể chạm tới. Thành công của họ đánh thức những khao khát bị chôn giấu; vẻ đẹp của họ chạm vào những vết thương cũ; tiến bộ của họ soi rọi những nơi bạn thấy mình tụt lại. Cơn đau của ghen tị là cơn đau của sự tách rời khỏi bản thân. Thay vì tự trách, hãy nhận ra sự thật bên dưới: ghen tị chỉ đến từ phần cuộc đời bạn chưa sống."
+      },
+      "tags": ["envy", "comparison"],
+      "audio": "vip6_se_1.mp3"
+    },
+    {
+      "slug": "envy-and-the-wound-of-worth",
+      "keywords_en": ["worth", "insecurity", "shadow"],
+      "keywords_vi": ["giá trị", "bất an", "bóng tối"],
+      "copy": {
+        "en": "Envy often arises from wounds of worth. When you believe others deserve abundance more than you, their joy feels threatening. You compare yourself relentlessly, measuring your value against their achievements. But envy does not mean you lack worth—it means you lack permission to claim your desires. The shadow is not jealousy itself, but the belief that you are undeserving of the life you imagine.",
+        "vi": "Ghen tị thường xuất phát từ vết thương về giá trị. Khi bạn tin rằng người khác xứng đáng với sự đủ đầy hơn mình, niềm vui của họ trở nên đe dọa. Bạn so sánh không ngừng, đo giá trị bản thân bằng thành tựu của người khác. Nhưng ghen tị không có nghĩa bạn thiếu giá trị—mà là bạn thiếu sự cho phép để theo đuổi điều mình muốn. Bóng tối không nằm trong sự ghen tị, mà nằm trong niềm tin rằng bạn không xứng đáng với cuộc sống bạn tưởng tượng."
+      },
+      "tags": ["worth", "insecurity"],
+      "audio": "vip6_se_2.mp3"
+    },
+    {
+      "slug": "envy-as-a-map-to-desire",
+      "keywords_en": ["desire", "direction", "awakening"],
+      "keywords_vi": ["khát khao", "định hướng", "thức tỉnh"],
+      "copy": {
+        "en": "Envy can be a map. It reveals what you secretly want but do not yet feel allowed to pursue. The people you envy hold the clues to your dormant aspirations. Instead of suppressing the feeling, follow it with curiosity. What quality, freedom, or possibility are you longing for? Envy shows you the door—not to mimic others, but to awaken the parts of you waiting to grow.",
+        "vi": "Ghen tị có thể là một tấm bản đồ. Nó cho thấy điều bạn thầm muốn nhưng chưa dám theo đuổi. Những người bạn ghen tị nắm giữ manh mối cho các khát vọng ngủ quên của bạn. Thay vì kìm nén cảm xúc, hãy theo dõi nó bằng sự tò mò. Bạn đang khao khát phẩm chất, sự tự do hay khả năng nào? Ghen tị chỉ ra cánh cửa—không phải để bạn sao chép người khác, mà để đánh thức những phần bên trong đang chờ lớn lên."
+      },
+      "tags": ["desire", "direction"],
+      "audio": "vip6_se_3.mp3"
+    },
+    {
+      "slug": "when-envy-turns-into-self-attack",
+      "keywords_en": ["shame", "self-attack", "shadow"],
+      "keywords_vi": ["xấu hổ", "tự công kích", "bóng tối"],
+      "copy": {
+        "en": "Envy often turns inward. Instead of seeing possibility, you attack yourself for not being enough. Shame floods you, convincing you that others’ achievements confirm your inadequacy. But envy is not proof of failure—it is proof of desire. When you feel threatened by someone’s light, it means you carry the same light within you but have not yet learned to trust it.",
+        "vi": "Ghen tị thường quay vào trong. Thay vì nhìn thấy khả năng, bạn tấn công chính mình vì cảm giác không đủ tốt. Sự xấu hổ tràn đến, thuyết phục bạn rằng thành tựu của người khác là bằng chứng cho sự kém cỏi của mình. Nhưng ghen tị không phải bằng chứng của thất bại—mà là bằng chứng của khát khao. Khi bạn thấy bị đe dọa bởi ánh sáng của ai đó, điều đó nghĩa là bạn cũng mang ánh sáng ấy trong mình nhưng chưa học cách tin vào nó."
+      },
+      "tags": ["shame", "self-attack"],
+      "audio": "vip6_se_4.mp3"
+    },
+    {
+      "slug": "transforming-envy-into-growth",
+      "keywords_en": ["growth", "healing", "transformation"],
+      "keywords_vi": ["trưởng thành", "chữa lành", "chuyển hóa"],
+      "copy": {
+        "en": "Healing envy means seeing it as guidance, not guilt. You approach the feeling with softness, allowing it to show you where you are hungry for more life. You stop comparing your timeline and begin building your own. You let others’ success expand your imagination instead of shrinking your self-worth. Transformation happens when envy no longer triggers shame but inspires movement. The force that once hurt you becomes the force that grows you.",
+        "vi": "Chữa lành ghen tị nghĩa là xem nó như sự hướng dẫn, không phải tội lỗi. Bạn đến với cảm xúc bằng sự mềm mại, cho phép nó chỉ ra nơi bạn đang khao khát cuộc sống nhiều hơn. Bạn ngừng so sánh hành trình của mình và bắt đầu xây dựng nó. Bạn để thành công của người khác mở rộng trí tưởng tượng thay vì thu nhỏ giá trị bản thân. Sự chuyển hóa xảy ra khi ghen tị không còn kích hoạt xấu hổ mà truyền cảm hứng cho hành động. Nguồn lực từng khiến bạn đau đớn trở thành nguồn lực giúp bạn trưởng thành."
+      },
+      "tags": ["growth", "healing"],
+      "audio": "vip6_se_5.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full sequence", "combined"],
+      "keywords_vi": ["tất cả", "chuỗi đầy đủ", "kết hợp"],
+      "copy": {
+        "en": "Envy is grief for a version of yourself you have not stepped into. It reveals longing, unmet desire, and wounds of worth. It turns inward as self-attack and outward as comparison, yet beneath it lies the map of who you could become. Healing envy means treating it as guidance, not guilt—letting others’ light remind you of your own. Envy is not your enemy. It is your awakening.",
+        "vi": "Ghen tị là nỗi buồn dành cho phiên bản của chính bạn mà bạn chưa chạm tới. Nó bộc lộ khát khao, ước muốn chưa sống và vết thương về giá trị. Nó quay vào thành tự công kích và hướng ra thành so sánh, nhưng bên dưới là tấm bản đồ của con người bạn có thể trở thành. Chữa lành ghen tị nghĩa là xem nó như sự dẫn đường—để ánh sáng của người khác nhắc bạn về ánh sáng trong chính mình. Ghen tị không phải kẻ thù. Nó là sự thức tỉnh."
+      },
+      "tags": ["all", "combined"],
+      "audio": "vip6_se_1.mp3 vip6_se_2.mp3 vip6_se_3.mp3 vip6_se_4.mp3 vip6_se_5.mp3"
+    }
+  ],
+  "meta": {
+    "entry_count": 6
+  }
+}
