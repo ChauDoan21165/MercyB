@@ -14,13 +14,14 @@ export type ParentRoute =
   | "/rooms-vip2"      // VIP2 tier rooms
   | "/rooms-vip3"      // VIP3 tier rooms
   | "/rooms-vip4"      // VIP4 tier rooms
+  | "/vip6"            // VIP6 tier rooms
   | "/sexuality-culture" // Sexuality sub-rooms parent
   | "/finance-calm";   // Finance sub-rooms parent
 
 /**
  * Room tier type
  */
-export type RoomTier = 'free' | 'vip1' | 'vip2' | 'vip3' | 'vip4';
+export type RoomTier = 'free' | 'vip1' | 'vip2' | 'vip3' | 'vip4' | 'vip6';
 
 /**
  * Validates if a room ID exists in the system
@@ -35,7 +36,7 @@ export function isValidRoomId(roomId: string | undefined): roomId is string {
  */
 export function getRoomTier(roomId: string): RoomTier | null {
   // Detect tier segment anywhere in the ID (supports -, _, . separators)
-  const match = roomId.match(/(?:^|[._-])(free|vip1|vip2|vip3|vip4)(?:$|[._-])/i);
+  const match = roomId.match(/(?:^|[._-])(free|vip1|vip2|vip3|vip4|vip6)(?:$|[._-])/i);
   return match ? (match[1].toLowerCase() as RoomTier) : null;
 }
 
@@ -48,7 +49,8 @@ export function tierToRoute(tier: RoomTier): ParentRoute {
     'vip1': "/rooms-vip1",
     'vip2': "/rooms-vip2",
     'vip3': "/rooms-vip3",
-    'vip4': "/rooms-vip4"
+    'vip4': "/rooms-vip4",
+    'vip6': "/vip6"
   };
   return tierRouteMap[tier];
 }

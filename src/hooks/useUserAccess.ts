@@ -14,6 +14,7 @@ export interface UserAccess {
   canAccessVIP3II: boolean;
   canAccessVIP4: boolean;
   canAccessVIP5: boolean;
+  canAccessVIP6: boolean;
   loading: boolean;
 }
 
@@ -29,6 +30,7 @@ export const useUserAccess = (): UserAccess => {
     canAccessVIP3II: false,
     canAccessVIP4: false,
     canAccessVIP5: false,
+    canAccessVIP6: false,
     loading: true,
   });
 
@@ -52,6 +54,7 @@ export const useUserAccess = (): UserAccess => {
           canAccessVIP3II: false,
           canAccessVIP4: false,
           canAccessVIP5: false,
+          canAccessVIP6: false,
           loading: false,
         });
         return;
@@ -74,7 +77,8 @@ export const useUserAccess = (): UserAccess => {
         .maybeSingle();
 
       const tierName = subscription?.subscription_tiers?.name?.toLowerCase() || 'free';
-      const tier = (tierName.includes('vip5') ? 'vip5' :
+      const tier = (tierName.includes('vip6') ? 'vip6' :
+                   tierName.includes('vip5') ? 'vip5' :
                    tierName.includes('vip4') ? 'vip4' :
                    tierName.includes('vip3 ii') || tierName.includes('vip3_ii') ? 'vip3_ii' :
                    tierName.includes('vip1') ? 'vip1' : 
@@ -85,13 +89,14 @@ export const useUserAccess = (): UserAccess => {
         isAdmin,
         isAuthenticated: true,
         isDemoMode: false,
-        tier: isAdmin ? 'vip5' : tier,
-        canAccessVIP1: isAdmin || tier === 'vip1' || tier === 'vip2' || tier === 'vip3' || tier === 'vip3_ii' || tier === 'vip4' || tier === 'vip5',
-        canAccessVIP2: isAdmin || tier === 'vip2' || tier === 'vip3' || tier === 'vip3_ii' || tier === 'vip4' || tier === 'vip5',
-        canAccessVIP3: isAdmin || tier === 'vip3' || tier === 'vip3_ii' || tier === 'vip4' || tier === 'vip5',
-        canAccessVIP3II: isAdmin || tier === 'vip3_ii' || tier === 'vip4' || tier === 'vip5',
-        canAccessVIP4: isAdmin || tier === 'vip4' || tier === 'vip5',
-        canAccessVIP5: isAdmin || tier === 'vip5',
+        tier: isAdmin ? 'vip6' : tier,
+        canAccessVIP1: isAdmin || tier === 'vip1' || tier === 'vip2' || tier === 'vip3' || tier === 'vip3_ii' || tier === 'vip4' || tier === 'vip5' || tier === 'vip6',
+        canAccessVIP2: isAdmin || tier === 'vip2' || tier === 'vip3' || tier === 'vip3_ii' || tier === 'vip4' || tier === 'vip5' || tier === 'vip6',
+        canAccessVIP3: isAdmin || tier === 'vip3' || tier === 'vip3_ii' || tier === 'vip4' || tier === 'vip5' || tier === 'vip6',
+        canAccessVIP3II: isAdmin || tier === 'vip3_ii' || tier === 'vip4' || tier === 'vip5' || tier === 'vip6',
+        canAccessVIP4: isAdmin || tier === 'vip4' || tier === 'vip5' || tier === 'vip6',
+        canAccessVIP5: isAdmin || tier === 'vip5' || tier === 'vip6',
+        canAccessVIP6: isAdmin || tier === 'vip6',
         loading: false,
       });
     } catch (error) {
@@ -107,6 +112,7 @@ export const useUserAccess = (): UserAccess => {
         canAccessVIP3II: false,
         canAccessVIP4: false,
         canAccessVIP5: false,
+        canAccessVIP6: false,
         loading: false,
       });
     }
