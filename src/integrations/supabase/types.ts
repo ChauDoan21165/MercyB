@@ -14,6 +14,108 @@ export type Database = {
   }
   public: {
     Tables: {
+      access_code_redemptions: {
+        Row: {
+          code_id: string
+          id: string
+          redeemed_at: string
+          subscription_id: string | null
+          transaction_id: string | null
+          user_id: string
+        }
+        Insert: {
+          code_id: string
+          id?: string
+          redeemed_at?: string
+          subscription_id?: string | null
+          transaction_id?: string | null
+          user_id: string
+        }
+        Update: {
+          code_id?: string
+          id?: string
+          redeemed_at?: string
+          subscription_id?: string | null
+          transaction_id?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "access_code_redemptions_code_id_fkey"
+            columns: ["code_id"]
+            isOneToOne: false
+            referencedRelation: "access_codes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "access_code_redemptions_subscription_id_fkey"
+            columns: ["subscription_id"]
+            isOneToOne: false
+            referencedRelation: "user_subscriptions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "access_code_redemptions_transaction_id_fkey"
+            columns: ["transaction_id"]
+            isOneToOne: false
+            referencedRelation: "payment_transactions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      access_codes: {
+        Row: {
+          code: string
+          created_at: string
+          created_by: string
+          days: number
+          expires_at: string | null
+          id: string
+          is_active: boolean
+          max_uses: number
+          notes: string | null
+          tier_id: string
+          updated_at: string
+          used_count: number
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          created_by: string
+          days: number
+          expires_at?: string | null
+          id?: string
+          is_active?: boolean
+          max_uses?: number
+          notes?: string | null
+          tier_id: string
+          updated_at?: string
+          used_count?: number
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          created_by?: string
+          days?: number
+          expires_at?: string | null
+          id?: string
+          is_active?: boolean
+          max_uses?: number
+          notes?: string | null
+          tier_id?: string
+          updated_at?: string
+          used_count?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "access_codes_tier_id_fkey"
+            columns: ["tier_id"]
+            isOneToOne: false
+            referencedRelation: "subscription_tiers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       admin_notification_preferences: {
         Row: {
           admin_user_id: string
@@ -271,6 +373,59 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "payment_proof_submissions_tier_id_fkey"
+            columns: ["tier_id"]
+            isOneToOne: false
+            referencedRelation: "subscription_tiers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      payment_transactions: {
+        Row: {
+          amount: number
+          created_at: string
+          external_reference: string | null
+          id: string
+          metadata: Json | null
+          payment_method: string
+          period_days: number
+          status: string
+          tier_id: string | null
+          transaction_type: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          external_reference?: string | null
+          id?: string
+          metadata?: Json | null
+          payment_method: string
+          period_days?: number
+          status?: string
+          tier_id?: string | null
+          transaction_type: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          external_reference?: string | null
+          id?: string
+          metadata?: Json | null
+          payment_method?: string
+          period_days?: number
+          status?: string
+          tier_id?: string | null
+          transaction_type?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "payment_transactions_tier_id_fkey"
             columns: ["tier_id"]
             isOneToOne: false
             referencedRelation: "subscription_tiers"
