@@ -1,6 +1,7 @@
 import { useEffect, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
+import { logSecurityEvent } from '@/utils/securityUtils';
 
 type DeviceType = 'desktop' | 'mobile';
 
@@ -66,6 +67,24 @@ export const useSessionManagement = () => {
     try {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) return false;
+
+      // Check if user is blocked
+      const { data: securityStatus } = await supabase
+        .from('user_security_status')
+        .select('is_blocked, blocked_reason')
+        .eq('user_id', userId)
+        .single();
+
+      if (securityStatus?.is_blocked) {
+        toast({
+          title: 'Account Blocked',
+          description: securityStatus.blocked_reason || 'Your account has been blocked.',
+          variant: 'destructive',
+        });
+        await supabase.auth.signOut();
+        await logSecurityEvent('blocked_user_login_attempt', 'high', { userId });
+        return false;
+      }
 
       const deviceType = detectDeviceType();
       

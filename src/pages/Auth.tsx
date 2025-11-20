@@ -8,6 +8,12 @@ import { Card } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { toast } from '@/hooks/use-toast';
 import { useSessionManagement } from '@/hooks/useSessionManagement';
+import { 
+  trackLoginAttempt, 
+  checkUserBlocked, 
+  checkRateLimit, 
+  logSecurityEvent 
+} from '@/utils/securityUtils';
 
 import { Eye, EyeOff } from 'lucide-react';
 
@@ -72,6 +78,34 @@ const Auth = () => {
     setLoading(true);
 
     try {
+      // Check if user is blocked
+      const isBlocked = await checkUserBlocked(email);
+      if (isBlocked) {
+        await trackLoginAttempt(email, false, 'account_blocked');
+        await logSecurityEvent('blocked_user_login_attempt', 'high', { email });
+        toast({
+          title: 'Account Blocked / Tài Khoản Bị Khóa',
+          description: 'Your account has been blocked. Contact support. / Tài khoản của bạn đã bị khóa.',
+          variant: 'destructive',
+        });
+        setLoading(false);
+        return;
+      }
+
+      // Check rate limit
+      const isRateLimited = await checkRateLimit(email);
+      if (isRateLimited) {
+        await trackLoginAttempt(email, false, 'rate_limit_exceeded');
+        await logSecurityEvent('rate_limit_exceeded', 'high', { email });
+        toast({
+          title: 'Too Many Attempts / Quá Nhiều Lần Thử',
+          description: 'Please wait 15 minutes before trying again. / Vui lòng đợi 15 phút.',
+          variant: 'destructive',
+        });
+        setLoading(false);
+        return;
+      }
+
       // Save email for next time
       localStorage.setItem('mercyblade_email', email);
       
@@ -80,7 +114,21 @@ const Auth = () => {
         password: signInPassword,
       });
 
-      if (error) throw error;
+      if (error) {
+        await trackLoginAttempt(email, false, error.message);
+        await logSecurityEvent('login_failed', 'medium', { 
+          email, 
+          error: error.message 
+        });
+        throw error;
+      }
+
+      // Track successful login
+      await trackLoginAttempt(email, true);
+      await logSecurityEvent('login_success', 'low', { 
+        email,
+        userId: data.user?.id 
+      });
 
       // Register session to enforce device limit
       if (data.session && data.user) {

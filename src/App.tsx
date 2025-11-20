@@ -53,6 +53,7 @@ import AdminFeedbackAnalytics from "./pages/AdminFeedbackAnalytics";
 import AdminPayments from "./pages/AdminPayments";
 import AdminUsers from "./pages/AdminUsers";
 import AdminUserDetail from "./pages/AdminUserDetail";
+import AdminSecurity from "./pages/AdminSecurity";
 
 const queryClient = new QueryClient();
 
@@ -109,6 +110,7 @@ const App = () => (
           <Route path="/admin/user-roles" element={<AdminUserRoles />} />
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/users/:userId" element={<AdminUserDetail />} />
+          <Route path="/admin/security" element={<AdminSecurity />} />
           <Route path="/admin/code-editor" element={<AdminCodeEditor />} />
           <Route path="/admin/payments" element={<AdminPayments />} />
           <Route path="/audio-test" element={<AudioTestPage />} />

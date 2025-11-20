@@ -29,6 +29,7 @@ const adminItems = [
   { title: "Room Management", url: "/admin/rooms", icon: LayoutDashboard },
   { title: "Code Editor", url: "/admin/code-editor", icon: Code },
   { title: "Users", url: "/admin/users", icon: Users },
+  { title: "Security", url: "/admin/security", icon: Shield },
   { title: "Statistics", url: "/admin/stats", icon: TrendingUp },
   { title: "VIP Requests", url: "/vip-requests", icon: MessageSquare },
   { title: "Payment Verification", url: "/admin/payments", icon: DollarSign },

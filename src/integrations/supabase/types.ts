@@ -208,6 +208,36 @@ export type Database = {
         }
         Relationships: []
       }
+      login_attempts: {
+        Row: {
+          created_at: string
+          email: string
+          failure_reason: string | null
+          id: string
+          ip_address: string | null
+          success: boolean
+          user_agent: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          failure_reason?: string | null
+          id?: string
+          ip_address?: string | null
+          success?: boolean
+          user_agent?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          failure_reason?: string | null
+          id?: string
+          ip_address?: string | null
+          success?: boolean
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
       matchmaking_preferences: {
         Row: {
           availability: Json | null
@@ -1205,6 +1235,51 @@ export type Database = {
         }
         Relationships: []
       }
+      user_security_status: {
+        Row: {
+          blocked_at: string | null
+          blocked_by: string | null
+          blocked_reason: string | null
+          created_at: string
+          failed_login_count: number
+          id: string
+          is_blocked: boolean
+          last_failed_login: string | null
+          last_suspicious_activity: string | null
+          suspicious_activity_count: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          blocked_at?: string | null
+          blocked_by?: string | null
+          blocked_reason?: string | null
+          created_at?: string
+          failed_login_count?: number
+          id?: string
+          is_blocked?: boolean
+          last_failed_login?: string | null
+          last_suspicious_activity?: string | null
+          suspicious_activity_count?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          blocked_at?: string | null
+          blocked_by?: string | null
+          blocked_reason?: string | null
+          created_at?: string
+          failed_login_count?: number
+          id?: string
+          is_blocked?: boolean
+          last_failed_login?: string | null
+          last_suspicious_activity?: string | null
+          suspicious_activity_count?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_sessions: {
         Row: {
           created_at: string
@@ -1400,6 +1475,15 @@ export type Database = {
         }
         Returns: undefined
       }
+      check_rate_limit: {
+        Args: {
+          check_email: string
+          check_ip: string
+          max_attempts?: number
+          time_window_minutes?: number
+        }
+        Returns: boolean
+      }
       check_usage_limit: {
         Args: { limit_type: string; user_uuid: string }
         Returns: boolean
@@ -1421,6 +1505,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      is_user_blocked: { Args: { user_email: string }; Returns: boolean }
       log_security_event: {
         Args: {
           _event_type: string
