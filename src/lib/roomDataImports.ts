@@ -1237,5 +1237,12 @@ export const roomDataMap: Record<string, RoomData> = {
     "nameVi": "Mô Thức Kiểm Soát",
     "tier": "vip6",
     "hasData": true
+  },
+  "vip6-suppressed-rage": {
+    "id": "vip6-suppressed-rage",
+    "nameEn": "Anger & Suppressed Rage",
+    "nameVi": "Giận Dữ & Cơn Thịnh Nộ Bị Kìm Nén",
+    "tier": "vip6",
+    "hasData": true
   }
 };
