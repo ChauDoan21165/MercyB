@@ -1257,6 +1257,13 @@ export const roomDataMap: Record<string, RoomData> = {
     "nameEn": "Avoidant Behaviors",
     "nameVi": "Hành Vi Né Tránh",
     "tier": "vip6",
+      "hasData": true
+    },
+  "vip6-emotional-dependency": {
+    "id": "vip6-emotional-dependency",
+    "nameEn": "Clinging & Emotional Dependency",
+    "nameVi": "Bám Víu & Phụ Thuộc Cảm Xúc",
+    "tier": "vip6",
     "hasData": true
   }
 };
