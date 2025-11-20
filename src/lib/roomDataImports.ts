@@ -1300,5 +1300,19 @@ export const roomDataMap: Record<string, RoomData> = {
     "nameVi": "Bóng Tối của Kiêu Hãnh & Bản Ngã",
     "tier": "vip6",
     "hasData": true
+  },
+  "vip6-shadow-perfectionism": {
+    "id": "vip6-shadow-perfectionism",
+    "nameEn": "Shadow of Perfectionism",
+    "nameVi": "Bóng Tối của Chủ Nghĩa Hoàn Hảo",
+    "tier": "vip6",
+    "hasData": true
+  },
+  "vip6-not-enough-wound": {
+    "id": "vip6-not-enough-wound",
+    "nameEn": "The Wound of Feeling 'Not Enough'",
+    "nameVi": "Vết Thương Cảm Giác 'Không Đủ Tốt'",
+    "tier": "vip6",
+    "hasData": true
   }
 };
