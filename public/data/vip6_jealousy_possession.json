@@ -1,0 +1,83 @@
+{
+  "id": "vip6_jealousy_possession",
+  "tier": "VIP6",
+  "title": {
+    "en": "Jealousy & Possession",
+    "vi": "Ghen Tuông & Chiếm Hữu"
+  },
+  "content": {
+    "en": "This room explores jealousy as a shadow emotion—how fear, insecurity, and old wounds shape your reactions to love, attention, and imagined threats.",
+    "vi": "Phòng này khám phá ghen tuông như một cảm xúc bóng tối—cách nỗi sợ, bất an và vết thương cũ định hình phản ứng của bạn với tình yêu, sự chú ý và những mối đe dọa tưởng tượng."
+  },
+  "entries": [
+    {
+      "slug": "the-root-of-jealousy",
+      "keywords_en": ["jealousy", "fear", "insecurity"],
+      "keywords_vi": ["ghen tuông", "nỗi sợ", "bất an"],
+      "copy": {
+        "en": "Jealousy is rarely about the present moment. It is a shadow emotion shaped by old wounds—moments when you felt replaced, overlooked, or not chosen. When someone you love gives attention elsewhere, your nervous system reactivates these memories, interpreting them as a threat. Jealousy becomes a cry for reassurance, not control. It wants to know: “Am I safe? Am I still chosen?” Understanding this helps you respond with compassion rather than shame. Jealousy does not make you weak; it reveals where tenderness is needed.",
+        "vi": "Ghen tuông hiếm khi liên quan đến khoảnh khắc hiện tại. Đó là cảm xúc bóng tối được hình thành từ vết thương cũ—những lúc bạn cảm thấy bị thay thế, bị bỏ qua hoặc không được chọn. Khi người bạn yêu dành sự chú ý cho nơi khác, hệ thần kinh của bạn kích hoạt lại ký ức ấy và coi đó là mối đe dọa. Ghen tuông trở thành lời kêu gọi được trấn an, không phải kiểm soát. Nó muốn biết: “Tôi có an toàn không? Tôi còn được chọn không?” Hiểu điều này giúp bạn phản ứng bằng sự cảm thông thay vì xấu hổ. Ghen tuông không làm bạn yếu đuối; nó cho thấy nơi bạn cần được chữa lành."
+      },
+      "tags": ["jealousy", "fear"],
+      "audio": "vip6_jp_1.mp3"
+    },
+    {
+      "slug": "imagined-threats",
+      "keywords_en": ["fear", "projection", "anxiety"],
+      "keywords_vi": ["nỗi sợ", "chiếu lên", "lo âu"],
+      "copy": {
+        "en": "Jealousy often arises from imagined threats rather than real ones. The mind fills gaps with worst-case scenarios, projecting past betrayals onto present situations. A simple delay, a distracted tone, or a passing comment becomes a symbol of impending loss. These reactions are not irrational—they are protective. Your shadow expects pain and tries to prepare for it. But imagined threats drain your energy and distort your perception. Healing means pausing before assuming, questioning internal narratives, and allowing evidence—not fear—to guide your understanding.",
+        "vi": "Ghen tuông thường đến từ mối đe dọa tưởng tượng hơn là điều thật sự. Tâm trí lấp đầy khoảng trống bằng kịch bản tệ nhất, chiếu nỗi đau quá khứ lên tình huống hiện tại. Một chút trễ, giọng nói lơ đãng hay câu nói vu vơ bỗng trở thành dấu hiệu của mất mát sắp tới. Những phản ứng này không phải vô lý—chúng là cơ chế bảo vệ. Bóng tối của bạn mong đợi nỗi đau và cố chuẩn bị trước. Nhưng những mối đe dọa tưởng tượng lại rút cạn năng lượng và bóp méo cách bạn nhìn nhận tình huống. Chữa lành nghĩa là dừng lại trước khi giả định, chất vấn câu chuyện trong đầu và để bằng chứng thực—không phải nỗi sợ—dẫn đường."
+      },
+      "tags": ["projection", "fear"],
+      "audio": "vip6_jp_2.mp3"
+    },
+    {
+      "slug": "the-shadow-of-possession",
+      "keywords_en": ["possession", "control", "attachment"],
+      "keywords_vi": ["chiếm hữu", "kiểm soát", "gắn bó"],
+      "copy": {
+        "en": "Possessiveness is not about owning another person—it is about trying to protect the bond you fear losing. When affection feels scarce or unstable, you may cling, monitor, or restrict, hoping to secure what matters. But possession suffocates love. It turns connection into captivity. The shadow of possession comes from a deep longing to feel irreplaceable. Healing requires internal safety: learning that your worth is not dependent on someone’s constant attention and that love can stay without being controlled.",
+        "vi": "Tính chiếm hữu không phải mong muốn sở hữu người khác—mà là cố bảo vệ mối quan hệ bạn sợ mất. Khi sự yêu thương cảm thấy khan hiếm hoặc bấp bênh, bạn có thể bám víu, theo dõi hoặc giới hạn người kia nhằm giữ chặt điều quan trọng. Nhưng sự chiếm hữu lại bóp nghẹt tình yêu. Nó biến kết nối thành sự giam cầm. Bóng tối của tính chiếm hữu bắt nguồn từ khao khát được xem là không thể thay thế. Chữa lành yêu cầu cảm giác an toàn bên trong: hiểu rằng giá trị của bạn không phụ thuộc vào sự chú ý liên tục của ai đó và tình yêu có thể ở lại mà không cần bị kiểm soát."
+      },
+      "tags": ["possession", "control"],
+      "audio": "vip6_jp_3.mp3"
+    },
+    {
+      "slug": "when-jealousy-speaks",
+      "keywords_en": ["communication", "needs", "emotions"],
+      "keywords_vi": ["giao tiếp", "nhu cầu", "cảm xúc"],
+      "copy": {
+        "en": "Jealousy becomes destructive only when ignored or disguised. When you hide it, it transforms into anger, withdrawal, sarcasm, or excessive demands. But jealousy has a voice. It says, “I need reassurance,” or “I fear being forgotten,” or “I want to feel valued.” Expressing jealousy with honesty—without accusation—turns conflict into connection. You move from blame to vulnerability. And vulnerability invites compassion instead of defensiveness.",
+        "vi": "Ghen tuông chỉ trở nên phá hoại khi bị phớt lờ hoặc che giấu. Khi bạn giấu nó, nó biến thành giận dữ, rút lui, mỉa mai hoặc đòi hỏi quá mức. Nhưng ghen tuông có tiếng nói riêng. Nó nói: “Tôi cần được trấn an,” hoặc “Tôi sợ bị lãng quên,” hoặc “Tôi muốn cảm thấy mình quan trọng.” Bày tỏ ghen tuông một cách chân thật—không buộc tội—biến xung đột thành kết nối. Bạn chuyển từ trách móc sang dễ tổn thương. Và sự dễ tổn thương mời gọi lòng cảm thông thay vì phòng thủ."
+      },
+      "tags": ["communication", "healing"],
+      "audio": "vip6_jp_4.mp3"
+    },
+    {
+      "slug": "freedom-in-love",
+      "keywords_en": ["freedom", "trust", "growth"],
+      "keywords_vi": ["tự do", "niềm tin", "trưởng thành"],
+      "copy": {
+        "en": "Love thrives in freedom, not confinement. When you release the need to control where your partner looks, speaks, or spends time, you allow love to mature. Freedom does not threaten connection; it strengthens it. Trust becomes the foundation rather than fear. When both partners feel free to be themselves without punishment, love grows deeper, steadier, and more rooted. Freedom is not the absence of commitment—it is the atmosphere that makes commitment meaningful.",
+        "vi": "Tình yêu lớn mạnh trong tự do, không phải giam cầm. Khi bạn buông nhu cầu kiểm soát người yêu nhìn ai, nói gì hoặc dành thời gian cho ai, bạn cho phép tình yêu trưởng thành. Tự do không đe dọa kết nối; nó củng cố nó. Niềm tin trở thành nền tảng thay vì nỗi sợ. Khi cả hai cảm thấy mình được là chính mình mà không bị trừng phạt, tình yêu trở nên sâu sắc, ổn định và có rễ vững chắc hơn. Tự do không phải thiếu cam kết—mà là bầu không khí khiến cam kết có ý nghĩa."
+      },
+      "tags": ["trust", "freedom"],
+      "audio": "vip6_jp_5.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full sequence", "combined"],
+      "keywords_vi": ["tất cả", "chuỗi đầy đủ", "kết hợp"],
+      "copy": {
+        "en": "Jealousy rises from old wounds, imagined threats, and fear of losing what feels precious. It is not irrational—it is protective. Possessiveness forms when love feels scarce, turning connection into captivity. The shadow of jealousy speaks through insecurity, projection, and fear of replacement, yet at its core it is a longing to feel chosen and safe. Healing begins by naming what jealousy truly asks for: reassurance, presence, honesty, and trust. Love grows not through control but through freedom, vulnerability, and mutual security. When jealousy is met with understanding rather than shame, it becomes a doorway into deeper connection instead of conflict.",
+        "vi": "Ghen tuông trỗi dậy từ vết thương cũ, mối đe dọa tưởng tượng và nỗi sợ mất điều quý giá. Nó không vô lý—nó mang tính bảo vệ. Tính chiếm hữu hình thành khi tình yêu cảm thấy khan hiếm, biến kết nối thành sự giam cầm. Bóng tối của ghen tuông cất lời qua sự bất an, chiếu lên và nỗi sợ bị thay thế, nhưng sâu trong đó là khao khát được chọn và được an toàn. Chữa lành bắt đầu bằng việc gọi tên điều ghen tuông thật sự đòi hỏi: sự trấn an, hiện diện, chân thật và niềm tin. Tình yêu lớn lên không phải nhờ kiểm soát mà nhờ tự do, dễ tổn thương và sự an toàn chung. Khi ghen tuông được đón nhận bằng thấu hiểu thay vì xấu hổ, nó trở thành cánh cửa dẫn đến kết nối sâu sắc hơn thay vì xung đột."
+      },
+      "tags": ["all", "combined"],
+      "audio": "vip6_jp_1.mp3 vip6_jp_2.mp3 vip6_jp_3.mp3 vip6_jp_4.mp3 vip6_jp_5.mp3"
+    }
+  ],
+  "meta": {
+    "entry_count": 6
+  }
+}
