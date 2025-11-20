@@ -109,8 +109,8 @@ export const AnimatedTierBadge = ({
   showIcon = true,
   className 
 }: AnimatedTierBadgeProps) => {
-  const config = tierConfig[tier] || tierConfig.free;
-  const Icon = config.icon;
+  const config = tierConfig[tier] ?? tierConfig.free;
+  const Icon = (config?.icon ?? Crown);
   const isVIP = tier !== "free" && tier !== "demo";
 
   return (
