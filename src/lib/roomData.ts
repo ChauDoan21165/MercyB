@@ -160,6 +160,7 @@ const VIETNAMESE_NAME_FALLBACKS: Record<string, string> = {
   // VIP6 Rooms
   'vip6-pride-ego-shadow': 'Bóng Tối Kiêu Ngạo & Cái Tôi VIP6',
   'vip6-martyr-complex': 'Phức Cảm Hy Sinh VIP6',
+  'vip6-shadow-perfectionism': 'Bóng Tối của Chủ Nghĩa Hoàn Hảo VIP6',
 };
 
 // Metadata interface for room listing
