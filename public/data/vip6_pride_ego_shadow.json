@@ -1,0 +1,83 @@
+{
+  "id": "vip6_pride_ego_shadow",
+  "tier": "VIP6",
+  "title": {
+    "en": "Shadow of Pride & Ego",
+    "vi": "Bóng Tối của Kiêu Hãnh & Bản Ngã"
+  },
+  "content": {
+    "en": "This room explores the shadow aspects of pride and ego—the defenses that protect your vulnerability, the walls that keep you distant, and the identity you build to avoid being seen too deeply.",
+    "vi": "Phòng này khám phá bóng tối của kiêu hãnh và bản ngã—những cơ chế bảo vệ sự dễ tổn thương, những bức tường giữ bạn xa cách và bản dạng bạn xây dựng để tránh bị nhìn thấu."
+  },
+  "entries": [
+    {
+      "slug": "ego-as-a-shield",
+      "keywords_en": ["ego", "defense", "shield"],
+      "keywords_vi": ["bản ngã", "phòng vệ", "lá chắn"],
+      "copy": {
+        "en": "The ego often forms as a shield to protect your most tender parts. When vulnerability once brought pain, rejection, or humiliation, you learned to armor yourself with confidence, certainty, or superiority. This is not arrogance—it is self-protection. Pride becomes a way to stay safe by staying untouchable. Yet the more you defend, the more distant you become from connection. Ego shields you from harm, but also from intimacy. Beneath every inflated ego lies a wounded self longing to be seen without fear.",
+        "vi": "Bản ngã thường được hình thành như một chiếc lá chắn bảo vệ những phần mong manh nhất của bạn. Khi sự dễ tổn thương từng mang đến đau đớn, bị từ chối hoặc nhục nhã, bạn học cách mặc giáp bằng sự tự tin, chắc chắn hoặc ưu thế. Đây không phải kiêu căng—mà là tự bảo vệ. Kiêu hãnh trở thành cách giữ an toàn bằng cách không để ai chạm vào. Nhưng càng phòng vệ, bạn càng xa cách khỏi kết nối. Bản ngã bảo vệ bạn khỏi tổn thương nhưng cũng ngăn cản sự thân mật. Đằng sau mỗi bản ngã phóng đại là một phần bị tổn thương khao khát được nhìn thấy mà không sợ hãi."
+      },
+      "tags": ["ego", "defense"],
+      "audio": "vip6_pe_1.mp3"
+    },
+    {
+      "slug": "the-fear-of-being-wrong",
+      "keywords_en": ["fear", "mistakes", "identity"],
+      "keywords_vi": ["nỗi sợ", "sai lầm", "bản sắc"],
+      "copy": {
+        "en": "At the core of pride is the fear of being wrong. Admitting mistakes feels like a collapse of identity—proof of inadequacy, weakness, or failure. You defend your opinions fiercely not out of superiority, but out of fear that being wrong makes you unworthy. This fear develops in environments where mistakes were punished or where worth depended on performance. The ego protects you by insisting you must always be right. But growth requires the humility to evolve, not the pride to freeze.",
+        "vi": "Ở trung tâm của kiêu hãnh là nỗi sợ sai lầm. Thừa nhận sai khiến bạn cảm giác như sụp đổ bản sắc—là bằng chứng của sự kém cỏi, yếu đuối hoặc thất bại. Bạn bảo vệ quan điểm dữ dội không phải vì ưu thế mà vì sợ rằng sai lầm sẽ khiến bạn không xứng đáng. Nỗi sợ này phát triển trong môi trường nơi sai sót bị trừng phạt hoặc giá trị phụ thuộc vào thành tích. Bản ngã bảo vệ bạn bằng cách khẳng định rằng bạn phải luôn đúng. Nhưng trưởng thành đòi hỏi khiêm nhường để tiến hóa, không phải kiêu hãnh để đứng yên."
+      },
+      "tags": ["fear", "identity"],
+      "audio": "vip6_pe_2.mp3"
+    },
+    {
+      "slug": "the-need-to-appear-strong",
+      "keywords_en": ["strength", "image", "vulnerability"],
+      "keywords_vi": ["mạnh mẽ", "hình ảnh", "dễ tổn thương"],
+      "copy": {
+        "en": "The shadow of pride often shows up as the need to appear strong. You hide your hurt, minimize your struggles, and push through pain because softness feels dangerous. You fear that showing vulnerability will make others lose respect, power, or trust in you. But the persona of strength becomes exhausting—it requires constant control and emotional suppression. True strength is not invulnerability; it is the courage to be seen honestly. A heart that bends is stronger than one that never moves.",
+        "vi": "Bóng tối của kiêu hãnh thường xuất hiện dưới dạng nhu cầu tỏ ra mạnh mẽ. Bạn giấu nỗi đau, thu nhỏ khó khăn và tiếp tục chịu đựng vì sự mềm yếu từng cảm thấy nguy hiểm. Bạn sợ rằng sự dễ tổn thương sẽ khiến người khác mất tôn trọng, quyền lực hoặc niềm tin vào bạn. Nhưng hình ảnh mạnh mẽ đó rất mệt mỏi—nó đòi hỏi kiểm soát liên tục và kìm nén cảm xúc. Sức mạnh thật không phải không thể bị tổn thương; mà là dũng khí để được nhìn thấy một cách trung thực. Một trái tim biết uốn mình mạnh mẽ hơn trái tim cố đứng im."
+      },
+      "tags": ["strength", "vulnerability"],
+      "audio": "vip6_pe_3.mp3"
+    },
+    {
+      "slug": "when-ego-blocks-connection",
+      "keywords_en": ["connection", "distance", "shadow"],
+      "keywords_vi": ["kết nối", "khoảng cách", "bóng tối"],
+      "copy": {
+        "en": "Ego creates distance. You avoid admitting fault, soften truths, or hide emotions because you fear being diminished. But these walls prevent closeness. You become difficult to reach, difficult to understand, and difficult to love deeply. People may admire you, but they cannot feel you. Ego promises protection but delivers isolation. The shadow here is not arrogance—it is loneliness born from self-defense.",
+        "vi": "Bản ngã tạo ra khoảng cách. Bạn tránh thừa nhận lỗi, làm nhẹ sự thật hoặc giấu cảm xúc vì sợ bị xem thường. Nhưng những bức tường đó cản trở sự gần gũi. Bạn trở nên khó tiếp cận, khó hiểu và khó được yêu sâu sắc. Người khác có thể ngưỡng mộ bạn, nhưng họ không thể cảm nhận bạn. Bản ngã hứa bảo vệ nhưng lại mang đến cô lập. Bóng tối ở đây không phải kiêu căng—mà là nỗi cô đơn sinh ra từ sự phòng vệ."
+      },
+      "tags": ["connection", "distance"],
+      "audio": "vip6_pe_4.mp3"
+    },
+    {
+      "slug": "humility-as-integration",
+      "keywords_en": ["humility", "integration", "healing"],
+      "keywords_vi": ["khiêm nhường", "tích hợp", "chữa lành"],
+      "copy": {
+        "en": "Healing the shadow of pride requires humility—the willingness to be human instead of heroic. Humility is not weakness; it is spaciousness. It allows you to make mistakes, admit faults, receive support, and connect with others authentically. Integration happens when you no longer need the armor of superiority or the walls of emotional distance. As the ego softens, your true self emerges—open, grounded, and unafraid of being seen.",
+        "vi": "Chữa lành bóng tối của kiêu hãnh đòi hỏi sự khiêm nhường—sự sẵn lòng làm con người chứ không phải anh hùng. Khiêm nhường không phải yếu đuối; mà là sự rộng mở. Nó cho phép bạn sai lầm, thừa nhận thiếu sót, đón nhận hỗ trợ và kết nối chân thật với người khác. Sự tích hợp xảy ra khi bạn không còn cần lớp giáp ưu thế hay bức tường khoảng cách cảm xúc. Khi bản ngã mềm lại, con người thật của bạn xuất hiện—rõ ràng, vững vàng và không sợ bị nhìn thấy."
+      },
+      "tags": ["humility", "healing"],
+      "audio": "vip6_pe_5.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full sequence", "combined"],
+      "keywords_vi": ["tất cả", "chuỗi đầy đủ", "kết hợp"],
+      "copy": {
+        "en": "The shadow of pride forms as armor to protect your vulnerability. You fear being wrong, hide softness, and cling to strength to stay safe. Ego distances you from intimacy, connection, and your truest self. But pride does not make you powerful—it makes you lonely. Healing requires humility, openness, and the willingness to be human. When the armor softens, connection returns, and the self beneath the ego finally breathes.",
+        "vi": "Bóng tối của kiêu hãnh hình thành như bộ giáp bảo vệ sự dễ tổn thương. Bạn sợ sai lầm, giấu sự mềm yếu và bám vào sức mạnh để giữ an toàn. Bản ngã tạo khoảng cách với sự thân mật, kết nối và con người thật của bạn. Nhưng kiêu hãnh không khiến bạn mạnh—mà khiến bạn cô đơn. Chữa lành đòi hỏi sự khiêm nhường, mở lòng và sẵn sàng làm con người. Khi lớp giáp mềm lại, kết nối trở về và bản thể dưới bản ngã cuối cùng được thở."
+      },
+      "tags": ["all", "combined"],
+      "audio": "vip6_pe_1.mp3 vip6_pe_2.mp3 vip6_pe_3.mp3 vip6_pe_4.mp3 vip6_pe_5.mp3"
+    }
+  ],
+  "meta": {
+    "entry_count": 6
+  }
+}
