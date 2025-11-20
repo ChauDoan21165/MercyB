@@ -1279,5 +1279,12 @@ export const roomDataMap: Record<string, RoomData> = {
     "nameVi": "Bóng Tối Chủ Nghĩa Hoàn Hảo",
     "tier": "vip6",
     "hasData": true
+  },
+  "vip6-people-pleasing": {
+    "id": "vip6-people-pleasing",
+    "nameEn": "People-Pleasing Patterns",
+    "nameVi": "Mô Thức Làm Hài Lòng Người Khác",
+    "tier": "vip6",
+    "hasData": true
   }
 };
