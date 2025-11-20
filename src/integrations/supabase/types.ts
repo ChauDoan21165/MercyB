@@ -70,6 +70,7 @@ export type Database = {
           created_by: string
           days: number
           expires_at: string | null
+          for_user_id: string | null
           id: string
           is_active: boolean
           max_uses: number
@@ -84,6 +85,7 @@ export type Database = {
           created_by: string
           days: number
           expires_at?: string | null
+          for_user_id?: string | null
           id?: string
           is_active?: boolean
           max_uses?: number
@@ -98,6 +100,7 @@ export type Database = {
           created_by?: string
           days?: number
           expires_at?: string | null
+          for_user_id?: string | null
           id?: string
           is_active?: boolean
           max_uses?: number
@@ -537,6 +540,7 @@ export type Database = {
           email: string | null
           full_name: string | null
           id: string
+          phone: string | null
           updated_at: string | null
           username: string | null
         }
@@ -545,6 +549,7 @@ export type Database = {
           email?: string | null
           full_name?: string | null
           id: string
+          phone?: string | null
           updated_at?: string | null
           username?: string | null
         }
@@ -553,6 +558,7 @@ export type Database = {
           email?: string | null
           full_name?: string | null
           id?: string
+          phone?: string | null
           updated_at?: string | null
           username?: string | null
         }
@@ -1053,6 +1059,33 @@ export type Database = {
           severity_level?: number
           user_id?: string
           violation_type?: string
+        }
+        Relationships: []
+      }
+      user_notes: {
+        Row: {
+          admin_id: string
+          created_at: string
+          id: string
+          note: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          admin_id: string
+          created_at?: string
+          id?: string
+          note: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          admin_id?: string
+          created_at?: string
+          id?: string
+          note?: string
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
