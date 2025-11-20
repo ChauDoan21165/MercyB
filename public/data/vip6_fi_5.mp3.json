@@ -1,0 +1,83 @@
+{
+  "id": "vip6_fear_abandonment",
+  "tier": "VIP6",
+  "title": {
+    "en": "Fear of Abandonment",
+    "vi": "Nỗi Sợ Bị Bỏ Rơi"
+  },
+  "content": {
+    "en": "This room explores the deep fear of being left, forgotten, or replaced—the wound that shapes attachment, trust, and the longing to belong.",
+    "vi": "Phòng này khám phá nỗi sợ bị bỏ rơi, bị quên lãng hay bị thay thế—vết thương định hình sự gắn bó, niềm tin và khát khao thuộc về."
+  },
+  "entries": [
+    {
+      "slug": "the-original-loneliness",
+      "keywords_en": ["abandonment", "loneliness", "origin wound"],
+      "keywords_vi": ["bỏ rơi", "cô đơn", "vết thương gốc"],
+      "copy": {
+        "en": "Fear of abandonment often begins long before you remember. It may come from a childhood where emotional consistency was unpredictable—warm one moment, distant the next. Even if no one intended to hurt you, your nervous system learned that connection disappears without warning. As an adult, this fear becomes a quiet trembling beneath every relationship. When someone is slow to reply, you sense danger. When a tone shifts, you brace for loss. When love grows, the fear grows with it. This is not irrational; it is learned survival. The body remembers the ache of being left alone with feelings too big to hold. The fear is not merely “being left”—it is the terror of reliving the original loneliness. Healing begins with recognizing that the present is not the past, that the version of you who was once unprotected does not need to navigate this moment alone.",
+        "vi": "Nỗi sợ bị bỏ rơi thường bắt đầu từ rất lâu trước khi bạn nhớ được. Nó có thể đến từ tuổi thơ nơi sự nhất quán cảm xúc thiếu ổn định—ấm áp lúc này, xa cách lúc khác. Dù không ai cố ý làm tổn thương bạn, hệ thần kinh của bạn đã học rằng kết nối có thể biến mất bất cứ lúc nào. Khi trưởng thành, nỗi sợ này trở thành sự run rẩy âm thầm trong mọi mối quan hệ. Khi ai đó trả lời chậm, bạn thấy nguy hiểm. Khi giọng nói thay đổi, bạn chuẩn bị tinh thần để mất mát. Khi tình yêu lớn lên, nỗi sợ cũng lớn theo. Điều này không vô lý; nó là khả năng sinh tồn được học từ trước. Cơ thể nhớ cảm giác bị bỏ lại một mình với những cảm xúc quá lớn để chịu đựng. Nỗi sợ không chỉ là “bị bỏ rơi”—mà là nỗi kinh hoàng khi tái sống sự cô đơn nguyên thủy. Chữa lành bắt đầu khi bạn nhận ra hiện tại không phải quá khứ, rằng phiên bản từng không được bảo vệ không còn phải đối mặt một mình."
+      },
+      "tags": ["abandonment", "fear"],
+      "audio": "vip6_fa_1.mp3"
+    },
+    {
+      "slug": "hypervigilance-in-love",
+      "keywords_en": ["hypervigilance", "trust", "relationship fear"],
+      "keywords_vi": ["cảnh giác quá mức", "niềm tin", "sợ hãi trong tình cảm"],
+      "copy": {
+        "en": "For those with abandonment wounds, love is never simply love—it is a landscape to scan for danger. You watch for subtle shifts: pauses, silences, tones, patterns. You analyze messages, replay conversations, anticipate endings before they appear. This hypervigilance is not drama; it is self-defense. You learned early that the people you depend on might disappear, so you monitor every detail to avoid being blindsided again. But the cost is heavy. You cannot relax into closeness. You cannot trust the present moment. You cannot enjoy tenderness without preparing for potential loss. Healing begins when you understand that vigilance once kept you safe, but now it exhausts your heart. Trust does not grow from forcing yourself to feel secure—it grows from experiencing consistency, slowly, gently, one small proof at a time.",
+        "vi": "Với những người mang vết thương bị bỏ rơi, tình yêu không bao giờ chỉ là tình yêu—nó là một vùng đất cần quét để tìm nguy hiểm. Bạn quan sát những thay đổi nhỏ: khoảng dừng, im lặng, giọng nói, thói quen. Bạn phân tích tin nhắn, tua lại cuộc trò chuyện, đoán trước kết thúc ngay cả khi chưa có dấu hiệu. Sự cảnh giác này không phải kịch tính; nó là tự vệ. Bạn từng học rằng những người mình dựa vào có thể biến mất, nên bạn giám sát từng chi tiết để tránh bị bất ngờ lần nữa. Nhưng cái giá phải trả là lớn. Bạn khó thư giãn trong sự gần gũi. Bạn khó tin vào khoảnh khắc hiện tại. Bạn khó tận hưởng sự dịu dàng mà không chuẩn bị tinh thần cho mất mát. Chữa lành bắt đầu khi bạn hiểu rằng sự cảnh giác từng giúp bạn an toàn, nhưng giờ khiến trái tim kiệt sức. Niềm tin không nảy sinh từ việc ép mình cảm thấy an toàn—mà từ việc trải nghiệm sự nhất quán, chậm rãi và nhẹ nhàng, từng bằng chứng nhỏ một."
+      },
+      "tags": ["hypervigilance", "trust"],
+      "audio": "vip6_fa_2.mp3"
+    },
+    {
+      "slug": "the-fear-of-not-being-chosen",
+      "keywords_en": ["rejection", "worth", "insecurity"],
+      "keywords_vi": ["từ chối", "giá trị bản thân", "bất an"],
+      "copy": {
+        "en": "Fear of abandonment is deeply tied to the belief that you are not worth choosing. No matter how loving, capable, or dedicated you are, a whisper inside insists that others will eventually realize you are not enough. This belief did not come from truth—it came from early experiences where your needs were ignored or inconsistently met. As an adult, this becomes a fear that others will prefer someone else, replace you, or drift away. You may try harder, overgive, or make yourself smaller just to secure closeness. But love built on fear becomes a cage. Healing begins when you recognize that being chosen is not something you earn through perfection or pleasing—it is something that flows naturally when connection is real. Your worth is not negotiable. You do not need to shrink to be loved.",
+        "vi": "Nỗi sợ bị bỏ rơi gắn chặt với niềm tin rằng bạn không xứng đáng được chọn. Dù bạn yêu thương, giỏi giang hay tận tâm đến đâu, một tiếng thì thầm bên trong vẫn khẳng định rằng rồi người khác cũng sẽ nhận ra bạn không đủ tốt. Niềm tin này không đến từ sự thật—mà từ những trải nghiệm sớm nơi nhu cầu của bạn bị phớt lờ hoặc được đáp lại thiếu nhất quán. Khi trưởng thành, điều này trở thành nỗi sợ người khác sẽ chọn ai khác, thay thế bạn hoặc rời xa bạn. Bạn có thể cố gắng nhiều hơn, cho đi quá mức hoặc thu mình lại chỉ để giữ sự gần gũi. Nhưng tình yêu dựa trên nỗi sợ trở thành chiếc lồng. Chữa lành bắt đầu khi bạn nhận ra rằng được chọn không phải điều bạn phải đạt được bằng sự hoàn hảo hay làm hài lòng—mà là điều đến tự nhiên khi kết nối là thật. Giá trị của bạn không thể thương lượng. Bạn không cần thu nhỏ bản thân để được yêu."
+      },
+      "tags": ["self-worth", "fear"],
+      "audio": "vip6_fa_3.mp3"
+    },
+    {
+      "slug": "when-distance-hurts-more-than-closeness",
+      "keywords_en": ["distance", "attachment", "pain"],
+      "keywords_vi": ["khoảng cách", "gắn bó", "nỗi đau"],
+      "copy": {
+        "en": "For those with abandonment wounds, emotional distance is more painful than emotional conflict. Silence feels like rejection. Space feels like punishment. A loved one needing time alone can feel like the first step toward leaving. This sensitivity comes from old experiences where distance meant danger—a parent withdrawing affection, a caregiver overwhelmed, a bond breaking without explanation. Your body reacts before your mind can reason, flooding you with fear. But not all distance is abandonment; sometimes it is simply rest. Healing involves learning the difference. You slowly discover that closeness can survive space, that relationships can stretch without breaking, and that love can remain even when someone steps back to breathe.",
+        "vi": "Với những người mang vết thương bị bỏ rơi, khoảng cách cảm xúc đau đớn hơn cả xung đột. Im lặng giống như bị từ chối. Không gian riêng giống như sự trừng phạt. Việc người mình yêu cần thời gian một mình có thể cảm thấy như bước đầu tiên dẫn đến rời bỏ. Sự nhạy cảm này xuất phát từ những trải nghiệm cũ nơi khoảng cách đồng nghĩa với nguy hiểm—một người thân rút lại sự trìu mến, một người chăm sóc kiệt sức hoặc một mối liên kết tan vỡ mà không lời giải thích. Cơ thể bạn phản ứng trước khi lý trí kịp can thiệp, tràn ngập nỗi sợ. Nhưng không phải khoảng cách nào cũng là bị bỏ rơi; đôi khi nó chỉ là sự nghỉ ngơi. Chữa lành liên quan đến việc học cách phân biệt. Bạn dần khám phá rằng sự gần gũi có thể sống sót qua khoảng cách, các mối quan hệ có thể giãn mà không đứt, và tình yêu vẫn còn đó ngay cả khi ai đó lùi lại để thở."
+      },
+      "tags": ["distance", "attachment"],
+      "audio": "vip6_fa_4.mp3"
+    },
+    {
+      "slug": "relearning-safety-in-connection",
+      "keywords_en": ["healing", "safety", "connection"],
+      "keywords_vi": ["chữa lành", "an toàn", "kết nối"],
+      "copy": {
+        "en": "Healing fear of abandonment is not about promising that no one will ever leave—it is about helping your body learn that you can survive closeness and distance without collapsing. This healing happens through consistent, safe connection. You begin to trust small things: a steady tone, a reliable reply, someone returning after stepping away. Over time, your nervous system rewires. Calm becomes possible. Vulnerability becomes less dangerous. Connection becomes less like a battlefield and more like a breathing space. You learn that you no longer need to grasp tightly to keep someone near. You do not need to earn presence. And you are not a child waiting in the dark anymore. You are an adult learning that love can stay—and that even when it doesn’t, you remain whole.",
+        "vi": "Chữa lành nỗi sợ bị bỏ rơi không phải là hứa rằng không ai sẽ rời bỏ bạn—mà là giúp cơ thể học rằng bạn có thể sống sót qua cả gần gũi lẫn khoảng cách mà không sụp đổ. Việc này xảy ra thông qua kết nối an toàn và nhất quán. Bạn bắt đầu tin vào những điều nhỏ: một giọng nói đều, một phản hồi ổn định, ai đó quay lại sau khi rời đi. Theo thời gian, hệ thần kinh của bạn được tái lập. Sự bình yên trở nên khả thi. Sự dễ tổn thương trở nên ít nguy hiểm hơn. Kết nối không còn giống chiến trường mà giống không gian để thở. Bạn học rằng mình không cần nắm chặt để giữ ai đó ở lại. Bạn không cần phải “xứng đáng” với sự hiện diện. Và bạn không còn là đứa trẻ chờ đợi trong bóng tối nữa. Bạn là người trưởng thành đang học rằng tình yêu có thể ở lại—và rằng ngay cả khi không, bạn vẫn nguyên vẹn."
+      },
+      "tags": ["healing", "safety"],
+      "audio": "vip6_fa_5.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full sequence", "combined"],
+      "keywords_vi": ["tất cả", "chuỗi đầy đủ", "kết hợp"],
+      "copy": {
+        "en": "Fear of abandonment begins long before memory—with unpredictable affection, early loneliness, or emotional inconsistency. As an adult, this becomes hypervigilance: scanning for danger, anticipating withdrawal, believing distance equals rejection. Beneath it all lies a belief of not being worth choosing, shaped not by truth but by unmet childhood needs. Distance hurts more than conflict because silence feels like loss. Yet healing does not come from certainty but from safety—experiencing small proofs of consistency, allowing space without panic, learning that relationships can stretch without breaking. Little by little, the body learns that closeness can survive space, love can remain through pause, and you are no longer the child left alone in the dark.",
+        "vi": "Nỗi sợ bị bỏ rơi bắt đầu từ trước cả ký ức—với sự trìu mến thất thường, cô đơn sớm hoặc sự thiếu nhất quán cảm xúc. Khi trưởng thành, điều này trở thành cảnh giác quá mức: quét tìm dấu hiệu nguy hiểm, dự đoán sự rút lui, tin rằng khoảng cách đồng nghĩa bị từ chối. Bên dưới là niềm tin rằng mình không xứng đáng được chọn—hình thành không phải từ sự thật mà từ những nhu cầu thời thơ ấu không được đáp ứng. Khoảng cách đau hơn xung đột vì im lặng giống như mất mát. Nhưng chữa lành không đến từ sự chắc chắn mà từ cảm giác an toàn—trải nghiệm những bằng chứng nhỏ của sự nhất quán, cho phép khoảng cách mà không hoảng loạn, học rằng các mối quan hệ có thể giãn mà không đứt. Từng chút một, cơ thể học rằng gần gũi có thể sống sót qua khoảng cách, tình yêu có thể tồn tại qua khoảng dừng, và bạn không còn là đứa trẻ bị bỏ lại trong bóng tối nữa."
+      },
+      "tags": ["all", "combined"],
+      "audio": "vip6_fa_1.mp3 vip6_fa_2.mp3 vip6_fa_3.mp3 vip6_fa_4.mp3 vip6_fa_5.mp3"
+    }
+  ],
+  "meta": {
+    "entry_count": 6
+  }
+}
