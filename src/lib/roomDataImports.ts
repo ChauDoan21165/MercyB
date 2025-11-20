@@ -1272,5 +1272,12 @@ export const roomDataMap: Record<string, RoomData> = {
     "nameVi": "Sợ Thất Bại",
     "tier": "vip6",
     "hasData": true
+  },
+  "vip6-self-worth-distortions": {
+    "id": "vip6-self-worth-distortions",
+    "nameEn": "Self-Worth Distortions",
+    "nameVi": "Biến Dạng Giá Trị Bản Thân",
+    "tier": "vip6",
+    "hasData": true
   }
 };

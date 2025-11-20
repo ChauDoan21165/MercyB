@@ -183,7 +183,8 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "vip6-self-sabotage-relationship": "data/vip6_self_sabotage_relationship.json",
   "vip6-avoidant-behaviors": "data/vip6_avoidant_behaviors.json",
   "vip6-emotional-dependency": "data/vip6_emotional_dependency.json",
-  "vip6-fear-failure": "data/vip6_fear_failure.json"
+  "vip6-fear-failure": "data/vip6_fear_failure.json",
+  "vip6-self-worth-distortions": "data/vip6_self_worth_distortions.json"
 };
 
 /**
