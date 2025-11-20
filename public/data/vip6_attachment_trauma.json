@@ -1,0 +1,83 @@
+{
+  "id": "vip6_attachment_trauma",
+  "tier": "VIP6",
+  "title": {
+    "en": "Attachment Trauma Patterns",
+    "vi": "Mô Thức Tổn Thương Gắn Bó"
+  },
+  "content": {
+    "en": "This room explores attachment trauma—the wounds formed in early relationships that shape how you love, trust, fear closeness, and protect yourself from emotional danger.",
+    "vi": "Phòng này khám phá tổn thương gắn bó—những vết thương hình thành từ các mối quan hệ ban đầu và định hình cách bạn yêu, tin tưởng, sợ gần gũi và tự bảo vệ trước nguy cơ cảm xúc."
+  },
+  "entries": [
+    {
+      "slug": "fearful-avoidant-patterns",
+      "keywords_en": ["attachment", "avoidant", "fear"],
+      "keywords_vi": ["gắn bó", "né tránh", "nỗi sợ"],
+      "copy": {
+        "en": "Fearful-avoidant patterns form when closeness and danger were once intertwined. You long for connection but feel unsafe when someone gets too close. You pull people in and push them away, afraid of losing them yet overwhelmed by intimacy. This is not indecision—it is a nervous system torn between craving safety and bracing for pain. Your heart remembers closeness as unpredictable, so distance becomes protection. These patterns are learned responses, not personal failures.",
+        "vi": "Mô thức né tránh sợ hãi hình thành khi sự gần gũi và nguy hiểm từng gắn liền với nhau. Bạn khao khát kết nối nhưng lại thấy bất an khi ai đó đến quá gần. Bạn kéo người khác lại rồi đẩy ra, sợ mất họ nhưng cũng bị quá tải bởi sự thân mật. Đây không phải thiếu quyết đoán—mà là hệ thần kinh bị kéo giữa nhu cầu an toàn và chuẩn bị cho đau tổn. Trái tim bạn nhớ rằng sự gần gũi từng khó đoán, nên khoảng cách trở thành lá chắn. Những mô thức này là phản ứng được học, không phải lỗi lầm cá nhân."
+      },
+      "tags": ["avoidant", "fear"],
+      "audio": "vip6_at_1.mp3"
+    },
+    {
+      "slug": "anxious-attachment-cycles",
+      "keywords_en": ["anxious", "attachment", "validation"],
+      "keywords_vi": ["lo âu", "gắn bó", "công nhận"],
+      "copy": {
+        "en": "Anxious attachment develops when love feels uncertain or inconsistent. You become hyper-attuned to emotional shifts, searching for signs of rejection. You over-give, over-explain, and over-attach because distance feels like abandonment. You are not “too much”—your nervous system learned that connection disappears without constant effort. The anxiety is not a flaw; it is a response to environments where affection was unpredictable.",
+        "vi": "Gắn bó lo âu hình thành khi tình yêu cảm giác không chắc chắn hoặc thất thường. Bạn nhạy cảm với từng thay đổi cảm xúc, tìm kiếm dấu hiệu bị rời bỏ. Bạn cho đi quá mức, giải thích quá nhiều và gắn bó quá chặt vì khoảng cách giống như bị bỏ rơi. Bạn không 'quá nhiều'—hệ thần kinh của bạn học rằng sự kết nối sẽ biến mất nếu không nỗ lực liên tục. Sự lo âu không phải thiếu sót; nó là phản ứng với môi trường yêu thương thiếu ổn định."
+      },
+      "tags": ["anxious", "attachment"],
+      "audio": "vip6_at_2.mp3"
+    },
+    {
+      "slug": "disorganized-attachment-chaos",
+      "keywords_en": ["disorganized", "chaos", "conflict"],
+      "keywords_vi": ["rối loạn", "hỗn loạn", "mâu thuẫn"],
+      "copy": {
+        "en": "Disorganized attachment arises when the person you needed for safety was also a source of fear. Love becomes tangled with danger, leaving you without a clear strategy for connection. You may rush toward intimacy one moment and dissociate the next. You struggle to trust, to stay, or to feel emotionally regulated. This chaos is not madness—it is the impact of early environments where comfort and fear lived in the same place.",
+        "vi": "Gắn bó rối loạn xuất hiện khi người bạn cần để an toàn cũng là nguồn gây sợ hãi. Tình yêu trở nên rối rắm với nguy hiểm, khiến bạn không có chiến lược rõ ràng cho kết nối. Bạn có thể lao vào sự thân mật lúc này rồi tách rời cảm xúc ngay sau đó. Bạn khó tin tưởng, khó ở lại và khó điều hòa cảm xúc. Sự hỗn loạn này không phải điên loạn—mà là hệ quả của môi trường đầu đời nơi sự an ủi và sợ hãi cùng tồn tại."
+      },
+      "tags": ["disorganized", "chaos"],
+      "audio": "vip6_at_3.mp3"
+    },
+    {
+      "slug": "how-trauma-shapes-connection",
+      "keywords_en": ["trauma", "connection", "patterns"],
+      "keywords_vi": ["tổn thương", "kết nối", "mô thức"],
+      "copy": {
+        "en": "Attachment trauma shapes how you relate to others. You may choose unavailable partners, avoid intimacy altogether, or cling to unhealthy dynamics because familiarity feels safer than joy. You repeat childhood patterns without realizing they are echoes of old survival strategies. Trauma teaches your body what to expect, and your relationships begin to mirror that expectation. These patterns are not destiny—they are habits built in the absence of safety.",
+        "vi": "Tổn thương gắn bó định hình cách bạn kết nối với người khác. Bạn có thể chọn những người không sẵn sàng, tránh sự thân mật hoàn toàn hoặc bám vào những mối quan hệ không lành mạnh vì sự quen thuộc cảm giác an toàn hơn niềm vui. Bạn lặp lại mô thức thời thơ ấu mà không nhận ra chúng chỉ là tiếng vọng của chiến lược sinh tồn cũ. Tổn thương dạy cơ thể bạn điều gì sẽ xảy ra, và các mối quan hệ bắt đầu phản chiếu điều đó. Những mô thức này không phải định mệnh—chúng là thói quen sinh ra từ thiếu an toàn."
+      },
+      "tags": ["trauma", "patterns"],
+      "audio": "vip6_at_4.mp3"
+    },
+    {
+      "slug": "healing-attachment-trauma",
+      "keywords_en": ["healing", "safety", "repatterning"],
+      "keywords_vi": ["chữa lành", "an toàn", "tái cấu trúc"],
+      "copy": {
+        "en": "Healing attachment trauma requires experiencing safety in real time. You learn to regulate your nervous system, communicate your needs, and choose relationships that honor your boundaries. Slowly, your body updates its expectations: not everyone leaves, not everyone harms, not everyone is unpredictable. Healing is not perfection—it is the gentle repetition of safety until your system learns to trust again.",
+        "vi": "Chữa lành tổn thương gắn bó đòi hỏi bạn trải nghiệm cảm giác an toàn trong thực tế. Bạn học điều hòa hệ thần kinh, bày tỏ nhu cầu và chọn những mối quan hệ tôn trọng ranh giới của mình. Dần dần, cơ thể bạn cập nhật lại kỳ vọng: không phải ai cũng rời bỏ, không phải ai cũng gây tổn thương, không phải ai cũng khó đoán. Chữa lành không phải hoàn hảo—mà là sự lặp lại nhẹ nhàng của an toàn cho đến khi hệ thống của bạn học cách tin tưởng trở lại."
+      },
+      "tags": ["healing", "safety"],
+      "audio": "vip6_at_5.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "combined", "full sequence"],
+      "keywords_vi": ["tất cả", "kết hợp", "chuỗi đầy đủ"],
+      "copy": {
+        "en": "Attachment trauma forms patterns of fear, avoidance, anxiety, and chaos. You long for closeness but feel unsafe when love appears. You repeat childhood dynamics not because you are broken, but because your body learned survival through them. Healing begins with safety, communication, and choosing relationships that honor your emotional reality. Attachment trauma is not your identity—it is a pattern you can rewrite.",
+        "vi": "Tổn thương gắn bó tạo ra mô thức sợ hãi, né tránh, lo âu và hỗn loạn. Bạn khao khát gần gũi nhưng lại cảm thấy bất an khi tình yêu xuất hiện. Bạn lặp lại động lực thời thơ ấu không phải vì bạn hỏng—mà vì cơ thể bạn học cách sinh tồn thông qua chúng. Chữa lành bắt đầu bằng an toàn, giao tiếp và chọn những mối quan hệ tôn trọng sự thật cảm xúc của bạn. Tổn thương gắn bó không phải bản sắc—đó là mô thức bạn có thể viết lại."
+      },
+      "tags": ["all", "combined"],
+      "audio": "vip6_at_1.mp3 vip6_at_2.mp3 vip6_at_3.mp3 vip6_at_4.mp3 vip6_at_5.mp3"
+    }
+  ],
+  "meta": {
+    "entry_count": 6
+  }
+}
