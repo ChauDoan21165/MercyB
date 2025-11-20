@@ -52,6 +52,14 @@ For each JSON file, the system extracts and syncs:
 ## Workflow Examples
 
 ### Regular Development Workflow
+
+**Option 1: Single Command (Recommended)**
+```bash
+# Run both dev server and auto-sync together
+npm run dev:sync
+```
+
+**Option 2: Separate Terminals**
 ```bash
 # Terminal 1: Run dev server
 npm run dev
@@ -63,7 +71,7 @@ npm run sync:watch
 Now you can:
 1. Edit any JSON file in `public/data/`
 2. Save the file
-3. See the sync happen automatically in Terminal 2
+3. See the sync happen automatically
 4. Refresh your app to see the changes immediately
 
 ### After Git Pull
