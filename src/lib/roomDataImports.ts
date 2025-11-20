@@ -1300,5 +1300,12 @@ export const roomDataMap: Record<string, RoomData> = {
     "nameVi": "Bóng Tối của Kiêu Hãnh & Bản Ngã",
     "tier": "vip6",
     "hasData": true
+  },
+  "vip6-reclaim-power": {
+    "id": "vip6-reclaim-power",
+    "nameEn": "Reclaiming Inner Power",
+    "nameVi": "Giành Lại Sức Mạnh Nội Tại",
+    "tier": "vip6",
+    "hasData": true
   }
 };
