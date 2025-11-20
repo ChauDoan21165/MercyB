@@ -65,7 +65,7 @@ export const KIDS_LEVELS = {
 /**
  * Room count per level for validation
  */
-export const ROOMS_PER_LEVEL = 12;
+export const ROOMS_PER_LEVEL = 10;
 export const ENTRIES_PER_ROOM = 5;
 
 /**
@@ -96,42 +96,39 @@ export function hasLevelAccess(levelId: string, userSubscriptions: string[]): bo
 export function getRoomIcon(roomId: string): string {
   // Extract icon from room ID pattern or provide defaults
   const iconMap: Record<string, string> = {
+    // Level 1 (Ages 4-7)
+    'alphabet-adventure': '🔤',
     'colors-shapes': '🎨',
     'animals-sounds': '🐶',
-    'my-family': '👨‍👩‍👧‍👦',
-    'food-snacks': '🍎',
-    'toys-games': '🧸',
-    'weather-seasons': '☀️',
-    'my-body': '👦',
-    'at-home': '🏠',
+    'family-home-words': '🏠',
     'feelings-emotions': '😊',
-    'nature-outdoors': '🌳',
-    'numbers-counting': '🔢',
-    'simple-actions': '🏃',
     'daily-routines': '⏰',
-    'at-school': '🏫',
-    'my-hobbies': '⚽',
-    'describing-people': '👥',
-    'describing-places': '🗺️',
-    'animals-habitats': '🦁',
+    'food-snacks': '🍎',
+    'toys-playtime': '🧸',
+    'nature-explorers': '🌳',
+    'magic-story-words': '✨',
+    // Level 2 (Ages 7-10)
+    'school-life-vocabulary': '🏫',
+    'hobbies-fun-activities': '⚽',
+    'weather-seasons': '☀️',
     'healthy-habits': '💪',
-    'around-city': '🏙️',
-    'short-stories': '📖',
-    'travel-transportation': '🚗',
-    'basic-grammar': '📝',
-    'asking-answering': '❓',
-    'expressing-opinions': '💭',
-    'creative-writing': '✍️',
-    'science-curiosity': '🔬',
-    'friendship-teamwork': '🤝',
-    'problem-solving': '🧩',
-    'technology-future': '💻',
-    'nature-planet': '🌍',
-    'storytelling-narrative': '📚',
+    'community-helpers': '👨‍⚕️',
+    'travel-transport': '🚗',
+    'animals-around-world': '🦁',
+    'little-scientist-words': '🔬',
+    'feelings-social-skills': '🤝',
+    'short-story-builder': '📖',
+    // Level 3 (Ages 10-13)
+    'creative-writing-basics': '✍️',
+    'conversation-starters': '💬',
     'emotions-self-expression': '🎭',
-    'study-skills': '📚',
-    'world-cultures': '🌏',
-    'conversation-skills': '💬'
+    'beginner-grammar-power': '📝',
+    'world-knowledge-boost': '🌍',
+    'curiosity-big-questions': '❓',
+    'problem-solving-english': '🧩',
+    'digital-life-vocabulary': '💻',
+    'health-body-awareness': '🧘',
+    'mini-projects-presentations': '📊'
   };
 
   for (const [key, icon] of Object.entries(iconMap)) {

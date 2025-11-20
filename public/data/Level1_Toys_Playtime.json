@@ -1,0 +1,14 @@
+{
+  "id": "level1-toys-playtime",
+  "name": "Toys & Playtime",
+  "name_vi": "Đồ Chơi & Giờ Chơi",
+  "description": "Empty room placeholder - content to be added",
+  "keywords_en": ["toys", "play", "games"],
+  "keywords_vi": ["đồ chơi", "chơi"],
+  "entries": [],
+  "meta": {
+    "tier": "level1",
+    "age_range": "4-7",
+    "room_color": "#FFB4E5"
+  }
+}

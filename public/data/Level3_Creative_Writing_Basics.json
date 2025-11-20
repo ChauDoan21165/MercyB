@@ -1,0 +1,14 @@
+{
+  "id": "level3-creative-writing-basics",
+  "name": "Creative Writing Basics",
+  "name_vi": "Cơ Bản Viết Sáng Tạo",
+  "description": "Empty room placeholder - content to be added",
+  "keywords_en": ["writing", "creative", "expression"],
+  "keywords_vi": ["viết", "sáng tạo"],
+  "entries": [],
+  "meta": {
+    "tier": "level3",
+    "age_range": "10-13",
+    "room_color": "#FFD89C"
+  }
+}

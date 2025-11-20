@@ -1,0 +1,14 @@
+{
+  "id": "level2-animals-around-world",
+  "name": "Animals Around the World",
+  "name_vi": "Động Vật Trên Thế Giới",
+  "description": "Empty room placeholder - content to be added",
+  "keywords_en": ["animals", "world", "wildlife"],
+  "keywords_vi": ["động vật", "thế giới"],
+  "entries": [],
+  "meta": {
+    "tier": "level2",
+    "age_range": "7-10",
+    "room_color": "#A8E6CF"
+  }
+}

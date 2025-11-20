@@ -1,0 +1,14 @@
+{
+  "id": "level3-beginner-grammar-power",
+  "name": "Beginner Grammar Power",
+  "name_vi": "Sức Mạnh Ngữ Pháp Cơ Bản",
+  "description": "Empty room placeholder - content to be added",
+  "keywords_en": ["grammar", "structure", "language"],
+  "keywords_vi": ["ngữ pháp", "cấu trúc"],
+  "entries": [],
+  "meta": {
+    "tier": "level3",
+    "age_range": "10-13",
+    "room_color": "#FFD89C"
+  }
+}
