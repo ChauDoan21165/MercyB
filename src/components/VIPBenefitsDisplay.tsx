@@ -58,16 +58,26 @@ const tierInfo: Record<UserTier, {
       vi: ["Tất cả quyền lợi VIP3", "Tư vấn nghề nghiệp", "Hỗ trợ cao cấp"]
     },
     color: "bg-gradient-to-br from-orange-400 via-orange-600 to-orange-800"
+  },
+  vip5: {
+    name: { en: "VIP5 Writing", vi: "VIP5 Viết Lách" },
+    benefits: {
+      en: ["All VIP4 benefits", "English writing support", "Expert feedback", "IELTS-style comments"],
+      vi: ["Tất cả quyền lợi VIP4", "Hỗ trợ viết tiếng Anh", "Phản hồi chuyên gia", "Nhận xét chuẩn IELTS"]
+    },
+    color: "bg-gradient-to-br from-emerald-500 via-emerald-700 to-emerald-900"
   }
 };
 
 const upgradePaths: Record<UserTier, UserTier[]> = {
-  free: ["vip1", "vip2", "vip3", "vip3_ii"],
-  vip1: ["vip2", "vip3", "vip3_ii"],
-  vip2: ["vip3", "vip3_ii"],
-  vip3: ["vip3_ii"],
-  vip3_ii: [],
-  vip4: []
+  demo: ["vip1", "vip2", "vip3", "vip3_ii", "vip4", "vip5"],
+  free: ["vip1", "vip2", "vip3", "vip3_ii", "vip4", "vip5"],
+  vip1: ["vip2", "vip3", "vip3_ii", "vip4", "vip5"],
+  vip2: ["vip3", "vip3_ii", "vip4", "vip5"],
+  vip3: ["vip3_ii", "vip4", "vip5"],
+  vip3_ii: ["vip4", "vip5"],
+  vip4: ["vip5"],
+  vip5: []
 };
 
 export const VIPBenefitsDisplay = () => {

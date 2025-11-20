@@ -336,30 +336,41 @@ const AdminPayments = () => {
                         key={code.id}
                         className="flex items-center justify-between p-4 border rounded-lg"
                       >
-                        <div className="space-y-1">
-                          <div className="flex items-center gap-2">
-                            <code className="font-mono font-bold text-lg">{code.code}</code>
-                            <Button
-                              size="sm"
-                              variant="ghost"
-                              onClick={() => copyToClipboard(code.code)}
-                            >
-                              <Copy className="w-3 h-3" />
-                            </Button>
-                          </div>
-                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                            <Badge variant="outline">{code.subscription_tiers?.name}</Badge>
-                            <span>{code.days} days</span>
-                            <span>•</span>
-                            <span>{code.used_count}/{code.max_uses} used</span>
-                            {code.notes && (
-                              <>
-                                <span>•</span>
-                                <span>{code.notes}</span>
-                              </>
-                            )}
-                          </div>
-                        </div>
+                          <div className="space-y-1">
+                           <div className="flex items-center gap-2">
+                             <code className="font-mono font-bold text-lg">{code.code}</code>
+                             <Button
+                               size="sm"
+                               variant="ghost"
+                               onClick={() => copyToClipboard(code.code)}
+                             >
+                               <Copy className="w-3 h-3" />
+                             </Button>
+                           </div>
+                           <div className="flex items-center gap-2 text-xs bg-muted/50 p-2 rounded">
+                             <span className="text-muted-foreground">Link:</span>
+                             <code className="flex-1 text-primary">{window.location.origin}/join/{code.code.toLowerCase()}</code>
+                             <Button
+                               size="sm"
+                               variant="ghost"
+                               onClick={() => copyToClipboard(`${window.location.origin}/join/${code.code.toLowerCase()}`)}
+                             >
+                               <Copy className="w-3 h-3" />
+                             </Button>
+                           </div>
+                           <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                             <Badge variant="outline">{code.subscription_tiers?.name}</Badge>
+                             <span>{code.days} days</span>
+                             <span>•</span>
+                             <span>{code.used_count}/{code.max_uses} used</span>
+                             {code.notes && (
+                               <>
+                                 <span>•</span>
+                                 <span>{code.notes}</span>
+                               </>
+                             )}
+                           </div>
+                         </div>
                         {code.is_active ? (
                           <CheckCircle2 className="w-5 h-5 text-green-600" />
                         ) : (

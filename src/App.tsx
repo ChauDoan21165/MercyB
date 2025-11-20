@@ -54,6 +54,7 @@ import AdminPayments from "./pages/AdminPayments";
 import AdminUsers from "./pages/AdminUsers";
 import AdminUserDetail from "./pages/AdminUserDetail";
 import AdminSecurity from "./pages/AdminSecurity";
+import JoinCode from "./pages/JoinCode";
 
 const queryClient = new QueryClient();
 
@@ -72,6 +73,7 @@ const App = () => (
           <Route path="/meaning-of-life" element={<MeaningOfLife />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/reset" element={<ResetPassword />} />
+          <Route path="/join/:code" element={<JoinCode />} />
           <Route path="/rooms" element={<RoomGrid />} />
           <Route path="/rooms-vip1" element={<RoomGridVIP1 />} />
           <Route path="/rooms-vip2" element={<RoomGridVIP2 />} />
