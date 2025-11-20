@@ -23,6 +23,7 @@ interface Room {
   room_essay_en?: string;
   room_essay_vi?: string;
   is_locked?: boolean;
+  is_demo?: boolean;
 }
 
 export default function AdminRooms() {
@@ -129,6 +130,32 @@ export default function AdminRooms() {
     setSelectedRoom(room);
     setLockDialogOpen(true);
   };
+
+  // Toggle demo status mutation
+  const toggleDemoMutation = useMutation({
+    mutationFn: async ({ roomId, isDemo }: { roomId: string; isDemo: boolean }) => {
+      const { error } = await supabase
+        .from('rooms')
+        .update({ is_demo: isDemo })
+        .eq('id', roomId);
+      
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["admin-rooms"] });
+      toast({
+        title: "Success",
+        description: "Demo status updated successfully",
+      });
+    },
+    onError: (error: any) => {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
+    },
+  });
 
   const handlePinConfirm = (pin: string) => {
     if (!selectedRoom) return;
@@ -288,7 +315,7 @@ export default function AdminRooms() {
                   <span>{room.keywords?.length || 0} keywords</span>
                 </div>
 
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-wrap">
                   <Button
                     variant="outline"
                     size="sm"
@@ -299,6 +326,17 @@ export default function AdminRooms() {
                   >
                     <Pencil className="h-4 w-4 mr-2" />
                     Edit
+                  </Button>
+                  <Button
+                    variant={room.is_demo ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => toggleDemoMutation.mutate({ 
+                      roomId: room.id, 
+                      isDemo: !room.is_demo 
+                    })}
+                    title={room.is_demo ? "Remove from demo" : "Add to demo"}
+                  >
+                    {room.is_demo ? "Demo" : "Demo"}
                   </Button>
                   <Button
                     variant={room.is_locked ? "default" : "outline"}

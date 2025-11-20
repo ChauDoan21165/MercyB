@@ -9,6 +9,8 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useEffect, useState } from "react";
+import { DemoModeBanner } from '@/components/DemoModeBanner';
+import { getDemoRooms } from '@/hooks/useDemoMode';
 
 import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
 
@@ -21,16 +23,23 @@ const FREE_INTRO_ROOMS: Record<string, string> = {
 
 const RoomGrid = () => {
   const navigate = useNavigate();
-  const { canAccessVIP1, canAccessVIP2, canAccessVIP3, isAdmin } = useUserAccess();
+  const { canAccessVIP1, canAccessVIP2, canAccessVIP3, isAdmin, isDemoMode } = useUserAccess();
   const { toast } = useToast();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [roomsVersion, setRoomsVersion] = useState(0);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [demoRoomIds, setDemoRoomIds] = useState<string[]>([]);
 
   useEffect(() => {
     const checkAuth = async () => {
       const { data: { user } } = await supabase.auth.getUser();
       setIsAuthenticated(!!user);
+      
+      // If not authenticated, fetch demo room IDs
+      if (!user) {
+        const rooms = await getDemoRooms();
+        setDemoRoomIds(rooms.map(r => r.id));
+      }
     };
     checkAuth();
 
@@ -121,11 +130,21 @@ const RoomGrid = () => {
         
         <div className="min-h-screen" style={{ background: 'hsl(var(--page-roomgrid))' }}>
           <div className="container mx-auto px-4 py-8 max-w-7xl">
+            {/* Demo Mode Banner */}
+            {isDemoMode && (
+              <div className="mb-6">
+                <DemoModeBanner />
+              </div>
+            )}
+
             {/* Header */}
             <div className="mb-8 space-y-4">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-lg text-gray-700 font-medium">
-                  You are in free of charge area / Bạn đang ở khu vực miễn phí
+                  {isDemoMode 
+                    ? "Demo Mode - Limited Access / Chế Độ Demo"
+                    : "You are in free of charge area / Bạn đang ở khu vực miễn phí"
+                  }
                 </span>
                 
                 {isAdmin && (
@@ -150,14 +169,24 @@ const RoomGrid = () => {
               Chọn Phòng Học Của Bạn
             </p>
             <p className="text-sm text-muted-foreground/80">
-              Showing {ALL_ROOMS.filter(room => room.tier === "free").length} rooms
+              {isDemoMode 
+                ? `Showing ${demoRoomIds.length} demo rooms`
+                : `Showing ${ALL_ROOMS.filter(room => room.tier === "free").length} rooms`
+              }
             </p>
           </div>
         </div>
 
         {/* Room Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-          {ALL_ROOMS.filter(room => room.tier === "free").sort((a, b) => {
+          {ALL_ROOMS.filter(room => {
+            // In demo mode, only show demo rooms
+            if (isDemoMode) {
+              return demoRoomIds.includes(room.id);
+            }
+            // Otherwise, show all free rooms
+            return room.tier === "free";
+          }).sort((a, b) => {
             const aName = a.name || a.id;
             const bName = b.name || b.id;
             return aName.localeCompare(bName);
