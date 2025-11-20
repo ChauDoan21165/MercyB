@@ -188,6 +188,8 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "vip6-people-pleasing": "data/vip6_people_pleasing.json",
   "vip6-martyr-complex": "data/vip6_martyr_complex.json",
   "vip6-pride-ego-shadow": "data/vip6_pride_ego_shadow.json",
+  "vip6-freeze-response": "data/vip6_freeze_response.json",
+  "vip6-abandonment-wound": "data/vip6_abandonment_wound.json",
   "vip6-shadow-envy": "data/vip6_shadow_envy.json"
 };
 
