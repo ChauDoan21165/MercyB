@@ -148,6 +148,10 @@ const AdminStats = () => {
             <p className="text-muted-foreground">Mercy Mind Link Statistics</p>
           </div>
           <div className="flex gap-2">
+            <Button onClick={() => navigate('/admin/system-metrics')}>
+              <LayoutDashboard className="h-4 w-4 mr-2" />
+              System Metrics
+            </Button>
             <Button onClick={() => navigate('/admin/rooms')}>
               <LayoutDashboard className="h-4 w-4 mr-2" />
               Room Management
