@@ -1,0 +1,83 @@
+{
+  "id": "vip6_inner_fragmentation",
+  "tier": "VIP6",
+  "title": {
+    "en": "Inner Fragmentation",
+    "vi": "Sự Phân Mảnh Nội Tâm"
+  },
+  "content": {
+    "en": "This room explores the inner splits that form when different parts of you want different things, creating inner conflict, confusion, and emotional fragmentation.",
+    "vi": "Phòng này khám phá những vết nứt nội tâm hình thành khi các phần trong bạn muốn những điều khác nhau, tạo nên xung đột, bối rối và sự phân mảnh cảm xúc."
+  },
+  "entries": [
+    {
+      "slug": "many-selves-within",
+      "keywords_en": ["fragmentation", "parts", "inner self"],
+      "keywords_vi": ["phân mảnh", "các phần", "nội tâm"],
+      "copy": {
+        "en": "Inside every person lives a constellation of selves—each with its own voice, fear, longing, and story. You are not one being but a gathering of inner parts shaped by different moments of your life. One part wants closeness, another fears it. One part wants rest, another pushes for achievement. One part longs to trust, another prepares for hurt. These conflicting voices are not signs of brokenness but of emotional history. Each fragment once formed to protect you, survive, or help you navigate painful realities. When these parts clash, you feel confusion, indecision, or emotional overwhelm. But when you slow down and listen to each voice with compassion, they reveal their purpose. Fragmentation softens the moment you stop forcing yourself to “be one thing.” You become whole not by silencing your parts, but by letting them sit at the same table—each seen, each understood, each welcomed into the unity of who you are becoming.",
+        "vi": "Bên trong mỗi con người tồn tại một chòm sao những cái tôi—mỗi phần mang theo giọng nói, nỗi sợ, khát khao và câu chuyện riêng. Bạn không phải một cá thể duy nhất mà là một hội tụ các phần nội tâm được hình thành từ những khoảnh khắc khác nhau của cuộc đời. Một phần muốn gần gũi, phần khác lại sợ hãi. Một phần muốn nghỉ ngơi, phần khác lại thúc ép đạt thành tựu. Một phần muốn tin tưởng, phần khác chuẩn bị cho tổn thương. Những tiếng nói mâu thuẫn này không phải dấu hiệu của sự hỏng hóc mà là lịch sử cảm xúc. Mỗi phần từng được tạo ra để bảo vệ bạn, để sống sót hoặc để giúp bạn đi qua thực tại đau thương. Khi các phần va chạm, bạn cảm thấy hỗn loạn, do dự hoặc choáng ngợp. Nhưng khi bạn chậm lại và lắng nghe từng tiếng nói bằng sự từ bi, chúng sẽ tiết lộ mục đích của mình. Sự phân mảnh mềm lại khi bạn không còn ép bản thân “phải chỉ là một.” Bạn trở nên toàn vẹn không phải bằng cách bịt miệng các phần, mà bằng cách cho phép chúng ngồi chung một bàn—mỗi phần được thấy, được hiểu và được chào đón vào sự thống nhất bạn đang hướng đến."
+      },
+      "tags": ["fragmentation", "parts"],
+      "audio": "vip6_if_1.mp3"
+    },
+    {
+      "slug": "protector-parts",
+      "keywords_en": ["protector", "defense", "inner parts"],
+      "keywords_vi": ["bảo vệ", "phòng thủ", "các phần"],
+      "copy": {
+        "en": "Protector parts form when you experience emotional danger and need internal defenses to survive. These parts often appear as anger, numbness, overthinking, perfectionism, or detachment. They seem cold or harsh, but beneath them is devotion. A protector arose at the moment you first felt unsafe—promising never to let you feel that pain again. So it pushes people away, hides your vulnerability, or keeps you busy to avoid silence. It does not trust easily, because its job is to guard the wound it once saw. When you fight your protector, it becomes stronger. But when you acknowledge its purpose, it relaxes. It wants reassurance, not removal. When you say, “Thank you for protecting me,” something softens. The protector steps back, and the younger, vulnerable part beneath it can finally speak. Healing begins when inner guards are met with compassion instead of war.",
+        "vi": "Các phần bảo vệ hình thành khi bạn trải qua nguy hiểm cảm xúc và cần lá chắn nội tâm để tồn tại. Những phần này thường xuất hiện dưới dạng giận dữ, tê liệt, suy nghĩ quá mức, cầu toàn hoặc tách rời. Chúng có vẻ lạnh lùng hoặc cứng rắn, nhưng sâu bên dưới là sự tận tâm. Một phần bảo vệ được sinh ra vào khoảnh khắc bạn lần đầu cảm thấy không an toàn—nó hứa rằng sẽ không bao giờ để bạn đau như thế nữa. Vì vậy nó đẩy người khác ra xa, giấu sự dễ tổn thương của bạn hoặc khiến bạn bận rộn để tránh im lặng. Nó không dễ tin tưởng vì nhiệm vụ của nó là canh giữ vết thương từng chứng kiến. Khi bạn chống lại phần bảo vệ, nó mạnh lên. Nhưng khi bạn thừa nhận mục đích của nó, nó dịu lại. Nó cần được trấn an, không phải bị loại bỏ. Khi bạn nói, “Cảm ơn vì đã bảo vệ mình,” điều gì đó mềm đi. Phần bảo vệ lùi lại và phần nhỏ bé, dễ tổn thương bên dưới cuối cùng có thể cất tiếng. Chữa lành bắt đầu khi những người lính canh nội tâm được gặp bằng lòng từ bi thay vì chiến đấu."
+      },
+      "tags": ["protector", "shadow"],
+      "audio": "vip6_if_2.mp3"
+    },
+    {
+      "slug": "exiled-parts",
+      "keywords_en": ["exile", "vulnerability", "inner child"],
+      "keywords_vi": ["bị lưu đày", "dễ tổn thương", "đứa trẻ bên trong"],
+      "copy": {
+        "en": "Exiled parts are the abandoned regions of your emotional world—pieces of you that carry loneliness, grief, longing, fear, or shame. These parts were pushed away because they felt “too much,” “too vulnerable,” or “too inconvenient” for the environment you grew up in. Over time, they learned to stay silent, hiding behind stronger protector parts. Yet exiled parts never disappear. They show themselves through sudden tears, unexplained sadness, intense reactions, or a quiet ache you cannot explain. They hold the original wound. To approach an exiled part is to approach the deepest softness in you. These parts do not need fixing—they need permission to be seen. When you sit with them gently, without rushing or controlling, they begin to trust you again. Inner fragmentation begins to heal the moment the exiled child within you feels safe enough to return.",
+        "vi": "Những phần bị lưu đày là những vùng bị bỏ quên trong thế giới cảm xúc của bạn—những mảnh mang theo cô đơn, đau buồn, khao khát, sợ hãi hoặc xấu hổ. Những phần này bị đẩy đi vì chúng “quá nhiều,” “quá dễ tổn thương,” hoặc “quá phiền phức” đối với môi trường bạn lớn lên. Theo thời gian, chúng học cách im lặng, ẩn sau những phần bảo vệ mạnh mẽ hơn. Nhưng các phần bị lưu đày không bao giờ biến mất. Chúng bộc lộ qua những giọt nước mắt bất chợt, nỗi buồn không nguyên do, phản ứng mạnh, hoặc cơn đau âm ỉ không thể gọi tên. Chúng giữ vết thương nguyên thủy. Tiếp cận một phần bị lưu đày là tiếp cận sự mềm yếu sâu nhất trong bạn. Những phần này không cần sửa chữa—chúng cần được phép xuất hiện. Khi bạn ngồi cạnh chúng bằng sự nhẹ nhàng, không thúc ép hay kiểm soát, chúng bắt đầu tin bạn trở lại. Sự phân mảnh nội tâm bắt đầu chữa lành vào khoảnh khắc đứa trẻ bị lưu đày trong bạn cảm thấy đủ an toàn để trở về."
+      },
+      "tags": ["inner child", "exile"],
+      "audio": "vip6_if_3.mp3"
+    },
+    {
+      "slug": "conflicting-voices",
+      "keywords_en": ["inner conflict", "voices", "internal struggle"],
+      "keywords_vi": ["xung đột nội tâm", "tiếng nói", "đấu tranh bên trong"],
+      "copy": {
+        "en": "Inner fragmentation often feels like being pulled in opposite directions by voices that do not understand one another. One voice says, “Be brave,” while another says, “Stay safe.” One says, “Speak your truth,” while another whispers, “Don’t upset anyone.” These voices are not irrational—they each protect different emotional needs. The conflict arises because the parts were never introduced to each other. They operate alone, believing they must fight for control. When you pause and listen to each voice without taking sides, something profound happens: the parts begin to hear each other. Instead of chaos, dialogue forms. Instead of tension, cooperation emerges. Over time, the voices soften and move toward alignment. Inner conflict does not disappear—it evolves into inner communication.",
+        "vi": "Sự phân mảnh nội tâm thường giống như bị kéo về hai hướng bởi những tiếng nói không hiểu nhau. Một tiếng nói bảo, “Hãy dũng cảm,” trong khi tiếng khác thì thì thầm, “Hãy an toàn.” Một tiếng nói bảo, “Hãy nói sự thật của mình,” trong khi tiếng khác cảnh báo, “Đừng làm ai buồn.” Những tiếng nói này không phi lý—mỗi phần bảo vệ một nhu cầu cảm xúc khác nhau. Xung đột xuất hiện vì các phần chưa bao giờ được giới thiệu với nhau. Chúng hoạt động đơn lẻ, tin rằng mình phải tranh giành quyền kiểm soát. Khi bạn dừng lại và lắng nghe từng tiếng nói mà không đứng về phía nào, điều sâu sắc xảy ra: các phần bắt đầu nghe thấy nhau. Thay vì hỗn loạn, cuộc đối thoại hình thành. Thay vì căng thẳng, sự hợp tác xuất hiện. Theo thời gian, các tiếng nói dịu lại và dần hòa hợp. Xung đột nội tâm không biến mất—nó tiến hóa thành giao tiếp nội tâm."
+      },
+      "tags": ["inner conflict", "integration"],
+      "audio": "vip6_if_4.mp3"
+    },
+    {
+      "slug": "inner-unity",
+      "keywords_en": ["integration", "wholeness", "healing"],
+      "keywords_vi": ["tích hợp", "toàn vẹn", "chữa lành"],
+      "copy": {
+        "en": "Inner unity is not the absence of fragmentation—it is the harmony of your inner world. Integration occurs when each part of you is allowed to exist without being shamed, silenced, or rejected. You begin to recognize which part is speaking in each moment: the protector, the exile, the dreamer, the skeptic, the child, the one who longs to love, the one who fears being hurt. When you honor their voices with kindness, they no longer compete. They begin to trust your leadership—the Self that rests beneath all parts. Unity forms not through force but through presence. Slowly, the scattered pieces come home. You feel less divided, more grounded, more whole. This is the quiet miracle of inner integration: the moment you realize that every part of you belongs.",
+        "vi": "Sự thống nhất nội tâm không phải là không còn phân mảnh—mà là sự hòa hợp của thế giới bên trong. Tích hợp xảy ra khi mỗi phần của bạn được phép tồn tại mà không bị xấu hổ, bịt miệng hay từ chối. Bạn bắt đầu nhận ra phần nào đang lên tiếng trong từng khoảnh khắc: phần bảo vệ, phần lưu đày, kẻ mơ mộng, người hoài nghi, đứa trẻ, phần khao khát yêu thương, phần sợ tổn thương. Khi bạn tôn trọng từng giọng nói bằng sự tử tế, chúng không còn cạnh tranh. Chúng bắt đầu tin tưởng vào sự lãnh đạo của bạn—Cái Tôi sâu nhất nằm dưới mọi phần. Sự thống nhất hình thành không phải qua ép buộc mà qua hiện diện. Từng mảnh vỡ dần trở về nhà. Bạn cảm thấy ít chia rẽ hơn, vững vàng hơn, trọn vẹn hơn. Đây là phép màu lặng lẽ của sự tích hợp: khoảnh khắc bạn nhận ra rằng mọi phần trong bạn đều có chỗ để thuộc về."
+      },
+      "tags": ["integration", "unity"],
+      "audio": "vip6_if_5.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full sequence", "combined"],
+      "keywords_vi": ["tất cả", "chuỗi đầy đủ", "kết hợp"],
+      "copy": {
+        "en": "Every person lives with many selves within—a constellation of inner parts shaped by fear, longing, and memory. One part wants closeness, another fears it. One wants rest, another demands achievement. These fragments once formed to protect you from pain. They are not signs of brokenness but of survival. Protector parts arise in moments of emotional danger. They push people away, hide vulnerability, and guard the wounds they once saw. Exiled parts, carrying grief or loneliness, hide behind these protectors. They appear in sudden tears, unexplained sadness, or a quiet ache. Conflicting voices emerge when parts fight for control—one urging bravery, another begging for safety. These voices do not understand one another because they were never introduced. Inner unity begins with listening. When you acknowledge each part without judgment, dialogue forms. Compassion softens the protectors. Exiled parts begin to trust. The scattered pieces come home. Inner fragmentation heals not by force but by presence, allowing every part of you to finally belong.",
+        "vi": "Mỗi con người sống cùng nhiều cái tôi bên trong—một chòm sao những phần nội tâm được hình thành bởi nỗi sợ, khát khao và ký ức. Một phần muốn gần gũi, phần khác lại sợ hãi. Một phần muốn nghỉ ngơi, phần khác đòi hỏi thành tựu. Những mảnh vỡ này từng được tạo ra để bảo vệ bạn khỏi đau đớn. Chúng không phải dấu hiệu của hư hỏng mà của sự sinh tồn. Các phần bảo vệ xuất hiện trong khoảnh khắc nguy hiểm cảm xúc. Chúng đẩy người khác ra xa, giấu đi sự dễ tổn thương và canh giữ vết thương từng chứng kiến. Những phần bị lưu đày, mang theo nỗi buồn hay cô đơn, ẩn sau những phần bảo vệ. Chúng xuất hiện qua giọt nước mắt bất chợt, nỗi buồn không lý do hay cơn đau âm ỉ. Những tiếng nói xung đột trỗi dậy khi các phần tranh giành quyền kiểm soát—một phần kêu gọi dũng cảm, phần khác van xin sự an toàn. Những tiếng nói này không hiểu nhau vì chúng chưa bao giờ được kết nối. Sự thống nhất bắt đầu bằng lắng nghe. Khi bạn thừa nhận từng phần không phán xét, đối thoại hình thành. Sự từ bi làm mềm những phần bảo vệ. Những phần lưu đày bắt đầu tin tưởng. Những mảnh vỡ dần trở về nhà. Sự phân mảnh nội tâm chữa lành không nhờ ép buộc mà nhờ hiện diện—cho phép mọi phần trong bạn tìm lại chỗ thuộc về."
+      },
+      "tags": ["all", "combined"],
+      "audio": "vip6_if_1.mp3 vip6_if_2.mp3 vip6_if_3.mp3 vip6_if_4.mp3 vip6_if_5.mp3"
+    }
+  ],
+  "meta": {
+    "entry_count": 6
+  }
+}
