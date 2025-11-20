@@ -165,9 +165,14 @@ const RoomGridVIP6 = () => {
                       )}
                     </div>
 
-                    <h3 className="text-xl font-bold mb-2 text-purple-900 group-hover:text-purple-700 transition-colors">
-                      {room.name || room.id}
-                    </h3>
+                    <div className="mb-2">
+                      <h3 className="text-lg font-semibold text-purple-900 group-hover:text-purple-700 transition-colors mb-1">
+                        {room.nameEn}
+                      </h3>
+                      <p className="text-sm text-purple-700 opacity-80">
+                        {room.nameVi}
+                      </p>
+                    </div>
 
                     {room.description && (
                       <p className="text-sm text-gray-700 mb-4 line-clamp-3">
