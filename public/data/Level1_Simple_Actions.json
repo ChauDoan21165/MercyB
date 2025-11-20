@@ -1,0 +1,14 @@
+{
+  "id": "level1-simple-actions",
+  "name": "Simple Actions",
+  "name_vi": "Hành Động Đơn Giản",
+  "description": "Learn basic action verbs",
+  "keywords_en": ["actions", "verbs", "movement", "kids"],
+  "keywords_vi": ["hành động", "động từ", "di chuyển", "trẻ em"],
+  "entries": [],
+  "meta": {
+    "tier": "level1",
+    "age_range": "4-7",
+    "room_color": "#FFB4E5"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "level1-at-home",
+  "name": "At Home",
+  "name_vi": "Ở Nhà",
+  "description": "Talk about things at home",
+  "keywords_en": ["home", "house", "rooms", "kids"],
+  "keywords_vi": ["nhà", "căn nhà", "phòng", "trẻ em"],
+  "entries": [],
+  "meta": {
+    "tier": "level1",
+    "age_range": "4-7",
+    "room_color": "#FFB4E5"
+  }
+}

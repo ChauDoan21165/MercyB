@@ -1,0 +1,14 @@
+{
+  "id": "level1-nature-outdoors",
+  "name": "Nature & Outdoors",
+  "name_vi": "Thiên Nhiên & Ngoài Trời",
+  "description": "Explore nature and outdoors",
+  "keywords_en": ["nature", "outdoors", "plants", "kids"],
+  "keywords_vi": ["thiên nhiên", "ngoài trời", "cây cối", "trẻ em"],
+  "entries": [],
+  "meta": {
+    "tier": "level1",
+    "age_range": "4-7",
+    "room_color": "#FFB4E5"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "level1-toys-games",
+  "name": "Toys & Games",
+  "name_vi": "Đồ Chơi & Trò Chơi",
+  "description": "Explore toys and games",
+  "keywords_en": ["toys", "games", "play", "kids"],
+  "keywords_vi": ["đồ chơi", "trò chơi", "chơi", "trẻ em"],
+  "entries": [],
+  "meta": {
+    "tier": "level1",
+    "age_range": "4-7",
+    "room_color": "#FFB4E5"
+  }
+}

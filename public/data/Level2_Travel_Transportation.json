@@ -1,0 +1,14 @@
+{
+  "id": "level2-travel-transportation",
+  "name": "Travel & Transportation",
+  "name_vi": "Du Lịch & Phương Tiện",
+  "description": "Learn about travel and transportation",
+  "keywords_en": ["travel", "transportation", "vehicles", "kids"],
+  "keywords_vi": ["du lịch", "phương tiện", "xe cộ", "trẻ em"],
+  "entries": [],
+  "meta": {
+    "tier": "level2",
+    "age_range": "7-10",
+    "room_color": "#A8E6CF"
+  }
+}

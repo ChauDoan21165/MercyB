@@ -1,0 +1,14 @@
+{
+  "id": "level2-animals-habitats",
+  "name": "Animals & Habitats",
+  "name_vi": "Động Vật & Môi Trường Sống",
+  "description": "Explore animals and their habitats",
+  "keywords_en": ["animals", "habitats", "nature", "kids"],
+  "keywords_vi": ["động vật", "môi trường sống", "thiên nhiên", "trẻ em"],
+  "entries": [],
+  "meta": {
+    "tier": "level2",
+    "age_range": "7-10",
+    "room_color": "#A8E6CF"
+  }
+}
