@@ -65,6 +65,14 @@ const tierConfig: Record<UserTier, {
     glowColor: "rgba(16, 185, 129, 0.5)",
     animationClasses: "",
   },
+  vip6: {
+    label: "VIP6",
+    labelVi: "VIP6",
+    icon: Crown,
+    baseClasses: "bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white border-indigo-300",
+    glowColor: "rgba(99, 102, 241, 0.6)",
+    animationClasses: "",
+  },
 };
 
 const sizeClasses = {
