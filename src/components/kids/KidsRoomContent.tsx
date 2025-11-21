@@ -50,11 +50,12 @@ export const KidsRoomContent = () => {
           </CardHeader>
           
           <CardContent className="pt-6 space-y-6">
+            {/* Entry Content - exactly like VIP room entries */}
             <div className="p-4 bg-muted/30 rounded-lg border border-border/50">
               <PairedHighlightedContentWithDictionary
                 englishContent={entry.copy.en}
                 vietnameseContent={entry.copy.vi}
-                roomKeywords={[...entry.keywords_en, ...entry.keywords_vi]}
+                roomKeywords={entry.keywords_en}
                 onWordClick={() => {
                   if (entry.audio && currentAudio !== entry.audio) {
                     handleAudioToggle(entry.audio);
