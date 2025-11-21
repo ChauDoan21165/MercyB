@@ -58,6 +58,9 @@ import AdminUserDetail from "./pages/AdminUserDetail";
 import AdminSecurity from "./pages/AdminSecurity";
 import JoinCode from "./pages/JoinCode";
 import AdminSystemMetrics from "./pages/AdminSystemMetrics";
+import KidsLevel1 from "./pages/KidsLevel1";
+import KidsLevel2 from "./pages/KidsLevel2";
+import KidsLevel3 from "./pages/KidsLevel3";
 
 const queryClient = new QueryClient();
 
@@ -113,6 +116,9 @@ const App = () => {
           <Route path="/rooms-vip4" element={<RoomGridVIP4 />} />
           <Route path="/rooms-vip5" element={<RoomGridVIP5 />} />
           <Route path="/vip6" element={<RoomGridVIP6 />} />
+          <Route path="/kids-level-1" element={<KidsLevel1 />} />
+          <Route path="/kids-level-2" element={<KidsLevel2 />} />
+          <Route path="/kids-level-3" element={<KidsLevel3 />} />
           <Route path="/sexuality-culture" element={<SexualityCultureRoom />} />
           <Route path="/finance-calm" element={<FinanceCalmRoom />} />
           <Route path="/all-rooms" element={<AllRooms />} />
