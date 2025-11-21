@@ -158,8 +158,22 @@ const VIETNAMESE_NAME_FALLBACKS: Record<string, string> = {
   'weight-loss-and-fitness-vip3': 'Giảm Cân & Thể Hình VIP3',
   
   // VIP6 Rooms
-  'vip6-pride-ego-shadow': 'Bóng Tối Kiêu Ngạo & Cái Tôi VIP6',
-  'vip6-martyr-complex': 'Phức Cảm Hy Sinh VIP6',
+  'vip6-pride-ego-shadow': 'Bóng Tối Kiêu Ngạo & Cái Tôi',
+  'vip6-abandonment-wound': 'Vết Thương Bị Bỏ Rơi',
+  'vip6-attachment-trauma': 'Mô Thức Tổn Thương Gắn Bó',
+  'vip6-attachment-wounds': 'Vết Thương Gắn Bó',
+  'vip6-control-patterns': 'Mô Thức Kiểm Soát',
+  'vip6-fear-success': 'Sợ Thành Công',
+  'vip6-freeze-response': 'Phản Ứng Đóng Băng',
+  'vip6-guilt-hidden-shame': 'Tội Lỗi & Nỗi Xấu Hổ Ẩn Giấu',
+  'vip6-imposter-wounds': 'Vết Thương Kẻ Giả Mạo',
+  'vip6-inner-saboteur': 'Chiến Tranh Nội Tâm: Kẻ Phá Hoại và Bản Ngã',
+  'vip6-not-enough-wound': 'Vết Thương Không Đủ Tốt',
+  'vip6-reclaim-power': 'Giành Lại Sức Mạnh Nội Tại',
+  'vip6-self-worth-distortions': 'Biến Dạng Giá Trị Bản Thân',
+  'vip6-shadow-envy': 'Bóng Tối của Sự Ghen Tị',
+  'vip6-shadow-in-love': 'Bóng Tối Trong Tình Yêu',
+  'vip6-shadow-perfectionism': 'Bóng Tối của Chủ Nghĩa Hoàn Hảo',
 };
 
 // Metadata interface for room listing
