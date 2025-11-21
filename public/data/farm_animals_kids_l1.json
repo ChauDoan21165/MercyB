@@ -1,0 +1,89 @@
+{
+  "id": "farm_animals_kids_l1",
+  "tier": "Kids Level 1 / Trẻ Em Cấp 1",
+  "title": {
+    "en": "Farm Animals",
+    "vi": "Động Vật Trang Trại"
+  },
+  "content": {
+    "en": "This room helps parents introduce simple farm animal words through pointing, imitation, and small movement games. Children aged 4–7 learn easily when words connect with real sounds, gestures, and pretend play.",
+    "vi": "Phòng này giúp cha mẹ giới thiệu các từ vựng về động vật trang trại thông qua chỉ điểm, bắt chước và trò chơi vận động nhẹ. Trẻ 4–7 tuổi học nhanh khi từ gắn với âm thanh, cử chỉ và trò chơi tưởng tượng.",
+    "audio": "farm_animals_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "chicken-cluck",
+      "keywords_en": ["farm", "chicken", "sound"],
+      "keywords_vi": ["trang trại", "gà", "âm thanh"],
+      "copy": {
+        "en": "Teach the word “chicken” by showing a picture or toy chicken. Say the word slowly, then make a gentle “cluck cluck” sound. Let your child flap their arms like wings. Movement and sound together help the word become fun and memorable.",
+        "vi": "Dạy từ “chicken” bằng cách cho bé xem hình hoặc đồ chơi con gà. Đọc từ thật chậm rồi kêu “cluck cluck.” Rủ bé vỗ tay như cánh gà. Kết hợp chuyển động và âm thanh giúp bé nhớ từ dễ dàng."
+      },
+      "tags": ["farm", "chicken"],
+      "audio": "farm_animals_v1_chicken.mp3"
+    },
+    {
+      "slug": "sheep-baa",
+      "keywords_en": ["farm", "sheep", "sound"],
+      "keywords_vi": ["trang trại", "cừu", "âm thanh"],
+      "copy": {
+        "en": "Introduce “sheep” by pointing to a picture and saying the word clearly. Follow it with a soft, long “baaa.” Encourage your child to copy the sound and pretend to be a fluffy sheep. These silly moments help the word stick.",
+        "vi": "Giới thiệu từ “sheep” bằng cách chỉ vào hình và đọc rõ ràng. Thêm tiếng “baaa” dài và nhẹ. Khuyến khích bé bắt chước âm thanh và giả vờ làm chú cừu bông. Những khoảnh khắc ngộ nghĩnh giúp bé nhớ từ nhanh hơn."
+      },
+      "tags": ["farm", "sheep"],
+      "audio": "farm_animals_v1_sheep.mp3"
+    },
+    {
+      "slug": "pig-oink",
+      "keywords_en": ["farm", "pig", "sound"],
+      "keywords_vi": ["trang trại", "heo", "âm thanh"],
+      "copy": {
+        "en": "Teach the word “pig” by saying it slowly and adding a playful “oink oink.” Let your child pretend to snuffle or wiggle like a pig. Fun actions help children connect the word with a happy, memorable moment.",
+        "vi": "Dạy từ “pig” bằng cách đọc chậm rãi và thêm tiếng “oink oink.” Để bé bắt chước heo bằng cách ngọ nguậy hoặc khịt mũi vui nhộn. Hành động vui giúp bé ghi nhớ từ tốt hơn."
+      },
+      "tags": ["farm", "pig"],
+      "audio": "farm_animals_v1_pig.mp3"
+    },
+    {
+      "slug": "horse-neigh",
+      "keywords_en": ["farm", "horse", "sound"],
+      "keywords_vi": ["trang trại", "ngựa", "âm thanh"],
+      "copy": {
+        "en": "Introduce “horse” by tapping your fingers on a table like horse hooves and saying “horse.” Add a cheerful “neigh!” Invite your child to gallop in place. Movement makes this word lively and easy to remember.",
+        "vi": "Giới thiệu từ “horse” bằng cách gõ nhẹ ngón tay lên bàn như bước chân ngựa và đọc từ. Thêm tiếng “neigh!” vui nhộn. Rủ bé chạy tại chỗ như ngựa phi. Chuyển động khiến từ này trở nên sống động và dễ nhớ."
+      },
+      "tags": ["farm", "horse"],
+      "audio": "farm_animals_v1_horse.mp3"
+    },
+    {
+      "slug": "farm-sound-game",
+      "keywords_en": ["farm", "game", "sound"],
+      "keywords_vi": ["trang trại", "trò chơi", "âm thanh"],
+      "copy": {
+        "en": "Play a farm animal sound game. Say a word—chicken, sheep, pig, or horse—and let your child make the matching sound. Then switch roles so your child can choose an animal for you to imitate. Turn-taking keeps learning fun.",
+        "vi": "Chơi trò tiếng động vật trang trại. Đọc một từ—chicken, sheep, pig hoặc horse—và để bé phát ra âm thanh phù hợp. Đổi vai để bé chọn con vật cho bạn bắt chước. Sự luân phiên làm việc học trở nên vui và hấp dẫn."
+      },
+      "tags": ["farm", "game"],
+      "audio": "farm_animals_v1_game.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "complete"],
+      "keywords_vi": ["tất cả", "đầy đủ"],
+      "copy": {
+        "en": "Teach “chicken” with gentle clucks and flapping wing motions.\n\nIntroduce “sheep” using the long soft “baaa” and fluffy pretend play.\n\nTeach “pig” through playful “oink oink” sounds and silly movements.\n\nShow “horse” with tapping hooves and a cheerful “neigh!” plus pretend galloping.\n\nPlay a farm sound game where your child matches words with chicken, sheep, pig, and horse sounds.\n\nThese fun, active moments help children remember farm animal vocabulary naturally.",
+        "vi": "Dạy “chicken” bằng tiếng gà kêu và động tác vỗ cánh.\n\nDạy “sheep” với tiếng “baaa” dài và trò chơi giả làm cừu.\n\nDạy “pig” bằng tiếng “oink oink” và động tác vui nhộn.\n\nDạy “horse” bằng tiếng “neigh!” và chạy giả làm ngựa.\n\nChơi trò tiếng động vật với chicken, sheep, pig và horse.\n\nNhững khoảnh khắc vận động vui giúp bé ghi nhớ từ vựng trang trại tự nhiên."
+      },
+      "tags": ["all"],
+      "audio": "farm_animals_v1_chicken.mp3 farm_animals_v1_sheep.mp3 farm_animals_v1_pig.mp3 farm_animals_v1_horse.mp3 farm_animals_v1_game.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "4-7",
+    "level": "Kids Level 1",
+    "created_at": "2025-11-21T00:00:00+00:00",
+    "updated_at": "2025-11-21T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#FFF3D0"
+  }
+}
