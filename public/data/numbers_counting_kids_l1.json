@@ -1,0 +1,89 @@
+{
+  "id": "numbers_counting_kids_l1",
+  "tier": "Kids Level 1 / Trẻ Em Cấp 1",
+  "title": {
+    "en": "Numbers & Counting",
+    "vi": "Số Đếm"
+  },
+  "content": {
+    "en": "This room helps a parent or caregiver gently guide a young child (ages 4–7) into numbers and counting. You read the English out loud, point to real objects, and turn each idea into a small game. The goal is not to drill or test, but to notice how many things there are in your child’s world—stairs, toys, fruit, fingers—and say the numbers together. When counting is connected with movement, play, and warm moments with you, numbers feel friendly and natural instead of scary or “too hard.”",
+    "vi": "Phòng này giúp cha mẹ hoặc người chăm sóc nhẹ nhàng hướng dẫn bé 4–7 tuổi làm quen với số đếm. Bạn đọc tiếng Anh to lên, chỉ vào đồ vật thật và biến mỗi ý tưởng thành một trò chơi nhỏ. Mục tiêu không phải là nhồi nhét hay kiểm tra, mà là cùng bé nhận ra có bao nhiêu thứ quanh mình—bậc thang, đồ chơi, trái cây, ngón tay—rồi cùng nhau đọc số. Khi việc đếm gắn với vận động, vui chơi và những khoảnh khắc ấm áp bên bạn, các con số sẽ trở nên thân thiện và tự nhiên, không còn đáng sợ hay “quá khó” nữa.",
+    "audio": "numbers_counting_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "counting-everyday-objects",
+      "keywords_en": ["numbers", "counting", "objects", "home"],
+      "keywords_vi": ["số đếm", "đếm", "đồ vật", "ở nhà"],
+      "copy": {
+        "en": "Begin with simple counting using things you already have at home. Put a few toys, fruits, or blocks in a line and touch each one as you say the number: “one, two, three, four.” Invite your child to touch and count with you, even if the words are not clear yet. If they skip a number, just model gently: “Let’s try again: one, two, three.” You can also count steps when you go upstairs, or cookies on a plate. Keep the numbers small at first—up to five or ten—and stop while your child is still interested. The goal is to make numbers feel like a natural part of daily life, not a test they can pass or fail.",
+        "vi": "Hãy bắt đầu với việc đếm thật đơn giản bằng những thứ sẵn có trong nhà. Bạn xếp vài món đồ chơi, trái cây hoặc khối gỗ thành một hàng và chạm vào từng món khi đọc số: “one, two, three, four.” Rủ bé chạm và đếm cùng bạn, kể cả khi bé chưa phát âm rõ. Nếu bé bỏ sót một số, bạn chỉ cần làm mẫu nhẹ nhàng: “Mình thử lại nhé: one, two, three.” Bạn cũng có thể đếm bậc thang khi đi lên, hoặc chiếc bánh trên đĩa. Lúc đầu chỉ nên đếm số ít—từ một đến năm hoặc đến mười—và dừng khi bé vẫn còn hứng thú. Mục tiêu là để số đếm trở thành một phần tự nhiên của đời sống hằng ngày, chứ không phải một bài kiểm tra đúng–sai."
+      },
+      "tags": ["numbers", "home", "objects"],
+      "audio": "numbers_counting_v1_count_objects.mp3"
+    },
+    {
+      "slug": "finger-and-body-counting",
+      "keywords_en": ["numbers", "fingers", "body", "movement"],
+      "keywords_vi": ["số đếm", "ngón tay", "cơ thể", "vận động"],
+      "copy": {
+        "en": "Fingers and body parts make counting feel close and real. Hold up your hand and slowly raise one finger at a time: “one, two, three, four, five.” Ask your child to copy you, then switch roles and let them be the leader while you follow. You can also count body parts: “two eyes, one nose, ten little fingers, ten little toes.” Turn it into a playful rhyme or a gentle chant as you tap each part. If your child wiggles or moves, that is perfect—movement helps learning. This kind of counting teaches both numbers and the idea of quantity, showing that each word matches a real thing they can see and touch.",
+        "vi": "Ngón tay và các bộ phận cơ thể giúp việc đếm trở nên gần gũi và dễ hiểu. Bạn giơ bàn tay lên và từ từ nâng từng ngón: “one, two, three, four, five.” Rủ bé làm theo, rồi đổi vai để bé làm người dẫn, còn bạn là người bắt chước. Bạn cũng có thể đếm bộ phận cơ thể: “two eyes, one nose, ten little fingers, ten little toes.” Biến hoạt động này thành một câu vè hoặc điệu đọc nhẹ nhàng khi bạn chạm vào từng chỗ. Nếu bé cựa quậy hay nhún nhảy, điều đó rất tốt—vận động giúp việc học dễ vào hơn. Kiểu đếm này dạy bé cả con số lẫn ý nghĩa “có bao nhiêu”, cho thấy mỗi từ đều gắn với một thứ thật mà bé có thể nhìn và chạm vào."
+      },
+      "tags": ["numbers", "fingers", "body", "movement"],
+      "audio": "numbers_counting_v1_finger_count.mp3"
+    },
+    {
+      "slug": "number-pairs-and-groups",
+      "keywords_en": ["numbers", "pairs", "groups", "sorting"],
+      "keywords_vi": ["số đếm", "cặp đôi", "nhóm", "phân loại"],
+      "copy": {
+        "en": "Once your child is comfortable counting one by one, you can play with pairs and small groups. Put socks, shoes, or toy animals into little sets and say, “two socks, two shoes, three bears.” Ask, “How many in this group?” and count together. You can gently line things up to make them easier to see. If your child guesses first, accept brave answers and then count slowly to check. This teaches that numbers are not just a list, but also a way to describe groups of things. Keep it light and short, like a puzzle you solve together, and avoid turning it into a quiz. Curiosity will pull your child forward more strongly than pressure ever could.",
+        "vi": "Khi bé đã quen với việc đếm từng món, bạn có thể chơi với các cặp đôi và nhóm nhỏ. Hãy gom tất, giày hoặc thú nhồi bông thành những nhóm nhỏ rồi nói: “two socks, two shoes, three bears.” Hỏi bé: “Trong nhóm này có bao nhiêu món?” và cùng nhau đếm. Bạn có thể xếp các món thành hàng để bé dễ nhìn hơn. Nếu bé đoán trước, hãy đón nhận câu trả lời dũng cảm đó rồi cùng đếm chậm rãi để kiểm tra. Cách chơi này giúp bé hiểu rằng số không chỉ là một chuỗi đọc thuộc lòng, mà còn là cách để nói về số lượng đồ vật. Giữ không khí nhẹ nhàng, giống như hai mẹ con cùng giải câu đố, và tránh biến nó thành bài kiểm tra. Sự tò mò sẽ kéo bé tiến lên mạnh mẽ hơn bất kỳ áp lực nào."
+      },
+      "tags": ["numbers", "groups", "pairs"],
+      "audio": "numbers_counting_v1_number_pairs.mp3"
+    },
+    {
+      "slug": "movement-counting-games",
+      "keywords_en": ["numbers", "movement", "game", "energy"],
+      "keywords_vi": ["số đếm", "vận động", "trò chơi", "năng lượng"],
+      "copy": {
+        "en": "Active children learn well through movement, so turn counting into a mini exercise game. Choose a simple action like jumps, claps, or steps. Say, “Let’s jump five times!” and count out loud together: “one, two, three, four, five.” Then let your child choose the action and number: “ten claps,” “three big steps,” or “four tiny hops.” Laugh together if the moves are silly. If they get lost in the counting, you can slow down and guide the rhythm. This kind of game burns energy while training the brain to match each word with a beat and an action. It also shows that numbers can be fun and loud, not just something written on a worksheet.",
+        "vi": "Trẻ hiếu động học rất tốt thông qua vận động, vì vậy hãy biến việc đếm thành một trò tập thể dục nhỏ. Bạn chọn một động tác đơn giản như nhảy, vỗ tay hoặc bước chân. Nói: “Mình nhảy five lần nhé!” rồi cùng đếm to: “one, two, three, four, five.” Sau đó để bé chọn động tác và số: “ten claps”, “three big steps” hoặc “four tiny hops.” Cứ thoải mái cười nếu động tác trông ngố một chút. Nếu bé bị rối khi đếm, bạn chỉ cần chậm lại và dẫn nhịp. Trò chơi này vừa giúp bé xả năng lượng, vừa luyện cho não bộ ghép từng từ số với một nhịp và một cử động. Nó cũng cho thấy số có thể vui vẻ, ồn ào, chứ không chỉ là những ký hiệu nằm yên trên trang giấy."
+      },
+      "tags": ["numbers", "movement", "game"],
+      "audio": "numbers_counting_v1_movement_game.mp3"
+    },
+    {
+      "slug": "calm-bedtime-counting",
+      "keywords_en": ["numbers", "bedtime", "calm", "ritual"],
+      "keywords_vi": ["số đếm", "trước khi ngủ", "bình yên", "nghi thức"],
+      "copy": {
+        "en": "At night, you can use counting to slow everything down and help your child relax. As they lie in bed, invite them to look at the ceiling or close their eyes. Count something gentle together, like fingers, stars in a picture, or slow breaths: “one, two, three, four.” Speak softly and keep the numbers small so it stays soothing, not exciting. You might imagine floating balloons or little sheep and count how many go by. If your child starts to feel sleepy, let the counting fade and simply stay quiet with them. This turns numbers into a soft, safe rhythm that helps the body rest, instead of something that belongs only to school or homework.",
+        "vi": "Buổi tối, bạn có thể dùng việc đếm để làm mọi thứ chậm lại và giúp bé thư giãn. Khi bé nằm trên giường, hãy rủ bé nhìn lên trần nhà hoặc nhắm mắt lại. Cùng đếm những điều nhẹ nhàng, như ngón tay, ngôi sao trong tranh hoặc nhịp thở chậm: “one, two, three, four.” Bạn nói nhỏ, chậm và chỉ đếm những số ít để không làm bé quá phấn khích. Hai mẹ con có thể tưởng tượng những quả bóng bay hoặc chú cừu nhỏ trôi qua và đếm xem có bao nhiêu. Nếu bé bắt đầu buồn ngủ, hãy để việc đếm dần dần tan đi và chỉ nằm yên cạnh bé. Cách này biến con số thành một nhịp điệu êm dịu, giúp cơ thể nghỉ ngơi, thay vì thứ chỉ xuất hiện trong bài vở hay trường lớp."
+      },
+      "tags": ["numbers", "bedtime", "ritual"],
+      "audio": "numbers_counting_v1_bedtime_count.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full", "complete", "everything"],
+      "keywords_vi": ["tất cả", "toàn bộ", "đầy đủ", "hết"],
+      "copy": {
+        "en": "Begin with simple counting using things you already have at home. Put a few toys, fruits, or blocks in a line and touch each one as you say the number: “one, two, three, four.” Invite your child to touch and count with you, even if the words are not clear yet. If they skip a number, just model gently: “Let’s try again: one, two, three.” You can also count steps when you go upstairs, or cookies on a plate. Keep the numbers small at first—up to five or ten—and stop while your child is still interested. The goal is to make numbers feel like a natural part of daily life, not a test they can pass or fail.\n\nFingers and body parts make counting feel close and real. Hold up your hand and slowly raise one finger at a time: “one, two, three, four, five.” Ask your child to copy you, then switch roles and let them be the leader while you follow. You can also count body parts: “two eyes, one nose, ten little fingers, ten little toes.” Turn it into a playful rhyme or a gentle chant as you tap each part. If your child wiggles or moves, that is perfect—movement helps learning. This kind of counting teaches both numbers and the idea of quantity, showing that each word matches a real thing they can see and touch.\n\nOnce your child is comfortable counting one by one, you can play with pairs and small groups. Put socks, shoes, or toy animals into little sets and say, “two socks, two shoes, three bears.” Ask, “How many in this group?” and count together. You can gently line things up to make them easier to see. If your child guesses first, accept brave answers and then count slowly to check. This teaches that numbers are not just a list, but also a way to describe groups of things. Keep it light and short, like a puzzle you solve together, and avoid turning it into a quiz. Curiosity will pull your child forward more strongly than pressure ever could.\n\nActive children learn well through movement, so turn counting into a mini exercise game. Choose a simple action like jumps, claps, or steps. Say, “Let’s jump five times!” and count out loud together: “one, two, three, four, five.” Then let your child choose the action and number: “ten claps,” “three big steps,” or “four tiny hops.” Laugh together if the moves are silly. If they get lost in the counting, you can slow down and guide the rhythm. This kind of game burns energy while training the brain to match each word with a beat and an action. It also shows that numbers can be fun and loud, not just something written on a worksheet.\n\nAt night, you can use counting to slow everything down and help your child relax. As they lie in bed, invite them to look at the ceiling or close their eyes. Count something gentle together, like fingers, stars in a picture, or slow breaths: “one, two, three, four.” Speak softly and keep the numbers small so it stays soothing, not exciting. You might imagine floating balloons or little sheep and count how many go by. If your child starts to feel sleepy, let the counting fade and simply stay quiet with them. This turns numbers into a soft, safe rhythm that helps the body rest, instead of something that belongs only to school or homework.",
+        "vi": "Hãy bắt đầu với việc đếm thật đơn giản bằng những thứ sẵn có trong nhà. Bạn xếp vài món đồ chơi, trái cây hoặc khối gỗ thành một hàng và chạm vào từng món khi đọc số: “one, two, three, four.” Rủ bé chạm và đếm cùng bạn, kể cả khi bé chưa phát âm rõ. Nếu bé bỏ sót một số, bạn chỉ cần làm mẫu nhẹ nhàng: “Mình thử lại nhé: one, two, three.” Bạn cũng có thể đếm bậc thang khi đi lên, hoặc chiếc bánh trên đĩa. Lúc đầu chỉ nên đếm số ít—từ một đến năm hoặc đến mười—và dừng khi bé vẫn còn hứng thú. Mục tiêu là để số đếm trở thành một phần tự nhiên của đời sống hằng ngày, chứ không phải một bài kiểm tra đúng–sai.\n\nNgón tay và các bộ phận cơ thể giúp việc đếm trở nên gần gũi và dễ hiểu. Bạn giơ bàn tay lên và từ từ nâng từng ngón: “one, two, three, four, five.” Rủ bé làm theo, rồi đổi vai để bé làm người dẫn, còn bạn là người bắt chước. Bạn cũng có thể đếm bộ phận cơ thể: “two eyes, one nose, ten little fingers, ten little toes.” Biến hoạt động này thành một câu vè hoặc điệu đọc nhẹ nhàng khi bạn chạm vào từng chỗ. Nếu bé cựa quậy hay nhún nhảy, điều đó rất tốt—vận động giúp việc học dễ vào hơn. Kiểu đếm này dạy bé cả con số lẫn ý nghĩa “có bao nhiêu”, cho thấy mỗi từ đều gắn với một thứ thật mà bé có thể nhìn và chạm vào.\n\nKhi bé đã quen với việc đếm từng món, bạn có thể chơi với các cặp đôi và nhóm nhỏ. Hãy gom tất, giày hoặc thú nhồi bông thành những nhóm nhỏ rồi nói: “two socks, two shoes, three bears.” Hỏi bé: “Trong nhóm này có bao nhiêu món?” và cùng nhau đếm. Bạn có thể xếp các món thành hàng để bé dễ nhìn hơn. Nếu bé đoán trước, hãy đón nhận câu trả lời dũng cảm đó rồi cùng đếm chậm rãi để kiểm tra. Cách chơi này giúp bé hiểu rằng số không chỉ là một chuỗi đọc thuộc lòng, mà còn là cách để nói về số lượng đồ vật. Giữ không khí nhẹ nhàng, giống như hai mẹ con cùng giải câu đố, và tránh biến nó thành bài kiểm tra. Sự tò mò sẽ kéo bé tiến lên mạnh mẽ hơn bất kỳ áp lực nào.\n\nTrẻ hiếu động học rất tốt thông qua vận động, vì vậy hãy biến việc đếm thành một trò tập thể dục nhỏ. Bạn chọn một động tác đơn giản như nhảy, vỗ tay hoặc bước chân. Nói: “Mình nhảy five lần nhé!” rồi cùng đếm to: “one, two, three, four, five.” Sau đó để bé chọn động tác và số: “ten claps”, “three big steps” hoặc “four tiny hops.” Cứ thoải mái cười nếu động tác trông ngố một chút. Nếu bé bị rối khi đếm, bạn chỉ cần chậm lại và dẫn nhịp. Trò chơi này vừa giúp bé xả năng lượng, vừa luyện cho não bộ ghép từng từ số với một nhịp và một cử động. Nó cũng cho thấy số có thể vui vẻ, ồn ào, chứ không chỉ là những ký hiệu nằm yên trên trang giấy.\n\nBuổi tối, bạn có thể dùng việc đếm để làm mọi thứ chậm lại và giúp bé thư giãn. Khi bé nằm trên giường, hãy rủ bé nhìn lên trần nhà hoặc nhắm mắt lại. Cùng đếm những điều nhẹ nhàng, như ngón tay, ngôi sao trong tranh hoặc nhịp thở chậm: “one, two, three, four.” Bạn nói nhỏ, chậm và chỉ đếm những số ít để không làm bé quá phấn khích. Hai mẹ con có thể tưởng tượng những quả bóng bay hoặc chú cừu nhỏ trôi qua và đếm xem có bao nhiêu. Nếu bé bắt đầu buồn ngủ, hãy để việc đếm dần dần tan đi và chỉ nằm yên cạnh bé. Cách này biến con số thành một nhịp điệu êm dịu, giúp cơ thể nghỉ ngơi, thay vì thứ chỉ xuất hiện trong bài vở hay trường lớp."
+      },
+      "tags": ["all", "full", "complete"],
+      "audio": "numbers_counting_v1_count_objects.mp3 numbers_counting_v1_finger_count.mp3 numbers_counting_v1_number_pairs.mp3 numbers_counting_v1_movement_game.mp3 numbers_counting_v1_bedtime_count.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "4-7",
+    "level": "Kids Level 1",
+    "created_at": "2025-11-21T00:00:00+00:00",
+    "updated_at": "2025-11-21T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#FFF4C2"
+  }
+}
