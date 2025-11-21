@@ -1,0 +1,89 @@
+{
+  "id": "world_cultures_kids_l2",
+  "tier": "Kids Level 2 / Trẻ Em Cấp 2",
+  "title": {
+    "en": "World Cultures for Kids",
+    "vi": "Văn Hóa Thế Giới Cho Trẻ Em"
+  },
+  "content": {
+    "en": "This room introduces children to simple English words about world cultures—food, clothes, music, festivals, and traditions. Kids explore diversity gently through fun examples and parent-guided conversations.",
+    "vi": "Phòng này giúp trẻ làm quen các từ vựng tiếng Anh về văn hóa thế giới—đồ ăn, trang phục, âm nhạc, lễ hội và truyền thống. Trẻ khám phá sự đa dạng một cách nhẹ nhàng qua ví dụ vui và cuộc trò chuyện cùng cha mẹ.",
+    "audio": "world_cultures_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "world-foods",
+      "keywords_en": ["food", "world", "culture"],
+      "keywords_vi": ["đồ ăn", "thế giới", "văn hóa"],
+      "copy": {
+        "en": "Teach about world foods using simple examples. Show your child pictures of sushi, tacos, spaghetti, or bánh mì. Say the names slowly and explain that different countries enjoy different flavors. Let your child point, repeat, and say which one looks tasty. This builds curiosity and helps kids connect English words with global cultures.",
+        "vi": "Dạy về món ăn thế giới bằng ví dụ đơn giản. Cho trẻ xem hình sushi, taco, spaghetti hoặc bánh mì. Đọc tên chậm rãi và giải thích rằng mỗi nước thích hương vị khác nhau. Để trẻ chỉ, lặp lại và chọn món trông ngon. Điều này giúp trẻ tò mò và kết nối từ vựng tiếng Anh với văn hóa toàn cầu."
+      },
+      "tags": ["food", "culture"],
+      "audio": "world_cultures_v1_foods.mp3"
+    },
+    {
+      "slug": "traditional-clothes",
+      "keywords_en": ["clothes", "traditional", "culture"],
+      "keywords_vi": ["trang phục", "truyền thống", "văn hóa"],
+      "copy": {
+        "en": "Introduce traditional clothes by comparing outfits from different places. Show áo dài, kimono, hanbok, or sari. Say: “Different countries wear different clothes on special days.” Let your child describe colors or shapes they notice. This teaches respect and appreciation for cultural diversity.",
+        "vi": "Giới thiệu trang phục truyền thống bằng cách so sánh đồ từ các nơi khác nhau. Cho trẻ xem áo dài, kimono, hanbok hoặc sari. Nói: “Mỗi quốc gia có trang phục đặc biệt riêng.” Để trẻ mô tả màu sắc hoặc hình dáng. Điều này dạy trẻ sự tôn trọng và trân trọng sự đa dạng văn hóa."
+      },
+      "tags": ["clothes", "tradition"],
+      "audio": "world_cultures_v1_clothes.mp3"
+    },
+    {
+      "slug": "music-around-the-world",
+      "keywords_en": ["music", "world", "listen"],
+      "keywords_vi": ["âm nhạc", "thế giới", "lắng nghe"],
+      "copy": {
+        "en": "Teach world music by playing short clips from different cultures—drums from Africa, flutes from Asia, guitars from Spain. Say: “This is music from another country.” Let your child clap the rhythm or guess how the sound makes them feel. Music is an easy way to help kids connect with global cultures.",
+        "vi": "Dạy âm nhạc thế giới bằng cách mở đoạn nhạc ngắn từ nhiều nền văn hóa—trống châu Phi, sáo châu Á, guitar Tây Ban Nha. Nói: “Đây là âm nhạc từ một đất nước khác.” Cho trẻ vỗ tay theo nhịp hoặc nói cảm giác khi nghe. Âm nhạc giúp trẻ kết nối với văn hóa toàn cầu một cách dễ dàng."
+      },
+      "tags": ["music", "culture"],
+      "audio": "world_cultures_v1_music.mp3"
+    },
+    {
+      "slug": "festivals",
+      "keywords_en": ["festival", "holiday", "celebrate"],
+      "keywords_vi": ["lễ hội", "ngày lễ", "ăn mừng"],
+      "copy": {
+        "en": "Teach festival vocabulary by showing simple celebrations—Lantern Festival, Christmas, Diwali, or Lunar New Year. Say: “People celebrate with lights, food, and family.” Let your child describe what looks exciting or beautiful. Festivals help children understand joy across cultures.",
+        "vi": "Dạy từ vựng về lễ hội bằng cách cho trẻ xem các dịp ăn mừng—Lễ hội đèn lồng, Giáng Sinh, Diwali hoặc Tết Nguyên Đán. Nói: “Mọi người ăn mừng bằng ánh sáng, đồ ăn và gia đình.” Để trẻ mô tả điều trông vui hoặc đẹp. Lễ hội giúp trẻ hiểu niềm vui trong các nền văn hóa."
+      },
+      "tags": ["festival", "holiday"],
+      "audio": "world_cultures_v1_festivals.mp3"
+    },
+    {
+      "slug": "traditions",
+      "keywords_en": ["tradition", "family", "culture"],
+      "keywords_vi": ["truyền thống", "gia đình", "văn hóa"],
+      "copy": {
+        "en": "Teach “tradition” through family habits—giving lucky money, birthday candles, or greeting elders. Say: “A tradition is something families do again and again.” Children enjoy sharing their own traditions and hearing about others around the world.",
+        "vi": "Dạy “tradition” qua thói quen gia đình—lì xì, thổi nến sinh nhật hoặc chào người lớn. Nói: “Truyền thống là việc gia đình làm lặp lại qua nhiều năm.” Trẻ thích kể truyền thống của mình và nghe về truyền thống từ các nơi khác."
+      },
+      "tags": ["tradition", "family"],
+      "audio": "world_cultures_v1_traditions.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "complete", "full"],
+      "keywords_vi": ["tất cả", "đầy đủ", "trọn vẹn"],
+      "copy": {
+        "en": "Learn world foods like sushi and spaghetti.\n\nExplore traditional clothes like áo dài and kimono.\n\nListen to music from around the world.\n\nDiscover festivals full of lights and joy.\n\nUnderstand traditions families repeat for many years.\n\nThese words help children appreciate the beauty of different cultures in a simple and joyful way.",
+        "vi": "Học các món ăn thế giới như sushi và spaghetti.\n\nKhám phá trang phục truyền thống như áo dài và kimono.\n\nLắng nghe âm nhạc từ nhiều nơi.\n\nTìm hiểu lễ hội vui nhộn và đầy ánh sáng.\n\nHiểu truyền thống gia đình duy trì qua nhiều năm.\n\nNhững từ này giúp trẻ trân trọng vẻ đẹp của các nền văn hóa theo cách đơn giản và vui tươi."
+      },
+      "tags": ["all"],
+      "audio": "world_cultures_v1_foods.mp3 world_cultures_v1_clothes.mp3 world_cultures_v1_music.mp3 world_cultures_v1_festivals.mp3 world_cultures_v1_traditions.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "7-10",
+    "level": "Kids Level 2",
+    "created_at": "2025-11-21T00:00:00+00:00",
+    "updated_at": "2025-11-21T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#F2F2FF"
+  }
+}
