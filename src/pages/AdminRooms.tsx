@@ -167,11 +167,16 @@ export default function AdminRooms() {
     });
   };
 
-  const filteredRooms = rooms?.filter(room =>
-    room.title_en.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    room.title_vi.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    room.id.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const normalizeId = (id: string) => id.replace(/[_-]/g, '');
+  
+  const filteredRooms = rooms?.filter(room => {
+    const normalizedQuery = normalizeId(searchQuery.toLowerCase());
+    return (
+      room.title_en.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      room.title_vi.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      normalizeId(room.id.toLowerCase()).includes(normalizedQuery)
+    );
+  });
 
   const getTierColor = (tier: string) => {
     switch (tier) {
