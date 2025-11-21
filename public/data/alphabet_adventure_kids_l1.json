@@ -15,7 +15,7 @@
       "slug": "abc-warm-up-song",
       "keywords_en": ["alphabet", "song", "fun", "letters"],
       "keywords_vi": ["bảng chữ cái", "bài hát", "vui", "chữ cái"],
-      "copy": { ... SAME ... },
+      "copy": { "...": "SAME" },
       "tags": ["alphabet", "song", "warm-up"],
       "audio": "alphabet_adventure_v1_abc_song.mp3"
     },
@@ -23,7 +23,7 @@
       "slug": "letter-hunt-at-home",
       "keywords_en": ["alphabet", "game", "home", "sounds"],
       "keywords_vi": ["bảng chữ cái", "trò chơi", "ở nhà", "âm thanh"],
-      "copy": { ... SAME ... },
+      "copy": { "...": "SAME" },
       "tags": ["alphabet", "home game"],
       "audio": "alphabet_adventure_v1_letter_hunt.mp3"
     },
@@ -31,7 +31,7 @@
       "slug": "animal-alphabet-friends",
       "keywords_en": ["animals", "letters", "movement", "sounds"],
       "keywords_vi": ["con vật", "chữ cái", "vận động", "âm thanh"],
-      "copy": { ... SAME ... },
+      "copy": { "...": "SAME" },
       "tags": ["alphabet", "animals", "movement"],
       "audio": "alphabet_adventure_v1_animal_friends.mp3"
     },
@@ -39,7 +39,7 @@
       "slug": "drawing-and-tracing-letters",
       "keywords_en": ["writing", "tracing", "motor skills", "letters"],
       "keywords_vi": ["tập viết", "tô chữ", "vận động tinh", "chữ cái"],
-      "copy": { ... SAME ... },
+      "copy": { "...": "SAME" },
       "tags": ["writing", "tracing"],
       "audio": "alphabet_adventure_v1_drawing.mp3"
     },
@@ -47,11 +47,10 @@
       "slug": "alphabet-bedtime-ritual",
       "keywords_en": ["bedtime", "ritual", "review", "calm"],
       "keywords_vi": ["trước khi ngủ", "nghi thức", "ôn lại", "bình yên"],
-      "copy": { ... SAME ... },
+      "copy": { "...": "SAME" },
       "tags": ["bedtime", "alphabet", "ritual"],
       "audio": "alphabet_adventure_v1_bedtime_ritual.mp3"
     },
-
     {
       "slug": "all",
       "keywords_en": ["all", "full", "complete", "everything"],
@@ -61,10 +60,9 @@
         "vi": "Bảng chữ cái giống như một bài hát kỳ diệu mà bé có thể học thuộc. Bắt đầu bằng cách hát A–B–C thật chậm, vỗ tay theo từng chữ. Chỉ vào các chữ cái to, nhiều màu trên trang giấy hoặc màn hình khi hát. Đừng lo về sai sót.\n\nBiến ngôi nhà thành một sân chơi bảng chữ cái bí mật. Chọn một chữ như “B” và rủ bé tìm đồ vật bắt đầu bằng âm đó.\n\nGhép chữ cái với động vật vui: A cho alligator, B cho bear, C cho cat.\n\nCho bé tô chữ thật lớn trên giấy hoặc trong không khí.\n\nBiến bảng chữ cái thành nghi thức ngủ nhẹ nhàng với ba chữ cái mỗi tối."
       },
       "tags": ["all", "full", "complete"],
-      "audio": "alphabet_adventure_v1_all.mp3"
+      "audio": "alphabet_adventure_v1_abc_song.mp3 alphabet_adventure_v1_letter_hunt.mp3 alphabet_adventure_v1_animal_friends.mp3 alphabet_adventure_v1_drawing.mp3 alphabet_adventure_v1_bedtime_ritual.mp3"
     }
   ],
-
   "meta": {
     "age_range": "4-7",
     "level": "Kids Level 1",
