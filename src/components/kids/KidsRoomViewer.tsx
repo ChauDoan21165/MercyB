@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Volume2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Volume2, ArrowLeft } from 'lucide-react';
 
 interface RoomEntry {
   slug: string;
@@ -72,6 +73,17 @@ export const KidsRoomViewer = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-8 space-y-8">
+      {/* Back Button */}
+      <Button
+        variant="ghost"
+        size="sm"
+        onClick={() => window.history.back()}
+        className="mb-4"
+      >
+        <ArrowLeft className="w-4 h-4 mr-2" />
+        Back to Kids Area
+      </Button>
+
       {/* Header */}
       <div className="space-y-4">
         <div>
