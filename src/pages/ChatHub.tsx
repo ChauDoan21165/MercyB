@@ -17,7 +17,7 @@ import { RelatedRooms } from "@/components/RelatedRooms";
 import { MessageActions } from "@/components/MessageActions";
 import { MatchmakingButton } from "@/components/MatchmakingButton";
 import { usePoints } from "@/hooks/usePoints";
-import { PairedHighlightedContentWithDictionary } from "@/components/PairedHighlightedContentWithDictionary";
+
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useCredits } from "@/hooks/useCredits";
 import { CreditLimitModal } from "@/components/CreditLimitModal";
@@ -892,19 +892,12 @@ const ChatHub = () => {
             )}
           </div>
 
-          {/* Room Essay with Hovering Dictionary - Always Visible */}
+          {/* Room Essay - Always Visible */}
           {roomEssay && roomEssay.en && roomEssay.vi && (
             <div className="mb-4 p-4 bg-muted/30 rounded-lg border border-border/50" key="room-essay-permanent">
-              <PairedHighlightedContentWithDictionary
+              <PairedHighlightedContent
                 englishContent={roomEssay.en}
                 vietnameseContent={roomEssay.vi}
-                roomKeywords={keywordMenu?.en || []}
-                onWordClick={() => {
-                  const messageWithAudio = mainMessages.find(m => m.audioFile);
-                  if (messageWithAudio) {
-                    handleAudioClick(messageWithAudio);
-                  }
-                }}
               />
             </div>
           )}
