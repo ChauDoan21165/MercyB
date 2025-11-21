@@ -61,6 +61,7 @@ import AdminSystemMetrics from "./pages/AdminSystemMetrics";
 import KidsLevel1 from "./pages/KidsLevel1";
 import KidsLevel2 from "./pages/KidsLevel2";
 import KidsLevel3 from "./pages/KidsLevel3";
+import KidsRoomValidation from "./pages/KidsRoomValidation";
 
 const queryClient = new QueryClient();
 
@@ -156,6 +157,7 @@ const App = () => {
           <Route path="/admin/system-metrics" element={<AdminSystemMetrics />} />
           <Route path="/audio-test" element={<AudioTestPage />} />
           <Route path="/audio-upload" element={<AudioUpload />} />
+          <Route path="/kids-validation" element={<KidsRoomValidation />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         </BrowserRouter>
