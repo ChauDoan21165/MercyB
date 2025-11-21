@@ -122,13 +122,25 @@ Must include:
 - ✅ Admin copy buttons (room ID, JSON filename) - only for admins
 
 ### Room Essay Display
-Use `<PairedHighlightedContentWithDictionary>` for:
-- Side-by-side EN/VI display
-- Word hover dictionary
-- Clickable keywords
-- Smooth animations
+**CRITICAL**: Use `<PairedHighlightedContentWithDictionary>` component (same as VIP rooms) for:
+- Side-by-side EN/VI display with proper formatting
+- Word hover dictionary functionality
+- Interactive word highlighting
+- Clickable keywords for audio playback
+- Consistent with all other Mercy Blade room tiers
+
+```tsx
+<PairedHighlightedContentWithDictionary
+  englishContent={roomData.content.en}
+  vietnameseContent={roomData.content.vi}
+  roomKeywords={roomData.entries.flatMap(e => e.keywords_en)}
+  onWordClick={() => {/* trigger audio */}}
+/>
+```
 
 ### Entry Cards
+Use the same pattern as room introduction with `PairedHighlightedContentWithDictionary`:
+
 ```tsx
 <Card className="border-2" style={{ borderLeftColor: roomColor, borderLeftWidth: '4px' }}>
   <CardHeader className="bg-muted/50">
@@ -140,13 +152,17 @@ Use `<PairedHighlightedContentWithDictionary>` for:
     </div>
   </CardHeader>
   <CardContent>
-    <h4 className="bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">ENGLISH</h4>
-    <p>{content.en}</p>
-    <p className="text-muted-foreground"><strong>Keywords:</strong> {keywords_en.join(', ')}</p>
+    <PairedHighlightedContentWithDictionary
+      englishContent={entry.copy.en}
+      vietnameseContent={entry.copy.vi}
+      roomKeywords={entry.keywords_en}
+      onWordClick={() => {/* trigger audio */}}
+    />
     
-    <h4 className="bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">TIẾNG VIỆT</h4>
-    <p>{content.vi}</p>
-    <p className="text-muted-foreground"><strong>Từ khóa:</strong> {keywords_vi.join(', ')}</p>
+    <div className="text-sm text-muted-foreground">
+      <strong>Keywords:</strong> {keywords_en.join(', ')}
+      <strong>Từ khóa:</strong> {keywords_vi.join(', ')}
+    </div>
     
     <AudioPlayer audioPath={audio_en} />
     <AudioPlayer audioPath={audio_vi} />
@@ -155,10 +171,11 @@ Use `<PairedHighlightedContentWithDictionary>` for:
 ```
 
 ### Message Actions
-Every AI response must have:
-- Copy button (`<MessageActions>`)
-- Audio playback controls
-- Timestamp
+Integrated within `PairedHighlightedContentWithDictionary` component:
+- Copy functionality built into the component
+- Word clicking triggers audio playback
+- Hover dictionary for vocabulary learning
+- Consistent with VIP room patterns
 
 ## 🔧 Admin Features
 
