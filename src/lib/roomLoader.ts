@@ -31,9 +31,10 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       if (hasEntries || hasKeywords) {
         // Transform database format to expected format
         let keywordMenu: { en: string[]; vi: string[] } = { en: [], vi: [] };
-        if (hasEntries) {
+      if (hasEntries) {
           const enList: string[] = [];
           const viList: string[] = [];
+          const seenKeywords = new Set<string>();
           (dbRoom.entries as any[]).forEach((entry: any) => {
             const titleText = typeof entry.title === 'object' ? entry.title?.en : entry.title;
             const en = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0
@@ -43,7 +44,10 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
             const vi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0
               ? String(entry.keywords_vi[0])
               : (titleViText || entry.slug || '');
-            if (en) {
+            // Deduplicate by English keyword (case-insensitive)
+            const normalizedEn = en.toLowerCase().trim();
+            if (en && !seenKeywords.has(normalizedEn)) {
+              seenKeywords.add(normalizedEn);
               enList.push(en);
               viList.push(vi);
             }
@@ -225,6 +229,7 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
     if (Array.isArray(jsonData?.entries)) {
       const enList: string[] = [];
       const viList: string[] = [];
+      const seenKeywords = new Set<string>();
 
       (jsonData.entries as any[]).forEach((entry: any) => {
         const titleText = typeof entry.title === 'object' ? entry.title?.en : entry.title;
@@ -235,7 +240,10 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
         const vi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0
           ? String(entry.keywords_vi[0])
           : (titleViText || entry.slug || '');
-        if (en) {
+        // Deduplicate by English keyword (case-insensitive)
+        const normalizedEn = en.toLowerCase().trim();
+        if (en && !seenKeywords.has(normalizedEn)) {
+          seenKeywords.add(normalizedEn);
           enList.push(en);
           viList.push(vi);
         }
