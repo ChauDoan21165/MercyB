@@ -88,10 +88,15 @@ const ChatHub = () => {
   const [matchedEntryId, setMatchedEntryId] = useState<string | null>(null);
   const [debugSearch, setDebugSearch] = useState("");
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [roomNameOverride, setRoomNameOverride] = useState<{ nameEn: string; nameVi: string } | null>(null);
 
   // Use centralized room metadata
   const info = getRoomInfo(roomId || "");
-  const currentRoom = info ? { nameVi: info.nameVi, nameEn: info.nameEn } : { nameVi: "Phòng không xác định", nameEn: "Unknown Room" };
+  const currentRoom = roomNameOverride
+    ? { nameVi: roomNameOverride.nameVi, nameEn: roomNameOverride.nameEn }
+    : info
+      ? { nameVi: info.nameVi, nameEn: info.nameEn }
+      : { nameVi: "Phòng không xác định", nameEn: "Unknown Room" };
 
   const handleRefreshRooms = () => {
     setIsRefreshing(true);
@@ -109,6 +114,33 @@ const ChatHub = () => {
     }, 300);
   };
 
+  // Fallback: load room titles from database when manifest metadata is missing
+  useEffect(() => {
+    if (!roomId) return;
+
+    // If manifest has info, prefer that and clear any override
+    if (info) {
+      setRoomNameOverride(null);
+      return;
+    }
+
+    const loadRoomTitle = async () => {
+      const { data, error } = await supabase
+        .from('rooms')
+        .select('title_en, title_vi')
+        .eq('id', roomId)
+        .maybeSingle();
+
+      if (data && !error) {
+        setRoomNameOverride({
+          nameEn: data.title_en || "Unknown Room",
+          nameVi: data.title_vi || "Phòng không xác định",
+        });
+      }
+    };
+
+    loadRoomTitle();
+  }, [roomId, info]);
   // Fetch username
   useEffect(() => {
     const fetchUsername = async () => {
