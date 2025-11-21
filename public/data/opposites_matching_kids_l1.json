@@ -1,0 +1,89 @@
+{
+  "id": "opposites_matching_kids_l1",
+  "tier": "Kids Level 1 / Trẻ Em Cấp 1",
+  "title": {
+    "en": "Opposites & Matching",
+    "vi": "Trái Nghĩa & Ghép Đôi"
+  },
+  "content": {
+    "en": "This room helps a parent or caregiver guide a young child (ages 4–7) to understand simple opposites through real objects, movement, and playful matching games. You read the English aloud and turn each idea into a tiny activity—big and small, fast and slow, up and down. The goal is not memorization, but helping your child notice contrast in the world and connect each pair of opposites with something they can see, touch, or do.",
+    "vi": "Phòng này giúp cha mẹ hoặc người chăm sóc hướng dẫn bé 4–7 tuổi hiểu các cặp từ trái nghĩa thông qua đồ vật thật, vận động và trò chơi ghép đôi vui nhộn. Bạn đọc tiếng Anh to lên và biến từng ý tưởng thành hoạt động nhỏ—big và small, fast và slow, up và down. Mục tiêu không phải là học thuộc lòng, mà là để bé nhận ra sự đối lập trong thế giới quanh mình và kết nối từng cặp từ với những điều bé có thể nhìn, chạm hoặc làm.",
+    "audio": "opposites_matching_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "big-and-small",
+      "keywords_en": ["opposites", "big", "small", "objects"],
+      "keywords_vi": ["trái nghĩa", "to", "nhỏ", "đồ vật"],
+      "copy": {
+        "en": "Begin with the easiest and most visual opposite pair: big and small. Place two objects side by side—a big ball and a small ball, a big book and a small toy. Point and say, “big… small,” slowly and clearly. Then let your child choose two objects and decide which one is big and which one is small. They do not need to be perfect; the goal is noticing size. You can play a little guessing game by hiding objects under a cloth and revealing them one by one: “big or small?” This simple contrast helps build early thinking skills and gives your child confidence to use English in real situations.",
+        "vi": "Bắt đầu với cặp trái nghĩa dễ nhất và dễ nhìn thấy nhất: big và small. Bạn đặt hai đồ vật cạnh nhau—một quả bóng to và một quả bóng nhỏ, một quyển sách lớn và một món đồ chơi nhỏ. Chỉ và đọc chậm rãi: “big… small.” Sau đó để bé tự chọn hai món đồ và quyết định món nào là big, món nào là small. Không cần chính xác hoàn toàn; mục tiêu là biết quan sát kích thước. Bạn có thể chơi trò đoán bằng cách che đồ vật dưới khăn rồi mở từng món: “big hay small?” Sự đối lập đơn giản này giúp phát triển tư duy ban đầu và tạo sự tự tin khi bé dùng tiếng Anh trong tình huống thật."
+      },
+      "tags": ["opposites", "size"],
+      "audio": "opposites_matching_v1_big_small.mp3"
+    },
+    {
+      "slug": "fast-and-slow",
+      "keywords_en": ["opposites", "fast", "slow", "movement"],
+      "keywords_vi": ["trái nghĩa", "nhanh", "chậm", "vận động"],
+      "copy": {
+        "en": "Children love movement, so fast and slow is a perfect pair to learn through play. Walk across the room slowly while saying, “slow… slow…” Then walk quickly while saying, “fast!” Invite your child to copy you, then let them become the leader. You can also use toy cars, rolling one slowly and the other quickly. If your child mixes the two, simply model again without correcting too hard—opposites become clear over time. This active practice teaches both English words and the feeling behind them, making learning natural instead of forced.",
+        "vi": "Trẻ rất thích vận động, nên fast và slow là một cặp hoàn hảo để học qua chơi. Bạn đi thật chậm trong phòng và đọc: “slow… slow…” rồi đi nhanh và đọc: “fast!” Rủ bé làm theo, rồi đổi vai để bé làm người dẫn. Bạn cũng có thể dùng xe đồ chơi—cho một chiếc chạy chậm, chiếc còn lại chạy nhanh. Nếu bé lẫn lộn hai từ, bạn chỉ cần làm mẫu lại mà không chỉnh quá nhiều—các từ trái nghĩa sẽ dần rõ ràng. Cách học này giúp bé hiểu cả từ tiếng Anh lẫn cảm giác thật của fast và slow, khiến việc học tự nhiên mà không ép buộc."
+      },
+      "tags": ["movement", "opposites"],
+      "audio": "opposites_matching_v1_fast_slow.mp3"
+    },
+    {
+      "slug": "up-and-down",
+      "keywords_en": ["opposites", "up", "down", "actions"],
+      "keywords_vi": ["trái nghĩa", "lên", "xuống", "hành động"],
+      "copy": {
+        "en": "Up and down is a fun pair to act out. Raise your hands high and say, “up!” Then lower them and say, “down!” Invite your child to mirror you. You can play with toys, too—move a teddy bear up the stairs of a toy house, then down again. You can even use pillows to build a tiny “up and down” path your child can step over while repeating the words. Because the movement is clear and big, children quickly understand the meaning. The goal is for the words to feel alive, not just spoken once and forgotten.",
+        "vi": "Up và down là cặp rất vui để diễn tả bằng hành động. Bạn giơ tay thật cao và đọc: “up!” rồi hạ tay xuống và đọc: “down!” Rủ bé làm theo bạn. Bạn cũng có thể dùng đồ chơi—cho gấu bông đi lên cầu thang đồ chơi rồi đi xuống. Bạn có thể xếp gối thành một đường nhỏ để bé bước “lên” và “xuống” khi đọc từ. Vì chuyển động rõ ràng và to, bé sẽ hiểu rất nhanh. Mục tiêu là để từ vựng trở nên sống động, chứ không chỉ được nói một lần rồi quên mất."
+      },
+      "tags": ["actions", "opposites"],
+      "audio": "opposites_matching_v1_up_down.mp3"
+    },
+    {
+      "slug": "hot-and-cold",
+      "keywords_en": ["opposites", "hot", "cold", "temperature"],
+      "keywords_vi": ["trái nghĩa", "nóng", "lạnh", "nhiệt độ"],
+      "copy": {
+        "en": "For hot and cold, use safe and simple examples. Touch a warm cup of water and say, “hot,” then touch something cool like a metal spoon and say, “cold.” Let your child feel both and repeat the words. You can also show pictures: a sun for hot, a snowflake for cold. Play a guessing game by showing objects and asking, “hot or cold?” Keep everything safe—no very hot items. This pair teaches children how English describes sensations, not just things they can see.",
+        "vi": "Với hot và cold, bạn hãy dùng ví dụ đơn giản và an toàn. Chạm vào cốc nước ấm và đọc: “hot,” rồi chạm vào vật mát như muỗng kim loại và đọc: “cold.” Để bé cảm nhận cả hai và lặp lại từ. Bạn có thể dùng tranh minh họa: mặt trời cho hot, bông tuyết cho cold. Chơi trò đoán bằng cách giơ đồ vật và hỏi: “hot hay cold?” Hãy luôn đảm bảo an toàn—không dùng đồ quá nóng. Cặp từ này giúp bé hiểu rằng tiếng Anh cũng mô tả cảm giác, không chỉ đồ vật nhìn thấy được."
+      },
+      "tags": ["temperature", "opposites"],
+      "audio": "opposites_matching_v1_hot_cold.mp3"
+    },
+    {
+      "slug": "light-and-heavy",
+      "keywords_en": ["opposites", "light", "heavy", "weight"],
+      "keywords_vi": ["trái nghĩa", "nhẹ", "nặng", "trọng lượng"],
+      "copy": {
+        "en": "Light and heavy is a great way to help your child feel the meaning of opposites. Pick up a light object, like a small ball, and say “light.” Then pick up a heavier object, like a book, and say “heavy.” Let your child try lifting both. You can ask, “Which one is heavy?” and encourage brave guesses. If your child mixes them up, smile and try again together. Feeling the difference makes the words real, turning English into a hands-on experience.",
+        "vi": "Light và heavy là một cách tuyệt vời để bé cảm nhận rõ nghĩa của từ trái. Bạn cầm một vật nhẹ như quả bóng nhỏ và đọc: “light.” Sau đó cầm vật nặng hơn như quyển sách và đọc: “heavy.” Để bé thử nhấc cả hai. Hỏi bé: “Cái nào heavy?” và khuyến khích những câu trả lời dũng cảm. Nếu bé nhầm, bạn chỉ cần cười và thử lại cùng bé. Khi được cảm nhận bằng tay, từ vựng trở nên thật sự có ý nghĩa, biến tiếng Anh thành trải nghiệm trực tiếp."
+      },
+      "tags": ["weight", "opposites"],
+      "audio": "opposites_matching_v1_light_heavy.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full", "complete"],
+      "keywords_vi": ["tất cả", "đầy đủ", "hoàn chỉnh"],
+      "copy": {
+        "en": "Begin with the easiest and most visual opposite pair: big and small…\n\nChildren love movement, so fast and slow is perfect to learn through play…\n\nUp and down is fun to act out through big, clear motions…\n\nFor hot and cold, use simple safe examples like warm water and a cool spoon…\n\nLight and heavy helps children feel the meaning of opposites with their own hands.",
+        "vi": "Bắt đầu với cặp trái nghĩa dễ nhìn nhất: big và small…\n\nTrẻ thích vận động nên fast và slow rất phù hợp để học qua chơi…\n\nUp và down rất vui để diễn tả bằng cử động rõ ràng…\n\nVới hot và cold, dùng ví dụ an toàn như nước ấm và muỗng mát…\n\nLight và heavy giúp bé cảm nhận từ bằng đôi tay của chính mình."
+      },
+      "tags": ["all", "full"],
+      "audio": "opposites_matching_v1_big_small.mp3 opposites_matching_v1_fast_slow.mp3 opposites_matching_v1_up_down.mp3 opposites_matching_v1_hot_cold.mp3 opposites_matching_v1_light_heavy.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "4-7",
+    "level": "Kids Level 1",
+    "created_at": "2025-11-21T00:00:00+00:00",
+    "updated_at": "2025-11-21T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#FFD8C6"
+  }
+}
