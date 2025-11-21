@@ -179,6 +179,9 @@ export default function AdminRooms() {
       case "vip1": return "bg-blue-500";
       case "vip2": return "bg-purple-500";
       case "vip3": return "bg-orange-500";
+      case "vip4": return "bg-pink-500";
+      case "vip5": return "bg-cyan-500";
+      case "vip6": return "bg-red-500";
       default: return "bg-gray-500";
     }
   };
