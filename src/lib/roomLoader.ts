@@ -6,12 +6,21 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
   console.log('Input roomId:', roomId);
   console.log('Input tier:', tier);
 
+  // Handle kids room ID mapping
+  // Kids Level 1 rooms use format: alphabet_adventure_kids_l1
+  // but are stored in DB as: alphabet-adventure
+  let dbRoomId = roomId;
+  if (roomId.endsWith('_kids_l1')) {
+    dbRoomId = roomId.replace('_kids_l1', '').replace(/_/g, '-');
+    console.log('🎯 Kids room detected, mapping:', roomId, '→', dbRoomId);
+  }
+
   // First try to load from database
   try {
     const { data: dbRoom, error } = await supabase
       .from('rooms')
       .select('*')
-      .eq('id', roomId)
+      .eq('id', dbRoomId)
       .maybeSingle();
 
     if (dbRoom && !error) {
