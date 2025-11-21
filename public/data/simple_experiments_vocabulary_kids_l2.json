@@ -1,0 +1,89 @@
+{
+  "id": "simple_experiments_vocabulary_kids_l2",
+  "tier": "Kids Level 2 / Trẻ Em Cấp 2",
+  "title": {
+    "en": "Simple Experiments Vocabulary",
+    "vi": "Từ Vựng Thí Nghiệm Đơn Giản"
+  },
+  "content": {
+    "en": "This room teaches children the basic words they’ll use during simple home science experiments—mix, test, change, record, and observe results. Parents guide safe activities so kids learn these words through hands-on exploration, not memorization.",
+    "vi": "Phòng này dạy trẻ các từ vựng cơ bản khi làm thí nghiệm khoa học đơn giản tại nhà—trộn, kiểm tra, thay đổi, ghi lại và quan sát kết quả. Cha mẹ hướng dẫn hoạt động an toàn để trẻ học qua trải nghiệm thực tế thay vì học thuộc.",
+    "audio": "simple_experiments_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "mix",
+      "keywords_en": ["mix", "combine", "experiment"],
+      "keywords_vi": ["trộn", "kết hợp", "thí nghiệm"],
+      "copy": {
+        "en": "Teach “mix” with two safe ingredients—water and food coloring, or sand and small stones. Say: “Mix means put things together.” Let your child swirl, stir, or shake the mixture. Kids learn quickly when movement, sight, and action are combined.",
+        "vi": "Dạy từ “mix” bằng hai nguyên liệu an toàn—nước và màu thực phẩm, hoặc cát và sỏi nhỏ. Nói: “Mix nghĩa là trộn các thứ lại với nhau.” Cho bé khuấy hoặc lắc hỗn hợp. Trẻ học nhanh khi kết hợp chuyển động, hình ảnh và hành động."
+      },
+      "tags": ["mix"],
+      "audio": "simple_experiments_v1_mix.mp3"
+    },
+    {
+      "slug": "test",
+      "keywords_en": ["test", "try", "experiment"],
+      "keywords_vi": ["kiểm tra", "thử", "thí nghiệm"],
+      "copy": {
+        "en": "Teach “test” by trying different options—testing which object sinks or floats, which toy rolls farther, or which paper towel absorbs more water. Say: “We test to see what works.” Kids love comparing results and discovering answers on their own.",
+        "vi": "Dạy “test” bằng cách thử nhiều lựa chọn—đồ vật chìm hay nổi, đồ chơi nào lăn xa hơn, giấy nào thấm nước tốt hơn. Nói: “Chúng ta test để xem cái nào hiệu quả.” Trẻ thích so sánh kết quả và tự khám phá câu trả lời."
+      },
+      "tags": ["test"],
+      "audio": "simple_experiments_v1_test.mp3"
+    },
+    {
+      "slug": "change",
+      "keywords_en": ["change", "adjust", "experiment"],
+      "keywords_vi": ["thay đổi", "điều chỉnh", "thí nghiệm"],
+      "copy": {
+        "en": "Teach “change” by adjusting one part of an experiment—more water, less sand, different colors, or a new direction for a rolling ball. Say: “We change one thing to see what happens next.” This builds early scientific thinking.",
+        "vi": "Dạy “change” bằng cách thay đổi một phần của thí nghiệm—thêm nước, bớt cát, đổi màu hoặc đổi hướng lăn của quả bóng. Nói: “Ta thay đổi một thứ để xem điều gì xảy ra tiếp theo.” Điều này giúp trẻ phát triển tư duy khoa học."
+      },
+      "tags": ["change"],
+      "audio": "simple_experiments_v1_change.mp3"
+    },
+    {
+      "slug": "record",
+      "keywords_en": ["record", "write", "note"],
+      "keywords_vi": ["ghi lại", "viết", "ghi chú"],
+      "copy": {
+        "en": "Teach “record” by helping your child draw simple pictures of what happened—a cup full vs. empty, a big splash vs. small splash, or a red mixture vs. blue mixture. Say: “Record means draw or write what happened.” Kids enjoy making their own little science notes.",
+        "vi": "Dạy “record” bằng cách giúp bé vẽ lại điều đã xảy ra—cốc đầy so với cốc rỗng, vệt nước lớn so với nhỏ, hỗn hợp đỏ so với xanh. Nói: “Record nghĩa là vẽ hoặc viết lại điều đã xảy ra.” Trẻ rất thích tạo ghi chú khoa học của riêng mình."
+      },
+      "tags": ["record"],
+      "audio": "simple_experiments_v1_record.mp3"
+    },
+    {
+      "slug": "observe-results",
+      "keywords_en": ["observe", "results", "science"],
+      "keywords_vi": ["quan sát", "kết quả", "khoa học"],
+      "copy": {
+        "en": "Teach “observe results” by asking your child what changed. Did the water become darker? Did the ball roll faster? Did the bubbles grow or shrink? Say: “Observe the results—what do you notice?” This makes science personal, clear, and fun.",
+        "vi": "Dạy “observe results” bằng cách hỏi trẻ điều gì đã thay đổi. Nước có đậm hơn không? Bóng lăn nhanh hơn không? Bọt có to hay nhỏ lại? Nói: “Observe the results—con thấy gì?” Điều này giúp khoa học trở nên rõ ràng và thú vị."
+      },
+      "tags": ["observe", "results"],
+      "audio": "simple_experiments_v1_observe_results.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full", "complete"],
+      "keywords_vi": ["tất cả", "đầy đủ", "trọn vẹn"],
+      "copy": {
+        "en": "Teach “mix” by combining simple materials.\n\nTeach “test” by trying different options and seeing what works.\n\nTeach “change” by adjusting one part of the experiment.\n\nTeach “record” by drawing or writing what happened.\n\nTeach “observe results” by noticing what changed.\n\nThese words guide children through hands-on science in a simple, joyful way.",
+        "vi": "Dạy “mix” bằng cách trộn các vật liệu đơn giản.\n\nDạy “test” bằng cách thử nhiều lựa chọn.\n\nDạy “change” bằng cách điều chỉnh một phần của thí nghiệm.\n\nDạy “record” bằng cách vẽ hoặc ghi lại thay đổi.\n\nDạy “observe results” bằng cách quan sát điều đã thay đổi.\n\nNhững từ này giúp trẻ trải nghiệm khoa học thú vị và nhẹ nhàng."
+      },
+      "tags": ["all"],
+      "audio": "simple_experiments_v1_mix.mp3 simple_experiments_v1_test.mp3 simple_experiments_v1_change.mp3 simple_experiments_v1_record.mp3 simple_experiments_v1_observe_results.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "7-10",
+    "level": "Kids Level 2",
+    "created_at": "2025-11-21T00:00:00+00:00",
+    "updated_at": "2025-11-21T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#F2F7FF"
+  }
+}
