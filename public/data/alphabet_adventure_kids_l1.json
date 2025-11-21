@@ -8,7 +8,7 @@
   "content": {
     "en": "A gentle, playful room where kids aged 4–7 meet the alphabet through songs, games, animals, drawing, and bedtime rituals. Parents guide short, happy moments that make letters feel like friendly characters instead of homework.",
     "vi": "Một phòng chơi nhẹ nhàng, nơi trẻ 4–7 tuổi làm quen bảng chữ cái qua bài hát, trò chơi, con vật, vẽ và nghi thức trước giờ ngủ. Cha mẹ dẫn dắt những khoảnh khắc ngắn, vui, để chữ cái trở nên thân thiện thay vì bài vở.",
-    "audio": "alphabet_adventure_intro_kids_l1.mp3"
+    "audio": "alphabet_adventure_v1_intro.mp3"
   },
   "entries": [
     {
@@ -20,8 +20,7 @@
         "vi": "Bảng chữ cái giống như một bài hát kỳ diệu mà bé có thể học thuộc. Bắt đầu bằng cách hát A–B–C thật chậm, vỗ tay theo từng chữ. Chỉ vào các chữ cái to, nhiều màu trên trang giấy hoặc màn hình khi hát. Đừng lo về sai sót; cứ tận hưởng nhịp điệu và âm thanh. Khi bé mỉm cười hoặc hát theo, hãy lặp lại bài hát thêm một lần. Dần dần, các chữ cái sẽ trở nên thân quen, như những người bạn nhỏ bé gặp mỗi ngày."
       },
       "tags": ["alphabet", "song", "warm-up"],
-      "audio": "alphabet_adventure_kids_l1_e1_en.mp3",
-      "audio_vi": "alphabet_adventure_kids_l1_e1_vi.mp3"
+      "audio": "alphabet_adventure_v1_abc_song.mp3"
     },
     {
       "slug": "letter-hunt-at-home",
@@ -32,8 +31,7 @@
         "vi": "Biến ngôi nhà thành một sân chơi bảng chữ cái bí mật. Chọn một chữ, ví dụ “B”, và rủ bé tìm đồ vật bắt đầu bằng âm đó: bóng, sách, ba lô. Nói từ thật chậm và nhấn nhẹ âm đầu. Ăn mừng mỗi lần bé đoán đúng bằng một cái vỗ tay hoặc tiếng “đúng rồi!”. Nếu bé bí, hãy gợi ý thay vì nói luôn đáp án. Trò chơi đơn giản này biến đồ vật hằng ngày thành dụng cụ học tập và giúp chữ cái trở nên thật, hữu ích và thú vị."
       },
       "tags": ["alphabet", "home game"],
-      "audio": "alphabet_adventure_kids_l1_e2_en.mp3",
-      "audio_vi": "alphabet_adventure_kids_l1_e2_vi.mp3"
+      "audio": "alphabet_adventure_v1_letter_hunt.mp3"
     },
     {
       "slug": "animal-alphabet-friends",
@@ -44,8 +42,7 @@
         "vi": "Trẻ rất thích động vật, nên hãy để chữ cái mượn một chút phép màu đó. Ghép mỗi chữ với một con vật vui: A cho alligator, B cho bear, C cho cat. Cho bé xem hình, đọc tên con vật, rồi cùng lặp lại âm đầu. Rủ bé bắt chước dáng đi hay động tác của con vật khi nói chữ: “B, B, bear!”. Sự kết hợp vui nhộn giữa âm thanh, hình ảnh và chuyển động giúp bảng chữ cái in sâu một cách nhẹ nhàng, như đang chơi chứ không phải học."
       },
       "tags": ["alphabet", "animals", "movement"],
-      "audio": "alphabet_adventure_kids_l1_e3_en.mp3",
-      "audio_vi": "alphabet_adventure_kids_l1_e3_vi.mp3"
+      "audio": "alphabet_adventure_v1_animal_friends.mp3"
     },
     {
       "slug": "drawing-and-tracing-letters",
@@ -56,8 +53,7 @@
         "vi": "Học chữ qua đôi tay giúp chúng ở lại lâu hơn trong trí nhớ. Bắt đầu với hình to: vẽ một chữ “A” thật lớn trên giấy hoặc trong không khí và để bé dùng ngón tay hay bút màu tô theo. Nhắc tên chữ mỗi lần bé đi theo nét. Khen ngợi sự cố gắng, không đòi hỏi hoàn hảo—nét cong lệch cũng được. Bạn có thể tô chữ trên cát, gạo hoặc ô cửa mờ hơi nước. Mục tiêu là nối cảm giác vận động với âm thanh của từng chữ."
       },
       "tags": ["writing", "tracing"],
-      "audio": "alphabet_adventure_kids_l1_e4_en.mp3",
-      "audio_vi": "alphabet_adventure_kids_l1_e4_vi.mp3"
+      "audio": "alphabet_adventure_v1_drawing.mp3"
     },
     {
       "slug": "alphabet-bedtime-ritual",
@@ -68,8 +64,7 @@
         "vi": "Hãy biến bảng chữ cái thành một nghi thức nhẹ nhàng trước giờ ngủ. Khi bé nằm yên, chọn ba chữ cho buổi tối, như A, B và C. Thì thầm các chữ thật chậm, rồi cùng nghĩ một từ dịu dàng cho mỗi chữ: A cho apple, B cho blanket, C cho cuddle. Để bé tự chọn thêm một số từ. Khoảnh khắc ôn lại yên tĩnh cuối ngày giúp việc học trở nên ấm áp và dễ chịu. Lâu dần, bảng chữ cái sẽ gắn với cảm giác an toàn và ký ức hạnh phúc."
       },
       "tags": ["bedtime", "alphabet", "ritual"],
-      "audio": "alphabet_adventure_kids_l1_e5_en.mp3",
-      "audio_vi": "alphabet_adventure_kids_l1_e5_vi.mp3"
+      "audio": "alphabet_adventure_v1_bedtime_ritual.mp3"
     },
     {
       "slug": "all",
@@ -80,8 +75,7 @@
         "vi": "Bảng chữ cái giống như một bài hát kỳ diệu mà bé có thể học thuộc. Bắt đầu bằng cách hát A–B–C thật chậm, vỗ tay theo từng chữ. Chỉ vào các chữ cái to, nhiều màu trên trang giấy hoặc màn hình khi hát. Đừng lo về sai sót; cứ tận hưởng nhịp điệu và âm thanh. Khi bé mỉm cười hoặc hát theo, hãy lặp lại bài hát thêm một lần. Dần dần, các chữ cái sẽ trở nên thân quen, như những người bạn nhỏ bé gặp mỗi ngày.\n\nBiến ngôi nhà thành một sân chơi bảng chữ cái bí mật. Chọn một chữ, ví dụ “B”, và rủ bé tìm đồ vật bắt đầu bằng âm đó: bóng, sách, ba lô. Nói từ thật chậm và nhấn nhẹ âm đầu. Ăn mừng mỗi lần bé đoán đúng bằng một cái vỗ tay hoặc tiếng “đúng rồi!”. Nếu bé bí, hãy gợi ý thay vì nói luôn đáp án. Trò chơi đơn giản này biến đồ vật hằng ngày thành dụng cụ học tập và giúp chữ cái trở nên thật, hữu ích và thú vị.\n\nTrẻ rất thích động vật, nên hãy để chữ cái mượn một chút phép màu đó. Ghép mỗi chữ với một con vật vui: A cho alligator, B cho bear, C cho cat. Cho bé xem hình, đọc tên con vật, rồi cùng lặp lại âm đầu. Rủ bé bắt chước dáng đi hay động tác của con vật khi nói chữ: “B, B, bear!”. Sự kết hợp vui nhộn giữa âm thanh, hình ảnh và chuyển động giúp bảng chữ cái in sâu một cách nhẹ nhàng, như đang chơi chứ không phải học.\n\nHọc chữ qua đôi tay giúp chúng ở lại lâu hơn trong trí nhớ. Bắt đầu với hình to: vẽ một chữ “A” thật lớn trên giấy hoặc trong không khí và để bé dùng ngón tay hay bút màu tô theo. Nhắc tên chữ mỗi lần bé đi theo nét. Khen ngợi sự cố gắng, không đòi hỏi hoàn hảo—nét cong lệch cũng được. Bạn có thể tô chữ trên cát, gạo hoặc ô cửa mờ hơi nước. Mục tiêu là nối cảm giác vận động với âm thanh của từng chữ.\n\nHãy biến bảng chữ cái thành một nghi thức nhẹ nhàng trước giờ ngủ. Khi bé nằm yên, chọn ba chữ cho buổi tối, như A, B và C. Thì thầm các chữ thật chậm, rồi cùng nghĩ một từ dịu dàng cho mỗi chữ: A cho apple, B cho blanket, C cho cuddle. Để bé tự chọn thêm một số từ. Khoảnh khắc ôn lại yên tĩnh cuối ngày giúp việc học trở nên ấm áp và dễ chịu. Lâu dần, bảng chữ cái sẽ gắn với cảm giác an toàn và ký ức hạnh phúc."
       },
       "tags": ["all", "full", "complete"],
-      "audio": "alphabet_adventure_kids_l1_all_en.mp3",
-      "audio_vi": "alphabet_adventure_kids_l1_all_vi.mp3"
+      "audio": "alphabet_adventure_v1_all.mp3"
     }
   ],
   "meta": {
