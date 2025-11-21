@@ -1,0 +1,89 @@
+{
+  "id": "spelling_patterns_kids_l2",
+  "tier": "Kids Level 2 / Trẻ Em Cấp 2",
+  "title": {
+    "en": "Spelling Patterns",
+    "vi": "Mẫu Chính Tả Cơ Bản"
+  },
+  "content": {
+    "en": "This room teaches simple spelling patterns that help children recognize how English words are built. Kids learn repeated chunks like “at,” “an,” “op,” and “ing” through playful reading and spelling activities. These patterns make early reading and writing feel easier and more predictable.",
+    "vi": "Phòng này dạy các mẫu chính tả đơn giản giúp trẻ nhận ra cách từ tiếng Anh được tạo thành. Trẻ học các cụm lặp lại như “at,” “an,” “op,” và “ing” thông qua các hoạt động đọc và viết vui nhộn. Những mẫu này giúp việc đọc và viết sớm trở nên dễ dàng và dễ đoán hơn.",
+    "audio": "spelling_patterns_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "at-family-words",
+      "keywords_en": ["at", "word family", "spelling"],
+      "keywords_vi": ["at", "nhóm từ", "chính tả"],
+      "copy": {
+        "en": "Teach the “at” word family: cat, hat, bat, mat. Write “at” first and say: “at.” Then add the beginning sounds: c–at, h–at, m–at. Kids enjoy hearing how small changes make new words. This pattern helps early readers build confidence.",
+        "vi": "Dạy nhóm từ “at”: cat, hat, bat, mat. Viết “at” trước và đọc: “at.” Sau đó thêm âm đầu: c–at, h–at, m–at. Trẻ thích nghe cách thay đổi nhỏ tạo ra từ mới. Mẫu này giúp người đọc nhỏ tuổi tự tin hơn."
+      },
+      "tags": ["spelling", "at family"],
+      "audio": "spelling_patterns_v1_at_family.mp3"
+    },
+    {
+      "slug": "an-family-words",
+      "keywords_en": ["an", "word family", "phonics"],
+      "keywords_vi": ["an", "nhóm từ", "phát âm"],
+      "copy": {
+        "en": "Teach the “an” pattern using words like man, fan, pan, and ran. Say the ending first: “an.” Then blend the beginning sound: r–an, f–an. Children learn that many words share the same core sound, making reading easier.",
+        "vi": "Dạy mẫu “an” với các từ như man, fan, pan và ran. Đọc phần cuối trước: “an.” Sau đó ghép âm đầu: r–an, f–an. Trẻ học rằng nhiều từ có chung âm chính, giúp đọc dễ dàng hơn."
+      },
+      "tags": ["spelling", "an family"],
+      "audio": "spelling_patterns_v1_an_family.mp3"
+    },
+    {
+      "slug": "op-family-words",
+      "keywords_en": ["op", "spelling", "pattern"],
+      "keywords_vi": ["op", "chính tả", "mẫu từ"],
+      "copy": {
+        "en": "Teach the “op” pattern with words like hop, mop, top, and pop. Kids enjoy acting out the words—hopping for “hop,” pretending to mop for “mop.” Movement helps spelling patterns stick more strongly.",
+        "vi": "Dạy mẫu “op” với các từ như hop, mop, top và pop. Trẻ thích diễn tả từ—nhảy lên cho “hop,” giả vờ lau nhà cho “mop.” Vận động giúp các mẫu chính tả ghi nhớ tốt hơn."
+      },
+      "tags": ["op family", "spelling patterns"],
+      "audio": "spelling_patterns_v1_op_family.mp3"
+    },
+    {
+      "slug": "ing-ending",
+      "keywords_en": ["ing", "ending", "spelling"],
+      "keywords_vi": ["ing", "đuôi từ", "chính tả"],
+      "copy": {
+        "en": "Teach the “ing” ending using simple verbs: run → running, jump → jumping. Show how “ing” changes an action word to show something happening now. Kids can act out each verb to feel the meaning while learning the pattern.",
+        "vi": "Dạy đuôi “ing” bằng các động từ đơn giản: run → running, jump → jumping. Giải thích rằng “ing” biến động từ thành hành động đang diễn ra. Trẻ có thể diễn tả mỗi động tác để hiểu ý nghĩa khi học mẫu từ."
+      },
+      "tags": ["ing ending"],
+      "audio": "spelling_patterns_v1_ing_ending.mp3"
+    },
+    {
+      "slug": "rhyming-fun",
+      "keywords_en": ["rhyme", "sound", "word play"],
+      "keywords_vi": ["vần", "âm thanh", "chơi từ"],
+      "copy": {
+        "en": "Practice simple rhymes like cat–hat, sun–fun, and hop–top. Say both words together and tap your hands: “cat–hat!” Rhyming helps children hear sound patterns and prepares them for spelling activities later.",
+        "vi": "Luyện vần đơn giản như cat–hat, sun–fun và hop–top. Đọc hai từ cùng nhau và vỗ tay: “cat–hat!” Vần giúp trẻ nghe được mẫu âm và chuẩn bị cho việc học chính tả sau này."
+      },
+      "tags": ["rhyme"],
+      "audio": "spelling_patterns_v1_rhyming_fun.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "complete", "full"],
+      "keywords_vi": ["tất cả", "đầy đủ", "hoàn chỉnh"],
+      "copy": {
+        "en": "Teach the “at” family with words like cat and hat.\n\nExplore the “an” pattern with fun examples like man and fan.\n\nLearn the “op” family using playful actions like hop and mop.\n\nPractice the “ing” ending to show actions happening now.\n\nPlay simple rhyming games such as cat–hat and sun–fun.\n\nTogether, these patterns help kids notice sounds, read new words, and enjoy spelling without pressure.",
+        "vi": "Dạy nhóm “at” với các từ như cat và hat.\n\nKhám phá mẫu “an” với ví dụ như man và fan.\n\nHọc nhóm “op” thông qua hành động vui như hop và mop.\n\nLuyện đuôi “ing” để chỉ hành động đang diễn ra.\n\nChơi trò ghép vần đơn giản như cat–hat và sun–fun.\n\nNhững mẫu này giúp trẻ nhận ra âm, đọc từ mới và thích thú với chính tả mà không bị áp lực."
+      },
+      "tags": ["all"],
+      "audio": "spelling_patterns_v1_at_family.mp3 spelling_patterns_v1_an_family.mp3 spelling_patterns_v1_op_family.mp3 spelling_patterns_v1_ing_ending.mp3 spelling_patterns_v1_rhyming_fun.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "7-10",
+    "level": "Kids Level 2",
+    "created_at": "2025-11-21T00:00:00+00:00",
+    "updated_at": "2025-11-21T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#CBE0FF"
+  }
+}
