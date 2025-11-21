@@ -51,6 +51,14 @@ const KidsLevel1 = () => {
     return Icon || Baby;
   };
 
+  const getChatRoomId = (roomId: string) => {
+    // Kids Level 1 rooms are stored in the main rooms table with an `_kids_l1` suffix
+    // and use snake_case instead of kebab-case.
+    if (roomId.includes("_kids_l1")) return roomId;
+    const base = roomId.replace(/-/g, "_");
+    return `${base}_kids_l1`;
+  };
+
   if (loading || roomsLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
@@ -95,7 +103,7 @@ const KidsLevel1 = () => {
                 <Card
                   key={room.id}
                   className="relative p-3 transition-all duration-300 cursor-pointer group hover:scale-110 hover:shadow-hover hover:z-10 border-secondary/30 bg-white"
-                  onClick={() => navigate(`/chat/${room.id}`)}
+                  onClick={() => navigate(`/chat/${getChatRoomId(room.id)}`)}
                 >
                   {/* Status Badge */}
                   <div className="absolute top-1 right-1 z-10">
