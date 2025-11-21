@@ -1,0 +1,89 @@
+{
+  "id": "bedtime_words_kids_l1",
+  "tier": "Kids Level 1 / Trẻ Em Cấp 1",
+  "title": {
+    "en": "Bedtime Words",
+    "vi": "Từ Vựng Giờ Đi Ngủ"
+  },
+  "content": {
+    "en": "This room helps parents teach soft, calming bedtime words in English. Children aged 4–7 learn best when the lights are dim, voices are gentle, and routines are predictable. These activities turn English learning into warm, sleepy moments before bed.",
+    "vi": "Phòng này giúp cha mẹ dạy các từ tiếng Anh nhẹ nhàng dùng trước giờ ngủ. Trẻ 4–7 tuổi học tốt nhất khi ánh sáng dịu, giọng nói êm và thói quen quen thuộc. Những hoạt động này biến việc học tiếng Anh thành khoảnh khắc ấm áp trước khi bé chìm vào giấc ngủ.",
+    "audio": "bedtime_words_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "goodnight",
+      "keywords_en": ["bedtime", "goodnight", "routine"],
+      "keywords_vi": ["giờ ngủ", "chúc ngủ ngon", "thói quen"],
+      "copy": {
+        "en": "Begin with the simplest bedtime word: “goodnight.” Dim the lights, sit beside your child, and whisper the word softly. Let your child repeat it in the same soft voice. You can point to the pillow, blanket, or window to create a gentle ritual. The goal is not perfect pronunciation but a warm, sleepy association with the word.",
+        "vi": "Bắt đầu với từ đơn giản nhất: “goodnight.” Giảm ánh sáng, ngồi cạnh bé và thì thầm từ này thật nhẹ. Để bé lặp lại bằng giọng êm ái. Bạn có thể chỉ vào gối, chăn hoặc cửa sổ để tạo nghi thức dễ thương. Mục tiêu không phải phát âm hoàn hảo mà là tạo cảm giác ấm áp, buồn ngủ gắn với từ."
+      },
+      "tags": ["bedtime"],
+      "audio": "bedtime_words_v1_goodnight.mp3"
+    },
+    {
+      "slug": "sleepy",
+      "keywords_en": ["bedtime", "sleepy", "feeling"],
+      "keywords_vi": ["giờ ngủ", "buồn ngủ", "cảm giác"],
+      "copy": {
+        "en": "Teach the word “sleepy” using facial expressions and slow body movements. Close your eyes halfway, stretch your arms slowly, and say the word softly. Encourage your child to copy the expression. When learning is connected to acting, children remember both the word and the feeling easily.",
+        "vi": "Dạy từ “sleepy” bằng nét mặt và chuyển động chậm. Nhắm mắt nửa chừng, duỗi tay từ từ và đọc từ nhẹ nhàng. Khuyến khích bé bắt chước. Khi học gắn với diễn đạt cơ thể, trẻ ghi nhớ từ và cảm giác rất nhanh."
+      },
+      "tags": ["feeling", "bedtime"],
+      "audio": "bedtime_words_v1_sleepy.mp3"
+    },
+    {
+      "slug": "blanket",
+      "keywords_en": ["bedtime", "blanket"],
+      "keywords_vi": ["giờ ngủ", "chăn"],
+      "copy": {
+        "en": "Introduce the word “blanket” by letting your child hold or pull the blanket gently. Say the word slowly while smoothing the blanket over their legs or shoulders. Soft textures help create a comforting memory, making the word feel warm and lovable.",
+        "vi": "Giới thiệu từ “blanket” bằng cách để bé cầm hoặc kéo nhẹ chiếc chăn. Đọc từ chậm rãi khi bạn phủ chăn lên chân hoặc vai bé. Chất liệu mềm tạo cảm giác dễ chịu, khiến từ vựng in sâu và dễ thương."
+      },
+      "tags": ["blanket", "bedtime"],
+      "audio": "bedtime_words_v1_blanket.mp3"
+    },
+    {
+      "slug": "story-time",
+      "keywords_en": ["bedtime", "story", "routine"],
+      "keywords_vi": ["giờ ngủ", "truyện", "thói quen"],
+      "copy": {
+        "en": "Teach the phrase “story time” using a short picture book. Hold the book, open a page slowly, and say the phrase with a gentle smile. Let your child flip a page and repeat the phrase with you. Associating English with cozy storytelling makes bedtime learning peaceful and joyful.",
+        "vi": "Dạy cụm từ “story time” bằng một quyển truyện tranh. Cầm sách, mở trang thật chậm và đọc cụm từ bằng nụ cười nhẹ. Để bé lật trang và lặp lại với bạn. Khi tiếng Anh gắn với đọc truyện ấm áp, giờ ngủ trở nên vui và yên bình."
+      },
+      "tags": ["story", "routine"],
+      "audio": "bedtime_words_v1_story_time.mp3"
+    },
+    {
+      "slug": "lights-out",
+      "keywords_en": ["bedtime", "lights out"],
+      "keywords_vi": ["giờ ngủ", "tắt đèn"],
+      "copy": {
+        "en": "End the routine with “lights out.” Turn the switch slowly, dim the room, and whisper the phrase. Let your child say it with you while hugging their blanket or toy. This gentle action marks the transition from awake to sleepy in a predictable, comforting way.",
+        "vi": "Kết thúc thói quen bằng “lights out.” Tắt đèn thật chậm, làm phòng dịu lại và thì thầm cụm từ. Để bé nói theo khi ôm chăn hoặc thú bông. Hành động nhẹ nhàng này đánh dấu thời điểm chuyển từ thức sang buồn ngủ một cách dễ chịu, quen thuộc."
+      },
+      "tags": ["bedtime", "routine"],
+      "audio": "bedtime_words_v1_lights_out.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full", "complete"],
+      "keywords_vi": ["tất cả", "đầy đủ"],
+      "copy": {
+        "en": "Begin with the soft word “goodnight,” whispering gently as your child settles in.\n\nTeach “sleepy” through slow stretches and relaxed expressions.\n\nIntroduce “blanket” by letting your child touch and pull the soft fabric while repeating the word.\n\nUse a picture book to teach the phrase “story time,” taking turns opening pages together.\n\nFinish with “lights out,” turning off the light slowly to mark the peaceful transition to sleep.\n\nThese calming bedtime activities help your child learn English in warm, predictable moments before falling asleep.",
+        "vi": "Bắt đầu với từ “goodnight,” thì thầm nhẹ khi bé nằm yên.\n\nDạy “sleepy” bằng chuyển động chậm và nét mặt thư giãn.\n\nGiới thiệu “blanket” bằng cách để bé chạm và kéo chiếc chăn mềm.\n\nDùng truyện tranh để dạy “story time,” cùng lật trang với bé.\n\nKết thúc bằng “lights out,” tắt đèn chậm rãi để chuyển sang giờ ngủ.\n\nNhững hoạt động êm dịu này giúp bé học tiếng Anh trong khoảnh khắc ấm áp trước khi ngủ."
+      },
+      "tags": ["all"],
+      "audio": "bedtime_words_v1_goodnight.mp3 bedtime_words_v1_sleepy.mp3 bedtime_words_v1_blanket.mp3 bedtime_words_v1_story_time.mp3 bedtime_words_v1_lights_out.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "4-7",
+    "level": "Kids Level 1",
+    "created_at": "2025-11-21T00:00:00+00:00",
+    "updated_at": "2025-11-21T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#FFEADD"
+  }
+}
