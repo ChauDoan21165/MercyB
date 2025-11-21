@@ -1,0 +1,89 @@
+{
+  "id": "space_planets_kids_l2",
+  "tier": "Kids Level 2 / Trẻ Em Cấp 2",
+  "title": {
+    "en": "Space & Planets",
+    "vi": "Không Gian & Các Hành Tinh"
+  },
+  "content": {
+    "en": "This room teaches children simple English words about space—moon, sun, stars, rocket, and planets. Parents guide learning through imagination, books, and sky-watching moments that make space feel magical and fun.",
+    "vi": "Phòng này dạy trẻ những từ vựng đơn giản về không gian—moon, sun, stars, rocket và các hành tinh. Cha mẹ hướng dẫn qua trí tưởng tượng, sách và khoảnh khắc ngắm bầu trời để không gian trở nên kỳ diệu và thú vị.",
+    "audio": "space_planets_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "the-sun",
+      "keywords_en": ["sun", "space", "light"],
+      "keywords_vi": ["mặt trời", "không gian", "ánh sáng"],
+      "copy": {
+        "en": "Teach “sun” by looking at sunlight safely—not directly at the sun. Say: “Sun!” while showing the bright sky or warm light on the ground. Explain that the sun gives us light and warmth. Kids remember the word easily when they feel the sunshine on their hands or face.",
+        "vi": "Dạy từ “sun” bằng cách quan sát ánh nắng an toàn—không nhìn trực tiếp vào mặt trời. Nói: “Sun!” khi chỉ ánh sáng hoặc vùng đất được chiếu sáng. Giải thích rằng mặt trời mang đến ánh sáng và hơi ấm. Trẻ ghi nhớ nhanh khi cảm nhận ánh nắng trên tay hoặc mặt."
+      },
+      "tags": ["sun", "space"],
+      "audio": "space_planets_v1_sun.mp3"
+    },
+    {
+      "slug": "the-moon",
+      "keywords_en": ["moon", "night", "sky"],
+      "keywords_vi": ["mặt trăng", "ban đêm", "bầu trời"],
+      "copy": {
+        "en": "Teach “moon” by looking at the night sky together. Say: “Moon!” and point to its shape—round, half, or crescent. Kids enjoy matching the shape they see. The moon becomes a calming way to build nighttime vocabulary.",
+        "vi": "Dạy từ “moon” bằng cách ngắm bầu trời đêm cùng bé. Nói: “Moon!” và chỉ vào hình dạng của nó—tròn, nửa hoặc lưỡi liềm. Trẻ thích đoán hình dạng. Mặt trăng là cách nhẹ nhàng để học từ vựng buổi tối."
+      },
+      "tags": ["moon", "space"],
+      "audio": "space_planets_v1_moon.mp3"
+    },
+    {
+      "slug": "the-stars",
+      "keywords_en": ["stars", "night", "shine"],
+      "keywords_vi": ["những ngôi sao", "ban đêm", "lấp lánh"],
+      "copy": {
+        "en": "Teach “stars” by showing tiny lights in the sky. Say: “Stars!” and make a twinkling motion with your fingers. Kids love this gesture and connect it to the word easily. You can also show star drawings or stickers for cloudy nights.",
+        "vi": "Dạy từ “stars” bằng cách chỉ những đốm sáng nhỏ trên bầu trời. Nói: “Stars!” và làm động tác lấp lánh bằng ngón tay. Trẻ rất thích và ghi nhớ nhanh. Bạn có thể dùng hình vẽ hoặc sticker khi trời nhiều mây."
+      },
+      "tags": ["stars", "space"],
+      "audio": "space_planets_v1_stars.mp3"
+    },
+    {
+      "slug": "rocket",
+      "keywords_en": ["rocket", "space", "fly"],
+      "keywords_vi": ["tên lửa", "không gian", "bay"],
+      "copy": {
+        "en": "Teach “rocket” through movement. Say: “Rocket!” and raise your arm quickly from low to high like a rocket taking off. Kids copy the motion with excitement. You can also use toy rockets or simple drawings to make the word even more fun.",
+        "vi": "Dạy “rocket” qua chuyển động. Nói: “Rocket!” và đưa tay từ thấp lên cao như tên lửa cất cánh. Trẻ làm theo với sự thích thú. Bạn có thể dùng đồ chơi hoặc hình vẽ để tăng sự vui vẻ khi học."
+      },
+      "tags": ["rocket", "space"],
+      "audio": "space_planets_v1_rocket.mp3"
+    },
+    {
+      "slug": "planets",
+      "keywords_en": ["planets", "solar system", "space"],
+      "keywords_vi": ["hành tinh", "hệ mặt trời", "không gian"],
+      "copy": {
+        "en": "Teach “planets” using simple pictures of the solar system. Say: “Planets!” and name a few easy ones like Earth, Mars, and Jupiter. Kids enjoy pointing to the colorful circles and repeating their names. This builds early science interest in a gentle way.",
+        "vi": "Dạy từ “planets” bằng hình ảnh đơn giản của hệ mặt trời. Nói: “Planets!” và gọi tên vài hành tinh dễ nhớ như Earth, Mars và Jupiter. Trẻ thích chỉ vào các hình tròn đầy màu sắc và lặp lại tên. Điều này tạo hứng thú khoa học sớm cho trẻ."
+      },
+      "tags": ["planets", "solar system"],
+      "audio": "space_planets_v1_planets.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full", "complete"],
+      "keywords_vi": ["tất cả", "đầy đủ", "trọn vẹn"],
+      "copy": {
+        "en": "Teach “sun” with warm light.\n\nTeach “moon” by naming its shapes.\n\nTeach “stars” with twinkling fingers.\n\nTeach “rocket” through fun arm movements.\n\nTeach “planets” using simple solar system pictures.\n\nThese space words help children explore the universe with curiosity and imagination.",
+        "vi": "Dạy “sun” bằng ánh sáng ấm.\n\nDạy “moon” bằng cách gọi tên hình dạng.\n\nDạy “stars” với động tác lấp lánh.\n\nDạy “rocket” bằng chuyển động vui nhộn.\n\nDạy “planets” bằng hình hệ mặt trời.\n\nNhững từ này giúp trẻ khám phá vũ trụ bằng sự tò mò và tưởng tượng."
+      },
+      "tags": ["all"],
+      "audio": "space_planets_v1_sun.mp3 space_planets_v1_moon.mp3 space_planets_v1_stars.mp3 space_planets_v1_rocket.mp3 space_planets_v1_planets.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "7-10",
+    "level": "Kids Level 2",
+    "created_at": "2025-11-21T00:00:00+00:00",
+    "updated_at": "2025-11-21T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#F7E9FF"
+  }
+}
