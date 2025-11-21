@@ -1,0 +1,89 @@
+{
+  "id": "friendship_kindness_kids_l2",
+  "tier": "Kids Level 2 / Trẻ Em Cấp 2",
+  "title": {
+    "en": "Friendship & Kindness",
+    "vi": "Tình Bạn & Sự Tử Tế"
+  },
+  "content": {
+    "en": "This room teaches kids simple, warm vocabulary about being a good friend—sharing, helping, listening, taking turns, and speaking kindly. Parents guide short conversations and real-life examples so children understand not just the words but the feelings behind them.",
+    "vi": "Phòng này dạy trẻ những từ vựng dễ thương về cách làm một người bạn tốt—chia sẻ, giúp đỡ, lắng nghe, chờ tới lượt và nói năng tử tế. Cha mẹ hướng dẫn những cuộc trò chuyện ngắn và ví dụ thực tế để trẻ hiểu không chỉ từ vựng mà cả cảm xúc phía sau.",
+    "audio": "friendship_kindness_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "sharing-things",
+      "keywords_en": ["share", "friend", "give"],
+      "keywords_vi": ["chia sẻ", "bạn bè", "cho"],
+      "copy": {
+        "en": "Teach “share” by using simple items at home like crayons or snacks. Show two choices and say, “Let’s share!” Explain that sharing means letting someone else enjoy something with you. Celebrate even small attempts, such as offering one crayon or a tiny piece of snack. The goal is to help kids understand that sharing builds happy moments between friends. Use gentle reminders like, “Sharing makes playtime nicer,” to link the word with real feelings and actions.",
+        "vi": "Dạy từ “share” bằng cách dùng những đồ vật đơn giản ở nhà như bút màu hoặc đồ ăn vặt. Đưa hai lựa chọn và nói: “Let’s share!” Giải thích rằng chia sẻ nghĩa là để người khác cùng tận hưởng với mình. Khen ngợi cả những nỗ lực nhỏ, như đưa một cây bút hay một miếng đồ ăn nhỏ. Mục tiêu là giúp trẻ hiểu rằng chia sẻ tạo ra những khoảnh khắc vui giữa bạn bè. Nhắc nhẹ rằng “Sharing makes playtime nicer” để trẻ gắn từ này với cảm xúc và hành động thật."
+      },
+      "tags": ["friendship", "sharing"],
+      "audio": "friendship_kindness_v1_share.mp3"
+    },
+    {
+      "slug": "helping-hands",
+      "keywords_en": ["help", "kind", "care"],
+      "keywords_vi": ["giúp đỡ", "tử tế", "quan tâm"],
+      "copy": {
+        "en": "Teach “help” by spotting small moments in daily life. Say, “Can you help me put the books away?” or “Let’s help your friend tie their shoelaces.” Helping shows kids that kindness can be simple and quick. After they help, describe what they did: “You helped. That was kind.” This links the action to the word and strengthens the habit of noticing when others need support. Over time, children understand that helping is an important part of friendship.",
+        "vi": "Dạy từ “help” bằng cách tìm những khoảnh khắc nhỏ trong đời sống hằng ngày. Hãy nói: “Can you help me put the books away?” hoặc “Hãy giúp bạn buộc dây giày nhé.” Việc giúp đỡ cho trẻ thấy rằng tử tế có thể rất đơn giản và nhanh. Sau khi bé giúp, hãy mô tả: “You helped. That was kind.” Điều này kết nối hành động với từ vựng và củng cố thói quen để ý khi người khác cần hỗ trợ. Dần dần, trẻ hiểu rằng giúp đỡ là phần quan trọng của tình bạn."
+      },
+      "tags": ["kindness", "helping"],
+      "audio": "friendship_kindness_v1_help.mp3"
+    },
+    {
+      "slug": "listening-ears",
+      "keywords_en": ["listen", "talk", "friend"],
+      "keywords_vi": ["lắng nghe", "nói chuyện", "bạn bè"],
+      "copy": {
+        "en": "Teach “listen” by practicing short conversations. Say, “Your turn to talk, my turn to listen.” Keep it simple: ask your child about their day or favorite game, then model listening by looking at them and nodding. Explain that listening shows care and helps friends feel understood. Kids naturally copy this behavior with siblings and classmates. Over time, the word “listen” becomes connected to calm, respectful communication.",
+        "vi": "Dạy từ “listen” bằng cách luyện những cuộc trò chuyện ngắn. Nói: “Con nói, mẹ lắng nghe. Rồi tới lượt mẹ nói, con lắng nghe.” Hỏi bé về ngày của mình hoặc trò chơi yêu thích, rồi làm mẫu cách lắng nghe: nhìn bé và gật đầu. Giải thích rằng lắng nghe thể hiện sự quan tâm và giúp bạn bè cảm thấy được hiểu. Trẻ sẽ tự nhiên bắt chước hành vi này với anh chị em và bạn học. Lâu dần, từ “listen” gắn với giao tiếp bình tĩnh và tôn trọng."
+      },
+      "tags": ["listening", "conversation"],
+      "audio": "friendship_kindness_v1_listen.mp3"
+    },
+    {
+      "slug": "taking-turns",
+      "keywords_en": ["turn", "wait", "play"],
+      "keywords_vi": ["lượt", "chờ", "chơi"],
+      "copy": {
+        "en": "Teach “turn” using simple games like rolling a ball or choosing puzzle pieces. Say, “My turn,” then “Your turn,” with a gentle rhythm. Kids often struggle with waiting, so keep turns short and predictable. Celebrate when your child waits patiently, even for a few seconds. This helps them understand that taking turns keeps games fair and fun, making playtime smoother with friends.",
+        "vi": "Dạy từ “turn” bằng những trò đơn giản như lăn bóng hoặc chọn miếng ghép. Nói: “My turn,” rồi “Your turn,” với nhịp điệu nhẹ nhàng. Trẻ thường khó chờ đợi, nên hãy giữ lượt ngắn và dễ đoán. Khen ngợi khi bé chờ kiên nhẫn dù chỉ vài giây. Điều này giúp trẻ hiểu rằng chờ tới lượt làm trò chơi công bằng và vui hơn, giúp việc chơi với bạn diễn ra suôn sẻ."
+      },
+      "tags": ["turn-taking", "patience"],
+      "audio": "friendship_kindness_v1_turns.mp3"
+    },
+    {
+      "slug": "kind-words",
+      "keywords_en": ["kind", "words", "feelings"],
+      "keywords_vi": ["tử tế", "lời nói", "cảm xúc"],
+      "copy": {
+        "en": "Teach “kind” by using real examples. Say kind phrases together: “Good job,” “Thank you,” “Are you okay?” Explain how kind words make others feel happy and safe. Encourage your child to use kind words at school, with siblings, or during play. Kindness becomes a habit when children practice it in small, everyday moments.",
+        "vi": "Dạy từ “kind” bằng những ví dụ thật. Cùng nói các câu tử tế: “Good job,” “Thank you,” “Are you okay?” Giải thích rằng lời tử tế làm người khác cảm thấy vui và an toàn. Khuyến khích bé dùng lời tử tế ở trường, với anh chị em hoặc khi chơi. Sự tử tế trở thành thói quen khi trẻ luyện tập trong các khoảnh khắc hằng ngày."
+      },
+      "tags": ["kindness", "words"],
+      "audio": "friendship_kindness_v1_kind_words.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "complete", "full"],
+      "keywords_vi": ["tất cả", "đầy đủ", "hoàn chỉnh"],
+      "copy": {
+        "en": "Teach “share” using simple home items.\n\nTeach “help” by finding small moments to support others.\n\nTeach “listen” with short, calm conversations.\n\nTeach “turn” through predictable back-and-forth games.\n\nTeach “kind” with real, everyday examples.\n\nThese lessons help kids understand that friendship grows through small, warm actions—sharing, helping, listening, waiting, and speaking kindly.",
+        "vi": "Dạy “share” bằng đồ vật quen thuộc.\n\nDạy “help” qua những khoảnh khắc giúp đỡ nhỏ.\n\nDạy “listen” bằng cuộc trò chuyện ngắn.\n\nDạy “turn” với trò chơi qua lại.\n\nDạy “kind” bằng ví dụ thực tế.\n\nNhững bài học này giúp trẻ hiểu rằng tình bạn lớn lên từ những hành động nhỏ và ấm áp—chia sẻ, giúp đỡ, lắng nghe, chờ lượt và nói lời tử tế."
+      },
+      "tags": ["all"],
+      "audio": "friendship_kindness_v1_share.mp3 friendship_kindness_v1_help.mp3 friendship_kindness_v1_listen.mp3 friendship_kindness_v1_turns.mp3 friendship_kindness_v1_kind_words.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "7-10",
+    "level": "Kids Level 2",
+    "created_at": "2025-11-21T00:00:00+00:00",
+    "updated_at": "2025-11-21T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#FCE4EC"
+  }
+}
