@@ -1,0 +1,89 @@
+{
+  "id": "drinks_treats_kids_l1",
+  "tier": "Kids Level 1 / Trẻ Em Cấp 1",
+  "title": {
+    "en": "Drinks & Treats",
+    "vi": "Đồ Uống & Món Ngon"
+  },
+  "content": {
+    "en": "This room helps parents teach simple English drink and treat words using tiny sips, gentle tasting, and fun choosing games. Children aged 4–7 learn quickly when real items, small actions, and calm repetition are involved.",
+    "vi": "Phòng này giúp cha mẹ dạy các từ tiếng Anh đơn giản về đồ uống và món ngon bằng cách cho nếm nhẹ, nhấp ngụm nhỏ và chơi trò chọn lựa. Trẻ 4–7 tuổi học rất nhanh khi có đồ thật, hành động nhỏ và lặp lại nhẹ nhàng.",
+    "audio": "drinks_treats_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "milk-and-juice",
+      "keywords_en": ["drink", "milk", "juice"],
+      "keywords_vi": ["đồ uống", "sữa", "nước trái cây"],
+      "copy": {
+        "en": "Begin with two friendly drink words children already know: “milk” and “juice.” Pour a tiny sip into a small cup and say the word slowly as you swirl it. Let your child take a tiny taste and repeat after you. Ask, “Milk or juice?” to let them choose. Choices make learning feel natural, playful, and confident.",
+        "vi": "Bắt đầu với hai từ quen thuộc: “milk” và “juice.” Rót một ngụm nhỏ vào cốc nhỏ và đọc từ chậm rãi khi xoay nhẹ. Để bé nếm một chút và lặp lại. Hỏi “Milk hay juice?” để bé chọn. Việc chọn giúp bé học tự nhiên, vui và tự tin."
+      },
+      "tags": ["drink"],
+      "audio": "drinks_treats_v1_milk_juice.mp3"
+    },
+    {
+      "slug": "water-refresh",
+      "keywords_en": ["drink", "water"],
+      "keywords_vi": ["đồ uống", "nước"],
+      "copy": {
+        "en": "Teach the word “water” during a calm moment. Show the cup, tilt it gently, and say the word clearly. Children love movement, so let them watch the water swirl and sparkle. Have your child tap the cup softly before repeating the word. The quiet rhythm helps the word sink in effortlessly.",
+        "vi": "Dạy từ “water” trong khoảnh khắc yên tĩnh. Bạn đưa chiếc cốc, nghiêng nhẹ và đọc từ rõ ràng. Trẻ thích chuyển động, nên hãy để bé nhìn nước xoay và lấp lánh. Bé có thể gõ nhẹ vào cốc trước khi lặp lại. Nhịp yên nhẹ giúp từ vựng in sâu tự nhiên."
+      },
+      "tags": ["drink"],
+      "audio": "drinks_treats_v1_water_refresh.mp3"
+    },
+    {
+      "slug": "sweet-treats",
+      "keywords_en": ["treat", "sweet", "candy"],
+      "keywords_vi": ["món ngon", "ngọt", "kẹo"],
+      "copy": {
+        "en": "Introduce a gentle treat word like “candy.” Show the candy, say the word, and let your child take a tiny bite. Make the moment warm by saying, “Little candy!” Kids remember better when the moment feels small, sweet, and special. Always keep portions tiny so the focus stays on language, not sugar.",
+        "vi": "Giới thiệu từ về món ngon như “candy.” Giơ viên kẹo, đọc từ và để bé cắn một miếng nhỏ. Làm khoảnh khắc trở nên ấm áp bằng câu “Little candy!” Trẻ nhớ tốt khi khoảnh khắc nhẹ nhàng và đặc biệt. Giữ phần ăn nhỏ để tập trung vào ngôn ngữ chứ không phải đường."
+      },
+      "tags": ["treats"],
+      "audio": "drinks_treats_v1_sweet_treats.mp3"
+    },
+    {
+      "slug": "cold-or-warm",
+      "keywords_en": ["drink", "temperature", "choose"],
+      "keywords_vi": ["đồ uống", "nhiệt độ", "chọn"],
+      "copy": {
+        "en": "Teach the idea of temperature using drinks. Hold a warm cup and say “warm.” Touch a cold bottle and say “cold.” Let your child touch both (safely) and repeat the words. Then ask, “Warm or cold?” Children enjoy comparing and choosing, and the contrast makes the vocabulary clear and memorable.",
+        "vi": "Dạy ý về nhiệt độ qua đồ uống. Cầm cốc ấm và nói “warm.” Chạm vào chai lạnh và nói “cold.” Để bé chạm cả hai (an toàn) và lặp lại từ. Hỏi “Warm hay cold?” Trẻ thích so sánh và chọn, và sự đối lập giúp từ vựng dễ nhớ."
+      },
+      "tags": ["drink", "temperature"],
+      "audio": "drinks_treats_v1_cold_warm.mp3"
+    },
+    {
+      "slug": "drink-choice-game",
+      "keywords_en": ["drink", "game", "choose"],
+      "keywords_vi": ["đồ uống", "trò chơi", "chọn"],
+      "copy": {
+        "en": "Play a simple drink-choosing game. Place two drinks in front of your child—milk and juice, or water and juice. Say both words slowly and ask, “Which one?” Let your child point or pick. Switch positions and repeat. Children love leading this activity, so let them choose for you too.",
+        "vi": "Chơi trò chọn đồ uống. Đặt hai món trước bé—milk và juice, hoặc water và juice. Đọc cả hai từ chậm rãi và hỏi “Which one?” để bé chọn hoặc chỉ. Đổi vị trí và lặp lại. Trẻ rất thích làm người dẫn, nên hãy để bé chọn cho bạn nữa."
+      },
+      "tags": ["drink", "game"],
+      "audio": "drinks_treats_v1_choice_game.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full", "complete"],
+      "keywords_vi": ["tất cả", "đầy đủ"],
+      "copy": {
+        "en": "Begin with friendly drink words like “milk” and “juice,” letting your child swirl, taste, and choose.\n\nIntroduce “water” by tilting the cup and letting your child tap and repeat.\n\nTeach “candy” with a tiny bite and a warm moment to make the word feel special.\n\nShow temperature differences with “warm” and “cold,” letting your child safely touch and compare.\n\nFinish with a simple drink-choice game where your child points, picks, and eventually leads the activity.",
+        "vi": "Bắt đầu với các từ đồ uống quen thuộc như “milk” và “juice,” để bé xoay cốc, nếm nhẹ và chọn.\n\nDạy “water” bằng cách nghiêng cốc và để bé gõ nhẹ và lặp lại.\n\nGiới thiệu “candy” với miếng nhỏ và khoảnh khắc ấm áp.\n\nDạy sự khác nhau về nhiệt độ qua “warm” và “cold,” cho bé chạm và so sánh an toàn.\n\nKết thúc với trò chọn đồ uống để bé chỉ, chọn và dẫn trò."
+      },
+      "tags": ["all"],
+      "audio": "drinks_treats_v1_milk_juice.mp3 drinks_treats_v1_water_refresh.mp3 drinks_treats_v1_sweet_treats.mp3 drinks_treats_v1_cold_warm.mp3 drinks_treats_v1_choice_game.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "4-7",
+    "level": "Kids Level 1",
+    "created_at": "2025-11-21T00:00:00+00:00",
+    "updated_at": "2025-11-21T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#FFE1D6"
+  }
+}
