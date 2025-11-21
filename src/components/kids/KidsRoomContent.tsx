@@ -1,12 +1,26 @@
+import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Volume2 } from 'lucide-react';
 import { useKidsRoomContext } from '@/contexts/KidsRoomContext';
+import { AudioPlayer } from '@/components/AudioPlayer';
+import { MessageActions } from '@/components/MessageActions';
 
 export const KidsRoomContent = () => {
   const { roomData } = useKidsRoomContext();
+  const [currentAudio, setCurrentAudio] = useState<string | null>(null);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
   if (!roomData) return null;
+
+  const handleAudioToggle = (audioPath: string) => {
+    if (currentAudio === audioPath && isAudioPlaying) {
+      setIsAudioPlaying(false);
+    } else {
+      setCurrentAudio(audioPath);
+      setIsAudioPlaying(true);
+    }
+  };
 
   return (
     <div className="space-y-6">
@@ -40,34 +54,53 @@ export const KidsRoomContent = () => {
               <h4 className="text-sm font-semibold mb-2 bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
                 ENGLISH
               </h4>
-              <p className="text-base leading-relaxed whitespace-pre-line">
+              <p className="text-base leading-relaxed whitespace-pre-line mb-3">
                 {entry.copy.en}
               </p>
-              <div className="mt-3 text-sm text-muted-foreground">
+              <div className="text-sm text-muted-foreground mb-2">
                 <strong>Keywords:</strong> {entry.keywords_en.join(', ')}
               </div>
+              <MessageActions text={entry.copy.en} roomId={roomData.id} />
             </div>
             
             <div className="border-t pt-6">
               <h4 className="text-sm font-semibold mb-2 bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
                 TIẾNG VIỆT
               </h4>
-              <p className="text-base leading-relaxed whitespace-pre-line">
+              <p className="text-base leading-relaxed whitespace-pre-line mb-3">
                 {entry.copy.vi}
               </p>
-              <div className="mt-3 text-sm text-muted-foreground">
+              <div className="text-sm text-muted-foreground mb-2">
                 <strong>Từ khóa:</strong> {entry.keywords_vi.join(', ')}
               </div>
+              <MessageActions text={entry.copy.vi} roomId={roomData.id} />
             </div>
             
-            <div className="border-t pt-4 space-y-2">
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Volume2 className="w-4 h-4" />
-                <span>Audio (EN): {entry.audio}</span>
+            <div className="border-t pt-4 space-y-4">
+              <div>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                  <Volume2 className="w-4 h-4" />
+                  <span>Audio (English):</span>
+                </div>
+                <AudioPlayer
+                  audioPath={`/audio/${entry.audio}`}
+                  isPlaying={currentAudio === entry.audio && isAudioPlaying}
+                  onPlayPause={() => handleAudioToggle(entry.audio)}
+                  onEnded={() => setIsAudioPlaying(false)}
+                />
               </div>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Volume2 className="w-4 h-4" />
-                <span>Audio (VI): {entry.audio_vi}</span>
+              
+              <div>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                  <Volume2 className="w-4 h-4" />
+                  <span>Audio (Tiếng Việt):</span>
+                </div>
+                <AudioPlayer
+                  audioPath={`/audio/${entry.audio_vi}`}
+                  isPlaying={currentAudio === entry.audio_vi && isAudioPlaying}
+                  onPlayPause={() => handleAudioToggle(entry.audio_vi)}
+                  onEnded={() => setIsAudioPlaying(false)}
+                />
               </div>
             </div>
           </CardContent>
