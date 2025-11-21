@@ -1,4 +1,12 @@
 import { createClient } from '@supabase/supabase-js';
+import { readdir, readFile, access } from 'fs/promises';
+import { join } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const publicDir = join(__dirname, '..', 'public');
 
 const supabaseUrl = process.env.VITE_SUPABASE_URL;
 const supabaseKey = process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
@@ -60,27 +68,45 @@ async function validateKidsRooms() {
       totalRooms += rooms.length;
       console.log(`  ${colors.green}✓${colors.reset} ${rooms.length} rooms found`);
 
-      // Check each room
+      // Check each room for JSON and audio files
       for (const room of rooms) {
-        // Fetch entries for this room
-        const { data: entries, error: entriesError } = await supabase
-          .from('kids_entries')
-          .select('*')
-          .eq('room_id', room.id)
-          .order('display_order');
+        const jsonPath = join(publicDir, 'data', 'kids', `${room.id}.json`);
+        
+        // Check if JSON file exists
+        try {
+          await access(jsonPath);
+          const jsonContent = await readFile(jsonPath, 'utf-8');
+          const roomData = JSON.parse(jsonContent);
+          
+          const entryCount = roomData.entries?.length || 0;
+          totalEntries += entryCount;
 
-        if (entriesError) {
-          issues.push(`    ❌ Error fetching entries for room ${room.id}: ${entriesError.message}`);
-          continue;
-        }
-
-        const entryCount = entries?.length || 0;
-        totalEntries += entryCount;
-
-        if (entryCount === 0) {
-          issues.push(`    ⚠️  Room "${room.title_en}" (${room.id}) has no entries`);
-        } else {
-          console.log(`    ${colors.green}✓${colors.reset} ${room.title_en}: ${entryCount} entries`);
+          if (entryCount === 0) {
+            issues.push(`    ⚠️  Room "${room.title_en}" JSON has no entries`);
+          } else {
+            console.log(`    ${colors.green}✓${colors.reset} ${room.title_en}: ${entryCount} entries`);
+            
+            // Check audio files for each entry
+            for (let i = 0; i < roomData.entries.length; i++) {
+              const entry = roomData.entries[i];
+              const audioPath = entry.audio_url;
+              
+              if (!audioPath) {
+                issues.push(`      ⚠️  Entry ${i + 1} missing audio_url`);
+                continue;
+              }
+              
+              const fullAudioPath = join(publicDir, audioPath.startsWith('/') ? audioPath.substring(1) : audioPath);
+              
+              try {
+                await access(fullAudioPath);
+              } catch {
+                issues.push(`      ❌ Audio file missing: ${audioPath}`);
+              }
+            }
+          }
+        } catch (error) {
+          issues.push(`    ❌ JSON file missing or invalid: data/kids/${room.id}.json`);
         }
 
         // Check if room is active
