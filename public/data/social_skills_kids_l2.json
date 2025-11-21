@@ -1,0 +1,89 @@
+{
+  "id": "social_skills_kids_l2",
+  "tier": "Kids Level 2 / Trẻ Em Cấp 2",
+  "title": {
+    "en": "Social Skills (Sharing & Helping)",
+    "vi": "Kỹ Năng Xã Hội (Chia Sẻ & Giúp Đỡ)"
+  },
+  "content": {
+    "en": "This room introduces children to simple social skills they need every day—sharing, helping, waiting, apologizing, and noticing others’ feelings. Parents guide short role-play moments and gentle practice so kids learn not only the words but also the meaning behind kind behavior.",
+    "vi": "Phòng này giúp trẻ làm quen với những kỹ năng xã hội đơn giản cần dùng mỗi ngày—chia sẻ, giúp đỡ, chờ lượt, xin lỗi và để ý cảm xúc của người khác. Cha mẹ hướng dẫn trẻ qua những tình huống đóng vai ngắn để trẻ hiểu không chỉ từ vựng mà cả ý nghĩa của hành vi tử tế.",
+    "audio": "social_skills_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "sharing-with-friends",
+      "keywords_en": ["share", "friends", "play"],
+      "keywords_vi": ["chia sẻ", "bạn bè", "chơi"],
+      "copy": {
+        "en": "Teach “share” using toys or drawing tools. Say, “Let’s share the markers,” and offer one to your child while holding one yourself. Explain that sharing means giving others a chance to enjoy something too. Praise even small attempts, such as offering one toy for a moment. This helps children understand that sharing makes playtime smoother and helps friendships grow.",
+        "vi": "Dạy từ “share” bằng đồ chơi hoặc bút màu. Nói: “Let’s share the markers,” và đưa một cây cho bé trong khi bạn giữ một cây. Giải thích rằng chia sẻ nghĩa là để người khác có cơ hội tận hưởng cùng mình. Khen ngợi mọi nỗ lực nhỏ, như đưa một món đồ chơi trong chốc lát. Điều này giúp trẻ hiểu rằng chia sẻ làm giờ chơi dễ chịu hơn và giúp tình bạn phát triển."
+      },
+      "tags": ["sharing", "friendship"],
+      "audio": "social_skills_v1_share.mp3"
+    },
+    {
+      "slug": "helping-others",
+      "keywords_en": ["help", "kindness", "support"],
+      "keywords_vi": ["giúp đỡ", "tử tế", "hỗ trợ"],
+      "copy": {
+        "en": "Teach “help” by noticing small tasks your child can join. Say, “Can you help me carry this?” or “Let’s help your sister clean up her toys.” Explain that helping can be quick and simple. When your child helps, describe what happened: “You helped. That was kind.” Clear feedback helps children connect the word to the action and makes helping feel rewarding.",
+        "vi": "Dạy từ “help” bằng cách chú ý những nhiệm vụ nhỏ bé có thể tham gia. Nói: “Con giúp mẹ mang cái này nhé?” hoặc “Hãy giúp em dọn đồ chơi.” Giải thích rằng giúp đỡ có thể rất nhanh và đơn giản. Khi trẻ giúp, hãy mô tả: “You helped. That was kind.” Lời phản hồi rõ ràng giúp trẻ kết nối từ vựng với hành động và thấy việc giúp đỡ thật đáng tự hào."
+      },
+      "tags": ["helping", "kindness"],
+      "audio": "social_skills_v1_help.mp3"
+    },
+    {
+      "slug": "waiting-your-turn",
+      "keywords_en": ["wait", "turn", "patience"],
+      "keywords_vi": ["chờ", "lượt", "kiên nhẫn"],
+      "copy": {
+        "en": "Teach “wait” and “turn” by playing simple back-and-forth games. Roll a ball and say, “My turn… now your turn.” Keep the rhythm predictable so your child feels safe waiting. Use short turns to avoid frustration. Praise patience with simple words like, “You waited. Good job.” This teaches that waiting helps everyone enjoy the game.",
+        "vi": "Dạy từ “wait” và “turn” bằng những trò chơi qua lại đơn giản. Lăn bóng và nói: “My turn… now your turn.” Giữ nhịp đều để bé cảm thấy an tâm khi chờ. Hãy giữ lượt ngắn để tránh khó chịu. Khen sự kiên nhẫn bằng lời đơn giản: “You waited. Good job.” Điều này dạy trẻ rằng chờ lượt giúp mọi người chơi vui hơn."
+      },
+      "tags": ["patience", "turn-taking"],
+      "audio": "social_skills_v1_wait_turn.mp3"
+    },
+    {
+      "slug": "saying-sorry",
+      "keywords_en": ["sorry", "feelings", "repair"],
+      "keywords_vi": ["xin lỗi", "cảm xúc", "sửa sai"],
+      "copy": {
+        "en": "Teach “sorry” through gentle role-play. Explain that saying sorry is a way to fix small mistakes, like bumping into someone or taking a toy too quickly. Show the tone: calm voice, soft eye contact, short sentence: “I’m sorry.” Encourage practice through pretend play. This helps children understand that apologizing repairs feelings and keeps friendships strong.",
+        "vi": "Dạy từ “sorry” bằng cách đóng vai nhẹ nhàng. Giải thích rằng xin lỗi là cách sửa những lỗi nhỏ, như vô tình đụng vào ai hoặc lấy đồ chơi quá nhanh. Làm mẫu giọng bình tĩnh, ánh mắt dịu dàng và câu ngắn: “I’m sorry.” Khuyến khích luyện tập qua đóng vai. Điều này giúp trẻ hiểu rằng xin lỗi giúp hàn gắn cảm xúc và giữ tình bạn bền vững."
+      },
+      "tags": ["apology", "feelings"],
+      "audio": "social_skills_v1_sorry.mp3"
+    },
+    {
+      "slug": "noticing-feelings",
+      "keywords_en": ["feelings", "care", "empathy"],
+      "keywords_vi": ["cảm xúc", "quan tâm", "đồng cảm"],
+      "copy": {
+        "en": "Teach “feelings” by helping your child notice facial expressions and tone. Ask, “How does your friend feel?” while looking at a picture or describing a real moment. Offer simple answers: happy, sad, scared, excited. Explain that understanding others' feelings helps children respond kindly. Empathy grows when kids link words with real emotional cues.",
+        "vi": "Dạy từ “feelings” bằng cách giúp trẻ để ý nét mặt và giọng nói. Hỏi: “Bạn cảm thấy thế nào?” khi xem hình hoặc nhắc lại tình huống thật. Gợi ý câu trả lời đơn giản: vui, buồn, sợ, háo hức. Giải thích rằng hiểu cảm xúc người khác giúp trẻ phản ứng tử tế hơn. Sự đồng cảm phát triển khi trẻ gắn từ vựng với tín hiệu cảm xúc thật."
+      },
+      "tags": ["feelings", "empathy"],
+      "audio": "social_skills_v1_feelings.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "complete", "full"],
+      "keywords_vi": ["tất cả", "đầy đủ", "trọn vẹn"],
+      "copy": {
+        "en": "Sharing teaches kids to let others enjoy something too.\n\nHelping shows children that small acts of kindness matter.\n\nWaiting and taking turns make games fair and friendly.\n\nSaying sorry helps fix mistakes and repair feelings.\n\nNoticing feelings builds empathy and caring behavior.\n\nTogether, these lessons help kids grow into gentle, thoughtful friends who understand how their actions affect others.",
+        "vi": "Chia sẻ giúp trẻ biết để người khác cùng tận hưởng.\n\nGiúp đỡ cho thấy những hành động tử tế nhỏ đều quan trọng.\n\nChờ lượt và tới lượt khiến trò chơi công bằng và vui hơn.\n\nNói xin lỗi giúp sửa sai và hàn gắn cảm xúc.\n\nĐể ý cảm xúc giúp trẻ phát triển sự đồng cảm và quan tâm.\n\nTất cả những điều này giúp trẻ trở thành những người bạn nhẹ nhàng và chu đáo."
+      },
+      "tags": ["all"],
+      "audio": "social_skills_v1_share.mp3 social_skills_v1_help.mp3 social_skills_v1_wait_turn.mp3 social_skills_v1_sorry.mp3 social_skills_v1_feelings.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "7-10",
+    "level": "Kids Level 2",
+    "created_at": "2025-11-21T00:00:00+00:00",
+    "updated_at": "2025-11-21T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#FFEBD2"
+  }
+}
