@@ -1,11 +1,180 @@
-# Mercy Blade Kids Room Standards
+# Mercy Blade Universal Room Standard
 
-**IMPORTANT**: These standards match ALL other Mercy Blade rooms (VIP 1-6).
-The complete universal standards are defined in `src/lib/mercyBladeStandards.ts`.
+**CRITICAL**: Kids rooms now use the EXACT same system as VIP6/ChatHub.  
+There is NO separate Kids layout—Kids is just a themed variation of the universal room pattern.
 
-This document defines Kids-specific implementations of the universal standards.
+## Universal Pattern (Used by ALL rooms: VIP1-6, Kids)
 
-## 🎨 Design Standards
+### Component Reuse
+Kids rooms reuse these exact components:
+- `PairedHighlightedContentWithDictionary` - For all text display
+- `AudioPlayer` - For all audio playback
+- `loadRoomKeywords()` / `setCustomKeywordMappings()` - For keyword coloring
+- Same header structure, admin buttons, keyword menu as VIP rooms
+
+### Structure (Identical Across All Rooms)
+
+```tsx
+// 1. Navigation Bar
+<Button variant="ghost" onClick={handleBack}>
+  <ArrowLeft /> Back to {Area}
+</Button>
+{isAdmin && <Button onClick={refresh}><RefreshCw /> Refresh</Button>}
+
+// 2. Room Header
+<div className="flex items-center gap-3">
+  {isAdmin && (
+    <>
+      <button /* JSON filename */ className="w-[1em] h-[1em] rounded-full bg-primary" />
+      <button /* Room ID */ className="w-[1em] h-[1em] rounded-full bg-blue-600" />
+    </>
+  )}
+  <h2 style={{ background: 'var(--gradient-rainbow)', WebkitBackgroundClip: 'text', ... }}>
+    {title.en === title.vi ? title.en : `${title.en} / ${title.vi}`}
+  </h2>
+  <Badge>{tier}</Badge>
+</div>
+
+// 3. Welcome + Essay + Keywords Card
+<Card className="p-4 shadow-soft bg-card border border-border">
+  {/* Welcome message */}
+  <p className="text-sm text-foreground leading-tight">
+    Welcome to {room.title.en} Room, please click the keyword of the topic you want to discover / 
+    Chào mừng bạn đến với phòng {room.title.vi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá
+  </p>
+
+  {/* Room Essay with Dictionary */}
+  <div className="mb-4 p-4 bg-muted/30 rounded-lg border border-border/50">
+    <PairedHighlightedContentWithDictionary
+      englishContent={room.content.en}
+      vietnameseContent={room.content.vi}
+      roomKeywords={keywordMenu.en}
+      onWordClick={() => handleAudioToggle(room.content.audio)}
+    />
+  </div>
+
+  {/* Clickable Keyword Menu */}
+  <div className="flex flex-wrap gap-2 justify-center">
+    {keywordMenu.en.map((kw, idx) => (
+      <Button
+        variant={clicked === kw ? "default" : "outline"}
+        size="sm"
+        onClick={() => handleKeywordClick(kw)}
+      >
+        {isAdmin && <span /* audio copy button */ />}
+        {kw} / {keywordMenu.vi[idx]}
+      </Button>
+    ))}
+  </div>
+
+  {/* Introduction Audio */}
+  <AudioPlayer audioPath={`/audio/${room.content.audio}`} {...audioProps} />
+</Card>
+
+// 4. Activities/Entries Section
+{entries.filter(e => e.slug !== 'all').map((entry, idx) => (
+  <Card 
+    className="border-2" 
+    style={{ borderLeftColor: room.meta.room_color, borderLeftWidth: '4px' }}
+  >
+    <div className="bg-muted/50 p-4">
+      <h3 className="bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
+        Activity {idx + 1}: {entry.title}
+      </h3>
+      {entry.tags.map(tag => <Badge variant="secondary">{tag}</Badge>)}
+    </div>
+    
+    <div className="p-6">
+      <PairedHighlightedContentWithDictionary
+        englishContent={entry.copy.en}
+        vietnameseContent={entry.copy.vi}
+        roomKeywords={entry.keywords_en}
+        onWordClick={() => handleAudioToggle(entry.audio)}
+      />
+      
+      <div className="text-sm text-muted-foreground">
+        <strong>Keywords:</strong> {entry.keywords_en.join(', ')}
+        <strong>Từ khóa:</strong> {entry.keywords_vi.join(', ')}
+      </div>
+      
+      <AudioPlayer audioPath={`/audio/${entry.audio}`} />
+      <AudioPlayer audioPath={`/audio/${entry.audio_vi}`} />
+    </div>
+  </Card>
+))}
+```
+
+## Kids-Specific Only
+
+The ONLY differences for Kids:
+1. **Room colors**: `#FFC1E3` (L1), `#A7E6FF` (L2), `#FFD700` (L3)
+2. **Content focus**: Age-appropriate topics (alphabet, animals, etc.)
+3. **Back button text**: "Back to Kids Area" instead of tier name
+
+Everything else is IDENTICAL to VIP rooms.
+
+## Implementation Rule
+
+**When building any new Kids room:**
+1. Create JSON file in `/public/data/` with room content
+2. Reuse `KidsRoomViewer.tsx` (which is built on VIP pattern)
+3. Change only the `roomId` constant to load different content
+4. DO NOT create custom layout components—reuse the universal pattern
+
+## Future-Proof Standard
+
+From now on:
+- VIP7, VIP8, etc. → Use this exact same pattern
+- Kids Level 2, 3, etc. → Use this exact same pattern  
+- Any new room tier → Use this exact same pattern
+
+If you find yourself creating "custom Kids layout" or "special VIP layout", STOP and reuse the universal pattern instead.
+
+
+## Standard Recorded: `/admin/mercy-blade-standards`
+
+The complete universal room standard is now documented at `/admin/mercy-blade-standards` (★ button).
+
+**Key principle**: Kids rooms are NOT a separate system—they're just VIP rooms with kid-themed content.
+
+### What Changed
+
+**Deleted** (old, drifting custom Kids code):
+- `KidsRoomLayout.tsx` - Custom layout that kept diverging from VIP
+- `KidsRoomContent.tsx` - Separate entry display logic  
+- `KidsRoomViewer.tsx` - Old viewer with parallel patterns
+- `KidsRoomContext.tsx` - Separate state management
+- `useKidsRoom.ts` - Custom hook
+
+**Created** (new, VIP-based code):
+- `KidsRoomViewer.tsx` - Built directly on VIP6/ChatHub pattern
+  - Reuses same header, essay, keyword menu, audio logic
+  - Only difference: loads Kids JSON, uses Kids colors
+  - NO separate layout patterns
+
+### Universal Pattern (Used by ALL Rooms)
+
+```tsx
+1. Navigation: Back button + Refresh (admin)
+2. Header: Rainbow title + admin buttons + tier badge
+3. Welcome Card:
+   - "Click keyword to discover" message
+   - PairedHighlightedContentWithDictionary essay
+   - Clickable keyword buttons (EN / VI pairs)
+   - Introduction AudioPlayer
+4. Activities: Entry cards with dictionary, keywords, dual audio
+```
+
+### How to Build Future Rooms
+
+**VIP 7, 8, 9... or Kids Level 2, 3, 4...**
+
+1. Create JSON in `/public/data/{room_id}.json`
+2. Add audio files to `/public/audio/`
+3. For VIP: Add route pointing to ChatHub with room ID
+4. For Kids: Change `roomId` constant in `KidsRoomViewer.tsx`
+
+NO new layout components needed—reuse the universal pattern.
 
 ### Colors
 - **Level 1 (Little Explorers)**: `#FFC1E3` (Pink)
