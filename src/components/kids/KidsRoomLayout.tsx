@@ -22,7 +22,8 @@ export const KidsRoomLayout = ({ children, backPath = '/kids-design-pack', showR
   const { toast } = useToast();
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [currentAudio, setCurrentAudio] = useState<string | null>(null);
-  const [keywordMenu, setKeywordMenu] = useState<string[]>([]);
+  const [keywordMenu, setKeywordMenu] = useState<{ en: string[]; vi: string[] }>({ en: [], vi: [] });
+  const [clickedKeyword, setClickedKeyword] = useState<string | null>(null);
 
   // Load keyword colors when room data changes (exactly like VIP rooms)
   useEffect(() => {
@@ -36,15 +37,39 @@ export const KidsRoomLayout = ({ children, backPath = '/kids-design-pack', showR
         clearCustomKeywordMappings();
       }
       
-      // Extract keyword menu
-      const allKeywords = roomData.entries.flatMap(e => e.keywords_en);
-      setKeywordMenu(allKeywords);
+      // Build keyword menu from all entries (exactly like VIP rooms)
+      const allKeywordsEn: string[] = [];
+      const allKeywordsVi: string[] = [];
+      
+      roomData.entries.forEach(entry => {
+        if (entry.slug !== 'all') {
+          entry.keywords_en.forEach((kw, idx) => {
+            if (!allKeywordsEn.includes(kw)) {
+              allKeywordsEn.push(kw);
+              allKeywordsVi.push(entry.keywords_vi[idx] || kw);
+            }
+          });
+        }
+      });
+      
+      setKeywordMenu({ en: allKeywordsEn, vi: allKeywordsVi });
     };
     
     loadKeywords();
     
     return () => clearCustomKeywordMappings();
   }, [roomData]);
+
+  const handleKeywordClick = (keyword: string) => {
+    setClickedKeyword(keyword);
+    // Find matching entry and scroll to it
+    const entry = roomData?.entries.find(e => 
+      e.slug !== 'all' && (e.keywords_en.includes(keyword) || e.keywords_vi.includes(keyword))
+    );
+    if (entry?.audio) {
+      handleAudioToggle(entry.audio);
+    }
+  };
 
   if (loading) {
     return (
@@ -175,7 +200,7 @@ export const KidsRoomLayout = ({ children, backPath = '/kids-design-pack', showR
       {/* Welcome Message and Room Essay - exactly like VIP rooms */}
       <Card className="p-4 shadow-soft bg-card border border-border">
         <div className="text-center space-y-0 mb-4">
-          {keywordMenu.length > 0 ? (
+          {keywordMenu.en.length > 0 ? (
             <p className="text-sm text-foreground leading-tight">
               Welcome to {roomData.title.en} Room, please click the keyword of the topic you want to discover / Chào mừng bạn đến với phòng {roomData.title.vi}, vui lòng nhấp vào từ khóa của chủ đề bạn muốn khám phá
             </p>
@@ -191,7 +216,7 @@ export const KidsRoomLayout = ({ children, backPath = '/kids-design-pack', showR
           <PairedHighlightedContentWithDictionary
             englishContent={roomData.content.en}
             vietnameseContent={roomData.content.vi}
-            roomKeywords={keywordMenu}
+            roomKeywords={keywordMenu.en}
             onWordClick={() => {
               if (roomData.content.audio) {
                 handleAudioToggle(roomData.content.audio);
@@ -199,6 +224,47 @@ export const KidsRoomLayout = ({ children, backPath = '/kids-design-pack', showR
             }}
           />
         </div>
+
+        {/* Clickable Keyword Menu - exactly like VIP rooms */}
+        {keywordMenu.en.length > 0 && (
+          <div className="mb-4">
+            <div className="flex flex-wrap gap-2 justify-center">
+              {keywordMenu.en.map((keywordEn, idx) => {
+                const keywordVi = keywordMenu.vi[idx] || '';
+                const isClicked = clickedKeyword === keywordEn || clickedKeyword === keywordVi;
+                return (
+                  <Button
+                    key={`pair-${idx}`}
+                    variant={isClicked ? "default" : "outline"}
+                    size="sm"
+                    className="text-xs cursor-pointer"
+                    onClick={() => handleKeywordClick(keywordEn)}
+                  >
+                    {isAdmin && (
+                      <span
+                        role="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const entry = roomData.entries.find(ent => 
+                            ent.keywords_en.includes(keywordEn)
+                          );
+                          if (entry?.audio) {
+                            const audioPath = `/audio/${entry.audio}`;
+                            navigator.clipboard.writeText(audioPath);
+                            toast({ title: "Copied!", description: `Audio: ${audioPath}` });
+                          }
+                        }}
+                        className="inline-flex w-[1em] h-[1em] rounded-full bg-destructive hover:bg-destructive/90 mr-2 align-middle cursor-pointer"
+                        title="Copy audio filename"
+                      />
+                    )}
+                    {keywordEn} / {keywordVi}
+                  </Button>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         {/* Audio Player */}
         {roomData.content.audio && (
