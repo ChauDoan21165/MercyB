@@ -1,0 +1,89 @@
+{
+  "id": "rooms_in_the_house_kids_l1",
+  "tier": "Kids Level 1 / Trẻ Em Cấp 1",
+  "title": {
+    "en": "Rooms in the House",
+    "vi": "Các Phòng Trong Nhà"
+  },
+  "content": {
+    "en": "This room helps parents teach young children simple English names for common rooms in the house. Kids learn by walking, pointing, and exploring familiar spaces. Each activity uses short phrases, gentle repetition, and joyful movement to make learning natural and connected to daily life.",
+    "vi": "Phòng này giúp cha mẹ dạy trẻ các tên phòng đơn giản trong nhà bằng tiếng Anh. Trẻ học bằng cách đi lại, chỉ, và khám phá những không gian quen thuộc. Mỗi hoạt động dùng cụm từ ngắn, lặp lại nhẹ nhàng và chuyển động vui để việc học trở nên tự nhiên và gắn với sinh hoạt hằng ngày.",
+    "audio": "rooms_house_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "living-room",
+      "keywords_en": ["home", "living room", "house"],
+      "keywords_vi": ["nhà cửa", "phòng khách", "ngôi nhà"],
+      "copy": {
+        "en": "Start in the living room, a familiar and comfortable space. Point to the sofa, TV, and lights while saying, “living room.” Let your child repeat the word and touch the objects gently. You can pretend the sofa says hello or the TV waves. Children love when objects feel alive, and this playful interaction makes the room name easy to remember.",
+        "vi": "Bắt đầu ở phòng khách, nơi quen thuộc và thoải mái. Bạn chỉ vào sofa, TV, và đèn khi đọc: “living room.” Để bé lặp lại và chạm nhẹ vào đồ vật. Bạn có thể giả sofa biết chào hoặc TV biết vẫy tay. Trẻ thích khi đồ vật trở nên sống động, và cách chơi này giúp bé nhớ tên phòng dễ dàng."
+      },
+      "tags": ["living room", "home"],
+      "audio": "rooms_house_v1_living_room.mp3"
+    },
+    {
+      "slug": "bedroom",
+      "keywords_en": ["home", "bedroom", "sleep"],
+      "keywords_vi": ["nhà cửa", "phòng ngủ", "ngủ"],
+      "copy": {
+        "en": "Move to the bedroom and introduce the word slowly: “bedroom.” Show the bed, pillow, blanket, and light. Children learn best through touch, so let them sit on the bed or hold the pillow while repeating the word. You can pretend the bed is sleepy to make the moment soft and fun.",
+        "vi": "Chuyển sang phòng ngủ và đọc từ thật chậm: “bedroom.” Bạn chỉ vào giường, gối, chăn, đèn. Trẻ học tốt khi được chạm vào đồ vật, nên hãy để bé ngồi lên giường hoặc cầm gối khi lặp từ. Bạn có thể giả chiếc giường đang buồn ngủ để tạo khoảnh khắc nhẹ nhàng và vui."
+      },
+      "tags": ["bedroom", "home"],
+      "audio": "rooms_house_v1_bedroom.mp3"
+    },
+    {
+      "slug": "kitchen",
+      "keywords_en": ["home", "kitchen", "food"],
+      "keywords_vi": ["nhà cửa", "bếp", "đồ ăn"],
+      "copy": {
+        "en": "In the kitchen, point to safe and simple items—spoon, cup, fridge—and say the room name: “kitchen.” Children can softly tap the spoon or open the fridge door with your help. Little actions help the word stick. The goal is to connect the room name with daily routines like meals and snacks.",
+        "vi": "Ở trong bếp, bạn chỉ vào những đồ an toàn và đơn giản—spoon, cup, fridge—và đọc tên phòng: “kitchen.” Bé có thể gõ nhẹ vào muỗng hoặc mở cửa tủ lạnh với sự giúp đỡ của bạn. Những hành động nhỏ giúp bé ghi nhớ. Mục tiêu là để bé kết nối tên phòng với các hoạt động thường ngày như ăn uống."
+      },
+      "tags": ["kitchen", "home"],
+      "audio": "rooms_house_v1_kitchen.mp3"
+    },
+    {
+      "slug": "bathroom",
+      "keywords_en": ["home", "bathroom", "wash"],
+      "keywords_vi": ["nhà cửa", "phòng tắm", "rửa"],
+      "copy": {
+        "en": "Visit the bathroom and name the space clearly: “bathroom.” Show the sink, towel, and soap. Children enjoy washing their hands with your help, and this small action creates a natural moment to repeat the word. Keep the learning gentle and safe, focusing on simple routines.",
+        "vi": "Đến phòng tắm và đọc tên phòng thật rõ: “bathroom.” Bạn chỉ vào bồn rửa, khăn và xà phòng. Trẻ thích rửa tay với sự giúp đỡ của bạn, và khoảnh khắc nhỏ này tạo cơ hội tự nhiên để lặp lại từ. Hãy giữ việc học nhẹ nhàng và an toàn, tập trung vào các thói quen đơn giản."
+      },
+      "tags": ["bathroom", "home"],
+      "audio": "rooms_house_v1_bathroom.mp3"
+    },
+    {
+      "slug": "house-walk-game",
+      "keywords_en": ["home", "game", "walk"],
+      "keywords_vi": ["nhà cửa", "trò chơi", "đi quanh nhà"],
+      "copy": {
+        "en": "Play a simple walk-around-the-house game. Say a room name—“living room,” “bedroom,” “kitchen,” or “bathroom”—and walk there together. Let your child take turns giving the command. Children love being the leader, and walking from room to room makes the vocabulary feel alive and real.",
+        "vi": "Chơi trò đi quanh nhà đơn giản. Bạn đọc tên phòng—“living room,” “bedroom,” “kitchen,” hoặc “bathroom”—và cùng bé đi đến đó. Cho bé đổi vai và ra lệnh. Trẻ rất thích làm người dẫn, và việc đi từ phòng này sang phòng khác khiến từ vựng trở nên sống động."
+      },
+      "tags": ["home", "game"],
+      "audio": "rooms_house_v1_house_walk_game.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full", "complete"],
+      "keywords_vi": ["tất cả", "đầy đủ", "hoàn chỉnh"],
+      "copy": {
+        "en": "Start in the living room, pointing to the sofa, TV, and lights while saying “living room.”\n\nMove to the bedroom and show the bed, pillow, blanket, and light while repeating “bedroom.”\n\nIn the kitchen, point to safe items like spoon, cup, and fridge while saying “kitchen.”\n\nVisit the bathroom to name the sink, towel, and soap while repeating “bathroom.”\n\nPlay a house walk game, moving to each room as you name it to make the words real and fun.",
+        "vi": "Bắt đầu ở phòng khách, chỉ vào sofa, TV và đèn khi đọc “living room.”\n\nChuyển sang phòng ngủ và chỉ vào giường, gối, chăn, đèn khi đọc “bedroom.”\n\nỞ bếp, bạn chỉ vào muỗng, cốc, tủ lạnh khi đọc “kitchen.”\n\nĐến phòng tắm để gọi tên bồn rửa, khăn và xà phòng khi đọc “bathroom.”\n\nChơi trò đi quanh nhà, di chuyển đến từng phòng khi đọc tên để từ vựng trở nên sống động và vui."
+      },
+      "tags": ["all", "full"],
+      "audio": "rooms_house_v1_living_room.mp3 rooms_house_v1_bedroom.mp3 rooms_house_v1_kitchen.mp3 rooms_house_v1_bathroom.mp3 rooms_house_v1_house_walk_game.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "4-7",
+    "level": "Kids Level 1",
+    "created_at": "2025-11-21T00:00:00+00:00",
+    "updated_at": "2025-11-21T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#FFE4CC"
+  }
+}
