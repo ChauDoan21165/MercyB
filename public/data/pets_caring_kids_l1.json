@@ -1,0 +1,89 @@
+{
+  "id": "pets_caring_kids_l1",
+  "tier": "Kids Level 1 / Trẻ Em Cấp 1",
+  "title": {
+    "en": "Pets & Caring",
+    "vi": "Thú Cưng & Chăm Sóc"
+  },
+  "content": {
+    "en": "This room helps parents teach simple English words about pets and gentle caring actions. Children aged 4–7 learn easily when vocabulary is paired with soft touching, pretend feeding, and playful imitations.",
+    "vi": "Phòng này giúp cha mẹ dạy các từ tiếng Anh về thú cưng và hành động chăm sóc nhẹ nhàng. Trẻ 4–7 tuổi học tốt khi từ vựng đi kèm chạm nhẹ, cho ăn giả vờ và những hành động vui nhộn.",
+    "audio": "pets_caring_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "pet-cat",
+      "keywords_en": ["pets", "cat", "caring"],
+      "keywords_vi": ["thú cưng", "mèo", "chăm sóc"],
+      "copy": {
+        "en": "Start with the word “cat.” Show a picture or soft toy cat and say the word slowly. Stroke the toy gently while repeating “cat… cat.” Invite your child to copy the gentle touch. This helps them link the word with kindness and care.",
+        "vi": "Bắt đầu với từ “cat.” Cho bé xem hình hoặc đồ chơi con mèo và đọc từ chậm rãi. Vuốt nhẹ đồ chơi khi lặp lại “cat… cat.” Rủ bé làm theo động tác nhẹ nhàng. Điều này giúp bé gắn từ với sự dịu dàng và chăm sóc."
+      },
+      "tags": ["pets"],
+      "audio": "pets_caring_v1_cat.mp3"
+    },
+    {
+      "slug": "pet-dog",
+      "keywords_en": ["pets", "dog", "walk"],
+      "keywords_vi": ["thú cưng", "chó", "dắt đi"],
+      "copy": {
+        "en": "Teach the word “dog” by pointing to a picture or toy dog. Say the word clearly, then pretend to walk the dog using a string or imaginary leash. Let your child take a turn. Pretend play helps children remember new words naturally.",
+        "vi": "Dạy từ “dog” bằng cách chỉ vào hình hoặc đồ chơi con chó. Đọc từ rõ ràng, rồi giả vờ dắt chó đi bằng sợi dây hoặc dây tưởng tượng. Để bé thử làm theo. Trò chơi tưởng tượng giúp bé nhớ từ một cách tự nhiên."
+      },
+      "tags": ["pets", "dog"],
+      "audio": "pets_caring_v1_dog.mp3"
+    },
+    {
+      "slug": "pet-fish",
+      "keywords_en": ["pets", "fish", "feeding"],
+      "keywords_vi": ["thú cưng", "cá", "cho ăn"],
+      "copy": {
+        "en": "Use slow, gentle hand motions to teach the word “fish.” Move your hand side to side like a swimming fish and say the word softly. Pretend to sprinkle fish food with your fingers. Children enjoy copying these calm motions.",
+        "vi": "Dùng chuyển động tay nhẹ nhàng để dạy từ “fish.” Lắc tay qua lại như con cá đang bơi và đọc từ nhẹ nhàng. Giả vờ rắc thức ăn bằng các ngón tay. Trẻ thích bắt chước những chuyển động êm dịu này."
+      },
+      "tags": ["pets", "fish"],
+      "audio": "pets_caring_v1_fish.mp3"
+    },
+    {
+      "slug": "pet-rabbit",
+      "keywords_en": ["pets", "rabbit", "gentle"],
+      "keywords_vi": ["thú cưng", "thỏ", "nhẹ nhàng"],
+      "copy": {
+        "en": "Teach “rabbit” with soft hopping motions. Say the word slowly, bend your knees, and hop lightly. Invite your child to hop beside you. Pretend to feed the rabbit with tiny imaginary carrots. Movement keeps the word playful and easy to remember.",
+        "vi": "Dạy từ “rabbit” bằng động tác nhảy nhẹ. Đọc từ chậm rãi, khuỳnh gối và nhảy êm. Rủ bé nhảy cùng bạn. Giả vờ cho thỏ ăn cà rốt nhỏ. Chuyển động giúp từ trở nên vui và dễ nhớ."
+      },
+      "tags": ["pets", "rabbit"],
+      "audio": "pets_caring_v1_rabbit.mp3"
+    },
+    {
+      "slug": "caring-game",
+      "keywords_en": ["pets", "game", "caring"],
+      "keywords_vi": ["thú cưng", "trò chơi", "chăm sóc"],
+      "copy": {
+        "en": "Create a simple caring game. Place pictures or toys of a cat, dog, fish, and rabbit in a small circle. Say a word and let your child touch or act out the caring motion: pet the cat, walk the dog, feed the fish, or hop like a rabbit. Taking turns keeps learning joyful.",
+        "vi": "Tạo một trò chơi chăm sóc đơn giản. Đặt hình hoặc đồ chơi mèo, chó, cá và thỏ thành vòng tròn nhỏ. Đọc một từ và để bé chạm hoặc làm hành động chăm sóc: vuốt mèo, dắt chó, cho cá ăn hoặc nhảy như thỏ. Luân phiên giúp việc học vui hơn."
+      },
+      "tags": ["pets", "game"],
+      "audio": "pets_caring_v1_game.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "complete"],
+      "keywords_vi": ["tất cả", "đầy đủ"],
+      "copy": {
+        "en": "Teach “cat” by gently stroking a toy cat and repeating the word.\n\nTeach “dog” by pretending to walk a toy or imaginary dog.\n\nTeach “fish” with calm swimming motions and pretend feeding.\n\nTeach “rabbit” by hopping lightly and feeding tiny pretend carrots.\n\nPlay a caring game where your child touches or imitates cat, dog, fish, and rabbit actions.\n\nThese warm, playful activities help children learn pet vocabulary through kindness and gentle movement.",
+        "vi": "Dạy “cat” bằng cách vuốt nhẹ đồ chơi con mèo.\n\nDạy “dog” bằng cách giả vờ dắt chó đi dạo.\n\nDạy “fish” bằng chuyển động tay nhẹ nhàng và cho ăn giả vờ.\n\nDạy “rabbit” bằng động tác nhảy và cho thỏ ăn cà rốt.\n\nChơi trò chăm sóc với cat, dog, fish và rabbit.\n\nNhững hoạt động ấm áp, nhẹ nhàng giúp bé học từ vựng thú cưng một cách tự nhiên."
+      },
+      "tags": ["all"],
+      "audio": "pets_caring_v1_cat.mp3 pets_caring_v1_dog.mp3 pets_caring_v1_fish.mp3 pets_caring_v1_rabbit.mp3 pets_caring_v1_game.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "4-7",
+    "level": "Kids Level 1",
+    "created_at": "2025-11-21T00:00:00+00:00",
+    "updated_at": "2025-11-21T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#F7E3FF"
+  }
+}
