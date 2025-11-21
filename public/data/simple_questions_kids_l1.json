@@ -1,0 +1,89 @@
+{
+  "id": "simple_questions_kids_l1",
+  "tier": "Kids Level 1 / Trẻ Em Cấp 1",
+  "title": {
+    "en": "Simple Questions (What/Who)",
+    "vi": "Câu Hỏi Đơn Giản"
+  },
+  "content": {
+    "en": "This room helps parents teach simple question words through pointing, looking, and gentle conversation. Children aged 4–7 learn best when questions feel playful and connected to things they can see and touch.",
+    "vi": "Phòng này giúp cha mẹ dạy các từ hỏi đơn giản qua việc chỉ, nhìn và hội thoại nhẹ nhàng. Trẻ 4–7 tuổi học tốt nhất khi câu hỏi có vẻ vui và kết nối với những thứ bé có thể nhìn và chạm.",
+    "audio": "simple_questions_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "what-is-this",
+      "keywords_en": ["question", "what", "identify"],
+      "keywords_vi": ["câu hỏi", "cái gì", "nhận diện"],
+      "copy": {
+        "en": "Begin with "What is this?" Hold up a familiar object—a toy, a cup, a book. Say the question slowly and point to the object. Let your child answer in any language first, then gently repeat the English word. This simple pattern builds confidence.",
+        "vi": "Bắt đầu với "What is this?" Giơ một vật quen thuộc—đồ chơi, cốc, sách. Nói câu hỏi chậm rãi và chỉ vào vật. Để bé trả lời bằng bất kỳ ngôn ngữ nào trước, sau đó nhẹ nhàng lặp lại từ tiếng Anh. Mẫu đơn giản này xây dựng sự tự tin."
+      },
+      "tags": ["question", "what"],
+      "audio": "simple_questions_v1_what_is_this.mp3"
+    },
+    {
+      "slug": "who-is-this",
+      "keywords_en": ["question", "who", "people"],
+      "keywords_vi": ["câu hỏi", "ai", "người"],
+      "copy": {
+        "en": "Teach "Who is this?" by pointing to family photos or people nearby. Say the question clearly and wait for your child to respond. Children love identifying familiar faces, and this question helps them connect words to the people they care about.",
+        "vi": "Dạy "Who is this?" bằng cách chỉ vào ảnh gia đình hoặc người gần đó. Nói câu hỏi rõ ràng và chờ bé trả lời. Trẻ thích nhận diện khuôn mặt quen thuộc, và câu hỏi này giúp bé kết nối từ với những người bé quan tâm."
+      },
+      "tags": ["question", "who"],
+      "audio": "simple_questions_v1_who_is_this.mp3"
+    },
+    {
+      "slug": "what-color",
+      "keywords_en": ["question", "what", "color"],
+      "keywords_vi": ["câu hỏi", "màu gì", "màu sắc"],
+      "copy": {
+        "en": "Introduce "What color?" by holding up colorful items. Ask the question, then name the color together. Let your child point to other things with the same color. This question turns everyday objects into learning moments full of discovery.",
+        "vi": "Giới thiệu "What color?" bằng cách giơ các món đồ nhiều màu sắc. Hỏi câu hỏi, sau đó đặt tên màu cùng nhau. Để bé chỉ vào những thứ khác có cùng màu. Câu hỏi này biến đồ vật hằng ngày thành khoảnh khắc học đầy khám phá."
+      },
+      "tags": ["question", "color"],
+      "audio": "simple_questions_v1_what_color.mp3"
+    },
+    {
+      "slug": "what-do-you-see",
+      "keywords_en": ["question", "what", "observe"],
+      "keywords_vi": ["câu hỏi", "thấy gì", "quan sát"],
+      "copy": {
+        "en": "Use "What do you see?" during walks or playtime. Ask the question and point to something interesting—a bird, a tree, a toy. Let your child describe what they notice. This open question encourages observation and builds vocabulary naturally.",
+        "vi": "Dùng "What do you see?" khi đi dạo hoặc giờ chơi. Hỏi câu hỏi và chỉ vào thứ gì đó thú vị—con chim, cây, đồ chơi. Để bé mô tả những gì bé nhận thấy. Câu hỏi mở này khuyến khích quan sát và xây dựng từ vựng tự nhiên."
+      },
+      "tags": ["question", "observe"],
+      "audio": "simple_questions_v1_what_do_you_see.mp3"
+    },
+    {
+      "slug": "question-game",
+      "keywords_en": ["question", "game", "play"],
+      "keywords_vi": ["câu hỏi", "trò chơi", "chơi"],
+      "copy": {
+        "en": "Play a question game by taking turns asking "What is this?" or "Who is this?" around the room. Point to different objects or photos and ask. Children love leading the game, so let them ask you questions too. This builds confidence and makes learning interactive.",
+        "vi": "Chơi trò hỏi đáp bằng cách thay phiên hỏi "What is this?" hoặc "Who is this?" quanh phòng. Chỉ vào các vật hoặc ảnh khác nhau và hỏi. Trẻ thích dẫn trò chơi, nên hãy để bé hỏi bạn câu hỏi nữa. Điều này xây dựng sự tự tin và làm cho việc học tương tác."
+      },
+      "tags": ["game", "question"],
+      "audio": "simple_questions_v1_question_game.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full", "complete"],
+      "keywords_vi": ["tất cả", "đầy đủ"],
+      "copy": {
+        "en": "Start with "What is this?" holding up familiar objects and naming them together.\n\nTeach "Who is this?" by pointing to photos and identifying loved ones.\n\nIntroduce "What color?" with colorful items, naming and finding matching colors.\n\nUse "What do you see?" during walks or playtime to encourage observation.\n\nFinish with a question game, taking turns asking and answering around the room.\n\nThese simple questions build curiosity and confidence in your child's English learning journey.",
+        "vi": "Bắt đầu với "What is this?" giơ các vật quen thuộc và đặt tên chúng cùng nhau.\n\nDạy "Who is this?" bằng cách chỉ vào ảnh và nhận diện người thân.\n\nGiới thiệu "What color?" với các món đồ nhiều màu, đặt tên và tìm màu giống nhau.\n\nDùng "What do you see?" khi đi dạo hoặc giờ chơi để khuyến khích quan sát.\n\nKết thúc với trò hỏi đáp, thay phiên hỏi và trả lời quanh phòng.\n\nNhững câu hỏi đơn giản này xây dựng sự tò mò và tự tin trong hành trình học tiếng Anh của bé."
+      },
+      "tags": ["all"],
+      "audio": "simple_questions_v1_what_is_this.mp3 simple_questions_v1_who_is_this.mp3 simple_questions_v1_what_color.mp3 simple_questions_v1_what_do_you_see.mp3 simple_questions_v1_question_game.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "4-7",
+    "level": "Kids Level 1",
+    "created_at": "2025-11-21T00:00:00+00:00",
+    "updated_at": "2025-11-21T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#E8F4FF"
+  }
+}

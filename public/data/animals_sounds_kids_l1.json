@@ -1,0 +1,89 @@
+{
+  "id": "animals_sounds_kids_l1",
+  "tier": "Kids Level 1 / Trẻ Em Cấp 1",
+  "title": {
+    "en": "Animals & Sounds",
+    "vi": "Động Vật & Âm Thanh"
+  },
+  "content": {
+    "en": "This room helps parents teach simple animal words through sounds, movements, and playful imitation. Children aged 4–7 learn best when they can act like animals and make their sounds.",
+    "vi": "Phòng này giúp cha mẹ dạy các từ về động vật đơn giản qua âm thanh, chuyển động và bắt chước vui. Trẻ 4–7 tuổi học tốt nhất khi bé có thể diễn như động vật và phát ra âm thanh của chúng.",
+    "audio": "animals_sounds_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "dog-woof",
+      "keywords_en": ["animal", "dog", "woof"],
+      "keywords_vi": ["động vật", "chó", "gâu gâu"],
+      "copy": {
+        "en": "Begin with the word "dog" and its sound "woof." Say the word, then make the barking sound together. Let your child pretend to be a dog, wagging and barking. Children love imitating animals, and this playful approach makes learning natural and memorable.",
+        "vi": "Bắt đầu với từ "dog" và âm thanh "woof." Nói từ, sau đó phát âm sủa cùng nhau. Để bé giả vờ là con chó, vẫy và sủa. Trẻ thích bắt chước động vật, và cách tiếp cận vui này khiến việc học tự nhiên và dễ nhớ."
+      },
+      "tags": ["animal", "dog"],
+      "audio": "animals_sounds_v1_dog_woof.mp3"
+    },
+    {
+      "slug": "cat-meow",
+      "keywords_en": ["animal", "cat", "meow"],
+      "keywords_vi": ["động vật", "mèo", "meo meo"],
+      "copy": {
+        "en": "Teach the word "cat" with its sound "meow." Say both gently and encourage your child to meow back. Pretend to be cats together, stretching and purring. The soft sound and movement help children connect the word to the animal.",
+        "vi": "Dạy từ "cat" với âm thanh "meow." Nói cả hai nhẹ nhàng và khuyến khích bé kêu meo lại. Giả vờ là mèo cùng nhau, duỗi và gừ gừ. Âm thanh và chuyển động mềm giúp trẻ kết nối từ với động vật."
+      },
+      "tags": ["animal", "cat"],
+      "audio": "animals_sounds_v1_cat_meow.mp3"
+    },
+    {
+      "slug": "bird-tweet",
+      "keywords_en": ["animal", "bird", "tweet"],
+      "keywords_vi": ["động vật", "chim", "chíp chíp"],
+      "copy": {
+        "en": "Introduce the word "bird" and its sound "tweet." Make chirping sounds together and flap your arms like wings. Let your child fly around the room. This energetic play helps the word stick through movement and sound.",
+        "vi": "Giới thiệu từ "bird" và âm thanh "tweet." Tạo âm kêu chíp chíp cùng nhau và vỗ cánh tay như cánh. Để bé bay quanh phòng. Trò chơi năng động này giúp từ ghi nhớ qua chuyển động và âm thanh."
+      },
+      "tags": ["animal", "bird"],
+      "audio": "animals_sounds_v1_bird_tweet.mp3"
+    },
+    {
+      "slug": "cow-moo",
+      "keywords_en": ["animal", "cow", "moo"],
+      "keywords_vi": ["động vật", "bò", "ò ò"],
+      "copy": {
+        "en": "Teach "cow" with its deep sound "moo." Say the word and make the mooing sound together. Pretend to walk slowly like a cow. The slow, deep sound and movement make this word fun and easy to remember.",
+        "vi": "Dạy "cow" với âm thanh trầm "moo." Nói từ và phát âm moo cùng nhau. Giả vờ đi chậm như con bò. Âm thanh trầm, chậm và chuyển động khiến từ này vui và dễ nhớ."
+      },
+      "tags": ["animal", "cow"],
+      "audio": "animals_sounds_v1_cow_moo.mp3"
+    },
+    {
+      "slug": "animal-game",
+      "keywords_en": ["animal", "game", "guess"],
+      "keywords_vi": ["động vật", "trò chơi", "đoán"],
+      "copy": {
+        "en": "Play an animal guessing game. Make an animal sound—"woof," "meow," "tweet"—and let your child guess which animal it is. Take turns making sounds and guessing. This playful game reinforces animal words through repetition and fun.",
+        "vi": "Chơi trò đoán động vật. Phát âm thanh động vật—"woof," "meow," "tweet"—và để bé đoán đó là động vật gì. Thay phiên phát âm và đoán. Trò chơi vui này củng cố từ động vật qua lặp lại và niềm vui."
+      },
+      "tags": ["game", "animal"],
+      "audio": "animals_sounds_v1_animal_game.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full", "complete"],
+      "keywords_vi": ["tất cả", "đầy đủ"],
+      "copy": {
+        "en": "Start with "dog" and "woof," pretending to bark and wag together.\n\nTeach "cat" and "meow," stretching and purring like cats.\n\nIntroduce "bird" and "tweet," flapping arms and flying around the room.\n\nShow "cow" and "moo," walking slowly and making deep sounds.\n\nFinish with an animal guessing game, making sounds and identifying animals together.\n\nThese playful activities help your child learn animal vocabulary through sound and movement.",
+        "vi": "Bắt đầu với "dog" và "woof," giả vờ sủa và vẫy cùng nhau.\n\nDạy "cat" và "meow," duỗi và gừ như mèo.\n\nGiới thiệu "bird" và "tweet," vỗ tay và bay quanh phòng.\n\nChỉ "cow" và "moo," đi chậm và phát âm trầm.\n\nKết thúc với trò đoán động vật, phát âm thanh và nhận diện động vật cùng nhau.\n\nNhững hoạt động vui này giúp bé học từ vựng động vật qua âm thanh và chuyển động."
+      },
+      "tags": ["all"],
+      "audio": "animals_sounds_v1_dog_woof.mp3 animals_sounds_v1_cat_meow.mp3 animals_sounds_v1_bird_tweet.mp3 animals_sounds_v1_cow_moo.mp3 animals_sounds_v1_animal_game.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "4-7",
+    "level": "Kids Level 1",
+    "created_at": "2025-11-21T00:00:00+00:00",
+    "updated_at": "2025-11-21T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#F0FFE6"
+  }
+}

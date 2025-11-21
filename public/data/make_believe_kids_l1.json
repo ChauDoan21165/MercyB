@@ -1,0 +1,89 @@
+{
+  "id": "make_believe_kids_l1",
+  "tier": "Kids Level 1 / Trẻ Em Cấp 1",
+  "title": {
+    "en": "Make-Believe & Imagination",
+    "vi": "Tưởng Tượng"
+  },
+  "content": {
+    "en": "This room helps parents teach imaginative play words through pretending, storytelling, and creative movement. Children aged 4–7 learn best when they can act out magical ideas and turn words into adventures.",
+    "vi": "Phòng này giúp cha mẹ dạy các từ về trò chơi tưởng tượng qua giả vờ, kể chuyện và chuyển động sáng tạo. Trẻ 4–7 tuổi học tốt nhất khi bé có thể diễn các ý tưởng kỳ diệu và biến từ thành cuộc phiêu lưu.",
+    "audio": "make_believe_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "pretend",
+      "keywords_en": ["imagination", "pretend", "play"],
+      "keywords_vi": ["tưởng tượng", "giả vờ", "chơi"],
+      "copy": {
+        "en": "Begin with the word "pretend." Say the word and pretend to be something simple—a cat, a bird, a tree. Encourage your child to pretend with you. The act of pretending helps children understand that words can create new worlds.",
+        "vi": "Bắt đầu với từ "pretend." Nói từ và giả vờ là thứ gì đó đơn giản—mèo, chim, cây. Khuyến khích bé giả vờ với bạn. Hành động giả vờ giúp trẻ hiểu rằng từ vựng có thể tạo ra thế giới mới."
+      },
+      "tags": ["imagination", "pretend"],
+      "audio": "make_believe_v1_pretend.mp3"
+    },
+    {
+      "slug": "magic",
+      "keywords_en": ["imagination", "magic", "wonder"],
+      "keywords_vi": ["tưởng tượng", "phép thuật", "kỳ diệu"],
+      "copy": {
+        "en": "Teach the word "magic" by waving an imaginary wand and saying the word with excitement. Let your child wave their own wand and make magical sounds. The playful energy of magic makes this word feel powerful and fun.",
+        "vi": "Dạy từ "magic" bằng cách vẫy cây đũa phép tưởng tượng và nói từ với sự phấn khích. Để bé vẫy đũa của mình và tạo âm thanh kỳ diệu. Năng lượng vui của phép thuật khiến từ này cảm thấy mạnh mẽ và vui."
+      },
+      "tags": ["imagination", "magic"],
+      "audio": "make_believe_v1_magic.mp3"
+    },
+    {
+      "slug": "fly",
+      "keywords_en": ["imagination", "fly", "soar"],
+      "keywords_vi": ["tưởng tượng", "bay", "lượn"],
+      "copy": {
+        "en": "Introduce the word "fly" by spreading your arms like wings and running gently around the room. Say the word as you move. Let your child fly with you. Children love movement, and this word turns energy into imagination.",
+        "vi": "Giới thiệu từ "fly" bằng cách dang tay như cánh và chạy nhẹ quanh phòng. Nói từ khi bạn di chuyển. Để bé bay với bạn. Trẻ thích chuyển động, và từ này biến năng lượng thành tưởng tượng."
+      },
+      "tags": ["imagination", "fly"],
+      "audio": "make_believe_v1_fly.mp3"
+    },
+    {
+      "slug": "story",
+      "keywords_en": ["imagination", "story", "tell"],
+      "keywords_vi": ["tưởng tượng", "câu chuyện", "kể"],
+      "copy": {
+        "en": "Teach the word "story" by starting a simple make-believe tale. Say "Once upon a time..." and let your child add ideas. The word "story" connects imagination to language, helping children see that words create adventures.",
+        "vi": "Dạy từ "story" bằng cách bắt đầu một câu chuyện tưởng tượng đơn giản. Nói "Once upon a time..." và để bé thêm ý tưởng. Từ "story" kết nối tưởng tượng với ngôn ngữ, giúp trẻ thấy rằng từ tạo ra cuộc phiêu lưu."
+      },
+      "tags": ["imagination", "story"],
+      "audio": "make_believe_v1_story.mp3"
+    },
+    {
+      "slug": "imagination-game",
+      "keywords_en": ["imagination", "game", "create"],
+      "keywords_vi": ["tưởng tượng", "trò chơi", "sáng tạo"],
+      "copy": {
+        "en": "Play an imagination game. Take turns pretending to be different things—animals, characters, or magical creatures. Say each word clearly and act it out together. This playful game turns English learning into creative, joyful expression.",
+        "vi": "Chơi trò tưởng tượng. Thay phiên giả vờ là những thứ khác nhau—động vật, nhân vật hoặc sinh vật kỳ diệu. Nói mỗi từ rõ ràng và diễn nó ra cùng nhau. Trò chơi vui này biến việc học tiếng Anh thành biểu hiện sáng tạo, vui vẻ."
+      },
+      "tags": ["game", "imagination"],
+      "audio": "make_believe_v1_imagination_game.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full", "complete"],
+      "keywords_vi": ["tất cả", "đầy đủ"],
+      "copy": {
+        "en": "Start with "pretend," acting out simple characters or animals together.\n\nTeach "magic" by waving an imaginary wand and making magical sounds.\n\nIntroduce "fly" by spreading arms like wings and running gently around the room.\n\nUse "story" to start a make-believe tale, letting your child add ideas.\n\nFinish with an imagination game, taking turns pretending and creating together.\n\nThese playful activities help your child learn imagination vocabulary through creative movement and storytelling.",
+        "vi": "Bắt đầu với "pretend," diễn các nhân vật hoặc động vật đơn giản cùng nhau.\n\nDạy "magic" bằng cách vẫy đũa phép tưởng tượng và tạo âm thanh kỳ diệu.\n\nGiới thiệu "fly" bằng cách dang tay như cánh và chạy nhẹ quanh phòng.\n\nDùng "story" để bắt đầu câu chuyện tưởng tượng, để bé thêm ý tưởng.\n\nKết thúc với trò tưởng tượng, thay phiên giả vờ và sáng tạo cùng nhau.\n\nNhững hoạt động vui này giúp bé học từ vựng tưởng tượng qua chuyển động sáng tạo và kể chuyện."
+      },
+      "tags": ["all"],
+      "audio": "make_believe_v1_pretend.mp3 make_believe_v1_magic.mp3 make_believe_v1_fly.mp3 make_believe_v1_story.mp3 make_believe_v1_imagination_game.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "4-7",
+    "level": "Kids Level 1",
+    "created_at": "2025-11-21T00:00:00+00:00",
+    "updated_at": "2025-11-21T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#FFE6F7"
+  }
+}
