@@ -40,7 +40,6 @@ interface RoomData {
 export const KidsRoomViewer = () => {
   const [roomData, setRoomData] = useState<RoomData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [language, setLanguage] = useState<'en' | 'vi'>('en');
 
   useEffect(() => {
     fetch('/data/alphabet_adventure_kids_l1.json')
@@ -75,28 +74,32 @@ export const KidsRoomViewer = () => {
     <div className="max-w-6xl mx-auto px-6 py-8 space-y-8">
       {/* Header */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-4xl font-bold" style={{ color: roomData.meta.room_color }}>
-              {roomData.title[language]}
+        <div>
+          <div className="mb-2">
+            <h1 className="text-4xl font-bold mb-2" style={{ color: roomData.meta.room_color }}>
+              {roomData.title.en}
             </h1>
-            <p className="text-muted-foreground mt-2">
-              {roomData.tier} • Ages {roomData.meta.age_range} • {roomData.meta.entry_count} activities
-            </p>
+            <h2 className="text-3xl font-semibold text-muted-foreground">
+              {roomData.title.vi}
+            </h2>
           </div>
-          <button
-            onClick={() => setLanguage(language === 'en' ? 'vi' : 'en')}
-            className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
-          >
-            Switch to {language === 'en' ? 'Tiếng Việt' : 'English'}
-          </button>
+          <p className="text-muted-foreground mt-4">
+            {roomData.tier} • Ages {roomData.meta.age_range} • {roomData.meta.entry_count} activities
+          </p>
         </div>
 
         <Card>
-          <CardContent className="pt-6">
-            <p className="text-lg leading-relaxed">{roomData.content[language]}</p>
+          <CardContent className="pt-6 space-y-6">
+            <div>
+              <h3 className="text-sm font-semibold text-muted-foreground mb-2">ENGLISH</h3>
+              <p className="text-lg leading-relaxed">{roomData.content.en}</p>
+            </div>
+            <div className="border-t pt-6">
+              <h3 className="text-sm font-semibold text-muted-foreground mb-2">TIẾNG VIỆT</h3>
+              <p className="text-lg leading-relaxed">{roomData.content.vi}</p>
+            </div>
             {roomData.content.audio && (
-              <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground border-t pt-4">
                 <Volume2 className="w-4 h-4" />
                 <span>Audio: {roomData.content.audio}</span>
               </div>
@@ -107,7 +110,7 @@ export const KidsRoomViewer = () => {
 
       {/* Entries */}
       <div className="space-y-6">
-        <h2 className="text-2xl font-bold">Activities</h2>
+        <h2 className="text-2xl font-bold">Activities / Hoạt Động</h2>
         {roomData.entries.filter(entry => entry.slug !== 'all').map((entry, index) => (
           <Card key={entry.slug} className="overflow-hidden">
             <CardHeader className="bg-muted/50" style={{ borderLeftColor: roomData.meta.room_color, borderLeftWidth: '4px' }}>
@@ -124,18 +127,35 @@ export const KidsRoomViewer = () => {
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="pt-6 space-y-4">
-              <p className="text-base leading-relaxed whitespace-pre-line">
-                {entry.copy[language]}
-              </p>
+            <CardContent className="pt-6 space-y-6">
+              <div>
+                <h4 className="text-sm font-semibold text-muted-foreground mb-2">ENGLISH</h4>
+                <p className="text-base leading-relaxed whitespace-pre-line">
+                  {entry.copy.en}
+                </p>
+                <div className="mt-3 text-sm text-muted-foreground">
+                  <strong>Keywords:</strong> {entry.keywords_en.join(', ')}
+                </div>
+              </div>
               
-              <div className="pt-4 border-t space-y-2">
+              <div className="border-t pt-6">
+                <h4 className="text-sm font-semibold text-muted-foreground mb-2">TIẾNG VIỆT</h4>
+                <p className="text-base leading-relaxed whitespace-pre-line">
+                  {entry.copy.vi}
+                </p>
+                <div className="mt-3 text-sm text-muted-foreground">
+                  <strong>Từ khóa:</strong> {entry.keywords_vi.join(', ')}
+                </div>
+              </div>
+              
+              <div className="border-t pt-4 space-y-2">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Volume2 className="w-4 h-4" />
-                  <span>Audio: {language === 'en' ? entry.audio : entry.audio_vi}</span>
+                  <span>Audio (EN): {entry.audio}</span>
                 </div>
-                <div className="text-sm text-muted-foreground">
-                  <strong>Keywords:</strong> {entry[language === 'en' ? 'keywords_en' : 'keywords_vi'].join(', ')}
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Volume2 className="w-4 h-4" />
+                  <span>Audio (VI): {entry.audio_vi}</span>
                 </div>
               </div>
             </CardContent>
