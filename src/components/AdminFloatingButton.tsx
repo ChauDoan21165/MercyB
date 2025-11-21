@@ -71,25 +71,7 @@ export const AdminFloatingButton = () => {
   if (!isAdmin) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-2">
-      <Button
-        onClick={() => navigate('/admin/kids-standardizer')}
-        size="sm"
-        variant="outline"
-        className="rounded-full shadow-sm h-5 w-5 p-0 bg-pink-400 hover:bg-pink-500 border-pink-500"
-        title="Kids Admin Tools"
-      >
-        <span className="text-white text-xs font-bold">K</span>
-      </Button>
-      <Button
-        onClick={() => navigate('/admin/mercy-blade-standards')}
-        size="sm"
-        variant="outline"
-        className="rounded-full shadow-sm h-5 w-5 p-0 bg-gradient-to-r from-purple-500 to-blue-500 hover:opacity-90 border-purple-500"
-        title="Mercy Blade Universal Standards"
-      >
-        <span className="text-white text-xs font-bold">★</span>
-      </Button>
+    <div className="fixed bottom-6 right-6 z-50">
       <Button
         onClick={() => navigate('/admin/stats')}
         size="sm"

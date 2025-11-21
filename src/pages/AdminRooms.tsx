@@ -167,18 +167,11 @@ export default function AdminRooms() {
     });
   };
 
-  const normalizeId = (id: string) => id.replace(/[_-]/g, '');
-  
-  const filteredRooms = rooms?.filter(room => {
-    const normalizedQuery = normalizeId(searchQuery.toLowerCase());
-    const loweredQuery = searchQuery.toLowerCase();
-    return (
-      room.title_en.toLowerCase().includes(loweredQuery) ||
-      room.title_vi.toLowerCase().includes(loweredQuery) ||
-      room.tier.toLowerCase().includes(loweredQuery) ||
-      normalizeId(room.id.toLowerCase()).includes(normalizedQuery)
-    );
-  });
+  const filteredRooms = rooms?.filter(room =>
+    room.title_en.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    room.title_vi.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    room.id.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const getTierColor = (tier: string) => {
     switch (tier) {
@@ -186,9 +179,6 @@ export default function AdminRooms() {
       case "vip1": return "bg-blue-500";
       case "vip2": return "bg-purple-500";
       case "vip3": return "bg-orange-500";
-      case "vip4": return "bg-pink-500";
-      case "vip5": return "bg-cyan-500";
-      case "vip6": return "bg-red-500";
       default: return "bg-gray-500";
     }
   };

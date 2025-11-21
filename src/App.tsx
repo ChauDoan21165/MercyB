@@ -58,11 +58,6 @@ import AdminUserDetail from "./pages/AdminUserDetail";
 import AdminSecurity from "./pages/AdminSecurity";
 import JoinCode from "./pages/JoinCode";
 import AdminSystemMetrics from "./pages/AdminSystemMetrics";
-import AdminRoomsDashboard from "./pages/AdminRoomsDashboard";
-import KidsDesignPack from "./pages/KidsDesignPack";
-import AdminKidsImport from "./pages/AdminKidsImport";
-import AdminKidsStandardizer from "./pages/AdminKidsStandardizer";
-import AdminApplyMercyBladeStandards from "./pages/AdminApplyMercyBladeStandards";
 
 const queryClient = new QueryClient();
 
@@ -153,13 +148,8 @@ const App = () => {
           <Route path="/admin/code-editor" element={<AdminCodeEditor />} />
           <Route path="/admin/payments" element={<AdminPayments />} />
           <Route path="/admin/system-metrics" element={<AdminSystemMetrics />} />
-          <Route path="/admin/rooms-dashboard" element={<AdminRoomsDashboard />} />
           <Route path="/audio-test" element={<AudioTestPage />} />
           <Route path="/audio-upload" element={<AudioUpload />} />
-          <Route path="/kids-design-pack" element={<KidsDesignPack />} />
-          <Route path="/admin/kids-import" element={<AdminKidsImport />} />
-          <Route path="/admin/kids-standardizer" element={<AdminKidsStandardizer />} />
-          <Route path="/admin/mercy-blade-standards" element={<AdminApplyMercyBladeStandards />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         </BrowserRouter>

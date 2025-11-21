@@ -104,15 +104,9 @@ export const RoomSearch = () => {
                     room.tier === 'vip1' && "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
                     room.tier === 'vip2' && "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
                     room.tier === 'vip3' && "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
-                    room.tier === 'vip4' && "bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400",
-                    room.tier === 'level1' && "bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400",
-                    room.tier === 'level2' && "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
-                    room.tier === 'level3' && "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400"
+                    room.tier === 'vip4' && "bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400"
                   )}>
-                    {room.tier === 'level1' ? 'AGES 4-7' : 
-                     room.tier === 'level2' ? 'AGES 7-10' : 
-                     room.tier === 'level3' ? 'AGES 10-13' : 
-                     room.tier.toUpperCase()}
+                    {room.tier.toUpperCase()}
                   </span>
                 </div>
               </button>

@@ -1,7 +1,5 @@
 import { useTiersConfig } from '@/hooks/useTiersConfig';
-import { useKidsLevels } from '@/hooks/useKidsLevels';
 import { TierSection } from '@/components/tiers/TierSection';
-import { KidsTierSection } from '@/components/tiers/KidsTierSection';
 import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
@@ -11,7 +9,6 @@ import { AccessCodeRedemption } from '@/components/AccessCodeRedemption';
 
 const Tiers = () => {
   const { config, loading, error } = useTiersConfig();
-  const { levels: kidsLevels, loading: kidsLoading, error: kidsError } = useKidsLevels();
   const navigate = useNavigate();
 
   // Enable smooth scrolling
@@ -22,7 +19,7 @@ const Tiers = () => {
     };
   }, []);
 
-  if (loading || kidsLoading) {
+  if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-50 to-teal-50">
         <div className="text-center space-y-3">
@@ -53,12 +50,6 @@ const Tiers = () => {
 
       {/* Main content - sections */}
       <main>
-        {/* Kids Levels Section */}
-        {kidsLevels.map((level) => (
-          <KidsTierSection key={level.id} level={level} />
-        ))}
-
-        {/* Adult Tiers Section */}
         {config.sections.map((section) => (
           <TierSection
             key={section.slug}

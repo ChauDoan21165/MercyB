@@ -124,21 +124,6 @@ export default {
             transform: "scale(1) rotate(180deg)",
           },
         },
-        "wiggle": {
-          "0%, 100%": { transform: "rotate(-3deg)" },
-          "50%": { transform: "rotate(3deg)" },
-        },
-        "float": {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
-        "tada": {
-          "0%": { transform: "scale(1)" },
-          "10%, 20%": { transform: "scale(0.9) rotate(-3deg)" },
-          "30%, 50%, 70%, 90%": { transform: "scale(1.1) rotate(3deg)" },
-          "40%, 60%, 80%": { transform: "scale(1.1) rotate(-3deg)" },
-          "100%": { transform: "scale(1) rotate(0)" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -148,9 +133,6 @@ export default {
         "glow": "glow 2s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "sparkle": "sparkle 1.5s ease-in-out infinite",
-        "wiggle": "wiggle 1s ease-in-out infinite",
-        "float": "float 3s ease-in-out infinite",
-        "tada": "tada 1s ease-in-out",
       },
     },
   },

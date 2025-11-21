@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, RotateCcw, UserPlus, Crown, Star, Gem, Sparkles, Rocket, Feather, Brain, Baby, Compass, GraduationCap } from 'lucide-react';
+import { ArrowLeft, RotateCcw, UserPlus, Crown, Star, Gem, Sparkles, Rocket, Feather, Brain } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useEffect, useState } from 'react';
@@ -195,44 +195,6 @@ export const ColorfulMercyBladeHeader = ({
                   <div className="flex flex-col">
                     <span className="font-semibold">VIP6 Psychology</span>
                     <span className="text-xs text-muted-foreground">Deep psychology</span>
-                  </div>
-                </DropdownMenuItem>
-
-                <DropdownMenuSeparator />
-                <DropdownMenuLabel className="text-center text-xs text-muted-foreground">
-                  Kids English / Trẻ Em
-                </DropdownMenuLabel>
-
-                <DropdownMenuItem 
-                  onClick={() => navigate('/kids-design-pack')}
-                  className="cursor-pointer hover:bg-pink-50 dark:hover:bg-pink-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
-                >
-                  <Baby className="mr-2 h-4 w-4 text-pink-600 transition-transform duration-200 group-hover:scale-110" />
-                  <div className="flex flex-col">
-                    <span className="font-semibold">Little Explorers</span>
-                    <span className="text-xs text-muted-foreground">Ages 4-7 / 4-7 tuổi</span>
-                  </div>
-                </DropdownMenuItem>
-
-                <DropdownMenuItem 
-                  onClick={() => navigate('/kids-design-pack')}
-                  className="cursor-pointer hover:bg-cyan-50 dark:hover:bg-cyan-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
-                >
-                  <Compass className="mr-2 h-4 w-4 text-cyan-600 transition-transform duration-200 group-hover:scale-110" />
-                  <div className="flex flex-col">
-                    <span className="font-semibold">Young Adventurers</span>
-                    <span className="text-xs text-muted-foreground">Ages 7-10 / 7-10 tuổi</span>
-                  </div>
-                </DropdownMenuItem>
-
-                <DropdownMenuItem 
-                  onClick={() => navigate('/kids-design-pack')}
-                  className="cursor-pointer hover:bg-green-50 dark:hover:bg-green-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
-                >
-                  <GraduationCap className="mr-2 h-4 w-4 text-green-600 transition-transform duration-200 group-hover:scale-110" />
-                  <div className="flex flex-col">
-                    <span className="font-semibold">Super Learners</span>
-                    <span className="text-xs text-muted-foreground">Ages 10-13 / 10-13 tuổi</span>
                   </div>
                 </DropdownMenuItem>
 

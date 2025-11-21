@@ -131,22 +131,13 @@ const Homepage = () => {
           <p className="text-sm text-gray-700">
             Sẵn sàng bắt đầu hành trình của bạn?
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              onClick={() => navigate('/kids-design-pack')}
-              className="gap-2 bg-purple-600 hover:bg-purple-700 text-white"
-            >
-              Kids English Area <ArrowRight className="w-4 h-4" />
-            </Button>
-            <Button
-              size="lg"
-              onClick={() => navigate('/tiers')}
-              className="gap-2 bg-teal-600 hover:bg-teal-700 text-white"
-            >
-              Get Started <ArrowRight className="w-4 h-4" />
-            </Button>
-          </div>
+          <Button
+            size="lg"
+            onClick={() => navigate('/tiers')}
+            className="gap-2 bg-teal-600 hover:bg-teal-700 text-white"
+          >
+            Get Started <ArrowRight className="w-4 h-4" />
+          </Button>
         </div>
       </footer>
     </div>
