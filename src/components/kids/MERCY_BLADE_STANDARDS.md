@@ -1,6 +1,9 @@
 # Mercy Blade Kids Room Standards
 
-This document defines the comprehensive standards for all Kids English rooms in Mercy Blade.
+**IMPORTANT**: These standards match ALL other Mercy Blade rooms (VIP 1-6).
+The complete universal standards are defined in `src/lib/mercyBladeStandards.ts`.
+
+This document defines Kids-specific implementations of the universal standards.
 
 ## 🎨 Design Standards
 

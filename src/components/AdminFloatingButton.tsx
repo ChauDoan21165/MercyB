@@ -82,6 +82,15 @@ export const AdminFloatingButton = () => {
         <span className="text-white text-xs font-bold">K</span>
       </Button>
       <Button
+        onClick={() => navigate('/admin/mercy-blade-standards')}
+        size="sm"
+        variant="outline"
+        className="rounded-full shadow-sm h-5 w-5 p-0 bg-gradient-to-r from-purple-500 to-blue-500 hover:opacity-90 border-purple-500"
+        title="Mercy Blade Universal Standards"
+      >
+        <span className="text-white text-xs font-bold">★</span>
+      </Button>
+      <Button
         onClick={() => navigate('/admin/stats')}
         size="sm"
         variant="outline"

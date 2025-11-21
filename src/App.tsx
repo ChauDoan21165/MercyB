@@ -62,6 +62,7 @@ import AdminRoomsDashboard from "./pages/AdminRoomsDashboard";
 import KidsDesignPack from "./pages/KidsDesignPack";
 import AdminKidsImport from "./pages/AdminKidsImport";
 import AdminKidsStandardizer from "./pages/AdminKidsStandardizer";
+import AdminApplyMercyBladeStandards from "./pages/AdminApplyMercyBladeStandards";
 
 const queryClient = new QueryClient();
 
@@ -158,6 +159,7 @@ const App = () => {
           <Route path="/kids-design-pack" element={<KidsDesignPack />} />
           <Route path="/admin/kids-import" element={<AdminKidsImport />} />
           <Route path="/admin/kids-standardizer" element={<AdminKidsStandardizer />} />
+          <Route path="/admin/mercy-blade-standards" element={<AdminApplyMercyBladeStandards />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         </BrowserRouter>
