@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, RotateCcw, UserPlus, Crown, Star, Gem, Sparkles, Rocket, Feather, Brain } from 'lucide-react';
+import { ArrowLeft, RotateCcw, UserPlus, Crown, Star, Gem, Sparkles, Rocket, Feather, Brain, Baby, GraduationCap, School } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useEffect, useState } from 'react';
@@ -195,6 +195,41 @@ export const ColorfulMercyBladeHeader = ({
                   <div className="flex flex-col">
                     <span className="font-semibold">VIP6 Psychology</span>
                     <span className="text-xs text-muted-foreground">Deep psychology</span>
+                  </div>
+                </DropdownMenuItem>
+
+                <DropdownMenuSeparator />
+
+                <DropdownMenuItem 
+                  onClick={() => navigate('/kids-level-1')}
+                  className="cursor-pointer hover:bg-green-50 dark:hover:bg-green-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                >
+                  <Baby className="mr-2 h-4 w-4 text-green-600 transition-transform duration-200 group-hover:scale-110" />
+                  <div className="flex flex-col">
+                    <span className="font-semibold">Kids Level 1</span>
+                    <span className="text-xs text-muted-foreground">Ages 4-7</span>
+                  </div>
+                </DropdownMenuItem>
+
+                <DropdownMenuItem 
+                  onClick={() => navigate('/kids-level-2')}
+                  className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                >
+                  <School className="mr-2 h-4 w-4 text-blue-600 transition-transform duration-200 group-hover:scale-110" />
+                  <div className="flex flex-col">
+                    <span className="font-semibold">Kids Level 2</span>
+                    <span className="text-xs text-muted-foreground">Ages 7-10</span>
+                  </div>
+                </DropdownMenuItem>
+
+                <DropdownMenuItem 
+                  onClick={() => navigate('/kids-level-3')}
+                  className="cursor-pointer hover:bg-purple-50 dark:hover:bg-purple-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                >
+                  <GraduationCap className="mr-2 h-4 w-4 text-purple-600 transition-transform duration-200 group-hover:scale-110" />
+                  <div className="flex flex-col">
+                    <span className="font-semibold">Kids Level 3</span>
+                    <span className="text-xs text-muted-foreground">Ages 10-13</span>
                   </div>
                 </DropdownMenuItem>
 
