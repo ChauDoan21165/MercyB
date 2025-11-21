@@ -1,12 +1,12 @@
 import { ReactNode, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft, RefreshCw, Volume2, Copy } from 'lucide-react';
+import { ArrowLeft, RefreshCw, Volume2 } from 'lucide-react';
 import { useKidsRoomContext } from '@/contexts/KidsRoomContext';
 import { useUserAccess } from '@/hooks/useUserAccess';
 import { useToast } from '@/hooks/use-toast';
 import { AudioPlayer } from '@/components/AudioPlayer';
-import { MessageActions } from '@/components/MessageActions';
+import { PairedHighlightedContentWithDictionary } from '@/components/PairedHighlightedContentWithDictionary';
 
 interface KidsRoomLayoutProps {
   children?: ReactNode;
@@ -139,37 +139,31 @@ export const KidsRoomLayout = ({ children, backPath = '/kids-design-pack', showR
           </p>
         </div>
 
-        <Card className="border-2" style={{ borderColor: roomData.meta.room_color }}>
-          <CardContent className="pt-6 space-y-6">
-            <div>
-              <h3 className="text-sm font-semibold mb-2 bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
-                ENGLISH
-              </h3>
-              <p className="text-lg leading-relaxed">{roomData.content.en}</p>
-              <MessageActions text={roomData.content.en} roomId={roomData.id} />
-            </div>
-            <div className="border-t pt-6">
-              <h3 className="text-sm font-semibold mb-2 bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
-                TIẾNG VIỆT
-              </h3>
-              <p className="text-lg leading-relaxed">{roomData.content.vi}</p>
-              <MessageActions text={roomData.content.vi} roomId={roomData.id} />
-            </div>
-            {roomData.content.audio && (
-              <div className="mt-4 border-t pt-4">
-                <div className="flex items-center gap-2 mb-2 text-sm text-muted-foreground">
-                  <Volume2 className="w-4 h-4" />
-                  <span>Introduction Audio:</span>
-                </div>
-                <AudioPlayer
-                  audioPath={`/audio/${roomData.content.audio}`}
-                  isPlaying={currentAudio === roomData.content.audio && isAudioPlaying}
-                  onPlayPause={() => handleAudioToggle(roomData.content.audio)}
-                  onEnded={() => setIsAudioPlaying(false)}
-                />
+        <Card className="border-2 p-4 bg-muted/30" style={{ borderColor: roomData.meta.room_color }}>
+          <PairedHighlightedContentWithDictionary
+            englishContent={roomData.content.en}
+            vietnameseContent={roomData.content.vi}
+            roomKeywords={roomData.entries.flatMap(e => e.keywords_en)}
+            onWordClick={() => {
+              if (roomData.content.audio && currentAudio !== roomData.content.audio) {
+                handleAudioToggle(roomData.content.audio);
+              }
+            }}
+          />
+          {roomData.content.audio && (
+            <div className="mt-4 pt-4 border-t border-border/50">
+              <div className="flex items-center gap-2 mb-2 text-sm text-muted-foreground">
+                <Volume2 className="w-4 h-4" />
+                <span>Introduction Audio:</span>
               </div>
-            )}
-          </CardContent>
+              <AudioPlayer
+                audioPath={`/audio/${roomData.content.audio}`}
+                isPlaying={currentAudio === roomData.content.audio && isAudioPlaying}
+                onPlayPause={() => handleAudioToggle(roomData.content.audio)}
+                onEnded={() => setIsAudioPlaying(false)}
+              />
+            </div>
+          )}
         </Card>
       </div>
 

@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Volume2 } from 'lucide-react';
 import { useKidsRoomContext } from '@/contexts/KidsRoomContext';
 import { AudioPlayer } from '@/components/AudioPlayer';
-import { MessageActions } from '@/components/MessageActions';
+import { PairedHighlightedContentWithDictionary } from '@/components/PairedHighlightedContentWithDictionary';
 
 export const KidsRoomContent = () => {
   const { roomData } = useKidsRoomContext();
@@ -50,30 +50,25 @@ export const KidsRoomContent = () => {
           </CardHeader>
           
           <CardContent className="pt-6 space-y-6">
-            <div>
-              <h4 className="text-sm font-semibold mb-2 bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
-                ENGLISH
-              </h4>
-              <p className="text-base leading-relaxed whitespace-pre-line mb-3">
-                {entry.copy.en}
-              </p>
-              <div className="text-sm text-muted-foreground mb-2">
-                <strong>Keywords:</strong> {entry.keywords_en.join(', ')}
+            <div className="p-4 bg-muted/30 rounded-lg border border-border/50">
+              <PairedHighlightedContentWithDictionary
+                englishContent={entry.copy.en}
+                vietnameseContent={entry.copy.vi}
+                roomKeywords={[...entry.keywords_en, ...entry.keywords_vi]}
+                onWordClick={() => {
+                  if (entry.audio && currentAudio !== entry.audio) {
+                    handleAudioToggle(entry.audio);
+                  }
+                }}
+              />
+              <div className="mt-3 pt-3 border-t border-border/30 text-sm text-muted-foreground">
+                <div>
+                  <strong>Keywords:</strong> {entry.keywords_en.join(', ')}
+                </div>
+                <div>
+                  <strong>Từ khóa:</strong> {entry.keywords_vi.join(', ')}
+                </div>
               </div>
-              <MessageActions text={entry.copy.en} roomId={roomData.id} />
-            </div>
-            
-            <div className="border-t pt-6">
-              <h4 className="text-sm font-semibold mb-2 bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
-                TIẾNG VIỆT
-              </h4>
-              <p className="text-base leading-relaxed whitespace-pre-line mb-3">
-                {entry.copy.vi}
-              </p>
-              <div className="text-sm text-muted-foreground mb-2">
-                <strong>Từ khóa:</strong> {entry.keywords_vi.join(', ')}
-              </div>
-              <MessageActions text={entry.copy.vi} roomId={roomData.id} />
             </div>
             
             <div className="border-t pt-4 space-y-4">
