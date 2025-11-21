@@ -1,0 +1,110 @@
+-- Clear existing kids data
+TRUNCATE TABLE public.kids_entries CASCADE;
+TRUNCATE TABLE public.kids_rooms CASCADE;
+TRUNCATE TABLE public.kids_levels CASCADE;
+
+-- Insert 3 Kids Levels with VIP-style theming
+INSERT INTO public.kids_levels (id, name_en, name_vi, age_range, description_en, description_vi, display_order, price_monthly, color_theme, is_active) VALUES
+('level1', 'Level 1', 'Cấp 1', '4-7', 'Foundation English for young learners', 'Tiếng Anh nền tảng cho trẻ nhỏ', 1, 99000, 'hsl(142, 76%, 36%)', true),
+('level2', 'Level 2', 'Cấp 2', '7-10', 'Building confidence and skills', 'Xây dựng sự tự tin và kỹ năng', 2, 149000, 'hsl(221, 83%, 53%)', true),
+('level3', 'Level 3', 'Cấp 3', '10-13', 'Advanced learning and expression', 'Học tập và diễn đạt nâng cao', 3, 199000, 'hsl(271, 91%, 65%)', true);
+
+-- Insert 90 Kids Rooms (30 per level)
+-- LEVEL 1 - Ages 4-7 (30 rooms)
+INSERT INTO public.kids_rooms (id, level_id, title_en, title_vi, description_en, description_vi, display_order, icon, is_active) VALUES
+('alphabet-adventure', 'level1', 'Alphabet Adventure', 'Phiêu Lưu Bảng Chữ Cái', 'Learn letters through fun adventures', 'Học chữ cái qua các cuộc phiêu lưu vui nhộn', 1, 'BookOpen', true),
+('colors-shapes', 'level1', 'Colors & Shapes', 'Màu Sắc & Hình Dạng', 'Explore colors and shapes', 'Khám phá màu sắc và hình dạng', 2, 'Palette', true),
+('numbers-counting', 'level1', 'Numbers & Counting', 'Số Đếm', 'Count and learn numbers', 'Đếm và học số', 3, 'Hash', true),
+('opposites-matching', 'level1', 'Opposites & Matching', 'Trái Nghĩa & Ghép Đôi', 'Learn opposites and matching', 'Học từ trái nghĩa và ghép đôi', 4, 'Shuffle', true),
+('body-parts-movement', 'level1', 'Body Parts & Movement', 'Bộ Phận Cơ Thể & Chuyển Động', 'Learn about body and movement', 'Học về cơ thể và chuyển động', 5, 'User', true),
+('feelings-emotions', 'level1', 'Feelings & Emotions', 'Cảm Xúc', 'Express feelings and emotions', 'Diễn đạt cảm xúc', 6, 'Heart', true),
+('first-action-verbs', 'level1', 'First Action Verbs', 'Động Từ Hành Động Đầu Tiên', 'Learn basic action words', 'Học từ hành động cơ bản', 7, 'Zap', true),
+('size-comparison', 'level1', 'Size & Comparison', 'Kích Thước & So Sánh', 'Compare sizes and learn big/small', 'So sánh kích thước và học to/nhỏ', 8, 'Maximize2', true),
+('simple-questions', 'level1', 'Simple Questions (What/Who)', 'Câu Hỏi Đơn Giản', 'Ask and answer simple questions', 'Hỏi và trả lời câu hỏi đơn giản', 9, 'HelpCircle', true),
+('early-phonics', 'level1', 'Early Phonics Sounds', 'Âm Thanh Đầu Tiên', 'Learn letter sounds', 'Học âm thanh của chữ cái', 10, 'Volume2', true),
+('family-home', 'level1', 'Family & Home Words', 'Gia Đình & Nhà Cửa', 'Learn family and home vocabulary', 'Học từ vựng về gia đình và nhà', 11, 'Home', true),
+('rooms-house', 'level1', 'Rooms in the House', 'Các Phòng Trong Nhà', 'Explore rooms in your home', 'Khám phá các phòng trong nhà', 12, 'Building', true),
+('clothes-dressing', 'level1', 'Clothes & Dressing', 'Quần Áo & Mặc', 'Learn about clothes', 'Học về quần áo', 13, 'Shirt', true),
+('food-snacks', 'level1', 'Food & Snacks', 'Đồ Ăn & Đồ Ăn Vặt', 'Learn food vocabulary', 'Học từ vựng về đồ ăn', 14, 'Apple', true),
+('drinks-treats', 'level1', 'Drinks & Treats', 'Đồ Uống & Món Ngon', 'Learn about drinks and treats', 'Học về đồ uống và món ngon', 15, 'Coffee', true),
+('daily-routines', 'level1', 'Daily Routines', 'Thói Quen Hàng Ngày', 'Learn daily routine words', 'Học từ về thói quen hàng ngày', 16, 'Clock', true),
+('bedtime-words', 'level1', 'Bedtime Words', 'Từ Vựng Giờ Đi Ngủ', 'Learn bedtime vocabulary', 'Học từ vựng về giờ đi ngủ', 17, 'Moon', true),
+('bathroom-hygiene', 'level1', 'Bathroom & Hygiene', 'Phòng Tắm & Vệ Sinh', 'Learn hygiene words', 'Học từ về vệ sinh', 18, 'Droplets', true),
+('school-objects', 'level1', 'School Objects', 'Đồ Dùng Học Tập', 'Learn school items', 'Học đồ dùng học tập', 19, 'Backpack', true),
+('playground-words', 'level1', 'Playground Words', 'Từ Vựng Sân Chơi', 'Learn playground vocabulary', 'Học từ vựng về sân chơi', 20, 'Smile', true),
+('toys-playtime', 'level1', 'Toys & Playtime', 'Đồ Chơi & Giờ Chơi', 'Learn about toys', 'Học về đồ chơi', 21, 'Gamepad2', true),
+('animals-sounds', 'level1', 'Animals & Sounds', 'Động Vật & Âm Thanh', 'Learn animal sounds', 'Học âm thanh động vật', 22, 'Dog', true),
+('farm-animals', 'level1', 'Farm Animals', 'Động Vật Trang Trại', 'Learn farm animals', 'Học động vật trang trại', 23, 'Beef', true),
+('wild-animals', 'level1', 'Wild Animals', 'Động Vật Hoang Dã', 'Learn wild animals', 'Học động vật hoang dã', 24, 'Bird', true),
+('pets-caring', 'level1', 'Pets & Caring', 'Thú Cưng & Chăm Sóc', 'Learn about pets', 'Học về thú cưng', 25, 'Heart', true),
+('nature-explorers', 'level1', 'Nature Explorers', 'Khám Phá Thiên Nhiên', 'Explore nature words', 'Khám phá từ về thiên nhiên', 26, 'Trees', true),
+('weather-kids', 'level1', 'Weather for Kids', 'Thời Tiết Cho Trẻ', 'Learn weather words', 'Học từ về thời tiết', 27, 'CloudRain', true),
+('colors-nature', 'level1', 'Colors in Nature', 'Màu Sắc Trong Thiên Nhiên', 'Find colors in nature', 'Tìm màu sắc trong thiên nhiên', 28, 'Flower', true),
+('magic-story', 'level1', 'Magic Story Words', 'Từ Vựng Câu Chuyện Kỳ Diệu', 'Learn storytelling words', 'Học từ kể chuyện', 29, 'Sparkles', true),
+('make-believe', 'level1', 'Make-Believe & Imagination', 'Tưởng Tượng', 'Use your imagination', 'Dùng trí tưởng tượng', 30, 'Wand2', true);
+
+-- LEVEL 2 - Ages 7-10 (30 rooms)
+INSERT INTO public.kids_rooms (id, level_id, title_en, title_vi, description_en, description_vi, display_order, icon, is_active) VALUES
+('school-life', 'level2', 'School Life Vocabulary', 'Từ Vựng Đời Sống Học Đường', 'Learn school life words', 'Học từ về đời sống học đường', 1, 'School', true),
+('classroom-english', 'level2', 'Classroom English', 'Tiếng Anh Lớp Học', 'Learn classroom language', 'Học ngôn ngữ lớp học', 2, 'BookOpen', true),
+('math-words', 'level2', 'Math Words for Kids', 'Từ Vựng Toán Cho Trẻ', 'Learn math vocabulary', 'Học từ vựng toán học', 3, 'Calculator', true),
+('science-basics', 'level2', 'Science Basics', 'Khoa Học Cơ Bản', 'Learn science words', 'Học từ khoa học', 4, 'Flask', true),
+('geography-basics', 'level2', 'Geography Basics', 'Địa Lý Cơ Bản', 'Learn geography', 'Học địa lý', 5, 'Globe', true),
+('reading-skills', 'level2', 'Reading Skills', 'Kỹ Năng Đọc', 'Improve reading', 'Cải thiện kỹ năng đọc', 6, 'BookMarked', true),
+('writing-basics', 'level2', 'Writing Basics', 'Viết Cơ Bản', 'Learn writing skills', 'Học kỹ năng viết', 7, 'Pen', true),
+('spelling-patterns', 'level2', 'Spelling Patterns', 'Mẫu Chính Tả', 'Learn spelling', 'Học chính tả', 8, 'Type', true),
+('project-vocab', 'level2', 'Project Vocabulary', 'Từ Vựng Dự Án', 'Learn project words', 'Học từ về dự án', 9, 'FolderOpen', true),
+('art-creativity', 'level2', 'Art & Creativity Words', 'Từ Vựng Nghệ Thuật', 'Learn art vocabulary', 'Học từ nghệ thuật', 10, 'Palette', true),
+('hobbies-fun', 'level2', 'Hobbies & Fun Activities', 'Sở Thích & Hoạt Động Vui', 'Learn hobby words', 'Học từ về sở thích', 11, 'Smile', true),
+('games-sports', 'level2', 'Games & Sports', 'Trò Chơi & Thể Thao', 'Learn sports vocabulary', 'Học từ thể thao', 12, 'Trophy', true),
+('friendship-kindness', 'level2', 'Friendship & Kindness', 'Tình Bạn & Lòng Tốt', 'Learn friendship words', 'Học từ về tình bạn', 13, 'Heart', true),
+('social-skills', 'level2', 'Social Skills (Sharing & Helping)', 'Kỹ Năng Xã Hội', 'Learn social skills', 'Học kỹ năng xã hội', 14, 'Users', true),
+('feelings-social', 'level2', 'Feelings & Social Skills', 'Cảm Xúc & Kỹ Năng Xã Hội', 'Express feelings socially', 'Diễn đạt cảm xúc xã hội', 15, 'MessageCircle', true),
+('community-helpers', 'level2', 'Community Helpers', 'Người Giúp Đỡ Cộng Đồng', 'Learn about helpers', 'Học về người giúp đỡ', 16, 'Users', true),
+('safety-rules', 'level2', 'Safety & Rules', 'An Toàn & Quy Tắc', 'Learn safety words', 'Học từ về an toàn', 17, 'Shield', true),
+('healthy-habits', 'level2', 'Healthy Habits', 'Thói Quen Lành Mạnh', 'Learn health vocabulary', 'Học từ về sức khỏe', 18, 'HeartPulse', true),
+('travel-transport', 'level2', 'Travel & Transport', 'Du Lịch & Phương Tiện', 'Learn transport words', 'Học từ về phương tiện', 19, 'Plane', true),
+('daily-conversations', 'level2', 'Daily Conversations for Kids', 'Hội Thoại Hàng Ngày', 'Learn daily conversations', 'Học hội thoại hàng ngày', 20, 'MessageSquare', true),
+('weather-seasons', 'level2', 'Weather & Seasons', 'Thời Tiết & Mùa', 'Learn seasons', 'Học về các mùa', 21, 'Sun', true),
+('space-planets', 'level2', 'Space & Planets', 'Không Gian & Hành Tinh', 'Explore space', 'Khám phá không gian', 22, 'Rocket', true),
+('animals-world', 'level2', 'Animals Around the World', 'Động Vật Khắp Thế Giới', 'Learn world animals', 'Học động vật thế giới', 23, 'Globe', true),
+('little-scientist', 'level2', 'Little Scientist Words', 'Từ Vựng Nhà Khoa Học Nhỏ', 'Learn science vocabulary', 'Học từ khoa học', 24, 'Microscope', true),
+('experiments-vocab', 'level2', 'Simple Experiments Vocabulary', 'Từ Vựng Thí Nghiệm Đơn Giản', 'Learn experiment words', 'Học từ về thí nghiệm', 25, 'Beaker', true),
+('world-cultures', 'level2', 'World Cultures for Kids', 'Văn Hóa Thế Giới', 'Learn about cultures', 'Học về văn hóa', 26, 'MapPin', true),
+('environment-nature', 'level2', 'Environment & Nature', 'Môi Trường & Thiên Nhiên', 'Learn environment words', 'Học từ về môi trường', 27, 'Leaf', true),
+('adventure-discovery', 'level2', 'Adventure & Discovery Words', 'Từ Vựng Phiêu Lưu', 'Learn adventure words', 'Học từ phiêu lưu', 28, 'Compass', true),
+('story-builder', 'level2', 'Story Builder', 'Xây Dựng Câu Chuyện', 'Build stories', 'Xây dựng câu chuyện', 29, 'BookText', true),
+('creativity-challenges', 'level2', 'Creativity Challenges', 'Thử Thách Sáng Tạo', 'Creative challenges', 'Thử thách sáng tạo', 30, 'Lightbulb', true);
+
+-- LEVEL 3 - Ages 10-13 (30 rooms)
+INSERT INTO public.kids_rooms (id, level_id, title_en, title_vi, description_en, description_vi, display_order, icon, is_active) VALUES
+('creative-writing', 'level3', 'Creative Writing Basics', 'Viết Sáng Tạo Cơ Bản', 'Learn creative writing', 'Học viết sáng tạo', 1, 'PenTool', true),
+('conversation-starters', 'level3', 'Conversation Starters', 'Bắt Đầu Hội Thoại', 'Start conversations', 'Bắt đầu hội thoại', 2, 'MessageCircle', true),
+('emotions-expression', 'level3', 'Emotions & Self-Expression', 'Cảm Xúc & Tự Diễn Đạt', 'Express yourself', 'Tự diễn đạt', 3, 'Heart', true),
+('grammar-power', 'level3', 'Beginner Grammar Power', 'Sức Mạnh Ngữ Pháp', 'Learn grammar', 'Học ngữ pháp', 4, 'BookOpen', true),
+('vocab-expansion', 'level3', 'Vocabulary Expansion', 'Mở Rộng Từ Vựng', 'Expand vocabulary', 'Mở rộng từ vựng', 5, 'BookMarked', true),
+('idioms-kids', 'level3', 'Idioms for Kids', 'Thành Ngữ Cho Trẻ', 'Learn idioms', 'Học thành ngữ', 6, 'MessageSquare', true),
+('reading-comprehension', 'level3', 'Reading Comprehension', 'Đọc Hiểu', 'Improve comprehension', 'Cải thiện đọc hiểu', 7, 'BookText', true),
+('journaling-reflection', 'level3', 'Journaling & Reflection', 'Viết Nhật Ký & Suy Ngẫm', 'Write and reflect', 'Viết và suy ngẫm', 8, 'NotebookPen', true),
+('debate-basics', 'level3', 'Debate Basics', 'Tranh Luận Cơ Bản', 'Learn debate skills', 'Học kỹ năng tranh luận', 9, 'MessageSquare', true),
+('public-speaking', 'level3', 'Public Speaking for Kids', 'Nói Trước Công Chúng', 'Learn public speaking', 'Học nói trước công chúng', 10, 'Mic', true),
+('science-kids', 'level3', 'Science for Kids', 'Khoa Học Cho Trẻ', 'Advanced science', 'Khoa học nâng cao', 11, 'Atom', true),
+('space-astronomy', 'level3', 'Space & Astronomy', 'Không Gian & Thiên Văn', 'Learn astronomy', 'Học thiên văn', 12, 'Moon', true),
+('earth-environment', 'level3', 'Earth & Environment', 'Trái Đất & Môi Trường', 'Learn about Earth', 'Học về Trái Đất', 13, 'Globe', true),
+('history-highlights', 'level3', 'Simple History Highlights', 'Điểm Nhấn Lịch Sử', 'Learn history', 'Học lịch sử', 14, 'Landmark', true),
+('geography-tweens', 'level3', 'Geography for Tweens', 'Địa Lý Cho Thiếu Niên', 'Advanced geography', 'Địa lý nâng cao', 15, 'Map', true),
+('digital-literacy', 'level3', 'Digital Literacy Words', 'Từ Vựng Công Nghệ Số', 'Learn digital terms', 'Học thuật ngữ số', 16, 'Monitor', true),
+('internet-vocab', 'level3', 'Internet Vocabulary', 'Từ Vựng Internet', 'Learn internet words', 'Học từ về internet', 17, 'Wifi', true),
+('research-skills', 'level3', 'Research Skills', 'Kỹ Năng Nghiên Cứu', 'Learn research', 'Học nghiên cứu', 18, 'Search', true),
+('project-english', 'level3', 'Project English', 'Tiếng Anh Dự Án', 'Project vocabulary', 'Từ vựng dự án', 19, 'FolderKanban', true),
+('study-skills', 'level3', 'Study Skills & Motivation', 'Kỹ Năng Học & Động Lực', 'Learn study skills', 'Học kỹ năng học tập', 20, 'GraduationCap', true),
+('critical-thinking', 'level3', 'Critical Thinking Basics', 'Tư Duy Phản Biện Cơ Bản', 'Think critically', 'Tư duy phản biện', 21, 'Brain', true),
+('curiosity-questions', 'level3', 'Curiosity & Big Questions', 'Tò Mò & Câu Hỏi Lớn', 'Ask big questions', 'Đặt câu hỏi lớn', 22, 'HelpCircle', true),
+('problem-solving', 'level3', 'Problem-Solving English', 'Tiếng Anh Giải Quyết Vấn Đề', 'Solve problems', 'Giải quyết vấn đề', 23, 'Puzzle', true),
+('teamwork-leadership', 'level3', 'Teamwork & Leadership', 'Làm Việc Nhóm & Lãnh Đạo', 'Learn teamwork', 'Học làm việc nhóm', 24, 'Users', true),
+('health-body', 'level3', 'Health & Body Awareness', 'Sức Khỏe & Nhận Thức Cơ Thể', 'Learn about health', 'Học về sức khỏe', 25, 'Activity', true),
+('nutrition-basics', 'level3', 'Nutrition Basics', 'Dinh Dưỡng Cơ Bản', 'Learn nutrition', 'Học về dinh dưỡng', 26, 'Apple', true),
+('countries-cultures', 'level3', 'Countries & Cultures', 'Quốc Gia & Văn Hóa', 'Learn world cultures', 'Học văn hóa thế giới', 27, 'Flag', true),
+('technology-robots', 'level3', 'Technology & Robots', 'Công Nghệ & Robot', 'Learn tech vocabulary', 'Học từ công nghệ', 28, 'Bot', true),
+('future-skills', 'level3', 'Future Skills', 'Kỹ Năng Tương Lai', 'Prepare for future', 'Chuẩn bị cho tương lai', 29, 'Rocket', true),
+('mini-projects', 'level3', 'Mini Projects & Presentations', 'Dự Án Nhỏ & Thuyết Trình', 'Create and present', 'Tạo và trình bày', 30, 'Presentation', true);
