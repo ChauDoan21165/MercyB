@@ -1,0 +1,89 @@
+{
+  "id": "travel_transport_kids_l2",
+  "tier": "Kids Level 2 / Trẻ Em Cấp 2",
+  "title": {
+    "en": "Travel & Transport",
+    "vi": "Du Lịch & Phương Tiện"
+  },
+  "content": {
+    "en": "This room teaches kids simple English words about travel and transport—bus, train, car, airplane, and road safety. Parents guide real-life moments like walking to school, riding in a car, or watching vehicles pass by.",
+    "vi": "Phòng này dạy trẻ những từ vựng đơn giản về du lịch và phương tiện—xe buýt, tàu, ô tô, máy bay và an toàn đường đi. Cha mẹ hướng dẫn các tình huống đời thật như đi bộ đến trường, ngồi xe hoặc quan sát xe cộ chạy qua.",
+    "audio": "travel_transport_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "bus-and-car",
+      "keywords_en": ["bus", "car", "transport"],
+      "keywords_vi": ["xe buýt", "ô tô", "phương tiện"],
+      "copy": {
+        "en": "Teach “bus” and “car” by pointing them out during everyday routines. Say: “Bus!” when you see one, and describe its color or size. Say: “Car!” when one passes by, and mention whether it’s fast or slow. Kids quickly learn these words when they connect them with real vehicles in motion.",
+        "vi": "Dạy từ “bus” và “car” bằng cách chỉ cho bé thấy trong cuộc sống hằng ngày. Nói: “Bus!” khi thấy xe buýt và mô tả màu sắc hoặc kích thước. Nói: “Car!” khi thấy ô tô chạy qua và nói thêm nhanh hay chậm. Trẻ học nhanh khi gắn từ với phương tiện thật đang di chuyển."
+      },
+      "tags": ["bus", "car"],
+      "audio": "travel_transport_v1_bus_car.mp3"
+    },
+    {
+      "slug": "train-sounds",
+      "keywords_en": ["train", "sound", "travel"],
+      "keywords_vi": ["tàu", "âm thanh", "du lịch"],
+      "copy": {
+        "en": "Teach “train” through its special sound. Say: “Train!” and make a soft “choo-choo” noise. Show pictures or videos of trains so children can match the word with the long shape and the moving wheels. Kids love repeating the sound and the word together.",
+        "vi": "Dạy từ “train” qua âm thanh đặc trưng của nó. Nói: “Train!” và làm âm “choo-choo.” Cho bé xem hình hoặc video để gắn từ với hình dạng dài và bánh xe chuyển động. Trẻ rất thích bắt chước âm thanh và từ cùng lúc."
+      },
+      "tags": ["train", "sound"],
+      "audio": "travel_transport_v1_train.mp3"
+    },
+    {
+      "slug": "airplane-up",
+      "keywords_en": ["airplane", "fly", "sky"],
+      "keywords_vi": ["máy bay", "bay", "bầu trời"],
+      "copy": {
+        "en": "Teach “airplane” by looking up at the sky. Say: “Airplane!” whenever you see one, and stretch your arms out like wings. Kids learn quickly through movement. You can also show how airplanes take off and land using toys or simple hand motions.",
+        "vi": "Dạy từ “airplane” bằng cách nhìn lên bầu trời. Nói: “Airplane!” khi thấy máy bay và dang tay như đôi cánh. Trẻ học nhanh qua vận động. Bạn cũng có thể dùng đồ chơi để minh họa máy bay cất cánh và hạ cánh."
+      },
+      "tags": ["airplane", "sky"],
+      "audio": "travel_transport_v1_airplane.mp3"
+    },
+    {
+      "slug": "walk-and-cross",
+      "keywords_en": ["walk", "cross", "safety"],
+      "keywords_vi": ["đi bộ", "qua đường", "an toàn"],
+      "copy": {
+        "en": "Teach “walk” and “cross” while moving together. Say: “Walk!” and take slow steps. When near a crosswalk, say: “Cross!” and hold hands as you step forward safely. Children learn these words best through real movement and calm guidance.",
+        "vi": "Dạy từ “walk” và “cross” khi cùng di chuyển. Nói: “Walk!” và bước chậm. Khi gần vạch qua đường, nói: “Cross!” và nắm tay bé bước an toàn. Trẻ ghi nhớ tốt nhất khi được học qua hành động thật."
+      },
+      "tags": ["walk", "cross"],
+      "audio": "travel_transport_v1_walk_cross.mp3"
+    },
+    {
+      "slug": "road-and-path",
+      "keywords_en": ["road", "path", "route"],
+      "keywords_vi": ["đường", "lối đi", "lộ trình"],
+      "copy": {
+        "en": "Teach “road” and “path” by pointing them out during walks. Say: “Road!” when you see a place where cars go, and “Path!” where people walk. Kids learn to observe their environment in English and understand where it’s safe to play or walk.",
+        "vi": "Dạy từ “road” và “path” khi đi dạo. Nói: “Road!” khi đó là nơi xe chạy, và “Path!” nơi mọi người đi bộ. Trẻ học cách quan sát môi trường bằng tiếng Anh và hiểu nơi nào an toàn để đi hoặc chơi."
+      },
+      "tags": ["road", "path"],
+      "audio": "travel_transport_v1_road_path.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full", "complete"],
+      "keywords_vi": ["tất cả", "đầy đủ", "hoàn chỉnh"],
+      "copy": {
+        "en": "Teach “bus” and “car” through real vehicles.\n\nTeach “train” with fun sounds and visuals.\n\nTeach “airplane” with sky-watching and arm movements.\n\nTeach “walk” and “cross” with guided steps in real places.\n\nTeach “road” and “path” during outdoor walks.\n\nThese words help children explore the world safely while learning English through everyday travel moments.",
+        "vi": "Dạy “bus” và “car” qua phương tiện thật.\n\nDạy “train” bằng âm thanh và hình ảnh vui.\n\nDạy “airplane” bằng quan sát bầu trời và động tác cánh.\n\nDạy “walk” và “cross” bằng bước đi thật.\n\nDạy “road” và “path” khi đi dạo.\n\nNhững từ vựng này giúp trẻ khám phá thế giới an toàn và học tiếng Anh từ những khoảnh khắc di chuyển mỗi ngày."
+      },
+      "tags": ["all"],
+      "audio": "travel_transport_v1_bus_car.mp3 travel_transport_v1_train.mp3 travel_transport_v1_airplane.mp3 travel_transport_v1_walk_cross.mp3 travel_transport_v1_road_path.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "7-10",
+    "level": "Kids Level 2",
+    "created_at": "2025-11-21T00:00:00+00:00",
+    "updated_at": "2025-11-21T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#F2E4FF"
+  }
+}
