@@ -1,0 +1,89 @@
+{
+  "id": "math_words_kids_l2",
+  "tier": "Kids Level 2 / Trẻ Em Cấp 2",
+  "title": {
+    "en": "Math Words for Kids",
+    "vi": "Từ Vựng Toán Học Cho Trẻ"
+  },
+  "content": {
+    "en": "This room teaches simple math vocabulary that children use in early school years. Through short, friendly activities with real objects, kids learn words like number, plus, minus, count, and total. Each entry is designed to help them understand and use math English in natural, everyday moments.",
+    "vi": "Phòng này dạy các từ vựng toán học đơn giản mà trẻ dùng trong những năm đầu tiểu học. Qua các hoạt động nhẹ nhàng với đồ vật thật, trẻ học các từ như number, plus, minus, count và total. Mỗi mục giúp trẻ hiểu và sử dụng tiếng Anh toán học trong những khoảnh khắc tự nhiên hằng ngày.",
+    "audio": "math_words_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "numbers-and-counting",
+      "keywords_en": ["numbers", "counting", "math"],
+      "keywords_vi": ["số", "đếm", "toán"],
+      "copy": {
+        "en": "Teach the words “numbers” and “count” using small objects like buttons or snacks. Spread out five items and say: “Let’s count together. One, two, three…” Let your child touch each item as they say the number. Touching helps them connect sound, meaning, and quantity. Keep the practice short and fun so math feels friendly, not stressful.",
+        "vi": "Dạy từ “numbers” và “count” bằng các vật nhỏ như cúc áo hoặc đồ ăn vặt. Đặt năm món ra và nói: “Hãy cùng đếm nhé. One, two, three…” Để bé chạm vào từng món khi nói số. Việc chạm giúp bé kết nối âm thanh, ý nghĩa và số lượng. Giữ buổi học ngắn và vui để toán trở nên thân thiện, không áp lực."
+      },
+      "tags": ["numbers", "counting"],
+      "audio": "math_words_v1_numbers_count.mp3"
+    },
+    {
+      "slug": "plus-and-add",
+      "keywords_en": ["plus", "add", "math"],
+      "keywords_vi": ["cộng", "thêm", "toán"],
+      "copy": {
+        "en": "Introduce “plus” by placing two small groups together. Say: “Two plus one is three.” Then let your child build their own mini equations using toys or snacks. Kids understand math faster when they see items combine in real life. Encourage them to say the full sentence each time for natural language practice.",
+        "vi": "Giới thiệu từ “plus” bằng cách đặt hai nhóm đồ nhỏ lại với nhau. Nói: “Two plus one is three.” Sau đó để bé tự tạo phép tính bằng đồ chơi hoặc đồ ăn. Trẻ hiểu toán nhanh hơn khi thấy đồ vật thật được gộp lại. Khuyến khích bé nói trọn câu để luyện tiếng Anh tự nhiên."
+      },
+      "tags": ["addition", "plus"],
+      "audio": "math_words_v1_plus_add.mp3"
+    },
+    {
+      "slug": "minus-and-take-away",
+      "keywords_en": ["minus", "take away", "subtract"],
+      "keywords_vi": ["trừ", "lấy đi", "phép trừ"],
+      "copy": {
+        "en": "Teach “minus” using a small removal activity. Place three objects on the table and say: “Three minus one is two.” Remove one item slowly so your child sees the change. Then let them try: “Take away one.” Real actions make subtraction clearer and help the vocabulary stick.",
+        "vi": "Dạy “minus” bằng hoạt động lấy bớt đồ vật. Đặt ba vật xuống bàn và nói: “Three minus one is two.” Lấy bớt một món thật chậm để bé thấy sự thay đổi. Sau đó để bé thử: “Take away one.” Hành động thật giúp bé hiểu phép trừ rõ hơn và ghi nhớ từ vựng lâu hơn."
+      },
+      "tags": ["subtraction", "minus"],
+      "audio": "math_words_v1_minus_takeaway.mp3"
+    },
+    {
+      "slug": "total-and-how-many",
+      "keywords_en": ["total", "how many", "counting"],
+      "keywords_vi": ["tổng", "bao nhiêu", "đếm"],
+      "copy": {
+        "en": "Teach the word “total” through simple questions. Put some items together and ask: “How many in total?” Let your child count and answer: “Four in total.” Repeat with different numbers so they hear the phrase many times. This builds confidence in using math words during everyday play.",
+        "vi": "Dạy từ “total” bằng các câu hỏi đơn giản. Đặt vài món lại với nhau và hỏi: “How many in total?” Để bé đếm và trả lời: “Four in total.” Lặp lại với số khác để bé nghe cụm từ nhiều lần. Cách này giúp bé tự tin dùng từ vựng toán học trong lúc chơi hằng ngày."
+      },
+      "tags": ["total", "counting"],
+      "audio": "math_words_v1_total_howmany.mp3"
+    },
+    {
+      "slug": "equal-and-same",
+      "keywords_en": ["equal", "same", "math basics"],
+      "keywords_vi": ["bằng nhau", "giống nhau", "cơ bản"],
+      "copy": {
+        "en": "Teach “equal” by comparing two small groups. Put two items on each side and say: “They are equal. They are the same.” Kids can practice by matching pairs of toys, snacks, or blocks. Understanding equality is a gentle first step toward more advanced math later on.",
+        "vi": "Dạy “equal” bằng cách so sánh hai nhóm nhỏ. Đặt hai món ở mỗi bên và nói: “They are equal. They are the same.” Bé có thể luyện bằng cách ghép cặp đồ chơi, đồ ăn hoặc các khối xếp hình. Hiểu khái niệm bằng nhau là bước đầu nhẹ nhàng cho toán nâng cao sau này."
+      },
+      "tags": ["equal", "same"],
+      "audio": "math_words_v1_equal_same.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full", "complete"],
+      "keywords_vi": ["tất cả", "đầy đủ", "hoàn chỉnh"],
+      "copy": {
+        "en": "Teach “numbers” and “count” with small objects and gentle practice.\n\nTeach “plus” using real items combined into small equations.\n\nTeach “minus” with a slow take-away activity children can see clearly.\n\nTeach “total” through simple grouping and counting questions.\n\nTeach “equal” by matching two groups that look the same.\n\nTogether, these practical moments help children learn math vocabulary through real actions that build confidence and understanding.",
+        "vi": "Dạy “numbers” và “count” bằng vật nhỏ và luyện tập nhẹ nhàng.\n\nDạy “plus” bằng cách gộp đồ vật thành phép tính đơn giản.\n\nDạy “minus” bằng hoạt động lấy bớt đồ để bé thấy rõ.\n\nDạy “total” qua câu hỏi đếm và gộp nhóm.\n\nDạy “equal” bằng cách ghép hai nhóm giống nhau.\n\nNhững khoảnh khắc thực tế này giúp trẻ học từ vựng toán học thông qua hành động thật, tạo sự tự tin và hiểu sâu."
+      },
+      "tags": ["all"],
+      "audio": "math_words_v1_numbers_count.mp3 math_words_v1_plus_add.mp3 math_words_v1_minus_takeaway.mp3 math_words_v1_total_howmany.mp3 math_words_v1_equal_same.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "7-10",
+    "level": "Kids Level 2",
+    "created_at": "2025-11-21T00:00:00+00:00",
+    "updated_at": "2025-11-21T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#CBE0FF"
+  }
+}
