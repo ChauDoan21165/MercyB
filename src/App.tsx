@@ -37,20 +37,14 @@ import AdminPaymentVerification from "./pages/AdminPaymentVerification";
 import AdminAudioUpload from "./pages/AdminAudioUpload";
 import AdminModeration from "./pages/AdminModeration";
 import ResetPassword from "./pages/ResetPassword";
-import DebugRooms from "./pages/DebugRooms";
-import AudioAnalysis from "./pages/AudioAnalysis";
-import AudioFileList from "./pages/AudioFileList";
 import SexualityCultureRoom from "./pages/SexualityCultureRoom";
 import FinanceCalmRoom from "./pages/FinanceCalmRoom";
 import AdminRooms from "./pages/AdminRooms";
 import AdminRoomEditor from "./pages/AdminRoomEditor";
 import AdminRoomImport from "./pages/AdminRoomImport";
-import RoomSyncHealth from "./pages/RoomSyncHealth";
 import AdminUserRoles from "./pages/AdminUserRoles";
 import AdminCodeEditor from "./pages/AdminCodeEditor";
-import AudioTestPage from "./pages/AudioTestPage";
 import AudioUpload from "./pages/AudioUpload";
-import RoomHealthChecker from "./pages/RoomHealthChecker";
 import AdminFeedbackAnalytics from "./pages/AdminFeedbackAnalytics";
 import AdminPayments from "./pages/AdminPayments";
 import AdminUsers from "./pages/AdminUsers";
@@ -139,15 +133,10 @@ const App = () => {
           <Route path="/admin/payments" element={<AdminPaymentVerification />} />
           <Route path="/admin/audio-upload" element={<AdminAudioUpload />} />
           <Route path="/admin/moderation" element={<AdminModeration />} />
-          <Route path="/debug/rooms" element={<DebugRooms />} />
-          <Route path="/audio-analysis" element={<AudioAnalysis />} />
-          <Route path="/audio-files" element={<AudioFileList />} />
           <Route path="/admin/rooms" element={<AdminRooms />} />
           <Route path="/admin/rooms/new" element={<AdminRoomEditor />} />
           <Route path="/admin/rooms/edit/:roomId" element={<AdminRoomEditor />} />
           <Route path="/admin/rooms/import" element={<AdminRoomImport />} />
-          <Route path="/admin/rooms/health" element={<RoomSyncHealth />} />
-          <Route path="/admin/rooms/data-health" element={<RoomHealthChecker />} />
           <Route path="/admin/user-roles" element={<AdminUserRoles />} />
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/users/:userId" element={<AdminUserDetail />} />
@@ -155,7 +144,6 @@ const App = () => {
           <Route path="/admin/code-editor" element={<AdminCodeEditor />} />
           <Route path="/admin/payments" element={<AdminPayments />} />
           <Route path="/admin/system-metrics" element={<AdminSystemMetrics />} />
-          <Route path="/audio-test" element={<AudioTestPage />} />
           <Route path="/audio-upload" element={<AudioUpload />} />
           <Route path="/kids-validation" element={<KidsRoomValidation />} />
           <Route path="*" element={<NotFound />} />
