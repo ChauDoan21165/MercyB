@@ -88,10 +88,10 @@ export const KidsRoomViewer = () => {
       <div className="space-y-4">
         <div>
           <div className="mb-2">
-            <h1 className="text-4xl font-bold mb-2" style={{ color: roomData.meta.room_color }}>
+            <h1 className="text-4xl font-bold mb-2 bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
               {roomData.title.en}
             </h1>
-            <h2 className="text-3xl font-semibold text-muted-foreground">
+            <h2 className="text-3xl font-semibold bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
               {roomData.title.vi}
             </h2>
           </div>
@@ -100,14 +100,14 @@ export const KidsRoomViewer = () => {
           </p>
         </div>
 
-        <Card>
+        <Card className="border-2" style={{ borderColor: roomData.meta.room_color }}>
           <CardContent className="pt-6 space-y-6">
             <div>
-              <h3 className="text-sm font-semibold text-muted-foreground mb-2">ENGLISH</h3>
+              <h3 className="text-sm font-semibold mb-2 bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">ENGLISH</h3>
               <p className="text-lg leading-relaxed">{roomData.content.en}</p>
             </div>
             <div className="border-t pt-6">
-              <h3 className="text-sm font-semibold text-muted-foreground mb-2">TIẾNG VIỆT</h3>
+              <h3 className="text-sm font-semibold mb-2 bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">TIẾNG VIỆT</h3>
               <p className="text-lg leading-relaxed">{roomData.content.vi}</p>
             </div>
             {roomData.content.audio && (
@@ -122,13 +122,13 @@ export const KidsRoomViewer = () => {
 
       {/* Entries */}
       <div className="space-y-6">
-        <h2 className="text-2xl font-bold">Activities / Hoạt Động</h2>
+        <h2 className="text-2xl font-bold bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">Activities / Hoạt Động</h2>
         {roomData.entries.filter(entry => entry.slug !== 'all').map((entry, index) => (
-          <Card key={entry.slug} className="overflow-hidden">
-            <CardHeader className="bg-muted/50" style={{ borderLeftColor: roomData.meta.room_color, borderLeftWidth: '4px' }}>
+          <Card key={entry.slug} className="overflow-hidden border-2" style={{ borderLeftColor: roomData.meta.room_color, borderLeftWidth: '4px' }}>
+            <CardHeader className="bg-muted/50">
               <div className="flex items-start justify-between">
                 <div className="space-y-2">
-                  <CardTitle className="text-xl">
+                  <CardTitle className="text-xl bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
                     Activity {index + 1}: {entry.slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
                   </CardTitle>
                   <div className="flex flex-wrap gap-2">
@@ -141,7 +141,7 @@ export const KidsRoomViewer = () => {
             </CardHeader>
             <CardContent className="pt-6 space-y-6">
               <div>
-                <h4 className="text-sm font-semibold text-muted-foreground mb-2">ENGLISH</h4>
+                <h4 className="text-sm font-semibold mb-2 bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">ENGLISH</h4>
                 <p className="text-base leading-relaxed whitespace-pre-line">
                   {entry.copy.en}
                 </p>
@@ -151,7 +151,7 @@ export const KidsRoomViewer = () => {
               </div>
               
               <div className="border-t pt-6">
-                <h4 className="text-sm font-semibold text-muted-foreground mb-2">TIẾNG VIỆT</h4>
+                <h4 className="text-sm font-semibold mb-2 bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">TIẾNG VIỆT</h4>
                 <p className="text-base leading-relaxed whitespace-pre-line">
                   {entry.copy.vi}
                 </p>
