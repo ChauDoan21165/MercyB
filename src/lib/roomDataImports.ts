@@ -1287,6 +1287,13 @@ export const roomDataMap: Record<string, RoomData> = {
     "tier": "vip6",
     "hasData": true
   },
+  "vip6-martyr-complex": {
+    "id": "vip6-martyr-complex",
+    "nameEn": "Martyr Complex",
+    "nameVi": "Phức Hợp Tử Vì Đạo",
+    "tier": "vip6",
+    "hasData": true
+  },
   "vip6-pride-ego-shadow": {
     "id": "vip6-pride-ego-shadow",
     "nameEn": "Shadow of Pride & Ego",
