@@ -151,11 +151,16 @@ export const HoveringDictionary = ({ word, children, roomKeywords, roomContent, 
       <span 
         className="hover:bg-primary/10 transition-colors rounded px-0.5 cursor-pointer"
         onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
           if (onWordClick) {
             onWordClick();
           } else {
             playPronunciation(e);
           }
+        }}
+        onMouseDown={(e) => {
+          e.preventDefault(); // Prevent text selection on mouse down
         }}
       >
         {children}
