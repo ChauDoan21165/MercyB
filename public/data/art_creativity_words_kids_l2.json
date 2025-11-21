@@ -1,0 +1,89 @@
+{
+  "id": "art_creativity_words_kids_l2",
+  "tier": "Kids Level 2 / Trẻ Em Cấp 2",
+  "title": {
+    "en": "Art & Creativity Words",
+    "vi": "Từ Vựng Nghệ Thuật & Sáng Tạo"
+  },
+  "content": {
+    "en": "This room helps children learn simple words used in art time: draw, paint, color, shapes, and create. Kids practice expressing ideas through fun, hands-on activities while parents guide gentle creativity and free exploration.",
+    "vi": "Phòng này giúp trẻ học các từ đơn giản dùng trong giờ mỹ thuật: draw, paint, color, shapes và create. Trẻ luyện cách diễn đạt ý tưởng qua hoạt động trực quan, vui vẻ, có cha mẹ hướng dẫn sự sáng tạo nhẹ nhàng.",
+    "audio": "art_creativity_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "draw",
+      "keywords_en": ["draw", "line", "picture"],
+      "keywords_vi": ["vẽ", "nét", "hình"],
+      "copy": {
+        "en": "Teach the word “draw” by encouraging simple lines and shapes. Say: “Let’s draw a line. Let’s draw a circle.” Keep it playful, not perfect. Let your child choose colors freely. Drawing helps kids express ideas before they can fully explain them with words.",
+        "vi": "Dạy từ “draw” bằng cách khuyến khích bé vẽ nét và hình đơn giản. Nói: “Let’s draw a line. Let’s draw a circle.” Hãy vui vẻ, không cần hoàn hảo. Để bé tự chọn màu. Việc vẽ giúp trẻ diễn đạt ý tưởng trước khi nói trôi chảy."
+      },
+      "tags": ["draw", "art"],
+      "audio": "art_creativity_v1_draw.mp3"
+    },
+    {
+      "slug": "paint",
+      "keywords_en": ["paint", "brush", "colors"],
+      "keywords_vi": ["tô màu", "cọ", "màu sắc"],
+      "copy": {
+        "en": "Teach “paint” using brushes, fingers, or sponges. Say: “Let’s paint!” Show slow, gentle strokes to help your child follow. Painting builds sensory awareness and allows kids to explore colors in a calm, open-ended way.",
+        "vi": "Dạy từ “paint” bằng cọ, ngón tay hoặc miếng mút. Nói: “Let’s paint!” Thể hiện những nét chậm, nhẹ để bé làm theo. Tô màu giúp trẻ nhận biết cảm giác và khám phá màu sắc một cách nhẹ nhàng, tự do."
+      },
+      "tags": ["paint"],
+      "audio": "art_creativity_v1_paint.mp3"
+    },
+    {
+      "slug": "coloring",
+      "keywords_en": ["color", "fill", "choose"],
+      "keywords_vi": ["tô màu", "lấp đầy", "chọn"],
+      "copy": {
+        "en": "Teach “color” through simple pictures. Say: “Let’s color the sun. Let’s color the tree.” Let children pick their own colors—even unusual ones. Coloring teaches decision-making and helps kids stay focused in a fun way.",
+        "vi": "Dạy từ “color” bằng hình đơn giản. Nói: “Let’s color the sun. Let’s color the tree.” Để bé tự chọn màu—even màu khác lạ. Tô màu giúp trẻ luyện cách chọn và giữ tập trung một cách vui vẻ."
+      },
+      "tags": ["color"],
+      "audio": "art_creativity_v1_coloring.mp3"
+    },
+    {
+      "slug": "shapes-in-art",
+      "keywords_en": ["shapes", "circle", "square"],
+      "keywords_vi": ["hình dạng", "tròn", "vuông"],
+      "copy": {
+        "en": "Teach shapes using art. Say: “Let’s make a circle.” “Let’s draw a square.” Combine shapes to make bigger pictures like houses or animals. Learning shapes strengthens early math skills while keeping creativity playful.",
+        "vi": "Dạy hình dạng bằng hoạt động nghệ thuật. Nói: “Let’s make a circle.” “Let’s draw a square.” Kết hợp nhiều hình để tạo tranh lớn như nhà hoặc con vật. Học hình dạng giúp nền tảng toán học và vẫn giữ sự vui vẻ sáng tạo."
+      },
+      "tags": ["shapes"],
+      "audio": "art_creativity_v1_shapes.mp3"
+    },
+    {
+      "slug": "create",
+      "keywords_en": ["create", "make", "imagine"],
+      "keywords_vi": ["tạo", "làm", "tưởng tượng"],
+      "copy": {
+        "en": "Teach the word “create” at the end of art time. Say: “You created this!” This builds pride and encourages imagination. Creating freely helps children trust their ideas and enjoy the process rather than worry about results.",
+        "vi": "Dạy từ “create” vào cuối giờ. Nói: “You created this!” để bé tự hào. Việc sáng tạo tự do giúp trẻ tin vào ý tưởng của mình và tận hưởng quá trình thay vì lo kết quả."
+      },
+      "tags": ["create"],
+      "audio": "art_creativity_v1_create.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full", "complete"],
+      "keywords_vi": ["tất cả", "đầy đủ", "hoàn thiện"],
+      "copy": {
+        "en": "Teach “draw” with simple lines and shapes.\n\nTeach “paint” with brushes or fingers for sensory exploration.\n\nTeach “color” by filling pictures using freely chosen colors.\n\nTeach shapes like circles and squares through art activities.\n\nTeach “create” by celebrating the child’s finished artwork.\n\nThese art moments help kids express ideas, build confidence, and enjoy creativity without pressure.",
+        "vi": "Dạy “draw” với các nét và hình đơn giản.\n\nDạy “paint” bằng cọ hoặc ngón tay để bé khám phá cảm giác.\n\nDạy “color” qua việc tô hình với màu bé tự chọn.\n\nDạy hình dạng như tròn và vuông qua hoạt động mỹ thuật.\n\nDạy “create” bằng cách khen ngợi sản phẩm hoàn thành.\n\nNhững khoảnh khắc nghệ thuật này giúp trẻ diễn đạt ý tưởng, tăng tự tin và tận hưởng sáng tạo mà không áp lực."
+      },
+      "tags": ["all"],
+      "audio": "art_creativity_v1_draw.mp3 art_creativity_v1_paint.mp3 art_creativity_v1_coloring.mp3 art_creativity_v1_shapes.mp3 art_creativity_v1_create.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "7-10",
+    "level": "Kids Level 2",
+    "created_at": "2025-11-21T00:00:00+00:00",
+    "updated_at": "2025-11-21T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#FFD7B5"
+  }
+}
