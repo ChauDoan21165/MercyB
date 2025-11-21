@@ -61,6 +61,7 @@ import AdminSystemMetrics from "./pages/AdminSystemMetrics";
 import AdminRoomsDashboard from "./pages/AdminRoomsDashboard";
 import KidsDesignPack from "./pages/KidsDesignPack";
 import AdminKidsImport from "./pages/AdminKidsImport";
+import AdminKidsStandardizer from "./pages/AdminKidsStandardizer";
 
 const queryClient = new QueryClient();
 
@@ -156,6 +157,7 @@ const App = () => {
           <Route path="/audio-upload" element={<AudioUpload />} />
           <Route path="/kids-design-pack" element={<KidsDesignPack />} />
           <Route path="/admin/kids-import" element={<AdminKidsImport />} />
+          <Route path="/admin/kids-standardizer" element={<AdminKidsStandardizer />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         </BrowserRouter>

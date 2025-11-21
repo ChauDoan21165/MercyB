@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { Upload, CheckCircle, XCircle, AlertTriangle } from 'lucide-react';
+import { Upload, CheckCircle, XCircle, AlertTriangle, Wand2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { validateKidsRoomJson, formatValidationErrors } from '@/lib/kidsDataValidation';
 import { supabase } from '@/integrations/supabase/client';
+import { useNavigate } from 'react-router-dom';
 
 export default function AdminKidsImport() {
   const [jsonInput, setJsonInput] = useState('');
@@ -17,6 +18,7 @@ export default function AdminKidsImport() {
   } | null>(null);
   const [isImporting, setIsImporting] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleValidate = () => {
     setIsValidating(true);
@@ -129,13 +131,25 @@ export default function AdminKidsImport() {
       <div className="max-w-6xl mx-auto space-y-6">
         {/* Header */}
         <Card className="p-6">
-          <h1 className="text-3xl font-bold text-foreground mb-2">
-            Kids English Room Import
-          </h1>
-          <p className="text-muted-foreground">
-            Upload and validate Kids room JSON files following the unified content rules:
-            5 entries per room, ~120 words EN + full VI translation, audio mapping.
-          </p>
+          <div className="flex items-start justify-between mb-4">
+            <div>
+              <h1 className="text-3xl font-bold text-foreground mb-2">
+                Kids English Room Import
+              </h1>
+              <p className="text-muted-foreground">
+                Upload and validate Kids room JSON files following the unified content rules:
+                5 entries per room, ~120 words EN + full VI translation, audio mapping.
+              </p>
+            </div>
+            <Button
+              onClick={() => navigate('/admin/kids-standardizer')}
+              variant="outline"
+              className="gap-2 border-2 border-primary/20 hover:border-primary/40"
+            >
+              <Wand2 className="w-4 h-4" />
+              Apply Standards
+            </Button>
+          </div>
         </Card>
 
         {/* Upload Section */}
