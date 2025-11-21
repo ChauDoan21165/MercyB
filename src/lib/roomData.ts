@@ -174,6 +174,7 @@ const VIETNAMESE_NAME_FALLBACKS: Record<string, string> = {
   'vip6-shadow-envy': 'Bóng Tối của Sự Ghen Tị',
   'vip6-shadow-in-love': 'Bóng Tối Trong Tình Yêu',
   'vip6-shadow-perfectionism': 'Bóng Tối của Chủ Nghĩa Hoàn Hảo',
+  'vip6-martyr-complex': 'Phức Hợp Tử Vì Đạo',
 };
 
 // Metadata interface for room listing
