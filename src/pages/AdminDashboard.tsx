@@ -396,6 +396,25 @@ const AdminDashboard = () => {
               </p>
             </CardContent>
           </Card>
+
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate("/kids-validation")}>
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="p-3 bg-primary/10 rounded-lg">
+                  <TestTube className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <CardTitle>Kids Validation</CardTitle>
+                  <CardDescription>Validate kids rooms</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Check status and validation of all kids rooms and entries.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </AdminLayout>
