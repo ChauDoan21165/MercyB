@@ -171,9 +171,11 @@ export default function AdminRooms() {
   
   const filteredRooms = rooms?.filter(room => {
     const normalizedQuery = normalizeId(searchQuery.toLowerCase());
+    const loweredQuery = searchQuery.toLowerCase();
     return (
-      room.title_en.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      room.title_vi.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      room.title_en.toLowerCase().includes(loweredQuery) ||
+      room.title_vi.toLowerCase().includes(loweredQuery) ||
+      room.tier.toLowerCase().includes(loweredQuery) ||
       normalizeId(room.id.toLowerCase()).includes(normalizedQuery)
     );
   });
