@@ -143,14 +143,16 @@ export const AdminFloatingButton = () => {
         {versionIndicator}
       </div>
 
-      <Button
-        onClick={fetchVersionIndicator}
-        size="sm"
-        variant="outline"
-        className="rounded-full h-5 px-2 text-[9px] leading-none"
-      >
-        Update
-      </Button>
+      {!isAdmin && (
+        <Button
+          onClick={fetchVersionIndicator}
+          size="sm"
+          variant="outline"
+          className="rounded-full h-5 px-2 text-[9px] leading-none"
+        >
+          Update
+        </Button>
+      )}
       
       {isAdmin && (
         <Button
