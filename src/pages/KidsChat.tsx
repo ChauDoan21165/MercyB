@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { HighlightedContent } from "@/components/HighlightedContent";
 import { MessageActions } from "@/components/MessageActions";
+import { useUserAccess } from "@/hooks/useUserAccess";
 
 interface KidsRoom {
   id: string;
@@ -146,6 +147,7 @@ const KidsChat = () => {
   const { roomId } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { isAdmin } = useUserAccess();
   const [room, setRoom] = useState<KidsRoom | null>(null);
   const [entries, setEntries] = useState<KidsEntry[]>([]);
   const [loading, setLoading] = useState(true);
@@ -279,14 +281,33 @@ const KidsChat = () => {
 
         {/* Room title */}
         <div className="text-center">
-          <h2 className="text-lg font-semibold" style={{
-            background: 'var(--gradient-rainbow)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text'
-          }}>
-            {room.title_en} / {room.title_vi}
-          </h2>
+          <div className="flex items-center justify-center gap-2">
+            {isAdmin && roomId && (
+              <button
+                type="button"
+                onClick={() => {
+                  const filenameFromMap = KIDS_ROOM_JSON_MAP[roomId];
+                  const fallbackFilename = `${roomId.replace(/-/g, "_")}_${room?.level_id === "level1" ? "kids_l1" : room?.level_id === "level2" ? "kids_l2" : "kids"}.json`;
+                  const filename = filenameFromMap || fallbackFilename;
+                  navigator.clipboard.writeText(filename);
+                  toast({
+                    title: "Copied!",
+                    description: `JSON: ${filename}`,
+                  });
+                }}
+                className="w-[1em] h-[1em] rounded-full bg-primary hover:bg-primary/90 cursor-pointer flex-shrink-0 transition-colors"
+                title="Copy JSON filename"
+              />
+            )}
+            <h2 className="text-lg font-semibold" style={{
+              background: 'var(--gradient-rainbow)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>
+              {room.title_en} / {room.title_vi}
+            </h2>
+          </div>
         </div>
 
         {/* Welcome Card with Keyword Buttons */}
@@ -313,6 +334,27 @@ const KidsChat = () => {
                     className="text-xs cursor-pointer"
                     onClick={() => handleKeywordClick(entry, index)}
                   >
+                    {isAdmin && (
+                      <span
+                        role="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const audioFile = entry.audio_url;
+                          if (!audioFile) {
+                            toast({ title: "No audio", description: "This entry has no audio filename" });
+                            return;
+                          }
+                          // Automatically add /audio/ prefix if not already present
+                          const out = audioFile.startsWith('/audio/') 
+                            ? audioFile 
+                            : `/audio/${audioFile.replace(/^\//, '')}`;
+                          navigator.clipboard.writeText(out);
+                          toast({ title: "Copied!", description: `Audio: ${out}` });
+                        }}
+                        className="inline-flex w-[1em] h-[1em] rounded-full bg-destructive hover:bg-destructive/90 mr-2 align-middle cursor-pointer"
+                        title="Copy audio filename"
+                      />
+                    )}
                     {index + 1}. {labelEn} / {labelVi}
                   </Button>
                 );
