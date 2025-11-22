@@ -169,8 +169,8 @@ const Welcome = () => {
         )}
 
         {/* Hero Section */}
-        <div className="text-center mb-16 space-y-6">
-          <h1 className="text-6xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+        <div className="text-center mb-16 space-y-6 px-4 sm:px-6 md:px-8">
+          <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent leading-tight max-w-[90%] mx-auto">
             Mercy Blade
           </h1>
           
@@ -182,10 +182,10 @@ const Welcome = () => {
           </div>
           
           <div className="space-y-2 max-w-3xl mx-auto">
-            <p className="text-xl font-semibold text-foreground/90">
+            <p className="text-xl md:text-2xl font-semibold text-foreground/90 leading-tight max-w-[90%] mx-auto">
               Overall human wellness app for health, life, and English learning
             </p>
-            <p className="text-xl font-semibold text-foreground/90">
+            <p className="text-xl md:text-2xl font-semibold text-foreground/90 leading-tight max-w-[90%] mx-auto">
               Ứng dụng về sức khỏe tổng thể con người, cuộc sống và Tiếng Anh
             </p>
           </div>
