@@ -12,6 +12,7 @@ import {
   Activity,
   Palette,
   Gift,
+  Stethoscope,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 
@@ -30,6 +31,7 @@ import {
 const adminItems = [
   { title: "Dashboard", url: "/admin", icon: Home, end: true },
   { title: "Room Management", url: "/admin/rooms", icon: LayoutDashboard },
+  { title: "Kids Room Health", url: "/admin/kids-room-health", icon: Stethoscope },
   { title: "Code Editor", url: "/admin/code-editor", icon: Code },
   { title: "Users", url: "/admin/users", icon: Users },
   { title: "Security", url: "/admin/security", icon: Shield },
