@@ -1,5 +1,7 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { validateInput, ttsRequestSchema } from "../shared/validation.ts";
+import { checkRateLimit, checkFeatureFlag } from "../shared/rate-limit.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -35,23 +37,27 @@ serve(async (req) => {
       )
     }
 
-    // Rate limiting: Check for recent TTS requests (max 50 per hour per user)
-    const oneHourAgo = new Date(Date.now() - 3600000).toISOString()
-    const { data: recentRequests, error: rateLimitError } = await supabaseClient
-      .from('tts_usage_log')
-      .select('id')
-      .eq('user_id', user.id)
-      .gte('created_at', oneHourAgo)
-
-    if (rateLimitError) {
-      console.error('Rate limit check error:', rateLimitError)
-    } else if (recentRequests && recentRequests.length >= 50) {
+    // Check feature flag
+    const isTTSEnabled = await checkFeatureFlag(supabaseClient, "tts_enabled");
+    if (!isTTSEnabled) {
       return new Response(
-        JSON.stringify({ 
-          error: 'Rate limit exceeded. Maximum 50 text-to-speech requests per hour. Please try again later.' 
-        }),
+        JSON.stringify({ error: "Text-to-speech is temporarily disabled" }),
+        { status: 503, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    // Validate input
+    const body = await req.json();
+    const validatedData = validateInput(ttsRequestSchema, body);
+    const { text, voice, roomSlug, entrySlug } = validatedData;
+
+    // Enhanced rate limiting check
+    const rateLimitCheck = await checkRateLimit(supabaseClient, user.id, "text-to-speech");
+    if (!rateLimitCheck.allowed) {
+      return new Response(
+        JSON.stringify({ error: rateLimitCheck.error }),
         { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      )
+      );
     }
 
     // Verify VIP3+ access
@@ -68,12 +74,6 @@ serve(async (req) => {
         JSON.stringify({ error: 'VIP3+ subscription required for text-to-speech / Cần đăng ký VIP3 trở lên để sử dụng chuyển văn bản thành giọng nói' }),
         { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       )
-    }
-
-    const { text, voice, roomSlug, entrySlug } = await req.json()
-
-    if (!text) {
-      throw new Error('Text is required')
     }
 
     // Generate unique filename based on room and entry
