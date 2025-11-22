@@ -9,8 +9,6 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useEffect, useState } from "react";
-import { DemoModeBanner } from '@/components/DemoModeBanner';
-import { getDemoRooms } from '@/hooks/useDemoMode';
 
 import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
 
@@ -130,21 +128,12 @@ const RoomGrid = () => {
         
         <div className="min-h-screen" style={{ background: 'hsl(var(--page-roomgrid))' }}>
           <div className="container mx-auto px-4 py-8 max-w-7xl">
-            {/* Demo Mode Banner */}
-            {isDemoMode && (
-              <div className="mb-6">
-                <DemoModeBanner />
-              </div>
-            )}
 
             {/* Header */}
             <div className="mb-8 space-y-4">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-lg text-gray-700 font-medium">
-                  {isDemoMode 
-                    ? "Free Access - Register to Save Progress / Truy Cập Miễn Phí"
-                    : "You are in free of charge area / Bạn đang ở khu vực miễn phí"
-                  }
+                  You are in free of charge area / Bạn đang ở khu vực miễn phí
                 </span>
                 
                 {isAdmin && (
@@ -169,10 +158,7 @@ const RoomGrid = () => {
               Chọn Phòng Học Của Bạn
             </p>
             <p className="text-sm text-muted-foreground/80">
-              {isDemoMode 
-                ? `Explore ${demoRoomIds.length} free rooms`
-                : `Showing ${ALL_ROOMS.filter(room => room.tier === "free").length} rooms`
-              }
+              Showing {ALL_ROOMS.filter(room => room.tier === "free").length} rooms
             </p>
           </div>
         </div>
