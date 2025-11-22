@@ -13,22 +13,13 @@ import { MessageActions } from "@/components/MessageActions";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { User, Copy, ChevronDown, ChevronUp } from "lucide-react";
 import { ProfileAvatarUpload } from "@/components/ProfileAvatarUpload";
+import { fetchKidsRoomJson, type KidsEntry } from "@/lib/kidsRoomJson";
 
 interface KidsRoom {
   id: string;
   title_en: string;
   title_vi: string;
   level_id: string;
-}
-
-interface KidsEntry {
-  id: string;
-  content_en: string;
-  content_vi: string;
-  keywords_en: string[];
-  keywords_vi: string[];
-  audio_url: string | null;
-  display_order: number;
 }
 
 interface UserProfile {
@@ -276,7 +267,7 @@ const KidsChat = () => {
 
       // For Kids Level 3 rooms, always load from JSON spec (includes audio, ALL entry, etc.)
       if (roomData.level_id === 'level3' && roomId) {
-        const jsonEntries = await loadEntriesFromJson(roomId, roomData.level_id);
+        const jsonEntries = await fetchKidsRoomJson(roomId, roomData.level_id);
         setEntries(jsonEntries);
         if (jsonEntries.length > 0) {
           setSelectedEntry(jsonEntries[0]);
@@ -298,8 +289,12 @@ const KidsChat = () => {
 
       // If database has no entries at all, fall back to static JSON file for this kids room
       if ((!entriesData || entriesData.length === 0) && roomId && roomData?.level_id) {
-        const jsonEntries = await loadEntriesFromJson(roomId, roomData.level_id);
-        finalEntries = jsonEntries;
+        try {
+          const jsonEntries = await fetchKidsRoomJson(roomId, roomData.level_id);
+          finalEntries = jsonEntries;
+        } catch (error) {
+          console.warn('No JSON fallback available for room:', roomId);
+        }
       }
 
       setEntries(finalEntries);

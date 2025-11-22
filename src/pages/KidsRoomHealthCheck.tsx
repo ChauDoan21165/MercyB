@@ -8,6 +8,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { CheckCircle2, XCircle, AlertCircle, Loader2, Wrench } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { fetchKidsRoomRawJson } from '@/lib/kidsRoomJson';
 
 interface RoomStatus {
   id: string;
@@ -126,15 +127,8 @@ export default function KidsRoomHealthCheck() {
         throw new Error(`Invalid level_id format: "${roomLevelId}". Expected format: level1, level2, or level3 (no dashes)`);
       }
 
-      // Fetch the JSON file for this room
-      const jsonFileName = `${roomId.replace(/-/g, '_')}_kids_${roomLevelId.replace('level', 'l')}.json`;
-      const response = await fetch(`/data/${jsonFileName}`);
-      
-      if (!response.ok) {
-        throw new Error(`JSON file not found: /data/${jsonFileName}. Please ensure the file exists and naming follows: {room_id}_kids_{level}.json format`);
-      }
-
-      const roomData = await response.json();
+      // Fetch the JSON file for this room using shared helper
+      const roomData = await fetchKidsRoomRawJson(roomId, roomLevelId);
       
       if (!roomData.entries || roomData.entries.length === 0) {
         throw new Error('No entries found in JSON file');
@@ -226,14 +220,8 @@ export default function KidsRoomHealthCheck() {
 
     for (const room of roomsToFix) {
       try {
-        const jsonFileName = `${room.id.replace(/-/g, '_')}_kids_${room.level_id.replace('level', 'l')}.json`;
-        const response = await fetch(`/data/${jsonFileName}`);
-        
-        if (!response.ok) {
-          throw new Error(`JSON file not found: ${jsonFileName}`);
-        }
-
-        const roomData = await response.json();
+        // Fetch the JSON file for this room using shared helper
+        const roomData = await fetchKidsRoomRawJson(room.id, room.level_id);
         
         if (!roomData.entries || roomData.entries.length === 0) {
           throw new Error('No entries found in JSON file');
