@@ -496,6 +496,87 @@ When making improvements to the design system:
 
 ---
 
+## 🎵 KidsChat Content Layout Standards
+
+### Audio Bar Positioning
+**MANDATORY:** For ALL KidsChat rooms with audio, the audio player MUST be positioned between the English and Vietnamese content.
+
+**Standard Layout Order:**
+1. English content (`content_en`)
+2. **Audio Player with shadowing reminder** ← ALWAYS HERE
+3. Vietnamese content (`content_vi`)
+
+**Implementation Pattern:**
+```tsx
+<div className="w-full">
+  <div className="rounded-2xl px-6 py-4 bg-card border shadow-sm">
+    {/* 1. English content with highlighting */}
+    <div className="mb-3">
+      <div className="text-sm leading-relaxed">
+        <HighlightedContent content={selectedEntry.content_en} />
+      </div>
+    </div>
+
+    {/* 2. Audio Player - MUST be in the middle */}
+    {selectedEntry.audio_url && (
+      <div className="my-3">
+        <p className="text-xs text-muted-foreground italic mb-2 text-center">
+          💡 Try shadowing: Listen and repeat along with the audio to improve your pronunciation and fluency. / 
+          💡 Hãy thử bóng: Nghe và lặp lại cùng với âm thanh để cải thiện phát âm và sự trôi chảy của bạn.
+        </p>
+        <div className="flex items-center gap-2">
+          <AudioPlayer
+            audioPath={selectedEntry.audio_url}
+            isPlaying={currentAudio === selectedEntry.audio_url && isPlaying}
+            onPlayPause={handleAudioToggle}
+            onEnded={() => {
+              setIsPlaying(false);
+              setCurrentAudio(null);
+            }}
+          />
+        </div>
+      </div>
+    )}
+
+    {/* 3. Vietnamese content with highlighting */}
+    <div className="mt-3 pt-3 border-t border-border/40">
+      <div className="text-sm leading-relaxed">
+        <HighlightedContent content={selectedEntry.content_vi} />
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+**Critical Rules:**
+- ✅ Audio player MUST be centered between English and Vietnamese
+- ✅ Include shadowing reminder text above audio player
+- ✅ Use `my-3` spacing for audio section
+- ✅ Vietnamese content MUST have top border (`border-t`) for visual separation
+- ✅ Center-align the shadowing reminder text
+- ❌ NEVER place audio at the top or bottom of content
+- ❌ NEVER place audio after Vietnamese content
+
+**Spacing Standards:**
+- English content: `mb-3` (margin bottom)
+- Audio section: `my-3` (margin top and bottom)
+- Vietnamese content: `mt-3 pt-3` (margin top, padding top)
+
+**Visual Hierarchy:**
+```
+┌─────────────────────────────┐
+│ English Content             │  ← mb-3
+├─────────────────────────────┤
+│ 💡 Shadowing Reminder       │  ← my-3 (centered text)
+│ [Audio Player Controls]     │  
+├─────────────────────────────┤
+│ ─────────────────────────── │  ← border-t separator
+│ Vietnamese Content          │  ← mt-3 pt-3
+└─────────────────────────────┘
+```
+
+---
+
 ## 📚 Reference Files
 
 - **Design System:** `src/index.css`, `tailwind.config.ts`
