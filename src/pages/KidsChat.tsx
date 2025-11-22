@@ -391,14 +391,14 @@ const KidsChat = () => {
         )}
 
         {/* Room Specification Card */}
-        {room && (room.description_en || room.description_vi) && (
+        {room && isAdmin && (
           <Card className="p-4 bg-card border border-border">
             <button
               onClick={() => setShowRoomSpec(!showRoomSpec)}
               className="w-full flex items-center justify-between text-left"
             >
               <h3 className="font-semibold text-foreground">
-                Room Specification / Thông số phòng
+                🔧 Room Specification & Documentation / Tài liệu kỹ thuật phòng
               </h3>
               {showRoomSpec ? (
                 <ChevronUp className="h-5 w-5 text-muted-foreground" />
@@ -408,31 +408,130 @@ const KidsChat = () => {
             </button>
 
             {showRoomSpec && (
-              <div className="mt-4 space-y-4">
-                {/* English Description */}
-                {room.description_en && (
-                  <div className="space-y-2">
-                    <h4 className="text-sm font-medium text-foreground">English Description:</h4>
-                    <div className="p-3 bg-muted/30 rounded-lg">
-                      <p className="text-sm text-foreground whitespace-pre-wrap leading-relaxed">
-                        {room.description_en}
+              <div className="mt-4 space-y-6">
+                {/* Basic Information */}
+                <div className="space-y-3">
+                  <h4 className="text-sm font-semibold text-primary border-b border-border pb-1">
+                    📋 Basic Information
+                  </h4>
+                  <div className="grid grid-cols-2 gap-3 text-sm">
+                    <div>
+                      <span className="text-muted-foreground">Room ID:</span>
+                      <p className="font-mono text-foreground">{room.id}</p>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Level ID:</span>
+                      <p className="font-mono text-foreground">{room.level_id}</p>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Display Order:</span>
+                      <p className="font-mono text-foreground">{room.display_order}</p>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Status:</span>
+                      <p className="font-mono text-foreground">
+                        {room.is_active ? '✅ Active' : '❌ Inactive'}
+                      </p>
+                    </div>
+                    <div className="col-span-2">
+                      <span className="text-muted-foreground">JSON File:</span>
+                      <p className="font-mono text-xs text-foreground break-all">
+                        {KIDS_ROOM_JSON_MAP[room.id] || `${room.id.replace(/-/g, "_")}_${room.level_id === "level1" ? "kids_l1" : "kids_l2"}.json`}
                       </p>
                     </div>
                   </div>
-                )}
+                </div>
 
-                {/* Vietnamese Description */}
-                {room.description_vi && (
-                  <div className="space-y-2">
-                    <h4 className="text-sm font-medium text-foreground">Vietnamese Description:</h4>
-                    <div className="p-3 bg-muted/30 rounded-lg">
-                      <p className="text-sm text-foreground whitespace-pre-wrap leading-relaxed">
-                        {room.description_vi}
+                {/* Design Specifications */}
+                <div className="space-y-3">
+                  <h4 className="text-sm font-semibold text-primary border-b border-border pb-1">
+                    🎨 Design Specifications
+                  </h4>
+                  <div className="space-y-2 text-sm">
+                    <div>
+                      <span className="text-muted-foreground">Title (EN):</span>
+                      <p className="text-foreground">{room.title_en}</p>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Title (VN):</span>
+                      <p className="text-foreground">{room.title_vi}</p>
+                    </div>
+                    {room.icon && (
+                      <div>
+                        <span className="text-muted-foreground">Icon:</span>
+                        <p className="text-foreground">{room.icon}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Functional Specifications */}
+                <div className="space-y-3">
+                  <h4 className="text-sm font-semibold text-primary border-b border-border pb-1">
+                    ⚙️ Functional Specifications
+                  </h4>
+                  <div className="space-y-2 text-sm">
+                    <div>
+                      <span className="text-muted-foreground font-semibold">Purpose:</span>
+                      <p className="text-foreground mt-1">
+                        Kids learning room for {room.level_id === "level1" ? "beginners (ages 3-6)" : "intermediate learners (ages 7-11)"}
                       </p>
                     </div>
+                    <div>
+                      <span className="text-muted-foreground font-semibold">Core Features:</span>
+                      <ul className="list-disc list-inside text-foreground mt-1 space-y-1">
+                        <li>Interactive keyword-based navigation buttons</li>
+                        <li>Bilingual content (English/Vietnamese)</li>
+                        <li>Audio playback with shadowing practice</li>
+                        <li>Highlighted keywords in content</li>
+                        <li>Copy & share functionality</li>
+                        <li>Admin tools for content management</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground font-semibold">Content Standards:</span>
+                      <ul className="list-disc list-inside text-foreground mt-1 space-y-1">
+                        <li>VIP3 Mercy Blade standard applied</li>
+                        <li>JSON-based entry system</li>
+                        <li>Database fallback support</li>
+                        <li>Audio files linked per entry</li>
+                        <li>Sequential display_order system</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Content Descriptions */}
+                {(room.description_en || room.description_vi) && (
+                  <div className="space-y-3">
+                    <h4 className="text-sm font-semibold text-primary border-b border-border pb-1">
+                      📝 Content Descriptions
+                    </h4>
                     
+                    {room.description_en && (
+                      <div className="space-y-2">
+                        <span className="text-muted-foreground text-sm">English Description:</span>
+                        <div className="p-3 bg-muted/30 rounded-lg">
+                          <p className="text-sm text-foreground whitespace-pre-wrap leading-relaxed">
+                            {room.description_en}
+                          </p>
+                        </div>
+                      </div>
+                    )}
+
+                    {room.description_vi && (
+                      <div className="space-y-2">
+                        <span className="text-muted-foreground text-sm">Vietnamese Description:</span>
+                        <div className="p-3 bg-muted/30 rounded-lg">
+                          <p className="text-sm text-foreground whitespace-pre-wrap leading-relaxed">
+                            {room.description_vi}
+                          </p>
+                        </div>
+                      </div>
+                    )}
+
                     {/* Copy Buttons */}
-                    <div className="flex gap-2 flex-wrap">
+                    <div className="flex gap-2 flex-wrap pt-2">
                       {room.description_en && (
                         <Button
                           variant="outline"
@@ -444,18 +543,58 @@ const KidsChat = () => {
                           Copy EN Description
                         </Button>
                       )}
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => handleCopyEssay(room.description_vi!, "Vietnamese")}
-                        className="flex items-center gap-2"
-                      >
-                        <Copy className="h-3 w-3" />
-                        Copy VN Description
-                      </Button>
+                      {room.description_vi && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => handleCopyEssay(room.description_vi!, "Vietnamese")}
+                          className="flex items-center gap-2"
+                        >
+                          <Copy className="h-3 w-3" />
+                          Copy VN Description
+                        </Button>
+                      )}
                     </div>
                   </div>
                 )}
+
+                {/* Technical Notes */}
+                <div className="space-y-3">
+                  <h4 className="text-sm font-semibold text-primary border-b border-border pb-1">
+                    🔍 Technical Implementation Notes
+                  </h4>
+                  <div className="text-sm space-y-2">
+                    <div>
+                      <span className="text-muted-foreground font-semibold">Data Source Priority:</span>
+                      <ol className="list-decimal list-inside text-foreground mt-1">
+                        <li>Database (kids_entries table)</li>
+                        <li>Static JSON files (fallback)</li>
+                      </ol>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground font-semibold">Audio Path Convention:</span>
+                      <p className="text-foreground mt-1 font-mono text-xs">
+                        /audio/{`{filename}`}.mp3
+                      </p>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground font-semibold">Entry ID Format:</span>
+                      <p className="text-foreground mt-1 font-mono text-xs">
+                        {`{room_id}`}-{`{index}`}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Metadata */}
+                <div className="space-y-2 pt-3 border-t border-border">
+                  <p className="text-xs text-muted-foreground">
+                    Created: {new Date(room.created_at!).toLocaleString()}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    Last Updated: {new Date(room.updated_at!).toLocaleString()}
+                  </p>
+                </div>
               </div>
             )}
           </Card>
@@ -465,21 +604,35 @@ const KidsChat = () => {
         <div className="text-center">
           <div className="flex items-center justify-center gap-2">
             {isAdmin && roomId && (
-              <button
-                type="button"
-                onClick={() => {
-                  const filenameFromMap = KIDS_ROOM_JSON_MAP[roomId];
-                  const fallbackFilename = `${roomId.replace(/-/g, "_")}_${room?.level_id === "level1" ? "kids_l1" : room?.level_id === "level2" ? "kids_l2" : "kids"}.json`;
-                  const filename = filenameFromMap || fallbackFilename;
-                  navigator.clipboard.writeText(filename);
-                  toast({
-                    title: "Copied!",
-                    description: `JSON: ${filename}`,
-                  });
-                }}
-                className="w-[1em] h-[1em] rounded-full bg-primary hover:bg-primary/90 cursor-pointer flex-shrink-0 transition-colors"
-                title="Copy JSON filename"
-              />
+              <>
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigator.clipboard.writeText(roomId);
+                    toast({
+                      title: "Copied!",
+                      description: `Room ID: ${roomId}`,
+                    });
+                  }}
+                  className="w-[1em] h-[1em] rounded-full bg-blue-500 hover:bg-blue-600 cursor-pointer flex-shrink-0 transition-colors"
+                  title="Copy Room ID"
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    const filenameFromMap = KIDS_ROOM_JSON_MAP[roomId];
+                    const fallbackFilename = `${roomId.replace(/-/g, "_")}_${room?.level_id === "level1" ? "kids_l1" : room?.level_id === "level2" ? "kids_l2" : "kids"}.json`;
+                    const filename = filenameFromMap || fallbackFilename;
+                    navigator.clipboard.writeText(filename);
+                    toast({
+                      title: "Copied!",
+                      description: `JSON: ${filename}`,
+                    });
+                  }}
+                  className="w-[1em] h-[1em] rounded-full bg-primary hover:bg-primary/90 cursor-pointer flex-shrink-0 transition-colors"
+                  title="Copy JSON filename"
+                />
+              </>
             )}
             <h2 className="text-lg font-semibold" style={{
               background: 'var(--gradient-rainbow)',
