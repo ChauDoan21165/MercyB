@@ -12,6 +12,7 @@ import { HighlightedContent } from "@/components/HighlightedContent";
 import { MessageActions } from "@/components/MessageActions";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { User, Copy, ChevronDown, ChevronUp } from "lucide-react";
+import { ProfileAvatarUpload } from "@/components/ProfileAvatarUpload";
 
 interface KidsRoom {
   id: string;
@@ -31,6 +32,7 @@ interface KidsEntry {
 interface UserProfile {
   username: string | null;
   full_name: string | null;
+  avatar_url: string | null;
 }
 
 interface KidsSubscription {
@@ -185,7 +187,7 @@ const KidsChat = () => {
       // Fetch user profile
       const { data: profile } = await supabase
         .from('profiles')
-        .select('username, full_name')
+        .select('username, full_name, avatar_url')
         .eq('id', user.id)
         .single();
 
@@ -368,9 +370,10 @@ const KidsChat = () => {
           <Card className="p-3 bg-card border border-border">
             <div className="flex items-center justify-between flex-wrap gap-2">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <User className="h-5 w-5 text-primary" />
-                </div>
+                <ProfileAvatarUpload
+                  currentAvatarUrl={userProfile.avatar_url}
+                  onUploadSuccess={(url) => setUserProfile({ ...userProfile, avatar_url: url })}
+                />
                 <div>
                   <p className="font-medium text-foreground">
                     {userProfile.full_name || userProfile.username || 'Student'}
