@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import { AdminFloatingButton } from "@/components/AdminFloatingButton";
 import { ZoomControl } from "@/components/ZoomControl";
-import { EnvironmentBadge } from "@/components/EnvironmentBadge";
+
 import Welcome from "./pages/Welcome";
 import Homepage from "./pages/Homepage";
 import Tiers from "./pages/Tiers";
@@ -103,7 +103,6 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
-        <EnvironmentBadge />
         <AdminFloatingButton />
         <ZoomControl />
         <Routes>
