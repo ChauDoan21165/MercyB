@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { Gift, Loader2, Copy, Check } from "lucide-react";
+import { Gift, Loader2, Copy, Check, ArrowLeft } from "lucide-react";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
@@ -23,6 +24,7 @@ interface GiftCode {
 }
 
 const AdminGiftCodes = () => {
+  const navigate = useNavigate();
   const [tier, setTier] = useState<'VIP2' | 'VIP3'>('VIP2');
   const [count, setCount] = useState(1);
   const [notes, setNotes] = useState("");
@@ -133,6 +135,14 @@ const AdminGiftCodes = () => {
       <ColorfulMercyBladeHeader subtitle="Manage Gift Codes" />
       
       <div className="container mx-auto px-4 py-12 max-w-6xl">
+        <Button 
+          onClick={() => navigate('/admin')} 
+          variant="outline" 
+          className="mb-6 gap-2"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to Admin Dashboard
+        </Button>
         <div className="grid gap-6 md:grid-cols-2">
           {/* Generate Codes */}
           <Card>
