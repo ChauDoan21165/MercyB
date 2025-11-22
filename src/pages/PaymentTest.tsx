@@ -393,7 +393,7 @@ const PaymentTest = () => {
                 <div className="text-center space-y-3">
                   <div className="text-3xl">⭐</div>
                   <h3 className="text-xl font-bold text-orange-700">VIP1</h3>
-                  <p className="text-2xl font-bold text-gray-900">$10<span className="text-sm">/mo</span></p>
+                  <p className="text-2xl font-bold text-gray-900">$3<span className="text-sm">/mo</span></p>
                   <p className="text-sm text-gray-600">10 rooms/month</p>
                   <Button className="w-full bg-orange-600 hover:bg-orange-700">
                     Get VIP1
@@ -409,7 +409,7 @@ const PaymentTest = () => {
                 <div className="text-center space-y-3">
                   <div className="text-3xl">💎</div>
                   <h3 className="text-xl font-bold text-blue-700">VIP2</h3>
-                  <p className="text-2xl font-bold text-gray-900">$20<span className="text-sm">/mo</span></p>
+                  <p className="text-2xl font-bold text-gray-900">$6<span className="text-sm">/mo</span></p>
                   <p className="text-sm text-gray-600">25 rooms/month</p>
                   <Button className="w-full bg-blue-600 hover:bg-blue-700">
                     Get VIP2
@@ -425,7 +425,7 @@ const PaymentTest = () => {
                 <div className="text-center space-y-3">
                   <div className="text-3xl">👑</div>
                   <h3 className="text-xl font-bold text-purple-700">VIP3</h3>
-                  <p className="text-2xl font-bold text-gray-900">$40<span className="text-sm">/mo</span></p>
+                  <p className="text-2xl font-bold text-gray-900">$15<span className="text-sm">/mo</span></p>
                   <p className="text-sm text-gray-600">Unlimited rooms</p>
                   <Button className="w-full bg-purple-600 hover:bg-purple-700">
                     Get VIP3
@@ -457,7 +457,7 @@ const PaymentTest = () => {
                 <div className="text-center space-y-3">
                   <div className="text-3xl">✍️</div>
                   <h3 className="text-xl font-bold text-emerald-700">VIP5 Writing</h3>
-                  <p className="text-2xl font-bold text-gray-900">$20<span className="text-sm">/mo</span></p>
+                  <p className="text-2xl font-bold text-gray-900">$70<span className="text-sm">/mo</span></p>
                   <p className="text-sm text-gray-600">Writing support</p>
                   <Button className="w-full bg-emerald-600 hover:bg-emerald-700">
                     Get VIP5

@@ -10,21 +10,21 @@ export default function VIP() {
         <h1>Unlock VIP Rooms</h1>
         <p>Choose your VIP level for access to 48 rooms + 219 audios</p>
 
-        {/* VIP1 $2 */}
+        {/* VIP1 $3 */}
         <div style={{ margin: '30px', border: '1px solid #ccc', padding: '20px', borderRadius: '8px' }}>
-          <h3>VIP1 - $2/month (12 rooms)</h3>
+          <h3>VIP1 - $3/month (12 rooms)</h3>
           <div id="paypal-button-container-P-6B571463RU9430345NEA6TKI"></div>
         </div>
 
-        {/* VIP2 $4 */}
+        {/* VIP2 $6 */}
         <div style={{ margin: '30px', border: '1px solid #ccc', padding: '20px', borderRadius: '8px' }}>
-          <h3>VIP2 - $4/month (24 rooms)</h3>
+          <h3>VIP2 - $6/month (24 rooms)</h3>
           <div id="paypal-button-container-P-9KA72338CS258724TNEA6WYA"></div>
         </div>
 
-        {/* VIP3 $6 */}
+        {/* VIP3 $15 */}
         <div style={{ margin: '30px', border: '1px solid #ccc', padding: '20px', borderRadius: '8px' }}>
-          <h3>VIP3 - $6/month (All 48 rooms)</h3>
+          <h3>VIP3 - $15/month (All 48 rooms)</h3>
           <div id="paypal-button-container-P-1XY370504K8237930NEA6XKY"></div>
         </div>
 
