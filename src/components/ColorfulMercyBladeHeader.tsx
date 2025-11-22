@@ -201,7 +201,7 @@ export const ColorfulMercyBladeHeader = ({
                 <DropdownMenuSeparator />
 
                 <DropdownMenuItem 
-                  onClick={() => navigate('/kids-level-1')}
+                  onClick={() => navigate('/kids-level1')}
                   className="cursor-pointer hover:bg-green-50 dark:hover:bg-green-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
                 >
                   <Baby className="mr-2 h-4 w-4 text-green-600 transition-transform duration-200 group-hover:scale-110" />
@@ -212,7 +212,7 @@ export const ColorfulMercyBladeHeader = ({
                 </DropdownMenuItem>
 
                 <DropdownMenuItem 
-                  onClick={() => navigate('/kids-level-2')}
+                  onClick={() => navigate('/kids-level2')}
                   className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
                 >
                   <School className="mr-2 h-4 w-4 text-blue-600 transition-transform duration-200 group-hover:scale-110" />
@@ -223,7 +223,7 @@ export const ColorfulMercyBladeHeader = ({
                 </DropdownMenuItem>
 
                 <DropdownMenuItem 
-                  onClick={() => navigate('/kids-level-3')}
+                  onClick={() => navigate('/kids-level3')}
                   className="cursor-pointer hover:bg-purple-50 dark:hover:bg-purple-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
                 >
                   <GraduationCap className="mr-2 h-4 w-4 text-purple-600 transition-transform duration-200 group-hover:scale-110" />
