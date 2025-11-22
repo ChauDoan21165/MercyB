@@ -142,7 +142,7 @@ const RoomGrid = () => {
               <div className="flex items-center justify-between mb-4">
                 <span className="text-lg text-gray-700 font-medium">
                   {isDemoMode 
-                    ? "Demo Mode - Limited Access / Chế Độ Demo"
+                    ? "Free Access - Register to Save Progress / Truy Cập Miễn Phí"
                     : "You are in free of charge area / Bạn đang ở khu vực miễn phí"
                   }
                 </span>
@@ -170,7 +170,7 @@ const RoomGrid = () => {
             </p>
             <p className="text-sm text-muted-foreground/80">
               {isDemoMode 
-                ? `Showing ${demoRoomIds.length} demo rooms`
+                ? `Explore ${demoRoomIds.length} free rooms`
                 : `Showing ${ALL_ROOMS.filter(room => room.tier === "free").length} rooms`
               }
             </p>
