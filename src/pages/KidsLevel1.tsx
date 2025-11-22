@@ -166,10 +166,26 @@ const KidsLevel1 = () => {
                   
                   {/* Room Names */}
                   <div className="space-y-1">
-                    <p className="text-xs font-bold leading-tight line-clamp-2 text-center text-foreground group-hover:text-primary transition-colors">
+                    <p 
+                      className="text-xs font-bold leading-tight line-clamp-2 text-center transition-all duration-300"
+                      style={{
+                        background: 'var(--gradient-rainbow)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text'
+                      }}
+                    >
                       {room.title_en}
                     </p>
-                    <p className="text-[10px] leading-tight line-clamp-2 text-center text-muted-foreground">
+                    <p 
+                      className="text-[10px] leading-tight line-clamp-2 text-center transition-all duration-300"
+                      style={{
+                        background: 'var(--gradient-rainbow)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text'
+                      }}
+                    >
                       {room.title_vi}
                     </p>
                   </div>
