@@ -6,13 +6,10 @@ import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { RoomSearch } from '@/components/RoomSearch';
-import { DemoModeBanner } from '@/components/DemoModeBanner';
-import { useDemoMode } from '@/hooks/useDemoMode';
 
 const Homepage = () => {
   const { config, loading, error } = useHomepageConfig();
   const navigate = useNavigate();
-  const { isDemoMode } = useDemoMode();
   const [headerBg, setHeaderBg] = useState('#ffffff');
   const [textColor, setTextColor] = useState('#111827');
 
@@ -94,12 +91,6 @@ const Homepage = () => {
         onReset={handleResetConfig}
       />
 
-      {/* Demo Mode Banner */}
-      {isDemoMode && (
-        <div className="max-w-6xl mx-auto px-6 pt-6">
-          <DemoModeBanner />
-        </div>
-      )}
 
       {/* Search box - top right corner */}
       <div className="fixed top-28 right-6 z-30 w-80">
