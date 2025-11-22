@@ -57,6 +57,14 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        mercy: {
+          pink: "hsl(var(--mercy-pink))",
+          orange: "hsl(var(--mercy-orange))",
+          yellow: "hsl(var(--mercy-yellow))",
+          green: "hsl(var(--mercy-green))",
+          blue: "hsl(var(--mercy-blue))",
+          purple: "hsl(var(--mercy-purple))",
+        },
         kids: {
           rainbow: {
             red: "0 100% 60%",

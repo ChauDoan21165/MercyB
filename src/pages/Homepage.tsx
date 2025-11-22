@@ -6,6 +6,7 @@ import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { RoomSearch } from '@/components/RoomSearch';
+import { BrandSlogan } from '@/components/brand/BrandSlogan';
 
 const Homepage = () => {
   const { config, loading, error } = useHomepageConfig();
@@ -91,6 +92,10 @@ const Homepage = () => {
         onReset={handleResetConfig}
       />
 
+      {/* Hero Section with Brand Slogan */}
+      <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-background via-muted/30 to-background">
+        <BrandSlogan size="lg" className="max-w-5xl" />
+      </section>
 
       {/* Search box - top right corner */}
       <div className="fixed top-28 right-6 z-30 w-80">
@@ -114,15 +119,18 @@ const Homepage = () => {
       </main>
 
       {/* Kids English VIP3 Section */}
-      <HomepageSection
-        id="kids-english-vip3"
-        backgroundColor="#F3E5F5"
-        headingColor="#6A1B9A"
-        accentColor="#AB47BC"
-        title={{
-          en: "🌟 Kids English — VIP3 Exclusive Bonus",
-          vi: "🌟 Kids English — Quà Tặng Đặc Biệt Dành Riêng Cho VIP3"
-        }}
+      <section className="py-16 px-6" style={{ backgroundColor: "#F3E5F5" }}>
+        <div className="max-w-4xl mx-auto space-y-8">
+          <BrandSlogan size="md" className="mb-8" />
+          <HomepageSection
+            id="kids-english-vip3"
+            backgroundColor="#F3E5F5"
+            headingColor="#6A1B9A"
+            accentColor="#AB47BC"
+            title={{
+              en: "🌟 Kids English — VIP3 Exclusive Bonus",
+              vi: "🌟 Kids English — Quà Tặng Đặc Biệt Dành Riêng Cho VIP3"
+            }}
         body={{
           en: `Kids English is a special, exclusive reward for VIP3 members.
 It unlocks 3 full learning levels for children ages 4–13 — but even more importantly, it opens a powerful opportunity for parents to learn English together with their children through teaching.
@@ -155,7 +163,9 @@ Kids English không chỉ là chương trình dành cho trẻ.
           en: "kid_homepage.mp3",
           vi: "kid_homepage.mp3"
         }}
-      />
+          />
+        </div>
+      </section>
 
       {/* Footer CTA */}
       <footer className="py-12 px-6 bg-gradient-to-b from-teal-100 to-teal-200">
