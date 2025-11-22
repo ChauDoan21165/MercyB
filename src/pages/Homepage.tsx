@@ -113,6 +113,47 @@ const Homepage = () => {
         ))}
       </main>
 
+      {/* Kids English VIP3 Section */}
+      <HomepageSection
+        id="kids-english-vip3"
+        backgroundColor="#F3E5F5"
+        headingColor="#6A1B9A"
+        accentColor="#AB47BC"
+        title={{
+          en: "🌟 Kids English — VIP3 Exclusive Bonus",
+          vi: "🌟 Kids English — Quà Tặng Đặc Biệt Dành Riêng Cho VIP3"
+        }}
+        body={{
+          en: `Kids English is a special, exclusive reward for VIP3 members.
+It unlocks 3 full learning levels for children ages 4–13 — but even more importantly, it opens a powerful opportunity for parents to learn English together with their children through teaching.
+
+There is a timeless teaching principle:
+👉 "The fastest way to learn is to teach someone."
+
+When you read vocabulary with your child, explain meanings, guide pronunciation, or play language games, your own brain forms deeper connections and faster recall. Teaching strengthens memory, builds confidence, and turns English learning into a natural, joyful routine.
+
+Your child learns — and you learn too.
+Every shared activity becomes a moment of growth, closeness, and gentle progress for the whole family.
+
+Kids English is not just a program for children.
+It is a gift for parents and children to grow together.`,
+          vi: `Kids English là phần thưởng đặc biệt và độc quyền cho người dùng VIP3.
+Bạn được mở toàn bộ 3 cấp độ học tiếng Anh cho trẻ từ 4–13 tuổi — và quan trọng hơn, bạn có cơ hội học tiếng Anh cùng con thông qua việc dạy con.
+
+Trong giáo dục có một nguyên tắc rất mạnh mẽ:
+👉 "Cách học nhanh nhất là dạy lại cho người khác."
+
+Khi bạn đọc từ vựng với con, giải thích nghĩa, hướng dẫn phát âm, hoặc chơi trò chơi ngôn ngữ, não của bạn ghi nhớ nhanh hơn, sâu hơn và hình thành phản xạ tự nhiên. Việc dạy giúp tăng tập trung, cải thiện trí nhớ và biến tiếng Anh thành hoạt động nhẹ nhàng mỗi ngày.
+
+Con học — và bạn cũng học.
+Mỗi hoạt động chung trở thành một khoảnh khắc kết nối, trưởng thành và tiến bộ nhẹ nhàng của cả gia đình.
+
+Kids English không chỉ là chương trình dành cho trẻ.
+Đó là món quà để cha mẹ và con cùng lớn lên.`
+        }}
+        audio="/audio/kid_homepage.mp3"
+      />
+
       {/* Footer CTA */}
       <footer className="py-12 px-6 bg-gradient-to-b from-teal-100 to-teal-200">
         <div className="max-w-[640px] mx-auto text-center space-y-6">
