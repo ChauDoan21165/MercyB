@@ -68,8 +68,6 @@ export const AdminFloatingButton = () => {
     }
   };
 
-  if (!isAdmin) return null;
-
   return (
     <div className="fixed bottom-6 right-6 z-50 flex items-center gap-1">
       {/* Version Indicator Dot - Change the character to track versions */}
@@ -80,22 +78,24 @@ export const AdminFloatingButton = () => {
         A
       </div>
       
-      <Button
-        onClick={() => navigate('/admin/stats')}
-        size="sm"
-        variant="outline"
-        className="rounded-full shadow-sm h-5 w-5 p-0 bg-gray-400 hover:bg-gray-500 border-gray-500 relative"
-      >
-        <Settings className="h-3 w-3 text-white" />
-        {unreadCount > 0 && (
-          <Badge
-            variant="destructive"
-            className="absolute -top-1 -right-1 h-3 w-3 flex items-center justify-center p-0 rounded-full text-[8px]"
-          >
-            {unreadCount > 9 ? '9+' : unreadCount}
-          </Badge>
-        )}
-      </Button>
+      {isAdmin && (
+        <Button
+          onClick={() => navigate('/admin/stats')}
+          size="sm"
+          variant="outline"
+          className="rounded-full shadow-sm h-5 w-5 p-0 bg-gray-400 hover:bg-gray-500 border-gray-500 relative"
+        >
+          <Settings className="h-3 w-3 text-white" />
+          {unreadCount > 0 && (
+            <Badge
+              variant="destructive"
+              className="absolute -top-1 -right-1 h-3 w-3 flex items-center justify-center p-0 rounded-full text-[8px]"
+            >
+              {unreadCount > 9 ? '9+' : unreadCount}
+            </Badge>
+          )}
+        </Button>
+      )}
     </div>
   );
 };
