@@ -26,12 +26,12 @@ export default function KidsRoomHealthCheck() {
   const [fixing, setFixing] = useState<string | null>(null);
   const [fixingAll, setFixingAll] = useState(false);
   const [rooms, setRooms] = useState<RoomStatus[]>([]);
-  const [selectedLevel, setSelectedLevel] = useState<'level-1' | 'level-2' | 'level-3'>('level-2');
+  const [selectedLevel, setSelectedLevel] = useState<'all' | 'level-1' | 'level-2' | 'level-3'>('all');
 
   const checkRooms = async () => {
     setChecking(true);
     try {
-      const { data, error } = await supabase
+      let query = supabase
         .from('kids_rooms')
         .select(`
           id,
@@ -40,9 +40,13 @@ export default function KidsRoomHealthCheck() {
           level_id,
           is_active,
           kids_entries(count)
-        `)
-        .eq('level_id', selectedLevel)
-        .order('display_order');
+        `);
+      
+      if (selectedLevel !== 'all') {
+        query = query.eq('level_id', selectedLevel);
+      }
+      
+      const { data, error } = await query.order('level_id').order('display_order');
 
       if (error) throw error;
 
@@ -85,11 +89,11 @@ export default function KidsRoomHealthCheck() {
     }
   };
 
-  const fixRoom = async (roomId: string) => {
+  const fixRoom = async (roomId: string, roomLevelId: string) => {
     setFixing(roomId);
     try {
       // Fetch the JSON file for this room
-      const jsonFileName = `${roomId.replace(/-/g, '_')}_kids_${selectedLevel.replace('level-', 'l')}.json`;
+      const jsonFileName = `${roomId.replace(/-/g, '_')}_kids_${roomLevelId.replace('level-', 'l')}.json`;
       const response = await fetch(`/data/${jsonFileName}`);
       
       if (!response.ok) {
@@ -173,7 +177,7 @@ export default function KidsRoomHealthCheck() {
 
     for (const room of roomsToFix) {
       try {
-        const jsonFileName = `${room.id.replace(/-/g, '_')}_kids_${selectedLevel.replace('level-', 'l')}.json`;
+        const jsonFileName = `${room.id.replace(/-/g, '_')}_kids_${room.level_id.replace('level-', 'l')}.json`;
         const response = await fetch(`/data/${jsonFileName}`);
         
         if (!response.ok) {
@@ -258,21 +262,34 @@ export default function KidsRoomHealthCheck() {
   const missingEntries = rooms.filter(r => r.status === 'missing_entries');
   const inactiveRooms = rooms.filter(r => r.status === 'inactive');
 
+  // Group rooms by level
+  const roomsByLevel = {
+    'level-1': rooms.filter(r => r.level_id === 'level-1'),
+    'level-2': rooms.filter(r => r.level_id === 'level-2'),
+    'level-3': rooms.filter(r => r.level_id === 'level-3'),
+  };
+
   return (
     <AdminLayout>
       <div className="max-w-7xl mx-auto p-6 space-y-6">
         <div>
           <h1 className="text-3xl font-bold text-foreground">Kids Room Health Check</h1>
-          <p className="text-muted-foreground mt-1">Verify and fix room data integrity</p>
+          <p className="text-muted-foreground mt-1">Verify and fix room data integrity across all levels</p>
         </div>
 
         <Card>
           <CardHeader>
             <CardTitle>Select Level</CardTitle>
-            <CardDescription>Choose which kids level to check</CardDescription>
+            <CardDescription>Choose which kids level to check or scan all levels</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex gap-2">
+            <div className="flex gap-2 flex-wrap">
+              <Button
+                variant={selectedLevel === 'all' ? 'default' : 'outline'}
+                onClick={() => setSelectedLevel('all')}
+              >
+                All Levels
+              </Button>
               <Button
                 variant={selectedLevel === 'level-1' ? 'default' : 'outline'}
                 onClick={() => setSelectedLevel('level-1')}
@@ -323,6 +340,13 @@ export default function KidsRoomHealthCheck() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{okRooms.length}</div>
+                  {selectedLevel === 'all' && (
+                    <div className="text-xs text-muted-foreground mt-1">
+                      L1: {roomsByLevel['level-1'].filter(r => r.status === 'ok').length} • 
+                      L2: {roomsByLevel['level-2'].filter(r => r.status === 'ok').length} • 
+                      L3: {roomsByLevel['level-3'].filter(r => r.status === 'ok').length}
+                    </div>
+                  )}
                 </CardContent>
               </Card>
 
@@ -335,6 +359,13 @@ export default function KidsRoomHealthCheck() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{missingEntries.length}</div>
+                  {selectedLevel === 'all' && (
+                    <div className="text-xs text-muted-foreground mt-1">
+                      L1: {roomsByLevel['level-1'].filter(r => r.status === 'missing_entries').length} • 
+                      L2: {roomsByLevel['level-2'].filter(r => r.status === 'missing_entries').length} • 
+                      L3: {roomsByLevel['level-3'].filter(r => r.status === 'missing_entries').length}
+                    </div>
+                  )}
                 </CardContent>
               </Card>
 
@@ -347,6 +378,13 @@ export default function KidsRoomHealthCheck() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{inactiveRooms.length}</div>
+                  {selectedLevel === 'all' && (
+                    <div className="text-xs text-muted-foreground mt-1">
+                      L1: {roomsByLevel['level-1'].filter(r => r.status === 'inactive').length} • 
+                      L2: {roomsByLevel['level-2'].filter(r => r.status === 'inactive').length} • 
+                      L3: {roomsByLevel['level-3'].filter(r => r.status === 'inactive').length}
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             </div>
@@ -388,11 +426,11 @@ export default function KidsRoomHealthCheck() {
                           <strong>{room.title_en}</strong> ({room.id})
                           <br />
                           <span className="text-sm text-muted-foreground">
-                            Missing entries - Room has 0 content entries
+                            {room.level_id.replace('level-', 'Level ')} • Missing entries - Room has 0 content entries
                           </span>
                         </div>
                         <Button
-                          onClick={() => fixRoom(room.id)}
+                          onClick={() => fixRoom(room.id, room.level_id)}
                           disabled={fixing === room.id}
                           size="sm"
                         >
@@ -419,7 +457,7 @@ export default function KidsRoomHealthCheck() {
                         <strong>{room.title_en}</strong> ({room.id})
                         <br />
                         <span className="text-sm">
-                          Room is marked as inactive - Manual review needed
+                          {room.level_id.replace('level-', 'Level ')} • Room is marked as inactive - Manual review needed
                         </span>
                       </AlertDescription>
                     </Alert>
@@ -431,7 +469,9 @@ export default function KidsRoomHealthCheck() {
             {/* All Rooms List */}
             <Card>
               <CardHeader>
-                <CardTitle>All Rooms ({rooms.length})</CardTitle>
+                <CardTitle>
+                  {selectedLevel === 'all' ? 'All Rooms' : `Level ${selectedLevel.replace('level-', '')} Rooms`} ({rooms.length})
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
@@ -453,6 +493,7 @@ export default function KidsRoomHealthCheck() {
                         <div>
                           <div className="font-medium">{room.title_en}</div>
                           <div className="text-sm text-muted-foreground">
+                            {selectedLevel === 'all' && `${room.level_id.replace('level-', 'L')} • `}
                             {room.id} • {room.entry_count} entries
                           </div>
                         </div>
