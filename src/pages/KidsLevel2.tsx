@@ -79,7 +79,7 @@ const KidsLevel2 = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-orange-50 via-yellow-50 via-green-50 via-cyan-50 via-blue-50 to-purple-50 dark:from-red-950 dark:via-orange-950 dark:via-yellow-950 dark:via-green-950 dark:via-cyan-950 dark:via-blue-950 dark:to-purple-950">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-blue-100 dark:from-blue-950 dark:via-cyan-950 dark:to-blue-900">
       <ColorfulMercyBladeHeader
         subtitle="Kids Level 2 - Ages 7-10"
         showBackButton={true}
@@ -88,7 +88,7 @@ const KidsLevel2 = () => {
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Hero Header with Gradient */}
         <div className="mb-12 space-y-6 text-center">
-          <div className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-red-500 via-orange-500 via-yellow-500 via-green-500 via-cyan-500 via-blue-500 to-purple-500 text-white px-8 py-4 rounded-3xl shadow-lg animate-fade-in">
+          <div className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white px-8 py-4 rounded-3xl shadow-lg animate-fade-in">
             <School className="h-10 w-10 animate-bounce" />
             <div className="text-left">
               <h1 className="text-4xl font-bold tracking-tight">
@@ -110,7 +110,7 @@ const KidsLevel2 = () => {
             <Button
               onClick={handleRefresh}
               disabled={isRefreshing}
-              className="bg-gradient-to-r from-orange-500 via-yellow-500 via-green-500 to-cyan-500 hover:from-orange-600 hover:via-yellow-600 hover:via-green-600 hover:to-cyan-600 text-white rounded-full shadow-lg transition-all duration-300 hover:scale-105"
+              className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:from-blue-500 hover:via-blue-600 hover:to-blue-700 text-white rounded-full shadow-lg transition-all duration-300 hover:scale-105"
             >
               <RefreshCw className={`h-4 w-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
               Refresh
@@ -128,7 +128,7 @@ const KidsLevel2 = () => {
                 key={room.id}
                 className="relative p-4 transition-all duration-500 cursor-pointer group hover:scale-110 hover:shadow-2xl hover:z-10 border-2 hover:border-transparent bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm overflow-hidden"
                 style={{
-                  borderImage: 'linear-gradient(135deg, #f97316, #fbbf24, #84cc16, #06b6d4, #3b82f6, #8b5cf6, #ec4899) 1',
+                  borderImage: 'linear-gradient(135deg, #60a5fa, #3b82f6, #2563eb, #1d4ed8) 1',
                 }}
                 onClick={() => navigate(`/kids-chat/${room.id}`)}
                 style={{
@@ -136,11 +136,11 @@ const KidsLevel2 = () => {
                 }}
               >
                 {/* Animated Background Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-red-400/0 via-orange-400/0 via-yellow-400/0 via-green-400/0 via-cyan-400/0 via-blue-400/0 to-purple-400/0 group-hover:from-red-400/10 group-hover:via-orange-400/10 group-hover:via-yellow-400/10 group-hover:via-green-400/10 group-hover:via-cyan-400/10 group-hover:via-blue-400/10 group-hover:to-purple-400/10 transition-all duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/0 via-cyan-400/0 to-blue-500/0 group-hover:from-blue-400/10 group-hover:via-cyan-400/10 group-hover:to-blue-500/10 transition-all duration-500" />
                 
                 {/* Status Badge */}
                 <div className="absolute top-2 right-2 z-10">
-                  <div className="bg-gradient-to-r from-orange-500 via-yellow-500 via-green-500 to-cyan-500 rounded-full p-1 shadow-lg animate-pulse">
+                  <div className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full p-1 shadow-lg animate-pulse">
                     <CheckCircle2 className="w-3 h-3 text-white" />
                   </div>
                 </div>
@@ -149,16 +149,16 @@ const KidsLevel2 = () => {
                   {/* Icon with Animated Circle */}
                   <div className="flex justify-center">
                     <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-yellow-400 via-green-400 to-cyan-400 rounded-full blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
-                      <div className="relative bg-gradient-to-br from-pink-100 to-rose-100 dark:from-pink-900 dark:to-rose-900 p-3 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                        <IconComponent className="w-8 h-8 text-pink-600 dark:text-pink-400" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 rounded-full blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
+                      <div className="relative bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900 dark:to-cyan-900 p-3 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                        <IconComponent className="w-8 h-8 text-blue-600 dark:text-blue-400" />
                       </div>
                     </div>
                   </div>
                   
                   {/* Room Names */}
                   <div className="space-y-1">
-                    <p className="text-xs font-bold leading-tight line-clamp-2 text-center text-gray-900 dark:text-white group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">
+                    <p className="text-xs font-bold leading-tight line-clamp-2 text-center text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       {room.title_en}
                     </p>
                     <p className="text-[10px] leading-tight line-clamp-2 text-center text-gray-600 dark:text-gray-400">
@@ -178,7 +178,7 @@ const KidsLevel2 = () => {
 
         {/* Decorative Elements */}
         <div className="fixed bottom-8 right-8 opacity-20 pointer-events-none">
-          <School className="w-32 h-32 text-pink-500 animate-pulse" />
+          <School className="w-32 h-32 text-blue-500 animate-pulse" />
         </div>
       </div>
     </div>
