@@ -50,6 +50,20 @@ export default function KidsRoomHealthCheck() {
 
       if (error) throw error;
 
+      // VALIDATION: Warn if no rooms found - likely a level_id mismatch
+      if (!data || data.length === 0) {
+        toast({
+          title: "⚠️ No rooms found",
+          description: selectedLevel === 'all' 
+            ? "No active rooms found in database. Please check if kids_rooms table has data and level_id values are: level1, level2, or level3 (no dashes)."
+            : `No rooms found for ${selectedLevel}. Verify the level_id in database matches exactly: ${selectedLevel} (not ${selectedLevel.replace('level', 'level-')})`,
+          variant: "destructive"
+        });
+        setRooms([]);
+        setChecking(false);
+        return;
+      }
+
       const roomStatuses: RoomStatus[] = (data || []).map((room: any) => {
         const entryCount = room.kids_entries?.[0]?.count || 0;
         let status: 'ok' | 'missing_entries' | 'inactive' = 'ok';
@@ -92,12 +106,17 @@ export default function KidsRoomHealthCheck() {
   const fixRoom = async (roomId: string, roomLevelId: string) => {
     setFixing(roomId);
     try {
+      // Validate level_id format
+      if (!roomLevelId.match(/^level[1-3]$/)) {
+        throw new Error(`Invalid level_id format: "${roomLevelId}". Expected format: level1, level2, or level3 (no dashes)`);
+      }
+
       // Fetch the JSON file for this room
       const jsonFileName = `${roomId.replace(/-/g, '_')}_kids_${roomLevelId.replace('level', 'l')}.json`;
       const response = await fetch(`/data/${jsonFileName}`);
       
       if (!response.ok) {
-        throw new Error(`JSON file not found: ${jsonFileName}`);
+        throw new Error(`JSON file not found: /data/${jsonFileName}. Please ensure the file exists and naming follows: {room_id}_kids_{level}.json format`);
       }
 
       const roomData = await response.json();
