@@ -24,6 +24,7 @@ export default function KidsRoomHealthCheck() {
   const { toast } = useToast();
   const [checking, setChecking] = useState(false);
   const [fixing, setFixing] = useState<string | null>(null);
+  const [fixingAll, setFixingAll] = useState(false);
   const [rooms, setRooms] = useState<RoomStatus[]>([]);
   const [selectedLevel, setSelectedLevel] = useState<'level-1' | 'level-2' | 'level-3'>('level-2');
 
@@ -155,6 +156,88 @@ export default function KidsRoomHealthCheck() {
     }
   };
 
+  const fixAllRooms = async () => {
+    const roomsToFix = rooms.filter(r => r.status === 'missing_entries');
+    
+    if (roomsToFix.length === 0) {
+      toast({
+        title: "No rooms to fix",
+        description: "All rooms are already healthy!",
+      });
+      return;
+    }
+
+    setFixingAll(true);
+    let successCount = 0;
+    let errorCount = 0;
+
+    for (const room of roomsToFix) {
+      try {
+        const jsonFileName = `${room.id.replace(/-/g, '_')}_kids_${selectedLevel.replace('level-', 'l')}.json`;
+        const response = await fetch(`/data/${jsonFileName}`);
+        
+        if (!response.ok) {
+          throw new Error(`JSON file not found: ${jsonFileName}`);
+        }
+
+        const roomData = await response.json();
+        
+        if (!roomData.entries || roomData.entries.length === 0) {
+          throw new Error('No entries found in JSON file');
+        }
+
+        const entries = roomData.entries.map((entry: any, index: number) => {
+          let contentEn = '';
+          let contentVi = '';
+          
+          if (entry.copy) {
+            contentEn = entry.copy.en || '';
+            contentVi = entry.copy.vi || '';
+          } else if (entry.content) {
+            contentEn = entry.content.en || '';
+            contentVi = entry.content.vi || '';
+          }
+          
+          let audioUrl = entry.audio || entry.audio_url || null;
+          if (audioUrl && !audioUrl.startsWith('http') && !audioUrl.startsWith('/')) {
+            audioUrl = `/${audioUrl}`;
+          }
+          
+          return {
+            id: `${room.id}-${index + 1}`,
+            room_id: room.id,
+            content_en: contentEn,
+            content_vi: contentVi,
+            audio_url: audioUrl,
+            display_order: index + 1,
+            is_active: true
+          };
+        });
+
+        const { error } = await supabase
+          .from('kids_entries')
+          .insert(entries);
+
+        if (error) throw error;
+        
+        successCount++;
+      } catch (error: any) {
+        console.error(`Failed to fix ${room.id}:`, error.message);
+        errorCount++;
+      }
+    }
+
+    setFixingAll(false);
+
+    toast({
+      title: "Bulk fix complete",
+      description: `Fixed ${successCount} rooms. ${errorCount > 0 ? `${errorCount} failed.` : ''}`,
+      variant: errorCount > 0 ? "destructive" : "default"
+    });
+
+    await checkRooms();
+  };
+
   if (adminLoading) {
     return (
       <AdminLayout>
@@ -272,7 +355,29 @@ export default function KidsRoomHealthCheck() {
             {(missingEntries.length > 0 || inactiveRooms.length > 0) && (
               <Card>
                 <CardHeader>
-                  <CardTitle>Rooms Requiring Attention</CardTitle>
+                  <CardTitle className="flex items-center justify-between">
+                    <span>Rooms Requiring Attention</span>
+                    {missingEntries.length > 0 && (
+                      <Button
+                        onClick={fixAllRooms}
+                        disabled={fixingAll}
+                        variant="default"
+                        size="sm"
+                      >
+                        {fixingAll ? (
+                          <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            Fixing All...
+                          </>
+                        ) : (
+                          <>
+                            <Wrench className="mr-2 h-4 w-4" />
+                            Fix All ({missingEntries.length})
+                          </>
+                        )}
+                      </Button>
+                    )}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   {missingEntries.map(room => (
