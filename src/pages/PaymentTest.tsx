@@ -291,7 +291,7 @@ const PaymentTest = () => {
                         </div>
                         {isYearly && (
                           <p className="text-xs text-gray-600 mt-1">
-                            Save 20% vs monthly / Tiết kiệm 20%
+                            Save 33% vs monthly / Tiết kiệm 33%
                           </p>
                         )}
                       </div>
