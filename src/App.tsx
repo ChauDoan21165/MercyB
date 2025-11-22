@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import { AdminFloatingButton } from "@/components/AdminFloatingButton";
 import { ZoomControl } from "@/components/ZoomControl";
+import { EnvironmentBadge } from "@/components/EnvironmentBadge";
 import Welcome from "./pages/Welcome";
 import Homepage from "./pages/Homepage";
 import Tiers from "./pages/Tiers";
@@ -61,6 +62,8 @@ import KidsChat from "./pages/KidsChat";
 import KidsRoomValidation from "./pages/KidsRoomValidation";
 import RedeemGiftCode from "./pages/RedeemGiftCode";
 import AdminGiftCodes from "./pages/AdminGiftCodes";
+import SecurityDashboard from "./pages/SecurityDashboard";
+import Settings from "./pages/Settings";
 
 const queryClient = new QueryClient();
 
@@ -99,6 +102,7 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
+        <EnvironmentBadge />
         <AdminFloatingButton />
         <ZoomControl />
         <Routes>
@@ -156,6 +160,8 @@ const App = () => {
           <Route path="/redeem-gift" element={<RedeemGiftCode />} />
           <Route path="/audio-upload" element={<AudioUpload />} />
           <Route path="/kids-validation" element={<KidsRoomValidation />} />
+          <Route path="/security-dashboard" element={<SecurityDashboard />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         </BrowserRouter>

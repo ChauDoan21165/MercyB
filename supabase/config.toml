@@ -24,3 +24,12 @@ verify_jwt = true
 [functions.room-sync-health]
 verify_jwt = true
 
+[functions.security-alert]
+verify_jwt = false
+
+[functions.uptime-monitor]
+verify_jwt = false
+
+[functions.health-check]
+verify_jwt = false
+
