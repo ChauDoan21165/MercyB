@@ -112,13 +112,14 @@ const Homepage = () => {
     <div className="min-h-screen">
       {/* Hero Section with Rainbow Background */}
       <section 
-        className="relative min-h-[70vh] bg-cover bg-center"
+        className="relative min-h-[70vh] bg-cover bg-center overflow-hidden"
         style={{ backgroundImage: `url(${heroRainbowBg})` }}
       >
-        <div className="absolute inset-0 bg-black/10"></div>
+        {/* Background overlay */}
+        <div className="absolute inset-0 bg-black/10 z-0"></div>
         
         {/* Mercy Blade Logo - Top Center */}
-        <div className="absolute top-8 left-1/2 -translate-x-1/2 z-20">
+        <div className="absolute top-8 left-1/2 -translate-x-1/2 z-30">
           <h1 className="text-5xl md:text-6xl font-bold tracking-tight drop-shadow-lg">
             <span className="inline-block animate-fade-in" style={{ color: '#E91E63' }}>M</span>
             <span className="inline-block animate-fade-in" style={{ color: '#9C27B0', animationDelay: '0.1s' }}>e</span>
@@ -135,7 +136,7 @@ const Homepage = () => {
         </div>
 
         {/* UI Controls - Top Right */}
-        <div className="absolute top-8 right-8 z-20 flex items-center gap-2">
+        <div className="absolute top-8 right-8 z-30 flex items-center gap-2">
           <ThemeToggle />
           
           <Button
@@ -271,8 +272,8 @@ const Homepage = () => {
           )}
         </div>
 
-        {/* Main Text - Center */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-center">
+        {/* Main Text - Center - SINGLE INSTANCE ONLY */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-center">
           <h2 className="text-6xl md:text-8xl font-bold mb-4 text-foreground drop-shadow-[0_0_30px_rgba(255,255,255,0.8)]">
             English & Knowledge
           </h2>
@@ -282,8 +283,8 @@ const Homepage = () => {
         </div>
       </section>
 
-      {/* Search box - top right corner */}
-      <div className="fixed top-28 right-6 z-30 w-80">
+      {/* Search box - below hero, top right */}
+      <div className="fixed top-[72vh] right-6 z-30 w-80">
         <RoomSearch />
       </div>
 
