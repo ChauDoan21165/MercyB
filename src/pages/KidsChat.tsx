@@ -257,7 +257,7 @@ const KidsChat = () => {
     <div className="min-h-screen bg-background">
       <ColorfulMercyBladeHeader subtitle={`${room.title_en} / ${room.title_vi}`} />
       
-      <div className="container mx-auto px-4 py-8 max-w-6xl space-y-6">
+      <div className="container mx-auto px-4 py-4 max-w-6xl space-y-4">
         {/* Header with back button */}
         <div className="flex items-center justify-between">
           <Button
