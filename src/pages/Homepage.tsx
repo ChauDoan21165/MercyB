@@ -6,6 +6,7 @@ import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { RoomSearch } from '@/components/RoomSearch';
+import heroRainbowBg from '@/assets/hero-rainbow-bg.jpg';
 
 const Homepage = () => {
   const { config, loading, error } = useHomepageConfig();
@@ -91,6 +92,18 @@ const Homepage = () => {
         onReset={handleResetConfig}
       />
 
+      {/* Hero Section with Rainbow Background */}
+      <section 
+        className="relative min-h-[70vh] flex items-center justify-center bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroRainbowBg})` }}
+      >
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="relative z-10 text-center">
+          <h1 className="text-6xl md:text-8xl font-bold text-foreground mb-4 drop-shadow-lg">
+            Mercy Blade
+          </h1>
+        </div>
+      </section>
 
       {/* Search box - top right corner */}
       <div className="fixed top-28 right-6 z-30 w-80">
