@@ -398,7 +398,7 @@ const KidsChat = () => {
               className="w-full flex items-center justify-between text-left"
             >
               <h3 className="font-semibold text-foreground">
-                🔧 Room Specification & Documentation / Tài liệu kỹ thuật phòng
+                Room Specification
               </h3>
               {showRoomSpec ? (
                 <ChevronUp className="h-5 w-5 text-muted-foreground" />
