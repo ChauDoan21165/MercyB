@@ -138,7 +138,7 @@ export const ColorfulMercyBladeHeader = ({
                 >
                   <Crown className="mr-2 h-4 w-4 text-green-600 transition-transform duration-200 group-hover:scale-110" />
                   <div className="flex flex-col">
-                    <span className="font-semibold">Free</span>
+                    <span className="font-semibold">Free <span className="text-[10px] text-muted-foreground">$0</span></span>
                     <span className="text-xs text-muted-foreground">Basic rooms</span>
                   </div>
                 </DropdownMenuItem>
@@ -149,7 +149,7 @@ export const ColorfulMercyBladeHeader = ({
                 >
                   <Star className="mr-2 h-4 w-4 text-yellow-600 transition-transform duration-200 group-hover:scale-110" />
                   <div className="flex flex-col">
-                    <span className="font-semibold">VIP1</span>
+                    <span className="font-semibold">VIP1 <span className="text-[10px] text-muted-foreground">$3</span></span>
                     <span className="text-xs text-muted-foreground">10 rooms/month</span>
                   </div>
                 </DropdownMenuItem>
@@ -160,7 +160,7 @@ export const ColorfulMercyBladeHeader = ({
                 >
                   <Gem className="mr-2 h-4 w-4 text-blue-600 transition-transform duration-200 group-hover:scale-110" />
                   <div className="flex flex-col">
-                    <span className="font-semibold">VIP2</span>
+                    <span className="font-semibold">VIP2 <span className="text-[10px] text-muted-foreground">$6</span></span>
                     <span className="text-xs text-muted-foreground">25 rooms/month</span>
                   </div>
                 </DropdownMenuItem>
@@ -171,7 +171,7 @@ export const ColorfulMercyBladeHeader = ({
                 >
                   <Sparkles className="mr-2 h-4 w-4 text-purple-600 transition-transform duration-200 group-hover:scale-110" />
                   <div className="flex flex-col">
-                    <span className="font-semibold">VIP3</span>
+                    <span className="font-semibold">VIP3 <span className="text-[10px] text-muted-foreground">$15</span></span>
                     <span className="text-xs text-muted-foreground">Unlimited rooms</span>
                   </div>
                 </DropdownMenuItem>
@@ -182,7 +182,7 @@ export const ColorfulMercyBladeHeader = ({
                 >
                   <Rocket className="mr-2 h-4 w-4 text-orange-600 transition-transform duration-200 group-hover:scale-110" />
                   <div className="flex flex-col">
-                    <span className="font-semibold">VIP4 CareerZ</span>
+                    <span className="font-semibold">VIP4 CareerZ <span className="text-[10px] text-muted-foreground">$50</span></span>
                     <span className="text-xs text-muted-foreground">Career coaching</span>
                   </div>
                 </DropdownMenuItem>
@@ -193,7 +193,7 @@ export const ColorfulMercyBladeHeader = ({
                 >
                   <Feather className="mr-2 h-4 w-4 text-emerald-600 transition-transform duration-200 group-hover:scale-110" />
                   <div className="flex flex-col">
-                    <span className="font-semibold">VIP5 Writing</span>
+                    <span className="font-semibold">VIP5 Writing <span className="text-[10px] text-muted-foreground">$70</span></span>
                     <span className="text-xs text-muted-foreground">Writing support</span>
                   </div>
                 </DropdownMenuItem>
@@ -204,7 +204,7 @@ export const ColorfulMercyBladeHeader = ({
                 >
                   <Brain className="mr-2 h-4 w-4 text-purple-600 transition-transform duration-200 group-hover:scale-110" />
                   <div className="flex flex-col">
-                    <span className="font-semibold">VIP6 Psychology</span>
+                    <span className="font-semibold">VIP6 Psychology <span className="text-[10px] text-muted-foreground">$90</span></span>
                     <span className="text-xs text-muted-foreground">Deep psychology</span>
                   </div>
                 </DropdownMenuItem>
