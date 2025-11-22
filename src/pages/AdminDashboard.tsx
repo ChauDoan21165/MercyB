@@ -7,6 +7,8 @@ import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 import { AdminBreadcrumb } from "@/components/admin/AdminBreadcrumb";
 import { AdminLayout } from "@/components/admin/AdminLayout";
+import { LiveUsersMonitor } from "@/components/admin/LiveUsersMonitor";
+import { FeedbackMessages } from "@/components/admin/FeedbackMessages";
 
 interface DashboardStats {
   totalRooms: number;
@@ -487,6 +489,18 @@ const AdminDashboard = () => {
               </Badge>
             </CardContent>
           </Card>
+        </div>
+
+        {/* Live Users Monitor */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold mb-4 text-foreground">📹 Live User Monitoring</h2>
+          <LiveUsersMonitor />
+        </div>
+
+        {/* Feedback Messages */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold mb-4 text-foreground">💬 User Messages</h2>
+          <FeedbackMessages />
         </div>
       </div>
     </AdminLayout>
