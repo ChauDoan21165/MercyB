@@ -1,5 +1,8 @@
 import { ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { Button } from "@/components/ui/button";
 import { AdminSidebar } from "./AdminSidebar";
 
 interface AdminLayoutProps {
@@ -7,13 +10,24 @@ interface AdminLayoutProps {
 }
 
 export const AdminLayout = ({ children }: AdminLayoutProps) => {
+  const navigate = useNavigate();
+
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full">
         <AdminSidebar />
         <div className="flex-1">
-          <header className="h-14 border-b flex items-center px-4 sticky top-0 bg-background z-10">
+          <header className="h-14 border-b flex items-center justify-between px-4 sticky top-0 bg-background z-10">
             <SidebarTrigger />
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => navigate("/")}
+              className="gap-2"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back to App
+            </Button>
           </header>
           <main className="p-6">
             {children}
