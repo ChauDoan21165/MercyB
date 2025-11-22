@@ -106,6 +106,7 @@ const KIDS_ROOM_JSON_MAP: Record<string, string> = {
   "environment-nature": "environment_nature_kids_l2.json",
   "adventure-discovery": "adventure_discovery_words_kids_l2.json",
   "story-builder": "story_builder_kids_l2.json",
+  "creative-writing": "creative_writing_basics_kids_l3\".json",
 };
 
 async function loadEntriesFromJson(roomId: string, levelId: string): Promise<KidsEntry[]> {
@@ -277,7 +278,18 @@ const KidsChat = () => {
 
       let finalEntries: KidsEntry[] = entriesData || [];
 
-      // If database has no entries, fall back to static JSON file for this kids room
+      // For creative-writing, if database entries have no audio, fall back to JSON version with audio
+      if (roomId === 'creative-writing' && roomData?.level_id) {
+        const hasAnyAudio = finalEntries.some((e) => !!e.audio_url);
+        if (!hasAnyAudio) {
+          const jsonEntries = await loadEntriesFromJson(roomId, roomData.level_id);
+          if (jsonEntries.length > 0) {
+            finalEntries = jsonEntries;
+          }
+        }
+      }
+
+      // If database has no entries at all, fall back to static JSON file for this kids room
       if ((!entriesData || entriesData.length === 0) && roomId && roomData?.level_id) {
         const jsonEntries = await loadEntriesFromJson(roomId, roomData.level_id);
         finalEntries = jsonEntries;
