@@ -26,7 +26,7 @@ export default function KidsRoomHealthCheck() {
   const [fixing, setFixing] = useState<string | null>(null);
   const [fixingAll, setFixingAll] = useState(false);
   const [rooms, setRooms] = useState<RoomStatus[]>([]);
-  const [selectedLevel, setSelectedLevel] = useState<'all' | 'level-1' | 'level-2' | 'level-3'>('all');
+  const [selectedLevel, setSelectedLevel] = useState<'all' | 'level1' | 'level2' | 'level3'>('all');
 
   const checkRooms = async () => {
     setChecking(true);
@@ -93,7 +93,7 @@ export default function KidsRoomHealthCheck() {
     setFixing(roomId);
     try {
       // Fetch the JSON file for this room
-      const jsonFileName = `${roomId.replace(/-/g, '_')}_kids_${roomLevelId.replace('level-', 'l')}.json`;
+      const jsonFileName = `${roomId.replace(/-/g, '_')}_kids_${roomLevelId.replace('level', 'l')}.json`;
       const response = await fetch(`/data/${jsonFileName}`);
       
       if (!response.ok) {
@@ -177,7 +177,7 @@ export default function KidsRoomHealthCheck() {
 
     for (const room of roomsToFix) {
       try {
-        const jsonFileName = `${room.id.replace(/-/g, '_')}_kids_${room.level_id.replace('level-', 'l')}.json`;
+        const jsonFileName = `${room.id.replace(/-/g, '_')}_kids_${room.level_id.replace('level', 'l')}.json`;
         const response = await fetch(`/data/${jsonFileName}`);
         
         if (!response.ok) {
@@ -264,9 +264,9 @@ export default function KidsRoomHealthCheck() {
 
   // Group rooms by level
   const roomsByLevel = {
-    'level-1': rooms.filter(r => r.level_id === 'level-1'),
-    'level-2': rooms.filter(r => r.level_id === 'level-2'),
-    'level-3': rooms.filter(r => r.level_id === 'level-3'),
+    'level1': rooms.filter(r => r.level_id === 'level1'),
+    'level2': rooms.filter(r => r.level_id === 'level2'),
+    'level3': rooms.filter(r => r.level_id === 'level3'),
   };
 
   return (
@@ -291,20 +291,20 @@ export default function KidsRoomHealthCheck() {
                 All Levels
               </Button>
               <Button
-                variant={selectedLevel === 'level-1' ? 'default' : 'outline'}
-                onClick={() => setSelectedLevel('level-1')}
+                variant={selectedLevel === 'level1' ? 'default' : 'outline'}
+                onClick={() => setSelectedLevel('level1')}
               >
                 Level 1 (Ages 3-6)
               </Button>
               <Button
-                variant={selectedLevel === 'level-2' ? 'default' : 'outline'}
-                onClick={() => setSelectedLevel('level-2')}
+                variant={selectedLevel === 'level2' ? 'default' : 'outline'}
+                onClick={() => setSelectedLevel('level2')}
               >
                 Level 2 (Ages 7-9)
               </Button>
               <Button
-                variant={selectedLevel === 'level-3' ? 'default' : 'outline'}
-                onClick={() => setSelectedLevel('level-3')}
+                variant={selectedLevel === 'level3' ? 'default' : 'outline'}
+                onClick={() => setSelectedLevel('level3')}
               >
                 Level 3 (Ages 10-13)
               </Button>
@@ -342,9 +342,9 @@ export default function KidsRoomHealthCheck() {
                   <div className="text-2xl font-bold">{okRooms.length}</div>
                   {selectedLevel === 'all' && (
                     <div className="text-xs text-muted-foreground mt-1">
-                      L1: {roomsByLevel['level-1'].filter(r => r.status === 'ok').length} • 
-                      L2: {roomsByLevel['level-2'].filter(r => r.status === 'ok').length} • 
-                      L3: {roomsByLevel['level-3'].filter(r => r.status === 'ok').length}
+                      L1: {roomsByLevel['level1'].filter(r => r.status === 'ok').length} • 
+                      L2: {roomsByLevel['level2'].filter(r => r.status === 'ok').length} • 
+                      L3: {roomsByLevel['level3'].filter(r => r.status === 'ok').length}
                     </div>
                   )}
                 </CardContent>
@@ -361,9 +361,9 @@ export default function KidsRoomHealthCheck() {
                   <div className="text-2xl font-bold">{missingEntries.length}</div>
                   {selectedLevel === 'all' && (
                     <div className="text-xs text-muted-foreground mt-1">
-                      L1: {roomsByLevel['level-1'].filter(r => r.status === 'missing_entries').length} • 
-                      L2: {roomsByLevel['level-2'].filter(r => r.status === 'missing_entries').length} • 
-                      L3: {roomsByLevel['level-3'].filter(r => r.status === 'missing_entries').length}
+                      L1: {roomsByLevel['level1'].filter(r => r.status === 'missing_entries').length} • 
+                      L2: {roomsByLevel['level2'].filter(r => r.status === 'missing_entries').length} • 
+                      L3: {roomsByLevel['level3'].filter(r => r.status === 'missing_entries').length}
                     </div>
                   )}
                 </CardContent>
@@ -380,9 +380,9 @@ export default function KidsRoomHealthCheck() {
                   <div className="text-2xl font-bold">{inactiveRooms.length}</div>
                   {selectedLevel === 'all' && (
                     <div className="text-xs text-muted-foreground mt-1">
-                      L1: {roomsByLevel['level-1'].filter(r => r.status === 'inactive').length} • 
-                      L2: {roomsByLevel['level-2'].filter(r => r.status === 'inactive').length} • 
-                      L3: {roomsByLevel['level-3'].filter(r => r.status === 'inactive').length}
+                      L1: {roomsByLevel['level1'].filter(r => r.status === 'inactive').length} • 
+                      L2: {roomsByLevel['level2'].filter(r => r.status === 'inactive').length} • 
+                      L3: {roomsByLevel['level3'].filter(r => r.status === 'inactive').length}
                     </div>
                   )}
                 </CardContent>
@@ -426,7 +426,7 @@ export default function KidsRoomHealthCheck() {
                           <strong>{room.title_en}</strong> ({room.id})
                           <br />
                           <span className="text-sm text-muted-foreground">
-                            {room.level_id.replace('level-', 'Level ')} • Missing entries - Room has 0 content entries
+                            Level {room.level_id.replace('level', '')} • Missing entries - Room has 0 content entries
                           </span>
                         </div>
                         <Button
@@ -457,7 +457,7 @@ export default function KidsRoomHealthCheck() {
                         <strong>{room.title_en}</strong> ({room.id})
                         <br />
                         <span className="text-sm">
-                          {room.level_id.replace('level-', 'Level ')} • Room is marked as inactive - Manual review needed
+                          Level {room.level_id.replace('level', '')} • Room is marked as inactive - Manual review needed
                         </span>
                       </AlertDescription>
                     </Alert>
@@ -470,7 +470,7 @@ export default function KidsRoomHealthCheck() {
             <Card>
               <CardHeader>
                 <CardTitle>
-                  {selectedLevel === 'all' ? 'All Rooms' : `Level ${selectedLevel.replace('level-', '')} Rooms`} ({rooms.length})
+                  {selectedLevel === 'all' ? 'All Rooms' : `Level ${selectedLevel.replace('level', '')} Rooms`} ({rooms.length})
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -493,7 +493,7 @@ export default function KidsRoomHealthCheck() {
                         <div>
                           <div className="font-medium">{room.title_en}</div>
                           <div className="text-sm text-muted-foreground">
-                            {selectedLevel === 'all' && `${room.level_id.replace('level-', 'L')} • `}
+                            {selectedLevel === 'all' && `L${room.level_id.replace('level', '')} • `}
                             {room.id} • {room.entry_count} entries
                           </div>
                         </div>
