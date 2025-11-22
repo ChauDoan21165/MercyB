@@ -57,6 +57,18 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        kids: {
+          rainbow: {
+            red: "0 100% 60%",
+            orange: "30 100% 55%",
+            yellow: "60 100% 50%",
+            green: "120 60% 50%",
+            cyan: "180 80% 50%",
+            blue: "240 80% 60%",
+            purple: "280 70% 60%",
+            pink: "330 80% 60%",
+          },
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

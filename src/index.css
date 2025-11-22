@@ -107,6 +107,12 @@ All colors MUST be HSL.
     --admin-accent: 122 39% 49%;
     --gradient-admin: linear-gradient(135deg, hsl(340 82% 52%), hsl(291 64% 42%), hsl(231 48% 48%), hsl(207 90% 54%), hsl(184 91% 41%), hsl(174 62% 47%), hsl(122 39% 49%), hsl(88 50% 53%), hsl(45 100% 51%), hsl(36 100% 50%));
     
+    /* Kids Rainbow Theme - Full spectrum for children */
+    --kids-rainbow-bg: linear-gradient(135deg, hsl(0 100% 95%), hsl(30 100% 95%), hsl(60 100% 95%), hsl(120 100% 95%), hsl(200 100% 95%), hsl(280 100% 95%), hsl(330 100% 95%));
+    --kids-rainbow-gradient: linear-gradient(90deg, hsl(0 100% 60%), hsl(30 100% 55%), hsl(60 100% 50%), hsl(120 60% 50%), hsl(180 80% 50%), hsl(240 80% 60%), hsl(280 70% 60%), hsl(330 80% 60%));
+    --kids-card-shadow: 0 8px 32px -8px hsl(280 70% 60% / 0.3);
+    --kids-hover-glow: 0 0 40px hsl(280 70% 60% / 0.4);
+    
     /* Emotion-based colors for keyword highlighting */
     --emotion-joy: 45 100% 70%;           /* warm yellow - joy, niềm vui, happiness */
     --emotion-warmth: 25 90% 75%;          /* soft peachy orange - warmth, ấm, softness, mềm mại */

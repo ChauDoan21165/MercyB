@@ -60,7 +60,7 @@ const KidsLevel1 = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 dark:from-green-950 dark:via-emerald-950 dark:to-teal-950">
+    <div className="min-h-screen bg-gradient-to-br from-red-50 via-yellow-50 via-green-50 via-cyan-50 via-blue-50 to-purple-50 dark:from-red-950 dark:via-yellow-950 dark:via-green-950 dark:via-cyan-950 dark:via-blue-950 dark:to-purple-950">
       <ColorfulMercyBladeHeader
         subtitle="Kids Level 1 - Ages 4-7"
         showBackButton={true}
@@ -69,7 +69,7 @@ const KidsLevel1 = () => {
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Hero Header with Gradient */}
         <div className="mb-12 space-y-6 text-center">
-          <div className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-3xl shadow-lg animate-fade-in">
+          <div className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-cyan-500 via-blue-500 to-purple-500 text-white px-8 py-4 rounded-3xl shadow-lg animate-fade-in">
             <Baby className="h-10 w-10 animate-bounce" />
             <div className="text-left">
               <h1 className="text-4xl font-bold tracking-tight">
@@ -96,18 +96,18 @@ const KidsLevel1 = () => {
             return (
               <Card
                 key={room.id}
-                className="relative p-4 transition-all duration-500 cursor-pointer group hover:scale-110 hover:shadow-2xl hover:z-10 border-2 border-green-200/50 dark:border-green-800/50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm overflow-hidden"
+                className="relative p-4 transition-all duration-500 cursor-pointer group hover:scale-110 hover:shadow-2xl hover:z-10 border-2 border-purple-200/50 dark:border-purple-800/50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm overflow-hidden"
                 onClick={() => navigate(`/kids-chat/${room.id}`)}
                 style={{
                   animationDelay: `${index * 0.05}s`
                 }}
               >
                 {/* Animated Background Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-green-400/0 via-emerald-400/0 to-teal-400/0 group-hover:from-green-400/20 group-hover:via-emerald-400/20 group-hover:to-teal-400/20 transition-all duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-red-400/0 via-yellow-400/0 via-green-400/0 via-cyan-400/0 via-blue-400/0 to-purple-400/0 group-hover:from-red-400/10 group-hover:via-yellow-400/10 group-hover:via-green-400/10 group-hover:via-cyan-400/10 group-hover:via-blue-400/10 group-hover:to-purple-400/10 transition-all duration-500" />
                 
                 {/* Status Badge */}
                 <div className="absolute top-2 right-2 z-10">
-                  <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-full p-1 shadow-lg animate-pulse">
+                  <div className="bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 to-blue-500 rounded-full p-1 shadow-lg animate-pulse">
                     <CheckCircle2 className="w-3 h-3 text-white" />
                   </div>
                 </div>
@@ -116,16 +116,16 @@ const KidsLevel1 = () => {
                   {/* Icon with Animated Circle */}
                   <div className="flex justify-center">
                     <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
-                      <div className="relative bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900 dark:to-emerald-900 p-3 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                        <IconComponent className="w-8 h-8 text-green-600 dark:text-green-400" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-red-400 via-yellow-400 via-green-400 to-blue-400 rounded-full blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
+                      <div className="relative bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900 dark:to-pink-900 p-3 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                        <IconComponent className="w-8 h-8 text-purple-600 dark:text-purple-400" />
                       </div>
                     </div>
                   </div>
                   
                   {/* Room Names */}
                   <div className="space-y-1">
-                    <p className="text-xs font-bold leading-tight line-clamp-2 text-center text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                    <p className="text-xs font-bold leading-tight line-clamp-2 text-center text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                       {room.title_en}
                     </p>
                     <p className="text-[10px] leading-tight line-clamp-2 text-center text-gray-600 dark:text-gray-400">
@@ -145,7 +145,7 @@ const KidsLevel1 = () => {
 
         {/* Decorative Elements */}
         <div className="fixed bottom-8 right-8 opacity-20 pointer-events-none">
-          <Baby className="w-32 h-32 text-green-500 animate-pulse" />
+          <Baby className="w-32 h-32 text-purple-500 animate-pulse" />
         </div>
       </div>
     </div>
