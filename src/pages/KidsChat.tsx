@@ -25,6 +25,8 @@ interface KidsEntry {
   id: string;
   content_en: string;
   content_vi: string;
+  keywords_en: string[];
+  keywords_vi: string[];
   audio_url: string | null;
   display_order: number;
 }
@@ -139,6 +141,10 @@ async function loadEntriesFromJson(roomId: string, levelId: string): Promise<Kid
         contentVi = entry.content.vi || "";
       }
 
+      // Extract keywords
+      const keywordsEn = Array.isArray(entry.keywords_en) ? entry.keywords_en : [];
+      const keywordsVi = Array.isArray(entry.keywords_vi) ? entry.keywords_vi : [];
+
       let audioUrl = entry.audio || entry.audio_url || null;
       if (audioUrl && !String(audioUrl).startsWith("http")) {
         let p = String(audioUrl).trim().replace(/^\/+/, "");
@@ -153,6 +159,8 @@ async function loadEntriesFromJson(roomId: string, levelId: string): Promise<Kid
         id: `${roomId}-${index + 1}`,
         content_en: contentEn,
         content_vi: contentVi,
+        keywords_en: keywordsEn,
+        keywords_vi: keywordsVi,
         audio_url: audioUrl,
         display_order: index + 1,
       };
@@ -443,9 +451,13 @@ const KidsChat = () => {
             <div className="flex flex-wrap gap-2 justify-center">
               {entries.map((entry, index) => {
                 const isClicked = clickedIndex === index;
-                // Extract first 5 words for button label
-                const labelEn = entry.content_en.split(' ').slice(0, 5).join(' ');
-                const labelVi = entry.content_vi.split(' ').slice(0, 5).join(' ');
+                // Show keywords instead of essay snippets
+                const labelEn = entry.keywords_en && entry.keywords_en.length > 0 
+                  ? entry.keywords_en.join(', ')
+                  : entry.content_en.split(' ').slice(0, 3).join(' ');
+                const labelVi = entry.keywords_vi && entry.keywords_vi.length > 0
+                  ? entry.keywords_vi.join(', ')
+                  : entry.content_vi.split(' ').slice(0, 3).join(' ');
                 
                 return (
                   <Button
@@ -475,7 +487,7 @@ const KidsChat = () => {
                         title="Copy audio filename"
                       />
                     )}
-                    {index + 1}. {labelEn}... / {labelVi}...
+                    {index + 1}. {labelEn} / {labelVi}
                   </Button>
                 );
               })}
