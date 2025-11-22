@@ -141,7 +141,12 @@ async function loadEntriesFromJson(roomId: string, levelId: string): Promise<Kid
 
       let audioUrl = entry.audio || entry.audio_url || null;
       if (audioUrl && !String(audioUrl).startsWith("http")) {
-        audioUrl = `/${audioUrl}`;
+        let p = String(audioUrl).trim().replace(/^\/+/, "");
+        if (p.startsWith("audio/")) {
+          audioUrl = `/${p}`;
+        } else {
+          audioUrl = `/audio/${p}`;
+        }
       }
 
       return {
