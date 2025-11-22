@@ -60,6 +60,7 @@ import KidsLevel2 from "./pages/KidsLevel2";
 import KidsLevel3 from "./pages/KidsLevel3";
 import KidsChat from "./pages/KidsChat";
 import KidsRoomValidation from "./pages/KidsRoomValidation";
+import KidsRoomHealthCheck from "./pages/KidsRoomHealthCheck";
 import RedeemGiftCode from "./pages/RedeemGiftCode";
 import AdminGiftCodes from "./pages/AdminGiftCodes";
 import AdminSpecification from "./pages/AdminSpecification";
@@ -158,6 +159,7 @@ const App = () => {
           <Route path="/admin/system-metrics" element={<AdminSystemMetrics />} />
           <Route path="/admin/gift-codes" element={<AdminGiftCodes />} />
           <Route path="/admin/specification" element={<AdminSpecification />} />
+          <Route path="/admin/kids-room-health" element={<KidsRoomHealthCheck />} />
           <Route path="/redeem-gift" element={<RedeemGiftCode />} />
           <Route path="/audio-upload" element={<AudioUpload />} />
           <Route path="/kids-validation" element={<KidsRoomValidation />} />
