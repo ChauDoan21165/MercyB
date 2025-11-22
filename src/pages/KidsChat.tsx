@@ -106,13 +106,21 @@ const KIDS_ROOM_JSON_MAP: Record<string, string> = {
   "environment-nature": "environment_nature_kids_l2.json",
   "adventure-discovery": "adventure_discovery_words_kids_l2.json",
   "story-builder": "story_builder_kids_l2.json",
+
+  // Level 3 rooms (JSON-spec based)
   "creative-writing": "creative_writing_basics_kids_l3\".json",
+  "conversation-starters": "conversation_starters_kids_l3.json",
 };
 
 async function loadEntriesFromJson(roomId: string, levelId: string): Promise<KidsEntry[]> {
   const filenameFromMap = KIDS_ROOM_JSON_MAP[roomId];
 
-  const fallbackFilename = `${roomId.replace(/-/g, "_")}_${levelId === "level1" ? "kids_l1" : levelId === "level2" ? "kids_l2" : "kids"}.json`;
+  const suffix =
+    levelId === "level1" ? "kids_l1" :
+    levelId === "level2" ? "kids_l2" :
+    levelId === "level3" ? "kids_l3" : "kids";
+
+  const fallbackFilename = `${roomId.replace(/-/g, "_")}_${suffix}.json`;
 
   const filename = filenameFromMap || fallbackFilename;
 
@@ -266,7 +274,17 @@ const KidsChat = () => {
       if (roomError) throw roomError;
       setRoom(roomData);
 
-      // Fetch entries from database first
+      // For Kids Level 3 rooms, always load from JSON spec (includes audio, ALL entry, etc.)
+      if (roomData.level_id === 'level3' && roomId) {
+        const jsonEntries = await loadEntriesFromJson(roomId, roomData.level_id);
+        setEntries(jsonEntries);
+        if (jsonEntries.length > 0) {
+          setSelectedEntry(jsonEntries[0]);
+        }
+        return;
+      }
+
+      // Fetch entries from database first for other levels
       const { data: entriesData, error: entriesError } = await supabase
         .from('kids_entries')
         .select('*')
@@ -277,17 +295,6 @@ const KidsChat = () => {
       if (entriesError) throw entriesError;
 
       let finalEntries: KidsEntry[] = entriesData || [];
-
-      // For creative-writing, if database entries have no audio, fall back to JSON version with audio
-      if (roomId === 'creative-writing' && roomData?.level_id) {
-        const hasAnyAudio = finalEntries.some((e) => !!e.audio_url);
-        if (!hasAnyAudio) {
-          const jsonEntries = await loadEntriesFromJson(roomId, roomData.level_id);
-          if (jsonEntries.length > 0) {
-            finalEntries = jsonEntries;
-          }
-        }
-      }
 
       // If database has no entries at all, fall back to static JSON file for this kids room
       if ((!entriesData || entriesData.length === 0) && roomId && roomData?.level_id) {
