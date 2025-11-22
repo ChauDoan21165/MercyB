@@ -55,6 +55,7 @@ import AdminSystemMetrics from "./pages/AdminSystemMetrics";
 import KidsLevel1 from "./pages/KidsLevel1";
 import KidsLevel2 from "./pages/KidsLevel2";
 import KidsLevel3 from "./pages/KidsLevel3";
+import KidsChat from "./pages/KidsChat";
 import KidsRoomValidation from "./pages/KidsRoomValidation";
 
 const queryClient = new QueryClient();
@@ -114,6 +115,7 @@ const App = () => {
           <Route path="/kids-level-1" element={<KidsLevel1 />} />
           <Route path="/kids-level-2" element={<KidsLevel2 />} />
           <Route path="/kids-level-3" element={<KidsLevel3 />} />
+          <Route path="/kids-chat/:roomId" element={<KidsChat />} />
           <Route path="/sexuality-culture" element={<SexualityCultureRoom />} />
           <Route path="/finance-calm" element={<FinanceCalmRoom />} />
           <Route path="/all-rooms" element={<AllRooms />} />

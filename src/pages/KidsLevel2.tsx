@@ -95,7 +95,7 @@ const KidsLevel2 = () => {
                 <Card
                   key={room.id}
                   className="relative p-3 transition-all duration-300 cursor-pointer group hover:scale-110 hover:shadow-hover hover:z-10 border-secondary/30 bg-white"
-                  onClick={() => navigate(`/chat/${room.id}`)}
+                  onClick={() => navigate(`/kids-chat/${room.id}`)}
                 >
                   {/* Status Badge */}
                   <div className="absolute top-1 right-1 z-10">
