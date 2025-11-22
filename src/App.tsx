@@ -112,9 +112,9 @@ const App = () => {
           <Route path="/rooms-vip4" element={<RoomGridVIP4 />} />
           <Route path="/rooms-vip5" element={<RoomGridVIP5 />} />
           <Route path="/vip6" element={<RoomGridVIP6 />} />
-          <Route path="/kids-level-1" element={<KidsLevel1 />} />
-          <Route path="/kids-level-2" element={<KidsLevel2 />} />
-          <Route path="/kids-level-3" element={<KidsLevel3 />} />
+          <Route path="/kids-level1" element={<KidsLevel1 />} />
+          <Route path="/kids-level2" element={<KidsLevel2 />} />
+          <Route path="/kids-level3" element={<KidsLevel3 />} />
           <Route path="/kids-chat/:roomId" element={<KidsChat />} />
           <Route path="/sexuality-culture" element={<SexualityCultureRoom />} />
           <Route path="/finance-calm" element={<FinanceCalmRoom />} />
