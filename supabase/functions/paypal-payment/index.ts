@@ -1,5 +1,7 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { validateInput, paymentActionSchema } from "../shared/validation.ts";
+import { checkRateLimit, checkFeatureFlag } from "../shared/rate-limit.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -22,7 +24,10 @@ serve(async (req) => {
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
     );
 
-    const { action, orderId, tierId } = await req.json();
+    // Validate input
+    const body = await req.json();
+    const validatedData = validateInput(paymentActionSchema, body);
+    const { action, tierId, orderId } = validatedData;
 
     // Public endpoint to retrieve client ID for SDK loading (no auth required)
     if (action === 'get-client-id') {
@@ -51,18 +56,21 @@ serve(async (req) => {
       );
     }
 
-    // Rate limiting: Check for recent orders
-    const { data: recentOrders } = await supabase
-      .from('payment_proof_submissions')
-      .select('id')
-      .eq('user_id', user.id)
-      .gte('created_at', new Date(Date.now() - 3600000).toISOString())
-      .limit(5);
-
-    if (recentOrders && recentOrders.length >= 5) {
+    // Check feature flag
+    const isPayPalEnabled = await checkFeatureFlag(supabase, "paypal_payments_enabled");
+    if (!isPayPalEnabled) {
       return new Response(
-        JSON.stringify({ error: 'Rate limit exceeded. Please try again later.' }),
-        { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        JSON.stringify({ error: "PayPal payments are temporarily disabled" }),
+        { status: 503, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    // Rate limiting check for payments
+    const rateLimitCheck = await checkRateLimit(supabase, user.id, "paypal-payment");
+    if (!rateLimitCheck.allowed) {
+      return new Response(
+        JSON.stringify({ error: rateLimitCheck.error }),
+        { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 

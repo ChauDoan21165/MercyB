@@ -175,6 +175,33 @@ export type Database = {
           },
         ]
       }
+      feature_flags: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          flag_key: string
+          id: string
+          is_enabled: boolean | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          flag_key: string
+          id?: string
+          is_enabled?: boolean | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          flag_key?: string
+          id?: string
+          is_enabled?: boolean | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       feedback: {
         Row: {
           category: string | null
@@ -813,6 +840,36 @@ export type Database = {
           is_active?: boolean
           max_redemptions?: number
           updated_at?: string
+        }
+        Relationships: []
+      }
+      rate_limit_config: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          endpoint: string
+          id: string
+          max_requests: number
+          updated_at: string | null
+          window_seconds: number
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          endpoint: string
+          id?: string
+          max_requests: number
+          updated_at?: string | null
+          window_seconds: number
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          endpoint?: string
+          id?: string
+          max_requests?: number
+          updated_at?: string | null
+          window_seconds?: number
         }
         Relationships: []
       }
@@ -1660,6 +1717,10 @@ export type Database = {
           _user_id: string
         }
         Returns: undefined
+      }
+      check_endpoint_rate_limit: {
+        Args: { endpoint_name: string; user_uuid: string }
+        Returns: boolean
       }
       check_rate_limit: {
         Args: {

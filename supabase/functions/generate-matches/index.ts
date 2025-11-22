@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { checkRateLimit, checkFeatureFlag } from "../shared/rate-limit.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -33,6 +34,24 @@ serve(async (req) => {
         JSON.stringify({ error: 'Invalid authentication' }),
         { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       )
+    }
+
+    // Check feature flag
+    const isMatchmakingEnabled = await checkFeatureFlag(supabaseClient, "matchmaking_enabled");
+    if (!isMatchmakingEnabled) {
+      return new Response(
+        JSON.stringify({ error: "Matchmaking is temporarily disabled" }),
+        { status: 503, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    // Rate limiting check
+    const rateLimitCheck = await checkRateLimit(supabaseClient, user.id, "generate-matches");
+    if (!rateLimitCheck.allowed) {
+      return new Response(
+        JSON.stringify({ error: rateLimitCheck.error }),
+        { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
     }
 
     // Get authenticated user's ID
@@ -158,6 +177,8 @@ Return a JSON object with:
     );
 
     await Promise.all(insertPromises);
+
+    console.log(`Generated ${matches.length} matches for user ${userId}`);
 
     return new Response(
       JSON.stringify({ 
