@@ -516,14 +516,23 @@ const ChatHub = () => {
     if (chatType === "feedback") {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
-        await supabase.from('feedback').insert({
+        const { error } = await supabase.from('feedback').insert({
           user_id: user.id,
-          room_id: roomId || '',
           message: input,
           status: 'new',
           priority: 'normal'
         });
-        callback();
+        
+        if (error) {
+          console.error('Feedback submission error:', error);
+          toast({
+            title: "Error / Lỗi",
+            description: "Failed to submit feedback / Không thể gửi phản hồi",
+            variant: "destructive"
+          });
+        } else {
+          callback();
+        }
       }
     }
   };
