@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { ArrowLeft, RefreshCw } from "lucide-react";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { useToast } from "@/hooks/use-toast";
@@ -148,6 +149,10 @@ const KidsChat = () => {
   const [loading, setLoading] = useState(true);
   const [selectedEntry, setSelectedEntry] = useState<KidsEntry | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [clickedIndex, setClickedIndex] = useState<number | null>(null);
+  const [currentAudio, setCurrentAudio] = useState<string | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const endRef = useRef<HTMLDivElement>(null);
 
   const fetchRoomData = async () => {
     try {
@@ -212,6 +217,21 @@ const KidsChat = () => {
     }
   };
 
+  const handleKeywordClick = (entry: KidsEntry, index: number) => {
+    setSelectedEntry(entry);
+    setClickedIndex(index);
+    setIsPlaying(false);
+    setCurrentAudio(entry.audio_url);
+    // Scroll to bottom to show the new content
+    setTimeout(() => {
+      endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }, 100);
+  };
+
+  const handleAudioToggle = () => {
+    setIsPlaying(!isPlaying);
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -233,9 +253,9 @@ const KidsChat = () => {
     <div className="min-h-screen bg-background">
       <ColorfulMercyBladeHeader subtitle={`${room.title_en} / ${room.title_vi}`} />
       
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+      <div className="container mx-auto px-4 py-8 max-w-6xl space-y-6">
         {/* Header with back button */}
-        <div className="mb-6 flex items-center justify-between">
+        <div className="flex items-center justify-between">
           <Button
             variant="outline"
             onClick={handleBack}
@@ -256,73 +276,109 @@ const KidsChat = () => {
         </div>
 
         {/* Room title */}
-        <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold mb-2">{room.title_en}</h1>
-          <p className="text-xl text-muted-foreground">{room.title_vi}</p>
+        <div className="text-center">
+          <h2 className="text-lg font-semibold" style={{
+            background: 'var(--gradient-rainbow)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}>
+            {room.title_en} / {room.title_vi}
+          </h2>
         </div>
 
-        {/* Entries grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-          {entries.map((entry, index) => (
-            <Card
-              key={entry.id}
-              className={`p-4 cursor-pointer transition-all hover:shadow-lg ${
-                selectedEntry?.id === entry.id ? 'ring-2 ring-primary' : ''
-              }`}
-              onClick={() => {
-                setSelectedEntry(entry);
-                setIsPlaying(false);
-              }}
-            >
-              <div className="flex items-center gap-3">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
-                  {index + 1}
-                </div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium line-clamp-2">
-                    {entry.content_en.substring(0, 50)}...
-                  </p>
-                </div>
-              </div>
-            </Card>
-          ))}
-        </div>
-
-        {/* Selected entry content */}
-        {selectedEntry && (
-          <Card className="p-6">
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-sm font-semibold text-muted-foreground mb-2">English:</h3>
-                <p className="text-lg leading-relaxed">{selectedEntry.content_en}</p>
-              </div>
-
-              {selectedEntry.audio_url && (
-                <div className="border-t pt-4">
-                  <AudioPlayer
-                    audioPath={selectedEntry.audio_url}
-                    isPlaying={isPlaying}
-                    onPlayPause={() => setIsPlaying(!isPlaying)}
-                    onEnded={() => setIsPlaying(false)}
-                  />
-                </div>
-              )}
-              
-              <div className="border-t pt-4">
-                <h3 className="text-sm font-semibold text-muted-foreground mb-2">Tiếng Việt:</h3>
-                <p className="text-lg leading-relaxed">{selectedEntry.content_vi}</p>
-              </div>
-            </div>
-          </Card>
-        )}
-
-        {entries.length === 0 && (
-          <Card className="p-8 text-center">
-            <p className="text-lg text-muted-foreground">
-              No content available yet / Chưa có nội dung
+        {/* Welcome Card with Keyword Buttons */}
+        <Card className="p-4 shadow-soft bg-card border border-border">
+          <div className="text-center space-y-3 mb-4">
+            <p className="text-sm text-foreground leading-tight">
+              Welcome! Click on any topic below to start learning. / Chào mừng! Nhấp vào bất kỳ chủ đề nào bên dưới để bắt đầu học.
             </p>
-          </Card>
-        )}
+          </div>
+
+          {entries.length > 0 && (
+            <div className="flex flex-wrap gap-2 justify-center">
+              {entries.map((entry, index) => {
+                const isClicked = clickedIndex === index;
+                // Extract first few words for button label
+                const labelEn = entry.content_en.split(' ').slice(0, 3).join(' ') + '...';
+                const labelVi = entry.content_vi.split(' ').slice(0, 3).join(' ') + '...';
+                
+                return (
+                  <Button
+                    key={entry.id}
+                    variant={isClicked ? "default" : "outline"}
+                    size="sm"
+                    className="text-xs cursor-pointer"
+                    onClick={() => handleKeywordClick(entry, index)}
+                  >
+                    {index + 1}. {labelEn} / {labelVi}
+                  </Button>
+                );
+              })}
+            </div>
+          )}
+
+          {entries.length === 0 && (
+            <div className="text-center py-4">
+              <p className="text-sm text-muted-foreground">
+                No content available yet / Chưa có nội dung
+              </p>
+            </div>
+          )}
+        </Card>
+
+        {/* Main Content Area - VIP3 Style */}
+        <Card className="p-4 shadow-soft bg-card border border-border">
+          <ScrollArea className="h-[560px] pr-4" ref={scrollRef}>
+            {!selectedEntry ? (
+              <div className="flex items-center justify-center text-center py-8 h-full">
+                <div className="space-y-2">
+                  <p className="text-muted-foreground">Click a topic button to start</p>
+                  <p className="text-sm text-muted-foreground">Nhấp vào nút chủ đề để bắt đầu</p>
+                </div>
+              </div>
+            ) : (
+              <div className="w-full">
+                <div className="rounded-2xl px-6 py-4 bg-card border shadow-sm">
+                  {/* English content */}
+                  <div className="mb-3">
+                    <div className="text-sm leading-relaxed">
+                      {selectedEntry.content_en}
+                    </div>
+                  </div>
+
+                  {/* Audio Player - Right below English */}
+                  {selectedEntry.audio_url && (
+                    <div className="my-3">
+                      <p className="text-xs text-muted-foreground italic mb-2 text-center">
+                        💡 Try shadowing: Listen and repeat along with the audio to improve your pronunciation and fluency. / 💡 Hãy thử bóng: Nghe và lặp lại cùng với âm thanh để cải thiện phát âm và sự trôi chảy của bạn.
+                      </p>
+                      <div className="flex items-center gap-2">
+                        <AudioPlayer
+                          audioPath={selectedEntry.audio_url}
+                          isPlaying={currentAudio === selectedEntry.audio_url && isPlaying}
+                          onPlayPause={handleAudioToggle}
+                          onEnded={() => {
+                            setIsPlaying(false);
+                            setCurrentAudio(null);
+                          }}
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Vietnamese content */}
+                  <div className="mt-3 pt-3 border-t border-border/40">
+                    <div className="text-sm leading-relaxed">
+                      {selectedEntry.content_vi}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+            <div ref={endRef} />
+          </ScrollArea>
+        </Card>
       </div>
     </div>
   );
