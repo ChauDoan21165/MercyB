@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Users, DollarSign, Crown, MessageSquare, TrendingUp, LayoutDashboard } from 'lucide-react';
+import { Users, DollarSign, Crown, MessageSquare, TrendingUp, LayoutDashboard, Home, Gift, BookOpen } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface Stats {
@@ -144,20 +144,36 @@ const AdminStats = () => {
       <div className="max-w-7xl mx-auto">
         <div className="mb-8 flex items-center justify-between">
           <div>
-            <h1 className="text-4xl font-bold mb-2">Admin Dashboard</h1>
-            <p className="text-muted-foreground">Mercy Mind Link Statistics</p>
+            <h1 className="text-4xl font-bold mb-2">Admin Statistics</h1>
+            <p className="text-muted-foreground">Mercy Mind Link Analytics & Metrics</p>
           </div>
-          <div className="flex gap-2">
-            <Button onClick={() => navigate('/admin/system-metrics')}>
+          <div className="flex gap-2 flex-wrap">
+            <Button 
+              onClick={() => navigate('/admin')}
+              className="gap-2"
+              style={{ 
+                background: 'var(--gradient-rainbow)',
+                color: 'white'
+              }}
+            >
+              <Home className="h-4 w-4" />
+              Main Dashboard
+            </Button>
+            <Button onClick={() => navigate('/admin/gift-codes')} variant="outline" className="gap-2">
+              <Gift className="h-4 w-4" />
+              Gift Codes
+            </Button>
+            <Button onClick={() => navigate('/admin/specification')} variant="outline" className="gap-2">
+              <BookOpen className="h-4 w-4" />
+              Specification
+            </Button>
+            <Button onClick={() => navigate('/admin/system-metrics')} variant="outline">
               <LayoutDashboard className="h-4 w-4 mr-2" />
               System Metrics
             </Button>
-            <Button onClick={() => navigate('/admin/rooms')}>
+            <Button onClick={() => navigate('/admin/rooms')} variant="outline">
               <LayoutDashboard className="h-4 w-4 mr-2" />
               Room Management
-            </Button>
-            <Button variant="outline" onClick={() => navigate('/')}>
-              ← Back to Home
             </Button>
           </div>
         </div>
