@@ -11,6 +11,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { VIPBenefitsDisplay } from "@/components/VIPBenefitsDisplay";
+import { PricingToggle } from "@/components/PricingToggle";
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const Welcome = () => {
   const [profile, setProfile] = useState<any>(null);
   const [showUsernameSetup, setShowUsernameSetup] = useState(false);
   const [isCheckingProfile, setIsCheckingProfile] = useState(true);
+  const [isYearly, setIsYearly] = useState(false);
 
   useEffect(() => {
     checkUser();
@@ -71,7 +73,8 @@ const Welcome = () => {
   const tiers = [
     {
       name: { vi: "Miễn phí", en: "Free" },
-      price: "$0",
+      priceMonthly: "$0",
+      priceYearly: "$0",
       features: {
         en: ["10 random entries/day", "Achievement badges", "Learning streaks"],
         vi: ["10 mục ngẫu nhiên/ngày", "Huy hiệu thành tựu", "Chuỗi điểm thưởng"]
@@ -80,8 +83,8 @@ const Welcome = () => {
     },
     {
       name: { vi: "VIP1", en: "VIP1" },
-      price: "$3",
-      period: { vi: "/tháng", en: "/month" },
+      priceMonthly: "$3",
+      priceYearly: "$29",
       features: {
         en: ["Users can request one custom topic", "1 full room access/day", "🤖 AI Content"],
         vi: ["Người dùng có thể yêu cầu một chủ đề tùy chỉnh", "Truy cập tự do 1 phòng/ngày", "🤖 Nội dung tạo bởi AI"]
@@ -90,8 +93,8 @@ const Welcome = () => {
     },
     {
       name: { vi: "VIP2", en: "VIP2" },
-      price: "$6",
-      period: { vi: "/tháng", en: "/month" },
+      priceMonthly: "$6",
+      priceYearly: "$58",
       features: {
         en: ["Users can request two custom topics", "2 full rooms access/day", "🤖 AI Content"],
         vi: ["Người dùng có thể yêu cầu hai chủ đề tùy chỉnh", "Truy cập tự do 2 phòng/ngày", "🤖 Nội dung tạo bởi AI"]
@@ -99,8 +102,8 @@ const Welcome = () => {
     },
     {
       name: { vi: "VIP3", en: "VIP3" },
-      price: "$15",
-      period: { vi: "/tháng", en: "/month" },
+      priceMonthly: "$15",
+      priceYearly: "$144",
       features: {
         en: ["Users can request three custom topics", "3 rooms access/day", "AI Matchmaking", "Voice chat", "🤖 AI Content"],
         vi: ["Người dùng có thể yêu cầu ba chủ đề tùy chỉnh", "Truy cập 3 phòng/ngày", "Ghép đôi AI", "Chat bằng giọng nói", "🤖 Nội dung tạo bởi AI"]
@@ -336,6 +339,8 @@ const Welcome = () => {
             </p>
           </div>
 
+          <PricingToggle isYearly={isYearly} onToggle={setIsYearly} />
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {tiers.map((tier, index) => (
               <Card
@@ -354,14 +359,19 @@ const Welcome = () => {
 
                   <div className="flex items-baseline gap-1">
                     <span className="text-4xl font-bold text-primary">
-                      {tier.price}
+                      {isYearly ? tier.priceYearly : tier.priceMonthly}
                     </span>
-                    {tier.period && (
+                    {tier.priceMonthly !== "$0" && (
                       <span className="text-muted-foreground">
-                        {tier.period.vi}
+                        {isYearly ? "/year" : "/month"}
                       </span>
                     )}
                   </div>
+                  {isYearly && tier.priceMonthly !== "$0" && (
+                    <p className="text-xs text-muted-foreground">
+                      Save 20% vs monthly / Tiết kiệm 20%
+                    </p>
+                  )}
 
                   <div className="space-y-3 pt-4 flex-grow">
                     {tier.features.en.map((feature, idx) => (
