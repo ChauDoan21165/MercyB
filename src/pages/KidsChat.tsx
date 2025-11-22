@@ -8,6 +8,8 @@ import { ArrowLeft, RefreshCw } from "lucide-react";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { useToast } from "@/hooks/use-toast";
 import { AudioPlayer } from "@/components/AudioPlayer";
+import { HighlightedContent } from "@/components/HighlightedContent";
+import { MessageActions } from "@/components/MessageActions";
 
 interface KidsRoom {
   id: string;
@@ -340,14 +342,14 @@ const KidsChat = () => {
             ) : (
               <div className="w-full">
                 <div className="rounded-2xl px-6 py-4 bg-card border shadow-sm">
-                  {/* English content */}
+                  {/* English content with highlighting */}
                   <div className="mb-3">
                     <div className="text-sm leading-relaxed">
-                      {selectedEntry.content_en}
+                      <HighlightedContent content={selectedEntry.content_en} />
                     </div>
                   </div>
 
-                  {/* Audio Player - Right below English */}
+                  {/* Shadowing reminder and Audio Player - Right below English */}
                   {selectedEntry.audio_url && (
                     <div className="my-3">
                       <p className="text-xs text-muted-foreground italic mb-2 text-center">
@@ -367,10 +369,17 @@ const KidsChat = () => {
                     </div>
                   )}
 
-                  {/* Vietnamese content */}
+                  {/* Vietnamese content with highlighting */}
                   <div className="mt-3 pt-3 border-t border-border/40">
                     <div className="text-sm leading-relaxed">
-                      {selectedEntry.content_vi}
+                      <HighlightedContent content={selectedEntry.content_vi} />
+                    </div>
+                    <div className="mt-3">
+                      <MessageActions 
+                        text={selectedEntry.content_en} 
+                        viText={selectedEntry.content_vi} 
+                        roomId={roomId || ""} 
+                      />
                     </div>
                   </div>
                 </div>
