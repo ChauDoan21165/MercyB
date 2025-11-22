@@ -10,6 +10,7 @@ import {
   Home,
   Code,
   Activity,
+  Palette,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 
@@ -39,6 +40,7 @@ const adminItems = [
   { title: "Moderation", url: "/admin/moderation", icon: Shield },
   { title: "Reports", url: "/admin/reports", icon: FileText },
   { title: "VIP Rooms", url: "/admin/vip-rooms", icon: LayoutDashboard },
+  { title: "Design Audit", url: "/admin/design-audit", icon: Palette },
 ];
 
 export function AdminSidebar() {

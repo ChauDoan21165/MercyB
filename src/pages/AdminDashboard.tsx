@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LayoutDashboard, Users, TrendingUp, MessageSquare, DollarSign, Music, Shield, FileText, TestTube, Code } from "lucide-react";
+import { LayoutDashboard, Users, TrendingUp, MessageSquare, DollarSign, Music, Shield, FileText, TestTube, Code, Palette } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 import { AdminBreadcrumb } from "@/components/admin/AdminBreadcrumb";
@@ -415,10 +415,32 @@ const AdminDashboard = () => {
               </p>
             </CardContent>
           </Card>
+
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer border-2" style={{ borderColor: '#FF6B9D' }} onClick={() => navigate("/admin/design-audit")}>
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="p-3 bg-primary/10 rounded-lg">
+                  <Palette className="h-6 w-6" style={{ color: '#FF6B9D' }} />
+                </div>
+                <div>
+                  <CardTitle style={{ color: '#FF6B9D' }}>Design Audit</CardTitle>
+                  <CardDescription>Review design issues</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Check color, spacing, and layout problems to review later.
+              </p>
+              <Badge variant="outline" className="mt-2" style={{ borderColor: '#FF6B9D', color: '#FF6B9D' }}>For Review</Badge>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </AdminLayout>
   );
 };
+
+export default AdminDashboard;
 
 export default AdminDashboard;

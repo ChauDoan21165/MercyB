@@ -26,6 +26,7 @@ import VIPRequestForm from "./pages/VIPRequestForm";
 import VIPRequests from "./pages/VIPRequests";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminVIPRooms from "./pages/AdminVIPRooms";
+import AdminDesignAudit from "./pages/AdminDesignAudit";
 import MatchmakingHub from "./pages/MatchmakingHub";
 import Auth from "./pages/Auth";
 import PaymentTest from "./pages/PaymentTest";
@@ -126,6 +127,7 @@ const App = () => {
           <Route path="/vip-requests" element={<VIPRequests />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/vip-rooms" element={<AdminVIPRooms />} />
+          <Route path="/admin/design-audit" element={<AdminDesignAudit />} />
           <Route path="/matchmaking" element={<MatchmakingHub />} />
           <Route path="/subscribe" element={<PaymentTest />} />
           <Route path="/payment-test" element={<PaymentTest />} /> {/* Legacy redirect */}
