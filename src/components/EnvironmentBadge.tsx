@@ -22,10 +22,10 @@ export function EnvironmentBadge() {
 
   if (isStaging) {
     return (
-      <div className="fixed top-4 right-4 z-50">
+      <div className="fixed bottom-6 right-4 z-50">
         <Badge 
           variant="default" 
-          className="text-lg px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-black"
+          className="text-xs px-2 py-1 bg-yellow-500 hover:bg-yellow-600 text-black"
         >
           STAGING
         </Badge>
