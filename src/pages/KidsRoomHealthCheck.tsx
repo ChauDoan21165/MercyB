@@ -94,8 +94,23 @@ export default function KidsRoomHealthCheck() {
       });
     } catch (error: any) {
       toast({
-        title: "Error checking rooms",
-        description: error.message,
+        title: "❌ Error checking rooms",
+        description: (
+          <div className="space-y-2">
+            <p className="text-sm font-mono bg-destructive/10 p-2 rounded">{error.message}</p>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => {
+                navigator.clipboard.writeText(error.message);
+                toast({ title: "✓ Error copied to clipboard" });
+              }}
+              className="h-7 text-xs"
+            >
+              Copy error message
+            </Button>
+          </div>
+        ),
         variant: "destructive"
       });
     } finally {
@@ -170,8 +185,23 @@ export default function KidsRoomHealthCheck() {
       await checkRooms();
     } catch (error: any) {
       toast({
-        title: "Error fixing room",
-        description: error.message,
+        title: "❌ Error fixing room",
+        description: (
+          <div className="space-y-2">
+            <p className="text-sm font-mono bg-destructive/10 p-2 rounded">{error.message}</p>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => {
+                navigator.clipboard.writeText(error.message);
+                toast({ title: "✓ Error copied to clipboard" });
+              }}
+              className="h-7 text-xs"
+            >
+              Copy error message
+            </Button>
+          </div>
+        ),
         variant: "destructive"
       });
     } finally {
