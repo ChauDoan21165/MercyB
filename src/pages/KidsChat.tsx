@@ -450,13 +450,16 @@ const KidsChat = () => {
             <div className="flex flex-wrap gap-2 justify-center">
               {entries.map((entry, index) => {
                 const isClicked = clickedIndex === index;
+                // Extract first 5 words for button label
+                const labelEn = entry.content_en.split(' ').slice(0, 5).join(' ');
+                const labelVi = entry.content_vi.split(' ').slice(0, 5).join(' ');
                 
                 return (
                   <Button
                     key={entry.id}
                     variant={isClicked ? "default" : "outline"}
                     size="sm"
-                    className="text-xs cursor-pointer whitespace-normal text-left h-auto min-h-[2rem] px-3 py-2"
+                    className="text-xs cursor-pointer"
                     onClick={() => handleKeywordClick(entry, index)}
                   >
                     {isAdmin && (
@@ -479,7 +482,7 @@ const KidsChat = () => {
                         title="Copy audio filename"
                       />
                     )}
-                    {index + 1}. {entry.content_en} / {entry.content_vi}
+                    {index + 1}. {labelEn}... / {labelVi}...
                   </Button>
                 );
               })}
