@@ -530,7 +530,7 @@ const KidsChat = () => {
                       </div>
                     )}
 
-                    {/* Copy Buttons */}
+                    {/* Copy Buttons - Always show both if content exists */}
                     <div className="flex gap-2 flex-wrap pt-2">
                       {room.description_en && (
                         <Button
