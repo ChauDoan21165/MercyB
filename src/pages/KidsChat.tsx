@@ -11,6 +11,7 @@ import { AudioPlayer } from "@/components/AudioPlayer";
 import { HighlightedContent } from "@/components/HighlightedContent";
 import { MessageActions } from "@/components/MessageActions";
 import { useUserAccess } from "@/hooks/useUserAccess";
+import { User } from "lucide-react";
 
 interface KidsRoom {
   id: string;
@@ -25,6 +26,20 @@ interface KidsEntry {
   content_vi: string;
   audio_url: string | null;
   display_order: number;
+}
+
+interface UserProfile {
+  username: string | null;
+  full_name: string | null;
+}
+
+interface KidsSubscription {
+  level_id: string;
+  kids_levels: {
+    name_en: string;
+    name_vi: string;
+    color_theme: string;
+  };
 }
 
 const KIDS_ROOM_JSON_MAP: Record<string, string> = {
@@ -157,6 +172,59 @@ const KidsChat = () => {
   const [currentAudio, setCurrentAudio] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
+  const [userSubscription, setUserSubscription] = useState<KidsSubscription | null>(null);
+  const [roomsExplored, setRoomsExplored] = useState<number>(0);
+
+  const fetchUserData = async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      // Fetch user profile
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('username, full_name')
+        .eq('id', user.id)
+        .single();
+
+      if (profile) {
+        setUserProfile(profile);
+      }
+
+      // Fetch user subscription with level info
+      const { data: subscription } = await supabase
+        .from('kids_subscriptions')
+        .select(`
+          level_id,
+          kids_levels (
+            name_en,
+            name_vi,
+            color_theme
+          )
+        `)
+        .eq('user_id', user.id)
+        .eq('status', 'active')
+        .single();
+
+      if (subscription) {
+        setUserSubscription(subscription as any);
+      }
+
+      // Count unique rooms explored
+      const { data: analytics } = await supabase
+        .from('room_usage_analytics')
+        .select('room_id')
+        .eq('user_id', user.id);
+
+      if (analytics) {
+        const uniqueRooms = new Set(analytics.map(a => a.room_id));
+        setRoomsExplored(uniqueRooms.size);
+      }
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
 
   const fetchRoomData = async () => {
     try {
@@ -206,6 +274,10 @@ const KidsChat = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
 
   useEffect(() => {
     if (roomId) {
@@ -282,6 +354,33 @@ const KidsChat = () => {
       </div>
       
       <div className="container mx-auto px-4 py-3 max-w-6xl space-y-3">
+        {/* User Profile Info */}
+        {userProfile && (
+          <Card className="p-3 bg-card border border-border">
+            <div className="flex items-center justify-between flex-wrap gap-2">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                  <User className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">
+                    {userProfile.full_name || userProfile.username || 'Student'}
+                  </p>
+                  {userSubscription && (
+                    <p className="text-xs text-muted-foreground">
+                      {userSubscription.kids_levels.name_en} / {userSubscription.kids_levels.name_vi}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="text-sm font-medium text-foreground">{roomsExplored} rooms explored</p>
+                <p className="text-xs text-muted-foreground">{roomsExplored} phòng đã khám phá</p>
+              </div>
+            </div>
+          </Card>
+        )}
+
         {/* Room title */}
         <div className="text-center">
           <div className="flex items-center justify-center gap-2">
