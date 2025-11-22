@@ -143,6 +143,33 @@ export type Database = {
         }
         Relationships: []
       }
+      admin_notification_settings: {
+        Row: {
+          admin_user_id: string
+          alert_tone: string | null
+          created_at: string | null
+          id: string
+          sound_enabled: boolean | null
+          updated_at: string | null
+        }
+        Insert: {
+          admin_user_id: string
+          alert_tone?: string | null
+          created_at?: string | null
+          id?: string
+          sound_enabled?: boolean | null
+          updated_at?: string | null
+        }
+        Update: {
+          admin_user_id?: string
+          alert_tone?: string | null
+          created_at?: string | null
+          id?: string
+          sound_enabled?: boolean | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       admin_notifications: {
         Row: {
           admin_user_id: string
