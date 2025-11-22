@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import { AdminFloatingButton } from "@/components/AdminFloatingButton";
+import { ZoomControl } from "@/components/ZoomControl";
 import Welcome from "./pages/Welcome";
 import Homepage from "./pages/Homepage";
 import Tiers from "./pages/Tiers";
@@ -96,6 +97,7 @@ const App = () => {
           <Sonner />
           <BrowserRouter>
         <AdminFloatingButton />
+        <ZoomControl />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/tiers" element={<Tiers />} />

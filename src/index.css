@@ -213,6 +213,11 @@ All colors MUST be HSL.
     --vip5-accent: 160 84% 55%;
     --vip5-gold: 45 90% 60%;
   }
+  
+  /* Smooth zoom transitions */
+  html {
+    transition: font-size 0.3s ease-in-out;
+  }
 }
 
 @layer base {
