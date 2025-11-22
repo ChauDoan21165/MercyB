@@ -146,12 +146,21 @@ async function loadEntriesFromJson(roomId: string, levelId: string): Promise<Kid
       const keywordsVi = Array.isArray(entry.keywords_vi) ? entry.keywords_vi : [];
 
       let audioUrl = entry.audio || entry.audio_url || null;
-      if (audioUrl && !String(audioUrl).startsWith("http")) {
-        let p = String(audioUrl).trim().replace(/^\/+/, "");
-        if (p.startsWith("audio/")) {
-          audioUrl = `/${p}`;
-        } else {
-          audioUrl = `/audio/${p}`;
+      
+      // Handle multiple audio files (space-separated) for playlist
+      if (audioUrl && typeof audioUrl === 'string') {
+        const audioFiles = audioUrl.trim().split(/\s+/);
+        if (audioFiles.length > 1) {
+          // Multiple files - create playlist array
+          audioUrl = audioFiles.map(file => {
+            if (file.startsWith("http")) return file;
+            let p = file.trim().replace(/^\/+/, "");
+            return p.startsWith("audio/") ? `/${p}` : `/audio/${p}`;
+          }).join(" ");
+        } else if (!audioUrl.startsWith("http")) {
+          // Single file
+          let p = String(audioUrl).trim().replace(/^\/+/, "");
+          audioUrl = p.startsWith("audio/") ? `/${p}` : `/audio/${p}`;
         }
       }
 
@@ -531,7 +540,8 @@ const KidsChat = () => {
                       </p>
                       <div className="flex items-center gap-2">
                         <AudioPlayer
-                          audioPath={selectedEntry.audio_url}
+                          audioPath={selectedEntry.audio_url.includes(' ') ? selectedEntry.audio_url.split(/\s+/)[0] : selectedEntry.audio_url}
+                          playlist={selectedEntry.audio_url.includes(' ') ? selectedEntry.audio_url.split(/\s+/) : undefined}
                           isPlaying={currentAudio === selectedEntry.audio_url && isPlaying}
                           onPlayPause={handleAudioToggle}
                           onEnded={() => {
