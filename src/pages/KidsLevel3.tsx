@@ -1,10 +1,12 @@
 import { Card } from "@/components/ui/card";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
-import { CheckCircle2, GraduationCap } from "lucide-react";
+import { CheckCircle2, GraduationCap, RefreshCw } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useUserAccess } from "@/hooks/useUserAccess";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import * as LucideIcons from "lucide-react";
 
 interface KidsRoom {
@@ -20,28 +22,45 @@ interface KidsRoom {
 const KidsLevel3 = () => {
   const navigate = useNavigate();
   const { isAuthenticated, loading } = useUserAccess();
+  const { toast } = useToast();
   const [rooms, setRooms] = useState<KidsRoom[]>([]);
   const [roomsLoading, setRoomsLoading] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const fetchRooms = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('kids_rooms')
+        .select('*')
+        .eq('level_id', 'level3')
+        .eq('is_active', true)
+        .order('display_order');
+
+      if (error) throw error;
+      setRooms(data || []);
+    } catch (error) {
+      console.error('Error fetching rooms:', error);
+      toast({
+        title: "Error",
+        description: "Failed to load rooms",
+        variant: "destructive",
+      });
+    } finally {
+      setRoomsLoading(false);
+      setIsRefreshing(false);
+    }
+  };
+
+  const handleRefresh = async () => {
+    setIsRefreshing(true);
+    await fetchRooms();
+    toast({
+      title: "Refreshed! 🌈",
+      description: "Rooms updated successfully",
+    });
+  };
 
   useEffect(() => {
-    const fetchRooms = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('kids_rooms')
-          .select('*')
-          .eq('level_id', 'level3')
-          .eq('is_active', true)
-          .order('display_order');
-
-        if (error) throw error;
-        setRooms(data || []);
-      } catch (error) {
-        console.error('Error fetching rooms:', error);
-      } finally {
-        setRoomsLoading(false);
-      }
-    };
-
     fetchRooms();
   }, []);
 
@@ -81,10 +100,21 @@ const KidsLevel3 = () => {
             </div>
           </div>
           
-          <div className="inline-block bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-6 py-2 rounded-full shadow-md">
-            <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              🎯 {rooms.length} exciting rooms to explore! / {rooms.length} phòng thú vị để khám phá!
-            </p>
+          <div className="flex items-center justify-center gap-4 flex-wrap">
+            <div className="inline-block bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-6 py-2 rounded-full shadow-md">
+              <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                🎯 {rooms.length} exciting rooms to explore! / {rooms.length} phòng thú vị để khám phá!
+              </p>
+            </div>
+            
+            <Button
+              onClick={handleRefresh}
+              disabled={isRefreshing}
+              className="bg-gradient-to-r from-violet-500 via-fuchsia-500 via-pink-500 to-rose-500 hover:from-violet-600 hover:via-fuchsia-600 hover:via-pink-600 hover:to-rose-600 text-white rounded-full shadow-lg transition-all duration-300 hover:scale-105"
+            >
+              <RefreshCw className={`h-4 w-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
+              Refresh
+            </Button>
           </div>
         </div>
 
@@ -96,7 +126,10 @@ const KidsLevel3 = () => {
             return (
               <Card
                 key={room.id}
-                className="relative p-4 transition-all duration-500 cursor-pointer group hover:scale-110 hover:shadow-2xl hover:z-10 border-2 border-rose-200/50 dark:border-rose-800/50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm overflow-hidden"
+                className="relative p-4 transition-all duration-500 cursor-pointer group hover:scale-110 hover:shadow-2xl hover:z-10 border-2 hover:border-transparent bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm overflow-hidden"
+                style={{
+                  borderImage: 'linear-gradient(135deg, #8b5cf6, #a855f7, #d946ef, #ec4899, #f43f5e, #ef4444, #f97316) 1',
+                }}
                 onClick={() => navigate(`/kids-chat/${room.id}`)}
                 style={{
                   animationDelay: `${index * 0.05}s`
