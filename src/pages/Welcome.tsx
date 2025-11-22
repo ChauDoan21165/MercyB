@@ -84,7 +84,7 @@ const Welcome = () => {
     {
       name: { vi: "VIP1", en: "VIP1" },
       priceMonthly: "$3",
-      priceYearly: "$29",
+      priceYearly: "$24",
       features: {
         en: ["Users can request one custom topic", "1 full room access/day", "🤖 AI Content"],
         vi: ["Người dùng có thể yêu cầu một chủ đề tùy chỉnh", "Truy cập tự do 1 phòng/ngày", "🤖 Nội dung tạo bởi AI"]
@@ -94,7 +94,7 @@ const Welcome = () => {
     {
       name: { vi: "VIP2", en: "VIP2" },
       priceMonthly: "$6",
-      priceYearly: "$58",
+      priceYearly: "$48",
       features: {
         en: ["Users can request two custom topics", "2 full rooms access/day", "🤖 AI Content"],
         vi: ["Người dùng có thể yêu cầu hai chủ đề tùy chỉnh", "Truy cập tự do 2 phòng/ngày", "🤖 Nội dung tạo bởi AI"]
@@ -103,7 +103,7 @@ const Welcome = () => {
     {
       name: { vi: "VIP3", en: "VIP3" },
       priceMonthly: "$15",
-      priceYearly: "$144",
+      priceYearly: "$121",
       features: {
         en: ["Users can request three custom topics", "3 rooms access/day", "AI Matchmaking", "Voice chat", "🤖 AI Content"],
         vi: ["Người dùng có thể yêu cầu ba chủ đề tùy chỉnh", "Truy cập 3 phòng/ngày", "Ghép đôi AI", "Chat bằng giọng nói", "🤖 Nội dung tạo bởi AI"]
@@ -369,7 +369,7 @@ const Welcome = () => {
                   </div>
                   {isYearly && tier.priceMonthly !== "$0" && (
                     <p className="text-xs text-muted-foreground">
-                      Save 20% vs monthly / Tiết kiệm 20%
+                      Save 33% vs monthly / Tiết kiệm 33%
                     </p>
                   )}
 
