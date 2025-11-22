@@ -9,12 +9,14 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { highlightTextByRules } from "@/lib/wordColorHighlighter";
+import { AudioPlayer } from "@/components/AudioPlayer";
 
 const RoomGridVIP3II = () => {
   const navigate = useNavigate();
   const { canAccessVIP3II, isAdmin, isAuthenticated, loading } = useUserAccess();
   const { toast } = useToast();
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isIntroPlaying, setIsIntroPlaying] = useState(false);
 
   // Allow browsing for all users - they'll see restrictions in individual rooms
   // No redirect for unauthenticated users
@@ -113,10 +115,12 @@ const RoomGridVIP3II = () => {
                       {highlightTextByRules("VIP3 II – English Specialization Mastery is the highest tier of English training in this entire ecosystem. Here, you go beyond learning English—you think in English, write with precision, and command language at a professional, academic, and creative level. This room brings together everything we have built: advanced writing science, deep grammar logic, meta-cognition, sentence engineering, and long-form mastery. From foundational structure to elite expression, from technical clarity to artistic fluency—you will train like a true language specialist. If VIP1 and VIP2 help you speak and write better, VIP3 II transforms you into someone who understands English at its core.", false)}
                     </p>
                     <div className="bg-gradient-to-r from-purple-50 to-indigo-50 p-4 rounded-lg border border-purple-200">
-                      <audio controls className="w-full">
-                        <source src="/audio/vip3_ii_english_specialization_mastery.mp3" type="audio/mpeg" />
-                        Your browser does not support the audio element.
-                      </audio>
+                      <AudioPlayer
+                        audioPath="/audio/vip3_ii_english_specialization_mastery.mp3"
+                        isPlaying={isIntroPlaying}
+                        onPlayPause={() => setIsIntroPlaying(!isIntroPlaying)}
+                        onEnded={() => setIsIntroPlaying(false)}
+                      />
                     </div>
                   </div>
                   <div>

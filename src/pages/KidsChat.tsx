@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, RefreshCw } from "lucide-react";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { useToast } from "@/hooks/use-toast";
+import { AudioPlayer } from "@/components/AudioPlayer";
 
 interface KidsRoom {
   id: string;
@@ -30,6 +31,7 @@ const KidsChat = () => {
   const [entries, setEntries] = useState<KidsEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedEntry, setSelectedEntry] = useState<KidsEntry | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const fetchRoomData = async () => {
     try {
@@ -142,7 +144,10 @@ const KidsChat = () => {
               className={`p-4 cursor-pointer transition-all hover:shadow-lg ${
                 selectedEntry?.id === entry.id ? 'ring-2 ring-primary' : ''
               }`}
-              onClick={() => setSelectedEntry(entry)}
+              onClick={() => {
+                setSelectedEntry(entry);
+                setIsPlaying(false);
+              }}
             >
               <div className="flex items-center gap-3">
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
@@ -166,20 +171,22 @@ const KidsChat = () => {
                 <h3 className="text-sm font-semibold text-muted-foreground mb-2">English:</h3>
                 <p className="text-lg leading-relaxed">{selectedEntry.content_en}</p>
               </div>
+
+              {selectedEntry.audio_url && (
+                <div className="border-t pt-4">
+                  <AudioPlayer
+                    audioPath={selectedEntry.audio_url}
+                    isPlaying={isPlaying}
+                    onPlayPause={() => setIsPlaying(!isPlaying)}
+                    onEnded={() => setIsPlaying(false)}
+                  />
+                </div>
+              )}
               
               <div className="border-t pt-4">
                 <h3 className="text-sm font-semibold text-muted-foreground mb-2">Tiếng Việt:</h3>
                 <p className="text-lg leading-relaxed">{selectedEntry.content_vi}</p>
               </div>
-
-              {selectedEntry.audio_url && (
-                <div className="border-t pt-4">
-                  <audio controls className="w-full">
-                    <source src={selectedEntry.audio_url} type="audio/mpeg" />
-                    Your browser does not support the audio element.
-                  </audio>
-                </div>
-              )}
             </div>
           </Card>
         )}
