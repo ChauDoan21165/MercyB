@@ -11,6 +11,7 @@ import {
   Code,
   Activity,
   Palette,
+  Gift,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 
@@ -36,6 +37,7 @@ const adminItems = [
   { title: "System Metrics", url: "/admin/system-metrics", icon: Activity },
   { title: "VIP Requests", url: "/vip-requests", icon: MessageSquare },
   { title: "Payment Verification", url: "/admin/payments", icon: DollarSign },
+  { title: "Gift Codes", url: "/admin/gift-codes", icon: Gift },
   { title: "Audio Management", url: "/admin/audio-upload", icon: Music },
   { title: "Moderation", url: "/admin/moderation", icon: Shield },
   { title: "Reports", url: "/admin/reports", icon: FileText },

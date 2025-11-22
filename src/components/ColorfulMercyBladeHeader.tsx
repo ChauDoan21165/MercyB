@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, RotateCcw, UserPlus, Crown, Star, Gem, Sparkles, Rocket, Feather, Brain, Baby, GraduationCap, School } from 'lucide-react';
+import { ArrowLeft, RotateCcw, UserPlus, Crown, Star, Gem, Sparkles, Rocket, Feather, Brain, Baby, GraduationCap, School, Gift } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useEffect, useState } from 'react';
@@ -248,6 +248,16 @@ export const ColorfulMercyBladeHeader = ({
                 </DropdownMenuItem>
 
                 <DropdownMenuSeparator />
+                <DropdownMenuItem 
+                  onClick={() => navigate('/redeem-gift')}
+                  className="cursor-pointer hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 dark:hover:from-purple-900 dark:hover:to-pink-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                >
+                  <Gift className="mr-2 h-4 w-4 text-purple-600 transition-transform duration-200 group-hover:scale-110" />
+                  <div className="flex flex-col">
+                    <span className="font-semibold text-purple-600">Redeem Gift Code</span>
+                    <span className="text-xs text-muted-foreground">Enter your gift code</span>
+                  </div>
+                </DropdownMenuItem>
                 <DropdownMenuItem 
                   onClick={() => navigate('/subscribe')}
                   className="cursor-pointer hover:bg-primary/10 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"

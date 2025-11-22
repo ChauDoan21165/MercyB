@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LayoutDashboard, Users, TrendingUp, MessageSquare, DollarSign, Music, Shield, FileText, TestTube, Code, Palette } from "lucide-react";
+import { LayoutDashboard, Users, TrendingUp, MessageSquare, DollarSign, Music, Shield, FileText, TestTube, Code, Palette, Gift } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 import { AdminBreadcrumb } from "@/components/admin/AdminBreadcrumb";
@@ -356,6 +356,25 @@ const AdminDashboard = () => {
               {stats.suspendedUsers > 0 && (
                 <Badge variant="destructive" className="mt-2">{stats.suspendedUsers} suspended</Badge>
               )}
+            </CardContent>
+          </Card>
+
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate("/admin/gift-codes")}>
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="p-3 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg">
+                  <Gift className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <CardTitle>Gift Codes</CardTitle>
+                  <CardDescription>Manage VIP gift codes</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Generate and manage VIP2/VIP3 gift codes for 1-year access.
+              </p>
             </CardContent>
           </Card>
 
