@@ -65,7 +65,7 @@ export const HomepageSection = ({
         {/* English Section */}
         <div className="space-y-4">
           <h2
-            className="text-[22px] font-semibold leading-relaxed bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent"
+            className="text-[18px] sm:text-[22px] font-semibold leading-relaxed bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent px-2 sm:px-0"
           >
             {title.en}
           </h2>
@@ -83,7 +83,7 @@ export const HomepageSection = ({
         {/* Vietnamese Section */}
         <div className="space-y-4">
           <h3
-            className="text-[19px] font-semibold leading-relaxed bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent"
+            className="text-[16px] sm:text-[19px] font-semibold leading-relaxed bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent px-2 sm:px-0"
           >
             {title.vi}
           </h3>
