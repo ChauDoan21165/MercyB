@@ -208,6 +208,7 @@ export const ColorfulMercyBladeHeader = ({
                   <div className="flex flex-col">
                     <span className="font-semibold">Kids Level 1</span>
                     <span className="text-xs text-muted-foreground">Ages 4-7</span>
+                    <span className="text-[10px] text-amber-600 dark:text-amber-400 font-medium">🎁 Bonus for VIP3 users</span>
                   </div>
                 </DropdownMenuItem>
 
@@ -219,6 +220,7 @@ export const ColorfulMercyBladeHeader = ({
                   <div className="flex flex-col">
                     <span className="font-semibold">Kids Level 2</span>
                     <span className="text-xs text-muted-foreground">Ages 7-10</span>
+                    <span className="text-[10px] text-amber-600 dark:text-amber-400 font-medium">🎁 Bonus for VIP3 users</span>
                   </div>
                 </DropdownMenuItem>
 
@@ -230,6 +232,7 @@ export const ColorfulMercyBladeHeader = ({
                   <div className="flex flex-col">
                     <span className="font-semibold">Kids Level 3</span>
                     <span className="text-xs text-muted-foreground">Ages 10-13</span>
+                    <span className="text-[10px] text-amber-600 dark:text-amber-400 font-medium">🎁 Bonus for VIP3 users</span>
                   </div>
                 </DropdownMenuItem>
 
