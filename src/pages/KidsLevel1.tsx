@@ -126,7 +126,10 @@ const KidsLevel1 = () => {
             return (
               <Card
                 key={room.id}
-                className="relative p-4 transition-all duration-500 cursor-pointer group hover:scale-110 hover:shadow-2xl hover:z-10 border-2 border-purple-200/50 dark:border-purple-800/50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm overflow-hidden"
+                className="relative p-4 transition-all duration-500 cursor-pointer group hover:scale-110 hover:shadow-2xl hover:z-10 border-2 hover:border-transparent bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm overflow-hidden"
+                style={{
+                  borderImage: 'linear-gradient(135deg, #ef4444, #f59e0b, #eab308, #22c55e, #06b6d4, #3b82f6, #8b5cf6, #ec4899) 1',
+                }}
                 onClick={() => navigate(`/kids-chat/${room.id}`)}
                 style={{
                   animationDelay: `${index * 0.05}s`

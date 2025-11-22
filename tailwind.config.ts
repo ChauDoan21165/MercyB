@@ -136,6 +136,32 @@ export default {
             transform: "scale(1) rotate(180deg)",
           },
         },
+        "rainbow-border": {
+          "0%": {
+            borderColor: "#ef4444",
+          },
+          "14%": {
+            borderColor: "#f97316",
+          },
+          "28%": {
+            borderColor: "#fbbf24",
+          },
+          "42%": {
+            borderColor: "#22c55e",
+          },
+          "57%": {
+            borderColor: "#06b6d4",
+          },
+          "71%": {
+            borderColor: "#3b82f6",
+          },
+          "85%": {
+            borderColor: "#8b5cf6",
+          },
+          "100%": {
+            borderColor: "#ec4899",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -145,6 +171,7 @@ export default {
         "glow": "glow 2s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "sparkle": "sparkle 1.5s ease-in-out infinite",
+        "rainbow-border": "rainbow-border 3s linear infinite",
       },
     },
   },
