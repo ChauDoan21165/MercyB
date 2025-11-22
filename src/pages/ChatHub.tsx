@@ -84,11 +84,10 @@ const ChatHub = () => {
   const [roomEssay, setRoomEssay] = useState<{ en: string; vi: string } | null>(null);
   const [mergedEntries, setMergedEntries] = useState<any[]>([]);
   const [audioBasePath, setAudioBasePath] = useState<string>('/');
-  const [debugMode, setDebugMode] = useState(false);
   const [matchedEntryId, setMatchedEntryId] = useState<string | null>(null);
-  const [debugSearch, setDebugSearch] = useState("");
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [roomNameOverride, setRoomNameOverride] = useState<{ nameEn: string; nameVi: string } | null>(null);
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
 
   // Use centralized room metadata
   const info = getRoomInfo(roomId || "");
@@ -141,18 +140,19 @@ const ChatHub = () => {
 
     loadRoomTitle();
   }, [roomId, info]);
-  // Fetch username
+  // Fetch username and avatar
   useEffect(() => {
     const fetchUsername = async () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
         const { data: profile } = await supabase
           .from("profiles")
-          .select("username, email")
+          .select("username, email, avatar_url")
           .eq("id", user.id)
           .single();
        
         setUsername(profile?.username || user.email?.split('@')[0] || "User");
+        setAvatarUrl(profile?.avatar_url || null);
       }
     };
     fetchUsername();
@@ -717,68 +717,6 @@ const ChatHub = () => {
       <div className="min-h-screen p-4" style={{ background: getBgColor() }}>
         <div className="max-w-7xl mx-auto space-y-4">
         
-        {/* Debug Mode Toggle - Admin Only */}
-        {isAdmin && (
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setDebugMode(!debugMode)}
-            className="fixed bottom-4 left-4 z-50 gap-2 shadow-lg"
-          >
-            <Bug className="h-4 w-4" />
-            {debugMode ? 'Hide Debug' : 'Show Debug'}
-          </Button>
-        )}
-
-        {/* Debug Panel */}
-        {isAdmin && debugMode && mergedEntries.length > 0 && (
-          <div className="fixed top-16 right-4 z-50 w-96 max-h-[80vh] bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg">
-            <div className="p-4 border-b border-border">
-              <h3 className="text-sm font-semibold mb-3 text-foreground">Keyword Mappings ({mergedEntries.length} entries)</h3>
-              <Input
-                placeholder="Search keywords or entries..."
-                value={debugSearch}
-                onChange={(e) => setDebugSearch(e.target.value)}
-                className="h-8 text-xs"
-              />
-            </div>
-            <div className="overflow-y-auto max-h-[calc(80vh-120px)] p-4 space-y-2">
-              {mergedEntries
-                .filter(entry => {
-                  if (!debugSearch.trim()) return true;
-                  const search = debugSearch.toLowerCase();
-                  const slug = (entry.slug || entry.keywordEn || '').toLowerCase();
-                  const keywords = Array.isArray(entry.keywords_en) ? entry.keywords_en : [entry.keywordEn];
-                  const keywordsMatch = keywords.some((kw: string) => kw.toLowerCase().includes(search));
-                  const audioMatch = entry.audioPath?.toLowerCase().includes(search);
-                  return slug.includes(search) || keywordsMatch || audioMatch;
-                })
-                .map((entry, idx) => {
-                  const isMatched = matchedEntryId === (entry.slug || entry.keywordEn);
-                  const keywords = Array.isArray(entry.keywords_en) ? entry.keywords_en : [entry.keywordEn];
-                  return (
-                    <div 
-                      key={idx} 
-                      className={`p-2 rounded text-xs border ${isMatched ? 'bg-primary/20 border-primary' : 'bg-muted/50 border-border'}`}
-                    >
-                      <div className="font-medium text-foreground mb-1">
-                        {entry.slug || entry.keywordEn || `Entry ${idx + 1}`}
-                      </div>
-                      <div className="text-muted-foreground">
-                        Keywords: {keywords.join(', ')}
-                      </div>
-                      {entry.audioPath && (
-                        <div className="text-muted-foreground mt-1">
-                          Audio: {entry.audioPath.split('/').pop()}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-            </div>
-          </div>
-        )}
-        
         {/* Header */}
         <div className="flex items-center justify-between bg-card rounded-lg p-4 shadow-soft">
           <div className="flex gap-2">
@@ -852,7 +790,16 @@ const ChatHub = () => {
               )}
             </div>
             <div className="flex items-center justify-center gap-2 text-xs font-medium text-primary">
-              <span>👤 {username || 'User'}</span>
+              {avatarUrl ? (
+                <img 
+                  src={avatarUrl} 
+                  alt={username || 'User'} 
+                  className="w-6 h-6 rounded-full object-cover border border-primary/20"
+                />
+              ) : (
+                <span>👤</span>
+              )}
+              <span>{username || 'User'}</span>
               {tier && (
                 <span className="font-semibold">{tier.toUpperCase()}</span>
               )}
