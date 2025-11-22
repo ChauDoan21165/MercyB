@@ -16,6 +16,13 @@ export const AdminFloatingButton = () => {
     // Fetch version indicator for everyone
     fetchVersionIndicator();
 
+    // Fallback: Poll every 30 seconds on mobile (realtime subscriptions can be unreliable on mobile)
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const pollInterval = isMobile ? setInterval(() => {
+      console.log('Polling version indicator (mobile fallback)');
+      fetchVersionIndicator();
+    }, 30000) : null;
+
     // Subscribe to real-time version indicator changes (for all users)
     const versionChannel = supabase
       .channel('version-indicator')
@@ -28,16 +35,19 @@ export const AdminFloatingButton = () => {
           filter: 'setting_key=eq.version_indicator'
         },
         (payload) => {
-          console.log('Version indicator updated:', payload);
+          console.log('✅ Version indicator updated via realtime:', payload);
           if (payload.new && payload.new.setting_value) {
             setVersionIndicator(payload.new.setting_value);
           }
         }
       )
-      .subscribe();
+      .subscribe((status) => {
+        console.log('Version channel subscription status:', status);
+      });
 
     if (!isAdmin) {
       return () => {
+        if (pollInterval) clearInterval(pollInterval);
         supabase.removeChannel(versionChannel);
       };
     }
@@ -68,6 +78,7 @@ export const AdminFloatingButton = () => {
       .subscribe();
 
     return () => {
+      if (pollInterval) clearInterval(pollInterval);
       supabase.removeChannel(versionChannel);
       supabase.removeChannel(channel);
     };
@@ -75,17 +86,26 @@ export const AdminFloatingButton = () => {
 
   const fetchVersionIndicator = async () => {
     try {
+      console.log('🔄 Fetching version indicator...');
       const { data, error } = await supabase
         .from('app_settings')
         .select('setting_value')
         .eq('setting_key', 'version_indicator')
         .maybeSingle();
 
-      if (!error && data) {
+      if (error) {
+        console.error('❌ Error fetching version:', error);
+        return;
+      }
+
+      if (data) {
+        console.log('📱 Version indicator fetched:', data.setting_value);
         setVersionIndicator(data.setting_value);
+      } else {
+        console.log('⚠️ No version indicator found in database');
       }
     } catch (error) {
-      console.error('Error fetching version:', error);
+      console.error('❌ Exception fetching version:', error);
     }
   };
 
