@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Users, DollarSign, Crown, MessageSquare, TrendingUp, LayoutDashboard, Home, Gift, BookOpen } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Users, DollarSign, Crown, MessageSquare, TrendingUp, LayoutDashboard, Home, Gift, BookOpen, RefreshCw } from 'lucide-react';
 import { toast } from 'sonner';
 import { AdminLayout } from '@/components/admin/AdminLayout';
 interface Stats {
@@ -20,10 +21,51 @@ const AdminStats = () => {
   const navigate = useNavigate();
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
+  const [versionIndicator, setVersionIndicator] = useState('A');
+  const [updatingVersion, setUpdatingVersion] = useState(false);
 
   useEffect(() => {
     checkAdminAndFetchStats();
+    fetchVersionIndicator();
   }, []);
+
+  const fetchVersionIndicator = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('app_settings')
+        .select('setting_value')
+        .eq('setting_key', 'version_indicator')
+        .single();
+
+      if (error) throw error;
+      if (data) setVersionIndicator(data.setting_value);
+    } catch (error) {
+      console.error('Error fetching version:', error);
+    }
+  };
+
+  const updateVersionIndicator = async () => {
+    if (!versionIndicator || versionIndicator.length !== 1) {
+      toast.error('Version must be a single character');
+      return;
+    }
+
+    try {
+      setUpdatingVersion(true);
+      const { error } = await supabase
+        .from('app_settings')
+        .update({ setting_value: versionIndicator.toUpperCase() })
+        .eq('setting_key', 'version_indicator');
+
+      if (error) throw error;
+      toast.success('Version indicator updated');
+    } catch (error) {
+      console.error('Error updating version:', error);
+      toast.error('Failed to update version');
+    } finally {
+      setUpdatingVersion(false);
+    }
+  };
 
   const checkAdminAndFetchStats = async () => {
     try {
@@ -179,6 +221,36 @@ const AdminStats = () => {
             </div>
           </div>
   
+          {/* Version Indicator Control */}
+          <Card className="mb-6">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <RefreshCw className="h-5 w-5" />
+                Version Indicator
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground mb-4">
+                Update the version indicator visible to all users. Use a single character (A-Z recommended).
+              </p>
+              <div className="flex gap-2">
+                <Input
+                  value={versionIndicator}
+                  onChange={(e) => setVersionIndicator(e.target.value.slice(0, 1).toUpperCase())}
+                  maxLength={1}
+                  className="w-20 text-center text-lg font-bold"
+                  placeholder="A"
+                />
+                <Button 
+                  onClick={updateVersionIndicator}
+                  disabled={updatingVersion}
+                >
+                  {updatingVersion ? 'Updating...' : 'Update Version'}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {/* Total Users */}
             <Card>

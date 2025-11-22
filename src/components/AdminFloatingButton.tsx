@@ -10,8 +10,12 @@ export const AdminFloatingButton = () => {
   const navigate = useNavigate();
   const { isAdmin } = useUserAccess();
   const [unreadCount, setUnreadCount] = useState(0);
+  const [versionIndicator, setVersionIndicator] = useState('A');
 
   useEffect(() => {
+    // Fetch version indicator for everyone
+    fetchVersionIndicator();
+
     if (!isAdmin) return;
 
     fetchUnreadCount();
@@ -44,6 +48,22 @@ export const AdminFloatingButton = () => {
     };
   }, [isAdmin]);
 
+  const fetchVersionIndicator = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('app_settings')
+        .select('setting_value')
+        .eq('setting_key', 'version_indicator')
+        .maybeSingle();
+
+      if (!error && data) {
+        setVersionIndicator(data.setting_value);
+      }
+    } catch (error) {
+      console.error('Error fetching version:', error);
+    }
+  };
+
   const fetchUnreadCount = async () => {
     try {
       const { data: { user } } = await supabase.auth.getUser();
@@ -75,7 +95,7 @@ export const AdminFloatingButton = () => {
         className="h-4 w-4 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white text-[9px] font-bold shadow-sm"
         title="App Version"
       >
-        A
+        {versionIndicator}
       </div>
       
       {isAdmin && (
