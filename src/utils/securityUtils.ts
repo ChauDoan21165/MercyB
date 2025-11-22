@@ -48,6 +48,31 @@ export const trackLoginAttempt = async (
     success,
     failure_reason: failureReason
   });
+
+  // Check for suspicious activity and send alert if needed
+  if (!success) {
+    const recentFailures = await supabase
+      .from('login_attempts')
+      .select('*')
+      .eq('email', email)
+      .eq('success', false)
+      .gte('created_at', new Date(Date.now() - 15 * 60 * 1000).toISOString());
+
+    if (recentFailures.data && recentFailures.data.length >= 5) {
+      await supabase.functions.invoke('security-alert', {
+        body: {
+          incident_type: 'multiple_failed_logins',
+          severity: 'high',
+          description: `Multiple failed login attempts detected for ${email}`,
+          metadata: {
+            email,
+            attempts: recentFailures.data.length,
+            ip_address: ipAddress,
+          }
+        }
+      });
+    }
+  }
 };
 
 // Check if user is blocked

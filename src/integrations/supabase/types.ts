@@ -1149,6 +1149,69 @@ export type Database = {
         }
         Relationships: []
       }
+      security_incidents: {
+        Row: {
+          created_at: string | null
+          description: string
+          id: string
+          incident_type: string
+          metadata: Json | null
+          resolved: boolean | null
+          resolved_at: string | null
+          severity: string
+        }
+        Insert: {
+          created_at?: string | null
+          description: string
+          id?: string
+          incident_type: string
+          metadata?: Json | null
+          resolved?: boolean | null
+          resolved_at?: string | null
+          severity?: string
+        }
+        Update: {
+          created_at?: string | null
+          description?: string
+          id?: string
+          incident_type?: string
+          metadata?: Json | null
+          resolved?: boolean | null
+          resolved_at?: string | null
+          severity?: string
+        }
+        Relationships: []
+      }
+      security_monitoring_config: {
+        Row: {
+          alert_email: string | null
+          attack_mode_enabled: boolean | null
+          created_at: string | null
+          discord_webhook_url: string | null
+          id: string
+          updated_at: string | null
+          uptime_check_enabled: boolean | null
+        }
+        Insert: {
+          alert_email?: string | null
+          attack_mode_enabled?: boolean | null
+          created_at?: string | null
+          discord_webhook_url?: string | null
+          id?: string
+          updated_at?: string | null
+          uptime_check_enabled?: boolean | null
+        }
+        Update: {
+          alert_email?: string | null
+          attack_mode_enabled?: boolean | null
+          created_at?: string | null
+          discord_webhook_url?: string | null
+          id?: string
+          updated_at?: string | null
+          uptime_check_enabled?: boolean | null
+        }
+        Relationships: []
+      }
       subscription_tiers: {
         Row: {
           created_at: string | null
@@ -1248,6 +1311,36 @@ export type Database = {
           text_length?: number
           user_id?: string
           voice?: string
+        }
+        Relationships: []
+      }
+      uptime_checks: {
+        Row: {
+          checked_at: string | null
+          error_message: string | null
+          id: string
+          is_up: boolean | null
+          response_time_ms: number | null
+          status_code: number | null
+          url: string
+        }
+        Insert: {
+          checked_at?: string | null
+          error_message?: string | null
+          id?: string
+          is_up?: boolean | null
+          response_time_ms?: number | null
+          status_code?: number | null
+          url: string
+        }
+        Update: {
+          checked_at?: string | null
+          error_message?: string | null
+          id?: string
+          is_up?: boolean | null
+          response_time_ms?: number | null
+          status_code?: number | null
+          url?: string
         }
         Relationships: []
       }
