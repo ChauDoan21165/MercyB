@@ -87,7 +87,6 @@ const Homepage = () => {
   return (
     <div className="min-h-screen">
       <ColorfulMercyBladeHeader
-        subtitle="All Colors of Life"
         showResetButton={true}
         onReset={handleResetConfig}
       />
