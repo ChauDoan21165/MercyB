@@ -1,13 +1,12 @@
-import { Card } from "@/components/ui/card";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
-import { CheckCircle2, GraduationCap, RefreshCw } from "lucide-react";
+import { GraduationCap, RefreshCw } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import * as LucideIcons from "lucide-react";
+import { KidsRoomCard } from "@/components/kids/KidsRoomCard";
 
 interface KidsRoom {
   id: string;
@@ -64,11 +63,6 @@ const KidsLevel3 = () => {
     fetchRooms();
   }, []);
 
-  const getIconComponent = (iconName: string | null) => {
-    if (!iconName) return GraduationCap;
-    const Icon = (LucideIcons as any)[iconName];
-    return Icon || GraduationCap;
-  };
 
   if (loading || roomsLoading) {
     return (
@@ -120,60 +114,14 @@ const KidsLevel3 = () => {
 
         {/* Room Grid with Beautiful Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 animate-fade-in">
-          {rooms.map((room, index) => {
-            const IconComponent = getIconComponent(room.icon);
-            
-            return (
-              <Card
-                key={room.id}
-                className="relative p-4 transition-all duration-500 cursor-pointer group hover:scale-110 hover:shadow-2xl hover:z-10 border-2 hover:border-transparent bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm overflow-hidden"
-                style={{
-                  borderImage: 'linear-gradient(135deg, #60a5fa, #3b82f6, #2563eb, #1d4ed8) 1',
-                }}
-                onClick={() => navigate(`/kids-chat/${room.id}`)}
-                style={{
-                  animationDelay: `${index * 0.05}s`
-                }}
-              >
-                {/* Animated Background Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/0 via-cyan-400/0 to-blue-500/0 group-hover:from-blue-400/10 group-hover:via-cyan-400/10 group-hover:to-blue-500/10 transition-all duration-500" />
-                
-                {/* Status Badge */}
-                <div className="absolute top-2 right-2 z-10">
-                  <div className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full p-1 shadow-lg animate-pulse">
-                    <CheckCircle2 className="w-3 h-3 text-white" />
-                  </div>
-                </div>
-
-                <div className="relative space-y-3">
-                  {/* Icon with Animated Circle */}
-                  <div className="flex justify-center">
-                    <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 rounded-full blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
-                      <div className="relative bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900 dark:to-cyan-900 p-3 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                        <IconComponent className="w-8 h-8 text-blue-600 dark:text-blue-400" />
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Room Names */}
-                  <div className="space-y-1">
-                    <p className="text-xs font-bold leading-tight line-clamp-2 text-center text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                      {room.title_en}
-                    </p>
-                    <p className="text-[10px] leading-tight line-clamp-2 text-center text-gray-600 dark:text-gray-400">
-                      {room.title_vi}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Shine Effect on Hover */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
-                </div>
-              </Card>
-            );
-          })}
+          {rooms.map((room, index) => (
+            <KidsRoomCard
+              key={room.id}
+              room={room}
+              index={index}
+              onClick={() => navigate(`/kids-chat/${room.id}`)}
+            />
+          ))}
         </div>
 
         {/* Decorative Elements */}
