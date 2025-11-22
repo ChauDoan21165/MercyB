@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from 'sonner';
 import { Check } from 'lucide-react';
+import { PricingToggle } from '@/components/PricingToggle';
 
 declare global {
   interface Window {
@@ -20,6 +21,7 @@ const PaymentTest = () => {
   const [loading, setLoading] = useState(false);
   const [selectedTier, setSelectedTier] = useState<string | null>(null);
   const tierRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  const [isYearly, setIsYearly] = useState(false);
 
   useEffect(() => {
     loadTiers();
@@ -258,6 +260,11 @@ const PaymentTest = () => {
             </div>
           </div>
 
+          {/* Pricing Toggle */}
+          <div className="mb-8">
+            <PricingToggle isYearly={isYearly} onToggle={setIsYearly} />
+          </div>
+
           {/* Tier Selection Cards */}
           {tiers.length > 0 ? (
             <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -277,9 +284,16 @@ const PaymentTest = () => {
                       </CardTitle>
                       <div className="text-center mt-4">
                         <div className="text-4xl font-bold text-gray-900">
-                          ${tier.price}
-                          <span className="text-lg font-normal text-gray-600">/month</span>
+                          ${isYearly ? tier.price_yearly : tier.price_monthly}
+                          <span className="text-lg font-normal text-gray-600">
+                            {isYearly ? '/year' : '/month'}
+                          </span>
                         </div>
+                        {isYearly && (
+                          <p className="text-xs text-gray-600 mt-1">
+                            Save 20% vs monthly / Tiết kiệm 20%
+                          </p>
+                        )}
                       </div>
                     </CardHeader>
                     <CardContent>
