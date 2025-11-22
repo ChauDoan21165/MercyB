@@ -16,7 +16,31 @@ export const AdminFloatingButton = () => {
     // Fetch version indicator for everyone
     fetchVersionIndicator();
 
-    if (!isAdmin) return;
+    // Subscribe to real-time version indicator changes (for all users)
+    const versionChannel = supabase
+      .channel('version-indicator')
+      .on(
+        'postgres_changes',
+        {
+          event: 'UPDATE',
+          schema: 'public',
+          table: 'app_settings',
+          filter: 'setting_key=eq.version_indicator'
+        },
+        (payload) => {
+          console.log('Version indicator updated:', payload);
+          if (payload.new && payload.new.setting_value) {
+            setVersionIndicator(payload.new.setting_value);
+          }
+        }
+      )
+      .subscribe();
+
+    if (!isAdmin) {
+      return () => {
+        supabase.removeChannel(versionChannel);
+      };
+    }
 
     fetchUnreadCount();
 
@@ -44,6 +68,7 @@ export const AdminFloatingButton = () => {
       .subscribe();
 
     return () => {
+      supabase.removeChannel(versionChannel);
       supabase.removeChannel(channel);
     };
   }, [isAdmin]);
