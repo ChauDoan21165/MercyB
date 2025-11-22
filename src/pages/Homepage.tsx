@@ -151,7 +151,10 @@ Mỗi hoạt động chung trở thành một khoảnh khắc kết nối, trư�
 Kids English không chỉ là chương trình dành cho trẻ.
 Đó là món quà để cha mẹ và con cùng lớn lên.`
         }}
-        audio="/audio/kid_homepage.mp3"
+        audio={{
+          en: "kid_homepage.mp3",
+          vi: "kid_homepage.mp3"
+        }}
       />
 
       {/* Footer CTA */}

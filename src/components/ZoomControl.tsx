@@ -77,45 +77,39 @@ export const ZoomControl = () => {
   const canZoomOut = currentIndex > 0;
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm p-3 rounded-2xl shadow-lg border-2 border-purple-200 dark:border-purple-800">
-      <div className="flex items-center gap-2">
-        <Button
-          onClick={handleZoomOut}
-          disabled={!canZoomOut}
-          size="sm"
-          variant="outline"
-          className="h-10 w-10 p-0 rounded-full hover:bg-purple-100 dark:hover:bg-purple-900"
-          title="Zoom Out (Ctrl/Cmd + -)"
-        >
-          <ZoomOut className="h-5 w-5" />
-        </Button>
-        
-        <Button
-          onClick={handleReset}
-          size="sm"
-          variant="outline"
-          className="h-10 px-3 rounded-full hover:bg-purple-100 dark:hover:bg-purple-900"
-          title="Reset Zoom (Ctrl/Cmd + 0)"
-        >
-          <Maximize2 className="h-4 w-4 mr-1" />
-          <span className="text-xs font-bold">{Math.round(zoomLevel * 100)}%</span>
-        </Button>
-        
-        <Button
-          onClick={handleZoomIn}
-          disabled={!canZoomIn}
-          size="sm"
-          variant="outline"
-          className="h-10 w-10 p-0 rounded-full hover:bg-purple-100 dark:hover:bg-purple-900"
-          title="Zoom In (Ctrl/Cmd + +)"
-        >
-          <ZoomIn className="h-5 w-5" />
-        </Button>
-      </div>
+    <div className="fixed bottom-2 left-2 z-40 flex items-center gap-1 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm px-2 py-1 rounded-lg shadow-md border border-purple-200 dark:border-purple-800">
+      <Button
+        onClick={handleZoomOut}
+        disabled={!canZoomOut}
+        size="sm"
+        variant="ghost"
+        className="h-6 w-6 p-0 hover:bg-purple-100 dark:hover:bg-purple-900"
+        title="Zoom Out (Ctrl/Cmd + -)"
+      >
+        <ZoomOut className="h-3 w-3" />
+      </Button>
       
-      <div className="text-[10px] text-center text-muted-foreground">
-        Press Ctrl/⌘ +/- to zoom
-      </div>
+      <Button
+        onClick={handleReset}
+        size="sm"
+        variant="ghost"
+        className="h-6 px-2 hover:bg-purple-100 dark:hover:bg-purple-900"
+        title="Reset Zoom (Ctrl/Cmd + 0)"
+      >
+        <Maximize2 className="h-3 w-3 mr-1" />
+        <span className="text-[10px] font-medium">{Math.round(zoomLevel * 100)}%</span>
+      </Button>
+      
+      <Button
+        onClick={handleZoomIn}
+        disabled={!canZoomIn}
+        size="sm"
+        variant="ghost"
+        className="h-6 w-6 p-0 hover:bg-purple-100 dark:hover:bg-purple-900"
+        title="Zoom In (Ctrl/Cmd + +)"
+      >
+        <ZoomIn className="h-3 w-3" />
+      </Button>
     </div>
   );
 };
