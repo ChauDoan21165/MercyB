@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LayoutDashboard, Users, TrendingUp, MessageSquare, DollarSign, Music, Shield, FileText, TestTube, Code, Palette, Gift, BookOpen } from "lucide-react";
+import { LayoutDashboard, Users, TrendingUp, MessageSquare, DollarSign, Music, Shield, FileText, TestTube, Code, Palette, Gift, BookOpen, Bell } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 import { AdminBreadcrumb } from "@/components/admin/AdminBreadcrumb";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { LiveUsersMonitor } from "@/components/admin/LiveUsersMonitor";
 import { FeedbackMessages } from "@/components/admin/FeedbackMessages";
+import { NotificationPreferences } from "@/components/admin/NotificationPreferences";
 
 interface DashboardStats {
   totalRooms: number;
@@ -489,6 +490,31 @@ const AdminDashboard = () => {
               </Badge>
             </CardContent>
           </Card>
+
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer border-2 border-primary/20">
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="p-3 bg-primary/10 rounded-lg">
+                  <Bell className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <CardTitle>Notification Settings</CardTitle>
+                  <CardDescription>Customize alert sounds</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Configure sound notifications and choose alert tones for admin alerts.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Notification Preferences */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold mb-4 text-foreground">🔔 Notification Preferences</h2>
+          <NotificationPreferences />
         </div>
 
         {/* Live Users Monitor */}
