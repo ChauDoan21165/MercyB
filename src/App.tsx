@@ -59,6 +59,8 @@ import KidsLevel2 from "./pages/KidsLevel2";
 import KidsLevel3 from "./pages/KidsLevel3";
 import KidsChat from "./pages/KidsChat";
 import KidsRoomValidation from "./pages/KidsRoomValidation";
+import RedeemGiftCode from "./pages/RedeemGiftCode";
+import AdminGiftCodes from "./pages/AdminGiftCodes";
 
 const queryClient = new QueryClient();
 
@@ -150,6 +152,8 @@ const App = () => {
           <Route path="/admin/code-editor" element={<AdminCodeEditor />} />
           <Route path="/admin/payments" element={<AdminPayments />} />
           <Route path="/admin/system-metrics" element={<AdminSystemMetrics />} />
+          <Route path="/admin/gift-codes" element={<AdminGiftCodes />} />
+          <Route path="/redeem-gift" element={<RedeemGiftCode />} />
           <Route path="/audio-upload" element={<AudioUpload />} />
           <Route path="/kids-validation" element={<KidsRoomValidation />} />
           <Route path="*" element={<NotFound />} />

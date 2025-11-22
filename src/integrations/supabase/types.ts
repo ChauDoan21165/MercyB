@@ -235,6 +235,48 @@ export type Database = {
         }
         Relationships: []
       }
+      gift_codes: {
+        Row: {
+          code: string
+          code_expires_at: string | null
+          created_at: string
+          created_by: string
+          id: string
+          is_active: boolean
+          notes: string | null
+          tier: string
+          updated_at: string
+          used_at: string | null
+          used_by: string | null
+        }
+        Insert: {
+          code: string
+          code_expires_at?: string | null
+          created_at?: string
+          created_by: string
+          id?: string
+          is_active?: boolean
+          notes?: string | null
+          tier: string
+          updated_at?: string
+          used_at?: string | null
+          used_by?: string | null
+        }
+        Update: {
+          code?: string
+          code_expires_at?: string | null
+          created_at?: string
+          created_by?: string
+          id?: string
+          is_active?: boolean
+          notes?: string | null
+          tier?: string
+          updated_at?: string
+          used_at?: string | null
+          used_by?: string | null
+        }
+        Relationships: []
+      }
       kids_entries: {
         Row: {
           audio_url: string | null
