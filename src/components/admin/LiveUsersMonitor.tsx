@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Users, Eye, LogIn, LogOut } from "lucide-react";
+import { Users, Eye, LogIn, LogOut, AlertTriangle } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useNotificationSound } from "@/hooks/useNotificationSound";
+import { useToast } from "@/hooks/use-toast";
 
 interface UserActivity {
   user_id: string;
@@ -23,18 +25,22 @@ interface ActivityLog {
 }
 
 export const LiveUsersMonitor = () => {
+  const { playNotificationSound } = useNotificationSound();
+  const { toast } = useToast();
   const [onlineUsers, setOnlineUsers] = useState<UserActivity[]>([]);
   const [activityLog, setActivityLog] = useState<ActivityLog[]>([]);
 
   useEffect(() => {
     fetchOnlineUsers();
-    subscribeToUserActivity();
+    const cleanup = subscribeToUserActivity();
+    subscribeToSecurityEvents();
 
     // Refresh every 30 seconds
     const interval = setInterval(fetchOnlineUsers, 30000);
 
     return () => {
       clearInterval(interval);
+      cleanup();
     };
   }, []);
 
@@ -160,6 +166,55 @@ export const LiveUsersMonitor = () => {
     return () => {
       supabase.removeChannel(sessionsChannel);
       supabase.removeChannel(roomsChannel);
+    };
+  };
+
+  const subscribeToSecurityEvents = () => {
+    const securityChannel = supabase
+      .channel('security-events')
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'security_events'
+        },
+        async (payload) => {
+          const severity = payload.new.severity;
+          
+          // Alert on high or critical severity events
+          if (severity === 'high' || severity === 'critical') {
+            playNotificationSound('alert');
+            
+            // Get user info
+            const { data: profile } = await supabase
+              .from('profiles')
+              .select('username, full_name')
+              .eq('id', payload.new.user_id)
+              .single();
+
+            const username = profile?.username || profile?.full_name || 'Unknown user';
+            
+            toast({
+              title: "⚠️ Suspicious Activity Detected",
+              description: `${username}: ${payload.new.event_type}`,
+              variant: "destructive",
+            });
+
+            addActivityLog({
+              id: `${Date.now()}-security`,
+              timestamp: new Date().toISOString(),
+              username,
+              action: 'room_change',
+              room_name: `⚠️ ${payload.new.event_type}`,
+            });
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(securityChannel);
     };
   };
 
