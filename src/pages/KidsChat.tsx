@@ -255,13 +255,11 @@ const KidsChat = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <ColorfulMercyBladeHeader subtitle={`${room.title_en} / ${room.title_vi}`} />
-      
-      <div className="container mx-auto px-4 pt-2 pb-4 max-w-6xl space-y-3">
-        {/* Header with back button */}
-        <div className="flex items-center justify-between">
+      <div className="border-b">
+        <div className="container mx-auto px-4 py-2 max-w-6xl flex items-center justify-between">
           <Button
             variant="outline"
+            size="sm"
             onClick={handleBack}
             className="flex items-center gap-2"
           >
@@ -269,8 +267,11 @@ const KidsChat = () => {
             Back / Quay lại
           </Button>
           
+          <ColorfulMercyBladeHeader subtitle={`${room.title_en} / ${room.title_vi}`} />
+          
           <Button
             variant="outline"
+            size="sm"
             onClick={fetchRoomData}
             className="flex items-center gap-2"
           >
@@ -278,7 +279,9 @@ const KidsChat = () => {
             Refresh
           </Button>
         </div>
-
+      </div>
+      
+      <div className="container mx-auto px-4 py-3 max-w-6xl space-y-3">
         {/* Room title */}
         <div className="text-center">
           <div className="flex items-center justify-center gap-2">
