@@ -11,7 +11,7 @@ import { AudioPlayer } from "@/components/AudioPlayer";
 import { HighlightedContent } from "@/components/HighlightedContent";
 import { MessageActions } from "@/components/MessageActions";
 import { useUserAccess } from "@/hooks/useUserAccess";
-import { User } from "lucide-react";
+import { User, Copy, ChevronDown, ChevronUp } from "lucide-react";
 
 interface KidsRoom {
   id: string;
@@ -175,6 +175,7 @@ const KidsChat = () => {
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [userSubscription, setUserSubscription] = useState<KidsSubscription | null>(null);
   const [roomsExplored, setRoomsExplored] = useState<number>(0);
+  const [showRoomSpec, setShowRoomSpec] = useState(false);
 
   const fetchUserData = async () => {
     try {
@@ -308,6 +309,14 @@ const KidsChat = () => {
     setIsPlaying(!isPlaying);
   };
 
+  const handleCopyEssay = (text: string, lang: string) => {
+    navigator.clipboard.writeText(text);
+    toast({
+      title: "Copied!",
+      description: `${lang} essay copied to clipboard`,
+    });
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -378,6 +387,77 @@ const KidsChat = () => {
                 <p className="text-xs text-muted-foreground">{roomsExplored} phòng đã khám phá</p>
               </div>
             </div>
+          </Card>
+        )}
+
+        {/* Room Specification Card */}
+        {room && (room.description_en || room.description_vi) && (
+          <Card className="p-4 bg-card border border-border">
+            <button
+              onClick={() => setShowRoomSpec(!showRoomSpec)}
+              className="w-full flex items-center justify-between text-left"
+            >
+              <h3 className="font-semibold text-foreground">
+                Room Specification / Thông số phòng
+              </h3>
+              {showRoomSpec ? (
+                <ChevronUp className="h-5 w-5 text-muted-foreground" />
+              ) : (
+                <ChevronDown className="h-5 w-5 text-muted-foreground" />
+              )}
+            </button>
+
+            {showRoomSpec && (
+              <div className="mt-4 space-y-4">
+                {/* English Description */}
+                {room.description_en && (
+                  <div className="space-y-2">
+                    <h4 className="text-sm font-medium text-foreground">English Description:</h4>
+                    <div className="p-3 bg-muted/30 rounded-lg">
+                      <p className="text-sm text-foreground whitespace-pre-wrap leading-relaxed">
+                        {room.description_en}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Vietnamese Description */}
+                {room.description_vi && (
+                  <div className="space-y-2">
+                    <h4 className="text-sm font-medium text-foreground">Vietnamese Description:</h4>
+                    <div className="p-3 bg-muted/30 rounded-lg">
+                      <p className="text-sm text-foreground whitespace-pre-wrap leading-relaxed">
+                        {room.description_vi}
+                      </p>
+                    </div>
+                    
+                    {/* Copy Buttons */}
+                    <div className="flex gap-2 flex-wrap">
+                      {room.description_en && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => handleCopyEssay(room.description_en!, "English")}
+                          className="flex items-center gap-2"
+                        >
+                          <Copy className="h-3 w-3" />
+                          Copy EN Description
+                        </Button>
+                      )}
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleCopyEssay(room.description_vi!, "Vietnamese")}
+                        className="flex items-center gap-2"
+                      >
+                        <Copy className="h-3 w-3" />
+                        Copy VN Description
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
           </Card>
         )}
 
