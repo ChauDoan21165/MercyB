@@ -851,13 +851,12 @@ const ChatHub = () => {
                 </Badge>
               )}
             </div>
-            <div className="flex items-center justify-center gap-1 text-xs font-medium text-primary">
-              {username && (
-                <div className="flex items-center gap-2">
-                  <span>👤 {username}</span>
-                  <AnimatedTierBadge tier={tier} size="sm" />
-                </div>
+            <div className="flex items-center justify-center gap-2 text-xs font-medium text-primary">
+              <span>👤 {username || 'User'}</span>
+              {tier && (
+                <span className="font-semibold">{tier.toUpperCase()}</span>
               )}
+              <span>•</span>
               <span>You have explored {progress.totalRooms} {progress.totalRooms === 1 ? 'topic' : 'topics'}, {progress.streak} day streak! 🔥</span>
             </div>
           </div>
