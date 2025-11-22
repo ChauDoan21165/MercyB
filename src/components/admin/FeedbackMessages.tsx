@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { MessageSquare, Check, Clock, AlertCircle } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useToast } from "@/hooks/use-toast";
+import { useNotificationSound } from "@/hooks/useNotificationSound";
 
 interface FeedbackMessage {
   id: string;
@@ -24,9 +25,11 @@ interface FeedbackMessage {
 
 export const FeedbackMessages = () => {
   const { toast } = useToast();
+  const { playNotificationSound } = useNotificationSound();
   const [messages, setMessages] = useState<FeedbackMessage[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<'all' | 'new' | 'in_progress' | 'resolved'>('all');
+  const previousMessageIdsRef = useRef<Set<string>>(new Set());
 
   useEffect(() => {
     fetchMessages();
@@ -57,6 +60,28 @@ export const FeedbackMessages = () => {
       const { data, error } = await query;
 
       if (error) throw error;
+      
+      // Check for new high-priority messages
+      if (data) {
+        const currentIds = new Set(data.map(m => m.id));
+        const newHighPriorityMessages = data.filter(msg => 
+          msg.priority === 'high' && 
+          msg.status === 'new' &&
+          !previousMessageIdsRef.current.has(msg.id)
+        );
+
+        if (newHighPriorityMessages.length > 0 && previousMessageIdsRef.current.size > 0) {
+          playNotificationSound('alert');
+          toast({
+            title: "🚨 High Priority Feedback!",
+            description: `${newHighPriorityMessages.length} new urgent message(s) received`,
+            variant: "destructive",
+          });
+        }
+
+        previousMessageIdsRef.current = currentIds;
+      }
+      
       setMessages(data || []);
     } catch (error) {
       console.error('Error fetching feedback:', error);
