@@ -34,6 +34,7 @@ import { getParentRoute } from "@/lib/routeHelper";
 import { CareerProgressTracker } from "@/components/CareerProgressTracker";
 import { AnimatedTierBadge } from "@/components/AnimatedTierBadge";
 import { setCustomKeywordMappings, clearCustomKeywordMappings, loadRoomKeywords } from "@/lib/customKeywordLoader";
+import { ProfileAvatarUpload } from "@/components/ProfileAvatarUpload";
 
 interface Message {
   id: string;
@@ -790,15 +791,10 @@ const ChatHub = () => {
               )}
             </div>
             <div className="flex items-center justify-center gap-2 text-xs font-medium text-primary">
-              {avatarUrl ? (
-                <img 
-                  src={avatarUrl} 
-                  alt={username || 'User'} 
-                  className="w-6 h-6 rounded-full object-cover border border-primary/20"
-                />
-              ) : (
-                <span>👤</span>
-              )}
+              <ProfileAvatarUpload
+                currentAvatarUrl={avatarUrl}
+                onUploadSuccess={(url) => setAvatarUrl(url)}
+              />
               <span>{username || 'User'}</span>
               {tier && (
                 <span className="font-semibold">{tier.toUpperCase()}</span>
