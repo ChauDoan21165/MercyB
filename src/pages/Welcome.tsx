@@ -80,7 +80,7 @@ const Welcome = () => {
     },
     {
       name: { vi: "VIP1", en: "VIP1" },
-      price: "$2",
+      price: "$3",
       period: { vi: "/tháng", en: "/month" },
       features: {
         en: ["Users can request one custom topic", "1 full room access/day", "🤖 AI Content"],
@@ -90,7 +90,7 @@ const Welcome = () => {
     },
     {
       name: { vi: "VIP2", en: "VIP2" },
-      price: "$4",
+      price: "$6",
       period: { vi: "/tháng", en: "/month" },
       features: {
         en: ["Users can request two custom topics", "2 full rooms access/day", "🤖 AI Content"],
@@ -99,7 +99,7 @@ const Welcome = () => {
     },
     {
       name: { vi: "VIP3", en: "VIP3" },
-      price: "$6",
+      price: "$15",
       period: { vi: "/tháng", en: "/month" },
       features: {
         en: ["Users can request three custom topics", "3 rooms access/day", "AI Matchmaking", "Voice chat", "🤖 AI Content"],

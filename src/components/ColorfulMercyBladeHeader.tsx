@@ -49,17 +49,28 @@ export const ColorfulMercyBladeHeader = ({
   return (
     <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border py-4 px-6">
       <div className="max-w-7xl mx-auto relative flex items-center justify-between">
-        {/* Left side - Back Button */}
-        <div className="flex-none w-24">
+        {/* Left side - Back and Home Buttons */}
+        <div className="flex-none w-24 flex flex-col gap-2">
           {showBackButton && (
-            <Button
-              onClick={() => navigate('/')}
-              size="sm"
-              className="gap-2 bg-gray-900 hover:bg-gray-800 text-white"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back
-            </Button>
+            <>
+              <Button
+                onClick={() => navigate(-1)}
+                size="sm"
+                className="gap-2 bg-gray-900 hover:bg-gray-800 text-white"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back
+              </Button>
+              <Button
+                onClick={() => navigate('/')}
+                size="sm"
+                variant="outline"
+                className="gap-2"
+              >
+                <Crown className="w-4 h-4" />
+                Home
+              </Button>
+            </>
           )}
         </div>
 
