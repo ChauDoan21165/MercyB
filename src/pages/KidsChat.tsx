@@ -450,16 +450,13 @@ const KidsChat = () => {
             <div className="flex flex-wrap gap-2 justify-center">
               {entries.map((entry, index) => {
                 const isClicked = clickedIndex === index;
-                // Extract first few words for button label
-                const labelEn = entry.content_en.split(' ').slice(0, 3).join(' ') + '...';
-                const labelVi = entry.content_vi.split(' ').slice(0, 3).join(' ') + '...';
                 
                 return (
                   <Button
                     key={entry.id}
                     variant={isClicked ? "default" : "outline"}
                     size="sm"
-                    className="text-xs cursor-pointer"
+                    className="text-xs cursor-pointer whitespace-normal text-left h-auto min-h-[2rem] px-3 py-2"
                     onClick={() => handleKeywordClick(entry, index)}
                   >
                     {isAdmin && (
@@ -472,18 +469,17 @@ const KidsChat = () => {
                             toast({ title: "No audio", description: "This entry has no audio filename" });
                             return;
                           }
-                          // Automatically add /audio/ prefix if not already present
                           const out = audioFile.startsWith('/audio/') 
                             ? audioFile 
                             : `/audio/${audioFile.replace(/^\//, '')}`;
                           navigator.clipboard.writeText(out);
                           toast({ title: "Copied!", description: `Audio: ${out}` });
                         }}
-                        className="inline-flex w-[1em] h-[1em] rounded-full bg-destructive hover:bg-destructive/90 mr-2 align-middle cursor-pointer"
+                        className="inline-flex w-[1em] h-[1em] rounded-full bg-destructive hover:bg-destructive/90 mr-2 align-middle cursor-pointer flex-shrink-0"
                         title="Copy audio filename"
                       />
                     )}
-                    {index + 1}. {labelEn} / {labelVi}
+                    {index + 1}. {entry.content_en} / {entry.content_vi}
                   </Button>
                 );
               })}
