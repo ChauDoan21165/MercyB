@@ -729,16 +729,6 @@ const ChatHub = () => {
               <ArrowLeft className="w-4 h-4" />
               Back / Quay Lại
             </Button>
-            <Button
-              variant="ghost"
-              onClick={handleRefreshRooms}
-              disabled={isRefreshing}
-              className="gap-2"
-              title="Refresh room data / Làm mới dữ liệu phòng"
-            >
-              <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
-              Refresh
-            </Button>
           </div>
          
           <div className="text-center space-y-1">
@@ -805,18 +795,16 @@ const ChatHub = () => {
           </div>
          
           <div className="flex items-center gap-2">
-            {isAdmin && (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleRefreshRooms}
-                disabled={isRefreshing}
-                className="gap-2"
-              >
-                <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
-                <span className="hidden sm:inline">Refresh Rooms</span>
-              </Button>
-            )}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleRefreshRooms}
+              disabled={isRefreshing}
+              className="gap-1"
+            >
+              <RefreshCw className={`w-3 h-3 ${isRefreshing ? 'animate-spin' : ''}`} />
+              Refresh
+            </Button>
           </div>
         </div>
         
