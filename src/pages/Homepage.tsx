@@ -93,7 +93,7 @@ const Homepage = () => {
 
       {/* Hero Section with Rainbow Background */}
       <section 
-        className="relative min-h-[70vh] bg-cover bg-top md:bg-[center_20%]"
+        className="relative w-full min-h-[60vh] md:min-h-[70vh] bg-cover bg-top md:bg-[center_20%] flex flex-col items-center justify-center px-4 sm:px-6 md:px-8"
         style={{ 
           backgroundImage: `url(${heroRainbowBg})`
         }}
