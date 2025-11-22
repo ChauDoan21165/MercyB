@@ -10,7 +10,6 @@ import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { highlightTextByRules } from "@/lib/wordColorHighlighter";
 import { AudioPlayer } from "@/components/AudioPlayer";
-import { BrandSlogan } from "@/components/brand/BrandSlogan";
 
 const RoomGridVIP3II = () => {
   const navigate = useNavigate();
@@ -63,11 +62,6 @@ const RoomGridVIP3II = () => {
       
       <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, hsl(220, 70%, 95%), hsl(250, 70%, 95%))' }}>
         <div className="container mx-auto px-4 py-8 max-w-7xl">
-          {/* Brand Slogan */}
-          <div className="mb-12">
-            <BrandSlogan size="md" />
-          </div>
-
           {/* Header */}
           <div className="mb-8 space-y-4">
             <div className="flex items-center justify-between mb-4">
