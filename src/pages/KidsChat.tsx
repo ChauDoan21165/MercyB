@@ -370,32 +370,20 @@ const KidsChat = () => {
       </div>
       
       <div className="container mx-auto px-4 py-3 max-w-6xl space-y-3">
-        {/* User Profile Info */}
+        {/* User Profile Info - Compact VIP3 Style */}
         {userProfile && (
-          <Card className="p-3 bg-card border border-border">
-            <div className="flex items-center justify-between flex-wrap gap-2">
-              <div className="flex items-center gap-3">
-                <ProfileAvatarUpload
-                  currentAvatarUrl={userProfile.avatar_url}
-                  onUploadSuccess={(url) => setUserProfile({ ...userProfile, avatar_url: url })}
-                />
-                <div>
-                  <p className="font-medium text-foreground">
-                    {userProfile.full_name || userProfile.username || 'Student'}
-                  </p>
-                  {userSubscription && (
-                    <p className="text-xs text-muted-foreground">
-                      {userSubscription.kids_levels.name_en} / {userSubscription.kids_levels.name_vi}
-                    </p>
-                  )}
-                </div>
-              </div>
-              <div className="text-right">
-                <p className="text-sm font-medium text-foreground">{roomsExplored} rooms explored</p>
-                <p className="text-xs text-muted-foreground">{roomsExplored} phòng đã khám phá</p>
-              </div>
-            </div>
-          </Card>
+          <div className="flex items-center justify-center gap-2 text-xs font-medium text-primary">
+            <ProfileAvatarUpload
+              currentAvatarUrl={userProfile.avatar_url}
+              onUploadSuccess={(url) => setUserProfile({ ...userProfile, avatar_url: url })}
+            />
+            <span>{userProfile.full_name || userProfile.username || 'Student'}</span>
+            {userSubscription && (
+              <span className="font-semibold">{userSubscription.kids_levels.name_en}</span>
+            )}
+            <span>•</span>
+            <span>{roomsExplored} {roomsExplored === 1 ? 'room' : 'rooms'} explored 🎨</span>
+          </div>
         )}
 
         {/* Room title */}
