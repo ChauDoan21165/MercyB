@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Activity, Baby, Shield, Zap } from "lucide-react";
+import { Activity, Baby, Shield, Zap, ArrowLeft } from "lucide-react";
 
 const tiers = [
   { id: "free", name: "Free", icon: Zap, color: "text-blue-500" },
@@ -18,6 +18,12 @@ export default function HealthDashboard() {
   return (
     <div className="container mx-auto p-6 space-y-6">
       <div>
+        <Link to="/admin">
+          <Button variant="ghost" size="sm" className="mb-2">
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Back to Admin
+          </Button>
+        </Link>
         <h1 className="text-3xl font-bold mb-2">System Health Dashboard</h1>
         <p className="text-muted-foreground">
           Monitor and validate room configurations across all tiers
