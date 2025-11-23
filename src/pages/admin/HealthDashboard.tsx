@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Activity, Baby, Shield, Zap, ArrowLeft } from "lucide-react";
+import { Activity, Baby, Shield, Zap, ArrowLeft, Settings } from "lucide-react";
 
 const tiers = [
   { id: "free", name: "Free", icon: Zap, color: "text-blue-500" },
@@ -45,6 +45,24 @@ export default function HealthDashboard() {
             <Button>
               <Activity className="h-4 w-4 mr-2" />
               Check Kids Rooms
+            </Button>
+          </Link>
+        </Card>
+
+        <Card className="p-6">
+          <div className="flex items-center space-x-3 mb-4">
+            <Settings className="h-6 w-6 text-blue-500" />
+            <div>
+              <h2 className="text-xl font-semibold">System Health Dashboard</h2>
+              <p className="text-sm text-muted-foreground">
+                Monitor overall system health and configuration
+              </p>
+            </div>
+          </div>
+          <Link to="/admin/system-health">
+            <Button variant="secondary">
+              <Activity className="h-4 w-4 mr-2" />
+              View System Health
             </Button>
           </Link>
         </Card>
