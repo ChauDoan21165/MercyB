@@ -173,49 +173,96 @@ export default function UnifiedHealthCheck() {
       // Generate multiple filename patterns to match inconsistent naming in actual files
       const schemaId = room.schema_id || room.id;
       const tier = room.tier || 'free';
+      const tierSuffix = tier.toLowerCase().replace(/\s+/g, '');
       
-      // Pattern 1: Original schema_id with hyphens, lowercase
+      // Helper: Capitalize and preserve special chars
+      const capitalizeWord = (word: string) => {
+        if (!word || word === '&') return word;
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      };
+      
+      // Pattern 1: Exact schema_id (lowercase with hyphens)
       const pattern1 = `${schemaId}.json`;
       
       // Pattern 2: Replace hyphens with underscores
       const pattern2 = `${schemaId.replace(/-/g, "_")}.json`;
       
-      // Pattern 3: Capitalize words, keep underscores (most common for VIP3)
-      const pattern3 = schemaId.split(/[-_]/)
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      // Pattern 3: Capitalize words, replace hyphens with underscores
+      const pattern3 = schemaId.split('-')
+        .map(capitalizeWord)
         .join('_') + '.json';
       
-      // Pattern 4: Same as pattern3 but keep ampersands and special chars
-      const pattern4 = schemaId.split(/[-_]/)
-        .map(word => {
-          // Keep &, spaces, dots in the original word
-          if (word.includes('&')) return word;
-          return word.charAt(0).toUpperCase() + word.slice(1);
-        })
-        .join('_') + '.json';
-      
-      // Pattern 5: Replace & with And
-      const pattern5 = schemaId.split(/[-_]/)
-        .map(word => word === '&' ? 'And' : word.charAt(0).toUpperCase() + word.slice(1))
-        .join('_') + '.json';
-      
-      // Pattern 6: Keep spaces and ampersands exactly (for files like "Sexuality & Curiosity & Culture_vip3.json")
-      const pattern6 = schemaId.replace(/-/g, ' ')
-        .split(/[_]/)
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join('_') + '.json';
-      
-      // Pattern 7: Full lowercase with hyphens (for english-writing series)
-      const pattern7 = `${schemaId.toLowerCase()}.json`;
-      
-      // Pattern 8: With tier suffix (common pattern)
-      const tierSuffix = tier.toLowerCase().replace(/\s+/g, '');
-      const pattern8 = schemaId.split(/[-_]/)
-        .map(word => word === '&' ? '&' : word.charAt(0).toUpperCase() + word.slice(1))
+      // Pattern 4: Pattern 3 + tier suffix
+      const pattern4 = schemaId.split('-')
+        .map(capitalizeWord)
         .join('_') + `_${tierSuffix}.json`;
+      
+      // Pattern 5: Replace hyphens with underscores, capitalize
+      const pattern5 = schemaId.replace(/-/g, '_')
+        .split('_')
+        .map(capitalizeWord)
+        .join('_') + '.json';
+      
+      // Pattern 6: Pattern 5 + tier suffix
+      const pattern6 = schemaId.replace(/-/g, '_')
+        .split('_')
+        .map(capitalizeWord)
+        .join('_') + `_${tierSuffix}.json`;
+      
+      // Pattern 7: English writing series (lowercase with -ii)
+      const pattern7 = `${schemaId.toLowerCase().replace('vip3ii', 'vip3-ii')}.json`;
+      
+      // Pattern 8: Replace & with "And", capitalize
+      const pattern8 = schemaId.replace(/&/g, 'and')
+        .split(/[-_]/)
+        .map(capitalizeWord)
+        .join('_') + `_${tierSuffix}.json`;
+      
+      // Pattern 9: weight-loss-&-fitness -> Weight_Loss_And_Fitness_vip3
+      const pattern9 = schemaId.replace(/-&-/g, '_And_')
+        .replace(/&/g, 'And')
+        .split('-')
+        .map(capitalizeWord)
+        .join('_') + `_${tierSuffix}.json`;
+      
+      // Pattern 10: Schema ID specific mappings for known files
+      const specificMappings: Record<string, string> = {
+        'weight-loss-&-fitness': 'Weight_Loss_And_Fitness_vip3.json',
+        'strategy-in-life---mastery-&-legacy': 'Strategy_In_Life_Mastery_Legacy_vip3.json',
+        'mercy_blade_english': 'Mercy_Blade_Method_Of_ Learning_English.json', // Note the space!
+        'quiet_growth_vip3_3': 'Quiet_Growth_Simple Investing_vip3.3.finance.json',
+        'quiet_growth': 'Quiet_Growth_Simple Investing_vip3.3.finance.json',
+        'legacy_peace_vip3_6': 'Legacy_&_Long_Term_Peace_vip3_6_finance.json',
+        'diverse_desires_vip3_sub5': 'Diverse_Desires_&_Belonging_vip3_sub5_sex.json',
+        'relational_erotic_vip3_sub2': 'Relational_Intelligence_&_Erotic_Communication_vip3_sub2_sex.json',
+        'sexuality_culture_vip3': 'Sexuality & Curiosity & Culture_vip3.json',
+        'sexuality-curiosity-culture-vip3': 'Sexuality & Curiosity & Culture_vip3.json',
+        'mercy-blade-room-v1': 'Sexuality & Curiosity & Culture_vip3.json',
+        'growing_bigger_vip3_5': 'Growing_Bigger_When_Ready_vip3_5_fiance.json',
+        'finance_grow_bigger_vip3_sub5': 'Growing_Bigger_When_Ready_vip3_5_fiance.json',
+        'strategy_tactics_ii_vip3': 'Strategy_in_Life_ Advanced_Tactics_II_vip3.json',
+        'strategy_life_advanced_tactics_vip3': 'Strategy_in_Life_Advanced_Tactics_II_vip3.json',
+        'strategy_life_foundations_vip3': 'Strategy_in_Life_Foundations_II_vip3.json',
+        'english-writing-deepdive-part5-vip3ii': 'english-writing-deepdive-part5-vip3-ii.json',
+        'english-writing-deepdive-part8-vip3ii': 'english-writing-deepdive-part8-vip3-ii.json',
+      };
+      
+      const pattern10 = specificMappings[schemaId] || '';
+      
+      // Pattern 11: Legacy format (triple hyphen to single underscore)
+      const pattern11 = schemaId.replace(/---/g, '_')
+        .replace(/--/g, '_')
+        .replace(/-/g, '_')
+        .split('_')
+        .map(capitalizeWord)
+        .join('_') + `_${tierSuffix}.json`;
+      
+      // Pattern 12: Mixed case preservation for english-writing
+      const pattern12 = `${schemaId}.json`;
 
       const fallbackCandidates: { url: string; key: string; path: string }[] = [
         { url: `/data/${room.id}.json`, key: "fallback", path: `data/${room.id}.json` },
+        ...(pattern10 ? [{ url: `/data/${pattern10}`, key: "specific", path: `data/${pattern10}` }] : []),
         { url: `/data/${pattern1}`, key: "fallback", path: `data/${pattern1}` },
         { url: `/data/${pattern2}`, key: "fallback", path: `data/${pattern2}` },
         { url: `/data/${pattern3}`, key: "fallback", path: `data/${pattern3}` },
@@ -224,6 +271,9 @@ export default function UnifiedHealthCheck() {
         { url: `/data/${pattern6}`, key: "fallback", path: `data/${pattern6}` },
         { url: `/data/${pattern7}`, key: "fallback", path: `data/${pattern7}` },
         { url: `/data/${pattern8}`, key: "fallback", path: `data/${pattern8}` },
+        { url: `/data/${pattern9}`, key: "fallback", path: `data/${pattern9}` },
+        { url: `/data/${pattern11}`, key: "fallback", path: `data/${pattern11}` },
+        { url: `/data/${pattern12}`, key: "fallback", path: `data/${pattern12}` },
       ];
 
       const fileCandidates = [...manifestCandidates, ...fallbackCandidates];
