@@ -7,9 +7,10 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { CheckCircle2, XCircle, AlertCircle, Loader2, Wrench } from 'lucide-react';
+import { CheckCircle2, XCircle, AlertCircle, Loader2, Wrench, Download } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { KIDS_ROOM_JSON_MAP } from '@/pages/KidsChat';
+import { repairJSON, downloadJSON } from '@/lib/jsonRepair';
 
 interface RoomStatus {
   id: string;
@@ -41,6 +42,7 @@ export default function KidsRoomHealthCheck() {
   const [checking, setChecking] = useState(false);
   const [fixing, setFixing] = useState<string | null>(null);
   const [fixingAll, setFixingAll] = useState(false);
+  const [repairing, setRepairing] = useState<string | null>(null);
   const [rooms, setRooms] = useState<RoomStatus[]>([]);
   const [selectedLevel, setSelectedLevel] = useState<'all' | 'level1' | 'level2' | 'level3'>('all');
 
@@ -277,6 +279,61 @@ export default function KidsRoomHealthCheck() {
       });
     } finally {
       setFixing(null);
+    }
+  };
+
+  const repairJsonFile = async (roomId: string, roomLevelId: string) => {
+    setRepairing(roomId);
+    try {
+      const jsonFileName = getJsonFilenameForRoom(roomId, roomLevelId);
+      const response = await fetch(`/data/${jsonFileName}`);
+      
+      if (!response.ok) {
+        throw new Error(`JSON file not found: /data/${jsonFileName}`);
+      }
+
+      const text = await response.text();
+      const result = repairJSON(text);
+
+      if (result.success) {
+        // Download the repaired file
+        downloadJSON(result.data, jsonFileName);
+        
+        toast({
+          title: "✅ JSON Repaired Successfully",
+          description: (
+            <div className="space-y-2">
+              <p>The repaired file has been downloaded: <strong>{jsonFileName}</strong></p>
+              {result.changes && result.changes.length > 0 && (
+                <>
+                  <p className="text-sm mt-2">Changes made:</p>
+                  <ul className="text-sm list-disc list-inside space-y-1">
+                    {result.changes.map((change, i) => (
+                      <li key={i}>{change}</li>
+                    ))}
+                  </ul>
+                </>
+              )}
+              <p className="text-xs text-muted-foreground mt-2">
+                Please replace the file in <code>/public/data/{jsonFileName}</code> and refresh.
+              </p>
+            </div>
+          ),
+        });
+        
+        // Refresh the health check
+        setTimeout(() => checkRooms(), 1000);
+      } else {
+        throw new Error(result.error || 'Failed to repair JSON');
+      }
+    } catch (error: any) {
+      toast({
+        title: "❌ Repair Failed",
+        description: error.message,
+        variant: "destructive",
+      });
+    } finally {
+      setRepairing(null);
     }
   };
 
@@ -592,12 +649,32 @@ export default function KidsRoomHealthCheck() {
                   {invalidJson.map(room => (
                     <Alert key={room.id} variant="destructive">
                       <XCircle className="h-4 w-4" />
-                      <AlertDescription>
-                        <strong>{room.title_en}</strong> ({room.id})
-                        <br />
-                        <span className="text-sm">
-                          Level {room.level_id.replace('level', '')} • {room.jsonError}
-                        </span>
+                      <AlertDescription className="flex items-center justify-between">
+                        <div>
+                          <strong>{room.title_en}</strong> ({room.id})
+                          <br />
+                          <span className="text-sm">
+                            Level {room.level_id.replace('level', '')} • {room.jsonError}
+                          </span>
+                        </div>
+                        <Button
+                          onClick={() => repairJsonFile(room.id, room.level_id)}
+                          disabled={repairing === room.id}
+                          size="sm"
+                          variant="outline"
+                        >
+                          {repairing === room.id ? (
+                            <>
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                              Repairing...
+                            </>
+                          ) : (
+                            <>
+                              <Download className="mr-2 h-4 w-4" />
+                              Repair & Download
+                            </>
+                          )}
+                        </Button>
                       </AlertDescription>
                     </Alert>
                   ))}
