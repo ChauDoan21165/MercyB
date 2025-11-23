@@ -33,6 +33,28 @@ jobs:
       - name: Validate data files
         run: node scripts/validate-data-files.js
 
+      - name: Validate room registry
+        run: node scripts/validate-room-registry.js
+
+      - name: Validate kids rooms
+        run: node scripts/validate-kids-rooms.js
+
+      - name: Generate and verify room registry
+        run: |
+          echo "🔄 Generating room registry..."
+          node scripts/generate-room-registry.js
+          if [ -n "$(git status --porcelain src/lib/roomManifest.ts src/lib/roomDataImports.ts)" ]; then
+            echo "❌ Registry files are out of sync! Run 'node scripts/generate-room-registry.js' locally and commit."
+            git diff src/lib/roomManifest.ts src/lib/roomDataImports.ts
+            exit 1
+          else
+            echo "✅ Registry files are in sync"
+          fi
+
+      - name: Run tests
+        run: npm test
+        continue-on-error: false
+
   lint:
     name: Code Quality
     runs-on: ubuntu-latest
