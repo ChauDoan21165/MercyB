@@ -1,13 +1,142 @@
-{
-"tier": "VIP 3 / Cấp VIP 3",
-"title": {
-"en": "The Meaning of Life: Harmony of Being",
-"vi": "Ý Nghĩa Của Cuộc Sống: Hòa Điệu Của Tồn Tại"
-},
-"keywords_en": ["meaning of life", "purpose", "harmony", "integration", "awareness", "presence", "meaning", "life purpose"],
-"keywords_vi": ["ý nghĩa cuộc sống", "mục đích", "hòa điệu", "hợp nhất", "tỉnh thức", "hiện diện", "ý nghĩa", "mục đích sống"],
-"content": {
-"en": "At the deepest level, meaning reveals itself as harmony — not something to chase, but something to remember. Life is not a ladder to climb but a song to join, where each note is both your breath and the breath of the world. When you live with awareness, you see that even pain participates in beauty: the wilted leaf feeding new soil, the heartbreak carving space for compassion. True purpose lies in integration — where thought, emotion, and action move as one, guided by quiet integrity. To be human is to learn the art of balance between surrender and shaping, solitude and belonging, silence and expression. In this understanding, service becomes devotion, and love becomes practice. Meaning is not found — it is made, in each choice to be present, kind, and awake within the fleeting miracle of now.\n\n*Discover deeper meaning in higher level.*",
-"vi": "Ở tầng sâu nhất, ý nghĩa hé lộ như một khúc hòa điệu — không phải điều để theo đuổi, mà là điều để ghi nhớ. Cuộc sống không phải chiếc thang để leo, mà là bản nhạc để hòa cùng, nơi mỗi nốt là hơi thở của bạn và cũng là hơi thở của thế giới. Khi sống với sự tỉnh thức, bạn nhận ra rằng ngay cả nỗi đau cũng góp phần vào vẻ đẹp: chiếc lá úa nuôi dưỡng mảnh đất mới, trái tim tan vỡ mở ra chỗ cho lòng từ bi. Mục đích chân thật nằm trong sự hòa hợp — nơi suy nghĩ, cảm xúc và hành động vận hành như một thể, được dẫn dắt bởi sự chính trực tĩnh lặng. Là con người là học cách cân bằng giữa buông và nắm, giữa cô đơn và gắn bó, giữa im lặng và biểu đạt. Trong nhận thức ấy, sự phục vụ trở thành lòng dâng hiến, và tình yêu trở thành sự thực hành. Ý nghĩa không phải được tìm thấy — mà được tạo nên, trong từng khoảnh khắc bạn hiện diện, tử tế, và tỉnh thức giữa phép màu mong manh của giây phút này.\n\n*Khám phá ý nghĩa sâu hơn ở cấp độ cao hơn.*"
-}
-}
+[
+  {
+    "id": "meaning-of-life-vip3",
+    "tier": "VIP 3 / Cấp VIP 3",
+    "title": {
+      "en": "The Meaning of Life: Harmony of Being",
+      "vi": "Ý Nghĩa Của Cuộc Sống: Hòa Điệu Của Tồn Tại"
+    },
+    "keywords_en": [
+      "meaning of life",
+      "purpose",
+      "harmony",
+      "integration",
+      "awareness",
+      "presence",
+      "meaning",
+      "life purpose"
+    ],
+    "keywords_vi": [
+      "ý nghĩa cuộc sống",
+      "mục đích",
+      "hòa điệu",
+      "hợp nhất",
+      "tỉnh thức",
+      "hiện diện",
+      "ý nghĩa",
+      "mục đích sống"
+    ],
+    "content": {
+      "en": "At the deepest level, meaning reveals itself as harmony — not something to chase, but something to remember...",
+      "vi": "Ở tầng sâu nhất, ý nghĩa hé lộ như một khúc hòa điệu — không phải điều để theo đuổi..."
+    }
+  },
+
+  {
+    "id": "meaning-of-life-vip4",
+    "tier": "VIP 4 / Cấp VIP 4",
+    "title": {
+      "en": "Stillness as the Teacher",
+      "vi": "Tĩnh Lặng Như Một Người Thầy"
+    },
+    "keywords_en": [
+      "stillness",
+      "insight",
+      "meditation",
+      "truth",
+      "presence"
+    ],
+    "keywords_vi": [
+      "tĩnh lặng",
+      "thấu suốt",
+      "thiền",
+      "chân lý",
+      "hiện diện"
+    ],
+    "content": {
+      "en": "In silence, the world becomes audible again. When the mind rests, wisdom rises without effort...",
+      "vi": "Trong tĩnh lặng, thế giới trở nên rõ ràng trở lại. Khi tâm an, trí tuệ tự nhiên hiển lộ..."
+    }
+  },
+
+  {
+    "id": "meaning-of-life-vip5",
+    "tier": "VIP 5 / Cấp VIP 5",
+    "title": {
+      "en": "The Courage to Be Vulnerable",
+      "vi": "Dũng Khí Để Sống Mong Manh"
+    },
+    "keywords_en": [
+      "vulnerability",
+      "openness",
+      "authenticity",
+      "growth",
+      "humanity"
+    ],
+    "keywords_vi": [
+      "mong manh",
+      "mở lòng",
+      "chân thật",
+      "trưởng thành",
+      "nhân tính"
+    ],
+    "content": {
+      "en": "To be vulnerable is not to be weak, but to be real. Growth begins the moment we stop pretending...",
+      "vi": "Sự mong manh không phải yếu đuối, mà là sống thật. Trưởng thành bắt đầu khi ta ngừng giả vờ..."
+    }
+  },
+
+  {
+    "id": "meaning-of-life-vip6",
+    "tier": "VIP 6 / Cấp VIP 6",
+    "title": {
+      "en": "Living the Inner and Outer Journey",
+      "vi": "Sống Cả Hành Trình Bên Trong Và Bên Ngoài"
+    },
+    "keywords_en": [
+      "inner life",
+      "outer life",
+      "balance",
+      "wholeness",
+      "awareness"
+    ],
+    "keywords_vi": [
+      "đời sống nội tâm",
+      "đời sống bên ngoài",
+      "cân bằng",
+      "trọn vẹn",
+      "tỉnh thức"
+    ],
+    "content": {
+      "en": "Life happens both in the world and within ourselves. Wisdom is learning to walk both paths at once...",
+      "vi": "Cuộc sống diễn ra cả bên ngoài lẫn bên trong. Trí tuệ là biết đi cả hai con đường cùng lúc..."
+    }
+  },
+
+  {
+    "id": "meaning-of-life-vip7",
+    "tier": "VIP 7 / Cấp VIP 7",
+    "title": {
+      "en": "Purpose Through Service",
+      "vi": "Mục Đích Qua Sự Phụng Sự"
+    },
+    "keywords_en": [
+      "service",
+      "purpose",
+      "contribution",
+      "compassion",
+      "meaning"
+    ],
+    "keywords_vi": [
+      "phụng sự",
+      "mục đích",
+      "cống hiến",
+      "từ bi",
+      "ý nghĩa"
+    ],
+    "content": {
+      "en": "Purpose matures when the heart turns outward. We grow not only by receiving but by offering who we are...",
+      "vi": "Mục đích chín muồi khi trái tim hướng ra ngoài. Ta lớn lên không chỉ khi nhận, mà khi trao đi chính mình..."
+    }
+  }
+]
