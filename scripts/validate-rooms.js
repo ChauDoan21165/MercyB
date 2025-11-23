@@ -88,6 +88,17 @@ async function validateRooms(targetTier = null) {
 
     console.log(`${colors.cyan}📊 Found ${rooms.length} rooms${tierFilter}${colors.reset}\n`);
 
+    // Helper to convert schema_id to proper JSON filename
+    const getSuggestedJsonBaseName = (schemaId, tier) => {
+      const words = schemaId.split('-');
+      const capitalizedWords = words.map(word => 
+        word.charAt(0).toUpperCase() + word.slice(1)
+      );
+      const baseName = capitalizedWords.join('_');
+      const tierSuffix = tier.toLowerCase();
+      return `${baseName}_${tierSuffix}.json`;
+    };
+
     // Group rooms by tier
     const roomsByTier = rooms.reduce((acc, room) => {
       const tier = TIER_NAMES[room.tier] || room.tier;
@@ -130,8 +141,9 @@ async function validateRooms(targetTier = null) {
         }
         
         if (!jsonFound) {
+          const suggestedFileName = getSuggestedJsonBaseName(room.id, room.tier || 'free');
           issues.push(`    ❌ JSON file not found for room: ${room.title_en} (${room.id})`);
-          issues.push(`       Expected: /data/${room.id}.json`);
+          issues.push(`       Expected: /data/${suggestedFileName}`);
           issues.push(`       💡 Create this file with proper structure based on other ${tier} files`);
           continue;
         }
