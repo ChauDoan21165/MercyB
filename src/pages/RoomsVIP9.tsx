@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
 import { Button } from '@/components/ui/button';
-import { Crown, Lock, Unlock } from 'lucide-react';
+import { Lock, Unlock, TrendingUp, Building2, Globe2 } from 'lucide-react';
 import { useUserAccess } from '@/hooks/useUserAccess';
 import { useToast } from '@/hooks/use-toast';
 
@@ -108,95 +108,130 @@ const RoomsVIP9 = () => {
     );
   }
 
+  const domainIcons = {
+    individual_strategic_mastery: TrendingUp,
+    corporate_organizational_strategy: Building2,
+    national_geostrategic_intelligence: Globe2
+  };
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       <ColorfulMercyBladeHeader showBackButton={true} />
       
-      <div className="container max-w-7xl mx-auto px-4 py-8 space-y-12">
+      <div className="container max-w-7xl mx-auto px-4 py-12 space-y-16">
         {/* Header Section */}
-        <div className="text-center space-y-4 max-w-3xl mx-auto">
-          <div className="flex items-center justify-center gap-3">
-            <Crown className="h-12 w-12 text-amber-600" />
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
-              VIP9 Strategic Mastery
-            </h1>
+        <div className="text-center space-y-6 max-w-4xl mx-auto">
+          <div className="inline-block px-4 py-1.5 bg-slate-800/50 border border-slate-700 rounded-full">
+            <span className="text-xs font-semibold text-slate-300 tracking-wider uppercase">Executive Level</span>
           </div>
-          <p className="text-lg text-muted-foreground">
-            <span className="font-medium">Bậc Thầy Chiến Lược</span> — Individual, Corporate & National Strategy
-          </p>
-          <p className="text-sm text-muted-foreground">
-            55 elite rooms across three strategic domains • $150/month
+          
+          <h1 className="text-5xl md:text-6xl font-bold text-white tracking-tight">
+            VIP9 Strategic Mastery
+          </h1>
+          
+          <p className="text-xl text-slate-300 font-light">
+            Individual, Corporate & National Strategy
           </p>
           
+          <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            55 elite strategic frameworks designed for C-suite executives, thought leaders, 
+            and strategic decision-makers operating at the highest levels of influence.
+          </p>
+          
+          <div className="flex items-center justify-center gap-8 pt-4">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-white">55</div>
+              <div className="text-sm text-slate-400">Elite Rooms</div>
+            </div>
+            <div className="h-12 w-px bg-slate-700"></div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-white">3</div>
+              <div className="text-sm text-slate-400">Strategic Domains</div>
+            </div>
+            <div className="h-12 w-px bg-slate-700"></div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-white">$150</div>
+              <div className="text-sm text-slate-400">Per Month</div>
+            </div>
+          </div>
+          
           {!hasAccess && (
-            <div className="mt-6">
+            <div className="pt-6">
               <Button 
                 size="lg"
                 onClick={() => navigate('/subscribe')}
-                className="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white shadow-lg"
+                className="bg-white hover:bg-slate-100 text-slate-900 font-semibold px-8 py-6 text-lg shadow-xl"
               >
-                <Crown className="mr-2 h-4 w-4" />
-                Upgrade to VIP9
+                Access VIP9 Strategic Mastery
               </Button>
             </div>
           )}
         </div>
 
         {/* Domain Sections */}
-        {domains.map((domain) => (
-          <div key={domain.id} className="space-y-6">
-            <div className="border-l-4 border-amber-600 pl-4">
-              <h2 className="text-2xl font-bold text-foreground">{domain.title.en}</h2>
-              <p className="text-lg text-muted-foreground">{domain.title.vi}</p>
-              <p className="text-sm text-muted-foreground mt-1">
-                {domain.rooms.length} rooms
-              </p>
-            </div>
+        {domains.map((domain) => {
+          const Icon = domainIcons[domain.id as keyof typeof domainIcons];
+          return (
+            <div key={domain.id} className="space-y-8">
+              <div className="border-l-2 border-slate-600 pl-6 py-2">
+                <div className="flex items-center gap-3 mb-2">
+                  <Icon className="h-6 w-6 text-slate-400" />
+                  <h2 className="text-3xl font-bold text-white tracking-tight">{domain.title.en}</h2>
+                </div>
+                <p className="text-lg text-slate-400 font-light">{domain.title.vi}</p>
+                <p className="text-sm text-slate-500 mt-2">
+                  {domain.rooms.length} strategic frameworks
+                </p>
+              </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {domain.rooms.map((room) => (
-                <button
-                  key={room.id}
-                  onClick={() => handleRoomClick(room.id)}
-                  className="group relative p-6 rounded-xl border-2 border-border hover:border-amber-500 bg-card hover:bg-amber-50 dark:hover:bg-amber-950 transition-all duration-300 hover:shadow-xl hover:scale-[1.02] text-left"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex-1 space-y-2">
-                      <h3 className="font-semibold text-foreground group-hover:text-amber-600 transition-colors">
-                        {room.title_en}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        {room.title_vi}
-                      </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {domain.rooms.map((room) => (
+                  <button
+                    key={room.id}
+                    onClick={() => handleRoomClick(room.id)}
+                    className="group relative p-6 rounded-lg border border-slate-700 bg-slate-800/50 hover:bg-slate-800 hover:border-slate-600 transition-all duration-300 text-left backdrop-blur-sm"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex-1 space-y-2">
+                        <h3 className="font-semibold text-white group-hover:text-slate-100 transition-colors leading-snug">
+                          {room.title_en}
+                        </h3>
+                        <p className="text-sm text-slate-400 leading-relaxed">
+                          {room.title_vi}
+                        </p>
+                      </div>
+                      {hasAccess ? (
+                        <Unlock className="h-5 w-5 text-slate-400 group-hover:text-white flex-shrink-0 transition-colors" />
+                      ) : (
+                        <Lock className="h-5 w-5 text-slate-600 flex-shrink-0" />
+                      )}
                     </div>
-                    {hasAccess ? (
-                      <Unlock className="h-5 w-5 text-amber-600 flex-shrink-0" />
-                    ) : (
-                      <Lock className="h-5 w-5 text-muted-foreground flex-shrink-0" />
-                    )}
-                  </div>
-                </button>
-              ))}
+                    
+                    {/* Subtle hover effect line */}
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-slate-600 via-slate-500 to-slate-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
 
         {/* Footer CTA */}
         {!hasAccess && (
-          <div className="text-center space-y-4 py-12">
-            <h3 className="text-2xl font-bold text-foreground">
-              Ready to Master Strategic Thinking?
+          <div className="text-center space-y-6 py-16 border-t border-slate-800">
+            <h3 className="text-3xl font-bold text-white">
+              Elevate Your Strategic Capability
             </h3>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Access 55 elite rooms covering Individual, Corporate, and National Strategy for $150/month
+            <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">
+              Join an elite cohort of strategic leaders. Access frameworks that shape 
+              decisions at the individual, organizational, and national level.
             </p>
             <Button 
               size="lg"
               onClick={() => navigate('/subscribe')}
-              className="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white shadow-lg"
+              className="bg-white hover:bg-slate-100 text-slate-900 font-semibold px-8 py-6 text-lg shadow-xl"
             >
-              <Crown className="mr-2 h-4 w-4" />
-              Upgrade to VIP9
+              Access VIP9 Strategic Mastery
             </Button>
           </div>
         )}
