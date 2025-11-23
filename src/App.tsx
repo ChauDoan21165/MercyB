@@ -20,6 +20,7 @@ import RoomGridVIP3II from "./pages/RoomGridVIP3II";
 import RoomGridVIP4 from "./pages/RoomGridVIP4";
 import RoomGridVIP5 from "./pages/RoomGridVIP5";
 import RoomGridVIP6 from "./pages/RoomGridVIP6";
+import RoomsVIP9 from "./pages/RoomsVIP9";
 import AllRooms from "./pages/AllRooms";
 import ChatHub from "./pages/ChatHub";
 import NotFound from "./pages/NotFound";
@@ -125,6 +126,7 @@ const App = () => {
           <Route path="/rooms-vip4" element={<RoomGridVIP4 />} />
           <Route path="/rooms-vip5" element={<RoomGridVIP5 />} />
           <Route path="/vip6" element={<RoomGridVIP6 />} />
+          <Route path="/rooms-vip9" element={<RoomsVIP9 />} />
           <Route path="/kids-level1" element={<KidsLevel1 />} />
           <Route path="/kids-level2" element={<KidsLevel2 />} />
           <Route path="/kids-level3" element={<KidsLevel3 />} />
