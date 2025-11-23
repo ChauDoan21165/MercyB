@@ -50,6 +50,12 @@ function repairJSON(filePath) {
     // Read the file
     let content = fs.readFileSync(filePath, 'utf8');
     
+    // Check if file contains HTML (common when file doesn't exist and returns 404 page)
+    if (content.trim().startsWith('<!') || content.trim().startsWith('<html')) {
+      console.error('  ❌ File contains HTML instead of JSON (file is missing or corrupted)');
+      return { success: false, error: 'File contains HTML (likely missing)' };
+    }
+    
     // Remove BOM if present
     if (content.charCodeAt(0) === 0xFEFF) {
       content = content.slice(1);

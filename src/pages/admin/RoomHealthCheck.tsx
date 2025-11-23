@@ -92,6 +92,20 @@ export default function RoomHealthCheck() {
             const response = await fetch(`/data/${filename}`);
             if (response.ok) {
               const text = await response.text();
+              
+              // Check if response is HTML instead of JSON (404 page scenario)
+              if (text.trim().startsWith('<!') || text.trim().startsWith('<html')) {
+                roomIssues.push({
+                  roomId: room.id,
+                  roomTitle: room.title_en,
+                  tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
+                  issueType: "missing_file",
+                  message: `File returns HTML instead of JSON (file missing)`,
+                  details: `Create: public/data/${filename}`,
+                });
+                continue;
+              }
+              
               try {
                 jsonData = JSON.parse(text);
                 jsonFound = true;
@@ -277,7 +291,7 @@ export default function RoomHealthCheck() {
                     key={index}
                     className="border rounded-lg p-4 space-y-2 hover:bg-accent/50 transition-colors"
                   >
-                    <div className="flex items-start justify-between">
+                     <div className="flex items-start justify-between">
                       <div className="flex items-start space-x-3 flex-1">
                         {getIssueIcon(issue.issueType)}
                         <div className="flex-1">
@@ -289,9 +303,17 @@ export default function RoomHealthCheck() {
                           </div>
                           <p className="text-sm text-muted-foreground">{issue.message}</p>
                           {issue.details && (
-                            <p className="text-xs text-muted-foreground mt-1 font-mono">
+                            <p className="text-xs text-muted-foreground mt-1 font-mono bg-muted/30 p-2 rounded">
                               {issue.details}
                             </p>
+                          )}
+                          {issue.issueType === "missing_file" && (
+                            <Alert className="mt-2 py-2 px-3">
+                              <AlertCircle className="h-4 w-4" />
+                              <AlertDescription className="text-xs">
+                                💡 This file needs to be created. Check the database schema_id field and create the matching JSON file in public/data/
+                              </AlertDescription>
+                            </Alert>
                           )}
                         </div>
                       </div>
