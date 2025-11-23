@@ -28,7 +28,7 @@ function detectKidsFiles() {
   try {
     const files = fs.readdirSync(dataDir);
     return files
-      .filter(file => file.includes('kids_l1') && file.endsWith('.json'))
+      .filter(file => file.includes('kids_l') && file.endsWith('.json'))
       .map(file => path.join(dataDir, file));
   } catch (error) {
     console.error('Error scanning data directory:', error.message);
