@@ -112,6 +112,20 @@ export const KIDS_ROOM_JSON_MAP: Record<string, string> = {
   "conversation-starters": "conversation_starters_kids_l3.json",
   "emotions-expression": "emotions_self_expression_kids_l3.json",
   "grammar-power": "beginner_grammar_power_kids_l3.json",
+  "vocab-expansion": "vocabulary_expansion_kids_l3.json",
+  "idioms-kids": "idioms_for_kids_kids_l3.json",
+  "science-kids": "science_for_kids_l3.json",
+  "history-highlights": "simple_history_highlights_kids_l3.json",
+  "geography-tweens": "geography_for_tweens_kids_l3.json",
+  "digital-literacy": "digital_literacy_words_kids_l3.json",
+  "internet-vocab": "internet_vocabulary_kids_l3.json",
+  "study-skills": "study_skills_motivation_kids_l3.json",
+  "critical-thinking": "critical_thinking_basics_kids_l3.json",
+  "curiosity-questions": "Curiosity_Big_Questions_Kids_L3_kidslevel3.json",
+  "problem-solving": "problem_solving_english_kids_l3.json",
+  "health-body": "health_body_awareness_kids_l3.json",
+  "future-skills": "Future_Skills_Kids_L3_kidslevel3.json",
+  "mini-projects": "mini_projects_presentations_kids_l3.json",
 };
 
 async function loadEntriesFromJson(roomId: string, levelId: string): Promise<KidsEntry[]> {
