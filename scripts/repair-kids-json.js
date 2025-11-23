@@ -20,6 +20,22 @@ const FILES_TO_REPAIR = [
   'public/data/make_believe_kids_l1.json',
 ];
 
+/**
+ * Auto-detect all kids level 1 JSON files by scanning the data directory
+ */
+function detectKidsFiles() {
+  const dataDir = path.join(__dirname, '..', 'public', 'data');
+  try {
+    const files = fs.readdirSync(dataDir);
+    return files
+      .filter(file => file.includes('kids_l1') && file.endsWith('.json'))
+      .map(file => path.join(dataDir, file));
+  } catch (error) {
+    console.error('Error scanning data directory:', error.message);
+    return [];
+  }
+}
+
 function repairJSON(filePath) {
   console.log(`\n🔧 Repairing: ${filePath}`);
   
@@ -105,11 +121,17 @@ function main() {
   console.log('🔧 Kids Room JSON Repair Tool\n');
   console.log('=' .repeat(60));
 
+  // Auto-detect all kids files
+  const detectedFiles = detectKidsFiles();
+  const filesToRepair = detectedFiles.length > 0 ? detectedFiles : FILES_TO_REPAIR;
+  
+  console.log(`Found ${filesToRepair.length} files to repair\n`);
+
   let successCount = 0;
   let failCount = 0;
   const results = [];
 
-  for (const file of FILES_TO_REPAIR) {
+  for (const file of filesToRepair) {
     const result = repairJSON(file);
     results.push({ file, ...result });
     
