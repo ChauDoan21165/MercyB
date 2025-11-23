@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAdminCheck } from '@/hooks/useAdminCheck';
 import { AdminLayout } from '@/components/admin/AdminLayout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -20,6 +21,7 @@ interface RoomStatus {
 }
 
 export default function KidsRoomHealthCheck() {
+  const navigate = useNavigate();
   const { isAdmin, loading: adminLoading } = useAdminCheck();
   const { toast } = useToast();
   const [checking, setChecking] = useState(false);
@@ -527,7 +529,8 @@ export default function KidsRoomHealthCheck() {
                   {rooms.map(room => (
                     <div
                       key={room.id}
-                      className="flex items-center justify-between p-3 border rounded-lg"
+                      onClick={() => navigate(`/kids-chat/${room.id}`)}
+                      className="flex items-center justify-between p-3 border rounded-lg cursor-pointer hover:bg-accent transition-colors"
                     >
                       <div className="flex items-center gap-3">
                         {room.status === 'ok' && (
