@@ -17,7 +17,8 @@ interface RoomStatus {
   level_id: string;
   entry_count: number;
   is_active: boolean;
-  status: 'ok' | 'missing_entries' | 'inactive';
+  status: 'ok' | 'missing_entries' | 'inactive' | 'missing_json' | 'invalid_json';
+  jsonError?: string;
 }
 
 export default function KidsRoomHealthCheck() {
@@ -66,33 +67,65 @@ export default function KidsRoomHealthCheck() {
         return;
       }
 
-      const roomStatuses: RoomStatus[] = (data || []).map((room: any) => {
-        const entryCount = room.kids_entries?.[0]?.count || 0;
-        let status: 'ok' | 'missing_entries' | 'inactive' = 'ok';
-        
-        if (!room.is_active) {
-          status = 'inactive';
-        } else if (entryCount === 0) {
-          status = 'missing_entries';
-        }
+      // Check each room's JSON file validity
+      const roomStatuses: RoomStatus[] = await Promise.all(
+        (data || []).map(async (room: any) => {
+          const entryCount = room.kids_entries?.[0]?.count || 0;
+          let status: 'ok' | 'missing_entries' | 'inactive' | 'missing_json' | 'invalid_json' = 'ok';
+          let jsonError: string | undefined;
+          
+          if (!room.is_active) {
+            status = 'inactive';
+          } else if (entryCount === 0) {
+            status = 'missing_entries';
+          } else {
+            // Validate JSON file exists and is valid
+            try {
+              const jsonFileName = `${room.id.replace(/-/g, '_')}_kids_${room.level_id.replace('level', 'l')}.json`;
+              const response = await fetch(`/data/${jsonFileName}`);
+              
+              if (!response.ok) {
+                status = 'missing_json';
+                jsonError = `JSON file not found: /data/${jsonFileName}`;
+              } else {
+                const contentType = response.headers.get('content-type');
+                if (!contentType?.includes('application/json')) {
+                  status = 'invalid_json';
+                  jsonError = `Expected JSON but got ${contentType || 'unknown type'}`;
+                } else {
+                  try {
+                    await response.json();
+                  } catch (e) {
+                    status = 'invalid_json';
+                    jsonError = `Invalid JSON syntax in file`;
+                  }
+                }
+              }
+            } catch (e: any) {
+              status = 'invalid_json';
+              jsonError = e.message;
+            }
+          }
 
-        return {
-          id: room.id,
-          title_en: room.title_en,
-          title_vi: room.title_vi,
-          level_id: room.level_id,
-          entry_count: entryCount,
-          is_active: room.is_active,
-          status
-        };
-      });
+          return {
+            id: room.id,
+            title_en: room.title_en,
+            title_vi: room.title_vi,
+            level_id: room.level_id,
+            entry_count: entryCount,
+            is_active: room.is_active,
+            status,
+            jsonError
+          };
+        })
+      );
 
       setRooms(roomStatuses);
       
       const issues = roomStatuses.filter(r => r.status !== 'ok').length;
       toast({
         title: issues === 0 ? "All rooms are healthy!" : `Found ${issues} issue(s)`,
-        description: `Checked ${roomStatuses.length} rooms`,
+        description: `Checked ${roomStatuses.length} rooms (DB + JSON validation)`,
       });
     } catch (error: any) {
       toast({
@@ -311,6 +344,8 @@ export default function KidsRoomHealthCheck() {
 
   const okRooms = rooms.filter(r => r.status === 'ok');
   const missingEntries = rooms.filter(r => r.status === 'missing_entries');
+  const missingJson = rooms.filter(r => r.status === 'missing_json');
+  const invalidJson = rooms.filter(r => r.status === 'invalid_json');
   const inactiveRooms = rooms.filter(r => r.status === 'inactive');
 
   // Group rooms by level
@@ -441,7 +476,7 @@ export default function KidsRoomHealthCheck() {
             </div>
 
             {/* Rooms with Issues */}
-            {(missingEntries.length > 0 || inactiveRooms.length > 0) && (
+            {(missingEntries.length > 0 || missingJson.length > 0 || invalidJson.length > 0 || inactiveRooms.length > 0) && (
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between">
@@ -501,6 +536,36 @@ export default function KidsRoomHealthCheck() {
                     </Alert>
                   ))}
 
+                  {missingJson.map(room => (
+                    <Alert key={room.id} variant="destructive">
+                      <XCircle className="h-4 w-4" />
+                      <AlertDescription>
+                        <strong>{room.title_en}</strong> ({room.id})
+                        <br />
+                        <span className="text-sm">
+                          Level {room.level_id.replace('level', '')} • {room.jsonError}
+                        </span>
+                        <br />
+                        <span className="text-xs text-muted-foreground mt-1 block">
+                          Expected: /data/{room.id.replace(/-/g, '_')}_kids_{room.level_id.replace('level', 'l')}.json
+                        </span>
+                      </AlertDescription>
+                    </Alert>
+                  ))}
+
+                  {invalidJson.map(room => (
+                    <Alert key={room.id} variant="destructive">
+                      <XCircle className="h-4 w-4" />
+                      <AlertDescription>
+                        <strong>{room.title_en}</strong> ({room.id})
+                        <br />
+                        <span className="text-sm">
+                          Level {room.level_id.replace('level', '')} • {room.jsonError}
+                        </span>
+                      </AlertDescription>
+                    </Alert>
+                  ))}
+
                   {inactiveRooms.map(room => (
                     <Alert key={room.id} variant="destructive">
                       <XCircle className="h-4 w-4" />
@@ -539,6 +604,9 @@ export default function KidsRoomHealthCheck() {
                         {room.status === 'missing_entries' && (
                           <AlertCircle className="h-5 w-5 text-yellow-500" />
                         )}
+                        {(room.status === 'missing_json' || room.status === 'invalid_json') && (
+                          <XCircle className="h-5 w-5 text-red-500" />
+                        )}
                         {room.status === 'inactive' && (
                           <XCircle className="h-5 w-5 text-red-500" />
                         )}
@@ -547,6 +615,12 @@ export default function KidsRoomHealthCheck() {
                           <div className="text-sm text-muted-foreground">
                             {selectedLevel === 'all' && `L${room.level_id.replace('level', '')} • `}
                             {room.id} • {room.entry_count} entries
+                            {room.jsonError && (
+                              <>
+                                <br />
+                                <span className="text-xs text-destructive">{room.jsonError}</span>
+                              </>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -561,6 +635,8 @@ export default function KidsRoomHealthCheck() {
                       >
                         {room.status === 'ok' && 'Healthy'}
                         {room.status === 'missing_entries' && 'Needs Fix'}
+                        {room.status === 'missing_json' && 'Missing JSON'}
+                        {room.status === 'invalid_json' && 'Invalid JSON'}
                         {room.status === 'inactive' && 'Inactive'}
                       </Badge>
                     </div>
