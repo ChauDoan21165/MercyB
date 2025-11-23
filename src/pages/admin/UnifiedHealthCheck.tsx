@@ -53,15 +53,26 @@ const TIER_DISPLAY_NAMES: Record<string, string> = {
 
 // Helper to convert schema_id to proper JSON filename
 const getSuggestedJsonBaseName = (schemaId: string, tier: string): string => {
-  // Split by hyphens, capitalize each word, then join with underscores
+  // If schema_id already has underscores, use it as-is and capitalize
+  if (schemaId.includes('_')) {
+    const words = schemaId.split('_');
+    const capitalizedWords = words.map(word => 
+      word.charAt(0).toUpperCase() + word.slice(1)
+    );
+    const baseName = capitalizedWords.join('_');
+    const tierSuffix = tier.toLowerCase().replace(/\s+/g, '');
+    return `${baseName}_${tierSuffix}`;
+  }
+  
+  // Otherwise split by hyphens, capitalize each word, then join with underscores
   const words = schemaId.split('-');
   const capitalizedWords = words.map(word => 
     word.charAt(0).toUpperCase() + word.slice(1)
   );
   const baseName = capitalizedWords.join('_');
   
-  // Add tier suffix (lowercase)
-  const tierSuffix = tier.toLowerCase();
+  // Add tier suffix (lowercase, remove spaces)
+  const tierSuffix = tier.toLowerCase().replace(/\s+/g, '');
   return `${baseName}_${tierSuffix}`;
 };
 
@@ -218,7 +229,7 @@ export default function UnifiedHealthCheck() {
       }
 
       if (!jsonFound && roomIssues.length === 0) {
-        const suggestedPath = getSuggestedJsonPath(room.id, room.tier || 'free');
+        const suggestedPath = getSuggestedJsonPath(room.schema_id, room.tier || 'free');
 
         roomIssues.push({
           roomId: room.id,
