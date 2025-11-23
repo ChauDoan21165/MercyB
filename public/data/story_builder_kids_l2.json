@@ -1,0 +1,56 @@
+{
+  "id": "story_builder_kids_l2",
+  "tier": "kids_l2",
+  "title": {
+    "en": "Story Builder",
+    "vi": "Người Xây Dựng Câu Chuyện"
+  },
+  "intro": {
+    "en": "Practice building fun short stories in English with clear beginnings, middles, and endings.",
+    "vi": "Luyện xây dựng những câu chuyện ngắn vui bằng tiếng Anh với mở đầu, thân bài và kết thúc rõ ràng."
+  },
+  "intro_audio": "",
+  "entries": [
+    {
+      "slug": "who-where-when",
+      "keywords_en": ["who", "where", "when", "character", "place", "time"],
+      "keywords_vi": ["ai", "ở đâu", "khi nào", "nhân vật", "địa điểm", "thời gian"],
+      "copy": {
+        "en": "Learn to start a story by telling who the story is about, where it happens, and when it happens.",
+        "vi": "Học cách bắt đầu câu chuyện bằng cách cho biết câu chuyện về ai, xảy ra ở đâu và khi nào."
+      },
+      "tags": ["story", "beginning"],
+      "audio": ""
+    },
+    {
+      "slug": "problem-and-action",
+      "keywords_en": ["problem", "trouble", "decide", "try"],
+      "keywords_vi": ["vấn đề", "rắc rối", "quyết định", "cố gắng"],
+      "copy": {
+        "en": "Practice English words to show a small problem in the story and what the character does to solve it.",
+        "vi": "Luyện các từ tiếng Anh để nói về một vấn đề nhỏ trong câu chuyện và nhân vật làm gì để giải quyết."
+      },
+      "tags": ["story", "middle"],
+      "audio": ""
+    },
+    {
+      "slug": "happy-ending",
+      "keywords_en": ["finally", "in the end", "happy", "learn"],
+      "keywords_vi": ["cuối cùng", "kết thúc", "hạnh phúc", "bài học"],
+      "copy": {
+        "en": "Learn phrases like 'in the end' and 'finally' to finish your story with a happy ending or a lesson.",
+        "vi": "Học các cụm từ như 'cuối cùng', 'kết thúc' để hoàn thành câu chuyện với cái kết vui hoặc một bài học."
+      },
+      "tags": ["story", "ending"],
+      "audio": ""
+    }
+  ],
+  "meta": {
+    "age_range": "7-9",
+    "level": "level2",
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 3,
+    "room_color": "#F9A8D4"
+  }
+}
