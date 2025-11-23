@@ -46,7 +46,7 @@ interface KidsSubscription {
   };
 }
 
-const KIDS_ROOM_JSON_MAP: Record<string, string> = {
+export const KIDS_ROOM_JSON_MAP: Record<string, string> = {
   // Level 1 rooms
   "alphabet-adventure": "alphabet_adventure_kids_l1.json",
   "colors-shapes": "colors_shapes_kids_l1.json",
@@ -110,6 +110,8 @@ const KIDS_ROOM_JSON_MAP: Record<string, string> = {
   // Level 3 rooms (JSON-spec based)
   "creative-writing": "creative_writing_basics_kids_l3\".json",
   "conversation-starters": "conversation_starters_kids_l3.json",
+  "emotions-expression": "emotions_self_expression_kids_l3.json",
+  "grammar-power": "beginner_grammar_power_kids_l3.json",
 };
 
 async function loadEntriesFromJson(roomId: string, levelId: string): Promise<KidsEntry[]> {
