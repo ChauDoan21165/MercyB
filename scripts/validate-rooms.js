@@ -140,11 +140,19 @@ async function validateRooms(targetTier = null) {
         try {
           const jsonContent = await readFile(jsonPath, 'utf-8');
           
+          // Check if file contains HTML (common when file doesn't exist and returns 404)
+          if (jsonContent.trim().startsWith('<!') || jsonContent.trim().startsWith('<html')) {
+            issues.push(`    ❌ File contains HTML instead of JSON: ${room.title_en}`);
+            issues.push(`       💡 The file exists but contains HTML (likely a 404 page). File may be corrupted.`);
+            continue;
+          }
+          
           let roomData;
           try {
             roomData = JSON.parse(jsonContent);
           } catch (parseError) {
             issues.push(`    ❌ Invalid JSON syntax in ${room.title_en}: ${parseError.message}`);
+            issues.push(`       💡 Run: node scripts/repair-rooms.js to attempt auto-fix`);
             continue;
           }
           
