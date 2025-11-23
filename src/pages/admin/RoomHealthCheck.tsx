@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2 } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 
 interface RoomIssue {
   roomId: string;
