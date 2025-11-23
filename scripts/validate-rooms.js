@@ -48,6 +48,54 @@ const TIER_NAMES = {
   'VIP7': 'VIP7',
 };
 
+function getSuggestedJsonBaseName(room) {
+  const baseId = (room.schema_id || room.id).toString();
+  const normalizedTier = room.tier ? String(room.tier).toLowerCase() : null;
+
+  if (!normalizedTier) {
+    return baseId;
+  }
+
+  const suffix = `-${normalizedTier}`;
+  const baseLower = baseId.toLowerCase();
+  const roomIdLower = room.id.toString().toLowerCase();
+
+  if (baseLower.endsWith(suffix) || roomIdLower.endsWith(suffix)) {
+    return baseId;
+  }
+
+  return `${baseId}${suffix}`;
+}
+
+function getSuggestedJsonFilenames(room) {
+  const baseName = getSuggestedJsonBaseName(room);
+  const candidates = new Set();
+
+  candidates.add(baseName);
+  candidates.add(room.id.toString());
+
+  if (room.schema_id && room.schema_id !== room.id) {
+    candidates.add(room.schema_id.toString());
+  }
+
+  const normalizedTier = room.tier ? String(room.tier).toLowerCase() : null;
+  if (normalizedTier) {
+    const tierSuffix = `-${normalizedTier}`;
+    const idWithTier = `${room.id}${tierSuffix}`;
+    if (!candidates.has(idWithTier)) {
+      candidates.add(idWithTier);
+    }
+  }
+
+  const filenames = [];
+  for (const candidate of candidates) {
+    filenames.push(`${candidate}.json`);
+    filenames.push(`${candidate.replace(/-/g, '_')}.json`);
+  }
+
+  return filenames;
+}
+
 async function validateRooms(targetTier = null) {
   const tierFilter = targetTier ? ` (${TIER_NAMES[targetTier] || targetTier})` : '';
   console.log(`${colors.blue}═══════════════════════════════════════════════════${colors.reset}`);
@@ -107,16 +155,13 @@ async function validateRooms(targetTier = null) {
       for (const room of tierRooms) {
         totalRooms++;
         
-        // Generate expected JSON filename patterns
-        const possibleFilenames = [
-          `${room.id}.json`,
-          `${room.id.replace(/-/g, '_')}.json`,
-        ];
+        // Generate expected JSON filename patterns based on room id, schema_id and tier
+        const possibleFilenames = getSuggestedJsonFilenames(room);
 
         let jsonFound = false;
         let jsonPath = '';
         
-        // Try to find the JSON file
+        // Try to find the JSON file in order of preference
         for (const filename of possibleFilenames) {
           const path = join(publicDir, 'data', filename);
           try {
@@ -130,8 +175,9 @@ async function validateRooms(targetTier = null) {
         }
         
         if (!jsonFound) {
+          const expectedBaseName = getSuggestedJsonBaseName(room);
           issues.push(`    ❌ JSON file not found for room: ${room.title_en} (${room.id})`);
-          issues.push(`       Expected: /data/${room.id}.json`);
+          issues.push(`       Expected: /data/${expectedBaseName}.json`);
           issues.push(`       💡 Create this file with proper structure based on other ${tier} files`);
           continue;
         }

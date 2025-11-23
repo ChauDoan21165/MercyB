@@ -45,6 +45,29 @@ const TIER_DISPLAY_NAMES: Record<string, string> = {
   VIP7: "VIP7",
 };
 
+const getSuggestedJsonBaseName = (room: { id: string; schema_id?: string | null; tier?: string | null }) => {
+  const baseId = (room.schema_id || room.id).toString();
+  const normalizedTier = room.tier ? String(room.tier).toLowerCase() : null;
+
+  if (!normalizedTier) {
+    return baseId;
+  }
+
+  const suffix = `-${normalizedTier}`;
+  const baseLower = baseId.toLowerCase();
+  const roomIdLower = room.id.toString().toLowerCase();
+
+  if (baseLower.endsWith(suffix) || roomIdLower.endsWith(suffix)) {
+    return baseId;
+  }
+
+  return `${baseId}${suffix}`;
+};
+
+const getSuggestedJsonPath = (room: { id: string; schema_id?: string | null; tier?: string | null }) => {
+  return `public/data/${getSuggestedJsonBaseName(room)}.json`;
+};
+
 export default function RoomHealthCheck() {
   const { tier } = useParams<{ tier: string }>();
   const [loading, setLoading] = useState(true);
@@ -83,9 +106,24 @@ export default function RoomHealthCheck() {
 
         // Check if JSON file exists and is valid
         const manifestPathById = PUBLIC_ROOM_MANIFEST[room.id];
-        const manifestKeyWithTier = room.tier
-          ? `${room.id}-${String(room.tier).toLowerCase()}`
-          : null;
+        const baseId = (room.schema_id || room.id) as string;
+        const normalizedTier = room.tier ? String(room.tier).toLowerCase() : null;
+        let manifestKeyWithTier: string | null = null;
+
+        if (normalizedTier) {
+          const suffix = `-${normalizedTier}`;
+          const baseIdLower = baseId.toLowerCase();
+          const roomIdLower = String(room.id).toLowerCase();
+
+          if (baseIdLower.endsWith(suffix)) {
+            manifestKeyWithTier = baseId;
+          } else if (roomIdLower.endsWith(suffix)) {
+            manifestKeyWithTier = room.id;
+          } else {
+            manifestKeyWithTier = `${baseId}${suffix}`;
+          }
+        }
+
         const manifestPathByTier = manifestKeyWithTier
           ? PUBLIC_ROOM_MANIFEST[manifestKeyWithTier]
           : undefined;
@@ -106,18 +144,20 @@ export default function RoomHealthCheck() {
           });
         }
 
-        const fallbackCandidates: { url: string; key: string; path: string }[] = [
-          {
-            url: `/data/${room.id}.json`,
+        const baseCandidates = new Set<string>();
+        baseCandidates.add(String(room.id));
+        baseCandidates.add(String(room.id).replace(/-/g, "_"));
+        const suggestedBaseName = getSuggestedJsonBaseName(room);
+        baseCandidates.add(suggestedBaseName);
+        baseCandidates.add(suggestedBaseName.replace(/-/g, "_"));
+
+        const fallbackCandidates: { url: string; key: string; path: string }[] = Array.from(baseCandidates).map(
+          (base) => ({
+            url: `/data/${base}.json`,
             key: "fallback",
-            path: `data/${room.id}.json`,
-          },
-          {
-            url: `/data/${String(room.id).replace(/-/g, "_")}.json`,
-            key: "fallback",
-            path: `data/${String(room.id).replace(/-/g, "_")}.json`,
-          },
-        ];
+            path: `data/${base}.json`,
+          }),
+        );
 
         const fileCandidates = [...manifestCandidates, ...fallbackCandidates];
 
@@ -165,11 +205,19 @@ export default function RoomHealthCheck() {
         }
 
         if (!jsonFound && roomIssues.length === 0) {
-          const suggestedPath = manifestPathById
-            ? `public/${manifestPathById}`
-            : manifestPathByTier
-              ? `public/${manifestPathByTier}`
-              : `public/data/${room.id}.json`;
+          const suggestedPath =
+            manifestPathById
+              ? `public/${manifestPathById}`
+              : manifestPathByTier
+                ? `public/${manifestPathByTier}`
+                : getSuggestedJsonPath(room);
+
+          const manifestKeyForIssue =
+            manifestPathByTier && manifestKeyWithTier
+              ? manifestKeyWithTier
+              : manifestPathById
+                ? room.id
+                : getSuggestedJsonBaseName(room);
 
           roomIssues.push({
             roomId: room.id,
@@ -180,7 +228,7 @@ export default function RoomHealthCheck() {
               ? "File returns HTML instead of JSON (file missing)"
               : "JSON file not found",
             details: `Create: ${suggestedPath}`,
-            manifestKey: manifestKeyWithTier || room.id,
+            manifestKey: manifestKeyForIssue,
           });
         }
 
