@@ -1,0 +1,89 @@
+{
+  "id": "reading_comprehension_kids_l3",
+  "tier": "Kids Level 3 / Trẻ Em Cấp 3",
+  "title": {
+    "en": "Reading Comprehension",
+    "vi": "Hiểu Đọc Cơ Bản"
+  },
+  "content": {
+    "en": "This room teaches children how to understand what they read—main ideas, details, characters, and simple conclusions. Kids practice asking questions, summarizing short texts, and connecting ideas. Parents can guide by reading short stories together and pausing to talk about meaning.",
+    "vi": "Phòng này giúp trẻ học cách hiểu những gì mình đọc—ý chính, chi tiết, nhân vật và kết luận đơn giản. Trẻ được luyện đặt câu hỏi, tóm tắt đoạn văn ngắn và liên kết ý tưởng. Cha mẹ có thể hỗ trợ bằng cách đọc truyện ngắn cùng trẻ và tạm dừng để nói về nội dung.",
+    "audio": "reading_comprehension_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "find-main-idea",
+      "keywords_en": ["main idea", "reading", "comprehension"],
+      "keywords_vi": ["ý chính", "đọc hiểu", "hiểu"],
+      "copy": {
+        "en": "Teach kids to find the main idea by asking one simple question: “What is this part mostly about?” Read a short paragraph and guide them to notice the most important point instead of every detail. Give an example: If a text says a cat climbed a tree, got stuck, and cried for help, the main idea is “The cat needed help in the tree.” This helps kids understand that the main idea is the big picture, not small details.",
+        "vi": "Dạy trẻ tìm ý chính bằng câu hỏi đơn giản: “Đoạn này nói chủ yếu về điều gì?” Hãy đọc một đoạn ngắn và hướng trẻ chú ý đến ý quan trọng nhất thay vì mọi chi tiết. Ví dụ: Nếu đoạn văn kể mèo leo lên cây, bị mắc kẹt và kêu cứu, ý chính là “Con mèo cần được giúp khi ở trên cây.” Điều này giúp trẻ hiểu rằng ý chính là bức tranh tổng thể, không phải các chi tiết nhỏ."
+      },
+      "tags": ["main idea"],
+      "audio": "reading_comprehension_v1_find_main_idea.mp3"
+    },
+    {
+      "slug": "spot-details",
+      "keywords_en": ["details", "reading", "understanding"],
+      "keywords_vi": ["chi tiết", "đọc", "hiểu"],
+      "copy": {
+        "en": "Details help children understand the story better. Teach them to look for small clues: names, colors, actions, or places. After reading a short sentence, ask: “What did you notice?” or “What small things happened?” For example: “The girl wore a red scarf” tells us both the girl and the scarf’s color. Practicing with tiny details strengthens focus and improves overall comprehension.",
+        "vi": "Chi tiết giúp trẻ hiểu câu chuyện rõ hơn. Hãy dạy trẻ tìm các manh mối nhỏ như tên, màu sắc, hành động hoặc địa điểm. Sau khi đọc một câu ngắn, hãy hỏi: “Con thấy gì?” hoặc “Những điều nhỏ nào đã xảy ra?” Ví dụ: “Cô bé đeo khăn đỏ” cho ta biết cả cô bé và màu khăn. Luyện tập với chi tiết nhỏ giúp trẻ tập trung và nâng cao kỹ năng đọc hiểu."
+      },
+      "tags": ["details"],
+      "audio": "reading_comprehension_v1_spot_details.mp3"
+    },
+    {
+      "slug": "make-predictions",
+      "keywords_en": ["prediction", "reading", "thinking"],
+      "keywords_vi": ["dự đoán", "đọc", "suy nghĩ"],
+      "copy": {
+        "en": "Teach kids to make predictions by asking, “What do you think will happen next?” Encourage them to use clues from the text—actions, emotions, weather, or character choices. Predictions help kids think ahead and stay engaged with the story. Explain that predictions don’t have to be correct; they just need to make sense based on what they read.",
+        "vi": "Dạy trẻ dự đoán bằng câu hỏi: “Con nghĩ điều gì sẽ xảy ra tiếp theo?” Khuyến khích trẻ dùng manh mối trong đoạn văn—hành động, cảm xúc, thời tiết hoặc lựa chọn của nhân vật. Dự đoán giúp trẻ suy nghĩ trước và gắn kết hơn với câu chuyện. Giải thích rằng dự đoán không cần đúng, chỉ cần hợp lý dựa trên những gì trẻ đọc."
+      },
+      "tags": ["prediction"],
+      "audio": "reading_comprehension_v1_make_predictions.mp3"
+    },
+    {
+      "slug": "character-feelings",
+      "keywords_en": ["characters", "feelings", "reading"],
+      "keywords_vi": ["nhân vật", "cảm xúc", "đọc"],
+      "copy": {
+        "en": "Help kids understand characters by focusing on feelings. Ask: “How does the character feel?” and “How do you know?” Children can look for clues like actions, facial expressions, or words the character says. For example, if a character hides behind someone, they might be scared. Learning to identify feelings helps readers connect deeply with the story.",
+        "vi": "Hãy giúp trẻ hiểu nhân vật bằng cách tập trung vào cảm xúc. Hỏi trẻ: “Nhân vật cảm thấy thế nào?” và “Con biết điều đó bằng cách nào?” Trẻ có thể tìm manh mối từ hành động, nét mặt hoặc lời thoại. Ví dụ, nếu nhân vật trốn sau ai đó, có thể họ đang sợ. Học nhận biết cảm xúc giúp trẻ kết nối sâu hơn với câu chuyện."
+      },
+      "tags": ["characters"],
+      "audio": "reading_comprehension_v1_character_feelings.mp3"
+    },
+    {
+      "slug": "simple-summary",
+      "keywords_en": ["summary", "reading", "skills"],
+      "keywords_vi": ["tóm tắt", "đọc", "kỹ năng"],
+      "copy": {
+        "en": "Teach kids to summarize with a short pattern: “Somebody—Wanted—But—So.” Example: “Mia wanted to find her cat, but it was hiding, so she looked under the bed.” This helps children explain the main problem and solution clearly. Summarizing strengthens memory and teaches kids to express ideas in a simple, organized way.",
+        "vi": "Dạy trẻ tóm tắt với mẫu đơn giản: “Ai—Muốn gì—Nhưng—Vì vậy.” Ví dụ: “Mia muốn tìm mèo, nhưng nó trốn mất, vì vậy cô bé tìm dưới gầm giường.” Cách này giúp trẻ diễn đạt vấn đề và giải pháp rõ ràng. Tóm tắt giúp tăng trí nhớ và dạy trẻ trình bày ý tưởng gọn gàng."
+      },
+      "tags": ["summary"],
+      "audio": "reading_comprehension_v1_simple_summary.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all"],
+      "keywords_vi": ["tất cả"],
+      "copy": {
+        "en": "Teach kids to find the main idea by asking, “What is this part mostly about?” and noticing the important point.\n\nTeach them to spot details like names, colors, places, and small actions to understand the story better.\n\nHelp them make predictions by asking, “What do you think will happen next?” using clues from the text.\n\nGuide them to understand character feelings by looking at actions, expressions, and words.\n\nTeach them to summarize using the pattern: Somebody—Wanted—But—So. These skills help kids read with confidence and understand stories more deeply.",
+        "vi": "Dạy trẻ tìm ý chính bằng cách hỏi: “Đoạn này nói chủ yếu về điều gì?” và chú ý điểm quan trọng.\n\nDạy trẻ nhận biết chi tiết như tên, màu sắc, địa điểm và hành động nhỏ để hiểu rõ hơn.\n\nKhuyến khích trẻ dự đoán bằng câu hỏi: “Điều gì sẽ xảy ra tiếp theo?” dựa trên manh mối.\n\nHướng dẫn trẻ hiểu cảm xúc nhân vật bằng cách quan sát hành động, nét mặt và lời thoại.\n\nDạy trẻ tóm tắt với mẫu: Ai—Muốn gì—Nhưng—Vì vậy. Những kỹ năng này giúp trẻ đọc tự tin và hiểu câu chuyện sâu sắc."
+      },
+      "tags": ["all"],
+      "audio": "reading_comprehension_v1_find_main_idea.mp3 reading_comprehension_v1_spot_details.mp3 reading_comprehension_v1_make_predictions.mp3 reading_comprehension_v1_character_feelings.mp3 reading_comprehension_v1_simple_summary.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "10-13",
+    "level": "Kids Level 3",
+    "created_at": "2025-11-23T00:00:00+00:00",
+    "updated_at": "2025-11-23T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#FFF0F2"
+  }
+}
