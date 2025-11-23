@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench } from "lucide-react";
+import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench, Download } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
@@ -109,6 +109,74 @@ export default function UnifiedHealthCheck() {
   useEffect(() => {
     checkRoomHealth();
   }, [tier, activeTab]);
+
+  const downloadMissingFilesReport = () => {
+    if (!health) return;
+
+    const missingFileIssues = health.issues.filter(
+      issue => issue.issueType === "missing_file"
+    );
+
+    if (missingFileIssues.length === 0) {
+      toast({
+        title: "No missing files",
+        description: "All rooms have their JSON files",
+      });
+      return;
+    }
+
+    let report = `MISSING FILES REPORT - ${new Date().toISOString()}\n`;
+    report += `═══════════════════════════════════════════════════════════\n\n`;
+    report += `Total Missing Files: ${missingFileIssues.length}\n\n`;
+    report += `INSTRUCTIONS:\n`;
+    report += `- Create these JSON files in the paths specified below\n`;
+    report += `- Each file should contain valid room data with entries\n`;
+    report += `- Schema_id from database: refers to the room identifier\n\n`;
+    report += `═══════════════════════════════════════════════════════════\n\n`;
+
+    missingFileIssues.forEach((issue, index) => {
+      report += `${index + 1}. ${issue.roomTitle}\n`;
+      report += `   Room ID: ${issue.roomId}\n`;
+      report += `   Tier: ${issue.tier}\n`;
+      report += `   ${issue.details || issue.message}\n`;
+      report += `   Manifest Key: ${issue.manifestKey || 'N/A'}\n`;
+      report += `\n`;
+    });
+
+    report += `═══════════════════════════════════════════════════════════\n`;
+    report += `SUMMARY BY PATH:\n\n`;
+    
+    const pathMap = new Map<string, string[]>();
+    missingFileIssues.forEach(issue => {
+      const path = issue.details?.replace('Create: ', '') || 'Unknown path';
+      if (!pathMap.has(path)) {
+        pathMap.set(path, []);
+      }
+      pathMap.get(path)!.push(`${issue.roomTitle} (${issue.roomId})`);
+    });
+
+    pathMap.forEach((rooms, path) => {
+      report += `${path}\n`;
+      rooms.forEach(room => report += `  - ${room}\n`);
+      report += `\n`;
+    });
+
+    // Create and download the file
+    const blob = new Blob([report], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `missing-files-report-${Date.now()}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    toast({
+      title: "Report Downloaded",
+      description: `Downloaded report with ${missingFileIssues.length} missing files`,
+    });
+  };
 
   const checkRoomHealth = async () => {
     setLoading(true);
@@ -646,16 +714,27 @@ export default function UnifiedHealthCheck() {
             Validate room JSON files and configuration
           </p>
         </div>
-        <Button onClick={checkRoomHealth} disabled={loading}>
-          {loading ? (
-            <>
-              <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-              Scanning...
-            </>
-          ) : (
-            "Refresh"
+        <div className="flex gap-2">
+          {health && health.issues.some(i => i.issueType === "missing_file") && (
+            <Button 
+              onClick={downloadMissingFilesReport} 
+              variant="outline"
+            >
+              <Download className="mr-2 h-4 w-4" />
+              Download Missing Files Report
+            </Button>
           )}
-        </Button>
+          <Button onClick={checkRoomHealth} disabled={loading}>
+            {loading ? (
+              <>
+                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                Scanning...
+              </>
+            ) : (
+              "Refresh"
+            )}
+          </Button>
+        </div>
       </div>
 
       {error && (
