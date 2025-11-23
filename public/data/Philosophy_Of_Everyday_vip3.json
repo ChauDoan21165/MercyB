@@ -37,11 +37,15 @@
 "vi": ["con_nguoi_chan_that", "con người chân thật", "chinh_minh", "chính mình", "mat_na_va_vai_dien", "mặt nạ và vai diễn"]
 }
 },
-"entries": {
-"meaning_of_life": {
-...
-"audio": {"en": "meaning_of_life_vip3.mp3"}
-},
+  "entries": {
+    "meaning_of_life": {
+      "summary": {"en": "The question that haunts across cultures and time.", "vi": "Câu hỏi ám ảnh xuyên suốt văn hóa và thời gian."},
+      "essay": {"en": "The meaning of life is not a destination you discover by looking outward. It is a creation you forge by looking inward and making choices that reflect what you truly value. Some find meaning in service, others in art, knowledge, or love. The answer is not universal—it is personal. Your life's meaning emerges not from having all the right answers, but from asking the right questions and living deliberately with those answers.", "vi": "Ý nghĩa cuộc sống không phải điểm đến bạn khám phá bằng cách nhìn ra ngoài. Nó là sáng tạo bạn tạo ra bằng cách nhìn vào trong và đưa ra những lựa chọn phản ánh điều bạn thực sự coi trọng. Một số người tìm thấy ý nghĩa trong phục vụ, những người khác trong nghệ thuật, tri thức hay tình yêu. Câu trả lời không mang tính phổ quát—nó mang tính cá nhân. Ý nghĩa cuộc sống của bạn xuất hiện không phải từ việc có tất cả câu trả lời đúng, mà từ việc đặt ra những câu hỏi đúng và sống một cách có chủ đích với những câu trả lời đó."},
+      "author": "Philosophy Room",
+      "tags": ["life_meaning", "vip3"],
+      "keywords": ["meaning_of_life", "meaning of life", "purpose", "existence", "y_nghia_cuoc_song", "ý nghĩa cuộc sống"],
+      "audio": {"en": "meaning_of_life_vip3.mp3"}
+    },
 "everyday_suffering": {
 "summary": {"en": "How everyday pain can become a teacher instead of just a weight.", "vi": "Cách nỗi đau thường nhật có thể trở thành người thầy thay vì chỉ là gánh nặng."},
 "essay": {"en": "Everyday suffering rarely announces itself with grand tragedy. It arrives quietly: the unfinished task, the tense message, the heavy silence at dinner. We often see these as errors in the system of life — proof that something is broken. But viewed from another angle, suffering is not a punishment; it is a signal. It shows us where we are attached, where we resist, where we still expect life to obey our plans. When you sit honestly with your discomfort instead of numbing it, you begin to hear its language. Fatigue says: you have crossed your own boundaries. Jealousy whispers: you have forgotten your own worth. Loneliness reveals: you are ready for deeper connection, perhaps first with yourself. To live wisely is not to erase pain but to give it a place — a chair at the table of your awareness. There, it can soften into understanding and quietly reshape the way you move through the world.", "vi": "Nỗi đau hằng ngày hiếm khi xuất hiện như một bi kịch lớn. Nó đến rất khẽ: việc còn dang dở, tin nhắn căng thẳng, bữa cơm im lặng nặng nề. Ta thường xem những điều đó như lỗi của cuộc đời — bằng chứng rằng có gì đó hỏng hóc. Nhưng nhìn từ một góc khác, đau khổ không phải là hình phạt; nó là tín hiệu. Nó chỉ vào nơi ta đang bám chặt, nơi ta chống cự, nơi ta vẫn mong đời phải nghe theo kế hoạch của mình. Khi bạn ngồi yên với khó chịu của mình thay vì vội vàng làm tê nó, bạn bắt đầu nghe được ngôn ngữ của nó. Mệt mỏi nói: bạn đã vượt qua ranh giới của chính mình. Ghen tị thì thầm: bạn quên mất giá trị của bản thân. Cô đơn hé lộ: bạn đã sẵn sàng cho kết nối sâu hơn, có lẽ trước hết với chính mình. Sống khôn ngoan không phải là xóa hết nỗi đau, mà là dành cho nó một chỗ ngồi — một chiếc ghế trong căn phòng nhận biết. Ở đó, nó có thể mềm ra thành hiểu biết và âm thầm chỉnh lại cách bạn bước đi giữa đời."},
