@@ -75,14 +75,14 @@ export const ColorfulMercyBladeHeader = ({
         </div>
 
         {/* Center - Title */}
-        <div className="flex-1 text-center px-4">
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
+        <div className="flex-1 text-center px-2 sm:px-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
             <span className="inline-block animate-fade-in" style={{ color: '#E91E63' }}>M</span>
             <span className="inline-block animate-fade-in" style={{ color: '#9C27B0', animationDelay: '0.1s' }}>e</span>
             <span className="inline-block animate-fade-in" style={{ color: '#3F51B5', animationDelay: '0.2s' }}>r</span>
             <span className="inline-block animate-fade-in" style={{ color: '#2196F3', animationDelay: '0.3s' }}>c</span>
             <span className="inline-block animate-fade-in" style={{ color: '#00BCD4', animationDelay: '0.4s' }}>y</span>
-            <span className="inline-block mx-2"></span>
+            <span className="inline-block mx-1 sm:mx-2"></span>
             <span className="inline-block animate-fade-in" style={{ color: '#009688', animationDelay: '0.5s' }}>B</span>
             <span className="inline-block animate-fade-in" style={{ color: '#4CAF50', animationDelay: '0.6s' }}>l</span>
             <span className="inline-block animate-fade-in" style={{ color: '#8BC34A', animationDelay: '0.7s' }}>a</span>
