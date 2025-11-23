@@ -1,0 +1,89 @@
+{
+  "id": "critical_thinking_basics_kids_l3",
+  "tier": "Kids Level 3 / Trẻ Em Cấp 3",
+  "title": {
+    "en": "Critical Thinking Basics",
+    "vi": "Tư Duy Phản Biện Cơ Bản"
+  },
+  "content": {
+    "en": "This room teaches children simple ways to think clearly, ask good questions, and understand problems. Kids practice comparing ideas, checking facts, and noticing reasons behind choices. Parents can guide conversations by asking gentle questions instead of giving quick answers.",
+    "vi": "Phòng học này dạy trẻ những cách đơn giản để suy nghĩ rõ ràng, đặt câu hỏi tốt và hiểu vấn đề. Trẻ luyện tập so sánh ý tưởng, kiểm tra thông tin và nhận ra lý do đằng sau các lựa chọn. Cha mẹ có thể hỗ trợ bằng cách đặt câu hỏi gợi mở thay vì đưa ra câu trả lời ngay.",
+    "audio": "critical_thinking_basics_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "ask-why",
+      "keywords_en": ["why", "question", "thinking"],
+      "keywords_vi": ["tại sao", "câu hỏi", "tư duy"],
+      "copy": {
+        "en": "Teach kids to ask “Why?” to understand the reason behind something. When they hear a rule or see a problem, encourage them to ask, “Why does this happen?” or “Why do we do it this way?” Asking why helps children look deeper and think instead of guessing.",
+        "vi": "Hãy dạy trẻ hỏi “Why?” để hiểu lý do đằng sau sự việc. Khi nghe một quy tắc hoặc thấy vấn đề, khuyến khích trẻ hỏi: “Why does this happen?” hoặc “Why do we do it this way?” Câu hỏi “tại sao” giúp trẻ suy nghĩ sâu hơn thay vì đoán mò."
+      },
+      "tags": ["why"],
+      "audio": "critical_thinking_basics_v1_ask_why.mp3"
+    },
+    {
+      "slug": "compare-ideas",
+      "keywords_en": ["compare", "ideas", "thinking"],
+      "keywords_vi": ["so sánh", "ý tưởng", "tư duy"],
+      "copy": {
+        "en": "Teach children to compare two ideas by asking: “How are they the same?” and “How are they different?” They can compare foods, stories, choices, or actions. Comparing helps kids see patterns, understand differences, and choose better solutions.",
+        "vi": "Hãy dạy trẻ so sánh hai ý tưởng bằng cách hỏi: “Chúng giống nhau thế nào?” và “Khác nhau thế nào?” Trẻ có thể so sánh món ăn, câu chuyện, lựa chọn hoặc hành động. So sánh giúp trẻ nhận ra mẫu chung, hiểu khác biệt và chọn giải pháp tốt hơn."
+      },
+      "tags": ["compare"],
+      "audio": "critical_thinking_basics_v1_compare_ideas.mp3"
+    },
+    {
+      "slug": "ask-what-if",
+      "keywords_en": ["what if", "problem solving", "thinking"],
+      "keywords_vi": ["điều gì xảy ra nếu", "giải quyết vấn đề", "tư duy"],
+      "copy": {
+        "en": "Teach kids to imagine possibilities by asking: “What if…?” This helps them think ahead before acting. For example: “What if it rains?” or “What if we forget our book?” This builds flexible thinking and helps children prepare for different situations.",
+        "vi": "Hãy dạy trẻ tưởng tượng tình huống bằng câu hỏi: “What if…?” Cách này giúp trẻ suy nghĩ trước khi hành động. Ví dụ: “What if it rains?” hoặc “What if we forget our book?” Điều này giúp trẻ linh hoạt và biết chuẩn bị cho nhiều tình huống."
+      },
+      "tags": ["what_if"],
+      "audio": "critical_thinking_basics_v1_ask_what_if.mp3"
+    },
+    {
+      "slug": "check-facts",
+      "keywords_en": ["facts", "truth", "check"],
+      "keywords_vi": ["sự thật", "kiểm tra", "thông tin"],
+      "copy": {
+        "en": "Teach children to check whether something is true by asking: “How do you know?” or “Where did you hear that?” This builds the habit of verifying information instead of believing everything they hear. It helps them become careful and thoughtful learners.",
+        "vi": "Hãy dạy trẻ kiểm tra xem điều gì đó có đúng hay không bằng cách hỏi: “How do you know?” hoặc “Where did you hear that?” Điều này hình thành thói quen kiểm chứng thông tin thay vì tin mọi thứ trẻ nghe. Nó giúp trẻ trở thành người học cẩn thận và suy nghĩ thấu đáo."
+      },
+      "tags": ["facts"],
+      "audio": "critical_thinking_basics_v1_check_facts.mp3"
+    },
+    {
+      "slug": "find-reasons",
+      "keywords_en": ["reasons", "thinking", "logic"],
+      "keywords_vi": ["lý do", "tư duy", "logic"],
+      "copy": {
+        "en": "Teach children to explain their choices with reasons. Ask questions like: “Why did you choose this?” or “What made you think that?” Giving reasons helps kids slow down, reflect, and understand their own decisions better.",
+        "vi": "Hãy dạy trẻ giải thích lựa chọn của mình bằng lý do. Hỏi trẻ: “Why did you choose this?” hoặc “What made you think that?” Việc đưa ra lý do giúp trẻ chậm lại, suy ngẫm và hiểu rõ hơn về quyết định của bản thân."
+      },
+      "tags": ["reasons"],
+      "audio": "critical_thinking_basics_v1_find_reasons.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all"],
+      "keywords_vi": ["tất cả"],
+      "copy": {
+        "en": "Teach kids to ask “Why?” to understand the reason behind something. When they hear a rule or see a problem, encourage them to ask, “Why does this happen?” or “Why do we do it this way?” Asking why helps children look deeper and think instead of guessing.\n\nTeach children to compare two ideas by asking: “How are they the same?” and “How are they different?” They can compare foods, stories, choices, or actions. Comparing helps kids see patterns, understand differences, and choose better solutions.\n\nTeach kids to imagine possibilities by asking: “What if…?” This helps them think ahead before acting. For example: “What if it rains?” or “What if we forget our book?” This builds flexible thinking and helps children prepare for different situations.\n\nTeach children to check whether something is true by asking: “How do you know?” or “Where did you hear that?” This builds the habit of verifying information instead of believing everything they hear. It helps them become careful and thoughtful learners.\n\nTeach children to explain their choices with reasons. Ask questions like: “Why did you choose this?” or “What made you think that?” Giving reasons helps kids slow down, reflect, and understand their own decisions better.",
+        "vi": "Hãy dạy trẻ hỏi “Why?” để hiểu lý do đằng sau sự việc. Khi nghe một quy tắc hoặc thấy vấn đề, khuyến khích trẻ hỏi: “Why does this happen?” hoặc “Why do we do it this way?” Câu hỏi “tại sao” giúp trẻ suy nghĩ sâu hơn thay vì đoán mò.\n\nHãy dạy trẻ so sánh hai ý tưởng bằng cách hỏi: “Chúng giống nhau thế nào?” và “Khác nhau thế nào?” Trẻ có thể so sánh món ăn, câu chuyện, lựa chọn hoặc hành động. So sánh giúp trẻ nhận ra mẫu chung, hiểu khác biệt và chọn giải pháp tốt hơn.\n\nHãy dạy trẻ tưởng tượng tình huống bằng câu hỏi: “What if…?” Cách này giúp trẻ suy nghĩ trước khi hành động. Ví dụ: “What if it rains?” hoặc “What if we forget our book?” Điều này giúp trẻ linh hoạt và biết chuẩn bị cho nhiều tình huống.\n\nHãy dạy trẻ kiểm tra xem điều gì đó có đúng hay không bằng cách hỏi: “How do you know?” hoặc “Where did you hear that?” Điều này hình thành thói quen kiểm chứng thông tin thay vì tin mọi thứ trẻ nghe. Nó giúp trẻ trở thành người học cẩn thận và suy nghĩ thấu đáo.\n\nHãy dạy trẻ giải thích lựa chọn của mình bằng lý do. Hỏi trẻ: “Why did you choose this?” hoặc “What made you think that?” Việc đưa ra lý do giúp trẻ chậm lại, suy ngẫm và hiểu rõ hơn về quyết định của bản thân."
+      },
+      "tags": ["all"],
+      "audio": "critical_thinking_basics_v1_ask_why.mp3 critical_thinking_basics_v1_compare_ideas.mp3 critical_thinking_basics_v1_ask_what_if.mp3 critical_thinking_basics_v1_check_facts.mp3 critical_thinking_basics_v1_find_reasons.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "10-13",
+    "level": "Kids Level 3",
+    "created_at": "2025-11-23T00:00:00+00:00",
+    "updated_at": "2025-11-23T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#FFF0DA"
+  }
+}
