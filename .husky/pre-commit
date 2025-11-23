@@ -1,12 +1,23 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "🔄 Auto-generating room registry..."
+echo "🔍 Validating kids rooms..."
 
-# Always run registry generation to ensure sync
-node scripts/generate-room-registry.js
+# Run validation first - this will fail the commit if there are issues
+node scripts/validate-kids-rooms.js
 
-# Add the generated files to the commit if they changed
-git add src/lib/roomManifest.ts src/lib/roomDataImports.ts
-
-echo "✅ Registry updated and staged"
+# Only proceed if validation passed
+if [ $? -eq 0 ]; then
+  echo "🔄 Auto-generating room registry..."
+  
+  # Always run registry generation to ensure sync
+  node scripts/generate-room-registry.js
+  
+  # Add the generated files to the commit if they changed
+  git add src/lib/roomManifest.ts src/lib/roomDataImports.ts
+  
+  echo "✅ Registry updated and staged"
+else
+  echo "❌ Commit blocked due to validation errors"
+  exit 1
+fi
