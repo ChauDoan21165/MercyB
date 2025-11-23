@@ -73,18 +73,29 @@ const KidsLevel2 = () => {
   }
 
   return (
-    <div className="min-h-screen" style={{ background: 'var(--kids-rainbow-bg)' }}>
+    <div className="min-h-screen relative overflow-hidden" style={{ background: 'var(--kids-rainbow-bg)' }}>
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 opacity-30 pointer-events-none">
+        <div className="absolute top-20 right-10 w-36 h-36 rounded-full animate-pulse" style={{ background: 'var(--gradient-mercy-rainbow)' }} />
+        <div className="absolute top-48 left-20 w-28 h-28 rounded-full animate-bounce" style={{ background: 'var(--gradient-rainbow)', animationDelay: '1.5s' }} />
+        <div className="absolute bottom-28 right-28 w-44 h-44 rounded-full animate-pulse" style={{ background: 'var(--gradient-mercy-rainbow)', animationDelay: '0.8s' }} />
+      </div>
+
       <ColorfulMercyBladeHeader
         subtitle="Kids Level 2 - Ages 7-10"
         showBackButton={true}
       />
       
-      <div className="container mx-auto px-4 py-8 max-w-7xl">
+      <div className="container mx-auto px-4 py-8 max-w-7xl relative z-10">
         {/* Hero Header with Gradient */}
         <div className="mb-12 space-y-6 text-center">
-          <div className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-3xl shadow-lg animate-fade-in" style={{ background: 'var(--gradient-rainbow)' }}>
-            <School className="h-10 w-10 animate-bounce text-white" />
-            <div className="text-left text-white">
+          <div className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-3xl animate-fade-in" 
+               style={{ 
+                 background: 'var(--gradient-mercy-rainbow)',
+                 boxShadow: 'var(--shadow-mercy-glow)'
+               }}>
+            <School className="h-10 w-10 animate-bounce text-white drop-shadow-lg" />
+            <div className="text-left text-white drop-shadow-md">
               <h1 className="text-4xl font-bold tracking-tight">
                 Kids Level 2
               </h1>
@@ -95,7 +106,8 @@ const KidsLevel2 = () => {
           </div>
           
           <div className="flex items-center justify-center gap-4 flex-wrap">
-            <div className="inline-block bg-card/80 backdrop-blur-sm px-6 py-2 rounded-full" style={{ boxShadow: 'var(--shadow-soft)' }}>
+            <div className="inline-block bg-card/90 backdrop-blur-md px-6 py-2 rounded-full border-2 border-white/30" 
+                 style={{ boxShadow: 'var(--shadow-rainbow)' }}>
               <p className="text-sm font-medium text-foreground">
                 🎯 {rooms.length} exciting rooms to explore! / {rooms.length} phòng thú vị để khám phá!
               </p>
@@ -104,10 +116,11 @@ const KidsLevel2 = () => {
             <Button
               onClick={handleRefresh}
               disabled={isRefreshing}
-              className="rounded-full shadow-lg transition-all duration-300 hover:scale-105"
+              className="rounded-full shadow-lg transition-all duration-300 hover:scale-110 border-2 border-white/30"
               style={{ 
                 background: 'var(--gradient-rainbow)',
-                color: 'white'
+                color: 'white',
+                boxShadow: 'var(--shadow-rainbow)'
               }}
             >
               <RefreshCw className={`h-4 w-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
