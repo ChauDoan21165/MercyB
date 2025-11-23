@@ -9,6 +9,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { CheckCircle2, XCircle, AlertCircle, Loader2, Wrench } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { KIDS_ROOM_JSON_MAP } from '@/pages/KidsChat';
 
 interface RoomStatus {
   id: string;
@@ -78,11 +79,19 @@ export default function KidsRoomHealthCheck() {
             status = 'inactive';
           } else if (entryCount === 0) {
             status = 'missing_entries';
-          } else {
-            // Validate JSON file exists and is valid
-            try {
-              const jsonFileName = `${room.id.replace(/-/g, '_')}_kids_${room.level_id.replace('level', 'l')}.json`;
-              const response = await fetch(`/data/${jsonFileName}`);
+            } else {
+              // Validate JSON file exists and is valid
+              try {
+                const suffix =
+                  room.level_id === 'level1' ? 'kids_l1' :
+                  room.level_id === 'level2' ? 'kids_l2' :
+                  room.level_id === 'level3' ? 'kids_l3' : 'kids';
+
+                const fallbackFile = `${room.id.replace(/-/g, '_')}_${suffix}.json`;
+                const mappedFile = KIDS_ROOM_JSON_MAP[room.id];
+                const jsonFileName = mappedFile || fallbackFile;
+
+                const response = await fetch(`/data/${jsonFileName}`);
               
               if (!response.ok) {
                 status = 'missing_json';
