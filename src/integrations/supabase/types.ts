@@ -336,6 +336,95 @@ export type Database = {
         }
         Relationships: []
       }
+      github_sync_config: {
+        Row: {
+          base_path: string
+          branch: string
+          created_at: string
+          id: string
+          is_enabled: boolean
+          last_sync_at: string | null
+          last_sync_status: string | null
+          repository_url: string
+          sync_interval_minutes: number
+          updated_at: string
+        }
+        Insert: {
+          base_path?: string
+          branch?: string
+          created_at?: string
+          id?: string
+          is_enabled?: boolean
+          last_sync_at?: string | null
+          last_sync_status?: string | null
+          repository_url: string
+          sync_interval_minutes?: number
+          updated_at?: string
+        }
+        Update: {
+          base_path?: string
+          branch?: string
+          created_at?: string
+          id?: string
+          is_enabled?: boolean
+          last_sync_at?: string | null
+          last_sync_status?: string | null
+          repository_url?: string
+          sync_interval_minutes?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      github_sync_logs: {
+        Row: {
+          config_id: string | null
+          created_at: string
+          details: Json | null
+          error_message: string | null
+          files_checked: number
+          files_downloaded: number
+          files_failed: number
+          id: string
+          status: string
+          sync_completed_at: string | null
+          sync_started_at: string
+        }
+        Insert: {
+          config_id?: string | null
+          created_at?: string
+          details?: Json | null
+          error_message?: string | null
+          files_checked?: number
+          files_downloaded?: number
+          files_failed?: number
+          id?: string
+          status?: string
+          sync_completed_at?: string | null
+          sync_started_at?: string
+        }
+        Update: {
+          config_id?: string | null
+          created_at?: string
+          details?: Json | null
+          error_message?: string | null
+          files_checked?: number
+          files_downloaded?: number
+          files_failed?: number
+          id?: string
+          status?: string
+          sync_completed_at?: string | null
+          sync_started_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "github_sync_logs_config_id_fkey"
+            columns: ["config_id"]
+            isOneToOne: false
+            referencedRelation: "github_sync_config"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       kids_entries: {
         Row: {
           audio_url: string | null
