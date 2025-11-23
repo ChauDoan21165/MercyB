@@ -15,6 +15,8 @@ interface RoomIssue {
   issueType: "missing_file" | "invalid_json" | "no_entries" | "missing_audio" | "locked";
   message: string;
   details?: string;
+  resolvedPath?: string;
+  manifestKey?: string;
 }
 
 interface RoomHealth {
@@ -80,69 +82,105 @@ export default function RoomHealthCheck() {
         const roomIssues: RoomIssue[] = [];
 
         // Check if JSON file exists and is valid
-        const possibleFilenames = [
-          `${room.id}.json`,
-          `${room.id.replace(/-/g, "_")}.json`,
-        ];
+        const manifestPathById = PUBLIC_ROOM_MANIFEST[room.id];
+        const manifestKeyWithTier = room.tier
+          ? `${room.id}-${String(room.tier).toLowerCase()}`
+          : null;
+        const manifestPathByTier = manifestKeyWithTier
+          ? PUBLIC_ROOM_MANIFEST[manifestKeyWithTier]
+          : undefined;
 
-        let jsonFound = false;
-        let jsonData: any = null;
-
-        let htmlDetected = false;
-        
-        for (const filename of possibleFilenames) {
-          try {
-            const response = await fetch(`/data/${filename}`);
-            if (response.ok) {
-              const text = await response.text();
-              
-              // Check if response is HTML instead of JSON (404 page scenario)
-              if (text.trim().startsWith('<!') || text.trim().startsWith('<html')) {
-                htmlDetected = true;
-                break; // Don't check other filenames, it's missing
-              }
-              
-              try {
-                jsonData = JSON.parse(text);
-                jsonFound = true;
-                break;
-              } catch (parseError: any) {
-                roomIssues.push({
-                  roomId: room.id,
-                  roomTitle: room.title_en,
-                  tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
-                  issueType: "invalid_json",
-                  message: "Invalid JSON syntax in file",
-                  details: parseError.message,
-                });
-                break; // Don't check other filenames if we found but can't parse
-              }
-            }
-          } catch (fetchError) {
-            // File not found, continue to next filename
-          }
+        const manifestCandidates: { url: string; key: string; path: string }[] = [];
+        if (manifestPathById) {
+          manifestCandidates.push({
+            url: `/${manifestPathById}`,
+            key: room.id,
+            path: manifestPathById,
+          });
         }
-        
-        // Add missing file issue only once after checking all filenames
-        if (htmlDetected || (!jsonFound && roomIssues.length === 0)) {
-          roomIssues.push({
-            roomId: room.id,
-            roomTitle: room.title_en,
-            tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
-            issueType: "missing_file",
-            message: `File returns HTML instead of JSON (file missing)`,
-            details: `Create: public/data/${room.id}.json`,
+        if (manifestPathByTier && manifestPathByTier !== manifestPathById) {
+          manifestCandidates.push({
+            url: `/${manifestPathByTier}`,
+            key: manifestKeyWithTier!,
+            path: manifestPathByTier,
           });
         }
 
+        const fallbackCandidates: { url: string; key: string; path: string }[] = [
+          {
+            url: `/data/${room.id}.json`,
+            key: "fallback",
+            path: `data/${room.id}.json`,
+          },
+          {
+            url: `/data/${String(room.id).replace(/-/g, "_")}.json`,
+            key: "fallback",
+            path: `data/${String(room.id).replace(/-/g, "_")}.json`,
+          },
+        ];
+
+        const fileCandidates = [...manifestCandidates, ...fallbackCandidates];
+
+        let jsonFound = false;
+        let jsonData: any = null;
+        let htmlDetected = false;
+        let resolvedPath: string | undefined;
+        let resolvedManifestKey: string | undefined;
+
+        for (const { url, key, path } of fileCandidates) {
+          try {
+            const response = await fetch(url);
+            if (!response.ok) continue;
+
+            const text = await response.text();
+
+            // Check if response is HTML instead of JSON (404 page scenario)
+            if (text.trim().startsWith("<!") || text.trim().startsWith("<html")) {
+              htmlDetected = true;
+              break;
+            }
+
+            try {
+              jsonData = JSON.parse(text);
+              jsonFound = true;
+              resolvedPath = path;
+              resolvedManifestKey = key !== "fallback" ? key : undefined;
+              break;
+            } catch (parseError: any) {
+              roomIssues.push({
+                roomId: room.id,
+                roomTitle: room.title_en,
+                tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
+                issueType: "invalid_json",
+                message: "Invalid JSON syntax in file",
+                details: parseError.message,
+                resolvedPath: path,
+                manifestKey: key !== "fallback" ? key : undefined,
+              });
+              break;
+            }
+          } catch {
+            // File not found or fetch error, continue to next candidate
+          }
+        }
+
         if (!jsonFound && roomIssues.length === 0) {
+          const suggestedPath = manifestPathById
+            ? `public/${manifestPathById}`
+            : manifestPathByTier
+              ? `public/${manifestPathByTier}`
+              : `public/data/${room.id}.json`;
+
           roomIssues.push({
             roomId: room.id,
             roomTitle: room.title_en,
             tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
             issueType: "missing_file",
-            message: `JSON file not found: /data/${room.id}.json`,
-            details: `Expected: /data/${room.id}.json`,
+            message: htmlDetected
+              ? "File returns HTML instead of JSON (file missing)"
+              : "JSON file not found",
+            details: `Create: ${suggestedPath}`,
+            manifestKey: manifestKeyWithTier || room.id,
           });
         }
 
@@ -155,6 +193,8 @@ export default function RoomHealthCheck() {
               tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
               issueType: "no_entries",
               message: "Room has no entries",
+              resolvedPath,
+              manifestKey: resolvedManifestKey,
             });
           }
         }
@@ -167,6 +207,8 @@ export default function RoomHealthCheck() {
             tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
             issueType: "locked",
             message: "Room is locked",
+            resolvedPath,
+            manifestKey: resolvedManifestKey,
           });
         }
 
@@ -303,7 +345,7 @@ export default function RoomHealthCheck() {
                      <div className="flex items-start justify-between">
                       <div className="flex items-start space-x-3 flex-1">
                         {getIssueIcon(issue.issueType)}
-                        <div className="flex-1">
+                          <div className="flex-1">
                           <div className="flex items-center space-x-2 mb-1">
                             <h3 className="font-semibold">
                               {issue.roomTitle} ({issue.roomId})
@@ -311,6 +353,23 @@ export default function RoomHealthCheck() {
                             <Badge variant="outline">{issue.tier}</Badge>
                           </div>
                           <p className="text-sm text-muted-foreground">{issue.message}</p>
+                          {(issue.manifestKey || issue.resolvedPath) && (
+                            <div className="mt-2">
+                              <div className="inline-flex items-center gap-2 px-2 py-1 bg-muted rounded text-xs font-mono">
+                                {issue.manifestKey && (
+                                  <span className="text-muted-foreground">
+                                    manifest: <span className="text-foreground">{issue.manifestKey}</span>
+                                  </span>
+                                )}
+                                {issue.resolvedPath && (
+                                  <>
+                                    {issue.manifestKey && <span className="text-muted-foreground">→</span>}
+                                    <span className="text-primary">{issue.resolvedPath}</span>
+                                  </>
+                                )}
+                              </div>
+                            </div>
+                          )}
                           {issue.details && (
                             <p className="text-xs text-muted-foreground mt-1 font-mono bg-muted/30 p-2 rounded">
                               {issue.details}
