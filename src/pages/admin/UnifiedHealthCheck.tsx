@@ -170,17 +170,60 @@ export default function UnifiedHealthCheck() {
         });
       }
 
+      // Generate multiple filename patterns to match inconsistent naming in actual files
+      const schemaId = room.schema_id || room.id;
+      const tier = room.tier || 'free';
+      
+      // Pattern 1: Original schema_id with hyphens, lowercase
+      const pattern1 = `${schemaId}.json`;
+      
+      // Pattern 2: Replace hyphens with underscores
+      const pattern2 = `${schemaId.replace(/-/g, "_")}.json`;
+      
+      // Pattern 3: Capitalize words, keep underscores (most common for VIP3)
+      const pattern3 = schemaId.split(/[-_]/)
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join('_') + '.json';
+      
+      // Pattern 4: Same as pattern3 but keep ampersands and special chars
+      const pattern4 = schemaId.split(/[-_]/)
+        .map(word => {
+          // Keep &, spaces, dots in the original word
+          if (word.includes('&')) return word;
+          return word.charAt(0).toUpperCase() + word.slice(1);
+        })
+        .join('_') + '.json';
+      
+      // Pattern 5: Replace & with And
+      const pattern5 = schemaId.split(/[-_]/)
+        .map(word => word === '&' ? 'And' : word.charAt(0).toUpperCase() + word.slice(1))
+        .join('_') + '.json';
+      
+      // Pattern 6: Keep spaces and ampersands exactly (for files like "Sexuality & Curiosity & Culture_vip3.json")
+      const pattern6 = schemaId.replace(/-/g, ' ')
+        .split(/[_]/)
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join('_') + '.json';
+      
+      // Pattern 7: Full lowercase with hyphens (for english-writing series)
+      const pattern7 = `${schemaId.toLowerCase()}.json`;
+      
+      // Pattern 8: With tier suffix (common pattern)
+      const tierSuffix = tier.toLowerCase().replace(/\s+/g, '');
+      const pattern8 = schemaId.split(/[-_]/)
+        .map(word => word === '&' ? '&' : word.charAt(0).toUpperCase() + word.slice(1))
+        .join('_') + `_${tierSuffix}.json`;
+
       const fallbackCandidates: { url: string; key: string; path: string }[] = [
-        {
-          url: `/data/${room.id}.json`,
-          key: "fallback",
-          path: `data/${room.id}.json`,
-        },
-        {
-          url: `/data/${String(room.id).replace(/-/g, "_")}.json`,
-          key: "fallback",
-          path: `data/${String(room.id).replace(/-/g, "_")}.json`,
-        },
+        { url: `/data/${room.id}.json`, key: "fallback", path: `data/${room.id}.json` },
+        { url: `/data/${pattern1}`, key: "fallback", path: `data/${pattern1}` },
+        { url: `/data/${pattern2}`, key: "fallback", path: `data/${pattern2}` },
+        { url: `/data/${pattern3}`, key: "fallback", path: `data/${pattern3}` },
+        { url: `/data/${pattern4}`, key: "fallback", path: `data/${pattern4}` },
+        { url: `/data/${pattern5}`, key: "fallback", path: `data/${pattern5}` },
+        { url: `/data/${pattern6}`, key: "fallback", path: `data/${pattern6}` },
+        { url: `/data/${pattern7}`, key: "fallback", path: `data/${pattern7}` },
+        { url: `/data/${pattern8}`, key: "fallback", path: `data/${pattern8}` },
       ];
 
       const fileCandidates = [...manifestCandidates, ...fallbackCandidates];
