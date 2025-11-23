@@ -1,0 +1,20 @@
+{
+  "id": "legacy-long-term-peace-vip3-6-finance",
+  "tier": "VIP3",
+  "title": {
+    "en": "Legacy Long Term Peace",
+    "vi": "Di Sản Bình An Lâu Dài"
+  },
+  "intro": {
+    "en": "Building financial legacy and long-term peace.",
+    "vi": "Xây dựng di sản tài chính và bình an lâu dài."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#E8F5E9"
+  }
+}

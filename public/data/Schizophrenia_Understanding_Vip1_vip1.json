@@ -1,0 +1,20 @@
+{
+  "id": "schizophrenia-understanding-vip1",
+  "tier": "VIP1",
+  "title": {
+    "en": "Understanding Schizophrenia",
+    "vi": "Hiểu Về Tâm Thần Phân Liệt"
+  },
+  "intro": {
+    "en": "Comprehensive understanding and support for schizophrenia.",
+    "vi": "Hiểu biết toàn diện và hỗ trợ cho tâm thần phân liệt."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#E6F7FF"
+  }
+}

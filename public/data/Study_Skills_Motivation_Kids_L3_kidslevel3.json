@@ -1,0 +1,22 @@
+{
+  "id": "study_skills_motivation_kids_l3",
+  "tier": "Kids Level 3 / Trẻ Em Cấp 3",
+  "title": {
+    "en": "Study Skills & Motivation",
+    "vi": "Kỹ Năng Học Tập & Động Lực"
+  },
+  "intro": {
+    "en": "Learn effective study skills and build motivation for learning.",
+    "vi": "Học kỹ năng học tập hiệu quả và xây dựng động lực học tập."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "age_range": "10-12",
+    "level": "Kids Level 3",
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#B2DFDB"
+  }
+}

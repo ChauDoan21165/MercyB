@@ -1,0 +1,20 @@
+{
+  "id": "strategy-in-life---mastery-&-legacy",
+  "tier": "VIP3",
+  "title": {
+    "en": "Strategy in Life - Mastery & Legacy",
+    "vi": "Chiến Lược Trong Cuộc Sống - Thành Thạo & Di Sản"
+  },
+  "intro": {
+    "en": "Build lasting mastery and create your legacy.",
+    "vi": "Xây dựng sự thành thạo bền vững và tạo di sản của bạn."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#FFFDE7"
+  }
+}

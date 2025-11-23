@@ -1,0 +1,20 @@
+{
+  "id": "anxiety-relief-vip4",
+  "tier": "VIP4",
+  "title": {
+    "en": "Anxiety Relief VIP4",
+    "vi": "Giảm Lo Âu VIP4"
+  },
+  "intro": {
+    "en": "Advanced techniques for lasting anxiety relief.",
+    "vi": "Kỹ thuật nâng cao để giảm lo âu lâu dài."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#E3F2FD"
+  }
+}

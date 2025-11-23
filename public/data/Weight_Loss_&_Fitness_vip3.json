@@ -1,0 +1,20 @@
+{
+  "id": "weight-loss-&-fitness",
+  "tier": "VIP3",
+  "title": {
+    "en": "Weight Loss & Fitness",
+    "vi": "Giảm Cân & Thể Dục"
+  },
+  "intro": {
+    "en": "Advanced strategies for sustainable weight loss and fitness.",
+    "vi": "Chiến lược nâng cao cho giảm cân và thể dục bền vững."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#D4EDDA"
+  }
+}

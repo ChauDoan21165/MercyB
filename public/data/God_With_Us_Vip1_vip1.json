@@ -1,0 +1,20 @@
+{
+  "id": "god-with-us-vip1",
+  "tier": "vip 1",
+  "title": {
+    "en": "God With Us VIP1",
+    "vi": "Chúa Ở Cùng Chúng Ta VIP1"
+  },
+  "intro": {
+    "en": "Exploring spiritual presence and faith.",
+    "vi": "Khám phá sự hiện diện thiêng liêng và đức tin."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#F0E6FF"
+  }
+}

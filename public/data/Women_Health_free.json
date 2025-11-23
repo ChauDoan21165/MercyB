@@ -1,0 +1,20 @@
+{
+  "id": "women-health",
+  "tier": "free",
+  "title": {
+    "en": "Women Health",
+    "vi": "Sức Khỏe Phụ Nữ"
+  },
+  "intro": {
+    "en": "Essential guidance for women's health and wellness.",
+    "vi": "Hướng dẫn thiết yếu cho sức khỏe và hạnh phúc của phụ nữ."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#FFB6C1"
+  }
+}

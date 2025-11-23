@@ -1,0 +1,20 @@
+{
+  "id": "strategy_life_foundations_vip3",
+  "tier": "VIP3",
+  "title": {
+    "en": "Strategy in Life - Foundations",
+    "vi": "Chiến Lược Cuộc Sống - Nền Tảng"
+  },
+  "intro": {
+    "en": "Build strong strategic foundations for life success.",
+    "vi": "Xây dựng nền tảng chiến lược vững chắc cho thành công."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#FFF8E1"
+  }
+}

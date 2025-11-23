@@ -1,0 +1,20 @@
+{
+  "id": "homepage_v1",
+  "tier": "free",
+  "title": {
+    "en": "Mercy Blade Homepage",
+    "vi": "Trang Chủ Mercy Blade"
+  },
+  "intro": {
+    "en": "Welcome to Mercy Blade - Your journey begins here.",
+    "vi": "Chào mừng đến Mercy Blade - Hành trình của bạn bắt đầu ở đây."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#F0F8FF"
+  }
+}

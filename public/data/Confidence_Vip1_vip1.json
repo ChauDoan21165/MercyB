@@ -1,0 +1,20 @@
+{
+  "id": "confidence-vip1",
+  "tier": "vip 1",
+  "title": {
+    "en": "Confidence Building VIP1",
+    "vi": "Xây Dựng Tự Tin VIP1"
+  },
+  "intro": {
+    "en": "Build lasting confidence from the inside out.",
+    "vi": "Xây dựng sự tự tin bền vững từ bên trong."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#FFF4E6"
+  }
+}

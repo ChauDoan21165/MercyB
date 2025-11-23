@@ -1,0 +1,20 @@
+{
+  "id": "mercy-blade-method-of-learning-english",
+  "tier": "free",
+  "title": {
+    "en": "Mercy Blade Method",
+    "vi": "Phương Pháp Mercy Blade"
+  },
+  "intro": {
+    "en": "A unique approach to learning English effectively.",
+    "vi": "Một cách tiếp cận độc đáo để học tiếng Anh hiệu quả."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#E0F2F7"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "stress-vip1",
+  "tier": "vip 1",
+  "title": {
+    "en": "Stress Management VIP1",
+    "vi": "Quản Lý Căng Thẳng VIP1"
+  },
+  "intro": {
+    "en": "Practical techniques for managing stress effectively.",
+    "vi": "Kỹ thuật thực tế để quản lý căng thẳng hiệu quả."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#E8F4F8"
+  }
+}
