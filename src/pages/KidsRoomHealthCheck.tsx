@@ -97,8 +97,10 @@ export default function KidsRoomHealthCheck() {
               jsonError = `JSON file not found: /data/${jsonFileName}`;
             } else {
               const contentType = response.headers.get('content-type');
-              if (!contentType?.includes('application/json')) {
-                jsonError = `Expected JSON but got ${contentType || 'unknown type'}`;
+              if (!contentType || !contentType.includes('application/json')) {
+                // In practice this usually means the file is missing or misnamed and the server
+                // is returning an HTML fallback page instead of the JSON asset.
+                jsonError = `JSON file not found: /data/${jsonFileName} (got ${contentType || 'unknown type'})`;
               } else {
                 try {
                   const json = await response.json();
