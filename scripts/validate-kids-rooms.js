@@ -34,6 +34,21 @@ async function validateKidsRooms() {
   console.log(`${colors.blue}═══════════════════════════════════════════════════${colors.reset}\n`);
 
   try {
+    // First, check for files with invalid characters (like trailing quotes)
+    console.log(`${colors.cyan}🔍 Checking for files with invalid characters...${colors.reset}\n`);
+    const dataFiles = await readdir(join(publicDir, 'data'));
+    const filesWithInvalidChars = dataFiles.filter(file => 
+      file.includes('"') || file.includes("'") || file.includes('`')
+    );
+    
+    if (filesWithInvalidChars.length > 0) {
+      console.log(`${colors.red}❌ Found ${filesWithInvalidChars.length} file(s) with invalid characters:${colors.reset}`);
+      filesWithInvalidChars.forEach(file => {
+        console.log(`  ${colors.red}✗${colors.reset} ${file}`);
+      });
+      console.log(`\n${colors.yellow}⚠️  Please rename these files to remove quotes and special characters.${colors.reset}\n`);
+    }
+
     // Fetch all kids levels
     const { data: levels, error: levelsError } = await supabase
       .from('kids_levels')
@@ -70,13 +85,44 @@ async function validateKidsRooms() {
 
       // Check each room for JSON and audio files
       for (const room of rooms) {
-        const jsonPath = join(publicDir, 'data', 'kids', `${room.id}.json`);
+        // Try multiple possible paths (kids/ subdirectory and directly in data/)
+        const possiblePaths = [
+          join(publicDir, 'data', 'kids', `${room.id}.json`),
+          join(publicDir, 'data', `${room.id}.json`)
+        ];
         
-        // Check if JSON file exists
+        let jsonFound = false;
+        let jsonPath = '';
+        
+        // Find which path exists
+        for (const path of possiblePaths) {
+          try {
+            await access(path);
+            jsonFound = true;
+            jsonPath = path;
+            break;
+          } catch {
+            // Try next path
+          }
+        }
+        
+        if (!jsonFound) {
+          issues.push(`    ❌ JSON file not found in any location for room: ${room.id}`);
+          continue;
+        }
+        
+        // Check if JSON file is valid
         try {
-          await access(jsonPath);
           const jsonContent = await readFile(jsonPath, 'utf-8');
-          const roomData = JSON.parse(jsonContent);
+          
+          // Try to parse JSON
+          let roomData;
+          try {
+            roomData = JSON.parse(jsonContent);
+          } catch (parseError) {
+            issues.push(`    ❌ Invalid JSON syntax in ${room.title_en}: ${parseError.message}`);
+            continue;
+          }
           
           const entryCount = roomData.entries?.length || 0;
           totalEntries += entryCount;
@@ -106,7 +152,7 @@ async function validateKidsRooms() {
             }
           }
         } catch (error) {
-          issues.push(`    ❌ JSON file missing or invalid: data/kids/${room.id}.json`);
+          issues.push(`    ❌ Error reading JSON file for ${room.title_en}: ${error.message}`);
         }
 
         // Check if room is active
