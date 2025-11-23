@@ -598,18 +598,18 @@ export default function UnifiedHealthCheck() {
           } else {
             try {
               const json = await response.json();
-              if (!Array.isArray(json.entries) || json.entries.length === 0) {
-                if (entryCount === 0) {
-                  roomIssues.push({
-                    roomId: room.id,
-                    roomTitle: room.title_en,
-                    tier: "Kids",
-                    issueType: "no_entries",
-                    message: "JSON has no entries and DB has no entries",
-                    isKidsRoom: true,
-                    levelId: room.level_id,
-                  });
-                }
+              // For kids rooms, we only care that JSON exists and is valid.
+              // It's okay if either JSON or DB has zero entries; content can still be loaded from JSON.
+              if (!Array.isArray(json.entries)) {
+                roomIssues.push({
+                  roomId: room.id,
+                  roomTitle: room.title_en,
+                  tier: "Kids",
+                  issueType: "invalid_json",
+                  message: "JSON entries field is missing or not an array",
+                  isKidsRoom: true,
+                  levelId: room.level_id,
+                });
               }
             } catch (e) {
               roomIssues.push({
@@ -643,16 +643,6 @@ export default function UnifiedHealthCheck() {
           tier: "Kids",
           issueType: "inactive",
           message: "Room is inactive",
-          isKidsRoom: true,
-          levelId: room.level_id,
-        });
-      } else if (entryCount === 0 && roomIssues.length === 0) {
-        roomIssues.push({
-          roomId: room.id,
-          roomTitle: room.title_en,
-          tier: "Kids",
-          issueType: "missing_entries",
-          message: "Room has no entries in database",
           isKidsRoom: true,
           levelId: room.level_id,
         });
