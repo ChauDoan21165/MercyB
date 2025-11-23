@@ -23,7 +23,7 @@ function filenameToRoomId(filename) {
   return base
     .toLowerCase()
     .replace(/[_\s]+/g, '-') // underscores and spaces to hyphens
-    .replace(/-(free|vip1|vip2|vip3|vip4)$/i, (match) => match.toLowerCase()); // normalize tier
+    .replace(/-(free|vip1|vip2|vip3|vip3[-_]ii|vip4|vip5|vip6|vip9|kidslevel3)$/i, (match) => match.toLowerCase()); // normalize tier
 }
 
 // Helper to extract display names from JSON
@@ -59,10 +59,15 @@ function scanRoomFiles() {
     
     // Extract tier from roomId
     let tier = 'free';
-    if (roomId.endsWith('-vip1')) tier = 'vip1';
-    else if (roomId.endsWith('-vip2')) tier = 'vip2';
-    else if (roomId.endsWith('-vip3')) tier = 'vip3';
+    if (roomId.endsWith('-vip3-ii')) tier = 'vip3_ii';
+    else if (roomId.endsWith('-vip9')) tier = 'vip9';
+    else if (roomId.endsWith('-vip6')) tier = 'vip6';
+    else if (roomId.endsWith('-vip5')) tier = 'vip5';
     else if (roomId.endsWith('-vip4')) tier = 'vip4';
+    else if (roomId.endsWith('-vip3')) tier = 'vip3';
+    else if (roomId.endsWith('-vip2')) tier = 'vip2';
+    else if (roomId.endsWith('-vip1')) tier = 'vip1';
+    else if (roomId.endsWith('-kidslevel3')) tier = 'kidslevel3';
     
     // Add to manifest
     manifest[roomId] = filename;
@@ -96,7 +101,7 @@ export function getRoomBaseNames(): string[] {
   const baseNames = new Set<string>();
   
   for (const roomId of Object.keys(PUBLIC_ROOM_MANIFEST)) {
-    const baseName = roomId.replace(/-(free|vip1|vip2|vip3|vip4)$/, '');
+    const baseName = roomId.replace(/-(free|vip1|vip2|vip3|vip3[-_]ii|vip4|vip5|vip6|vip9|kidslevel3)$/, '');
     baseNames.add(baseName);
   }
   
@@ -109,7 +114,7 @@ export function getRoomBaseNames(): string[] {
 export function getAvailableTiers(roomBaseName: string): string[] {
   const tiers: string[] = [];
   
-  for (const tier of ['free', 'vip1', 'vip2', 'vip3', 'vip4']) {
+  for (const tier of ['free', 'vip1', 'vip2', 'vip3', 'vip3_ii', 'vip4', 'vip5', 'vip6', 'vip9', 'kidslevel3']) {
     const roomId = \`\${roomBaseName}-\${tier}\`;
     if (PUBLIC_ROOM_MANIFEST[roomId]) {
       tiers.push(tier);
