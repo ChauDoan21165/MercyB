@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, FileEdit } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Progress } from "@/components/ui/progress";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { JsonEditorDialog } from "@/components/admin/JsonEditorDialog";
 
@@ -53,6 +54,7 @@ export default function RoomHealthCheck() {
   const [error, setError] = useState<string | null>(null);
   const [editorOpen, setEditorOpen] = useState(false);
   const [selectedFile, setSelectedFile] = useState<{ path: string; title: string } | null>(null);
+  const [progress, setProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
 
   const tierDisplay = tier ? TIER_DISPLAY_NAMES[tier] || tier.toUpperCase() : "All Tiers";
 
@@ -63,6 +65,7 @@ export default function RoomHealthCheck() {
   const checkRoomHealth = async () => {
     setLoading(true);
     setError(null);
+    setProgress(null);
 
     try {
       let query = supabase
@@ -80,6 +83,7 @@ export default function RoomHealthCheck() {
 
       const issues: RoomIssue[] = [];
       let healthyCount = 0;
+      const totalRooms = rooms?.length || 0;
 
       const MANIFEST_KEY_OVERRIDES: Record<string, string> = {
         "weight-loss-&-fitness": "weight-loss-and-fitness-vip3",
@@ -106,7 +110,10 @@ export default function RoomHealthCheck() {
         "mercy-blade-method-of--learning-english": "data/Mercy_Blade_Method_Of_ Learning_English.json",
       };
 
-      for (const room of rooms || []) {
+      for (let i = 0; i < (rooms?.length || 0); i++) {
+        const room = rooms![i];
+        setProgress({ current: i + 1, total: totalRooms, roomName: room.title_en });
+        
         const roomIssues: RoomIssue[] = [];
 
         // Check if JSON file exists and is valid
@@ -291,6 +298,7 @@ export default function RoomHealthCheck() {
       setError(err.message);
     } finally {
       setLoading(false);
+      setProgress(null);
     }
   };
 
@@ -343,7 +351,7 @@ export default function RoomHealthCheck() {
           {loading ? (
             <>
               <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-              Checking...
+              Scanning...
             </>
           ) : (
             "Refresh"
@@ -356,6 +364,24 @@ export default function RoomHealthCheck() {
           <AlertCircle className="h-4 w-4" />
           <AlertDescription>{error}</AlertDescription>
         </Alert>
+      )}
+
+      {loading && progress && (
+        <Card className="p-6">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-muted-foreground">Checking rooms...</span>
+              <span className="font-medium">
+                {progress.current} / {progress.total}
+              </span>
+            </div>
+            <Progress value={(progress.current / progress.total) * 100} className="h-2" />
+            <div className="flex items-center gap-2 text-sm">
+              <Loader2 className="h-4 w-4 animate-spin text-primary" />
+              <span className="text-foreground">{progress.roomName}</span>
+            </div>
+          </div>
+        </Card>
       )}
 
       {health && (
