@@ -1,0 +1,89 @@
+{
+  "id": "nutrition_basics_kids_l3",
+  "tier": "Kids Level 3 / Trẻ Em Cấp 3",
+  "title": {
+    "en": "Nutrition Basics",
+    "vi": "Dinh Dưỡng Cơ Bản"
+  },
+  "content": {
+    "en": "This room teaches children simple English phrases to talk about healthy food, energy, hunger, fullness, and making good choices. Kids learn how food helps the body move, think, and grow. Parents can support by naming foods and encouraging children to notice how different foods make them feel.",
+    "vi": "Phòng học này dạy trẻ những mẫu câu tiếng Anh đơn giản để nói về đồ ăn lành mạnh, năng lượng, đói, no và lựa chọn tốt. Trẻ học cách hiểu rằng thức ăn giúp cơ thể vận động, suy nghĩ và phát triển. Cha mẹ có thể hỗ trợ bằng cách gọi tên các món ăn và khuyến khích trẻ chú ý cơ thể cảm thấy thế nào sau mỗi loại thức ăn.",
+    "audio": "nutrition_basics_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "healthy-foods",
+      "keywords_en": ["healthy", "food", "nutrition"],
+      "keywords_vi": ["lành mạnh", "thức ăn", "dinh dưỡng"],
+      "copy": {
+        "en": "Teach children simple phrases for healthy foods like “This is good for my body” or “This gives me energy.” Encourage them to name vegetables, fruits, grains, and proteins. Understanding healthy foods helps kids make better choices every day.",
+        "vi": "Hãy dạy trẻ các câu đơn giản về thực phẩm lành mạnh như “This is good for my body” hoặc “This gives me energy.” Khuyến khích trẻ gọi tên rau, trái cây, ngũ cốc và protein. Hiểu về thực phẩm lành mạnh giúp trẻ đưa ra lựa chọn tốt hơn mỗi ngày."
+      },
+      "tags": ["healthy"],
+      "audio": "nutrition_basics_v1_healthy_foods.mp3"
+    },
+    {
+      "slug": "energy-from-food",
+      "keywords_en": ["energy", "food", "body"],
+      "keywords_vi": ["năng lượng", "thức ăn", "cơ thể"],
+      "copy": {
+        "en": "Teach kids to talk about energy by saying “Food gives me energy” or “I need food to play and think.” Encourage them to notice how different foods make them feel stronger or more awake. This builds awareness of how food supports the body.",
+        "vi": "Hãy dạy trẻ nói về năng lượng bằng các câu như “Food gives me energy” hoặc “I need food to play and think.” Khuyến khích trẻ chú ý cảm giác cơ thể sau mỗi loại thức ăn, xem món nào giúp trẻ khỏe hoặc tỉnh táo hơn. Điều này giúp trẻ hiểu vai trò của dinh dưỡng."
+      },
+      "tags": ["energy"],
+      "audio": "nutrition_basics_v1_energy_from_food.mp3"
+    },
+    {
+      "slug": "hunger-fullness",
+      "keywords_en": ["hunger", "full", "signals"],
+      "keywords_vi": ["đói", "no", "tín hiệu"],
+      "copy": {
+        "en": "Teach children to notice hunger and fullness using phrases like “I feel hungry,” “I feel full,” or “I need a little more.” Naming these signals helps kids listen to their body and eat the right amount for their needs.",
+        "vi": "Hãy dạy trẻ nhận biết cảm giác đói và no bằng các câu như “I feel hungry,” “I feel full,” hoặc “I need a little more.” Việc gọi tên tín hiệu này giúp trẻ lắng nghe cơ thể và ăn đúng lượng mình cần."
+      },
+      "tags": ["signals"],
+      "audio": "nutrition_basics_v1_hunger_fullness.mp3"
+    },
+    {
+      "slug": "choose-foods",
+      "keywords_en": ["choice", "food", "healthy"],
+      "keywords_vi": ["lựa chọn", "thức ăn", "lành mạnh"],
+      "copy": {
+        "en": "Teach kids to choose foods using phrases like “This is a healthy choice” or “I can choose better.” Show them how to balance sweet treats with healthier options. Learning to choose helps kids develop responsibility for their body.",
+        "vi": "Hãy dạy trẻ chọn thức ăn bằng các câu như “This is a healthy choice” hoặc “I can choose better.” Hướng dẫn trẻ cách cân bằng món ngọt với lựa chọn lành mạnh hơn. Học cách lựa chọn giúp trẻ xây dựng trách nhiệm với cơ thể mình."
+      },
+      "tags": ["choice"],
+      "audio": "nutrition_basics_v1_choose_foods.mp3"
+    },
+    {
+      "slug": "water-habit",
+      "keywords_en": ["water", "drink", "health"],
+      "keywords_vi": ["nước", "uống", "sức khỏe"],
+      "copy": {
+        "en": "Teach children the importance of drinking water using phrases like “Water helps my body” or “I need a drink.” Encourage them to notice when they feel thirsty. Water habits support focus, movement, and overall health.",
+        "vi": "Hãy dạy trẻ tầm quan trọng của việc uống nước bằng các câu như “Water helps my body” hoặc “I need a drink.” Khuyến khích trẻ chú ý khi mình cảm thấy khát. Thói quen uống nước giúp trẻ tập trung, vận động và khỏe mạnh hơn."
+      },
+      "tags": ["water"],
+      "audio": "nutrition_basics_v1_water_habit.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all"],
+      "keywords_vi": ["tất cả"],
+      "copy": {
+        "en": "Teach children simple phrases for healthy foods like “This is good for my body” or “This gives me energy.” Encourage them to name vegetables, fruits, grains, and proteins. Understanding healthy foods helps kids make better choices every day.\n\nTeach kids to talk about energy by saying “Food gives me energy” or “I need food to play and think.” Encourage them to notice how different foods make them feel stronger or more awake. This builds awareness of how food supports the body.\n\nTeach children to notice hunger and fullness using phrases like “I feel hungry,” “I feel full,” or “I need a little more.” Naming these signals helps kids listen to their body and eat the right amount for their needs.\n\nTeach kids to choose foods using phrases like “This is a healthy choice” or “I can choose better.” Show them how to balance sweet treats with healthier options. Learning to choose helps kids develop responsibility for their body.\n\nTeach children the importance of drinking water using phrases like “Water helps my body” or “I need a drink.” Encourage them to notice when they feel thirsty. Water habits support focus, movement, and overall health.",
+        "vi": "Hãy dạy trẻ các câu đơn giản về thực phẩm lành mạnh như “This is good for my body” hoặc “This gives me energy.” Khuyến khích trẻ gọi tên rau, trái cây, ngũ cốc và protein. Hiểu về thực phẩm lành mạnh giúp trẻ đưa ra lựa chọn tốt hơn mỗi ngày.\n\nHãy dạy trẻ nói về năng lượng bằng các câu như “Food gives me energy” hoặc “I need food to play and think.” Khuyến khích trẻ chú ý cảm giác cơ thể sau mỗi loại thức ăn, xem món nào giúp trẻ khỏe hoặc tỉnh táo hơn. Điều này giúp trẻ hiểu vai trò của dinh dưỡng.\n\nHãy dạy trẻ nhận biết cảm giác đói và no bằng các câu như “I feel hungry,” “I feel full,” hoặc “I need a little more.” Việc gọi tên tín hiệu này giúp trẻ lắng nghe cơ thể và ăn đúng lượng mình cần.\n\nHãy dạy trẻ chọn thức ăn bằng các câu như “This is a healthy choice” hoặc “I can choose better.” Hướng dẫn trẻ cách cân bằng món ngọt với lựa chọn lành mạnh hơn. Học cách lựa chọn giúp trẻ xây dựng trách nhiệm với cơ thể mình.\n\nHãy dạy trẻ tầm quan trọng của việc uống nước bằng các câu như “Water helps my body” hoặc “I need a drink.” Khuyến khích trẻ chú ý khi mình cảm thấy khát. Thói quen uống nước giúp trẻ tập trung, vận động và khỏe mạnh hơn."
+      },
+      "tags": ["all"],
+      "audio": "nutrition_basics_v1_healthy_foods.mp3 nutrition_basics_v1_energy_from_food.mp3 nutrition_basics_v1_hunger_fullness.mp3 nutrition_basics_v1_choose_foods.mp3 nutrition_basics_v1_water_habit.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "10-13",
+    "level": "Kids Level 3",
+    "created_at": "2025-11-23T00:00:00+00:00",
+    "updated_at": "2025-11-23T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#FFEDD6"
+  }
+}
