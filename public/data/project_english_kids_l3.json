@@ -1,0 +1,89 @@
+{
+  "id": "project_english_kids_l3",
+  "tier": "Kids Level 3 / Trẻ Em Cấp 3",
+  "title": {
+    "en": "Project English",
+    "vi": "Dự Án Tiếng Anh"
+  },
+  "content": {
+    "en": "This room teaches kids how to use English for simple projects—planning, gathering information, organizing ideas, and presenting results. Children learn step-by-step project skills using friendly, practical tasks. Parents can guide by helping kids plan small goals and finish one task at a time.",
+    "vi": "Phòng học này giúp trẻ sử dụng tiếng Anh cho các dự án đơn giản—lập kế hoạch, thu thập thông tin, sắp xếp ý tưởng và trình bày kết quả. Trẻ học kỹ năng dự án theo từng bước qua các nhiệm vụ dễ hiểu và thực tế. Cha mẹ có thể hỗ trợ bằng cách giúp trẻ đặt mục tiêu nhỏ và hoàn thành từng nhiệm vụ.",
+    "audio": "project_english_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "choose-a-topic",
+      "keywords_en": ["topic", "project", "choose"],
+      "keywords_vi": ["chủ đề", "dự án", "chọn"],
+      "copy": {
+        "en": "Every project begins with a topic. Encourage kids to choose something they enjoy—animals, space, food, sports, or a famous place. A good topic should make them curious and excited to learn more. Teach them to say: “My project is about…” Choosing a topic they love helps children stay motivated and turns learning into an enjoyable experience.",
+        "vi": "Mọi dự án đều bắt đầu từ một chủ đề. Hãy khuyến khích trẻ chọn điều mình thích—động vật, không gian, đồ ăn, thể thao hoặc một địa danh nổi tiếng. Một chủ đề tốt nên khiến trẻ tò mò và hào hứng tìm hiểu. Dạy trẻ nói: “My project is about…” Chọn chủ đề yêu thích giúp trẻ có động lực và biến việc học thành trải nghiệm vui vẻ."
+      },
+      "tags": ["topic"],
+      "audio": "project_english_v1_choose_topic.mp3"
+    },
+    {
+      "slug": "collect-information",
+      "keywords_en": ["collect", "information", "research"],
+      "keywords_vi": ["thu thập", "thông tin", "tìm hiểu"],
+      "copy": {
+        "en": "Teach kids to collect simple information for their project by reading short texts, watching educational videos, or asking adults for facts. Show them how to write short notes such as names, dates, colors, or important details. This teaches children to gather useful information in an organized way.",
+        "vi": "Hãy dạy trẻ thu thập thông tin cho dự án bằng cách đọc đoạn ngắn, xem video giáo dục hoặc hỏi người lớn để lấy dữ kiện. Chỉ trẻ cách ghi chú ngắn như tên, thời gian, màu sắc hoặc chi tiết quan trọng. Điều này giúp trẻ biết cách thu thập thông tin hữu ích một cách có tổ chức."
+      },
+      "tags": ["information"],
+      "audio": "project_english_v1_collect_information.mp3"
+    },
+    {
+      "slug": "organize-ideas",
+      "keywords_en": ["organize", "ideas", "project"],
+      "keywords_vi": ["sắp xếp", "ý tưởng", "dự án"],
+      "copy": {
+        "en": "Teach kids to organize ideas by grouping related information together. They can use three simple steps: introduction, main points, and conclusion. Show them how to list ideas in order so the project becomes clear and easy to understand. Organized ideas help children feel confident with bigger tasks.",
+        "vi": "Hãy dạy trẻ sắp xếp ý tưởng bằng cách gom các thông tin liên quan lại với nhau. Trẻ có thể dùng ba bước đơn giản: giới thiệu, các ý chính và kết luận. Hướng dẫn trẻ liệt kê ý theo thứ tự để dự án rõ ràng và dễ hiểu. Sắp xếp ý tưởng giúp trẻ tự tin hơn với nhiệm vụ lớn."
+      },
+      "tags": ["organize"],
+      "audio": "project_english_v1_organize_ideas.mp3"
+    },
+    {
+      "slug": "make-a-simple-poster",
+      "keywords_en": ["poster", "create", "project"],
+      "keywords_vi": ["áp phích", "tạo", "dự án"],
+      "copy": {
+        "en": "Teach kids to express their project with a simple poster. They can combine a title, a picture, and three facts. Encourage neat writing and clear spacing so others can read it easily. A poster helps kids practice creativity while using English to share what they learned.",
+        "vi": "Hãy dạy trẻ trình bày dự án bằng một tấm áp phích đơn giản. Trẻ có thể kết hợp tiêu đề, hình ảnh và ba thông tin quan trọng. Khuyến khích trẻ viết rõ ràng và trình bày gọn gàng để người khác dễ đọc. Áp phích giúp trẻ luyện sáng tạo trong khi dùng tiếng Anh để chia sẻ điều mình học."
+      },
+      "tags": ["poster"],
+      "audio": "project_english_v1_simple_poster.mp3"
+    },
+    {
+      "slug": "present-your-project",
+      "keywords_en": ["present", "project", "speak"],
+      "keywords_vi": ["trình bày", "dự án", "nói"],
+      "copy": {
+        "en": "Teach kids to present their project using simple sentences. They can say the topic, three facts, and one reason they chose it. Encourage speaking slowly with a smile. Presenting a project helps children build communication skills and take pride in their work.",
+        "vi": "Hãy dạy trẻ trình bày dự án bằng những câu đơn giản. Trẻ có thể nói chủ đề, ba thông tin và một lý do chọn nó. Khuyến khích trẻ nói chậm và mỉm cười. Trình bày dự án giúp trẻ rèn kỹ năng giao tiếp và tự hào về thành quả của mình."
+      },
+      "tags": ["present"],
+      "audio": "project_english_v1_present_project.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all"],
+      "keywords_vi": ["tất cả"],
+      "copy": {
+        "en": "A project begins with choosing a topic children love, such as animals, food, or space. Next, they collect simple information from short texts, videos, or adults. Then they learn to organize ideas with an introduction, main points, and a conclusion. Kids can express their project by creating a neat, clear poster combining a title, a picture, and three facts. Finally, they present their project using simple sentences to share what they learned. These steps help kids use English confidently and proudly in real tasks.",
+        "vi": "Một dự án bắt đầu bằng việc chọn chủ đề trẻ yêu thích như động vật, đồ ăn hoặc không gian. Tiếp theo, trẻ thu thập thông tin từ đoạn đọc, video hoặc người lớn. Sau đó, trẻ học cách sắp xếp ý tưởng theo ba phần: giới thiệu, ý chính và kết luận. Trẻ có thể trình bày dự án bằng một áp phích rõ ràng gồm tiêu đề, hình ảnh và ba thông tin. Cuối cùng, trẻ trình bày dự án bằng câu đơn giản để chia sẻ điều mình học. Những bước này giúp trẻ dùng tiếng Anh tự tin và tự hào trong các nhiệm vụ thực tế."
+      },
+      "tags": ["all"],
+      "audio": "project_english_v1_choose_topic.mp3 project_english_v1_collect_information.mp3 project_english_v1_organize_ideas.mp3 project_english_v1_simple_poster.mp3 project_english_v1_present_project.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "10-13",
+    "level": "Kids Level 3",
+    "created_at": "2025-11-23T00:00:00+00:00",
+    "updated_at": "2025-11-23T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#FFF0D8"
+  }
+}
