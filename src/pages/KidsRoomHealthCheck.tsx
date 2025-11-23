@@ -22,6 +22,18 @@ interface RoomStatus {
   jsonError?: string;
 }
 
+const getJsonFilenameForRoom = (roomId: string, levelId: string): string => {
+  const mappedFile = KIDS_ROOM_JSON_MAP[roomId];
+  if (mappedFile) return mappedFile;
+
+  const suffix =
+    levelId === 'level1' ? 'kids_l1' :
+    levelId === 'level2' ? 'kids_l2' :
+    levelId === 'level3' ? 'kids_l3' : 'kids';
+
+  return `${roomId.replace(/-/g, '_')}_${suffix}.json`;
+};
+
 export default function KidsRoomHealthCheck() {
   const navigate = useNavigate();
   const { isAdmin, loading: adminLoading } = useAdminCheck();
@@ -68,51 +80,64 @@ export default function KidsRoomHealthCheck() {
         return;
       }
 
-      // Check each room's JSON file validity
+      // Check each room's JSON file + DB entries
       const roomStatuses: RoomStatus[] = await Promise.all(
         (data || []).map(async (room: any) => {
           const entryCount = room.kids_entries?.[0]?.count || 0;
-          let status: 'ok' | 'missing_entries' | 'inactive' | 'missing_json' | 'invalid_json' = 'ok';
+          let status: RoomStatus['status'] = 'ok';
           let jsonError: string | undefined;
-          
-          if (!room.is_active) {
-            status = 'inactive';
-          } else if (entryCount === 0) {
-            status = 'missing_entries';
+          let hasJsonEntries = false;
+
+          // Try to validate JSON file and detect if it has entries
+          try {
+            const jsonFileName = getJsonFilenameForRoom(room.id, room.level_id);
+            const response = await fetch(`/data/${jsonFileName}`);
+
+            if (!response.ok) {
+              jsonError = `JSON file not found: /data/${jsonFileName}`;
             } else {
-              // Validate JSON file exists and is valid
-              try {
-                const suffix =
-                  room.level_id === 'level1' ? 'kids_l1' :
-                  room.level_id === 'level2' ? 'kids_l2' :
-                  room.level_id === 'level3' ? 'kids_l3' : 'kids';
-
-                const fallbackFile = `${room.id.replace(/-/g, '_')}_${suffix}.json`;
-                const mappedFile = KIDS_ROOM_JSON_MAP[room.id];
-                const jsonFileName = mappedFile || fallbackFile;
-
-                const response = await fetch(`/data/${jsonFileName}`);
-              
-              if (!response.ok) {
-                status = 'missing_json';
-                jsonError = `JSON file not found: /data/${jsonFileName}`;
+              const contentType = response.headers.get('content-type');
+              if (!contentType?.includes('application/json')) {
+                jsonError = `Expected JSON but got ${contentType || 'unknown type'}`;
               } else {
-                const contentType = response.headers.get('content-type');
-                if (!contentType?.includes('application/json')) {
-                  status = 'invalid_json';
-                  jsonError = `Expected JSON but got ${contentType || 'unknown type'}`;
-                } else {
-                  try {
-                    await response.json();
-                  } catch (e) {
-                    status = 'invalid_json';
-                    jsonError = `Invalid JSON syntax in file`;
+                try {
+                  const json = await response.json();
+                  if (Array.isArray(json.entries) && json.entries.length > 0) {
+                    hasJsonEntries = true;
+                  } else {
+                    jsonError = 'JSON has no entries array or it is empty';
                   }
+                } catch (e) {
+                  jsonError = 'Invalid JSON syntax in file';
                 }
               }
-            } catch (e: any) {
-              status = 'invalid_json';
-              jsonError = e.message;
+            }
+          } catch (e: any) {
+            jsonError = e.message;
+          }
+
+          // Decide final status combining DB + JSON state
+          if (!room.is_active) {
+            status = 'inactive';
+          } else if (entryCount > 0) {
+            if (jsonError) {
+              status = jsonError.startsWith('JSON file not found')
+                ? 'missing_json'
+                : 'invalid_json';
+            } else {
+              status = 'ok';
+            }
+          } else {
+            // No DB entries
+            if (hasJsonEntries) {
+              // Room will still work via JSON fallback in KidsChat
+              status = 'ok';
+            } else if (jsonError) {
+              status = jsonError.startsWith('JSON file not found')
+                ? 'missing_json'
+                : 'invalid_json';
+            } else {
+              status = 'missing_entries';
             }
           }
 
@@ -170,12 +195,12 @@ export default function KidsRoomHealthCheck() {
         throw new Error(`Invalid level_id format: "${roomLevelId}". Expected format: level1, level2, or level3 (no dashes)`);
       }
 
-      // Fetch the JSON file for this room
-      const jsonFileName = `${roomId.replace(/-/g, '_')}_kids_${roomLevelId.replace('level', 'l')}.json`;
+      // Fetch the JSON file for this room (using the same mapping as KidsChat)
+      const jsonFileName = getJsonFilenameForRoom(roomId, roomLevelId);
       const response = await fetch(`/data/${jsonFileName}`);
       
       if (!response.ok) {
-        throw new Error(`JSON file not found: /data/${jsonFileName}. Please ensure the file exists and naming follows: {room_id}_kids_{level}.json format`);
+        throw new Error(`JSON file not found: /data/${jsonFileName}. Please ensure the file exists and the mapping for "${roomId}" is correct.`);
       }
 
       const roomData = await response.json();
@@ -270,7 +295,7 @@ export default function KidsRoomHealthCheck() {
 
     for (const room of roomsToFix) {
       try {
-        const jsonFileName = `${room.id.replace(/-/g, '_')}_kids_${room.level_id.replace('level', 'l')}.json`;
+        const jsonFileName = getJsonFilenameForRoom(room.id, room.level_id);
         const response = await fetch(`/data/${jsonFileName}`);
         
         if (!response.ok) {
@@ -556,7 +581,7 @@ export default function KidsRoomHealthCheck() {
                         </span>
                         <br />
                         <span className="text-xs text-muted-foreground mt-1 block">
-                          Expected: /data/{room.id.replace(/-/g, '_')}_kids_{room.level_id.replace('level', 'l')}.json
+                          Expected: /data/{getJsonFilenameForRoom(room.id, room.level_id)}
                         </span>
                       </AlertDescription>
                     </Alert>
