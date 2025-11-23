@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Progress } from "@/components/ui/progress";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { KIDS_ROOM_JSON_MAP } from "@/pages/KidsChat";
 import { useToast } from "@/hooks/use-toast";
@@ -101,6 +102,7 @@ export default function UnifiedHealthCheck() {
   const [error, setError] = useState<string | null>(null);
   const [fixing, setFixing] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"main" | "kids">(tier === "kids" ? "kids" : "main");
+  const [progress, setProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
 
   const tierDisplay = tier && tier !== "kids" ? TIER_DISPLAY_NAMES[tier] || tier.toUpperCase() : tier === "kids" ? "Kids Rooms" : "All Tiers";
 
@@ -111,6 +113,7 @@ export default function UnifiedHealthCheck() {
   const checkRoomHealth = async () => {
     setLoading(true);
     setError(null);
+    setProgress(null);
 
     try {
       if (activeTab === "kids") {
@@ -122,6 +125,7 @@ export default function UnifiedHealthCheck() {
       setError(err.message);
     } finally {
       setLoading(false);
+      setProgress(null);
     }
   };
 
@@ -141,8 +145,12 @@ export default function UnifiedHealthCheck() {
 
     const issues: RoomIssue[] = [];
     let healthyCount = 0;
+    const totalRooms = rooms?.length || 0;
 
-    for (const room of rooms || []) {
+    for (let i = 0; i < (rooms?.length || 0); i++) {
+      const room = rooms![i];
+      setProgress({ current: i + 1, total: totalRooms, roomName: room.title_en });
+      
       const roomIssues: RoomIssue[] = [];
 
       // Check if JSON file exists and is valid
@@ -407,8 +415,12 @@ export default function UnifiedHealthCheck() {
 
     const issues: RoomIssue[] = [];
     let healthyCount = 0;
+    const totalRooms = rooms?.length || 0;
 
-    for (const room of rooms || []) {
+    for (let i = 0; i < (rooms?.length || 0); i++) {
+      const room = rooms![i];
+      setProgress({ current: i + 1, total: totalRooms, roomName: room.title_en });
+      
       const roomIssues: RoomIssue[] = [];
       const entryCount = room.kids_entries?.[0]?.count || 0;
 
@@ -638,7 +650,7 @@ export default function UnifiedHealthCheck() {
           {loading ? (
             <>
               <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-              Checking...
+              Scanning...
             </>
           ) : (
             "Refresh"
@@ -651,6 +663,24 @@ export default function UnifiedHealthCheck() {
           <AlertCircle className="h-4 w-4" />
           <AlertDescription>{error}</AlertDescription>
         </Alert>
+      )}
+
+      {loading && progress && (
+        <Card className="p-6">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-muted-foreground">Checking rooms...</span>
+              <span className="font-medium">
+                {progress.current} / {progress.total}
+              </span>
+            </div>
+            <Progress value={(progress.current / progress.total) * 100} className="h-2" />
+            <div className="flex items-center gap-2 text-sm">
+              <Loader2 className="h-4 w-4 animate-spin text-primary" />
+              <span className="text-foreground">{progress.roomName}</span>
+            </div>
+          </div>
+        </Card>
       )}
 
       <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "main" | "kids")}>
