@@ -1,0 +1,56 @@
+{
+  "id": "little_scientist_kids_l2",
+  "tier": "kids_l2",
+  "title": {
+    "en": "Little Scientist Words",
+    "vi": "Nhà Khoa Học Nhí"
+  },
+  "intro": {
+    "en": "Discover simple science words for curious kids who love to ask 'Why?'.",
+    "vi": "Khám phá những từ vựng khoa học đơn giản cho các bạn nhỏ thích hỏi 'Tại sao?'."
+  },
+  "intro_audio": "",
+  "entries": [
+    {
+      "slug": "science-tools",
+      "keywords_en": ["experiment", "test", "lab", "magnifying glass"],
+      "keywords_vi": ["thí nghiệm", "kiểm tra", "phòng thí nghiệm", "kính lúp"],
+      "copy": {
+        "en": "Learn words for simple science tools like 'experiment', 'test', 'lab', and 'magnifying glass'.",
+        "vi": "Học các từ cho dụng cụ khoa học đơn giản như 'thí nghiệm', 'kiểm tra', 'phòng thí nghiệm', 'kính lúp'."
+      },
+      "tags": ["science", "tools", "kids", "level2"],
+      "audio": ""
+    },
+    {
+      "slug": "states-of-matter",
+      "keywords_en": ["solid", "liquid", "gas", "ice", "water", "steam"],
+      "keywords_vi": ["rắn", "lỏng", "khí", "nước đá", "nước", "hơi nước"],
+      "copy": {
+        "en": "Practice talking about ice, water, and steam with words like 'solid', 'liquid', and 'gas'.",
+        "vi": "Luyện nói về nước đá, nước và hơi nước với các từ 'rắn', 'lỏng', 'khí'."
+      },
+      "tags": ["science", "matter"],
+      "audio": ""
+    },
+    {
+      "slug": "simple-experiments",
+      "keywords_en": ["observe", "mix", "change", "results"],
+      "keywords_vi": ["quan sát", "trộn", "thay đổi", "kết quả"],
+      "copy": {
+        "en": "Use English to describe simple experiments: what you mix, what you see, and what changes.",
+        "vi": "Dùng tiếng Anh để mô tả các thí nghiệm đơn giản: bạn trộn gì, bạn thấy gì và có gì thay đổi."
+      },
+      "tags": ["experiments", "science"],
+      "audio": ""
+    }
+  ],
+  "meta": {
+    "age_range": "7-9",
+    "level": "level2",
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 3,
+    "room_color": "#BFDBFE"
+  }
+}
