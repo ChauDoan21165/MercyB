@@ -1,0 +1,89 @@
+{
+  "id": "simple_history_highlights_kids_l3",
+  "tier": "Kids Level 3 / Trẻ Em Cấp 3",
+  "title": {
+    "en": "Simple History Highlights",
+    "vi": "Lịch Sử Đơn Giản"
+  },
+  "content": {
+    "en": "This room introduces kids to simple history topics—important people, inventions, places, and events. Children learn how the world changed over time through short, clear stories. Parents can discuss each topic gently and spark curiosity about the past.",
+    "vi": "Phòng học này giới thiệu đến trẻ những chủ đề lịch sử đơn giản—nhân vật quan trọng, phát minh, địa điểm và sự kiện. Trẻ học cách thế giới thay đổi theo thời gian qua những câu chuyện ngắn gọn, dễ hiểu. Cha mẹ có thể thảo luận nhẹ nhàng và khơi gợi sự tò mò về quá khứ.",
+    "audio": "simple_history_highlights_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "great-inventors",
+      "keywords_en": ["inventors", "history", "invention"],
+      "keywords_vi": ["nhà phát minh", "lịch sử", "phát minh"],
+      "copy": {
+        "en": "Teach kids that inventors are people who create new things that help the world. Share simple examples: the light bulb, the airplane, or the telephone. Explain how each invention solved a problem and made life easier. Encourage kids to imagine their own inventions by asking, “What would you create to help people?” This builds curiosity and helps children see history as full of creative problem-solvers.",
+        "vi": "Hãy dạy trẻ rằng nhà phát minh là những người tạo ra những thứ mới giúp ích cho thế giới. Chia sẻ ví dụ đơn giản: bóng đèn, máy bay hoặc điện thoại. Giải thích cách mỗi phát minh giải quyết một vấn đề và khiến cuộc sống dễ dàng hơn. Khuyến khích trẻ tưởng tượng phát minh của riêng mình bằng cách hỏi: “Con sẽ tạo ra điều gì để giúp mọi người?” Điều này xây dựng sự tò mò và giúp trẻ thấy lịch sử đầy những người giải quyết vấn đề sáng tạo."
+      },
+      "tags": ["inventors"],
+      "audio": "simple_history_highlights_v1_great_inventors.mp3"
+    },
+    {
+      "slug": "famous-explorers",
+      "keywords_en": ["explorers", "travel", "history"],
+      "keywords_vi": ["nhà thám hiểm", "du hành", "lịch sử"],
+      "copy": {
+        "en": "Explain that explorers are people who traveled to learn about new places. Share kid-friendly stories about explorers crossing oceans, climbing mountains, or discovering new lands. Focus on curiosity, courage, and learning—not danger. Ask children what place they would explore if they could. This helps them understand how exploration shaped the world.",
+        "vi": "Hãy giải thích rằng nhà thám hiểm là những người đi để tìm hiểu những vùng đất mới. Kể những câu chuyện phù hợp với trẻ về những nhà thám hiểm vượt đại dương, leo núi hoặc khám phá vùng đất mới. Tập trung vào sự tò mò, lòng dũng cảm và việc học hỏi—không nhấn mạnh nguy hiểm. Hỏi trẻ nơi mà con muốn khám phá nếu có thể. Điều này giúp trẻ hiểu cách việc khám phá hình thành thế giới."
+      },
+      "tags": ["explorers"],
+      "audio": "simple_history_highlights_v1_famous_explorers.mp3"
+    },
+    {
+      "slug": "important-places",
+      "keywords_en": ["places", "historical", "world"],
+      "keywords_vi": ["địa điểm", "lịch sử", "thế giới"],
+      "copy": {
+        "en": "Teach children about important historical places—pyramids, old castles, or ancient cities. Show them pictures so they can imagine what life looked like long ago. Explain one simple fact for each place, such as how people built it or why it mattered. This helps children understand that the world has a long, rich story.",
+        "vi": "Hãy dạy trẻ về những địa điểm lịch sử quan trọng—kim tự tháp, lâu đài cổ hoặc thành phố cổ xưa. Cho trẻ xem hình ảnh để tưởng tượng cuộc sống ngày trước. Giải thích một thông tin đơn giản cho mỗi nơi, như cách con người xây dựng nó hoặc vì sao nó quan trọng. Điều này giúp trẻ hiểu rằng thế giới có một câu chuyện dài và phong phú."
+      },
+      "tags": ["places"],
+      "audio": "simple_history_highlights_v1_importance_places.mp3"
+    },
+    {
+      "slug": "life-long-ago",
+      "keywords_en": ["life", "past", "history"],
+      "keywords_vi": ["cuộc sống", "quá khứ", "lịch sử"],
+      "copy": {
+        "en": "Children can learn how life long ago was different from today—no phones, no cars, no electricity. Explain how kids played, studied, and helped their families in the past. Compare it to their life now. This simple contrast helps children understand change over time and appreciate modern comforts.",
+        "vi": "Trẻ có thể học cách cuộc sống ngày xưa khác bây giờ như thế nào—không có điện thoại, xe hơi hay điện. Giải thích cách trẻ em chơi, học và giúp đỡ gia đình trong quá khứ. So sánh với cuộc sống hiện tại của trẻ. Sự đối chiếu đơn giản này giúp trẻ hiểu sự thay đổi theo thời gian và trân trọng tiện nghi hiện đại."
+      },
+      "tags": ["past"],
+      "audio": "simple_history_highlights_v1_life_long_ago.mp3"
+    },
+    {
+      "slug": "big-events",
+      "keywords_en": ["events", "history", "world"],
+      "keywords_vi": ["sự kiện", "lịch sử", "thế giới"],
+      "copy": {
+        "en": "Introduce big historical events in a gentle way—important discoveries, peaceful agreements, or moments when people worked together to solve problems. Keep explanations simple and positive. Show children that history is a collection of moments where people learned, grew, and made the world better.",
+        "vi": "Hãy giới thiệu các sự kiện lịch sử lớn một cách nhẹ nhàng—những khám phá quan trọng, thỏa thuận hòa bình hoặc những khoảnh khắc con người hợp tác để giải quyết vấn đề. Giải thích đơn giản và tích cực. Cho trẻ thấy rằng lịch sử là tập hợp những khoảnh khắc con người học hỏi, trưởng thành và làm thế giới tốt đẹp hơn."
+      },
+      "tags": ["events"],
+      "audio": "simple_history_highlights_v1_big_events.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all"],
+      "keywords_vi": ["tất cả"],
+      "copy": {
+        "en": "Inventors created things that changed the world, like light bulbs and airplanes. Explorers traveled to new places and helped map the Earth. Important places such as pyramids and old cities show how people lived long ago. Life in the past was different—no electricity or modern tools—helping kids appreciate today’s comforts. Big historical events remind children how people worked together to learn, grow, and improve the world.",
+        "vi": "Nhà phát minh tạo ra những thứ làm thay đổi thế giới, như bóng đèn và máy bay. Nhà thám hiểm du hành đến những vùng đất mới và giúp con người hiểu rõ Trái Đất. Những địa điểm quan trọng như kim tự tháp và thành phố cổ cho thấy cuộc sống ngày xưa. Cuộc sống trong quá khứ khác bây giờ—không có điện hay công cụ hiện đại—giúp trẻ trân trọng tiện nghi hiện tại. Những sự kiện lịch sử lớn nhắc trẻ rằng con người đã cùng nhau học hỏi, trưởng thành và làm thế giới tốt đẹp hơn."
+      },
+      "tags": ["all"],
+      "audio": "simple_history_highlights_v1_great_inventors.mp3 simple_history_highlights_v1_famous_explorers.mp3 simple_history_highlights_v1_importance_places.mp3 simple_history_highlights_v1_life_long_ago.mp3 simple_history_highlights_v1_big_events.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "10-13",
+    "level": "Kids Level 3",
+    "created_at": "2025-11-23T00:00:00+00:00",
+    "updated_at": "2025-11-23T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#FFF3D9"
+  }
+}
