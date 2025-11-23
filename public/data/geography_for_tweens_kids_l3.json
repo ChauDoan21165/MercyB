@@ -1,0 +1,89 @@
+{
+  "id": "geography_for_tweens_kids_l3",
+  "tier": "Kids Level 3 / Trẻ Em Cấp 3",
+  "title": {
+    "en": "Geography for Tweens",
+    "vi": "Địa Lý Dành Cho Thiếu Nhi"
+  },
+  "content": {
+    "en": "This room helps kids understand the world—continents, oceans, maps, and different places on Earth. Children learn simple geography through visuals, comparisons, and everyday examples. Parents can support by exploring maps together or talking about places they know.",
+    "vi": "Phòng học này giúp trẻ hiểu về thế giới—châu lục, đại dương, bản đồ và các địa điểm khác nhau trên Trái Đất. Trẻ học địa lý đơn giản qua hình ảnh, so sánh và ví dụ quen thuộc. Cha mẹ có thể hỗ trợ bằng cách xem bản đồ cùng trẻ hoặc nói về những nơi mình biết.",
+    "audio": "geography_for_tweens_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "continents-and-oceans",
+      "keywords_en": ["continents", "oceans", "world"],
+      "keywords_vi": ["châu lục", "đại dương", "thế giới"],
+      "copy": {
+        "en": "Teach kids that the Earth is divided into large land areas called continents and big water bodies called oceans. Show them a world map and point to the seven continents and the major oceans. Keep explanations simple: continents are where people and animals live, while oceans connect the world with water. This helps children see Earth as one big, diverse home.",
+        "vi": "Hãy dạy trẻ rằng Trái Đất được chia thành các vùng đất lớn gọi là châu lục và các vùng nước lớn gọi là đại dương. Cho trẻ xem bản đồ thế giới và chỉ vào bảy châu lục cùng các đại dương chính. Giải thích đơn giản: châu lục là nơi con người và động vật sống, còn đại dương kết nối thế giới bằng nước. Điều này giúp trẻ thấy Trái Đất là một mái nhà lớn và đa dạng."
+      },
+      "tags": ["continents"],
+      "audio": "geography_for_tweens_v1_continents_oceans.mp3"
+    },
+    {
+      "slug": "maps-and-directions",
+      "keywords_en": ["maps", "directions", "north"],
+      "keywords_vi": ["bản đồ", "phương hướng", "bắc"],
+      "copy": {
+        "en": "Teach kids how maps work by showing symbols, colors, and the compass directions—north, south, east, and west. Let them practice finding places on a simple map or using directions to locate a point. Understanding maps builds spatial awareness and makes geography fun and practical.",
+        "vi": "Hãy dạy trẻ cách hoạt động của bản đồ bằng cách chỉ các ký hiệu, màu sắc và bốn hướng chính—bắc, nam, đông, tây. Cho trẻ tập tìm địa điểm trên bản đồ đơn giản hoặc dùng phương hướng để xác định vị trí. Hiểu bản đồ giúp trẻ phát triển tư duy không gian và khiến môn địa lý trở nên vui và hữu ích."
+      },
+      "tags": ["maps"],
+      "audio": "geography_for_tweens_v1_maps_directions.mp3"
+    },
+    {
+      "slug": "countries-and-cultures",
+      "keywords_en": ["countries", "cultures", "world"],
+      "keywords_vi": ["quốc gia", "văn hóa", "thế giới"],
+      "copy": {
+        "en": "Teach children that each country has its own language, foods, traditions, and ways of living. Show them examples like different greetings, holidays, or clothing styles. This helps kids appreciate diversity and understand that the world is full of unique and fascinating cultures.",
+        "vi": "Hãy dạy trẻ rằng mỗi quốc gia có ngôn ngữ, món ăn, truyền thống và cách sống riêng. Cho trẻ xem các ví dụ như lời chào khác nhau, ngày lễ hoặc kiểu trang phục. Điều này giúp trẻ trân trọng sự đa dạng và hiểu rằng thế giới đầy những nền văn hóa độc đáo và thú vị."
+      },
+      "tags": ["cultures"],
+      "audio": "geography_for_tweens_v1_countries_cultures.mp3"
+    },
+    {
+      "slug": "landforms",
+      "keywords_en": ["landforms", "nature", "earth"],
+      "keywords_vi": ["địa hình", "thiên nhiên", "trái đất"],
+      "copy": {
+        "en": "Teach kids about basic landforms—mountains, rivers, valleys, deserts, and islands. Use simple comparisons: mountains are tall, rivers move, deserts are dry. Show pictures so children can visualize each type. Learning landforms helps kids understand how nature shapes the planet.",
+        "vi": "Hãy dạy trẻ về các dạng địa hình cơ bản—núi, sông, thung lũng, sa mạc và đảo. Dùng so sánh đơn giản: núi thì cao, sông thì chảy, sa mạc thì khô. Cho trẻ xem hình để dễ hình dung. Hiểu địa hình giúp trẻ nhận ra thiên nhiên tạo nên Trái Đất như thế nào."
+      },
+      "tags": ["landforms"],
+      "audio": "geography_for_tweens_v1_landforms.mp3"
+    },
+    {
+      "slug": "climate-zones",
+      "keywords_en": ["climate", "zones", "weather"],
+      "keywords_vi": ["khí hậu", "vùng khí hậu", "thời tiết"],
+      "copy": {
+        "en": "Explain that different parts of the world have different climates—hot, cold, rainy, or dry. Show them the idea of climate zones and how plants, animals, and people adapt to each environment. This helps children understand why places look and feel different around the world.",
+        "vi": "Hãy giải thích rằng các vùng khác nhau trên thế giới có khí hậu khác nhau—nóng, lạnh, mưa hoặc khô. Cho trẻ biết về các vùng khí hậu và cách cây cối, động vật và con người thích nghi với từng môi trường. Điều này giúp trẻ hiểu vì sao các địa điểm trên thế giới trông và cảm nhận khác nhau."
+      },
+      "tags": ["climate"],
+      "audio": "geography_for_tweens_v1_climate_zones.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all"],
+      "keywords_vi": ["tất cả"],
+      "copy": {
+        "en": "Teach kids about continents and oceans by showing how Earth’s land and water are divided. Help them explore maps and directions using symbols and the compass. Introduce countries and cultures to show how people live differently around the world. Explain landforms such as mountains, rivers, valleys, and deserts using simple comparisons. Teach climate zones to help kids understand why places look and feel different across the world.",
+        "vi": "Dạy trẻ về châu lục và đại dương bằng cách chỉ cách Trái Đất được chia thành đất và nước. Giúp trẻ khám phá bản đồ và phương hướng qua ký hiệu và la bàn. Giới thiệu các quốc gia và văn hóa để trẻ thấy con người sống khác nhau trên thế giới. Giải thích địa hình như núi, sông, thung lũng và sa mạc bằng những so sánh đơn giản. Dạy trẻ về vùng khí hậu để hiểu vì sao các nơi trên thế giới trông và cảm nhận khác nhau."
+      },
+      "tags": ["all"],
+      "audio": "geography_for_tweens_v1_continents_oceans.mp3 geography_for_tweens_v1_maps_directions.mp3 geography_for_tweens_v1_countries_cultures.mp3 geography_for_tweens_v1_landforms.mp3 geography_for_tweens_v1_climate_zones.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "10-13",
+    "level": "Kids Level 3",
+    "created_at": "2025-11-23T00:00:00+00:00",
+    "updated_at": "2025-11-23T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#E9FFE0"
+  }
+}
