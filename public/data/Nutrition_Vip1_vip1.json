@@ -1,0 +1,20 @@
+{
+  "id": "nutrition-vip1",
+  "tier": "vip 1",
+  "title": {
+    "en": "Nutrition VIP1",
+    "vi": "Dinh Dưỡng VIP1"
+  },
+  "intro": {
+    "en": "Essential nutrition guidance for optimal health.",
+    "vi": "Hướng dẫn dinh dưỡng thiết yếu cho sức khỏe tối ưu."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#D5F4E6"
+  }
+}

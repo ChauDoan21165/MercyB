@@ -1,0 +1,20 @@
+{
+  "id": "emotional-growth-vip3",
+  "tier": "vip 3 / cấp vip 3",
+  "title": {
+    "en": "emotional-growth-vip3",
+    "vi": "phát-triển-cảm-xúc-vip3"
+  },
+  "intro": {
+    "en": "Advanced emotional growth and intelligence development.",
+    "vi": "Phát triển cảm xúc và trí tuệ nâng cao."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#F8BBD0"
+  }
+}

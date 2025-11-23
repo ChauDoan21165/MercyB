@@ -1,0 +1,20 @@
+{
+  "id": "strategy_life_advanced_tactics_vip3",
+  "tier": "VIP3",
+  "title": {
+    "en": "Strategy in Life - Advanced Tactics",
+    "vi": "Chiến Lược Cuộc Sống - Chiến Thuật Nâng Cao"
+  },
+  "intro": {
+    "en": "Master advanced tactics for strategic living.",
+    "vi": "Thành thạo chiến thuật nâng cao cho cuộc sống chiến lược."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#FFECB3"
+  }
+}

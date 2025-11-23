@@ -1,0 +1,20 @@
+{
+  "id": "English-Writing-Mastery-vip3",
+  "tier": "VIP3",
+  "title": {
+    "en": "Writing Mastery",
+    "vi": "Thành Thạo Viết"
+  },
+  "intro": {
+    "en": "Master-level English writing skills and techniques.",
+    "vi": "Kỹ năng và kỹ thuật viết tiếng Anh cấp thạc sĩ."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#F3E5F5"
+  }
+}

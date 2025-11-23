@@ -1,0 +1,20 @@
+{
+  "id": "god-with-us-vip3",
+  "tier": "vip 3",
+  "title": {
+    "en": "God With Us VIP3",
+    "vi": "Chúa Ở Cùng Chúng Ta VIP3"
+  },
+  "intro": {
+    "en": "Advanced spiritual practices and divine presence.",
+    "vi": "Thực hành tâm linh nâng cao và sự hiện diện thiêng liêng."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#E8DAFF"
+  }
+}

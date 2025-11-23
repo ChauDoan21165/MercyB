@@ -1,0 +1,20 @@
+{
+  "id": "sexuality_culture_vip3",
+  "tier": "VIP3",
+  "title": {
+    "en": "Sexuality & Curiosity & Culture",
+    "vi": "Tình Dục & Tò Mò & Văn Hóa"
+  },
+  "intro": {
+    "en": "Cultural perspectives on sexuality and curiosity.",
+    "vi": "Quan điểm văn hóa về tình dục và tò mò."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#F8BBD0"
+  }
+}

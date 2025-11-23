@@ -1,0 +1,20 @@
+{
+  "id": "keep-soul-calm-vip3",
+  "tier": "vip 3",
+  "title": {
+    "en": "Keep Soul Calm VIP3",
+    "vi": "Giữ Tâm Hồn Bình Yên VIP3"
+  },
+  "intro": {
+    "en": "Master practices for deep inner peace and calm.",
+    "vi": "Thực hành thành thạo cho sự bình yên và tĩnh lặng sâu sắc."
+  },
+  "intro_audio": "",
+  "entries": [],
+  "meta": {
+    "created_at": "2025-11-23T00:00:00.000Z",
+    "updated_at": "2025-11-23T00:00:00.000Z",
+    "num_entries": 0,
+    "room_color": "#E0F7FA"
+  }
+}
