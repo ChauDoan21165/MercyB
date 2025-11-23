@@ -107,7 +107,10 @@ async function validateKidsRooms() {
         }
         
         if (!jsonFound) {
-          issues.push(`    ❌ JSON file not found in any location for room: ${room.id}`);
+          const expectedPath = `${room.id.replace(/-/g, '_')}_kids_${level.id.replace('level', 'l')}.json`;
+          issues.push(`    ❌ JSON file not found for room: ${room.id}`);
+          issues.push(`       Expected: /data/${expectedPath}`);
+          issues.push(`       💡 Create this file with proper structure based on other ${level.id} files`);
           continue;
         }
         
