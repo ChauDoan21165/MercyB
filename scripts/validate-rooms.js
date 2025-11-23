@@ -109,8 +109,8 @@ async function validateRooms(targetTier = null) {
         
         // Generate expected JSON filename patterns
         const possibleFilenames = [
-          `${room.id}.json`,
-          `${room.id.replace(/-/g, '_')}.json`,
+          `${room.schema_id}.json`,
+          `${room.schema_id.replace(/-/g, '_')}.json`,
         ];
 
         let jsonFound = false;
@@ -131,7 +131,7 @@ async function validateRooms(targetTier = null) {
         
         if (!jsonFound) {
           issues.push(`    ❌ JSON file not found for room: ${room.title_en} (${room.id})`);
-          issues.push(`       Expected: /data/${room.id}.json`);
+          issues.push(`       Expected: /data/${room.schema_id}.json`);
           issues.push(`       💡 Create this file with proper structure based on other ${tier} files`);
           continue;
         }
