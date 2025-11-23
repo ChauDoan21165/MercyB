@@ -73,18 +73,29 @@ const KidsLevel3 = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-blue-100 dark:from-blue-950 dark:via-cyan-950 dark:to-blue-900">
+    <div className="min-h-screen relative overflow-hidden" style={{ background: 'var(--kids-rainbow-bg)' }}>
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 opacity-30 pointer-events-none">
+        <div className="absolute top-32 left-24 w-40 h-40 rounded-full animate-pulse" style={{ background: 'var(--gradient-mercy-rainbow)' }} />
+        <div className="absolute top-56 right-16 w-32 h-32 rounded-full animate-bounce" style={{ background: 'var(--gradient-rainbow)', animationDelay: '2s' }} />
+        <div className="absolute bottom-24 left-40 w-48 h-48 rounded-full animate-pulse" style={{ background: 'var(--gradient-mercy-rainbow)', animationDelay: '1.2s' }} />
+      </div>
+
       <ColorfulMercyBladeHeader
         subtitle="Kids Level 3 - Ages 10-13"
         showBackButton={true}
       />
       
-      <div className="container mx-auto px-4 py-8 max-w-7xl">
+      <div className="container mx-auto px-4 py-8 max-w-7xl relative z-10">
         {/* Hero Header with Gradient */}
         <div className="mb-12 space-y-6 text-center">
-          <div className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white px-8 py-4 rounded-3xl shadow-lg animate-fade-in">
-            <GraduationCap className="h-10 w-10 animate-bounce" />
-            <div className="text-left">
+          <div className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-3xl animate-fade-in" 
+               style={{ 
+                 background: 'var(--gradient-mercy-rainbow)',
+                 boxShadow: 'var(--shadow-mercy-glow)'
+               }}>
+            <GraduationCap className="h-10 w-10 animate-bounce text-white drop-shadow-lg" />
+            <div className="text-left text-white drop-shadow-md">
               <h1 className="text-4xl font-bold tracking-tight">
                 Kids Level 3
               </h1>
@@ -95,8 +106,9 @@ const KidsLevel3 = () => {
           </div>
           
           <div className="flex items-center justify-center gap-4 flex-wrap">
-            <div className="inline-block bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-6 py-2 rounded-full shadow-md">
-              <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            <div className="inline-block bg-card/90 backdrop-blur-md px-6 py-2 rounded-full border-2 border-white/30" 
+                 style={{ boxShadow: 'var(--shadow-rainbow)' }}>
+              <p className="text-sm font-medium text-foreground">
                 🎯 {rooms.length} exciting rooms to explore! / {rooms.length} phòng thú vị để khám phá!
               </p>
             </div>
@@ -104,7 +116,12 @@ const KidsLevel3 = () => {
             <Button
               onClick={handleRefresh}
               disabled={isRefreshing}
-              className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:from-blue-500 hover:via-blue-600 hover:to-blue-700 text-white rounded-full shadow-lg transition-all duration-300 hover:scale-105"
+              className="rounded-full shadow-lg transition-all duration-300 hover:scale-110 border-2 border-white/30"
+              style={{ 
+                background: 'var(--gradient-rainbow)',
+                color: 'white',
+                boxShadow: 'var(--shadow-rainbow)'
+              }}
             >
               <RefreshCw className={`h-4 w-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
               Refresh
@@ -126,7 +143,7 @@ const KidsLevel3 = () => {
 
         {/* Decorative Elements */}
         <div className="fixed bottom-8 right-8 opacity-20 pointer-events-none">
-          <GraduationCap className="w-32 h-32 text-blue-500 animate-pulse" />
+          <GraduationCap className="w-32 h-32 text-primary animate-pulse" />
         </div>
       </div>
     </div>
