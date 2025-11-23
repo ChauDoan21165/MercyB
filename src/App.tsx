@@ -66,6 +66,8 @@ import AdminGiftCodes from "./pages/AdminGiftCodes";
 import AdminSpecification from "./pages/AdminSpecification";
 import SecurityDashboard from "./pages/SecurityDashboard";
 import Settings from "./pages/Settings";
+import HealthDashboard from "./pages/admin/HealthDashboard";
+import RoomHealthCheck from "./pages/admin/RoomHealthCheck";
 
 const queryClient = new QueryClient();
 
@@ -160,6 +162,8 @@ const App = () => {
           <Route path="/admin/gift-codes" element={<AdminGiftCodes />} />
           <Route path="/admin/specification" element={<AdminSpecification />} />
           <Route path="/admin/kids-room-health" element={<KidsRoomHealthCheck />} />
+          <Route path="/admin/health-dashboard" element={<HealthDashboard />} />
+          <Route path="/admin/room-health/:tier" element={<RoomHealthCheck />} />
           <Route path="/redeem-gift" element={<RedeemGiftCode />} />
           <Route path="/audio-upload" element={<AudioUpload />} />
           <Route path="/kids-validation" element={<KidsRoomValidation />} />
