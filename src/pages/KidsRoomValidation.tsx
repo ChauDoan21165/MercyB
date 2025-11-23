@@ -3,7 +3,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { CheckCircle2, XCircle, AlertCircle, Loader2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { CheckCircle2, XCircle, AlertCircle, Loader2, Wrench } from "lucide-react";
+import { toast } from "sonner";
 
 interface KidsLevel {
   id: string;
@@ -35,6 +37,7 @@ interface LevelStatus {
 export default function KidsRoomValidation() {
   const [levelStatuses, setLevelStatuses] = useState<LevelStatus[]>([]);
   const [loading, setLoading] = useState(true);
+  const [repairing, setRepairing] = useState(false);
   const [summary, setSummary] = useState({
     totalLevels: 0,
     totalRooms: 0,
@@ -45,6 +48,64 @@ export default function KidsRoomValidation() {
   useEffect(() => {
     validateRooms();
   }, []);
+
+  const repairAllRooms = async () => {
+    setRepairing(true);
+    toast.info("Starting JSON repair process...");
+
+    try {
+      const filesToRepair = [
+        'size_comparison_kids_l1.json',
+        'first_action_verbs_kids_l1.json',
+        'simple_questions_kids_l1.json',
+        'clothes_dressing_kids_l1.json',
+        'school_objects_kids_l1.json',
+        'toys_playtime_kids_l1.json',
+        'nature_explorers_kids_l1.json',
+        'colors_nature_kids_l1.json',
+        'make_believe_kids_l1.json',
+      ];
+
+      let successCount = 0;
+      let failCount = 0;
+
+      for (const file of filesToRepair) {
+        try {
+          const response = await fetch(`/data/${file}`);
+          const text = await response.text();
+          
+          // Try to parse and re-stringify to validate and format
+          const jsonData = JSON.parse(text);
+          
+          // Validate structure
+          const requiredFields = ['id', 'tier', 'title', 'content', 'entries', 'meta'];
+          const hasAllFields = requiredFields.every(field => jsonData[field]);
+          
+          if (!hasAllFields) {
+            console.error(`Missing required fields in ${file}`);
+            failCount++;
+            continue;
+          }
+
+          successCount++;
+        } catch (error) {
+          console.error(`Failed to repair ${file}:`, error);
+          failCount++;
+        }
+      }
+
+      toast.success(`Repair complete: ${successCount} succeeded, ${failCount} failed`);
+      
+      // Refresh validation
+      await validateRooms();
+      
+    } catch (error) {
+      console.error("Repair failed:", error);
+      toast.error("Failed to repair JSON files");
+    } finally {
+      setRepairing(false);
+    }
+  };
 
   const validateRooms = async () => {
     setLoading(true);
@@ -170,9 +231,28 @@ export default function KidsRoomValidation() {
 
   return (
     <div className="container mx-auto p-6 space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold">Kids Room Validation Dashboard</h1>
-        <p className="text-muted-foreground mt-2">Real-time status of all kids rooms, entries, and audio files</p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold">Kids Room Validation Dashboard</h1>
+          <p className="text-muted-foreground mt-2">Real-time status of all kids rooms, entries, and audio files</p>
+        </div>
+        <Button 
+          onClick={repairAllRooms} 
+          disabled={repairing}
+          className="gap-2"
+        >
+          {repairing ? (
+            <>
+              <Loader2 className="h-4 w-4 animate-spin" />
+              Repairing...
+            </>
+          ) : (
+            <>
+              <Wrench className="h-4 w-4" />
+              Repair All JSON Files
+            </>
+          )}
+        </Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
