@@ -103,7 +103,11 @@ export default function UnifiedHealthCheck() {
   const [health, setHealth] = useState<RoomHealth | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [fixing, setFixing] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<"main" | "kids">(tier === "kids" ? "kids" : "main");
+  const [activeTab, setActiveTab] = useState<"main" | "kids">(
+    tier === "kids" || (typeof window !== "undefined" && window.location.pathname.includes("kids-room-health"))
+      ? "kids"
+      : "main"
+  );
   const [progress, setProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
   
   // Kids room filtering state
@@ -120,8 +124,10 @@ export default function UnifiedHealthCheck() {
   }, [activeTab, selectedLevel]);
 
   useEffect(() => {
+    // Auto-run health checks only for main rooms; kids rooms require manual trigger
+    if (activeTab === "kids") return;
     checkRoomHealth();
-  }, [tier, activeTab, selectedLevel, selectedRooms]);
+  }, [tier, activeTab]);
 
   const loadAvailableKidsRooms = async () => {
     try {
