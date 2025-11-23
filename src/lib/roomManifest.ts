@@ -205,7 +205,9 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "vip6-shadow-perfectionism": "data/vip6_shadow_perfectionism.json",
   "strategic_foundations_vip9": "data/Strategic_Foundations_vip9.json",
   "leverage-thinking-vip9": "data/Leverage_Thinking_vip9.json",
-  "strategic-long-horizon-vip9": "data/strategic_long_horizon_vip9.json"
+  "strategic-long-horizon-vip9": "data/strategic_long_horizon_vip9.json",
+  "strategic-deep-work-vip9": "data/strategic_deep_work_vip9.json",
+  "strategic-risk-calibration-vip9": "data/strategic_risk_calibration_vip9.json"
 };
 
 /**
