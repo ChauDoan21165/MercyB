@@ -87,6 +87,8 @@ export default function RoomHealthCheck() {
         let jsonFound = false;
         let jsonData: any = null;
 
+        let htmlDetected = false;
+        
         for (const filename of possibleFilenames) {
           try {
             const response = await fetch(`/data/${filename}`);
@@ -95,15 +97,8 @@ export default function RoomHealthCheck() {
               
               // Check if response is HTML instead of JSON (404 page scenario)
               if (text.trim().startsWith('<!') || text.trim().startsWith('<html')) {
-                roomIssues.push({
-                  roomId: room.id,
-                  roomTitle: room.title_en,
-                  tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
-                  issueType: "missing_file",
-                  message: `File returns HTML instead of JSON (file missing)`,
-                  details: `Create: public/data/${filename}`,
-                });
-                continue;
+                htmlDetected = true;
+                break; // Don't check other filenames, it's missing
               }
               
               try {
@@ -119,11 +114,24 @@ export default function RoomHealthCheck() {
                   message: "Invalid JSON syntax in file",
                   details: parseError.message,
                 });
+                break; // Don't check other filenames if we found but can't parse
               }
             }
           } catch (fetchError) {
             // File not found, continue to next filename
           }
+        }
+        
+        // Add missing file issue only once after checking all filenames
+        if (htmlDetected || (!jsonFound && roomIssues.length === 0)) {
+          roomIssues.push({
+            roomId: room.id,
+            roomTitle: room.title_en,
+            tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
+            issueType: "missing_file",
+            message: `File returns HTML instead of JSON (file missing)`,
+            details: `Create: public/data/${room.id}.json`,
+          });
         }
 
         if (!jsonFound && roomIssues.length === 0) {
