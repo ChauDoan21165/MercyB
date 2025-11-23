@@ -11,6 +11,8 @@ import { Progress } from "@/components/ui/progress";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { KIDS_ROOM_JSON_MAP } from "@/pages/KidsChat";
 import { useToast } from "@/hooks/use-toast";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
 
 interface RoomIssue {
   roomId: string;
@@ -103,12 +105,55 @@ export default function UnifiedHealthCheck() {
   const [fixing, setFixing] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"main" | "kids">(tier === "kids" ? "kids" : "main");
   const [progress, setProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
+  
+  // Kids room filtering state
+  const [selectedLevel, setSelectedLevel] = useState<string>("all");
+  const [availableRooms, setAvailableRooms] = useState<Array<{ id: string; title: string; level: string }>>([]);
+  const [selectedRooms, setSelectedRooms] = useState<string[]>([]);
 
   const tierDisplay = tier && tier !== "kids" ? TIER_DISPLAY_NAMES[tier] || tier.toUpperCase() : tier === "kids" ? "Kids Rooms" : "All Tiers";
 
   useEffect(() => {
+    if (activeTab === "kids") {
+      loadAvailableKidsRooms();
+    }
+  }, [activeTab, selectedLevel]);
+
+  useEffect(() => {
     checkRoomHealth();
-  }, [tier, activeTab]);
+  }, [tier, activeTab, selectedLevel, selectedRooms]);
+
+  const loadAvailableKidsRooms = async () => {
+    try {
+      let query = supabase
+        .from('kids_rooms')
+        .select('id, title_en, level_id')
+        .eq('is_active', true)
+        .order('level_id')
+        .order('display_order');
+
+      if (selectedLevel !== "all") {
+        query = query.eq('level_id', selectedLevel);
+      }
+
+      const { data, error } = await query;
+
+      if (error) throw error;
+
+      const rooms = (data || []).map(room => ({
+        id: room.id,
+        title: room.title_en,
+        level: room.level_id
+      }));
+
+      setAvailableRooms(rooms);
+      
+      // Reset selected rooms when level changes
+      setSelectedRooms([]);
+    } catch (error) {
+      console.error('Error loading kids rooms:', error);
+    }
+  };
 
   const downloadMissingFilesReport = () => {
     if (!health) return;
@@ -466,7 +511,7 @@ export default function UnifiedHealthCheck() {
   };
 
   const checkKidsRooms = async () => {
-    const { data: rooms, error: roomsError } = await supabase
+    let query = supabase
       .from('kids_rooms')
       .select(`
         id,
@@ -479,7 +524,19 @@ export default function UnifiedHealthCheck() {
       .order('level_id')
       .order('display_order');
 
+    // Apply level filter
+    if (selectedLevel !== "all") {
+      query = query.eq('level_id', selectedLevel);
+    }
+
+    const { data: allRooms, error: roomsError } = await query;
+
     if (roomsError) throw roomsError;
+
+    // Apply room-specific filter if any rooms are selected
+    const rooms = selectedRooms.length > 0 
+      ? allRooms?.filter(room => selectedRooms.includes(room.id))
+      : allRooms;
 
     const issues: RoomIssue[] = [];
     let healthyCount = 0;
@@ -875,6 +932,103 @@ export default function UnifiedHealthCheck() {
         </TabsContent>
 
         <TabsContent value="kids" className="space-y-6">
+          {/* Kids Room Filters */}
+          <Card className="p-6">
+            <h3 className="text-lg font-semibold mb-4">Filter Options</h3>
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-sm font-medium mb-2 block">Select Level</label>
+                  <Select value={selectedLevel} onValueChange={setSelectedLevel}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select a level" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Levels</SelectItem>
+                      <SelectItem value="level1">Kids Level 1 (Ages 4-7)</SelectItem>
+                      <SelectItem value="level2">Kids Level 2 (Ages 7-9)</SelectItem>
+                      <SelectItem value="level3">Kids Level 3 (Ages 10-12)</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                
+                {availableRooms.length > 0 && (
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">
+                      Select Specific Rooms (Optional)
+                    </label>
+                    <div className="border rounded-md p-3 max-h-40 overflow-y-auto space-y-2">
+                      <div className="flex items-center space-x-2 mb-2 pb-2 border-b">
+                        <Checkbox
+                          id="select-all"
+                          checked={selectedRooms.length === availableRooms.length && availableRooms.length > 0}
+                          onCheckedChange={(checked) => {
+                            if (checked) {
+                              setSelectedRooms(availableRooms.map(r => r.id));
+                            } else {
+                              setSelectedRooms([]);
+                            }
+                          }}
+                        />
+                        <label htmlFor="select-all" className="text-sm font-medium cursor-pointer">
+                          {selectedRooms.length === availableRooms.length && availableRooms.length > 0 ? 'Deselect All' : 'Select All'}
+                        </label>
+                      </div>
+                      {availableRooms.map((room) => (
+                        <div key={room.id} className="flex items-center space-x-2">
+                          <Checkbox
+                            id={room.id}
+                            checked={selectedRooms.includes(room.id)}
+                            onCheckedChange={(checked) => {
+                              if (checked) {
+                                setSelectedRooms([...selectedRooms, room.id]);
+                              } else {
+                                setSelectedRooms(selectedRooms.filter(id => id !== room.id));
+                              }
+                            }}
+                          />
+                          <label htmlFor={room.id} className="text-sm cursor-pointer">
+                            {room.title}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                    {selectedRooms.length > 0 && (
+                      <p className="text-xs text-muted-foreground mt-2">
+                        {selectedRooms.length} room{selectedRooms.length !== 1 ? 's' : ''} selected
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
+              
+              <div className="flex gap-2">
+                <Button onClick={checkRoomHealth} disabled={loading}>
+                  {loading ? (
+                    <>
+                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                      Checking...
+                    </>
+                  ) : (
+                    'Run Health Check'
+                  )}
+                </Button>
+                
+                {(selectedLevel !== "all" || selectedRooms.length > 0) && (
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      setSelectedLevel("all");
+                      setSelectedRooms([]);
+                    }}
+                  >
+                    Clear Filters
+                  </Button>
+                )}
+              </div>
+            </div>
+          </Card>
+
           {health && (
             <>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
