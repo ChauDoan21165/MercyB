@@ -1,0 +1,89 @@
+{
+  "id": "space_astronomy_kids_l3",
+  "tier": "Kids Level 3 / Trẻ Em Cấp 3",
+  "title": {
+    "en": "Space & Astronomy",
+    "vi": "Không Gian & Thiên Văn"
+  },
+  "content": {
+    "en": "This room introduces children to simple, exciting astronomy ideas—planets, stars, gravity, and space exploration. Kids learn through imagination, observation, and tiny explanations that make the universe feel friendly and fun.",
+    "vi": "Phòng học này giới thiệu cho trẻ những khái niệm thiên văn thú vị—hành tinh, ngôi sao, lực hấp dẫn và khám phá không gian. Trẻ học thông qua trí tưởng tượng, quan sát và những giải thích nhỏ khiến vũ trụ trở nên gần gũi và vui nhộn.",
+    "audio": "space_astronomy_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "planets",
+      "keywords_en": ["planets", "space", "solar system"],
+      "keywords_vi": ["hành tinh", "không gian", "hệ mặt trời"],
+      "copy": {
+        "en": "Introduce the planets as members of a big space family. Teach simple facts: Earth is our home, Mars is red, Jupiter is huge, and Saturn has rings. Kids can imagine each planet with a personality—quiet, stormy, cold, or colorful. This helps them remember differences in a fun and friendly way.",
+        "vi": "Hãy giới thiệu các hành tinh như những thành viên của một gia đình lớn trong không gian. Giải thích đơn giản: Trái Đất là nhà của chúng ta, Sao Hỏa màu đỏ, Sao Mộc rất lớn và Sao Thổ có vòng. Trẻ có thể tưởng tượng mỗi hành tinh có một tính cách—trầm, bão tố, lạnh hoặc đầy màu sắc. Cách này giúp trẻ ghi nhớ sự khác biệt một cách vui vẻ."
+      },
+      "tags": ["planets"],
+      "audio": "space_astronomy_v1_planets.mp3"
+    },
+    {
+      "slug": "stars-and-light",
+      "keywords_en": ["stars", "light", "night sky"],
+      "keywords_vi": ["ngôi sao", "ánh sáng", "bầu trời đêm"],
+      "copy": {
+        "en": "Explain that stars are giant balls of burning light far away. Show kids how to look for bright, dim, or colorful stars in the night sky. Teach that the Sun is also a star, just much closer. Observing stars helps children feel the wonder of the universe.",
+        "vi": "Giải thích rằng các ngôi sao là những khối cầu khổng lồ phát sáng ở rất xa. Hãy chỉ trẻ cách tìm các ngôi sao sáng, mờ hoặc có màu trong bầu trời đêm. Dạy trẻ rằng Mặt Trời cũng là một ngôi sao, chỉ là gần hơn nhiều. Việc quan sát sao giúp trẻ cảm nhận vẻ kỳ diệu của vũ trụ."
+      },
+      "tags": ["stars"],
+      "audio": "space_astronomy_v1_stars_and_light.mp3"
+    },
+    {
+      "slug": "gravity",
+      "keywords_en": ["gravity", "force", "science"],
+      "keywords_vi": ["lực hấp dẫn", "lực", "khoa học"],
+      "copy": {
+        "en": "Teach gravity by using simple actions—jumping, dropping objects, or watching how things always fall down. Explain that gravity is an invisible pull that keeps us on Earth and keeps planets moving around the Sun. This gives children a friendly first understanding of forces.",
+        "vi": "Hãy dạy lực hấp dẫn bằng các hành động đơn giản—nhảy lên, thả đồ vật hoặc quan sát mọi thứ luôn rơi xuống. Giải thích rằng lực hấp dẫn là lực kéo vô hình giữ chúng ta trên Trái Đất và giữ các hành tinh quay quanh Mặt Trời. Điều này giúp trẻ làm quen với các lực vật lý một cách thân thiện."
+      },
+      "tags": ["gravity"],
+      "audio": "space_astronomy_v1_gravity.mp3"
+    },
+    {
+      "slug": "moon-and-phases",
+      "keywords_en": ["moon", "phases", "space"],
+      "keywords_vi": ["mặt trăng", "chu kỳ", "không gian"],
+      "copy": {
+        "en": "Teach children why the Moon looks different each night. Explain phases in simple steps: new moon, half moon, and full moon. Kids can observe the Moon for a week and draw its changing shapes. This builds awareness of patterns in the sky.",
+        "vi": "Hãy dạy trẻ vì sao Mặt Trăng trông khác nhau mỗi đêm. Giải thích các pha đơn giản: trăng non, trăng bán nguyệt và trăng tròn. Trẻ có thể quan sát Mặt Trăng trong một tuần và vẽ lại hình dạng thay đổi của nó. Điều này giúp trẻ nhận ra các quy luật trên bầu trời."
+      },
+      "tags": ["moon"],
+      "audio": "space_astronomy_v1_moon_and_phases.mp3"
+    },
+    {
+      "slug": "space-exploration",
+      "keywords_en": ["exploration", "astronaut", "space"],
+      "keywords_vi": ["khám phá", "phi hành gia", "không gian"],
+      "copy": {
+        "en": "Children are fascinated by space missions. Explain what astronauts do—float in zero gravity, repair satellites, or study Earth from above. Show them pictures of rockets and space suits. This inspires curiosity and helps kids imagine a big future beyond our planet.",
+        "vi": "Trẻ rất thích thú với các nhiệm vụ không gian. Hãy giải thích phi hành gia làm gì—trôi trong môi trường không trọng lực, sửa vệ tinh hoặc quan sát Trái Đất từ trên cao. Chỉ cho trẻ xem hình tên lửa và bộ đồ không gian. Điều này khơi gợi tò mò và giúp trẻ tưởng tượng về một tương lai rộng lớn ngoài hành tinh."
+      },
+      "tags": ["exploration"],
+      "audio": "space_astronomy_v1_space_exploration.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all"],
+      "keywords_vi": ["tất cả"],
+      "copy": {
+        "en": "Kids explore space through friendly steps: learning planets as a space family, seeing stars as distant lights, and understanding gravity as the force that keeps everything in place. Moon phases teach patterns in the sky, while astronauts and rockets inspire imagination. These simple ideas help children feel wonder and curiosity about the universe.",
+        "vi": "Trẻ khám phá không gian qua những bước đơn giản: xem các hành tinh như một gia đình, thấy ngôi sao như ánh sáng ở xa và hiểu lực hấp dẫn là lực giữ mọi thứ đúng vị trí. Chu kỳ Mặt Trăng dạy trẻ nhận biết quy luật trên bầu trời, còn phi hành gia và tên lửa khơi gợi trí tưởng tượng. Những ý tưởng này giúp trẻ cảm nhận sự kỳ diệu của vũ trụ."
+      },
+      "tags": ["all"],
+      "audio": "space_astronomy_v1_planets.mp3 space_astronomy_v1_stars_and_light.mp3 space_astronomy_v1_gravity.mp3 space_astronomy_v1_moon_and_phases.mp3 space_astronomy_v1_space_exploration.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "10-13",
+    "level": "Kids Level 3",
+    "created_at": "2025-11-23T00:00:00+00:00",
+    "updated_at": "2025-11-23T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#F1E8FF"
+  }
+}
