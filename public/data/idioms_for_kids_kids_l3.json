@@ -1,0 +1,89 @@
+{
+  "id": "idioms_for_kids_kids_l3",
+  "tier": "Kids Level 3 / Trẻ Em Cấp 3",
+  "title": {
+    "en": "Idioms for Kids",
+    "vi": "Thành Ngữ Dễ Hiểu Cho Trẻ"
+  },
+  "content": {
+    "en": "This room introduces kids to simple, fun English idioms they can understand through images, feelings, and small examples. Idioms help children think creatively and understand natural English expressions. Parents can guide them with short stories or everyday situations.",
+    "vi": "Phòng này giới thiệu cho trẻ những thành ngữ tiếng Anh đơn giản và thú vị, dễ hiểu qua hình ảnh, cảm xúc và ví dụ nhỏ. Thành ngữ giúp trẻ tư duy sáng tạo và hiểu các cách diễn đạt tự nhiên trong tiếng Anh. Cha mẹ có thể hỗ trợ bằng các câu chuyện ngắn hoặc tình huống hằng ngày.",
+    "audio": "idioms_for_kids_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "piece-of-cake",
+      "keywords_en": ["idiom", "easy", "fun"],
+      "keywords_vi": ["thành ngữ", "dễ", "vui"],
+      "copy": {
+        "en": "Teach the idiom “a piece of cake,” which means something is very easy. Show a simple example: “Doing this puzzle was a piece of cake!” Explain that it does not mean real cake—it means the task felt simple. Ask your child to think of something easy for them, like tying their shoes or drawing a smiley face. Using fun, clear examples helps the idiom stick in their memory.",
+        "vi": "Dạy thành ngữ “a piece of cake,” nghĩa là điều gì đó rất dễ. Đưa ví dụ đơn giản: “Làm xong trò ghép hình này thật là a piece of cake!” Giải thích rằng không phải chiếc bánh thật—nó chỉ có nghĩa là nhiệm vụ rất đơn giản. Hãy yêu cầu trẻ kể một việc dễ với trẻ, như buộc dây giày hoặc vẽ mặt cười. Ví dụ vui giúp trẻ ghi nhớ thành ngữ lâu hơn."
+      },
+      "tags": ["idiom", "easy"],
+      "audio": "idioms_for_kids_v1_piece_of_cake.mp3"
+    },
+    {
+      "slug": "raining-cats-and-dogs",
+      "keywords_en": ["idiom", "weather", "funny"],
+      "keywords_vi": ["thành ngữ", "thời tiết", "vui"],
+      "copy": {
+        "en": "Teach the idiom “raining cats and dogs,” which means very heavy rain. Explain that no animals are falling—it is just a funny way to say the rain is strong. Show a picture of a big storm and say, “It’s raining cats and dogs today!” Children enjoy silly images, which helps them understand the meaning. Encourage them to use the idiom next time it rains heavily.",
+        "vi": "Dạy thành ngữ “raining cats and dogs,” nghĩa là mưa rất to. Giải thích rằng không có con vật nào rơi xuống—đây chỉ là cách nói vui để diễn tả cơn mưa lớn. Cho trẻ xem hình cơn bão và nói: “Hôm nay trời raining cats and dogs!” Trẻ thường thích hình ảnh vui nhộn, giúp hiểu rõ hơn. Khuyến khích trẻ dùng thành ngữ này khi gặp trời mưa to."
+      },
+      "tags": ["idiom", "weather"],
+      "audio": "idioms_for_kids_v1_raining_cats_and_dogs.mp3"
+    },
+    {
+      "slug": "break-the-ice",
+      "keywords_en": ["idiom", "conversation", "social"],
+      "keywords_vi": ["thành ngữ", "trò chuyện", "xã hội"],
+      "copy": {
+        "en": "Teach the idiom “break the ice,” which means to start talking in a new or quiet situation. Explain that it does not involve real ice—it simply means doing something friendly to begin a conversation. Give a child-friendly example: saying “Hi, my name is…” on the first day of class. This helps kids understand that small actions can make social moments easier.",
+        "vi": "Dạy thành ngữ “break the ice,” nghĩa là bắt đầu nói chuyện trong tình huống mới hoặc im lặng. Giải thích rằng không phải phá băng thật—nó chỉ có nghĩa là làm điều gì thân thiện để bắt đầu cuộc trò chuyện. Đưa ví dụ dễ hiểu: nói “Hi, my name is…” vào ngày đầu đến lớp. Điều này giúp trẻ hiểu rằng hành động nhỏ có thể khiến giao tiếp dễ dàng hơn."
+      },
+      "tags": ["idiom", "conversation"],
+      "audio": "idioms_for_kids_v1_break_the_ice.mp3"
+    },
+    {
+      "slug": "butterflies-in-my-stomach",
+      "keywords_en": ["idiom", "feelings", "nervous"],
+      "keywords_vi": ["thành ngữ", "cảm xúc", "lo lắng"],
+      "copy": {
+        "en": "Teach the idiom “butterflies in my stomach,” which means feeling nervous. Tell children it does not mean real butterflies—it describes the fluttery feeling before performing, presenting, or meeting someone new. Ask your child to remember a time they felt this way. Learning idioms about emotions helps kids express feelings more clearly.",
+        "vi": "Dạy thành ngữ “butterflies in my stomach,” nghĩa là cảm thấy lo lắng. Giải thích rằng không có bướm thật trong bụng—nó mô tả cảm giác xao xuyến khi biểu diễn, thuyết trình hoặc gặp người mới. Hãy yêu cầu trẻ nhớ lại lúc từng cảm thấy như vậy. Thành ngữ về cảm xúc giúp trẻ diễn đạt cảm giác rõ ràng hơn."
+      },
+      "tags": ["idiom", "feelings"],
+      "audio": "idioms_for_kids_v1_butterflies_in_my_stomach.mp3"
+    },
+    {
+      "slug": "full-of-beans",
+      "keywords_en": ["idiom", "energy", "fun"],
+      "keywords_vi": ["thành ngữ", "nhiều năng lượng", "vui"],
+      "copy": {
+        "en": "Teach the idiom “full of beans,” which means someone has a lot of energy. Explain that it has nothing to do with beans—it is just a playful way to describe an energetic person. Give examples like a child jumping, laughing, or running around happily. Kids love seeing themselves in examples, which helps the idiom become real and memorable.",
+        "vi": "Dạy thành ngữ “full of beans,” nghĩa là ai đó rất nhiều năng lượng. Giải thích rằng nó không liên quan đến hạt đậu—đây chỉ là cách nói vui để mô tả người hoạt bát. Đưa ví dụ trẻ nhảy nhót, cười lớn hoặc chạy khắp nơi. Trẻ thích thấy mình trong ví dụ, giúp thành ngữ dễ nhớ hơn."
+      },
+      "tags": ["idiom", "energy"],
+      "audio": "idioms_for_kids_v1_full_of_beans.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all"],
+      "keywords_vi": ["tất cả"],
+      "copy": {
+        "en": "Teach the idiom “a piece of cake,” which means something is very easy. Show a simple example: “Doing this puzzle was a piece of cake!” Explain that it does not mean real cake—it means the task felt simple. Ask your child to think of something easy for them, like tying their shoes or drawing a smiley face. Using fun, clear examples helps the idiom stick in their memory.Teach the idiom “raining cats and dogs,” which means very heavy rain. Explain that no animals are falling—it is just a funny way to say the rain is strong. Show a picture of a big storm and say, “It’s raining cats and dogs today!” Children enjoy silly images, which helps them understand the meaning. Encourage them to use the idiom next time it rains heavily.Teach the idiom “break the ice,” which means to start talking in a new or quiet situation. Explain that it does not involve real ice—it simply means doing something friendly to begin a conversation. Give a child-friendly example: saying “Hi, my name is…” on the first day of class. This helps kids understand that small actions can make social moments easier.Teach the idiom “butterflies in my stomach,” which means feeling nervous. Tell children it does not mean real butterflies—it describes the fluttery feeling before performing, presenting, or meeting someone new. Ask your child to remember a time they felt this way. Learning idioms about emotions helps kids express feelings more clearly.Teach the idiom “full of beans,” which means someone has a lot of energy. Explain that it has nothing to do with beans—it is just a playful way to describe an energetic person. Give examples like a child jumping, laughing, or running around happily. Kids love seeing themselves in examples, which helps the idiom become real and memorable.",
+        "vi": "Dạy thành ngữ “a piece of cake,” nghĩa là điều gì đó rất dễ. Đưa ví dụ đơn giản: “Làm xong trò ghép hình này thật là a piece of cake!” Giải thích rằng không phải chiếc bánh thật—nó chỉ có nghĩa là nhiệm vụ rất đơn giản. Hãy yêu cầu trẻ kể một việc dễ với trẻ, như buộc dây giày hoặc vẽ mặt cười. Ví dụ vui giúp trẻ ghi nhớ thành ngữ lâu hơn.Dạy thành ngữ “raining cats and dogs,” nghĩa là mưa rất to. Giải thích rằng không có con vật nào rơi xuống—đây chỉ là cách nói vui để diễn tả cơn mưa lớn. Cho trẻ xem hình cơn bão và nói: “Hôm nay trời raining cats and dogs!” Trẻ thường thích hình ảnh vui nhộn, giúp hiểu rõ hơn. Khuyến khích trẻ dùng thành ngữ này khi gặp trời mưa to.Dạy thành ngữ “break the ice,” nghĩa là bắt đầu nói chuyện trong tình huống mới hoặc im lặng. Giải thích rằng không phải phá băng thật—nó chỉ có nghĩa là làm điều gì thân thiện để bắt đầu cuộc trò chuyện. Đưa ví dụ dễ hiểu: nói “Hi, my name is…” vào ngày đầu đến lớp. Điều này giúp trẻ hiểu rằng hành động nhỏ có thể khiến giao tiếp dễ dàng hơn.Dạy thành ngữ “butterflies in my stomach,” nghĩa là cảm thấy lo lắng. Giải thích rằng không có bướm thật trong bụng—nó mô tả cảm giác xao xuyến khi biểu diễn, thuyết trình hoặc gặp người mới. Hãy yêu cầu trẻ nhớ lại lúc từng cảm thấy như vậy. Thành ngữ về cảm xúc giúp trẻ diễn đạt cảm giác rõ ràng hơn.Dạy thành ngữ “full of beans,” nghĩa là ai đó rất nhiều năng lượng. Giải thích rằng nó không liên quan đến hạt đậu—đây chỉ là cách nói vui để mô tả người hoạt bát. Đưa ví dụ trẻ nhảy nhót, cười lớn hoặc chạy khắp nơi. Trẻ thích thấy mình trong ví dụ, giúp thành ngữ dễ nhớ hơn."
+      },
+      "tags": ["all"],
+      "audio": "idioms_for_kids_v1_piece_of_cake.mp3 idioms_for_kids_v1_raining_cats_and_dogs.mp3 idioms_for_kids_v1_break_the_ice.mp3 idioms_for_kids_v1_butterflies_in_my_stomach.mp3 idioms_for_kids_v1_full_of_beans.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "10-13",
+    "level": "Kids Level 3",
+    "created_at": "2025-11-23T00:00:00+00:00",
+    "updated_at": "2025-11-23T00:00:00+00:00",
+    "entry_count 6,
+    "room_color": "#FFF4DD"
+  }
+}

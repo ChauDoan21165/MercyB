@@ -1,0 +1,89 @@
+{
+  "id": "teamwork_leadership_kids_l3",
+  "tier": "Kids Level 3 / Trẻ Em Cấp 3",
+  "title": {
+    "en": "Teamwork & Leadership",
+    "vi": "Làm Việc Nhóm & Lãnh Đạo"
+  },
+  "content": {
+    "en": "This room teaches children simple English language patterns to work well with others. Kids learn to share roles, take turns, listen to teammates, solve conflicts, and guide a group gently. Parents can support by modeling cooperation and encouraging kids to practice small teamwork moments daily.",
+    "vi": "Phòng học này dạy trẻ những mẫu câu tiếng Anh đơn giản để làm việc hiệu quả với người khác. Trẻ học cách chia vai, thay phiên, lắng nghe bạn cùng nhóm, giải quyết mâu thuẫn và dẫn dắt nhóm một cách nhẹ nhàng. Cha mẹ có thể hỗ trợ bằng cách làm gương hợp tác và khuyến khích trẻ luyện tập những khoảnh khắc teamwork hằng ngày.",
+    "audio": "teamwork_leadership_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "share-roles",
+      "keywords_en": ["share", "roles", "teamwork"],
+      "keywords_vi": ["chia vai", "vai trò", "làm việc nhóm"],
+      "copy": {
+        "en": "Teach kids to share roles by using simple phrases like “I can do this part” or “You do that part.” Encourage them to choose a small task each. Sharing roles helps children learn cooperation and makes big tasks feel easier.",
+        "vi": "Hãy dạy trẻ chia vai bằng các câu đơn giản như “I can do this part” hoặc “You do that part.” Khuyến khích mỗi trẻ chọn một nhiệm vụ nhỏ. Chia vai giúp trẻ học sự hợp tác và khiến những nhiệm vụ lớn trở nên dễ dàng hơn."
+      },
+      "tags": ["roles"],
+      "audio": "teamwork_leadership_v1_share_roles.mp3"
+    },
+    {
+      "slug": "take-turns",
+      "keywords_en": ["turns", "respect", "teamwork"],
+      "keywords_vi": ["thay phiên", "tôn trọng", "làm việc nhóm"],
+      "copy": {
+        "en": "Teach children to take turns using phrases like “Your turn” and “My turn.” Demonstrate waiting politely and cheering for others. Taking turns teaches fairness, patience, and respect in teamwork.",
+        "vi": "Hãy dạy trẻ thay phiên bằng các câu như “Your turn” và “My turn.” Làm mẫu việc chờ đợi lịch sự và cổ vũ bạn khác. Thay phiên giúp trẻ học sự công bằng, kiên nhẫn và tôn trọng trong teamwork."
+      },
+      "tags": ["turns"],
+      "audio": "teamwork_leadership_v1_take_turns.mp3"
+    },
+    {
+      "slug": "listen-to-teammates",
+      "keywords_en": ["listen", "teammates", "communication"],
+      "keywords_vi": ["lắng nghe", "bạn cùng nhóm", "giao tiếp"],
+      "copy": {
+        "en": "Teach kids to listen to teammates by saying “I’m listening” or “Tell me your idea.” Encourage them to look at the speaker and wait their turn. Listening helps groups understand each other and work smoothly.",
+        "vi": "Hãy dạy trẻ lắng nghe bạn cùng nhóm bằng các câu như “I’m listening” hoặc “Tell me your idea.” Khuyến khích trẻ nhìn vào người đang nói và chờ đến lượt mình. Lắng nghe giúp nhóm hiểu nhau và làm việc trôi chảy."
+      },
+      "tags": ["listen"],
+      "audio": "teamwork_leadership_v1_listen_to_teammates.mp3"
+    },
+    {
+      "slug": "solve-conflicts",
+      "keywords_en": ["conflict", "solve", "teamwork"],
+      "keywords_vi": ["mâu thuẫn", "giải quyết", "làm việc nhóm"],
+      "copy": {
+        "en": "Teach children to solve small conflicts calmly using phrases like “Let’s fix this,” “Let’s share,” or “Let’s choose together.” Encourage them to explain feelings and find a solution that works for everyone.",
+        "vi": "Hãy dạy trẻ giải quyết mâu thuẫn nhỏ một cách bình tĩnh bằng các câu như “Let’s fix this,” “Let’s share,” hoặc “Let’s choose together.” Khuyến khích trẻ nói cảm xúc và tìm giải pháp phù hợp cho mọi người."
+      },
+      "tags": ["conflict"],
+      "audio": "teamwork_leadership_v1_solve_conflicts.mp3"
+    },
+    {
+      "slug": "gentle-leadership",
+      "keywords_en": ["leadership", "guide", "help"],
+      "keywords_vi": ["lãnh đạo", "dẫn dắt", "hỗ trợ"],
+      "copy": {
+        "en": "Teach kids gentle leadership using phrases like “Let’s try this,” “Follow me,” or “I can help.” Show them that a good leader listens, encourages others, and helps everyone stay included.",
+        "vi": "Hãy dạy trẻ lãnh đạo nhẹ nhàng bằng các câu như “Let’s try this,” “Follow me,” hoặc “I can help.” Giải thích rằng một người dẫn dắt tốt biết lắng nghe, khích lệ và giúp mọi người đều được tham gia."
+      },
+      "tags": ["leadership"],
+      "audio": "teamwork_leadership_v1_gentle_leadership.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all"],
+      "keywords_vi": ["tất cả"],
+      "copy": {
+        "en": "Teach kids to share roles by using simple phrases like “I can do this part” or “You do that part.” Encourage them to choose a small task each. Sharing roles helps children learn cooperation and makes big tasks feel easier.\n\nTeach children to take turns using phrases like “Your turn” and “My turn.” Demonstrate waiting politely and cheering for others. Taking turns teaches fairness, patience, and respect in teamwork.\n\nTeach kids to listen to teammates by saying “I’m listening” or “Tell me your idea.” Encourage them to look at the speaker and wait their turn. Listening helps groups understand each other and work smoothly.\n\nTeach children to solve small conflicts calmly using phrases like “Let’s fix this,” “Let’s share,” or “Let’s choose together.” Encourage them to explain feelings and find a solution that works for everyone.\n\nTeach kids gentle leadership using phrases like “Let’s try this,” “Follow me,” or “I can help.” Show them that a good leader listens, encourages others, and helps everyone stay included.",
+        "vi": "Hãy dạy trẻ chia vai bằng các câu đơn giản như “I can do this part” hoặc “You do that part.” Khuyến khích mỗi trẻ chọn một nhiệm vụ nhỏ. Chia vai giúp trẻ học sự hợp tác và khiến những nhiệm vụ lớn trở nên dễ dàng hơn.\n\nHãy dạy trẻ thay phiên bằng các câu như “Your turn” và “My turn.” Làm mẫu việc chờ đợi lịch sự và cổ vũ bạn khác. Thay phiên giúp trẻ học sự công bằng, kiên nhẫn và tôn trọng trong teamwork.\n\nHãy dạy trẻ lắng nghe bạn cùng nhóm bằng các câu như “I’m listening” hoặc “Tell me your idea.” Khuyến khích trẻ nhìn vào người đang nói và chờ đến lượt mình. Lắng nghe giúp nhóm hiểu nhau và làm việc trôi chảy.\n\nHãy dạy trẻ giải quyết mâu thuẫn nhỏ một cách bình tĩnh bằng các câu như “Let’s fix this,” “Let’s share,” hoặc “Let’s choose together.” Khuyến khích trẻ nói cảm xúc và tìm giải pháp phù hợp cho mọi người.\n\nHãy dạy trẻ lãnh đạo nhẹ nhàng bằng các câu như “Let’s try this,” “Follow me,” hoặc “I can help.” Giải thích rằng một người dẫn dắt tốt biết lắng nghe, khích lệ và giúp mọi người đều được tham gia."
+      },
+      "tags": ["all"],
+      "audio": "teamwork_leadership_v1_share_roles.mp3 teamwork_leadership_v1_take_turns.mp3 teamwork_leadership_v1_listen_to_teammates.mp3 teamwork_leadership_v1_solve_conflicts.mp3 teamwork_leadership_v1_gentle_leadership.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "10-13",
+    "level": "Kids Level 3",
+    "created_at": "2025-11-23T00:00:00+00:00",
+    "updated_at": "2025-11-23T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#EAF4FF"
+  }
+}

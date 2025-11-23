@@ -1,0 +1,89 @@
+{
+  "id": "technology_robots_kids_l3",
+  "tier": "Kids Level 3 / Trẻ Em Cấp 3",
+  "title": {
+    "en": "Technology & Robots",
+    "vi": "Công Nghệ & Robot"
+  },
+  "content": {
+    "en": "This room teaches kids simple English vocabulary about technology and robots. Children learn how basic machines work, what robots can do, and how technology helps daily life. Parents can support learning by giving small examples at home, like smart devices, simple tools, or helpful machines.",
+    "vi": "Phòng học này dạy trẻ từ vựng tiếng Anh đơn giản về công nghệ và robot. Trẻ học cách các máy móc cơ bản hoạt động, robot có thể làm gì và công nghệ giúp ích cho cuộc sống hằng ngày. Cha mẹ có thể hỗ trợ bằng cách đưa ra ví dụ nhỏ trong nhà, như thiết bị thông minh, dụng cụ đơn giản hoặc máy móc hữu ích.",
+    "audio": "technology_robots_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "what-is-technology",
+      "keywords_en": ["technology", "machines", "tools"],
+      "keywords_vi": ["công nghệ", "máy móc", "dụng cụ"],
+      "copy": {
+        "en": "Teach kids that technology means tools and machines that help us do things faster or easier. Give examples like phones, lights, or washing machines. Show how technology helps people every day.",
+        "vi": "Hãy dạy trẻ rằng công nghệ là các dụng cụ và máy móc giúp chúng ta làm việc nhanh hơn hoặc dễ hơn. Đưa ví dụ như điện thoại, đèn hoặc máy giặt. Giải thích cách công nghệ giúp ích cho con người mỗi ngày."
+      },
+      "tags": ["technology"],
+      "audio": "technology_robots_v1_what_is_technology.mp3"
+    },
+    {
+      "slug": "what-robots-do",
+      "keywords_en": ["robots", "tasks", "help"],
+      "keywords_vi": ["robot", "nhiệm vụ", "giúp đỡ"],
+      "copy": {
+        "en": "Teach children that robots can follow instructions to do tasks. Give simple examples like cleaning robots, robot arms in factories, or robots that help in hospitals. Explain that robots help people, not replace them.",
+        "vi": "Hãy dạy trẻ rằng robot có thể làm nhiệm vụ khi được lập trình. Đưa ví dụ đơn giản như robot hút bụi, cánh tay robot trong nhà máy hoặc robot hỗ trợ trong bệnh viện. Giải thích rằng robot giúp con người chứ không thay thế con người."
+      },
+      "tags": ["robots"],
+      "audio": "technology_robots_v1_what_robots_do.mp3"
+    },
+    {
+      "slug": "simple-programming",
+      "keywords_en": ["programming", "coding", "instructions"],
+      "keywords_vi": ["lập trình", "mã hóa", "hướng dẫn"],
+      "copy": {
+        "en": "Teach kids that programming means giving clear instructions. Show examples like telling a robot to move forward, turn, or stop. Explain that coding helps machines know exactly what to do.",
+        "vi": "Hãy dạy trẻ rằng lập trình nghĩa là đưa ra hướng dẫn rõ ràng. Đưa ví dụ như bảo robot đi thẳng, rẽ hoặc dừng lại. Giải thích rằng mã hóa giúp máy móc biết chính xác việc cần làm."
+      },
+      "tags": ["programming"],
+      "audio": "technology_robots_v1_simple_programming.mp3"
+    },
+    {
+      "slug": "smart-devices",
+      "keywords_en": ["smart", "devices", "everyday"],
+      "keywords_vi": ["thông minh", "thiết bị", "hằng ngày"],
+      "copy": {
+        "en": "Teach children that smart devices can think in simple ways. Examples include smart speakers, smart lights, or phones that respond to voice. Explain that these devices make life easier by helping automatically.",
+        "vi": "Hãy dạy trẻ rằng thiết bị thông minh có thể \"suy nghĩ\" ở mức đơn giản. Ví dụ gồm loa thông minh, đèn thông minh hoặc điện thoại trả lời bằng giọng nói. Giải thích rằng các thiết bị này giúp cuộc sống dễ dàng hơn nhờ khả năng hỗ trợ tự động."
+      },
+      "tags": ["smart"],
+      "audio": "technology_robots_v1_smart_devices.mp3"
+    },
+    {
+      "slug": "future-technology",
+      "keywords_en": ["future", "technology", "imagination"],
+      "keywords_vi": ["tương lai", "công nghệ", "tưởng tượng"],
+      "copy": {
+        "en": "Teach kids to imagine technology of the future. Ask questions like “What machine would you invent?” or “What robot would help you at school?” Imagination helps children think creatively about solving problems.",
+        "vi": "Hãy dạy trẻ tưởng tượng về công nghệ tương lai. Hỏi các câu như “Con sẽ phát minh máy gì?” hoặc “Robot nào sẽ giúp con ở trường?” Trí tưởng tượng giúp trẻ suy nghĩ sáng tạo để giải quyết vấn đề."
+      },
+      "tags": ["future"],
+      "audio": "technology_robots_v1_future_technology.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all"],
+      "keywords_vi": ["tất cả"],
+      "copy": {
+        "en": "Teach kids that technology means tools and machines that help us do things faster or easier. Give examples like phones, lights, or washing machines. Show how technology helps people every day.\n\nTeach children that robots can follow instructions to do tasks. Give simple examples like cleaning robots, robot arms in factories, or robots that help in hospitals. Explain that robots help people, not replace them.\n\nTeach kids that programming means giving clear instructions. Show examples like telling a robot to move forward, turn, or stop. Explain that coding helps machines know exactly what to do.\n\nTeach children that smart devices can think in simple ways. Examples include smart speakers, smart lights, or phones that respond to voice. Explain that these devices make life easier by helping automatically.\n\nTeach kids to imagine technology of the future. Ask questions like “What machine would you invent?” or “What robot would help you at school?” Imagination helps children think creatively about solving problems.",
+        "vi": "Hãy dạy trẻ rằng công nghệ là các dụng cụ và máy móc giúp chúng ta làm việc nhanh hơn hoặc dễ hơn. Đưa ví dụ như điện thoại, đèn hoặc máy giặt. Giải thích cách công nghệ giúp ích cho con người mỗi ngày.\n\nHãy dạy trẻ rằng robot có thể làm nhiệm vụ khi được lập trình. Đưa ví dụ đơn giản như robot hút bụi, cánh tay robot trong nhà máy hoặc robot hỗ trợ trong bệnh viện. Giải thích rằng robot giúp con người chứ không thay thế con người.\n\nHãy dạy trẻ rằng lập trình nghĩa là đưa ra hướng dẫn rõ ràng. Đưa ví dụ như bảo robot đi thẳng, rẽ hoặc dừng lại. Giải thích rằng mã hóa giúp máy móc biết chính xác việc cần làm.\n\nHãy dạy trẻ rằng thiết bị thông minh có thể \"suy nghĩ\" ở mức đơn giản. Ví dụ gồm loa thông minh, đèn thông minh hoặc điện thoại trả lời bằng giọng nói. Giải thích rằng các thiết bị này giúp cuộc sống dễ dàng hơn nhờ khả năng hỗ trợ tự động.\n\nHãy dạy trẻ tưởng tượng về công nghệ tương lai. Hỏi các câu như “Con sẽ phát minh máy gì?” hoặc “Robot nào sẽ giúp con ở trường?” Trí tưởng tượng giúp trẻ suy nghĩ sáng tạo để giải quyết vấn đề."
+      },
+      "tags": ["all"],
+      "audio": "technology_robots_v1_what_is_technology.mp3 technology_robots_v1_what_robots_do.mp3 technology_robots_v1_simple_programming.mp3 technology_robots_v1_smart_devices.mp3 technology_robots_v1_future_technology.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "10-13",
+    "level": "Kids Level 3",
+    "created_at": "2025-11-23T00:00:00+00:00",
+    "updated_at": "2025-11-23T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#E5E9FF"
+  }
+}

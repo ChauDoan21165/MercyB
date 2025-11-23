@@ -1,0 +1,89 @@
+{
+  "id": "mini_projects_presentations_kids_l3",
+  "tier": "Kids Level 3 / Trẻ Em Cấp 3",
+  "title": {
+    "en": "Mini Projects & Presentations",
+    "vi": "Dự Án Nhỏ & Thuyết Trình"
+  },
+  "content": {
+    "en": "This room teaches children simple English patterns for making small projects and giving short presentations. Kids learn to plan steps, gather ideas, speak clearly, show their work, and share what they learned. Parents can support by encouraging kids to create small projects at home and present them in a calm, confident way.",
+    "vi": "Phòng học này dạy trẻ các mẫu câu tiếng Anh đơn giản để làm dự án nhỏ và thuyết trình ngắn. Trẻ học cách lập kế hoạch, thu thập ý tưởng, nói rõ ràng, giới thiệu sản phẩm và chia sẻ điều mình học được. Cha mẹ có thể hỗ trợ bằng cách khuyến khích trẻ thực hiện dự án nhỏ tại nhà và trình bày một cách bình tĩnh, tự tin.",
+    "audio": "mini_projects_presentations_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "plan-the-steps",
+      "keywords_en": ["plan", "steps", "project"],
+      "keywords_vi": ["kế hoạch", "bước", "dự án"],
+      "copy": {
+        "en": "Teach kids to plan their project using simple phrases like “First we do this,” “Next we try this,” and “Then we finish.” Planning steps helps children stay organized and understand how to work from beginning to end.",
+        "vi": "Hãy dạy trẻ lập kế hoạch cho dự án bằng các câu như “First we do this,” “Next we try this,” và “Then we finish.” Lập kế hoạch giúp trẻ có tổ chức và hiểu cách làm việc từ đầu đến cuối."
+      },
+      "tags": ["plan"],
+      "audio": "mini_projects_presentations_v1_plan_the_steps.mp3"
+    },
+    {
+      "slug": "gather-ideas",
+      "keywords_en": ["ideas", "gather", "project"],
+      "keywords_vi": ["ý tưởng", "thu thập", "dự án"],
+      "copy": {
+        "en": "Teach children to gather ideas by using phrases such as “Let’s think,” “What can we add?” and “What do we need?” Encourage them to draw, list, or talk about their ideas. Gathering ideas helps kids build a strong start for their project.",
+        "vi": "Hãy dạy trẻ thu thập ý tưởng bằng các câu như “Let’s think,” “What can we add?” và “What do we need?” Khuyến khích trẻ vẽ, liệt kê hoặc nói về ý tưởng của mình. Thu thập ý tưởng giúp trẻ có khởi đầu vững chắc cho dự án."
+      },
+      "tags": ["ideas"],
+      "audio": "mini_projects_presentations_v1_gather_ideas.mp3"
+    },
+    {
+      "slug": "speak-clearly",
+      "keywords_en": ["speak", "clear", "presentation"],
+      "keywords_vi": ["nói", "rõ ràng", "thuyết trình"],
+      "copy": {
+        "en": "Teach kids to speak clearly using simple sentences like “This is my project,” “I made this,” and “Here is what I did.” Encourage them to speak slowly and look at the listener. Speaking clearly helps children present with confidence.",
+        "vi": "Hãy dạy trẻ nói rõ ràng bằng các câu đơn giản như “This is my project,” “I made this,” và “Here is what I did.” Khuyến khích trẻ nói chậm và nhìn vào người nghe. Nói rõ ràng giúp trẻ thuyết trình tự tin hơn."
+      },
+      "tags": ["speak"],
+      "audio": "mini_projects_presentations_v1_speak_clearly.mp3"
+    },
+    {
+      "slug": "show-the-work",
+      "keywords_en": ["show", "work", "project"],
+      "keywords_vi": ["trình bày", "sản phẩm", "dự án"],
+      "copy": {
+        "en": "Teach children to show their work using phrases like “Look at this part,” “Here is how it works,” and “This is what I made.” Showing the work helps kids explain their thinking and share their effort with others.",
+        "vi": "Hãy dạy trẻ trình bày sản phẩm bằng các câu như “Look at this part,” “Here is how it works,” và “This is what I made.” Trình bày sản phẩm giúp trẻ giải thích suy nghĩ và chia sẻ nỗ lực của mình với người khác."
+      },
+      "tags": ["show"],
+      "audio": "mini_projects_presentations_v1_show_the_work.mp3"
+    },
+    {
+      "slug": "share-what-you-learned",
+      "keywords_en": ["share", "learned", "presentation"],
+      "keywords_vi": ["chia sẻ", "điều đã học", "thuyết trình"],
+      "copy": {
+        "en": "Teach kids to share what they learned using phrases such as “I learned…,” “I discovered…,” and “Next time I will…” Sharing learning helps children reflect on their project and understand their progress.",
+        "vi": "Hãy dạy trẻ chia sẻ điều mình học được bằng các câu như “I learned…,” “I discovered…,” và “Next time I will…” Chia sẻ điều đã học giúp trẻ suy ngẫm về dự án và hiểu sự tiến bộ của bản thân."
+      },
+      "tags": ["learned"],
+      "audio": "mini_projects_presentations_v1_share_what_you_learned.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all"],
+      "keywords_vi": ["tất cả"],
+      "copy": {
+        "en": "Teach kids to plan their project using simple phrases like “First we do this,” “Next we try this,” and “Then we finish.” Planning steps helps children stay organized and understand how to work from beginning to end.\n\nTeach children to gather ideas by using phrases such as “Let’s think,” “What can we add?” and “What do we need?” Encourage them to draw, list, or talk about their ideas. Gathering ideas helps kids build a strong start for their project.\n\nTeach kids to speak clearly using simple sentences like “This is my project,” “I made this,” and “Here is what I did.” Encourage them to speak slowly and look at the listener. Speaking clearly helps children present with confidence.\n\nTeach children to show their work using phrases like “Look at this part,” “Here is how it works,” and “This is what I made.” Showing the work helps kids explain their thinking and share their effort with others.\n\nTeach kids to share what they learned using phrases such as “I learned…,” “I discovered…,” and “Next time I will…” Sharing learning helps children reflect on their project and understand their progress.",
+        "vi": "Hãy dạy trẻ lập kế hoạch cho dự án bằng các câu như “First we do this,” “Next we try this,” và “Then we finish.” Lập kế hoạch giúp trẻ có tổ chức và hiểu cách làm việc từ đầu đến cuối.\n\nHãy dạy trẻ thu thập ý tưởng bằng các câu như “Let’s think,” “What can we add?” và “What do we need?” Khuyến khích trẻ vẽ, liệt kê hoặc nói về ý tưởng của mình. Thu thập ý tưởng giúp trẻ có khởi đầu vững chắc cho dự án.\n\nHãy dạy trẻ nói rõ ràng bằng các câu đơn giản như “This is my project,” “I made this,” và “Here is what I did.” Khuyến khích trẻ nói chậm và nhìn vào người nghe. Nói rõ ràng giúp trẻ thuyết trình tự tin hơn.\n\nHãy dạy trẻ trình bày sản phẩm bằng các câu như “Look at this part,” “Here is how it works,” và “This is what I made.” Trình bày sản phẩm giúp trẻ giải thích suy nghĩ và chia sẻ nỗ lực của mình với người khác.\n\nHãy dạy trẻ chia sẻ điều mình học được bằng các câu như “I learned…,” “I discovered…,” và “Next time I will…” Chia sẻ điều đã học giúp trẻ suy ngẫm về dự án và hiểu sự tiến bộ của bản thân."
+      },
+      "tags": ["all"],
+      "audio": "mini_projects_presentations_v1_plan_the_steps.mp3 mini_projects_presentations_v1_gather_ideas.mp3 mini_projects_presentations_v1_speak_clearly.mp3 mini_projects_presentations_v1_show_the_work.mp3 mini_projects_presentations_v1_share_what_you_learned.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "10-13",
+    "level": "Kids Level 3",
+    "created_at": "2025-11-23T00:00:00+00:00",
+    "updated_at": "2025-11-23T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#FFF3E1"
+  }
+}
