@@ -99,7 +99,7 @@ const getJsonFilenameForKidsRoom = (roomId: string, levelId: string): string => 
 export default function UnifiedHealthCheck() {
   const { tier } = useParams<{ tier: string }>();
   const { toast } = useToast();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [health, setHealth] = useState<RoomHealth | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [fixing, setFixing] = useState<string | null>(null);
@@ -115,7 +115,13 @@ export default function UnifiedHealthCheck() {
   const [availableRooms, setAvailableRooms] = useState<Array<{ id: string; title: string; level: string }>>([]);
   const [selectedRooms, setSelectedRooms] = useState<string[]>([]);
 
-  const tierDisplay = tier && tier !== "kids" ? TIER_DISPLAY_NAMES[tier] || tier.toUpperCase() : tier === "kids" ? "Kids Rooms" : "All Tiers";
+  const tierDisplay = tier
+    ? tier === "kids"
+      ? "Kids Rooms"
+      : TIER_DISPLAY_NAMES[tier] || tier.toUpperCase()
+    : activeTab === "kids"
+      ? "Kids Rooms"
+      : "All Tiers";
 
   useEffect(() => {
     if (activeTab === "kids") {
@@ -123,11 +129,12 @@ export default function UnifiedHealthCheck() {
     }
   }, [activeTab, selectedLevel]);
 
+  // Auto-run health checks only when a specific tier route is used (e.g. /admin/room-health/free)
+  // On /admin/kids-room-health there is no tier param, so checks run only when you click the button
   useEffect(() => {
-    // Auto-run health checks only for main rooms; kids rooms require manual trigger
-    if (activeTab === "kids") return;
+    if (!tier) return;
     checkRoomHealth();
-  }, [tier, activeTab]);
+  }, [tier]);
 
   const loadAvailableKidsRooms = async () => {
     try {
