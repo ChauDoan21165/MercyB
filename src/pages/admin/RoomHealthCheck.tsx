@@ -182,7 +182,13 @@ export default function RoomHealthCheck() {
 
         for (const { url, key, path } of fileCandidates) {
           try {
-            const response = await fetch(url);
+            // Add timeout to prevent hanging
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+            
+            const response = await fetch(url, { signal: controller.signal });
+            clearTimeout(timeoutId);
+            
             if (!response.ok) continue;
 
             const text = await response.text();
@@ -212,8 +218,11 @@ export default function RoomHealthCheck() {
               });
               break;
             }
-          } catch {
-            // File not found or fetch error, continue to next candidate
+          } catch (error: any) {
+            // Handle timeout and other fetch errors silently, continue to next candidate
+            if (error.name === 'AbortError') {
+              console.warn(`Timeout fetching ${url}`);
+            }
           }
         }
 
