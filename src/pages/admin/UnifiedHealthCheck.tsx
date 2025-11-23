@@ -121,7 +121,17 @@ export default function UnifiedHealthCheck() {
       .neq("tier", "kids");
 
     if (tier && tier !== "kids") {
-      query = query.eq("tier", tier);
+      // Match all variations of the tier name (e.g., "vip2", "VIP 2", "VIP2 / VIP2")
+      const tierUpper = tier.toUpperCase().replace(/\s/g, '');
+      query = query.or(
+        `tier.eq.${tier},` +
+        `tier.ilike.${tierUpper},` +
+        `tier.ilike.${tierUpper} %,` +
+        `tier.ilike.% ${tierUpper},` +
+        `tier.ilike.% ${tierUpper} %,` +
+        `tier.ilike.${tierUpper}/%,` +
+        `tier.ilike.${tierUpper} /%`
+      );
     }
 
     const { data: rooms, error: roomsError } = await query;
