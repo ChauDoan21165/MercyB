@@ -94,12 +94,12 @@ const KidsLevel1 = () => {
                  background: 'var(--gradient-mercy-rainbow)',
                  boxShadow: 'var(--shadow-mercy-glow)'
                }}>
-            <Baby className="h-10 w-10 animate-bounce text-white drop-shadow-lg" />
-            <div className="text-left text-white drop-shadow-md">
+            <Baby className="h-10 w-10 animate-bounce drop-shadow-lg" style={{ color: 'hsl(240 10% 10%)' }} />
+            <div className="text-left drop-shadow-md" style={{ color: 'hsl(240 10% 10%)' }}>
               <h1 className="text-4xl font-bold tracking-tight">
                 Kids Level 1
               </h1>
-              <p className="text-sm opacity-90">
+              <p className="text-sm opacity-80">
                 Cấp 1 - Độ tuổi 4-7
               </p>
             </div>
@@ -108,7 +108,7 @@ const KidsLevel1 = () => {
           <div className="flex items-center justify-center gap-4 flex-wrap">
             <div className="inline-block bg-card/90 backdrop-blur-md px-6 py-2 rounded-full border-2 border-white/30" 
                  style={{ boxShadow: 'var(--shadow-rainbow)' }}>
-              <p className="text-sm font-medium text-foreground">
+              <p className="text-sm font-bold" style={{ color: 'hsl(240 10% 10%)' }}>
                 🎯 {rooms.length} exciting rooms to explore! / {rooms.length} phòng thú vị để khám phá!
               </p>
             </div>
