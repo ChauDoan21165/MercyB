@@ -68,6 +68,7 @@ import SecurityDashboard from "./pages/SecurityDashboard";
 import Settings from "./pages/Settings";
 import HealthDashboard from "./pages/admin/HealthDashboard";
 import RoomHealthCheck from "./pages/admin/RoomHealthCheck";
+import SystemHealth from "./pages/admin/SystemHealth";
 
 const queryClient = new QueryClient();
 
@@ -164,6 +165,7 @@ const App = () => {
           <Route path="/admin/kids-room-health" element={<KidsRoomHealthCheck />} />
           <Route path="/admin/health-dashboard" element={<HealthDashboard />} />
           <Route path="/admin/room-health/:tier" element={<RoomHealthCheck />} />
+          <Route path="/admin/system-health" element={<SystemHealth />} />
           <Route path="/redeem-gift" element={<RedeemGiftCode />} />
           <Route path="/audio-upload" element={<AudioUpload />} />
           <Route path="/kids-validation" element={<KidsRoomValidation />} />
