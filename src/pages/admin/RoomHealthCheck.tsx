@@ -80,8 +80,8 @@ export default function RoomHealthCheck() {
 
         // Check if JSON file exists and is valid
         const possibleFilenames = [
-          `${room.id}.json`,
-          `${room.id.replace(/-/g, "_")}.json`,
+          `${room.schema_id}.json`,
+          `${room.schema_id.replace(/-/g, "_")}.json`,
         ];
 
         let jsonFound = false;
@@ -130,7 +130,7 @@ export default function RoomHealthCheck() {
             tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
             issueType: "missing_file",
             message: `File returns HTML instead of JSON (file missing)`,
-            details: `Create: public/data/${room.id}.json`,
+            details: `Create: public/data/${room.schema_id}.json`,
           });
         }
 
@@ -140,8 +140,8 @@ export default function RoomHealthCheck() {
             roomTitle: room.title_en,
             tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
             issueType: "missing_file",
-            message: `JSON file not found: /data/${room.id}.json`,
-            details: `Expected: /data/${room.id}.json`,
+            message: `JSON file not found: /data/${room.schema_id}.json`,
+            details: `Expected: /data/${room.schema_id}.json`,
           });
         }
 
