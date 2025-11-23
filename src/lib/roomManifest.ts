@@ -203,7 +203,8 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "vip6-shadow-envy": "data/vip6_shadow_envy.json",
   "vip6-shadow-in-love": "data/vip6_shadow_in_love.json",
   "vip6-shadow-perfectionism": "data/vip6_shadow_perfectionism.json",
-  "strategic_foundations_vip9": "data/Strategic_Foundations_vip9.json"
+  "strategic_foundations_vip9": "data/Strategic_Foundations_vip9.json",
+  "leverage-thinking-vip9": "data/Leverage_Thinking_vip9.json"
 };
 
 /**
