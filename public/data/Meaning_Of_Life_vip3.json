@@ -1,142 +1,80 @@
-[
-  {
-    "id": "meaning-of-life-vip3",
-    "tier": "VIP 3 / Cấp VIP 3",
-    "title": {
-      "en": "The Meaning of Life: Harmony of Being",
-      "vi": "Ý Nghĩa Của Cuộc Sống: Hòa Điệu Của Tồn Tại"
-    },
-    "keywords_en": [
-      "meaning of life",
-      "purpose",
-      "harmony",
-      "integration",
-      "awareness",
-      "presence",
-      "meaning",
-      "life purpose"
-    ],
-    "keywords_vi": [
-      "ý nghĩa cuộc sống",
-      "mục đích",
-      "hòa điệu",
-      "hợp nhất",
-      "tỉnh thức",
-      "hiện diện",
-      "ý nghĩa",
-      "mục đích sống"
-    ],
-    "content": {
-      "en": "At the deepest level, meaning reveals itself as harmony — not something to chase, but something to remember...",
-      "vi": "Ở tầng sâu nhất, ý nghĩa hé lộ như một khúc hòa điệu — không phải điều để theo đuổi..."
-    }
+{
+  "id": "meaning-of-life-vip3",
+  "tier": "VIP3 / VIP3",
+  "title": {
+    "en": "The Meaning of Life: Harmony of Being",
+    "vi": "Ý Nghĩa Của Cuộc Sống: Hòa Điệu Của Tồn Tại"
   },
-
-  {
-    "id": "meaning-of-life-vip4",
-    "tier": "VIP 4 / Cấp VIP 4",
-    "title": {
-      "en": "Stillness as the Teacher",
-      "vi": "Tĩnh Lặng Như Một Người Thầy"
-    },
-    "keywords_en": [
-      "stillness",
-      "insight",
-      "meditation",
-      "truth",
-      "presence"
-    ],
-    "keywords_vi": [
-      "tĩnh lặng",
-      "thấu suốt",
-      "thiền",
-      "chân lý",
-      "hiện diện"
-    ],
-    "content": {
-      "en": "In silence, the world becomes audible again. When the mind rests, wisdom rises without effort...",
-      "vi": "Trong tĩnh lặng, thế giới trở nên rõ ràng trở lại. Khi tâm an, trí tuệ tự nhiên hiển lộ..."
-    }
+  "content": {
+    "en": "Meaning reveals itself as harmony — not something to chase, but something to remember. Life is not a ladder to climb but a song to join, where each note is both your breath and the breath of the world. When you live with awareness, even pain becomes part of beauty: the wilted leaf feeding new soil, the heartbreak creating space for compassion. True purpose lies in integration — where thought, emotion, and action move as one. To be human is to learn balance between surrender and shaping, solitude and belonging, silence and expression. In this awareness, service becomes devotion and love becomes practice.",
+    "vi": "Ý nghĩa hé lộ như một khúc hòa điệu — không phải điều để theo đuổi mà là điều để ghi nhớ. Cuộc sống không phải chiếc thang để leo mà là bản nhạc để hòa cùng, nơi mỗi nốt là hơi thở của bạn và cũng là hơi thở của thế giới. Khi sống tỉnh thức, ngay cả nỗi đau cũng góp phần vào vẻ đẹp: chiếc lá úa nuôi dưỡng mảnh đất mới, trái tim tan vỡ mở ra chỗ cho lòng từ bi. Mục đích thật sự nằm trong sự hòa hợp — nơi suy nghĩ, cảm xúc và hành động vận hành như một thể. Là con người là học cách cân bằng giữa buông và nắm, giữa cô đơn và gắn bó, giữa im lặng và biểu đạt. Trong nhận thức ấy, sự phục vụ trở thành lòng dâng hiến và tình yêu trở thành sự thực hành."
   },
-
-  {
-    "id": "meaning-of-life-vip5",
-    "tier": "VIP 5 / Cấp VIP 5",
-    "title": {
-      "en": "The Courage to Be Vulnerable",
-      "vi": "Dũng Khí Để Sống Mong Manh"
+  "entries": [
+    {
+      "slug": "harmony-of-being",
+      "keywords_en": ["harmony", "meaning", "integration"],
+      "keywords_vi": ["hòa điệu", "ý nghĩa", "hợp nhất"],
+      "copy": {
+        "en": "At the deepest level, meaning reveals itself as harmony — not something to chase, but something to remember. Life is not a ladder to climb but a song to join, where each note is both your breath and the breath of the world. When you live with awareness, you see that even pain participates in beauty: the wilted leaf feeding new soil, the heartbreak carving space for compassion. True purpose lies in integration — where thought, emotion, and action move as one, guided by quiet integrity. To be human is to learn the art of balance between surrender and shaping, solitude and belonging, silence and expression. In this understanding, service becomes devotion, and love becomes practice.",
+        "vi": "Ở tầng sâu nhất, ý nghĩa hé lộ như một khúc hòa điệu — không phải điều để theo đuổi, mà là điều để ghi nhớ. Cuộc sống không phải chiếc thang để leo, mà là bản nhạc để hòa cùng, nơi mỗi nốt là hơi thở của bạn và cũng là hơi thở của thế giới. Khi sống với sự tỉnh thức, bạn nhận ra rằng ngay cả nỗi đau cũng góp phần vào vẻ đẹp: chiếc lá úa nuôi dưỡng mảnh đất mới, trái tim tan vỡ mở ra chỗ cho lòng từ bi. Mục đích chân thật nằm trong sự hòa hợp — nơi suy nghĩ, cảm xúc và hành động vận hành như một thể, được dẫn dắt bởi sự chính trực tĩnh lặng. Là con người là học cách cân bằng giữa buông và nắm, giữa cô đơn và gắn bó, giữa im lặng và biểu đạt. Trong nhận thức ấy, sự phục vụ trở thành lòng dâng hiến, và tình yêu trở thành sự thực hành."
+      },
+      "tags": ["meaning", "presence", "integration"],
+      "audio": "meaning_vip3_1_en.mp3"
     },
-    "keywords_en": [
-      "vulnerability",
-      "openness",
-      "authenticity",
-      "growth",
-      "humanity"
-    ],
-    "keywords_vi": [
-      "mong manh",
-      "mở lòng",
-      "chân thật",
-      "trưởng thành",
-      "nhân tính"
-    ],
-    "content": {
-      "en": "To be vulnerable is not to be weak, but to be real. Growth begins the moment we stop pretending...",
-      "vi": "Sự mong manh không phải yếu đuối, mà là sống thật. Trưởng thành bắt đầu khi ta ngừng giả vờ..."
-    }
-  },
-
-  {
-    "id": "meaning-of-life-vip6",
-    "tier": "VIP 6 / Cấp VIP 6",
-    "title": {
-      "en": "Living the Inner and Outer Journey",
-      "vi": "Sống Cả Hành Trình Bên Trong Và Bên Ngoài"
+    {
+      "slug": "stillness",
+      "keywords_en": ["stillness", "clarity", "presence"],
+      "keywords_vi": ["tĩnh lặng", "sáng tỏ", "hiện diện"],
+      "copy": {
+        "en": "In stillness, the world becomes audible again. When the mind stops pushing, wisdom begins speaking in its own voice — not loud, not demanding, but unmistakably true. Silence is not the absence of life, but the doorway through which life returns to its original clarity. Here we learn that most confusion comes not from lack of answers, but from excess of noise. The heart knows, but the mind speaks over it. When we pause, we discover that we are not lost — only distracted. Stillness teaches without instructions: a leaf falling, a breath exhaled, a moment where nothing needs to be controlled. Truth arises as recognition — the kind that settles into the body like warm sunlight. The deeper the silence, the softer the heart becomes, and from that softness comes real strength.",
+        "vi": "Trong tĩnh lặng, thế giới trở nên nghe thấy được trở lại. Khi tâm thôi cố gắng, trí tuệ bắt đầu cất tiếng bằng giọng của riêng nó — không ồn ào, không đòi hỏi, nhưng chân thật đến không thể nhầm lẫn. Tĩnh lặng không phải là sự thiếu vắng cuộc sống, mà là cánh cửa để cuộc sống trở về với sự sáng tỏ nguyên sơ. Ta nhận ra rằng phần lớn sự rối rắm không phải vì thiếu câu trả lời, mà vì quá nhiều tiếng động. Trái tim biết, nhưng tâm trí lấn át nó. Khi ta dừng lại, ta thấy mình chưa bao giờ lạc lối — chỉ là bị xao nhãng. Tĩnh lặng dạy mà không cần lời: chiếc lá rơi, hơi thở được buông ra, một khoảnh khắc không có gì cần kiểm soát. Chân lý xuất hiện như một sự nhận ra — lặng lẽ thấm vào cơ thể như ánh nắng ấm. Tĩnh càng sâu, tim càng mềm, và từ sự mềm đó sinh ra sức mạnh thật sự."
+      },
+      "tags": ["clarity", "calm", "wisdom"],
+      "audio": "meaning_vip3_2_en.mp3"
     },
-    "keywords_en": [
-      "inner life",
-      "outer life",
-      "balance",
-      "wholeness",
-      "awareness"
-    ],
-    "keywords_vi": [
-      "đời sống nội tâm",
-      "đời sống bên ngoài",
-      "cân bằng",
-      "trọn vẹn",
-      "tỉnh thức"
-    ],
-    "content": {
-      "en": "Life happens both in the world and within ourselves. Wisdom is learning to walk both paths at once...",
-      "vi": "Cuộc sống diễn ra cả bên ngoài lẫn bên trong. Trí tuệ là biết đi cả hai con đường cùng lúc..."
-    }
-  },
-
-  {
-    "id": "meaning-of-life-vip7",
-    "tier": "VIP 7 / Cấp VIP 7",
-    "title": {
-      "en": "Purpose Through Service",
-      "vi": "Mục Đích Qua Sự Phụng Sự"
+    {
+      "slug": "vulnerability",
+      "keywords_en": ["vulnerability", "connection", "courage"],
+      "keywords_vi": ["mong manh", "kết nối", "dũng khí"],
+      "copy": {
+        "en": "To be vulnerable is to stand without armor in a world that teaches us to protect ourselves. But walls do not only keep pain out — they also keep love from coming in. Vulnerability is the birthplace of intimacy, trust, and genuine connection. It asks us to stop performing, stop dressing ourselves in perfection, and instead present the simple truth of who we are. Growth happens not when we feel strong, but when we allow ourselves to be seen in tenderness. A heart that has never been broken has never fully opened. The courage to be vulnerable is the courage to be human — to admit that we don’t have every answer, that we want to love and be loved, and that we are learning as we go.",
+        "vi": "Sống mong manh nghĩa là đứng giữa đời mà không mặc áo giáp, trong khi thế gian dạy ta phải bảo vệ chính mình. Nhưng những bức tường không chỉ chặn nỗi đau — mà còn ngăn tình yêu bước vào. Sự mong manh là nơi sinh ra của sự thân mật, của sự tin cậy, của sự kết nối chân thành. Nó mời ta thôi khoác lên mình sự hoàn hảo và trình diện sự thật đơn giản về con người mình. Trưởng thành không xảy ra khi ta mạnh mẽ, mà khi ta cho phép mình được nhìn thấy trong sự mềm yếu. Trái tim chưa từng tan vỡ là trái tim chưa từng mở rộng. Dũng khí để sống mong manh là dũng khí để làm người — để thừa nhận rằng ta không có mọi câu trả lời, rằng ta muốn yêu và được yêu, và rằng ta đang học từng bước."
+      },
+      "tags": ["connection", "intimacy", "authenticity"],
+      "audio": "meaning_vip3_3_en.mp3"
     },
-    "keywords_en": [
-      "service",
-      "purpose",
-      "contribution",
-      "compassion",
-      "meaning"
-    ],
-    "keywords_vi": [
-      "phụng sự",
-      "mục đích",
-      "cống hiến",
-      "từ bi",
-      "ý nghĩa"
-    ],
-    "content": {
-      "en": "Purpose matures when the heart turns outward. We grow not only by receiving but by offering who we are...",
-      "vi": "Mục đích chín muồi khi trái tim hướng ra ngoài. Ta lớn lên không chỉ khi nhận, mà khi trao đi chính mình..."
+    {
+      "slug": "inner-outer-journey",
+      "keywords_en": ["journey", "inner world", "outer world"],
+      "keywords_vi": ["hành trình", "nội tâm", "thế giới bên ngoài"],
+      "copy": {
+        "en": "Life unfolds on two levels: the world we move through, and the world that moves within us. Many people master one but neglect the other — building achievements while their inner world collapses, or cultivating depth while struggling with everyday life. Wisdom is learning to walk both roads with equal devotion. The outer journey shapes our skills, relationships, contributions, and impact. The inner journey shapes intention, clarity, presence, and the ability to live without abandoning ourselves. When the two journeys align, life feels truthful: what we say matches how we feel, and what we do reflects who we are.",
+        "vi": "Cuộc sống mở ra trên hai tầng: thế giới ta bước qua, và thế giới đang chuyển động bên trong ta. Nhiều người giỏi một nhưng bỏ quên một — xây dựng thành tựu trong khi nội tâm sụp đổ, hoặc nuôi dưỡng chiều sâu nhưng chật vật với đời sống thực tế. Trí tuệ là học cách đi cả hai con đường với sự tận tâm ngang nhau. Hành trình bên ngoài tạo nên kỹ năng, các mối quan hệ, sự cống hiến và ảnh hưởng của ta. Hành trình bên trong định hình ý định, sự sáng tỏ, hiện diện và khả năng sống mà không bỏ rơi chính mình. Khi hai hành trình hòa hợp, cuộc sống trở nên chân thật: lời nói phù hợp với cảm xúc, và hành động phản chiếu con người thật của ta."
+      },
+      "tags": ["growth", "alignment", "presence"],
+      "audio": "meaning_vip3_4_en.mp3"
+    },
+    {
+      "slug": "purpose-through-service",
+      "keywords_en": ["purpose", "service", "fulfillment"],
+      "keywords_vi": ["mục đích", "phụng sự", "viên mãn"],
+      "copy": {
+        "en": "Purpose matures when the heart turns outward. We begin life focused on surviving, then on achieving, but true fulfillment blossoms when we ask not only 'What do I want?' but 'What can I give?' Service does not require self-sacrifice; it requires presence — the willingness to show up with what we have, even if it is small. A kind word, a moment of honesty, a gesture of listening can change a life in ways we may never witness. Contribution is not measured by scale but by sincerity. Service transforms love from sentiment into movement, and in giving, we receive something achievement alone cannot provide: the sense that our life touches more than our own story.",
+        "vi": "Mục đích trở nên chín muồi khi trái tim hướng ra ngoài. Ta bắt đầu cuộc đời bằng sự sinh tồn, rồi thành đạt, nhưng sự viên mãn thật sự nở hoa khi ta không chỉ hỏi 'Tôi muốn gì?' mà còn 'Tôi có thể trao gì?'. Phụng sự không đòi hỏi hy sinh bản thân; nó đòi hỏi sự hiện diện — sẵn lòng có mặt với những gì mình đang có, dù nhỏ bé. Một lời tử tế, một khoảnh khắc chân thật, một cử chỉ lắng nghe có thể thay đổi đời người theo những cách ta không bao giờ thấy. Sự cống hiến không được đo bằng quy mô, mà bằng sự chân thành. Phụng sự biến tình yêu từ cảm xúc thành chuyển động, và trong việc trao đi, ta nhận được điều mà thành tựu không thể mang lại: cảm giác rằng cuộc đời ta chạm đến nhiều hơn câu chuyện của riêng mình."
+      },
+      "tags": ["service", "giving", "meaning"],
+      "audio": "meaning_vip3_5_en.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all"],
+      "keywords_vi": ["tất cả"],
+      "copy": {
+        "en": "At the deepest level, meaning reveals itself as harmony — not something to chase, but something to remember. Life is not a ladder to climb but a song to join, where each note is both your breath and the breath of the world. When you live with awareness, you see that even pain participates in beauty: the wilted leaf feeding new soil, the heartbreak carving space for compassion. True purpose lies in integration — where thought, emotion, and action move as one, guided by quiet integrity. To be human is to learn the art of balance between surrender and shaping, solitude and belonging, silence and expression. In this understanding, service becomes devotion, and love becomes practice.\n\nIn stillness, the world becomes audible again. When the mind stops pushing, wisdom begins speaking in its own voice — not loud, not demanding, but unmistakably true. Silence is not the absence of life, but the doorway through which life returns to its original clarity. Here we learn that most confusion comes not from lack of answers, but from excess of noise. The heart knows, but the mind speaks over it. When we pause, we discover that we are not lost — only distracted. Stillness teaches without instructions: a leaf falling, a breath exhaled, a moment where nothing needs to be controlled. Truth arises as recognition — the kind that settles into the body like warm sunlight. The deeper the silence, the softer the heart becomes, and from that softness comes real strength.\n\nTo be vulnerable is to stand without armor in a world that teaches us to protect ourselves. But walls do not only keep pain out — they also keep love from coming in. Vulnerability is the birthplace of intimacy, trust, and genuine connection. It asks us to stop performing, stop dressing ourselves in perfection, and instead present the simple truth of who we are. Growth happens not when we feel strong, but when we allow ourselves to be seen in tenderness. A heart that has never been broken has never fully opened. The courage to be vulnerable is the courage to be human — to admit that we don’t have every answer, that we want to love and be loved, and that we are learning as we go.\n\nLife unfolds on two levels: the world we move through, and the world that moves within us. Many people master one but neglect the other — building achievements while their inner world collapses, or cultivating depth while struggling with everyday life. Wisdom is learning to walk both roads with equal devotion. The outer journey shapes our skills, relationships, contributions, and impact. The inner journey shapes intention, clarity, presence, and the ability to live without abandoning ourselves. When the two journeys align, life feels truthful: what we say matches how we feel, and what we do reflects who we are.\n\nPurpose matures when the heart turns outward. We begin life focused on surviving, then on achieving, but true fulfillment blossoms when we ask not only 'What do I want?' but 'What can I give?' Service does not require self-sacrifice; it requires presence — the willingness to show up with what we have, even if it is small. A kind word, a moment of honesty, a gesture of listening can change a life in ways we may never witness. Contribution is not measured by scale but by sincerity. Service transforms love from sentiment into movement, and in giving, we receive something achievement alone cannot provide: the sense that our life touches more than our own story.",
+        "vi": "Ở tầng sâu nhất, ý nghĩa hé lộ như một khúc hòa điệu — không phải điều để theo đuổi, mà là điều để ghi nhớ. Cuộc sống không phải chiếc thang để leo, mà là bản nhạc để hòa cùng, nơi mỗi nốt là hơi thở của bạn và cũng là hơi thở của thế giới. Khi sống với sự tỉnh thức, bạn nhận ra rằng ngay cả nỗi đau cũng góp phần vào vẻ đẹp: chiếc lá úa nuôi dưỡng mảnh đất mới, trái tim tan vỡ mở ra chỗ cho lòng từ bi. Mục đích chân thật nằm trong sự hòa hợp — nơi suy nghĩ, cảm xúc và hành động vận hành như một thể, được dẫn dắt bởi sự chính trực tĩnh lặng. Là con người là học cách cân bằng giữa buông và nắm, giữa cô đơn và gắn bó, giữa im lặng và biểu đạt. Trong nhận thức ấy, sự phục vụ trở thành lòng dâng hiến, và tình yêu trở thành sự thực hành.\n\nTrong tĩnh lặng, thế giới trở nên nghe thấy được trở lại. Khi tâm thôi cố gắng, trí tuệ bắt đầu cất tiếng bằng giọng của riêng nó — không ồn ào, không đòi hỏi, nhưng chân thật đến không thể nhầm lẫn. Tĩnh lặng không phải là sự thiếu vắng cuộc sống, mà là cánh cửa để cuộc sống trở về với sự sáng tỏ nguyên sơ. Ta nhận ra rằng phần lớn sự rối rắm không phải vì thiếu câu trả lời, mà vì quá nhiều tiếng động. Trái tim biết, nhưng tâm trí lấn át nó. Khi ta dừng lại, ta thấy mình chưa bao giờ lạc lối — chỉ là bị xao nhãng. Tĩnh lặng dạy mà không cần lời: chiếc lá rơi, hơi thở được buông ra, một khoảnh khắc không có gì cần kiểm soát. Chân lý xuất hiện như một sự nhận ra — lặng lẽ thấm vào cơ thể như ánh nắng ấm. Tĩnh càng sâu, tim càng mềm, và từ sự mềm đó sinh ra sức mạnh thật sự.\n\nSống mong manh nghĩa là đứng giữa đời mà không mặc áo giáp, trong khi thế gian dạy ta phải bảo vệ chính mình. Nhưng những bức tường không chỉ chặn nỗi đau — mà còn ngăn tình yêu bước vào. Sự mong manh là nơi sinh ra của sự thân mật, của sự tin cậy, của sự kết nối chân thành. Nó mời ta thôi khoác lên mình sự hoàn hảo và trình diện sự thật đơn giản về con người mình. Trưởng thành không xảy ra khi ta mạnh mẽ, mà khi ta cho phép mình được nhìn thấy trong sự mềm yếu. Trái tim chưa từng tan vỡ là trái tim chưa từng mở rộng. Dũng khí để sống mong manh là dũng khí để làm người — để thừa nhận rằng ta không có mọi câu trả lời, rằng ta muốn yêu và được yêu, và rằng ta đang học từng bước.\n\nCuộc sống mở ra trên hai tầng: thế giới ta bước qua, và thế giới đang chuyển động bên trong ta. Nhiều người giỏi một nhưng bỏ quên một — xây dựng thành tựu trong khi nội tâm sụp đổ, hoặc nuôi dưỡng chiều sâu nhưng chật vật với đời sống thực tế. Trí tuệ là học cách đi cả hai con đường với sự tận tâm ngang nhau. Hành trình bên ngoài tạo nên kỹ năng, các mối quan hệ, sự cống hiến và ảnh hưởng của ta. Hành trình bên trong định hình ý định, sự sáng tỏ, hiện diện và khả năng sống mà không bỏ rơi chính mình. Khi hai hành trình hòa hợp, cuộc sống trở nên chân thật: lời nói phù hợp với cảm xúc, và hành động phản chiếu con người thật của ta.\n\nMục đích trở nên chín muồi khi trái tim hướng ra ngoài. Ta bắt đầu cuộc đời bằng sự sinh tồn, rồi thành đạt, nhưng sự viên mãn thật sự nở hoa khi ta không chỉ hỏi 'Tôi muốn gì?' mà còn 'Tôi có thể trao gì?'. Phụng sự không đòi hỏi hy sinh bản thân; nó đòi hỏi sự hiện diện — sẵn lòng có mặt với những gì mình đang có, dù nhỏ bé. Một lời tử tế, một khoảnh khắc chân thật, một cử chỉ lắng nghe có thể thay đổi đời người theo những cách ta không bao giờ thấy. Sự cống hiến không được đo bằng quy mô, mà bằng sự chân thành. Phụng sự biến tình yêu từ cảm xúc thành chuyển động, và trong việc trao đi, ta nhận được điều mà thành tựu không thể mang lại: cảm giác rằng cuộc đời ta chạm đến nhiều hơn câu chuyện của riêng mình."
+      },
+      "tags": ["all"],
+      "audio": "meaning_vip3_1_en.mp3 meaning_vip3_2_en.mp3 meaning_vip3_3_en.mp3 meaning_vip3_4_en.mp3 meaning_vip3_5_en.mp3"
     }
-  }
-]
+  ]
+}
