@@ -1,0 +1,89 @@
+{
+  "id": "creative_writing_basics_kids_l3",
+  "tier": "Kids Level 3 / Trẻ Em Cấp 3",
+  "title": {
+    "en": "Creative Writing Basics",
+    "vi": "Viết Sáng Tạo Cơ Bản"
+  },
+  "content": {
+    "en": "This room teaches kids the foundations of creative writing—ideas, characters, feelings, and imagination. Children learn to express stories more clearly and confidently through simple prompts. Parents can guide gentle discussions or help spark ideas.",
+    "vi": "Phòng học này giúp trẻ làm quen với nền tảng viết sáng tạo—ý tưởng, nhân vật, cảm xúc và trí tưởng tượng. Trẻ học cách diễn đạt câu chuyện rõ ràng và tự tin hơn thông qua các gợi ý đơn giản. Cha mẹ có thể hỗ trợ bằng cách gợi mở nhẹ nhàng hoặc cùng thảo luận ý tưởng.",
+    "audio": "creative_writing_basics_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "idea-sparks",
+      "keywords_en": ["ideas", "imagination", "writing"],
+      "keywords_vi": ["ý tưởng", "tưởng tượng", "viết"],
+      "copy": {
+        "en": "Great writing starts with small sparks. Ask your child to notice things around them—sounds, colors, feelings, or something funny they saw. Encourage them to say, “What if…?” or “Imagine if…” and let ideas flow without judging. Show them that ideas don’t need to be perfect; they just need to exist first. Once a spark appears, they can build a short sentence or draw the moment. This helps children develop creative confidence by learning that every story begins with curiosity and simple observations.",
+        "vi": "Mọi bài viết hay đều bắt đầu từ những tia sáng nhỏ. Hãy khuyến khích trẻ chú ý mọi thứ xung quanh—âm thanh, màu sắc, cảm xúc, hoặc điều gì đó vui nhộn mà trẻ nhìn thấy. Hỏi trẻ: “Điều gì sẽ xảy ra nếu…?” hoặc “Hãy tưởng tượng nếu…”, và để ý tưởng tuôn chảy mà không phán xét. Giải thích rằng ý tưởng không cần hoàn hảo; chỉ cần xuất hiện trước. Khi tìm được tia sáng, trẻ có thể viết một câu ngắn hoặc vẽ khoảnh khắc đó. Cách này giúp trẻ tự tin sáng tạo, hiểu rằng mọi câu chuyện đều bắt đầu từ sự tò mò và quan sát đơn giản."
+      },
+      "tags": ["ideas", "writing"],
+      "audio": "creative_writing_basics_v1_idea_sparks.mp3"
+    },
+    {
+      "slug": "simple-characters",
+      "keywords_en": ["characters", "stories", "writing"],
+      "keywords_vi": ["nhân vật", "câu chuyện", "viết"],
+      "copy": {
+        "en": "Characters make stories feel alive. Teach children to create simple characters using three questions: Who are they? What do they want? What stops them? Encourage them to choose someone familiar—a kid, a pet, or even a talking object. They can describe one feeling or one action the character does. This keeps writing easy and fun. Over time, kids learn that character goals and obstacles are the heart of storytelling, helping their stories feel real and full of personality.",
+        "vi": "Nhân vật giúp câu chuyện trở nên sống động. Hãy dạy trẻ tạo nhân vật đơn giản bằng ba câu hỏi: Họ là ai? Họ muốn gì? Điều gì ngăn họ lại? Trẻ có thể chọn người quen thuộc—một bạn nhỏ, thú cưng, hoặc thậm chí đồ vật biết nói. Khuyến khích trẻ mô tả một cảm xúc hoặc hành động của nhân vật. Cách này giúp việc viết trở nên dễ và vui. Lâu dần, trẻ hiểu rằng mục tiêu và trở ngại của nhân vật là trung tâm của câu chuyện, giúp bài viết chân thật và giàu cá tính."
+      },
+      "tags": ["characters"],
+      "audio": "creative_writing_basics_v1_simple_characters.mp3"
+    },
+    {
+      "slug": "feelings-words",
+      "keywords_en": ["feelings", "expression", "writing"],
+      "keywords_vi": ["cảm xúc", "diễn đạt", "viết"],
+      "copy": {
+        "en": "Feelings make writing meaningful. Teach children simple emotional words like happy, scared, excited, or worried. Ask them to match a feeling with a moment in their story—how the character feels when a problem appears or when something good happens. Encourage them to use body clues too, like shaking hands or smiling eyes. When kids learn to describe emotions, their stories become clearer and more relatable, building strong emotional awareness and expressive skill.",
+        "vi": "Cảm xúc giúp bài viết trở nên ý nghĩa. Hãy dạy trẻ những từ cảm xúc đơn giản như vui, sợ, háo hức hoặc lo lắng. Yêu cầu trẻ ghép cảm xúc với một khoảnh khắc trong câu chuyện—nhân vật cảm thấy thế nào khi vấn đề xuất hiện hoặc khi điều tốt xảy ra. Khuyến khích trẻ diễn tả bằng dấu hiệu cơ thể, như tay run hoặc mắt cười. Khi trẻ biết mô tả cảm xúc, câu chuyện sẽ rõ ràng và dễ đồng cảm hơn, đồng thời phát triển khả năng nhận thức cảm xúc."
+      },
+      "tags": ["emotions"],
+      "audio": "creative_writing_basics_v1_feelings_words.mp3"
+    },
+    {
+      "slug": "short-scenes",
+      "keywords_en": ["scene", "story", "writing"],
+      "keywords_vi": ["cảnh", "câu chuyện", "viết"],
+      "copy": {
+        "en": "A story doesn’t need to be long. Teach kids to write short scenes with three parts: something happens, someone reacts, and something changes. They can write just three sentences. For example: “The dog ran away. Mia yelled his name. She followed the paw prints.” Simple scenes help kids understand action and cause-effect without pressure. Practicing small scenes builds strong storytelling habits over time.",
+        "vi": "Một câu chuyện không cần dài. Hãy dạy trẻ viết cảnh ngắn với ba phần: điều gì đó xảy ra, ai đó phản ứng, và điều gì đó thay đổi. Trẻ chỉ cần viết ba câu. Ví dụ: “Chó chạy mất. Mia gọi tên nó. Cô bé chạy theo dấu chân.” Cảnh đơn giản giúp trẻ hiểu hành động và quan hệ nguyên nhân–kết quả mà không áp lực. Luyện tập những cảnh nhỏ xây dựng thói quen kể chuyện vững chắc theo thời gian."
+      },
+      "tags": ["scene"],
+      "audio": "creative_writing_basics_v1_short_scenes.mp3"
+    },
+    {
+      "slug": "story-endings",
+      "keywords_en": ["endings", "story", "writing"],
+      "keywords_vi": ["kết thúc", "câu chuyện", "viết"],
+      "copy": {
+        "en": "Teach children to end stories simply. A good ending answers one question: What changed? Ask your child to finish with a feeling, a decision, or a small moment of learning. For example: “Mia found her dog and felt brave.” Endings do not need to be dramatic—just honest and gentle. This helps kids understand closure and gives their stories a satisfying, complete shape.",
+        "vi": "Hãy dạy trẻ kết thúc câu chuyện thật giản dị. Kết thúc hay trả lời một câu hỏi: Điều gì đã thay đổi? Hướng dẫn trẻ kết thúc bằng một cảm xúc, một quyết định hoặc một điều nhỏ học được. Ví dụ: “Mia tìm thấy chó và cảm thấy dũng cảm hơn.” Kết thúc không cần kịch tính—chỉ cần chân thật và nhẹ nhàng. Cách này giúp trẻ hiểu sự trọn vẹn và tạo hình dạng hoàn chỉnh cho câu chuyện."
+      },
+      "tags": ["endings"],
+      "audio": "creative_writing_basics_v1_story_endings.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all"],
+      "keywords_vi": ["tất cả"],
+      "copy": {
+        "en": "Great writing starts with small sparks. Ask your child to notice things around them—sounds, colors, feelings, or something funny they saw. Encourage them to say, “What if…?” or “Imagine if…” and let ideas flow without judging. Show them that ideas don’t need to be perfect; they just need to exist first. Once a spark appears, they can build a short sentence or draw the moment. This helps children develop creative confidence by learning that every story begins with curiosity and simple observations.\n\nCharacters make stories feel alive. Teach children to create simple characters using three questions: Who are they? What do they want? What stops them? Encourage them to choose someone familiar—a kid, a pet, or even a talking object. They can describe one feeling or one action the character does. This keeps writing easy and fun. Over time, kids learn that character goals and obstacles are the heart of storytelling, helping their stories feel real and full of personality.\n\nFeelings make writing meaningful. Teach children simple emotional words like happy, scared, excited, or worried. Ask them to match a feeling with a moment in their story—how the character feels when a problem appears or when something good happens. Encourage them to use body clues too, like shaking hands or smiling eyes. When kids learn to describe emotions, their stories become clearer and more relatable, building strong emotional awareness and expressive skill.\n\nA story doesn’t need to be long. Teach kids to write short scenes with three parts: something happens, someone reacts, and something changes. They can write just three sentences. For example: “The dog ran away. Mia yelled his name. She followed the paw prints.” Simple scenes help kids understand action and cause-effect without pressure. Practicing small scenes builds strong storytelling habits over time.\n\nTeach children to end stories simply. A good ending answers one question: What changed? Ask your child to finish with a feeling, a decision, or a small moment of learning. For example: “Mia found her dog and felt brave.” Endings do not need to be dramatic—just honest and gentle. This helps kids understand closure and gives their stories a satisfying, complete shape.",
+        "vi": "Mọi bài viết hay đều bắt đầu từ những tia sáng nhỏ. Hãy khuyến khích trẻ chú ý mọi thứ xung quanh—âm thanh, màu sắc, cảm xúc, hoặc điều gì đó vui nhộn mà trẻ nhìn thấy. Hỏi trẻ: “Điều gì sẽ xảy ra nếu…?” hoặc “Hãy tưởng tượng nếu…”, và để ý tưởng tuôn chảy mà không phán xét. Giải thích rằng ý tưởng không cần hoàn hảo; chỉ cần xuất hiện trước. Khi tìm được tia sáng, trẻ có thể viết một câu ngắn hoặc vẽ khoảnh khắc đó. Cách này giúp trẻ tự tin sáng tạo, hiểu rằng mọi câu chuyện đều bắt đầu từ sự tò mò và quan sát đơn giản.\n\nNhân vật giúp câu chuyện trở nên sống động. Hãy dạy trẻ tạo nhân vật đơn giản bằng ba câu hỏi: Họ là ai? Họ muốn gì? Điều gì ngăn họ lại? Trẻ có thể chọn người quen thuộc—một bạn nhỏ, thú cưng, hoặc thậm chí đồ vật biết nói. Khuyến khích trẻ mô tả một cảm xúc hoặc hành động của nhân vật. Cách này giúp việc viết trở nên dễ và vui. Lâu dần, trẻ hiểu rằng mục tiêu và trở ngại của nhân vật là trung tâm của câu chuyện, giúp bài viết chân thật và giàu cá tính.\n\nCảm xúc giúp bài viết trở nên ý nghĩa. Hãy dạy trẻ những từ cảm xúc đơn giản như vui, sợ, háo hức hoặc lo lắng. Yêu cầu trẻ ghép cảm xúc với một khoảnh khắc trong câu chuyện—nhân vật cảm thấy thế nào khi vấn đề xuất hiện hoặc khi điều tốt xảy ra. Khuyến khích trẻ diễn tả bằng dấu hiệu cơ thể, như tay run hoặc mắt cười. Khi trẻ biết mô tả cảm xúc, câu chuyện sẽ rõ ràng và dễ đồng cảm hơn, đồng thời phát triển khả năng nhận thức cảm xúc.\n\nMột câu chuyện không cần dài. Hãy dạy trẻ viết cảnh ngắn với ba phần: điều gì đó xảy ra, ai đó phản ứng, và điều gì đó thay đổi. Trẻ chỉ cần viết ba câu. Ví dụ: “Chó chạy mất. Mia gọi tên nó. Cô bé chạy theo dấu chân.” Cảnh đơn giản giúp trẻ hiểu hành động và quan hệ nguyên nhân–kết quả mà không áp lực. Luyện tập những cảnh nhỏ xây dựng thói quen kể chuyện vững chắc theo thời gian.\n\nHãy dạy trẻ kết thúc câu chuyện thật giản dị. Kết thúc hay trả lời một câu hỏi: Điều gì đã thay đổi? Hướng dẫn trẻ kết thúc bằng một cảm xúc, một quyết định hoặc một điều nhỏ học được. Ví dụ: “Mia tìm thấy chó và cảm thấy dũng cảm hơn.” Kết thúc không cần kịch tính—chỉ cần chân thật và nhẹ nhàng. Cách này giúp trẻ hiểu sự trọn vẹn và tạo hình dạng hoàn chỉnh cho câu chuyện."
+      },
+      "tags": ["all"],
+      "audio": "creative_writing_basics_v1_idea_sparks.mp3 creative_writing_basics_v1_simple_characters.mp3 creative_writing_basics_v1_feelings_words.mp3 creative_writing_basics_v1_short_scenes.mp3 creative_writing_basics_v1_story_endings.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "10-13",
+    "level": "Kids Level 3",
+    "created_at": "2025-11-22T00:00:00+00:00",
+    "updated_at": "2025-11-22T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#DDE7FF"
+  }
+}

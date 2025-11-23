@@ -1,0 +1,89 @@
+{
+  "id": "vocabulary_expansion_kids_l3",
+  "tier": "Kids Level 3 / Trẻ Em Cấp 3",
+  "title": {
+    "en": "Vocabulary Expansion",
+    "vi": "Mở Rộng Từ Vựng"
+  },
+  "content": {
+    "en": "This room helps kids grow a richer English vocabulary for school, friendships, and self-expression. Children learn how to collect new words, connect them to meaning, and use them confidently in real sentences. Parents can support by noticing words together in daily life.",
+    "vi": "Phòng học này giúp trẻ mở rộng vốn từ tiếng Anh phong phú hơn cho học tập, bạn bè và tự thể hiện. Trẻ học cách thu thập từ mới, nối chúng với ý nghĩa và dùng tự tin trong câu thật. Cha mẹ có thể hỗ trợ bằng cách cùng con chú ý từ vựng trong đời sống hằng ngày.",
+    "audio": "vocabulary_expansion_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "word-families",
+      "keywords_en": ["word family", "prefix", "suffix"],
+      "keywords_vi": ["họ từ", "tiền tố", "hậu tố"],
+      "copy": {
+        "en": "Teach kids that many words are related like a family. Start with one base word, such as “help.” Then build a family: helpful, helpless, helper, and helpfully. Show simple prefixes and suffixes that change meaning, like un- (not), re- (again), -ful (full of), and -less (without). Ask your child to make two new words from one base word each day. This skill helps them guess meanings faster and learn vocabulary in groups instead of one by one.",
+        "vi": "Hãy dạy trẻ rằng nhiều từ liên quan với nhau như một “gia đình”. Bắt đầu từ một từ gốc, ví dụ “help”. Rồi tạo họ từ: helpful, helpless, helper, helpfully. Giới thiệu các tiền tố và hậu tố đơn giản làm đổi nghĩa, như un- (không), re- (lại), -ful (đầy), và -less (không có). Mỗi ngày, hãy để con tạo hai từ mới từ một từ gốc. Kỹ năng này giúp trẻ đoán nghĩa nhanh và học theo nhóm thay vì học từng từ rời rạc."
+      },
+      "tags": ["word families", "morphology"],
+      "audio": "vocabulary_expansion_v1_word_families.mp3"
+    },
+    {
+      "slug": "synonyms-antonyms",
+      "keywords_en": ["synonym", "antonym", "choice"],
+      "keywords_vi": ["đồng nghĩa", "trái nghĩa", "lựa chọn"],
+      "copy": {
+        "en": "Help kids level up their words by learning synonyms and antonyms. For example, big can also be huge or giant, and its opposite is small or tiny. Make a quick game: choose one simple word and find two “same-meaning” words and one opposite. Encourage kids to swap a boring word in their writing with a stronger synonym. This makes their speaking and essays more colorful and precise, like choosing better paint for a picture.",
+        "vi": "Giúp trẻ “nâng cấp” từ vựng bằng cách học từ đồng nghĩa và trái nghĩa. Ví dụ, big có thể là huge hoặc giant, và trái nghĩa là small hay tiny. Hãy chơi nhanh: chọn một từ đơn giản, tìm hai từ “cùng nghĩa” và một từ “trái nghĩa”. Khuyến khích trẻ thay một từ hơi “nhạt” trong bài viết bằng một từ đồng nghĩa mạnh hơn. Cách này làm lời nói và bài viết của trẻ sinh động, chính xác hơn như chọn màu đẹp hơn để vẽ tranh."
+      },
+      "tags": ["synonyms", "antonyms"],
+      "audio": "vocabulary_expansion_v1_synonyms_antonyms.mp3"
+    },
+    {
+      "slug": "context-clues",
+      "keywords_en": ["context", "clues", "reading"],
+      "keywords_vi": ["ngữ cảnh", "gợi ý", "đọc hiểu"],
+      "copy": {
+        "en": "Teach kids to guess new words from context instead of stopping to translate. Show them how nearby words give clues. Example: “The desert was arid, so plants were dry and thirsty.” Even if arid is new, dry and thirsty explain it. Ask your child to underline clue words in a sentence and say what they think the new word means. This makes reading smoother and builds independence, especially for school texts.",
+        "vi": "Dạy trẻ đoán nghĩa từ mới nhờ ngữ cảnh thay vì dừng lại để dịch. Chỉ cho con thấy các từ xung quanh cho “gợi ý”. Ví dụ: “The desert was arid, so plants were dry and thirsty.” Dù arid mới, các từ dry và thirsty đã giải thích. Hãy yêu cầu con gạch chân từ gợi ý trong câu và nói thử nghĩa của từ mới. Cách này giúp đọc trôi chảy hơn và tăng tính tự lập, đặc biệt khi học bài ở trường."
+      },
+      "tags": ["context clues", "reading"],
+      "audio": "vocabulary_expansion_v1_context_clues.mp3"
+    },
+    {
+      "slug": "personal-word-bank",
+      "keywords_en": ["word bank", "journal", "memory"],
+      "keywords_vi": ["sổ từ", "nhật ký", "ghi nhớ"],
+      "copy": {
+        "en": "Give your child a “personal word bank.” It can be a small notebook or a notes app. When they meet a new word, they write it, add a simple meaning, and make one sentence. Encourage drawing a tiny symbol next to the word. Review the bank once a week and pick three favorite words to use in conversation. Collecting words like treasures helps kids remember them longer and feel proud of their growing vocabulary.",
+        "vi": "Hãy cho con một “sổ từ cá nhân”. Có thể là quyển sổ nhỏ hoặc ghi chú trên điện thoại. Khi gặp từ mới, con ghi lại, viết nghĩa đơn giản và đặt một câu. Khuyến khích con vẽ một ký hiệu nhỏ bên cạnh từ đó. Mỗi tuần xem lại sổ từ một lần và chọn ba từ thích nhất để dùng khi nói chuyện. Việc gom từ như nhặt kho báu giúp trẻ nhớ lâu và tự hào vì vốn từ của mình đang lớn lên."
+      },
+      "tags": ["word bank", "practice"],
+      "audio": "vocabulary_expansion_v1_word_bank.mp3"
+    },
+    {
+      "slug": "use-words-in-life",
+      "keywords_en": ["practice", "sentences", "life"],
+      "keywords_vi": ["luyện tập", "câu", "đời sống"],
+      "copy": {
+        "en": "New words stick when kids use them in real life. Choose a daily theme, like “weather,” “sports,” or “school.” Pick five words for that theme and challenge your child to use each one in a sentence during the day. Parents can join by modeling one sentence first. Celebrate attempts, not perfection. This gentle daily use turns vocabulary into a living tool, not a test list, and makes conversation feel easier.",
+        "vi": "Từ mới sẽ “dính” khi trẻ dùng trong đời sống thật. Hãy chọn một chủ đề mỗi ngày, như “thời tiết”, “thể thao”, hay “trường học”. Chọn năm từ cho chủ đề đó và thử thách con dùng mỗi từ trong một câu trong ngày. Cha mẹ có thể làm mẫu một câu trước. Hãy khen con vì dám thử, không cần hoàn hảo. Việc dùng từ nhẹ nhàng mỗi ngày biến từ vựng thành công cụ sống, không phải danh sách kiểm tra, và giúp giao tiếp dễ hơn."
+      },
+      "tags": ["daily practice", "sentences"],
+      "audio": "vocabulary_expansion_v1_use_in_life.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all"],
+      "keywords_vi": ["tất cả"],
+      "copy": {
+        "en": "Teach kids that many words are related like a family. Start with one base word, such as “help.” Then build a family: helpful, helpless, helper, and helpfully. Show simple prefixes and suffixes that change meaning, like un- (not), re- (again), -ful (full of), and -less (without). Ask your child to make two new words from one base word each day. This skill helps them guess meanings faster and learn vocabulary in groups instead of one by one.\n\nHelp kids level up their words by learning synonyms and antonyms. For example, big can also be huge or giant, and its opposite is small or tiny. Make a quick game: choose one simple word and find two “same-meaning” words and one opposite. Encourage kids to swap a boring word in their writing with a stronger synonym. This makes their speaking and essays more colorful and precise, like choosing better paint for a picture.\n\nTeach kids to guess new words from context instead of stopping to translate. Show them how nearby words give clues. Example: “The desert was arid, so plants were dry and thirsty.” Even if arid is new, dry and thirsty explain it. Ask your child to underline clue words in a sentence and say what they think the new word means. This makes reading smoother and builds independence, especially for school texts.\n\nGive your child a “personal word bank.” It can be a small notebook or a notes app. When they meet a new word, they write it, add a simple meaning, and make one sentence. Encourage drawing a tiny symbol next to the word. Review the bank once a week and pick three favorite words to use in conversation. Collecting words like treasures helps kids remember them longer and feel proud of their growing vocabulary.\n\nNew words stick when kids use them in real life. Choose a daily theme, like “weather,” “sports,” or “school.” Pick five words for that theme and challenge your child to use each one in a sentence during the day. Parents can join by modeling one sentence first. Celebrate attempts, not perfection. This gentle daily use turns vocabulary into a living tool, not a test list, and makes conversation feel easier.",
+        "vi": "Hãy dạy trẻ rằng nhiều từ liên quan với nhau như một “gia đình”. Bắt đầu từ một từ gốc, ví dụ “help”. Rồi tạo họ từ: helpful, helpless, helper, helpfully. Giới thiệu các tiền tố và hậu tố đơn giản làm đổi nghĩa, như un- (không), re- (lại), -ful (đầy), và -less (không có). Mỗi ngày, hãy để con tạo hai từ mới từ một từ gốc. Kỹ năng này giúp trẻ đoán nghĩa nhanh và học theo nhóm thay vì học từng từ rời rạc.\n\nGiúp trẻ “nâng cấp” từ vựng bằng cách học từ đồng nghĩa và trái nghĩa. Ví dụ, big có thể là huge hoặc giant, và trái nghĩa là small hay tiny. Hãy chơi nhanh: chọn một từ đơn giản, tìm hai từ “cùng nghĩa” và một từ “trái nghĩa”. Khuyến khích trẻ thay một từ hơi “nhạt” trong bài viết bằng một từ đồng nghĩa mạnh hơn. Cách này làm lời nói và bài viết của trẻ sinh động, chính xác hơn như chọn màu đẹp hơn để vẽ tranh.\n\nDạy trẻ đoán nghĩa từ mới nhờ ngữ cảnh thay vì dừng lại để dịch. Chỉ cho con thấy các từ xung quanh cho “gợi ý”. Ví dụ: “The desert was arid, so plants were dry and thirsty.” Dù arid mới, các từ dry và thirsty đã giải thích. Hãy yêu cầu con gạch chân từ gợi ý trong câu và nói thử nghĩa của từ mới. Cách này giúp đọc trôi chảy hơn và tăng tính tự lập, đặc biệt khi học bài ở trường.\n\nHãy cho con một “sổ từ cá nhân”. Có thể là quyển sổ nhỏ hoặc ghi chú trên điện thoại. Khi gặp từ mới, con ghi lại, viết nghĩa đơn giản và đặt một câu. Khuyến khích con vẽ một ký hiệu nhỏ bên cạnh từ đó. Mỗi tuần xem lại sổ từ một lần và chọn ba từ thích nhất để dùng khi nói chuyện. Việc gom từ như nhặt kho báu giúp trẻ nhớ lâu và tự hào vì vốn từ của mình đang lớn lên.\n\nTừ mới sẽ “dính” khi trẻ dùng trong đời sống thật. Hãy chọn một chủ đề mỗi ngày, như “thời tiết”, “thể thao”, hay “trường học”. Chọn năm từ cho chủ đề đó và thử thách con dùng mỗi từ trong một câu trong ngày. Cha mẹ có thể làm mẫu một câu trước. Hãy khen con vì dám thử, không cần hoàn hảo. Việc dùng từ nhẹ nhàng mỗi ngày biến từ vựng thành công cụ sống, không phải danh sách kiểm tra, và giúp giao tiếp dễ hơn."
+      },
+      "tags": ["all"],
+      "audio": "vocabulary_expansion_v1_word_families.mp3 vocabulary_expansion_v1_synonyms_antonyms.mp3 vocabulary_expansion_v1_context_clues.mp3 vocabulary_expansion_v1_word_bank.mp3 vocabulary_expansion_v1_use_in_life.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "10-13",
+    "level": "Kids Level 3",
+    "created_at": "2025-11-23T00:00:00+00:00",
+    "updated_at": "2025-11-23T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#E8FFD8"
+  }
+}
