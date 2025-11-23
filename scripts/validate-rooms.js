@@ -99,6 +99,28 @@ async function validateRooms(targetTier = null) {
       return `${baseName}_${tierSuffix}.json`;
     };
 
+    const FILE_PATH_OVERRIDES = {
+      "weight-loss-&-fitness": "Weight_Loss_And_Fitness_vip3.json",
+      "strategy-in-life---mastery-&-legacy": "Strategy_In_Life_Mastery_Legacy_vip3.json",
+      "legacy-long-term-peace-vip3-6-finance": "Legacy_&_Long_Term_Peace_vip3_6_finance.json",
+      "quiet-growth-simple-investing-vip3.3.finance": "Quiet_Growth_Simple Investing_vip3.3.finance.json",
+      "mercy-blade-method-of--learning-english": "Mercy_Blade_Method_Of_ Learning_English.json",
+      "growing-bigger-when-ready-vip3-5-fiance": "Growing_Bigger_When_Ready_vip3_5_fiance.json",
+      "diverse-desires-belonging-vip3-sub5-sex": "Diverse_Desires_&_Belonging_vip3_sub5_sex.json",
+      "relational-intelligence-erotic-communication-vip3-sub2-sex":
+        "Relational_Intelligence_&_Erotic_Communication_vip3_sub2_sex.json",
+      "sexuality-curiosity-culture-vip3": "Sexuality & Curiosity & Culture_vip3.json",
+      "sexuality-curiosity-culture": "Sexuality & Curiosity & Culture_vip3.json",
+      "sexuality_culture_vip3": "Sexuality & Curiosity & Culture_vip3.json",
+      "strategy-in-life--advanced-tactics-ii-vip3": "Strategy_in_Life_ Advanced_Tactics_II_vip3.json",
+      "strategy_life_foundations_vip3": "Strategy_In_Life_1_vip3.json",
+      "strategy_life_advanced_tactics_vip3": "Strategy_In_Life_2_vip3.json",
+      "strategy_life_advanced_tactics_ii_vip3": "Strategy_in_Life_Advanced_Tactics_II_vip3.json",
+      "english-writing-deepdive-part5-vip3ii": "english-writing-deepdive-part5-vip3-ii.json",
+      "english-writing-deepdive-part8-vip3ii": "english-writing-deepdive-part8-vip3-ii.json",
+      "English-Writing-Mastery-vip3": "English-Writing-Mastery-vip3.json",
+    };
+
     // Group rooms by tier
     const roomsByTier = rooms.reduce((acc, room) => {
       const tier = TIER_NAMES[room.tier] || room.tier;
@@ -106,23 +128,17 @@ async function validateRooms(targetTier = null) {
       acc[tier].push(room);
       return acc;
     }, {});
-
-    let totalRooms = 0;
-    let totalEntries = 0;
-    const issues = [];
-
-    for (const [tier, tierRooms] of Object.entries(roomsByTier).sort()) {
-      console.log(`${colors.magenta}▶ ${tier} Tier${colors.reset}`);
-      console.log(`  ${colors.green}✓${colors.reset} ${tierRooms.length} rooms found`);
-
-      for (const room of tierRooms) {
-        totalRooms++;
-        
-        // Generate expected JSON filename patterns
-        const possibleFilenames = [
-          `${room.id}.json`,
-          `${room.id.replace(/-/g, '_')}.json`,
-        ];
+...
+        for (const room of tierRooms) {
+          totalRooms++;
+          
+          // Generate expected JSON filename patterns
+          const overrideFilename = FILE_PATH_OVERRIDES[room.id];
+          const possibleFilenames = [
+            ...(overrideFilename ? [overrideFilename] : []),
+            `${room.id}.json`,
+            `${room.id.replace(/-/g, '_')}.json`,
+          ];
 
         let jsonFound = false;
         let jsonPath = '';

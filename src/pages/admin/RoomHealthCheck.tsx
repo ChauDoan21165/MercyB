@@ -78,10 +78,40 @@ export default function RoomHealthCheck() {
       const issues: RoomIssue[] = [];
       let healthyCount = 0;
 
+      const MANIFEST_KEY_OVERRIDES: Record<string, string> = {
+        "weight-loss-&-fitness": "weight-loss-and-fitness-vip3",
+        "strategy-in-life---mastery-&-legacy": "strategy-in-life-mastery-legacy-vip3",
+        "legacy-long-term-peace-vip3-6-finance": "legacy-&-long-term-peace-vip3-6-finance",
+        "quiet-growth-simple-investing-vip3.3.finance": "quiet-growth-simple-investing-vip3-3-finance",
+        "growing-bigger-when-ready-vip3-5-fiance": "growing-bigger-when-ready-vip3-5-finance",
+        "diverse-desires-belonging-vip3-sub5-sex": "diverse-desires-&-belonging-vip3-sub5-sex",
+        "relational-intelligence-erotic-communication-vip3-sub2-sex":
+          "relational-intelligence-&-erotic-communication-vip3-sub2-sex",
+        "sexuality-curiosity-culture-vip3": "sexuality-&-curiosity-&-culture-vip3",
+        "sexuality-curiosity-culture": "sexuality-&-curiosity-&-culture-vip3",
+        "sexuality_culture_vip3": "sexuality-&-curiosity-&-culture-vip3",
+        "strategy_life_foundations_vip3": "strategy-in-life-1-vip3",
+        "strategy_life_advanced_tactics_vip3": "strategy-in-life-2-vip3",
+        "strategy_life_advanced_tactics_ii_vip3": "strategy-in-life-advanced-tactics-ii-vip3",
+        "english-writing-deepdive-part5-vip3ii": "english-writing-deepdive-part5-vip3-ii",
+        "english-writing-deepdive-part8-vip3ii": "english-writing-deepdive-part8-vip3-ii",
+        "English-Writing-Mastery-vip3": "english-writing-mastery-vip3",
+        "strategy-in-life--advanced-tactics-ii-vip3": "strategy-in-life-advanced-tactics-ii-vip3",
+      };
+
+      const FILE_PATH_OVERRIDES: Record<string, string> = {
+        "mercy-blade-method-of--learning-english": "data/Mercy_Blade_Method_Of_ Learning_English.json",
+      };
+
       for (const room of rooms || []) {
         const roomIssues: RoomIssue[] = [];
 
         // Check if JSON file exists and is valid
+        const manifestKeyOverride = MANIFEST_KEY_OVERRIDES[room.id];
+        const manifestPathOverride = manifestKeyOverride
+          ? PUBLIC_ROOM_MANIFEST[manifestKeyOverride]
+          : undefined;
+
         const manifestPathById = PUBLIC_ROOM_MANIFEST[room.id];
         const manifestKeyWithTier = room.tier
           ? `${room.id}-${String(room.tier).toLowerCase()}`
@@ -91,18 +121,38 @@ export default function RoomHealthCheck() {
           : undefined;
 
         const manifestCandidates: { url: string; key: string; path: string }[] = [];
-        if (manifestPathById) {
+
+        if (manifestPathOverride) {
+          manifestCandidates.push({
+            url: `/${manifestPathOverride}`,
+            key: manifestKeyOverride!,
+            path: manifestPathOverride,
+          });
+        }
+
+        if (manifestPathById && manifestPathById !== manifestPathOverride) {
           manifestCandidates.push({
             url: `/${manifestPathById}`,
             key: room.id,
             path: manifestPathById,
           });
         }
-        if (manifestPathByTier && manifestPathByTier !== manifestPathById) {
+
+        if (manifestPathByTier && manifestPathByTier !== manifestPathById && manifestPathByTier !== manifestPathOverride) {
           manifestCandidates.push({
             url: `/${manifestPathByTier}`,
             key: manifestKeyWithTier!,
             path: manifestPathByTier,
+          });
+        }
+
+        const fileOverridePath = FILE_PATH_OVERRIDES[room.id];
+
+        if (fileOverridePath) {
+          manifestCandidates.push({
+            url: `/${fileOverridePath}`,
+            key: "fallback",
+            path: fileOverridePath,
           });
         }
 
