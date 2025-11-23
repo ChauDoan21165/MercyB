@@ -1,0 +1,52 @@
+{
+  "name": {
+    "en": "Travel & Transport",
+    "vi": "Du lịch & Phương tiện"
+  },
+  "description": {
+    "en": "Explore different ways to travel and transportation",
+    "vi": "Khám phá các cách di chuyển và phương tiện giao thông"
+  },
+  "entries": [
+    {
+      "slug": "car-bus",
+      "copy": {
+        "en": "Cars and buses take us to many places. We wear seatbelts to stay safe.",
+        "vi": "Ô tô và xe buýt đưa chúng ta đến nhiều nơi. Chúng ta thắt dây an toàn để an toàn."
+      },
+      "audio": null
+    },
+    {
+      "slug": "train-airplane",
+      "copy": {
+        "en": "Trains travel on tracks. Airplanes fly high in the sky to faraway places.",
+        "vi": "Tàu hỏa chạy trên đường ray. Máy bay bay cao trên trời đến nơi xa."
+      },
+      "audio": null
+    },
+    {
+      "slug": "bicycle-walking",
+      "copy": {
+        "en": "Riding a bicycle is fun and healthy. Walking is a good way to explore nearby.",
+        "vi": "Đi xe đạp vui và khỏe mạnh. Đi bộ là cách tốt để khám phá gần."
+      },
+      "audio": null
+    },
+    {
+      "slug": "boat-ship",
+      "copy": {
+        "en": "Boats travel on rivers and lakes. Big ships cross the ocean to other countries.",
+        "vi": "Thuyền đi trên sông và hồ. Tàu lớn vượt đại dương đến nước khác."
+      },
+      "audio": null
+    },
+    {
+      "slug": "traffic-safety",
+      "copy": {
+        "en": "Red light means stop. Green light means go. Always look both ways before crossing.",
+        "vi": "Đèn đỏ có nghĩa là dừng. Đèn xanh có nghĩa là đi. Luôn nhìn cả hai bên trước khi qua."
+      },
+      "audio": null
+    }
+  ]
+}

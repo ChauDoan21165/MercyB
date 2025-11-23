@@ -1,0 +1,52 @@
+{
+  "name": {
+    "en": "Creativity Challenges",
+    "vi": "Thử thách Sáng tạo"
+  },
+  "description": {
+    "en": "Fun creative activities and challenges to spark imagination",
+    "vi": "Hoạt động sáng tạo vui và thử thách để kích thích trí tưởng tượng"
+  },
+  "entries": [
+    {
+      "slug": "drawing-ideas",
+      "copy": {
+        "en": "Draw what you imagine. There are no wrong answers in art. Be creative!",
+        "vi": "Vẽ những gì bạn tưởng tượng. Không có câu trả lời sai trong nghệ thuật. Hãy sáng tạo!"
+      },
+      "audio": null
+    },
+    {
+      "slug": "building-creating",
+      "copy": {
+        "en": "Build something new with blocks or boxes. What can you create today?",
+        "vi": "Xây dựng thứ gì đó mới với khối hoặc hộp. Bạn có thể tạo gì hôm nay?"
+      },
+      "audio": null
+    },
+    {
+      "slug": "music-rhythm",
+      "copy": {
+        "en": "Make music with everyday objects. Tap, shake, and create your own rhythm.",
+        "vi": "Tạo nhạc với đồ vật hàng ngày. Gõ, lắc và tạo nhịp điệu riêng của bạn."
+      },
+      "audio": null
+    },
+    {
+      "slug": "pretend-play",
+      "copy": {
+        "en": "Pretend to be someone else. Use your imagination to explore new roles.",
+        "vi": "Giả vờ là người khác. Dùng trí tưởng tượng để khám phá vai trò mới."
+      },
+      "audio": null
+    },
+    {
+      "slug": "invention-ideas",
+      "copy": {
+        "en": "Invent something that would help people. Draw your invention and explain it.",
+        "vi": "Phát minh thứ gì đó sẽ giúp mọi người. Vẽ phát minh của bạn và giải thích."
+      },
+      "audio": null
+    }
+  ]
+}

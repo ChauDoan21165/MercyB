@@ -1,0 +1,52 @@
+{
+  "name": {
+    "en": "Feelings & Social Skills",
+    "vi": "Cảm xúc & Kỹ năng Xã hội"
+  },
+  "description": {
+    "en": "Learn to express feelings and develop social skills",
+    "vi": "Học cách thể hiện cảm xúc và phát triển kỹ năng xã hội"
+  },
+  "entries": [
+    {
+      "slug": "happy-sad",
+      "copy": {
+        "en": "I feel happy when I play with friends. I feel sad when I say goodbye.",
+        "vi": "Tôi cảm thấy vui khi chơi với bạn bè. Tôi cảm thấy buồn khi tạm biệt."
+      },
+      "audio": null
+    },
+    {
+      "slug": "excited-worried",
+      "copy": {
+        "en": "I feel excited about my birthday. Sometimes I feel worried about new things.",
+        "vi": "Tôi cảm thấy phấn khích về sinh nhật. Đôi khi tôi lo lắng về những điều mới."
+      },
+      "audio": null
+    },
+    {
+      "slug": "sharing-caring",
+      "copy": {
+        "en": "Sharing toys makes friends happy. Being kind shows you care about others.",
+        "vi": "Chia sẻ đồ chơi làm bạn bè vui. Tử tế cho thấy bạn quan tâm người khác."
+      },
+      "audio": null
+    },
+    {
+      "slug": "listening-helping",
+      "copy": {
+        "en": "Good friends listen to each other. Helping others makes everyone feel good.",
+        "vi": "Bạn tốt lắng nghe nhau. Giúp đỡ người khác làm mọi người cảm thấy tốt."
+      },
+      "audio": null
+    },
+    {
+      "slug": "saying-sorry",
+      "copy": {
+        "en": "When we make mistakes, we say sorry. It's okay to ask for forgiveness.",
+        "vi": "Khi chúng ta mắc lỗi, chúng ta xin lỗi. Không sao khi xin được tha thứ."
+      },
+      "audio": null
+    }
+  ]
+}

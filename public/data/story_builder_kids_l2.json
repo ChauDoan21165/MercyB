@@ -1,0 +1,52 @@
+{
+  "name": {
+    "en": "Story Builder",
+    "vi": "Xây dựng Câu chuyện"
+  },
+  "description": {
+    "en": "Learn to create and tell your own stories",
+    "vi": "Học cách tạo và kể câu chuyện của riêng bạn"
+  },
+  "entries": [
+    {
+      "slug": "beginning-middle-end",
+      "copy": {
+        "en": "Every story has a beginning, middle, and end. First, then, finally.",
+        "vi": "Mỗi câu chuyện có đầu, giữa và cuối. Đầu tiên, sau đó, cuối cùng."
+      },
+      "audio": null
+    },
+    {
+      "slug": "characters-setting",
+      "copy": {
+        "en": "Stories have characters and a setting. Who is in the story? Where does it happen?",
+        "vi": "Câu chuyện có nhân vật và bối cảnh. Ai trong câu chuyện? Nó xảy ra ở đâu?"
+      },
+      "audio": null
+    },
+    {
+      "slug": "problem-solution",
+      "copy": {
+        "en": "The character faces a problem. Then they find a solution to solve it.",
+        "vi": "Nhân vật đối mặt với vấn đề. Sau đó họ tìm giải pháp để giải quyết."
+      },
+      "audio": null
+    },
+    {
+      "slug": "describing-words",
+      "copy": {
+        "en": "Use describing words to make your story interesting. Big, small, happy, scary.",
+        "vi": "Dùng từ mô tả để làm câu chuyện thú vị. To, nhỏ, vui, đáng sợ."
+      },
+      "audio": null
+    },
+    {
+      "slug": "telling-stories",
+      "copy": {
+        "en": "Tell your story with expression. Use your voice and face to show feelings.",
+        "vi": "Kể câu chuyện với biểu cảm. Dùng giọng và mặt để thể hiện cảm xúc."
+      },
+      "audio": null
+    }
+  ]
+}

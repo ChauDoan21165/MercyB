@@ -202,7 +202,79 @@ export default function KidsRoomHealthCheck() {
       const response = await fetch(`/data/${jsonFileName}`);
       
       if (!response.ok) {
-        throw new Error(`JSON file not found: /data/${jsonFileName}. Please ensure the file exists and the mapping for "${roomId}" is correct.`);
+        // Auto-create missing JSON file by generating a basic structure
+        console.log(`Creating placeholder JSON for missing file: ${jsonFileName}`);
+        
+        // Create a basic room structure
+        const placeholderData = {
+          name: { en: roomId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '), vi: roomId },
+          description: { en: `Content for ${roomId}`, vi: `Nội dung cho ${roomId}` },
+          entries: [
+            {
+              slug: "entry-1",
+              copy: { 
+                en: `Welcome to ${roomId}! This is placeholder content.`, 
+                vi: `Chào mừng đến ${roomId}! Đây là nội dung giữ chỗ.` 
+              },
+              audio: null
+            }
+          ]
+        };
+        
+        toast({
+          title: "⚠️ JSON file missing",
+          description: `Creating placeholder structure. Please update /data/${jsonFileName} with proper content.`,
+          variant: "destructive"
+        });
+        
+        // Use placeholder data to populate DB
+        const roomData = placeholderData;
+        
+        // Prepare entries for insertion
+        const entries = roomData.entries.map((entry: any, index: number) => {
+          let contentEn = '';
+          let contentVi = '';
+          
+          if (entry.copy) {
+            contentEn = entry.copy.en || '';
+            contentVi = entry.copy.vi || '';
+          } else if (entry.content) {
+            contentEn = entry.content.en || '';
+            contentVi = entry.content.vi || '';
+          }
+          
+          let audioUrl = entry.audio || entry.audio_url || null;
+          if (audioUrl && !audioUrl.startsWith('http') && !audioUrl.startsWith('/')) {
+            audioUrl = `/${audioUrl}`;
+          }
+          
+          return {
+            id: `${roomId}-${index + 1}`,
+            room_id: roomId,
+            content_en: contentEn,
+            content_vi: contentVi,
+            audio_url: audioUrl,
+            display_order: index + 1,
+            is_active: true
+          };
+        });
+
+        // Insert entries
+        const { error } = await supabase
+          .from('kids_entries')
+          .insert(entries);
+
+        if (error) throw error;
+
+        toast({
+          title: "⚠️ Room fixed with placeholder",
+          description: `Inserted ${entries.length} entries. Update the JSON file with proper content.`,
+        });
+
+        // Refresh the room list
+        await checkRooms();
+        setFixing(null);
+        return;
       }
 
       const roomData = await response.json();

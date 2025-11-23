@@ -1,0 +1,52 @@
+{
+  "name": {
+    "en": "Little Scientist Words",
+    "vi": "Từ vựng Nhà khoa học nhỏ"
+  },
+  "description": {
+    "en": "Learn science words and explore how things work",
+    "vi": "Học từ khoa học và khám phá cách mọi thứ hoạt động"
+  },
+  "entries": [
+    {
+      "slug": "experiment-observe",
+      "copy": {
+        "en": "Scientists do experiments to learn. We observe carefully and ask questions.",
+        "vi": "Nhà khoa học làm thí nghiệm để học. Chúng ta quan sát cẩn thận và đặt câu hỏi."
+      },
+      "audio": null
+    },
+    {
+      "slug": "plants-grow",
+      "copy": {
+        "en": "Plants need water, sunlight, and soil to grow. Seeds become flowers and trees.",
+        "vi": "Cây cần nước, ánh sáng mặt trời và đất để phát triển. Hạt giống trở thành hoa và cây."
+      },
+      "audio": null
+    },
+    {
+      "slug": "magnets-attract",
+      "copy": {
+        "en": "Magnets attract metal objects. They have north and south poles.",
+        "vi": "Nam châm hút các vật bằng kim loại. Chúng có cực Bắc và cực Nam."
+      },
+      "audio": null
+    },
+    {
+      "slug": "water-states",
+      "copy": {
+        "en": "Water can be ice, liquid, or steam. Temperature changes water's form.",
+        "vi": "Nước có thể là đá, chất lỏng hoặc hơi nước. Nhiệt độ thay đổi hình dạng nước."
+      },
+      "audio": null
+    },
+    {
+      "slug": "animals-habitats",
+      "copy": {
+        "en": "Animals live in different habitats. Fish live in water, birds in trees.",
+        "vi": "Động vật sống ở môi trường khác nhau. Cá sống trong nước, chim trên cây."
+      },
+      "audio": null
+    }
+  ]
+}
