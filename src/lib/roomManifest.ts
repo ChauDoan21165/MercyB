@@ -202,7 +202,8 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "vip6-self-worth-distortions": "data/vip6_self_worth_distortions.json",
   "vip6-shadow-envy": "data/vip6_shadow_envy.json",
   "vip6-shadow-in-love": "data/vip6_shadow_in_love.json",
-  "vip6-shadow-perfectionism": "data/vip6_shadow_perfectionism.json"
+  "vip6-shadow-perfectionism": "data/vip6_shadow_perfectionism.json",
+  "strategic_foundations_vip9": "data/Strategic_Foundations_vip9.json"
 };
 
 /**
@@ -212,7 +213,7 @@ export function getRoomBaseNames(): string[] {
   const baseNames = new Set<string>();
   
   for (const roomId of Object.keys(PUBLIC_ROOM_MANIFEST)) {
-    const baseName = roomId.replace(/-(free|vip1|vip2|vip3|vip3-ii|vip4|vip5|vip6)$/, '');
+    const baseName = roomId.replace(/-(free|vip1|vip2|vip3|vip3-ii|vip4|vip5|vip6|vip9)$/, '');
     baseNames.add(baseName);
   }
   
@@ -225,7 +226,7 @@ export function getRoomBaseNames(): string[] {
 export function getAvailableTiers(roomBaseName: string): string[] {
   const tiers: string[] = [];
   
-  for (const tier of ['free', 'vip1', 'vip2', 'vip3', 'vip3_ii', 'vip4', 'vip5', 'vip6']) {
+  for (const tier of ['free', 'vip1', 'vip2', 'vip3', 'vip3_ii', 'vip4', 'vip5', 'vip6', 'vip9']) {
     const roomId = `${roomBaseName}-${tier.replace('_', '-')}`;
     if (PUBLIC_ROOM_MANIFEST[roomId]) {
       tiers.push(tier);
