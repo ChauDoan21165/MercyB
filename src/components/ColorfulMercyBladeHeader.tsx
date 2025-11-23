@@ -209,6 +209,17 @@ export const ColorfulMercyBladeHeader = ({
                   </div>
                 </DropdownMenuItem>
 
+                <DropdownMenuItem 
+                  onClick={() => navigate('/rooms-vip9')}
+                  className="cursor-pointer hover:bg-gradient-to-r hover:from-amber-50 hover:to-orange-50 dark:hover:from-amber-900 dark:hover:to-orange-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                >
+                  <Crown className="mr-2 h-4 w-4 text-amber-600 transition-transform duration-200 group-hover:scale-110" />
+                  <div className="flex flex-col">
+                    <span className="font-semibold">VIP9 Strategic Mastery <span className="text-[10px] text-muted-foreground">$150</span></span>
+                    <span className="text-xs text-muted-foreground">Individual, Corporate & National</span>
+                  </div>
+                </DropdownMenuItem>
+
                 <DropdownMenuSeparator />
 
                 <DropdownMenuItem 
