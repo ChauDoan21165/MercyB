@@ -54,6 +54,10 @@ export default function KidsRoomValidation() {
     toast.info("Starting JSON repair process...");
 
     try {
+      // Fetch all kids_l1 files dynamically from the server
+      const allFilesResponse = await fetch('/data/');
+      
+      // Since we can't list directory contents directly, use known file patterns
       const filesToRepair = [
         'size_comparison_kids_l1.json',
         'first_action_verbs_kids_l1.json',
@@ -136,8 +140,8 @@ export default function KidsRoomValidation() {
 
         for (const room of rooms || []) {
           try {
-            // Try to fetch the JSON file
-            const response = await fetch(`/data/kids/${room.id}.json`);
+            // Try to fetch the JSON file - files are in /data/ with pattern: {room_id}.json
+            const response = await fetch(`/data/${room.id}.json`);
             
             if (response.ok) {
               const jsonData = await response.json();
