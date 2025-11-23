@@ -1,0 +1,89 @@
+{
+  "id": "problem_solving_english_kids_l3",
+  "tier": "Kids Level 3 / Trẻ Em Cấp 3",
+  "title": {
+    "en": "Problem-Solving English",
+    "vi": "Tiếng Anh Giải Quyết Vấn Đề"
+  },
+  "content": {
+    "en": "This room teaches children simple English language patterns used to solve problems. Kids learn to describe a problem, suggest ideas, choose solutions, and check results. Parents can guide the process by asking gentle questions and encouraging flexible thinking.",
+    "vi": "Phòng học này dạy trẻ những mẫu câu tiếng Anh đơn giản để giải quyết vấn đề. Trẻ học cách mô tả vấn đề, đề xuất ý tưởng, chọn giải pháp và kiểm tra kết quả. Cha mẹ có thể hỗ trợ bằng cách đặt câu hỏi gợi mở và khuyến khích tư duy linh hoạt.",
+    "audio": "problem_solving_english_v1_intro.mp3"
+  },
+  "entries": [
+    {
+      "slug": "describe-the-problem",
+      "keywords_en": ["problem", "describe", "situation"],
+      "keywords_vi": ["vấn đề", "mô tả", "tình huống"],
+      "copy": {
+        "en": "Teach kids to describe the problem clearly using simple phrases like “Something is wrong,” “I can’t find it,” or “This doesn’t work.” Encourage them to explain what happened in one short sentence. Describing the problem helps children stay calm and understand what they need before trying to solve it.",
+        "vi": "Hãy dạy trẻ mô tả vấn đề rõ ràng bằng các câu đơn giản như “Something is wrong,” “I can’t find it,” hoặc “This doesn’t work.” Khuyến khích trẻ giải thích điều xảy ra trong một câu ngắn. Mô tả vấn đề giúp trẻ bình tĩnh và hiểu mình cần gì trước khi bắt đầu giải quyết."
+      },
+      "tags": ["problem"],
+      "audio": "problem_solving_english_v1_describe_the_problem.mp3"
+    },
+    {
+      "slug": "suggest-ideas",
+      "keywords_en": ["ideas", "suggest", "solutions"],
+      "keywords_vi": ["ý tưởng", "gợi ý", "giải pháp"],
+      "copy": {
+        "en": "Teach children to suggest simple ideas using phrases like “Maybe we can…,” “What if we try…,” or “I have an idea.” Encourage them to think of more than one possibility. Suggesting ideas helps kids think creatively and not get stuck on only one option.",
+        "vi": "Hãy dạy trẻ gợi ý ý tưởng bằng các câu như “Maybe we can…,” “What if we try…,” hoặc “I have an idea.” Khuyến khích trẻ nghĩ ra nhiều khả năng. Đề xuất ý tưởng giúp trẻ sáng tạo và không bị mắc kẹt với chỉ một lựa chọn."
+      },
+      "tags": ["ideas"],
+      "audio": "problem_solving_english_v1_suggest_ideas.mp3"
+    },
+    {
+      "slug": "choose-a-solution",
+      "keywords_en": ["choose", "solution", "decision"],
+      "keywords_vi": ["chọn", "giải pháp", "quyết định"],
+      "copy": {
+        "en": "Teach kids to choose a solution by comparing options. Use questions like “Which one is easier?” or “Which one is safer?” Help them pick one idea and try it first. Choosing a solution teaches decision-making and helps kids understand that trying is better than waiting.",
+        "vi": "Hãy dạy trẻ chọn giải pháp bằng cách so sánh các lựa chọn. Sử dụng câu hỏi như “Which one is easier?” hoặc “Which one is safer?” Hướng dẫn trẻ chọn một ý tưởng và thử trước. Việc chọn giải pháp giúp trẻ rèn luyện kỹ năng quyết định và hiểu rằng thử nghiệm tốt hơn là chần chừ."
+      },
+      "tags": ["solution"],
+      "audio": "problem_solving_english_v1_choose_a_solution.mp3"
+    },
+    {
+      "slug": "try-and-adjust",
+      "keywords_en": ["try", "adjust", "improve"],
+      "keywords_vi": ["thử", "điều chỉnh", "cải thiện"],
+      "copy": {
+        "en": "Teach kids to try their idea and adjust if needed. Use phrases like “Let’s try it,” “It almost worked,” or “Let’s change this part.” Trying and adjusting helps children learn that mistakes are normal and that improvement is part of solving problems.",
+        "vi": "Hãy dạy trẻ thử ý tưởng và điều chỉnh nếu cần. Sử dụng câu như “Let’s try it,” “It almost worked,” hoặc “Let’s change this part.” Thử và điều chỉnh giúp trẻ hiểu rằng sai sót là bình thường và cải thiện là một phần của việc giải quyết vấn đề."
+      },
+      "tags": ["adjust"],
+      "audio": "problem_solving_english_v1_try_and_adjust.mp3"
+    },
+    {
+      "slug": "check-the-result",
+      "keywords_en": ["check", "result", "review"],
+      "keywords_vi": ["kiểm tra", "kết quả", "xem lại"],
+      "copy": {
+        "en": "Teach children to check the result by asking simple questions like “Did it work?” or “Do we need another idea?” Checking results helps kids reflect on their actions and learn from both success and failure.",
+        "vi": "Hãy dạy trẻ kiểm tra kết quả bằng cách hỏi những câu đơn giản như “Did it work?” hoặc “Do we need another idea?” Việc kiểm tra kết quả giúp trẻ suy ngẫm về hành động của mình và học từ cả thành công lẫn thất bại."
+      },
+      "tags": ["check"],
+      "audio": "problem_solving_english_v1_check_the_result.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all"],
+      "keywords_vi": ["tất cả"],
+      "copy": {
+        "en": "Teach kids to describe the problem clearly using simple phrases like “Something is wrong,” “I can’t find it,” or “This doesn’t work.” Encouraging them to explain what happened in one short sentence helps them stay calm and understand what they need.\n\nTeach children to suggest simple ideas using phrases like “Maybe we can…,” “What if we try…,” or “I have an idea.” Suggesting more than one possibility helps kids think creatively.\n\nTeach kids to choose a solution by comparing options with questions like “Which one is easier?” or “Which one is safer?” Choosing one idea and trying it builds decision-making skills.\n\nTeach kids to try their idea and adjust if needed using phrases such as “Let’s try it,” “It almost worked,” or “Let’s change this part.” Trying and adjusting teaches resilience.\n\nTeach children to check the result by asking “Did it work?” or “Do we need another idea?” Checking results helps kids reflect and learn from every attempt.",
+        "vi": "Hãy dạy trẻ mô tả vấn đề bằng những câu như “Something is wrong,” hoặc “I can’t find it.” Việc mô tả rõ ràng giúp trẻ bình tĩnh và hiểu mình cần gì.\n\nDạy trẻ gợi ý ý tưởng qua các câu như “Maybe we can…” hoặc “What if we try…” để trẻ suy nghĩ sáng tạo.\n\nHãy dạy trẻ chọn giải pháp bằng cách so sánh các lựa chọn, ví dụ “Which one is safer?” rồi thử một ý tưởng đầu tiên.\n\nDạy trẻ thử và điều chỉnh khi cần với các câu như “It almost worked” hoặc “Let’s change this part.” Điều này giúp trẻ hiểu rằng cải thiện là bình thường.\n\nHãy dạy trẻ kiểm tra kết quả bằng câu như “Did it work?” hoặc “Do we need another idea?” để trẻ biết suy ngẫm và rút kinh nghiệm."
+      },
+      "tags": ["all"],
+      "audio": "problem_solving_english_v1_describe_the_problem.mp3 problem_solving_english_v1_suggest_ideas.mp3 problem_solving_english_v1_choose_a_solution.mp3 problem_solving_english_v1_try_and_adjust.mp3 problem_solving_english_v1_check_the_result.mp3"
+    }
+  ],
+  "meta": {
+    "age_range": "10-13",
+    "level": "Kids Level 3",
+    "created_at": "2025-11-23T00:00:00+00:00",
+    "updated_at": "2025-11-23T00:00:00+00:00",
+    "entry_count": 6,
+    "room_color": "#FFF7E2"
+  }
+}
