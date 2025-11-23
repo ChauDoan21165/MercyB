@@ -207,7 +207,9 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "leverage-thinking-vip9": "data/Leverage_Thinking_vip9.json",
   "strategic-long-horizon-vip9": "data/strategic_long_horizon_vip9.json",
   "strategic-deep-work-vip9": "data/strategic_deep_work_vip9.json",
-  "strategic-risk-calibration-vip9": "data/strategic_risk_calibration_vip9.json"
+  "strategic-risk-calibration-vip9": "data/strategic_risk_calibration_vip9.json",
+  "strategic-self-governance-vip9": "data/strategic_self_governance_vip9.json",
+  "strategic-signal-detection-vip9": "data/strategic_signal_detection_vip9.json"
 };
 
 /**
