@@ -23,7 +23,7 @@ interface DomainSection {
 const RoomsVIP9 = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { hasAccess, tier } = useUserAccess('vip9');
+  const { canAccessVIP9, loading: accessLoading } = useUserAccess();
   const [domains, setDomains] = useState<DomainSection[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -85,7 +85,7 @@ const RoomsVIP9 = () => {
   }, [toast]);
 
   const handleRoomClick = (roomId: string) => {
-    if (!hasAccess) {
+    if (!canAccessVIP9) {
       toast({
         title: 'VIP9 Access Required',
         description: 'Upgrade to VIP9 to access Strategic Mastery rooms',
@@ -94,10 +94,10 @@ const RoomsVIP9 = () => {
       navigate('/subscribe');
       return;
     }
-    navigate(`/room/${roomId}`);
+    navigate(`/chat/${roomId}`);
   };
 
-  if (loading) {
+  if (loading || accessLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center space-y-3">
@@ -155,7 +155,7 @@ const RoomsVIP9 = () => {
             </div>
           </div>
           
-          {!hasAccess && (
+          {!canAccessVIP9 && (
             <div className="pt-6">
               <Button 
                 size="lg"
@@ -200,7 +200,7 @@ const RoomsVIP9 = () => {
                           {room.title_vi}
                         </p>
                       </div>
-                      {hasAccess ? (
+                      {canAccessVIP9 ? (
                         <Unlock className="h-5 w-5 text-slate-400 group-hover:text-white flex-shrink-0 transition-colors" />
                       ) : (
                         <Lock className="h-5 w-5 text-slate-600 flex-shrink-0" />
@@ -217,7 +217,7 @@ const RoomsVIP9 = () => {
         })}
 
         {/* Footer CTA */}
-        {!hasAccess && (
+        {!canAccessVIP9 && (
           <div className="text-center space-y-6 py-16 border-t border-slate-800">
             <h3 className="text-3xl font-bold text-white">
               Elevate Your Strategic Capability
