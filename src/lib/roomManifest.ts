@@ -172,6 +172,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "writing-logic-vip3-ii": "data/writing-logic-vip3ii.json",
   "writing-deepdive-part12-vip3-ii": "data/writing-deepdive-part12-vip3-ii.json",
   "writing-vip3ii-part14": "data/writing-vip3ii-part14.json",
+  "individual-strategic-mastery-vip9": "data/Individual_Strategic_Mastery_vip9.json",
   "vip6-shadow-self": "data/vip6_shadow_self.json",
   "vip6-projection-triggers": "data/vip6_projection_triggers.json",
   "vip6-emotional-blindspots": "data/vip6_emotional_blindspots.json",
