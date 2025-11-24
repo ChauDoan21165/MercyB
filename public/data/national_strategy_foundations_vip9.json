@@ -1,0 +1,103 @@
+{
+  "id": "national_strategy_foundations_vip9",
+  "tier": "VIP9 / Cấp VIP9",
+  "domain": "National",
+  "title": {
+    "en": "National Strategy Foundations",
+    "vi": "Nền Tảng Chiến Lược Quốc Gia"
+  },
+  "content": {
+    "en": "This room establishes the foundational pillars of national strategy—how nations define long-term direction, mobilize resources, manage geopolitical realities, and build institutional strength. You will learn national power frameworks, strategic doctrine, policy architecture, governance capability, and the long-cycle thinking required for stability and prosperity. Strong national strategy aligns ambition with capability, resilience with growth, and identity with global positioning. It is the blueprint through which countries navigate uncertainty, secure advantage, and shape their future.",
+    "vi": "Phòng này đặt nền tảng cho chiến lược quốc gia—cách các quốc gia xác định định hướng dài hạn, huy động nguồn lực, xử lý thực tế địa chính trị và xây dựng sức mạnh thể chế. Bạn sẽ học khung quyền lực quốc gia, học thuyết chiến lược, kiến trúc chính sách, năng lực quản trị và tư duy chu kỳ dài cần thiết cho ổn định và thịnh vượng. Chiến lược quốc gia mạnh là sự kết hợp giữa tham vọng và năng lực, giữa khả năng chống chịu và tăng trưởng, giữa bản sắc và vị thế toàn cầu. Đó là bản thiết kế giúp các quốc gia điều hướng bất định, đảm bảo lợi thế và định hình tương lai."
+  },
+  "entries": [
+    {
+      "slug": "national-power-frameworks",
+      "keywords_en": ["national power", "frameworks", "soft power", "hard power", "comprehensive strength"],
+      "keywords_vi": ["quyền lực quốc gia", "khung phân tích", "quyền lực mềm", "quyền lực cứng", "sức mạnh tổng hợp"],
+      "copy": {
+        "en": "National power frameworks categorize the components that shape a country’s strength and global influence. Classic models include hard power (military, security), soft power (culture, diplomacy), and economic power (industry, productivity). Modern comprehensive frameworks add technology leadership, resource security, demographic vitality, institutional strength, and national cohesion. Principles: power must be balanced, legitimate, and strategically deployed. Examples: South Korea’s technology-driven rise, Singapore’s governance-led advantage, or the EU’s regulatory power. Pitfalls include overreliance on military assets, neglecting soft power credibility, or failing to integrate economic and technological strategy. Strategically, understanding national power helps countries align ambition with capability and invest in the levers that shape long-term strength.",
+        "vi": "Khung quyền lực quốc gia phân loại các yếu tố tạo nên sức mạnh và ảnh hưởng của một quốc gia. Mô hình cổ điển gồm quyền lực cứng (quân sự, an ninh), quyền lực mềm (văn hóa, ngoại giao) và quyền lực kinh tế (công nghiệp, năng suất). Các khung hiện đại mở rộng thêm năng lực công nghệ, an ninh tài nguyên, sức sống nhân khẩu, chất lượng thể chế và mức độ cố kết xã hội. Nguyên tắc: quyền lực phải cân bằng, có tính chính danh và được triển khai một cách chiến lược. Ví dụ: Hàn Quốc với sức mạnh công nghệ, Singapore với lợi thế quản trị, hay EU với quyền lực điều chỉnh tiêu chuẩn. Hố bẫy gồm phụ thuộc quá mức vào quân sự, xem nhẹ uy tín mềm hoặc không gắn kết chiến lược kinh tế và công nghệ. Về chiến lược, hiểu quyền lực quốc gia giúp các nước căn chỉnh tham vọng với năng lực và đầu tư vào các đòn bẩy định hình sức mạnh dài hạn."
+      },
+      "tags": ["national", "power", "frameworks"],
+      "audio": "national_strategy_foundations_1_en.mp3"
+    },
+    {
+      "slug": "strategic-doctrine-and-national-direction",
+      "keywords_en": ["strategic doctrine", "national direction", "principles", "long-term planning", "statecraft"],
+      "keywords_vi": ["học thuyết chiến lược", "định hướng quốc gia", "nguyên tắc", "hoạch định dài hạn", "nghệ thuật quản quốc"],
+      "copy": {
+        "en": "Strategic doctrine defines how a nation understands its place in the world and the principles that guide its long-term behavior. Doctrines articulate national identity, core interests, red lines, partnership philosophy, and preferred methods of influence or defense. Principles include clarity, consistency, and adaptability over cycles of political change. Examples: Japan’s pacifist doctrine, China’s rejuvenation doctrine, or the Nordic sustainability-first doctrine. Pitfalls include vague doctrine leading to policy drift, overly rigid doctrine preventing adaptation, or doctrine disconnected from real capabilities. Strategically, doctrine provides a compass for national decisions and aligns political institutions, public expectations, and external messaging.",
+        "vi": "Học thuyết chiến lược xác định cách một quốc gia hiểu vị trí của mình trên thế giới và các nguyên tắc dẫn dắt hành vi dài hạn. Học thuyết nêu bản sắc quốc gia, lợi ích cốt lõi, lằn ranh đỏ, triết lý hợp tác và phương thức ảnh hưởng hoặc phòng vệ ưa thích. Nguyên tắc gồm sự rõ ràng, nhất quán và khả năng thích ứng qua các chu kỳ chính trị. Ví dụ: học thuyết hòa bình của Nhật, học thuyết phục hưng của Trung Quốc hay học thuyết ưu tiên bền vững của Bắc Âu. Hố bẫy gồm học thuyết mơ hồ gây trôi chính sách, học thuyết quá cứng gây kém thích ứng hoặc học thuyết tách rời năng lực thực tế. Về chiến lược, học thuyết là la bàn cho các quyết định quốc gia và căn chỉnh thể chế, kỳ vọng công chúng và thông điệp đối ngoại."
+      },
+      "tags": ["doctrine", "strategy", "national"],
+      "audio": "national_strategy_foundations_2_en.mp3"
+    },
+    {
+      "slug": "policy-architecture-and-institutional-strength",
+      "keywords_en": ["policy architecture", "institutions", "governance", "implementation", "capacity"],
+      "keywords_vi": ["kiến trúc chính sách", "thể chế", "quản trị", "triển khai", "năng lực"],
+      "copy": {
+        "en": "Policy architecture and institutional strength determine whether national strategy translates into real outcomes. Architecture includes policy design, inter-ministerial coordination, legal frameworks, funding mechanisms, and feedback systems. Institutional strength depends on meritocracy, professionalism, transparency, and execution capability. Examples: Singapore’s policy labs, Germany’s federal coordination, or Estonia’s digital governance. Pitfalls include fragmented policymaking, unclear accountability, slow implementation, or institutional capture. Strategically, strong architecture ensures that national goals are not just aspirational but executable, measurable, and resilient across political cycles.",
+        "vi": "Kiến trúc chính sách và sức mạnh thể chế quyết định liệu chiến lược quốc gia có được hiện thực hóa hay không. Kiến trúc gồm thiết kế chính sách, phối hợp liên bộ, khung pháp lý, cơ chế ngân sách và hệ thống phản hồi. Sức mạnh thể chế phụ thuộc vào meritocracy, tính chuyên nghiệp, minh bạch và năng lực thực thi. Ví dụ: policy labs của Singapore, phối hợp liên bang của Đức, hay quản trị số của Estonia. Hố bẫy gồm làm chính sách phân mảnh, trách nhiệm mơ hồ, triển khai chậm hoặc bị chi phối lợi ích nhóm. Về chiến lược, kiến trúc mạnh bảo đảm mục tiêu quốc gia không chỉ nằm trên giấy mà được thực thi, đo lường và duy trì qua nhiều chu kỳ chính trị."
+      },
+      "tags": ["policy", "institutions", "architecture"],
+      "audio": "national_strategy_foundations_3_en.mp3"
+    },
+    {
+      "slug": "economic-foundations-of-national-strength",
+      "keywords_en": ["economic strength", "industry policy", "competitiveness", "infrastructure", "innovation"],
+      "keywords_vi": ["sức mạnh kinh tế", "chính sách công nghiệp", "năng lực cạnh tranh", "hạ tầng", "đổi mới"],
+      "copy": {
+        "en": "The economic foundations of national strength include industrial capability, labor productivity, innovation systems, capital allocation, and physical infrastructure. Nations with diversified industries, efficient logistics, technology clusters, and strong SMEs tend to achieve sustainable growth. Principles include long-cycle investment, public–private collaboration, and balancing domestic capability with global integration. Examples: South Korea’s industrial policy, Israel’s innovation ecosystem, or the Netherlands’ logistics excellence. Pitfalls include overreliance on commodities, underinvestment in R&D, inefficient state enterprises, or lack of skilled labor. Strategically, economic foundations provide the engine that powers national ambition and resilience.",
+        "vi": "Nền tảng kinh tế của sức mạnh quốc gia gồm năng lực công nghiệp, năng suất lao động, hệ sinh thái đổi mới, phân bổ vốn và hạ tầng vật chất. Các quốc gia có ngành công nghiệp đa dạng, logistics hiệu quả, cụm công nghệ và hệ SME mạnh thường đạt tăng trưởng bền vững. Nguyên tắc gồm đầu tư chu kỳ dài, hợp tác công–tư và cân bằng giữa năng lực nội địa và hội nhập toàn cầu. Ví dụ: chính sách công nghiệp Hàn Quốc, hệ sinh thái đổi mới Israel, hay năng lực logistics của Hà Lan. Hố bẫy gồm phụ thuộc vào tài nguyên, đầu tư R&D thấp, DNNN kém hiệu quả hoặc thiếu lao động kỹ năng. Về chiến lược, nền tảng kinh tế là động cơ thúc đẩy tham vọng và khả năng chống chịu quốc gia."
+      },
+      "tags": ["economic", "foundations", "strength"],
+      "audio": "national_strategy_foundations_4_en.mp3"
+    },
+    {
+      "slug": "geopolitics-and-national-positioning",
+      "keywords_en": ["geopolitics", "positioning", "alliances", "regional strategy", "security"],
+      "keywords_vi": ["địa chính trị", "vị thế quốc gia", "liên minh", "chiến lược khu vực", "an ninh"],
+      "copy": {
+        "en": "Geopolitics and national positioning determine how a country navigates great-power competition, regional alignments, and global governance. Factors include geography, alliances, security architecture, trade routes, and diplomatic strategy. Principles: maintain sovereignty, avoid strategic overdependence, and build constructive regional roles. Examples: Vietnam’s multi-vector diplomacy, ASEAN’s centrality, or Switzerland’s neutrality. Pitfalls include misreading regional power shifts, relying too heavily on one major power, or underinvesting in diplomatic capacity. Strategically, national positioning shapes security, economic opportunity, and international credibility.",
+        "vi": "Địa chính trị và vị thế quốc gia quyết định cách một nước điều hướng cạnh tranh cường quốc, liên kết khu vực và quản trị toàn cầu. Yếu tố gồm địa lý, liên minh, kiến trúc an ninh, tuyến thương mại và chiến lược ngoại giao. Nguyên tắc: giữ chủ quyền, tránh phụ thuộc chiến lược và xây dựng vai trò khu vực mang tính xây dựng. Ví dụ: ngoại giao đa phương của Việt Nam, vai trò trung tâm của ASEAN, hay trung lập của Thụy Sĩ. Hố bẫy gồm đánh giá sai chuyển dịch quyền lực khu vực, phụ thuộc quá mức vào một cường quốc hoặc đầu tư thấp vào năng lực ngoại giao. Về chiến lược, vị thế quốc gia ảnh hưởng trực tiếp đến an ninh, cơ hội kinh tế và uy tín quốc tế."
+      },
+      "tags": ["geopolitics", "positioning", "national"],
+      "audio": "national_strategy_foundations_5_en.mp3"
+    },
+    {
+      "slug": "national-identity-unity-and-social-cohesion",
+      "keywords_en": ["national identity", "unity", "social cohesion", "culture", "resilience"],
+      "keywords_vi": ["bản sắc quốc gia", "đoàn kết", "cố kết xã hội", "văn hóa", "khả năng chống chịu"],
+      "copy": {
+        "en": "National identity, unity, and social cohesion provide societal glue—shared purpose, trust, and resilience during change. Identity is shaped by history, culture, values, and collective narratives. Cohesive societies tend to cooperate better, innovate more, and withstand shocks. Principles: inclusiveness, fairness, recognition of diversity, and nation-building communication. Examples: Rwanda’s post-conflict cohesion strategy, South Korea’s cultural identity revival, or Canada’s multicultural integration. Pitfalls include polarization, erosion of trust, cultural fragmentation, or exclusion of minority groups. Strategically, strong cohesion amplifies national power and stabilizes long-term development.",
+        "vi": "Bản sắc quốc gia, đoàn kết và cố kết xã hội tạo nên chất keo kết nối xã hội—mục đích chung, niềm tin và khả năng chống chịu trong biến động. Bản sắc được định hình từ lịch sử, văn hóa, giá trị và câu chuyện tập thể. Xã hội có mức độ cố kết cao thường hợp tác hiệu quả, đổi mới mạnh và chịu đựng cú sốc tốt hơn. Nguyên tắc: bao trùm, công bằng, ghi nhận đa dạng và truyền thông xây dựng quốc gia. Ví dụ: chiến lược cố kết hậu xung đột của Rwanda, phục hưng bản sắc văn hóa Hàn Quốc hay tích hợp đa văn hóa của Canada. Hố bẫy gồm phân cực, suy giảm niềm tin, phân mảnh văn hóa hoặc loại trừ nhóm thiểu số. Về chiến lược, cố kết mạnh khuếch đại sức mạnh quốc gia và ổn định phát triển dài hạn."
+      },
+      "tags": ["identity", "unity", "cohesion"],
+      "audio": "national_strategy_foundations_6_en.mp3"
+    },
+    {
+      "slug": "long-cycle-strategy-and-national-roadmaps",
+      "keywords_en": ["long-cycle strategy", "roadmaps", "planning", "future design", "national development"],
+      "keywords_vi": ["chiến lược chu kỳ dài", "lộ trình", "hoạch định", "thiết kế tương lai", "phát triển quốc gia"],
+      "copy": {
+        "en": "Long-cycle strategy and national roadmaps structure development across decades of economic, demographic, and geopolitical change. Roadmaps integrate multiple pillars—education, innovation, infrastructure, environment, and diplomacy—into coherent sequencing. Principles include disciplined prioritization, milestone tracking, adaptive revision, and alignment across ministries and stakeholders. Examples: China’s Five-Year Plans, Saudi Arabia’s Vision 2030, or Finland’s long-cycle education reforms. Pitfalls include overly ambitious plans without capacity, lack of coordination, or political discontinuity. Strategically, long-cycle roadmaps help nations protect long-term priorities amid short-term volatility and ensure continuity across generations.",
+        "vi": "Chiến lược chu kỳ dài và lộ trình quốc gia cấu trúc phát triển theo nhiều thập kỷ biến động kinh tế, nhân khẩu và địa chính trị. Lộ trình tích hợp các trụ cột—giáo dục, đổi mới, hạ tầng, môi trường và ngoại giao—thành trình tự nhất quán. Nguyên tắc gồm ưu tiên có kỷ luật, theo dõi mốc, điều chỉnh linh hoạt và căn chỉnh liên bộ và các bên liên quan. Ví dụ: các kế hoạch 5 năm của Trung Quốc, Vision 2030 của Ả Rập Xê Út hay cải cách giáo dục chu kỳ dài của Phần Lan. Hố bẫy gồm kế hoạch quá tham vọng so với năng lực, thiếu phối hợp hoặc gián đoạn chính trị. Về chiến lược, lộ trình chu kỳ dài giúp quốc gia bảo vệ ưu tiên dài hạn giữa biến động ngắn hạn và duy trì liên tục qua các thế hệ."
+      },
+      "tags": ["long-cycle", "roadmap", "national"],
+      "audio": "national_strategy_foundations_7_en.mp3"
+    },
+    {
+      "slug": "strategic-resilience-and-adaptive-capacity",
+      "keywords_en": ["strategic resilience", "adaptive capacity", "shocks", "redundancy", "national security"],
+      "keywords_vi": ["khả năng chống chịu chiến lược", "năng lực thích ứng", "cú sốc", "dư thừa", "an ninh quốc gia"],
+      "copy": {
+        "en": "Strategic resilience and adaptive capacity determine how nations absorb shocks and recover stronger. Components include redundancy in critical systems, diversified supply chains, crisis plans, national reserves, cyber readiness, and institutional flexibility. Principles: prepare early, decentralize selectively, and design systems that fail safely. Examples: Japan’s disaster readiness, Israel’s cyber resilience, or Singapore’s strategic reserves. Pitfalls include over-centralization, ignoring low-probability risks, or lack of stress testing. Strategically, resilience protects national continuity and ensures countries can navigate crises without derailing long-term development.",
+        "vi": "Khả năng chống chịu chiến lược và năng lực thích ứng quyết định cách các quốc gia hấp thụ cú sốc và phục hồi mạnh hơn. Thành phần gồm dư thừa trong hệ thống trọng yếu, đa dạng hóa chuỗi cung ứng, kế hoạch khủng hoảng, dự trữ quốc gia, năng lực an ninh mạng và tính linh hoạt thể chế. Nguyên tắc: chuẩn bị sớm, phân quyền chọn lọc và thiết kế hệ thống có khả năng “thất bại an toàn”. Ví dụ: năng lực phòng chống thiên tai của Nhật, khả năng phục hồi an ninh mạng của Israel hay dự trữ chiến lược của Singapore. Hố bẫy gồm tập trung quyền lực quá mức, bỏ qua rủi ro xác suất thấp hoặc thiếu stress test hệ thống. Về chiến lược, khả năng chống chịu bảo vệ liên tục quốc gia và đảm bảo các nước có thể vượt qua khủng hoảng mà không phá vỡ phát triển dài hạn."
+      },
+      "tags": ["resilience", "adaptive", "national"],
+      "audio": "national_strategy_foundations_8_en.mp3"
+    }
+  ]
+}
