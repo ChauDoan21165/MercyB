@@ -4,7 +4,6 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench, Download } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
@@ -755,119 +754,149 @@ export default function UnifiedHealthCheck() {
         </Card>
       )}
 
-      <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "main" | "kids")}>
-        <TabsList>
-          <TabsTrigger value="main">Main Rooms</TabsTrigger>
-          <TabsTrigger value="kids">Kids Rooms</TabsTrigger>
-        </TabsList>
+      {/* Tier Selector */}
+      {!tier && (
+        <Card className="p-6">
+          <div className="space-y-2">
+            <label className="text-sm font-medium">Select Tier to Check</label>
+            <Select value={activeTab} onValueChange={(v) => {
+              if (v === "kids") {
+                setActiveTab("kids");
+              } else {
+                window.location.href = `/admin/room-health/${v}`;
+              }
+            }}>
+              <SelectTrigger className="w-full md:w-64">
+                <SelectValue placeholder="Choose a tier" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="free">Free Tier</SelectItem>
+                <SelectItem value="vip1">VIP 1</SelectItem>
+                <SelectItem value="vip2">VIP 2</SelectItem>
+                <SelectItem value="vip3">VIP 3</SelectItem>
+                <SelectItem value="vip4">VIP 4</SelectItem>
+                <SelectItem value="vip5">VIP 5</SelectItem>
+                <SelectItem value="vip6">VIP 6</SelectItem>
+                <SelectItem value="vip7">VIP 7</SelectItem>
+                <SelectItem value="vip8">VIP 8</SelectItem>
+                <SelectItem value="vip9">VIP 9</SelectItem>
+                <SelectItem value="kids">Kids Levels</SelectItem>
+              </SelectContent>
+            </Select>
+            <p className="text-xs text-muted-foreground">
+              Select a tier to validate all rooms in that tier, or choose Kids Levels for kids room validation.
+            </p>
+          </div>
+        </Card>
+      )}
 
-        <TabsContent value="main" className="space-y-6">
-          {health && (
-            <>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Card className="p-6">
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle2 className="h-5 w-5 text-green-500" />
-                    <div>
-                      <p className="text-2xl font-bold">{health.totalRooms}</p>
-                      <p className="text-sm text-muted-foreground">Total Rooms</p>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card className="p-6">
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle2 className="h-5 w-5 text-green-500" />
-                    <div>
-                      <p className="text-2xl font-bold">{health.healthyRooms}</p>
-                      <p className="text-sm text-muted-foreground">Healthy Rooms</p>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card className="p-6">
-                  <div className="flex items-center space-x-2">
-                    <XCircle className="h-5 w-5 text-destructive" />
-                    <div>
-                      <p className="text-2xl font-bold">{health.issuesFound}</p>
-                      <p className="text-sm text-muted-foreground">Issues Found</p>
-                    </div>
-                  </div>
-                </Card>
+      {/* Main Rooms Results */}
+      {activeTab === "main" && health && (
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Card className="p-6">
+              <div className="flex items-center space-x-2">
+                <CheckCircle2 className="h-5 w-5 text-green-500" />
+                <div>
+                  <p className="text-2xl font-bold">{health.totalRooms}</p>
+                  <p className="text-sm text-muted-foreground">Total Rooms</p>
+                </div>
               </div>
+            </Card>
 
-              {health.issuesFound === 0 ? (
-                <Card className="p-8 text-center">
-                  <CheckCircle2 className="h-12 w-12 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">All Rooms Healthy!</h3>
-                  <p className="text-muted-foreground">
-                    All rooms are properly configured with valid JSON files.
-                  </p>
-                </Card>
-              ) : (
-                <Card className="p-6">
-                  <h2 className="text-xl font-semibold mb-4">Rooms Requiring Attention</h2>
-                  <div className="space-y-4">
-                    {health.issues.filter(i => !i.isKidsRoom).map((issue, index) => (
-                      <div
-                        key={index}
-                        className="border rounded-lg p-4 space-y-2 hover:bg-accent/50 transition-colors"
-                      >
-                        <div className="flex items-start justify-between">
-                          <div className="flex items-start space-x-3 flex-1">
-                            {getIssueIcon(issue.issueType)}
-                            <div className="flex-1">
-                              <div className="flex items-center space-x-2 mb-1">
-                                <h3 className="font-semibold">
-                                  {issue.roomTitle} ({issue.roomId})
-                                </h3>
-                                <Badge variant="outline">{issue.tier}</Badge>
-                              </div>
-                              <p className="text-sm text-muted-foreground">{issue.message}</p>
-                              {(issue.manifestKey || issue.resolvedPath) && (
-                                <div className="mt-2">
-                                  <div className="inline-flex items-center gap-2 px-2 py-1 bg-muted rounded text-xs font-mono">
-                                    {issue.manifestKey && (
-                                      <span className="text-muted-foreground">
-                                        manifest: <span className="text-foreground">{issue.manifestKey}</span>
-                                      </span>
-                                    )}
-                                    {issue.resolvedPath && (
-                                      <>
-                                        {issue.manifestKey && <span className="text-muted-foreground">→</span>}
-                                        <span className="text-primary">{issue.resolvedPath}</span>
-                                      </>
-                                    )}
-                                  </div>
-                                </div>
-                              )}
-                              {issue.details && (
-                                <p className="text-xs text-muted-foreground mt-1 font-mono bg-muted/30 p-2 rounded">
-                                  {issue.details}
-                                </p>
-                              )}
-                              {issue.issueType === "missing_file" && (
-                                <Alert className="mt-2 py-2 px-3">
-                                  <AlertCircle className="h-4 w-4" />
-                                  <AlertDescription className="text-xs">
-                                    💡 This file needs to be created. Check the database schema_id field and create the matching JSON file in public/data/
-                                  </AlertDescription>
-                                </Alert>
-                              )}
-                            </div>
+            <Card className="p-6">
+              <div className="flex items-center space-x-2">
+                <CheckCircle2 className="h-5 w-5 text-green-500" />
+                <div>
+                  <p className="text-2xl font-bold">{health.healthyRooms}</p>
+                  <p className="text-sm text-muted-foreground">Healthy Rooms</p>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-6">
+              <div className="flex items-center space-x-2">
+                <XCircle className="h-5 w-5 text-destructive" />
+                <div>
+                  <p className="text-2xl font-bold">{health.issuesFound}</p>
+                  <p className="text-sm text-muted-foreground">Issues Found</p>
+                </div>
+              </div>
+            </Card>
+          </div>
+
+          {health.issuesFound === 0 ? (
+            <Card className="p-8 text-center">
+              <CheckCircle2 className="h-12 w-12 text-green-500 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">All Rooms Healthy!</h3>
+              <p className="text-muted-foreground">
+                All rooms are properly configured with valid JSON files.
+              </p>
+            </Card>
+          ) : (
+            <Card className="p-6">
+              <h2 className="text-xl font-semibold mb-4">Rooms Requiring Attention</h2>
+              <div className="space-y-4">
+                {health.issues.filter(i => !i.isKidsRoom).map((issue, index) => (
+                  <div
+                    key={index}
+                    className="border rounded-lg p-4 space-y-2 hover:bg-accent/50 transition-colors"
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-start space-x-3 flex-1">
+                        {getIssueIcon(issue.issueType)}
+                        <div className="flex-1">
+                          <div className="flex items-center space-x-2 mb-1">
+                            <h3 className="font-semibold">
+                              {issue.roomTitle} ({issue.roomId})
+                            </h3>
+                            <Badge variant="outline">{issue.tier}</Badge>
                           </div>
-                          {getIssueBadge(issue.issueType)}
+                          <p className="text-sm text-muted-foreground">{issue.message}</p>
+                          {(issue.manifestKey || issue.resolvedPath) && (
+                            <div className="mt-2">
+                              <div className="inline-flex items-center gap-2 px-2 py-1 bg-muted rounded text-xs font-mono">
+                                {issue.manifestKey && (
+                                  <span className="text-muted-foreground">
+                                    manifest: <span className="text-foreground">{issue.manifestKey}</span>
+                                  </span>
+                                )}
+                                {issue.resolvedPath && (
+                                  <>
+                                    {issue.manifestKey && <span className="text-muted-foreground">→</span>}
+                                    <span className="text-primary">{issue.resolvedPath}</span>
+                                  </>
+                                )}
+                              </div>
+                            </div>
+                          )}
+                          {issue.details && (
+                            <p className="text-xs text-muted-foreground mt-1 font-mono bg-muted/30 p-2 rounded">
+                              {issue.details}
+                            </p>
+                          )}
+                          {issue.issueType === "missing_file" && (
+                            <Alert className="mt-2 py-2 px-3">
+                              <AlertCircle className="h-4 w-4" />
+                              <AlertDescription className="text-xs">
+                                💡 This file needs to be created. Check the database schema_id field and create the matching JSON file in public/data/
+                              </AlertDescription>
+                            </Alert>
+                          )}
                         </div>
                       </div>
-                    ))}
+                      {getIssueBadge(issue.issueType)}
+                    </div>
                   </div>
-                </Card>
-              )}
-            </>
+                ))}
+              </div>
+            </Card>
           )}
-        </TabsContent>
+        </>
+      )}
 
-        <TabsContent value="kids" className="space-y-6">
+      {/* Kids Rooms Section */}
+      {activeTab === "kids" && (
           {/* Kids Room Filters */}
           <Card className="p-6">
             <h3 className="text-lg font-semibold mb-4">Filter Options</h3>
@@ -1058,8 +1087,8 @@ export default function UnifiedHealthCheck() {
               )}
             </>
           )}
-        </TabsContent>
-      </Tabs>
+        </>
+      )}
     </div>
   );
 }
