@@ -51,6 +51,10 @@ const TIER_DISPLAY_NAMES: Record<string, string> = {
   VIP6: "VIP6",
   vip7: "VIP7",
   VIP7: "VIP7",
+  vip8: "VIP8",
+  VIP8: "VIP8",
+  vip9: "VIP9",
+  VIP9: "VIP9",
   kids: "Kids",
 };
 
@@ -256,6 +260,25 @@ export default function UnifiedHealthCheck() {
   };
 
   const checkMainRooms = async () => {
+    // Step 1: Get all JSON files from manifest for the selected tier
+    const selectedTierKey = tier?.toLowerCase() || null;
+    const manifestRooms: Array<{ id: string; path: string; tier: string }> = [];
+    
+    Object.entries(PUBLIC_ROOM_MANIFEST).forEach(([roomId, path]) => {
+      // Extract tier from room ID (e.g., "room-name-vip9" -> "vip9")
+      const tierMatch = roomId.match(/-(free|vip1|vip2|vip3|vip4|vip5|vip6|vip7|vip8|vip9)$/);
+      const roomTier = tierMatch ? tierMatch[1] : 'free';
+      
+      // Skip kids rooms
+      if (path.includes('kids_l')) return;
+      
+      // Filter by selected tier if specified
+      if (selectedTierKey && roomTier !== selectedTierKey) return;
+      
+      manifestRooms.push({ id: roomId, path, tier: roomTier });
+    });
+
+    // Step 2: Get database rooms for comparison
     let query = supabase
       .from("rooms")
       .select("*")
@@ -265,246 +288,156 @@ export default function UnifiedHealthCheck() {
       query = query.eq("tier", tier.toLowerCase());
     }
 
-    const { data: rooms, error: roomsError } = await query;
-
+    const { data: dbRooms, error: roomsError } = await query;
     if (roomsError) throw roomsError;
 
     const issues: RoomIssue[] = [];
     let healthyCount = 0;
-    const totalRooms = rooms?.length || 0;
+    const totalRooms = manifestRooms.length;
+    
+    // Track which manifest rooms we've validated
+    const validatedManifestIds = new Set<string>();
 
-    for (let i = 0; i < (rooms?.length || 0); i++) {
-      const room = rooms![i];
-      setProgress({ current: i + 1, total: totalRooms, roomName: room.title_en });
+    // Step 3: Check all JSON files from manifest
+    for (let i = 0; i < manifestRooms.length; i++) {
+      const manifestRoom = manifestRooms[i];
+      validatedManifestIds.add(manifestRoom.id);
+      
+      // Find corresponding database room if exists
+      const dbRoom = dbRooms?.find(r => 
+        r.id === manifestRoom.id || 
+        `${r.id}-${r.tier}` === manifestRoom.id ||
+        r.schema_id === manifestRoom.id.replace(/-free|-vip\d+$/i, '')
+      );
+      
+      const displayTitle = dbRoom?.title_en || manifestRoom.id.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+      setProgress({ current: i + 1, total: totalRooms, roomName: displayTitle });
       
       const roomIssues: RoomIssue[] = [];
 
-      // Check if JSON file exists and is valid
-      const manifestPathById = PUBLIC_ROOM_MANIFEST[room.id];
-      const manifestKeyWithTier = room.tier
-        ? `${room.id}-${String(room.tier).toLowerCase()}`
-        : null;
-      const manifestPathByTier = manifestKeyWithTier
-        ? PUBLIC_ROOM_MANIFEST[manifestKeyWithTier]
-        : undefined;
-
-      const manifestCandidates: { url: string; key: string; path: string }[] = [];
-      if (manifestPathById) {
-        manifestCandidates.push({
-          url: `/${manifestPathById}`,
-          key: room.id,
-          path: manifestPathById,
-        });
-      }
-      if (manifestPathByTier && manifestPathByTier !== manifestPathById) {
-        manifestCandidates.push({
-          url: `/${manifestPathByTier}`,
-          key: manifestKeyWithTier!,
-          path: manifestPathByTier,
-        });
-      }
-
-      // Generate multiple filename patterns to match inconsistent naming in actual files
-      const schemaId = room.schema_id || room.id;
-      const tier = room.tier || 'free';
-      const tierSuffix = tier.toLowerCase().replace(/\s+/g, '');
-      
-      // Helper: Capitalize and preserve special chars
-      const capitalizeWord = (word: string) => {
-        if (!word || word === '&') return word;
-        return word.charAt(0).toUpperCase() + word.slice(1);
-      };
-      
-      // Pattern 1: Exact schema_id (lowercase with hyphens)
-      const pattern1 = `${schemaId}.json`;
-      
-      // Pattern 2: Replace hyphens with underscores
-      const pattern2 = `${schemaId.replace(/-/g, "_")}.json`;
-      
-      // Pattern 3: Capitalize words, replace hyphens with underscores
-      const pattern3 = schemaId.split('-')
-        .map(capitalizeWord)
-        .join('_') + '.json';
-      
-      // Pattern 4: Pattern 3 + tier suffix
-      const pattern4 = schemaId.split('-')
-        .map(capitalizeWord)
-        .join('_') + `_${tierSuffix}.json`;
-      
-      // Pattern 5: Replace hyphens with underscores, capitalize
-      const pattern5 = schemaId.replace(/-/g, '_')
-        .split('_')
-        .map(capitalizeWord)
-        .join('_') + '.json';
-      
-      // Pattern 6: Pattern 5 + tier suffix
-      const pattern6 = schemaId.replace(/-/g, '_')
-        .split('_')
-        .map(capitalizeWord)
-        .join('_') + `_${tierSuffix}.json`;
-      
-      // Pattern 7: English writing series (lowercase with -ii)
-      const pattern7 = `${schemaId.toLowerCase().replace('vip3ii', 'vip3-ii')}.json`;
-      
-      // Pattern 8: Replace & with "And", capitalize
-      const pattern8 = schemaId.replace(/&/g, 'and')
-        .split(/[-_]/)
-        .map(capitalizeWord)
-        .join('_') + `_${tierSuffix}.json`;
-      
-      // Pattern 9: weight-loss-&-fitness -> Weight_Loss_And_Fitness_vip3
-      const pattern9 = schemaId.replace(/-&-/g, '_And_')
-        .replace(/&/g, 'And')
-        .split('-')
-        .map(capitalizeWord)
-        .join('_') + `_${tierSuffix}.json`;
-      
-      // Pattern 10: Schema ID specific mappings for known files
-      const specificMappings: Record<string, string> = {
-        'weight-loss-&-fitness': 'Weight_Loss_And_Fitness_vip3.json',
-        'strategy-in-life---mastery-&-legacy': 'Strategy_In_Life_Mastery_Legacy_vip3.json',
-        'mercy_blade_english': 'Mercy_Blade_Method_Of_ Learning_English.json', // Note the space!
-        'quiet_growth_vip3_3': 'Quiet_Growth_Simple Investing_vip3.3.finance.json',
-        'quiet_growth': 'Quiet_Growth_Simple Investing_vip3.3.finance.json',
-        'legacy_peace_vip3_6': 'Legacy_&_Long_Term_Peace_vip3_6_finance.json',
-        'diverse_desires_vip3_sub5': 'Diverse_Desires_&_Belonging_vip3_sub5_sex.json',
-        'relational_erotic_vip3_sub2': 'Relational_Intelligence_&_Erotic_Communication_vip3_sub2_sex.json',
-        'sexuality_culture_vip3': 'Sexuality & Curiosity & Culture_vip3.json',
-        'sexuality-curiosity-culture-vip3': 'Sexuality & Curiosity & Culture_vip3.json',
-        'mercy-blade-room-v1': 'Sexuality & Curiosity & Culture_vip3.json',
-        'growing_bigger_vip3_5': 'Growing_Bigger_When_Ready_vip3_5_fiance.json',
-        'finance_grow_bigger_vip3_sub5': 'Growing_Bigger_When_Ready_vip3_5_fiance.json',
-        'strategy_tactics_ii_vip3': 'Strategy_in_Life_ Advanced_Tactics_II_vip3.json',
-        'strategy_life_advanced_tactics_vip3': 'Strategy_in_Life_Advanced_Tactics_II_vip3.json',
-        'strategy_life_foundations_vip3': 'Strategy_in_Life_Foundations_II_vip3.json',
-        'english-writing-deepdive-part5-vip3ii': 'english-writing-deepdive-part5-vip3-ii.json',
-        'english-writing-deepdive-part8-vip3ii': 'english-writing-deepdive-part8-vip3-ii.json',
-      };
-      
-      const pattern10 = specificMappings[schemaId] || '';
-      
-      // Pattern 11: Legacy format (triple hyphen to single underscore)
-      const pattern11 = schemaId.replace(/---/g, '_')
-        .replace(/--/g, '_')
-        .replace(/-/g, '_')
-        .split('_')
-        .map(capitalizeWord)
-        .join('_') + `_${tierSuffix}.json`;
-      
-      // Pattern 12: Mixed case preservation for english-writing
-      const pattern12 = `${schemaId}.json`;
-
-      const fallbackCandidates: { url: string; key: string; path: string }[] = [
-        { url: `/data/${room.id}.json`, key: "fallback", path: `data/${room.id}.json` },
-        ...(pattern10 ? [{ url: `/data/${pattern10}`, key: "specific", path: `data/${pattern10}` }] : []),
-        { url: `/data/${pattern1}`, key: "fallback", path: `data/${pattern1}` },
-        { url: `/data/${pattern2}`, key: "fallback", path: `data/${pattern2}` },
-        { url: `/data/${pattern3}`, key: "fallback", path: `data/${pattern3}` },
-        { url: `/data/${pattern4}`, key: "fallback", path: `data/${pattern4}` },
-        { url: `/data/${pattern5}`, key: "fallback", path: `data/${pattern5}` },
-        { url: `/data/${pattern6}`, key: "fallback", path: `data/${pattern6}` },
-        { url: `/data/${pattern7}`, key: "fallback", path: `data/${pattern7}` },
-        { url: `/data/${pattern8}`, key: "fallback", path: `data/${pattern8}` },
-        { url: `/data/${pattern9}`, key: "fallback", path: `data/${pattern9}` },
-        { url: `/data/${pattern11}`, key: "fallback", path: `data/${pattern11}` },
-        { url: `/data/${pattern12}`, key: "fallback", path: `data/${pattern12}` },
-      ];
-
-      const fileCandidates = [...manifestCandidates, ...fallbackCandidates];
-
+      // Validate the JSON file directly from manifest
+      const jsonPath = `/${manifestRoom.path}`;
       let jsonFound = false;
       let jsonData: any = null;
-      let htmlDetected = false;
-      let resolvedPath: string | undefined;
-      let resolvedManifestKey: string | undefined;
 
-      for (const { url, key, path } of fileCandidates) {
-        try {
-          // Add timeout to prevent hanging
-          const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
-          
-          const response = await fetch(url, { signal: controller.signal });
-          clearTimeout(timeoutId);
-          
-          if (!response.ok) continue;
-
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000);
+        
+        const response = await fetch(jsonPath, { signal: controller.signal });
+        clearTimeout(timeoutId);
+        
+        if (response.ok) {
           const text = await response.text();
-
-          // Check if response is HTML instead of JSON (404 page scenario)
+          
+          // Check if HTML (404 page)
           if (text.trim().startsWith("<!") || text.trim().startsWith("<html")) {
-            htmlDetected = true;
-            break;
-          }
-
-          try {
-            jsonData = JSON.parse(text);
-            jsonFound = true;
-            resolvedPath = path;
-            resolvedManifestKey = key !== "fallback" ? key : undefined;
-            break;
-          } catch (parseError: any) {
             roomIssues.push({
-              roomId: room.id,
-              roomTitle: room.title_en,
-              tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
-              issueType: "invalid_json",
-              message: "Invalid JSON syntax in file",
-              details: parseError.message,
-              resolvedPath: path,
-              manifestKey: key !== "fallback" ? key : undefined,
+              roomId: manifestRoom.id,
+              roomTitle: displayTitle,
+              tier: TIER_DISPLAY_NAMES[manifestRoom.tier] || manifestRoom.tier.toUpperCase(),
+              issueType: "missing_file",
+              message: "File returns HTML (404)",
+              details: `Path: ${manifestRoom.path}`,
             });
-            break;
+          } else {
+            try {
+              jsonData = JSON.parse(text);
+              jsonFound = true;
+            } catch (parseError: any) {
+              roomIssues.push({
+                roomId: manifestRoom.id,
+                roomTitle: displayTitle,
+                tier: TIER_DISPLAY_NAMES[manifestRoom.tier] || manifestRoom.tier.toUpperCase(),
+                issueType: "invalid_json",
+                message: "Invalid JSON syntax",
+                details: parseError.message,
+              });
+            }
           }
-        } catch (error: any) {
-          // Handle timeout and other fetch errors silently, continue to next candidate
-          if (error.name === 'AbortError') {
-            console.warn(`Timeout fetching ${url}`);
-          }
-        }
-      }
-
-      if (!jsonFound && roomIssues.length === 0) {
-        const suggestedPath = getSuggestedJsonPath(room.schema_id, room.tier || 'free');
-
-        roomIssues.push({
-          roomId: room.id,
-          roomTitle: room.title_en,
-          tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
-          issueType: "missing_file",
-          message: htmlDetected
-            ? "File returns HTML instead of JSON (file missing)"
-            : "JSON file not found",
-          details: `Create: ${suggestedPath}`,
-          manifestKey: manifestKeyWithTier || room.id,
-        });
-      }
-
-      // If JSON was found and parsed, check entries
-      if (jsonData) {
-        if (!jsonData.entries || jsonData.entries.length === 0) {
+        } else {
           roomIssues.push({
-            roomId: room.id,
-            roomTitle: room.title_en,
-            tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
-            issueType: "no_entries",
-            message: "Room has no entries",
-            resolvedPath,
-            manifestKey: resolvedManifestKey,
+            roomId: manifestRoom.id,
+            roomTitle: displayTitle,
+            tier: TIER_DISPLAY_NAMES[manifestRoom.tier] || manifestRoom.tier.toUpperCase(),
+            issueType: "missing_file",
+            message: `HTTP ${response.status}`,
+            details: `Path: ${manifestRoom.path}`,
+          });
+        }
+      } catch (error: any) {
+        if (error.name === 'AbortError') {
+          roomIssues.push({
+            roomId: manifestRoom.id,
+            roomTitle: displayTitle,
+            tier: TIER_DISPLAY_NAMES[manifestRoom.tier] || manifestRoom.tier.toUpperCase(),
+            issueType: "missing_file",
+            message: "Timeout loading file",
+            details: `Path: ${manifestRoom.path}`,
           });
         }
       }
 
-      // Check if room is locked
-      if (room.is_locked) {
+      // If JSON was found and parsed, validate content
+      if (jsonData) {
+        // Check for entries
+        if (!jsonData.entries || jsonData.entries.length === 0) {
+          roomIssues.push({
+            roomId: manifestRoom.id,
+            roomTitle: displayTitle,
+            tier: TIER_DISPLAY_NAMES[manifestRoom.tier] || manifestRoom.tier.toUpperCase(),
+            issueType: "no_entries",
+            message: "Room has no entries",
+          });
+        } else {
+          // Check entry structure
+          const invalidEntries = jsonData.entries.filter((entry: any, idx: number) => {
+            const hasSlug = !!entry.slug;
+            const hasCopy = !!entry.copy?.en || !!entry.copy?.vi;
+            return !hasSlug || !hasCopy;
+          });
+          
+          if (invalidEntries.length > 0) {
+            roomIssues.push({
+              roomId: manifestRoom.id,
+              roomTitle: displayTitle,
+              tier: TIER_DISPLAY_NAMES[manifestRoom.tier] || manifestRoom.tier.toUpperCase(),
+              issueType: "missing_entries",
+              message: `${invalidEntries.length} entries missing slug or copy`,
+            });
+          }
+        }
+        
+        // Check for title and content
+        if (!jsonData.title?.en && !jsonData.title?.vi) {
+          roomIssues.push({
+            roomId: manifestRoom.id,
+            roomTitle: displayTitle,
+            tier: TIER_DISPLAY_NAMES[manifestRoom.tier] || manifestRoom.tier.toUpperCase(),
+            issueType: "missing_entries",
+            message: "Missing title translations",
+          });
+        }
+        
+        if (!jsonData.content?.en && !jsonData.content?.vi) {
+          roomIssues.push({
+            roomId: manifestRoom.id,
+            roomTitle: displayTitle,
+            tier: TIER_DISPLAY_NAMES[manifestRoom.tier] || manifestRoom.tier.toUpperCase(),
+            issueType: "missing_entries",
+            message: "Missing content/introduction",
+          });
+        }
+      }
+
+      // Check if room is in database and locked
+      if (dbRoom?.is_locked) {
         roomIssues.push({
-          roomId: room.id,
-          roomTitle: room.title_en,
-          tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
+          roomId: manifestRoom.id,
+          roomTitle: displayTitle,
+          tier: TIER_DISPLAY_NAMES[manifestRoom.tier] || manifestRoom.tier.toUpperCase(),
           issueType: "locked",
           message: "Room is locked",
-          resolvedPath,
-          manifestKey: resolvedManifestKey,
         });
       }
 
