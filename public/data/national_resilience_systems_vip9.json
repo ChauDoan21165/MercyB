@@ -1,0 +1,103 @@
+{
+  "id": "national_resilience_systems_vip9",
+  "tier": "VIP9 / Cấp VIP9",
+  "domain": "National",
+  "title": {
+    "en": "National Resilience Systems",
+    "vi": "Hệ Thống Chống Chịu Quốc Gia"
+  },
+  "content": {
+    "en": "This room builds national resilience systems—integrated capabilities that protect a nation from shocks, absorb disruption, recover rapidly, and adapt to long-term stress. It covers systemic risk mapping, infrastructure robustness, food–water–energy security loops, cyber-resilience, public-health defense, emergency governance, supply-chain fortification, and whole-of-society preparedness. Nations that master resilience stabilize their development trajectory, prevent collapse under pressure, and preserve strategic autonomy amid global volatility.",
+    "vi": "Phòng này xây dựng hệ thống chống chịu quốc gia—năng lực tích hợp bảo vệ quốc gia trước cú sốc, hấp thụ gián đoạn, phục hồi nhanh và thích ứng với áp lực dài hạn. Nội dung bao gồm lập bản đồ rủi ro hệ thống, độ bền hạ tầng, vòng an ninh lương thực–nước–năng lượng, chống chịu mạng, phòng thủ y tế công cộng, quản trị khẩn cấp, củng cố chuỗi cung ứng và chuẩn bị toàn xã hội. Quốc gia làm chủ chống chịu sẽ ổn định quỹ đạo phát triển, tránh sụp đổ khi chịu áp lực và giữ tự chủ chiến lược trong biến động toàn cầu."
+  },
+  "entries": [
+    {
+      "slug": "systemic-risk-mapping-and-national-vulnerability-analysis",
+      "keywords_en": ["systemic risk", "vulnerability analysis", "stressors", "exposure", "national security"],
+      "keywords_vi": ["rủi ro hệ thống", "phân tích dễ tổn thương", "yếu tố gây áp", "phơi nhiễm", "an ninh quốc gia"],
+      "copy": {
+        "en": "Systemic risk mapping and national vulnerability analysis identify pressure points such as supply-chain chokepoints, climate hotspots, debt exposure, border tensions, demographic stress, and infrastructure interdependencies. Principles: anticipate cascading failures, integrate multi-hazard models, build early-warning systems, and maintain real-time situational awareness. Examples include Singapore’s whole-of-government risk grid, Japan’s national hazard maps, and Vietnam’s climate–flood vulnerabilities. Pitfalls: blind spots, siloed agencies, outdated data, or ignoring low-probability high-impact events. Strategically, risk mapping is the foundation of national resilience and long-term stability.",
+        "vi": "Lập bản đồ rủi ro hệ thống và phân tích dễ tổn thương quốc gia xác định các điểm áp lực như điểm nghẽn chuỗi cung ứng, vùng khí hậu nguy cơ, phơi nhiễm nợ, căng thẳng biên giới, áp lực dân số và phụ thuộc hạ tầng. Nguyên tắc: dự báo sụp đổ dây chuyền, tích hợp mô hình đa hiểm họa, xây hệ thống cảnh báo sớm và duy trì nhận thức tình huống thời gian thực. Ví dụ: lưới rủi ro toàn chính phủ Singapore, bản đồ rủi ro thiên tai quốc gia Nhật và vùng dễ tổn thương khí hậu–lũ của Việt Nam. Hố bẫy: điểm mù, cơ quan phân mảnh, dữ liệu lỗi thời hoặc bỏ qua sự kiện hiếm nhưng tác động cao. Về chiến lược, lập bản đồ rủi ro là nền tảng của chống chịu quốc gia và ổn định dài hạn."
+      },
+      "tags": ["risk", "vulnerability", "mapping"],
+      "audio": "national_resilience_systems_1_en.mp3"
+    },
+    {
+      "slug": "critical-infrastructure-robustness-and-fail-safe-design",
+      "keywords_en": ["critical infrastructure", "robustness", "fail-safe", "redundancy", "continuity"],
+      "keywords_vi": ["hạ tầng trọng yếu", "độ bền", "fail-safe", "dự phòng", "liên tục"],
+      "copy": {
+        "en": "Critical infrastructure robustness and fail-safe design ensure essential systems—power grids, water networks, telecom towers, transport nodes, and financial systems—continue operating under stress. Principles: redundancy across networks, microgrid capability, structural reinforcement, cyber-physical integration, and distributed control. Examples: Japan’s earthquake-proof engineering, the EU’s energy redundancy models, and Vietnam’s smart-grid modernization. Pitfalls: over-centralization, aging infrastructure, or insufficient backup capacity. Strategically, fail-safe systems prevent national paralysis during crisis.",
+        "vi": "Độ bền hạ tầng trọng yếu và thiết kế fail-safe bảo đảm các hệ thống thiết yếu—lưới điện, mạng nước, trạm viễn thông, nút giao thông và hệ thống tài chính—tiếp tục vận hành khi chịu áp lực. Nguyên tắc: dự phòng mạng lưới, khả năng microgrid, gia cố cấu trúc, tích hợp mạng vật lý–số và điều khiển phân tán. Ví dụ: kỹ thuật chống động đất Nhật, mô hình dự phòng năng lượng EU và hiện đại hóa lưới điện thông minh của Việt Nam. Hố bẫy: tập trung hóa quá mức, hạ tầng lão hóa hoặc thiếu năng lực dự phòng. Về chiến lược, hệ fail-safe ngăn tê liệt quốc gia trong khủng hoảng."
+      },
+      "tags": ["infrastructure", "robustness", "continuity"],
+      "audio": "national_resilience_systems_2_en.mp3"
+    },
+    {
+      "slug": "food-water-energy-security-loops",
+      "keywords_en": ["food security", "water security", "energy security", "resource loops", "resilience"],
+      "keywords_vi": ["an ninh lương thực", "an ninh nước", "an ninh năng lượng", "vòng tài nguyên", "chống chịu"],
+      "copy": {
+        "en": "Food–water–energy security loops form the backbone of national survival, ensuring that critical resources remain stable during shocks. Principles: diversify imports, strengthen storage capacity, invest in resilient agriculture, develop desalination and water recycling, and transition to distributed renewable energy. Examples: Israel’s water-security ecosystem, Singapore’s NEWater loop, and Vietnam’s Mekong agricultural adaptation. Pitfalls: mono-source dependency, weak reserves, or climate-vulnerable production. Strategically, resource loops anchor national resilience and societal stability.",
+        "vi": "Vòng an ninh lương thực–nước–năng lượng tạo xương sống cho sự tồn vong quốc gia, bảo đảm tài nguyên thiết yếu ổn định trước các cú sốc. Nguyên tắc: đa dạng hóa nhập khẩu, tăng năng lực dự trữ, đầu tư nông nghiệp chống chịu, phát triển khử mặn và tái chế nước, chuyển sang năng lượng tái tạo phân tán. Ví dụ: hệ sinh thái an ninh nước Israel, vòng NEWater Singapore và thích ứng nông nghiệp ở Mekong. Hố bẫy: phụ thuộc nguồn đơn, dự trữ yếu hoặc sản xuất dễ tổn thương khí hậu. Về chiến lược, vòng tài nguyên là điểm tựa cho chống chịu quốc gia và ổn định xã hội."
+      },
+      "tags": ["resources", "security", "loops"],
+      "audio": "national_resilience_systems_3_en.mp3"
+    },
+    {
+      "slug": "cyber-resilience-and-digital-continuity-defenses",
+      "keywords_en": ["cyber resilience", "digital continuity", "security", "sovereignty", "infrastructure"],
+      "keywords_vi": ["chống chịu mạng", "liên tục số", "an ninh", "chủ quyền", "hạ tầng"],
+      "copy": {
+        "en": "Cyber-resilience and digital continuity defenses protect national data, government networks, financial systems, industrial platforms, and critical infrastructure from cyberattacks. Principles: zero-trust architecture, multi-layer encryption, automated threat detection, and digital redundancy. Examples: Estonia’s digital-resilience model, Japan’s industrial cybersecurity, and Vietnam’s national cyber-command expansion. Pitfalls: fragmented protocols, legacy systems, or insufficient cyber talent. Strategically, digital continuity ensures operational stability even under large-scale cyber incidents.",
+        "vi": "Chống chịu mạng và phòng thủ liên tục số bảo vệ dữ liệu quốc gia, mạng chính phủ, hệ thống tài chính, nền tảng công nghiệp và hạ tầng trọng yếu khỏi tấn công mạng. Nguyên tắc: kiến trúc zero-trust, mã hóa đa lớp, phát hiện đe dọa tự động và dự phòng số. Ví dụ: mô hình chống chịu số của Estonia, an ninh mạng công nghiệp Nhật và mở rộng chỉ huy mạng quốc gia Việt Nam. Hố bẫy: giao thức phân mảnh, hệ thống cũ hoặc thiếu nhân lực an ninh mạng. Về chiến lược, liên tục số bảo đảm ổn định vận hành ngay cả trong sự cố mạng quy mô lớn."
+      },
+      "tags": ["cyber", "digital", "security"],
+      "audio": "national_resilience_systems_4_en.mp3"
+    },
+    {
+      "slug": "public-health-defense-and-pandemic-preparedness",
+      "keywords_en": ["public health", "pandemic preparedness", "biodefense", "surveillance", "response"],
+      "keywords_vi": ["y tế công cộng", "chuẩn bị đại dịch", "phòng thủ sinh học", "giám sát", "ứng phó"],
+      "copy": {
+        "en": "Public-health defense and pandemic preparedness build biological resilience through surveillance systems, vaccine manufacturing, rapid response units, and national stockpiles. Principles: early detection, genomic monitoring, cross-border coordination, and scalable healthcare capacity. Examples: South Korea’s rapid-response framework, Singapore’s TraceTogether ecosystem, and Vietnam’s community-driven containment model. Pitfalls: slow testing, insufficient ICU capacity, or fragmented disease reporting. Strategically, public-health defense protects population stability and long-term national productivity.",
+        "vi": "Phòng thủ y tế công cộng và chuẩn bị đại dịch xây dựng chống chịu sinh học qua hệ giám sát, sản xuất vaccine, đơn vị phản ứng nhanh và kho dự trữ quốc gia. Nguyên tắc: phát hiện sớm, giám sát hệ gen, phối hợp xuyên biên giới và năng lực y tế có thể mở rộng. Ví dụ: khung phản ứng nhanh Hàn Quốc, hệ TraceTogether Singapore và mô hình kiểm soát cộng đồng của Việt Nam. Hố bẫy: xét nghiệm chậm, thiếu ICU hoặc báo cáo bệnh phân mảnh. Về chiến lược, phòng thủ y tế bảo vệ sự ổn định dân số và năng suất quốc gia."
+      },
+      "tags": ["public-health", "pandemic", "biodefense"],
+      "audio": "national_resilience_systems_5_en.mp3"
+    },
+    {
+      "slug": "emergency-governance-and-national-crisis-coordination",
+      "keywords_en": ["emergency governance", "crisis coordination", "command systems", "rapid response", "policy integration"],
+      "keywords_vi": ["quản trị khẩn cấp", "phối hợp khủng hoảng", "hệ chỉ huy", "phản ứng nhanh", "tích hợp chính sách"],
+      "copy": {
+        "en": "Emergency governance and national crisis coordination define how a country activates unified command systems, cross-agency task forces, emergency communication channels, and rapid decision-making protocols. Principles: clear authority, decentralized execution, transparent communication, and stress-tested procedures. Examples: Japan’s crisis-management offices, the EU’s civil-protection mechanism, and Vietnam’s provincial–central coordination in natural disasters. Pitfalls: unclear chain of command, slow bureaucracy, or contradictory communication. Strategically, strong governance ensures rapid, coordinated national response.",
+        "vi": "Quản trị khẩn cấp và phối hợp khủng hoảng xác định cách quốc gia kích hoạt hệ chỉ huy thống nhất, lực lượng liên cơ quan, kênh liên lạc khẩn và quy trình quyết định nhanh. Nguyên tắc: thẩm quyền rõ, thực thi phân tán, truyền thông minh bạch và quy trình được stress-test. Ví dụ: văn phòng quản trị khủng hoảng Nhật, cơ chế bảo vệ dân sự EU và phối hợp trung ương–địa phương của Việt Nam trong thiên tai. Hố bẫy: chuỗi chỉ huy mơ hồ, quan liêu chậm hoặc truyền thông mâu thuẫn. Về chiến lược, quản trị mạnh bảo đảm ứng phó quốc gia nhanh và phối hợp."
+      },
+      "tags": ["emergency", "crisis", "governance"],
+      "audio": "national_resilience_systems_6_en.mp3"
+    },
+    {
+      "slug": "supply-chain-fortification-and-logistics-resilience",
+      "keywords_en": ["supply chain", "fortification", "logistics resilience", "redundancy", "security"],
+      "keywords_vi": ["chuỗi cung ứng", "củng cố", "chống chịu logistics", "dự phòng", "an ninh"],
+      "copy": {
+        "en": "Supply-chain fortification and logistics resilience strengthen national access to critical goods—energy, food, pharmaceuticals, machinery, semiconductors—during disruptions. Principles: multi-source procurement, domestic production buffers, strategic reserves, and transregional logistics corridors. Examples: Japan’s supply-chain reshoring, India’s PLI schemes, and Vietnam’s diversification through FTAs. Pitfalls: overdependence on single countries, fragile ports, or shallow inventories. Strategically, fortified supply chains are a pillar of national resilience and economic continuity.",
+        "vi": "Củng cố chuỗi cung ứng và chống chịu logistics tăng cường khả năng tiếp cận hàng hóa thiết yếu—năng lượng, lương thực, dược phẩm, máy móc, bán dẫn—trong gián đoạn. Nguyên tắc: mua nhiều nguồn, đệm sản xuất nội địa, dự trữ chiến lược và hành lang logistics xuyên vùng. Ví dụ: tái định vị chuỗi cung ứng Nhật, chương trình PLI của Ấn Độ và đa dạng hóa của Việt Nam qua các FTA. Hố bẫy: phụ thuộc quốc gia đơn, cảng dễ tổn thương hoặc tồn kho nông. Về chiến lược, chuỗi cung ứng vững là trụ cột của chống chịu quốc gia và liên tục kinh tế."
+      },
+      "tags": ["supply-chain", "logistics", "resilience"],
+      "audio": "national_resilience_systems_7_en.mp3"
+    },
+    {
+      "slug": "whole-of-society-preparedness-and-civic-resilience",
+      "keywords_en": ["whole-of-society", "civic resilience", "community readiness", "education", "social stability"],
+      "keywords_vi": ["toàn xã hội", "chống chịu cộng đồng", "sẵn sàng", "giáo dục", "ổn định xã hội"],
+      "copy": {
+        "en": "Whole-of-society preparedness and civic resilience empower citizens, communities, businesses, and institutions to support national stability during crises. Principles: resilience education, community drills, business-continuity planning, trusted communication channels, and social-cohesion programs. Examples: Japan’s community preparedness culture, Taiwan’s civil-defense model, and Vietnam’s grassroots mobilization during public-health crises. Pitfalls: public complacency, misinformation, or weak local coordination. Strategically, civic resilience amplifies national capacity and preserves social order during prolonged stress.",
+        "vi": "Chuẩn bị toàn xã hội và chống chịu cộng đồng trao quyền cho người dân, cộng đồng, doanh nghiệp và tổ chức hỗ trợ ổn định quốc gia trong khủng hoảng. Nguyên tắc: giáo dục chống chịu, diễn tập cộng đồng, kế hoạch duy trì hoạt động doanh nghiệp, kênh truyền thông tin cậy và chương trình gắn kết xã hội. Ví dụ: văn hóa chuẩn bị cộng đồng Nhật, mô hình phòng thủ dân sự Đài Loan và huy động cơ sở của Việt Nam trong khủng hoảng y tế công cộng. Hố bẫy: chủ quan xã hội, thông tin sai hoặc phối hợp địa phương yếu. Về chiến lược, chống chịu cộng đồng khuếch đại năng lực quốc gia và giữ trật tự xã hội trong căng thẳng kéo dài."
+      },
+      "tags": ["society", "civic", "preparedness"],
+      "audio": "national_resilience_systems_8_en.mp3"
+    }
+  ]
+}

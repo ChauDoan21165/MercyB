@@ -1,0 +1,103 @@
+{
+  "id": "national_megatrends_vip9",
+  "tier": "VIP9 / Cấp VIP9",
+  "domain": "National",
+  "title": {
+    "en": "National Megatrends Strategy",
+    "vi": "Chiến Lược Megatrend Quốc Gia"
+  },
+  "content": {
+    "en": "This room equips nations to understand and leverage megatrends—long-wave forces reshaping global power, economies, societies, demographics, culture, and technology. It covers structural transitions including AI acceleration, geopolitical fragmentation, climate realignment, demographic shifts, urban metamorphosis, resource constraints, and great-power competition. Nations that master megatrends position themselves early, anticipate risks, capture emerging advantages, and adapt before pressure mounts. This is the strategic literacy nations need to thrive through the next fifty years of disruptive transformation.",
+    "vi": "Phòng này trang bị quốc gia khả năng hiểu và tận dụng megatrend—những lực dài hạn tái định hình quyền lực toàn cầu, kinh tế, xã hội, dân số, văn hóa và công nghệ. Nội dung bao gồm các chuyển dịch cấu trúc như tăng tốc AI, phân mảnh địa chính trị, tái cân bằng khí hậu, biến động nhân khẩu, chuyển hóa đô thị, giới hạn tài nguyên và cạnh tranh cường quốc. Quốc gia làm chủ megatrend sẽ định vị sớm, dự báo rủi ro, nắm bắt cơ hội mới và thích ứng trước khi áp lực gia tăng. Đây là năng lực chiến lược cần thiết để quốc gia thịnh vượng trong năm mươi năm biến động tới."
+  },
+  "entries": [
+    {
+      "slug": "ai-acceleration-and-technological-supercycles",
+      "keywords_en": ["AI acceleration", "supercycles", "automation", "innovation", "national competitiveness"],
+      "keywords_vi": ["tăng tốc AI", "siêu chu kỳ công nghệ", "tự động hóa", "đổi mới", "cạnh tranh quốc gia"],
+      "copy": {
+        "en": "AI acceleration and technological supercycles analyze how automation, machine intelligence, bio-digital integration, and frontier technologies reshape national competitiveness. Principles: invest early in foundational infrastructure, prioritize digital sovereignty, cultivate technical talent, and position industries for AI-native operations. Examples: South Korea’s AI-industrial integration, Singapore’s digital governance, UAE’s AI ministries, and Vietnam’s fast-growing digital economy. Pitfalls: lagging regulatory systems, talent shortages, or dependence on foreign platforms. Strategically, mastering the AI supercycle ensures economic resilience and future power projection.",
+        "vi": "Tăng tốc AI và siêu chu kỳ công nghệ phân tích cách tự động hóa, trí tuệ máy, tích hợp sinh–kỹ thuật số và công nghệ tiên phong định hình lại năng lực cạnh tranh quốc gia. Nguyên tắc: đầu tư sớm vào hạ tầng nền tảng, ưu tiên chủ quyền số, nuôi dưỡng nhân tài kỹ thuật và định vị ngành theo mô hình vận hành AI-native. Ví dụ: tích hợp AI–công nghiệp của Hàn Quốc, quản trị số Singapore, bộ AI của UAE và nền kinh tế số tăng trưởng nhanh của Việt Nam. Hố bẫy: hệ thống quy định chậm, thiếu nhân lực hoặc phụ thuộc nền tảng ngoại. Về chiến lược, làm chủ siêu chu kỳ AI bảo đảm sức bền kinh tế và tiềm lực quyền lực tương lai."
+      },
+      "tags": ["AI", "technology", "supercycles"],
+      "audio": "national_megatrends_1_en.mp3"
+    },
+    {
+      "slug": "geopolitical-fragmentation-and-multi-polar-realignment",
+      "keywords_en": ["geopolitical fragmentation", "multi-polarity", "realignment", "competition", "global order"],
+      "keywords_vi": ["phân mảnh địa chính trị", "đa cực", "tái căn chỉnh", "cạnh tranh", "trật tự toàn cầu"],
+      "copy": {
+        "en": "Geopolitical fragmentation and multi-polar realignment describe how great-power rivalry, regional blocs, and strategic hedging reshape the global order. Principles: diversify partnerships, avoid dependency traps, strengthen sovereignty, and build regional influence. Examples: Indo-Pacific realignment, Eurasian connectivity races, and ASEAN centrality strategies. Pitfalls: rigid alignment, ideological bias, or overreliance on a single security guarantor. Strategically, navigating fragmentation requires agility and balanced national positioning.",
+        "vi": "Phân mảnh địa chính trị và tái căn chỉnh đa cực mô tả cách cạnh tranh cường quốc, khối khu vực và chiến lược hedging định hình lại trật tự toàn cầu. Nguyên tắc: đa dạng hóa quan hệ, tránh bẫy phụ thuộc, củng cố chủ quyền và tăng ảnh hưởng khu vực. Ví dụ: tái căn chỉnh Ấn Độ Dương–Thái Bình Dương, cuộc đua kết nối Á–Âu và chiến lược trung tâm của ASEAN. Hố bẫy: căn chỉnh cứng nhắc, thiên kiến ý thức hệ hoặc phụ thuộc vào một bảo trợ an ninh. Về chiến lược, điều hướng phân mảnh đòi hỏi linh hoạt và định vị cân bằng."
+      },
+      "tags": ["geopolitics", "fragmentation", "multipolarity"],
+      "audio": "national_megatrends_2_en.mp3"
+    },
+    {
+      "slug": "global-demographic-transitions-and-age-structure-shifts",
+      "keywords_en": ["demographic transitions", "age structure", "population waves", "labor markets", "societal change"],
+      "keywords_vi": ["chuyển dịch dân số", "cấu trúc tuổi", "làn sóng dân khẩu", "thị trường lao động", "thay đổi xã hội"],
+      "copy": {
+        "en": "Global demographic transitions and age-structure shifts highlight diverging futures: aging societies, youth bulges, shrinking workforces, migration surges, and fertility collapse. Principles: prepare for care economy expansion, redesign pensions, strengthen labor productivity, and leverage immigration selectively. Examples: Japan’s advanced aging, Africa’s youth surge, Europe’s labor mobility, and Vietnam’s golden population window approaching closure. Pitfalls: delayed reforms, overburdened welfare systems, or unmanaged migration. Strategically, demographic mastery determines long-term economic and civilizational resilience.",
+        "vi": "Chuyển dịch dân số toàn cầu và biến động cấu trúc tuổi làm nổi bật các tương lai khác biệt: xã hội già hóa, phình to giới trẻ, lực lượng lao động thu hẹp, gia tăng di cư và sụt giảm sinh sản. Nguyên tắc: chuẩn bị cho nền kinh tế chăm sóc, thiết kế lại hưu trí, tăng năng suất lao động và tận dụng nhập cư có chọn lọc. Ví dụ: già hóa nâng cao của Nhật, bùng nổ giới trẻ châu Phi, di chuyển lao động châu Âu và cửa sổ dân số vàng của Việt Nam đang dần khép lại. Hố bẫy: cải cách chậm, phúc lợi quá tải hoặc di cư thiếu kiểm soát. Về chiến lược, làm chủ nhân khẩu quyết định sức bền kinh tế và văn minh dài hạn."
+      },
+      "tags": ["demographics", "population", "labour"],
+      "audio": "national_megatrends_3_en.mp3"
+    },
+    {
+      "slug": "climate-transition-and-resource-realities",
+      "keywords_en": ["climate transition", "resource constraints", "energy shift", "sustainability", "adaptation"],
+      "keywords_vi": ["chuyển dịch khí hậu", "giới hạn tài nguyên", "dịch chuyển năng lượng", "bền vững", "thích ứng"],
+      "copy": {
+        "en": "Climate transition and resource realities outline how climate stress, water scarcity, extreme weather, and energy transformation reshape national planning. Principles: accelerate green infrastructure, fortify supply security, develop adaptive agriculture, and diversify energy matrices. Examples: Europe’s renewables shift, Middle Eastern water strategies, and Vietnam’s climate-resilient delta programs. Pitfalls: overdependence on fossil revenues, slow adaptation, or misaligned investment cycles. Strategically, climate alignment strengthens national security and economic sustainability.",
+        "vi": "Chuyển dịch khí hậu và giới hạn tài nguyên mô tả cách áp lực khí hậu, khan hiếm nước, thời tiết cực đoan và chuyển dịch năng lượng định hình lại hoạch định quốc gia. Nguyên tắc: tăng tốc hạ tầng xanh, củng cố an ninh cung ứng, phát triển nông nghiệp thích ứng và đa dạng hóa ma trận năng lượng. Ví dụ: chuyển đổi năng lượng tái tạo của châu Âu, chiến lược nước Trung Đông và các chương trình chống chịu đồng bằng của Việt Nam. Hố bẫy: phụ thuộc doanh thu nhiên liệu hóa thạch, thích ứng chậm hoặc chu kỳ đầu tư lệch. Về chiến lược, căn chỉnh khí hậu củng cố an ninh quốc gia và bền vững kinh tế."
+      },
+      "tags": ["climate", "resources", "energy"],
+      "audio": "national_megatrends_4_en.mp3"
+    },
+    {
+      "slug": "urbanization-megacities-and-hyper-connected-societies",
+      "keywords_en": ["urbanization", "megacities", "hyper-connectivity", "infrastructure", "smart cities"],
+      "keywords_vi": ["đô thị hóa", "siêu đô thị", "liên kết cao", "hạ tầng", "thành phố thông minh"],
+      "copy": {
+        "en": "Urbanization, megacities, and hyper-connected societies explore how massive population concentration reshapes innovation, inequality, resilience, and national identity. Principles: upgrade transit systems, expand green zones, deploy digital city layers, and manage density sustainably. Examples: Tokyo's hyper-efficiency, Seoul’s smart-city stack, and Ho Chi Minh City’s rapid urban expansion. Pitfalls: slums, congestion collapse, unsustainable housing, or fragile utilities. Strategically, mastering urban transitions creates engines of economic and cultural dynamism.",
+        "vi": "Đô thị hóa, siêu đô thị và xã hội liên kết cao xem xét cách tập trung dân cư lớn định hình đổi mới, bất bình đẳng, chống chịu và bản sắc quốc gia. Nguyên tắc: nâng cấp giao thông, mở rộng không gian xanh, triển khai lớp đô thị số và quản lý mật độ bền vững. Ví dụ: hiệu quả siêu cao của Tokyo, hệ thống thành phố thông minh của Seoul và mở rộng đô thị nhanh của TP.HCM. Hố bẫy: khu ổ chuột, tắc nghẽn, nhà ở không bền vững hoặc hạ tầng mong manh. Về chiến lược, làm chủ chuyển dịch đô thị tạo động cơ tăng trưởng kinh tế và năng lượng văn hóa."
+      },
+      "tags": ["urbanization", "megacities", "smart-cities"],
+      "audio": "national_megatrends_5_en.mp3"
+    },
+    {
+      "slug": "geo-economics-and-the-rise-of-strategic-industrial-policy",
+      "keywords_en": ["geo-economics", "industrial policy", "supply chains", "strategic sectors", "competitiveness"],
+      "keywords_vi": ["địa kinh tế", "chính sách công nghiệp", "chuỗi cung ứng", "ngành chiến lược", "cạnh tranh"],
+      "copy": {
+        "en": "Geo-economics and the rise of strategic industrial policy examine how nations secure dominance by reshoring supply chains, protecting critical industries, and investing in frontier sectors. Principles: reduce single-source dependency, develop national champions, integrate industrial policy with diplomacy, and forecast future value chains. Examples: U.S. CHIPS Act, China’s industrial planning, Japan’s supply-chain resilience strategies, and Vietnam’s semiconductor ambitions. Pitfalls: protectionism excess, misallocated subsidies, or distorted competition. Strategically, geo-economic mastery builds durable national power.",
+        "vi": "Địa kinh tế và sự trỗi dậy của chính sách công nghiệp chiến lược phân tích cách quốc gia giành ưu thế bằng tái định vị chuỗi cung ứng, bảo vệ ngành trọng yếu và đầu tư vào lĩnh vực tiên phong. Nguyên tắc: giảm phụ thuộc nguồn đơn, xây dựng nhà vô địch quốc gia, tích hợp chính sách công nghiệp với ngoại giao và dự báo chuỗi giá trị tương lai. Ví dụ: Đạo luật CHIPS của Mỹ, hoạch định công nghiệp Trung Quốc, chiến lược chống chịu chuỗi cung ứng của Nhật và tham vọng bán dẫn của Việt Nam. Hố bẫy: bảo hộ quá mức, phân bổ trợ cấp sai hoặc bóp méo cạnh tranh. Về chiến lược, làm chủ địa kinh tế xây dựng quyền lực quốc gia bền vững."
+      },
+      "tags": ["geo-economics", "industrial-policy", "supply-chains"],
+      "audio": "national_megatrends_6_en.mp3"
+    },
+    {
+      "slug": "global-digital-governance-and-cyber-power-competition",
+      "keywords_en": ["digital governance", "cyber power", "data sovereignty", "digital order", "security"],
+      "keywords_vi": ["quản trị số", "quyền lực mạng", "chủ quyền dữ liệu", "trật tự số", "an ninh"],
+      "copy": {
+        "en": "Global digital governance and cyber-power competition map how data flows, cybersecurity, digital standards, and platform influence shape future sovereignty. Principles: secure national data, establish regulatory credibility, strengthen cyber defense, and invest in digital diplomacy. Examples: EU’s GDPR leverage, China’s cyber architecture, U.S. platform dominance, and ASEAN’s digital harmonization efforts. Pitfalls: weak cybersecurity, fragmented standards, or tech dependence. Strategically, digital governance determines national resilience and geopolitical relevance.",
+        "vi": "Quản trị số toàn cầu và cạnh tranh quyền lực mạng lập bản đồ cách dòng dữ liệu, an ninh mạng, tiêu chuẩn số và ảnh hưởng nền tảng định hình chủ quyền tương lai. Nguyên tắc: bảo vệ dữ liệu quốc gia, xây uy tín quy định, tăng cường phòng thủ mạng và đầu tư vào ngoại giao số. Ví dụ: lợi thế GDPR của EU, kiến trúc mạng Trung Quốc, sức mạnh nền tảng của Mỹ và nỗ lực hài hòa số của ASEAN. Hố bẫy: an ninh mạng yếu, tiêu chuẩn phân mảnh hoặc phụ thuộc công nghệ. Về chiến lược, quản trị số quyết định sức bền quốc gia và vị thế địa chính trị."
+      },
+      "tags": ["digital", "cyber", "governance"],
+      "audio": "national_megatrends_7_en.mp3"
+    },
+    {
+      "slug": "societal-transformation-values-shifts-and-cultural-recoding",
+      "keywords_en": ["societal transformation", "values shifts", "cultural change", "identity evolution", "future society"],
+      "keywords_vi": ["biến đổi xã hội", "dịch chuyển giá trị", "thay đổi văn hóa", "tiến hóa bản sắc", "xã hội tương lai"],
+      "copy": {
+        "en": "Societal transformation, value shifts, and cultural recoding explain how digital life, generational turnover, global exposure, mental-health realities, and new moral frameworks reshape national identity. Principles: strengthen cultural core, manage polarization, modernize education, and align identity with future aspirations. Examples: Korea’s cultural globalism, Japan’s lifestyle transitions, Vietnam’s Gen Z identity evolution, and the West’s moral fragmentation. Pitfalls: cultural drift, loss of heritage, or growing generational divides. Strategically, societal recoding defines the trajectory of national coherence and long-term vitality.",
+        "vi": "Biến đổi xã hội, dịch chuyển giá trị và tái mã hóa văn hóa giải thích cách đời sống số, thay thế thế hệ, tiếp xúc toàn cầu, thực tế sức khỏe tâm thần và các khung đạo đức mới định hình bản sắc quốc gia. Nguyên tắc: củng cố lõi văn hóa, quản lý phân cực, hiện đại hóa giáo dục và căn chỉnh bản sắc với khát vọng tương lai. Ví dụ: chủ nghĩa toàn cầu văn hóa của Hàn Quốc, chuyển đổi phong cách sống Nhật, tiến hóa bản sắc Gen Z Việt Nam và phân mảnh đạo đức của phương Tây. Hố bẫy: trôi dạt văn hóa, mất di sản hoặc chia rẽ thế hệ. Về chiến lược, tái mã hóa xã hội quyết định quỹ đạo gắn kết và sinh lực dài hạn của quốc gia."
+      },
+      "tags": ["society", "culture", "values"],
+      "audio": "national_megatrends_8_en.mp3"
+    }
+  ]
+}

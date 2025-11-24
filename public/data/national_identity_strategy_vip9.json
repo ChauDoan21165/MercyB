@@ -1,0 +1,103 @@
+{
+  "id": "national_identity_strategy_vip9",
+  "tier": "VIP9 / Cấp VIP9",
+  "domain": "National",
+  "title": {
+    "en": "National Identity Strategy",
+    "vi": "Chiến Lược Bản Sắc Quốc Gia"
+  },
+  "content": {
+    "en": "This room develops national identity strategy—the long-term shaping of collective meaning, cultural confidence, societal cohesion, and civilizational distinctiveness. It examines foundational narratives, cultural soft power, value systems, generational identity shifts, linguistic resilience, national symbolism, and long-cycle cultural evolution. Nations with strong identity strategy project confidence abroad, maintain unity at home, attract global respect, and preserve stability during transitions. Identity is not nostalgia; it is a renewable strategic asset that underpins national resilience and long-term competitiveness.",
+    "vi": "Phòng này phát triển chiến lược bản sắc quốc gia—định hình dài hạn ý nghĩa tập thể, tự tin văn hóa, gắn kết xã hội và sự độc đáo của nền văn minh. Nội dung xem xét các câu chuyện nền tảng, quyền lực mềm văn hóa, hệ giá trị, chuyển dịch bản sắc thế hệ, sức bền ngôn ngữ, biểu tượng quốc gia và tiến hóa văn hóa chu kỳ dài. Quốc gia có chiến lược bản sắc mạnh sẽ tự tin đối ngoại, đoàn kết nội bộ, thu hút sự tôn trọng quốc tế và giữ ổn định trong thời kỳ chuyển đổi. Bản sắc không phải hoài niệm; đó là tài sản chiến lược tái tạo củng cố chống chịu và sức cạnh tranh dài hạn."
+  },
+  "entries": [
+    {
+      "slug": "foundational-myths-and-national-narrative-architecture",
+      "keywords_en": ["national narrative", "foundational myths", "story architecture", "collective memory", "identity"],
+      "keywords_vi": ["câu chuyện quốc gia", "huyền thoại nền tảng", "kiến trúc tự sự", "ký ức tập thể", "bản sắc"],
+      "copy": {
+        "en": "Foundational myths and national narrative architecture examine the stories a nation tells about its origins, struggles, victories, values, and destiny. Principles: build coherence, avoid distortion, elevate dignity, and integrate indigenous history with modern aspirations. Examples: Japan’s cultural continuity narrative, Korea’s resilience story, France’s republican identity, and Vietnam’s narrative of perseverance and renewal. Pitfalls: politicized rewriting, exclusionary narratives, or fragile myth-making disconnected from lived reality. Strategically, strong narrative architecture anchors identity and strengthens social cohesion.",
+        "vi": "Huyền thoại nền tảng và kiến trúc tự sự quốc gia xem xét những câu chuyện một dân tộc kể về nguồn gốc, gian khó, chiến thắng, giá trị và định mệnh. Nguyên tắc: tạo tính nhất quán, tránh bóp méo, tôn vinh phẩm giá và kết hợp lịch sử bản địa với khát vọng hiện đại. Ví dụ: câu chuyện liên tục văn hóa của Nhật, tự sự kiên cường của Hàn Quốc, bản sắc cộng hòa của Pháp và câu chuyện bền bỉ–tái sinh của Việt Nam. Hố bẫy: viết lại lịch sử theo chính trị, tự sự loại trừ hoặc huyền thoại mong manh xa rời thực tế. Về chiến lược, kiến trúc tự sự mạnh neo bản sắc và tăng gắn kết xã hội."
+      },
+      "tags": ["narrative", "myths", "identity"],
+      "audio": "national_identity_strategy_1_en.mp3"
+    },
+    {
+      "slug": "value-systems-cultural-codes-and-national-character",
+      "keywords_en": ["value systems", "cultural codes", "national character", "societal norms", "identity"],
+      "keywords_vi": ["hệ giá trị", "mã văn hóa", "tính cách quốc gia", "chuẩn mực xã hội", "bản sắc"],
+      "copy": {
+        "en": "Value systems, cultural codes, and national character shape how citizens behave, resolve conflict, pursue ambition, and interpret morality. Principles: cultivate virtues that align with national goals, reinforce integrity, modernize ethical frameworks, and foster civic responsibility. Examples: Japan’s discipline culture, Nordic trust ethos, Korean collective resilience, and Vietnam’s harmony–diligence values. Pitfalls: outdated norms restricting innovation, moral drift, or polarization between traditional and modern values. Strategically, coherent value systems strengthen national unity and long-term competitiveness.",
+        "vi": "Hệ giá trị, mã văn hóa và tính cách quốc gia định hình cách người dân hành xử, giải quyết xung đột, theo đuổi hoài bão và diễn giải đạo đức. Nguyên tắc: nuôi dưỡng phẩm chất phù hợp mục tiêu quốc gia, củng cố liêm chính, hiện đại hóa khuôn đạo đức và thúc đẩy trách nhiệm công dân. Ví dụ: văn hóa kỷ luật Nhật, tinh thần tin cậy Bắc Âu, sức bền tập thể Hàn Quốc và giá trị hòa–cần của Việt Nam. Hố bẫy: chuẩn cũ kìm hãm đổi mới, lệch chuẩn đạo đức hoặc phân cực giữa giá trị truyền thống–hiện đại. Về chiến lược, hệ giá trị thống nhất tăng đoàn kết và sức cạnh tranh dài hạn."
+      },
+      "tags": ["values", "culture", "identity"],
+      "audio": "national_identity_strategy_2_en.mp3"
+    },
+    {
+      "slug": "linguistic-resilience-and-cultural-transmission",
+      "keywords_en": ["linguistic resilience", "cultural transmission", "language policy", "identity continuity", "education"],
+      "keywords_vi": ["sức bền ngôn ngữ", "truyền thừa văn hóa", "chính sách ngôn ngữ", "liên tục bản sắc", "giáo dục"],
+      "copy": {
+        "en": "Linguistic resilience and cultural transmission protect the continuity of identity through language preservation, adaptive vocabulary, intergenerational teaching, and cultural-literacy ecosystems. Principles: strengthen national language education, modernize linguistic expression, support diaspora language retention, and promote cultural-media exports. Examples: Korea’s global language movement, Japan’s media codification, and Vietnam’s strong phonetic literacy structures. Pitfalls: cultural dilution, language decay, or dominance of foreign linguistic systems. Strategically, linguistic resilience is essential for civilizational continuity.",
+        "vi": "Sức bền ngôn ngữ và truyền thừa văn hóa bảo vệ sự liên tục của bản sắc thông qua giữ gìn ngôn ngữ, thích ứng từ vựng, giảng dạy xuyên thế hệ và hệ sinh thái hiểu biết văn hóa. Nguyên tắc: củng cố giáo dục ngôn ngữ quốc gia, hiện đại hóa biểu đạt, hỗ trợ cộng đồng hải ngoại giữ tiếng mẹ đẻ và thúc đẩy xuất khẩu văn hóa–truyền thông. Ví dụ: phong trào ngôn ngữ toàn cầu của Hàn Quốc, hệ mã hóa truyền thông Nhật và năng lực đọc–viết mạnh của Việt Nam. Hố bẫy: pha loãng văn hóa, suy giảm ngôn ngữ hoặc hệ ngôn ngữ ngoại áp đảo. Về chiến lược, sức bền ngôn ngữ là thiết yếu để duy trì liên tục văn minh."
+      },
+      "tags": ["language", "culture", "continuity"],
+      "audio": "national_identity_strategy_3_en.mp3"
+    },
+    {
+      "slug": "cultural-soft-power-and-global-perception-strategy",
+      "keywords_en": ["cultural soft power", "global perception", "nation brand", "influence", "identity"],
+      "keywords_vi": ["quyền lực mềm văn hóa", "nhận thức toàn cầu", "thương hiệu quốc gia", "ảnh hưởng", "bản sắc"],
+      "copy": {
+        "en": "Cultural soft power and global perception strategy expand national influence through arts, digital culture, heritage diplomacy, branding, education exports, and tourism. Principles: consistent narratives, international partnerships, cross-cultural fluency, and credible storytelling. Examples: Korea’s K-culture wave, Japan’s design identity, France’s cultural diplomacy, and Vietnam’s emerging creative industries. Pitfalls: shallow branding without depth, cultural stereotypes, or lack of global-quality content. Strategically, soft power multiplies national legitimacy and international leverage.",
+        "vi": "Quyền lực mềm văn hóa và chiến lược nhận thức toàn cầu mở rộng ảnh hưởng quốc gia thông qua nghệ thuật, văn hóa số, ngoại giao di sản, thương hiệu, đào tạo quốc tế và du lịch. Nguyên tắc: tự sự nhất quán, đối tác quốc tế, năng lực giao thoa văn hóa và kể chuyện có uy tín. Ví dụ: làn sóng K-culture của Hàn Quốc, bản sắc thiết kế Nhật, ngoại giao văn hóa Pháp và ngành sáng tạo đang nổi của Việt Nam. Hố bẫy: thương hiệu nông, khuôn mẫu văn hóa hoặc thiếu nội dung đạt chuẩn quốc tế. Về chiến lược, quyền lực mềm khuếch đại tính chính danh và đòn bẩy quốc tế."
+      },
+      "tags": ["soft-power", "branding", "influence"],
+      "audio": "national_identity_strategy_4_en.mp3"
+    },
+    {
+      "slug": "national-symbolism-cultural-memory-and-historical-continuity",
+      "keywords_en": ["national symbolism", "cultural memory", "historical continuity", "heritage", "identity"],
+      "keywords_vi": ["biểu tượng quốc gia", "ký ức văn hóa", "liên tục lịch sử", "di sản", "bản sắc"],
+      "copy": {
+        "en": "National symbolism, cultural memory, and historical continuity define how monuments, rituals, holidays, arts, landscapes, and collective remembrance shape national unity. Principles: safeguard heritage, modernize symbolism, avoid politicization, and preserve shared memory across generations. Examples: Japan’s cultural preservation systems, France’s heritage institutions, and Vietnam’s layered historical identity from Đông Sơn to modern nationhood. Pitfalls: over-romanticization, erasure, or divisive interpretations. Strategically, cultural memory fosters identity strength and intergenerational stability.",
+        "vi": "Biểu tượng quốc gia, ký ức văn hóa và liên tục lịch sử định hình cách di tích, nghi lễ, ngày lễ, nghệ thuật, cảnh quan và ký ức tập thể tạo ra sự thống nhất quốc gia. Nguyên tắc: bảo vệ di sản, hiện đại hóa biểu tượng, tránh chính trị hóa và giữ ký ức chung qua các thế hệ. Ví dụ: hệ thống bảo tồn văn hóa Nhật, các thiết chế di sản Pháp và bản sắc lịch sử nhiều lớp của Việt Nam từ Đông Sơn đến quốc gia hiện đại. Hố bẫy: lãng mạn hóa quá mức, xóa bỏ hoặc diễn giải gây chia rẽ. Về chiến lược, ký ức văn hóa củng cố sức mạnh bản sắc và ổn định thế hệ."
+      },
+      "tags": ["symbolism", "memory", "heritage"],
+      "audio": "national_identity_strategy_5_en.mp3"
+    },
+    {
+      "slug": "generational-identity-shifts-and-future-citizenship",
+      "keywords_en": ["generational identity", "future citizenship", "youth culture", "civic values", "evolution"],
+      "keywords_vi": ["bản sắc thế hệ", "công dân tương lai", "văn hóa giới trẻ", "giá trị công dân", "tiến hóa"],
+      "copy": {
+        "en": "Generational identity shifts and future citizenship analyze how Gen Z, Gen Alpha, and future cohorts reinterpret cultural norms, political expectations, work, spirituality, and global outlook. Principles: align civic education with modern values, strengthen digital citizenship, bridge generational divides, and cultivate shared aspirations. Examples: Korea’s youth civic engagement, Nordic social-learning systems, and Vietnam’s rapidly evolving youth identity. Pitfalls: widening value gaps, alienation, or failure to integrate new identity expressions. Strategically, generational alignment ensures long-term unity and vitality.",
+        "vi": "Chuyển dịch bản sắc thế hệ và công dân tương lai phân tích cách Gen Z, Gen Alpha và các thế hệ sau diễn giải lại chuẩn mực văn hóa, kỳ vọng chính trị, công việc, tâm linh và góc nhìn toàn cầu. Nguyên tắc: điều chỉnh giáo dục công dân với giá trị hiện đại, củng cố công dân số, thu hẹp khoảng cách thế hệ và xây dựng khát vọng chung. Ví dụ: sự tham gia công dân của giới trẻ Hàn Quốc, hệ thống học xã hội Bắc Âu và bản sắc giới trẻ Việt Nam đang thay đổi nhanh chóng. Hố bẫy: khoảng cách giá trị tăng, xa rời cộng đồng hoặc không hòa nhập được biểu đạt bản sắc mới. Về chiến lược, căn chỉnh thế hệ bảo đảm đoàn kết và sinh lực dài hạn."
+      },
+      "tags": ["generations", "citizenship", "identity"],
+      "audio": "national_identity_strategy_6_en.mp3"
+    },
+    {
+      "slug": "societal-cohesion-polarization-management-and-national-unity",
+      "keywords_en": ["societal cohesion", "polarization management", "unity", "social stability", "identity"],
+      "keywords_vi": ["gắn kết xã hội", "quản lý phân cực", "đoàn kết", "ổn định xã hội", "bản sắc"],
+      "copy": {
+        "en": "Societal cohesion, polarization management, and national unity address how a nation prevents societal fragmentation in an age of digital echo chambers, identity politics, and ideological extremities. Principles: cultivate shared spaces, strengthen community institutions, promote dialogue literacy, and counter disinformation. Examples: Finland’s resilience education, Japan’s community solidarity models, and Vietnam’s tradition of consensus-building. Pitfalls: politicized division, unmanaged online polarization, or declining trust in institutions. Strategically, cohesion preserves national stability and long-cycle social harmony.",
+        "vi": "Gắn kết xã hội, quản lý phân cực và đoàn kết quốc gia giải quyết cách một quốc gia ngăn chia rẽ xã hội trong thời đại buồng vang số, chính trị bản sắc và cực đoan ý thức hệ. Nguyên tắc: xây dựng không gian chung, củng cố thiết chế cộng đồng, thúc đẩy năng lực đối thoại và chống thông tin sai. Ví dụ: giáo dục chống chịu của Phần Lan, mô hình đoàn kết cộng đồng Nhật và truyền thống đồng thuận của Việt Nam. Hố bẫy: chia rẽ chính trị hóa, phân cực trực tuyến không kiểm soát hoặc suy giảm niềm tin vào thiết chế. Về chiến lược, gắn kết bảo vệ ổn định và hòa hợp xã hội chu kỳ dài."
+      },
+      "tags": ["cohesion", "unity", "identity"],
+      "audio": "national_identity_strategy_7_en.mp3"
+    },
+    {
+      "slug": "future-identity-evolution-and-long-cycle-cultural-strategy",
+      "keywords_en": ["future identity", "cultural evolution", "civilizational cycles", "long-term strategy", "identity futures"],
+      "keywords_vi": ["bản sắc tương lai", "tiến hóa văn hóa", "chu kỳ văn minh", "chiến lược dài hạn", "tương lai bản sắc"],
+      "copy": {
+        "en": "Future identity evolution and long-cycle cultural strategy explore how national identity adapts to megatrends such as AI culture, digitized social life, global movement, environmental consciousness, and new forms of spirituality. Principles: maintain cultural core, integrate new identity layers, foresee long-cycle cultural shifts, and nurture creative ecosystems. Examples: Japan’s cultural–technological synthesis, Korea’s hybrid identity, and Vietnam’s emerging digital–cultural confidence. Pitfalls: loss of cultural substance, unmanaged identity flux, or generational disconnection. Strategically, shaping future identity ensures civilizational continuity and adaptive strength across centuries.",
+        "vi": "Tiến hóa bản sắc tương lai và chiến lược văn hóa chu kỳ dài xem xét cách bản sắc quốc gia thích ứng với các megatrend như văn hóa AI, đời sống số, dịch chuyển toàn cầu, ý thức môi trường và các dạng tâm linh mới. Nguyên tắc: giữ lõi văn hóa, tích hợp lớp bản sắc mới, dự báo dịch chuyển văn hóa dài hạn và nuôi dưỡng hệ sáng tạo. Ví dụ: tổng hợp văn hóa–công nghệ Nhật, bản sắc lai Hàn và sự tự tin văn hóa số đang nổi của Việt Nam. Hố bẫy: mất chất văn hóa, dòng bản sắc khó kiểm soát hoặc đứt gãy thế hệ. Về chiến lược, định hình bản sắc tương lai bảo đảm liên tục văn minh và sức thích ứng qua nhiều thế kỷ."
+      },
+      "tags": ["future", "identity", "civilization"],
+      "audio": "national_identity_strategy_8_en.mp3"
+    }
+  ]
+}
