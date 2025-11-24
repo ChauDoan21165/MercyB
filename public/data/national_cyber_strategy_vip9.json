@@ -1,0 +1,103 @@
+{
+  "id": "national_cyber_strategy_vip9",
+  "tier": "VIP9 / Cấp VIP9",
+  "domain": "National",
+  "title": {
+    "en": "National Cyber Strategy",
+    "vi": "Chiến Lược An Ninh Mạng Quốc Gia"
+  },
+  "content": {
+    "en": "This room develops national cyber strategy—how a nation protects digital sovereignty, defends critical infrastructure, builds cyber resilience, governs data, combats cyber threats, secures digital transformation, and wields cyber power responsibly. It covers cyber defense architecture, threat intelligence, offensive–defensive balance, digital economy protection, AI governance, cyber diplomacy, and national cyber readiness for a hyperconnected world.",
+    "vi": "Phòng này xây dựng chiến lược an ninh mạng quốc gia—cách quốc gia bảo vệ chủ quyền số, phòng thủ hạ tầng trọng yếu, xây dựng khả năng chống chịu mạng, quản trị dữ liệu, đối phó đe dọa mạng, bảo vệ chuyển đổi số và sử dụng sức mạnh mạng một cách có trách nhiệm. Nội dung gồm kiến trúc phòng thủ mạng, tình báo mạng, cân bằng tấn công–phòng thủ, bảo vệ kinh tế số, quản trị AI, ngoại giao mạng và mức độ sẵn sàng mạng trong thế giới siêu kết nối."
+  },
+  "entries": [
+    {
+      "slug": "cyber-threat-landscape-and-digital-sovereignty",
+      "keywords_en": ["cyber threat landscape", "digital sovereignty", "attack vectors", "exposure", "national security"],
+      "keywords_vi": ["bức tranh đe dọa mạng", "chủ quyền số", "vector tấn công", "phơi nhiễm", "an ninh quốc gia"],
+      "copy": {
+        "en": "Cyber threat landscape and digital sovereignty map the full ecosystem of adversaries—state actors, criminal syndicates, hacktivists, insider threats, and automated AI-driven attacks. Digital sovereignty requires protecting national data, securing digital borders, and ensuring infrastructure independence. Examples: supply-chain cyber breaches, state-sponsored APT campaigns, ransomware targeting hospitals, and deepfake-based influence operations. Pitfalls: fragmented policies, dependency on foreign platforms, or underestimating AI-accelerated attacks. Strategically, defending digital sovereignty preserves national autonomy in the cyber age.",
+        "vi": "Bức tranh đe dọa mạng và chủ quyền số lập bản đồ toàn bộ hệ sinh thái đối thủ—tác nhân quốc gia, tổ chức tội phạm, hacktivist, nội gián và tấn công tự động dựa trên AI. Chủ quyền số đòi hỏi bảo vệ dữ liệu quốc gia, an toàn biên giới số và độc lập hạ tầng. Ví dụ: tấn công chuỗi cung ứng, chiến dịch APT do nhà nước bảo trợ, ransomware vào bệnh viện và chiến dịch thao túng dựa trên deepfake. Hố bẫy: chính sách phân mảnh, phụ thuộc nền tảng nước ngoài hoặc đánh giá thấp tấn công tăng tốc bởi AI. Về chiến lược, bảo vệ chủ quyền số giữ tự chủ quốc gia trong thời đại mạng."
+      },
+      "tags": ["cyber", "sovereignty", "threats"],
+      "audio": "national_cyber_strategy_1_en.mp3"
+    },
+    {
+      "slug": "critical-infrastructure-defense-and-resilience",
+      "keywords_en": ["critical infrastructure", "resilience", "defense", "continuity", "security"],
+      "keywords_vi": ["hạ tầng trọng yếu", "chống chịu", "phòng thủ", "liên tục", "an ninh"],
+      "copy": {
+        "en": "Critical infrastructure defense and resilience protect essential systems—energy, telecom, finance, healthcare, transportation, and government platforms. Tools include network segmentation, redundancy design, real-time monitoring, and multi-layer cyber shields. Principles: assume breach, minimize blast radius, ensure rapid recovery, and conduct constant stress testing. Examples: cyberdefense in electrical grids, banking continuity drills, and healthcare ransomware response frameworks. Pitfalls: outdated systems, supplier vulnerabilities, or lack of unified national standards. Strategically, infrastructure resilience ensures society continues operating even under cyber siege.",
+        "vi": "Phòng thủ và chống chịu hạ tầng trọng yếu bảo vệ hệ thống thiết yếu—năng lượng, viễn thông, tài chính, y tế, giao thông và nền tảng chính phủ. Công cụ gồm phân đoạn mạng, thiết kế dự phòng, giám sát thời gian thực và lá chắn mạng nhiều lớp. Nguyên tắc: giả định bị xâm nhập, giảm thiểu bán kính thiệt hại, phục hồi nhanh và kiểm thử căng thẳng liên tục. Ví dụ: phòng thủ mạng cho lưới điện, diễn tập liên tục ngân hàng và khung phản ứng ransomware ngành y tế. Hố bẫy: hệ thống lỗi thời, lỗ hổng từ nhà cung cấp hoặc thiếu chuẩn quốc gia thống nhất. Về chiến lược, chống chịu hạ tầng đảm bảo xã hội vận hành dù bị bao vây mạng."
+      },
+      "tags": ["infrastructure", "resilience", "defense"],
+      "audio": "national_cyber_strategy_2_en.mp3"
+    },
+    {
+      "slug": "cyber-defense-architecture-and-multi-layer-security",
+      "keywords_en": ["cyber defense architecture", "multi-layer security", "zero trust", "access control", "security design"],
+      "keywords_vi": ["kiến trúc phòng thủ mạng", "bảo mật nhiều lớp", "zero trust", "kiểm soát truy cập", "thiết kế an ninh"],
+      "copy": {
+        "en": "Cyber defense architecture and multi-layer security establish a national Zero-Trust ecosystem—identity verification, encrypted communications, segmentation, behavioral analytics, and privilege minimization. Architecture includes SOC centers, national CERTs, cyber ranges, red-team operations, and system hardening. Principles: authenticate everything, log everything, isolate failures, and automate responses. Examples: Estonia’s digital defense stack, Israel’s cyber command model, and multi-layer defense used in NATO frameworks. Pitfalls: misconfigured access, slow patch cycles, or siloed defense units. Strategically, robust architecture forms the backbone of national cyber strength.",
+        "vi": "Kiến trúc phòng thủ mạng và bảo mật nhiều lớp thiết lập hệ sinh thái Zero-Trust quốc gia—xác minh danh tính, mã hóa liên lạc, phân đoạn, phân tích hành vi và tối thiểu hóa đặc quyền. Kiến trúc gồm trung tâm SOC, CERT quốc gia, cyber range, đội red-team và tăng cường hệ thống. Nguyên tắc: xác thực mọi thứ, ghi log mọi thứ, cô lập lỗi và tự động hóa phản ứng. Ví dụ: hệ phòng thủ số của Estonia, mô hình chỉ huy mạng Israel và bảo mật nhiều lớp của NATO. Hố bẫy: cấu hình sai truy cập, chu kỳ vá chậm hoặc đơn vị phòng thủ tách biệt. Về chiến lược, kiến trúc vững chắc là xương sống của sức mạnh mạng quốc gia."
+      },
+      "tags": ["architecture", "security", "zero-trust"],
+      "audio": "national_cyber_strategy_3_en.mp3"
+    },
+    {
+      "slug": "national-cyber-intelligence-and-threat-hunting",
+      "keywords_en": ["cyber intelligence", "threat hunting", "APT", "monitoring", "data fusion"],
+      "keywords_vi": ["tình báo mạng", "truy tìm đe dọa", "APT", "giám sát", "kết hợp dữ liệu"],
+      "copy": {
+        "en": "National cyber intelligence and threat hunting detect advanced persistent threats (APTs), supply-chain compromises, and stealthy intrusions. Techniques include memory forensics, malware reverse engineering, beacon detection, honeypots, and behavioral anomaly analysis. Principles: hunt proactively, fuse multi-source intelligence, and identify attacker patterns early. Examples: tracking state-sponsored APT clusters, disrupting criminal botnets, and uncovering stealth campaigns targeting government agencies. Pitfalls: misattribution, insufficient threat visibility, or outdated indicators. Strategically, threat hunting gives the nation first-mover advantage in cyber defense.",
+        "vi": "Tình báo mạng và truy tìm đe dọa quốc gia phát hiện APT, xâm nhập chuỗi cung ứng và các cuộc tấn công ẩn. Kỹ thuật gồm phân tích bộ nhớ, đảo ngược mã độc, dò beacon, honeypot và phân tích bất thường hành vi. Nguyên tắc: truy tìm chủ động, kết hợp đa nguồn và nhận diện mô hình kẻ tấn công sớm. Ví dụ: theo dõi nhóm APT do nhà nước bảo trợ, triệt phá botnet tội phạm và phát hiện chiến dịch ẩn nhắm vào cơ quan chính phủ. Hố bẫy: xác định sai nguồn, thiếu tầm nhìn đe dọa hoặc chỉ báo lỗi thời. Về chiến lược, truy tìm đe dọa đem lại lợi thế người đi trước."
+      },
+      "tags": ["cyber-intel", "threat-hunting", "apt"],
+      "audio": "national_cyber_strategy_4_en.mp3"
+    },
+    {
+      "slug": "cyber-offense-deterrence-and-proportionate-response",
+      "keywords_en": ["cyber offense", "deterrence", "proportionate response", "retaliation", "active defense"],
+      "keywords_vi": ["tấn công mạng", "răn đe", "phản ứng tương xứng", "trả đũa", "phòng thủ chủ động"],
+      "copy": {
+        "en": "Cyber offense, deterrence, and proportionate response define when nations deploy offensive cyber capabilities—disruption operations, counter-hacks, infrastructure disablement, and preemptive digital strikes. Principles: maintain credible deterrence, use offense proportionately, avoid uncontrolled escalation, and integrate offense with diplomatic signaling. Examples: disruptive counter-ransomware operations, offensive actions against hostile infrastructure, and attribution campaigns that deter adversaries. Pitfalls: escalation risks, attribution uncertainty, or legal ambiguity. Strategically, calibrated offense strengthens national posture and reduces adversary confidence.",
+        "vi": "Tấn công mạng, răn đe và phản ứng tương xứng xác định khi nào quốc gia triển khai năng lực tấn công—phá rối, phản công, vô hiệu hóa hạ tầng hoặc đánh phủ đầu số. Nguyên tắc: duy trì răn đe đáng tin, sử dụng tấn công tương xứng, tránh leo thang mất kiểm soát và tích hợp với tín hiệu ngoại giao. Ví dụ: chiến dịch phản ransomware, hành động tấn công vào hạ tầng thù địch và chiến dịch quy kết nhằm răn đe đối thủ. Hố bẫy: nguy cơ leo thang, không chắc chắn trong quy kết hoặc mơ hồ pháp lý. Về chiến lược, tấn công được hiệu chỉnh củng cố vị thế quốc gia và giảm tự tin của đối thủ."
+      },
+      "tags": ["offense", "deterrence", "response"],
+      "audio": "national_cyber_strategy_5_en.mp3"
+    },
+    {
+      "slug": "cyber-governance-data-protection-and-ai-regulation",
+      "keywords_en": ["cyber governance", "data protection", "ai regulation", "privacy", "digital law"],
+      "keywords_vi": ["quản trị mạng", "bảo vệ dữ liệu", "quy định AI", "riêng tư", "luật số"],
+      "copy": {
+        "en": "Cyber governance, data protection, and AI regulation establish national rules for cybersecurity, privacy, data flows, algorithmic accountability, and digital ethics. Tools include national data-protection laws, cross-border data frameworks, AI audit standards, and critical-data classification. Principles: transparency, accountability, proportionality, and public trust. Examples: GDPR-style protections, AI safety standards, and national cloud-sovereignty policies. Pitfalls: overregulation, regulatory lag, or fragmented enforcement. Strategically, strong governance safeguards citizens, supports digital economy growth, and builds global credibility.",
+        "vi": "Quản trị mạng, bảo vệ dữ liệu và quy định AI thiết lập quy tắc quốc gia về an ninh mạng, quyền riêng tư, dòng dữ liệu, trách nhiệm thuật toán và đạo đức số. Công cụ gồm luật bảo vệ dữ liệu, khung dữ liệu xuyên biên giới, tiêu chuẩn kiểm toán AI và phân loại dữ liệu trọng yếu. Nguyên tắc: minh bạch, trách nhiệm, tương xứng và tin cậy công chúng. Ví dụ: bảo vệ kiểu GDPR, tiêu chuẩn an toàn AI và chính sách chủ quyền đám mây quốc gia. Hố bẫy: điều tiết quá mức, chậm trễ quy định hoặc thực thi phân mảnh. Về chiến lược, quản trị mạnh bảo vệ người dân, hỗ trợ tăng trưởng kinh tế số và xây dựng uy tín toàn cầu."
+      },
+      "tags": ["governance", "data", "ai"],
+      "audio": "national_cyber_strategy_6_en.mp3"
+    },
+    {
+      "slug": "cyber-diplomacy-alliance-building-and-norm-setting",
+      "keywords_en": ["cyber diplomacy", "alliances", "norms", "international cooperation", "coalitions"],
+      "keywords_vi": ["ngoại giao mạng", "liên minh", "chuẩn mực", "hợp tác quốc tế", "liên minh đa phương"],
+      "copy": {
+        "en": "Cyber diplomacy, alliance building, and norm setting extend national influence into digital governance. Nations collaborate on cybercrime treaties, trust frameworks, cyber norms, cross-border intelligence sharing, and digital trade rules. Examples: Budapest Convention, QUAD cyber cooperation, ASEAN digital governance, and EU cyber-sanction regimes. Pitfalls: norm fragmentation, conflicting legal definitions, or politicized negotiations. Strategically, cyber diplomacy amplifies national voice and aligns allies behind shared digital principles.",
+        "vi": "Ngoại giao mạng, xây dựng liên minh và thiết lập chuẩn mực mở rộng ảnh hưởng quốc gia trong quản trị số. Quốc gia hợp tác về hiệp ước chống tội phạm mạng, khung tin cậy, chuẩn mực mạng, chia sẻ tình báo và quy tắc thương mại số. Ví dụ: Công ước Budapest, hợp tác mạng QUAD, quản trị số của ASEAN và chế độ trừng phạt mạng của EU. Hố bẫy: chuẩn mực phân mảnh, định nghĩa pháp lý xung đột hoặc đàm phán bị chính trị hóa. Về chiến lược, ngoại giao mạng khuếch đại tiếng nói quốc gia và căn chỉnh đồng minh theo các nguyên tắc số chung."
+      },
+      "tags": ["cyber-diplomacy", "alliances", "norms"],
+      "audio": "national_cyber_strategy_7_en.mp3"
+    },
+    {
+      "slug": "national-cyber-readiness-and-future-warfare-preparedness",
+      "keywords_en": ["cyber readiness", "future warfare", "preparedness", "resilience", "national planning"],
+      "keywords_vi": ["sẵn sàng mạng", "tác chiến tương lai", "chuẩn bị", "chống chịu", "hoạch định quốc gia"],
+      "copy": {
+        "en": "National cyber readiness and future warfare preparedness anticipate digital-era conflict—AI-driven attacks, autonomous malware, quantum threats, satellite targeting, and cyber–physical convergence. Tools include national drills, war-gaming, readiness indices, quantum migration plans, and joint cyber–military coordination. Principles: train continuously, simulate worst cases, build redundancy, and align civilian–military cyber ecosystems. Examples: cyber war-games, zero-day readiness exercises, and quantum-transition roadmaps. Pitfalls: readiness on paper only, outdated drills, or lack of cross-sector cooperation. Strategically, national readiness ensures survival and superiority in the next era of warfare.",
+        "vi": "Sẵn sàng mạng và chuẩn bị cho tác chiến tương lai dự báo xung đột thời đại số—tấn công AI, mã độc tự trị, đe dọa lượng tử, nhắm vệ tinh và hội tụ mạng–vật lý. Công cụ gồm diễn tập quốc gia, war-game, chỉ số sẵn sàng, kế hoạch chuyển đổi lượng tử và phối hợp mạng–quân đội. Nguyên tắc: huấn luyện liên tục, mô phỏng tình huống cực đoan, xây dựng dự phòng và đồng bộ hệ sinh thái mạng dân sự–quân sự. Ví dụ: war-game mạng, diễn tập zero-day và lộ trình chuyển đổi lượng tử. Hố bẫy: sẵn sàng chỉ trên giấy, diễn tập lỗi thời hoặc thiếu phối hợp đa ngành. Về chiến lược, mức độ sẵn sàng quốc gia đảm bảo sống còn và ưu thế trong kỷ nguyên xung đột tiếp theo."
+      },
+      "tags": ["readiness", "future-warfare", "planning"],
+      "audio": "national_cyber_strategy_8_en.mp3"
+    }
+  ]
+}
