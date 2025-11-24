@@ -380,7 +380,16 @@ export default function UnifiedHealthCheck() {
     
     // Helper to get entry identifier (handles different JSON formats)
     const getEntryId = (entry: any): string | null => {
-      return entry.slug || entry.artifact_id || entry.id || null;
+      if (!entry || typeof entry !== 'object') return null;
+      
+      const id = entry.slug || entry.artifact_id || entry.id;
+      
+      // Ensure we return a valid string or null
+      if (id && typeof id === 'string' && id.trim().length > 0) {
+        return id.trim();
+      }
+      
+      return null;
     };
     
     const dbSlugs = new Set(dbEntries.map((e: any) => getEntryId(e)).filter(Boolean));
@@ -2114,12 +2123,14 @@ export default function UnifiedHealthCheck() {
                             )}
                           </div>
                         </div>
-                        {roomReport.entryValidation.some(e => e.issue) && (
+                         {roomReport.entryValidation.some(e => e.issue) && (
                           <div className="space-y-1 bg-muted/30 rounded p-2">
                             {roomReport.entryValidation.filter(e => e.issue).map((entry, idx) => (
                               <div key={idx} className="flex items-center gap-2 text-xs">
                                 <AlertCircle className="h-3 w-3 text-amber-500" />
-                                <span className="font-mono flex-1">{entry.slug}</span>
+                                <span className="font-mono flex-1">
+                                  {entry.slug || <span className="text-muted-foreground italic">(no identifier)</span>}
+                                </span>
                                 <Badge variant="outline" className="text-xs">
                                   {entry.inJson ? 'JSON only' : 'DB only'}
                                 </Badge>
