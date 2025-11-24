@@ -12,6 +12,7 @@ interface Room {
   title_en: string;
   title_vi: string;
   tier: string;
+  domain?: string;
 }
 
 interface DomainSection {
@@ -32,18 +33,16 @@ const RoomsVIP9 = () => {
       try {
         const { data, error } = await supabase
           .from('rooms')
-          .select('id, title_en, title_vi, tier')
+          .select('id, title_en, title_vi, tier, domain')
           .eq('tier', 'vip9')
-          .order('id');
+          .order('title_en');
 
         if (error) throw error;
 
-        // Organize rooms into domains
-        const individualRooms = data.filter(
-          r => r.id.startsWith('strategic_') || r.id === 'individual-strategic-mastery-vip9'
-        );
-        const corporateRooms = data.filter(r => r.id.startsWith('corporate_'));
-        const nationalRooms = data.filter(r => r.id.startsWith('national_'));
+        // Organize rooms by their domain field
+        const individualRooms = data.filter(r => r.domain === 'Individual');
+        const corporateRooms = data.filter(r => r.domain === 'Corporate');
+        const nationalRooms = data.filter(r => r.domain === 'National');
 
         setDomains([
           {

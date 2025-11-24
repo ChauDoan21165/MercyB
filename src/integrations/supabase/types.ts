@@ -1245,6 +1245,7 @@ export type Database = {
           created_at: string | null
           crisis_footer_en: string | null
           crisis_footer_vi: string | null
+          domain: string | null
           entries: Json | null
           id: string
           is_demo: boolean
@@ -1264,6 +1265,7 @@ export type Database = {
           created_at?: string | null
           crisis_footer_en?: string | null
           crisis_footer_vi?: string | null
+          domain?: string | null
           entries?: Json | null
           id: string
           is_demo?: boolean
@@ -1283,6 +1285,7 @@ export type Database = {
           created_at?: string | null
           crisis_footer_en?: string | null
           crisis_footer_vi?: string | null
+          domain?: string | null
           entries?: Json | null
           id?: string
           is_demo?: boolean
