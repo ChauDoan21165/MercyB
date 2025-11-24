@@ -119,6 +119,42 @@ export type Database = {
           },
         ]
       }
+      admin_access_audit: {
+        Row: {
+          accessed_record_id: string | null
+          accessed_table: string
+          action: string
+          admin_user_id: string
+          created_at: string
+          id: string
+          ip_address: string | null
+          metadata: Json | null
+          user_agent: string | null
+        }
+        Insert: {
+          accessed_record_id?: string | null
+          accessed_table: string
+          action: string
+          admin_user_id: string
+          created_at?: string
+          id?: string
+          ip_address?: string | null
+          metadata?: Json | null
+          user_agent?: string | null
+        }
+        Update: {
+          accessed_record_id?: string | null
+          accessed_table?: string
+          action?: string
+          admin_user_id?: string
+          created_at?: string
+          id?: string
+          ip_address?: string | null
+          metadata?: Json | null
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
       admin_notification_preferences: {
         Row: {
           admin_user_id: string
@@ -1525,6 +1561,7 @@ export type Database = {
           id: string
           interests: Json | null
           knowledge_areas: Json | null
+          profile_visibility: string | null
           traits: Json | null
           updated_at: string | null
           user_id: string
@@ -1534,6 +1571,7 @@ export type Database = {
           id?: string
           interests?: Json | null
           knowledge_areas?: Json | null
+          profile_visibility?: string | null
           traits?: Json | null
           updated_at?: string | null
           user_id: string
@@ -1543,6 +1581,7 @@ export type Database = {
           id?: string
           interests?: Json | null
           knowledge_areas?: Json | null
+          profile_visibility?: string | null
           traits?: Json | null
           updated_at?: string | null
           user_id?: string
@@ -2036,6 +2075,15 @@ export type Database = {
         Returns: boolean
       }
       is_user_blocked: { Args: { user_email: string }; Returns: boolean }
+      log_admin_access: {
+        Args: {
+          _accessed_record_id?: string
+          _accessed_table: string
+          _action?: string
+          _metadata?: Json
+        }
+        Returns: undefined
+      }
       log_security_event: {
         Args: {
           _event_type: string
