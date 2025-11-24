@@ -51,6 +51,10 @@ const TIER_DISPLAY_NAMES: Record<string, string> = {
   VIP6: "VIP6",
   vip7: "VIP7",
   VIP7: "VIP7",
+  vip8: "VIP8",
+  VIP8: "VIP8",
+  vip9: "VIP9",
+  VIP9: "VIP9",
   kids: "Kids",
 };
 
@@ -261,8 +265,10 @@ export default function UnifiedHealthCheck() {
       .select("*")
       .neq("tier", "kids");
 
+    // Use case-insensitive matching so it works with values like
+    // "VIP3", "VIP3 / Cấp VIP3", etc., not just plain "vip3"
     if (tier && tier !== "kids") {
-      query = query.eq("tier", tier.toLowerCase());
+      query = query.ilike("tier", `%${tier}%`);
     }
 
     const { data: rooms, error: roomsError } = await query;
