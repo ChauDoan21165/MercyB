@@ -501,14 +501,26 @@ export default function UnifiedHealthCheck() {
         const baseId = room.id || "";
         const snakeId = baseId.replace(/-/g, "_");
         const kebabId = baseId.replace(/_/g, "-");
+        
+        // Helper to convert to Title Case (e.g., strategic_foundations_vip9 -> Strategic_Foundations_vip9)
+        const toTitleCase = (str: string) => {
+          return str.split(/[_-]/).map(word => 
+            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+          ).join("_");
+        };
 
         const baseCandidates = new Set<string>([
           baseId,
           baseId.toLowerCase(),
+          baseId.toUpperCase(),
           snakeId,
           snakeId.toLowerCase(),
+          snakeId.toUpperCase(),
+          toTitleCase(baseId),
+          toTitleCase(snakeId),
           kebabId,
           kebabId.toLowerCase(),
+          kebabId.toUpperCase(),
         ]);
 
         for (const id of baseCandidates) {
