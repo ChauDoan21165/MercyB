@@ -1,0 +1,81 @@
+{
+  "id": "national_geopolitical_mapping_vip9",
+  "tier": "VIP9 / Cấp VIP9",
+  "domain": "National",
+  "title": {
+    "en": "National Geopolitical Mapping",
+    "vi": "Bản Đồ Địa Chính Trị Quốc Gia"
+  },
+  "content": {
+    "en": "This room builds national geopolitical mapping—the systematic understanding of power structures, regional dynamics, strategic chokepoints, influence corridors, alliance systems, and long-cycle shifts shaping the global environment. You will learn geopolitical frameworks, region-by-region power analysis, strategic competition mapping, vulnerability diagnosis, opportunity scanning, and national positioning. Nations that master geopolitical mapping anticipate shocks, shape their environment, and protect their strategic autonomy.",
+    "vi": "Phòng này xây dựng bản đồ địa chính trị quốc gia—sự hiểu biết hệ thống về cấu trúc quyền lực, động lực khu vực, điểm nghẽn chiến lược, hành lang ảnh hưởng, hệ thống liên minh và các chu kỳ dài định hình môi trường toàn cầu. Bạn sẽ học các khung địa chính trị, phân tích quyền lực theo khu vực, lập bản đồ cạnh tranh chiến lược, chẩn đoán điểm yếu, quét cơ hội và định vị quốc gia. Quốc gia làm chủ bản đồ địa chính trị có thể dự báo cú sốc, định hình môi trường và bảo vệ tự chủ chiến lược."
+  },
+  "entries": [
+    {
+      "slug": "geopolitical-frameworks-and-power-structure-mapping",
+      "keywords_en": ["geopolitical frameworks", "power mapping", "global order", "realism", "systems"],
+      "keywords_vi": ["khung địa chính trị", "lập bản đồ quyền lực", "trật tự toàn cầu", "chủ nghĩa hiện thực", "hệ thống"],
+      "copy": {
+        "en": "Geopolitical frameworks and power-structure mapping help nations interpret global competition through models such as realism, liberal order theory, balance of power, spheres of influence, and multi-polarity. Principles include identifying power centers, understanding hierarchy and asymmetries, and mapping influence channels. Examples: U.S.–China bipolar tension, EU’s regulatory power, India’s continental–maritime duality, and ASEAN’s hedging strategies. Pitfalls include oversimplified models, bias toward ideological narratives, or ignoring economic–tech dynamics. Strategically, robust frameworks enable clearer national positioning and proactive foreign policy.",
+        "vi": "Khung địa chính trị và lập bản đồ cấu trúc quyền lực giúp quốc gia diễn giải cạnh tranh toàn cầu qua các mô hình như chủ nghĩa hiện thực, trật tự tự do, cân bằng quyền lực, phạm vi ảnh hưởng và đa cực. Nguyên tắc gồm xác định trung tâm quyền lực, hiểu thứ bậc và bất đối xứng, và lập bản đồ kênh ảnh hưởng. Ví dụ: căng thẳng lưỡng cực Mỹ–Trung, quyền lực quy định của EU, thế lưỡng hợp lục địa–biển của Ấn Độ và chiến lược “giao hưởng” của ASEAN. Hố bẫy gồm mô hình hóa quá đơn giản, thiên kiến ý thức hệ hoặc bỏ qua động lực kinh tế–công nghệ. Về chiến lược, khung mạnh giúp định vị quốc gia rõ ràng và đối ngoại chủ động."
+      },
+      "tags": ["geopolitics", "power", "frameworks"],
+      "audio": "national_geopolitical_mapping_1_en.mp3"
+    },
+    {
+      "slug": "regional-dynamics-and-strategic-theaters",
+      "keywords_en": ["regional dynamics", "strategic theaters", "competition", "alignment", "pivots"],
+      "keywords_vi": ["động lực khu vực", "không gian chiến lược", "cạnh tranh", "căn chỉnh", "xoay trục"],
+      "copy": {
+        "en": "Regional dynamics and strategic theaters reveal how power interacts differently across Asia, Europe, the Middle East, Africa, and the Pacific. Each region has unique drivers—civilizational identity, security dilemmas, energy corridors, demographic pressure, and historical grievances. Principles: understand each theater’s rules, identify local trigger points, and map alliance patterns. Examples: Indo-Pacific balancing, Europe’s collective defense, Middle Eastern proxy alignments, and Africa’s resource diplomacy. Pitfalls include applying one region’s logic to another or misreading local sensitivities. Strategically, mastering regional dynamics elevates diplomatic agility and economic advantage.",
+        "vi": "Động lực khu vực và không gian chiến lược cho thấy quyền lực tương tác khác nhau ở châu Á, châu Âu, Trung Đông, châu Phi và Thái Bình Dương. Mỗi khu vực có động lực riêng—bản sắc văn minh, thế tiến thoái lưỡng nan an ninh, hành lang năng lượng, áp lực dân số và hiềm khích lịch sử. Nguyên tắc: hiểu quy luật của từng không gian, xác định điểm kích hoạt địa phương và lập bản đồ mô hình liên minh. Ví dụ: cân bằng Ấn Độ Dương–Thái Bình Dương, phòng thủ tập thể châu Âu, liên kết ủy nhiệm Trung Đông và ngoại giao tài nguyên châu Phi. Hố bẫy gồm áp dụng logic của vùng này sang vùng khác hoặc đọc sai nhạy cảm địa phương. Về chiến lược, hiểu động lực khu vực nâng cao linh hoạt ngoại giao và lợi thế kinh tế."
+      },
+      "tags": ["regions", "strategic-theaters", "mapping"],
+      "audio": "national_geopolitical_mapping_2_en.mp3"
+    },
+    {
+      "slug": "strategic-chokepoints-and-influence-corridors",
+      "keywords_en": ["chokepoints", "influence corridors", "sea lanes", "supply chains", "geostrategy"],
+      "keywords_vi": ["điểm nghẽn chiến lược", "hành lang ảnh hưởng", "tuyến biển", "chuỗi cung ứng", "địa chiến lược"],
+      "copy": {
+        "en": "Strategic chokepoints and influence corridors are locations where small geographies control vast flows of goods, energy, and power projection. Key chokepoints include Malacca, Hormuz, Suez, Taiwan Strait, and Bosporus. Influence corridors include continental railways, maritime routes, digital cables, and energy pipelines. Principles: protect access, avoid dependence, and leverage geographic advantages. Pitfalls include single-route vulnerability, political instability, or militarized escalation. Strategically, understanding chokepoints lets nations secure trade and negotiate from strength.",
+        "vi": "Điểm nghẽn chiến lược và hành lang ảnh hưởng là các vị trí nơi diện tích nhỏ kiểm soát dòng chảy lớn của hàng hóa, năng lượng và sức mạnh quân sự. Điểm nghẽn then chốt gồm Malacca, Hormuz, Suez, eo biển Đài Loan và Bosporus. Hành lang ảnh hưởng gồm đường sắt lục địa, tuyến biển, cáp số và đường ống năng lượng. Nguyên tắc: bảo vệ quyền tiếp cận, tránh phụ thuộc và tận dụng lợi thế địa lý. Hố bẫy gồm dễ tổn thương tuyến đơn, bất ổn chính trị hoặc leo thang quân sự hóa. Về chiến lược, hiểu rõ điểm nghẽn giúp quốc gia bảo vệ thương mại và đàm phán từ vị thế mạnh."
+      },
+      "tags": ["chokepoints", "corridors", "geostrategy"],
+      "audio": "national_geopolitical_mapping_3_en.mp3"
+    },
+    {
+      "slug": "great-power-competition-and-strategic-alignment",
+      "keywords_en": ["great power competition", "alignment", "hedging", "balancing", "strategy"],
+      "keywords_vi": ["cạnh tranh cường quốc", "căn chỉnh", "hedging", "cân bằng", "chiến lược"],
+      "copy": {
+        "en": "Great-power competition and strategic alignment map how smaller or mid-sized nations position themselves between competing giants. Strategies include balancing, bandwagoning, hedging, selective alignment, or multi-vector diplomacy. Principles: maintain autonomy, avoid entanglement, maximize leverage, and diversify partnerships. Examples: Vietnam’s multi-vector equilibrium, UAE’s pragmatic alignment, and ASEAN’s centrality strategy. Pitfalls include overcommitment to one pole, misreading intentions, or losing flexibility. Strategically, alignment mastery preserves independence and optimizes national advantage.",
+        "vi": "Cạnh tranh cường quốc và căn chỉnh chiến lược cho thấy quốc gia nhỏ và trung bình định vị trước các cực quyền lực lớn. Chiến lược gồm cân bằng, dựa theo phe, hedging, căn chỉnh chọn lọc hoặc ngoại giao đa hướng. Nguyên tắc: giữ tự chủ, tránh mắc kẹt, tối đa hóa đòn bẩy và đa dạng hóa quan hệ. Ví dụ: cân bằng đa hướng của Việt Nam, căn chỉnh linh hoạt của UAE và chiến lược trung tâm của ASEAN. Hố bẫy gồm ràng buộc quá sâu vào một cực, đọc sai ý đồ hoặc mất tính linh hoạt. Về chiến lược, làm chủ căn chỉnh bảo vệ độc lập và tối ưu hóa lợi thế quốc gia."
+      },
+      "tags": ["competition", "alignment", "geopolitics"],
+      "audio": "national_geopolitical_mapping_4_en.mp3"
+    },
+    {
+      "slug": "vulnerability-mapping-and-geopolitical-risk-analysis",
+      "keywords_en": ["vulnerability mapping", "risk analysis", "exposure", "resilience", "security"],
+      "keywords_vi": ["lập bản đồ điểm yếu", "phân tích rủi ro địa chính trị", "phơi nhiễm", "chống chịu", "an ninh"],
+      "copy": {
+        "en": "Vulnerability mapping and geopolitical risk analysis diagnose where national interests face exposure—energy dependencies, supply-chain chokepoints, border tensions, demographic pressure zones, and cyber vulnerabilities. Tools include scenario mapping, stress tests, early-warning systems, and regional intelligence grids. Principles: anticipate, diversify, insulate, and prepare. Pitfalls include blind spots, slow reaction cycles, or overreliance on outdated intelligence. Strategically, risk mapping reduces shock impact and allows nations to navigate uncertainty with confidence.",
+        "vi": "Lập bản đồ điểm yếu và phân tích rủi ro địa chính trị xác định nơi lợi ích quốc gia dễ tổn thương—phụ thuộc năng lượng, điểm nghẽn chuỗi cung ứng, căng thẳng biên giới, vùng áp lực nhân khẩu và lỗ hổng mạng. Công cụ gồm lập kịch bản, stress test, hệ thống cảnh báo sớm và lưới tình báo khu vực. Nguyên tắc: dự báo, đa dạng hóa, cách ly rủi ro và chuẩn bị. Hố bẫy gồm điểm mù, chu kỳ phản ứng chậm hoặc phụ thuộc tình báo lỗi thời. Về chiến lược, lập bản đồ rủi ro giảm tác động cú sốc và giúp quốc gia điều hướng bất định với sự tự tin."
+      },
+      "tags": ["risk", "vulnerability", "mapping"],
+      "audio": "national_geopolitical_mapping_5_en.mp3"
+    },
+    {
+      "slug": "opportunity-scan-and-global-positioning",
+      "keywords_en": ["opportunity scan", "global positioning", "strategic windows", "competitiveness", "influence"],
+      "keywords_vi": ["quét cơ hội", "định vị toàn cầu", "cửa sổ chiến lược", "cạnh tranh", "ảnh hưởng"],
+      "copy": {
+        "en": "Opportunity scanning and global positioning identify strategic openings—trade shifts, demographic transitions, technological breakthroughs, emerging middle classes, and leadership vacuums. Nations must position themselves to capture value early. Principles: agility, foresight, investment readiness, and alignment between state and industry. Examples: Vietnam’s export surge via FTA timing, India’s digital public-infrastructure push, and Saudi Arabia’s first-mover regional initiatives. Pitfalls include slow adaptation, inward bias, or misreading global momentum. Strategically, opportunity mapping lets nations ride the next wave instead of reacting to it.",
+        "vi": "Quét cơ hội và định vị toàn cầu xác định các cửa sổ chiến lược—dịch chuyển thương mại, chuyển đổi nhân khẩu, đột phá công nghệ, tầng lớp trung lưu mới nổi và khoảng trống lãnh đạo. Quốc gia cần định vị để nắm bắt giá trị từ sớm. Nguyên tắc: linh hoạt, tầm nhìn xa, sẵn sàng đầu tư và căn chỉnh giữa nhà nước–doanh nghiệp. Ví dụ: bứt phá xuất khẩu của Việt Nam nhờ thời điểm FTA, hạ tầng số công của Ấn Độ và các sáng kiến dẫn đầu khu vực của Ả Rập Saudi. Hố bẫy gồm thích ứng chậm, thiên vị nội hướng hoặc đọc sai động lực toàn cầu. Về chiến lược, lập bản đồ cơ hội giúp quốc gia lướt trên làn sóng tiếp theo thay vì chỉ phản ứng."
+      },
+      "tags": ["opportunity", "positioning", "strategy"],
+      "audio": "national_geopolitical_mapping_6_en.mp3"
+    }
+  ]
+}
