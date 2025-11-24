@@ -135,24 +135,6 @@
       }
     },
     {
-      "id": "cta_vip",
-      "background_color": "#D8F0EA",
-      "heading_color": "#115E59",
-      "accent_color": "#0F766E",
-      "title": {
-        "en": "Start Small, Grow Deeply—At Your Own Pace",
-        "vi": "Bắt Đầu Nhỏ, Lớn Lên Sâu—Theo Nhịp Của Riêng Bạn"
-      },
-      "body": {
-        "en": "You can begin with free rooms to feel the tone, try the bilingual cards, and get used to listening to short audios. When you're ready, VIP rooms open deeper paths: more topics, multi-layer guidance, and richer practice for both life and language. No algorithms shouting at you—just a quiet library of support you can visit whenever you need. Your life is complex and colorful; your app can be, too—gently.",
-        "vi": "Bạn có thể bắt đầu với các phòng miễn phí để cảm nhận giọng điệu, thử các thẻ song ngữ và làm quen với những đoạn audio ngắn. Khi sẵn sàng, các phòng VIP mở ra con đường sâu hơn: nhiều chủ đề hơn, hướng dẫn nhiều lớp và thực hành phong phú cho cả cuộc sống lẫn ngôn ngữ. Không có thuật toán la hét—chỉ là một thư viện lặng, luôn mở khi bạn cần. Cuộc đời bạn phức tạp và nhiều màu sắc; ứng dụng của bạn cũng có thể như vậy—một cách nhẹ nhàng."
-      },
-      "audio": {
-        "en": "homepage_cta_en.mp3",
-        "vi": "homepage_cta_vi.mp3"
-      }
-    },
-    {
       "id": "vip9_strategic",
       "background_color": "#1E293B",
       "heading_color": "#F8FAFC",
@@ -168,6 +150,24 @@
       "audio": {
         "en": "VIP9_homepage.mp3",
         "vi": "VIP9_homepage.mp3"
+      }
+    },
+    {
+      "id": "cta_vip",
+      "background_color": "#D8F0EA",
+      "heading_color": "#115E59",
+      "accent_color": "#0F766E",
+      "title": {
+        "en": "Start Small, Grow Deeply—At Your Own Pace",
+        "vi": "Bắt Đầu Nhỏ, Lớn Lên Sâu—Theo Nhịp Của Riêng Bạn"
+      },
+      "body": {
+        "en": "You can begin with free rooms to feel the tone, try the bilingual cards, and get used to listening to short audios. When you're ready, VIP rooms open deeper paths: more topics, multi-layer guidance, and richer practice for both life and language. No algorithms shouting at you—just a quiet library of support you can visit whenever you need. Your life is complex and colorful; your app can be, too—gently.",
+        "vi": "Bạn có thể bắt đầu với các phòng miễn phí để cảm nhận giọng điệu, thử các thẻ song ngữ và làm quen với những đoạn audio ngắn. Khi sẵn sàng, các phòng VIP mở ra con đường sâu hơn: nhiều chủ đề hơn, hướng dẫn nhiều lớp và thực hành phong phú cho cả cuộc sống lẫn ngôn ngữ. Không có thuật toán la hét—chỉ là một thư viện lặng, luôn mở khi bạn cần. Cuộc đời bạn phức tạp và nhiều màu sắc; ứng dụng của bạn cũng có thể như vậy—một cách nhẹ nhàng."
+      },
+      "audio": {
+        "en": "homepage_cta_en.mp3",
+        "vi": "homepage_cta_vi.mp3"
       }
     }
   ]
