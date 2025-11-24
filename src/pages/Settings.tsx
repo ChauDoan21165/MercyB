@@ -1,9 +1,14 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { SecurityAlertSettings } from '@/components/SecurityAlertSettings';
+import { ProfilePrivacySettings } from '@/components/ProfilePrivacySettings';
+import { AdminAuditLog } from '@/components/admin/AdminAuditLog';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Settings as SettingsIcon, Shield } from 'lucide-react';
+import { Settings as SettingsIcon, Shield, Lock, FileText } from 'lucide-react';
+import { useAdminCheck } from '@/hooks/useAdminCheck';
 
 export default function Settings() {
+  const { isAdmin, loading: adminLoading } = useAdminCheck();
+
   return (
     <div className="container mx-auto p-6">
       <div className="mb-6">
@@ -16,16 +21,34 @@ export default function Settings() {
         </p>
       </div>
 
-      <Tabs defaultValue="security" className="space-y-6">
+      <Tabs defaultValue="privacy" className="space-y-6">
         <TabsList>
-          <TabsTrigger value="security" className="flex items-center gap-2">
-            <Shield className="h-4 w-4" />
-            Security & Alerts
+          <TabsTrigger value="privacy" className="flex items-center gap-2">
+            <Lock className="h-4 w-4" />
+            Privacy
           </TabsTrigger>
+          {isAdmin && (
+            <>
+              <TabsTrigger value="security" className="flex items-center gap-2">
+                <Shield className="h-4 w-4" />
+                Security & Alerts
+              </TabsTrigger>
+              <TabsTrigger value="audit" className="flex items-center gap-2">
+                <FileText className="h-4 w-4" />
+                Audit Log
+              </TabsTrigger>
+            </>
+          )}
         </TabsList>
 
-        <TabsContent value="security" className="space-y-6">
-          <SecurityAlertSettings />
+        <TabsContent value="privacy" className="space-y-6">
+          <ProfilePrivacySettings />
+        </TabsContent>
+
+        {isAdmin && (
+          <>
+            <TabsContent value="security" className="space-y-6">
+              <SecurityAlertSettings />
           
           <Card>
             <CardHeader>
@@ -63,7 +86,51 @@ export default function Settings() {
               </div>
             </CardContent>
           </Card>
-        </TabsContent>
+            </TabsContent>
+
+            <TabsContent value="audit" className="space-y-6">
+              <AdminAuditLog />
+              
+              <Card>
+                <CardHeader>
+                  <CardTitle>About Audit Logging</CardTitle>
+                  <CardDescription>
+                    Security and compliance through transparent access tracking
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div className="border rounded-lg p-4">
+                      <h3 className="font-medium mb-2">What's Tracked</h3>
+                      <ul className="text-sm text-muted-foreground space-y-1 list-disc ml-4">
+                        <li>Payment data access</li>
+                        <li>Security events viewing</li>
+                        <li>User profile access</li>
+                        <li>Admin actions</li>
+                      </ul>
+                    </div>
+                    <div className="border rounded-lg p-4">
+                      <h3 className="font-medium mb-2">Data Collected</h3>
+                      <ul className="text-sm text-muted-foreground space-y-1 list-disc ml-4">
+                        <li>Timestamp of access</li>
+                        <li>Admin user identifier</li>
+                        <li>Action performed</li>
+                        <li>Record accessed</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="bg-muted/50 p-4 rounded-lg">
+                    <p className="text-sm">
+                      <strong>Purpose:</strong> Audit logs help detect unauthorized access, 
+                      ensure compliance with data protection regulations, and maintain accountability 
+                      for sensitive data access.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+          </>
+        )}
       </Tabs>
     </div>
   );
