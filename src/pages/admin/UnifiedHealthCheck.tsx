@@ -150,6 +150,7 @@ export default function UnifiedHealthCheck() {
   const [bulkFixProgress, setBulkFixProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
   const [bulkFixingAudio, setBulkFixingAudio] = useState(false);
   const [audioFixProgress, setAudioFixProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
+  const [fixingRoomId, setFixingRoomId] = useState<string | null>(null);
   
   // Kids room filtering state (for kids tiers only)
   const [selectedLevel, setSelectedLevel] = useState<string>("all");
@@ -724,8 +725,8 @@ export default function UnifiedHealthCheck() {
       }
 
       toast({
-        title: "Bulk Fix Complete",
-        description: `Successfully fixed ${successCount} rooms. ${failCount > 0 ? `${failCount} failed.` : ''}`,
+        title: "Entry Fix Complete",
+        description: `Synced ${successCount} rooms. ${failCount > 0 ? `${failCount} rooms failed.` : ''}`,
         variant: failCount > 0 ? "default" : "default"
       });
 
@@ -736,6 +737,77 @@ export default function UnifiedHealthCheck() {
     } finally {
       setBulkFixing(false);
       setBulkFixProgress(null);
+    }
+  };
+
+  // Fix entries for a single room
+  const fixSingleRoomEntries = async (roomId: string, roomTitle: string, jsonPath: string) => {
+    setFixingRoomId(roomId);
+    
+    try {
+      // Load JSON file
+      const response = await fetch(`/${jsonPath}`);
+      if (!response.ok) {
+        toast({
+          title: "Failed to Load JSON",
+          description: `Could not load JSON file for ${roomTitle}`,
+          variant: "destructive"
+        });
+        return;
+      }
+
+      // Check if response is actually JSON
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        toast({
+          title: "Invalid Response",
+          description: `Response is not JSON for ${roomTitle}`,
+          variant: "destructive"
+        });
+        return;
+      }
+
+      const jsonData = await response.json();
+      
+      if (!jsonData.entries || !Array.isArray(jsonData.entries)) {
+        toast({
+          title: "No Entries Found",
+          description: `No entries found in JSON for ${roomTitle}`,
+          variant: "destructive"
+        });
+        return;
+      }
+
+      // Update the database with entries from JSON
+      const { error } = await supabase
+        .from('rooms')
+        .update({ entries: jsonData.entries })
+        .eq('id', roomId);
+
+      if (error) {
+        toast({
+          title: "Update Failed",
+          description: `Failed to update ${roomTitle}: ${error.message}`,
+          variant: "destructive"
+        });
+        return;
+      }
+
+      toast({
+        title: "Entries Synced",
+        description: `Successfully synced ${jsonData.entries.length} entries for ${roomTitle}`,
+      });
+
+      // Re-run deep scan to refresh results
+      await runDeepScan();
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: `Failed to fix ${roomTitle}: ${error.message}`,
+        variant: "destructive"
+      });
+    } finally {
+      setFixingRoomId(null);
     }
   };
 
@@ -1860,9 +1932,31 @@ export default function UnifiedHealthCheck() {
                             <FileText className="h-4 w-4" />
                             Entries ({roomReport.entryValidation.length})
                           </p>
-                          <p className="text-sm text-muted-foreground">
-                            {roomReport.entryValidation.filter(e => !e.issue).length} / {roomReport.entryValidation.length} matched
-                          </p>
+                          <div className="flex items-center gap-2">
+                            <p className="text-sm text-muted-foreground">
+                              {roomReport.entryValidation.filter(e => !e.issue).length} / {roomReport.entryValidation.length} matched
+                            </p>
+                            {roomReport.summary.entryIssues > 0 && roomReport.jsonPath && (
+                              <Button 
+                                size="sm"
+                                onClick={() => fixSingleRoomEntries(roomReport.roomId, roomReport.roomTitle, roomReport.jsonPath!)}
+                                disabled={fixingRoomId === roomReport.roomId || bulkFixing || bulkFixingAudio}
+                                className="bg-green-600 hover:bg-green-700"
+                              >
+                                {fixingRoomId === roomReport.roomId ? (
+                                  <>
+                                    <Loader2 className="mr-1 h-3 w-3 animate-spin" />
+                                    Fixing...
+                                  </>
+                                ) : (
+                                  <>
+                                    <Wrench className="mr-1 h-3 w-3" />
+                                    Fix Entries
+                                  </>
+                                )}
+                              </Button>
+                            )}
+                          </div>
                         </div>
                         {roomReport.entryValidation.some(e => e.issue) && (
                           <div className="space-y-1 bg-muted/30 rounded p-2">
