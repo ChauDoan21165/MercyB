@@ -42,9 +42,9 @@ export const TierSection = ({
   
   // Check if background is dark
   const isDarkBackground = backgroundColor.toLowerCase() === '#1e293b';
-  const textColorClass = isDarkBackground ? 'text-slate-100' : 'text-gray-800';
-  const textColorSecondaryClass = isDarkBackground ? 'text-slate-200' : 'text-gray-700';
-  const borderColorClass = isDarkBackground ? 'border-slate-600/50' : 'border-gray-300/50';
+  const textColorClass = isDarkBackground ? 'text-slate-50' : 'text-gray-800';
+  const textColorSecondaryClass = isDarkBackground ? 'text-slate-100' : 'text-gray-700';
+  const borderColorClass = isDarkBackground ? 'border-slate-500/40' : 'border-gray-300/50';
 
   return (
     <section
@@ -61,23 +61,23 @@ export const TierSection = ({
 
           {/* Price Card (if applicable) */}
           {price && (
-            <div className={`${isDarkBackground ? 'bg-slate-800/60' : 'bg-card/80'} backdrop-blur-sm rounded-xl p-6 shadow-lg border ${isDarkBackground ? 'border-slate-700' : 'border-border'}`}>
+            <div className={`${isDarkBackground ? 'bg-slate-700/50 border-slate-500/50' : 'bg-card/80 border-border'} backdrop-blur-sm rounded-xl p-6 shadow-lg border-2`}>
               <div className="text-center space-y-2">
                 <div className={`text-4xl font-bold ${isDarkBackground ? 'text-slate-50' : 'text-gray-900'}`}>
                   ${price.usd_per_month || price.monthly || 0}
-                  <span className={`text-lg font-normal ${isDarkBackground ? 'text-slate-300' : 'text-gray-600'}`}>/month</span>
+                  <span className={`text-lg font-normal ${isDarkBackground ? 'text-slate-200' : 'text-gray-600'}`}>/month</span>
                 </div>
                 
                 {/* Standard rooms per month */}
                 {price.rooms_per_month && (
-                  <div className={`text-sm ${isDarkBackground ? 'text-slate-300' : 'text-gray-600'}`}>
+                  <div className={`text-sm ${isDarkBackground ? 'text-slate-200' : 'text-gray-600'}`}>
                     {price.rooms_per_month} rooms per month
                   </div>
                 )}
                 
                 {/* VIP9 specific info */}
                 {price.rooms_total && (
-                  <div className={`text-sm ${isDarkBackground ? 'text-slate-300' : 'text-gray-600'} space-y-1`}>
+                  <div className={`text-sm ${isDarkBackground ? 'text-slate-200' : 'text-gray-600'} space-y-1`}>
                     <div>{price.rooms_total} Strategic Rooms</div>
                     {price.strategic_domains && <div>{price.strategic_domains} Strategic Domains</div>}
                     {price.entries_per_room && <div>{price.entries_per_room} Entries per Room</div>}
@@ -93,22 +93,22 @@ export const TierSection = ({
                 
                 {/* Feature badges */}
                 {price.personalized_room && (
-                  <div className={`text-sm font-semibold ${isDarkBackground ? 'text-sky-400' : 'text-blue-600'}`}>
+                  <div className={`text-sm font-semibold ${isDarkBackground ? 'text-sky-300' : 'text-blue-600'}`}>
                     + Personalized Room
                   </div>
                 )}
                 {price.career_coaching_mode && (
-                  <div className={`text-sm font-semibold ${isDarkBackground ? 'text-purple-400' : 'text-purple-600'}`}>
+                  <div className={`text-sm font-semibold ${isDarkBackground ? 'text-purple-300' : 'text-purple-600'}`}>
                     + Career Coaching Mode
                   </div>
                 )}
                 {price.writing_feedback && (
-                  <div className={`text-sm font-semibold ${isDarkBackground ? 'text-emerald-400' : 'text-emerald-600'}`}>
+                  <div className={`text-sm font-semibold ${isDarkBackground ? 'text-emerald-300' : 'text-emerald-600'}`}>
                     + AI Writing Feedback
                   </div>
                 )}
                 {price.custom_topics_per_month && price.custom_topics_per_month > 0 && (
-                  <div className={`text-sm font-semibold ${isDarkBackground ? 'text-amber-400' : 'text-amber-600'}`}>
+                  <div className={`text-sm font-semibold ${isDarkBackground ? 'text-amber-300' : 'text-amber-600'}`}>
                     + {price.custom_topics_per_month} Custom Topic/Month
                   </div>
                 )}
