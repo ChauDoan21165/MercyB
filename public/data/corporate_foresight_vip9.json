@@ -1,0 +1,103 @@
+{
+  "id": "corporate_foresight_vip9",
+  "tier": "VIP9 / Cấp VIP9",
+  "domain": "Corporate",
+  "title": {
+    "en": "Corporate Strategic Foresight",
+    "vi": "Dự Báo Chiến Lược Doanh Nghiệp"
+  },
+  "content": {
+    "en": "This room develops strategic foresight—the discipline of scanning futures, anticipating change, and preparing organizations for long-term advantage. You will learn horizon scanning, trend analysis, scenario planning, early-signal detection, and future-back strategy. The aim is to help leaders see beyond quarterly cycles, challenge assumptions, and design choices today that shape stronger futures. Foresight is not prediction; it is preparedness: the ability to sense disruptions early, adapt faster than competitors, and turn uncertainty into opportunity.",
+    "vi": "Phòng này phát triển năng lực dự báo chiến lược—một kỷ luật giúp doanh nghiệp quét tương lai, dự đoán thay đổi và chuẩn bị cho lợi thế dài hạn. Bạn sẽ học horizon scanning, phân tích xu hướng, lập kịch bản tương lai, phát hiện tín hiệu sớm và chiến lược future-back. Mục tiêu là giúp lãnh đạo nhìn xa hơn chu kỳ quý, thách thức giả định và đưa ra quyết định hôm nay để xây tương lai vững mạnh hơn. Dự báo không phải bói toán; đó là sự sẵn sàng: khả năng cảm nhận sớm gián đoạn, thích ứng nhanh hơn đối thủ và biến bất định thành cơ hội."
+  },
+  "entries": [
+    {
+      "slug": "horizon-scanning-and-environmental-monitoring",
+      "keywords_en": ["horizon scanning", "environmental monitoring", "signals", "future trends", "foresight"],
+      "keywords_vi": ["horizon scanning", "giám sát môi trường", "tín hiệu", "xu hướng tương lai", "dự báo"],
+      "copy": {
+        "en": "Horizon scanning and environmental monitoring systematically observe emerging forces shaping the future. These include technological breakthroughs, demographic shifts, geopolitical dynamics, climate changes, consumer sentiment, regulatory shifts, and business-model innovation. Effective scanning uses both structured sources—industry reports, patent data, academic research—and unstructured signals like social chatter, startup movements, and cultural shifts. Principles include breadth, frequency, triangulation, and separating noise from actionable insight. Pitfalls include selective perception (seeing only what confirms beliefs), overreliance on experts, or ignoring weak signals that later prove decisive. Build a scanning dashboard updated weekly with categorized insights. Strategically, horizon scanning widens peripheral vision and prepares organizations for disruption before it arrives.",
+        "vi": "Horizon scanning và giám sát môi trường giúp quan sát có hệ thống các lực mới đang định hình tương lai. Chúng gồm đột phá công nghệ, thay đổi nhân khẩu học, động lực địa chính trị, biến đổi khí hậu, tâm lý khách hàng, điều chỉnh pháp lý và đổi mới mô hình kinh doanh. Scanning hiệu quả dùng cả nguồn có cấu trúc—báo cáo ngành, dữ liệu bằng sáng chế, nghiên cứu học thuật—và tín hiệu phi cấu trúc như thảo luận trên mạng, chuyển động startup hay biến đổi văn hóa. Nguyên tắc gồm mở rộng phạm vi, tần suất cập nhật, đối chiếu đa nguồn và phân biệt nhiễu với insight hữu ích. Hố bẫy gồm nhận thức chọn lọc (chỉ thấy điều ủng hộ niềm tin), phụ thuộc quá mức vào chuyên gia hoặc bỏ qua tín hiệu yếu nhưng sau này lại mang tính quyết định. Hãy tạo dashboard scanning cập nhật hằng tuần theo từng nhóm tín hiệu. Về chiến lược, scanning mở rộng “tầm nhìn ngoại biên” và giúp tổ chức chuẩn bị trước khi gián đoạn ập đến."
+      },
+      "tags": ["foresight", "horizon", "monitoring"],
+      "audio": "corporate_foresight_1_en.mp3"
+    },
+    {
+      "slug": "trend-analysis-and-pattern-recognition",
+      "keywords_en": ["trend analysis", "patterns", "drivers", "megatrends", "insight generation"],
+      "keywords_vi": ["phân tích xu hướng", "mẫu hình", "động lực", "megatrend", "tạo insight"],
+      "copy": {
+        "en": "Trend analysis and pattern recognition translate scattered signals into meaningful trajectories. Trends may be technological (AI automation), economic (deglobalization), social (aging populations), environmental (resource strain), or cultural (identity shifts). Principles include distinguishing trends from fads, connecting drivers to outcomes, and assessing strength, speed, and uncertainty. Useful tools include STEEP analysis, cross-impact matrices, and driver mapping. Examples: the rise of remote work accelerated by digital infrastructure; consumer privacy concerns shaping data regulation. Pitfalls include linear thinking, overlooking countertrends, or assuming global trends apply uniformly to all markets. Strategically, trend analysis identifies emerging opportunities and vulnerabilities before competitors notice.",
+        "vi": "Phân tích xu hướng và nhận diện mẫu hình giúp biến các tín hiệu rời rạc thành quỹ đạo có ý nghĩa. Xu hướng có thể là công nghệ (AI tự động hóa), kinh tế (phi toàn cầu hóa), xã hội (già hóa dân số), môi trường (căng thẳng tài nguyên) hoặc văn hóa (chuyển dịch bản sắc). Nguyên tắc gồm phân biệt xu hướng với trào lưu ngắn hạn, kết nối động lực với kết quả và đánh giá độ mạnh, tốc độ, mức bất định. Công cụ hữu ích gồm phân tích STEEP, ma trận tác động chéo và mapping động lực. Ví dụ: sự trỗi dậy của làm việc từ xa được thúc đẩy bởi hạ tầng số; lo ngại quyền riêng tư hình thành luật dữ liệu mới. Hố bẫy gồm tư duy tuyến tính, bỏ sót phản-xu hướng hoặc cho rằng xu hướng toàn cầu áp dụng giống nhau ở mọi thị trường. Về chiến lược, phân tích xu hướng giúp nhận diện cơ hội và lỗ hổng trước khi đối thủ kịp nhận ra."
+      },
+      "tags": ["trends", "analysis", "patterns"],
+      "audio": "corporate_foresight_2_en.mp3"
+    },
+    {
+      "slug": "scenario-planning-and-future-worlds",
+      "keywords_en": ["scenario planning", "future worlds", "uncertainty", "strategic options", "long-term planning"],
+      "keywords_vi": ["lập kịch bản tương lai", "thế giới tương lai", "bất định", "tùy chọn chiến lược", "hoạch định dài hạn"],
+      "copy": {
+        "en": "Scenario planning creates multiple plausible futures to test strategic resilience. Instead of guessing one future, leaders imagine several: optimistic, disruptive, constrained, or transformative worlds. Principles include identifying critical uncertainties, constructing coherent narratives, and stress-testing strategies against each scenario. Tools include 2×2 scenario matrices and future personas. Examples: energy companies modeling high-carbon vs. low-carbon futures; consumer businesses planning for fragmented vs. hyperconnected markets. Pitfalls include overly narrow scenarios, unrealistic storytelling, or failing to link scenarios to decisions. Strategically, scenario planning strengthens preparedness and gives leaders confidence under uncertainty.",
+        "vi": "Lập kịch bản tương lai tạo nhiều thế giới khả dĩ để kiểm tra độ bền chiến lược. Thay vì đoán một tương lai duy nhất, lãnh đạo tưởng tượng nhiều kịch bản: lạc quan, gián đoạn, bị hạn chế hoặc chuyển hóa sâu. Nguyên tắc gồm xác định bất định trọng yếu, xây dựng câu chuyện nhất quán và kiểm tra sức chịu đựng của chiến lược trong từng kịch bản. Công cụ gồm ma trận 2×2 và “persona tương lai”. Ví dụ: công ty năng lượng mô hình hóa tương lai carbon cao vs. carbon thấp; doanh nghiệp tiêu dùng chuẩn bị cho thị trường phân mảnh vs. siêu kết nối. Hố bẫy gồm kịch bản quá hẹp, kể chuyện phi thực tế hoặc không liên kết kịch bản với quyết định. Về chiến lược, lập kịch bản tăng khả năng sẵn sàng và mang lại sự tự tin khi đối mặt bất định."
+      },
+      "tags": ["scenario", "future", "planning"],
+      "audio": "corporate_foresight_3_en.mp3"
+    },
+    {
+      "slug": "weak-signal-and-inflection-point-detection",
+      "keywords_en": ["weak signals", "inflection points", "early indicators", "strategic shift", "anticipation"],
+      "keywords_vi": ["tín hiệu yếu", "điểm bẻ cong", "chỉ báo sớm", "chuyển dịch chiến lược", "dự đoán"],
+      "copy": {
+        "en": "Weak-signal and inflection-point detection identifies subtle early indicators of major future shifts. Weak signals include unusual customer behaviors, unexpected competitor moves, scientific anomalies, or fringe cultural patterns. Inflection points occur when small signals accelerate into structural change—AI breakthroughs, supply-chain realignment, or regulatory shocks. Principles include sensitivity, curiosity, and connecting dots across domains. Pitfalls include dismissing outliers, reacting too late, or mistaking noise for transformation. Build an inflection log, track signal frequency, and revisit assumptions quarterly. Strategically, detecting inflection points early gives companies first-mover advantage in emerging futures.",
+        "vi": "Phát hiện tín hiệu yếu và điểm bẻ cong giúp nhận ra những chỉ báo mờ nhạt nhưng có thể dẫn tới thay đổi lớn. Tín hiệu yếu gồm hành vi khách hàng lạ, động thái bất ngờ của đối thủ, bất thường khoa học hoặc xu hướng văn hóa ngoại biên. Điểm bẻ cong xuất hiện khi tín hiệu nhỏ tăng tốc thành thay đổi cấu trúc—đột phá AI, tái cấu trúc chuỗi cung ứng hoặc cú sốc pháp lý. Nguyên tắc gồm sự nhạy cảm, tò mò và khả năng nối kết tín hiệu đa lĩnh vực. Hố bẫy gồm xem nhẹ ngoại lệ, phản ứng quá muộn hoặc nhầm lẫn nhiễu với chuyển hóa thật. Hãy lập nhật ký điểm bẻ cong, theo dõi tần suất tín hiệu và rà soát giả định mỗi quý. Về chiến lược, phát hiện sớm điểm bẻ cong mang lại lợi thế người dẫn đầu trong các tương lai mới nổi."
+      },
+      "tags": ["signals", "inflection", "anticipation"],
+      "audio": "corporate_foresight_4_en.mp3"
+    },
+    {
+      "slug": "future-back-strategy-and-long-horizon-design",
+      "keywords_en": ["future-back strategy", "long horizon", "visioning", "backcasting", "planning"],
+      "keywords_vi": ["chiến lược future-back", "tầm nhìn dài hạn", "visioning", "backcasting", "hoạch định"],
+      "copy": {
+        "en": "Future-back strategy starts with a long-horizon vision—10 to 20 years ahead—and works backward to define today’s priorities. Unlike traditional planning, which extrapolates from the present, future-back planning is anchored in desired future states. Principles include bold visioning, backcasting milestones, capability mapping, and aligning short-term actions with long-term intent. Examples: Microsoft’s cloud-first shift or Toyota’s long-range hydrogen strategy. Pitfalls include visions that are too vague, disconnected initiatives, or lack of leadership alignment. Use vision workshops, future timelines, and backward milestone maps. Strategically, future-back design ensures today's decisions accumulate toward a coherent, competitive future.",
+        "vi": "Chiến lược future-back bắt đầu từ tầm nhìn xa—10 đến 20 năm—rồi đi ngược lại để xác định ưu tiên của hiện tại. Khác với hoạch định truyền thống (đẩy hiện tại đi xa hơn), future-back neo vào trạng thái tương lai mong muốn. Nguyên tắc gồm tầm nhìn táo bạo, backcasting mốc thời gian, mapping năng lực và căn chỉnh hành động ngắn hạn với ý đồ dài hạn. Ví dụ: Microsoft chuyển sang cloud-first hoặc chiến lược hydrogen dài hạn của Toyota. Hố bẫy gồm tầm nhìn mơ hồ, sáng kiến rời rạc hoặc lãnh đạo không đồng thuận. Hãy dùng workshop tầm nhìn, timeline tương lai và bản đồ mốc backcasting. Về chiến lược, future-back giúp các quyết định hôm nay tích lũy thành một tương lai cạnh tranh, nhất quán."
+      },
+      "tags": ["future-back", "long-term", "strategy"],
+      "audio": "corporate_foresight_5_en.mp3"
+    },
+    {
+      "slug": "strategic-assumptions-and-mindset-transformation",
+      "keywords_en": ["assumptions", "mindset", "cognitive bias", "strategic thinking", "foresight culture"],
+      "keywords_vi": ["giả định chiến lược", "tư duy", "thiên lệch nhận thức", "tư duy chiến lược", "văn hóa dự báo"],
+      "copy": {
+        "en": "Strategic assumptions and mindset transformation shift how leaders perceive the future. Assumptions shape decisions—about markets, customers, technology, or risk. Many fail not from poor strategy but from outdated mental models. Principles include challenging dogma, exposing blind spots, and creating a culture that rewards inquiry over certainty. Tools include bias audits, pre-mortems, and “what would need to be true?” exercises. Pitfalls include overconfidence, status-quo thinking, or hierarchical cultures that silence dissent. Strategically, reshaping assumptions upgrades decision quality and ensures foresight becomes an organizational capability, not a consultant exercise.",
+        "vi": "Giả định chiến lược và chuyển hóa tư duy quyết định cách lãnh đạo nhìn và đối diện tương lai. Giả định chi phối mọi quyết định—về thị trường, khách hàng, công nghệ hay rủi ro. Nhiều chiến lược thất bại không phải vì sai hướng mà vì mô hình tư duy đã lỗi thời. Nguyên tắc gồm thách thức giáo điều, phơi bày điểm mù và tạo văn hóa coi trọng câu hỏi hơn sự chắc chắn. Công cụ gồm audit thiên lệch, pre-mortem và bài tập “điều gì phải đúng để…?”. Hố bẫy gồm tự tin quá mức, tư duy hiện trạng hoặc văn hóa thứ bậc khiến người khác ngại phản biện. Về chiến lược, đổi mới giả định cải thiện chất lượng quyết định và biến dự báo thành năng lực tổ chức thực sự."
+      },
+      "tags": ["assumptions", "mindset", "foresight"],
+      "audio": "corporate_foresight_6_en.mp3"
+    },
+    {
+      "slug": "innovation-portfolios-and-future-investments",
+      "keywords_en": ["innovation portfolio", "future investments", "R&D", "resource allocation", "strategic bets"],
+      "keywords_vi": ["danh mục đổi mới", "đầu tư tương lai", "R&D", "phân bổ nguồn lực", "đặt cược chiến lược"],
+      "copy": {
+        "en": "Innovation portfolios and future investments allocate resources between core improvements, adjacent expansions, and breakthrough bets. Principles include balancing risk, setting learning goals, and ensuring long-term bets do not starve from underfunding. Tools include 70-20-10 portfolios, option-based budgeting, and staged investment. Examples: Alphabet’s portfolio approach or Amazon’s long-horizon bets like AWS. Pitfalls include over-investing in core comfort zones, cutting future bets during downturns, or failing to scale promising pilots. Strategically, disciplined innovation portfolios ensure companies build tomorrow’s capabilities while still performing today.",
+        "vi": "Danh mục đổi mới và đầu tư tương lai phân bổ nguồn lực giữa cải tiến lõi, mở rộng liền kề và đột phá dài hạn. Nguyên tắc gồm cân bằng rủi ro, đặt mục tiêu học tập và đảm bảo “đặt cược tương lai” không bị thiếu vốn. Công cụ gồm danh mục 70-20-10, ngân sách theo quyền chọn và đầu tư theo giai đoạn. Ví dụ: danh mục đổi mới của Alphabet hoặc các đặt cược dài hạn như AWS của Amazon. Hố bẫy gồm đầu tư quá nhiều vào vùng thoải mái, cắt giảm sáng kiến tương lai khi khó khăn hoặc không mở rộng pilot tiềm năng. Về chiến lược, danh mục đổi mới có kỷ luật giúp doanh nghiệp xây năng lực tương lai trong khi vẫn vận hành hiệu quả hôm nay."
+      },
+      "tags": ["innovation", "portfolio", "future"],
+      "audio": "corporate_foresight_7_en.mp3"
+    },
+    {
+      "slug": "building-a-foresight-driven-organization",
+      "keywords_en": ["foresight culture", "organizational design", "capabilities", "systems", "transformation"],
+      "keywords_vi": ["văn hóa dự báo", "thiết kế tổ chức", "năng lực", "hệ thống", "chuyển hóa"],
+      "copy": {
+        "en": "Building a foresight-driven organization embeds future thinking into everyday decisions. Capabilities include foresight teams, cross-functional scanning groups, innovation labs, and executive future councils. Systems include learning loops, signal channels, scenario libraries, and strategic reviews tied to future indicators. Pitfalls include treating foresight as a one-off workshop, lack of ownership, or disconnecting foresight from strategy and budgeting. Create rituals: monthly foresight briefs, quarterly scenario sessions, and annual future reviews. Strategically, a foresight-driven organization becomes adaptive, opportunity-seeking, and resilient against shocks—designing the future instead of reacting to it.",
+        "vi": "Xây tổ chức định hướng dự báo nghĩa là đưa tư duy tương lai vào mọi quyết định hằng ngày. Năng lực gồm đội foresight, nhóm scanning liên phòng ban, phòng đổi mới và hội đồng tương lai của ban lãnh đạo. Hệ thống gồm vòng học tập, kênh tín hiệu, thư viện kịch bản và đánh giá chiến lược gắn với chỉ báo tương lai. Hố bẫy gồm xem dự báo như workshop một lần, thiếu chủ sở hữu hoặc tách rời dự báo khỏi chiến lược và ngân sách. Hãy tạo nghi thức: bản tin foresight hằng tháng, phiên kịch bản hàng quý và đánh giá tương lai hằng năm. Về chiến lược, tổ chức dựa trên foresight trở nên linh hoạt, tìm kiếm cơ hội và chống chịu tốt trước cú sốc—không chỉ phản ứng mà còn chủ động thiết kế tương lai."
+      },
+      "tags": ["foresight", "organization", "capabilities"],
+      "audio": "corporate_foresight_8_en.mp3"
+    }
+  ]
+}
