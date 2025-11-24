@@ -165,6 +165,28 @@
       }
     },
     {
+      "slug": "vip9-tier",
+      "background_color": "#1E293B",
+      "title": {
+        "en": "⭐ VIP9 — Strategic Mindset Institute",
+        "vi": "⭐ VIP9 — Viện Tư Duy Chiến Lược"
+      },
+      "content": {
+        "en": "VIP9 is the highest tier inside Mercy Blade — a quiet, serious space for people who want to think in decades, not days. Built for founders, executives, policymakers, and strategic thinkers, VIP9 offers 55 advanced rooms across three strategic layers: Individual Strategic Mastery (20 rooms), Corporate & Organizational Strategy (20 rooms), and National & Geostrategic Intelligence (15 rooms). Each room contains eight long-form entries (about 350 words per language), written with the depth of executive briefings but the clarity Mercy Blade is known for. You learn how to see patterns, anticipate long cycles, build systems, make calm decisions under pressure, and stay neutral when the world becomes noisy. VIP9 also includes distilled lessons from history's greatest strategists: Sun Tzu, Machiavelli, Musashi, Arendt, Clausewitz, Drucker, Boyd, and Porter. This tier is not about feeling powerful — it's about seeing clearly, acting deliberately, and designing a life and career with the judgment of a strategist.",
+        "vi": "VIP9 là tầng cao nhất trong Mercy Blade — một không gian trầm, nghiêm túc dành cho những người muốn suy nghĩ theo thập kỷ, không phải theo ngày. Được xây dựng cho nhà sáng lập, lãnh đạo, người làm chính sách và những người tư duy chiến lược, VIP9 mang đến 55 phòng nâng cao thuộc ba tầng chiến lược: Tư Duy Chiến Lược Cá Nhân (20 phòng), Chiến Lược Doanh Nghiệp & Tổ Chức (20 phòng), và Tình Báo Địa–Chiến Lược Quốc Gia (15 phòng). Mỗi phòng có tám bài dài (khoảng 350 từ mỗi ngôn ngữ), được viết với chiều sâu của bản phân tích điều hành nhưng vẫn giữ sự rõ ràng của Mercy Blade. Bạn học cách nhận diện mô thức, dự đoán chu kỳ dài, xây dựng hệ thống, ra quyết định bình tĩnh dưới áp lực, và giữ trung lập khi thế giới ồn ào. VIP9 còn chứa các bài học tinh gọn từ những chiến lược gia vĩ đại nhất lịch sử: Tôn Tử, Machiavelli, Musashi, Arendt, Clausewitz, Drucker, Boyd và Porter. Tầng này không dạy bạn \"cảm thấy mạnh mẽ\" — mà giúp bạn nhìn rõ hơn, hành động chủ ý hơn và thiết kế cuộc sống với tư duy chiến lược gia."
+      },
+      "audio": {
+        "en": "tiers_vip9_intro_en.mp3"
+      },
+      "pricing": {
+        "usd_per_month": 150,
+        "rooms_total": 55,
+        "strategic_domains": 3,
+        "entries_per_room": 8,
+        "words_per_entry": 350
+      }
+    },
+    {
       "slug": "tiers-cta",
       "background_color": "#FFFFFF",
       "title": {
