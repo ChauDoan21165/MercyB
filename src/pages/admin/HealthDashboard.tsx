@@ -12,6 +12,7 @@ const tiers = [
   { id: "vip5", name: "VIP 5", icon: Shield, color: "text-indigo-600" },
   { id: "vip6", name: "VIP 6", icon: Shield, color: "text-indigo-700" },
   { id: "vip7", name: "VIP 7", icon: Shield, color: "text-indigo-800" },
+  { id: "vip9", name: "VIP 9", icon: Shield, color: "text-amber-600" },
 ];
 
 export default function HealthDashboard() {
