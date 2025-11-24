@@ -490,26 +490,63 @@ export default function UnifiedHealthCheck() {
         const room = rooms![i];
         setProgress({ current: i + 1, total, roomName: room.title_en });
 
-        // Find and load JSON file
+        // Build robust candidate paths for JSON file
         const manifestPathById = PUBLIC_ROOM_MANIFEST[room.id];
-        if (!manifestPathById) continue;
+        const candidatePaths: string[] = [];
+
+        if (manifestPathById) {
+          candidatePaths.push(`/${manifestPathById}`);
+        }
+
+        const baseId = room.id || "";
+        const snakeId = baseId.replace(/-/g, "_");
+        const kebabId = baseId.replace(/_/g, "-");
+
+        const baseCandidates = new Set<string>([
+          baseId,
+          baseId.toLowerCase(),
+          snakeId,
+          snakeId.toLowerCase(),
+          kebabId,
+          kebabId.toLowerCase(),
+        ]);
+
+        for (const id of baseCandidates) {
+          if (!id) continue;
+          candidatePaths.push(`/data/${id}.json`);
+        }
+
+        let jsonData: any = null;
+        let usedPath: string | null = null;
+
+        for (const path of candidatePaths) {
+          try {
+            const response = await fetch(path);
+            if (!response.ok) continue;
+
+            const contentType = response.headers.get("content-type");
+            if (!contentType || !contentType.includes("application/json")) {
+              continue;
+            }
+
+            jsonData = await response.json();
+            usedPath = path.replace(/^\//, "");
+            break;
+          } catch {
+            // Try next candidate
+          }
+        }
+
+        if (!jsonData) {
+          console.warn(`Skipping room ${room.id}: no readable JSON file found for candidates ${candidatePaths.join(", ")}`);
+          continue;
+        }
 
         try {
-          const response = await fetch(`/${manifestPathById}`);
-          if (!response.ok) continue;
-          
-          // Check if response is actually JSON
-          const contentType = response.headers.get('content-type');
-          if (!contentType || !contentType.includes('application/json')) {
-            console.warn(`Skipping ${room.id}: Response is not JSON (${contentType})`);
-            continue;
-          }
-          
-          const jsonData = await response.json();
-          const report = await deepScanRoom(room, jsonData, manifestPathById);
+          const report = await deepScanRoom(room, jsonData, usedPath || manifestPathById || "");
           reports.push(report);
         } catch (error) {
-          console.warn(`Skipping room ${room.id}: ${error instanceof Error ? error.message : 'Unknown error'}`);
+          console.warn(`Skipping room ${room.id}: ${error instanceof Error ? error.message : "Unknown error"}`);
         }
       }
 
