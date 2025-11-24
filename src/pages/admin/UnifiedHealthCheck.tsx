@@ -146,6 +146,8 @@ export default function UnifiedHealthCheck() {
   const [progress, setProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
   const [deepScanResults, setDeepScanResults] = useState<DeepRoomReport[]>([]);
   const [deepScanning, setDeepScanning] = useState(false);
+  const [bulkFixing, setBulkFixing] = useState(false);
+  const [bulkFixProgress, setBulkFixProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
   
   // Kids room filtering state (for kids tiers only)
   const [selectedLevel, setSelectedLevel] = useState<string>("all");
@@ -487,6 +489,85 @@ export default function UnifiedHealthCheck() {
     } finally {
       setDeepScanning(false);
       setProgress(null);
+    }
+  };
+
+  // Bulk fix entry mismatches
+  const bulkFixEntryMismatches = async () => {
+    // Get all rooms with entry_mismatch issues
+    const roomsWithMismatches = deepScanResults.filter(
+      report => report.summary.entryIssues > 0
+    );
+
+    if (roomsWithMismatches.length === 0) {
+      toast({
+        title: "No Issues Found",
+        description: "No rooms with entry mismatches to fix",
+      });
+      return;
+    }
+
+    setBulkFixing(true);
+    let successCount = 0;
+    let failCount = 0;
+
+    try {
+      for (let i = 0; i < roomsWithMismatches.length; i++) {
+        const report = roomsWithMismatches[i];
+        setBulkFixProgress({
+          current: i + 1,
+          total: roomsWithMismatches.length,
+          roomName: report.roomTitle
+        });
+
+        try {
+          // Load JSON file
+          const response = await fetch(`/${report.jsonPath}`);
+          if (!response.ok) {
+            console.error(`Failed to load JSON for ${report.roomId}`);
+            failCount++;
+            continue;
+          }
+
+          const jsonData = await response.json();
+          
+          if (!jsonData.entries || !Array.isArray(jsonData.entries)) {
+            console.error(`No entries found in JSON for ${report.roomId}`);
+            failCount++;
+            continue;
+          }
+
+          // Update the database with entries from JSON
+          const { error } = await supabase
+            .from('rooms')
+            .update({ entries: jsonData.entries })
+            .eq('id', report.roomId);
+
+          if (error) {
+            console.error(`Failed to update ${report.roomId}:`, error);
+            failCount++;
+          } else {
+            successCount++;
+          }
+        } catch (error: any) {
+          console.error(`Error fixing ${report.roomId}:`, error);
+          failCount++;
+        }
+      }
+
+      toast({
+        title: "Bulk Fix Complete",
+        description: `Successfully fixed ${successCount} rooms. ${failCount > 0 ? `${failCount} failed.` : ''}`,
+        variant: failCount > 0 ? "default" : "default"
+      });
+
+      // Re-run deep scan to refresh results
+      if (successCount > 0) {
+        await runDeepScan();
+      }
+    } finally {
+      setBulkFixing(false);
+      setBulkFixProgress(null);
     }
   };
 
@@ -1202,6 +1283,24 @@ export default function UnifiedHealthCheck() {
         </Card>
       )}
 
+      {bulkFixing && bulkFixProgress && (
+        <Card className="p-6 border-green-500/50">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-muted-foreground">Syncing entries to database...</span>
+              <span className="font-medium">
+                {bulkFixProgress.current} / {bulkFixProgress.total}
+              </span>
+            </div>
+            <Progress value={(bulkFixProgress.current / bulkFixProgress.total) * 100} className="h-2" />
+            <div className="flex items-center gap-2 text-sm">
+              <Loader2 className="h-4 w-4 animate-spin text-green-500" />
+              <span className="text-foreground">{bulkFixProgress.roomName}</span>
+            </div>
+          </div>
+        </Card>
+      )}
+
       {/* Unified Tier Selection */}
       <Card className="p-6">
         <div className="space-y-4">
@@ -1428,10 +1527,32 @@ export default function UnifiedHealthCheck() {
                   Comprehensive validation including audio files and entry matching
                 </p>
               </div>
-              <Button onClick={downloadComprehensiveReport} variant="outline">
-                <Download className="mr-2 h-4 w-4" />
-                Export Report
-              </Button>
+              <div className="flex gap-2">
+                {deepScanResults.some(r => r.summary.entryIssues > 0) && (
+                  <Button 
+                    onClick={bulkFixEntryMismatches} 
+                    disabled={bulkFixing}
+                    variant="default"
+                    className="bg-green-600 hover:bg-green-700"
+                  >
+                    {bulkFixing ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Syncing...
+                      </>
+                    ) : (
+                      <>
+                        <Wrench className="mr-2 h-4 w-4" />
+                        Bulk Fix Entry Mismatches
+                      </>
+                    )}
+                  </Button>
+                )}
+                <Button onClick={downloadComprehensiveReport} variant="outline">
+                  <Download className="mr-2 h-4 w-4" />
+                  Export Report
+                </Button>
+              </div>
             </div>
 
             {/* Summary Cards */}
