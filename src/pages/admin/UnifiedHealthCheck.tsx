@@ -484,6 +484,7 @@ export default function UnifiedHealthCheck() {
       if (roomsError) throw roomsError;
 
       const reports: DeepRoomReport[] = [];
+      const failedRooms: { id: string, title: string, error: string }[] = [];
       const total = rooms?.length || 0;
 
       for (let i = 0; i < total; i++) {
@@ -499,7 +500,12 @@ export default function UnifiedHealthCheck() {
           resolvedPath = await resolveRoomJsonPath(room.id || "");
           jsonData = await loadRoomJson(room.id || "");
         } catch (error: any) {
-          console.error(`❌ Failed to load JSON for ${room.id}:`, error.message);
+          console.error(`❌ JSON LOAD FAILED for ${room.id}:`, error.message);
+          failedRooms.push({
+            id: room.id,
+            title: room.title_en || room.id,
+            error: error.message || 'Unknown error'
+          });
           // Hard fail - do not continue with this room
           continue;
         }
@@ -509,15 +515,35 @@ export default function UnifiedHealthCheck() {
           reports.push(report);
         } catch (error) {
           console.warn(`Skipping room ${room.id}: ${error instanceof Error ? error.message : "Unknown error"}`);
+          failedRooms.push({
+            id: room.id,
+            title: room.title_en || room.id,
+            error: error instanceof Error ? error.message : "Unknown error"
+          });
         }
       }
 
       setDeepScanResults(reports);
       
-      toast({
-        title: "Deep Scan Complete",
-        description: `Scanned ${reports.length} rooms with detailed validation`,
-      });
+      // Show results with failure count
+      if (failedRooms.length > 0) {
+        console.error('❌ FAILED ROOMS:', failedRooms);
+        toast({
+          title: "Deep Scan Complete with Errors",
+          description: `✅ ${reports.length} rooms scanned | ❌ ${failedRooms.length} rooms failed JSON validation`,
+          variant: "destructive"
+        });
+        
+        // Log each failed room for debugging
+        failedRooms.forEach(({ id, title, error }) => {
+          console.error(`\n❌ ROOM FAILED: ${id} (${title})\n   ${error}\n`);
+        });
+      } else {
+        toast({
+          title: "Deep Scan Complete",
+          description: `Scanned ${reports.length} rooms with detailed validation`,
+        });
+      }
     } catch (error: any) {
       toast({
         title: "Deep Scan Failed",
