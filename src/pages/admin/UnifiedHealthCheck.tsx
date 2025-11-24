@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 // Tabs component removed - using unified tier dropdown instead
-import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench, Download } from "lucide-react";
+import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench, Download, ExternalLink, FileJson, Database } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
@@ -1039,6 +1039,79 @@ export default function UnifiedHealthCheck() {
                               )}
                             </Button>
                           )}
+                          
+                          {/* Quick-fix action buttons */}
+                          <div className="flex gap-2 mt-3 pt-3 border-t">
+                            {!issue.isKidsRoom && issue.issueType !== "orphan_json" && (
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                asChild
+                              >
+                                <a
+                                  href={`/admin/rooms?search=${encodeURIComponent(issue.roomId)}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="flex items-center"
+                                >
+                                  <Database className="h-4 w-4 mr-2" />
+                                  Open Room Editor
+                                  <ExternalLink className="h-3 w-3 ml-1" />
+                                </a>
+                              </Button>
+                            )}
+                            
+                            {issue.resolvedPath && (
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                onClick={() => {
+                                  navigator.clipboard.writeText(issue.resolvedPath || '');
+                                  toast({
+                                    title: "Path Copied",
+                                    description: `Copied: ${issue.resolvedPath}`,
+                                  });
+                                }}
+                              >
+                                <FileJson className="h-4 w-4 mr-2" />
+                                Copy JSON Path
+                              </Button>
+                            )}
+                            
+                            {issue.issueType === "orphan_json" && issue.resolvedPath && (
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                onClick={() => {
+                                  const fullPath = `public/${issue.resolvedPath}`;
+                                  navigator.clipboard.writeText(fullPath);
+                                  toast({
+                                    title: "File Path Copied",
+                                    description: `File location: ${fullPath}`,
+                                  });
+                                }}
+                              >
+                                <FileJson className="h-4 w-4 mr-2" />
+                                Copy Full Path
+                              </Button>
+                            )}
+                            
+                            {issue.manifestKey && (
+                              <Button
+                                size="sm"
+                                variant="ghost"
+                                onClick={() => {
+                                  navigator.clipboard.writeText(issue.manifestKey || '');
+                                  toast({
+                                    title: "Key Copied",
+                                    description: `Manifest key: ${issue.manifestKey}`,
+                                  });
+                                }}
+                              >
+                                Copy Manifest Key
+                              </Button>
+                            )}
+                          </div>
                         </div>
                       </div>
                       {getIssueBadge(issue.issueType)}
