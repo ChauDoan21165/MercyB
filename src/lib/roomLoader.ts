@@ -145,14 +145,33 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
     console.log('⚠️ Database load failed, falling back to static files:', dbError);
   }
 
-  // Fallback to static JSON files (original logic)
-  const hasTier = /(\-|_)(free|vip1|vip2|vip3|vip4)($|\-)/.test(roomId);
-  const normalizedTier = ['free','vip1','vip2','vip3','vip4'].includes(tier) ? tier : 'free';
-  const manifestKey = hasTier ? roomId.replace(/_/g, '-') : `${roomId.replace(/_/g, '-')}-${normalizedTier}`;
-
+  // Fallback to static JSON files (original logic, extended for higher VIP tiers)
+  const supportedTiers = ['free', 'vip1', 'vip2', 'vip3', 'vip3-ii', 'vip3_ii', 'vip4', 'vip5', 'vip6', 'vip9'];
+  const hasTier = new RegExp(`(\-|_)(${supportedTiers.join('|')})($|\-)`).test(roomId);
+  const normalizedTier = supportedTiers.includes(tier) ? tier : 'free';
+  const baseRoomId = roomId.replace(/_/g, '-');
+  const manifestKey = hasTier ? baseRoomId : `${baseRoomId}-${normalizedTier}`;
+ 
   try {
     const directKey = roomId ? roomId.replace(/_/g, '-') : '';
-    const filename = PUBLIC_ROOM_MANIFEST[manifestKey] || (directKey ? PUBLIC_ROOM_MANIFEST[directKey] : undefined);
+    let filename =
+      PUBLIC_ROOM_MANIFEST[manifestKey] ||
+      (directKey ? PUBLIC_ROOM_MANIFEST[directKey] : undefined);
+ 
+    if (!filename && roomId) {
+      const altKeys = [
+        roomId,
+        roomId.replace(/-/g, '_'),
+        roomId.replace(/-/g, '_').replace(/_/g, '-'),
+      ];
+      for (const key of altKeys) {
+        if (PUBLIC_ROOM_MANIFEST[key]) {
+          filename = PUBLIC_ROOM_MANIFEST[key];
+          break;
+        }
+      }
+    }
+ 
     let jsonData: any = null;
 
     const candidates: string[] = [];

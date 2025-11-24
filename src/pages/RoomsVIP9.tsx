@@ -39,7 +39,9 @@ const RoomsVIP9 = () => {
         if (error) throw error;
 
         // Organize rooms into domains
-        const individualRooms = data.filter(r => r.id.startsWith('strategic_'));
+        const individualRooms = data.filter(
+          r => r.id.startsWith('strategic_') || r.id === 'individual-strategic-mastery-vip9'
+        );
         const corporateRooms = data.filter(r => r.id.startsWith('corporate_'));
         const nationalRooms = data.filter(r => r.id.startsWith('national_'));
 

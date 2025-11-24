@@ -70,7 +70,20 @@ const ChatHub = () => {
   const progress = useRoomProgress(roomId);
   const { trackMessage, trackKeyword, trackCompletion } = useBehaviorTracking(roomId || "");
   const { awardPoints } = usePoints();
-  const { canAccessVIP1, canAccessVIP2, canAccessVIP3, canAccessVIP4, tier, isAdmin, isAuthenticated, loading: accessLoading } = useUserAccess();
+  const {
+    canAccessVIP1,
+    canAccessVIP2,
+    canAccessVIP3,
+    canAccessVIP3II,
+    canAccessVIP4,
+    canAccessVIP5,
+    canAccessVIP6,
+    canAccessVIP9,
+    tier,
+    isAdmin,
+    isAuthenticated,
+    loading: accessLoading,
+  } = useUserAccess();
   const { creditInfo, hasCreditsRemaining, incrementUsage, refreshCredits } = useCredits();
   const [showAccessDenied, setShowAccessDenied] = useState(false);
   const [showCreditLimit, setShowCreditLimit] = useState(false);
@@ -168,14 +181,30 @@ const ChatHub = () => {
         (info.tier === 'vip1' && canAccessVIP1) ||
         (info.tier === 'vip2' && canAccessVIP2) ||
         (info.tier === 'vip3' && canAccessVIP3) ||
-        (info.tier === 'vip4' && canAccessVIP4);
+        (info.tier === 'vip3_ii' && canAccessVIP3II) ||
+        (info.tier === 'vip4' && canAccessVIP4) ||
+        (info.tier === 'vip5' && canAccessVIP5) ||
+        (info.tier === 'vip6' && canAccessVIP6) ||
+        (info.tier === 'vip9' && canAccessVIP9);
       if (!hasAccess) {
         setShowAccessDenied(true);
       } else {
         setShowAccessDenied(false);
       }
     }
-  }, [accessLoading, info, canAccessVIP1, canAccessVIP2, canAccessVIP3, canAccessVIP4, isAdmin]);
+  }, [
+    accessLoading,
+    info,
+    canAccessVIP1,
+    canAccessVIP2,
+    canAccessVIP3,
+    canAccessVIP3II,
+    canAccessVIP4,
+    canAccessVIP5,
+    canAccessVIP6,
+    canAccessVIP9,
+    isAdmin,
+  ]);
 
   const handleAccessDenied = () => {
     navigate('/');
