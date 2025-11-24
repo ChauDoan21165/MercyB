@@ -176,12 +176,7 @@ export default function UnifiedHealthCheck() {
     }
   }, [selectedTier, selectedLevel]);
 
-  // Auto-run health checks when selectedTier changes
-  useEffect(() => {
-    if (selectedTier) {
-      checkRoomHealth();
-    }
-  }, [selectedTier]);
+  // Removed auto-run - user must manually trigger scans
 
   const loadAvailableKidsRooms = async () => {
     try {
@@ -1119,7 +1114,7 @@ export default function UnifiedHealthCheck() {
               Back to Dashboard
             </Button>
           </Link>
-          <h1 className="text-3xl font-bold">All Rooms Health Check</h1>
+          <h1 className="text-3xl font-bold">Room Health Check</h1>
           <p className="text-muted-foreground">
             Validate room JSON files and configuration across all tiers
           </p>
