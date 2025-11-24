@@ -50,6 +50,8 @@ const TIER_DISPLAY_NAMES: Record<string, string> = {
   VIP6: "VIP6",
   vip7: "VIP7",
   VIP7: "VIP7",
+  vip9: "VIP9",
+  VIP9: "VIP9",
   kids: "Kids",
 };
 
