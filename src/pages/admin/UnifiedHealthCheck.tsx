@@ -103,11 +103,7 @@ export default function UnifiedHealthCheck() {
   const [health, setHealth] = useState<RoomHealth | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [fixing, setFixing] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<"main" | "kids">(
-    tier === "kids" || (typeof window !== "undefined" && window.location.pathname.includes("kids-room-health"))
-      ? "kids"
-      : "main"
-  );
+  const [selectedTier, setSelectedTier] = useState<string>(tier || "all");
   const [progress, setProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
   
   // Kids room filtering state
@@ -115,26 +111,33 @@ export default function UnifiedHealthCheck() {
   const [availableRooms, setAvailableRooms] = useState<Array<{ id: string; title: string; level: string }>>([]);
   const [selectedRooms, setSelectedRooms] = useState<string[]>([]);
 
-  const tierDisplay = tier
-    ? tier === "kids"
-      ? "Kids Rooms"
-      : TIER_DISPLAY_NAMES[tier] || tier.toUpperCase()
-    : activeTab === "kids"
-      ? "Kids Rooms"
-      : "All Tiers";
+  const allTiers = [
+    { id: "all", name: "All Tiers" },
+    { id: "free", name: "Free" },
+    { id: "vip1", name: "VIP 1" },
+    { id: "vip2", name: "VIP 2" },
+    { id: "vip3", name: "VIP 3" },
+    { id: "vip4", name: "VIP 4" },
+    { id: "vip5", name: "VIP 5" },
+    { id: "vip6", name: "VIP 6" },
+    { id: "vip7", name: "VIP 7" },
+    { id: "vip9", name: "VIP 9" },
+    { id: "kidslevel1", name: "Kids Level 1" },
+    { id: "kidslevel2", name: "Kids Level 2" },
+    { id: "kidslevel3", name: "Kids Level 3" },
+  ];
+
+  const tierDisplay = allTiers.find(t => t.id === selectedTier)?.name || "All Tiers";
 
   useEffect(() => {
-    if (activeTab === "kids") {
+    const isKidsTier = selectedTier.startsWith("kidslevel");
+    if (isKidsTier) {
+      const level = selectedTier.replace("kidslevel", "level");
+      setSelectedLevel(level);
       loadAvailableKidsRooms();
     }
-  }, [activeTab, selectedLevel]);
+  }, [selectedTier]);
 
-  // Auto-run health checks only when a specific tier route is used (e.g. /admin/room-health/free)
-  // On /admin/kids-room-health there is no tier param, so checks run only when you click the button
-  useEffect(() => {
-    if (!tier) return;
-    checkRoomHealth();
-  }, [tier]);
 
   const loadAvailableKidsRooms = async () => {
     try {
@@ -242,7 +245,8 @@ export default function UnifiedHealthCheck() {
     setProgress(null);
 
     try {
-      if (activeTab === "kids") {
+      const isKidsTier = selectedTier.startsWith("kidslevel");
+      if (isKidsTier) {
         await checkKidsRooms();
       } else {
         await checkMainRooms();
@@ -261,8 +265,8 @@ export default function UnifiedHealthCheck() {
       .select("*")
       .neq("tier", "kids");
 
-    if (tier && tier !== "kids") {
-      query = query.eq("tier", tier.toLowerCase());
+    if (selectedTier !== "all") {
+      query = query.eq("tier", selectedTier.toLowerCase());
     }
 
     const { data: rooms, error: roomsError } = await query;

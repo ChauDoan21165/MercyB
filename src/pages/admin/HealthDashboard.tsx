@@ -34,18 +34,18 @@ export default function HealthDashboard() {
       <div className="grid grid-cols-1 gap-6">
         <Card className="p-6">
           <div className="flex items-center space-x-3 mb-4">
-            <Baby className="h-6 w-6 text-pink-500" />
+            <Activity className="h-6 w-6 text-primary" />
             <div>
-              <h2 className="text-xl font-semibold">Kids Rooms</h2>
+              <h2 className="text-xl font-semibold">All Rooms Health Check</h2>
               <p className="text-sm text-muted-foreground">
-                Validate kids learning content across all levels
+                Validate all room configurations across all tiers including Kids levels
               </p>
             </div>
           </div>
           <Link to="/admin/kids-room-health">
             <Button>
               <Activity className="h-4 w-4 mr-2" />
-              Check Kids Rooms
+              Check All Rooms
             </Button>
           </Link>
         </Card>
