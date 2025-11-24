@@ -1,0 +1,92 @@
+{
+  "id": "national_culture_power_vip9",
+  "tier": "VIP9 / Cấp VIP9",
+  "domain": "National",
+  "title": {
+    "en": "National Culture Power",
+    "vi": "Sức Mạnh Văn Hóa Quốc Gia"
+  },
+  "content": {
+    "en": "This room explores national culture power—the ability of a nation to shape perception, build trust, and project identity through values, arts, institutions, education, and global narratives. Culture power enhances diplomacy, tourism, investment appeal, and national cohesion. You will learn cultural identity architecture, soft-power strategy, creative-industry development, global image building, diaspora leverage, heritage preservation, and narrative influence. Nations that master culture power amplify their global presence without coercion and strengthen unity at home.",
+    "vi": "Phòng này khám phá sức mạnh văn hóa quốc gia—khả năng định hình nhận thức, xây dựng niềm tin và lan tỏa bản sắc thông qua giá trị, nghệ thuật, thiết chế, giáo dục và các câu chuyện toàn cầu. Sức mạnh văn hóa nâng cao ngoại giao, du lịch, sức hút đầu tư và gắn kết quốc gia. Bạn sẽ học kiến trúc bản sắc, chiến lược sức mạnh mềm, phát triển ngành công nghiệp sáng tạo, xây dựng hình ảnh quốc gia, tận dụng kiều dân, bảo tồn di sản và ảnh hưởng qua câu chuyện. Quốc gia làm chủ sức mạnh văn hóa có thể mở rộng ảnh hưởng mà không cần cưỡng chế và củng cố đoàn kết nội tại."
+  },
+  "entries": [
+    {
+      "slug": "cultural-identity-architecture-and-values-systems",
+      "keywords_en": ["cultural identity", "value systems", "nation branding", "heritage", "cohesion"],
+      "keywords_vi": ["bản sắc văn hóa", "hệ giá trị", "thương hiệu quốc gia", "di sản", "gắn kết"],
+      "copy": {
+        "en": "Cultural identity architecture and value systems form the core of national culture power. Identity includes heritage, language, symbols, stories, heroes, aesthetics, and worldview. Principles: coherence, authenticity, pluralism, and contemporary relevance. Nations must articulate a clear value system—whether harmony, resilience, creativity, hospitality, or ambition—to anchor cultural influence. Examples: Japan’s harmony-craft tradition, France’s aesthetic prestige, Korea’s creativity-driven Hallyu, and the U.S. narrative of freedom and ingenuity. Pitfalls include fragmented identity, dissonant messaging, or outdated narratives that fail to inspire youth. Strategically, strong identity creates national confidence and global recognition.",
+        "vi": "Kiến trúc bản sắc văn hóa và hệ giá trị là lõi của sức mạnh văn hóa quốc gia. Bản sắc gồm di sản, ngôn ngữ, biểu tượng, câu chuyện, anh hùng, mỹ học và thế giới quan. Nguyên tắc: mạch lạc, chân thực, đa dạng và phù hợp thời đại. Quốc gia cần xác lập hệ giá trị rõ ràng—như hòa hợp, kiên cường, sáng tạo, hiếu khách hay khát vọng—để neo giữ sức ảnh hưởng văn hóa. Ví dụ: truyền thống hòa hợp–thủ công của Nhật, uy tín thẩm mỹ của Pháp, làn sóng sáng tạo Hallyu của Hàn Quốc hay câu chuyện tự do–sáng kiến của Mỹ. Hố bẫy gồm bản sắc phân mảnh, thông điệp lệch tông hoặc câu chuyện lỗi thời khó truyền cảm hứng cho thế hệ trẻ. Về chiến lược, bản sắc mạnh tạo tự tin quốc gia và sự ghi nhận toàn cầu."
+      },
+      "tags": ["identity", "values", "culture"],
+      "audio": "national_culture_power_1_en.mp3"
+    },
+    {
+      "slug": "soft-power-strategy-and-cultural-diplomacy",
+      "keywords_en": ["soft power", "cultural diplomacy", "influence", "trust", "alliances"],
+      "keywords_vi": ["sức mạnh mềm", "ngoại giao văn hóa", "ảnh hưởng", "niềm tin", "liên minh"],
+      "copy": {
+        "en": "Soft-power strategy and cultural diplomacy project national character through attraction rather than coercion. Tools include arts diplomacy, education exchanges, cultural centers, media partnerships, national storytelling, and global events. Principles: consistency, openness, credibility, and value alignment. Examples: British Council, Japan Foundation, Confucius Institutes, and Korea’s media-driven diplomacy. Pitfalls include propaganda perceptions, cultural insensitivity, or underinvested diplomacy that lacks reach. Strategically, soft power expands foreign relationships, strengthens trust, and creates long-term goodwill that translates into diplomatic and economic advantage.",
+        "vi": "Chiến lược sức mạnh mềm và ngoại giao văn hóa lan tỏa bản sắc quốc gia thông qua sức hấp dẫn thay vì cưỡng chế. Công cụ gồm ngoại giao nghệ thuật, trao đổi giáo dục, trung tâm văn hóa, hợp tác truyền thông, kể chuyện quốc gia và sự kiện toàn cầu. Nguyên tắc: nhất quán, cởi mở, đáng tin cậy và phù hợp giá trị. Ví dụ: British Council, Japan Foundation, Viện Khổng Tử hay ngoại giao truyền thông của Hàn Quốc. Hố bẫy gồm bị xem là tuyên truyền, thiếu nhạy cảm văn hóa hoặc ngoại giao đầu tư thấp không đủ tầm. Về chiến lược, sức mạnh mềm mở rộng quan hệ, tăng niềm tin và tạo thiện cảm lâu dài chuyển hóa thành lợi thế ngoại giao–kinh tế."
+      },
+      "tags": ["soft-power", "diplomacy", "culture"],
+      "audio": "national_culture_power_2_en.mp3"
+    },
+    {
+      "slug": "creative-industries-and-cultural-economy",
+      "keywords_en": ["creative industries", "cultural economy", "media", "entertainment", "innovation"],
+      "keywords_vi": ["công nghiệp sáng tạo", "kinh tế văn hóa", "truyền thông", "giải trí", "đổi mới"],
+      "copy": {
+        "en": "Creative industries and the cultural economy convert national identity into global products, from film and music to fashion, gaming, cuisine, and digital content. Principles: talent development, IP protection, scalable production, export platforms, and vibrant creative ecosystems. Examples: Korea’s K-Pop and cinema, Japan’s anime-manga complex, France’s luxury fashion, and Thailand’s food-culture branding. Pitfalls include fragmented industry support, weak IP enforcement, or undervaluing cultural workers. Strategically, creative-industry strength drives national revenue, soft power, and global mindshare.",
+        "vi": "Công nghiệp sáng tạo và kinh tế văn hóa chuyển hóa bản sắc quốc gia thành sản phẩm toàn cầu, từ phim ảnh, âm nhạc đến thời trang, game, ẩm thực và nội dung số. Nguyên tắc: phát triển tài năng, bảo hộ IP, năng lực sản xuất mở rộng, nền tảng xuất khẩu và hệ sinh thái sáng tạo sôi động. Ví dụ: K-Pop và điện ảnh Hàn Quốc, anime–manga Nhật Bản, thời trang cao cấp Pháp hay thương hiệu ẩm thực Thái Lan. Hố bẫy gồm hỗ trợ ngành phân tán, thực thi IP yếu hoặc xem nhẹ lao động sáng tạo. Về chiến lược, sức mạnh công nghiệp sáng tạo thúc đẩy doanh thu, sức mạnh mềm và ảnh hưởng trong tâm trí toàn cầu."
+      },
+      "tags": ["creative", "industries", "cultural-economy"],
+      "audio": "national_culture_power_3_en.mp3"
+    },
+    {
+      "slug": "global-image-building-and-national-branding",
+      "keywords_en": ["national branding", "global image", "reputation", "storytelling", "strategy"],
+      "keywords_vi": ["xây dựng hình ảnh quốc gia", "thương hiệu quốc gia", "uy tín", "kể chuyện", "chiến lược"],
+      "copy": {
+        "en": "Global image building and national branding shape how the world perceives a country’s competence, reliability, creativity, and identity. Branding spans tourism, products, governance credibility, cultural exports, and national narratives. Principles: clarity, emotional resonance, strategic consistency, and authenticity. Examples: Japan’s ‘Cool Japan,’ New Zealand’s ‘100% Pure,’ and Korea’s global brand pivot. Pitfalls include incoherent messaging, outdated slogans, or disconnect between image and reality. Strategically, a strong national brand attracts investment, tourism, partnerships, and global respect.",
+        "vi": "Xây dựng hình ảnh và thương hiệu quốc gia định hình cách thế giới nhìn nhận năng lực, độ tin cậy, sáng tạo và bản sắc của một nước. Thương hiệu bao gồm du lịch, sản phẩm, uy tín quản trị, xuất khẩu văn hóa và câu chuyện quốc gia. Nguyên tắc: rõ ràng, cộng hưởng cảm xúc, nhất quán chiến lược và chân thực. Ví dụ: ‘Cool Japan,’ ‘100% Pure New Zealand,’ hay chiến lược thương hiệu toàn cầu của Hàn Quốc. Hố bẫy gồm thông điệp thiếu mạch lạc, khẩu hiệu lỗi thời hoặc hình ảnh không khớp thực tế. Về chiến lược, thương hiệu quốc gia mạnh thu hút đầu tư, du lịch, đối tác và sự tôn trọng quốc tế."
+      },
+      "tags": ["branding", "global-image", "culture"],
+      "audio": "national_culture_power_4_en.mp3"
+    },
+    {
+      "slug": "diaspora-leverage-and-cultural-network-power",
+      "keywords_en": ["diaspora", "cultural networks", "global communities", "influence", "identity"],
+      "keywords_vi": ["kiều dân", "mạng lưới văn hóa", "cộng đồng toàn cầu", "ảnh hưởng", "bản sắc"],
+      "copy": {
+        "en": "Diaspora leverage and cultural-network power activate millions of citizens abroad as ambassadors of identity, commerce, and national credibility. Diasporas contribute through remittances, expertise, entrepreneurship, political influence, and cultural advocacy. Principles: maintain emotional ties, support community institutions, and integrate diaspora into national strategy. Examples: India’s global diaspora networks, Israel’s talent- and capital-linked diaspora, and Ireland’s worldwide cultural community. Pitfalls include neglecting diaspora engagement or failing to harness their expertise. Strategically, diaspora networks multiply national soft power and extend cultural presence worldwide.",
+        "vi": "Tận dụng kiều dân và sức mạnh mạng lưới văn hóa kích hoạt hàng triệu công dân ở nước ngoài như những đại sứ bản sắc, thương mại và uy tín quốc gia. Kiều dân đóng góp qua kiều hối, chuyên môn, khởi nghiệp, ảnh hưởng chính trị và lan tỏa văn hóa. Nguyên tắc: duy trì gắn kết cảm xúc, hỗ trợ thiết chế cộng đồng và tích hợp kiều dân vào chiến lược quốc gia. Ví dụ: mạng lưới kiều dân rộng khắp của Ấn Độ, kiều dân gắn với tài năng–vốn của Israel và cộng đồng văn hóa toàn cầu của Ireland. Hố bẫy gồm bỏ quên kiều dân hoặc không khai thác chuyên môn của họ. Về chiến lược, mạng lưới kiều dân nhân sức mạnh mềm và mở rộng hiện diện văn hóa trên toàn cầu."
+      },
+      "tags": ["diaspora", "networks", "culture"],
+      "audio": "national_culture_power_5_en.mp3"
+    },
+    {
+      "slug": "heritage-preservation-and-cultural-continuity",
+      "keywords_en": ["heritage preservation", "cultural continuity", "tradition", "identity", "legacy"],
+      "keywords_vi": ["bảo tồn di sản", "liên tục văn hóa", "truyền thống", "bản sắc", "di sản"],
+      "copy": {
+        "en": "Heritage preservation and cultural continuity protect the historical foundations that give meaning and legitimacy to national identity. Heritage spans architecture, rituals, literature, crafts, landscapes, and intangible traditions. Principles: safeguard authenticity, modernize responsibly, and pass knowledge across generations. Examples: Japan’s Living National Treasures system, China’s UNESCO-focused preservation, and France’s architectural conservation. Pitfalls include over-commercialization, neglect, or politicization of heritage. Strategically, preserved heritage strengthens identity, attracts cultural tourism, and anchors national pride.",
+        "vi": "Bảo tồn di sản và liên tục văn hóa gìn giữ nền tảng lịch sử tạo ý nghĩa và chính danh cho bản sắc quốc gia. Di sản gồm kiến trúc, nghi lễ, văn học, thủ công, cảnh quan và truyền thống phi vật thể. Nguyên tắc: bảo tồn tính nguyên bản, hiện đại hóa có trách nhiệm và truyền lại tri thức qua thế hệ. Ví dụ: hệ thống Nghệ Nhân Quốc Gia của Nhật, bảo tồn theo chuẩn UNESCO của Trung Quốc và bảo tồn kiến trúc của Pháp. Hố bẫy gồm thương mại hóa quá mức, bỏ mặc hoặc chính trị hóa di sản. Về chiến lược, di sản được bảo tồn củng cố bản sắc, thu hút du lịch văn hóa và nuôi dưỡng niềm tự hào quốc gia."
+      },
+      "tags": ["heritage", "culture", "identity"],
+      "audio": "national_culture_power_6_en.mp3"
+    },
+    {
+      "slug": "narrative-strategy-and-global-cultural-influence",
+      "keywords_en": ["narrative strategy", "influence", "storytelling", "media ecosystems", "perception"],
+      "keywords_vi": ["chiến lược kể chuyện", "ảnh hưởng", "kể chuyện", "hệ sinh thái truyền thông", "nhận thức"],
+      "copy": {
+        "en": "Narrative strategy and global cultural influence shape how a nation is perceived across media, digital platforms, entertainment, and public discourse. Narratives define national purpose, virtues, aspirations, and contributions to humanity. Principles: emotional clarity, narrative coherence, ethical storytelling, and alignment across institutions. Examples: America’s innovation and freedom narrative, Korea’s rise-through-creativity story, and Japan’s craftsmanship narrative. Pitfalls include narrative fragmentation, negative stereotypes, or lack of coordinated communication. Strategically, strong national narratives steer global perception and reinforce soft-power advantages.",
+        "vi": "Chiến lược kể chuyện và ảnh hưởng văn hóa toàn cầu định hình cách thế giới cảm nhận về một quốc gia thông qua truyền thông, nền tảng số, giải trí và diễn ngôn công chúng. Câu chuyện xác định mục đích, phẩm chất, khát vọng và đóng góp của quốc gia cho nhân loại. Nguyên tắc: rõ cảm xúc, mạch lạc, đạo đức và đồng bộ giữa các thiết chế. Ví dụ: câu chuyện tự do–sáng tạo của Mỹ, câu chuyện vươn lên từ sáng tạo của Hàn Quốc và câu chuyện tinh hoa thủ công của Nhật. Hố bẫy gồm câu chuyện phân mảnh, định kiến tiêu cực hoặc thiếu điều phối truyền thông. Về chiến lược, câu chuyện mạnh dẫn dắt nhận thức toàn cầu và củng cố lợi thế sức mạnh mềm."
+      },
+      "tags": ["narrative", "influence", "culture"],
+      "audio": "national_culture_power_7_en.mp3"
+    }
+  ]
+}
