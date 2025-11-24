@@ -1,0 +1,92 @@
+{
+  "id": "national_military_strategy_vip9",
+  "tier": "VIP9 / Cấp VIP9",
+  "domain": "National",
+  "title": {
+    "en": "National Military Strategy",
+    "vi": "Chiến Lược Quân Sự Quốc Gia"
+  },
+  "content": {
+    "en": "This room develops national military strategy—the doctrines, deterrence frameworks, force structures, technological systems, and readiness mechanisms that safeguard sovereignty and shape geopolitical stability. You will learn defense posture design, joint-force integration, modernization strategy, asymmetric advantage, logistics architecture, crisis response, and long-horizon capability building. A strong military strategy does not only prepare for conflict; it prevents it by shaping adversary calculations, strengthening alliances, and anchoring national confidence.",
+    "vi": "Phòng này phát triển chiến lược quân sự quốc gia—học thuyết, khuôn khổ răn đe, cơ cấu lực lượng, hệ thống công nghệ và cơ chế sẵn sàng bảo vệ chủ quyền và định hình ổn định địa chính trị. Bạn sẽ học thiết kế thế trận phòng thủ, tích hợp lực lượng hỗn hợp, chiến lược hiện đại hóa, lợi thế phi đối xứng, kiến trúc hậu cần, ứng phó khủng hoảng và xây năng lực dài hạn. Chiến lược quân sự mạnh không chỉ chuẩn bị cho xung đột mà còn ngăn ngừa nó bằng cách định hình tính toán đối thủ, củng cố liên minh và tạo niềm tin quốc gia."
+  },
+  "entries": [
+    {
+      "slug": "defense-posture-and-deterrence-frameworks",
+      "keywords_en": ["defense posture", "deterrence", "readiness", "sovereignty", "strategy"],
+      "keywords_vi": ["thế trận phòng thủ", "răn đe", "sẵn sàng", "chủ quyền", "chiến lược"],
+      "copy": {
+        "en": "Defense posture and deterrence frameworks define how a nation signals strength, readiness, and unacceptable costs to potential aggressors. Tools include forward defense, layered denial, strategic depth, credible retaliation, and visible readiness. Principles: clarity, proportionality, unpredictability for adversaries, and coherence across domains—land, sea, air, space, and cyber. Examples: Finland’s total defense model, Israel’s rapid-mobilization posture, and Singapore’s forward defense strategy. Pitfalls include ambiguous deterrence, over-reliance on symbolic capability, or slow mobilization cycles. Strategically, strong deterrence stabilizes the region and preserves national autonomy without firing a shot.",
+        "vi": "Thế trận phòng thủ và khuôn khổ răn đe xác định cách quốc gia thể hiện sức mạnh, mức sẵn sàng và chi phí không thể chấp nhận đối với đối thủ tiềm năng. Công cụ gồm phòng thủ tuyến trước, chặn–phủ nhiều lớp, chiều sâu chiến lược, trả đũa đáng tin cậy và mức sẵn sàng hiển thị. Nguyên tắc: rõ ràng, cân đối, khó dự đoán đối với đối thủ và nhất quán giữa các miền—lục quân, hải quân, không quân, không gian và mạng. Ví dụ: mô hình phòng thủ toàn diện của Phần Lan, thế trận huy động nhanh của Israel và chiến lược phòng thủ tuyến trước của Singapore. Hố bẫy gồm răn đe mơ hồ, phụ thuộc quá mức vào biểu tượng hoặc chu kỳ huy động chậm. Về chiến lược, răn đe mạnh ổn định khu vực và bảo vệ chủ quyền mà không cần nổ súng."
+      },
+      "tags": ["deterrence", "posture", "defense"],
+      "audio": "national_military_strategy_1_en.mp3"
+    },
+    {
+      "slug": "force-structure-and-joint-operational-integration",
+      "keywords_en": ["force structure", "joint operations", "integration", "combined arms", "readiness"],
+      "keywords_vi": ["cơ cấu lực lượng", "tác chiến hỗn hợp", "tích hợp", "hiệp đồng binh chủng", "sẵn sàng"],
+      "copy": {
+        "en": "Force structure and joint operational integration organize military branches into a unified combat system. Components include combined-arms doctrine, interoperable communications, unified command, and integrated training. Principles: agility, interoperability, rapid decision cycles, and unity of effort. Examples: U.S. joint-force doctrine, NATO interoperability standards, and Australia’s integrated force modernization. Pitfalls include siloed branches, incompatible systems, or outdated command models. Strategically, joint-force integration multiplies effectiveness, enabling faster, smarter, and more resilient operations.",
+        "vi": "Cơ cấu lực lượng và tích hợp tác chiến hỗn hợp tổ chức các quân binh chủng thành một hệ thống chiến đấu thống nhất. Thành phần gồm học thuyết hiệp đồng binh chủng, liên thông thông tin, chỉ huy hợp nhất và huấn luyện tích hợp. Nguyên tắc: linh hoạt, tương tác cao, chu kỳ quyết định nhanh và thống nhất nỗ lực. Ví dụ: học thuyết lực lượng hỗn hợp của Mỹ, tiêu chuẩn tương tác của NATO và hiện đại hóa lực lượng tích hợp của Úc. Hố bẫy gồm phân mảnh lực lượng, hệ thống không tương thích hoặc mô hình chỉ huy lỗi thời. Về chiến lược, tích hợp liên quân nhân bội hiệu quả, cho phép tác chiến nhanh, thông minh và bền vững hơn."
+      },
+      "tags": ["joint", "force-structure", "operations"],
+      "audio": "national_military_strategy_2_en.mp3"
+    },
+    {
+      "slug": "military-modernization-and-technological-superiority",
+      "keywords_en": ["modernization", "technology", "superiority", "innovation", "capability"],
+      "keywords_vi": ["hiện đại hóa quân sự", "công nghệ", "ưu thế", "đổi mới", "năng lực"],
+      "copy": {
+        "en": "Military modernization and technological superiority ensure that a nation’s forces remain effective against advanced threats. Priorities include sensors, missiles, UAVs, cyber systems, AI-enabled targeting, precision munitions, autonomous platforms, and secure networks. Principles: leapfrog where possible, protect critical IP, diversify supply chains, and integrate civilian innovation. Examples: Turkey’s UAV revolution, Japan’s advanced missile-defense architecture, and the U.S. focus on next-generation autonomous systems. Pitfalls include procurement delays, overreliance on foreign suppliers, or fragmented R&D. Strategically, superior technology shifts the balance of power without requiring numerical dominance.",
+        "vi": "Hiện đại hóa quân sự và ưu thế công nghệ bảo đảm lực lượng luôn hiệu quả trước các mối đe dọa tiên tiến. Ưu tiên gồm cảm biến, tên lửa, UAV, hệ thống mạng, nhắm mục tiêu bằng AI, vũ khí chính xác, nền tảng tự động và mạng bảo mật. Nguyên tắc: nhảy cóc khi có thể, bảo vệ IP trọng yếu, đa dạng hóa chuỗi cung ứng và tích hợp đổi mới dân sự. Ví dụ: cuộc cách mạng UAV của Thổ Nhĩ Kỳ, kiến trúc phòng thủ tên lửa tiên tiến của Nhật và hệ thống tự động hóa thế hệ mới của Mỹ. Hố bẫy gồm chậm trễ mua sắm, phụ thuộc nhà cung cấp nước ngoài hoặc R&D phân mảnh. Về chiến lược, ưu thế công nghệ thay đổi cán cân sức mạnh mà không cần ưu thế quân số."
+      },
+      "tags": ["modernization", "technology", "military"],
+      "audio": "national_military_strategy_3_en.mp3"
+    },
+    {
+      "slug": "asymmetric-advantage-and-unconventional-strategy",
+      "keywords_en": ["asymmetric advantage", "unconventional", "small-state strategy", "innovation", "offset"],
+      "keywords_vi": ["lợi thế phi đối xứng", "chiến lược phi quy ước", "chiến lược quốc gia nhỏ", "đổi mới", "bù trừ"],
+      "copy": {
+        "en": "Asymmetric advantage and unconventional strategy help nations counter stronger adversaries by exploiting unique terrain, tactics, or technologies. Tools include coastal denial, guerilla doctrine, cyber disruption, anti-access systems, drone swarms, and information operations. Principles: cost-effective deterrence, unpredictability, adaptability, and decentralized initiative. Examples: Vietnam’s historical asymmetric mastery, Ukraine’s drone-centered tactics, and Taiwan’s porcupine strategy. Pitfalls include outdated guerrilla assumptions, overreliance on single systems, or insufficient coordination. Strategically, asymmetric power allows smaller nations to impose high costs and neutralize numerical disadvantages.",
+        "vi": "Lợi thế phi đối xứng và chiến lược phi quy ước giúp quốc gia đối trọng đối thủ mạnh hơn bằng cách tận dụng địa hình, chiến thuật hoặc công nghệ đặc thù. Công cụ gồm chặn biển, học thuyết du kích, tác chiến mạng, hệ thống chống tiếp cận, bầy UAV và chiến dịch thông tin. Nguyên tắc: răn đe hiệu quả về chi phí, khó dự đoán, linh hoạt và sáng kiến phân quyền. Ví dụ: nghệ thuật phi đối xứng của Việt Nam, chiến thuật dựa trên UAV của Ukraine và chiến lược “nhím” của Đài Loan. Hố bẫy gồm giả định du kích lỗi thời, phụ thuộc vào một hệ thống hoặc thiếu phối hợp. Về chiến lược, lợi thế phi đối xứng cho phép quốc gia nhỏ áp chi phí lớn và vô hiệu hóa bất lợi quân số."
+      },
+      "tags": ["asymmetric", "unconventional", "strategy"],
+      "audio": "national_military_strategy_4_en.mp3"
+    },
+    {
+      "slug": "military-logistics-and-strategic-mobility",
+      "keywords_en": ["military logistics", "mobility", "supply chains", "readiness", "infrastructure"],
+      "keywords_vi": ["hậu cần quân sự", "cơ động chiến lược", "chuỗi cung ứng", "sẵn sàng", "hạ tầng"],
+      "copy": {
+        "en": "Military logistics and strategic mobility determine how quickly and effectively forces can move, sustain operations, and project power. Components include transport fleets, fuel networks, munitions stockpiles, field support, maintenance systems, and rapid deployment corridors. Principles: redundancy, speed, durability, and prepositioned assets. Examples: NATO’s mobility corridors, U.S. prepositioned equipment programs, and Japan’s integrated logistics planning. Pitfalls include fragile supply lines, outdated transport infrastructure, or insufficient stockpiles. Strategically, logistics are the backbone of military credibility and operational success.",
+        "vi": "Hậu cần quân sự và cơ động chiến lược quyết định tốc độ và hiệu quả triển khai, duy trì tác chiến và mở rộng sức mạnh. Thành phần gồm đội vận tải, mạng nhiên liệu, kho đạn dược, hỗ trợ chiến trường, hệ thống bảo trì và hành lang triển khai nhanh. Nguyên tắc: dư thừa, tốc độ, độ bền và tài sản bố trí trước. Ví dụ: hành lang cơ động của NATO, chương trình trang bị bố trí trước của Mỹ và quy hoạch hậu cần tích hợp của Nhật. Hố bẫy gồm tuyến cung ứng dễ gãy, hạ tầng vận tải lỗi thời hoặc dự trữ thiếu. Về chiến lược, hậu cần là xương sống của uy tín quân sự và thành công tác chiến."
+      },
+      "tags": ["logistics", "mobility", "military"],
+      "audio": "national_military_strategy_5_en.mp3"
+    },
+    {
+      "slug": "strategic-alliances-and-defense-cooperation",
+      "keywords_en": ["alliances", "defense cooperation", "security architecture", "joint training", "partnerships"],
+      "keywords_vi": ["liên minh chiến lược", "hợp tác quốc phòng", "kiến trúc an ninh", "huấn luyện chung", "đối tác"],
+      "copy": {
+        "en": "Strategic alliances and defense cooperation expand national security through shared capabilities, intelligence exchange, joint training, and interoperable systems. Principles: trust, reciprocity, capability alignment, and clarity of mutual obligations. Examples: NATO’s collective-defense framework, U.S.–Japan alliance, and ASEAN’s expanding security cooperation. Pitfalls include asymmetric commitment, misaligned interests, or political constraints that limit collaboration. Strategically, alliances multiply national strength and increase deterrence credibility.",
+        "vi": "Liên minh chiến lược và hợp tác quốc phòng mở rộng an ninh quốc gia thông qua chia sẻ năng lực, trao đổi tình báo, huấn luyện chung và hệ thống tương tác. Nguyên tắc: tin cậy, có đi có lại, căn chỉnh năng lực và rõ ràng nghĩa vụ lẫn nhau. Ví dụ: khuôn khổ phòng thủ tập thể của NATO, liên minh Mỹ–Nhật và hợp tác an ninh ngày càng tăng của ASEAN. Hố bẫy gồm cam kết bất đối xứng, lợi ích lệch hoặc hạn chế chính trị trong hợp tác. Về chiến lược, liên minh nhân sức mạnh quốc gia và tăng độ tin cậy của răn đe."
+      },
+      "tags": ["alliances", "cooperation", "defense"],
+      "audio": "national_military_strategy_6_en.mp3"
+    },
+    {
+      "slug": "crisis-response-and-operational-readiness",
+      "keywords_en": ["crisis response", "readiness", "mobilization", "training", "continuity"],
+      "keywords_vi": ["ứng phó khủng hoảng", "sẵn sàng tác chiến", "huy động", "huấn luyện", "liên tục"],
+      "copy": {
+        "en": "Crisis response and operational readiness ensure that military forces can act decisively during emergencies—conflicts, disasters, cyberattacks, or hybrid threats. Components include mobilization systems, rapid-response units, resilience training, command drills, and preplanned scenarios. Principles: clarity of command, time-dominance, interoperability, and whole-of-government coordination. Examples: Israel’s national mobilization architecture, Japan’s disaster-response forces, and Singapore’s island-wide alert systems. Pitfalls include slow decision cycles, fragmented coordination, or untested readiness plans. Strategically, strong readiness preserves national continuity and prevents escalation.",
+        "vi": "Ứng phó khủng hoảng và sẵn sàng tác chiến đảm bảo lực lượng quân sự hành động quyết đoán khi khẩn cấp—xung đột, thiên tai, tấn công mạng hoặc đe dọa hỗn hợp. Thành phần gồm hệ thống huy động, đơn vị phản ứng nhanh, huấn luyện chống chịu, diễn tập chỉ huy và kịch bản định sẵn. Nguyên tắc: rõ ràng chỉ huy, chiếm ưu thế thời gian, tương tác lực lượng và phối hợp toàn chính phủ. Ví dụ: kiến trúc huy động quốc gia của Israel, lực lượng ứng phó thiên tai của Nhật và hệ thống báo động toàn đảo của Singapore. Hố bẫy gồm chu kỳ quyết định chậm, phối hợp phân mảnh hoặc kế hoạch chưa kiểm nghiệm. Về chiến lược, mức sẵn sàng mạnh bảo vệ tính liên tục quốc gia và ngăn leo thang."
+      },
+      "tags": ["readiness", "crisis", "military"],
+      "audio": "national_military_strategy_7_en.mp3"
+    }
+  ]
+}
