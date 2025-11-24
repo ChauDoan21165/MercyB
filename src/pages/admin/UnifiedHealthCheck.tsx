@@ -151,6 +151,7 @@ export default function UnifiedHealthCheck() {
   const [bulkFixingAudio, setBulkFixingAudio] = useState(false);
   const [audioFixProgress, setAudioFixProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
   const [fixingRoomId, setFixingRoomId] = useState<string | null>(null);
+  const [fixingAudioRoomId, setFixingAudioRoomId] = useState<string | null>(null);
   
   // Kids room filtering state (for kids tiers only)
   const [selectedLevel, setSelectedLevel] = useState<string>("all");
@@ -808,6 +809,120 @@ export default function UnifiedHealthCheck() {
       });
     } finally {
       setFixingRoomId(null);
+    }
+  };
+
+  // Fix audio for a single room
+  const fixSingleRoomAudio = async (roomId: string, roomTitle: string, jsonPath: string) => {
+    setFixingAudioRoomId(roomId);
+    let fixedFiles = 0;
+    
+    try {
+      // Load JSON file
+      const response = await fetch(`/${jsonPath}`);
+      if (!response.ok) {
+        toast({
+          title: "Failed to Load JSON",
+          description: `Could not load JSON file for ${roomTitle}`,
+          variant: "destructive"
+        });
+        return;
+      }
+
+      // Check if response is actually JSON
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        toast({
+          title: "Invalid Response",
+          description: `Response is not JSON for ${roomTitle}`,
+          variant: "destructive"
+        });
+        return;
+      }
+
+      const jsonData = await response.json();
+      let hasChanges = false;
+
+      // Fix audio in entries
+      if (jsonData.entries && Array.isArray(jsonData.entries)) {
+        for (const entry of jsonData.entries) {
+          if (entry.audio) {
+            const audioPath = typeof entry.audio === 'string' 
+              ? entry.audio 
+              : entry.audio.en;
+            
+            if (audioPath) {
+              // Test if current path works
+              const testResult = await testAudioFile(audioPath);
+              if (testResult.status !== "success") {
+                // Try to find correct path
+                const correctedPath = await findAudioFile(audioPath);
+                if (correctedPath) {
+                  if (typeof entry.audio === 'string') {
+                    entry.audio = correctedPath;
+                  } else {
+                    entry.audio.en = correctedPath;
+                  }
+                  hasChanges = true;
+                  fixedFiles++;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      // Fix audio in content
+      if (jsonData.content?.audio) {
+        const testResult = await testAudioFile(jsonData.content.audio);
+        if (testResult.status !== "success") {
+          const correctedPath = await findAudioFile(jsonData.content.audio);
+          if (correctedPath) {
+            jsonData.content.audio = correctedPath;
+            hasChanges = true;
+            fixedFiles++;
+          }
+        }
+      }
+
+      if (!hasChanges) {
+        toast({
+          title: "No Fixes Needed",
+          description: `Could not find corrected paths for audio files in ${roomTitle}`,
+        });
+        return;
+      }
+
+      // Update database with corrected entries
+      const { error } = await supabase
+        .from('rooms')
+        .update({ entries: jsonData.entries })
+        .eq('id', roomId);
+
+      if (error) {
+        toast({
+          title: "Update Failed",
+          description: `Failed to update ${roomTitle}: ${error.message}`,
+          variant: "destructive"
+        });
+        return;
+      }
+
+      toast({
+        title: "Audio Fixed",
+        description: `Successfully fixed ${fixedFiles} audio file${fixedFiles > 1 ? 's' : ''} for ${roomTitle}`,
+      });
+
+      // Re-run deep scan to refresh results
+      await runDeepScan();
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: `Failed to fix audio for ${roomTitle}: ${error.message}`,
+        variant: "destructive"
+      });
+    } finally {
+      setFixingAudioRoomId(null);
     }
   };
 
@@ -1906,9 +2021,31 @@ export default function UnifiedHealthCheck() {
                             <Volume2 className="h-4 w-4" />
                             Audio Files ({roomReport.audioChecks.length})
                           </p>
-                          <p className="text-sm text-muted-foreground">
-                            {roomReport.audioChecks.filter(a => a.status === "success").length} / {roomReport.audioChecks.length} working
-                          </p>
+                          <div className="flex items-center gap-2">
+                            <p className="text-sm text-muted-foreground">
+                              {roomReport.audioChecks.filter(a => a.status === "success").length} / {roomReport.audioChecks.length} working
+                            </p>
+                            {roomReport.summary.audioIssues > 0 && roomReport.jsonPath && (
+                              <Button 
+                                size="sm"
+                                onClick={() => fixSingleRoomAudio(roomReport.roomId, roomReport.roomTitle, roomReport.jsonPath!)}
+                                disabled={fixingAudioRoomId === roomReport.roomId || bulkFixing || bulkFixingAudio}
+                                className="bg-amber-600 hover:bg-amber-700"
+                              >
+                                {fixingAudioRoomId === roomReport.roomId ? (
+                                  <>
+                                    <Loader2 className="mr-1 h-3 w-3 animate-spin" />
+                                    Fixing...
+                                  </>
+                                ) : (
+                                  <>
+                                    <Volume2 className="mr-1 h-3 w-3" />
+                                    Fix Audio
+                                  </>
+                                )}
+                              </Button>
+                            )}
+                          </div>
                         </div>
                         {roomReport.audioChecks.some(a => a.status !== "success") && (
                           <div className="space-y-1 bg-muted/30 rounded p-2">
