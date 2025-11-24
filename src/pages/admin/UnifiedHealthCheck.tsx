@@ -468,11 +468,18 @@ export default function UnifiedHealthCheck() {
           const response = await fetch(`/${manifestPathById}`);
           if (!response.ok) continue;
           
+          // Check if response is actually JSON
+          const contentType = response.headers.get('content-type');
+          if (!contentType || !contentType.includes('application/json')) {
+            console.warn(`Skipping ${room.id}: Response is not JSON (${contentType})`);
+            continue;
+          }
+          
           const jsonData = await response.json();
           const report = await deepScanRoom(room, jsonData, manifestPathById);
           reports.push(report);
         } catch (error) {
-          console.error(`Error scanning room ${room.id}:`, error);
+          console.warn(`Skipping room ${room.id}: ${error instanceof Error ? error.message : 'Unknown error'}`);
         }
       }
 
@@ -552,6 +559,14 @@ export default function UnifiedHealthCheck() {
           // Load JSON file
           const response = await fetch(`/${report.jsonPath}`);
           if (!response.ok) {
+            failCount++;
+            continue;
+          }
+
+          // Check if response is actually JSON
+          const contentType = response.headers.get('content-type');
+          if (!contentType || !contentType.includes('application/json')) {
+            console.warn(`Skipping ${report.roomId}: Response is not JSON`);
             failCount++;
             continue;
           }
@@ -670,6 +685,14 @@ export default function UnifiedHealthCheck() {
           const response = await fetch(`/${report.jsonPath}`);
           if (!response.ok) {
             console.error(`Failed to load JSON for ${report.roomId}`);
+            failCount++;
+            continue;
+          }
+
+          // Check if response is actually JSON
+          const contentType = response.headers.get('content-type');
+          if (!contentType || !contentType.includes('application/json')) {
+            console.warn(`Skipping ${report.roomId}: Response is not JSON`);
             failCount++;
             continue;
           }
