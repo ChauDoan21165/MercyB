@@ -1,0 +1,75 @@
+name: Validate New Room
+
+# This workflow validates a single room file before merge
+# Triggered manually or by PR with room file changes
+
+on:
+  workflow_dispatch:
+    inputs:
+      filename:
+        description: 'Room JSON filename to validate'
+        required: true
+        type: string
+  pull_request:
+    paths:
+      - 'public/data/*.json'
+
+jobs:
+  validate-room:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Get changed files
+        if: github.event_name == 'pull_request'
+        id: changed-files
+        uses: tj-actions/changed-files@v40
+        with:
+          files: public/data/*.json
+
+      - name: Validate room structure
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Validating: ${{ inputs.filename }}"
+            node scripts/validate-single-room.js "${{ inputs.filename }}"
+          else
+            for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+              filename=$(basename "$file")
+              echo "Validating: $filename"
+              node scripts/validate-single-room.js "$filename"
+            done
+          fi
+
+      - name: Run full validation suite
+        run: node scripts/validate-room-files.js
+
+      - name: Generate registry
+        run: node scripts/generate-room-registry.js
+
+      - name: Check for changes
+        run: |
+          if [[ -n $(git status --porcelain src/lib/roomManifest.ts src/lib/roomDataImports.ts) ]]; then
+            echo "⚠️ Registry files would be updated"
+            git diff src/lib/roomManifest.ts src/lib/roomDataImports.ts
+          else
+            echo "✅ Registry files are up to date"
+          fi
+
+      - name: Comment on PR
+        if: github.event_name == 'pull_request' && failure()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '❌ Room validation failed. Please check the workflow logs and fix the errors before merging.'
+            })
