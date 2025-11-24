@@ -4,7 +4,6 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench, Download } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
@@ -773,9 +772,9 @@ export default function UnifiedHealthCheck() {
               Back to Dashboard
             </Button>
           </Link>
-          <h1 className="text-3xl font-bold">Room Health Check: {tierDisplay}</h1>
+          <h1 className="text-3xl font-bold">All Rooms Health Check</h1>
           <p className="text-muted-foreground">
-            Validate room JSON files and configuration
+            Validate room configurations across all tiers including Kids levels
           </p>
         </div>
         <div className="flex gap-2">
