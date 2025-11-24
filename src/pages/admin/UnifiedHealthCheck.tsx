@@ -378,15 +378,27 @@ export default function UnifiedHealthCheck() {
     const dbEntries = room.entries || [];
     const jsonEntries = jsonData.entries || [];
     
-    const dbSlugs = new Set(dbEntries.map((e: any) => e.slug));
-    const jsonSlugs = new Set(jsonEntries.map((e: any) => e.slug));
+    // Helper to get entry identifier (handles different JSON formats)
+    const getEntryId = (entry: any): string | null => {
+      return entry.slug || entry.artifact_id || entry.id || null;
+    };
+    
+    const dbSlugs = new Set(dbEntries.map((e: any) => getEntryId(e)).filter(Boolean));
+    const jsonSlugs = new Set(jsonEntries.map((e: any) => getEntryId(e)).filter(Boolean));
 
     // Check JSON entries
     jsonEntries.forEach((jsonEntry: any) => {
+      const entryId = getEntryId(jsonEntry);
+      
+      if (!entryId) {
+        // Entry has no identifier - skip validation but note it
+        return;
+      }
+      
       const validation: EntryValidation = {
-        slug: jsonEntry.slug,
+        slug: entryId,
         inJson: true,
-        inDb: dbSlugs.has(jsonEntry.slug)
+        inDb: dbSlugs.has(entryId)
       };
 
       if (!validation.inDb) {
@@ -397,8 +409,8 @@ export default function UnifiedHealthCheck() {
           roomTitle: room.title_en,
           tier: report.tier,
           issueType: "entry_mismatch",
-          message: `Entry "${jsonEntry.slug}" in JSON but not in database`,
-          entrySlug: jsonEntry.slug
+          message: `Entry "${entryId}" in JSON but not in database`,
+          entrySlug: entryId
         });
       }
 
@@ -407,9 +419,16 @@ export default function UnifiedHealthCheck() {
 
     // Check DB entries
     dbEntries.forEach((dbEntry: any) => {
-      if (!jsonSlugs.has(dbEntry.slug)) {
+      const entryId = getEntryId(dbEntry);
+      
+      if (!entryId) {
+        // Entry has no identifier - skip validation
+        return;
+      }
+      
+      if (!jsonSlugs.has(entryId)) {
         const validation: EntryValidation = {
-          slug: dbEntry.slug,
+          slug: entryId,
           inJson: false,
           inDb: true,
           issue: "Entry exists in database but not in JSON"
@@ -420,8 +439,8 @@ export default function UnifiedHealthCheck() {
           roomTitle: room.title_en,
           tier: report.tier,
           issueType: "entry_mismatch",
-          message: `Entry "${dbEntry.slug}" in database but not in JSON`,
-          entrySlug: dbEntry.slug
+          message: `Entry "${entryId}" in database but not in JSON`,
+          entrySlug: entryId
         });
         report.entryValidation.push(validation);
       }
