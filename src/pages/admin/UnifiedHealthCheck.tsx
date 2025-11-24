@@ -826,311 +826,142 @@ export default function UnifiedHealthCheck() {
         </Card>
       )}
 
-      <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "main" | "kids")}>
-        <TabsList>
-          <TabsTrigger value="main">Main Rooms</TabsTrigger>
-          <TabsTrigger value="kids">Kids Rooms</TabsTrigger>
-        </TabsList>
+      <Card className="p-6">
+        <div className="flex items-center gap-4 mb-6">
+          <div className="flex-1">
+            <h2 className="text-lg font-semibold mb-1">Select Tier</h2>
+            <p className="text-sm text-muted-foreground">Choose a tier to validate its rooms</p>
+          </div>
+          <Select value={selectedTier} onValueChange={setSelectedTier}>
+            <SelectTrigger className="w-[200px]">
+              <SelectValue placeholder="Select tier" />
+            </SelectTrigger>
+            <SelectContent>
+              {allTiers.map((tier) => (
+                <SelectItem key={tier.id} value={tier.id}>
+                  {tier.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      </Card>
 
-        <TabsContent value="main" className="space-y-6">
-          {health && (
-            <>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Card className="p-6">
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle2 className="h-5 w-5 text-green-500" />
-                    <div>
-                      <p className="text-2xl font-bold">{health.totalRooms}</p>
-                      <p className="text-sm text-muted-foreground">Total Rooms</p>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card className="p-6">
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle2 className="h-5 w-5 text-green-500" />
-                    <div>
-                      <p className="text-2xl font-bold">{health.healthyRooms}</p>
-                      <p className="text-sm text-muted-foreground">Healthy Rooms</p>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card className="p-6">
-                  <div className="flex items-center space-x-2">
-                    <XCircle className="h-5 w-5 text-destructive" />
-                    <div>
-                      <p className="text-2xl font-bold">{health.issuesFound}</p>
-                      <p className="text-sm text-muted-foreground">Issues Found</p>
-                    </div>
-                  </div>
-                </Card>
-              </div>
-
-              {health.issuesFound === 0 ? (
-                <Card className="p-8 text-center">
-                  <CheckCircle2 className="h-12 w-12 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">All Rooms Healthy!</h3>
-                  <p className="text-muted-foreground">
-                    All rooms are properly configured with valid JSON files.
-                  </p>
-                </Card>
-              ) : (
-                <Card className="p-6">
-                  <h2 className="text-xl font-semibold mb-4">Rooms Requiring Attention</h2>
-                  <div className="space-y-4">
-                    {health.issues.filter(i => !i.isKidsRoom).map((issue, index) => (
-                      <div
-                        key={index}
-                        className="border rounded-lg p-4 space-y-2 hover:bg-accent/50 transition-colors"
-                      >
-                        <div className="flex items-start justify-between">
-                          <div className="flex items-start space-x-3 flex-1">
-                            {getIssueIcon(issue.issueType)}
-                            <div className="flex-1">
-                              <div className="flex items-center space-x-2 mb-1">
-                                <h3 className="font-semibold">
-                                  {issue.roomTitle} ({issue.roomId})
-                                </h3>
-                                <Badge variant="outline">{issue.tier}</Badge>
-                              </div>
-                              <p className="text-sm text-muted-foreground">{issue.message}</p>
-                              {(issue.manifestKey || issue.resolvedPath) && (
-                                <div className="mt-2">
-                                  <div className="inline-flex items-center gap-2 px-2 py-1 bg-muted rounded text-xs font-mono">
-                                    {issue.manifestKey && (
-                                      <span className="text-muted-foreground">
-                                        manifest: <span className="text-foreground">{issue.manifestKey}</span>
-                                      </span>
-                                    )}
-                                    {issue.resolvedPath && (
-                                      <>
-                                        {issue.manifestKey && <span className="text-muted-foreground">→</span>}
-                                        <span className="text-primary">{issue.resolvedPath}</span>
-                                      </>
-                                    )}
-                                  </div>
-                                </div>
-                              )}
-                              {issue.details && (
-                                <p className="text-xs text-muted-foreground mt-1 font-mono bg-muted/30 p-2 rounded">
-                                  {issue.details}
-                                </p>
-                              )}
-                              {issue.issueType === "missing_file" && (
-                                <Alert className="mt-2 py-2 px-3">
-                                  <AlertCircle className="h-4 w-4" />
-                                  <AlertDescription className="text-xs">
-                                    💡 This file needs to be created. Check the database schema_id field and create the matching JSON file in public/data/
-                                  </AlertDescription>
-                                </Alert>
-                              )}
-                            </div>
-                          </div>
-                          {getIssueBadge(issue.issueType)}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </Card>
-              )}
-            </>
-          )}
-        </TabsContent>
-
-        <TabsContent value="kids" className="space-y-6">
-          {/* Kids Room Filters */}
-          <Card className="p-6">
-            <h3 className="text-lg font-semibold mb-4">Filter Options</h3>
-            <div className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {health && (
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Card className="p-6">
+              <div className="flex items-center space-x-2">
+                <CheckCircle2 className="h-5 w-5 text-green-500" />
                 <div>
-                  <label className="text-sm font-medium mb-2 block">Select Level</label>
-                  <Select value={selectedLevel} onValueChange={setSelectedLevel}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a level" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All Levels</SelectItem>
-                      <SelectItem value="level1">Kids Level 1 (Ages 4-7)</SelectItem>
-                      <SelectItem value="level2">Kids Level 2 (Ages 7-9)</SelectItem>
-                      <SelectItem value="level3">Kids Level 3 (Ages 10-12)</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <p className="text-2xl font-bold">{health.totalRooms}</p>
+                  <p className="text-sm text-muted-foreground">Total Rooms</p>
                 </div>
-                
-                {availableRooms.length > 0 && (
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">
-                      Select Specific Rooms (Optional)
-                    </label>
-                    <div className="border rounded-md p-3 max-h-40 overflow-y-auto space-y-2">
-                      <div className="flex items-center space-x-2 mb-2 pb-2 border-b">
-                        <Checkbox
-                          id="select-all"
-                          checked={selectedRooms.length === availableRooms.length && availableRooms.length > 0}
-                          onCheckedChange={(checked) => {
-                            if (checked) {
-                              setSelectedRooms(availableRooms.map(r => r.id));
-                            } else {
-                              setSelectedRooms([]);
-                            }
-                          }}
-                        />
-                        <label htmlFor="select-all" className="text-sm font-medium cursor-pointer">
-                          {selectedRooms.length === availableRooms.length && availableRooms.length > 0 ? 'Deselect All' : 'Select All'}
-                        </label>
-                      </div>
-                      {availableRooms.map((room) => (
-                        <div key={room.id} className="flex items-center space-x-2">
-                          <Checkbox
-                            id={room.id}
-                            checked={selectedRooms.includes(room.id)}
-                            onCheckedChange={(checked) => {
-                              if (checked) {
-                                setSelectedRooms([...selectedRooms, room.id]);
-                              } else {
-                                setSelectedRooms(selectedRooms.filter(id => id !== room.id));
-                              }
-                            }}
-                          />
-                          <label htmlFor={room.id} className="text-sm cursor-pointer">
-                            {room.title}
-                          </label>
-                        </div>
-                      ))}
-                    </div>
-                    {selectedRooms.length > 0 && (
-                      <p className="text-xs text-muted-foreground mt-2">
-                        {selectedRooms.length} room{selectedRooms.length !== 1 ? 's' : ''} selected
-                      </p>
-                    )}
-                  </div>
-                )}
               </div>
-              
-              <div className="flex gap-2">
-                <Button onClick={checkRoomHealth} disabled={loading}>
-                  {loading ? (
-                    <>
-                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                      Checking...
-                    </>
-                  ) : (
-                    'Run Health Check'
-                  )}
-                </Button>
-                
-                {(selectedLevel !== "all" || selectedRooms.length > 0) && (
-                  <Button
-                    variant="outline"
-                    onClick={() => {
-                      setSelectedLevel("all");
-                      setSelectedRooms([]);
-                    }}
+            </Card>
+
+            <Card className="p-6">
+              <div className="flex items-center space-x-2">
+                <CheckCircle2 className="h-5 w-5 text-green-500" />
+                <div>
+                  <p className="text-2xl font-bold">{health.healthyRooms}</p>
+                  <p className="text-sm text-muted-foreground">Healthy Rooms</p>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-6">
+              <div className="flex items-center space-x-2">
+                <XCircle className="h-5 w-5 text-destructive" />
+                <div>
+                  <p className="text-2xl font-bold">{health.issuesFound}</p>
+                  <p className="text-sm text-muted-foreground">Issues Found</p>
+                </div>
+              </div>
+            </Card>
+          </div>
+
+          {health.issuesFound === 0 ? (
+            <Card className="p-8 text-center">
+              <CheckCircle2 className="h-12 w-12 text-green-500 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">All Rooms Healthy!</h3>
+              <p className="text-muted-foreground">
+                All rooms in {tierDisplay} are properly configured with valid JSON files.
+              </p>
+            </Card>
+          ) : (
+            <Card className="p-6">
+              <h2 className="text-xl font-semibold mb-4">Rooms Requiring Attention</h2>
+              <div className="space-y-4">
+                {health.issues.map((issue, index) => (
+                  <div
+                    key={index}
+                    className="border rounded-lg p-4 space-y-2 hover:bg-accent/50 transition-colors"
                   >
-                    Clear Filters
-                  </Button>
-                )}
-              </div>
-            </div>
-          </Card>
-
-          {health && (
-            <>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Card className="p-6">
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle2 className="h-5 w-5 text-green-500" />
-                    <div>
-                      <p className="text-2xl font-bold">{health.totalRooms}</p>
-                      <p className="text-sm text-muted-foreground">Total Rooms</p>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card className="p-6">
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle2 className="h-5 w-5 text-green-500" />
-                    <div>
-                      <p className="text-2xl font-bold">{health.healthyRooms}</p>
-                      <p className="text-sm text-muted-foreground">Healthy Rooms</p>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card className="p-6">
-                  <div className="flex items-center space-x-2">
-                    <XCircle className="h-5 w-5 text-destructive" />
-                    <div>
-                      <p className="text-2xl font-bold">{health.issuesFound}</p>
-                      <p className="text-sm text-muted-foreground">Issues Found</p>
-                    </div>
-                  </div>
-                </Card>
-              </div>
-
-              {health.issuesFound === 0 ? (
-                <Card className="p-8 text-center">
-                  <CheckCircle2 className="h-12 w-12 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">All Kids Rooms Healthy!</h3>
-                  <p className="text-muted-foreground">
-                    All kids rooms are properly configured.
-                  </p>
-                </Card>
-              ) : (
-                <Card className="p-6">
-                  <h2 className="text-xl font-semibold mb-4">Kids Rooms Requiring Attention</h2>
-                  <div className="space-y-4">
-                    {health.issues.filter(i => i.isKidsRoom).map((issue, index) => (
-                      <div
-                        key={index}
-                        className="border rounded-lg p-4 space-y-2 hover:bg-accent/50 transition-colors"
-                      >
-                        <div className="flex items-start justify-between">
-                          <div className="flex items-start space-x-3 flex-1">
-                            {getIssueIcon(issue.issueType)}
-                            <div className="flex-1">
-                              <div className="flex items-center space-x-2 mb-1">
-                                <h3 className="font-semibold">
-                                  {issue.roomTitle} ({issue.roomId})
-                                </h3>
-                                <Badge variant="outline">{issue.tier}</Badge>
-                              </div>
-                              <p className="text-sm text-muted-foreground">{issue.message}</p>
-                              {issue.issueType === "missing_entries" && issue.levelId && (
-                                <Button
-                                  size="sm"
-                                  className="mt-2"
-                                  onClick={() => fixKidsRoom(issue.roomId, issue.levelId!)}
-                                  disabled={fixing === issue.roomId}
-                                >
-                                  {fixing === issue.roomId ? (
-                                    <>
-                                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                                      Fixing...
-                                    </>
-                                  ) : (
-                                    <>
-                                      <Wrench className="h-4 w-4 mr-2" />
-                                      Fix Room
-                                    </>
-                                  )}
-                                </Button>
-                              )}
-                            </div>
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-start space-x-3 flex-1">
+                        {getIssueIcon(issue.issueType)}
+                        <div className="flex-1">
+                          <div className="flex items-center space-x-2 mb-1">
+                            <h3 className="font-semibold">
+                              {issue.roomTitle} ({issue.roomId})
+                            </h3>
+                            <Badge variant="outline">{issue.tier}</Badge>
                           </div>
-                          {getIssueBadge(issue.issueType)}
+                          <p className="text-sm text-muted-foreground">{issue.message}</p>
+                          {(issue.manifestKey || issue.resolvedPath) && (
+                            <div className="mt-2">
+                              <div className="inline-flex items-center gap-2 px-2 py-1 bg-muted rounded text-xs font-mono">
+                                {issue.manifestKey && (
+                                  <span className="text-muted-foreground">
+                                    manifest: <span className="text-foreground">{issue.manifestKey}</span>
+                                  </span>
+                                )}
+                                {issue.resolvedPath && (
+                                  <>
+                                    {issue.manifestKey && <span className="text-muted-foreground">→</span>}
+                                    <span className="text-primary">{issue.resolvedPath}</span>
+                                  </>
+                                )}
+                              </div>
+                            </div>
+                          )}
+                          {issue.details && (
+                            <p className="text-xs text-muted-foreground mt-1 font-mono bg-muted/30 p-2 rounded">
+                              {issue.details}
+                            </p>
+                          )}
+                          {issue.issueType === "missing_entries" && issue.isKidsRoom && issue.levelId && (
+                            <Button
+                              size="sm"
+                              className="mt-2"
+                              onClick={() => fixKidsRoom(issue.roomId, issue.levelId!)}
+                              disabled={fixing === issue.roomId}
+                            >
+                              {fixing === issue.roomId ? (
+                                <>
+                                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                                  Fixing...
+                                </>
+                              ) : (
+                                <>
+                                  <Wrench className="h-4 w-4 mr-2" />
+                                  Fix Room
+                                </>
+                              )}
+                            </Button>
+                          )}
                         </div>
                       </div>
-                    ))}
+                      {getIssueBadge(issue.issueType)}
+                    </div>
                   </div>
-                </Card>
-              )}
-            </>
+                ))}
+              </div>
+            </Card>
           )}
-        </TabsContent>
-      </Tabs>
+        </>
+      )}
     </div>
   );
 }
