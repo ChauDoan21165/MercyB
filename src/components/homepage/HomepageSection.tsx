@@ -41,6 +41,24 @@ export const HomepageSection = ({
   });
   const parallaxOffset = 0;
 
+  // Determine if background is dark to use light text
+  const isDarkBackground = (bgColor: string): boolean => {
+    const hex = bgColor.replace('#', '');
+    const r = parseInt(hex.substr(0, 2), 16);
+    const g = parseInt(hex.substr(2, 2), 16);
+    const b = parseInt(hex.substr(4, 2), 16);
+    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+    return brightness < 128;
+  };
+
+  const textColor = isDarkBackground(backgroundColor) 
+    ? 'rgba(248, 250, 252, 0.90)' 
+    : 'rgba(0, 0, 0, 0.75)';
+  
+  const textColorVi = isDarkBackground(backgroundColor)
+    ? 'rgba(248, 250, 252, 0.85)'
+    : 'rgba(0, 0, 0, 0.70)';
+
 
   return (
     <section
@@ -69,7 +87,7 @@ export const HomepageSection = ({
           >
             {title.en}
           </h2>
-          <p className="text-[15px] leading-relaxed" style={{ color: 'rgba(0, 0, 0, 0.75)' }}>
+          <p className="text-[15px] leading-relaxed" style={{ color: textColor }}>
             {body.en}
           </p>
           <AudioPlayer
@@ -87,7 +105,7 @@ export const HomepageSection = ({
           >
             {title.vi}
           </h3>
-          <p className="text-[15px] leading-relaxed" style={{ color: 'rgba(0, 0, 0, 0.70)' }}>
+          <p className="text-[15px] leading-relaxed" style={{ color: textColorVi }}>
             {body.vi}
           </p>
         </div>
