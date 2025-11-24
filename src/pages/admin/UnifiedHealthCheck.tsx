@@ -148,6 +148,8 @@ export default function UnifiedHealthCheck() {
   const [deepScanning, setDeepScanning] = useState(false);
   const [bulkFixing, setBulkFixing] = useState(false);
   const [bulkFixProgress, setBulkFixProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
+  const [bulkFixingAudio, setBulkFixingAudio] = useState(false);
+  const [audioFixProgress, setAudioFixProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
   
   // Kids room filtering state (for kids tiers only)
   const [selectedLevel, setSelectedLevel] = useState<string>("all");
@@ -489,6 +491,149 @@ export default function UnifiedHealthCheck() {
     } finally {
       setDeepScanning(false);
       setProgress(null);
+    }
+  };
+
+  // Try to find audio file with different path variations
+  const findAudioFile = async (audioPath: string): Promise<string | null> => {
+    const baseName = audioPath.split('/').pop() || audioPath;
+    const pathVariations = [
+      audioPath,
+      `/audio/${audioPath}`,
+      `audio/${audioPath}`,
+      `/audio/${baseName}`,
+      `audio/${baseName}`,
+      baseName,
+    ];
+
+    for (const path of pathVariations) {
+      try {
+        const response = await fetch(`/audio/${path.replace(/^\/audio\//, '')}`, { method: 'HEAD' });
+        if (response.ok) {
+          return path.replace(/^\/audio\//, '');
+        }
+      } catch {
+        continue;
+      }
+    }
+
+    return null;
+  };
+
+  // Bulk fix audio issues
+  const bulkFixAudioIssues = async () => {
+    const roomsWithAudioIssues = deepScanResults.filter(
+      report => report.summary.audioIssues > 0
+    );
+
+    if (roomsWithAudioIssues.length === 0) {
+      toast({
+        title: "No Audio Issues Found",
+        description: "No rooms with audio issues to fix",
+      });
+      return;
+    }
+
+    setBulkFixingAudio(true);
+    let successCount = 0;
+    let failCount = 0;
+    let fixedFiles = 0;
+
+    try {
+      for (let i = 0; i < roomsWithAudioIssues.length; i++) {
+        const report = roomsWithAudioIssues[i];
+        setAudioFixProgress({
+          current: i + 1,
+          total: roomsWithAudioIssues.length,
+          roomName: report.roomTitle
+        });
+
+        try {
+          // Load JSON file
+          const response = await fetch(`/${report.jsonPath}`);
+          if (!response.ok) {
+            failCount++;
+            continue;
+          }
+
+          const jsonData = await response.json();
+          let hasChanges = false;
+
+          // Fix audio in entries
+          if (jsonData.entries && Array.isArray(jsonData.entries)) {
+            for (const entry of jsonData.entries) {
+              if (entry.audio) {
+                const audioPath = typeof entry.audio === 'string' 
+                  ? entry.audio 
+                  : entry.audio.en;
+                
+                if (audioPath) {
+                  // Test if current path works
+                  const testResult = await testAudioFile(audioPath);
+                  if (testResult.status !== "success") {
+                    // Try to find correct path
+                    const correctedPath = await findAudioFile(audioPath);
+                    if (correctedPath) {
+                      if (typeof entry.audio === 'string') {
+                        entry.audio = correctedPath;
+                      } else {
+                        entry.audio.en = correctedPath;
+                      }
+                      hasChanges = true;
+                      fixedFiles++;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          // Fix audio in content
+          if (jsonData.content?.audio) {
+            const testResult = await testAudioFile(jsonData.content.audio);
+            if (testResult.status !== "success") {
+              const correctedPath = await findAudioFile(jsonData.content.audio);
+              if (correctedPath) {
+                jsonData.content.audio = correctedPath;
+                hasChanges = true;
+                fixedFiles++;
+              }
+            }
+          }
+
+          if (hasChanges) {
+            // Update database with corrected entries
+            const { error } = await supabase
+              .from('rooms')
+              .update({ entries: jsonData.entries })
+              .eq('id', report.roomId);
+
+            if (error) {
+              console.error(`Failed to update ${report.roomId}:`, error);
+              failCount++;
+            } else {
+              successCount++;
+            }
+          }
+        } catch (error: any) {
+          console.error(`Error fixing audio for ${report.roomId}:`, error);
+          failCount++;
+        }
+      }
+
+      toast({
+        title: "Audio Fix Complete",
+        description: `Fixed ${fixedFiles} audio files across ${successCount} rooms. ${failCount > 0 ? `${failCount} rooms failed.` : ''}`,
+        variant: failCount > 0 ? "default" : "default"
+      });
+
+      // Re-run deep scan to refresh results
+      if (successCount > 0) {
+        await runDeepScan();
+      }
+    } finally {
+      setBulkFixingAudio(false);
+      setAudioFixProgress(null);
     }
   };
 
@@ -1301,6 +1446,24 @@ export default function UnifiedHealthCheck() {
         </Card>
       )}
 
+      {bulkFixingAudio && audioFixProgress && (
+        <Card className="p-6 border-amber-500/50">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-muted-foreground">Fixing audio paths...</span>
+              <span className="font-medium">
+                {audioFixProgress.current} / {audioFixProgress.total}
+              </span>
+            </div>
+            <Progress value={(audioFixProgress.current / audioFixProgress.total) * 100} className="h-2" />
+            <div className="flex items-center gap-2 text-sm">
+              <Loader2 className="h-4 w-4 animate-spin text-amber-500" />
+              <span className="text-foreground">{audioFixProgress.roomName}</span>
+            </div>
+          </div>
+        </Card>
+      )}
+
       {/* Unified Tier Selection */}
       <Card className="p-6">
         <div className="space-y-4">
@@ -1528,10 +1691,30 @@ export default function UnifiedHealthCheck() {
                 </p>
               </div>
               <div className="flex gap-2">
+                {deepScanResults.some(r => r.summary.audioIssues > 0) && (
+                  <Button 
+                    onClick={bulkFixAudioIssues} 
+                    disabled={bulkFixingAudio || bulkFixing}
+                    variant="default"
+                    className="bg-amber-600 hover:bg-amber-700"
+                  >
+                    {bulkFixingAudio ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Fixing Audio...
+                      </>
+                    ) : (
+                      <>
+                        <Volume2 className="mr-2 h-4 w-4" />
+                        Bulk Fix Audio Issues
+                      </>
+                    )}
+                  </Button>
+                )}
                 {deepScanResults.some(r => r.summary.entryIssues > 0) && (
                   <Button 
                     onClick={bulkFixEntryMismatches} 
-                    disabled={bulkFixing}
+                    disabled={bulkFixing || bulkFixingAudio}
                     variant="default"
                     className="bg-green-600 hover:bg-green-700"
                   >
