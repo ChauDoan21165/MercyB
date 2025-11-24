@@ -329,15 +329,21 @@ export default function UnifiedHealthCheck() {
     // 1. Extract all audio files from JSON
     const audioFiles = new Set<string>();
     if (jsonData.content?.audio) {
-      audioFiles.add(jsonData.content.audio);
+      // Split space-separated audio files
+      const files = jsonData.content.audio.trim().split(/\s+/);
+      files.forEach((f: string) => audioFiles.add(f));
     }
     if (jsonData.entries && Array.isArray(jsonData.entries)) {
       jsonData.entries.forEach((entry: any) => {
         if (entry.audio) {
           if (typeof entry.audio === 'string') {
-            audioFiles.add(entry.audio);
+            // Split space-separated audio files
+            const files = entry.audio.trim().split(/\s+/);
+            files.forEach((f: string) => audioFiles.add(f));
           } else if (entry.audio.en) {
-            audioFiles.add(entry.audio.en);
+            // Split space-separated audio files
+            const files = entry.audio.en.trim().split(/\s+/);
+            files.forEach((f: string) => audioFiles.add(f));
           }
         }
       });
