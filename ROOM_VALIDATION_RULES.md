@@ -1,29 +1,38 @@
 # Room Validation Rules
 
-## Canonical Filename Convention (NON-NEGOTIABLE)
+## Canonical Filename Convention (STRICT - NO FALLBACKS)
 
 **Rule:** `public/data/{room_id}.json`
 
 Where:
 - `room_id` **EXACTLY** equals `JSON.id` field
 - **all lowercase**
-- **snake_case** or **kebab-case** (depending on id)
+- **snake_case ONLY** (no kebab-case, no hyphens except in tier suffix like vip3_ii)
 - **NO** Title_Case
 - **NO** PascalCase
 - **NO** mixed casing
+- **NO** case conversions
+- **NO** fallback guessing
 - **NO** extra variations
+
+**System behavior:**
+- If exact match not found → **HARD FAIL** immediately
+- **NO** backwards compatibility attempts
+- **NO** case-insensitive search
+- **NO** underscore/hyphen swapping
+- Clear error message with expected path
 
 ### Valid Examples
 ```
 public/data/strategic_foundations_vip9.json  ✅
-public/data/strategic-foundations-vip9.json  ✅ (if id uses kebab-case)
 public/data/finding_gods_peace_free.json     ✅
+public/data/leadership_mindset_vip3_ii.json  ✅
 ```
 
 ### Invalid Examples
 ```
 public/data/Strategic_Foundations_vip9.json  ❌ (Title_Case)
-public/data/Strategic_Foundations_VIP9.json  ❌ (mixed case)
+public/data/strategic-foundations-vip9.json  ❌ (kebab-case)
 public/data/strategic_foundations.json       ❌ (missing tier)
 public/data/StrategicFoundations_vip9.json   ❌ (PascalCase)
 ```
@@ -151,10 +160,15 @@ All JSON loading throughout the application uses **ONE** canonical resolver:
 - All future room data consumers
 
 **Functions:**
-- `resolveRoomJsonPath(roomId)`: Finds JSON file path
-- `loadRoomJson(roomId)`: Loads and validates JSON
-- `validateRoomJson(data, roomId, filename)`: Strict validation
+- `resolveRoomJsonPath(roomId)`: Finds JSON file path (manifest → canonical → HARD FAIL)
+- `loadRoomJson(roomId)`: Loads and validates JSON (strict validation)
+- `validateRoomJson(data, roomId, filename)`: Enforces structure rules
 - `validateAllRooms(roomIds)`: Bulk validation
+
+**Guarantee:**
+- **ONE** resolver used everywhere
+- **ZERO** fallback attempts
+- **HARD FAIL** on mismatch with clear error message
 
 ## CI/CD Integration
 
@@ -207,14 +221,34 @@ If you have files that don't follow the canonical naming:
    node scripts/generate-room-registry.js
    ```
 
-### Backwards Compatibility
+### Strict Enforcement (No Silent Failures)
 
-The resolver includes **limited** backwards compatibility:
-- Tries lowercase variants
-- Tries snake_case/kebab-case conversions
-- **Logs deprecation warnings**
+The resolver implements zero-tolerance policy:
 
-⚠️ **Deprecated paths will be removed in future versions**
+1. **Try manifest path** (if exists in PUBLIC_ROOM_MANIFEST)
+2. **Try canonical path** (data/{room_id}.json - EXACT MATCH ONLY)
+3. **HARD FAIL** with detailed error:
+   ```
+   ❌ ERROR: JSON file not found or invalid
+   room: strategic_foundations_vip9
+   expected: data/strategic_foundations_vip9.json
+   reason: File not found - exact match required
+   detail: Expected exact file: data/strategic_foundations_vip9.json
+           JSON.id must exactly match filename (lowercase snake_case)
+           No fallbacks or case conversions attempted
+   ```
+
+**NO backwards compatibility:**
+- ❌ No lowercase conversion attempts
+- ❌ No underscore/hyphen swapping
+- ❌ No case-insensitive matching  
+- ❌ No TitleCase/PascalCase guessing
+
+**This prevents:**
+- Phantom rooms in database
+- "1 entry" display bugs
+- Silent import failures
+- Filename/ID mismatches
 
 ## Best Practices
 

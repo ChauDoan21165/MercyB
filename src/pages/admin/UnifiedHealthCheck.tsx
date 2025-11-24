@@ -490,20 +490,22 @@ export default function UnifiedHealthCheck() {
         const room = rooms![i];
         setProgress({ current: i + 1, total, roomName: room.title_en });
 
-        // Build robust candidate paths for JSON file
-        const manifestPathById = PUBLIC_ROOM_MANIFEST[room.id];
-        // Use canonical resolver for JSON loading
+        // Use strict canonical resolver - NO FALLBACKS
         let jsonData: any = null;
+        let resolvedPath: string = "";
+        
         try {
-          const { loadRoomJson } = await import('@/lib/roomJsonResolver');
+          const { loadRoomJson, resolveRoomJsonPath } = await import('@/lib/roomJsonResolver');
+          resolvedPath = await resolveRoomJsonPath(room.id || "");
           jsonData = await loadRoomJson(room.id || "");
         } catch (error: any) {
           console.error(`❌ Failed to load JSON for ${room.id}:`, error.message);
+          // Hard fail - do not continue with this room
           continue;
         }
 
         try {
-          const report = await deepScanRoom(room, jsonData, usedPath || manifestPathById || "");
+          const report = await deepScanRoom(room, jsonData, resolvedPath);
           reports.push(report);
         } catch (error) {
           console.warn(`Skipping room ${room.id}: ${error instanceof Error ? error.message : "Unknown error"}`);

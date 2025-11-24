@@ -28,11 +28,17 @@ function filenameToRoomId(filename) {
     .replace(/-(free|vip1|vip2|vip3|vip3[-_]ii|vip4|vip5|vip6)$/i, (match) => match.toLowerCase()); // normalize tier
 }
 
-// Validate filename follows canonical rules
+// Validate filename follows STRICT canonical rules (NO FALLBACKS)
 function validateFilename(filename) {
   // Must be lowercase
   if (filename !== filename.toLowerCase()) {
     return { valid: false, reason: 'Filename must be all lowercase' };
+  }
+
+  // Must use snake_case only (no kebab-case mixing)
+  const baseName = filename.replace(/\.json$/, '');
+  if (baseName.includes('-') && baseName.includes('_')) {
+    return { valid: false, reason: 'Filename cannot mix hyphens and underscores - use snake_case only' };
   }
 
   // Must end with .json
