@@ -1,0 +1,32 @@
+{
+  "id": "individual_strategic_mastery_vip9",
+  "tier": "VIP9 / Cấp VIP9",
+  "domain": "Individual",
+  "title": {
+    "en": "Individual Strategic Mastery",
+    "vi": "Làm Chủ Chiến Lược Cá Nhân"
+  },
+  "content": {
+    "en": "Welcome to Individual Strategic Mastery—the foundation of the Strategic Mindset Institute. This domain equips founders, executives, and strategists with the mental frameworks, decision-making precision, and adaptive intelligence required to navigate complexity and uncertainty at the highest levels. Across 20 specialized rooms, you will master pattern recognition, scenario thinking, emotional neutrality, risk calibration, and the long-horizon thinking that separates transactional operators from transformational leaders. This is where personal mastery becomes strategic advantage.",
+    "vi": "Chào mừng bạn đến với Làm Chủ Chiến Lược Cá Nhân—nền tảng của Viện Tư Duy Chiến Lược. Lĩnh vực này trang bị cho các nhà sáng lập, giám đốc điều hành và chiến lược gia những khung tư duy, độ chính xác trong ra quyết định, và trí tuệ thích nghi cần thiết để điều hướng sự phức tạp và bất định ở cấp độ cao nhất. Qua 20 phòng chuyên sâu, bạn sẽ làm chủ nhận diện mẫu hình, tư duy kịch bản, trung lập cảm xúc, hiệu chỉnh rủi ro, và tư duy tầm xa biến các nhà điều hành giao dịch thành những nhà lãnh đạo chuyển đổi. Đây là nơi làm chủ cá nhân trở thành lợi thế chiến lược."
+  },
+  "entries": [
+    {
+      "slug": "strategic-mastery-overview",
+      "keywords_en": ["strategic thinking", "executive mindset", "decision frameworks", "adaptive intelligence", "strategic leadership", "founder strategy", "personal mastery", "transformational leadership"],
+      "keywords_vi": ["tư duy chiến lược", "tư duy điều hành", "khung quyết định", "trí tuệ thích nghi", "lãnh đạo chiến lược", "chiến lược người sáng lập", "làm chủ cá nhân", "lãnh đạo chuyển đổi"],
+      "copy": {
+        "en": "Individual Strategic Mastery is the foundation upon which all executive excellence is built. In a world of accelerating complexity, information overload, and strategic uncertainty, the difference between success and failure increasingly comes down to the quality of your thinking—not just what you think, but how you think, how you process information, how you manage cognitive biases, and how you make decisions under pressure. This domain synthesizes decades of strategic theory from Sun Tzu to Boyd to Porter, neuroscience research on decision-making, and the lived experience of founders and executives who have navigated crises, scaled organizations, and shaped markets. Across 20 rooms, you will develop the mental architecture of strategic mastery: the ability to recognize patterns others miss, construct scenarios that anticipate multiple futures, calibrate risk with precision, maintain emotional neutrality in high-stakes moments, think across multiple time horizons, and build personal systems that compound your effectiveness over time. This is not abstract theory—this is the practical cognitive toolkit that separates reactive operators from visionary strategists.",
+        "vi": "Làm Chủ Chiến Lược Cá Nhân là nền tảng mà mọi xuất sắc điều hành được xây dựng. Trong thế giới với sự phức tạp gia tăng, quá tải thông tin, và bất định chiến lược, sự khác biệt giữa thành công và thất bại ngày càng phụ thuộc vào chất lượng tư duy của bạn—không chỉ bạn nghĩ gì, mà bạn nghĩ như thế nào, bạn xử lý thông tin ra sao, bạn quản lý thiên kiến nhận thức như thế nào, và bạn ra quyết định dưới áp lực thế nào. Lĩnh vực này tổng hợp hàng thập kỷ lý thuyết chiến lược từ Tôn Tử đến Boyd đến Porter, nghiên cứu thần kinh học về ra quyết định, và kinh nghiệm sống của các nhà sáng lập và giám đốc điều hành đã vượt qua khủng hoảng, mở rộng tổ chức, và định hình thị trường. Qua 20 phòng, bạn sẽ phát triển kiến trúc tâm trí của làm chủ chiến lược: khả năng nhận diện mẫu hình người khác bỏ lỡ, xây dựng kịch bản dự đoán nhiều tương lai, hiệu chỉnh rủi ro chính xác, duy trì trung lập cảm xúc trong những khoảnh khắc quan trọng, suy nghĩ qua nhiều tầm thời gian, và xây dựng hệ thống cá nhân nhân rộng hiệu quả theo thời gian. Đây không phải lý thuyết trừu tượng—đây là bộ công cụ nhận thức thực tế phân biệt các nhà điều hành phản ứng với các chiến lược gia có tầm nhìn."
+      },
+      "tags": ["strategic-foundations", "executive-mindset", "decision-making", "cognitive-mastery"],
+      "audio": "individual_strategic_mastery_intro.mp3"
+    }
+  ],
+  "meta": {
+    "created_at": "2025-11-24T09:00:00.000Z",
+    "updated_at": "2025-11-24T09:00:00.000Z",
+    "num_entries": 1,
+    "room_color": "#1E293B"
+  }
+}
