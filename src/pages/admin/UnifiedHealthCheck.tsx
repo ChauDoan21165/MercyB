@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 // Tabs component removed - using unified tier dropdown instead
-import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench, Download } from "lucide-react";
+import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench, Download, Play, Volume2, FileText } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
@@ -18,13 +18,45 @@ interface RoomIssue {
   roomId: string;
   roomTitle: string;
   tier: string;
-  issueType: "missing_file" | "invalid_json" | "no_entries" | "missing_audio" | "locked" | "missing_entries" | "inactive";
+  issueType: "missing_file" | "invalid_json" | "no_entries" | "missing_audio" | "locked" | "missing_entries" | "inactive" | "orphan_json" | "audio_unreachable" | "entry_mismatch";
   message: string;
   details?: string;
   resolvedPath?: string;
   manifestKey?: string;
   isKidsRoom?: boolean;
   levelId?: string;
+  audioFile?: string;
+  entrySlug?: string;
+}
+
+interface AudioCheckResult {
+  file: string;
+  status: "success" | "failed" | "timeout";
+  error?: string;
+  httpStatus?: number;
+}
+
+interface EntryValidation {
+  slug: string;
+  inJson: boolean;
+  inDb: boolean;
+  issue?: string;
+}
+
+interface DeepRoomReport {
+  roomId: string;
+  roomTitle: string;
+  tier: string;
+  jsonPath?: string;
+  summary: {
+    totalIssues: number;
+    audioIssues: number;
+    entryIssues: number;
+    healthScore: number; // 0-100
+  };
+  audioChecks: AudioCheckResult[];
+  entryValidation: EntryValidation[];
+  issues: RoomIssue[];
 }
 
 interface RoomHealth {
@@ -112,6 +144,8 @@ export default function UnifiedHealthCheck() {
   const [fixing, setFixing] = useState<string | null>(null);
   const [selectedTier, setSelectedTier] = useState<string>(tier || "free");
   const [progress, setProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
+  const [deepScanResults, setDeepScanResults] = useState<DeepRoomReport[]>([]);
+  const [deepScanning, setDeepScanning] = useState(false);
   
   // Kids room filtering state (for kids tiers only)
   const [selectedLevel, setSelectedLevel] = useState<string>("all");
@@ -246,6 +280,300 @@ export default function UnifiedHealthCheck() {
     toast({
       title: "Report Downloaded",
       description: `Downloaded report with ${missingFileIssues.length} missing files`,
+    });
+  };
+
+  // Test if an audio file is accessible
+  const testAudioFile = async (audioPath: string): Promise<AudioCheckResult> => {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 second timeout
+      
+      const response = await fetch(`/audio/${audioPath}`, { 
+        method: 'HEAD',
+        signal: controller.signal 
+      });
+      clearTimeout(timeoutId);
+      
+      if (response.ok) {
+        return { file: audioPath, status: "success", httpStatus: response.status };
+      } else {
+        return { 
+          file: audioPath, 
+          status: "failed", 
+          httpStatus: response.status,
+          error: `HTTP ${response.status}: ${response.statusText}` 
+        };
+      }
+    } catch (error: any) {
+      if (error.name === 'AbortError') {
+        return { file: audioPath, status: "timeout", error: "Request timed out after 3s" };
+      }
+      return { file: audioPath, status: "failed", error: error.message };
+    }
+  };
+
+  // Deep scan a single room
+  const deepScanRoom = async (room: any, jsonData: any, jsonPath: string): Promise<DeepRoomReport> => {
+    const report: DeepRoomReport = {
+      roomId: room.id,
+      roomTitle: room.title_en,
+      tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
+      jsonPath,
+      summary: {
+        totalIssues: 0,
+        audioIssues: 0,
+        entryIssues: 0,
+        healthScore: 100
+      },
+      audioChecks: [],
+      entryValidation: [],
+      issues: []
+    };
+
+    // 1. Extract all audio files from JSON
+    const audioFiles = new Set<string>();
+    if (jsonData.content?.audio) {
+      audioFiles.add(jsonData.content.audio);
+    }
+    if (jsonData.entries && Array.isArray(jsonData.entries)) {
+      jsonData.entries.forEach((entry: any) => {
+        if (entry.audio) {
+          if (typeof entry.audio === 'string') {
+            audioFiles.add(entry.audio);
+          } else if (entry.audio.en) {
+            audioFiles.add(entry.audio.en);
+          }
+        }
+      });
+    }
+
+    // 2. Test all audio files
+    for (const audioFile of audioFiles) {
+      const result = await testAudioFile(audioFile);
+      report.audioChecks.push(result);
+      
+      if (result.status !== "success") {
+        report.summary.audioIssues++;
+        report.issues.push({
+          roomId: room.id,
+          roomTitle: room.title_en,
+          tier: report.tier,
+          issueType: "audio_unreachable",
+          message: `Audio file unreachable: ${audioFile}`,
+          details: result.error || `Status: ${result.status}`,
+          audioFile: audioFile
+        });
+      }
+    }
+
+    // 3. Validate entries against database
+    const dbEntries = room.entries || [];
+    const jsonEntries = jsonData.entries || [];
+    
+    const dbSlugs = new Set(dbEntries.map((e: any) => e.slug));
+    const jsonSlugs = new Set(jsonEntries.map((e: any) => e.slug));
+
+    // Check JSON entries
+    jsonEntries.forEach((jsonEntry: any) => {
+      const validation: EntryValidation = {
+        slug: jsonEntry.slug,
+        inJson: true,
+        inDb: dbSlugs.has(jsonEntry.slug)
+      };
+
+      if (!validation.inDb) {
+        validation.issue = "Entry exists in JSON but not in database";
+        report.summary.entryIssues++;
+        report.issues.push({
+          roomId: room.id,
+          roomTitle: room.title_en,
+          tier: report.tier,
+          issueType: "entry_mismatch",
+          message: `Entry "${jsonEntry.slug}" in JSON but not in database`,
+          entrySlug: jsonEntry.slug
+        });
+      }
+
+      report.entryValidation.push(validation);
+    });
+
+    // Check DB entries
+    dbEntries.forEach((dbEntry: any) => {
+      if (!jsonSlugs.has(dbEntry.slug)) {
+        const validation: EntryValidation = {
+          slug: dbEntry.slug,
+          inJson: false,
+          inDb: true,
+          issue: "Entry exists in database but not in JSON"
+        };
+        report.summary.entryIssues++;
+        report.issues.push({
+          roomId: room.id,
+          roomTitle: room.title_en,
+          tier: report.tier,
+          issueType: "entry_mismatch",
+          message: `Entry "${dbEntry.slug}" in database but not in JSON`,
+          entrySlug: dbEntry.slug
+        });
+        report.entryValidation.push(validation);
+      }
+    });
+
+    // Calculate health score
+    report.summary.totalIssues = report.issues.length;
+    const maxIssues = audioFiles.size + jsonEntries.length + dbEntries.length;
+    if (maxIssues > 0) {
+      report.summary.healthScore = Math.max(0, Math.round(100 - (report.summary.totalIssues / maxIssues) * 100));
+    }
+
+    return report;
+  };
+
+  // Run deep scan for current tier
+  const runDeepScan = async () => {
+    setDeepScanning(true);
+    setDeepScanResults([]);
+    
+    try {
+      let query = supabase
+        .from("rooms")
+        .select("*")
+        .neq("tier", "kids");
+
+      if (selectedTier && !selectedTier.startsWith("kidslevel")) {
+        query = query.ilike("tier", `%${selectedTier}%`);
+      }
+
+      const { data: rooms, error: roomsError } = await query;
+      if (roomsError) throw roomsError;
+
+      const reports: DeepRoomReport[] = [];
+      const total = rooms?.length || 0;
+
+      for (let i = 0; i < total; i++) {
+        const room = rooms![i];
+        setProgress({ current: i + 1, total, roomName: room.title_en });
+
+        // Find and load JSON file
+        const manifestPathById = PUBLIC_ROOM_MANIFEST[room.id];
+        if (!manifestPathById) continue;
+
+        try {
+          const response = await fetch(`/${manifestPathById}`);
+          if (!response.ok) continue;
+          
+          const jsonData = await response.json();
+          const report = await deepScanRoom(room, jsonData, manifestPathById);
+          reports.push(report);
+        } catch (error) {
+          console.error(`Error scanning room ${room.id}:`, error);
+        }
+      }
+
+      setDeepScanResults(reports);
+      
+      toast({
+        title: "Deep Scan Complete",
+        description: `Scanned ${reports.length} rooms with detailed validation`,
+      });
+    } catch (error: any) {
+      toast({
+        title: "Deep Scan Failed",
+        description: error.message,
+        variant: "destructive"
+      });
+    } finally {
+      setDeepScanning(false);
+      setProgress(null);
+    }
+  };
+
+  // Download comprehensive report
+  const downloadComprehensiveReport = () => {
+    if (deepScanResults.length === 0) {
+      toast({
+        title: "No Data",
+        description: "Run a deep scan first to generate a report",
+      });
+      return;
+    }
+
+    let report = `COMPREHENSIVE ROOM HEALTH REPORT\n`;
+    report += `Generated: ${new Date().toISOString()}\n`;
+    report += `Tier: ${tierDisplay}\n`;
+    report += `═══════════════════════════════════════════════════════════\n\n`;
+
+    report += `SUMMARY\n`;
+    report += `Total Rooms Scanned: ${deepScanResults.length}\n`;
+    
+    const totalIssues = deepScanResults.reduce((sum, r) => sum + r.summary.totalIssues, 0);
+    const totalAudioIssues = deepScanResults.reduce((sum, r) => sum + r.summary.audioIssues, 0);
+    const totalEntryIssues = deepScanResults.reduce((sum, r) => sum + r.summary.entryIssues, 0);
+    const avgHealthScore = Math.round(
+      deepScanResults.reduce((sum, r) => sum + r.summary.healthScore, 0) / deepScanResults.length
+    );
+
+    report += `Total Issues Found: ${totalIssues}\n`;
+    report += `- Audio Issues: ${totalAudioIssues}\n`;
+    report += `- Entry Mismatches: ${totalEntryIssues}\n`;
+    report += `Average Health Score: ${avgHealthScore}%\n\n`;
+    report += `═══════════════════════════════════════════════════════════\n\n`;
+
+    // Room-by-room details
+    deepScanResults.forEach((roomReport, index) => {
+      report += `${index + 1}. ${roomReport.roomTitle} (${roomReport.roomId})\n`;
+      report += `   Health Score: ${roomReport.summary.healthScore}%\n`;
+      report += `   JSON Path: ${roomReport.jsonPath}\n`;
+      report += `   Issues: ${roomReport.summary.totalIssues}\n\n`;
+
+      if (roomReport.audioChecks.length > 0) {
+        report += `   Audio Files Checked: ${roomReport.audioChecks.length}\n`;
+        const failedAudio = roomReport.audioChecks.filter(a => a.status !== "success");
+        if (failedAudio.length > 0) {
+          report += `   ⚠️ Failed Audio Files:\n`;
+          failedAudio.forEach(audio => {
+            report += `      - ${audio.file}: ${audio.error || audio.status}\n`;
+          });
+        }
+        report += `\n`;
+      }
+
+      if (roomReport.entryValidation.length > 0) {
+        const entryIssues = roomReport.entryValidation.filter(e => e.issue);
+        if (entryIssues.length > 0) {
+          report += `   ⚠️ Entry Validation Issues:\n`;
+          entryIssues.forEach(entry => {
+            report += `      - ${entry.slug}: ${entry.issue}\n`;
+          });
+        }
+        report += `\n`;
+      }
+
+      if (roomReport.issues.length > 0) {
+        report += `   All Issues:\n`;
+        roomReport.issues.forEach(issue => {
+          report += `      - [${issue.issueType}] ${issue.message}\n`;
+          if (issue.details) report += `        Details: ${issue.details}\n`;
+        });
+      }
+
+      report += `\n───────────────────────────────────────────────────────────\n\n`;
+    });
+
+    const blob = new Blob([report], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `room-health-comprehensive-${selectedTier}-${Date.now()}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    toast({
+      title: "Report Downloaded",
+      description: `Comprehensive report for ${deepScanResults.length} rooms`,
     });
   };
 
@@ -749,10 +1077,15 @@ export default function UnifiedHealthCheck() {
       case "missing_file":
       case "invalid_json":
         return <XCircle className="h-5 w-5 text-destructive" />;
+      case "audio_unreachable":
+        return <Volume2 className="h-5 w-5 text-amber-500" />;
+      case "entry_mismatch":
+        return <FileText className="h-5 w-5 text-blue-500" />;
       case "no_entries":
       case "missing_entries":
       case "locked":
       case "inactive":
+      case "orphan_json":
         return <AlertCircle className="h-5 w-5 text-yellow-500" />;
       default:
         return <AlertCircle className="h-5 w-5" />;
@@ -760,14 +1093,17 @@ export default function UnifiedHealthCheck() {
   };
 
   const getIssueBadge = (issueType: RoomIssue["issueType"]) => {
-    const variants: Record<RoomIssue["issueType"], "destructive" | "default"> = {
+    const variants: Record<RoomIssue["issueType"], "destructive" | "default" | "secondary"> = {
       missing_file: "destructive",
       invalid_json: "destructive",
+      audio_unreachable: "destructive",
+      entry_mismatch: "secondary",
       no_entries: "default",
       missing_entries: "default",
       missing_audio: "default",
       locked: "default",
       inactive: "default",
+      orphan_json: "default",
     };
 
     return <Badge variant={variants[issueType]}>{issueType.replace(/_/g, " ")}</Badge>;
@@ -787,6 +1123,9 @@ export default function UnifiedHealthCheck() {
           <p className="text-muted-foreground">
             Validate room JSON files and configuration across all tiers
           </p>
+          <p className="text-sm text-muted-foreground mt-2">
+            <strong>Quick Scan:</strong> Basic validation • <strong>Deep Scan:</strong> Tests audio files & entry matching
+          </p>
         </div>
         <div className="flex gap-2">
           {health && health.issues.some(i => i.issueType === "missing_file") && (
@@ -798,6 +1137,32 @@ export default function UnifiedHealthCheck() {
               Download Missing Files Report
             </Button>
           )}
+          {deepScanResults.length > 0 && (
+            <Button 
+              onClick={downloadComprehensiveReport} 
+              variant="outline"
+            >
+              <FileText className="mr-2 h-4 w-4" />
+              Download Full Report
+            </Button>
+          )}
+          <Button 
+            onClick={runDeepScan} 
+            disabled={deepScanning || loading}
+            variant="secondary"
+          >
+            {deepScanning ? (
+              <>
+                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                Deep Scanning...
+              </>
+            ) : (
+              <>
+                <Volume2 className="mr-2 h-4 w-4" />
+                Deep Scan
+              </>
+            )}
+          </Button>
           <Button onClick={checkRoomHealth} disabled={loading}>
             {loading ? (
               <>
@@ -805,7 +1170,7 @@ export default function UnifiedHealthCheck() {
                 Scanning...
               </>
             ) : (
-              "Refresh"
+              "Quick Scan"
             )}
           </Button>
         </div>
@@ -1048,6 +1413,167 @@ export default function UnifiedHealthCheck() {
               </div>
             </Card>
           )}
+        </div>
+      )}
+
+      {/* Deep Scan Results */}
+      {deepScanResults.length > 0 && (
+        <div className="space-y-6">
+          <Card className="p-6">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h2 className="text-2xl font-bold">Deep Scan Results</h2>
+                <p className="text-sm text-muted-foreground">
+                  Comprehensive validation including audio files and entry matching
+                </p>
+              </div>
+              <Button onClick={downloadComprehensiveReport} variant="outline">
+                <Download className="mr-2 h-4 w-4" />
+                Export Report
+              </Button>
+            </div>
+
+            {/* Summary Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+              <Card className="p-4">
+                <div className="text-center">
+                  <p className="text-3xl font-bold">
+                    {Math.round(deepScanResults.reduce((sum, r) => sum + r.summary.healthScore, 0) / deepScanResults.length)}%
+                  </p>
+                  <p className="text-sm text-muted-foreground">Avg Health</p>
+                </div>
+              </Card>
+              <Card className="p-4">
+                <div className="text-center">
+                  <p className="text-3xl font-bold">
+                    {deepScanResults.reduce((sum, r) => sum + r.summary.totalIssues, 0)}
+                  </p>
+                  <p className="text-sm text-muted-foreground">Total Issues</p>
+                </div>
+              </Card>
+              <Card className="p-4">
+                <div className="text-center">
+                  <p className="text-3xl font-bold text-amber-500">
+                    {deepScanResults.reduce((sum, r) => sum + r.summary.audioIssues, 0)}
+                  </p>
+                  <p className="text-sm text-muted-foreground">Audio Issues</p>
+                </div>
+              </Card>
+              <Card className="p-4">
+                <div className="text-center">
+                  <p className="text-3xl font-bold text-blue-500">
+                    {deepScanResults.reduce((sum, r) => sum + r.summary.entryIssues, 0)}
+                  </p>
+                  <p className="text-sm text-muted-foreground">Entry Issues</p>
+                </div>
+              </Card>
+            </div>
+
+            {/* Room-by-Room Results */}
+            <div className="space-y-4">
+              {deepScanResults.map((roomReport, index) => (
+                <Card 
+                  key={roomReport.roomId} 
+                  className={`p-4 ${roomReport.summary.totalIssues > 0 ? 'border-amber-500/50' : 'border-green-500/50'}`}
+                >
+                  <div className="space-y-3">
+                    {/* Room Header */}
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h3 className="font-semibold text-lg">{roomReport.roomTitle}</h3>
+                        <p className="text-sm text-muted-foreground">{roomReport.roomId}</p>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <Badge variant="outline">{roomReport.tier}</Badge>
+                        <div className="text-right">
+                          <p className={`text-2xl font-bold ${
+                            roomReport.summary.healthScore >= 90 ? 'text-green-500' :
+                            roomReport.summary.healthScore >= 70 ? 'text-amber-500' :
+                            'text-destructive'
+                          }`}>
+                            {roomReport.summary.healthScore}%
+                          </p>
+                          <p className="text-xs text-muted-foreground">Health Score</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Audio Check Summary */}
+                    {roomReport.audioChecks.length > 0 && (
+                      <div className="border-t pt-3">
+                        <div className="flex items-center justify-between mb-2">
+                          <p className="text-sm font-medium flex items-center gap-2">
+                            <Volume2 className="h-4 w-4" />
+                            Audio Files ({roomReport.audioChecks.length})
+                          </p>
+                          <p className="text-sm text-muted-foreground">
+                            {roomReport.audioChecks.filter(a => a.status === "success").length} / {roomReport.audioChecks.length} working
+                          </p>
+                        </div>
+                        {roomReport.audioChecks.some(a => a.status !== "success") && (
+                          <div className="space-y-1 bg-muted/30 rounded p-2">
+                            {roomReport.audioChecks.filter(a => a.status !== "success").map((audio, idx) => (
+                              <div key={idx} className="flex items-center gap-2 text-xs">
+                                <XCircle className="h-3 w-3 text-destructive" />
+                                <span className="font-mono flex-1">{audio.file}</span>
+                                <Badge variant="destructive" className="text-xs">{audio.status}</Badge>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Entry Validation Summary */}
+                    {roomReport.entryValidation.length > 0 && (
+                      <div className="border-t pt-3">
+                        <div className="flex items-center justify-between mb-2">
+                          <p className="text-sm font-medium flex items-center gap-2">
+                            <FileText className="h-4 w-4" />
+                            Entries ({roomReport.entryValidation.length})
+                          </p>
+                          <p className="text-sm text-muted-foreground">
+                            {roomReport.entryValidation.filter(e => !e.issue).length} / {roomReport.entryValidation.length} matched
+                          </p>
+                        </div>
+                        {roomReport.entryValidation.some(e => e.issue) && (
+                          <div className="space-y-1 bg-muted/30 rounded p-2">
+                            {roomReport.entryValidation.filter(e => e.issue).map((entry, idx) => (
+                              <div key={idx} className="flex items-center gap-2 text-xs">
+                                <AlertCircle className="h-3 w-3 text-amber-500" />
+                                <span className="font-mono flex-1">{entry.slug}</span>
+                                <Badge variant="outline" className="text-xs">
+                                  {entry.inJson ? 'JSON only' : 'DB only'}
+                                </Badge>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* All Issues */}
+                    {roomReport.issues.length > 0 && (
+                      <div className="border-t pt-3">
+                        <p className="text-sm font-medium mb-2">Issues ({roomReport.issues.length})</p>
+                        <div className="space-y-2">
+                          {roomReport.issues.map((issue, idx) => (
+                            <Alert key={idx} className="py-2">
+                              <AlertCircle className="h-4 w-4" />
+                              <AlertDescription className="text-xs">
+                                <strong>[{issue.issueType}]</strong> {issue.message}
+                                {issue.details && <p className="mt-1 text-muted-foreground">{issue.details}</p>}
+                              </AlertDescription>
+                            </Alert>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </Card>
         </div>
       )}
     </div>
