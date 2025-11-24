@@ -18,7 +18,15 @@ interface RoomIssue {
   roomId: string;
   roomTitle: string;
   tier: string;
-  issueType: "missing_file" | "invalid_json" | "no_entries" | "missing_audio" | "locked" | "missing_entries" | "inactive";
+  issueType:
+    | "missing_file"
+    | "invalid_json"
+    | "no_entries"
+    | "missing_audio"
+    | "locked"
+    | "missing_entries"
+    | "inactive"
+    | "orphan_json";
   message: string;
   details?: string;
   resolvedPath?: string;
@@ -284,6 +292,7 @@ export default function UnifiedHealthCheck() {
     if (roomsError) throw roomsError;
 
     const issues: RoomIssue[] = [];
+    const usedManifestKeys = new Set<string>();
     let healthyCount = 0;
     const totalRooms = rooms?.length || 0;
 
@@ -456,6 +465,9 @@ export default function UnifiedHealthCheck() {
             jsonFound = true;
             resolvedPath = path;
             resolvedManifestKey = key !== "fallback" ? key : undefined;
+            if (resolvedManifestKey) {
+              usedManifestKeys.add(resolvedManifestKey);
+            }
             break;
           } catch (parseError: any) {
             roomIssues.push({
@@ -529,8 +541,25 @@ export default function UnifiedHealthCheck() {
       }
     }
 
+    // Find JSON files that exist in the manifest but have no matching room in the database
+    const orphanManifestEntries = Object.entries(PUBLIC_ROOM_MANIFEST).filter(
+      ([key]) => !usedManifestKeys.has(key)
+    );
+
+    for (const [manifestKey, manifestPath] of orphanManifestEntries) {
+      issues.push({
+        roomId: manifestKey,
+        roomTitle: "(no database room)",
+        tier: "Unknown",
+        issueType: "orphan_json",
+        message: `JSON file is registered (${manifestPath}) but no matching room record was found in the database`,
+        resolvedPath: manifestPath,
+        manifestKey,
+      });
+    }
+
     setHealth({
-      totalRooms: rooms?.length || 0,
+      totalRooms: (rooms?.length || 0) + orphanManifestEntries.length,
       healthyRooms: healthyCount,
       issuesFound: issues.length,
       issues,
@@ -753,6 +782,7 @@ export default function UnifiedHealthCheck() {
       case "missing_entries":
       case "locked":
       case "inactive":
+      case "orphan_json":
         return <AlertCircle className="h-5 w-5 text-yellow-500" />;
       default:
         return <AlertCircle className="h-5 w-5" />;
@@ -768,6 +798,7 @@ export default function UnifiedHealthCheck() {
       missing_audio: "default",
       locked: "default",
       inactive: "default",
+      orphan_json: "default",
     };
 
     return <Badge variant={variants[issueType]}>{issueType.replace(/_/g, " ")}</Badge>;
