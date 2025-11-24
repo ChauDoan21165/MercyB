@@ -106,20 +106,22 @@ const Homepage = () => {
         <RoomSearch />
       </div>
 
-      {/* Main content - sections */}
+      {/* Main content - sections (excluding VIP9) */}
       <main>
-        {config.sections.map((section) => (
-          <HomepageSection
-            key={section.id}
-            id={section.id}
-            backgroundColor={section.background_color}
-            headingColor={section.heading_color}
-            accentColor={section.accent_color}
-            title={section.title}
-            body={section.body}
-            audio={section.audio}
-          />
-        ))}
+        {config.sections
+          .filter((section) => section.id !== 'vip9_strategic')
+          .map((section) => (
+            <HomepageSection
+              key={section.id}
+              id={section.id}
+              backgroundColor={section.background_color}
+              headingColor={section.heading_color}
+              accentColor={section.accent_color}
+              title={section.title}
+              body={section.body}
+              audio={section.audio}
+            />
+          ))}
       </main>
 
       {/* Kids English VIP3 Section */}
@@ -169,6 +171,25 @@ Kids English không chỉ là chương trình dành cho trẻ.
           />
         </div>
       </section>
+
+      {/* VIP9 Strategic Section - Moved to Bottom */}
+      {config.sections
+        .filter((section) => section.id === 'vip9_strategic')
+        .map((section) => (
+          <section key={section.id} className="py-16 px-6" style={{ backgroundColor: section.background_color }}>
+            <div className="max-w-4xl mx-auto">
+              <HomepageSection
+                id={section.id}
+                backgroundColor={section.background_color}
+                headingColor={section.heading_color}
+                accentColor={section.accent_color}
+                title={section.title}
+                body={section.body}
+                audio={section.audio}
+              />
+            </div>
+          </section>
+        ))}
 
       {/* Footer CTA */}
       <footer className="py-12 px-6 bg-gradient-to-b from-teal-100 to-teal-200">
