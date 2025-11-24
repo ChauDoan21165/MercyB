@@ -1,0 +1,103 @@
+{
+  "id": "national_risk_intelligence_vip9",
+  "tier": "VIP9 / Cấp VIP9",
+  "domain": "National",
+  "title": {
+    "en": "National Risk & Intelligence Strategy",
+    "vi": "Chiến Lược Rủi Ro & Tình Báo Quốc Gia"
+  },
+  "content": {
+    "en": "This room develops national risk and intelligence strategy—how a nation anticipates threats, detects weak signals, reads adversaries, manages uncertainty, builds resilience, and transforms intelligence into strategic advantage. It covers risk diagnostics, hybrid-threat mapping, intelligence cycles, early-warning systems, counterintelligence, and the integration of cyber, economic, geopolitical, and societal intelligence streams. Nations that master risk intelligence reduce shocks, avoid strategic blindness, and maintain autonomy in a volatile world.",
+    "vi": "Phòng này xây dựng chiến lược rủi ro và tình báo quốc gia—cách quốc gia dự báo đe dọa, nhận diện tín hiệu yếu, đọc đối thủ, quản lý bất định, xây năng lực chống chịu và chuyển hóa tình báo thành lợi thế chiến lược. Nội dung gồm chẩn đoán rủi ro, lập bản đồ đe dọa lai, chu trình tình báo, hệ thống cảnh báo sớm, phản gián và tích hợp dòng tình báo mạng, kinh tế, địa chính trị và xã hội. Quốc gia làm chủ tình báo rủi ro sẽ giảm cú sốc, tránh mù chiến lược và giữ tự chủ trong thế giới biến động."
+  },
+  "entries": [
+    {
+      "slug": "national-risk-taxonomy-and-threat-landscapes",
+      "keywords_en": ["risk taxonomy", "threat landscape", "classification", "exposure", "national security"],
+      "keywords_vi": ["phân loại rủi ro", "bức tranh đe dọa", "phân nhóm", "phơi nhiễm", "an ninh quốc gia"],
+      "copy": {
+        "en": "National risk taxonomy and threat landscapes create a unified classification of threats—geopolitical, economic, cyber, societal, environmental, and technological. A coherent taxonomy clarifies what matters, what escalates, and what the nation must monitor. Principles: distinguish slow-burn threats from acute shocks; identify systemic vulnerabilities; and integrate cross-domain interactions. Examples: Europe’s energy dependency risks, East Asia’s security flashpoints, global inflation shocks, and cyber-supply-chain infiltration. Pitfalls include siloed risk views, outdated categories, or ignoring compound crises. Strategically, a national taxonomy enables coordinated prevention, faster decisions, and strategic clarity across government.",
+        "vi": "Phân loại rủi ro và bức tranh đe dọa tạo ra hệ thống thống nhất—địa chính trị, kinh tế, mạng, xã hội, môi trường và công nghệ. Một taxonomy rõ ràng giúp xác định điều quan trọng, điều có thể leo thang và điều cần giám sát. Nguyên tắc: phân biệt rủi ro âm ỉ và cú sốc cấp tính; nhận diện điểm yếu hệ thống; tích hợp tương tác liên miền. Ví dụ: rủi ro phụ thuộc năng lượng của châu Âu, điểm nóng an ninh Đông Á, cú sốc lạm phát toàn cầu và xâm nhập chuỗi cung ứng mạng. Hố bẫy: nhìn rủi ro theo silo, phân loại lỗi thời hoặc bỏ qua khủng hoảng tổng hợp. Về chiến lược, taxonomy quốc gia giúp phòng ngừa tốt hơn, quyết định nhanh và tầm nhìn rõ ràng."
+      },
+      "tags": ["risk", "taxonomy", "threats"],
+      "audio": "national_risk_intelligence_1_en.mp3"
+    },
+    {
+      "slug": "intelligence-cycle-and-information-architecture",
+      "keywords_en": ["intelligence cycle", "collection", "analysis", "dissemination", "architecture"],
+      "keywords_vi": ["chu trình tình báo", "thu thập", "phân tích", "phân phối", "kiến trúc thông tin"],
+      "copy": {
+        "en": "The intelligence cycle and information architecture guide how data becomes insight—planning, collection, processing, analysis, dissemination, and feedback. Modern intelligence integrates human intelligence (HUMINT), signals intelligence (SIGINT), geospatial intelligence (GEOINT), and cyber intelligence. Principles: structured workflows, analytic rigor, cross-agency coordination, and secure infrastructure. Examples: Israel’s intelligence fusion, U.S. joint-intelligence frameworks, and Singapore’s integrated security model. Pitfalls: information overload, poor filtering, bias, or slow dissemination. Strategically, a strong intelligence architecture transforms raw data into national foresight.",
+        "vi": "Chu trình tình báo và kiến trúc thông tin hướng dẫn cách dữ liệu trở thành insight—lập kế hoạch, thu thập, xử lý, phân tích, phân phối và phản hồi. Tình báo hiện đại tích hợp HUMINT, SIGINT, GEOINT và tình báo mạng. Nguyên tắc: quy trình cấu trúc, phân tích chặt chẽ, phối hợp liên cơ quan và hạ tầng an toàn. Ví dụ: mô hình kết hợp tình báo của Israel, khung tình báo liên hợp của Mỹ và mô hình an ninh tích hợp Singapore. Hố bẫy: quá tải thông tin, lọc kém, thiên lệch hoặc phân phối chậm. Về chiến lược, kiến trúc tình báo mạnh biến dữ liệu thô thành tầm nhìn quốc gia."
+      },
+      "tags": ["intelligence", "architecture", "analysis"],
+      "audio": "national_risk_intelligence_2_en.mp3"
+    },
+    {
+      "slug": "early-warning-systems-and-weak-signal-detection",
+      "keywords_en": ["early warning", "weak signals", "monitoring", "anticipation", "crisis prevention"],
+      "keywords_vi": ["cảnh báo sớm", "tín hiệu yếu", "giám sát", "dự báo", "ngăn khủng hoảng"],
+      "copy": {
+        "en": "Early-warning systems and weak-signal detection identify subtle patterns—financial anomalies, border tensions, cyber probes, demographic shifts, and social sentiment changes—that precede major crises. Tools include horizon scanning, anomaly detection algorithms, risk dashboards, and predictive analytics. Principles: detect early, interpret carefully, cross-verify sources, and escalate quickly when thresholds are crossed. Examples: pandemic signal detection, banking stress indicators, and cyber early-warning grids. Pitfalls include false alarms, noise misidentification, or analytic inertia. Strategically, early-warning mastery reduces shock severity and protects national stability.",
+        "vi": "Hệ thống cảnh báo sớm và phát hiện tín hiệu yếu nhận diện các mẫu tinh vi—dị thường tài chính, căng thẳng biên giới, dò quét mạng, dịch chuyển dân số và biến động cảm xúc xã hội—thường xuất hiện trước khủng hoảng lớn. Công cụ gồm quét chân trời, thuật toán phát hiện bất thường, dashboard rủi ro và phân tích dự đoán. Nguyên tắc: phát hiện sớm, diễn giải cẩn thận, đối chiếu nguồn và kích hoạt nhanh khi vượt ngưỡng. Ví dụ: tín hiệu đại dịch, chỉ số căng thẳng ngân hàng và lưới cảnh báo sớm mạng. Hố bẫy: báo động giả, nhầm lẫn nhiễu hoặc trì trệ phân tích. Về chiến lược, cảnh báo sớm giảm mức độ nghiêm trọng của cú sốc và bảo vệ ổn định quốc gia."
+      },
+      "tags": ["early-warning", "signals", "monitoring"],
+      "audio": "national_risk_intelligence_3_en.mp3"
+    },
+    {
+      "slug": "hybrid-threats-and-multi-domain-risk-mapping",
+      "keywords_en": ["hybrid threats", "multi-domain", "risk mapping", "grey-zone", "coercion"],
+      "keywords_vi": ["đe dọa lai", "đa miền", "lập bản đồ rủi ro", "vùng xám", "cưỡng ép"],
+      "copy": {
+        "en": "Hybrid threats and multi-domain risk mapping analyze adversarial tactics that blend military pressure, cyber intrusions, information manipulation, economic coercion, legal warfare, and political disruption. Principles: map cross-domain interactions, identify escalation ladders, and diagnose grey-zone tactics before they harden into conflict. Examples: cyber-enabled influence campaigns, maritime militia pressure, economic embargo signaling, and disinformation waves. Pitfalls: misattribution, reactive posture, or fragmented responses. Strategically, multi-domain mapping allows nations to deter hybrid threats and maintain sovereignty without escalation.",
+        "vi": "Đe dọa lai và lập bản đồ rủi ro đa miền phân tích chiến thuật đối thủ kết hợp áp lực quân sự, xâm nhập mạng, thao túng thông tin, cưỡng ép kinh tế, chiến tranh pháp lý và gây rối chính trị. Nguyên tắc: lập bản đồ tương tác liên miền, xác định bậc thang leo thang và chẩn đoán chiến thuật vùng xám trước khi chuyển thành xung đột. Ví dụ: chiến dịch ảnh hưởng qua mạng, áp lực dân quân biển, tín hiệu phong tỏa kinh tế và làn sóng thông tin sai lệch. Hố bẫy: xác định sai nguồn tấn công, phản ứng thụ động hoặc hành động rời rạc. Về chiến lược, lập bản đồ đa miền cho phép răn đe đe dọa lai và giữ chủ quyền mà không leo thang."
+      },
+      "tags": ["hybrid", "multi-domain", "risk"],
+      "audio": "national_risk_intelligence_4_en.mp3"
+    },
+    {
+      "slug": "counterintelligence-and-threat-neutralization",
+      "keywords_en": ["counterintelligence", "internal security", "espionage", "neutralization", "protection"],
+      "keywords_vi": ["phản gián", "an ninh nội địa", "gián điệp", "vô hiệu hóa", "bảo vệ"],
+      "copy": {
+        "en": "Counterintelligence and threat neutralization protect the nation from espionage, insider threats, covert influence, data exfiltration, and strategic infiltration. Tools include vetting systems, behavioral analytics, compartmentalized access, deception operations, and insider-risk monitoring. Principles: trust-but-verify, layered defenses, redundancy, and early containment. Examples: counter-espionage operations, diplomatic expulsions, and insider-threat detection in critical infrastructure. Pitfalls: over-securitization, privacy breaches, or political misuse. Strategically, counterintelligence ensures national integrity and preserves strategic autonomy.",
+        "vi": "Phản gián và vô hiệu hóa đe dọa bảo vệ quốc gia khỏi gián điệp, nội gián, ảnh hưởng ngầm, rò rỉ dữ liệu và thâm nhập chiến lược. Công cụ gồm hệ thống thẩm tra, phân tích hành vi, truy cập phân lớp, chiến dịch đánh lừa và giám sát rủi ro nội bộ. Nguyên tắc: tin nhưng xác minh, phòng thủ nhiều lớp, dự phòng và ngăn chặn sớm. Ví dụ: chiến dịch phản gián, trục xuất ngoại giao và phát hiện nội gián trong hạ tầng trọng yếu. Hố bẫy: an ninh hóa quá mức, vi phạm quyền riêng tư hoặc lạm dụng chính trị. Về chiến lược, phản gián giữ liêm chính quốc gia và bảo vệ tự chủ chiến lược."
+      },
+      "tags": ["counterintelligence", "security", "neutralization"],
+      "audio": "national_risk_intelligence_5_en.mp3"
+    },
+    {
+      "slug": "risk-scenarios-stress-tests-and-contingency-design",
+      "keywords_en": ["risk scenarios", "stress tests", "contingency planning", "resilience", "crisis response"],
+      "keywords_vi": ["kịch bản rủi ro", "stress test", "kế hoạch dự phòng", "chống chịu", "phản ứng khủng hoảng"],
+      "copy": {
+        "en": "Risk scenarios, stress tests, and contingency design prepare the nation for shocks—financial crashes, supply-chain collapse, cyber blackouts, natural disasters, geopolitical escalation, and technological failure. Tools include scenario trees, probability-impact grids, red-teaming, resilience modeling, and war-gaming. Principles: anticipate extremes, design buffers, decentralize critical systems, and ensure rapid recovery. Examples: banking stress tests, pandemic preparedness plans, and cyber-failure drills. Pitfalls: unrealistic assumptions, poor interagency coordination, or plans unused in practice. Strategically, contingency mastery ensures the nation bends but does not break.",
+        "vi": "Kịch bản rủi ro, stress test và thiết kế dự phòng chuẩn bị quốc gia cho cú sốc—khủng hoảng tài chính, sụp đổ chuỗi cung ứng, tê liệt mạng, thiên tai, leo thang địa chính trị và lỗi công nghệ. Công cụ gồm cây kịch bản, lưới xác suất-tác động, red-team, mô hình chống chịu và war-game. Nguyên tắc: dự báo cực trị, thiết kế bộ đệm, phi tập trung hệ thống trọng yếu và phục hồi nhanh. Ví dụ: stress test ngân hàng, kế hoạch ứng phó đại dịch và diễn tập thất bại mạng. Hố bẫy: giả định phi thực tế, phối hợp liên cơ quan kém hoặc kế hoạch không được thực thi. Về chiến lược, làm chủ dự phòng giúp quốc gia uốn nhưng không gãy."
+      },
+      "tags": ["scenarios", "stress-tests", "contingency"],
+      "audio": "national_risk_intelligence_6_en.mp3"
+    },
+    {
+      "slug": "national-risk-dashboard-and-real-time-monitoring",
+      "keywords_en": ["risk dashboard", "real-time monitoring", "data fusion", "analytics", "decision support"],
+      "keywords_vi": ["dashboard rủi ro", "giám sát thời gian thực", "kết hợp dữ liệu", "phân tích", "hỗ trợ quyết định"],
+      "copy": {
+        "en": "National risk dashboards and real-time monitoring synthesize signals from cyber, finance, infrastructure, social sentiment, environment, and geopolitical data streams. Tools include data lakes, AI analytics, satellite monitoring, and real-time alert layers. Principles: unify fragmented systems, maintain situational awareness, and support rapid decision-making. Examples: digital command centers, pandemic response dashboards, and cyber-threat fusion hubs. Pitfalls: false confidence in dashboards, data quality issues, or alert fatigue. Strategically, real-time risk monitoring gives leaders an information advantage no adversary can match.",
+        "vi": "Dashboard rủi ro quốc gia và giám sát thời gian thực tổng hợp tín hiệu từ dữ liệu mạng, tài chính, hạ tầng, cảm xúc xã hội, môi trường và địa chính trị. Công cụ gồm hồ dữ liệu, phân tích AI, giám sát vệ tinh và lớp cảnh báo thời gian thực. Nguyên tắc: thống nhất hệ thống phân mảnh, duy trì nhận thức tình huống và hỗ trợ quyết định nhanh. Ví dụ: trung tâm chỉ huy số, dashboard phản ứng đại dịch và trung tâm kết hợp đe dọa mạng. Hố bẫy: tự tin quá mức vào dashboard, lỗi chất lượng dữ liệu hoặc mệt mỏi cảnh báo. Về chiến lược, giám sát thời gian thực đem lại lợi thế thông tin mà đối thủ khó theo kịp."
+      },
+      "tags": ["dashboard", "monitoring", "analytics"],
+      "audio": "national_risk_intelligence_7_en.mp3"
+    },
+    {
+      "slug": "strategic-foresight-integration-and-national-resilience-architecture",
+      "keywords_en": ["strategic foresight", "resilience architecture", "integration", "national planning", "anticipation"],
+      "keywords_vi": ["tích hợp tầm nhìn chiến lược", "kiến trúc chống chịu", "tích hợp", "hoạch định quốc gia", "dự phóng"],
+      "copy": {
+        "en": "Strategic foresight integration and national resilience architecture embed long-range thinking into national planning—anticipating disruptive technologies, geopolitical transitions, demographic shifts, climate pressures, and economic bifurcation. Tools include megatrend mapping, scenario planning, Delphi methods, resilience indices, and national foresight councils. Principles: look 20–30 years ahead, design adaptable policies, and synchronize long-term foresight with short-term governance. Examples: Finland’s foresight parliament, UAE’s future ministry, and Singapore’s whole-of-nation resilience architecture. Pitfalls: foresight without execution, politicized forecasting, or rigidity in planning. Strategically, foresight-driven resilience ensures the nation stays ahead of history’s curve.",
+        "vi": "Tích hợp tầm nhìn chiến lược và kiến trúc chống chịu quốc gia đưa tư duy dài hạn vào hoạch định—dự báo công nghệ đột phá, chuyển dịch địa chính trị, thay đổi nhân khẩu, áp lực khí hậu và phân tách kinh tế. Công cụ gồm lập bản đồ megatrend, kịch bản, phương pháp Delphi, chỉ số chống chịu và hội đồng tầm nhìn quốc gia. Nguyên tắc: nhìn xa 20–30 năm, thiết kế chính sách thích ứng và đồng bộ tầm nhìn dài hạn với quản trị ngắn hạn. Ví dụ: nghị viện tầm nhìn của Phần Lan, bộ tương lai của UAE và kiến trúc chống chịu toàn quốc của Singapore. Hố bẫy: tầm nhìn không thực thi, dự báo bị chính trị hóa hoặc cứng nhắc trong hoạch định. Về chiến lược, chống chịu dựa trên tầm nhìn giúp quốc gia đi trước đường cong của lịch sử."
+      },
+      "tags": ["foresight", "resilience", "planning"],
+      "audio": "national_risk_intelligence_8_en.mp3"
+    }
+  ]
+}
