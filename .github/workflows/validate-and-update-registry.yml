@@ -36,7 +36,12 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
-      - name: Validate room JSON files
+      - name: Strict validation of room files
+        run: |
+          echo "🔍 Running strict room file validation..."
+          node scripts/validate-room-files.js
+
+      - name: Validate room JSON files (legacy check)
         run: |
           echo "📋 Validating room files in public/data/..."
           

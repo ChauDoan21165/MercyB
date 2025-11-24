@@ -145,103 +145,12 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
     console.log('⚠️ Database load failed, falling back to static files:', dbError);
   }
 
-  // Fallback to static JSON files (original logic, extended for higher VIP tiers)
-  const supportedTiers = ['free', 'vip1', 'vip2', 'vip3', 'vip3-ii', 'vip3_ii', 'vip4', 'vip5', 'vip6', 'vip9'];
-  const hasTier = new RegExp(`(\-|_)(${supportedTiers.join('|')})($|\-)`).test(roomId);
-  const normalizedTier = supportedTiers.includes(tier) ? tier : 'free';
-  const baseRoomId = roomId.replace(/_/g, '-');
-  const manifestKey = hasTier ? baseRoomId : `${baseRoomId}-${normalizedTier}`;
- 
+  // Fallback to static JSON files using canonical resolver
+  console.log(`[Static] Loading room ${roomId} from JSON files using canonical resolver`);
+  
   try {
-    const directKey = roomId ? roomId.replace(/_/g, '-') : '';
-    let filename =
-      PUBLIC_ROOM_MANIFEST[manifestKey] ||
-      (directKey ? PUBLIC_ROOM_MANIFEST[directKey] : undefined);
- 
-    if (!filename && roomId) {
-      const altKeys = [
-        roomId,
-        roomId.replace(/-/g, '_'),
-        roomId.replace(/-/g, '_').replace(/_/g, '-'),
-      ];
-      for (const key of altKeys) {
-        if (PUBLIC_ROOM_MANIFEST[key]) {
-          filename = PUBLIC_ROOM_MANIFEST[key];
-          break;
-        }
-      }
-    }
- 
-    let jsonData: any = null;
-
-    const candidates: string[] = [];
-    
-    if (filename) {
-      candidates.push(`/${encodeURI(filename)}`);
-    }
-
-    const base = manifestKey.replace(/-/g, '_');
-    const directBase = (roomId || '').replace(/-/g, '_');
-    
-    candidates.push(`/data/${base}.json`);
-    candidates.push(`/data/${base.toLowerCase()}.json`);
-    if (directBase) {
-      candidates.push(`/data/${directBase}.json`);
-      candidates.push(`/data/${directBase.toLowerCase()}.json`);
-    }
-    
-    const parts = base.split('_');
-    const tierIndex = parts.findIndex(p => ['free', 'vip1', 'vip2', 'vip3', 'vip4'].includes(p.toLowerCase()));
-    
-    if (tierIndex > 0) {
-      const beforeTier = parts.slice(0, tierIndex)
-        .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
-      const tierPart = parts[tierIndex].toLowerCase();
-      const titleCaseWithLowerTier = [...beforeTier, tierPart].join('_');
-      candidates.push(`/data/${titleCaseWithLowerTier}.json`);
-    }
-    
-    const titleCase = base
-      .split('_')
-      .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-      .join('_');
-    candidates.push(`/data/${titleCase}.json`);
-
-    if (tierIndex >= 0) {
-      const tierFolder = parts[tierIndex].toLowerCase();
-      candidates.push(`/data/${tierFolder}/${base}.json`);
-      candidates.push(`/data/${tierFolder}/${base.toLowerCase()}.json`);
-      if (tierIndex > 0) {
-        const beforeTier = parts.slice(0, tierIndex)
-          .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
-        const tierPart = parts[tierIndex].toLowerCase();
-        const titleCaseWithLowerTier = [...beforeTier, tierPart].join('_');
-        candidates.push(`/data/${tierFolder}/${titleCaseWithLowerTier}.json`);
-      }
-      candidates.push(`/data/${tierFolder}/${titleCase}.json`);
-    }
-
-    for (const path of candidates) {
-      try {
-        const cacheBust = `?cb=${Date.now()}&r=${Math.random()}`;
-        const resp = await fetch(path + cacheBust, { cache: 'no-store' });
-        if (!resp.ok) continue;
-        const text = await resp.text();
-        try {
-          jsonData = JSON.parse(text);
-          console.log('✅ Room loaded from static file:', path);
-          break;
-        } catch {
-          continue;
-        }
-      } catch {
-        // try next
-      }
-    }
-
-    if (!jsonData) {
-      throw new Error(`JSON not found for ${manifestKey} in candidates: ${candidates.join(', ')}`);
-    }
+    const { loadRoomJson } = await import('./roomJsonResolver');
+    const jsonData = await loadRoomJson(roomId);
 
     let keywordMenu: { en: string[]; vi: string[] } = { en: [], vi: [] };
     

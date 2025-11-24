@@ -1,0 +1,266 @@
+/**
+ * CANONICAL ROOM JSON RESOLVER
+ * Single source of truth for all room JSON loading across the application.
+ * Used by: Chat, Health Check, Manifest Generation, Registry
+ */
+
+import { PUBLIC_ROOM_MANIFEST } from "./roomManifest";
+
+export interface RoomJsonValidationError {
+  room_id: string;
+  expected_path: string;
+  reason: string;
+  detail?: string;
+}
+
+export class RoomJsonNotFoundError extends Error {
+  constructor(
+    public room_id: string,
+    public expected_path: string,
+    public reason: string,
+    public detail?: string
+  ) {
+    super(`❌ ERROR: JSON file not found or invalid
+room: ${room_id}
+expected: ${expected_path}
+reason: ${reason}
+${detail ? `detail: ${detail}` : ''}`);
+    this.name = 'RoomJsonNotFoundError';
+  }
+}
+
+/**
+ * CANONICAL NAMING RULE (non-negotiable):
+ * - Filename: public/data/{room_id}.json
+ * - room_id exactly equals JSON.id
+ * - all lowercase
+ * - snake_case or kebab-case depending on id
+ * 
+ * NO Title_Case, NO PascalCase, NO extra variations
+ */
+export function getCanonicalPath(roomId: string): string {
+  return `data/${roomId}.json`;
+}
+
+/**
+ * Validates that JSON structure meets requirements
+ */
+export function validateRoomJson(data: any, roomId: string, filename: string): void {
+  // Check if we got HTML instead of JSON
+  if (typeof data === 'string' && data.trim().startsWith('<!DOCTYPE') || data.trim().startsWith('<html')) {
+    throw new RoomJsonNotFoundError(
+      roomId,
+      filename,
+      'Received HTML instead of JSON',
+      'File may not exist or server returned error page'
+    );
+  }
+
+  // Validate JSON.id matches filename (extract id from filename)
+  const expectedId = filename.replace(/^data\//, '').replace(/\.json$/, '');
+  if (data.id && data.id !== expectedId && data.id !== roomId) {
+    throw new RoomJsonNotFoundError(
+      roomId,
+      filename,
+      'JSON.id does not match filename',
+      `Expected: ${expectedId}, Got: ${data.id}`
+    );
+  }
+
+  // Validate bilingual fields
+  const hasBilingualTitle = (data.title?.en && data.title?.vi) || (data.name && data.name_vi);
+  const hasBilingualContent = (data.content?.en && data.content?.vi) || data.room_essay_en || data.room_essay_vi;
+  
+  if (!hasBilingualTitle) {
+    throw new RoomJsonNotFoundError(
+      roomId,
+      filename,
+      'Missing bilingual title fields',
+      'Required: title.en + title.vi OR name + name_vi'
+    );
+  }
+
+  // Validate entries
+  if (!data.entries || !Array.isArray(data.entries)) {
+    throw new RoomJsonNotFoundError(
+      roomId,
+      filename,
+      'Missing or invalid entries array',
+      'entries field must be an array'
+    );
+  }
+
+  const entryCount = data.entries.length;
+  if (entryCount < 2 || entryCount > 8) {
+    throw new RoomJsonNotFoundError(
+      roomId,
+      filename,
+      'Invalid entry count',
+      `Expected: 2-8 entries, Got: ${entryCount}`
+    );
+  }
+
+  // Validate each entry has required fields
+  data.entries.forEach((entry: any, index: number) => {
+    const hasId = entry.slug || entry.artifact_id || entry.id;
+    if (!hasId) {
+      throw new RoomJsonNotFoundError(
+        roomId,
+        filename,
+        `Entry ${index + 1} missing identifier`,
+        'Each entry must have slug, artifact_id, or id field'
+      );
+    }
+
+    // Check for audio
+    const hasAudio = entry.audio || entry.audio_en || entry.audioEn;
+    if (!hasAudio) {
+      throw new RoomJsonNotFoundError(
+        roomId,
+        filename,
+        `Entry ${index + 1} missing audio`,
+        'Each entry must have audio field'
+      );
+    }
+
+    // Check for bilingual content
+    const hasBilingualCopy = (entry.copy?.en && entry.copy?.vi) || (entry.copy_en && entry.copy_vi);
+    if (!hasBilingualCopy) {
+      throw new RoomJsonNotFoundError(
+        roomId,
+        filename,
+        `Entry ${index + 1} missing bilingual copy`,
+        'Each entry must have copy in both English and Vietnamese'
+      );
+    }
+  });
+
+  // Validate tier if present
+  if (data.tier && !['free', 'vip1', 'vip2', 'vip3', 'vip3_ii', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'].includes(data.tier.toLowerCase().replace(/\s*\/.*$/, '').replace(/\s+/g, ''))) {
+    console.warn(`⚠️ Unusual tier value for ${roomId}: ${data.tier}`);
+  }
+}
+
+/**
+ * CENTRAL RESOLVER - Used by all systems
+ * Tries paths in order of preference, validates strictly
+ */
+export async function resolveRoomJsonPath(roomId: string): Promise<string> {
+  // 1. Try manifest path first (already validated during registry generation)
+  if (PUBLIC_ROOM_MANIFEST[roomId]) {
+    const manifestPath = PUBLIC_ROOM_MANIFEST[roomId];
+    try {
+      const response = await fetch(`/${manifestPath}`);
+      if (response.ok) {
+        const data = await response.json();
+        validateRoomJson(data, roomId, manifestPath);
+        return manifestPath;
+      }
+    } catch (error) {
+      // Continue to next candidate
+    }
+  }
+
+  // 2. Try canonical path: data/{room_id}.json
+  const canonicalPath = getCanonicalPath(roomId);
+  try {
+    const response = await fetch(`/${canonicalPath}`);
+    if (response.ok) {
+      const data = await response.json();
+      validateRoomJson(data, roomId, canonicalPath);
+      return canonicalPath;
+    }
+  } catch (error) {
+    // Continue to backwards compatibility
+  }
+
+  // 3. BACKWARDS COMPATIBILITY ONLY: Try case/format variants
+  const variants = [
+    roomId.toLowerCase().replace(/-/g, '_'),
+    roomId.toLowerCase().replace(/_/g, '-'),
+    roomId.toLowerCase(),
+  ];
+
+  for (const variant of variants) {
+    if (variant === roomId) continue; // Already tried canonical
+    
+    const variantPath = `data/${variant}.json`;
+    try {
+      const response = await fetch(`/${variantPath}`);
+      if (response.ok) {
+        const data = await response.json();
+        validateRoomJson(data, roomId, variantPath);
+        console.warn(`⚠️ DEPRECATION: Room ${roomId} uses non-canonical filename: ${variantPath}`);
+        return variantPath;
+      }
+    } catch (error) {
+      continue;
+    }
+  }
+
+  // 4. HARD FAIL - No valid JSON found
+  throw new RoomJsonNotFoundError(
+    roomId,
+    canonicalPath,
+    'File not found after trying all paths',
+    `Tried: manifest, canonical (${canonicalPath}), and backwards-compatible variants`
+  );
+}
+
+/**
+ * Load and validate room JSON data
+ */
+export async function loadRoomJson(roomId: string): Promise<any> {
+  const path = await resolveRoomJsonPath(roomId);
+  const response = await fetch(`/${path}`);
+  
+  if (!response.ok) {
+    throw new RoomJsonNotFoundError(
+      roomId,
+      path,
+      `HTTP ${response.status}`,
+      response.statusText
+    );
+  }
+
+  const data = await response.json();
+  validateRoomJson(data, roomId, path);
+  
+  return data;
+}
+
+/**
+ * Bulk validation for pre-publish checks
+ */
+export async function validateAllRooms(roomIds: string[]): Promise<{
+  valid: string[];
+  errors: RoomJsonValidationError[];
+}> {
+  const valid: string[] = [];
+  const errors: RoomJsonValidationError[] = [];
+
+  for (const roomId of roomIds) {
+    try {
+      await loadRoomJson(roomId);
+      valid.push(roomId);
+    } catch (error) {
+      if (error instanceof RoomJsonNotFoundError) {
+        errors.push({
+          room_id: error.room_id,
+          expected_path: error.expected_path,
+          reason: error.reason,
+          detail: error.detail,
+        });
+      } else {
+        errors.push({
+          room_id: roomId,
+          expected_path: getCanonicalPath(roomId),
+          reason: 'Unknown error',
+          detail: error instanceof Error ? error.message : String(error),
+        });
+      }
+    }
+  }
+
+  return { valid, errors };
+}

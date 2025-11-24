@@ -492,65 +492,13 @@ export default function UnifiedHealthCheck() {
 
         // Build robust candidate paths for JSON file
         const manifestPathById = PUBLIC_ROOM_MANIFEST[room.id];
-        const candidatePaths: string[] = [];
-
-        if (manifestPathById) {
-          candidatePaths.push(`/${manifestPathById}`);
-        }
-
-        const baseId = room.id || "";
-        const snakeId = baseId.replace(/-/g, "_");
-        const kebabId = baseId.replace(/_/g, "-");
-        
-        // Helper to convert to Title Case (e.g., strategic_foundations_vip9 -> Strategic_Foundations_vip9)
-        const toTitleCase = (str: string) => {
-          return str.split(/[_-]/).map(word => 
-            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-          ).join("_");
-        };
-
-        const baseCandidates = new Set<string>([
-          baseId,
-          baseId.toLowerCase(),
-          baseId.toUpperCase(),
-          snakeId,
-          snakeId.toLowerCase(),
-          snakeId.toUpperCase(),
-          toTitleCase(baseId),
-          toTitleCase(snakeId),
-          kebabId,
-          kebabId.toLowerCase(),
-          kebabId.toUpperCase(),
-        ]);
-
-        for (const id of baseCandidates) {
-          if (!id) continue;
-          candidatePaths.push(`/data/${id}.json`);
-        }
-
+        // Use canonical resolver for JSON loading
         let jsonData: any = null;
-        let usedPath: string | null = null;
-
-        for (const path of candidatePaths) {
-          try {
-            const response = await fetch(path);
-            if (!response.ok) continue;
-
-            const contentType = response.headers.get("content-type");
-            if (!contentType || !contentType.includes("application/json")) {
-              continue;
-            }
-
-            jsonData = await response.json();
-            usedPath = path.replace(/^\//, "");
-            break;
-          } catch {
-            // Try next candidate
-          }
-        }
-
-        if (!jsonData) {
-          console.warn(`Skipping room ${room.id}: no readable JSON file found for candidates ${candidatePaths.join(", ")}`);
+        try {
+          const { loadRoomJson } = await import('@/lib/roomJsonResolver');
+          jsonData = await loadRoomJson(room.id || "");
+        } catch (error: any) {
+          console.error(`❌ Failed to load JSON for ${room.id}:`, error.message);
           continue;
         }
 
