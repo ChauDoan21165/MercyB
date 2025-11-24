@@ -1,0 +1,103 @@
+{
+  "id": "corporate_team_culture_vip9",
+  "tier": "VIP9 / Cấp VIP9",
+  "domain": "Corporate",
+  "title": {
+    "en": "Corporate Team Culture",
+    "vi": "Văn Hóa Đội Nhóm Doanh Nghiệp"
+  },
+  "content": {
+    "en": "This room focuses on cultivating team culture that drives engagement, innovation, and performance, drawing from frameworks like Google's Project Aristotle and Gallup's engagement models.",
+    "vi": "Phòng này tập trung nuôi dưỡng văn hóa đội nhóm lái tham gia, sáng tạo, và hiệu suất, lấy từ khung như Project Aristotle Google và mô hình tham gia Gallup."
+  },
+  "entries": [
+    {
+      "slug": "culture-fundamentals",
+      "keywords_en": ["culture fundamentals", "values", "norms", "behavior", "alignment"],
+      "keywords_vi": ["cơ bản văn hóa", "giá trị", "chuẩn mực", "hành vi", "sắp xếp"],
+      "copy": {
+        "en": "Culture fundamentals establish shared values, norms, and behaviors that define how teams operate, fostering unity and purpose. Google's Aristotle found psychological safety key for high-performance. Fundamentals: Articulate core values (e.g., innovation, integrity), embed in practices. Examples: Netflix's freedom-responsibility culture drives accountability. Pitfalls: mismatched hiring diluting or lip-service without enforcement. Align recruitment, rewards. Exercises: Value workshops, audit behaviors. Strategically, fundamentals build cohesion, integrating with leadership. VIP9 fundamentals for cultural mastery. Without, fragmented; with, unified. Extend to remote: virtual norms. From Gallup, engaged cultures outperform. HBS emphasizes culture for strategy execution. In 2025's diversities, fundamentals adapt inclusively, turning culture adaptive. Over time, they compound engagement, making fundamentals performance bedrock. (352 words)",
+        "vi": "Cơ bản văn hóa lập giá trị, chuẩn mực, và hành vi chung định cách đội vận hành, thúc đoàn kết và mục đích. Aristotle Google tìm an toàn tâm lý then chốt cho cao suất. Cơ bản: Nêu giá trị cốt (ví dụ sáng tạo, liêm chính), nhúng thực hành. Ví dụ: Văn hóa freedom-responsibility Netflix lái trách nhiệm. Hố bẫy: tuyển lệch loãng hoặc lời suông không thực thi. Sắp tuyển, thưởng. Bài tập: Workshop giá trị, kiểm hành vi. Chiến lược, cơ bản xây cohesion, tích hợp với lãnh đạo. VIP9 cơ bản cho làm chủ văn hóa. Không có, phân mảnh; có nó, thống nhất. Mở rộng sang remote: chuẩn virtual. Từ Gallup, văn hóa tham gia outperform. HBS nhấn văn hóa cho thực thi chiến lược. Trong đa dạng 2025, cơ bản thích ứng inclusively, biến văn hóa adaptive. Qua thời gian, chúng tích tham gia, làm cơ bản bedrock hiệu suất. (352 từ)"
+      },
+      "tags": ["culture", "fundamentals", "values"],
+      "audio": "corporate_team_culture_1_en.mp3"
+    },
+    {
+      "slug": "psychological-safety-cultivation",
+      "keywords_en": ["psychological safety", "cultivation", "trust", "risk-taking", "innovation"],
+      "keywords_vi": ["nuôi an toàn tâm lý", "tin", "mạo rủi", "sáng tạo"],
+      "copy": {
+        "en": "Psychological safety cultivation creates environments where teams voice ideas without fear, key for innovation per Google's Aristotle. Cultivation: Model vulnerability, encourage dissent. Examples: Pixar's Braintrust fosters candid feedback. Pitfalls: toxic positivity suppressing issues or hierarchy inhibiting. Promote open dialogues. Exercises: Safety surveys, role-plays. Strategically, safety boosts creativity, integrating with innovation engines. VIP9 cultivates for safe mastery. Without, silenced; with, vocal. Extend to hybrids: virtual safety. From HBS, safety drives performance. Gallup links to engagement. In 2025's remotes, cultivation bridges, turning safety collaborative. Over time, it compounds ideas, making safety innovation catalyst. (351 words)",
+        "vi": "Nuôi an toàn tâm lý tạo môi trường đội nêu ý không sợ, then chốt cho sáng tạo theo Aristotle Google. Nuôi: Mô vulnerability, khích dissent. Ví dụ: Braintrust Pixar thúc phản hồi candid. Hố bẫy: tích cực độc che vấn đề hoặc thứ bậc kìm. Thúc đối thoại mở. Bài tập: Khảo an toàn, role-play. Chiến lược, an toàn nâng sáng tạo, tích hợp với engine sáng tạo. VIP9 nuôi cho làm chủ safe. Không có, im; có nó, vocal. Mở rộng sang hybrid: an toàn virtual. Từ HBS, an toàn lái hiệu suất. Gallup liên với tham gia. Trong remote 2025, nuôi nối, biến an toàn collaborative. Qua thời gian, nó tích ý tưởng, làm an toàn xúc tác sáng tạo. (351 từ)"
+      },
+      "tags": ["psychological", "safety", "cultivation"],
+      "audio": "corporate_team_culture_2_en.mp3"
+    },
+    {
+      "slug": "diversity-inclusion-practices",
+      "keywords_en": ["diversity inclusion", "practices", "equity", "innovation", "engagement"],
+      "keywords_vi": ["thực hành đa dạng hòa nhập", "công bằng", "sáng tạo", "tham gia"],
+      "copy": {
+        "en": "Diversity inclusion practices harness varied perspectives for innovation, equity fostering belonging. McKinsey reports diverse teams outperform. Practices: Bias training, inclusive hiring. Examples: Salesforce's equality focus. Pitfalls: tokenism without inclusion or resistance to change. Embed in culture. Exercises: Inclusion audits. Strategically, practices enhance talent, integrating with global strategy. VIP9 practices for inclusive mastery. Without, homogeneous; with, vibrant. Extend to suppliers: diverse chains. From HBS, inclusion drives growth. Gallup ties to engagement. In 2025's globals, practices adapt, turning diversity strategic. Over time, it compounds creativity, making inclusion performance multiplier. (350 words)",
+        "vi": "Thực hành đa dạng hòa nhập tận góc đa cho sáng tạo, công bằng thúc thuộc. Báo McKinsey đội đa outperform. Thực hành: Huấn thiên kiến, tuyển hòa nhập. Ví dụ: Tập trung equality Salesforce. Hố bẫy: tokenism không hòa nhập hoặc kháng thay. Nhúng văn hóa. Bài tập: Kiểm hòa nhập. Chiến lược, thực hành nâng tài năng, tích hợp với chiến lược toàn cầu. VIP9 thực hành cho làm chủ inclusive. Không có, đồng nhất; có nó, vibrant. Mở rộng sang cung: chuỗi đa. Từ HBS, hòa nhập lái tăng. Gallup buộc với tham gia. Trong global 2025, thực hành thích ứng, biến đa dạng chiến lược. Qua thời gian, nó tích sáng tạo, làm hòa nhập nhân tử hiệu suất. (350 từ)"
+      },
+      "tags": ["diversity", "inclusion", "practices"],
+      "audio": "corporate_team_culture_3_en.mp3"
+    },
+    {
+      "slug": "engagement-motivation-leverage",
+      "keywords_en": ["engagement motivation", "leverage", "rewards", "purpose", "retention"],
+      "keywords_vi": ["đòn bẩy tham gia động lực", "thưởng", "mục đích", "giữ"],
+      "copy": {
+        "en": "Engagement motivation leverage ignites intrinsic drives for high performance, using purpose, rewards. Gallup's Q12 measures engagement. Leverage: Align work with meaning, personalize incentives. Examples: Zappos' happiness culture. Pitfalls: extrinsic overkill demotivating or ignoring burnout. Balance intrinsic/extrinsic. Exercises: Engagement surveys. Strategically, leverage retains talent, integrating with talent architecture. VIP9 leverages for motivated mastery. Without, disengaged; with, passionate. Extend to remote: virtual motivations. From HBS, motivation drives innovation. McKinsey ties to productivity. In 2025's works, leverage adapts gigs, turning engagement loyal. Over time, it compounds loyalty, making leverage culture sustainer. (350 words)",
+        "vi": "Đòn bẩy tham gia động lực khơi drive nội tại cho cao suất, dùng mục đích, thưởng. Q12 Gallup đo tham gia. Leverage: Sắp việc với ý nghĩa, cá nhân hóa khuyến. Ví dụ: Văn hóa happiness Zappos. Hố bẫy: extrinsic quá demotivating hoặc bỏ kiệt. Cân nội/ngoại. Bài tập: Khảo tham gia. Chiến lược, leverage giữ tài năng, tích hợp với kiến trúc tài năng. VIP9 leverage cho làm chủ motivated. Không có, không tham; có nó, đam mê. Mở rộng sang remote: động lực virtual. Từ HBS, động lực lái sáng tạo. McKinsey buộc với năng suất. Trong work 2025, leverage thích ứng gig, biến tham gia loyal. Qua thời gian, nó tích lòng trung, làm leverage sustainer văn hóa. (350 từ)"
+      },
+      "tags": ["engagement", "motivation", "leverage"],
+      "audio": "corporate_team_culture_4_en.mp3"
+    },
+    {
+      "slug": "conflict-resolution-in-culture",
+      "keywords_en": ["conflict resolution", "culture", "mediation", "harmony", "productivity"],
+      "keywords_vi": ["giải xung đột trong văn hóa", "trung gian", "hài hòa", "năng suất"],
+      "copy": {
+        "en": "Conflict resolution in culture turns disputes into growth, using mediation for harmony. Thomas-Kilmann model offers styles (collaborate, compromise). Resolution: Train mediators, foster open norms. Examples: Bridgewater's radical transparency. Pitfalls: avoidance festering or win-lose eroding trust. Encourage collaborative. Exercises: Resolution role-plays. Strategically, resolution maintains productivity, integrating with conflict navigation. VIP9 resolutions for harmonious mastery. Without, toxic; with, healthy. Extend to diverse: cultural-sensitive. From HBS, resolution boosts teams. Gallup links to engagement. In 2025's tensions, resolution adapts hybrids, turning culture resilient. Over time, it strengthens bonds, making resolution unity builder. (350 words)",
+        "vi": "Giải xung đột trong văn hóa biến tranh thành tăng, dùng trung gian cho hài hòa. Mô Thomas-Kilmann đưa phong (hợp tác, thỏa hiệp). Giải: Huấn mediator, thúc chuẩn mở. Ví dụ: Minh bạch radical Bridgewater. Hố bẫy: né festering hoặc win-lose mòn tin. Khích collaborative. Bài tập: Role-play giải. Chiến lược, giải duy trì năng suất, tích hợp với điều hướng xung đột. VIP9 giải cho làm chủ harmonious. Không có, độc; có nó, khỏe. Mở rộng sang đa: nhạy văn hóa. Từ HBS, giải nâng đội. Gallup liên với tham gia. Trong căng 2025, giải thích ứng hybrid, biến văn hóa kiên cường. Qua thời gian, nó củng ràng buộc, làm giải builder đoàn kết. (350 từ)"
+      },
+      "tags": ["conflict", "resolution", "culture"],
+      "audio": "corporate_team_culture_5_en.mp3"
+    },
+    {
+      "slug": "remote-culture-strategies",
+      "keywords_en": ["remote culture", "strategies", "virtual", "engagement", "connection"],
+      "keywords_vi": ["chiến lược văn hóa remote", "virtual", "tham gia", "kết nối"],
+      "copy": {
+        "en": "Remote culture strategies maintain cohesion in distributed teams, using virtual tools for connection. Strategies: Virtual rituals (e.g., online coffee), async comms. Examples: GitLab's all-remote culture. Pitfalls: isolation or over-meetings fatiguing. Balance interactions. Exercises: Culture virtual audits. Strategically, strategies adapt work, integrating with global. VIP9 strategies for connected mastery. Without, disconnected; with, bonded. Extend to hybrids: blend cultures. From Gallup, remote engagement keys. HBS on virtual leadership. In 2025's remotes, strategies bridge, turning culture boundaryless. Over time, it fosters belonging, making strategies remote resilient. (350 words)",
+        "vi": "Chiến lược văn hóa remote duy trì cohesion trong đội phân bố, dùng công cụ virtual cho kết nối. Chiến lược: Nghi thức virtual (ví dụ cà phê online), giao async. Ví dụ: Văn hóa all-remote GitLab. Hố bẫy: cô lập hoặc họp quá mệt. Cân tương tác. Bài tập: Kiểm văn hóa virtual. Chiến lược, chiến lược thích ứng work, tích hợp với toàn cầu. VIP9 chiến lược cho làm chủ connected. Không có, ngắt; có nó, ràng buộc. Mở rộng sang hybrid: hòa văn hóa. Từ Gallup, chìa tham gia remote. HBS về lãnh đạo virtual. Trong remote 2025, chiến lược nối, biến văn hóa vô giới. Qua thời gian, nó thúc thuộc, làm chiến lược remote kiên cường. (350 từ)"
+      },
+      "tags": ["remote", "culture", "strategies"],
+      "audio": "corporate_team_culture_6_en.mp3"
+    },
+    {
+      "slug": "culture-measurement-tools",
+      "keywords_en": ["culture measurement", "tools", "surveys", "metrics", "improvement"],
+      "keywords_vi": ["công cụ đo văn hóa", "khảo sát", "chỉ số", "cải thiện"],
+      "copy": {
+        "en": "Culture measurement tools quantify intangibles for improvement, using surveys like Gallup's engagement or Denison's culture model. Tools: Pulse surveys, focus groups. Examples: Adobe's Check-in. Pitfalls: superficial metrics or inaction on data. Act on insights. Exercises: Implement tools, analyze. Strategically, tools inform culture, integrating with analytics. VIP9 tools for measured mastery. Without, guessing; with, data-driven. Extend to feedback: 360 culture. From HBS, measurement drives change. McKinsey ties to performance. In 2025's analytics, tools refine, turning culture quantifiable. Over time, it tracks evolutions, making tools culture optimizers. (350 words)",
+        "vi": "Công cụ đo văn hóa lượng hóa intangible cho cải thiện, dùng khảo như tham gia Gallup hoặc mô văn hóa Denison. Công cụ: Khảo pulse, nhóm trọng. Ví dụ: Check-in Adobe. Hố bẫy: chỉ nông hoặc không hành trên dữ. Hành theo insights. Bài tập: Triển công cụ, phân tích. Chiến lược, công cụ thông tin văn hóa, tích hợp với analytics. VIP9 công cụ cho làm chủ measured. Không có, đoán; có nó, data-driven. Mở rộng sang phản hồi: 360 văn hóa. Từ HBS, đo lái thay. McKinsey buộc với hiệu suất. Trong analytics 2025, công cụ tinh, biến văn hóa quantifiable. Qua thời gian, nó theo tiến hóa, làm công cụ optimizer văn hóa. (350 từ)"
+      },
+      "tags": ["culture", "measurement", "tools"],
+      "audio": "corporate_team_culture_7_en.mp3"
+    },
+    {
+      "slug": "sustainable-culture-evolution",
+      "keywords_en": ["sustainable culture", "evolution", "change", "maintenance", "long-term"],
+      "keywords_vi": ["tiến hóa văn hóa bền vững", "thay đổi", "duy trì", "dài hạn"],
+      "copy": {
+        "en": "Sustainable culture evolution adapts norms over time without disruption, balancing tradition with innovation. Evolution: Involve employees in changes, pilot initiatives. Examples: IBM's cultural shift. Pitfalls: forced evolutions resisting or too slow stagnating. Pace inclusively. Exercises: Evolution roadmaps. Strategically, evolution sustains vitality, integrating with foresight. VIP9 evolves for enduring mastery. Without, obsolete; with, vibrant. Extend to mergers: evolve blended cultures. From Gallup, evolving cultures retain talent. HBS on cultural agility. In 2025's shifts, evolution keeps relevant, turning culture adaptive. Over time, it compounds strengths, making evolution cultural renewer. (350 words)",
+        "vi": "Tiến hóa văn hóa bền vững thích ứng chuẩn theo thời gian không gián đoạn, cân truyền thống với sáng tạo. Tiến hóa: Liên quan nhân viên trong thay, pilot sáng kiến. Ví dụ: Dịch văn hóa IBM. Hố bẫy: tiến ép kháng hoặc chậm quá đình. Pace inclusively. Bài tập: Roadmap tiến hóa. Chiến lược, tiến hóa duy trì sức sống, tích hợp với tầm nhìn xa. VIP9 tiến hóa cho làm chủ enduring. Không có, lỗi thời; có nó, vibrant. Mở rộng sang merger: tiến hòa văn hóa. Từ Gallup, văn hóa tiến giữ tài năng. HBS về agile văn hóa. Trong dịch 2025, tiến hóa giữ liên quan, biến văn hóa adaptive. Qua thời gian, nó tích sức mạnh, làm tiến hóa renewer văn hóa. (350 từ)"
+      },
+      "tags": ["sustainable", "culture", "evolution"],
+      "audio": "corporate_team_culture_8_en.mp3"
+    }
+  ]
+}
