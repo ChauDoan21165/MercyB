@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+// Tabs component removed - using unified tier dropdown instead
 import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench, Download } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
@@ -56,6 +56,9 @@ const TIER_DISPLAY_NAMES: Record<string, string> = {
   vip9: "VIP9",
   VIP9: "VIP9",
   kids: "Kids",
+  kidslevel1: "Kids Level 1",
+  kidslevel2: "Kids Level 2",
+  kidslevel3: "Kids Level 3",
 };
 
 // Helper to convert schema_id to proper JSON filename
@@ -107,38 +110,44 @@ export default function UnifiedHealthCheck() {
   const [health, setHealth] = useState<RoomHealth | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [fixing, setFixing] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<"main" | "kids">(
-    tier === "kids" || (typeof window !== "undefined" && window.location.pathname.includes("kids-room-health"))
-      ? "kids"
-      : "main"
-  );
+  const [selectedTier, setSelectedTier] = useState<string>(tier || "free");
   const [progress, setProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
   
-  // Kids room filtering state
+  // Kids room filtering state (for kids tiers only)
   const [selectedLevel, setSelectedLevel] = useState<string>("all");
   const [availableRooms, setAvailableRooms] = useState<Array<{ id: string; title: string; level: string }>>([]);
   const [selectedRooms, setSelectedRooms] = useState<string[]>([]);
 
-  const tierDisplay = tier
-    ? tier === "kids"
-      ? "Kids Rooms"
-      : TIER_DISPLAY_NAMES[tier] || tier.toUpperCase()
-    : activeTab === "kids"
-      ? "Kids Rooms"
-      : "All Tiers";
+  const allTiers = [
+    { value: "free", label: "Free" },
+    { value: "vip1", label: "VIP1" },
+    { value: "vip2", label: "VIP2" },
+    { value: "vip3", label: "VIP3" },
+    { value: "vip4", label: "VIP4" },
+    { value: "vip5", label: "VIP5" },
+    { value: "vip6", label: "VIP6" },
+    { value: "vip7", label: "VIP7" },
+    { value: "vip8", label: "VIP8" },
+    { value: "vip9", label: "VIP9" },
+    { value: "kidslevel1", label: "Kids Level 1" },
+    { value: "kidslevel2", label: "Kids Level 2" },
+    { value: "kidslevel3", label: "Kids Level 3" },
+  ];
+
+  const tierDisplay = TIER_DISPLAY_NAMES[selectedTier] || selectedTier.toUpperCase();
 
   useEffect(() => {
-    if (activeTab === "kids") {
+    if (selectedTier.startsWith("kidslevel")) {
       loadAvailableKidsRooms();
     }
-  }, [activeTab, selectedLevel]);
+  }, [selectedTier, selectedLevel]);
 
-  // Auto-run health checks only when a specific tier route is used (e.g. /admin/room-health/free)
-  // On /admin/kids-room-health there is no tier param, so checks run only when you click the button
+  // Auto-run health checks when selectedTier changes
   useEffect(() => {
-    if (!tier) return;
-    checkRoomHealth();
-  }, [tier]);
+    if (selectedTier) {
+      checkRoomHealth();
+    }
+  }, [selectedTier]);
 
   const loadAvailableKidsRooms = async () => {
     try {
@@ -246,7 +255,7 @@ export default function UnifiedHealthCheck() {
     setProgress(null);
 
     try {
-      if (activeTab === "kids") {
+      if (selectedTier.startsWith("kidslevel")) {
         await checkKidsRooms();
       } else {
         await checkMainRooms();
@@ -265,10 +274,9 @@ export default function UnifiedHealthCheck() {
       .select("*")
       .neq("tier", "kids");
 
-    // Use case-insensitive matching so it works with values like
-    // "VIP3", "VIP3 / Cấp VIP3", etc., not just plain "vip3"
-    if (tier && tier !== "kids") {
-      query = query.ilike("tier", `%${tier}%`);
+    // Use case-insensitive matching for the selected tier
+    if (selectedTier && !selectedTier.startsWith("kidslevel")) {
+      query = query.ilike("tier", `%${selectedTier}%`);
     }
 
     const { data: rooms, error: roomsError } = await query;
@@ -775,9 +783,9 @@ export default function UnifiedHealthCheck() {
               Back to Dashboard
             </Button>
           </Link>
-          <h1 className="text-3xl font-bold">Room Health Check: {tierDisplay}</h1>
+          <h1 className="text-3xl font-bold">All Rooms Health Check</h1>
           <p className="text-muted-foreground">
-            Validate room JSON files and configuration
+            Validate room JSON files and configuration across all tiers
           </p>
         </div>
         <div className="flex gap-2">
@@ -828,311 +836,220 @@ export default function UnifiedHealthCheck() {
         </Card>
       )}
 
-      <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "main" | "kids")}>
-        <TabsList>
-          <TabsTrigger value="main">Main Rooms</TabsTrigger>
-          <TabsTrigger value="kids">Kids Rooms</TabsTrigger>
-        </TabsList>
+      {/* Unified Tier Selection */}
+      <Card className="p-6">
+        <div className="space-y-4">
+          <div>
+            <label className="text-sm font-medium mb-2 block">Select Tier</label>
+            <Select value={selectedTier} onValueChange={setSelectedTier}>
+              <SelectTrigger className="w-full md:w-64">
+                <SelectValue placeholder="Select a tier" />
+              </SelectTrigger>
+              <SelectContent>
+                {allTiers.map((tier) => (
+                  <SelectItem key={tier.value} value={tier.value}>
+                    {tier.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
 
-        <TabsContent value="main" className="space-y-6">
-          {health && (
-            <>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Card className="p-6">
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle2 className="h-5 w-5 text-green-500" />
-                    <div>
-                      <p className="text-2xl font-bold">{health.totalRooms}</p>
-                      <p className="text-sm text-muted-foreground">Total Rooms</p>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card className="p-6">
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle2 className="h-5 w-5 text-green-500" />
-                    <div>
-                      <p className="text-2xl font-bold">{health.healthyRooms}</p>
-                      <p className="text-sm text-muted-foreground">Healthy Rooms</p>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card className="p-6">
-                  <div className="flex items-center space-x-2">
-                    <XCircle className="h-5 w-5 text-destructive" />
-                    <div>
-                      <p className="text-2xl font-bold">{health.issuesFound}</p>
-                      <p className="text-sm text-muted-foreground">Issues Found</p>
-                    </div>
-                  </div>
-                </Card>
+          {/* Kids-specific filters */}
+          {selectedTier.startsWith("kidslevel") && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t">
+              <div>
+                <label className="text-sm font-medium mb-2 block">Filter by Level</label>
+                <Select value={selectedLevel} onValueChange={setSelectedLevel}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a level" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Levels</SelectItem>
+                    <SelectItem value="level1">Kids Level 1 (Ages 4-7)</SelectItem>
+                    <SelectItem value="level2">Kids Level 2 (Ages 7-9)</SelectItem>
+                    <SelectItem value="level3">Kids Level 3 (Ages 10-12)</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
-
-              {health.issuesFound === 0 ? (
-                <Card className="p-8 text-center">
-                  <CheckCircle2 className="h-12 w-12 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">All Rooms Healthy!</h3>
-                  <p className="text-muted-foreground">
-                    All rooms are properly configured with valid JSON files.
-                  </p>
-                </Card>
-              ) : (
-                <Card className="p-6">
-                  <h2 className="text-xl font-semibold mb-4">Rooms Requiring Attention</h2>
-                  <div className="space-y-4">
-                    {health.issues.filter(i => !i.isKidsRoom).map((issue, index) => (
-                      <div
-                        key={index}
-                        className="border rounded-lg p-4 space-y-2 hover:bg-accent/50 transition-colors"
-                      >
-                        <div className="flex items-start justify-between">
-                          <div className="flex items-start space-x-3 flex-1">
-                            {getIssueIcon(issue.issueType)}
-                            <div className="flex-1">
-                              <div className="flex items-center space-x-2 mb-1">
-                                <h3 className="font-semibold">
-                                  {issue.roomTitle} ({issue.roomId})
-                                </h3>
-                                <Badge variant="outline">{issue.tier}</Badge>
-                              </div>
-                              <p className="text-sm text-muted-foreground">{issue.message}</p>
-                              {(issue.manifestKey || issue.resolvedPath) && (
-                                <div className="mt-2">
-                                  <div className="inline-flex items-center gap-2 px-2 py-1 bg-muted rounded text-xs font-mono">
-                                    {issue.manifestKey && (
-                                      <span className="text-muted-foreground">
-                                        manifest: <span className="text-foreground">{issue.manifestKey}</span>
-                                      </span>
-                                    )}
-                                    {issue.resolvedPath && (
-                                      <>
-                                        {issue.manifestKey && <span className="text-muted-foreground">→</span>}
-                                        <span className="text-primary">{issue.resolvedPath}</span>
-                                      </>
-                                    )}
-                                  </div>
-                                </div>
-                              )}
-                              {issue.details && (
-                                <p className="text-xs text-muted-foreground mt-1 font-mono bg-muted/30 p-2 rounded">
-                                  {issue.details}
-                                </p>
-                              )}
-                              {issue.issueType === "missing_file" && (
-                                <Alert className="mt-2 py-2 px-3">
-                                  <AlertCircle className="h-4 w-4" />
-                                  <AlertDescription className="text-xs">
-                                    💡 This file needs to be created. Check the database schema_id field and create the matching JSON file in public/data/
-                                  </AlertDescription>
-                                </Alert>
-                              )}
-                            </div>
-                          </div>
-                          {getIssueBadge(issue.issueType)}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </Card>
-              )}
-            </>
-          )}
-        </TabsContent>
-
-        <TabsContent value="kids" className="space-y-6">
-          {/* Kids Room Filters */}
-          <Card className="p-6">
-            <h3 className="text-lg font-semibold mb-4">Filter Options</h3>
-            <div className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              
+              {availableRooms.length > 0 && (
                 <div>
-                  <label className="text-sm font-medium mb-2 block">Select Level</label>
-                  <Select value={selectedLevel} onValueChange={setSelectedLevel}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a level" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All Levels</SelectItem>
-                      <SelectItem value="level1">Kids Level 1 (Ages 4-7)</SelectItem>
-                      <SelectItem value="level2">Kids Level 2 (Ages 7-9)</SelectItem>
-                      <SelectItem value="level3">Kids Level 3 (Ages 10-12)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                
-                {availableRooms.length > 0 && (
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">
-                      Select Specific Rooms (Optional)
-                    </label>
-                    <div className="border rounded-md p-3 max-h-40 overflow-y-auto space-y-2">
-                      <div className="flex items-center space-x-2 mb-2 pb-2 border-b">
+                  <label className="text-sm font-medium mb-2 block">
+                    Select Specific Rooms (Optional)
+                  </label>
+                  <div className="border rounded-md p-3 max-h-40 overflow-y-auto space-y-2">
+                    <div className="flex items-center space-x-2 mb-2 pb-2 border-b">
+                      <Checkbox
+                        id="select-all"
+                        checked={selectedRooms.length === availableRooms.length && availableRooms.length > 0}
+                        onCheckedChange={(checked) => {
+                          if (checked) {
+                            setSelectedRooms(availableRooms.map(r => r.id));
+                          } else {
+                            setSelectedRooms([]);
+                          }
+                        }}
+                      />
+                      <label htmlFor="select-all" className="text-sm font-medium cursor-pointer">
+                        {selectedRooms.length === availableRooms.length && availableRooms.length > 0 ? 'Deselect All' : 'Select All'}
+                      </label>
+                    </div>
+                    {availableRooms.map((room) => (
+                      <div key={room.id} className="flex items-center space-x-2">
                         <Checkbox
-                          id="select-all"
-                          checked={selectedRooms.length === availableRooms.length && availableRooms.length > 0}
+                          id={room.id}
+                          checked={selectedRooms.includes(room.id)}
                           onCheckedChange={(checked) => {
                             if (checked) {
-                              setSelectedRooms(availableRooms.map(r => r.id));
+                              setSelectedRooms([...selectedRooms, room.id]);
                             } else {
-                              setSelectedRooms([]);
+                              setSelectedRooms(selectedRooms.filter(id => id !== room.id));
                             }
                           }}
                         />
-                        <label htmlFor="select-all" className="text-sm font-medium cursor-pointer">
-                          {selectedRooms.length === availableRooms.length && availableRooms.length > 0 ? 'Deselect All' : 'Select All'}
+                        <label htmlFor={room.id} className="text-sm cursor-pointer">
+                          {room.title}
                         </label>
-                      </div>
-                      {availableRooms.map((room) => (
-                        <div key={room.id} className="flex items-center space-x-2">
-                          <Checkbox
-                            id={room.id}
-                            checked={selectedRooms.includes(room.id)}
-                            onCheckedChange={(checked) => {
-                              if (checked) {
-                                setSelectedRooms([...selectedRooms, room.id]);
-                              } else {
-                                setSelectedRooms(selectedRooms.filter(id => id !== room.id));
-                              }
-                            }}
-                          />
-                          <label htmlFor={room.id} className="text-sm cursor-pointer">
-                            {room.title}
-                          </label>
-                        </div>
-                      ))}
-                    </div>
-                    {selectedRooms.length > 0 && (
-                      <p className="text-xs text-muted-foreground mt-2">
-                        {selectedRooms.length} room{selectedRooms.length !== 1 ? 's' : ''} selected
-                      </p>
-                    )}
-                  </div>
-                )}
-              </div>
-              
-              <div className="flex gap-2">
-                <Button onClick={checkRoomHealth} disabled={loading}>
-                  {loading ? (
-                    <>
-                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                      Checking...
-                    </>
-                  ) : (
-                    'Run Health Check'
-                  )}
-                </Button>
-                
-                {(selectedLevel !== "all" || selectedRooms.length > 0) && (
-                  <Button
-                    variant="outline"
-                    onClick={() => {
-                      setSelectedLevel("all");
-                      setSelectedRooms([]);
-                    }}
-                  >
-                    Clear Filters
-                  </Button>
-                )}
-              </div>
-            </div>
-          </Card>
-
-          {health && (
-            <>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Card className="p-6">
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle2 className="h-5 w-5 text-green-500" />
-                    <div>
-                      <p className="text-2xl font-bold">{health.totalRooms}</p>
-                      <p className="text-sm text-muted-foreground">Total Rooms</p>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card className="p-6">
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle2 className="h-5 w-5 text-green-500" />
-                    <div>
-                      <p className="text-2xl font-bold">{health.healthyRooms}</p>
-                      <p className="text-sm text-muted-foreground">Healthy Rooms</p>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card className="p-6">
-                  <div className="flex items-center space-x-2">
-                    <XCircle className="h-5 w-5 text-destructive" />
-                    <div>
-                      <p className="text-2xl font-bold">{health.issuesFound}</p>
-                      <p className="text-sm text-muted-foreground">Issues Found</p>
-                    </div>
-                  </div>
-                </Card>
-              </div>
-
-              {health.issuesFound === 0 ? (
-                <Card className="p-8 text-center">
-                  <CheckCircle2 className="h-12 w-12 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">All Kids Rooms Healthy!</h3>
-                  <p className="text-muted-foreground">
-                    All kids rooms are properly configured.
-                  </p>
-                </Card>
-              ) : (
-                <Card className="p-6">
-                  <h2 className="text-xl font-semibold mb-4">Kids Rooms Requiring Attention</h2>
-                  <div className="space-y-4">
-                    {health.issues.filter(i => i.isKidsRoom).map((issue, index) => (
-                      <div
-                        key={index}
-                        className="border rounded-lg p-4 space-y-2 hover:bg-accent/50 transition-colors"
-                      >
-                        <div className="flex items-start justify-between">
-                          <div className="flex items-start space-x-3 flex-1">
-                            {getIssueIcon(issue.issueType)}
-                            <div className="flex-1">
-                              <div className="flex items-center space-x-2 mb-1">
-                                <h3 className="font-semibold">
-                                  {issue.roomTitle} ({issue.roomId})
-                                </h3>
-                                <Badge variant="outline">{issue.tier}</Badge>
-                              </div>
-                              <p className="text-sm text-muted-foreground">{issue.message}</p>
-                              {issue.issueType === "missing_entries" && issue.levelId && (
-                                <Button
-                                  size="sm"
-                                  className="mt-2"
-                                  onClick={() => fixKidsRoom(issue.roomId, issue.levelId!)}
-                                  disabled={fixing === issue.roomId}
-                                >
-                                  {fixing === issue.roomId ? (
-                                    <>
-                                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                                      Fixing...
-                                    </>
-                                  ) : (
-                                    <>
-                                      <Wrench className="h-4 w-4 mr-2" />
-                                      Fix Room
-                                    </>
-                                  )}
-                                </Button>
-                              )}
-                            </div>
-                          </div>
-                          {getIssueBadge(issue.issueType)}
-                        </div>
                       </div>
                     ))}
                   </div>
-                </Card>
+                  {selectedRooms.length > 0 && (
+                    <p className="text-xs text-muted-foreground mt-2">
+                      {selectedRooms.length} room{selectedRooms.length !== 1 ? 's' : ''} selected
+                    </p>
+                  )}
+                </div>
               )}
-            </>
+            </div>
           )}
-        </TabsContent>
-      </Tabs>
+        </div>
+      </Card>
+
+      {/* Health Check Results */}
+      {health && (
+        <div className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Card className="p-6">
+              <div className="flex items-center space-x-2">
+                <CheckCircle2 className="h-5 w-5 text-green-500" />
+                <div>
+                  <p className="text-2xl font-bold">{health.totalRooms}</p>
+                  <p className="text-sm text-muted-foreground">Total Rooms</p>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-6">
+              <div className="flex items-center space-x-2">
+                <CheckCircle2 className="h-5 w-5 text-green-500" />
+                <div>
+                  <p className="text-2xl font-bold">{health.healthyRooms}</p>
+                  <p className="text-sm text-muted-foreground">Healthy Rooms</p>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-6">
+              <div className="flex items-center space-x-2">
+                <XCircle className="h-5 w-5 text-destructive" />
+                <div>
+                  <p className="text-2xl font-bold">{health.issuesFound}</p>
+                  <p className="text-sm text-muted-foreground">Issues Found</p>
+                </div>
+              </div>
+            </Card>
+          </div>
+
+          {health.issuesFound === 0 ? (
+            <Card className="p-8 text-center">
+              <CheckCircle2 className="h-12 w-12 text-green-500 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">All Rooms Healthy!</h3>
+              <p className="text-muted-foreground">
+                All rooms are properly configured with valid JSON files.
+              </p>
+            </Card>
+          ) : (
+            <Card className="p-6">
+              <h2 className="text-xl font-semibold mb-4">Rooms Requiring Attention</h2>
+              <div className="space-y-4">
+                {health.issues.map((issue, index) => (
+                  <div
+                    key={index}
+                    className="border rounded-lg p-4 space-y-2 hover:bg-accent/50 transition-colors"
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-start space-x-3 flex-1">
+                        {getIssueIcon(issue.issueType)}
+                        <div className="flex-1">
+                          <div className="flex items-center space-x-2 mb-1">
+                            <h3 className="font-semibold">
+                              {issue.roomTitle} ({issue.roomId})
+                            </h3>
+                            <Badge variant="outline">{issue.tier}</Badge>
+                          </div>
+                          <p className="text-sm text-muted-foreground">{issue.message}</p>
+                          {(issue.manifestKey || issue.resolvedPath) && (
+                            <div className="mt-2">
+                              <div className="inline-flex items-center gap-2 px-2 py-1 bg-muted rounded text-xs font-mono">
+                                {issue.manifestKey && (
+                                  <span className="text-muted-foreground">
+                                    manifest: <span className="text-foreground">{issue.manifestKey}</span>
+                                  </span>
+                                )}
+                                {issue.resolvedPath && (
+                                  <>
+                                    {issue.manifestKey && <span className="text-muted-foreground">→</span>}
+                                    <span className="text-primary">{issue.resolvedPath}</span>
+                                  </>
+                                )}
+                              </div>
+                            </div>
+                          )}
+                          {issue.details && (
+                            <p className="text-xs text-muted-foreground mt-1 font-mono bg-muted/30 p-2 rounded">
+                              {issue.details}
+                            </p>
+                          )}
+                          {issue.issueType === "missing_file" && (
+                            <Alert className="mt-2 py-2 px-3">
+                              <AlertCircle className="h-4 w-4" />
+                              <AlertDescription className="text-xs">
+                                💡 This file needs to be created. Check the database schema_id field and create the matching JSON file in public/data/
+                              </AlertDescription>
+                            </Alert>
+                          )}
+                          {issue.issueType === "missing_entries" && issue.levelId && issue.isKidsRoom && (
+                            <Button
+                              size="sm"
+                              className="mt-2"
+                              onClick={() => fixKidsRoom(issue.roomId, issue.levelId!)}
+                              disabled={fixing === issue.roomId}
+                            >
+                              {fixing === issue.roomId ? (
+                                <>
+                                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                                  Fixing...
+                                </>
+                              ) : (
+                                <>
+                                  <Wrench className="h-4 w-4 mr-2" />
+                                  Fix Room
+                                </>
+                              )}
+                            </Button>
+                          )}
+                        </div>
+                      </div>
+                      {getIssueBadge(issue.issueType)}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          )}
+        </div>
+      )}
     </div>
   );
 }
