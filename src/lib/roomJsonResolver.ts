@@ -1,7 +1,35 @@
 /**
- * CANONICAL ROOM JSON RESOLVER
- * Single source of truth for all room JSON loading across the application.
- * Used by: Chat, Health Check, Manifest Generation, Registry
+ * CANONICAL ROOM JSON RESOLVER - STRICT MODE (NO FALLBACKS)
+ * 
+ * This is the SINGLE SOURCE OF TRUTH for all room JSON loading.
+ * 
+ * SYSTEM-WIDE GUARANTEE:
+ * - ONE resolver used everywhere (Chat, Health Check, Registry, Manifest)
+ * - ONE naming rule: public/data/{room_id}.json (lowercase snake_case ONLY)
+ * - ZERO fallback attempts (no case conversion, no underscore/hyphen swapping)
+ * - HARD FAIL on mismatch with clear error message
+ * 
+ * STRICT VALIDATION:
+ * - Filename MUST exactly match JSON.id
+ * - Lowercase snake_case ONLY (no kebab-case, TitleCase, PascalCase)
+ * - Bilingual fields required (title.en + title.vi OR name + name_vi)
+ * - Entry count: 2-8 entries per room
+ * - Audio field required for each entry
+ * - Entry identifiers required (slug, artifact_id, or id)
+ * 
+ * LOADING SEQUENCE:
+ * 1. Try manifest path (if exists in PUBLIC_ROOM_MANIFEST)
+ * 2. Try canonical path (data/{room_id}.json - EXACT MATCH)
+ * 3. HARD FAIL with detailed error (no silent skips)
+ * 
+ * This architecture eliminates:
+ * - Phantom rooms in database
+ * - "1 entry" display bugs
+ * - Silent import failures
+ * - Filename/ID mismatches
+ * - Inconsistent loader behavior
+ * 
+ * Used by: Chat system, Health Check, Registry Generation, All room data consumers
  */
 
 import { PUBLIC_ROOM_MANIFEST } from "./roomManifest";
@@ -30,13 +58,14 @@ ${detail ? `detail: ${detail}` : ''}`);
 }
 
 /**
- * CANONICAL NAMING RULE (non-negotiable):
+ * CANONICAL NAMING RULE (STRICT - NO FALLBACKS):
  * - Filename: public/data/{room_id}.json
- * - room_id exactly equals JSON.id
+ * - room_id EXACTLY equals JSON.id
  * - all lowercase
- * - snake_case or kebab-case depending on id
+ * - snake_case only (no kebab-case, no TitleCase, no PascalCase)
+ * - NO guessing, NO case conversion, NO fallbacks
  * 
- * NO Title_Case, NO PascalCase, NO extra variations
+ * If exact match not found → HARD FAIL with clear error
  */
 export function getCanonicalPath(roomId: string): string {
   return `data/${roomId}.json`;
@@ -174,36 +203,12 @@ export async function resolveRoomJsonPath(roomId: string): Promise<string> {
     // Continue to backwards compatibility
   }
 
-  // 3. BACKWARDS COMPATIBILITY ONLY: Try case/format variants
-  const variants = [
-    roomId.toLowerCase().replace(/-/g, '_'),
-    roomId.toLowerCase().replace(/_/g, '-'),
-    roomId.toLowerCase(),
-  ];
-
-  for (const variant of variants) {
-    if (variant === roomId) continue; // Already tried canonical
-    
-    const variantPath = `data/${variant}.json`;
-    try {
-      const response = await fetch(`/${variantPath}`);
-      if (response.ok) {
-        const data = await response.json();
-        validateRoomJson(data, roomId, variantPath);
-        console.warn(`⚠️ DEPRECATION: Room ${roomId} uses non-canonical filename: ${variantPath}`);
-        return variantPath;
-      }
-    } catch (error) {
-      continue;
-    }
-  }
-
-  // 4. HARD FAIL - No valid JSON found
+  // 3. HARD FAIL - No valid JSON found
   throw new RoomJsonNotFoundError(
     roomId,
     canonicalPath,
-    'File not found after trying all paths',
-    `Tried: manifest, canonical (${canonicalPath}), and backwards-compatible variants`
+    'File not found - exact match required',
+    `Expected exact file: ${canonicalPath}\nJSON.id must exactly match filename (lowercase snake_case)\nNo fallbacks or case conversions attempted`
   );
 }
 

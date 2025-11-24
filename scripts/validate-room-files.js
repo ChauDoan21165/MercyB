@@ -25,12 +25,14 @@ function validateFilename(filename) {
     return { valid: false, reason: 'Filename must be all lowercase' };
   }
 
-  // Must use snake_case or kebab-case (not mixed)
-  const hasUnderscore = filename.includes('_');
-  const hasHyphen = filename.replace(/-(free|vip\d+|kidslevel\d+)\.json$/, '').includes('-');
-  
-  if (hasUnderscore && hasHyphen) {
-    return { valid: false, reason: 'Filename mixes snake_case and kebab-case' };
+  // Must use snake_case ONLY (no kebab-case, no mixing)
+  const baseName = filename.replace(/\.json$/, '');
+  if (baseName.includes('-')) {
+    // Allow hyphens only in tier suffix (e.g., vip3-ii)
+    const withoutTier = baseName.replace(/_(free|vip\d+(-ii)?|kidslevel\d+)$/, '');
+    if (withoutTier.includes('-')) {
+      return { valid: false, reason: 'Filename must use snake_case only (no hyphens except in tier suffix)' };
+    }
   }
 
   // Must end with .json
@@ -39,7 +41,7 @@ function validateFilename(filename) {
   }
 
   // Must end with tier suffix
-  const tierMatch = filename.match(/_(free|vip\d+|kidslevel\d+)\.json$/);
+  const tierMatch = filename.match(/_(free|vip\d+(_ii)?|kidslevel\d+)\.json$/);
   if (!tierMatch) {
     return { valid: false, reason: 'Filename must end with tier suffix (e.g., _vip9.json)' };
   }
