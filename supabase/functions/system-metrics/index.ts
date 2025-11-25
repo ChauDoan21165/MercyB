@@ -119,6 +119,31 @@ Deno.serve(async (req) => {
       timestamp: new Date().toISOString(),
     };
 
+    // Save historical snapshot (only save every 15 minutes to avoid too much data)
+    const { data: lastSnapshot } = await supabase
+      .from('metrics_history')
+      .select('timestamp')
+      .order('timestamp', { ascending: false })
+      .limit(1)
+      .single();
+
+    const shouldSaveSnapshot = !lastSnapshot || 
+      (new Date().getTime() - new Date(lastSnapshot.timestamp).getTime()) > 15 * 60 * 1000;
+
+    if (shouldSaveSnapshot) {
+      await supabase.from('metrics_history').insert({
+        total_rooms: roomsCount || 0,
+        total_users: usersCount || 0,
+        concurrent_users: recentSessions || 0,
+        total_entries: totalEntries + (kidsEntriesCount || 0),
+        total_tts_calls: ttsCallsToday || 0,
+        total_storage_objects: storageBuckets.reduce((sum, b) => sum + b.count, 0),
+        moderation_queue_length: moderationQueue || 0,
+        active_subscriptions: activeSubscriptions || 0,
+        rooms_by_tier: roomsByTier,
+      });
+    }
+
     return new Response(JSON.stringify(metrics), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });

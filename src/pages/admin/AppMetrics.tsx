@@ -7,11 +7,15 @@ import { AdminBreadcrumb } from "@/components/admin/AdminBreadcrumb";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { 
   Database, Layers, Box, FileCode, HardDrive, Users, Building, Globe, 
-  BarChart3, RefreshCw, CheckCircle2, XCircle, Activity, Clock
+  BarChart3, RefreshCw, CheckCircle2, XCircle, Activity, Clock, TrendingUp
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
-import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { 
+  PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip,
+  LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid
+} from "recharts";
 
 interface SystemMetrics {
   infrastructure: {
@@ -41,6 +45,15 @@ interface SystemMetrics {
   timestamp: string;
 }
 
+interface HistoricalMetric {
+  timestamp: string;
+  total_rooms: number;
+  total_users: number;
+  concurrent_users: number;
+  total_entries: number;
+  total_storage_objects: number;
+}
+
 const TIER_COLORS = {
   'free': '#10b981',
   'vip1': '#3b82f6',
@@ -60,6 +73,8 @@ const AppMetrics = () => {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [metrics, setMetrics] = useState<SystemMetrics | null>(null);
+  const [historicalData, setHistoricalData] = useState<HistoricalMetric[]>([]);
+  const [historicalView, setHistoricalView] = useState<'daily' | 'weekly' | 'monthly'>('daily');
   const [healthChecking, setHealthChecking] = useState(false);
   const [autoRefresh, setAutoRefresh] = useState(true);
 
@@ -123,6 +138,7 @@ const AppMetrics = () => {
       if (error) throw error;
       
       setMetrics(data);
+      await fetchHistoricalData();
     } catch (error) {
       console.error("Error fetching metrics:", error);
       toast({
@@ -130,6 +146,34 @@ const AppMetrics = () => {
         description: "Failed to load app metrics",
         variant: "destructive",
       });
+    }
+  };
+
+  const fetchHistoricalData = async () => {
+    try {
+      const now = new Date();
+      let startDate = new Date();
+      
+      // Calculate date range based on view
+      if (historicalView === 'daily') {
+        startDate.setDate(now.getDate() - 7); // Last 7 days
+      } else if (historicalView === 'weekly') {
+        startDate.setDate(now.getDate() - 30); // Last 30 days
+      } else {
+        startDate.setMonth(now.getMonth() - 6); // Last 6 months
+      }
+
+      const { data, error } = await supabase
+        .from('metrics_history')
+        .select('*')
+        .gte('timestamp', startDate.toISOString())
+        .order('timestamp', { ascending: true });
+
+      if (error) throw error;
+
+      setHistoricalData(data || []);
+    } catch (error) {
+      console.error("Error fetching historical data:", error);
     }
   };
 
@@ -142,6 +186,12 @@ const AppMetrics = () => {
       description: "Metrics updated successfully",
     });
   };
+
+  useEffect(() => {
+    if (metrics) {
+      fetchHistoricalData();
+    }
+  }, [historicalView]);
 
   const runHealthCheck = async () => {
     setHealthChecking(true);
@@ -170,6 +220,23 @@ const AppMetrics = () => {
     value: count,
     color: TIER_COLORS[tier as keyof typeof TIER_COLORS] || '#6b7280',
   }));
+
+  const formatHistoricalData = () => {
+    return historicalData.map(item => ({
+      date: new Date(item.timestamp).toLocaleDateString('en-US', { 
+        month: 'short', 
+        day: 'numeric',
+        ...(historicalView === 'monthly' && { year: '2-digit' })
+      }),
+      rooms: item.total_rooms,
+      users: item.total_users,
+      concurrent: item.concurrent_users,
+      entries: item.total_entries,
+      storage: item.total_storage_objects,
+    }));
+  };
+
+  const trendData = formatHistoricalData();
 
   return (
     <AdminLayout>
@@ -318,6 +385,98 @@ const AppMetrics = () => {
                 </div>
               ))}
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Historical Trends */}
+        <Card>
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle className="flex items-center gap-2">
+                  <TrendingUp className="h-5 w-5" />
+                  Growth Trends
+                </CardTitle>
+                <CardDescription>Track your app's growth over time</CardDescription>
+              </div>
+              <Tabs value={historicalView} onValueChange={(v) => setHistoricalView(v as any)}>
+                <TabsList>
+                  <TabsTrigger value="daily">Daily</TabsTrigger>
+                  <TabsTrigger value="weekly">Weekly</TabsTrigger>
+                  <TabsTrigger value="monthly">Monthly</TabsTrigger>
+                </TabsList>
+              </Tabs>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <Tabs defaultValue="users" className="w-full">
+              <TabsList className="grid w-full grid-cols-4">
+                <TabsTrigger value="users">Users</TabsTrigger>
+                <TabsTrigger value="rooms">Rooms</TabsTrigger>
+                <TabsTrigger value="entries">Entries</TabsTrigger>
+                <TabsTrigger value="storage">Storage</TabsTrigger>
+              </TabsList>
+              
+              <TabsContent value="users" className="mt-4">
+                <ResponsiveContainer width="100%" height={300}>
+                  <AreaChart data={trendData}>
+                    <defs>
+                      <linearGradient id="colorUsers" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8}/>
+                        <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="date" />
+                    <YAxis />
+                    <Tooltip />
+                    <Area type="monotone" dataKey="users" stroke="#3b82f6" fillOpacity={1} fill="url(#colorUsers)" />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </TabsContent>
+              
+              <TabsContent value="rooms" className="mt-4">
+                <ResponsiveContainer width="100%" height={300}>
+                  <LineChart data={trendData}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="date" />
+                    <YAxis />
+                    <Tooltip />
+                    <Line type="monotone" dataKey="rooms" stroke="#10b981" strokeWidth={2} />
+                  </LineChart>
+                </ResponsiveContainer>
+              </TabsContent>
+              
+              <TabsContent value="entries" className="mt-4">
+                <ResponsiveContainer width="100%" height={300}>
+                  <AreaChart data={trendData}>
+                    <defs>
+                      <linearGradient id="colorEntries" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.8}/>
+                        <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="date" />
+                    <YAxis />
+                    <Tooltip />
+                    <Area type="monotone" dataKey="entries" stroke="#8b5cf6" fillOpacity={1} fill="url(#colorEntries)" />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </TabsContent>
+              
+              <TabsContent value="storage" className="mt-4">
+                <ResponsiveContainer width="100%" height={300}>
+                  <LineChart data={trendData}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="date" />
+                    <YAxis />
+                    <Tooltip />
+                    <Line type="monotone" dataKey="storage" stroke="#f59e0b" strokeWidth={2} />
+                  </LineChart>
+                </ResponsiveContainer>
+              </TabsContent>
+            </Tabs>
           </CardContent>
         </Card>
 

@@ -743,6 +743,51 @@ export type Database = {
         }
         Relationships: []
       }
+      metrics_history: {
+        Row: {
+          active_subscriptions: number
+          concurrent_users: number
+          created_at: string
+          id: string
+          moderation_queue_length: number
+          rooms_by_tier: Json | null
+          timestamp: string
+          total_entries: number
+          total_rooms: number
+          total_storage_objects: number
+          total_tts_calls: number
+          total_users: number
+        }
+        Insert: {
+          active_subscriptions?: number
+          concurrent_users?: number
+          created_at?: string
+          id?: string
+          moderation_queue_length?: number
+          rooms_by_tier?: Json | null
+          timestamp?: string
+          total_entries?: number
+          total_rooms?: number
+          total_storage_objects?: number
+          total_tts_calls?: number
+          total_users?: number
+        }
+        Update: {
+          active_subscriptions?: number
+          concurrent_users?: number
+          created_at?: string
+          id?: string
+          moderation_queue_length?: number
+          rooms_by_tier?: Json | null
+          timestamp?: string
+          total_entries?: number
+          total_rooms?: number
+          total_storage_objects?: number
+          total_tts_calls?: number
+          total_users?: number
+        }
+        Relationships: []
+      }
       payment_proof_audit_log: {
         Row: {
           action: string
