@@ -10,6 +10,7 @@ import { AdminLayout } from "@/components/admin/AdminLayout";
 import { LiveUsersMonitor } from "@/components/admin/LiveUsersMonitor";
 import { FeedbackMessages } from "@/components/admin/FeedbackMessages";
 import { NotificationPreferences } from "@/components/admin/NotificationPreferences";
+import { VIP9RoomUpload } from "@/components/admin/VIP9RoomUpload";
 
 interface DashboardStats {
   totalRooms: number;
@@ -529,6 +530,12 @@ const AdminDashboard = () => {
               </p>
             </CardContent>
           </Card>
+        </div>
+
+        {/* VIP9 Room Upload - Single Source of Truth */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold mb-4 text-foreground">📤 VIP9 Room Upload</h2>
+          <VIP9RoomUpload />
         </div>
 
         {/* Notification Preferences */}
