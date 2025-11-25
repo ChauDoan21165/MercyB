@@ -154,6 +154,7 @@ export default function UnifiedHealthCheck() {
   const [keywordFixProgress, setKeywordFixProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
   const [fixingRoomId, setFixingRoomId] = useState<string | null>(null);
   const [fixingAudioRoomId, setFixingAudioRoomId] = useState<string | null>(null);
+  const [abortController, setAbortController] = useState<AbortController | null>(null);
   
   // Kids room filtering state (for kids tiers only)
   const [selectedLevel, setSelectedLevel] = useState<string>("all");
@@ -467,9 +468,29 @@ export default function UnifiedHealthCheck() {
     return report;
   };
 
+  // Stop deep scan
+  const stopDeepScan = () => {
+    console.log('🛑 Stopping deep scan...');
+    if (abortController) {
+      abortController.abort();
+      setAbortController(null);
+    }
+    setDeepScanning(false);
+    setProgress(null);
+    toast({
+      title: "Scan Stopped",
+      description: "Deep scan was cancelled by user",
+    });
+  };
+
   // Run deep scan for current tier
   const runDeepScan = async () => {
     console.log('🔍 Starting Deep Scan for tier:', selectedTier);
+    
+    // Create new abort controller for this scan
+    const controller = new AbortController();
+    setAbortController(controller);
+    
     setDeepScanning(true);
     setDeepScanResults([]);
     setProgress(null);
@@ -511,6 +532,12 @@ export default function UnifiedHealthCheck() {
       const total = rooms.length;
 
       for (let i = 0; i < total; i++) {
+        // Check if scan was aborted
+        if (controller.signal.aborted) {
+          console.log('🛑 Scan aborted at room', i + 1, 'of', total);
+          return;
+        }
+        
         const room = rooms[i];
         console.log(`📝 Scanning room ${i + 1}/${total}:`, room.id, '-', room.title_en);
         setProgress({ current: i + 1, total, roomName: room.title_en });
@@ -583,6 +610,7 @@ export default function UnifiedHealthCheck() {
       console.log('🏁 Cleaning up deep scan state');
       setDeepScanning(false);
       setProgress(null);
+      setAbortController(null);
     }
   };
 
@@ -1799,23 +1827,24 @@ export default function UnifiedHealthCheck() {
               Download Full Report
             </Button>
           )}
-          <Button 
-            onClick={runDeepScan} 
-            disabled={deepScanning || loading}
-            variant="secondary"
-          >
-            {deepScanning ? (
-              <>
-                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                Deep Scanning...
-              </>
-            ) : (
-              <>
-                <Volume2 className="mr-2 h-4 w-4" />
-                Deep Scan
-              </>
-            )}
-          </Button>
+          {deepScanning ? (
+            <Button 
+              onClick={stopDeepScan} 
+              variant="destructive"
+            >
+              <XCircle className="mr-2 h-4 w-4" />
+              Stop Scan
+            </Button>
+          ) : (
+            <Button 
+              onClick={runDeepScan} 
+              disabled={loading}
+              variant="secondary"
+            >
+              <Volume2 className="mr-2 h-4 w-4" />
+              Deep Scan
+            </Button>
+          )}
           <Button onClick={checkRoomHealth} disabled={loading}>
             {loading ? (
               <>
