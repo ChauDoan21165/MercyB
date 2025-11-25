@@ -264,4 +264,26 @@ All colors MUST be HSL.
   .protected-content::-moz-selection {
     background: transparent;
   }
+
+  /* Low Data Mode optimizations */
+  .low-data-mode * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .low-data-mode img {
+    display: none;
+  }
+
+  .low-data-mode [style*="background-image"] {
+    background-image: none !important;
+  }
+
+  .low-data-mode .hover\:scale-110:hover {
+    transform: none !important;
+  }
+
+  .low-data-mode .hover\:shadow-hover:hover {
+    box-shadow: none !important;
+  }
 }
