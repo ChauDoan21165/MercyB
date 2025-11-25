@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
 import { Button } from '@/components/ui/button';
-import { Lock, Unlock, TrendingUp, Building2, Globe2, Swords, Handshake, Lightbulb, Crown } from 'lucide-react';
+import { Lock, Unlock, TrendingUp, Building2, Globe2, Crown } from 'lucide-react';
 import { useUserAccess } from '@/hooks/useUserAccess';
 import { useToast } from '@/hooks/use-toast';
 
@@ -43,10 +43,7 @@ const RoomsVIP9 = () => {
         const individualRooms = data.filter(r => r.domain === 'Individual');
         const corporateRooms = data.filter(r => r.domain === 'Corporate');
         const nationalRooms = data.filter(r => r.domain === 'National');
-        const tacticalTitansRooms = data.filter(r => r.domain === 'Tactical Titans');
-        const diplomaticPioneersRooms = data.filter(r => r.domain === 'Diplomatic Pioneers');
-        const innovativeVisionariesRooms = data.filter(r => r.domain === 'Innovative Visionaries');
-        const culturalInfluencersRooms = data.filter(r => r.domain === 'Cultural Influencers');
+        const historicalStrategistsRooms = data.filter(r => r.domain === 'Historical Strategists');
 
         setDomains([
           {
@@ -74,36 +71,12 @@ const RoomsVIP9 = () => {
             rooms: nationalRooms
           },
           {
-            id: 'tactical_titans',
+            id: 'historical_strategists',
             title: {
-              en: 'Tactical Titans',
-              vi: 'Những Chiến Lược Gia Quân Sự'
+              en: 'Historical Strategists',
+              vi: 'Các Nhà Chiến Lược Lịch Sử'
             },
-            rooms: tacticalTitansRooms
-          },
-          {
-            id: 'diplomatic_pioneers',
-            title: {
-              en: 'Diplomatic Pioneers',
-              vi: 'Tiên Phong Ngoại Giao'
-            },
-            rooms: diplomaticPioneersRooms
-          },
-          {
-            id: 'innovative_visionaries',
-            title: {
-              en: 'Innovative Visionaries',
-              vi: 'Những Nhà Tư Tưởng Tiên Phong'
-            },
-            rooms: innovativeVisionariesRooms
-          },
-          {
-            id: 'cultural_influencers',
-            title: {
-              en: 'Cultural Influencers',
-              vi: 'Những Nhà Ảnh Hưởng Văn Hóa'
-            },
-            rooms: culturalInfluencersRooms
+            rooms: historicalStrategistsRooms
           }
         ]);
       } catch (error) {
@@ -149,10 +122,7 @@ const RoomsVIP9 = () => {
     individual_strategic_mastery: TrendingUp,
     corporate_organizational_strategy: Building2,
     national_geostrategic_intelligence: Globe2,
-    tactical_titans: Swords,
-    diplomatic_pioneers: Handshake,
-    innovative_visionaries: Lightbulb,
-    cultural_influencers: Crown
+    historical_strategists: Crown
   };
 
   return (
@@ -187,8 +157,8 @@ const RoomsVIP9 = () => {
             </div>
             <div className="h-12 w-px bg-slate-700"></div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-white">7</div>
-              <div className="text-sm text-slate-400">Strategic Domains</div>
+              <div className="text-3xl font-bold text-white">4</div>
+              <parameter name="text-sm text-slate-400">Strategic Domains</div>
             </div>
             <div className="h-12 w-px bg-slate-700"></div>
             <div className="text-center">
