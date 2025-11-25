@@ -570,13 +570,14 @@ export default function UnifiedHealthCheck() {
           jsonData = await loadRoomJson(room.id || "");
           console.log(`✅ Loaded JSON for ${room.id}:`, resolvedPath);
         } catch (error: any) {
-          console.error(`❌ JSON LOAD FAILED for ${room.id}:`, error.message);
+          // Handle missing files gracefully - don't spam console with errors
+          console.warn(`⚠️ JSON file missing for ${room.id}:`, error.message?.split('\n')[0]);
           failedRooms.push({
             id: room.id,
             title: room.title_en || room.id,
-            error: error.message || 'Unknown error'
+            error: 'JSON file not found or invalid'
           });
-          // Hard fail - do not continue with this room
+          // Skip this room and continue with others
           continue;
         }
 
