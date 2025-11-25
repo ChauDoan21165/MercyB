@@ -39,11 +39,11 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
             const titleText = typeof entry.title === 'object' ? entry.title?.en : entry.title;
             const en = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0
               ? String(entry.keywords_en[0])
-              : String(titleText || entry.slug || '').trim();
+              : String(titleText || entry.identifier || entry.slug || '').trim();
             const titleViText = typeof entry.title === 'object' ? entry.title?.vi : '';
             const vi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0
               ? String(entry.keywords_vi[0])
-              : (titleViText || entry.slug || '');
+              : (titleViText || entry.identifier || entry.slug || '');
             // Deduplicate by English keyword (case-insensitive)
             const normalizedEn = en.toLowerCase().trim();
             if (en && !seenKeywords.has(normalizedEn)) {
@@ -52,7 +52,12 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
               viList.push(vi);
             }
           });
-          keywordMenu = { en: enList, vi: viList };
+          // If no keywords extracted from entries, use root-level keywords array
+          if (enList.length === 0 && hasKeywords) {
+            keywordMenu = { en: dbRoom.keywords, vi: dbRoom.keywords };
+          } else {
+            keywordMenu = { en: enList, vi: viList };
+          }
         } else if (hasKeywords) {
           keywordMenu = { en: dbRoom.keywords, vi: dbRoom.keywords };
         }
