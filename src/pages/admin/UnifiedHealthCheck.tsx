@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 // Tabs component removed - using unified tier dropdown instead
-import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench, Download, Play, Volume2, FileText } from "lucide-react";
+import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench, Download, Play, Volume2, FileText, Trash2 } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
@@ -157,6 +157,7 @@ export default function UnifiedHealthCheck() {
   const [fixingRoomId, setFixingRoomId] = useState<string | null>(null);
   const [fixingAudioRoomId, setFixingAudioRoomId] = useState<string | null>(null);
   const [abortController, setAbortController] = useState<AbortController | null>(null);
+  const [phantomRooms, setPhantomRooms] = useState<{ id: string, title: string }[]>([]);
   
   // Kids room filtering state (for kids tiers only)
   const [selectedLevel, setSelectedLevel] = useState<string>("all");
@@ -501,6 +502,54 @@ export default function UnifiedHealthCheck() {
     });
   };
 
+  // Remove phantom rooms (rooms in DB with no JSON files)
+  const removePhantomRooms = async () => {
+    if (phantomRooms.length === 0) {
+      toast({
+        title: "No Phantom Rooms",
+        description: "Run a deep scan first to identify rooms without JSON files",
+      });
+      return;
+    }
+
+    const confirmed = window.confirm(
+      `This will permanently delete ${phantomRooms.length} rooms from the database that have no JSON files.\n\n` +
+      `First 10: ${phantomRooms.slice(0, 10).map(r => r.id).join(', ')}\n\n` +
+      `Are you sure?`
+    );
+
+    if (!confirmed) return;
+
+    console.log('🗑️ Removing', phantomRooms.length, 'phantom rooms...');
+    
+    try {
+      const { error } = await supabase
+        .from('rooms')
+        .delete()
+        .in('id', phantomRooms.map(r => r.id));
+
+      if (error) throw error;
+
+      toast({
+        title: "Phantom Rooms Removed",
+        description: `Successfully removed ${phantomRooms.length} rooms from database`,
+      });
+
+      setPhantomRooms([]);
+      setDeepScanResults([]);
+      
+      // Re-run quick scan to refresh counts
+      runQuickScan();
+    } catch (error: any) {
+      console.error('❌ Error removing phantom rooms:', error);
+      toast({
+        title: "Removal Failed",
+        description: error.message,
+        variant: "destructive"
+      });
+    }
+  };
+
   // Run deep scan for current tier
   const runDeepScan = async () => {
     console.log('🔍 Starting Deep Scan for tier:', selectedTier);
@@ -601,26 +650,37 @@ export default function UnifiedHealthCheck() {
       // Show results with failure count
       if (failedRooms.length > 0) {
         console.warn('⚠️ ROOMS MISSING JSON FILES:', failedRooms.length);
+        console.table(failedRooms.slice(0, 20).map(r => ({ ID: r.id, Title: r.title })));
+        
+        // Store phantom rooms for cleanup option
+        setPhantomRooms(failedRooms);
+        
+        // Store failed rooms for display
+        setDeepScanResults(failedRooms.map(r => ({
+          roomId: r.id,
+          roomTitle: r.title,
+          healthScore: 0,
+          issues: [`Missing JSON file at public/data/${r.id}.json`],
+          warnings: [],
+          entryCount: 0,
+          audioIssues: [],
+          entryMismatches: []
+        })));
         
         // Different message if NO rooms were successfully scanned
         if (reports.length === 0) {
           toast({
-            title: "No Rooms Scanned",
-            description: `${failedRooms.length} rooms in database are missing JSON files. Upload JSON files to public/data/ with exact room ID as filename (lowercase snake_case).`,
+            title: "Database Cleanup Needed",
+            description: `All ${failedRooms.length} rooms in database are missing JSON files. Check console for room list. Use "Remove Phantom Rooms" button below.`,
             variant: "destructive"
           });
         } else {
           toast({
-            title: "Deep Scan Complete with Missing Files",
-            description: `✅ ${reports.length} rooms scanned | ❌ ${failedRooms.length} rooms missing JSON files`,
+            title: "Deep Scan Complete",
+            description: `✅ ${reports.length} rooms scanned | ❌ ${failedRooms.length} rooms missing JSON files (check console)`,
             variant: "destructive"
           });
         }
-        
-        // Log summary without spam
-        console.warn(`⚠️ ${failedRooms.length} rooms missing JSON files. First 5:`, 
-          failedRooms.slice(0, 5).map(r => r.id).join(', ')
-        );
       } else {
         console.log('🎉 All rooms scanned successfully!');
         toast({
@@ -1980,6 +2040,16 @@ export default function UnifiedHealthCheck() {
               "Quick Scan"
             )}
           </Button>
+          {phantomRooms.length > 0 && !deepScanning && (
+            <Button
+              onClick={removePhantomRooms}
+              variant="destructive"
+              size="default"
+            >
+              <Trash2 className="h-4 w-4 mr-2" />
+              Remove {phantomRooms.length} Phantom Rooms
+            </Button>
+          )}
         </div>
       </div>
 
