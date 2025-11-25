@@ -469,10 +469,13 @@ export default function UnifiedHealthCheck() {
 
   // Run deep scan for current tier
   const runDeepScan = async () => {
+    console.log('🔍 Starting Deep Scan for tier:', selectedTier);
     setDeepScanning(true);
     setDeepScanResults([]);
+    setProgress(null);
     
     try {
+      console.log('📊 Querying rooms from database...');
       let query = supabase
         .from("rooms")
         .select("*")
@@ -480,17 +483,36 @@ export default function UnifiedHealthCheck() {
 
       if (selectedTier && !selectedTier.startsWith("kidslevel")) {
         query = query.ilike("tier", `%${selectedTier}%`);
+        console.log('🔎 Filtering by tier:', selectedTier);
       }
 
       const { data: rooms, error: roomsError } = await query;
-      if (roomsError) throw roomsError;
+      
+      if (roomsError) {
+        console.error('❌ Database query error:', roomsError);
+        throw roomsError;
+      }
+      
+      console.log('✅ Query successful. Found rooms:', rooms?.length || 0);
+      
+      if (!rooms || rooms.length === 0) {
+        console.warn('⚠️ No rooms found for tier:', selectedTier);
+        toast({
+          title: "No Rooms Found",
+          description: `No rooms found for tier: ${selectedTier}`,
+          variant: "destructive"
+        });
+        return;
+      }
 
+      console.log('🚀 Starting deep scan of', rooms.length, 'rooms');
       const reports: DeepRoomReport[] = [];
       const failedRooms: { id: string, title: string, error: string }[] = [];
-      const total = rooms?.length || 0;
+      const total = rooms.length;
 
       for (let i = 0; i < total; i++) {
-        const room = rooms![i];
+        const room = rooms[i];
+        console.log(`📝 Scanning room ${i + 1}/${total}:`, room.id, '-', room.title_en);
         setProgress({ current: i + 1, total, roomName: room.title_en });
 
         // Use strict canonical resolver - NO FALLBACKS
@@ -501,6 +523,7 @@ export default function UnifiedHealthCheck() {
           const { loadRoomJson, resolveRoomJsonPath } = await import('@/lib/roomJsonResolver');
           resolvedPath = await resolveRoomJsonPath(room.id || "");
           jsonData = await loadRoomJson(room.id || "");
+          console.log(`✅ Loaded JSON for ${room.id}:`, resolvedPath);
         } catch (error: any) {
           console.error(`❌ JSON LOAD FAILED for ${room.id}:`, error.message);
           failedRooms.push({
@@ -515,8 +538,9 @@ export default function UnifiedHealthCheck() {
         try {
           const report = await deepScanRoom(room, jsonData, resolvedPath);
           reports.push(report);
+          console.log(`✅ Deep scan complete for ${room.id}. Issues:`, report.summary.totalIssues);
         } catch (error) {
-          console.warn(`Skipping room ${room.id}: ${error instanceof Error ? error.message : "Unknown error"}`);
+          console.error(`❌ Deep scan failed for ${room.id}:`, error);
           failedRooms.push({
             id: room.id,
             title: room.title_en || room.id,
@@ -525,6 +549,7 @@ export default function UnifiedHealthCheck() {
         }
       }
 
+      console.log('✅ Deep scan loop complete. Successfully scanned:', reports.length, '| Failed:', failedRooms.length);
       setDeepScanResults(reports);
       
       // Show results with failure count
@@ -541,18 +566,21 @@ export default function UnifiedHealthCheck() {
           console.error(`\n❌ ROOM FAILED: ${id} (${title})\n   ${error}\n`);
         });
       } else {
+        console.log('🎉 All rooms scanned successfully!');
         toast({
           title: "Deep Scan Complete",
           description: `Scanned ${reports.length} rooms with detailed validation`,
         });
       }
     } catch (error: any) {
+      console.error('💥 Deep Scan Error:', error);
       toast({
         title: "Deep Scan Failed",
-        description: error.message,
+        description: error.message || 'Unknown error occurred',
         variant: "destructive"
       });
     } finally {
+      console.log('🏁 Cleaning up deep scan state');
       setDeepScanning(false);
       setProgress(null);
     }
