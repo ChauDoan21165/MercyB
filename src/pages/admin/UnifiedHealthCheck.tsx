@@ -600,17 +600,27 @@ export default function UnifiedHealthCheck() {
       
       // Show results with failure count
       if (failedRooms.length > 0) {
-        console.error('❌ FAILED ROOMS:', failedRooms);
-        toast({
-          title: "Deep Scan Complete with Errors",
-          description: `✅ ${reports.length} rooms scanned | ❌ ${failedRooms.length} rooms failed JSON validation`,
-          variant: "destructive"
-        });
+        console.warn('⚠️ ROOMS MISSING JSON FILES:', failedRooms.length);
         
-        // Log each failed room for debugging
-        failedRooms.forEach(({ id, title, error }) => {
-          console.error(`\n❌ ROOM FAILED: ${id} (${title})\n   ${error}\n`);
-        });
+        // Different message if NO rooms were successfully scanned
+        if (reports.length === 0) {
+          toast({
+            title: "No Rooms Scanned",
+            description: `${failedRooms.length} rooms in database are missing JSON files. Upload JSON files to public/data/ with exact room ID as filename (lowercase snake_case).`,
+            variant: "destructive"
+          });
+        } else {
+          toast({
+            title: "Deep Scan Complete with Missing Files",
+            description: `✅ ${reports.length} rooms scanned | ❌ ${failedRooms.length} rooms missing JSON files`,
+            variant: "destructive"
+          });
+        }
+        
+        // Log summary without spam
+        console.warn(`⚠️ ${failedRooms.length} rooms missing JSON files. First 5:`, 
+          failedRooms.slice(0, 5).map(r => r.id).join(', ')
+        );
       } else {
         console.log('🎉 All rooms scanned successfully!');
         toast({
