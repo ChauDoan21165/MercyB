@@ -18,7 +18,7 @@ interface RoomIssue {
   roomId: string;
   roomTitle: string;
   tier: string;
-  issueType: "missing_file" | "invalid_json" | "no_entries" | "missing_audio" | "locked" | "missing_entries" | "inactive" | "orphan_json" | "audio_unreachable" | "entry_mismatch";
+  issueType: "missing_file" | "invalid_json" | "no_entries" | "missing_audio" | "locked" | "missing_entries" | "inactive" | "orphan_json" | "audio_unreachable" | "entry_mismatch" | "audio_filename_mismatch";
   message: string;
   details?: string;
   resolvedPath?: string;
@@ -152,6 +152,8 @@ export default function UnifiedHealthCheck() {
   const [audioFixProgress, setAudioFixProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
   const [bulkFixingKeywords, setBulkFixingKeywords] = useState(false);
   const [keywordFixProgress, setKeywordFixProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
+  const [bulkFixingFilenames, setBulkFixingFilenames] = useState(false);
+  const [filenameFixProgress, setFilenameFixProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
   const [fixingRoomId, setFixingRoomId] = useState<string | null>(null);
   const [fixingAudioRoomId, setFixingAudioRoomId] = useState<string | null>(null);
   const [abortController, setAbortController] = useState<AbortController | null>(null);
@@ -374,6 +376,22 @@ export default function UnifiedHealthCheck() {
           details: result.error || `Status: ${result.status}`,
           audioFile: audioFile
         });
+      }
+      
+      // Check for _vip9_ pattern in VIP9 audio filenames (should be normalized)
+      if (room.tier && (room.tier.includes('VIP9') || room.tier === 'vip9')) {
+        if (audioFile.includes('_vip9_')) {
+          report.summary.audioIssues++;
+          report.issues.push({
+            roomId: room.id,
+            roomTitle: room.title_en,
+            tier: report.tier,
+            issueType: "audio_filename_mismatch",
+            message: `Audio filename contains "_vip9_" and needs normalization: ${audioFile}`,
+            details: `Should be: ${audioFile.replace(/_vip9_/g, '_')}`,
+            audioFile: audioFile
+          });
+        }
       }
     }
 
@@ -638,6 +656,102 @@ export default function UnifiedHealthCheck() {
     }
 
     return null;
+  };
+
+  // Bulk fix audio filename patterns (_vip9_ normalization)
+  const bulkFixAudioFilenames = async () => {
+    const roomsWithFilenameIssues = deepScanResults.filter(
+      report => report.issues.some(i => i.issueType === "audio_filename_mismatch")
+    );
+
+    if (roomsWithFilenameIssues.length === 0) {
+      toast({
+        title: "No Filename Issues Found",
+        description: "No rooms with audio filename issues to fix",
+      });
+      return;
+    }
+
+    setBulkFixingFilenames(true);
+    let successCount = 0;
+    let failCount = 0;
+
+    try {
+      for (let i = 0; i < roomsWithFilenameIssues.length; i++) {
+        const report = roomsWithFilenameIssues[i];
+        setFilenameFixProgress({
+          current: i + 1,
+          total: roomsWithFilenameIssues.length,
+          roomName: report.roomTitle
+        });
+
+        try {
+          // Normalize audio filenames by removing _vip9_
+          const { error } = await supabase.rpc('exec_sql', {
+            sql: `
+              UPDATE rooms SET entries = (
+                SELECT jsonb_agg(
+                  jsonb_set(entry, '{audio}', to_jsonb(
+                    regexp_replace(entry->>'audio', '_vip9_', '_', 'g')
+                  ))
+                )
+                FROM jsonb_array_elements(entries) AS entry
+              )
+              WHERE id = '${report.roomId}';
+            `
+          });
+
+          // Fallback if RPC doesn't work - use direct update
+          if (error) {
+            const { data: roomData, error: fetchError } = await supabase
+              .from('rooms')
+              .select('entries')
+              .eq('id', report.roomId)
+              .single();
+
+            if (fetchError || !roomData) {
+              failCount++;
+              continue;
+            }
+
+            const normalizedEntries = roomData.entries.map((entry: any) => ({
+              ...entry,
+              audio: entry.audio ? entry.audio.replace(/_vip9_/g, '_') : entry.audio
+            }));
+
+            const { error: updateError } = await supabase
+              .from('rooms')
+              .update({ entries: normalizedEntries })
+              .eq('id', report.roomId);
+
+            if (updateError) {
+              failCount++;
+            } else {
+              successCount++;
+            }
+          } else {
+            successCount++;
+          }
+        } catch (error: any) {
+          console.error(`Error fixing filenames for ${report.roomId}:`, error);
+          failCount++;
+        }
+      }
+
+      toast({
+        title: "Filename Fix Complete",
+        description: `Normalized audio filenames in ${successCount} rooms. ${failCount > 0 ? `${failCount} rooms failed.` : ''}`,
+        variant: failCount > 0 ? "default" : "default"
+      });
+
+      // Re-run deep scan to refresh results
+      if (successCount > 0) {
+        await runDeepScan();
+      }
+    } finally {
+      setBulkFixingFilenames(false);
+      setFilenameFixProgress(null);
+    }
   };
 
   // Bulk fix audio issues
@@ -1937,6 +2051,24 @@ export default function UnifiedHealthCheck() {
         </Card>
       )}
 
+      {bulkFixingFilenames && filenameFixProgress && (
+        <Card className="p-6 border-purple-500/50">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-muted-foreground">Normalizing audio filenames...</span>
+              <span className="font-medium">
+                {filenameFixProgress.current} / {filenameFixProgress.total}
+              </span>
+            </div>
+            <Progress value={(filenameFixProgress.current / filenameFixProgress.total) * 100} className="h-2" />
+            <div className="flex items-center gap-2 text-sm">
+              <Loader2 className="h-4 w-4 animate-spin text-purple-500" />
+              <span className="text-foreground">{filenameFixProgress.roomName}</span>
+            </div>
+          </div>
+        </Card>
+      )}
+
       {/* Unified Tier Selection */}
       <Card className="p-6">
         <div className="space-y-4">
@@ -2163,11 +2295,31 @@ export default function UnifiedHealthCheck() {
                   Comprehensive validation including audio files and entry matching
                 </p>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 flex-wrap">
+                {deepScanResults.some(r => r.issues.some(i => i.issueType === "audio_filename_mismatch")) && (
+                  <Button 
+                    onClick={bulkFixAudioFilenames} 
+                    disabled={bulkFixingFilenames || bulkFixingAudio || bulkFixing || bulkFixingKeywords}
+                    variant="default"
+                    className="bg-purple-600 hover:bg-purple-700"
+                  >
+                    {bulkFixingFilenames ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Normalizing...
+                      </>
+                    ) : (
+                      <>
+                        <FileEdit className="mr-2 h-4 w-4" />
+                        Bulk Fix Audio Filenames
+                      </>
+                    )}
+                  </Button>
+                )}
                 {deepScanResults.some(r => r.summary.audioIssues > 0) && (
                   <Button 
                     onClick={bulkFixAudioIssues} 
-                    disabled={bulkFixingAudio || bulkFixing || bulkFixingKeywords}
+                    disabled={bulkFixingAudio || bulkFixing || bulkFixingKeywords || bulkFixingFilenames}
                     variant="default"
                     className="bg-amber-600 hover:bg-amber-700"
                   >
@@ -2187,7 +2339,7 @@ export default function UnifiedHealthCheck() {
                 {deepScanResults.some(r => r.summary.entryIssues > 0) && (
                   <Button 
                     onClick={bulkFixEntryMismatches} 
-                    disabled={bulkFixing || bulkFixingAudio || bulkFixingKeywords}
+                    disabled={bulkFixing || bulkFixingAudio || bulkFixingKeywords || bulkFixingFilenames}
                     variant="default"
                     className="bg-green-600 hover:bg-green-700"
                   >
@@ -2207,7 +2359,7 @@ export default function UnifiedHealthCheck() {
                 {selectedTier === "vip9" && (
                   <Button 
                     onClick={bulkFixKeywords} 
-                    disabled={bulkFixing || bulkFixingAudio || bulkFixingKeywords}
+                    disabled={bulkFixing || bulkFixingAudio || bulkFixingKeywords || bulkFixingFilenames}
                     variant="default"
                     className="bg-blue-600 hover:bg-blue-700"
                   >
