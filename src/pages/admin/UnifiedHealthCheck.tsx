@@ -150,6 +150,8 @@ export default function UnifiedHealthCheck() {
   const [bulkFixProgress, setBulkFixProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
   const [bulkFixingAudio, setBulkFixingAudio] = useState(false);
   const [audioFixProgress, setAudioFixProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
+  const [bulkFixingKeywords, setBulkFixingKeywords] = useState(false);
+  const [keywordFixProgress, setKeywordFixProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
   const [fixingRoomId, setFixingRoomId] = useState<string | null>(null);
   const [fixingAudioRoomId, setFixingAudioRoomId] = useState<string | null>(null);
   
@@ -791,6 +793,139 @@ export default function UnifiedHealthCheck() {
     } finally {
       setBulkFixing(false);
       setBulkFixProgress(null);
+    }
+  };
+
+  // Bulk fix missing keywords for VIP9 rooms
+  const bulkFixKeywords = async () => {
+    setBulkFixingKeywords(true);
+    let successCount = 0;
+    let failCount = 0;
+
+    try {
+      // Query VIP9 rooms with empty keywords
+      const { data: rooms, error: roomsError } = await supabase
+        .from('rooms')
+        .select('id, title_en, keywords, tier')
+        .ilike('tier', '%vip9%')
+        .or('keywords.is.null,keywords.eq.{}');
+
+      if (roomsError) throw roomsError;
+
+      if (!rooms || rooms.length === 0) {
+        toast({
+          title: "No Issues Found",
+          description: "All VIP9 rooms have keywords populated",
+        });
+        return;
+      }
+
+      const roomsNeedingFix = rooms.filter(r => !r.keywords || r.keywords.length === 0);
+
+      if (roomsNeedingFix.length === 0) {
+        toast({
+          title: "No Issues Found",
+          description: "All VIP9 rooms have keywords populated",
+        });
+        return;
+      }
+
+      for (let i = 0; i < roomsNeedingFix.length; i++) {
+        const room = roomsNeedingFix[i];
+        setKeywordFixProgress({
+          current: i + 1,
+          total: roomsNeedingFix.length,
+          roomName: room.title_en
+        });
+
+        try {
+          // Try to load JSON file using canonical path
+          const response = await fetch(`/data/${room.id}.json`);
+          if (!response.ok) {
+            console.error(`Failed to load JSON for ${room.id}`);
+            failCount++;
+            continue;
+          }
+
+          const contentType = response.headers.get('content-type');
+          if (!contentType || !contentType.includes('application/json')) {
+            console.warn(`Skipping ${room.id}: Response is not JSON`);
+            failCount++;
+            continue;
+          }
+
+          const jsonData = await response.json();
+          
+          // Extract keywords from JSON
+          let keywords: string[] = [];
+          
+          // Check for keywords in various possible locations
+          if (jsonData.keywords) {
+            if (Array.isArray(jsonData.keywords)) {
+              keywords = jsonData.keywords;
+            } else if (typeof jsonData.keywords === 'object') {
+              // Handle bilingual keywords {en: [], vi: []}
+              keywords = [...(jsonData.keywords.en || []), ...(jsonData.keywords.vi || [])];
+            }
+          }
+          
+          // Also check entries for keywords
+          if (jsonData.entries && Array.isArray(jsonData.entries)) {
+            jsonData.entries.forEach((entry: any) => {
+              if (entry.keywords_en) keywords.push(...entry.keywords_en);
+              if (entry.keywords_vi) keywords.push(...entry.keywords_vi);
+              if (entry.keywords && Array.isArray(entry.keywords)) {
+                keywords.push(...entry.keywords);
+              }
+            });
+          }
+
+          // Deduplicate
+          keywords = [...new Set(keywords)];
+
+          if (keywords.length === 0) {
+            console.warn(`No keywords found in JSON for ${room.id}`);
+            failCount++;
+            continue;
+          }
+
+          // Update database
+          const { error } = await supabase
+            .from('rooms')
+            .update({ keywords })
+            .eq('id', room.id);
+
+          if (error) {
+            console.error(`Failed to update ${room.id}:`, error);
+            failCount++;
+          } else {
+            console.log(`✅ Updated ${room.id} with ${keywords.length} keywords`);
+            successCount++;
+          }
+        } catch (error: any) {
+          console.error(`Error fixing ${room.id}:`, error);
+          failCount++;
+        }
+      }
+
+      toast({
+        title: "Keyword Fix Complete",
+        description: `Updated ${successCount} rooms with keywords. ${failCount > 0 ? `${failCount} rooms failed.` : ''}`,
+      });
+
+      // Refresh the page data
+      if (successCount > 0) {
+        checkRooms();
+      }
+    } catch (error: any) {
+      toast({
+        title: "Keyword Fix Failed",
+        description: error.message,
+        variant: "destructive"
+      });
+    } finally {
+      setBulkFixingKeywords(false);
+      setKeywordFixProgress(null);
     }
   };
 
@@ -1727,6 +1862,24 @@ export default function UnifiedHealthCheck() {
         </Card>
       )}
 
+      {bulkFixingKeywords && keywordFixProgress && (
+        <Card className="p-6 border-blue-500/50">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-muted-foreground">Populating keywords from JSON...</span>
+              <span className="font-medium">
+                {keywordFixProgress.current} / {keywordFixProgress.total}
+              </span>
+            </div>
+            <Progress value={(keywordFixProgress.current / keywordFixProgress.total) * 100} className="h-2" />
+            <div className="flex items-center gap-2 text-sm">
+              <Loader2 className="h-4 w-4 animate-spin text-blue-500" />
+              <span className="text-foreground">{keywordFixProgress.roomName}</span>
+            </div>
+          </div>
+        </Card>
+      )}
+
       {/* Unified Tier Selection */}
       <Card className="p-6">
         <div className="space-y-4">
@@ -1957,7 +2110,7 @@ export default function UnifiedHealthCheck() {
                 {deepScanResults.some(r => r.summary.audioIssues > 0) && (
                   <Button 
                     onClick={bulkFixAudioIssues} 
-                    disabled={bulkFixingAudio || bulkFixing}
+                    disabled={bulkFixingAudio || bulkFixing || bulkFixingKeywords}
                     variant="default"
                     className="bg-amber-600 hover:bg-amber-700"
                   >
@@ -1977,7 +2130,7 @@ export default function UnifiedHealthCheck() {
                 {deepScanResults.some(r => r.summary.entryIssues > 0) && (
                   <Button 
                     onClick={bulkFixEntryMismatches} 
-                    disabled={bulkFixing || bulkFixingAudio}
+                    disabled={bulkFixing || bulkFixingAudio || bulkFixingKeywords}
                     variant="default"
                     className="bg-green-600 hover:bg-green-700"
                   >
@@ -1990,6 +2143,26 @@ export default function UnifiedHealthCheck() {
                       <>
                         <Wrench className="mr-2 h-4 w-4" />
                         Bulk Fix Entry Mismatches
+                      </>
+                    )}
+                  </Button>
+                )}
+                {selectedTier === "vip9" && (
+                  <Button 
+                    onClick={bulkFixKeywords} 
+                    disabled={bulkFixing || bulkFixingAudio || bulkFixingKeywords}
+                    variant="default"
+                    className="bg-blue-600 hover:bg-blue-700"
+                  >
+                    {bulkFixingKeywords ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Fixing Keywords...
+                      </>
+                    ) : (
+                      <>
+                        <FileText className="mr-2 h-4 w-4" />
+                        Bulk Fix VIP9 Keywords
                       </>
                     )}
                   </Button>
