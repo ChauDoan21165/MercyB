@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import { AdminFloatingButton } from "@/components/AdminFloatingButton";
 import { ZoomControl } from "@/components/ZoomControl";
+import { LowDataModeProvider } from "@/contexts/LowDataModeContext";
 
 import Welcome from "./pages/Welcome";
 import Homepage from "./pages/Homepage";
@@ -105,10 +106,11 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
+        <LowDataModeProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
         <AdminFloatingButton />
         <ZoomControl />
         <Routes>
@@ -178,7 +180,8 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
         </BrowserRouter>
-      </TooltipProvider>
+          </TooltipProvider>
+        </LowDataModeProvider>
     </ThemeProvider>
   </QueryClientProvider>
   );
