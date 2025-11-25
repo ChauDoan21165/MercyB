@@ -146,6 +146,7 @@ export default function UnifiedHealthCheck() {
   const [progress, setProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
   const [deepScanResults, setDeepScanResults] = useState<DeepRoomReport[]>([]);
   const [deepScanning, setDeepScanning] = useState(false);
+  const [currentScanningFile, setCurrentScanningFile] = useState<string | null>(null);
   const [bulkFixing, setBulkFixing] = useState(false);
   const [bulkFixProgress, setBulkFixProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
   const [bulkFixingAudio, setBulkFixingAudio] = useState(false);
@@ -640,6 +641,7 @@ export default function UnifiedHealthCheck() {
         const room = rooms[i];
         console.log(`📝 Scanning room ${i + 1}/${total}:`, room.id, '-', room.title_en);
         setProgress({ current: i + 1, total, roomName: room.title_en });
+        setCurrentScanningFile(`${room.id}.json`);
 
         // Use strict canonical resolver - NO FALLBACKS
         let jsonData: any = null;
@@ -666,6 +668,9 @@ export default function UnifiedHealthCheck() {
           const report = await deepScanRoom(room, jsonData, resolvedPath);
           reports.push(report);
           console.log(`✅ Deep scan complete for ${room.id}. Issues:`, report.summary.totalIssues);
+          
+          // Update results incrementally for real-time display
+          setDeepScanResults(prev => [...prev, report]);
         } catch (error) {
           console.error(`❌ Deep scan failed for ${room.id}:`, error);
           failedRooms.push({
@@ -709,8 +714,8 @@ export default function UnifiedHealthCheck() {
           }]
         }));
         
-        // Combine successful and failed scans for display
-        setDeepScanResults([...reports, ...phantomReports]);
+        // Combine successful and failed scans for display (incremental update)
+        setDeepScanResults(prev => [...prev, ...phantomReports]);
         
         // Different message if NO rooms were successfully scanned
         if (reports.length === 0) {
@@ -745,6 +750,7 @@ export default function UnifiedHealthCheck() {
       console.log('🏁 Cleaning up deep scan state');
       setDeepScanning(false);
       setProgress(null);
+      setCurrentScanningFile(null);
       setAbortController(null);
     }
   };
@@ -2114,7 +2120,29 @@ export default function UnifiedHealthCheck() {
         </Alert>
       )}
 
-      {loading && progress && (
+      {deepScanning && progress && (
+        <Card className="p-6 border-blue-500/50 bg-blue-50/30">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between text-sm">
+              <span className="font-medium text-blue-900">Deep Scan in Progress...</span>
+              <span className="font-medium text-blue-700">
+                {progress.current} / {progress.total}
+              </span>
+            </div>
+            <Progress value={(progress.current / progress.total) * 100} className="h-2" />
+            {currentScanningFile && (
+              <div className="flex items-center gap-2 text-sm">
+                <Loader2 className="h-4 w-4 animate-spin text-blue-600" />
+                <span className="text-blue-900 font-mono">{currentScanningFile}</span>
+                <span className="text-blue-600">→</span>
+                <span className="text-blue-700">{progress.roomName}</span>
+              </div>
+            )}
+          </div>
+        </Card>
+      )}
+
+      {loading && progress && !deepScanning && (
         <Card className="p-6">
           <div className="space-y-3">
             <div className="flex items-center justify-between text-sm">
