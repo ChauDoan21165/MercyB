@@ -215,10 +215,40 @@ const AppMetrics = () => {
     );
   }
 
-  const pieData = Object.entries(metrics.infrastructure.roomsByTier).map(([tier, count]) => ({
-    name: tier.toUpperCase(),
+  // Normalize tier names to handle variations like "VIP 1", "VIP1", "VIP 4 / CẤP VIP 4", etc.
+  const normalizeTierName = (tier: string): string => {
+    const tierUpper = tier.toUpperCase();
+    
+    // Handle kids rooms
+    if (tierUpper.includes('KIDS') || tierUpper.includes('TRẺ EM')) {
+      return 'KIDS';
+    }
+    
+    // Handle FREE
+    if (tierUpper.includes('FREE') || tierUpper === 'FREEVIP3') {
+      return 'FREE';
+    }
+    
+    // Handle VIP tiers - extract the number
+    const vipMatch = tierUpper.match(/VIP\s*(\d+)/);
+    if (vipMatch) {
+      return `VIP${vipMatch[1]}`;
+    }
+    
+    return tierUpper;
+  };
+
+  // Group rooms by normalized tier names
+  const normalizedTiers = Object.entries(metrics.infrastructure.roomsByTier).reduce((acc, [tier, count]) => {
+    const normalized = normalizeTierName(tier);
+    acc[normalized] = (acc[normalized] || 0) + count;
+    return acc;
+  }, {} as Record<string, number>);
+
+  const pieData = Object.entries(normalizedTiers).map(([tier, count]) => ({
+    name: tier,
     value: count,
-    color: TIER_COLORS[tier as keyof typeof TIER_COLORS] || '#6b7280',
+    color: TIER_COLORS[tier.toLowerCase() as keyof typeof TIER_COLORS] || '#6b7280',
   }));
 
   const formatHistoricalData = () => {
@@ -498,8 +528,8 @@ const AppMetrics = () => {
                     cx="50%"
                     cy="50%"
                     labelLine={false}
-                    label={(entry) => `${entry.name}: ${entry.value}`}
-                    outerRadius={80}
+                    label={false}
+                    outerRadius={90}
                     fill="#8884d8"
                     dataKey="value"
                   >
@@ -507,8 +537,20 @@ const AppMetrics = () => {
                       <Cell key={`cell-${index}`} fill={entry.color} />
                     ))}
                   </Pie>
-                  <Tooltip />
-                  <Legend />
+                  <Tooltip 
+                    formatter={(value: number, name: string, props: any) => [
+                      `${value} rooms`,
+                      props.payload.name
+                    ]}
+                  />
+                  <Legend 
+                    verticalAlign="bottom" 
+                    height={36}
+                    formatter={(value) => {
+                      const entry = pieData.find(d => d.name === value);
+                      return `${value} (${entry?.value || 0})`;
+                    }}
+                  />
                 </PieChart>
               </ResponsiveContainer>
             </CardContent>
