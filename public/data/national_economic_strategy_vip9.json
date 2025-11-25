@@ -1,0 +1,103 @@
+{
+  "id": "national_economic_strategy_vip9",
+  "tier": "VIP9 / Cấp VIP9",
+  "domain": "National",
+  "title": {
+    "en": "National Economic Strategy",
+    "vi": "Chiến Lược Kinh Tế Quốc Gia"
+  },
+  "content": {
+    "en": "This room develops national economic strategy—how countries design long-term growth, competitiveness, and resilience in a world of shifting technology, demographics, and geopolitics. You will learn productivity engines, industrial policy, macro-stability, trade architecture, innovation systems, human-capital strategy, and inclusive development. A strong national economic strategy aligns vision with capability, balances efficiency with equity, and builds durable advantages that compound across generations.",
+    "vi": "Phòng này phát triển chiến lược kinh tế quốc gia—cách các nước thiết kế tăng trưởng dài hạn, năng lực cạnh tranh và khả năng chống chịu trong bối cảnh công nghệ, nhân khẩu và địa chính trị thay đổi liên tục. Bạn sẽ học các động cơ năng suất, chính sách công nghiệp, ổn định vĩ mô, kiến trúc thương mại, hệ thống đổi mới, chiến lược vốn con người và phát triển bao trùm. Chiến lược kinh tế quốc gia mạnh là sự căn chỉnh giữa tầm nhìn và năng lực, giữa hiệu quả và công bằng, và là nền tảng tạo lợi thế bền vững cho nhiều thế hệ."
+  },
+  "entries": [
+    {
+      "slug": "productivity-engines-and-growth-models",
+      "keywords_en": ["productivity engines", "growth models", "structural reform", "competitiveness", "long-term growth"],
+      "keywords_vi": ["động cơ năng suất", "mô hình tăng trưởng", "cải cách cấu trúc", "cạnh tranh", "tăng trưởng dài hạn"],
+      "copy": {
+        "en": "Productivity engines and growth models define how a nation generates sustainable expansion. Engines include labor productivity, capital efficiency, technology adoption, infrastructure quality, and institutional performance. Growth models may be export-led, domestic-consumption-led, innovation-driven, or resource-anchored, but must evolve as the economy matures. Principles: raise total factor productivity, upgrade value chains, and remove bottlenecks in regulations, logistics, and skills. Examples: South Korea’s shift from imitation to innovation, China’s transition toward higher-value manufacturing and services, and Singapore’s productivity-through-governance model. Pitfalls include dependence on low-wage advantages, credit-fuelled growth without reform, or ignoring demographic constraints. Strategically, productivity-first growth keeps nations competitive even when external conditions change.",
+        "vi": "Động cơ năng suất và mô hình tăng trưởng xác định cách quốc gia tạo ra mở rộng bền vững. Động cơ gồm năng suất lao động, hiệu quả vốn, mức độ hấp thụ công nghệ, chất lượng hạ tầng và hiệu suất thể chế. Mô hình tăng trưởng có thể dựa vào xuất khẩu, tiêu dùng nội địa, đổi mới hay tài nguyên, nhưng phải tiến hóa theo mức trưởng thành của nền kinh tế. Nguyên tắc: nâng năng suất nhân tố tổng hợp, nâng cấp chuỗi giá trị và tháo gỡ nút thắt về quy định, logistics và kỹ năng. Ví dụ: Hàn Quốc chuyển từ bắt chước sang đổi mới, Trung Quốc chuyển sang sản xuất–dịch vụ giá trị cao, hay Singapore nâng năng suất nhờ quản trị mạnh. Hố bẫy gồm phụ thuộc lợi thế lương thấp, tăng trưởng dựa vào tín dụng nhưng thiếu cải cách hoặc bỏ qua ràng buộc nhân khẩu. Về chiến lược, tăng trưởng lấy năng suất làm trung tâm giúp quốc gia cạnh tranh lâu dài dù điều kiện bên ngoài đổi thay."
+      },
+      "tags": ["productivity", "growth", "models"],
+      "audio": "national_economic_strategy_1_en.mp3"
+    },
+    {
+      "slug": "industrial-policy-and-sector-prioritization",
+      "keywords_en": ["industrial policy", "sector prioritization", "value chains", "strategic industries", "upgrade"],
+      "keywords_vi": ["chính sách công nghiệp", "ưu tiên ngành", "chuỗi giá trị", "ngành chiến lược", "nâng cấp"],
+      "copy": {
+        "en": "Industrial policy and sector prioritization guide where a nation concentrates capital, talent, and incentives to build strategic advantage. Priority sectors often include advanced manufacturing, semiconductors, green energy, agri-tech, digital services, logistics hubs, or defense industries. Principles: choose sectors with scale potential, spillover benefits, and realistic capability pathways; use time-bound incentives; and link subsidies to performance. Examples: Taiwan’s semiconductor ecosystem, Germany’s Mittelstand manufacturing depth, and Vietnam’s push toward higher-value electronics and green supply chains. Pitfalls include picking too many sectors, protecting uncompetitive firms, or policy capture by special interests. Strategically, disciplined industrial policy upgrades national position in global value chains.",
+        "vi": "Chính sách công nghiệp và ưu tiên ngành định hướng nơi quốc gia tập trung vốn, nhân lực và ưu đãi để tạo lợi thế chiến lược. Ngành ưu tiên thường gồm sản xuất tiên tiến, bán dẫn, năng lượng xanh, nông nghiệp công nghệ cao, dịch vụ số, trung tâm logistics hoặc công nghiệp quốc phòng. Nguyên tắc: chọn ngành có tiềm năng quy mô, hiệu ứng lan tỏa và lộ trình năng lực khả thi; ưu đãi có thời hạn; gắn trợ cấp với hiệu suất. Ví dụ: hệ sinh thái bán dẫn Đài Loan, chiều sâu sản xuất Mittelstand của Đức, hay Việt Nam đẩy mạnh điện tử giá trị cao và chuỗi cung ứng xanh. Hố bẫy gồm trải ưu tiên quá nhiều ngành, bảo hộ doanh nghiệp kém cạnh tranh hoặc chính sách bị chi phối lợi ích nhóm. Về chiến lược, chính sách công nghiệp có kỷ luật giúp nâng vị thế quốc gia trong chuỗi giá trị toàn cầu."
+      },
+      "tags": ["industrial-policy", "sectors", "competitiveness"],
+      "audio": "national_economic_strategy_2_en.mp3"
+    },
+    {
+      "slug": "macro-stability-and-fiscal-monetary-architecture",
+      "keywords_en": ["macro stability", "fiscal policy", "monetary policy", "inflation", "debt management"],
+      "keywords_vi": ["ổn định vĩ mô", "chính sách tài khóa", "chính sách tiền tệ", "lạm phát", "quản lý nợ"],
+      "copy": {
+        "en": "Macro-stability and fiscal-monetary architecture keep growth durable by controlling inflation, debt, and external shocks. Fiscal strategy covers tax design, public investment, deficit management, and counter-cyclical buffers. Monetary strategy sets credit conditions, exchange-rate stance, and financial stability tools. Principles: credibility, transparency, long-cycle investment discipline, and shock absorption through reserves and buffers. Examples: Chile’s fiscal rule for commodity cycles, the EU’s stability frameworks, and Vietnam’s careful monetary-fiscal balancing during volatility. Pitfalls include pro-cyclical spending, hidden liabilities, excessive credit booms, or politicized central banking. Strategically, macro-stability is the platform upon which industrial upgrading and social welfare can safely scale.",
+        "vi": "Ổn định vĩ mô và kiến trúc tài khóa–tiền tệ giúp tăng trưởng bền vững bằng cách kiểm soát lạm phát, nợ và cú sốc bên ngoài. Chiến lược tài khóa gồm thiết kế thuế, đầu tư công, quản lý thâm hụt và bộ đệm chống chu kỳ. Chiến lược tiền tệ điều chỉnh tín dụng, định hướng tỷ giá và công cụ ổn định tài chính. Nguyên tắc: uy tín, minh bạch, kỷ luật đầu tư chu kỳ dài và khả năng hấp thụ cú sốc nhờ dự trữ–bộ đệm. Ví dụ: quy tắc tài khóa của Chile cho chu kỳ hàng hóa, khung ổn định của EU, hay Việt Nam cân bằng tài khóa–tiền tệ thận trọng trong biến động. Hố bẫy gồm chi tiêu thuận chu kỳ, nợ tiềm ẩn, bùng nổ tín dụng quá mức hoặc ngân hàng trung ương bị chính trị hóa. Về chiến lược, ổn định vĩ mô là nền tảng để nâng cấp công nghiệp và phúc lợi xã hội mở rộng an toàn."
+      },
+      "tags": ["macro", "stability", "policy"],
+      "audio": "national_economic_strategy_3_en.mp3"
+    },
+    {
+      "slug": "trade-architecture-and-global-integration",
+      "keywords_en": ["trade architecture", "global integration", "FTAs", "export strategy", "supply chains"],
+      "keywords_vi": ["kiến trúc thương mại", "hội nhập toàn cầu", "FTA", "chiến lược xuất khẩu", "chuỗi cung ứng"],
+      "copy": {
+        "en": "Trade architecture and global integration shape how a nation connects to markets, technology, and capital flows. Tools include FTAs, tariff strategy, standards diplomacy, logistics corridors, and export-promotion systems. Principles: diversify partners, climb value chains, protect strategic sectors without isolating the economy, and build trusted regulatory quality. Examples: Vietnam’s CPTPP/EVFTA-enabled export leap, the Netherlands’ logistics gateway model, and Korea’s export-industry coordination. Pitfalls include overdependence on a single market, low-value assembly traps, or weak standards that block upgrading. Strategically, smart trade architecture turns globalization into national advantage while preserving sovereignty.",
+        "vi": "Kiến trúc thương mại và hội nhập toàn cầu quyết định cách quốc gia kết nối với thị trường, công nghệ và dòng vốn. Công cụ gồm FTA, chiến lược thuế quan, ngoại giao tiêu chuẩn, hành lang logistics và hệ thống xúc tiến xuất khẩu. Nguyên tắc: đa dạng đối tác, leo lên chuỗi giá trị, bảo vệ ngành chiến lược mà không tự cô lập và xây chất lượng điều tiết đáng tin cậy. Ví dụ: Việt Nam bứt phá xuất khẩu nhờ CPTPP/EVFTA, Hà Lan trở thành cửa ngõ logistics, hay Hàn Quốc phối hợp xuất khẩu–công nghiệp. Hố bẫy gồm phụ thuộc một thị trường, kẹt ở bẫy gia công giá trị thấp hoặc tiêu chuẩn yếu khiến khó nâng cấp. Về chiến lược, kiến trúc thương mại thông minh biến toàn cầu hóa thành lợi thế quốc gia nhưng vẫn giữ chủ quyền."
+      },
+      "tags": ["trade", "integration", "exports"],
+      "audio": "national_economic_strategy_4_en.mp3"
+    },
+    {
+      "slug": "innovation-systems-and-technology-sovereignty",
+      "keywords_en": ["innovation systems", "R&D", "technology sovereignty", "ecosystems", "commercialization"],
+      "keywords_vi": ["hệ thống đổi mới", "R&D", "chủ quyền công nghệ", "hệ sinh thái", "thương mại hóa"],
+      "copy": {
+        "en": "Innovation systems and technology sovereignty determine whether a nation can create, absorb, and scale frontier technologies. Systems include universities, research institutes, venture funding, startup pipelines, IP protection, and industry–academia collaboration. Principles: focus on mission-driven national priorities, build clusters, incentivize commercialization, and attract global talent while anchoring key IP domestically. Examples: Israel’s startup-driven innovation, Korea’s applied R&D pipeline, and China’s strategic tech missions. Pitfalls include fragmented funding, weak IP enforcement, brain drain, or research disconnected from industry needs. Strategically, innovation sovereignty is the engine of future competitiveness and national autonomy.",
+        "vi": "Hệ thống đổi mới và chủ quyền công nghệ quyết định quốc gia có thể tạo ra, hấp thụ và mở rộng công nghệ mũi nhọn hay không. Hệ thống gồm đại học, viện nghiên cứu, vốn mạo hiểm, pipeline startup, bảo hộ IP và hợp tác viện–doanh nghiệp. Nguyên tắc: tập trung ưu tiên quốc gia theo sứ mệnh, xây cụm đổi mới, khuyến khích thương mại hóa và thu hút tài năng toàn cầu nhưng giữ IP then chốt trong nước. Ví dụ: Israel với đổi mới dựa trên startup, Hàn Quốc với pipeline R&D ứng dụng, hay Trung Quốc với các sứ mệnh công nghệ chiến lược. Hố bẫy gồm tài trợ phân mảnh, thực thi IP yếu, chảy máu chất xám hoặc nghiên cứu tách rời nhu cầu công nghiệp. Về chiến lược, chủ quyền đổi mới là động cơ cạnh tranh tương lai và tự chủ quốc gia."
+      },
+      "tags": ["innovation", "technology", "sovereignty"],
+      "audio": "national_economic_strategy_5_en.mp3"
+    },
+    {
+      "slug": "human-capital-and-demographic-strategy",
+      "keywords_en": ["human capital", "demographics", "education", "skills", "labor strategy"],
+      "keywords_vi": ["vốn con người", "nhân khẩu", "giáo dục", "kỹ năng", "chiến lược lao động"],
+      "copy": {
+        "en": "Human-capital and demographic strategy align education, skills, health, and labor policies with long-term economic goals. Priorities include early-childhood investment, STEM and vocational pathways, lifelong learning, migration design, and healthy-aging systems. Principles: skill-to-industry alignment, equity of access, and adaptive reskilling for automation. Examples: Finland’s education reforms, Germany’s dual vocational model, and Singapore’s SkillsFuture system. Pitfalls include mismatch between training and jobs, regional inequality, or ignoring aging and fertility trends. Strategically, human capital is the most compounding asset in national growth.",
+        "vi": "Chiến lược vốn con người và nhân khẩu căn chỉnh giáo dục, kỹ năng, y tế và chính sách lao động với mục tiêu kinh tế dài hạn. Ưu tiên gồm đầu tư tuổi thơ, lộ trình STEM–nghề, học tập suốt đời, thiết kế nhập cư và hệ thống già hóa khỏe mạnh. Nguyên tắc: căn chỉnh kỹ năng với ngành, công bằng tiếp cận và tái kỹ năng linh hoạt trước tự động hóa. Ví dụ: cải cách giáo dục Phần Lan, mô hình nghề kép của Đức, hay SkillsFuture của Singapore. Hố bẫy gồm đào tạo lệch nhu cầu việc làm, bất bình đẳng vùng miền hoặc bỏ qua xu hướng già hóa–sinh suất. Về chiến lược, vốn con người là tài sản tăng trưởng có sức cộng dồn mạnh nhất."
+      },
+      "tags": ["human-capital", "education", "demographics"],
+      "audio": "national_economic_strategy_6_en.mp3"
+    },
+    {
+      "slug": "inclusive-growth-and-social-contracts",
+      "keywords_en": ["inclusive growth", "social contract", "inequality", "poverty reduction", "shared prosperity"],
+      "keywords_vi": ["tăng trưởng bao trùm", "khế ước xã hội", "bất bình đẳng", "giảm nghèo", "thịnh vượng chung"],
+      "copy": {
+        "en": "Inclusive growth and social contracts ensure prosperity is broad-based and socially sustainable. Policies include progressive taxation, targeted transfers, universal basic services, rural development, and mobility pathways for disadvantaged groups. Principles: protect dignity, reward effort, reduce structural barriers, and maintain fiscal sustainability. Examples: Nordic welfare-growth balance, Vietnam’s poverty-reduction trajectory, and conditional cash transfer systems in Latin America. Pitfalls include populist spending without productivity, elite capture, or neglecting rural–urban divides. Strategically, inclusion reduces instability and strengthens national cohesion, which in turn supports long-term competitiveness.",
+        "vi": "Tăng trưởng bao trùm và khế ước xã hội bảo đảm thịnh vượng được chia sẻ rộng rãi và bền vững về mặt xã hội. Chính sách gồm thuế lũy tiến, trợ cấp mục tiêu, dịch vụ cơ bản phổ quát, phát triển nông thôn và lộ trình nâng đỡ nhóm yếu thế. Nguyên tắc: bảo vệ phẩm giá, khuyến khích nỗ lực, giảm rào cản cấu trúc và giữ bền vững tài khóa. Ví dụ: cân bằng phúc lợi–tăng trưởng Bắc Âu, hành trình giảm nghèo của Việt Nam, hay trợ cấp có điều kiện ở Mỹ Latin. Hố bẫy gồm chi tiêu dân túy không đi kèm năng suất, lợi ích nhóm chi phối hoặc bỏ quên khoảng cách nông thôn–thành thị. Về chiến lược, bao trùm giảm bất ổn và tăng cố kết, từ đó hỗ trợ năng lực cạnh tranh dài hạn."
+      },
+      "tags": ["inclusive", "growth", "social"],
+      "audio": "national_economic_strategy_7_en.mp3"
+    },
+    {
+      "slug": "economic-resilience-and-shock-absorption",
+      "keywords_en": ["economic resilience", "shock absorption", "buffers", "supply security", "continuity"],
+      "keywords_vi": ["chống chịu kinh tế", "hấp thụ cú sốc", "bộ đệm", "an ninh nguồn cung", "liên tục"],
+      "copy": {
+        "en": "Economic resilience and shock absorption protect nations from crises—financial shocks, pandemics, commodity spikes, supply-chain breaks, or geopolitical disruptions. Tools include strategic reserves, diversified trade, contingency budgets, macro-prudential regulation, and rapid-deployment social safety nets. Principles: prepare early, test systems, decentralize response capacity, and learn fast. Examples: Taiwan’s supply-chain resilience, Singapore’s crisis fiscal buffers, and Korea’s rapid industrial pivoting. Pitfalls include complacency in good times, fragile single-point dependencies, or slow institutional response. Strategically, resilience keeps development on track even under extreme uncertainty.",
+        "vi": "Chống chịu kinh tế và hấp thụ cú sốc giúp quốc gia vượt qua khủng hoảng—tài chính, dịch bệnh, cú sốc hàng hóa, đứt gãy chuỗi cung ứng hay gián đoạn địa chính trị. Công cụ gồm dự trữ chiến lược, thương mại đa dạng, ngân sách dự phòng, quy định vĩ mô-thận trọng và mạng lưới an sinh triển khai nhanh. Nguyên tắc: chuẩn bị sớm, kiểm tra hệ thống, phân quyền năng lực phản ứng và học nhanh sau khủng hoảng. Ví dụ: khả năng chống đứt gãy chuỗi cung ứng của Đài Loan, bộ đệm tài khóa khủng hoảng của Singapore hay Hàn Quốc xoay trục công nghiệp nhanh. Hố bẫy gồm tự mãn khi thuận lợi, phụ thuộc điểm đơn lẻ dễ gãy hoặc phản ứng thể chế chậm. Về chiến lược, chống chịu giúp phát triển không trật quỹ đạo dù bất định cực lớn."
+      },
+      "tags": ["resilience", "shocks", "economy"],
+      "audio": "national_economic_strategy_8_en.mp3"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "id": "national_energy_security_vip9",
+  "tier": "VIP9 / Cấp VIP9",
+  "domain": "National",
+  "title": {
+    "en": "National Energy Security",
+    "vi": "An Ninh Năng Lượng Quốc Gia"
+  },
+  "content": {
+    "en": "This room establishes the strategic pillars of national energy security—how nations ensure stable, affordable, and resilient access to energy across geopolitical shifts, technological transitions, and environmental constraints. You will learn energy-mix strategy, supply diversification, infrastructure resilience, grid modernization, storage systems, long-cycle planning, and crisis preparedness. Energy security is not only about supply; it is about sovereignty, economic competitiveness, and national stability. Countries that master this domain gain strategic autonomy, investment magnetism, and geopolitical leverage.",
+    "vi": "Phòng này xây dựng các trụ cột chiến lược của an ninh năng lượng quốc gia—cách các quốc gia đảm bảo nguồn năng lượng ổn định, giá phải chăng và bền vững giữa biến động địa chính trị, chuyển đổi công nghệ và giới hạn môi trường. Bạn sẽ học chiến lược cơ cấu năng lượng, đa dạng hóa nguồn cung, khả năng chống chịu của hạ tầng, hiện đại hóa lưới điện, hệ thống lưu trữ, hoạch định chu kỳ dài và ứng phó khủng hoảng. An ninh năng lượng không chỉ là nguồn cung mà còn là chủ quyền, năng lực cạnh tranh và ổn định quốc gia. Quốc gia làm chủ lĩnh vực này sở hữu tự chủ chiến lược, thu hút đầu tư và lợi thế địa chính trị."
+  },
+  "entries": [
+    {
+      "slug": "energy-mix-strategy-and-long-cycle-planning",
+      "keywords_en": ["energy mix", "long-cycle planning", "transition", "supply security", "capacity"],
+      "keywords_vi": ["cơ cấu năng lượng", "hoạch định chu kỳ dài", "chuyển dịch", "an ninh nguồn cung", "năng lực"],
+      "copy": {
+        "en": "Energy-mix strategy and long-cycle planning define how nations balance fossil fuels, renewables, nuclear, and emerging technologies to secure stable supply. Principles include diversification, affordability, resilience, and emissions alignment. Countries must plan decades ahead because energy assets have long lifecycles. Examples: France's nuclear-heavy strategy, Norway’s hydropower dominance, and China’s diversified multi-source model. Pitfalls include overdependence on a single resource, politically motivated shifts, or underinvestment in long-term capacity. Strategically, mastering the energy mix enables sovereignty, shields against volatility, and supports sustainable growth.",
+        "vi": "Chiến lược cơ cấu năng lượng và hoạch định chu kỳ dài xác định cách các quốc gia cân bằng nhiên liệu hóa thạch, năng lượng tái tạo, hạt nhân và công nghệ mới để đảm bảo nguồn cung ổn định. Nguyên tắc gồm đa dạng hóa, khả năng chi trả, tính chống chịu và phù hợp mục tiêu phát thải. Quốc gia phải lập kế hoạch hàng thập kỷ vì tài sản năng lượng có vòng đời dài. Ví dụ: chiến lược thiên về hạt nhân của Pháp, ưu thế thủy điện của Na Uy, hay mô hình đa nguồn của Trung Quốc. Hố bẫy gồm phụ thuộc vào một nguồn duy nhất, thay đổi chính trị đột ngột hoặc đầu tư thiếu cho năng lực dài hạn. Về chiến lược, nắm vững cơ cấu năng lượng củng cố chủ quyền, giảm biến động và hỗ trợ tăng trưởng bền vững."
+      },
+      "tags": ["energy", "mix", "strategy"],
+      "audio": "national_energy_security_1_en.mp3"
+    },
+    {
+      "slug": "supply-diversification-and-geopolitical-balance",
+      "keywords_en": ["supply diversification", "geopolitics", "imports", "alliances", "risk"],
+      "keywords_vi": ["đa dạng nguồn cung", "địa chính trị", "nhập khẩu", "liên minh", "rủi ro"],
+      "copy": {
+        "en": "Supply diversification and geopolitical balance reduce vulnerability to single-source dependence. Tools include multi-country import contracts, regional interconnectivity, LNG terminals, joint reserves, and diplomatic energy corridors. Principles: avoid strategic overreliance, build redundancy, and balance relationships among competing powers. Examples: Japan’s diversified LNG sourcing, Europe’s post-crisis diversification, and India’s multi-partner energy diplomacy. Pitfalls include politicized dependencies, inadequate negotiation leverage, or infrastructure gaps that limit diversification. Strategically, balanced supply strengthens sovereignty and reduces exposure to geopolitical shocks.",
+        "vi": "Đa dạng hóa nguồn cung và cân bằng địa chính trị giúp giảm rủi ro phụ thuộc vào một nguồn duy nhất. Công cụ gồm hợp đồng nhập khẩu đa quốc gia, kết nối lưới khu vực, trạm LNG, dự trữ chung và hành lang năng lượng ngoại giao. Nguyên tắc: tránh phụ thuộc chiến lược, xây dư thừa và cân bằng quan hệ giữa các cường quốc. Ví dụ: nguồn LNG đa dạng của Nhật, nỗ lực đa dạng hóa của châu Âu sau khủng hoảng và ngoại giao năng lượng đa đối tác của Ấn Độ. Hố bẫy gồm phụ thuộc chính trị, thiếu đòn bẩy đàm phán hoặc khoảng trống hạ tầng làm hạn chế đa dạng hóa. Về chiến lược, nguồn cung cân bằng củng cố chủ quyền và giảm phơi nhiễm trước cú sốc địa chính trị."
+      },
+      "tags": ["diversification", "geopolitics", "supply"],
+      "audio": "national_energy_security_2_en.mp3"
+    },
+    {
+      "slug": "infrastructure-resilience-and-grid-modernization",
+      "keywords_en": ["grid modernization", "infrastructure resilience", "smart grid", "redundancy", "reliability"],
+      "keywords_vi": ["hiện đại hóa lưới", "chống chịu hạ tầng", "lưới thông minh", "dư thừa", "độ tin cậy"],
+      "copy": {
+        "en": "Infrastructure resilience and grid modernization determine the stability of national energy systems. Components include smart grids, transmission upgrades, resilient substations, cybersecurity protections, and distributed generation. Principles: redundancy, real-time monitoring, decentralization, and fail-safe design. Examples: South Korea’s advanced smart grid, Germany’s distributed renewables network, and Singapore’s high-reliability grid. Pitfalls include aging infrastructure, deferred maintenance, or failure to protect grid assets from cyber threats. Strategically, modern grids support energy transitions and enhance national stability.",
+        "vi": "Khả năng chống chịu hạ tầng và hiện đại hóa lưới điện quyết định sự ổn định của hệ thống năng lượng quốc gia. Thành phần gồm lưới thông minh, nâng cấp truyền tải, trạm biến áp chống chịu, bảo vệ an ninh mạng và phát điện phân tán. Nguyên tắc: dư thừa, giám sát thời gian thực, phân quyền và thiết kế an toàn khi lỗi. Ví dụ: lưới thông minh tiên tiến của Hàn Quốc, mạng lưới tái tạo phân tán của Đức và lưới điện độ tin cậy cao của Singapore. Hố bẫy gồm hạ tầng già cỗi, trì hoãn bảo trì hoặc không bảo vệ tài sản lưới trước đe dọa mạng. Về chiến lược, lưới hiện đại hỗ trợ chuyển dịch năng lượng và nâng ổn định quốc gia."
+      },
+      "tags": ["grid", "infrastructure", "resilience"],
+      "audio": "national_energy_security_3_en.mp3"
+    },
+    {
+      "slug": "strategic-reserves-and-crisis-preparedness",
+      "keywords_en": ["strategic reserves", "crisis preparedness", "storage", "emergency response", "continuity"],
+      "keywords_vi": ["dự trữ chiến lược", "ứng phó khủng hoảng", "lưu trữ", "phản ứng khẩn cấp", "liên tục"],
+      "copy": {
+        "en": "Strategic reserves and crisis preparedness ensure nations can sustain energy supply during shocks—conflicts, natural disasters, cyberattacks, or market disruptions. Components include petroleum reserves, gas storage, emergency fuel protocols, black-start capabilities, and national crisis centers. Principles: redundancy, speed of activation, inter-agency coordination, and stress-tested contingency plans. Examples: The U.S. Strategic Petroleum Reserve, Japan’s multi-layered emergency system, or UAE’s long-horizon storage planning. Pitfalls include inadequate reserve volumes, weak coordination, or untested plans. Strategically, crisis readiness protects national continuity and maintains economic and social stability.",
+        "vi": "Dự trữ chiến lược và ứng phó khủng hoảng đảm bảo quốc gia duy trì nguồn năng lượng khi xảy ra cú sốc—xung đột, thiên tai, tấn công mạng hoặc biến động thị trường. Thành phần gồm dự trữ dầu quốc gia, kho lưu trữ khí, giao thức nhiên liệu khẩn cấp, khả năng khởi động lưới từ đầu (black-start) và trung tâm điều phối khủng hoảng. Nguyên tắc: dư thừa, tốc độ kích hoạt, phối hợp liên ngành và kế hoạch dự phòng đã được stress test. Ví dụ: Dự trữ dầu mỏ chiến lược của Mỹ, hệ thống khẩn cấp nhiều lớp của Nhật hoặc chiến lược lưu trữ dài hạn của UAE. Hố bẫy gồm dự trữ thiếu, phối hợp yếu hoặc kế hoạch chưa kiểm tra thực tế. Về chiến lược, khả năng ứng phó bảo vệ liên tục quốc gia và duy trì ổn định kinh tế–xã hội."
+      },
+      "tags": ["reserves", "crisis", "energy"],
+      "audio": "national_energy_security_4_en.mp3"
+    },
+    {
+      "slug": "renewable-integration-and-transition-management",
+      "keywords_en": ["renewables", "transition management", "integration", "storage", "stability"],
+      "keywords_vi": ["tái tạo", "quản lý chuyển dịch", "tích hợp", "lưu trữ", "ổn định"],
+      "copy": {
+        "en": "Renewable integration and transition management guide nations through the shift from fossil fuels to clean energy. Components include solar, wind, hydro, biomass, hydrogen, and storage solutions. Principles: grid stability, phased transition, investment pacing, and balancing reliability with sustainability. Examples: Denmark’s wind integration, China’s massive renewables buildout, and Australia’s battery storage expansion. Pitfalls include over-rapid transitions causing instability, insufficient storage, or policy inconsistency. Strategically, managed transitions enhance energy independence and future competitiveness.",
+        "vi": "Tích hợp năng lượng tái tạo và quản lý chuyển dịch hướng dẫn quốc gia chuyển từ nhiên liệu hóa thạch sang năng lượng sạch. Thành phần gồm mặt trời, gió, thủy điện, sinh khối, hydro và các hệ thống lưu trữ. Nguyên tắc: ổn định lưới, chuyển dịch theo giai đoạn, tốc độ đầu tư phù hợp và cân bằng tính tin cậy với bền vững. Ví dụ: tích hợp gió của Đan Mạch, mở rộng tái tạo quy mô lớn của Trung Quốc và phát triển lưu trữ pin của Úc. Hố bẫy gồm chuyển dịch quá nhanh gây mất ổn định, lưu trữ không đủ hoặc chính sách thiếu nhất quán. Về chiến lược, chuyển dịch có kiểm soát tăng tự chủ năng lượng và năng lực cạnh tranh tương lai."
+      },
+      "tags": ["renewables", "transition", "integration"],
+      "audio": "national_energy_security_5_en.mp3"
+    },
+    {
+      "slug": "domestic-production-capacity-and-industrial-policy",
+      "keywords_en": ["domestic production", "industrial policy", "energy industry", "competitiveness", "investment"],
+      "keywords_vi": ["sản xuất nội địa", "chính sách công nghiệp", "công nghiệp năng lượng", "cạnh tranh", "đầu tư"],
+      "copy": {
+        "en": "Domestic production capacity and industrial policy determine how nations strengthen internal energy supply and technological sovereignty. Areas include upstream resources, refining, LNG regasification, nuclear capability, equipment manufacturing, and battery value chains. Principles: selective protection, strategic subsidies, technology partnerships, and long-term capital planning. Examples: China’s solar manufacturing dominance, the U.S. revival of domestic energy industries, and Korea’s nuclear engineering capability. Pitfalls include inefficient state enterprises, misaligned incentives, or overprotection reducing competitiveness. Strategically, domestic capacity anchors resilience and reduces geopolitical vulnerability.",
+        "vi": "Năng lực sản xuất nội địa và chính sách công nghiệp quyết định cách quốc gia củng cố nguồn năng lượng trong nước và chủ quyền công nghệ. Lĩnh vực gồm tài nguyên đầu nguồn, lọc–hóa dầu, tái hóa khí LNG, năng lực hạt nhân, sản xuất thiết bị và chuỗi giá trị pin. Nguyên tắc: bảo hộ chọn lọc, trợ cấp chiến lược, đối tác công nghệ và kế hoạch vốn dài hạn. Ví dụ: vị thế thống trị của Trung Quốc trong sản xuất năng lượng mặt trời, sự phục hồi năng lượng nội địa của Mỹ và năng lực kỹ thuật hạt nhân của Hàn Quốc. Hố bẫy gồm doanh nghiệp nhà nước kém hiệu quả, ưu đãi lệch hoặc bảo hộ quá mức làm giảm cạnh tranh. Về chiến lược, năng lực nội địa củng cố chống chịu và giảm rủi ro địa chính trị."
+      },
+      "tags": ["domestic", "industrial-policy", "capacity"],
+      "audio": "national_energy_security_6_en.mp3"
+    },
+    {
+      "slug": "energy-market-governance-and-price-stability",
+      "keywords_en": ["energy markets", "price stability", "regulation", "market design", "consumer protection"],
+      "keywords_vi": ["thị trường năng lượng", "ổn định giá", "quy định", "thiết kế thị trường", "bảo vệ người tiêu dùng"],
+      "copy": {
+        "en": "Energy market governance and price stability ensure affordability while incentivizing investment. Components include market design, regulatory frameworks, price caps, subsidies, auctions, and demand-response programs. Principles: transparency, cost-reflective pricing, fair competition, and protection for vulnerable consumers. Examples: Nordic power markets, Germany’s feed-in tariff legacy, and Singapore’s regulated retail model. Pitfalls include over-subsidization, price distortion, or inconsistent regulation. Strategically, stable energy markets strengthen national competitiveness and public trust.",
+        "vi": "Quản trị thị trường năng lượng và ổn định giá đảm bảo khả năng chi trả trong khi vẫn khuyến khích đầu tư. Thành phần gồm thiết kế thị trường, khung pháp lý, trần giá, trợ cấp, đấu giá và chương trình đáp ứng nhu cầu. Nguyên tắc: minh bạch, giá phản ánh chi phí, cạnh tranh công bằng và bảo vệ người tiêu dùng dễ tổn thương. Ví dụ: thị trường điện Bắc Âu, chính sách feed-in tariff của Đức và mô hình bán lẻ điều tiết của Singapore. Hố bẫy gồm trợ cấp quá mức, méo giá hoặc chính sách không nhất quán. Về chiến lược, thị trường năng lượng ổn định củng cố năng lực cạnh tranh quốc gia và niềm tin công chúng."
+      },
+      "tags": ["market", "price", "governance"],
+      "audio": "national_energy_security_7_en.mp3"
+    },
+    {
+      "slug": "future-technologies-and-strategic-innovation",
+      "keywords_en": ["future technologies", "innovation", "hydrogen", "fusion", "storage"],
+      "keywords_vi": ["công nghệ tương lai", "đổi mới", "hydro", "nhiệt hạch", "lưu trữ"],
+      "copy": {
+        "en": "Future technologies and strategic innovation determine whether nations stay ahead in the global energy race. Technologies include hydrogen, fusion, advanced nuclear, carbon capture, long-duration storage, smart-grid AI, and next-generation renewables. Principles: early investment, ecosystem coordination, and strategic risk-taking. Examples: Japan’s hydrogen ecosystem, the U.S. fusion breakthroughs, and Europe’s advanced offshore wind platforms. Pitfalls include fragmented R&D, slow commercialization, or betting on unproven technologies without portfolio balance. Strategically, future technologies shape national power, industrial competitiveness, and long-term energy autonomy.",
+        "vi": "Công nghệ tương lai và đổi mới chiến lược quyết định liệu quốc gia có giữ vị thế dẫn đầu trong cuộc đua năng lượng toàn cầu hay không. Công nghệ gồm hydro, nhiệt hạch, hạt nhân thế hệ mới, thu giữ carbon, lưu trữ dài hạn, AI cho lưới điện thông minh và tái tạo thế hệ tiếp theo. Nguyên tắc: đầu tư sớm, điều phối hệ sinh thái và chấp nhận rủi ro chiến lược. Ví dụ: hệ sinh thái hydro của Nhật, bước tiến nhiệt hạch của Mỹ và nền tảng điện gió ngoài khơi tiên tiến của châu Âu. Hố bẫy gồm R&D phân mảnh, thương mại hóa chậm hoặc đặt cược quá mức vào công nghệ chưa chứng minh mà không có danh mục cân bằng. Về chiến lược, công nghệ tương lai định hình sức mạnh quốc gia, khả năng cạnh tranh công nghiệp và tự chủ năng lượng dài hạn."
+      },
+      "tags": ["future-tech", "innovation", "energy"],
+      "audio": "national_energy_security_8_en.mp3"
+    }
+  ]
+}

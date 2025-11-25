@@ -1,0 +1,103 @@
+{
+  "id": "national_diplomacy_vip9",
+  "tier": "VIP9 / Cấp VIP9",
+  "domain": "National",
+  "title": {
+    "en": "National Diplomacy Strategy",
+    "vi": "Chiến Lược Ngoại Giao Quốc Gia"
+  },
+  "content": {
+    "en": "This room develops national diplomacy strategy—the art and architecture of advancing national interests, securing strategic autonomy, building alliances, shaping global norms, avoiding conflict, and opening long-term pathways for economic, cultural, and geopolitical influence. It covers diplomatic doctrines, bilateral and multilateral frameworks, negotiation psychology, power balancing, soft-power ecosystems, and future-oriented diplomacy for an era of multipolarity, fragmentation, and accelerating technological disruption.",
+    "vi": "Phòng này xây dựng chiến lược ngoại giao quốc gia—nghệ thuật và kiến trúc thúc đẩy lợi ích quốc gia, bảo vệ tự chủ chiến lược, xây dựng liên minh, định hình chuẩn mực toàn cầu, tránh xung đột và mở ra các hành lang dài hạn cho ảnh hưởng kinh tế, văn hóa và địa chính trị. Nội dung gồm học thuyết ngoại giao, khung song phương và đa phương, tâm lý đàm phán, cân bằng quyền lực, hệ sinh thái quyền lực mềm và ngoại giao định hướng tương lai trong bối cảnh đa cực, phân mảnh và đột phá công nghệ."
+  },
+  "entries": [
+    {
+      "slug": "diplomatic-doctrines-and-national-approach",
+      "keywords_en": ["diplomatic doctrines", "national approach", "grand strategy", "foreign policy", "statecraft"],
+      "keywords_vi": ["học thuyết ngoại giao", "phương pháp quốc gia", "đại chiến lược", "đối ngoại", "nghệ thuật quản trị quốc gia"],
+      "copy": {
+        "en": "Diplomatic doctrines and national approaches lay the intellectual foundation for foreign policy, defining how a nation perceives the world and positions itself within global structures. Doctrines include defensive realism, proactive integration, soft balancing, constructive engagement, strategic autonomy, and flexible alignment. Principles: match doctrine to national capabilities, ensure continuity across administrations, and avoid doctrinal rigidity that cannot adjust to geopolitical shocks. Examples: Japan’s proactive pacifism, Singapore’s autonomy-driven pragmatism, India’s multi-vector diplomacy, and Vietnam’s ‘four-no plus one conditional’ framework. Pitfalls include copying foreign doctrines, over-idealistic visions, or doctrines disconnected from economic capacity. Strategically, doctrine clarity ensures internal coherence and external predictability—two pillars of successful diplomacy.",
+        "vi": "Học thuyết ngoại giao và phương pháp quốc gia đặt nền tảng tư tưởng cho chính sách đối ngoại, xác định cách quốc gia nhìn thế giới và định vị trong các cấu trúc toàn cầu. Học thuyết gồm chủ nghĩa hiện thực phòng thủ, hội nhập chủ động, cân bằng mềm, gắn kết xây dựng, tự chủ chiến lược và căn chỉnh linh hoạt. Nguyên tắc: phù hợp năng lực quốc gia, đảm bảo liên tục qua các nhiệm kỳ và tránh cứng nhắc trước các cú sốc địa chính trị. Ví dụ: chủ nghĩa hòa bình chủ động của Nhật, chủ nghĩa thực dụng tự chủ của Singapore, ngoại giao đa hướng của Ấn Độ và khung ‘bốn không một tùy điều kiện’ của Việt Nam. Hố bẫy gồm sao chép học thuyết nước khác, tầm nhìn lý tưởng hóa quá mức hoặc học thuyết không phù hợp năng lực kinh tế. Về chiến lược, học thuyết rõ ràng đảm bảo tính nhất quán nội bộ và khả năng dự đoán bên ngoài—hai trụ cột của ngoại giao thành công."
+      },
+      "tags": ["diplomacy", "doctrine", "strategy"],
+      "audio": "national_diplomacy_1_en.mp3"
+    },
+    {
+      "slug": "bilateral-relations-and-partnership-architecture",
+      "keywords_en": ["bilateral relations", "strategic partnership", "alignment", "negotiation", "trust-building"],
+      "keywords_vi": ["quan hệ song phương", "đối tác chiến lược", "căn chỉnh", "đàm phán", "xây dựng tin cậy"],
+      "copy": {
+        "en": "Bilateral relations and partnership architecture shape how a nation manages its most important direct relationships—trade partners, security collaborators, neighboring states, major powers, and diaspora-linked countries. Strong bilateral design uses layered agreements, political trust, cultural affinity, shared economic incentives, and coordinated security mechanisms. Examples: Japan–Vietnam strategic elevation, Qatar–Turkey partnership resilience, and the U.S.–South Korea alliance evolution. Pitfalls: overdependence on a single partner, misalignment of expectations, or asymmetric concessions. Strategically, bilateral mastery stabilizes the national environment and creates predictable corridors for economic and geopolitical growth.",
+        "vi": "Quan hệ song phương và kiến trúc đối tác định hình cách quốc gia quản lý những mối quan hệ trực tiếp quan trọng nhất—đối tác thương mại, hợp tác an ninh, láng giềng, cường quốc và các quốc gia gắn kết kiều bào. Kiến trúc song phương mạnh dựa trên thỏa thuận phân tầng, niềm tin chính trị, tương đồng văn hóa, lợi ích kinh tế chung và cơ chế an ninh phối hợp. Ví dụ: nâng cấp chiến lược Nhật–Việt, độ bền quan hệ Qatar–Thổ Nhĩ Kỳ và sự tiến hóa của liên minh Mỹ–Hàn. Hố bẫy: phụ thuộc quá mức vào một đối tác, chênh lệch kỳ vọng hoặc nhượng bộ bất cân xứng. Về chiến lược, làm chủ song phương tạo môi trường ổn định và hành lang dự đoán được cho tăng trưởng kinh tế và ảnh hưởng địa chính trị."
+      },
+      "tags": ["bilateral", "partnership", "relations"],
+      "audio": "national_diplomacy_2_en.mp3"
+    },
+    {
+      "slug": "multilateral-diplomacy-and-institutional-influence",
+      "keywords_en": ["multilateral diplomacy", "institutions", "norms", "coalitions", "global governance"],
+      "keywords_vi": ["ngoại giao đa phương", "thể chế", "chuẩn mực", "liên minh", "quản trị toàn cầu"],
+      "copy": {
+        "en": "Multilateral diplomacy and institutional influence allow nations to shape global norms by participating in organizations such as the UN, WTO, WHO, ASEAN, EU, AU, and G20. Effective multilateral strategy includes coalition-building, agenda-setting, procedural mastery, and narrative influence. Examples: ASEAN centrality, EU’s regulatory power, and Africa’s unified energy agenda. Pitfalls: passive participation, bureaucratic stagnation, or failing to leverage institutional votes. Strategically, multilateral engagement multiplies national voice—especially for small and mid-sized nations seeking balance in a world of competing giants.",
+        "vi": "Ngoại giao đa phương và ảnh hưởng thể chế cho phép quốc gia định hình chuẩn mực toàn cầu qua việc tham gia các tổ chức như UN, WTO, WHO, ASEAN, EU, AU và G20. Chiến lược đa phương hiệu quả gồm xây dựng liên minh, đặt chương trình, làm chủ thủ tục và gây ảnh hưởng qua câu chuyện. Ví dụ: vai trò trung tâm của ASEAN, quyền lực quy định của EU và chương trình năng lượng thống nhất của châu Phi. Hố bẫy: tham gia thụ động, trì trệ quan liêu hoặc không tận dụng quyền biểu quyết. Về chiến lược, tham gia đa phương khuếch đại tiếng nói quốc gia—đặc biệt cho các nước nhỏ và vừa cần cân bằng trước các cường quốc."
+      },
+      "tags": ["multilateral", "institutions", "norms"],
+      "audio": "national_diplomacy_3_en.mp3"
+    },
+    {
+      "slug": "negotiation-power-and-diplomatic-psychology",
+      "keywords_en": ["negotiation", "diplomatic psychology", "bargaining power", "influence", "tactics"],
+      "keywords_vi": ["đàm phán", "tâm lý ngoại giao", "quyền lực thương lượng", "ảnh hưởng", "chiến thuật"],
+      "copy": {
+        "en": "Negotiation power and diplomatic psychology involve understanding interests, leverage, timing, perception management, and the emotional dynamics driving counterpart decisions. Tools include anchoring, framing, sequencing, concession ladders, and reputation signaling. Psychological principles: build empathy without naïveté, manage ambiguity, and read subtext in diplomatic language. Examples: Iran nuclear negotiations, ASEAN code-of-conduct dialogues, and EU trade dispute strategies. Pitfalls: emotional escalation, misreading intentions, or overplaying leverage. Strategically, mastering negotiation psychology protects national interests without conflict.",
+        "vi": "Quyền lực đàm phán và tâm lý ngoại giao đòi hỏi hiểu lợi ích, đòn bẩy, thời điểm, quản lý nhận thức và động lực cảm xúc dẫn quyết định của đối tác. Công cụ gồm anchoring, framing, sắp xếp trình tự, thang nhượng bộ và tín hiệu danh tiếng. Nguyên tắc tâm lý: xây đồng cảm nhưng không ngây thơ, quản lý mơ hồ và đọc hàm ý trong ngôn ngữ ngoại giao. Ví dụ: đàm phán hạt nhân Iran, đối thoại COC của ASEAN và chiến lược tranh chấp thương mại của EU. Hố bẫy: leo thang cảm xúc, đọc sai ý đồ hoặc dùng đòn bẩy quá mức. Về chiến lược, làm chủ tâm lý đàm phán bảo vệ lợi ích quốc gia mà không cần xung đột."
+      },
+      "tags": ["negotiation", "psychology", "diplomacy"],
+      "audio": "national_diplomacy_4_en.mp3"
+    },
+    {
+      "slug": "soft-power-ecosystems-and-cultural-diplomacy",
+      "keywords_en": ["soft power", "cultural diplomacy", "influence", "nation branding", "values"],
+      "keywords_vi": ["quyền lực mềm", "ngoại giao văn hóa", "ảnh hưởng", "thương hiệu quốc gia", "giá trị"],
+      "copy": {
+        "en": "Soft-power ecosystems and cultural diplomacy use values, culture, education, creativity, and moral leadership to shape global perception. Tools include cultural centers, education exchange, media influence, language programs, creative industries, and diaspora networks. Examples: Korea’s Hallyu, Japan’s cultural refinement, France’s linguistic diplomacy, and Vietnam’s rising soft-power appeal through cuisine, culture, and stability. Pitfalls: superficial branding, politicized narratives, or inconsistent messaging. Strategically, soft power widens influence without coercion and builds long-term trust reservoirs.",
+        "vi": "Hệ sinh thái quyền lực mềm và ngoại giao văn hóa dùng giá trị, văn hóa, giáo dục, sáng tạo và lãnh đạo đạo đức để định hình nhận thức toàn cầu. Công cụ gồm trung tâm văn hóa, trao đổi giáo dục, ảnh hưởng truyền thông, chương trình ngôn ngữ, ngành công nghiệp sáng tạo và mạng lưới kiều bào. Ví dụ: làn sóng Hallyu của Hàn Quốc, tinh hoa văn hóa Nhật Bản, ngoại giao ngôn ngữ của Pháp và sức hấp dẫn quyền lực mềm đang tăng của Việt Nam qua ẩm thực, văn hóa và ổn định. Hố bẫy: xây dựng thương hiệu hời hợt, câu chuyện bị chính trị hóa hoặc thông điệp không nhất quán. Về chiến lược, quyền lực mềm mở rộng ảnh hưởng không cần cưỡng chế và xây hồ tin cậy dài hạn."
+      },
+      "tags": ["soft-power", "culture", "influence"],
+      "audio": "national_diplomacy_5_en.mp3"
+    },
+    {
+      "slug": "economic-diplomacy-and-strategic-trade",
+      "keywords_en": ["economic diplomacy", "trade strategy", "investment corridors", "fta networks", "geoeconomics"],
+      "keywords_vi": ["ngoại giao kinh tế", "chiến lược thương mại", "hành lang đầu tư", "mạng lưới fta", "địa kinh tế"],
+      "copy": {
+        "en": "Economic diplomacy and strategic trade are central to national power—building investment corridors, negotiating free-trade networks, protecting supply chains, and shaping global economic rules. Tools include FTAs, industrial alliances, export-credit mechanisms, investment screening, and geoeconomic signaling. Examples: CPTPP, RCEP, EU’s economic statecraft, and Vietnam’s FDI-driven export architecture. Pitfalls: trade dependency, regulatory gaps, or misaligned industrial policies. Strategically, economic diplomacy amplifies growth and ensures national relevance in global value chains.",
+        "vi": "Ngoại giao kinh tế và thương mại chiến lược là trụ cột của quyền lực quốc gia—xây hành lang đầu tư, đàm phán mạng lưới FTA, bảo vệ chuỗi cung ứng và định hình quy tắc kinh tế toàn cầu. Công cụ gồm FTA, liên minh công nghiệp, cơ chế tín dụng xuất khẩu, sàng lọc đầu tư và tín hiệu địa kinh tế. Ví dụ: CPTPP, RCEP, nghệ thuật kinh tế của EU và kiến trúc xuất khẩu dựa trên FDI của Việt Nam. Hố bẫy: phụ thuộc thương mại, lỗ hổng quy định hoặc chính sách công nghiệp lệch nhịp. Về chiến lược, ngoại giao kinh tế khuếch đại tăng trưởng và đảm bảo vị thế trong chuỗi giá trị toàn cầu."
+      },
+      "tags": ["economics", "diplomacy", "trade"],
+      "audio": "national_diplomacy_6_en.mp3"
+    },
+    {
+      "slug": "security-diplomacy-and-preventive-statecraft",
+      "keywords_en": ["security diplomacy", "preventive statecraft", "conflict avoidance", "deterrence", "dialogue"],
+      "keywords_vi": ["ngoại giao an ninh", "nghệ thuật phòng ngừa", "tránh xung đột", "răn đe", "đối thoại"],
+      "copy": {
+        "en": "Security diplomacy and preventive statecraft address conflict risks through dialogue, de-escalation, confidence-building, humanitarian channels, crisis hotlines, and regional defense forums. Principles: avoid miscalculation, maintain clarity of intent, reduce ambiguity in high-tension scenarios, and maintain communication during crisis spikes. Examples: U.S.–China military hotlines, OSCE security dialogues, and ASEAN’s preventive diplomacy model. Pitfalls: signaling misinterpretation, delayed communication, or escalatory rhetoric. Strategically, preventive diplomacy stabilizes the environment and safeguards national autonomy.",
+        "vi": "Ngoại giao an ninh và nghệ thuật phòng ngừa xử lý rủi ro xung đột qua đối thoại, hạ nhiệt, xây niềm tin, kênh nhân đạo, đường dây nóng và diễn đàn phòng thủ khu vực. Nguyên tắc: tránh tính toán sai lầm, làm rõ ý định, giảm mơ hồ trong tình huống căng thẳng cao và duy trì liên lạc khi nguy cơ leo thang. Ví dụ: đường dây nóng quân sự Mỹ–Trung, đối thoại an ninh của OSCE và mô hình ngoại giao phòng ngừa của ASEAN. Hố bẫy: diễn giải sai tín hiệu, liên lạc chậm hoặc ngôn từ leo thang. Về chiến lược, ngoại giao phòng ngừa giữ ổn định môi trường và bảo vệ tự chủ quốc gia."
+      },
+      "tags": ["security", "diplomacy", "prevention"],
+      "audio": "national_diplomacy_7_en.mp3"
+    },
+    {
+      "slug": "future-oriented-diplomacy-and-tech-driven-leadership",
+      "keywords_en": ["future diplomacy", "technology", "digital statecraft", "innovation", "foresight"],
+      "keywords_vi": ["ngoại giao tương lai", "công nghệ", "quản trị số", "đổi mới", "tầm nhìn xa"],
+      "copy": {
+        "en": "Future-oriented diplomacy and tech-driven leadership prepare nations for an era where AI governance, cyber norms, data alliances, quantum security, and space diplomacy reshape global order. Tools include digital embassies, cyber-cooperation treaties, AI ethics coalitions, and space traffic protocols. Principles: anticipate tech shifts, build capacity early, avoid tech dependency, and align domestic innovation with foreign policy objectives. Examples: Estonia’s digital diplomacy, UAE’s AI partnerships, and Japan’s space diplomacy. Pitfalls: slow institutional adaptation, regulatory paralysis, or misalignment between tech and diplomacy. Strategically, future diplomacy ensures the nation remains relevant in tomorrow’s power structures.",
+        "vi": "Ngoại giao tương lai và lãnh đạo dựa trên công nghệ chuẩn bị cho thời đại nơi quản trị AI, chuẩn mực mạng, liên minh dữ liệu, an ninh lượng tử và ngoại giao vũ trụ tái định hình trật tự toàn cầu. Công cụ gồm đại sứ quán số, hiệp ước hợp tác mạng, liên minh đạo đức AI và quy trình giao thông vũ trụ. Nguyên tắc: dự báo dịch chuyển công nghệ, xây năng lực sớm, tránh phụ thuộc công nghệ và căn chỉnh đổi mới trong nước với mục tiêu đối ngoại. Ví dụ: ngoại giao số Estonia, quan hệ đối tác AI của UAE và ngoại giao vũ trụ của Nhật Bản. Hố bẫy: thích ứng thể chế chậm, tê liệt quy định hoặc lệch nhịp giữa công nghệ và ngoại giao. Về chiến lược, ngoại giao tương lai đảm bảo quốc gia vẫn giữ vai trò trong cấu trúc quyền lực của ngày mai."
+      },
+      "tags": ["future", "technology", "diplomacy"],
+      "audio": "national_diplomacy_8_en.mp3"
+    }
+  ]
+}
