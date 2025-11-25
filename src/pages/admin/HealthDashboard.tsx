@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Activity, Shield, Zap, ArrowLeft, Settings } from "lucide-react";
+import { Activity, Shield, Zap, ArrowLeft, Settings, Baby } from "lucide-react";
 
 const tiers = [
   { id: "free", name: "Free", icon: Zap, color: "text-blue-500" },
@@ -13,6 +13,9 @@ const tiers = [
   { id: "vip6", name: "VIP 6", icon: Shield, color: "text-indigo-700" },
   { id: "vip7", name: "VIP 7", icon: Shield, color: "text-indigo-800" },
   { id: "vip9", name: "VIP 9", icon: Shield, color: "text-amber-600" },
+  { id: "kidslevel1", name: "Kids Level 1", icon: Baby, color: "text-pink-500" },
+  { id: "kidslevel2", name: "Kids Level 2", icon: Baby, color: "text-pink-600" },
+  { id: "kidslevel3", name: "Kids Level 3", icon: Baby, color: "text-pink-700" },
 ];
 
 export default function HealthDashboard() {
