@@ -4,11 +4,14 @@ import { CheckCircle2, Lock, RefreshCw } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
-import { ALL_ROOMS } from "@/lib/roomData";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
+import { useVirtualizer } from '@tanstack/react-virtual';
+import { useCachedRooms } from '@/hooks/useCachedRooms';
+import { RoomGridSkeleton } from '@/components/RoomCardSkeleton';
+import { getDemoRooms } from '@/hooks/useDemoMode';
 
 import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
 
@@ -24,9 +27,11 @@ const RoomGrid = () => {
   const { canAccessVIP1, canAccessVIP2, canAccessVIP3, isAdmin, isDemoMode } = useUserAccess();
   const { toast } = useToast();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [roomsVersion, setRoomsVersion] = useState(0);
-  const [isRefreshing, setIsRefreshing] = useState(false);
   const [demoRoomIds, setDemoRoomIds] = useState<string[]>([]);
+  const parentRef = useRef<HTMLDivElement>(null);
+  
+  // Use cached rooms hook for optimized data fetching
+  const { data: cachedRooms, isLoading, refetch } = useCachedRooms('free');
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -40,13 +45,38 @@ const RoomGrid = () => {
       }
     };
     checkAuth();
-
-    const handleRoomsLoaded = () => setRoomsVersion(v => v + 1);
-    window.addEventListener('rooms-loaded', handleRoomsLoaded as any);
-    return () => window.removeEventListener('rooms-loaded', handleRoomsLoaded as any);
   }, []);
+  
+  // Filter rooms based on demo mode
+  const filteredRooms = useMemo(() => {
+    if (!cachedRooms) return [];
+    if (isDemoMode) {
+      return cachedRooms.filter(room => demoRoomIds.includes(room.id));
+    }
+    return cachedRooms;
+  }, [cachedRooms, isDemoMode, demoRoomIds]);
+  
+  // Sort rooms alphabetically
+  const sortedRooms = useMemo(() => {
+    return [...filteredRooms].sort((a, b) => {
+      const aName = a.nameEn || a.id;
+      const bName = b.nameEn || b.id;
+      return aName.localeCompare(bName);
+    });
+  }, [filteredRooms]);
 
-  const handleRoomClick = (room: typeof ALL_ROOMS[0]) => {
+  // Virtual grid setup - 6 columns
+  const COLUMN_COUNT = 6;
+  const rowCount = Math.ceil(sortedRooms.length / COLUMN_COUNT);
+  
+  const rowVirtualizer = useVirtualizer({
+    count: rowCount,
+    getScrollElement: () => parentRef.current,
+    estimateSize: () => 180, // Estimate row height
+    overscan: 3, // Render 3 extra rows above/below viewport
+  });
+
+  const handleRoomClick = (room: any) => {
     // Prevent clicking on locked rooms
     if (!room.hasData) {
       toast({
@@ -104,18 +134,18 @@ const RoomGrid = () => {
     return tier.toUpperCase();
   };
 
-  const handleRefreshRooms = () => {
-    setIsRefreshing(true);
+  const handleRefreshRooms = async () => {
     toast({
       title: "Refreshing rooms...",
-      description: "Reloading room registry from files",
+      description: "Reloading room data from cache",
     });
     
-    window.dispatchEvent(new Event('roomDataUpdated'));
+    await refetch();
     
-    setTimeout(() => {
-      window.location.reload();
-    }, 500);
+    toast({
+      title: "Refreshed!",
+      description: "Room data updated successfully",
+    });
   };
 
   return (
@@ -141,10 +171,10 @@ const RoomGrid = () => {
                     variant="outline"
                     size="sm"
                     onClick={handleRefreshRooms}
-                    disabled={isRefreshing}
+                    disabled={isLoading}
                     className="flex items-center gap-2 bg-white/80"
                   >
-                    <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+                    <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
                     Refresh Rooms
                   </Button>
                 )}
@@ -158,97 +188,118 @@ const RoomGrid = () => {
               Chọn Phòng Học Của Bạn
             </p>
             <p className="text-sm text-muted-foreground/80">
-              Showing {ALL_ROOMS.filter(room => room.tier === "free").length} rooms
+              {isLoading ? 'Loading...' : `Showing ${sortedRooms.length} rooms`}
             </p>
           </div>
         </div>
 
-        {/* Room Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-          {ALL_ROOMS.filter(room => {
-            // In demo mode, only show demo rooms
-            if (isDemoMode) {
-              return demoRoomIds.includes(room.id);
-            }
-            // Otherwise, show all free rooms
-            return room.tier === "free";
-          }).sort((a, b) => {
-            const aName = a.name || a.id;
-            const bName = b.name || b.id;
-            return aName.localeCompare(bName);
-          }).map((room) => {
-            const roomColor = FREE_INTRO_ROOMS[room.id] || getRoomColor(room.id);
-            const textColor = getContrastTextColor(roomColor);
-            const headingColor = getHeadingColor(roomColor);
-            const isFreeIntro = !!FREE_INTRO_ROOMS[room.id];
-            
-            return (
-            <Tooltip key={room.id}>
-              <TooltipTrigger asChild>
-                <Card
-                  className={`relative p-3 transition-all duration-300 group ${
-                    room.hasData 
-                      ? "hover:scale-110 hover:shadow-hover hover:z-10 cursor-pointer" 
-                      : "opacity-30 cursor-not-allowed grayscale"
-                  }`}
-                  style={isFreeIntro ? {
-                    border: `2px solid ${roomColor}`,
-                    background: `linear-gradient(135deg, ${roomColor}20, ${roomColor}10)`,
-                    boxShadow: `0 0 20px ${roomColor}60`
-                  } : {
-                    background: roomColor
-                  }}
-                  onClick={() => handleRoomClick(room)}
-                >
-                  {/* Status Badge */}
-                  <div className="absolute top-1 right-1 z-10">
-                    {room.hasData ? (
-                      <div className="bg-green-500 rounded-full p-1">
-                        <CheckCircle2 className="w-3 h-3 text-white" />
-                      </div>
-                    ) : (
-                      <div className="bg-gray-400 rounded-full p-1">
-                        <Lock className="w-3 h-3 text-white" />
-                      </div>
-                    )}
-                  </div>
+        {/* Loading skeleton */}
+        {isLoading && <RoomGridSkeleton count={24} />}
 
-                  <div className="space-y-2">
-                    {/* Room Names */}
-                    <div className="space-y-1">
-                      <p className="text-xs font-semibold leading-tight line-clamp-2" style={{
-                        background: 'var(--gradient-rainbow)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        backgroundClip: 'text'
-                      }}>
-                        {room.nameEn}
-                      </p>
-                      <p className="text-[10px] leading-tight line-clamp-2" style={{
-                        background: 'var(--gradient-rainbow)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        backgroundClip: 'text',
-                        opacity: 0.7
-                      }}>
-                        {room.nameVi}
-                      </p>
+        {/* Virtualized Room Grid */}
+        {!isLoading && (
+          <div ref={parentRef} className="h-[calc(100vh-300px)] overflow-auto">
+            <div
+              style={{
+                height: `${rowVirtualizer.getTotalSize()}px`,
+                width: '100%',
+                position: 'relative',
+              }}
+            >
+              {rowVirtualizer.getVirtualItems().map((virtualRow) => {
+                const startIdx = virtualRow.index * COLUMN_COUNT;
+                const rowRooms = sortedRooms.slice(startIdx, startIdx + COLUMN_COUNT);
+                
+                return (
+                  <div
+                    key={virtualRow.index}
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      transform: `translateY(${virtualRow.start}px)`,
+                    }}
+                  >
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+                      {rowRooms.map((room) => {
+                        const roomColor = FREE_INTRO_ROOMS[room.id] || getRoomColor(room.id);
+                        const isFreeIntro = !!FREE_INTRO_ROOMS[room.id];
+                        
+                        return (
+                          <Tooltip key={room.id}>
+                            <TooltipTrigger asChild>
+                              <Card
+                                className={`relative p-3 transition-all duration-300 group ${
+                                  room.hasData 
+                                    ? "hover:scale-110 hover:shadow-hover hover:z-10 cursor-pointer" 
+                                    : "opacity-30 cursor-not-allowed grayscale"
+                                }`}
+                                style={isFreeIntro ? {
+                                  border: `2px solid ${roomColor}`,
+                                  background: `linear-gradient(135deg, ${roomColor}20, ${roomColor}10)`,
+                                  boxShadow: `0 0 20px ${roomColor}60`
+                                } : {
+                                  background: roomColor
+                                }}
+                                onClick={() => handleRoomClick(room)}
+                              >
+                                {/* Status Badge */}
+                                <div className="absolute top-1 right-1 z-10">
+                                  {room.hasData ? (
+                                    <div className="bg-green-500 rounded-full p-1">
+                                      <CheckCircle2 className="w-3 h-3 text-white" />
+                                    </div>
+                                  ) : (
+                                    <div className="bg-gray-400 rounded-full p-1">
+                                      <Lock className="w-3 h-3 text-white" />
+                                    </div>
+                                  )}
+                                </div>
+
+                                <div className="space-y-2">
+                                  {/* Room Names */}
+                                  <div className="space-y-1">
+                                    <p className="text-xs font-semibold leading-tight line-clamp-2" style={{
+                                      background: 'var(--gradient-rainbow)',
+                                      WebkitBackgroundClip: 'text',
+                                      WebkitTextFillColor: 'transparent',
+                                      backgroundClip: 'text'
+                                    }}>
+                                      {room.nameEn}
+                                    </p>
+                                    <p className="text-[10px] leading-tight line-clamp-2" style={{
+                                      background: 'var(--gradient-rainbow)',
+                                      WebkitBackgroundClip: 'text',
+                                      WebkitTextFillColor: 'transparent',
+                                      backgroundClip: 'text',
+                                      opacity: 0.7
+                                    }}>
+                                      {room.nameVi}
+                                    </p>
+                                  </div>
+                                </div>
+
+                                {/* Hover Effect */}
+                                {room.hasData && (
+                                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" 
+                                       style={{ background: `linear-gradient(to bottom right, ${roomColor}20, ${roomColor}10)` }} />
+                                )}
+                              </Card>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>{room.hasData ? "Click to enter" : "Coming soon"}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        );
+                      })}
                     </div>
                   </div>
-
-                  {/* Hover Effect */}
-                  {room.hasData && (
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" 
-                         style={{ background: `linear-gradient(to bottom right, ${roomColor}20, ${roomColor}10)` }} />
-                  )}
-                </Card>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{room.hasData ? "Click to enter" : "Coming soon"}</p>
-              </TooltipContent>
-            </Tooltip>
-          )})}
-        </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         </div>
       </div>
