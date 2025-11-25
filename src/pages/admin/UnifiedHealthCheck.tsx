@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 // Tabs component removed - using unified tier dropdown instead
-import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench, Download, Play, Volume2, FileText, Trash2 } from "lucide-react";
+import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench, Download, Play, Volume2, FileText, Trash2, RefreshCw } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
@@ -547,6 +547,38 @@ export default function UnifiedHealthCheck() {
         description: error.message,
         variant: "destructive"
       });
+    }
+  };
+
+  // Sync rooms from JSON files in public/data/
+  const syncRoomsFromGitHub = async () => {
+    console.log('🔄 Starting GitHub sync...');
+    setLoading(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('sync-rooms-from-json');
+
+      if (error) throw error;
+
+      const result = data;
+      console.log('✅ Sync complete:', result);
+
+      toast({
+        title: "Sync Complete",
+        description: `Discovered ${result.discovered} files, synced ${result.synced} rooms${result.errors > 0 ? `, ${result.errors} errors` : ''}`,
+      });
+
+      // Refresh the room counts
+      runQuickScan();
+    } catch (error: any) {
+      console.error('❌ Sync failed:', error);
+      toast({
+        title: "Sync Failed",
+        description: error.message || 'Failed to sync rooms from GitHub',
+        variant: "destructive"
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -2039,6 +2071,14 @@ export default function UnifiedHealthCheck() {
             ) : (
               "Quick Scan"
             )}
+          </Button>
+          <Button
+            onClick={syncRoomsFromGitHub}
+            disabled={loading || deepScanning}
+            variant="outline"
+          >
+            <RefreshCw className="h-4 w-4 mr-2" />
+            Sync from GitHub
           </Button>
           {phantomRooms.length > 0 && !deepScanning && (
             <Button
