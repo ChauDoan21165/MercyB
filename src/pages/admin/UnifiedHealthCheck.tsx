@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 // Tabs component removed - using unified tier dropdown instead
-import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench, Download, Play, Volume2, FileText, Trash2, RefreshCw } from "lucide-react";
+import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench, Download, Play, Volume2, FileText, Trash2, RefreshCw, FileEdit } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
@@ -677,7 +677,6 @@ export default function UnifiedHealthCheck() {
       }
 
       console.log('✅ Deep scan loop complete. Successfully scanned:', reports.length, '| Failed:', failedRooms.length);
-      setDeepScanResults(reports);
       
       // Show results with failure count
       if (failedRooms.length > 0) {
@@ -687,17 +686,31 @@ export default function UnifiedHealthCheck() {
         // Store phantom rooms for cleanup option
         setPhantomRooms(failedRooms);
         
-        // Store failed rooms for display
-        setDeepScanResults(failedRooms.map(r => ({
+        // Add phantom rooms to results with proper DeepRoomReport structure
+        const phantomReports: DeepRoomReport[] = failedRooms.map(r => ({
           roomId: r.id,
           roomTitle: r.title,
-          healthScore: 0,
-          issues: [`Missing JSON file at public/data/${r.id}.json`],
-          warnings: [],
-          entryCount: 0,
-          audioIssues: [],
-          entryMismatches: []
-        })));
+          tier: selectedTier,
+          summary: {
+            totalIssues: 1,
+            audioIssues: 0,
+            entryIssues: 0,
+            healthScore: 0
+          },
+          audioChecks: [],
+          entryValidation: [],
+          issues: [{
+            roomId: r.id,
+            roomTitle: r.title,
+            tier: selectedTier,
+            issueType: "missing_file",
+            message: `Missing JSON file at public/data/${r.id}.json`,
+            details: r.error
+          }]
+        }));
+        
+        // Combine successful and failed scans for display
+        setDeepScanResults([...reports, ...phantomReports]);
         
         // Different message if NO rooms were successfully scanned
         if (reports.length === 0) {
@@ -714,6 +727,7 @@ export default function UnifiedHealthCheck() {
           });
         }
       } else {
+        setDeepScanResults(reports);
         console.log('🎉 All rooms scanned successfully!');
         toast({
           title: "Deep Scan Complete",
