@@ -13,6 +13,7 @@ import {
   Palette,
   Gift,
   Stethoscope,
+  BarChart3,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 
@@ -46,6 +47,7 @@ const adminItems = [
   { title: "Reports", url: "/admin/reports", icon: FileText },
   { title: "VIP Rooms", url: "/admin/vip-rooms", icon: LayoutDashboard },
   { title: "Design Audit", url: "/admin/design-audit", icon: Palette },
+  { title: "App Metrics", url: "/admin/app-metrics", icon: BarChart3 },
 ];
 
 export function AdminSidebar() {
