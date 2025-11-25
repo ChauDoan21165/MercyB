@@ -1,4 +1,5 @@
 import { highlightPairedText } from "@/lib/wordColorHighlighter";
+import { ProtectedContent } from "./ProtectedContent";
 
 interface PairedHighlightedContentProps {
   englishText?: string;
@@ -28,17 +29,13 @@ export const PairedHighlightedContent = ({
   return (
     <div className={className}>
       <div className="mb-3">
-        <div className="text-sm leading-relaxed">
-          {enHighlighted}
-        </div>
+        <ProtectedContent content={enText} />
       </div>
       
       {showVietnamese && (
         <>
           <hr className="border-border my-3" />
-          <div className="text-sm leading-relaxed">
-            {viHighlighted}
-          </div>
+          <ProtectedContent content={viText} />
         </>
       )}
     </div>
