@@ -158,7 +158,7 @@ const RoomsVIP9 = () => {
             <div className="h-12 w-px bg-slate-700"></div>
             <div className="text-center">
               <div className="text-3xl font-bold text-white">4</div>
-              <parameter name="text-sm text-slate-400">Strategic Domains</div>
+              <div className="text-sm text-slate-400">Strategic Domains</div>
             </div>
             <div className="h-12 w-px bg-slate-700"></div>
             <div className="text-center">
