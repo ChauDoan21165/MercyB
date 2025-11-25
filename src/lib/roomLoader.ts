@@ -113,26 +113,27 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
 
               const keywordEn = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0 
                 ? entry.keywords_en[0] 
-                : entry.slug || `entry-${idx}`;
+                : entry.identifier || entry.slug || `entry-${idx}`;
               const keywordVi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0 
                 ? entry.keywords_vi[0] 
-                : entry.slug || '';
+                : entry.identifier || entry.slug || '';
 
-              const replyEn = entry.reply_en || entry.essay_en || entry.essay?.en || 
-                              entry.copy?.en || entry.content?.en || 
-                              entry.copy_en || entry.content_en || '';
-              const replyVi = entry.reply_vi || entry.essay_vi || entry.essay?.vi || 
-                              entry.copy?.vi || entry.content?.vi || 
-                              entry.copy_vi || entry.content_vi || '';
+              const replyEn = entry.copy_en || entry.reply_en || entry.essay_en || entry.essay?.en || 
+                              entry.copy?.en || entry.content?.en || entry.content_en || '';
+              const replyVi = entry.copy_vi || entry.reply_vi || entry.essay_vi || entry.essay?.vi || 
+                              entry.copy?.vi || entry.content?.vi || entry.content_vi || '';
 
               return {
                 ...entry,
+                slug: entry.slug || entry.identifier,
                 audio: audioPath || undefined,
                 audioPlaylist: audioPlaylist.length > 0 ? audioPlaylist : undefined,
                 keywordEn,
                 keywordVi,
                 replyEn,
-                replyVi
+                replyVi,
+                essay_en: replyEn,
+                essay_vi: replyVi
               };
             })
           : [];
