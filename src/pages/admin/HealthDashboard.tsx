@@ -34,24 +34,6 @@ export default function HealthDashboard() {
       <div className="grid grid-cols-1 gap-6">
         <Card className="p-6">
           <div className="flex items-center space-x-3 mb-4">
-            <Baby className="h-6 w-6 text-pink-500" />
-            <div>
-              <h2 className="text-xl font-semibold">Room Health Check</h2>
-              <p className="text-sm text-muted-foreground">
-                Validate all room content across all tiers and kids levels
-              </p>
-            </div>
-          </div>
-          <Link to="/admin/kids-room-health">
-            <Button>
-              <Activity className="h-4 w-4 mr-2" />
-              Open Health Check
-            </Button>
-          </Link>
-        </Card>
-
-        <Card className="p-6">
-          <div className="flex items-center space-x-3 mb-4">
             <Settings className="h-6 w-6 text-blue-500" />
             <div>
               <h2 className="text-xl font-semibold">System Health Dashboard</h2>
