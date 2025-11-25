@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
 import { Button } from '@/components/ui/button';
-import { Lock, Unlock, TrendingUp, Building2, Globe2 } from 'lucide-react';
+import { Lock, Unlock, TrendingUp, Building2, Globe2, Swords, Handshake, Lightbulb, Crown } from 'lucide-react';
 import { useUserAccess } from '@/hooks/useUserAccess';
 import { useToast } from '@/hooks/use-toast';
 
@@ -43,6 +43,10 @@ const RoomsVIP9 = () => {
         const individualRooms = data.filter(r => r.domain === 'Individual');
         const corporateRooms = data.filter(r => r.domain === 'Corporate');
         const nationalRooms = data.filter(r => r.domain === 'National');
+        const tacticalTitansRooms = data.filter(r => r.domain === 'Tactical Titans');
+        const diplomaticPioneersRooms = data.filter(r => r.domain === 'Diplomatic Pioneers');
+        const innovativeVisionariesRooms = data.filter(r => r.domain === 'Innovative Visionaries');
+        const culturalInfluencersRooms = data.filter(r => r.domain === 'Cultural Influencers');
 
         setDomains([
           {
@@ -68,6 +72,38 @@ const RoomsVIP9 = () => {
               vi: 'Chiến Lược Quốc Gia & Địa Chiến Lược'
             },
             rooms: nationalRooms
+          },
+          {
+            id: 'tactical_titans',
+            title: {
+              en: 'Tactical Titans',
+              vi: 'Những Chiến Lược Gia Quân Sự'
+            },
+            rooms: tacticalTitansRooms
+          },
+          {
+            id: 'diplomatic_pioneers',
+            title: {
+              en: 'Diplomatic Pioneers',
+              vi: 'Tiên Phong Ngoại Giao'
+            },
+            rooms: diplomaticPioneersRooms
+          },
+          {
+            id: 'innovative_visionaries',
+            title: {
+              en: 'Innovative Visionaries',
+              vi: 'Những Nhà Tư Tưởng Tiên Phong'
+            },
+            rooms: innovativeVisionariesRooms
+          },
+          {
+            id: 'cultural_influencers',
+            title: {
+              en: 'Cultural Influencers',
+              vi: 'Những Nhà Ảnh Hưởng Văn Hóa'
+            },
+            rooms: culturalInfluencersRooms
           }
         ]);
       } catch (error) {
@@ -112,7 +148,11 @@ const RoomsVIP9 = () => {
   const domainIcons = {
     individual_strategic_mastery: TrendingUp,
     corporate_organizational_strategy: Building2,
-    national_geostrategic_intelligence: Globe2
+    national_geostrategic_intelligence: Globe2,
+    tactical_titans: Swords,
+    diplomatic_pioneers: Handshake,
+    innovative_visionaries: Lightbulb,
+    cultural_influencers: Crown
   };
 
   return (
@@ -131,22 +171,23 @@ const RoomsVIP9 = () => {
           </h1>
           
           <p className="text-xl text-slate-300 font-light">
-            Individual, Corporate & National Strategy
+            Strategic Wisdom from History's Greatest Minds
           </p>
           
           <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            55 elite strategic frameworks designed for C-suite executives, thought leaders, 
-            and strategic decision-makers operating at the highest levels of influence.
+            Elite strategic frameworks combining modern strategy with timeless wisdom from 
+            legendary strategists: Sun Tzu, Napoleon, Machiavelli, Bismarck, Churchill, 
+            Eisenhower, Cleopatra, and Genghis Khan.
           </p>
           
           <div className="flex items-center justify-center gap-8 pt-4">
             <div className="text-center">
-              <div className="text-3xl font-bold text-white">55</div>
+              <div className="text-3xl font-bold text-white">{domains.reduce((acc, d) => acc + d.rooms.length, 0)}</div>
               <div className="text-sm text-slate-400">Elite Rooms</div>
             </div>
             <div className="h-12 w-px bg-slate-700"></div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-white">3</div>
+              <div className="text-3xl font-bold text-white">7</div>
               <div className="text-sm text-slate-400">Strategic Domains</div>
             </div>
             <div className="h-12 w-px bg-slate-700"></div>
