@@ -82,10 +82,16 @@ export default function KidsRoomValidation() {
       const { data: rooms, error: roomsError } = await supabase
         .from('rooms')
         .select('*')
-        .eq('tier', selectedTier)
+        .ilike('tier', `%${selectedTier}%`)
         .order('title_en');
 
       if (roomsError) throw roomsError;
+      if (!rooms || rooms.length === 0) {
+        toast.error(`No rooms found for tier ${selectedTier}`);
+        setLoading(false);
+        setScanning(false);
+        return;
+      }
 
       const results: RoomStatus[] = [];
       let totalEntries = 0;
