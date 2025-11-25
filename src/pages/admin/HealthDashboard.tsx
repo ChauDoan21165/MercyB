@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Activity, Baby, Shield, Zap, ArrowLeft, Settings } from "lucide-react";
+import { Activity, Shield, Zap, ArrowLeft, Settings } from "lucide-react";
 
 const tiers = [
   { id: "free", name: "Free", icon: Zap, color: "text-blue-500" },
