@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LayoutDashboard, Users, TrendingUp, MessageSquare, DollarSign, Music, Shield, FileText, TestTube, Code, Palette, Gift, BookOpen, Bell } from "lucide-react";
+import { LayoutDashboard, Users, TrendingUp, MessageSquare, DollarSign, Music, Shield, FileText, TestTube, Code, Palette, Gift, BookOpen, Bell, BarChart3 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 import { AdminBreadcrumb } from "@/components/admin/AdminBreadcrumb";
@@ -455,6 +455,26 @@ const AdminDashboard = () => {
                 Check color, spacing, and layout problems to review later.
               </p>
               <Badge variant="outline" className="mt-2" style={{ borderColor: '#FF6B9D', color: '#FF6B9D' }}>For Review</Badge>
+            </CardContent>
+          </Card>
+
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer border-2" style={{ borderColor: '#10B981' }} onClick={() => navigate("/admin/app-metrics")}>
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="p-3 bg-primary/10 rounded-lg">
+                  <BarChart3 className="h-6 w-6" style={{ color: '#10B981' }} />
+                </div>
+                <div>
+                  <CardTitle style={{ color: '#10B981' }}>App Metrics</CardTitle>
+                  <CardDescription>Application scale overview</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                View infrastructure metrics: tiers, rooms, entries, edge functions, and system scale.
+              </p>
+              <Badge variant="outline" className="mt-2" style={{ borderColor: '#10B981', color: '#10B981' }}>Infrastructure</Badge>
             </CardContent>
           </Card>
 
