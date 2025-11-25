@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, XCircle, AlertCircle, Loader2, Wrench } from "lucide-react";
+import { CheckCircle2, XCircle, AlertCircle, Loader2, Wrench, StopCircle } from "lucide-react";
 import { toast } from "sonner";
 
 interface KidsLevel {
@@ -38,6 +38,8 @@ export default function KidsRoomValidation() {
   const [levelStatuses, setLevelStatuses] = useState<LevelStatus[]>([]);
   const [loading, setLoading] = useState(true);
   const [repairing, setRepairing] = useState(false);
+  const [scanning, setScanning] = useState(false);
+  const abortControllerRef = useRef<AbortController | null>(null);
   const [summary, setSummary] = useState({
     totalLevels: 0,
     totalRooms: 0,
@@ -111,9 +113,24 @@ export default function KidsRoomValidation() {
     }
   };
 
+  const stopScan = () => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+      abortControllerRef.current = null;
+      setScanning(false);
+      setLoading(false);
+      toast.info("Scan stopped");
+    }
+  };
+
   const validateRooms = async () => {
     setLoading(true);
+    setScanning(true);
+    abortControllerRef.current = new AbortController();
+    const signal = abortControllerRef.current.signal;
+    
     try {
+      if (signal.aborted) throw new Error("Scan cancelled");
       // Fetch all levels
       const { data: levels, error: levelsError } = await supabase
         .from('kids_levels')
@@ -127,6 +144,8 @@ export default function KidsRoomValidation() {
       let roomsWithIssues = 0;
 
       for (const level of levels || []) {
+        if (signal.aborted) throw new Error("Scan cancelled");
+        
         // Fetch rooms for this level
         const { data: rooms, error: roomsError } = await supabase
           .from('kids_rooms')
@@ -139,9 +158,11 @@ export default function KidsRoomValidation() {
         const roomStatuses: RoomStatus[] = [];
 
         for (const room of rooms || []) {
+          if (signal.aborted) throw new Error("Scan cancelled");
+          
           try {
             // Try to fetch the JSON file - files are in /data/ with pattern: {room_id}.json
-            const response = await fetch(`/data/${room.id}.json`);
+            const response = await fetch(`/data/${room.id}.json`, { signal });
             
             if (response.ok) {
               const jsonData = await response.json();
@@ -209,9 +230,16 @@ export default function KidsRoomValidation() {
         roomsWithIssues,
       });
     } catch (error) {
-      console.error('Validation error:', error);
+      if (error instanceof Error && error.message === "Scan cancelled") {
+        console.log('Scan was cancelled by user');
+      } else {
+        console.error('Validation error:', error);
+        toast.error("Validation failed");
+      }
     } finally {
       setLoading(false);
+      setScanning(false);
+      abortControllerRef.current = null;
     }
   };
 
@@ -240,23 +268,35 @@ export default function KidsRoomValidation() {
           <h1 className="text-3xl font-bold">Kids Room Validation Dashboard</h1>
           <p className="text-muted-foreground mt-2">Real-time status of all kids rooms, entries, and audio files</p>
         </div>
-        <Button 
-          onClick={repairAllRooms} 
-          disabled={repairing}
-          className="gap-2"
-        >
-          {repairing ? (
-            <>
-              <Loader2 className="h-4 w-4 animate-spin" />
-              Repairing...
-            </>
-          ) : (
-            <>
-              <Wrench className="h-4 w-4" />
-              Repair All JSON Files
-            </>
+        <div className="flex gap-2">
+          {scanning && (
+            <Button 
+              onClick={stopScan}
+              variant="destructive"
+              className="gap-2"
+            >
+              <StopCircle className="h-4 w-4" />
+              Stop Scan
+            </Button>
           )}
-        </Button>
+          <Button 
+            onClick={repairAllRooms} 
+            disabled={repairing || scanning}
+            className="gap-2"
+          >
+            {repairing ? (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Repairing...
+              </>
+            ) : (
+              <>
+                <Wrench className="h-4 w-4" />
+                Repair All JSON Files
+              </>
+            )}
+          </Button>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
