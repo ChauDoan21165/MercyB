@@ -151,11 +151,11 @@ serve(async (req) => {
     const confidence = extracted.confidence || 0
     const extractedAmount = parseFloat(extracted.amount || '0')
     
-    // Auto-approve if high confidence and amount matches
+    // Auto-approve if high confidence and amount matches (if expectedAmount provided)
     let status = 'pending'
     let verificationMethod = 'pending'
     
-    if (confidence >= 0.85 && Math.abs(extractedAmount - expectedAmount) < 0.01) {
+    if (confidence >= 0.85 && expectedAmount && Math.abs(extractedAmount - expectedAmount) < 0.01) {
       status = 'auto_approved'
       verificationMethod = 'ocr_auto'
       
