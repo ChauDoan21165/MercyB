@@ -1,5 +1,6 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { validateInput, paymentVerificationSchema, sanitizeInput } from "../shared/validation.ts"
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -34,21 +35,10 @@ serve(async (req) => {
       )
     }
 
-    const { imageUrl, tierId, username, expectedAmount } = await req.json()
-
-    if (!imageUrl || !tierId || !username) {
-      throw new Error('Missing required fields')
-    }
-
-    // Validate username
-    if (username.length > 100) {
-      throw new Error('Username must be less than 100 characters')
-    }
-
-    // Validate expectedAmount
-    if (expectedAmount && (isNaN(expectedAmount) || expectedAmount <= 0)) {
-      throw new Error('Invalid expected amount')
-    }
+    // Validate input using zod schema
+    const body = await req.json()
+    const validatedData = validateInput(paymentVerificationSchema, body)
+    const { imageUrl, tierId, username, expectedAmount } = validatedData
 
     // Check user suspension status
     const { data: modStatus } = await supabaseClient
@@ -224,8 +214,19 @@ serve(async (req) => {
     )
   } catch (error) {
     console.error('Verification error:', error)
+    
+    // Map errors to safe messages
+    let errorMessage = 'An error occurred processing your request';
+    if (error instanceof Error) {
+      const msg = error.message.toLowerCase();
+      if (msg.includes('validation')) errorMessage = 'Invalid input provided';
+      else if (msg.includes('authentication')) errorMessage = 'Authentication failed';
+      else if (msg.includes('suspended')) errorMessage = 'Account suspended';
+      else if (msg.includes('not found')) errorMessage = 'Resource not found';
+    }
+    
     return new Response(
-      JSON.stringify({ error: error instanceof Error ? error.message : 'Unknown error' }),
+      JSON.stringify({ error: errorMessage }),
       {
         status: 400,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },

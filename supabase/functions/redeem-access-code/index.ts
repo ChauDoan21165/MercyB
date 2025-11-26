@@ -1,4 +1,5 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.75.1';
+import { validateInput, accessCodeRedemptionSchema } from "../shared/validation.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -28,11 +29,10 @@ Deno.serve(async (req) => {
       throw new Error('Unauthorized');
     }
 
-    const { code } = await req.json();
-    
-    if (!code || typeof code !== 'string') {
-      throw new Error('Invalid code format');
-    }
+    // Validate input using zod schema
+    const body = await req.json();
+    const validatedData = validateInput(accessCodeRedemptionSchema, body);
+    const { code } = validatedData; // Already uppercased by schema transform
 
     console.log(`[Redeem] User ${user.id} attempting to redeem code: ${code}`);
 
@@ -40,7 +40,7 @@ Deno.serve(async (req) => {
     const { data: accessCode, error: codeError } = await supabase
       .from('access_codes')
       .select('*, subscription_tiers(*)')
-      .eq('code', code.toUpperCase())
+      .eq('code', code)
       .eq('is_active', true)
       .single();
 
@@ -199,7 +199,18 @@ Deno.serve(async (req) => {
 
   } catch (error) {
     console.error('[Redeem] Error:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+    
+    // Map errors to safe messages
+    let errorMessage = 'Unable to process redemption';
+    if (error instanceof Error) {
+      const msg = error.message.toLowerCase();
+      if (msg.includes('validation')) errorMessage = 'Invalid access code format';
+      else if (msg.includes('unauthorized')) errorMessage = 'Authentication required';
+      else if (msg.includes('invalid') || msg.includes('inactive')) errorMessage = 'Invalid or inactive access code';
+      else if (msg.includes('expired')) errorMessage = 'This access code has expired';
+      else if (msg.includes('redeemed')) errorMessage = 'Access code already used';
+    }
+    
     return new Response(
       JSON.stringify({ 
         success: false,

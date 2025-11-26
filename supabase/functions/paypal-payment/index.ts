@@ -227,7 +227,17 @@ serve(async (req) => {
 
   } catch (error) {
     console.error('PayPal payment error:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+    
+    // Map errors to safe messages
+    let errorMessage = 'Payment processing failed';
+    if (error instanceof Error) {
+      const msg = error.message.toLowerCase();
+      if (msg.includes('validation')) errorMessage = 'Invalid payment information';
+      else if (msg.includes('tier not found')) errorMessage = 'Invalid subscription tier';
+      else if (msg.includes('rate limit')) errorMessage = 'Too many requests, please try again later';
+      else if (msg.includes('authentication')) errorMessage = 'Authentication required';
+    }
+    
     return new Response(JSON.stringify({ error: errorMessage }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
