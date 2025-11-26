@@ -22,6 +22,8 @@ interface RoomStatus {
   jsonEntryCount: number;
   missingAudioFiles: string[];
   error?: string;
+  entryMismatch?: boolean;
+  audioIssues?: boolean;
 }
 
 export default function KidsRoomValidation() {
@@ -60,6 +62,115 @@ export default function KidsRoomValidation() {
       setLoading(false);
       toast.info("Scan stopped");
     }
+  };
+
+  const fixRoomEntries = async (roomId: string) => {
+    try {
+      toast.info(`Fixing entries for room ${roomId}...`);
+      
+      // Fetch JSON data
+      const response = await fetch(`/data/${roomId}.json`);
+      if (!response.ok) throw new Error("JSON file not found");
+      
+      const jsonData = await response.json();
+      const entries = jsonData.entries || [];
+      
+      // Update database with entries from JSON
+      const { error } = await supabase
+        .from('rooms')
+        .update({ entries: entries })
+        .eq('id', roomId);
+      
+      if (error) throw error;
+      
+      toast.success(`Fixed entries for ${roomId}`);
+      // Re-run validation to show updated status
+      validateRooms(true);
+    } catch (error) {
+      console.error('Fix entries error:', error);
+      toast.error(`Failed to fix entries: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  };
+
+  const fixRoomAudio = async (roomId: string) => {
+    try {
+      toast.info(`Fixing audio for room ${roomId}...`);
+      
+      const { data: room, error: fetchError } = await supabase
+        .from('rooms')
+        .select('entries')
+        .eq('id', roomId)
+        .single();
+      
+      if (fetchError) throw fetchError;
+      
+      const entries = room.entries || [];
+      const fixedEntries = entries.map((entry: any) => {
+        if (entry.audio) {
+          // Remove "vip9" from audio filename if present
+          const audioFile = entry.audio.replace(/_vip9_/g, '_').replace(/vip9_/g, '');
+          return { ...entry, audio: audioFile };
+        }
+        return entry;
+      });
+      
+      const { error: updateError } = await supabase
+        .from('rooms')
+        .update({ entries: fixedEntries })
+        .eq('id', roomId);
+      
+      if (updateError) throw updateError;
+      
+      toast.success(`Fixed audio for ${roomId}`);
+      validateRooms(true);
+    } catch (error) {
+      console.error('Fix audio error:', error);
+      toast.error(`Failed to fix audio: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+  };
+
+  const bulkFixEntries = async () => {
+    const roomsWithIssues = roomStatuses.filter(s => s.entryMismatch);
+    if (roomsWithIssues.length === 0) {
+      toast.info("No rooms with entry issues to fix");
+      return;
+    }
+    
+    toast.info(`Fixing entries for ${roomsWithIssues.length} rooms...`);
+    let fixed = 0;
+    
+    for (const status of roomsWithIssues) {
+      try {
+        await fixRoomEntries(status.room.id);
+        fixed++;
+      } catch (error) {
+        console.error(`Failed to fix ${status.room.id}:`, error);
+      }
+    }
+    
+    toast.success(`Fixed entries for ${fixed}/${roomsWithIssues.length} rooms`);
+  };
+
+  const bulkFixAudio = async () => {
+    const roomsWithAudioIssues = roomStatuses.filter(s => s.audioIssues || s.missingAudioFiles.length > 0);
+    if (roomsWithAudioIssues.length === 0) {
+      toast.info("No rooms with audio issues to fix");
+      return;
+    }
+    
+    toast.info(`Fixing audio for ${roomsWithAudioIssues.length} rooms...`);
+    let fixed = 0;
+    
+    for (const status of roomsWithAudioIssues) {
+      try {
+        await fixRoomAudio(status.room.id);
+        fixed++;
+      } catch (error) {
+        console.error(`Failed to fix audio for ${status.room.id}:`, error);
+      }
+    }
+    
+    toast.success(`Fixed audio for ${fixed}/${roomsWithAudioIssues.length} rooms`);
   };
 
   const validateRooms = async (deepScan: boolean = false) => {
@@ -140,7 +251,10 @@ export default function KidsRoomValidation() {
               }
             }
 
-            if (entries.length === 0 || (deepScan && missingAudio.length > 0)) {
+            const entryMismatch = room.entries && Array.isArray(room.entries) && room.entries.length !== entries.length;
+            const audioIssues = missingAudio.length > 0;
+            
+            if (entries.length === 0 || entryMismatch || (deepScan && audioIssues)) {
               roomsWithIssues++;
             }
 
@@ -149,6 +263,8 @@ export default function KidsRoomValidation() {
               hasJson: true,
               jsonEntryCount: entries.length,
               missingAudioFiles: missingAudio,
+              entryMismatch,
+              audioIssues,
             });
           } else {
             roomsWithIssues++;
@@ -285,6 +401,23 @@ export default function KidsRoomValidation() {
 
       {roomStatuses.length > 0 && (
         <>
+          <div className="flex gap-2 mb-4">
+            <Button 
+              onClick={bulkFixEntries}
+              disabled={loading || !roomStatuses.some(s => s.entryMismatch)}
+              variant="outline"
+            >
+              Fix All Entry Mismatches
+            </Button>
+            <Button 
+              onClick={bulkFixAudio}
+              disabled={loading || !roomStatuses.some(s => s.audioIssues || s.missingAudioFiles.length > 0)}
+              variant="outline"
+            >
+              Fix All Audio Issues
+            </Button>
+          </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Card>
               <CardHeader className="pb-3">
@@ -351,10 +484,28 @@ export default function KidsRoomValidation() {
                           </div>
                         </div>
                         <div className="flex gap-2">
-                          {roomStatus.hasJson && roomStatus.jsonEntryCount > 0 && (
+                          {roomStatus.entryMismatch && (
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => fixRoomEntries(roomStatus.room.id)}
+                            >
+                              Fix Entries
+                            </Button>
+                          )}
+                          {(roomStatus.audioIssues || roomStatus.missingAudioFiles.length > 0) && (
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => fixRoomAudio(roomStatus.room.id)}
+                            >
+                              Fix Audio
+                            </Button>
+                          )}
+                          {roomStatus.hasJson && roomStatus.jsonEntryCount > 0 && !roomStatus.entryMismatch && (
                             <Badge variant="default">✓ JSON</Badge>
                           )}
-                          {roomStatus.hasJson && roomStatus.missingAudioFiles.length === 0 && roomStatus.jsonEntryCount > 0 && (
+                          {roomStatus.hasJson && roomStatus.missingAudioFiles.length === 0 && roomStatus.jsonEntryCount > 0 && !roomStatus.audioIssues && (
                             <Badge variant="default">✓ Audio</Badge>
                           )}
                         </div>
