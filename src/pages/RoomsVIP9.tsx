@@ -43,7 +43,7 @@ const RoomsVIP9 = () => {
         const individualRooms = data.filter(r => r.domain === 'Individual');
         const corporateRooms = data.filter(r => r.domain === 'Corporate');
         const nationalRooms = data.filter(r => r.domain === 'National');
-        const historicalStrategistsRooms = data.filter(r => r.domain === 'Historical Strategists');
+        const historicalStrategistsRooms = data.filter(r => r.domain === 'Strategy');
 
         setDomains([
           {
