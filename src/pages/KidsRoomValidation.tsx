@@ -70,6 +70,7 @@ export default function KidsRoomValidation() {
 
     setLoading(true);
     setScanning(true);
+    setRoomStatuses([]); // Clear previous results
     abortControllerRef.current = new AbortController();
     const signal = abortControllerRef.current.signal;
     
@@ -78,20 +79,31 @@ export default function KidsRoomValidation() {
       
       toast.info(`Starting ${deepScan ? 'deep' : 'quick'} scan for ${selectedTier}...`);
 
+      // Normalize tier for query - VIP9 -> vip9, but also match "VIP9 / Cấp VIP9" format
+      const tierQuery = selectedTier.toLowerCase();
+      
       // Fetch rooms for selected tier
       const { data: rooms, error: roomsError } = await supabase
         .from('rooms')
         .select('*')
-        .ilike('tier', `%${selectedTier}%`)
+        .or(`tier.ilike.%${tierQuery}%,tier.ilike.%${selectedTier}%`)
         .order('title_en');
 
-      if (roomsError) throw roomsError;
+      if (roomsError) {
+        console.error('Database error:', roomsError);
+        throw new Error(`Database query failed: ${roomsError.message}`);
+      }
+      
       if (!rooms || rooms.length === 0) {
-        toast.error(`No rooms found for tier ${selectedTier}`);
+        toast.warning(`No rooms found for tier ${selectedTier}`);
+        setRoomStatuses([]);
+        setSummary({ totalRooms: 0, totalEntries: 0, roomsWithIssues: 0 });
         setLoading(false);
         setScanning(false);
         return;
       }
+
+      console.log(`Found ${rooms.length} rooms for tier ${selectedTier}`);
 
       const results: RoomStatus[] = [];
       let totalEntries = 0;
@@ -168,18 +180,23 @@ export default function KidsRoomValidation() {
         roomsWithIssues,
       });
       
+      console.log(`Scan complete: ${results.length} rooms, ${totalEntries} entries, ${roomsWithIssues} issues`);
       toast.success(`${deepScan ? 'Deep' : 'Quick'} scan complete: ${results.length} rooms checked`);
     } catch (error) {
       if (error instanceof Error && error.message === "Scan cancelled") {
         console.log('Scan was cancelled by user');
+        toast.info("Scan cancelled");
       } else {
         console.error('Validation error:', error);
-        toast.error("Validation failed");
+        const errorMessage = error instanceof Error ? error.message : "Unknown validation error";
+        toast.error(`Scan failed: ${errorMessage}`);
+        // Keep the tier selected even on error
       }
     } finally {
       setLoading(false);
       setScanning(false);
       abortControllerRef.current = null;
+      // DO NOT reset selectedTier here - keep it selected so user can see what they scanned
     }
   };
 
