@@ -126,7 +126,7 @@ const RoomGrid = () => {
               Chọn Phòng Học Của Bạn
             </p>
             <p className="text-sm text-muted-foreground/80">
-              {isLoading ? 'Loading...' : `Showing ${sortedRooms.length} rooms`}
+              {isLoading ? 'Loading...' : `Showing ${filteredRooms.length} rooms`}
             </p>
           </div>
         </div>
