@@ -1,6 +1,6 @@
 {
   "id": "philosophy-of-everyday-vip1",
-  "tier": "vip 1",
+  "tier": "VIP1",
   "title": {
     "en": "Philosophy VIP1",
     "vi": "Triết Học VIP1"
@@ -10,11 +10,27 @@
     "vi": "Trí tuệ triết học cho cuộc sống hằng ngày."
   },
   "intro_audio": "",
-  "entries": [],
+  "entries": [
+    {
+      "slug": "the-art-of-slow-seeing",
+      "en": "Philosophy begins with learning how to see the ordinary world with fresh eyes. Most people move through life on automatic mode, rarely noticing the small details that hold meaning. To practice slow seeing, pause for a moment before you react or judge. Look at what is in front of you without rushing to label it as good or bad. This small practice creates space in your mind, allowing you to understand situations more clearly and respond with intention. Slow seeing reduces anxiety because it breaks the cycle of automatic fear and automatic assumptions. It also strengthens empathy—you begin to notice expressions, tones, small gestures, and the inner world of others. Everyday philosophy is not about theories; it is about sharpening awareness. When you see slowly, you live deeply.",
+      "vi": "Triết học bắt đầu bằng khả năng nhìn thế giới quen thuộc bằng đôi mắt mới. Hầu hết con người sống trong chế độ tự động, hiếm khi để ý đến những chi tiết nhỏ nhưng đầy ý nghĩa. Để luyện tập “nhìn chậm”, hãy dừng lại một chút trước khi phản ứng hay phán xét. Quan sát điều đang ở trước mắt mà không vội gắn nhãn đúng sai. Thực tập nhỏ này tạo khoảng trống trong tâm trí, giúp bạn hiểu rõ tình huống và đáp lại một cách có chủ đích. Nhìn chậm làm giảm lo âu vì nó phá vỡ vòng lặp phản ứng tự động và giả định tự động. Nó cũng nuôi dưỡng lòng thấu cảm—bạn bắt đầu nhận ra biểu cảm, giọng nói, cử chỉ nhỏ và thế giới nội tâm của người khác. Triết học hằng ngày không nằm ở lý thuyết mà ở khả năng mở rộng ý thức. Khi bạn nhìn chậm, bạn sống sâu."
+    },
+    {
+      "slug": "the-power-of-small-choices",
+      "en": "A meaningful life is not built from grand decisions but from small, repeated choices. Every morning you choose how to speak, how to respond, what to tolerate, and what to reject. These choices shape your character more than any single dramatic event. Philosophy teaches that freedom is found in recognizing the power of these daily decisions. When you decide with clarity, you slowly build inner strength and direction. Even choosing kindness in a moment of irritation is a philosophical act—it declares the kind of person you want to become. Do not underestimate the impact of tiny decisions: the tone you use, the boundaries you set, the habits you keep, and the thoughts you allow to stay. Over time, small choices accumulate into identity. You become what you practice.",
+      "vi": "Một cuộc sống ý nghĩa không được xây dựng từ những quyết định lớn lao mà từ vô số lựa chọn nhỏ lặp đi lặp lại. Mỗi buổi sáng, bạn lựa chọn cách nói chuyện, cách phản ứng, điều gì chấp nhận và điều gì từ chối. Những lựa chọn ấy định hình tính cách nhiều hơn bất kỳ sự kiện kịch tính nào. Triết học dạy rằng tự do nằm ở việc nhận ra sức mạnh của những quyết định hằng ngày. Khi bạn quyết định rõ ràng, bạn từ từ xây dựng sức mạnh nội tâm và hướng đi. Ngay cả việc chọn sự tử tế trong khoảnh khắc khó chịu cũng là một hành động triết học—nó thể hiện con người bạn muốn trở thành. Đừng xem nhẹ tác động của những lựa chọn nhỏ: giọng bạn dùng, ranh giới bạn đặt, thói quen bạn giữ và những suy nghĩ bạn cho phép tồn tại. Theo thời gian, những lựa chọn nhỏ tích lũy thành bản chất. Bạn trở thành điều bạn thực hành."
+    },
+    {
+      "slug": "quiet-strength",
+      "en": "True strength is quiet. It does not need to prove, display, or dominate. In philosophy, strength is understood as the ability to remain centered while the world around you becomes chaotic. This comes from grounding yourself in values rather than emotions of the moment. Quiet strength allows you to listen fully, speak thoughtfully, and act without panic. It also protects you from being manipulated by pressure or fear. When you cultivate this calm firmness, people naturally trust you—they sense stability. Quiet strength is built through reflection, stillness, and the willingness to pause before reacting. It is not weakness; it is mastery of the self. The less you need to show strength, the more you truly have it.",
+      "vi": "Sức mạnh thật sự là sự im lặng. Nó không cần chứng minh, phô trương hay áp đảo. Trong triết học, sức mạnh được hiểu là khả năng giữ vững tâm khi thế giới xung quanh hỗn loạn. Điều này đến từ việc đặt mình vào giá trị chứ không chạy theo cảm xúc tức thời. Sức mạnh tĩnh lặng giúp bạn lắng nghe trọn vẹn, nói năng có suy nghĩ và hành động không hoảng loạn. Nó cũng bảo vệ bạn khỏi bị thao túng bởi áp lực hay sợ hãi. Khi bạn nuôi dưỡng sự vững vàng này, người khác tự nhiên tin tưởng bạn—họ cảm thấy sự ổn định. Sức mạnh tĩnh lặng được xây bằng sự phản tư, tĩnh tâm và khả năng dừng lại trước khi phản ứng. Nó không phải yếu đuối; đó là làm chủ bản thân. Càng ít cần chứng tỏ sức mạnh, bạn càng sở hữu nó thật sự."
+    }
+  ],
   "meta": {
     "created_at": "2025-11-23T00:00:00.000Z",
     "updated_at": "2025-11-23T00:00:00.000Z",
-    "num_entries": 0,
+    "num_entries": 3,
     "room_color": "#FAF0E6"
   }
 }
