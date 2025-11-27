@@ -1,0 +1,75 @@
+{
+  "id": "english_a1_a110",
+  "tier": "VIP1 / VIP1",
+  "domain": "English A1",
+  "title": {
+    "en": "A1-10 — Slow & Clear Listening Practice",
+    "vi": "A1-10 — Luyện Nghe Chậm & Rõ"
+  },
+  "content": {
+    "en": "This room helps beginners train the ear to hear English slowly and clearly. Each entry gives short, simple lines that build rhythm and confidence. Listen softly, without pressure. Repeat only if you want. With steady practice, your ear becomes familiar with real English sound patterns.",
+    "vi": "Phòng này giúp người mới bắt đầu luyện khả năng nghe tiếng Anh một cách chậm và rõ. Mỗi mục cung cấp các câu ngắn và đơn giản để rèn nhịp và sự tự tin. Hãy nghe nhẹ nhàng, không áp lực. Lặp lại nếu bạn muốn. Khi luyện đều đặn, tai bạn sẽ quen với nhịp âm tiếng Anh tự nhiên."
+  },
+  "entries": [
+    {
+      "slug": "slow-basic-words",
+      "keywords_en": ["listening", "basic words"],
+      "keywords_vi": ["nghe", "từ cơ bản"],
+      "copy": {
+        "en": "Listen to each word slowly. Repeat if you want. cat dog book cup map sun red big milk water",
+        "vi": "Hãy nghe từng từ thật chậm và lặp lại nếu muốn: cat, dog, book, cup, map, sun, red, big, milk, water."
+      },
+      "audio": "a110_01_en.mp3"
+    },
+    {
+      "slug": "slow-basic-phrases",
+      "keywords_en": ["listening", "phrases"],
+      "keywords_vi": ["nghe", "cụm từ"],
+      "copy": {
+        "en": "Practice these slow phrases. hello my name is I am fine thank you see you later",
+        "vi": "Luyện các cụm từ chậm sau: hello, my name is, I am fine thank you, see you later."
+      },
+      "audio": "a110_02_en.mp3"
+    },
+    {
+      "slug": "simple-actions",
+      "keywords_en": ["actions", "listening"],
+      "keywords_vi": ["hành động", "nghe"],
+      "copy": {
+        "en": "Listen to action words. walk sit stand open close write read look",
+        "vi": "Hãy nghe các động từ hành động sau: walk, sit, stand, open, close, write, read, look."
+      },
+      "audio": "a110_03_en.mp3"
+    },
+    {
+      "slug": "short-easy-sentences",
+      "keywords_en": ["sentences", "listening"],
+      "keywords_vi": ["câu ngắn", "nghe"],
+      "copy": {
+        "en": "Practice slow sentences. I am here. You are nice. This is my bag. That is my phone. We are ready.",
+        "vi": "Luyện nghe câu ngắn: I am here, You are nice, This is my bag, That is my phone, We are ready."
+      },
+      "audio": "a110_04_en.mp3"
+    },
+    {
+      "slug": "daily-life-lines",
+      "keywords_en": ["daily English", "listening"],
+      "keywords_vi": ["đời sống", "nghe"],
+      "copy": {
+        "en": "Listen to daily English. I need water. I want this. I like it. Please wait. Thank you very much.",
+        "vi": "Luyện nghe tiếng Anh đời sống: I need water, I want this, I like it, Please wait, Thank you very much."
+      },
+      "audio": "a110_05_en.mp3"
+    },
+    {
+      "slug": "mini-listening-drill",
+      "keywords_en": ["listening drill"],
+      "keywords_vi": ["bài luyện nghe"],
+      "copy": {
+        "en": "Do this short drill. I am ready. You are right. It is sunny. This is easy. Keep listening slowly.",
+        "vi": "Luyện bài ngắn: I am ready, You are right, It is sunny, This is easy. Hãy nghe thật chậm."
+      },
+      "audio": "a110_06_en.mp3"
+    }
+  ]
+}
