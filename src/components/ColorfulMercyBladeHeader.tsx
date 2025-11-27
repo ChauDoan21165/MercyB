@@ -126,137 +126,195 @@ export const ColorfulMercyBladeHeader = ({
                   Tier/Gói
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56 bg-popover z-50 animate-scale-in">
+              <DropdownMenuContent align="end" className="w-[600px] bg-popover z-50 animate-scale-in">
                 <DropdownMenuLabel className="text-center font-bold animate-fade-in">
                   Explore Tiers / Khám Phá Gói
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 
-                <DropdownMenuItem 
-                  onClick={() => navigate('/rooms')}
-                  className="cursor-pointer hover:bg-green-50 dark:hover:bg-green-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
-                >
-                  <Crown className="mr-2 h-4 w-4 text-green-600 transition-transform duration-200 group-hover:scale-110" />
-                  <div className="flex flex-col">
-                    <span className="font-semibold">Free <span className="text-[10px] text-muted-foreground">$0</span></span>
-                    <span className="text-xs text-muted-foreground">Basic rooms</span>
-                  </div>
-                </DropdownMenuItem>
+                {/* Two-column layout */}
+                <div className="grid grid-cols-2 gap-4 p-2">
+                  {/* Column 1: Core Tiers */}
+                  <div className="space-y-1">
+                    <div className="px-2 py-1.5 text-xs font-semibold text-muted-foreground">
+                      Core Tiers
+                    </div>
+                    
+                    <DropdownMenuItem 
+                      onClick={() => navigate('/rooms')}
+                      className="cursor-pointer hover:bg-green-50 dark:hover:bg-green-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                    >
+                      <Crown className="mr-2 h-4 w-4 text-green-600 transition-transform duration-200 group-hover:scale-110" />
+                      <div className="flex flex-col">
+                        <span className="font-semibold">Free <span className="text-[10px] text-muted-foreground">$0</span></span>
+                        <span className="text-xs text-muted-foreground">Basic rooms</span>
+                      </div>
+                    </DropdownMenuItem>
 
-                <DropdownMenuItem 
-                  onClick={() => navigate('/rooms-vip1')}
-                  className="cursor-pointer hover:bg-yellow-50 dark:hover:bg-yellow-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
-                >
-                  <Star className="mr-2 h-4 w-4 text-yellow-600 transition-transform duration-200 group-hover:scale-110" />
-                  <div className="flex flex-col">
-                    <span className="font-semibold">VIP1 <span className="text-[10px] text-muted-foreground">$3</span></span>
-                    <span className="text-xs text-muted-foreground">10 rooms/month</span>
-                  </div>
-                </DropdownMenuItem>
+                    <DropdownMenuItem 
+                      onClick={() => navigate('/rooms-vip1')}
+                      className="cursor-pointer hover:bg-yellow-50 dark:hover:bg-yellow-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                    >
+                      <Star className="mr-2 h-4 w-4 text-yellow-600 transition-transform duration-200 group-hover:scale-110" />
+                      <div className="flex flex-col">
+                        <span className="font-semibold">VIP1 <span className="text-[10px] text-muted-foreground">$3</span></span>
+                        <span className="text-xs text-muted-foreground">10 rooms/month</span>
+                      </div>
+                    </DropdownMenuItem>
 
-                <DropdownMenuItem 
-                  onClick={() => navigate('/rooms-vip2')}
-                  className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
-                >
-                  <Gem className="mr-2 h-4 w-4 text-blue-600 transition-transform duration-200 group-hover:scale-110" />
-                  <div className="flex flex-col">
-                    <span className="font-semibold">VIP2 <span className="text-[10px] text-muted-foreground">$6</span></span>
-                    <span className="text-xs text-muted-foreground">25 rooms/month</span>
-                  </div>
-                </DropdownMenuItem>
+                    <DropdownMenuItem 
+                      onClick={() => navigate('/rooms-vip2')}
+                      className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                    >
+                      <Gem className="mr-2 h-4 w-4 text-blue-600 transition-transform duration-200 group-hover:scale-110" />
+                      <div className="flex flex-col">
+                        <span className="font-semibold">VIP2 <span className="text-[10px] text-muted-foreground">$6</span></span>
+                        <span className="text-xs text-muted-foreground">25 rooms/month</span>
+                      </div>
+                    </DropdownMenuItem>
 
-                <DropdownMenuItem 
-                  onClick={() => navigate('/rooms-vip3')}
-                  className="cursor-pointer hover:bg-purple-50 dark:hover:bg-purple-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
-                >
-                  <Sparkles className="mr-2 h-4 w-4 text-purple-600 transition-transform duration-200 group-hover:scale-110" />
-                  <div className="flex flex-col">
-                    <span className="font-semibold">VIP3 <span className="text-[10px] text-muted-foreground">$15</span></span>
-                    <span className="text-xs text-muted-foreground">Unlimited rooms</span>
-                  </div>
-                </DropdownMenuItem>
+                    <DropdownMenuItem 
+                      onClick={() => navigate('/rooms-vip3')}
+                      className="cursor-pointer hover:bg-purple-50 dark:hover:bg-purple-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                    >
+                      <Sparkles className="mr-2 h-4 w-4 text-purple-600 transition-transform duration-200 group-hover:scale-110" />
+                      <div className="flex flex-col">
+                        <span className="font-semibold">VIP3 <span className="text-[10px] text-muted-foreground">$15</span></span>
+                        <span className="text-xs text-muted-foreground">Unlimited rooms</span>
+                      </div>
+                    </DropdownMenuItem>
 
-                <DropdownMenuItem 
-                  onClick={() => navigate('/rooms-vip4')}
-                  className="cursor-pointer hover:bg-orange-50 dark:hover:bg-orange-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
-                >
-                  <Rocket className="mr-2 h-4 w-4 text-orange-600 transition-transform duration-200 group-hover:scale-110" />
-                  <div className="flex flex-col">
-                    <span className="font-semibold">VIP4 CareerZ <span className="text-[10px] text-muted-foreground">$50</span></span>
-                    <span className="text-xs text-muted-foreground">Career coaching</span>
-                  </div>
-                </DropdownMenuItem>
+                    <DropdownMenuItem 
+                      onClick={() => navigate('/rooms-vip4')}
+                      className="cursor-pointer hover:bg-orange-50 dark:hover:bg-orange-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                    >
+                      <Rocket className="mr-2 h-4 w-4 text-orange-600 transition-transform duration-200 group-hover:scale-110" />
+                      <div className="flex flex-col">
+                        <span className="font-semibold">VIP4 CareerZ <span className="text-[10px] text-muted-foreground">$50</span></span>
+                        <span className="text-xs text-muted-foreground">Career coaching</span>
+                      </div>
+                    </DropdownMenuItem>
 
-                <DropdownMenuItem 
-                  onClick={() => navigate('/rooms-vip5')}
-                  className="cursor-pointer hover:bg-emerald-50 dark:hover:bg-emerald-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
-                >
-                  <Feather className="mr-2 h-4 w-4 text-emerald-600 transition-transform duration-200 group-hover:scale-110" />
-                  <div className="flex flex-col">
-                    <span className="font-semibold">VIP5 Writing <span className="text-[10px] text-muted-foreground">$70</span></span>
-                    <span className="text-xs text-muted-foreground">Writing support</span>
-                  </div>
-                </DropdownMenuItem>
+                    <DropdownMenuItem 
+                      onClick={() => navigate('/rooms-vip5')}
+                      className="cursor-pointer hover:bg-emerald-50 dark:hover:bg-emerald-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                    >
+                      <Feather className="mr-2 h-4 w-4 text-emerald-600 transition-transform duration-200 group-hover:scale-110" />
+                      <div className="flex flex-col">
+                        <span className="font-semibold">VIP5 Writing <span className="text-[10px] text-muted-foreground">$70</span></span>
+                        <span className="text-xs text-muted-foreground">Writing support</span>
+                      </div>
+                    </DropdownMenuItem>
 
-                <DropdownMenuItem 
-                  onClick={() => navigate('/vip6')}
-                  className="cursor-pointer hover:bg-purple-50 dark:hover:bg-purple-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
-                >
-                  <Brain className="mr-2 h-4 w-4 text-purple-600 transition-transform duration-200 group-hover:scale-110" />
-                  <div className="flex flex-col">
-                    <span className="font-semibold">VIP6 Psychology <span className="text-[10px] text-muted-foreground">$90</span></span>
-                    <span className="text-xs text-muted-foreground">Deep psychology</span>
-                  </div>
-                </DropdownMenuItem>
+                    <DropdownMenuItem 
+                      onClick={() => navigate('/vip6')}
+                      className="cursor-pointer hover:bg-purple-50 dark:hover:bg-purple-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                    >
+                      <Brain className="mr-2 h-4 w-4 text-purple-600 transition-transform duration-200 group-hover:scale-110" />
+                      <div className="flex flex-col">
+                        <span className="font-semibold">VIP6 Psychology <span className="text-[10px] text-muted-foreground">$90</span></span>
+                        <span className="text-xs text-muted-foreground">Deep psychology</span>
+                      </div>
+                    </DropdownMenuItem>
 
-                <DropdownMenuItem 
-                  onClick={() => navigate('/rooms-vip9')}
-                  className="cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md border-l-2 border-slate-400"
-                >
-                  <TrendingUp className="mr-2 h-4 w-4 text-slate-600 transition-transform duration-200 group-hover:scale-110" />
-                  <div className="flex flex-col">
-                    <span className="font-semibold">VIP9 Strategic Mastery <span className="text-[10px] text-muted-foreground">$150</span></span>
-                    <span className="text-xs text-muted-foreground">Executive Strategy</span>
+                    <DropdownMenuItem 
+                      onClick={() => navigate('/rooms-vip9')}
+                      className="cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md border-l-2 border-slate-400"
+                    >
+                      <TrendingUp className="mr-2 h-4 w-4 text-slate-600 transition-transform duration-200 group-hover:scale-110" />
+                      <div className="flex flex-col">
+                        <span className="font-semibold">VIP9 Strategic Mastery <span className="text-[10px] text-muted-foreground">$150</span></span>
+                        <span className="text-xs text-muted-foreground">Executive Strategy</span>
+                      </div>
+                    </DropdownMenuItem>
                   </div>
-                </DropdownMenuItem>
 
-                <DropdownMenuSeparator />
+                  {/* Column 2: English Learning Pathway */}
+                  <div className="space-y-1 border-l pl-4">
+                    <div className="px-2 py-1.5 text-xs font-semibold text-muted-foreground">
+                      English Learning Pathway
+                    </div>
+                    
+                    <DropdownMenuItem 
+                      onClick={() => navigate('/english-pathway')}
+                      className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                    >
+                      <GraduationCap className="mr-2 h-4 w-4 text-blue-600 transition-transform duration-200 group-hover:scale-110" />
+                      <div className="flex flex-col">
+                        <span className="font-semibold">English Foundation</span>
+                        <span className="text-xs text-muted-foreground">Free tier</span>
+                      </div>
+                    </DropdownMenuItem>
 
-                <DropdownMenuItem 
-                  onClick={() => navigate('/kids-level1')}
-                  className="cursor-pointer hover:bg-green-50 dark:hover:bg-green-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
-                >
-                  <Baby className="mr-2 h-4 w-4 text-green-600 transition-transform duration-200 group-hover:scale-110" />
-                  <div className="flex flex-col">
-                    <span className="font-semibold">Kids Level 1</span>
-                    <span className="text-xs text-muted-foreground">Ages 4-7</span>
-                    <span className="text-[10px] text-amber-600 dark:text-amber-400 font-medium">🎁 Bonus for VIP3 users</span>
+                    <DropdownMenuItem 
+                      onClick={() => navigate('/english-pathway')}
+                      className="cursor-pointer hover:bg-yellow-50 dark:hover:bg-yellow-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                    >
+                      <GraduationCap className="mr-2 h-4 w-4 text-yellow-600 transition-transform duration-200 group-hover:scale-110" />
+                      <div className="flex flex-col">
+                        <span className="font-semibold">A1 Beginner</span>
+                        <span className="text-xs text-muted-foreground">VIP1 bonus</span>
+                      </div>
+                    </DropdownMenuItem>
+
+                    <DropdownMenuItem 
+                      onClick={() => navigate('/english-pathway')}
+                      className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                    >
+                      <GraduationCap className="mr-2 h-4 w-4 text-blue-600 transition-transform duration-200 group-hover:scale-110" />
+                      <div className="flex flex-col">
+                        <span className="font-semibold">A2 + B1 Intermediate</span>
+                        <span className="text-xs text-muted-foreground">VIP2 bonus</span>
+                      </div>
+                    </DropdownMenuItem>
+
+                    <DropdownMenuItem 
+                      onClick={() => navigate('/english-pathway')}
+                      className="cursor-pointer hover:bg-purple-50 dark:hover:bg-purple-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                    >
+                      <GraduationCap className="mr-2 h-4 w-4 text-purple-600 transition-transform duration-200 group-hover:scale-110" />
+                      <div className="flex flex-col">
+                        <span className="font-semibold">B2 + C1 + C2 Advanced</span>
+                        <span className="text-xs text-muted-foreground">VIP3 bonus</span>
+                      </div>
+                    </DropdownMenuItem>
+
+                    <div className="my-2 border-t"></div>
+
+                    <DropdownMenuItem 
+                      onClick={() => navigate('/kids-level1')}
+                      className="cursor-pointer hover:bg-green-50 dark:hover:bg-green-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                    >
+                      <Baby className="mr-2 h-4 w-4 text-green-600 transition-transform duration-200 group-hover:scale-110" />
+                      <div className="flex flex-col">
+                        <span className="font-semibold">Kids Level 1</span>
+                        <span className="text-xs text-muted-foreground">Ages 4-7 • VIP3 bonus</span>
+                      </div>
+                    </DropdownMenuItem>
+
+                    <DropdownMenuItem 
+                      onClick={() => navigate('/kids-level2')}
+                      className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                    >
+                      <School className="mr-2 h-4 w-4 text-blue-600 transition-transform duration-200 group-hover:scale-110" />
+                      <div className="flex flex-col">
+                        <span className="font-semibold">Kids Level 2</span>
+                        <span className="text-xs text-muted-foreground">Ages 7-10 • VIP3 bonus</span>
+                      </div>
+                    </DropdownMenuItem>
+
+                    <DropdownMenuItem 
+                      onClick={() => navigate('/kids-level3')}
+                      className="cursor-pointer hover:bg-purple-50 dark:hover:bg-purple-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+                    >
+                      <GraduationCap className="mr-2 h-4 w-4 text-purple-600 transition-transform duration-200 group-hover:scale-110" />
+                      <div className="flex flex-col">
+                        <span className="font-semibold">Kids Level 3</span>
+                        <span className="text-xs text-muted-foreground">Ages 10-13 • VIP3 bonus</span>
+                      </div>
+                    </DropdownMenuItem>
                   </div>
-                </DropdownMenuItem>
-
-                <DropdownMenuItem 
-                  onClick={() => navigate('/kids-level2')}
-                  className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
-                >
-                  <School className="mr-2 h-4 w-4 text-blue-600 transition-transform duration-200 group-hover:scale-110" />
-                  <div className="flex flex-col">
-                    <span className="font-semibold">Kids Level 2</span>
-                    <span className="text-xs text-muted-foreground">Ages 7-10</span>
-                    <span className="text-[10px] text-amber-600 dark:text-amber-400 font-medium">🎁 Bonus for VIP3 users</span>
-                  </div>
-                </DropdownMenuItem>
-
-                <DropdownMenuItem 
-                  onClick={() => navigate('/kids-level3')}
-                  className="cursor-pointer hover:bg-purple-50 dark:hover:bg-purple-900 transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
-                >
-                  <GraduationCap className="mr-2 h-4 w-4 text-purple-600 transition-transform duration-200 group-hover:scale-110" />
-                  <div className="flex flex-col">
-                    <span className="font-semibold">Kids Level 3</span>
-                    <span className="text-xs text-muted-foreground">Ages 10-13</span>
-                    <span className="text-[10px] text-amber-600 dark:text-amber-400 font-medium">🎁 Bonus for VIP3 users</span>
-                  </div>
-                </DropdownMenuItem>
+                </div>
 
                 <DropdownMenuSeparator />
                 <DropdownMenuItem 
