@@ -152,9 +152,10 @@ const EnglishLearningPathway = () => {
           {/* Room Names */}
           <div className="space-y-1">
             <div 
-              className="text-xs font-semibold leading-tight" 
+              className="text-xs leading-tight" 
               style={{ 
-                color: useColorTheme ? undefined : '#1f2937'
+                color: useColorTheme ? undefined : '#000000',
+                fontWeight: useColorTheme ? undefined : 700
               }}
             >
               {useColorTheme 
@@ -163,9 +164,10 @@ const EnglishLearningPathway = () => {
             </div>
             {room.nameVi && (
               <div 
-                className="text-[10px] leading-tight opacity-75"
+                className="text-[10px] leading-tight"
                 style={{ 
-                  color: useColorTheme ? undefined : '#4b5563'
+                  color: useColorTheme ? undefined : '#000000',
+                  fontWeight: useColorTheme ? undefined : 600
                 }}
               >
                 {useColorTheme 
