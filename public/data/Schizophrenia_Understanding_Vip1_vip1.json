@@ -9,12 +9,30 @@
     "en": "Comprehensive understanding and support for schizophrenia.",
     "vi": "Hiểu biết toàn diện và hỗ trợ cho tâm thần phân liệt."
   },
-  "intro_audio": "",
-  "entries": [],
+  "entries": [
+    {
+      "slug": "what-schizophrenia-is-and-is-not",
+      "en": "Schizophrenia is a complex brain-based condition that affects thinking, perception, and emotional clarity. It does not mean someone is violent or dangerous—those are myths. People with schizophrenia may experience confused thoughts, difficulty concentrating, or hearing voices, but many live meaningful lives with correct support. This condition is not caused by weakness or lack of effort. It is shaped by biology, stress, and environment. When families learn the truth, stigma decreases and compassion becomes possible. The goal is not to change someone’s personality but to help them feel stable and safe. Each person deserves respect, calm communication, and an environment that reduces stress and supports recovery.",
+      "vi": "Tâm thần phân liệt là một rối loạn phức tạp liên quan đến hoạt động của não bộ, ảnh hưởng đến suy nghĩ, nhận thức và cảm xúc. Nó không đồng nghĩa với bạo lực hay nguy hiểm—đó đều là định kiến. Người mắc rối loạn này có thể gặp suy nghĩ rối, khó tập trung hoặc nghe thấy tiếng nói không có thật, nhưng nhiều người vẫn sống ổn định khi được hỗ trợ đúng cách. Đây không phải lỗi cá nhân hay do yếu đuối mà là tình trạng y khoa liên quan đến sinh học, căng thẳng và môi trường. Khi gia đình hiểu đúng, sự kỳ thị giảm và lòng cảm thông tăng. Mục tiêu không phải thay đổi con người họ mà là giúp họ an toàn, ổn định và được tôn trọng. Mỗi người đều xứng đáng được đối xử tử tế và sống trong môi trường giảm căng thẳng.",
+      "audio": "schizo_vip1_01_en.mp3"
+    },
+    {
+      "slug": "understanding-hallucinations-and-delusions",
+      "en": "Hallucinations and delusions are two key symptoms of schizophrenia, and understanding them helps reduce fear. A hallucination is when the brain creates a voice or image that feels real to the person, even though others cannot perceive it. A delusion is a strong belief that remains firm even when evidence disagrees. These experiences feel completely real, so arguing or confronting usually increases fear. The most supportive response is calm listening and gentle grounding, helping the person feel safe without reinforcing or attacking their belief. Symptoms come and go, and many people improve with rest, routine, medication, and emotional support. These symptoms do not define a person—they are experiences that can be managed with care.",
+      "vi": "Ảo giác và hoang tưởng là hai triệu chứng quan trọng của tâm thần phân liệt, và hiểu rõ chúng giúp giảm sợ hãi. Ảo giác xảy ra khi não tạo ra âm thanh hoặc hình ảnh mà người khác không thấy nhưng người trải nghiệm cảm nhận là thật. Hoang tưởng là một niềm tin mạnh mẽ khó thay đổi dù có bằng chứng ngược lại. Những trải nghiệm này hoàn toàn thật đối với họ, vì vậy tranh luận chỉ khiến họ lo lắng hoặc phòng thủ. Cách hỗ trợ tốt nhất là lắng nghe bình tĩnh, gợi họ quay về thực tại nhẹ nhàng mà không củng cố hay phủ nhận gay gắt niềm tin. Các triệu chứng có thể giảm khi có thuốc, nghỉ ngơi, thói quen ổn định và hỗ trợ tinh thần. Chúng không định nghĩa con người; đó chỉ là những trải nghiệm có thể kiểm soát.",
+      "audio": "schizo_vip1_02_en.mp3"
+    },
+    {
+      "slug": "supporting-someone-with-schizophrenia",
+      "en": "Supporting someone with schizophrenia requires stability, patience, and predictable routines. Many individuals experience stress overload, making calm environments essential. Encourage regular sleep, consistent meals, and structured daily habits. When symptoms intensify, respond with slow speech and reassurance rather than fear or urgency. Avoid sudden pressure or conflict, which increases confusion. Instead, guide the person gently toward safer thoughts and actions. Families should also care for themselves, as long-term support can be emotionally draining. Recovery is not linear—some days are harder, others more stable. Progress often comes in small but meaningful steps. With routine, empathy, and the right treatment plan, people with schizophrenia can live dignified and connected lives.",
+      "vi": "Hỗ trợ người mắc tâm thần phân liệt cần sự ổn định, kiên nhẫn và thói quen sinh hoạt có cấu trúc. Nhiều người dễ bị quá tải trước căng thẳng, vì vậy môi trường bình tĩnh là rất quan trọng. Khuyến khích ngủ đúng giờ, ăn uống đều đặn và duy trì thói quen hằng ngày. Khi triệu chứng tăng, hãy nói chậm rãi, trấn an và tránh tạo áp lực đột ngột vì điều đó khiến họ hoang mang hơn. Hãy hướng họ dần dần đến suy nghĩ và hành vi an toàn. Gia đình cũng cần chăm sóc chính mình vì hỗ trợ lâu dài có thể gây kiệt sức. Hồi phục không theo đường thẳng; có ngày tốt, ngày xấu. Tiến bộ thường nhỏ nhưng có ý nghĩa. Với thói quen ổn định, sự cảm thông và điều trị phù hợp, người mắc tâm thần phân liệt có thể sống đời sống có phẩm giá và kết nối.",
+      "audio": "schizo_vip1_03_en.mp3"
+    }
+  ],
   "meta": {
     "created_at": "2025-11-23T00:00:00.000Z",
     "updated_at": "2025-11-23T00:00:00.000Z",
-    "num_entries": 0,
+    "num_entries": 3,
     "room_color": "#E6F7FF"
   }
 }
