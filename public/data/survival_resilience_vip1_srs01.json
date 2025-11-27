@@ -1,0 +1,75 @@
+{
+  "id": "survival_resilience_vip1_srs01",
+  "tier": "VIP1 / VIP1",
+  "domain": "Survival",
+  "title": {
+    "en": "SRS-01 — Modern Weather Awareness",
+    "vi": "SRS-01 — Nhận Biết Thời Tiết Hiện Đại"
+  },
+  "content": {
+    "en": "Modern weather is shifting faster than many people realize. Heatwaves arrive earlier, storms intensify suddenly, and heavy rain can turn into flooding in a matter of hours. This room gives you a calm, practical foundation for noticing these changes. You will learn how to recognize early signs, understand basic risks, follow alerts intelligently, and protect vulnerable family members before danger arrives. You do not need scientific knowledge—only simple habits of awareness. These six entries help you train your eyes, trust your observations, and build a quiet survival skill that strengthens every other part of your life.",
+    "vi": "Thời tiết hiện nay thay đổi nhanh hơn nhiều so với chúng ta tưởng. Nắng nóng xuất hiện sớm hơn, bão mạnh lên bất ngờ và mưa lớn có thể trở thành lũ chỉ trong vài giờ. Phòng này cung cấp nền tảng bình tĩnh và thực tế để bạn nhận biết những thay đổi đó. Bạn sẽ học cách nhận ra các dấu hiệu sớm, hiểu rủi ro cơ bản, theo dõi cảnh báo một cách thông minh và bảo vệ người thân dễ tổn thương trước khi nguy hiểm ập đến. Bạn không cần kiến thức khoa học—chỉ cần một số thói quen quan sát đơn giản. Sáu mục nội dung này giúp bạn rèn luyện sự chú ý, tin vào nhận định của mình và xây dựng kỹ năng sinh tồn âm thầm hỗ trợ mọi mặt cuộc sống."
+  },
+  "entries": [
+    {
+      "slug": "understanding-todays-weather-patterns",
+      "keywords_en": ["weather patterns", "climate shift", "observation"],
+      "keywords_vi": ["mô thức thời tiết", "biến đổi khí hậu", "quan sát"],
+      "copy": {
+        "en": "Weather once followed familiar rhythms, but modern climate patterns are shifting faster than most people expect. Seasons overlap, heatwaves arrive early, and storms or sudden downpours appear with little warning. You do not need scientific knowledge to notice these changes. Begin by observing how temperature, humidity, clouds, and wind behave during a typical day in your area. Notice what feels normal for each month—then pay attention when something feels unusually hot, humid, dry, or windy for the season. Ask simple questions: Has rain been missing for weeks? Is the heat unusually strong for this time of year? Weather awareness is a habit, not a talent. When you stay curious about the sky and check forecasts consistently, you begin recognizing patterns faster than others. That small awareness gives you time to prepare calmly instead of reacting in panic.",
+        "vi": "Thời tiết trước đây thường theo nhịp điệu quen thuộc, nhưng hiện nay các mô thức khí hậu đang thay đổi nhanh hơn nhiều. Mùa nóng lạnh lẫn lộn, nắng gắt đến sớm hơn và mưa lớn hay giông bất ngờ xuất hiện mà không có nhiều dấu hiệu báo trước. Bạn không cần kiến thức khoa học để nhận ra điều này. Hãy quan sát sự thay đổi của nhiệt độ, độ ẩm, mây và gió trong ngày. Ghi nhận điều gì là bình thường cho từng tháng, rồi chú ý khi thời tiết trở nên quá nóng, quá ẩm hoặc quá khô so với mùa. Tự hỏi: Đã bao nhiêu ngày không mưa? Nhiệt độ có bất thường không? Nhận biết thời tiết là một thói quen, không phải năng khiếu. Khi bạn giữ thói quen quan sát bầu trời và xem dự báo đều đặn, bạn sẽ nhận ra mô thức sớm hơn nhiều người khác, giúp bạn chuẩn bị bình tĩnh thay vì phản ứng vội vàng."
+      },
+      "audio": "srs01_01_en.mp3"
+    },
+    {
+      "slug": "how-extreme-weather-forms",
+      "keywords_en": ["extreme weather", "storms", "heatwaves"],
+      "keywords_vi": ["thời tiết cực đoan", "bão mạnh", "nắng nóng"],
+      "copy": {
+        "en": "Extreme weather does not appear without warning. Storms, heatwaves, floods, and strong winds all develop through processes you can learn to recognize. Warm oceans create stronger storms. Hot air holds more moisture, causing heavier rain. Sudden drops in wind often indicate the atmosphere is reorganizing before a storm intensifies. When humidity rises, clouds darken, and temperatures stay high late into the evening, a heatwave may be forming. When the air feels strangely warm and still, a storm may be gathering strength. You do not need perfect accuracy—only the ability to sense instability. Early awareness gives you time to charge devices, secure outdoor items, prepare indoor cooling, avoid risky travel, or check flood alerts. Understanding how extreme weather forms helps you avoid being surprised by events that overwhelm unprepared households.",
+        "vi": "Thời tiết cực đoan không xuất hiện ngẫu nhiên. Bão, nắng nóng, lũ và gió mạnh đều hình thành từ những cơ chế mà bạn có thể học để nhận ra. Biển ấm tạo năng lượng cho bão mạnh hơn. Không khí nóng giữ nhiều hơi nước, dẫn đến mưa lớn. Khi gió đột ngột giảm, đó có thể là dấu hiệu khí quyển đang tổ chức lại trước khi bão mạnh lên. Khi độ ẩm tăng, mây đen dày đặc và nhiệt độ vẫn nóng bất thường vào buổi tối, có thể một đợt nắng nóng đang hình thành. Khi không khí ấm và yên tĩnh một cách lạ thường, cơn bão có thể đang tích tụ sức mạnh. Bạn không cần đoán chính xác—chỉ cần nhận biết sự bất ổn. Nhận ra sớm giúp bạn có thời gian sạc thiết bị, cất gọn đồ, chuẩn bị làm mát trong nhà, tránh giờ di chuyển nguy hiểm hoặc kiểm tra cảnh báo lũ. Hiểu cách thời tiết cực đoan hình thành giúp bạn tránh bị bất ngờ như những gia đình không chuẩn bị."
+      },
+      "audio": "srs01_02_en.mp3"
+    },
+    {
+      "slug": "recognizing-early-warning-signs",
+      "keywords_en": ["warning signs", "sky reading", "risk awareness"],
+      "keywords_vi": ["dấu hiệu cảnh báo", "quan sát bầu trời", "nhận biết rủi ro"],
+      "copy": {
+        "en": "The sky often warns us before forecasts do. Early signs are subtle but clear once you know what to look for. Cloud movement that suddenly speeds up or shifts direction can indicate a system approaching. A rapid temperature drop may signal incoming rain or wind. A sudden stillness before a storm usually means the atmosphere is tightening. When shadows become sharper and the sky turns yellowish or greenish, strong winds or hail may follow. Even animal behavior can help: birds flying low, insects disappearing, or pets becoming restless. Indoors, observe air pressure changes—door frames shifting or ears popping slightly. None of these signs guarantee danger, but they tell you when conditions are unstable. When you learn to read early warning signs, you gain precious minutes or hours to prepare calmly instead of being caught off guard.",
+        "vi": "Bầu trời thường cảnh báo chúng ta trước cả dự báo thời tiết. Các dấu hiệu sớm tuy tinh tế nhưng rất rõ khi bạn biết cách quan sát. Chuyển động của mây tăng tốc hoặc đổi hướng đột ngột có thể báo hiệu hệ thời tiết đang đến. Nhiệt độ giảm nhanh có thể cho thấy mưa hoặc gió sắp xuất hiện. Sự đứng gió bất thường trước bão thường là dấu hiệu khí quyển đang siết lại. Khi bóng đổ sắc nét hơn và bầu trời chuyển vàng hoặc xanh lạ, có thể gió mạnh hoặc mưa đá sắp đến. Thậm chí hành vi động vật cũng giúp nhận biết: chim bay thấp, côn trùng biến mất hoặc thú cưng bồn chồn. Trong nhà, hãy để ý thay đổi áp suất—khung cửa hơi co lại hoặc tai ù nhẹ. Những dấu hiệu này không đảm bảo nguy hiểm, nhưng chúng cho biết môi trường đang bất ổn. Khi biết đọc tín hiệu sớm, bạn có thêm thời gian quý giá để chuẩn bị bình tĩnh."
+      },
+      "audio": "srs01_03_en.mp3"
+    },
+    {
+      "slug": "following-alerts-intelligently",
+      "keywords_en": ["weather alerts", "forecast use", "decision making"],
+      "keywords_vi": ["cảnh báo thời tiết", "dự báo", "ra quyết định"],
+      "copy": {
+        "en": "Weather alerts are powerful tools, but many people ignore them or misinterpret them. Learn the difference between advisory, watch, and warning levels—advisories mean awareness, watches mean conditions are forming, and warnings mean action is needed now. Do not check alerts only once; conditions can change hourly. When alerts mention specific risks such as flash floods, landslides, or extreme heat, adjust your plans immediately. For example, avoid low bridges, cancel long drives, stay hydrated, or secure outdoor items. Combine alerts with your own observations—when both align, take action without hesitation. Following alerts intelligently transforms you from a passive recipient of information into someone who responds early, calmly, and safely.",
+        "vi": "Cảnh báo thời tiết là công cụ mạnh, nhưng nhiều người bỏ qua hoặc hiểu sai. Hãy phân biệt advisory, watch và warning—advisory là để chú ý, watch nghĩa là điều kiện đang hình thành, còn warning là cần hành động ngay. Đừng chỉ xem cảnh báo một lần; điều kiện có thể thay đổi theo giờ. Khi cảnh báo nhắc đến rủi ro cụ thể như lũ quét, sạt lở hoặc nắng nóng cực điểm, hãy điều chỉnh kế hoạch ngay: tránh cầu thấp, hủy chuyến đi xa, bổ sung nước hoặc cố định đồ đạc bên ngoài. Hãy kết hợp cảnh báo với quan sát cá nhân—khi cả hai trùng khớp, hãy hành động không chần chừ. Theo dõi cảnh báo một cách thông minh giúp bạn chuyển từ bị động sang chủ động, bình tĩnh và an toàn."
+      },
+      "audio": "srs01_04_en.mp3"
+    },
+    {
+      "slug": "protecting-vulnerable-family-members",
+      "keywords_en": ["family safety", "children", "elderly"],
+      "keywords_vi": ["an toàn gia đình", "trẻ em", "người già"],
+      "copy": {
+        "en": "Children, elders, and people with chronic conditions are more sensitive to weather changes. Heat affects them faster, storms frighten them more easily, and disrupted routines can cause stress. Start by keeping simple notes about who is most vulnerable in your household. Prepare extra water, easy snacks, cooling cloths, essential medications, and familiar comfort items. Explain weather situations calmly and in age-appropriate language—fear grows when people do not understand what is happening. During storms or heatwaves, keep vulnerable family members indoors, hydrated, and away from windows. If you must evacuate, prepare a fast-grab bag for each person with identification, medication, and comfort essentials. Protecting vulnerable family members is not complicated—it is about calm planning and small thoughtful steps.",
+        "vi": "Trẻ em, người già và người có bệnh mạn tính nhạy cảm hơn với sự thay đổi thời tiết. Nắng nóng ảnh hưởng đến họ nhanh hơn, bão dễ khiến họ sợ hãi và những xáo trộn nhỏ trong sinh hoạt có thể gây căng thẳng. Hãy bắt đầu bằng cách ghi chú đơn giản về ai là người dễ tổn thương nhất trong gia đình. Chuẩn bị thêm nước uống, đồ ăn nhẹ, khăn làm mát, thuốc thiết yếu và vật dụng quen thuộc tạo cảm giác an toàn. Giải thích tình huống thời tiết một cách bình tĩnh và phù hợp với từng độ tuổi—nỗi sợ thường đến khi người ta không hiểu chuyện gì đang xảy ra. Trong bão hoặc nắng nóng, hãy giữ họ ở trong nhà, bổ sung nước và tránh xa cửa sổ. Nếu phải sơ tán, hãy chuẩn bị túi cá nhân cho mỗi người gồm giấy tờ, thuốc men và vật dụng an ủi. Bảo vệ người dễ tổn thương không phức tạp—chỉ cần chuẩn bị bình tĩnh và những bước nhỏ có suy nghĩ."
+      },
+      "audio": "srs01_05_en.mp3"
+    },
+    {
+      "slug": "building-daily-weather-awareness-habits",
+      "keywords_en": ["daily habits", "preparedness", "risk reduction"],
+      "keywords_vi": ["thói quen hằng ngày", "chuẩn bị", "giảm rủi ro"],
+      "copy": {
+        "en": "Weather awareness becomes effortless when you turn it into a gentle daily routine. Begin each morning by checking temperature, humidity, and local advisories. Take five seconds to look at the sky before leaving home. Notice wind direction, cloud color, and how the air feels on your skin. Keep a simple mental log of unusual patterns. In the evening, review how the weather changed throughout the day—over time this builds intuition. Store essential items like water, power banks, flashlights, and cooling cloths in fixed spots so you can reach them instantly. These habits do not create fear; they create stability. When weather awareness becomes part of your everyday life, you respond to disruptions naturally, calmly, and confidently.",
+        "vi": "Nhận biết thời tiết trở nên dễ dàng khi bạn biến nó thành thói quen nhẹ nhàng mỗi ngày. Mỗi sáng, hãy kiểm tra nhiệt độ, độ ẩm và cảnh báo địa phương. Trước khi ra khỏi nhà, dành vài giây nhìn bầu trời. Quan sát hướng gió, màu mây và cảm giác không khí trên da. Ghi nhớ đơn giản những điều bất thường. Buổi tối, xem lại thời tiết đã thay đổi như thế nào trong ngày—lâu dần điều này tạo ra trực giác. Hãy để các vật dụng thiết yếu như nước, pin dự phòng, đèn pin và khăn làm mát ở vị trí cố định để có thể lấy ngay khi cần. Những thói quen này không tạo ra nỗi sợ; chúng tạo sự vững vàng. Khi nhận biết thời tiết trở thành một phần cuộc sống hằng ngày, bạn sẽ phản ứng với gián đoạn một cách tự nhiên, bình tĩnh và tự tin."
+      },
+      "audio": "srs01_06_en.mp3"
+    }
+  ]
+}
