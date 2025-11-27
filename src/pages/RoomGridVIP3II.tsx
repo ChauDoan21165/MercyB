@@ -173,9 +173,10 @@ const RoomGridVIP3II = () => {
                 key={room.id}
                 className={`relative p-3 transition-all duration-300 cursor-pointer group ${
                   room.hasData 
-                    ? 'hover:scale-110 hover:shadow-xl hover:z-10 border-purple-300 bg-gradient-to-br from-white to-purple-50' 
+                    ? 'hover:scale-110 hover:shadow-xl hover:z-10' 
                     : 'opacity-60 cursor-not-allowed'
                 }`}
+                style={{ background: 'white', border: '1px solid #e5e7eb' }}
                 onClick={() => {
                   if (!room.hasData) return;
                   navigate(`/chat/${room.id}`);
@@ -212,12 +213,14 @@ const RoomGridVIP3II = () => {
                   {/* Room Names */}
                   <div className="space-y-1">
                     <p
-                      className="text-xs font-semibold leading-tight line-clamp-2 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent"
+                      className="text-xs font-bold leading-tight line-clamp-2"
+                      style={{ color: '#6366f1', fontWeight: 700 }}
                     >
                       {room.nameEn}
                     </p>
                     <p
-                      className="text-[10px] leading-tight line-clamp-2 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent opacity-70"
+                      className="text-[10px] leading-tight line-clamp-2"
+                      style={{ color: '#6366f1', fontWeight: 600 }}
                     >
                       {room.nameVi}
                     </p>
@@ -227,7 +230,7 @@ const RoomGridVIP3II = () => {
                 {/* Hover Effect */}
                 {room.hasData && (
                   <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg bg-gradient-to-br from-purple-200/30 to-blue-200/30"
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg bg-gray-50"
                   />
                 )}
               </Card>
