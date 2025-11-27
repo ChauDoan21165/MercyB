@@ -11,6 +11,7 @@ import { Lock, RefreshCw, BookOpen, Palette } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
 import { useColorMode } from '@/hooks/useColorMode';
+import { highlightShortTitle } from '@/lib/wordColorHighlighter';
 
 const RoomGridVIP5 = () => {
   const navigate = useNavigate();
@@ -146,7 +147,7 @@ const RoomGridVIP5 = () => {
               </p>
             </div>
           ) : (
-            rooms.map((room) => (
+            rooms.map((room, index) => (
               <Card
                 key={room.id}
                 className="group hover:shadow-xl transition-all duration-300 cursor-pointer border-2 overflow-hidden"
@@ -162,10 +163,9 @@ const RoomGridVIP5 = () => {
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-3">
                     <h3 
-                      className="text-lg font-semibold group-hover:underline flex-1"
-                      style={{ color: getRoomColorValue(room.id) }}
+                      className="text-lg font-semibold group-hover:underline flex-1 text-foreground"
                     >
-                      {room.name || room.id}
+                      {useColorTheme ? highlightShortTitle(room.name || room.id, index, false) : (room.name || room.id)}
                     </h3>
                     <Badge 
                       variant="secondary" 
