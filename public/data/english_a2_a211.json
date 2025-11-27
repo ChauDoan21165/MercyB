@@ -1,0 +1,75 @@
+{
+  "id": "english_a2_a211",
+  "tier": "VIP2 / VIP2",
+  "domain": "English A2",
+  "title": {
+    "en": "A2-11 — Everyday Conversations (Longer Lines)",
+    "vi": "A2-11 — Hội Thoại Đời Sống (Câu Dài Hơn)"
+  },
+  "content": {
+    "en": "This room gives you simple but longer conversations for daily life. Each entry uses short sentences that connect together naturally. Practice slowly and repeat each line until the rhythm feels smooth. These dialogues help you speak more confidently in real situations.",
+    "vi": "Phòng này mang đến các đoạn hội thoại dài hơn nhưng vẫn đơn giản. Mỗi đoạn dùng các câu ngắn liên kết tự nhiên. Hãy luyện chậm và lặp lại từng câu cho đến khi nhịp nói trở nên trôi chảy. Những hội thoại này giúp bạn giao tiếp tự tin hơn trong đời sống."
+  },
+  "entries": [
+    {
+      "slug": "conversation-morning-routine",
+      "keywords_en": ["conversation", "morning"],
+      "keywords_vi": ["hội thoại", "buổi sáng"],
+      "copy": {
+        "en": "A: Good morning. Did you sleep well?  \nB: Yes, I slept okay. How about you?  \nA: I woke up early today.  \nB: Nice. Are you ready for work?  \nA: Almost. I just need my coffee.",
+        "vi": "A: Chào buổi sáng. Bạn ngủ ngon chứ?  \nB: Ngủ cũng ổn. Còn bạn?  \nA: Hôm nay tôi dậy sớm.  \nB: Tốt quá. Bạn sẵn sàng đi làm chưa?  \nA: Gần rồi. Tôi chỉ cần một ly cà phê."
+      },
+      "audio": "a211_01_en.mp3"
+    },
+    {
+      "slug": "conversation-at-a-cafe",
+      "keywords_en": ["conversation", "cafe"],
+      "keywords_vi": ["hội thoại", "quán cà phê"],
+      "copy": {
+        "en": "A: Hi. Can I see the menu?  \nB: Sure. Here you go.  \nA: Thank you. What do you recommend?  \nB: The iced coffee is very good.  \nA: Great. I will take one.",
+        "vi": "A: Chào bạn. Tôi xem menu được không?  \nB: Được. Đây nhé.  \nA: Cảm ơn. Bạn gợi ý món gì?  \nB: Cà phê đá ở đây rất ngon.  \nA: Tuyệt. Tôi lấy một ly."
+      },
+      "audio": "a211_02_en.mp3"
+    },
+    {
+      "slug": "conversation-asking-for-favor",
+      "keywords_en": ["help", "conversation"],
+      "keywords_vi": ["giúp đỡ", "hội thoại"],
+      "copy": {
+        "en": "A: Excuse me. Can you help me for a moment?  \nB: Of course. What do you need?  \nA: I cannot find this address.  \nB: Let me check. You need to walk straight and turn left.  \nA: Thank you so much.",
+        "vi": "A: Xin lỗi. Bạn giúp tôi một chút được không?  \nB: Tất nhiên. Bạn cần gì?  \nA: Tôi không tìm được địa chỉ này.  \nB: Để tôi xem. Bạn đi thẳng rồi rẽ trái.  \nA: Cảm ơn bạn rất nhiều."
+      },
+      "audio": "a211_03_en.mp3"
+    },
+    {
+      "slug": "conversation-small-talk-work",
+      "keywords_en": ["small talk", "work"],
+      "keywords_vi": ["trò chuyện", "công việc"],
+      "copy": {
+        "en": "A: How is work today?  \nB: A bit busy, but not too bad.  \nA: Same here. I have many emails.  \nB: I know the feeling.  \nA: Let's take a short break later.",
+        "vi": "A: Hôm nay công việc thế nào?  \nB: Hơi bận nhưng cũng ổn.  \nA: Tôi cũng vậy. Nhiều email quá.  \nB: Tôi hiểu cảm giác đó.  \nA: Lát nữa nghỉ một chút nhé."
+      },
+      "audio": "a211_04_en.mp3"
+    },
+    {
+      "slug": "conversation-checking-on-friend",
+      "keywords_en": ["friend", "check_in"],
+      "keywords_vi": ["bạn bè", "hỏi thăm"],
+      "copy": {
+        "en": "A: Hey, are you okay? You look tired.  \nB: Yes, just a long day.  \nA: Do you want to talk?  \nB: Maybe later. I just need some rest.  \nA: No problem. I am here if you need me.",
+        "vi": "A: Này, bạn ổn không? Bạn trông mệt quá.  \nB: Ừ, chỉ là một ngày dài thôi.  \nA: Bạn muốn tâm sự không?  \nB: Có thể lát nữa. Tôi chỉ cần nghỉ một chút.  \nA: Không sao. Tôi ở đây nếu bạn cần."
+      },
+      "audio": "a211_05_en.mp3"
+    },
+    {
+      "slug": "conversation-making-plans",
+      "keywords_en": ["plans", "conversation"],
+      "keywords_vi": ["kế hoạch", "hội thoại"],
+      "copy": {
+        "en": "A: Do you want to eat together tonight?  \nB: Yes, that sounds nice.  \nA: What time is good for you?  \nB: Around seven.  \nA: Great. See you then.",
+        "vi": "A: Tối nay bạn muốn ăn cùng không?  \nB: Có, nghe hay đấy.  \nA: Mấy giờ phù hợp với bạn?  \nB: Khoảng bảy giờ.  \nA: Tuyệt. Gặp bạn sau nhé."
+      },
+      "audio": "a211_06_en.mp3"
+    }
+  ]
+}

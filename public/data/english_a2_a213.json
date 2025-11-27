@@ -1,0 +1,75 @@
+{
+  "id": "english_a2_a213",
+  "tier": "VIP2 / VIP2",
+  "domain": "English A2",
+  "title": {
+    "en": "A2-13 — Speaking Confidence Routine",
+    "vi": "A2-13 — Thói Quen Luyện Nói Tự Tin"
+  },
+  "content": {
+    "en": "This room gives you a simple daily routine to improve speaking confidence. Each entry trains a different part of your voice: clarity, rhythm, volume control, stress patterns, and natural expression. Practice slowly and repeat the lines until your voice feels smooth. Small daily habits make your English more confident and natural.",
+    "vi": "Phòng này cung cấp một thói quen luyện nói đơn giản mỗi ngày để tăng sự tự tin. Mỗi mục rèn luyện một phần khác nhau của giọng nói: độ rõ, nhịp điệu, kiểm soát âm lượng, trọng âm và biểu cảm tự nhiên. Hãy luyện chậm và lặp lại cho đến khi giọng bạn trôi chảy. Thói quen nhỏ mỗi ngày sẽ giúp tiếng Anh của bạn tự tin và tự nhiên hơn."
+  },
+  "entries": [
+    {
+      "slug": "slow-clear-reading",
+      "keywords_en": ["speaking", "clarity"],
+      "keywords_vi": ["nói", "rõ ràng"],
+      "copy": {
+        "en": "Read slowly and clearly for one minute.\nUse gentle breath.\nRelax your jaw.\nSay each word fully.\nDo not rush.\nYour goal is smooth sound, not fast sound.",
+        "vi": "Đọc chậm và rõ ràng trong một phút.\nDùng hơi thở nhẹ.\nThả lỏng hàm.\nPhát âm trọn từng từ.\nĐừng vội vàng.\nMục tiêu là âm trôi chảy, không phải tốc độ."
+      },
+      "audio": "a213_01_en.mp3"
+    },
+    {
+      "slug": "rhythm-training",
+      "keywords_en": ["rhythm", "speaking"],
+      "keywords_vi": ["nhịp điệu", "nói"],
+      "copy": {
+        "en": "Practice natural rhythm.\nRead short lines with steady timing.\nTry these:\nI am ready.\nThis is simple.\nWe can do it.\nKeep the beat even.\nSmooth rhythm makes English easier to understand.",
+        "vi": "Luyện nhịp điệu tự nhiên.\nĐọc các câu ngắn với nhịp đều.\nHãy thử:\nI am ready.\nThis is simple.\nWe can do it.\nGiữ nhịp ổn định.\nNhịp điệu trôi chảy giúp tiếng Anh dễ hiểu hơn."
+      },
+      "audio": "a213_02_en.mp3"
+    },
+    {
+      "slug": "volume-control",
+      "keywords_en": ["volume", "confidence"],
+      "keywords_vi": ["âm lượng", "tự tin"],
+      "copy": {
+        "en": "Control your volume.\nSay a line softly.\nSay the same line a little louder.\nThen return to soft voice.\nTry:\nI can speak clearly.\nThis helps you sound calm and confident in real conversation.",
+        "vi": "Kiểm soát âm lượng.\nNói một câu thật nhẹ.\nNói lại câu đó to hơn một chút.\nRồi quay lại giọng nhẹ.\nHãy thử:\nI can speak clearly.\nĐiều này giúp bạn nghe bình tĩnh và tự tin khi giao tiếp."
+      },
+      "audio": "a213_03_en.mp3"
+    },
+    {
+      "slug": "stress-pattern-practice",
+      "keywords_en": ["stress", "pronunciation"],
+      "keywords_vi": ["trọng âm", "phát âm"],
+      "copy": {
+        "en": "Practice English stress.\nStress the bold part in your mind:\nTAble\nHAPpy\nTEAcher\nWINdow\nStrong stress makes words clear.\nEnglish needs contrast between strong and soft sounds.",
+        "vi": "Luyện trọng âm tiếng Anh.\nNhấn mạnh phần in đậm trong suy nghĩ:\nTAble\nHAPpy\nTEAcher\nWINdow\nTrọng âm rõ giúp từ dễ hiểu hơn.\nTiếng Anh cần sự tương phản giữa âm mạnh và âm nhẹ."
+      },
+      "audio": "a213_04_en.mp3"
+    },
+    {
+      "slug": "short-speaking-drill",
+      "keywords_en": ["speaking drill", "practice"],
+      "keywords_vi": ["luyện nói", "thực hành"],
+      "copy": {
+        "en": "Speak these lines slowly.\nFocus on clean sound:\nI can do this.\nMy English is improving.\nI speak with confidence.\nI learn a little every day.\nSmall steps become big progress.",
+        "vi": "Nói những câu sau thật chậm.\nTập trung vào âm rõ:\nI can do this.\nMy English is improving.\nI speak with confidence.\nI learn a little every day.\nNhững bước nhỏ tạo nên tiến bộ lớn."
+      },
+      "audio": "a213_05_en.mp3"
+    },
+    {
+      "slug": "daily-speaking-plan",
+      "keywords_en": ["routine", "habit"],
+      "keywords_vi": ["thói quen", "luyện tập"],
+      "copy": {
+        "en": "Follow this daily plan:\nOne minute reading.\nOne minute rhythm.\nOne minute soft and loud practice.\nOne minute stress training.\nOne minute speaking lines.\nFive minutes a day can change your speaking confidence.",
+        "vi": "Làm theo kế hoạch mỗi ngày:\nMột phút đọc.\nMột phút luyện nhịp.\nMột phút luyện to và nhỏ.\nMột phút luyện trọng âm.\nMột phút nói câu mẫu.\nNăm phút mỗi ngày có thể thay đổi sự tự tin khi nói."
+      },
+      "audio": "a213_06_en.mp3"
+    }
+  ]
+}

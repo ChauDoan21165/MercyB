@@ -1,0 +1,75 @@
+{
+  "id": "english_a2_a209",
+  "tier": "VIP2 / VIP2",
+  "domain": "English A2",
+  "title": {
+    "en": "A2-09 — Describing Daily Life and Routines",
+    "vi": "A2-09 — Miêu Tả Cuộc Sống Hằng Ngày"
+  },
+  "content": {
+    "en": "This room teaches you how to talk about your daily routine in simple English. You will learn clear verbs, time phrases, and short sentence patterns. These six entries help you describe mornings, work, meals, evenings, and personal habits with confidence.",
+    "vi": "Phòng này giúp bạn nói về thói quen hằng ngày bằng tiếng Anh đơn giản. Bạn sẽ học các động từ cơ bản, cụm thời gian và mẫu câu ngắn gọn. Sáu mục nội dung giúp bạn mô tả buổi sáng, công việc, bữa ăn, buổi tối và thói quen cá nhân một cách tự tin."
+  },
+  "entries": [
+    {
+      "slug": "common-daily-verbs",
+      "keywords_en": ["daily verbs", "routine"],
+      "keywords_vi": ["động từ hằng ngày", "thói quen"],
+      "copy": {
+        "en": "Useful daily verbs. wake up get up eat work study walk cook clean sleep. Practice short lines. I wake up at six. I eat breakfast. I study English.",
+        "vi": "Các động từ hằng ngày hữu ích: wake up, get up, eat, work, study, walk, cook, clean, sleep. Hãy luyện câu ngắn. I wake up at six. I eat breakfast. I study English."
+      },
+      "audio": "a209_01_en.mp3"
+    },
+    {
+      "slug": "time-phrases",
+      "keywords_en": ["time", "phrases"],
+      "keywords_vi": ["thời gian", "cụm từ"],
+      "copy": {
+        "en": "Common time phrases. in the morning in the afternoon at night every day on weekends. Use them in simple lines. I walk in the morning. I study at night.",
+        "vi": "Các cụm thời gian thường gặp: in the morning, in the afternoon, at night, every day, on weekends. Hãy dùng trong câu đơn. I walk in the morning. I study at night."
+      },
+      "audio": "a209_02_en.mp3"
+    },
+    {
+      "slug": "simple-present-routine",
+      "keywords_en": ["simple present", "routine"],
+      "keywords_vi": ["hiện tại đơn", "thói quen"],
+      "copy": {
+        "en": "Use the simple present to describe routine. I work on weekdays. She cooks dinner. They study every evening. Keep the rhythm slow and steady.",
+        "vi": "Dùng hiện tại đơn để mô tả thói quen. I work on weekdays. She cooks dinner. They study every evening. Giữ nhịp nói chậm và đều."
+      },
+      "audio": "a209_03_en.mp3"
+    },
+    {
+      "slug": "talking-about-morning-and-night",
+      "keywords_en": ["morning", "night"],
+      "keywords_vi": ["buổi sáng", "buổi tối"],
+      "copy": {
+        "en": "Use short lines for daily life. In the morning I drink coffee. I go to work. At night I relax. I watch a show. I read a little.",
+        "vi": "Hãy dùng câu ngắn để mô tả ngày sống. Buổi sáng tôi uống cà phê. Tôi đi làm. Buổi tối tôi nghỉ ngơi. Tôi xem một chương trình. Tôi đọc sách một chút."
+      },
+      "audio": "a209_04_en.mp3"
+    },
+    {
+      "slug": "talking-about-work-and-study",
+      "keywords_en": ["work", "study"],
+      "keywords_vi": ["làm việc", "học tập"],
+      "copy": {
+        "en": "Make simple sentences. I work from nine to five. I study English every day. She works at a shop. They study together after work.",
+        "vi": "Hãy tạo câu đơn giản. I work from nine to five. I study English every day. She works at a shop. They study together after work."
+      },
+      "audio": "a209_05_en.mp3"
+    },
+    {
+      "slug": "mini-practice-routines",
+      "keywords_en": ["practice", "routine"],
+      "keywords_vi": ["luyện tập", "thói quen"],
+      "copy": {
+        "en": "Practice lines. I wake up early. I eat breakfast at home. I work all day. I relax in the evening. Repeat until the rhythm feels natural.",
+        "vi": "Luyện câu. I wake up early. I eat breakfast at home. I work all day. I relax in the evening. Luyện cho đến khi nhịp nói trở nên tự nhiên."
+      },
+      "audio": "a209_06_en.mp3"
+    }
+  ]
+}

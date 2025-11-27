@@ -1,0 +1,75 @@
+{
+  "id": "english_a2_a210",
+  "tier": "VIP2 / VIP2",
+  "domain": "English A2",
+  "title": {
+    "en": "A2-10 — Short Listening Practice (Slow English)",
+    "vi": "A2-10 — Luyện Nghe Ngắn (Tiếng Anh Chậm)"
+  },
+  "content": {
+    "en": "This room gives you short listening lines in slow, clear English. Each entry uses simple vocabulary and natural rhythm so you can train your ears without pressure. These six practices help you understand daily English more easily.",
+    "vi": "Phòng này mang đến các câu nghe ngắn bằng tiếng Anh chậm và rõ ràng. Mỗi mục dùng từ vựng đơn giản và nhịp tự nhiên, giúp bạn luyện tai mà không bị căng thẳng. Sáu phần luyện tập này hỗ trợ bạn hiểu tiếng Anh đời sống dễ dàng hơn."
+  },
+  "entries": [
+    {
+      "slug": "listening-simple-actions",
+      "keywords_en": ["listening", "actions"],
+      "keywords_vi": ["nghe", "hành động"],
+      "copy": {
+        "en": "Listen and repeat slowly. I wake up early. I make coffee. I go to work. I study English at night. Keep your voice calm and steady.",
+        "vi": "Hãy nghe và lặp lại chậm rãi. I wake up early. I make coffee. I go to work. I study English at night. Giữ giọng nhẹ và đều."
+      },
+      "audio": "a210_01_en.mp3"
+    },
+    {
+      "slug": "listening-places",
+      "keywords_en": ["listening", "places"],
+      "keywords_vi": ["nghe", "địa điểm"],
+      "copy": {
+        "en": "Listen to these lines. I am at home. I am at work. I am at the store. I am in the park. Repeat each line two times.",
+        "vi": "Hãy nghe các câu sau. I am at home. I am at work. I am at the store. I am in the park. Lặp lại mỗi câu hai lần."
+      },
+      "audio": "a210_02_en.mp3"
+    },
+    {
+      "slug": "listening-feelings",
+      "keywords_en": ["listening", "feelings"],
+      "keywords_vi": ["nghe", "cảm xúc"],
+      "copy": {
+        "en": "Practice simple feelings. I am happy. I am tired. I am busy. I am relaxed. Keep the sound flat. English has no tones.",
+        "vi": "Luyện cảm xúc đơn giản. I am happy. I am tired. I am busy. I am relaxed. Giữ âm đều. Tiếng Anh không có thanh điệu."
+      },
+      "audio": "a210_03_en.mp3"
+    },
+    {
+      "slug": "listening-daily-life",
+      "keywords_en": ["listening", "daily life"],
+      "keywords_vi": ["nghe", "đời sống"],
+      "copy": {
+        "en": "Short lines for daily life. I cook dinner. I clean the room. I read at night. I walk in the morning. Do not rush the rhythm.",
+        "vi": "Các câu ngắn cho đời sống. I cook dinner. I clean the room. I read at night. I walk in the morning. Đừng vội nhịp nói."
+      },
+      "audio": "a210_04_en.mp3"
+    },
+    {
+      "slug": "listening-mini-stories",
+      "keywords_en": ["listening", "stories"],
+      "keywords_vi": ["nghe", "truyện ngắn"],
+      "copy": {
+        "en": "Listen to this short story. I wake up late. I run to the bus. I get to work on time. I laugh about it later. Practice three times.",
+        "vi": "Hãy nghe câu chuyện ngắn này. I wake up late. I run to the bus. I get to work on time. I laugh about it later. Luyện ba lần."
+      },
+      "audio": "a210_05_en.mp3"
+    },
+    {
+      "slug": "slow-listening-review",
+      "keywords_en": ["listening", "review"],
+      "keywords_vi": ["nghe", "ôn tập"],
+      "copy": {
+        "en": "Review the slow lines. I work every day. I learn something new. I take a break at noon. I rest at night. Repeat until clear.",
+        "vi": "Ôn lại các câu chậm. I work every day. I learn something new. I take a break at noon. I rest at night. Luyện đến khi rõ ràng."
+      },
+      "audio": "a210_06_en.mp3"
+    }
+  ]
+}

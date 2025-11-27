@@ -1,0 +1,75 @@
+{
+  "id": "english_a2_a212",
+  "tier": "VIP2 / VIP2",
+  "domain": "English A2",
+  "title": {
+    "en": "A2-12 — Short Reading Practice",
+    "vi": "A2-12 — Luyện Đọc Đoạn Ngắn"
+  },
+  "content": {
+    "en": "This room gives you short reading passages with simple vocabulary and clear ideas. Each entry uses 3 to 5 lines that beginners can read slowly. These stories help you build confidence and understand English sentences in real context.",
+    "vi": "Phòng này mang đến các đoạn đọc ngắn với từ vựng đơn giản và ý nghĩa rõ ràng. Mỗi mục gồm 3 đến 5 câu để người mới có thể đọc chậm rãi. Những câu chuyện này giúp bạn tự tin hơn và hiểu câu tiếng Anh trong ngữ cảnh thực tế."
+  },
+  "entries": [
+    {
+      "slug": "story-morning-start",
+      "keywords_en": ["reading", "story"],
+      "keywords_vi": ["đọc", "truyện"],
+      "copy": {
+        "en": "Linh wakes up early every day. She drinks a glass of warm water and opens her window. The air is cool. She feels ready to start her day.",
+        "vi": "Linh thức dậy sớm mỗi ngày. Cô uống một ly nước ấm và mở cửa sổ. Không khí rất mát. Cô cảm thấy sẵn sàng bắt đầu ngày mới."
+      },
+      "audio": "a212_01_en.mp3"
+    },
+    {
+      "slug": "story-at-the-market",
+      "keywords_en": ["reading", "market"],
+      "keywords_vi": ["đọc", "chợ"],
+      "copy": {
+        "en": "Nam walks to the market near his home. He buys fruit, vegetables, and bread. The seller is friendly. Nam likes the smell of fresh food.",
+        "vi": "Nam đi bộ ra chợ gần nhà. Anh mua trái cây, rau và bánh mì. Người bán rất thân thiện. Nam thích mùi đồ ăn tươi."
+      },
+      "audio": "a212_02_en.mp3"
+    },
+    {
+      "slug": "story-work-day",
+      "keywords_en": ["reading", "work"],
+      "keywords_vi": ["đọc", "công việc"],
+      "copy": {
+        "en": "Mai works in a small office. She talks to customers and writes emails. Her day is busy, but she enjoys helping people solve problems.",
+        "vi": "Mai làm việc trong một văn phòng nhỏ. Cô nói chuyện với khách hàng và viết email. Ngày làm việc của cô bận rộn nhưng cô thích giúp mọi người giải quyết vấn đề."
+      },
+      "audio": "a212_03_en.mp3"
+    },
+    {
+      "slug": "story-evening-relax",
+      "keywords_en": ["reading", "evening"],
+      "keywords_vi": ["đọc", "buổi tối"],
+      "copy": {
+        "en": "In the evening, Tuan sits on his balcony with tea. He watches people walking on the street. The sky turns orange. He feels calm after a long day.",
+        "vi": "Buổi tối, Tuấn ngồi trên ban công uống trà. Anh nhìn mọi người đi lại dưới phố. Bầu trời chuyển màu cam. Anh thấy bình yên sau một ngày dài."
+      },
+      "audio": "a212_04_en.mp3"
+    },
+    {
+      "slug": "story-weekend-trip",
+      "keywords_en": ["reading", "weekend"],
+      "keywords_vi": ["đọc", "cuối tuần"],
+      "copy": {
+        "en": "On weekends, Lan visits her friend in another town. They cook together and talk for hours. Lan always returns home happy and refreshed.",
+        "vi": "Cuối tuần, Lan đến thăm bạn ở một thị trấn khác. Họ cùng nấu ăn và trò chuyện hàng giờ. Lan luôn trở về nhà với tâm trạng vui vẻ và sảng khoái."
+      },
+      "audio": "a212_05_en.mp3"
+    },
+    {
+      "slug": "story-simple-goal",
+      "keywords_en": ["reading", "goal"],
+      "keywords_vi": ["đọc", "mục tiêu"],
+      "copy": {
+        "en": "This year, Huy wants to learn English. He studies a little every night. He knows small steps help him improve. He feels proud of his progress.",
+        "vi": "Năm nay, Huy muốn học tiếng Anh. Mỗi tối anh học một chút. Anh biết những bước nhỏ giúp mình tiến bộ. Anh tự hào về sự tiến triển của bản thân."
+      },
+      "audio": "a212_06_en.mp3"
+    }
+  ]
+}
