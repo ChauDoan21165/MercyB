@@ -1,0 +1,75 @@
+{
+  "id": "english_a1_a112",
+  "tier": "VIP1 / VIP1",
+  "domain": "English A1",
+  "title": {
+    "en": "A1-12 — First Short Stories",
+    "vi": "A1-12 — Những Câu Chuyện Ngắn Đầu Tiên"
+  },
+  "content": {
+    "en": "This room gives you very short stories written for absolute beginners. Each story uses simple words, clear grammar, and slow rhythm. Listen first, then read. If you understand the story without translating every word, you are ready for A1 reading.",
+    "vi": "Phòng này mang đến những câu chuyện rất ngắn dành cho người mới bắt đầu. Mỗi câu chuyện dùng từ đơn giản, ngữ pháp rõ ràng và nhịp chậm. Hãy nghe trước rồi đọc sau. Nếu bạn hiểu câu chuyện mà không cần dịch từng chữ, nghĩa là bạn đã sẵn sàng cho việc đọc ở mức A1."
+  },
+  "entries": [
+    {
+      "slug": "story-the-lost-key",
+      "keywords_en": ["story", "beginner"],
+      "keywords_vi": ["câu chuyện", "người mới"],
+      "copy": {
+        "en": "Anna cannot find her key. She looks in her bag. She looks on the table. The key is in her pocket. She laughs.",
+        "vi": "Anna không tìm thấy chìa khóa. Cô tìm trong túi. Cô nhìn trên bàn. Chìa khóa nằm trong túi quần cô. Cô bật cười."
+      },
+      "audio": "a112_01_en.mp3"
+    },
+    {
+      "slug": "story-the-small-dog",
+      "keywords_en": ["story", "dog"],
+      "keywords_vi": ["câu chuyện", "chó"],
+      "copy": {
+        "en": "Tom has a small dog. The dog follows him everywhere. Tom walks to the shop. The dog walks with him, happy and slow.",
+        "vi": "Tom có một con chó nhỏ. Con chó đi theo anh ở mọi nơi. Tom đi đến cửa hàng. Con chó đi cùng anh, vui vẻ và chậm rãi."
+      },
+      "audio": "a112_02_en.mp3"
+    },
+    {
+      "slug": "story-morning-coffee",
+      "keywords_en": ["story", "morning"],
+      "keywords_vi": ["câu chuyện", "buổi sáng"],
+      "copy": {
+        "en": "Mai wakes up early. She makes a cup of coffee. She sits by the window and watches the quiet street. Her day starts softly.",
+        "vi": "Mai thức dậy sớm. Cô pha một tách cà phê. Cô ngồi bên cửa sổ và nhìn con đường yên tĩnh. Ngày mới của cô bắt đầu nhẹ nhàng."
+      },
+      "audio": "a112_03_en.mp3"
+    },
+    {
+      "slug": "story-the-red-umbrella",
+      "keywords_en": ["story", "rain"],
+      "keywords_vi": ["câu chuyện", "mưa"],
+      "copy": {
+        "en": "It starts to rain. Leo does not have an umbrella. His friend gives him a red one. They walk together and stay dry.",
+        "vi": "Trời bắt đầu mưa. Leo không có ô. Bạn của anh đưa anh một chiếc ô đỏ. Họ cùng đi và vẫn khô ráo."
+      },
+      "audio": "a112_04_en.mp3"
+    },
+    {
+      "slug": "story-a-simple-gift",
+      "keywords_en": ["story", "gift"],
+      "keywords_vi": ["câu chuyện", "món quà"],
+      "copy": {
+        "en": "Sara gives her mom a small flower. Her mom smiles. The gift is simple, but the moment is warm. They hug softly.",
+        "vi": "Sara tặng mẹ một bông hoa nhỏ. Mẹ cô mỉm cười. Món quà đơn giản nhưng khoảnh khắc thật ấm áp. Họ ôm nhau nhẹ nhàng."
+      },
+      "audio": "a112_05_en.mp3"
+    },
+    {
+      "slug": "story-the-bus-ride",
+      "keywords_en": ["story", "bus"],
+      "keywords_vi": ["câu chuyện", "xe buýt"],
+      "copy": {
+        "en": "Ben takes the bus to work. He sits by the window. The city moves slowly outside. He feels calm today.",
+        "vi": "Ben đi xe buýt đến nơi làm việc. Anh ngồi gần cửa sổ. Thành phố trôi qua chậm rãi bên ngoài. Hôm nay anh cảm thấy bình yên."
+      },
+      "audio": "a112_06_en.mp3"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "id": "english_a1_a114",
+  "tier": "VIP1 / VIP1",
+  "domain": "English A1",
+  "title": {
+    "en": "A1-14 — Final Check & Graduation",
+    "vi": "A1-14 — Kiểm Tra Cuối & Tốt Nghiệp"
+  },
+  "content": {
+    "en": "This room gives you a gentle final check. If you can understand and say these simple lines, you have completed the A1 beginner path. Do not aim for perfection. Aim for comfort, clarity, and calmness. You are ready for A2.",
+    "vi": "Phòng này giúp bạn kiểm tra nhẹ nhàng cuối khóa. Nếu bạn hiểu và nói được những câu đơn giản này, bạn đã hoàn thành cấp độ A1 cho người mới bắt đầu. Đừng cố hoàn hảo. Chỉ cần thoải mái, rõ ràng và bình tĩnh. Bạn đã sẵn sàng bước vào A2."
+  },
+  "entries": [
+    {
+      "slug": "check-alphabet",
+      "keywords_en": ["alphabet check"],
+      "keywords_vi": ["kiểm tra bảng chữ cái"],
+      "copy": {
+        "en": "Read the alphabet slowly from A to Z. A B C D E F G H I J K L M N O P Q R S T U V W X Y Z If you can read clearly without adding extra vowels, you pass this step.",
+        "vi": "Hãy đọc bảng chữ cái từ A đến Z. Nếu bạn đọc rõ ràng mà không thêm nguyên âm vào phụ âm, bạn vượt qua bước này."
+      },
+      "audio": "a114_01_en.mp3"
+    },
+    {
+      "slug": "check-basic-words",
+      "keywords_en": ["basic words"],
+      "keywords_vi": ["từ cơ bản"],
+      "copy": {
+        "en": "Say these basic words clearly. cat dog book red cup sun big milk map pen If you can keep the ending sounds, you pass this step.",
+        "vi": "Hãy nói rõ các từ cơ bản sau: cat, dog, book, red, cup, sun, big, milk, map, pen. Nếu bạn giữ được âm cuối, bạn vượt qua bước này."
+      },
+      "audio": "a114_02_en.mp3"
+    },
+    {
+      "slug": "check-simple-sentences",
+      "keywords_en": ["simple sentences"],
+      "keywords_vi": ["câu đơn giản"],
+      "copy": {
+        "en": "Say these simple sentences. I am here. You are nice. This is my bag. That is my phone. We are ready. If you can say them slowly and calmly, you pass this step.",
+        "vi": "Hãy nói các câu đơn giản sau: I am here, You are nice, This is my bag, That is my phone, We are ready. Nếu bạn nói chậm và rõ, bạn vượt qua bước này."
+      },
+      "audio": "a114_03_en.mp3"
+    },
+    {
+      "slug": "check-mini-conversation",
+      "keywords_en": ["conversation check"],
+      "keywords_vi": ["kiểm tra hội thoại"],
+      "copy": {
+        "en": "Practice this short conversation. A: Hello. B: Hi. A: How are you? B: I am fine. A: Good. Have a nice day. B: You too. If you understand it easily, you pass this step.",
+        "vi": "Hãy luyện đoạn hội thoại ngắn sau: A: Hello. B: Hi. A: How are you? B: I am fine. A: Good. Have a nice day. B: You too. Nếu bạn hiểu dễ dàng, bạn vượt qua bước này."
+      },
+      "audio": "a114_04_en.mp3"
+    },
+    {
+      "slug": "check-listening",
+      "keywords_en": ["listening check"],
+      "keywords_vi": ["kiểm tra nghe"],
+      "copy": {
+        "en": "Listen to simple lines like these. I need water. I want this. It is sunny. This is easy. If you understand them when spoken slowly, you pass this step.",
+        "vi": "Hãy nghe các câu đơn giản sau: I need water, I want this, It is sunny, This is easy. Nếu bạn hiểu khi nghe chậm rãi, bạn vượt qua bước này."
+      },
+      "audio": "a114_05_en.mp3"
+    },
+    {
+      "slug": "graduation-message",
+      "keywords_en": ["graduation"],
+      "keywords_vi": ["tốt nghiệp"],
+      "copy": {
+        "en": "Congratulations. You completed the A1 beginner path. You learned the alphabet, basic words, simple sentences, short conversations, and daily speaking habits. You are ready for A2. Be proud of yourself. Keep going. You are doing great.",
+        "vi": "Chúc mừng bạn. Bạn đã hoàn thành cấp độ A1 cho người mới bắt đầu. Bạn đã học bảng chữ cái, từ vựng cơ bản, câu đơn giản, hội thoại ngắn và thói quen nói hằng ngày. Bạn đã sẵn sàng cho A2. Hãy tự hào. Tiếp tục nhé. Bạn đang làm rất tốt."
+      },
+      "audio": "a114_06_en.mp3"
+    }
+  ]
+}
