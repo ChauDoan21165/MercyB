@@ -107,18 +107,14 @@ export const VirtualizedRoomGrid = ({
                               : "opacity-30 cursor-not-allowed grayscale"
                           }`}
                           style={
-                            useColorTheme 
-                              ? (isHighlighted ? {
-                                  border: `2px solid ${roomColor}`,
-                                  background: `linear-gradient(135deg, ${roomColor}20, ${roomColor}10)`,
-                                  boxShadow: isLowDataMode ? 'none' : `0 0 20px ${roomColor}60`
-                                } : {
-                                  background: roomColor
-                                })
-                              : {
-                                  background: 'white',
-                                  border: '1px solid #e5e7eb'
-                                }
+                            isHighlighted ? {
+                              border: `2px solid ${roomColor}`,
+                              background: `linear-gradient(135deg, ${roomColor}20, ${roomColor}10)`,
+                              boxShadow: isLowDataMode ? 'none' : `0 0 20px ${roomColor}60`
+                            } : {
+                              background: 'white',
+                              border: '1px solid #e5e7eb'
+                            }
                           }
                           onClick={() => room.hasData && onRoomClick(room)}
                         >
@@ -140,7 +136,7 @@ export const VirtualizedRoomGrid = ({
                               <p 
                                 className={`${isLowDataMode ? 'text-[10px]' : 'text-xs'} font-bold leading-tight line-clamp-2`}
                                 style={useColorTheme 
-                                  ? { color: `color-mix(in srgb, ${roomColor} 85%, black)` }
+                                  ? { color: roomColor, fontWeight: 700 }
                                   : { color: 'black' }
                                 }
                               >
@@ -149,7 +145,7 @@ export const VirtualizedRoomGrid = ({
                               <p 
                                 className={`${isLowDataMode ? 'text-[8px]' : 'text-[10px]'} leading-tight line-clamp-2`}
                                 style={useColorTheme 
-                                  ? { color: `color-mix(in srgb, ${roomColor} 70%, black)` }
+                                  ? { color: roomColor, fontWeight: 600 }
                                   : { color: '#4b5563' }
                                 }
                               >
@@ -161,11 +157,7 @@ export const VirtualizedRoomGrid = ({
                           {/* Hover Effect - disabled in low data mode */}
                           {room.hasData && !isLowDataMode && (
                             <div 
-                              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" 
-                              style={useColorTheme 
-                                ? { background: `linear-gradient(to bottom right, ${roomColor}20, ${roomColor}10)` }
-                                : { background: 'rgba(0, 0, 0, 0.05)' }
-                              }
+                              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg bg-gray-50"
                             />
                           )}
                         </Card>
