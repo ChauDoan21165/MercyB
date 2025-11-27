@@ -148,6 +148,30 @@ const Homepage = () => {
         </div>
       </section>
 
+      {/* A1 Beginner English VIP1 Section */}
+      <section className="py-16 px-6" style={{ backgroundColor: "#FFF7ED" }}>
+        <div className="max-w-4xl mx-auto space-y-8">
+          <HomepageSection
+            id="a1-beginner-english-vip1"
+            backgroundColor="#FFF7ED"
+            headingColor="#7C2D12"
+            accentColor="#EA580C"
+            title={{
+              en: "🎓 A1 Beginner English — VIP1 Premium Track",
+              vi: "🎓 A1 Tiếng Anh Cơ Bản — Lộ Trình VIP1"
+            }}
+            body={{
+              en: "A1 Beginner English helps new learners take their first confident steps after completing English Foundation. These 14 rooms teach simple sentences, useful grammar patterns, everyday vocabulary, and gentle speaking practice. All lessons are slow, clear, and safe for Vietnamese beginners who are learning English for the first time.",
+              vi: "A1 Tiếng Anh Cơ Bản giúp người học mới có những bước đi tự tin sau khi hoàn thành English Foundation. Bộ 14 phòng này dạy câu đơn giản, mẫu ngữ pháp hữu ích, từ vựng đời sống và luyện nói nhẹ nhàng. Tất cả bài học đều chậm rãi, rõ ràng và phù hợp cho người Việt bắt đầu học tiếng Anh từ đầu."
+            }}
+            audio={{
+              en: "",
+              vi: ""
+            }}
+          />
+        </div>
+      </section>
+
       {/* Survival & Resilience VIP1 Bonus Section */}
       <section className="py-16 px-6" style={{ backgroundColor: "#F0F4F0" }}>
         <div className="max-w-4xl mx-auto space-y-8">
