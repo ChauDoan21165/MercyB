@@ -7,10 +7,10 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useEffect, useState } from "react";
 import { ALL_ROOMS, Room } from "@/lib/roomData";
 import { VIPNavigation } from "@/components/VIPNavigation";
-import { Briefcase, Crown, Lock, RefreshCw } from "lucide-react";
+import { Briefcase, Crown, Lock, RefreshCw, Palette } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
 import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
+import { useColorMode } from '@/hooks/useColorMode';
 
 const VIP4_CAREER_ROOMS = [
   { id: "courage-to-begin", name: "Courage to Begin" },
@@ -33,6 +33,7 @@ const RoomGridVIP4 = () => {
   const [rooms, setRooms] = useState<Room[]>([]);
   const { toast } = useToast();
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const { useColorTheme, toggleColorMode } = useColorMode();
 
   // Allow browsing for all users - they'll see restrictions in individual rooms
   // No redirect for unauthenticated users
@@ -202,6 +203,19 @@ const RoomGridVIP4 = () => {
           </div>
         </div>
 
+        {/* Color Mode Toggle */}
+        <div className="flex justify-end mb-4">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={toggleColorMode}
+            className="gap-2"
+          >
+            <Palette className="w-4 h-4" />
+            {useColorTheme ? 'Black & White' : 'Mercy Blade Colors'}
+          </Button>
+        </div>
+
         {/* Room Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 mb-12">
           {rooms.length === 0 ? (
@@ -226,12 +240,17 @@ const RoomGridVIP4 = () => {
                       ? "opacity-60 cursor-not-allowed"
                       : "hover:scale-105 hover:shadow-xl cursor-pointer"
                   }`}
-                  style={{
-                    borderLeft: `4px solid ${roomColor}`,
-                    background: isLocked
-                      ? 'rgba(0,0,0,0.05)'
-                      : roomColor
-                  }}
+                  style={
+                    useColorTheme
+                      ? {
+                          borderLeft: `4px solid ${roomColor}`,
+                          background: isLocked ? 'rgba(0,0,0,0.05)' : roomColor
+                        }
+                      : {
+                          background: 'white',
+                          border: '1px solid #e5e7eb'
+                        }
+                  }
                   onClick={() => !isLocked && navigate(`/chat/${room.id}`)}
                 >
                   {/* Status Badge */}
@@ -246,26 +265,27 @@ const RoomGridVIP4 = () => {
 
                   <div className="p-6 space-y-3">
                     <div className="space-y-2">
-                      <h3 className="font-bold text-lg leading-tight" style={{
-                        background: 'var(--gradient-rainbow)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        backgroundClip: 'text'
-                      }}>
+                      <h3 
+                        className="font-bold text-lg leading-tight"
+                        style={useColorTheme 
+                          ? { color: `color-mix(in srgb, ${roomColor} 85%, black)` }
+                          : { color: 'black' }
+                        }
+                      >
                         {room.nameEn}
                       </h3>
-                      <p className="text-sm leading-tight" style={{
-                        background: 'var(--gradient-rainbow)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        backgroundClip: 'text',
-                        opacity: 0.7
-                      }}>
+                      <p 
+                        className="text-sm leading-tight"
+                        style={useColorTheme 
+                          ? { color: `color-mix(in srgb, ${roomColor} 70%, black)` }
+                          : { color: '#4b5563' }
+                        }
+                      >
                         {room.nameVi}
                       </p>
                     </div>
 
-                    <p className="text-sm line-clamp-2" style={{ color: textColor }}>
+                    <p className="text-sm line-clamp-2" style={{ color: useColorTheme ? textColor : '#6b7280' }}>
                       {room.description}
                     </p>
                   </div>

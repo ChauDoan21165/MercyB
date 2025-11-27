@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
 import { Button } from '@/components/ui/button';
-import { Lock, Unlock, TrendingUp, Building2, Globe2, Crown } from 'lucide-react';
+import { Lock, Unlock, TrendingUp, Building2, Globe2, Crown, Palette } from 'lucide-react';
 import { useUserAccess } from '@/hooks/useUserAccess';
 import { useToast } from '@/hooks/use-toast';
+import { useColorMode } from '@/hooks/useColorMode';
 
 interface Room {
   id: string;
@@ -27,6 +28,7 @@ const RoomsVIP9 = () => {
   const { canAccessVIP9, loading: accessLoading } = useUserAccess();
   const [domains, setDomains] = useState<DomainSection[]>([]);
   const [loading, setLoading] = useState(true);
+  const { useColorTheme, toggleColorMode } = useColorMode();
 
   useEffect(() => {
     const fetchRooms = async () => {
@@ -196,12 +198,36 @@ const RoomsVIP9 = () => {
                 </p>
               </div>
 
+              {/* Color Mode Toggle */}
+              <div className="flex justify-end mb-4">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={toggleColorMode}
+                  className="gap-2 bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700"
+                >
+                  <Palette className="w-4 h-4" />
+                  {useColorTheme ? 'Professional' : 'Mercy Blade Colors'}
+                </Button>
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {domain.rooms.map((room) => (
                   <button
                     key={room.id}
                     onClick={() => handleRoomClick(room.id)}
-                    className="group relative p-6 rounded-lg border border-slate-700 bg-slate-800/50 hover:bg-slate-800 hover:border-slate-600 transition-all duration-300 text-left backdrop-blur-sm"
+                    className="group relative p-6 rounded-lg border transition-all duration-300 text-left backdrop-blur-sm"
+                    style={
+                      useColorTheme
+                        ? {
+                            borderColor: '#475569',
+                            background: 'rgba(51, 65, 85, 0.5)',
+                          }
+                        : {
+                            borderColor: '#1e293b',
+                            background: '#0f172a',
+                          }
+                    }
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex-1 space-y-2">

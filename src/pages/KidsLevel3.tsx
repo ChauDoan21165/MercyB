@@ -1,5 +1,5 @@
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
-import { GraduationCap, RefreshCw } from "lucide-react";
+import { GraduationCap, RefreshCw, Palette } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
@@ -7,6 +7,7 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { KidsRoomCard } from "@/components/kids/KidsRoomCard";
+import { useColorMode } from "@/hooks/useColorMode";
 
 interface KidsRoom {
   id: string;
@@ -25,6 +26,7 @@ const KidsLevel3 = () => {
   const [rooms, setRooms] = useState<KidsRoom[]>([]);
   const [roomsLoading, setRoomsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const { useColorTheme, toggleColorMode } = useColorMode();
 
   const fetchRooms = async () => {
     try {
@@ -125,6 +127,16 @@ const KidsLevel3 = () => {
             >
               <RefreshCw className={`h-4 w-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
               Refresh
+            </Button>
+
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={toggleColorMode}
+              className="gap-2 rounded-full border-2 border-white/30"
+            >
+              <Palette className="w-4 h-4" />
+              {useColorTheme ? 'Simple' : 'Colorful'}
             </Button>
           </div>
         </div>
