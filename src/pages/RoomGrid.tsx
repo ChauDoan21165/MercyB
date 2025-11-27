@@ -45,9 +45,11 @@ const RoomGrid = () => {
   // Filter rooms based on demo mode
   const filteredRooms = useMemo(() => {
     if (!cachedRooms) return [];
-    if (isDemoMode) {
+    // Only filter by demo room IDs if user is explicitly in demo mode AND demo rooms are loaded
+    if (isDemoMode && demoRoomIds.length > 0) {
       return cachedRooms.filter(room => demoRoomIds.includes(room.id));
     }
+    // Otherwise show all cached rooms (authenticated users or demo rooms not loaded yet)
     return cachedRooms;
   }, [cachedRooms, isDemoMode, demoRoomIds]);
 
