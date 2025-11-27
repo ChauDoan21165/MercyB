@@ -153,6 +153,24 @@
       }
     },
     {
+      "id": "survival_resilience_vip1",
+      "background_color": "#F0F4F0",
+      "heading_color": "#14532D",
+      "accent_color": "#16A34A",
+      "title": {
+        "en": "🛡️ Survival & Resilience — Essential Literacy (VIP1 Bonus)",
+        "vi": "🛡️ Sinh Tồn & Kiên Cường — Kiến Thức Thiết Yếu (Phần Thưởng VIP1)"
+      },
+      "body": {
+        "en": "Everyone deserves basic safety skills, especially now as weather becomes more unpredictable and disruptions happen without warning. This Survival & Resilience bonus for VIP1 gathers 100 simple, practical lessons anyone can learn — no special equipment, no complex training. Each room offers clear actions you can take today, deeper understanding for long-term confidence, and family-friendly guidance for children and elders. The goal is not fear, but calm readiness: helping more people stay safe, stay steady, and stay capable during difficult moments. For only a small upgrade, you gain lifetime skills that strengthen your independence and protect the people you love.",
+        "vi": "Ai cũng xứng đáng có những kỹ năng an toàn cơ bản, nhất là khi thời tiết ngày càng khó lường và các biến cố có thể xảy ra bất ngờ. Phần bổ sung \"Sinh Tồn & Kiên Cường\" dành cho VIP1 tập hợp 100 bài học đơn giản, thực tế mà bất cứ ai cũng có thể học — không cần dụng cụ đặc biệt, không cần huấn luyện phức tạp. Mỗi phòng cung cấp hành động rõ ràng có thể làm ngay, kiến thức sâu hơn để bạn tự tin lâu dài, và hướng dẫn thân thiện cho trẻ em lẫn người lớn tuổi. Mục tiêu không phải gieo sợ hãi, mà mang lại sự bình tĩnh và chủ động: giúp nhiều người hơn được an toàn, vững vàng và tự chủ trong lúc khó khăn. Chỉ với một khoản nâng cấp nhỏ, bạn nhận được những kỹ năng trọn đời để bảo vệ chính mình và những người bạn yêu thương."
+      },
+      "audio": {
+        "en": "survival_resilience_homepage_en.mp3",
+        "vi": "survival_resilience_homepage_vi.mp3"
+      }
+    },
+    {
       "id": "vip9_strategic",
       "background_color": "#1E293B",
       "heading_color": "#F8FAFC",
