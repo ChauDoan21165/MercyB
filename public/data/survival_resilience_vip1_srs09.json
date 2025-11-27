@@ -1,0 +1,75 @@
+{
+  "id": "survival_resilience_vip1_srs09",
+  "tier": "VIP1 / VIP1",
+  "domain": "Survival",
+  "title": {
+    "en": "SRS-09 — Heatwaves & Extreme Temperature Safety",
+    "vi": "SRS-09 — Sóng Nhiệt & An Toàn Trong Nhiệt Độ Cực Đoan"
+  },
+  "content": {
+    "en": "Extreme heat is becoming one of the most dangerous climate threats. This room teaches you how to protect your body, your home, and your vulnerable family members when temperatures rise beyond safe levels. You will learn how heatstroke develops, how to cool living spaces without power, how to recognize early warning signs of overheating, and how to prepare for multi-day heat events. These six entries focus on calm, practical strategies that help you stay hydrated, rested, and alert when heat becomes a serious risk to health and survival.",
+    "vi": "Nắng nóng cực đoan đang trở thành một trong những mối đe dọa khí hậu nguy hiểm nhất. Phòng này hướng dẫn bạn cách bảo vệ cơ thể, ngôi nhà và những người dễ tổn thương khi nhiệt độ tăng vượt ngưỡng an toàn. Bạn sẽ học cách sốc nhiệt hình thành, cách làm mát không gian sống khi mất điện, cách nhận biết dấu hiệu quá nóng sớm và cách chuẩn bị cho đợt nắng nóng kéo dài nhiều ngày. Sáu mục nội dung tập trung vào các chiến lược bình tĩnh và thực tế giúp bạn giữ nước, nghỉ ngơi và tỉnh táo khi nhiệt độ trở thành nguy cơ nghiêm trọng đối với sức khỏe và sự sống."
+  },
+  "entries": [
+    {
+      "slug": "recognizing-early-signs-of-overheating",
+      "keywords_en": ["overheating", "heat stress", "warning signs"],
+      "keywords_vi": ["quá nóng", "stress nhiệt", "dấu hiệu cảnh báo"],
+      "copy": {
+        "en": "Overheating develops gradually, and early recognition prevents medical emergencies. The first signs include headache, dizziness, flushed skin, rapid heartbeat, and unusual tiredness. In children, look for irritability, refusal to drink water, or excessive crying. Elders may show confusion or slower responses. If these symptoms appear, move to a cooler area immediately, sip water slowly, and loosen clothing. Never ignore these early signs—heat stress can escalate into heatstroke quickly, especially during multi-day heatwaves. Early action is the most powerful form of prevention.",
+        "vi": "Tình trạng quá nóng phát triển từ từ và nhận biết sớm giúp tránh cấp cứu. Dấu hiệu đầu tiên gồm đau đầu, chóng mặt, đỏ da, tim đập nhanh và mệt bất thường. Ở trẻ nhỏ, hãy chú ý cáu gắt, không chịu uống nước hoặc khóc nhiều. Người già có thể lú lẫn hoặc phản ứng chậm. Nếu xuất hiện các triệu chứng này, hãy chuyển ngay đến nơi mát, nhấp nước từ từ và nới lỏng quần áo. Đừng bỏ qua dấu hiệu ban đầu—stress nhiệt có thể chuyển sang sốc nhiệt rất nhanh, đặc biệt trong các đợt nóng kéo dài. Hành động sớm là cách phòng ngừa hiệu quả nhất."
+      },
+      "audio": "srs09_01_en.mp3"
+    },
+    {
+      "slug": "keeping-your-home-cool-with-or-without-power",
+      "keywords_en": ["cooling home", "no power", "heatwave safety"],
+      "keywords_vi": ["làm mát nhà", "mất điện", "an toàn nắng nóng"],
+      "copy": {
+        "en": "During heatwaves, indoor temperatures can stay dangerously high even at night. Close curtains and blinds during the day to block radiant heat. Open windows only when outdoor air is cooler, usually early morning or late night. If power is available, use fans to circulate air and direct airflow across bowls of ice or damp towels for extra cooling. If power is lost, stay on lower floors, avoid cooking with heat, and dampen clothing or towels to reduce body temperature. Creating shade and airflow is the foundation of staying safe in extreme heat.",
+        "vi": "Trong sóng nhiệt, nhiệt độ trong nhà có thể duy trì mức nguy hiểm ngay cả ban đêm. Đóng rèm và màn che vào ban ngày để chặn nhiệt bức xạ. Chỉ mở cửa sổ khi không khí bên ngoài mát hơn, thường vào sáng sớm hoặc đêm muộn. Nếu còn điện, hãy dùng quạt để lưu thông không khí và hướng gió qua đá hoặc khăn ướt để làm mát. Nếu mất điện, hãy ở tầng thấp, tránh nấu ăn bằng nhiệt và làm ướt quần áo hoặc khăn để giảm nhiệt cơ thể. Tạo bóng râm và luồng gió là nền tảng của an toàn trong nắng nóng cực đoan."
+      },
+      "audio": "srs09_02_en.mp3"
+    },
+    {
+      "slug": "hydration-strategies-to-prevent-heat-illness",
+      "keywords_en": ["hydration", "heat illness prevention", "fluids"],
+      "keywords_vi": ["bổ sung nước", "phòng bệnh do nóng", "chất lỏng"],
+      "copy": {
+        "en": "Hydration is your strongest defense against heat-related illness. Drink small amounts regularly rather than waiting until thirsty. Water is best, but add oral rehydration salts or an electrolyte drink if you sweat heavily. Avoid alcohol, energy drinks, and excessive coffee—they dehydrate the body. Children and elders need more frequent reminders to drink. During multi-day heatwaves, prepare water in advance and store it in cool areas. Hydration is not a last-minute action; it is a steady habit that protects your body hour by hour.",
+        "vi": "Bổ sung nước là biện pháp mạnh nhất để ngăn bệnh do nắng nóng. Hãy uống từng ngụm nhỏ đều đặn thay vì chờ khát mới uống. Nước lọc là tốt nhất, nhưng nếu ra mồ hôi nhiều, hãy bổ sung gói điện giải hoặc đồ uống bù khoáng. Tránh rượu, nước tăng lực và quá nhiều cà phê—chúng làm cơ thể mất nước. Trẻ em và người già cần được nhắc nhở uống thường xuyên hơn. Trong các đợt nóng kéo dài, hãy chuẩn bị nước từ sớm và trữ ở nơi mát. Bổ sung nước không phải hành động phút chót; đó là thói quen đều đặn bảo vệ cơ thể bạn từng giờ."
+      },
+      "audio": "srs09_03_en.mp3"
+    },
+    {
+      "slug": "managing-outdoor-activities-during-extreme-heat",
+      "keywords_en": ["outdoor safety", "heat management", "activity planning"],
+      "keywords_vi": ["an toàn ngoài trời", "kiểm soát nhiệt", "kế hoạch hoạt động"],
+      "copy": {
+        "en": "When temperatures soar, outdoor activity becomes risky. Limit time outside between 10 a.m. and 4 p.m., when heat is strongest. Wear loose, light-colored clothing made of breathable fabric. Bring water even for short trips. If you must work outside, take breaks in the shade every 10–15 minutes. Pay attention to how your body feels—dizziness, nausea, or sudden weakness mean it is time to stop immediately. Heat exhaustion can progress rapidly without rest. Listening to your body protects you more effectively than pushing through discomfort.",
+        "vi": "Khi nhiệt độ tăng cao, hoạt động ngoài trời trở nên nguy hiểm. Hạn chế ra ngoài từ 10 giờ sáng đến 4 giờ chiều khi nắng mạnh nhất. Mặc quần áo rộng, sáng màu và thoáng khí. Mang theo nước ngay cả khi đi gần. Nếu phải lao động ngoài trời, hãy nghỉ dưới bóng mát mỗi 10–15 phút. Chú ý cảm giác của cơ thể—chóng mặt, buồn nôn hoặc yếu đột ngột nghĩa là phải dừng ngay. Kiệt sức vì nóng tiến triển rất nhanh nếu không nghỉ ngơi. Lắng nghe cơ thể bảo vệ bạn hiệu quả hơn là cố chịu đựng."
+      },
+      "audio": "srs09_04_en.mp3"
+    },
+    {
+      "slug": "protecting-vulnerable-family-members",
+      "keywords_en": ["vulnerable groups", "children", "elders", "heat safety"],
+      "keywords_vi": ["nhóm dễ tổn thương", "trẻ em", "người già", "an toàn nắng nóng"],
+      "copy": {
+        "en": "Children, elders, and people with chronic illnesses are more sensitive to heat. Keep their living spaces cooler, ensure easy access to water, and check on them frequently. Infants can overheat quickly—even a warm room can be stressful. Elders often feel thirst less strongly, so schedule drinking reminders. Prepare medications in advance and store heat-sensitive ones away from direct sunlight. Never leave anyone, including pets, inside a parked vehicle—even for a short time. Protecting vulnerable members ensures your whole household stays safe during severe heat events.",
+        "vi": "Trẻ em, người già và người có bệnh mãn tính dễ nhạy cảm hơn với nắng nóng. Hãy giữ không gian sống của họ mát hơn, để nước trong tầm với và kiểm tra thường xuyên. Trẻ nhỏ có thể quá nhiệt rất nhanh—ngay cả phòng hơi nóng cũng gây căng thẳng. Người già thường ít cảm thấy khát, vì vậy hãy nhắc họ uống theo lịch. Chuẩn bị thuốc từ sớm và cất thuốc nhạy nhiệt tránh ánh nắng trực tiếp. Không bao giờ để bất kỳ ai, kể cả thú cưng, trong xe đậu dưới trời nắng—even trong thời gian ngắn. Bảo vệ nhóm dễ tổn thương giúp cả gia đình an toàn trong các đợt nắng nóng nghiêm trọng."
+      },
+      "audio": "srs09_05_en.mp3"
+    },
+    {
+      "slug": "responding-to-heatstroke-emergencies",
+      "keywords_en": ["heatstroke", "emergency response", "first aid"],
+      "keywords_vi": ["sốc nhiệt", "xử lý khẩn cấp", "sơ cứu"],
+      "copy": {
+        "en": "Heatstroke is a life-threatening emergency. Symptoms include confusion, hot dry skin, rapid breathing, vomiting, or fainting. Call emergency services immediately. Move the person to a shaded or air-conditioned area, remove excess clothing, and cool their body with wet cloths, ice packs on the neck and armpits, or fan airflow. Do not give drinks if the person is unconscious or vomiting. Stay with them until help arrives. Quick action can prevent long-term complications or death. Recognizing heatstroke and responding immediately is one of the most important survival skills in extreme heat.",
+        "vi": "Sốc nhiệt là tình trạng nguy hiểm đến tính mạng. Triệu chứng gồm lú lẫn, da nóng khô, thở nhanh, nôn ói hoặc ngất. Hãy gọi cấp cứu ngay lập tức. Đưa người bệnh vào nơi mát, cởi bớt quần áo và làm mát cơ thể bằng khăn ướt, chườm đá ở cổ và nách hoặc quạt gió. Không cho uống nước nếu họ bất tỉnh hoặc nôn. Luôn ở bên họ cho đến khi được hỗ trợ y tế. Hành động nhanh giúp ngăn biến chứng lâu dài hoặc tử vong. Nhận biết sốc nhiệt và xử lý ngay là một trong những kỹ năng sống còn quan trọng nhất trong nắng nóng cực đoan."
+      },
+      "audio": "srs09_06_en.mp3"
+    }
+  ]
+}

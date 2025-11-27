@@ -1,0 +1,123 @@
+{
+"id": "survival_resilience_vip1_srs14",
+"tier": "VIP1 / VIP1",
+"domain": "Survival",
+"title": {
+"en": "SRS-14 — Emergency Heating, Cooling & Temperature Management",
+"vi": "SRS-14 — Sưởi Ấm, Làm Mát & Ổn Định Thân Nhiệt Khi Khẩn Cấp"
+},
+"content": {
+"en": "Extreme temperatures are becoming more common, and power outages make them dangerous. This room teaches you how to keep body temperature stable during heatwaves, cold spells, storms, or blackouts. These six entries explain how to prevent heat exhaustion, avoid hypothermia, create makeshift insulation, cool a room without electricity, and protect children, elders, and pets from temperature shock. With the right habits, families stay safe even when weather becomes unpredictable.",
+"vi": "Nhiệt độ khắc nghiệt ngày càng phổ biến, và mất điện khiến tình hình nguy hiểm hơn. Phòng này hướng dẫn bạn giữ ổn định thân nhiệt trong nắng nóng, rét đậm, bão hoặc cúp điện. Sáu mục nội dung giải thích cách ngăn say nóng, tránh hạ thân nhiệt, tạo lớp cách nhiệt tạm thời, làm mát phòng không cần điện và bảo vệ trẻ em, người già, thú cưng khỏi sốc nhiệt. Với thói quen đúng, gia đình bạn vẫn an toàn ngay cả khi thời tiết thất thường."
+},
+"entries": [
+{
+"slug": "preventing-heat-exhaustion-and-heatstroke",
+"keywords_en": [
+"heat exhaustion",
+"heat safety",
+"hydration"
+],
+"keywords_vi": [
+"say nóng",
+"an toàn nắng nóng",
+"bổ sung nước"
+],
+"copy": {
+"en": "Heat exhaustion develops quickly when humidity is high or airflow is poor. Early signs include dizziness, cramps, heavy sweating, and nausea. Move to shade or an indoor area with airflow, drink small sips of water, and loosen clothing. Heatstroke is far more dangerous—symptoms include confusion, vomiting, rapid heartbeat, or loss of consciousness. Cool the person immediately with wet cloths on the neck, armpits, and groin, and call emergency services. Never ignore heat-related symptoms; rapid action saves lives.",
+"vi": "Say nóng xảy ra nhanh khi độ ẩm cao hoặc không khí lưu thông kém. Dấu hiệu sớm gồm chóng mặt, chuột rút, đổ mồ hôi nhiều và buồn nôn. Hãy chuyển vào nơi mát, uống từng ngụm nước nhỏ và nới lỏng quần áo. Sốc nhiệt nguy hiểm hơn nhiều—triệu chứng gồm lú lẫn, nôn, tim đập nhanh hoặc bất tỉnh. Làm mát ngay bằng khăn ướt đặt lên cổ, nách và bẹn, đồng thời gọi cấp cứu. Không bao giờ xem nhẹ dấu hiệu liên quan đến nóng; hành động nhanh cứu được mạng sống."
+},
+"audio": "srs14_01_en.mp3"
+},
+{
+"slug": "preventing-hypothermia-in-cold-weather",
+"keywords_en": [
+"hypothermia",
+"cold safety",
+"insulation"
+],
+"keywords_vi": [
+"hạ thân nhiệt",
+"an toàn trời lạnh",
+"cách nhiệt"
+],
+"copy": {
+"en": "Hypothermia occurs when body temperature drops too low, often during storms or cold nights without power. Symptoms include shivering, confusion, slurred speech, and extreme fatigue. Warm the person slowly—never with direct heat. Use blankets, layered clothing, warm (not hot) drinks, and shared body heat if necessary. Keep clothing dry; wet fabric pulls heat from the skin. Children and elders cool down much faster than adults, so check on them frequently. Gradual, steady warmth is the goal.",
+"vi": "Hạ thân nhiệt xảy ra khi cơ thể quá lạnh, thường vào đêm bão hoặc khi cúp điện. Triệu chứng gồm run rẩy, lú lẫn, nói khó và mệt mỏi cực độ. Hãy làm ấm từ từ—không dùng nhiệt quá mạnh. Dùng chăn, quần áo nhiều lớp, đồ uống ấm (không nóng) và chia sẻ hơi ấm cơ thể nếu cần. Giữ quần áo khô; đồ ướt rút nhiệt rất nhanh. Trẻ nhỏ và người già mất nhiệt nhanh hơn người lớn, nên kiểm tra thường xuyên. Mục tiêu là ấm dần, ổn định."
+},
+"audio": "srs14_02_en.mp3"
+},
+{
+"slug": "cooling-a-room-without-electricity",
+"keywords_en": [
+"cooling",
+"no electricity",
+"heatwave"
+],
+"keywords_vi": [
+"làm mát",
+"không có điện",
+"nắng nóng"
+],
+"copy": {
+"en": "Simple techniques can lower room temperature significantly during blackouts. Close curtains during the day to reduce heat gain, and open windows at night to let cool air in. Hang damp sheets near windows to create evaporative cooling. Move activities to the coolest part of the home—usually the ground floor. Avoid using candles or cooking indoors; they add heat. If humidity is low, placing bowls of water near open windows helps improve comfort.",
+"vi": "Bạn có thể giảm nhiệt đáng kể bằng các kỹ thuật đơn giản khi mất điện. Đóng rèm ban ngày để giảm nóng, mở cửa sổ ban đêm để đón khí mát. Treo khăn ướt gần cửa sổ để tạo hiệu ứng bay hơi làm mát. Di chuyển sinh hoạt xuống tầng thấp nơi mát hơn. Tránh dùng nến hoặc nấu ăn trong nhà vì chúng sinh nhiệt. Nếu độ ẩm thấp, đặt chậu nước gần cửa sổ mở có thể giúp mát hơn."
+},
+"audio": "srs14_03_en.mp3"
+},
+{
+"slug": "warming-your-space-without-a-heater",
+"keywords_en": [
+"warming",
+"heater alternatives",
+"cold weather"
+],
+"keywords_vi": [
+"sưởi ấm",
+"không dùng máy sưởi",
+"trời lạnh"
+],
+"copy": {
+"en": "During cold spells without power, trap heat by closing off one room and keeping everyone inside. Use layered clothing, blankets, sleeping bags, and insulated curtains or towels to reduce heat loss. Candles provide minimal warmth and increase fire risk, so use them cautiously. Hot water bottles or warm stones wrapped in cloth provide safe, local warmth. Eating warm foods and staying dry also help maintain core temperature. Focus on insulation, not open flames.",
+"vi": "Trong trời lạnh không có điện, hãy giữ ấm bằng cách gom mọi người vào một phòng và che kín khe hở. Dùng quần áo nhiều lớp, chăn, túi ngủ và rèm hoặc khăn dày để giảm thất thoát nhiệt. Nến tạo rất ít nhiệt và dễ cháy nên dùng hạn chế. Chai nước nóng hoặc đá được quấn khăn tạo nguồn ấm an toàn. Ăn đồ ấm và giữ cơ thể khô cũng giúp duy trì thân nhiệt. Hãy ưu tiên cách nhiệt, không dùng lửa trần."
+},
+"audio": "srs14_04_en.mp3"
+},
+{
+"slug": "protecting-children-elders-and-pets",
+"keywords_en": [
+"vulnerable groups",
+"temperature safety",
+"family care"
+],
+"keywords_vi": [
+"nhóm dễ tổn thương",
+"an toàn nhiệt độ",
+"chăm sóc gia đình"
+],
+"copy": {
+"en": "Children, elders, and pets are more sensitive to temperature changes. Babies cannot regulate heat well, and elders may not feel temperature shifts until symptoms appear. Keep them hydrated, dry, and properly clothed. Check skin temperature with your hand, not just room temperature. Pets need shade, water, and protection from metal surfaces that heat or freeze quickly. Create a shared space where vulnerable members stay monitored and comfortable throughout the outage.",
+"vi": "Trẻ em, người già và thú cưng nhạy cảm hơn với thay đổi nhiệt độ. Trẻ nhỏ khó tự điều chỉnh nhiệt, còn người cao tuổi có thể không cảm nhận được thay đổi cho đến khi có triệu chứng. Hãy giữ họ đủ nước, khô ráo và mặc đúng lớp. Kiểm tra nhiệt da bằng tay thay vì chỉ nhìn nhiệt độ phòng. Thú cưng cần bóng râm, nước và tránh bề mặt kim loại dễ nóng hoặc lạnh nhanh. Tạo không gian chung để theo dõi và giúp họ thoải mái trong suốt thời gian mất điện."
+},
+"audio": "srs14_05_en.mp3"
+},
+{
+"slug": "managing-temperature-stress-during-disasters",
+"keywords_en": [
+"temperature stress",
+"disasters",
+"health"
+],
+"keywords_vi": [
+"sốc nhiệt độ",
+"thiên tai",
+"sức khỏe"
+],
+"copy": {
+"en": "Disasters amplify temperature stress because people often feel anxious, dehydrated, or exhausted. Take breaks, drink water regularly, and avoid overexertion when weather is extreme. Recognize early danger signs: rapid breathing, confusion, shivering, cramps, or sudden fatigue. If someone shows signs of temperature shock, move them to a safer environment immediately. Stabilizing body temperature improves decision-making and reduces panic, helping families stay calm and coordinated.",
+"vi": "Thiên tai làm cơ thể dễ sốc nhiệt vì con người lo lắng, mất nước hoặc kiệt sức. Hãy nghỉ ngơi thường xuyên, uống nước đều và tránh gắng sức khi thời tiết khắc nghiệt. Nhận biết dấu hiệu nguy hiểm sớm: thở nhanh, lú lẫn, run, chuột rút hoặc mệt lả. Nếu ai có dấu hiệu sốc nhiệt, hãy đưa họ đến nơi an toàn ngay. Ổn định thân nhiệt giúp suy nghĩ rõ ràng và giảm hoảng loạn, giúp gia đình phối hợp tốt hơn."
+},
+"audio": "srs14_06_en.mp3"
+}
+]
+}

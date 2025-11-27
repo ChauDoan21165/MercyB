@@ -1,0 +1,75 @@
+{
+  "id": "survival_resilience_vip1_srs10",
+  "tier": "VIP1 / VIP1",
+  "domain": "Survival",
+  "title": {
+    "en": "SRS-10 — Cold Waves, Hypothermia & Staying Warm",
+    "vi": "SRS-10 — Rét Đậm, Hạ Thân Nhiệt & Giữ Ấm An Toàn"
+  },
+  "content": {
+    "en": "Extreme cold can be just as dangerous as extreme heat. This room teaches you how to stay warm, protect vulnerable family members, prevent hypothermia, and prepare your home for freezing temperatures. You will learn essential layering techniques, safe heating practices, how to recognize the early signs of cold stress, and how to stay warm even during a power outage. These six entries focus on calm, practical actions that help you stay safe, conserve body heat, and respond wisely when cold becomes a threat to health and survival.",
+    "vi": "Thời tiết rét đậm có thể nguy hiểm không kém nắng nóng cực đoan. Phòng này hướng dẫn bạn cách giữ ấm, bảo vệ người dễ tổn thương, phòng ngừa hạ thân nhiệt và chuẩn bị nhà cửa cho nhiệt độ đóng băng. Bạn sẽ học cách mặc lớp an toàn, sử dụng nguồn sưởi đúng cách, nhận biết dấu hiệu hạ thân nhiệt và giữ ấm ngay cả khi mất điện. Sáu mục nội dung tập trung vào những hành động bình tĩnh, thực tế giúp bạn an toàn, giữ nhiệt cơ thể và ứng phó khôn ngoan khi trời lạnh trở thành mối đe dọa."
+  },
+  "entries": [
+    {
+      "slug": "recognizing-early-signs-of-hypothermia",
+      "keywords_en": ["hypothermia", "cold stress", "warning signs"],
+      "keywords_vi": ["hạ thân nhiệt", "stress lạnh", "dấu hiệu cảnh báo"],
+      "copy": {
+        "en": "Hypothermia begins subtly. Early warning signs include shivering, numb fingers, clumsy movements, pale skin, or slow speech. In children, watch for unusual quietness or refusal to move; in elders, shivering may be weak or absent. If these signs appear, move to warmth immediately, replace wet clothing with dry layers, and drink something warm if the person is fully awake. Do not ignore mild symptoms—cold stress can worsen rapidly. Early recognition keeps small problems from becoming life-threatening emergencies.",
+        "vi": "Hạ thân nhiệt bắt đầu rất âm thầm. Dấu hiệu sớm gồm run rẩy, tê tay, vụng về, da tái hoặc nói chậm. Ở trẻ em, hãy chú ý sự im lặng bất thường hoặc lười vận động; ở người già, run rẩy có thể yếu hoặc không xuất hiện. Khi thấy các dấu hiệu này, hãy chuyển ngay đến nơi ấm, thay quần áo ướt bằng lớp khô và uống đồ ấm nếu người bệnh tỉnh táo. Đừng bỏ qua triệu chứng nhẹ—stress lạnh có thể nặng lên rất nhanh. Nhận biết sớm giúp ngăn tình huống nguy hiểm."
+      },
+      "audio": "srs10_01_en.mp3"
+    },
+    {
+      "slug": "layering-techniques-to-stay-warm",
+      "keywords_en": ["layering", "warm clothing", "cold protection"],
+      "keywords_vi": ["mặc lớp", "quần áo giữ ấm", "bảo vệ cơ thể"],
+      "copy": {
+        "en": "Layering your clothing is the most effective way to stay warm. Use three main layers: a moisture-wicking base layer, an insulating middle layer like fleece or wool, and a wind-resistant outer layer. Avoid cotton—it traps moisture and makes you colder. Keep your head, neck, hands, and feet covered; these areas lose heat quickly. When outdoors, adjust layers before you start sweating. Wet clothing cools the body fast. Smart layering keeps you warm without overheating and reduces the risk of hypothermia.",
+        "vi": "Mặc nhiều lớp là cách hiệu quả nhất để giữ ấm. Có ba lớp chính: lớp lót thấm mồ hôi, lớp giữa cách nhiệt như nỉ hoặc len, và lớp ngoài cản gió. Tránh cotton—nó giữ ẩm và làm bạn lạnh nhanh hơn. Giữ ấm đầu, cổ, tay và chân vì những vùng này mất nhiệt rất nhanh. Khi ra ngoài, điều chỉnh số lớp trước khi đổ mồ hôi. Quần áo ướt sẽ làm cơ thể lạnh rất nhanh. Mặc lớp thông minh giúp bạn ấm mà không bị nóng quá mức và giảm nguy cơ hạ thân nhiệt."
+      },
+      "audio": "srs10_02_en.mp3"
+    },
+    {
+      "slug": "making-your-home-safe-and-warm-during-cold-waves",
+      "keywords_en": ["home heating", "cold waves", "indoor warmth"],
+      "keywords_vi": ["sưởi ấm nhà", "rét đậm", "giữ ấm trong nhà"],
+      "copy": {
+        "en": "Prepare your home before temperatures drop. Seal gaps around windows and doors to keep warm air inside. Use thick curtains at night and open them during sunny hours for natural heat. Move beds and sitting areas away from cold walls and windows. Keep blankets, socks, and warm layers easily accessible. If you rely on heaters, ensure they are clean and functioning safely. Store extra water—pipes can freeze in extreme cold. A warm home begins with small, consistent actions that preserve heat.",
+        "vi": "Hãy chuẩn bị nhà cửa trước khi nhiệt độ xuống thấp. Bịt khe hở quanh cửa sổ và cửa ra vào để giữ không khí ấm trong nhà. Đóng rèm dày vào ban đêm và mở khi trời nắng để lấy nhiệt tự nhiên. Dời giường và chỗ ngồi tránh xa tường và cửa sổ lạnh. Để sẵn chăn, tất và quần áo ấm trong tầm với. Nếu dùng máy sưởi, hãy kiểm tra vệ sinh và độ an toàn. Trữ thêm nước—ống nước có thể đóng băng trong thời tiết cực lạnh. Một ngôi nhà ấm bắt đầu từ những bước nhỏ, đều đặn."
+      },
+      "audio": "srs10_03_en.mp3"
+    },
+    {
+      "slug": "staying-warm-during-power-outages",
+      "keywords_en": ["power outage", "cold survival", "no electricity"],
+      "keywords_vi": ["mất điện", "sinh tồn trong lạnh", "không điện"],
+      "copy": {
+        "en": "Power outages during cold waves can be dangerous. Stay in a single room and close interior doors to conserve heat. Use blankets, sleeping bags, and layered clothing. Share body warmth by sitting close together if needed. Block drafts with towels or clothing at the bottom of doors. Eat warm, high-energy foods if available. Never use charcoal stoves, gas burners, or cars for indoor heating—these produce deadly carbon monoxide. With good preparation, you can stay warm even without electricity.",
+        "vi": "Mất điện trong rét đậm có thể rất nguy hiểm. Hãy ở trong một phòng và đóng các cửa trong nhà để giữ nhiệt. Dùng chăn, túi ngủ và quần áo nhiều lớp. Nếu cần, hãy ngồi gần nhau để chia sẻ nhiệt cơ thể. Chặn gió lùa bằng khăn hoặc quần áo ở chân cửa. Ăn đồ ấm và giàu năng lượng nếu có. Không dùng bếp than, bếp gas hay nổ máy xe trong nhà—chúng tạo khí CO cực độc. Chuẩn bị tốt giúp bạn giữ ấm ngay cả khi không có điện."
+      },
+      "audio": "srs10_04_en.mp3"
+    },
+    {
+      "slug": "protecting-children-elders-and-pets-from-the-cold",
+      "keywords_en": ["children", "elders", "pets", "cold safety"],
+      "keywords_vi": ["trẻ em", "người già", "thú cưng", "an toàn trong lạnh"],
+      "copy": {
+        "en": "Children, elders, and pets lose heat faster than healthy adults. Keep them in the warmest room of the house and check their hands, feet, and face regularly. Ensure children wear hats and warm socks indoors. Elders may not feel cold strongly, so observe their behavior rather than relying on their self-reporting. Keep pets inside and provide extra bedding. All vulnerable family members should have access to warm drinks, blankets, and dry clothing. Protecting them keeps your whole household safer.",
+        "vi": "Trẻ em, người già và thú cưng mất nhiệt nhanh hơn người lớn khỏe mạnh. Hãy giữ họ ở phòng ấm nhất trong nhà và kiểm tra tay, chân, mặt thường xuyên. Đảm bảo trẻ đội mũ và mang tất ngay cả khi ở trong nhà. Người già có thể không cảm thấy lạnh rõ rệt, vì vậy hãy chú ý hành vi thay vì chỉ dựa vào lời họ nói. Giữ thú cưng trong nhà và cung cấp thêm chỗ nằm ấm. Những người dễ tổn thương cần có đồ uống ấm, chăn và quần áo khô. Bảo vệ họ giúp cả gia đình an toàn hơn."
+      },
+      "audio": "srs10_05_en.mp3"
+    },
+    {
+      "slug": "emergency-response-to-severe-cold-injuries",
+      "keywords_en": ["frostbite", "cold injury", "emergency"],
+      "keywords_vi": ["tê cóng", "tổn thương do lạnh", "khẩn cấp"],
+      "copy": {
+        "en": "Frostbite and severe cold injuries require careful handling. Signs include numb, pale, or hard skin—often on fingers, toes, ears, or the nose. Do not rub the skin; this causes further damage. Move the person to a warm environment and rewarm the affected area with body heat or warm (not hot) water. Remove wet clothing and replace it with dry layers. If skin turns blue, blistered, or remains numb, seek medical help immediately. Gentle, steady warming is the safest approach.",
+        "vi": "Tê cóng và tổn thương do lạnh cần được xử lý cẩn thận. Dấu hiệu gồm da tê, tái, cứng—thường ở ngón tay, ngón chân, tai hoặc mũi. Không xoa bóp vùng bị lạnh; điều này làm tổn thương nặng hơn. Đưa người bệnh vào nơi ấm và làm ấm vùng bị ảnh hưởng bằng nhiệt cơ thể hoặc nước ấm (không nóng). Tháo quần áo ướt và thay bằng lớp khô. Nếu da chuyển xanh tím, phồng rộp hoặc vẫn tê, hãy tìm hỗ trợ y tế ngay. Làm ấm từ từ, nhẹ nhàng là phương án an toàn nhất."
+      },
+      "audio": "srs10_06_en.mp3"
+    }
+  ]
+}

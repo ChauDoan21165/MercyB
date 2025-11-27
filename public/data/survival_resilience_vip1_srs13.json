@@ -1,0 +1,75 @@
+{
+  "id": "survival_resilience_vip1_srs13",
+  "tier": "VIP1 / VIP1",
+  "domain": "Survival",
+  "title": {
+    "en": "SRS-13 — Safe Use of Generators & Backup Power",
+    "vi": "SRS-13 — Sử Dụng Máy Phát Điện & Nguồn Dự Phòng An Toàn"
+  },
+  "content": {
+    "en": "Backup power becomes essential when outages last for hours or days. This room teaches you how to operate generators safely, prevent carbon monoxide poisoning, store fuel responsibly, and avoid electrical hazards during emergencies. These six entries focus on practical, life-saving habits: where to place generators, how to prevent fire risk, how to avoid backfeed accidents, and what to do when power returns. With calm preparation, generators provide comfort—not danger—during blackouts.",
+    "vi": "Nguồn điện dự phòng trở nên thiết yếu khi mất điện kéo dài hàng giờ hoặc nhiều ngày. Phòng này hướng dẫn bạn vận hành máy phát điện an toàn, tránh ngộ độc khí CO, bảo quản nhiên liệu đúng cách và phòng tránh nguy cơ điện giật trong tình huống khẩn cấp. Sáu mục nội dung tập trung vào những thói quen thực tế giúp bảo vệ tính mạng: đặt máy phát ở đâu, tránh cháy nổ thế nào, ngăn tai nạn điện hồi ngược và cần làm gì khi điện lưới trở lại. Chuẩn bị bình tĩnh giúp máy phát mang lại sự an toàn thay vì nguy hiểm."
+  },
+  "entries": [
+    {
+      "slug": "preventing-carbon-monoxide-poisoning",
+      "keywords_en": ["carbon monoxide", "generator safety", "ventilation"],
+      "keywords_vi": ["khí CO", "an toàn máy phát", "thông gió"],
+      "copy": {
+        "en": "Carbon monoxide (CO) is the most dangerous threat when using generators. It is invisible, odorless, and can kill within minutes. Always operate generators outdoors—never inside homes, garages, balconies, or near windows. Keep the generator at least 6–7 meters from doors and vents. If anyone shows dizziness, headache, nausea, or sudden confusion, move them to fresh air immediately and call emergency services. CO detectors with batteries should stay active during outages. Understanding CO risk is the foundation of safe generator use.",
+        "vi": "Khí carbon monoxide (CO) là mối nguy lớn nhất khi dùng máy phát điện. Nó vô hình, không mùi và có thể gây tử vong trong vài phút. Luôn vận hành máy phát ngoài trời—không bao giờ đặt trong nhà, gara, ban công hoặc gần cửa sổ. Giữ máy cách cửa ra vào và lỗ thông gió ít nhất 6–7 mét. Nếu ai có triệu chứng chóng mặt, đau đầu, buồn nôn hoặc lú lẫn, hãy đưa họ ra nơi thoáng khí ngay và gọi cấp cứu. Máy báo khí CO chạy pin nên luôn hoạt động trong lúc mất điện. Hiểu rủi ro CO là nền tảng của sử dụng máy phát an toàn."
+      },
+      "audio": "srs13_01_en.mp3"
+    },
+    {
+      "slug": "placing-your-generator-safely",
+      "keywords_en": ["placement", "outdoor safety", "distance"],
+      "keywords_vi": ["đặt máy phát", "an toàn ngoài trời", "khoảng cách"],
+      "copy": {
+        "en": "Where you place a generator determines how safe it is. Choose a flat, dry outdoor area protected from rain but never enclosed. Use a canopy or generator tent designed for ventilation if weather is severe. Point the exhaust away from homes and neighbors. Never operate on balconies, stairwells, or inside storage areas. Keep children and pets away from the machine—it becomes extremely hot during use. Safe placement reduces both CO risk and fire hazards.",
+        "vi": "Vị trí đặt máy phát quyết định mức độ an toàn của bạn. Chọn nơi bằng phẳng, khô ráo ngoài trời và tránh mưa, nhưng không bao giờ được che kín. Nếu thời tiết xấu, hãy dùng mái che hoặc lều chuyên dụng cho máy phát có thông gió. Hướng ống xả ra xa nhà và khu dân cư. Không vận hành trên ban công, cầu thang hoặc trong nhà kho. Giữ trẻ em và thú cưng tránh xa vì máy phát rất nóng khi hoạt động. Đặt đúng vị trí giúp giảm nguy cơ CO và cháy nổ."
+      },
+      "audio": "srs13_02_en.mp3"
+    },
+    {
+      "slug": "preventing-electrical-backfeed-accidents",
+      "keywords_en": ["backfeed", "electrical safety", "power outage"],
+      "keywords_vi": ["điện hồi ngược", "an toàn điện", "mất điện"],
+      "copy": {
+        "en": "Backfeed happens when generator power flows into household wiring and back into the grid. It can electrocute utility workers and damage your home’s electrical system. Never plug a generator directly into wall outlets. Use heavy-duty extension cords to power appliances individually, or have a licensed electrician install a proper transfer switch. Turn off the generator before refueling or switching circuits. These habits protect both your family and the people repairing the grid.",
+        "vi": "Điện hồi ngược xảy ra khi điện từ máy phát chảy vào hệ thống dây trong nhà và quay lại lưới điện. Điều này có thể gây điện giật cho nhân viên sửa chữa và làm hỏng hệ thống điện gia đình. Không bao giờ cắm máy phát trực tiếp vào ổ cắm tường. Hãy dùng dây cáp chịu tải để cấp điện cho từng thiết bị, hoặc lắp bộ chuyển mạch an toàn với thợ điện được cấp phép. Tắt máy trước khi tiếp nhiên liệu hoặc chuyển mạch. Những thói quen này bảo vệ cả gia đình và người sửa lưới điện."
+      },
+      "audio": "srs13_03_en.mp3"
+    },
+    {
+      "slug": "fuel-storage-and-fire-prevention",
+      "keywords_en": ["fuel safety", "fire prevention", "storage"],
+      "keywords_vi": ["an toàn nhiên liệu", "phòng cháy", "trữ nhiên liệu"],
+      "copy": {
+        "en": "Fuel must be stored with extreme care. Keep gasoline or diesel in approved containers, away from stoves, heaters, or sparks. Store fuel in well-ventilated outdoor sheds—not inside homes. Let the generator cool for at least 10–15 minutes before refueling; spilled fuel on hot surfaces can ignite instantly. Rotate stored fuel every few months to prevent degradation. Safe fuel habits prevent the most common generator-related fires.",
+        "vi": "Nhiên liệu phải được trữ cực kỳ cẩn thận. Cất xăng hoặc dầu trong bình đạt chuẩn, tránh xa bếp, lò sưởi hoặc tia lửa. Trữ nhiên liệu tại nhà kho ngoài trời có thông gió—không để trong nhà. Để máy phát nguội ít nhất 10–15 phút trước khi tiếp nhiên liệu; xăng đổ lên bề mặt nóng có thể bốc cháy ngay. Xoay vòng nhiên liệu sau vài tháng để tránh xuống chất. Thói quen an toàn với nhiên liệu giúp ngăn phần lớn vụ cháy liên quan đến máy phát."
+      },
+      "audio": "srs13_04_en.mp3"
+    },
+    {
+      "slug": "running-appliances-safely-on-backup-power",
+      "keywords_en": ["appliances", "load safety", "power limits"],
+      "keywords_vi": ["thiết bị điện", "tải điện", "giới hạn công suất"],
+      "copy": {
+        "en": "Generators cannot power everything at once. Overloading causes overheating, damage, or shutdown. Prioritize essentials: refrigerator, fan, small cooker, lights, and phone chargers. Avoid using high-wattage devices like electric stoves or air conditioners unless your generator is rated for them. Check wattage labels and distribute loads evenly across outlets. Turn appliances on one at a time to avoid sudden surges. Careful load management protects both the generator and your devices.",
+        "vi": "Máy phát không thể chạy tất cả thiết bị cùng lúc. Quá tải có thể gây nóng, hỏng hoặc tắt máy. Hãy ưu tiên thiết bị thiết yếu: tủ lạnh, quạt, bếp nhỏ, đèn và bộ sạc điện thoại. Tránh dùng thiết bị công suất lớn như bếp điện hoặc máy lạnh trừ khi máy phát có công suất phù hợp. Kiểm tra nhãn watt và phân bổ tải đều giữa các ổ cắm. Bật từng thiết bị một để tránh dòng khởi động quá mạnh. Quản lý tải cẩn thận giúp bảo vệ cả máy phát và thiết bị."
+      },
+      "audio": "srs13_05_en.mp3"
+    },
+    {
+      "slug": "what-to-do-when-power-returns",
+      "keywords_en": ["power restoration", "shutdown", "reset"],
+      "keywords_vi": ["điện trở lại", "tắt máy", "kiểm tra hệ thống"],
+      "copy": {
+        "en": "When electricity returns, turn off the generator first, then unplug all appliances before reconnecting them to the grid. Inspect cords for heat or damage before reuse. Allow the generator to cool completely before storing it. If you used a transfer switch, return it to the normal position to avoid backfeed. Restock fuel, test CO detectors, and review what worked well and what needs improvement. Small habits after an outage make future emergencies easier to handle.",
+        "vi": "Khi điện lưới trở lại, hãy tắt máy phát trước, sau đó rút toàn bộ thiết bị trước khi cắm lại vào điện lưới. Kiểm tra dây cáp xem có nóng hoặc hư hại không trước khi dùng tiếp. Để máy nguội hoàn toàn rồi mới cất. Nếu bạn dùng bộ chuyển mạch, hãy đưa nó về chế độ bình thường để tránh dòng hồi ngược. Bổ sung nhiên liệu, kiểm tra máy báo CO và xem lại những gì đã làm tốt hoặc cần cải thiện. Những thói quen nhỏ sau mất điện giúp bạn xử lý tốt hơn những lần sau."
+      },
+      "audio": "srs13_06_en.mp3"
+    }
+  ]
+}
