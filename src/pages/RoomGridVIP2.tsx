@@ -129,11 +129,7 @@ const RoomGridVIP2 = () => {
                   ? "hover:scale-110 hover:shadow-hover hover:z-10" 
                   : "opacity-60 cursor-not-allowed"
               }`}
-              style={
-                useColorTheme
-                  ? { background: roomColor, border: '1px solid rgba(0,0,0,0.1)' }
-                  : { background: 'white', border: '1px solid #e5e7eb' }
-              }
+              style={{ background: 'white', border: '1px solid #e5e7eb' }}
               onClick={() => room.hasData && navigate(`/chat/${room.id}`)}
             >
               {/* Status Badge */}
@@ -155,7 +151,7 @@ const RoomGridVIP2 = () => {
                   <p 
                     className="text-xs font-bold leading-tight line-clamp-2"
                     style={useColorTheme 
-                      ? { color: `color-mix(in srgb, ${roomColor} 20%, black)` }
+                      ? { color: roomColor, fontWeight: 700 }
                       : { color: 'black' }
                     }
                   >
@@ -164,7 +160,7 @@ const RoomGridVIP2 = () => {
                   <p 
                     className="text-[10px] leading-tight line-clamp-2"
                     style={useColorTheme 
-                      ? { color: `color-mix(in srgb, ${roomColor} 15%, black)` }
+                      ? { color: roomColor, fontWeight: 600 }
                       : { color: '#4b5563' }
                     }
                   >
@@ -176,11 +172,7 @@ const RoomGridVIP2 = () => {
               {/* Hover Effect */}
               {room.hasData && (
                 <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" 
-                  style={useColorTheme 
-                    ? { background: `linear-gradient(to bottom right, ${roomColor}20, ${roomColor}10)` }
-                    : { background: 'rgba(0, 0, 0, 0.05)' }
-                  }
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg bg-gray-50"
                 />
               )}
             </Card>
