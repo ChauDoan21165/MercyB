@@ -1,0 +1,75 @@
+{
+  "id": "english_c2_c205",
+  "tier": "VIP3 / VIP3",
+  "domain": "English C2",
+  "title": {
+    "en": "C2-05 — High-Level Argumentation & Persuasive Logic",
+    "vi": "C2-05 — Lập Luận Nâng Cao & Logic Thuyết Phục"
+  },
+  "content": {
+    "en": "This room teaches you how to build high-level arguments in English using clarity, structure, and persuasive logic. You will learn how to present a position without aggression, organize ideas cleanly, anticipate counterarguments, and maintain a calm, credible tone. These six entries help you speak and write with authority in advanced academic, professional, and debate settings.",
+    "vi": "Phòng này giúp bạn xây dựng lập luận nâng cao bằng sự rõ ràng, cấu trúc và logic thuyết phục. Bạn sẽ học cách trình bày quan điểm mà không gây căng thẳng, sắp xếp ý tưởng mạch lạc, dự đoán phản biện và giữ giọng điệu bình tĩnh, đáng tin cậy. Sáu mục nội dung này hỗ trợ bạn nói và viết một cách thuyết phục trong môi trường học thuật, công việc và tranh luận nâng cao."
+  },
+  "entries": [
+    {
+      "slug": "presenting-a-clear-position",
+      "keywords_en": ["argument", "clarity"],
+      "keywords_vi": ["lập luận", "rõ ràng"],
+      "copy": {
+        "en": "Strong arguments begin with a clear position. Instead of long introductions, state your point simply: My view is that or I believe this approach works best. Clear positions help listeners follow your logic. They also reduce misunderstandings and show confidence without sounding aggressive.",
+        "vi": "Lập luận mạnh bắt đầu bằng quan điểm rõ ràng. Thay vì mở đầu dài dòng, hãy nêu ý chính đơn giản: My view is that hoặc I believe this approach works best. Quan điểm rõ ràng giúp người nghe theo dõi mạch lập luận và giảm hiểu lầm. Điều này thể hiện sự tự tin mà không gây căng thẳng."
+      },
+      "audio": "c205_01_en.mp3"
+    },
+    {
+      "slug": "using-logical-structure",
+      "keywords_en": ["logic", "structure"],
+      "keywords_vi": ["logic", "cấu trúc"],
+      "copy": {
+        "en": "Advanced argumentation uses clean structure: point, reason, example, conclusion. For example: First, state your idea. Then explain why. Give a real example. Finish with a short conclusion. This structure makes your message easy to understand even when the topic is complex.",
+        "vi": "Lập luận nâng cao dùng cấu trúc rõ ràng: ý chính, lý do, ví dụ, kết luận. Ví dụ: Nêu ý tưởng trước. Sau đó giải thích lý do. Đưa ví dụ thực tế. Kết thúc bằng kết luận ngắn. Cấu trúc này giúp thông điệp dễ hiểu ngay cả khi chủ đề phức tạp."
+      },
+      "audio": "c205_02_en.mp3"
+    },
+    {
+      "slug": "balancing-emotion-and-logic",
+      "keywords_en": ["balance", "emotion"],
+      "keywords_vi": ["cân bằng", "cảm xúc"],
+      "copy": {
+        "en": "Persuasive logic does not avoid emotion; it controls it. Use emotional elements lightly to support your point, not replace evidence. For example: This issue matters because it affects real families. Calm emotional framing makes your argument human without losing rational strength.",
+        "vi": "Logic thuyết phục không loại bỏ cảm xúc mà điều chỉnh chúng. Hãy dùng cảm xúc nhẹ nhàng để hỗ trợ lập luận, không thay thế bằng chứng. Ví dụ: This issue matters because it affects real families. Cách diễn đạt cảm xúc nhẹ nhàng giúp lập luận gần gũi mà vẫn giữ sức mạnh lý trí."
+      },
+      "audio": "c205_03_en.mp3"
+    },
+    {
+      "slug": "responding-to-counterarguments",
+      "keywords_en": ["counterargument", "debate"],
+      "keywords_vi": ["phản biện", "tranh luận"],
+      "copy": {
+        "en": "Strong communicators acknowledge opposing opinions calmly. A useful pattern is: Some people say, but I see it differently because. This approach respects the other side while reinforcing your point with clarity and confidence.",
+        "vi": "Người giao tiếp giỏi thừa nhận ý kiến đối lập một cách bình tĩnh. Một cấu trúc hữu ích là: Some people say, but I see it differently because. Cách nói này tôn trọng quan điểm khác và đồng thời củng cố lập luận của bạn bằng sự rõ ràng và tự tin."
+      },
+      "audio": "c205_04_en.mp3"
+    },
+    {
+      "slug": "using-hedging-for-precision",
+      "keywords_en": ["hedging", "precision"],
+      "keywords_vi": ["giảm nhẹ", "chính xác"],
+      "copy": {
+        "en": "Hedging softens absolute statements and makes advanced English sound more accurate. Use phrases like it seems, it appears, or the evidence suggests. These expressions show intellectual honesty and help you avoid sounding extreme or inflexible.",
+        "vi": "Hedging giúp làm mềm các câu nói tuyệt đối và tạo cảm giác chính xác hơn trong tiếng Anh nâng cao. Hãy dùng các cụm như it seems, it appears hoặc the evidence suggests. Chúng thể hiện sự trung thực trí tuệ và giúp bạn tránh nghe cứng nhắc hoặc cực đoan."
+      },
+      "audio": "c205_05_en.mp3"
+    },
+    {
+      "slug": "closing-with-strength",
+      "keywords_en": ["conclusion", "strength"],
+      "keywords_vi": ["kết luận", "mạnh mẽ"],
+      "copy": {
+        "en": "Finish your argument with a short, strong closing line. For example: For these reasons, this solution is the most practical. A clear closing helps the listener remember your point. It also signals confidence and control over your message.",
+        "vi": "Hãy kết thúc lập luận bằng một câu ngắn gọn và mạnh mẽ. Ví dụ: For these reasons, this solution is the most practical. Một câu kết luận rõ ràng giúp người nghe ghi nhớ ý chính và thể hiện bạn tự tin, kiểm soát tốt thông điệp."
+      },
+      "audio": "c205_06_en.mp3"
+    }
+  ]
+}

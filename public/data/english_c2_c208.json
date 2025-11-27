@@ -1,0 +1,75 @@
+{
+  "id": "english_c2_c208",
+  "tier": "VIP3 / VIP3",
+  "domain": "English C2",
+  "title": {
+    "en": "C2-08 — Advanced Analytical Writing (Clarity & Logic)",
+    "vi": "C2-08 — Viết Phân Tích Nâng Cao (Rõ Ràng & Logic)"
+  },
+  "content": {
+    "en": "This room teaches you how to write clear, logical analytical paragraphs in advanced English. You will learn how to use precise structure, strong linking words, and coherent reasoning to express complex ideas with confidence. These skills help you write emails, reports, essays, and arguments at a professional level.",
+    "vi": "Phòng này giúp bạn viết các đoạn phân tích rõ ràng và logic bằng tiếng Anh nâng cao. Bạn sẽ học cách dùng cấu trúc chính xác, từ nối mạnh và lập luận mạch lạc để diễn đạt ý tưởng phức tạp một cách tự tin. Những kỹ năng này rất hữu ích cho email, báo cáo, bài luận và lập luận chuyên nghiệp."
+  },
+  "entries": [
+    {
+      "slug": "logical-paragraph-structure",
+      "keywords_en": ["structure", "paragraph"],
+      "keywords_vi": ["cấu trúc", "đoạn văn"],
+      "copy": {
+        "en": "A strong analytical paragraph follows a simple pattern: topic sentence, explanation, evidence, conclusion. The first sentence states the idea clearly. The next lines explain why the idea matters. Then you give one piece of evidence or an example. Finally, you connect the idea back to your main argument. This structure brings clarity to complex thoughts.",
+        "vi": "Một đoạn văn phân tích mạnh tuân theo mô hình: câu chủ đề, giải thích, bằng chứng, kết luận. Câu đầu nêu ý chính rõ ràng. Các câu sau giải thích vì sao ý đó quan trọng. Tiếp theo là một bằng chứng hoặc ví dụ. Cuối cùng là kết nối ý trở lại luận điểm chính. Cấu trúc này giúp làm rõ những ý tưởng phức tạp."
+      },
+      "audio": "c208_01_en.mp3"
+    },
+    {
+      "slug": "using-clear-and-strong-linking-words",
+      "keywords_en": ["linking words", "coherence"],
+      "keywords_vi": ["từ nối", "mạch lạc"],
+      "copy": {
+        "en": "Linking words guide the reader through your logic. Use words like however, therefore, as a result, in contrast, and for example to show relationships between ideas. Good writing is not just correct grammar. It is clear thinking made visible. Linking words help the reader follow your reasoning effortlessly.",
+        "vi": "Từ nối dẫn người đọc đi qua lập luận của bạn. Hãy dùng các từ như however, therefore, as a result, in contrast và for example để thể hiện quan hệ giữa các ý. Viết tốt không chỉ là ngữ pháp đúng, mà còn là tư duy rõ ràng được thể hiện ra. Từ nối giúp người đọc theo dõi lập luận một cách tự nhiên."
+      },
+      "audio": "c208_02_en.mp3"
+    },
+    {
+      "slug": "presenting-complex-ideas-simply",
+      "keywords_en": ["complex ideas", "clarity"],
+      "keywords_vi": ["ý phức tạp", "rõ ràng"],
+      "copy": {
+        "en": "Advanced writing does not mean long sentences. It means clear ideas. Break complex thoughts into smaller statements. Use simple vocabulary when possible. Avoid unnecessary detail. When your writing is clean and simple, the reader trusts your logic more easily.",
+        "vi": "Viết nâng cao không có nghĩa là viết câu dài. Nó nghĩa là ý tưởng rõ ràng. Hãy chia ý phức tạp thành những câu nhỏ hơn. Dùng từ đơn giản khi có thể. Tránh chi tiết không cần thiết. Khi cách viết sạch và đơn giản, người đọc dễ tin vào lập luận của bạn hơn."
+      },
+      "audio": "c208_03_en.mp3"
+    },
+    {
+      "slug": "building-persuasive-reasoning",
+      "keywords_en": ["reasoning", "persuasion"],
+      "keywords_vi": ["lập luận", "thuyết phục"],
+      "copy": {
+        "en": "Persuasive reasoning uses cause and effect, comparison, or logical steps. Explain why something happens, how two things differ, or how one idea leads to another. Avoid emotional language. Focus on facts, relationships, and logical flow. Strong reasoning helps the reader understand and agree with your point.",
+        "vi": "Lập luận thuyết phục dựa trên quan hệ nguyên nhân – kết quả, so sánh hoặc các bước logic. Hãy giải thích vì sao điều gì xảy ra, hai điều khác nhau thế nào, hoặc ý này dẫn đến ý kia ra sao. Tránh dùng cảm xúc. Tập trung vào sự thật, mối quan hệ và tính logic. Lập luận mạnh giúp người đọc hiểu và đồng ý với bạn."
+      },
+      "audio": "c208_04_en.mp3"
+    },
+    {
+      "slug": "avoiding-common-logic-errors",
+      "keywords_en": ["logic errors", "critical thinking"],
+      "keywords_vi": ["lỗi logic", "tư duy phản biện"],
+      "copy": {
+        "en": "Even fluent writers often make logic mistakes. Common errors include drawing big conclusions from small evidence, confusing opinion with fact, or assuming two events must be connected. When you avoid these mistakes, your writing becomes more professional, trustworthy, and sharp.",
+        "vi": "Ngay cả người viết giỏi cũng dễ mắc lỗi logic. Các lỗi phổ biến gồm rút ra kết luận lớn từ bằng chứng nhỏ, nhầm lẫn giữa ý kiến và sự thật, hoặc cho rằng hai sự kiện xảy ra cùng lúc thì phải liên quan. Khi tránh được những lỗi này, bài viết của bạn trở nên chuyên nghiệp, đáng tin cậy và sắc bén hơn."
+      },
+      "audio": "c208_05_en.mp3"
+    },
+    {
+      "slug": "editing-for-precision-and-focus",
+      "keywords_en": ["editing", "precision"],
+      "keywords_vi": ["chỉnh sửa", "chính xác"],
+      "copy": {
+        "en": "Editing is where your writing becomes excellent. Remove repeated ideas, unclear phrases, or words that do not add meaning. Check that each sentence supports your main point. Good editing sharpens your message and shows the reader that you think with discipline and intention.",
+        "vi": "Chỉnh sửa là bước giúp bài viết trở nên xuất sắc. Hãy bỏ các ý lặp lại, câu khó hiểu hoặc từ không mang thêm ý nghĩa. Kiểm tra xem mỗi câu có hỗ trợ luận điểm chính không. Việc chỉnh sửa tốt làm thông điệp sắc nét hơn và cho thấy bạn tư duy có kỷ luật và có chủ đích."
+      },
+      "audio": "c208_06_en.mp3"
+    }
+  ]
+}
