@@ -1,0 +1,75 @@
+{
+  "id": "english_c2_c210",
+  "tier": "VIP3 / VIP3",
+  "domain": "English C2",
+  "title": {
+    "en": "C2-10 — Writing High-Level Arguments (Precision & Depth)",
+    "vi": "C2-10 — Viết Lập Luận Nâng Cao (Chính Xác & Chiều Sâu)"
+  },
+  "content": {
+    "en": "This room teaches you how to develop precise and deep high-level arguments in English. You will learn how to refine your claims, support them with strong reasoning, and express complex ideas with clarity. These techniques help you write essays, reports, and professional analysis with confidence.",
+    "vi": "Phòng này hướng dẫn bạn xây dựng các lập luận nâng cao với độ chính xác và chiều sâu. Bạn sẽ học cách tinh chỉnh luận điểm, hỗ trợ chúng bằng lý lẽ mạnh mẽ và diễn đạt ý phức tạp một cách rõ ràng. Những kỹ thuật này giúp bạn viết bài luận, báo cáo và phân tích chuyên nghiệp tự tin hơn."
+  },
+  "entries": [
+    {
+      "slug": "refining-your-main-claim",
+      "keywords_en": ["claim", "argument"],
+      "keywords_vi": ["luận điểm", "lập luận"],
+      "copy": {
+        "en": "A strong argument begins with a clear, specific claim. Avoid claims that are too broad or too emotional. Instead, focus on one idea that you can support with logic and evidence. A precise claim guides the reader and makes your writing more powerful.",
+        "vi": "Một lập luận mạnh bắt đầu từ luận điểm rõ ràng và cụ thể. Tránh đưa ra luận điểm quá rộng hoặc mang tính cảm xúc. Hãy tập trung vào một ý mà bạn có thể hỗ trợ bằng lý lẽ và bằng chứng. Luận điểm chính xác giúp người đọc theo dõi dễ dàng và làm bài viết thuyết phục hơn."
+      },
+      "audio": "c210_01_en.mp3"
+    },
+    {
+      "slug": "choosing-relevant-evidence",
+      "keywords_en": ["evidence", "support"],
+      "keywords_vi": ["bằng chứng", "hỗ trợ"],
+      "copy": {
+        "en": "Good evidence strengthens your claim. Use facts, examples, data, or expert opinions. Each piece of evidence should connect directly to the argument, not just be interesting. When the reader sees strong support, they trust your conclusion more.",
+        "vi": "Bằng chứng tốt củng cố luận điểm của bạn. Hãy dùng sự thật, ví dụ, số liệu hoặc ý kiến chuyên gia. Mỗi bằng chứng phải liên kết trực tiếp với lập luận, không chỉ đơn giản là hấp dẫn. Khi người đọc thấy sự hỗ trợ rõ ràng, họ dễ tin vào kết luận của bạn hơn."
+      },
+      "audio": "c210_02_en.mp3"
+    },
+    {
+      "slug": "adding-depth-with-why-and-how",
+      "keywords_en": ["depth", "analysis"],
+      "keywords_vi": ["chiều sâu", "phân tích"],
+      "copy": {
+        "en": "Depth comes from explaining why and how something matters. After giving a point, ask yourself: Why is this true? How does it affect the main claim? Answering these questions adds layers to your reasoning and makes your argument richer and more persuasive.",
+        "vi": "Chiều sâu đến từ việc giải thích tại sao và bằng cách nào điều đó quan trọng. Sau khi trình bày một ý, hãy tự hỏi: Tại sao điều này đúng? Nó ảnh hưởng thế nào đến luận điểm chính? Trả lời những câu hỏi đó giúp lập luận có nhiều lớp và thuyết phục hơn."
+      },
+      "audio": "c210_03_en.mp3"
+    },
+    {
+      "slug": "balancing-breadth-and-focus",
+      "keywords_en": ["focus", "breadth"],
+      "keywords_vi": ["tập trung", "phạm vi"],
+      "copy": {
+        "en": "Advanced arguments balance breadth and focus. Too narrow, and your writing feels limited. Too broad, and your reasoning becomes weak. Give enough scope to show the bigger picture, but stay focused on the central idea so the argument remains strong and clear.",
+        "vi": "Lập luận nâng cao cần cân bằng giữa chiều rộng và trọng tâm. Quá hẹp thì bài viết trở nên hạn chế. Quá rộng thì lập luận dễ yếu. Hãy cho thấy bối cảnh lớn hơn đủ để tạo chiều sâu, nhưng vẫn giữ trọng tâm vào ý chính để lập luận rõ ràng và mạnh mẽ."
+      },
+      "audio": "c210_04_en.mp3"
+    },
+    {
+      "slug": "anticipating-objections",
+      "keywords_en": ["objections", "counterargument"],
+      "keywords_vi": ["phản biện", "lập luận đối"],
+      "copy": {
+        "en": "Strong writers think ahead. They ask what a reader might disagree with and address it directly. This does not weaken your argument. It strengthens it. When you show awareness of other views and respond logically, your reasoning becomes more credible and complete.",
+        "vi": "Người viết giỏi luôn nghĩ trước. Họ tự hỏi người đọc có thể phản đối điều gì và giải quyết nó ngay. Điều này không làm lập luận yếu đi mà ngược lại, làm nó mạnh hơn. Khi bạn hiểu các quan điểm khác và phản hồi hợp lý, lập luận trở nên đáng tin cậy và trọn vẹn."
+      },
+      "audio": "c210_05_en.mp3"
+    },
+    {
+      "slug": "concluding-with-impact",
+      "keywords_en": ["conclusion", "impact"],
+      "keywords_vi": ["kết luận", "tác động"],
+      "copy": {
+        "en": "A high-level conclusion does more than restate the claim. It shows the final meaning or implication of your argument. Keep it short and strong. Leave the reader with a clear message or insight. A powerful ending makes your writing memorable and convincing.",
+        "vi": "Một kết luận nâng cao không chỉ lặp lại luận điểm. Nó thể hiện ý nghĩa hoặc tác động cuối cùng của lập luận. Hãy viết ngắn gọn và mạnh mẽ. Để người đọc còn lại một thông điệp rõ ràng. Một kết thúc ấn tượng khiến bài viết đáng nhớ và thuyết phục."
+      },
+      "audio": "c210_06_en.mp3"
+    }
+  ]
+}

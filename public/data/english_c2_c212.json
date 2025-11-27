@@ -1,0 +1,75 @@
+{
+  "id": "english_c2_c212",
+  "tier": "VIP3 / VIP3",
+  "domain": "English C2",
+  "title": {
+    "en": "C2-12 — Advanced Listening: Fast, Natural English",
+    "vi": "C2-12 — Nghe Nâng Cao: Tiếng Anh Tự Nhiên & Nhanh"
+  },
+  "content": {
+    "en": "This room trains your ear to understand fast, natural English. You will learn how native speakers reduce sounds, join words together, and change rhythm in everyday speech. These six entries help you catch meaning even when English is quick, soft, or not perfectly clear.",
+    "vi": "Phòng này rèn luyện khả năng nghe tiếng Anh nhanh và tự nhiên. Bạn sẽ học cách người bản ngữ nuốt âm, nối âm và thay đổi nhịp điệu trong giao tiếp hằng ngày. Sáu mục nội dung giúp bạn nắm ý ngay cả khi tiếng Anh được nói nhanh, nhỏ hoặc không rõ ràng."
+  },
+  "entries": [
+    {
+      "slug": "why-fast-english-sounds-different",
+      "keywords_en": ["listening", "fast speech"],
+      "keywords_vi": ["nghe", "nói nhanh"],
+      "copy": {
+        "en": "Fast English is not just speed. The sounds change. Speakers drop small words, shorten vowels, and link words together. For example: want to becomes wanna, going to becomes gonna, did you becomes didja. These forms are natural and common. Understanding them helps you follow real conversation.",
+        "vi": "Tiếng Anh nhanh không chỉ là nói nhanh. Âm bị thay đổi. Người bản ngữ bỏ bớt từ nhỏ, rút ngắn nguyên âm và nối các từ lại. Ví dụ: want to thành wanna, going to thành gonna, did you thành didja. Đây là các dạng tự nhiên và phổ biến. Hiểu chúng giúp bạn theo kịp hội thoại thật."
+      },
+      "audio": "c212_01_en.mp3"
+    },
+    {
+      "slug": "hearing-linked-words",
+      "keywords_en": ["linking", "listening"],
+      "keywords_vi": ["nối âm", "nghe"],
+      "copy": {
+        "en": "In natural English, words connect. Listen for smooth links. For example: turn it off sounds like turnitoff. Look at it sounds like lookatit. Break the sentence into small parts. Do not chase each word. Focus on the flow. The rhythm will guide your understanding.",
+        "vi": "Trong tiếng Anh tự nhiên, các từ được nối liền. Hãy nghe các đoạn nối mượt. Ví dụ: turn it off nghe giống turnitoff. Look at it nghe giống lookatit. Hãy tách câu thành từng phần nhỏ. Đừng cố bắt từng từ. Hãy nghe theo nhịp. Nhịp điệu sẽ dẫn bạn đến ý chính."
+      },
+      "audio": "c212_02_en.mp3"
+    },
+    {
+      "slug": "catching-key-words-first",
+      "keywords_en": ["listening skills", "keywords"],
+      "keywords_vi": ["kỹ năng nghe", "từ khóa"],
+      "copy": {
+        "en": "You do not need every word to understand the message. Train your ear to catch the key words. These words carry meaning. For example: yesterday, problem, meeting, late. When you hear key words, your mind fills in the gaps. This is how native speakers listen too.",
+        "vi": "Bạn không cần nghe toàn bộ từng từ để hiểu ý. Hãy luyện tai để bắt các từ khóa. Đây là những từ mang ý chính. Ví dụ: yesterday, problem, meeting, late. Khi nghe được từ khóa, não sẽ tự hoàn thiện phần còn lại. Người bản ngữ cũng nghe theo cách này."
+      },
+      "audio": "c212_03_en.mp3"
+    },
+    {
+      "slug": "understanding-reduced-sounds",
+      "keywords_en": ["reduced sounds", "natural English"],
+      "keywords_vi": ["nuốt âm", "tiếng Anh tự nhiên"],
+      "copy": {
+        "en": "Native speakers reduce small words. For example: I am becomes I'm, we will becomes we'll, he has becomes he's. In fast speech, these reductions become even shorter. Listen for the shape of the sentence, not the perfect sound. Reduced forms are soft but predictable.",
+        "vi": "Người bản ngữ rút gọn các từ nhỏ. Ví dụ: I am thành I'm, we will thành we'll, he has thành he's. Trong nói nhanh, các dạng rút gọn này còn ngắn hơn. Hãy nghe theo hình dạng câu, không phải âm hoàn hảo. Các dạng rút gọn tuy nhẹ nhưng rất dễ đoán."
+      },
+      "audio": "c212_04_en.mp3"
+    },
+    {
+      "slug": "listening-to-tone-and-stress",
+      "keywords_en": ["tone", "stress"],
+      "keywords_vi": ["ngữ điệu", "trọng âm"],
+      "copy": {
+        "en": "Tone and stress carry emotion and meaning. English uses strong and weak beats. Important words are louder and longer. Unimportant words are quicker and softer. Listen for these patterns. They help you understand even when the words are unclear.",
+        "vi": "Ngữ điệu và trọng âm mang cảm xúc và ý nghĩa. Tiếng Anh dùng nhịp mạnh và nhẹ. Từ quan trọng được nhấn mạnh. Từ phụ được nói nhanh và nhỏ. Hãy nghe các mẫu này. Chúng giúp bạn hiểu ngay cả khi từ không rõ ràng."
+      },
+      "audio": "c212_05_en.mp3"
+    },
+    {
+      "slug": "training-your-ear-daily",
+      "keywords_en": ["listening practice", "daily habit"],
+      "keywords_vi": ["luyện nghe", "thói quen"],
+      "copy": {
+        "en": "A strong listening habit needs only a few minutes each day. Choose one short clip. Listen once without stopping. Listen again and catch key words. Listen a third time and repeat one or two lines. Daily repetition trains your ear to recognize patterns quickly.",
+        "vi": "Một thói quen nghe tốt chỉ cần vài phút mỗi ngày. Hãy chọn một đoạn ngắn. Nghe một lần không dừng. Nghe lại lần nữa để bắt từ khóa. Nghe lần ba và lặp lại một hai câu. Luyện mỗi ngày giúp tai bạn nhận ra mẫu âm nhanh hơn."
+      },
+      "audio": "c212_06_en.mp3"
+    }
+  ]
+}

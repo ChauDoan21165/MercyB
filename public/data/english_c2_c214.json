@@ -1,0 +1,75 @@
+{
+  "id": "english_c2_c214",
+  "tier": "VIP3 / VIP3",
+  "domain": "English C2",
+  "title": {
+    "en": "C2-14 — Master Listening: Natural Speed, Natural Voices",
+    "vi": "C2-14 — Nghe Hiểu Ở Tốc Độ Tự Nhiên"
+  },
+  "content": {
+    "en": "This room trains your ear to understand English at natural speed. You will learn how native speakers connect words, reduce sounds, and speak with rhythm instead of perfect clarity. These six entries help you follow real conversations, podcasts, and everyday speech with more confidence.",
+    "vi": "Phòng này rèn luyện khả năng nghe tiếng Anh ở tốc độ tự nhiên. Bạn sẽ học cách người bản xứ nối âm, nuốt âm và nói theo nhịp điệu thay vì phát âm rõ từng âm. Sáu mục nội dung giúp bạn theo kịp hội thoại thật, podcast và lời nói hàng ngày một cách tự tin hơn."
+  },
+  "entries": [
+    {
+      "slug": "understanding-connected-speech",
+      "keywords_en": ["listening", "connected speech"],
+      "keywords_vi": ["nghe", "nối âm"],
+      "copy": {
+        "en": "Native speakers connect words naturally. For example: what are you doing becomes whatcha doing and want to becomes wanna. These forms are normal and appear everywhere. Do not try to hear every letter. Listen for the overall shape of the phrase. Your ear will adapt with practice.",
+        "vi": "Người bản xứ nối các từ lại với nhau một cách tự nhiên. Ví dụ: what are you doing thành whatcha doing và want to thành wanna. Đây là các dạng bình thường và xuất hiện khắp nơi. Đừng cố nghe từng chữ. Hãy nghe hình dạng chung của cụm từ. Tai bạn sẽ quen dần khi luyện tập."
+      },
+      "audio": "c214_01_en.mp3"
+    },
+    {
+      "slug": "recognizing-reduced-sounds",
+      "keywords_en": ["reduced sounds", "listening"],
+      "keywords_vi": ["nuốt âm", "nghe"],
+      "copy": {
+        "en": "Many sounds become shorter in fast speech. For example: going to becomes gonna and did you becomes didja. These reductions help speech flow faster. When you listen, focus on stress patterns instead of perfect sound shapes. Stress carries meaning, even when sounds are reduced.",
+        "vi": "Nhiều âm trở nên ngắn hơn trong lời nói nhanh. Ví dụ: going to thành gonna và did you thành didja. Những dạng rút gọn này giúp lời nói mượt hơn. Khi nghe, hãy tập trung vào nhịp và trọng âm thay vì từng âm. Trọng âm mang ý nghĩa ngay cả khi âm bị rút."
+      },
+      "audio": "c214_02_en.mp3"
+    },
+    {
+      "slug": "hearing-natural-rhythm",
+      "keywords_en": ["rhythm", "listening"],
+      "keywords_vi": ["nhịp điệu", "nghe"],
+      "copy": {
+        "en": "English uses rhythm more than tones. Stressed words stand out, and unstressed words fade. Listen for the strong beats: nouns, verbs, adjectives. These carry the message. If you understand the stressed words, you often understand the whole sentence, even when spoken quickly.",
+        "vi": "Tiếng Anh dùng nhịp điệu hơn là thanh điệu. Từ mang trọng âm được nhấn mạnh, còn từ không nhấn sẽ nhẹ và nhanh. Hãy nghe các nhịp mạnh: danh từ, động từ, tính từ. Chúng mang ý nghĩa chính. Khi nghe được từ mang trọng âm, bạn thường hiểu cả câu, kể cả khi nói nhanh."
+      },
+      "audio": "c214_03_en.mp3"
+    },
+    {
+      "slug": "understanding-context-before-details",
+      "keywords_en": ["context", "listening"],
+      "keywords_vi": ["ngữ cảnh", "nghe"],
+      "copy": {
+        "en": "When listening at natural speed, focus on context first. Ask yourself: Where are they? What are they doing? What is the topic? Context fills many gaps and reduces pressure. You do not need every word to understand the message. Meaning comes from the bigger picture.",
+        "vi": "Khi nghe ở tốc độ tự nhiên, hãy chú ý ngữ cảnh trước tiên. Hãy tự hỏi: Họ đang ở đâu? Họ đang làm gì? Chủ đề là gì? Ngữ cảnh lấp đầy nhiều khoảng trống và giảm áp lực. Bạn không cần nghe mọi từ để hiểu ý. Ý nghĩa đến từ bức tranh tổng thể."
+      },
+      "audio": "c214_04_en.mp3"
+    },
+    {
+      "slug": "replaying-small-sections",
+      "keywords_en": ["practice", "listening"],
+      "keywords_vi": ["luyện tập", "nghe"],
+      "copy": {
+        "en": "Replay short sections instead of full recordings. Listen once for rhythm. Listen again for stressed words. Listen a third time to catch reductions. Small sections help your brain adjust to fast speech. Improvement comes from repetition, not pressure.",
+        "vi": "Hãy nghe lại từng đoạn nhỏ thay vì cả bài dài. Lần đầu nghe nhịp, lần hai nghe từ có trọng âm, lần ba nghe các âm rút gọn. Đoạn nhỏ giúp não bạn quen dần với tốc độ tự nhiên. Tiến bộ đến từ lặp lại, không phải căng thẳng."
+      },
+      "audio": "c214_05_en.mp3"
+    },
+    {
+      "slug": "building-confidence-with-natural-speed",
+      "keywords_en": ["confidence", "listening"],
+      "keywords_vi": ["tự tin", "nghe"],
+      "copy": {
+        "en": "Natural speed becomes easier when you relax. Do not focus on mistakes. Listen daily, even for five minutes. Your mind learns patterns without effort. Over time, real conversations, movies, and podcasts become clearer. Confidence grows from steady exposure.",
+        "vi": "Tốc độ tự nhiên sẽ dễ dàng hơn khi bạn thư giãn. Đừng tập trung vào lỗi. Hãy nghe mỗi ngày, dù chỉ năm phút. Não bạn sẽ học các mẫu âm một cách tự nhiên. Dần dần, hội thoại thật, phim và podcast sẽ trở nên rõ ràng hơn. Sự tự tin đến từ việc tiếp xúc đều đặn."
+      },
+      "audio": "c214_06_en.mp3"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "id": "english_c2_c213",
+  "tier": "VIP3 / VIP3",
+  "domain": "English C2",
+  "title": {
+    "en": "C2-13 — Advanced Reading: Long, Natural Paragraphs",
+    "vi": "C2-13 — Đọc Hiểu Nâng Cao: Đoạn Văn Dài & Tự Nhiên"
+  },
+  "content": {
+    "en": "This room helps you read longer English paragraphs with confidence. You will practice understanding meaning without translating every word, following the writer’s flow, and recognizing how ideas connect across sentences. These six entries train your reading brain to move smoothly through real English.",
+    "vi": "Phòng này giúp bạn đọc các đoạn văn tiếng Anh dài một cách tự tin. Bạn sẽ luyện cách hiểu ý mà không cần dịch từng từ, theo dòng chảy của tác giả và nhận ra cách các ý được liên kết trong đoạn. Sáu mục nội dung rèn cho bạn khả năng đọc mượt mà hơn trong tiếng Anh thật."
+  },
+  "entries": [
+    {
+      "slug": "reading-for-main-ideas",
+      "keywords_en": ["reading", "main idea"],
+      "keywords_vi": ["đọc", "ý chính"],
+      "copy": {
+        "en": "When reading long paragraphs, look for the main idea first. Every paragraph has one purpose. The first sentence often introduces the topic, and the rest of the lines add details. Do not stop for every new word. Keep reading until you understand the overall message. Once you know the idea, the smaller parts become easier.",
+        "vi": "Khi đọc đoạn văn dài, hãy tìm ý chính trước. Mỗi đoạn đều có một mục đích. Câu đầu thường giới thiệu chủ đề, các câu sau cung cấp chi tiết. Đừng dừng lại vì từng từ lạ. Hãy đọc tiếp cho đến khi bạn hiểu ý tổng thể. Khi nắm được ý chính, các phần nhỏ sẽ dễ hiểu hơn."
+      },
+      "audio": "c213_01_en.mp3"
+    },
+    {
+      "slug": "following-the-writers-flow",
+      "keywords_en": ["flow", "reading"],
+      "keywords_vi": ["dòng chảy", "đọc"],
+      "copy": {
+        "en": "Writers guide you through their thoughts using simple patterns. They introduce an idea, explain it, give an example, and then conclude. When you read, follow this flow. Notice how each sentence connects to the next. This helps you read faster and understand more naturally.",
+        "vi": "Tác giả dẫn dắt bạn qua ý tưởng bằng những mẫu quen thuộc. Họ đưa ra ý, giải thích, cho ví dụ và kết luận. Khi đọc, hãy theo dòng chảy đó. Hãy để ý cách mỗi câu nối tiếp câu sau. Điều này giúp bạn đọc nhanh hơn và hiểu tự nhiên hơn."
+      },
+      "audio": "c213_02_en.mp3"
+    },
+    {
+      "slug": "guessing-meaning-from-context",
+      "keywords_en": ["context", "meaning"],
+      "keywords_vi": ["ngữ cảnh", "ý nghĩa"],
+      "copy": {
+        "en": "You do not need a dictionary for every difficult word. Most words can be guessed from context. Look at the sentence around the word. Ask yourself: Is it positive or negative? Is it describing a thing, an action, or a feeling? Context gives strong clues. Guess first. Check later if needed.",
+        "vi": "Bạn không cần dùng từ điển cho mọi từ khó. Hầu hết các từ có thể đoán qua ngữ cảnh. Hãy nhìn câu xung quanh từ đó. Hãy tự hỏi: Ý tích cực hay tiêu cực? Miêu tả vật, hành động hay cảm xúc? Ngữ cảnh cho bạn nhiều gợi ý. Hãy đoán trước. Kiểm tra sau nếu cần."
+      },
+      "audio": "c213_03_en.mp3"
+    },
+    {
+      "slug": "reading-without-translating",
+      "keywords_en": ["reading skill", "no translation"],
+      "keywords_vi": ["kỹ năng đọc", "không dịch"],
+      "copy": {
+        "en": "Translating every sentence slows you down and confuses the meaning. Instead, train your mind to understand English directly. Read in chunks, not word by word. Focus on the story or message. With practice, your brain will stop switching between languages and reading will become smooth and natural.",
+        "vi": "Dịch từng câu khiến bạn chậm và dễ hiểu sai ý. Hãy luyện cách hiểu trực tiếp bằng tiếng Anh. Đọc theo cụm, không theo từng từ. Tập trung vào câu chuyện hoặc thông điệp. Khi luyện đủ, não bạn sẽ ngừng chuyển đổi giữa hai ngôn ngữ và việc đọc trở nên mượt mà hơn."
+      },
+      "audio": "c213_04_en.mp3"
+    },
+    {
+      "slug": "understanding-longer-examples",
+      "keywords_en": ["examples", "reading"],
+      "keywords_vi": ["ví dụ", "đọc"],
+      "copy": {
+        "en": "Writers often use long examples to help you understand a point. Do not rush through them. Read slowly and notice how each detail supports the main idea. Examples help you visualize the meaning. When the example becomes clear, the whole paragraph becomes clear too.",
+        "vi": "Tác giả thường dùng ví dụ dài để làm rõ ý. Đừng đọc lướt. Hãy đọc chậm và xem mỗi chi tiết hỗ trợ ý chính thế nào. Ví dụ giúp bạn hình dung rõ hơn. Khi hiểu ví dụ, bạn sẽ hiểu cả đoạn văn."
+      },
+      "audio": "c213_05_en.mp3"
+    },
+    {
+      "slug": "building-confidence-with-long-texts",
+      "keywords_en": ["confidence", "reading"],
+      "keywords_vi": ["tự tin", "đọc"],
+      "copy": {
+        "en": "Confidence grows when you read a little every day. Choose one paragraph. Read it once for the main idea. Read again for details. Then read a third time more smoothly. Daily practice builds strong reading muscles. Long texts will no longer feel heavy or scary.",
+        "vi": "Sự tự tin đến khi bạn đọc mỗi ngày một ít. Hãy chọn một đoạn. Đọc lần đầu để nắm ý chính. Đọc lại để hiểu chi tiết. Đọc lần ba để mượt hơn. Luyện mỗi ngày sẽ xây dựng thói quen đọc vững chắc. Đoạn văn dài sẽ không còn khó hay đáng sợ nữa."
+      },
+      "audio": "c213_06_en.mp3"
+    }
+  ]
+}

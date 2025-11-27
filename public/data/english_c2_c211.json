@@ -1,0 +1,75 @@
+{
+  "id": "english_c2_c211",
+  "tier": "VIP3 / VIP3",
+  "domain": "English C2",
+  "title": {
+    "en": "C2-11 — Professional Communication (Tone, Clarity & Authority)",
+    "vi": "C2-11 — Giao Tiếp Chuyên Nghiệp (Giọng Điệu, Rõ Ràng & Sự Thuyết Phục)"
+  },
+  "content": {
+    "en": "This room teaches you how to communicate professionally in English with a clear, confident tone. You will learn how to express ideas politely but firmly, manage disagreement with respect, and write messages that sound both warm and authoritative. These skills help you work, negotiate, and collaborate at a high level.",
+    "vi": "Phòng này giúp bạn giao tiếp chuyên nghiệp bằng tiếng Anh với giọng điệu tự tin và rõ ràng. Bạn sẽ học cách diễn đạt lịch sự nhưng dứt khoát, xử lý bất đồng một cách tôn trọng và viết thông điệp vừa ấm áp vừa thuyết phục. Những kỹ năng này hỗ trợ bạn làm việc, thương lượng và hợp tác ở mức cao."
+  },
+  "entries": [
+    {
+      "slug": "tone-that-sounds-professional",
+      "keywords_en": ["tone", "professional"],
+      "keywords_vi": ["giọng điệu", "chuyên nghiệp"],
+      "copy": {
+        "en": "Professional tone is calm, respectful, and clear. It avoids emotional language and focuses on the main point. Instead of saying I am upset about this, say I would like to clarify this issue. Instead of This is wrong, say I see a possible mistake here. Small word choices create trust.",
+        "vi": "Giọng điệu chuyên nghiệp là bình tĩnh, tôn trọng và rõ ràng. Nó tránh ngôn ngữ cảm xúc và tập trung vào ý chính. Thay vì nói Tôi bực vì việc này, hãy nói Tôi muốn làm rõ vấn đề này. Thay vì nói Việc này sai rồi, hãy nói Tôi thấy có thể có lỗi ở đây. Những lựa chọn từ ngữ nhỏ tạo ra sự tin tưởng."
+      },
+      "audio": "c211_01_en.mp3"
+    },
+    {
+      "slug": "writing-with-clarity-and-focus",
+      "keywords_en": ["clarity", "focus"],
+      "keywords_vi": ["rõ ràng", "trọng tâm"],
+      "copy": {
+        "en": "Clear writing expresses one idea at a time. Use short sentences. Place the main point first. Avoid long introductions. If you need the reader to act, tell them directly. For example: Please send the updated file by 5 PM. Clarity saves time for everyone.",
+        "vi": "Viết rõ ràng là trình bày từng ý một. Dùng câu ngắn. Đặt ý chính lên đầu. Tránh mở đầu dài dòng. Nếu bạn cần người đọc hành động, hãy nói thẳng. Ví dụ: Vui lòng gửi file cập nhật trước 5 giờ chiều. Sự rõ ràng giúp tiết kiệm thời gian cho mọi người."
+      },
+      "audio": "c211_02_en.mp3"
+    },
+    {
+      "slug": "polite-but-firm-requests",
+      "keywords_en": ["requests", "polite", "firm"],
+      "keywords_vi": ["yêu cầu", "lịch sự", "dứt khoát"],
+      "copy": {
+        "en": "Strong communication is polite but firm. Use could you, please, and thank you, but still express your needs clearly. For example: Could you please review the report today so we can finish the task on time? Politeness keeps relationships smooth. Firmness keeps work on track.",
+        "vi": "Giao tiếp hiệu quả vừa lịch sự vừa dứt khoát. Hãy dùng could you, please và thank you nhưng vẫn nói rõ nhu cầu. Ví dụ: Bạn có thể xem lại báo cáo hôm nay được không để chúng ta kịp tiến độ? Lịch sự giữ quan hệ tốt. Dứt khoát giữ công việc đúng hướng."
+      },
+      "audio": "c211_03_en.mp3"
+    },
+    {
+      "slug": "handling-disagreement-professionally",
+      "keywords_en": ["disagreement", "conflict"],
+      "keywords_vi": ["bất đồng", "xung đột"],
+      "copy": {
+        "en": "Disagreement does not need to sound hostile. Use phrases like I see your point, but…, Another way to look at this is…, or I agree with part of this, however…. These expressions soften the disagreement while keeping your position clear. Professional language protects the relationship.",
+        "vi": "Bất đồng không cần phải nghe gay gắt. Hãy dùng các cụm như Tôi hiểu ý bạn, nhưng…, Một cách nhìn khác là…, hoặc Tôi đồng ý một phần, tuy nhiên…. Những cách nói này làm nhẹ sự bất đồng nhưng vẫn giữ ý kiến rõ ràng. Ngôn ngữ chuyên nghiệp giữ gìn mối quan hệ."
+      },
+      "audio": "c211_04_en.mp3"
+    },
+    {
+      "slug": "sounding-confident-not-aggressive",
+      "keywords_en": ["confidence", "communication"],
+      "keywords_vi": ["tự tin", "giao tiếp"],
+      "copy": {
+        "en": "Confidence is calm and steady. Aggression is loud and emotional. To sound confident, keep your sentences simple and direct. Avoid repeating yourself. Avoid exclamation marks. Speak factually. Confidence comes from clarity and quiet strength, not force.",
+        "vi": "Sự tự tin là bình tĩnh và vững vàng. Hung hăng là lớn tiếng và cảm xúc. Để nghe tự tin, hãy giữ câu đơn giản và trực tiếp. Tránh lặp lại nhiều lần. Tránh dùng dấu chấm than. Hãy nói dựa trên sự thật. Tự tin đến từ sự rõ ràng và sức mạnh nhẹ nhàng, không phải sự áp đặt."
+      },
+      "audio": "c211_05_en.mp3"
+    },
+    {
+      "slug": "emails-that-sound-professional",
+      "keywords_en": ["email", "professional"],
+      "keywords_vi": ["email", "chuyên nghiệp"],
+      "copy": {
+        "en": "Professional emails use a clear structure. Start with a short greeting. State your purpose in the first sentence. Add details in the next lines. End with a polite closing. Avoid long paragraphs. A clean structure makes your message easy to read and increases the chance of a fast reply.",
+        "vi": "Email chuyên nghiệp có cấu trúc rõ ràng. Mở đầu bằng lời chào ngắn. Nêu mục đích ở câu đầu tiên. Thêm chi tiết trong vài câu tiếp theo. Kết thúc bằng lời cảm ơn lịch sự. Tránh đoạn dài. Cấu trúc gọn gàng giúp email dễ đọc và tăng khả năng nhận được phản hồi nhanh."
+      },
+      "audio": "c211_06_en.mp3"
+    }
+  ]
+}
