@@ -40,7 +40,7 @@ const EnglishLearningPathway = () => {
         id: room.id,
         name: room.title_en,
         nameVi: room.title_vi,
-        tier: room.tier,
+        tier: room.tier?.toLowerCase() || 'free',
         domain: room.domain,
         hasData: true
       }));
@@ -154,26 +154,24 @@ const EnglishLearningPathway = () => {
             <div 
               className="text-xs font-semibold leading-tight" 
               style={{ 
-                color: useColorTheme ? getHeadingColor(roomColor) : '#1f2937'
+                color: useColorTheme ? undefined : '#1f2937'
               }}
-              dangerouslySetInnerHTML={{ 
-                __html: useColorTheme 
-                  ? highlightShortTitle(room.name || room.id)
-                  : (room.name || room.id)
-              }}
-            />
+            >
+              {useColorTheme 
+                ? highlightShortTitle(room.name || room.id)
+                : (room.name || room.id)}
+            </div>
             {room.nameVi && (
               <div 
                 className="text-[10px] leading-tight opacity-75"
                 style={{ 
-                  color: useColorTheme ? getContrastTextColor(roomColor) : '#4b5563'
+                  color: useColorTheme ? undefined : '#4b5563'
                 }}
-                dangerouslySetInnerHTML={{ 
-                  __html: useColorTheme 
-                    ? highlightShortTitle(room.nameVi)
-                    : room.nameVi
-                }}
-              />
+              >
+                {useColorTheme 
+                  ? highlightShortTitle(room.nameVi)
+                  : room.nameVi}
+              </div>
             )}
           </div>
         </div>
