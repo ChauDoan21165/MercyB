@@ -1,0 +1,75 @@
+{
+  "id": "english_foundation_ef02",
+  "tier": "Free / Miễn phí",
+  "domain": "English Foundation",
+  "title": {
+    "en": "EF-02 — Vowels & Ending Consonants",
+    "vi": "EF-02 — Nguyên Âm & Giữ Âm Cuối"
+  },
+  "content": {
+    "en": "This second room helps beginners strengthen two of the most important skills in English: shaping clear vowel sounds and keeping ending consonants. Vietnamese learners often blur vowels or drop final sounds, which makes words hard to understand even when the sentence is correct. These six entries guide you through the core vowel positions, common pairs that sound similar, gentle mouth training, and simple drills for holding final consonants without added vowels. Slow, steady practice builds confident pronunciation.",
+    "vi": "Phòng thứ hai giúp người mới củng cố hai kỹ năng quan trọng nhất trong tiếng Anh: tạo nguyên âm rõ ràng và giữ âm cuối. Người Việt thường làm mờ nguyên âm hoặc bỏ âm cuối, khiến người nghe khó hiểu dù câu nói đúng. Sáu mục nội dung dưới đây hướng dẫn bạn vị trí nguyên âm cơ bản, các cặp âm dễ lẫn, bài tập khẩu hình nhẹ nhàng và các cách luyện giữ âm cuối mà không thêm nguyên âm. Luyện chậm và đều sẽ giúp bạn phát âm tự tin hơn."
+  },
+  "entries": [
+    {
+      "slug": "short-and-long-vowel-basics",
+      "keywords_en": ["vowels", "short vowels", "long vowels"],
+      "keywords_vi": ["nguyên âm", "nguyên âm ngắn", "nguyên âm dài"],
+      "copy": {
+        "en": "English vowels have short and long versions.\nSay each sound slowly:\n\na\nshort, quick\naa\nlong, open\n\ne\nshort\nee\nlong, smiling\n\ni\nshort\nii\nlong, narrow\n\no\nshort\noo\nlong, rounded\n\nu\nshort\nuu\nlong, deeper\n\nTry simple pairs:\nbit\nbeat\nsit\nseat\nnot\nnote\n\nListen to the shape of your mouth.\nSmall changes make big differences.",
+        "vi": "Nguyên âm tiếng Anh có phiên bản ngắn và dài. Hãy đọc từng âm thật chậm để cảm nhận sự khác biệt. Âm ngắn phát ra nhanh và dứt, còn âm dài kéo dài hơn và khẩu hình mở rõ rệt. Ví dụ: bit so với beat, sit so với seat, not so với note. Khi luyện, hãy chú ý đến hình dạng miệng và thời gian phát âm. Chỉ cần thay đổi nhỏ là có thể tạo ra âm hoàn toàn khác."
+      },
+      "audio": "ef02_01_en.mp3"
+    },
+    {
+      "slug": "mouth-training-for-clear-vowels",
+      "keywords_en": ["vowel training", "mouth shape", "pronunciation"],
+      "keywords_vi": ["luyện nguyên âm", "khẩu hình", "phát âm"],
+      "copy": {
+        "en": "Train your mouth gently.\nDo not force the sound.\nFollow these shapes:\n\nA\nopen wide\n\nE\nsmile lightly\n\nI\nnarrow and high\n\nO\nround lips forward\n\nU\nround and deeper inside\n\nSay each vowel slowly.\nLet the mouth move naturally.\nRepeat until the sound feels natural.",
+        "vi": "Hãy luyện khẩu hình một cách nhẹ nhàng, không gồng hay ép miệng. Mỗi nguyên âm đều có vị trí miệng riêng: A mở rộng, E kéo nhẹ môi, I hẹp và cao, O tròn môi hướng ra trước, U tròn môi nhưng sâu hơn bên trong. Đọc từng nguyên âm chậm rãi và cảm nhận chuyển động của hàm, môi. Lặp lại cho đến khi âm trở nên tự nhiên."
+      },
+      "audio": "ef02_02_en.mp3"
+    },
+    {
+      "slug": "vowel-pairs-that-sound-similar",
+      "keywords_en": ["vowel pairs", "similar sounds"],
+      "keywords_vi": ["cặp nguyên âm", "âm giống nhau"],
+      "copy": {
+        "en": "Some vowel pairs sound close and need slow practice:\n\ni and ee\nsit\nseat\n\ne and a\npen\npan\n\no and oo\ncot\ncoat\n\nu and oo\ncup\ncoop\n\nRead them slowly.\nFeel the small differences.\nYour ear and mouth will learn together.",
+        "vi": "Một số cặp nguyên âm nghe khá giống nhau nên cần luyện thật chậm: i và ee trong sit và seat, e và a trong pen và pan, o và oo trong cot và coat, u và oo trong cup và coop. Hãy đọc chậm rãi và tập trung vào sự khác nhau nhỏ ở khẩu hình và độ dài âm. Tai và miệng của bạn sẽ dần thích nghi."
+      },
+      "audio": "ef02_03_en.mp3"
+    },
+    {
+      "slug": "understanding-ending-consonants",
+      "keywords_en": ["ending sounds", "final consonants"],
+      "keywords_vi": ["âm cuối", "phụ âm cuối"],
+      "copy": {
+        "en": "Ending consonants change the meaning of words.\nRead these pairs:\n\ncap\ncab\n\nback\nbag\n\nsit\nsip\n\ncoat\ncold\n\nSay the ending sound softly but clearly.\nDo not add extra vowels.\nHold the ending for a brief moment before releasing the sound.",
+        "vi": "Âm cuối quyết định nghĩa của từ trong tiếng Anh. Hãy đọc các cặp từ: cap và cab, back và bag, sit và sip, coat và cold. Giữ âm cuối nhẹ nhưng rõ, không thêm nguyên âm như “ơ” hoặc “a”. Hãy giữ âm cuối một khoảnh khắc trước khi buông âm. Điều này giúp người nghe hiểu bạn chính xác hơn."
+      },
+      "audio": "ef02_04_en.mp3"
+    },
+    {
+      "slug": "simple-ending-sound-drills",
+      "keywords_en": ["drills", "pronunciation practice"],
+      "keywords_vi": ["bài tập", "luyện phát âm"],
+      "copy": {
+        "en": "Practice these words slowly.\nFocus on ending sounds:\n\nmap\ncap\nbig\ndog\ncup\nsun\nbook\nmilk\nhand\nwind\n\nIf the ending disappears, slow down.\nAccuracy first.\nSpeed later.",
+        "vi": "Hãy luyện các từ sau và chú ý giữ âm cuối: map, cap, big, dog, cup, sun, book, milk, hand, wind. Nếu âm cuối bị mất, hãy giảm tốc độ đọc. Mục tiêu đầu tiên là đúng âm, sau đó mới tăng tốc độ. Luyện đều giúp khẩu hình trở nên tự nhiên."
+      },
+      "audio": "ef02_05_en.mp3"
+    },
+    {
+      "slug": "daily-vowel-and-ending-review",
+      "keywords_en": ["review", "daily habit"],
+      "keywords_vi": ["ôn tập", "thói quen hằng ngày"],
+      "copy": {
+        "en": "Spend three minutes reviewing each day.\n\nSay the five main vowels.\nRead a few similar vowel pairs.\nPractice ten ending-sound words.\nBreathe gently.\nRead slowly.\n\nDaily practice builds real pronunciation confidence.",
+        "vi": "Hãy dành ba phút mỗi ngày để ôn luyện. Đọc năm nguyên âm chính, luyện các cặp nguyên âm dễ lẫn và đọc mười từ có âm cuối rõ ràng. Hít thở nhẹ nhàng và đọc chậm. Luyện đều đặn sẽ giúp bạn tự tin hơn với phát âm của mình."
+      },
+      "audio": "ef02_06_en.mp3"
+    }
+  ]
+}
