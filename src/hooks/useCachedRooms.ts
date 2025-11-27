@@ -31,7 +31,7 @@ async function fetchCachedRooms(tier?: string): Promise<MinimalRoomData[]> {
   try {
     let query = supabase
       .from('rooms')
-      .select('id, title_en, title_vi, tier, schema_id, entries');
+      .select('id, title_en, title_vi, tier, schema_id');
     
     if (tier) {
       // Normalize tier query - handle variations
@@ -43,14 +43,9 @@ async function fetchCachedRooms(tier?: string): Promise<MinimalRoomData[]> {
 
     if (error) throw error;
     
-    // Filter out system files, rooms with empty/null entries, and map to MinimalRoomData
+    // Filter out system files and map to MinimalRoomData
     return (data || [])
-      .filter(room => {
-        if (isSystemFile(room.id)) return false;
-        // Filter out rooms with no entries or empty entries array
-        if (!room.entries || (Array.isArray(room.entries) && room.entries.length === 0)) return false;
-        return true;
-      })
+      .filter(room => !isSystemFile(room.id))
       .map(room => ({
         id: room.id,
         nameEn: room.title_en || room.id,
