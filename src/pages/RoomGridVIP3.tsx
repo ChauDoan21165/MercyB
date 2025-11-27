@@ -312,29 +312,10 @@ const RoomGridVIP3 = () => {
                     <div 
                       className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"
                       style={useColorTheme 
-                        ? { background: `linear-gradient(to bottom right, ${roomColor}15, ${roomColor}08)` }
+                        ? (isSpecialRoom
+                            ? { background: `linear-gradient(135deg, ${isSpecialRoom}30, ${isSpecialRoom}20)` }
+                            : { background: `linear-gradient(to bottom right, ${roomColor}15, ${roomColor}08)` })
                         : { background: 'rgba(0, 0, 0, 0.05)' }
-                      }
-                    />
-                  )}
-                        }}
-                      >
-                        {room.nameVi}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Hover Effect */}
-                  {room.hasData && (
-                    <div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"
-                      style={
-                        isSpecialRoom
-                          ? { background: `linear-gradient(135deg, ${isSpecialRoom}30, ${isSpecialRoom}20)` }
-                          : {
-                              background:
-                                'linear-gradient(to bottom right, hsl(var(--accent) / 0.2), hsl(var(--primary) / 0.2))',
-                            }
                       }
                     />
                   )}
