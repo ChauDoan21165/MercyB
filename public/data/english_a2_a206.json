@@ -1,0 +1,75 @@
+{
+  "id": "english_a2_a206",
+  "tier": "VIP2 / VIP2",
+  "domain": "English A2",
+  "title": {
+    "en": "A2-06 — Talking About Past Events",
+    "vi": "A2-06 — Nói Về Những Việc Trong Quá Khứ"
+  },
+  "content": {
+    "en": "This room teaches you how to talk about past events using simple A2 English. You will learn basic past tense verbs, common patterns, time expressions, and short examples you can use in daily life. These six entries help you describe what happened clearly and confidently.",
+    "vi": "Phòng này giúp bạn nói về các sự việc đã xảy ra bằng tiếng Anh A2 đơn giản. Bạn sẽ học động từ quá khứ cơ bản, mẫu câu thông dụng, các từ chỉ thời gian và ví dụ ngắn dễ áp dụng. Sáu mục nội dung giúp bạn miêu tả sự việc một cách rõ ràng và tự tin."
+  },
+  "entries": [
+    {
+      "slug": "simple-past-regular-verbs",
+      "keywords_en": ["past tense", "regular verbs"],
+      "keywords_vi": ["quá khứ đơn", "động từ có quy tắc"],
+      "copy": {
+        "en": "Regular past tense verbs end with ed. worked cleaned opened called visited watched. Sample lines. I visited my friend. She cleaned her room. We watched a movie.",
+        "vi": "Động từ có quy tắc thêm ed ở quá khứ: worked, cleaned, opened, called, visited, watched. Ví dụ: I visited my friend. She cleaned her room. We watched a movie."
+      },
+      "audio": "a206_01_en.mp3"
+    },
+    {
+      "slug": "simple-past-irregular-verbs",
+      "keywords_en": ["past tense", "irregular verbs"],
+      "keywords_vi": ["quá khứ đơn", "động từ bất quy tắc"],
+      "copy": {
+        "en": "Some verbs change completely in the past. go went. eat ate. see saw. have had. make made. Sample lines. I went to the market. She ate breakfast early. They saw a new movie.",
+        "vi": "Một số động từ đổi hoàn toàn ở quá khứ: go went, eat ate, see saw, have had, make made. Ví dụ: I went to the market. She ate breakfast early. They saw a new movie."
+      },
+      "audio": "a206_02_en.mp3"
+    },
+    {
+      "slug": "time-expressions",
+      "keywords_en": ["time expressions", "past"],
+      "keywords_vi": ["từ chỉ thời gian", "quá khứ"],
+      "copy": {
+        "en": "Common time expressions for past events. yesterday last night last week last year two days ago a few hours ago this morning. These words help listeners understand when something happened.",
+        "vi": "Các cụm thời gian trong quá khứ: yesterday, last night, last week, last year, two days ago, a few hours ago, this morning. Những cụm này giúp người nghe hiểu sự việc xảy ra khi nào."
+      },
+      "audio": "a206_03_en.mp3"
+    },
+    {
+      "slug": "simple-past-patterns",
+      "keywords_en": ["patterns", "past tense"],
+      "keywords_vi": ["mẫu câu", "quá khứ đơn"],
+      "copy": {
+        "en": "Useful patterns. I went to work yesterday. She cooked dinner last night. They played football last weekend. Keep sentences short for clarity.",
+        "vi": "Các mẫu câu đơn giản: I went to work yesterday. She cooked dinner last night. They played football last weekend. Hãy giữ câu ngắn để rõ ràng hơn."
+      },
+      "audio": "a206_04_en.mp3"
+    },
+    {
+      "slug": "talking-about-your-day",
+      "keywords_en": ["past events", "daily life"],
+      "keywords_vi": ["quá khứ", "đời sống"],
+      "copy": {
+        "en": "Describe simple events. I woke up early. I took the bus to work. I finished my project. I met my friend for lunch. I went home and rested. These lines help you talk about your day.",
+        "vi": "Miêu tả sự việc đơn giản: I woke up early. I took the bus to work. I finished my project. I met my friend for lunch. I went home and rested. Những câu này giúp bạn kể về ngày của mình."
+      },
+      "audio": "a206_05_en.mp3"
+    },
+    {
+      "slug": "mini-practice",
+      "keywords_en": ["practice", "past tense"],
+      "keywords_vi": ["luyện tập", "quá khứ đơn"],
+      "copy": {
+        "en": "Practice past lines. I visited my parents last week. She went to the store this morning. They made dinner at home yesterday. Repeat slowly until it feels natural.",
+        "vi": "Luyện các câu quá khứ: I visited my parents last week. She went to the store this morning. They made dinner at home yesterday. Luyện chậm cho đến khi thấy tự nhiên."
+      },
+      "audio": "a206_06_en.mp3"
+    }
+  ]
+}

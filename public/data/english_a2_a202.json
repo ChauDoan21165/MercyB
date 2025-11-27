@@ -1,0 +1,75 @@
+{
+  "id": "english_a2_a202",
+  "tier": "VIP2 / VIP2",
+  "domain": "English A2",
+  "title": {
+    "en": "A2-02 — Everyday Vocabulary Expansion",
+    "vi": "A2-02 — Mở Rộng Từ Vựng Đời Sống"
+  },
+  "content": {
+    "en": "This room expands your everyday vocabulary so you can describe more situations clearly. These six entries teach useful A2 words for daily life, home, travel, work, and feelings. Short examples help you remember and use each word naturally.",
+    "vi": "Phòng này mở rộng vốn từ vựng hằng ngày để bạn diễn đạt nhiều tình huống rõ ràng hơn. Sáu mục nội dung giới thiệu các từ A2 hữu ích cho đời sống, gia đình, đi lại, công việc và cảm xúc. Ví dụ ngắn giúp bạn nhớ và sử dụng tự nhiên."
+  },
+  "entries": [
+    {
+      "slug": "home-and-living",
+      "keywords_en": ["vocabulary", "home"],
+      "keywords_vi": ["từ vựng", "nhà cửa"],
+      "copy": {
+        "en": "Useful words for daily living. kitchen living room bedroom floor ceiling window door pillow blanket fridge shower. Use them in simple lines. The window is open. The floor is clean. I need a new pillow.",
+        "vi": "Các từ hữu ích cho đời sống hằng ngày: kitchen, living room, bedroom, floor, ceiling, window, door, pillow, blanket, fridge, shower. Hãy dùng trong câu đơn giản: The window is open. The floor is clean. I need a new pillow."
+      },
+      "audio": "a202_01_en.mp3"
+    },
+    {
+      "slug": "daily-actions",
+      "keywords_en": ["actions", "verbs"],
+      "keywords_vi": ["hành động", "động từ"],
+      "copy": {
+        "en": "Common daily action words. carry open close wash clean cook fix bring take wait. Use them calmly. I clean the table. I open the door. I wait for the bus.",
+        "vi": "Các động từ thường dùng: carry, open, close, wash, clean, cook, fix, bring, take, wait. Ví dụ: I clean the table. I open the door. I wait for the bus."
+      },
+      "audio": "a202_02_en.mp3"
+    },
+    {
+      "slug": "travel-basics",
+      "keywords_en": ["travel", "vocabulary"],
+      "keywords_vi": ["du lịch", "từ vựng"],
+      "copy": {
+        "en": "Useful travel words. ticket passport station airport baggage bus stop hotel map. Sample lines. I need a ticket. Where is the bus stop. My passport is here.",
+        "vi": "Các từ cần thiết khi đi lại: ticket, passport, station, airport, baggage, bus stop, hotel, map. Ví dụ: I need a ticket. Where is the bus stop. My passport is here."
+      },
+      "audio": "a202_03_en.mp3"
+    },
+    {
+      "slug": "work-and-study",
+      "keywords_en": ["work", "study"],
+      "keywords_vi": ["công việc", "học tập"],
+      "copy": {
+        "en": "Words for work and study. schedule meeting message email project break lunch. Sample lines. I have a meeting. I send an email. I take a lunch break.",
+        "vi": "Các từ cho công việc và học tập: schedule, meeting, message, email, project, break, lunch. Ví dụ: I have a meeting. I send an email. I take a lunch break."
+      },
+      "audio": "a202_04_en.mp3"
+    },
+    {
+      "slug": "feelings-and-moods",
+      "keywords_en": ["feelings", "moods"],
+      "keywords_vi": ["cảm xúc", "tâm trạng"],
+      "copy": {
+        "en": "Useful feeling words. happy tired worried angry excited calm bored. Use in short lines. I feel tired. I am excited today. I want to stay calm.",
+        "vi": "Các từ cảm xúc: happy, tired, worried, angry, excited, calm, bored. Ví dụ: I feel tired. I am excited today. I want to stay calm."
+      },
+      "audio": "a202_05_en.mp3"
+    },
+    {
+      "slug": "simple-descriptions",
+      "keywords_en": ["descriptions", "adjectives"],
+      "keywords_vi": ["miêu tả", "tính từ"],
+      "copy": {
+        "en": "Useful description words. big small long short heavy light fast slow clean dirty. Sample lines. The bag is heavy. The room is clean. The bus is slow today.",
+        "vi": "Các từ miêu tả thường dùng: big, small, long, short, heavy, light, fast, slow, clean, dirty. Ví dụ: The bag is heavy. The room is clean. The bus is slow today."
+      },
+      "audio": "a202_06_en.mp3"
+    }
+  ]
+}
