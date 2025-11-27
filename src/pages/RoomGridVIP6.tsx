@@ -10,6 +10,7 @@ import { CheckCircle2, Lock, RefreshCw, Brain, Palette } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomColor } from '@/lib/roomColors';
 import { useColorMode } from '@/hooks/useColorMode';
+import { highlightShortTitle } from "@/lib/wordColorHighlighter";
 
 const RoomGridVIP6 = () => {
   const navigate = useNavigate();
@@ -119,7 +120,7 @@ const RoomGridVIP6 = () => {
               const aName = a.name || a.id;
               const bName = b.name || b.id;
               return aName.localeCompare(bName);
-            }).map((room) => {
+            }).map((room, index) => {
               const roomColor = getRoomColor(room.id);
               
               return (
@@ -150,16 +151,14 @@ const RoomGridVIP6 = () => {
                   {/* Room Names */}
                   <div className="space-y-1">
                     <p 
-                      className="text-xs font-bold leading-tight line-clamp-2"
-                      style={useColorTheme ? { color: roomColor, fontWeight: 700 } : { color: 'black' }}
+                      className="text-xs font-bold leading-tight line-clamp-2 text-foreground"
                     >
-                      {room.nameEn}
+                      {useColorTheme ? highlightShortTitle(room.nameEn, index, false) : room.nameEn}
                     </p>
                     <p 
-                      className="text-[10px] leading-tight line-clamp-2"
-                      style={useColorTheme ? { color: roomColor, fontWeight: 600 } : { color: '#6b7280' }}
+                      className="text-[10px] leading-tight line-clamp-2 text-muted-foreground"
                     >
-                      {room.nameVi}
+                      {useColorTheme ? highlightShortTitle(room.nameVi, index, true) : room.nameVi}
                     </p>
                   </div>
                 </div>

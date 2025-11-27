@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
-import { highlightTextByRules } from "@/lib/wordColorHighlighter";
+import { highlightTextByRules, highlightShortTitle } from "@/lib/wordColorHighlighter";
 import { useColorMode } from '@/hooks/useColorMode';
 
 // Special VIP3 rooms with custom styling
@@ -275,12 +275,12 @@ const RoomGridVIP3 = () => {
                       <p
                         className="text-xs font-bold leading-tight line-clamp-2 text-foreground"
                       >
-                        {useColorTheme ? highlightTextByRules(room.nameEn, false) : room.nameEn}
+                        {useColorTheme ? highlightShortTitle(room.nameEn, index, false) : room.nameEn}
                       </p>
                       <p
                         className="text-[10px] leading-tight line-clamp-2 text-muted-foreground"
                       >
-                        {useColorTheme ? highlightTextByRules(room.nameVi, true) : room.nameVi}
+                        {useColorTheme ? highlightShortTitle(room.nameVi, index, true) : room.nameVi}
                       </p>
                     </div>
                   </div>
