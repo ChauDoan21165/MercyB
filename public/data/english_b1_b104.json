@@ -1,0 +1,75 @@
+{
+  "id": "english_b1_b104",
+  "tier": "VIP2 / VIP2",
+  "domain": "English B1",
+  "title": {
+    "en": "B1-04 — Talking About Daily Life & Routines",
+    "vi": "B1-04 — Nói Về Cuộc Sống Hằng Ngày & Thói Quen"
+  },
+  "content": {
+    "en": "This room helps you talk about your daily routine in clear English. You will learn useful patterns for describing morning habits, work schedules, evening activities, and weekly routines. These six entries train you to speak naturally about everyday life.",
+    "vi": "Phòng này giúp bạn nói về thói quen hằng ngày bằng tiếng Anh rõ ràng. Bạn sẽ học các mẫu câu hữu ích để mô tả buổi sáng, lịch làm việc, hoạt động buổi tối và thói quen mỗi tuần. Sáu mục nội dung này giúp bạn nói tự nhiên hơn về đời sống thường ngày."
+  },
+  "entries": [
+    {
+      "slug": "morning-routines",
+      "keywords_en": ["morning", "routine"],
+      "keywords_vi": ["buổi sáng", "thói quen"],
+      "copy": {
+        "en": "Describe your morning using simple steps. I wake up at seven. I brush my teeth. I drink coffee. I start work at nine. Use short clear lines. Add one feeling if you can. I feel relaxed in the morning. I feel tired when I wake up late. Morning routines are easy topics for daily conversation.",
+        "vi": "Hãy mô tả buổi sáng của bạn bằng các bước đơn giản. I wake up at seven. I brush my teeth. I drink coffee. I start work at nine. Hãy dùng câu ngắn và rõ ràng. Bạn có thể thêm cảm xúc. I feel relaxed in the morning. I feel tired when I wake up late. Thói quen buổi sáng là chủ đề dễ để trò chuyện."
+      },
+      "audio": "b104_01_en.mp3"
+    },
+    {
+      "slug": "work-and-study-routines",
+      "keywords_en": ["work", "study"],
+      "keywords_vi": ["làm việc", "học tập"],
+      "copy": {
+        "en": "Talk about your work or study schedule. I start work at nine and finish at five. I study English in the evening. I have meetings in the morning. Keep the sentences simple and clear. You can also describe how you feel. Work is busy today. My class is interesting. These details make your English sound natural.",
+        "vi": "Hãy nói về lịch làm việc hoặc học tập. I start work at nine and finish at five. I study English in the evening. I have meetings in the morning. Hãy giữ câu đơn giản và rõ ràng. Bạn cũng có thể thêm cảm xúc. Work is busy today. My class is interesting. Những chi tiết nhỏ giúp tiếng Anh của bạn tự nhiên hơn."
+      },
+      "audio": "b104_02_en.mp3"
+    },
+    {
+      "slug": "evening-activities",
+      "keywords_en": ["evening", "activities"],
+      "keywords_vi": ["buổi tối", "hoạt động"],
+      "copy": {
+        "en": "Describe your evening habits. I cook dinner at six. I watch a movie. I read a book. I relax with my family. Add one more detail to make it complete. I cook dinner at six because it helps me relax. Evening activities are easy for practicing simple present tense.",
+        "vi": "Hãy mô tả thói quen buổi tối. I cook dinner at six. I watch a movie. I read a book. I relax with my family. Hãy thêm một chi tiết để câu đầy đủ hơn. I cook dinner at six because it helps me relax. Hoạt động buổi tối là chủ đề tốt để luyện thì hiện tại đơn."
+      },
+      "audio": "b104_03_en.mp3"
+    },
+    {
+      "slug": "weekend-routines",
+      "keywords_en": ["weekend", "routine"],
+      "keywords_vi": ["cuối tuần", "thói quen"],
+      "copy": {
+        "en": "Talk about your weekends. I sleep longer on weekends. I go to the market. I meet my friends. I visit my parents. Use short sentences and one reason. I meet my friends because it makes me happy. Weekend routines show your personality through simple English.",
+        "vi": "Hãy nói về cuối tuần của bạn. I sleep longer on weekends. I go to the market. I meet my friends. I visit my parents. Hãy dùng câu ngắn và một lý do. I meet my friends because it makes me happy. Thói quen cuối tuần cho thấy cá tính của bạn thông qua tiếng Anh đơn giản."
+      },
+      "audio": "b104_04_en.mp3"
+    },
+    {
+      "slug": "describing-frequency",
+      "keywords_en": ["frequency", "adverbs"],
+      "keywords_vi": ["tần suất", "trạng từ"],
+      "copy": {
+        "en": "Use frequency words to describe your routine. I always drink coffee. I usually walk to work. I sometimes cook dinner. I rarely watch TV. I never smoke. These words help you explain how often you do something. They make your English clearer and more detailed.",
+        "vi": "Hãy dùng các từ chỉ tần suất để mô tả thói quen. I always drink coffee. I usually walk to work. I sometimes cook dinner. I rarely watch TV. I never smoke. Những từ này giúp bạn nói rõ bạn làm điều gì thường xuyên hay không. Chúng làm câu của bạn rõ ràng và chi tiết hơn."
+      },
+      "audio": "b104_05_en.mp3"
+    },
+    {
+      "slug": "daily-life-practice",
+      "keywords_en": ["practice", "daily life"],
+      "keywords_vi": ["luyện tập", "đời sống"],
+      "copy": {
+        "en": "Practice describing one part of your day every morning. Choose a simple topic. Morning routine. Work day. Evening habits. Weekend plans. Say three short sentences. Add one feeling or reason. Daily practice helps your English become natural and automatic.",
+        "vi": "Hãy luyện mô tả một phần trong ngày của bạn mỗi sáng. Chọn một chủ đề đơn giản. Thói quen buổi sáng. Ngày làm việc. Hoạt động buổi tối. Kế hoạch cuối tuần. Nói ba câu ngắn. Thêm một cảm xúc hoặc lý do. Luyện tập hằng ngày giúp tiếng Anh trở nên tự nhiên và tự động."
+      },
+      "audio": "b104_06_en.mp3"
+    }
+  ]
+}

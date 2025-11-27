@@ -1,0 +1,75 @@
+{
+  "id": "english_b1_b102",
+  "tier": "VIP2 / VIP2",
+  "domain": "English B1",
+  "title": {
+    "en": "B1-02 — Describing Experiences",
+    "vi": "B1-02 — Mô Tả Trải Nghiệm"
+  },
+  "content": {
+    "en": "This room helps you describe past experiences in a natural B1 way. You will practice longer sentences, clear time markers, and simple storytelling structure. Each entry shows how to talk about things you did, places you visited, people you met, and moments that were important to you. These skills help you communicate more confidently in daily conversations.",
+    "vi": "Phòng này giúp bạn mô tả trải nghiệm quá khứ theo cách tự nhiên ở mức B1. Bạn sẽ luyện câu dài hơn, từ chỉ thời gian rõ ràng và cấu trúc kể chuyện đơn giản. Mỗi mục hướng dẫn cách nói về việc bạn đã làm, nơi bạn đã đến, người bạn gặp và những khoảnh khắc quan trọng. Các kỹ năng này giúp bạn giao tiếp tự tin hơn trong đời sống."
+  },
+  "entries": [
+    {
+      "slug": "talking-about-places-visited",
+      "keywords_en": ["experience", "travel"],
+      "keywords_vi": ["trải nghiệm", "du lịch"],
+      "copy": {
+        "en": "Use simple past to describe places you visited. I visited Da Lat last month and the weather was cool and relaxing. I walked around the lake, tried some local food, and took many photos. It was a short trip, but it helped me rest and clear my mind. Describe what you saw and how you felt. This makes your experience complete.",
+        "vi": "Hãy dùng quá khứ đơn để mô tả nơi bạn đã đến. Tháng trước tôi đi Đà Lạt và thời tiết mát mẻ, dễ chịu. Tôi đi dạo quanh hồ, thử vài món địa phương và chụp nhiều ảnh. Chuyến đi ngắn nhưng giúp tôi nghỉ ngơi và thoải mái đầu óc. Hãy mô tả những gì bạn thấy và cảm nhận. Điều này giúp trải nghiệm của bạn đầy đủ hơn."
+      },
+      "audio": "b102_01_en.mp3"
+    },
+    {
+      "slug": "talking-about-people-you-met",
+      "keywords_en": ["people", "social"],
+      "keywords_vi": ["con người", "giao tiếp"],
+      "copy": {
+        "en": "Describe people you met using simple details. I met a new colleague yesterday and she was very friendly. We talked about our work and some personal interests. She gave me a few useful tips that made my day easier. A few small details help your story feel real and natural.",
+        "vi": "Hãy mô tả người bạn gặp bằng vài chi tiết đơn giản. Hôm qua tôi gặp một đồng nghiệp mới và cô ấy rất thân thiện. Chúng tôi nói về công việc và một vài sở thích cá nhân. Cô ấy cho tôi vài mẹo hữu ích giúp ngày làm việc nhẹ nhàng hơn. Một vài chi tiết nhỏ làm câu chuyện của bạn tự nhiên hơn."
+      },
+      "audio": "b102_02_en.mp3"
+    },
+    {
+      "slug": "describing-a-simple-event",
+      "keywords_en": ["event", "storytelling"],
+      "keywords_vi": ["sự kiện", "kể chuyện"],
+      "copy": {
+        "en": "Use clear steps when describing an event. First, explain when it happened. Then, say what you did. Finally, explain how you felt. For example: Last weekend I joined a cooking class. I learned how to make fresh pasta and cooked it with a small group. It was fun and I felt proud of the result. This structure makes your story easy to follow.",
+        "vi": "Hãy dùng các bước rõ ràng khi mô tả một sự kiện. Đầu tiên nói khi nào nó xảy ra. Sau đó nói bạn đã làm gì. Cuối cùng mô tả cảm xúc của bạn. Ví dụ: Cuối tuần trước tôi tham gia một lớp nấu ăn. Tôi học cách làm mì tươi và nấu cùng một nhóm nhỏ. Buổi học vui và tôi cảm thấy tự hào về kết quả. Cấu trúc này giúp câu chuyện dễ theo dõi."
+      },
+      "audio": "b102_03_en.mp3"
+    },
+    {
+      "slug": "explaining-small-problems",
+      "keywords_en": ["problem", "experience"],
+      "keywords_vi": ["vấn đề", "trải nghiệm"],
+      "copy": {
+        "en": "Explain small problems in daily life calmly. Yesterday my bus was late, so I arrived at work a little behind schedule. I apologized to my team and joined the meeting quickly. It was not a big problem, but it made my morning a bit stressful. Talking about small problems helps you express real life clearly.",
+        "vi": "Hãy mô tả những vấn đề nhỏ trong đời sống một cách bình tĩnh. Hôm qua xe buýt đến trễ nên tôi tới công ty muộn một chút. Tôi xin lỗi cả nhóm và vào họp ngay. Không phải vấn đề lớn nhưng nó làm buổi sáng của tôi hơi căng thẳng. Nói về vấn đề nhỏ giúp bạn diễn đạt cuộc sống thực rõ ràng hơn."
+      },
+      "audio": "b102_04_en.mp3"
+    },
+    {
+      "slug": "memorable-moment",
+      "keywords_en": ["moment", "memory"],
+      "keywords_vi": ["khoảnh khắc", "kỷ niệm"],
+      "copy": {
+        "en": "Share a simple memorable moment. Last week I received a message from an old friend I had not spoken to in years. We talked for a while and caught up on life. It made me feel warm and grateful. Memorable moments do not need to be big. Small moments also show your personality and feelings.",
+        "vi": "Hãy chia sẻ một khoảnh khắc đáng nhớ. Tuần trước tôi nhận được tin nhắn từ một người bạn cũ mà tôi đã lâu không nói chuyện. Chúng tôi trò chuyện một lúc và cập nhật tình hình của nhau. Điều đó làm tôi thấy ấm lòng và biết ơn. Khoảnh khắc đáng nhớ không cần lớn. Những khoảnh khắc nhỏ cũng thể hiện cảm xúc và tính cách của bạn."
+      },
+      "audio": "b102_05_en.mp3"
+    },
+    {
+      "slug": "daily-story-practice",
+      "keywords_en": ["practice", "story"],
+      "keywords_vi": ["luyện tập", "kể chuyện"],
+      "copy": {
+        "en": "Practice telling a short story every day. Describe what happened, who was there, and how you felt. Keep it simple. One or two sentences are enough. Daily storytelling builds confidence and trains your English to flow naturally.",
+        "vi": "Hãy luyện kể một câu chuyện ngắn mỗi ngày. Mô tả điều gì đã xảy ra, có ai ở đó và cảm xúc của bạn. Giữ cho đơn giản. Một hoặc hai câu là đủ. Luyện kể chuyện hàng ngày giúp bạn tự tin hơn và làm cho tiếng Anh trôi chảy tự nhiên."
+      },
+      "audio": "b102_06_en.mp3"
+    }
+  ]
+}
