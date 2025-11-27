@@ -36,11 +36,8 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
         // Transform database format to expected format
         let keywordMenu: { en: string[]; vi: string[] } = { en: [], vi: [] };
         
-        // ALWAYS prefer room-level keywords if they exist (populated by bulk repair)
-        if (hasKeywords) {
-          keywordMenu = { en: dbRoom.keywords, vi: dbRoom.keywords };
-        } else if (hasEntries) {
-          // Fallback: extract keywords from entries if no room-level keywords
+        // Extract keywords from entries to get proper en/vi pairing
+        if (hasEntries) {
           const enList: string[] = [];
           const viList: string[] = [];
           const seenKeywords = new Set<string>();
