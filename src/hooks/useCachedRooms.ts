@@ -31,7 +31,8 @@ async function fetchCachedRooms(tier?: string): Promise<MinimalRoomData[]> {
   try {
     let query = supabase
       .from('rooms')
-      .select('id, title_en, title_vi, tier, schema_id');
+      .select('id, title_en, title_vi, tier, schema_id, domain')
+      .neq('domain', 'English Foundation Ladder'); // Exclude English Pathway rooms
     
     if (tier) {
       // Normalize tier query - handle variations

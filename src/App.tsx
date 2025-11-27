@@ -14,6 +14,7 @@ import Homepage from "./pages/Homepage";
 import Tiers from "./pages/Tiers";
 import MeaningOfLife from "./pages/MeaningOfLife";
 import RoomGrid from "./pages/RoomGrid";
+import EnglishLearningPathway from "./pages/EnglishLearningPathway";
 import RoomGridVIP1 from "./pages/RoomGridVIP1";
 import RoomGridVIP2 from "./pages/RoomGridVIP2";
 import RoomGridVIP3 from "./pages/RoomGridVIP3";
@@ -123,6 +124,7 @@ const App = () => {
           <Route path="/reset" element={<ResetPassword />} />
           <Route path="/join/:code" element={<JoinCode />} />
           <Route path="/rooms" element={<RoomGrid />} />
+          <Route path="/english-pathway" element={<EnglishLearningPathway />} />
           <Route path="/rooms-vip1" element={<RoomGridVIP1 />} />
           <Route path="/rooms-vip2" element={<RoomGridVIP2 />} />
           <Route path="/rooms-vip3" element={<RoomGridVIP3 />} />

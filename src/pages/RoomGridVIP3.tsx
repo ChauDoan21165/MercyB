@@ -106,7 +106,7 @@ const RoomGridVIP3 = () => {
               </p>
               <p className="text-sm text-gray-600">
                 {(() => {
-                  const vip3Rooms = ALL_ROOMS.filter(r => r.tier === 'vip3');
+                  const vip3Rooms = ALL_ROOMS.filter(r => r.tier === 'vip3' && r.domain !== 'English Foundation Ladder');
                   const groups = new Set(vip3Rooms.map(r => 
                     r.id.includes('vip3_ii') ? 'VIP3 II' : 'VIP3 I'
                   ));
@@ -152,7 +152,7 @@ const RoomGridVIP3 = () => {
 
           {/* VIP3 Collections - organized by specialization */}
           {(() => {
-            const vip3Rooms = ALL_ROOMS.filter(r => r.tier === 'vip3');
+            const vip3Rooms = ALL_ROOMS.filter(r => r.tier === 'vip3' && r.domain !== 'English Foundation Ladder');
             
             // Group rooms by collection
             const roomsByCollection: Record<string, typeof vip3Rooms> = {};
