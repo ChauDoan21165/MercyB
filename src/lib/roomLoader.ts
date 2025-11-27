@@ -9,8 +9,8 @@ const normalizeRoomId = (roomId: string): string => {
     // Kids room: strip suffix and convert underscores to hyphens
     return roomId.replace('_kids_l1', '').replace(/_/g, '-');
   }
-  // Regular room: use roomId as-is
-  return roomId;
+  // Regular room: convert hyphens to underscores for database lookup
+  return roomId.replace(/-/g, '_');
 };
 
 /**
