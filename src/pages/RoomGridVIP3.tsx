@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, Lock, Crown, Sparkles, RefreshCw, Building2, BookOpen, ChevronRight } from "lucide-react";
+import { CheckCircle2, Lock, Crown, Sparkles, RefreshCw, Building2, BookOpen, ChevronRight, Palette } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ALL_ROOMS } from "@/lib/roomData";
@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
 import { highlightTextByRules } from "@/lib/wordColorHighlighter";
+import { useColorMode } from '@/hooks/useColorMode';
 
 // Special VIP3 rooms with custom styling
 const VIP3_SPECIAL_ROOMS: Record<string, string> = {
@@ -27,6 +28,7 @@ const RoomGridVIP3 = () => {
   const { canAccessVIP3, isAdmin, isAuthenticated, loading } = useUserAccess();
   const { toast: toastHook } = useToast();
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const { useColorTheme, toggleColorMode } = useColorMode();
 
   // Allow browsing for all users - they'll see restrictions in individual rooms
   // No redirect for unauthenticated users
@@ -187,29 +189,51 @@ const RoomGridVIP3 = () => {
                   </p>
                 </div>
 
+                {/* Color Mode Toggle */}
+                <div className="flex justify-end mb-4">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={toggleColorMode}
+                    className="gap-2"
+                  >
+                    <Palette className="w-4 h-4" />
+                    {useColorTheme ? 'Black & White' : 'Mercy Blade Colors'}
+                  </Button>
+                </div>
+
                 {/* Room Grid */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
                   {rooms.map((room) => {
               const isSpecialRoom = VIP3_SPECIAL_ROOMS[room.id];
               const isSexualityCultureRoom = room.id === 'sexuality-and-curiosity-and-culture-vip3';
               const isFinanceRoom = room.id === 'finance-glory-vip3';
+              const roomColor = getRoomColor(room.id);
 
               return (
                 <Card
                   key={room.id}
                   className={`relative p-3 transition-all duration-300 cursor-pointer group ${
                     room.hasData 
-                      ? 'hover:scale-110 hover:shadow-hover hover:z-10 border-accent/50 bg-gradient-to-br from-background to-accent/5' 
+                      ? 'hover:scale-110 hover:shadow-hover hover:z-10' 
                       : 'opacity-60 cursor-not-allowed'
                   }`}
                   style={
-                    isSpecialRoom
-                      ? {
-                          border: `2px solid ${isSpecialRoom}`,
-                          background: `linear-gradient(135deg, ${isSpecialRoom}15, ${isSpecialRoom}08)`,
-                          boxShadow: `0 0 20px ${isSpecialRoom}50`,
+                    useColorTheme
+                      ? (isSpecialRoom
+                          ? {
+                              border: `2px solid ${isSpecialRoom}`,
+                              background: `linear-gradient(135deg, ${isSpecialRoom}15, ${isSpecialRoom}08)`,
+                              boxShadow: `0 0 20px ${isSpecialRoom}50`,
+                            }
+                          : {
+                              background: roomColor,
+                              border: '1px solid rgba(0,0,0,0.1)'
+                            })
+                      : {
+                          background: 'white',
+                          border: '1px solid #e5e7eb'
                         }
-                      : undefined
                   }
                   onClick={() => {
                     if (!room.hasData) return;
@@ -255,23 +279,44 @@ const RoomGridVIP3 = () => {
                     <div className="space-y-1">
                       <p
                         className="text-xs font-semibold leading-tight line-clamp-2"
-                        style={{
+                        style={useColorTheme ? {
                           background: 'var(--gradient-rainbow)',
                           WebkitBackgroundClip: 'text',
                           WebkitTextFillColor: 'transparent',
                           backgroundClip: 'text'
+                        } : {
+                          color: 'black'
                         }}
                       >
                         {room.nameEn}
                       </p>
                       <p
                         className="text-[10px] leading-tight line-clamp-2"
-                        style={{
+                        style={useColorTheme ? {
                           background: 'var(--gradient-rainbow)',
                           WebkitBackgroundClip: 'text',
                           WebkitTextFillColor: 'transparent',
                           backgroundClip: 'text',
                           opacity: 0.7
+                        } : {
+                          color: '#4b5563'
+                        }}
+                      >
+                        {room.nameVi}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Hover Effect */}
+                  {room.hasData && (
+                    <div 
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"
+                      style={useColorTheme 
+                        ? { background: `linear-gradient(to bottom right, ${roomColor}15, ${roomColor}08)` }
+                        : { background: 'rgba(0, 0, 0, 0.05)' }
+                      }
+                    />
+                  )}
                         }}
                       >
                         {room.nameVi}

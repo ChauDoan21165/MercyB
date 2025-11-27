@@ -7,10 +7,10 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useEffect, useState } from "react";
 import { ALL_ROOMS, Room } from "@/lib/roomData";
 import { VIPNavigation } from "@/components/VIPNavigation";
-import { Lock, RefreshCw, BookOpen } from "lucide-react";
+import { Lock, RefreshCw, BookOpen, Palette } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
 import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
+import { useColorMode } from '@/hooks/useColorMode';
 
 const RoomGridVIP5 = () => {
   const navigate = useNavigate();
@@ -18,6 +18,7 @@ const RoomGridVIP5 = () => {
   const [rooms, setRooms] = useState<Room[]>([]);
   const { toast } = useToast();
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const { useColorTheme, toggleColorMode } = useColorMode();
 
   useEffect(() => {
     if (loading) return;
@@ -120,6 +121,19 @@ const RoomGridVIP5 = () => {
           </Button>
         </div>
 
+        {/* Color Mode Toggle */}
+        <div className="flex justify-end mb-4">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={toggleColorMode}
+            className="gap-2"
+          >
+            <Palette className="w-4 h-4" />
+            {useColorTheme ? 'Black & White' : 'Mercy Blade Colors'}
+          </Button>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {rooms.length === 0 ? (
             <div className="col-span-full text-center py-12">
@@ -137,9 +151,12 @@ const RoomGridVIP5 = () => {
                 key={room.id}
                 className="group hover:shadow-xl transition-all duration-300 cursor-pointer border-2 overflow-hidden"
                 onClick={() => navigate(`/chat/${room.id}`)}
-                style={{ 
+                style={useColorTheme ? { 
                   borderColor: getRoomColorValue(room.id),
                   backgroundColor: `${getRoomColorValue(room.id)}10`
+                } : {
+                  border: '1px solid #e5e7eb',
+                  backgroundColor: 'white'
                 }}
               >
                 <div className="p-6">

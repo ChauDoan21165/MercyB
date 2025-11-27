@@ -1,4 +1,4 @@
-import { useRef, useMemo, useState, useEffect } from 'react';
+import { useRef, useMemo } from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { Card } from "@/components/ui/card";
 import { CheckCircle2, Lock, Palette } from "lucide-react";
@@ -6,6 +6,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { getRoomColor } from '@/lib/roomColors';
 import { useLowDataMode } from '@/contexts/LowDataModeContext';
 import { Button } from '@/components/ui/button';
+import { useColorMode } from '@/hooks/useColorMode';
 
 interface RoomData {
   id: string;
@@ -31,16 +32,7 @@ export const VirtualizedRoomGrid = ({
 }: VirtualizedRoomGridProps) => {
   const parentRef = useRef<HTMLDivElement>(null);
   const { isLowDataMode } = useLowDataMode();
-  
-  // Color mode state (stored in localStorage)
-  const [useColorTheme, setUseColorTheme] = useState<boolean>(() => {
-    const saved = localStorage.getItem('mercyBladeColorMode');
-    return saved !== 'blackWhite'; // Default to color theme
-  });
-
-  useEffect(() => {
-    localStorage.setItem('mercyBladeColorMode', useColorTheme ? 'color' : 'blackWhite');
-  }, [useColorTheme]);
+  const { useColorTheme, toggleColorMode } = useColorMode();
   
   const sortedRooms = useMemo(() => {
     return [...rooms].sort((a, b) => {
@@ -66,7 +58,7 @@ export const VirtualizedRoomGrid = ({
         <Button
           variant="outline"
           size="sm"
-          onClick={() => setUseColorTheme(!useColorTheme)}
+          onClick={toggleColorMode}
           className="gap-2"
         >
           <Palette className="w-4 h-4" />
