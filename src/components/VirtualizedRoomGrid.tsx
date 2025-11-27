@@ -113,10 +113,16 @@ export const VirtualizedRoomGrid = ({
 
                           <div className="space-y-2">
                             <div className="space-y-1">
-                              <p className={`${isLowDataMode ? 'text-[10px]' : 'text-xs'} font-bold leading-tight line-clamp-2 text-gray-900`}>
+                              <p 
+                                className={`${isLowDataMode ? 'text-[10px]' : 'text-xs'} font-bold leading-tight line-clamp-2`}
+                                style={{ color: `color-mix(in srgb, ${roomColor} 85%, black)` }}
+                              >
                                 {room.nameEn}
                               </p>
-                              <p className={`${isLowDataMode ? 'text-[8px]' : 'text-[10px]'} leading-tight line-clamp-2 text-gray-700`}>
+                              <p 
+                                className={`${isLowDataMode ? 'text-[8px]' : 'text-[10px]'} leading-tight line-clamp-2`}
+                                style={{ color: `color-mix(in srgb, ${roomColor} 70%, black)` }}
+                              >
                                 {room.nameVi}
                               </p>
                             </div>
