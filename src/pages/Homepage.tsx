@@ -145,6 +145,20 @@ const Homepage = () => {
               vi: ""
             }}
           />
+          
+          {/* CTA Button to English Pathway */}
+          <div className="text-center mt-8">
+            <Button
+              size="lg"
+              onClick={() => navigate('/english-pathway')}
+              className="gap-2 bg-blue-600 hover:bg-blue-700 text-white"
+            >
+              Explore English Pathway <ArrowRight className="w-4 h-4" />
+            </Button>
+            <p className="text-sm text-gray-600 mt-3">
+              Khám Phá Lộ Trình Tiếng Anh
+            </p>
+          </div>
         </div>
       </section>
 
