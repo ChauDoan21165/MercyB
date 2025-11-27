@@ -1,0 +1,75 @@
+{
+  "id": "english_c2_c202",
+  "tier": "VIP3 / VIP3",
+  "domain": "English C2",
+  "title": {
+    "en": "C2-02 — Advanced Sentence Flow & Natural Cadence",
+    "vi": "C2-02 — Nhịp Điệu Câu Nâng Cao & Sự Tự Nhiên Trong Diễn Đạt"
+  },
+  "content": {
+    "en": "This room helps you refine rhythm, cadence, and sentence flow at an advanced level. You will learn how native speakers shape long ideas into smooth, balanced lines. These six entries show you how to control pauses, emphasis, and sentence length so your English sounds natural, confident, and effortless without losing clarity.",
+    "vi": "Phòng này giúp bạn tinh chỉnh nhịp, tiết tấu và độ trôi chảy của câu ở trình độ nâng cao. Bạn sẽ học cách người bản ngữ sắp xếp những ý dài thành các câu mượt mà, cân bằng. Sáu mục nội dung hướng dẫn bạn kiểm soát nhịp nghỉ, trọng âm và độ dài câu để tiếng Anh của bạn tự nhiên, tự tin và rõ ràng hơn."
+  },
+  "entries": [
+    {
+      "slug": "using-pauses-for-clarity",
+      "keywords_en": ["cadence", "pauses"],
+      "keywords_vi": ["nhịp", "ngắt câu"],
+      "copy": {
+        "en": "Advanced speakers use pauses to create clarity. A short pause helps listeners absorb the idea. A slightly longer pause signals transition. Pauses are not silence; they are structure. When you control them, your sentences feel calm and deliberate. Practice reading a long sentence and insert natural rests after each idea.",
+        "vi": "Người nói nâng cao dùng nhịp nghỉ để tạo sự rõ ràng. Nghỉ ngắn giúp người nghe hấp thụ ý chính. Nghỉ dài hơn báo hiệu chuyển ý. Nhịp nghỉ không phải là sự im lặng mà là cấu trúc. Khi kiểm soát tốt, câu nói của bạn trở nên bình tĩnh và có chủ đích. Hãy luyện đọc câu dài và chèn nhịp nghỉ tự nhiên sau mỗi ý."
+      },
+      "audio": "c202_01_en.mp3"
+    },
+    {
+      "slug": "balancing-long-and-short-sentences",
+      "keywords_en": ["sentence flow", "balance"],
+      "keywords_vi": ["độ dài câu", "cân bằng"],
+      "copy": {
+        "en": "Good sentence flow comes from mixing long and short sentences. Long sentences explain ideas. Short sentences give impact. When you place a short sentence after a long one, the message becomes clearer and more memorable. Try combining them in your writing and speaking to create rhythm and precision.",
+        "vi": "Nhịp câu tốt đến từ việc kết hợp câu dài và câu ngắn. Câu dài giải thích ý. Câu ngắn tạo điểm nhấn. Khi đặt câu ngắn sau câu dài, thông điệp trở nên rõ ràng và dễ nhớ hơn. Hãy kết hợp hai kiểu câu trong nói và viết để tạo nhịp và độ chính xác."
+      },
+      "audio": "c202_02_en.mp3"
+    },
+    {
+      "slug": "emphasizing-key-words-naturally",
+      "keywords_en": ["emphasis", "cadence"],
+      "keywords_vi": ["nhấn mạnh", "tiết tấu"],
+      "copy": {
+        "en": "In advanced English, emphasis is gentle, not exaggerated. Stress the important word in a sentence and keep the rest calm. For example: We need to *focus* on the main issue. Natural emphasis guides the listener without sounding dramatic or emotional. This balance is essential in professional communication.",
+        "vi": "Trong tiếng Anh nâng cao, nhấn mạnh rất nhẹ nhàng, không cường điệu. Hãy nhấn từ quan trọng và giữ phần còn lại bình tĩnh. Ví dụ: We need to *focus* on the main issue. Nhấn đúng từ giúp người nghe theo dõi ý mà không tạo cảm giác kịch tính. Đây là kỹ năng quan trọng trong giao tiếp chuyên nghiệp."
+      },
+      "audio": "c202_03_en.mp3"
+    },
+    {
+      "slug": "controlling-intonation-in-long-sentences",
+      "keywords_en": ["intonation", "long sentences"],
+      "keywords_vi": ["ngữ điệu", "câu dài"],
+      "copy": {
+        "en": "Long sentences require steady intonation. Begin with a clear starting tone, drop slightly in the middle, and rise gently at the end. This pattern keeps your sentence unified and easy to follow. If your voice moves too much, the meaning becomes unclear. Smooth, controlled intonation is a sign of mastery.",
+        "vi": "Câu dài cần ngữ điệu ổn định. Bắt đầu bằng tông rõ, hạ nhẹ ở giữa và nâng nhẹ ở cuối câu. Mẫu này giúp câu thống nhất và dễ theo dõi. Nếu giọng lên xuống quá nhiều, ý sẽ khó hiểu. Ngữ điệu mượt và kiểm soát tốt là dấu hiệu của trình độ cao."
+      },
+      "audio": "c202_04_en.mp3"
+    },
+    {
+      "slug": "removing-noise-words",
+      "keywords_en": ["clarity", "word choice"],
+      "keywords_vi": ["rõ ràng", "chọn từ"],
+      "copy": {
+        "en": "Noise words weaken your message. Avoid fillers like basically, honestly, literally, kind of, and like in formal communication. Removing them gives your sentences a clean, strong rhythm. Your ideas become sharper, and you sound more confident and mature.",
+        "vi": "Từ thừa làm yếu thông điệp. Tránh các từ như basically, honestly, literally, kind of, like trong giao tiếp trang trọng. Bỏ chúng giúp câu của bạn có nhịp chắc và sạch. Ý trở nên sắc nét hơn và bạn nghe tự tin, điềm tĩnh hơn."
+      },
+      "audio": "c202_05_en.mp3"
+    },
+    {
+      "slug": "creating-natural-cadence-through-chunking",
+      "keywords_en": ["chunking", "cadence"],
+      "keywords_vi": ["nhóm ý", "nhịp điệu"],
+      "copy": {
+        "en": "Chunking means dividing a sentence into meaningful parts. Each chunk carries one idea. When you speak by chunks, long sentences feel light and natural. Example: I think we should / review the plan again / before the meeting. Chunking improves clarity, confidence, and pacing.",
+        "vi": "Chunking nghĩa là chia câu thành từng phần mang một ý nghĩa. Mỗi phần chứa một ý. Khi nói theo từng phần, câu dài trở nên nhẹ và tự nhiên. Ví dụ: I think we should / review the plan again / before the meeting. Chunking giúp tăng sự rõ ràng, tự tin và nhịp nói."
+      },
+      "audio": "c202_06_en.mp3"
+    }
+  ]
+}
