@@ -17,9 +17,14 @@ interface EdgeFunction {
 }
 
 const EDGE_FUNCTIONS: EdgeFunction[] = [
-  // Core Product Functions
+  // Core Product - Auth & Identity
+  { name: 'get-profile', category: 'Core Product', description: 'Get user profile with subscription and role data', icon: Users, status: 'active', isPublic: false },
+  { name: 'update-profile', category: 'Core Product', description: 'Update user profile information', icon: Users, status: 'active', isPublic: false },
+  
+  // Core Product - Rooms & Content
   { name: 'get-room', category: 'Core Product', description: 'Get room data with tier validation and access control', icon: Database, status: 'active', isPublic: false },
   { name: 'list-rooms', category: 'Core Product', description: 'List rooms with pagination, filters, and search', icon: Search, status: 'active', isPublic: false },
+  { name: 'search-entries', category: 'Core Product', description: 'Full-text search across room entries with ranking', icon: Search, status: 'active', isPublic: false },
   { name: 'get-subscription-status', category: 'Core Product', description: 'Get user subscription tier and usage limits', icon: Users, status: 'active', isPublic: false },
   { name: 'sync-rooms', category: 'Core Product', description: 'Sync room data from JSON files to database', icon: RefreshCw, status: 'active', isPublic: false },
   
@@ -36,6 +41,14 @@ const EDGE_FUNCTIONS: EdgeFunction[] = [
   // Security & Safety
   { name: 'moderation', category: 'Security', description: 'Content moderation with AI filtering and user safety', icon: Shield, status: 'active', isPublic: false },
   { name: 'health-check', category: 'Security', description: 'System health monitoring and diagnostics', icon: Activity, status: 'active', isPublic: true },
+  
+  // Admin Operations
+  { name: 'admin-list-users', category: 'Admin Operations', description: 'List all users with subscription details', icon: Users, status: 'active', isPublic: false },
+  { name: 'admin-set-tier', category: 'Admin Operations', description: 'Set user subscription tier and duration', icon: Settings, status: 'active', isPublic: false },
+  { name: 'admin-list-rooms', category: 'Admin Operations', description: 'List all rooms in the system', icon: Database, status: 'active', isPublic: false },
+  { name: 'admin-publish-room', category: 'Admin Operations', description: 'Publish room to make it visible to users', icon: FileText, status: 'active', isPublic: false },
+  { name: 'admin-hide-room', category: 'Admin Operations', description: 'Hide room from regular users', icon: FileText, status: 'active', isPublic: false },
+  { name: 'export-room', category: 'Admin Operations', description: 'Export room data to JSON for backup', icon: FileText, status: 'active', isPublic: false },
 ];
 
 export default function EdgeFunctions() {
