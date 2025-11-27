@@ -135,6 +135,45 @@ const getJsonFilenameForKidsRoom = (roomId: string, levelId: string): string => 
   return `${roomId.replace(/-/g, '_')}_${suffix}.json`;
 };
 
+const buildRoomJsonFromDb = (room: any) => {
+  const entries = Array.isArray(room.entries) ? room.entries : [];
+  const keywords = Array.isArray(room.keywords) ? room.keywords : [];
+
+  const json: any = {
+    id: room.id,
+    title: {
+      en: room.title_en || room.id,
+      vi: room.title_vi || room.title_en || room.id,
+    },
+    entries,
+  };
+
+  if (room.room_essay_en || room.room_essay_vi) {
+    json.content = {
+      en: room.room_essay_en || "",
+      vi: room.room_essay_vi || "",
+    };
+  }
+
+  if (keywords.length > 0) {
+    json.keywords = keywords;
+  }
+
+  if (room.tier) {
+    json.tier = room.tier;
+  }
+
+  if (room.domain) {
+    json.domain = room.domain;
+  }
+
+  if (room.schema_id) {
+    json.schema_id = room.schema_id;
+  }
+
+  return json;
+};
+
 export default function UnifiedHealthCheck() {
   const { tier } = useParams<{ tier: string }>();
   const { toast } = useToast();
@@ -159,6 +198,8 @@ export default function UnifiedHealthCheck() {
   const [fixingAudioRoomId, setFixingAudioRoomId] = useState<string | null>(null);
   const [abortController, setAbortController] = useState<AbortController | null>(null);
   const [phantomRooms, setPhantomRooms] = useState<{ id: string, title: string }[]>([]);
+  const [bulkFixingJson, setBulkFixingJson] = useState(false);
+  const [jsonFixProgress, setJsonFixProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
   
   // Kids room filtering state (for kids tiers only)
   const [selectedLevel, setSelectedLevel] = useState<string>("all");
@@ -2072,6 +2113,91 @@ export default function UnifiedHealthCheck() {
     }
   };
 
+  const bulkExportMissingJsonFromDb = async () => {
+    // Find all rooms in deep scan with missing JSON files
+    const roomsWithMissingJson = deepScanResults.filter(report =>
+      report.issues.some(i => i.issueType === "missing_file")
+    );
+
+    if (roomsWithMissingJson.length === 0) {
+      toast({
+        title: "No Missing JSON Files",
+        description: "No rooms with missing JSON files were found in the latest deep scan.",
+      });
+      return;
+    }
+
+    setBulkFixingJson(true);
+    let successCount = 0;
+    let skipCount = 0;
+    let failCount = 0;
+
+    try {
+      for (let i = 0; i < roomsWithMissingJson.length; i++) {
+        const report = roomsWithMissingJson[i];
+        setJsonFixProgress({
+          current: i + 1,
+          total: roomsWithMissingJson.length,
+          roomName: report.roomTitle,
+        });
+
+        try {
+          const { data: room, error } = await supabase
+            .from('rooms')
+            .select('*')
+            .eq('id', report.roomId)
+            .maybeSingle();
+
+          if (error || !room) {
+            console.error(`Failed to load room ${report.roomId}:`, error);
+            failCount++;
+            continue;
+          }
+
+          if (!Array.isArray(room.entries) || room.entries.length === 0) {
+            // Phantom room with no real content - skip JSON export
+            console.warn(`Skipping JSON export for ${report.roomId}: no database entries.`);
+            skipCount++;
+            continue;
+          }
+
+          const jsonData = buildRoomJsonFromDb(room);
+          const filename = `${room.id}.json`;
+
+          const { error: saveError } = await supabase.functions.invoke('save-room-json', {
+            body: {
+              filename,
+              content: JSON.stringify(jsonData, null, 2),
+            },
+          });
+
+          if (saveError) {
+            console.error(`Failed to save JSON for ${report.roomId}:`, saveError);
+            failCount++;
+            continue;
+          }
+
+          successCount++;
+        } catch (error: any) {
+          console.error(`Error exporting JSON for ${report.roomId}:`, error);
+          failCount++;
+        }
+      }
+
+      toast({
+        title: "JSON Export Complete",
+        description: `Created ${successCount} JSON files from database. Skipped ${skipCount} rooms without entries.${failCount > 0 ? ` ${failCount} rooms failed.` : ''}`,
+      });
+
+      if (successCount > 0) {
+        await runDeepScan();
+      }
+    } finally {
+      setBulkFixingJson(false);
+      setJsonFixProgress(null);
+    }
+  };
+
   const getIssueIcon = (issueType: RoomIssue["issueType"]) => {
     switch (issueType) {
       case "missing_file":
@@ -2325,6 +2451,24 @@ export default function UnifiedHealthCheck() {
             <div className="flex items-center gap-2 text-sm">
               <Loader2 className="h-4 w-4 animate-spin text-purple-500" />
               <span className="text-foreground">{filenameFixProgress.roomName}</span>
+            </div>
+          </div>
+        </Card>
+      )}
+
+      {bulkFixingJson && jsonFixProgress && (
+        <Card className="p-6 border-primary/50">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-muted-foreground">Exporting JSON files from database...</span>
+              <span className="font-medium">
+                {jsonFixProgress.current} / {jsonFixProgress.total}
+              </span>
+            </div>
+            <Progress value={(jsonFixProgress.current / jsonFixProgress.total) * 100} className="h-2" />
+            <div className="flex items-center gap-2 text-sm">
+              <Loader2 className="h-4 w-4 animate-spin text-primary" />
+              <span className="text-foreground">{jsonFixProgress.roomName}</span>
             </div>
           </div>
         </Card>
