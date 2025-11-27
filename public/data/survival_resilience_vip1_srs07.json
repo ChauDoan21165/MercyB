@@ -1,0 +1,75 @@
+{
+  "id": "survival_resilience_vip1_srs07",
+  "tier": "VIP1 / VIP1",
+  "domain": "Survival",
+  "title": {
+    "en": "SRS-07 — Fire Safety & Smoke Survival",
+    "vi": "SRS-07 — An Toàn Cháy Nổ & Sinh Tồn Khi Có Khói"
+  },
+  "content": {
+    "en": "Fire spreads faster than most people expect, and smoke becomes dangerous within minutes. This room teaches calm, practical actions you can take before help arrives: how to recognize early warning signs, move safely through smoke, use basic extinguishing methods, and support others without putting yourself at risk. You will learn what to do in apartments, houses, crowded buildings, and during sudden electrical or kitchen fires. These six entries give you grounded, non-technical guidance designed to protect your breathing, your awareness, and your escape options when every second matters.",
+    "vi": "Lửa lan nhanh hơn chúng ta tưởng và khói trở nên nguy hiểm chỉ trong vài phút. Phòng này hướng dẫn các bước bình tĩnh và thực tế mà bạn có thể làm trước khi lực lượng cứu hộ đến: nhận biết dấu hiệu sớm, di chuyển an toàn khi có khói, sử dụng phương pháp dập lửa cơ bản và hỗ trợ người khác mà không gây nguy hiểm cho bản thân. Bạn sẽ học cách xử lý trong căn hộ, nhà riêng, tòa nhà đông người và trong tình huống cháy điện hoặc cháy bếp. Sáu mục nội dung cung cấp hướng dẫn an toàn, phi kỹ thuật giúp bảo vệ hơi thở, sự tỉnh táo và đường thoát hiểm của bạn khi từng giây đều quan trọng."
+  },
+  "entries": [
+    {
+      "slug": "recognizing-early-fire-signs",
+      "keywords_en": ["fire signs", "early warning", "awareness"],
+      "keywords_vi": ["dấu hiệu cháy", "cảnh báo sớm", "nhận biết"],
+      "copy": {
+        "en": "Most fires start small. The first warning signs are unusual burning smells, flickering lights, overheating appliances, or smoke appearing near ceilings or vents. If the alarm sounds, treat it seriously even if you do not see flames. Do not investigate alone—alert others immediately. Early recognition gives you time to stay calm, plan your exit, and avoid panic. Fires double in size quickly, so responding early protects you more effectively than any technique.",
+        "vi": "Nhiều đám cháy bắt đầu rất nhỏ. Dấu hiệu sớm gồm mùi khét bất thường, đèn chập chờn, thiết bị nóng quá mức hoặc khói xuất hiện gần trần hay khe thông khí. Nếu báo cháy kêu, hãy coi đó là tình huống thật dù chưa thấy lửa. Không tự đi kiểm tra—hãy báo cho mọi người ngay. Nhận biết sớm cho bạn thời gian giữ bình tĩnh, định hướng lối thoát và tránh hoảng loạn. Lửa lan rất nhanh, vì vậy phản ứng sớm bảo vệ bạn tốt hơn mọi kỹ thuật."
+      },
+      "audio": "srs07_01_en.mp3"
+    },
+    {
+      "slug": "moving-safely-through-smoke",
+      "keywords_en": ["smoke safety", "escape", "low crawling"],
+      "keywords_vi": ["an toàn khói", "thoát hiểm", "bò thấp"],
+      "copy": {
+        "en": "Smoke rises, so the safest air is always near the floor. If smoke is present, stay low and move by crawling or crouching. Cover your nose and mouth with a wet cloth if possible. Avoid standing—just one breath of thick smoke can disorient you. Touch doorknobs with the back of your hand; if hot, do not open the door. Close doors behind you to slow the spread of smoke. Calm, low movement preserves your breathing and gives you the best chance to escape safely.",
+        "vi": "Khói bốc lên cao, vì vậy lớp không khí an toàn nhất luôn ở gần sàn. Nếu có khói, hãy bò hoặc cúi thấp để di chuyển. Che mũi miệng bằng khăn ướt nếu có. Tránh đứng thẳng—chỉ một hơi khói đặc cũng có thể khiến bạn mất định hướng. Dùng mu bàn tay chạm vào tay nắm cửa; nếu nóng, không mở cửa. Đóng cửa phía sau để làm chậm sự lan khói. Giữ tư thế thấp và bình tĩnh giúp bảo vệ hơi thở và tăng cơ hội thoát an toàn."
+      },
+      "audio": "srs07_02_en.mp3"
+    },
+    {
+      "slug": "safe-use-of-basic-extinguishing-methods",
+      "keywords_en": ["extinguishers", "kitchen fire", "small fire"],
+      "keywords_vi": ["bình chữa cháy", "cháy bếp", "cháy nhỏ"],
+      "copy": {
+        "en": "Only attempt to extinguish very small fires and only if you have a clear escape path. For kitchen grease fires, never use water—it spreads the flames. Cover the pan with a metal lid or turn off the heat if safe. For electrical sparks, switch off the power before approaching. With a fire extinguisher, remember the PASS method: Pull, Aim, Squeeze, Sweep. If the fire grows larger than a small bin, leave immediately. Your safety matters more than saving objects.",
+        "vi": "Chỉ nên dập những đám cháy rất nhỏ và chỉ khi bạn có lối thoát rõ ràng. Với cháy dầu mỡ trong bếp, không dùng nước—nó làm lửa lan rộng. Hãy đậy nồi bằng nắp kim loại hoặc tắt bếp nếu an toàn. Với tia lửa điện, hãy ngắt nguồn điện trước khi tiếp cận. Khi dùng bình chữa cháy, hãy nhớ nguyên tắc PASS: Rút chốt, Nhắm mục tiêu, Bóp cò, Quét ngang. Nếu lửa lớn hơn thùng rác nhỏ, hãy rời ngay. Sự an toàn của bạn quan trọng hơn mọi đồ vật."
+      },
+      "audio": "srs07_03_en.mp3"
+    },
+    {
+      "slug": "navigating-apartment-and-building-exits",
+      "keywords_en": ["building escape", "stairs safety", "evacuation"],
+      "keywords_vi": ["thoát khỏi tòa nhà", "an toàn cầu thang", "di tản"],
+      "copy": {
+        "en": "In multi-story buildings, elevators become dangerous during fires due to power failure or smoke infiltration. Always use stairs. Keep one hand on the railing and move steadily, not quickly. If the hallway is filled with smoke, stay low and follow wall edges. Do not return for belongings once you exit your room. If your route is blocked, stay in a room with a window, close the door, block gaps with towels, and signal for help. Every building has safe zones—your job is to reach one calmly.",
+        "vi": "Trong tòa nhà nhiều tầng, thang máy rất nguy hiểm khi cháy do có thể mất điện hoặc bị khói tràn vào. Hãy luôn dùng cầu thang bộ. Giữ một tay trên lan can và di chuyển đều, không chạy. Nếu hành lang đầy khói, hãy cúi thấp và lần theo tường. Đừng quay lại lấy đồ sau khi đã ra khỏi phòng. Nếu đường thoát bị chặn, hãy ở trong phòng có cửa sổ, đóng cửa, chèn khe hở bằng khăn và ra tín hiệu cầu cứu. Mọi tòa nhà đều có vùng an toàn—nhiệm vụ của bạn là đến đó thật bình tĩnh."
+      },
+      "audio": "srs07_04_en.mp3"
+    },
+    {
+      "slug": "helping-others-without-putting-yourself-at-risk",
+      "keywords_en": ["assist others", "safety boundaries", "calm guidance"],
+      "keywords_vi": ["hỗ trợ người khác", "giữ an toàn", "hướng dẫn bình tĩnh"],
+      "copy": {
+        "en": "During a fire, helping others must never compromise your own safety. Guide children, elders, or disoriented people by holding their wrist—not their hand—so you can move freely if needed. Encourage slow breathing and calm steps. Do not re-enter a burning area for belongings or to search alone. If someone is trapped behind heavy smoke or fire, alert emergency services with their exact location instead of attempting rescue yourself. Protecting yourself ensures you remain capable of helping others.",
+        "vi": "Khi có cháy, hỗ trợ người khác không bao giờ được làm bạn nguy hiểm. Hãy dẫn trẻ em, người già hoặc người hoảng loạn bằng cách nắm cổ tay họ—không nắm bàn tay—để bạn có thể linh hoạt khi cần. Khuyến khích họ thở chậm và bước đều. Không quay lại khu vực cháy để lấy đồ hoặc tự tìm người mất tích. Nếu ai đó bị mắc kẹt sau lớp khói hoặc lửa, hãy báo ngay vị trí chính xác cho lực lượng cứu hộ thay vì tự cứu. Giữ an toàn cho bản thân giúp bạn tiếp tục hỗ trợ người khác hiệu quả hơn."
+      },
+      "audio": "srs07_05_en.mp3"
+    },
+    {
+      "slug": "what-to-do-if-you-are-trapped",
+      "keywords_en": ["trapped", "last resort", "air protection"],
+      "keywords_vi": ["mắc kẹt", "phương án cuối", "bảo vệ hơi thở"],
+      "copy": {
+        "en": "If all exits are blocked, move to a room with a window. Close the door and seal any gaps with wet towels or clothing to slow smoke. Stay low and breathe through a damp cloth if possible. Signal for help using a light, cloth, or tapping on surfaces. Do not break the window unless flames are entering—broken windows can pull smoke inward. Your objective is to create breathable airspace and maintain visibility so rescuers can reach you quickly.",
+        "vi": "Nếu mọi lối thoát đều bị chặn, hãy vào phòng có cửa sổ. Đóng cửa và chèn các khe hở bằng khăn ướt hoặc quần áo để làm chậm khói. Giữ tư thế thấp và thở qua khăn ẩm nếu có. Ra tín hiệu cầu cứu bằng ánh sáng, vải màu hoặc gõ lên bề mặt. Không đập vỡ cửa sổ trừ khi lửa tràn vào—cửa sổ vỡ có thể hút khói vào. Mục tiêu của bạn là tạo khoảng không khí sạch và giữ tín hiệu rõ ràng để lực lượng cứu hộ tiếp cận nhanh."
+      },
+      "audio": "srs07_06_en.mp3"
+    }
+  ]
+}

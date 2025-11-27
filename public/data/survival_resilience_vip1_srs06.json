@@ -1,0 +1,75 @@
+{
+  "id": "survival_resilience_vip1_srs06",
+  "tier": "VIP1 / VIP1",
+  "domain": "Survival",
+  "title": {
+    "en": "SRS-06 — Fire Safety & Household Evacuation Basics",
+    "vi": "SRS-06 — An Toàn Cháy Nổ & Nguyên Tắc Sơ Tán Gia Đình"
+  },
+  "content": {
+    "en": "Fires spread faster than most people expect, especially in modern homes filled with synthetic materials. This room teaches calm, practical steps to prevent household fires, recognize danger early, and evacuate safely with children, elders, and pets. You will learn how to build a simple fire plan, what to do when visibility drops, how to avoid smoke inhalation, and how to move quickly without panic. These six entries give you the essential habits that protect families long before emergency services arrive.",
+    "vi": "Hỏa hoạn lan nhanh hơn nhiều người tưởng, đặc biệt trong các ngôi nhà hiện đại chứa nhiều vật liệu tổng hợp. Phòng này hướng dẫn các bước bình tĩnh và thực tế để phòng cháy, nhận biết nguy hiểm sớm và sơ tán an toàn cùng trẻ em, người già và thú cưng. Bạn sẽ học cách xây dựng kế hoạch cháy đơn giản, xử lý khi tầm nhìn giảm, tránh hít khói và di chuyển nhanh mà không hoảng loạn. Sáu mục nội dung cung cấp những thói quen thiết yếu giúp bảo vệ gia đình từ trước khi lực lượng cứu hỏa tiếp cận."
+  },
+  "entries": [
+    {
+      "slug": "preventing-common-household-fires",
+      "keywords_en": ["fire prevention", "household safety", "cooking safety"],
+      "keywords_vi": ["phòng cháy", "an toàn gia đình", "an toàn nấu nướng"],
+      "copy": {
+        "en": "Most household fires start from simple mistakes—unattended cooking, overloaded outlets, candles placed too close to fabrics, or forgotten heating devices. Prevention starts with awareness. Keep stovetops clean and never walk away when frying oil. Unplug appliances not in use and avoid using multi-plugs for heat-producing devices. Place candles on stable surfaces away from curtains, books, or decorations. Ensure lighters and matches are out of children’s reach. Check electrical cords for damage and replace frayed ones immediately. Prevention is not about fear; it is about building small habits that stop dangerous situations before they form.",
+        "vi": "Phần lớn các vụ cháy trong nhà xuất phát từ những sai sót nhỏ—nấu ăn không trông chừng, ổ điện quá tải, nến đặt gần vải hoặc thiết bị sưởi bị quên. Phòng cháy bắt đầu từ sự chú ý. Giữ bếp sạch và không rời bếp khi chiên dầu. Rút điện thiết bị không dùng và tránh dùng ổ cắm đa năng cho đồ sinh nhiệt. Đặt nến ở nơi chắc chắn, xa rèm cửa, sách hoặc trang trí. Để bật lửa và diêm xa tầm tay trẻ em. Kiểm tra dây điện và thay dây hỏng ngay. Phòng cháy không phải sợ hãi mà là xây thói quen nhỏ ngăn nguy hiểm từ gốc."
+      },
+      "audio": "srs06_01_en.mp3"
+    },
+    {
+      "slug": "smoke-awareness-and-safe-movement",
+      "keywords_en": ["smoke safety", "movement", "awareness"],
+      "keywords_vi": ["an toàn khói", "di chuyển an toàn", "nhận thức"],
+      "copy": {
+        "en": "Smoke is often more dangerous than flames. It rises quickly, fills rooms, and reduces visibility to almost nothing. If a fire breaks out, stay low—the cleanest air is near the floor. Cover your mouth and nose with cloth to reduce inhalation. Move with one hand touching walls or furniture to avoid disorientation. If a door feels hot, do not open it; fire may be on the other side. Teach children the simple rule: low and go. Knowing how smoke behaves gives you precious seconds that save lives.",
+        "vi": "Khói thường nguy hiểm hơn lửa. Nó bốc lên nhanh, làm đầy phòng và giảm tầm nhìn gần như bằng không. Nếu xảy ra cháy, hãy di chuyển thấp—không khí sạch nhất nằm sát sàn. Che miệng và mũi bằng khăn để giảm hít khói. Đi với một tay chạm tường hoặc đồ nội thất để tránh mất phương hướng. Nếu cửa nóng, không mở—có thể lửa đang ở bên kia. Hãy dạy trẻ quy tắc đơn giản: cúi thấp và đi nhanh. Hiểu cách khói di chuyển giúp bạn có thêm vài giây quý giá cứu mạng."
+      },
+      "audio": "srs06_02_en.mp3"
+    },
+    {
+      "slug": "building-a-simple-home-evacuation-plan",
+      "keywords_en": ["evacuation", "family plan", "fire drill"],
+      "keywords_vi": ["sơ tán", "kế hoạch gia đình", "tập dượt cháy"],
+      "copy": {
+        "en": "A home evacuation plan keeps everyone calm when seconds matter. Identify two exits from every major room—usually a door and a window. Choose a safe meeting point outside, far from the building. Practice a short drill a few times a year so children remember what to do without freezing. Keep keys in predictable places so doors can be opened quickly. If someone has mobility challenges, assign a helper in advance. Evacuation plans remove guesswork, allowing the whole family to react with clarity instead of confusion.",
+        "vi": "Kế hoạch sơ tán giúp mọi người bình tĩnh khi từng giây đều quan trọng. Xác định hai lối thoát cho mỗi phòng—thường là cửa và cửa sổ. Chọn một điểm tập trung an toàn ngoài nhà, cách xa công trình. Tập dượt vài lần mỗi năm để trẻ nhớ phải làm gì mà không đứng khựng. Để chìa khóa ở vị trí cố định để mở cửa nhanh. Nếu trong nhà có người khó di chuyển, hãy phân công người hỗ trợ trước. Kế hoạch sơ tán loại bỏ sự lúng túng, giúp cả gia đình phản ứng rõ ràng."
+      },
+      "audio": "srs06_03_en.mp3"
+    },
+    {
+      "slug": "handling-small-fires-safely",
+      "keywords_en": ["small fire", "extinguisher", "safety"],
+      "keywords_vi": ["cháy nhỏ", "bình chữa cháy", "an toàn"],
+      "copy": {
+        "en": "Some small fires can be controlled safely if you act immediately and without panic. For grease fires, never use water—it causes explosive flare-ups. Cover the pan with a metal lid or use baking soda to smother flames. For electrical fires, cut the power first if safe, then use a dry chemical extinguisher. Every home should have an extinguisher near the kitchen; learn the PASS rule: Pull, Aim, Squeeze, Sweep. If a fire grows beyond a small area or fills the room with smoke, evacuate immediately. Safety comes before saving property.",
+        "vi": "Một số đám cháy nhỏ có thể xử lý an toàn nếu bạn hành động ngay và không hoảng loạn. Với cháy dầu, không dùng nước—nó làm lửa bùng nổ mạnh. Hãy đậy nắp kim loại hoặc rắc baking soda để dập lửa. Với cháy điện, cắt nguồn điện nếu an toàn rồi dùng bình chữa cháy khô. Mọi gia đình nên có bình chữa cháy gần bếp; hãy nhớ quy tắc PASS: Kéo chốt, Nhắm, Bóp, Quét. Nếu đám cháy vượt quá khu vực nhỏ hoặc khói tràn phòng, hãy sơ tán ngay. An toàn luôn quan trọng hơn tài sản."
+      },
+      "audio": "srs06_04_en.mp3"
+    },
+    {
+      "slug": "evacuating-with-children-elders-and-pets",
+      "keywords_en": ["evacuation", "children", "elders", "pets"],
+      "keywords_vi": ["sơ tán", "trẻ em", "người già", "thú cưng"],
+      "copy": {
+        "en": "Kids, elders, and pets react differently under stress. Speak clearly and calmly with children, giving short instructions such as follow me or stay low. For elders, support them by the arm and move slowly but steadily. Prepare pet carriers in advance; frightened animals may hide during smoke or noise. Keep leashes near exits. Practice the evacuation route with the whole household so everyone, including pets, knows the pattern. The more familiar the movement, the safer the real emergency becomes.",
+        "vi": "Trẻ em, người già và thú cưng phản ứng rất khác nhau khi căng thẳng. Hãy nói rõ ràng và bình tĩnh với trẻ, dùng câu ngắn như đi theo con hoặc cúi thấp. Với người già, dìu nhẹ cánh tay và di chuyển chậm nhưng dứt khoát. Chuẩn bị lồng vận chuyển cho thú cưng trước; khi sợ, chúng dễ trốn. Để dây dắt gần cửa. Tập dượt lộ trình sơ tán với cả nhà để mọi người, kể cả thú cưng, quen với trình tự. Sự quen thuộc biến tình huống thật thành an toàn hơn."
+      },
+      "audio": "srs06_05_en.mp3"
+    },
+    {
+      "slug": "what-to-do-after-escaping-a-fire",
+      "keywords_en": ["post-fire", "safety", "recovery"],
+      "keywords_vi": ["sau cháy", "an toàn", "khắc phục"],
+      "copy": {
+        "en": "Once outside, stay out. Do not return to a burning building for belongings. Call emergency services and alert neighbors if needed. Move to the meeting point and count all household members. If anyone has inhaled smoke, keep them seated and calm while waiting for help. Do not re-enter until professionals declare the structure safe. After the fire, document damage with photos and contact local support services if needed. Recovery takes time, but the most important victory is that everyone is safe.",
+        "vi": "Khi đã ra ngoài, tuyệt đối không quay lại nhà cháy để lấy đồ. Gọi lực lượng cứu hỏa và báo hàng xóm nếu cần. Đến điểm tập trung và kiểm đếm mọi người. Nếu ai hít phải khói, cho họ ngồi nghỉ và giữ bình tĩnh trong lúc chờ hỗ trợ. Không quay lại nhà cho đến khi lực lượng chuyên môn xác nhận an toàn. Sau vụ cháy, chụp ảnh hiện trường và liên hệ hỗ trợ địa phương nếu cần. Khắc phục mất thời gian, nhưng chiến thắng lớn nhất là mọi người đều an toàn."
+      },
+      "audio": "srs06_06_en.mp3"
+    }
+  ]
+}
