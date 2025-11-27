@@ -172,6 +172,30 @@ const Homepage = () => {
         </div>
       </section>
 
+      {/* A2 Pre-Intermediate English VIP2 Section */}
+      <section className="py-16 px-6" style={{ backgroundColor: "#FEF2F2" }}>
+        <div className="max-w-4xl mx-auto space-y-8">
+          <HomepageSection
+            id="a2-pre-intermediate-english-vip2"
+            backgroundColor="#FEF2F2"
+            headingColor="#7F1D1D"
+            accentColor="#DC2626"
+            title={{
+              en: "📚 A2 Pre-Intermediate English — VIP2 Advanced Track",
+              vi: "📚 A2 Tiếng Anh Sơ Trung Cấp — Lộ Trình VIP2"
+            }}
+            body={{
+              en: "A2 Pre-Intermediate English helps learners move from simple sentences to real communication. These 14 rooms introduce longer patterns, everyday conversation topics, practical grammar, listening practice, and short readings. Lessons are still gentle and supportive, but they build stronger speaking and understanding skills for daily life.",
+              vi: "A2 Tiếng Anh Sơ Trung Cấp giúp người học chuyển từ câu đơn sang giao tiếp thật. Bộ 14 phòng này giới thiệu mẫu câu dài hơn, chủ đề hội thoại đời sống, ngữ pháp thực tế, luyện nghe và đọc ngắn. Bài học vẫn nhẹ nhàng, hỗ trợ người Việt, nhưng giúp nâng cao khả năng nói và hiểu trong đời sống."
+            }}
+            audio={{
+              en: "",
+              vi: ""
+            }}
+          />
+        </div>
+      </section>
+
       {/* Survival & Resilience VIP1 Bonus Section */}
       <section className="py-16 px-6" style={{ backgroundColor: "#F0F4F0" }}>
         <div className="max-w-4xl mx-auto space-y-8">
