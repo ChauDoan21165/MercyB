@@ -213,14 +213,12 @@ const RoomGridVIP3II = () => {
                   {/* Room Names */}
                   <div className="space-y-1">
                     <p
-                      className="text-xs font-bold leading-tight line-clamp-2"
-                      style={{ color: '#6366f1', fontWeight: 700 }}
+                      className="text-xs font-bold leading-tight line-clamp-2 text-gray-900"
                     >
                       {room.nameEn}
                     </p>
                     <p
-                      className="text-[10px] leading-tight line-clamp-2"
-                      style={{ color: '#6366f1', fontWeight: 600 }}
+                      className="text-[10px] leading-tight line-clamp-2 text-gray-700"
                     >
                       {room.nameVi}
                     </p>
