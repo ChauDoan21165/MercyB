@@ -1,0 +1,75 @@
+{
+  "id": "english_a2_a203",
+  "tier": "VIP2 / VIP2",
+  "domain": "English A2",
+  "title": {
+    "en": "A2-03 — Describing People, Places & Things",
+    "vi": "A2-03 — Miêu Tả Con Người, Địa Điểm & Sự Vật"
+  },
+  "content": {
+    "en": "This room teaches you how to describe people, places, and things in simple A2 English. You will learn common adjectives, basic patterns, and short examples you can use in daily life. Clear descriptions help you speak with confidence.",
+    "vi": "Phòng này giúp bạn miêu tả con người, địa điểm và sự vật bằng tiếng Anh A2 đơn giản. Bạn sẽ học các tính từ phổ biến, cấu trúc cơ bản và ví dụ ngắn để dùng trong đời sống. Miêu tả rõ ràng giúp bạn giao tiếp tự tin hơn."
+  },
+  "entries": [
+    {
+      "slug": "describing-people-basic",
+      "keywords_en": ["people", "description"],
+      "keywords_vi": ["con người", "miêu tả"],
+      "copy": {
+        "en": "Useful words for describing people. tall short young old friendly quiet loud strong weak. Sample lines. She is tall. He is very friendly. They are young and active.",
+        "vi": "Từ vựng miêu tả con người: tall, short, young, old, friendly, quiet, loud, strong, weak. Ví dụ: She is tall. He is very friendly. They are young and active."
+      },
+      "audio": "a203_01_en.mp3"
+    },
+    {
+      "slug": "describing-appearance",
+      "keywords_en": ["appearance", "people"],
+      "keywords_vi": ["ngoại hình", "con người"],
+      "copy": {
+        "en": "Words for appearance. long hair short hair dark hair light hair glasses beard smile. Sample lines. She has long hair. He has a big smile. I wear glasses.",
+        "vi": "Từ miêu tả ngoại hình: long hair, short hair, dark hair, light hair, glasses, beard, smile. Ví dụ: She has long hair. He has a big smile. I wear glasses."
+      },
+      "audio": "a203_02_en.mp3"
+    },
+    {
+      "slug": "describing-places",
+      "keywords_en": ["places", "location"],
+      "keywords_vi": ["địa điểm", "vị trí"],
+      "copy": {
+        "en": "Words for places. quiet noisy crowded clean modern old small big safe. Sample lines. This street is noisy. The park is clean and quiet. My room is small but nice.",
+        "vi": "Từ miêu tả địa điểm: quiet, noisy, crowded, clean, modern, old, small, big, safe. Ví dụ: This street is noisy. The park is clean and quiet. My room is small but nice."
+      },
+      "audio": "a203_03_en.mp3"
+    },
+    {
+      "slug": "describing-things",
+      "keywords_en": ["objects", "things"],
+      "keywords_vi": ["đồ vật", "sự vật"],
+      "copy": {
+        "en": "Words for objects. heavy light soft hard new old big small round square. Sample lines. The box is heavy. The pillow is soft. This table is old but strong.",
+        "vi": "Từ miêu tả đồ vật: heavy, light, soft, hard, new, old, big, small, round, square. Ví dụ: The box is heavy. The pillow is soft. This table is old but strong."
+      },
+      "audio": "a203_04_en.mp3"
+    },
+    {
+      "slug": "simple-description-patterns",
+      "keywords_en": ["patterns", "grammar"],
+      "keywords_vi": ["mẫu câu", "ngữ pháp"],
+      "copy": {
+        "en": "Basic patterns for describing. It is big. It is new. She is tall. He is quiet. The room is clean. Practice saying each line slowly for clarity.",
+        "vi": "Các mẫu câu miêu tả cơ bản: It is big. It is new. She is tall. He is quiet. The room is clean. Hãy luyện đọc chậm rãi để rõ hơn."
+      },
+      "audio": "a203_05_en.mp3"
+    },
+    {
+      "slug": "mixing-descriptions",
+      "keywords_en": ["description", "practice"],
+      "keywords_vi": ["miêu tả", "luyện tập"],
+      "copy": {
+        "en": "Practice mixing adjectives. She is tall and friendly. The room is small but clean. The street is noisy and crowded. Simple combinations help you sound natural.",
+        "vi": "Luyện kết hợp tính từ: She is tall and friendly. The room is small but clean. The street is noisy and crowded. Kết hợp đơn giản giúp bạn nói tự nhiên hơn."
+      },
+      "audio": "a203_06_en.mp3"
+    }
+  ]
+}

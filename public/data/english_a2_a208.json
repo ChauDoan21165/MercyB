@@ -1,0 +1,75 @@
+{
+  "id": "english_a2_a208",
+  "tier": "VIP2 / VIP2",
+  "domain": "English A2",
+  "title": {
+    "en": "A2-08 — Describing People and Personality",
+    "vi": "A2-08 — Miêu Tả Con Người và Tính Cách"
+  },
+  "content": {
+    "en": "This room teaches you simple words and sentences to describe people. You will learn common adjectives for appearance and personality, basic structures with be, and short examples you can use in real life. These six entries help you talk about yourself and others clearly.",
+    "vi": "Phòng này giúp bạn dùng các từ và câu đơn giản để miêu tả con người. Bạn sẽ học các tính từ thường gặp về ngoại hình và tính cách, cấu trúc cơ bản với be và những ví dụ dễ áp dụng. Sáu mục nội dung giúp bạn nói về bản thân và người khác một cách rõ ràng."
+  },
+  "entries": [
+    {
+      "slug": "basic-appearance-words",
+      "keywords_en": ["appearance", "adjectives"],
+      "keywords_vi": ["ngoại hình", "tính từ"],
+      "copy": {
+        "en": "Common appearance words. tall short young old pretty handsome strong weak. Use them in short lines. She is tall. He is young. They are strong.",
+        "vi": "Các từ mô tả ngoại hình thường gặp: tall, short, young, old, pretty, handsome, strong, weak. Hãy dùng chúng trong câu ngắn. She is tall. He is young. They are strong."
+      },
+      "audio": "a208_01_en.mp3"
+    },
+    {
+      "slug": "basic-personality-words",
+      "keywords_en": ["personality", "adjectives"],
+      "keywords_vi": ["tính cách", "tính từ"],
+      "copy": {
+        "en": "Useful personality words. kind friendly quiet funny serious confident shy. Make simple sentences. She is kind. He is funny. They are friendly.",
+        "vi": "Các từ mô tả tính cách hữu ích: kind, friendly, quiet, funny, serious, confident, shy. Hãy tạo câu đơn giản. She is kind. He is funny. They are friendly."
+      },
+      "audio": "a208_02_en.mp3"
+    },
+    {
+      "slug": "be-plus-adjective",
+      "keywords_en": ["be", "adjective"],
+      "keywords_vi": ["be", "tính từ"],
+      "copy": {
+        "en": "Use be with adjectives. I am happy. You are tall. She is quiet. We are tired. They are friendly. Keep the sentences short and clear.",
+        "vi": "Dùng be với tính từ. I am happy. You are tall. She is quiet. We are tired. They are friendly. Hãy giữ câu ngắn và rõ ràng."
+      },
+      "audio": "a208_03_en.mp3"
+    },
+    {
+      "slug": "describing-yourself",
+      "keywords_en": ["describe", "self"],
+      "keywords_vi": ["miêu tả", "bản thân"],
+      "copy": {
+        "en": "Use simple lines to talk about yourself. I am friendly. I am not tall. I am a quiet person. I am confident at work. Practice slowly with a calm voice.",
+        "vi": "Dùng câu đơn giản để nói về bản thân. I am friendly. I am not tall. I am a quiet person. I am confident at work. Hãy luyện chậm với giọng nhẹ nhàng."
+      },
+      "audio": "a208_04_en.mp3"
+    },
+    {
+      "slug": "describing-other-people",
+      "keywords_en": ["describe", "others"],
+      "keywords_vi": ["miêu tả", "người khác"],
+      "copy": {
+        "en": "Talk about others using be. She is kind. He is serious. They are funny. Do not use tones. Keep the sound flat for clear English rhythm.",
+        "vi": "Hãy nói về người khác bằng be. She is kind. He is serious. They are funny. Đừng dùng thanh điệu. Giữ âm đều để tạo nhịp tiếng Anh tự nhiên."
+      },
+      "audio": "a208_05_en.mp3"
+    },
+    {
+      "slug": "mini-practice-descriptions",
+      "keywords_en": ["practice", "descriptions"],
+      "keywords_vi": ["luyện tập", "miêu tả"],
+      "copy": {
+        "en": "Practice lines. She is tall and friendly. He is short but strong. They are young and confident. Repeat daily until the rhythm feels natural.",
+        "vi": "Luyện câu. She is tall and friendly. He is short but strong. They are young and confident. Luyện mỗi ngày cho đến khi nhịp nói tự nhiên."
+      },
+      "audio": "a208_06_en.mp3"
+    }
+  ]
+}

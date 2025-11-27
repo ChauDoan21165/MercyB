@@ -1,0 +1,75 @@
+{
+  "id": "english_a2_a207",
+  "tier": "VIP2 / VIP2",
+  "domain": "English A2",
+  "title": {
+    "en": "A2-07 — Making Plans and Future Tense",
+    "vi": "A2-07 — Lập Kế Hoạch và Thì Tương Lai"
+  },
+  "content": {
+    "en": "This room teaches you how to talk about future plans using going to and will. You will learn simple structures, common time expressions, and short examples you can use in daily life. These six entries help you describe what you plan to do and what you think will happen.",
+    "vi": "Phòng này giúp bạn nói về kế hoạch tương lai bằng cách dùng going to và will. Bạn sẽ học các cấu trúc đơn giản, các cụm thời gian thường gặp và ví dụ dễ áp dụng trong đời sống. Sáu mục nội dung giúp bạn diễn đạt điều bạn dự định làm và điều bạn nghĩ sẽ xảy ra."
+  },
+  "entries": [
+    {
+      "slug": "using-going-to",
+      "keywords_en": ["future", "plans", "going to"],
+      "keywords_vi": ["tương lai", "kế hoạch", "going to"],
+      "copy": {
+        "en": "Use going to for plans you already decided. I am going to study tonight. She is going to buy a new phone. They are going to visit their family. Say each line slowly and clearly.",
+        "vi": "Dùng going to cho kế hoạch bạn đã quyết định. I am going to study tonight. She is going to buy a new phone. They are going to visit their family. Hãy đọc từng câu chậm và rõ ràng."
+      },
+      "audio": "a207_01_en.mp3"
+    },
+    {
+      "slug": "using-will",
+      "keywords_en": ["future", "will"],
+      "keywords_vi": ["tương lai", "will"],
+      "copy": {
+        "en": "Use will for quick decisions or predictions. I will help you. She will call later. It will rain tomorrow. Keep your tone simple and flat.",
+        "vi": "Dùng will cho quyết định nhanh hoặc dự đoán. I will help you. She will call later. It will rain tomorrow. Giữ giọng đơn giản và không lên xuống."
+      },
+      "audio": "a207_02_en.mp3"
+    },
+    {
+      "slug": "time-expressions-for-future",
+      "keywords_en": ["time expressions", "future"],
+      "keywords_vi": ["từ chỉ thời gian", "tương lai"],
+      "copy": {
+        "en": "Useful future expressions. tomorrow next week next month next year tonight later soon in a few days. These help your listener understand when something will happen.",
+        "vi": "Các cụm thời gian tương lai: tomorrow, next week, next month, next year, tonight, later, soon, in a few days. Những cụm này giúp người nghe hiểu sự việc sẽ xảy ra khi nào."
+      },
+      "audio": "a207_03_en.mp3"
+    },
+    {
+      "slug": "talking-about-plans",
+      "keywords_en": ["plans", "future"],
+      "keywords_vi": ["kế hoạch", "tương lai"],
+      "copy": {
+        "en": "Make short plan sentences. I am going to meet my friend. We are going to cook dinner. She is going to study English. Keep sentences simple for clarity.",
+        "vi": "Hãy tạo câu ngắn về kế hoạch. I am going to meet my friend. We are going to cook dinner. She is going to study English. Giữ câu đơn giản để rõ ràng hơn."
+      },
+      "audio": "a207_04_en.mp3"
+    },
+    {
+      "slug": "talking-about-predictions",
+      "keywords_en": ["predictions", "future"],
+      "keywords_vi": ["dự đoán", "tương lai"],
+      "copy": {
+        "en": "Use will for predictions. I think it will be sunny. She will pass the test. They will arrive soon. Practice slowly until the rhythm feels natural.",
+        "vi": "Dùng will cho dự đoán. I think it will be sunny. She will pass the test. They will arrive soon. Luyện chậm cho đến khi nhịp nói tự nhiên."
+      },
+      "audio": "a207_05_en.mp3"
+    },
+    {
+      "slug": "mini-practice-future",
+      "keywords_en": ["practice", "future tense"],
+      "keywords_vi": ["luyện tập", "thì tương lai"],
+      "copy": {
+        "en": "Practice lines. I will call you later. She is going to travel next month. We will start soon. They are going to cook tonight. Repeat daily for confidence.",
+        "vi": "Luyện câu. I will call you later. She is going to travel next month. We will start soon. They are going to cook tonight. Luyện mỗi ngày để tự tin hơn."
+      },
+      "audio": "a207_06_en.mp3"
+    }
+  ]
+}

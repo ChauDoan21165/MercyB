@@ -1,0 +1,75 @@
+{
+  "id": "english_a2_a205",
+  "tier": "VIP2 / VIP2",
+  "domain": "English A2",
+  "title": {
+    "en": "A2-05 — Asking Polite Questions",
+    "vi": "A2-05 — Hỏi Câu Lịch Sự"
+  },
+  "content": {
+    "en": "This room helps you ask polite questions in simple A2 English. You will learn soft question forms, gentle intonation, and common daily expressions that make conversations comfortable. These six entries guide you to speak with clarity and respect.",
+    "vi": "Phòng này giúp bạn đặt câu hỏi lịch sự bằng tiếng Anh A2 đơn giản. Bạn sẽ học cách hỏi nhẹ nhàng, lên giọng phù hợp và các mẫu câu đời sống thường dùng để giao tiếp thoải mái và tôn trọng."
+  },
+  "entries": [
+    {
+      "slug": "soft-opening-questions",
+      "keywords_en": ["questions", "polite"],
+      "keywords_vi": ["câu hỏi", "lịch sự"],
+      "copy": {
+        "en": "Start questions gently. Excuse me. Sorry to bother you. May I ask something. These soft openings help people feel comfortable. Example lines. Excuse me, where is the station. Sorry to bother you, what time is it.",
+        "vi": "Hãy mở đầu câu hỏi một cách nhẹ nhàng: Excuse me, Sorry to bother you, May I ask something. Các cụm này giúp người nghe thấy thoải mái. Ví dụ: Excuse me, where is the station. Sorry to bother you, what time is it."
+      },
+      "audio": "a205_01_en.mp3"
+    },
+    {
+      "slug": "may-i-can-i-could-i",
+      "keywords_en": ["modal verbs", "questions"],
+      "keywords_vi": ["động từ khiếm khuyết", "câu hỏi"],
+      "copy": {
+        "en": "Use these forms for polite requests. May I open the window. Can I sit here. Could I have the menu. Could is the softest. May is formal. Can is friendly and simple.",
+        "vi": "Hãy dùng các mẫu sau để yêu cầu lịch sự: May I open the window. Can I sit here. Could I have the menu. Could là mềm nhất. May trang trọng. Can thân thiện và đơn giản."
+      },
+      "audio": "a205_02_en.mp3"
+    },
+    {
+      "slug": "asking-for-help",
+      "keywords_en": ["help", "questions"],
+      "keywords_vi": ["giúp đỡ", "câu hỏi"],
+      "copy": {
+        "en": "Polite ways to ask for help. Can you help me. Could you show me. Would you explain this. Soft add-ons make it kinder. if you have time. if it is okay. if you do not mind.",
+        "vi": "Cách lịch sự để nhờ giúp đỡ: Can you help me. Could you show me. Would you explain this. Bạn có thể thêm các cụm mềm: if you have time, if it is okay, if you do not mind."
+      },
+      "audio": "a205_03_en.mp3"
+    },
+    {
+      "slug": "asking-for-information",
+      "keywords_en": ["information", "questions"],
+      "keywords_vi": ["thông tin", "câu hỏi"],
+      "copy": {
+        "en": "Useful question forms. Where is the nearest bank. When does the bus leave. How much is the ticket. Why is the store closed. Ask slowly for clarity.",
+        "vi": "Các mẫu câu hỏi thông dụng: Where is the nearest bank. When does the bus leave. How much is the ticket. Why is the store closed. Hãy hỏi chậm để rõ ràng hơn."
+      },
+      "audio": "a205_04_en.mp3"
+    },
+    {
+      "slug": "gentle-tone",
+      "keywords_en": ["tone", "questions"],
+      "keywords_vi": ["giọng điệu", "câu hỏi"],
+      "copy": {
+        "en": "Tone changes everything. A polite question rises slightly at the end. Keep your voice soft and light. Avoid pressure or force. Example practice. Can you help me. Could you repeat that. Where is the bus stop.",
+        "vi": "Giọng điệu quyết định sự lịch sự. Câu hỏi mềm thường lên giọng nhẹ ở cuối. Hãy giữ giọng nhẹ và không tạo áp lực. Ví dụ: Can you help me. Could you repeat that. Where is the bus stop."
+      },
+      "audio": "a205_05_en.mp3"
+    },
+    {
+      "slug": "mini-practice",
+      "keywords_en": ["practice", "questions"],
+      "keywords_vi": ["luyện tập", "câu hỏi"],
+      "copy": {
+        "en": "Practice gentle questions. May I sit here. Could you help me find this. Excuse me, what time does it start. Can I ask one more question. Repeat slowly until it feels natural.",
+        "vi": "Luyện các câu hỏi nhẹ nhàng: May I sit here. Could you help me find this. Excuse me, what time does it start. Can I ask one more question. Luyện chậm cho đến khi thấy tự nhiên."
+      },
+      "audio": "a205_06_en.mp3"
+    }
+  ]
+}
