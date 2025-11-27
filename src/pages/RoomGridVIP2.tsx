@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, Lock, Gem, RefreshCw } from "lucide-react";
+import { CheckCircle2, Lock, Gem, RefreshCw, Palette } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ALL_ROOMS } from "@/lib/roomData";
@@ -12,12 +12,14 @@ import { toast } from "sonner";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
 import { highlightTextByRules } from "@/lib/wordColorHighlighter";
+import { useColorMode } from '@/hooks/useColorMode';
 
 const RoomGridVIP2 = () => {
   const navigate = useNavigate();
   const { canAccessVIP2, isAdmin, isAuthenticated, loading } = useUserAccess();
   const { toast: toastHook } = useToast();
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const { useColorTheme, toggleColorMode } = useColorMode();
 
   // Allow browsing for all users - they'll see restrictions in individual rooms
   // No redirect for unauthenticated users
@@ -97,20 +99,41 @@ const RoomGridVIP2 = () => {
           </div>
         </div>
 
+        {/* Color Mode Toggle */}
+        <div className="flex justify-end mb-4">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={toggleColorMode}
+            className="gap-2"
+          >
+            <Palette className="w-4 h-4" />
+            {useColorTheme ? 'Black & White' : 'Mercy Blade Colors'}
+          </Button>
+        </div>
+
         {/* Room Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
           {ALL_ROOMS.filter(room => room.tier === "vip2").sort((a, b) => {
             const aName = a.name || a.id;
             const bName = b.name || b.id;
             return aName.localeCompare(bName);
-          }).map((room) => (
+          }).map((room) => {
+            const roomColor = getRoomColor(room.id);
+            
+            return (
             <Card
               key={room.id}
               className={`relative p-3 transition-all duration-300 cursor-pointer group ${
                 room.hasData 
-                  ? "hover:scale-110 hover:shadow-hover hover:z-10 border-accent/30" 
+                  ? "hover:scale-110 hover:shadow-hover hover:z-10" 
                   : "opacity-60 cursor-not-allowed"
               }`}
+              style={
+                useColorTheme
+                  ? { background: roomColor, border: '1px solid rgba(0,0,0,0.1)' }
+                  : { background: 'white', border: '1px solid #e5e7eb' }
+              }
               onClick={() => room.hasData && navigate(`/chat/${room.id}`)}
             >
               {/* Status Badge */}
@@ -129,10 +152,22 @@ const RoomGridVIP2 = () => {
               <div className="space-y-2">
                 {/* Room Names */}
                 <div className="space-y-1">
-                  <p className="text-xs font-bold leading-tight line-clamp-2 text-gray-900">
+                  <p 
+                    className="text-xs font-bold leading-tight line-clamp-2"
+                    style={useColorTheme 
+                      ? { color: `color-mix(in srgb, ${roomColor} 85%, black)` }
+                      : { color: 'black' }
+                    }
+                  >
                     {room.nameEn}
                   </p>
-                  <p className="text-[10px] leading-tight line-clamp-2 text-gray-700">
+                  <p 
+                    className="text-[10px] leading-tight line-clamp-2"
+                    style={useColorTheme 
+                      ? { color: `color-mix(in srgb, ${roomColor} 70%, black)` }
+                      : { color: '#4b5563' }
+                    }
+                  >
                     {room.nameVi}
                   </p>
                 </div>
@@ -140,10 +175,17 @@ const RoomGridVIP2 = () => {
 
               {/* Hover Effect */}
               {room.hasData && (
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" 
+                  style={useColorTheme 
+                    ? { background: `linear-gradient(to bottom right, ${roomColor}20, ${roomColor}10)` }
+                    : { background: 'rgba(0, 0, 0, 0.05)' }
+                  }
+                />
               )}
             </Card>
-          ))}
+            );
+          })}
         </div>
 
         {/* Navigation */}

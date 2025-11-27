@@ -6,8 +6,10 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useEffect, useState } from "react";
 import { ALL_ROOMS } from "@/lib/roomData";
 import { VIPNavigation } from "@/components/VIPNavigation";
-import { CheckCircle2, Lock, RefreshCw, Brain } from "lucide-react";
+import { CheckCircle2, Lock, RefreshCw, Brain, Palette } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { getRoomColor } from '@/lib/roomColors';
+import { useColorMode } from '@/hooks/useColorMode';
 
 const RoomGridVIP6 = () => {
   const navigate = useNavigate();
@@ -15,6 +17,7 @@ const RoomGridVIP6 = () => {
   const { toast } = useToast();
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [roomsVersion, setRoomsVersion] = useState(0);
+  const { useColorTheme, toggleColorMode } = useColorMode();
 
   useEffect(() => {
     const handle = () => setRoomsVersion(v => v + 1);
@@ -97,20 +100,41 @@ const RoomGridVIP6 = () => {
             </div>
           </div>
 
+          {/* Color Mode Toggle */}
+          <div className="flex justify-end mb-4">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={toggleColorMode}
+              className="gap-2"
+            >
+              <Palette className="w-4 h-4" />
+              {useColorTheme ? 'Black & White' : 'Mercy Blade Colors'}
+            </Button>
+          </div>
+
           {/* Room Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
             {ALL_ROOMS.filter(room => room.tier === "vip6").sort((a, b) => {
               const aName = a.name || a.id;
               const bName = b.name || b.id;
               return aName.localeCompare(bName);
-            }).map((room) => (
+            }).map((room) => {
+              const roomColor = getRoomColor(room.id);
+              
+              return (
               <Card
                 key={room.id}
                 className={`relative p-3 transition-all duration-300 cursor-pointer group ${
                   room.hasData 
-                    ? "hover:scale-110 hover:shadow-hover hover:z-10 border-accent/30" 
+                    ? "hover:scale-110 hover:shadow-hover hover:z-10" 
                     : "opacity-60 cursor-not-allowed"
                 }`}
+                style={
+                  useColorTheme
+                    ? { background: roomColor, border: '1px solid rgba(0,0,0,0.1)' }
+                    : { background: 'white', border: '1px solid #e5e7eb' }
+                }
                 onClick={() => room.hasData && navigate(`/chat/${room.id}`)}
               >
                 {/* Status Badge */}
@@ -129,21 +153,31 @@ const RoomGridVIP6 = () => {
                 <div className="space-y-2">
                   {/* Room Names */}
                   <div className="space-y-1">
-                    <p className="text-xs font-semibold leading-tight line-clamp-2" style={{
-                      background: 'var(--gradient-rainbow)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text'
-                    }}>
+                    <p 
+                      className="text-xs font-semibold leading-tight line-clamp-2"
+                      style={useColorTheme ? {
+                        background: 'var(--gradient-rainbow)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text'
+                      } : {
+                        color: 'black'
+                      }}
+                    >
                       {room.nameEn}
                     </p>
-                    <p className="text-[10px] leading-tight line-clamp-2" style={{
-                      background: 'var(--gradient-rainbow)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      opacity: 0.7
-                    }}>
+                    <p 
+                      className="text-[10px] leading-tight line-clamp-2"
+                      style={useColorTheme ? {
+                        background: 'var(--gradient-rainbow)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        opacity: 0.7
+                      } : {
+                        color: '#4b5563'
+                      }}
+                    >
                       {room.nameVi}
                     </p>
                   </div>
@@ -151,10 +185,17 @@ const RoomGridVIP6 = () => {
 
                 {/* Hover Effect */}
                 {room.hasData && (
-                  <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
+                  <div 
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"
+                    style={useColorTheme 
+                      ? { background: `linear-gradient(to bottom right, ${roomColor}20, ${roomColor}10)` }
+                      : { background: 'rgba(0, 0, 0, 0.05)' }
+                    }
+                  />
                 )}
               </Card>
-            ))}
+              );
+            })}
           </div>
 
           {/* Navigation */}
