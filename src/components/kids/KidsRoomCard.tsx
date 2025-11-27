@@ -11,9 +11,12 @@ interface KidsRoomCardProps {
   };
   index: number;
   onClick: () => void;
+  useColorTheme?: boolean;
 }
 
-export const KidsRoomCard = ({ room, index, onClick }: KidsRoomCardProps) => {
+const KIDS_COLORS = ['#B91C1C', '#1D4ED8', '#047857']; // Dark red, dark blue, dark green
+
+export const KidsRoomCard = ({ room, index, onClick, useColorTheme = true }: KidsRoomCardProps) => {
   const getIconComponent = (iconName: string | null) => {
     if (!iconName) return GraduationCap;
     const Icon = (LucideIcons as any)[iconName];
@@ -21,6 +24,7 @@ export const KidsRoomCard = ({ room, index, onClick }: KidsRoomCardProps) => {
   };
 
   const IconComponent = getIconComponent(room.icon);
+  const roomColor = KIDS_COLORS[index % KIDS_COLORS.length];
 
   return (
     <Card
@@ -58,26 +62,24 @@ export const KidsRoomCard = ({ room, index, onClick }: KidsRoomCardProps) => {
           </div>
         </div>
         
-        {/* Room Names with Rainbow Gradient */}
+        {/* Room Names */}
         <div className="space-y-1">
           <p 
             className="text-xs font-bold leading-tight line-clamp-2 text-center transition-all duration-300"
-            style={{
-              background: 'var(--gradient-rainbow)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
+            style={useColorTheme ? {
+              color: roomColor
+            } : {
+              color: '#000000'
             }}
           >
             {room.title_en}
           </p>
           <p 
-            className="text-[10px] leading-tight line-clamp-2 text-center transition-all duration-300"
-            style={{
-              background: 'var(--gradient-rainbow)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
+            className="text-[10px] font-semibold leading-tight line-clamp-2 text-center transition-all duration-300"
+            style={useColorTheme ? {
+              color: roomColor
+            } : {
+              color: '#000000'
             }}
           >
             {room.title_vi}

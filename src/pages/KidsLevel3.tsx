@@ -149,6 +149,7 @@ const KidsLevel3 = () => {
               room={room}
               index={index}
               onClick={() => navigate(`/kids-chat/${room.id}`)}
+              useColorTheme={useColorTheme}
             />
           ))}
         </div>
