@@ -1,0 +1,75 @@
+{
+  "id": "english_b1_b103",
+  "tier": "VIP2 / VIP2",
+  "domain": "English B1",
+  "title": {
+    "en": "B1-03 — Opinions, Feelings & Clear Expression",
+    "vi": "B1-03 — Ý Kiến, Cảm Xúc & Diễn Đạt Rõ Ràng"
+  },
+  "content": {
+    "en": "This room helps you express opinions and feelings in clear, natural English. You will practice useful sentence frames, polite opinion language, and simple emotional vocabulary. These skills help you speak with more confidence in conversations, meetings, and daily life.",
+    "vi": "Phòng này giúp bạn diễn đạt ý kiến và cảm xúc bằng tiếng Anh tự nhiên và rõ ràng. Bạn sẽ luyện các mẫu câu hữu ích, cách nói ý kiến lịch sự và vốn từ cảm xúc đơn giản. Những kỹ năng này giúp bạn tự tin hơn trong trò chuyện, công việc và đời sống."
+  },
+  "entries": [
+    {
+      "slug": "expressing-simple-opinions",
+      "keywords_en": ["opinions", "speaking"],
+      "keywords_vi": ["ý kiến", "nói"],
+      "copy": {
+        "en": "Use clear frames to give your opinion. I think this idea is good. I feel this plan is too fast. In my opinion, we should wait. These frames are simple and polite. Add one short reason. I think this idea is good because it saves time. Clear opinion plus one reason is perfect at B1 level.",
+        "vi": "Hãy dùng các mẫu câu rõ ràng để đưa ra ý kiến. I think this idea is good. I feel this plan is too fast. In my opinion, we should wait. Đây là cách nói đơn giản và lịch sự. Hãy thêm một lý do ngắn. I think this idea is good because it saves time. Một ý kiến và một lý do là đủ ở mức B1."
+      },
+      "audio": "b103_01_en.mp3"
+    },
+    {
+      "slug": "describing-feelings",
+      "keywords_en": ["feelings", "emotions"],
+      "keywords_vi": ["cảm xúc", "tâm trạng"],
+      "copy": {
+        "en": "Use simple feeling words to describe yourself. I feel happy today. I feel tired after work. I feel nervous about my exam. You can also describe other people. She looks worried. He seems excited. Feeling words help others understand your emotional state clearly.",
+        "vi": "Hãy dùng những từ cảm xúc đơn giản để mô tả bản thân. I feel happy today. I feel tired after work. I feel nervous about my exam. Bạn cũng có thể mô tả người khác. She looks worried. He seems excited. Từ cảm xúc giúp người nghe hiểu rõ trạng thái của bạn."
+      },
+      "audio": "b103_02_en.mp3"
+    },
+    {
+      "slug": "agreeing-and-disagreeing-politely",
+      "keywords_en": ["agreement", "disagreement"],
+      "keywords_vi": ["đồng ý", "không đồng ý"],
+      "copy": {
+        "en": "Learn polite ways to agree and disagree. I agree with you. That makes sense. I see your point. For disagreement, be gentle. I am not sure about that. I see your idea but I think we need more time. At B1 level, polite tone is more important than complex grammar.",
+        "vi": "Hãy học cách đồng ý và không đồng ý một cách lịch sự. I agree with you. That makes sense. I see your point. Khi không đồng ý, hãy nói nhẹ nhàng. I am not sure about that. I see your idea but I think we need more time. Ở mức B1, giọng điệu lịch sự quan trọng hơn ngữ pháp phức tạp."
+      },
+      "audio": "b103_03_en.mp3"
+    },
+    {
+      "slug": "giving-simple-reasons",
+      "keywords_en": ["reasons", "explanations"],
+      "keywords_vi": ["lý do", "giải thích"],
+      "copy": {
+        "en": "Use easy structures to give reasons. I want to learn English because it helps my job. I like morning coffee because it gives me energy. Because is enough for B1. You do not need complicated grammar. Clear and simple reasons make your speech stronger.",
+        "vi": "Hãy dùng cấu trúc đơn giản để đưa ra lý do. I want to learn English because it helps my job. I like morning coffee because it gives me energy. Because là đủ cho mức B1. Bạn không cần ngữ pháp phức tạp. Lý do rõ ràng và đơn giản giúp cách nói của bạn mạnh mẽ hơn."
+      },
+      "audio": "b103_04_en.mp3"
+    },
+    {
+      "slug": "expressing-likes-and-dislikes",
+      "keywords_en": ["likes", "dislikes"],
+      "keywords_vi": ["thích", "không thích"],
+      "copy": {
+        "en": "Talk about what you like and do not like. I like quiet mornings. I like watching movies. I do not like crowded places. Add a short reason to make it natural. I do not like crowded places because they make me tired. Simple likes and dislikes build strong communication skills.",
+        "vi": "Hãy nói về điều bạn thích và không thích. I like quiet mornings. I like watching movies. I do not like crowded places. Hãy thêm lý do ngắn để tự nhiên hơn. I do not like crowded places because they make me tired. Những câu thích và không thích giúp bạn giao tiếp tốt hơn."
+      },
+      "audio": "b103_05_en.mp3"
+    },
+    {
+      "slug": "daily-opinion-practice",
+      "keywords_en": ["practice", "opinions"],
+      "keywords_vi": ["luyện tập", "ý kiến"],
+      "copy": {
+        "en": "Practice giving one opinion every day. Choose a simple topic. Food. Weather. Work. Study. Say one opinion and one reason. I think rainy days are relaxing because the sound is soft. Daily practice helps your English become natural and confident.",
+        "vi": "Hãy luyện nói một ý kiến mỗi ngày. Chọn một chủ đề đơn giản. Đồ ăn. Thời tiết. Công việc. Học tập. Nói một ý kiến và một lý do. I think rainy days are relaxing because the sound is soft. Luyện tập hàng ngày giúp tiếng Anh của bạn tự nhiên và tự tin hơn."
+      },
+      "audio": "b103_06_en.mp3"
+    }
+  ]
+}
