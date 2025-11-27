@@ -27,7 +27,21 @@ const loadFromDatabase = async (dbRoomId: string) => {
   
   const hasEntries = Array.isArray(dbRoom.entries) && dbRoom.entries.length > 0;
   
-  if (!hasEntries) return null;
+  // If no entries, check for room-level keywords
+  if (!hasEntries) {
+    const hasRoomKeywords = Array.isArray(dbRoom.keywords) && dbRoom.keywords.length > 0;
+    if (!hasRoomKeywords) return null;
+    
+    // Use room-level keywords when no entries exist
+    return {
+      merged: [],
+      keywordMenu: {
+        en: dbRoom.keywords || [],
+        vi: dbRoom.keywords || []
+      },
+      audioBasePath: '/audio/'
+    };
+  }
   
   // Single-pass processing - extract keywords and transform entries at once
   const { keywordMenu, merged } = processEntriesOptimized(dbRoom.entries);
