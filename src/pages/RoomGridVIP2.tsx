@@ -129,21 +129,10 @@ const RoomGridVIP2 = () => {
               <div className="space-y-2">
                 {/* Room Names */}
                 <div className="space-y-1">
-                  <p className="text-xs font-semibold leading-tight line-clamp-2" style={{
-                    background: 'var(--gradient-rainbow)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text'
-                  }}>
+                  <p className="text-xs font-bold leading-tight line-clamp-2 text-gray-900">
                     {room.nameEn}
                   </p>
-                  <p className="text-[10px] leading-tight line-clamp-2" style={{
-                    background: 'var(--gradient-rainbow)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    opacity: 0.7
-                  }}>
+                  <p className="text-[10px] leading-tight line-clamp-2 text-gray-700">
                     {room.nameVi}
                   </p>
                 </div>
