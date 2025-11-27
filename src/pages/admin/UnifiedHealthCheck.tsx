@@ -615,25 +615,18 @@ export default function UnifiedHealthCheck() {
     setProgress(null);
     
     try {
-      console.log('📊 Querying rooms from database...');
-      let query = supabase
-        .from("rooms")
-        .select("*")
-        .neq("tier", "kids");
-
-      if (selectedTier && !selectedTier.startsWith("kidslevel")) {
-        query = query.ilike("tier", `%${selectedTier}%`);
-        console.log('🔎 Filtering by tier:', selectedTier);
-      }
-
-      const { data: rooms, error: roomsError } = await query;
+      console.log('[Deep Scan] Starting deep scan...');
+      const { data: rooms, error } = await supabase
+        .from('rooms')
+        .select('*')
+        .ilike('tier', `%${selectedTier}%`);
       
-      if (roomsError) {
-        console.error('❌ Database query error:', roomsError);
-        throw roomsError;
+      if (error) {
+        console.error('[Deep Scan] Database query error:', error);
+        throw error;
       }
       
-      console.log('✅ Query successful. Found rooms:', rooms?.length || 0);
+      console.log(`[Deep Scan] Found ${rooms?.length || 0} rooms for tier ${selectedTier}`);
       
       if (!rooms || rooms.length === 0) {
         console.warn('⚠️ No rooms found for tier:', selectedTier);
@@ -1762,17 +1755,20 @@ export default function UnifiedHealthCheck() {
           const controller = new AbortController();
           const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
           
+          console.log(`[Health Check] Trying: ${url}`);
           const response = await fetch(url, { signal: controller.signal });
           clearTimeout(timeoutId);
           
+          console.log(`[Health Check] ${url} → Status: ${response.status}`);
           if (!response.ok) continue;
 
           const text = await response.text();
 
           // Check if response is HTML instead of JSON (404 page scenario)
           if (text.trim().startsWith("<!") || text.trim().startsWith("<html")) {
+            console.warn(`[Health Check] ${url} returned HTML (404 page)`);
             htmlDetected = true;
-            break;
+            continue; // Changed from break to continue - try other candidates
           }
 
           try {
@@ -1780,8 +1776,10 @@ export default function UnifiedHealthCheck() {
             jsonFound = true;
             resolvedPath = path;
             resolvedManifestKey = key !== "fallback" ? key : undefined;
+            console.log(`[Health Check] ✅ Found valid JSON at: ${url}`);
             break;
           } catch (parseError: any) {
+            console.error(`[Health Check] JSON parse error for ${url}:`, parseError.message);
             roomIssues.push({
               roomId: room.id,
               roomTitle: room.title_en,
@@ -1792,14 +1790,20 @@ export default function UnifiedHealthCheck() {
               resolvedPath: path,
               manifestKey: key !== "fallback" ? key : undefined,
             });
-            break;
+            continue; // Changed from break - try other candidates
           }
         } catch (error: any) {
           // Handle timeout and other fetch errors silently, continue to next candidate
           if (error.name === 'AbortError') {
-            console.warn(`Timeout fetching ${url}`);
+            console.warn(`[Health Check] Timeout fetching ${url}`);
+          } else {
+            console.warn(`[Health Check] Fetch error for ${url}:`, error.message);
           }
         }
+      }
+      
+      if (!jsonFound) {
+        console.error(`[Health Check] ❌ No valid JSON found for room ${room.id} (${room.title_en}). Tried ${fileCandidates.length} paths.`);
       }
 
       if (!jsonFound && roomIssues.length === 0) {
@@ -2169,6 +2173,22 @@ export default function UnifiedHealthCheck() {
             ) : (
               "Quick Scan"
             )}
+          </Button>
+          <Button
+            onClick={() => {
+              setHealth(null);
+              setDeepScanResults([]);
+              setPhantomRooms([]);
+              toast({
+                title: "Cleared",
+                description: "Scan results cleared. Run a new scan.",
+              });
+            }}
+            disabled={loading || deepScanning}
+            variant="outline"
+          >
+            <RefreshCw className="h-4 w-4 mr-2" />
+            Clear & Refresh
           </Button>
           <Button
             onClick={syncRoomsFromGitHub}
