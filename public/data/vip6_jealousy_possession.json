@@ -1,0 +1,80 @@
+{
+  "id": "vip6_jealousy_possession",
+  "tier": "VIP6",
+  "title": {
+    "en": "Jealousy & Possessiveness",
+    "vi": "Ghen Tuông & Chiếm Hữu"
+  },
+  "content": {
+    "en": "This room helps you understand jealousy and possessiveness as emotional signals rather than personal failures. When left unmanaged, these patterns distort love, fuel insecurity, and damage connection. Through practical inner work, emotional regulation, and relational boundaries, you learn to transform jealousy into clarity, confidence, and honest communication. Each entry offers grounded steps to calm the body, observe stories, and rebuild trust from the inside out.",
+    "vi": "Phòng này giúp bạn hiểu ghen tuông và chiếm hữu như những tín hiệu cảm xúc chứ không phải thất bại cá nhân. Khi không được quản lý, các mô thức này bóp méo tình yêu, nuôi dưỡng bất an và làm tổn thương kết nối. Qua thực hành nội tâm, điều hòa cảm xúc và ranh giới lành mạnh, bạn học cách chuyển hóa ghen tuông thành sự rõ ràng, tự tin và giao tiếp trung thực."
+  },
+  "entries": [
+    {
+      "slug": "identify_trigger_patterns",
+      "keywords_en": ["triggers", "jealousy", "patterns"],
+      "keywords_vi": ["tác nhân", "ghen tuông", "mô thức"],
+      "copy": {
+        "en": "Jealousy often spikes before you realize it, because the body reacts faster than thought. Start by mapping your personal triggers: ignored messages, partner’s social interactions, comparisons, fear of being replaced. Naming these patterns gives you leverage. When you notice an early spike—tight chest, faster breathing, urge to check—pause. Tell yourself: “This is a pattern, not proof.” Write down what happened, what you felt, and what story appeared. Over time, this simple awareness weakens the automatic loop and builds emotional control.",
+        "vi": "Ghen tuông thường bùng lên trước khi bạn kịp nhận ra, vì cơ thể phản ứng nhanh hơn suy nghĩ. Hãy xác định các tác nhân riêng: tin nhắn bị bỏ qua, tương tác xã hội của người yêu, so sánh, nỗi sợ bị thay thế. Gọi tên mô thức giúp bạn có điểm tựa. Khi nhận thấy dấu hiệu sớm—ngực căng, thở nhanh, muốn kiểm tra—hãy tạm dừng và nhắc: “Đây là mô thức, không phải bằng chứng.” Ghi lại chuyện xảy ra, cảm xúc và câu chuyện xuất hiện. Lâu dần, bạn bớt phản xạ tự động và kiểm soát tốt hơn."
+      },
+      "tags": ["triggers", "jealousy"],
+      "audio": "jealousy_possession_1_en.mp3"
+    },
+    {
+      "slug": "soothe_the_body_first",
+      "keywords_en": ["regulation", "calming", "body"],
+      "keywords_vi": ["điều hòa", "xoa dịu", "cơ thể"],
+      "copy": {
+        "en": "Possessiveness is amplified when your nervous system is in threat mode. Before talking, thinking, or confronting, regulate. Use a simple 4–4–6 breath: inhale 4 seconds, hold 4, exhale 6. Drop your shoulders and relax your jaw. Remind your body it is safe. When the physiological alarm softens, the mind stops generating worst-case stories. You gain space to choose your response instead of reacting. Practicing this consistently reduces intensity over weeks and builds emotional safety within yourself.",
+        "vi": "Tính chiếm hữu tăng mạnh khi hệ thần kinh rơi vào trạng thái đe dọa. Trước khi nghĩ hay nói, hãy điều hòa. Thực hiện nhịp thở 4–4–6: hít 4 giây, giữ 4, thở 6. Hạ vai, thả lỏng hàm. Nhắc cơ thể rằng bạn an toàn. Khi báo động sinh lý dịu xuống, tâm trí ngừng tạo ra các kịch bản tồi tệ. Bạn có không gian để lựa chọn thay vì phản ứng. Luyện đều đặn giúp cường độ giảm dần và xây dựng sự an toàn cảm xúc bên trong."
+      },
+      "tags": ["regulation", "body"],
+      "audio": "jealousy_possession_2_en.mp3"
+    },
+    {
+      "slug": "separate_facts_from_fears",
+      "keywords_en": ["cognition", "clarity", "fear"],
+      "keywords_vi": ["nhận thức", "rõ ràng", "nỗi sợ"],
+      "copy": {
+        "en": "Jealousy grows when fears disguise themselves as facts. When a trigger hits, list two columns: \"What I know” and “What I’m imagining.” Most of the suffering sits in the second column. This exercise interrupts catastrophizing and anchors you to reality. Say the fear out loud: “I’m afraid I’m not enough” or “I’m scared of losing them.” Naming the core fear reduces its power. From there, ask: “What is the most balanced explanation?” This shift turns emotional fog into grounded understanding.",
+        "vi": "Ghen tuông lớn dần khi nỗi sợ giả dạng thành sự thật. Khi bị kích hoạt, hãy chia hai cột: “Tôi biết” và “Tôi tưởng tượng.” Phần lớn đau khổ nằm ở cột thứ hai. Bài tập này chặn dòng suy diễn và kéo bạn về thực tại. Hãy nói rõ nỗi sợ: “Tôi sợ mình không đủ” hoặc “Tôi sợ mất họ.” Gọi tên giúp giảm sức mạnh của nó. Từ đó hỏi: “Giải thích cân bằng nhất là gì?” Sự dịch chuyển này biến sương mù cảm xúc thành hiểu biết vững vàng."
+      },
+      "tags": ["cognition", "fear"],
+      "audio": "jealousy_possession_3_en.mp3"
+    },
+    {
+      "slug": "communicate_boundaries_without_control",
+      "keywords_en": ["boundaries", "communication", "respect"],
+      "keywords_vi": ["ranh giới", "giao tiếp", "tôn trọng"],
+      "copy": {
+        "en": "Healthy love requires boundaries, not monitoring. Instead of demanding access, checking, or controlling, express needs directly: reassurance, consistency, clarity, quality time. Use calm language: “When X happens, I feel Y, and I need Z to feel secure.” This opens cooperation instead of defensiveness. Boundaries protect connection; control destroys it. With practice, you learn to express vulnerability without blaming, and your partner understands how to support you without feeling trapped.",
+        "vi": "Tình yêu lành mạnh cần ranh giới, không cần kiểm soát. Thay vì đòi quyền truy cập, kiểm tra hay ép buộc, hãy diễn đạt nhu cầu: sự trấn an, nhất quán, rõ ràng, thời gian chất lượng. Dùng ngôn ngữ bình tĩnh: “Khi X xảy ra, tôi cảm thấy Y, và tôi cần Z để cảm thấy an tâm.” Cách này mở ra hợp tác thay vì phòng thủ. Ranh giới bảo vệ kết nối; kiểm soát phá hủy nó. Luyện tập sẽ giúp bạn bộc lộ sự tổn thương mà không đổ lỗi, và người yêu hiểu cách hỗ trợ bạn mà không bị gò ép."
+      },
+      "tags": ["boundaries", "communication"],
+      "audio": "jealousy_possession_4_en.mp3"
+    },
+    {
+      "slug": "rebuild_self_worth_core",
+      "keywords_en": ["self-worth", "confidence", "healing"],
+      "keywords_vi": ["giá trị bản thân", "tự tin", "hàn gắn"],
+      "copy": {
+        "en": "Possessiveness often masks a deeper wound: the fear you are not worthy enough to be chosen. Strengthen your inner foundation through daily micro-habits: keep one promise to yourself each day, practice small acts of independence, and appreciate traits you bring to a relationship. When your self-worth rises, jealousy loses fuel. You no longer chase reassurance to feel whole—you bring wholeness into the relationship. This shift creates stability that no external validation can match.",
+        "vi": "Tính chiếm hữu thường che giấu vết thương sâu hơn: nỗi sợ mình không đủ giá trị để được chọn. Hãy củng cố nền tảng nội tâm bằng các thói quen nhỏ hằng ngày: giữ một lời hứa với chính mình, làm vài việc thể hiện sự độc lập, và trân trọng những phẩm chất bạn mang vào mối quan hệ. Khi giá trị bản thân tăng, ghen tuông mất nguồn năng lượng. Bạn không còn chạy theo sự trấn an để cảm thấy trọn vẹn—bạn mang sự trọn vẹn vào tình yêu. Sự dịch chuyển này tạo ra ổn định không cần xác nhận từ bên ngoài."
+      },
+      "tags": ["self-worth", "healing"],
+      "audio": "jealousy_possession_5_en.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all"],
+      "keywords_vi": ["tất cả"],
+      "copy": {
+        "en": "This entry gathers every teaching from the Jealousy & Possessiveness room: identifying triggers, calming the body, separating facts from fears, expressing boundaries without control, and rebuilding self-worth. Practice each tool steadily. Over time, the emotional storm softens, clarity increases, and relationships become safer and more honest.",
+        "vi": "Mục này gom toàn bộ nội dung của phòng Ghen Tuông & Chiếm Hữu: nhận diện tác nhân, xoa dịu cơ thể, phân biệt sự thật và nỗi sợ, giao tiếp ranh giới mà không kiểm soát, và xây dựng lại giá trị bản thân. Hãy luyện từng công cụ đều đặn. Theo thời gian, cơn bão cảm xúc dịu xuống, sự rõ ràng tăng lên và mối quan hệ trở nên an toàn, chân thành hơn."
+      },
+      "tags": ["summary"],
+      "audio": "jealousy_possession_all_vip6.mp3"
+    }
+  ]
+}
