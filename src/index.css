@@ -44,19 +44,57 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
     
-    /* Mercy Blade Rainbow Gradients */
-    /* Mercy Blade Brand Colors */
-    --mercy-pink: 350 100% 81%;      /* #FF99C8 */
-    --mercy-orange: 43 100% 72%;     /* #FFD670 */
-    --mercy-yellow: 68 100% 71%;     /* #E9FF70 */
-    --mercy-green: 157 78% 79%;      /* #A9F0D1 */
-    --mercy-blue: 203 86% 77%;       /* #9AD0F5 */
-    --mercy-purple: 264 100% 83%;    /* #D0A7FF */
+    /* === Mercy Blade Rainbow Theme === */
+    /* DESIGN RULE: Bold, high-saturation, high-contrast rainbow identity */
+    /* Gender-neutral palette with deep saturation, less pink softness */
+    /* Applied to ALL rooms and ALL tiers EXCEPT VIP9 */
+    --rainbow-red: 0 90% 55%;
+    --rainbow-red-light: 0 85% 65%;
+    --rainbow-orange: 30 95% 50%;
+    --rainbow-orange-light: 30 90% 60%;
+    --rainbow-yellow: 48 100% 50%;
+    --rainbow-yellow-light: 48 95% 60%;
+    --rainbow-green: 145 80% 45%;
+    --rainbow-green-light: 145 75% 55%;
+    --rainbow-cyan: 190 85% 45%;
+    --rainbow-cyan-light: 190 80% 55%;
+    --rainbow-blue: 220 90% 55%;
+    --rainbow-blue-light: 220 85% 65%;
+    --rainbow-purple: 270 85% 55%;
+    --rainbow-purple-light: 270 80% 65%;
+    --rainbow-magenta: 310 85% 50%;
+    --rainbow-magenta-light: 310 80% 60%;
     
-    --gradient-hero: linear-gradient(135deg, hsl(340 82% 52%), hsl(291 64% 42%), hsl(231 48% 48%), hsl(207 90% 54%), hsl(184 91% 41%));
+    /* Legacy Mercy Brand Colors (backwards compatibility) */
+    --mercy-pink: 310 85% 50%;       /* Replaced with magenta */
+    --mercy-orange: 30 95% 50%;
+    --mercy-yellow: 48 100% 50%;
+    --mercy-green: 145 80% 45%;
+    --mercy-blue: 220 90% 55%;
+    --mercy-purple: 270 85% 55%;
+    
+    /* Gradients - bold and vibrant */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--rainbow-red)), hsl(var(--rainbow-purple)), hsl(var(--rainbow-blue)), hsl(var(--rainbow-cyan)));
     --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(240 5% 96%));
-    --gradient-rainbow: linear-gradient(90deg, hsl(340 82% 52%), hsl(291 64% 42%), hsl(231 48% 48%), hsl(207 90% 54%), hsl(184 91% 41%), hsl(174 62% 47%), hsl(122 39% 49%), hsl(88 50% 53%), hsl(45 100% 51%), hsl(36 100% 50%));
-    --gradient-mercy-rainbow: linear-gradient(90deg, hsl(350 100% 81%), hsl(43 100% 72%), hsl(68 100% 71%), hsl(157 78% 79%), hsl(203 86% 77%), hsl(264 100% 83%));
+    --gradient-rainbow: linear-gradient(90deg, 
+      hsl(var(--rainbow-red)) 0%, 
+      hsl(var(--rainbow-orange)) 14.28%, 
+      hsl(var(--rainbow-yellow)) 28.57%, 
+      hsl(var(--rainbow-green)) 42.86%, 
+      hsl(var(--rainbow-cyan)) 57.14%,
+      hsl(var(--rainbow-blue)) 71.43%, 
+      hsl(var(--rainbow-purple)) 85.71%,
+      hsl(var(--rainbow-magenta)) 100%
+    );
+    --gradient-mercy-rainbow: linear-gradient(90deg, 
+      hsl(var(--rainbow-red)) 0%, 
+      hsl(var(--rainbow-orange)) 16.66%, 
+      hsl(var(--rainbow-yellow)) 33.33%, 
+      hsl(var(--rainbow-green)) 50%, 
+      hsl(var(--rainbow-blue)) 66.66%, 
+      hsl(var(--rainbow-purple)) 83.33%,
+      hsl(var(--rainbow-magenta)) 100%
+    );
     --shadow-soft: 0 4px 20px -4px hsl(340 82% 52% / 0.25);
     --shadow-hover: 0 8px 30px -4px hsl(340 82% 52% / 0.35);
     --shadow-rainbow: 0 4px 30px -4px hsl(340 82% 52% / 0.2), 0 4px 30px -4px hsl(207 90% 54% / 0.2);

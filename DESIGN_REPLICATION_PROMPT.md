@@ -2,6 +2,29 @@
 
 ## Color System (HSL Format Only)
 
+### Mercy Blade Rainbow Identity (DESIGN RULE)
+
+**CRITICAL: Bold, high-saturation, high-contrast rainbow palette**
+
+Applied to ALL rooms and ALL tiers EXCEPT VIP9:
+- **Bold rainbow colors** with deep saturation (80-100%)
+- **High contrast** for maximum visual impact
+- **Gender-neutral palette** - replaces pastel/pink-heavy aesthetic
+- Maintains rainbow spectrum identity while increasing energy and vibrancy
+- VIP9 tier retains its separate professional dark aesthetic (unchanged)
+
+**Rainbow Color Variables:**
+```css
+--rainbow-red: 0 90% 55%
+--rainbow-orange: 30 95% 50%
+--rainbow-yellow: 48 100% 50%
+--rainbow-green: 145 80% 45%
+--rainbow-cyan: 190 85% 45%
+--rainbow-blue: 220 90% 55%
+--rainbow-purple: 270 85% 55%
+--rainbow-magenta: 310 85% 50%
+```
+
 ### Base Colors
 ```css
 --background: 220 15% 6%
