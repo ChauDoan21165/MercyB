@@ -15,130 +15,130 @@
 export const ROOM_COLOR_THEMES = {
   // ═══════════════════════════════════════════════════════════
   // MENTAL HEALTH & EMOTIONAL WELL-BEING
-  // Blues promote calm, reduce stress, aid focus
+  // Bold Blues - sharp, strong, blade-like
   // ═══════════════════════════════════════════════════════════
   
-  mental_health: '#B8D4F1', // Soft Sky Blue - General mental wellness
-  anxiety: '#B8D4F1', // Soft Sky Blue - Promotes calm, reduces stress
-  depression: '#C9E4FF', // Light Azure - Uplifting without overwhelming
-  adhd: '#B3D1ED', // Gentle Cerulean - Aids focus, reduces overstimulation
-  stress: '#B5D6F0', // Pale Periwinkle - Tranquility and peace
-  burnout: '#A8C9E8', // Misty Blue - Restorative, encourages rest
-  ocd: '#C1D8F4', // Serenity Blue - Order and calm
-  ptsd: '#B0D0EE', // Powder Blue - Safety and emotional distance
-  bipolar: '#C5DCEF', // Cloud Blue - Stability and balance
-  shadow_work: '#D0DDEE', // Moonstone - Introspection, gentle exploration
-  mens_mental_health: '#BAD5F0', // Steel Blue Tint - Approachable vulnerability
-  mindfulness: '#BDD9F2', // Periwinkle - Present moment awareness
+  mental_health: '#4A90E2', // Bold Blue - General mental wellness
+  anxiety: '#4A90E2', // Bold Blue - Promotes calm, reduces stress
+  depression: '#5CA3FF', // Bright Azure - Uplifting without overwhelming
+  adhd: '#3B7FCC', // Deep Cerulean - Aids focus, reduces overstimulation
+  stress: '#5599DD', // Strong Periwinkle - Tranquility and peace
+  burnout: '#3E7FC2', // Bold Blue - Restorative, encourages rest
+  ocd: '#6BA5E7', // Bright Blue - Order and calm
+  ptsd: '#4D8FD8', // Strong Powder Blue - Safety and emotional distance
+  bipolar: '#709DD6', // Steel Blue - Stability and balance
+  shadow_work: '#8AA4C8', // Deep Moonstone - Introspection, exploration
+  mens_mental_health: '#5898DE', // Bold Steel Blue - Approachable vulnerability
+  mindfulness: '#679DDF', // Strong Periwinkle - Present moment awareness
   
   // ═══════════════════════════════════════════════════════════
   // RELATIONSHIPS & CONNECTION
-  // Pinks evoke warmth, romance, emotional intimacy
+  // Bold Pinks/Magentas - sharp warmth, strong intimacy
   // ═══════════════════════════════════════════════════════════
   
-  relationships: '#FFD4E5', // Soft Pink - General relationship warmth
-  soulmate: '#FFE0EC', // Blush Pink - Romance and tenderness
-  loneliness: '#FDD5E3', // Rose Quartz - Comfort and connection
-  social_anxiety: '#FFDCE8', // Cotton Candy - Gentle social warmth
-  relational_intelligence: '#FFD9E6', // Petal Pink - Empathy and understanding
+  relationships: '#FF66A3', // Bold Pink - General relationship warmth
+  soulmate: '#FF7AB8', // Strong Blush - Romance and tenderness
+  loneliness: '#FA5E8F', // Deep Rose - Comfort and connection
+  social_anxiety: '#FF6EAD', // Bold Cotton Candy - Social warmth
+  relational_intelligence: '#FF70A9', // Strong Petal Pink - Empathy and understanding
   
   // ═══════════════════════════════════════════════════════════
   // HEALTH & VITALITY
-  // Greens represent healing, growth, natural wellness
+  // Bold Greens - sharp healing, strong growth
   // ═══════════════════════════════════════════════════════════
   
-  health: '#C8E6C9', // Pale Green - General health and wellness
-  nutrition: '#D4EED5', // Mint Cream - Fresh, natural health
-  physical_fitness: '#C0E4C1', // Spring Green - Energy and renewal
-  sleep: '#B8E0B9', // Sage Mint - Rest and rejuvenation
-  weight_loss: '#CFE9D0', // Celadon - Balance and patience
-  obesity: '#C4E6C5', // Soft Jade - Body acceptance
-  eating_disorder: '#D0EBCD', // Tea Green - Gentle healing
-  trigger_point: '#BCE1BD', // Mint - Physical release
-  mental_sharpness: '#C5E7C6', // Pistachio - Cognitive vitality
+  health: '#5CB85C', // Bold Green - General health and wellness
+  nutrition: '#66CC66', // Strong Mint - Fresh, natural health
+  physical_fitness: '#4CAF4C', // Deep Spring - Energy and renewal
+  sleep: '#52B652', // Strong Sage - Rest and rejuvenation
+  weight_loss: '#6FCC6F', // Bold Celadon - Balance and patience
+  obesity: '#58BD58', // Deep Jade - Body acceptance
+  eating_disorder: '#75D175', // Strong Tea Green - Healing
+  trigger_point: '#49A849', // Bold Mint - Physical release
+  mental_sharpness: '#5EC45E', // Strong Pistachio - Cognitive vitality
   
   // ═══════════════════════════════════════════════════════════
   // FINANCE & PROSPERITY
-  // Warm yellows suggest abundance, optimism, clarity
+  // Bold yellows/golds - sharp abundance, strong prosperity
   // ═══════════════════════════════════════════════════════════
   
-  finance: '#FFF4CC', // Cream Yellow - General financial wellness
-  finance_calm: '#FFEFC2', // Soft Gold - Calm abundance
-  wealth_wisdom: '#FFF5D1', // Vanilla - Long-term prosperity
-  investing: '#FFF2C8', // Buttercream - Growth and calculated risk
-  money_basics: '#FFF6D4', // Champagne - Financial clarity
-  growing_money: '#FFF3CC', // Pale Yellow - Gradual wealth building
-  legacy_peace: '#FFF7D7', // Eggshell - Generational wealth
+  finance: '#FFD700', // Bold Gold - General financial wellness
+  finance_calm: '#FFC928', // Strong Gold - Calm abundance
+  wealth_wisdom: '#FFD63D', // Bright Vanilla - Long-term prosperity
+  investing: '#FFCC1A', // Deep Buttercream - Growth and calculated risk
+  money_basics: '#FFD84C', // Bold Champagne - Financial clarity
+  growing_money: '#FFCE2B', // Strong Yellow - Gradual wealth building
+  legacy_peace: '#FFD957', // Bright Eggshell - Generational wealth
   
   // ═══════════════════════════════════════════════════════════
   // CAREER & PERSONAL GROWTH
-  // Peach/Orange tones inspire motivation, creativity, warmth
+  // Bold Orange/Coral - sharp motivation, strong creativity
   // ═══════════════════════════════════════════════════════════
   
-  career: '#FFE0CC', // Peach Cream - Professional motivation
-  courage_to_begin: '#FFD7BA', // Apricot - Gentle boldness
-  discover_self: '#FFE5D4', // Seashell - Self-exploration
-  explore_world: '#FFD9C1', // Light Peach - Openness to experiences
-  build_skills: '#FFDDC7', // Champagne Pink - Craftsmanship
-  resilience: '#FFE2CF', // Linen - Endurance and flexibility
-  career_community: '#FFDBC4', // Warm Bisque - Professional connection
-  launch_career: '#FFE4D2', // Bisque - New professional beginnings
-  grow_wealth: '#FFD5B8', // Pale Apricot - Career prosperity
+  career: '#FF9966', // Bold Peach - Professional motivation
+  courage_to_begin: '#FF8855', // Strong Apricot - Boldness
+  discover_self: '#FFA078', // Bright Seashell - Self-exploration
+  explore_world: '#FF8F66', // Deep Peach - Openness to experiences
+  build_skills: '#FF9470', // Bold Champagne Pink - Craftsmanship
+  resilience: '#FFA280', // Strong Linen - Endurance and flexibility
+  career_community: '#FF8D5F', // Deep Bisque - Professional connection
+  launch_career: '#FFA485', // Bright Bisque - New professional beginnings
+  grow_wealth: '#FF8A52', // Bold Apricot - Career prosperity
   
   // ═══════════════════════════════════════════════════════════
   // SPIRITUALITY & MEANING
-  // Lavenders inspire wisdom, transcendence, contemplation
+  // Bold Purples - sharp wisdom, strong transcendence
   // ═══════════════════════════════════════════════════════════
   
-  spirituality: '#E8D4F5', // Soft Lavender - Spiritual connection
-  meaning_of_life: '#EDD9F7', // Mauve - Existential inquiry
-  finding_peace: '#E5D0F3', // Lavender Mist - Spiritual calm
-  god_with_us: '#EAD6F6', // Thistle - Divine presence
-  philosophy: '#E7D3F4', // Wisteria - Philosophical contemplation
-  stoicism: '#EBDAF7', // Pale Lilac - Virtue and rational calm
+  spirituality: '#9966CC', // Bold Lavender - Spiritual connection
+  meaning_of_life: '#AA77DD', // Strong Mauve - Existential inquiry
+  finding_peace: '#8855BB', // Deep Lavender - Spiritual calm
+  god_with_us: '#A370CE', // Bright Thistle - Divine presence
+  philosophy: '#9B63C7', // Strong Wisteria - Philosophical contemplation
+  stoicism: '#AE7FD9', // Bold Lilac - Virtue and rational calm
   
   // ═══════════════════════════════════════════════════════════
   // SEXUALITY & INTIMACY
-  // Warm pinks/peach suggest sensuality, connection, openness
+  // Bold pinks/corals - sharp sensuality, strong connection
   // ═══════════════════════════════════════════════════════════
   
-  sexuality: '#FFD9E8', // Pink Lace - General sexuality topics
-  sexuality_curiosity: '#FFE0ED', // Pink Lace - Exploration and openness
-  sacred_body: '#FFD6E4', // Cherry Blossom - Body reverence
-  erotic_wisdom: '#FFDCE9', // Ballet Slipper - Mature intimacy
-  diverse_desires: '#FFD8E6', // Fairy Tale - Sexual spectrum acceptance
+  sexuality: '#FF88B8', // Bold Pink Lace - General sexuality topics
+  sexuality_curiosity: '#FF99C3', // Strong Pink - Exploration and openness
+  sacred_body: '#FF7AAE', // Deep Cherry Blossom - Body reverence
+  erotic_wisdom: '#FF8FBE', // Bright Ballet - Mature intimacy
+  diverse_desires: '#FF85B5', // Bold Fairy Tale - Sexual spectrum acceptance
   
   // ═══════════════════════════════════════════════════════════
   // PRODUCTIVITY & STRATEGY
-  // Aqua/Teal promote clarity, focus, tactical thinking
+  // Bold Aqua/Cyan - sharp clarity, strong focus
   // ═══════════════════════════════════════════════════════════
   
-  productivity: '#B8E6E6', // Powder Aqua - Mental efficiency
-  focus: '#C4EAEA', // Aqua Haze - Concentration
-  strategy: '#C0E8E8', // Morning Mist - Clear tactical planning
-  confidence: '#BADFDF', // Soft Turquoise - Self-assurance (kept for compatibility)
-  confidence_building: '#FFE0D4', // Pale Peach - Warm self-assurance
+  productivity: '#33CCCC', // Bold Aqua - Mental efficiency
+  focus: '#3DD6D6', // Strong Aqua - Concentration
+  strategy: '#2EC8C8', // Deep Cyan - Clear tactical planning
+  confidence: '#27BFBF', // Bold Turquoise - Self-assurance
+  confidence_building: '#FF9977', // Strong Peach - Warm self-assurance
   
   // ═══════════════════════════════════════════════════════════
   // RECOVERY & TRANSFORMATION
-  // Sage greens suggest healing through growth and renewal
+  // Bold sage greens - sharp healing, strong renewal
   // ═══════════════════════════════════════════════════════════
   
-  addiction: '#D5E8D5', // Moss Green - Healing and renewal
-  grief: '#D9EBDB', // Pale Jade - Gentle sadness, growth through loss
+  addiction: '#66BB66', // Bold Moss - Healing and renewal
+  grief: '#70C870', // Strong Jade - Sadness, growth through loss
   
   // ═══════════════════════════════════════════════════════════
   // SELF-DEVELOPMENT
-  // Warm coral suggests self-compassion and inner warmth
+  // Bold coral - sharp self-compassion, strong warmth
   // ═══════════════════════════════════════════════════════════
   
-  self_love: '#FFE5D9', // Coral Cream - Self-compassion and acceptance
+  self_love: '#FF9D7A', // Bold Coral - Self-compassion and acceptance
   
   // ═══════════════════════════════════════════════════════════
   // DEFAULT FALLBACK
   // ═══════════════════════════════════════════════════════════
   
-  default: '#E8F0F2' // Pale Blue Grey - Neutral calm
+  default: '#5EAABB' // Bold Blue Grey - Neutral strong
 };
 
 /**

@@ -155,7 +155,7 @@ const RoomGridVIP2 = () => {
                   <p 
                     className="text-xs font-bold leading-tight line-clamp-2"
                     style={useColorTheme 
-                      ? { color: `color-mix(in srgb, ${roomColor} 85%, black)` }
+                      ? { color: `color-mix(in srgb, ${roomColor} 20%, black)` }
                       : { color: 'black' }
                     }
                   >
@@ -164,7 +164,7 @@ const RoomGridVIP2 = () => {
                   <p 
                     className="text-[10px] leading-tight line-clamp-2"
                     style={useColorTheme 
-                      ? { color: `color-mix(in srgb, ${roomColor} 70%, black)` }
+                      ? { color: `color-mix(in srgb, ${roomColor} 15%, black)` }
                       : { color: '#4b5563' }
                     }
                   >
