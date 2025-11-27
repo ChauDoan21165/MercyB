@@ -3,13 +3,14 @@ import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader"
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, Lock, BookOpen, GraduationCap, Trophy, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { ALL_ROOMS } from "@/lib/roomData";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
 import { highlightShortTitle } from "@/lib/wordColorHighlighter";
 import { useColorMode } from '@/hooks/useColorMode';
 import { Button } from "@/components/ui/button";
 import { Palette } from "lucide-react";
+import { useQuery } from '@tanstack/react-query';
+import { supabase } from '@/integrations/supabase/client';
 
 const EnglishLearningPathway = () => {
   const navigate = useNavigate();
@@ -23,16 +24,36 @@ const EnglishLearningPathway = () => {
   } = useUserAccess();
   const { useColorTheme, toggleColorMode } = useColorMode();
 
-  if (loading) {
+  // Fetch English Foundation Ladder rooms from database
+  const { data: englishRooms = [], isLoading: roomsLoading } = useQuery({
+    queryKey: ['english-ladder-rooms'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('rooms')
+        .select('id, title_en, title_vi, tier, domain')
+        .eq('domain', 'English Foundation Ladder')
+        .order('id');
+      
+      if (error) throw error;
+      
+      return (data || []).map(room => ({
+        id: room.id,
+        name: room.title_en,
+        nameVi: room.title_vi,
+        tier: room.tier,
+        domain: room.domain,
+        hasData: true
+      }));
+    }
+  });
+
+  if (loading || roomsLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <p className="text-muted-foreground">Loading...</p>
       </div>
     );
   }
-
-  // Get all English Foundation Ladder rooms
-  const englishRooms = ALL_ROOMS.filter(room => room.domain === "English Foundation Ladder");
 
   // Group by progression level
   const foundation = englishRooms.filter(r => r.tier === "free");
