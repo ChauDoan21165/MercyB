@@ -672,14 +672,51 @@ export default function UnifiedHealthCheck() {
           jsonData = await loadRoomJson(room.id || "");
           console.log(`✅ Loaded JSON for ${room.id}:`, resolvedPath);
         } catch (error: any) {
-          // Handle missing files gracefully - don't spam console with errors
+          // JSON file missing or invalid
           console.warn(`⚠️ JSON file missing for ${room.id}:`, error.message?.split('\n')[0]);
-          failedRooms.push({
-            id: room.id,
-            title: room.title_en || room.id,
-            error: 'JSON file not found or invalid'
-          });
-          // Skip this room and continue with others
+
+          const hasDbEntries = Array.isArray(room.entries) && room.entries.length > 0;
+
+          if (hasDbEntries) {
+            // Room has real content in DB → DO NOT treat as phantom, just report missing JSON
+            console.warn(`➡️ Room ${room.id} has database entries; marking as JSON-missing but NOT phantom.`);
+
+            const report: DeepRoomReport = {
+              roomId: room.id,
+              roomTitle: room.title_en || room.id,
+              tier: selectedTier,
+              summary: {
+                totalIssues: 1,
+                audioIssues: 0,
+                entryIssues: 0,
+                healthScore: 0,
+              },
+              audioChecks: [],
+              entryValidation: [],
+              issues: [
+                {
+                  roomId: room.id,
+                  roomTitle: room.title_en || room.id,
+                  tier: selectedTier,
+                  issueType: "missing_file",
+                  message: `Missing JSON file at public/data/${room.id}.json`,
+                  details: "Room has database entries but no JSON file. Fix JSON path or export JSON from DB.",
+                },
+              ],
+            };
+
+            reports.push(report);
+            setDeepScanResults((prev) => [...prev, report]);
+          } else {
+            // Truly phantom: no JSON and no DB entries → candidate for cleanup (requires explicit delete)
+            failedRooms.push({
+              id: room.id,
+              title: room.title_en || room.id,
+              error: "JSON file not found or invalid, and room has no DB entries",
+            });
+          }
+
+          // Skip to next room
           continue;
         }
 
@@ -687,16 +724,38 @@ export default function UnifiedHealthCheck() {
           const report = await deepScanRoom(room, jsonData, resolvedPath);
           reports.push(report);
           console.log(`✅ Deep scan complete for ${room.id}. Issues:`, report.summary.totalIssues);
-          
           // Update results incrementally for real-time display
-          setDeepScanResults(prev => [...prev, report]);
-        } catch (error) {
+          setDeepScanResults((prev) => [...prev, report]);
+        } catch (error: any) {
+          // Deep scan failed for reasons other than missing JSON
           console.error(`❌ Deep scan failed for ${room.id}:`, error);
-          failedRooms.push({
-            id: room.id,
-            title: room.title_en || room.id,
-            error: error instanceof Error ? error.message : "Unknown error"
-          });
+
+          const fallbackReport: DeepRoomReport = {
+            roomId: room.id,
+            roomTitle: room.title_en || room.id,
+            tier: selectedTier,
+            summary: {
+              totalIssues: 1,
+              audioIssues: 0,
+              entryIssues: 0,
+              healthScore: 0,
+            },
+            audioChecks: [],
+            entryValidation: [],
+            issues: [
+              {
+                roomId: room.id,
+                roomTitle: room.title_en || room.id,
+                tier: selectedTier,
+                issueType: "invalid_json",
+                message: "Deep scan failed due to invalid or unexpected JSON structure",
+                details: error instanceof Error ? error.message : String(error),
+              },
+            ],
+          };
+
+          reports.push(fallbackReport);
+          setDeepScanResults((prev) => [...prev, fallbackReport]);
         }
       }
 
