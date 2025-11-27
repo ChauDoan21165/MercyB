@@ -125,6 +125,63 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
   return result;
 }
 
+export function highlightShortTitle(
+  text: string,
+  titleIndex: number = 0,
+  isVietnamese: boolean = false
+): JSX.Element[] {
+  const segments = text.split(/(\s+)/);
+  const result: JSX.Element[] = [];
+  const keywordIndices: number[] = [];
+
+  segments.forEach((seg, idx) => {
+    const cleaned = seg.trim().toLowerCase();
+    if (
+      cleaned &&
+      !/^\s+$/.test(seg) &&
+      !/^[.,;:!?()""—–-]+$/.test(seg) &&
+      seg.length > 2 &&
+      !FILLER_WORDS.has(cleaned)
+    ) {
+      keywordIndices.push(idx);
+    }
+  });
+
+  if (keywordIndices.length === 0) {
+    return [<span key="title-0">{text}</span>];
+  }
+
+  const maxToColor = Math.min(3, keywordIndices.length);
+  const indicesToColor: number[] = [];
+  const step = Math.max(1, Math.floor(keywordIndices.length / maxToColor));
+  for (let i = 0; i < maxToColor && i * step < keywordIndices.length; i++) {
+    indicesToColor.push(keywordIndices[i * step]);
+  }
+
+  const TITLE_COLORS = ['#B91C1C', '#1D4ED8', '#047857', '#C2410C'];
+  const baseColorIndex = titleIndex % TITLE_COLORS.length;
+  const coloredSet = new Set(indicesToColor);
+
+  segments.forEach((seg, idx) => {
+    if (coloredSet.has(idx)) {
+      const order = indicesToColor.indexOf(idx);
+      const color = TITLE_COLORS[(baseColorIndex + order) % TITLE_COLORS.length];
+      result.push(
+        <span
+          key={`word-${idx}`}
+          style={{ color, fontWeight: 700 }}
+        >
+          {seg}
+        </span>
+      );
+    } else {
+      result.push(<span key={`seg-${idx}`}>{seg}</span>);
+    }
+  });
+
+  return result;
+}
+
 export function highlightPairedText(enText: string, viText: string): {
   enHighlighted: JSX.Element[];
   viHighlighted: JSX.Element[];

@@ -8,7 +8,7 @@ import { VIPNavigation } from "@/components/VIPNavigation";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { highlightTextByRules } from "@/lib/wordColorHighlighter";
+import { highlightTextByRules, highlightShortTitle } from "@/lib/wordColorHighlighter";
 import { AudioPlayer } from "@/components/AudioPlayer";
 
 const RoomGridVIP3II = () => {
@@ -168,7 +168,7 @@ const RoomGridVIP3II = () => {
 
           {/* Rooms Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-            {vip3IIRooms.map((room) => (
+            {vip3IIRooms.map((room, index) => (
               <Card
                 key={room.id}
                 className={`relative p-3 transition-all duration-300 cursor-pointer group ${
@@ -215,12 +215,12 @@ const RoomGridVIP3II = () => {
                     <p
                       className="text-xs font-bold leading-tight line-clamp-2 text-foreground"
                     >
-                      {highlightTextByRules(room.nameEn, false)}
+                      {highlightShortTitle(room.nameEn, index, false)}
                     </p>
                     <p
                       className="text-[10px] leading-tight line-clamp-2 text-muted-foreground"
                     >
-                      {highlightTextByRules(room.nameVi, true)}
+                      {highlightShortTitle(room.nameVi, index, true)}
                     </p>
                   </div>
                 </div>

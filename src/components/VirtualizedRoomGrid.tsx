@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { CheckCircle2, Lock, Palette } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { getRoomColor } from '@/lib/roomColors';
+import { highlightShortTitle } from '@/lib/wordColorHighlighter';
 import { useLowDataMode } from '@/contexts/LowDataModeContext';
 import { Button } from '@/components/ui/button';
 import { useColorMode } from '@/hooks/useColorMode';
@@ -93,7 +94,7 @@ export const VirtualizedRoomGrid = ({
               }}
             >
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-                {rowRooms.map((room) => {
+                {rowRooms.map((room, colIndex) => {
                   const roomColor = highlightColors[room.id] || getRoomColor(room.id);
                   const isHighlighted = !!highlightColors[room.id];
                   
@@ -134,16 +135,14 @@ export const VirtualizedRoomGrid = ({
                           <div className="space-y-2">
                             <div className="space-y-1">
                               <p 
-                                className={`${isLowDataMode ? 'text-[10px]' : 'text-xs'} font-bold leading-tight line-clamp-2`}
-                                style={useColorTheme ? { color: roomColor, fontWeight: 700 } : { color: 'black' }}
+                                className={`${isLowDataMode ? 'text-[10px]' : 'text-xs'} font-bold leading-tight line-clamp-2 text-foreground`}
                               >
-                                {room.nameEn}
+                                {useColorTheme ? highlightShortTitle(room.nameEn, startIdx + colIndex, false) : room.nameEn}
                               </p>
                               <p 
-                                className={`${isLowDataMode ? 'text-[8px]' : 'text-[10px]'} leading-tight line-clamp-2`}
-                                style={useColorTheme ? { color: roomColor, fontWeight: 600 } : { color: '#6b7280' }}
+                                className={`${isLowDataMode ? 'text-[8px]' : 'text-[10px]'} leading-tight line-clamp-2 text-muted-foreground`}
                               >
-                                {room.nameVi}
+                                {useColorTheme ? highlightShortTitle(room.nameVi, startIdx + colIndex, true) : room.nameVi}
                               </p>
                             </div>
                           </div>
