@@ -6,13 +6,18 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
   console.log('Input roomId:', roomId);
   console.log('Input tier:', tier);
 
-  // Handle kids room ID mapping
-  // Kids Level 1 rooms use format: alphabet_adventure_kids_l1
-  // but are stored in DB as: alphabet-adventure
+  // Handle room ID normalization
+  // Kids Level 1 rooms: URL uses format alphabet_adventure_kids_l1, DB uses alphabet-adventure
+  // Regular rooms: URL uses hyphens (vip6-inner-fragmentation), DB uses underscores (vip6_inner_fragmentation)
   let dbRoomId = roomId;
   if (roomId.endsWith('_kids_l1')) {
+    // Kids room: strip suffix and convert underscores to hyphens
     dbRoomId = roomId.replace('_kids_l1', '').replace(/_/g, '-');
     console.log('🎯 Kids room detected, mapping:', roomId, '→', dbRoomId);
+  } else {
+    // Regular room: convert hyphens to underscores
+    dbRoomId = roomId.replace(/-/g, '_');
+    console.log('🔍 Room ID normalized:', roomId, '→', dbRoomId);
   }
 
   // First try to load from database

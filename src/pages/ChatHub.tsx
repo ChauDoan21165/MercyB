@@ -814,7 +814,7 @@ const ChatHub = () => {
               </h2>
               {info && (
                 <Badge variant="secondary" className="text-xs">
-                  {info.tier === 'free' ? 'Free' : info.tier === 'vip1' ? 'VIP 1' : info.tier === 'vip2' ? 'VIP 2' : info.tier === 'vip3' ? 'VIP 3' : 'VIP 4'}
+                  {info.tier === 'free' ? 'Free' : info.tier?.toUpperCase().replace('VIP', 'VIP ')}
                 </Badge>
               )}
             </div>
