@@ -124,6 +124,30 @@ const Homepage = () => {
           ))}
       </main>
 
+      {/* English Foundation Free Bonus Section */}
+      <section className="py-16 px-6" style={{ backgroundColor: "#E8F4F8" }}>
+        <div className="max-w-4xl mx-auto space-y-8">
+          <HomepageSection
+            id="english-foundation-free"
+            backgroundColor="#E8F4F8"
+            headingColor="#0C4A6E"
+            accentColor="#0284C7"
+            title={{
+              en: "🌱 English Foundation — Free Bonus Pathway",
+              vi: "🌱 English Foundation — Lộ Trình Miễn Phí"
+            }}
+            body={{
+              en: "A gentle, step-by-step program for Vietnamese absolute beginners. Start from zero and grow into confident A1 level with simple daily lessons in pronunciation, basic grammar, everyday words, listening, and speaking. No shame. No overwhelm. Just small daily wins until English feels safe, natural, and possible.",
+              vi: "Chương trình nhẹ nhàng dành cho người Việt bắt đầu từ con số 0. Học từng bước: phát âm, từ vựng cơ bản, ngữ pháp nền tảng, nghe và nói thực tế. Không áp lực. Không xấu hổ. Chỉ những tiến bộ nhỏ mỗi ngày để tiếng Anh trở nên tự nhiên và dễ tiếp cận."
+            }}
+            audio={{
+              en: "",
+              vi: ""
+            }}
+          />
+        </div>
+      </section>
+
       {/* Survival & Resilience VIP1 Bonus Section */}
       <section className="py-16 px-6" style={{ backgroundColor: "#F0F4F0" }}>
         <div className="max-w-4xl mx-auto space-y-8">
