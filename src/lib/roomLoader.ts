@@ -41,20 +41,37 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
           const viList: string[] = [];
           const seenKeywords = new Set<string>();
           (dbRoom.entries as any[]).forEach((entry: any) => {
-            const titleText = typeof entry.title === 'object' ? entry.title?.en : entry.title;
-            const en = Array.isArray(entry.keywords_en) && entry.keywords_en.length > 0
-              ? String(entry.keywords_en[0])
-              : String(titleText || entry.identifier || entry.slug || '').trim();
-            const titleViText = typeof entry.title === 'object' ? entry.title?.vi : '';
-            const vi = Array.isArray(entry.keywords_vi) && entry.keywords_vi.length > 0
-              ? String(entry.keywords_vi[0])
-              : (titleViText || entry.identifier || entry.slug || '');
-            // Deduplicate by English keyword (case-insensitive)
-            const normalizedEn = en.toLowerCase().trim();
-            if (en && !seenKeywords.has(normalizedEn)) {
-              seenKeywords.add(normalizedEn);
-              enList.push(en);
-              viList.push(vi);
+            // Extract ALL keywords from the entry, not just the first one
+            if (Array.isArray(entry.keywords_en) && Array.isArray(entry.keywords_vi)) {
+              const maxLen = Math.max(entry.keywords_en.length, entry.keywords_vi.length);
+              for (let i = 0; i < maxLen; i++) {
+                const en = entry.keywords_en[i] ? String(entry.keywords_en[i]).trim() : '';
+                const vi = entry.keywords_vi[i] ? String(entry.keywords_vi[i]).trim() : '';
+                
+                if (en) {
+                  const normalizedEn = en.toLowerCase();
+                  if (!seenKeywords.has(normalizedEn)) {
+                    seenKeywords.add(normalizedEn);
+                    enList.push(en);
+                    viList.push(vi);
+                  }
+                }
+              }
+            } else {
+              // Fallback: use title or identifier if no keywords
+              const titleText = typeof entry.title === 'object' ? entry.title?.en : entry.title;
+              const titleViText = typeof entry.title === 'object' ? entry.title?.vi : '';
+              const en = String(titleText || entry.identifier || entry.slug || '').trim();
+              const vi = String(titleViText || entry.identifier || entry.slug || '').trim();
+              
+              if (en) {
+                const normalizedEn = en.toLowerCase();
+                if (!seenKeywords.has(normalizedEn)) {
+                  seenKeywords.add(normalizedEn);
+                  enList.push(en);
+                  viList.push(vi);
+                }
+              }
             }
           });
           // If no keywords extracted from entries, use root-level keywords array
