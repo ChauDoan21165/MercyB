@@ -103,16 +103,34 @@ const RoomGridVIP2 = () => {
             const aName = a.name || a.id;
             const bName = b.name || b.id;
             return aName.localeCompare(bName);
-          }).map((room) => (
-            <Card
-              key={room.id}
-              className={`relative p-3 transition-all duration-300 cursor-pointer group ${
-                room.hasData 
-                  ? "hover:scale-110 hover:shadow-hover hover:z-10 border-accent/30" 
-                  : "opacity-60 cursor-not-allowed"
-              }`}
-              onClick={() => room.hasData && navigate(`/chat/${room.id}`)}
-            >
+          }).map((room, index) => {
+            // Cycle through rainbow colors
+            const rainbowColors = [
+              'hsl(var(--rainbow-red))',
+              'hsl(var(--rainbow-orange))',
+              'hsl(var(--rainbow-yellow))',
+              'hsl(var(--rainbow-green))',
+              'hsl(var(--rainbow-cyan))',
+              'hsl(var(--rainbow-blue))',
+              'hsl(var(--rainbow-purple))',
+              'hsl(var(--rainbow-magenta))'
+            ];
+            const bgColor = rainbowColors[index % rainbowColors.length];
+            
+            return (
+              <Card
+                key={room.id}
+                className={`relative p-3 transition-all duration-300 cursor-pointer group border-2 ${
+                  room.hasData 
+                    ? "hover:scale-110 hover:shadow-hover hover:z-10" 
+                    : "opacity-60 cursor-not-allowed"
+                }`}
+                style={{ 
+                  backgroundColor: `${bgColor.replace(')', ' / 0.25)')}`,
+                  borderColor: bgColor
+                }}
+                onClick={() => room.hasData && navigate(`/chat/${room.id}`)}
+              >
               {/* Status Badge */}
               <div className="absolute top-1 right-1 z-10">
                 {room.hasData ? (
@@ -151,10 +169,12 @@ const RoomGridVIP2 = () => {
 
               {/* Hover Effect */}
               {room.hasData && (
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" 
+                     style={{ background: `linear-gradient(135deg, ${bgColor} 0%, ${bgColor.replace(')', ' / 0.8)')} 100%)` }} />
               )}
             </Card>
-          ))}
+            );
+          })}
         </div>
 
         {/* Navigation */}

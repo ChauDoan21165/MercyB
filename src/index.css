@@ -110,44 +110,44 @@ All colors MUST be HSL.
     --sidebar-border: 194 41% 80%;
     --sidebar-ring: 340 82% 52%;
     
-    /* Mercy Blade Rainbow Page Colors */
+    /* Mercy Blade Rainbow Page Colors - BOLD backgrounds */
     --page-welcome: 340 82% 97%;
     --page-allrooms: 291 64% 97%;
     --page-roomgrid: 207 90% 97%;
-    --page-free: 184 91% 92%; /* Teal background for free tier rooms */
+    --page-free: 190 85% 92%; /* Vibrant cyan background */
     
-    /* VIP1 colors - Yellow/Amber theme */
-    --page-vip1: 45 100% 88%;
-    --vip1-primary: 45 100% 51%;
-    --vip1-secondary: 36 100% 50%;
-    --vip1-accent: 45 100% 60%;
+    /* VIP1 colors - Bold Yellow/Amber */
+    --page-vip1: 48 100% 88%;
+    --vip1-primary: 48 100% 50%;
+    --vip1-secondary: 30 95% 50%;
+    --vip1-accent: 48 95% 60%;
     
-    /* VIP2 colors - Blue/Indigo theme */
-    --page-vip2: 207 90% 90%;
-    --vip2-primary: 207 90% 54%;
-    --vip2-secondary: 231 48% 48%;
-    --vip2-accent: 207 90% 65%;
+    /* VIP2 colors - Bold Blue/Cyan */
+    --page-vip2: 220 90% 88%;
+    --vip2-primary: 220 90% 55%;
+    --vip2-secondary: 190 85% 45%;
+    --vip2-accent: 220 85% 65%;
     
-    /* VIP3 colors - Purple/Pink theme */
-    --page-vip3: 291 64% 90%;
-    --vip3-primary: 291 64% 42%;
-    --vip3-secondary: 340 82% 52%;
-    --vip3-accent: 291 64% 55%;
-    --vip3-gold: 45 100% 51%;
+    /* VIP3 colors - Bold Purple/Magenta */
+    --page-vip3: 270 85% 88%;
+    --vip3-primary: 270 85% 55%;
+    --vip3-secondary: 310 85% 50%;
+    --vip3-accent: 270 80% 65%;
+    --vip3-gold: 48 100% 50%;
     
-    /* VIP4 colors - Orange/Amber theme */
-    --page-vip4: 36 100% 88%;
-    --vip4-primary: 36 100% 50%;
-    --vip4-secondary: 45 100% 51%;
-    --vip4-accent: 36 100% 60%;
-    --vip4-gold: 45 100% 51%;
+    /* VIP4 colors - Bold Orange/Red */
+    --page-vip4: 30 95% 88%;
+    --vip4-primary: 30 95% 50%;
+    --vip4-secondary: 0 90% 55%;
+    --vip4-accent: 30 90% 60%;
+    --vip4-gold: 48 100% 50%;
     
-    /* VIP5 colors - Emerald/Teal theme */
-    --page-vip5: 160 84% 90%;
-    --vip5-primary: 160 84% 39%;
-    --vip5-secondary: 173 80% 40%;
-    --vip5-accent: 160 84% 50%;
-    --vip5-gold: 45 100% 51%;
+    /* VIP5 colors - Bold Green/Emerald */
+    --page-vip5: 145 80% 88%;
+    --vip5-primary: 145 80% 45%;
+    --vip5-secondary: 190 85% 45%;
+    --vip5-accent: 145 75% 55%;
+    --vip5-gold: 48 100% 50%;
     
     /* Admin page colors - Full Rainbow gradient */
     --admin-primary: 340 82% 52%;
