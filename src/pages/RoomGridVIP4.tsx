@@ -11,6 +11,7 @@ import { Briefcase, Crown, Lock, RefreshCw, Palette } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
 import { useColorMode } from '@/hooks/useColorMode';
+import { highlightShortTitle } from '@/lib/wordColorHighlighter';
 
 const VIP4_CAREER_ROOMS = [
   { id: "courage-to-begin", name: "Courage to Begin" },
@@ -225,7 +226,7 @@ const RoomGridVIP4 = () => {
               </p>
             </div>
           ) : (
-            rooms.map((room) => {
+            rooms.map((room, index) => {
               const status = getRoomStatus(room);
               const roomColor = getRoomColorValue(room.id);
               const textColor = getContrastTextColor(roomColor);
@@ -266,22 +267,14 @@ const RoomGridVIP4 = () => {
                   <div className="p-6 space-y-3">
                     <div className="space-y-2">
                       <h3 
-                        className="font-bold text-lg leading-tight"
-                        style={useColorTheme 
-                          ? { color: `color-mix(in srgb, ${roomColor} 85%, black)` }
-                          : { color: 'black' }
-                        }
+                        className="font-bold text-lg leading-tight text-foreground"
                       >
-                        {room.nameEn}
+                        {useColorTheme ? highlightShortTitle(room.nameEn, index, false) : room.nameEn}
                       </h3>
                       <p 
-                        className="text-sm leading-tight"
-                        style={useColorTheme 
-                          ? { color: `color-mix(in srgb, ${roomColor} 70%, black)` }
-                          : { color: '#4b5563' }
-                        }
+                        className="text-sm leading-tight text-muted-foreground"
                       >
-                        {room.nameVi}
+                        {useColorTheme ? highlightShortTitle(room.nameVi, index, true) : room.nameVi}
                       </p>
                     </div>
 

@@ -7,6 +7,7 @@ import { Lock, Unlock, TrendingUp, Building2, Globe2, Crown, Palette } from 'luc
 import { useUserAccess } from '@/hooks/useUserAccess';
 import { useToast } from '@/hooks/use-toast';
 import { useColorMode } from '@/hooks/useColorMode';
+import { highlightShortTitle } from '@/lib/wordColorHighlighter';
 
 interface Room {
   id: string;
@@ -212,7 +213,7 @@ const RoomsVIP9 = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {domain.rooms.map((room) => (
+                {domain.rooms.map((room, index) => (
                   <button
                     key={room.id}
                     onClick={() => handleRoomClick(room.id)}
@@ -232,10 +233,10 @@ const RoomsVIP9 = () => {
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex-1 space-y-2">
                         <h3 className="font-semibold text-white group-hover:text-slate-100 transition-colors leading-snug">
-                          {room.title_en}
+                          {useColorTheme ? highlightShortTitle(room.title_en, index, false) : room.title_en}
                         </h3>
                         <p className="text-sm text-slate-400 leading-relaxed">
-                          {room.title_vi}
+                          {useColorTheme ? highlightShortTitle(room.title_vi, index, true) : room.title_vi}
                         </p>
                       </div>
                       {canAccessVIP9 ? (
