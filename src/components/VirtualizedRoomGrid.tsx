@@ -1,10 +1,11 @@
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { Card } from "@/components/ui/card";
-import { CheckCircle2, Lock } from "lucide-react";
+import { CheckCircle2, Lock, Palette } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { getRoomColor } from '@/lib/roomColors';
 import { useLowDataMode } from '@/contexts/LowDataModeContext';
+import { Button } from '@/components/ui/button';
 
 interface RoomData {
   id: string;
@@ -31,6 +32,16 @@ export const VirtualizedRoomGrid = ({
   const parentRef = useRef<HTMLDivElement>(null);
   const { isLowDataMode } = useLowDataMode();
   
+  // Color mode state (stored in localStorage)
+  const [useColorTheme, setUseColorTheme] = useState<boolean>(() => {
+    const saved = localStorage.getItem('mercyBladeColorMode');
+    return saved !== 'blackWhite'; // Default to color theme
+  });
+
+  useEffect(() => {
+    localStorage.setItem('mercyBladeColorMode', useColorTheme ? 'color' : 'blackWhite');
+  }, [useColorTheme]);
+  
   const sortedRooms = useMemo(() => {
     return [...rooms].sort((a, b) => {
       const aName = a.nameEn || a.id;
@@ -49,17 +60,31 @@ export const VirtualizedRoomGrid = ({
   });
 
   return (
-    <div 
-      ref={parentRef} 
-      className={`h-[calc(100vh-300px)] overflow-auto ${isLowDataMode ? 'text-sm' : ''}`}
-    >
-      <div
-        style={{
-          height: `${rowVirtualizer.getTotalSize()}px`,
-          width: '100%',
-          position: 'relative',
-        }}
+    <div>
+      {/* Color Mode Toggle */}
+      <div className="flex justify-end mb-4">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setUseColorTheme(!useColorTheme)}
+          className="gap-2"
+        >
+          <Palette className="w-4 h-4" />
+          {useColorTheme ? 'Black & White' : 'Mercy Blade Colors'}
+        </Button>
+      </div>
+      
+      <div 
+        ref={parentRef} 
+        className={`h-[calc(100vh-350px)] overflow-auto ${isLowDataMode ? 'text-sm' : ''}`}
       >
+        <div
+          style={{
+            height: `${rowVirtualizer.getTotalSize()}px`,
+            width: '100%',
+            position: 'relative',
+          }}
+        >
         {rowVirtualizer.getVirtualItems().map((virtualRow) => {
           const startIdx = virtualRow.index * columnCount;
           const rowRooms = sortedRooms.slice(startIdx, startIdx + columnCount);
@@ -89,13 +114,20 @@ export const VirtualizedRoomGrid = ({
                               ? `cursor-pointer ${!isLowDataMode ? 'transition-all duration-300 hover:scale-110 hover:shadow-hover hover:z-10' : ''}` 
                               : "opacity-30 cursor-not-allowed grayscale"
                           }`}
-                          style={isHighlighted ? {
-                            border: `2px solid ${roomColor}`,
-                            background: `linear-gradient(135deg, ${roomColor}20, ${roomColor}10)`,
-                            boxShadow: isLowDataMode ? 'none' : `0 0 20px ${roomColor}60`
-                          } : {
-                            background: roomColor
-                          }}
+                          style={
+                            useColorTheme 
+                              ? (isHighlighted ? {
+                                  border: `2px solid ${roomColor}`,
+                                  background: `linear-gradient(135deg, ${roomColor}20, ${roomColor}10)`,
+                                  boxShadow: isLowDataMode ? 'none' : `0 0 20px ${roomColor}60`
+                                } : {
+                                  background: roomColor
+                                })
+                              : {
+                                  background: 'white',
+                                  border: '1px solid #e5e7eb'
+                                }
+                          }
                           onClick={() => room.hasData && onRoomClick(room)}
                         >
                           {/* Status Badge */}
@@ -115,13 +147,19 @@ export const VirtualizedRoomGrid = ({
                             <div className="space-y-1">
                               <p 
                                 className={`${isLowDataMode ? 'text-[10px]' : 'text-xs'} font-bold leading-tight line-clamp-2`}
-                                style={{ color: `color-mix(in srgb, ${roomColor} 85%, black)` }}
+                                style={useColorTheme 
+                                  ? { color: `color-mix(in srgb, ${roomColor} 85%, black)` }
+                                  : { color: 'black' }
+                                }
                               >
                                 {room.nameEn}
                               </p>
                               <p 
                                 className={`${isLowDataMode ? 'text-[8px]' : 'text-[10px]'} leading-tight line-clamp-2`}
-                                style={{ color: `color-mix(in srgb, ${roomColor} 70%, black)` }}
+                                style={useColorTheme 
+                                  ? { color: `color-mix(in srgb, ${roomColor} 70%, black)` }
+                                  : { color: '#4b5563' }
+                                }
                               >
                                 {room.nameVi}
                               </p>
@@ -130,8 +168,13 @@ export const VirtualizedRoomGrid = ({
 
                           {/* Hover Effect - disabled in low data mode */}
                           {room.hasData && !isLowDataMode && (
-                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" 
-                                 style={{ background: `linear-gradient(to bottom right, ${roomColor}20, ${roomColor}10)` }} />
+                            <div 
+                              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" 
+                              style={useColorTheme 
+                                ? { background: `linear-gradient(to bottom right, ${roomColor}20, ${roomColor}10)` }
+                                : { background: 'rgba(0, 0, 0, 0.05)' }
+                              }
+                            />
                           )}
                         </Card>
                       </TooltipTrigger>
@@ -146,6 +189,7 @@ export const VirtualizedRoomGrid = ({
           );
         })}
       </div>
+    </div>
     </div>
   );
 };
