@@ -1,0 +1,75 @@
+{
+  "id": "english_c1_c106",
+  "tier": "VIP3 / VIP3",
+  "domain": "English C1",
+  "title": {
+    "en": "C1-06 — Emotional Intelligence in English",
+    "vi": "C1-06 — Trí Tuệ Cảm Xúc Trong Giao Tiếp Tiếng Anh"
+  },
+  "content": {
+    "en": "This room helps you communicate with emotional intelligence in English. You will learn how to express feelings clearly, respond with empathy, calm tense situations, and use supportive language that builds trust. These six entries teach emotional awareness and gentle communication skills for advanced learners.",
+    "vi": "Phòng này giúp bạn giao tiếp bằng tiếng Anh với trí tuệ cảm xúc cao. Bạn sẽ học cách diễn đạt cảm xúc rõ ràng, phản hồi bằng sự thấu cảm, làm dịu tình huống căng thẳng và dùng ngôn ngữ hỗ trợ để xây dựng sự tin cậy. Sáu mục nội dung phát triển khả năng nhận diện cảm xúc và kỹ năng giao tiếp nhẹ nhàng cho người học nâng cao."
+  },
+  "entries": [
+    {
+      "slug": "naming-feelings-clearly",
+      "keywords_en": ["feelings", "clarity"],
+      "keywords_vi": ["cảm xúc", "rõ ràng"],
+      "copy": {
+        "en": "Advanced communication starts with clear emotional vocabulary. Use simple words like worried, calm, frustrated, curious, or relieved to describe how you feel. Clear naming reduces misunderstanding and helps others respond appropriately. Emotional honesty builds stronger relationships.",
+        "vi": "Giao tiếp nâng cao bắt đầu bằng vốn từ cảm xúc rõ ràng. Hãy dùng những từ đơn giản như lo lắng, bình tĩnh, thất vọng, tò mò hoặc nhẹ nhõm để diễn tả cảm xúc. Việc gọi tên cảm xúc giảm hiểu lầm và giúp người khác phản hồi đúng. Sự trung thực cảm xúc tạo nền tảng cho mối quan hệ vững bền."
+      },
+      "audio": "c106_01_en.mp3"
+    },
+    {
+      "slug": "responding-with-empathy",
+      "keywords_en": ["empathy", "response"],
+      "keywords_vi": ["thấu cảm", "phản hồi"],
+      "copy": {
+        "en": "Empathy shows care and respect. Use lines such as I understand, That sounds difficult, or I hear you. These responses make people feel safe. Empathy does not mean agreement; it means acknowledging feelings. This skill deepens connection in conversations.",
+        "vi": "Sự thấu cảm thể hiện sự quan tâm và tôn trọng. Hãy dùng các câu như Tôi hiểu, Điều đó nghe có vẻ khó khăn hoặc Tôi đang lắng nghe bạn. Những phản hồi này khiến người đối diện cảm thấy an toàn. Thấu cảm không phải là đồng ý mà là ghi nhận cảm xúc. Kỹ năng này giúp kết nối sâu hơn trong giao tiếp."
+      },
+      "audio": "c106_02_en.mp3"
+    },
+    {
+      "slug": "calming-tense-moments",
+      "keywords_en": ["calm", "tension"],
+      "keywords_vi": ["bình tĩnh", "căng thẳng"],
+      "copy": {
+        "en": "Tension rises when voices get sharp or fast. Use calm sentences: Let’s slow down, We can solve this, or I want to understand you clearly. A calm tone reduces stress for both sides. Emotional stability is a powerful communication skill.",
+        "vi": "Căng thẳng tăng khi giọng nói trở nên sắc hoặc nhanh. Hãy dùng các câu bình tĩnh như Chúng ta chậm lại nhé, Chuyện này có thể giải quyết hoặc Tôi muốn hiểu bạn rõ hơn. Giọng điệu nhẹ nhàng giảm áp lực cho cả hai bên. Sự ổn định cảm xúc là kỹ năng giao tiếp rất mạnh."
+      },
+      "audio": "c106_03_en.mp3"
+    },
+    {
+      "slug": "supportive-language-in-dialogue",
+      "keywords_en": ["support", "dialogue"],
+      "keywords_vi": ["hỗ trợ", "đối thoại"],
+      "copy": {
+        "en": "Supportive language helps people feel valued. Use phrases like Take your time, It’s okay, or I’m here with you. These lines soften difficult conversations and make problem solving easier. Emotional safety encourages open communication.",
+        "vi": "Ngôn ngữ hỗ trợ giúp người khác cảm thấy được trân trọng. Hãy dùng các câu như Bạn cứ từ từ, Không sao đâu hoặc Tôi ở đây cùng bạn. Những câu này làm dịu những cuộc trò chuyện khó và giúp giải quyết vấn đề dễ dàng hơn. Sự an toàn cảm xúc khuyến khích giao tiếp cởi mở."
+      },
+      "audio": "c106_04_en.mp3"
+    },
+    {
+      "slug": "balancing-honesty-and-kindness",
+      "keywords_en": ["honesty", "kindness"],
+      "keywords_vi": ["trung thực", "tử tế"],
+      "copy": {
+        "en": "Advanced speakers learn to be honest without hurting others. Use gentle frames such as I want to share something or May I be honest with you. This prepares the listener. Honesty delivered with kindness strengthens trust instead of creating conflict.",
+        "vi": "Người nói nâng cao biết cách trung thực mà không làm tổn thương người khác. Hãy dùng những câu mở nhẹ như Tôi muốn chia sẻ điều này hoặc Tôi có thể nói thật với bạn không. Điều này giúp người nghe chuẩn bị tâm lý. Sự trung thực đi kèm tử tế tăng cường sự tin cậy thay vì tạo xung đột."
+      },
+      "audio": "c106_05_en.mp3"
+    },
+    {
+      "slug": "daily-emotional-awareness-practice",
+      "keywords_en": ["awareness", "practice"],
+      "keywords_vi": ["nhận diện", "luyện tập"],
+      "copy": {
+        "en": "Practice emotional awareness each day. Notice your body, your breathing, and your thoughts. When you feel tense or confused, pause before speaking. Awareness helps you choose better words and communicate with maturity. This habit improves every conversation.",
+        "vi": "Hãy luyện khả năng nhận diện cảm xúc mỗi ngày. Chú ý cơ thể, hơi thở và suy nghĩ của bạn. Khi căng thẳng hoặc bối rối, hãy dừng lại trước khi nói. Sự nhận diện giúp bạn chọn từ tốt hơn và giao tiếp trưởng thành hơn. Thói quen này cải thiện mọi cuộc trò chuyện."
+      },
+      "audio": "c106_06_en.mp3"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "id": "english_c1_c101",
+  "tier": "VIP3 / VIP3",
+  "domain": "English C1",
+  "title": {
+    "en": "C1-01 — Clear, Confident Expressive English",
+    "vi": "C1-01 — Diễn Đạt Tiếng Anh Rõ Ràng & Tự Tin"
+  },
+  "content": {
+    "en": "This room helps you express ideas with clarity, maturity, and confidence. You will learn how to build natural sentences, explain thoughts calmly, and adjust tone for different situations. These entries focus on clear reasoning, smooth transitions, and emotional balance—skills that make your English sound grounded and professional.",
+    "vi": "Phòng này giúp bạn diễn đạt ý tưởng rõ ràng, chín chắn và tự tin. Bạn sẽ học cách xây dựng câu tự nhiên, giải thích suy nghĩ một cách bình tĩnh và điều chỉnh giọng điệu tùy tình huống. Các mục nội dung tập trung vào tư duy mạch lạc, chuyển ý trôi chảy và cân bằng cảm xúc, giúp tiếng Anh của bạn nghe vững vàng và chuyên nghiệp."
+  },
+  "entries": [
+    {
+      "slug": "expressing-thoughts-clearly",
+      "keywords_en": ["clarity", "expression"],
+      "keywords_vi": ["rõ ràng", "diễn đạt"],
+      "copy": {
+        "en": "Speak with calm structure. Start with one idea. Add one detail. Finish with a simple conclusion. Clear English begins with small, controlled steps. Examples: I think this plan is good. The reason is simple. It saves time and money. This style keeps your message clean and easy to follow.",
+        "vi": "Hãy nói với cấu trúc bình tĩnh. Bắt đầu bằng một ý chính. Thêm một chi tiết. Kết thúc bằng nhận định đơn giản. Tiếng Anh rõ ràng bắt đầu từ những bước nhỏ và kiểm soát được. Ví dụ: Tôi nghĩ kế hoạch này tốt. Lý do rất đơn giản. Nó tiết kiệm thời gian và chi phí. Cách nói này giữ thông điệp của bạn sạch và dễ hiểu."
+      },
+      "audio": "c101_01_en.mp3"
+    },
+    {
+      "slug": "speaking-with-balanced-tone",
+      "keywords_en": ["tone", "balance"],
+      "keywords_vi": ["giọng điệu", "cân bằng"],
+      "copy": {
+        "en": "Tone is important. Speak gently, not sharply. Slow your speed when explaining something important. Use soft phrases: I think, I feel, In my view. These lines help your message land safely. Calm tone creates trust in conversations.",
+        "vi": "Giọng điệu rất quan trọng. Hãy nói nhẹ nhàng, không quá sắc. Chậm lại khi giải thích điều quan trọng. Dùng các cụm từ mềm: Tôi nghĩ, Tôi cảm thấy, Theo tôi. Những cách nói này giúp thông điệp truyền tải an toàn hơn. Giọng điệu bình tĩnh tạo sự tin tưởng trong giao tiếp."
+      },
+      "audio": "c101_02_en.mp3"
+    },
+    {
+      "slug": "explaining-reasons-simply",
+      "keywords_en": ["reasons", "logic"],
+      "keywords_vi": ["lý do", "logic"],
+      "copy": {
+        "en": "A strong explanation is simple. Start with your point. Give one clear reason. Add one short example. This pattern works everywhere: work, study, daily life. Example: I prefer morning work because my mind is fresh. I finish tasks faster. Simple reasoning builds confident English.",
+        "vi": "Giải thích tốt là giải thích đơn giản. Bắt đầu bằng ý chính. Đưa một lý do rõ ràng. Thêm một ví dụ ngắn. Mẫu câu này dùng được mọi nơi: công việc, học tập, đời sống. Ví dụ: Tôi thích làm việc buổi sáng vì đầu óc tỉnh táo. Tôi hoàn thành việc nhanh hơn. Lập luận đơn giản giúp tiếng Anh của bạn tự tin hơn."
+      },
+      "audio": "c101_03_en.mp3"
+    },
+    {
+      "slug": "softening-strong-messages",
+      "keywords_en": ["softening", "communication"],
+      "keywords_vi": ["giảm nhẹ", "giao tiếp"],
+      "copy": {
+        "en": "Sometimes you must say something strong. Use soft openers: Maybe we can try this. I suggest another way. What if we adjust the plan. These lines protect relationships while keeping your message clear. Soft strength is powerful.",
+        "vi": "Đôi khi bạn cần nói điều mạnh mẽ. Hãy dùng mở đầu nhẹ nhàng: Có lẽ chúng ta có thể thử cách này. Tôi đề xuất một hướng khác. Nếu chúng ta điều chỉnh kế hoạch thì sao. Những câu này giữ gìn mối quan hệ mà vẫn truyền tải thông điệp rõ ràng. Sự mạnh mẽ nhẹ nhàng luôn hiệu quả."
+      },
+      "audio": "c101_04_en.mp3"
+    },
+    {
+      "slug": "transitioning-between-ideas",
+      "keywords_en": ["transition", "flow"],
+      "keywords_vi": ["chuyển ý", "mạch lạc"],
+      "copy": {
+        "en": "Good English moves smoothly. Use clear transitions: first, next, also, finally. These small words guide the listener. Example: First, I checked the reports. Next, I fixed the errors. Finally, I sent the file. Simple transitions create clean, professional English.",
+        "vi": "Tiếng Anh tốt chuyển ý trôi chảy. Hãy dùng từ nối rõ ràng: đầu tiên, tiếp theo, ngoài ra, cuối cùng. Những từ nhỏ này dẫn đường cho người nghe. Ví dụ: Đầu tiên, tôi kiểm tra báo cáo. Tiếp theo, tôi sửa lỗi. Cuối cùng, tôi gửi tệp. Chuyển ý đơn giản tạo nên tiếng Anh chuyên nghiệp."
+      },
+      "audio": "c101_05_en.mp3"
+    },
+    {
+      "slug": "daily-expression-practice",
+      "keywords_en": ["practice", "expression"],
+      "keywords_vi": ["luyện tập", "diễn đạt"],
+      "copy": {
+        "en": "Practice one idea each day. Say your thought. Add one reason. Add one example. Keep it gentle and short. This habit trains your mind to express clearly. Strong English comes from calm, daily practice.",
+        "vi": "Mỗi ngày hãy luyện một ý. Nói suy nghĩ của bạn. Thêm một lý do. Thêm một ví dụ. Giữ câu nhẹ nhàng và ngắn gọn. Thói quen này giúp bạn diễn đạt mạch lạc. Tiếng Anh vững chắc đến từ luyện tập đều đặn và bình tĩnh."
+      },
+      "audio": "c101_06_en.mp3"
+    }
+  ]
+}

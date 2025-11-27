@@ -1,0 +1,75 @@
+{
+  "id": "english_c1_c105",
+  "tier": "VIP3 / VIP3",
+  "domain": "English C1",
+  "title": {
+    "en": "C1-05 — Persuasive Speaking & Gentle Influence",
+    "vi": "C1-05 — Nói Thuyết Phục & Ảnh Hưởng Nhẹ Nhàng"
+  },
+  "content": {
+    "en": "This room helps you speak persuasively without pressure. You will learn how to guide opinions, present ideas clearly, use calm confidence, and influence others with warmth instead of force. These entries teach soft power communication—firm, respectful, and effective.",
+    "vi": "Phòng này giúp bạn nói thuyết phục mà không gây áp lực. Bạn sẽ học cách dẫn dắt quan điểm, trình bày ý tưởng rõ ràng, dùng sự tự tin nhẹ nhàng và ảnh hưởng người khác bằng sự ấm áp thay vì ép buộc. Các mục nội dung hướng dẫn nghệ thuật giao tiếp quyền lực mềm—vững vàng, tôn trọng và hiệu quả."
+  },
+  "entries": [
+    {
+      "slug": "presenting-ideas-calmly",
+      "keywords_en": ["presentation", "clarity"],
+      "keywords_vi": ["trình bày", "rõ ràng"],
+      "copy": {
+        "en": "Start with a clear message. Use short sentences and a calm voice. Say your idea first, then give one or two reasons. Calm structure is more persuasive than long explanations. People trust speakers who sound steady and confident.",
+        "vi": "Hãy bắt đầu bằng một thông điệp rõ ràng. Dùng câu ngắn và giọng điệu bình tĩnh. Nêu ý chính trước, sau đó đưa một hoặc hai lý do. Cấu trúc gọn gàng mang tính thuyết phục hơn những lời giải thích dài. Người nghe tin tưởng những người nói với sự ổn định và tự tin."
+      },
+      "audio": "c105_01_en.mp3"
+    },
+    {
+      "slug": "using-soft-power-language",
+      "keywords_en": ["soft power", "language"],
+      "keywords_vi": ["quyền lực mềm", "ngôn ngữ"],
+      "copy": {
+        "en": "Soft power language guides without forcing. Use phrases like I suggest, You may want to consider, or One option is. These lines open the mind of the listener. They create cooperation instead of resistance and make your message easier to receive.",
+        "vi": "Ngôn ngữ quyền lực mềm giúp dẫn dắt mà không ép buộc. Hãy dùng các câu như Tôi gợi ý, Bạn có thể cân nhắc hoặc Một lựa chọn là. Những câu này mở rộng suy nghĩ của người nghe, tạo sự hợp tác thay vì phản kháng và giúp thông điệp của bạn dễ được tiếp nhận."
+      },
+      "audio": "c105_02_en.mp3"
+    },
+    {
+      "slug": "framing-ideas-positively",
+      "keywords_en": ["framing", "positive"],
+      "keywords_vi": ["định khung", "tích cực"],
+      "copy": {
+        "en": "The way you frame an idea changes how people feel. Instead of saying This is a problem, say We have a chance to improve this. Positive framing keeps listeners open and motivated. Good influence is gentle, hopeful, and forward-looking.",
+        "vi": "Cách bạn định khung ý tưởng sẽ ảnh hưởng cảm xúc của người nghe. Thay vì nói Đây là vấn đề, hãy nói Chúng ta có cơ hội cải thiện điều này. Định khung tích cực giúp người nghe mở lòng và có động lực hơn. Sự ảnh hưởng tốt là nhẹ nhàng, truyền hy vọng và hướng về tương lai."
+      },
+      "audio": "c105_03_en.mp3"
+    },
+    {
+      "slug": "building-trust-through-honesty",
+      "keywords_en": ["trust", "honesty"],
+      "keywords_vi": ["tin cậy", "trung thực"],
+      "copy": {
+        "en": "Persuasion requires trust. Use honest lines like Here is what I truly think or I want to be clear. Speak slowly and avoid exaggeration. When people feel your sincerity, they listen more closely and take your ideas seriously.",
+        "vi": "Thuyết phục cần sự tin cậy. Hãy dùng các câu trung thực như Đây là điều tôi thật sự nghĩ hoặc Tôi muốn nói rõ. Nói chậm và tránh phóng đại. Khi người nghe cảm nhận được sự chân thành, họ sẽ lắng nghe kỹ hơn và coi trọng ý kiến của bạn."
+      },
+      "audio": "c105_04_en.mp3"
+    },
+    {
+      "slug": "handling-resistance-with-ease",
+      "keywords_en": ["resistance", "ease"],
+      "keywords_vi": ["phản kháng", "dễ dàng"],
+      "copy": {
+        "en": "If someone disagrees, stay calm. Do not push harder. Say I understand your view or Let us look at this together. A calm response reduces tension and brings the conversation back to cooperation. Influence grows when pressure fades.",
+        "vi": "Nếu ai đó không đồng ý, hãy giữ bình tĩnh. Đừng đẩy mạnh hơn. Hãy nói Tôi hiểu quan điểm của bạn hoặc Chúng ta cùng xem lại nhé. Phản hồi bình tĩnh giảm căng thẳng và đưa cuộc trò chuyện trở lại hợp tác. Ảnh hưởng tăng lên khi áp lực giảm xuống."
+      },
+      "audio": "c105_05_en.mp3"
+    },
+    {
+      "slug": "practicing-persuasive-tone-daily",
+      "keywords_en": ["practice", "tone"],
+      "keywords_vi": ["luyện tập", "giọng điệu"],
+      "copy": {
+        "en": "Practice a persuasive tone each day. Say your ideas slowly. Use soft beginnings like Maybe or One thought is. Your voice should sound warm, not sharp. Gentle influence grows from consistent calm communication.",
+        "vi": "Hãy luyện giọng thuyết phục mỗi ngày. Nói ý tưởng chậm rãi. Dùng cách mở đầu nhẹ như Có lẽ hoặc Một ý là. Giọng của bạn nên ấm, không sắc. Sự ảnh hưởng nhẹ nhàng đến từ giao tiếp bình tĩnh và nhất quán."
+      },
+      "audio": "c105_06_en.mp3"
+    }
+  ]
+}
