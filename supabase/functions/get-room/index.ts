@@ -1,13 +1,15 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
+import { z } from 'https://deno.land/x/zod@v3.22.4/mod.ts';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Cache-Control': 'public, max-age=300, s-maxage=300', // Cache for 5 minutes
 };
 
-interface GetRoomRequest {
-  roomId: string;
-}
+const getRoomSchema = z.object({
+  roomId: z.string().min(1, 'Room ID is required').max(100),
+});
 
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -35,7 +37,18 @@ Deno.serve(async (req) => {
       );
     }
 
-    const { roomId }: GetRoomRequest = await req.json();
+    const body = await req.json();
+    const validation = getRoomSchema.safeParse(body);
+    
+    if (!validation.success) {
+      console.error('Validation failed:', validation.error);
+      return new Response(
+        JSON.stringify({ error: 'Invalid request', details: validation.error.errors }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const { roomId } = validation.data;
     console.log(`User ${user.id} requesting room: ${roomId}`);
 
     // Get user's tier

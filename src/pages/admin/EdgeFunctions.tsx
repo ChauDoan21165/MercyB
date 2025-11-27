@@ -22,13 +22,15 @@ const EDGE_FUNCTIONS: EdgeFunction[] = [
   { name: 'update-profile', category: 'Core Product', description: 'Update user profile information', icon: Users, status: 'active', isPublic: false },
   
   // Core Product - Rooms & Content
-  { name: 'get-room', category: 'Core Product', description: 'Get room data with tier validation and access control', icon: Database, status: 'active', isPublic: false },
-  { name: 'list-rooms', category: 'Core Product', description: 'List rooms with pagination, filters, and search', icon: Search, status: 'active', isPublic: false },
+  { name: 'get-room', category: 'Core Product', description: 'Get room data with tier validation and access control + Edge Cache (5min)', icon: Database, status: 'active', isPublic: false },
+  { name: 'list-rooms', category: 'Core Product', description: 'List rooms with pagination, filters, and search + Edge Cache (3min)', icon: Search, status: 'active', isPublic: false },
   { name: 'search-entries', category: 'Core Product', description: 'Full-text search across room entries with ranking', icon: Search, status: 'active', isPublic: false },
   { name: 'get-subscription-status', category: 'Core Product', description: 'Get user subscription tier and usage limits', icon: Users, status: 'active', isPublic: false },
   { name: 'sync-rooms', category: 'Core Product', description: 'Sync room data from JSON files to database', icon: RefreshCw, status: 'active', isPublic: false },
   
   // Payment & Subscription
+  { name: 'create-checkout-session', category: 'Payment', description: 'Create PayPal/Stripe checkout session for subscriptions', icon: TrendingUp, status: 'active', isPublic: false },
+  { name: 'usdt-payment', category: 'Payment', description: 'USDT crypto payment handler (TRC20/ERC20/BEP20)', icon: TrendingUp, status: 'active', isPublic: false },
   { name: 'paypal', category: 'Payment', description: 'PayPal payment webhook handler with signature verification', icon: TrendingUp, status: 'active', isPublic: true },
   
   // Communication
@@ -174,7 +176,7 @@ export default function EdgeFunctions() {
             Edge Functions
           </h1>
           <p className="text-muted-foreground mt-1">
-            Backend serverless functions • {EDGE_FUNCTIONS.length} total functions
+            Backend serverless functions • {EDGE_FUNCTIONS.length} total functions • Zod validation • Edge caching enabled
           </p>
         </div>
         <Button onClick={handleRefresh} disabled={refreshing} className="gap-2">
