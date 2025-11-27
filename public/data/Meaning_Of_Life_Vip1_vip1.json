@@ -1,9 +1,4 @@
-Here is the rebuilt file — **same format, same ID, three entries**, each ~150 words in **both English and Vietnamese**.
-Format is kept **intact** and ready to drop into your app.
 
----
-
-```json
 {
   "id": "meaning-of-life-vip1",
   "tier": "vip 1",
@@ -58,4 +53,3 @@ Format is kept **intact** and ready to drop into your app.
     "room_color": "#E6F3FF"
   }
 }
-```
