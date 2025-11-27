@@ -298,6 +298,33 @@ export default function KidsRoomHealthCheck() {
     for (const room of roomsToFix) {
       try {
         const jsonFileName = getJsonFilenameForRoom(room.id, room.level_id);
+
+  const activateRoom = async (roomId: string) => {
+    setFixing(roomId);
+    try {
+      const { error } = await supabase
+        .from('kids_rooms')
+        .update({ is_active: true })
+        .eq('id', roomId);
+
+      if (error) throw error;
+
+      toast({
+        title: "Room activated!",
+        description: `Room ${roomId} is now active`,
+      });
+
+      await checkRooms();
+    } catch (error: any) {
+      toast({
+        title: "❌ Error activating room",
+        description: error.message,
+        variant: "destructive"
+      });
+    } finally {
+      setFixing(null);
+    }
+  };
         const response = await fetch(`/data/${jsonFileName}`);
         
         if (!response.ok) {
@@ -584,16 +611,35 @@ export default function KidsRoomHealthCheck() {
                   {missingJson.map(room => (
                     <Alert key={room.id} variant="destructive">
                       <XCircle className="h-4 w-4" />
-                      <AlertDescription>
-                        <strong>{room.title_en}</strong> ({room.id})
-                        <br />
-                        <span className="text-sm">
-                          Level {room.level_id.replace('level', '')} • {room.jsonError}
-                        </span>
-                        <br />
-                        <span className="text-xs text-muted-foreground mt-1 block">
-                          Expected: /data/{getJsonFilenameForRoom(room.id, room.level_id)}
-                        </span>
+                      <AlertDescription className="flex items-center justify-between">
+                        <div>
+                          <strong>{room.title_en}</strong> ({room.id})
+                          <br />
+                          <span className="text-sm">
+                            Level {room.level_id.replace('level', '')} • {room.jsonError}
+                          </span>
+                          <br />
+                          <span className="text-xs text-muted-foreground mt-1 block">
+                            Expected: /data/{getJsonFilenameForRoom(room.id, room.level_id)}
+                          </span>
+                        </div>
+                        <Button
+                          onClick={() => fixRoom(room.id, room.level_id)}
+                          disabled={fixing === room.id}
+                          size="sm"
+                        >
+                          {fixing === room.id ? (
+                            <>
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                              Fixing...
+                            </>
+                          ) : (
+                            <>
+                              <Wrench className="mr-2 h-4 w-4" />
+                              Fix Now
+                            </>
+                          )}
+                        </Button>
                       </AlertDescription>
                     </Alert>
                   ))}
@@ -601,12 +647,31 @@ export default function KidsRoomHealthCheck() {
                   {invalidJson.map(room => (
                     <Alert key={room.id} variant="destructive">
                       <XCircle className="h-4 w-4" />
-                      <AlertDescription>
-                        <strong>{room.title_en}</strong> ({room.id})
-                        <br />
-                        <span className="text-sm">
-                          Level {room.level_id.replace('level', '')} • {room.jsonError}
-                        </span>
+                      <AlertDescription className="flex items-center justify-between">
+                        <div>
+                          <strong>{room.title_en}</strong> ({room.id})
+                          <br />
+                          <span className="text-sm">
+                            Level {room.level_id.replace('level', '')} • {room.jsonError}
+                          </span>
+                        </div>
+                        <Button
+                          onClick={() => fixRoom(room.id, room.level_id)}
+                          disabled={fixing === room.id}
+                          size="sm"
+                        >
+                          {fixing === room.id ? (
+                            <>
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                              Fixing...
+                            </>
+                          ) : (
+                            <>
+                              <Wrench className="mr-2 h-4 w-4" />
+                              Fix Now
+                            </>
+                          )}
+                        </Button>
                       </AlertDescription>
                     </Alert>
                   ))}
@@ -614,12 +679,32 @@ export default function KidsRoomHealthCheck() {
                   {inactiveRooms.map(room => (
                     <Alert key={room.id} variant="destructive">
                       <XCircle className="h-4 w-4" />
-                      <AlertDescription>
-                        <strong>{room.title_en}</strong> ({room.id})
-                        <br />
-                        <span className="text-sm">
-                          Level {room.level_id.replace('level', '')} • Room is marked as inactive - Manual review needed
-                        </span>
+                      <AlertDescription className="flex items-center justify-between">
+                        <div>
+                          <strong>{room.title_en}</strong> ({room.id})
+                          <br />
+                          <span className="text-sm">
+                            Level {room.level_id.replace('level', '')} • Room is marked as inactive
+                          </span>
+                        </div>
+                        <Button
+                          onClick={() => activateRoom(room.id)}
+                          disabled={fixing === room.id}
+                          size="sm"
+                          variant="default"
+                        >
+                          {fixing === room.id ? (
+                            <>
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                              Activating...
+                            </>
+                          ) : (
+                            <>
+                              <CheckCircle2 className="mr-2 h-4 w-4" />
+                              Activate
+                            </>
+                          )}
+                        </Button>
                       </AlertDescription>
                     </Alert>
                   ))}
