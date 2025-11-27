@@ -72,6 +72,7 @@ import Settings from "./pages/Settings";
 import HealthDashboard from "./pages/admin/HealthDashboard";
 import UnifiedHealthCheck from "./pages/admin/UnifiedHealthCheck";
 import SystemHealth from "./pages/admin/SystemHealth";
+import EdgeFunctions from "./pages/admin/EdgeFunctions";
 
 const queryClient = new QueryClient();
 
@@ -172,6 +173,7 @@ const App = () => {
           <Route path="/admin/health-dashboard" element={<HealthDashboard />} />
           <Route path="/admin/room-health/:tier" element={<UnifiedHealthCheck />} />
           <Route path="/admin/system-health" element={<SystemHealth />} />
+          <Route path="/admin/edge-functions" element={<EdgeFunctions />} />
           <Route path="/redeem-gift" element={<RedeemGiftCode />} />
           <Route path="/audio-upload" element={<AudioUpload />} />
           <Route path="/kids-validation" element={<KidsRoomValidation />} />

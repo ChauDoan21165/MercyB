@@ -368,12 +368,18 @@ const AppMetrics = () => {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <FileCode className="h-5 w-5" />
+              <FileCode className="h-5 h-5" />
               Backend Functions (Edge Functions)
             </CardTitle>
             <CardDescription>Serverless functions with today's call statistics</CardDescription>
           </CardHeader>
           <CardContent>
+            <div className="mb-4">
+              <Button onClick={() => navigate('/admin/edge-functions')} className="w-full gap-2">
+                <FileCode className="h-4 w-4" />
+                View All Functions & Documentation
+              </Button>
+            </div>
             <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
               {metrics.edgeFunctions.functions.map((func) => (
                 <div key={func.name} className="flex items-center justify-between p-3 border rounded-lg">
