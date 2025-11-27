@@ -150,12 +150,14 @@ const RoomGridVIP6 = () => {
                   {/* Room Names */}
                   <div className="space-y-1">
                     <p 
-                      className="text-xs font-bold leading-tight line-clamp-2 text-gray-900"
+                      className="text-xs font-bold leading-tight line-clamp-2"
+                      style={useColorTheme ? { color: roomColor, fontWeight: 700 } : { color: 'black' }}
                     >
                       {room.nameEn}
                     </p>
                     <p 
-                      className="text-[10px] leading-tight line-clamp-2 text-gray-700"
+                      className="text-[10px] leading-tight line-clamp-2"
+                      style={useColorTheme ? { color: roomColor, fontWeight: 600 } : { color: '#6b7280' }}
                     >
                       {room.nameVi}
                     </p>
