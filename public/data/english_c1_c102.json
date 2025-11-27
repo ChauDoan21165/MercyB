@@ -1,0 +1,75 @@
+{
+  "id": "english_c1_c102",
+  "tier": "VIP3 / VIP3",
+  "domain": "English C1",
+  "title": {
+    "en": "C1-02 — Calm, Persuasive Communication",
+    "vi": "C1-02 — Giao Tiếp Thuyết Phục & Bình Tĩnh"
+  },
+  "content": {
+    "en": "This room helps you speak with gentle persuasion. You will learn how to present ideas confidently without sounding aggressive, how to guide listeners through your reasoning, and how to use soft but strong language that earns trust. These entries focus on emotional control, clarity, and respectful influence.",
+    "vi": "Phòng này giúp bạn giao tiếp một cách thuyết phục nhưng nhẹ nhàng. Bạn sẽ học cách trình bày ý tưởng tự tin mà không gây áp lực, cách dẫn dắt người nghe theo lập luận của mình và cách sử dụng ngôn từ mềm mại nhưng mạnh mẽ để tạo dựng niềm tin. Các mục nội dung tập trung vào kiểm soát cảm xúc, sự rõ ràng và ảnh hưởng đầy tôn trọng."
+  },
+  "entries": [
+    {
+      "slug": "using-soft-power-phrases",
+      "keywords_en": ["persuasion", "soft power"],
+      "keywords_vi": ["thuyết phục", "sức mạnh mềm"],
+      "copy": {
+        "en": "Soft power phrases help you influence without pressure. Use warm openers like I believe this could work, One idea we can explore, or Maybe we try this approach. These lines reduce resistance and open the listener’s mind. Persuasion works best when the other person feels respected.",
+        "vi": "Các cụm từ sức mạnh mềm giúp bạn tạo ảnh hưởng mà không gây áp lực. Hãy dùng các mở đầu ấm áp như Tôi tin rằng cách này có thể hiệu quả, Một ý tưởng chúng ta có thể thử, hoặc Có lẽ chúng ta thử hướng này. Những câu này làm giảm phản kháng và mở lòng người nghe. Thuyết phục hiệu quả nhất khi người đối diện cảm thấy được tôn trọng."
+      },
+      "audio": "c102_01_en.mp3"
+    },
+    {
+      "slug": "guiding-the-listeners-thinking",
+      "keywords_en": ["guiding", "reasoning"],
+      "keywords_vi": ["dẫn dắt", "lập luận"],
+      "copy": {
+        "en": "Guide the listener step by step. Start with your view. Add a reason. Then show the benefit. Example: I think we should adjust the plan. It saves us time. This way we finish before the deadline. Simple structure creates strong persuasion.",
+        "vi": "Hãy dẫn dắt người nghe từng bước. Bắt đầu bằng quan điểm của bạn. Thêm một lý do. Sau đó đưa ra lợi ích. Ví dụ: Tôi nghĩ chúng ta nên điều chỉnh kế hoạch. Nó giúp tiết kiệm thời gian. Cách này giúp chúng ta hoàn thành trước hạn. Cấu trúc đơn giản tạo nên sức thuyết phục mạnh."
+      },
+      "audio": "c102_02_en.mp3"
+    },
+    {
+      "slug": "reducing-conflict-with-language",
+      "keywords_en": ["conflict", "communication"],
+      "keywords_vi": ["xung đột", "giao tiếp"],
+      "copy": {
+        "en": "Language can calm tension. Avoid strong words like must, wrong, or never. Replace them with softer lines like maybe we can, I see your point, or let us try another way. These choices protect the conversation. Calm words make hard discussions easier.",
+        "vi": "Ngôn từ có thể làm dịu căng thẳng. Tránh các từ mạnh như phải, sai, hoặc không bao giờ. Hãy thay bằng các câu nhẹ hơn như có thể chúng ta, tôi hiểu ý bạn, hoặc hãy thử cách khác. Những lựa chọn này bảo vệ cuộc trò chuyện. Lời nói bình tĩnh giúp những cuộc bàn luận khó trở nên dễ dàng hơn."
+      },
+      "audio": "c102_03_en.mp3"
+    },
+    {
+      "slug": "building-trust-with-honesty-and-kindness",
+      "keywords_en": ["trust", "honesty"],
+      "keywords_vi": ["niềm tin", "chân thành"],
+      "copy": {
+        "en": "Persuasion needs trust. Speak honestly and kindly. Do not exaggerate. Do not hide important details. Use clear lines like This is my honest view or I want to be fair. When people trust your intention, they listen more deeply.",
+        "vi": "Thuyết phục cần niềm tin. Hãy nói chân thành và tử tế. Đừng phóng đại. Đừng giấu thông tin quan trọng. Hãy dùng những câu rõ ràng như Đây là quan điểm thật lòng của tôi hoặc Tôi muốn nói một cách công bằng. Khi người khác tin vào ý tốt của bạn, họ sẽ lắng nghe sâu hơn."
+      },
+      "audio": "c102_04_en.mp3"
+    },
+    {
+      "slug": "persuading-with-stable-emotion",
+      "keywords_en": ["emotion", "stability"],
+      "keywords_vi": ["cảm xúc", "ổn định"],
+      "copy": {
+        "en": "Stable emotion makes your message strong. Breathe gently. Speak slowly. Pause before important points. If you feel stressed, soften your tone and shorten your sentence. Calm delivery increases your influence more than loud or fast speech ever can.",
+        "vi": "Cảm xúc ổn định làm thông điệp của bạn mạnh mẽ hơn. Hãy thở nhẹ. Nói chậm. Ngừng lại trước những điểm quan trọng. Nếu cảm thấy căng thẳng, hãy làm mềm giọng và rút ngắn câu. Cách nói bình tĩnh tăng ảnh hưởng nhiều hơn so với nói nhanh hoặc to."
+      },
+      "audio": "c102_05_en.mp3"
+    },
+    {
+      "slug": "daily-persuasion-practice",
+      "keywords_en": ["practice", "persuasion"],
+      "keywords_vi": ["luyện tập", "thuyết phục"],
+      "copy": {
+        "en": "Practice one gentle persuasion line each day. Use it in a real moment. Keep it soft. Keep it sincere. Over time, you will speak with natural confidence, calm rhythm, and respectful strength.",
+        "vi": "Mỗi ngày hãy luyện một câu thuyết phục nhẹ nhàng. Dùng nó trong tình huống thật. Nói với giọng mềm và thành thật. Theo thời gian, bạn sẽ giao tiếp tự tin, nhịp nhàng và mạnh mẽ một cách tôn trọng."
+      },
+      "audio": "c102_06_en.mp3"
+    }
+  ]
+}

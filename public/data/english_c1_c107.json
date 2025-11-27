@@ -1,0 +1,75 @@
+{
+  "id": "english_c1_c107",
+  "tier": "VIP3 / VIP3",
+  "domain": "English C1",
+  "title": {
+    "en": "C1-07 — Advanced Sentence Flow",
+    "vi": "C1-07 — Nhịp Chảy Câu Nâng Cao"
+  },
+  "content": {
+    "en": "This room helps you build natural, smooth sentence flow in English. You will practice connecting ideas, using transition words, and shaping long sentences that stay clear and easy to follow. These six entries guide you toward calm, confident communication.",
+    "vi": "Phòng này giúp bạn tạo nhịp chảy câu tự nhiên và mượt mà trong tiếng Anh. Bạn sẽ luyện cách kết nối ý, dùng từ chuyển tiếp và xây dựng câu dài nhưng vẫn rõ ràng, dễ hiểu. Sáu mục nội dung hướng dẫn bạn giao tiếp bình tĩnh và tự tin hơn."
+  },
+  "entries": [
+    {
+      "slug": "connecting-ideas-clearly",
+      "keywords_en": ["connection", "ideas"],
+      "keywords_vi": ["kết nối", "ý tưởng"],
+      "copy": {
+        "en": "Good sentence flow starts with clear connections. Use simple words like and, but, because, and so to join ideas. These small connectors guide the listener and make your message easier to understand. Smooth connections show maturity in communication.",
+        "vi": "Nhịp câu tốt bắt đầu từ sự kết nối rõ ràng. Hãy dùng các từ đơn giản như and, but, because, so để liên kết ý. Những từ nhỏ này giúp người nghe theo dõi dễ dàng và làm thông điệp mạch lạc hơn. Kết nối mượt mà thể hiện sự trưởng thành trong giao tiếp."
+      },
+      "audio": "c107_01_en.mp3"
+    },
+    {
+      "slug": "using-transition-words",
+      "keywords_en": ["transition", "flow"],
+      "keywords_vi": ["từ chuyển tiếp", "mạch lạc"],
+      "copy": {
+        "en": "Transition words help your ideas move naturally. Use first, then, next, however, or finally to guide the listener through your thoughts. These markers add clarity and rhythm. When used gently, transitions make long sentences feel effortless.",
+        "vi": "Từ chuyển tiếp giúp ý tưởng của bạn di chuyển tự nhiên. Hãy dùng first, then, next, however, finally để dẫn dắt người nghe theo dòng suy nghĩ. Những dấu hiệu này tạo sự rõ ràng và nhịp điệu. Khi dùng tinh tế, chúng khiến các câu dài trở nên nhẹ nhàng."
+      },
+      "audio": "c107_02_en.mp3"
+    },
+    {
+      "slug": "breaking-long-sentences-safely",
+      "keywords_en": ["long sentences", "clarity"],
+      "keywords_vi": ["câu dài", "rõ ràng"],
+      "copy": {
+        "en": "Long sentences are powerful when they stay clear. Break them into small parts in your mind. Speak one idea at a time. Pause gently between ideas. This keeps your message organised and prevents confusion. Clarity is more important than speed.",
+        "vi": "Câu dài rất hiệu quả khi vẫn giữ được sự rõ ràng. Hãy chia nhỏ câu trong suy nghĩ. Nói từng ý một và ngừng nhẹ giữa các ý. Điều này giữ cho thông điệp có trật tự và tránh gây rối. Sự rõ ràng quan trọng hơn tốc độ."
+      },
+      "audio": "c107_03_en.mp3"
+    },
+    {
+      "slug": "using-emphasis-and-stress",
+      "keywords_en": ["emphasis", "stress"],
+      "keywords_vi": ["nhấn mạnh", "trọng âm"],
+      "copy": {
+        "en": "Emphasis helps listeners know what matters most. Slow down slightly before an important word. Raise your tone gently. This natural stress pattern brings life to your sentences. Good emphasis makes your ideas memorable and easier to follow.",
+        "vi": "Sự nhấn mạnh giúp người nghe biết điều gì quan trọng nhất. Hãy chậm lại một chút trước từ quan trọng và nâng giọng nhẹ. Nhịp trọng âm tự nhiên mang sức sống vào câu nói. Việc nhấn đúng chỗ khiến ý tưởng của bạn dễ nhớ và dễ theo dõi."
+      },
+      "audio": "c107_04_en.mp3"
+    },
+    {
+      "slug": "removing-unnecessary-words",
+      "keywords_en": ["clarity", "precision"],
+      "keywords_vi": ["rõ ràng", "chính xác"],
+      "copy": {
+        "en": "Advanced speakers learn to remove extra words. Shorten long expressions when possible. Use simple structures instead of complicated ones. Fewer words often create stronger meaning. Precision makes your sentence flow feel elegant and calm.",
+        "vi": "Người nói nâng cao học cách bỏ các từ không cần thiết. Hãy rút gọn các cụm dài khi có thể và dùng cấu trúc đơn giản thay vì phức tạp. Ít từ hơn thường tạo ý nghĩa mạnh hơn. Sự chính xác khiến nhịp câu trở nên thanh thoát và bình tĩnh."
+      },
+      "audio": "c107_05_en.mp3"
+    },
+    {
+      "slug": "daily-flow-practice",
+      "keywords_en": ["practice", "flow"],
+      "keywords_vi": ["luyện tập", "nhịp câu"],
+      "copy": {
+        "en": "Practice flow daily with three steps. First, read one short paragraph aloud. Next, underline connectors and transition words. Finally, read again with gentle pauses and clear emphasis. This simple routine builds strong sentence rhythm over time.",
+        "vi": "Hãy luyện nhịp câu mỗi ngày với ba bước: đọc to một đoạn ngắn, gạch dưới các từ kết nối và từ chuyển tiếp, rồi đọc lại với ngắt nghỉ nhẹ và nhấn rõ ràng. Thói quen đơn giản này giúp bạn xây dựng nhịp câu vững chắc theo thời gian."
+      },
+      "audio": "c107_06_en.mp3"
+    }
+  ]
+}
