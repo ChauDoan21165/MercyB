@@ -232,6 +232,7 @@ const ChatHub = () => {
         }
        
         // Set keyword menu from merged data
+        console.log('🔑 Keywords from loadMergedRoom:', result.keywordMenu);
         setKeywordMenu(result.keywordMenu);
         
         // Load room essay from database
@@ -248,13 +249,19 @@ const ChatHub = () => {
           });
         }
         
-        // Load custom keyword colors for this room
-        const customKeywords = await loadRoomKeywords(roomId || '');
-        if (customKeywords.length > 0) {
-          setCustomKeywordMappings(customKeywords);
-          console.log(`Loaded ${customKeywords.length} custom keyword color mappings for ${roomId}`);
-        } else {
+        // Load custom keyword colors for this room (optional feature)
+        try {
+          const customKeywords = await loadRoomKeywords(roomId || '');
+          if (customKeywords.length > 0) {
+            setCustomKeywordMappings(customKeywords);
+            console.log(`Loaded ${customKeywords.length} custom keyword color mappings for ${roomId}`);
+          } else {
+            clearCustomKeywordMappings();
+          }
+        } catch (err) {
+          // Custom keyword colors are optional, don't break if they fail to load
           clearCustomKeywordMappings();
+          console.log('No custom keyword colors for this room (this is normal)');
         }
         
         // Don't add welcome message to chat - it's displayed in the card above
