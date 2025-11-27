@@ -513,13 +513,32 @@ export default function UnifiedHealthCheck() {
       return;
     }
 
+    // Enhanced confirmation with full list and stronger warning
+    const roomList = phantomRooms.map(r => `• ${r.id} - ${r.title}`).join('\n');
     const confirmed = window.confirm(
-      `This will permanently delete ${phantomRooms.length} rooms from the database that have no JSON files.\n\n` +
-      `First 10: ${phantomRooms.slice(0, 10).map(r => r.id).join(', ')}\n\n` +
-      `Are you sure?`
+      `⚠️ PERMANENT DELETION WARNING ⚠️\n\n` +
+      `This will PERMANENTLY DELETE ${phantomRooms.length} rooms from the database.\n\n` +
+      `These rooms were identified as having NO JSON files in public/data/:\n\n` +
+      `${roomList}\n\n` +
+      `THIS CANNOT BE UNDONE!\n\n` +
+      `Are you absolutely sure you want to delete these rooms?`
     );
 
     if (!confirmed) return;
+
+    // Double confirmation for safety
+    const doubleConfirm = window.confirm(
+      `FINAL CONFIRMATION:\n\n` +
+      `Deleting ${phantomRooms.length} rooms. Type OK to proceed.`
+    );
+
+    if (!doubleConfirm) {
+      toast({
+        title: "Deletion Cancelled",
+        description: "No rooms were deleted",
+      });
+      return;
+    }
 
     console.log('🗑️ Removing', phantomRooms.length, 'phantom rooms...');
     
