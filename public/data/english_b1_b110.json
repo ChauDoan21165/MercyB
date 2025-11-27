@@ -1,0 +1,75 @@
+{
+  "id": "english_b1_b110",
+  "tier": "VIP2 / VIP2",
+  "domain": "English B1",
+  "title": {
+    "en": "B1-10 — Talking About Daily Routines",
+    "vi": "B1-10 — Nói Về Thói Quen Hằng Ngày"
+  },
+  "content": {
+    "en": "This room helps you talk clearly about your daily routine. You will learn how to describe what you do in the morning, afternoon, and evening. These entries show you simple patterns to talk about work, study, meals, hobbies, and rest. Daily routine conversations help you build natural English for real life and friendly small talk.",
+    "vi": "Phòng này giúp bạn nói rõ ràng về thói quen hằng ngày của mình. Bạn sẽ học cách mô tả những việc bạn làm vào buổi sáng, buổi trưa và buổi tối. Các mục nội dung đưa ra các mẫu câu đơn giản để nói về công việc, học tập, bữa ăn, sở thích và nghỉ ngơi. Nói về thói quen giúp bạn giao tiếp tự nhiên hơn trong đời sống và khi trò chuyện thân thiện."
+  },
+  "entries": [
+    {
+      "slug": "morning-routine",
+      "keywords_en": ["morning", "routine"],
+      "keywords_vi": ["buổi sáng", "thói quen"],
+      "copy": {
+        "en": "Talk about your morning using simple lines. I wake up at six. I brush my teeth. I take a shower. I eat breakfast. I go to work. Keep each line short and clear. A calm routine builds speaking confidence.",
+        "vi": "Hãy nói về buổi sáng của bạn bằng các câu đơn giản. Tôi dậy lúc sáu giờ. Tôi đánh răng. Tôi tắm. Tôi ăn sáng. Tôi đi làm. Giữ mỗi câu ngắn và rõ ràng. Thói quen nói chậm giúp bạn tự tin hơn."
+      },
+      "audio": "b110_01_en.mp3"
+    },
+    {
+      "slug": "afternoon-activities",
+      "keywords_en": ["afternoon", "activities"],
+      "keywords_vi": ["buổi chiều", "hoạt động"],
+      "copy": {
+        "en": "Use simple patterns to describe your afternoon. I finish work at five. I go home. I cook dinner. I rest a little. Short sentences help you speak without stress.",
+        "vi": "Hãy dùng các mẫu câu đơn giản để mô tả buổi chiều của bạn. Tôi tan làm lúc năm giờ. Tôi về nhà. Tôi nấu bữa tối. Tôi nghỉ ngơi một chút. Câu ngắn giúp bạn nói không căng thẳng."
+      },
+      "audio": "b110_02_en.mp3"
+    },
+    {
+      "slug": "evening-routine",
+      "keywords_en": ["evening", "routine"],
+      "keywords_vi": ["buổi tối", "thói quen"],
+      "copy": {
+        "en": "Describe your evening with calm, clear lines. I eat dinner. I watch a show. I study English. I talk with my family. I go to bed at ten. Simple rhythm builds natural speaking.",
+        "vi": "Hãy mô tả buổi tối bằng các câu rõ ràng. Tôi ăn tối. Tôi xem chương trình. Tôi học tiếng Anh. Tôi nói chuyện với gia đình. Tôi đi ngủ lúc mười giờ. Nhịp nói đơn giản giúp bạn nói tự nhiên hơn."
+      },
+      "audio": "b110_03_en.mp3"
+    },
+    {
+      "slug": "talking-about-work-and-study",
+      "keywords_en": ["work", "study"],
+      "keywords_vi": ["công việc", "học tập"],
+      "copy": {
+        "en": "Use short lines to talk about work or study. I work in an office. I study English at night. I have meetings. I write emails. Simple lines help listeners understand you easily.",
+        "vi": "Hãy dùng câu ngắn để nói về công việc hoặc học tập. Tôi làm việc trong văn phòng. Tôi học tiếng Anh vào buổi tối. Tôi có các cuộc họp. Tôi viết email. Câu đơn giản giúp người nghe hiểu bạn dễ dàng."
+      },
+      "audio": "b110_04_en.mp3"
+    },
+    {
+      "slug": "hobbies-and-free-time",
+      "keywords_en": ["hobbies", "free time"],
+      "keywords_vi": ["sở thích", "thời gian rảnh"],
+      "copy": {
+        "en": "Talk about your hobbies with simple sentences. I like reading. I play games. I walk in the park. I listen to music. Hobbies make your conversations friendly and warm.",
+        "vi": "Hãy nói về sở thích bằng câu đơn giản. Tôi thích đọc sách. Tôi chơi game. Tôi đi bộ trong công viên. Tôi nghe nhạc. Sở thích giúp cuộc trò chuyện thân thiện và ấm áp hơn."
+      },
+      "audio": "b110_05_en.mp3"
+    },
+    {
+      "slug": "daily-routine-practice",
+      "keywords_en": ["practice", "routine"],
+      "keywords_vi": ["luyện tập", "thói quen"],
+      "copy": {
+        "en": "Practice your routine once a day. Say morning, afternoon, and evening lines slowly. Daily practice helps your English feel natural and calm.",
+        "vi": "Hãy luyện nói thói quen của bạn mỗi ngày. Nói các câu buổi sáng, buổi chiều và buổi tối thật chậm. Luyện tập hằng ngày giúp tiếng Anh của bạn trở nên tự nhiên và bình tĩnh."
+      },
+      "audio": "b110_06_en.mp3"
+    }
+  ]
+}
