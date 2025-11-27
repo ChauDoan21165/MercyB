@@ -130,11 +130,7 @@ const RoomGridVIP6 = () => {
                     ? "hover:scale-110 hover:shadow-hover hover:z-10" 
                     : "opacity-60 cursor-not-allowed"
                 }`}
-                style={
-                  useColorTheme
-                    ? { background: roomColor, border: '1px solid rgba(0,0,0,0.1)' }
-                    : { background: 'white', border: '1px solid #e5e7eb' }
-                }
+                style={{ background: 'white', border: '1px solid #e5e7eb' }}
                 onClick={() => room.hasData && navigate(`/chat/${room.id}`)}
               >
                 {/* Status Badge */}
@@ -154,29 +150,20 @@ const RoomGridVIP6 = () => {
                   {/* Room Names */}
                   <div className="space-y-1">
                     <p 
-                      className="text-xs font-semibold leading-tight line-clamp-2"
-                      style={useColorTheme ? {
-                        background: 'var(--gradient-rainbow)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        backgroundClip: 'text'
-                      } : {
-                        color: 'black'
-                      }}
+                      className="text-xs font-bold leading-tight line-clamp-2"
+                      style={useColorTheme 
+                        ? { color: roomColor, fontWeight: 700 }
+                        : { color: 'black' }
+                      }
                     >
                       {room.nameEn}
                     </p>
                     <p 
                       className="text-[10px] leading-tight line-clamp-2"
-                      style={useColorTheme ? {
-                        background: 'var(--gradient-rainbow)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        backgroundClip: 'text',
-                        opacity: 0.7
-                      } : {
-                        color: '#4b5563'
-                      }}
+                      style={useColorTheme 
+                        ? { color: roomColor, fontWeight: 600 }
+                        : { color: '#4b5563' }
+                      }
                     >
                       {room.nameVi}
                     </p>
@@ -186,11 +173,7 @@ const RoomGridVIP6 = () => {
                 {/* Hover Effect */}
                 {room.hasData && (
                   <div 
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"
-                    style={useColorTheme 
-                      ? { background: `linear-gradient(to bottom right, ${roomColor}20, ${roomColor}10)` }
-                      : { background: 'rgba(0, 0, 0, 0.05)' }
-                    }
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg bg-gray-50"
                   />
                 )}
               </Card>

@@ -219,17 +219,12 @@ const RoomGridVIP3 = () => {
                       : 'opacity-60 cursor-not-allowed'
                   }`}
                   style={
-                    useColorTheme
-                      ? (isSpecialRoom
-                          ? {
-                              border: `2px solid ${isSpecialRoom}`,
-                              background: `linear-gradient(135deg, ${isSpecialRoom}15, ${isSpecialRoom}08)`,
-                              boxShadow: `0 0 20px ${isSpecialRoom}50`,
-                            }
-                          : {
-                              background: roomColor,
-                              border: '1px solid rgba(0,0,0,0.1)'
-                            })
+                    isSpecialRoom
+                      ? {
+                          border: `2px solid ${isSpecialRoom}`,
+                          background: `linear-gradient(135deg, ${isSpecialRoom}15, ${isSpecialRoom}08)`,
+                          boxShadow: `0 0 20px ${isSpecialRoom}50`,
+                        }
                       : {
                           background: 'white',
                           border: '1px solid #e5e7eb'
@@ -278,29 +273,20 @@ const RoomGridVIP3 = () => {
                     {/* Room Names */}
                     <div className="space-y-1">
                       <p
-                        className="text-xs font-semibold leading-tight line-clamp-2"
-                        style={useColorTheme ? {
-                          background: 'var(--gradient-rainbow)',
-                          WebkitBackgroundClip: 'text',
-                          WebkitTextFillColor: 'transparent',
-                          backgroundClip: 'text'
-                        } : {
-                          color: 'black'
-                        }}
+                        className="text-xs font-bold leading-tight line-clamp-2"
+                        style={useColorTheme 
+                          ? { color: roomColor, fontWeight: 700 }
+                          : { color: 'black' }
+                        }
                       >
                         {room.nameEn}
                       </p>
                       <p
                         className="text-[10px] leading-tight line-clamp-2"
-                        style={useColorTheme ? {
-                          background: 'var(--gradient-rainbow)',
-                          WebkitBackgroundClip: 'text',
-                          WebkitTextFillColor: 'transparent',
-                          backgroundClip: 'text',
-                          opacity: 0.7
-                        } : {
-                          color: '#4b5563'
-                        }}
+                        style={useColorTheme 
+                          ? { color: roomColor, fontWeight: 600 }
+                          : { color: '#4b5563' }
+                        }
                       >
                         {room.nameVi}
                       </p>
@@ -310,13 +296,7 @@ const RoomGridVIP3 = () => {
                   {/* Hover Effect */}
                   {room.hasData && (
                     <div 
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"
-                      style={useColorTheme 
-                        ? (isSpecialRoom
-                            ? { background: `linear-gradient(135deg, ${isSpecialRoom}30, ${isSpecialRoom}20)` }
-                            : { background: `linear-gradient(to bottom right, ${roomColor}15, ${roomColor}08)` })
-                        : { background: 'rgba(0, 0, 0, 0.05)' }
-                      }
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg bg-gray-50"
                     />
                   )}
                 </Card>
