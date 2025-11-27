@@ -124,69 +124,21 @@ const Homepage = () => {
           ))}
       </main>
 
-      {/* English Foundation Free Bonus Section */}
+      {/* English Pathway - Complete Journey (Foundation → A1 → A2 → B1 → B2 → C1 → C2) */}
       <section className="py-16 px-6" style={{ backgroundColor: "#E8F4F8" }}>
         <div className="max-w-4xl mx-auto space-y-8">
           <HomepageSection
-            id="english-foundation-free"
+            id="english-pathway-overview"
             backgroundColor="#E8F4F8"
             headingColor="#0C4A6E"
             accentColor="#0284C7"
             title={{
-              en: "🌱 English Foundation — Free Bonus Pathway",
-              vi: "🌱 English Foundation — Lộ Trình Miễn Phí"
+              en: "🌍 The Mercy Blade English Pathway",
+              vi: "🌍 Lộ Trình Tiếng Anh Mercy Blade"
             }}
             body={{
-              en: "A gentle, step-by-step program for Vietnamese absolute beginners. Start from zero and grow into confident A1 level with simple daily lessons in pronunciation, basic grammar, everyday words, listening, and speaking. No shame. No overwhelm. Just small daily wins until English feels safe, natural, and possible.",
-              vi: "Chương trình nhẹ nhàng dành cho người Việt bắt đầu từ con số 0. Học từng bước: phát âm, từ vựng cơ bản, ngữ pháp nền tảng, nghe và nói thực tế. Không áp lực. Không xấu hổ. Chỉ những tiến bộ nhỏ mỗi ngày để tiếng Anh trở nên tự nhiên và dễ tiếp cận."
-            }}
-            audio={{
-              en: "",
-              vi: ""
-            }}
-          />
-        </div>
-      </section>
-
-      {/* A1 Beginner English VIP1 Section */}
-      <section className="py-16 px-6" style={{ backgroundColor: "#FFF7ED" }}>
-        <div className="max-w-4xl mx-auto space-y-8">
-          <HomepageSection
-            id="a1-beginner-english-vip1"
-            backgroundColor="#FFF7ED"
-            headingColor="#7C2D12"
-            accentColor="#EA580C"
-            title={{
-              en: "🎓 A1 Beginner English — VIP1 Premium Track",
-              vi: "🎓 A1 Tiếng Anh Cơ Bản — Lộ Trình VIP1"
-            }}
-            body={{
-              en: "A1 Beginner English helps new learners take their first confident steps after completing English Foundation. These 14 rooms teach simple sentences, useful grammar patterns, everyday vocabulary, and gentle speaking practice. All lessons are slow, clear, and safe for Vietnamese beginners who are learning English for the first time.",
-              vi: "A1 Tiếng Anh Cơ Bản giúp người học mới có những bước đi tự tin sau khi hoàn thành English Foundation. Bộ 14 phòng này dạy câu đơn giản, mẫu ngữ pháp hữu ích, từ vựng đời sống và luyện nói nhẹ nhàng. Tất cả bài học đều chậm rãi, rõ ràng và phù hợp cho người Việt bắt đầu học tiếng Anh từ đầu."
-            }}
-            audio={{
-              en: "",
-              vi: ""
-            }}
-          />
-        </div>
-      </section>
-
-      {/* A2 Pre-Intermediate English VIP2 Section */}
-      <section className="py-16 px-6" style={{ backgroundColor: "#FEF2F2" }}>
-        <div className="max-w-4xl mx-auto space-y-8">
-          <HomepageSection
-            id="a2-pre-intermediate-english-vip2"
-            backgroundColor="#FEF2F2"
-            headingColor="#7F1D1D"
-            accentColor="#DC2626"
-            title={{
-              en: "📚 A2 Pre-Intermediate English — VIP2 Advanced Track",
-              vi: "📚 A2 Tiếng Anh Sơ Trung Cấp — Lộ Trình VIP2"
-            }}
-            body={{
-              en: "A2 Pre-Intermediate English helps learners move from simple sentences to real communication. These 14 rooms introduce longer patterns, everyday conversation topics, practical grammar, listening practice, and short readings. Lessons are still gentle and supportive, but they build stronger speaking and understanding skills for daily life.",
-              vi: "A2 Tiếng Anh Sơ Trung Cấp giúp người học chuyển từ câu đơn sang giao tiếp thật. Bộ 14 phòng này giới thiệu mẫu câu dài hơn, chủ đề hội thoại đời sống, ngữ pháp thực tế, luyện nghe và đọc ngắn. Bài học vẫn nhẹ nhàng, hỗ trợ người Việt, nhưng giúp nâng cao khả năng nói và hiểu trong đời sống."
+              en: "The Mercy Blade English Pathway is a complete learning journey designed for Vietnamese learners who want to grow from absolute beginner to confident, high-level communicator. Every level is gentle, structured, and emotionally safe. You start with simple sounds, letters, and survival phrases, then grow into natural speaking, real listening, solid grammar, clear pronunciation, and advanced communication.\nThe pathway includes seven stages: English Foundation → A1 → A2 → B1 → B2 → C1 → C2.\nEach stage builds exactly on the one before it, so you never feel lost or overwhelmed. With short lessons, calm pronunciation coaching, and daily micro-practice, your English becomes clearer, stronger, and more natural step by step.\nWhether you are beginning from zero or aiming for advanced fluency, this pathway helps you progress with confidence, dignity, and consistency.",
+              vi: "Lộ trình tiếng Anh của Mercy Blade là hành trình học trọn vẹn, dành riêng cho người học Việt Nam muốn phát triển từ mức hoàn toàn mới bắt đầu đến giao tiếp tự tin ở trình độ cao. Mỗi cấp độ đều nhẹ nhàng, có cấu trúc rõ ràng và an toàn về mặt cảm xúc. Bạn bắt đầu từ các âm cơ bản, bảng chữ cái và câu giao tiếp sinh tồn, rồi từng bước chuyển sang nói tự nhiên, nghe thực tế, ngữ pháp chắc chắn, phát âm rõ ràng và giao tiếp nâng cao.\nLộ trình gồm bảy giai đoạn: Nền tảng Tiếng Anh → A1 → A2 → B1 → B2 → C1 → C2.\nMỗi cấp độ được xây dựng dựa trên cấp độ trước, giúp bạn không bao giờ bị quá tải hay mất hướng. Với các bài học ngắn, hướng dẫn phát âm bình tĩnh và thói quen luyện tập mỗi ngày, tiếng Anh của bạn sẽ trở nên rõ ràng, mạnh mẽ và tự nhiên theo từng bước nhỏ.\nDù bạn bắt đầu từ con số 0 hay muốn đạt tới khả năng sử dụng tiếng Anh nâng cao, lộ trình này sẽ giúp bạn tiến bộ với sự tự tin, kiên trì và trọn vẹn phẩm giá."
             }}
             audio={{
               en: "",
