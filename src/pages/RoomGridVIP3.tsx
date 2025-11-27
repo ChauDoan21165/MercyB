@@ -273,16 +273,14 @@ const RoomGridVIP3 = () => {
                     {/* Room Names */}
                     <div className="space-y-1">
                       <p
-                        className="text-xs font-bold leading-tight line-clamp-2"
-                        style={useColorTheme ? { color: roomColor, fontWeight: 700 } : { color: 'black' }}
+                        className="text-xs font-bold leading-tight line-clamp-2 text-foreground"
                       >
-                        {room.nameEn}
+                        {useColorTheme ? highlightTextByRules(room.nameEn, false) : room.nameEn}
                       </p>
                       <p
-                        className="text-[10px] leading-tight line-clamp-2"
-                        style={useColorTheme ? { color: roomColor, fontWeight: 600 } : { color: '#6b7280' }}
+                        className="text-[10px] leading-tight line-clamp-2 text-muted-foreground"
                       >
-                        {room.nameVi}
+                        {useColorTheme ? highlightTextByRules(room.nameVi, true) : room.nameVi}
                       </p>
                     </div>
                   </div>
