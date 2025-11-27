@@ -802,12 +802,7 @@ const ChatHub = () => {
                   title="Copy Room ID"
                 />
               )}
-              <h2 className="text-lg font-semibold" style={{
-                background: 'var(--gradient-rainbow)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}>
+              <h2 className="text-lg font-semibold text-gray-900">
                 {currentRoom.nameEn === currentRoom.nameVi 
                   ? currentRoom.nameEn 
                   : `${currentRoom.nameEn} / ${currentRoom.nameVi}`}
