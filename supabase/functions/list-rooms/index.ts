@@ -1,17 +1,19 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
+import { z } from 'https://deno.land/x/zod@v3.22.4/mod.ts';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Cache-Control': 'public, max-age=180, s-maxage=180', // Cache for 3 minutes
 };
 
-interface ListRoomsRequest {
-  tier?: string;
-  domain?: string;
-  search?: string;
-  page?: number;
-  limit?: number;
-}
+const listRoomsSchema = z.object({
+  tier: z.string().optional(),
+  domain: z.string().optional(),
+  search: z.string().max(200).optional(),
+  page: z.number().int().min(1).default(1),
+  limit: z.number().int().min(1).max(200).default(50),
+});
 
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -39,7 +41,18 @@ Deno.serve(async (req) => {
       );
     }
 
-    const { tier, domain, search, page = 1, limit = 50 }: ListRoomsRequest = await req.json();
+    const body = await req.json();
+    const validation = listRoomsSchema.safeParse(body);
+    
+    if (!validation.success) {
+      console.error('Validation failed:', validation.error);
+      return new Response(
+        JSON.stringify({ error: 'Invalid request', details: validation.error.errors }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const { tier, domain, search, page, limit } = validation.data;
     console.log(`Listing rooms - tier: ${tier}, domain: ${domain}, search: ${search}, page: ${page}`);
 
     let query = supabase
