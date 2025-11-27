@@ -1,0 +1,75 @@
+{
+  "id": "english_c1_c111",
+  "tier": "VIP3 / VIP3",
+  "domain": "English C1",
+  "title": {
+    "en": "C1-11 — Clear Storytelling & Narrative Flow",
+    "vi": "C1-11 — Kể Chuyện Rõ Ràng & Nhịp Chảy Tự Nhiên"
+  },
+  "content": {
+    "en": "This room helps you tell clear, engaging stories in English. You will learn how to structure a story, guide listeners smoothly from one moment to the next, and use descriptive details without losing clarity. These six entries help you build confidence in both personal and professional storytelling.",
+    "vi": "Phòng này giúp bạn kể chuyện bằng tiếng Anh một cách rõ ràng và cuốn hút. Bạn sẽ học cách xây dựng bố cục, dẫn dắt người nghe qua từng khoảnh khắc và dùng chi tiết mô tả mà vẫn giữ sự mạch lạc. Sáu mục nội dung giúp bạn tự tin hơn khi kể chuyện trong cả đời sống và công việc."
+  },
+  "entries": [
+    {
+      "slug": "setting-the-scene",
+      "keywords_en": ["storytelling", "scene"],
+      "keywords_vi": ["kể chuyện", "bối cảnh"],
+      "copy": {
+        "en": "Begin every story with a simple scene: place, time, and the people involved. Keep it short. A clear opening helps the listener follow your story from the start. Good storytellers give just enough detail to spark curiosity.",
+        "vi": "Hãy bắt đầu mọi câu chuyện bằng một bối cảnh đơn giản: địa điểm, thời gian và nhân vật liên quan. Giữ phần mở đầu ngắn gọn. Bối cảnh rõ ràng giúp người nghe theo dõi câu chuyện ngay từ đầu. Người kể chuyện giỏi luôn đưa vừa đủ chi tiết để tạo sự tò mò."
+      },
+      "audio": "c111_01_en.mp3"
+    },
+    {
+      "slug": "building-momentum",
+      "keywords_en": ["momentum", "story flow"],
+      "keywords_vi": ["nhịp độ", "dòng kể"],
+      "copy": {
+        "en": "Good stories move forward smoothly. Use transition words like then, after that, suddenly, or finally to guide the listener. These small markers create momentum and make your story feel alive and easy to follow.",
+        "vi": "Một câu chuyện hay có nhịp độ trôi chảy. Hãy dùng từ chuyển tiếp như then, after that, suddenly, finally để dẫn dắt người nghe. Những dấu hiệu nhỏ này tạo nhịp và khiến câu chuyện sinh động, dễ theo dõi."
+      },
+      "audio": "c111_02_en.mp3"
+    },
+    {
+      "slug": "adding-descriptive-detail",
+      "keywords_en": ["description", "detail"],
+      "keywords_vi": ["miêu tả", "chi tiết"],
+      "copy": {
+        "en": "Description makes a story vivid. Use simple details about color, sound, movement, or emotion. Do not overload the listener. Choose one or two strong images. Clear, focused description is more powerful than long explanations.",
+        "vi": "Miêu tả giúp câu chuyện trở nên sống động. Hãy dùng chi tiết đơn giản về màu sắc, âm thanh, chuyển động hoặc cảm xúc. Đừng đưa quá nhiều thông tin. Chỉ cần một đến hai hình ảnh mạnh mẽ. Miêu tả rõ và tập trung luôn hiệu quả hơn giải thích dài dòng."
+      },
+      "audio": "c111_03_en.mp3"
+    },
+    {
+      "slug": "creating-natural-dialogue",
+      "keywords_en": ["dialogue", "natural speech"],
+      "keywords_vi": ["hội thoại", "tự nhiên"],
+      "copy": {
+        "en": "Dialogue brings your story to life. Keep lines short and natural. Use everyday expressions. When characters speak simply, the listener stays engaged. Avoid long speeches; a few clear lines are enough to show emotion and action.",
+        "vi": "Hội thoại giúp câu chuyện sinh động hơn. Hãy giữ câu thoại ngắn và tự nhiên, dùng các cách nói hằng ngày. Khi nhân vật nói đơn giản, người nghe dễ tập trung. Tránh đoạn thoại dài; chỉ vài câu rõ ràng cũng đủ truyền cảm xúc và hành động."
+      },
+      "audio": "c111_04_en.mp3"
+    },
+    {
+      "slug": "shaping-the-emotional-arc",
+      "keywords_en": ["emotion", "arc"],
+      "keywords_vi": ["cảm xúc", "diễn biến"],
+      "copy": {
+        "en": "Every story has an emotional arc. Guide the listener through calm moments, surprise, tension, and resolution. Use tone to show emotion: slower for sadness, brighter for excitement. A clear emotional arc makes your story memorable.",
+        "vi": "Mỗi câu chuyện đều có một diễn biến cảm xúc. Hãy dẫn người nghe qua các khoảnh khắc bình yên, bất ngờ, căng thẳng và giải tỏa. Dùng giọng nói để thể hiện cảm xúc: chậm khi buồn, sáng khi hào hứng. Một đường dây cảm xúc rõ ràng khiến câu chuyện dễ nhớ."
+      },
+      "audio": "c111_05_en.mp3"
+    },
+    {
+      "slug": "ending-with-purpose",
+      "keywords_en": ["ending", "purpose"],
+      "keywords_vi": ["kết thúc", "ý nghĩa"],
+      "copy": {
+        "en": "A strong ending gives your story meaning. Finish with a simple sentence showing what you learned, how you felt, or why the moment mattered. Clear endings leave the listener satisfied and deepen the impact of your story.",
+        "vi": "Một kết thúc mạnh mẽ đem lại ý nghĩa cho câu chuyện. Hãy kết bằng một câu đơn giản nói lên điều bạn rút ra, cảm xúc của bạn, hoặc lý do khoảnh khắc đó quan trọng. Kết thúc rõ ràng khiến người nghe hài lòng và tăng sức lan tỏa của câu chuyện."
+      },
+      "audio": "c111_06_en.mp3"
+    }
+  ]
+}

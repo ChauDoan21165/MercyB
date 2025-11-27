@@ -1,0 +1,75 @@
+{
+  "id": "english_c1_c114",
+  "tier": "VIP3 / VIP3",
+  "domain": "English C1",
+  "title": {
+    "en": "C1-14 — Expressing Opinions with Precision",
+    "vi": "C1-14 — Diễn Đạt Quan Điểm Một Cách Rõ & Tinh Tế"
+  },
+  "content": {
+    "en": "This room helps you express opinions clearly, politely, and with nuance. At C1 level, strong ideas must sound balanced and thoughtful. These six entries teach you how to agree, disagree, add perspective, and express uncertainty in a mature and natural way.",
+    "vi": "Phòng này giúp bạn diễn đạt quan điểm rõ ràng, lịch sự và tinh tế. Ở cấp độ C1, các ý kiến mạnh cần được thể hiện một cách cân bằng và sâu sắc. Sáu mục nội dung hướng dẫn bạn cách đồng ý, bất đồng, mở rộng góc nhìn và diễn đạt sự không chắc chắn một cách tự nhiên, trưởng thành."
+  },
+  "entries": [
+    {
+      "slug": "clear-soft-opinions",
+      "keywords_en": ["opinions", "soft tone"],
+      "keywords_vi": ["quan điểm", "giọng mềm"],
+      "copy": {
+        "en": "Native speakers often soften opinions to sound respectful. Instead of saying This is wrong, they say I see it differently or I am not sure I agree. Instead of That is a bad idea, they say I think there may be a better way. Softening your tone helps your opinion sound thoughtful, not aggressive.",
+        "vi": "Người bản xứ thường làm mềm quan điểm để tôn trọng người nghe. Thay vì nói Điều này sai, họ nói Tôi thấy khác hoặc Tôi không chắc là tôi đồng ý. Thay vì Ý này tệ quá, họ nói Tôi nghĩ có cách tốt hơn. Giọng mềm giúp quan điểm của bạn nghe chín chắn, không gây đối đầu."
+      },
+      "audio": "c114_01_en.mp3"
+    },
+    {
+      "slug": "expressing-balanced-agreement",
+      "keywords_en": ["agreement", "balanced"],
+      "keywords_vi": ["đồng ý", "cân bằng"],
+      "copy": {
+        "en": "When agreeing, native speakers often add gentle nuance. For example: I agree with you, especially about…, or I see your point, and I also think…. These forms show active listening and deepen the conversation. Agreement becomes more meaningful when expressed with detail.",
+        "vi": "Khi đồng ý, người bản xứ thường thêm sắc thái nhẹ. Ví dụ: Tôi đồng ý với bạn, đặc biệt ở chỗ…, hoặc Tôi hiểu ý bạn, và tôi cũng nghĩ…. Những cách nói này thể hiện lắng nghe tích cực và làm cuộc trò chuyện sâu sắc hơn. Sự đồng ý trở nên ý nghĩa hơn khi có chi tiết."
+      },
+      "audio": "c114_02_en.mp3"
+    },
+    {
+      "slug": "polite-disagreement",
+      "keywords_en": ["disagreement", "polite"],
+      "keywords_vi": ["bất đồng", "lịch sự"],
+      "copy": {
+        "en": "Polite disagreement is a key C1 skill. Useful phrases include I see what you mean, but…, I respect your view, though…, and From my perspective…. These lines create space for your opinion without dismissing the other person. Polite disagreement builds trust, not conflict.",
+        "vi": "Bất đồng lịch sự là kỹ năng quan trọng ở cấp độ C1. Các câu hữu ích gồm Tôi hiểu ý bạn, nhưng…, Tôi tôn trọng quan điểm của bạn, tuy nhiên…, và Theo góc nhìn của tôi…. Những câu này tạo không gian cho quan điểm của bạn mà không phủ nhận người khác. Bất đồng lịch sự xây dựng sự tin cậy thay vì xung đột."
+      },
+      "audio": "c114_03_en.mp3"
+    },
+    {
+      "slug": "adding-perspective",
+      "keywords_en": ["perspective", "discussion"],
+      "keywords_vi": ["góc nhìn", "thảo luận"],
+      "copy": {
+        "en": "To enrich a discussion, add perspective instead of contradicting. Phrases like Another way to look at this is… or One thing we could also consider is… help you expand the topic without arguing. This shows emotional maturity and strong communication skills.",
+        "vi": "Để làm cuộc thảo luận sâu hơn, hãy thêm góc nhìn thay vì phản bác. Các câu như Một cách nhìn khác là… hoặc Một điều nữa chúng ta có thể xem xét là… giúp bạn mở rộng chủ đề mà không tranh cãi. Điều này thể hiện sự trưởng thành cảm xúc và kỹ năng giao tiếp tốt."
+      },
+      "audio": "c114_04_en.mp3"
+    },
+    {
+      "slug": "expressing-uncertainty",
+      "keywords_en": ["uncertainty", "thinking"],
+      "keywords_vi": ["không chắc chắn", "đang suy nghĩ"],
+      "copy": {
+        "en": "At advanced levels, it is natural to express uncertainty. Phrases like I am still thinking about this or I am not completely sure express honesty and reflection. Uncertainty does not make you weaker. It makes you sound thoughtful and real.",
+        "vi": "Ở trình độ cao, diễn đạt sự không chắc chắn là điều tự nhiên. Các câu như Tôi vẫn đang suy nghĩ về điều này hoặc Tôi chưa hoàn toàn chắc chắn thể hiện sự chân thật và suy ngẫm. Không chắc chắn không làm bạn yếu đi; nó khiến bạn nghe sâu sắc và chân thực hơn."
+      },
+      "audio": "c114_05_en.mp3"
+    },
+    {
+      "slug": "clear-strong-opinions",
+      "keywords_en": ["strong opinions", "clarity"],
+      "keywords_vi": ["quan điểm mạnh", "rõ ràng"],
+      "copy": {
+        "en": "When you must express a strong opinion, keep it calm and clear. Useful phrases include My view is that…, I strongly believe…, and In my experience…. Say it once with confidence. You do not need to repeat or defend too much. Clear opinions sound strongest when they are steady and simple.",
+        "vi": "Khi cần thể hiện quan điểm mạnh, hãy giữ bình tĩnh và rõ ràng. Các câu hữu ích gồm Theo quan điểm của tôi…, Tôi tin chắc rằng…, và Theo kinh nghiệm của tôi…. Hãy nói một lần với sự tự tin. Bạn không cần lặp lại hay phòng thủ nhiều. Quan điểm rõ ràng luôn mạnh nhất khi được trình bày đơn giản và vững vàng."
+      },
+      "audio": "c114_06_en.mp3"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "id": "english_c1_c109",
+  "tier": "VIP3 / VIP3",
+  "domain": "English C1",
+  "title": {
+    "en": "C1-09 — Nuance & Subtle Meaning",
+    "vi": "C1-09 — Sắc Thái & Ý Nghĩa Tinh Tế"
+  },
+  "content": {
+    "en": "This room trains you to understand subtle meaning in English. You will learn how small word choices change tone, how soft expressions hide deeper messages, and how native speakers communicate politely without speaking directly. These six entries help you read between the lines with confidence.",
+    "vi": "Phòng này rèn luyện khả năng hiểu sắc thái tinh tế trong tiếng Anh. Bạn sẽ học cách lựa chọn từ ngữ nhỏ thay đổi giọng điệu ra sao, cách những câu nói nhẹ nhàng ẩn ý sâu hơn và cách người bản xứ giao tiếp lịch sự mà không nói thẳng. Sáu mục nội dung giúp bạn đọc được ý giữa các dòng một cách tự tin."
+  },
+  "entries": [
+    {
+      "slug": "softening-language",
+      "keywords_en": ["softening", "polite tone"],
+      "keywords_vi": ["làm nhẹ", "giọng lịch sự"],
+      "copy": {
+        "en": "English speakers often soften their message. Words like maybe, a bit, kind of, or slightly reduce directness. This keeps the conversation gentle and respectful. Softening language helps you express opinions without sounding too strong or demanding.",
+        "vi": "Người nói tiếng Anh thường làm nhẹ thông điệp của họ. Những từ như maybe, a bit, kind of, slightly giảm sự trực tiếp. Điều này giữ cuộc trò chuyện nhẹ nhàng và tôn trọng. Ngôn ngữ làm nhẹ giúp bạn bày tỏ ý kiến mà không tạo cảm giác quá mạnh hoặc áp đặt."
+      },
+      "audio": "c109_01_en.mp3"
+    },
+    {
+      "slug": "reading-between-the-lines",
+      "keywords_en": ["nuance", "implied meaning"],
+      "keywords_vi": ["sắc thái", "ngụ ý"],
+      "copy": {
+        "en": "Sometimes a simple phrase carries hidden meaning. When someone says I will think about it, it often means no. When they say It’s interesting, it may mean they disagree. To understand nuance, notice tone, pauses, and the situation around the words.",
+        "vi": "Đôi khi một câu đơn giản lại mang ý nghĩa ẩn. Khi ai đó nói Tôi sẽ nghĩ về việc đó, thường là từ chối. Khi họ nói Nó thú vị đấy, có thể họ không đồng ý. Để hiểu sắc thái, hãy chú ý giọng nói, khoảng ngừng và bối cảnh xung quanh lời nói."
+      },
+      "audio": "c109_02_en.mp3"
+    },
+    {
+      "slug": "choosing-the-right-register",
+      "keywords_en": ["register", "formality"],
+      "keywords_vi": ["ngữ cảnh", "mức độ trang trọng"],
+      "copy": {
+        "en": "Nuance depends on choosing the right level of formality. In casual speech, short forms feel natural. In professional settings, longer and softer sentences show respect. Learning when to be casual or formal helps you communicate with cultural sensitivity.",
+        "vi": "Sắc thái phụ thuộc vào việc chọn mức độ trang trọng phù hợp. Trong giao tiếp thân mật, dạng rút gọn nghe tự nhiên. Trong môi trường chuyên nghiệp, câu dài và mềm thể hiện sự tôn trọng. Biết khi nào nói thân mật hay trang trọng giúp bạn giao tiếp tinh tế hơn."
+      },
+      "audio": "c109_03_en.mp3"
+    },
+    {
+      "slug": "using-hedging-smartly",
+      "keywords_en": ["hedging", "politeness"],
+      "keywords_vi": ["giảm nhẹ", "lịch sự"],
+      "copy": {
+        "en": "Hedging means using soft words to protect the listener’s feelings. Phrases like It seems, I feel that, or Maybe we can try help you express ideas without forcing them. Hedging is a key part of polite and emotionally intelligent English.",
+        "vi": "Giảm nhẹ nghĩa là dùng từ ngữ mềm để bảo vệ cảm xúc người nghe. Những cụm như It seems, I feel that, Maybe we can try giúp bạn bày tỏ ý tưởng mà không ép buộc. Giảm nhẹ là yếu tố quan trọng của tiếng Anh lịch sự và giàu trí tuệ cảm xúc."
+      },
+      "audio": "c109_04_en.mp3"
+    },
+    {
+      "slug": "understanding-cultural-subtlety",
+      "keywords_en": ["culture", "subtlety"],
+      "keywords_vi": ["văn hóa", "tinh tế"],
+      "copy": {
+        "en": "Many nuances come from culture, not grammar. English speakers avoid direct disagreement, so they may soften no or express doubt indirectly. Learning these cultural habits helps you interpret messages correctly and avoid misunderstanding.",
+        "vi": "Nhiều sắc thái đến từ văn hóa chứ không phải ngữ pháp. Người nói tiếng Anh thường tránh phản đối trực tiếp, nên họ làm nhẹ từ chối hoặc thể hiện sự nghi ngờ một cách gián tiếp. Hiểu thói quen văn hóa này giúp bạn diễn giải đúng và tránh hiểu nhầm."
+      },
+      "audio": "c109_05_en.mp3"
+    },
+    {
+      "slug": "daily-nuance-practice",
+      "keywords_en": ["practice", "nuance"],
+      "keywords_vi": ["luyện tập", "sắc thái"],
+      "copy": {
+        "en": "Practice nuance by listening closely to native speakers. Notice when they soften requests, avoid direct no, or use polite expressions. Write down examples each day. With time, your ear becomes sensitive to subtle meaning and gentle communication.",
+        "vi": "Hãy luyện sắc thái bằng cách nghe kỹ người bản xứ. Chú ý khi họ làm nhẹ yêu cầu, tránh nói không trực tiếp hoặc dùng các câu lịch sự. Ghi lại ví dụ mỗi ngày. Theo thời gian, tai bạn sẽ nhạy hơn với ý nghĩa tinh tế và giao tiếp nhẹ nhàng."
+      },
+      "audio": "c109_06_en.mp3"
+    }
+  ]
+}
