@@ -1,0 +1,75 @@
+{
+  "id": "english_a1_a105",
+  "tier": "VIP1 / VIP1",
+  "domain": "English A1",
+  "title": {
+    "en": "A1-05 — Asking Simple Questions",
+    "vi": "A1-05 — Hỏi Câu Đơn Giản"
+  },
+  "content": {
+    "en": "This room teaches you the most useful beginner question words: what, where, who, when, and how. You will practice short, clear questions that help you communicate in daily life. Speak slowly. Do not rise your voice too sharply at the end. Gentle questions sound more natural and easier to understand.",
+    "vi": "Phòng này dạy bạn các từ để hỏi quan trọng cho người mới bắt đầu: what, where, who, when, how. Bạn sẽ luyện các câu hỏi ngắn, rõ ràng và dùng được ngay trong đời sống. Hãy nói chậm và đừng nâng giọng quá mạnh ở cuối câu. Câu hỏi nhẹ nhàng tự nhiên và dễ hiểu hơn."
+  },
+  "entries": [
+    {
+      "slug": "what-questions",
+      "keywords_en": ["what", "questions", "beginner"],
+      "keywords_vi": ["what", "câu hỏi", "người mới"],
+      "copy": {
+        "en": "Practice these simple questions.\nWhat is this?\nWhat is your name?\nWhat do you want?\nWhat is your job?\nSay each question slowly.\nDo not add extra sounds.",
+        "vi": "Luyện các câu hỏi đơn giản sau: What is this?, What is your name?, What do you want?, What is your job?. Đọc chậm từng câu và không thêm âm thừa."
+      },
+      "audio": "a105_01_en.mp3"
+    },
+    {
+      "slug": "where-questions",
+      "keywords_en": ["where", "location"],
+      "keywords_vi": ["where", "vị trí"],
+      "copy": {
+        "en": "Practice these questions.\nWhere are you?\nWhere is the bus?\nWhere is the bathroom?\nWhere do you live?\nFocus on clear beginning and ending sounds.",
+        "vi": "Luyện các câu sau: Where are you?, Where is the bus?, Where is the bathroom?, Where do you live?. Chú ý âm đầu và âm cuối rõ ràng."
+      },
+      "audio": "a105_02_en.mp3"
+    },
+    {
+      "slug": "who-questions",
+      "keywords_en": ["who", "people"],
+      "keywords_vi": ["who", "con người"],
+      "copy": {
+        "en": "Use these beginner lines.\nWho is he?\nWho is she?\nWho are they?\nWho is your teacher?\nSay each line calmly.\nShort and simple is correct.",
+        "vi": "Luyện các câu sau: Who is he?, Who is she?, Who are they?, Who is your teacher?. Nói bình tĩnh. Câu ngắn là đúng."
+      },
+      "audio": "a105_03_en.mp3"
+    },
+    {
+      "slug": "when-questions",
+      "keywords_en": ["when", "time"],
+      "keywords_vi": ["when", "thời gian"],
+      "copy": {
+        "en": "Practice time questions.\nWhen is the class?\nWhen do you work?\nWhen is your birthday?\nWhen do we meet?\nKeep your voice soft and steady.",
+        "vi": "Luyện các câu về thời gian: When is the class?, When do you work?, When is your birthday?, When do we meet?. Giữ giọng nhẹ và đều."
+      },
+      "audio": "a105_04_en.mp3"
+    },
+    {
+      "slug": "how-questions",
+      "keywords_en": ["how", "questions"],
+      "keywords_vi": ["how", "câu hỏi"],
+      "copy": {
+        "en": "Practice basic how questions.\nHow are you?\nHow old are you?\nHow do you spell it?\nHow do you feel today?\nSpeak slowly.\nClear sounds help understanding.",
+        "vi": "Luyện các câu how cơ bản: How are you?, How old are you?, How do you spell it?, How do you feel today?. Nói chậm và rõ."
+      },
+      "audio": "a105_05_en.mp3"
+    },
+    {
+      "slug": "mini-question-drill",
+      "keywords_en": ["drill", "practice"],
+      "keywords_vi": ["luyện tập", "câu hỏi"],
+      "copy": {
+        "en": "Read this short drill.\nWhat is this?\nWhere are you?\nWho is she?\nWhen is the class?\nHow are you?\nRepeat once more calmly.\nSmall practice builds strong skill.",
+        "vi": "Luyện đoạn ngắn sau: What is this?, Where are you?, Who is she?, When is the class?, How are you?. Lặp lại một lần nữa. Tập nhỏ nhưng đều tạo nên kỹ năng vững chắc."
+      },
+      "audio": "a105_06_en.mp3"
+    }
+  ]
+}

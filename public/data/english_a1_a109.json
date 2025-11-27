@@ -1,0 +1,75 @@
+{
+  "id": "english_a1_a109",
+  "tier": "VIP1 / VIP1",
+  "domain": "English A1",
+  "title": {
+    "en": "A1-09 — There Is / There Are",
+    "vi": "A1-09 — There Is / There Are"
+  },
+  "content": {
+    "en": "This room teaches you how to describe objects and places using there is and there are. These patterns help you talk about your room, your house, your workplace, and anything around you. Speak slowly and keep sentences short. Clear beginning and ending sounds make these structures easy to understand.",
+    "vi": "Phòng này dạy bạn diễn tả đồ vật và không gian bằng cấu trúc there is và there are. Mẫu câu này giúp bạn nói về phòng của bạn, ngôi nhà, nơi làm việc và mọi thứ xung quanh. Hãy nói chậm và giữ câu ngắn. Âm đầu và âm cuối rõ ràng giúp người nghe hiểu dễ hơn."
+  },
+  "entries": [
+    {
+      "slug": "there-is-basics",
+      "keywords_en": ["there is", "singular"],
+      "keywords_vi": ["there is", "số ít"],
+      "copy": {
+        "en": "Practice these lines.\nThere is a book.\nThere is a chair.\nThere is a window.\nThere is a problem.\nSay each line slowly.\nFocus on clear beginning sounds.",
+        "vi": "Luyện các câu sau: There is a book, There is a chair, There is a window, There is a problem. Đọc chậm và chú ý âm đầu rõ ràng."
+      },
+      "audio": "a109_01_en.mp3"
+    },
+    {
+      "slug": "there-are-basics",
+      "keywords_en": ["there are", "plural"],
+      "keywords_vi": ["there are", "số nhiều"],
+      "copy": {
+        "en": "Practice plural forms.\nThere are two books.\nThere are many people.\nThere are some chairs.\nThere are apples.\nSay everything clearly.\nDo not rush.",
+        "vi": "Luyện dạng số nhiều: There are two books, There are many people, There are some chairs, There are apples. Đọc rõ ràng. Đừng vội."
+      },
+      "audio": "a109_02_en.mp3"
+    },
+    {
+      "slug": "room-description",
+      "keywords_en": ["room", "description"],
+      "keywords_vi": ["phòng", "miêu tả"],
+      "copy": {
+        "en": "Describe your room.\nThere is a bed.\nThere is a desk.\nThere are books.\nThere are clothes on the chair.\nShort, simple lines build confidence.",
+        "vi": "Hãy miêu tả phòng của bạn: There is a bed, There is a desk, There are books, There are clothes on the chair. Câu ngắn và đơn giản giúp bạn tự tin hơn."
+      },
+      "audio": "a109_03_en.mp3"
+    },
+    {
+      "slug": "place-description",
+      "keywords_en": ["places", "objects"],
+      "keywords_vi": ["địa điểm", "đồ vật"],
+      "copy": {
+        "en": "Practice describing places.\nThere is a bank.\nThere is a park.\nThere are shops.\nThere are people.\nSpeak slowly and clearly.",
+        "vi": "Luyện miêu tả địa điểm: There is a bank, There is a park, There are shops, There are people. Nói chậm và rõ ràng."
+      },
+      "audio": "a109_04_en.mp3"
+    },
+    {
+      "slug": "useful-everyday-lines",
+      "keywords_en": ["everyday", "sentences"],
+      "keywords_vi": ["đời sống", "câu ngắn"],
+      "copy": {
+        "en": "Read these useful lines.\nThere is a problem.\nThere is a message for you.\nThere are many options.\nThere are people waiting.\nSay each line calmly.",
+        "vi": "Hãy đọc các câu hữu ích sau: There is a problem, There is a message for you, There are many options, There are people waiting. Nói từng câu bình tĩnh."
+      },
+      "audio": "a109_05_en.mp3"
+    },
+    {
+      "slug": "mini-speaking-drill",
+      "keywords_en": ["speaking", "drill"],
+      "keywords_vi": ["luyện nói", "thực hành"],
+      "copy": {
+        "en": "Repeat this short drill.\nThere is a book.\nThere are books.\nThere is a room.\nThere are rooms.\nSmall practice builds strong understanding.",
+        "vi": "Luyện đoạn sau: There is a book, There are books, There is a room, There are rooms. Luyện tập nhỏ nhưng đều giúp hiểu chắc hơn."
+      },
+      "audio": "a109_06_en.mp3"
+    }
+  ]
+}

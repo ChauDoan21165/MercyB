@@ -1,0 +1,75 @@
+{
+  "id": "english_a1_a108",
+  "tier": "VIP1 / VIP1",
+  "domain": "English A1",
+  "title": {
+    "en": "A1-08 — Be + Adjectives: Feelings & Descriptions",
+    "vi": "A1-08 — Be + Tính Từ: Cảm Xúc & Miêu Tả"
+  },
+  "content": {
+    "en": "This room teaches you how to use be with adjectives to describe feelings and simple characteristics. You will practice short lines like I am happy and She is tired. These patterns help you communicate emotions and basic descriptions in daily life. Speak slowly and keep your voice soft and steady.",
+    "vi": "Phòng này dạy bạn dùng be với tính từ để diễn tả cảm xúc và miêu tả đơn giản. Bạn sẽ luyện các câu ngắn như I am happy và She is tired. Những mẫu này giúp bạn giao tiếp cảm xúc và miêu tả cơ bản trong đời sống. Hãy nói chậm và giữ giọng nhẹ nhàng, đều."
+  },
+  "entries": [
+    {
+      "slug": "basic-feelings",
+      "keywords_en": ["feelings", "adjectives"],
+      "keywords_vi": ["cảm xúc", "tính từ"],
+      "copy": {
+        "en": "Practice these lines.\nI am happy.\nI am sad.\nI am tired.\nI am angry.\nSay each feeling clearly.\nSoft voice is okay.",
+        "vi": "Luyện các câu sau: I am happy, I am sad, I am tired, I am angry. Nói rõ từng cảm xúc. Giọng nhẹ nhàng là tốt."
+      },
+      "audio": "a108_01_en.mp3"
+    },
+    {
+      "slug": "describing-other-people",
+      "keywords_en": ["description", "people"],
+      "keywords_vi": ["miêu tả", "người"],
+      "copy": {
+        "en": "Practice describing others.\nHe is tall.\nShe is short.\nHe is funny.\nShe is friendly.\nSay each line slowly.\nDo not rush.",
+        "vi": "Luyện miêu tả người khác: He is tall, She is short, He is funny, She is friendly. Đọc chậm rãi. Đừng vội."
+      },
+      "audio": "a108_02_en.mp3"
+    },
+    {
+      "slug": "common-adjectives",
+      "keywords_en": ["adjectives", "beginner"],
+      "keywords_vi": ["tính từ", "người mới"],
+      "copy": {
+        "en": "Practice these useful adjectives.\nhappy\nsad\ntired\nbusy\nhungry\nlate\nSpeak each word clearly.\nFeel the ending sound.",
+        "vi": "Luyện các tính từ hữu ích: happy, sad, tired, busy, hungry, late. Phát âm rõ từng từ và chú ý âm cuối."
+      },
+      "audio": "a108_03_en.mp3"
+    },
+    {
+      "slug": "simple-descriptive-lines",
+      "keywords_en": ["sentences", "descriptions"],
+      "keywords_vi": ["câu ngắn", "miêu tả"],
+      "copy": {
+        "en": "Read these short lines.\nShe is kind.\nHe is quiet.\nThey are busy.\nWe are ready.\nSimple lines help you speak naturally.",
+        "vi": "Hãy đọc các câu sau: She is kind, He is quiet, They are busy, We are ready. Câu đơn giản giúp bạn nói tự nhiên hơn."
+      },
+      "audio": "a108_04_en.mp3"
+    },
+    {
+      "slug": "feelings-in-daily-life",
+      "keywords_en": ["daily", "feelings"],
+      "keywords_vi": ["đời sống", "cảm xúc"],
+      "copy": {
+        "en": "Practice daily expressions.\nI am busy today.\nI am hungry now.\nHe is tired after work.\nShe is happy today.\nSay everything slowly.",
+        "vi": "Luyện các câu trong đời sống: I am busy today, I am hungry now, He is tired after work, She is happy today. Nói mọi câu thật chậm."
+      },
+      "audio": "a108_05_en.mp3"
+    },
+    {
+      "slug": "mini-speaking-drill",
+      "keywords_en": ["drill", "speaking"],
+      "keywords_vi": ["luyện nói", "thực hành"],
+      "copy": {
+        "en": "Repeat this drill.\nI am happy.\nYou are ready.\nHe is busy.\nShe is calm.\nWe are strong.\nThey are friendly.\nCalm repetition builds confident speaking.",
+        "vi": "Luyện đoạn sau: I am happy, You are ready, He is busy, She is calm, We are strong, They are friendly. Lặp lại bình tĩnh để nói tự tin hơn."
+      },
+      "audio": "a108_06_en.mp3"
+    }
+  ]
+}
