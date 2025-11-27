@@ -1,0 +1,75 @@
+{
+  "id": "english_foundation_ef13",
+  "tier": "Free / Miễn phí",
+  "domain": "English Foundation",
+  "title": {
+    "en": "EF-13 — Daily Speaking Routine",
+    "vi": "EF-13 — Thói Quen Nói Tiếng Anh Mỗi Ngày"
+  },
+  "content": {
+    "en": "This room teaches beginners how to build a simple daily speaking habit. Each practice is short, slow, and calm so you can speak without pressure. You will read simple patterns, repeat easy sentences, and feel English becoming more natural each day. A gentle routine builds real confidence over time.",
+    "vi": "Phòng này giúp người mới tạo thói quen nói tiếng Anh hàng ngày. Mỗi bài luyện đều ngắn, chậm và nhẹ nhàng để bạn nói mà không căng thẳng. Bạn sẽ đọc các mẫu câu đơn giản, lặp lại câu dễ và cảm nhận tiếng Anh trở nên tự nhiên hơn mỗi ngày. Một thói quen nhẹ nhàng sẽ tạo nên sự tự tin thật sự theo thời gian."
+  },
+  "entries": [
+    {
+      "slug": "morning-speaking",
+      "keywords_en": ["speaking", "morning"],
+      "keywords_vi": ["nói", "buổi sáng"],
+      "copy": {
+        "en": "Start your morning with three simple lines:\n\nI am awake.\nI am ready.\nToday is a good day.\n\nSay each sentence slowly.\nFeel calm and steady.",
+        "vi": "Bắt đầu buổi sáng với ba câu đơn giản: I am awake, I am ready, Today is a good day. Hãy nói từng câu thật chậm. Cảm nhận sự bình tĩnh."
+      },
+      "audio": "ef13_01_en.mp3"
+    },
+    {
+      "slug": "afternoon-speaking",
+      "keywords_en": ["speaking", "afternoon"],
+      "keywords_vi": ["nói", "buổi chiều"],
+      "copy": {
+        "en": "Practice in the afternoon:\n\nI am learning.\nI am improving.\nI am calm.\n\nShort lines build strong habits.\nDo not rush.",
+        "vi": "Luyện buổi chiều với các câu: I am learning, I am improving, I am calm. Những câu ngắn tạo thói quen vững chắc. Đừng vội vàng."
+      },
+      "audio": "ef13_02_en.mp3"
+    },
+    {
+      "slug": "evening-speaking",
+      "keywords_en": ["evening", "routine"],
+      "keywords_vi": ["buổi tối", "thói quen"],
+      "copy": {
+        "en": "End your day gently:\n\nI am tired.\nI am grateful.\nI did my best today.\n\nSoft practice builds confidence over time.",
+        "vi": "Kết thúc ngày nhẹ nhàng với: I am tired, I am grateful, I did my best today. Sự luyện tập nhẹ nhàng sẽ xây dựng tự tin theo thời gian."
+      },
+      "audio": "ef13_03_en.mp3"
+    },
+    {
+      "slug": "daily-self-introduction",
+      "keywords_en": ["self introduction", "speaking"],
+      "keywords_vi": ["giới thiệu bản thân", "nói"],
+      "copy": {
+        "en": "Practice introducing yourself:\n\nMy name is...\nI am from...\nI am...\nI like...\n\nKeep it simple.\nRepeat once a day.",
+        "vi": "Luyện giới thiệu bản thân: My name is..., I am from..., I am..., I like... Hãy giữ đơn giản. Lặp lại mỗi ngày một lần."
+      },
+      "audio": "ef13_04_en.mp3"
+    },
+    {
+      "slug": "simple-daily-questions",
+      "keywords_en": ["questions", "patterns"],
+      "keywords_vi": ["câu hỏi", "mẫu câu"],
+      "copy": {
+        "en": "Practice simple questions:\n\nWhat is your name?\nWhere are you from?\nHow are you?\nWhat do you like?\n\nSay each line slowly.\nLet the rhythm become familiar.",
+        "vi": "Luyện câu hỏi đơn giản: What is your name?, Where are you from?, How are you?, What do you like? Nói từng câu chậm rãi. Để nhịp điệu trở nên quen thuộc."
+      },
+      "audio": "ef13_05_en.mp3"
+    },
+    {
+      "slug": "daily-speaking-habit",
+      "keywords_en": ["habit", "daily"],
+      "keywords_vi": ["thói quen", "hằng ngày"],
+      "copy": {
+        "en": "Three minutes a day is enough.\nOne morning line.\nOne afternoon line.\nOne evening line.\n\nSmall steps become real speaking ability.",
+        "vi": "Ba phút mỗi ngày là đủ: một câu buổi sáng, một câu buổi chiều và một câu buổi tối. Những bước nhỏ sẽ tạo nên khả năng nói thật sự."
+      },
+      "audio": "ef13_06_en.mp3"
+    }
+  ]
+}

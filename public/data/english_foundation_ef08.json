@@ -1,0 +1,75 @@
+{
+  "id": "english_foundation_ef08",
+  "tier": "Free / Miễn phí",
+  "domain": "English Foundation",
+  "title": {
+    "en": "EF-08 — Be + Feelings & Descriptions",
+    "vi": "EF-08 — Động Từ Be + Cảm Xúc & Miêu Tả"
+  },
+  "content": {
+    "en": "This room teaches beginners how to use the verb be with feelings and simple descriptions. These patterns help you talk about mood, appearance, age, and basic situations. English uses am, is, and are, and this room shows you how to use each one slowly and clearly. Once you learn these gentle structures, daily conversations become much easier.",
+    "vi": "Phòng này dạy cách dùng động từ be cùng cảm xúc và miêu tả đơn giản. Các mẫu câu này giúp bạn nói về tâm trạng, ngoại hình, tuổi tác và những tình huống cơ bản. Tiếng Anh dùng am, is và are, và phòng này hướng dẫn bạn dùng từng từ thật chậm rãi và rõ ràng. Khi nắm được các cấu trúc nhẹ nhàng này, hội thoại hằng ngày sẽ dễ hơn rất nhiều."
+  },
+  "entries": [
+    {
+      "slug": "be-with-i-you-we-they",
+      "keywords_en": ["be", "grammar", "beginner"],
+      "keywords_vi": ["be", "ngữ pháp", "người mới"],
+      "copy": {
+        "en": "Use am, are with these subjects:\n\nI am\nYou are\nWe are\nThey are\n\nRead slowly.\nFeel the rhythm.\nThese patterns appear everywhere in daily English.",
+        "vi": "Dùng am, are với các chủ ngữ sau: I am, You are, We are, They are. Hãy đọc chậm và cảm nhận nhịp. Các mẫu này xuất hiện ở hầu hết câu giao tiếp hằng ngày."
+      },
+      "audio": "ef08_01_en.mp3"
+    },
+    {
+      "slug": "be-with-he-she-it",
+      "keywords_en": ["be", "he she it"],
+      "keywords_vi": ["be", "he she it"],
+      "copy": {
+        "en": "Use is with he, she, it:\n\nHe is\nShe is\nIt is\n\nSay is clearly.\nDo not drop the ending sound.",
+        "vi": "Dùng is với he, she, it: He is, She is, It is. Hãy phát âm is thật rõ. Đừng bỏ âm cuối."
+      },
+      "audio": "ef08_02_en.mp3"
+    },
+    {
+      "slug": "feelings-basic-adjectives",
+      "keywords_en": ["feelings", "adjectives"],
+      "keywords_vi": ["cảm xúc", "tính từ"],
+      "copy": {
+        "en": "Practice simple feeling sentences:\n\nI am happy.\nI am tired.\nI am sad.\nShe is angry.\nHe is excited.\nThey are calm.\n\nSpeak softly.\nThese words help you express yourself.",
+        "vi": "Hãy luyện các câu cảm xúc đơn giản: I am happy, I am tired, I am sad, She is angry, He is excited, They are calm. Nói nhẹ nhàng. Những từ này giúp bạn diễn đạt cảm xúc tự nhiên."
+      },
+      "audio": "ef08_03_en.mp3"
+    },
+    {
+      "slug": "describing-people",
+      "keywords_en": ["descriptions", "people"],
+      "keywords_vi": ["miêu tả", "con người"],
+      "copy": {
+        "en": "Use be to describe people:\n\nHe is tall.\nShe is short.\nThey are young.\nI am old.\nShe is beautiful.\nHe is strong.\n\nShort sentences are easier to say clearly.",
+        "vi": "Dùng be để miêu tả người: He is tall, She is short, They are young, I am old, She is beautiful, He is strong. Câu ngắn giúp bạn phát âm rõ hơn."
+      },
+      "audio": "ef08_04_en.mp3"
+    },
+    {
+      "slug": "describing-things",
+      "keywords_en": ["adjectives", "things"],
+      "keywords_vi": ["tính từ", "đồ vật"],
+      "copy": {
+        "en": "Practice describing objects:\n\nIt is big.\nIt is small.\nIt is new.\nIt is old.\nIt is clean.\nIt is dirty.\n\nSay each line slowly.\nKeep the ending sound.",
+        "vi": "Hãy luyện các câu miêu tả đồ vật: It is big, It is small, It is new, It is old, It is clean, It is dirty. Đọc chậm và giữ rõ âm cuối."
+      },
+      "audio": "ef08_05_en.mp3"
+    },
+    {
+      "slug": "daily-be-practice",
+      "keywords_en": ["practice", "habit"],
+      "keywords_vi": ["luyện tập", "thói quen"],
+      "copy": {
+        "en": "Practice three lines each day:\n\nI am...\nYou are...\nHe is...\n\nFill the blank with any feeling or description.\nSmall steps build confidence.",
+        "vi": "Mỗi ngày hãy luyện ba câu: I am..., You are..., He is... Hãy điền cảm xúc hoặc miêu tả bất kỳ. Những bước nhỏ tạo nên sự tự tin lớn."
+      },
+      "audio": "ef08_06_en.mp3"
+    }
+  ]
+}
