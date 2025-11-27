@@ -189,27 +189,38 @@ const RoomGridVIP3 = () => {
 
                 {/* Room Grid */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-                  {rooms.map((room) => {
+                  {rooms.map((room, index) => {
               const isSpecialRoom = VIP3_SPECIAL_ROOMS[room.id];
               const isSexualityCultureRoom = room.id === 'sexuality-and-curiosity-and-culture-vip3';
               const isFinanceRoom = room.id === 'finance-glory-vip3';
+              
+              // Rainbow color cycle
+              const rainbowColors = [
+                'hsl(0, 90%, 55%)', 'hsl(30, 95%, 50%)', 'hsl(48, 100%, 50%)', 
+                'hsl(145, 80%, 45%)', 'hsl(190, 85%, 45%)', 'hsl(220, 90%, 55%)', 
+                'hsl(270, 85%, 55%)', 'hsl(310, 85%, 50%)'
+              ];
+              const bgColor = rainbowColors[index % rainbowColors.length];
 
               return (
                 <Card
                   key={room.id}
-                  className={`relative p-3 transition-all duration-300 cursor-pointer group ${
+                  className={`relative p-3 transition-all duration-300 cursor-pointer group border-2 ${
                     room.hasData 
-                      ? 'hover:scale-110 hover:shadow-hover hover:z-10 border-accent/50 bg-gradient-to-br from-background to-accent/5' 
+                      ? 'hover:scale-110 hover:shadow-hover hover:z-10' 
                       : 'opacity-60 cursor-not-allowed'
                   }`}
                   style={
                     isSpecialRoom
                       ? {
                           border: `2px solid ${isSpecialRoom}`,
-                          background: `linear-gradient(135deg, ${isSpecialRoom}15, ${isSpecialRoom}08)`,
-                          boxShadow: `0 0 20px ${isSpecialRoom}50`,
+                          background: `linear-gradient(135deg, ${isSpecialRoom}40, ${isSpecialRoom}20)`,
+                          boxShadow: `0 0 20px ${isSpecialRoom}80`,
                         }
-                      : undefined
+                      : {
+                          backgroundColor: `${bgColor.replace(')', ' / 0.25)')}`,
+                          borderColor: bgColor
+                        }
                   }
                   onClick={() => {
                     if (!room.hasData) return;

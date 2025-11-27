@@ -39,6 +39,18 @@ export const VirtualizedRoomGrid = ({
     });
   }, [rooms]);
 
+  // Rainbow color cycle
+  const rainbowColors = [
+    'hsl(0, 90%, 55%)',      // red
+    'hsl(30, 95%, 50%)',     // orange
+    'hsl(48, 100%, 50%)',    // yellow
+    'hsl(145, 80%, 45%)',    // green
+    'hsl(190, 85%, 45%)',    // cyan
+    'hsl(220, 90%, 55%)',    // blue
+    'hsl(270, 85%, 55%)',    // purple
+    'hsl(310, 85%, 50%)'     // magenta
+  ];
+
   const rowCount = Math.ceil(sortedRooms.length / columnCount);
   
   const rowVirtualizer = useVirtualizer({
@@ -76,25 +88,24 @@ export const VirtualizedRoomGrid = ({
               }}
             >
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-                {rowRooms.map((room) => {
-                  const roomColor = highlightColors[room.id] || getRoomColor(room.id);
+                {rowRooms.map((room, localIdx) => {
+                  const globalIdx = startIdx + localIdx;
+                  const bgColor = rainbowColors[globalIdx % rainbowColors.length];
+                  const roomColor = highlightColors[room.id] || bgColor;
                   const isHighlighted = !!highlightColors[room.id];
                   
                   return (
                     <Tooltip key={room.id}>
                       <TooltipTrigger asChild>
                         <Card
-                          className={`relative p-3 group ${
+                          className={`relative p-3 group border-2 ${
                             room.hasData 
                               ? `cursor-pointer ${!isLowDataMode ? 'transition-all duration-300 hover:scale-110 hover:shadow-hover hover:z-10' : ''}` 
                               : "opacity-30 cursor-not-allowed grayscale"
                           }`}
-                          style={isHighlighted ? {
-                            border: `2px solid ${roomColor}`,
-                            background: `linear-gradient(135deg, ${roomColor}20, ${roomColor}10)`,
-                            boxShadow: isLowDataMode ? 'none' : `0 0 20px ${roomColor}60`
-                          } : {
-                            background: roomColor
+                          style={{
+                            backgroundColor: `${bgColor.replace(')', ' / 0.25)')}`,
+                            borderColor: bgColor
                           }}
                           onClick={() => room.hasData && onRoomClick(room)}
                         >
@@ -136,7 +147,7 @@ export const VirtualizedRoomGrid = ({
                           {/* Hover Effect - disabled in low data mode */}
                           {room.hasData && !isLowDataMode && (
                             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" 
-                                 style={{ background: `linear-gradient(to bottom right, ${roomColor}20, ${roomColor}10)` }} />
+                                 style={{ background: `linear-gradient(135deg, ${bgColor} 0%, ${bgColor.replace(')', ' / 0.8)')} 100%)` }} />
                           )}
                         </Card>
                       </TooltipTrigger>
