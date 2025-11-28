@@ -76,23 +76,19 @@ const AdminDashboard = () => {
 
   const fetchDashboardStats = async () => {
     try {
-      // Fetch total rooms
       const { count: roomsCount } = await supabase
         .from("chat_rooms")
         .select("*", { count: "exact", head: true });
 
-      // Fetch total users with roles
       const { count: usersCount } = await supabase
         .from("user_roles")
         .select("*", { count: "exact", head: true });
 
-      // Fetch pending VIP requests
       const { count: requestsCount } = await supabase
         .from("vip_room_requests")
         .select("*", { count: "exact", head: true })
         .eq("status", "pending");
 
-      // Fetch suspended users
       const { count: suspendedCount } = await supabase
         .from("user_moderation_status")
         .select("*", { count: "exact", head: true })
@@ -113,452 +109,136 @@ const AdminDashboard = () => {
     return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
   }
 
+  const cardStyle = "border-2 border-black bg-white hover:shadow-lg transition-shadow cursor-pointer";
+  const iconBgStyle = "p-3 bg-gray-100 border border-black rounded-lg";
+  const iconStyle = "h-6 w-6 text-black";
+  const titleStyle = "text-black font-bold";
+  const descStyle = "text-gray-600";
+  const textStyle = "text-sm text-gray-700";
+
   return (
     <AdminLayout>
       <div className="max-w-7xl mx-auto">
         <AdminBreadcrumb items={[{ label: "Dashboard" }]} />
         
-        <div className="mb-8 p-8 rounded-2xl" style={{ 
-          background: 'var(--gradient-admin)',
-          boxShadow: 'var(--shadow-rainbow)'
-        }}>
-          <h1 className="text-5xl font-bold text-white drop-shadow-lg">
-            <span style={{ color: '#E91E63' }}>M</span>
-            <span style={{ color: '#9C27B0' }}>e</span>
-            <span style={{ color: '#3F51B5' }}>r</span>
-            <span style={{ color: '#2196F3' }}>c</span>
-            <span style={{ color: '#00BCD4' }}>y</span>
-            {' '}
-            <span style={{ color: '#009688' }}>B</span>
-            <span style={{ color: '#4CAF50' }}>l</span>
-            <span style={{ color: '#8BC34A' }}>a</span>
-            <span style={{ color: '#FFC107' }}>d</span>
-            <span style={{ color: '#FF9800' }}>e</span>
-            {' Admin Dashboard'}
+        <div className="mb-8 p-8 rounded-2xl bg-black border-2 border-black">
+          <h1 className="text-5xl font-bold text-white">
+            Mercy Blade Admin Dashboard
           </h1>
-          <p className="text-white/90 mt-2 text-lg">Manage your application with colorful rainbow power</p>
+          <p className="text-white mt-2 text-lg">Professional Admin Control Panel</p>
         </div>
 
-        {/* Quick Stats - Rainbow themed */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card className="border-2 hover:shadow-lg transition-all" style={{ borderColor: '#E91E63' }}>
+          <Card className="border-2 border-black bg-white hover:shadow-lg transition-all">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Rooms</CardTitle>
-              <LayoutDashboard className="h-4 w-4" style={{ color: '#E91E63' }} />
+              <CardTitle className="text-sm font-bold text-black">Total Rooms</CardTitle>
+              <LayoutDashboard className="h-4 w-4 text-black" />
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold" style={{ color: '#E91E63' }}>{stats.totalRooms}</div>
+              <div className="text-3xl font-bold text-black">{stats.totalRooms}</div>
             </CardContent>
           </Card>
 
-          <Card className="border-2 hover:shadow-lg transition-all" style={{ borderColor: '#2196F3' }}>
+          <Card className="border-2 border-black bg-white hover:shadow-lg transition-all">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Users</CardTitle>
-              <Users className="h-4 w-4" style={{ color: '#2196F3' }} />
+              <CardTitle className="text-sm font-bold text-black">Total Users</CardTitle>
+              <Users className="h-4 w-4 text-black" />
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold" style={{ color: '#2196F3' }}>{stats.totalUsers}</div>
+              <div className="text-3xl font-bold text-black">{stats.totalUsers}</div>
             </CardContent>
           </Card>
 
-          <Card className="border-2 hover:shadow-lg transition-all" style={{ borderColor: '#4CAF50' }}>
+          <Card className="border-2 border-black bg-white hover:shadow-lg transition-all">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Pending Requests</CardTitle>
-              <MessageSquare className="h-4 w-4" style={{ color: '#4CAF50' }} />
+              <CardTitle className="text-sm font-bold text-black">Pending Requests</CardTitle>
+              <MessageSquare className="h-4 w-4 text-black" />
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold" style={{ color: '#4CAF50' }}>{stats.pendingRequests}</div>
+              <div className="text-3xl font-bold text-black">{stats.pendingRequests}</div>
               {stats.pendingRequests > 0 && (
-                <Badge variant="destructive" className="mt-2">Needs Attention</Badge>
+                <Badge variant="outline" className="mt-2 border-black text-black">Needs Attention</Badge>
               )}
             </CardContent>
           </Card>
 
-          <Card className="border-2 hover:shadow-lg transition-all" style={{ borderColor: '#FF9800' }}>
+          <Card className="border-2 border-black bg-white hover:shadow-lg transition-all">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Suspended Users</CardTitle>
-              <Shield className="h-4 w-4" style={{ color: '#FF9800' }} />
+              <CardTitle className="text-sm font-bold text-black">Suspended Users</CardTitle>
+              <Shield className="h-4 w-4 text-black" />
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold" style={{ color: '#FF9800' }}>{stats.suspendedUsers}</div>
+              <div className="text-3xl font-bold text-black">{stats.suspendedUsers}</div>
             </CardContent>
           </Card>
         </div>
 
-        {/* Test Purchase Panel - Only visible in test mode */}
         <div className="mb-8">
           <TestPurchasePanel />
         </div>
 
-        {/* Quick Access Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate("/admin/rooms")}>
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <LayoutDashboard className="h-6 w-6 text-primary" />
+          {[
+            { title: "Room Management", desc: "Create and edit chat rooms", icon: LayoutDashboard, path: "/admin/rooms", text: "Manage all chat rooms, create new rooms, and edit existing ones." },
+            { title: "Code Editor", desc: "Edit room JSON data", icon: Code, path: "/admin/code-editor", text: "Edit room content and structure directly in JSON format." },
+            { title: "User Roles", desc: "Manage user permissions", icon: Users, path: "/admin/users", text: "Grant or revoke admin access and manage user roles." },
+            { title: "Statistics", desc: "View usage analytics", icon: TrendingUp, path: "/admin/stats", text: "Monitor room usage, session data, and user engagement." },
+            { title: "VIP Requests", desc: "Review user requests", icon: MessageSquare, path: "/vip-requests", text: "View and manage VIP room requests from users.", badge: stats.pendingRequests > 0 ? `${stats.pendingRequests} pending` : null },
+            { title: "Payment Verification", desc: "Review payment submissions", icon: DollarSign, path: "/admin/payments", text: "Verify and approve user payment proof submissions." },
+            { title: "Audio Upload", desc: "Upload audio files", icon: Music, path: "/admin/audio-upload", text: "Upload audio files for rooms and manage existing audio." },
+            { title: "Audio Test", desc: "Test audio files", icon: TestTube, path: "/audio-test", text: "Test and verify audio files in VIP4 and other rooms." },
+            { title: "Moderation", desc: "Manage user violations", icon: Shield, path: "/admin/moderation", text: "Review reports, suspend users, and manage violations.", badge: stats.suspendedUsers > 0 ? `${stats.suspendedUsers} suspended` : null },
+            { title: "Gift Codes", desc: "Manage VIP gift codes", icon: Gift, path: "/admin/gift-codes", text: "Generate and manage VIP2/VIP3 gift codes for 1-year access." },
+            { title: "Reports", desc: "View user reports", icon: FileText, path: "/admin/reports", text: "Review and take action on user-submitted reports." },
+            { title: "VIP Rooms", desc: "Manage VIP content", icon: LayoutDashboard, path: "/admin/vip-rooms", text: "Manage premium VIP rooms and tier-specific content." },
+            { title: "Kids Validation", desc: "Validate kids rooms", icon: TestTube, path: "/kids-validation", text: "Check status and validation of all kids rooms and entries." },
+            { title: "Design Audit", desc: "Review design issues", icon: Palette, path: "/admin/design-audit", text: "Check color, spacing, and layout problems to review later.", badgeText: "For Review" },
+            { title: "App Metrics", desc: "Application scale overview", icon: BarChart3, path: "/admin/app-metrics", text: "View infrastructure metrics: tiers, rooms, entries, edge functions, and system scale.", badgeText: "Infrastructure" },
+            { title: "Room Specification", desc: "Design standards & patterns", icon: BookOpen, path: "/admin/specification", text: "View the master documentation for all room, level, and feature designs.", badgeText: "Master Doc" },
+            { title: "Notification Settings", desc: "Customize alert sounds", icon: Bell, path: "#", text: "Configure sound notifications and choose alert tones for admin alerts." }
+          ].map((item, idx) => (
+            <Card key={idx} className={cardStyle} onClick={() => item.path !== "#" && navigate(item.path)}>
+              <CardHeader>
+                <div className="flex items-center gap-3">
+                  <div className={iconBgStyle}>
+                    <item.icon className={iconStyle} />
+                  </div>
+                  <div>
+                    <CardTitle className={titleStyle}>{item.title}</CardTitle>
+                    <CardDescription className={descStyle}>{item.desc}</CardDescription>
+                  </div>
                 </div>
-                <div>
-                  <CardTitle>Room Management</CardTitle>
-                  <CardDescription>Create and edit chat rooms</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Manage all chat rooms, create new rooms, and edit existing ones.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate("/admin/code-editor")}>
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <Code className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <CardTitle>Code Editor</CardTitle>
-                  <CardDescription>Edit room JSON data</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Edit room content and structure directly in JSON format.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate("/admin/users")}>
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <Users className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <CardTitle>User Roles</CardTitle>
-                  <CardDescription>Manage user permissions</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Grant or revoke admin access and manage user roles.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate("/admin/stats")}>
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <TrendingUp className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <CardTitle>Statistics</CardTitle>
-                  <CardDescription>View usage analytics</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Monitor room usage, session data, and user engagement.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate("/vip-requests")}>
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <MessageSquare className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <CardTitle>VIP Requests</CardTitle>
-                  <CardDescription>Review user requests</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                View and manage VIP room requests from users.
-              </p>
-              {stats.pendingRequests > 0 && (
-                <Badge variant="destructive" className="mt-2">{stats.pendingRequests} pending</Badge>
-              )}
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate("/admin/payments")}>
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <DollarSign className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <CardTitle>Payment Verification</CardTitle>
-                  <CardDescription>Review payment submissions</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Verify and approve user payment proof submissions.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate("/admin/audio-upload")}>
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <Music className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <CardTitle>Audio Upload</CardTitle>
-                  <CardDescription>Upload audio files</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Upload audio files for rooms and manage existing audio.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate("/audio-test")}>
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <TestTube className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <CardTitle>Audio Test</CardTitle>
-                  <CardDescription>Test audio files</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Test and verify audio files in VIP4 and other rooms.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate("/admin/moderation")}>
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <Shield className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <CardTitle>Moderation</CardTitle>
-                  <CardDescription>Manage user violations</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Review reports, suspend users, and manage violations.
-              </p>
-              {stats.suspendedUsers > 0 && (
-                <Badge variant="destructive" className="mt-2">{stats.suspendedUsers} suspended</Badge>
-              )}
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate("/admin/gift-codes")}>
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg">
-                  <Gift className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <CardTitle>Gift Codes</CardTitle>
-                  <CardDescription>Manage VIP gift codes</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Generate and manage VIP2/VIP3 gift codes for 1-year access.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate("/admin/reports")}>
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <FileText className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <CardTitle>Reports</CardTitle>
-                  <CardDescription>View user reports</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Review and take action on user-submitted reports.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate("/admin/vip-rooms")}>
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <LayoutDashboard className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <CardTitle>VIP Rooms</CardTitle>
-                  <CardDescription>Manage VIP content</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Manage premium VIP rooms and tier-specific content.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate("/kids-validation")}>
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <TestTube className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <CardTitle>Kids Validation</CardTitle>
-                  <CardDescription>Validate kids rooms</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Check status and validation of all kids rooms and entries.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer border-2" style={{ borderColor: '#FF6B9D' }} onClick={() => navigate("/admin/design-audit")}>
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <Palette className="h-6 w-6" style={{ color: '#FF6B9D' }} />
-                </div>
-                <div>
-                  <CardTitle style={{ color: '#FF6B9D' }}>Design Audit</CardTitle>
-                  <CardDescription>Review design issues</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Check color, spacing, and layout problems to review later.
-              </p>
-              <Badge variant="outline" className="mt-2" style={{ borderColor: '#FF6B9D', color: '#FF6B9D' }}>For Review</Badge>
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer border-2" style={{ borderColor: '#10B981' }} onClick={() => navigate("/admin/app-metrics")}>
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <BarChart3 className="h-6 w-6" style={{ color: '#10B981' }} />
-                </div>
-                <div>
-                  <CardTitle style={{ color: '#10B981' }}>App Metrics</CardTitle>
-                  <CardDescription>Application scale overview</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                View infrastructure metrics: tiers, rooms, entries, edge functions, and system scale.
-              </p>
-              <Badge variant="outline" className="mt-2" style={{ borderColor: '#10B981', color: '#10B981' }}>Infrastructure</Badge>
-            </CardContent>
-          </Card>
-
-          <Card 
-            className="hover:shadow-lg transition-shadow cursor-pointer border-2" 
-            style={{ borderColor: 'hsl(var(--primary))' }}
-            onClick={() => navigate("/admin/specification")}
-          >
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 rounded-lg" style={{ background: 'var(--gradient-rainbow)' }}>
-                  <BookOpen className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <CardTitle>Room Specification</CardTitle>
-                  <CardDescription>Design standards & patterns</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                View the master documentation for all room, level, and feature designs.
-              </p>
-              <Badge 
-                variant="outline" 
-                className="mt-2" 
-                style={{ 
-                  borderImage: 'var(--gradient-rainbow) 1',
-                  color: 'hsl(var(--primary))'
-                }}
-              >
-                Master Doc
-              </Badge>
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer border-2 border-primary/20">
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <Bell className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <CardTitle>Notification Settings</CardTitle>
-                  <CardDescription>Customize alert sounds</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Configure sound notifications and choose alert tones for admin alerts.
-              </p>
-            </CardContent>
-          </Card>
+              </CardHeader>
+              <CardContent>
+                <p className={textStyle}>{item.text}</p>
+                {item.badge && (
+                  <Badge variant="outline" className="mt-2 border-black text-black">{item.badge}</Badge>
+                )}
+                {item.badgeText && (
+                  <Badge variant="outline" className="mt-2 border-black text-black">{item.badgeText}</Badge>
+                )}
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
-        {/* VIP9 Room Upload - Single Source of Truth */}
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold mb-4 text-foreground">📤 VIP9 Room Upload</h2>
+        <div className="mb-8 mt-8">
+          <h2 className="text-2xl font-bold mb-4 text-black">📤 VIP9 Room Upload</h2>
           <VIP9RoomUpload />
         </div>
 
-        {/* Notification Preferences */}
         <div className="mb-8">
-          <h2 className="text-2xl font-bold mb-4 text-foreground">🔔 Notification Preferences</h2>
+          <h2 className="text-2xl font-bold mb-4 text-black">🔔 Notification Preferences</h2>
           <NotificationPreferences />
         </div>
 
-        {/* Live Users Monitor */}
         <div className="mb-8">
-          <h2 className="text-2xl font-bold mb-4 text-foreground">📹 Live User Monitoring</h2>
+          <h2 className="text-2xl font-bold mb-4 text-black">📹 Live User Monitoring</h2>
           <LiveUsersMonitor />
         </div>
 
-        {/* Feedback Messages */}
         <div className="mb-8">
-          <h2 className="text-2xl font-bold mb-4 text-foreground">💬 User Messages</h2>
+          <h2 className="text-2xl font-bold mb-4 text-black">💬 User Messages</h2>
           <FeedbackMessages />
         </div>
       </div>
