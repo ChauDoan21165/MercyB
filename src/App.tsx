@@ -79,6 +79,8 @@ import UnifiedHealthCheck from "./pages/admin/UnifiedHealthCheck";
 import SystemHealth from "./pages/admin/SystemHealth";
 import EdgeFunctions from "./pages/admin/EdgeFunctions";
 import RoomSpecification from "./pages/admin/RoomSpecification";
+import UserMusicUpload from "./pages/UserMusicUpload";
+import MusicApproval from "./pages/admin/MusicApproval";
 
 const queryClient = new QueryClient();
 
@@ -185,6 +187,9 @@ const App = () => {
           <Route path="/admin/system-health" element={<SystemHealth />} />
           <Route path="/admin/edge-functions" element={<EdgeFunctions />} />
           <Route path="/redeem-gift" element={<RedeemGiftCode />} />
+          <Route path="/admin/room-specification" element={<RoomSpecification />} />
+          <Route path="/user-music-upload" element={<UserMusicUpload />} />
+          <Route path="/admin/music-approval" element={<MusicApproval />} />
           <Route path="/audio-upload" element={<AudioUpload />} />
           <Route path="/kids-validation" element={<KidsRoomValidation />} />
           <Route path="/security-dashboard" element={<SecurityDashboard />} />

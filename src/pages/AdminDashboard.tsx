@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Activity, AlertCircle, TrendingUp, MessageSquare, DollarSign, Users, LayoutDashboard } from "lucide-react";
+import { Activity, AlertCircle, TrendingUp, MessageSquare, DollarSign, Users, LayoutDashboard, Music } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { AdminBreadcrumb } from "@/components/admin/AdminBreadcrumb";
@@ -376,6 +376,7 @@ const AdminDashboard = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
             <QuickActionButton label="Room Specification" path="/admin/room-specification" icon={Activity} />
+            <QuickActionButton label="Music Approval" path="/admin/music-approval" icon={Music} />
           </div>
         </div>
 
