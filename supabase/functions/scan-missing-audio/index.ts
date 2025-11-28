@@ -42,128 +42,116 @@ Deno.serve(async (req) => {
 
     console.log(`Scanning ${rooms?.length || 0} rooms...`);
 
-    // Loop through all rooms
+    // Collect all audio checks to perform
+    const audioChecks: Array<{
+      roomId: string;
+      roomTitle: string;
+      entrySlug: string;
+      field: string;
+      filename: string;
+      url: string;
+    }> = [];
+
     for (const room of rooms || []) {
       const entries = room.entries as any[] || [];
       
       for (const entry of entries) {
-        // Get entry slug/id
         const entrySlug = entry.slug || entry.artifact_id || entry.id || 'unknown';
+        const roomTitle = room.title_en || room.title_vi || room.id;
         
-        // Check audio_en field
+        // Collect audio_en checks
         if (entry.audio_en) {
-          totalChecked++;
           const filename = entry.audio_en.split('/').pop();
-          const audioUrl = `${supabaseUrl}/storage/v1/object/public/room-audio/${filename}`;
-          
-          try {
-            const response = await fetch(audioUrl, { method: 'HEAD' });
-            const status = response.ok ? 'Exists' : `${response.status} ${response.statusText}`;
-            
-            const audioEntry: MissingAudioEntry = {
-              roomId: room.id,
-              roomTitle: room.title_en || room.title_vi || room.id,
-              entrySlug,
-              field: 'audio_en',
-              filename,
-              status,
-              httpStatus: response.status
-            };
-            
-            if (!response.ok) {
-              missingAudioFiles.push(audioEntry);
-            } else {
-              existingAudioFiles.push(audioEntry);
-            }
-          } catch (error) {
-            const errorMsg = error instanceof Error ? error.message : 'Unknown error';
-            missingAudioFiles.push({
-              roomId: room.id,
-              roomTitle: room.title_en || room.title_vi || room.id,
-              entrySlug,
-              field: 'audio_en',
-              filename,
-              status: `Error: ${errorMsg}`,
-            });
-          }
+          audioChecks.push({
+            roomId: room.id,
+            roomTitle,
+            entrySlug,
+            field: 'audio_en',
+            filename,
+            url: `${supabaseUrl}/storage/v1/object/public/room-audio/${filename}`
+          });
         }
         
-        // Check audio field (old format)
+        // Collect audio checks (old format)
         if (entry.audio && typeof entry.audio === 'string') {
-          totalChecked++;
           const filename = entry.audio.split('/').pop();
-          const audioUrl = `${supabaseUrl}/storage/v1/object/public/room-audio/${filename}`;
-          
-          try {
-            const response = await fetch(audioUrl, { method: 'HEAD' });
-            const status = response.ok ? 'Exists' : `${response.status} ${response.statusText}`;
-            
-            const audioEntry: MissingAudioEntry = {
-              roomId: room.id,
-              roomTitle: room.title_en || room.title_vi || room.id,
-              entrySlug,
-              field: 'audio',
-              filename,
-              status,
-              httpStatus: response.status
-            };
-            
-            if (!response.ok) {
-              missingAudioFiles.push(audioEntry);
-            } else {
-              existingAudioFiles.push(audioEntry);
-            }
-          } catch (error) {
-            const errorMsg = error instanceof Error ? error.message : 'Unknown error';
-            missingAudioFiles.push({
-              roomId: room.id,
-              roomTitle: room.title_en || room.title_vi || room.id,
-              entrySlug,
-              field: 'audio',
-              filename,
-              status: `Error: ${errorMsg}`,
-            });
-          }
+          audioChecks.push({
+            roomId: room.id,
+            roomTitle,
+            entrySlug,
+            field: 'audio',
+            filename,
+            url: `${supabaseUrl}/storage/v1/object/public/room-audio/${filename}`
+          });
         }
         
-        // Check audio.en field (nested format)
+        // Collect audio.en checks (nested format)
         if (entry.audio && typeof entry.audio === 'object' && entry.audio.en) {
-          totalChecked++;
           const filename = entry.audio.en.split('/').pop();
-          const audioUrl = `${supabaseUrl}/storage/v1/object/public/room-audio/${filename}`;
-          
-          try {
-            const response = await fetch(audioUrl, { method: 'HEAD' });
-            const status = response.ok ? 'Exists' : `${response.status} ${response.statusText}`;
-            
-            const audioEntry: MissingAudioEntry = {
-              roomId: room.id,
-              roomTitle: room.title_en || room.title_vi || room.id,
-              entrySlug,
-              field: 'audio.en',
-              filename,
-              status,
-              httpStatus: response.status
-            };
-            
-            if (!response.ok) {
-              missingAudioFiles.push(audioEntry);
-            } else {
-              existingAudioFiles.push(audioEntry);
-            }
-          } catch (error) {
-            const errorMsg = error instanceof Error ? error.message : 'Unknown error';
-            missingAudioFiles.push({
-              roomId: room.id,
-              roomTitle: room.title_en || room.title_vi || room.id,
-              entrySlug,
-              field: 'audio.en',
-              filename,
-              status: `Error: ${errorMsg}`,
-            });
-          }
+          audioChecks.push({
+            roomId: room.id,
+            roomTitle,
+            entrySlug,
+            field: 'audio.en',
+            filename,
+            url: `${supabaseUrl}/storage/v1/object/public/room-audio/${filename}`
+          });
         }
       }
+    }
+
+    totalChecked = audioChecks.length;
+    console.log(`Checking ${totalChecked} audio files in parallel...`);
+
+    // Process checks in parallel batches
+    const BATCH_SIZE = 50;
+    for (let i = 0; i < audioChecks.length; i += BATCH_SIZE) {
+      const batch = audioChecks.slice(i, i + BATCH_SIZE);
+      const batchResults = await Promise.all(
+        batch.map(async (check) => {
+          try {
+            const response = await fetch(check.url, { method: 'HEAD' });
+            const status = response.ok ? 'Exists' : `${response.status} ${response.statusText}`;
+            
+            return {
+              entry: {
+                roomId: check.roomId,
+                roomTitle: check.roomTitle,
+                entrySlug: check.entrySlug,
+                field: check.field,
+                filename: check.filename,
+                status,
+                httpStatus: response.status
+              },
+              exists: response.ok
+            };
+          } catch (error) {
+            const errorMsg = error instanceof Error ? error.message : 'Unknown error';
+            return {
+              entry: {
+                roomId: check.roomId,
+                roomTitle: check.roomTitle,
+                entrySlug: check.entrySlug,
+                field: check.field,
+                filename: check.filename,
+                status: `Error: ${errorMsg}`
+              },
+              exists: false
+            };
+          }
+        })
+      );
+
+      // Categorize results
+      for (const result of batchResults) {
+        if (result.exists) {
+          existingAudioFiles.push(result.entry);
+        } else {
+          missingAudioFiles.push(result.entry);
+        }
+      }
+
+      console.log(`Processed ${Math.min(i + BATCH_SIZE, audioChecks.length)}/${audioChecks.length} files...`);
     }
 
     console.log(`Scan complete: ${totalChecked} audio files checked, ${missingAudioFiles.length} missing`);
