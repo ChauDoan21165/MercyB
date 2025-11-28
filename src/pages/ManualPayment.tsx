@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Upload, Loader2, CheckCircle, AlertCircle } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { TestModeBanner } from "@/components/payment/TestModeBanner";
 
 const ManualPayment = () => {
   const [searchParams] = useSearchParams();
@@ -156,6 +157,8 @@ const ManualPayment = () => {
 
       <div className="bg-gradient-to-b from-orange-50 via-yellow-50 to-amber-50 min-h-screen p-6">
         <div className="max-w-2xl mx-auto">
+          <TestModeBanner />
+          
           <Card className="p-8 bg-white/80 backdrop-blur border-2 border-orange-200 shadow-xl">
             <h1 className="text-3xl font-bold mb-2 text-center bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
               Manual Payment Verification
