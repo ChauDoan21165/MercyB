@@ -70,6 +70,9 @@ const TRACKS = [
   { id: '57', name: 'Saying Goodbye', url: '/audio/relaxing/saying-goodbye.mp3' },
   { id: '58', name: 'I Wish I Told You', url: '/audio/relaxing/i-wish-i-told-you.mp3' },
   { id: '59', name: 'Deep Meditation', url: '/audio/relaxing/deep-meditation.mp3' },
+  { id: '60', name: 'Quiet Time', url: '/audio/relaxing/quiet-time.mp3' },
+  { id: '61', name: 'In The Light', url: '/audio/relaxing/in-the-light.mp3' },
+  { id: '62', name: 'Tranquility', url: '/audio/relaxing/tranquility.mp3' },
 ];
 
 export const MusicPlayer = () => {
