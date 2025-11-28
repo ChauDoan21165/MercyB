@@ -42,11 +42,15 @@ export function SyncHealthSummary() {
 
       if (dbError) throw dbError;
 
-      // 2. Check which JSON files exist by trying to fetch them
+      // 2. Check which JSON files exist by trying to fetch them (with cache-busting)
+      const cacheBuster = Date.now();
       const jsonFileChecks = await Promise.all(
         (dbRooms || []).map(async (room) => {
           try {
-            const response = await fetch(`/data/${room.id}.json`, { method: 'HEAD' });
+            const response = await fetch(`/data/${room.id}.json?t=${cacheBuster}`, { 
+              method: 'HEAD',
+              cache: 'no-store'
+            });
             return { roomId: room.id, exists: response.ok, tier: room.tier };
           } catch {
             return { roomId: room.id, exists: false, tier: room.tier };
