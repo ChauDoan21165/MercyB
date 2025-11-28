@@ -563,6 +563,7 @@ const ChatHub = () => {
           callback();
         }
       }
+      return; // Stop execution after feedback submission
     }
   };
 
