@@ -262,6 +262,56 @@ export type Database = {
         }
         Relationships: []
       }
+      favorite_rooms: {
+        Row: {
+          created_at: string
+          id: string
+          room_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          room_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          room_id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      favorite_tracks: {
+        Row: {
+          created_at: string
+          id: string
+          track_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          track_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          track_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "favorite_tracks_track_id_fkey"
+            columns: ["track_id"]
+            isOneToOne: false
+            referencedRelation: "user_music_uploads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       feature_flags: {
         Row: {
           created_at: string | null
@@ -1767,6 +1817,54 @@ export type Database = {
           severity_level?: number
           user_id?: string
           violation_type?: string
+        }
+        Relationships: []
+      }
+      user_music_uploads: {
+        Row: {
+          admin_notes: string | null
+          approved_at: string | null
+          approved_by: string | null
+          artist: string | null
+          created_at: string
+          duration_seconds: number | null
+          file_size_bytes: number | null
+          file_url: string
+          id: string
+          title: string
+          updated_at: string
+          upload_status: string
+          user_id: string
+        }
+        Insert: {
+          admin_notes?: string | null
+          approved_at?: string | null
+          approved_by?: string | null
+          artist?: string | null
+          created_at?: string
+          duration_seconds?: number | null
+          file_size_bytes?: number | null
+          file_url: string
+          id?: string
+          title: string
+          updated_at?: string
+          upload_status?: string
+          user_id: string
+        }
+        Update: {
+          admin_notes?: string | null
+          approved_at?: string | null
+          approved_by?: string | null
+          artist?: string | null
+          created_at?: string
+          duration_seconds?: number | null
+          file_size_bytes?: number | null
+          file_url?: string
+          id?: string
+          title?: string
+          updated_at?: string
+          upload_status?: string
+          user_id?: string
         }
         Relationships: []
       }
