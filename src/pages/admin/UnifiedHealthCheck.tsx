@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 // Tabs component removed - using unified tier dropdown instead
-import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench, Download, Play, Volume2, FileText, Trash2, RefreshCw, FileEdit } from "lucide-react";
+import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench, Download, Play, Volume2, FileText, Trash2, RefreshCw, FileEdit, Music } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
@@ -58,6 +58,25 @@ interface DeepRoomReport {
   audioChecks: AudioCheckResult[];
   entryValidation: EntryValidation[];
   issues: RoomIssue[];
+}
+
+interface MissingAudioEntry {
+  roomId: string;
+  roomTitle: string;
+  entrySlug: string;
+  field: string;
+  filename: string;
+  status: string;
+  httpStatus?: number;
+}
+
+interface AudioScanResult {
+  success: boolean;
+  totalChecked: number;
+  missingCount: number;
+  existingCount: number;
+  missingFiles: MissingAudioEntry[];
+  existingFiles: MissingAudioEntry[];
 }
 
 interface RoomHealth {
@@ -201,6 +220,10 @@ export default function UnifiedHealthCheck() {
   const [phantomRooms, setPhantomRooms] = useState<{ id: string, title: string }[]>([]);
   const [bulkFixingJson, setBulkFixingJson] = useState(false);
   const [jsonFixProgress, setJsonFixProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
+  
+  // Missing audio scanner state
+  const [scanningMissingAudio, setScanningMissingAudio] = useState(false);
+  const [audioScanResults, setAudioScanResults] = useState<AudioScanResult | null>(null);
   
   // Kids room filtering state (for kids tiers only)
   const [selectedLevel, setSelectedLevel] = useState<string>("all");
@@ -1332,6 +1355,89 @@ export default function UnifiedHealthCheck() {
     } finally {
       setBulkFixingKeywords(false);
       setKeywordFixProgress(null);
+    }
+  };
+
+  // Scan for missing audio files across all rooms
+  const scanMissingAudio = async () => {
+    setScanningMissingAudio(true);
+    setAudioScanResults(null);
+    
+    try {
+      const { data, error } = await supabase.functions.invoke('scan-missing-audio');
+      
+      if (error) throw error;
+      
+      setAudioScanResults(data as AudioScanResult);
+      
+      toast({
+        title: "Audio Scan Complete",
+        description: `Checked ${data.totalChecked} audio files. ${data.missingCount} missing.`,
+        variant: data.missingCount > 0 ? "default" : "default"
+      });
+    } catch (error: any) {
+      console.error('Error scanning audio:', error);
+      toast({
+        title: "Scan Failed",
+        description: error.message || 'Failed to scan audio files',
+        variant: "destructive"
+      });
+    } finally {
+      setScanningMissingAudio(false);
+    }
+  };
+
+  // Export missing audio as CSV
+  const exportMissingAudioCSV = () => {
+    if (!audioScanResults || audioScanResults.missingCount === 0) return;
+    
+    const headers = ['Room ID', 'Room Title', 'Entry Slug', 'Field', 'Filename', 'Status'];
+    const rows = audioScanResults.missingFiles.map(entry => [
+      entry.roomId,
+      entry.roomTitle,
+      entry.entrySlug,
+      entry.field,
+      entry.filename,
+      entry.status
+    ]);
+    
+    const csvContent = [
+      headers.join(','),
+      ...rows.map(row => row.map(cell => `"${cell}"`).join(','))
+    ].join('\n');
+    
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `missing-audio-${new Date().toISOString().slice(0,10)}.csv`;
+    a.click();
+    window.URL.revokeObjectURL(url);
+    
+    toast({
+      title: "CSV Exported",
+      description: `Downloaded ${audioScanResults.missingCount} missing audio files list`
+    });
+  };
+
+  // Copy missing filenames to clipboard
+  const copyMissingFilenames = async () => {
+    if (!audioScanResults || audioScanResults.missingCount === 0) return;
+    
+    const filenames = audioScanResults.missingFiles.map(entry => entry.filename).join('\n');
+    
+    try {
+      await navigator.clipboard.writeText(filenames);
+      toast({
+        title: "Copied to Clipboard",
+        description: `${audioScanResults.missingCount} filenames copied`
+      });
+    } catch (error) {
+      toast({
+        title: "Copy Failed",
+        description: "Could not copy to clipboard",
+        variant: "destructive"
+      });
     }
   };
 
@@ -2565,8 +2671,107 @@ export default function UnifiedHealthCheck() {
               )}
             </div>
           )}
+          
+          {/* Action Buttons */}
+          <div className="flex gap-2 flex-wrap pt-4 border-t">
+            <Button 
+              onClick={runDeepScan}
+              disabled={loading || deepScanning || scanningMissingAudio}
+              className="bg-black text-white hover:bg-gray-800 border-2 border-black"
+            >
+              {deepScanning ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Deep Scanning...
+                </>
+              ) : (
+                <>
+                  <Play className="mr-2 h-4 w-4" />
+                  Deep Scan
+                </>
+              )}
+            </Button>
+
+            <Button 
+              onClick={scanMissingAudio}
+              disabled={loading || deepScanning || scanningMissingAudio}
+              className="bg-orange-600 hover:bg-orange-700 text-white border-2 border-orange-600"
+            >
+              {scanningMissingAudio ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Scanning Audio...
+                </>
+              ) : (
+                <>
+                  <Music className="mr-2 h-4 w-4" />
+                  Scan Missing Audio Files (All Rooms)
+                </>
+              )}
+            </Button>
+          </div>
         </div>
       </Card>
+
+      {/* Missing Audio Results */}
+      {audioScanResults && (
+        <Card className="p-6 border-2 border-orange-600">
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-2xl font-bold text-black">Missing / Broken Audio Files ({audioScanResults.missingCount})</h2>
+                <p className="text-sm text-gray-600">Total checked: {audioScanResults.totalChecked} files</p>
+              </div>
+              <div className="flex gap-2">
+                <Button onClick={exportMissingAudioCSV} variant="outline" className="border-black text-black hover:bg-gray-100">
+                  <Download className="mr-2 h-4 w-4" />
+                  Export CSV
+                </Button>
+                <Button onClick={copyMissingFilenames} variant="outline" className="border-black text-black hover:bg-gray-100">
+                  <FileText className="mr-2 h-4 w-4" />
+                  Copy Filenames
+                </Button>
+              </div>
+            </div>
+            
+            {audioScanResults.missingCount === 0 ? (
+              <Alert className="bg-green-50 border-green-500">
+                <CheckCircle2 className="h-4 w-4 text-green-600" />
+                <AlertDescription className="text-green-800">
+                  All audio files exist! No missing files found.
+                </AlertDescription>
+              </Alert>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse border-2 border-black">
+                  <thead>
+                    <tr className="bg-black text-white">
+                      <th className="border border-black p-2 text-left font-bold">Room ID</th>
+                      <th className="border border-black p-2 text-left font-bold">Room Title</th>
+                      <th className="border border-black p-2 text-left font-bold">Entry Slug</th>
+                      <th className="border border-black p-2 text-left font-bold">Field</th>
+                      <th className="border border-black p-2 text-left font-bold">Filename</th>
+                      <th className="border border-black p-2 text-left font-bold">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {audioScanResults.missingFiles.map((entry, idx) => (
+                      <tr key={idx} className="hover:bg-gray-50">
+                        <td className="border border-black p-2 font-mono text-sm">{entry.roomId}</td>
+                        <td className="border border-black p-2 text-sm font-semibold">{entry.roomTitle}</td>
+                        <td className="border border-black p-2 font-mono text-sm">{entry.entrySlug}</td>
+                        <td className="border border-black p-2 font-mono text-sm">{entry.field}</td>
+                        <td className="border border-black p-2 font-mono text-sm">{entry.filename}</td>
+                        <td className="border border-black p-2 text-sm text-red-600 font-bold">{entry.status}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        </Card>
+      )}
 
       {/* Health Check Results */}
       {health && (
