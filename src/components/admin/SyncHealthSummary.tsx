@@ -301,11 +301,15 @@ export function SyncHealthSummary() {
 
       if (fetchError) throw fetchError;
 
-      // Check which rooms are missing JSON files
+      // Check which rooms are missing JSON files (with cache-busting)
+      const cacheBuster = Date.now();
       const jsonFileChecks = await Promise.all(
         (allRooms || []).map(async (room) => {
           try {
-            const response = await fetch(`/data/${room.id}.json`, { method: 'HEAD' });
+            const response = await fetch(`/data/${room.id}.json?t=${cacheBuster}`, { 
+              method: 'HEAD',
+              cache: 'no-store'
+            });
             return { room, hasJson: response.ok };
           } catch {
             return { room, hasJson: false };
@@ -320,11 +324,13 @@ export function SyncHealthSummary() {
 
       if (roomsNeedingJson.length === 0) {
         toast({
-          title: "No Files to Export",
-          description: "All rooms with DB entries already have JSON files!",
+          title: "✅ All Synced",
+          description: "All rooms in the database already have JSON files in public/data/!",
         });
         return;
       }
+
+      console.log(`Found ${roomsNeedingJson.length} rooms needing JSON export:`, roomsNeedingJson.map(r => r.id));
 
       const message = `📝 EXPORT ${roomsNeedingJson.length} JSON FILES FROM DATABASE?\n\n` +
         `This will generate JSON files for:\n${roomsNeedingJson.map(r => r.id).slice(0, 10).join('\n')}` +
