@@ -31,15 +31,18 @@ async function fetchCachedRooms(tier?: string): Promise<MinimalRoomData[]> {
   try {
     let query = supabase
       .from('rooms')
-      .select('id, title_en, title_vi, tier, schema_id, domain')
-      // Exclude English Pathway rooms but keep rooms where domain is NULL
-      .or('domain.is.null,domain.neq."English Foundation Ladder"'); // Exclude English Pathway rooms
+      .select('id, title_en, title_vi, tier, schema_id, domain');
 
     
     if (tier) {
       // Normalize tier query - handle variations
       const normalizedTier = tier.toLowerCase().replace(/\s+/g, '');
       query = query.ilike('tier', `%${normalizedTier}%`);
+    }
+    
+    // Exclude English Pathway rooms AFTER tier filter, but NOT for free tier
+    if (tier && tier.toLowerCase() !== 'free') {
+      query = query.or('domain.is.null,domain.neq."English Foundation Ladder"');
     }
     
     const { data, error } = await query.order('title_en');
