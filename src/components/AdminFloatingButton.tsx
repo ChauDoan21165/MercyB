@@ -134,7 +134,7 @@ export const AdminFloatingButton = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-1">
+    <div className="fixed bottom-[116px] right-6 z-50 flex items-center gap-1">
       {/* Version Indicator Dot - Change the character to track versions */}
       <div 
         className="h-4 w-4 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white text-[9px] font-bold shadow-sm"
