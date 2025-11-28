@@ -366,6 +366,21 @@ export const ColorfulMercyBladeHeader = ({
                   </button>
 
                 </div>
+
+                {/* Footer with View Full Map Button */}
+                <div className="p-4 border-t bg-muted/30">
+                  <Button
+                    onClick={() => navigate('/tier-map')}
+                    variant="outline"
+                    className="w-full gap-2 border-2 hover:bg-primary hover:text-primary-foreground"
+                  >
+                    <Eye className="w-4 h-4" />
+                    View Full Tier Map (Clean Text Version)
+                  </Button>
+                  <p className="text-xs text-muted-foreground text-center mt-2">
+                    See all tiers in a clean, organized layout
+                  </p>
+                </div>
               </DropdownMenuContent>
             </DropdownMenu>
           )}
