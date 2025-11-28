@@ -128,15 +128,48 @@ export function SyncHealthSummary() {
     }
   };
 
-  // Helper to check if room ID is non-canonical English duplicate (safe to auto-delete)
+  // CANONICAL ID RULES
+  const isCanonicalId = (id: string): boolean => {
+    // Canonical = lowercase only, using [a-z 0-9 _ -], no uppercase
+    
+    // English Pathway canonical patterns
+    const englishPatterns = [
+      /^english_foundation_ef\d{2}$/,        // english_foundation_ef01-ef14
+      /^english_a1_a1\d{2}$/,                // english_a1_a101-a114
+      /^english_a2_a2\d{2}$/,                // english_a2_a201-a214
+      /^english_b1_b1\d{2}$/,                // english_b1_b101-b114
+      /^english_b2_b2\d{2}$/,                // english_b2_b201-b214
+      /^english_c1_c1\d{2}$/,                // english_c1_c101-c114
+      /^english_c2_c2\d{2}$/,                // english_c2_c201-c214
+    ];
+    
+    // Kids English canonical pattern
+    const kidsPattern = /^kids_english_l[123]_/;
+    
+    // Check if matches known English patterns
+    const matchesEnglishPattern = englishPatterns.some(pattern => pattern.test(id));
+    const matchesKidsPattern = kidsPattern.test(id);
+    
+    if (matchesEnglishPattern || matchesKidsPattern) return true;
+    
+    // For non-English IDs: canonical if lowercase only (no uppercase letters)
+    const isLowercaseOnly = !/[A-Z]/.test(id);
+    
+    return isLowercaseOnly;
+  };
+
+  // NON-CANONICAL ID DETECTION (safe to auto-delete)
   const isNonCanonicalEnglishDuplicate = (id: string): boolean => {
-    // Pattern: uppercase letters with hyphens (EF-01, A1-01, A2-01, etc.)
+    // Pattern 1: Uppercase English level codes (EF-01, A1-01, etc.)
+    const isUppercaseEnglishPattern = /^(EF|A1|A2|B1|B2|C1|C2)-\d{2}$/i.test(id);
+    
+    // Pattern 2: Any English room id with uppercase letters or hyphens that's clearly a short code
     const hasUppercaseWithHyphens = /[A-Z]/.test(id) && id.includes('-');
     
-    // Pattern: English layer IDs like EF-01...EF-14, A1-01...A1-14, A2-01...C2-14
-    const isEnglishLayerPattern = /^(EF|A1|A2|B1|B2|C1|C2)-\d{2}$/.test(id);
+    // Pattern 3: Test/temp/draft prefixes (unless explicitly protected)
+    const isTestPrefix = /^(test_|temp_|draft_|dev_|old_)/i.test(id);
     
-    return hasUppercaseWithHyphens || isEnglishLayerPattern;
+    return isUppercaseEnglishPattern || (hasUppercaseWithHyphens && id.length < 20) || isTestPrefix;
   };
 
   const handleDeleteRoomsWithoutJson = async (roomIds: string[]) => {
@@ -198,6 +231,147 @@ export function SyncHealthSummary() {
       toast({
         title: "Error",
         description: error.message || "Failed to delete rooms",
+        variant: "destructive",
+      });
+    } finally {
+      setFixing(false);
+    }
+  };
+
+  // NEW: Delete only non-canonical English duplicates (safe operation)
+  const handleDeleteNonCanonicalDuplicates = async (roomIds: string[]) => {
+    if (!roomIds || roomIds.length === 0) return;
+
+    const message = `🗑️ DELETE ${roomIds.length} NON-CANONICAL DUPLICATES?\n\n` +
+      `These are safe-to-delete English legacy IDs:\n\n` +
+      roomIds.slice(0, 15).join(', ') +
+      (roomIds.length > 15 ? `\n...and ${roomIds.length - 15} more` : '') +
+      `\n\nThis will NOT delete any lowercase snake_case canonical IDs.`;
+
+    const confirmed = confirm(message);
+    if (!confirmed) return;
+
+    try {
+      setFixing(true);
+
+      const { error } = await supabase
+        .from('rooms')
+        .delete()
+        .in('id', roomIds);
+
+      if (error) throw error;
+
+      toast({
+        title: "✅ Success",
+        description: `Deleted ${roomIds.length} non-canonical English duplicate(s)`,
+      });
+
+      // Auto-healing: reload stats
+      await loadSyncStats();
+      setExpandedRow(null);
+    } catch (error: any) {
+      console.error('Error deleting non-canonical duplicates:', error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to delete duplicates",
+        variant: "destructive",
+      });
+    } finally {
+      setFixing(false);
+    }
+  };
+
+  // NEW: Export JSON only for canonical IDs
+  const handleExportCanonicalJson = async (canonicalIds: string[]) => {
+    if (!canonicalIds || canonicalIds.length === 0) return;
+
+    try {
+      setFixing(true);
+
+      // Get rooms data for canonical IDs
+      const { data: rooms, error: fetchError } = await supabase
+        .from('rooms')
+        .select('*')
+        .in('id', canonicalIds);
+
+      if (fetchError) throw fetchError;
+
+      if (!rooms || rooms.length === 0) {
+        toast({
+          title: "No Data",
+          description: "Could not find any rooms to export",
+        });
+        return;
+      }
+
+      console.log(`Exporting ${rooms.length} canonical rooms to JSON:`, rooms.map(r => r.id));
+
+      // Create ZIP file
+      const zip = new JSZip();
+      let successCount = 0;
+
+      for (const room of rooms) {
+        try {
+          // Construct JSON in Mercy Blade standard format
+          const entries = room.entries && Array.isArray(room.entries) ? room.entries : [];
+          
+          const jsonContent = {
+            schema_version: "1.0",
+            schema_id: room.schema_id || room.id,
+            id: room.id,
+            tier: room.tier || "free",
+            domain: room.domain || "",
+            description: {
+              en: room.title_en || "",
+              vi: room.title_vi || ""
+            },
+            keywords: room.keywords || [],
+            entries: entries,
+            room_essay: {
+              en: room.room_essay_en || "",
+              vi: room.room_essay_vi || ""
+            },
+            safety_disclaimer: {
+              en: room.safety_disclaimer_en || "",
+              vi: room.safety_disclaimer_vi || ""
+            },
+            crisis_footer: {
+              en: room.crisis_footer_en || "",
+              vi: room.crisis_footer_vi || ""
+            }
+          };
+
+          // Add file to ZIP
+          zip.file(`${room.id}.json`, JSON.stringify(jsonContent, null, 2));
+          successCount++;
+        } catch (error) {
+          console.error(`Failed to add ${room.id} to ZIP:`, error);
+        }
+      }
+
+      // Generate and download ZIP
+      const blob = await zip.generateAsync({ type: 'blob' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `canonical-rooms-${successCount}-files.zip`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      toast({
+        title: "✅ ZIP Download Complete",
+        description: `Downloaded ${successCount} canonical JSON files. Upload to GitHub public/data/ folder.`,
+      });
+
+      // Auto-healing: reload stats
+      await loadSyncStats();
+    } catch (error: any) {
+      console.error('Error exporting canonical JSON:', error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to export canonical JSON files",
         variant: "destructive",
       });
     } finally {
@@ -299,94 +473,31 @@ export function SyncHealthSummary() {
     try {
       setFixing(true);
 
-      // Get all rooms
-      const { data: allRooms, error: fetchError } = await supabase
-        .from('rooms')
-        .select('*');
-
-      if (fetchError) throw fetchError;
-
-      // Determine which rooms to export: all Free-tier + English Foundation
-      const roomsNeedingJson = (allRooms || []).filter((room: any) => {
-        const tier = (room.tier || "").toString().toLowerCase();
-        const id = room.id || "";
-        const isFreeTier = tier === "free" || tier.includes("free / miễn phí") || tier.startsWith("free");
-        const isEnglishFoundation = id.startsWith("english_foundation_");
-        return isFreeTier || isEnglishFoundation;
-      });
-
-      if (roomsNeedingJson.length === 0) {
+      // Get all rooms in DB without JSON files
+      const missingJsonStat = stats.find(s => s.category === "Rooms in DB but no JSON file");
+      if (!missingJsonStat || !missingJsonStat.missingInJson || missingJsonStat.missingInJson.length === 0) {
         toast({
-          title: "No Free/English Foundation Rooms",
-          description: "Could not find any Free or English Foundation rooms in the database to export.",
+          title: "Nothing to Export",
+          description: "All rooms already have JSON files!",
         });
         return;
       }
 
-      console.log(`Exporting ${roomsNeedingJson.length} Free/English Foundation rooms to JSON:`, roomsNeedingJson.map((r: any) => r.id));
-
-      // Create ZIP file
-      const zip = new JSZip();
-      let successCount = 0;
-
-      for (const room of roomsNeedingJson) {
-        try {
-          // Construct JSON in Mercy Blade standard format
-          const entries = room.entries && Array.isArray(room.entries) ? room.entries : [];
-          
-          const jsonContent = {
-            schema_version: "1.0",
-            schema_id: room.schema_id || room.id,
-            id: room.id,
-            tier: room.tier || "free",
-            domain: room.domain || "",
-            description: {
-              en: room.title_en || "",
-              vi: room.title_vi || ""
-            },
-            keywords: room.keywords || [],
-            entries: entries,
-            room_essay: {
-              en: room.room_essay_en || "",
-              vi: room.room_essay_vi || ""
-            },
-            safety_disclaimer: {
-              en: room.safety_disclaimer_en || "",
-              vi: room.safety_disclaimer_vi || ""
-            },
-            crisis_footer: {
-              en: room.crisis_footer_en || "",
-              vi: room.crisis_footer_vi || ""
-            }
-          };
-
-          // Add file to ZIP
-          zip.file(`${room.id}.json`, JSON.stringify(jsonContent, null, 2));
-          successCount++;
-        } catch (error) {
-          console.error(`Failed to add ${room.id} to ZIP:`, error);
-        }
+      // Filter to only canonical IDs
+      const canonicalIds = missingJsonStat.missingInJson.filter(id => isCanonicalId(id));
+      
+      if (canonicalIds.length === 0) {
+        toast({
+          title: "No Canonical IDs",
+          description: "No canonical room IDs found that need JSON export. Use manual review for non-canonical IDs.",
+        });
+        return;
       }
 
-      // Generate and download ZIP
-      const blob = await zip.generateAsync({ type: 'blob' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `mercy-blade-rooms-${successCount}-files.zip`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-
-      toast({
-        title: "✅ ZIP Download Complete",
-        description: `Downloaded ${successCount} JSON files in ZIP. Upload to GitHub public/data/ folder.`,
-      });
-
-      await loadSyncStats();
+      // Use the canonical export handler
+      await handleExportCanonicalJson(canonicalIds);
     } catch (error: any) {
-      console.error('Error exporting JSON files:', error);
+      console.error('Error in export handler:', error);
       toast({
         title: "Error",
         description: error.message || "Failed to export JSON files",
@@ -419,7 +530,7 @@ export function SyncHealthSummary() {
             disabled={fixing}
             className="bg-green-600 hover:bg-green-700 text-white font-bold"
           >
-            📝 Export Missing JSON from DB ({stats.find(s => s.category === "Rooms in DB but no JSON file")?.difference || 0} rooms)
+            📝 Export Canonical JSON from DB ({stats.find(s => s.category === "Rooms in DB but no JSON file")?.missingInJson?.filter(id => isCanonicalId(id)).length || 0} canonical rooms)
           </Button>
           <Button
             variant="outline"
@@ -505,70 +616,114 @@ export function SyncHealthSummary() {
                   <tr>
                     <td colSpan={6} className="p-4 bg-muted/30">
                       <div className="space-y-4">
-                        {/* List of mismatched rooms */}
+                        {/* List of mismatched rooms with classification */}
                         {stat.missingInJson && stat.missingInJson.length > 0 && (
-                          <div>
-                            <h4 className="font-semibold mb-2 text-destructive">
-                              Rooms in database without JSON files ({stat.missingInJson.length}):
-                            </h4>
-                            <div className="max-h-48 overflow-y-auto bg-background rounded border p-3">
-                              <ul className="space-y-1 font-mono text-sm">
-                                {stat.missingInJson.map((roomId) => (
-                                  <li key={roomId} className="text-muted-foreground">
-                                    • {roomId}
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
+                          <div className="space-y-4">
+                            {/* Classify rooms */}
+                            {(() => {
+                              const safeToDelete = stat.missingInJson.filter(id => isNonCanonicalEnglishDuplicate(id));
+                              const needsReview = stat.missingInJson.filter(id => !isNonCanonicalEnglishDuplicate(id));
+                              const canonicalMissing = needsReview.filter(id => isCanonicalId(id));
+                              const otherMissing = needsReview.filter(id => !isCanonicalId(id));
+                              
+                              return (
+                                <>
+                                  {/* Safe to auto-delete */}
+                                  {safeToDelete.length > 0 && (
+                                    <div>
+                                      <h4 className="font-semibold mb-2 text-orange-600 dark:text-orange-400">
+                                        ✅ Safe to auto-delete ({safeToDelete.length} non-canonical English duplicates):
+                                      </h4>
+                                      <div className="max-h-32 overflow-y-auto bg-background rounded border border-orange-200 dark:border-orange-800 p-3">
+                                        <ul className="space-y-1 font-mono text-sm">
+                                          {safeToDelete.map((roomId) => (
+                                            <li key={roomId} className="text-muted-foreground">
+                                              • {roomId}
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  )}
+                                  
+                                  {/* Canonical IDs needing JSON export */}
+                                  {canonicalMissing.length > 0 && (
+                                    <div>
+                                      <h4 className="font-semibold mb-2 text-green-600 dark:text-green-400">
+                                        📝 Canonical IDs needing JSON export ({canonicalMissing.length}):
+                                      </h4>
+                                      <div className="max-h-32 overflow-y-auto bg-background rounded border border-green-200 dark:border-green-800 p-3">
+                                        <ul className="space-y-1 font-mono text-sm">
+                                          {canonicalMissing.map((roomId) => (
+                                            <li key={roomId} className="text-muted-foreground">
+                                              • {roomId}
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  )}
+                                  
+                                  {/* Other IDs needing manual review */}
+                                  {otherMissing.length > 0 && (
+                                    <div>
+                                      <h4 className="font-semibold mb-2 text-yellow-600 dark:text-yellow-400">
+                                        ⚠️ Needs manual review ({otherMissing.length} other IDs):
+                                      </h4>
+                                      <div className="max-h-32 overflow-y-auto bg-background rounded border border-yellow-200 dark:border-yellow-800 p-3">
+                                        <ul className="space-y-1 font-mono text-sm">
+                                          {otherMissing.map((roomId) => (
+                                            <li key={roomId} className="text-muted-foreground">
+                                              • {roomId}
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  )}
+
+                                  {/* Action buttons */}
+                                  <div className="flex flex-wrap gap-3 pt-2">
+                                    {safeToDelete.length > 0 && (
+                                      <Button
+                                        variant="destructive"
+                                        onClick={() => handleDeleteNonCanonicalDuplicates(safeToDelete)}
+                                        disabled={fixing}
+                                        className="bg-orange-600 hover:bg-orange-700"
+                                      >
+                                        <Trash2 className="w-4 h-4 mr-2" />
+                                        Delete {safeToDelete.length} non-canonical English duplicates
+                                      </Button>
+                                    )}
+                                    
+                                    {canonicalMissing.length > 0 && (
+                                      <Button
+                                        variant="default"
+                                        onClick={() => handleExportCanonicalJson(canonicalMissing)}
+                                        disabled={fixing}
+                                        className="bg-green-600 hover:bg-green-700 text-white"
+                                      >
+                                        <Plus className="w-4 h-4 mr-2" />
+                                        Export {canonicalMissing.length} canonical JSON files
+                                      </Button>
+                                    )}
+                                  </div>
+                                </>
+                              );
+                            })()}
                           </div>
                         )}
 
-                        {/* Action buttons */}
-                        <div className="flex flex-wrap gap-3">
-                          {stat.missingInJson && stat.missingInJson.length > 0 && (
-                            <>
-                              <Button
-                                variant="default"
-                                onClick={handleExportMissingJsonFiles}
-                                disabled={fixing}
-                                className="bg-green-600 hover:bg-green-700 text-white"
-                              >
-                                <Plus className="w-4 h-4 mr-2" />
-                                Export Missing JSON from DB ({stat.missingInJson.length} rooms)
-                              </Button>
-                              
-                              <Button
-                                variant="destructive"
-                                onClick={() => handleDeleteRoomsWithoutJson(stat.missingInJson!)}
-                                disabled={fixing}
-                              >
-                                <Trash2 className="w-4 h-4 mr-2" />
-                                Delete all {stat.missingInJson.length} DB rows without JSON
-                              </Button>
-                              
-                              <Button
-                                variant="destructive"
-                                onClick={handleDeletePhantomRows}
-                                disabled={fixing}
-                                className="bg-red-600 hover:bg-red-700"
-                              >
-                                <Trash2 className="w-4 h-4 mr-2" />
-                                Delete Phantom DB Rows (zero entries, non-canonical IDs only)
-                              </Button>
-                            </>
-                          )}
-
-                          {stat.missingInDb && stat.missingInDb.length > 0 && (
-                            <Button
-                              variant="default"
-                              onClick={handleCreateMissingDbRows}
-                              disabled={fixing}
-                            >
-                              <Plus className="w-4 h-4 mr-2" />
-                              Create missing DB rows from JSON files
-                            </Button>
-                          )}
-                        </div>
+                        {stat.missingInDb && stat.missingInDb.length > 0 && (
+                          <Button
+                            variant="default"
+                            onClick={handleCreateMissingDbRows}
+                            disabled={fixing}
+                          >
+                            <Plus className="w-4 h-4 mr-2" />
+                            Create missing DB rows from JSON files
+                          </Button>
+                        )}
                       </div>
                     </td>
                   </tr>
