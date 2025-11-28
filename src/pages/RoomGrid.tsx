@@ -26,33 +26,20 @@ const RoomGrid = () => {
   const { toast } = useToast();
   const [demoRoomIds, setDemoRoomIds] = useState<string[]>([]);
   
-  // Use cached rooms hook for optimized data fetching
+  // Use cached rooms hook - fetch ALL rooms to show to everyone
   const { data: cachedRooms, isLoading, refetch } = useCachedRooms();
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      
-      // If not authenticated, fetch demo room IDs for homepage previews only
-      if (!user) {
-        const rooms = await getDemoRooms();
-        setDemoRoomIds(rooms.map(r => r.id));
-      }
-    };
-    checkAuth();
-  }, []);
   
-  // Filter rooms to show ONLY free tier rooms on this page
+  // Filter to show only free tier rooms on this page
   const filteredRooms = useMemo(() => {
     if (!cachedRooms) return [];
-
     return cachedRooms.filter(room => {
       const t = room.tier?.toLowerCase() || 'free';
-      return t.includes('free');
+      return t.includes('free') || t.includes('miễn phí');
     });
   }, [cachedRooms]);
 
   const handleRoomClick = (room: any) => {
+    // Always allow navigation - access control happens in ChatHub
     navigate(`/chat/${room.id}`);
   };
 
@@ -139,17 +126,12 @@ const RoomGrid = () => {
             {!isLoading && filteredRooms.length === 0 && (
               <div className="mt-12 text-center space-y-4 max-w-xl mx-auto">
                 <p className="text-base text-muted-foreground">
-                  No rooms are visible right now. This can happen if you are not signed in or your account has no free rooms configured.
+                  No free tier rooms are available right now.
                 </p>
-                <div className="flex justify-center gap-3">
-                  <Button onClick={() => navigate('/auth')} size="sm">
-                    Sign in / Đăng nhập
-                  </Button>
-                  <Button variant="outline" size="sm" onClick={handleRefreshRooms}>
-                    <RefreshCw className="h-4 w-4 mr-1" />
-                    Try again
-                  </Button>
-                </div>
+                <Button variant="outline" size="sm" onClick={handleRefreshRooms}>
+                  <RefreshCw className="h-4 w-4 mr-1" />
+                  Refresh / Làm mới
+                </Button>
               </div>
             )}
 

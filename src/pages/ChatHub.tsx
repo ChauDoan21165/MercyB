@@ -189,9 +189,16 @@ const ChatHub = () => {
     fetchUsername();
   }, []);
 
-  // Check access
+  // Check access - Free rooms require registration, VIP rooms require subscription
   useEffect(() => {
     if (!accessLoading && info) {
+      // Unauthenticated users can't access any rooms
+      if (!isAuthenticated) {
+        setShowAccessDenied(true);
+        return;
+      }
+      
+      // Authenticated users: check tier access
       const hasAccess =
         isAdmin || // Admins can access all rooms
         info.tier === 'free' ||
@@ -212,6 +219,7 @@ const ChatHub = () => {
   }, [
     accessLoading,
     info,
+    isAuthenticated,
     canAccessVIP1,
     canAccessVIP2,
     canAccessVIP3,
@@ -768,16 +776,41 @@ const ChatHub = () => {
         <AlertDialog open={showAccessDenied} onOpenChange={setShowAccessDenied}>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>VIP Only / Chỉ Dành Cho VIP</AlertDialogTitle>
+              <AlertDialogTitle>
+                {!isAuthenticated 
+                  ? "Sign Up Required / Yêu Cầu Đăng Ký" 
+                  : "VIP Only / Chỉ Dành Cho VIP"}
+              </AlertDialogTitle>
               <AlertDialogDescription className="space-y-2">
-                <p>This room is for VIP members only. Please upgrade your subscription to access this content.</p>
-                <p className="text-sm">Phòng này chỉ dành cho thành viên VIP. Vui lòng nâng cấp gói đăng ký để truy cập nội dung này.</p>
-                <p className="font-semibold mt-4">Required tier: {info?.tier?.toUpperCase()}</p>
-                <p className="text-sm">Your tier: {tier?.toUpperCase()}</p>
+                {!isAuthenticated ? (
+                  <>
+                    <p>Please create a free account to access this room.</p>
+                    <p className="text-sm">Vui lòng tạo tài khoản miễn phí để truy cập phòng này.</p>
+                    <p className="font-semibold mt-4">Room tier: {info?.tier?.toUpperCase()}</p>
+                  </>
+                ) : (
+                  <>
+                    <p>This room is for VIP members only. Please upgrade your subscription to access this content.</p>
+                    <p className="text-sm">Phòng này chỉ dành cho thành viên VIP. Vui lòng nâng cấp gói đăng ký để truy cập nội dung này.</p>
+                    <p className="font-semibold mt-4">Required tier: {info?.tier?.toUpperCase()}</p>
+                    <p className="text-sm">Your tier: {tier?.toUpperCase()}</p>
+                  </>
+                )}
               </AlertDialogDescription>
             </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogAction onClick={handleAccessDenied}>Go Back / Quay Lại</AlertDialogAction>
+            <AlertDialogFooter className="flex-col sm:flex-row gap-2">
+              <Button onClick={handleAccessDenied} variant="outline" className="w-full sm:w-auto">
+                Go Back / Quay Lại
+              </Button>
+              {!isAuthenticated ? (
+                <Button onClick={() => navigate('/auth')} className="w-full sm:w-auto bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600">
+                  Sign Up Free / Đăng ký miễn phí
+                </Button>
+              ) : (
+                <Button onClick={() => navigate('/')} className="w-full sm:w-auto bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600">
+                  View Plans / Xem Gói
+                </Button>
+              )}
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
