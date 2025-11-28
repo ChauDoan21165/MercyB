@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0",
+  "schema_id": "women_health",
+  "id": "women-health",
+  "tier": "free",
+  "domain": "",
+  "description": {
+    "en": "Women Health",
+    "vi": "Sức Khỏe Phụ Nữ"
+  },
+  "keywords": [
+    "women",
+    "health",
+    "phụ nữ"
+  ],
+  "entries": [
+    {
+      "id": "menstrual_cycle_basics",
+      "audio": "Menstrual_Cycle_Basics_Free.mp3",
+      "copy_en": "The menstrual cycle, lasting about 28 days, involves hormones regulating ovulation and periods. Track symptoms like cramps or mood changes using apps for better awareness. Studies show tracking reduces stress by 25%. If irregular, consult a doctor for possible issues like PCOS. Maintain a healthy diet and exercise to support balance. This empowers you to understand your body. Discover deeper insights in VIP tiers.",
+      "copy_vi": "Chu kỳ kinh nguyệt, kéo dài khoảng 28 ngày, là quá trình các hormone điều hòa rụng trứng và hành kinh. Hãy theo dõi các triệu chứng như đau bụng hoặc thay đổi tâm trạng bằng ứng dụng để hiểu rõ hơn. Nghiên cứu cho thấy việc theo dõi giúp giảm căng thẳng 25%. Nếu chu kỳ không đều, hãy gặp bác sĩ để kiểm tra các vấn đề như PCOS. Duy trì chế độ ăn uống lành mạnh và tập thể dục để cân bằng hormone. Việc này giúp bạn hiểu và yêu thương cơ thể mình hơn. Khám phá sâu hơn ở các cấp VIP.",
+      "keywords_en": [
+        "menstrual_cycle_basics",
+        "menstrual cycle",
+        "period cycle",
+        "cycle basics"
+      ],
+      "keywords_vi": [
+        "chu_ky_kinh_nguyet",
+        "chu ky kinh nguyet",
+        "kinh nguyet",
+        "ky kinh"
+      ]
+    },
+    {
+      "id": "period_pain",
+      "audio": "Managing_Period_Pain_Free.mp3",
+      "copy_en": "Menstrual cramps affect 80% of women, caused by uterine contractions. Use heat pads or over-the-counter pain relievers like ibuprofen for relief. Gentle exercise and hydration help too. Evidence from studies suggests omega-3 supplements reduce pain intensity. If severe, see a doctor to rule out endometriosis. Track pain patterns in a journal for patterns. This simple approach improves quality of life during your cycle. Discover deeper insights in VIP tiers.",
+      "copy_vi": "Đau bụng kinh ảnh hưởng đến 80% phụ nữ, do co thắt tử cung gây ra. Hãy chườm ấm hoặc dùng thuốc giảm đau không kê đơn như ibuprofen để giảm đau. Vận động nhẹ và uống đủ nước cũng giúp ích. Nghiên cứu cho thấy bổ sung omega-3 có thể làm giảm cơn đau. Nếu đau dữ dội, hãy đến gặp bác sĩ để loại trừ bệnh lạc nội mạc tử cung. Ghi chép lại cơn đau để nhận biết quy luật. Cách đơn giản này giúp bạn thoải mái hơn trong những ngày đèn đỏ. Khám phá sâu hơn ở các cấp VIP.",
+      "keywords_en": [
+        "period_pain",
+        "period pain",
+        "menstrual cramps",
+        "cramps",
+        "dysmenorrhea"
+      ],
+      "keywords_vi": [
+        "dau_bung_kinh",
+        "dau bung kinh",
+        "dau kinh",
+        "dau bung"
+      ]
+    },
+    {
+      "id": "heavy_flow",
+      "audio": "Handling_Heavy_Flow_Free.mp3",
+      "copy_en": "Heavy menstruation, or menorrhagia, can lead to anemia if unmanaged. Use high-absorbency pads or menstrual cups. Iron-rich foods like spinach help prevent fatigue. Research indicates hormonal birth control can reduce flow by 50%. Monitor for signs like soaking a pad hourly; consult a doctor if needed. Stay hydrated and rest more. This management keeps daily life uninterrupted. Discover deeper insights in VIP tiers.",
+      "copy_vi": "Kinh nguyệt ra nhiều, hay còn gọi là rong kinh, có thể gây thiếu máu nếu không được kiểm soát. Hãy dùng băng vệ sinh thấm hút tốt hoặc cốc nguyệt san. Ăn thực phẩm giàu sắt như rau chân vịt để tránh mệt mỏi. Nghiên cứu cho thấy thuốc tránh thai nội tiết có thể giảm lượng kinh 50%. Nếu bạn phải thay băng mỗi giờ, hãy gặp bác sĩ. Uống đủ nước và nghỉ ngơi nhiều hơn giúp cơ thể phục hồi. Cách quản lý này giúp cuộc sống hằng ngày không bị gián đoạn. Khám phá sâu hơn ở các cấp VIP.",
+      "keywords_en": [
+        "heavy_flow",
+        "heavy flow",
+        "heavy period",
+        "menorrhagia"
+      ],
+      "keywords_vi": [
+        "kinh_ra_nhieu",
+        "kinh ra nhieu",
+        "rong kinh",
+        "ra nhieu"
+      ]
+    },
+    {
+      "id": "pms_symptoms",
+      "audio": "Dealing_with_PMS_Symptoms_Free.mp3",
+      "copy_en": "PMS affects 75% of women with symptoms like bloating and mood swings. Track cycles to predict and prepare. Studies show calcium supplements ease symptoms by 30%. Exercise and stress reduction techniques like yoga help too. If severe, discuss with a doctor for possible PMDD. Balanced nutrition with less salt reduces bloating. This proactive approach eases monthly discomfort. Discover deeper insights in VIP tiers.",
+      "copy_vi": "Hội chứng tiền kinh nguyệt ảnh hưởng đến 75% phụ nữ, với các triệu chứng như đầy bụng và thay đổi tâm trạng. Hãy theo dõi chu kỳ để dự đoán và chuẩn bị. Nghiên cứu cho thấy bổ sung canxi giúp giảm triệu chứng 30%. Tập thể dục và giảm căng thẳng bằng yoga cũng rất hữu ích. Nếu triệu chứng nặng, hãy hỏi ý kiến bác sĩ để kiểm tra khả năng mắc PMDD. Ăn uống cân bằng, giảm muối giúp giảm đầy hơi. Cách chủ động này giúp bạn dễ chịu hơn mỗi tháng. Khám phá sâu hơn ở các cấp VIP.",
+      "keywords_en": [
+        "pms_symptoms",
+        "pms symptoms",
+        "premenstrual syndrome",
+        "pms",
+        "premenstrual"
+      ],
+      "keywords_vi": [
+        "trieu_chung_tien_kinh",
+        "trieu chung tien kinh",
+        "tien kinh",
+        "hoi chung tien kinh"
+      ]
+    },
+    {
+      "id": "breast_self_exam",
+      "audio": "Breast_Self_Exam_Guide_Free.mp3",
+      "copy_en": "Regular breast self-exams detect changes early, recommended monthly after periods. Lie down, use pads of fingers to check for lumps in circular motions. Include armpits and look for skin changes. Studies show self-exams increase awareness, though mammograms are key for detection. Report any changes to a doctor promptly. This empowers early health monitoring. Discover deeper insights in VIP tiers.",
+      "copy_vi": "Tự kiểm tra vú giúp phát hiện sớm các thay đổi, nên thực hiện mỗi tháng sau kỳ kinh. Nằm xuống, dùng đầu ngón tay kiểm tra theo vòng tròn để tìm khối u. Đừng quên vùng nách và quan sát da xem có thay đổi không. Nghiên cứu cho thấy việc tự kiểm tra giúp tăng nhận thức, dù chụp nhũ ảnh vẫn là phương pháp phát hiện chính xác nhất. Báo ngay cho bác sĩ nếu có bất thường. Việc này giúp bạn chủ động bảo vệ sức khỏe. Khám phá sâu hơn ở các cấp VIP.",
+      "keywords_en": [
+        "breast_self_exam",
+        "breast self exam",
+        "self exam",
+        "breast check"
+      ],
+      "keywords_vi": [
+        "tu_kiem_tra_vu",
+        "tu kiem tra vu",
+        "kiem tra vu",
+        "tu kham vu"
+      ]
+    },
+    {
+      "id": "hormonal_balance",
+      "audio": "Hormonal_Balance_Tips_Free.mp3",
+      "copy_en": "Hormonal imbalance can cause fatigue or acne. Eat balanced meals with omega-3s and avoid excess sugar. Exercise 30 minutes daily to regulate hormones. Research links sleep to better balance; aim for 7-9 hours. If symptoms persist, test for thyroid or PCOS. Herbal teas like chamomile may help. This lifestyle supports overall well-being. Discover deeper insights in VIP tiers.",
+      "copy_vi": "Mất cân bằng nội tiết có thể gây mệt mỏi hoặc mụn. Hãy ăn uống cân bằng với thực phẩm giàu omega-3 và tránh đường tinh luyện. Tập thể dục 30 phút mỗi ngày giúp điều hòa hormone. Nghiên cứu cho thấy giấc ngủ tốt giúp cân bằng nội tiết — hãy ngủ đủ 7–9 tiếng. Nếu triệu chứng kéo dài, hãy kiểm tra tuyến giáp hoặc PCOS. Trà thảo mộc như hoa cúc cũng có thể giúp ích. Lối sống này hỗ trợ sức khỏe toàn diện. Khám phá sâu hơn ở các cấp VIP.",
+      "keywords_en": [
+        "hormonal_balance",
+        "hormonal balance",
+        "hormone balance",
+        "hormones"
+      ],
+      "keywords_vi": [
+        "can_bang_noi_tiet",
+        "can bang noi tiet",
+        "noi tiet to",
+        "can bang hormone"
+      ]
+    }
+  ],
+  "room_essay": {
+    "en": "Comprehensive women health guidance for all life stages.",
+    "vi": "Hướng dẫn sức khỏe phụ nữ toàn diện cho mọi giai đoạn."
+  },
+  "safety_disclaimer": {
+    "en": "",
+    "vi": ""
+  },
+  "crisis_footer": {
+    "en": "",
+    "vi": ""
+  }
+}

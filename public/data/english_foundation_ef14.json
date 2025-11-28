@@ -1,75 +1,129 @@
 {
+  "schema_version": "1.0",
+  "schema_id": "english_foundation_ef14",
   "id": "english_foundation_ef14",
   "tier": "Free / Miễn phí",
-  "domain": "English Foundation",
-  "title": {
+  "domain": "",
+  "description": {
     "en": "EF-14 — Final Check & Graduation",
     "vi": "EF-14 — Kiểm Tra Cuối & Tốt Nghiệp"
   },
-  "content": {
-    "en": "This final room helps beginners review everything learned in the English Foundation. You will read simple words, repeat short sentences, listen to familiar patterns, and check your comfort with basic grammar and pronunciation. If you can follow these six entries calmly, you are ready to enter the main Free English rooms with confidence.",
-    "vi": "Phòng cuối cùng giúp người mới ôn lại toàn bộ nội dung đã học trong English Foundation. Bạn sẽ đọc các từ đơn giản, lặp lại câu ngắn, nghe các mẫu quen thuộc và tự kiểm tra mức độ thoải mái với ngữ pháp và phát âm cơ bản. Nếu bạn có thể theo dõi sáu mục này một cách bình tĩnh, bạn đã sẵn sàng bước vào các phòng tiếng Anh Miễn phí chính với sự tự tin."
-  },
+  "keywords": [
+    "alphabet",
+    "review",
+    "vowels",
+    "consonants",
+    "words",
+    "sentences",
+    "listening",
+    "graduation",
+    "motivation",
+    "bảng chữ cái",
+    "ôn tập",
+    "nguyên âm",
+    "phụ âm",
+    "từ vựng",
+    "câu",
+    "nghe",
+    "tốt nghiệp",
+    "động lực"
+  ],
   "entries": [
     {
       "slug": "alphabet-review",
-      "keywords_en": ["alphabet", "review"],
-      "keywords_vi": ["bảng chữ cái", "ôn tập"],
-      "copy": {
-        "en": "Read the alphabet once, slowly.\nA B C D E F G\nH I J K L M N\nO P Q R S T U\nV W X Y Z\nIf you can read clearly and calmly, your foundation is strong.",
-        "vi": "Hãy đọc lại bảng chữ cái một lần thật chậm: A B C D E F G, H I J K L M N, O P Q R S T U, V W X Y Z. Nếu bạn đọc rõ và bình tĩnh, nền tảng của bạn đã vững."
-      },
-      "audio": "ef14_01_en.mp3"
+      "audio": "ef14_01_en.mp3",
+      "copy_en": "Read the alphabet once, slowly.\nA B C D E F G\nH I J K L M N\nO P Q R S T U\nV W X Y Z\nIf you can read clearly and calmly, your foundation is strong.",
+      "copy_vi": "Hãy đọc lại bảng chữ cái một lần thật chậm: A B C D E F G, H I J K L M N, O P Q R S T U, V W X Y Z. Nếu bạn đọc rõ và bình tĩnh, nền tảng của bạn đã vững.",
+      "keywords_en": [
+        "alphabet",
+        "review"
+      ],
+      "keywords_vi": [
+        "bảng chữ cái",
+        "ôn tập"
+      ]
     },
     {
       "slug": "vowel-and-consonant-check",
-      "keywords_en": ["vowels", "consonants"],
-      "keywords_vi": ["nguyên âm", "phụ âm"],
-      "copy": {
-        "en": "Say these vowel sounds slowly:\nA E I O U\nThen say these consonants cleanly:\nB D K P T S\nIf final sounds stay clear, your pronunciation is improving.",
-        "vi": "Hãy đọc các nguyên âm A E I O U thật chậm. Sau đó đọc rõ các phụ âm B D K P T S. Nếu bạn giữ được âm cuối, phát âm của bạn đang tiến bộ."
-      },
-      "audio": "ef14_02_en.mp3"
+      "audio": "ef14_02_en.mp3",
+      "copy_en": "Say these vowel sounds slowly:\nA E I O U\nThen say these consonants cleanly:\nB D K P T S\nIf final sounds stay clear, your pronunciation is improving.",
+      "copy_vi": "Hãy đọc các nguyên âm A E I O U thật chậm. Sau đó đọc rõ các phụ âm B D K P T S. Nếu bạn giữ được âm cuối, phát âm của bạn đang tiến bộ.",
+      "keywords_en": [
+        "vowels",
+        "consonants"
+      ],
+      "keywords_vi": [
+        "nguyên âm",
+        "phụ âm"
+      ]
     },
     {
       "slug": "word-check",
-      "keywords_en": ["words", "review"],
-      "keywords_vi": ["từ vựng", "ôn tập"],
-      "copy": {
-        "en": "Read these simple words:\ncat\nmap\nred\nsun\nbook\nmilk\nSay them slowly. Keep all ending sounds. This shows steady progress.",
-        "vi": "Hãy đọc các từ đơn giản sau: cat, map, red, sun, book, milk. Đọc chậm, giữ đủ âm cuối. Điều này cho thấy bạn đã tiến bộ đều đặn."
-      },
-      "audio": "ef14_03_en.mp3"
+      "audio": "ef14_03_en.mp3",
+      "copy_en": "Read these simple words:\ncat\nmap\nred\nsun\nbook\nmilk\nSay them slowly. Keep all ending sounds. This shows steady progress.",
+      "copy_vi": "Hãy đọc các từ đơn giản sau: cat, map, red, sun, book, milk. Đọc chậm, giữ đủ âm cuối. Điều này cho thấy bạn đã tiến bộ đều đặn.",
+      "keywords_en": [
+        "words",
+        "review"
+      ],
+      "keywords_vi": [
+        "từ vựng",
+        "ôn tập"
+      ]
     },
     {
       "slug": "sentence-check",
-      "keywords_en": ["sentences", "review"],
-      "keywords_vi": ["câu", "ôn tập"],
-      "copy": {
-        "en": "Read these short sentences:\nI am here.\nYou are ready.\nThis is my bag.\nThere is a cat.\nTake your time. Slow is correct.",
-        "vi": "Hãy đọc các câu đơn giản: I am here, You are ready, This is my bag, There is a cat. Hãy đọc chậm. Chậm là đúng."
-      },
-      "audio": "ef14_04_en.mp3"
+      "audio": "ef14_04_en.mp3",
+      "copy_en": "Read these short sentences:\nI am here.\nYou are ready.\nThis is my bag.\nThere is a cat.\nTake your time. Slow is correct.",
+      "copy_vi": "Hãy đọc các câu đơn giản: I am here, You are ready, This is my bag, There is a cat. Hãy đọc chậm. Chậm là đúng.",
+      "keywords_en": [
+        "sentences",
+        "review"
+      ],
+      "keywords_vi": [
+        "câu",
+        "ôn tập"
+      ]
     },
     {
       "slug": "listening-check",
-      "keywords_en": ["listening", "review"],
-      "keywords_vi": ["nghe", "ôn tập"],
-      "copy": {
-        "en": "Listen to a short line once.\nThen repeat it slowly.\nSimple lines like:\nI am learning.\nI am okay.\nYou are my friend.\nIf you can repeat calmly, your listening is growing well.",
-        "vi": "Hãy nghe một câu ngắn một lần, sau đó lặp lại thật chậm. Ví dụ: I am learning, I am okay, You are my friend. Nếu bạn lặp lại được một cách bình tĩnh, kỹ năng nghe của bạn đang phát triển tốt."
-      },
-      "audio": "ef14_05_en.mp3"
+      "audio": "ef14_05_en.mp3",
+      "copy_en": "Listen to a short line once.\nThen repeat it slowly.\nSimple lines like:\nI am learning.\nI am okay.\nYou are my friend.\nIf you can repeat calmly, your listening is growing well.",
+      "copy_vi": "Hãy nghe một câu ngắn một lần, sau đó lặp lại thật chậm. Ví dụ: I am learning, I am okay, You are my friend. Nếu bạn lặp lại được một cách bình tĩnh, kỹ năng nghe của bạn đang phát triển tốt.",
+      "keywords_en": [
+        "listening",
+        "review"
+      ],
+      "keywords_vi": [
+        "nghe",
+        "ôn tập"
+      ]
     },
     {
       "slug": "graduation-message",
-      "keywords_en": ["graduation", "motivation"],
-      "keywords_vi": ["tốt nghiệp", "động lực"],
-      "copy": {
-        "en": "You finished the English Foundation.\nYou learned letters, sounds, words, sentences, and basic grammar.\nYou can enter the main Free rooms now.\nBe proud.\nYou are ready.",
-        "vi": "Bạn đã hoàn thành English Foundation. Bạn đã học chữ cái, âm, từ, câu và ngữ pháp cơ bản. Giờ bạn đã sẵn sàng bước vào các phòng Tiếng Anh Miễn Phí chính. Hãy tự hào. Bạn đã sẵn sàng."
-      },
-      "audio": "ef14_06_en.mp3"
+      "audio": "ef14_06_en.mp3",
+      "copy_en": "You finished the English Foundation.\nYou learned letters, sounds, words, sentences, and basic grammar.\nYou can enter the main Free rooms now.\nBe proud.\nYou are ready.",
+      "copy_vi": "Bạn đã hoàn thành English Foundation. Bạn đã học chữ cái, âm, từ, câu và ngữ pháp cơ bản. Giờ bạn đã sẵn sàng bước vào các phòng Tiếng Anh Miễn Phí chính. Hãy tự hào. Bạn đã sẵn sàng.",
+      "keywords_en": [
+        "graduation",
+        "motivation"
+      ],
+      "keywords_vi": [
+        "tốt nghiệp",
+        "động lực"
+      ]
     }
-  ]
+  ],
+  "room_essay": {
+    "en": "This final room helps beginners review everything learned in the English Foundation. You will read simple words, repeat short sentences, listen to familiar patterns, and check your comfort with basic grammar and pronunciation. If you can follow these six entries calmly, you are ready to enter the main Free English rooms with confidence.",
+    "vi": "Phòng cuối cùng giúp người mới ôn lại toàn bộ nội dung đã học trong English Foundation. Bạn sẽ đọc các từ đơn giản, lặp lại câu ngắn, nghe các mẫu quen thuộc và tự kiểm tra mức độ thoải mái với ngữ pháp và phát âm cơ bản. Nếu bạn có thể theo dõi sáu mục này một cách bình tĩnh, bạn đã sẵn sàng bước vào các phòng tiếng Anh Miễn phí chính với sự tự tin."
+  },
+  "safety_disclaimer": {
+    "en": "",
+    "vi": ""
+  },
+  "crisis_footer": {
+    "en": "",
+    "vi": ""
+  }
 }

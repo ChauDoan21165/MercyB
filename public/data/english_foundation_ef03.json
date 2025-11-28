@@ -1,75 +1,142 @@
 {
+  "schema_version": "1.0",
+  "schema_id": "english_foundation_ef03",
   "id": "english_foundation_ef03",
   "tier": "Free / Miễn phí",
-  "domain": "English Foundation",
-  "title": {
+  "domain": "",
+  "description": {
     "en": "EF-03 — First 50 Survival Words",
     "vi": "EF-03 — 50 Từ Vựng Sinh Tồn Đầu Tiên"
   },
-  "content": {
-    "en": "This room gives beginners the first 50 essential words used in daily life. These words help you understand simple instructions, ask for basic needs, and follow everyday conversations. The entries introduce common objects, actions, places, and people with slow, clear pronunciation. You will learn to read, say, and recognize each word without pressure. Small vocabulary steps create fast confidence for real listening and speaking.",
-    "vi": "Phòng này cung cấp 50 từ vựng thiết yếu đầu tiên trong cuộc sống hằng ngày. Những từ này giúp bạn hiểu hướng dẫn đơn giản, yêu cầu nhu cầu cơ bản và theo kịp các đoạn hội thoại thường ngày. Các mục nội dung giới thiệu đồ vật, hành động, địa điểm và con người với phát âm chậm, rõ ràng. Bạn sẽ học cách đọc, nói và nhận ra từng từ mà không áp lực. Từng bước nhỏ sẽ tạo nên sự tự tin nhanh chóng khi nghe và nói."
-  },
+  "keywords": [
+    "vocabulary",
+    "objects",
+    "beginners",
+    "family",
+    "people",
+    "verbs",
+    "actions",
+    "beginner",
+    "places",
+    "needs",
+    "communication",
+    "review",
+    "daily habit",
+    "từ vựng",
+    "đồ vật",
+    "người mới",
+    "gia đình",
+    "con người",
+    "động từ",
+    "hành động",
+    "địa điểm",
+    "nhu cầu",
+    "giao tiếp",
+    "ôn tập",
+    "thói quen hằng ngày"
+  ],
   "entries": [
     {
       "slug": "basic-objects",
-      "keywords_en": ["vocabulary", "objects", "beginners"],
-      "keywords_vi": ["từ vựng", "đồ vật", "người mới"],
-      "copy": {
-        "en": "Read each word slowly.\nSay the ending sound clearly:\n\nbook\npen\nbag\nkey\nphone\nwater\nchair\ntable\ncup\nroom\n\nIf a word feels difficult, repeat it gently.\nYou only need comfort, not perfection.",
-        "vi": "Hãy đọc các từ sau thật chậm và giữ rõ âm cuối: book, pen, bag, key, phone, water, chair, table, cup, room. Nếu từ nào khó, hãy lặp lại nhẹ nhàng. Bạn không cần hoàn hảo, chỉ cần thoải mái và quen dần."
-      },
-      "audio": "ef03_01_en.mp3"
+      "audio": "ef03_01_en.mp3",
+      "copy_en": "Read each word slowly.\nSay the ending sound clearly:\n\nbook\npen\nbag\nkey\nphone\nwater\nchair\ntable\ncup\nroom\n\nIf a word feels difficult, repeat it gently.\nYou only need comfort, not perfection.",
+      "copy_vi": "Hãy đọc các từ sau thật chậm và giữ rõ âm cuối: book, pen, bag, key, phone, water, chair, table, cup, room. Nếu từ nào khó, hãy lặp lại nhẹ nhàng. Bạn không cần hoàn hảo, chỉ cần thoải mái và quen dần.",
+      "keywords_en": [
+        "vocabulary",
+        "objects",
+        "beginners"
+      ],
+      "keywords_vi": [
+        "từ vựng",
+        "đồ vật",
+        "người mới"
+      ]
     },
     {
       "slug": "people-and-family",
-      "keywords_en": ["vocabulary", "family", "people"],
-      "keywords_vi": ["từ vựng", "gia đình", "con người"],
-      "copy": {
-        "en": "Practice these simple words for people:\n\nman\nwoman\nboy\ngirl\nfriend\nmother\nfather\nfamily\nbaby\nteacher\n\nSay each one softly.\nDo not add extra tones.\nEnglish is flat and gentle.",
-        "vi": "Hãy luyện các từ cơ bản về con người: man, woman, boy, girl, friend, mother, father, family, baby, teacher. Đọc nhẹ nhàng và không thêm thanh điệu. Tiếng Anh không có dấu, vì vậy hãy giữ âm bằng phẳng và nhẹ."
-      },
-      "audio": "ef03_02_en.mp3"
+      "audio": "ef03_02_en.mp3",
+      "copy_en": "Practice these simple words for people:\n\nman\nwoman\nboy\ngirl\nfriend\nmother\nfather\nfamily\nbaby\nteacher\n\nSay each one softly.\nDo not add extra tones.\nEnglish is flat and gentle.",
+      "copy_vi": "Hãy luyện các từ cơ bản về con người: man, woman, boy, girl, friend, mother, father, family, baby, teacher. Đọc nhẹ nhàng và không thêm thanh điệu. Tiếng Anh không có dấu, vì vậy hãy giữ âm bằng phẳng và nhẹ.",
+      "keywords_en": [
+        "vocabulary",
+        "family",
+        "people"
+      ],
+      "keywords_vi": [
+        "từ vựng",
+        "gia đình",
+        "con người"
+      ]
     },
     {
       "slug": "common-actions",
-      "keywords_en": ["verbs", "actions", "beginner"],
-      "keywords_vi": ["động từ", "hành động", "người mới"],
-      "copy": {
-        "en": "These action words are used every day:\n\ngo\ncome\neat\ndrink\nsit\nstand\nopen\nclose\nhelp\nwait\n\nSay each word clearly.\nShort verbs help you understand simple sentences quickly.",
-        "vi": "Các động từ phổ biến mỗi ngày gồm: go, come, eat, drink, sit, stand, open, close, help, wait. Hãy đọc rõ từng từ. Những động từ ngắn này giúp bạn hiểu câu đơn giản rất nhanh."
-      },
-      "audio": "ef03_03_en.mp3"
+      "audio": "ef03_03_en.mp3",
+      "copy_en": "These action words are used every day:\n\ngo\ncome\neat\ndrink\nsit\nstand\nopen\nclose\nhelp\nwait\n\nSay each word clearly.\nShort verbs help you understand simple sentences quickly.",
+      "copy_vi": "Các động từ phổ biến mỗi ngày gồm: go, come, eat, drink, sit, stand, open, close, help, wait. Hãy đọc rõ từng từ. Những động từ ngắn này giúp bạn hiểu câu đơn giản rất nhanh.",
+      "keywords_en": [
+        "verbs",
+        "actions",
+        "beginner"
+      ],
+      "keywords_vi": [
+        "động từ",
+        "hành động",
+        "người mới"
+      ]
     },
     {
       "slug": "useful-places",
-      "keywords_en": ["places", "vocabulary"],
-      "keywords_vi": ["địa điểm", "từ vựng"],
-      "copy": {
-        "en": "Learn the names of common places:\n\nhome\nschool\nmarket\nshop\nstreet\nhospital\nbus\npark\nroom\ntable\n\nThese words help you follow directions and understand daily conversations.",
-        "vi": "Hãy học tên các địa điểm quen thuộc: home, school, market, shop, street, hospital, bus, park, room, table. Những từ này giúp bạn hiểu chỉ đường và theo kịp hội thoại hằng ngày."
-      },
-      "audio": "ef03_04_en.mp3"
+      "audio": "ef03_04_en.mp3",
+      "copy_en": "Learn the names of common places:\n\nhome\nschool\nmarket\nshop\nstreet\nhospital\nbus\npark\nroom\ntable\n\nThese words help you follow directions and understand daily conversations.",
+      "copy_vi": "Hãy học tên các địa điểm quen thuộc: home, school, market, shop, street, hospital, bus, park, room, table. Những từ này giúp bạn hiểu chỉ đường và theo kịp hội thoại hằng ngày.",
+      "keywords_en": [
+        "places",
+        "vocabulary"
+      ],
+      "keywords_vi": [
+        "địa điểm",
+        "từ vựng"
+      ]
     },
     {
       "slug": "basic-needs",
-      "keywords_en": ["needs", "communication"],
-      "keywords_vi": ["nhu cầu", "giao tiếp"],
-      "copy": {
-        "en": "These words help you express simple needs:\n\nfood\nwater\nmoney\ntime\nbathroom\nmedicine\nfriend\nfamily\nhelp\nstop\n\nUse them slowly.\nA few clear words communicate better than long unclear sentences.",
-        "vi": "Những từ này giúp bạn nói nhu cầu cơ bản: food, water, money, time, bathroom, medicine, friend, family, help, stop. Chỉ cần nói rõ ràng và chậm, bạn đã giao tiếp hiệu quả hơn nhiều so với câu dài nhưng mơ hồ."
-      },
-      "audio": "ef03_05_en.mp3"
+      "audio": "ef03_05_en.mp3",
+      "copy_en": "These words help you express simple needs:\n\nfood\nwater\nmoney\ntime\nbathroom\nmedicine\nfriend\nfamily\nhelp\nstop\n\nUse them slowly.\nA few clear words communicate better than long unclear sentences.",
+      "copy_vi": "Những từ này giúp bạn nói nhu cầu cơ bản: food, water, money, time, bathroom, medicine, friend, family, help, stop. Chỉ cần nói rõ ràng và chậm, bạn đã giao tiếp hiệu quả hơn nhiều so với câu dài nhưng mơ hồ.",
+      "keywords_en": [
+        "needs",
+        "communication"
+      ],
+      "keywords_vi": [
+        "nhu cầu",
+        "giao tiếp"
+      ]
     },
     {
       "slug": "daily-review-words",
-      "keywords_en": ["review", "daily habit"],
-      "keywords_vi": ["ôn tập", "thói quen hằng ngày"],
-      "copy": {
-        "en": "Review ten words a day.\nChoose any words from this room.\nSay them slowly.\nKeep the ending sound.\n\nDaily practice grows your vocabulary naturally.\nSmall steps become big progress.",
-        "vi": "Mỗi ngày hãy ôn lại khoảng mười từ. Chọn bất kỳ từ nào trong phòng này và đọc chậm rãi, giữ rõ âm cuối. Luyện đều sẽ giúp vốn từ của bạn tăng lên tự nhiên. Những bước nhỏ sẽ tạo nên tiến bộ lớn."
-      },
-      "audio": "ef03_06_en.mp3"
+      "audio": "ef03_06_en.mp3",
+      "copy_en": "Review ten words a day.\nChoose any words from this room.\nSay them slowly.\nKeep the ending sound.\n\nDaily practice grows your vocabulary naturally.\nSmall steps become big progress.",
+      "copy_vi": "Mỗi ngày hãy ôn lại khoảng mười từ. Chọn bất kỳ từ nào trong phòng này và đọc chậm rãi, giữ rõ âm cuối. Luyện đều sẽ giúp vốn từ của bạn tăng lên tự nhiên. Những bước nhỏ sẽ tạo nên tiến bộ lớn.",
+      "keywords_en": [
+        "review",
+        "daily habit"
+      ],
+      "keywords_vi": [
+        "ôn tập",
+        "thói quen hằng ngày"
+      ]
     }
-  ]
+  ],
+  "room_essay": {
+    "en": "This room gives beginners the first 50 essential words used in daily life. These words help you understand simple instructions, ask for basic needs, and follow everyday conversations. The entries introduce common objects, actions, places, and people with slow, clear pronunciation. You will learn to read, say, and recognize each word without pressure. Small vocabulary steps create fast confidence for real listening and speaking.",
+    "vi": "Phòng này cung cấp 50 từ vựng thiết yếu đầu tiên trong cuộc sống hằng ngày. Những từ này giúp bạn hiểu hướng dẫn đơn giản, yêu cầu nhu cầu cơ bản và theo kịp các đoạn hội thoại thường ngày. Các mục nội dung giới thiệu đồ vật, hành động, địa điểm và con người với phát âm chậm, rõ ràng. Bạn sẽ học cách đọc, nói và nhận ra từng từ mà không áp lực. Từng bước nhỏ sẽ tạo nên sự tự tin nhanh chóng khi nghe và nói."
+  },
+  "safety_disclaimer": {
+    "en": "",
+    "vi": ""
+  },
+  "crisis_footer": {
+    "en": "",
+    "vi": ""
+  }
 }

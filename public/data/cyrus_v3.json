@@ -1,83 +1,238 @@
 {
+  "schema_version": "1.0",
+  "schema_id": "cyrus_v3",
   "id": "cyrus_v3",
+  "tier": "free",
+  "domain": "",
+  "description": {
+    "en": "cyrus_v3",
+    "vi": ""
+  },
+  "keywords": [
+    "authority",
+    "civilization",
+    "continuity",
+    "cultural synthesis",
+    "cyrus",
+    "design",
+    "diversity",
+    "dynasty",
+    "empire",
+    "empire building",
+    "imperial philosophy",
+    "institutions",
+    "justice",
+    "law",
+    "leadership",
+    "legacy",
+    "legitimacy",
+    "long-term",
+    "moral power",
+    "religion",
+    "resilience",
+    "sacred order",
+    "spiritual legitimacy",
+    "stability",
+    "statecraft",
+    "succession",
+    "unity",
+    "virtue"
+  ],
   "entries": [
     {
-      "slug": "the_philosophy_of_imperial_justice",
-      "keywords_en": ["justice", "imperial philosophy", "legitimacy", "law", "cyrus"],
-      "keywords_vi": ["công lý", "triết lý đế chế", "chính danh", "pháp luật", "cyrus"],
       "copy": {
         "en": "Cyrus the Great saw justice not as a moral ornament but as the structural core of empire. For him, the legitimacy of a ruler was inseparable from the well-being of the ruled. Justice was architecture, not rhetoric, and he pursued it with the precision of strategic planning. First, Cyrus believed that justice creates predictable order. When laws are stable, transparent, and universally applied, subjects can plan their lives with confidence, and commerce flourishes. Stability is not simply the absence of war; it is the presence of reliable institutions. Second, Cyrus understood justice as a tool for integrating diverse peoples. His empire contained dozens of nations, languages, and religions. Instead of imposing a single cultural mold, he allowed each community to govern itself according to its customs while aligning them under overarching imperial law. This layered legal system respected identity while maintaining unity. Third, Cyrus framed justice as a royal duty. The king was not above the law; he was its defender and guardian. When conflicts arose between powerful elites and ordinary citizens, Cyrus often sided with the vulnerable, reinforcing the idea that the king served a moral order greater than his own authority. Fourth, justice had economic dimensions. Fair taxation ensured that wealth flowed predictably without crushing local economies. Corruption was punished because it undermined economic trust. Prosperity was not accidental; it was the product of rules applied without favoritism. Fifth, Cyrus linked justice with freedom. He famously allowed captive peoples to return home, rebuild temples, and restore cultural life. This act was not merely kindness; it was a strategic recognition that people fight harder for a state that honors their humanity. A free population is more loyal than a coerced one. Sixth, justice extended into diplomacy. Cyrus believed treaties must be honored, autonomy respected, and defeated enemies treated with dignity. Mercy after victory transformed foes into long-term partners. Seventh, justice created spiritual legitimacy. Priests, scribes, and elders across the empire saw Cyrus as a divinely favored ruler because he upheld cosmic order. When moral authority aligns with political authority, rebellion becomes less attractive. Eighth, justice supported state longevity. Dynasties that rule by cruelty may dominate for a generation, but they rarely endure. Justice builds institutions that survive the death of their founder. Ninth, Cyrus framed justice as self-discipline. A ruler who cannot restrain himself cannot govern others. Justice required patience, humility, listening, and the willingness to revise judgments when new evidence arose. Cyrus’s philosophy shows that justice is not softness. It is hard-edged statecraft. Empires collapse when rulers ignore justice; they endure when justice becomes the gravitational core pulling diverse communities into a shared future.",
         "vi": "Cyrus Đại đế xem công lý không phải trang sức đạo đức mà là lõi cấu trúc của đế chế. Với ông, chính danh của người cầm quyền gắn chặt với sự an lành của dân chúng. Công lý là kiến trúc, không phải khẩu hiệu, và ông theo đuổi nó bằng sự chính xác của một nhà chiến lược. Trước hết, Cyrus tin rằng công lý tạo ra trật tự dự đoán được. Khi luật ổn định, minh bạch và áp dụng cho tất cả, con người có thể hoạch định cuộc sống và thương mại phát triển. Ổn định không chỉ là vắng chiến tranh mà là sự hiện diện của thiết chế đáng tin. Thứ hai, ông xem công lý là công cụ gắn kết đa sắc tộc. Đế chế của ông gồm nhiều dân tộc, ngôn ngữ và tín ngưỡng. Thay vì ép họ theo một khuôn văn hóa, ông cho phép mỗi cộng đồng tự quản theo phong tục, nhưng đặt trên khung pháp luật đế quốc. Hệ thống pháp lý nhiều tầng này vừa tôn trọng bản sắc vừa giữ sự thống nhất. Thứ ba, Cyrus coi công lý là nghĩa vụ của nhà vua. Vua không đứng trên luật mà là người bảo vệ luật. Khi xung đột giữa giới tinh hoa và dân thường xảy ra, Cyrus thường đứng về phía người yếu, củng cố quan niệm rằng vua phụng sự một trật tự đạo đức lớn hơn quyền lực cá nhân. Thứ tư, công lý có chiều kích kinh tế. Thuế công bằng bảo đảm dòng chảy tài sản ổn định mà không bóp nghẹt địa phương. Tham nhũng bị trừng phạt vì nó phá vỡ lòng tin kinh tế. Thịnh vượng không ngẫu nhiên mà là sản phẩm của quy tắc áp dụng không thiên vị. Thứ năm, Cyrus gắn công lý với tự do. Ông trả tự do cho người bị lưu đày, cho họ trở về quê hương và khôi phục đền thờ. Đây không chỉ là lòng nhân mà còn là chiến lược: con người trung thành hơn với nhà nước tôn trọng nhân phẩm họ. Một dân tộc tự do vững bền hơn dân tộc bị ép buộc. Thứ sáu, công lý lan sang ngoại giao. Cyrus tin rằng hiệp ước phải được giữ, quyền tự trị phải được tôn trọng và kẻ bại trận phải được đối xử có phẩm giá. Lòng nhân sau chiến thắng biến đối thủ thành đối tác lâu dài. Thứ bảy, công lý tạo chính danh tinh thần. Tư tế, ký lục và bô lão khắp đế chế xem Cyrus là người được thần linh nâng đỡ vì ông duy trì trật tự vũ trụ. Khi quyền lực đạo đức và quyền lực chính trị hòa làm một, nổi dậy trở nên kém hấp dẫn. Thứ tám, công lý bảo vệ sự trường tồn của nhà nước. Triều đại cai trị bằng bạo lực có thể tồn tại một thế hệ nhưng hiếm khi bền lâu. Công lý xây thiết chế vượt tuổi thọ của người sáng lập. Thứ chín, Cyrus xem công lý là tự kỷ luật. Kẻ không tự kiềm chế thì không thể cai trị. Công lý đòi hỏi kiên nhẫn, khiêm nhường, lắng nghe và sẵn sàng sửa phán quyết khi có bằng chứng mới. Triết lý của Cyrus cho thấy công lý không mềm yếu. Nó là nghệ thuật trị quốc sắc bén. Đế chế suy tàn khi vua bỏ qua công lý; chúng bền vững khi công lý trở thành lực hấp dẫn gắn kết các cộng đồng vào một tương lai chung."
       },
-      "tags": ["justice", "legitimacy", "law"],
-      "audio": "cyrus_v3_1_en.mp3"
+      "slug": "the_philosophy_of_imperial_justice",
+      "tags": [
+        "justice",
+        "legitimacy",
+        "law"
+      ],
+      "audio": "cyrus_v3_1_en.mp3",
+      "keywords_en": [
+        "justice",
+        "imperial philosophy",
+        "legitimacy",
+        "law",
+        "cyrus"
+      ],
+      "keywords_vi": [
+        "công lý",
+        "triết lý đế chế",
+        "chính danh",
+        "pháp luật",
+        "cyrus"
+      ]
     },
     {
-      "slug": "cultural_synthesis_as_imperial_strength",
-      "keywords_en": ["cultural synthesis", "unity", "diversity", "empire", "cyrus"],
-      "keywords_vi": ["hòa hợp văn hóa", "thống nhất", "đa dạng", "đế chế", "cyrus"],
       "copy": {
         "en": "Cultural synthesis was one of Cyrus the Great’s most powerful tools of statecraft. He understood that an empire spanning continents could collapse if it tried to erase the identities of conquered peoples. Instead of homogenization, Cyrus pursued integration. His empire became a mosaic rather than a monolith. First, Cyrus recognized the political power of respecting local traditions. He allowed regions to keep their rituals, gods, languages, and artistic styles. By protecting sacred sites and restoring temples, he transformed cultural preservation into a strategic partnership. When a conqueror protects what the conquered cherish, legitimacy grows naturally. Second, Cyrus used cultural synthesis as a diplomatic bridge. He adopted certain elements of Median dress, Elamite ceremony, and Babylonian administrative ritual. This blending signaled respect and familiarity, lowering social resistance. People do not fear a ruler who honors their heritage. Third, he integrated cultural elites into imperial governance. Priests, scribes, astronomers, merchants, scholars, and nobles from across the empire served at court. This created a brain trust wider than any single nation and prevented cultural alienation. Fourth, Cyrus promoted cross-cultural trade. Caravans, markets, and merchant guilds turned ethnic boundaries into economic bridges. When livelihoods depend on interconnection, cultural hostility declines. Fifth, he encouraged intermarriage among elites to bind lineages across regions. These matrimonial alliances stabilized frontier zones and wove loyalty into family structures. Sixth, Cyrus supported multilingualism. Administrative records were produced in multiple languages including Old Persian, Akkadian, and Elamite. This policy prevented linguistic domination and allowed citizens to access law and governance in their own tongue. Seventh, Cyrus recognized that cultural synthesis increases resilience. Empires built on a single cultural identity fracture when that identity weakens. Empires built on pluralism survive by distributing identity across many groups. Eighth, he used cultural synthesis to create imperial pride. Subjects could feel both local and imperial without contradiction. This dual identity created emotional loyalty far more stable than coercion. Ninth, Cyrus’s approach inspired later civilizations. His model influenced Achaemenid successors, Hellenistic kings, and even Roman administrators. The principle is timeless: cultural diversity is not a liability but a strategic asset. Cyrus teaches that when culture becomes a bridge instead of a blade, empire turns from dominion to civilizational home.",
         "vi": "Hòa hợp văn hóa là một trong những công cụ trị quốc mạnh mẽ nhất của Cyrus Đại đế. Ông hiểu rằng một đế chế trải rộng nhiều châu lục có thể sụp đổ nếu cố xóa bỏ bản sắc của các dân tộc bị chinh phục. Thay vì đồng nhất hóa, Cyrus theo đuổi hội nhập. Đế chế của ông trở thành khảm ghép thay vì khối đơn nhất. Trước hết, Cyrus nhận ra sức mạnh chính trị của việc tôn trọng truyền thống bản địa. Ông cho phép các vùng giữ nghi lễ, thần linh, ngôn ngữ và phong cách nghệ thuật. Khi bảo vệ thánh địa và khôi phục đền thờ, ông biến việc gìn giữ văn hóa thành quan hệ hợp tác chiến lược. Khi kẻ chiến thắng bảo vệ điều kẻ bại kính trọng, chính danh nảy nở tự nhiên. Thứ hai, ông dùng hòa hợp văn hóa như cầu nối ngoại giao. Ông tiếp thu trang phục Media, nghi lễ Elam và phong cách hành chính Babylon. Việc dung hòa này gửi thông điệp tôn trọng và thân thuộc, giảm kháng cự xã hội. Người dân không sợ vị vua tôn trọng di sản của họ. Thứ ba, ông đưa giới tinh hoa văn hóa vào bộ máy đế quốc. Tư tế, ký lục, thiên văn gia, thương nhân và học giả từ khắp nơi phục vụ tại triều đình. Điều này tạo ra kho trí tuệ vượt mọi quốc gia đơn lẻ và ngăn sự xa cách văn hóa. Thứ tư, Cyrus thúc đẩy thương mại liên văn hóa. Lữ đoàn, chợ và phường hội biến ranh giới sắc tộc thành cầu nối kinh tế. Khi sinh kế phụ thuộc vào sự liên kết, thù địch văn hóa suy giảm. Thứ năm, ông khuyến khích hôn nhân liên minh giữa giới tinh hoa để kết nối dòng tộc. Những liên minh hôn nhân này ổn định vùng biên và dệt lòng trung thành vào quan hệ gia đình. Thứ sáu, ông cổ vũ đa ngữ. Tài liệu hành chính được viết bằng nhiều thứ tiếng như Ba Tư cổ, Akkad và Elam. Chính sách này ngăn ngôn ngữ bị áp đặt và cho phép dân tiếp cận luật pháp bằng tiếng của mình. Thứ bảy, Cyrus nhận ra hòa hợp văn hóa tăng khả năng chống chịu. Đế chế dựa vào một bản sắc dễ gãy khi bản sắc ấy suy yếu. Đế chế dựa vào đa dạng bền hơn vì phân tán trọng tâm. Thứ tám, ông dùng hòa hợp văn hóa để tạo niềm tự hào đế quốc. Thần dân có thể vừa giữ bản sắc địa phương vừa thuộc về đế quốc mà không mâu thuẫn. Bản sắc kép này tạo lòng trung thành bền vững hơn ép buộc. Thứ chín, cách tiếp cận của Cyrus truyền cảm hứng cho các nền văn minh sau. Mô hình của ông ảnh hưởng triều Achaemenid kế tiếp, vua Hy Lạp hóa và cả La Mã. Nguyên tắc này vượt thời gian: đa dạng văn hóa không phải gánh nặng mà là tài sản chiến lược. Cyrus cho thấy khi văn hóa trở thành cầu nối thay vì lưỡi dao, đế chế biến từ chinh phục thành mái nhà văn minh."
       },
-      "tags": ["culture", "integration"],
-      "audio": "cyrus_v3_2_en.mp3"
+      "slug": "cultural_synthesis_as_imperial_strength",
+      "tags": [
+        "culture",
+        "integration"
+      ],
+      "audio": "cyrus_v3_2_en.mp3",
+      "keywords_en": [
+        "cultural synthesis",
+        "unity",
+        "diversity",
+        "empire",
+        "cyrus"
+      ],
+      "keywords_vi": [
+        "hòa hợp văn hóa",
+        "thống nhất",
+        "đa dạng",
+        "đế chế",
+        "cyrus"
+      ]
     },
     {
-      "slug": "succession_engineering_and_continuity_of_power",
-      "keywords_en": ["succession", "continuity", "dynasty", "stability", "cyrus"],
-      "keywords_vi": ["kế vị", "liên tục quyền lực", "vương triều", "ổn định", "cyrus"],
       "copy": {
         "en": "Cyrus the Great knew that the gravest threat to an empire is not invasion but succession. When rulers die without a clear, legitimate, and widely accepted path of continuity, even the strongest states fracture. Cyrus therefore treated succession planning as strategic engineering. First, he emphasized legitimacy grounded in both lineage and merit. He groomed heirs not merely by birthright but by exposing them to governance, military leadership, and court administration. A successor must be seen as capable, not merely inherited. Second, Cyrus built elite consensus. Royal relatives, generals, priests, and governors were gradually aligned around a designated heir through shared rituals, public recognition, and gradual transfer of responsibilities. Consensus prevents rival claims from igniting civil conflict. Third, Cyrus institutionalized succession narratives. Stories, symbols, and inscriptions presented the heir as divinely favored and morally upright. Narrative continuity reduces uncertainty among the population. Fourth, he used administrative appointments as rehearsal. The heir took temporary control of provinces, armies, or treasury units to demonstrate capability. Practical governance experience legitimizes succession more than ceremonial titles. Fifth, Cyrus limited palace intrigue by separating the spheres of royal women, princes, military officers, and satraps. Clear boundaries prevented factional alliances that could destabilize transition. Sixth, he created legal clarity. Imperial edicts explicitly stated succession order, reducing ambiguity. Ambiguity is the seed of civil war. Seventh, Cyrus preserved the dignity of potential rivals. Instead of eliminating alternate claimants, he often assigned them provinces or court roles. Redirected ambition stabilizes the center. Eighth, Cyrus cultivated loyalty through fairness. When rulers are seen as just, elites accept transitions more easily. They trust that their rights and properties will be preserved under the next king. Ninth, he embedded succession rituals into imperial culture. Oaths, festivals, and coronation rites ensured continuity across generations. Succession did not feel like rupture; it felt like renewal. Cyrus’s succession engineering demonstrates that political continuity is not luck. It is design. Empires survive transitions when legitimacy, elite alignment, public narrative, and institutional clarity all converge.",
         "vi": "Cyrus Đại đế hiểu rằng mối đe dọa lớn nhất đối với đế chế không phải xâm lược mà là kế vị. Khi vua chết mà không có con đường kế vị rõ ràng, chính danh và được chấp nhận rộng rãi, ngay cả nhà nước mạnh nhất cũng tan vỡ. Vì vậy, Cyrus xem lập kế hoạch kế vị là kỹ thuật chiến lược. Trước hết, ông nhấn mạnh chính danh dựa vào huyết thống và năng lực. Người kế vị được chuẩn bị không chỉ bằng quyền kế thừa mà bằng việc tiếp xúc với trị quốc, chỉ huy quân đội và điều hành triều chính. Người kế vị phải được nhìn nhận là có thực tài chứ không chỉ có dòng dõi. Thứ hai, ông xây dựng đồng thuận trong giới tinh hoa. Hoàng thân, tướng lĩnh, tư tế và thống đốc được tập hợp quanh người kế vị thông qua nghi lễ chung, tuyên bố công khai và chuyển giao trách nhiệm từng bước. Đồng thuận ngăn tranh chấp hoàng tộc thành nội chiến. Thứ ba, Cyrus tạo ra câu chuyện kế vị. Biển ký, biểu tượng và văn khắc mô tả người kế vị là được thần linh ưu đãi và có đức hạnh. Câu chuyện liên tục này giảm bất định trong dân. Thứ tư, ông cho người kế vị rèn luyện thực tế bằng chức vụ. Họ tạm cai trị tỉnh, chỉ huy quân hoặc quản lý ngân khố để chứng tỏ năng lực. Trải nghiệm thực tế hữu hiệu hơn tước hiệu nghi lễ. Thứ năm, ông hạn chế tranh đấu cung đình bằng cách phân tách rõ ràng quyền lực của cung phi, hoàng tử, tướng lĩnh và satrap. Ranh giới rõ ràng ngăn liên minh phe phái làm loạn chuyển giao. Thứ sáu, ông tạo sự rõ ràng pháp lý. Chiếu thư đế quốc quy định thứ tự kế vị, giảm mơ hồ. Mơ hồ là hạt mầm nội chiến. Thứ bảy, ông giữ thể diện cho đối thủ tiềm năng. Thay vì loại bỏ người có thể tranh ngôi, Cyrus giao họ tỉnh lớn hoặc chức triều, chuyển hướng tham vọng để ổn định trung tâm. Thứ tám, ông xây lòng trung thành bằng công bằng. Khi vua được xem là công chính, giới tinh hoa dễ chấp nhận chuyển giao vì họ tin tài sản và quyền lợi của mình sẽ được bảo vệ dưới triều mới. Thứ chín, ông gắn nghi thức kế vị với văn hóa đế quốc. Tuyên thệ, lễ hội và nghi lễ đăng quang tạo liên tục giữa thế hệ. Kế vị không phải đứt gãy mà là tái sinh. Kỹ thuật kế vị của Cyrus cho thấy sự liên tục chính trị không phải may mắn mà là thiết kế. Đế chế sống sót qua chuyển giao khi chính danh, đồng thuận tinh hoa, câu chuyện công khai và pháp lý hội tụ."
       },
-      "tags": ["succession", "stability"],
-      "audio": "cyrus_v3_3_en.mp3"
+      "slug": "succession_engineering_and_continuity_of_power",
+      "tags": [
+        "succession",
+        "stability"
+      ],
+      "audio": "cyrus_v3_3_en.mp3",
+      "keywords_en": [
+        "succession",
+        "continuity",
+        "dynasty",
+        "stability",
+        "cyrus"
+      ],
+      "keywords_vi": [
+        "kế vị",
+        "liên tục quyền lực",
+        "vương triều",
+        "ổn định",
+        "cyrus"
+      ]
     },
     {
-      "slug": "moral_power_and_long_horizon_leadership",
-      "keywords_en": ["moral power", "leadership", "long-term", "virtue", "cyrus"],
-      "keywords_vi": ["quyền lực đạo đức", "lãnh đạo", "dài hạn", "đức hạnh", "cyrus"],
       "copy": {
         "en": "Cyrus the Great wielded a form of power rare in antiquity: moral power. Unlike rulers who relied solely on fear, wealth, or military domination, Cyrus cultivated a reputation for virtue that became a strategic asset. Moral power is not softness; it is a force multiplier that compounds influence across generations. First, Cyrus practiced moral consistency. His decrees matched his actions. When he proclaimed freedom for exiled peoples, he followed through. Consistency creates trust, and trust becomes political capital stronger than gold. Second, moral power expands authority beyond borders. Cyrus was admired not only by Persians but by Jews, Babylonians, Greeks, and others. Admiration reduces the need for coercion. People cooperate more readily with a ruler they respect. Third, Cyrus used moral framing to justify policy. He portrayed wars as liberation missions rather than conquests. This framing shaped public perception and reduced resistance. Fourth, moral leadership stabilizes internal politics. Elites are less likely to rebel when they perceive the ruler as fair. Corruption and cruelty create enemies; virtue disarms them. Fifth, Cyrus understood that moral power enhances negotiation. Diplomats, priests, and merchants trusted Cyrus’s word, allowing treaties to be made quickly and honored reliably. Sixth, he linked moral power with restraint. Cyrus avoided unnecessary brutality even when victory would have allowed it. Restraint signals strength, not weakness. Seventh, Cyrus invested in reputation as a long-term asset. Unlike material wealth, reputation grows over time and can outlive the ruler. Successors inherit the goodwill established by the founder. Eighth, he recognized the psychological impact of virtue. When subjects believe their ruler seeks fairness, they internalize loyalty and social cohesion increases. Ninth, moral power shaped imperial identity. The Achaemenid Empire came to see itself as a guardian of order and justice. Identity built on virtue lasts longer than identity built on conquest alone. Cyrus’s life reveals a universal truth: moral authority is one of the highest forms of power. It sustains legitimacy, accelerates diplomacy, strengthens governance, and anchors empire across centuries. Long-horizon leadership requires not only strategy but character. Power gained by force can last a lifetime; power gained through virtue can last a civilization.",
         "vi": "Cyrus Đại đế sở hữu dạng quyền lực hiếm có trong thời cổ: quyền lực đạo đức. Khác với nhiều vua chúa dựa vào sợ hãi, vàng bạc hoặc quân đội, Cyrus xây dựng danh tiếng liêm chính và đức hạnh như tài sản chiến lược. Quyền lực đạo đức không mềm yếu; nó là hệ số khuếch đại ảnh hưởng qua thế hệ. Trước hết, Cyrus giữ nhất quán đạo đức. Chiếu thư đi đôi với hành động. Khi ông tuyên bố giải phóng dân tộc bị lưu đày, ông thực sự thực hiện. Sự nhất quán tạo niềm tin, và niềm tin là vốn chính trị mạnh hơn vàng bạc. Thứ hai, quyền lực đạo đức mở rộng ảnh hưởng vượt biên giới. Không chỉ người Ba Tư mà cả Do Thái, Babylon và Hy Lạp đều kính trọng ông. Sự kính trọng giảm nhu cầu dùng vũ lực. Người dân dễ hợp tác hơn với nhà vua họ tôn trọng. Thứ ba, Cyrus dùng khung đạo đức để biện minh chính sách. Ông mô tả chiến dịch quân sự như giải phóng chứ không chinh phục. Khung kể chuyện này định hình nhận thức công chúng và giảm kháng cự. Thứ tư, lãnh đạo đạo đức ổn định chính trị nội bộ. Giới tinh hoa ít nổi dậy khi tin rằng vua công bằng. Tham nhũng và tàn bạo tạo kẻ thù; đức hạnh làm họ nguôi giận. Thứ năm, Cyrus hiểu rằng quyền lực đạo đức tăng sức mạnh ngoại giao. Khi tư tế, thương nhân và sứ thần tin lời vua, hiệp ước được ký nhanh và duy trì đáng tin hơn. Thứ sáu, ông kết hợp đạo đức với kiềm chế. Cyrus tránh tàn sát không cần thiết dù chiến thắng cho phép. Sự kiềm chế là dấu hiệu của sức mạnh chứ không phải yếu đuối. Thứ bảy, ông xem danh tiếng là tài sản dài hạn. Khác của cải vật chất, danh tiếng tăng theo thời gian và có thể vượt đời vua. Người kế vị thừa hưởng thiện cảm mà vị sáng lập xây dựng. Thứ tám, ông hiểu tác động tâm lý của đức hạnh. Khi dân tin vua muốn điều đúng đắn, họ trung thành hơn và gắn kết xã hội tăng. Thứ chín, quyền lực đạo đức tạo bản sắc đế quốc. Đế quốc Achaemenid xem mình là người bảo vệ trật tự và công lý. Bản sắc dựa trên đức hạnh bền vững hơn bản sắc dựa trên chinh phạt. Cuộc đời Cyrus cho thấy chân lý: quyền lực đạo đức là dạng quyền lực cao nhất. Nó nuôi dưỡng chính danh, tăng tốc ngoại giao, củng cố trị quốc và neo đế chế qua thế kỷ. Lãnh đạo dài hạn đòi hỏi không chỉ mưu lược mà còn phẩm chất. Quyền lực giành bằng vũ lực có thể tồn tại một đời; quyền lực giành qua đức hạnh có thể tồn tại một nền văn minh."
       },
-      "tags": ["moral power", "leadership"],
-      "audio": "cyrus_v3_4_en.mp3"
+      "slug": "moral_power_and_long_horizon_leadership",
+      "tags": [
+        "moral power",
+        "leadership"
+      ],
+      "audio": "cyrus_v3_4_en.mp3",
+      "keywords_en": [
+        "moral power",
+        "leadership",
+        "long-term",
+        "virtue",
+        "cyrus"
+      ],
+      "keywords_vi": [
+        "quyền lực đạo đức",
+        "lãnh đạo",
+        "dài hạn",
+        "đức hạnh",
+        "cyrus"
+      ]
     },
     {
-      "slug": "state_resilience_and_enduring_institutions",
-      "keywords_en": ["resilience", "institutions", "statecraft", "stability", "cyrus"],
-      "keywords_vi": ["khả năng chống chịu", "thiết chế", "trị quốc", "ổn định", "cyrus"],
       "copy": {
         "en": "Cyrus the Great designed imperial resilience not as an afterthought but as a foundational pillar of statecraft. He understood that empires collapse not only through foreign invasions but through internal weakness: corruption, administrative decay, factional conflict, economic fragility, and spiritual disillusionment. Therefore, Cyrus built institutions able to outlive his own reign. First, he decentralized governance through the satrapy system while retaining imperial oversight. Local governors had autonomy to administer regions according to local conditions, but inspectors, royal auditors, and itinerant envoys regularly evaluated their actions. This balance of autonomy and supervision prevented the extremes of tyranny and anarchy. Second, Cyrus formalized predictable taxation. Rather than arbitrary tribute, taxes were assessed according to agricultural productivity and local economic capacity. Predictability allowed villages, traders, and nobles to plan their finances and avoid cycles of panic or collapse. Third, Cyrus institutionalized transparency. Officials were required to keep written records, and petitions from the public could be escalated to the royal court. This early form of administrative accountability reduced abuses of power. Fourth, he invested in communication infrastructure. The Royal Road, postal relays, and mounted couriers created a flow of information unprecedented in the ancient world. A state that receives intelligence quickly can respond to crises before they become catastrophes. Fifth, Cyrus fostered resilience through cultural legitimacy. When people feel valued, their loyalty increases, reducing the likelihood of large-scale rebellion. Cultural respect is therefore not simply moral; it is a method of political insurance. Sixth, Cyrus ensured military readiness. Instead of relying solely on Persian warriors, he integrated Median, Elamite, and other regional forces, diversifying the army’s skills and reducing dependence on any single faction. This created a military that reflected the empire’s plural identity. Seventh, Cyrus promoted economic resilience through trade networks. Caravans moved goods across vast distances, connecting markets from the Aegean to the Indus. Economic interdependence binds regions to the center more tightly than garrisons alone. Eighth, he fostered social resilience by restoring displaced peoples. A population that has been uprooted is prone to revolt; a population restored to dignity becomes a stabilizing force. Cyrus’s restoration policies reduced bitterness and created long-term loyalty. Ninth, Cyrus created intellectual resilience by supporting scribes, scholars, and administrators who preserved knowledge and transmitted best practices across generations. An empire with memory is harder to break. Tenth, he embedded resilience in imperial values. Justice, tolerance, respect, and accountability were not mere slogans; they were operating principles that encouraged cooperation and reduced internal friction. Cyrus’s design shows that state resilience is not achieved by fear or pressure but by constructing institutions that encourage fairness, transparency, and adaptive governance. His architecture of resilience allowed the Achaemenid Empire to endure for centuries after his death, proving that strong institutions outlast even the strongest king.",
         "vi": "Cyrus Đại đế xây dựng khả năng chống chịu của nhà nước không phải như một yếu tố phụ mà là trụ cột nền tảng của trị quốc. Ông hiểu rằng đế chế không chỉ sụp đổ bởi ngoại xâm mà còn bởi yếu kém nội tại: tham nhũng, bộ máy suy thoái, bè phái, kinh tế mong manh và sự mất niềm tin tinh thần. Vì vậy, ông tạo ra thiết chế có thể tồn tại lâu hơn cả triều đại mình. Trước hết, ông phân quyền theo hệ thống satrapy nhưng vẫn giữ sự giám sát hoàng gia. Thống đốc địa phương có quyền linh hoạt theo điều kiện thực tế, nhưng thanh tra, kiểm toán và sứ giả hoàng triều luôn theo dõi. Sự cân bằng giữa tự trị và giám sát này ngăn cả độc tài lẫn hỗn loạn. Thứ hai, Cyrus ổn định thuế khóa bằng hệ thống dựa trên năng suất nông nghiệp và sức mạnh kinh tế từng vùng. Sự dự đoán được giúp nông dân, thương nhân và quý tộc hoạch định tài chính, tránh khủng hoảng kéo dài. Thứ ba, ông chuẩn hóa minh bạch. Quan lại phải ghi chép đầy đủ, và dân có quyền gửi thỉnh nguyện lên triều đình. Hệ thống này hạn chế lạm quyền. Thứ tư, ông đầu tư vào hạ tầng truyền tin: Đường Hoàng gia, trạm chuyển thư và kỵ binh đưa tin tạo dòng thông tin nhanh chưa từng có. Nhà nước nhận tin nhanh sẽ xử lý khủng hoảng trước khi chúng lan rộng. Thứ năm, Cyrus củng cố chính danh văn hóa. Khi dân cảm thấy được tôn trọng, họ ít nổi dậy hơn. Tôn trọng văn hóa là bảo hiểm chính trị. Thứ sáu, ông củng cố quân đội bằng đa dạng sắc tộc. Thay vì chỉ dựa vào người Ba Tư, ông dùng cả người Media, Elam và các dân tộc khác. Quân đội đa dạng phản ánh bản sắc đa sắc tộc của đế chế. Thứ bảy, ông thúc đẩy khả năng chống chịu kinh tế bằng thương mại xuyên lục địa. Caravans kết nối thị trường từ Aegean đến sông Ấn, khiến địa phương phụ thuộc vào mạng lưới chung. Kinh tế gắn kết chặt hơn quân đồn trú. Thứ tám, ông phục hồi dân bị lưu đày, biến họ thành lực lượng trung thành. Dân mất quê hương dễ nổi dậy; dân được trả lại phẩm giá trở thành trụ cột ổn định. Thứ chín, ông xây dựng chống chịu trí tuệ qua giới ký lục và học giả, giúp lưu giữ tri thức và duy trì chuẩn mực quản trị. Một đế chế có trí nhớ khó bị phá vỡ. Thứ mười, ông khắc sâu giá trị đế quốc như công lý, khoan dung và trách nhiệm. Đây không chỉ là khẩu hiệu mà là nguyên tắc vận hành. Kiến trúc của Cyrus chứng minh rằng chống chịu nhà nước không đến từ sợ hãi mà từ thiết chế khuyến khích công bằng, minh bạch và thích ứng. Nhờ vậy, đế chế Achaemenid tồn tại hàng thế kỷ sau khi ông qua đời, minh chứng rằng thiết chế mạnh bền hơn nhà vua mạnh."
       },
-      "tags": ["resilience", "institutions"],
-      "audio": "cyrus_v3_5_en.mp3"
+      "slug": "state_resilience_and_enduring_institutions",
+      "tags": [
+        "resilience",
+        "institutions"
+      ],
+      "audio": "cyrus_v3_5_en.mp3",
+      "keywords_en": [
+        "resilience",
+        "institutions",
+        "statecraft",
+        "stability",
+        "cyrus"
+      ],
+      "keywords_vi": [
+        "khả năng chống chịu",
+        "thiết chế",
+        "trị quốc",
+        "ổn định",
+        "cyrus"
+      ]
     },
     {
-      "slug": "spiritual_legitimacy_and_sacred_order",
-      "keywords_en": ["spiritual legitimacy", "sacred order", "religion", "authority", "cyrus"],
-      "keywords_vi": ["chính danh tinh thần", "trật tự thiêng", "tôn giáo", "quyền lực", "cyrus"],
       "copy": {
         "en": "Cyrus the Great mastered a form of authority deeper than political power: spiritual legitimacy. He understood that every civilization lives inside a sacred order, a worldview that explains why things are the way they are. Rulers who align themselves with this sacred order gain a form of legitimacy that armies cannot destroy. First, Cyrus respected the religious diversity of his empire. Instead of imposing a single imperial cult, he protected temples, priesthoods, and rituals across regions. This respect signaled that the king honored the cosmic order cherished by each community. Second, he connected his authority to divine favor without claiming divinity. He was portrayed as chosen, guided, or blessed, but not as a god. This balance made his reign sacred without provoking theological rebellion. Third, Cyrus used spiritual legitimacy to unify people emotionally. When Jews saw him as a liberator foretold in scripture, and Babylonians saw him as restorer of Marduk’s order, Cyrus became a figure of universal reassurance. Emotional unity is the most durable unity. Fourth, he integrated priests and scholars into governance. Their counsel shaped policy, and their endorsement shaped public trust. When religious authorities support the state, rebellion feels like a violation of cosmic order. Fifth, spiritual legitimacy strengthened diplomacy. When neighboring regions believed Cyrus upheld divine justice, alliances formed more easily. Sixth, Cyrus used sacred storytelling to anchor identity. Inscriptions and decrees framed the empire as a guardian of harmony, not a machine of conquest. People follow a story more willingly than a sword. Seventh, he recognized that sacred legitimacy is fragile. Rulers lose divine favor when they act unjustly. Thus Cyrus tied morality to cosmology: injustice disrupts the cosmic order, while justice restores it. Eighth, Cyrus understood that spiritual legitimacy can survive political change. Even after the fall of Babylonian kings, the belief that a righteous ruler restores divine balance endured—and Cyrus stepped into that archetype naturally. Ninth, he used sacred neutrality as strategic leverage. By not elevating one religion above all others, he prevented religious factions from turning imperial politics into holy war. Tenth, Cyrus framed the empire as part of a universal order. Instead of ruling by dominance, he ruled by alignment with the moral and cosmic expectations of his era. Spiritual legitimacy makes authority self-reinforcing. Armies can be defeated, institutions can decay, but a ruler aligned with sacred order becomes woven into the moral memory of civilizations. Cyrus achieved not only political rule but mythic endurance.",
         "vi": "Cyrus Đại đế nắm giữ dạng quyền lực sâu hơn quyền lực chính trị: chính danh tinh thần. Ông hiểu rằng mọi nền văn minh đều sống trong một trật tự thiêng liêng, một thế giới quan giải thích vì sao sự vật như chúng đang là. Vị vua hòa hợp với trật tự thiêng ấy sẽ có loại chính danh mà quân đội không thể phá hủy. Trước hết, Cyrus tôn trọng sự đa dạng tôn giáo của đế chế. Thay vì áp một giáo phái chung, ông bảo vệ đền thờ, giới tư tế và nghi lễ của từng vùng. Điều này cho thấy vua tôn trọng trật tự vũ trụ mà mỗi dân tộc gìn giữ. Thứ hai, ông kết nối quyền lực với ân điển thần linh mà không tự xưng thần thánh. Ông được mô tả như người được chọn hoặc được dẫn dắt, nhưng không tự thần hóa. Sự cân bằng này làm triều đại mang sắc thái thiêng liêng mà không gây phản kháng. Thứ ba, ông dùng chính danh tinh thần để thống nhất cảm xúc dân chúng. Khi người Do Thái xem ông là vị cứu tinh được tiên tri và người Babylon xem ông là người phục hồi trật tự của Marduk, Cyrus trở thành biểu tượng của sự trấn an chung. Thống nhất cảm xúc là dạng thống nhất bền nhất. Thứ tư, ông đưa tư tế và học giả vào trị quốc. Họ cố vấn chính sách và sự ủng hộ của họ củng cố niềm tin công chúng. Khi tôn giáo đứng về phía nhà nước, nổi dậy trở thành vi phạm trật tự vũ trụ. Thứ năm, chính danh tinh thần củng cố ngoại giao. Khi các vùng tin rằng Cyrus duy trì công lý thiêng liêng, liên minh hình thành dễ dàng hơn. Thứ sáu, ông dùng kể chuyện thiêng để neo bản sắc. Văn khắc và chiếu chỉ mô tả đế chế như người bảo vệ hòa hợp chứ không phải cỗ máy chinh phạt. Con người đi theo câu chuyện dễ hơn theo lưỡi gươm. Thứ bảy, ông hiểu chính danh thiêng dễ tổn thương. Vua mất ân điển khi hành xử bất công. Vì vậy, ông liên kết đạo đức với vũ trụ: bất công làm rối loạn trật tự, công lý khôi phục nó. Thứ tám, ông hiểu chính danh tinh thần có thể tồn tại vượt thay đổi chính trị. Khi các triều Babylon sụp đổ, niềm tin rằng một vị vua công chính sẽ phục hồi trật tự vẫn còn, và Cyrus tự nhiên bước vào mô thức ấy. Thứ chín, ông giữ trung lập tôn giáo chiến lược. Không nâng một tôn giáo lên trên tất cả, ông ngăn phe phái tôn giáo biến chính trị đế quốc thành thánh chiến. Thứ mười, Cyrus xem đế chế là phần của trật tự phổ quát. Ông cai trị bằng sự hòa hợp với kỳ vọng đạo đức và vũ trụ của thời đại. Chính danh tinh thần làm quyền lực tự củng cố. Quân đội có thể thua, thiết chế có thể suy tàn, nhưng người cai trị hòa hợp với trật tự thiêng sẽ được dệt vào ký ức đạo đức của các nền văn minh. Cyrus không chỉ thành công chính trị mà còn đạt sự trường tồn huyền thoại."
       },
-      "tags": ["spiritual legitimacy", "authority"],
-      "audio": "cyrus_v3_7_en.mp3"
+      "slug": "spiritual_legitimacy_and_sacred_order",
+      "tags": [
+        "spiritual legitimacy",
+        "authority"
+      ],
+      "audio": "cyrus_v3_7_en.mp3",
+      "keywords_en": [
+        "spiritual legitimacy",
+        "sacred order",
+        "religion",
+        "authority",
+        "cyrus"
+      ],
+      "keywords_vi": [
+        "chính danh tinh thần",
+        "trật tự thiêng",
+        "tôn giáo",
+        "quyền lực",
+        "cyrus"
+      ]
     },
     {
-      "slug": "designing_an_empire_that_becomes_a_civilization",
-      "keywords_en": ["civilization", "design", "empire building", "legacy", "cyrus"],
-      "keywords_vi": ["văn minh", "thiết kế", "xây đế chế", "di sản", "cyrus"],
       "copy": {
         "en": "Cyrus the Great achieved what only a handful of rulers in history have accomplished: he designed an empire that transformed into a civilization. Most empires die with their founders; Cyrus created a world whose values, institutions, and cultural frameworks endured for centuries. First, Cyrus rooted empire in moral architecture. Justice, tolerance, and respect were not soft ideals but civilizational glue. When a population believes the state stands for fairness, loyalty becomes inherited across generations. Second, he institutionalized governance. The satrapy system, administrative checks, postal networks, and standardized law provided the scaffolding for future rulers. Institutions, not personalities, define civilizations. Third, Cyrus built cultural fusion into the empire’s identity. Instead of attempting to erase differences, he made diversity a defining strength. Civilizations absorb; empires impose. Absorption lasts longer. Fourth, Cyrus encouraged linguistic plurality and record-keeping. Written archives outlast rulers and preserve civilizational memory. A civilization is a society that remembers itself. Fifth, he designed economic integration at continental scale. Markets linked regions across thousands of kilometers, making prosperity a shared experience. Shared prosperity creates shared identity. Sixth, he honored the spiritual frameworks of subject peoples. Instead of erasing gods, he protected temples and affirmed sacred traditions. Civilizations arise when the political order aligns itself with the spiritual order. Seventh, Cyrus practiced humane conquest. Victories brought liberation, restoration, and stability rather than devastation. Conquest that builds rather than destroys becomes foundational mythology. Eighth, he shaped imperial values that successors adopted. Even rulers less virtuous than Cyrus were judged by the standards he established. When a founder sets moral expectations, the civilization polices itself. Ninth, Cyrus created continuity narratives—stories that connected the empire to cosmic justice, prophecy, and divine stewardship. Civilizations require stories that give meaning to collective life. Tenth, he built resilient infrastructure. Roads, canals, fortifications, and administrative hubs bound generations through physical links. Civilization is geography shaped by time. Eleventh, Cyrus embedded long-horizon thinking in leadership. A ruler who thinks beyond his own life encourages others to act similarly. Civilizations arise when elites invest in projects whose rewards they will never personally see. Twelfth, Cyrus crafted a political culture where power was a trust, not personal property. This framing encouraged rulers to view themselves as stewards of a civilizational legacy. The greatness of Cyrus lies not in the boundaries he drew but in the world he built—a world whose principles influenced Persia, Greece, Rome, Judaism, Christianity, Islam, and modern human rights. He shows that a civilization is an empire that has discovered moral purpose. When strategy is fused with values, empire becomes destiny. Cyrus proved that the highest form of conquest is the conquest of time.",
         "vi": "Cyrus Đại đế đạt được điều chỉ rất ít vua chúa làm được: ông thiết kế một đế chế biến thành một nền văn minh. Hầu hết đế chế tan biến sau khi vị sáng lập qua đời; Cyrus tạo ra thế giới mà giá trị, thiết chế và khung văn hóa tồn tại hàng thế kỷ. Trước hết, ông đặt nền móng đạo đức cho đế chế. Công lý, khoan dung và tôn trọng không phải lý tưởng mềm yếu mà là chất keo văn minh. Khi dân tin nhà nước hướng đến công bằng, lòng trung thành truyền qua nhiều thế hệ. Thứ hai, ông thiết chế hóa trị quốc. Satrapy, giám sát hành chính, mạng lưới thư tín và luật chuẩn hóa tạo khung để vua đời sau vận hành. Thiết chế, không cá nhân, định hình văn minh. Thứ ba, ông biến hòa hợp văn hóa thành bản sắc đế quốc. Không xóa bỏ khác biệt, ông biến đa dạng thành sức mạnh. Văn minh hấp thụ; đế chế áp đặt. Sự hấp thụ tồn tại lâu hơn. Thứ tư, ông gìn giữ đa ngôn ngữ và lưu trữ tri thức. Văn khố giúp đế chế ghi nhớ chính mình. Văn minh là xã hội biết lưu giữ ký ức. Thứ năm, ông tạo tích hợp kinh tế xuyên lục địa. Thị trường liên kết vùng miền tạo thịnh vượng chung. Thịnh vượng chung tạo bản sắc chung. Thứ sáu, ông tôn trọng trật tự thiêng của từng dân tộc. Không phá hủy đền thờ mà bảo vệ chúng. Văn minh hình thành khi trật tự chính trị hòa hợp với trật tự thiêng. Thứ bảy, ông thực hành chinh phục nhân đạo. Chiến thắng đem lại tái thiết, hòa bình và trật tự thay vì phá hủy. Chinh phục xây dựng trở thành huyền thoại nền tảng. Thứ tám, ông đặt chuẩn mực đạo đức mà đời vua sau noi theo. Ngay cả vua kém hơn Cyrus vẫn bị đánh giá theo chuẩn ông đặt ra. Khi người sáng lập xác lập tiêu chuẩn, nền văn minh tự điều chỉnh. Thứ chín, ông xây câu chuyện liên tục gắn đế chế với công lý vũ trụ, tiên tri và sứ mệnh thiêng. Văn minh cần câu chuyện để định nghĩa đời sống chung. Thứ mười, ông xây hạ tầng bền vững. Đường xá, kênh mương, công trình và trung tâm hành chính kết nối nhiều thế hệ. Văn minh là địa lý được thời gian khắc họa. Thứ mười một, ông nuôi dưỡng tư duy dài hạn trong lãnh đạo. Người nghĩ vượt đời mình truyền cảm hứng cho người khác làm vậy. Văn minh hình thành khi giới tinh hoa đầu tư vào dự án mà họ không thấy được kết quả. Thứ mười hai, ông xây văn hóa chính trị xem quyền lực là ủy thác. Cách hiểu này khiến vua nhìn mình như người canh giữ di sản văn minh. Sự vĩ đại của Cyrus không nằm ở ranh giới ông vẽ mà ở thế giới ông xây dựng, một thế giới ảnh hưởng Ba Tư, Hy Lạp, La Mã, Do Thái giáo, Kitô giáo, Hồi giáo và cả nhân quyền hiện đại. Ông cho thấy văn minh là đế chế tìm được mục đích đạo đức. Khi chiến lược hòa cùng giá trị, đế chế trở thành định mệnh. Cyrus chứng minh hình thức cao nhất của chinh phục là chinh phục thời gian."
       },
-      "tags": ["civilization", "legacy"],
-      "audio": "cyrus_v3_8_en.mp3"
+      "slug": "designing_an_empire_that_becomes_a_civilization",
+      "tags": [
+        "civilization",
+        "legacy"
+      ],
+      "audio": "cyrus_v3_8_en.mp3",
+      "keywords_en": [
+        "civilization",
+        "design",
+        "empire building",
+        "legacy",
+        "cyrus"
+      ],
+      "keywords_vi": [
+        "văn minh",
+        "thiết kế",
+        "xây đế chế",
+        "di sản",
+        "cyrus"
+      ]
     }
-  ]
+  ],
+  "room_essay": {
+    "en": "",
+    "vi": ""
+  },
+  "safety_disclaimer": {
+    "en": "",
+    "vi": ""
+  },
+  "crisis_footer": {
+    "en": "",
+    "vi": ""
+  }
 }
-

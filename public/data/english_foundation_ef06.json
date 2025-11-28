@@ -1,75 +1,139 @@
 {
+  "schema_version": "1.0",
+  "schema_id": "english_foundation_ef06",
   "id": "english_foundation_ef06",
   "tier": "Free / Miễn phí",
-  "domain": "English Foundation",
-  "title": {
+  "domain": "",
+  "description": {
     "en": "EF-06 — Fixing the 6 Biggest Vietnamese Pronunciation Errors",
     "vi": "EF-06 — Sửa 6 Lỗi Phát Âm Lớn Nhất Của Người Việt"
   },
-  "content": {
-    "en": "This room helps beginners correct the six pronunciation habits that make English hard for Vietnamese learners. Each entry explains one common mistake with slow, simple examples and gentle practice. When these habits change, listening becomes easier and speaking becomes clearer. Fixing these six patterns gives you a strong foundation for all future English skills.",
-    "vi": "Phòng này giúp người mới sửa sáu thói quen phát âm khiến tiếng Anh trở nên khó hơn với người Việt. Mỗi mục giải thích một lỗi phổ biến với ví dụ chậm, đơn giản và bài tập nhẹ nhàng. Khi sửa được những thói quen này, bạn sẽ nghe dễ hơn và nói rõ hơn. Sửa sáu lỗi này chính là nền tảng vững chắc cho mọi kỹ năng tiếng Anh sau này."
-  },
+  "keywords": [
+    "final sounds",
+    "pronunciation",
+    "common errors",
+    "vowel errors",
+    "tones",
+    "intonation",
+    "beginner",
+    "speed",
+    "clarity",
+    "vowels",
+    "air flow",
+    "pronunciation basics",
+    "âm cuối",
+    "phát âm",
+    "lỗi phổ biến",
+    "lỗi nguyên âm",
+    "thanh điệu",
+    "ngữ điệu",
+    "người mới",
+    "tốc độ",
+    "rõ ràng",
+    "nguyên âm",
+    "luồng hơi",
+    "phát âm cơ bản"
+  ],
   "entries": [
     {
       "slug": "error-1-dropping-final-sounds",
-      "keywords_en": ["final sounds", "pronunciation", "common errors"],
-      "keywords_vi": ["âm cuối", "phát âm", "lỗi phổ biến"],
-      "copy": {
-        "en": "Vietnamese learners often drop ending sounds.\nSay these slowly and keep the final sound:\n\ncat\nmap\nbig\nred\ncup\nmilk\n\nIf the ending disappears, read again more slowly.\nEnding sounds change the meaning.",
-        "vi": "Người Việt thường bỏ âm cuối. Hãy đọc chậm và giữ rõ âm cuối trong các từ: cat, map, big, red, cup, milk. Nếu âm cuối biến mất, hãy giảm tốc độ. Âm cuối rất quan trọng và có thể thay đổi nghĩa."
-      },
-      "audio": "ef06_01_en.mp3"
+      "audio": "ef06_01_en.mp3",
+      "copy_en": "Vietnamese learners often drop ending sounds.\nSay these slowly and keep the final sound:\n\ncat\nmap\nbig\nred\ncup\nmilk\n\nIf the ending disappears, read again more slowly.\nEnding sounds change the meaning.",
+      "copy_vi": "Người Việt thường bỏ âm cuối. Hãy đọc chậm và giữ rõ âm cuối trong các từ: cat, map, big, red, cup, milk. Nếu âm cuối biến mất, hãy giảm tốc độ. Âm cuối rất quan trọng và có thể thay đổi nghĩa.",
+      "keywords_en": [
+        "final sounds",
+        "pronunciation",
+        "common errors"
+      ],
+      "keywords_vi": [
+        "âm cuối",
+        "phát âm",
+        "lỗi phổ biến"
+      ]
     },
     {
       "slug": "error-2-adding-extra-vowels",
-      "keywords_en": ["vowel errors", "pronunciation"],
-      "keywords_vi": ["lỗi nguyên âm", "phát âm"],
-      "copy": {
-        "en": "Avoid adding Vietnamese vowels after consonants.\nSay the sound only:\n\nT not tờ\nK not ca\nP not pờ\nB not bờ\n\nShort, clean sounds make your English clearer.",
-        "vi": "Đừng thêm nguyên âm tiếng Việt vào sau phụ âm. Chỉ phát âm đúng phụ âm: T không phải tờ, K không phải ca, P không phải pờ, B không phải bờ. Âm ngắn và rõ giúp tiếng Anh của bạn dễ hiểu hơn."
-      },
-      "audio": "ef06_02_en.mp3"
+      "audio": "ef06_02_en.mp3",
+      "copy_en": "Avoid adding Vietnamese vowels after consonants.\nSay the sound only:\n\nT not tờ\nK not ca\nP not pờ\nB not bờ\n\nShort, clean sounds make your English clearer.",
+      "copy_vi": "Đừng thêm nguyên âm tiếng Việt vào sau phụ âm. Chỉ phát âm đúng phụ âm: T không phải tờ, K không phải ca, P không phải pờ, B không phải bờ. Âm ngắn và rõ giúp tiếng Anh của bạn dễ hiểu hơn.",
+      "keywords_en": [
+        "vowel errors",
+        "pronunciation"
+      ],
+      "keywords_vi": [
+        "lỗi nguyên âm",
+        "phát âm"
+      ]
     },
     {
       "slug": "error-3-using-tones-in-english",
-      "keywords_en": ["tones", "intonation", "beginner"],
-      "keywords_vi": ["thanh điệu", "ngữ điệu", "người mới"],
-      "copy": {
-        "en": "English has no tones.\nKeep your voice flat and gentle.\nPractice these words without rising or falling:\n\nbook\npen\nwater\nteacher\nfamily\nhello\n\nSmooth English rhythm makes you easier to understand.",
-        "vi": "Tiếng Anh không có dấu. Hãy giữ giọng bằng phẳng và nhẹ. Luyện các từ sau mà không lên xuống giọng: book, pen, water, teacher, family, hello. Nhịp tiếng Anh mượt giúp người nghe hiểu bạn tốt hơn."
-      },
-      "audio": "ef06_03_en.mp3"
+      "audio": "ef06_03_en.mp3",
+      "copy_en": "English has no tones.\nKeep your voice flat and gentle.\nPractice these words without rising or falling:\n\nbook\npen\nwater\nteacher\nfamily\nhello\n\nSmooth English rhythm makes you easier to understand.",
+      "copy_vi": "Tiếng Anh không có dấu. Hãy giữ giọng bằng phẳng và nhẹ. Luyện các từ sau mà không lên xuống giọng: book, pen, water, teacher, family, hello. Nhịp tiếng Anh mượt giúp người nghe hiểu bạn tốt hơn.",
+      "keywords_en": [
+        "tones",
+        "intonation",
+        "beginner"
+      ],
+      "keywords_vi": [
+        "thanh điệu",
+        "ngữ điệu",
+        "người mới"
+      ]
     },
     {
       "slug": "error-4-reading-too-fast",
-      "keywords_en": ["speed", "clarity"],
-      "keywords_vi": ["tốc độ", "rõ ràng"],
-      "copy": {
-        "en": "Reading fast creates mistakes.\nSlow is correct.\nPractice slowly:\n\nI am learning English.\nPlease help me.\nI do not understand.\n\nSlow rhythm builds clean pronunciation.",
-        "vi": "Đọc nhanh dễ gây lỗi. Chậm mới là đúng. Hãy luyện chậm với các câu: I am learning English, Please help me, I do not understand. Nhịp chậm tạo ra phát âm rõ ràng."
-      },
-      "audio": "ef06_04_en.mp3"
+      "audio": "ef06_04_en.mp3",
+      "copy_en": "Reading fast creates mistakes.\nSlow is correct.\nPractice slowly:\n\nI am learning English.\nPlease help me.\nI do not understand.\n\nSlow rhythm builds clean pronunciation.",
+      "copy_vi": "Đọc nhanh dễ gây lỗi. Chậm mới là đúng. Hãy luyện chậm với các câu: I am learning English, Please help me, I do not understand. Nhịp chậm tạo ra phát âm rõ ràng.",
+      "keywords_en": [
+        "speed",
+        "clarity"
+      ],
+      "keywords_vi": [
+        "tốc độ",
+        "rõ ràng"
+      ]
     },
     {
       "slug": "error-5-confusing-short-and-long-vowels",
-      "keywords_en": ["vowels", "pronunciation"],
-      "keywords_vi": ["nguyên âm", "phát âm"],
-      "copy": {
-        "en": "English uses short and long vowel sounds.\nSay these pairs slowly:\n\nship vs sheep\nsit vs seat\nfull vs fool\n\nSmall mouth changes make a big difference in meaning.",
-        "vi": "Tiếng Anh có nguyên âm ngắn và dài. Hãy luyện các cặp sau thật chậm: ship và sheep, sit và seat, full và fool. Chỉ một thay đổi nhỏ ở khẩu hình cũng có thể làm thay đổi nghĩa."
-      },
-      "audio": "ef06_05_en.mp3"
+      "audio": "ef06_05_en.mp3",
+      "copy_en": "English uses short and long vowel sounds.\nSay these pairs slowly:\n\nship vs sheep\nsit vs seat\nfull vs fool\n\nSmall mouth changes make a big difference in meaning.",
+      "copy_vi": "Tiếng Anh có nguyên âm ngắn và dài. Hãy luyện các cặp sau thật chậm: ship và sheep, sit và seat, full và fool. Chỉ một thay đổi nhỏ ở khẩu hình cũng có thể làm thay đổi nghĩa.",
+      "keywords_en": [
+        "vowels",
+        "pronunciation"
+      ],
+      "keywords_vi": [
+        "nguyên âm",
+        "phát âm"
+      ]
     },
     {
       "slug": "error-6-speaking-without-air",
-      "keywords_en": ["air flow", "pronunciation basics"],
-      "keywords_vi": ["luồng hơi", "phát âm cơ bản"],
-      "copy": {
-        "en": "English sounds need more air than Vietnamese.\nPractice short air bursts:\n\nP\nT\nK\n\nPut your hand near your mouth.\nFeel the air.\nAir helps your consonants sound clear.",
-        "vi": "Âm tiếng Anh cần nhiều hơi hơn tiếng Việt. Hãy luyện thổi hơi nhẹ với các phụ âm P, T, K. Đặt tay trước miệng để cảm nhận luồng hơi. Hơi mạnh giúp phụ âm rõ và đúng hơn."
-      },
-      "audio": "ef06_06_en.mp3"
+      "audio": "ef06_06_en.mp3",
+      "copy_en": "English sounds need more air than Vietnamese.\nPractice short air bursts:\n\nP\nT\nK\n\nPut your hand near your mouth.\nFeel the air.\nAir helps your consonants sound clear.",
+      "copy_vi": "Âm tiếng Anh cần nhiều hơi hơn tiếng Việt. Hãy luyện thổi hơi nhẹ với các phụ âm P, T, K. Đặt tay trước miệng để cảm nhận luồng hơi. Hơi mạnh giúp phụ âm rõ và đúng hơn.",
+      "keywords_en": [
+        "air flow",
+        "pronunciation basics"
+      ],
+      "keywords_vi": [
+        "luồng hơi",
+        "phát âm cơ bản"
+      ]
     }
-  ]
+  ],
+  "room_essay": {
+    "en": "This room helps beginners correct the six pronunciation habits that make English hard for Vietnamese learners. Each entry explains one common mistake with slow, simple examples and gentle practice. When these habits change, listening becomes easier and speaking becomes clearer. Fixing these six patterns gives you a strong foundation for all future English skills.",
+    "vi": "Phòng này giúp người mới sửa sáu thói quen phát âm khiến tiếng Anh trở nên khó hơn với người Việt. Mỗi mục giải thích một lỗi phổ biến với ví dụ chậm, đơn giản và bài tập nhẹ nhàng. Khi sửa được những thói quen này, bạn sẽ nghe dễ hơn và nói rõ hơn. Sửa sáu lỗi này chính là nền tảng vững chắc cho mọi kỹ năng tiếng Anh sau này."
+  },
+  "safety_disclaimer": {
+    "en": "",
+    "vi": ""
+  },
+  "crisis_footer": {
+    "en": "",
+    "vi": ""
+  }
 }

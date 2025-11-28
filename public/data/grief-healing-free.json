@@ -1,0 +1,134 @@
+{
+  "schema_version": "1.0",
+  "schema_id": "grief-healing-free",
+  "id": "grief-healing-free",
+  "tier": "free",
+  "domain": "",
+  "description": {
+    "en": "Grief Healing",
+    "vi": "Chữa Lành Nỗi Đau Mất Mát"
+  },
+  "keywords": [
+    "all",
+    "combined",
+    "community",
+    "complete",
+    "emotional expression",
+    "empathy",
+    "full sequence",
+    "grief",
+    "grief healing",
+    "healing",
+    "processing loss",
+    "support system"
+  ],
+  "entries": [
+    {
+      "copy": {
+        "en": "Healing from grief starts with processing loss. Allow yourself to feel emotions like sadness or anger without judgment. Journal to express your thoughts. Connect with supportive friends or groups for comfort. Practice self-compassion to foster resilience, helping you navigate grief with hope.",
+        "vi": "Chữa lành nỗi đau mất mát bắt đầu từ việc đối diện và thấu hiểu tổn thất. Hãy cho phép bản thân cảm nhận những cảm xúc như buồn bã hay tức giận mà không tự phán xét. Viết nhật ký để giải tỏa suy nghĩ. Kết nối với bạn bè hoặc nhóm hỗ trợ để tìm sự an ủi. Thực hành lòng trắc ẩn để nuôi dưỡng nghị lực, giúp bạn vượt qua nỗi đau với hy vọng."
+      },
+      "slug": "processing-loss",
+      "tags": [
+        "grief",
+        "healing"
+      ],
+      "audio": "grief_healing_free_processing_loss_en.mp3",
+      "keywords_en": [
+        "processing loss",
+        "grief",
+        "healing"
+      ],
+      "keywords_vi": [
+        "đối diện mất mát",
+        "nỗi đau",
+        "chữa lành"
+      ]
+    },
+    {
+      "copy": {
+        "en": "Emotional expression aids grief healing. Share your feelings through talking or writing. Join a support group to connect with others. Allow tears or creative outlets like art to release emotions. These steps foster resilience, helping you heal with clarity.",
+        "vi": "Bày tỏ cảm xúc là một phần thiết yếu của quá trình chữa lành. Hãy chia sẻ cảm xúc của bạn qua trò chuyện hoặc viết lách. Tham gia nhóm hỗ trợ để kết nối với những người đồng cảm. Hãy để bản thân khóc hoặc tìm đến nghệ thuật như một kênh sáng tạo để giải tỏa cảm xúc. Những bước này giúp nuôi dưỡng sự vững vàng và đưa bạn đến sự sáng tỏ nội tâm."
+      },
+      "slug": "emotional-expression",
+      "tags": [
+        "emotions",
+        "grief"
+      ],
+      "audio": "grief_healing_free_emotional_expression_en.mp3",
+      "keywords_en": [
+        "emotional expression",
+        "grief",
+        "healing"
+      ],
+      "keywords_vi": [
+        "bày tỏ cảm xúc",
+        "nỗi đau",
+        "chữa lành"
+      ]
+    },
+    {
+      "copy": {
+        "en": "A strong support system is vital for grief healing. Share your experiences with friends or groups to foster empathy. Regular check-ins provide comfort and understanding. These connections build resilience, helping you navigate grief with hope and strength.",
+        "vi": "Một hệ thống hỗ trợ vững chắc đóng vai trò quan trọng trong hành trình chữa lành nỗi đau mất mát. Hãy chia sẻ trải nghiệm của bạn với bạn bè hoặc nhóm hỗ trợ để nuôi dưỡng sự đồng cảm. Những cuộc trò chuyện đều đặn mang lại sự an ủi và thấu hiểu. Chính những kết nối này giúp bạn thêm nghị lực để vượt qua nỗi đau với hy vọng và sức mạnh."
+      },
+      "slug": "support-system",
+      "tags": [
+        "support",
+        "grief"
+      ],
+      "audio": "grief_healing_free_support_system_en.mp3",
+      "keywords_en": [
+        "support system",
+        "community",
+        "empathy"
+      ],
+      "keywords_vi": [
+        "hệ thống hỗ trợ",
+        "cộng đồng",
+        "đồng cảm"
+      ]
+    },
+    {
+      "copy": {
+        "en": "Healing from grief starts with processing loss. Allow yourself to feel emotions like sadness or anger without judgment. Journal to express your thoughts. Connect with supportive friends or groups for comfort. Practice self-compassion to foster resilience, helping you navigate grief with hope. Emotional expression aids grief healing. Share your feelings through talking or writing. Join a support group to connect with others. Allow tears or creative outlets like art to release emotions. These steps foster resilience, helping you heal with clarity. A strong support system is vital for grief healing. Share your experiences with friends or groups to foster empathy. Regular check-ins provide comfort and understanding. These connections build resilience, helping you navigate grief with hope and strength.",
+        "vi": "Chữa lành nỗi đau mất mát bắt đầu từ việc đối diện và thấu hiểu tổn thất. Hãy cho phép bản thân cảm nhận những cảm xúc như buồn bã hay tức giận mà không tự phán xét. Viết nhật ký để giải tỏa suy nghĩ. Kết nối với bạn bè hoặc nhóm hỗ trợ để tìm sự an ủi. Thực hành lòng trắc ẩn để nuôi dưỡng nghị lực, giúp bạn vượt qua nỗi đau với hy vọng. Bày tỏ cảm xúc là một phần thiết yếu của quá trình chữa lành. Hãy chia sẻ cảm xúc của bạn qua trò chuyện hoặc viết lách. Tham gia nhóm hỗ trợ để kết nối với những người đồng cảm. Hãy để bản thân khóc hoặc tìm đến nghệ thuật như một kênh sáng tạo để giải tỏa cảm xúc. Những bước này giúp nuôi dưỡng sự vững vàng và đưa bạn đến sự sáng tỏ nội tâm. Một hệ thống hỗ trợ vững chắc đóng vai trò quan trọng trong hành trình chữa lành nỗi đau mất mát. Hãy chia sẻ trải nghiệm của bạn với bạn bè hoặc nhóm hỗ trợ để nuôi dưỡng sự đồng cảm. Những cuộc trò chuyện đều đặn mang lại sự an ủi và thấu hiểu. Chính những kết nối này giúp bạn thêm nghị lực để vượt qua nỗi đau với hy vọng và sức mạnh."
+      },
+      "slug": "all",
+      "tags": [
+        "all",
+        "combined",
+        "full",
+        "complete",
+        "grief"
+      ],
+      "audio": "grief_healing_free_processing_loss_en.mp3 grief_healing_free_emotional_expression_en.mp3 grief_healing_free_support_system_en.mp3",
+      "keywords_en": [
+        "all",
+        "full sequence",
+        "combined",
+        "complete",
+        "grief healing"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "chuỗi đầy đủ",
+        "kết hợp",
+        "hoàn chỉnh",
+        "chữa lành mất mát"
+      ]
+    }
+  ],
+  "room_essay": {
+    "en": "Practical guidance for healing from grief with emotional support.",
+    "vi": "Hướng dẫn thực tế giúp bạn chữa lành nỗi đau mất mát thông qua sự nâng đỡ cảm xúc và kết nối lành mạnh."
+  },
+  "safety_disclaimer": {
+    "en": "",
+    "vi": ""
+  },
+  "crisis_footer": {
+    "en": "",
+    "vi": ""
+  }
+}

@@ -1,75 +1,135 @@
 {
+  "schema_version": "1.0",
+  "schema_id": "english_foundation_ef10",
   "id": "english_foundation_ef10",
   "tier": "Free / Miễn phí",
-  "domain": "English Foundation",
-  "title": {
+  "domain": "",
+  "description": {
     "en": "EF-10 — Slow & Clear Listening Practice",
     "vi": "EF-10 — Luyện Nghe Chậm & Rõ"
   },
-  "content": {
-    "en": "This room helps beginners train their ears to understand slow, clear English. You will listen to simple words, short sentences, and gentle rhythms that match real conversation. Listening is not about catching every word. It is about getting familiar with the sound of English. With daily practice, your ears relax and your understanding grows naturally.",
-    "vi": "Phòng này giúp người mới luyện đôi tai để nghe tiếng Anh chậm và rõ. Bạn sẽ nghe từ đơn giản, câu ngắn và nhịp điệu nhẹ nhàng giống hội thoại thật. Nghe không phải là cố hiểu từng chữ, mà là làm quen với âm của tiếng Anh. Khi luyện mỗi ngày, tai bạn sẽ thư giãn và khả năng hiểu tăng lên tự nhiên."
-  },
+  "keywords": [
+    "listening",
+    "words",
+    "beginner",
+    "sentences",
+    "ending sounds",
+    "pronunciation",
+    "stress",
+    "rhythm",
+    "dialogue",
+    "habit",
+    "daily practice",
+    "nghe",
+    "từ vựng",
+    "người mới",
+    "câu ngắn",
+    "luyện nghe",
+    "âm cuối",
+    "phát âm",
+    "trọng âm",
+    "nhịp điệu",
+    "hội thoại",
+    "thói quen"
+  ],
   "entries": [
     {
       "slug": "listening-to-basic-words",
-      "keywords_en": ["listening", "words", "beginner"],
-      "keywords_vi": ["nghe", "từ vựng", "người mới"],
-      "copy": {
-        "en": "Listen to simple words slowly:\n\ncat\npen\nsun\nbook\ndog\ncup\n\nFocus on the first sound and the final sound.\nDo not rush.\nLet the sound enter naturally.",
-        "vi": "Hãy nghe các từ đơn giản sau thật chậm: cat, pen, sun, book, dog, cup. Tập trung vào âm đầu và âm cuối. Đừng vội. Hãy để âm thanh đi vào tự nhiên."
-      },
-      "audio": "ef10_01_en.mp3"
+      "audio": "ef10_01_en.mp3",
+      "copy_en": "Listen to simple words slowly:\n\ncat\npen\nsun\nbook\ndog\ncup\n\nFocus on the first sound and the final sound.\nDo not rush.\nLet the sound enter naturally.",
+      "copy_vi": "Hãy nghe các từ đơn giản sau thật chậm: cat, pen, sun, book, dog, cup. Tập trung vào âm đầu và âm cuối. Đừng vội. Hãy để âm thanh đi vào tự nhiên.",
+      "keywords_en": [
+        "listening",
+        "words",
+        "beginner"
+      ],
+      "keywords_vi": [
+        "nghe",
+        "từ vựng",
+        "người mới"
+      ]
     },
     {
       "slug": "short-sentences",
-      "keywords_en": ["sentences", "listening"],
-      "keywords_vi": ["câu ngắn", "luyện nghe"],
-      "copy": {
-        "en": "Listen to short sentences:\n\nI am here.\nYou are ready.\nHe is happy.\nIt is small.\nThey are tired.\n\nSay each line softly after listening.\nShadowing builds confidence.",
-        "vi": "Hãy nghe các câu ngắn: I am here, You are ready, He is happy, It is small, They are tired. Sau khi nghe, hãy lặp lại nhẹ nhàng. Phương pháp shadowing giúp bạn tự tin hơn."
-      },
-      "audio": "ef10_02_en.mp3"
+      "audio": "ef10_02_en.mp3",
+      "copy_en": "Listen to short sentences:\n\nI am here.\nYou are ready.\nHe is happy.\nIt is small.\nThey are tired.\n\nSay each line softly after listening.\nShadowing builds confidence.",
+      "copy_vi": "Hãy nghe các câu ngắn: I am here, You are ready, He is happy, It is small, They are tired. Sau khi nghe, hãy lặp lại nhẹ nhàng. Phương pháp shadowing giúp bạn tự tin hơn.",
+      "keywords_en": [
+        "sentences",
+        "listening"
+      ],
+      "keywords_vi": [
+        "câu ngắn",
+        "luyện nghe"
+      ]
     },
     {
       "slug": "hearing-ending-sounds",
-      "keywords_en": ["ending sounds", "pronunciation"],
-      "keywords_vi": ["âm cuối", "phát âm"],
-      "copy": {
-        "en": "Listen for the ending sounds:\n\ncat — t\nmap — p\nbook — k\ndog — g\ncup — p\n\nEnding sounds change meaning.\nTrain your ears to catch them clearly.",
-        "vi": "Hãy nghe kỹ âm cuối: cat — t, map — p, book — k, dog — g, cup — p. Âm cuối làm thay đổi nghĩa của từ. Hãy luyện để tai nghe được rõ ràng."
-      },
-      "audio": "ef10_03_en.mp3"
+      "audio": "ef10_03_en.mp3",
+      "copy_en": "Listen for the ending sounds:\n\ncat — t\nmap — p\nbook — k\ndog — g\ncup — p\n\nEnding sounds change meaning.\nTrain your ears to catch them clearly.",
+      "copy_vi": "Hãy nghe kỹ âm cuối: cat — t, map — p, book — k, dog — g, cup — p. Âm cuối làm thay đổi nghĩa của từ. Hãy luyện để tai nghe được rõ ràng.",
+      "keywords_en": [
+        "ending sounds",
+        "pronunciation"
+      ],
+      "keywords_vi": [
+        "âm cuối",
+        "phát âm"
+      ]
     },
     {
       "slug": "stress-and-rhythm",
-      "keywords_en": ["stress", "rhythm"],
-      "keywords_vi": ["trọng âm", "nhịp điệu"],
-      "copy": {
-        "en": "English has stress.\nSome words sound stronger.\nListen to the rhythm:\n\nTA ble\nWIN dow\nPO ck et\n\nLet your ears feel the pattern.\nStress makes English easier to understand.",
-        "vi": "Tiếng Anh có trọng âm. Một số âm được nhấn mạnh hơn. Hãy nghe nhịp điệu: TA ble, WIN dow, PO ck et. Hãy để tai cảm nhận. Trọng âm giúp bạn nghe rõ hơn."
-      },
-      "audio": "ef10_04_en.mp3"
+      "audio": "ef10_04_en.mp3",
+      "copy_en": "English has stress.\nSome words sound stronger.\nListen to the rhythm:\n\nTA ble\nWIN dow\nPO ck et\n\nLet your ears feel the pattern.\nStress makes English easier to understand.",
+      "copy_vi": "Tiếng Anh có trọng âm. Một số âm được nhấn mạnh hơn. Hãy nghe nhịp điệu: TA ble, WIN dow, PO ck et. Hãy để tai cảm nhận. Trọng âm giúp bạn nghe rõ hơn.",
+      "keywords_en": [
+        "stress",
+        "rhythm"
+      ],
+      "keywords_vi": [
+        "trọng âm",
+        "nhịp điệu"
+      ]
     },
     {
       "slug": "slow-mini-dialogue",
-      "keywords_en": ["dialogue", "listening"],
-      "keywords_vi": ["hội thoại", "nghe"],
-      "copy": {
-        "en": "Listen to this slow mini dialogue:\n\nHello.\nHello.\nHow are you?\nI am fine.\nAnd you?\nI am fine too.\n\nRead it again after listening.\nSmall dialogues build real confidence.",
-        "vi": "Hãy nghe đoạn hội thoại ngắn: Hello. Hello. How are you? I am fine. And you? I am fine too. Hãy đọc lại sau khi nghe. Hội thoại ngắn giúp bạn tự tin hơn."
-      },
-      "audio": "ef10_05_en.mp3"
+      "audio": "ef10_05_en.mp3",
+      "copy_en": "Listen to this slow mini dialogue:\n\nHello.\nHello.\nHow are you?\nI am fine.\nAnd you?\nI am fine too.\n\nRead it again after listening.\nSmall dialogues build real confidence.",
+      "copy_vi": "Hãy nghe đoạn hội thoại ngắn: Hello. Hello. How are you? I am fine. And you? I am fine too. Hãy đọc lại sau khi nghe. Hội thoại ngắn giúp bạn tự tin hơn.",
+      "keywords_en": [
+        "dialogue",
+        "listening"
+      ],
+      "keywords_vi": [
+        "hội thoại",
+        "nghe"
+      ]
     },
     {
       "slug": "daily-listening-habit",
-      "keywords_en": ["habit", "daily practice"],
-      "keywords_vi": ["thói quen", "luyện nghe"],
-      "copy": {
-        "en": "Listen three minutes a day.\nOne word list.\nOne sentence list.\nOne small dialogue.\n\nYour ears improve with gentle repetition.\nListening becomes easier every week.",
-        "vi": "Hãy nghe ba phút mỗi ngày: một danh sách từ, một danh sách câu, một đoạn hội thoại ngắn. Tai bạn sẽ tiến bộ nhờ lặp lại nhẹ nhàng. Mỗi tuần việc nghe sẽ dễ hơn."
-      },
-      "audio": "ef10_06_en.mp3"
+      "audio": "ef10_06_en.mp3",
+      "copy_en": "Listen three minutes a day.\nOne word list.\nOne sentence list.\nOne small dialogue.\n\nYour ears improve with gentle repetition.\nListening becomes easier every week.",
+      "copy_vi": "Hãy nghe ba phút mỗi ngày: một danh sách từ, một danh sách câu, một đoạn hội thoại ngắn. Tai bạn sẽ tiến bộ nhờ lặp lại nhẹ nhàng. Mỗi tuần việc nghe sẽ dễ hơn.",
+      "keywords_en": [
+        "habit",
+        "daily practice"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "luyện nghe"
+      ]
     }
-  ]
+  ],
+  "room_essay": {
+    "en": "This room helps beginners train their ears to understand slow, clear English. You will listen to simple words, short sentences, and gentle rhythms that match real conversation. Listening is not about catching every word. It is about getting familiar with the sound of English. With daily practice, your ears relax and your understanding grows naturally.",
+    "vi": "Phòng này giúp người mới luyện đôi tai để nghe tiếng Anh chậm và rõ. Bạn sẽ nghe từ đơn giản, câu ngắn và nhịp điệu nhẹ nhàng giống hội thoại thật. Nghe không phải là cố hiểu từng chữ, mà là làm quen với âm của tiếng Anh. Khi luyện mỗi ngày, tai bạn sẽ thư giãn và khả năng hiểu tăng lên tự nhiên."
+  },
+  "safety_disclaimer": {
+    "en": "",
+    "vi": ""
+  },
+  "crisis_footer": {
+    "en": "",
+    "vi": ""
+  }
 }

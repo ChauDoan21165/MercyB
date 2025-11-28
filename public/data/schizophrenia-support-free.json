@@ -1,69 +1,145 @@
 {
+  "schema_version": "1.0",
+  "schema_id": "schizophrenia-support-free",
   "id": "schizophrenia-support-free",
-  "tier": "Free / Miễn phí",
-  "title": {
+  "tier": "free",
+  "domain": "",
+  "description": {
     "en": "Schizophrenia Support",
     "vi": "Hỗ Trợ Tâm Thần Phân Liệt"
   },
-  "content": {
-    "en": "Practical guidance for understanding and managing schizophrenia with stability, compassion, and daily support. Start with small steps that build structure, reduce stress, and strengthen awareness. These foundations help you stay grounded and connected. Discover deeper strategies in higher tiers.",
-    "vi": "Hướng dẫn thực tế để hiểu và quản lý tâm thần phân liệt với sự ổn định, cảm thông và hỗ trợ hằng ngày. Bắt đầu từ những bước nhỏ giúp tạo cấu trúc, giảm căng thẳng và tăng cường nhận thức. Những nền tảng này giúp bạn giữ vững tinh thần và kết nối. Khám phá thêm chiến lược chuyên sâu ở các cấp độ cao hơn."
-  },
+  "keywords": [
+    "all",
+    "awareness",
+    "calm",
+    "connection",
+    "coping",
+    "grounding",
+    "present",
+    "routine",
+    "stability",
+    "structure",
+    "support system",
+    "symptoms",
+    "trust"
+  ],
   "entries": [
     {
-      "slug": "daily-routine",
-      "keywords_en": ["routine", "stability", "structure"],
-      "keywords_vi": ["thói quen", "ổn định", "cấu trúc"],
       "copy": {
         "en": "A simple daily routine helps stabilize symptoms by reducing stress and creating predictability. Wake up at similar times, schedule meals consistently, and include short breaks for rest or grounding exercises. Use reminders or visual checklists to stay organized. Share your routine with a trusted person who can support you during difficult days. A stable structure reduces confusion and helps you stay connected to reality. Small, repeatable habits build long-term resilience.",
         "vi": "Một thói quen hằng ngày đơn giản giúp ổn định triệu chứng bằng cách giảm căng thẳng và tạo sự dự đoán. Thức dậy vào giờ cố định, sắp xếp bữa ăn đều đặn và thêm khoảng nghỉ ngắn cho thư giãn hoặc bài tập tiếp đất. Dùng nhắc nhở hoặc bảng kiểm để giữ tổ chức. Chia sẻ thói quen với người đáng tin để được hỗ trợ khi khó khăn. Cấu trúc ổn định giảm nhầm lẫn và giúp bạn giữ kết nối thực tại. Những thói quen nhỏ, lặp lại tạo sức bền dài lâu."
       },
-      "tags": ["routine", "stability"],
-      "audio": "schizo_free_daily_routine.mp3"
+      "slug": "daily-routine",
+      "tags": [
+        "routine",
+        "stability"
+      ],
+      "audio": "schizo_free_daily_routine.mp3",
+      "keywords_en": [
+        "routine",
+        "stability",
+        "structure"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "ổn định",
+        "cấu trúc"
+      ]
     },
     {
-      "slug": "managing-symptoms",
-      "keywords_en": ["symptoms", "awareness", "coping"],
-      "keywords_vi": ["triệu chứng", "nhận thức", "đối phó"],
       "copy": {
         "en": "Learning to notice early warning signs is key for managing schizophrenia. Changes in sleep, appetite, or thought clarity often appear before symptoms intensify. Use a journal to track patterns and share them with a doctor or trusted person. Practice grounding strategies like slow breathing or naming objects around you when you feel overwhelmed. These techniques do not remove symptoms, but they create space for calm decisions. Early awareness helps prevent crises and supports long-term stability.",
         "vi": "Học cách nhận biết dấu hiệu sớm là yếu tố quan trọng để quản lý tâm thần phân liệt. Thay đổi về giấc ngủ, ăn uống hoặc sự rõ ràng của suy nghĩ thường xuất hiện trước khi triệu chứng tăng mạnh. Dùng nhật ký theo dõi và chia sẻ với bác sĩ hoặc người đáng tin. Tập bài tiếp đất như thở chậm hoặc gọi tên đồ vật xung quanh khi quá tải. Những kỹ thuật này không loại bỏ triệu chứng nhưng tạo khoảng để đưa ra quyết định bình tĩnh. Nhận thức sớm giúp ngăn khủng hoảng và hỗ trợ ổn định lâu dài."
       },
-      "tags": ["symptoms", "awareness"],
-      "audio": "schizo_free_managing_symptoms.mp3"
+      "slug": "managing-symptoms",
+      "tags": [
+        "symptoms",
+        "awareness"
+      ],
+      "audio": "schizo_free_managing_symptoms.mp3",
+      "keywords_en": [
+        "symptoms",
+        "awareness",
+        "coping"
+      ],
+      "keywords_vi": [
+        "triệu chứng",
+        "nhận thức",
+        "đối phó"
+      ]
     },
     {
-      "slug": "support-system",
-      "keywords_en": ["support system", "connection", "trust"],
-      "keywords_vi": ["hệ thống hỗ trợ", "kết nối", "tin cậy"],
       "copy": {
         "en": "A strong support system provides emotional safety during challenging moments. Stay connected with family, friends, or peer groups who understand your experience. Share what helps you feel calm and what signs indicate you need assistance. Regular communication builds trust and reduces isolation. Supportive relationships remind you that you are not alone and create a foundation of stability. When stress increases, reaching out early can prevent symptoms from escalating and restore balance.",
         "vi": "Một hệ thống hỗ trợ mạnh mẽ mang lại sự an toàn cảm xúc trong những thời điểm khó khăn. Hãy kết nối với gia đình, bạn bè hoặc nhóm đồng đẳng hiểu trải nghiệm của bạn. Chia sẻ điều giúp bạn bình tĩnh và các dấu hiệu cho thấy bạn cần hỗ trợ. Giao tiếp thường xuyên xây dựng sự tin cậy và giảm cô lập. Những mối quan hệ hỗ trợ nhắc rằng bạn không cô đơn và tạo nền tảng ổn định. Khi căng thẳng tăng, chủ động tìm hỗ trợ có thể ngăn triệu chứng nặng hơn và giúp bạn lấy lại cân bằng."
       },
-      "tags": ["support", "connection"],
-      "audio": "schizo_free_support_system.mp3"
+      "slug": "support-system",
+      "tags": [
+        "support",
+        "connection"
+      ],
+      "audio": "schizo_free_support_system.mp3",
+      "keywords_en": [
+        "support system",
+        "connection",
+        "trust"
+      ],
+      "keywords_vi": [
+        "hệ thống hỗ trợ",
+        "kết nối",
+        "tin cậy"
+      ]
     },
     {
-      "slug": "grounding-techniques",
-      "keywords_en": ["grounding", "present", "calm"],
-      "keywords_vi": ["tiếp đất", "hiện tại", "bình tĩnh"],
       "copy": {
         "en": "Grounding techniques help you stay connected to the present moment when thoughts feel confusing or frightening. Try the 5-4-3-2-1 method: name five things you see, four you can touch, three you hear, two you smell, and one you taste. This activates your senses and reduces overwhelming emotions. Slow breathing or holding a warm object can also bring comfort. Practicing grounding daily strengthens your ability to navigate difficult moments with clarity and calm.",
         "vi": "Các kỹ thuật tiếp đất giúp bạn kết nối với khoảnh khắc hiện tại khi suy nghĩ trở nên rối loạn hoặc đáng sợ. Hãy thử phương pháp 5-4-3-2-1: gọi tên năm thứ bạn nhìn thấy, bốn thứ bạn chạm vào, ba thứ bạn nghe được, hai thứ bạn ngửi thấy và một thứ bạn nếm được. Điều này kích hoạt các giác quan và giảm cảm xúc quá tải. Thở chậm hoặc cầm một vật ấm cũng mang lại sự dễ chịu. Thực hành hằng ngày giúp bạn vượt qua thời điểm khó khăn với sự rõ ràng và bình tĩnh."
       },
-      "tags": ["grounding", "calm"],
-      "audio": "schizo_free_grounding_techniques.mp3"
+      "slug": "grounding-techniques",
+      "tags": [
+        "grounding",
+        "calm"
+      ],
+      "audio": "schizo_free_grounding_techniques.mp3",
+      "keywords_en": [
+        "grounding",
+        "present",
+        "calm"
+      ],
+      "keywords_vi": [
+        "tiếp đất",
+        "hiện tại",
+        "bình tĩnh"
+      ]
     },
     {
-      "slug": "all",
-      "keywords_en": ["all"],
-      "keywords_vi": ["tất cả"],
       "copy": {
         "en": "A simple daily routine helps stabilize symptoms by reducing stress and creating predictability. Wake up at similar times, schedule meals consistently, and include short breaks for rest or grounding exercises. Use reminders or visual checklists to stay organized. Share your routine with a trusted person who can support you during difficult days. A stable structure reduces confusion and helps you stay connected to reality. Small, repeatable habits build long-term resilience.\n\nLearning to notice early warning signs is key for managing schizophrenia. Changes in sleep, appetite, or thought clarity often appear before symptoms intensify. Use a journal to track patterns and share them with a doctor or trusted person. Practice grounding strategies like slow breathing or naming objects around you when you feel overwhelmed. These techniques do not remove symptoms, but they create space for calm decisions. Early awareness helps prevent crises and supports long-term stability.\n\nA strong support system provides emotional safety during challenging moments. Stay connected with family, friends, or peer groups who understand your experience. Share what helps you feel calm and what signs indicate you need assistance. Regular communication builds trust and reduces isolation. Supportive relationships remind you that you are not alone and create a foundation of stability. When stress increases, reaching out early can prevent symptoms from escalating and restore balance.\n\nGrounding techniques help you stay connected to the present moment when thoughts feel confusing or frightening. Try the 5-4-3-2-1 method: name five things you see, four you can touch, three you hear, two you smell, and one you taste. This activates your senses and reduces overwhelming emotions. Slow breathing or holding a warm object can also bring comfort. Practicing grounding daily strengthens your ability to navigate difficult moments with clarity and calm.",
         "vi": "Một thói quen hằng ngày đơn giản giúp ổn định triệu chứng bằng cách giảm căng thẳng và tạo sự dự đoán. Thức dậy vào giờ cố định, sắp xếp bữa ăn đều đặn và thêm khoảng nghỉ ngắn cho thư giãn hoặc bài tập tiếp đất. Dùng nhắc nhở hoặc bảng kiểm để giữ tổ chức. Chia sẻ thói quen với người đáng tin để được hỗ trợ khi khó khăn. Cấu trúc ổn định giảm nhầm lẫn và giúp bạn giữ kết nối thực tại. Những thói quen nhỏ, lặp lại tạo sức bền dài lâu.\n\nHọc cách nhận biết dấu hiệu sớm là yếu tố quan trọng để quản lý tâm thần phân liệt. Thay đổi về giấc ngủ, ăn uống hoặc sự rõ ràng của suy nghĩ thường xuất hiện trước khi triệu chứng tăng mạnh. Dùng nhật ký theo dõi và chia sẻ với bác sĩ hoặc người đáng tin. Tập bài tiếp đất như thở chậm hoặc gọi tên đồ vật xung quanh khi quá tải. Những kỹ thuật này không loại bỏ triệu chứng nhưng tạo khoảng để đưa ra quyết định bình tĩnh. Nhận thức sớm giúp ngăn khủng hoảng và hỗ trợ ổn định lâu dài.\n\nMột hệ thống hỗ trợ mạnh mẽ mang lại sự an toàn cảm xúc trong những thời điểm khó khăn. Hãy kết nối với gia đình, bạn bè hoặc nhóm đồng đẳng hiểu trải nghiệm của bạn. Chia sẻ điều giúp bạn bình tĩnh và các dấu hiệu cho thấy bạn cần hỗ trợ. Giao tiếp thường xuyên xây dựng sự tin cậy và giảm cô lập. Những mối quan hệ hỗ trợ nhắc rằng bạn không cô đơn và tạo nền tảng ổn định. Khi căng thẳng tăng, chủ động tìm hỗ trợ có thể ngăn triệu chứng nặng hơn và giúp bạn lấy lại cân bằng.\n\nCác kỹ thuật tiếp đất giúp bạn kết nối với khoảnh khắc hiện tại khi suy nghĩ trở nên rối loạn hoặc đáng sợ. Hãy thử phương pháp 5-4-3-2-1: gọi tên năm thứ bạn nhìn thấy, bốn thứ bạn chạm vào, ba thứ bạn nghe được, hai thứ bạn ngửi thấy và một thứ bạn nếm được. Điều này kích hoạt các giác quan và giảm cảm xúc quá tải. Thở chậm hoặc cầm một vật ấm cũng mang lại sự dễ chịu. Thực hành hằng ngày giúp bạn vượt qua thời điểm khó khăn với sự rõ ràng và bình tĩnh."
       },
-      "tags": ["all"],
-      "audio": "schizo_free_daily_routine.mp3 schizo_free_managing_symptoms.mp3 schizo_free_support_system.mp3 schizo_free_grounding_techniques.mp3"
+      "slug": "all",
+      "tags": [
+        "all"
+      ],
+      "audio": "schizo_free_daily_routine.mp3 schizo_free_managing_symptoms.mp3 schizo_free_support_system.mp3 schizo_free_grounding_techniques.mp3",
+      "keywords_en": [
+        "all"
+      ],
+      "keywords_vi": [
+        "tất cả"
+      ]
     }
-  ]
+  ],
+  "room_essay": {
+    "en": "",
+    "vi": ""
+  },
+  "safety_disclaimer": {
+    "en": "",
+    "vi": ""
+  },
+  "crisis_footer": {
+    "en": "",
+    "vi": ""
+  }
 }

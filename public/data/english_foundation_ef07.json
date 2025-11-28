@@ -1,75 +1,132 @@
 {
+  "schema_version": "1.0",
+  "schema_id": "english_foundation_ef07",
   "id": "english_foundation_ef07",
   "tier": "Free / Miễn phí",
-  "domain": "English Foundation",
-  "title": {
+  "domain": "",
+  "description": {
     "en": "EF-07 — Simple Present: I go / He goes",
     "vi": "EF-07 — Thì Hiện Tại Đơn: I go / He goes"
   },
-  "content": {
-    "en": "This room teaches the Simple Present, the first tense beginners need. You will learn how to use I, you, we, they with the base form, and how to add s or es for he, she, and it. The entries are slow and simple, with common daily examples. This tense helps you talk about routines, habits, and facts. Once you master these patterns, all future grammar becomes easier.",
-    "vi": "Phòng này dạy thì Hiện Tại Đơn, thì cơ bản đầu tiên cho người mới. Bạn sẽ học cách dùng I, you, we, they với động từ nguyên mẫu và cách thêm s hoặc es cho he, she, it. Các ví dụ đều chậm, đơn giản và quen thuộc. Thì này giúp bạn nói về thói quen, hoạt động hằng ngày và sự thật. Khi nắm được mẫu câu này, ngữ pháp sau sẽ dễ dàng hơn."
-  },
+  "keywords": [
+    "simple present",
+    "grammar",
+    "beginner",
+    "he she it",
+    "examples",
+    "daily life",
+    "negative",
+    "questions",
+    "practice",
+    "habit",
+    "hiện tại đơn",
+    "ngữ pháp",
+    "người mới",
+    "ví dụ",
+    "hằng ngày",
+    "phủ định",
+    "câu hỏi",
+    "luyện tập",
+    "thói quen"
+  ],
   "entries": [
     {
       "slug": "i-you-we-they-pattern",
-      "keywords_en": ["simple present", "grammar", "beginner"],
-      "keywords_vi": ["hiện tại đơn", "ngữ pháp", "người mới"],
-      "copy": {
-        "en": "Use the base verb with I, you, we, they:\n\nI go\nYou go\nWe go\nThey go\n\nI eat\nYou eat\nWe eat\nThey eat\n\nNo s at the end.\nThe verb stays simple and clean.",
-        "vi": "Dùng động từ nguyên mẫu với I, you, we, they: I go, You go, We go, They go, I eat, You eat, We eat, They eat. Không thêm s ở cuối. Động từ luôn giữ nguyên."
-      },
-      "audio": "ef07_01_en.mp3"
+      "audio": "ef07_01_en.mp3",
+      "copy_en": "Use the base verb with I, you, we, they:\n\nI go\nYou go\nWe go\nThey go\n\nI eat\nYou eat\nWe eat\nThey eat\n\nNo s at the end.\nThe verb stays simple and clean.",
+      "copy_vi": "Dùng động từ nguyên mẫu với I, you, we, they: I go, You go, We go, They go, I eat, You eat, We eat, They eat. Không thêm s ở cuối. Động từ luôn giữ nguyên.",
+      "keywords_en": [
+        "simple present",
+        "grammar",
+        "beginner"
+      ],
+      "keywords_vi": [
+        "hiện tại đơn",
+        "ngữ pháp",
+        "người mới"
+      ]
     },
     {
       "slug": "he-she-it-pattern",
-      "keywords_en": ["grammar", "he she it"],
-      "keywords_vi": ["ngữ pháp", "he she it"],
-      "copy": {
-        "en": "Add s for he, she, it:\n\nHe goes\nShe goes\nIt goes\n\nHe eats\nShe eats\nIt eats\n\nSay the s sound clearly.\nDo not drop it.\nIt shows who is doing the action.",
-        "vi": "Thêm s cho he, she, it: He goes, She goes, It goes, He eats, She eats, It eats. Phát âm rõ âm s. Đừng bỏ âm này. Nó cho biết ai đang thực hiện hành động."
-      },
-      "audio": "ef07_02_en.mp3"
+      "audio": "ef07_02_en.mp3",
+      "copy_en": "Add s for he, she, it:\n\nHe goes\nShe goes\nIt goes\n\nHe eats\nShe eats\nIt eats\n\nSay the s sound clearly.\nDo not drop it.\nIt shows who is doing the action.",
+      "copy_vi": "Thêm s cho he, she, it: He goes, She goes, It goes, He eats, She eats, It eats. Phát âm rõ âm s. Đừng bỏ âm này. Nó cho biết ai đang thực hiện hành động.",
+      "keywords_en": [
+        "grammar",
+        "he she it"
+      ],
+      "keywords_vi": [
+        "ngữ pháp",
+        "he she it"
+      ]
     },
     {
       "slug": "daily-routine-examples",
-      "keywords_en": ["examples", "daily life"],
-      "keywords_vi": ["ví dụ", "hằng ngày"],
-      "copy": {
-        "en": "Practice simple daily sentences:\n\nI go to work.\nI eat breakfast.\nI walk to school.\nHe goes to work.\nShe eats breakfast.\nHe walks to school.\n\nSay them slowly.\nFeel the difference between go and goes.",
-        "vi": "Hãy luyện các câu đơn giản hằng ngày: I go to work, I eat breakfast, I walk to school, He goes to work, She eats breakfast, He walks to school. Đọc chậm và cảm nhận sự khác nhau giữa go và goes."
-      },
-      "audio": "ef07_03_en.mp3"
+      "audio": "ef07_03_en.mp3",
+      "copy_en": "Practice simple daily sentences:\n\nI go to work.\nI eat breakfast.\nI walk to school.\nHe goes to work.\nShe eats breakfast.\nHe walks to school.\n\nSay them slowly.\nFeel the difference between go and goes.",
+      "copy_vi": "Hãy luyện các câu đơn giản hằng ngày: I go to work, I eat breakfast, I walk to school, He goes to work, She eats breakfast, He walks to school. Đọc chậm và cảm nhận sự khác nhau giữa go và goes.",
+      "keywords_en": [
+        "examples",
+        "daily life"
+      ],
+      "keywords_vi": [
+        "ví dụ",
+        "hằng ngày"
+      ]
     },
     {
       "slug": "negative-sentences",
-      "keywords_en": ["negative", "grammar"],
-      "keywords_vi": ["phủ định", "ngữ pháp"],
-      "copy": {
-        "en": "Use do not or does not:\n\nI do not go.\nYou do not eat.\nWe do not walk.\n\nHe does not go.\nShe does not eat.\nIt does not work.\n\nThe verb stays simple.\nDo not add s after does not.",
-        "vi": "Dùng do not hoặc does not: I do not go, You do not eat, We do not walk, He does not go, She does not eat, It does not work. Động từ giữ nguyên. Không thêm s sau does not."
-      },
-      "audio": "ef07_04_en.mp3"
+      "audio": "ef07_04_en.mp3",
+      "copy_en": "Use do not or does not:\n\nI do not go.\nYou do not eat.\nWe do not walk.\n\nHe does not go.\nShe does not eat.\nIt does not work.\n\nThe verb stays simple.\nDo not add s after does not.",
+      "copy_vi": "Dùng do not hoặc does not: I do not go, You do not eat, We do not walk, He does not go, She does not eat, It does not work. Động từ giữ nguyên. Không thêm s sau does not.",
+      "keywords_en": [
+        "negative",
+        "grammar"
+      ],
+      "keywords_vi": [
+        "phủ định",
+        "ngữ pháp"
+      ]
     },
     {
       "slug": "simple-questions",
-      "keywords_en": ["questions", "grammar"],
-      "keywords_vi": ["câu hỏi", "ngữ pháp"],
-      "copy": {
-        "en": "Use do or does at the beginning:\n\nDo you eat breakfast?\nDo they walk to school?\nDo we have time?\n\nDoes he eat breakfast?\nDoes she work here?\nDoes it rain today?\n\nKeep the verb simple.",
-        "vi": "Dùng do hoặc does ở đầu câu: Do you eat breakfast?, Do they walk to school?, Do we have time?, Does he eat breakfast?, Does she work here?, Does it rain today? Động từ luôn giữ nguyên."
-      },
-      "audio": "ef07_05_en.mp3"
+      "audio": "ef07_05_en.mp3",
+      "copy_en": "Use do or does at the beginning:\n\nDo you eat breakfast?\nDo they walk to school?\nDo we have time?\n\nDoes he eat breakfast?\nDoes she work here?\nDoes it rain today?\n\nKeep the verb simple.",
+      "copy_vi": "Dùng do hoặc does ở đầu câu: Do you eat breakfast?, Do they walk to school?, Do we have time?, Does he eat breakfast?, Does she work here?, Does it rain today? Động từ luôn giữ nguyên.",
+      "keywords_en": [
+        "questions",
+        "grammar"
+      ],
+      "keywords_vi": [
+        "câu hỏi",
+        "ngữ pháp"
+      ]
     },
     {
       "slug": "daily-simple-present-practice",
-      "keywords_en": ["practice", "habit"],
-      "keywords_vi": ["luyện tập", "thói quen"],
-      "copy": {
-        "en": "Practice three lines every day:\n\nI go\nHe goes\nI do not go\n\nSimple repetition helps you feel the pattern.\nSlow practice builds confidence.",
-        "vi": "Mỗi ngày hãy luyện ba câu: I go, He goes, I do not go. Lặp lại đơn giản giúp bạn cảm nhận mẫu câu. Luyện chậm sẽ tạo sự tự tin."
-      },
-      "audio": "ef07_06_en.mp3"
+      "audio": "ef07_06_en.mp3",
+      "copy_en": "Practice three lines every day:\n\nI go\nHe goes\nI do not go\n\nSimple repetition helps you feel the pattern.\nSlow practice builds confidence.",
+      "copy_vi": "Mỗi ngày hãy luyện ba câu: I go, He goes, I do not go. Lặp lại đơn giản giúp bạn cảm nhận mẫu câu. Luyện chậm sẽ tạo sự tự tin.",
+      "keywords_en": [
+        "practice",
+        "habit"
+      ],
+      "keywords_vi": [
+        "luyện tập",
+        "thói quen"
+      ]
     }
-  ]
+  ],
+  "room_essay": {
+    "en": "This room teaches the Simple Present, the first tense beginners need. You will learn how to use I, you, we, they with the base form, and how to add s or es for he, she, and it. The entries are slow and simple, with common daily examples. This tense helps you talk about routines, habits, and facts. Once you master these patterns, all future grammar becomes easier.",
+    "vi": "Phòng này dạy thì Hiện Tại Đơn, thì cơ bản đầu tiên cho người mới. Bạn sẽ học cách dùng I, you, we, they với động từ nguyên mẫu và cách thêm s hoặc es cho he, she, it. Các ví dụ đều chậm, đơn giản và quen thuộc. Thì này giúp bạn nói về thói quen, hoạt động hằng ngày và sự thật. Khi nắm được mẫu câu này, ngữ pháp sau sẽ dễ dàng hơn."
+  },
+  "safety_disclaimer": {
+    "en": "",
+    "vi": ""
+  },
+  "crisis_footer": {
+    "en": "",
+    "vi": ""
+  }
 }

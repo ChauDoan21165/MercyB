@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "schema_id": "relationship-healing-free",
+  "id": "relationship-healing-free",
+  "tier": "free",
+  "domain": "",
+  "description": {
+    "en": "Relationship Healing",
+    "vi": "Hàn Gắn Mối Quan Hệ"
+  },
+  "keywords": [
+    "bonding",
+    "communication",
+    "connection",
+    "emotional connection",
+    "empathy",
+    "listening",
+    "reliability",
+    "trust"
+  ],
+  "entries": [
+    {
+      "copy": {
+        "en": "Healing a relationship begins with open communication. Practice active listening to truly understand your partner’s feelings. Share your thoughts with honesty, not blame. Use calm, respectful dialogue to resolve conflict. Talk with a trusted friend for perspective, nurturing empathy and rebuilding closeness.",
+        "vi": "Hàn gắn một mối quan hệ bắt đầu bằng giao tiếp cởi mở. Hãy lắng nghe chủ động để thật sự hiểu cảm xúc của đối phương. Chia sẻ suy nghĩ một cách trung thực, không đổ lỗi. Dùng lời nói nhẹ nhàng, tôn trọng để giải quyết xung đột. Tâm sự với một người bạn đáng tin để có góc nhìn khác, nuôi dưỡng sự đồng cảm và gắn kết lại tình cảm."
+      },
+      "slug": "communication",
+      "tags": [
+        "communication",
+        "relationships"
+      ],
+      "audio": "relationship_healing_free_communication.mp3",
+      "keywords_en": [
+        "communication",
+        "listening",
+        "empathy"
+      ],
+      "keywords_vi": [
+        "giao tiếp",
+        "lắng nghe",
+        "đồng cảm"
+      ]
+    },
+    {
+      "copy": {
+        "en": "Trust is the heart of relationship healing. Be consistent, honest, and kind in your actions. Acknowledge past hurts with courage and commit to rebuilding trust slowly. Practice patience and reliability. Seek guidance from a counselor or friend to strengthen your connection with understanding and care.",
+        "vi": "Niềm tin là trái tim của việc hàn gắn mối quan hệ. Hãy nhất quán, trung thực và tử tế trong hành động của mình. Dũng cảm thừa nhận những tổn thương cũ và kiên nhẫn xây dựng lại niềm tin từng bước. Thực hành kiên nhẫn và đáng tin cậy. Tìm sự hướng dẫn từ cố vấn hoặc bạn bè để củng cố kết nối bằng sự thấu hiểu và quan tâm."
+      },
+      "slug": "trust-building",
+      "tags": [
+        "trust",
+        "relationships"
+      ],
+      "audio": "relationship_healing_free_trust_building.mp3",
+      "keywords_en": [
+        "trust",
+        "reliability",
+        "connection"
+      ],
+      "keywords_vi": [
+        "niềm tin",
+        "độ tin cậy",
+        "kết nối"
+      ]
+    },
+    {
+      "copy": {
+        "en": "Emotional connection restores love and understanding. Share your feelings openly to grow empathy. Spend quality time together—through hobbies, walks, or simple talks—to strengthen your bond. Listen without judgment to deepen trust. Join a support group or talk with a close friend to nurture warmth and connection.",
+        "vi": "Kết nối cảm xúc giúp khôi phục tình yêu và sự thấu hiểu. Hãy chia sẻ cảm xúc một cách cởi mở để nuôi dưỡng sự đồng cảm. Dành thời gian chất lượng bên nhau—qua sở thích chung, dạo chơi hay những cuộc trò chuyện giản dị—để củng cố mối gắn kết. Lắng nghe mà không phán xét để tăng niềm tin. Tham gia nhóm hỗ trợ hoặc trò chuyện với bạn thân để nuôi dưỡng sự ấm áp và kết nối."
+      },
+      "slug": "emotional-connection",
+      "tags": [
+        "connection",
+        "relationships"
+      ],
+      "audio": "relationship_healing_free_emotional_connection.mp3",
+      "keywords_en": [
+        "emotional connection",
+        "empathy",
+        "bonding"
+      ],
+      "keywords_vi": [
+        "kết nối cảm xúc",
+        "đồng cảm",
+        "gắn kết"
+      ]
+    }
+  ],
+  "room_essay": {
+    "en": "Practical guidance for healing relationships through communication and trust",
+    "vi": ""
+  },
+  "safety_disclaimer": {
+    "en": "",
+    "vi": ""
+  },
+  "crisis_footer": {
+    "en": "",
+    "vi": ""
+  }
+}

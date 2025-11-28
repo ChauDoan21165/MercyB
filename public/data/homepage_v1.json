@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "schema_id": "homepage_v1",
+  "id": "homepage_v1",
+  "tier": "free",
+  "domain": "",
+  "description": {
+    "en": "Mercy Blade Homepage",
+    "vi": "Trang Chủ Mercy Blade"
+  },
+  "keywords": [],
+  "entries": [],
+  "room_essay": {
+    "en": "",
+    "vi": ""
+  },
+  "safety_disclaimer": {
+    "en": "",
+    "vi": ""
+  },
+  "crisis_footer": {
+    "en": "",
+    "vi": ""
+  }
+}

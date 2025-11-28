@@ -1,75 +1,146 @@
 {
+  "schema_version": "1.0",
+  "schema_id": "english_foundation_ef12",
   "id": "english_foundation_ef12",
   "tier": "Free / Miễn phí",
-  "domain": "English Foundation",
-  "title": {
+  "domain": "",
+  "description": {
     "en": "EF-12 — First Short Stories",
     "vi": "EF-12 — Những Câu Chuyện Ngắn Đầu Tiên"
   },
-  "content": {
-    "en": "This room helps beginners read very short English stories. Each story has two to four simple sentences. The goal is not speed. The goal is calm understanding. These small stories train your eyes to follow English word order, notice simple grammar, and feel the rhythm of real language. Read slowly and enjoy the meaning.",
-    "vi": "Phòng này giúp người mới đọc những câu chuyện tiếng Anh rất ngắn. Mỗi câu chuyện có hai đến bốn câu đơn giản. Mục tiêu không phải là đọc nhanh mà là hiểu nhẹ nhàng. Những câu chuyện nhỏ này giúp bạn quen với cách sắp xếp từ trong tiếng Anh, nhận ra ngữ pháp cơ bản và cảm nhận nhịp điệu ngôn ngữ tự nhiên. Hãy đọc chậm và thưởng thức ý nghĩa."
-  },
+  "keywords": [
+    "story",
+    "cat",
+    "beginner",
+    "bus",
+    "everyday",
+    "rain",
+    "weather",
+    "shop",
+    "daily life",
+    "bird",
+    "nature",
+    "habit",
+    "reading",
+    "câu chuyện",
+    "con mèo",
+    "người mới",
+    "xe buýt",
+    "đời sống",
+    "mưa",
+    "thời tiết",
+    "cửa hàng",
+    "chim",
+    "thiên nhiên",
+    "thói quen",
+    "đọc"
+  ],
   "entries": [
     {
       "slug": "story-the-little-cat",
-      "keywords_en": ["story", "cat", "beginner"],
-      "keywords_vi": ["câu chuyện", "con mèo", "người mới"],
-      "copy": {
-        "en": "The cat is small. It sits in the sun. It is happy. It sleeps slowly.\nShort and simple. Feel the rhythm of each sentence.",
-        "vi": "Con mèo nhỏ. Nó ngồi dưới nắng. Nó rất vui. Nó ngủ từ từ. Ngắn gọn và đơn giản. Hãy cảm nhận nhịp từng câu."
-      },
-      "audio": "ef12_01_en.mp3"
+      "audio": "ef12_01_en.mp3",
+      "copy_en": "The cat is small. It sits in the sun. It is happy. It sleeps slowly.\nShort and simple. Feel the rhythm of each sentence.",
+      "copy_vi": "Con mèo nhỏ. Nó ngồi dưới nắng. Nó rất vui. Nó ngủ từ từ. Ngắn gọn và đơn giản. Hãy cảm nhận nhịp từng câu.",
+      "keywords_en": [
+        "story",
+        "cat",
+        "beginner"
+      ],
+      "keywords_vi": [
+        "câu chuyện",
+        "con mèo",
+        "người mới"
+      ]
     },
     {
       "slug": "story-the-bus-stop",
-      "keywords_en": ["story", "bus", "everyday"],
-      "keywords_vi": ["câu chuyện", "xe buýt", "đời sống"],
-      "copy": {
-        "en": "I am at the bus stop. The bus is late. Two people are waiting. We are tired but calm.",
-        "vi": "Tôi đang ở trạm xe buýt. Xe đến trễ. Hai người đang chờ. Chúng tôi mệt nhưng vẫn bình tĩnh."
-      },
-      "audio": "ef12_02_en.mp3"
+      "audio": "ef12_02_en.mp3",
+      "copy_en": "I am at the bus stop. The bus is late. Two people are waiting. We are tired but calm.",
+      "copy_vi": "Tôi đang ở trạm xe buýt. Xe đến trễ. Hai người đang chờ. Chúng tôi mệt nhưng vẫn bình tĩnh.",
+      "keywords_en": [
+        "story",
+        "bus",
+        "everyday"
+      ],
+      "keywords_vi": [
+        "câu chuyện",
+        "xe buýt",
+        "đời sống"
+      ]
     },
     {
       "slug": "story-the-rainy-morning",
-      "keywords_en": ["story", "rain", "weather"],
-      "keywords_vi": ["câu chuyện", "mưa", "thời tiết"],
-      "copy": {
-        "en": "It is raining. I open my umbrella. A woman smiles at me. We walk slowly down the street.",
-        "vi": "Trời đang mưa. Tôi mở ô. Một người phụ nữ mỉm cười với tôi. Chúng tôi đi chậm trên con đường."
-      },
-      "audio": "ef12_03_en.mp3"
+      "audio": "ef12_03_en.mp3",
+      "copy_en": "It is raining. I open my umbrella. A woman smiles at me. We walk slowly down the street.",
+      "copy_vi": "Trời đang mưa. Tôi mở ô. Một người phụ nữ mỉm cười với tôi. Chúng tôi đi chậm trên con đường.",
+      "keywords_en": [
+        "story",
+        "rain",
+        "weather"
+      ],
+      "keywords_vi": [
+        "câu chuyện",
+        "mưa",
+        "thời tiết"
+      ]
     },
     {
       "slug": "story-the-little-shop",
-      "keywords_en": ["story", "shop", "daily life"],
-      "keywords_vi": ["câu chuyện", "cửa hàng", "đời sống"],
-      "copy": {
-        "en": "I go to the small shop. The shop is clean and bright. I buy bread and milk. The man says thank you.",
-        "vi": "Tôi đi đến cửa hàng nhỏ. Cửa hàng sạch và sáng. Tôi mua bánh mì và sữa. Người bán nói cảm ơn."
-      },
-      "audio": "ef12_04_en.mp3"
+      "audio": "ef12_04_en.mp3",
+      "copy_en": "I go to the small shop. The shop is clean and bright. I buy bread and milk. The man says thank you.",
+      "copy_vi": "Tôi đi đến cửa hàng nhỏ. Cửa hàng sạch và sáng. Tôi mua bánh mì và sữa. Người bán nói cảm ơn.",
+      "keywords_en": [
+        "story",
+        "shop",
+        "daily life"
+      ],
+      "keywords_vi": [
+        "câu chuyện",
+        "cửa hàng",
+        "đời sống"
+      ]
     },
     {
       "slug": "story-the-red-bird",
-      "keywords_en": ["story", "bird", "nature"],
-      "keywords_vi": ["câu chuyện", "chim", "thiên nhiên"],
-      "copy": {
-        "en": "There is a red bird in the tree. It sings softly. I stop and listen. The sound is beautiful.",
-        "vi": "Có một con chim đỏ trên cây. Nó hót rất nhẹ. Tôi dừng lại lắng nghe. Âm thanh thật đẹp."
-      },
-      "audio": "ef12_05_en.mp3"
+      "audio": "ef12_05_en.mp3",
+      "copy_en": "There is a red bird in the tree. It sings softly. I stop and listen. The sound is beautiful.",
+      "copy_vi": "Có một con chim đỏ trên cây. Nó hót rất nhẹ. Tôi dừng lại lắng nghe. Âm thanh thật đẹp.",
+      "keywords_en": [
+        "story",
+        "bird",
+        "nature"
+      ],
+      "keywords_vi": [
+        "câu chuyện",
+        "chim",
+        "thiên nhiên"
+      ]
     },
     {
       "slug": "story-daily-reading-habit",
-      "keywords_en": ["habit", "reading"],
-      "keywords_vi": ["thói quen", "đọc"],
-      "copy": {
-        "en": "Read one short story each day. Read slowly. Enjoy the meaning. Small stories help you grow in a calm, gentle way.",
-        "vi": "Mỗi ngày hãy đọc một câu chuyện ngắn. Đọc chậm. Thưởng thức ý nghĩa. Những câu chuyện nhỏ giúp bạn tiến bộ một cách nhẹ nhàng và tự nhiên."
-      },
-      "audio": "ef12_06_en.mp3"
+      "audio": "ef12_06_en.mp3",
+      "copy_en": "Read one short story each day. Read slowly. Enjoy the meaning. Small stories help you grow in a calm, gentle way.",
+      "copy_vi": "Mỗi ngày hãy đọc một câu chuyện ngắn. Đọc chậm. Thưởng thức ý nghĩa. Những câu chuyện nhỏ giúp bạn tiến bộ một cách nhẹ nhàng và tự nhiên.",
+      "keywords_en": [
+        "habit",
+        "reading"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "đọc"
+      ]
     }
-  ]
+  ],
+  "room_essay": {
+    "en": "This room helps beginners read very short English stories. Each story has two to four simple sentences. The goal is not speed. The goal is calm understanding. These small stories train your eyes to follow English word order, notice simple grammar, and feel the rhythm of real language. Read slowly and enjoy the meaning.",
+    "vi": "Phòng này giúp người mới đọc những câu chuyện tiếng Anh rất ngắn. Mỗi câu chuyện có hai đến bốn câu đơn giản. Mục tiêu không phải là đọc nhanh mà là hiểu nhẹ nhàng. Những câu chuyện nhỏ này giúp bạn quen với cách sắp xếp từ trong tiếng Anh, nhận ra ngữ pháp cơ bản và cảm nhận nhịp điệu ngôn ngữ tự nhiên. Hãy đọc chậm và thưởng thức ý nghĩa."
+  },
+  "safety_disclaimer": {
+    "en": "",
+    "vi": ""
+  },
+  "crisis_footer": {
+    "en": "",
+    "vi": ""
+  }
 }

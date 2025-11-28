@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "schema_id": "obesity",
+  "id": "obesity",
+  "tier": "free",
+  "domain": "",
+  "description": {
+    "en": "Obesity Management",
+    "vi": "Quản Lý Béo Phì"
+  },
+  "keywords": [
+    "obesity",
+    "weight",
+    "béo phì",
+    "cân nặng"
+  ],
+  "entries": [],
+  "room_essay": {
+    "en": "Evidence-based guidance for healthy weight management.",
+    "vi": "Hướng dẫn dựa trên bằng chứng để quản lý cân nặng khỏe mạnh."
+  },
+  "safety_disclaimer": {
+    "en": "",
+    "vi": ""
+  },
+  "crisis_footer": {
+    "en": "",
+    "vi": ""
+  }
+}

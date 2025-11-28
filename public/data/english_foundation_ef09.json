@@ -1,75 +1,133 @@
 {
+  "schema_version": "1.0",
+  "schema_id": "english_foundation_ef09",
   "id": "english_foundation_ef09",
   "tier": "Free / Miễn phí",
-  "domain": "English Foundation",
-  "title": {
+  "domain": "",
+  "description": {
     "en": "EF-09 — There Is / There Are",
     "vi": "EF-09 — There Is / There Are"
   },
-  "content": {
-    "en": "This room teaches beginners how to describe what exists around them using there is and there are. These simple patterns help you talk about rooms, objects, places, and daily situations. You will practice short, clear sentences that build a strong foundation for speaking and writing.",
-    "vi": "Phòng này dạy người mới cách miêu tả những gì có xung quanh bằng there is và there are. Các mẫu câu đơn giản này giúp bạn nói về phòng ốc, đồ vật, địa điểm và những tình huống hằng ngày. Bạn sẽ luyện các câu ngắn, rõ ràng để xây dựng nền tảng vững chắc cho nói và viết."
-  },
+  "keywords": [
+    "there is",
+    "singular",
+    "there are",
+    "plural",
+    "rooms",
+    "objects",
+    "places",
+    "outdoors",
+    "questions",
+    "grammar",
+    "practice",
+    "daily",
+    "số ít",
+    "số nhiều",
+    "phòng",
+    "đồ vật",
+    "địa điểm",
+    "ngoài trời",
+    "câu hỏi",
+    "ngữ pháp",
+    "luyện tập",
+    "hằng ngày"
+  ],
   "entries": [
     {
       "slug": "there-is-singular",
-      "keywords_en": ["there is", "singular"],
-      "keywords_vi": ["there is", "số ít"],
-      "copy": {
-        "en": "Use there is for one thing.\n\nThere is a book.\nThere is a pen.\nThere is a chair.\nThere is a light.\nThere is a cat.\n\nSay each line slowly.\nKeep the ending sounds clear.",
-        "vi": "Dùng there is cho một vật.\nVí dụ: There is a book, There is a pen, There is a chair, There is a light, There is a cat. Đọc chậm và giữ âm cuối rõ ràng."
-      },
-      "audio": "ef09_01_en.mp3"
+      "audio": "ef09_01_en.mp3",
+      "copy_en": "Use there is for one thing.\n\nThere is a book.\nThere is a pen.\nThere is a chair.\nThere is a light.\nThere is a cat.\n\nSay each line slowly.\nKeep the ending sounds clear.",
+      "copy_vi": "Dùng there is cho một vật.\nVí dụ: There is a book, There is a pen, There is a chair, There is a light, There is a cat. Đọc chậm và giữ âm cuối rõ ràng.",
+      "keywords_en": [
+        "there is",
+        "singular"
+      ],
+      "keywords_vi": [
+        "there is",
+        "số ít"
+      ]
     },
     {
       "slug": "there-are-plural",
-      "keywords_en": ["there are", "plural"],
-      "keywords_vi": ["there are", "số nhiều"],
-      "copy": {
-        "en": "Use there are for two or more things.\n\nThere are books.\nThere are chairs.\nThere are dogs.\nThere are people.\nThere are flowers.\n\nDo not drop the s at the end.",
-        "vi": "Dùng there are cho hai vật trở lên: There are books, There are chairs, There are dogs, There are people, There are flowers. Đừng bỏ âm s ở cuối."
-      },
-      "audio": "ef09_02_en.mp3"
+      "audio": "ef09_02_en.mp3",
+      "copy_en": "Use there are for two or more things.\n\nThere are books.\nThere are chairs.\nThere are dogs.\nThere are people.\nThere are flowers.\n\nDo not drop the s at the end.",
+      "copy_vi": "Dùng there are cho hai vật trở lên: There are books, There are chairs, There are dogs, There are people, There are flowers. Đừng bỏ âm s ở cuối.",
+      "keywords_en": [
+        "there are",
+        "plural"
+      ],
+      "keywords_vi": [
+        "there are",
+        "số nhiều"
+      ]
     },
     {
       "slug": "rooms-and-objects",
-      "keywords_en": ["rooms", "objects"],
-      "keywords_vi": ["phòng", "đồ vật"],
-      "copy": {
-        "en": "Describe a room:\n\nThere is a table.\nThere are two chairs.\nThere is a window.\nThere are books on the desk.\nThere is a lamp.\n\nShort sentences help build clarity.",
-        "vi": "Hãy miêu tả một căn phòng: There is a table, There are two chairs, There is a window, There are books on the desk, There is a lamp. Câu ngắn giúp bạn nói rõ hơn."
-      },
-      "audio": "ef09_03_en.mp3"
+      "audio": "ef09_03_en.mp3",
+      "copy_en": "Describe a room:\n\nThere is a table.\nThere are two chairs.\nThere is a window.\nThere are books on the desk.\nThere is a lamp.\n\nShort sentences help build clarity.",
+      "copy_vi": "Hãy miêu tả một căn phòng: There is a table, There are two chairs, There is a window, There are books on the desk, There is a lamp. Câu ngắn giúp bạn nói rõ hơn.",
+      "keywords_en": [
+        "rooms",
+        "objects"
+      ],
+      "keywords_vi": [
+        "phòng",
+        "đồ vật"
+      ]
     },
     {
       "slug": "places-and-outdoors",
-      "keywords_en": ["places", "outdoors"],
-      "keywords_vi": ["địa điểm", "ngoài trời"],
-      "copy": {
-        "en": "Describe places outside:\n\nThere is a park.\nThere are trees.\nThere is a bus stop.\nThere are many people.\nThere is a small shop.\n\nObserve your surroundings slowly.",
-        "vi": "Miêu tả nơi ngoài trời: There is a park, There are trees, There is a bus stop, There are many people, There is a small shop. Hãy quan sát xung quanh một cách chậm rãi."
-      },
-      "audio": "ef09_04_en.mp3"
+      "audio": "ef09_04_en.mp3",
+      "copy_en": "Describe places outside:\n\nThere is a park.\nThere are trees.\nThere is a bus stop.\nThere are many people.\nThere is a small shop.\n\nObserve your surroundings slowly.",
+      "copy_vi": "Miêu tả nơi ngoài trời: There is a park, There are trees, There is a bus stop, There are many people, There is a small shop. Hãy quan sát xung quanh một cách chậm rãi.",
+      "keywords_en": [
+        "places",
+        "outdoors"
+      ],
+      "keywords_vi": [
+        "địa điểm",
+        "ngoài trời"
+      ]
     },
     {
       "slug": "questions-with-there-is-are",
-      "keywords_en": ["questions", "grammar"],
-      "keywords_vi": ["câu hỏi", "ngữ pháp"],
-      "copy": {
-        "en": "Ask simple questions:\n\nIs there a bathroom?\nIs there a bus?\nAre there chairs?\nAre there people?\n\nAnswer slowly:\nYes, there is.\nYes, there are.\nNo, there is not.\nNo, there are not.",
-        "vi": "Đặt câu hỏi đơn giản: Is there a bathroom?, Is there a bus?, Are there chairs?, Are there people? Trả lời chậm rãi: Yes, there is; Yes, there are; No, there is not; No, there are not."
-      },
-      "audio": "ef09_05_en.mp3"
+      "audio": "ef09_05_en.mp3",
+      "copy_en": "Ask simple questions:\n\nIs there a bathroom?\nIs there a bus?\nAre there chairs?\nAre there people?\n\nAnswer slowly:\nYes, there is.\nYes, there are.\nNo, there is not.\nNo, there are not.",
+      "copy_vi": "Đặt câu hỏi đơn giản: Is there a bathroom?, Is there a bus?, Are there chairs?, Are there people? Trả lời chậm rãi: Yes, there is; Yes, there are; No, there is not; No, there are not.",
+      "keywords_en": [
+        "questions",
+        "grammar"
+      ],
+      "keywords_vi": [
+        "câu hỏi",
+        "ngữ pháp"
+      ]
     },
     {
       "slug": "daily-there-is-are-practice",
-      "keywords_en": ["practice", "daily"],
-      "keywords_vi": ["luyện tập", "hằng ngày"],
-      "copy": {
-        "en": "Practice three sentences each day:\n\nThere is...\nThere are...\nIs there...\n\nFill in anything around you.\nDaily practice builds confidence.",
-        "vi": "Mỗi ngày hãy luyện ba câu: There is..., There are..., Is there... Hãy điền bất cứ thứ gì bạn thấy xung quanh. Luyện đều sẽ giúp bạn tự tin hơn."
-      },
-      "audio": "ef09_06_en.mp3"
+      "audio": "ef09_06_en.mp3",
+      "copy_en": "Practice three sentences each day:\n\nThere is...\nThere are...\nIs there...\n\nFill in anything around you.\nDaily practice builds confidence.",
+      "copy_vi": "Mỗi ngày hãy luyện ba câu: There is..., There are..., Is there... Hãy điền bất cứ thứ gì bạn thấy xung quanh. Luyện đều sẽ giúp bạn tự tin hơn.",
+      "keywords_en": [
+        "practice",
+        "daily"
+      ],
+      "keywords_vi": [
+        "luyện tập",
+        "hằng ngày"
+      ]
     }
-  ]
+  ],
+  "room_essay": {
+    "en": "This room teaches beginners how to describe what exists around them using there is and there are. These simple patterns help you talk about rooms, objects, places, and daily situations. You will practice short, clear sentences that build a strong foundation for speaking and writing.",
+    "vi": "Phòng này dạy người mới cách miêu tả những gì có xung quanh bằng there is và there are. Các mẫu câu đơn giản này giúp bạn nói về phòng ốc, đồ vật, địa điểm và những tình huống hằng ngày. Bạn sẽ luyện các câu ngắn, rõ ràng để xây dựng nền tảng vững chắc cho nói và viết."
+  },
+  "safety_disclaimer": {
+    "en": "",
+    "vi": ""
+  },
+  "crisis_footer": {
+    "en": "",
+    "vi": ""
+  }
 }

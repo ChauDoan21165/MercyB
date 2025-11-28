@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "schema_id": "finance-calm-money-clear-future-preview-free",
+  "id": "finance-calm-money-clear-future-preview-free",
+  "tier": "free",
+  "domain": "",
+  "description": {
+    "en": "Calm Money, Clear Future – Preview",
+    "vi": "Tiền Bình An, Tương Lai Rõ Ràng – Phòng Giới Thiệu"
+  },
+  "keywords": [
+    "calm money",
+    "clear future",
+    "finance",
+    "preview"
+  ],
+  "entries": [
+    {
+      "copy": {
+        "en": "This Free preview room gives you a calm doorway into the full Calm Money, Clear Future series in VIP3. Many people feel tension in their chest or jaw every time they think about money. Before we talk about numbers, we help your nervous system feel a little safer, so money becomes something you can look at with curiosity instead of shame.\n\nIn the first VIP3 room, we focus on your nervous system and money anxiety. You learn how breath, posture, and simple body checks can turn financial fear into a more grounded state. The second room covers money basics: income, spending, debt, and safety cushions, explained in clear, gentle language so you finally feel you understand what is going on.\n\nNext, the series guides you through growing money step by step, then building simple systems so you do not have to think about money all day. Later rooms look at growing bigger through career or business, and finally, creating a sense of legacy and peace, where money supports your values instead of controlling your life.\n\nAlong the way, other VIP3 rooms like See Your Money Clearly and Finance Glory help you look honestly at your numbers while still being kind to yourself. This Free preview is your soft landing: one audio, one reflection, and an invitation. If you feel even a little more hopeful or relaxed about money after this, the deeper VIP3 rooms are waiting for you.",
+        "vi": "Phòng Miễn phí này là cánh cửa nhẹ nhàng dẫn vào toàn bộ chuỗi Tiền Bình An, Tương Lai Rõ Ràng ở VIP3. Rất nhiều người thấy căng ngực, cứng hàm mỗi lần nghĩ đến tiền. Trước khi nói về con số, chúng ta giúp hệ thần kinh của bạn cảm thấy an toàn hơn một chút, để tiền không còn là nỗi xấu hổ mà trở thành điều bạn có thể nhìn thẳng với sự tò mò và dịu dàng.\n\nTrong phòng VIP3 đầu tiên, trọng tâm là hệ thần kinh và nỗi lo tài chính: bạn học cách dùng hơi thở, tư thế và những bước tự kiểm tra cơ thể đơn giản để chuyển nỗi sợ tiền thành trạng thái vững hơn. Phòng thứ hai nói về nền tảng tiền bạc: thu nhập, chi tiêu, nợ và quỹ an toàn, được giải thích bằng ngôn ngữ dễ hiểu, chậm rãi, để bạn cuối cùng cũng cảm thấy mình nắm được chuyện gì đang diễn ra.\n\nTiếp theo, chuỗi bài dẫn bạn đi từng bước trên hành trình làm tiền lớn lên, rồi xây những hệ thống đơn giản để bạn không phải nghĩ về tiền suốt cả ngày. Những phòng sau chạm tới việc mở rộng hơn qua nghề nghiệp hoặc kinh doanh, và cuối cùng là cảm giác về di sản và bình yên, nơi tiền phục vụ giá trị sống của bạn thay vì điều khiển bạn.\n\nSong song đó, các phòng VIP3 khác như Nhìn Rõ Tiền Bạc và Finance Glory giúp bạn nhìn thẳng vào con số mà vẫn giữ được sự tử tế với chính mình. Phòng giới thiệu Miễn phí này là điểm chạm mềm: một audio, một đoạn suy ngẫm và một lời mời. Nếu sau khi nghe, bạn thấy nhẹ lòng hoặc hy vọng hơn về tiền dù chỉ một chút, thì những phòng VIP3 sâu hơn đang chờ sẵn bạn khám phá."
+      },
+      "slug": "preview",
+      "tags": [
+        "preview",
+        "finance",
+        "vip3-intro"
+      ],
+      "audio": "finance_free.mp3",
+      "keywords_en": [
+        "preview",
+        "finance",
+        "calm money",
+        "clear future"
+      ],
+      "keywords_vi": [
+        "giới thiệu",
+        "tài chính",
+        "tiền bình an",
+        "tương lai rõ ràng"
+      ]
+    }
+  ],
+  "room_essay": {
+    "en": "A gentle preview of the Calm Money, Clear Future finance series, helping you see money with less anxiety and more clarity.",
+    "vi": "Phòng giới thiệu nhẹ nhàng về chuỗi Tiền Bình An, Tương Lai Rõ Ràng, giúp bạn nhìn lại tài chính với ít lo âu hơn và nhiều rõ ràng hơn."
+  },
+  "safety_disclaimer": {
+    "en": "",
+    "vi": ""
+  },
+  "crisis_footer": {
+    "en": "",
+    "vi": ""
+  }
+}

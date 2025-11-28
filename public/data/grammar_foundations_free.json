@@ -1,80 +1,177 @@
 {
-  "tier":"Free / Miễn phí",
-  "id":"grammar_foundations_free",
-  "title":{
-    "en":"Grammar Foundations: The Essentials",
-    "vi":"Nền Tảng Ngữ Pháp: Những Điều Quan Trọng Nhất"
+  "schema_version": "1.0",
+  "schema_id": "grammar_foundations_free",
+  "id": "grammar_foundations_free",
+  "tier": "free",
+  "domain": "",
+  "description": {
+    "en": "Grammar Foundations: The Essentials",
+    "vi": "Nền Tảng Ngữ Pháp: Những Điều Quan Trọng Nhất"
   },
-  "content":{
-    "en":"This free foundation room introduces the essential grammar systems that make English clear, easy, and confident from day one. You will learn the three core tenses for daily communication, master the be verb as your sentence foundation, understand subject-verb agreement, build correct questions naturally, use basic connectors to link ideas, and recognize word order patterns. These six essentials help beginners avoid confusion, build correct habits early, and understand the patterns behind everyday communication—not by memorizing complex rules but by practicing high-frequency structures that work immediately.",
-    "vi":"Phòng nền tảng miễn phí này giới thiệu các hệ thống ngữ pháp thiết yếu giúp tiếng Anh rõ ràng, dễ hiểu và tự tin ngay từ ngày đầu. Bạn sẽ học ba thì cốt lõi cho giao tiếp hằng ngày, làm chủ động từ be làm nền móng câu, hiểu chia động từ theo chủ ngữ, tạo câu hỏi đúng một cách tự nhiên, dùng liên từ cơ bản để nối ý, và nhận biết trật tự từ trong câu. Sáu nền tảng này giúp người mới tránh rối, tạo thói quen đúng từ đầu và hiểu các mẫu câu trong giao tiếp hằng ngày—không bằng học thuộc quy tắc phức tạp mà bằng luyện các cấu trúc thông dụng có hiệu quả ngay."
-  },
-  "entries":[
+  "keywords": [
+    "agreement",
+    "am/is/are",
+    "basic",
+    "basics",
+    "be",
+    "correct sentences",
+    "do/does",
+    "grammar basics",
+    "he/she/they",
+    "in/on/at",
+    "prepositions",
+    "pronouns",
+    "questions",
+    "reference",
+    "sentences",
+    "tenses",
+    "time",
+    "wh-"
+  ],
+  "entries": [
     {
-      "slug":"simple-tenses",
-      "keywords_en":["tenses","basic","time"],
-      "keywords_vi":["thì","cơ bản","thời gian"],
-      "copy":{
-        "en":"English has many tenses, but beginners only need three to communicate clearly: present simple, present continuous, and past simple. Present simple is for routines: “I work,” “She studies.” Present continuous is for now: “I am eating,” “They are waiting.” Past simple expresses finished actions: “I visited my friend.” The key is focusing on time words like today, usually, now, yesterday. These guide your tense choice. With just these three, you can describe your day, talk about plans, and share experiences without worrying about advanced grammar. Start simple and build upward naturally.",
-        "vi":"Tiếng Anh có nhiều thì, nhưng người mới chỉ cần ba thì để nói rõ ràng: hiện tại đơn, hiện tại tiếp diễn và quá khứ đơn. Hiện tại đơn dùng cho thói quen: “I work”, “She studies.” Hiện tại tiếp diễn dùng cho bây giờ: “I am eating”, “They are waiting.” Quá khứ đơn nói về việc đã xảy ra: “I visited my friend.” Hãy chú ý từ chỉ thời gian như today, usually, now, yesterday. Chúng giúp bạn chọn thì đúng. Chỉ với ba thì này, bạn đã có thể mô tả ngày của mình, nói kế hoạch và chia sẻ trải nghiệm mà không cần ngữ pháp phức tạp."
+      "copy": {
+        "en": "English has many tenses, but beginners only need three to communicate clearly: present simple, present continuous, and past simple. Present simple is for routines: “I work,” “She studies.” Present continuous is for now: “I am eating,” “They are waiting.” Past simple expresses finished actions: “I visited my friend.” The key is focusing on time words like today, usually, now, yesterday. These guide your tense choice. With just these three, you can describe your day, talk about plans, and share experiences without worrying about advanced grammar. Start simple and build upward naturally.",
+        "vi": "Tiếng Anh có nhiều thì, nhưng người mới chỉ cần ba thì để nói rõ ràng: hiện tại đơn, hiện tại tiếp diễn và quá khứ đơn. Hiện tại đơn dùng cho thói quen: “I work”, “She studies.” Hiện tại tiếp diễn dùng cho bây giờ: “I am eating”, “They are waiting.” Quá khứ đơn nói về việc đã xảy ra: “I visited my friend.” Hãy chú ý từ chỉ thời gian như today, usually, now, yesterday. Chúng giúp bạn chọn thì đúng. Chỉ với ba thì này, bạn đã có thể mô tả ngày của mình, nói kế hoạch và chia sẻ trải nghiệm mà không cần ngữ pháp phức tạp."
       },
-      "tags":["tenses","beginner"],
-      "audio":"free_grammar_tenses.mp3"
+      "slug": "simple-tenses",
+      "tags": [
+        "tenses",
+        "beginner"
+      ],
+      "audio": "free_grammar_tenses.mp3",
+      "keywords_en": [
+        "tenses",
+        "basic",
+        "time"
+      ],
+      "keywords_vi": [
+        "thì",
+        "cơ bản",
+        "thời gian"
+      ]
     },
     {
-      "slug":"be-verb-basics",
-      "keywords_en":["be","am/is/are","sentences"],
-      "keywords_vi":["động từ be","am/is/are","câu đơn"],
-      "copy":{
-        "en":"The verb “be” is the foundation of basic English. You use am, is, and are to describe people, things, feelings, and places. “I am happy,” “She is a teacher,” “They are at home.” Many beginner mistakes come from forgetting the be verb. Think of it as the “bridge” that connects the subject and the description. Practice by making simple sentences about yourself, your family, and your surroundings. The more automatic am/is/are becomes, the easier it is to build longer and clearer sentences later.",
-        "vi":"Động từ “be” là nền tảng của tiếng Anh cơ bản. Bạn dùng am, is, are để mô tả người, vật, cảm xúc và nơi chốn. “I am happy”, “She is a teacher”, “They are at home.” Nhiều lỗi của người mới đến từ việc quên động từ be. Hãy xem nó như “cây cầu” nối chủ ngữ và phần mô tả. Luyện bằng cách tạo câu đơn giản về bản thân, gia đình và xung quanh bạn. Khi am/is/are trở nên tự động, việc tạo câu dài và rõ ràng sẽ dễ hơn rất nhiều."
+      "copy": {
+        "en": "The verb “be” is the foundation of basic English. You use am, is, and are to describe people, things, feelings, and places. “I am happy,” “She is a teacher,” “They are at home.” Many beginner mistakes come from forgetting the be verb. Think of it as the “bridge” that connects the subject and the description. Practice by making simple sentences about yourself, your family, and your surroundings. The more automatic am/is/are becomes, the easier it is to build longer and clearer sentences later.",
+        "vi": "Động từ “be” là nền tảng của tiếng Anh cơ bản. Bạn dùng am, is, are để mô tả người, vật, cảm xúc và nơi chốn. “I am happy”, “She is a teacher”, “They are at home.” Nhiều lỗi của người mới đến từ việc quên động từ be. Hãy xem nó như “cây cầu” nối chủ ngữ và phần mô tả. Luyện bằng cách tạo câu đơn giản về bản thân, gia đình và xung quanh bạn. Khi am/is/are trở nên tự động, việc tạo câu dài và rõ ràng sẽ dễ hơn rất nhiều."
       },
-      "tags":["be-verb","foundation"],
-      "audio":"free_grammar_beverb.mp3"
+      "slug": "be-verb-basics",
+      "tags": [
+        "be-verb",
+        "foundation"
+      ],
+      "audio": "free_grammar_beverb.mp3",
+      "keywords_en": [
+        "be",
+        "am/is/are",
+        "sentences"
+      ],
+      "keywords_vi": [
+        "động từ be",
+        "am/is/are",
+        "câu đơn"
+      ]
     },
     {
-      "slug":"subject-verb-agreement",
-      "keywords_en":["agreement","grammar basics","correct sentences"],
-      "keywords_vi":["chia động từ","ngữ pháp cơ bản","câu đúng"],
-      "copy":{
-        "en":"Subject–verb agreement means matching the verb with the subject. In simple terms: add “s” for he/she/it in present simple. “He works,” “She likes coffee,” “It rains often.” For I/you/we/they, do not add “s”: “They play,” “We cook.” This small rule greatly improves clarity. A quick trick: if the subject is one person or one thing, the verb usually takes “s.” If the subject is plural or “I/you,” the verb stays simple. Mastering this rule early prevents many common mistakes and makes your English sound more natural.",
-        "vi":"Chia động từ nghĩa là động từ phải phù hợp với chủ ngữ. Nói đơn giản: thêm “s” với he/she/it ở hiện tại đơn. “He works”, “She likes coffee”, “It rains often.” Với I/you/we/they, không thêm “s”: “They play”, “We cook.” Quy tắc nhỏ này giúp câu rõ ràng hơn nhiều. Mẹo nhanh: nếu chủ ngữ là một người hoặc một vật, động từ thường có “s.” Nếu chủ ngữ số nhiều hoặc là “I/you,” động từ để nguyên. Làm chủ quy tắc này sớm giúp bạn tránh lỗi phổ biến và nói tự nhiên hơn."
+      "copy": {
+        "en": "Subject–verb agreement means matching the verb with the subject. In simple terms: add “s” for he/she/it in present simple. “He works,” “She likes coffee,” “It rains often.” For I/you/we/they, do not add “s”: “They play,” “We cook.” This small rule greatly improves clarity. A quick trick: if the subject is one person or one thing, the verb usually takes “s.” If the subject is plural or “I/you,” the verb stays simple. Mastering this rule early prevents many common mistakes and makes your English sound more natural.",
+        "vi": "Chia động từ nghĩa là động từ phải phù hợp với chủ ngữ. Nói đơn giản: thêm “s” với he/she/it ở hiện tại đơn. “He works”, “She likes coffee”, “It rains often.” Với I/you/we/they, không thêm “s”: “They play”, “We cook.” Quy tắc nhỏ này giúp câu rõ ràng hơn nhiều. Mẹo nhanh: nếu chủ ngữ là một người hoặc một vật, động từ thường có “s.” Nếu chủ ngữ số nhiều hoặc là “I/you,” động từ để nguyên. Làm chủ quy tắc này sớm giúp bạn tránh lỗi phổ biến và nói tự nhiên hơn."
       },
-      "tags":["agreement","basics"],
-      "audio":"free_grammar_agreement.mp3"
+      "slug": "subject-verb-agreement",
+      "tags": [
+        "agreement",
+        "basics"
+      ],
+      "audio": "free_grammar_agreement.mp3",
+      "keywords_en": [
+        "agreement",
+        "grammar basics",
+        "correct sentences"
+      ],
+      "keywords_vi": [
+        "chia động từ",
+        "ngữ pháp cơ bản",
+        "câu đúng"
+      ]
     },
     {
-      "slug":"basic-question-forms",
-      "keywords_en":["questions","do/does","wh-"],
-      "keywords_vi":["câu hỏi","do/does","từ hỏi"],
-      "copy":{
-        "en":"To make clear questions in English, use do/does for most verbs. “Do you like music?” “Does she work here?” For questions about details, use WH-words: what, when, where, why, who, how. “Where do you live?” “What does he want?” Remember: in questions, the main verb does NOT take “s.” We say: “Does he play?” not “Does he plays?” Practice forming questions about daily life—habits, routines, preferences. Good question structure makes conversations easier and helps you sound polite and confident.",
-        "vi":"Để tạo câu hỏi rõ ràng, hãy dùng do/does với hầu hết động từ. “Do you like music?” “Does she work here?” Với câu hỏi chi tiết, dùng từ hỏi what, when, where, why, who, how. “Where do you live?” “What does he want?” Lưu ý: trong câu hỏi, động từ chính KHÔNG thêm “s.” Ta nói: “Does he play?” không phải “Does he plays?” Hãy luyện đặt câu hỏi về thói quen và sở thích. Cấu trúc câu hỏi tốt giúp hội thoại dễ dàng và lịch sự hơn."
+      "copy": {
+        "en": "To make clear questions in English, use do/does for most verbs. “Do you like music?” “Does she work here?” For questions about details, use WH-words: what, when, where, why, who, how. “Where do you live?” “What does he want?” Remember: in questions, the main verb does NOT take “s.” We say: “Does he play?” not “Does he plays?” Practice forming questions about daily life—habits, routines, preferences. Good question structure makes conversations easier and helps you sound polite and confident.",
+        "vi": "Để tạo câu hỏi rõ ràng, hãy dùng do/does với hầu hết động từ. “Do you like music?” “Does she work here?” Với câu hỏi chi tiết, dùng từ hỏi what, when, where, why, who, how. “Where do you live?” “What does he want?” Lưu ý: trong câu hỏi, động từ chính KHÔNG thêm “s.” Ta nói: “Does he play?” không phải “Does he plays?” Hãy luyện đặt câu hỏi về thói quen và sở thích. Cấu trúc câu hỏi tốt giúp hội thoại dễ dàng và lịch sự hơn."
       },
-      "tags":["questions","beginner"],
-      "audio":"free_grammar_questions.mp3"
+      "slug": "basic-question-forms",
+      "tags": [
+        "questions",
+        "beginner"
+      ],
+      "audio": "free_grammar_questions.mp3",
+      "keywords_en": [
+        "questions",
+        "do/does",
+        "wh-"
+      ],
+      "keywords_vi": [
+        "câu hỏi",
+        "do/does",
+        "từ hỏi"
+      ]
     },
     {
-      "slug":"pronouns-basics",
-      "keywords_en":["pronouns","he/she/they","reference"],
-      "keywords_vi":["đại từ","he/she/they","tham chiếu"],
-      "copy":{
-        "en":"Pronouns help you avoid repeating the same nouns. I, you, he, she, it, we, they replace people and things already mentioned. “My sister is kind. She helps everyone.” “I bought a book. It was expensive.” Understanding pronouns makes your sentences shorter and more natural. Remember: “he/she/it” use verbs with “s,” while “I/you/we/they” do not. Practice by rewriting paragraphs and replacing repeated nouns with pronouns. This builds smoother, more fluent sentence flow.",
-        "vi":"Đại từ giúp bạn tránh lặp lại danh từ. I, you, he, she, it, we, they thay thế cho người hoặc vật đã nhắc đến. “My sister is kind. She helps everyone.” “I bought a book. It was expensive.” Hiểu đại từ giúp câu ngắn gọn và tự nhiên hơn. Nhớ rằng he/she/it dùng động từ thêm “s,” còn I/you/we/they thì không. Luyện bằng cách viết lại đoạn văn và thay danh từ lặp bằng đại từ. Điều này giúp câu mượt hơn và có nhịp tốt hơn."
+      "copy": {
+        "en": "Pronouns help you avoid repeating the same nouns. I, you, he, she, it, we, they replace people and things already mentioned. “My sister is kind. She helps everyone.” “I bought a book. It was expensive.” Understanding pronouns makes your sentences shorter and more natural. Remember: “he/she/it” use verbs with “s,” while “I/you/we/they” do not. Practice by rewriting paragraphs and replacing repeated nouns with pronouns. This builds smoother, more fluent sentence flow.",
+        "vi": "Đại từ giúp bạn tránh lặp lại danh từ. I, you, he, she, it, we, they thay thế cho người hoặc vật đã nhắc đến. “My sister is kind. She helps everyone.” “I bought a book. It was expensive.” Hiểu đại từ giúp câu ngắn gọn và tự nhiên hơn. Nhớ rằng he/she/it dùng động từ thêm “s,” còn I/you/we/they thì không. Luyện bằng cách viết lại đoạn văn và thay danh từ lặp bằng đại từ. Điều này giúp câu mượt hơn và có nhịp tốt hơn."
       },
-      "tags":["pronouns","foundation"],
-      "audio":"free_grammar_pronouns.mp3"
+      "slug": "pronouns-basics",
+      "tags": [
+        "pronouns",
+        "foundation"
+      ],
+      "audio": "free_grammar_pronouns.mp3",
+      "keywords_en": [
+        "pronouns",
+        "he/she/they",
+        "reference"
+      ],
+      "keywords_vi": [
+        "đại từ",
+        "he/she/they",
+        "tham chiếu"
+      ]
     },
     {
-      "slug":"useful-prepositions",
-      "keywords_en":["prepositions","in/on/at","basics"],
-      "keywords_vi":["giới từ","in/on/at","cơ bản"],
-      "copy":{
-        "en":"Prepositions can be confusing, so start with the three basic ones used every day: in, on, at. Use in for months and years (in July, in 2020), on for days (on Monday, on my birthday), and at for exact times (at 7:00, at noon). For places: in a city, on a street, at a specific spot. These patterns cover most beginner needs. Stick to simple examples and repeat them often. With enough exposure, prepositions become automatic—no memorization needed.",
-        "vi":"Giới từ dễ gây rối, vì vậy hãy bắt đầu với ba giới từ cơ bản dùng hằng ngày: in, on, at. Dùng in cho tháng và năm (in July, in 2020), on cho ngày (on Monday, on my birthday), và at cho thời gian cụ thể (at 7:00, at noon). Với địa điểm: in a city, on a street, at a bus stop. Những mẫu này đủ cho người mới. Hãy học bằng ví dụ đơn giản và lặp lại nhiều lần. Khi tiếp xúc đủ, giới từ sẽ trở nên tự động mà không cần học thuộc."
+      "copy": {
+        "en": "Prepositions can be confusing, so start with the three basic ones used every day: in, on, at. Use in for months and years (in July, in 2020), on for days (on Monday, on my birthday), and at for exact times (at 7:00, at noon). For places: in a city, on a street, at a specific spot. These patterns cover most beginner needs. Stick to simple examples and repeat them often. With enough exposure, prepositions become automatic—no memorization needed.",
+        "vi": "Giới từ dễ gây rối, vì vậy hãy bắt đầu với ba giới từ cơ bản dùng hằng ngày: in, on, at. Dùng in cho tháng và năm (in July, in 2020), on cho ngày (on Monday, on my birthday), và at cho thời gian cụ thể (at 7:00, at noon). Với địa điểm: in a city, on a street, at a bus stop. Những mẫu này đủ cho người mới. Hãy học bằng ví dụ đơn giản và lặp lại nhiều lần. Khi tiếp xúc đủ, giới từ sẽ trở nên tự động mà không cần học thuộc."
       },
-      "tags":["prepositions","beginner"],
-      "audio":"free_grammar_prepositions.mp3"
+      "slug": "useful-prepositions",
+      "tags": [
+        "prepositions",
+        "beginner"
+      ],
+      "audio": "free_grammar_prepositions.mp3",
+      "keywords_en": [
+        "prepositions",
+        "in/on/at",
+        "basics"
+      ],
+      "keywords_vi": [
+        "giới từ",
+        "in/on/at",
+        "cơ bản"
+      ]
     }
-  ]
+  ],
+  "room_essay": {
+    "en": "This free foundation room introduces the essential grammar systems that make English clear, easy, and confident from day one. You will learn the three core tenses for daily communication, master the be verb as your sentence foundation, understand subject-verb agreement, build correct questions naturally, use basic connectors to link ideas, and recognize word order patterns. These six essentials help beginners avoid confusion, build correct habits early, and understand the patterns behind everyday communication—not by memorizing complex rules but by practicing high-frequency structures that work immediately.",
+    "vi": "Phòng nền tảng miễn phí này giới thiệu các hệ thống ngữ pháp thiết yếu giúp tiếng Anh rõ ràng, dễ hiểu và tự tin ngay từ ngày đầu. Bạn sẽ học ba thì cốt lõi cho giao tiếp hằng ngày, làm chủ động từ be làm nền móng câu, hiểu chia động từ theo chủ ngữ, tạo câu hỏi đúng một cách tự nhiên, dùng liên từ cơ bản để nối ý, và nhận biết trật tự từ trong câu. Sáu nền tảng này giúp người mới tránh rối, tạo thói quen đúng từ đầu và hiểu các mẫu câu trong giao tiếp hằng ngày—không bằng học thuộc quy tắc phức tạp mà bằng luyện các cấu trúc thông dụng có hiệu quả ngay.\n"
+  },
+  "safety_disclaimer": {
+    "en": "",
+    "vi": ""
+  },
+  "crisis_footer": {
+    "en": "",
+    "vi": ""
+  }
 }

@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "schema_id": "English-Writing-free",
+  "id": "English-Writing-free",
+  "tier": "free",
+  "domain": "",
+  "description": {
+    "en": "English Writing Foundations",
+    "vi": "Nền Tảng Viết Tiếng Anh"
+  },
+  "keywords": [
+    "career",
+    "clarity",
+    "communication",
+    "English writing",
+    "global use",
+    "opportunity",
+    "professional writing",
+    "thinking",
+    "writing skill"
+  ],
+  "entries": [
+    {
+      "copy": {
+        "en": "Writing in English is necessary because it allows you to communicate clearly in a global environment. Whether at school, work, or online, English writing opens access to international communities and opportunities. It helps you share ideas confidently with people from different cultures. Even simple daily writing strengthens clarity and expression. As you write more, you build a voice that others can understand—no matter where they come from. Good writing makes your message stronger, more professional, and more memorable.",
+        "vi": "Viết tiếng Anh rất cần thiết vì nó giúp bạn giao tiếp rõ ràng trong môi trường toàn cầu. Dù ở trường, công việc hay trực tuyến, viết tiếng Anh mở ra cơ hội tiếp cận cộng đồng và cơ hội quốc tế. Nó giúp bạn tự tin chia sẻ ý tưởng với người từ nhiều nền văn hóa khác nhau. Ngay cả việc viết đơn giản mỗi ngày cũng tăng sự rõ ràng và khả năng diễn đạt. Khi viết nhiều hơn, bạn xây dựng một giọng nói mà mọi người đều có thể hiểu, bất kể họ đến từ đâu. Viết tốt giúp thông điệp của bạn mạnh mẽ, chuyên nghiệp và dễ nhớ hơn."
+      },
+      "slug": "global-communication",
+      "tags": [
+        "communication",
+        "global"
+      ],
+      "audio": "eng_write_free_1_en.mp3",
+      "keywords_en": [
+        "English writing",
+        "communication",
+        "global use"
+      ],
+      "keywords_vi": [
+        "viết tiếng Anh",
+        "giao tiếp",
+        "toàn cầu"
+      ]
+    },
+    {
+      "copy": {
+        "en": "Writing in English improves your thinking. When you put ideas into sentences, you learn to organize thoughts, choose precise words, and express meaning clearly. This process sharpens logic and helps you understand your own mind better. Many people discover new insights simply by writing regularly. It becomes a quiet space where your ideas grow stronger and more focused. Clear writing leads to clear thinking—and clear thinking helps you communicate with confidence in any situation.",
+        "vi": "Viết tiếng Anh giúp cải thiện tư duy. Khi bạn đặt ý tưởng thành câu, bạn học cách sắp xếp suy nghĩ, chọn từ chính xác và diễn đạt rõ ràng. Quá trình này mài sắc tư duy logic và giúp bạn hiểu bản thân hơn. Nhiều người tìm thấy những hiểu biết mới chỉ nhờ viết thường xuyên. Viết trở thành không gian yên tĩnh nơi ý tưởng trở nên mạnh mẽ và tập trung hơn. Viết rõ ràng dẫn đến tư duy rõ ràng—và tư duy rõ ràng giúp bạn giao tiếp tự tin trong mọi tình huống."
+      },
+      "slug": "thinking-and-clarity",
+      "tags": [
+        "clarity",
+        "thinking"
+      ],
+      "audio": "eng_write_free_2_en.mp3",
+      "keywords_en": [
+        "writing skill",
+        "thinking",
+        "clarity"
+      ],
+      "keywords_vi": [
+        "kỹ năng viết",
+        "tư duy",
+        "rõ ràng"
+      ]
+    },
+    {
+      "copy": {
+        "en": "Strong English writing creates real career opportunities. Most companies value clear emails, reports, and proposals. Good writing shows professionalism and reliability, helping you stand out among applicants. It also allows you to study abroad, apply for scholarships, or join international programs. When you write well, people trust your ideas more easily. Improving your writing is one of the simplest ways to upgrade your future—no special tools required, only daily practice and curiosity.",
+        "vi": "Khả năng viết tiếng Anh tốt tạo ra cơ hội nghề nghiệp thực sự. Hầu hết công ty đều đánh giá cao email, báo cáo và đề xuất rõ ràng. Viết tốt thể hiện sự chuyên nghiệp và đáng tin cậy, giúp bạn nổi bật trong số các ứng viên. Nó cũng cho phép bạn du học, xin học bổng hoặc tham gia các chương trình quốc tế. Khi bạn viết tốt, người khác dễ tin tưởng ý tưởng của bạn hơn. Cải thiện kỹ năng viết là một trong những cách đơn giản nhất để nâng cấp tương lai—không cần công cụ đặc biệt, chỉ cần luyện tập hằng ngày và sự tò mò."
+      },
+      "slug": "career-and-opportunity",
+      "tags": [
+        "career",
+        "opportunity"
+      ],
+      "audio": "eng_write_free_3_en.mp3",
+      "keywords_en": [
+        "career",
+        "opportunity",
+        "professional writing"
+      ],
+      "keywords_vi": [
+        "sự nghiệp",
+        "cơ hội",
+        "viết chuyên nghiệp"
+      ]
+    }
+  ],
+  "room_essay": {
+    "en": "Writing in English is a powerful skill that opens doors to education, global opportunities, and clearer thinking. This room gives you simple reasons to begin writing regularly. You will learn why writing improves vocabulary, strengthens logic, and builds confidence in expressing ideas. Start small—one paragraph a day is enough to unlock growth. Discover deeper guidance in VIP tiers.\n",
+    "vi": "Viết tiếng Anh là một kỹ năng mạnh mẽ mở ra cơ hội học tập, phát triển toàn cầu và tư duy rõ ràng hơn. Phòng này giúp bạn hiểu những lý do đơn giản để bắt đầu viết thường xuyên. Bạn sẽ biết vì sao viết giúp tăng vốn từ, củng cố tư duy logic và xây dựng sự tự tin khi diễn đạt. Hãy bắt đầu thật nhỏ—một đoạn văn mỗi ngày cũng đủ để tạo bước tiến. Khám phá thêm ở các cấp độ VIP."
+  },
+  "safety_disclaimer": {
+    "en": "",
+    "vi": ""
+  },
+  "crisis_footer": {
+    "en": "",
+    "vi": ""
+  }
+}

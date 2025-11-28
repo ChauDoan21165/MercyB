@@ -1,75 +1,148 @@
 {
+  "schema_version": "1.0",
+  "schema_id": "english_foundation_ef01",
   "id": "english_foundation_ef01",
   "tier": "Free / Miễn phí",
-  "domain": "English Foundation",
-  "title": {
+  "domain": "",
+  "description": {
     "en": "EF-01 — Alphabet & True English Sounds",
     "vi": "EF-01 — Bảng Chữ Cái & Âm Chuẩn Tiếng Anh"
   },
-  "content": {
-    "en": "This first room helps absolute beginners start English safely and gently. You will read all letters from A to Z, learn how English sounds differ from Vietnamese, and practice slow, clear pronunciation. These six entries guide you step by step through reading letters, shaping consonant sounds, understanding basic vowel positions, and avoiding common mistakes such as dropping final sounds or adding extra vowels. Take it slowly. Breathe gently. Focus on feeling the sound, not forcing it. Small daily practice builds real confidence.",
-    "vi": "Phòng đầu tiên giúp người mới bắt đầu học tiếng Anh một cách an toàn và nhẹ nhàng. Bạn sẽ đọc toàn bộ chữ cái từ A đến Z, hiểu cách âm tiếng Anh khác tiếng Việt và luyện phát âm chậm, rõ ràng. Sáu mục nội dung hướng dẫn bạn từng bước: đọc chữ cái, tạo khẩu hình âm phụ, hiểu vị trí nguyên âm cơ bản và tránh các lỗi thường gặp như bỏ âm cuối hoặc thêm nguyên âm. Hãy học chậm rãi, thở nhẹ và tập trung vào cảm giác của âm. Luyện tập mỗi ngày một chút sẽ tạo nên sự tự tin thật sự."
-  },
+  "keywords": [
+    "alphabet",
+    "letters",
+    "beginner",
+    "consonants",
+    "sounds",
+    "pronunciation",
+    "vowels",
+    "sound",
+    "mistakes",
+    "Vietnamese learners",
+    "fix",
+    "practice words",
+    "habit",
+    "daily practice",
+    "bảng chữ cái",
+    "chữ cái",
+    "người mới",
+    "phụ âm",
+    "âm",
+    "phát âm",
+    "nguyên âm",
+    "lỗi",
+    "người Việt",
+    "sửa lỗi",
+    "từ luyện tập",
+    "thói quen",
+    "luyện tập"
+  ],
   "entries": [
     {
       "slug": "reading-the-alphabet-a-to-z",
-      "keywords_en": ["alphabet", "letters", "beginner"],
-      "keywords_vi": ["bảng chữ cái", "chữ cái", "người mới"],
-      "copy": {
-        "en": "Read each letter slowly.\nFocus on clear sound, not speed.\nLet your mouth relax.\nLet the sound be gentle.\n\nA\nB\nC\nD\nE\nF\nG\nH\nI\nJ\nK\nL\nM\nN\nO\nP\nQ\nR\nS\nT\nU\nV\nW\nX\nY\nZ\n\nGood job.\nNow read again more calmly.\nYour only goal is comfort.",
-        "vi": "Hãy đọc từng chữ cái thật chậm và rõ ràng. Đừng cố đọc nhanh. Chỉ cần để miệng thả lỏng và cảm nhận âm. Đây là nền tảng của việc nghe và nói tiếng Anh. Người học tiếng Việt thường ghép âm hoặc đọc theo thói quen tiếng mẹ đẻ, vì vậy đọc chậm sẽ giúp tai và miệng làm quen tự nhiên hơn. Hãy luyện đọc nhiều lần cho đến khi bạn cảm thấy thoải mái."
-      },
-      "audio": "ef01_01_en.mp3"
+      "audio": "ef01_01_en.mp3",
+      "copy_en": "Read each letter slowly.\nFocus on clear sound, not speed.\nLet your mouth relax.\nLet the sound be gentle.\n\nA\nB\nC\nD\nE\nF\nG\nH\nI\nJ\nK\nL\nM\nN\nO\nP\nQ\nR\nS\nT\nU\nV\nW\nX\nY\nZ\n\nGood job.\nNow read again more calmly.\nYour only goal is comfort.",
+      "copy_vi": "Hãy đọc từng chữ cái thật chậm và rõ ràng. Đừng cố đọc nhanh. Chỉ cần để miệng thả lỏng và cảm nhận âm. Đây là nền tảng của việc nghe và nói tiếng Anh. Người học tiếng Việt thường ghép âm hoặc đọc theo thói quen tiếng mẹ đẻ, vì vậy đọc chậm sẽ giúp tai và miệng làm quen tự nhiên hơn. Hãy luyện đọc nhiều lần cho đến khi bạn cảm thấy thoải mái.",
+      "keywords_en": [
+        "alphabet",
+        "letters",
+        "beginner"
+      ],
+      "keywords_vi": [
+        "bảng chữ cái",
+        "chữ cái",
+        "người mới"
+      ]
     },
     {
       "slug": "basic-english-consonant-shapes",
-      "keywords_en": ["consonants", "sounds", "pronunciation"],
-      "keywords_vi": ["phụ âm", "âm", "phát âm"],
-      "copy": {
-        "en": "English consonants need firmer mouth shapes and stronger air than Vietnamese.\nPractice these slowly:\n\nB\nD\nG\nK\nP\nT\n\nEnd each sound cleanly.\nDo not add extra vowels after them.\nSay T, not tờ.\nSay K, not ca.\n\nSmall changes like this improve clarity quickly.",
-        "vi": "Phụ âm tiếng Anh cần khẩu hình chắc hơn và hơi mạnh hơn tiếng Việt. Người Việt thường thêm nguyên âm vào cuối phụ âm, khiến âm không còn đúng nữa. Hãy luyện các phụ âm B, D, G, K, P, T thật chậm và dứt khoát. Không thêm âm “tờ”, “cờ”. Chỉ phát đúng phụ âm. Thói quen nhỏ này giúp bạn nói rõ hơn rất nhiều và giúp người nghe hiểu bạn dễ dàng."
-      },
-      "audio": "ef01_02_en.mp3"
+      "audio": "ef01_02_en.mp3",
+      "copy_en": "English consonants need firmer mouth shapes and stronger air than Vietnamese.\nPractice these slowly:\n\nB\nD\nG\nK\nP\nT\n\nEnd each sound cleanly.\nDo not add extra vowels after them.\nSay T, not tờ.\nSay K, not ca.\n\nSmall changes like this improve clarity quickly.",
+      "copy_vi": "Phụ âm tiếng Anh cần khẩu hình chắc hơn và hơi mạnh hơn tiếng Việt. Người Việt thường thêm nguyên âm vào cuối phụ âm, khiến âm không còn đúng nữa. Hãy luyện các phụ âm B, D, G, K, P, T thật chậm và dứt khoát. Không thêm âm \"tờ\", \"cờ\". Chỉ phát đúng phụ âm. Thói quen nhỏ này giúp bạn nói rõ hơn rất nhiều và giúp người nghe hiểu bạn dễ dàng.",
+      "keywords_en": [
+        "consonants",
+        "sounds",
+        "pronunciation"
+      ],
+      "keywords_vi": [
+        "phụ âm",
+        "âm",
+        "phát âm"
+      ]
     },
     {
       "slug": "true-english-vowel-feel",
-      "keywords_en": ["vowels", "sound", "beginner"],
-      "keywords_vi": ["nguyên âm", "âm", "người mới"],
-      "copy": {
-        "en": "English vowels stretch the mouth more than Vietnamese.\nPractice these shapes:\n\nA\nopen mouth\nE\nsmile shape\nI\nnarrow and high\nO\nround lips\nU\nround and deeper\n\nSay each one slowly.\nLet the mouth move naturally.\n\nThese shapes help you say common words like:\ncat\nbed\nsit\nhot\ncup",
-        "vi": "Nguyên âm tiếng Anh đòi hỏi khẩu hình mở rộng và thay đổi rõ rệt hơn tiếng Việt. Hãy luyện năm nguyên âm cơ bản: A mở rộng, E kéo ngang môi, I hẹp và cao, O tròn môi, U tròn môi nhưng sâu hơn. Đọc chậm từng âm để cảm nhận sự khác biệt. Các vị trí miệng này giúp bạn phát âm đúng các từ đơn giản như cat, bed, sit, hot, cup và cải thiện khả năng nghe."
-      },
-      "audio": "ef01_03_en.mp3"
+      "audio": "ef01_03_en.mp3",
+      "copy_en": "English vowels stretch the mouth more than Vietnamese.\nPractice these shapes:\n\nA\nopen mouth\nE\nsmile shape\nI\nnarrow and high\nO\nround lips\nU\nround and deeper\n\nSay each one slowly.\nLet the mouth move naturally.\n\nThese shapes help you say common words like:\ncat\nbed\nsit\nhot\ncup",
+      "copy_vi": "Nguyên âm tiếng Anh đòi hỏi khẩu hình mở rộng và thay đổi rõ rệt hơn tiếng Việt. Hãy luyện năm nguyên âm cơ bản: A mở rộng, E kéo ngang môi, I hẹp và cao, O tròn môi, U tròn môi nhưng sâu hơn. Đọc chậm từng âm để cảm nhận sự khác biệt. Các vị trí miệng này giúp bạn phát âm đúng các từ đơn giản như cat, bed, sit, hot, cup và cải thiện khả năng nghe.",
+      "keywords_en": [
+        "vowels",
+        "sound",
+        "beginner"
+      ],
+      "keywords_vi": [
+        "nguyên âm",
+        "âm",
+        "người mới"
+      ]
     },
     {
       "slug": "common-vietnamese-mistakes",
-      "keywords_en": ["mistakes", "Vietnamese learners", "fix"],
-      "keywords_vi": ["lỗi", "người Việt", "sửa lỗi"],
-      "copy": {
-        "en": "Four common mistakes for Vietnamese learners:\n\nDropping final sounds:\ncat becomes ca\nmilk becomes miu\n\nAdding extra vowels:\nt becomes tờ\nk becomes ca\n\nUsing tones:\nEnglish has no tones.\nKeep the sound flat.\n\nReading too fast:\nSlow is correct.\nSpeed creates errors.\n\nFixing these habits improves your pronunciation immediately.",
-        "vi": "Người Việt thường gặp bốn lỗi lớn: bỏ âm cuối, thêm nguyên âm vào phụ âm, đọc theo thanh điệu và đọc quá nhanh. Ví dụ: cat thành ca, milk thành miu, t thành tờ. Tiếng Anh không có dấu nên hãy giữ âm đều và nhẹ. Chậm mới đúng. Khi bạn sửa được bốn lỗi này, khả năng nói và nghe của bạn sẽ cải thiện rõ rệt."
-      },
-      "audio": "ef01_04_en.mp3"
+      "audio": "ef01_04_en.mp3",
+      "copy_en": "Four common mistakes for Vietnamese learners:\n\nDropping final sounds:\ncat becomes ca\nmilk becomes miu\n\nAdding extra vowels:\nt becomes tờ\nk becomes ca\n\nUsing tones:\nEnglish has no tones.\nKeep the sound flat.\n\nReading too fast:\nSlow is correct.\nSpeed creates errors.\n\nFixing these habits improves your pronunciation immediately.",
+      "copy_vi": "Người Việt thường gặp bốn lỗi lớn: bỏ âm cuối, thêm nguyên âm vào phụ âm, đọc theo thanh điệu và đọc quá nhanh. Ví dụ: cat thành ca, milk thành miu, t thành tờ. Tiếng Anh không có dấu nên hãy giữ âm đều và nhẹ. Chậm mới đúng. Khi bạn sửa được bốn lỗi này, khả năng nói và nghe của bạn sẽ cải thiện rõ rệt.",
+      "keywords_en": [
+        "mistakes",
+        "Vietnamese learners",
+        "fix"
+      ],
+      "keywords_vi": [
+        "lỗi",
+        "người Việt",
+        "sửa lỗi"
+      ]
     },
     {
       "slug": "simple-practice-words",
-      "keywords_en": ["practice words", "beginner"],
-      "keywords_vi": ["từ luyện tập", "người mới"],
-      "copy": {
-        "en": "Practice these words slowly.\nFocus on ending sounds:\n\ncat\nmap\nbig\nred\ncup\nsun\nbook\nmilk\ndog\npen\n\nIf the final sound disappears, read again more slowly.\nAccuracy first.\nSpeed later.",
-        "vi": "Hãy luyện đọc các từ đơn giản sau và chú ý giữ âm cuối: cat, map, big, red, cup, sun, book, milk, dog, pen. Nếu âm cuối biến mất, hãy giảm tốc độ. Mục tiêu là phát âm đúng, không phải nhanh. Những từ này là nền tảng để bạn hiểu và giao tiếp rõ ràng hơn."
-      },
-      "audio": "ef01_05_en.mp3"
+      "audio": "ef01_05_en.mp3",
+      "copy_en": "Practice these words slowly.\nFocus on ending sounds:\n\ncat\nmap\nbig\nred\ncup\nsun\nbook\nmilk\ndog\npen\n\nIf the final sound disappears, read again more slowly.\nAccuracy first.\nSpeed later.",
+      "copy_vi": "Hãy luyện đọc các từ đơn giản sau và chú ý giữ âm cuối: cat, map, big, red, cup, sun, book, milk, dog, pen. Nếu âm cuối biến mất, hãy giảm tốc độ. Mục tiêu là phát âm đúng, không phải nhanh. Những từ này là nền tảng để bạn hiểu và giao tiếp rõ ràng hơn.",
+      "keywords_en": [
+        "practice words",
+        "beginner"
+      ],
+      "keywords_vi": [
+        "từ luyện tập",
+        "người mới"
+      ]
     },
     {
       "slug": "daily-pronunciation-habit",
-      "keywords_en": ["habit", "daily practice", "pronunciation"],
-      "keywords_vi": ["thói quen", "luyện tập", "phát âm"],
-      "copy": {
-        "en": "A strong pronunciation habit only needs three minutes a day.\n\nRead A to Z once.\nRead a few simple words.\nListen to one short line.\n\nSmall daily practice builds confidence.\nYou do not need perfection.\nYou only need consistency.",
-        "vi": "Một thói quen phát âm tốt chỉ cần ba phút mỗi ngày. Hãy đọc A đến Z một lần, đọc vài từ đơn giản và nghe một câu ngắn. Luyện đều đặn giúp bạn hình thành cảm giác tiếng Anh tự nhiên. Bạn không cần hoàn hảo, chỉ cần kiên trì. Mỗi ngày một chút sẽ tạo nên sự tiến bộ lớn."
-      },
-      "audio": "ef01_06_en.mp3"
+      "audio": "ef01_06_en.mp3",
+      "copy_en": "A strong pronunciation habit only needs three minutes a day.\n\nRead A to Z once.\nRead a few simple words.\nListen to one short line.\n\nSmall daily practice builds confidence.\nYou do not need perfection.\nYou only need consistency.",
+      "copy_vi": "Một thói quen phát âm tốt chỉ cần ba phút mỗi ngày. Hãy đọc A đến Z một lần, đọc vài từ đơn giản và nghe một câu ngắn. Luyện đều đặn giúp bạn hình thành cảm giác tiếng Anh tự nhiên. Bạn không cần hoàn hảo, chỉ cần kiên trì. Mỗi ngày một chút sẽ tạo nên sự tiến bộ lớn.",
+      "keywords_en": [
+        "habit",
+        "daily practice",
+        "pronunciation"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "luyện tập",
+        "phát âm"
+      ]
     }
-  ]
+  ],
+  "room_essay": {
+    "en": "This first room helps absolute beginners start English safely and gently. You will read all letters from A to Z, learn how English sounds differ from Vietnamese, and practice slow, clear pronunciation. These six entries guide you step by step through reading letters, shaping consonant sounds, understanding basic vowel positions, and avoiding common mistakes such as dropping final sounds or adding extra vowels. Take it slowly. Breathe gently. Focus on feeling the sound, not forcing it. Small daily practice builds real confidence.",
+    "vi": "Phòng đầu tiên giúp người mới bắt đầu học tiếng Anh một cách an toàn và nhẹ nhàng. Bạn sẽ đọc toàn bộ chữ cái từ A đến Z, hiểu cách âm tiếng Anh khác tiếng Việt và luyện phát âm chậm, rõ ràng. Sáu mục nội dung hướng dẫn bạn từng bước: đọc chữ cái, tạo khẩu hình âm phụ, hiểu vị trí nguyên âm cơ bản và tránh các lỗi thường gặp như bỏ âm cuối hoặc thêm nguyên âm. Hãy học chậm rãi, thở nhẹ và tập trung vào cảm giác của âm. Luyện tập mỗi ngày một chút sẽ tạo nên sự tự tin thật sự."
+  },
+  "safety_disclaimer": {
+    "en": "",
+    "vi": ""
+  },
+  "crisis_footer": {
+    "en": "",
+    "vi": ""
+  }
 }
