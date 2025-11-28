@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import { AdminFloatingButton } from "@/components/AdminFloatingButton";
 import { ZoomControl } from "@/components/ZoomControl";
+import { HomeButton } from "@/components/HomeButton";
 import { LowDataModeProvider } from "@/contexts/LowDataModeContext";
 
 import Welcome from "./pages/Welcome";
@@ -113,6 +114,7 @@ const App = () => {
             <Toaster />
             <Sonner />
             <BrowserRouter>
+        <HomeButton />
         <AdminFloatingButton />
         <ZoomControl />
         <Routes>
