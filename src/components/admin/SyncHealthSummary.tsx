@@ -200,6 +200,96 @@ export function SyncHealthSummary() {
     }
   };
 
+  const handleDeletePhantomRows = async () => {
+    try {
+      setFixing(true);
+
+      // Get all rooms with entries field to check
+      const { data: allRooms, error: fetchError } = await supabase
+        .from('rooms')
+        .select('id, entries, tier');
+
+      if (fetchError) throw fetchError;
+
+      // Check which rooms have JSON files
+      const jsonFileChecks = await Promise.all(
+        (allRooms || []).map(async (room) => {
+          try {
+            const response = await fetch(`/data/${room.id}.json`, { method: 'HEAD' });
+            return { roomId: room.id, hasJson: response.ok };
+          } catch {
+            return { roomId: room.id, hasJson: false };
+          }
+        })
+      );
+
+      const jsonFileMap = new Map(jsonFileChecks.map(r => [r.roomId, r.hasJson]));
+
+      // Find phantom rows matching ALL three conditions
+      const phantomRows = (allRooms || []).filter(room => {
+        // Condition 1: entries is empty or null
+        const hasNoEntries = !room.entries || 
+                            (Array.isArray(room.entries) && room.entries.length === 0) ||
+                            (typeof room.entries === 'object' && Object.keys(room.entries).length === 0);
+        
+        // Condition 2: ID has uppercase letters OR hyphens (non-canonical)
+        const isNonCanonical = /[A-Z-]/.test(room.id);
+        
+        // Condition 3: No JSON file exists
+        const noJsonFile = !jsonFileMap.get(room.id);
+        
+        return hasNoEntries && isNonCanonical && noJsonFile;
+      });
+
+      if (phantomRows.length === 0) {
+        toast({
+          title: "Database Clean",
+          description: "No phantom rows found - Deep Scan will be 100% green!",
+        });
+        return;
+      }
+
+      const phantomIds = phantomRows.map(r => r.id);
+      
+      const message = `🗑️ DELETE ${phantomIds.length} PHANTOM DB ROWS?\n\n` +
+        `These rows match ALL three conditions:\n` +
+        `✓ Zero entries (no content)\n` +
+        `✓ Non-canonical IDs (uppercase/hyphens)\n` +
+        `✓ No JSON files\n\n` +
+        `IDs to delete:\n${phantomIds.slice(0, 20).join(', ')}` +
+        (phantomIds.length > 20 ? `\n...and ${phantomIds.length - 20} more` : '') +
+        `\n\nThis will make Deep Scan 100% green forever.`;
+
+      const confirmed = confirm(message);
+      if (!confirmed) return;
+
+      const { error: deleteError } = await supabase
+        .from('rooms')
+        .delete()
+        .in('id', phantomIds);
+
+      if (deleteError) throw deleteError;
+
+      toast({
+        title: "✅ Success",
+        description: `Deleted ${phantomIds.length} phantom DB rows - Deep Scan will be 100% green!`,
+      });
+
+      // Reload stats
+      await loadSyncStats();
+      setExpandedRow(null);
+    } catch (error: any) {
+      console.error('Error deleting phantom rows:', error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to delete phantom rows",
+        variant: "destructive",
+      });
+    } finally {
+      setFixing(false);
+    }
+  };
+
   const handleCreateMissingDbRows = async () => {
     toast({
       title: "Not Implemented",
@@ -316,16 +406,28 @@ export function SyncHealthSummary() {
                         )}
 
                         {/* Action buttons */}
-                        <div className="flex gap-3">
+                        <div className="flex flex-wrap gap-3">
                           {stat.missingInJson && stat.missingInJson.length > 0 && (
-                            <Button
-                              variant="destructive"
-                              onClick={() => handleDeleteRoomsWithoutJson(stat.missingInJson!)}
-                              disabled={fixing}
-                            >
-                              <Trash2 className="w-4 h-4 mr-2" />
-                              Delete all {stat.missingInJson.length} DB rows without JSON
-                            </Button>
+                            <>
+                              <Button
+                                variant="destructive"
+                                onClick={() => handleDeleteRoomsWithoutJson(stat.missingInJson!)}
+                                disabled={fixing}
+                              >
+                                <Trash2 className="w-4 h-4 mr-2" />
+                                Delete all {stat.missingInJson.length} DB rows without JSON
+                              </Button>
+                              
+                              <Button
+                                variant="destructive"
+                                onClick={handleDeletePhantomRows}
+                                disabled={fixing}
+                                className="bg-red-600 hover:bg-red-700"
+                              >
+                                <Trash2 className="w-4 h-4 mr-2" />
+                                Delete Phantom DB Rows (zero entries, non-canonical IDs only)
+                              </Button>
+                            </>
                           )}
 
                           {stat.missingInDb && stat.missingInDb.length > 0 && (
