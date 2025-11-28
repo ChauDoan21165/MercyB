@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { AnimatedTierBadge } from './AnimatedTierBadge';
 import { useUserAccess } from '@/hooks/useUserAccess';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import tierMapImage from '@/assets/tier-map-skeleton.png';
+import tierMapImage from '@/assets/tier-map-original.jpeg';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -130,55 +130,242 @@ export const ColorfulMercyBladeHeader = ({
                   Tier/Gói
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-[95vw] max-w-[900px] bg-background border-2 z-50 p-0">
+              <DropdownMenuContent align="end" className="w-[95vw] max-w-[1000px] bg-background border-2 z-50 p-0">
                 {/* Header */}
                 <div className="p-4 border-b">
                   <DropdownMenuLabel className="text-base font-bold m-0">
                     Mercy Blade Tier Map
                   </DropdownMenuLabel>
-                  <p className="text-xs text-muted-foreground mt-1">Tree map showing tier hierarchy from feet to head</p>
+                  <p className="text-xs text-muted-foreground mt-1">Click on any tier to navigate</p>
                 </div>
 
-                {/* Tier Map Image */}
-                <div className="p-4 overflow-auto max-h-[80vh] bg-[#F3E9D2]">
+                {/* Tier Map with Clickable Overlays */}
+                <div className="relative p-4 overflow-auto max-h-[80vh]">
+                  {/* Background Image - Original Drawing */}
                   <img 
                     src={tierMapImage} 
-                    alt="Mercy Blade Tier Map - Tree structure showing tier hierarchy from Free to VIP9 and Universe, with English Pathway on left and Life Skills on right" 
-                    className="w-full h-auto rounded"
+                    alt="Mercy Blade Tier Map" 
+                    className="w-full h-auto"
                   />
-                </div>
+                  
+                  {/* Clickable Text Overlays - Positioned Exactly as in Drawing */}
+                  
+                  {/* TOP CENTER - Universe */}
+                  <button
+                    onClick={() => {}}
+                    className="absolute cursor-default opacity-50"
+                    style={{ left: '40%', top: '6%', fontSize: '11px', fontWeight: 'bold' }}
+                    disabled
+                  >
+                    <div className="text-gray-700">Gods, Universe</div>
+                    <div className="text-gray-600 text-[9px]">Chúa, Vũ trụ</div>
+                  </button>
 
-                {/* Quick Navigation Links */}
-                <div className="p-4 border-t bg-muted/30">
-                  <div className="grid grid-cols-3 gap-2 text-center">
-                    <DropdownMenuItem onClick={() => navigate('/rooms/free')} className="cursor-pointer p-2 rounded border hover:bg-background">
-                      <div className="font-bold text-xs">Free</div>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => navigate('/rooms/vip1')} className="cursor-pointer p-2 rounded border hover:bg-background">
-                      <div className="font-bold text-xs">VIP1</div>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => navigate('/rooms/vip2')} className="cursor-pointer p-2 rounded border hover:bg-background">
-                      <div className="font-bold text-xs">VIP2</div>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => navigate('/rooms/vip3')} className="cursor-pointer p-2 rounded border hover:bg-background">
-                      <div className="font-bold text-xs">VIP3</div>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => navigate('/rooms/vip4')} className="cursor-pointer p-2 rounded border hover:bg-background">
-                      <div className="font-bold text-xs">VIP4</div>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => navigate('/rooms/vip5')} className="cursor-pointer p-2 rounded border hover:bg-background">
-                      <div className="font-bold text-xs">VIP5</div>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => navigate('/rooms/vip6')} className="cursor-pointer p-2 rounded border hover:bg-background">
-                      <div className="font-bold text-xs">VIP6</div>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => navigate('/rooms/vip9')} className="cursor-pointer p-2 rounded border hover:bg-background">
-                      <div className="font-bold text-xs">VIP9</div>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => navigate('/kids/level1')} className="cursor-pointer p-2 rounded border hover:bg-background">
-                      <div className="font-bold text-xs">Kids</div>
-                    </DropdownMenuItem>
-                  </div>
+                  {/* LEFT SIDE - English Pathway */}
+                  <button
+                    onClick={() => navigate('/rooms/vip9')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '8%', top: '13%', fontSize: '10px' }}
+                  >
+                    <div className="font-bold text-gray-900">Strategy</div>
+                    <div className="text-gray-700 text-[8px]">Chiến lược</div>
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/vip9')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '8%', top: '16%', fontSize: '10px' }}
+                  >
+                    <div className="font-bold text-gray-900">Mind set</div>
+                    <div className="text-gray-700 text-[8px]">Tư duy chiến lược</div>
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/vip6')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '6%', top: '24%', fontSize: '10px' }}
+                  >
+                    <div className="font-bold text-gray-900">Psychology</div>
+                    <div className="text-gray-700 text-[8px]">Tâm lý học</div>
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/vip5')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '10%', top: '34%', fontSize: '10px' }}
+                  >
+                    <div className="font-bold text-gray-900">Writing</div>
+                    <div className="text-gray-700 text-[8px]">Viết lách</div>
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/vip4')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '10%', top: '42%', fontSize: '10px' }}
+                  >
+                    <div className="font-bold text-gray-900">CareerZ</div>
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/vip3')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '5%', top: '50%', fontSize: '10px' }}
+                  >
+                    <div className="font-bold text-gray-900">B2 + C1 + C2</div>
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/vip2')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '5%', top: '62%', fontSize: '10px' }}
+                  >
+                    <div className="font-bold text-gray-900">A2 + B1</div>
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/vip1')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '8%', top: '68%', fontSize: '10px' }}
+                  >
+                    <div className="font-bold text-gray-900">A1</div>
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/free')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '3%', top: '76%', fontSize: '10px' }}
+                  >
+                    <div className="font-bold text-gray-900">English Foundation</div>
+                    <div className="text-gray-700 text-[8px]">Nền tảng tiếng Anh</div>
+                  </button>
+
+                  {/* CENTER SPINE - VIP Tiers */}
+                  <button
+                    onClick={() => navigate('/rooms/vip9')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '44%', top: '13%', fontSize: '11px', fontWeight: 'bold' }}
+                  >
+                    VIP9
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/vip8')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '44%', top: '17%', fontSize: '11px', fontWeight: 'bold' }}
+                  >
+                    VIP8
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/vip7')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '44%', top: '21%', fontSize: '11px', fontWeight: 'bold' }}
+                  >
+                    VIP7
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/vip6')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '44%', top: '25%', fontSize: '11px', fontWeight: 'bold' }}
+                  >
+                    VIP6
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/vip5')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '44%', top: '35%', fontSize: '11px', fontWeight: 'bold' }}
+                  >
+                    VIP5
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/vip4')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '44%', top: '43%', fontSize: '11px', fontWeight: 'bold' }}
+                  >
+                    VIP4
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/vip3')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '44%', top: '51%', fontSize: '11px', fontWeight: 'bold' }}
+                  >
+                    VIP3
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/vip2')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '44%', top: '63%', fontSize: '11px', fontWeight: 'bold' }}
+                  >
+                    VIP2
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/vip1')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '44%', top: '69%', fontSize: '11px', fontWeight: 'bold' }}
+                  >
+                    VIP1
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/free')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '44%', top: '77%', fontSize: '11px', fontWeight: 'bold' }}
+                  >
+                    Free
+                  </button>
+
+                  {/* RIGHT SIDE - Life Skills */}
+                  <button
+                    onClick={() => navigate('/rooms/vip6')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '68%', top: '24%', fontSize: '10px' }}
+                  >
+                    <div className="font-bold text-gray-900">Critical thinking</div>
+                    <div className="text-gray-700 text-[8px]">Tư duy phản biện</div>
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/vip5')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '72%', top: '33%', fontSize: '10px' }}
+                  >
+                    <div className="font-bold text-gray-900">Debates</div>
+                    <div className="text-gray-700 text-[8px]">Tranh luận</div>
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/vip4')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '68%', top: '42%', fontSize: '10px' }}
+                  >
+                    <div className="font-bold text-gray-900">Public speaking</div>
+                    <div className="text-gray-700 text-[8px]">Nói trước công chúng</div>
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/vip3')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '70%', top: '50%', fontSize: '10px' }}
+                  >
+                    <div className="font-bold text-gray-900">Martial arts</div>
+                    <div className="text-gray-700 text-[8px]">Võ thuật</div>
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/rooms/free')}
+                    className="absolute hover:bg-black/5 rounded px-2 py-1"
+                    style={{ left: '68%', top: '77%', fontSize: '10px' }}
+                  >
+                    <div className="font-bold text-gray-900">Survival skills</div>
+                    <div className="text-gray-700 text-[8px]">Kỹ năng sống tồn</div>
+                  </button>
+
                 </div>
               </DropdownMenuContent>
             </DropdownMenu>
