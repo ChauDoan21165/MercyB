@@ -290,6 +290,122 @@ export function SyncHealthSummary() {
     }
   };
 
+  const handleExportMissingJsonFiles = async () => {
+    try {
+      setFixing(true);
+
+      // Get all rooms that have entries
+      const { data: allRooms, error: fetchError } = await supabase
+        .from('rooms')
+        .select('*');
+
+      if (fetchError) throw fetchError;
+
+      // Check which rooms are missing JSON files
+      const jsonFileChecks = await Promise.all(
+        (allRooms || []).map(async (room) => {
+          try {
+            const response = await fetch(`/data/${room.id}.json`, { method: 'HEAD' });
+            return { room, hasJson: response.ok };
+          } catch {
+            return { room, hasJson: false };
+          }
+        })
+      );
+
+      // Filter rooms with DB entries but no JSON file
+      const roomsNeedingJson = jsonFileChecks
+        .filter(r => !r.hasJson && r.room.entries && 
+                     (Array.isArray(r.room.entries) ? r.room.entries.length > 0 : Object.keys(r.room.entries).length > 0))
+        .map(r => r.room);
+
+      if (roomsNeedingJson.length === 0) {
+        toast({
+          title: "No Files to Export",
+          description: "All rooms with DB entries already have JSON files!",
+        });
+        return;
+      }
+
+      const message = `📝 EXPORT ${roomsNeedingJson.length} JSON FILES FROM DATABASE?\n\n` +
+        `This will generate JSON files for:\n${roomsNeedingJson.map(r => r.id).slice(0, 10).join('\n')}` +
+        (roomsNeedingJson.length > 10 ? `\n...and ${roomsNeedingJson.length - 10} more` : '') +
+        `\n\nFiles will be saved to public/data/{id}.json`;
+
+      const confirmed = confirm(message);
+      if (!confirmed) return;
+
+      let successCount = 0;
+      let failCount = 0;
+
+      for (const room of roomsNeedingJson) {
+        try {
+          // Construct JSON in Mercy Blade standard format
+          const jsonContent = {
+            schema_version: "1.0",
+            schema_id: room.schema_id || room.id,
+            id: room.id,
+            tier: room.tier,
+            domain: room.domain || "",
+            description: {
+              en: room.title_en || "",
+              vi: room.title_vi || ""
+            },
+            keywords: room.keywords || [],
+            entries: Array.isArray(room.entries) ? room.entries : [],
+            room_essay: {
+              en: room.room_essay_en || "",
+              vi: room.room_essay_vi || ""
+            },
+            safety_disclaimer: {
+              en: room.safety_disclaimer_en || "",
+              vi: room.safety_disclaimer_vi || ""
+            },
+            crisis_footer: {
+              en: room.crisis_footer_en || "",
+              vi: room.crisis_footer_vi || ""
+            }
+          };
+
+          // Convert to JSON string with proper formatting
+          const jsonString = JSON.stringify(jsonContent, null, 2);
+
+          // Create a blob and download it (browser will handle the file save)
+          const blob = new Blob([jsonString], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `${room.id}.json`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+
+          successCount++;
+        } catch (error) {
+          console.error(`Failed to export ${room.id}:`, error);
+          failCount++;
+        }
+      }
+
+      toast({
+        title: "✅ Export Complete",
+        description: `Exported ${successCount} JSON files. ${failCount > 0 ? `${failCount} failed.` : ''} Please upload them to public/data/ via GitHub.`,
+      });
+
+      await loadSyncStats();
+    } catch (error: any) {
+      console.error('Error exporting JSON files:', error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to export JSON files",
+        variant: "destructive",
+      });
+    } finally {
+      setFixing(false);
+    }
+  };
+
   const handleCreateMissingDbRows = async () => {
     toast({
       title: "Not Implemented",
@@ -409,6 +525,16 @@ export function SyncHealthSummary() {
                         <div className="flex flex-wrap gap-3">
                           {stat.missingInJson && stat.missingInJson.length > 0 && (
                             <>
+                              <Button
+                                variant="default"
+                                onClick={handleExportMissingJsonFiles}
+                                disabled={fixing}
+                                className="bg-green-600 hover:bg-green-700 text-white"
+                              >
+                                <Plus className="w-4 h-4 mr-2" />
+                                Export Missing JSON from DB ({stat.missingInJson.length} rooms)
+                              </Button>
+                              
                               <Button
                                 variant="destructive"
                                 onClick={() => handleDeleteRoomsWithoutJson(stat.missingInJson!)}
