@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { AlertCircle, CheckCircle2, ChevronDown, ChevronUp, Trash2, Plus, RefreshCw } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
+import JSZip from "jszip";
 
 interface SyncStats {
   category: string;
@@ -324,16 +325,9 @@ export function SyncHealthSummary() {
 
       console.log(`Exporting ${roomsNeedingJson.length} Free/English Foundation rooms to JSON:`, roomsNeedingJson.map((r: any) => r.id));
 
-      const message = `📝 EXPORT ${roomsNeedingJson.length} JSON FILES FROM DATABASE?\n\n` +
-        `This will generate JSON files for:\n${roomsNeedingJson.map(r => r.id).slice(0, 10).join('\n')}` +
-        (roomsNeedingJson.length > 10 ? `\n...and ${roomsNeedingJson.length - 10} more` : '') +
-        `\n\nFiles will be saved to public/data/{id}.json`;
-
-      const confirmed = confirm(message);
-      if (!confirmed) return;
-
+      // Create ZIP file
+      const zip = new JSZip();
       let successCount = 0;
-      let failCount = 0;
 
       for (const room of roomsNeedingJson) {
         try {
@@ -366,30 +360,28 @@ export function SyncHealthSummary() {
             }
           };
 
-          // Convert to JSON string with proper formatting
-          const jsonString = JSON.stringify(jsonContent, null, 2);
-
-          // Create a blob and download it (browser will handle the file save)
-          const blob = new Blob([jsonString], { type: 'application/json' });
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = `${room.id}.json`;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          URL.revokeObjectURL(url);
-
+          // Add file to ZIP
+          zip.file(`${room.id}.json`, JSON.stringify(jsonContent, null, 2));
           successCount++;
         } catch (error) {
-          console.error(`Failed to export ${room.id}:`, error);
-          failCount++;
+          console.error(`Failed to add ${room.id} to ZIP:`, error);
         }
       }
 
+      // Generate and download ZIP
+      const blob = await zip.generateAsync({ type: 'blob' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `mercy-blade-rooms-${successCount}-files.zip`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
       toast({
-        title: "✅ Export Complete",
-        description: `Exported ${successCount} JSON files. ${failCount > 0 ? `${failCount} failed.` : ''} Please upload them to public/data/ via GitHub.`,
+        title: "✅ ZIP Download Complete",
+        description: `Downloaded ${successCount} JSON files in ZIP. Upload to GitHub public/data/ folder.`,
       });
 
       await loadSyncStats();
