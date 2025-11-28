@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Play, Pause, Volume2, Heart, Music } from 'lucide-react';
+import { Play, Pause, Volume2, Heart, Music, Shuffle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Select,
@@ -91,15 +91,19 @@ export const MusicPlayer = () => {
   const [currentTrackId, setCurrentTrackId] = useState<string>('1');
   const [volume, setVolume] = useState<number>(50);
   const [showAllTracks, setShowAllTracks] = useState(true);
+  const [isShuffle, setIsShuffle] = useState(false);
+  const [shuffledTracks, setShuffledTracks] = useState<typeof TRACKS>([]);
   const { favoriteIds, toggleFavorite, isFavorite } = useFavoriteTracks();
 
   // Load saved preferences on mount
   useEffect(() => {
     const savedTrackId = localStorage.getItem('musicPlayerTrackId');
     const savedVolume = localStorage.getItem('musicPlayerVolume');
+    const savedShuffle = localStorage.getItem('musicPlayerShuffle');
     
     if (savedTrackId) setCurrentTrackId(savedTrackId);
     if (savedVolume) setVolume(parseInt(savedVolume, 10));
+    if (savedShuffle) setIsShuffle(savedShuffle === 'true');
   }, []);
 
   // Update audio volume
@@ -121,6 +125,39 @@ export const MusicPlayer = () => {
     const newVolume = value[0];
     setVolume(newVolume);
     localStorage.setItem('musicPlayerVolume', newVolume.toString());
+  };
+
+  // Shuffle tracks
+  const shuffleArray = (array: typeof TRACKS) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
+  // Toggle shuffle
+  const toggleShuffle = () => {
+    const newShuffleState = !isShuffle;
+    setIsShuffle(newShuffleState);
+    localStorage.setItem('musicPlayerShuffle', newShuffleState.toString());
+    
+    if (newShuffleState) {
+      setShuffledTracks(shuffleArray(TRACKS));
+    }
+  };
+
+  // Play next track
+  const playNextTrack = () => {
+    const trackList = isShuffle ? shuffledTracks : TRACKS;
+    const currentIndex = trackList.findIndex(t => t.id === currentTrackId);
+    const nextIndex = (currentIndex + 1) % trackList.length;
+    const nextTrack = trackList[nextIndex];
+    
+    setCurrentTrackId(nextTrack.id);
+    localStorage.setItem('musicPlayerTrackId', nextTrack.id);
+    setIsPlaying(true);
   };
 
   // Toggle play/pause
@@ -149,6 +186,19 @@ export const MusicPlayer = () => {
           className="border-black text-black hover:bg-gray-100 h-8 w-8 p-0"
         >
           {isPlaying ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
+        </Button>
+
+        {/* Shuffle Button */}
+        <Button
+          onClick={toggleShuffle}
+          variant="outline"
+          size="sm"
+          className={`border-black hover:bg-gray-100 h-8 w-8 p-0 ${
+            isShuffle ? 'bg-gray-200 text-black' : 'text-black'
+          }`}
+          title={isShuffle ? "Shuffle: On" : "Shuffle: Off"}
+        >
+          <Shuffle className="h-3 w-3" />
         </Button>
 
         {/* Volume Slider */}
@@ -262,8 +312,7 @@ export const MusicPlayer = () => {
         <audio
           ref={audioRef}
           src={currentTrack.url}
-          loop
-          onEnded={() => setIsPlaying(false)}
+          onEnded={playNextTrack}
         />
       </div>
     </div>
