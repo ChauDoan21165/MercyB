@@ -35,6 +35,8 @@ import { CareerProgressTracker } from "@/components/CareerProgressTracker";
 import { AnimatedTierBadge } from "@/components/AnimatedTierBadge";
 import { setCustomKeywordMappings, clearCustomKeywordMappings, loadRoomKeywords } from "@/lib/customKeywordLoader";
 import { ProfileAvatarUpload } from "@/components/ProfileAvatarUpload";
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { getTierRoute } from "@/lib/tierRoutes";
 
 interface Message {
   id: string;
@@ -757,6 +759,25 @@ const ChatHub = () => {
       <div className="min-h-screen p-4" style={{ background: getBgColor() }}>
         <div className="max-w-7xl mx-auto space-y-4">
         
+        {/* Breadcrumb Navigation */}
+        <div className="bg-card rounded-lg p-3 shadow-soft">
+          <Breadcrumb
+            items={[
+              ...(info?.tier ? [
+                {
+                  label: getTierRoute(info.tier)?.name || info.tier.toUpperCase(),
+                  href: getTierRoute(info.tier)?.path
+                }
+              ] : []),
+              {
+                label: currentRoom.nameEn === currentRoom.nameVi 
+                  ? currentRoom.nameEn 
+                  : `${currentRoom.nameEn} / ${currentRoom.nameVi}`
+              }
+            ]}
+          />
+        </div>
+
         {/* Header */}
         <div className="flex items-center justify-between bg-card rounded-lg p-4 shadow-soft">
           <div className="flex gap-2">
