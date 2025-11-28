@@ -11,12 +11,13 @@ export function TestModeBanner() {
   if (!isTestMode) return null;
 
   return (
-    <Alert className="mb-6 border-yellow-500 bg-yellow-100 border-2">
-      <AlertTriangle className="h-5 w-5 text-yellow-700" />
-      <AlertDescription className="text-yellow-900 font-bold text-lg">
-        ⚠️ TEST MODE – NO REAL MONEY WILL BE CHARGED ⚠️
-        <p className="text-sm font-normal mt-1">
-          All payments are processed through PayPal Sandbox. This is for testing only.
+    <Alert className="mb-6 border-yellow-500 bg-yellow-50 border-4 shadow-lg animate-pulse">
+      <AlertTriangle className="h-6 w-6 text-yellow-700" />
+      <AlertDescription className="text-yellow-900 font-extrabold text-xl">
+        ⚠️ TEST MODE ACTIVE – NO REAL MONEY ⚠️
+        <p className="text-sm font-semibold mt-2 text-yellow-800">
+          All payments are processed through sandbox/test mode. This is for testing only.
+          No actual charges will be made to any accounts.
         </p>
       </AlertDescription>
     </Alert>
