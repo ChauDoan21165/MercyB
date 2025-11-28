@@ -118,8 +118,6 @@ const App = () => {
             <Toaster />
             <Sonner />
             <BrowserRouter>
-              <HomeButton />
-              <BackButton />
               <AdminFloatingButton />
               <ZoomControl />
         <Routes>
