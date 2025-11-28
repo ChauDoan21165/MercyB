@@ -154,7 +154,7 @@ export const ColorfulMercyBladeHeader = ({
                   <button
                     onClick={() => {}}
                     className="absolute cursor-default opacity-50"
-                    style={{ left: '40%', top: '6%', fontSize: '11px', fontWeight: 'bold' }}
+                    style={{ left: '38%', top: '4%', fontSize: '11px', fontWeight: 'bold' }}
                     disabled
                   >
                     <div className="text-gray-700">Gods, Universe</div>
@@ -164,17 +164,17 @@ export const ColorfulMercyBladeHeader = ({
                   {/* LEFT SIDE - English Pathway */}
                   <button
                     onClick={() => navigate('/rooms/vip9')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '8%', top: '13%', fontSize: '10px' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '6%', top: '11.5%', fontSize: '10px' }}
                   >
                     <div className="font-bold text-gray-900">Strategy</div>
                     <div className="text-gray-700 text-[8px]">Chiến lược</div>
                   </button>
 
                   <button
-                    onClick={() => navigate('/rooms/vip9')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '8%', top: '16%', fontSize: '10px' }}
+                    onClick={() => navigate('/rooms/vip8')}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '6%', top: '14.5%', fontSize: '10px' }}
                   >
                     <div className="font-bold text-gray-900">Mind set</div>
                     <div className="text-gray-700 text-[8px]">Tư duy chiến lược</div>
@@ -182,8 +182,8 @@ export const ColorfulMercyBladeHeader = ({
 
                   <button
                     onClick={() => navigate('/rooms/vip6')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '6%', top: '24%', fontSize: '10px' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '4%', top: '23.5%', fontSize: '10px' }}
                   >
                     <div className="font-bold text-gray-900">Psychology</div>
                     <div className="text-gray-700 text-[8px]">Tâm lý học</div>
@@ -191,49 +191,48 @@ export const ColorfulMercyBladeHeader = ({
 
                   <button
                     onClick={() => navigate('/rooms/vip5')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '10%', top: '34%', fontSize: '10px' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '8%', top: '33%', fontSize: '10px' }}
                   >
                     <div className="font-bold text-gray-900">Writing</div>
-                    <div className="text-gray-700 text-[8px]">Viết lách</div>
                   </button>
 
                   <button
                     onClick={() => navigate('/rooms/vip4')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '10%', top: '42%', fontSize: '10px' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '8%', top: '41.5%', fontSize: '10px' }}
                   >
                     <div className="font-bold text-gray-900">CareerZ</div>
                   </button>
 
                   <button
                     onClick={() => navigate('/rooms/vip3')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '5%', top: '50%', fontSize: '10px' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '3%', top: '49.5%', fontSize: '10px' }}
                   >
                     <div className="font-bold text-gray-900">B2 + C1 + C2</div>
                   </button>
 
                   <button
                     onClick={() => navigate('/rooms/vip2')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '5%', top: '62%', fontSize: '10px' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '3%', top: '61%', fontSize: '10px' }}
                   >
                     <div className="font-bold text-gray-900">A2 + B1</div>
                   </button>
 
                   <button
                     onClick={() => navigate('/rooms/vip1')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '8%', top: '68%', fontSize: '10px' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '6%', top: '67%', fontSize: '10px' }}
                   >
                     <div className="font-bold text-gray-900">A1</div>
                   </button>
 
                   <button
                     onClick={() => navigate('/rooms/free')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '3%', top: '76%', fontSize: '10px' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '2%', top: '75.5%', fontSize: '10px' }}
                   >
                     <div className="font-bold text-gray-900">English Foundation</div>
                     <div className="text-gray-700 text-[8px]">Nền tảng tiếng Anh</div>
@@ -242,89 +241,89 @@ export const ColorfulMercyBladeHeader = ({
                   {/* CENTER SPINE - VIP Tiers */}
                   <button
                     onClick={() => navigate('/rooms/vip9')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '44%', top: '13%', fontSize: '11px', fontWeight: 'bold' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '46%', top: '12%', fontSize: '12px', fontWeight: 'bold' }}
                   >
                     VIP9
                   </button>
 
                   <button
                     onClick={() => navigate('/rooms/vip8')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '44%', top: '17%', fontSize: '11px', fontWeight: 'bold' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '46%', top: '16%', fontSize: '12px', fontWeight: 'bold' }}
                   >
                     VIP8
                   </button>
 
                   <button
                     onClick={() => navigate('/rooms/vip7')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '44%', top: '21%', fontSize: '11px', fontWeight: 'bold' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '46%', top: '20%', fontSize: '12px', fontWeight: 'bold' }}
                   >
                     VIP7
                   </button>
 
                   <button
                     onClick={() => navigate('/rooms/vip6')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '44%', top: '25%', fontSize: '11px', fontWeight: 'bold' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '46%', top: '24%', fontSize: '12px', fontWeight: 'bold' }}
                   >
                     VIP6
                   </button>
 
                   <button
                     onClick={() => navigate('/rooms/vip5')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '44%', top: '35%', fontSize: '11px', fontWeight: 'bold' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '46%', top: '33.5%', fontSize: '12px', fontWeight: 'bold' }}
                   >
                     VIP5
                   </button>
 
                   <button
                     onClick={() => navigate('/rooms/vip4')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '44%', top: '43%', fontSize: '11px', fontWeight: 'bold' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '46%', top: '42%', fontSize: '12px', fontWeight: 'bold' }}
                   >
                     VIP4
                   </button>
 
                   <button
                     onClick={() => navigate('/rooms/vip3')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '44%', top: '51%', fontSize: '11px', fontWeight: 'bold' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '46%', top: '50%', fontSize: '12px', fontWeight: 'bold' }}
                   >
                     VIP3
                   </button>
 
                   <button
                     onClick={() => navigate('/rooms/vip2')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '44%', top: '63%', fontSize: '11px', fontWeight: 'bold' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '46%', top: '62%', fontSize: '12px', fontWeight: 'bold' }}
                   >
                     VIP2
                   </button>
 
                   <button
                     onClick={() => navigate('/rooms/vip1')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '44%', top: '69%', fontSize: '11px', fontWeight: 'bold' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '46%', top: '68%', fontSize: '12px', fontWeight: 'bold' }}
                   >
                     VIP1
                   </button>
 
                   <button
                     onClick={() => navigate('/rooms/free')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '44%', top: '77%', fontSize: '11px', fontWeight: 'bold' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '46%', top: '76%', fontSize: '12px', fontWeight: 'bold' }}
                   >
                     Free
                   </button>
 
                   {/* RIGHT SIDE - Life Skills */}
                   <button
-                    onClick={() => navigate('/rooms/vip6')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '68%', top: '24%', fontSize: '10px' }}
+                    onClick={() => navigate('/rooms/vip8')}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '67%', top: '23.5%', fontSize: '10px', textAlign: 'left' }}
                   >
                     <div className="font-bold text-gray-900">Critical thinking</div>
                     <div className="text-gray-700 text-[8px]">Tư duy phản biện</div>
@@ -332,8 +331,8 @@ export const ColorfulMercyBladeHeader = ({
 
                   <button
                     onClick={() => navigate('/rooms/vip5')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '72%', top: '33%', fontSize: '10px' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '72%', top: '32.5%', fontSize: '10px', textAlign: 'left' }}
                   >
                     <div className="font-bold text-gray-900">Debates</div>
                     <div className="text-gray-700 text-[8px]">Tranh luận</div>
@@ -341,8 +340,8 @@ export const ColorfulMercyBladeHeader = ({
 
                   <button
                     onClick={() => navigate('/rooms/vip4')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '68%', top: '42%', fontSize: '10px' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '67%', top: '41.5%', fontSize: '10px', textAlign: 'left' }}
                   >
                     <div className="font-bold text-gray-900">Public speaking</div>
                     <div className="text-gray-700 text-[8px]">Nói trước công chúng</div>
@@ -350,8 +349,8 @@ export const ColorfulMercyBladeHeader = ({
 
                   <button
                     onClick={() => navigate('/rooms/vip3')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '70%', top: '50%', fontSize: '10px' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '69%', top: '49.5%', fontSize: '10px', textAlign: 'left' }}
                   >
                     <div className="font-bold text-gray-900">Martial arts</div>
                     <div className="text-gray-700 text-[8px]">Võ thuật</div>
@@ -359,8 +358,8 @@ export const ColorfulMercyBladeHeader = ({
 
                   <button
                     onClick={() => navigate('/rooms/free')}
-                    className="absolute hover:bg-black/5 rounded px-2 py-1"
-                    style={{ left: '68%', top: '77%', fontSize: '10px' }}
+                    className="absolute hover:bg-black/10 rounded px-2 py-1 transition-colors"
+                    style={{ left: '67%', top: '76.5%', fontSize: '10px', textAlign: 'left' }}
                   >
                     <div className="font-bold text-gray-900">Survival skills</div>
                     <div className="text-gray-700 text-[8px]">Kỹ năng sống tồn</div>
