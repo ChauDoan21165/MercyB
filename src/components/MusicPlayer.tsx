@@ -21,6 +21,16 @@ const TRACKS = [
   { id: '8', name: 'Tropical Keys', url: '/audio/relaxing/tropical-keys.mp3' },
   { id: '9', name: 'Simplicity', url: '/audio/relaxing/simplicity.mp3' },
   { id: '10', name: 'All Shall End', url: '/audio/relaxing/all-shall-end.mp3' },
+  { id: '11', name: 'Peace', url: '/audio/relaxing/peace.mp3' },
+  { id: '12', name: 'An Ambient Day', url: '/audio/relaxing/an-ambient-day.mp3' },
+  { id: '13', name: 'Peace And Happy', url: '/audio/relaxing/peace-and-happy.mp3' },
+  { id: '14', name: 'Strings of Time', url: '/audio/relaxing/strings-of-time.mp3' },
+  { id: '15', name: 'Childhood Nostalgia', url: '/audio/relaxing/childhood-nostalgia.mp3' },
+  { id: '16', name: 'Sad Winds', url: '/audio/relaxing/sad-winds.mp3' },
+  { id: '17', name: 'Tender Love', url: '/audio/relaxing/tender-love.mp3' },
+  { id: '18', name: 'Chill Gaming', url: '/audio/relaxing/chill-gaming.mp3' },
+  { id: '19', name: 'Homework', url: '/audio/relaxing/homework.mp3' },
+  { id: '20', name: 'On My Own', url: '/audio/relaxing/on-my-own.mp3' },
 ];
 
 export const MusicPlayer = () => {
