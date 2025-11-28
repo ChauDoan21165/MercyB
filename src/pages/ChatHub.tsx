@@ -114,6 +114,8 @@ const ChatHub = () => {
   const [matchedEntryId, setMatchedEntryId] = useState<string | null>(null);
   const { favoriteRooms, isFavorite: isRoomFavorite, toggleFavorite: toggleRoomFavorite } = useFavoriteRooms();
   const { recentRooms, addRecentRoom, clearRecentRooms } = useRecentRooms();
+  const [favoriteSearch, setFavoriteSearch] = useState("");
+  const [recentSearch, setRecentSearch] = useState("");
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [roomNameOverride, setRoomNameOverride] = useState<{ nameEn: string; nameVi: string } | null>(null);
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
@@ -838,7 +840,7 @@ const ChatHub = () => {
               <Heart className={`w-4 h-4 ${isRoomFavorite(roomId || '') ? 'fill-red-500 text-red-500' : 'text-gray-400'}`} />
               Favorite
             </Button>
-            <DropdownMenu>
+            <DropdownMenu onOpenChange={(open) => !open && setFavoriteSearch("")}>
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="outline"
@@ -849,8 +851,24 @@ const ChatHub = () => {
                   My Rooms ({favoriteRooms.length})
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-[300px] z-[100]">
+              <DropdownMenuContent align="start" className="w-[320px] bg-background border-2 z-[100]">
                 <DropdownMenuLabel>My Favorite Rooms</DropdownMenuLabel>
+                <div className="px-2 pb-2">
+                  <Input
+                    placeholder="Search favorites..."
+                    value={favoriteSearch}
+                    onChange={(e) => setFavoriteSearch(e.target.value)}
+                    className="h-8 text-sm"
+                    onClick={(e) => e.stopPropagation()}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Escape') {
+                        setFavoriteSearch('');
+                      }
+                      e.stopPropagation();
+                    }}
+                    autoFocus
+                  />
+                </div>
                 <DropdownMenuSeparator />
                 <ScrollArea className="h-[300px]">
                   {favoriteRooms.length === 0 ? (
@@ -858,40 +876,62 @@ const ChatHub = () => {
                       No favorite rooms yet. Click the heart icon to add rooms.
                     </div>
                   ) : (
-                    favoriteRooms.map((room) => (
-                      <DropdownMenuItem
-                        key={room.id}
-                        onClick={() => navigate(`/room/${room.id}`)}
-                        className="cursor-pointer flex items-center justify-between"
-                      >
-                        <div className="flex flex-col">
-                          <span className="text-sm font-medium">{room.nameEn}</span>
-                          {room.nameEn !== room.nameVi && (
-                            <span className="text-xs text-muted-foreground">{room.nameVi}</span>
-                          )}
-                          <Badge variant="secondary" className="text-xs w-fit mt-1">
-                            {room.tier === 'free' ? 'Free' : room.tier.toUpperCase()}
-                          </Badge>
-                        </div>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            toggleRoomFavorite(room);
-                          }}
-                          className="h-6 w-6 p-0"
+                    favoriteRooms
+                      .filter(room => {
+                        if (!favoriteSearch) return true;
+                        const search = favoriteSearch.toLowerCase();
+                        return (
+                          room.nameEn.toLowerCase().includes(search) ||
+                          room.nameVi.toLowerCase().includes(search) ||
+                          room.tier.toLowerCase().includes(search)
+                        );
+                      })
+                      .map((room) => (
+                        <DropdownMenuItem
+                          key={room.id}
+                          onClick={() => navigate(`/room/${room.id}`)}
+                          className="cursor-pointer flex items-center justify-between"
                         >
-                          <Heart className="h-3 w-3 fill-red-500 text-red-500" />
-                        </Button>
-                      </DropdownMenuItem>
-                    ))
+                          <div className="flex flex-col">
+                            <span className="text-sm font-medium">{room.nameEn}</span>
+                            {room.nameEn !== room.nameVi && (
+                              <span className="text-xs text-muted-foreground">{room.nameVi}</span>
+                            )}
+                            <Badge variant="secondary" className="text-xs w-fit mt-1">
+                              {room.tier === 'free' ? 'Free' : room.tier.toUpperCase()}
+                            </Badge>
+                          </div>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleRoomFavorite(room);
+                            }}
+                            className="h-6 w-6 p-0"
+                          >
+                            <Heart className="h-3 w-3 fill-red-500 text-red-500" />
+                          </Button>
+                        </DropdownMenuItem>
+                      ))
+                  )}
+                  {favoriteSearch && favoriteRooms.filter(room => {
+                    const search = favoriteSearch.toLowerCase();
+                    return (
+                      room.nameEn.toLowerCase().includes(search) ||
+                      room.nameVi.toLowerCase().includes(search) ||
+                      room.tier.toLowerCase().includes(search)
+                    );
+                  }).length === 0 && (
+                    <div className="p-4 text-center text-sm text-muted-foreground">
+                      No rooms match "{favoriteSearch}"
+                    </div>
                   )}
                 </ScrollArea>
               </DropdownMenuContent>
             </DropdownMenu>
             
-            <DropdownMenu>
+            <DropdownMenu onOpenChange={(open) => !open && setRecentSearch("")}>
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="outline"
@@ -902,7 +942,7 @@ const ChatHub = () => {
                   Recent ({recentRooms.length})
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-[300px] z-[100]">
+              <DropdownMenuContent align="start" className="w-[320px] bg-background border-2 z-[100]">
                 <DropdownMenuLabel className="flex items-center justify-between">
                   <span>Recently Visited</span>
                   {recentRooms.length > 0 && (
@@ -916,6 +956,22 @@ const ChatHub = () => {
                     </Button>
                   )}
                 </DropdownMenuLabel>
+                <div className="px-2 pb-2">
+                  <Input
+                    placeholder="Search recent..."
+                    value={recentSearch}
+                    onChange={(e) => setRecentSearch(e.target.value)}
+                    className="h-8 text-sm"
+                    onClick={(e) => e.stopPropagation()}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Escape') {
+                        setRecentSearch('');
+                      }
+                      e.stopPropagation();
+                    }}
+                    autoFocus
+                  />
+                </div>
                 <DropdownMenuSeparator />
                 <ScrollArea className="h-[300px]">
                   {recentRooms.length === 0 ? (
@@ -923,29 +979,51 @@ const ChatHub = () => {
                       No recent rooms yet. Visit some rooms to see them here.
                     </div>
                   ) : (
-                    recentRooms.map((room) => (
-                      <DropdownMenuItem
-                        key={room.id}
-                        onClick={() => navigate(`/room/${room.id}`)}
-                        className="cursor-pointer flex items-center justify-between"
-                      >
-                        <div className="flex flex-col flex-1">
-                          <span className="text-sm font-medium">{room.nameEn}</span>
-                          {room.nameEn !== room.nameVi && (
-                            <span className="text-xs text-muted-foreground">{room.nameVi}</span>
-                          )}
-                          <div className="flex items-center gap-2 mt-1">
-                            <Badge variant="secondary" className="text-xs w-fit">
-                              {room.tier === 'free' ? 'Free' : room.tier.toUpperCase()}
-                            </Badge>
-                            <span className="text-xs text-muted-foreground flex items-center gap-1">
-                              <Clock className="h-3 w-3" />
-                              {new Date(room.visitedAt).toLocaleDateString()}
-                            </span>
+                    recentRooms
+                      .filter(room => {
+                        if (!recentSearch) return true;
+                        const search = recentSearch.toLowerCase();
+                        return (
+                          room.nameEn.toLowerCase().includes(search) ||
+                          room.nameVi.toLowerCase().includes(search) ||
+                          room.tier.toLowerCase().includes(search)
+                        );
+                      })
+                      .map((room) => (
+                        <DropdownMenuItem
+                          key={room.id}
+                          onClick={() => navigate(`/room/${room.id}`)}
+                          className="cursor-pointer flex items-center justify-between"
+                        >
+                          <div className="flex flex-col flex-1">
+                            <span className="text-sm font-medium">{room.nameEn}</span>
+                            {room.nameEn !== room.nameVi && (
+                              <span className="text-xs text-muted-foreground">{room.nameVi}</span>
+                            )}
+                            <div className="flex items-center gap-2 mt-1">
+                              <Badge variant="secondary" className="text-xs w-fit">
+                                {room.tier === 'free' ? 'Free' : room.tier.toUpperCase()}
+                              </Badge>
+                              <span className="text-xs text-muted-foreground flex items-center gap-1">
+                                <Clock className="h-3 w-3" />
+                                {new Date(room.visitedAt).toLocaleDateString()}
+                              </span>
+                            </div>
                           </div>
-                        </div>
-                      </DropdownMenuItem>
-                    ))
+                        </DropdownMenuItem>
+                      ))
+                  )}
+                  {recentSearch && recentRooms.filter(room => {
+                    const search = recentSearch.toLowerCase();
+                    return (
+                      room.nameEn.toLowerCase().includes(search) ||
+                      room.nameVi.toLowerCase().includes(search) ||
+                      room.tier.toLowerCase().includes(search)
+                    );
+                  }).length === 0 && (
+                    <div className="p-4 text-center text-sm text-muted-foreground">
+                      No rooms match "{recentSearch}"
+                    </div>
                   )}
                 </ScrollArea>
               </DropdownMenuContent>
