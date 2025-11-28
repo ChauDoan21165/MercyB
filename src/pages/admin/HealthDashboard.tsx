@@ -55,11 +55,21 @@ export default function HealthDashboard() {
 
         <Card className="p-6">
           <div className="mb-4">
-            <h2 className="text-xl font-semibold mb-2">Main Tier Rooms</h2>
+            <h2 className="text-xl font-semibold mb-2">Room Health Check</h2>
             <p className="text-sm text-muted-foreground">
               Validate room configurations for each tier
             </p>
           </div>
+          
+          <div className="mb-4">
+            <Link to="/admin/room-health/all">
+              <Button variant="default" className="w-full bg-green-600 hover:bg-green-700 py-6">
+                <Activity className="h-5 w-5 mr-2" />
+                <span className="text-lg font-bold">Scan Entire App (All Tiers)</span>
+              </Button>
+            </Link>
+          </div>
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {tiers.map((tier) => {
               const Icon = tier.icon;
@@ -72,14 +82,6 @@ export default function HealthDashboard() {
                 </Link>
               );
             })}
-          </div>
-          <div className="mt-4">
-            <Link to="/admin/room-health/all">
-              <Button variant="default" className="w-full bg-green-600 hover:bg-green-700">
-                <Activity className="h-4 w-4 mr-2" />
-                Scan Entire App (All Tiers)
-              </Button>
-            </Link>
           </div>
         </Card>
       </div>
