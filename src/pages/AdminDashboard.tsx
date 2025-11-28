@@ -11,6 +11,7 @@ import { LiveUsersMonitor } from "@/components/admin/LiveUsersMonitor";
 import { FeedbackMessages } from "@/components/admin/FeedbackMessages";
 import { NotificationPreferences } from "@/components/admin/NotificationPreferences";
 import { VIP9RoomUpload } from "@/components/admin/VIP9RoomUpload";
+import { TestPurchasePanel } from "@/components/admin/TestPurchasePanel";
 
 interface DashboardStats {
   totalRooms: number;
@@ -182,6 +183,11 @@ const AdminDashboard = () => {
               <div className="text-3xl font-bold" style={{ color: '#FF9800' }}>{stats.suspendedUsers}</div>
             </CardContent>
           </Card>
+        </div>
+
+        {/* Test Purchase Panel - Only visible in test mode */}
+        <div className="mb-8">
+          <TestPurchasePanel />
         </div>
 
         {/* Quick Access Cards */}
