@@ -41,6 +41,16 @@ const TRACKS = [
   { id: '28', name: 'Beautiful Memories', url: '/audio/relaxing/beautiful-memories.mp3' },
   { id: '29', name: 'Quiet Morning', url: '/audio/relaxing/quiet-morning.mp3' },
   { id: '30', name: 'Not Much To Say', url: '/audio/relaxing/not-much-to-say.mp3' },
+  { id: '31', name: 'Relaxing Green Nature', url: '/audio/relaxing/relaxing-green-nature.mp3' },
+  { id: '32', name: 'The Soft Lullaby', url: '/audio/relaxing/the-soft-lullaby.mp3' },
+  { id: '33', name: 'We Were Friends', url: '/audio/relaxing/we-were-friends.mp3' },
+  { id: '34', name: 'In The Moment', url: '/audio/relaxing/in-the-moment.mp3' },
+  { id: '35', name: 'Champagne at Sunset', url: '/audio/relaxing/champagne-at-sunset.mp3' },
+  { id: '36', name: 'Serenity', url: '/audio/relaxing/serenity.mp3' },
+  { id: '37', name: 'Cathedral Ambience', url: '/audio/relaxing/cathedral-ambience.mp3' },
+  { id: '38', name: 'Painful Memories', url: '/audio/relaxing/painful-memories.mp3' },
+  { id: '39', name: 'Stasis', url: '/audio/relaxing/stasis.mp3' },
+  { id: '40', name: 'Upon Reflection', url: '/audio/relaxing/upon-reflection.mp3' },
 ];
 
 export const MusicPlayer = () => {
