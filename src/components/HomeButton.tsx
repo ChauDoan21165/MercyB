@@ -1,15 +1,8 @@
 import { Home } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 export function HomeButton() {
-  const location = useLocation();
-  const isHomepage = location.pathname === "/";
-  const isRoomPage = location.pathname.includes("/room/") || location.pathname.includes("/chat/");
-
-  // Don't show on homepage or room pages (room pages have their own navigation)
-  if (isHomepage || isRoomPage) return null;
-
   return (
     <Link to="/">
       <Button

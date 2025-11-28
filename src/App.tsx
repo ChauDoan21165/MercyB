@@ -8,6 +8,7 @@ import { ThemeProvider } from "next-themes";
 import { AdminFloatingButton } from "@/components/AdminFloatingButton";
 import { ZoomControl } from "@/components/ZoomControl";
 import { HomeButton } from "@/components/HomeButton";
+import { BackButton } from "@/components/BackButton";
 import { LowDataModeProvider } from "@/contexts/LowDataModeContext";
 import { MusicPlayer } from "@/components/MusicPlayer";
 
@@ -116,9 +117,10 @@ const App = () => {
             <Toaster />
             <Sonner />
             <BrowserRouter>
-        <HomeButton />
-        <AdminFloatingButton />
-        <ZoomControl />
+              <HomeButton />
+              <BackButton />
+              <AdminFloatingButton />
+              <ZoomControl />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/tiers" element={<Tiers />} />
