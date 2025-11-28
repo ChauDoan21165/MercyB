@@ -163,11 +163,11 @@ export const ColorfulMercyBladeHeader = ({
 
                 {/* Main Body Pathway Layout */}
                 <div className="relative flex gap-0 h-[600px] overflow-hidden">
-                  {/* Human Silhouette in Background */}
-                  <div className="absolute left-1/2 top-0 bottom-0 w-[200px] -ml-[100px] pointer-events-none z-0">
+                  {/* Human Silhouette with Clear Zone Markers */}
+                  <div className="absolute left-1/2 top-0 bottom-0 w-[180px] -ml-[90px] pointer-events-none z-0">
                     <svg 
-                      viewBox="0 0 200 600" 
-                      className="w-full h-full opacity-20"
+                      viewBox="0 0 180 600" 
+                      className="w-full h-full"
                       preserveAspectRatio="xMidYMin meet"
                     >
                       {/* Rainbow gradient spine */}
@@ -184,34 +184,81 @@ export const ColorfulMercyBladeHeader = ({
                         </linearGradient>
                       </defs>
                       
-                      {/* Soft body outline */}
-                      <ellipse cx="100" cy="30" rx="25" ry="30" fill="currentColor" opacity="0.1" />
-                      <ellipse cx="100" cy="80" rx="20" ry="25" fill="currentColor" opacity="0.1" />
-                      <ellipse cx="100" cy="140" rx="22" ry="30" fill="currentColor" opacity="0.1" />
-                      <ellipse cx="100" cy="230" rx="35" ry="60" fill="currentColor" opacity="0.1" />
-                      <ellipse cx="100" cy="350" rx="32" ry="55" fill="currentColor" opacity="0.1" />
-                      <ellipse cx="85" cy="480" rx="15" ry="70" fill="currentColor" opacity="0.1" />
-                      <ellipse cx="115" cy="480" rx="15" ry="70" fill="currentColor" opacity="0.1" />
+                      {/* Clearer body silhouette outline */}
+                      <path 
+                        d="M 90 15 
+                           Q 70 20 70 40 
+                           L 70 90 
+                           Q 65 150 65 180
+                           L 60 220
+                           Q 55 280 55 320
+                           L 50 400
+                           Q 45 480 40 530
+                           L 35 590
+                           M 90 15
+                           Q 110 20 110 40
+                           L 110 90
+                           Q 115 150 115 180
+                           L 120 220
+                           Q 125 280 125 320
+                           L 130 400
+                           Q 135 480 140 530
+                           L 145 590"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        fill="none"
+                        opacity={isBlackWhiteMode ? "0.15" : "0.25"}
+                      />
                       
-                      {/* Rainbow spine line */}
+                      {/* Zone indicators - horizontal bands */}
+                      {!isBlackWhiteMode && (
+                        <>
+                          <rect x="0" y="0" width="180" height="40" fill="#E91E63" opacity="0.03" />
+                          <rect x="0" y="40" width="180" height="50" fill="#9C27B0" opacity="0.03" />
+                          <rect x="0" y="90" width="180" height="50" fill="#3F51B5" opacity="0.03" />
+                          <rect x="0" y="140" width="180" height="50" fill="#2196F3" opacity="0.03" />
+                          <rect x="0" y="190" width="180" height="40" fill="#00BCD4" opacity="0.03" />
+                          <rect x="0" y="230" width="180" height="60" fill="#009688" opacity="0.03" />
+                          <rect x="0" y="290" width="180" height="50" fill="#4CAF50" opacity="0.03" />
+                          <rect x="0" y="340" width="180" height="50" fill="#8BC34A" opacity="0.03" />
+                          <rect x="0" y="390" width="180" height="50" fill="#FFC107" opacity="0.03" />
+                          <rect x="0" y="440" width="180" height="50" fill="#FF9800" opacity="0.03" />
+                          <rect x="0" y="490" width="180" height="110" fill="#FF5722" opacity="0.03" />
+                        </>
+                      )}
+                      
+                      {/* Central spine with stronger visibility */}
                       {!isBlackWhiteMode && (
                         <line 
-                          x1="100" y1="20" 
-                          x2="100" y2="580" 
+                          x1="90" y1="10" 
+                          x2="90" y2="590" 
                           stroke="url(#spineGradient)" 
-                          strokeWidth="3" 
-                          opacity="0.6"
+                          strokeWidth="4" 
+                          opacity="0.5"
                         />
                       )}
                       {isBlackWhiteMode && (
                         <line 
-                          x1="100" y1="20" 
-                          x2="100" y2="580" 
+                          x1="90" y1="10" 
+                          x2="90" y2="590" 
                           stroke="currentColor" 
-                          strokeWidth="2" 
-                          opacity="0.2"
+                          strokeWidth="3" 
+                          opacity="0.25"
                         />
                       )}
+                      
+                      {/* Zone labels on spine */}
+                      <text x="90" y="25" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">↑</text>
+                      <text x="90" y="65" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">👑</text>
+                      <text x="90" y="115" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">👁</text>
+                      <text x="90" y="165" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">👄</text>
+                      <text x="90" y="210" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">🔗</text>
+                      <text x="90" y="260" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">💚</text>
+                      <text x="90" y="315" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">⚡</text>
+                      <text x="90" y="365" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">✨</text>
+                      <text x="90" y="415" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">🦵</text>
+                      <text x="90" y="465" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">🦶</text>
+                      <text x="90" y="550" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">🌍</text>
                     </svg>
                   </div>
 
