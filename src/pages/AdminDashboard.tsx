@@ -1,38 +1,47 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LayoutDashboard, Users, TrendingUp, MessageSquare, DollarSign, Music, Shield, FileText, TestTube, Code, Palette, Gift, BookOpen, Bell, BarChart3 } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Activity, AlertCircle, TrendingUp, MessageSquare, DollarSign, Users, LayoutDashboard } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { AdminBreadcrumb } from "@/components/admin/AdminBreadcrumb";
 import { AdminLayout } from "@/components/admin/AdminLayout";
-import { LiveUsersMonitor } from "@/components/admin/LiveUsersMonitor";
-import { FeedbackMessages } from "@/components/admin/FeedbackMessages";
-import { NotificationPreferences } from "@/components/admin/NotificationPreferences";
-import { VIP9RoomUpload } from "@/components/admin/VIP9RoomUpload";
-import { TestPurchasePanel } from "@/components/admin/TestPurchasePanel";
 
-interface DashboardStats {
-  totalRooms: number;
+interface LiveMetrics {
   totalUsers: number;
-  pendingRequests: number;
-  suspendedUsers: number;
+  newUsersToday: number;
+  activeToday: number;
+  totalRooms: number;
+  roomsZeroAudio: number;
+  roomsLowHealth: number;
+  revenueToday: number;
+  revenueMonth: number;
+  pendingPayouts: number;
 }
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [loading, setLoading] = useState(true);
-  const [stats, setStats] = useState<DashboardStats>({
-    totalRooms: 0,
+  const [metrics, setMetrics] = useState<LiveMetrics>({
     totalUsers: 0,
-    pendingRequests: 0,
-    suspendedUsers: 0,
+    newUsersToday: 0,
+    activeToday: 0,
+    totalRooms: 0,
+    roomsZeroAudio: 0,
+    roomsLowHealth: 0,
+    revenueToday: 0,
+    revenueMonth: 0,
+    pendingPayouts: 0,
   });
 
   useEffect(() => {
     checkAdminAccess();
+    const interval = setInterval(() => {
+      fetchLiveMetrics();
+    }, 5000); // Refresh every 5 seconds
+    return () => clearInterval(interval);
   }, []);
 
   const checkAdminAccess = async () => {
@@ -65,7 +74,7 @@ const AdminDashboard = () => {
         return;
       }
 
-      await fetchDashboardStats();
+      await fetchLiveMetrics();
     } catch (error) {
       console.error("Error checking admin access:", error);
       navigate("/");
@@ -74,34 +83,69 @@ const AdminDashboard = () => {
     }
   };
 
-  const fetchDashboardStats = async () => {
+  const fetchLiveMetrics = async () => {
     try {
-      const { count: roomsCount } = await supabase
-        .from("chat_rooms")
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const todayISO = today.toISOString();
+
+      const monthStart = new Date(today.getFullYear(), today.getMonth(), 1);
+      const monthStartISO = monthStart.toISOString();
+
+      // Users metrics
+      const { count: totalUsers } = await supabase
+        .from("profiles")
         .select("*", { count: "exact", head: true });
 
-      const { count: usersCount } = await supabase
-        .from("user_roles")
+      const { count: newUsersToday } = await supabase
+        .from("profiles")
+        .select("*", { count: "exact", head: true })
+        .gte("created_at", todayISO);
+
+      const { count: activeToday } = await supabase
+        .from("user_sessions")
+        .select("*", { count: "exact", head: true })
+        .gte("last_activity", todayISO);
+
+      // Rooms metrics
+      const { count: totalRooms } = await supabase
+        .from("rooms")
         .select("*", { count: "exact", head: true });
 
-      const { count: requestsCount } = await supabase
-        .from("vip_room_requests")
+      // Revenue metrics (placeholder - update when payment tables exist)
+      const { data: paymentsToday } = await supabase
+        .from("payment_transactions")
+        .select("amount")
+        .gte("created_at", todayISO)
+        .eq("status", "completed");
+
+      const { data: paymentsMonth } = await supabase
+        .from("payment_transactions")
+        .select("amount")
+        .gte("created_at", monthStartISO)
+        .eq("status", "completed");
+
+      const { count: pendingPayouts } = await supabase
+        .from("payment_proof_submissions")
         .select("*", { count: "exact", head: true })
         .eq("status", "pending");
 
-      const { count: suspendedCount } = await supabase
-        .from("user_moderation_status")
-        .select("*", { count: "exact", head: true })
-        .eq("is_suspended", true);
+      const revenueToday = paymentsToday?.reduce((sum, p) => sum + Number(p.amount), 0) || 0;
+      const revenueMonth = paymentsMonth?.reduce((sum, p) => sum + Number(p.amount), 0) || 0;
 
-      setStats({
-        totalRooms: roomsCount || 0,
-        totalUsers: usersCount || 0,
-        pendingRequests: requestsCount || 0,
-        suspendedUsers: suspendedCount || 0,
+      setMetrics({
+        totalUsers: totalUsers || 0,
+        newUsersToday: newUsersToday || 0,
+        activeToday: activeToday || 0,
+        totalRooms: totalRooms || 0,
+        roomsZeroAudio: 0, // Will be calculated by health check
+        roomsLowHealth: 0, // Will be calculated by health check
+        revenueToday,
+        revenueMonth,
+        pendingPayouts: pendingPayouts || 0,
       });
     } catch (error) {
-      console.error("Error fetching dashboard stats:", error);
+      console.error("Error fetching live metrics:", error);
     }
   };
 
@@ -109,137 +153,95 @@ const AdminDashboard = () => {
     return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
   }
 
-  const cardStyle = "border-2 border-black bg-white hover:shadow-lg transition-shadow cursor-pointer";
-  const iconBgStyle = "p-3 bg-gray-100 border border-black rounded-lg";
-  const iconStyle = "h-6 w-6 text-black";
-  const titleStyle = "text-black font-bold";
-  const descStyle = "text-gray-600";
-  const textStyle = "text-sm text-gray-700";
+  const MetricCard = ({ label, value, icon: Icon, alert }: { label: string; value: number | string; icon: any; alert?: boolean }) => (
+    <Card className={`border-2 ${alert ? 'border-red-500 bg-red-50' : 'border-black bg-white'}`}>
+      <CardHeader className="pb-2">
+        <CardTitle className="text-xs font-bold text-gray-600 uppercase tracking-wide flex items-center gap-2">
+          <Icon className="h-4 w-4" />
+          {label}
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="text-5xl font-black text-black">{value}</div>
+      </CardContent>
+    </Card>
+  );
+
+  const QuickActionButton = ({ label, path, icon: Icon }: { label: string; path: string; icon: any }) => (
+    <Button
+      onClick={() => navigate(path)}
+      className="w-full h-24 text-lg font-bold bg-black text-white hover:bg-gray-800 border-2 border-black"
+    >
+      <Icon className="mr-2 h-6 w-6" />
+      {label}
+    </Button>
+  );
 
   return (
     <AdminLayout>
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto space-y-8">
         <AdminBreadcrumb items={[{ label: "Dashboard" }]} />
         
-        <div className="mb-8 p-8 rounded-2xl bg-black border-2 border-black">
-          <h1 className="text-5xl font-bold text-white">
-            Mercy Blade Admin Dashboard
-          </h1>
-          <p className="text-white mt-2 text-lg">Professional Admin Control Panel</p>
+        {/* LIVE METRICS - TOP ROW */}
+        <div>
+          <h2 className="text-xl font-bold text-black mb-4 uppercase tracking-wide">📊 Live Metrics (Auto-refresh 5s)</h2>
+          
+          {/* Users Row */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <MetricCard label="Total Users" value={metrics.totalUsers} icon={Users} />
+            <MetricCard label="New Users Today" value={metrics.newUsersToday} icon={TrendingUp} />
+            <MetricCard label="Active Today" value={metrics.activeToday} icon={Activity} />
+          </div>
+
+          {/* Rooms Row */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <MetricCard label="Total Rooms" value={metrics.totalRooms} icon={LayoutDashboard} />
+            <MetricCard label="Rooms 0% Audio" value={metrics.roomsZeroAudio} icon={AlertCircle} alert={metrics.roomsZeroAudio > 0} />
+            <MetricCard label="Rooms <50% Health" value={metrics.roomsLowHealth} icon={AlertCircle} alert={metrics.roomsLowHealth > 0} />
+          </div>
+
+          {/* Revenue Row */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <MetricCard label="Revenue Today" value={`$${metrics.revenueToday}`} icon={DollarSign} />
+            <MetricCard label="Revenue This Month" value={`$${metrics.revenueMonth}`} icon={DollarSign} />
+            <MetricCard label="Pending Payouts" value={metrics.pendingPayouts} icon={AlertCircle} alert={metrics.pendingPayouts > 0} />
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card className="border-2 border-black bg-white hover:shadow-lg transition-all">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-bold text-black">Total Rooms</CardTitle>
-              <LayoutDashboard className="h-4 w-4 text-black" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-black">{stats.totalRooms}</div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-2 border-black bg-white hover:shadow-lg transition-all">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-bold text-black">Total Users</CardTitle>
-              <Users className="h-4 w-4 text-black" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-black">{stats.totalUsers}</div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-2 border-black bg-white hover:shadow-lg transition-all">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-bold text-black">Pending Requests</CardTitle>
-              <MessageSquare className="h-4 w-4 text-black" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-black">{stats.pendingRequests}</div>
-              {stats.pendingRequests > 0 && (
-                <Badge variant="outline" className="mt-2 border-black text-black">Needs Attention</Badge>
-              )}
-            </CardContent>
-          </Card>
-
-          <Card className="border-2 border-black bg-white hover:shadow-lg transition-all">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-bold text-black">Suspended Users</CardTitle>
-              <Shield className="h-4 w-4 text-black" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-black">{stats.suspendedUsers}</div>
-            </CardContent>
-          </Card>
+        {/* QUICK ACTIONS - SECOND ROW */}
+        <div>
+          <h2 className="text-xl font-bold text-black mb-4 uppercase tracking-wide">⚡ Quick Actions</h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <QuickActionButton label="Room Health Check" path="/admin/health" icon={LayoutDashboard} />
+            <QuickActionButton label="Payment Dashboard" path="/admin/payments" icon={DollarSign} />
+            <QuickActionButton label="User List" path="/admin/users" icon={Users} />
+            <QuickActionButton label="Feedback Inbox" path="/admin/reports" icon={MessageSquare} />
+          </div>
         </div>
 
-        <div className="mb-8">
-          <TestPurchasePanel />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            { title: "Room Management", desc: "Create and edit chat rooms", icon: LayoutDashboard, path: "/admin/rooms", text: "Manage all chat rooms, create new rooms, and edit existing ones." },
-            { title: "Code Editor", desc: "Edit room JSON data", icon: Code, path: "/admin/code-editor", text: "Edit room content and structure directly in JSON format." },
-            { title: "User Roles", desc: "Manage user permissions", icon: Users, path: "/admin/users", text: "Grant or revoke admin access and manage user roles." },
-            { title: "Statistics", desc: "View usage analytics", icon: TrendingUp, path: "/admin/stats", text: "Monitor room usage, session data, and user engagement." },
-            { title: "VIP Requests", desc: "Review user requests", icon: MessageSquare, path: "/vip-requests", text: "View and manage VIP room requests from users.", badge: stats.pendingRequests > 0 ? `${stats.pendingRequests} pending` : null },
-            { title: "Payment Verification", desc: "Review payment submissions", icon: DollarSign, path: "/admin/payments", text: "Verify and approve user payment proof submissions." },
-            { title: "Audio Upload", desc: "Upload audio files", icon: Music, path: "/admin/audio-upload", text: "Upload audio files for rooms and manage existing audio." },
-            { title: "Audio Test", desc: "Test audio files", icon: TestTube, path: "/audio-test", text: "Test and verify audio files in VIP4 and other rooms." },
-            { title: "Moderation", desc: "Manage user violations", icon: Shield, path: "/admin/moderation", text: "Review reports, suspend users, and manage violations.", badge: stats.suspendedUsers > 0 ? `${stats.suspendedUsers} suspended` : null },
-            { title: "Gift Codes", desc: "Manage VIP gift codes", icon: Gift, path: "/admin/gift-codes", text: "Generate and manage VIP2/VIP3 gift codes for 1-year access." },
-            { title: "Reports", desc: "View user reports", icon: FileText, path: "/admin/reports", text: "Review and take action on user-submitted reports." },
-            { title: "VIP Rooms", desc: "Manage VIP content", icon: LayoutDashboard, path: "/admin/vip-rooms", text: "Manage premium VIP rooms and tier-specific content." },
-            { title: "Kids Validation", desc: "Validate kids rooms", icon: TestTube, path: "/kids-validation", text: "Check status and validation of all kids rooms and entries." },
-            { title: "Design Audit", desc: "Review design issues", icon: Palette, path: "/admin/design-audit", text: "Check color, spacing, and layout problems to review later.", badgeText: "For Review" },
-            { title: "App Metrics", desc: "Application scale overview", icon: BarChart3, path: "/admin/app-metrics", text: "View infrastructure metrics: tiers, rooms, entries, edge functions, and system scale.", badgeText: "Infrastructure" },
-            { title: "Room Specification", desc: "Design standards & patterns", icon: BookOpen, path: "/admin/specification", text: "View the master documentation for all room, level, and feature designs.", badgeText: "Master Doc" },
-            { title: "Notification Settings", desc: "Customize alert sounds", icon: Bell, path: "#", text: "Configure sound notifications and choose alert tones for admin alerts." }
-          ].map((item, idx) => (
-            <Card key={idx} className={cardStyle} onClick={() => item.path !== "#" && navigate(item.path)}>
-              <CardHeader>
-                <div className="flex items-center gap-3">
-                  <div className={iconBgStyle}>
-                    <item.icon className={iconStyle} />
-                  </div>
-                  <div>
-                    <CardTitle className={titleStyle}>{item.title}</CardTitle>
-                    <CardDescription className={descStyle}>{item.desc}</CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className={textStyle}>{item.text}</p>
-                {item.badge && (
-                  <Badge variant="outline" className="mt-2 border-black text-black">{item.badge}</Badge>
-                )}
-                {item.badgeText && (
-                  <Badge variant="outline" className="mt-2 border-black text-black">{item.badgeText}</Badge>
-                )}
-              </CardContent>
+        {/* CHARTS - THIRD ROW (Placeholder) */}
+        <div>
+          <h2 className="text-xl font-bold text-black mb-4 uppercase tracking-wide">📈 Trends</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Card className="border-2 border-black bg-white p-6">
+              <h3 className="text-sm font-bold text-gray-600 mb-2">USER GROWTH (7-DAY)</h3>
+              <div className="h-32 flex items-center justify-center text-gray-400">
+                Chart coming soon
+              </div>
             </Card>
-          ))}
-        </div>
-
-        <div className="mb-8 mt-8">
-          <h2 className="text-2xl font-bold mb-4 text-black">📤 VIP9 Room Upload</h2>
-          <VIP9RoomUpload />
-        </div>
-
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold mb-4 text-black">🔔 Notification Preferences</h2>
-          <NotificationPreferences />
-        </div>
-
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold mb-4 text-black">📹 Live User Monitoring</h2>
-          <LiveUsersMonitor />
-        </div>
-
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold mb-4 text-black">💬 User Messages</h2>
-          <FeedbackMessages />
+            <Card className="border-2 border-black bg-white p-6">
+              <h3 className="text-sm font-bold text-gray-600 mb-2">DAILY ACTIVE USERS</h3>
+              <div className="h-32 flex items-center justify-center text-gray-400">
+                Chart coming soon
+              </div>
+            </Card>
+            <Card className="border-2 border-black bg-white p-6">
+              <h3 className="text-sm font-bold text-gray-600 mb-2">REVENUE TREND</h3>
+              <div className="h-32 flex items-center justify-center text-gray-400">
+                Chart coming soon
+              </div>
+            </Card>
+          </div>
         </div>
       </div>
     </AdminLayout>
