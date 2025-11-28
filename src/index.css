@@ -275,6 +275,7 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    padding-bottom: 100px; /* Space for music player */
   }
   
   /* Copy protection for non-admin users */

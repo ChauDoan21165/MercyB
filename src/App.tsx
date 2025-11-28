@@ -9,6 +9,7 @@ import { AdminFloatingButton } from "@/components/AdminFloatingButton";
 import { ZoomControl } from "@/components/ZoomControl";
 import { HomeButton } from "@/components/HomeButton";
 import { LowDataModeProvider } from "@/contexts/LowDataModeContext";
+import { MusicPlayer } from "@/components/MusicPlayer";
 
 import Welcome from "./pages/Welcome";
 import Homepage from "./pages/Homepage";
@@ -187,6 +188,7 @@ const App = () => {
           <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <MusicPlayer />
         </BrowserRouter>
           </TooltipProvider>
         </LowDataModeProvider>
