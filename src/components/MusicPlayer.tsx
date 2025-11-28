@@ -61,6 +61,15 @@ const TRACKS = [
   { id: '48', name: 'Our Hopes And Dreams', url: '/audio/relaxing/our-hopes-and-dreams.mp3' },
   { id: '49', name: 'Galaxys Endless Expanse', url: '/audio/relaxing/galaxys-endless-expanse.mp3' },
   { id: '50', name: 'Prairie Evening', url: '/audio/relaxing/prairie-evening.mp3' },
+  { id: '51', name: 'Glistening Gifts', url: '/audio/relaxing/glistening-gifts.mp3' },
+  { id: '52', name: 'Broken Inside', url: '/audio/relaxing/broken-inside.mp3' },
+  { id: '53', name: 'Requiem', url: '/audio/relaxing/requiem.mp3' },
+  { id: '54', name: 'News Chill', url: '/audio/relaxing/news-chill.mp3' },
+  { id: '55', name: 'Wishing Well', url: '/audio/relaxing/wishing-well.mp3' },
+  { id: '56', name: 'Anhedonia', url: '/audio/relaxing/anhedonia.mp3' },
+  { id: '57', name: 'Saying Goodbye', url: '/audio/relaxing/saying-goodbye.mp3' },
+  { id: '58', name: 'I Wish I Told You', url: '/audio/relaxing/i-wish-i-told-you.mp3' },
+  { id: '59', name: 'Deep Meditation', url: '/audio/relaxing/deep-meditation.mp3' },
 ];
 
 export const MusicPlayer = () => {
