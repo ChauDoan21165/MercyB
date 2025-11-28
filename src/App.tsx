@@ -78,6 +78,7 @@ import HealthDashboard from "./pages/admin/HealthDashboard";
 import UnifiedHealthCheck from "./pages/admin/UnifiedHealthCheck";
 import SystemHealth from "./pages/admin/SystemHealth";
 import EdgeFunctions from "./pages/admin/EdgeFunctions";
+import RoomSpecification from "./pages/admin/RoomSpecification";
 
 const queryClient = new QueryClient();
 
@@ -178,6 +179,7 @@ const App = () => {
           <Route path="/admin/system-metrics" element={<AdminSystemMetrics />} />
           <Route path="/admin/gift-codes" element={<AdminGiftCodes />} />
           <Route path="/admin/specification" element={<AdminSpecification />} />
+          <Route path="/admin/room-specification" element={<RoomSpecification />} />
           <Route path="/admin/health" element={<UnifiedHealthCheck />} />
           <Route path="/admin/kids-room-health" element={<UnifiedHealthCheck />} />
           <Route path="/admin/health-dashboard" element={<HealthDashboard />} />
