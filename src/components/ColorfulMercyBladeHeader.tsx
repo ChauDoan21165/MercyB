@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, RotateCcw, UserPlus, Crown, Star, Gem, Sparkles, Rocket, Feather, Brain, Baby, GraduationCap, School, Gift, TrendingUp, Shield } from 'lucide-react';
+import { ArrowLeft, RotateCcw, UserPlus, Crown, Star, Gem, Sparkles, Rocket, Feather, Brain, Baby, GraduationCap, School, Gift, TrendingUp, Shield, Eye } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useEffect, useState } from 'react';
@@ -14,6 +14,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
 
 interface ColorfulMercyBladeHeaderProps {
   subtitle?: string;
@@ -21,6 +23,21 @@ interface ColorfulMercyBladeHeaderProps {
   showResetButton?: boolean;
   onReset?: () => void;
 }
+
+// Zone definitions for the human body pathway
+const BODY_ZONES = [
+  { id: 'universe', label: 'Universe', tier: null, height: 40 },
+  { id: 'vip9', label: 'VIP9 Crown', tier: 'vip9', height: 50 },
+  { id: 'vip8', label: 'VIP8 Eyes', tier: 'vip8', height: 50 },
+  { id: 'vip7', label: 'VIP7 Mouth', tier: 'vip7', height: 50 },
+  { id: 'vip6', label: 'VIP6 Neck', tier: 'vip6', height: 40 },
+  { id: 'vip5', label: 'VIP5 Chest', tier: 'vip5', height: 60 },
+  { id: 'vip4', label: 'VIP4 Belly', tier: 'vip4', height: 50 },
+  { id: 'vip3', label: 'VIP3 Hips', tier: 'vip3', height: 50 },
+  { id: 'vip2', label: 'VIP2 Knees', tier: 'vip2', height: 50 },
+  { id: 'vip1', label: 'VIP1 Shins', tier: 'vip1', height: 50 },
+  { id: 'free', label: 'Free Feet', tier: 'free', height: 50 },
+];
 
 export const ColorfulMercyBladeHeader = ({
   subtitle,
@@ -31,6 +48,8 @@ export const ColorfulMercyBladeHeader = ({
   const navigate = useNavigate();
   const [user, setUser] = useState<any>(null);
   const { tier } = useUserAccess();
+  const [hoveredZone, setHoveredZone] = useState<string | null>(null);
+  const [isBlackWhiteMode, setIsBlackWhiteMode] = useState(false);
 
   useEffect(() => {
     const checkUser = async () => {
@@ -126,211 +145,409 @@ export const ColorfulMercyBladeHeader = ({
                   Tier/Gói
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-[900px] bg-popover z-50 animate-scale-in">
-                <DropdownMenuLabel className="text-center font-bold animate-fade-in">
-                  Explore Tiers / Khám Phá Gói
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                
-                {/* Three-column layout */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-2">
-                  {/* Column 1: English Learning Pathway */}
-                  <div className="space-y-1">
-                    <div className="px-2 py-1.5 text-xs font-semibold text-blue-600">
-                      English Learning Pathway
-                    </div>
-                    
-                    <DropdownMenuItem 
-                      onClick={() => navigate('/english-pathway')}
-                      className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-200 border-l-2 border-transparent hover:border-blue-600"
-                    >
-                      <GraduationCap className="mr-2 h-4 w-4 text-blue-600" />
-                      <div className="flex flex-col">
-                        <span className="font-semibold text-sm">English Foundation</span>
-                        <span className="text-xs text-muted-foreground">Free tier</span>
-                      </div>
-                    </DropdownMenuItem>
+              <DropdownMenuContent align="end" className="w-[95vw] max-w-[1200px] bg-background border-2 z-50 p-0 overflow-hidden">
+                {/* Header with B&W Toggle */}
+                <div className="flex items-center justify-between p-4 border-b">
+                  <DropdownMenuLabel className="text-lg font-bold m-0">
+                    Mercy Blade Human Body Pathway
+                  </DropdownMenuLabel>
+                  <div className="flex items-center gap-2">
+                    <Label htmlFor="bw-mode" className="text-sm">B&W Mode</Label>
+                    <Switch 
+                      id="bw-mode"
+                      checked={isBlackWhiteMode}
+                      onCheckedChange={setIsBlackWhiteMode}
+                    />
+                  </div>
+                </div>
 
-                    <DropdownMenuItem 
-                      onClick={() => navigate('/english-pathway')}
-                      className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-200 border-l-2 border-transparent hover:border-blue-600"
+                {/* Main Body Pathway Layout */}
+                <div className="relative flex gap-0 h-[600px] overflow-hidden">
+                  {/* Human Silhouette in Background */}
+                  <div className="absolute left-1/2 top-0 bottom-0 w-[200px] -ml-[100px] pointer-events-none z-0">
+                    <svg 
+                      viewBox="0 0 200 600" 
+                      className="w-full h-full opacity-20"
+                      preserveAspectRatio="xMidYMin meet"
                     >
-                      <GraduationCap className="mr-2 h-4 w-4 text-blue-600" />
-                      <div className="flex flex-col">
-                        <span className="font-semibold text-sm">A1 Beginner</span>
-                        <span className="text-xs text-muted-foreground">VIP1 bonus</span>
-                      </div>
-                    </DropdownMenuItem>
-
-                    <DropdownMenuItem 
-                      onClick={() => navigate('/english-pathway')}
-                      className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-200 border-l-2 border-transparent hover:border-blue-600"
-                    >
-                      <GraduationCap className="mr-2 h-4 w-4 text-blue-600" />
-                      <div className="flex flex-col">
-                        <span className="font-semibold text-sm">A2 + B1 Intermediate</span>
-                        <span className="text-xs text-muted-foreground">VIP2 bonus</span>
-                      </div>
-                    </DropdownMenuItem>
-
-                    <DropdownMenuItem 
-                      onClick={() => navigate('/english-pathway')}
-                      className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-200 border-l-2 border-transparent hover:border-blue-600"
-                    >
-                      <GraduationCap className="mr-2 h-4 w-4 text-blue-600" />
-                      <div className="flex flex-col">
-                        <span className="font-semibold text-sm">B2 + C1 + C2 Advanced</span>
-                        <span className="text-xs text-muted-foreground">VIP3 bonus</span>
-                      </div>
-                    </DropdownMenuItem>
-
-                    <div className="my-2 border-t"></div>
-
-                    <DropdownMenuItem 
-                      onClick={() => navigate('/kids-level1')}
-                      className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-200 border-l-2 border-transparent hover:border-blue-600"
-                    >
-                      <Baby className="mr-2 h-4 w-4 text-blue-600" />
-                      <div className="flex flex-col">
-                        <span className="font-semibold text-sm">Kids Level 1</span>
-                        <span className="text-xs text-muted-foreground">Ages 4-7 • VIP3 bonus</span>
-                      </div>
-                    </DropdownMenuItem>
-
-                    <DropdownMenuItem 
-                      onClick={() => navigate('/kids-level2')}
-                      className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-200 border-l-2 border-transparent hover:border-blue-600"
-                    >
-                      <School className="mr-2 h-4 w-4 text-blue-600" />
-                      <div className="flex flex-col">
-                        <span className="font-semibold text-sm">Kids Level 2</span>
-                        <span className="text-xs text-muted-foreground">Ages 7-10 • VIP3 bonus</span>
-                      </div>
-                    </DropdownMenuItem>
-
-                    <DropdownMenuItem 
-                      onClick={() => navigate('/kids-level3')}
-                      className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-200 border-l-2 border-transparent hover:border-blue-600"
-                    >
-                      <GraduationCap className="mr-2 h-4 w-4 text-blue-600" />
-                      <div className="flex flex-col">
-                        <span className="font-semibold text-sm">Kids Level 3</span>
-                        <span className="text-xs text-muted-foreground">Ages 10-13 • VIP3 bonus</span>
-                      </div>
-                    </DropdownMenuItem>
+                      {/* Rainbow gradient spine */}
+                      <defs>
+                        <linearGradient id="spineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" stopColor="#E91E63" />
+                          <stop offset="14%" stopColor="#9C27B0" />
+                          <stop offset="28%" stopColor="#3F51B5" />
+                          <stop offset="42%" stopColor="#2196F3" />
+                          <stop offset="57%" stopColor="#00BCD4" />
+                          <stop offset="71%" stopColor="#4CAF50" />
+                          <stop offset="85%" stopColor="#FFC107" />
+                          <stop offset="100%" stopColor="#FF9800" />
+                        </linearGradient>
+                      </defs>
+                      
+                      {/* Soft body outline */}
+                      <ellipse cx="100" cy="30" rx="25" ry="30" fill="currentColor" opacity="0.1" />
+                      <ellipse cx="100" cy="80" rx="20" ry="25" fill="currentColor" opacity="0.1" />
+                      <ellipse cx="100" cy="140" rx="22" ry="30" fill="currentColor" opacity="0.1" />
+                      <ellipse cx="100" cy="230" rx="35" ry="60" fill="currentColor" opacity="0.1" />
+                      <ellipse cx="100" cy="350" rx="32" ry="55" fill="currentColor" opacity="0.1" />
+                      <ellipse cx="85" cy="480" rx="15" ry="70" fill="currentColor" opacity="0.1" />
+                      <ellipse cx="115" cy="480" rx="15" ry="70" fill="currentColor" opacity="0.1" />
+                      
+                      {/* Rainbow spine line */}
+                      {!isBlackWhiteMode && (
+                        <line 
+                          x1="100" y1="20" 
+                          x2="100" y2="580" 
+                          stroke="url(#spineGradient)" 
+                          strokeWidth="3" 
+                          opacity="0.6"
+                        />
+                      )}
+                      {isBlackWhiteMode && (
+                        <line 
+                          x1="100" y1="20" 
+                          x2="100" y2="580" 
+                          stroke="currentColor" 
+                          strokeWidth="2" 
+                          opacity="0.2"
+                        />
+                      )}
+                    </svg>
                   </div>
 
-                  {/* Column 2: Core Tiers */}
-                  <div className="space-y-1 border-l pl-4">
-                    <div className="px-2 py-1.5 text-xs font-semibold text-muted-foreground">
-                      Core Tiers
+                  {/* Left Column: English Learning Pathway */}
+                  <div className="flex-1 overflow-y-auto border-r relative z-10">
+                    <div className="sticky top-0 bg-background/95 backdrop-blur-sm px-4 py-2 border-b z-20">
+                      <h3 className={`text-sm font-bold ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`}>
+                        English Learning Pathway
+                      </h3>
                     </div>
-                    
-                    <DropdownMenuItem 
-                      onClick={() => navigate('/rooms')}
-                      className="cursor-pointer hover:bg-green-50 dark:hover:bg-green-900 transition-all duration-200 border-l-2 border-transparent hover:border-green-600"
-                    >
-                      <Crown className="mr-2 h-4 w-4 text-green-600" />
-                      <div className="flex flex-col">
-                        <span className="font-semibold text-sm">Free <span className="text-[10px] text-muted-foreground">$0</span></span>
-                        <span className="text-xs text-muted-foreground">Basic rooms</span>
+                    <div className="p-2 space-y-1">
+                      {/* Zone: Free */}
+                      <div 
+                        className={`transition-all duration-200 ${hoveredZone === 'free' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-blue-50/50 shadow-lg') : ''}`}
+                        onMouseEnter={() => setHoveredZone('free')}
+                        onMouseLeave={() => setHoveredZone(null)}
+                      >
+                        <DropdownMenuItem 
+                          onClick={() => navigate('/english-pathway')}
+                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
+                        >
+                          <GraduationCap className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
+                          <div>
+                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>English Foundation</div>
+                            <div className="text-xs text-muted-foreground">Free tier • A0-A1</div>
+                          </div>
+                        </DropdownMenuItem>
                       </div>
-                    </DropdownMenuItem>
 
-                    <DropdownMenuItem 
-                      onClick={() => navigate('/rooms-vip1')}
-                      className="cursor-pointer hover:bg-yellow-50 dark:hover:bg-yellow-900 transition-all duration-200 border-l-2 border-transparent hover:border-yellow-600"
-                    >
-                      <Star className="mr-2 h-4 w-4 text-yellow-600" />
-                      <div className="flex flex-col">
-                        <span className="font-semibold text-sm">VIP1 <span className="text-[10px] text-muted-foreground">$3</span></span>
-                        <span className="text-xs text-muted-foreground">10 rooms/month</span>
+                      {/* Zone: VIP1 */}
+                      <div 
+                        className={`transition-all duration-200 ${hoveredZone === 'vip1' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-blue-50/50 shadow-lg') : ''}`}
+                        onMouseEnter={() => setHoveredZone('vip1')}
+                        onMouseLeave={() => setHoveredZone(null)}
+                      >
+                        <DropdownMenuItem 
+                          onClick={() => navigate('/english-pathway')}
+                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
+                        >
+                          <GraduationCap className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
+                          <div>
+                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>A1 Beginner</div>
+                            <div className="text-xs text-muted-foreground">VIP1 bonus</div>
+                          </div>
+                        </DropdownMenuItem>
                       </div>
-                    </DropdownMenuItem>
 
-                    <DropdownMenuItem 
-                      onClick={() => navigate('/rooms-vip2')}
-                      className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-200 border-l-2 border-transparent hover:border-blue-600"
-                    >
-                      <Gem className="mr-2 h-4 w-4 text-blue-600" />
-                      <div className="flex flex-col">
-                        <span className="font-semibold text-sm">VIP2 <span className="text-[10px] text-muted-foreground">$6</span></span>
-                        <span className="text-xs text-muted-foreground">25 rooms/month</span>
+                      {/* Zone: VIP2 */}
+                      <div 
+                        className={`transition-all duration-200 ${hoveredZone === 'vip2' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-blue-50/50 shadow-lg') : ''}`}
+                        onMouseEnter={() => setHoveredZone('vip2')}
+                        onMouseLeave={() => setHoveredZone(null)}
+                      >
+                        <DropdownMenuItem 
+                          onClick={() => navigate('/english-pathway')}
+                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
+                        >
+                          <GraduationCap className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
+                          <div>
+                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>A2 + B1 Intermediate</div>
+                            <div className="text-xs text-muted-foreground">VIP2 bonus</div>
+                          </div>
+                        </DropdownMenuItem>
                       </div>
-                    </DropdownMenuItem>
 
-                    <DropdownMenuItem 
-                      onClick={() => navigate('/rooms-vip3')}
-                      className="cursor-pointer hover:bg-purple-50 dark:hover:bg-purple-900 transition-all duration-200 border-l-2 border-transparent hover:border-purple-600"
-                    >
-                      <Sparkles className="mr-2 h-4 w-4 text-purple-600" />
-                      <div className="flex flex-col">
-                        <span className="font-semibold text-sm">VIP3 <span className="text-[10px] text-muted-foreground">$15</span></span>
-                        <span className="text-xs text-muted-foreground">Unlimited rooms</span>
-                      </div>
-                    </DropdownMenuItem>
+                      {/* Zone: VIP3 */}
+                      <div 
+                        className={`transition-all duration-200 ${hoveredZone === 'vip3' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-blue-50/50 shadow-lg') : ''}`}
+                        onMouseEnter={() => setHoveredZone('vip3')}
+                        onMouseLeave={() => setHoveredZone(null)}
+                      >
+                        <DropdownMenuItem 
+                          onClick={() => navigate('/english-pathway')}
+                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
+                        >
+                          <GraduationCap className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
+                          <div>
+                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>B2 + C1 + C2 Advanced</div>
+                            <div className="text-xs text-muted-foreground">VIP3 bonus</div>
+                          </div>
+                        </DropdownMenuItem>
+                        
+                        <div className="mt-2 border-t pt-2">
+                          <DropdownMenuItem 
+                            onClick={() => navigate('/kids-level1')}
+                            className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
+                          >
+                            <Baby className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
+                            <div>
+                              <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Kids Level 1</div>
+                              <div className="text-xs text-muted-foreground">Ages 4-7</div>
+                            </div>
+                          </DropdownMenuItem>
 
-                    <DropdownMenuItem 
-                      onClick={() => navigate('/rooms-vip4')}
-                      className="cursor-pointer hover:bg-orange-50 dark:hover:bg-orange-900 transition-all duration-200 border-l-2 border-transparent hover:border-orange-600"
-                    >
-                      <Rocket className="mr-2 h-4 w-4 text-orange-600" />
-                      <div className="flex flex-col">
-                        <span className="font-semibold text-sm">VIP4 CareerZ <span className="text-[10px] text-muted-foreground">$50</span></span>
-                        <span className="text-xs text-muted-foreground">Career coaching</span>
-                      </div>
-                    </DropdownMenuItem>
+                          <DropdownMenuItem 
+                            onClick={() => navigate('/kids-level2')}
+                            className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
+                          >
+                            <School className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
+                            <div>
+                              <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Kids Level 2</div>
+                              <div className="text-xs text-muted-foreground">Ages 7-10</div>
+                            </div>
+                          </DropdownMenuItem>
 
-                    <DropdownMenuItem 
-                      onClick={() => navigate('/rooms-vip5')}
-                      className="cursor-pointer hover:bg-emerald-50 dark:hover:bg-emerald-900 transition-all duration-200 border-l-2 border-transparent hover:border-emerald-600"
-                    >
-                      <Feather className="mr-2 h-4 w-4 text-emerald-600" />
-                      <div className="flex flex-col">
-                        <span className="font-semibold text-sm">VIP5 Writing <span className="text-[10px] text-muted-foreground">$70</span></span>
-                        <span className="text-xs text-muted-foreground">Writing support</span>
+                          <DropdownMenuItem 
+                            onClick={() => navigate('/kids-level3')}
+                            className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
+                          >
+                            <GraduationCap className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
+                            <div>
+                              <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Kids Level 3</div>
+                              <div className="text-xs text-muted-foreground">Ages 10-13</div>
+                            </div>
+                          </DropdownMenuItem>
+                        </div>
                       </div>
-                    </DropdownMenuItem>
-
-                    <DropdownMenuItem 
-                      onClick={() => navigate('/vip6')}
-                      className="cursor-pointer hover:bg-purple-50 dark:hover:bg-purple-900 transition-all duration-200 border-l-2 border-transparent hover:border-purple-600"
-                    >
-                      <Brain className="mr-2 h-4 w-4 text-purple-600" />
-                      <div className="flex flex-col">
-                        <span className="font-semibold text-sm">VIP6 Psychology <span className="text-[10px] text-muted-foreground">$90</span></span>
-                        <span className="text-xs text-muted-foreground">Deep psychology</span>
-                      </div>
-                    </DropdownMenuItem>
-
-                    <DropdownMenuItem 
-                      onClick={() => navigate('/rooms-vip9')}
-                      className="cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-900 transition-all duration-200 border-l-2 border-transparent hover:border-slate-600"
-                    >
-                      <TrendingUp className="mr-2 h-4 w-4 text-slate-600" />
-                      <div className="flex flex-col">
-                        <span className="font-semibold text-sm">VIP9 Strategic Mastery <span className="text-[10px] text-muted-foreground">$150</span></span>
-                        <span className="text-xs text-muted-foreground">Executive Strategy</span>
-                      </div>
-                    </DropdownMenuItem>
+                    </div>
                   </div>
 
-                  {/* Column 3: Life Skills & Survival */}
-                  <div className="space-y-1 border-l pl-4">
-                    <div className="px-2 py-1.5 text-xs font-semibold text-red-600">
-                      Life Skills & Survival
+                  {/* Center Column: Core Tiers */}
+                  <div className="flex-1 overflow-y-auto border-r relative z-10">
+                    <div className="sticky top-0 bg-background/95 backdrop-blur-sm px-4 py-2 border-b z-20">
+                      <h3 className={`text-sm font-bold ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>
+                        Core Tier Levels
+                      </h3>
                     </div>
-                    
-                    <DropdownMenuItem 
-                      onClick={() => navigate('/rooms')}
-                      className="cursor-pointer hover:bg-red-50 dark:hover:bg-red-900 transition-all duration-200 border-l-2 border-transparent hover:border-red-600"
-                    >
-                      <Shield className="mr-2 h-4 w-4 text-red-600" />
-                      <div className="flex flex-col">
-                        <span className="font-semibold text-sm">Survival & Resilience</span>
-                        <span className="text-xs text-muted-foreground">Free bonus • 15 rooms</span>
+                    <div className="p-2 space-y-1">
+                      {/* Zone: Universe */}
+                      <div 
+                        className={`transition-all duration-200 ${hoveredZone === 'universe' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-purple-50/50 shadow-lg') : ''}`}
+                        onMouseEnter={() => setHoveredZone('universe')}
+                        onMouseLeave={() => setHoveredZone(null)}
+                      >
+                        <div className="px-3 py-2">
+                          <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Universe</div>
+                          <div className="text-xs text-muted-foreground">Coming soon</div>
+                        </div>
                       </div>
-                    </DropdownMenuItem>
+
+                      {/* Zone: VIP9 Crown */}
+                      <div 
+                        className={`transition-all duration-200 ${hoveredZone === 'vip9' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-slate-50/50 shadow-lg') : ''}`}
+                        onMouseEnter={() => setHoveredZone('vip9')}
+                        onMouseLeave={() => setHoveredZone(null)}
+                      >
+                        <DropdownMenuItem 
+                          onClick={() => navigate('/rooms-vip9')}
+                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-slate-50 hover:border-slate-600'}`}
+                        >
+                          <TrendingUp className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-slate-600'}`} />
+                          <div>
+                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP9 Strategic Mastery <span className="text-[10px] text-muted-foreground">$150</span></div>
+                            <div className="text-xs text-muted-foreground">Crown • Executive Strategy</div>
+                          </div>
+                        </DropdownMenuItem>
+                      </div>
+
+                      {/* Zone: VIP8 Eyes */}
+                      <div 
+                        className={`transition-all duration-200 ${hoveredZone === 'vip8' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-indigo-50/50 shadow-lg') : ''}`}
+                        onMouseEnter={() => setHoveredZone('vip8')}
+                        onMouseLeave={() => setHoveredZone(null)}
+                      >
+                        <div className="px-3 py-2">
+                          <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP8</div>
+                          <div className="text-xs text-muted-foreground">Eyes • Coming soon</div>
+                        </div>
+                      </div>
+
+                      {/* Zone: VIP7 Mouth */}
+                      <div 
+                        className={`transition-all duration-200 ${hoveredZone === 'vip7' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-pink-50/50 shadow-lg') : ''}`}
+                        onMouseEnter={() => setHoveredZone('vip7')}
+                        onMouseLeave={() => setHoveredZone(null)}
+                      >
+                        <div className="px-3 py-2">
+                          <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP7</div>
+                          <div className="text-xs text-muted-foreground">Mouth • Coming soon</div>
+                        </div>
+                      </div>
+
+                      {/* Zone: VIP6 Neck */}
+                      <div 
+                        className={`transition-all duration-200 ${hoveredZone === 'vip6' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-purple-50/50 shadow-lg') : ''}`}
+                        onMouseEnter={() => setHoveredZone('vip6')}
+                        onMouseLeave={() => setHoveredZone(null)}
+                      >
+                        <DropdownMenuItem 
+                          onClick={() => navigate('/vip6')}
+                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-purple-50 hover:border-purple-600'}`}
+                        >
+                          <Brain className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-purple-600'}`} />
+                          <div>
+                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP6 Psychology <span className="text-[10px] text-muted-foreground">$90</span></div>
+                            <div className="text-xs text-muted-foreground">Neck • Deep psychology</div>
+                          </div>
+                        </DropdownMenuItem>
+                      </div>
+
+                      {/* Zone: VIP5 Chest */}
+                      <div 
+                        className={`transition-all duration-200 ${hoveredZone === 'vip5' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-emerald-50/50 shadow-lg') : ''}`}
+                        onMouseEnter={() => setHoveredZone('vip5')}
+                        onMouseLeave={() => setHoveredZone(null)}
+                      >
+                        <DropdownMenuItem 
+                          onClick={() => navigate('/rooms-vip5')}
+                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-emerald-50 hover:border-emerald-600'}`}
+                        >
+                          <Feather className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-emerald-600'}`} />
+                          <div>
+                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP5 Writing <span className="text-[10px] text-muted-foreground">$70</span></div>
+                            <div className="text-xs text-muted-foreground">Chest • Writing support</div>
+                          </div>
+                        </DropdownMenuItem>
+                      </div>
+
+                      {/* Zone: VIP4 Belly */}
+                      <div 
+                        className={`transition-all duration-200 ${hoveredZone === 'vip4' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-orange-50/50 shadow-lg') : ''}`}
+                        onMouseEnter={() => setHoveredZone('vip4')}
+                        onMouseLeave={() => setHoveredZone(null)}
+                      >
+                        <DropdownMenuItem 
+                          onClick={() => navigate('/rooms-vip4')}
+                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-orange-50 hover:border-orange-600'}`}
+                        >
+                          <Rocket className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-orange-600'}`} />
+                          <div>
+                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP4 CareerZ <span className="text-[10px] text-muted-foreground">$50</span></div>
+                            <div className="text-xs text-muted-foreground">Belly • Career coaching</div>
+                          </div>
+                        </DropdownMenuItem>
+                      </div>
+
+                      {/* Zone: VIP3 Hips */}
+                      <div 
+                        className={`transition-all duration-200 ${hoveredZone === 'vip3' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-purple-50/50 shadow-lg') : ''}`}
+                        onMouseEnter={() => setHoveredZone('vip3')}
+                        onMouseLeave={() => setHoveredZone(null)}
+                      >
+                        <DropdownMenuItem 
+                          onClick={() => navigate('/rooms-vip3')}
+                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-purple-50 hover:border-purple-600'}`}
+                        >
+                          <Sparkles className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-purple-600'}`} />
+                          <div>
+                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP3 <span className="text-[10px] text-muted-foreground">$15</span></div>
+                            <div className="text-xs text-muted-foreground">Hips • Unlimited rooms</div>
+                          </div>
+                        </DropdownMenuItem>
+                      </div>
+
+                      {/* Zone: VIP2 Knees */}
+                      <div 
+                        className={`transition-all duration-200 ${hoveredZone === 'vip2' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-blue-50/50 shadow-lg') : ''}`}
+                        onMouseEnter={() => setHoveredZone('vip2')}
+                        onMouseLeave={() => setHoveredZone(null)}
+                      >
+                        <DropdownMenuItem 
+                          onClick={() => navigate('/rooms-vip2')}
+                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
+                        >
+                          <Gem className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
+                          <div>
+                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP2 <span className="text-[10px] text-muted-foreground">$6</span></div>
+                            <div className="text-xs text-muted-foreground">Knees • 25 rooms/month</div>
+                          </div>
+                        </DropdownMenuItem>
+                      </div>
+
+                      {/* Zone: VIP1 Shins */}
+                      <div 
+                        className={`transition-all duration-200 ${hoveredZone === 'vip1' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-yellow-50/50 shadow-lg') : ''}`}
+                        onMouseEnter={() => setHoveredZone('vip1')}
+                        onMouseLeave={() => setHoveredZone(null)}
+                      >
+                        <DropdownMenuItem 
+                          onClick={() => navigate('/rooms-vip1')}
+                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-yellow-50 hover:border-yellow-600'}`}
+                        >
+                          <Star className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-yellow-600'}`} />
+                          <div>
+                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP1 <span className="text-[10px] text-muted-foreground">$3</span></div>
+                            <div className="text-xs text-muted-foreground">Shins • 10 rooms/month</div>
+                          </div>
+                        </DropdownMenuItem>
+                      </div>
+
+                      {/* Zone: Free Feet */}
+                      <div 
+                        className={`transition-all duration-200 ${hoveredZone === 'free' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-green-50/50 shadow-lg') : ''}`}
+                        onMouseEnter={() => setHoveredZone('free')}
+                        onMouseLeave={() => setHoveredZone(null)}
+                      >
+                        <DropdownMenuItem 
+                          onClick={() => navigate('/rooms')}
+                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-green-50 hover:border-green-600'}`}
+                        >
+                          <Crown className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-green-600'}`} />
+                          <div>
+                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Free <span className="text-[10px] text-muted-foreground">$0</span></div>
+                            <div className="text-xs text-muted-foreground">Feet • Basic rooms</div>
+                          </div>
+                        </DropdownMenuItem>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Column: Life Skills & Survival */}
+                  <div className="flex-1 overflow-y-auto relative z-10">
+                    <div className="sticky top-0 bg-background/95 backdrop-blur-sm px-4 py-2 border-b z-20">
+                      <h3 className={`text-sm font-bold ${isBlackWhiteMode ? 'text-black' : 'text-red-600'}`}>
+                        Life Skills & Survival
+                      </h3>
+                    </div>
+                    <div className="p-2 space-y-1">
+                      {/* Zone: Free */}
+                      <div 
+                        className={`transition-all duration-200 ${hoveredZone === 'free' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-red-50/50 shadow-lg') : ''}`}
+                        onMouseEnter={() => setHoveredZone('free')}
+                        onMouseLeave={() => setHoveredZone(null)}
+                      >
+                        <DropdownMenuItem 
+                          onClick={() => navigate('/rooms')}
+                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-red-50 hover:border-red-600'}`}
+                        >
+                          <Shield className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-red-600'}`} />
+                          <div>
+                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Survival & Resilience</div>
+                            <div className="text-xs text-muted-foreground">Free bonus • 15 rooms</div>
+                          </div>
+                        </DropdownMenuItem>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
