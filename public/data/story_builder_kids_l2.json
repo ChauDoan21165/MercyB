@@ -9,7 +9,7 @@
     "en": "Practice building fun short stories in English with clear beginnings, middles, and endings.",
     "vi": "Luyện xây dựng những câu chuyện ngắn vui bằng tiếng Anh với mở đầu, thân bài và kết thúc rõ ràng."
   },
-  "intro_audio": "",
+  "intro_audio": "/audio/story_builder_kids_l2_intro_en.mp3",
   "entries": [
     {
       "slug": "who-where-when",
@@ -20,7 +20,7 @@
         "vi": "Học cách bắt đầu câu chuyện bằng cách cho biết câu chuyện về ai, xảy ra ở đâu và khi nào."
       },
       "tags": ["story", "beginning"],
-      "audio": ""
+      "audio": "/audio/story_builder_kids_l2_1_en.mp3"
     },
     {
       "slug": "problem-and-action",
@@ -31,7 +31,7 @@
         "vi": "Luyện các từ tiếng Anh để nói về một vấn đề nhỏ trong câu chuyện và nhân vật làm gì để giải quyết."
       },
       "tags": ["story", "middle"],
-      "audio": ""
+      "audio": "/audio/story_builder_kids_l2_2_en.mp3"
     },
     {
       "slug": "happy-ending",
@@ -42,7 +42,7 @@
         "vi": "Học các cụm từ như 'cuối cùng', 'kết thúc' để hoàn thành câu chuyện với cái kết vui hoặc một bài học."
       },
       "tags": ["story", "ending"],
-      "audio": ""
+      "audio": "/audio/story_builder_kids_l2_3_en.mp3"
     }
   ],
   "meta": {
