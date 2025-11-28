@@ -11,16 +11,16 @@ import {
 import { Slider } from '@/components/ui/slider';
 
 const TRACKS = [
-  { id: '1', name: 'Peaceful Piano', url: '/audio/relaxing/peaceful-piano.mp3' },
-  { id: '2', name: 'Calm Waters', url: '/audio/relaxing/calm-waters.mp3' },
-  { id: '3', name: 'Gentle Rain', url: '/audio/relaxing/gentle-rain.mp3' },
-  { id: '4', name: 'Mountain Breeze', url: '/audio/relaxing/mountain-breeze.mp3' },
-  { id: '5', name: 'Forest Walk', url: '/audio/relaxing/forest-walk.mp3' },
-  { id: '6', name: 'Ocean Waves', url: '/audio/relaxing/ocean-waves.mp3' },
-  { id: '7', name: 'Soft Guitar', url: '/audio/relaxing/soft-guitar.mp3' },
-  { id: '8', name: 'Morning Light', url: '/audio/relaxing/morning-light.mp3' },
-  { id: '9', name: 'Night Sky', url: '/audio/relaxing/night-sky.mp3' },
-  { id: '10', name: 'Quiet Mind', url: '/audio/relaxing/quiet-mind.mp3' },
+  { id: '1', name: 'Land of 8 Bits', url: '/audio/relaxing/land-of-8-bits.mp3' },
+  { id: '2', name: 'Lazy Day', url: '/audio/relaxing/lazy-day.mp3' },
+  { id: '3', name: 'Done With Work', url: '/audio/relaxing/done-with-work.mp3' },
+  { id: '4', name: 'Vibes', url: '/audio/relaxing/vibes.mp3' },
+  { id: '5', name: 'Cruisin Along', url: '/audio/relaxing/cruisin-along.mp3' },
+  { id: '6', name: 'Mellow Thoughts', url: '/audio/relaxing/mellow-thoughts.mp3' },
+  { id: '7', name: 'Looking Up', url: '/audio/relaxing/looking-up.mp3' },
+  { id: '8', name: 'Tropical Keys', url: '/audio/relaxing/tropical-keys.mp3' },
+  { id: '9', name: 'Simplicity', url: '/audio/relaxing/simplicity.mp3' },
+  { id: '10', name: 'All Shall End', url: '/audio/relaxing/all-shall-end.mp3' },
 ];
 
 export const MusicPlayer = () => {
