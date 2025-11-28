@@ -1249,6 +1249,71 @@ export type Database = {
           },
         ]
       }
+      room_specification_assignments: {
+        Row: {
+          applied_by: string | null
+          created_at: string | null
+          id: string
+          scope: string
+          specification_id: string | null
+          target_id: string | null
+        }
+        Insert: {
+          applied_by?: string | null
+          created_at?: string | null
+          id?: string
+          scope: string
+          specification_id?: string | null
+          target_id?: string | null
+        }
+        Update: {
+          applied_by?: string | null
+          created_at?: string | null
+          id?: string
+          scope?: string
+          specification_id?: string | null
+          target_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "room_specification_assignments_specification_id_fkey"
+            columns: ["specification_id"]
+            isOneToOne: false
+            referencedRelation: "room_specifications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      room_specifications: {
+        Row: {
+          created_at: string | null
+          created_by: string | null
+          description: string | null
+          id: string
+          name: string
+          updated_at: string | null
+          use_color_theme: boolean
+        }
+        Insert: {
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          name: string
+          updated_at?: string | null
+          use_color_theme?: boolean
+        }
+        Update: {
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          name?: string
+          updated_at?: string | null
+          use_color_theme?: boolean
+        }
+        Relationships: []
+      }
       room_usage_analytics: {
         Row: {
           completed_room: boolean | null

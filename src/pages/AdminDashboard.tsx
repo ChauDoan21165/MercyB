@@ -374,6 +374,9 @@ const AdminDashboard = () => {
             <QuickActionButton label="User List" path="/admin/users" icon={Users} />
             <QuickActionButton label="Feedback Inbox" path="/admin/feedback" icon={MessageSquare} />
           </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
+            <QuickActionButton label="Room Specification" path="/admin/room-specification" icon={Activity} />
+          </div>
         </div>
 
         {/* TOP 10 ROOMS THIS WEEK */}
