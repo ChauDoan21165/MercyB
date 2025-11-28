@@ -149,170 +149,199 @@ export const ColorfulMercyBladeHeader = ({
                   </div>
                 </div>
 
-                {/* THREE EQUAL COLUMNS - EXACT LAYOUT - NO AUTO-SORTING */}
-                <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x h-auto md:h-[500px] overflow-y-auto">
+                {/* 100×100 COORDINATE GRID - EXACT POSITIONING */}
+                <div className="relative w-full h-[600px] border-t">
                   
-                  {/* LEFT COLUMN - English Pathway (FIXED ORDER) */}
-                  <div className="p-4 space-y-3">
-                    <h3 className={`text-sm font-bold mb-4 ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>
-                      English Learning Pathway
-                    </h3>
+                  {/* Human Body Silhouette - Centered at X=50, Y=10→96 */}
+                  <svg 
+                    className="absolute pointer-events-none opacity-10" 
+                    style={{ 
+                      left: '35%', 
+                      top: '10%',
+                      width: '30%',
+                      height: '86%'
+                    }}
+                    viewBox="0 0 100 600"
+                    preserveAspectRatio="xMidYMid meet"
+                  >
+                    <defs>
+                      <linearGradient id="spineRainbow" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#ff0000" />
+                        <stop offset="20%" stopColor="#ff7f00" />
+                        <stop offset="40%" stopColor="#ffff00" />
+                        <stop offset="60%" stopColor="#00ff00" />
+                        <stop offset="80%" stopColor="#0000ff" />
+                        <stop offset="100%" stopColor="#9400d3" />
+                      </linearGradient>
+                    </defs>
                     
-                    <DropdownMenuItem onClick={() => navigate('/rooms/free')} className="cursor-pointer block p-3 rounded border hover:bg-muted/50">
-                      <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>English Foundation</div>
-                      <div className="text-xs text-muted-foreground">Free</div>
+                    {/* Head */}
+                    <ellipse cx="50" cy="30" rx="15" ry="20" fill="none" stroke="currentColor" strokeWidth="1" />
+                    
+                    {/* Spine - centered vertical line */}
+                    <line 
+                      x1="50" y1="50" x2="50" y2="550" 
+                      stroke={isBlackWhiteMode ? 'currentColor' : 'url(#spineRainbow)'} 
+                      strokeWidth="2" 
+                    />
+                    
+                    {/* Body outline */}
+                    <path
+                      d="M 30 50 L 30 250 Q 30 350 35 450 L 35 550 M 70 50 L 70 250 Q 70 350 65 450 L 65 550"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                    />
+                    
+                    {/* Arms */}
+                    <line x1="30" y1="100" x2="15" y2="180" stroke="currentColor" strokeWidth="1" />
+                    <line x1="70" y1="100" x2="85" y2="180" stroke="currentColor" strokeWidth="1" />
+                    
+                    {/* Legs */}
+                    <line x1="35" y1="550" x2="30" y2="600" stroke="currentColor" strokeWidth="1" />
+                    <line x1="65" y1="550" x2="70" y2="600" stroke="currentColor" strokeWidth="1" />
+                  </svg>
+
+                  {/* ENGLISH PATHWAY - LEFT COLUMN (X 3→25) */}
+                  <div className="absolute" style={{ left: '3%', top: '10%', width: '22%', height: '6%' }}>
+                    <DropdownMenuItem onClick={() => navigate('/rooms/free')} className="cursor-pointer h-full p-2 rounded border hover:bg-muted/50">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>English Foundation</div>
+                      <div className="text-[10px] text-muted-foreground">Free</div>
                     </DropdownMenuItem>
-                    
-                    <DropdownMenuItem onClick={() => navigate('/rooms/vip1')} className="cursor-pointer block p-3 rounded border hover:bg-muted/50">
-                      <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>A1 Beginner</div>
-                      <div className="text-xs text-muted-foreground">VIP1 bonus</div>
+                  </div>
+                  
+                  <div className="absolute" style={{ left: '3%', top: '20%', width: '22%', height: '6%' }}>
+                    <DropdownMenuItem onClick={() => navigate('/rooms/vip1')} className="cursor-pointer h-full p-2 rounded border hover:bg-muted/50">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>A1 Beginner</div>
+                      <div className="text-[10px] text-muted-foreground">VIP1 bonus</div>
                     </DropdownMenuItem>
-                    
-                    <DropdownMenuItem onClick={() => navigate('/rooms/vip2')} className="cursor-pointer block p-3 rounded border hover:bg-muted/50">
-                      <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>A2 + B1 Intermediate</div>
-                      <div className="text-xs text-muted-foreground">VIP2 bonus</div>
+                  </div>
+                  
+                  <div className="absolute" style={{ left: '3%', top: '30%', width: '22%', height: '6%' }}>
+                    <DropdownMenuItem onClick={() => navigate('/rooms/vip2')} className="cursor-pointer h-full p-2 rounded border hover:bg-muted/50">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>A2 + B1</div>
+                      <div className="text-[10px] text-muted-foreground">VIP2 bonus</div>
                     </DropdownMenuItem>
-                    
-                    <DropdownMenuItem onClick={() => navigate('/rooms/vip3')} className="cursor-pointer block p-3 rounded border hover:bg-muted/50">
-                      <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>B2 + C1 + C2 Advanced</div>
-                      <div className="text-xs text-muted-foreground">VIP3 bonus</div>
+                  </div>
+                  
+                  <div className="absolute" style={{ left: '3%', top: '40%', width: '22%', height: '6%' }}>
+                    <DropdownMenuItem onClick={() => navigate('/rooms/vip3')} className="cursor-pointer h-full p-2 rounded border hover:bg-muted/50">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>B2 + C1 + C2</div>
+                      <div className="text-[10px] text-muted-foreground">VIP3 bonus</div>
                     </DropdownMenuItem>
-                    
-                    <DropdownMenuItem onClick={() => navigate('/kids/level1')} className="cursor-pointer block p-3 rounded border hover:bg-muted/50">
-                      <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>Kids Level 1</div>
-                      <div className="text-xs text-muted-foreground">ages 4–7</div>
+                  </div>
+                  
+                  <div className="absolute" style={{ left: '3%', top: '60%', width: '22%', height: '6%' }}>
+                    <DropdownMenuItem onClick={() => navigate('/kids/level1')} className="cursor-pointer h-full p-2 rounded border hover:bg-muted/50">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>Kids L1</div>
+                      <div className="text-[10px] text-muted-foreground">ages 4–7</div>
                     </DropdownMenuItem>
-                    
-                    <DropdownMenuItem onClick={() => navigate('/kids/level2')} className="cursor-pointer block p-3 rounded border hover:bg-muted/50">
-                      <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>Kids Level 2</div>
-                      <div className="text-xs text-muted-foreground">ages 7–10</div>
+                  </div>
+                  
+                  <div className="absolute" style={{ left: '3%', top: '68%', width: '22%', height: '6%' }}>
+                    <DropdownMenuItem onClick={() => navigate('/kids/level2')} className="cursor-pointer h-full p-2 rounded border hover:bg-muted/50">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>Kids L2</div>
+                      <div className="text-[10px] text-muted-foreground">ages 7–10</div>
                     </DropdownMenuItem>
-                    
-                    <DropdownMenuItem onClick={() => navigate('/kids/level3')} className="cursor-pointer block p-3 rounded border hover:bg-muted/50">
-                      <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>Kids Level 3</div>
-                      <div className="text-xs text-muted-foreground">ages 10–13</div>
+                  </div>
+                  
+                  <div className="absolute" style={{ left: '3%', top: '78%', width: '22%', height: '6%' }}>
+                    <DropdownMenuItem onClick={() => navigate('/kids/level3')} className="cursor-pointer h-full p-2 rounded border hover:bg-muted/50">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>Kids L3</div>
+                      <div className="text-[10px] text-muted-foreground">ages 10–13</div>
                     </DropdownMenuItem>
                   </div>
 
-                  {/* MIDDLE COLUMN - Human Body Tier Map */}
-                  <div className="relative p-4">
-                    <h3 className={`text-sm font-bold mb-4 text-center ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>
-                      Human Body Tier Map
-                    </h3>
-                    
-                    {/* Simple Human Silhouette Background */}
-                    <svg viewBox="0 0 100 400" className="absolute inset-0 w-full h-full opacity-10 pointer-events-none">
-                      <defs>
-                        <linearGradient id="spineRainbow" x1="0%" y1="0%" x2="0%" y2="100%">
-                          <stop offset="0%" stopColor="#ff0000" />
-                          <stop offset="20%" stopColor="#ff7f00" />
-                          <stop offset="40%" stopColor="#ffff00" />
-                          <stop offset="60%" stopColor="#00ff00" />
-                          <stop offset="80%" stopColor="#0000ff" />
-                          <stop offset="100%" stopColor="#9400d3" />
-                        </linearGradient>
-                      </defs>
-                      
-                      {/* Head */}
-                      <ellipse cx="50" cy="30" rx="15" ry="20" fill="none" stroke="currentColor" strokeWidth="1" />
-                      
-                      {/* Spine */}
-                      <line 
-                        x1="50" y1="50" x2="50" y2="320" 
-                        stroke={isBlackWhiteMode ? 'currentColor' : 'url(#spineRainbow)'} 
-                        strokeWidth="2" 
-                      />
-                      
-                      {/* Body outline */}
-                      <path
-                        d="M 30 50 L 30 150 Q 30 200 35 250 L 35 320 M 70 50 L 70 150 Q 70 200 65 250 L 65 320"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1"
-                      />
-                      
-                      {/* Arms */}
-                      <line x1="30" y1="80" x2="15" y2="120" stroke="currentColor" strokeWidth="1" />
-                      <line x1="70" y1="80" x2="85" y2="120" stroke="currentColor" strokeWidth="1" />
-                      
-                      {/* Legs */}
-                      <line x1="35" y1="320" x2="30" y2="380" stroke="currentColor" strokeWidth="1" />
-                      <line x1="65" y1="320" x2="70" y2="380" stroke="currentColor" strokeWidth="1" />
-                    </svg>
-                    
-                    {/* Tier Items */}
-                    <div className="relative space-y-2">
-                      <div className="p-2 rounded border text-center cursor-default opacity-50">
-                        <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>Universe</div>
-                        <div className="text-[10px] text-muted-foreground">Above Head • coming soon</div>
-                      </div>
-                      
-                      <DropdownMenuItem onClick={() => navigate('/rooms/vip9')} className="cursor-pointer p-2 rounded border hover:bg-muted/50 text-center">
-                        <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>VIP9</div>
-                        <div className="text-[10px] text-muted-foreground">Crown</div>
-                      </DropdownMenuItem>
-                      
-                      <DropdownMenuItem onClick={() => navigate('/rooms/vip8')} className="cursor-pointer p-2 rounded border hover:bg-muted/50 text-center">
-                        <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>VIP8</div>
-                        <div className="text-[10px] text-muted-foreground">Eyes</div>
-                      </DropdownMenuItem>
-                      
-                      <DropdownMenuItem onClick={() => navigate('/rooms/vip7')} className="cursor-pointer p-2 rounded border hover:bg-muted/50 text-center">
-                        <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>VIP7</div>
-                        <div className="text-[10px] text-muted-foreground">Mouth</div>
-                      </DropdownMenuItem>
-                      
-                      <DropdownMenuItem onClick={() => navigate('/rooms/vip6')} className="cursor-pointer p-2 rounded border hover:bg-muted/50 text-center">
-                        <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>VIP6 Psychology</div>
-                        <div className="text-[10px] text-muted-foreground">Neck</div>
-                      </DropdownMenuItem>
-                      
-                      <DropdownMenuItem onClick={() => navigate('/rooms/vip5')} className="cursor-pointer p-2 rounded border hover:bg-muted/50 text-center">
-                        <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>VIP5 Writing</div>
-                        <div className="text-[10px] text-muted-foreground">Chest</div>
-                      </DropdownMenuItem>
-                      
-                      <DropdownMenuItem onClick={() => navigate('/rooms/vip4')} className="cursor-pointer p-2 rounded border hover:bg-muted/50 text-center">
-                        <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>VIP4 CareerZ</div>
-                        <div className="text-[10px] text-muted-foreground">Belly</div>
-                      </DropdownMenuItem>
-                      
-                      <DropdownMenuItem onClick={() => navigate('/rooms/vip3')} className="cursor-pointer p-2 rounded border hover:bg-muted/50 text-center">
-                        <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>VIP3</div>
-                        <div className="text-[10px] text-muted-foreground">Hips</div>
-                      </DropdownMenuItem>
-                      
-                      <DropdownMenuItem onClick={() => navigate('/rooms/vip2')} className="cursor-pointer p-2 rounded border hover:bg-muted/50 text-center">
-                        <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>VIP2</div>
-                        <div className="text-[10px] text-muted-foreground">Knees</div>
-                      </DropdownMenuItem>
-                      
-                      <DropdownMenuItem onClick={() => navigate('/rooms/vip1')} className="cursor-pointer p-2 rounded border hover:bg-muted/50 text-center">
-                        <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>VIP1</div>
-                        <div className="text-[10px] text-muted-foreground">Shins</div>
-                      </DropdownMenuItem>
-                      
-                      <DropdownMenuItem onClick={() => navigate('/rooms/free')} className="cursor-pointer p-2 rounded border hover:bg-muted/50 text-center">
-                        <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>Free</div>
-                        <div className="text-[10px] text-muted-foreground">Feet</div>
-                      </DropdownMenuItem>
+                  {/* HUMAN BODY TIER MAP - MIDDLE COLUMN (X 40→60) */}
+                  <div className="absolute" style={{ left: '40%', top: '2%', width: '20%', height: '6%' }}>
+                    <div className="h-full p-2 rounded border text-center cursor-default opacity-50">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>Universe</div>
+                      <div className="text-[10px] text-muted-foreground">Above Head</div>
                     </div>
                   </div>
-
-                  {/* RIGHT COLUMN - Life Skills & Survival */}
-                  <div className="p-4 space-y-3">
-                    <h3 className={`text-sm font-bold mb-4 ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>
-                      Life Skills & Survival
-                    </h3>
-                    
-                    <DropdownMenuItem onClick={() => navigate('/rooms/free')} className="cursor-pointer block p-3 rounded border hover:bg-muted/50">
-                      <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>Survival & Resilience</div>
-                      <div className="text-xs text-muted-foreground">Free bonus</div>
+                  
+                  <div className="absolute" style={{ left: '40%', top: '10%', width: '20%', height: '5%' }}>
+                    <DropdownMenuItem onClick={() => navigate('/rooms/vip9')} className="cursor-pointer h-full p-2 rounded border hover:bg-muted/50 text-center">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>VIP9</div>
+                      <div className="text-[10px] text-muted-foreground">Crown</div>
                     </DropdownMenuItem>
-                    
-                    <div className="block p-3 rounded border opacity-50 cursor-default">
-                      <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>(Future life-skill rooms)</div>
-                      <div className="text-xs text-muted-foreground">coming soon</div>
+                  </div>
+                  
+                  <div className="absolute" style={{ left: '40%', top: '17%', width: '20%', height: '6%' }}>
+                    <DropdownMenuItem onClick={() => navigate('/rooms/vip8')} className="cursor-pointer h-full p-2 rounded border hover:bg-muted/50 text-center">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>VIP8</div>
+                      <div className="text-[10px] text-muted-foreground">Eyes</div>
+                    </DropdownMenuItem>
+                  </div>
+                  
+                  <div className="absolute" style={{ left: '40%', top: '24%', width: '20%', height: '6%' }}>
+                    <DropdownMenuItem onClick={() => navigate('/rooms/vip7')} className="cursor-pointer h-full p-2 rounded border hover:bg-muted/50 text-center">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>VIP7</div>
+                      <div className="text-[10px] text-muted-foreground">Mouth</div>
+                    </DropdownMenuItem>
+                  </div>
+                  
+                  <div className="absolute" style={{ left: '40%', top: '31%', width: '20%', height: '6%' }}>
+                    <DropdownMenuItem onClick={() => navigate('/rooms/vip6')} className="cursor-pointer h-full p-2 rounded border hover:bg-muted/50 text-center">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>VIP6 Psychology</div>
+                      <div className="text-[10px] text-muted-foreground">Neck</div>
+                    </DropdownMenuItem>
+                  </div>
+                  
+                  <div className="absolute" style={{ left: '40%', top: '39%', width: '20%', height: '8%' }}>
+                    <DropdownMenuItem onClick={() => navigate('/rooms/vip5')} className="cursor-pointer h-full p-2 rounded border hover:bg-muted/50 text-center">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>VIP5 Writing</div>
+                      <div className="text-[10px] text-muted-foreground">Chest</div>
+                    </DropdownMenuItem>
+                  </div>
+                  
+                  <div className="absolute" style={{ left: '40%', top: '50%', width: '20%', height: '6%' }}>
+                    <DropdownMenuItem onClick={() => navigate('/rooms/vip4')} className="cursor-pointer h-full p-2 rounded border hover:bg-muted/50 text-center">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>VIP4 CareerZ</div>
+                      <div className="text-[10px] text-muted-foreground">Belly</div>
+                    </DropdownMenuItem>
+                  </div>
+                  
+                  <div className="absolute" style={{ left: '40%', top: '60%', width: '20%', height: '6%' }}>
+                    <DropdownMenuItem onClick={() => navigate('/rooms/vip3')} className="cursor-pointer h-full p-2 rounded border hover:bg-muted/50 text-center">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>VIP3</div>
+                      <div className="text-[10px] text-muted-foreground">Hips</div>
+                    </DropdownMenuItem>
+                  </div>
+                  
+                  <div className="absolute" style={{ left: '40%', top: '71%', width: '20%', height: '6%' }}>
+                    <DropdownMenuItem onClick={() => navigate('/rooms/vip2')} className="cursor-pointer h-full p-2 rounded border hover:bg-muted/50 text-center">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>VIP2</div>
+                      <div className="text-[10px] text-muted-foreground">Knees</div>
+                    </DropdownMenuItem>
+                  </div>
+                  
+                  <div className="absolute" style={{ left: '40%', top: '81%', width: '20%', height: '6%' }}>
+                    <DropdownMenuItem onClick={() => navigate('/rooms/vip1')} className="cursor-pointer h-full p-2 rounded border hover:bg-muted/50 text-center">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>VIP1</div>
+                      <div className="text-[10px] text-muted-foreground">Shins</div>
+                    </DropdownMenuItem>
+                  </div>
+                  
+                  <div className="absolute" style={{ left: '40%', top: '90%', width: '20%', height: '6%' }}>
+                    <DropdownMenuItem onClick={() => navigate('/rooms/free')} className="cursor-pointer h-full p-2 rounded border hover:bg-muted/50 text-center">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>Free</div>
+                      <div className="text-[10px] text-muted-foreground">Feet</div>
+                    </DropdownMenuItem>
+                  </div>
+
+                  {/* LIFE SKILLS & SURVIVAL - RIGHT COLUMN (X 75→97) */}
+                  <div className="absolute" style={{ left: '75%', top: '20%', width: '22%', height: '6%' }}>
+                    <DropdownMenuItem onClick={() => navigate('/rooms/free')} className="cursor-pointer h-full p-2 rounded border hover:bg-muted/50">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>Survival & Resilience</div>
+                      <div className="text-[10px] text-muted-foreground">Free bonus</div>
+                    </DropdownMenuItem>
+                  </div>
+                  
+                  <div className="absolute" style={{ left: '75%', top: '32%', width: '22%', height: '6%' }}>
+                    <div className="h-full p-2 rounded border opacity-50 cursor-default">
+                      <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-foreground'}`}>Future life-skills</div>
+                      <div className="text-[10px] text-muted-foreground">coming soon</div>
                     </div>
                   </div>
                   
