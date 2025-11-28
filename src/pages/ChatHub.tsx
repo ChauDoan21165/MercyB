@@ -38,7 +38,8 @@ import { ProfileAvatarUpload } from "@/components/ProfileAvatarUpload";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { getTierRoute } from "@/lib/tierRoutes";
 import { useFavoriteRooms } from "@/hooks/useFavoriteRooms";
-import { Heart, Star } from "lucide-react";
+import { useRecentRooms } from "@/hooks/useRecentRooms";
+import { Heart, Star, History, Clock } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -112,6 +113,7 @@ const ChatHub = () => {
   const [audioBasePath, setAudioBasePath] = useState<string>('/');
   const [matchedEntryId, setMatchedEntryId] = useState<string | null>(null);
   const { favoriteRooms, isFavorite: isRoomFavorite, toggleFavorite: toggleRoomFavorite } = useFavoriteRooms();
+  const { recentRooms, addRecentRoom, clearRecentRooms } = useRecentRooms();
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [roomNameOverride, setRoomNameOverride] = useState<{ nameEn: string; nameVi: string } | null>(null);
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
@@ -234,6 +236,17 @@ const ChatHub = () => {
       setIsAudioPlaying(false);
       setMergedEntries([]);
       setMatchedEntryId(null);
+      
+      // Track this room visit
+      if (roomId && info) {
+        addRecentRoom({
+          id: roomId,
+          nameEn: currentRoom.nameEn,
+          nameVi: currentRoom.nameVi,
+          tier: info.tier || 'free'
+        });
+      }
+      
       try {
         // Load merged entries from /public/tiers/{tier}/{room}/ based on room's tier metadata
         const result = await loadMergedRoom(roomId || '', info?.tier || 'free');
@@ -871,6 +884,66 @@ const ChatHub = () => {
                         >
                           <Heart className="h-3 w-3 fill-red-500 text-red-500" />
                         </Button>
+                      </DropdownMenuItem>
+                    ))
+                  )}
+                </ScrollArea>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="gap-2"
+                >
+                  <History className="w-4 h-4 text-blue-500" />
+                  Recent ({recentRooms.length})
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-[300px] z-[100]">
+                <DropdownMenuLabel className="flex items-center justify-between">
+                  <span>Recently Visited</span>
+                  {recentRooms.length > 0 && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={clearRecentRooms}
+                      className="h-6 px-2 text-xs"
+                    >
+                      Clear
+                    </Button>
+                  )}
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <ScrollArea className="h-[300px]">
+                  {recentRooms.length === 0 ? (
+                    <div className="p-4 text-center text-sm text-muted-foreground">
+                      No recent rooms yet. Visit some rooms to see them here.
+                    </div>
+                  ) : (
+                    recentRooms.map((room) => (
+                      <DropdownMenuItem
+                        key={room.id}
+                        onClick={() => navigate(`/room/${room.id}`)}
+                        className="cursor-pointer flex items-center justify-between"
+                      >
+                        <div className="flex flex-col flex-1">
+                          <span className="text-sm font-medium">{room.nameEn}</span>
+                          {room.nameEn !== room.nameVi && (
+                            <span className="text-xs text-muted-foreground">{room.nameVi}</span>
+                          )}
+                          <div className="flex items-center gap-2 mt-1">
+                            <Badge variant="secondary" className="text-xs w-fit">
+                              {room.tier === 'free' ? 'Free' : room.tier.toUpperCase()}
+                            </Badge>
+                            <span className="text-xs text-muted-foreground flex items-center gap-1">
+                              <Clock className="h-3 w-3" />
+                              {new Date(room.visitedAt).toLocaleDateString()}
+                            </span>
+                          </div>
+                        </div>
                       </DropdownMenuItem>
                     ))
                   )}
