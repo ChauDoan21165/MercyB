@@ -174,13 +174,7 @@ export default function AdminRooms() {
   );
 
   const getTierColor = (tier: string) => {
-    switch (tier) {
-      case "free": return "bg-green-500";
-      case "vip1": return "bg-blue-500";
-      case "vip2": return "bg-purple-500";
-      case "vip3": return "bg-orange-500";
-      default: return "bg-gray-500";
-    }
+    return "bg-black text-white";
   };
 
   if (accessLoading) {
@@ -208,7 +202,7 @@ export default function AdminRooms() {
   }
 
   return (
-    <div className="min-h-screen bg-background p-6">
+    <div className="min-h-screen bg-white p-6">
       <div className="max-w-7xl mx-auto">
         <AdminBreadcrumb items={[{ label: "Room Management" }]} />
         
@@ -218,12 +212,13 @@ export default function AdminRooms() {
               variant="ghost"
               size="icon"
               onClick={() => navigate("/")}
+              className="text-black hover:bg-gray-100"
             >
               <ArrowLeft className="h-5 w-5" />
             </Button>
             <div>
-              <h1 className="text-4xl font-bold">Room Management</h1>
-              <p className="text-muted-foreground mt-1">
+              <h1 className="text-4xl font-bold text-black">Room Management</h1>
+              <p className="text-gray-600 mt-1">
                 Manage all room content and entries
               </p>
             </div>
@@ -232,7 +227,7 @@ export default function AdminRooms() {
             <Button
               onClick={() => navigate("/admin/users")}
               variant="outline"
-              className="gap-2"
+              className="gap-2 border-black text-black hover:bg-gray-100"
             >
               <Users className="h-4 w-4" />
               User Roles
@@ -240,7 +235,7 @@ export default function AdminRooms() {
             <Button
               onClick={() => navigate("/admin/rooms/import")}
               variant="outline"
-              className="gap-2"
+              className="gap-2 border-black text-black hover:bg-gray-100"
             >
               <Plus className="h-4 w-4" />
               Import JSON
@@ -248,7 +243,7 @@ export default function AdminRooms() {
             <Button
               onClick={() => navigate("/admin/rooms/health")}
               variant="outline"
-              className="gap-2"
+              className="gap-2 border-black text-black hover:bg-gray-100"
             >
               <Activity className="h-4 w-4" />
               Health Check
@@ -256,14 +251,14 @@ export default function AdminRooms() {
             <Button
               onClick={() => navigate("/admin/rooms/data-health")}
               variant="outline"
-              className="gap-2"
+              className="gap-2 border-black text-black hover:bg-gray-100"
             >
               <Stethoscope className="h-4 w-4" />
               Data Health
             </Button>
             <Button
               onClick={() => navigate("/admin/rooms/new")}
-              className="gap-2"
+              className="gap-2 bg-black text-white hover:bg-gray-800 border-2 border-black"
             >
               <Plus className="h-4 w-4" />
               New Room
@@ -287,10 +282,10 @@ export default function AdminRooms() {
         ) : (
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {filteredRooms?.map((room) => (
-              <Card key={room.id} className="p-6 hover:border-primary transition-colors relative">
+              <Card key={room.id} className="p-6 border-2 border-black bg-white hover:bg-gray-50 transition-colors relative">
                 {room.is_locked && (
                   <div className="absolute top-2 right-2">
-                    <Badge variant="secondary" className="bg-yellow-500/10 text-yellow-700 border-yellow-500/20 flex items-center gap-1">
+                    <Badge variant="secondary" className="bg-black text-white border-black flex items-center gap-1">
                       <Lock className="h-3 w-3" />
                       Locked
                     </Badge>
@@ -302,15 +297,15 @@ export default function AdminRooms() {
                     <Badge className={`${getTierColor(room.tier)} mb-2`}>
                       {room.tier.toUpperCase()}
                     </Badge>
-                    <h3 className="font-semibold text-lg mb-1">{room.title_en}</h3>
-                    <p className="text-sm text-muted-foreground">{room.title_vi}</p>
-                    <p className="text-xs text-muted-foreground mt-2">
+                    <h3 className="font-semibold text-lg mb-1 text-black">{room.title_en}</h3>
+                    <p className="text-sm text-gray-600">{room.title_vi}</p>
+                    <p className="text-xs text-gray-600 mt-2">
                       ID: {room.id}
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
+                <div className="flex items-center justify-between text-sm text-gray-600 mb-4">
                   <span>{Array.isArray(room.entries) ? room.entries.length : 0} entries</span>
                   <span>{room.keywords?.length || 0} keywords</span>
                 </div>
