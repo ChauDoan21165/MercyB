@@ -1,0 +1,35 @@
+{
+  "id": "anxiety-relief-free",
+  "tier": "Free / Miễn phí",
+  "domain": "",
+  "title": {
+    "en": "Anxiety Relief — Free Preview",
+    "vi": "Giảm Lo Âu — Miễn Phí"
+  },
+  "content": {
+    "en": "This free preview introduces simple, effective techniques for managing anxiety in daily life. Learn deep breathing exercises that calm your nervous system, grounding techniques to bring you back to the present moment, and ways to build a supportive routine. These evidence-based practices are gentle, portable, and designed to fit seamlessly into your day.",
+    "vi": "Bản xem trước miễn phí này giới thiệu các kỹ thuật đơn giản, hiệu quả để quản lý lo âu trong cuộc sống hàng ngày. Học các bài tập hít thở sâu giúp làm dịu hệ thần kinh, kỹ thuật tiếp đất đưa bạn trở về hiện tại và cách xây dựng thói quen hỗ trợ. Những thực hành dựa trên bằng chứng này nhẹ nhàng, linh hoạt và dễ dàng tích hợp vào ngày của bạn."
+  },
+  "entries": [
+    {
+      "slug": "breathing",
+      "keywords_en": ["breathing", "calm", "anxiety", "relaxation"],
+      "keywords_vi": ["thở", "bình tĩnh", "lo âu", "thư giãn"],
+      "copy": {
+        "en": "Deep breathing eases anxiety quickly and effectively by activating the body's relaxation response. Inhale slowly for four counts through your nose, hold for four counts, then exhale gently for six counts through your mouth. Repeat this cycle five to ten times whenever stress begins to rise, noticing how it lowers your heart rate and clears your mind. This technique is portable and discreet, suitable in almost any situation. You can also share it with a trusted friend or support group to encourage each other, turning a simple habit into a shared anchor of calm in daily life.",
+        "vi": "Hít thở sâu giúp giảm lo âu nhanh chóng và hiệu quả bằng cách kích hoạt phản ứng thư giãn của cơ thể. Hít chậm qua mũi trong bốn nhịp, giữ trong bốn nhịp, rồi thở nhẹ nhàng qua miệng trong sáu nhịp. Lặp lại chu kỳ này năm đến mười lần bất cứ khi nào căng thẳng bắt đầu tăng, và để ý cách nó làm chậm nhịp tim, làm tâm trí rõ ràng hơn. Kỹ thuật này linh động và kín đáo, phù hợp trong hầu hết mọi tình huống. Bạn cũng có thể chia sẻ với người thân hoặc nhóm hỗ trợ để khích lệ lẫn nhau, biến một thói quen đơn giản thành điểm tựa bình an chung trong cuộc sống hằng ngày."
+      },
+      "audio": "anxiety_relief_free_breathing.mp3"
+    },
+    {
+      "slug": "grounding",
+      "keywords_en": ["grounding", "present", "calm", "awareness"],
+      "keywords_vi": ["tiếp đất", "hiện tại", "bình tĩnh", "nhận thức"],
+      "copy": {
+        "en": "Grounding techniques bring you back to the present moment, interrupting racing thoughts and reducing anxiety. Start by naming five things you can see around you, four things you can touch, three things you can hear, two things you can smell, and one thing you can taste. This simple sensory exercise anchors your mind in reality and gives your nervous system a chance to settle. Practice it during stressful transitions, like before meals or at bedtime, so it becomes familiar and easy to use. Sharing this method with a friend or loved one can deepen connection and remind you both that calm is something you can gently return to, not something you must force.",
+        "vi": "Các kỹ thuật tiếp đất đưa bạn trở lại với hiện tại, cắt ngang dòng suy nghĩ quay cuồng và giảm lo âu. Hãy bắt đầu bằng cách gọi tên năm thứ bạn nhìn thấy xung quanh, bốn thứ bạn chạm vào được, ba âm thanh bạn nghe được, hai mùi bạn ngửi thấy và một vị bạn có thể nếm. Bài tập cảm giác đơn giản này neo tâm trí vào thực tế và cho hệ thần kinh cơ hội lắng xuống. Hãy luyện tập trong những lúc chuyển giao dễ căng thẳng, như trước bữa ăn hoặc giờ đi ngủ, để nó trở nên quen thuộc và dễ dùng. Việc chia sẻ phương pháp này với bạn bè hoặc người thân cũng giúp tăng kết nối, nhắc nhở cả hai rằng sự bình tĩnh là trạng thái có thể nhẹ nhàng quay về, không phải thứ phải cưỡng ép."
+      },
+      "audio": "anxiety_relief_free_grounding.mp3"
+    }
+  ]
+}
