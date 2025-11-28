@@ -27,13 +27,13 @@ const RoomGrid = () => {
   const [demoRoomIds, setDemoRoomIds] = useState<string[]>([]);
   
   // Use cached rooms hook for optimized data fetching
-  const { data: cachedRooms, isLoading, refetch } = useCachedRooms('free');
+  const { data: cachedRooms, isLoading, refetch } = useCachedRooms();
 
   useEffect(() => {
     const checkAuth = async () => {
       const { data: { user } } = await supabase.auth.getUser();
       
-      // If not authenticated, fetch demo room IDs
+      // If not authenticated, fetch demo room IDs for homepage previews only
       if (!user) {
         const rooms = await getDemoRooms();
         setDemoRoomIds(rooms.map(r => r.id));
@@ -42,16 +42,15 @@ const RoomGrid = () => {
     checkAuth();
   }, []);
   
-  // Filter rooms based on demo mode
+  // Filter rooms to show ONLY free tier rooms on this page
   const filteredRooms = useMemo(() => {
     if (!cachedRooms) return [];
-    // Only filter by demo room IDs if user is explicitly in demo mode AND demo rooms are loaded
-    if (isDemoMode && demoRoomIds.length > 0) {
-      return cachedRooms.filter(room => demoRoomIds.includes(room.id));
-    }
-    // Otherwise show all cached rooms (authenticated users or demo rooms not loaded yet)
-    return cachedRooms;
-  }, [cachedRooms, isDemoMode, demoRoomIds]);
+
+    return cachedRooms.filter(room => {
+      const t = room.tier?.toLowerCase() || 'free';
+      return t.includes('free');
+    });
+  }, [cachedRooms]);
 
   const handleRoomClick = (room: any) => {
     navigate(`/chat/${room.id}`);
@@ -120,34 +119,52 @@ const RoomGrid = () => {
                 </div>
               </div>
           
-          <div className="text-center space-y-2">
-            <h1 className="text-4xl font-bold bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
-              Choose Your Learning Room
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              Chọn Phòng Học Của Bạn
-            </p>
-            <p className="text-sm text-muted-foreground/80">
-              {isLoading ? 'Loading...' : `Showing ${filteredRooms.length} rooms`}
-            </p>
+              <div className="text-center space-y-2">
+                <h1 className="text-4xl font-bold bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
+                  Choose Your Learning Room
+                </h1>
+                <p className="text-lg text-muted-foreground">
+                  Chọn Phòng Học Của Bạn
+                </p>
+                <p className="text-sm text-muted-foreground/80">
+                  {isLoading ? 'Loading...' : `Showing ${filteredRooms.length} rooms`}
+                </p>
+              </div>
+            </div>
+
+            {/* Loading skeleton */}
+            {isLoading && <RoomGridSkeleton count={24} />}
+
+            {/* Empty state message when no rooms are visible */}
+            {!isLoading && filteredRooms.length === 0 && (
+              <div className="mt-12 text-center space-y-4 max-w-xl mx-auto">
+                <p className="text-base text-muted-foreground">
+                  No rooms are visible right now. This can happen if you are not signed in or your account has no free rooms configured.
+                </p>
+                <div className="flex justify-center gap-3">
+                  <Button onClick={() => navigate('/auth')} size="sm">
+                    Sign in / Đăng nhập
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={handleRefreshRooms}>
+                    <RefreshCw className="h-4 w-4 mr-1" />
+                    Try again
+                  </Button>
+                </div>
+              </div>
+            )}
+
+            {/* Virtualized Room Grid */}
+            {!isLoading && filteredRooms.length > 0 && (
+              <VirtualizedRoomGrid
+                rooms={filteredRooms}
+                onRoomClick={handleRoomClick}
+                highlightColors={FREE_INTRO_ROOMS}
+              />
+            )}
+
           </div>
         </div>
-
-        {/* Loading skeleton */}
-        {isLoading && <RoomGridSkeleton count={24} />}
-
-        {/* Virtualized Room Grid */}
-        {!isLoading && (
-          <VirtualizedRoomGrid
-            rooms={filteredRooms}
-            onRoomClick={handleRoomClick}
-            highlightColors={FREE_INTRO_ROOMS}
-          />
-        )}
-
-        </div>
       </div>
-    </div>
     </TooltipProvider>
   );
 };
