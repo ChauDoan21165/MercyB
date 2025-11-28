@@ -313,10 +313,9 @@ export function SyncHealthSummary() {
         })
       );
 
-      // Filter rooms with DB entries but no JSON file
+      // Filter ALL rooms with DB records but no JSON file (regardless of entries)
       const roomsNeedingJson = jsonFileChecks
-        .filter(r => !r.hasJson && r.room.entries && 
-                     (Array.isArray(r.room.entries) ? r.room.entries.length > 0 : Object.keys(r.room.entries).length > 0))
+        .filter(r => !r.hasJson)
         .map(r => r.room);
 
       if (roomsNeedingJson.length === 0) {
@@ -341,18 +340,20 @@ export function SyncHealthSummary() {
       for (const room of roomsNeedingJson) {
         try {
           // Construct JSON in Mercy Blade standard format
+          const entries = room.entries && Array.isArray(room.entries) ? room.entries : [];
+          
           const jsonContent = {
             schema_version: "1.0",
             schema_id: room.schema_id || room.id,
             id: room.id,
-            tier: room.tier,
+            tier: room.tier || "free",
             domain: room.domain || "",
             description: {
               en: room.title_en || "",
               vi: room.title_vi || ""
             },
             keywords: room.keywords || [],
-            entries: Array.isArray(room.entries) ? room.entries : [],
+            entries: entries,
             room_essay: {
               en: room.room_essay_en || "",
               vi: room.room_essay_vi || ""
