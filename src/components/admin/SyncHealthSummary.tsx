@@ -298,43 +298,31 @@ export function SyncHealthSummary() {
     try {
       setFixing(true);
 
-      // Get all rooms that have entries
+      // Get all rooms
       const { data: allRooms, error: fetchError } = await supabase
         .from('rooms')
         .select('*');
 
       if (fetchError) throw fetchError;
 
-      // Check which rooms are missing JSON files (with cache-busting)
-      const cacheBuster = Date.now();
-      const jsonFileChecks = await Promise.all(
-        (allRooms || []).map(async (room) => {
-          try {
-            const response = await fetch(`/data/${room.id}.json?t=${cacheBuster}`, { 
-              method: 'HEAD',
-              cache: 'no-store'
-            });
-            return { room, hasJson: response.ok };
-          } catch {
-            return { room, hasJson: false };
-          }
-        })
-      );
-
-      // Filter ALL rooms with DB records but no JSON file (regardless of entries)
-      const roomsNeedingJson = jsonFileChecks
-        .filter(r => !r.hasJson)
-        .map(r => r.room);
+      // Determine which rooms to export: all Free-tier + English Foundation
+      const roomsNeedingJson = (allRooms || []).filter((room: any) => {
+        const tier = (room.tier || "").toString().toLowerCase();
+        const id = room.id || "";
+        const isFreeTier = tier === "free" || tier.includes("free / miễn phí") || tier.startsWith("free");
+        const isEnglishFoundation = id.startsWith("english_foundation_");
+        return isFreeTier || isEnglishFoundation;
+      });
 
       if (roomsNeedingJson.length === 0) {
         toast({
-          title: "✅ All Synced",
-          description: "All rooms in the database already have JSON files in public/data/!",
+          title: "No Free/English Foundation Rooms",
+          description: "Could not find any Free or English Foundation rooms in the database to export.",
         });
         return;
       }
 
-      console.log(`Found ${roomsNeedingJson.length} rooms needing JSON export:`, roomsNeedingJson.map(r => r.id));
+      console.log(`Exporting ${roomsNeedingJson.length} Free/English Foundation rooms to JSON:`, roomsNeedingJson.map((r: any) => r.id));
 
       const message = `📝 EXPORT ${roomsNeedingJson.length} JSON FILES FROM DATABASE?\n\n` +
         `This will generate JSON files for:\n${roomsNeedingJson.map(r => r.id).slice(0, 10).join('\n')}` +
