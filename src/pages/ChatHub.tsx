@@ -761,12 +761,22 @@ const ChatHub = () => {
         <div className="flex items-center justify-between bg-card rounded-lg p-4 shadow-soft">
           <div className="flex gap-2">
             <Button
+              variant="outline"
+              size="sm"
+              onClick={() => navigate('/')}
+              className="gap-2 bg-background hover:bg-muted"
+            >
+              <Home className="w-4 h-4" />
+              Home
+            </Button>
+            <Button
               variant="ghost"
+              size="sm"
               onClick={() => navigate(getParentRoute(roomId))}
               className="gap-2"
             >
               <ArrowLeft className="w-4 h-4" />
-              Back / Quay Lại
+              Back
             </Button>
           </div>
          
