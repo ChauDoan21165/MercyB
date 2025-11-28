@@ -123,13 +123,51 @@ export function SyncHealthSummary() {
     }
   };
 
+  // Helper to check if room ID is non-canonical English duplicate (safe to auto-delete)
+  const isNonCanonicalEnglishDuplicate = (id: string): boolean => {
+    // Pattern: uppercase letters with hyphens (EF-01, A1-01, A2-01, etc.)
+    const hasUppercaseWithHyphens = /[A-Z]/.test(id) && id.includes('-');
+    
+    // Pattern: English layer IDs like EF-01...EF-14, A1-01...A1-14, A2-01...C2-14
+    const isEnglishLayerPattern = /^(EF|A1|A2|B1|B2|C1|C2)-\d{2}$/.test(id);
+    
+    return hasUppercaseWithHyphens || isEnglishLayerPattern;
+  };
+
   const handleDeleteRoomsWithoutJson = async (roomIds: string[]) => {
     if (!roomIds || roomIds.length === 0) return;
 
-    const confirmed = confirm(
-      `⚠️ DELETE ${roomIds.length} ROOMS?\n\nThis will permanently delete these rooms from the database:\n\n${roomIds.slice(0, 10).join('\n')}${roomIds.length > 10 ? `\n\n...and ${roomIds.length - 10} more` : ''}\n\nThis action CANNOT be undone.\n\nType YES to confirm.`
-    );
+    // Split rooms into safe-to-delete and review-manually categories
+    const safeToDelete = roomIds.filter(id => isNonCanonicalEnglishDuplicate(id));
+    const reviewManually = roomIds.filter(id => !isNonCanonicalEnglishDuplicate(id));
 
+    // Build confirmation message
+    let message = `⚠️ SAFETY CHECK:\n\n`;
+    
+    if (safeToDelete.length > 0) {
+      message += `✅ SAFE TO AUTO-DELETE (${safeToDelete.length} non-canonical English duplicates):\n`;
+      message += safeToDelete.slice(0, 10).join('\n');
+      if (safeToDelete.length > 10) message += `\n...and ${safeToDelete.length - 10} more`;
+      message += '\n\n';
+    } else {
+      message += `✅ SAFE TO AUTO-DELETE: None\n\n`;
+    }
+    
+    if (reviewManually.length > 0) {
+      message += `⚠️ REVIEW MANUALLY (${reviewManually.length} lowercase snake_case IDs - will NOT be deleted):\n`;
+      message += reviewManually.slice(0, 10).join('\n');
+      if (reviewManually.length > 10) message += `\n...and ${reviewManually.length - 10} more`;
+      message += '\n\n';
+    }
+
+    if (safeToDelete.length === 0) {
+      alert(message + `All ${reviewManually.length} room(s) require manual review. Nothing will be deleted automatically.`);
+      return;
+    }
+
+    message += `Proceed with deleting ONLY the ${safeToDelete.length} non-canonical duplicate(s)?`;
+    
+    const confirmed = confirm(message);
     if (!confirmed) return;
 
     try {
@@ -138,13 +176,13 @@ export function SyncHealthSummary() {
       const { error } = await supabase
         .from('rooms')
         .delete()
-        .in('id', roomIds);
+        .in('id', safeToDelete);
 
       if (error) throw error;
 
       toast({
         title: "Success",
-        description: `Deleted ${roomIds.length} rooms without JSON files`,
+        description: `Deleted ${safeToDelete.length} non-canonical duplicate(s). ${reviewManually.length} room(s) kept for manual review.`,
       });
 
       // Reload stats
