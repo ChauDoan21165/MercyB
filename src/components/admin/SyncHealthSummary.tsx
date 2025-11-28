@@ -420,15 +420,26 @@ export function SyncHealthSummary() {
           <h2 className="text-2xl font-bold">SYNC HEALTH SUMMARY</h2>
           {loading && <RefreshCw className="w-5 h-5 animate-spin text-muted-foreground" />}
         </div>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={loadSyncStats}
-          disabled={loading}
-        >
-          <RefreshCw className="w-4 h-4 mr-2" />
-          Refresh
-        </Button>
+        <div className="flex gap-2">
+          <Button
+            variant="default"
+            size="lg"
+            onClick={handleExportMissingJsonFiles}
+            disabled={fixing}
+            className="bg-green-600 hover:bg-green-700 text-white font-bold"
+          >
+            📝 Export Missing JSON from DB ({stats.find(s => s.category === "Rooms in DB but no JSON file")?.difference || 0} rooms)
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={loadSyncStats}
+            disabled={loading}
+          >
+            <RefreshCw className="w-4 h-4 mr-2" />
+            Refresh
+          </Button>
+        </div>
       </div>
 
       <div className="overflow-x-auto">
