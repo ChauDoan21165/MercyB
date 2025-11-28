@@ -183,38 +183,35 @@ const AdminStats = () => {
 
   return (
     <AdminLayout>
-      <div className="min-h-screen p-8" style={{ background: 'var(--gradient-admin)' }}>
+      <div className="min-h-screen p-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="mb-8 flex items-center justify-between">
             <div>
-              <h1 className="text-4xl font-bold mb-2">Admin Statistics</h1>
-              <p className="text-muted-foreground">Mercy Mind Link Analytics & Metrics</p>
+              <h1 className="text-4xl font-bold mb-2 text-black">Admin Statistics</h1>
+              <p className="text-gray-600">Mercy Mind Link Analytics & Metrics</p>
             </div>
             <div className="flex gap-2 flex-wrap">
               <Button 
                 onClick={() => navigate('/admin')}
-                className="gap-2"
-                style={{ 
-                  background: 'var(--gradient-rainbow)',
-                  color: 'white'
-                }}
+                variant="outline"
+                className="gap-2 border-black text-black hover:bg-gray-100"
               >
                 <Home className="h-4 w-4" />
                 Main Dashboard
               </Button>
-              <Button onClick={() => navigate('/admin/gift-codes')} variant="outline" className="gap-2">
+              <Button onClick={() => navigate('/admin/gift-codes')} variant="outline" className="gap-2 border-black text-black hover:bg-gray-100">
                 <Gift className="h-4 w-4" />
                 Gift Codes
               </Button>
-              <Button onClick={() => navigate('/admin/specification')} variant="outline" className="gap-2">
+              <Button onClick={() => navigate('/admin/specification')} variant="outline" className="gap-2 border-black text-black hover:bg-gray-100">
                 <BookOpen className="h-4 w-4" />
                 Specification
               </Button>
-              <Button onClick={() => navigate('/admin/system-metrics')} variant="outline">
+              <Button onClick={() => navigate('/admin/system-metrics')} variant="outline" className="border-black text-black hover:bg-gray-100">
                 <LayoutDashboard className="h-4 w-4 mr-2" />
                 System Metrics
               </Button>
-              <Button onClick={() => navigate('/admin/rooms')} variant="outline">
+              <Button onClick={() => navigate('/admin/rooms')} variant="outline" className="border-black text-black hover:bg-gray-100">
                 <LayoutDashboard className="h-4 w-4 mr-2" />
                 Room Management
               </Button>
@@ -222,10 +219,10 @@ const AdminStats = () => {
           </div>
   
           {/* Version Indicator Control */}
-          <Card className="mb-6">
+          <Card className="mb-6 border-2 border-black bg-white">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <RefreshCw className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-2 text-black">
+                <RefreshCw className="h-5 w-5 text-black" />
                 Version Indicator
               </CardTitle>
             </CardHeader>
@@ -253,50 +250,50 @@ const AdminStats = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {/* Total Users */}
-            <Card>
+            <Card className="border-2 border-black bg-white">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Total Users</CardTitle>
-                <Users className="h-4 w-4 text-muted-foreground" />
+                <CardTitle className="text-sm font-medium text-black">Total Users</CardTitle>
+                <Users className="h-4 w-4 text-black" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">{stats?.totalUsers}</div>
-                <p className="text-xs text-muted-foreground">
+                <div className="text-2xl font-bold text-black">{stats?.totalUsers}</div>
+                <p className="text-xs text-gray-600">
                   +{stats?.newUsersThisMonth} this month
                 </p>
               </CardContent>
             </Card>
   
             {/* Total Payments */}
-            <Card>
+            <Card className="border-2 border-black bg-white">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Active Subscriptions</CardTitle>
-                <DollarSign className="h-4 w-4 text-muted-foreground" />
+                <CardTitle className="text-sm font-medium text-black">Active Subscriptions</CardTitle>
+                <DollarSign className="h-4 w-4 text-black" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">{stats?.totalPayments}</div>
-                <p className="text-xs text-muted-foreground">
+                <div className="text-2xl font-bold text-black">{stats?.totalPayments}</div>
+                <p className="text-xs text-gray-600">
                   ${stats?.revenueThisMonth} this month
                 </p>
               </CardContent>
             </Card>
   
             {/* VIP Users */}
-            <Card>
+            <Card className="border-2 border-black bg-white">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">VIP Users</CardTitle>
-                <Crown className="h-4 w-4 text-muted-foreground" />
+                <CardTitle className="text-sm font-medium text-black">VIP Users</CardTitle>
+                <Crown className="h-4 w-4 text-black" />
               </CardHeader>
               <CardContent>
                 <div className="space-y-1">
-                  <div className="flex justify-between text-sm">
+                  <div className="flex justify-between text-sm text-black">
                     <span>VIP1:</span>
                     <span className="font-bold">{stats?.vipUsers.vip1}</span>
                   </div>
-                  <div className="flex justify-between text-sm">
+                  <div className="flex justify-between text-sm text-black">
                     <span>VIP2:</span>
                     <span className="font-bold">{stats?.vipUsers.vip2}</span>
                   </div>
-                  <div className="flex justify-between text-sm">
+                  <div className="flex justify-between text-sm text-black">
                     <span>VIP3:</span>
                     <span className="font-bold">{stats?.vipUsers.vip3}</span>
                   </div>
@@ -305,26 +302,26 @@ const AdminStats = () => {
             </Card>
   
             {/* Feedback */}
-            <Card>
+            <Card className="border-2 border-black bg-white">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Feedback Messages</CardTitle>
-                <MessageSquare className="h-4 w-4 text-muted-foreground" />
+                <CardTitle className="text-sm font-medium text-black">Feedback Messages</CardTitle>
+                <MessageSquare className="h-4 w-4 text-black" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">{stats?.feedbackCount}</div>
-                <p className="text-xs text-muted-foreground">Total messages</p>
+                <div className="text-2xl font-bold text-black">{stats?.feedbackCount}</div>
+                <p className="text-xs text-gray-600">Total messages</p>
               </CardContent>
             </Card>
   
             {/* Topic Requests */}
-            <Card>
+            <Card className="border-2 border-black bg-white">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Topic Requests</CardTitle>
-                <TrendingUp className="h-4 w-4 text-muted-foreground" />
+                <CardTitle className="text-sm font-medium text-black">Topic Requests</CardTitle>
+                <TrendingUp className="h-4 w-4 text-black" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">{stats?.topicRequests}</div>
-                <p className="text-xs text-muted-foreground">Custom topics requested</p>
+                <div className="text-2xl font-bold text-black">{stats?.topicRequests}</div>
+                <p className="text-xs text-gray-600">Custom topics requested</p>
               </CardContent>
             </Card>
           </div>
