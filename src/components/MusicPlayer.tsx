@@ -51,6 +51,16 @@ const TRACKS = [
   { id: '38', name: 'Painful Memories', url: '/audio/relaxing/painful-memories.mp3' },
   { id: '39', name: 'Stasis', url: '/audio/relaxing/stasis.mp3' },
   { id: '40', name: 'Upon Reflection', url: '/audio/relaxing/upon-reflection.mp3' },
+  { id: '41', name: 'Down Days', url: '/audio/relaxing/down-days.mp3' },
+  { id: '42', name: 'Time Alone', url: '/audio/relaxing/time-alone.mp3' },
+  { id: '43', name: 'Beauty Of Russia', url: '/audio/relaxing/beauty-of-russia.mp3' },
+  { id: '44', name: 'Irish Sunset', url: '/audio/relaxing/irish-sunset.mp3' },
+  { id: '45', name: 'Rolling Hills Of Ireland', url: '/audio/relaxing/rolling-hills-of-ireland.mp3' },
+  { id: '46', name: 'Country Fireside', url: '/audio/relaxing/country-fireside.mp3' },
+  { id: '47', name: 'Heaven', url: '/audio/relaxing/heaven.mp3' },
+  { id: '48', name: 'Our Hopes And Dreams', url: '/audio/relaxing/our-hopes-and-dreams.mp3' },
+  { id: '49', name: 'Galaxys Endless Expanse', url: '/audio/relaxing/galaxys-endless-expanse.mp3' },
+  { id: '50', name: 'Prairie Evening', url: '/audio/relaxing/prairie-evening.mp3' },
 ];
 
 export const MusicPlayer = () => {
