@@ -24,20 +24,8 @@ interface ColorfulMercyBladeHeaderProps {
   onReset?: () => void;
 }
 
-// Zone definitions for the human body pathway
-const BODY_ZONES = [
-  { id: 'universe', label: 'Universe', tier: null, height: 60, yStart: 0 },
-  { id: 'vip9', label: 'VIP9', bodyPart: 'Crown', tier: 'vip9', height: 55, yStart: 60 },
-  { id: 'vip8', label: 'VIP8', bodyPart: 'Eyes', tier: 'vip8', height: 55, yStart: 115 },
-  { id: 'vip7', label: 'VIP7', bodyPart: 'Mouth', tier: 'vip7', height: 50, yStart: 170 },
-  { id: 'vip6', label: 'VIP6', bodyPart: 'Neck', tier: 'vip6', height: 45, yStart: 220 },
-  { id: 'vip5', label: 'VIP5', bodyPart: 'Chest', tier: 'vip5', height: 65, yStart: 265 },
-  { id: 'vip4', label: 'VIP4', bodyPart: 'Belly', tier: 'vip4', height: 55, yStart: 330 },
-  { id: 'vip3', label: 'VIP3', bodyPart: 'Hips', tier: 'vip3', height: 55, yStart: 385 },
-  { id: 'vip2', label: 'VIP2', bodyPart: 'Knees', tier: 'vip2', height: 55, yStart: 440 },
-  { id: 'vip1', label: 'VIP1', bodyPart: 'Shins', tier: 'vip1', height: 55, yStart: 495 },
-  { id: 'free', label: 'Free', bodyPart: 'Feet', tier: 'free', height: 50, yStart: 550 },
-];
+// TIER SYSTEM PAGE - EXACT LAYOUT (DO NOT MODIFY)
+// Three equal columns: English Pathway | Human Body Tier Map | Life Skills & Survival
 
 export const ColorfulMercyBladeHeader = ({
   subtitle,
@@ -161,8 +149,8 @@ export const ColorfulMercyBladeHeader = ({
                   </div>
                 </div>
 
-                {/* THREE EQUAL COLUMNS - NO AUTO-SORTING */}
-                <div className="grid grid-cols-3 divide-x h-[500px] overflow-y-auto">
+                {/* THREE EQUAL COLUMNS - EXACT LAYOUT - NO AUTO-SORTING */}
+                <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x h-auto md:h-[500px] overflow-y-auto">
                   
                   {/* LEFT COLUMN - English Pathway (FIXED ORDER) */}
                   <div className="p-4 space-y-3">
