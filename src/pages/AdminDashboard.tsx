@@ -215,7 +215,7 @@ const AdminDashboard = () => {
             <QuickActionButton label="Room Health Check" path="/admin/health" icon={LayoutDashboard} />
             <QuickActionButton label="Payment Dashboard" path="/admin/payments" icon={DollarSign} />
             <QuickActionButton label="User List" path="/admin/users" icon={Users} />
-            <QuickActionButton label="Feedback Inbox" path="/admin/reports" icon={MessageSquare} />
+            <QuickActionButton label="Feedback Inbox" path="/admin/feedback" icon={MessageSquare} />
           </div>
         </div>
 

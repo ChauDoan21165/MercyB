@@ -40,6 +40,7 @@ import ManualPayment from "./pages/ManualPayment";
 import PromoCode from "./pages/PromoCode";
 import VIPTopicRequest from "./pages/VIPTopicRequest";
 import AdminReports from "./pages/AdminReports";
+import FeedbackInbox from "./pages/admin/FeedbackInbox";
 import AdminStats from "./pages/AdminStats";
 import AdminPaymentVerification from "./pages/AdminPaymentVerification";
 import AdminAudioUpload from "./pages/AdminAudioUpload";
@@ -156,6 +157,7 @@ const App = () => {
           <Route path="/promo-code" element={<PromoCode />} />
           <Route path="/vip-topic-request" element={<VIPTopicRequest />} />
           <Route path="/admin/reports" element={<AdminReports />} />
+          <Route path="/admin/feedback" element={<FeedbackInbox />} />
           <Route path="/admin/stats" element={<AdminStats />} />
           <Route path="/admin/payments" element={<AdminPaymentVerification />} />
           <Route path="/admin/audio-upload" element={<AdminAudioUpload />} />
