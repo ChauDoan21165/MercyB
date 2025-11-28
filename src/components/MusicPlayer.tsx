@@ -31,6 +31,16 @@ const TRACKS = [
   { id: '18', name: 'Chill Gaming', url: '/audio/relaxing/chill-gaming.mp3' },
   { id: '19', name: 'Homework', url: '/audio/relaxing/homework.mp3' },
   { id: '20', name: 'On My Own', url: '/audio/relaxing/on-my-own.mp3' },
+  { id: '21', name: 'Love Spell', url: '/audio/relaxing/love-spell.mp3' },
+  { id: '22', name: 'Elevator Ride', url: '/audio/relaxing/elevator-ride.mp3' },
+  { id: '23', name: 'Fireside Date', url: '/audio/relaxing/fireside-date.mp3' },
+  { id: '24', name: 'The Lounge', url: '/audio/relaxing/the-lounge.mp3' },
+  { id: '25', name: 'Warm Light', url: '/audio/relaxing/warm-light.mp3' },
+  { id: '26', name: 'Elven Forest', url: '/audio/relaxing/elven-forest.mp3' },
+  { id: '27', name: 'Healing Water', url: '/audio/relaxing/healing-water.mp3' },
+  { id: '28', name: 'Beautiful Memories', url: '/audio/relaxing/beautiful-memories.mp3' },
+  { id: '29', name: 'Quiet Morning', url: '/audio/relaxing/quiet-morning.mp3' },
+  { id: '30', name: 'Not Much To Say', url: '/audio/relaxing/not-much-to-say.mp3' },
 ];
 
 export const MusicPlayer = () => {
