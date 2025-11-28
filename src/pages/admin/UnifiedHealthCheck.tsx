@@ -13,6 +13,7 @@ import { KIDS_ROOM_JSON_MAP } from "@/pages/KidsChat";
 import { useToast } from "@/hooks/use-toast";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
+import { SyncHealthSummary } from "@/components/admin/SyncHealthSummary";
 
 interface RoomIssue {
   roomId: string;
@@ -2336,6 +2337,9 @@ export default function UnifiedHealthCheck() {
           )}
         </div>
       </div>
+
+      {/* Sync Health Summary Panel */}
+      <SyncHealthSummary />
 
       {error && (
         <Alert variant="destructive">
