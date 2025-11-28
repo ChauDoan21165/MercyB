@@ -75,9 +75,9 @@ export default function HealthDashboard() {
           </div>
           <div className="mt-4">
             <Link to="/admin/room-health/all">
-              <Button variant="secondary" className="w-full">
+              <Button variant="default" className="w-full bg-green-600 hover:bg-green-700">
                 <Activity className="h-4 w-4 mr-2" />
-                Check All Tiers
+                Scan Entire App (All Tiers)
               </Button>
             </Link>
           </div>
