@@ -54,10 +54,10 @@ export function AdminSidebar() {
   const { open } = useSidebar();
 
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" className="border-r-2 border-black bg-white">
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Admin Panel</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-black font-bold">Admin Panel</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {adminItems.map((item) => (
@@ -66,11 +66,11 @@ export function AdminSidebar() {
                     <NavLink
                       to={item.url}
                       end={item.end}
-                      className="hover:bg-accent/50"
-                      activeClassName="bg-accent text-accent-foreground font-medium"
+                      className="hover:bg-gray-100 text-black"
+                      activeClassName="bg-gray-200 text-black font-bold"
                     >
-                      <item.icon className="h-4 w-4" />
-                      {open && <span>{item.title}</span>}
+                      <item.icon className="h-4 w-4 text-black" />
+                      {open && <span className="text-black">{item.title}</span>}
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
