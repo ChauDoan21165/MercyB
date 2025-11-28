@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Send, ArrowLeft, MessageCircle, Mail, Users, Loader2, Volume2, RefreshCw, Bug } from "lucide-react";
+import { Send, ArrowLeft, MessageCircle, Mail, Users, Loader2, Volume2, RefreshCw, Bug, Home } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomInfo } from "@/lib/roomData";
