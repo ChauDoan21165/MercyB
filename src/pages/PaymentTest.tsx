@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { toast } from 'sonner';
 import { Check } from 'lucide-react';
 import { PricingToggle } from '@/components/PricingToggle';
+import { TestModeBanner } from '@/components/payment/TestModeBanner';
 
 declare global {
   interface Window {
@@ -222,6 +223,8 @@ const PaymentTest = () => {
       {/* Colorful gradient background */}
       <div className="bg-gradient-to-b from-purple-50 via-blue-50 to-teal-50 min-h-screen py-12 px-6">
         <div className="max-w-6xl mx-auto">
+          <TestModeBanner />
+          
           <h1 className="text-4xl font-bold mb-4 text-center bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">
             {searchParams.get('tier') 
               ? `Payment for ${searchParams.get('tier')?.toUpperCase()}`
