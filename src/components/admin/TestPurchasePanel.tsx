@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -22,11 +22,6 @@ export function TestPurchasePanel() {
   const [result, setResult] = useState<{ success: boolean; message: string } | null>(null);
   const [tiers, setTiers] = useState<SubscriptionTier[]>([]);
 
-  // Load available tiers
-  useState(() => {
-    loadTiers();
-  });
-
   const loadTiers = async () => {
     try {
       const { data, error } = await supabase
@@ -41,6 +36,11 @@ export function TestPurchasePanel() {
       console.error('Error loading tiers:', error);
     }
   };
+
+  // Load available tiers on mount
+  useEffect(() => {
+    loadTiers();
+  }, []);
 
   const handleTestPurchase = async () => {
     if (!selectedTier) {
