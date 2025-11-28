@@ -56,7 +56,7 @@ export default function RoomHealthCheck() {
   const [selectedFile, setSelectedFile] = useState<{ path: string; title: string } | null>(null);
   const [progress, setProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
 
-  const tierDisplay = tier ? TIER_DISPLAY_NAMES[tier] || tier.toUpperCase() : "All Tiers";
+  const tierDisplay = tier && tier !== "all" ? TIER_DISPLAY_NAMES[tier] || tier.toUpperCase() : "All Tiers";
 
   useEffect(() => {
     checkRoomHealth();
@@ -73,7 +73,7 @@ export default function RoomHealthCheck() {
         .select("*")
         .neq("tier", "kids");
 
-      if (tier) {
+      if (tier && tier !== "all") {
         query = query.eq("tier", tier);
       }
 
