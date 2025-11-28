@@ -179,7 +179,10 @@ export async function resolveRoomJsonPath(roomId: string): Promise<string> {
   if (PUBLIC_ROOM_MANIFEST[roomId]) {
     const manifestPath = PUBLIC_ROOM_MANIFEST[roomId];
     try {
-      const response = await fetch(`/${manifestPath}`);
+      const cacheBuster = Date.now();
+      const response = await fetch(`/${manifestPath}?t=${cacheBuster}`, {
+        cache: 'no-store',
+      });
       if (response.ok) {
         const data = await response.json();
         validateRoomJson(data, roomId, manifestPath);
@@ -193,7 +196,10 @@ export async function resolveRoomJsonPath(roomId: string): Promise<string> {
   // 2. Try canonical path: data/{room_id}.json
   const canonicalPath = getCanonicalPath(roomId);
   try {
-    const response = await fetch(`/${canonicalPath}`);
+    const cacheBuster = Date.now();
+    const response = await fetch(`/${canonicalPath}?t=${cacheBuster}`, {
+      cache: 'no-store',
+    });
     if (response.ok) {
       const data = await response.json();
       validateRoomJson(data, roomId, canonicalPath);
@@ -217,7 +223,10 @@ export async function resolveRoomJsonPath(roomId: string): Promise<string> {
  */
 export async function loadRoomJson(roomId: string): Promise<any> {
   const path = await resolveRoomJsonPath(roomId);
-  const response = await fetch(`/${path}`);
+  const cacheBuster = Date.now();
+  const response = await fetch(`/${path}?t=${cacheBuster}`, {
+    cache: 'no-store',
+  });
   
   if (!response.ok) {
     throw new RoomJsonNotFoundError(
