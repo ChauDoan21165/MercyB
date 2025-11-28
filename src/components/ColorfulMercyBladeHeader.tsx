@@ -26,17 +26,17 @@ interface ColorfulMercyBladeHeaderProps {
 
 // Zone definitions for the human body pathway
 const BODY_ZONES = [
-  { id: 'universe', label: 'Universe', tier: null, height: 40 },
-  { id: 'vip9', label: 'VIP9 Crown', tier: 'vip9', height: 50 },
-  { id: 'vip8', label: 'VIP8 Eyes', tier: 'vip8', height: 50 },
-  { id: 'vip7', label: 'VIP7 Mouth', tier: 'vip7', height: 50 },
-  { id: 'vip6', label: 'VIP6 Neck', tier: 'vip6', height: 40 },
-  { id: 'vip5', label: 'VIP5 Chest', tier: 'vip5', height: 60 },
-  { id: 'vip4', label: 'VIP4 Belly', tier: 'vip4', height: 50 },
-  { id: 'vip3', label: 'VIP3 Hips', tier: 'vip3', height: 50 },
-  { id: 'vip2', label: 'VIP2 Knees', tier: 'vip2', height: 50 },
-  { id: 'vip1', label: 'VIP1 Shins', tier: 'vip1', height: 50 },
-  { id: 'free', label: 'Free Feet', tier: 'free', height: 50 },
+  { id: 'universe', label: 'Universe', tier: null, height: 60, yStart: 0 },
+  { id: 'vip9', label: 'VIP9', bodyPart: 'Crown', tier: 'vip9', height: 55, yStart: 60 },
+  { id: 'vip8', label: 'VIP8', bodyPart: 'Eyes', tier: 'vip8', height: 55, yStart: 115 },
+  { id: 'vip7', label: 'VIP7', bodyPart: 'Mouth', tier: 'vip7', height: 50, yStart: 170 },
+  { id: 'vip6', label: 'VIP6', bodyPart: 'Neck', tier: 'vip6', height: 45, yStart: 220 },
+  { id: 'vip5', label: 'VIP5', bodyPart: 'Chest', tier: 'vip5', height: 65, yStart: 265 },
+  { id: 'vip4', label: 'VIP4', bodyPart: 'Belly', tier: 'vip4', height: 55, yStart: 330 },
+  { id: 'vip3', label: 'VIP3', bodyPart: 'Hips', tier: 'vip3', height: 55, yStart: 385 },
+  { id: 'vip2', label: 'VIP2', bodyPart: 'Knees', tier: 'vip2', height: 55, yStart: 440 },
+  { id: 'vip1', label: 'VIP1', bodyPart: 'Shins', tier: 'vip1', height: 55, yStart: 495 },
+  { id: 'free', label: 'Free', bodyPart: 'Feet', tier: 'free', height: 50, yStart: 550 },
 ];
 
 export const ColorfulMercyBladeHeader = ({
@@ -145,14 +145,14 @@ export const ColorfulMercyBladeHeader = ({
                   Tier/Gói
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-[95vw] max-w-[1200px] bg-background border-2 z-50 p-0 overflow-hidden">
+              <DropdownMenuContent align="end" className="w-[95vw] max-w-[1400px] bg-background border-2 z-50 p-0 overflow-hidden">
                 {/* Header with B&W Toggle */}
-                <div className="flex items-center justify-between p-4 border-b">
-                  <DropdownMenuLabel className="text-lg font-bold m-0">
-                    Mercy Blade Human Body Pathway
+                <div className="flex items-center justify-between p-3 border-b bg-background">
+                  <DropdownMenuLabel className="text-base font-bold m-0">
+                    Mercy Blade Human Growth Map
                   </DropdownMenuLabel>
                   <div className="flex items-center gap-2">
-                    <Label htmlFor="bw-mode" className="text-sm">B&W Mode</Label>
+                    <Label htmlFor="bw-mode" className="text-xs font-medium">B&W</Label>
                     <Switch 
                       id="bw-mode"
                       checked={isBlackWhiteMode}
@@ -161,16 +161,131 @@ export const ColorfulMercyBladeHeader = ({
                   </div>
                 </div>
 
-                {/* Main Body Pathway Layout */}
-                <div className="relative flex gap-0 h-[600px] overflow-hidden">
-                  {/* Human Silhouette with Clear Zone Markers */}
-                  <div className="absolute left-1/2 top-0 bottom-0 w-[180px] -ml-[90px] pointer-events-none z-0">
+                {/* Main Body Pathway Layout - 3 Equal Columns with Fixed Center Silhouette */}
+                <div className="relative h-[600px] grid grid-cols-[1fr_auto_1fr] overflow-hidden">
+                  
+                  {/* LEFT COLUMN - English Pathway (scrollable, transparent bg) */}
+                  <div className="relative overflow-y-auto bg-transparent">
+                    <div className="sticky top-0 bg-background/95 backdrop-blur-sm px-3 py-2 border-b z-20">
+                      <h3 className={`text-xs font-bold ${isBlackWhiteMode ? 'text-black' : 'text-blue-700'}`}>
+                        English Pathway
+                      </h3>
+                    </div>
+                    
+                    {/* Zone-aligned items */}
+                    {BODY_ZONES.map((zone) => (
+                      <div
+                        key={`left-${zone.id}`}
+                        style={{ height: `${zone.height}px` }}
+                        className={`relative border-b border-border/10 transition-all duration-200 ${
+                          hoveredZone === zone.id ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-blue-50/30') : ''
+                        }`}
+                        onMouseEnter={() => setHoveredZone(zone.id)}
+                        onMouseLeave={() => setHoveredZone(null)}
+                      >
+                        {/* Free = English Foundation */}
+                        {zone.id === 'free' && (
+                          <DropdownMenuItem 
+                            onClick={() => navigate('/english-pathway')}
+                            className={`h-full flex items-center cursor-pointer border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
+                          >
+                            <GraduationCap className={`mr-2 h-4 w-4 flex-shrink-0 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
+                            <div className="text-left">
+                              <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>English Foundation</div>
+                              <div className="text-[10px] text-muted-foreground">Free • A0-A1</div>
+                            </div>
+                          </DropdownMenuItem>
+                        )}
+                        
+                        {/* VIP1 = A1 */}
+                        {zone.id === 'vip1' && (
+                          <DropdownMenuItem 
+                            onClick={() => navigate('/english-pathway')}
+                            className={`h-full flex items-center cursor-pointer border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
+                          >
+                            <GraduationCap className={`mr-2 h-4 w-4 flex-shrink-0 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
+                            <div className="text-left">
+                              <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>A1 Beginner</div>
+                              <div className="text-[10px] text-muted-foreground">VIP1 bonus</div>
+                            </div>
+                          </DropdownMenuItem>
+                        )}
+                        
+                        {/* VIP2 = A2 + B1 */}
+                        {zone.id === 'vip2' && (
+                          <DropdownMenuItem 
+                            onClick={() => navigate('/english-pathway')}
+                            className={`h-full flex items-center cursor-pointer border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
+                          >
+                            <GraduationCap className={`mr-2 h-4 w-4 flex-shrink-0 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
+                            <div className="text-left">
+                              <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>A2 + B1</div>
+                              <div className="text-[10px] text-muted-foreground">VIP2 bonus</div>
+                            </div>
+                          </DropdownMenuItem>
+                        )}
+                        
+                        {/* VIP3 = B2 + C1 + C2 */}
+                        {zone.id === 'vip3' && (
+                          <DropdownMenuItem 
+                            onClick={() => navigate('/english-pathway')}
+                            className={`h-full flex items-center cursor-pointer border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
+                          >
+                            <GraduationCap className={`mr-2 h-4 w-4 flex-shrink-0 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
+                            <div className="text-left">
+                              <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>B2 + C1 + C2</div>
+                              <div className="text-[10px] text-muted-foreground">VIP3 bonus</div>
+                            </div>
+                          </DropdownMenuItem>
+                        )}
+                        
+                        {/* VIP4/VIP5 = Kids Levels (spanning multiple zones) */}
+                        {zone.id === 'vip4' && (
+                          <div className="h-full flex flex-col justify-around py-1">
+                            <DropdownMenuItem 
+                              onClick={() => navigate('/kids-level1')}
+                              className={`flex-1 flex items-center cursor-pointer border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
+                            >
+                              <Baby className={`mr-2 h-3 w-3 flex-shrink-0 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
+                              <div className="text-left">
+                                <div className={`font-bold text-[11px] ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Kids L1</div>
+                                <div className="text-[9px] text-muted-foreground">Ages 4-7</div>
+                              </div>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem 
+                              onClick={() => navigate('/kids-level2')}
+                              className={`flex-1 flex items-center cursor-pointer border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
+                            >
+                              <School className={`mr-2 h-3 w-3 flex-shrink-0 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
+                              <div className="text-left">
+                                <div className={`font-bold text-[11px] ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Kids L2</div>
+                                <div className="text-[9px] text-muted-foreground">Ages 7-10</div>
+                              </div>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem 
+                              onClick={() => navigate('/kids-level3')}
+                              className={`flex-1 flex items-center cursor-pointer border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
+                            >
+                              <GraduationCap className={`mr-2 h-3 w-3 flex-shrink-0 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
+                              <div className="text-left">
+                                <div className={`font-bold text-[11px] ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Kids L3</div>
+                                <div className="text-[9px] text-muted-foreground">Ages 10-13</div>
+                              </div>
+                            </DropdownMenuItem>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* CENTER COLUMN - Fixed Human Silhouette + Tier Labels (non-scrolling) */}
+                  <div className="relative w-[280px] flex-shrink-0 bg-background/50 border-x">
+                    {/* Human Silhouette - Fixed, 85% height */}
                     <svg 
-                      viewBox="0 0 180 600" 
-                      className="w-full h-full"
-                      preserveAspectRatio="xMidYMin meet"
+                      viewBox="0 0 280 600" 
+                      className="absolute inset-0 w-full h-full pointer-events-none"
+                      preserveAspectRatio="xMidYMid meet"
                     >
-                      {/* Rainbow gradient spine */}
                       <defs>
                         <linearGradient id="spineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                           <stop offset="0%" stopColor="#E91E63" />
@@ -184,417 +299,302 @@ export const ColorfulMercyBladeHeader = ({
                         </linearGradient>
                       </defs>
                       
-                      {/* Clearer body silhouette outline */}
-                      <path 
-                        d="M 90 15 
-                           Q 70 20 70 40 
-                           L 70 90 
-                           Q 65 150 65 180
-                           L 60 220
-                           Q 55 280 55 320
-                           L 50 400
-                           Q 45 480 40 530
-                           L 35 590
-                           M 90 15
-                           Q 110 20 110 40
-                           L 110 90
-                           Q 115 150 115 180
-                           L 120 220
-                           Q 125 280 125 320
-                           L 130 400
-                           Q 135 480 140 530
-                           L 145 590"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        fill="none"
-                        opacity={isBlackWhiteMode ? "0.15" : "0.25"}
-                      />
+                      {/* Horizontal zone bands (alignment lines) */}
+                      {BODY_ZONES.map((zone) => (
+                        <line
+                          key={`band-${zone.id}`}
+                          x1="0"
+                          y1={zone.yStart}
+                          x2="280"
+                          y2={zone.yStart}
+                          stroke="currentColor"
+                          strokeWidth="0.5"
+                          opacity="0.1"
+                        />
+                      ))}
                       
-                      {/* Zone indicators - horizontal bands */}
-                      {!isBlackWhiteMode && (
-                        <>
-                          <rect x="0" y="0" width="180" height="40" fill="#E91E63" opacity="0.03" />
-                          <rect x="0" y="40" width="180" height="50" fill="#9C27B0" opacity="0.03" />
-                          <rect x="0" y="90" width="180" height="50" fill="#3F51B5" opacity="0.03" />
-                          <rect x="0" y="140" width="180" height="50" fill="#2196F3" opacity="0.03" />
-                          <rect x="0" y="190" width="180" height="40" fill="#00BCD4" opacity="0.03" />
-                          <rect x="0" y="230" width="180" height="60" fill="#009688" opacity="0.03" />
-                          <rect x="0" y="290" width="180" height="50" fill="#4CAF50" opacity="0.03" />
-                          <rect x="0" y="340" width="180" height="50" fill="#8BC34A" opacity="0.03" />
-                          <rect x="0" y="390" width="180" height="50" fill="#FFC107" opacity="0.03" />
-                          <rect x="0" y="440" width="180" height="50" fill="#FF9800" opacity="0.03" />
-                          <rect x="0" y="490" width="180" height="110" fill="#FF5722" opacity="0.03" />
-                        </>
-                      )}
+                      {/* Soft human silhouette outline - white, 10% opacity, 85% height */}
+                      <g transform="translate(140, 45) scale(0.85)">
+                        {/* Head */}
+                        <ellipse cx="0" cy="0" rx="35" ry="45" fill="none" stroke="white" strokeWidth="2" opacity="0.1" />
+                        
+                        {/* Neck */}
+                        <rect x="-15" y="40" width="30" height="30" rx="8" fill="none" stroke="white" strokeWidth="2" opacity="0.1" />
+                        
+                        {/* Shoulders & Chest */}
+                        <ellipse cx="0" cy="100" rx="55" ry="50" fill="none" stroke="white" strokeWidth="2" opacity="0.1" />
+                        
+                        {/* Belly */}
+                        <ellipse cx="0" cy="170" rx="50" ry="45" fill="none" stroke="white" strokeWidth="2" opacity="0.1" />
+                        
+                        {/* Hips */}
+                        <ellipse cx="0" cy="235" rx="52" ry="40" fill="none" stroke="white" strokeWidth="2" opacity="0.1" />
+                        
+                        {/* Upper legs */}
+                        <ellipse cx="-20" cy="310" rx="18" ry="60" fill="none" stroke="white" strokeWidth="2" opacity="0.1" />
+                        <ellipse cx="20" cy="310" rx="18" ry="60" fill="none" stroke="white" strokeWidth="2" opacity="0.1" />
+                        
+                        {/* Lower legs */}
+                        <ellipse cx="-20" cy="410" rx="15" ry="70" fill="none" stroke="white" strokeWidth="2" opacity="0.1" />
+                        <ellipse cx="20" cy="410" rx="15" ry="70" fill="none" stroke="white" strokeWidth="2" opacity="0.1" />
+                        
+                        {/* Feet */}
+                        <ellipse cx="-20" cy="500" rx="18" ry="20" fill="none" stroke="white" strokeWidth="2" opacity="0.1" />
+                        <ellipse cx="20" cy="500" rx="18" ry="20" fill="none" stroke="white" strokeWidth="2" opacity="0.1" />
+                      </g>
                       
-                      {/* Central spine with stronger visibility */}
+                      {/* Rainbow spine glow */}
                       {!isBlackWhiteMode && (
                         <line 
-                          x1="90" y1="10" 
-                          x2="90" y2="590" 
+                          x1="140" y1="30" 
+                          x2="140" y2="570" 
                           stroke="url(#spineGradient)" 
-                          strokeWidth="4" 
-                          opacity="0.5"
+                          strokeWidth="5" 
+                          opacity="0.4"
                         />
                       )}
                       {isBlackWhiteMode && (
                         <line 
-                          x1="90" y1="10" 
-                          x2="90" y2="590" 
+                          x1="140" y1="30" 
+                          x2="140" y2="570" 
                           stroke="currentColor" 
                           strokeWidth="3" 
-                          opacity="0.25"
+                          opacity="0.15"
                         />
                       )}
-                      
-                      {/* Zone labels on spine */}
-                      <text x="90" y="25" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">↑</text>
-                      <text x="90" y="65" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">👑</text>
-                      <text x="90" y="115" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">👁</text>
-                      <text x="90" y="165" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">👄</text>
-                      <text x="90" y="210" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">🔗</text>
-                      <text x="90" y="260" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">💚</text>
-                      <text x="90" y="315" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">⚡</text>
-                      <text x="90" y="365" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">✨</text>
-                      <text x="90" y="415" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">🦵</text>
-                      <text x="90" y="465" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">🦶</text>
-                      <text x="90" y="550" fontSize="9" fill="currentColor" opacity="0.4" textAnchor="middle" fontWeight="bold">🌍</text>
                     </svg>
-                  </div>
 
-                  {/* Left Column: English Learning Pathway */}
-                  <div className="flex-1 overflow-y-auto border-r relative z-10">
-                    <div className="sticky top-0 bg-background/95 backdrop-blur-sm px-4 py-2 border-b z-20">
-                      <h3 className={`text-sm font-bold ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`}>
-                        English Learning Pathway
-                      </h3>
-                    </div>
-                    <div className="p-2 space-y-1">
-                      {/* Zone: Free */}
-                      <div 
-                        className={`transition-all duration-200 ${hoveredZone === 'free' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-blue-50/50 shadow-lg') : ''}`}
-                        onMouseEnter={() => setHoveredZone('free')}
-                        onMouseLeave={() => setHoveredZone(null)}
-                      >
-                        <DropdownMenuItem 
-                          onClick={() => navigate('/english-pathway')}
-                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
+                    {/* Tier labels aligned to zones */}
+                    <div className="relative h-full">
+                      {BODY_ZONES.map((zone) => (
+                        <div
+                          key={`center-${zone.id}`}
+                          style={{ height: `${zone.height}px` }}
+                          className={`flex items-center justify-center border-b border-border/10 transition-all duration-200 ${
+                            hoveredZone === zone.id ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-primary/5') : ''
+                          }`}
+                          onMouseEnter={() => setHoveredZone(zone.id)}
+                          onMouseLeave={() => setHoveredZone(null)}
                         >
-                          <GraduationCap className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
-                          <div>
-                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>English Foundation</div>
-                            <div className="text-xs text-muted-foreground">Free tier • A0-A1</div>
-                          </div>
-                        </DropdownMenuItem>
-                      </div>
-
-                      {/* Zone: VIP1 */}
-                      <div 
-                        className={`transition-all duration-200 ${hoveredZone === 'vip1' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-blue-50/50 shadow-lg') : ''}`}
-                        onMouseEnter={() => setHoveredZone('vip1')}
-                        onMouseLeave={() => setHoveredZone(null)}
-                      >
-                        <DropdownMenuItem 
-                          onClick={() => navigate('/english-pathway')}
-                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
-                        >
-                          <GraduationCap className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
-                          <div>
-                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>A1 Beginner</div>
-                            <div className="text-xs text-muted-foreground">VIP1 bonus</div>
-                          </div>
-                        </DropdownMenuItem>
-                      </div>
-
-                      {/* Zone: VIP2 */}
-                      <div 
-                        className={`transition-all duration-200 ${hoveredZone === 'vip2' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-blue-50/50 shadow-lg') : ''}`}
-                        onMouseEnter={() => setHoveredZone('vip2')}
-                        onMouseLeave={() => setHoveredZone(null)}
-                      >
-                        <DropdownMenuItem 
-                          onClick={() => navigate('/english-pathway')}
-                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
-                        >
-                          <GraduationCap className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
-                          <div>
-                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>A2 + B1 Intermediate</div>
-                            <div className="text-xs text-muted-foreground">VIP2 bonus</div>
-                          </div>
-                        </DropdownMenuItem>
-                      </div>
-
-                      {/* Zone: VIP3 */}
-                      <div 
-                        className={`transition-all duration-200 ${hoveredZone === 'vip3' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-blue-50/50 shadow-lg') : ''}`}
-                        onMouseEnter={() => setHoveredZone('vip3')}
-                        onMouseLeave={() => setHoveredZone(null)}
-                      >
-                        <DropdownMenuItem 
-                          onClick={() => navigate('/english-pathway')}
-                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
-                        >
-                          <GraduationCap className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
-                          <div>
-                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>B2 + C1 + C2 Advanced</div>
-                            <div className="text-xs text-muted-foreground">VIP3 bonus</div>
-                          </div>
-                        </DropdownMenuItem>
-                        
-                        <div className="mt-2 border-t pt-2">
-                          <DropdownMenuItem 
-                            onClick={() => navigate('/kids-level1')}
-                            className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
-                          >
-                            <Baby className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
-                            <div>
-                              <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Kids Level 1</div>
-                              <div className="text-xs text-muted-foreground">Ages 4-7</div>
+                          {zone.id === 'universe' && (
+                            <div className="text-center px-2">
+                              <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Universe</div>
+                              <div className="text-[9px] text-muted-foreground">Coming soon</div>
                             </div>
-                          </DropdownMenuItem>
-
-                          <DropdownMenuItem 
-                            onClick={() => navigate('/kids-level2')}
-                            className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
-                          >
-                            <School className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
-                            <div>
-                              <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Kids Level 2</div>
-                              <div className="text-xs text-muted-foreground">Ages 7-10</div>
+                          )}
+                          
+                          {zone.id === 'vip9' && (
+                            <button
+                              onClick={() => navigate('/rooms-vip9')}
+                              className={`w-full h-full flex flex-col items-center justify-center cursor-pointer transition-all hover:bg-slate-100 ${isBlackWhiteMode ? 'hover:bg-gray-100' : ''}`}
+                            >
+                              <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP9</div>
+                              <div className="text-[10px] text-muted-foreground">Crown • $150</div>
+                            </button>
+                          )}
+                          
+                          {zone.id === 'vip8' && (
+                            <div className="text-center px-2">
+                              <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP8</div>
+                              <div className="text-[9px] text-muted-foreground">Eyes • Soon</div>
                             </div>
-                          </DropdownMenuItem>
-
-                          <DropdownMenuItem 
-                            onClick={() => navigate('/kids-level3')}
-                            className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
-                          >
-                            <GraduationCap className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
-                            <div>
-                              <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Kids Level 3</div>
-                              <div className="text-xs text-muted-foreground">Ages 10-13</div>
+                          )}
+                          
+                          {zone.id === 'vip7' && (
+                            <div className="text-center px-2">
+                              <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP7</div>
+                              <div className="text-[9px] text-muted-foreground">Mouth • Soon</div>
                             </div>
-                          </DropdownMenuItem>
+                          )}
+                          
+                          {zone.id === 'vip6' && (
+                            <button
+                              onClick={() => navigate('/vip6')}
+                              className={`w-full h-full flex flex-col items-center justify-center cursor-pointer transition-all hover:bg-purple-50 ${isBlackWhiteMode ? 'hover:bg-gray-100' : ''}`}
+                            >
+                              <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP6</div>
+                              <div className="text-[10px] text-muted-foreground">Neck • $90</div>
+                            </button>
+                          )}
+                          
+                          {zone.id === 'vip5' && (
+                            <button
+                              onClick={() => navigate('/rooms-vip5')}
+                              className={`w-full h-full flex flex-col items-center justify-center cursor-pointer transition-all hover:bg-emerald-50 ${isBlackWhiteMode ? 'hover:bg-gray-100' : ''}`}
+                            >
+                              <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP5</div>
+                              <div className="text-[10px] text-muted-foreground">Chest • $70</div>
+                            </button>
+                          )}
+                          
+                          {zone.id === 'vip4' && (
+                            <button
+                              onClick={() => navigate('/rooms-vip4')}
+                              className={`w-full h-full flex flex-col items-center justify-center cursor-pointer transition-all hover:bg-orange-50 ${isBlackWhiteMode ? 'hover:bg-gray-100' : ''}`}
+                            >
+                              <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP4</div>
+                              <div className="text-[10px] text-muted-foreground">Belly • $50</div>
+                            </button>
+                          )}
+                          
+                          {zone.id === 'vip3' && (
+                            <button
+                              onClick={() => navigate('/rooms-vip3')}
+                              className={`w-full h-full flex flex-col items-center justify-center cursor-pointer transition-all hover:bg-purple-50 ${isBlackWhiteMode ? 'hover:bg-gray-100' : ''}`}
+                            >
+                              <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP3</div>
+                              <div className="text-[10px] text-muted-foreground">Hips • $15</div>
+                            </button>
+                          )}
+                          
+                          {zone.id === 'vip2' && (
+                            <button
+                              onClick={() => navigate('/rooms-vip2')}
+                              className={`w-full h-full flex flex-col items-center justify-center cursor-pointer transition-all hover:bg-blue-50 ${isBlackWhiteMode ? 'hover:bg-gray-100' : ''}`}
+                            >
+                              <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP2</div>
+                              <div className="text-[10px] text-muted-foreground">Knees • $6</div>
+                            </button>
+                          )}
+                          
+                          {zone.id === 'vip1' && (
+                            <button
+                              onClick={() => navigate('/rooms-vip1')}
+                              className={`w-full h-full flex flex-col items-center justify-center cursor-pointer transition-all hover:bg-yellow-50 ${isBlackWhiteMode ? 'hover:bg-gray-100' : ''}`}
+                            >
+                              <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP1</div>
+                              <div className="text-[10px] text-muted-foreground">Shins • $3</div>
+                            </button>
+                          )}
+                          
+                          {zone.id === 'free' && (
+                            <button
+                              onClick={() => navigate('/rooms')}
+                              className={`w-full h-full flex flex-col items-center justify-center cursor-pointer transition-all hover:bg-green-50 ${isBlackWhiteMode ? 'hover:bg-gray-100' : ''}`}
+                            >
+                              <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Free</div>
+                              <div className="text-[10px] text-muted-foreground">Feet • $0</div>
+                            </button>
+                          )}
                         </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Center Column: Core Tiers */}
-                  <div className="flex-1 overflow-y-auto border-r relative z-10">
-                    <div className="sticky top-0 bg-background/95 backdrop-blur-sm px-4 py-2 border-b z-20">
-                      <h3 className={`text-sm font-bold ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>
-                        Core Tier Levels
-                      </h3>
-                    </div>
-                    <div className="p-2 space-y-1">
-                      {/* Zone: Universe */}
-                      <div 
-                        className={`transition-all duration-200 ${hoveredZone === 'universe' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-purple-50/50 shadow-lg') : ''}`}
-                        onMouseEnter={() => setHoveredZone('universe')}
-                        onMouseLeave={() => setHoveredZone(null)}
-                      >
-                        <div className="px-3 py-2">
-                          <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Universe</div>
-                          <div className="text-xs text-muted-foreground">Coming soon</div>
-                        </div>
-                      </div>
-
-                      {/* Zone: VIP9 Crown */}
-                      <div 
-                        className={`transition-all duration-200 ${hoveredZone === 'vip9' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-slate-50/50 shadow-lg') : ''}`}
-                        onMouseEnter={() => setHoveredZone('vip9')}
-                        onMouseLeave={() => setHoveredZone(null)}
-                      >
-                        <DropdownMenuItem 
-                          onClick={() => navigate('/rooms-vip9')}
-                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-slate-50 hover:border-slate-600'}`}
-                        >
-                          <TrendingUp className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-slate-600'}`} />
-                          <div>
-                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP9 Strategic Mastery <span className="text-[10px] text-muted-foreground">$150</span></div>
-                            <div className="text-xs text-muted-foreground">Crown • Executive Strategy</div>
-                          </div>
-                        </DropdownMenuItem>
-                      </div>
-
-                      {/* Zone: VIP8 Eyes */}
-                      <div 
-                        className={`transition-all duration-200 ${hoveredZone === 'vip8' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-indigo-50/50 shadow-lg') : ''}`}
-                        onMouseEnter={() => setHoveredZone('vip8')}
-                        onMouseLeave={() => setHoveredZone(null)}
-                      >
-                        <div className="px-3 py-2">
-                          <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP8</div>
-                          <div className="text-xs text-muted-foreground">Eyes • Coming soon</div>
-                        </div>
-                      </div>
-
-                      {/* Zone: VIP7 Mouth */}
-                      <div 
-                        className={`transition-all duration-200 ${hoveredZone === 'vip7' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-pink-50/50 shadow-lg') : ''}`}
-                        onMouseEnter={() => setHoveredZone('vip7')}
-                        onMouseLeave={() => setHoveredZone(null)}
-                      >
-                        <div className="px-3 py-2">
-                          <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP7</div>
-                          <div className="text-xs text-muted-foreground">Mouth • Coming soon</div>
-                        </div>
-                      </div>
-
-                      {/* Zone: VIP6 Neck */}
-                      <div 
-                        className={`transition-all duration-200 ${hoveredZone === 'vip6' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-purple-50/50 shadow-lg') : ''}`}
-                        onMouseEnter={() => setHoveredZone('vip6')}
-                        onMouseLeave={() => setHoveredZone(null)}
-                      >
-                        <DropdownMenuItem 
-                          onClick={() => navigate('/vip6')}
-                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-purple-50 hover:border-purple-600'}`}
-                        >
-                          <Brain className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-purple-600'}`} />
-                          <div>
-                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP6 Psychology <span className="text-[10px] text-muted-foreground">$90</span></div>
-                            <div className="text-xs text-muted-foreground">Neck • Deep psychology</div>
-                          </div>
-                        </DropdownMenuItem>
-                      </div>
-
-                      {/* Zone: VIP5 Chest */}
-                      <div 
-                        className={`transition-all duration-200 ${hoveredZone === 'vip5' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-emerald-50/50 shadow-lg') : ''}`}
-                        onMouseEnter={() => setHoveredZone('vip5')}
-                        onMouseLeave={() => setHoveredZone(null)}
-                      >
-                        <DropdownMenuItem 
-                          onClick={() => navigate('/rooms-vip5')}
-                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-emerald-50 hover:border-emerald-600'}`}
-                        >
-                          <Feather className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-emerald-600'}`} />
-                          <div>
-                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP5 Writing <span className="text-[10px] text-muted-foreground">$70</span></div>
-                            <div className="text-xs text-muted-foreground">Chest • Writing support</div>
-                          </div>
-                        </DropdownMenuItem>
-                      </div>
-
-                      {/* Zone: VIP4 Belly */}
-                      <div 
-                        className={`transition-all duration-200 ${hoveredZone === 'vip4' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-orange-50/50 shadow-lg') : ''}`}
-                        onMouseEnter={() => setHoveredZone('vip4')}
-                        onMouseLeave={() => setHoveredZone(null)}
-                      >
-                        <DropdownMenuItem 
-                          onClick={() => navigate('/rooms-vip4')}
-                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-orange-50 hover:border-orange-600'}`}
-                        >
-                          <Rocket className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-orange-600'}`} />
-                          <div>
-                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP4 CareerZ <span className="text-[10px] text-muted-foreground">$50</span></div>
-                            <div className="text-xs text-muted-foreground">Belly • Career coaching</div>
-                          </div>
-                        </DropdownMenuItem>
-                      </div>
-
-                      {/* Zone: VIP3 Hips */}
-                      <div 
-                        className={`transition-all duration-200 ${hoveredZone === 'vip3' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-purple-50/50 shadow-lg') : ''}`}
-                        onMouseEnter={() => setHoveredZone('vip3')}
-                        onMouseLeave={() => setHoveredZone(null)}
-                      >
-                        <DropdownMenuItem 
-                          onClick={() => navigate('/rooms-vip3')}
-                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-purple-50 hover:border-purple-600'}`}
-                        >
-                          <Sparkles className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-purple-600'}`} />
-                          <div>
-                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP3 <span className="text-[10px] text-muted-foreground">$15</span></div>
-                            <div className="text-xs text-muted-foreground">Hips • Unlimited rooms</div>
-                          </div>
-                        </DropdownMenuItem>
-                      </div>
-
-                      {/* Zone: VIP2 Knees */}
-                      <div 
-                        className={`transition-all duration-200 ${hoveredZone === 'vip2' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-blue-50/50 shadow-lg') : ''}`}
-                        onMouseEnter={() => setHoveredZone('vip2')}
-                        onMouseLeave={() => setHoveredZone(null)}
-                      >
-                        <DropdownMenuItem 
-                          onClick={() => navigate('/rooms-vip2')}
-                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-blue-50 hover:border-blue-600'}`}
-                        >
-                          <Gem className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-blue-600'}`} />
-                          <div>
-                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP2 <span className="text-[10px] text-muted-foreground">$6</span></div>
-                            <div className="text-xs text-muted-foreground">Knees • 25 rooms/month</div>
-                          </div>
-                        </DropdownMenuItem>
-                      </div>
-
-                      {/* Zone: VIP1 Shins */}
-                      <div 
-                        className={`transition-all duration-200 ${hoveredZone === 'vip1' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-yellow-50/50 shadow-lg') : ''}`}
-                        onMouseEnter={() => setHoveredZone('vip1')}
-                        onMouseLeave={() => setHoveredZone(null)}
-                      >
-                        <DropdownMenuItem 
-                          onClick={() => navigate('/rooms-vip1')}
-                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-yellow-50 hover:border-yellow-600'}`}
-                        >
-                          <Star className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-yellow-600'}`} />
-                          <div>
-                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>VIP1 <span className="text-[10px] text-muted-foreground">$3</span></div>
-                            <div className="text-xs text-muted-foreground">Shins • 10 rooms/month</div>
-                          </div>
-                        </DropdownMenuItem>
-                      </div>
-
-                      {/* Zone: Free Feet */}
-                      <div 
-                        className={`transition-all duration-200 ${hoveredZone === 'free' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-green-50/50 shadow-lg') : ''}`}
-                        onMouseEnter={() => setHoveredZone('free')}
-                        onMouseLeave={() => setHoveredZone(null)}
-                      >
-                        <DropdownMenuItem 
-                          onClick={() => navigate('/rooms')}
-                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-green-50 hover:border-green-600'}`}
-                        >
-                          <Crown className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-green-600'}`} />
-                          <div>
-                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Free <span className="text-[10px] text-muted-foreground">$0</span></div>
-                            <div className="text-xs text-muted-foreground">Feet • Basic rooms</div>
-                          </div>
-                        </DropdownMenuItem>
-                      </div>
+                      ))}
                     </div>
                   </div>
 
-                  {/* Right Column: Life Skills & Survival */}
-                  <div className="flex-1 overflow-y-auto relative z-10">
-                    <div className="sticky top-0 bg-background/95 backdrop-blur-sm px-4 py-2 border-b z-20">
-                      <h3 className={`text-sm font-bold ${isBlackWhiteMode ? 'text-black' : 'text-red-600'}`}>
+                  {/* RIGHT COLUMN - Life Skills & Survival (scrollable, transparent bg) */}
+                  <div className="relative overflow-y-auto bg-transparent">
+                    <div className="sticky top-0 bg-background/95 backdrop-blur-sm px-3 py-2 border-b z-20">
+                      <h3 className={`text-xs font-bold ${isBlackWhiteMode ? 'text-black' : 'text-red-700'}`}>
                         Life Skills & Survival
                       </h3>
                     </div>
-                    <div className="p-2 space-y-1">
-                      {/* Zone: Free */}
-                      <div 
-                        className={`transition-all duration-200 ${hoveredZone === 'free' ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-red-50/50 shadow-lg') : ''}`}
-                        onMouseEnter={() => setHoveredZone('free')}
+                    
+                    {/* Zone-aligned items */}
+                    {BODY_ZONES.map((zone) => (
+                      <div
+                        key={`right-${zone.id}`}
+                        style={{ height: `${zone.height}px` }}
+                        className={`relative border-b border-border/10 transition-all duration-200 ${
+                          hoveredZone === zone.id ? (isBlackWhiteMode ? 'bg-gray-200' : 'bg-red-50/30') : ''
+                        }`}
+                        onMouseEnter={() => setHoveredZone(zone.id)}
                         onMouseLeave={() => setHoveredZone(null)}
                       >
-                        <DropdownMenuItem 
-                          onClick={() => navigate('/rooms')}
-                          className={`cursor-pointer transition-all border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-red-50 hover:border-red-600'}`}
-                        >
-                          <Shield className={`mr-2 h-4 w-4 ${isBlackWhiteMode ? 'text-black' : 'text-red-600'}`} />
-                          <div>
-                            <div className={`font-bold text-sm ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Survival & Resilience</div>
-                            <div className="text-xs text-muted-foreground">Free bonus • 15 rooms</div>
+                        {zone.id === 'free' && (
+                          <DropdownMenuItem 
+                            onClick={() => navigate('/rooms')}
+                            className={`h-full flex items-center cursor-pointer border-l-2 border-transparent ${isBlackWhiteMode ? 'hover:bg-gray-100 hover:border-black' : 'hover:bg-red-50 hover:border-red-600'}`}
+                          >
+                            <Shield className={`mr-2 h-4 w-4 flex-shrink-0 ${isBlackWhiteMode ? 'text-black' : 'text-red-600'}`} />
+                            <div className="text-left">
+                              <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Survival & Resilience</div>
+                              <div className="text-[10px] text-muted-foreground">Free • 15 rooms</div>
+                            </div>
+                          </DropdownMenuItem>
+                        )}
+                        
+                        {zone.id === 'universe' && (
+                          <div className="h-full flex items-center px-3">
+                            <div className="text-left">
+                              <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Meaning of Life</div>
+                              <div className="text-[10px] text-muted-foreground">Spiritual</div>
+                            </div>
                           </div>
-                        </DropdownMenuItem>
+                        )}
+                        
+                        {zone.id === 'vip9' && (
+                          <div className="h-full flex items-center px-3">
+                            <div className="text-left">
+                              <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Strategy</div>
+                              <div className="text-[10px] text-muted-foreground">Executive mastery</div>
+                            </div>
+                          </div>
+                        )}
+                        
+                        {zone.id === 'vip8' && (
+                          <div className="h-full flex items-center px-3">
+                            <div className="text-left">
+                              <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Life Vision</div>
+                              <div className="text-[10px] text-muted-foreground">Navigation</div>
+                            </div>
+                          </div>
+                        )}
+                        
+                        {zone.id === 'vip6' && (
+                          <div className="h-full flex items-center px-3">
+                            <div className="text-left">
+                              <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Emotional Healing</div>
+                              <div className="text-[10px] text-muted-foreground">Inner work</div>
+                            </div>
+                          </div>
+                        )}
+                        
+                        {zone.id === 'vip5' && (
+                          <div className="h-full flex items-center px-3">
+                            <div className="text-left">
+                              <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Communication</div>
+                              <div className="text-[10px] text-muted-foreground">Relationships</div>
+                            </div>
+                          </div>
+                        )}
+                        
+                        {zone.id === 'vip4' && (
+                          <div className="h-full flex items-center px-3">
+                            <div className="text-left">
+                              <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Career</div>
+                              <div className="text-[10px] text-muted-foreground">Productivity</div>
+                            </div>
+                          </div>
+                        )}
+                        
+                        {zone.id === 'vip3' && (
+                          <div className="h-full flex items-center px-3">
+                            <div className="text-left">
+                              <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Lifestyle Mastery</div>
+                              <div className="text-[10px] text-muted-foreground">Health & wellness</div>
+                            </div>
+                          </div>
+                        )}
+                        
+                        {zone.id === 'vip2' && (
+                          <div className="h-full flex items-center px-3">
+                            <div className="text-left">
+                              <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Adulting Essentials</div>
+                              <div className="text-[10px] text-muted-foreground">Independence</div>
+                            </div>
+                          </div>
+                        )}
+                        
+                        {zone.id === 'vip1' && (
+                          <div className="h-full flex items-center px-3">
+                            <div className="text-left">
+                              <div className={`font-bold text-xs ${isBlackWhiteMode ? 'text-black' : 'text-gray-900'}`}>Basic Daily Skills</div>
+                              <div className="text-[10px] text-muted-foreground">Fundamentals</div>
+                            </div>
+                          </div>
+                        )}
                       </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
 
