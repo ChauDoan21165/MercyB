@@ -37,6 +37,16 @@ import { setCustomKeywordMappings, clearCustomKeywordMappings, loadRoomKeywords 
 import { ProfileAvatarUpload } from "@/components/ProfileAvatarUpload";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { getTierRoute } from "@/lib/tierRoutes";
+import { useFavoriteRooms } from "@/hooks/useFavoriteRooms";
+import { Heart, Star } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface Message {
   id: string;
@@ -101,6 +111,7 @@ const ChatHub = () => {
   const [mergedEntries, setMergedEntries] = useState<any[]>([]);
   const [audioBasePath, setAudioBasePath] = useState<string>('/');
   const [matchedEntryId, setMatchedEntryId] = useState<string | null>(null);
+  const { favoriteRooms, isFavorite: isRoomFavorite, toggleFavorite: toggleRoomFavorite } = useFavoriteRooms();
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [roomNameOverride, setRoomNameOverride] = useState<{ nameEn: string; nameVi: string } | null>(null);
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
@@ -799,6 +810,73 @@ const ChatHub = () => {
               <ArrowLeft className="w-4 h-4" />
               Back
             </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => toggleRoomFavorite({
+                id: roomId || '',
+                nameEn: currentRoom.nameEn,
+                nameVi: currentRoom.nameVi,
+                tier: info?.tier || 'free'
+              })}
+              className="gap-2"
+              title={isRoomFavorite(roomId || '') ? "Remove from favorites" : "Add to favorites"}
+            >
+              <Heart className={`w-4 h-4 ${isRoomFavorite(roomId || '') ? 'fill-red-500 text-red-500' : 'text-gray-400'}`} />
+              Favorite
+            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="gap-2"
+                >
+                  <Star className="w-4 h-4 text-yellow-500" />
+                  My Rooms ({favoriteRooms.length})
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-[300px] z-[100]">
+                <DropdownMenuLabel>My Favorite Rooms</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <ScrollArea className="h-[300px]">
+                  {favoriteRooms.length === 0 ? (
+                    <div className="p-4 text-center text-sm text-muted-foreground">
+                      No favorite rooms yet. Click the heart icon to add rooms.
+                    </div>
+                  ) : (
+                    favoriteRooms.map((room) => (
+                      <DropdownMenuItem
+                        key={room.id}
+                        onClick={() => navigate(`/room/${room.id}`)}
+                        className="cursor-pointer flex items-center justify-between"
+                      >
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium">{room.nameEn}</span>
+                          {room.nameEn !== room.nameVi && (
+                            <span className="text-xs text-muted-foreground">{room.nameVi}</span>
+                          )}
+                          <Badge variant="secondary" className="text-xs w-fit mt-1">
+                            {room.tier === 'free' ? 'Free' : room.tier.toUpperCase()}
+                          </Badge>
+                        </div>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleRoomFavorite(room);
+                          }}
+                          className="h-6 w-6 p-0"
+                        >
+                          <Heart className="h-3 w-3 fill-red-500 text-red-500" />
+                        </Button>
+                      </DropdownMenuItem>
+                    ))
+                  )}
+                </ScrollArea>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
          
           <div className="text-center space-y-1">
