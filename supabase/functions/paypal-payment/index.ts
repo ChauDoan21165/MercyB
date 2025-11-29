@@ -13,6 +13,19 @@ const PAYPAL_API = Deno.env.get('PAYPAL_MODE') === 'live'
   ? 'https://api-m.paypal.com'  // Production for real money
   : 'https://api-m.sandbox.paypal.com'; // Sandbox for testing
 
+// Structured response type for payment operations
+type PaymentResult = {
+  success: boolean;
+  error?: string;
+  data?: {
+    subscription_id?: string;
+    tier_id?: string;
+    provider: 'paypal';
+    provider_tx_id?: string;
+    order_id?: string;
+  };
+};
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
@@ -98,8 +111,15 @@ serve(async (req) => {
         .single();
 
       if (tierError || !tier) {
-        console.error('Tier lookup error:', tierError);
-        throw new Error('Tier not found');
+        console.error('❌ Tier lookup error:', tierError);
+        const result: PaymentResult = {
+          success: false,
+          error: 'Tier not found',
+        };
+        return new Response(JSON.stringify(result), {
+          status: 404,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
       }
 
       const accessToken = await getAccessToken();
@@ -114,8 +134,8 @@ serve(async (req) => {
         body: JSON.stringify({
           intent: 'CAPTURE',
           application_context: {
-            landing_page: 'LOGIN', // Force PayPal login instead of guest card form
-            user_action: 'PAY_NOW', // Show Pay Now for clarity
+            landing_page: 'LOGIN',
+            user_action: 'PAY_NOW',
           },
           purchase_units: [{
             amount: {
@@ -132,11 +152,25 @@ serve(async (req) => {
       console.log('PayPal order response:', orderData);
 
       if (!orderResponse.ok || !orderData.id) {
-        console.error('PayPal order creation failed:', orderData);
-        throw new Error(orderData.message || 'Failed to create PayPal order');
+        console.error('❌ PayPal order creation failed:', orderData);
+        const result: PaymentResult = {
+          success: false,
+          error: orderData.message || 'Failed to create PayPal order',
+        };
+        return new Response(JSON.stringify(result), {
+          status: 500,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
       }
 
-      return new Response(JSON.stringify({ orderId: orderData.id }), {
+      const result: PaymentResult = {
+        success: true,
+        data: {
+          order_id: orderData.id,
+          provider: 'paypal',
+        },
+      };
+      return new Response(JSON.stringify(result), {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
@@ -154,6 +188,18 @@ serve(async (req) => {
       });
 
       const captureData = await captureResponse.json();
+
+      if (!captureResponse.ok) {
+        console.error('❌ PayPal capture failed:', captureData);
+        const result: PaymentResult = {
+          success: false,
+          error: 'Payment capture failed',
+        };
+        return new Response(JSON.stringify(result), {
+          status: 500,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
 
       if (captureData.status === 'COMPLETED') {
         console.log('✅ PayPal payment COMPLETED - starting subscription update', {
@@ -178,19 +224,39 @@ serve(async (req) => {
             tier_id: tierId,
             status: 'active',
             current_period_start: new Date().toISOString(),
-            current_period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 days
+            current_period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
           })
           .select()
           .single();
 
-        if (subError) {
+        if (subError || !subscription) {
           console.error('❌ CRITICAL: Subscription update FAILED after successful payment', {
             user_id: user.id,
             tier_id: tierId,
             order_id: orderId,
             error: subError,
           });
-          throw subError;
+          
+          // Log critical failure
+          await supabase.rpc('log_security_event', {
+            _user_id: user.id,
+            _event_type: 'payment_subscription_failure',
+            _severity: 'high',
+            _metadata: {
+              order_id: orderId,
+              tier_id: tierId,
+              error: subError?.message,
+            },
+          });
+
+          const result: PaymentResult = {
+            success: false,
+            error: 'CRITICAL: Subscription update FAILED after payment',
+          };
+          return new Response(JSON.stringify(result), {
+            status: 500,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          });
         }
 
         // Log successful payment with structured data
@@ -209,6 +275,19 @@ serve(async (req) => {
           timestamp: new Date().toISOString(),
         });
 
+        // Log security event
+        await supabase.rpc('log_security_event', {
+          _user_id: user.id,
+          _event_type: 'payment_completed',
+          _severity: 'low',
+          _metadata: {
+            provider: 'paypal',
+            tier_id: tierId,
+            amount: tier?.price_monthly,
+            transaction_id: captureData.id,
+          },
+        });
+
         // Send notification to admin
         const { data: adminUsers } = await supabase
           .from('user_roles')
@@ -218,7 +297,6 @@ serve(async (req) => {
         if (adminUsers && adminUsers.length > 0) {
           const notificationMessage = `🎉 New Payment Received!\n\nUser: ${user.email}\nTier: ${tier?.name || 'Unknown'}\nAmount: $${tier?.price_monthly || 0}\nDate: ${new Date().toLocaleString()}`;
           
-          // Create a feedback entry for admin notification
           for (const admin of adminUsers) {
             await supabase
               .from('feedback')
@@ -232,16 +310,28 @@ serve(async (req) => {
           }
         }
 
-        return new Response(JSON.stringify({ 
-          success: true, 
-          subscription,
-          captureData 
-        }), {
+        const result: PaymentResult = {
+          success: true,
+          data: {
+            subscription_id: subscription.id,
+            tier_id: tierId,
+            provider: 'paypal',
+            provider_tx_id: captureData.id,
+          },
+        };
+
+        return new Response(JSON.stringify(result), {
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         });
       }
 
-      return new Response(JSON.stringify({ success: false, captureData }), {
+      console.error('❌ Payment not completed. Status:', captureData.status);
+      const result: PaymentResult = {
+        success: false,
+        error: `Payment not completed. Status: ${captureData.status}`,
+      };
+      return new Response(JSON.stringify(result), {
+        status: 400,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
