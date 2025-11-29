@@ -85,18 +85,15 @@ export const checkEndpointRateLimit = async (
 export const logAudit = async (params: {
   type: string;
   userId: string | null;
-  metadata?: Record<string, unknown>;
+  metadata?: Json;
 }) => {
   const { type, userId, metadata } = params;
   const supabase = createSupabaseAdminClient();
 
-  const metadataJson: Json | null =
-    metadata != null ? (metadata as unknown as Json) : null;
-
   const { error } = await supabase.from('audit_logs').insert({
     type,
     user_id: userId,
-    metadata: metadataJson,
+    metadata: metadata ?? null,
   });
 
   if (error) {
@@ -106,7 +103,7 @@ export const logAudit = async (params: {
 
 export const getClientIP = (req: Request): string => {
   return (
-    req.headers.get('x-forwarded-for')?.split(',')[0] ||
+    req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
     req.headers.get('cf-connecting-ip') ||
     req.headers.get('x-real-ip') ||
     'unknown'
