@@ -853,21 +853,22 @@ const ChatHub = () => {
               <ArrowLeft className="w-4 h-4" />
               Back
             </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => toggleRoomFavorite({
-                id: roomId || '',
-                nameEn: currentRoom.nameEn,
-                nameVi: currentRoom.nameVi,
-                tier: info?.tier || 'free'
-              })}
-              className="gap-2"
-              title={isRoomFavorite(roomId || '') ? "Remove from favorites" : "Add to favorites"}
-            >
-              <Heart className={`w-4 h-4 ${isRoomFavorite(roomId || '') ? 'fill-red-500 text-red-500' : 'text-gray-400'}`} />
-              Favorite
-            </Button>
+            <div className="flex gap-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => toggleRoomFavorite({
+                  id: roomId || '',
+                  nameEn: currentRoom.nameEn,
+                  nameVi: currentRoom.nameVi,
+                  tier: info?.tier || 'free'
+                })}
+                className="gap-2"
+                title={isRoomFavorite(roomId || '') ? "Remove from favorites" : "Add to favorites"}
+              >
+                <Heart className={`w-4 h-4 ${isRoomFavorite(roomId || '') ? 'fill-red-500 text-red-500' : 'text-gray-400'}`} />
+                Favorite
+              </Button>
             <DropdownMenu onOpenChange={(open) => !open && setFavoriteSearch("")}>
               <DropdownMenuTrigger asChild>
                 <Button
@@ -1055,7 +1056,8 @@ const ChatHub = () => {
                   )}
                 </ScrollArea>
               </DropdownMenuContent>
-            </DropdownMenu>
+              </DropdownMenu>
+            </div>
           </div>
          
           {/* Admin buttons - positioned independently */}
