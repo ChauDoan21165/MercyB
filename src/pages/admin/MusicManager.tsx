@@ -86,56 +86,7 @@ const TRACKS = [
   { id: '60', name: 'Quiet Time', url: '/audio/relaxing/quiet-time.mp3' },
   { id: '61', name: 'In The Light', url: '/audio/relaxing/in-the-light.mp3' },
   { id: '62', name: 'Tranquility', url: '/audio/relaxing/tranquility.mp3' },
-  { id: '63', name: 'Land of 8 Bits (v2)', url: '/music/2019-01-10_-_Land_of_8_Bits_-_Stephen_Bennett_-_FesliyanStudios.com-2.mp3' },
-  { id: '64', name: 'Done With Work (v2)', url: '/music/2019-07-02_-_Done_With_Work_-_www.FesliyanStudios.com_-_David_Renda-2.mp3' },
-  { id: '65', name: 'Cruisin Along (v2)', url: '/music/2020-08-19_-_Cruisin_Along_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
-  { id: '66', name: 'Tender Love (v2)', url: '/music/RomanticMusic2018-11-11_-_Tender_Love_-_David_Fesliyan-2.mp3' },
-  { id: '67', name: 'Mellow Thoughts (v2)', url: '/music/2020-09-14_-_Mellow_Thoughts_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
-  { id: '68', name: 'Sad Winds (v2)', url: '/music/2017-10-14_-_Sad_Winds_Chapter_1_-_David_Fesliyan-2.mp3' },
-  { id: '69', name: 'Looking Up (v2)', url: '/music/2020-09-14_-_Looking_Up_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
-  { id: '70', name: 'Simplicity (v2)', url: '/music/2020-09-24_-_Simplicity_-_David_Fesliyan-2.mp3' },
-  { id: '71', name: 'Tropical Keys (v2)', url: '/music/2020-09-14_-_Tropical_Keys_-_www.FesliyanStudios.com_David_Renda_1.mp3' },
-  { id: '72', name: 'Chill Gaming (v2)', url: '/music/2019-06-07_-_Chill_Gaming_-_David_Fesliyan-2.mp3' },
-  { id: '73', name: 'Peace (v2)', url: '/music/2015-11-08_-_Peace_-_David_Fesliyan-2.mp3' },
-  { id: '74', name: 'An Ambient Day (v2)', url: '/music/2015-12-22_-_An_Ambient_Day_-_David_Fesliyan-2.mp3' },
-  { id: '75', name: 'Peace And Happy (v2)', url: '/music/2016-04-26_-_Peace_And_Happy_-_David_Fesliyan-2.mp3' },
-  { id: '76', name: 'On My Own (v2)', url: '/music/2019-06-27_-_On_My_Own_-_www.FesliyanStudios.com_-_David_Renda-2.mp3' },
-  { id: '77', name: 'Strings of Time (v2)', url: '/music/2016-05-06_-_Strings_of_Time_-_David_Fesliyan_1.mp3' },
-  { id: '78', name: 'Elven Forest (v2)', url: '/music/2019-07-29_-_Elven_Forest_-_FesliyanStudios.com_-_David_Renda-2.mp3' },
-  { id: '79', name: 'Elevator Ride (v2)', url: '/music/2019-05-03_-_Elevator_Ride_-_www.fesliyanstudios.com-2.mp3' },
-  { id: '80', name: 'The Lounge (v2)', url: '/music/2019-06-05_-_The_Lounge_-_www.fesliyanstudios.com_-_David_Renda-2.mp3' },
-  { id: '81', name: 'The Soft Lullaby (v2)', url: '/music/2020-03-22_-_The_Soft_Lullaby_-_FesliyanStudios.com_-_David_Renda-2.mp3' },
-  { id: '82', name: 'Not Much To Say (v2)', url: '/music/2020-02-11_-_Not_Much_To_Say_-_David_Fesliyan-2.mp3' },
-  { id: '83', name: 'The Soft Lullaby (v3)', url: '/audio/2020-03-22_-_The_Soft_Lullaby_-_FesliyanStudios.com_-_David_Renda-3.mp3' },
-  { id: '84', name: 'Not Much To Say (v3)', url: '/audio/2020-02-11_-_Not_Much_To_Say_-_David_Fesliyan-3.mp3' },
-  { id: '85', name: 'Relaxing Green Nature (v2)', url: '/audio/2020-02-22_-_Relaxing_Green_Nature_-_David_Fesliyan-2.mp3' },
-  { id: '86', name: 'We Were Friends (v2)', url: '/audio/2020-04-28_-_We_Were_Friends_-_David_Fesliyan-2.mp3' },
-  { id: '87', name: 'Beautiful Memories (v1)', url: '/audio/Happy_Music-2018-09-18_-_Beautiful_Memories_-_David_Fesliyan_1.mp3' },
-  { id: '88', name: 'In The Moment (v2)', url: '/audio/2020-05-05_-_In_The_Moment_-_www.FesliyanStudios.com_Steve_Oxen-2.mp3' },
-  { id: '89', name: 'Champagne at Sunset (v2)', url: '/audio/2020-05-27_-_Champagne_at_Sunset_-_www.FesliyanStudios.com_Steve_Oxen-2.mp3' },
-  { id: '90', name: 'Serenity (v2)', url: '/audio/2020-06-18_-_Serenity_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
-  { id: '91', name: 'Cathedral Ambience (v2)', url: '/audio/2020-06-18_-_Cathedral_Ambience_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
-  { id: '92', name: 'Painful Memories (v2)', url: '/audio/2020-08-17_-_Painful_Memories_-_www.FesliyanStudios.com_Steve_Oxen-2.mp3' },
-  { id: '93', name: 'Stasis (1)', url: '/audio/2020-10-27_-_Stasis_-_www.FesliyanStudios.com_Steve_Oxen-2.mp3' },
-  { id: '94', name: 'Upon Reflection (1)', url: '/audio/2020-10-27_-_Upon_Reflection_-_www.FesliyanStudios.com_Steve_Oxen-2.mp3' },
-  { id: '95', name: 'Down Days (1)', url: '/audio/2020-11-16_-_Down_Days_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
-  { id: '96', name: 'Time Alone (1)', url: '/audio/2020-11-17_-_Time_Alone_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
-  { id: '97', name: 'Beauty Of Russia (1)', url: '/audio/2021-05-26_-_Beauty_Of_Russia_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '98', name: 'Irish Sunset (1)', url: '/audio/2021-06-03_-_Irish_Sunset_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '99', name: 'Country Fireside (1)', url: '/audio/2021-10-11_-_Country_Fireside_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '100', name: 'Heaven (1)', url: '/audio/2021-10-20_-_Heaven_-_David_Fesliyan-2.mp3' },
-  { id: '101', name: 'Our Hopes And Dreams (1)', url: '/audio/2022-07-13_-_Our_Hopes_And_Dreams_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '102', name: 'Galaxys Endless Expanse (1)', url: '/audio/2023-05-02_-_Galaxys_Endless_Expanse_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '103', name: 'Glistening Gifts (1)', url: '/audio/2023-08-25_-_Glistening_Gifts_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '104', name: 'Broken Inside (1)', url: '/audio/2024-10-28_-_Broken_Inside_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '105', name: 'Requiem (1)', url: '/audio/2024-12-18_-_Requiem_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '106', name: 'News Chill (1)', url: '/audio/2025-01-21_-_News_Chill_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '107', name: 'Wishing Well (1)', url: '/audio/2025-02-04_-_Wishing_Well_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '108', name: 'Anhedonia (1)', url: '/audio/2025-03-27_-_Anhedonia_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '109', name: 'Saying Goodbye (1)', url: '/audio/2025-05-05_-_Saying_Goodbye_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '110', name: 'I Wish I Told You (1)', url: '/audio/2025-06-05_I_Wish_I_Told_You_-_www.FesliyanStudios.com_David_Fesliyan-2.mp3' },
-  { id: '111', name: 'Deep Meditation (1)', url: '/audio/2019-04-06_-_Deep_Meditation_-_David_Fesliyan-2.mp3' },
-  { id: '112', name: 'Slow Funny Music A', url: '/audio/2019-02-21_-_Slow_Funny_Music_A_-_www.fesliyanstudios.com_-_David_Renda.mp3' },
+  { id: '63', name: 'Slow Funny Music A', url: '/audio/2019-02-21_-_Slow_Funny_Music_A_-_www.fesliyanstudios.com_-_David_Renda.mp3' },
 ];
 
 export default function MusicManager() {
@@ -248,7 +199,7 @@ export default function MusicManager() {
             Music File Manager
           </CardTitle>
           <CardDescription className="text-black">
-            Manage all music files in the player. Duplicates are marked with (1), (2), (v2), or (v3).
+            Manage all music files in the player. All duplicates have been removed - only unique tracks remain.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -257,7 +208,7 @@ export default function MusicManager() {
               <div>
                 <p className="text-sm font-bold text-black mb-1">Total Tracks: {tracks.length}</p>
                 <p className="text-xs text-black">
-                  {selectedTracks.size} selected | Tracks marked with (1), (2), (v2), or (v3) are duplicates.
+                  {selectedTracks.size} selected | All duplicates removed - only unique tracks remain
                 </p>
               </div>
               <div className="flex gap-2">
