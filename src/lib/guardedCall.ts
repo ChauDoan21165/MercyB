@@ -1,6 +1,20 @@
 import { toast } from 'sonner';
 
 /**
+ * ⚠️ CRITICAL DEV NOTE ⚠️
+ * 
+ * All admin Supabase calls MUST use guardedCall to prevent "fake success after error".
+ * 
+ * This is a non-negotiable architectural requirement. Any admin operation that:
+ * - Mutates data (INSERT, UPDATE, DELETE)
+ * - Calls edge functions
+ * - Shows success messages to users
+ * 
+ * MUST be wrapped in guardedCall to ensure errors are properly surfaced
+ * and success messages are NEVER shown after failures.
+ */
+
+/**
  * Guarded Call Wrapper
  * 
  * This utility ensures we NEVER claim success after an error.

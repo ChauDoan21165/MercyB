@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { CheckCircle, XCircle, Music, Play } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useAdminCheck } from "@/hooks/useAdminCheck";
+import { guardedCall } from "@/lib/guardedCall";
 
 interface MusicUpload {
   id: string;
@@ -69,24 +70,27 @@ export default function MusicApproval() {
   };
 
   const handleApprove = async (id: string) => {
-    try {
-      const { error } = await supabase
-        .from("user_music_uploads")
-        .update({
-          upload_status: 'approved',
-          approved_at: new Date().toISOString(),
-          admin_notes: adminNotes[id] || null
-        })
-        .eq("id", id);
+    const result = await guardedCall(
+      'Approve music upload',
+      async () => {
+        const { error } = await supabase
+          .from("user_music_uploads")
+          .update({
+            upload_status: 'approved',
+            approved_at: new Date().toISOString(),
+            admin_notes: adminNotes[id] || null
+          })
+          .eq("id", id);
 
-      if (error) throw error;
+        if (error) throw error;
+        return { success: true };
+      },
+      { showSuccessToast: true, successMessage: "Music approved!" }
+    );
 
-      toast.success("Music approved!");
+    if (result.success) {
       await loadUploads();
       setAdminNotes(prev => ({ ...prev, [id]: "" }));
-    } catch (error: any) {
-      console.error("Approval error:", error);
-      toast.error("Failed to approve music");
     }
   };
 
@@ -96,23 +100,26 @@ export default function MusicApproval() {
       return;
     }
 
-    try {
-      const { error } = await supabase
-        .from("user_music_uploads")
-        .update({
-          upload_status: 'rejected',
-          admin_notes: adminNotes[id]
-        })
-        .eq("id", id);
+    const result = await guardedCall(
+      'Reject music upload',
+      async () => {
+        const { error } = await supabase
+          .from("user_music_uploads")
+          .update({
+            upload_status: 'rejected',
+            admin_notes: adminNotes[id]
+          })
+          .eq("id", id);
 
-      if (error) throw error;
+        if (error) throw error;
+        return { success: true };
+      },
+      { showSuccessToast: true, successMessage: "Music rejected" }
+    );
 
-      toast.success("Music rejected");
+    if (result.success) {
       await loadUploads();
       setAdminNotes(prev => ({ ...prev, [id]: "" }));
-    } catch (error: any) {
-      console.error("Rejection error:", error);
-      toast.error("Failed to reject music");
     }
   };
 
