@@ -203,7 +203,12 @@ Deno.serve(async (req) => {
       return jsonResponse({ error: 'UNAUTHORIZED' }, 401);
     }
 
-    await checkEndpointRateLimit(ENDPOINT_NAME, user.id);
+    // Rate limit checks per action
+    if (action === 'create-order') {
+      await checkEndpointRateLimit('paypal-payment:create-order', user.id);
+    } else if (action === 'capture-order') {
+      await checkEndpointRateLimit('paypal-payment:capture-order', user.id);
+    }
 
     const supabase = createSupabaseAdminClient();
 
@@ -252,7 +257,38 @@ Deno.serve(async (req) => {
         throw new Error('Missing order ID from PayPal create-order response');
       }
 
-      // Optionally insert a pending payment_transactions record
+      // Idempotency check: prevent duplicate transactions
+      const { data: existingTx, error: existingErr } = await supabase
+        .from('payment_transactions')
+        .select('id, status')
+        .eq('external_reference', order.id)
+        .maybeSingle();
+
+      if (existingErr) {
+        console.error('[paypal] existingTx lookup error', existingErr);
+      }
+
+      if (existingTx && existingTx.status !== 'failed') {
+        // Order already tracked, return existing order
+        await logAudit({
+          type: 'paypal_create_order_duplicate',
+          userId: user.id,
+          metadata: {
+            ip,
+            tier_id,
+            period,
+            paypal_order_id: order.id,
+            existing_tx_id: existingTx.id,
+          },
+        });
+
+        return jsonResponse({
+          success: true,
+          data: { order_id: order.id },
+        });
+      }
+
+      // Safe to insert new transaction record
       await supabase.from('payment_transactions').insert({
         user_id: user.id,
         tier_id: tier_id,
@@ -293,6 +329,43 @@ Deno.serve(async (req) => {
 
       if (!order_id || !tier_id || !period) {
         return jsonResponse({ error: 'MISSING_PARAMETERS' }, 400);
+      }
+
+      // Idempotency check: prevent duplicate capture processing
+      const { data: existingTx, error: txErr } = await supabase
+        .from('payment_transactions')
+        .select('id, status')
+        .eq('external_reference', order_id)
+        .maybeSingle();
+
+      if (txErr) {
+        console.error('[paypal] existingTx capture lookup error', txErr);
+      }
+
+      if (existingTx && existingTx.status === 'completed') {
+        // Already processed this capture
+        await logAudit({
+          type: 'paypal_capture_order_duplicate',
+          userId: user.id,
+          metadata: {
+            ip,
+            order_id,
+            tier_id,
+            period,
+            existing_tx_id: existingTx.id,
+          },
+        });
+
+        return jsonResponse({
+          success: true,
+          data: {
+            order_id,
+            tier_id,
+            period,
+            status: 'COMPLETED',
+            alreadyProcessed: true,
+          },
+        });
       }
 
       const accessToken = await getPayPalAccessToken();
