@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Trash2, Music, AlertTriangle, CheckSquare, Square } from 'lucide-react';
+import { Trash2, Music, AlertTriangle, CheckSquare, Square, Heart, HeartOff, Play, Pause, SkipForward, SkipBack } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
@@ -89,21 +89,68 @@ const TRACKS = [
   { id: '63', name: 'Slow Funny Music A', url: '/audio/2019-02-21_-_Slow_Funny_Music_A_-_www.fesliyanstudios.com_-_David_Renda.mp3' },
 ];
 
+const FAVORITES_STORAGE_KEY = 'mb_music_favorites_v1';
+
 export default function MusicManager() {
   const [tracks, setTracks] = useState<MusicFile[]>([]);
   const [deleteTrack, setDeleteTrack] = useState<MusicFile | null>(null);
   const [selectedTracks, setSelectedTracks] = useState<Set<string>>(new Set());
   const [showBulkDeleteDialog, setShowBulkDeleteDialog] = useState(false);
+
+  // NEW: favourites + play mode + player state
+  const [favorites, setFavorites] = useState<Set<string>>(new Set());
+  const [playMode, setPlayMode] = useState<'all' | 'favorites'>('all'); // default: common list
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
   const { toast } = useToast();
 
+  // Derived playlist depending on mode, but mode NEVER changes when you heart a song
+  const playlist: MusicFile[] =
+    playMode === 'all'
+      ? tracks
+      : tracks.filter((t) => favorites.has(t.id));
+
+  const currentTrack = playlist[currentIndex] || null;
+
+  // Load tracks + favorites on mount
   useEffect(() => {
-    // Convert TRACKS to MusicFile format with filenames extracted
-    const musicFiles = TRACKS.map(track => ({
+    const musicFiles: MusicFile[] = TRACKS.map(track => ({
       ...track,
       filename: track.url.split('/').pop() || ''
     }));
     setTracks(musicFiles);
+
+    try {
+      const stored = window.localStorage.getItem(FAVORITES_STORAGE_KEY);
+      if (stored) {
+        const parsed: string[] = JSON.parse(stored);
+        setFavorites(new Set(parsed));
+      }
+    } catch {
+      // ignore
+    }
   }, []);
+
+  // Persist favorites when they change
+  useEffect(() => {
+    window.localStorage.setItem(
+      FAVORITES_STORAGE_KEY,
+      JSON.stringify(Array.from(favorites))
+    );
+  }, [favorites]);
+
+  // Auto-play when currentIndex / playlist changes and we're in "playing" state
+  useEffect(() => {
+    if (!audioRef.current || !isPlaying || !currentTrack) return;
+    audioRef.current.load();
+    audioRef.current
+      .play()
+      .catch(() => {
+        setIsPlaying(false);
+      });
+  }, [currentIndex, playMode, tracks, favorites, isPlaying, currentTrack]);
 
   const handleDeleteClick = (track: MusicFile) => {
     setDeleteTrack(track);
@@ -113,19 +160,26 @@ export default function MusicManager() {
     if (!deleteTrack) return;
 
     // Remove from local state
-    setTracks(tracks.filter(t => t.id !== deleteTrack.id));
-    
-    // Remove from selected if it was selected
+    const remaining = tracks.filter(t => t.id !== deleteTrack.id);
+    setTracks(remaining);
+
+    // Remove from selected/favorites
     const newSelected = new Set(selectedTracks);
     newSelected.delete(deleteTrack.id);
     setSelectedTracks(newSelected);
-    
+
+    const newFavorites = new Set(favorites);
+    newFavorites.delete(deleteTrack.id);
+    setFavorites(newFavorites);
+
     toast({
       title: "Track Removed",
       description: `${deleteTrack.name} has been removed from the music player.`,
     });
 
     setDeleteTrack(null);
+    // Reset player index if playlist shrank
+    setCurrentIndex(0);
   };
 
   const handleToggleSelect = (trackId: string) => {
@@ -147,7 +201,7 @@ export default function MusicManager() {
   };
 
   const handleSelectAllDuplicates = () => {
-    const duplicates = tracks.filter(t => 
+    const duplicates = tracks.filter(t =>
       t.name.includes('(1)') || t.name.includes('(2)') || t.name.includes('(v2)') || t.name.includes('(v3)')
     );
     setSelectedTracks(new Set(duplicates.map(t => t.id)));
@@ -169,13 +223,21 @@ export default function MusicManager() {
     const deletedCount = selectedTracks.size;
     const remainingTracks = tracks.filter(t => !selectedTracks.has(t.id));
     setTracks(remainingTracks);
+
+    // Clean up favorites too
+    const newFavorites = new Set(favorites);
+    selectedTracks.forEach(id => newFavorites.delete(id));
+    setFavorites(newFavorites);
+
     setSelectedTracks(new Set());
     setShowBulkDeleteDialog(false);
-    
+
     toast({
       title: "Tracks Removed",
       description: `${deletedCount} track${deletedCount > 1 ? 's' : ''} removed from the music player.`,
     });
+
+    setCurrentIndex(0);
   };
 
   const getDuplicateIndicator = (name: string) => {
@@ -190,6 +252,81 @@ export default function MusicManager() {
     return null;
   };
 
+  // NEW: toggle favorite without changing play mode
+  const handleToggleFavorite = (trackId: string) => {
+    const newFavorites = new Set(favorites);
+    if (newFavorites.has(trackId)) {
+      newFavorites.delete(trackId);
+      toast({
+        title: "Removed from My List",
+        description: "This track was removed from your favorites.",
+      });
+    } else {
+      newFavorites.add(trackId);
+      toast({
+        title: "Added to My List",
+        description: "You can play your favorite list later anytime.",
+      });
+    }
+    setFavorites(newFavorites);
+  };
+
+  // NEW: playback controls
+  const handlePlayPause = () => {
+    if (!audioRef.current || playlist.length === 0) return;
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      audioRef.current
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch(() => setIsPlaying(false));
+    }
+  };
+
+  const handleNext = () => {
+    if (playlist.length === 0) return;
+    setCurrentIndex((prev) => (prev + 1) % playlist.length);
+  };
+
+  const handlePrev = () => {
+    if (playlist.length === 0) return;
+    setCurrentIndex((prev) =>
+      prev === 0 ? playlist.length - 1 : prev - 1
+    );
+  };
+
+  const handleEnded = () => {
+    handleNext();
+  };
+
+  const handleSwitchToAll = () => {
+    setPlayMode('all');
+    setCurrentIndex(0);
+    toast({
+      title: "Playing common list",
+      description: "Now playing all relaxing tracks. Tap the heart on songs you like.",
+    });
+  };
+
+  const handleSwitchToFavorites = () => {
+    if (favorites.size === 0) {
+      toast({
+        title: "No favorites yet",
+        description: "Listen to the common list and tap the heart on songs you like first.",
+        variant: "destructive",
+      });
+      return;
+    }
+    setPlayMode('favorites');
+    setCurrentIndex(0);
+    toast({
+      title: "Playing your list",
+      description: "Now playing only your favorite tracks.",
+    });
+  };
+
   return (
     <div className="container mx-auto p-6">
       <Card className="bg-white border-2 border-black">
@@ -199,16 +336,109 @@ export default function MusicManager() {
             Music File Manager
           </CardTitle>
           <CardDescription className="text-black">
-            Manage all music files in the player. All duplicates have been removed - only unique tracks remain.
+            Listen to the common relaxing list. Tap the heart to save songs you love, then play your list later.
           </CardDescription>
         </CardHeader>
+
         <CardContent>
+          {/* NEW: Simple Player Bar */}
+          <div className="mb-4 p-4 bg-gray-50 border border-black rounded flex flex-col gap-3">
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold text-gray-700 mb-1">Mode</p>
+                <div className="flex gap-2">
+                  <Button
+                    size="sm"
+                    variant={playMode === 'all' ? "default" : "outline"}
+                    className={
+                      playMode === 'all'
+                        ? "border-black bg-black text-white"
+                        : "border-black text-black hover:bg-gray-100"
+                    }
+                    onClick={handleSwitchToAll}
+                  >
+                    Common list
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant={playMode === 'favorites' ? "default" : "outline"}
+                    className={
+                      playMode === 'favorites'
+                        ? "border-black bg-pink-600 text-white"
+                        : "border-black text-pink-600 hover:bg-pink-50"
+                    }
+                    onClick={handleSwitchToFavorites}
+                  >
+                    My list ({favorites.size})
+                  </Button>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-end">
+                <p className="text-xs text-gray-600">
+                  Now playing:
+                </p>
+                <p className="text-sm font-bold text-black line-clamp-1 max-w-xs text-right">
+                  {currentTrack ? currentTrack.name : 'Nothing selected'}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Button
+                  size="icon"
+                  variant="outline"
+                  className="border-black"
+                  onClick={handlePrev}
+                  disabled={playlist.length === 0}
+                >
+                  <SkipBack className="h-4 w-4" />
+                </Button>
+                <Button
+                  size="icon"
+                  variant="outline"
+                  className="border-black"
+                  onClick={handlePlayPause}
+                  disabled={playlist.length === 0}
+                >
+                  {isPlaying ? (
+                    <Pause className="h-4 w-4" />
+                  ) : (
+                    <Play className="h-4 w-4" />
+                  )}
+                </Button>
+                <Button
+                  size="icon"
+                  variant="outline"
+                  className="border-black"
+                  onClick={handleNext}
+                  disabled={playlist.length === 0}
+                >
+                  <SkipForward className="h-4 w-4" />
+                </Button>
+              </div>
+
+              <p className="text-xs text-gray-600">
+                Total tracks: {tracks.length} · Favorites: {favorites.size}
+              </p>
+            </div>
+
+            {/* Hidden audio element */}
+            <audio
+              ref={audioRef}
+              src={currentTrack?.url}
+              onEnded={handleEnded}
+            />
+          </div>
+
+          {/* Existing manager toolbar */}
           <div className="mb-4 p-4 bg-gray-50 border border-black rounded">
             <div className="flex items-center justify-between mb-3">
               <div>
                 <p className="text-sm font-bold text-black mb-1">Total Tracks: {tracks.length}</p>
                 <p className="text-xs text-black">
-                  {selectedTracks.size} selected | All duplicates removed - only unique tracks remain
+                  {selectedTracks.size} selected | Favorites: {favorites.size}
                 </p>
               </div>
               <div className="flex gap-2">
@@ -253,37 +483,53 @@ export default function MusicManager() {
             </div>
           </div>
 
+          {/* Track list */}
           <ScrollArea className="h-[600px] border border-black rounded">
             <div className="space-y-2 p-4">
-              {tracks.map((track) => (
-                <div
-                  key={track.id}
-                  className={`flex items-center gap-3 p-3 border border-black rounded hover:bg-gray-50 ${
-                    selectedTracks.has(track.id) ? 'bg-blue-50' : 'bg-white'
-                  }`}
-                >
-                  <Checkbox
-                    checked={selectedTracks.has(track.id)}
-                    onCheckedChange={() => handleToggleSelect(track.id)}
-                    className="border-black"
-                  />
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2">
-                      <p className="font-bold text-black text-sm">{track.name}</p>
-                      {getDuplicateIndicator(track.name)}
-                    </div>
-                    <p className="text-xs text-gray-600 mt-1">{track.filename}</p>
-                  </div>
-                  <Button
-                    onClick={() => handleDeleteClick(track)}
-                    variant="outline"
-                    size="sm"
-                    className="border-black text-red-600 hover:bg-red-50"
+              {tracks.map((track) => {
+                const isFav = favorites.has(track.id);
+                return (
+                  <div
+                    key={track.id}
+                    className={`flex items-center gap-3 p-3 border border-black rounded hover:bg-gray-50 ${
+                      selectedTracks.has(track.id) ? 'bg-blue-50' : 'bg-white'
+                    }`}
                   >
-                    <Trash2 className="h-4 w-4" />
-                  </Button>
-                </div>
-              ))}
+                    <Checkbox
+                      checked={selectedTracks.has(track.id)}
+                      onCheckedChange={() => handleToggleSelect(track.id)}
+                      className="border-black"
+                    />
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <p className="font-bold text-black text-sm">{track.name}</p>
+                        {getDuplicateIndicator(track.name)}
+                      </div>
+                      <p className="text-xs text-gray-600 mt-1">{track.filename}</p>
+                    </div>
+
+                    {/* NEW: heart for favorites */}
+                    <Button
+                      onClick={() => handleToggleFavorite(track.id)}
+                      variant="outline"
+                      size="icon"
+                      className={isFav ? "border-pink-600 text-pink-600 bg-pink-50" : "border-black text-black hover:bg-gray-100"}
+                      aria-label={isFav ? "Remove from favorites" : "Add to favorites"}
+                    >
+                      {isFav ? <Heart className="h-4 w-4 fill-pink-600" /> : <HeartOff className="h-4 w-4" />}
+                    </Button>
+
+                    <Button
+                      onClick={() => handleDeleteClick(track)}
+                      variant="outline"
+                      size="sm"
+                      className="border-black text-red-600 hover:bg-red-50"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                );
+              })}
             </div>
           </ScrollArea>
         </CardContent>
