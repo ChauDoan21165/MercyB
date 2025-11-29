@@ -2,7 +2,7 @@ import {
   createClient,
   type SupabaseClient,
 } from 'https://esm.sh/@supabase/supabase-js@2';
-import type { Database } from './database.types.ts';
+import type { Database, Json } from './database.types.ts';
 
 type DB = SupabaseClient<Database>;
 
@@ -90,10 +90,13 @@ export const logAudit = async (params: {
   const { type, userId, metadata } = params;
   const supabase = createSupabaseAdminClient();
 
+  const metadataJson: Json | null =
+    metadata != null ? (metadata as unknown as Json) : null;
+
   const { error } = await supabase.from('audit_logs').insert({
     type,
     user_id: userId,
-    metadata: (metadata ?? {}) as Database['public']['Tables']['audit_logs']['Insert']['metadata'],
+    metadata: metadataJson,
   });
 
   if (error) {
