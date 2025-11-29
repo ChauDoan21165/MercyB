@@ -1,0 +1,103 @@
+{
+  "id": "life_logistics_adulting_skills_vip4_bonus",
+  "tier": "vip4",
+  "domain": "LifeSkills",
+  "title": {
+    "en": "Life Logistics & Adulting Skills — VIP4 Bonus",
+    "vi": "Hậu Cần Cuộc Sống & Kỹ Năng Người Trưởng Thành — Phần Thưởng VIP4"
+  },
+  "content": {
+    "en": "Modern adulthood is not defined by age, but by competence—the ability to manage responsibilities, organize life’s moving parts, and stay functional when things get messy. Most stress comes not from dramatic crises, but from small failures in logistics: missed payments, forgotten documents, unclear communication, or disorganized routines. VIP4 teaches you the practical systems that stable adults rely on. Life logistics is the art of keeping your life smooth, predictable, and low-friction. You learn to manage essential documents, maintain clean digital records, track bills, set reminders, and build routines that prevent chaos before it appears. You also master administrative confidence: talking to banks, negotiating with service providers, understanding contracts, and handling official processes without fear or confusion. Adulting skills go beyond paperwork. You learn how to estimate time, manage basic home maintenance, plan ahead for disruptions, and solve everyday problems calmly. You practice the skill of responsible follow-through—finishing what you start and communicating clearly when delays happen. This room also teaches boundary-setting in practical contexts: saying no to unreasonable requests, protecting your schedule, and managing social obligations without overwhelm. Life logistics is emotional as well as practical; clutter in the environment becomes clutter in the mind. As you build systems, your mental load decreases and your confidence grows. Adulting becomes less about trying to “keep up” and more about moving through life with structure, awareness, and stability. When you master logistics, everything else becomes lighter. This room gives you the tools to run your life like a capable adult—clean, organized, and resilient.",
+    "vi": "Trưởng thành hiện đại không tính theo tuổi mà theo năng lực—khả năng quản lý trách nhiệm, tổ chức các phần chuyển động của cuộc sống và vẫn vận hành khi mọi thứ rối. Phần lớn căng thẳng không đến từ khủng hoảng lớn mà từ lỗi hậu cần nhỏ: quên thanh toán, thất lạc giấy tờ, giao tiếp không rõ hoặc lịch trình bừa bộn. VIP4 dạy bạn các hệ thống thực tế mà người trưởng thành ổn định dựa vào. Hậu cần cuộc sống là nghệ thuật giữ cuộc sống trơn tru, dễ đoán và ít ma sát. Bạn học quản lý giấy tờ quan trọng, lưu hồ sơ số sạch, theo dõi hóa đơn, đặt nhắc nhở và xây thói quen ngăn hỗn loạn trước khi nó xuất hiện. Bạn cũng làm chủ sự tự tin hành chính: nói chuyện với ngân hàng, thương lượng với nhà cung cấp dịch vụ, hiểu hợp đồng và xử lý thủ tục mà không sợ hoặc bối rối. Kỹ năng trưởng thành không chỉ là giấy tờ. Bạn học ước tính thời gian, xử lý bảo trì nhà cửa cơ bản, chuẩn bị cho gián đoạn và giải quyết rắc rối hằng ngày một cách bình tĩnh. Bạn luyện kỹ năng theo sát trách nhiệm—hoàn thành điều đã bắt đầu và giao tiếp rõ khi có chậm trễ. Phòng này cũng dạy đặt ranh giới trong bối cảnh thực tế: từ chối yêu cầu vô lý, bảo vệ lịch của bạn và quản lý nghĩa vụ xã hội mà không quá tải. Hậu cần cuộc sống cũng mang tính cảm xúc; môi trường bừa bộn chuyển thành tâm trí bừa bộn. Khi bạn xây hệ thống, tải tinh thần giảm và sự tự tin tăng. Trưởng thành không còn là cố “đu kịp” mà là di chuyển qua đời sống với cấu trúc, nhận thức và ổn định. Khi bạn làm chủ hậu cần, mọi thứ khác trở nên nhẹ nhàng hơn. Phòng này cung cấp công cụ để bạn vận hành cuộc sống như một người trưởng thành có năng lực—sạch, gọn và bền."
+  },
+  "entries": [
+    {
+      "slug": "document-management",
+      "keywords_en": ["documents", "organization", "records"],
+      "keywords_vi": ["giấy tờ", "tổ chức", "hồ sơ"],
+      "copy": {
+        "en": "Document management prevents chaos. You keep essential items—IDs, contracts, medical papers, receipts—in one clean system, physical or digital. You avoid stacks, random folders, and “I’ll sort it later.” Well-organized documents save you time, money, and stress. When something goes wrong, you respond fast because you know exactly where things are.",
+        "vi": "Quản lý giấy tờ ngăn hỗn loạn. Bạn giữ các mục quan trọng—CMND, hợp đồng, hồ sơ y tế, hóa đơn—trong một hệ thống sạch, giấy hoặc số. Tránh chồng đống, thư mục lung tung và câu “để mai sắp xếp.” Hồ sơ gọn gàng tiết kiệm thời gian, tiền bạc và căng thẳng. Khi có rắc rối, bạn phản ứng nhanh vì biết mọi thứ ở đâu."
+      },
+      "tags": ["organization", "clarity"],
+      "audio": "vip4_logistics_01.mp3"
+    },
+    {
+      "slug": "admin-confidence",
+      "keywords_en": ["administration", "confidence", "process"],
+      "keywords_vi": ["hành chính", "tự tin", "thủ tục"],
+      "copy": {
+        "en": "Administrative confidence means handling official tasks without fear: calling customer service, speaking to the bank, asking for corrections, or disputing charges. You stay calm, use clear language, and keep records. Most people avoid admin tasks because they feel intimidated. You learn to approach them as neutral processes—not threats.",
+        "vi": "Tự tin hành chính là xử lý công việc giấy tờ mà không sợ: gọi chăm sóc khách hàng, nói chuyện với ngân hàng, yêu cầu chỉnh sửa hoặc khiếu nại. Bạn giữ bình tĩnh, dùng ngôn ngữ rõ và lưu hồ sơ. Nhiều người né việc hành chính vì thấy áp lực. Bạn học tiếp cận chúng như quy trình trung tính—không phải đe dọa."
+      },
+      "tags": ["confidence", "clarity"],
+      "audio": "vip4_logistics_02.mp3"
+    },
+    {
+      "slug": "bill-tracking",
+      "keywords_en": ["bills", "tracking", "deadlines"],
+      "keywords_vi": ["hóa đơn", "theo dõi", "hạn"],
+      "copy": {
+        "en": "Bill tracking removes stress. You set reminders, keep a simple list of recurring payments, and separate due dates by category. Missing payments drains money and mental energy. Tracking ensures stability. Systems, not memory, should hold your responsibilities.",
+        "vi": "Theo dõi hóa đơn giảm căng thẳng. Bạn đặt nhắc nhở, giữ danh sách thanh toán định kỳ và tách ngày hạn theo nhóm. Quên thanh toán gây mất tiền và căng thẳng. Theo dõi tạo ổn định. Hệ thống, không phải trí nhớ, nên giữ trách nhiệm của bạn."
+      },
+      "tags": ["system", "stability"],
+      "audio": "vip4_logistics_03.mp3"
+    },
+    {
+      "slug": "time-estimation",
+      "keywords_en": ["time", "estimation", "planning"],
+      "keywords_vi": ["thời gian", "ước tính", "kế hoạch"],
+      "copy": {
+        "en": "Many adults struggle because they underestimate time. Time estimation means realistically predicting how long tasks take, adding margin, and planning backward from deadlines. This prevents rushing, lateness, and burnout. When you master estimation, you become reliable and calm.",
+        "vi": "Nhiều người lớn gặp khó vì đánh giá thấp thời gian. Ước tính thời gian nghĩa là dự đoán thực tế thời lượng nhiệm vụ, cộng biên độ và lập kế hoạch ngược từ hạn. Điều này ngăn vội vàng, trễ và kiệt sức. Khi làm chủ ước tính, bạn trở nên đáng tin và bình tĩnh."
+      },
+      "tags": ["planning", "reliability"],
+      "audio": "vip4_logistics_04.mp3"
+    },
+    {
+      "slug": "basic-home-maintenance",
+      "keywords_en": ["home", "maintenance", "self-reliance"],
+      "keywords_vi": ["nhà cửa", "bảo trì", "tự chủ"],
+      "copy": {
+        "en": "Basic home maintenance reduces crises. You learn small skills: resetting breakers, unclogging drains, checking leaks, or tightening loose fixtures. These prevent bigger repairs and save money. You do not need expertise—you need awareness, patience, and willingness to act early.",
+        "vi": "Bảo trì nhà cơ bản giảm sự cố. Bạn học kỹ năng nhỏ: bật lại cầu dao, thông cống, kiểm tra rò rỉ hoặc siết lại vật dụng lỏng. Những điều này ngăn sửa chữa lớn và tiết kiệm tiền. Bạn không cần chuyên môn—chỉ cần nhận thức, kiên nhẫn và hành động sớm."
+      },
+      "tags": ["self-reliance", "prevention"],
+      "audio": "vip4_logistics_05.mp3"
+    },
+    {
+      "slug": "problem-escalation-prevention",
+      "keywords_en": ["prevention", "escalation", "awareness"],
+      "keywords_vi": ["phòng ngừa", "leo thang", "nhận thức"],
+      "copy": {
+        "en": "Small problems escalate when ignored. You practice addressing minor issues early—renewals, repairs, miscommunications—before they grow costly. Prevention is an adult superpower. It saves energy, money, and stress.",
+        "vi": "Vấn đề nhỏ sẽ leo thang nếu bị bỏ qua. Bạn luyện xử lý việc nhỏ sớm—gia hạn, sửa chữa, hiểu lầm—trước khi chúng tốn kém. Phòng ngừa là siêu năng lực của người trưởng thành. Nó tiết kiệm năng lượng, tiền và căng thẳng."
+      },
+      "tags": ["prevention", "clarity"],
+      "audio": "vip4_logistics_06.mp3"
+    },
+    {
+      "slug": "schedule-boundaries",
+      "keywords_en": ["boundaries", "schedule", "protection"],
+      "keywords_vi": ["ranh giới", "lịch", "bảo vệ"],
+      "copy": {
+        "en": "Your schedule must have boundaries. You protect your time by saying no to unrealistic requests, blocking focus periods, and preventing others from dictating your day. Schedule boundaries create stability and reduce burnout. Time is your life—guard it.",
+        "vi": "Lịch của bạn cần ranh giới. Bạn bảo vệ thời gian bằng cách từ chối yêu cầu không thực tế, chặn thời gian tập trung và không để người khác điều khiển ngày của bạn. Ranh giới lịch tạo ổn định và giảm kiệt sức. Thời gian là cuộc sống—hãy bảo vệ nó."
+      },
+      "tags": ["boundaries", "time"],
+      "audio": "vip4_logistics_07.mp3"
+    },
+    {
+      "slug": "clean-routines",
+      "keywords_en": ["routine", "consistency", "ease"],
+      "keywords_vi": ["thói quen", "nhất quán", "dễ dàng"],
+      "copy": {
+        "en": "Clean routines turn chaos into predictability. You establish morning checks, weekly resets, and monthly reviews. Routines reduce cognitive load—you no longer rely on memory but on systems. A clean routine is not rigid. It is supportive, flexible, and designed to make life easier.",
+        "vi": "Thói quen sạch biến hỗn loạn thành dễ đoán. Bạn đặt kiểm tra buổi sáng, đặt lại hàng tuần và xem xét hàng tháng. Thói quen giảm tải nhận thức—bạn không dựa vào trí nhớ mà dựa vào hệ thống. Thói quen sạch không cứng nhắc. Nó hỗ trợ, linh hoạt và làm cuộc sống dễ hơn."
+      },
+      "tags": ["consistency", "stability"],
+      "audio": "vip4_logistics_08.mp3"
+    }
+  ]
+}

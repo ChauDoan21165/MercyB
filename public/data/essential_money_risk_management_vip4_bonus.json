@@ -1,0 +1,103 @@
+{
+  "id": "essential_money_risk_management_vip4_bonus",
+  "tier": "vip4",
+  "domain": "LifeSkills",
+  "title": {
+    "en": "Essential Money & Personal Risk Management — VIP4 Bonus",
+    "vi": "Tài Chính Cốt Lõi & Quản Lý Rủi Ro Cá Nhân — Phần Thưởng VIP4"
+  },
+  "content": {
+    "en": "Financial survival is not about wealth—it is about stability, clarity, and protection. Most financial stress comes from small mistakes: inconsistent spending, impulsive purchases, lack of risk awareness, or unclear cashflow. VIP4 teaches practical money habits that keep you steady even when life becomes unpredictable. Financial competence begins with visibility: knowing where your money goes, what your obligations are, and what risks you are exposed to. You learn to separate needs from impulses, track recurring costs, and build simple buffers that prevent minor problems from becoming crises. Risk management is not fear-based—it is intelligent planning. You evaluate scenarios: what happens if income drops, if expenses spike, or if emergencies happen? You create basic protections: an emergency fund, a spending plan, and rules for evaluating large decisions. You learn to avoid common traps—high-interest debt, predatory loans, misleading promotions, or emotional purchases. You also develop negotiation confidence: asking for better rates, cancelling unused services, and understanding the fine print before committing. This room helps you build long-term financial resilience through consistency, awareness, and discipline. You learn the mindset of financially stable adults: slow decisions, clear priorities, and low emotional reactivity around money. Financial stability is not luck—it is behavior repeated over time. When you master these skills, your life becomes lighter, calmer, and more protected.",
+    "vi": "Sinh tồn tài chính không phải giàu—mà là ổn định, rõ ràng và được bảo vệ. Phần lớn căng thẳng tài chính đến từ lỗi nhỏ: chi tiêu không nhất quán, mua bốc đồng, thiếu nhận thức rủi ro hoặc dòng tiền mơ hồ. VIP4 dạy thói quen tiền bạc thực tế giúp bạn vững ngay cả khi cuộc sống biến động. Năng lực tài chính bắt đầu từ sự nhìn rõ: biết tiền đi đâu, nghĩa vụ là gì và bạn đang đối mặt rủi ro nào. Bạn học tách nhu cầu khỏi bốc đồng, theo dõi chi phí định kỳ và xây đệm đơn giản để ngăn vấn đề nhỏ thành khủng hoảng. Quản lý rủi ro không dựa trên sợ hãi—mà là lập kế hoạch thông minh. Bạn đánh giá kịch bản: nếu thu nhập giảm, chi phí tăng hoặc khẩn cấp xảy ra thì sao? Bạn tạo các lớp bảo vệ: quỹ dự phòng, kế hoạch chi tiêu và quy tắc đánh giá quyết định lớn. Bạn học tránh bẫy phổ biến—nợ lãi cao, khoản vay nguy hiểm, khuyến mãi đánh lừa hoặc mua theo cảm xúc. Bạn cũng xây tự tin thương lượng: xin mức giá tốt hơn, hủy dịch vụ không dùng và hiểu chữ nhỏ trước khi ký. Phòng này giúp bạn xây khả năng tài chính dài hạn bằng tính nhất quán, nhận thức và kỷ luật. Bạn học tư duy của người ổn định tài chính: quyết chậm, ưu tiên rõ và ít phản ứng cảm xúc với tiền. Ổn định tài chính không phải may mắn—mà là hành vi lặp lại theo thời gian. Khi làm chủ kỹ năng này, cuộc sống bạn nhẹ hơn, bình tĩnh hơn và được bảo vệ hơn."
+  },
+  "entries": [
+    {
+      "slug": "cashflow-visibility",
+      "keywords_en": ["cashflow", "visibility", "clarity"],
+      "keywords_vi": ["dòng tiền", "nhìn rõ", "rõ ràng"],
+      "copy": {
+        "en": "Cashflow visibility means knowing exactly what money enters, what leaves, and when. Without visibility, people guess—they rely on memory, feel safe until a surprise bill arrives, or underestimate obligations. You learn to track inflows, outflows, and recurring commitments. Visibility creates control. Control creates stability.",
+        "vi": "Nhìn rõ dòng tiền nghĩa là biết chính xác tiền vào, tiền ra và thời điểm. Không có sự nhìn rõ, con người đoán—dựa vào trí nhớ, tưởng an toàn cho đến khi hóa đơn bất ngờ xuất hiện hoặc đánh giá thấp nghĩa vụ. Bạn học theo dõi thu, chi và khoản định kỳ. Nhìn rõ tạo kiểm soát. Kiểm soát tạo ổn định."
+      },
+      "tags": ["clarity", "control"],
+      "audio": "vip4_money_01.mp3"
+    },
+    {
+      "slug": "needs-vs-impulses",
+      "keywords_en": ["needs", "impulse control", "discipline"],
+      "keywords_vi": ["nhu cầu", "kiểm soát bốc đồng", "kỷ luật"],
+      "copy": {
+        "en": "Financial stress often comes from impulse purchases disguised as needs. You learn to pause before buying, ask: “Is this necessary? Will it matter next week?” Needs support your life. Impulses drain it. When you separate the two consistently, your finances become lighter and more predictable.",
+        "vi": "Căng thẳng tài chính thường đến từ mua bốc đồng giả dạng nhu cầu. Bạn học tạm dừng trước khi mua, hỏi: “Có cần không? Tuần sau có còn quan trọng không?” Nhu cầu hỗ trợ cuộc sống. Bốc đồng làm nó nặng hơn. Khi tách hai điều này nhất quán, tiền bạc trở nên nhẹ và dễ đoán hơn."
+      },
+      "tags": ["discipline", "clarity"],
+      "audio": "vip4_money_02.mp3"
+    },
+    {
+      "slug": "emergency-buffer",
+      "keywords_en": ["emergency fund", "buffer", "protection"],
+      "keywords_vi": ["quỹ dự phòng", "đệm", "bảo vệ"],
+      "copy": {
+        "en": "An emergency buffer protects you from financial shocks. It does not need to be large at first. Even one month of basic expenses creates psychological safety. Buffers prevent panic, reduce debt risk, and give you freedom to make thoughtful decisions instead of desperate ones.",
+        "vi": "Quỹ dự phòng bảo vệ bạn khỏi cú sốc tài chính. Nó không cần lớn ngay. Chỉ một tháng chi phí cơ bản cũng tạo an toàn tâm lý. Đệm ngăn hoảng loạn, giảm nguy cơ nợ và cho bạn tự do đưa ra quyết định có suy nghĩ thay vì tuyệt vọng."
+      },
+      "tags": ["protection", "stability"],
+      "audio": "vip4_money_03.mp3"
+    },
+    {
+      "slug": "large-decision-rules",
+      "keywords_en": ["decision rules", "large purchases", "evaluation"],
+      "keywords_vi": ["quy tắc quyết định", "mua lớn", "đánh giá"],
+      "copy": {
+        "en": "Large financial decisions require rules: wait 48 hours, compare three alternatives, read the fine print, and calculate long-term cost—not just monthly payments. These rules protect you from emotional buying and manipulation. Good decisions follow structure, not pressure.",
+        "vi": "Quyết định tài chính lớn cần quy tắc: chờ 48 giờ, so sánh ba lựa chọn, đọc chữ nhỏ và tính chi phí dài hạn—không chỉ khoản trả hàng tháng. Quy tắc bảo vệ bạn khỏi mua theo cảm xúc và bị thao túng. Quyết định tốt dựa vào cấu trúc, không dựa vào áp lực."
+      },
+      "tags": ["evaluation", "structure"],
+      "audio": "vip4_money_04.mp3"
+    },
+    {
+      "slug": "debt-trap-avoidance",
+      "keywords_en": ["debt", "traps", "avoidance"],
+      "keywords_vi": ["nợ", "bẫy", "tránh"],
+      "copy": {
+        "en": "Debt traps often begin small: high-interest installments, payday loans, or deferred payment schemes. They look harmless but multiply quickly. You learn to spot red flags—urgency, unclear terms, too-good offers—and decline confidently. Avoiding traps is cheaper than escaping them.",
+        "vi": "Bẫy nợ thường bắt đầu nhỏ: trả góp lãi cao, vay nóng hoặc gói trả sau. Chúng trông vô hại nhưng phình nhanh. Bạn học nhận biết dấu hiệu đỏ—khẩn cấp, điều khoản mơ hồ, đề nghị quá tốt—và từ chối tự tin. Tránh bẫy rẻ hơn thoát bẫy."
+      },
+      "tags": ["safety", "awareness"],
+      "audio": "vip4_money_05.mp3"
+    },
+    {
+      "slug": "negotiation-basics",
+      "keywords_en": ["negotiation", "confidence", "money"],
+      "keywords_vi": ["thương lượng", "tự tin", "tiền bạc"],
+      "copy": {
+        "en": "Negotiation is a life skill. You ask for better rates, request waivers, cancel unused services, or challenge incorrect charges. You stay calm, factual, and patient. Most companies expect negotiation and have flexibility. You save money simply by asking with confidence.",
+        "vi": "Thương lượng là kỹ năng sống. Bạn xin mức giá tốt hơn, yêu cầu miễn phí, hủy dịch vụ không dùng hoặc khiếu nại khoản sai. Bạn bình tĩnh, dựa trên dữ liệu và kiên nhẫn. Đa số doanh nghiệp chấp nhận thương lượng và có biên độ. Bạn tiết kiệm tiền chỉ bằng cách hỏi tự tin."
+      },
+      "tags": ["confidence", "control"],
+      "audio": "vip4_money_06.mp3"
+    },
+    {
+      "slug": "reducing-fixed-costs",
+      "keywords_en": ["cost reduction", "fixed costs", "efficiency"],
+      "keywords_vi": ["giảm chi cố định", "chi phí", "hiệu quả"],
+      "copy": {
+        "en": "Reducing fixed costs increases financial freedom. You review subscriptions, renegotiate bills, downgrade unused plans, and remove silent expenses. Small monthly reductions accumulate over years. This is quiet wealth—the kind built through discipline, not luck.",
+        "vi": "Giảm chi cố định tăng tự do tài chính. Bạn xem lại đăng ký, thương lượng hóa đơn, hạ gói không dùng và loại chi phí âm thầm. Các khoản nhỏ mỗi tháng cộng dồn theo năm. Đây là giàu thầm lặng—xây bằng kỷ luật, không phải may mắn."
+      },
+      "tags": ["efficiency", "discipline"],
+      "audio": "vip4_money_07.mp3"
+    },
+    {
+      "slug": "financial-calm",
+      "keywords_en": ["calm", "money mindset", "resilience"],
+      "keywords_vi": ["bình tĩnh", "tư duy tiền bạc", "bền bỉ"],
+      "copy": {
+        "en": "Financial calm means staying rational around money. You don’t make decisions in panic, excitement, shame, or urgency. You pause, evaluate, and act deliberately. Calm people protect their money better because emotions can’t hijack their judgment. Calm creates resilience.",
+        "vi": "Bình tĩnh tài chính nghĩa là giữ lý trí khi nói đến tiền. Bạn không quyết trong hoảng loạn, hào hứng, xấu hổ hoặc vội vàng. Bạn tạm dừng, đánh giá và hành động có chủ đích. Người bình tĩnh bảo vệ tiền tốt hơn vì cảm xúc không chi phối được phán đoán. Bình tĩnh tạo bền bỉ."
+      },
+      "tags": ["resilience", "clarity"],
+      "audio": "vip4_money_08.mp3"
+    }
+  ]
+}
