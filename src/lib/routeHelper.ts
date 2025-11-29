@@ -1,9 +1,11 @@
 /**
  * Centralized route helper to determine parent routes for rooms
  * Prevents 404s and navigation mismatches with TypeScript type safety
+ * Uses canonical tier system from lib/constants/tiers.ts
  */
 
 import { roomDataMap } from './roomDataImports';
+import { type VipTierId } from '@/lib/constants/tiers';
 
 /**
  * Valid parent route paths in the application
@@ -20,9 +22,9 @@ export type ParentRoute =
   | "/finance-calm";   // Finance sub-rooms parent
 
 /**
- * Room tier type
+ * Room tier type for routing (subset of canonical TierId, excludes kids tiers)
  */
-export type RoomTier = 'free' | 'vip1' | 'vip2' | 'vip3' | 'vip4' | 'vip6' | 'vip9';
+export type RoomTier = 'free' | VipTierId;
 
 /**
  * Validates if a room ID exists in the system
