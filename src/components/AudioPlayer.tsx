@@ -18,6 +18,12 @@ interface AudioPlayerProps {
   playlist?: string[];
 }
 
+interface AudioPlayerState {
+  isAudioReady: boolean;
+  hasError: boolean;
+  errorMessage?: string;
+}
+
 export const AudioPlayer = ({ 
   audioPath, 
   isPlaying, 
@@ -33,7 +39,10 @@ export const AudioPlayer = ({
   const [isMuted, setIsMuted] = useState(false);
   const [previousVolume, setPreviousVolume] = useState(1);
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
-  const [isAudioReady, setIsAudioReady] = useState(false);
+  const [state, setState] = useState<AudioPlayerState>({
+    isAudioReady: false,
+    hasError: false,
+  });
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
@@ -70,7 +79,7 @@ export const AudioPlayer = ({
     // Only reset and set src when the source changed
     if (!isSameSource) {
       audio.pause();
-      setIsAudioReady(false);
+      setState({ isAudioReady: false, hasError: false });
       // Add cache-busting parameter to force reload of updated audio
       const cacheBustedPath = currentAudioPath.includes('?') 
         ? `${currentAudioPath}&v=${Date.now()}` 
@@ -92,7 +101,7 @@ export const AudioPlayer = ({
 
     const handleLoadedMetadata = () => {
       setDuration(audio.duration);
-      setIsAudioReady(true);
+      setState({ isAudioReady: true, hasError: false });
       // Restore saved position if available
       try {
         const saved = parseFloat(sessionStorage.getItem(storageKey(currentAudioPath)) || '0');
@@ -121,18 +130,12 @@ export const AudioPlayer = ({
       console.error('Error details:', audio.error);
       console.error('Error event:', e);
       
-      // Show user-friendly error toast
-      import('@/hooks/use-toast').then(({ toast }) => {
-        toast({
-          title: 'Audio Unavailable',
-          description: 'This audio is temporarily unavailable. Please try another entry or refresh the page.',
-          variant: 'destructive',
-        });
+      // Set inline error state instead of toast
+      setState({
+        isAudioReady: false,
+        hasError: true,
+        errorMessage: 'Audio failed to load. Please check your connection or try another entry.',
       });
-      
-      // Mark audio as not ready and stop playback
-      setIsAudioReady(false);
-      setIsPlaying(false);
     };
 
     const handleCanPlay = () => {
@@ -168,23 +171,23 @@ export const AudioPlayer = ({
     if (!audio || !isPlaylist) return;
 
     // If a track changed and we were playing, continue playing the new track
-    if (isPlaying && isAudioReady) {
+    if (isPlaying && state.isAudioReady) {
       audio.play().catch(console.error);
     }
-  }, [currentTrackIndex, isPlaylist, isPlaying, isAudioReady]);
+  }, [currentTrackIndex, isPlaylist, isPlaying, state.isAudioReady]);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    if (isPlaying && isAudioReady) {
+    if (isPlaying && state.isAudioReady) {
       audio.play().catch(console.error);
     } else if (!isPlaying) {
       // Save position on pause
       try { sessionStorage.setItem(storageKey(currentAudioPath), String(audio.currentTime)); } catch {}
       audio.pause();
     }
-  }, [isPlaying, isAudioReady, currentAudioPath]);
+  }, [isPlaying, state.isAudioReady, currentAudioPath]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -321,6 +324,31 @@ export const AudioPlayer = ({
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
+  // Show error state inline instead of controls
+  if (state.hasError) {
+    return (
+      <div className={cn("flex items-center gap-2 p-3 bg-destructive/10 rounded-lg border border-destructive/20", className)}>
+        <div className="text-sm text-destructive">
+          {state.errorMessage || 'Audio failed to load. Please check your connection or try again later.'}
+        </div>
+        <Button
+          onClick={() => {
+            setState({ isAudioReady: false, hasError: false });
+            const audio = audioRef.current;
+            if (audio) {
+              audio.load();
+            }
+          }}
+          size="sm"
+          variant="outline"
+          className="ml-auto shrink-0"
+        >
+          Retry
+        </Button>
+      </div>
+    );
+  }
+
   return (
     <div className={cn("flex items-center gap-2 w-full", className)}>
       <audio ref={audioRef} preload="metadata" />
@@ -342,8 +370,8 @@ export const AudioPlayer = ({
         size="sm"
         variant="ghost"
         className="h-6 w-6 p-0 shrink-0"
-        title={!isAudioReady ? "Audio unavailable" : "Play/Pause (Space)"}
-        disabled={!isAudioReady}
+        title={!state.isAudioReady ? "Audio unavailable" : "Play/Pause (Space)"}
+        disabled={!state.isAudioReady}
       >
         {isPlaying ? (
           <Pause className="h-3 w-3" />
