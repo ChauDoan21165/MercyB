@@ -217,7 +217,8 @@ const TierMap = () => {
           {/* Column 1: English Learning Pathway */}
           <div className="space-y-4">
             <h2 className="text-xl font-bold text-black border-b-2 border-black pb-2">
-              English Learning Pathway
+              <div>English Learning Pathway</div>
+              <div className="text-base opacity-80">Lộ Trình Học Tiếng Anh</div>
             </h2>
             <div className="space-y-3">
               {englishPathway.map((item, index) => (
@@ -238,7 +239,8 @@ const TierMap = () => {
           {/* Column 2: Core Tier Levels */}
           <div className="space-y-4">
             <h2 className="text-xl font-bold text-black border-b-2 border-black pb-2">
-              Core Tier Levels
+              <div>Core Tier Levels</div>
+              <div className="text-base opacity-80">Các Cấp Độ Cốt Lõi</div>
             </h2>
             <div className="space-y-3">
               {coreTiers.map((item, index) => (
@@ -262,7 +264,8 @@ const TierMap = () => {
           {/* Column 3: Life Skills & Survival */}
           <div className="space-y-4">
             <h2 className="text-xl font-bold text-black border-b-2 border-black pb-2">
-              Life Skills & Survival
+              <div>Life Skills & Survival</div>
+              <div className="text-base opacity-80">Kỹ Năng Sống & Sinh Tồn</div>
             </h2>
             <div className="space-y-3">
               {lifeSkills.map((item, index) => (
@@ -287,7 +290,8 @@ const TierMap = () => {
         {/* Column 1: English Learning Pathway */}
         <div className="space-y-4">
           <h2 className="text-xl font-bold text-black border-b-2 border-black pb-2">
-            English Learning Pathway
+            <div>English Learning Pathway</div>
+            <div className="text-base opacity-80">Lộ Trình Học Tiếng Anh</div>
           </h2>
           <div className="space-y-3">
             {englishPathway.map((item, index) => (
@@ -308,7 +312,8 @@ const TierMap = () => {
         {/* Column 2: Core Tier Levels */}
         <div className="space-y-4">
           <h2 className="text-xl font-bold text-black border-b-2 border-black pb-2">
-            Core Tier Levels
+            <div>Core Tier Levels</div>
+            <div className="text-base opacity-80">Các Cấp Độ Cốt Lõi</div>
           </h2>
           <div className="space-y-3">
             {coreTiers.map((item, index) => (
@@ -332,7 +337,8 @@ const TierMap = () => {
         {/* Column 3: Life Skills & Survival */}
         <div className="space-y-4">
           <h2 className="text-xl font-bold text-black border-b-2 border-black pb-2">
-            Life Skills & Survival
+            <div>Life Skills & Survival</div>
+            <div className="text-base opacity-80">Kỹ Năng Sống & Sinh Tồn</div>
           </h2>
           <div className="space-y-3">
             {lifeSkills.map((item, index) => (
