@@ -34,12 +34,21 @@ export const KidsRoomCard = ({ room, index, onClick, useColorTheme = true }: Kid
         animationDelay: `${index * 0.05}s`
       }}
       onClick={onClick}
+      role="button"
+      tabIndex={0}
+      aria-label={`Open ${room.title_en} room`}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick();
+        }
+      }}
     >
       {/* Animated Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-accent/0 to-primary/0 group-hover:from-primary/10 group-hover:via-accent/10 group-hover:to-primary/10 transition-all duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-accent/0 to-primary/0 group-hover:from-primary/10 group-hover:via-accent/10 group-hover:to-primary/10 transition-all duration-500" aria-hidden="true" />
       
       {/* Status Badge */}
-      <div className="absolute top-2 right-2 z-10">
+      <div className="absolute top-2 right-2 z-10" aria-hidden="true">
         <div 
           className="rounded-full p-1 shadow-lg animate-pulse"
           style={{ background: 'var(--gradient-rainbow)' }}
@@ -55,9 +64,10 @@ export const KidsRoomCard = ({ room, index, onClick, useColorTheme = true }: Kid
             <div 
               className="absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500"
               style={{ background: 'var(--gradient-rainbow)' }}
+              aria-hidden="true"
             />
             <div className="relative bg-muted p-3 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-              <IconComponent className="w-8 h-8 text-primary" />
+              <IconComponent className="w-8 h-8 text-primary" aria-hidden="true" />
             </div>
           </div>
         </div>
@@ -88,7 +98,7 @@ export const KidsRoomCard = ({ room, index, onClick, useColorTheme = true }: Kid
       </div>
 
       {/* Shine Effect on Hover */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true">
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
       </div>
     </Card>

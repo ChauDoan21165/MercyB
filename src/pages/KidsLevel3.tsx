@@ -1,75 +1,40 @@
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { GraduationCap, RefreshCw, Palette } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
-import { useUserAccess } from "@/hooks/useUserAccess";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { KidsRoomCard } from "@/components/kids/KidsRoomCard";
 import { useColorMode } from "@/hooks/useColorMode";
-
-interface KidsRoom {
-  id: string;
-  title_en: string;
-  title_vi: string;
-  description_en: string;
-  description_vi: string;
-  icon: string | null;
-  display_order: number;
-}
+import { useKidsRooms } from "@/hooks/useKidsRooms";
+import { KIDS_ROUTE_PREFIX, KIDS_LEVEL_LABELS, ROOM_GRID_CLASS } from "@/lib/constants";
 
 const KidsLevel3 = () => {
   const navigate = useNavigate();
-  const { isAuthenticated, loading } = useUserAccess();
   const { toast } = useToast();
-  const [rooms, setRooms] = useState<KidsRoom[]>([]);
-  const [roomsLoading, setRoomsLoading] = useState(true);
-  const [isRefreshing, setIsRefreshing] = useState(false);
   const { useColorTheme, toggleColorMode } = useColorMode();
-
-  const fetchRooms = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('kids_rooms')
-        .select('*')
-        .eq('level_id', 'level3')
-        .eq('is_active', true)
-        .order('display_order');
-
-      if (error) throw error;
-      setRooms(data || []);
-    } catch (error) {
-      console.error('Error fetching rooms:', error);
-      toast({
-        title: "Error",
-        description: "Failed to load rooms",
-        variant: "destructive",
-      });
-    } finally {
-      setRoomsLoading(false);
-      setIsRefreshing(false);
-    }
-  };
+  const { rooms, loading, error, refresh } = useKidsRooms("level3");
 
   const handleRefresh = async () => {
-    setIsRefreshing(true);
-    await fetchRooms();
+    refresh();
     toast({
       title: "Refreshed! 🌈",
       description: "Rooms updated successfully",
     });
   };
 
-  useEffect(() => {
-    fetchRooms();
-  }, []);
 
-
-  if (loading || roomsLoading) {
+  if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <p className="text-muted-foreground">Loading...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <p className="text-destructive">Error loading rooms: {error.message}</p>
       </div>
     );
   }
@@ -84,7 +49,7 @@ const KidsLevel3 = () => {
       </div>
 
       <ColorfulMercyBladeHeader
-        subtitle="Kids Level 3 - Ages 10-13"
+        subtitle={`${KIDS_LEVEL_LABELS.level3.en} - ${KIDS_LEVEL_LABELS.level3.ageRange}`}
         showBackButton={true}
       />
       
@@ -117,15 +82,16 @@ const KidsLevel3 = () => {
             
             <Button
               onClick={handleRefresh}
-              disabled={isRefreshing}
+              disabled={loading}
               className="rounded-full shadow-lg transition-all duration-300 hover:scale-110 border-2 border-white/30"
               style={{ 
                 background: 'var(--gradient-rainbow)',
                 color: 'white',
                 boxShadow: 'var(--shadow-rainbow)'
               }}
+              aria-label="Refresh rooms"
             >
-              <RefreshCw className={`h-4 w-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
+              <RefreshCw className={`h-4 w-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
               Refresh
             </Button>
 
@@ -142,20 +108,20 @@ const KidsLevel3 = () => {
         </div>
 
         {/* Room Grid with Beautiful Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 animate-fade-in">
+        <div className={`${ROOM_GRID_CLASS} animate-fade-in`}>
           {rooms.map((room, index) => (
             <KidsRoomCard
               key={room.id}
               room={room}
               index={index}
-              onClick={() => navigate(`/kids-chat/${room.id}`)}
+              onClick={() => navigate(`${KIDS_ROUTE_PREFIX}/${room.id}`)}
               useColorTheme={useColorTheme}
             />
           ))}
         </div>
 
         {/* Decorative Elements */}
-        <div className="fixed bottom-8 right-8 opacity-20 pointer-events-none">
+        <div className="fixed bottom-8 right-8 opacity-20 pointer-events-none" aria-hidden="true">
           <GraduationCap className="w-32 h-32 text-primary animate-pulse" />
         </div>
       </div>

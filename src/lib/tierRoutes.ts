@@ -1,4 +1,6 @@
-// Map tier names to their route paths and display names
+// Tier route mapping following Mercy Blade Design System v1.1
+import { TIERS } from './constants';
+
 export const TIER_ROUTES: Record<string, { path: string; name: string; nameVi: string }> = {
   'free': { path: '/rooms', name: 'Free Tier', nameVi: 'Miễn Phí' },
   'vip1': { path: '/rooms-vip1', name: 'VIP1', nameVi: 'VIP1' },
