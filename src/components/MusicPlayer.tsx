@@ -173,6 +173,16 @@ const TRACKS = [
   { id: '150', name: 'A Better Life', url: '/audio/2019-12-29_-_A_Better_Life_-_FesliyanStudios.com_-_David_Renda.mp3' },
   { id: '151', name: 'Feeling Happy (1)', url: '/audio/2020-01-19_-_Feeling_Happy_-_FesliyanStudios.com_-_David_Renda_1.mp3' },
   { id: '152', name: 'Feeling Happy', url: '/audio/2020-01-19_-_Feeling_Happy_-_FesliyanStudios.com_-_David_Renda.mp3' },
+  { id: '153', name: 'Solutions That Work', url: '/audio/2020-03-29_-_Solutions_That_Work_-_David_Fesliyan.mp3' },
+  { id: '154', name: 'Crazy Crowd', url: '/audio/2020-07-14_-_Crazy_Crowd_-_www.FesliyanStudios.com_David_Renda.mp3' },
+  { id: '155', name: 'Strings Galore', url: '/audio/2020-07-30_-_Strings_Galore_-_www.FesliyanStudios.com_Steve_Oxen.mp3' },
+  { id: '156', name: 'Sonata Rondo', url: '/audio/2020-07-30_-_Sonata_Rondo_-_www.FesliyanStudios.com_Steve_Oxen.mp3' },
+  { id: '157', name: 'The Wrong Side Of Town', url: '/audio/2020-08-17_-_The_Wrong_Side_Of_Town_-_www.FesliyanStudios.com_Steve_Oxen.mp3' },
+  { id: '158', name: 'Smilin And Vibin', url: '/audio/2020-08-18_-_Smilin_And_Vibin_-_www.FesliyanStudios.com_David_Renda.mp3' },
+  { id: '159', name: 'Easy Going', url: '/audio/2020-09-30_-_Easy_Going_-_David_Fesliyan.mp3' },
+  { id: '160', name: 'Its A Good Day', url: '/audio/2020-10-19_-_Its_A_Good_Day_-_www.FesliyanStudios.com_Steve_Oxen.mp3' },
+  { id: '161', name: 'Tropical Keys (1)', url: '/audio/2020-09-14_-_Tropical_Keys_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
+  { id: '162', name: 'Feeling Free', url: '/audio/2021-01-09_-_Feeling_Free_-_www.FesliyanStudios.com_David_Renda.mp3' },
 ];
 
 export const MusicPlayer = () => {
@@ -199,6 +209,19 @@ export const MusicPlayer = () => {
     if (savedPlayFrom) setPlayFromFavorites(savedPlayFrom === 'favorites');
   }, []);
 
+  // Update audio element when track changes and auto-play if already playing
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.load();
+      if (isPlaying) {
+        audioRef.current.play().catch(err => {
+          console.error('Error playing audio:', err);
+          setIsPlaying(false);
+        });
+      }
+    }
+  }, [currentTrackId, isPlaying]);
+
   // Update audio volume
   useEffect(() => {
     if (audioRef.current) {
@@ -210,7 +233,6 @@ export const MusicPlayer = () => {
   const handleTrackChange = (trackId: string) => {
     setCurrentTrackId(trackId);
     localStorage.setItem('musicPlayerTrackId', trackId);
-    setIsPlaying(false);
   };
 
   // Handle volume change
@@ -268,7 +290,7 @@ export const MusicPlayer = () => {
     
     setCurrentTrackId(nextTrack.id);
     localStorage.setItem('musicPlayerTrackId', nextTrack.id);
-    setIsPlaying(true);
+    // Keep playing state true so the next track auto-plays
   };
 
   // Toggle play/pause
