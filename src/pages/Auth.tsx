@@ -146,7 +146,13 @@ const Auth = () => {
         description: 'Successfully signed in / Đăng nhập thành công',
       });
       
-      navigate('/');
+      // Check if user has seen onboarding
+      const hasSeenOnboarding = localStorage.getItem('mb_has_seen_onboarding');
+      if (hasSeenOnboarding === 'true') {
+        navigate('/');
+      } else {
+        navigate('/onboarding');
+      }
     } catch (error: any) {
       toast({
         title: 'Error / Lỗi',
@@ -197,17 +203,24 @@ const Auth = () => {
       if (data.user) {
         toast({
           title: 'Account Created! / Tạo Tài Khoản Thành Công!',
-          description: 'Welcome to Mercy Blade. You can now sign in. / Chào mừng đến với Mercy Blade. Bạn có thể đăng nhập ngay.',
+          description: 'Welcome to Mercy Blade. / Chào mừng đến với Mercy Blade.',
         });
         
-        // Auto-switch to sign in tab
-        setAuthTab('signin');
-        setSignInEmail(signUpEmail);
-        
-        // Clear signup form
-        setSignUpEmail('');
-        setSignUpPassword('');
-        setSignUpConfirmPassword('');
+        // Check if user has seen onboarding
+        const hasSeenOnboarding = localStorage.getItem('mb_has_seen_onboarding');
+        if (hasSeenOnboarding === 'true') {
+          // Auto-switch to sign in tab for returning users
+          setAuthTab('signin');
+          setSignInEmail(signUpEmail);
+          
+          // Clear signup form
+          setSignUpEmail('');
+          setSignUpPassword('');
+          setSignUpConfirmPassword('');
+        } else {
+          // New user - redirect to onboarding
+          navigate('/onboarding');
+        }
       }
     } catch (error: any) {
       let errorMessage = error.message;

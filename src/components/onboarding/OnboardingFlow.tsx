@@ -56,6 +56,7 @@ export const OnboardingFlow: React.FC = () => {
   const isLast = stepIndex === STEPS.length - 1;
 
   const handleSkip = () => {
+    localStorage.setItem('mb_has_seen_onboarding', 'true');
     navigate('/signup');
   };
 
@@ -63,7 +64,8 @@ export const OnboardingFlow: React.FC = () => {
     if (!isLast) {
       setStepIndex((prev) => prev + 1);
     } else {
-      navigate('/signup');
+      localStorage.setItem('mb_has_seen_onboarding', 'true');
+      navigate('/');
     }
   };
 
