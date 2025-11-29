@@ -204,23 +204,29 @@ export const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrackId, setCurrentTrackId] = useState<string>('1');
   const [volume, setVolume] = useState<number>(50);
-  const [showAllTracks, setShowAllTracks] = useState(true);
-  const [playFromFavorites, setPlayFromFavorites] = useState(false);
+  const [mode, setMode] = useState<"discovery" | "favorites">("discovery");
   const [isShuffle, setIsShuffle] = useState(false);
   const [shuffledTracks, setShuffledTracks] = useState<typeof TRACKS>([]);
   const { favoriteIds, toggleFavorite, isFavorite } = useFavoriteTracks();
+
+  // Common tracks (always all tracks)
+  const commonTracks = TRACKS;
+  
+  // Favorite tracks (filtered from TRACKS)
+  const favoriteTracks = TRACKS.filter(t => favoriteIds.includes(t.id));
 
   // Load saved preferences on mount
   useEffect(() => {
     const savedTrackId = localStorage.getItem('musicPlayerTrackId');
     const savedVolume = localStorage.getItem('musicPlayerVolume');
     const savedShuffle = localStorage.getItem('musicPlayerShuffle');
-    const savedPlayFrom = localStorage.getItem('musicPlayerPlayFrom');
+    const savedMode = localStorage.getItem('musicPlayerMode');
     
     if (savedTrackId) setCurrentTrackId(savedTrackId);
     if (savedVolume) setVolume(parseInt(savedVolume, 10));
     if (savedShuffle) setIsShuffle(savedShuffle === 'true');
-    if (savedPlayFrom) setPlayFromFavorites(savedPlayFrom === 'favorites');
+    // Always start in discovery mode unless explicitly saved as favorites
+    if (savedMode === 'favorites') setMode('favorites');
   }, []);
 
   // Update audio element when track changes and auto-play if already playing
@@ -278,15 +284,17 @@ export const MusicPlayer = () => {
     }
   };
 
+  // Get current playlist based on mode
+  const getCurrentPlaylist = () => {
+    if (mode === "favorites" && favoriteTracks.length > 0) {
+      return favoriteTracks;
+    }
+    return commonTracks;
+  };
+
   // Play next track
   const playNextTrack = () => {
-    // Determine which pool of tracks to use
-    const baseTrackList = playFromFavorites 
-      ? TRACKS.filter(t => favoriteIds.includes(t.id))
-      : TRACKS;
-    
-    // If playing from favorites but none exist, fallback to all tracks
-    let trackList = baseTrackList.length > 0 ? baseTrackList : TRACKS;
+    let trackList = getCurrentPlaylist();
     
     if (isShuffle) {
       // If shuffle is on but shuffledTracks is empty, create it
@@ -320,7 +328,8 @@ export const MusicPlayer = () => {
   };
 
   const currentTrack = TRACKS.find(t => t.id === currentTrackId) || TRACKS[0];
-  const displayTracks = showAllTracks ? TRACKS : TRACKS.filter(t => favoriteIds.includes(t.id));
+  const currentPlaylist = getCurrentPlaylist();
+  const displayTracks = currentPlaylist;
 
   return (
     <div className="fixed bottom-0 left-0 right-0 h-[50px] bg-white border-t-2 border-black z-50">
@@ -380,24 +389,45 @@ export const MusicPlayer = () => {
           />
         </Button>
 
-        {/* Play Mode Toggle: Heart button for favorites */}
-        <Button
-          onClick={() => {
-            const newMode = !playFromFavorites;
-            setPlayFromFavorites(newMode);
-            localStorage.setItem('musicPlayerPlayFrom', newMode ? 'favorites' : 'all');
-          }}
-          variant="outline"
-          size="sm"
-          className={`border-black h-8 w-8 p-0 transition-colors ${
-            playFromFavorites
-              ? 'bg-pink-400 text-black hover:bg-pink-500 border-2'
-              : 'text-black hover:bg-gray-100'
-          }`}
-          title={playFromFavorites ? "Playing: Favorites Only" : "Playing: All Tracks"}
-        >
-          <Heart className={`h-3 w-3 ${playFromFavorites ? 'fill-current' : ''}`} />
-        </Button>
+        {/* Mode Buttons: Discovery vs Favorites */}
+        <div className="flex gap-1">
+          <Button
+            onClick={() => {
+              setMode("discovery");
+              localStorage.setItem('musicPlayerMode', 'discovery');
+            }}
+            variant="outline"
+            size="sm"
+            className={`border-black h-8 px-2 transition-colors text-xs ${
+              mode === "discovery"
+                ? 'bg-blue-400 text-white hover:bg-blue-500 border-2 font-bold'
+                : 'text-black hover:bg-gray-100'
+            }`}
+            title="Play all tracks"
+          >
+            All
+          </Button>
+          <Button
+            onClick={() => {
+              if (favoriteTracks.length > 0) {
+                setMode("favorites");
+                localStorage.setItem('musicPlayerMode', 'favorites');
+              }
+            }}
+            disabled={favoriteTracks.length === 0}
+            variant="outline"
+            size="sm"
+            className={`border-black h-8 px-2 transition-colors text-xs ${
+              mode === "favorites"
+                ? 'bg-pink-400 text-white hover:bg-pink-500 border-2 font-bold'
+                : 'text-black hover:bg-gray-100'
+            }`}
+            title={favoriteTracks.length === 0 ? "No favorites yet" : `Play my list (${favoriteTracks.length})`}
+          >
+            <Heart className={`h-3 w-3 mr-1 ${mode === "favorites" ? 'fill-current' : ''}`} />
+            ({favoriteTracks.length})
+          </Button>
+        </div>
 
         {/* Favorites List Dropdown */}
         <DropdownMenu>
@@ -405,11 +435,7 @@ export const MusicPlayer = () => {
             <Button
               variant="outline"
               size="sm"
-              className={`border-black hover:bg-gray-100 h-8 px-2 gap-1 ${
-                playFromFavorites 
-                  ? 'bg-yellow-200 text-black font-bold' 
-                  : 'text-black bg-white'
-              }`}
+              className="border-black hover:bg-gray-100 h-8 px-2 gap-1 text-black bg-white"
             >
               <Music className="h-3 w-3" />
               <span className="text-xs">({favoriteIds.length})</span>
@@ -451,11 +477,7 @@ export const MusicPlayer = () => {
 
         {/* Track Selector */}
         <Select value={currentTrackId} onValueChange={handleTrackChange}>
-          <SelectTrigger className={`w-[180px] h-8 border-black text-xs ${
-            !playFromFavorites 
-              ? 'bg-yellow-200 text-black font-bold' 
-              : 'text-black bg-white'
-          }`}>
+          <SelectTrigger className="w-[180px] h-8 border-black text-xs text-black bg-white">
             <SelectValue placeholder="Select track" />
           </SelectTrigger>
           <SelectContent className="bg-white border-black z-[100]">
