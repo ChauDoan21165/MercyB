@@ -129,7 +129,6 @@ export default function FeedbackInbox() {
         variant: "destructive",
       });
     }
-    }
   };
 
   const formatDate = (timestamp: string) => {
