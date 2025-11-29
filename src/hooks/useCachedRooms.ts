@@ -47,12 +47,20 @@ function isSystemFile(id: string): boolean {
   );
 }
 
+type RoomRow = {
+  id: string;
+  title_en: string | null;
+  title_vi: string | null;
+  tier: string | null;
+  domain: string | null;
+};
+
 // Fetch minimal room data from database
 async function fetchCachedRooms(tierId?: TierId): Promise<MinimalRoomData[]> {
   try {
     let query = supabase
       .from(ROOMS_TABLE)
-      .select("id, title_en, title_vi, tier, schema_id, domain");
+      .select("id, title_en, title_vi, tier, domain");
 
     if (tierId) {
       // Map TierId → canonical human label from TIERS
@@ -67,7 +75,7 @@ async function fetchCachedRooms(tierId?: TierId): Promise<MinimalRoomData[]> {
       );
     }
 
-    const { data, error } = await query.order("title_en");
+    const { data, error } = await query.returns<RoomRow[]>().order("title_en");
 
     if (error) throw error;
 
