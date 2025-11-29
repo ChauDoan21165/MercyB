@@ -63,7 +63,6 @@ import AdminUsers from "./pages/AdminUsers";
 import AdminUserDetail from "./pages/AdminUserDetail";
 import AdminSecurity from "./pages/AdminSecurity";
 import JoinCode from "./pages/JoinCode";
-import AdminSystemMetrics from "./pages/AdminSystemMetrics";
 import KidsLevel1 from "./pages/KidsLevel1";
 import KidsLevel2 from "./pages/KidsLevel2";
 import KidsLevel3 from "./pages/KidsLevel3";
