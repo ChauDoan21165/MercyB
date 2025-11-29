@@ -243,30 +243,41 @@ export default function VipTier3Rooms() {
 
 ### Rule
 
-All rooms (Kids + VIP) must use the Mercy Blade JSON Generator / `rooms` table schema. UI must never hardcode essays, audio filenames, or entry content.
+All rooms (Kids + VIP) must use the Mercy Blade JSON Generator / `rooms` table schema. UI must never hardcode essays, audio filenames, or entry content. All room data must be tied to Supabase and JSON generator standard.
 
 ### Contract / API
 
 ```tsx
 interface RoomEntry {
   slug: string;               // kebab-case, unique within room
-  keywords_en: string[];      // 3–5
-  keywords_vi: string[];      // 3–5
+  keywords_en: string[];      // 3–5 keywords
+  keywords_vi: string[];      // 3–5 keywords (mirror English)
   copy: {
     en: string;               // 50–150 words
     vi: string;               // 50–150 words
   };
   tags: string[];             // 2–4 tags
-  audio: string;              // "meaning_of_life_vip3_01_en.mp3"
+  audio: string;              // filename only: "meaning_of_life_vip3_01_en.mp3"
 }
 
 interface RoomJson {
-  tier: string;               // e.g. "VIP3 / VIP3"
+  id: string;                 // kebab-case, lowercase, no symbols except -
+  tier: string;               // must match canonical TIERS enum
   title: { en: string; vi: string };
   content: { en: string; vi: string; audio?: string };
-  entries: RoomEntry[];
+  entries: RoomEntry[];       // must have > 0 entries
+  keywords?: string[];        // room-level keywords (optional)
 }
 ```
+
+**Validation Checklist:**
+- [ ] `id` is kebab-case, lowercase, no symbols except `-`
+- [ ] `tier` matches one of the canonical TIERS
+- [ ] Every entry has 3–5 `keywords_en` and 3–5 `keywords_vi`
+- [ ] Every entry has 50–150 word `copy.en` and `copy.vi`
+- [ ] Every entry has `audio` string (filename only, no path)
+- [ ] No duplicate `(title_en, tier)` combinations
+- [ ] Rooms with `entries.length > 0` must have `keywords.length > 0`
 
 **UI must consume:**
 - `room.entries[].copy.en` / `room.entries[].copy.vi`
@@ -278,6 +289,57 @@ interface RoomJson {
 ```tsx
 // ✅ CORRECT
 <PairedHighlightedContent
+  englishContent={room.room_essay_en}
+  vietnameseContent={room.room_essay_vi}
+/>
+```
+
+---
+
+## 6. Room Data Hygiene (Validation Rules)
+
+### Rule
+
+All rooms must pass data hygiene validation before deployment. Lovable must warn when any room violates these rules.
+
+### Contract
+
+**ID Rules:**
+- `id` must be kebab-case, lowercase
+- No symbols other than `-`
+- Pattern: `/^[a-z0-9]+(-[a-z0-9]+)*$/`
+
+**Tier Rules:**
+- `tier` must be one of the canonical TIERS enum values
+- Format: `"VIP3 / VIP3"` or `"Free / Miễn phí"`
+
+**Entry Rules:**
+- Rooms with `entries.length === 0` must have `is_public = false`
+- Rooms with `entries.length > 0` and `keywords.length === 0` must be flagged
+- No duplicate `(title_en, tier)` combinations
+
+**Entry Field Rules:**
+- Every entry must have 3–5 `keywords_en`
+- Every entry must have 3–5 `keywords_vi`
+- Every entry must have 50–150 word `copy.en`
+- Every entry must have 50–150 word `copy.vi`
+- Every entry must have `audio` string (filename only, no path)
+
+### Example
+
+```tsx
+// ✅ VALID room ID
+const roomId = "strategic-foundations-vip9";
+
+// ❌ INVALID room IDs
+const bad1 = "Strategic_Foundations_VIP9";  // uppercase + underscores
+const bad2 = "strategic foundations vip9";  // spaces
+const bad3 = "strategic-foundations-VIP9";  // uppercase letter
+```
+
+---
+
+## 7. Routing Conventions
   englishContent={room.room_essay_en}
   vietnameseContent={room.room_essay_vi}
 />
@@ -380,49 +442,88 @@ style={{ animationDelay: `${index * 0.05}s` }}
 
 ---
 
-## 9. Constants & Magic Strings
+## 9. Constants & Canonical Enums
 
 ### Rule
 
-All shared literals (table names, level IDs, route prefixes) must come from constants files, not inline strings.
+All shared literals (table names, level IDs, route prefixes, tier names) must come from constants files, not inline strings. All pages must import from constants; no magic strings allowed.
 
 ### Contract
 
 ```ts
+// src/lib/constants/tiers.ts
+export const TIERS = {
+  FREE: "Free / Miễn phí",
+  VIP1: "VIP1 / VIP1",
+  VIP2: "VIP2 / VIP2",
+  VIP3: "VIP3 / VIP3",
+  VIP3II: "VIP3 II / VIP3 II",
+  VIP4: "VIP4 / VIP4",
+  VIP5: "VIP5 / VIP5",
+  VIP6: "VIP6 / VIP6",
+  VIP9: "VIP9 / Cấp VIP9",
+  KIDS_1: "Kids Level 1 / Trẻ em cấp 1",
+  KIDS_2: "Kids Level 2 / Trẻ em cấp 2",
+  KIDS_3: "Kids Level 3 / Trẻ em cấp 3",
+} as const;
+
+export type TierKey = keyof typeof TIERS;
+export type TierValue = typeof TIERS[TierKey];
+
 // src/lib/constants/kids.ts
 export const KIDS_TABLE = 'kids_rooms';
 export const KIDS_ROUTE_PREFIX = '/kids-chat';
-export const LEVEL_IDS = ['level1', 'level2', 'level3'] as const;
+export const KIDS_LEVEL_IDS = ['level1', 'level2', 'level3'] as const;
 
 // src/lib/constants/rooms.ts
 export const ROOMS_TABLE = 'rooms';
 export const ADULT_ROUTE_PREFIX = '/room';
+export const VIP_ROUTE_PREFIX = '/vip';
+
+// src/lib/constants/audio.ts
+export const AUDIO_FOLDER = 'public/audio';
+export const ROOM_AUDIO_BUCKET = 'room-audio';
+
+// Allowed slug patterns
+export const SLUG_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 ```
 
 ### Example
 
 ```tsx
-import { KIDS_TABLE, KIDS_ROUTE_PREFIX, LEVEL_IDS } from '@/lib/constants/kids';
+import { TIERS } from '@/lib/constants/tiers';
+import { KIDS_TABLE, KIDS_ROUTE_PREFIX, KIDS_LEVEL_IDS } from '@/lib/constants/kids';
+import { ROOMS_TABLE } from '@/lib/constants/rooms';
 
+// ✅ CORRECT - using constants
 const { data } = await supabase
   .from(KIDS_TABLE)
   .select('*')
-  .eq('level_id', LEVEL_IDS[0]);
+  .eq('level_id', KIDS_LEVEL_IDS[0])
+  .eq('tier', TIERS.KIDS_1);
 
 navigate(`${KIDS_ROUTE_PREFIX}/${room.id}`);
+
+// ❌ WRONG - magic strings
+const { data } = await supabase
+  .from('kids_rooms')
+  .select('*')
+  .eq('level_id', 'level1')
+  .eq('tier', 'Kids Level 1 / Trẻ em cấp 1');
 ```
 
 ---
 
-## 10. Data Hooks & Types
+## 10. Data Fetching Standard
 
 ### Rule
 
-All Kids level pages must use `useKidsRooms(levelId)`; no inline Supabase queries in pages.
+All Kids pages must use `useKidsRooms(levelId)`. All VIP pages must use `useVipRooms(tierId)`. No inline Supabase queries in pages.
 
 ### Contract
 
 ```tsx
+// Kids
 type KidsLevelId = "level1" | "level2" | "level3";
 
 interface UseKidsRoomsResult {
@@ -433,16 +534,35 @@ interface UseKidsRoomsResult {
 }
 
 declare function useKidsRooms(levelId: KidsLevelId): UseKidsRoomsResult;
+
+// VIP
+type VipTierId = "vip1" | "vip2" | "vip3" | "vip3ii" | "vip4" | "vip5" | "vip6" | "vip9";
+
+interface UseVipRoomsResult {
+  rooms: VipRoom[];
+  loading: boolean;
+  error: Error | null;
+  refresh: () => void;
+}
+
+declare function useVipRooms(tierId: VipTierId): UseVipRoomsResult;
 ```
 
 ### Example
 
 ```tsx
+// Kids page
 const { rooms, loading, error, refresh } = useKidsRooms("level1");
 
 if (loading) return <LoadingSpinner />;
+if (error) return <ErrorMessage error={error} />;
 
 return <KidsRoomGrid rooms={rooms} onRoomClick={...} />;
+
+// VIP page
+const { rooms, loading, error } = useVipRooms("vip3");
+
+return <VipRoomGrid rooms={rooms} onRoomClick={...} />;
 ```
 
 ---
@@ -522,13 +642,20 @@ All non-text buttons must have `aria-label`; decorative icons must use `aria-hid
 
 ### Rule
 
-Any level with >50 rooms must apply lazy-loading or virtualization.
+Any level with >50 rooms must apply lazy-loading or virtualization. Otherwise, use animated standard grid.
 
 ### Contract
 
 ```tsx
-if (rooms.length > 50) {
-  // Use virtualised list OR lazy-loading
+// Performance threshold
+const VIRTUALIZATION_THRESHOLD = 50;
+
+if (rooms.length > VIRTUALIZATION_THRESHOLD) {
+  // Use virtualized grid (e.g., react-window)
+  return <VirtualizedRoomGrid rooms={rooms} />;
+} else {
+  // Use standard animated grid
+  return <KidsRoomGrid rooms={rooms} />;
 }
 ```
 
@@ -536,24 +663,101 @@ if (rooms.length > 50) {
 
 ```tsx
 <img src={room.image} loading="lazy" alt={room.title_en} />
+
+// OR for large lists
+import { FixedSizeGrid } from 'react-window';
+
+<FixedSizeGrid
+  columnCount={6}
+  columnWidth={200}
+  height={600}
+  rowCount={Math.ceil(rooms.length / 6)}
+  rowHeight={250}
+  width={1200}
+>
+  {({ columnIndex, rowIndex, style }) => {
+    const index = rowIndex * 6 + columnIndex;
+    const room = rooms[index];
+    return room ? (
+      <div style={style}>
+        <KidsRoomCard room={room} index={index} onClick={...} />
+      </div>
+    ) : null;
+  }}
+</FixedSizeGrid>
 ```
 
 ---
 
-## 15. Component Checklist
+## 15. CI Enforcement (Future)
+
+### Rule
+
+Automate design system enforcement through CI/CD pipeline.
+
+### Contract
+
+**ESLint Rule:**
+- Forbid `text-white`, `bg-blue-500`, hex colors in `className` or `style`
+- Require all colors use `hsl(var(--token-name))` or semantic Tailwind tokens
+- Forbid magic strings (table names, tier values)
+
+**Pre-commit Script:**
+- Detect non-kebab-case room IDs
+- Check for missing keywords in rooms with entries
+- Validate tier values against canonical TIERS
+- Block commits with hardcoded essays or audio paths
+
+**Grid Layout Linter:**
+- Scan `src/pages` for grid classes
+- Fail if grid doesn't match canonical pattern
+- Ensure all room pages use `KidsRoomGrid` or `VipRoomGrid`
+
+**KidsRoomCard Snapshot Test:**
+- Jest snapshot test to prevent local style overrides
+- Verify component structure remains unchanged
+
+**Validation Script:**
+- Check all rooms pass data hygiene rules
+- Flag duplicate `(title_en, tier)` combinations
+- Verify entry word counts (50–150 words)
+
+### Example
+
+```json
+// .eslintrc.json
+{
+  "rules": {
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "Literal[value=/^(#[0-9a-f]{3,6}|rgb|hsl)$/i]",
+        "message": "Use semantic tokens instead of hex/rgb/hsl colors"
+      }
+    ]
+  }
+}
+```
+
+---
+
+## 16. Component Checklist
 
 Before shipping any new Kids or VIP page, verify:
 
 - [ ] Colors: all solids via `hsl(var(--token))`; gradients via `var(--gradient-*)`; no inline `linear-gradient(` in components
 - [ ] Grid: all room listings use `ROOM_GRID_CLASS` via `KidsRoomGrid` or `VipRoomGrid`
 - [ ] Rooms: all UI consumes `RoomJson` structure; no hardcoded essays/audio
-- [ ] Hooks: Kids pages use `useKidsRooms(levelId)`
+- [ ] Hooks: Kids pages use `useKidsRooms(levelId)`, VIP pages use `useVipRooms(tierId)`
 - [ ] Entries: use `BilingualEntryWithAudio` for EN/VI + audio
 - [ ] Routing: only `/kids-chat/:roomId`, `/room/:roomId`, `/vip/:tier`
 - [ ] Types: `KidsRoom`, `VipRoom`, `RoomEntry` imported from shared types/Supabase
 - [ ] Accessibility: `aria-label` and `aria-hidden` applied correctly
 - [ ] Performance: lazy-loading or virtualization used when `rooms.length > 50`
-- [ ] Constants: all shared strings (table names, route prefixes, level IDs) come from constants files
+- [ ] Constants: all shared strings imported from constants files (TIERS, KIDS_TABLE, etc.)
+- [ ] Room ID: kebab-case, lowercase, matches `/^[a-z0-9]+(-[a-z0-9]+)*$/`
+- [ ] Tier: matches canonical TIERS enum value
+- [ ] Data Hygiene: room passes all validation rules (entries > 0, keywords > 0, no duplicates)
 - [ ] No `text-white`, `bg-blue-500`, or hex colors anywhere
 - [ ] Bilingual titles use single line with `line-clamp-2` and ` / ` separator
 - [ ] Staggered animations use `index * 0.05s` delay
