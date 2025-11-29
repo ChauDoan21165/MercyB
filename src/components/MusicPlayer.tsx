@@ -380,7 +380,7 @@ export const MusicPlayer = () => {
           />
         </Button>
 
-        {/* Play Mode Toggle: My Playlist vs All Tracks */}
+        {/* Play Mode Toggle: Heart button for favorites */}
         <Button
           onClick={() => {
             const newMode = !playFromFavorites;
@@ -389,74 +389,15 @@ export const MusicPlayer = () => {
           }}
           variant="outline"
           size="sm"
-          className={`border-black h-8 px-2 gap-1 transition-colors ${
+          className={`border-black h-8 w-8 p-0 transition-colors ${
             playFromFavorites
               ? 'bg-pink-400 text-black hover:bg-pink-500 border-2'
               : 'text-black hover:bg-gray-100'
           }`}
-          title={playFromFavorites ? "Playing: My Playlist" : "Playing: All Tracks"}
+          title={playFromFavorites ? "Playing: Favorites Only" : "Playing: All Tracks"}
         >
-          <Music className="h-3 w-3" />
-          <span className="text-xs font-bold">
-            {playFromFavorites ? 'My Playlist' : 'Album'}
-          </span>
+          <Heart className={`h-3 w-3 ${playFromFavorites ? 'fill-current' : ''}`} />
         </Button>
-
-        {/* My Playlist Dropdown */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="outline"
-              size="sm"
-              className="border-black text-black hover:bg-gray-100 h-8 px-2 gap-1"
-            >
-              <Heart className="h-3 w-3" />
-              <span className="text-xs">({favoriteIds.length})</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-[300px] bg-white border-black z-[100]">
-            <DropdownMenuLabel className="flex items-center justify-between">
-              <span>My Favorite Tracks</span>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setShowAllTracks(!showAllTracks)}
-                className="h-6 px-2 text-xs"
-              >
-                {showAllTracks ? 'Show Favorites' : 'Show All'}
-              </Button>
-            </DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <ScrollArea className="h-[300px]">
-              {favoriteIds.length === 0 ? (
-                <div className="p-4 text-center text-sm text-gray-500">
-                  No favorites yet. Click the heart icon to add tracks.
-                </div>
-              ) : (
-                TRACKS.filter(t => favoriteIds.includes(t.id)).map((track) => (
-                  <DropdownMenuItem
-                    key={track.id}
-                    onClick={() => handleTrackChange(track.id)}
-                    className="cursor-pointer flex items-center justify-between"
-                  >
-                    <span className="text-xs truncate">{track.name}</span>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleFavorite(track.id);
-                      }}
-                      className="h-6 w-6 p-0"
-                    >
-                      <Heart className="h-3 w-3 fill-red-500 text-red-500" />
-                    </Button>
-                  </DropdownMenuItem>
-                ))
-              )}
-            </ScrollArea>
-          </DropdownMenuContent>
-        </DropdownMenu>
 
         {/* Track Selector */}
         <Select value={currentTrackId} onValueChange={handleTrackChange}>
