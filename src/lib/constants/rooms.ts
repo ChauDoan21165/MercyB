@@ -15,5 +15,12 @@ export const VIRTUALIZATION_THRESHOLD = 50;
 export const AUDIO_FOLDER = "public/audio";
 export const ROOM_AUDIO_BUCKET = "room-audio";
 
+// Performance thresholds
+export const VIRTUALIZATION_THRESHOLD = 50;
+
+// Audio and storage
+export const AUDIO_FOLDER = "public/audio";
+export const ROOM_AUDIO_BUCKET = "room-audio";
+
 // Slug validation pattern
 export const SLUG_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;

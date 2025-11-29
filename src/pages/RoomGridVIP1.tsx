@@ -62,8 +62,9 @@ const RoomGridVIP1 = () => {
                       onClick={handleRefreshRooms}
                       disabled={isLoading}
                       className="flex items-center gap-2 bg-white/80"
+                      aria-label="Refresh VIP1 rooms"
                     >
-                      <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
+                      <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} aria-hidden="true" />
                       Refresh
                     </Button>
                   )}
@@ -72,7 +73,7 @@ const RoomGridVIP1 = () => {
               
               <div className="text-center space-y-2">
                 <div className="flex items-center justify-center gap-2">
-                  <Crown className="h-8 w-8" style={{ color: 'hsl(var(--vip1-primary))' }} />
+                  <Crown className="h-8 w-8" style={{ color: 'hsl(var(--vip1-primary))' }} aria-hidden="true" />
                   <h1 className="text-4xl font-bold bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
                     VIP1 Learning Rooms
                   </h1>
