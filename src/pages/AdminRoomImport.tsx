@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -13,6 +13,7 @@ import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 export default function AdminRoomImport() {
   const { toast } = useToast();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const [jsonInput, setJsonInput] = useState("");
   const [importResults, setImportResults] = useState<string[]>([]);
   const [validationWarnings, setValidationWarnings] = useState<string[]>([]);
@@ -99,6 +100,7 @@ export default function AdminRoomImport() {
       return results;
     },
     onSuccess: (results) => {
+      queryClient.invalidateQueries({ queryKey: ["rooms-cache"] });
       setImportResults(results);
       toast({
         title: "Import Complete",

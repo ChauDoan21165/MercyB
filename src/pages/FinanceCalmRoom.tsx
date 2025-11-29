@@ -129,7 +129,7 @@ const FinanceCalmRoom = () => {
                   background: `linear-gradient(135deg, ${room.color}15, ${room.color}08)`,
                   boxShadow: `0 0 20px ${room.color}30`
                 }}
-                onClick={() => navigate(`/chat/${room.id}`)}
+                onClick={() => navigate(`/room/${room.id}`)}
               >
                 {/* Completion Badge */}
                 {isVisited && (
