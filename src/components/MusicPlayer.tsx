@@ -153,6 +153,16 @@ const TRACKS = [
   { id: '130', name: 'Funktastic', url: '/audio/2017-01-25_-_Funktastic_-_David_Fesliyan.mp3' },
   { id: '131', name: 'Happy Streams', url: '/audio/2017-06-02_-_Happy_Streams_-_David_Fesliyan.mp3' },
   { id: '132', name: 'A Rockin Time', url: '/audio/2017-10-07_-_A_Rockin_Time_-_David_Fesliyan.mp3' },
+  { id: '133', name: 'Pirate Dance', url: '/audio/2017-08-20_-_Pirate_Dance_-_David_Fesliyan.mp3' },
+  { id: '134', name: 'Forest Ventures', url: '/audio/2017-11-07_-_Forest_Ventures_-_David_Fesliyan.mp3' },
+  { id: '135', name: 'Beach Boogie (Slow)', url: '/audio/2017-11-29_-_Beach_Boogie-SLOWVERSION_-_David_Fesliyan.mp3' },
+  { id: '136', name: 'Beach Boogie', url: '/audio/2017-11-29_-_Beach_Boogie_-_David_Fesliyan.mp3' },
+  { id: '137', name: 'Dreams of a Child', url: '/audio/2018-06-06_-_Dreams_of_a_Child_-_David_Fesliyan.mp3' },
+  { id: '138', name: 'Happy Tree', url: '/audio/2018-11-27_-_Happy_Tree_-_FesliyanStudios.com_By_Stephen_Bennett.mp3' },
+  { id: '139', name: 'In A Jiffy', url: '/audio/2018-11-27_-_In_A_Jiffy_-_FesliyanStudios.com_By_Stephen_Bennett.mp3' },
+  { id: '140', name: '8 Bit Menu', url: '/audio/2019-01-02_-_8_Bit_Menu_-_David_Renda_-_FesliyanStudios.com.mp3' },
+  { id: '141', name: 'Fist Bump', url: '/audio/2019-03-12_-_Fist_Bump_-_www.fesliyanstudios.com.mp3' },
+  { id: '142', name: 'Like Ras', url: '/audio/2018-11-27_-_Like_Ras_-_FesliyanStudios.com_By_Stephen_Bennett.mp3' },
 ];
 
 export const MusicPlayer = () => {
