@@ -2269,6 +2269,7 @@ export type Database = {
         Returns: boolean
       }
       clean_expired_responses: { Args: never; Returns: undefined }
+      get_room_tier_level: { Args: { tier_name: string }; Returns: number }
       get_user_tier: {
         Args: { user_uuid: string }
         Returns: {
@@ -2278,6 +2279,7 @@ export type Database = {
           tier_name: string
         }[]
       }
+      get_user_tier_level: { Args: { user_uuid: string }; Returns: number }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
