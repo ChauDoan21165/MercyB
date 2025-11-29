@@ -4,7 +4,19 @@ import { processEntriesOptimized } from './roomLoaderHelpers';
 /**
  * Normalize room ID for database lookup
  */
+const ROOM_ID_OVERRIDES: Record<string, string> = {
+  // VIP3 II Writing Deep-Dive rooms - map URL IDs to canonical DB IDs
+  'english-writing-deep-dive-vip3-ii': 'english-writing-deep-dive-vip3II',
+  'english-writing-deep-dive-vip3-ii-ii': 'english-writing-deep-dive-vip3II-II',
+  'english-writing-deep-dive-vip3-iii': 'english-writing-deep-dive-vip3ii-III',
+};
+
 const normalizeRoomId = (roomId: string): string => {
+  // Explicit overrides first
+  if (ROOM_ID_OVERRIDES[roomId]) {
+    return ROOM_ID_OVERRIDES[roomId];
+  }
+
   if (roomId.endsWith('_kids_l1')) {
     // Kids room: strip suffix and convert underscores to hyphens
     return roomId.replace('_kids_l1', '').replace(/_/g, '-');
