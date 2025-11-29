@@ -317,37 +317,25 @@ navigate(`/room/${room.id}`);
 ## 7. Bilingual Text Pattern
 
 ### Rule
-Card titles **must** use a **single line** with `English / Vietnamese` and `line-clamp-2`.
 
-We do **NOT** separate into two physical lines with stacked `<p>` tags.
+Card titles must use a single line with `English / Vietnamese` and `line-clamp-2`. We do not separate into two physical lines with stacked `<p>` tags.
 
-All room cards and titles must:
-1. Display **English first, Vietnamese second**
-2. Use **`line-clamp-2`** for the combined title to prevent overflow
-3. Separate with ` / ` (space-slash-space)
-4. English and Vietnamese titles should not exceed 2 lines in cards
+### Contract
 
-### Example (Card Title)
+- Display English first, Vietnamese second
+- Use `line-clamp-2` for combined title
+- Separator: ` / ` (space-slash-space)
+- Max 2 lines total in cards
+
+### Example
 
 ```tsx
-// ❌ WRONG — no line clamp, inconsistent separator
-<h3 className="font-bold">
-  {room.title_en} | {room.title_vi}
-</h3>
-
-// ✅ CORRECT — line clamp, consistent separator
 <h3 className="font-bold text-sm line-clamp-2">
   {room.title_en} / {room.title_vi}
 </h3>
-```
 
-### Example (Gradient Title Bar)
-
-```tsx
-<div 
-  className="p-2 text-center rounded-t-lg"
-  style={{ background: 'var(--gradient-rainbow)' }}
->
+// Gradient title bar
+<div style={{ background: 'var(--gradient-rainbow)' }}>
   <h4 className="font-bold text-foreground text-xs line-clamp-2">
     {room.title_en} / {room.title_vi}
   </h4>
@@ -359,33 +347,30 @@ All room cards and titles must:
 ## 8. Animation Standards
 
 ### Rule
-All room cards use **staggered fade-in animations** based on index.
 
-### Required Pattern
+All room cards use staggered fade-in animations based on index.
+
+### Contract
 
 ```tsx
-<Card
-  className="cursor-pointer hover:scale-105 transition-all duration-300"
-  style={{
-    animationDelay: `${index * 0.05}s`
-  }}
->
+// Staggered animation pattern
+className="animate-fade-in cursor-pointer hover:scale-105 transition-all duration-300"
+style={{ animationDelay: `${index * 0.05}s` }}
 ```
 
+**Parameters:**
 - Base delay: `0.05s` per card
-- Index-based: each card delays by `index * 0.05s`
+- Index multiplier: `index * 0.05s`
 - Hover: `scale-105` with `duration-300`
 
-### Example (Complete Animation)
+### Example
 
 ```tsx
 {rooms.map((room, index) => (
   <Card
     key={room.id}
-    className="cursor-pointer hover:scale-105 transition-all duration-300 animate-fade-in"
-    style={{
-      animationDelay: `${index * 0.05}s`
-    }}
+    className="animate-fade-in cursor-pointer hover:scale-105 transition-all duration-300"
+    style={{ animationDelay: `${index * 0.05}s` }}
     onClick={() => navigate(`/room/${room.id}`)}
   >
     {/* Card content */}
@@ -395,32 +380,28 @@ All room cards use **staggered fade-in animations** based on index.
 
 ---
 
-## 8. Constants & Magic Strings
+## 9. Constants & Magic Strings
 
 ### Rule
-All shared literals (table names, level IDs, route prefixes) must come from a constants file, not inline strings.
 
-### Example (Constants File)
+All shared literals (table names, level IDs, route prefixes) must come from constants files, not inline strings.
+
+### Contract
 
 ```ts
 // src/lib/constants/kids.ts
 export const KIDS_TABLE = 'kids_rooms';
 export const KIDS_ROUTE_PREFIX = '/kids-chat';
 export const LEVEL_IDS = ['level1', 'level2', 'level3'] as const;
+
+// src/lib/constants/rooms.ts
+export const ROOMS_TABLE = 'rooms';
+export const ADULT_ROUTE_PREFIX = '/room';
 ```
 
-### Example (Usage)
+### Example
 
 ```tsx
-// ❌ WRONG — hardcoded strings
-const { data } = await supabase
-  .from('kids_rooms')
-  .select('*')
-  .eq('level_id', 'level1');
-
-navigate(`/kids-chat/${room.id}`);
-
-// ✅ CORRECT — imported constants
 import { KIDS_TABLE, KIDS_ROUTE_PREFIX, LEVEL_IDS } from '@/lib/constants/kids';
 
 const { data } = await supabase
@@ -433,7 +414,7 @@ navigate(`${KIDS_ROUTE_PREFIX}/${room.id}`);
 
 ---
 
-## 9. Data Hooks & Types
+## 10. Data Hooks & Types
 
 ### Rule
 
@@ -466,7 +447,7 @@ return <KidsRoomGrid rooms={rooms} onRoomClick={...} />;
 
 ---
 
-## 10. Bilingual Entry Component
+## 11. Bilingual Entry Component
 
 ### Rule
 
@@ -493,7 +474,7 @@ Component must render: (1) `entry.copy.en`, (2) `entry.copy.vi`, (3) Audio playe
 
 ---
 
-## 11. Types & Supabase
+## 12. Types & Supabase
 
 ### Rule
 
@@ -516,7 +497,7 @@ const rooms: KidsRoom[] = await fetchKidsRooms();
 
 ---
 
-## 12. Accessibility
+## 13. Accessibility
 
 ### Rule
 
@@ -537,7 +518,7 @@ All non-text buttons must have `aria-label`; decorative icons must use `aria-hid
 
 ---
 
-## 13. Performance
+## 14. Performance
 
 ### Rule
 
@@ -559,28 +540,7 @@ if (rooms.length > 50) {
 
 ---
 
-## 13. Automation Ideas (Future)
-
-To enforce this design system automatically:
-
-### ESLint Rule
-- Forbid `text-white`, `bg-blue-500`, hex colors in className or style
-- Require all colors use `hsl(var(--token-name))` or semantic Tailwind tokens
-
-### Grid Layout Linter
-- Script to scan `src/pages` for grid classes
-- Fail if grid doesn't match: `grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6`
-
-### KidsRoomCard Snapshot Test
-- Jest snapshot test to prevent local style overrides in KidsRoomCard component
-
-### Pre-commit Hook
-- Block commits with hardcoded essays, audio filenames, or hex colors
-- Validate all new room pages follow VIP template structure
-
----
-
-## 14. Component Checklist
+## 15. Component Checklist
 
 Before shipping any new Kids or VIP page, verify:
 
