@@ -8,6 +8,7 @@ import { toast } from 'sonner';
 import { Check } from 'lucide-react';
 import { PricingToggle } from '@/components/PricingToggle';
 import { TestModeBanner } from '@/components/payment/TestModeBanner';
+import { loadPayPalSdk } from '@/utils/paypalLoader';
 
 declare global {
   interface Window {
@@ -23,6 +24,7 @@ const PaymentTest = () => {
   const [selectedTier, setSelectedTier] = useState<string | null>(null);
   const tierRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const [isYearly, setIsYearly] = useState(false);
+  const [paypalError, setPaypalError] = useState<string | null>(null);
 
   useEffect(() => {
     loadTiers();
@@ -50,25 +52,15 @@ const PaymentTest = () => {
   };
 
   const loadPayPalScript = async () => {
+    setPaypalError(null);
     try {
-      // Avoid duplicate loads
-      if (window.paypal) {
-        console.log('PayPal SDK already loaded');
-        return;
-      }
-
-      if (document.getElementById('paypal-sdk')) {
-        console.log('PayPal SDK script already exists, waiting for load...');
-        return;
-      }
-
-      console.log('Loading PayPal SDK...');
+      console.log('🔄 Fetching PayPal client ID...');
       const { data, error } = await supabase.functions.invoke('paypal-payment', {
         body: { action: 'get-client-id' },
       });
       
       if (error || !data?.success) {
-        console.error('Error getting PayPal client ID:', error || data?.error);
+        console.error('❌ Error getting PayPal client ID:', error || data?.error);
         throw new Error(error?.message || data?.error || 'Failed to get PayPal client ID');
       }
       
@@ -77,28 +69,21 @@ const PaymentTest = () => {
         throw new Error('Missing PayPal client ID');
       }
 
-      console.log('PayPal client ID received, loading script...');
+      console.log('✅ PayPal client ID received, loading SDK with timeout protection...');
+      await loadPayPalSdk(clientId);
+      console.log('✅ PayPal SDK ready');
+    } catch (e: any) {
+      console.error('❌ Failed to load PayPal SDK:', e);
       
-      const script = document.createElement('script');
-      script.id = 'paypal-sdk';
-      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=USD&components=buttons&intent=capture&commit=true&enable-funding=paypal&disable-funding=card,venmo,credit,sepa,bancontact,eps,giropay,ideal,mybank,p24,sofort`;
-      script.async = true;
+      if (e.message === 'PAYPAL_SDK_TIMEOUT') {
+        setPaypalError('PayPal is taking too long to load. Please check your internet connection and try again.');
+      } else if (e.message === 'PAYPAL_SDK_LOAD_ERROR') {
+        setPaypalError('Failed to load PayPal. Please refresh the page and try again.');
+      } else {
+        setPaypalError('Unable to initialize PayPal. Please try again later.');
+      }
       
-      // Wait for script to load
-      await new Promise((resolve, reject) => {
-        script.onload = () => {
-          console.log('PayPal SDK loaded successfully');
-          resolve(true);
-        };
-        script.onerror = () => {
-          console.error('Failed to load PayPal SDK script');
-          reject(new Error('Failed to load PayPal SDK'));
-        };
-        document.body.appendChild(script);
-      });
-    } catch (e) {
-      console.error('Failed to load PayPal SDK:', e);
-      toast.error('Failed to load PayPal SDK / Không thể tải PayPal');
+      toast.error('Failed to load PayPal / Không thể tải PayPal');
     }
   };
 
@@ -238,6 +223,21 @@ const PaymentTest = () => {
       <div className="bg-gradient-to-b from-purple-50 via-blue-50 to-teal-50 min-h-screen py-12 px-6">
         <div className="max-w-6xl mx-auto">
           <TestModeBanner />
+          
+          {/* PayPal Error Banner */}
+          {paypalError && (
+            <div className="mb-6 p-4 bg-red-50 border-2 border-red-400 rounded-lg">
+              <h2 className="text-lg font-bold text-red-900 mb-2">❌ PayPal Loading Error</h2>
+              <p className="text-red-700 mb-3">{paypalError}</p>
+              <Button 
+                onClick={loadPayPalScript} 
+                variant="outline"
+                className="border-red-600 text-red-700 hover:bg-red-50"
+              >
+                🔄 Retry / Thử lại
+              </Button>
+            </div>
+          )}
           
           <h1 className="text-4xl font-bold mb-4 text-center bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">
             {searchParams.get('tier') 

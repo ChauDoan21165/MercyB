@@ -182,10 +182,10 @@
 2. **Offline Detection** - Created OfflineDetector showing online/offline banner  
 3. **404 Page** - Fixed to use React Router Link instead of `<a>` tag, added bilingual message
 
-### REMAINING HIGH PRIORITY
-1. **PayPal SDK Load Timeout** - Needs user-friendly error + retry button if SDK fails
-2. **Audio Player Error Handling** - Should show "Audio failed to load" message + retry
-3. **Session Timeout** - Verify expired session redirects to login properly
+### COMPLETED ✅
+1. **PayPal SDK Load Timeout** - 15s timeout with retry button + error banner
+2. **Audio Player Error Handling** - Inline error state with retry button
+3. **Session Timeout** - Created central fetch wrapper (`src/utils/edgeFetch.ts`) for 401/403 handling
 
 ---
 
