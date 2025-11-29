@@ -4,5 +4,20 @@
       "src": "/public/data/(.*)",
       "status": 404
     }
+  ],
+  "headers": [
+    {
+      "source": "/public/data/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "private, no-cache, no-store, must-revalidate"
+        }
+      ]
+    }
   ]
 }
