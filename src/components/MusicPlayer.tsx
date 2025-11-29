@@ -133,6 +133,16 @@ const TRACKS = [
   { id: '110', name: 'I Wish I Told You (1)', url: '/audio/2025-06-05_I_Wish_I_Told_You_-_www.FesliyanStudios.com_David_Fesliyan-2.mp3' },
   { id: '111', name: 'Deep Meditation (1)', url: '/audio/2019-04-06_-_Deep_Meditation_-_David_Fesliyan-2.mp3' },
   { id: '112', name: 'Slow Funny Music A', url: '/audio/2019-02-21_-_Slow_Funny_Music_A_-_www.fesliyanstudios.com_-_David_Renda.mp3' },
+  { id: '113', name: 'Holiday Hustle', url: '/audio/2020-11-11_-_Holiday_Hustle_-_www.FesliyanStudios.com_David_Renda.mp3' },
+  { id: '114', name: 'Skies', url: '/audio/2013-12-28_Skies_-_David_Fesliyan.mp3' },
+  { id: '115', name: 'Eye Laugh', url: '/audio/2019-01-27_-_Eye_Laugh_-_David_Renda-www.fesliyanstudios.com.mp3' },
+  { id: '116', name: 'Overcomer', url: '/audio/2014-12-27_Overcomer_-_David_Fesliyan.mp3' },
+  { id: '117', name: 'Healing', url: '/audio/2015-08-11_-_Healing_-_David_Fesliyan.mp3' },
+  { id: '118', name: 'Life At The Inn', url: '/audio/2015-05-29_-_Life_At_The_Inn_-_David_Fesliyan.mp3' },
+  { id: '119', name: 'The Town Of Our Youth', url: '/audio/2015-11-29_-_The_Town_Of_Our_Youth_-_David_Fesliyan.mp3' },
+  { id: '120', name: 'Joy', url: '/audio/2015-12-12_-_Joy_-_David_Fesliyan.mp3' },
+  { id: '121', name: 'We Fought For Freedom', url: '/audio/2016-02-15_-_We_Fought_For_Freedom_-_David_Fesliyan.mp3' },
+  { id: '122', name: 'Our Memories', url: '/audio/2016-04-05_-_Our_Memories_-_David_Fesliyan.mp3' },
 ];
 
 export const MusicPlayer = () => {
