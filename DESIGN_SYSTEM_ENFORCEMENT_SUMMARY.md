@@ -157,8 +157,55 @@ Next steps for CI enforcement:
 - [ ] Screen readers announce room cards correctly
 - [ ] Run validation script: `npx tsx src/lib/scripts/validateRoomData.ts`
 
+### ✅ 7. Room Data Validation System
+
+Complete automated validation system implemented:
+
+- **`src/lib/validation/roomDataHygiene.ts`**
+  - `validateRoomId()` - checks kebab-case, lowercase format
+  - `validateTier()` - validates against canonical TIERS enum
+  - `validateEntry()` - validates all entry fields:
+    - keywords_en/vi: 3-5 items each
+    - tags: 2-4 items
+    - copy.en/vi: 50-150 words each
+    - audio: filename only (no paths)
+  - `validateRoom()` - validates complete room structure
+  - `generateValidationReport()` - batch validation for all rooms
+  - `exportValidationReportAsJson()` - exports detailed JSON report
+  - `exportValidationReportAsMarkdown()` - exports human-readable Markdown report with TODO comments
+
+- **`src/lib/scripts/validateRoomData.ts`**
+  - Executable validation script
+  - Fetches rooms from Supabase database
+  - Generates both JSON and Markdown reports
+  - Exit code 1 if violations found, 0 if all clean
+  - Ready for CI/CD integration
+
+**Running Validation:**
+
+```bash
+npx tsx src/lib/scripts/validateRoomData.ts
+```
+
+**Generated Reports:**
+
+- `ROOM_VALIDATION_REPORT.json` - detailed JSON with all violations
+- `ROOM_VALIDATION_RESULTS.md` - human-readable report with fix instructions
+
+**TODO Comments in Reports:**
+
+Each violation type includes clear TODO instructions:
+- ID issues: "Rename to kebab-case, update JSON + DB"
+- Tier issues: "Normalize to TIERS enum constant"
+- Keyword count: "Adjust keyword arrays to 3-5 items each"
+- Tag count: "Adjust tags array to 2-4 items"
+- Copy length: "Edit text content to 50-150 words"
+- Audio paths: "Remove folder path, use filename only"
+
 ## Notes
 
 All changes follow the **Mercy Blade Design System v1.1** specifications. No visual designs or layouts were changed - only code structure, constants usage, and data fetching patterns.
 
-Magic strings have been eliminated from Kids pages. Room data validation is now automated and can be run via script or integrated into CI/CD pipelines.
+Magic strings have been eliminated from all Kids and VIP pages. Room data validation is now automated and can be run via script or integrated into CI/CD pipelines.
+
+**Validation system is fully functional** - run the script to generate ROOM_VALIDATION_RESULTS.md with specific violations and fix instructions for all rooms in the database.

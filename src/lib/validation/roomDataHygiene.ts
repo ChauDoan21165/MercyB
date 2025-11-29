@@ -231,3 +231,135 @@ export function logValidationReport(reports: RoomValidationReport[]): void {
 export function exportValidationReportAsJson(reports: RoomValidationReport[]): string {
   return JSON.stringify(reports, null, 2);
 }
+
+// Export validation report as Markdown
+export function exportValidationReportAsMarkdown(
+  reports: RoomValidationReport[],
+  totalRooms: number
+): string {
+  const violationCount = reports.filter(
+    r => r.violations.length > 0 || r.entryViolations.length > 0
+  ).length;
+  const cleanRooms = totalRooms - violationCount;
+
+  let markdown = `# Room Validation Results (Design System v1.1)\n\n`;
+  markdown += `## Summary\n\n`;
+  markdown += `- **Total Rooms**: ${totalRooms}\n`;
+  markdown += `- **Clean Rooms**: ${cleanRooms}\n`;
+  markdown += `- **Rooms with Violations**: ${violationCount}\n\n`;
+
+  if (violationCount === 0) {
+    markdown += `✅ **All rooms pass validation!**\n`;
+    return markdown;
+  }
+
+  markdown += `---\n\n`;
+  markdown += `## Rooms with Violations\n\n`;
+
+  reports.forEach(report => {
+    if (report.violations.length > 0 || report.entryViolations.length > 0) {
+      markdown += `### Room: \`${report.roomId}\`\n`;
+      markdown += `- **Tier**: ${report.tier}\n\n`;
+      markdown += `**Violations**\n\n`;
+
+      // Room-level violations
+      if (report.violations.length > 0) {
+        const idViolations = report.violations.filter(v => v.field === 'id');
+        const tierViolations = report.violations.filter(v => v.field === 'tier');
+        const entryCountViolations = report.violations.filter(v => v.field === 'entries');
+
+        if (idViolations.length > 0) {
+          markdown += `- **ID Issues**:\n`;
+          idViolations.forEach(v => {
+            markdown += `  - ❌ ${v.rule}\n`;
+            markdown += `  - Current: \`${v.actual}\`\n`;
+            markdown += `  - Expected: ${v.expected}\n`;
+            markdown += `  - **TODO**: Rename to kebab-case, update JSON + DB\n`;
+          });
+        } else {
+          markdown += `- **ID**: ✅ valid\n`;
+        }
+
+        if (tierViolations.length > 0) {
+          markdown += `- **Tier Issues**:\n`;
+          tierViolations.forEach(v => {
+            markdown += `  - ❌ ${v.rule}\n`;
+            markdown += `  - Current: \`${v.actual}\`\n`;
+            markdown += `  - Expected: ${v.expected}\n`;
+            markdown += `  - **TODO**: Normalize to TIERS enum constant\n`;
+          });
+        } else {
+          markdown += `- **Tier**: ✅ valid\n`;
+        }
+
+        if (entryCountViolations.length > 0) {
+          markdown += `- **Entries Count**:\n`;
+          entryCountViolations.forEach(v => {
+            markdown += `  - ❌ ${v.rule}\n`;
+            markdown += `  - **TODO**: Add entries or mark room as incomplete/non-public\n`;
+          });
+        }
+      }
+
+      // Entry-level violations
+      if (report.entryViolations.length > 0) {
+        const keywordIssues: string[] = [];
+        const tagIssues: string[] = [];
+        const copyIssues: string[] = [];
+        const audioIssues: string[] = [];
+
+        report.entryViolations.forEach(ev => {
+          ev.violations.forEach(v => {
+            const entryLabel = `Entry \`${ev.entryId}\``;
+            
+            if (v.field === 'keywords_en' || v.field === 'keywords_vi') {
+              keywordIssues.push(
+                `  - ${entryLabel}: \`${v.field}\` has ${v.actual} items (needs ${v.expected})`
+              );
+            } else if (v.field === 'tags') {
+              tagIssues.push(
+                `  - ${entryLabel}: \`${v.field}\` has ${v.actual} items (needs ${v.expected})`
+              );
+            } else if (v.field === 'copy.en' || v.field === 'copy.vi') {
+              copyIssues.push(
+                `  - ${entryLabel}: \`${v.field}\` is ${v.actual} words (must be ${v.expected})`
+              );
+            } else if (v.field === 'audio') {
+              audioIssues.push(
+                `  - ${entryLabel}: \`audio\` = "${v.actual}" (must be filename only)`
+              );
+            }
+          });
+        });
+
+        if (keywordIssues.length > 0) {
+          markdown += `- **Keywords**:\n`;
+          keywordIssues.forEach(issue => markdown += `${issue}\n`);
+          markdown += `  - **TODO**: Adjust keyword arrays to 3-5 items each\n`;
+        }
+
+        if (tagIssues.length > 0) {
+          markdown += `- **Tags**:\n`;
+          tagIssues.forEach(issue => markdown += `${issue}\n`);
+          markdown += `  - **TODO**: Adjust tags array to 2-4 items\n`;
+        }
+
+        if (copyIssues.length > 0) {
+          markdown += `- **Copy Length**:\n`;
+          copyIssues.forEach(issue => markdown += `${issue}\n`);
+          markdown += `  - **TODO**: Edit text content to 50-150 words\n`;
+        }
+
+        if (audioIssues.length > 0) {
+          markdown += `- **Audio Paths**:\n`;
+          audioIssues.forEach(issue => markdown += `${issue}\n`);
+          markdown += `  - **TODO**: Remove folder path, use filename only (e.g., "room_entry_01_en.mp3")\n`;
+        }
+      }
+
+      markdown += `\n---\n\n`;
+    }
+  });
+
+  return markdown;
+}

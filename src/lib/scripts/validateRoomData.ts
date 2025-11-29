@@ -7,6 +7,7 @@ import {
   generateValidationReport,
   logValidationReport,
   exportValidationReportAsJson,
+  exportValidationReportAsMarkdown,
   RoomJson
 } from '../validation/roomDataHygiene';
 import { ROOMS_TABLE, KIDS_TABLE } from '../constants';
@@ -85,10 +86,17 @@ async function main() {
 
     // Export report as JSON file
     const jsonReport = exportValidationReportAsJson(report);
-    const reportPath = 'ROOM_VALIDATION_REPORT.json';
+    const jsonReportPath = 'ROOM_VALIDATION_REPORT.json';
     
-    fs.writeFileSync(reportPath, jsonReport, 'utf-8');
-    console.log(`\n💾 Report exported to: ${reportPath}`);
+    fs.writeFileSync(jsonReportPath, jsonReport, 'utf-8');
+    console.log(`\n💾 JSON report exported to: ${jsonReportPath}`);
+
+    // Export report as Markdown file
+    const markdownReport = exportValidationReportAsMarkdown(report, rooms.length);
+    const markdownReportPath = 'ROOM_VALIDATION_RESULTS.md';
+    
+    fs.writeFileSync(markdownReportPath, markdownReport, 'utf-8');
+    console.log(`📄 Markdown report exported to: ${markdownReportPath}`);
 
     // Summary
     const violationCount = report.filter(r => r.violations.length > 0 || r.entryViolations.length > 0).length;
