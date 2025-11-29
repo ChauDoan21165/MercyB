@@ -90,6 +90,7 @@ import TierMap from "./pages/TierMap";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import Refund from "./pages/Refund";
+import { OnboardingFlow } from "./components/onboarding/OnboardingFlow";
 
 const queryClient = new QueryClient();
 
@@ -137,6 +138,7 @@ const App = () => {
                 <BackButton />
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/onboarding" element={<OnboardingFlow />} />
           <Route path="/tiers" element={<Tiers />} />
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/meaning-of-life" element={<MeaningOfLife />} />
