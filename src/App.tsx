@@ -165,9 +165,10 @@ const App = () => {
           <Route path="/manual-payment" element={<ManualPayment />} />
           <Route path="/promo-code" element={<PromoCode />} />
           <Route path="/vip-topic-request" element={<VIPTopicRequest />} />
-          <Route path="/admin/reports" element={<AdminReports />} />
-          <Route path="/admin/feedback" element={<FeedbackInbox />} />
-          <Route path="/admin/stats" element={<AdminStats />} />
+                <Route path="/admin/reports" element={<AdminReports />} />
+                <Route path="/admin/feedback" element={<FeedbackInbox />} />
+                <Route path="/admin/feedback-analytics" element={<AdminFeedbackAnalytics />} />
+                <Route path="/admin/stats" element={<AdminStats />} />
           <Route path="/admin/payment-verification" element={<AdminPaymentVerification />} />
           <Route path="/admin/audio-upload" element={<AdminAudioUpload />} />
           <Route path="/admin/moderation" element={<AdminModeration />} />
@@ -186,10 +187,10 @@ const App = () => {
           <Route path="/admin/gift-codes" element={<AdminGiftCodes />} />
           <Route path="/admin/specification" element={<AdminSpecification />} />
           <Route path="/admin/room-specification" element={<RoomSpecification />} />
-          <Route path="/admin/health" element={<UnifiedHealthCheck />} />
-          <Route path="/admin/kids-room-health" element={<UnifiedHealthCheck />} />
-          <Route path="/admin/health-dashboard" element={<HealthDashboard />} />
-          <Route path="/admin/room-health/:tier" element={<UnifiedHealthCheck />} />
+           <Route path="/admin/health" element={<UnifiedHealthCheck />} />
+           <Route path="/admin/kids-room-health" element={<KidsRoomHealthCheck />} />
+           <Route path="/admin/health-dashboard" element={<HealthDashboard />} />
+           <Route path="/admin/room-health/:tier" element={<UnifiedHealthCheck />} />
           <Route path="/admin/system-health" element={<SystemHealth />} />
           <Route path="/admin/edge-functions" element={<EdgeFunctions />} />
           <Route path="/redeem-gift" element={<RedeemGiftCode />} />

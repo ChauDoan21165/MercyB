@@ -140,21 +140,27 @@ const PaymentTest = () => {
             console.log('Creating PayPal order for tier:', tierId);
             const { data: { session } } = await supabase.auth.getSession();
             
-            const { data, error } = await supabase.functions.invoke('paypal-payment', {
-              body: { action: 'create-order', tierId },
+            const { data: orderResult, error } = await supabase.functions.invoke('paypal-payment', {
+              body: { action: 'create-order', tier_id: tierId, period: 'monthly' },
               headers: {
                 Authorization: `Bearer ${session?.access_token}`
               }
             });
 
-            if (error || !data?.success) {
-              console.error('Create order error:', error || data?.error);
-              toast.error('Failed to create PayPal order: ' + (error?.message || data?.error));
-              throw new Error(error?.message || data?.error || 'Failed to create order');
+            if (error || !orderResult?.success) {
+              console.error('Create order error:', error || orderResult?.error);
+              toast.error('Failed to create order: ' + (error?.message || orderResult?.error || 'Unknown error'));
+              throw new Error(error?.message || orderResult?.error || 'Failed to create order');
             }
             
-            console.log('Order created:', data.data?.order_id);
-            return data.data?.order_id;
+            const orderId = orderResult.data?.order_id;
+            if (!orderId) {
+              toast.error('Failed to create order: missing order ID');
+              throw new Error('Missing order ID');
+            }
+            
+            console.log('Order created:', orderId);
+            return orderId;
           } catch (error) {
             console.error('Failed to create order:', error);
             toast.error('Failed to create payment order / Không thể tạo đơn hàng');
@@ -167,27 +173,29 @@ const PaymentTest = () => {
             const { data: { session } } = await supabase.auth.getSession();
             
             const { data: captureData, error } = await supabase.functions.invoke('paypal-payment', {
-              body: { action: 'capture-order', orderId: data.orderID, tierId },
+              body: { action: 'capture-order', order_id: data.orderID, tier_id: tierId, period: 'monthly' },
               headers: {
                 Authorization: `Bearer ${session?.access_token}`
               }
             });
 
-            if (error) {
-              console.error('Capture error:', error);
-              toast.error('Payment failed: ' + error.message);
+            if (error || !captureData?.success) {
+              console.error('Capture error:', error || captureData?.error);
+              toast.error(
+                'Payment failed: ' +
+                  (error?.message || captureData?.error || 'Unknown error')
+              );
               return;
             }
 
             console.log('Capture result:', captureData);
-
-            if (captureData.success) {
-              const tierName = tiers.find(t => t.id === tierId)?.name || 'VIP';
-              toast.success(`🎉 Congratulations! You are now in ${tierName}. Enjoy your experience! / Chúc mừng! Bạn đã là ${tierName}. Tận hưởng trải nghiệm!`);
-              navigate('/');
-            } else {
-              toast.error('Payment was not completed / Thanh toán không hoàn tất');
-            }
+            
+            const tierName = tiers.find(t => t.id === tierId)?.name || 'VIP';
+            toast.success(
+              `🎉 Congratulations! You are now in ${tierName}. Enjoy your experience! / Chúc mừng! Bạn đã là ${tierName}. Tận hưởng trải nghiệm!`,
+              { description: `Tier: ${captureData.data?.tier_id || tierId}` }
+            );
+            navigate('/');
           } catch (error) {
             console.error('Payment approval error:', error);
             toast.error('Payment processing failed / Xử lý thanh toán thất bại');
