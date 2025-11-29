@@ -98,10 +98,12 @@ Deno.serve(async (req) => {
 
         // Extract room data
         const roomId = jsonData.id;
-        const titleEn = jsonData.title?.en || jsonData.name || 'Untitled';
-        const titleVi = jsonData.title?.vi || jsonData.name_vi || 'Chưa có tiêu đề';
-        const contentEn = jsonData.content?.en || jsonData.room_essay_en || null;
-        const contentVi = jsonData.content?.vi || jsonData.room_essay_vi || null;
+        // Support both title and description fields
+        const titleEn = jsonData.title?.en || (jsonData as any).description?.en || jsonData.name || 'Untitled';
+        const titleVi = jsonData.title?.vi || (jsonData as any).description?.vi || jsonData.name_vi || 'Chưa có tiêu đề';
+        // Support both content and room_essay fields
+        const contentEn = jsonData.content?.en || (jsonData as any).room_essay?.en || jsonData.room_essay_en || null;
+        const contentVi = jsonData.content?.vi || (jsonData as any).room_essay?.vi || jsonData.room_essay_vi || null;
         const tier = jsonData.tier || 'free';
         const domain = jsonData.domain || null;
         const entries = jsonData.entries || [];
