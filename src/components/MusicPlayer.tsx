@@ -399,6 +399,52 @@ export const MusicPlayer = () => {
           <Heart className={`h-3 w-3 ${playFromFavorites ? 'fill-current' : ''}`} />
         </Button>
 
+        {/* Favorites List Dropdown */}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="outline"
+              size="sm"
+              className="border-black text-black hover:bg-gray-100 h-8 px-2 gap-1"
+            >
+              <Music className="h-3 w-3" />
+              <span className="text-xs">({favoriteIds.length})</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-[300px] bg-white border-black z-[100]">
+            <DropdownMenuLabel>Favorite Tracks</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <ScrollArea className="h-[300px]">
+              {favoriteIds.length === 0 ? (
+                <div className="p-4 text-center text-sm text-gray-500">
+                  No favorites yet. Click the heart icon to add tracks.
+                </div>
+              ) : (
+                TRACKS.filter(t => favoriteIds.includes(t.id)).map((track) => (
+                  <DropdownMenuItem
+                    key={track.id}
+                    onClick={() => handleTrackChange(track.id)}
+                    className="cursor-pointer flex items-center justify-between"
+                  >
+                    <span className="text-xs truncate">{track.name}</span>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleFavorite(track.id);
+                      }}
+                      className="h-6 w-6 p-0"
+                    >
+                      <Heart className="h-3 w-3 fill-red-500 text-red-500" />
+                    </Button>
+                  </DropdownMenuItem>
+                ))
+              )}
+            </ScrollArea>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
         {/* Track Selector */}
         <Select value={currentTrackId} onValueChange={handleTrackChange}>
           <SelectTrigger className="w-[180px] h-8 border-black text-black bg-white text-xs">
