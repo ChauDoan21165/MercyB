@@ -156,7 +156,12 @@ serve(async (req) => {
       const captureData = await captureResponse.json();
 
       if (captureData.status === 'COMPLETED') {
-        // User already authenticated earlier in the function
+        console.log('✅ PayPal payment COMPLETED - starting subscription update', {
+          user_id: user.id,
+          tier_id: tierId,
+          order_id: orderId,
+          capture_id: captureData.id,
+        });
 
         // Get tier details for notification
         const { data: tier } = await supabase
@@ -179,9 +184,30 @@ serve(async (req) => {
           .single();
 
         if (subError) {
-          console.error('Error updating subscription:', subError);
+          console.error('❌ CRITICAL: Subscription update FAILED after successful payment', {
+            user_id: user.id,
+            tier_id: tierId,
+            order_id: orderId,
+            error: subError,
+          });
           throw subError;
         }
+
+        // Log successful payment with structured data
+        console.log('✅ SUBSCRIPTION UPDATED SUCCESSFULLY', {
+          user_id: user.id,
+          user_email: user.email,
+          tier: tier?.name,
+          tier_id: tierId,
+          amount: tier?.price_monthly,
+          provider: 'paypal',
+          provider_tx_id: captureData.id,
+          order_id: orderId,
+          subscription_id: subscription.id,
+          period_start: subscription.current_period_start,
+          period_end: subscription.current_period_end,
+          timestamp: new Date().toISOString(),
+        });
 
         // Send notification to admin
         const { data: adminUsers } = await supabase
