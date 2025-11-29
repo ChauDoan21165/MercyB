@@ -833,31 +833,9 @@ const ChatHub = () => {
         </div>
 
         {/* Header */}
-        <div className="flex items-start justify-between bg-card rounded-lg p-4 shadow-soft">
-          {/* Left: Home and Back buttons */}
-          <div className="flex flex-col gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => navigate('/')}
-              className="gap-2 bg-background hover:bg-muted"
-            >
-              <Home className="w-4 h-4" />
-              Home
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => navigate(getParentRoute(roomId))}
-              className="gap-2"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back
-            </Button>
-          </div>
-          
-          {/* Center: Title and button group */}
-          <div className="flex-1 flex flex-col items-center justify-center space-y-3">
+        <div className="bg-card rounded-lg p-4 shadow-soft">
+          {/* Title and button group */}
+          <div className="flex flex-col items-center justify-center space-y-3">
             {/* Title */}
             <div className="text-center space-y-1">
               <div className="flex items-center justify-center gap-2">
