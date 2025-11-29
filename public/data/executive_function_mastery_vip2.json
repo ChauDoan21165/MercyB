@@ -1,0 +1,103 @@
+{
+  "id": "executive_function_mastery_vip2",
+  "tier": "vip2",
+  "domain": "Productivity",
+  "title": {
+    "en": "Executive Function Mastery — Room 8",
+    "vi": "Làm Chủ Chức Năng Điều Hành — Phòng 8"
+  },
+  "content": {
+    "en": "Executive function is the brain’s management system—your ability to plan, prioritize, initiate tasks, regulate emotions, switch strategically, and follow through. When executive function is strong, life feels organized and doable. When it weakens, everything feels heavy: decisions stall, motivation drops, tasks pile up, and small responsibilities feel overwhelming. This room teaches you how to strengthen the core pillars of executive function using simple, repeatable practices that fit real life. We begin with task initiation—learning how to start without waiting for motivation. You will learn how to reduce cognitive load, use external prompts, and design low-resistance entry points. Next, we refine prioritization with clear filters so you stop treating all tasks as equal. We also explore emotional regulation, because frustration, anxiety, and avoidance block the executive system more than lack of skill. You will learn to create buffers, use state-shifting habits, and stabilize your mind before returning to work. We then strengthen working memory using external scaffolding—lists, checklists, maps, anchors—so your brain can think instead of remember. Finally, we train follow-through using micro-commitments, accountability loops, and structured review. Executive function improves with design, not pressure. When these skills become automatic, your days feel smoother, your tasks feel lighter, and your life becomes easier to steer.",
+    "vi": "Chức năng điều hành là hệ thống quản lý của não—khả năng lập kế hoạch, ưu tiên, bắt đầu việc, điều chỉnh cảm xúc, chuyển đổi chiến lược và hoàn tất nhiệm vụ. Khi chức năng điều hành mạnh, cuộc sống cảm giác gọn gàng và có thể kiểm soát. Khi yếu, mọi thứ trở nên nặng: quyết định chậm, động lực giảm, việc chất đống và trách nhiệm nhỏ cũng khiến bạn quá tải. Phòng này dạy bạn tăng cường các trụ cột của chức năng điều hành bằng những thói quen đơn giản, lặp lại được và phù hợp với đời sống thật. Ta bắt đầu với khả năng khởi động việc—bắt đầu mà không cần đợi động lực. Bạn sẽ học cách giảm tải nhận thức, dùng tín hiệu ngoài và thiết kế điểm vào ít kháng cự. Tiếp theo, ta tinh chỉnh ưu tiên với bộ lọc rõ ràng để bạn không xem mọi việc là quan trọng ngang nhau. Ta cũng học cách điều chỉnh cảm xúc, vì bực bội, lo lắng và né tránh làm tắc hệ điều hành mạnh hơn thiếu kỹ năng. Bạn sẽ học tạo vùng đệm, dùng thói quen đổi trạng thái và ổn định tinh thần trước khi quay lại công việc. Ta củng cố trí nhớ làm việc bằng khung ngoài—danh sách, checklist, bản đồ, điểm neo—để não tập trung vào tư duy thay vì ghi nhớ. Cuối cùng, ta rèn khả năng hoàn tất bằng cam kết nhỏ, vòng trách nhiệm và xem lại có cấu trúc. Chức năng điều hành được cải thiện bằng thiết kế, không phải áp lực. Khi những kỹ năng này tự động hóa, ngày sống mượt hơn, việc nhẹ hơn và cuộc đời dễ điều hướng hơn."
+  },
+  "entries": [
+    {
+      "slug": "task-initiation",
+      "keywords_en": ["initiation", "starting", "resistance"],
+      "keywords_vi": ["khởi động", "bắt đầu", "kháng cự"],
+      "copy": {
+        "en": "Task initiation improves with tiny entry points. Reduce the size of the first step until your brain says yes. Use countdowns, environment cues, and two-minute actions to bypass avoidance. Starting is a skill—not a feeling.",
+        "vi": "Khởi động việc tốt hơn khi bước đầu đủ nhỏ để não chấp nhận. Hãy thu nhỏ bước đầu, dùng đếm ngược, tín hiệu môi trường và hành động hai phút để vượt né tránh. Bắt đầu là kỹ năng—không phải cảm hứng."
+      },
+      "tags": ["starting", "resistance", "ease"],
+      "audio": "vip2_productivity_81.mp3"
+    },
+    {
+      "slug": "priority-filters",
+      "keywords_en": ["prioritization", "filters", "clarity"],
+      "keywords_vi": ["ưu tiên", "bộ lọc", "rõ ràng"],
+      "copy": {
+        "en": "Use simple filters to prioritize: impact, urgency, alignment, effort. Ask: What moves life forward? What prevents future problems? What aligns with my values? Filters prevent overwhelm by reducing the number of decisions your brain must make.",
+        "vi": "Hãy dùng các bộ lọc đơn giản để ưu tiên: ảnh hưởng, khẩn cấp, phù hợp, mức nỗ lực. Hãy hỏi: Điều gì đẩy cuộc sống tiến lên? Điều gì ngăn vấn đề tương lai? Điều gì hợp giá trị của mình? Bộ lọc giảm quá tải bằng cách giảm số quyết định não phải xử lý."
+      },
+      "tags": ["clarity", "decision", "focus"],
+      "audio": "vip2_productivity_82.mp3"
+    },
+    {
+      "slug": "working-memory-support",
+      "keywords_en": ["working memory", "support", "external tools"],
+      "keywords_vi": ["trí nhớ làm việc", "hỗ trợ", "công cụ ngoài"],
+      "copy": {
+        "en": "Working memory weakens under stress. Support it using external scaffolding: lists, checklists, diagrams, timers, and written next steps. Offloading memory frees cognitive space so your brain can think clearly.",
+        "vi": "Trí nhớ làm việc yếu đi khi căng thẳng. Hãy hỗ trợ bằng khung ngoài: danh sách, checklist, sơ đồ, hẹn giờ, bước tiếp theo được viết ra. Việc xả bộ nhớ lên giấy giải phóng năng lực tư duy."
+      },
+      "tags": ["organization", "memory", "clarity"],
+      "audio": "vip2_productivity_83.mp3"
+    },
+    {
+      "slug": "state-shifting",
+      "keywords_en": ["state shift", "emotion regulation", "energy"],
+      "keywords_vi": ["đổi trạng thái", "điều chỉnh cảm xúc", "năng lượng"],
+      "copy": {
+        "en": "When emotions block execution, shift state before returning to work. Use breath resets, movement, hydration, or short grounding rituals. Regulating emotion reactivates the executive system.",
+        "vi": "Khi cảm xúc cản trở công việc, hãy đổi trạng thái trước khi quay lại. Hít thở, vận động nhẹ, uống nước hoặc các nghi thức grounding. Điều chỉnh cảm xúc giúp hệ điều hành kích hoạt lại."
+      },
+      "tags": ["emotions", "regulation", "reset"],
+      "audio": "vip2_productivity_84.mp3"
+    },
+    {
+      "slug": "decision-minimization",
+      "keywords_en": ["decision fatigue", "minimization", "system"],
+      "keywords_vi": ["mệt mỏi quyết định", "giảm quyết định", "hệ thống"],
+      "copy": {
+        "en": "Reduce daily decision load by standardizing routines, meals, schedules, and tools. The fewer decisions you make, the more cognitive energy remains for meaningful tasks.",
+        "vi": "Giảm số quyết định mỗi ngày bằng cách chuẩn hóa thói quen, bữa ăn, lịch và công cụ. Càng ít phải quyết định, bạn càng còn nhiều năng lượng nhận thức cho việc quan trọng."
+      },
+      "tags": ["efficiency", "clarity", "routine"],
+      "audio": "vip2_productivity_85.mp3"
+    },
+    {
+      "slug": "strategic-switching",
+      "keywords_en": ["task switching", "strategy", "control"],
+      "keywords_vi": ["đổi việc chiến lược", "chiến lược", "kiểm soát"],
+      "copy": {
+        "en": "Switch tasks intentionally, not impulsively. Use batching, theme days, and focus cycles to reduce context loss. Strategic switching preserves momentum while preventing cognitive overload.",
+        "vi": "Hãy đổi việc có chiến lược, không theo bản năng. Hãy gom việc, dùng ngày theo chủ đề và chu kỳ tập trung để giảm mất bối cảnh. Đổi việc chiến lược giữ đà tiến mà không gây quá tải."
+      },
+      "tags": ["strategy", "focus", "momentum"],
+      "audio": "vip2_productivity_86.mp3"
+    },
+    {
+      "slug": "micro-commitments",
+      "keywords_en": ["commitment", "follow-through", "identity"],
+      "keywords_vi": ["cam kết nhỏ", "làm tới nơi", "bản sắc"],
+      "copy": {
+        "en": "Strengthen follow-through using micro-commitments: small promises you can keep daily. Each kept commitment reinforces identity—“I finish things.” Completion builds the executive system from the inside out.",
+        "vi": "Hãy tăng khả năng làm tới nơi bằng cam kết nhỏ: lời hứa đơn giản bạn thực hiện mỗi ngày. Mỗi cam kết giữ vững củng cố bản sắc—“Tôi hoàn tất việc.” Hoàn tất xây hệ điều hành từ bên trong."
+      },
+      "tags": ["identity", "progress", "completion"],
+      "audio": "vip2_productivity_87.mp3"
+    },
+    {
+      "slug": "structured-review",
+      "keywords_en": ["review", "reflection", "adjustment"],
+      "keywords_vi": ["xem lại", "phản tư", "điều chỉnh"],
+      "copy": {
+        "en": "Weekly and monthly reviews strengthen planning, prioritization, and follow-through. Reviewing turns mistakes into learning and shifts your system from reactive to intentional. Your executive function grows each time you reflect and adjust.",
+        "vi": "Xem lại hằng tuần và hằng tháng tăng khả năng lập kế hoạch, ưu tiên và hoàn tất. Việc xem lại biến sai sót thành bài học và chuyển hệ thống của bạn từ phản ứng sang chủ động. Chức năng điều hành tăng mỗi lần bạn phản tư và điều chỉnh."
+      },
+      "tags": ["review", "learning", "growth"],
+      "audio": "vip2_productivity_88.mp3"
+    }
+  ]
+}

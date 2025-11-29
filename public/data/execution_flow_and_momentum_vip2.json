@@ -1,0 +1,103 @@
+{
+  "id": "execution_flow_and_momentum_vip2",
+  "tier": "vip2",
+  "domain": "Productivity",
+  "title": {
+    "en": "Execution Flow & Momentum — Room 5",
+    "vi": "Dòng Chảy Thực Thi & Đà Tiến — Phòng 5"
+  },
+  "content": {
+    "en": "Execution is not about force—it is about flow. When your system is clear, the next challenge is learning how to move through your tasks with steadiness instead of pressure. This room teaches you how to turn action into something smooth, rhythmic, and repeatable. We begin by understanding what kills execution: overplanning, perfectionism, fear of starting, unclear next steps, and emotional resistance. You will learn how to translate large goals into micro-actions so small your mind cannot reject them. We also introduce momentum psychology and how completing tiny wins generates a self-reinforcing loop of confidence. Then we study action friction: why starting is harder than continuing, and how to design “low-resistance entry points” that make beginning almost automatic. We explore flow triggers—environment, rhythm, novelty, emotional safety—and how to enter flow intentionally rather than waiting for inspiration. Finally, we focus on recovery: execution is sustainable only when you alternate effort and rest. By mastering flow and momentum, you stop forcing productivity and start gliding through your work with more ease, presence, and emotional stability.",
+    "vi": "Thực thi không phải là ép mình—mà là đi theo dòng chảy. Khi hệ thống đã rõ ràng, thử thách tiếp theo là học cách di chuyển qua công việc một cách ổn định thay vì gây áp lực. Phòng này dạy bạn biến hành động thành một nhịp điệu mượt, nhẹ và lặp lại được. Ta bắt đầu bằng việc hiểu điều gì phá hỏng thực thi: lập kế hoạch quá mức, cầu toàn, sợ bắt đầu, bước tiếp theo mơ hồ và kháng cự cảm xúc. Bạn sẽ học cách chuyển mục tiêu lớn thành các bước siêu nhỏ đến mức tâm trí không thể từ chối. Ta giới thiệu tâm lý đà tiến—cách những thắng lợi nhỏ tạo vòng lặp tự củng cố niềm tin. Tiếp đó, ta nghiên cứu ma sát hành động: vì sao bắt đầu khó hơn tiếp tục, và cách thiết kế “điểm vào ít kháng cự” để việc khởi động gần như tự động. Ta khám phá những yếu tố kích hoạt flow—môi trường, nhịp điệu, mới mẻ, an toàn cảm xúc—và cách vào flow chủ động thay vì chờ cảm hứng. Cuối cùng, ta tập trung vào phục hồi: thực thi chỉ bền khi bạn luân phiên nỗ lực và nghỉ. Khi làm chủ dòng chảy và đà tiến, bạn không còn phải gồng để năng suất; bạn trượt đi trong công việc với sự dễ dàng, hiện diện và ổn định cảm xúc."
+  },
+  "entries": [
+    {
+      "slug": "micro-action-design",
+      "keywords_en": ["micro actions", "starting", "barriers"],
+      "keywords_vi": ["việc siêu nhỏ", "bắt đầu", "giảm rào cản"],
+      "copy": {
+        "en": "Break tasks into pieces so tiny they require no negotiation. A task like “write report” is overwhelming; “write one sentence” is doable. Micro-actions bypass resistance and generate forward motion. Once you start, momentum takes over. The goal: make the first step friction-free.",
+        "vi": "Hãy chia nhiệm vụ thành những phần nhỏ đến mức không cần thương lượng. “Viết báo cáo” gây nản, nhưng “viết một câu” thì làm được. Việc siêu nhỏ vượt qua kháng cự và tạo đà tiến. Khi đã bắt đầu, động lực tự xuất hiện. Mục tiêu: biến bước đầu tiên thành bước không ma sát."
+      },
+      "tags": ["starting", "ease", "progress"],
+      "audio": "vip2_productivity_51.mp3"
+    },
+    {
+      "slug": "the-two-minute-gateway",
+      "keywords_en": ["two-minute rule", "gateway", "friction"],
+      "keywords_vi": ["quy tắc hai phút", "cửa vào", "giảm ma sát"],
+      "copy": {
+        "en": "If a task takes two minutes or less, do it immediately. If it is larger, do just two minutes of it. This rule dismantles procrastination by removing the fear of commitment. Two minutes is small enough that your mind agrees—and often, two minutes turns into twenty.",
+        "vi": "Nếu việc mất dưới hai phút, hãy làm ngay. Nếu lớn hơn, hãy làm chỉ hai phút. Quy tắc này phá tan trì hoãn bằng cách loại bỏ nỗi sợ phải cam kết. Hai phút đủ nhỏ để tâm trí chấp nhận—và thường hai phút biến thành hai mươi."
+      },
+      "tags": ["friction", "starting", "momentum"],
+      "audio": "vip2_productivity_52.mp3"
+    },
+    {
+      "slug": "momentum-psychology",
+      "keywords_en": ["momentum", "psychology", "motivation"],
+      "keywords_vi": ["đà tiến", "tâm lý", "động lực"],
+      "copy": {
+        "en": "Momentum comes from completion, not intention. Each finished micro-action builds emotional fuel. Track small wins, not just major tasks. When your brain sees progress, it releases energy to continue. Momentum is emotional—feed it with tiny victories.",
+        "vi": "Đà tiến đến từ sự hoàn thành, không phải ý định. Mỗi việc siêu nhỏ hoàn tất tạo nhiên liệu cảm xúc. Hãy ghi nhận thắng nhỏ, không chỉ việc lớn. Khi não thấy tiến bộ, nó tạo thêm năng lượng để tiếp tục. Đà tiến là cảm xúc—hãy nuôi nó bằng những chiến thắng nhỏ."
+      },
+      "tags": ["progress", "motivation", "identity"],
+      "audio": "vip2_productivity_53.mp3"
+    },
+    {
+      "slug": "low-resistance-entry-points",
+      "keywords_en": ["entry point", "ease", "design"],
+      "keywords_vi": ["điểm vào", "dễ dàng", "thiết kế"],
+      "copy": {
+        "en": "Start every work session with the easiest possible step. This lowers activation energy and reduces avoidance. Examples: open the document, read the last paragraph, write a headline, gather materials. Low-resistance entry points transform heavy tasks into approachable ones.",
+        "vi": "Hãy bắt đầu mỗi phiên làm việc bằng bước dễ nhất. Điều này giảm năng lượng kích hoạt và giảm né tránh. Ví dụ: mở tài liệu, đọc đoạn cuối, viết tiêu đề, chuẩn bị dụng cụ. Điểm vào ít kháng cự biến việc nặng thành việc chạm đến được."
+      },
+      "tags": ["ease", "activation", "flow"],
+      "audio": "vip2_productivity_54.mp3"
+    },
+    {
+      "slug": "flow-triggers",
+      "keywords_en": ["flow", "triggers", "focus"],
+      "keywords_vi": ["flow", "kích hoạt", "tập trung"],
+      "copy": {
+        "en": "You can design your way into flow. Use triggers such as a clean desk, headphones, a consistent start ritual, or a familiar soundtrack. Novelty, challenge, and emotional safety also help. When conditions repeat, your brain enters focus faster each time.",
+        "vi": "Bạn có thể thiết kế để bước vào flow. Hãy dùng các kích hoạt như bàn sạch, tai nghe, nghi thức bắt đầu quen thuộc hoặc một bản nhạc cố định. Sự mới mẻ, mức thử thách và an toàn cảm xúc cũng giúp. Khi điều kiện lặp lại, não chuyển sang tập trung nhanh hơn."
+      },
+      "tags": ["focus", "design", "consistency"],
+      "audio": "vip2_productivity_55.mp3"
+    },
+    {
+      "slug": "remove-switching-cost",
+      "keywords_en": ["context switching", "focus", "cost"],
+      "keywords_vi": ["đổi việc", "tập trung", "chi phí"],
+      "copy": {
+        "en": "Switching tasks breaks momentum. Each switch forces your brain to reload context, wasting energy. Batch similar tasks together—emails, admin, creative work. Protect deep-work windows from interruptions. Reduce switching and your execution becomes smoother and more powerful.",
+        "vi": "Đổi việc phá đà tiến. Mỗi lần đổi, não phải tải lại bối cảnh, tốn năng lượng. Hãy gom các việc giống nhau—email, hành chính, sáng tạo. Bảo vệ khung giờ làm việc sâu khỏi gián đoạn. Giảm đổi việc, việc thực thi của bạn sẽ mượt và mạnh hơn."
+      },
+      "tags": ["focus", "batching", "efficiency"],
+      "audio": "vip2_productivity_56.mp3"
+    },
+    {
+      "slug": "effort-rest-cycles",
+      "keywords_en": ["rest cycles", "recovery", "rhythm"],
+      "keywords_vi": ["chu kỳ nghỉ", "phục hồi", "nhịp điệu"],
+      "copy": {
+        "en": "Execution needs rhythm: effort then rest. After 40–90 minutes of work, take a short recovery break—movement, water, silence. Without recovery cycles, your output becomes shallow and your mind fatigues. Rest is part of execution, not a break from it.",
+        "vi": "Thực thi cần nhịp: nỗ lực rồi nghỉ. Sau 40–90 phút làm việc, hãy nghỉ ngắn—đi lại nhẹ, uống nước, yên tĩnh. Không có chu kỳ nghỉ, hiệu suất trở nên nông và tâm trí mệt. Nghỉ là một phần của thực thi, không phải tách rời nó."
+      },
+      "tags": ["rest", "sustainability", "energy"],
+      "audio": "vip2_productivity_57.mp3"
+    },
+    {
+      "slug": "closing-loops",
+      "keywords_en": ["closing loops", "clarity", "completion"],
+      "keywords_vi": ["đóng vòng", "rõ ràng", "hoàn tất"],
+      "copy": {
+        "en": "End your day by closing loops: finish tiny tasks, record unfinished steps, clear your workspace, and set a simple plan for tomorrow. Closing loops reduces mental residue and preserves momentum for the next day. You start with clarity instead of chaos.",
+        "vi": "Kết ngày bằng việc đóng các vòng dang dở: hoàn tất việc nhỏ, ghi bước còn lại, dọn không gian làm việc và đặt kế hoạch đơn giản cho ngày mai. Đóng vòng giảm cặn tâm trí và giữ đà tiến cho ngày sau. Bạn bắt đầu với sự rõ ràng, không phải hỗn loạn."
+      },
+      "tags": ["completion", "clarity", "momentum"],
+      "audio": "vip2_productivity_58.mp3"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "id": "deep_work_and_focus_vip2",
+  "tier": "vip2",
+  "title": {
+    "en": "Deep Work & Focus Architecture — Room 3",
+    "vi": "Làm Việc Sâu & Kiến Trúc Tập Trung — Phòng 3"
+  },
+  "content": {
+    "en": "Deep work is not about working harder—it is about working with full presence, without fragmentation. In a world filled with noise, notifications, and constant context-switching, the ability to focus deeply has become a competitive advantage for both productivity and peace. This room teaches you how to create an environment, rhythm, and mindset that support focused work without burning out. We begin with the difference between deep work and shallow work, and why both have a place in your day. You will learn how to map your natural energy peaks so you schedule high-value work when your mind is strongest. We introduce time-blocking techniques, anti-friction design, and how to create a “focus perimeter” that removes distractions before they hijack your attention. You will also learn how to enter flow more easily through ritual, gentle repetition, and reducing mental residue. Finally, we explore recovery cycles—how to rest intelligently so your brain stays sharp rather than exhausted. Deep work is not intensity; it is stability. When you stop fighting distractions and start designing for focus, your work becomes smoother, calmer, and far more meaningful.",
+    "vi": "Làm việc sâu không phải là làm việc cực lực—mà là làm việc với sự hiện diện trọn vẹn, không bị phân mảnh. Trong thế giới đầy tiếng ồn, thông báo và đổi việc liên tục, khả năng tập trung sâu đã trở thành lợi thế cho cả năng suất lẫn sự bình an. Phòng này dạy bạn xây dựng môi trường, nhịp điệu và tư duy hỗ trợ làm việc sâu mà không kiệt sức. Ta bắt đầu với sự khác biệt giữa làm việc sâu và làm việc nông, và vì sao cả hai đều có chỗ trong một ngày. Bạn sẽ học cách nhận diện đỉnh năng lượng tự nhiên để xếp việc quan trọng vào lúc đầu óc sắc nhất. Ta giới thiệu kỹ thuật chặn khung giờ, thiết kế chống ma sát và cách tạo “vành đai tập trung” để loại bỏ xao nhãng trước khi chúng chiếm mất sự chú ý. Bạn cũng học cách vào trạng thái flow dễ hơn nhờ nghi thức, lặp lại nhẹ nhàng và giảm cặn tâm trí. Cuối cùng, ta xem cách phục hồi—làm sao nghỉ thông minh để não sắc thay vì mệt. Làm việc sâu không phải cường độ; mà là sự vững vàng. Khi bạn ngừng chống lại xao nhãng và bắt đầu thiết kế cho tập trung, công việc trở nên mượt mà, bình tĩnh và nhiều ý nghĩa hơn."
+  },
+  "entries": [
+    {
+      "slug": "deep-vs-shallow-work",
+      "keywords_en": ["deep work", "shallow work", "clarity"],
+      "keywords_vi": ["làm việc sâu", "làm việc nông", "rõ ràng"],
+      "copy": {
+        "en": "Deep work requires full attention and creates long-term value. Shallow work requires low attention and maintains daily operations. Both matter. Problems arise when shallow work consumes your whole day. Identify your deep work tasks—thinking, writing, creating, solving—and protect uninterrupted time for them. Clarity begins by knowing which work deserves your best mind.",
+        "vi": "Làm việc sâu cần trọn sự chú ý và tạo giá trị dài hạn. Làm việc nông cần ít chú ý và duy trì vận hành hàng ngày. Cả hai đều quan trọng. Rắc rối xuất hiện khi làm việc nông chiếm hết ngày của bạn. Hãy xác định việc sâu—nghĩ, viết, tạo ra, giải quyết—và bảo vệ thời gian không bị ngắt cho chúng. Rõ ràng bắt đầu từ việc biết điều gì xứng đáng có bộ não tốt nhất của bạn."
+      },
+      "tags": ["clarity", "focus", "prioritization"],
+      "audio": "vip2_productivity_31.mp3"
+    },
+    {
+      "slug": "energy-mapping",
+      "keywords_en": ["energy mapping", "peaks", "productivity"],
+      "keywords_vi": ["bản đồ năng lượng", "đỉnh", "năng suất"],
+      "copy": {
+        "en": "Your brain has natural peaks and dips. Track your energy for a few days to notice when you feel sharp, neutral, or drained. Schedule deep work during your strongest 60–90 minutes of the day. On low-energy hours, perform lightweight tasks. When your schedule respects your biology, your productivity rises without extra force.",
+        "vi": "Não bạn có những thời điểm tự nhiên lên và xuống. Hãy theo dõi năng lượng vài ngày để nhận ra khi nào bạn tỉnh, bình thường hoặc xuống sức. Hãy xếp việc sâu vào 60–90 phút mạnh nhất trong ngày. Lúc năng lượng thấp, làm việc nhẹ. Khi lịch trình tôn trọng sinh học của bạn, năng suất tăng mà không cần ép bản thân."
+      },
+      "tags": ["energy", "planning", "flow"],
+      "audio": "vip2_productivity_32.mp3"
+    },
+    {
+      "slug": "time-blocking",
+      "keywords_en": ["time blocking", "structure", "focus"],
+      "keywords_vi": ["chặn khung giờ", "cấu trúc", "tập trung"],
+      "copy": {
+        "en": "Time-blocking creates protected islands of focus. Choose a task, choose a duration, and close the perimeter: notifications off, materials ready, no switching. Treat the block as a container. Even a 25-minute block can produce deep progress when fully protected. Time-blocking is less about discipline and more about removing opportunities for distraction.",
+        "vi": "Chặn khung giờ tạo những “hòn đảo” tập trung được bảo vệ. Chọn việc, chọn thời lượng và đóng vành đai: tắt thông báo, chuẩn bị tài liệu, không đổi việc. Hãy xem khung giờ như một cái hộp. Chỉ 25 phút được bảo vệ tốt cũng tạo tiến bộ sâu. Chặn giờ không phải là kỷ luật; nó là loại bỏ cơ hội bị xao nhãng."
+      },
+      "tags": ["structure", "discipline", "design"],
+      "audio": "vip2_productivity_33.mp3"
+    },
+    {
+      "slug": "anti-friction-environment",
+      "keywords_en": ["environment", "design", "ease"],
+      "keywords_vi": ["môi trường", "thiết kế", "dễ dàng"],
+      "copy": {
+        "en": "Deep work requires an environment that supports focus. Reduce friction: keep your workspace clear, prepare tools in advance, and decide your first step before the session starts. Remove visual clutter, silence noise, and close irrelevant tabs. When the environment is clean, your mind enters focus more willingly.",
+        "vi": "Làm việc sâu cần môi trường hỗ trợ tập trung. Hãy giảm ma sát: giữ bàn gọn, chuẩn bị công cụ từ trước và quyết định bước đầu tiên trước khi bắt đầu. Hãy bỏ bớt những thứ gây nhiễu, giảm tiếng ồn và đóng tab không liên quan. Khi môi trường sạch, tâm trí dễ đi vào trạng thái tập trung hơn."
+      },
+      "tags": ["ease", "clarity", "environment"],
+      "audio": "vip2_productivity_34.mp3"
+    },
+    {
+      "slug": "focus-perimeter",
+      "keywords_en": ["perimeter", "distraction", "protection"],
+      "keywords_vi": ["vành đai", "xao nhãng", "bảo vệ"],
+      "copy": {
+        "en": "A focus perimeter is a boundary you create before starting deep work: phone away, notifications off, desk clear, only one tool open. The goal is to eliminate distractions before they appear. If your perimeter is strong, your focus becomes automatic. If your perimeter is weak, your mind gets hijacked easily.",
+        "vi": "Vành đai tập trung là ranh giới bạn dựng trước khi làm việc sâu: cất điện thoại, tắt thông báo, dọn bàn, chỉ mở một công cụ. Mục tiêu là loại bỏ xao nhãng trước khi chúng xuất hiện. Vành đai mạnh → tập trung tự nhiên. Vành đai yếu → tâm trí dễ bị kéo đi."
+      },
+      "tags": ["protection", "focus", "discipline"],
+      "audio": "vip2_productivity_35.mp3"
+    },
+    {
+      "slug": "rituals-for-focus",
+      "keywords_en": ["ritual", "focus", "flow"],
+      "keywords_vi": ["nghi thức", "tập trung", "dòng chảy"],
+      "copy": {
+        "en": "A short ritual—lighting a candle, putting on headphones, repeating a simple phrase—signals your brain to enter work mode. Rituals reduce resistance by creating familiarity. Your brain loves patterns. When you start sessions the same way each time, your mind transitions into focus with less effort and fewer excuses.",
+        "vi": "Một nghi thức ngắn—thắp nến, đeo tai nghe, lặp một câu đơn giản—báo hiệu cho não vào chế độ làm việc. Nghi thức giảm kháng cự bằng cách tạo sự quen thuộc. Não thích mô thức. Khi bạn bắt đầu mỗi phiên giống nhau, tâm trí dễ chuyển sang chế độ tập trung hơn với ít nỗ lực và ít viện cớ hơn."
+      },
+      "tags": ["ritual", "habit", "flow"],
+      "audio": "vip2_productivity_36.mp3"
+    },
+    {
+      "slug": "mental-residue",
+      "keywords_en": ["mental residue", "context switching", "clarity"],
+      "keywords_vi": ["cặn tâm trí", "đổi việc", "rõ ràng"],
+      "copy": {
+        "en": "Every unfinished task leaves residue in your mind. Switching tasks too often scatters your attention and weakens your ability to enter deep work. Reduce residue by closing one small loop before starting another—writing a summary, making a decision, or parking a next step. A clean mental slate invites focused thinking.",
+        "vi": "Mỗi việc dang dở để lại cặn tâm trí. Đổi việc quá nhiều khiến sự chú ý phân tán và giảm khả năng vào trạng thái sâu. Hãy giảm cặn bằng cách đóng một vòng nhỏ trước khi mở vòng khác—viết tóm tắt, quyết một điểm hoặc ghi bước tiếp theo. Tâm trí sạch giúp bạn tập trung sâu dễ hơn."
+      },
+      "tags": ["clarity", "attention", "organization"],
+      "audio": "vip2_productivity_37.mp3"
+    },
+    {
+      "slug": "recovery-cycles",
+      "keywords_en": ["recovery", "rest", "cycles"],
+      "keywords_vi": ["phục hồi", "nghỉ ngơi", "chu kỳ"],
+      "copy": {
+        "en": "Deep work requires deep rest. After 60–90 minutes of intense focus, your brain needs a reset—movement, hydration, or stepping away from screens. Without recovery cycles, your focus collapses and your output becomes shallow. Rest is not a reward; it is part of the architecture. Protect it.",
+        "vi": "Làm việc sâu cần nghỉ sâu. Sau 60–90 phút tập trung mạnh, não cần được reset—vận động nhẹ, uống nước, hoặc tránh màn hình. Không có chu kỳ nghỉ, sự tập trung sụp đổ và hiệu quả trở nên nông. Nghỉ không phải phần thưởng; nó là một phần của kiến trúc. Hãy bảo vệ nó."
+      },
+      "tags": ["rest", "recovery", "sustainability"],
+      "audio": "vip2_productivity_38.mp3"
+    }
+  ]
+}

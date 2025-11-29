@@ -1,0 +1,26 @@
+{
+  "id": "productivity_systems_all_entries_vip2",
+  "tier": "vip2",
+  "domain": "Productivity",
+  "title": {
+    "en": "Productivity & Systems — All Entries",
+    "vi": "Năng Suất & Hệ Thống — Tổng Hợp Tất Cả Mục"
+  },
+  "content": {
+    "en": "This master entry gathers all core lessons from the four VIP2 rooms—Foundations of Productivity, Personal Operating System, Deep Work & Focus Architecture, and Systems for Life Stability—into one unified reference. Use it as a quick refresher or a complete overview of the Productivity flagship. It contains all 34 entries in a single sequence so you can revisit the entire system easily, from mindset to daily structure to long-term rhythms.",
+    "vi": "Mục tổng hợp này gom tất cả bài học cốt lõi từ bốn phòng VIP2—Nền Tảng Năng Suất, Hệ Điều Hành Cá Nhân, Làm Việc Sâu & Kiến Trúc Tập Trung, và Hệ Thống Ổn Định Cuộc Sống—thành một tài liệu duy nhất. Dùng nó để ôn nhanh hoặc xem toàn cảnh về trụ cột Năng Suất. Tất cả 34 mục được gộp theo trình tự để bạn xem lại dễ dàng, từ tư duy đến cấu trúc ngày sống đến nhịp điệu dài hạn."
+  },
+  "entries": [
+    {
+      "slug": "all-productivity-entries",
+      "keywords_en": ["productivity", "systems", "all entries"],
+      "keywords_vi": ["năng suất", "hệ thống", "tổng hợp"],
+      "copy": {
+        "en": "This master entry includes all content across the VIP2 Productivity & Systems area:\n\n— **Foundations of Productivity**: Redefining Productivity, Minimum Viable Day, Energy Over Willpower, Removing Friction, Gentle Routines, Top Three Focus, Small Wins Mindset, Weekly Reset & Reflection.\n\n— **Personal Operating System**: Capture Everything, Sorting vs Planning, One Home Principle, Three-Level Clarity, Weekly Review, Alignment with Values, Clean Input Channels, Life Inboxes.\n\n— **Deep Work & Focus Architecture**: Deep vs Shallow Work, Energy Mapping, Time-Blocking, Anti-Friction Environment, Focus Perimeter, Rituals for Focus, Mental Residue, Recovery Cycles.\n\n— **Systems for Life Stability**: Keystone Habits, Daily Rhythm, Weekly Rhythm, Monthly Rhythm, Seasonal Rhythm, Maintenance Cycles, Crisis-Mode System, Dashboard & Automation, Reflection Loops.\n\nReview them together to strengthen your system: stabilize your energy, clarify your work, design for focus, and maintain long-term life rhythm.",
+        "vi": "Mục tổng hợp này bao gồm toàn bộ nội dung trong khu vực Năng Suất & Hệ Thống của VIP2:\n\n— **Nền Tảng Năng Suất**: Định Nghĩa Lại Năng Suất, Ngày Tối Thiểu, Năng Lượng Trước Ý Chí, Giảm Ma Sát, Thói Quen Nhẹ Nhàng, Top 3, Tư Duy Thắng Nhỏ, Reset & Phản Tư.\n\n— **Hệ Điều Hành Cá Nhân**: Thu Nhận Mọi Thứ, Phân Loại vs Lập Kế Hoạch, Nguyên Tắc One Home, Rõ Ràng Ba Tầng, Xem Lại Tuần, Định Hướng Giá Trị, Giảm Nguồn Vào, Inbox Cuộc Sống.\n\n— **Làm Việc Sâu & Kiến Trúc Tập Trung**: Làm Việc Sâu vs Nông, Bản Đồ Năng Lượng, Chặn Khung Giờ, Môi Trường Chống Ma Sát, Vành Đai Tập Trung, Nghi Thức Tập Trung, Cặn Tâm Trí, Chu Kỳ Phục Hồi.\n\n— **Hệ Thống Ổn Định Cuộc Sống**: Thói Quen Chủ Chốt, Nhịp Ngày, Nhịp Tuần, Nhịp Tháng, Nhịp Theo Mùa, Chu Kỳ Bảo Trì, Chế Độ Khẩn, Dashboard & Tự Động Hóa, Vòng Phản Tư.\n\nHãy xem lại tất cả để củng cố hệ thống: ổn định năng lượng, rõ ràng công việc, thiết kế cho tập trung và duy trì nhịp sống dài hạn."
+      },
+      "tags": ["master", "overview", "systems"],
+      "audio": "vip2_productivity_all.mp3"
+    }
+  ]
+}

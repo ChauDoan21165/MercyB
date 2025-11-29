@@ -1,0 +1,103 @@
+{
+  "id": "cognitive_clarity_and_mental_load_vip2",
+  "tier": "vip2",
+  "domain": "Productivity",
+  "title": {
+    "en": "Cognitive Clarity & Mental Load Management — Room 7",
+    "vi": "Rõ Ràng Tư Duy & Quản Lý Gánh Nặng Tâm Trí — Phòng 7"
+  },
+  "content": {
+    "en": "Mental load is the invisible weight you carry: unfinished tasks, subtle worries, distant responsibilities, reminders you haven’t written down, and decisions waiting for you. Even when you sit still, this load drains energy and reduces your ability to think clearly. This room teaches you how to reduce mental noise, protect cognitive bandwidth, and create clarity on demand. We begin by identifying the components of mental load: memory pressure, emotional residue, unclear priorities, and environmental overstimulation. You will learn how to empty your mind into external containers so your brain can return to its real job—thinking, not storing. We introduce the Mental Inbox Sweep and the Evening Brain Dump, two simple practices that prevent cognitive clutter from piling up. We also study context compression: simplifying categories, reducing decision paths, and grouping similar responsibilities. Then we explore mental hygiene—daily habits like monotasking, slow transitions, and digital boundaries that preserve cognitive freshness. You will learn to manage emotional load too, because stress and unresolved feelings occupy the same mental space as tasks. Finally, we show you how to create cognitive clarity rituals: small actions that reset your mind instantly. When mental load decreases, clarity increases. Your decisions become sharper, your focus deeper, and your life noticeably lighter.",
+    "vi": "Gánh nặng tâm trí là khối lượng vô hình bạn mang theo: việc chưa xong, lo nhẹ, trách nhiệm xa, những lời nhắc chưa ghi, và các quyết định đang chờ. Dù ngồi yên, gánh nặng này vẫn tiêu hao năng lượng và giảm khả năng nghĩ rõ. Phòng này dạy bạn giảm nhiễu tinh thần, bảo vệ băng thông nhận thức và tạo sự rõ ràng theo ý muốn. Ta bắt đầu bằng việc nhận diện các thành phần của gánh nặng tâm trí: áp lực ghi nhớ, cặn cảm xúc, ưu tiên mơ hồ và kích thích môi trường quá mức. Bạn sẽ học cách đưa mọi thứ ra khỏi đầu để não quay về đúng chức năng—nghĩ, không phải lưu trữ. Ta giới thiệu “Quét Inbox Tâm Trí” và “Ghi Xả Buổi Tối”, hai thói quen ngăn rác nhận thức tích tụ. Ta cũng học về nén bối cảnh: đơn giản hóa nhóm việc, giảm con đường ra quyết định và gom trách nhiệm giống nhau. Tiếp theo là vệ sinh tinh thần—những nếp như làm một việc một lúc, chuyển đổi chậm, ranh giới số—giữ đầu óc tươi mới. Bạn cũng sẽ học quản lý tải cảm xúc, vì căng thẳng và cảm xúc tồn đọng chiếm cùng không gian mental với việc. Cuối cùng, ta tạo nghi thức sáng rõ: những hành động nhỏ giúp reset tâm trí ngay lập tức. Khi gánh nặng tâm trí giảm, sự rõ ràng tăng. Bạn quyết định sắc hơn, tập trung sâu hơn, và cuộc sống nhẹ hơn thấy rõ."
+  },
+  "entries": [
+    {
+      "slug": "mental-load-components",
+      "keywords_en": ["mental load", "components", "awareness"],
+      "keywords_vi": ["gánh nặng tâm trí", "thành phần", "nhận diện"],
+      "copy": {
+        "en": "Mental load comes from memory pressure, emotional residue, unclear tasks, and too many open loops. Naming these components helps you separate what belongs to you, what needs action, and what simply needs clarity. Awareness reduces overwhelm.",
+        "vi": "Gánh nặng tâm trí đến từ áp lực ghi nhớ, cặn cảm xúc, việc mơ hồ và quá nhiều vòng dang dở. Việc gọi tên từng phần giúp bạn tách bạch điều thuộc về mình, điều cần làm và điều chỉ cần làm rõ. Nhận diện giúp giảm quá tải."
+      },
+      "tags": ["clarity", "awareness", "cognition"],
+      "audio": "vip2_productivity_71.mp3"
+    },
+    {
+      "slug": "mental-inbox-sweep",
+      "keywords_en": ["inbox sweep", "clear mind", "declutter"],
+      "keywords_vi": ["quét inbox tâm trí", "làm trống đầu", "dọn rác"],
+      "copy": {
+        "en": "Spend five minutes sweeping your mind into an external list—tasks, worries, ideas, questions. This frees working memory and reduces cognitive friction. Do not organize during the sweep; just empty. A clear mind thinks better than a full one.",
+        "vi": "Dành năm phút quét mọi thứ ra khỏi đầu vào một danh sách ngoài—việc, lo, ý tưởng, câu hỏi. Điều này giải phóng bộ nhớ làm việc và giảm ma sát nhận thức. Đừng tổ chức khi đang quét; chỉ cần xả. Tâm trí trống nghĩ tốt hơn tâm trí đầy."
+      },
+      "tags": ["declutter", "mind", "reset"],
+      "audio": "vip2_productivity_72.mp3"
+    },
+    {
+      "slug": "evening-brain-dump",
+      "keywords_en": ["brain dump", "evening", "closure"],
+      "keywords_vi": ["xả não buổi tối", "buổi tối", "kết ngày"],
+      "copy": {
+        "en": "Before bed, write down everything still open: next steps, worries, upcoming tasks. This clears mental residue and improves sleep quality. Your brain rests better when it knows nothing important will be forgotten.",
+        "vi": "Trước khi ngủ, hãy ghi mọi thứ còn dang dở: bước tiếp theo, nỗi lo, việc cần làm. Điều này giảm cặn tâm trí và cải thiện giấc ngủ. Não bạn nghỉ tốt hơn khi biết không có điều quan trọng nào bị quên."
+      },
+      "tags": ["sleep", "clarity", "closure"],
+      "audio": "vip2_productivity_73.mp3"
+    },
+    {
+      "slug": "context-compression",
+      "keywords_en": ["context compression", "simplicity", "organization"],
+      "keywords_vi": ["nén bối cảnh", "đơn giản", "tổ chức"],
+      "copy": {
+        "en": "Reduce mental load by compressing categories—fewer lists, fewer contexts, fewer decision paths. Group similar responsibilities so your brain switches less. Simplicity strengthens cognition.",
+        "vi": "Hãy giảm tải bằng cách nén bối cảnh—ít danh sách hơn, ít ngữ cảnh hơn, ít hướng ra quyết định hơn. Hãy gom các trách nhiệm giống nhau để não đỡ phải đổi việc. Đơn giản giúp nhận thức mạnh hơn."
+      },
+      "tags": ["simplicity", "focus", "organization"],
+      "audio": "vip2_productivity_74.mp3"
+    },
+    {
+      "slug": "mental-hygiene",
+      "keywords_en": ["mental hygiene", "monotasking", "boundaries"],
+      "keywords_vi": ["vệ sinh tinh thần", "làm một việc", "ranh giới"],
+      "copy": {
+        "en": "Mental hygiene is the practice of protecting your cognitive space. Monotask when possible, transition slowly between tasks, limit constant stimulation, and keep digital boundaries. Clean cognitive habits keep your mind sharp and steady.",
+        "vi": "Vệ sinh tinh thần là bảo vệ không gian nhận thức. Hãy làm một việc một lúc, chuyển đổi chậm, hạn chế kích thích liên tục và giữ ranh giới số. Thói quen nhận thức sạch giữ đầu óc sắc và ổn định."
+      },
+      "tags": ["habits", "clarity", "stability"],
+      "audio": "vip2_productivity_75.mp3"
+    },
+    {
+      "slug": "emotional-load-processing",
+      "keywords_en": ["emotional load", "processing", "stress"],
+      "keywords_vi": ["tải cảm xúc", "xử lý", "căng thẳng"],
+      "copy": {
+        "en": "Unprocessed emotions occupy the same mental space as tasks. Naming feelings, writing them down, or taking a calming pause reduces internal noise. When emotional load decreases, cognitive clarity rises instantly.",
+        "vi": "Cảm xúc chưa xử lý chiếm cùng không gian mental với việc. Hãy gọi tên cảm xúc, viết ra hoặc dừng lại để bình tĩnh. Khi tải cảm xúc giảm, sự rõ ràng nhận thức tăng tức thì."
+      },
+      "tags": ["emotions", "clarity", "calm"],
+      "audio": "vip2_productivity_76.mp3"
+    },
+    {
+      "slug": "environmental-signal-control",
+      "keywords_en": ["environment", "signals", "overstimulation"],
+      "keywords_vi": ["môi trường", "tín hiệu", "quá kích thích"],
+      "copy": {
+        "en": "Your environment sends signals your brain must constantly interpret. Too many objects, lights, notifications, and sounds create cognitive fatigue. Reduce visual clutter and silence unnecessary signals. A calm environment supports a calm mind.",
+        "vi": "Môi trường gửi rất nhiều tín hiệu não phải xử lý liên tục. Quá nhiều đồ vật, ánh sáng, thông báo và âm thanh gây mệt nhận thức. Hãy giảm bớt thứ nhìn thấy và tắt tín hiệu không cần thiết. Môi trường yên giúp tâm trí yên."
+      },
+      "tags": ["environment", "calm", "focus"],
+      "audio": "vip2_productivity_77.mp3"
+    },
+    {
+      "slug": "cognitive-clarity-rituals",
+      "keywords_en": ["clarity rituals", "reset", "focus"],
+      "keywords_vi": ["nghi thức rõ ràng", "reset", "tập trung"],
+      "copy": {
+        "en": "Use short clarity rituals to reset your mind: clean your desk, breathe deeply, rename your intention, or reread your top priority. These small actions cut through mental noise and bring immediate focus. Rituals make clarity repeatable.",
+        "vi": "Hãy dùng các nghi thức sáng rõ để reset tâm trí: dọn bàn, thở sâu, gọi tên lại ý định hoặc đọc lại ưu tiên số một. Những việc nhỏ này cắt nhiễu tinh thần và mang lại sự tập trung ngay lập tức. Nghi thức biến sự rõ ràng thành điều lặp lại được."
+      },
+      "tags": ["ritual", "focus", "reset"],
+      "audio": "vip2_productivity_78.mp3"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "id": "life_systems_and_stability_vip2",
+  "tier": "vip2",
+  "title": {
+    "en": "Systems for Life Stability — Room 4",
+    "vi": "Hệ Thống Ổn Định Cuộc Sống — Phòng 4"
+  },
+  "content": {
+    "en": "A productive life is not built on motivation—it is built on systems. When your days, weeks, and months follow simple, reliable rhythms, you gain a sense of stability and control that motivation alone can never provide. This room teaches you how to create life systems that are lightweight, repeatable, and designed to support you even when life becomes messy. We begin with keystone habits—the small behaviors that stabilize your entire life, such as sleep, movement, planning, and digital boundaries. You will learn how to use four natural rhythms—Daily, Weekly, Monthly, and Seasonal—to structure your life without rigidity. We introduce maintenance cycles so you can prevent chaos before it appears, from cleaning your digital space to resetting your physical environment. You will also learn how to build a crisis-mode system: a simplified version of your routines for weeks when you feel overwhelmed. Finally, we explore dashboards, automation, and reflection loops to help your system evolve with you. A stable life does not require perfection; it requires rhythm. With the right systems, your life becomes calmer, clearer, and far easier to navigate.",
+    "vi": "Một cuộc sống năng suất không được xây bằng động lực—mà được xây bằng hệ thống. Khi ngày, tuần, tháng của bạn đi theo những nhịp điệu đơn giản và đáng tin, bạn có cảm giác ổn định và làm chủ mà động lực không bao giờ mang lại được. Phòng này dạy bạn tạo các hệ thống sống nhẹ, lặp lại được và có khả năng đỡ bạn ngay cả khi cuộc đời rối. Ta bắt đầu với thói quen chủ chốt—những hành vi nhỏ giữ ổn định cho toàn bộ cuộc sống, như ngủ, vận động, lập kế hoạch và ranh giới số. Bạn sẽ học cách dùng bốn nhịp tự nhiên—Hằng Ngày, Hằng Tuần, Hằng Tháng và Theo Mùa—để tạo cấu trúc mà không cứng nhắc. Ta giới thiệu chu kỳ bảo trì giúp bạn ngăn hỗn loạn trước khi nó xuất hiện, từ dọn không gian số đến đặt lại không gian vật lý. Bạn cũng học cách tạo hệ thống chế độ khẩn—phiên bản thu gọn của thói quen dành cho những tuần bạn bị quá tải. Cuối cùng, ta xem dashboard, tự động hóa và vòng phản tư để hệ thống phát triển cùng bạn. Một cuộc sống ổn định không đòi hỏi hoàn hảo; nó đòi hỏi nhịp điệu. Với hệ thống phù hợp, cuộc sống trở nên nhẹ nhàng, rõ ràng và dễ điều hướng hơn nhiều."
+  },
+  "entries": [
+    {
+      "slug": "keystone-habits",
+      "keywords_en": ["keystone habits", "foundation", "stability"],
+      "keywords_vi": ["thói quen chủ chốt", "nền tảng", "ổn định"],
+      "copy": {
+        "en": "Keystone habits are small actions that influence multiple areas of your life. Sleep strengthens focus. Movement stabilizes mood. A five-minute planning ritual saves hours of confusion. Identify two or three keystone habits and protect them first. These habits do more for your stability than any complicated productivity hack.",
+        "vi": "Thói quen chủ chốt là những hành động nhỏ ảnh hưởng đến nhiều phần của cuộc sống. Ngủ giúp tập trung. Vận động giúp ổn định cảm xúc. Năm phút lập kế hoạch giúp tiết kiệm hàng giờ hỗn loạn. Hãy xác định hai đến ba thói quen chủ chốt và bảo vệ chúng trước. Những thói quen này giữ ổn định tốt hơn mọi mẹo năng suất phức tạp."
+      },
+      "tags": ["foundation", "habits", "stability"],
+      "audio": "vip2_productivity_41.mp3"
+    },
+    {
+      "slug": "daily-rhythm",
+      "keywords_en": ["daily", "rhythm", "routine"],
+      "keywords_vi": ["hằng ngày", "nhịp điệu", "thói quen"],
+      "copy": {
+        "en": "Daily rhythm gives your days a predictable shape. Focus on three anchors: how you start, how you reset midday, and how you end. Keep each anchor simple enough to follow on tired days. A consistent daily rhythm reduces decision fatigue and gives your brain a sense of safety.",
+        "vi": "Nhịp điệu hằng ngày tạo hình dạng dễ đoán cho ngày sống của bạn. Hãy tập trung vào ba điểm neo: bắt đầu ngày, reset giữa ngày, và kết ngày. Giữ mỗi điểm neo đủ đơn giản để làm được cả ngày mệt. Nhịp điệu đều giúp giảm mệt vì phải quyết định và cho não cảm giác an toàn."
+      },
+      "tags": ["daily", "routine", "ease"],
+      "audio": "vip2_productivity_42.mp3"
+    },
+    {
+      "slug": "weekly-rhythm",
+      "keywords_en": ["weekly", "structure", "planning"],
+      "keywords_vi": ["hằng tuần", "cấu trúc", "lập kế hoạch"],
+      "copy": {
+        "en": "Weekly rhythm organizes your life into consistent loops. Assign themes to certain days—focus day, admin day, rest day, planning day. Themes reduce cognitive load because your brain knows what each day is for. You don’t need strict schedules; you need predictable intention.",
+        "vi": "Nhịp điệu hằng tuần tổ chức cuộc sống thành các vòng lặp đều. Hãy gán chủ đề cho từng ngày—ngày tập trung, ngày việc hành chính, ngày nghỉ, ngày lập kế hoạch. Chủ đề giảm gánh nặng tinh thần vì não biết từng ngày dùng để làm gì. Bạn không cần lịch nghiêm ngặt; bạn cần ý định dễ đoán."
+      },
+      "tags": ["weekly", "planning", "structure"],
+      "audio": "vip2_productivity_43.mp3"
+    },
+    {
+      "slug": "monthly-rhythm",
+      "keywords_en": ["monthly", "review", "direction"],
+      "keywords_vi": ["hằng tháng", "xem lại", "định hướng"],
+      "copy": {
+        "en": "Monthly rhythm zooms out your perspective. Use it to review your progress, clear accumulated clutter, and reset long-term goals. A monthly reset prevents drift and keeps your life aligned with what matters. Without it, you risk moving efficiently but in the wrong direction.",
+        "vi": "Nhịp điệu hằng tháng kéo tầm nhìn của bạn ra xa. Hãy dùng nó để xem lại tiến độ, dọn đống rác tích tụ và đặt lại mục tiêu dài hạn. Reset tháng giúp bạn không bị trôi và giữ cuộc sống đi đúng điều quan trọng. Không có nó, bạn dễ làm việc hiệu quả nhưng sai hướng."
+      },
+      "tags": ["review", "direction", "clarity"],
+      "audio": "vip2_productivity_44.mp3"
+    },
+    {
+      "slug": "seasonal-rhythm",
+      "keywords_en": ["seasonal", "cycles", "adaptation"],
+      "keywords_vi": ["theo mùa", "chu kỳ", "thích nghi"],
+      "copy": {
+        "en": "Seasonal rhythm recognizes that life has phases—busy seasons, quiet seasons, transitional seasons. Adjust your goals, workload, and expectations accordingly. You are not a machine; your capacity changes throughout the year. Designing with seasons makes your system kinder and more sustainable.",
+        "vi": "Nhịp điệu theo mùa thừa nhận rằng cuộc sống có các giai đoạn—mùa bận, mùa yên, mùa chuyển tiếp. Hãy điều chỉnh mục tiêu, khối lượng công việc và kỳ vọng theo từng giai đoạn. Bạn không phải cỗ máy; năng lượng bạn thay đổi theo năm. Thiết kế dựa trên mùa khiến hệ thống nhẹ hơn và bền vững hơn."
+      },
+      "tags": ["cycles", "adaptation", "sustainability"],
+      "audio": "vip2_productivity_45.mp3"
+    },
+    {
+      "slug": "maintenance-cycles",
+      "keywords_en": ["maintenance", "order", "prevention"],
+      "keywords_vi": ["bảo trì", "trật tự", "phòng ngừa"],
+      "copy": {
+        "en": "Maintenance cycles prevent chaos from accumulating. Choose small weekly or monthly tasks: clearing files, updating lists, refreshing your workspace, reviewing finances. Maintenance is not about perfection; it is about preventing small messes from becoming overwhelming problems.",
+        "vi": "Chu kỳ bảo trì ngăn hỗn loạn tích tụ. Hãy chọn vài nhiệm vụ nhỏ hằng tuần hoặc hằng tháng: dọn file, cập nhật danh sách, làm mới bàn làm việc, xem lại tài chính. Bảo trì không nhằm hoàn hảo; nó nhằm ngăn đống lộn xộn nhỏ thành vấn đề lớn."
+      },
+      "tags": ["order", "prevention", "clarity"],
+      "audio": "vip2_productivity_46.mp3"
+    },
+    {
+      "slug": "crisis-mode-system",
+      "keywords_en": ["crisis mode", "simplify", "stability"],
+      "keywords_vi": ["chế độ khẩn", "đơn giản hóa", "ổn định"],
+      "copy": {
+        "en": "When life becomes overwhelming, switch to a crisis-mode system: minimum tasks, essential routines, extra rest, reduced expectations. Crisis mode is not failure—it is strategy. It keeps your life from collapsing during stress. When stability returns, you can expand again.",
+        "vi": "Khi cuộc sống quá tải, hãy chuyển sang chế độ khẩn: việc tối thiểu, thói quen thiết yếu, nghỉ nhiều hơn, giảm kỳ vọng. Chế độ khẩn không phải thất bại—mà là chiến lược. Nó giữ cuộc sống bạn không sập trong thời kỳ căng thẳng. Khi ổn định quay lại, bạn mở rộng dần."
+      },
+      "tags": ["resilience", "strategy", "calm"],
+      "audio": "vip2_productivity_47.mp3"
+    },
+    {
+      "slug": "dashboard-and-automation",
+      "keywords_en": ["dashboard", "automation", "overview"],
+      "keywords_vi": ["dashboard", "tự động hóa", "tổng quan"],
+      "copy": {
+        "en": "A simple dashboard gives you a clear overview of your life—goals, habits, finances, health, and projects. Automation reduces manual effort: reminders, recurring tasks, templates. The goal is not to create a complex system, but a stable one that updates itself as much as possible.",
+        "vi": "Dashboard đơn giản cho bạn cái nhìn rõ về cuộc sống—mục tiêu, thói quen, tài chính, sức khỏe, dự án. Tự động hóa giảm công làm tay: nhắc nhở, việc lặp lại, mẫu có sẵn. Mục tiêu không phải hệ thống phức tạp mà là hệ thống ổn định, tự cập nhật càng nhiều càng tốt."
+      },
+      "tags": ["overview", "automation", "clarity"],
+      "audio": "vip2_productivity_48.mp3"
+    },
+    {
+      "slug": "reflection-loops",
+      "keywords_en": ["reflection", "iteration", "growth"],
+      "keywords_vi": ["phản tư", "chu kỳ cải tiến", "phát triển"],
+      "copy": {
+        "en": "Reflection loops help your system evolve. At the end of each week or month, review what felt smooth, what felt heavy, and what needs adjustment. Iteration turns your life system into a living structure that grows with you instead of trapping you. Stability comes from small, frequent adjustments.",
+        "vi": "Vòng phản tư giúp hệ thống của bạn phát triển. Cuối mỗi tuần hoặc tháng, hãy xem lại điều gì mượt, điều gì nặng và điều gì cần chỉnh. Sự lặp cải tiến biến hệ thống thành cấu trúc sống, lớn lên cùng bạn thay vì giam bạn. Ổn định đến từ những điều chỉnh nhỏ và thường xuyên."
+      },
+      "tags": ["growth", "improvement", "clarity"],
+      "audio": "vip2_productivity_49.mp3"
+    }
+  ]
+}
