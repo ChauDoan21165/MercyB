@@ -67,12 +67,12 @@ const PaymentTest = () => {
         body: { action: 'get-client-id' },
       });
       
-      if (error) {
-        console.error('Error getting PayPal client ID:', error);
-        throw error;
+      if (error || !data?.success) {
+        console.error('Error getting PayPal client ID:', error || data?.error);
+        throw new Error(error?.message || data?.error || 'Failed to get PayPal client ID');
       }
       
-      const clientId = data?.clientId;
+      const clientId = data?.data?.clientId;
       if (!clientId) {
         throw new Error('Missing PayPal client ID');
       }
@@ -187,6 +187,7 @@ const PaymentTest = () => {
                 'Payment failed: ' +
                   (error?.message || captureData?.error || 'Unknown error')
               );
+              setLoading(false);
               return;
             }
 
@@ -202,6 +203,7 @@ const PaymentTest = () => {
           } catch (error) {
             console.error('Payment approval error:', error);
             toast.error('Payment processing failed / Xử lý thanh toán thất bại');
+            setLoading(false);
           }
         },
         onError: (err: any) => {
