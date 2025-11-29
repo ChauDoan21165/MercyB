@@ -18,7 +18,6 @@ import {
 
 interface ColorfulMercyBladeHeaderProps {
   subtitle?: string;
-  showBackButton?: boolean;
   showResetButton?: boolean;
   onReset?: () => void;
 }
@@ -28,7 +27,6 @@ interface ColorfulMercyBladeHeaderProps {
 
 export const ColorfulMercyBladeHeader = ({
   subtitle,
-  showBackButton = false,
   showResetButton = false,
   onReset,
 }: ColorfulMercyBladeHeaderProps) => {
@@ -53,31 +51,6 @@ export const ColorfulMercyBladeHeader = ({
   return (
     <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border py-4 px-6">
       <div className="max-w-7xl mx-auto relative flex items-center justify-between">
-        {/* Left side - Back and Home Buttons */}
-        <div className="flex-none flex items-center gap-2">
-          {showBackButton && (
-            <>
-              <Button
-                onClick={() => navigate('/')}
-                size="sm"
-                variant="outline"
-                className="gap-1.5 min-w-[80px]"
-              >
-                <Crown className="w-4 h-4" />
-                Home
-              </Button>
-              <Button
-                onClick={() => navigate(-1)}
-                size="sm"
-                className="gap-1.5 bg-gray-900 hover:bg-gray-800 text-white min-w-[80px]"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                Back
-              </Button>
-            </>
-          )}
-        </div>
-
         {/* Center - Title */}
         <div className="flex-1 text-center px-2 sm:px-4">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
