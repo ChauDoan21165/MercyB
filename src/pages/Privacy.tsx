@@ -121,6 +121,10 @@ export default function Privacy() {
           </section>
 
           <p className="text-sm text-gray-500 mt-8">
+            See also: <a href="/terms" className="underline hover:text-gray-900">Terms of Service / Điều khoản sử dụng</a>, <a href="/refund" className="underline hover:text-gray-900">Refund Policy / Chính sách hoàn tiền</a>
+          </p>
+
+          <p className="text-sm text-gray-500 mt-4">
             Last updated: 2025-11-29 / Cập nhật lần cuối: 2025-11-29
           </p>
         </div>

@@ -33,12 +33,12 @@ export default function Terms() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-3 text-gray-900">3. Payments & Subscriptions / Thanh toán & Đăng ký</h2>
+            <h2 className="text-xl font-semibold mb-3 text-gray-900">3. Payments & Tier Access / Thanh toán & Quyền truy cập cấp độ</h2>
             <p className="mb-2">
-              Subscription fees are charged upfront for the selected period (monthly or yearly). All payments are processed securely through PayPal. We do not store your payment card details.
+              Payment is required upfront to access premium tiers (VIP1-VIP9). Once purchased, you gain immediate access to all content in that tier for the purchased period. All payments are processed securely through PayPal. We do not store your payment card details.
             </p>
             <p className="text-gray-600">
-              Phí đăng ký được thu trước cho thời gian đã chọn (hàng tháng hoặc hàng năm). Tất cả thanh toán được xử lý an toàn qua PayPal. Chúng tôi không lưu trữ thông tin thẻ thanh toán của bạn.
+              Thanh toán được yêu cầu trả trước để truy cập các cấp cao cấp (VIP1-VIP9). Sau khi mua, bạn có quyền truy cập ngay lập tức vào tất cả nội dung trong cấp đó trong khoảng thời gian đã mua. Tất cả thanh toán được xử lý an toàn qua PayPal. Chúng tôi không lưu trữ thông tin thẻ thanh toán của bạn.
             </p>
           </section>
 
@@ -63,17 +63,27 @@ export default function Terms() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-3 text-gray-900">6. Termination / Chấm dứt</h2>
+            <h2 className="text-xl font-semibold mb-3 text-gray-900">6. Rate Limits & Fair Use / Giới hạn tốc độ & Sử dụng hợp lý</h2>
             <p className="mb-2">
-              We reserve the right to suspend or terminate accounts that violate these terms or engage in prohibited activities.
+              To ensure quality service for all users, we implement rate limits on certain features. Excessive or abusive usage may result in temporary restrictions. Content moderation systems automatically detect and act on violations.
             </p>
             <p className="text-gray-600">
-              Chúng tôi có quyền tạm ngưng hoặc chấm dứt tài khoản vi phạm các điều khoản này hoặc tham gia vào các hoạt động bị cấm.
+              Để đảm bảo dịch vụ chất lượng cho tất cả người dùng, chúng tôi thực hiện giới hạn tốc độ trên một số tính năng. Việc sử dụng quá mức hoặc lạm dụng có thể dẫn đến hạn chế tạm thời. Hệ thống kiểm duyệt nội dung tự động phát hiện và xử lý các vi phạm.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-3 text-gray-900">7. Contact / Liên hệ</h2>
+            <h2 className="text-xl font-semibold mb-3 text-gray-900">7. Account Suspension & Termination / Tạm ngưng & Chấm dứt tài khoản</h2>
+            <p className="mb-2">
+              We reserve the right to suspend or terminate accounts that violate these terms, engage in prohibited activities, or abuse the service. Suspended accounts may lose access without refund.
+            </p>
+            <p className="text-gray-600">
+              Chúng tôi có quyền tạm ngưng hoặc chấm dứt tài khoản vi phạm các điều khoản này, tham gia vào các hoạt động bị cấm, hoặc lạm dụng dịch vụ. Tài khoản bị tạm ngưng có thể mất quyền truy cập mà không được hoàn tiền.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold mb-3 text-gray-900">8. Contact / Liên hệ</h2>
             <p className="mb-2">
               For questions about these terms, please contact us through the app's feedback system.
             </p>
@@ -83,7 +93,11 @@ export default function Terms() {
           </section>
 
           <p className="text-sm text-gray-500 mt-8">
-            Last updated: {new Date().toLocaleDateString()} / Cập nhật lần cuối: {new Date().toLocaleDateString()}
+            See also: <a href="/privacy" className="underline hover:text-gray-900">Privacy Policy / Chính sách bảo mật</a>, <a href="/refund" className="underline hover:text-gray-900">Refund Policy / Chính sách hoàn tiền</a>
+          </p>
+
+          <p className="text-sm text-gray-500 mt-4">
+            Last updated: 2025-11-29 / Cập nhật lần cuối: 2025-11-29
           </p>
         </div>
       </main>

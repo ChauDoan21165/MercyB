@@ -15,10 +15,10 @@ export default function Refund() {
           <section>
             <h2 className="text-xl font-semibold mb-3 text-gray-900">1. General Policy / Chính sách chung</h2>
             <p className="mb-2">
-              Due to the digital nature of our content and instant access upon payment, all sales are generally final. However, we evaluate refund requests on a case-by-case basis within 7 days of purchase.
+              Due to the digital nature of our content and instant tier access upon payment, all purchases are generally final. Payments are made upfront for access to premium tiers (VIP1-VIP9) for a specific period. However, we evaluate refund requests on a case-by-case basis within 7 days of purchase.
             </p>
             <p className="text-gray-600">
-              Do tính chất kỹ thuật số của nội dung và quyền truy cập ngay lập tức sau thanh toán, tất cả các giao dịch mua hàng thường là cuối cùng. Tuy nhiên, chúng tôi xem xét các yêu cầu hoàn tiền theo từng trường hợp trong vòng 7 ngày kể từ ngày mua.
+              Do tính chất kỹ thuật số của nội dung và quyền truy cập cấp độ ngay lập tức sau thanh toán, tất cả các giao dịch mua hàng thường là cuối cùng. Thanh toán được thực hiện trả trước để truy cập các cấp cao cấp (VIP1-VIP9) trong một khoảng thời gian cụ thể. Tuy nhiên, chúng tôi xem xét các yêu cầu hoàn tiền theo từng trường hợp trong vòng 7 ngày kể từ ngày mua.
             </p>
           </section>
 
@@ -42,7 +42,8 @@ export default function Refund() {
               <li>Change of mind after accessing content / Thay đổi ý định sau khi truy cập nội dung</li>
               <li>Requests made after 7 days of purchase / Yêu cầu được thực hiện sau 7 ngày kể từ ngày mua</li>
               <li>Account violations or terms of service breaches / Vi phạm tài khoản hoặc vi phạm điều khoản dịch vụ</li>
-              <li>Partial period refunds (monthly subscriptions) / Hoàn tiền một phần thời gian (đăng ký hàng tháng)</li>
+              <li>Partial period refunds for tier access / Hoàn tiền một phần thời gian cho quyền truy cập cấp độ</li>
+              <li>Account suspension or termination due to abuse / Tạm ngưng hoặc chấm dứt tài khoản do lạm dụng</li>
             </ul>
           </section>
 
@@ -67,12 +68,12 @@ export default function Refund() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-3 text-gray-900">6. Subscription Cancellation / Hủy đăng ký</h2>
+            <h2 className="text-xl font-semibold mb-3 text-gray-900">6. Tier Access Period / Thời gian truy cập cấp độ</h2>
             <p className="mb-2">
-              You can cancel your subscription at any time, but you will retain access until the end of your current billing period. No partial refunds are provided for cancelled subscriptions.
+              Tier access is granted for the purchased period (e.g., 30 days, 90 days). You will retain access until the end of the purchased period. No partial refunds are provided for unused time within the access period.
             </p>
             <p className="text-gray-600">
-              Bạn có thể hủy đăng ký bất cứ lúc nào, nhưng bạn sẽ vẫn có quyền truy cập cho đến khi kết thúc thời gian thanh toán hiện tại. Không có hoàn tiền một phần cho các đăng ký bị hủy.
+              Quyền truy cập cấp độ được cấp trong khoảng thời gian đã mua (ví dụ: 30 ngày, 90 ngày). Bạn sẽ vẫn có quyền truy cập cho đến khi kết thúc thời gian đã mua. Không có hoàn tiền một phần cho thời gian không sử dụng trong thời gian truy cập.
             </p>
           </section>
 
@@ -87,7 +88,11 @@ export default function Refund() {
           </section>
 
           <p className="text-sm text-gray-500 mt-8">
-            Last updated: {new Date().toLocaleDateString()} / Cập nhật lần cuối: {new Date().toLocaleDateString()}
+            See also: <a href="/privacy" className="underline hover:text-gray-900">Privacy Policy / Chính sách bảo mật</a>, <a href="/terms" className="underline hover:text-gray-900">Terms of Service / Điều khoản sử dụng</a>
+          </p>
+
+          <p className="text-sm text-gray-500 mt-4">
+            Last updated: 2025-11-29 / Cập nhật lần cuối: 2025-11-29
           </p>
         </div>
       </main>
