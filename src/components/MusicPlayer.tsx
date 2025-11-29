@@ -163,6 +163,16 @@ const TRACKS = [
   { id: '140', name: '8 Bit Menu', url: '/audio/2019-01-02_-_8_Bit_Menu_-_David_Renda_-_FesliyanStudios.com.mp3' },
   { id: '141', name: 'Fist Bump', url: '/audio/2019-03-12_-_Fist_Bump_-_www.fesliyanstudios.com.mp3' },
   { id: '142', name: 'Like Ras', url: '/audio/2018-11-27_-_Like_Ras_-_FesliyanStudios.com_By_Stephen_Bennett.mp3' },
+  { id: '143', name: 'Track A', url: '/audio/2018-11-27_-_Track_A_-_FesliyanStudios.com_By_Stephen_Bennett.mp3' },
+  { id: '144', name: 'Tears of Joy', url: '/audio/2018-07-02_-_Tears_of_Joy_-_David_Fesliyan.mp3' },
+  { id: '145', name: 'Trusted Advertising', url: '/audio/2019-04-23_-_Trusted_Advertising_-_www.fesliyanstudios.com.mp3' },
+  { id: '146', name: 'Commercial Bliss', url: '/audio/2019-05-29_-_Commercial_Bliss_-_www.fesliyanstudios.com_-_David_Renda.mp3' },
+  { id: '147', name: 'Warm Light (1)', url: '/audio/2019-06-14_-_Warm_Light_-_David_Fesliyan-2.mp3' },
+  { id: '148', name: 'Feels Good', url: '/audio/2019-10-21_-_Feels_Good_-_David_Fesliyan.mp3' },
+  { id: '149', name: 'Feeling The Best', url: '/audio/2019-12-29_-_Feeling_The_Best_-_FesliyanStudios.com_-_David_Renda.mp3' },
+  { id: '150', name: 'A Better Life', url: '/audio/2019-12-29_-_A_Better_Life_-_FesliyanStudios.com_-_David_Renda.mp3' },
+  { id: '151', name: 'Feeling Happy (1)', url: '/audio/2020-01-19_-_Feeling_Happy_-_FesliyanStudios.com_-_David_Renda_1.mp3' },
+  { id: '152', name: 'Feeling Happy', url: '/audio/2020-01-19_-_Feeling_Happy_-_FesliyanStudios.com_-_David_Renda.mp3' },
 ];
 
 export const MusicPlayer = () => {
