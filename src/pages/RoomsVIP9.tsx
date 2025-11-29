@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '@/integrations/supabase/client';
 import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
 import { Button } from '@/components/ui/button';
 import { Lock, Unlock, TrendingUp, Building2, Globe2, Crown, Palette } from 'lucide-react';
@@ -8,94 +7,66 @@ import { useUserAccess } from '@/hooks/useUserAccess';
 import { useToast } from '@/hooks/use-toast';
 import { useColorMode } from '@/hooks/useColorMode';
 import { highlightShortTitle } from '@/lib/wordColorHighlighter';
-
-interface Room {
-  id: string;
-  title_en: string;
-  title_vi: string;
-  tier: string;
-  domain?: string;
-}
+import { useVipRooms } from '@/hooks/useVipRooms';
+import { TIERS, ROOMS_TABLE, ROOM_GRID_CLASS } from '@/lib/constants';
+import { VipRoom } from '@/hooks/useVipRooms';
 
 interface DomainSection {
   id: string;
   title: { en: string; vi: string };
-  rooms: Room[];
+  rooms: VipRoom[];
 }
 
 const RoomsVIP9 = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const { canAccessVIP9, loading: accessLoading } = useUserAccess();
+  const { rooms, loading, error } = useVipRooms('vip9');
   const [domains, setDomains] = useState<DomainSection[]>([]);
-  const [loading, setLoading] = useState(true);
   const { useColorTheme, toggleColorMode } = useColorMode();
 
   useEffect(() => {
-    const fetchRooms = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('rooms')
-          .select('id, title_en, title_vi, tier, domain')
-          .eq('tier', 'vip9')
-          .order('title_en');
+    // Organize rooms by their domain field
+    const individualRooms = rooms.filter(r => r.domain === 'Individual');
+    const corporateRooms = rooms.filter(r => r.domain === 'Corporate');
+    const nationalRooms = rooms.filter(r => r.domain === 'National');
+    const historicalStrategistsRooms = rooms.filter(r => r.domain === 'Historical Strategists');
 
-        if (error) throw error;
-
-        // Organize rooms by their domain field
-        const individualRooms = data.filter(r => r.domain === 'Individual');
-        const corporateRooms = data.filter(r => r.domain === 'Corporate');
-        const nationalRooms = data.filter(r => r.domain === 'National');
-        const historicalStrategistsRooms = data.filter(r => r.domain === 'Historical Strategists');
-
-        setDomains([
-          {
-            id: 'individual_strategic_mastery',
-            title: {
-              en: 'Individual Strategic Mastery',
-              vi: 'Tư Duy Chiến Lược Cá Nhân'
-            },
-            rooms: individualRooms
-          },
-          {
-            id: 'corporate_organizational_strategy',
-            title: {
-              en: 'Corporate & Organizational Strategy',
-              vi: 'Chiến Lược Tổ Chức & Doanh Nghiệp'
-            },
-            rooms: corporateRooms
-          },
-          {
-            id: 'national_geostrategic_intelligence',
-            title: {
-              en: 'National & Geostrategic Intelligence',
-              vi: 'Chiến Lược Quốc Gia & Địa Chiến Lược'
-            },
-            rooms: nationalRooms
-          },
-          {
-            id: 'historical_strategists',
-            title: {
-              en: 'Historical Strategists',
-              vi: 'Các Nhà Chiến Lược Lịch Sử'
-            },
-            rooms: historicalStrategistsRooms
-          }
-        ]);
-      } catch (error) {
-        console.error('Error fetching VIP9 rooms:', error);
-        toast({
-          title: 'Error',
-          description: 'Failed to load rooms',
-          variant: 'destructive'
-        });
-      } finally {
-        setLoading(false);
+    setDomains([
+      {
+        id: 'individual_strategic_mastery',
+        title: {
+          en: 'Individual Strategic Mastery',
+          vi: 'Tư Duy Chiến Lược Cá Nhân'
+        },
+        rooms: individualRooms
+      },
+      {
+        id: 'corporate_organizational_strategy',
+        title: {
+          en: 'Corporate & Organizational Strategy',
+          vi: 'Chiến Lược Tổ Chức & Doanh Nghiệp'
+        },
+        rooms: corporateRooms
+      },
+      {
+        id: 'national_geostrategic_intelligence',
+        title: {
+          en: 'National & Geostrategic Intelligence',
+          vi: 'Chiến Lược Quốc Gia & Địa Chiến Lược'
+        },
+        rooms: nationalRooms
+      },
+      {
+        id: 'historical_strategists',
+        title: {
+          en: 'Historical Strategists',
+          vi: 'Các Nhà Chiến Lược Lịch Sử'
+        },
+        rooms: historicalStrategistsRooms
       }
-    };
-
-    fetchRooms();
-  }, [toast]);
+    ]);
+  }, [rooms]);
 
   const handleRoomClick = (roomId: string) => {
     if (!canAccessVIP9) {
@@ -155,7 +126,7 @@ const RoomsVIP9 = () => {
           
           <div className="flex items-center justify-center gap-8 pt-4">
             <div className="text-center">
-              <div className="text-3xl font-bold text-white">{domains.reduce((acc, d) => acc + d.rooms.length, 0)}</div>
+              <div className="text-3xl font-bold text-white">{rooms.length}</div>
               <div className="text-sm text-slate-400">Elite Rooms</div>
             </div>
             <div className="h-12 w-px bg-slate-700"></div>
@@ -176,12 +147,19 @@ const RoomsVIP9 = () => {
                 size="lg"
                 onClick={() => navigate('/subscribe')}
                 className="bg-white hover:bg-slate-100 text-slate-900 font-semibold px-8 py-6 text-lg shadow-xl"
+                aria-label="Access VIP9 Strategic Mastery"
               >
                 Access VIP9 Strategic Mastery
               </Button>
             </div>
           )}
         </div>
+
+        {error && (
+          <div className="text-center py-8">
+            <p className="text-destructive">Error loading rooms: {error.message}</p>
+          </div>
+        )}
 
         {/* Domain Sections */}
         {domains.map((domain) => {
@@ -190,7 +168,7 @@ const RoomsVIP9 = () => {
             <div key={domain.id} className="space-y-8">
               <div className="border-l-2 border-slate-600 pl-6 py-2">
                 <div className="flex items-center gap-3 mb-2">
-                  <Icon className="h-6 w-6 text-slate-400" />
+                  <Icon className="h-6 w-6 text-slate-400" aria-hidden="true" />
                   <h2 className="text-3xl font-bold text-white tracking-tight">{domain.title.en}</h2>
                 </div>
                 <p className="text-lg text-slate-400 font-light">{domain.title.vi}</p>
@@ -206,8 +184,9 @@ const RoomsVIP9 = () => {
                   size="sm"
                   onClick={toggleColorMode}
                   className="gap-2 bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700"
+                  aria-label={useColorTheme ? 'Switch to professional mode' : 'Switch to Mercy Blade colors'}
                 >
-                  <Palette className="w-4 h-4" />
+                  <Palette className="w-4 h-4" aria-hidden="true" />
                   {useColorTheme ? 'Professional' : 'Mercy Blade Colors'}
                 </Button>
               </div>
@@ -229,6 +208,7 @@ const RoomsVIP9 = () => {
                             background: '#0f172a',
                           }
                     }
+                    aria-label={`${room.title_en} - ${room.title_vi}`}
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex-1 space-y-2">
@@ -240,14 +220,14 @@ const RoomsVIP9 = () => {
                         </p>
                       </div>
                       {canAccessVIP9 ? (
-                        <Unlock className="h-5 w-5 text-slate-400 group-hover:text-white flex-shrink-0 transition-colors" />
+                        <Unlock className="h-5 w-5 text-slate-400 group-hover:text-white flex-shrink-0 transition-colors" aria-hidden="true" />
                       ) : (
-                        <Lock className="h-5 w-5 text-slate-600 flex-shrink-0" />
+                        <Lock className="h-5 w-5 text-slate-600 flex-shrink-0" aria-hidden="true" />
                       )}
                     </div>
                     
                     {/* Subtle hover effect line */}
-                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-slate-600 via-slate-500 to-slate-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-slate-600 via-slate-500 to-slate-600 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true"></div>
                   </button>
                 ))}
               </div>
@@ -269,6 +249,7 @@ const RoomsVIP9 = () => {
               size="lg"
               onClick={() => navigate('/subscribe')}
               className="bg-white hover:bg-slate-100 text-slate-900 font-semibold px-8 py-6 text-lg shadow-xl"
+              aria-label="Access VIP9 Strategic Mastery"
             >
               Access VIP9 Strategic Mastery
             </Button>

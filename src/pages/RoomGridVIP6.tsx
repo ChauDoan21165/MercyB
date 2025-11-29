@@ -1,46 +1,34 @@
 import { Button } from "@/components/ui/button";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
-import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { useUserAccess } from "@/hooks/useUserAccess";
-import { useEffect, useState } from "react";
-import { ALL_ROOMS } from "@/lib/roomData";
 import { VIPNavigation } from "@/components/VIPNavigation";
-import { CheckCircle2, Lock, RefreshCw, Brain, Palette } from "lucide-react";
+import { Brain, RefreshCw } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { getRoomColor } from '@/lib/roomColors';
-import { useColorMode } from '@/hooks/useColorMode';
-import { highlightShortTitle } from "@/lib/wordColorHighlighter";
+import { useVipRooms } from '@/hooks/useVipRooms';
+import { VirtualizedRoomGrid } from '@/components/VirtualizedRoomGrid';
+import { RoomGridSkeleton } from '@/components/RoomCardSkeleton';
+import { TIERS } from '@/lib/constants';
 
 const RoomGridVIP6 = () => {
   const navigate = useNavigate();
-  const { canAccessVIP6, isAdmin, loading } = useUserAccess();
+  const { canAccessVIP6, isAdmin, loading: accessLoading } = useUserAccess();
   const { toast } = useToast();
-  const [isRefreshing, setIsRefreshing] = useState(false);
-  const [roomsVersion, setRoomsVersion] = useState(0);
-  const { useColorTheme, toggleColorMode } = useColorMode();
+  const { rooms, loading, error, refresh } = useVipRooms('vip6');
 
-  useEffect(() => {
-    const handle = () => setRoomsVersion(v => v + 1);
-    window.addEventListener('rooms-loaded', handle as any);
-    return () => window.removeEventListener('rooms-loaded', handle as any);
-  }, []);
-
-  const handleRefreshRooms = () => {
-    setIsRefreshing(true);
+  const handleRefreshRooms = async () => {
     toast({
       title: "Refreshing rooms...",
-      description: "Reloading room registry from files",
+      description: "Reloading VIP6 rooms",
     });
-    
-    window.dispatchEvent(new Event('roomDataUpdated'));
-    
-    setTimeout(() => {
-      window.location.reload();
-    }, 500);
+    refresh();
+    toast({
+      title: "Refreshed!",
+      description: "VIP6 rooms updated",
+    });
   };
 
-  if (loading) {
+  if (accessLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <p className="text-muted-foreground">Loading...</p>
@@ -61,7 +49,6 @@ const RoomGridVIP6 = () => {
       
       <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip6))' }}>
         <div className="container mx-auto px-4 py-8 max-w-7xl">
-          {/* Header */}
           <div className="mb-8 space-y-4">
             <div className="flex items-center justify-between mb-4">
               <span className="text-lg text-gray-700 font-medium">
@@ -73,10 +60,11 @@ const RoomGridVIP6 = () => {
                   variant="outline"
                   size="sm"
                   onClick={handleRefreshRooms}
-                  disabled={isRefreshing}
+                  disabled={loading}
                   className="flex items-center gap-2 bg-white/80"
+                  aria-label="Refresh VIP6 rooms"
                 >
-                  <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+                  <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} aria-hidden="true" />
                   Refresh Rooms
                 </Button>
               )}
@@ -84,7 +72,7 @@ const RoomGridVIP6 = () => {
             
             <div className="text-center space-y-2">
               <div className="flex items-center justify-center gap-2">
-                <Brain className="h-8 w-8" style={{ color: 'hsl(var(--vip6-primary))' }} />
+                <Brain className="h-8 w-8" style={{ color: 'hsl(var(--vip6-primary))' }} aria-hidden="true" />
                 <h1 className="text-4xl font-bold bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
                   VIP6 — Shadow & Deep Psychology
                 </h1>
@@ -96,86 +84,27 @@ const RoomGridVIP6 = () => {
                 VIP6 mở ra một vũ trụ riêng dành cho bóng tối nội tâm, chữa lành đứa trẻ bên trong, mô thức tổn thương, bản sắc tiềm thức và sự tích hợp cảm xúc. Cấp độ này giúp người dùng hiểu những lực vô hình đang định hình phản ứng, lựa chọn, các mối quan hệ và hướng đi cuộc sống.
               </p>
               <p className="text-sm text-gray-600">
-                Showing {ALL_ROOMS.filter(room => room.tier === "vip6").length} rooms
+                {loading ? 'Loading...' : `Showing ${rooms.length} rooms`}
               </p>
             </div>
           </div>
 
-          {/* Color Mode Toggle */}
-          <div className="flex justify-end mb-4">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={toggleColorMode}
-              className="gap-2"
-            >
-              <Palette className="w-4 h-4" />
-              {useColorTheme ? 'Black & White' : 'Mercy Blade Colors'}
-            </Button>
-          </div>
-
-          {/* Room Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-            {ALL_ROOMS.filter(room => room.tier === "vip6").sort((a, b) => {
-              const aName = a.name || a.id;
-              const bName = b.name || b.id;
-              return aName.localeCompare(bName);
-            }).map((room, index) => {
-              const roomColor = getRoomColor(room.id);
-              
-              return (
-              <Card
-                key={room.id}
-                className={`relative p-3 transition-all duration-300 cursor-pointer group ${
-                  room.hasData 
-                    ? "hover:scale-110 hover:shadow-hover hover:z-10" 
-                    : "opacity-60 cursor-not-allowed"
-                }`}
-                style={{ background: 'white', border: '1px solid #e5e7eb' }}
-                onClick={() => room.hasData && navigate(`/chat/${room.id}`)}
-              >
-                {/* Status Badge */}
-                <div className="absolute top-1 right-1 z-10">
-                  {room.hasData ? (
-                    <div className="bg-green-500 rounded-full p-1">
-                      <CheckCircle2 className="w-3 h-3 text-white" />
-                    </div>
-                  ) : (
-                    <div className="bg-gray-400 rounded-full p-1">
-                      <Lock className="w-3 h-3 text-white" />
-                    </div>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  {/* Room Names */}
-                  <div className="space-y-1">
-                    <p 
-                      className="text-xs font-bold leading-tight line-clamp-2 text-foreground"
-                    >
-                      {useColorTheme ? highlightShortTitle(room.nameEn, index, false) : room.nameEn}
-                    </p>
-                    <p 
-                      className="text-[10px] leading-tight line-clamp-2 text-muted-foreground"
-                    >
-                      {useColorTheme ? highlightShortTitle(room.nameVi, index, true) : room.nameVi}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Hover Effect */}
-                {room.hasData && (
-                  <div 
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg bg-gray-50"
-                  />
-                )}
-              </Card>
-              );
-            })}
-          </div>
-
-          {/* Navigation */}
           <VIPNavigation currentPage="vip6" />
+
+          {loading && <RoomGridSkeleton count={24} />}
+
+          {!loading && rooms && (
+            <VirtualizedRoomGrid
+              rooms={rooms}
+              onRoomClick={(room) => navigate(`/chat/${room.id}`)}
+            />
+          )}
+
+          {error && (
+            <div className="text-center py-8">
+              <p className="text-destructive">Error loading rooms: {error.message}</p>
+            </div>
+          )}
         </div>
       </div>
     </div>
