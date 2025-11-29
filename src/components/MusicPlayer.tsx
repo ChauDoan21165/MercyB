@@ -103,6 +103,16 @@ const TRACKS = [
   { id: '80', name: 'The Lounge (v2)', url: '/music/2019-06-05_-_The_Lounge_-_www.fesliyanstudios.com_-_David_Renda-2.mp3' },
   { id: '81', name: 'The Soft Lullaby (v2)', url: '/music/2020-03-22_-_The_Soft_Lullaby_-_FesliyanStudios.com_-_David_Renda-2.mp3' },
   { id: '82', name: 'Not Much To Say (v2)', url: '/music/2020-02-11_-_Not_Much_To_Say_-_David_Fesliyan-2.mp3' },
+  { id: '83', name: 'The Soft Lullaby (v3)', url: '/audio/2020-03-22_-_The_Soft_Lullaby_-_FesliyanStudios.com_-_David_Renda-3.mp3' },
+  { id: '84', name: 'Not Much To Say (v3)', url: '/audio/2020-02-11_-_Not_Much_To_Say_-_David_Fesliyan-3.mp3' },
+  { id: '85', name: 'Relaxing Green Nature (v2)', url: '/audio/2020-02-22_-_Relaxing_Green_Nature_-_David_Fesliyan-2.mp3' },
+  { id: '86', name: 'We Were Friends (v2)', url: '/audio/2020-04-28_-_We_Were_Friends_-_David_Fesliyan-2.mp3' },
+  { id: '87', name: 'Beautiful Memories (v1)', url: '/audio/Happy_Music-2018-09-18_-_Beautiful_Memories_-_David_Fesliyan_1.mp3' },
+  { id: '88', name: 'In The Moment (v2)', url: '/audio/2020-05-05_-_In_The_Moment_-_www.FesliyanStudios.com_Steve_Oxen-2.mp3' },
+  { id: '89', name: 'Champagne at Sunset (v2)', url: '/audio/2020-05-27_-_Champagne_at_Sunset_-_www.FesliyanStudios.com_Steve_Oxen-2.mp3' },
+  { id: '90', name: 'Serenity (v2)', url: '/audio/2020-06-18_-_Serenity_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
+  { id: '91', name: 'Cathedral Ambience (v2)', url: '/audio/2020-06-18_-_Cathedral_Ambience_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
+  { id: '92', name: 'Painful Memories (v2)', url: '/audio/2020-08-17_-_Painful_Memories_-_www.FesliyanStudios.com_Steve_Oxen-2.mp3' },
 ];
 
 export const MusicPlayer = () => {
@@ -164,13 +174,25 @@ export const MusicPlayer = () => {
     localStorage.setItem('musicPlayerShuffle', newShuffleState.toString());
     
     if (newShuffleState) {
-      setShuffledTracks(shuffleArray(TRACKS));
+      const shuffled = shuffleArray(TRACKS);
+      setShuffledTracks(shuffled);
     }
   };
 
   // Play next track
   const playNextTrack = () => {
-    const trackList = isShuffle ? shuffledTracks : TRACKS;
+    let trackList = TRACKS;
+    
+    if (isShuffle) {
+      // If shuffle is on but shuffledTracks is empty, create it
+      if (shuffledTracks.length === 0) {
+        trackList = shuffleArray(TRACKS);
+        setShuffledTracks(trackList);
+      } else {
+        trackList = shuffledTracks;
+      }
+    }
+    
     const currentIndex = trackList.findIndex(t => t.id === currentTrackId);
     const nextIndex = (currentIndex + 1) % trackList.length;
     const nextTrack = trackList[nextIndex];
