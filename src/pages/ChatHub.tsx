@@ -1058,43 +1058,43 @@ const ChatHub = () => {
             </DropdownMenu>
           </div>
          
-          <div className="text-center space-y-1 relative">
-            {/* Admin buttons - positioned absolutely to not affect centering */}
-            {isAdmin && (
-              <div className="absolute left-0 top-0 flex items-center gap-2">
-                {roomId && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const key = roomId && (/(?:-(free|vip1|vip2|vip3|vip4))$/.test(roomId) ? roomId : (info?.tier ? `${roomId}-${info.tier}` : roomId));
-                      const manifestVal = key ? PUBLIC_ROOM_MANIFEST[key] : undefined;
-                      const fileName = manifestVal ? manifestVal.replace(/^data\//, '') : `${roomId.replace(/-/g, '_')}.json`;
-                      navigator.clipboard.writeText(fileName);
-                      toast({
-                        title: "Copied!",
-                        description: `JSON: ${fileName}`,
-                      });
-                    }}
-                    className="w-[1em] h-[1em] rounded-full bg-primary hover:bg-primary/90 cursor-pointer flex-shrink-0 transition-colors"
-                    title="Copy JSON filename"
-                  />
-                )}
+          {/* Admin buttons - positioned independently */}
+          {isAdmin && (
+            <div className="flex items-center gap-2 justify-start">
+              {roomId && (
                 <button
                   type="button"
                   onClick={() => {
-                    navigator.clipboard.writeText(roomId || '');
+                    const key = roomId && (/(?:-(free|vip1|vip2|vip3|vip4))$/.test(roomId) ? roomId : (info?.tier ? `${roomId}-${info.tier}` : roomId));
+                    const manifestVal = key ? PUBLIC_ROOM_MANIFEST[key] : undefined;
+                    const fileName = manifestVal ? manifestVal.replace(/^data\//, '') : `${roomId.replace(/-/g, '_')}.json`;
+                    navigator.clipboard.writeText(fileName);
                     toast({
                       title: "Copied!",
-                      description: `Room ID: ${roomId}`,
+                      description: `JSON: ${fileName}`,
                     });
                   }}
-                  className="w-[1em] h-[1em] rounded-full bg-blue-600 hover:bg-blue-700 cursor-pointer flex-shrink-0 transition-colors"
-                  title="Copy Room ID"
+                  className="w-[1em] h-[1em] rounded-full bg-primary hover:bg-primary/90 cursor-pointer flex-shrink-0 transition-colors"
+                  title="Copy JSON filename"
                 />
-              </div>
-            )}
-            
-            {/* Title - centered */}
+              )}
+              <button
+                type="button"
+                onClick={() => {
+                  navigator.clipboard.writeText(roomId || '');
+                  toast({
+                    title: "Copied!",
+                    description: `Room ID: ${roomId}`,
+                  });
+                }}
+                className="w-[1em] h-[1em] rounded-full bg-blue-600 hover:bg-blue-700 cursor-pointer flex-shrink-0 transition-colors"
+                title="Copy Room ID"
+              />
+            </div>
+          )}
+          
+          {/* Title - centered independently */}
+          <div className="text-center space-y-1">
             <div className="flex items-center justify-center gap-2">
               <h2 className="text-lg font-semibold text-gray-900">
                 {currentRoom.nameEn === currentRoom.nameVi 
