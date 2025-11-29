@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
-
-export type UserTier = 'demo' | 'free' | 'vip1' | 'vip2' | 'vip3' | 'vip3_ii' | 'vip4' | 'vip5' | 'vip6' | 'vip9';
+import { UserTier } from '@/lib/accessControl';
 
 export interface UserAccess {
   isAdmin: boolean;

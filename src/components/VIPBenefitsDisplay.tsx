@@ -3,7 +3,8 @@ import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Check, Crown, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useUserAccess, UserTier } from "@/hooks/useUserAccess";
+import { useUserAccess } from "@/hooks/useUserAccess";
+import { UserTier } from "@/lib/accessControl";
 import { AnimatedTierBadge } from "./AnimatedTierBadge";
 
 const tierInfo: Record<UserTier, {
