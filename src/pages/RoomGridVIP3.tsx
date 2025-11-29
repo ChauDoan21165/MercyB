@@ -195,7 +195,7 @@ const RoomGridVIP3 = () => {
                       } else if (isFinanceRoom) {
                         navigate('/finance-calm');
                       } else {
-                        navigate(`/chat/${room.id}`);
+                        navigate(`/room/${room.id}`);
                       }
                     }}
                     role="button"
@@ -208,7 +208,7 @@ const RoomGridVIP3 = () => {
                         } else if (isFinanceRoom) {
                           navigate('/finance-calm');
                         } else {
-                          navigate(`/chat/${room.id}`);
+                          navigate(`/room/${room.id}`);
                         }
                       }
                     }}

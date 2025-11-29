@@ -122,7 +122,7 @@ const RoomGridVIP4 = () => {
           {!loading && rooms && (
             <VirtualizedRoomGrid
               rooms={rooms}
-              onRoomClick={(room) => navigate(`/chat/${room.id}`)}
+              onRoomClick={(room) => navigate(`/room/${room.id}`)}
             />
           )}
 

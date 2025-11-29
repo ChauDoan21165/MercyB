@@ -87,14 +87,14 @@ const RoomGridVIP1 = () => {
               </div>
             </div>
 
-            <VIPNavigation currentTier="vip1" />
+            <VIPNavigation currentPage="vip1" />
 
             {isLoading && <RoomGridSkeleton count={24} />}
 
             {!isLoading && rooms && (
               <VirtualizedRoomGrid
                 rooms={rooms}
-                onRoomClick={(room) => navigate(`/chat/${room.id}`)}
+                onRoomClick={(room) => navigate(`/room/${room.id}`)}
               />
             )}
           </div>

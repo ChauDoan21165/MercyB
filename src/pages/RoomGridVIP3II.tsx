@@ -133,7 +133,7 @@ const RoomGridVIP3II = () => {
                 borderColor: 'hsl(var(--vip3-primary))',
                 background: 'linear-gradient(135deg, hsl(var(--vip3-primary) / 0.1), hsl(var(--vip3-gold) / 0.1))'
               }}
-              onClick={() => navigate('/rooms-vip3')}
+              onClick={() => navigate('/vip/vip3')}
               role="button"
               aria-label="Back to VIP3 Main Collection"
             >
@@ -181,14 +181,14 @@ const RoomGridVIP3II = () => {
                     }}
                     onClick={() => {
                       if (!hasData) return;
-                      navigate(`/chat/${room.id}`);
+                      navigate(`/room/${room.id}`);
                     }}
                     role="button"
                     tabIndex={hasData ? 0 : -1}
                     onKeyDown={(e) => {
                       if (hasData && (e.key === 'Enter' || e.key === ' ')) {
                         e.preventDefault();
-                        navigate(`/chat/${room.id}`);
+                        navigate(`/room/${room.id}`);
                       }
                     }}
                     aria-label={`${room.title_en} - ${room.title_vi}`}
@@ -247,7 +247,7 @@ const RoomGridVIP3II = () => {
           )}
         </div>
 
-        <VIPNavigation currentPage="vip3_ii" />
+        <VIPNavigation currentPage="vip3ii" />
       </div>
     </div>
   );
