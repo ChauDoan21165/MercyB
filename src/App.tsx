@@ -12,6 +12,8 @@ import { BackButton } from "@/components/BackButton";
 import { AdminRoute } from "@/components/AdminRoute";
 import { LowDataModeProvider } from "@/contexts/LowDataModeContext";
 import { MusicPlayer } from "@/components/MusicPlayer";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { OfflineDetector } from "@/components/OfflineDetector";
 
 import Welcome from "./pages/Welcome";
 import Homepage from "./pages/Homepage";
@@ -120,17 +122,19 @@ const App = () => {
   }, []);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-        <LowDataModeProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Sonner />
-            <BrowserRouter>
-              <AdminFloatingButton />
-              <ZoomControl />
-              <HomeButton />
-              <BackButton />
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <LowDataModeProvider>
+            <TooltipProvider>
+              <Toaster />
+              <Sonner />
+              <OfflineDetector />
+              <BrowserRouter>
+                <AdminFloatingButton />
+                <ZoomControl />
+                <HomeButton />
+                <BackButton />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/tiers" element={<Tiers />} />
@@ -212,11 +216,12 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <MusicPlayer />
-        </BrowserRouter>
-          </TooltipProvider>
-        </LowDataModeProvider>
-    </ThemeProvider>
-  </QueryClientProvider>
+              </BrowserRouter>
+            </TooltipProvider>
+          </LowDataModeProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 };
 
