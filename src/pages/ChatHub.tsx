@@ -834,6 +834,7 @@ const ChatHub = () => {
 
         {/* Header */}
         <div className="flex items-start justify-between bg-card rounded-lg p-4 shadow-soft">
+          {/* Left: Home and Back buttons */}
           <div className="flex flex-col gap-2">
             <Button
               variant="outline"
@@ -853,6 +854,39 @@ const ChatHub = () => {
               <ArrowLeft className="w-4 h-4" />
               Back
             </Button>
+          </div>
+          
+          {/* Center: Title and button group */}
+          <div className="flex-1 flex flex-col items-center justify-center space-y-3">
+            {/* Title */}
+            <div className="text-center space-y-1">
+              <div className="flex items-center justify-center gap-2">
+                <h2 className="text-lg font-semibold text-gray-900">
+                  {currentRoom.nameEn === currentRoom.nameVi 
+                    ? currentRoom.nameEn 
+                    : `${currentRoom.nameEn} / ${currentRoom.nameVi}`}
+                </h2>
+                {info && (
+                  <Badge variant="secondary" className="text-xs">
+                    {info.tier === 'free' ? 'Free' : info.tier?.toUpperCase().replace('VIP', 'VIP ')}
+                  </Badge>
+                )}
+              </div>
+              <div className="flex items-center justify-center gap-2 text-xs font-medium text-primary">
+                <ProfileAvatarUpload
+                  currentAvatarUrl={avatarUrl}
+                  onUploadSuccess={(url) => setAvatarUrl(url)}
+                />
+                <span>{username || 'User'}</span>
+                {tier && (
+                  <span className="font-semibold">{tier.toUpperCase()}</span>
+                )}
+                <span>•</span>
+                <span>You have explored {progress.totalRooms} {progress.totalRooms === 1 ? 'topic' : 'topics'}, {progress.streak} day streak! 🔥</span>
+              </div>
+            </div>
+            
+            {/* Button group: Favorite, My Rooms, Recent */}
             <div className="flex gap-2">
               <Button
                 variant="ghost"
@@ -869,261 +903,232 @@ const ChatHub = () => {
                 <Heart className={`w-4 h-4 ${isRoomFavorite(roomId || '') ? 'fill-red-500 text-red-500' : 'text-gray-400'}`} />
                 Favorite
               </Button>
-            <DropdownMenu onOpenChange={(open) => !open && setFavoriteSearch("")}>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="gap-2"
-                >
-                  <Star className="w-4 h-4 text-yellow-500" />
-                  My Rooms ({favoriteRooms.length})
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-[320px] bg-background border-2 z-[100]">
-                <DropdownMenuLabel>My Favorite Rooms</DropdownMenuLabel>
-                <div className="px-2 pb-2">
-                  <Input
-                    placeholder="Search favorites..."
-                    value={favoriteSearch}
-                    onChange={(e) => setFavoriteSearch(e.target.value)}
-                    className="h-8 text-sm"
-                    onClick={(e) => e.stopPropagation()}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Escape') {
-                        setFavoriteSearch('');
-                      }
-                      e.stopPropagation();
-                    }}
-                    autoFocus
-                  />
-                </div>
-                <DropdownMenuSeparator />
-                <ScrollArea className="h-[300px]">
-                  {favoriteRooms.length === 0 ? (
-                    <div className="p-4 text-center text-sm text-muted-foreground">
-                      No favorite rooms yet. Click the heart icon to add rooms.
-                    </div>
-                  ) : (
-                    favoriteRooms
-                      .filter(room => {
-                        if (!favoriteSearch) return true;
-                        const search = favoriteSearch.toLowerCase();
-                        return (
-                          room.nameEn.toLowerCase().includes(search) ||
-                          room.nameVi.toLowerCase().includes(search) ||
-                          room.tier.toLowerCase().includes(search)
-                        );
-                      })
-                      .map((room) => (
-                        <DropdownMenuItem
-                          key={room.id}
-                          onClick={() => navigate(`/room/${room.id}`)}
-                          className="cursor-pointer flex items-center justify-between"
-                        >
-                          <div className="flex flex-col">
-                            <span className="text-sm font-medium">{room.nameEn}</span>
-                            {room.nameEn !== room.nameVi && (
-                              <span className="text-xs text-muted-foreground">{room.nameVi}</span>
-                            )}
-                            <Badge variant="secondary" className="text-xs w-fit mt-1">
-                              {room.tier === 'free' ? 'Free' : room.tier.toUpperCase()}
-                            </Badge>
-                          </div>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              toggleRoomFavorite(room);
-                            }}
-                            className="h-6 w-6 p-0"
+              <DropdownMenu onOpenChange={(open) => !open && setFavoriteSearch("")}>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="gap-2"
+                  >
+                    <Star className="w-4 h-4 text-yellow-500" />
+                    My Rooms ({favoriteRooms.length})
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-[320px] bg-background border-2 z-[100]">
+                  <DropdownMenuLabel>My Favorite Rooms</DropdownMenuLabel>
+                  <div className="px-2 pb-2">
+                    <Input
+                      placeholder="Search favorites..."
+                      value={favoriteSearch}
+                      onChange={(e) => setFavoriteSearch(e.target.value)}
+                      className="h-8 text-sm"
+                      onClick={(e) => e.stopPropagation()}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Escape') {
+                          setFavoriteSearch('');
+                        }
+                        e.stopPropagation();
+                      }}
+                      autoFocus
+                    />
+                  </div>
+                  <DropdownMenuSeparator />
+                  <ScrollArea className="h-[300px]">
+                    {favoriteRooms.length === 0 ? (
+                      <div className="p-4 text-center text-sm text-muted-foreground">
+                        No favorite rooms yet. Click the heart icon to add rooms.
+                      </div>
+                    ) : (
+                      favoriteRooms
+                        .filter(room => {
+                          if (!favoriteSearch) return true;
+                          const search = favoriteSearch.toLowerCase();
+                          return (
+                            room.nameEn.toLowerCase().includes(search) ||
+                            room.nameVi.toLowerCase().includes(search) ||
+                            room.tier.toLowerCase().includes(search)
+                          );
+                        })
+                        .map((room) => (
+                          <DropdownMenuItem
+                            key={room.id}
+                            onClick={() => navigate(`/room/${room.id}`)}
+                            className="cursor-pointer flex items-center justify-between"
                           >
-                            <Heart className="h-3 w-3 fill-red-500 text-red-500" />
-                          </Button>
-                        </DropdownMenuItem>
-                      ))
-                  )}
-                  {favoriteSearch && favoriteRooms.filter(room => {
-                    const search = favoriteSearch.toLowerCase();
-                    return (
-                      room.nameEn.toLowerCase().includes(search) ||
-                      room.nameVi.toLowerCase().includes(search) ||
-                      room.tier.toLowerCase().includes(search)
-                    );
-                  }).length === 0 && (
-                    <div className="p-4 text-center text-sm text-muted-foreground">
-                      No rooms match "{favoriteSearch}"
-                    </div>
-                  )}
-                </ScrollArea>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            
-            <DropdownMenu onOpenChange={(open) => !open && setRecentSearch("")}>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="gap-2"
-                >
-                  <History className="w-4 h-4 text-blue-500" />
-                  Recent ({recentRooms.length})
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-[320px] bg-background border-2 z-[100]">
-                <DropdownMenuLabel className="flex items-center justify-between">
-                  <span>Recently Visited</span>
-                  {recentRooms.length > 0 && (
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={clearRecentRooms}
-                      className="h-6 px-2 text-xs"
-                    >
-                      Clear
-                    </Button>
-                  )}
-                </DropdownMenuLabel>
-                <div className="px-2 pb-2">
-                  <Input
-                    placeholder="Search recent..."
-                    value={recentSearch}
-                    onChange={(e) => setRecentSearch(e.target.value)}
-                    className="h-8 text-sm"
-                    onClick={(e) => e.stopPropagation()}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Escape') {
-                        setRecentSearch('');
-                      }
-                      e.stopPropagation();
-                    }}
-                    autoFocus
-                  />
-                </div>
-                <DropdownMenuSeparator />
-                <ScrollArea className="h-[300px]">
-                  {recentRooms.length === 0 ? (
-                    <div className="p-4 text-center text-sm text-muted-foreground">
-                      No recent rooms yet. Visit some rooms to see them here.
-                    </div>
-                  ) : (
-                    recentRooms
-                      .filter(room => {
-                        if (!recentSearch) return true;
-                        const search = recentSearch.toLowerCase();
-                        return (
-                          room.nameEn.toLowerCase().includes(search) ||
-                          room.nameVi.toLowerCase().includes(search) ||
-                          room.tier.toLowerCase().includes(search)
-                        );
-                      })
-                      .map((room) => (
-                        <DropdownMenuItem
-                          key={room.id}
-                          onClick={() => navigate(`/room/${room.id}`)}
-                          className="cursor-pointer flex items-center justify-between"
-                        >
-                          <div className="flex flex-col flex-1">
-                            <span className="text-sm font-medium">{room.nameEn}</span>
-                            {room.nameEn !== room.nameVi && (
-                              <span className="text-xs text-muted-foreground">{room.nameVi}</span>
-                            )}
-                            <div className="flex items-center gap-2 mt-1">
-                              <Badge variant="secondary" className="text-xs w-fit">
+                            <div className="flex flex-col">
+                              <span className="text-sm font-medium">{room.nameEn}</span>
+                              {room.nameEn !== room.nameVi && (
+                                <span className="text-xs text-muted-foreground">{room.nameVi}</span>
+                              )}
+                              <Badge variant="secondary" className="text-xs w-fit mt-1">
                                 {room.tier === 'free' ? 'Free' : room.tier.toUpperCase()}
                               </Badge>
-                              <span className="text-xs text-muted-foreground flex items-center gap-1">
-                                <Clock className="h-3 w-3" />
-                                {new Date(room.visitedAt).toLocaleDateString()}
-                              </span>
                             </div>
-                          </div>
-                        </DropdownMenuItem>
-                      ))
-                  )}
-                  {recentSearch && recentRooms.filter(room => {
-                    const search = recentSearch.toLowerCase();
-                    return (
-                      room.nameEn.toLowerCase().includes(search) ||
-                      room.nameVi.toLowerCase().includes(search) ||
-                      room.tier.toLowerCase().includes(search)
-                    );
-                  }).length === 0 && (
-                    <div className="p-4 text-center text-sm text-muted-foreground">
-                      No rooms match "{recentSearch}"
-                    </div>
-                  )}
-                </ScrollArea>
-              </DropdownMenuContent>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                toggleRoomFavorite(room);
+                              }}
+                              className="h-6 w-6 p-0"
+                            >
+                              <Heart className="h-3 w-3 fill-red-500 text-red-500" />
+                            </Button>
+                          </DropdownMenuItem>
+                        ))
+                    )}
+                    {favoriteSearch && favoriteRooms.filter(room => {
+                      const search = favoriteSearch.toLowerCase();
+                      return (
+                        room.nameEn.toLowerCase().includes(search) ||
+                        room.nameVi.toLowerCase().includes(search) ||
+                        room.tier.toLowerCase().includes(search)
+                      );
+                    }).length === 0 && (
+                      <div className="p-4 text-center text-sm text-muted-foreground">
+                        No rooms match "{favoriteSearch}"
+                      </div>
+                    )}
+                  </ScrollArea>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              
+              <DropdownMenu onOpenChange={(open) => !open && setRecentSearch("")}>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="gap-2"
+                  >
+                    <History className="w-4 h-4 text-blue-500" />
+                    Recent ({recentRooms.length})
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-[320px] bg-background border-2 z-[100]">
+                  <DropdownMenuLabel className="flex items-center justify-between">
+                    <span>Recently Visited</span>
+                    {recentRooms.length > 0 && (
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={clearRecentRooms}
+                        className="h-6 px-2 text-xs"
+                      >
+                        Clear
+                      </Button>
+                    )}
+                  </DropdownMenuLabel>
+                  <div className="px-2 pb-2">
+                    <Input
+                      placeholder="Search recent..."
+                      value={recentSearch}
+                      onChange={(e) => setRecentSearch(e.target.value)}
+                      className="h-8 text-sm"
+                      onClick={(e) => e.stopPropagation()}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Escape') {
+                          setRecentSearch('');
+                        }
+                        e.stopPropagation();
+                      }}
+                      autoFocus
+                    />
+                  </div>
+                  <DropdownMenuSeparator />
+                  <ScrollArea className="h-[300px]">
+                    {recentRooms.length === 0 ? (
+                      <div className="p-4 text-center text-sm text-muted-foreground">
+                        No recent rooms yet. Visit some rooms to see them here.
+                      </div>
+                    ) : (
+                      recentRooms
+                        .filter(room => {
+                          if (!recentSearch) return true;
+                          const search = recentSearch.toLowerCase();
+                          return (
+                            room.nameEn.toLowerCase().includes(search) ||
+                            room.nameVi.toLowerCase().includes(search) ||
+                            room.tier.toLowerCase().includes(search)
+                          );
+                        })
+                        .map((room) => (
+                          <DropdownMenuItem
+                            key={room.id}
+                            onClick={() => navigate(`/room/${room.id}`)}
+                            className="cursor-pointer flex items-center justify-between"
+                          >
+                            <div className="flex flex-col flex-1">
+                              <span className="text-sm font-medium">{room.nameEn}</span>
+                              {room.nameEn !== room.nameVi && (
+                                <span className="text-xs text-muted-foreground">{room.nameVi}</span>
+                              )}
+                              <div className="flex items-center gap-2 mt-1">
+                                <Badge variant="secondary" className="text-xs w-fit">
+                                  {room.tier === 'free' ? 'Free' : room.tier.toUpperCase()}
+                                </Badge>
+                                <span className="text-xs text-muted-foreground flex items-center gap-1">
+                                  <Clock className="h-3 w-3" />
+                                  {new Date(room.visitedAt).toLocaleDateString()}
+                                </span>
+                              </div>
+                            </div>
+                          </DropdownMenuItem>
+                        ))
+                    )}
+                    {recentSearch && recentRooms.filter(room => {
+                      const search = recentSearch.toLowerCase();
+                      return (
+                        room.nameEn.toLowerCase().includes(search) ||
+                        room.nameVi.toLowerCase().includes(search) ||
+                        room.tier.toLowerCase().includes(search)
+                      );
+                    }).length === 0 && (
+                      <div className="p-4 text-center text-sm text-muted-foreground">
+                        No rooms match "{recentSearch}"
+                      </div>
+                    )}
+                  </ScrollArea>
+                </DropdownMenuContent>
               </DropdownMenu>
             </div>
           </div>
          
-          {/* Admin buttons - positioned independently */}
-          {isAdmin && (
-            <div className="flex items-center gap-2 justify-start">
-              {roomId && (
+          {/* Right: Admin buttons and Refresh */}
+          <div className="flex flex-col gap-2 items-end">
+            {isAdmin && (
+              <div className="flex items-center gap-2">
+                {roomId && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const key = roomId && (/(?:-(free|vip1|vip2|vip3|vip4))$/.test(roomId) ? roomId : (info?.tier ? `${roomId}-${info.tier}` : roomId));
+                      const manifestVal = key ? PUBLIC_ROOM_MANIFEST[key] : undefined;
+                      const fileName = manifestVal ? manifestVal.replace(/^data\//, '') : `${roomId.replace(/-/g, '_')}.json`;
+                      navigator.clipboard.writeText(fileName);
+                      toast({
+                        title: "Copied!",
+                        description: `JSON: ${fileName}`,
+                      });
+                    }}
+                    className="w-[1em] h-[1em] rounded-full bg-primary hover:bg-primary/90 cursor-pointer flex-shrink-0 transition-colors"
+                    title="Copy JSON filename"
+                  />
+                )}
                 <button
                   type="button"
                   onClick={() => {
-                    const key = roomId && (/(?:-(free|vip1|vip2|vip3|vip4))$/.test(roomId) ? roomId : (info?.tier ? `${roomId}-${info.tier}` : roomId));
-                    const manifestVal = key ? PUBLIC_ROOM_MANIFEST[key] : undefined;
-                    const fileName = manifestVal ? manifestVal.replace(/^data\//, '') : `${roomId.replace(/-/g, '_')}.json`;
-                    navigator.clipboard.writeText(fileName);
+                    navigator.clipboard.writeText(roomId || '');
                     toast({
                       title: "Copied!",
-                      description: `JSON: ${fileName}`,
+                      description: `Room ID: ${roomId}`,
                     });
                   }}
-                  className="w-[1em] h-[1em] rounded-full bg-primary hover:bg-primary/90 cursor-pointer flex-shrink-0 transition-colors"
-                  title="Copy JSON filename"
+                  className="w-[1em] h-[1em] rounded-full bg-blue-600 hover:bg-blue-700 cursor-pointer flex-shrink-0 transition-colors"
+                  title="Copy Room ID"
                 />
-              )}
-              <button
-                type="button"
-                onClick={() => {
-                  navigator.clipboard.writeText(roomId || '');
-                  toast({
-                    title: "Copied!",
-                    description: `Room ID: ${roomId}`,
-                  });
-                }}
-                className="w-[1em] h-[1em] rounded-full bg-blue-600 hover:bg-blue-700 cursor-pointer flex-shrink-0 transition-colors"
-                title="Copy Room ID"
-              />
-            </div>
-          )}
-          
-          {/* Title - centered independently */}
-          <div className="text-center space-y-1">
-            <div className="flex items-center justify-center gap-2">
-              <h2 className="text-lg font-semibold text-gray-900">
-                {currentRoom.nameEn === currentRoom.nameVi 
-                  ? currentRoom.nameEn 
-                  : `${currentRoom.nameEn} / ${currentRoom.nameVi}`}
-              </h2>
-              {info && (
-                <Badge variant="secondary" className="text-xs">
-                  {info.tier === 'free' ? 'Free' : info.tier?.toUpperCase().replace('VIP', 'VIP ')}
-                </Badge>
-              )}
-            </div>
-            <div className="flex items-center justify-center gap-2 text-xs font-medium text-primary">
-              <ProfileAvatarUpload
-                currentAvatarUrl={avatarUrl}
-                onUploadSuccess={(url) => setAvatarUrl(url)}
-              />
-              <span>{username || 'User'}</span>
-              {tier && (
-                <span className="font-semibold">{tier.toUpperCase()}</span>
-              )}
-              <span>•</span>
-              <span>You have explored {progress.totalRooms} {progress.totalRooms === 1 ? 'topic' : 'topics'}, {progress.streak} day streak! 🔥</span>
-            </div>
-          </div>
-         
-          <div className="flex items-center gap-2">
+              </div>
+            )}
             <Button
               variant="outline"
               size="sm"
