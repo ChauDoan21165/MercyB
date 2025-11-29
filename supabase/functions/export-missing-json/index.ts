@@ -1,5 +1,18 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
+// Canonical tier labels from Design System v1.1
+const TIERS = {
+  FREE: "Free / Miễn phí",
+  VIP1: "VIP1 / VIP1",
+  VIP2: "VIP2 / VIP2",
+  VIP3: "VIP3 / VIP3",
+  VIP3II: "VIP3 II / VIP3 II",
+  VIP4: "VIP4 / VIP4",
+  VIP5: "VIP5 / VIP5",
+  VIP6: "VIP6 / VIP6",
+  VIP9: "VIP9 / Cấp VIP9",
+} as const;
+
 Deno.serve(async (req) => {
   try {
     const supabaseClient = createClient(
@@ -25,7 +38,7 @@ Deno.serve(async (req) => {
     for (const room of roomsWithContent) {
       jsonFiles[room.id] = {
         id: room.id,
-        tier: room.tier || "Free / Miễn phí",
+        tier: room.tier || TIERS.FREE,
         domain: room.domain || "",
         title: {
           en: room.title_en || "",

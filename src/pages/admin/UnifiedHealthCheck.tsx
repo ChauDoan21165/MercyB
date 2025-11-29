@@ -14,6 +14,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { guardedCall } from "@/lib/guardedCall";
+import { normalizeTier, tierIdToLabel, type TierId } from "@/lib/constants/tiers";
 
 interface RoomIssue {
   roomId: string;
@@ -86,18 +87,13 @@ interface RoomHealth {
   issues: RoomIssue[];
 }
 
-const TIER_DISPLAY_NAMES: Record<string, string> = {
-  free: "Free",
-  "Free / Miễn phí": "Free",
-  vip1: "VIP1",
-  VIP1: "VIP1",
-  vip2: "VIP2",
-  VIP2: "VIP2",
-  vip3: "VIP3",
-  VIP3: "VIP3",
-  vip4: "VIP4",
-  VIP4: "VIP4",
-  vip5: "VIP5",
+// Helper function to get display name for any tier string
+function getTierDisplayName(tier: string | null | undefined): string {
+  if (!tier) return "Free";
+  const tierId = normalizeTier(tier);
+  const label = tierIdToLabel(tierId);
+  return label.split(' / ')[0]; // Return English part only
+}
   VIP5: "VIP5",
   vip6: "VIP6",
   VIP6: "VIP6",
@@ -246,7 +242,7 @@ export default function UnifiedHealthCheck() {
     { value: "kidslevel3", label: "Kids Level 3" },
   ];
 
-  const tierDisplay = TIER_DISPLAY_NAMES[selectedTier] || selectedTier.toUpperCase();
+  const tierDisplay = getTierDisplayName(selectedTier);
 
   useEffect(() => {
     if (selectedTier.startsWith("kidslevel")) {
@@ -391,7 +387,7 @@ export default function UnifiedHealthCheck() {
     const report: DeepRoomReport = {
       roomId: room.id,
       roomTitle: room.title_en,
-      tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
+      tier: getTierDisplayName(room.tier),
       jsonPath,
       summary: {
         totalIssues: 0,
@@ -1937,7 +1933,7 @@ export default function UnifiedHealthCheck() {
             roomIssues.push({
               roomId: room.id,
               roomTitle: room.title_en,
-              tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
+              tier: getTierDisplayName(room.tier),
               issueType: "invalid_json",
               message: "Invalid JSON syntax in file",
               details: parseError.message,
@@ -1966,7 +1962,7 @@ export default function UnifiedHealthCheck() {
         roomIssues.push({
           roomId: room.id,
           roomTitle: room.title_en,
-          tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
+          tier: getTierDisplayName(room.tier),
           issueType: "missing_file",
           message: htmlDetected
             ? "File returns HTML instead of JSON (file missing)"
@@ -1982,7 +1978,7 @@ export default function UnifiedHealthCheck() {
           roomIssues.push({
             roomId: room.id,
             roomTitle: room.title_en,
-            tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
+            tier: getTierDisplayName(room.tier),
             issueType: "no_entries",
             message: "Room has no entries",
             resolvedPath,
@@ -1996,7 +1992,7 @@ export default function UnifiedHealthCheck() {
         roomIssues.push({
           roomId: room.id,
           roomTitle: room.title_en,
-          tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
+          tier: getTierDisplayName(room.tier),
           issueType: "locked",
           message: "Room is locked",
           resolvedPath,
