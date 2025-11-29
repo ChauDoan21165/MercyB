@@ -1,5 +1,7 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { auditLog } from "../_shared/audit.ts"
+import { rateLimit, getClientIP } from "../_shared/rateLimit.ts"
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -32,6 +34,19 @@ serve(async (req) => {
         JSON.stringify({ error: 'Invalid authentication' }),
         { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       )
+    }
+
+    // Rate limit manual payment submissions
+    try {
+      const clientIP = getClientIP(req);
+      await rateLimit(`verify-payment:${user.id}:${clientIP}`, 5, 300_000); // 5 calls per 5 minutes
+    } catch (error) {
+      if (error instanceof Error && error.message === 'RATE_LIMIT_EXCEEDED') {
+        return new Response(
+          JSON.stringify({ error: 'Too many payment submissions. Please wait a few minutes.' }),
+          { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
     }
 
     const { imageUrl, tierId, username, expectedAmount } = await req.json()
@@ -182,6 +197,20 @@ serve(async (req) => {
       
       if (subError) {
         console.error('Failed to create subscription:', subError)
+      } else {
+        // Audit log for auto-approved manual payment
+        await auditLog({
+          type: 'MANUAL_PAYMENT_AUTO_APPROVED',
+          user_id: user.id,
+          metadata: {
+            tier_id: tierId,
+            username: username,
+            extracted_amount: extractedAmount,
+            expected_amount: expectedAmount,
+            confidence: confidence,
+            transaction_id: extracted.transaction_id,
+          },
+        });
       }
     }
 
