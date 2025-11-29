@@ -1,48 +1,39 @@
 import { Card } from "@/components/ui/card";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
-import { CheckCircle2, Lock, Crown, Sparkles, RefreshCw, BookOpen, ChevronLeft, Building2 } from "lucide-react";
+import { Crown, Sparkles, RefreshCw, BookOpen, ChevronLeft, Building2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ALL_ROOMS } from "@/lib/roomData";
 import { VIPNavigation } from "@/components/VIPNavigation";
 import { useUserAccess } from "@/hooks/useUserAccess";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { highlightTextByRules, highlightShortTitle } from "@/lib/wordColorHighlighter";
+import { highlightTextByRules } from "@/lib/wordColorHighlighter";
 import { AudioPlayer } from "@/components/AudioPlayer";
+import { useVipRooms } from '@/hooks/useVipRooms';
+import { VirtualizedRoomGrid } from '@/components/VirtualizedRoomGrid';
+import { RoomGridSkeleton } from '@/components/RoomCardSkeleton';
+import { TIERS, ROOM_GRID_CLASS } from '@/lib/constants';
 
 const RoomGridVIP3II = () => {
   const navigate = useNavigate();
-  const { canAccessVIP3II, isAdmin, isAuthenticated, loading } = useUserAccess();
+  const { canAccessVIP3II, isAdmin, loading: accessLoading } = useUserAccess();
   const { toast } = useToast();
-  const [isRefreshing, setIsRefreshing] = useState(false);
   const [isIntroPlaying, setIsIntroPlaying] = useState(false);
+  const { rooms, loading, error, refresh } = useVipRooms('vip3');
 
-  // Allow browsing for all users - they'll see restrictions in individual rooms
-  // No redirect for unauthenticated users
-
-  const [roomsVersion, setRoomsVersion] = useState(0);
-  useEffect(() => {
-    const handle = () => setRoomsVersion(v => v + 1);
-    window.addEventListener('rooms-loaded', handle as any);
-    return () => window.removeEventListener('rooms-loaded', handle as any);
-  }, []);
-
-  const handleRefreshRooms = () => {
-    setIsRefreshing(true);
+  const handleRefreshRooms = async () => {
     toast({
       title: "Refreshing rooms...",
-      description: "Reloading room registry from files",
+      description: "Reloading VIP3 II rooms",
     });
-    
-    window.dispatchEvent(new Event('roomDataUpdated'));
-    
-    setTimeout(() => {
-      window.location.reload();
-    }, 500);
+    refresh();
+    toast({
+      title: "Refreshed!",
+      description: "VIP3 II rooms updated",
+    });
   };
 
-  if (loading) {
+  if (accessLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <p className="text-muted-foreground">Loading...</p>
@@ -51,7 +42,7 @@ const RoomGridVIP3II = () => {
   }
 
   // Filter only VIP3 II rooms (rooms with '-vip3-ii' in their ID)
-  const vip3IIRooms = ALL_ROOMS.filter(r => r.id.includes('-vip3-ii'));
+  const vip3IIRooms = rooms.filter(r => r.id.includes('-vip3-ii'));
 
   return (
     <div className="min-h-screen">
@@ -62,7 +53,6 @@ const RoomGridVIP3II = () => {
       
       <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, hsl(220, 70%, 95%), hsl(250, 70%, 95%))' }}>
         <div className="container mx-auto px-4 py-8 max-w-7xl">
-          {/* Header */}
           <div className="mb-8 space-y-4">
             <div className="flex items-center justify-between mb-4">
               <span className="text-lg text-gray-700 font-medium">
@@ -74,10 +64,11 @@ const RoomGridVIP3II = () => {
                   variant="outline"
                   size="sm"
                   onClick={handleRefreshRooms}
-                  disabled={isRefreshing}
+                  disabled={loading}
                   className="flex items-center gap-2 bg-white/80"
+                  aria-label="Refresh VIP3 II rooms"
                 >
-                  <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+                  <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} aria-hidden="true" />
                   Refresh Rooms
                 </Button>
               )}
@@ -85,9 +76,9 @@ const RoomGridVIP3II = () => {
             
             <div className="text-center space-y-2">
               <div className="flex items-center justify-center gap-2">
-                <Crown className="h-8 w-8 text-purple-600" />
-                <BookOpen className="h-8 w-8 text-blue-600" />
-                <Sparkles className="h-8 w-8 text-indigo-600" />
+                <Crown className="h-8 w-8 text-purple-600" aria-hidden="true" />
+                <BookOpen className="h-8 w-8 text-blue-600" aria-hidden="true" />
+                <Sparkles className="h-8 w-8 text-indigo-600" aria-hidden="true" />
                 <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
                   {highlightTextByRules("VIP3 II – English Specialization Mastery", false)}
                 </h1>
@@ -96,7 +87,7 @@ const RoomGridVIP3II = () => {
                 {highlightTextByRules("VIP3 II – Làm Chủ Chuyên Ngành Tiếng Anh", true)}
               </p>
               <p className="text-sm text-gray-600">
-                {vip3IIRooms.length} specialized English grammar & academic rooms
+                {loading ? 'Loading...' : `${vip3IIRooms.length} specialized English grammar & academic rooms`}
               </p>
             </div>
           </div>
@@ -105,7 +96,7 @@ const RoomGridVIP3II = () => {
           <Card className="mb-8 bg-white/80 backdrop-blur shadow-lg border-2 border-purple-200">
             <div className="p-6 space-y-6">
               <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg" aria-hidden="true">
                   VIP3 II
                 </div>
                 <div className="flex-1 space-y-4">
@@ -143,12 +134,14 @@ const RoomGridVIP3II = () => {
                 background: 'linear-gradient(135deg, hsl(var(--vip3-primary) / 0.1), hsl(var(--vip3-gold) / 0.1))'
               }}
               onClick={() => navigate('/rooms-vip3')}
+              role="button"
+              aria-label="Back to VIP3 Main Collection"
             >
               <div className="flex items-center justify-between">
-                <ChevronLeft className="h-8 w-8 text-gray-400" />
+                <ChevronLeft className="h-8 w-8 text-gray-400" aria-hidden="true" />
                 <div className="flex items-center gap-4 flex-1 ml-4">
                   <div className="p-3 rounded-full" style={{ background: 'hsl(var(--gradient-rainbow))' }}>
-                    <Building2 className="h-8 w-8 text-white" />
+                    <Building2 className="h-8 w-8 text-white" aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-gray-800 mb-1">
@@ -166,86 +159,94 @@ const RoomGridVIP3II = () => {
             </Card>
           </div>
 
-          {/* Rooms Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-            {vip3IIRooms.map((room, index) => (
-              <Card
-                key={room.id}
-                className={`relative p-3 transition-all duration-300 cursor-pointer group ${
-                  room.hasData 
-                    ? 'hover:scale-110 hover:shadow-xl hover:z-10' 
-                    : 'opacity-60 cursor-not-allowed'
-                }`}
-                style={{ background: 'white', border: '1px solid #e5e7eb' }}
-                onClick={() => {
-                  if (!room.hasData) return;
-                  navigate(`/chat/${room.id}`);
-                }}
-              >
-                {/* Crown Badge */}
-                {room.hasData && (
-                  <div className="absolute bottom-2 right-2 z-10">
-                    <div 
-                      className="rounded-full p-1.5 bg-gradient-to-br from-purple-500 to-blue-600"
-                      style={{
-                        boxShadow: '0 0 15px rgba(139, 92, 246, 0.8)',
-                      }}
-                    >
-                      <BookOpen className="w-4 h-4 text-white" />
-                    </div>
-                  </div>
-                )}
+          {loading && <RoomGridSkeleton count={24} />}
 
-                {/* Status Badge */}
-                <div className="absolute top-1 right-1 z-10">
-                  {room.hasData ? (
-                    <div className="bg-green-500 rounded-full p-1">
-                      <CheckCircle2 className="w-3 h-3 text-white" />
-                    </div>
-                  ) : (
-                    <div className="bg-gray-400 rounded-full p-1">
-                      <Lock className="w-3 h-3 text-white" />
-                    </div>
-                  )}
-                </div>
+          {!loading && vip3IIRooms.length > 0 && (
+            <div className={ROOM_GRID_CLASS}>
+              {vip3IIRooms.map((room, index) => {
+                const hasData = room.entries && (Array.isArray(room.entries) ? room.entries.length > 0 : true);
+                
+                return (
+                  <Card
+                    key={room.id}
+                    className={`relative p-3 transition-all duration-300 cursor-pointer group animate-fade-in ${
+                      hasData 
+                        ? 'hover:scale-110 hover:shadow-xl hover:z-10' 
+                        : 'opacity-60 cursor-not-allowed'
+                    }`}
+                    style={{ 
+                      background: 'white', 
+                      border: '1px solid #e5e7eb',
+                      animationDelay: `${index * 0.05}s`
+                    }}
+                    onClick={() => {
+                      if (!hasData) return;
+                      navigate(`/chat/${room.id}`);
+                    }}
+                    role="button"
+                    tabIndex={hasData ? 0 : -1}
+                    onKeyDown={(e) => {
+                      if (hasData && (e.key === 'Enter' || e.key === ' ')) {
+                        e.preventDefault();
+                        navigate(`/chat/${room.id}`);
+                      }
+                    }}
+                    aria-label={`${room.title_en} - ${room.title_vi}`}
+                  >
+                    {/* Crown Badge */}
+                    {hasData && (
+                      <div className="absolute bottom-2 right-2 z-10">
+                        <div 
+                          className="rounded-full p-1.5 bg-gradient-to-br from-purple-500 to-blue-600"
+                          style={{
+                            boxShadow: '0 0 15px rgba(139, 92, 246, 0.8)',
+                          }}
+                        >
+                          <BookOpen className="w-4 h-4 text-white" aria-hidden="true" />
+                        </div>
+                      </div>
+                    )}
 
-                <div className="space-y-2">
-                  {/* Room Names */}
-                  <div className="space-y-1">
-                    <p
-                      className="text-xs font-bold leading-tight line-clamp-2 text-foreground"
-                    >
-                      {highlightShortTitle(room.nameEn, index, false)}
-                    </p>
-                    <p
-                      className="text-[10px] leading-tight line-clamp-2 text-muted-foreground"
-                    >
-                      {highlightShortTitle(room.nameVi, index, true)}
-                    </p>
-                  </div>
-                </div>
+                    <div className="space-y-2">
+                      <div className="space-y-1">
+                        <p className="text-xs font-bold leading-tight line-clamp-2 text-foreground">
+                          {room.title_en}
+                        </p>
+                        <p className="text-[10px] leading-tight line-clamp-2 text-muted-foreground">
+                          {room.title_vi}
+                        </p>
+                      </div>
+                    </div>
 
-                {/* Hover Effect */}
-                {room.hasData && (
-                  <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg bg-gray-50"
-                  />
-                )}
-              </Card>
-            ))}
-          </div>
+                    {/* Hover Effect */}
+                    {hasData && (
+                      <div
+                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg bg-gray-50"
+                        aria-hidden="true"
+                      />
+                    )}
+                  </Card>
+                );
+              })}
+            </div>
+          )}
 
           {/* Empty State */}
-          {vip3IIRooms.length === 0 && (
+          {!loading && vip3IIRooms.length === 0 && (
             <div className="text-center py-12">
-              <BookOpen className="h-16 w-16 text-purple-300 mx-auto mb-4" />
+              <BookOpen className="h-16 w-16 text-purple-300 mx-auto mb-4" aria-hidden="true" />
               <p className="text-gray-600">No VIP3 II rooms available yet</p>
               <p className="text-sm text-gray-500">Chưa có phòng VIP3 II</p>
             </div>
           )}
+
+          {error && (
+            <div className="text-center py-8">
+              <p className="text-destructive">Error loading rooms: {error.message}</p>
+            </div>
+          )}
         </div>
 
-        {/* Navigation */}
         <VIPNavigation currentPage="vip3_ii" />
       </div>
     </div>

@@ -1315,20 +1315,6 @@ export const roomDataMap: Record<string, RoomData> = {
     "tier": "vip6",
     "hasData": true
   },
-  "vip6-attachment-wounds": {
-    "id": "vip6-attachment-wounds",
-    "nameEn": "Attachment Wounds",
-    "nameVi": "Vết Thương Gắn Bó",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-control-patterns": {
-    "id": "vip6-control-patterns",
-    "nameEn": "Control Patterns",
-    "nameVi": "Mô Thức Kiểm Soát",
-    "tier": "vip6",
-    "hasData": true
-  },
   "vip6-fear-success": {
     "id": "vip6-fear-success",
     "nameEn": "Fear of Success",
@@ -1340,13 +1326,6 @@ export const roomDataMap: Record<string, RoomData> = {
     "id": "vip6-freeze-response",
     "nameEn": "Freeze Response",
     "nameVi": "Phản Ứng Đóng Băng",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-guilt-hidden-shame": {
-    "id": "vip6-guilt-hidden-shame",
-    "nameEn": "Guilt & Hidden Shame",
-    "nameVi": "Tội Lỗi & Nỗi Xấu Hổ Ẩn Giấu",
     "tier": "vip6",
     "hasData": true
   },
@@ -1389,13 +1368,6 @@ export const roomDataMap: Record<string, RoomData> = {
     "id": "vip6-shadow-envy",
     "nameEn": "The Shadow of Envy",
     "nameVi": "Bóng Tối của Sự Ghen Tị",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-shadow-in-love": {
-    "id": "vip6-shadow-in-love",
-    "nameEn": "Shadow in Love",
-    "nameVi": "Bóng Tối Trong Tình Yêu",
     "tier": "vip6",
     "hasData": true
   },
