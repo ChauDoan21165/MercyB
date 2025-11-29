@@ -50,7 +50,15 @@ const loadFromDatabase = async (dbRoomId: string) => {
     .eq('id', dbRoomId)
     .maybeSingle<RoomRow>();
 
-  if (!dbRoom || error) return null;
+  if (error) {
+    console.warn('[roomLoader] Database error for room:', dbRoomId, error);
+    return null;
+  }
+  
+  if (!dbRoom) {
+    console.warn('[roomLoader] Room not found in database:', dbRoomId);
+    return null;
+  }
 
   const hasEntries = Array.isArray(dbRoom.entries) && dbRoom.entries.length > 0;
 
@@ -142,6 +150,8 @@ export const loadMergedRoom = async (roomId: string) => {
 
   const rawUserTier = (subscription?.subscription_tiers as any)?.name || 'Free / Miễn phí';
   const normalizedUserTier: TierId = normalizeTier(rawUserTier);
+  
+  console.log('[roomLoader] Loading room:', roomId, '→', dbRoomId, '| User tier:', normalizedUserTier);
 
   // 3. Normalize room ID
   const dbRoomId = normalizeRoomId(roomId);
@@ -159,11 +169,15 @@ export const loadMergedRoom = async (roomId: string) => {
 
       if (roomData?.tier) {
         const normalizedRoomTier: TierId = normalizeTier(roomData.tier);
+        console.log('[roomLoader] Room tier:', normalizedRoomTier, '| Access check:', canUserAccessRoom(normalizedUserTier, normalizedRoomTier));
 
         // 5. Enforce access control using authenticated tier
         if (!canUserAccessRoom(normalizedUserTier, normalizedRoomTier)) {
+          console.warn('[roomLoader] Access denied:', normalizedUserTier, 'cannot access', normalizedRoomTier);
           throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
         }
+      } else {
+        console.warn('[roomLoader] Room has no tier set:', dbRoomId);
       }
 
       return dbResult;
@@ -172,18 +186,19 @@ export const loadMergedRoom = async (roomId: string) => {
     if (dbError?.message === 'ACCESS_DENIED_INSUFFICIENT_TIER') {
       throw dbError;
     }
-    console.error('Database load failed:', dbError);
+    console.error('[roomLoader] Database load failed:', dbError);
   }
 
   // 6. Fallback to JSON files (with best-effort tier enforcement)
   try {
+    console.warn('[roomLoader] Falling back to JSON for room:', roomId);
     const jsonResult = await loadFromJson(roomId);
     if (jsonResult) {
-      console.warn('Using JSON fallback - tier enforcement may be incomplete');
+      console.warn('[roomLoader] Using JSON fallback - tier enforcement may be incomplete');
       return jsonResult;
     }
   } catch (error) {
-    console.error('Failed to load room:', error);
+    console.error('[roomLoader] Failed to load room:', error);
   }
 
   // 7. Empty fallback

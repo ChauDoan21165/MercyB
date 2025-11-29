@@ -149,6 +149,7 @@ export default function AdminRoomEditor() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin-rooms"] });
+      queryClient.invalidateQueries({ queryKey: ["rooms-cache"] });
       toast({
         title: "Success",
         description: `Room ${isEditMode ? "updated" : "created"} successfully`,
