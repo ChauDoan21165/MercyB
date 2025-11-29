@@ -145,6 +145,12 @@ const TierMap = () => {
       path: '/vip6',
     },
     {
+      tier: 'VIP5',
+      nameEn: 'Interpersonal Intelligence Mastery',
+      nameVi: 'Thành Thạo Trí Tuệ Giao Tiếp',
+      path: '/rooms-vip5',
+    },
+    {
       tier: 'VIP3',
       nameEn: 'Martial Arts',
       nameVi: 'Võ Thuật',
