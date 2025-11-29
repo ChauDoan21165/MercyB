@@ -9,6 +9,14 @@ const normalizeRoomId = (roomId: string): string => {
     // Kids room: strip suffix and convert underscores to hyphens
     return roomId.replace('_kids_l1', '').replace(/_/g, '-');
   }
+  
+  // Handle VIP3II room IDs with Roman numerals (case-insensitive matching)
+  // Convert lowercase roman numerals back to uppercase for database lookup
+  const romanNumeralPattern = /-(i+|ii|iii|iv|v|vi|vii|viii|ix|x)$/gi;
+  if (romanNumeralPattern.test(roomId)) {
+    return roomId.replace(romanNumeralPattern, (match) => match.toUpperCase());
+  }
+  
   // Regular rooms: use as-is (database uses hyphens)
   return roomId;
 };
