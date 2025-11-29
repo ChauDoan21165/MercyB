@@ -405,7 +405,11 @@ export const MusicPlayer = () => {
             <Button
               variant="outline"
               size="sm"
-              className="border-black text-black hover:bg-gray-100 h-8 px-2 gap-1"
+              className={`border-black hover:bg-gray-100 h-8 px-2 gap-1 ${
+                playFromFavorites 
+                  ? 'bg-yellow-200 text-black font-bold' 
+                  : 'text-black bg-white'
+              }`}
             >
               <Music className="h-3 w-3" />
               <span className="text-xs">({favoriteIds.length})</span>
@@ -447,7 +451,11 @@ export const MusicPlayer = () => {
 
         {/* Track Selector */}
         <Select value={currentTrackId} onValueChange={handleTrackChange}>
-          <SelectTrigger className="w-[180px] h-8 border-black text-black bg-white text-xs">
+          <SelectTrigger className={`w-[180px] h-8 border-black text-xs ${
+            !playFromFavorites 
+              ? 'bg-yellow-200 text-black font-bold' 
+              : 'text-black bg-white'
+          }`}>
             <SelectValue placeholder="Select track" />
           </SelectTrigger>
           <SelectContent className="bg-white border-black z-[100]">
