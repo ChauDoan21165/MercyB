@@ -223,7 +223,7 @@ const Welcome = () => {
                     size="lg"
                     variant="outline"
                     className="border-2 border-accent hover:bg-accent/10 min-w-[200px]"
-                    onClick={() => canAccessVIP1 ? navigate("/rooms-vip1") : null}
+                    onClick={() => canAccessVIP1 ? navigate("/vip/vip1") : null}
                     disabled={!canAccessVIP1}
                   >
                     <span className="flex flex-col items-center">
@@ -245,7 +245,7 @@ const Welcome = () => {
                     size="lg"
                     variant="outline"
                     className="border-2 border-primary hover:bg-primary/10 min-w-[200px]"
-                    onClick={() => canAccessVIP2 ? navigate("/rooms-vip2") : null}
+                    onClick={() => canAccessVIP2 ? navigate("/vip/vip2") : null}
                     disabled={!canAccessVIP2}
                   >
                     <span className="flex flex-col items-center">
@@ -267,7 +267,7 @@ const Welcome = () => {
                     size="lg"
                     variant="outline"
                     className="border-2 border-secondary hover:bg-secondary/10 min-w-[200px]"
-                    onClick={() => canAccessVIP3 ? navigate("/rooms-vip3") : null}
+                    onClick={() => canAccessVIP3 ? navigate("/vip/vip3") : null}
                     disabled={!canAccessVIP3}
                   >
                     <span className="flex flex-col items-center">
@@ -289,7 +289,7 @@ const Welcome = () => {
                     size="lg"
                     variant="outline"
                     className="border-2 border-orange-500 hover:bg-orange-500/10 min-w-[200px]"
-                    onClick={() => canAccessVIP4 ? navigate("/rooms-vip4") : null}
+                    onClick={() => canAccessVIP4 ? navigate("/vip/vip4") : null}
                     disabled={!canAccessVIP4}
                   >
                     <span className="flex flex-col items-center">

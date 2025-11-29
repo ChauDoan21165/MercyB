@@ -81,7 +81,7 @@ const SexualityCultureRoom = () => {
           <div className="flex items-center mb-4">
             <Button
               variant="ghost"
-              onClick={() => navigate("/rooms-vip3")}
+              onClick={() => navigate("/vip/vip3")}
               className="flex items-center gap-2"
             >
               ← Back to VIP3 / Quay Lại VIP3

@@ -13,13 +13,13 @@ export const VIPNavigation = ({ currentPage }: VIPNavigationProps) => {
   const { isAdmin, canAccessVIP1, canAccessVIP2, canAccessVIP3, canAccessVIP3II, canAccessVIP4, canAccessVIP5, canAccessVIP6 } = useUserAccess();
 
   const pages = [
-    { name: 'vip1', path: '/rooms-vip1', label: 'VIP1', canAccess: canAccessVIP1 },
-    { name: 'vip2', path: '/rooms-vip2', label: 'VIP2', canAccess: canAccessVIP2 },
-    { name: 'vip3', path: '/rooms-vip3', label: 'VIP3', canAccess: canAccessVIP3 },
-    { name: 'vip3_ii', path: '/rooms-vip3-ii', label: 'VIP3 II', canAccess: canAccessVIP3II },
-    { name: 'vip4', path: '/rooms-vip4', label: 'VIP4 CareerZ', canAccess: canAccessVIP4 },
-    { name: 'vip5', path: '/rooms-vip5', label: 'VIP5 Writing', canAccess: canAccessVIP5 },
-    { name: 'vip6', path: '/vip6', label: 'VIP6 Psychology', canAccess: canAccessVIP6 },
+    { name: 'vip1', path: '/vip/vip1', label: 'VIP1', canAccess: canAccessVIP1 },
+    { name: 'vip2', path: '/vip/vip2', label: 'VIP2', canAccess: canAccessVIP2 },
+    { name: 'vip3', path: '/vip/vip3', label: 'VIP3', canAccess: canAccessVIP3 },
+    { name: 'vip3_ii', path: '/vip/vip3ii', label: 'VIP3 II', canAccess: canAccessVIP3II },
+    { name: 'vip4', path: '/vip/vip4', label: 'VIP4 CareerZ', canAccess: canAccessVIP4 },
+    { name: 'vip5', path: '/vip/vip5', label: 'VIP5 Writing', canAccess: canAccessVIP5 },
+    { name: 'vip6', path: '/vip/vip6', label: 'VIP6 Psychology', canAccess: canAccessVIP6 },
   ];
 
   const currentIndex = currentPage ? pages.findIndex(p => p.name === currentPage) : -1;

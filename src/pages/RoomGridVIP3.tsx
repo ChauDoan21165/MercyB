@@ -108,7 +108,7 @@ const RoomGridVIP3 = () => {
                   borderColor: 'hsl(220, 70%, 60%)',
                   background: 'linear-gradient(135deg, hsl(220, 70%, 98%), hsl(250, 70%, 98%))'
                 }}
-                onClick={() => navigate('/rooms-vip3-ii')}
+                onClick={() => navigate('/vip/vip3ii')}
                 role="button"
                 aria-label="Navigate to VIP3 II English Specialization"
               >
