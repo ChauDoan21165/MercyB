@@ -833,8 +833,8 @@ const ChatHub = () => {
         </div>
 
         {/* Header */}
-        <div className="flex items-center justify-between bg-card rounded-lg p-4 shadow-soft">
-          <div className="flex gap-2">
+        <div className="flex items-start justify-between bg-card rounded-lg p-4 shadow-soft">
+          <div className="flex flex-col gap-2">
             <Button
               variant="outline"
               size="sm"
