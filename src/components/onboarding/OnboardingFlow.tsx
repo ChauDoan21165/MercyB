@@ -26,7 +26,7 @@ const STEPS: OnboardingStep[] = [
     id: 2,
     title: 'How sessions work',
     subtitle:
-      'Pick a room, choose one entry, listen or read, and take a small dare. That's it — one micro-step at a time.',
+      "Pick a room, choose one entry, listen or read, and take a small dare. That's it — one micro-step at a time.",
     bullets: [
       '2–8 entries per room, each with a clear focus',
       'Audio + text so you can learn your way',
