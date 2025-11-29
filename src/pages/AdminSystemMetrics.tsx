@@ -198,23 +198,23 @@ const AdminSystemMetrics = () => {
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span className="text-sm">Tables:</span>
-                  <span className="font-bold">{metrics?.database.tablesCount}</span>
+                  <span className="font-bold">{metrics?.database?.tablesCount ?? 0}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm">Rooms:</span>
-                  <span className="font-bold">{metrics?.database.totalRooms}</span>
+                  <span className="font-bold">{metrics?.database?.totalRooms ?? 0}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm">Entries:</span>
-                  <span className="font-bold">{metrics?.database.totalEntries}</span>
+                  <span className="font-bold">{metrics?.database?.totalEntries ?? 0}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm">Users:</span>
-                  <span className="font-bold">{metrics?.database.usersCount}</span>
+                  <span className="font-bold">{metrics?.database?.usersCount ?? 0}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm">Active Subs:</span>
-                  <span className="font-bold">{metrics?.database.activeSubscriptions}</span>
+                  <span className="font-bold">{metrics?.database?.activeSubscriptions ?? 0}</span>
                 </div>
               </div>
             </CardContent>
@@ -230,19 +230,19 @@ const AdminSystemMetrics = () => {
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span className="text-sm">Audio Files:</span>
-                  <span className="font-bold">{metrics?.storage.audioFiles}</span>
+                  <span className="font-bold">{metrics?.storage?.audioFiles ?? 0}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm">Uploads:</span>
-                  <span className="font-bold">{metrics?.storage.uploadFiles}</span>
+                  <span className="font-bold">{metrics?.storage?.uploadFiles ?? 0}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm">Total Files:</span>
-                  <span className="font-bold">{metrics?.storage.totalFiles}</span>
+                  <span className="font-bold">{metrics?.storage?.totalFiles ?? 0}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm">JSON Size:</span>
-                  <span className="font-bold">{formatBytes(metrics?.database.jsonSizeBytes || 0)}</span>
+                  <span className="font-bold">{formatBytes(metrics?.database?.jsonSizeBytes ?? 0)}</span>
                 </div>
               </div>
             </CardContent>
@@ -283,7 +283,7 @@ const AdminSystemMetrics = () => {
               <Cpu className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{metrics?.ai.totalCalls}</div>
+              <div className="text-2xl font-bold">{metrics?.ai?.totalCalls ?? 0}</div>
               <p className="text-xs text-muted-foreground">Total AI calls tracked</p>
             </CardContent>
           </Card>
@@ -298,11 +298,11 @@ const AdminSystemMetrics = () => {
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span className="text-sm">Security Events:</span>
-                  <span className="font-bold">{metrics?.security.totalEvents}</span>
+                  <span className="font-bold">{metrics?.security?.totalEvents ?? 0}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm">Blocked Users:</span>
-                  <span className="font-bold text-destructive">{metrics?.security.blockedUsers}</span>
+                  <span className="font-bold text-destructive">{metrics?.security?.blockedUsers ?? 0}</span>
                 </div>
               </div>
             </CardContent>
@@ -318,11 +318,11 @@ const AdminSystemMetrics = () => {
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span className="text-sm">Feedback:</span>
-                  <span className="font-bold">{metrics?.moderation.feedbackMessages}</span>
+                  <span className="font-bold">{metrics?.moderation?.feedbackMessages ?? 0}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm">Violations:</span>
-                  <span className="font-bold text-destructive">{metrics?.moderation.violations}</span>
+                  <span className="font-bold text-destructive">{metrics?.moderation?.violations ?? 0}</span>
                 </div>
               </div>
             </CardContent>
