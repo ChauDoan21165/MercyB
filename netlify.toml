@@ -4,3 +4,16 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Block direct access to room JSON files
+[[redirects]]
+  from = "/public/data/*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[headers]]
+  for = "/public/data/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+    Cache-Control = "private, no-cache, no-store, must-revalidate"
