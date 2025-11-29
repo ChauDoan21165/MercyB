@@ -122,12 +122,12 @@ const AdminSystemMetrics = () => {
   };
 
   const getReadinessScore = () => {
-    if (!metrics) return 0;
+    if (!metrics?.database) return 0;
     let score = 0;
     if (metrics.database.tablesCount > 0) score += 20;
     if (metrics.database.totalRooms > 0) score += 20;
-    if (metrics.security.totalEvents >= 0) score += 20;
-    if (metrics.storage.totalFiles > 0) score += 20;
+    if (metrics.security?.totalEvents >= 0) score += 20;
+    if (metrics.storage?.totalFiles > 0) score += 20;
     if (metrics.database.usersCount >= 0) score += 20;
     return score;
   };
