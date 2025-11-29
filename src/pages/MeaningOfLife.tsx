@@ -17,16 +17,16 @@ export default function MeaningOfLife() {
         </header>
         <Card className="p-4 grid gap-3 sm:grid-cols-2">
           <Button asChild variant="default">
-            <Link to="/chat/meaning-of-life-free">Open Free</Link>
+            <Link to="/room/meaning-of-life-free">Open Free</Link>
           </Button>
           <Button asChild variant="secondary">
-            <Link to="/chat/meaning-of-life-vip1">Open VIP1</Link>
+            <Link to="/room/meaning-of-life-vip1">Open VIP1</Link>
           </Button>
           <Button asChild variant="secondary">
-            <Link to="/chat/meaning-of-life-vip2">Open VIP2</Link>
+            <Link to="/room/meaning-of-life-vip2">Open VIP2</Link>
           </Button>
           <Button asChild variant="secondary">
-            <Link to="/chat/meaning-of-life-vip3">Open VIP3</Link>
+            <Link to="/room/meaning-of-life-vip3">Open VIP3</Link>
           </Button>
         </Card>
       </section>

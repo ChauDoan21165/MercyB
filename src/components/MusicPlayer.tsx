@@ -204,7 +204,7 @@ export const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrackId, setCurrentTrackId] = useState<string>('1');
   const [volume, setVolume] = useState<number>(50);
-  const [mode, setMode] = useState<"discovery" | "favorites">("discovery");
+  const [mode, setMode] = useState<"all" | "favorites">("all");
   const [isShuffle, setIsShuffle] = useState(false);
   const [shuffledTracks, setShuffledTracks] = useState<typeof TRACKS>([]);
   const { favoriteIds, toggleFavorite, isFavorite } = useFavoriteTracks();
@@ -225,7 +225,7 @@ export const MusicPlayer = () => {
     if (savedTrackId) setCurrentTrackId(savedTrackId);
     if (savedVolume) setVolume(parseInt(savedVolume, 10));
     if (savedShuffle) setIsShuffle(savedShuffle === 'true');
-    // Always start in discovery mode unless explicitly saved as favorites
+    // Always start in "all" mode (common playlist) unless explicitly saved as favorites
     if (savedMode === 'favorites') setMode('favorites');
   }, []);
 
@@ -389,23 +389,23 @@ export const MusicPlayer = () => {
           />
         </Button>
 
-        {/* Mode Buttons: Discovery vs Favorites */}
+        {/* Mode Buttons: Common Playlist vs My Favorites */}
         <div className="flex gap-1">
           <Button
             onClick={() => {
-              setMode("discovery");
-              localStorage.setItem('musicPlayerMode', 'discovery');
+              setMode("all");
+              localStorage.setItem('musicPlayerMode', 'all');
             }}
             variant="outline"
             size="sm"
             className={`border-black h-8 px-2 transition-colors text-xs ${
-              mode === "discovery"
+              mode === "all"
                 ? 'bg-blue-400 text-white hover:bg-blue-500 border-2 font-bold'
                 : 'text-black hover:bg-gray-100'
             }`}
-            title="Play all tracks"
+            title="Play common playlist (all tracks)"
           >
-            All
+            Common
           </Button>
           <Button
             onClick={() => {
@@ -422,10 +422,10 @@ export const MusicPlayer = () => {
                 ? 'bg-pink-400 text-white hover:bg-pink-500 border-2 font-bold'
                 : 'text-black hover:bg-gray-100'
             }`}
-            title={favoriteTracks.length === 0 ? "No favorites yet" : `Play my list (${favoriteTracks.length})`}
+            title={favoriteTracks.length === 0 ? "No favorites yet" : `Play my favorites only (${favoriteTracks.length})`}
           >
             <Heart className={`h-3 w-3 mr-1 ${mode === "favorites" ? 'fill-current' : ''}`} />
-            ({favoriteTracks.length})
+            My List
           </Button>
         </div>
 
