@@ -528,26 +528,65 @@ const AdminDashboard = () => {
         <Dialog open={!!selectedFile} onOpenChange={() => setSelectedFile(null)}>
           <DialogContent className="max-w-5xl max-h-[90vh] bg-white border-2 border-black">
             <DialogHeader>
-              <DialogTitle className="text-black font-mono text-sm">{selectedFile}</DialogTitle>
+              <DialogTitle className="text-black font-mono text-sm flex items-center gap-2">
+                <Code className="h-4 w-4" />
+                {selectedFile}
+              </DialogTitle>
             </DialogHeader>
             <ScrollArea className="h-[70vh]">
-              <div className="bg-gray-50 p-4 rounded border border-gray-300">
-                <p className="text-xs text-gray-600 mb-2">
-                  Full file content will be loaded here. Copy this path and use it with another AI for editing.
-                </p>
-                <pre className="text-xs font-mono text-black bg-white p-3 rounded border border-gray-200 overflow-x-auto">
-                  {selectedFile}
-                </pre>
-                <Button
-                  onClick={() => {
-                    navigator.clipboard.writeText(selectedFile || '');
-                    toast({ title: "Copied!", description: "File path copied to clipboard" });
-                  }}
-                  className="mt-3 border-black text-black bg-white hover:bg-gray-100"
-                  variant="outline"
-                >
-                  Copy Path to Clipboard
-                </Button>
+              <div className="space-y-4 p-4">
+                {/* Instructions */}
+                <div className="bg-blue-50 p-4 rounded border-2 border-blue-600">
+                  <h3 className="font-bold text-black mb-2 flex items-center gap-2">
+                    📋 How to view this file's code
+                  </h3>
+                  <p className="text-sm text-gray-700 mb-3">
+                    To see the full source code, copy the request below and send it to the AI assistant in chat.
+                  </p>
+                  <div className="bg-white p-3 rounded border border-gray-300 font-mono text-xs text-black mb-3">
+                    Show me the full content of {selectedFile}
+                  </div>
+                  <Button
+                    onClick={() => {
+                      const request = `Show me the full content of ${selectedFile}`;
+                      navigator.clipboard.writeText(request);
+                      toast({ 
+                        title: "Copied to clipboard!", 
+                        description: "Paste this message in chat to see the code" 
+                      });
+                    }}
+                    className="w-full border-black text-white bg-black hover:bg-gray-800"
+                  >
+                    📋 Copy Request to Chat
+                  </Button>
+                </div>
+
+                {/* Alternative: Just path */}
+                <div className="bg-gray-50 p-4 rounded border border-gray-300">
+                  <h3 className="font-bold text-black mb-2 text-sm">Or copy just the file path:</h3>
+                  <pre className="text-xs font-mono text-black bg-white p-3 rounded border border-gray-200 overflow-x-auto mb-3">
+{selectedFile}
+                  </pre>
+                  <Button
+                    onClick={() => {
+                      navigator.clipboard.writeText(selectedFile || '');
+                      toast({ title: "Path copied!", description: "File path copied to clipboard" });
+                    }}
+                    className="w-full border-black text-black bg-white hover:bg-gray-100"
+                    variant="outline"
+                  >
+                    Copy Path Only
+                  </Button>
+                </div>
+
+                {/* For sharing with other AI */}
+                <div className="bg-yellow-50 p-4 rounded border border-yellow-600">
+                  <h3 className="font-bold text-black mb-2 text-sm">💡 Tip: Sharing with another AI</h3>
+                  <p className="text-xs text-gray-700">
+                    Ask the AI assistant: "Show me file #{CODE_FILES.find(f => f.path === selectedFile)?.index || '?'}" 
+                    and copy the code from the response to share with another AI for specialized editing.
+                  </p>
+                </div>
               </div>
             </ScrollArea>
           </DialogContent>
