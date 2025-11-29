@@ -1,0 +1,26 @@
+{
+  "id": "public_speaking_all_entries_vip3",
+  "tier": "vip3",
+  "domain": "Public Speaking",
+  "title": {
+    "en": "Public Speaking — All Entries",
+    "vi": "Nói Trước Công Chúng — Tổng Hợp Tất Cả Mục"
+  },
+  "content": {
+    "en": "This master entry gathers every core technique across the four Public Speaking VIP3 rooms—Foundations, Structure, Delivery, and High-Pressure Situations—into one unified reference. Use it as a quick refresher, a study guide, or a daily practice tool. It contains all 33 entries in a single sequence for easy review. Let this serve as your complete map for becoming a calm, clear, and authoritative speaker.",
+    "vi": "Mục tổng hợp này gom tất cả kỹ thuật cốt lõi từ bốn phòng Public Speaking VIP3—Nền Tảng, Cấu Trúc, Trình Bày và Tình Huống Áp Lực—thành một tài liệu duy nhất. Dùng nó để ôn nhanh, học tập hoặc luyện mỗi ngày. Tất cả 33 mục được gộp lại theo trình tự để bạn xem lại dễ dàng. Đây là bản đồ hoàn chỉnh giúp bạn trở thành người nói vững vàng, rõ ràng và thuyết phục."
+  },
+  "entries": [
+    {
+      "slug": "all-public-speaking-entries",
+      "keywords_en": ["public speaking", "all entries", "master"],
+      "keywords_vi": ["nói trước công chúng", "tổng hợp", "toàn bộ"],
+      "copy": {
+        "en": "This master entry includes all Public Speaking VIP3 content in one place:\n\n— Foundations: Understanding Fear, Nervous System Reset, Speaking Identity, Focus on Message, Two-Sentence Warmup, Gentle Exposure, Micro-Rehearsal, Reflective Speaking.\n\n— Structuring Your Message: SPA Framework, Opening Hooks, Clean Points, Story Arcs, Using Examples, Ending Strong, Brevity & Precision, Structure Under Pressure.\n\n— Delivery & Presence: Breath for Grounding, Voice Resonance, Pacing & Rhythm, Power Pauses, Eye Contact, Gestures, Body Anchoring, Managing Live Pressure.\n\n— High-Pressure Speaking: Handling Interruptions, Difficult Questions, Hostile Audience, Speaking to Leadership, Calm Under Attack, Reframing Questions, Maintaining Authority, Repairing Mistakes, Closing with Influence.\n\nReview these entries to understand the full system: regulate your body, structure your message, deliver with presence, and stay steady under pressure.",
+        "vi": "Mục tổng hợp này bao gồm toàn bộ nội dung Public Speaking VIP3 tại một nơi:\n\n— Nền Tảng: Hiểu Nỗi Sợ, Trấn Tâm Thần Kinh, Danh Tính Người Nói, Tập Trung Vào Thông Điệp, Khởi Động Hai Câu, Tiếp Xúc Nhẹ, Tập Vi Mô, Phản Tư Sau Khi Nói.\n\n— Cấu Trúc Thông Điệp: Mô Hình SPA, Mở Đầu Thu Hút, Luận Điểm Sạch, Mạch Chuyện, Ví Dụ Minh Họa, Kết Thúc Mạnh, Ngắn Gọn Và Chính Xác, Giữ Cấu Trúc Dưới Áp Lực.\n\n— Trình Bày & Hiện Diện: Hơi Thở Trấn Tâm, Giọng Nói Vang, Điều Chỉnh Nhịp Nói, Khoảng Dừng Quyền Lực, Giao Tiếp Mắt, Cử Chỉ Tự Nhiên, Neo Cơ Thể, Ứng Xử Áp Lực Trực Tiếp.\n\n— Tình Huống Áp Lực: Xử Lý Bị Cắt Ngang, Câu Hỏi Khó, Khán Giả Thù Địch, Nói Với Lãnh Đạo, Giữ Bình Tĩnh Khi Bị Công Kích, Tái Khung Câu Hỏi, Duy Trì Uy Tín, Phục Hồi Sau Khi Mắc Lỗi, Kết Thúc Có Ảnh Hưởng.\n\nHãy xem lại toàn bộ hệ thống này: điều hòa cơ thể, cấu trúc thông điệp, trình bày có hiện diện và giữ vững khi áp lực."
+      },
+      "tags": ["public speaking", "master", "all"],
+      "audio": "vip3_speaking_all.mp3"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "id": "public_speaking_structure_vip3",
+  "tier": "vip3",
+  "title": {
+    "en": "Structuring Your Message — Room 2",
+    "vi": "Cấu Trúc Thông Điệp — Phòng 2"
+  },
+  "content": {
+    "en": "A powerful speech does not begin with confidence—it begins with structure. When your message has a clear shape, your mind becomes calmer, your delivery becomes smoother, and your audience understands you effortlessly. Most speaking anxiety comes from not knowing where your point begins or ends. Structure removes that uncertainty. In this room, you will learn practical, repeatable speaking frameworks that work in any context: meetings, presentations, interviews, teaching, or everyday communication. We begin with the SPA framework (Situation–Point–Action), a simple tool that keeps your thoughts organized under pressure. You will also learn how to craft strong openings that capture attention, how to build clean points that avoid rambling, and how to use stories and examples to make your message memorable. We explore the psychology of listeners—how the human brain receives information—and how to shape your message so it lands with clarity and impact. Finally, you will learn to conclude confidently, even when your mind goes blank, using simple outro formulas that create closure. The goal of this room is not to turn you into a “perfect” speaker, but to give you a strong, reliable backbone for any message you want to deliver. Once structure feels natural, speaking becomes easier, calmer, and more persuasive.",
+    "vi": "Một bài nói mạnh mẽ không bắt đầu từ sự tự tin—nó bắt đầu từ cấu trúc. Khi thông điệp có hình dạng rõ ràng, tâm trí bạn bình tĩnh hơn, cách nói mạch lạc hơn và khán giả hiểu bạn dễ dàng hơn. Hầu hết lo âu khi nói xuất phát từ việc không biết ý của mình bắt đầu hay kết thúc ở đâu. Cấu trúc loại bỏ sự bất định đó. Trong phòng này, bạn sẽ học các mô hình diễn đạt thực tế, có thể lặp lại trong mọi bối cảnh: họp, trình bày, phỏng vấn, giảng dạy hay giao tiếp hàng ngày. Ta bắt đầu với mô hình SPA (Tình huống–Luận điểm–Hành động), công cụ đơn giản giúp bạn giữ mạch suy nghĩ dưới áp lực. Bạn cũng học cách mở đầu thu hút, cách xây luận điểm sạch sẽ tránh lan man và cách dùng câu chuyện, ví dụ để khiến thông điệp dễ nhớ hơn. Ta khám phá tâm lý người nghe—cách não tiếp nhận thông tin—và cách định hình thông điệp để rõ ràng và thuyết phục. Cuối cùng, bạn học cách kết thúc tự tin bằng những công thức đơn giản, kể cả khi đầu óc trống rỗng. Mục tiêu của phòng này không phải biến bạn thành người nói hoàn hảo, mà là trao cho bạn bộ khung vững để truyền đạt bất kỳ điều gì. Khi cấu trúc trở nên tự nhiên, việc nói sẽ dễ dàng, bình tĩnh và thuyết phục hơn."
+  },
+  "entries": [
+    {
+      "slug": "spa-framework",
+      "keywords_en": ["SPA", "structure", "clarity"],
+      "keywords_vi": ["SPA", "cấu trúc", "rõ ràng"],
+      "copy": {
+        "en": "The SPA framework—Situation, Point, Action—is one of the simplest and most reliable structures for speaking clearly under pressure. Start with the Situation: a brief context so listeners know where they are. Follow with the Point: the main idea you want them to understand. End with the Action: what you want them to do or consider. This structure works for updates, explanations, problem-solving, and decision-making. It keeps your message linear and prevents rambling. When your mind is overwhelmed, SPA gives you a path to follow. Practice it with everyday topics until it feels automatic.",
+        "vi": "Mô hình SPA—Tình huống, Luận điểm, Hành động—là một trong những cấu trúc đơn giản và đáng tin cậy nhất để nói rõ khi áp lực. Bắt đầu bằng Tình huống: bối cảnh ngắn để người nghe định vị. Tiếp theo là Luận điểm: điều quan trọng bạn muốn họ hiểu. Kết thúc bằng Hành động: điều bạn muốn họ làm hoặc suy nghĩ. Cấu trúc này phù hợp với báo cáo, giải thích, xử lý vấn đề và ra quyết định. Nó giữ thông điệp tuyến tính và tránh lan man. Khi tâm trí rối loạn, SPA cho bạn con đường để bám. Hãy luyện với chủ đề hằng ngày cho đến khi nó trở nên tự nhiên."
+      },
+      "tags": ["framework", "clarity", "organization"],
+      "audio": "vip3_speaking_21.mp3"
+    },
+    {
+      "slug": "opening-hooks",
+      "keywords_en": ["opening", "attention", "hook"],
+      "keywords_vi": ["mở đầu", "thu hút", "gợi chú ý"],
+      "copy": {
+        "en": "A strong opening determines whether your audience leans in or mentally checks out. You don’t need dramatic theatrics—just a clear hook. Use one of three options: a question that makes them think, a surprising fact, or a simple one-line purpose statement. Hooks work because they tell the brain: “This matters—pay attention.” Avoid long introductions or apologizing for being nervous. Go straight to clarity. When you open cleanly, your confidence grows because you set the tone rather than reacting to it.",
+        "vi": "Một mở đầu mạnh quyết định khán giả chú ý hay lơ đãng. Bạn không cần kịch tính—chỉ cần một điểm gợi mở rõ. Hãy dùng ba lựa chọn: một câu hỏi gợi suy nghĩ, một thông tin bất ngờ hoặc một câu nêu mục tiêu. Hook hiệu quả vì nó báo cho não: “Điều này quan trọng—hãy chú ý.” Tránh mở đầu dài dòng hoặc xin lỗi vì hồi hộp. Hãy bắt đầu bằng sự rõ ràng. Khi mở tốt, bạn tự tin hơn vì bạn là người định nhịp, không phải chạy theo."
+      },
+      "tags": ["opening", "attention", "clarity"],
+      "audio": "vip3_speaking_22.mp3"
+    },
+    {
+      "slug": "clean-points",
+      "keywords_en": ["points", "logic", "focus"],
+      "keywords_vi": ["luận điểm", "logic", "tập trung"],
+      "copy": {
+        "en": "A clean point is short, specific, and structured around one idea. Most speakers create confusion because they try to make five points at once. Keep each point to one sentence: “My main point is…” followed by proof. Clean points help your audience follow your logic and help you stay calm because you always know where you are. Practicing this skill also strengthens your thinking.",
+        "vi": "Một luận điểm sạch phải ngắn, cụ thể và xoay quanh đúng một ý. Nhiều người gây rối vì cố nói năm ý một lúc. Hãy giữ mỗi luận điểm trong một câu: “Ý chính của tôi là…” kèm bằng chứng. Luận điểm sạch giúp khán giả theo kịp và giúp bạn bình tĩnh vì luôn biết mình đang ở đâu. Kỹ năng này cũng rèn tư duy."
+      },
+      "tags": ["logic", "focus", "clarity"],
+      "audio": "vip3_speaking_23.mp3"
+    },
+    {
+      "slug": "story-arcs",
+      "keywords_en": ["storytelling", "arc", "engagement"],
+      "keywords_vi": ["kể chuyện", "mạch chuyện", "cuốn hút"],
+      "copy": {
+        "en": "Stories are how humans make sense of information. A simple story arc has three parts: setup, tension, and resolution. Use a short story to illustrate a point, not to entertain. The purpose is clarity. A well-chosen story makes abstract ideas concrete and emotional. It also keeps your audience listening because humans instinctively follow narrative structure.",
+        "vi": "Câu chuyện là cách con người hiểu thông tin. Một mạch chuyện đơn giản gồm ba phần: dẫn nhập, cao trào và giải tỏa. Hãy dùng câu chuyện ngắn để minh họa luận điểm, không phải để giải trí. Mục tiêu là sự rõ ràng. Câu chuyện phù hợp biến ý trừu tượng thành cụ thể và cảm xúc. Nó cũng giữ khán giả chú ý vì con người bản năng theo dõi cấu trúc kể chuyện."
+      },
+      "tags": ["storytelling", "engagement", "clarity"],
+      "audio": "vip3_speaking_24.mp3"
+    },
+    {
+      "slug": "using-examples",
+      "keywords_en": ["examples", "illustration", "clarity"],
+      "keywords_vi": ["ví dụ", "minh họa", "rõ ràng"],
+      "copy": {
+        "en": "Examples make your message understandable. Without them, your ideas remain abstract. Use simple, everyday examples that your audience can relate to. One example per point is enough. Avoid piling on too many; it reduces impact. When you illustrate your idea concretely, listeners retain the information longer.",
+        "vi": "Ví dụ giúp thông điệp dễ hiểu. Không có ví dụ, ý của bạn sẽ trừu tượng. Hãy dùng các ví dụ đời thường khán giả dễ liên hệ. Một ví dụ cho mỗi luận điểm là đủ. Tránh dùng quá nhiều vì sẽ giảm hiệu quả. Khi bạn minh họa cụ thể, người nghe ghi nhớ lâu hơn."
+      },
+      "tags": ["illustration", "memory", "clarity"],
+      "audio": "vip3_speaking_25.mp3"
+    },
+    {
+      "slug": "ending-strong",
+      "keywords_en": ["ending", "closure", "impact"],
+      "keywords_vi": ["kết thúc", "đóng lại", "tác động"],
+      "copy": {
+        "en": "A strong ending creates clarity and emotional closure. Use a simple formula: summary + intention. For example: “To sum up, the key idea is X. My invitation is Y.” Avoid trailing off or apologizing. End cleanly. A clear ending signals confidence and helps the audience remember your message.",
+        "vi": "Kết thúc mạnh tạo sự rõ ràng và trọn vẹn cảm xúc. Hãy dùng công thức: tóm tắt + lời mời. Ví dụ: “Tóm lại, ý chính là X. Điều tôi muốn mời bạn là Y.” Tránh kết thúc lửng lơ hoặc xin lỗi. Hãy đóng lại gọn. Kết thúc sáng gọn thể hiện sự tự tin và giúp khán giả nhớ thông điệp."
+      },
+      "tags": ["ending", "memory", "confidence"],
+      "audio": "vip3_speaking_26.mp3"
+    },
+    {
+      "slug": "brevity-precision",
+      "keywords_en": ["brevity", "precision", "clarity"],
+      "keywords_vi": ["ngắn gọn", "chính xác", "rõ ràng"],
+      "copy": {
+        "en": "Brevity is not speaking less—it is removing noise so your message shines. Use shorter sentences, clear transitions, and simple vocabulary. Precision means choosing the exact word that expresses your idea. Practicing brevity helps your mind stay organized and makes you sound more confident and credible.",
+        "vi": "Ngắn gọn không phải nói ít—mà là bỏ bớt nhiễu để thông điệp nổi bật. Hãy dùng câu ngắn, chuyển ý rõ và từ vựng đơn giản. Chính xác nghĩa là chọn đúng từ diễn tả ý. Luyện ngắn gọn giúp tâm trí bạn gọn gàng và khiến bạn nghe tự tin, đáng tin hơn."
+      },
+      "tags": ["precision", "clarity", "communication"],
+      "audio": "vip3_speaking_27.mp3"
+    },
+    {
+      "slug": "structure-under-pressure",
+      "keywords_en": ["pressure", "structure", "stability"],
+      "keywords_vi": ["áp lực", "cấu trúc", "vững vàng"],
+      "copy": {
+        "en": "Pressure collapses structure unless you train for it. When stressed, the brain goes blank because it loses sequence. Use micro-structures: “One point… second point… final point.” Or repeat SPA out loud before speaking. These small cues guide your mind back to order. Under pressure, structure is not decoration—it is survival.",
+        "vi": "Áp lực làm sụp cấu trúc nếu bạn không luyện trước. Khi căng thẳng, não trống rỗng vì mất trình tự. Hãy dùng cấu trúc nhỏ: “Ý thứ nhất… ý thứ hai… ý cuối.” Hoặc nhắc SPA thành tiếng trước khi nói. Những tín hiệu nhỏ này kéo tâm trí bạn về trật tự. Khi áp lực, cấu trúc không phải trang trí—mà là cứu nguy."
+      },
+      "tags": ["pressure", "organization", "calm"],
+      "audio": "vip3_speaking_28.mp3"
+    }
+  ]
+}
