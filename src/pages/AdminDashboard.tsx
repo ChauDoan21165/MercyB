@@ -377,6 +377,7 @@ const AdminDashboard = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
             <QuickActionButton label="Room Specification" path="/admin/room-specification" icon={Activity} />
             <QuickActionButton label="Music Approval" path="/admin/music-approval" icon={Music} />
+            <QuickActionButton label="Music Manager" path="/admin/music-manager" icon={Music} />
           </div>
         </div>
 

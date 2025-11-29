@@ -81,6 +81,7 @@ import EdgeFunctions from "./pages/admin/EdgeFunctions";
 import RoomSpecification from "./pages/admin/RoomSpecification";
 import UserMusicUpload from "./pages/UserMusicUpload";
 import MusicApproval from "./pages/admin/MusicApproval";
+import MusicManager from "./pages/admin/MusicManager";
 import TierMap from "./pages/TierMap";
 
 const queryClient = new QueryClient();
@@ -191,6 +192,7 @@ const App = () => {
           <Route path="/admin/room-specification" element={<RoomSpecification />} />
           <Route path="/user-music-upload" element={<UserMusicUpload />} />
           <Route path="/admin/music-approval" element={<MusicApproval />} />
+          <Route path="/admin/music-manager" element={<MusicManager />} />
           <Route path="/tier-map" element={<TierMap />} />
           <Route path="/audio-upload" element={<AudioUpload />} />
           <Route path="/kids-validation" element={<KidsRoomValidation />} />

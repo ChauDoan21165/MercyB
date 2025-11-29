@@ -113,6 +113,16 @@ const TRACKS = [
   { id: '90', name: 'Serenity (v2)', url: '/audio/2020-06-18_-_Serenity_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
   { id: '91', name: 'Cathedral Ambience (v2)', url: '/audio/2020-06-18_-_Cathedral_Ambience_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
   { id: '92', name: 'Painful Memories (v2)', url: '/audio/2020-08-17_-_Painful_Memories_-_www.FesliyanStudios.com_Steve_Oxen-2.mp3' },
+  { id: '93', name: 'Stasis (1)', url: '/audio/2020-10-27_-_Stasis_-_www.FesliyanStudios.com_Steve_Oxen-2.mp3' },
+  { id: '94', name: 'Upon Reflection (1)', url: '/audio/2020-10-27_-_Upon_Reflection_-_www.FesliyanStudios.com_Steve_Oxen-2.mp3' },
+  { id: '95', name: 'Down Days (1)', url: '/audio/2020-11-16_-_Down_Days_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
+  { id: '96', name: 'Time Alone (1)', url: '/audio/2020-11-17_-_Time_Alone_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
+  { id: '97', name: 'Beauty Of Russia (1)', url: '/audio/2021-05-26_-_Beauty_Of_Russia_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '98', name: 'Irish Sunset (1)', url: '/audio/2021-06-03_-_Irish_Sunset_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '99', name: 'Country Fireside (1)', url: '/audio/2021-10-11_-_Country_Fireside_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '100', name: 'Heaven (1)', url: '/audio/2021-10-20_-_Heaven_-_David_Fesliyan-2.mp3' },
+  { id: '101', name: 'Our Hopes And Dreams (1)', url: '/audio/2022-07-13_-_Our_Hopes_And_Dreams_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '102', name: 'Galaxys Endless Expanse (1)', url: '/audio/2023-05-02_-_Galaxys_Endless_Expanse_-_www.FesliyanStudios.com-2.mp3' },
 ];
 
 export const MusicPlayer = () => {
