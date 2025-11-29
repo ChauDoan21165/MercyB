@@ -204,7 +204,7 @@ export const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrackId, setCurrentTrackId] = useState<string>('1');
   const [volume, setVolume] = useState<number>(50);
-  const [mode, setMode] = useState<"all" | "favorites">("all");
+  const [mode, setMode] = useState<"common" | "favorites">("common");
   const [isShuffle, setIsShuffle] = useState(false);
   const [shuffledTracks, setShuffledTracks] = useState<typeof TRACKS>([]);
   const { favoriteIds, toggleFavorite, isFavorite } = useFavoriteTracks();
@@ -225,7 +225,7 @@ export const MusicPlayer = () => {
     if (savedTrackId) setCurrentTrackId(savedTrackId);
     if (savedVolume) setVolume(parseInt(savedVolume, 10));
     if (savedShuffle) setIsShuffle(savedShuffle === 'true');
-    // Always start in "all" mode (common playlist) unless explicitly saved as favorites
+    // Always start in "common" mode (common playlist) unless explicitly saved as favorites
     if (savedMode === 'favorites') setMode('favorites');
   }, []);
 
@@ -393,13 +393,13 @@ export const MusicPlayer = () => {
         <div className="flex gap-1">
           <Button
             onClick={() => {
-              setMode("all");
-              localStorage.setItem('musicPlayerMode', 'all');
+              setMode("common");
+              localStorage.setItem('musicPlayerMode', 'common');
             }}
             variant="outline"
             size="sm"
             className={`border-black h-8 px-2 transition-colors text-xs ${
-              mode === "all"
+              mode === "common"
                 ? 'bg-blue-400 text-white hover:bg-blue-500 border-2 font-bold'
                 : 'text-black hover:bg-gray-100'
             }`}
