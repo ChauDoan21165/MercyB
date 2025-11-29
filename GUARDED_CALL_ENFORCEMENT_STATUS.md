@@ -94,9 +94,7 @@ if (result.success) {
 
 ---
 
-## Remaining TODOs
-
-None. All admin mutation operations are now using guardedCall.
+All admin mutation operations are now using guardedCall.
 
 ---
 
