@@ -120,6 +120,19 @@ export const AudioPlayer = ({
       console.error('❌ Audio failed to load:', currentAudioPath);
       console.error('Error details:', audio.error);
       console.error('Error event:', e);
+      
+      // Show user-friendly error toast
+      import('@/hooks/use-toast').then(({ toast }) => {
+        toast({
+          title: 'Audio Unavailable',
+          description: 'This audio is temporarily unavailable. Please try another entry or refresh the page.',
+          variant: 'destructive',
+        });
+      });
+      
+      // Mark audio as not ready and stop playback
+      setIsAudioReady(false);
+      setIsPlaying(false);
     };
 
     const handleCanPlay = () => {
@@ -329,7 +342,8 @@ export const AudioPlayer = ({
         size="sm"
         variant="ghost"
         className="h-6 w-6 p-0 shrink-0"
-        title="Play/Pause (Space)"
+        title={!isAudioReady ? "Audio unavailable" : "Play/Pause (Space)"}
+        disabled={!isAudioReady}
       >
         {isPlaying ? (
           <Pause className="h-3 w-3" />

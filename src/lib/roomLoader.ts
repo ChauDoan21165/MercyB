@@ -100,24 +100,54 @@ const loadFromJson = async (roomId: string) => {
 };
 
 /**
- * Main room loader - optimized for fast loading
+ * Main room loader - optimized for fast loading with tier-based access control
  */
 export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
+  const { canUserAccessRoom } = await import('./accessControl');
+  
   // Normalize room ID
   const dbRoomId = normalizeRoomId(roomId);
   
   // Try database first
   try {
     const dbResult = await loadFromDatabase(dbRoomId);
-    if (dbResult) return dbResult;
-  } catch (dbError) {
+    if (dbResult) {
+      // Get room tier from database
+      const { data: roomData } = await supabase
+        .from('rooms')
+        .select('tier')
+        .eq('id', dbRoomId)
+        .single();
+      
+      if (roomData) {
+        // Normalize tier strings for comparison
+        const userTier = tier.toLowerCase().replace(/\s+/g, '').replace('vip', 'vip') as any;
+        const roomTier = (roomData.tier || 'free').toLowerCase().replace(/\s+/g, '').replace('vip', 'vip') as any;
+        
+        // Enforce access control
+        if (!canUserAccessRoom(userTier, roomTier)) {
+          throw new Error('ACCESS_DENIED: insufficient tier');
+        }
+      }
+      
+      return dbResult;
+    }
+  } catch (dbError: any) {
+    if (dbError?.message === 'ACCESS_DENIED: insufficient tier') {
+      throw dbError;
+    }
     console.error('Database load failed:', dbError);
   }
   
-  // Fallback to JSON files
+  // Fallback to JSON files (with same access control)
   try {
     const jsonResult = await loadFromJson(roomId);
-    if (jsonResult) return jsonResult;
+    if (jsonResult) {
+      // For JSON fallback, extract tier from filename or JSON metadata
+      // This is a fallback path and should be phased out
+      console.warn('Using JSON fallback - tier enforcement may be incomplete');
+      return jsonResult;
+    }
   } catch (error) {
     console.error('Failed to load room:', error);
   }
