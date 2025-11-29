@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
+import type { TierId } from '@/lib/constants/tiers';
 
 export interface MinimalRoomData {
   id: string;
@@ -27,21 +28,21 @@ function isSystemFile(id: string): boolean {
 }
 
 // Fetch minimal room data from database
-async function fetchCachedRooms(tier?: string): Promise<MinimalRoomData[]> {
+async function fetchCachedRooms(tierId?: TierId): Promise<MinimalRoomData[]> {
   try {
     let query = supabase
       .from('rooms')
       .select('id, title_en, title_vi, tier, schema_id, domain');
 
     
-    if (tier) {
+    if (tierId) {
       // Normalize tier query - handle variations
-      const normalizedTier = tier.toLowerCase().replace(/\s+/g, '');
+      const normalizedTier = tierId.toLowerCase().replace(/\s+/g, '');
       query = query.ilike('tier', `%${normalizedTier}%`);
     }
     
     // Exclude English Pathway rooms AFTER tier filter, but NOT for free tier
-    if (tier && tier.toLowerCase() !== 'free') {
+    if (tierId && tierId.toLowerCase() !== 'free') {
       query = query.or('domain.is.null,domain.neq."English Foundation Ladder"');
     }
     
@@ -65,10 +66,10 @@ async function fetchCachedRooms(tier?: string): Promise<MinimalRoomData[]> {
   }
 }
 
-export function useCachedRooms(tier?: string) {
+export function useCachedRooms(tierId?: TierId) {
   return useQuery({
-    queryKey: [CACHE_KEY, tier],
-    queryFn: () => fetchCachedRooms(tier),
+    queryKey: [CACHE_KEY, tierId],
+    queryFn: () => fetchCachedRooms(tierId),
     staleTime: CACHE_DURATION,
     gcTime: CACHE_DURATION * 2,
   });
