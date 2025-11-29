@@ -1,6 +1,6 @@
 # Mercy Blade Design System
 
-**Version:** 1.0  
+**Version:** 1.1  
 **Last Updated:** 2025-11-30  
 **Purpose:** Enforce visual consistency, semantic token usage, and predictable component patterns across all Mercy Blade pages.
 
@@ -16,12 +16,20 @@
 
 ---
 
-## 1. Color Tokens (index.css)
+## 1. Color Tokens & Gradients
 
-### Rule
-**NEVER use direct hex colors or Tailwind color classes like `text-white`, `bg-blue-500`, etc.**
+### Rule: Solid Colors
+**All solid colors must be defined as HSL semantic tokens in `index.css` and used via `hsl(var(--token-name))`.**
 
-All colors must be defined as HSL semantic tokens in `src/index.css` and referenced via `hsl(var(--token-name))`.
+- No raw Tailwind palette utilities like `bg-blue-500`, `text-gray-700`.
+- Only semantic utilities like `text-foreground`, `bg-background`, `text-muted-foreground` are allowed.
+- All color values in CSS must use HSL format.
+
+### Rule: Gradients
+**All gradients must be defined as semantic tokens (`--gradient-*`) in CSS and used via `var(--gradient-*)`.** 
+
+- It is **forbidden** to write `linear-gradient(...)` directly inside React components.
+- Gradients may use hex colors *inside the CSS definition*, but never inline in JSX.
 
 ### Required Tokens
 
@@ -53,21 +61,45 @@ All colors must be defined as HSL semantic tokens in `src/index.css` and referen
   --gradient-kids-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   --gradient-vip-hero: linear-gradient(135deg, #f093fb 0%, #4facfe 50%, #00f2fe 100%);
 }
+
+/* Dark mode variants */
+.dark {
+  --page-kids-bg: 210 20% 12%;
+  --page-vip1-bg: 280 15% 10%;
+  --page-vip2-bg: 200 20% 12%;
+  --page-vip3-bg: 330 15% 10%;
+  --page-vip3ii-bg: 260 15% 12%;
+  --page-vip4-bg: 180 15% 12%;
+  --page-vip5-bg: 40 20% 10%;
+  --page-vip6-bg: 300 15% 10%;
+  --page-vip9-bg: 220 10% 8%;
+
+  --gradient-kids-hero: linear-gradient(135deg, #4c5fd7 0%, #5a3d7a 50%, #b656d9 100%);
+  --gradient-vip-hero: linear-gradient(135deg, #b656d9 0%, #3a8bd3 50%, #00b8c4 100%);
+}
 ```
+
+### Dark Mode Testing
+**Rule:** Every major token used on kids/VIP pages must have a `.dark` variant.
+
+Test checklist:
+- [ ] Test kids and VIP hero gradients in dark mode on a real device
+- [ ] Verify all page backgrounds are readable in dark mode
+- [ ] Check text contrast ratios meet WCAG AA standards in both modes
 
 ### Example (Kids Hero Button)
 
 ```tsx
-// ❌ WRONG — uses literal 'white' and no semantic token
+// ❌ WRONG — inline gradient + literal 'white'
 <Button
-  className="rounded-full shadow-lg transition-all duration-300 hover:scale-105"
+  className="rounded-full shadow-lg"
   style={{ 
-    background: 'var(--gradient-rainbow)',
+    background: 'linear-gradient(135deg, #667eea, #764ba2)',
     color: 'white'
   }}
 >
 
-// ✅ CORRECT — uses semantic foreground token
+// ✅ CORRECT — semantic tokens only
 <Button
   className="rounded-full shadow-lg transition-all duration-300 hover:scale-105 text-foreground"
   style={{ 
@@ -114,12 +146,43 @@ className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid
 
 **No exceptions.** This ensures consistent card sizing across all tiers.
 
+### KidsRoomGrid Component
+Kids pages should use the `<KidsRoomGrid />` abstraction:
+
+```tsx
+<KidsRoomGrid
+  rooms={rooms}
+  onRoomClick={(room) => navigate(`/kids-chat/${room.id}`)}
+/>
+```
+
+Inside this component, the grid class **must** be the canonical grid pattern above.
+
+### Performance: Large Levels
+If a level might have **> 50 rooms**, the implementation should consider:
+- Virtualized grid (e.g. `react-window`), or
+- At minimum, `loading="lazy"` on images/illustrations
+
+Checklist:
+- [ ] Levels > 50 rooms: use virtualization or lazy-loading
+
 ### Required Props
 - Grid container: exact className above
 - Gap: `gap-4` (no other gap values)
 - Cards: use `KidsRoomCard` for Kids, `VipRoomCard` for VIP (or equivalent)
 
-### Example (Kids Room Grid)
+### Example (Kids Room Grid with Component)
+
+```tsx
+import { KidsRoomGrid } from "@/components/kids/KidsRoomGrid";
+
+<KidsRoomGrid
+  rooms={rooms}
+  onRoomClick={(room) => navigate(`/kids-chat/${room.id}`)}
+/>
+```
+
+### Example (Manual Grid for Reference)
 
 ```tsx
 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
@@ -207,6 +270,8 @@ When adding new VIP pages, copy this file and only change:
 2. Supabase query filter (`tier_id = 'vip1'` → `tier_id = 'vip3'`, etc.)
 3. Page background token (`--page-vip1-bg` → `--page-vip3-bg`, etc.)
 4. Hero icon (optional)
+
+**Do NOT change the grid layout, card component, routing pattern, or data loading pattern in the VIP template without updating this design system.**
 
 ### Required Structure
 ```tsx
@@ -346,10 +411,15 @@ room.room_essay_vi           // Room-level intro (Vietnamese)
 ## 7. Bilingual Text Pattern
 
 ### Rule
+Card titles **must** use a **single line** with `English / Vietnamese` and `line-clamp-2`.
+
+We do **NOT** separate into two physical lines with stacked `<p>` tags.
+
 All room cards and titles must:
 1. Display **English first, Vietnamese second**
-2. Use **`line-clamp-2`** for both languages to prevent overflow
+2. Use **`line-clamp-2`** for the combined title to prevent overflow
 3. Separate with ` / ` (space-slash-space)
+4. English and Vietnamese titles should not exceed 2 lines in cards
 
 ### Example (Card Title)
 
@@ -419,7 +489,183 @@ All room cards use **staggered fade-in animations** based on index.
 
 ---
 
-## 9. Automation Ideas (Future)
+## 8. Constants & Magic Strings
+
+### Rule
+All shared literals (table names, level IDs, route prefixes) must come from a constants file, not inline strings.
+
+### Example (Constants File)
+
+```ts
+// src/lib/constants/kids.ts
+export const KIDS_TABLE = 'kids_rooms';
+export const KIDS_ROUTE_PREFIX = '/kids-chat';
+export const LEVEL_IDS = ['level1', 'level2', 'level3'] as const;
+```
+
+### Example (Usage)
+
+```tsx
+// ❌ WRONG — hardcoded strings
+const { data } = await supabase
+  .from('kids_rooms')
+  .select('*')
+  .eq('level_id', 'level1');
+
+navigate(`/kids-chat/${room.id}`);
+
+// ✅ CORRECT — imported constants
+import { KIDS_TABLE, KIDS_ROUTE_PREFIX, LEVEL_IDS } from '@/lib/constants/kids';
+
+const { data } = await supabase
+  .from(KIDS_TABLE)
+  .select('*')
+  .eq('level_id', LEVEL_IDS[0]);
+
+navigate(`${KIDS_ROUTE_PREFIX}/${room.id}`);
+```
+
+---
+
+## 9. Data Hooks
+
+### useKidsRooms(levelId)
+All Kids level pages must use a shared `useKidsRooms(levelId: string)` hook instead of custom Supabase queries.
+
+### Required Return Shape
+
+```ts
+const { rooms, loading, error, refresh } = useKidsRooms(levelId);
+```
+
+### Example (Level Page)
+
+```tsx
+import { useKidsRooms } from '@/hooks/useKidsRooms';
+import { LEVEL_IDS } from '@/lib/constants/kids';
+
+export default function KidsLevel1() {
+  const { rooms, loading, error, refresh } = useKidsRooms(LEVEL_IDS[0]);
+
+  if (loading) return <LoadingSpinner />;
+  if (error) return <ErrorMessage error={error} />;
+
+  return (
+    <div className="min-h-screen p-8">
+      <KidsRoomGrid
+        rooms={rooms}
+        onRoomClick={(room) => navigate(`${KIDS_ROUTE_PREFIX}/${room.id}`)}
+      />
+    </div>
+  );
+}
+```
+
+---
+
+## 10. Bilingual Entry Component
+
+### Rule
+Pages **must not** hand-roll the order of EN/VI text and audio.
+
+Always use `<BilingualEntryWithAudio />` wrapper that enforces:
+1. English content
+2. Vietnamese content
+3. Audio player
+
+### API Contract
+
+```tsx
+interface BilingualEntryProps {
+  entry: {
+    copy: {
+      en: string;
+      vi: string;
+    };
+    audio: string;
+  };
+}
+```
+
+### Example
+
+```tsx
+import { BilingualEntryWithAudio } from '@/components/BilingualEntryWithAudio';
+
+// ❌ WRONG — custom layout
+<div>
+  <p>{entry.copy.en}</p>
+  <p>{entry.copy.vi}</p>
+  <AudioPlayer src={entry.audio} />
+</div>
+
+// ✅ CORRECT — consistent wrapper
+<BilingualEntryWithAudio entry={entry} />
+```
+
+---
+
+## 11. Types & Supabase
+
+### Rule
+The Kids rooms type must come from a generated Supabase type file, not manual interfaces.
+
+### Example (Type Import)
+
+```ts
+// types/supabase.ts (generated via `npx supabase gen types typescript`)
+export type KidsRoom = Database['public']['Tables']['kids_rooms']['Row'];
+```
+
+### Example (Usage)
+
+```tsx
+// ❌ WRONG — manual interface
+interface KidsRoom {
+  id: string;
+  title_en: string;
+  title_vi: string;
+  // ...
+}
+
+// ✅ CORRECT — generated types
+import type { KidsRoom } from '@/types/supabase';
+
+const rooms: KidsRoom[] = await fetchKidsRooms();
+```
+
+### Checklist
+- [ ] Run `npx supabase gen types typescript` after database changes
+- [ ] Import all room types from generated file
+
+---
+
+## 12. Accessibility
+
+### Rule
+- All interactive icons/buttons must have `aria-label` if their meaning isn't obvious from text
+- Pure decorative icons must use `aria-hidden="true"`
+
+### Example
+
+```tsx
+// ❌ WRONG — no accessibility attributes
+<Button onClick={handleRefresh}>
+  <RefreshCw className="w-4 h-4" />
+</Button>
+
+// ✅ CORRECT — descriptive label, hidden icon
+<Button aria-label="Refresh rooms" onClick={handleRefresh}>
+  <RefreshCw className="w-4 h-4" aria-hidden="true" />
+</Button>
+
+// ✅ CORRECT — decorative background icon
+<Star className="absolute top-4 right-4 opacity-20" aria-hidden="true" />
+```
+
+---
+
+## 13. Automation Ideas (Future)
 
 To enforce this design system automatically:
 
@@ -440,7 +686,7 @@ To enforce this design system automatically:
 
 ---
 
-## 10. Component Checklist
+## 14. Component Checklist
 
 Before shipping any new Kids or VIP page, verify:
 
@@ -449,10 +695,18 @@ Before shipping any new Kids or VIP page, verify:
 - [ ] Cards use `KidsRoomCard` or `VipRoomCard` (no local overrides)
 - [ ] No `text-white`, `bg-blue-500`, or hex colors anywhere
 - [ ] Gradients use named tokens (`var(--gradient-*)`)
+- [ ] No `linear-gradient(...)` strings inside components (all gradients via `var(--gradient-*)`)
+- [ ] All shared strings (table names, route prefixes, level IDs) come from constants files
+- [ ] Kids pages use `useKidsRooms(levelId)` and `<KidsRoomGrid />`
+- [ ] Bilingual entries use `<BilingualEntryWithAudio />`
 - [ ] Room data consumed from database/JSON (no hardcoded content)
 - [ ] Route follows conventions (`/kids-chat/:id` or `/room/:id`)
-- [ ] Bilingual titles use `line-clamp-2` and ` / ` separator
+- [ ] Bilingual titles use single line with `line-clamp-2` and ` / ` separator
 - [ ] Staggered animations use `index * 0.05s` delay
+- [ ] Supabase types are imported from a single generated file
+- [ ] Basic accessibility: `aria-label` on interactive icons, `aria-hidden` on decorative ones
+- [ ] For large levels (>50 rooms), we apply lazy-loading or virtualization
+- [ ] Dark mode: test all page backgrounds and gradients in dark mode
 
 ---
 
@@ -465,4 +719,4 @@ If a pattern isn't covered in this doc, check:
 
 If still unclear, ask in team chat before implementing — don't guess.
 
-**End of Design System v1.0**
+**End of Design System v1.1**
