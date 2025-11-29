@@ -1,4 +1,6 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
+import { rateLimit, getClientIP } from "../_shared/rateLimit.ts";
+import { auditLog } from "../_shared/audit.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -49,6 +51,19 @@ Deno.serve(async (req) => {
         JSON.stringify({ error: 'Admin access required' }),
         { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
+    }
+
+    // Rate limit admin actions
+    try {
+      const clientIP = getClientIP(req);
+      await rateLimit(`admin-set-tier:${user.id}:${clientIP}`, 30, 60_000); // 30 calls per minute
+    } catch (error) {
+      if (error instanceof Error && error.message === 'RATE_LIMIT_EXCEEDED') {
+        return new Response(
+          JSON.stringify({ error: 'Too many admin actions. Please slow down.' }),
+          { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
     }
 
     const { user_id, tier_name, days }: SetTierRequest = await req.json();
@@ -109,6 +124,18 @@ Deno.serve(async (req) => {
       _event_type: 'tier_changed',
       _severity: 'info',
       _metadata: { tier_name, days, changed_by: user.id },
+    });
+
+    // Audit log for admin tier change
+    await auditLog({
+      type: 'ADMIN_SET_TIER',
+      user_id: user.id,
+      metadata: {
+        target_user_id: user_id,
+        tier_name: tier_name,
+        days: days,
+        subscription_id: subscription.id,
+      },
     });
 
     console.log(`Tier set successfully for user ${user_id}`);

@@ -1,5 +1,6 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
 import { z } from 'https://deno.land/x/zod@v3.22.4/mod.ts';
+import { rateLimit, getClientIP } from "../_shared/rateLimit.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -39,6 +40,19 @@ Deno.serve(async (req) => {
         JSON.stringify({ success: false, error: 'Unauthorized' }),
         { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
+    }
+
+    // Rate limit room loading (prevent abuse)
+    try {
+      const clientIP = getClientIP(req);
+      await rateLimit(`secure-room-loader:${user.id}:${clientIP}`, 60, 60_000); // 60 calls per minute
+    } catch (error) {
+      if (error instanceof Error && error.message === 'RATE_LIMIT_EXCEEDED') {
+        return new Response(
+          JSON.stringify({ success: false, error: 'Too many requests. Please slow down.' }),
+          { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
     }
 
     const body = await req.json();

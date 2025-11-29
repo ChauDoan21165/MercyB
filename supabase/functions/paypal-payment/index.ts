@@ -2,6 +2,7 @@ import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { validateInput, paymentActionSchema } from "../shared/validation.ts";
 import { checkRateLimit, checkFeatureFlag } from "../shared/rate-limit.ts";
+import { auditLog } from "../_shared/audit.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -23,6 +24,7 @@ type PaymentResult = {
     provider: 'paypal';
     provider_tx_id?: string;
     order_id?: string;
+    clientId?: string;
   };
 };
 
@@ -44,8 +46,15 @@ serve(async (req) => {
 
     // Public endpoint to retrieve client ID for SDK loading (no auth required)
     if (action === 'get-client-id') {
+      const result: PaymentResult = {
+        success: true,
+        data: {
+          clientId: Deno.env.get('PAYPAL_CLIENT_ID'),
+          provider: 'paypal',
+        },
+      };
       return new Response(
-        JSON.stringify({ clientId: Deno.env.get('PAYPAL_CLIENT_ID') }),
+        JSON.stringify(result),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
@@ -285,6 +294,20 @@ serve(async (req) => {
             tier_id: tierId,
             amount: tier?.price_monthly,
             transaction_id: captureData.id,
+          },
+        });
+
+        // Audit log for payment capture
+        await auditLog({
+          type: 'PAYPAL_CAPTURE_SUCCESS',
+          user_id: user.id,
+          metadata: {
+            tier_id: tierId,
+            tier_name: tier?.name,
+            amount: tier?.price_monthly,
+            provider_tx_id: captureData.id,
+            order_id: orderId,
+            subscription_id: subscription.id,
           },
         });
 

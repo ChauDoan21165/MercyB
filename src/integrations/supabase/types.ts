@@ -262,6 +262,30 @@ export type Database = {
         }
         Relationships: []
       }
+      audit_logs: {
+        Row: {
+          created_at: string | null
+          id: string
+          metadata: Json | null
+          type: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          metadata?: Json | null
+          type: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          metadata?: Json | null
+          type?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       favorite_rooms: {
         Row: {
           created_at: string
@@ -1191,6 +1215,30 @@ export type Database = {
           max_requests?: number
           updated_at?: string | null
           window_seconds?: number
+        }
+        Relationships: []
+      }
+      rate_limits: {
+        Row: {
+          count: number
+          created_at: string | null
+          id: string
+          key: string
+          updated_at: string | null
+        }
+        Insert: {
+          count?: number
+          created_at?: string | null
+          id?: string
+          key: string
+          updated_at?: string | null
+        }
+        Update: {
+          count?: number
+          created_at?: string | null
+          id?: string
+          key?: string
+          updated_at?: string | null
         }
         Relationships: []
       }
@@ -2269,6 +2317,7 @@ export type Database = {
         Returns: boolean
       }
       clean_expired_responses: { Args: never; Returns: undefined }
+      cleanup_rate_limits: { Args: never; Returns: undefined }
       get_room_tier_level: { Args: { tier_name: string }; Returns: number }
       get_user_tier: {
         Args: { user_uuid: string }
