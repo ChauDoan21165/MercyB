@@ -7,6 +7,7 @@ import { MessageSquare, Send, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { AdminBreadcrumb } from "@/components/admin/AdminBreadcrumb";
+import { guardedCall } from "@/lib/guardedCall";
 import {
   Dialog,
   DialogContent,
@@ -81,26 +82,38 @@ export default function FeedbackInbox() {
   const handleSendReply = async () => {
     if (!selectedMessage || !replyText.trim()) return;
 
-    try {
-      setSending(true);
+    setSending(true);
 
-      const { error } = await supabase.functions.invoke("send-feedback-reply", {
-        body: {
-          userEmail: selectedMessage.profiles?.email || "",
-          userName: selectedMessage.profiles?.username || selectedMessage.profiles?.full_name || "User",
-          originalMessage: selectedMessage.message,
-          replyMessage: replyText,
-        },
-      });
+    const result = await guardedCall(
+      'Send feedback reply',
+      async () => {
+        const { error } = await supabase.functions.invoke("send-feedback-reply", {
+          body: {
+            userEmail: selectedMessage.profiles?.email || "",
+            userName: selectedMessage.profiles?.username || selectedMessage.profiles?.full_name || "User",
+            originalMessage: selectedMessage.message,
+            replyMessage: replyText,
+          },
+        });
 
-      if (error) throw error;
+        if (error) throw error;
 
-      // Update status to 'resolved' after reply
-      await supabase
-        .from("feedback")
-        .update({ status: "resolved" })
-        .eq("id", selectedMessage.id);
+        // Update status to 'resolved' after reply
+        const { error: updateError } = await supabase
+          .from("feedback")
+          .update({ status: "resolved" })
+          .eq("id", selectedMessage.id);
 
+        if (updateError) throw updateError;
+
+        return { success: true };
+      },
+      { showSuccessToast: false } // We'll show custom toast
+    );
+
+    setSending(false);
+
+    if (result.success) {
       toast({
         title: "Reply Sent",
         description: "Your reply has been sent to the user via email",
@@ -109,15 +122,13 @@ export default function FeedbackInbox() {
       setReplyDialogOpen(false);
       setReplyText("");
       fetchMessages();
-    } catch (error: any) {
-      console.error("Error sending reply:", error);
+    } else {
       toast({
         title: "Error",
-        description: error.message || "Failed to send reply",
+        description: result.error || "Failed to send reply",
         variant: "destructive",
       });
-    } finally {
-      setSending(false);
+    }
     }
   };
 

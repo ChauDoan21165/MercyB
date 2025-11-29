@@ -4,6 +4,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import { logAccessControlSelfTest } from '@/lib/accessControlSelfTest';
 import {
   Database,
   HardDrive,
@@ -59,6 +60,11 @@ const AdminSystemMetrics = () => {
   useEffect(() => {
     checkAdminAndFetchMetrics();
     calculateCodeMetrics();
+    
+    // Run access control self-test in dev mode
+    if (import.meta.env.DEV) {
+      logAccessControlSelfTest();
+    }
   }, []);
 
   const checkAdminAndFetchMetrics = async () => {
