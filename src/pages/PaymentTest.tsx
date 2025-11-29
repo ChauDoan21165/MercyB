@@ -147,13 +147,14 @@ const PaymentTest = () => {
               }
             });
 
-            if (error) {
-              console.error('Create order error:', error);
-              throw error;
+            if (error || !data?.success) {
+              console.error('Create order error:', error || data?.error);
+              toast.error('Failed to create PayPal order: ' + (error?.message || data?.error));
+              throw new Error(error?.message || data?.error || 'Failed to create order');
             }
             
-            console.log('Order created:', data.orderId);
-            return data.orderId;
+            console.log('Order created:', data.data?.order_id);
+            return data.data?.order_id;
           } catch (error) {
             console.error('Failed to create order:', error);
             toast.error('Failed to create payment order / Không thể tạo đơn hàng');

@@ -258,8 +258,8 @@ const ChatHub = () => {
       }
       
       try {
-        // Load merged entries from /public/tiers/{tier}/{room}/ based on room's tier metadata
-        const result = await loadMergedRoom(roomId || '', info?.tier || 'free');
+        // Load merged entries - uses authenticated tier internally
+        const result = await loadMergedRoom(roomId || '');
         setMergedEntries(result.merged);
         setAudioBasePath(result.audioBasePath || '/');
        
