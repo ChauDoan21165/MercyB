@@ -2,7 +2,7 @@
 import { supabase } from '@/integrations/supabase/client';
 import { processEntriesOptimized } from './roomLoaderHelpers';
 import { ROOMS_TABLE, AUDIO_FOLDER } from '@/lib/constants/rooms';
-import { normalizeTier } from '@/lib/constants/tiers';
+import { normalizeTier, type TierId } from '@/lib/constants/tiers';
 import type { Database } from '@/integrations/supabase/types';
 
 // Optional: if you want to plug hygiene checks later
@@ -141,7 +141,7 @@ export const loadMergedRoom = async (roomId: string) => {
     .maybeSingle();
 
   const rawUserTier = (subscription?.subscription_tiers as any)?.name || 'Free / Miễn phí';
-  const normalizedUserTier = normalizeTier(rawUserTier);
+  const normalizedUserTier: TierId = normalizeTier(rawUserTier);
 
   // 3. Normalize room ID
   const dbRoomId = normalizeRoomId(roomId);
@@ -158,10 +158,10 @@ export const loadMergedRoom = async (roomId: string) => {
         .single<{ tier: string | null }>();
 
       if (roomData?.tier) {
-        const roomTier = normalizeTier(roomData.tier);
+        const normalizedRoomTier: TierId = normalizeTier(roomData.tier);
 
         // 5. Enforce access control using authenticated tier
-        if (!canUserAccessRoom(normalizedUserTier, roomTier)) {
+        if (!canUserAccessRoom(normalizedUserTier, normalizedRoomTier)) {
           throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
         }
       }
