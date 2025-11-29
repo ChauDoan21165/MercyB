@@ -6,6 +6,7 @@ import { AlertCircle, CheckCircle2, ChevronDown, ChevronUp, Trash2, Plus, Refres
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 import JSZip from "jszip";
+import { normalizeTier } from "@/lib/constants/tiers";
 
 interface SyncStats {
   category: string;
@@ -67,16 +68,17 @@ export function SyncHealthSummary() {
       const totalJsonFiles = roomsWithJson.length;
 
       const freeDbRooms = dbRooms?.filter(r => 
-        r.tier === 'free' || r.tier === 'Free / Miễn phí' || r.tier?.toLowerCase().includes('free')
+        normalizeTier(r.tier || '') === 'free'
       ).length || 0;
       
       const freeJsonFiles = jsonFileChecks.filter(r => 
-        r.exists && (r.tier === 'free' || r.tier === 'Free / Miễn phí' || r.tier?.toLowerCase().includes('free'))
+        r.exists && normalizeTier(r.tier || '') === 'free'
       ).length;
 
-      const vipDbRooms = dbRooms?.filter(r => 
-        r.tier && (r.tier.toLowerCase().startsWith('vip') || /vip\d/.test(r.tier.toLowerCase()))
-      ).length || 0;
+      const vipDbRooms = dbRooms?.filter(r => {
+        const normalizedTier = normalizeTier(r.tier || '');
+        return normalizedTier.startsWith('vip');
+      }).length || 0;
       
       const vipJsonFiles = jsonFileChecks.filter(r => 
         r.exists && r.tier && (r.tier.toLowerCase().startsWith('vip') || /vip\d/.test(r.tier.toLowerCase()))

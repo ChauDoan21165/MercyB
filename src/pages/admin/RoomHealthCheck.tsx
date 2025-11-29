@@ -9,6 +9,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { JsonEditorDialog } from "@/components/admin/JsonEditorDialog";
+import { normalizeTier, tierIdToLabel } from "@/lib/constants/tiers";
 
 interface RoomIssue {
   roomId: string;
@@ -28,24 +29,13 @@ interface RoomHealth {
   issues: RoomIssue[];
 }
 
-const TIER_DISPLAY_NAMES: Record<string, string> = {
-  free: "Free",
-  "Free / Miễn phí": "Free",
-  vip1: "VIP1",
-  VIP1: "VIP1",
-  vip2: "VIP2",
-  VIP2: "VIP2",
-  vip3: "VIP3",
-  VIP3: "VIP3",
-  vip4: "VIP4",
-  VIP4: "VIP4",
-  vip5: "VIP5",
-  VIP5: "VIP5",
-  vip6: "VIP6",
-  VIP6: "VIP6",
-  vip7: "VIP7",
-  VIP7: "VIP7",
-};
+// Helper function to get display name for any tier string
+function getTierDisplayName(tier: string | null | undefined): string {
+  if (!tier) return "Free";
+  const tierId = normalizeTier(tier);
+  const label = tierIdToLabel(tierId);
+  return label.split(' / ')[0]; // Return English part only
+}
 
 export default function RoomHealthCheck() {
   const { tier } = useParams<{ tier: string }>();
@@ -56,7 +46,7 @@ export default function RoomHealthCheck() {
   const [selectedFile, setSelectedFile] = useState<{ path: string; title: string } | null>(null);
   const [progress, setProgress] = useState<{ current: number; total: number; roomName: string } | null>(null);
 
-  const tierDisplay = tier && tier !== "all" ? TIER_DISPLAY_NAMES[tier] || tier.toUpperCase() : "All Tiers";
+  const tierDisplay = tier && tier !== "all" ? getTierDisplayName(tier) : "All Tiers";
 
   useEffect(() => {
     checkRoomHealth();
@@ -216,7 +206,7 @@ export default function RoomHealthCheck() {
               roomIssues.push({
                 roomId: room.id,
                 roomTitle: room.title_en,
-                tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
+                tier: getTierDisplayName(room.tier),
                 issueType: "invalid_json",
                 message: "Invalid JSON syntax in file",
                 details: parseError.message,
@@ -243,7 +233,7 @@ export default function RoomHealthCheck() {
           roomIssues.push({
             roomId: room.id,
             roomTitle: room.title_en,
-            tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
+            tier: getTierDisplayName(room.tier),
             issueType: "missing_file",
             message: htmlDetected
               ? "File returns HTML instead of JSON (file missing)"
@@ -259,7 +249,7 @@ export default function RoomHealthCheck() {
             roomIssues.push({
               roomId: room.id,
               roomTitle: room.title_en,
-              tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
+              tier: getTierDisplayName(room.tier),
               issueType: "no_entries",
               message: "Room has no entries",
               resolvedPath,
@@ -273,7 +263,7 @@ export default function RoomHealthCheck() {
           roomIssues.push({
             roomId: room.id,
             roomTitle: room.title_en,
-            tier: TIER_DISPLAY_NAMES[room.tier] || room.tier,
+            tier: getTierDisplayName(room.tier),
             issueType: "locked",
             message: "Room is locked",
             resolvedPath,
