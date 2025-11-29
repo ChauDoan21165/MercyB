@@ -49,6 +49,7 @@ const AdminSystemMetrics = () => {
   const navigate = useNavigate();
   const [metrics, setMetrics] = useState<SystemMetrics | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [codeMetrics, setCodeMetrics] = useState({
     components: 0,
     pages: 0,
@@ -92,13 +93,31 @@ const AdminSystemMetrics = () => {
   const fetchMetrics = async () => {
     try {
       setLoading(true);
+      setError(null);
+      
+      console.log('🔄 Fetching system metrics from edge function...');
       const { data, error } = await supabase.functions.invoke('system-metrics');
       
-      if (error) throw error;
+      if (error) {
+        console.error('❌ Edge function error:', error);
+        throw error;
+      }
+
+      console.log('✅ Metrics loaded successfully:', data);
       setMetrics(data);
-    } catch (error) {
-      console.error('Error fetching metrics:', error);
-      toast.error('Failed to load system metrics');
+      
+      // Verify database counts
+      console.log('📊 Database metrics:', {
+        totalRooms: data?.database?.totalRooms,
+        totalEntries: data?.database?.totalEntries,
+        activeSubscriptions: data?.database?.activeSubscriptions,
+        audioFiles: data?.storage?.audioFiles,
+      });
+    } catch (err: any) {
+      const errorMessage = err?.message || 'Failed to load system metrics';
+      console.error('❌ Error fetching metrics:', err);
+      setError(errorMessage);
+      toast.error(`Failed to load system metrics: ${errorMessage}`);
     } finally {
       setLoading(false);
     }
@@ -136,6 +155,64 @@ const AdminSystemMetrics = () => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  // Display error state if metrics failed to load
+  if (error) {
+    return (
+      <div className="min-h-screen p-8" style={{ background: 'var(--gradient-admin)' }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-8 flex items-center justify-between">
+            <div>
+              <h1 className="text-4xl font-bold mb-2">System Metrics</h1>
+              <p className="text-muted-foreground">Internal analytics and readiness dashboard</p>
+            </div>
+            <Button variant="outline" onClick={() => navigate('/admin-stats')}>
+              ← Back to Admin
+            </Button>
+          </div>
+
+          <Card className="border-destructive">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-destructive">
+                <AlertTriangle className="h-5 w-5" />
+                Unable to Load System Metrics
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <p className="text-sm text-muted-foreground">
+                  The system-metrics edge function failed to execute. This could be due to:
+                </p>
+                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground ml-4">
+                  <li>Missing authentication headers (401)</li>
+                  <li>Edge function not deployed or misconfigured</li>
+                  <li>Database connection issues</li>
+                  <li>Service role key not properly configured</li>
+                </ul>
+                <div className="bg-destructive/10 border border-destructive p-4 rounded-md">
+                  <p className="text-sm font-mono text-destructive">
+                    Error: {error}
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <Button onClick={fetchMetrics} variant="outline">
+                    <Activity className="h-4 w-4 mr-2" />
+                    Retry
+                  </Button>
+                  <Button 
+                    variant="outline"
+                    onClick={() => window.open('https://docs.lovable.dev/features/cloud', '_blank')}
+                  >
+                    View Documentation
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     );
   }
