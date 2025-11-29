@@ -28,7 +28,7 @@
 ## Content & Tiers
 
 * **Total inventory**: 515 rooms, 3,309 entries, ~3,200 audio references across all tiers (Free, VIP1–VIP9, Kids)
-* **VIP4 Life Competence bonus**: Four rooms registered—`time_perception_vip4`, `relationship_intelligence_vip4`, `resilience_practices_vip4`, `self_awareness_vip4`
+* **VIP4 Life Competence bonus**: Four rooms registered—`personal_safety_self_protection_vip4_bonus`, `essential_money_risk_management_vip4_bonus`, `life_logistics_adulting_skills_vip4_bonus`, `everyday_survival_thinking_vip4_bonus`
 * **VIP3 room additions**: `public_speaking_structure_vip3` room registered with audio mapping for entries 21–28 (vip3_speaking_21.mp3 through vip3_speaking_28.mp3)
 * **VIP9 strategic domains**: 55 rooms across Individual Strategic Mastery, Corporate Strategy, National Geostrategic Intelligence, and Historical Strategists
 * **Audio coverage metrics**: VIP tiers show 97–100% audio coverage, Kids rooms at 100%, Free tier requires storage bucket scan for verification
