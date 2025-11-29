@@ -1,217 +1,315 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { loadMergedRoom } from '../roomLoader';
-import { supabase } from '@/integrations/supabase/client';
+// src/lib/__tests__/roomLoader.test.ts
+import { describe, it, expect, vi, beforeEach } from "vitest";
 
-// Mock Supabase client
-vi.mock('@/integrations/supabase/client', () => ({
+// --- Mocks ---
+
+// 1) Mock Supabase client
+const mockGetUser = vi.fn();
+const mockFrom = vi.fn();
+
+vi.mock("@/integrations/supabase/client", () => ({
   supabase: {
-    from: vi.fn(() => ({
-      select: vi.fn(() => ({
-        eq: vi.fn(() => ({
-          maybeSingle: vi.fn(),
-        })),
-      })),
-    })),
+    auth: {
+      getUser: mockGetUser,
+    },
+    from: mockFrom,
   },
 }));
 
-// Mock fetch for static file fallback
-global.fetch = vi.fn();
+// 2) Mock accessControl (only care that canUserAccessRoom is used)
+const mockCanUserAccessRoom = vi.fn();
 
-describe('roomLoader', () => {
+vi.mock("@/lib/roomLoaderHelpers", () => ({
+  processEntriesOptimized: vi.fn(() => ({
+    merged: [{ slug: "dummy-entry" }],
+    keywordMenu: { en: ["dummy"], vi: ["dummy"] },
+  })),
+}));
+
+vi.mock("../accessControl", () => ({
+  canUserAccessRoom: mockCanUserAccessRoom,
+}));
+
+// 3) Mock constants
+vi.mock("@/lib/constants/rooms", () => ({
+  ROOMS_TABLE: "rooms",
+  AUDIO_FOLDER: "audio",
+}));
+
+// 4) Mock JSON loader
+const mockLoadRoomJson = vi.fn();
+vi.mock("../roomJsonResolver", () => ({
+  loadRoomJson: mockLoadRoomJson,
+}));
+
+// 5) Import after mocks are set up
+import { loadMergedRoom } from "../roomLoader";
+import { normalizeTier } from "@/lib/constants/tiers";
+
+describe("loadMergedRoom", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+
+    // Default: authenticated Free user
+    mockGetUser.mockResolvedValue({
+      data: { user: { id: "user-123" } },
+      error: null,
+    });
+
+    // Default: subscription row → Free / Miễn phí
+    const subscriptionChain = {
+      select: vi.fn().mockReturnThis(),
+      eq: vi.fn().mockReturnThis(),
+      maybeSingle: vi.fn().mockResolvedValue({
+        data: {
+          subscription_tiers: { name: "Free / Miễn phí" },
+        },
+        error: null,
+      }),
+    };
+
+    // Default: rooms table chain (we'll override per test)
+    const roomsChain = {
+      select: vi.fn().mockReturnThis(),
+      eq: vi.fn().mockReturnThis(),
+      maybeSingle: vi.fn().mockResolvedValue({
+        data: {
+          id: "test-room",
+          title_en: "Test Room",
+          title_vi: "Phòng thử",
+          tier: "Free / Miễn phí",
+          keywords: ["test"],
+          entries: [
+            {
+              slug: "entry-1",
+              keywords_en: ["test"],
+              keywords_vi: ["thử"],
+              copy: { en: "EN", vi: "VI" },
+            },
+          ],
+        },
+        error: null,
+      }),
+    };
+
+    mockFrom.mockImplementation((table: string) => {
+      if (table === "user_subscriptions") return subscriptionChain;
+      if (table === "rooms") return roomsChain;
+      throw new Error(`Unexpected table: ${table}`);
+    });
+
+    // By default: allow access
+    mockCanUserAccessRoom.mockReturnValue(true);
+
+    // Default JSON loader
+    mockLoadRoomJson.mockResolvedValue(null);
   });
 
-  describe('loadMergedRoom', () => {
-    it('should load room data from database successfully', async () => {
-      const mockDbData = {
-        id: 'test-room',
-        tier: 'free',
-        title: { en: 'Test Room', vi: 'Phòng Thử' },
-        entries: [
-          {
-            slug: 'entry-1',
-            audio: 'audio1.mp3',
-            keywords_en: ['keyword1', 'keyword2', 'keyword3'],
-            keywords_vi: ['từ1', 'từ2', 'từ3'],
-            replies_en: ['reply1', 'reply2'],
-            replies_vi: ['trả lời1', 'trả lời2'],
-          },
-        ],
-      };
-
-      const mockSupabaseResponse = {
-        data: mockDbData,
-        error: null,
-      };
-
-      const mockChain = {
-        select: vi.fn().mockReturnThis(),
-        eq: vi.fn().mockReturnThis(),
-        maybeSingle: vi.fn().mockResolvedValue(mockSupabaseResponse),
-      };
-      
-      (supabase.from as any).mockReturnValue(mockChain);
-
-      const result = await loadMergedRoom('test-room', 'free');
-
-      expect(result.merged).toHaveLength(1);
-      expect(result.merged[0].slug).toBe('entry-1');
-      expect(result.merged[0].keywordEn).toEqual(['keyword1', 'keyword2', 'keyword3']);
-      expect(result.merged[0].audio).toBe('/lovable-uploads/audio1.mp3');
+  it("throws AUTHENTICATION_REQUIRED if user is not authenticated", async () => {
+    mockGetUser.mockResolvedValueOnce({
+      data: { user: null },
+      error: null,
     });
 
-    it('should fall back to static files when database fails', async () => {
-      const mockJsonData = {
-        title: { en: 'Static Room', vi: 'Phòng Tĩnh' },
-        entries: [
-          {
-            slug: 'static-entry',
-            audio: 'static.mp3',
-            keywords_en: ['static1', 'static2', 'static3'],
-            keywords_vi: ['tĩnh1', 'tĩnh2', 'tĩnh3'],
-            replies_en: ['reply'],
-            replies_vi: ['trả lời'],
-          },
-        ],
-      };
+    await expect(loadMergedRoom("some-room")).rejects.toThrow(
+      "AUTHENTICATION_REQUIRED",
+    );
+  });
 
-      const mockChain = {
-        select: vi.fn().mockReturnThis(),
-        eq: vi.fn().mockReturnThis(),
-        maybeSingle: vi.fn().mockResolvedValue({ data: null, error: new Error('DB error') }),
-      };
-      
-      (supabase.from as any).mockReturnValue(mockChain);
+  it("loads room from DB and returns merged data when access allowed", async () => {
+    const result = await loadMergedRoom("test-room");
 
-      (global.fetch as any).mockResolvedValueOnce({
-        ok: true,
-        json: async () => mockJsonData,
-      });
+    expect(result).toBeTruthy();
+    expect(result.merged).toHaveLength(1);
+    expect(result.keywordMenu.en).toContain("dummy");
 
-      const result = await loadMergedRoom('static-room', 'free');
+    // canUserAccessRoom called with normalized tiers
+    const freeTier = normalizeTier("Free / Miễn phí");
+    expect(mockCanUserAccessRoom).toHaveBeenCalledWith(freeTier, freeTier);
+  });
 
-      expect(result.merged).toHaveLength(1);
-      expect(result.merged[0].slug).toBe('static-entry');
-      expect(global.fetch).toHaveBeenCalled();
+  it("denies access when canUserAccessRoom returns false (DB room)", async () => {
+    // user: VIP2
+    mockFrom.mockImplementation((table: string) => {
+      if (table === "user_subscriptions") {
+        return {
+          select: vi.fn().mockReturnThis(),
+          eq: vi.fn().mockReturnThis(),
+          maybeSingle: vi.fn().mockResolvedValue({
+            data: { subscription_tiers: { name: "VIP2 / VIP2" } },
+            error: null,
+          }),
+        };
+      }
+      if (table === "rooms") {
+        return {
+          select: vi.fn().mockReturnThis(),
+          eq: vi.fn().mockReturnThis(),
+          maybeSingle: vi.fn().mockResolvedValue({
+            data: {
+              id: "vip3-room",
+              title_en: "VIP3 Room",
+              title_vi: "Phòng VIP3",
+              tier: "VIP3 / VIP3",
+              keywords: ["vip3"],
+              entries: [],
+            },
+            error: null,
+          }),
+        };
+      }
+      throw new Error(`Unexpected table: ${table}`);
     });
 
-    it('should transform audio paths correctly', async () => {
-      const mockDbData = {
-        id: 'audio-test',
-        tier: 'free',
-        entries: [
-          {
-            slug: 'entry-1',
-            audio: 'audio1.mp3',
-            keywords_en: ['k1', 'k2', 'k3'],
-            keywords_vi: ['t1', 't2', 't3'],
-            replies_en: ['r1'],
-            replies_vi: ['tr1'],
-          },
-          {
-            slug: 'entry-2',
-            audio: '/lovable-uploads/audio2.mp3',
-            keywords_en: ['k4', 'k5', 'k6'],
-            keywords_vi: ['t4', 't5', 't6'],
-            replies_en: ['r2'],
-            replies_vi: ['tr2'],
-          },
-        ],
-      };
+    mockCanUserAccessRoom.mockReturnValue(false);
 
-      const mockChain = {
-        select: vi.fn().mockReturnThis(),
-        eq: vi.fn().mockReturnThis(),
-        maybeSingle: vi.fn().mockResolvedValue({ data: mockDbData, error: null }),
-      };
-      
-      (supabase.from as any).mockReturnValue(mockChain);
+    await expect(loadMergedRoom("vip3-room")).rejects.toThrow(
+      "ACCESS_DENIED_INSUFFICIENT_TIER",
+    );
 
-      const result = await loadMergedRoom('audio-test', 'free');
+    const vip2 = normalizeTier("VIP2 / VIP2");
+    const vip3 = normalizeTier("VIP3 / VIP3");
+    expect(mockCanUserAccessRoom).toHaveBeenCalledWith(vip2, vip3);
+  });
 
-      expect(result.merged[0].audio).toBe('/lovable-uploads/audio1.mp3');
-      expect(result.merged[1].audio).toBe('/lovable-uploads/audio2.mp3');
+  it("falls back to JSON when DB returns no room", async () => {
+    // DB returns null
+    mockFrom.mockImplementation((table: string) => {
+      if (table === "user_subscriptions") {
+        return {
+          select: vi.fn().mockReturnThis(),
+          eq: vi.fn().mockReturnThis(),
+          maybeSingle: vi.fn().mockResolvedValue({
+            data: { subscription_tiers: { name: "Free / Miễn phí" } },
+            error: null,
+          }),
+        };
+      }
+      if (table === "rooms") {
+        return {
+          select: vi.fn().mockReturnThis(),
+          eq: vi.fn().mockReturnThis(),
+          maybeSingle: vi.fn().mockResolvedValue({
+            data: null,
+            error: null,
+          }),
+        };
+      }
+      throw new Error(`Unexpected table: ${table}`);
     });
 
-    it('should extract keywords menu correctly', async () => {
-      const mockDbData = {
-        id: 'keywords-test',
-        tier: 'vip1',
-        entries: [
-          {
-            slug: 'entry-1',
-            audio: 'audio1.mp3',
-            keywords_en: ['trust', 'faith', 'hope'],
-            keywords_vi: ['tin tưởng', 'đức tin', 'hy vọng'],
-            replies_en: ['Trust in God'],
-            replies_vi: ['Tin vào Chúa'],
-          },
-          {
-            slug: 'entry-2',
-            audio: 'audio2.mp3',
-            keywords_en: ['love', 'peace', 'joy'],
-            keywords_vi: ['yêu thương', 'bình an', 'vui mừng'],
-            replies_en: ['Love conquers all'],
-            replies_vi: ['Tình yêu chiến thắng tất cả'],
-          },
-        ],
-      };
-
-      const mockChain = {
-        select: vi.fn().mockReturnThis(),
-        eq: vi.fn().mockReturnThis(),
-        maybeSingle: vi.fn().mockResolvedValue({ data: mockDbData, error: null }),
-      };
-      
-      (supabase.from as any).mockReturnValue(mockChain);
-
-      const result = await loadMergedRoom('keywords-test', 'vip1');
-
-      expect(result.keywordMenu).toHaveLength(2);
-      expect(result.keywordMenu[0].keywordEn).toEqual(['trust', 'faith', 'hope']);
-      expect(result.keywordMenu[0].keywordVi).toEqual(['tin tưởng', 'đức tin', 'hy vọng']);
-      expect(result.keywordMenu[1].slug).toBe('entry-2');
+    // JSON loader returns a valid room
+    mockLoadRoomJson.mockResolvedValue({
+      id: "json-room",
+      tier: "Free / Miễn phí",
+      entries: [
+        {
+          slug: "entry-json",
+          keywords_en: ["json"],
+          keywords_vi: ["json"],
+          copy: { en: "Json EN", vi: "Json VI" },
+        },
+      ],
     });
 
-    it('should handle empty entries gracefully', async () => {
-      const mockDbData = {
-        id: 'empty-test',
-        tier: 'free',
-        entries: [],
-      };
+    const result = await loadMergedRoom("json-room");
 
-      const mockChain = {
-        select: vi.fn().mockReturnThis(),
-        eq: vi.fn().mockReturnThis(),
-        maybeSingle: vi.fn().mockResolvedValue({ data: mockDbData, error: null }),
-      };
-      
-      (supabase.from as any).mockReturnValue(mockChain);
+    expect(result).toBeTruthy();
+    expect(result.merged).toHaveLength(1);
+    expect(mockLoadRoomJson).toHaveBeenCalledWith("json-room");
+  });
 
-      const result = await loadMergedRoom('empty-test', 'free');
-
-      expect(result.merged).toEqual([]);
-      expect(result.keywordMenu).toEqual([]);
+  it("denies access on JSON fallback when tier is too high", async () => {
+    // DB returns null
+    mockFrom.mockImplementation((table: string) => {
+      if (table === "user_subscriptions") {
+        return {
+          select: vi.fn().mockReturnThis(),
+          eq: vi.fn().mockReturnThis(),
+          maybeSingle: vi.fn().mockResolvedValue({
+            data: { subscription_tiers: { name: "Free / Miễn phí" } },
+            error: null,
+          }),
+        };
+      }
+      if (table === "rooms") {
+        return {
+          select: vi.fn().mockReturnThis(),
+          eq: vi.fn().mockReturnThis(),
+          maybeSingle: vi.fn().mockResolvedValue({
+            data: null,
+            error: null,
+          }),
+        };
+      }
+      throw new Error(`Unexpected table: ${table}`);
     });
 
-    it('should return empty structure when all loading methods fail', async () => {
-      const mockChain = {
-        select: vi.fn().mockReturnThis(),
-        eq: vi.fn().mockReturnThis(),
-        maybeSingle: vi.fn().mockResolvedValue({ data: null, error: new Error('DB error') }),
-      };
-      
-      (supabase.from as any).mockReturnValue(mockChain);
-
-      (global.fetch as any).mockRejectedValue(new Error('Fetch failed'));
-
-      const result = await loadMergedRoom('nonexistent', 'free');
-
-      expect(result.merged).toEqual([]);
-      expect(result.keywordMenu).toEqual([]);
-      expect(result.audioBasePath).toBe('');
+    // JSON room with VIP tier
+    mockLoadRoomJson.mockResolvedValue({
+      id: "json-vip-room",
+      tier: "VIP3 / VIP3",
+      entries: [
+        {
+          slug: "entry-json-vip",
+          keywords_en: ["vip"],
+          keywords_vi: ["vip"],
+          copy: { en: "vip", vi: "vip" },
+        },
+      ],
     });
+
+    mockCanUserAccessRoom.mockReturnValue(false);
+
+    await expect(loadMergedRoom("json-vip-room")).rejects.toThrow(
+      "ACCESS_DENIED_INSUFFICIENT_TIER",
+    );
+  });
+
+  it("applies ROOM_ID_OVERRIDES / normalizeRoomId before DB lookup", async () => {
+    // Example: english-writing-deep-dive-vip3-ii → english-writing-deep-dive-vip3II
+    const seenIds: string[] = [];
+
+    mockFrom.mockImplementation((table: string) => {
+      if (table === "user_subscriptions") {
+        return {
+          select: vi.fn().mockReturnThis(),
+          eq: vi.fn().mockReturnThis(),
+          maybeSingle: vi.fn().mockResolvedValue({
+            data: { subscription_tiers: { name: "VIP3 / VIP3" } },
+            error: null,
+          }),
+        };
+      }
+      if (table === "rooms") {
+        const chain = {
+          select: vi.fn().mockReturnThis(),
+          eq: vi.fn().mockImplementation((col: string, val: string) => {
+            if (col === "id") {
+              seenIds.push(val);
+            }
+            return chain;
+          }),
+          maybeSingle: vi.fn().mockResolvedValue({
+            data: {
+              id: "english-writing-deep-dive-vip3II",
+              title_en: "VIP3II Deep Dive",
+              title_vi: "VIP3II Deep Dive",
+              tier: "VIP3 / VIP3",
+              keywords: ["vip3"],
+              entries: [],
+            },
+            error: null,
+          }),
+        };
+        return chain;
+      }
+      throw new Error(`Unexpected table: ${table}`);
+    });
+
+    await loadMergedRoom("english-writing-deep-dive-vip3-ii");
+
+    // We expect normalized ID to be used in the DB query
+    expect(seenIds).toContain("english-writing-deep-dive-vip3II");
   });
 });
