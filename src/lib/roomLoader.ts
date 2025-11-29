@@ -61,6 +61,7 @@ const loadFromDatabase = async (dbRoomId: string) => {
   }
 
   const hasEntries = Array.isArray(dbRoom.entries) && dbRoom.entries.length > 0;
+  const roomTier: TierId | null = dbRoom.tier ? normalizeTier(dbRoom.tier) : null;
 
   // If no entries, check for room-level keywords
   if (!hasEntries) {
@@ -74,6 +75,7 @@ const loadFromDatabase = async (dbRoomId: string) => {
         vi: dbRoom.keywords || [],
       },
       audioBasePath: AUDIO_BASE_PATH,
+      roomTier,
     };
   }
 
@@ -89,6 +91,7 @@ const loadFromDatabase = async (dbRoomId: string) => {
     merged,
     keywordMenu,
     audioBasePath: AUDIO_BASE_PATH,
+    roomTier,
   };
 };
 
@@ -112,11 +115,13 @@ const loadFromJson = async (roomId: string) => {
     // }
 
     const { keywordMenu, merged } = processEntriesOptimized(jsonData.entries);
+    const roomTier: TierId | null = jsonData.tier ? normalizeTier(jsonData.tier) : null;
 
     return {
       merged,
       keywordMenu,
       audioBasePath: AUDIO_BASE_PATH,
+      roomTier,
     };
   } catch (error) {
     console.error('Failed to load room from JSON:', error);
@@ -150,34 +155,24 @@ export const loadMergedRoom = async (roomId: string) => {
 
   const rawUserTier = (subscription?.subscription_tiers as any)?.name || 'Free / Miễn phí';
   const normalizedUserTier: TierId = normalizeTier(rawUserTier);
-  
-  console.log('[roomLoader] Loading room:', roomId, '→', dbRoomId, '| User tier:', normalizedUserTier);
 
   // 3. Normalize room ID
   const dbRoomId = normalizeRoomId(roomId);
+  
+  console.log('[roomLoader] Loading room:', roomId, '→', dbRoomId, '| User tier:', normalizedUserTier);
 
   // 4. Try database first
   try {
     const dbResult = await loadFromDatabase(dbRoomId);
 
     if (dbResult) {
-      const { data: roomData } = await supabase
-        .from(ROOMS_TABLE)
-        .select('tier')
-        .eq('id', dbRoomId)
-        .single<{ tier: string | null }>();
+      const normalizedRoomTier = dbResult.roomTier ?? ('free' as TierId);
+      console.log('[roomLoader] Room tier:', normalizedRoomTier, '| Access check:', canUserAccessRoom(normalizedUserTier, normalizedRoomTier));
 
-      if (roomData?.tier) {
-        const normalizedRoomTier: TierId = normalizeTier(roomData.tier);
-        console.log('[roomLoader] Room tier:', normalizedRoomTier, '| Access check:', canUserAccessRoom(normalizedUserTier, normalizedRoomTier));
-
-        // 5. Enforce access control using authenticated tier
-        if (!canUserAccessRoom(normalizedUserTier, normalizedRoomTier)) {
-          console.warn('[roomLoader] Access denied:', normalizedUserTier, 'cannot access', normalizedRoomTier);
-          throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
-        }
-      } else {
-        console.warn('[roomLoader] Room has no tier set:', dbRoomId);
+      // 5. Enforce access control using authenticated tier
+      if (!canUserAccessRoom(normalizedUserTier, normalizedRoomTier)) {
+        console.warn('[roomLoader] Access denied:', normalizedUserTier, 'cannot access', normalizedRoomTier);
+        throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
       }
 
       return dbResult;
@@ -189,15 +184,24 @@ export const loadMergedRoom = async (roomId: string) => {
     console.error('[roomLoader] Database load failed:', dbError);
   }
 
-  // 6. Fallback to JSON files (with best-effort tier enforcement)
+  // 6. Fallback to JSON files (with tier enforcement)
   try {
     console.warn('[roomLoader] Falling back to JSON for room:', roomId);
     const jsonResult = await loadFromJson(roomId);
     if (jsonResult) {
-      console.warn('[roomLoader] Using JSON fallback - tier enforcement may be incomplete');
+      // Enforce tier access for JSON rooms too
+      if (jsonResult.roomTier) {
+        if (!canUserAccessRoom(normalizedUserTier, jsonResult.roomTier)) {
+          console.warn('[roomLoader] Access denied (JSON):', normalizedUserTier, 'cannot access', jsonResult.roomTier);
+          throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
+        }
+      }
       return jsonResult;
     }
-  } catch (error) {
+  } catch (error: any) {
+    if (error?.message === 'ACCESS_DENIED_INSUFFICIENT_TIER') {
+      throw error;
+    }
     console.error('[roomLoader] Failed to load room:', error);
   }
 
