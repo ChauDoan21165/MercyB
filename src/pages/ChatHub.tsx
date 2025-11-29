@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { getRoomInfo } from "@/lib/roomData";
 import { loadMergedRoom } from "@/lib/roomLoader";
+import { ROOMS_TABLE } from "@/lib/constants/rooms";
 import { useRoomProgress } from "@/hooks/useRoomProgress";
 import { useBehaviorTracking } from "@/hooks/useBehaviorTracking";
 import { WelcomeBack } from "@/components/WelcomeBack";
@@ -150,7 +151,7 @@ const ChatHub = () => {
 
     const loadRoomTitle = async () => {
       const { data, error } = await supabase
-        .from('rooms')
+        .from(ROOMS_TABLE)
         .select('title_en, title_vi')
         .eq('id', roomId)
         .maybeSingle();
@@ -266,7 +267,7 @@ const ChatHub = () => {
         
         // Load room essay from database
         const { data: dbRoom } = await supabase
-          .from('rooms')
+          .from(ROOMS_TABLE)
           .select('room_essay_en, room_essay_vi')
           .eq('id', roomId)
           .maybeSingle();
@@ -284,8 +285,22 @@ const ChatHub = () => {
         
         // Don't add welcome message to chat - it's displayed in the card above
         setMainMessages([]);
-      } catch (error) {
+      } catch (error: any) {
         console.error('Failed to load room data', error);
+        
+        // Handle specific error cases
+        if (error?.message === 'AUTHENTICATION_REQUIRED') {
+          setShowSignupPrompt(true);
+        } else if (error?.message === 'ACCESS_DENIED_INSUFFICIENT_TIER') {
+          setShowAccessDenied(true);
+        } else {
+          toast({
+            title: 'Failed to load room',
+            description: 'This room may not exist or you may not have access',
+            variant: 'destructive'
+          });
+        }
+        
         setMainMessages([]);
       }
     };

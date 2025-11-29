@@ -44,9 +44,13 @@ jobs:
       - name: Validate audio files
         run: node scripts/validate-audio.js
         
+      - name: Validate room data integrity
+        run: npx tsx src/lib/scripts/validateRoomData.ts
+        
       - name: Validation summary
         if: success()
         run: |
           echo "✅ All validations passed successfully!"
           echo "- Room manifest is synchronized"
           echo "- All audio files are present"
+          echo "- Room data integrity verified"
