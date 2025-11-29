@@ -8,14 +8,15 @@ import { cn } from '@/lib/utils';
 
 // Tier definitions for search
 const TIERS = [
-  { id: 'free', nameEn: 'Free Tier', nameVi: 'Cấp Miễn Phí', route: '/rooms' },
-  { id: 'vip1', nameEn: 'VIP1 Tier', nameVi: 'Cấp VIP1', route: '/rooms-vip1' },
-  { id: 'vip2', nameEn: 'VIP2 Tier', nameVi: 'Cấp VIP2', route: '/rooms-vip2' },
-  { id: 'vip3', nameEn: 'VIP3 Tier', nameVi: 'Cấp VIP3', route: '/rooms-vip3' },
-  { id: 'vip4', nameEn: 'VIP4 Tier', nameVi: 'Cấp VIP4', route: '/rooms-vip4' },
-  { id: 'vip5', nameEn: 'VIP5 Tier', nameVi: 'Cấp VIP5', route: '/rooms-vip5' },
-  { id: 'vip6', nameEn: 'VIP6 Tier', nameVi: 'Cấp VIP6', route: '/vip6' },
-  { id: 'vip9', nameEn: 'VIP9 Tier', nameVi: 'Cấp VIP9', route: '/rooms-vip9' },
+  { id: 'free', nameEn: 'Free Tier', nameVi: 'Cấp Miễn Phí', route: '/' },
+  { id: 'vip1', nameEn: 'VIP1 Tier', nameVi: 'Cấp VIP1', route: '/vip/vip1' },
+  { id: 'vip2', nameEn: 'VIP2 Tier', nameVi: 'Cấp VIP2', route: '/vip/vip2' },
+  { id: 'vip3', nameEn: 'VIP3 Tier', nameVi: 'Cấp VIP3', route: '/vip/vip3' },
+  { id: 'vip3ii', nameEn: 'VIP3 II Tier', nameVi: 'Cấp VIP3 II', route: '/vip/vip3ii' },
+  { id: 'vip4', nameEn: 'VIP4 Tier', nameVi: 'Cấp VIP4', route: '/vip/vip4' },
+  { id: 'vip5', nameEn: 'VIP5 Tier', nameVi: 'Cấp VIP5', route: '/vip/vip5' },
+  { id: 'vip6', nameEn: 'VIP6 Tier', nameVi: 'Cấp VIP6', route: '/vip/vip6' },
+  { id: 'vip9', nameEn: 'VIP9 Tier', nameVi: 'Cấp VIP9', route: '/vip/vip9' },
   { id: 'kids_l1', nameEn: 'Kids Level 1', nameVi: 'Trẻ Em Cấp 1', route: '/kids-level1' },
   { id: 'kids_l2', nameEn: 'Kids Level 2', nameVi: 'Trẻ Em Cấp 2', route: '/kids-level2' },
   { id: 'kids_l3', nameEn: 'Kids Level 3', nameVi: 'Trẻ Em Cấp 3', route: '/kids-level3' },
@@ -72,7 +73,7 @@ export const RoomSearch = () => {
   }, []);
 
   const handleRoomClick = (roomId: string) => {
-    navigate(`/chat/${roomId}`);
+    navigate(`/room/${roomId}`);
     setQuery('');
     setRoomResults([]);
     setTierResults([]);

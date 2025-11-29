@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
-import { UserTier } from '@/lib/accessControl';
+import { type TierId, normalizeTier } from '@/lib/constants/tiers';
+import { canAccessVIPTier } from '@/lib/accessControl';
 
 export interface UserAccess {
   isAdmin: boolean;
   isAuthenticated: boolean;
   isDemoMode: boolean;
-  tier: UserTier;
+  tier: TierId;
   canAccessVIP1: boolean;
   canAccessVIP2: boolean;
   canAccessVIP3: boolean;
@@ -23,7 +24,7 @@ export const useUserAccess = (): UserAccess => {
     isAdmin: false,
     isAuthenticated: false,
     isDemoMode: true,
-    tier: 'demo',
+    tier: 'free',
     canAccessVIP1: false,
     canAccessVIP2: false,
     canAccessVIP3: false,
@@ -48,7 +49,7 @@ export const useUserAccess = (): UserAccess => {
           isAdmin: false,
           isAuthenticated: false,
           isDemoMode: true,
-          tier: 'demo',
+          tier: 'free',
           canAccessVIP1: false,
           canAccessVIP2: false,
           canAccessVIP3: false,
@@ -78,29 +79,23 @@ export const useUserAccess = (): UserAccess => {
         .eq('status', 'active')
         .maybeSingle();
 
-      const tierName = subscription?.subscription_tiers?.name?.toLowerCase() || 'free';
-      const tier = (tierName.includes('vip9') ? 'vip9' :
-                   tierName.includes('vip6') ? 'vip6' :
-                   tierName.includes('vip5') ? 'vip5' :
-                   tierName.includes('vip4') ? 'vip4' :
-                   tierName.includes('vip3 ii') || tierName.includes('vip3_ii') ? 'vip3_ii' :
-                   tierName.includes('vip1') ? 'vip1' : 
-                   tierName.includes('vip2') ? 'vip2' : 
-                   tierName.includes('vip3') ? 'vip3' : 'free') as UserTier;
+      const rawTierName = subscription?.subscription_tiers?.name || 'Free / Miễn phí';
+      const tier: TierId = normalizeTier(rawTierName);
+      const finalTier: TierId = isAdmin ? 'vip9' : tier;
 
       setAccess({
         isAdmin,
         isAuthenticated: true,
         isDemoMode: false,
-        tier: isAdmin ? 'vip9' : tier,
-        canAccessVIP1: isAdmin || tier === 'vip1' || tier === 'vip2' || tier === 'vip3' || tier === 'vip3_ii' || tier === 'vip4' || tier === 'vip5' || tier === 'vip6' || tier === 'vip9',
-        canAccessVIP2: isAdmin || tier === 'vip2' || tier === 'vip3' || tier === 'vip3_ii' || tier === 'vip4' || tier === 'vip5' || tier === 'vip6' || tier === 'vip9',
-        canAccessVIP3: isAdmin || tier === 'vip3' || tier === 'vip3_ii' || tier === 'vip4' || tier === 'vip5' || tier === 'vip6' || tier === 'vip9',
-        canAccessVIP3II: isAdmin || tier === 'vip3_ii' || tier === 'vip4' || tier === 'vip5' || tier === 'vip6' || tier === 'vip9',
-        canAccessVIP4: isAdmin || tier === 'vip4' || tier === 'vip5' || tier === 'vip6' || tier === 'vip9',
-        canAccessVIP5: isAdmin || tier === 'vip5' || tier === 'vip6' || tier === 'vip9',
-        canAccessVIP6: isAdmin || tier === 'vip6' || tier === 'vip9',
-        canAccessVIP9: isAdmin || tier === 'vip9',
+        tier: finalTier,
+        canAccessVIP1: canAccessVIPTier(finalTier, 'vip1'),
+        canAccessVIP2: canAccessVIPTier(finalTier, 'vip2'),
+        canAccessVIP3: canAccessVIPTier(finalTier, 'vip3'),
+        canAccessVIP3II: canAccessVIPTier(finalTier, 'vip3ii'),
+        canAccessVIP4: canAccessVIPTier(finalTier, 'vip4'),
+        canAccessVIP5: canAccessVIPTier(finalTier, 'vip5'),
+        canAccessVIP6: canAccessVIPTier(finalTier, 'vip6'),
+        canAccessVIP9: canAccessVIPTier(finalTier, 'vip9'),
         loading: false,
       });
     } catch (error) {
@@ -109,7 +104,7 @@ export const useUserAccess = (): UserAccess => {
         isAdmin: false,
         isAuthenticated: false,
         isDemoMode: true,
-        tier: 'demo',
+        tier: 'free',
         canAccessVIP1: false,
         canAccessVIP2: false,
         canAccessVIP3: false,
