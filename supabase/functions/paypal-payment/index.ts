@@ -1,8 +1,11 @@
-import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
-import { validateInput, paymentActionSchema } from "../shared/validation.ts";
-import { checkRateLimit, checkFeatureFlag } from "../shared/rate-limit.ts";
-import { auditLog } from "../_shared/audit.ts";
+import { serve } from 'https://deno.land/std@0.177.0/http/server.ts';
+import {
+  createSupabaseAdminClient,
+  getUserFromAuthHeader,
+  checkEndpointRateLimit,
+  logAudit,
+  getClientIP,
+} from '../_shared/security.ts';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -11,10 +14,9 @@ const corsHeaders = {
 
 // Switch between sandbox and production
 const PAYPAL_API = Deno.env.get('PAYPAL_MODE') === 'live' 
-  ? 'https://api-m.paypal.com'  // Production for real money
-  : 'https://api-m.sandbox.paypal.com'; // Sandbox for testing
+  ? 'https://api-m.paypal.com'
+  : 'https://api-m.sandbox.paypal.com';
 
-// Structured response type for payment operations
 type PaymentResult = {
   success: boolean;
   error?: string;
@@ -28,73 +30,53 @@ type PaymentResult = {
   };
 };
 
+type Action = 'get-client-id' | 'create-order' | 'capture-order';
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const supabase = createClient(
-      Deno.env.get('SUPABASE_URL')!,
-      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
-    );
+    const supabaseAdmin = createSupabaseAdminClient();
+    const ip = getClientIP(req);
 
-    // Validate input
-    const body = await req.json();
-    const validatedData = validateInput(paymentActionSchema, body);
-    const { action, tierId, orderId } = validatedData;
+    const body = await req.json().catch(() => ({}));
+    const action: Action | undefined = body?.action;
 
-    // Public endpoint to retrieve client ID for SDK loading (no auth required)
+    if (!action) {
+      return json({ success: false, error: 'MISSING_ACTION' }, 400);
+    }
+
+    // Public endpoint: get-client-id (no auth required)
     if (action === 'get-client-id') {
-      const result: PaymentResult = {
+      const clientId = Deno.env.get('PAYPAL_CLIENT_ID');
+      if (!clientId) {
+        await logAudit({
+          type: 'paypal_get_client_id_missing_env',
+          userId: null,
+          metadata: { ip },
+        });
+        return json(
+          { success: false, error: 'PAYPAL_CLIENT_ID_NOT_CONFIGURED' },
+          500,
+        );
+      }
+
+      return json({
         success: true,
-        data: {
-          clientId: Deno.env.get('PAYPAL_CLIENT_ID'),
-          provider: 'paypal',
-        },
-      };
-      return new Response(
-        JSON.stringify(result),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+        data: { clientId, provider: 'paypal' },
+      });
     }
 
-    // Authenticate user for all other actions
-    const authHeader = req.headers.get('authorization');
-    if (!authHeader) {
-      return new Response(
-        JSON.stringify({ error: 'Authentication required' }),
-        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+    // All other actions require authentication
+    const user = await getUserFromAuthHeader(req);
+    if (!user) {
+      return json({ success: false, error: 'UNAUTHENTICATED' }, 401);
     }
 
-    const token = authHeader.replace('Bearer ', '');
-    const { data: { user }, error: authError } = await supabase.auth.getUser(token);
-
-    if (authError || !user) {
-      return new Response(
-        JSON.stringify({ error: 'Invalid authentication' }),
-        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
-    }
-
-    // Check feature flag
-    const isPayPalEnabled = await checkFeatureFlag(supabase, "paypal_payments_enabled");
-    if (!isPayPalEnabled) {
-      return new Response(
-        JSON.stringify({ error: "PayPal payments are temporarily disabled" }),
-        { status: 503, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
-
-    // Rate limiting check for payments
-    const rateLimitCheck = await checkRateLimit(supabase, user.id, "paypal-payment");
-    if (!rateLimitCheck.allowed) {
-      return new Response(
-        JSON.stringify({ error: rateLimitCheck.error }),
-        { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
+    // Rate limit per user per action
+    await checkEndpointRateLimit(`paypal-payment:${action}`, user.id);
 
     // Get PayPal access token
     const getAccessToken = async () => {
@@ -112,23 +94,24 @@ serve(async (req) => {
     };
 
     if (action === 'create-order') {
+      const { tierId } = body;
+      if (!tierId) {
+        return json(
+          { success: false, error: 'MISSING_TIER_ID' },
+          400,
+        );
+      }
+
       // Get tier details
-      const { data: tier, error: tierError } = await supabase
+      const { data: tier, error: tierError } = await supabaseAdmin
         .from('subscription_tiers')
         .select('*')
         .eq('id', tierId)
         .single();
 
       if (tierError || !tier) {
-        console.error('❌ Tier lookup error:', tierError);
-        const result: PaymentResult = {
-          success: false,
-          error: 'Tier not found',
-        };
-        return new Response(JSON.stringify(result), {
-          status: 404,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        });
+        console.error('Tier lookup error:', tierError);
+        return json({ success: false, error: 'TIER_NOT_FOUND' }, 404);
       }
 
       const accessToken = await getAccessToken();
@@ -157,34 +140,53 @@ serve(async (req) => {
       });
 
       const orderData = await orderResponse.json();
-      
-      console.log('PayPal order response:', orderData);
 
       if (!orderResponse.ok || !orderData.id) {
-        console.error('❌ PayPal order creation failed:', orderData);
-        const result: PaymentResult = {
-          success: false,
-          error: orderData.message || 'Failed to create PayPal order',
-        };
-        return new Response(JSON.stringify(result), {
-          status: 500,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        console.error('PayPal order creation failed:', orderData);
+        await logAudit({
+          type: 'paypal_create_order_failed',
+          userId: user.id,
+          metadata: {
+            tier_id: tierId,
+            error: orderData.message || 'Unknown error',
+            ip,
+          },
         });
+        return json(
+          { success: false, error: orderData.message || 'FAILED_TO_CREATE_ORDER' },
+          500,
+        );
       }
 
-      const result: PaymentResult = {
+      await logAudit({
+        type: 'paypal_create_order',
+        userId: user.id,
+        metadata: {
+          tier_id: tierId,
+          order_id: orderData.id,
+          amount: tier.price_monthly,
+          ip,
+        },
+      });
+
+      return json({
         success: true,
         data: {
           order_id: orderData.id,
           provider: 'paypal',
         },
-      };
-      return new Response(JSON.stringify(result), {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
 
     if (action === 'capture-order') {
+      const { orderId, tierId } = body;
+      if (!orderId || !tierId) {
+        return json(
+          { success: false, error: 'MISSING_ORDER_ID_OR_TIER_ID' },
+          400,
+        );
+      }
+
       const accessToken = await getAccessToken();
 
       // Capture PayPal order
@@ -199,177 +201,182 @@ serve(async (req) => {
       const captureData = await captureResponse.json();
 
       if (!captureResponse.ok) {
-        console.error('❌ PayPal capture failed:', captureData);
-        const result: PaymentResult = {
-          success: false,
-          error: 'Payment capture failed',
-        };
-        return new Response(JSON.stringify(result), {
-          status: 500,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        console.error('PayPal capture failed:', captureData);
+        await logAudit({
+          type: 'paypal_capture_failed',
+          userId: user.id,
+          metadata: {
+            order_id: orderId,
+            tier_id: tierId,
+            error: captureData.message || 'Unknown error',
+            ip,
+          },
         });
+        return json(
+          { success: false, error: 'PAYMENT_CAPTURE_FAILED' },
+          500,
+        );
       }
 
-      if (captureData.status === 'COMPLETED') {
-        console.log('✅ PayPal payment COMPLETED - starting subscription update', {
+      if (captureData.status !== 'COMPLETED') {
+        console.error('Payment not completed. Status:', captureData.status);
+        return json(
+          { success: false, error: `PAYMENT_STATUS_${captureData.status}` },
+          400,
+        );
+      }
+
+      console.log('PayPal payment COMPLETED', {
+        user_id: user.id,
+        tier_id: tierId,
+        order_id: orderId,
+        capture_id: captureData.id,
+      });
+
+      // Get tier details
+      const { data: tier } = await supabaseAdmin
+        .from('subscription_tiers')
+        .select('name, price_monthly')
+        .eq('id', tierId)
+        .single();
+
+      // Update user subscription
+      const { data: subscription, error: subError } = await supabaseAdmin
+        .from('user_subscriptions')
+        .upsert({
+          user_id: user.id,
+          tier_id: tierId,
+          status: 'active',
+          current_period_start: new Date().toISOString(),
+          current_period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+        })
+        .select()
+        .single();
+
+      if (subError || !subscription) {
+        console.error('CRITICAL: Subscription update FAILED after successful payment', {
           user_id: user.id,
           tier_id: tierId,
           order_id: orderId,
-          capture_id: captureData.id,
+          error: subError,
         });
 
-        // Get tier details for notification
-        const { data: tier } = await supabase
-          .from('subscription_tiers')
-          .select('name, price_monthly')
-          .eq('id', tierId)
-          .single();
-
-        // Update user subscription
-        const { data: subscription, error: subError } = await supabase
-          .from('user_subscriptions')
-          .upsert({
-            user_id: user.id,
-            tier_id: tierId,
-            status: 'active',
-            current_period_start: new Date().toISOString(),
-            current_period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
-          })
-          .select()
-          .single();
-
-        if (subError || !subscription) {
-          console.error('❌ CRITICAL: Subscription update FAILED after successful payment', {
-            user_id: user.id,
-            tier_id: tierId,
+        await logAudit({
+          type: 'paypal_subscription_update_failed',
+          userId: user.id,
+          metadata: {
             order_id: orderId,
-            error: subError,
-          });
-          
-          // Log critical failure
-          await supabase.rpc('log_security_event', {
-            _user_id: user.id,
-            _event_type: 'payment_subscription_failure',
-            _severity: 'high',
-            _metadata: {
-              order_id: orderId,
-              tier_id: tierId,
-              error: subError?.message,
-            },
-          });
+            tier_id: tierId,
+            capture_id: captureData.id,
+            error: subError?.message,
+            ip,
+          },
+        });
 
-          const result: PaymentResult = {
-            success: false,
-            error: 'CRITICAL: Subscription update FAILED after payment',
-          };
-          return new Response(JSON.stringify(result), {
-            status: 500,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-          });
-        }
+        return json(
+          { success: false, error: 'SUBSCRIPTION_UPDATE_FAILED' },
+          500,
+        );
+      }
 
-        // Log successful payment with structured data
-        console.log('✅ SUBSCRIPTION UPDATED SUCCESSFULLY', {
-          user_id: user.id,
-          user_email: user.email,
-          tier: tier?.name,
+      console.log('SUBSCRIPTION UPDATED SUCCESSFULLY', {
+        user_id: user.id,
+        user_email: user.email,
+        tier: tier?.name,
+        tier_id: tierId,
+        amount: tier?.price_monthly,
+        provider: 'paypal',
+        provider_tx_id: captureData.id,
+        order_id: orderId,
+        subscription_id: subscription.id,
+      });
+
+      // Audit log for successful payment
+      await logAudit({
+        type: 'paypal_capture_success',
+        userId: user.id,
+        metadata: {
           tier_id: tierId,
+          tier_name: tier?.name,
           amount: tier?.price_monthly,
-          provider: 'paypal',
           provider_tx_id: captureData.id,
           order_id: orderId,
           subscription_id: subscription.id,
-          period_start: subscription.current_period_start,
-          period_end: subscription.current_period_end,
-          timestamp: new Date().toISOString(),
-        });
+          ip,
+        },
+      });
 
-        // Log security event
-        await supabase.rpc('log_security_event', {
-          _user_id: user.id,
-          _event_type: 'payment_completed',
-          _severity: 'low',
-          _metadata: {
-            provider: 'paypal',
-            tier_id: tierId,
-            amount: tier?.price_monthly,
-            transaction_id: captureData.id,
-          },
-        });
+      // Log security event
+      await supabaseAdmin.rpc('log_security_event', {
+        _user_id: user.id,
+        _event_type: 'payment_completed',
+        _severity: 'low',
+        _metadata: {
+          provider: 'paypal',
+          tier_id: tierId,
+          amount: tier?.price_monthly,
+          transaction_id: captureData.id,
+        },
+      });
 
-        // Audit log for payment capture
-        await auditLog({
-          type: 'PAYPAL_CAPTURE_SUCCESS',
-          user_id: user.id,
-          metadata: {
-            tier_id: tierId,
-            tier_name: tier?.name,
-            amount: tier?.price_monthly,
-            provider_tx_id: captureData.id,
-            order_id: orderId,
-            subscription_id: subscription.id,
-          },
-        });
+      // Send notification to admin
+      const { data: adminUsers } = await supabaseAdmin
+        .from('user_roles')
+        .select('user_id')
+        .eq('role', 'admin');
 
-        // Send notification to admin
-        const { data: adminUsers } = await supabase
-          .from('user_roles')
-          .select('user_id')
-          .eq('role', 'admin');
-
-        if (adminUsers && adminUsers.length > 0) {
-          const notificationMessage = `🎉 New Payment Received!\n\nUser: ${user.email}\nTier: ${tier?.name || 'Unknown'}\nAmount: $${tier?.price_monthly || 0}\nDate: ${new Date().toLocaleString()}`;
-          
-          for (const admin of adminUsers) {
-            await supabase
-              .from('feedback')
-              .insert({
-                user_id: admin.user_id,
-                category: 'payment_notification',
-                message: notificationMessage,
-                priority: 'high',
-                status: 'new'
-              });
-          }
+      if (adminUsers && adminUsers.length > 0) {
+        const notificationMessage = `🎉 New Payment Received!\n\nUser: ${user.email}\nTier: ${tier?.name || 'Unknown'}\nAmount: $${tier?.price_monthly || 0}\nDate: ${new Date().toLocaleString()}`;
+        
+        for (const admin of adminUsers) {
+          await supabaseAdmin
+            .from('feedback')
+            .insert({
+              user_id: admin.user_id,
+              category: 'payment_notification',
+              message: notificationMessage,
+              priority: 'high',
+              status: 'new'
+            });
         }
-
-        const result: PaymentResult = {
-          success: true,
-          data: {
-            subscription_id: subscription.id,
-            tier_id: tierId,
-            provider: 'paypal',
-            provider_tx_id: captureData.id,
-          },
-        };
-
-        return new Response(JSON.stringify(result), {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        });
       }
 
-      console.error('❌ Payment not completed. Status:', captureData.status);
-      const result: PaymentResult = {
-        success: false,
-        error: `Payment not completed. Status: ${captureData.status}`,
-      };
-      return new Response(JSON.stringify(result), {
-        status: 400,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      return json({
+        success: true,
+        data: {
+          subscription_id: subscription.id,
+          tier_id: tierId,
+          provider: 'paypal',
+          provider_tx_id: captureData.id,
+        },
       });
     }
 
-    return new Response(JSON.stringify({ error: 'Invalid action' }), {
-      status: 400,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    return json({ success: false, error: 'UNKNOWN_ACTION' }, 400);
+  } catch (err: unknown) {
+    console.error('paypal-payment error', err);
+    const errorMessage = err instanceof Error ? err.message : String(err);
+    await logAudit({
+      type: 'paypal_function_error',
+      userId: null,
+      metadata: {
+        message: errorMessage,
+      },
     });
-
-  } catch (error) {
-    console.error('PayPal payment error:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
-    return new Response(JSON.stringify({ error: errorMessage }), {
-      status: 500,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
+    return json(
+      { success: false, error: 'INTERNAL_ERROR' },
+      500,
+    );
   }
 });
+
+function json(body: unknown, status = 200): Response {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      ...corsHeaders,
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-store',
+    },
+  });
+}
