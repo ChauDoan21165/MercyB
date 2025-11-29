@@ -203,6 +203,51 @@ export interface Database {
         }
         Relationships: []
       }
+      payment_transactions: {
+        Row: {
+          amount: number
+          created_at: string
+          external_reference: string | null
+          id: string
+          metadata: Json | null
+          payment_method: string
+          period_days: number
+          status: string
+          tier_id: string | null
+          transaction_type: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          external_reference?: string | null
+          id?: string
+          metadata?: Json | null
+          payment_method: string
+          period_days?: number
+          status?: string
+          tier_id?: string | null
+          transaction_type: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          external_reference?: string | null
+          id?: string
+          metadata?: Json | null
+          payment_method?: string
+          period_days?: number
+          status?: string
+          tier_id?: string | null
+          transaction_type?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

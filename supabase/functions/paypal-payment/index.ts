@@ -1,4 +1,6 @@
-import { serve } from 'https://deno.land/std@0.177.0/http/server.ts';
+// supabase/functions/paypal-payment/index.ts
+// Deno Edge Function
+
 import {
   createSupabaseAdminClient,
   getUserFromAuthHeader,
@@ -6,377 +8,397 @@ import {
   logAudit,
   getClientIP,
 } from '../_shared/security.ts';
+import type { Json } from '../_shared/database.types.ts';
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
+const PAYPAL_CLIENT_ID = Deno.env.get('PAYPAL_CLIENT_ID');
+const PAYPAL_CLIENT_SECRET = Deno.env.get('PAYPAL_CLIENT_SECRET');
+const PAYPAL_API_BASE =
+  Deno.env.get('PAYPAL_MODE') === 'live'
+    ? 'https://api-m.paypal.com'
+    : 'https://api-m.sandbox.paypal.com';
 
-// Switch between sandbox and production
-const PAYPAL_API = Deno.env.get('PAYPAL_MODE') === 'live' 
-  ? 'https://api-m.paypal.com'
-  : 'https://api-m.sandbox.paypal.com';
+if (!PAYPAL_CLIENT_ID || !PAYPAL_CLIENT_SECRET) {
+  console.warn(
+    '[paypal-payment] Missing PAYPAL_CLIENT_ID or PAYPAL_CLIENT_SECRET env vars',
+  );
+}
 
-type PaymentResult = {
-  success: boolean;
-  error?: string;
-  data?: {
-    subscription_id?: string;
-    tier_id?: string;
-    provider: 'paypal';
-    provider_tx_id?: string;
-    order_id?: string;
-    clientId?: string;
-  };
-};
+type BillingPeriod = 'monthly' | 'yearly';
 
 type Action = 'get-client-id' | 'create-order' | 'capture-order';
 
-serve(async (req) => {
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
+interface BaseBody {
+  action: Action;
+}
+
+interface CreateOrderBody extends BaseBody {
+  action: 'create-order';
+  tier_id: string;
+  period: BillingPeriod;
+}
+
+interface CaptureOrderBody extends BaseBody {
+  action: 'capture-order';
+  order_id: string;
+  tier_id: string;
+  period: BillingPeriod;
+}
+
+interface GetClientIdBody extends BaseBody {
+  action: 'get-client-id';
+}
+
+type RequestBody = CreateOrderBody | CaptureOrderBody | GetClientIdBody;
+
+const ENDPOINT_NAME = 'paypal-payment';
+
+const jsonResponse = (body: unknown, status = 200) =>
+  new Response(JSON.stringify(body), {
+    status,
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+async function getPayPalAccessToken(): Promise<string> {
+  if (!PAYPAL_CLIENT_ID || !PAYPAL_CLIENT_SECRET) {
+    throw new Error('PayPal environment variables not configured');
   }
 
+  const res = await fetch(`${PAYPAL_API_BASE}/v1/oauth2/token`, {
+    method: 'POST',
+    headers: {
+      Authorization:
+        'Basic ' +
+        btoa(`${PAYPAL_CLIENT_ID}:${PAYPAL_CLIENT_SECRET}`),
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: 'grant_type=client_credentials',
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    console.error('[paypal] getAccessToken failed', res.status, text);
+    throw new Error('Failed to obtain PayPal access token');
+  }
+
+  const data = (await res.json()) as { access_token?: string };
+  if (!data.access_token) {
+    throw new Error('Missing access_token from PayPal response');
+  }
+  return data.access_token;
+}
+
+async function createPayPalOrder(
+  accessToken: string,
+  params: {
+    amount: string;
+    currency: string;
+    userId: string;
+    tierId: string;
+    period: BillingPeriod;
+  },
+) {
+  const { amount, currency, userId, tierId, period } = params;
+
+  const res = await fetch(`${PAYPAL_API_BASE}/v2/checkout/orders`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      intent: 'CAPTURE',
+      purchase_units: [
+        {
+          amount: {
+            currency_code: currency,
+            value: amount,
+          },
+          custom_id: `${userId}:${tierId}:${period}`,
+        },
+      ],
+      application_context: {
+        shipping_preference: 'NO_SHIPPING',
+        user_action: 'PAY_NOW',
+      },
+    }),
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    console.error('[paypal] createOrder failed', res.status, text);
+    throw new Error('Failed to create PayPal order');
+  }
+
+  return (await res.json()) as { id?: string };
+}
+
+async function capturePayPalOrder(accessToken: string, orderId: string) {
+  const res = await fetch(
+    `${PAYPAL_API_BASE}/v2/checkout/orders/${orderId}/capture`,
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+    },
+  );
+
+  if (!res.ok) {
+    const text = await res.text();
+    console.error('[paypal] captureOrder failed', res.status, text);
+    throw new Error('Failed to capture PayPal order');
+  }
+
+  return (await res.json()) as { status?: string; id?: string; [k: string]: unknown };
+}
+
+Deno.serve(async (req) => {
+  const ip = getClientIP(req);
+  let user: { id: string } | null = null;
+
   try {
-    const supabaseAdmin = createSupabaseAdminClient();
-    const ip = getClientIP(req);
-
-    const body = await req.json().catch(() => ({}));
-    const action: Action | undefined = body?.action;
-
-    if (!action) {
-      return json({ success: false, error: 'MISSING_ACTION' }, 400);
+    if (req.method !== 'POST') {
+      return jsonResponse({ error: 'METHOD_NOT_ALLOWED' }, 405);
     }
 
-    // Public endpoint: get-client-id (no auth required)
+    let body: RequestBody;
+    try {
+      body = (await req.json()) as RequestBody;
+    } catch {
+      return jsonResponse({ error: 'INVALID_JSON' }, 400);
+    }
+
+    const action = body.action;
+    if (!action) {
+      return jsonResponse({ error: 'MISSING_ACTION' }, 400);
+    }
+
+    // 1) Public action: get-client-id (no auth required)
     if (action === 'get-client-id') {
-      const clientId = Deno.env.get('PAYPAL_CLIENT_ID');
-      if (!clientId) {
-        await logAudit({
-          type: 'paypal_get_client_id_missing_env',
-          userId: null,
-          metadata: { ip },
-        });
-        return json(
-          { success: false, error: 'PAYPAL_CLIENT_ID_NOT_CONFIGURED' },
+      if (!PAYPAL_CLIENT_ID) {
+        return jsonResponse(
+          { success: false, error: 'PAYPAL_NOT_CONFIGURED' },
           500,
         );
       }
 
-      return json({
-        success: true,
-        data: { clientId, provider: 'paypal' },
-      });
-    }
-
-    // All other actions require authentication
-    const user = await getUserFromAuthHeader(req);
-    if (!user) {
-      return json({ success: false, error: 'UNAUTHENTICATED' }, 401);
-    }
-
-    // Rate limit per user per action
-    await checkEndpointRateLimit(`paypal-payment:${action}`, user.id);
-
-    // Get PayPal access token
-    const getAccessToken = async () => {
-      const auth = btoa(`${Deno.env.get('PAYPAL_CLIENT_ID')}:${Deno.env.get('PAYPAL_CLIENT_SECRET')}`);
-      const response = await fetch(`${PAYPAL_API}/v1/oauth2/token`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Basic ${auth}`,
-          'Content-Type': 'application/x-www-form-urlencoded',
+      await logAudit({
+        type: 'paypal_get_client_id',
+        userId: null,
+        metadata: {
+          ip,
         },
-        body: 'grant_type=client_credentials',
       });
-      const data = await response.json();
-      return data.access_token;
-    };
 
+      return jsonResponse({
+        success: true,
+        data: { clientId: PAYPAL_CLIENT_ID },
+      });
+    }
+
+    // 2) Authenticated actions
+    user = await getUserFromAuthHeader(req);
+    if (!user) {
+      return jsonResponse({ error: 'UNAUTHORIZED' }, 401);
+    }
+
+    await checkEndpointRateLimit(ENDPOINT_NAME, user.id);
+
+    const supabase = createSupabaseAdminClient();
+
+    // 2a) Create order
     if (action === 'create-order') {
-      const { tierId } = body;
-      if (!tierId) {
-        return json(
-          { success: false, error: 'MISSING_TIER_ID' },
-          400,
-        );
+      const { tier_id, period } = body as CreateOrderBody;
+
+      if (!tier_id || !period) {
+        return jsonResponse({ error: 'MISSING_PARAMETERS' }, 400);
       }
 
-      // Get tier details
-      const { data: tier, error: tierError } = await supabaseAdmin
+      const { data: tier, error: tierError } = await supabase
         .from('subscription_tiers')
         .select('*')
-        .eq('id', tierId)
-        .single() as any;
+        .eq('id', tier_id)
+        .eq('is_active', true)
+        .single();
 
       if (tierError || !tier) {
-        console.error('Tier lookup error:', tierError);
-        return json({ success: false, error: 'TIER_NOT_FOUND' }, 404);
+        console.error('[paypal] Tier lookup failed', tierError);
+        return jsonResponse({ error: 'INVALID_TIER' }, 400);
       }
 
-      const accessToken = await getAccessToken();
+      const priceNumber =
+        period === 'yearly'
+          ? tier.price_yearly
+          : tier.price_monthly;
 
-      // Create PayPal order
-      const orderResponse = await fetch(`${PAYPAL_API}/v2/checkout/orders`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          intent: 'CAPTURE',
-          application_context: {
-            landing_page: 'LOGIN',
-            user_action: 'PAY_NOW',
-          },
-          purchase_units: [{
-            amount: {
-              currency_code: 'USD',
-              value: tier.price_monthly.toString(),
-            },
-            description: `${tier.name} - Monthly Subscription`,
-          }],
-        }),
+      if (!priceNumber || priceNumber <= 0) {
+        return jsonResponse({ error: 'INVALID_PRICE' }, 400);
+      }
+
+      const amount = priceNumber.toFixed(2);
+      const currency = 'USD';
+
+      const accessToken = await getPayPalAccessToken();
+      const order = await createPayPalOrder(accessToken, {
+        amount,
+        currency,
+        userId: user.id,
+        tierId: tier_id,
+        period,
       });
 
-      const orderData = await orderResponse.json();
-
-      if (!orderResponse.ok || !orderData.id) {
-        console.error('PayPal order creation failed:', orderData);
-        await logAudit({
-          type: 'paypal_create_order_failed',
-          userId: user.id,
-          metadata: {
-            tier_id: tierId,
-            error: orderData.message || 'Unknown error',
-            ip,
-          },
-        });
-        return json(
-          { success: false, error: orderData.message || 'FAILED_TO_CREATE_ORDER' },
-          500,
-        );
+      if (!order.id) {
+        throw new Error('Missing order ID from PayPal create-order response');
       }
+
+      // Optionally insert a pending payment_transactions record
+      await supabase.from('payment_transactions').insert({
+        user_id: user.id,
+        tier_id: tier_id,
+        amount: priceNumber,
+        payment_method: 'paypal',
+        period_days: period === 'yearly' ? 365 : 30,
+        status: 'pending',
+        transaction_type: 'subscription',
+        external_reference: order.id,
+        metadata: {
+          ip,
+          period,
+        } as Json,
+      });
 
       await logAudit({
         type: 'paypal_create_order',
         userId: user.id,
         metadata: {
-          tier_id: tierId,
-          order_id: orderData.id,
-          amount: tier.price_monthly,
           ip,
+          tier_id,
+          period,
+          amount,
+          currency,
+          paypal_order_id: order.id,
         },
       });
 
-      return json({
+      return jsonResponse({
         success: true,
-        data: {
-          order_id: orderData.id,
-          provider: 'paypal',
-        },
+        data: { order_id: order.id },
       });
     }
 
+    // 2b) Capture order
     if (action === 'capture-order') {
-      const { orderId, tierId } = body;
-      if (!orderId || !tierId) {
-        return json(
-          { success: false, error: 'MISSING_ORDER_ID_OR_TIER_ID' },
-          400,
-        );
+      const { order_id, tier_id, period } = body as CaptureOrderBody;
+
+      if (!order_id || !tier_id || !period) {
+        return jsonResponse({ error: 'MISSING_PARAMETERS' }, 400);
       }
 
-      const accessToken = await getAccessToken();
+      const accessToken = await getPayPalAccessToken();
+      const capture = await capturePayPalOrder(accessToken, order_id);
 
-      // Capture PayPal order
-      const captureResponse = await fetch(`${PAYPAL_API}/v2/checkout/orders/${orderId}/capture`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-        },
-      });
+      const status = capture.status ?? 'UNKNOWN';
 
-      const captureData = await captureResponse.json();
-
-      if (!captureResponse.ok) {
-        console.error('PayPal capture failed:', captureData);
+      if (status !== 'COMPLETED') {
         await logAudit({
           type: 'paypal_capture_failed',
           userId: user.id,
           metadata: {
-            order_id: orderId,
-            tier_id: tierId,
-            error: captureData.message || 'Unknown error',
             ip,
-          },
+            order_id,
+            tier_id,
+            period,
+            status,
+            capture,
+          } as Json,
         });
-        return json(
-          { success: false, error: 'PAYMENT_CAPTURE_FAILED' },
-          500,
-        );
-      }
 
-      if (captureData.status !== 'COMPLETED') {
-        console.error('Payment not completed. Status:', captureData.status);
-        return json(
-          { success: false, error: `PAYMENT_STATUS_${captureData.status}` },
+        return jsonResponse(
+          {
+            success: false,
+            error: 'PAYMENT_NOT_COMPLETED',
+            data: { status, order_id },
+          },
           400,
         );
       }
 
-      console.log('PayPal payment COMPLETED', {
-        user_id: user.id,
-        tier_id: tierId,
-        order_id: orderId,
-        capture_id: captureData.id,
-      });
-
-      // Get tier details
-      const { data: tier } = await supabaseAdmin
-        .from('subscription_tiers')
-        .select('name, price_monthly')
-        .eq('id', tierId)
-        .single() as any;
-
-      // Update user subscription
-      const { data: subscription, error: subError } = await supabaseAdmin
-        .from('user_subscriptions')
-        .upsert({
-          user_id: user.id,
-          tier_id: tierId,
-          status: 'active',
-          current_period_start: new Date().toISOString(),
-          current_period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
-        } as any)
-        .select()
-        .single() as any;
-
-      if (subError || !subscription) {
-        console.error('CRITICAL: Subscription update FAILED after successful payment', {
-          user_id: user.id,
-          tier_id: tierId,
-          order_id: orderId,
-          error: subError,
-        });
-
-        await logAudit({
-          type: 'paypal_subscription_update_failed',
-          userId: user.id,
+      // Mark transaction as completed
+      await supabase
+        .from('payment_transactions')
+        .update({
+          status: 'completed',
           metadata: {
-            order_id: orderId,
-            tier_id: tierId,
-            capture_id: captureData.id,
-            error: subError?.message,
             ip,
+            period,
+            capture,
+          } as Json,
+        })
+        .eq('external_reference', order_id)
+        .eq('user_id', user.id);
+
+      // Upsert user_subscriptions
+      const now = new Date();
+      const periodDays = period === 'yearly' ? 365 : 30;
+      const end = new Date(now.getTime() + periodDays * 24 * 60 * 60 * 1000);
+
+      await supabase
+        .from('user_subscriptions')
+        .upsert(
+          {
+            user_id: user.id,
+            tier_id,
+            status: 'active',
+            current_period_start: now.toISOString(),
+            current_period_end: end.toISOString(),
+            updated_at: now.toISOString(),
           },
-        });
-
-        return json(
-          { success: false, error: 'SUBSCRIPTION_UPDATE_FAILED' },
-          500,
+          { onConflict: 'user_id' },
         );
-      }
 
-      console.log('SUBSCRIPTION UPDATED SUCCESSFULLY', {
-        user_id: user.id,
-        user_email: user.email,
-        tier: tier?.name,
-        tier_id: tierId,
-        amount: tier?.price_monthly,
-        provider: 'paypal',
-        provider_tx_id: captureData.id,
-        order_id: orderId,
-        subscription_id: subscription.id,
-      });
-
-      // Audit log for successful payment
       await logAudit({
-        type: 'paypal_capture_success',
+        type: 'paypal_capture_order',
         userId: user.id,
         metadata: {
-          tier_id: tierId,
-          tier_name: tier?.name,
-          amount: tier?.price_monthly,
-          provider_tx_id: captureData.id,
-          order_id: orderId,
-          subscription_id: subscription.id,
           ip,
+          order_id,
+          tier_id,
+          period,
+          status,
         },
       });
 
-      // Log security event
-      await supabaseAdmin.rpc('log_security_event' as any, {
-        _user_id: user.id,
-        _event_type: 'payment_completed',
-        _severity: 'low',
-        _metadata: {
-          provider: 'paypal',
-          tier_id: tierId,
-          amount: tier?.price_monthly,
-          transaction_id: captureData.id,
-        },
-      } as any);
-
-      // Send notification to admin
-      const { data: adminUsers } = await supabaseAdmin
-        .from('user_roles')
-        .select('user_id')
-        .eq('role', 'admin') as any;
-
-      if (adminUsers && adminUsers.length > 0) {
-        const notificationMessage = `🎉 New Payment Received!\n\nUser: ${user.email}\nTier: ${tier?.name || 'Unknown'}\nAmount: $${tier?.price_monthly || 0}\nDate: ${new Date().toLocaleString()}`;
-        
-        for (const admin of adminUsers) {
-          await supabaseAdmin
-            .from('feedback')
-            .insert({
-              user_id: admin.user_id,
-              category: 'payment_notification',
-              message: notificationMessage,
-              priority: 'high',
-              status: 'new'
-            } as any);
-        }
-      }
-
-      return json({
+      return jsonResponse({
         success: true,
         data: {
-          subscription_id: subscription.id,
-          tier_id: tierId,
-          provider: 'paypal',
-          provider_tx_id: captureData.id,
+          order_id,
+          tier_id,
+          period,
+          status,
         },
       });
     }
 
-    return json({ success: false, error: 'UNKNOWN_ACTION' }, 400);
-  } catch (err: unknown) {
-    console.error('paypal-payment error', err);
-    const errorMessage = err instanceof Error ? err.message : String(err);
+    // Unknown action
+    return jsonResponse({ error: 'UNKNOWN_ACTION' }, 400);
+  } catch (err) {
+    if (err instanceof Response) {
+      // thrown by helpers (assertAdmin, checkEndpointRateLimit, etc.)
+      return err;
+    }
+
+    console.error('[paypal-payment] Unhandled error', err);
+
     await logAudit({
-      type: 'paypal_function_error',
-      userId: null,
+      type: 'paypal_internal_error',
+      userId: user?.id ?? null,
       metadata: {
-        message: errorMessage,
+        ip,
+        message: err instanceof Error ? err.message : String(err),
       },
     });
-    return json(
-      { success: false, error: 'INTERNAL_ERROR' },
-      500,
-    );
+
+    return jsonResponse({ error: 'INTERNAL_ERROR' }, 500);
   }
 });
-
-function json(body: unknown, status = 200): Response {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: {
-      ...corsHeaders,
-      'Content-Type': 'application/json',
-      'Cache-Control': 'no-store',
-    },
-  });
-}
