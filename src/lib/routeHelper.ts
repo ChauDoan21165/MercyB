@@ -12,12 +12,12 @@ import { type VipTierId } from '@/lib/constants/tiers';
  */
 export type ParentRoute = 
   | "/rooms"           // Free tier rooms
-  | "/rooms-vip1"      // VIP1 tier rooms
-  | "/rooms-vip2"      // VIP2 tier rooms
-  | "/rooms-vip3"      // VIP3 tier rooms
-  | "/rooms-vip4"      // VIP4 tier rooms
-  | "/vip6"            // VIP6 tier rooms
-  | "/rooms-vip9"      // VIP9 tier rooms
+  | "/vip/vip1"        // VIP1 tier rooms
+  | "/vip/vip2"        // VIP2 tier rooms
+  | "/vip/vip3"        // VIP3 tier rooms
+  | "/vip/vip4"        // VIP4 tier rooms
+  | "/vip/vip6"        // VIP6 tier rooms
+  | "/vip/vip9"        // VIP9 tier rooms
   | "/sexuality-culture" // Sexuality sub-rooms parent
   | "/finance-calm";   // Finance sub-rooms parent
 
@@ -49,12 +49,12 @@ export function getRoomTier(roomId: string): RoomTier | null {
 export function tierToRoute(tier: RoomTier): ParentRoute {
   const tierRouteMap: Record<RoomTier, ParentRoute> = {
     'free': "/rooms",
-    'vip1': "/rooms-vip1",
-    'vip2': "/rooms-vip2",
-    'vip3': "/rooms-vip3",
-    'vip4': "/rooms-vip4",
-    'vip6': "/vip6",
-    'vip9': "/rooms-vip9"
+    'vip1': "/vip/vip1",
+    'vip2': "/vip/vip2",
+    'vip3': "/vip/vip3",
+    'vip4': "/vip/vip4",
+    'vip6': "/vip/vip6",
+    'vip9': "/vip/vip9"
   };
   return tierRouteMap[tier];
 }
@@ -91,17 +91,17 @@ export function getParentRoute(roomId: string | undefined): ParentRoute {
 
   // Special handling for sexuality parent room
   if (roomId === 'sexuality-and-curiosity-and-culture-vip3') {
-    return "/rooms-vip3";
+    return "/vip/vip3";
   }
 
   // Special handling for finance parent room
   if (roomId === 'finance-glory-vip3') {
-    return "/rooms-vip3";
+    return "/vip/vip3";
   }
 
   // Special handling for strategy in life series (multi-part VIP3 rooms)
   if (roomId.startsWith('strategy-in-life-')) {
-    return "/rooms-vip3";
+    return "/vip/vip3";
   }
 
   // Standard tier-based routing for all other rooms
