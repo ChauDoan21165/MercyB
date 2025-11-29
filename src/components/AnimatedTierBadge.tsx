@@ -1,5 +1,5 @@
 import { Crown, Sparkles, Zap, Star } from "lucide-react";
-import { UserTier } from "@/hooks/useUserAccess";
+import { UserTier } from "@/lib/accessControl";
 import { cn } from "@/lib/utils";
 
 interface AnimatedTierBadgeProps {

@@ -8,7 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { MessageSquare, ChevronRight } from 'lucide-react';
 import { ALL_ROOMS, RoomInfo } from '@/lib/roomData';
 import { AnimatedTierBadge } from '@/components/AnimatedTierBadge';
-import { UserTier } from '@/hooks/useUserAccess';
+import { UserTier } from '@/lib/accessControl';
 
 const AdminVIPRooms = () => {
   const navigate = useNavigate();
