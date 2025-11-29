@@ -7,8 +7,6 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { MessageSquare, ChevronRight } from 'lucide-react';
 import { ALL_ROOMS, RoomInfo } from '@/lib/roomData';
-import { AnimatedTierBadge } from '@/components/AnimatedTierBadge';
-import { UserTier } from '@/lib/accessControl';
 
 const AdminVIPRooms = () => {
   const navigate = useNavigate();
@@ -56,16 +54,7 @@ const AdminVIPRooms = () => {
   };
 
   const getBackgroundForTier = (tier: string) => {
-    switch (tier) {
-      case 'vip1':
-        return 'bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900';
-      case 'vip2':
-        return 'bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950 dark:to-purple-900';
-      case 'vip3':
-        return 'bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950 dark:to-amber-900';
-      default:
-        return 'bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900';
-    }
+    return 'bg-white border-2 border-black';
   };
 
   const vip1Rooms = ALL_ROOMS.filter(room => room.tier === 'vip1').sort((a, b) => {
@@ -85,41 +74,34 @@ const AdminVIPRooms = () => {
   });
 
   const RoomCard = ({ room }: { room: RoomInfo }) => {
-    // Convert tier string to UserTier type
-    const tierMap: Record<string, UserTier> = {
-      'free': 'free',
-      'vip1': 'vip1',
-      'vip2': 'vip2',
-      'vip3': 'vip3',
-      'vip4': 'vip4'
-    };
-    const mappedTier = tierMap[room.tier] || 'free';
-    
     return (
-      <Card className="hover:shadow-lg transition-all">
+      <Card className="bg-white border-2 border-black hover:shadow-xl transition-all">
         <CardHeader>
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1">
-              <CardTitle className="text-lg mb-1">{room.nameEn}</CardTitle>
-              <CardDescription>{room.nameVi}</CardDescription>
+              <CardTitle className="text-lg mb-1 font-bold text-black">{room.nameEn}</CardTitle>
+              <CardDescription className="text-gray-600">{room.nameVi}</CardDescription>
             </div>
-            <AnimatedTierBadge tier={mappedTier} size="md" />
+            <Badge variant="outline" className="border-2 border-black bg-white text-black font-bold">
+              {room.tier.toUpperCase()}
+            </Badge>
           </div>
         </CardHeader>
       <CardContent className="space-y-3">
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <MessageSquare className="w-4 h-4" />
+        <div className="flex items-center gap-2 text-sm text-gray-600">
+          <MessageSquare className="w-4 h-4" aria-hidden="true" />
           <span>Room ID: {room.id}</span>
         </div>
         
         <Button
           onClick={() => navigate(`/chat/${room.id}`)}
-          className="w-full"
+          className="w-full border-2 border-black bg-white text-black hover:bg-black hover:text-white font-bold"
           variant="outline"
+          aria-label={`Open chat room ${room.nameEn}`}
         >
           <span className="flex items-center gap-2">
             Open Chat Room
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-4 h-4" aria-hidden="true" />
           </span>
         </Button>
       </CardContent>
@@ -129,10 +111,10 @@ const AdminVIPRooms = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-black mx-auto mb-4"></div>
+          <p className="text-gray-600 font-bold">Loading...</p>
         </div>
       </div>
     );
@@ -141,37 +123,51 @@ const AdminVIPRooms = () => {
   if (!isAdmin) return null;
 
   return (
-    <div className="min-h-screen" style={{ background: 'var(--gradient-admin)' }}>
+    <div className="min-h-screen bg-white">
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         <div className="mb-8 flex items-center justify-between">
           <div>
-            <h1 className="text-4xl font-bold mb-2">VIP Rooms Admin Dashboard</h1>
-            <p className="text-muted-foreground">
+            <h1 className="text-4xl font-bold mb-2 text-black">VIP Rooms Admin Dashboard</h1>
+            <p className="text-gray-600 font-bold">
               Manage and view all VIP tier rooms, topics, and chat rooms
             </p>
           </div>
-          <Button variant="outline" onClick={() => navigate('/admin')}>
+          <Button 
+            variant="outline" 
+            onClick={() => navigate('/admin')}
+            className="border-2 border-black bg-white text-black hover:bg-black hover:text-white font-bold"
+            aria-label="Back to Admin Dashboard"
+          >
             ← Back to Admin
           </Button>
         </div>
 
         <Tabs defaultValue="vip1" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="vip1" className="text-base">
+          <TabsList className="grid w-full grid-cols-3 bg-white border-2 border-black">
+            <TabsTrigger 
+              value="vip1" 
+              className="text-base font-bold data-[state=active]:bg-black data-[state=active]:text-white"
+            >
               VIP1 ({vip1Rooms.length} rooms)
             </TabsTrigger>
-            <TabsTrigger value="vip2" className="text-base">
+            <TabsTrigger 
+              value="vip2" 
+              className="text-base font-bold data-[state=active]:bg-black data-[state=active]:text-white"
+            >
               VIP2 ({vip2Rooms.length} rooms)
             </TabsTrigger>
-            <TabsTrigger value="vip3" className="text-base">
+            <TabsTrigger 
+              value="vip3" 
+              className="text-base font-bold data-[state=active]:bg-black data-[state=active]:text-white"
+            >
               VIP3 ({vip3Rooms.length} rooms)
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="vip1" className={`rounded-lg p-6 ${getBackgroundForTier('vip1')}`}>
             <div className="mb-6">
-              <h2 className="text-2xl font-bold mb-2">VIP1 Tier Rooms</h2>
-              <p className="text-muted-foreground">
+              <h2 className="text-2xl font-bold mb-2 text-black">VIP1 Tier Rooms</h2>
+              <p className="text-gray-600 font-bold">
                 Premium rooms for VIP1 subscribers - 1 custom topic, 1 full room access per day
               </p>
             </div>
@@ -181,7 +177,7 @@ const AdminVIPRooms = () => {
               ))}
             </div>
             {vip1Rooms.length === 0 && (
-              <div className="text-center py-12 text-muted-foreground">
+              <div className="text-center py-12 text-gray-600 font-bold">
                 No VIP1 rooms available
               </div>
             )}
@@ -189,8 +185,8 @@ const AdminVIPRooms = () => {
 
           <TabsContent value="vip2" className={`rounded-lg p-6 ${getBackgroundForTier('vip2')}`}>
             <div className="mb-6">
-              <h2 className="text-2xl font-bold mb-2">VIP2 Tier Rooms</h2>
-              <p className="text-muted-foreground">
+              <h2 className="text-2xl font-bold mb-2 text-black">VIP2 Tier Rooms</h2>
+              <p className="text-gray-600 font-bold">
                 Premium rooms for VIP2 subscribers - 2 custom topics, 2 full rooms access per day
               </p>
             </div>
@@ -200,7 +196,7 @@ const AdminVIPRooms = () => {
               ))}
             </div>
             {vip2Rooms.length === 0 && (
-              <div className="text-center py-12 text-muted-foreground">
+              <div className="text-center py-12 text-gray-600 font-bold">
                 No VIP2 rooms available
               </div>
             )}
@@ -208,8 +204,8 @@ const AdminVIPRooms = () => {
 
           <TabsContent value="vip3" className={`rounded-lg p-6 ${getBackgroundForTier('vip3')}`}>
             <div className="mb-6">
-              <h2 className="text-2xl font-bold mb-2">VIP3 Tier Rooms</h2>
-              <p className="text-muted-foreground">
+              <h2 className="text-2xl font-bold mb-2 text-black">VIP3 Tier Rooms</h2>
+              <p className="text-gray-600 font-bold">
                 Premium rooms for VIP3 subscribers - 3 custom topics, 3 rooms access per day, AI Matchmaking, Voice chat
               </p>
             </div>
@@ -219,7 +215,7 @@ const AdminVIPRooms = () => {
               ))}
             </div>
             {vip3Rooms.length === 0 && (
-              <div className="text-center py-12 text-muted-foreground">
+              <div className="text-center py-12 text-gray-600 font-bold">
                 No VIP3 rooms available
               </div>
             )}
