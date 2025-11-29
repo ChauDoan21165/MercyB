@@ -106,6 +106,8 @@ const PaymentTest = () => {
     setLoading(true);
     setSelectedTier(tierId);
 
+    const billingPeriod = isYearly ? 'yearly' : 'monthly';
+
     try {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) {
@@ -141,7 +143,7 @@ const PaymentTest = () => {
             const { data: { session } } = await supabase.auth.getSession();
             
             const { data: orderResult, error } = await supabase.functions.invoke('paypal-payment', {
-              body: { action: 'create-order', tier_id: tierId, period: 'monthly' },
+              body: { action: 'create-order', tier_id: tierId, period: billingPeriod },
               headers: {
                 Authorization: `Bearer ${session?.access_token}`
               }
@@ -173,7 +175,7 @@ const PaymentTest = () => {
             const { data: { session } } = await supabase.auth.getSession();
             
             const { data: captureData, error } = await supabase.functions.invoke('paypal-payment', {
-              body: { action: 'capture-order', order_id: data.orderID, tier_id: tierId, period: 'monthly' },
+              body: { action: 'capture-order', order_id: data.orderID, tier_id: tierId, period: billingPeriod },
               headers: {
                 Authorization: `Bearer ${session?.access_token}`
               }
@@ -195,6 +197,7 @@ const PaymentTest = () => {
               `🎉 Congratulations! You are now in ${tierName}. Enjoy your experience! / Chúc mừng! Bạn đã là ${tierName}. Tận hưởng trải nghiệm!`,
               { description: `Tier: ${captureData.data?.tier_id || tierId}` }
             );
+            setLoading(false);
             navigate('/');
           } catch (error) {
             console.error('Payment approval error:', error);
@@ -320,12 +323,23 @@ const PaymentTest = () => {
                             <p className="text-sm text-gray-700">{tier.description}</p>
                           </div>
                         )}
-                        {tier.features && JSON.parse(tier.features).map((feature: string, idx: number) => (
-                          <div key={idx} className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                            <p className="text-sm text-gray-700">{feature}</p>
-                          </div>
-                        ))}
+                        {(() => {
+                          let parsedFeatures: string[] = [];
+                          if (tier.features) {
+                            try {
+                              const raw = JSON.parse(tier.features);
+                              parsedFeatures = Array.isArray(raw) ? raw : [];
+                            } catch (e) {
+                              console.error('Invalid features JSON for tier', tier.id, e);
+                            }
+                          }
+                          return parsedFeatures.map((feature, idx) => (
+                            <div key={idx} className="flex items-start gap-2">
+                              <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                              <p className="text-sm text-gray-700">{feature}</p>
+                            </div>
+                          ));
+                        })()}
                       </div>
                       
                       {/* PayPal Button Container */}
