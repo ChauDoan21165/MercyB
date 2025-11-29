@@ -1,0 +1,125 @@
+{
+  "id": "psychological_self_mastery_vip6_bonus",
+  "tier": "vip6",
+  "domain": "Self-Mastery",
+  "title": {
+    "en": "Psychological Self-Mastery — VIP6 Bonus",
+    "vi": "Làm Chủ Tâm Lý — Phần Thưởng VIP6"
+  },
+  "content": {
+    "en": "Self-mastery is the highest form of power—control over inner reactions, impulses, and emotional storms. At lower levels, people work hard to manage the outside world while losing every battle within. At VIP6, you reverse the hierarchy: command the internal first, and the external begins to align naturally. This room trains the psychological disciplines that allow you to remain centered under pressure, clear under chaos, and unshaken under conflict. We begin with emotional neutrality: the ability to feel without being hijacked. You will learn how sensations rise, peak, and fall, and how not to mistake them for commands. Next, we study impulse control—choosing action over reaction, direction over instinct. You will practice the micro-delays that interrupt destructive patterns. Identity-level self-command teaches that you are not your urges, thoughts, or moods; you are the one who observes and chooses. We explore the ego: how it defends old beliefs, resists truth, and creates unnecessary suffering. By calming the ego, you access higher reasoning and deeper stability. We then learn psychological “grounding”: breath, posture, tone, and presence that return you to center instantly. You will build the ability to stay sane while others lose control. We examine resilience—not the ability to endure endless damage, but the ability to recover quickly and remain steady. You will learn how to reset rapidly after emotional hits. Finally, we cultivate self-respect: the discipline of honoring your standards even when no one is watching. True self-mastery is not force or suppression; it is calm inner authority. When you master yourself, no one else can master you.",
+    "vi": "Làm chủ bản thân là dạng sức mạnh cao nhất—kiểm soát phản ứng, xung động và bão cảm xúc. Ở cấp thấp, con người cố quản lý thế giới ngoài trong khi thua mọi trận chiến bên trong. Ở VIP6, bạn đảo ngược trật tự: làm chủ nội tâm trước, và thế giới bên ngoài bắt đầu tự sắp xếp. Phòng này rèn các kỷ luật tâm lý giúp bạn giữ tâm vững dưới áp lực, sáng suốt giữa hỗn loạn và không lay chuyển trước xung đột. Ta bắt đầu với trạng thái trung tính cảm xúc: khả năng cảm mà không bị chi phối. Bạn sẽ học cách cảm xúc trỗi lên, đạt đỉnh rồi tự hạ, và tránh nhầm chúng với mệnh lệnh. Ta học kiểm soát xung động—chọn hành động thay vì phản ứng, chọn hướng đi thay vì bản năng. Bạn sẽ luyện độ trễ vi mô để cắt các mẫu phá hoại. Tự chủ ở tầng bản sắc dạy rằng bạn không phải là cảm xúc hay suy nghĩ; bạn là người quan sát và lựa chọn. Ta khám phá bản ngã: nó bảo vệ niềm tin cũ, kháng sự thật và tạo đau khổ. Khi làm yên bản ngã, bạn mở cánh cửa cho lý trí cao hơn. Ta học “grounding”—hơi thở, tư thế, giọng và hiện diện giúp bạn trở về trung tâm ngay lập tức. Bạn sẽ có năng lực giữ bình tĩnh khi người khác mất kiểm soát. Ta nghiên cứu hồi phục—không phải chịu đựng vô hạn, mà là phục hồi nhanh và giữ ổn định. Cuối cùng, ta rèn tự trọng: kỷ luật giữ tiêu chuẩn của mình kể cả khi không ai nhìn. Làm chủ bản thân không phải đàn áp, mà là quyền lực nội tâm tĩnh lặng. Khi bạn làm chủ mình, không ai có thể làm chủ bạn."
+  },
+  "entries": [
+    {
+      "slug": "emotional-neutrality",
+      "keywords_en": ["neutrality", "emotions", "calm"],
+      "keywords_vi": ["trung tính", "cảm xúc", "bình tâm"],
+      "copy": {
+        "en": "Emotional neutrality is not suppression—it is freedom from hijack. Feelings rise and fall like weather; neutrality is the ability to let them pass without acting on them. When you stop treating emotions as commands, you regain clarity and control.",
+        "vi": "Trung tính cảm xúc không phải kìm nén—mà là tự do khỏi bị chi phối. Cảm xúc trồi sụt như thời tiết; trung tính là để chúng đi qua mà không hành động theo. Khi bạn không xem cảm xúc là mệnh lệnh, bạn lấy lại sự rõ ràng và kiểm soát."
+      },
+      "tags": ["calm", "clarity"],
+      "audio": "vip6_self_01.mp3"
+    },
+    {
+      "slug": "impulse-control",
+      "keywords_en": ["impulse", "control", "pause"],
+      "keywords_vi": ["xung động", "kiểm soát", "dừng lại"],
+      "copy": {
+        "en": "Impulse control begins with micro-pauses: one breath, one second, one question. These tiny delays interrupt the automatic loop and allow consciousness to return. Mastery is choosing the response, not obeying the impulse.",
+        "vi": "Kiểm soát xung động bắt đầu bằng độ trễ vi mô: một hơi, một giây, một câu hỏi. Khoảng dừng nhỏ này cắt vòng lặp tự động và đưa ý thức trở lại. Làm chủ là chọn phản ứng, không phục tùng xung động."
+      },
+      "tags": ["control", "discipline"],
+      "audio": "vip6_self_02.mp3"
+    },
+    {
+      "slug": "identity-level-command",
+      "keywords_en": ["identity", "self", "authority"],
+      "keywords_vi": ["bản sắc", "tự ngã", "quyền lực nội tâm"],
+      "copy": {
+        "en": "Real self-mastery happens at the identity level: “I am the one who chooses.” When you stop identifying with urges and moods, you stop being controlled by them. Authority over self begins with the recognition that you are not your passing states.",
+        "vi": "Làm chủ thật xảy ra ở tầng bản sắc: “Tôi là người chọn.” Khi bạn không đồng nhất mình với cảm xúc hay tâm trạng, bạn không còn bị chúng điều khiển. Quyền lực nội tâm bắt đầu từ nhận thức rằng bạn không phải các trạng thái nhất thời."
+      },
+      "tags": ["identity", "self-command"],
+      "audio": "vip6_self_03.mp3"
+    },
+    {
+      "slug": "ego-softening",
+      "keywords_en": ["ego", "softening", "truth"],
+      "keywords_vi": ["bản ngã", "làm mềm", "sự thật"],
+      "copy": {
+        "en": "The ego defends old stories, rejects correction, and fears humility. Softening the ego opens access to truth and higher reasoning. When you stop needing to be right, you become far more accurate.",
+        "vi": "Bản ngã bảo vệ câu chuyện cũ, từ chối sửa sai và sợ khiêm nhường. Làm mềm bản ngã mở cánh cửa tới sự thật và lý trí cao hơn. Khi bạn không cần đúng nữa, bạn chính xác hơn nhiều."
+      },
+      "tags": ["ego", "clarity"],
+      "audio": "vip6_self_04.mp3"
+    },
+    {
+      "slug": "grounding-techniques",
+      "keywords_en": ["grounding", "center", "presence"],
+      "keywords_vi": ["grounding", "trung tâm", "hiện diện"],
+      "copy": {
+        "en": "Grounding brings you back to center through breath, posture, tone, or movement. It interrupts spirals, stabilizes your mind, and returns control to the present moment. A grounded person cannot be easily manipulated.",
+        "vi": "Grounding đưa bạn về trung tâm qua hơi thở, tư thế, giọng hoặc chuyển động. Nó cắt chuỗi xoáy, ổn định tâm trí và đưa bạn về hiện tại. Người grounded khó bị thao túng."
+      },
+      "tags": ["presence", "calm"],
+      "audio": "vip6_self_05.mp3"
+    },
+    {
+      "slug": "state-management",
+      "keywords_en": ["state", "management", "regulation"],
+      "keywords_vi": ["trạng thái", "quản lý", "điều chỉnh"],
+      "copy": {
+        "en": "Your internal state determines your external results. Managing state—through breath, focus, and intentional self-talk—prevents emotional spirals. Mastery is learning to shift your state before making moves.",
+        "vi": "Trạng thái nội tâm quyết định kết quả bên ngoài. Quản lý trạng thái—qua hơi thở, sự tập trung và tự đối thoại—ngăn bạn rơi vào vòng xoáy. Làm chủ là biết đổi trạng thái trước khi hành động."
+      },
+      "tags": ["regulation", "clarity"],
+      "audio": "vip6_self_06.mp3"
+    },
+    {
+      "slug": "pressure-tolerance",
+      "keywords_en": ["pressure", "resilience", "control"],
+      "keywords_vi": ["áp lực", "bền tâm lý", "kiểm soát"],
+      "copy": {
+        "en": "Pressure does not break people—lack of inner structure does. Build tolerance by exposing yourself to manageable stress, grounding often, and refusing to collapse into panic. Stability is trained, not inherited.",
+        "vi": "Áp lực không làm con người gãy—thiếu cấu trúc nội tâm mới làm gãy. Xây sức chịu đựng bằng căng thẳng nhẹ có kiểm soát, grounding thường xuyên và tránh hoảng loạn. Sự ổn định được rèn, không phải bẩm sinh."
+      },
+      "tags": ["resilience", "strength"],
+      "audio": "vip6_self_07.mp3"
+    },
+    {
+      "slug": "rapid-recovery",
+      "keywords_en": ["recovery", "reset", "resilience"],
+      "keywords_vi": ["phục hồi", "reset", "bền bỉ"],
+      "copy": {
+        "en": "Resilience is not endless endurance—it is rapid recovery. The faster you can return to clarity after emotional impact, the stronger your mind becomes. Reset techniques turn setbacks into temporary weather.",
+        "vi": "Bền bỉ không phải chịu đựng vô hạn—mà là phục hồi nhanh. Bạn trở lại trạng thái sáng suốt càng nhanh sau cú va cảm xúc, tâm càng mạnh. Kỹ thuật reset biến thất bại thành cơn mưa thoáng qua."
+      },
+      "tags": ["reset", "strength"],
+      "audio": "vip6_self_08.mp3"
+    },
+    {
+      "slug": "self-boundaries",
+      "keywords_en": ["boundaries", "self-respect", "standards"],
+      "keywords_vi": ["ranh giới", "tự trọng", "tiêu chuẩn"],
+      "copy": {
+        "en": "Self-boundaries are internal rules: what you allow yourself to do, tolerate, and become. When you enforce your standards, you create inner authority. Without boundaries, mastery collapses.",
+        "vi": "Ranh giới nội tâm là luật bạn đặt cho chính mình: điều bạn cho phép mình làm, chịu đựng và trở thành. Khi bạn giữ tiêu chuẩn của mình, bạn tạo quyền lực nội tâm. Không ranh giới, mọi sự làm chủ đều sụp."
+      },
+      "tags": ["standards", "authority"],
+      "audio": "vip6_self_09.mp3"
+    },
+    {
+      "slug": "inner-honesty",
+      "keywords_en": ["honesty", "self-awareness", "truth"],
+      "keywords_vi": ["trung thực nội tâm", "tự nhận thức", "sự thật"],
+      "copy": {
+        "en": "Self-mastery requires ruthless inner honesty: naming your patterns, motives, excuses, and emotional addictions. When you see yourself clearly, you cannot sabotage yourself blindly. Honesty is the root of power.",
+        "vi": "Làm chủ bản thân đòi hỏi sự trung thực nội tâm nghiêm khắc: gọi tên các mẫu lặp, động cơ, cái cớ và nghiện cảm xúc. Khi bạn thấy mình rõ, bạn không thể tự phá hoại một cách vô thức. Trung thực là gốc của sức mạnh."
+      },
+      "tags": ["truth", "self-awareness"],
+      "audio": "vip6_self_10.mp3"
+    }
+  ]
+}
