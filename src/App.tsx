@@ -125,6 +125,8 @@ const App = () => {
             <BrowserRouter>
               <AdminFloatingButton />
               <ZoomControl />
+              <HomeButton />
+              <BackButton />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/tiers" element={<Tiers />} />
@@ -191,7 +193,6 @@ const App = () => {
           <Route path="/admin/system-health" element={<SystemHealth />} />
           <Route path="/admin/edge-functions" element={<EdgeFunctions />} />
           <Route path="/redeem-gift" element={<RedeemGiftCode />} />
-          <Route path="/admin/room-specification" element={<RoomSpecification />} />
           <Route path="/user-music-upload" element={<UserMusicUpload />} />
           <Route path="/admin/music-approval" element={<MusicApproval />} />
           <Route path="/admin/music-manager" element={<MusicManager />} />
