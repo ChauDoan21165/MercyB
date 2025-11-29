@@ -1,0 +1,103 @@
+{
+  "id": "debate_fallacies_vip2",
+  "tier": "vip2",
+  "domain": "Debate",
+  "title": {
+    "en": "Fallacies in Debate — VIP2 Room",
+    "vi": "Ngụy Biện Trong Tranh Luận — Phòng VIP2"
+  },
+  "content": {
+    "en": "This VIP2 room trains you to see through fallacies in debate so you stop feeling confused or cornered when arguments get messy. Instead of memorizing theory, you will learn eight practical patterns: straw man, ad hominem, slippery slope, false dilemma, hasty generalization, appeal to emotion, red herring, and whataboutism. Each entry explains the pattern in simple language, shows how it appears in daily life, and gives you calm sentences to respond with. The goal is not to humiliate others, but to gently bring the conversation back to clarity and fairness. When you can recognize fallacies in real time, you protect your mind, reduce emotional manipulation, and become a more trustworthy voice in any discussion.",
+    "vi": "Phòng VIP2 này giúp bạn nhìn xuyên qua các kiểu ngụy biện trong tranh luận, để không còn cảm giác rối trí hay bị dồn vào góc khi cuộc nói chuyện trở nên hỗn loạn. Thay vì học lý thuyết khô, bạn sẽ luyện tám mô thức thực tế: người rơm, công kích cá nhân, dốc trượt, lưỡng phân giả, khái quát vội vàng, kêu gọi cảm xúc, đánh lạc hướng và so đo \"còn anh thì sao\". Mỗi mục giải thích mô thức bằng ngôn ngữ đơn giản, minh hoạ bằng ví dụ đời thường và đưa ra những câu đáp bình tĩnh để kéo cuộc trao đổi về sự rõ ràng, công bằng. Mục tiêu không phải làm người khác quê mà là bảo vệ tâm trí bạn khỏi bị thao túng, và trở thành tiếng nói đáng tin trong mọi cuộc thảo luận."
+  },
+  "entries": [
+    {
+      "slug": "straw-man",
+      "keywords_en": ["straw man", "distortion", "clarity"],
+      "keywords_vi": ["người rơm", "bóp méo", "rõ ràng"],
+      "copy": {
+        "en": "A straw man fallacy happens when someone distorts your idea into a weaker, exaggerated version and then attacks that instead of your real point. For example, you say, “We should review this policy,” and they reply, “So you want to destroy the whole system?” If you react emotionally, you are already inside their frame. Instead, stay calm and bring the discussion back to your original statement. Try lines like: “That is not what I said. My actual point is…” or “Let’s work with the real version of my idea, not an extreme one.” You do not need to defend the distorted version. Name the gap gently and repeat your true claim in one clean sentence. Over time, you will notice how often people “upgrade” your words into something more dramatic. Seeing the straw man clearly is the first step to staying free from it.",
+        "vi": "Ngụy biện người rơm xảy ra khi ai đó bóp méo ý của bạn thành một phiên bản yếu, cực đoan rồi tấn công phiên bản đó thay vì luận điểm thật. Bạn nói: “Ta nên rà soát lại chính sách này”, họ đáp: “Vậy là bạn muốn phá cả hệ thống à?”. Nếu phản ứng cảm xúc, bạn đã rơi vào khung của họ. Thay vào đó, hãy bình tĩnh kéo cuộc nói chuyện về câu gốc của mình. Bạn có thể nói: “Đó không phải điều tôi nói. Ý chính của tôi là…” hoặc “Ta bàn trên phiên bản thật của ý tưởng, không phải bản cực đoan nhé.” Bạn không cần bảo vệ phiên bản bị bóp méo. Chỉ cần chỉ nhẹ nhàng khoảng cách và lặp lại luận điểm thật trong một câu rõ ràng. Khi luyện quen, bạn sẽ thấy người ta “thổi to” lời bạn thường xuyên thế nào và không còn bị cuốn theo."
+      },
+      "tags": ["logic", "clarity", "protection"],
+      "audio": "debate_fallacies_01_vip2.mp3"
+    },
+    {
+      "slug": "ad-hominem",
+      "keywords_en": ["ad hominem", "personal attack", "respect"],
+      "keywords_vi": ["công kích cá nhân", "tấn công người", "tôn trọng"],
+      "copy": {
+        "en": "Ad hominem means attacking the person instead of the argument. It can be obvious (“You’re stupid, so your idea is wrong”) or subtle (“Of course you say that, you’re just an intern”). Personal attacks are meant to trigger shame, not truth. When you face ad hominem, separate content from insult. Ask yourself: “If a different person said the same thing, would it still deserve attention?” Then answer the idea, not the jab. You might say: “Let’s focus on the argument, not my role,” or “Even if you doubt me, we can still test this point on its own.” If the attack continues, you are allowed to set a boundary: “If we stay at the personal level, this conversation will not be useful.” Protecting your dignity calmly sends a strong signal: you will engage in reasoning, but not in humiliation.",
+        "vi": "Công kích cá nhân là khi người ta đánh vào con người bạn thay vì nội dung lập luận. Nó có thể thô: “Bạn ngu nên ý sai rồi”, hoặc tinh vi: “Đương nhiên bạn nói vậy, bạn chỉ là thực tập sinh mà.” Mục tiêu của kiểu này là đánh vào xấu hổ chứ không phải sự thật. Khi gặp công kích cá nhân, hãy tách nội dung khỏi lời xúc phạm. Tự hỏi: “Nếu người khác nói y hệt, ý này còn đáng xem xét không?” Sau đó, hãy trả lời vào ý chứ không đáp lại cú châm. Bạn có thể nói: “Ta tập trung vào lập luận, không phải vị trí của tôi nhé,” hoặc “Kể cả bạn nghi ngờ tôi, ta vẫn có thể kiểm tra ý này.” Nếu họ tiếp tục, hãy đặt ranh giới: “Nếu chỉ nói về cá nhân, cuộc trao đổi sẽ không còn hữu ích.” Bình tĩnh bảo vệ phẩm giá là thông điệp rất rõ ràng."
+      },
+      "tags": ["boundaries", "emotional-intelligence", "respect"],
+      "audio": "debate_fallacies_02_vip2.mp3"
+    },
+    {
+      "slug": "slippery-slope",
+      "keywords_en": ["slippery slope", "exaggeration", "fear"],
+      "keywords_vi": ["dốc trượt", "phóng đại", "sợ hãi"],
+      "copy": {
+        "en": "A slippery slope fallacy says: “If we allow this small step, terrible extreme consequences will follow.” It plays on fear, not evidence. For example: “If we let people work from home one day a week, soon no one will come to the office and the company will collapse.” To handle this, gently separate possibility from certainty. Ask: “Is this a guaranteed chain, or just a worry?” and “Do we have real data for these later steps?” You can also introduce brakes: policies, reviews, or limits that stop the slide. Say: “We can test this on a small scale and review in three months instead of assuming disaster.” When you name the slope and add brakes, you calm the emotional storm. You show that careful experimentation is different from blind surrender to chaos.",
+        "vi": "Ngụy biện dốc trượt nói rằng: “Nếu cho phép bước nhỏ này, hậu quả cực đoan chắc chắn xảy ra.” Nó đánh vào nỗi sợ hơn là chứng cứ. Ví dụ: “Nếu cho làm việc ở nhà một ngày, rồi ai cũng bỏ văn phòng, công ty sụp đổ.” Để xử lý, hãy tách khả năng khỏi chắc chắn. Hỏi: “Chuỗi này là điều chắc chắn hay chỉ là lo lắng?” và “Ta có dữ liệu nào cho những bước sau không?” Bạn cũng có thể đề xuất “phanh”: quy định, đánh giá, giới hạn để ngăn trượt. Nói: “Ta có thể thử nhỏ trong ba tháng rồi xem lại, thay vì mặc định là thảm hoạ.” Khi gọi tên dốc trượt và thêm “phanh”, bạn làm dịu cơn bão cảm xúc và cho thấy thử nghiệm cẩn trọng khác hoàn toàn với buông xuôi hỗn loạn."
+      },
+      "tags": ["risk-thinking", "calm", "analysis"],
+      "audio": "debate_fallacies_03_vip2.mp3"
+    },
+    {
+      "slug": "false-dilemma",
+      "keywords_en": ["false dilemma", "either-or", "options"],
+      "keywords_vi": ["lưỡng phân giả", "hoặc-hay", "lựa chọn"],
+      "copy": {
+        "en": "A false dilemma forces you to choose between two extreme options and hides all the middle paths. It sounds like: “Either you fully support this plan, or you are against the team.” Real life is rarely so binary. When you sense a false dilemma, slow down and look for missing options. You can say: “I don’t agree with that framing. There might be more than two choices here,” or “I support the team, and I also think we can adjust the plan.” Naming the “and” is powerful—it breaks the prison of “either–or.” Invite everyone to list alternative solutions, even small variations. Once more options are visible, pressure decreases and thinking becomes more creative. You are no longer negotiating inside a trap that someone else designed.",
+        "vi": "Lưỡng phân giả là khi người ta ép bạn chọn giữa hai cực và che hết những con đường ở giữa. Nó thường mang dạng: “Hoặc bạn ủng hộ kế hoạch này, hoặc bạn chống lại cả đội.” Đời thực hiếm khi trắng đen như vậy. Khi thấy mình bị đẩy vào thế “hoặc–hay”, hãy chậm lại và tìm lựa chọn bị ẩn. Bạn có thể nói: “Tôi không đồng ý với cách khung đó, có thể còn hơn hai lựa chọn,” hoặc “Tôi ủng hộ đội, và tôi cũng nghĩ kế hoạch có thể chỉnh lại.” Chữ “và” có sức mạnh phá nhà tù “hoặc–hay”. Hãy rủ mọi người liệt kê thêm phương án, kể cả biến thể nhỏ. Khi nhiều lựa chọn hiện ra, áp lực giảm và tư duy sáng tạo hơn. Bạn không còn phải thương lượng trong cái bẫy do người khác đặt."
+      },
+      "tags": ["creativity", "framing", "pressure-release"],
+      "audio": "debate_fallacies_04_vip2.mp3"
+    },
+    {
+      "slug": "hasty-generalization",
+      "keywords_en": ["hasty generalization", "evidence", "patterns"],
+      "keywords_vi": ["khái quát vội vàng", "chứng cứ", "mẫu hình"],
+      "copy": {
+        "en": "Hasty generalization jumps from a few cases to a big conclusion: “Two customers complained, so our product is terrible,” or “I met one lazy employee from that department, so the whole team is useless.” Our brains love shortcuts, but they often distort reality. To respond, respect the data without letting it rule everything. Try: “Those examples matter, and at the same time they might not represent the whole picture,” or “Before we conclude, how many cases do we have, and what do we not see yet?” Invite a search for broader evidence: more clients, longer timelines, multiple perspectives. This does not erase the problem; it sizes it correctly. When you resist rushed conclusions, you protect the team from policies based on fear, bias, or one loud incident.",
+        "vi": "Khái quát vội vàng là khi ta nhảy từ vài trường hợp nhỏ sang kết luận lớn: “Có hai khách than phiền nên sản phẩm ta dở tệ,” hoặc “Tôi gặp một nhân viên lười ở phòng đó, chắc cả đội vô dụng.” Não ưa đường tắt nhưng thường làm méo sự thật. Khi đáp lại, hãy tôn trọng dữ liệu nhưng đừng để nó quyết hết. Bạn có thể nói: “Những ví dụ đó quan trọng, đồng thời có thể chưa phản ánh toàn cảnh,” hoặc “Trước khi kết luận, ta có bao nhiêu trường hợp và còn điều gì chưa thấy?” Hãy mời gọi tìm thêm chứng cứ: nhiều khách hơn, thời gian dài hơn, góc nhìn khác. Cách này không phủ nhận vấn đề mà đặt nó đúng kích cỡ. Khi không cho phép kết luận vội, bạn bảo vệ tổ chức khỏi quyết định dựa trên sợ hãi, định kiến hoặc một sự cố ồn ào."
+      },
+      "tags": ["critical-thinking", "fairness", "data"],
+      "audio": "debate_fallacies_05_vip2.mp3"
+    },
+    {
+      "slug": "appeal-to-emotion",
+      "keywords_en": ["appeal to emotion", "manipulation", "calm"],
+      "keywords_vi": ["kêu gọi cảm xúc", "thao túng", "bình tĩnh"],
+      "copy": {
+        "en": "Appeal to emotion uses guilt, fear, pride, or pity to replace solid reasoning. Phrases like “If you cared about this company, you would agree,” or “Think of how disappointed everyone will be if you say no” are not genuine arguments; they are emotional pressure. When you notice this pattern, pause and silently name the feeling being pushed on you. Then gently bring the focus back to reasons and criteria. You might say: “I care a lot, and that’s why I want to make a thoughtful decision,” or “Feelings are important, but we also need clear reasons.” If the emotional wave keeps rising, suggest a short break or a written summary of pros and cons. Returning to structure protects you from invisible strings and keeps your choices aligned with your real values.",
+        "vi": "Kêu gọi cảm xúc là khi người ta dùng tội lỗi, sợ hãi, tự ái hay thương hại để thay thế lập luận vững chắc. Những câu như: “Nếu thực sự quan tâm công ty, bạn sẽ đồng ý,” hoặc “Hãy nghĩ xem mọi người sẽ thất vọng thế nào nếu bạn từ chối,” không phải lý lẽ mà là áp lực cảm xúc. Khi nhận ra mô thức này, hãy tạm dừng và tự gọi tên cảm xúc đang bị kích hoạt. Sau đó, nhẹ nhàng đưa cuộc nói chuyện về lý do và tiêu chí. Bạn có thể nói: “Chính vì tôi quan tâm nên tôi muốn quyết cẩn trọng,” hoặc “Cảm xúc quan trọng, nhưng ta cũng cần lý do rõ ràng.” Nếu làn sóng cảm xúc tiếp tục, hãy đề nghị nghỉ ngắn hoặc viết ra ưu–nhược điểm. Trở lại với cấu trúc giúp bạn không bị giật dây vô hình và giữ quyết định đúng với giá trị của mình."
+      },
+      "tags": ["emotional-intelligence", "self-protection", "values"],
+      "audio": "debate_fallacies_06_vip2.mp3"
+    },
+    {
+      "slug": "red-herring",
+      "keywords_en": ["red herring", "distraction", "focus"],
+      "keywords_vi": ["đánh lạc hướng", "xao nhãng", "tập trung"],
+      "copy": {
+        "en": "A red herring fallacy drags the conversation away from the main issue to a side topic that feels interesting or dramatic. For instance, when you question a project’s budget, someone suddenly talks about your attitude last year, or about a completely different team. The goal is often to escape discomfort. Your job is not to chase every side road. Instead, acknowledge the new point briefly, then return to the core. Say: “That might be worth discussing later. For now, can we finish the budget question?” or “Both issues matter, but let’s close this one before opening another.” Re-centering prevents endless detours and power games. You show that you are willing to talk, but not to lose the thread. Over time, people learn that distractions will not work on you.",
+        "vi": "Ngụy biện đánh lạc hướng kéo cuộc nói chuyện rời khỏi vấn đề chính sang một chủ đề phụ hấp dẫn hoặc kịch tính hơn. Bạn hỏi về ngân sách dự án, ai đó bỗng nhắc chuyện thái độ của bạn năm ngoái, hoặc lôi một phòng ban khác vào. Mục đích thường là tránh khó chịu. Nhiệm vụ của bạn không phải rượt theo mọi ngả rẽ. Hãy ghi nhận ngắn gọn rồi đưa cuộc trao đổi về trung tâm. Bạn có thể nói: “Chuyện đó ta có thể bàn sau. Bây giờ mình chốt câu hỏi về ngân sách trước nhé?” hoặc “Cả hai vấn đề đều quan trọng, nhưng ta giải quyết xong việc này rồi hãy mở sang việc khác.” Việc liên tục đưa trọng tâm trở lại giúp tránh vòng vo và trò chơi quyền lực. Mọi người sẽ dần hiểu rằng chiêu đánh lạc hướng không còn hiệu quả với bạn."
+      },
+      "tags": ["focus", "framing", "boundaries"],
+      "audio": "debate_fallacies_07_vip2.mp3"
+    },
+    {
+      "slug": "whataboutism",
+      "keywords_en": ["whataboutism", "deflection", "responsibility"],
+      "keywords_vi": ["còn-anh-thì-sao", "lảng tránh", "trách nhiệm"],
+      "copy": {
+        "en": "Whataboutism avoids facing a criticism by pointing to another problem or another person: “You say this report is late, but what about the times you were late?” It feels like a defense, but it never answers the original concern. To respond, you do not need to defend your whole history. Calmly separate topics in time. Try: “We can talk about my delays too, but right now I’m asking about this report,” or “If I made mistakes before, they still don’t solve today’s issue.” Refusing the deflection keeps responsibility where it belongs. You can even agree to a second conversation later, showing fairness without losing focus. When you stop chasing comparisons, you help the group move from blame trading to problem solving.",
+        "vi": "Chiêu \"còn anh thì sao\" né tránh góp ý bằng cách lôi vấn đề khác hoặc người khác vào: “Anh nói báo cáo này trễ, còn lần anh nộp trễ thì sao?” Nghe như đang tự vệ nhưng thực ra không trả lời được lo ngại ban đầu. Khi gặp kiểu này, bạn không cần bảo vệ cả quá khứ của mình. Hãy bình tĩnh tách bạch theo thời gian. Bạn có thể nói: “Chuyện tôi trễ mình cũng có thể bàn, nhưng bây giờ tôi đang hỏi về báo cáo này,” hoặc “Nếu trước đây tôi sai, điều đó vẫn không giải quyết được vấn đề hôm nay.” Không chạy theo so đo giúp trách nhiệm nằm đúng chỗ. Bạn có thể đồng ý dành cuộc nói chuyện khác cho chuyện cũ, thể hiện công bằng mà không đánh mất trọng tâm. Khi không còn chơi trò so bì, tập thể sẽ chuyển từ đổ lỗi sang giải quyết thật sự."
+      },
+      "tags": ["accountability", "focus", "maturity"],
+      "audio": "debate_fallacies_08_vip2.mp3"
+    }
+  ]
+}
