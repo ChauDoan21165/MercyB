@@ -59,6 +59,7 @@ import AdminCodeEditor from "./pages/AdminCodeEditor";
 import AudioUpload from "./pages/AudioUpload";
 import AdminFeedbackAnalytics from "./pages/AdminFeedbackAnalytics";
 import AdminPayments from "./pages/AdminPayments";
+import AdminPaymentVerification from "./pages/AdminPaymentVerification";
 import AdminUsers from "./pages/AdminUsers";
 import AdminUserDetail from "./pages/AdminUserDetail";
 import AdminSecurity from "./pages/AdminSecurity";
