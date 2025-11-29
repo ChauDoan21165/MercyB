@@ -1,15 +1,27 @@
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import {
+  createClient,
+  type SupabaseClient,
+} from 'https://esm.sh/@supabase/supabase-js@2';
+import type { Database } from './database.types.ts';
 
-let _supabaseAdmin: ReturnType<typeof createClient> | null = null;
+type DB = SupabaseClient<Database>;
 
-export const createSupabaseAdminClient = () => {
+let _supabaseAdmin: DB | null = null;
+
+export const createSupabaseAdminClient = (): DB => {
   if (_supabaseAdmin) return _supabaseAdmin;
-  
-  const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
-  const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-  _supabaseAdmin = createClient(supabaseUrl, serviceRoleKey, {
+
+  const supabaseUrl = Deno.env.get('SUPABASE_URL');
+  const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
+
+  if (!supabaseUrl || !serviceRoleKey) {
+    throw new Error('Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY');
+  }
+
+  _supabaseAdmin = createClient<Database>(supabaseUrl, serviceRoleKey, {
     auth: { persistSession: false },
   });
+
   return _supabaseAdmin;
 };
 
@@ -29,10 +41,10 @@ export const getUserFromAuthHeader = async (req: Request) => {
 
 export const assertAdmin = async (userId: string) => {
   const supabase = createSupabaseAdminClient();
-  const { data, error } = await supabase.rpc('has_role' as any, {
+  const { data, error } = await supabase.rpc('has_role', {
     _role: 'admin',
     _user_id: userId,
-  } as any);
+  });
 
   if (error || !data) {
     throw new Response(JSON.stringify({ error: 'FORBIDDEN' }), {
@@ -47,10 +59,10 @@ export const checkEndpointRateLimit = async (
   userId: string
 ) => {
   const supabase = createSupabaseAdminClient();
-  const { data, error } = await supabase.rpc('check_endpoint_rate_limit' as any, {
+  const { data, error } = await supabase.rpc('check_endpoint_rate_limit', {
     endpoint_name: endpointName,
     user_uuid: userId,
-  } as any);
+  });
 
   if (error) {
     console.error('checkEndpointRateLimit error', error);
@@ -81,8 +93,8 @@ export const logAudit = async (params: {
   const { error } = await supabase.from('audit_logs').insert({
     type,
     user_id: userId,
-    metadata: metadata ?? {},
-  } as any);
+    metadata: (metadata ?? {}) as Database['public']['Tables']['audit_logs']['Insert']['metadata'],
+  });
 
   if (error) {
     console.error('Failed to insert audit log', error);
