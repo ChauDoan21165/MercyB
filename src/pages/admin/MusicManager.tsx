@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Trash2, Music, AlertTriangle } from 'lucide-react';
+import { Trash2, Music, AlertTriangle, CheckSquare, Square } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { Checkbox } from '@/components/ui/checkbox';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -125,11 +126,23 @@ const TRACKS = [
   { id: '100', name: 'Heaven (1)', url: '/audio/2021-10-20_-_Heaven_-_David_Fesliyan-2.mp3' },
   { id: '101', name: 'Our Hopes And Dreams (1)', url: '/audio/2022-07-13_-_Our_Hopes_And_Dreams_-_www.FesliyanStudios.com-2.mp3' },
   { id: '102', name: 'Galaxys Endless Expanse (1)', url: '/audio/2023-05-02_-_Galaxys_Endless_Expanse_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '103', name: 'Glistening Gifts (1)', url: '/audio/2023-08-25_-_Glistening_Gifts_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '104', name: 'Broken Inside (1)', url: '/audio/2024-10-28_-_Broken_Inside_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '105', name: 'Requiem (1)', url: '/audio/2024-12-18_-_Requiem_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '106', name: 'News Chill (1)', url: '/audio/2025-01-21_-_News_Chill_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '107', name: 'Wishing Well (1)', url: '/audio/2025-02-04_-_Wishing_Well_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '108', name: 'Anhedonia (1)', url: '/audio/2025-03-27_-_Anhedonia_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '109', name: 'Saying Goodbye (1)', url: '/audio/2025-05-05_-_Saying_Goodbye_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '110', name: 'I Wish I Told You (1)', url: '/audio/2025-06-05_I_Wish_I_Told_You_-_www.FesliyanStudios.com_David_Fesliyan-2.mp3' },
+  { id: '111', name: 'Deep Meditation (1)', url: '/audio/2019-04-06_-_Deep_Meditation_-_David_Fesliyan-2.mp3' },
+  { id: '112', name: 'Slow Funny Music A', url: '/audio/2019-02-21_-_Slow_Funny_Music_A_-_www.fesliyanstudios.com_-_David_Renda.mp3' },
 ];
 
 export default function MusicManager() {
   const [tracks, setTracks] = useState<MusicFile[]>([]);
   const [deleteTrack, setDeleteTrack] = useState<MusicFile | null>(null);
+  const [selectedTracks, setSelectedTracks] = useState<Set<string>>(new Set());
+  const [showBulkDeleteDialog, setShowBulkDeleteDialog] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -151,12 +164,67 @@ export default function MusicManager() {
     // Remove from local state
     setTracks(tracks.filter(t => t.id !== deleteTrack.id));
     
+    // Remove from selected if it was selected
+    const newSelected = new Set(selectedTracks);
+    newSelected.delete(deleteTrack.id);
+    setSelectedTracks(newSelected);
+    
     toast({
       title: "Track Removed",
       description: `${deleteTrack.name} has been removed from the music player.`,
     });
 
     setDeleteTrack(null);
+  };
+
+  const handleToggleSelect = (trackId: string) => {
+    const newSelected = new Set(selectedTracks);
+    if (newSelected.has(trackId)) {
+      newSelected.delete(trackId);
+    } else {
+      newSelected.add(trackId);
+    }
+    setSelectedTracks(newSelected);
+  };
+
+  const handleSelectAll = () => {
+    if (selectedTracks.size === tracks.length) {
+      setSelectedTracks(new Set());
+    } else {
+      setSelectedTracks(new Set(tracks.map(t => t.id)));
+    }
+  };
+
+  const handleSelectAllDuplicates = () => {
+    const duplicates = tracks.filter(t => 
+      t.name.includes('(1)') || t.name.includes('(2)') || t.name.includes('(v2)') || t.name.includes('(v3)')
+    );
+    setSelectedTracks(new Set(duplicates.map(t => t.id)));
+  };
+
+  const handleBulkDeleteClick = () => {
+    if (selectedTracks.size === 0) {
+      toast({
+        title: "No tracks selected",
+        description: "Please select tracks to delete.",
+        variant: "destructive",
+      });
+      return;
+    }
+    setShowBulkDeleteDialog(true);
+  };
+
+  const handleBulkDeleteConfirm = () => {
+    const deletedCount = selectedTracks.size;
+    const remainingTracks = tracks.filter(t => !selectedTracks.has(t.id));
+    setTracks(remainingTracks);
+    setSelectedTracks(new Set());
+    setShowBulkDeleteDialog(false);
+    
+    toast({
+      title: "Tracks Removed",
+      description: `${deletedCount} track${deletedCount > 1 ? 's' : ''} removed from the music player.`,
+    });
   };
 
   const getDuplicateIndicator = (name: string) => {
@@ -185,10 +253,53 @@ export default function MusicManager() {
         </CardHeader>
         <CardContent>
           <div className="mb-4 p-4 bg-gray-50 border border-black rounded">
-            <p className="text-sm font-bold text-black mb-2">Total Tracks: {tracks.length}</p>
-            <p className="text-xs text-black">
-              Tracks marked with (1), (2), (v2), or (v3) are duplicates or alternate versions.
-            </p>
+            <div className="flex items-center justify-between mb-3">
+              <div>
+                <p className="text-sm font-bold text-black mb-1">Total Tracks: {tracks.length}</p>
+                <p className="text-xs text-black">
+                  {selectedTracks.size} selected | Tracks marked with (1), (2), (v2), or (v3) are duplicates.
+                </p>
+              </div>
+              <div className="flex gap-2">
+                <Button
+                  onClick={handleSelectAll}
+                  variant="outline"
+                  size="sm"
+                  className="border-black text-black hover:bg-gray-100"
+                >
+                  {selectedTracks.size === tracks.length ? (
+                    <>
+                      <CheckSquare className="h-4 w-4 mr-1" />
+                      Deselect All
+                    </>
+                  ) : (
+                    <>
+                      <Square className="h-4 w-4 mr-1" />
+                      Select All
+                    </>
+                  )}
+                </Button>
+                <Button
+                  onClick={handleSelectAllDuplicates}
+                  variant="outline"
+                  size="sm"
+                  className="border-black text-black hover:bg-gray-100"
+                >
+                  <AlertTriangle className="h-4 w-4 mr-1" />
+                  Select Duplicates
+                </Button>
+                <Button
+                  onClick={handleBulkDeleteClick}
+                  disabled={selectedTracks.size === 0}
+                  variant="outline"
+                  size="sm"
+                  className="border-black text-red-600 hover:bg-red-50 disabled:opacity-50"
+                >
+                  <Trash2 className="h-4 w-4 mr-1" />
+                  Delete Selected ({selectedTracks.size})
+                </Button>
+              </div>
+            </div>
           </div>
 
           <ScrollArea className="h-[600px] border border-black rounded">
@@ -196,8 +307,15 @@ export default function MusicManager() {
               {tracks.map((track) => (
                 <div
                   key={track.id}
-                  className="flex items-center justify-between p-3 bg-white border border-black rounded hover:bg-gray-50"
+                  className={`flex items-center gap-3 p-3 border border-black rounded hover:bg-gray-50 ${
+                    selectedTracks.has(track.id) ? 'bg-blue-50' : 'bg-white'
+                  }`}
                 >
+                  <Checkbox
+                    checked={selectedTracks.has(track.id)}
+                    onCheckedChange={() => handleToggleSelect(track.id)}
+                    className="border-black"
+                  />
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
                       <p className="font-bold text-black text-sm">{track.name}</p>
@@ -220,6 +338,7 @@ export default function MusicManager() {
         </CardContent>
       </Card>
 
+      {/* Single Delete Dialog */}
       <AlertDialog open={!!deleteTrack} onOpenChange={() => setDeleteTrack(null)}>
         <AlertDialogContent className="bg-white border-2 border-black">
           <AlertDialogHeader>
@@ -238,6 +357,36 @@ export default function MusicManager() {
               className="bg-red-600 text-white hover:bg-red-700"
             >
               Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* Bulk Delete Dialog */}
+      <AlertDialog open={showBulkDeleteDialog} onOpenChange={setShowBulkDeleteDialog}>
+        <AlertDialogContent className="bg-white border-2 border-black">
+          <AlertDialogHeader>
+            <AlertDialogTitle className="text-black">Delete {selectedTracks.size} Tracks?</AlertDialogTitle>
+            <AlertDialogDescription className="text-black">
+              Are you sure you want to delete {selectedTracks.size} selected track{selectedTracks.size > 1 ? 's' : ''}? This action cannot be undone.
+              <br />
+              <br />
+              <span className="text-xs text-gray-600 font-bold">
+                Selected tracks: {Array.from(selectedTracks).slice(0, 5).map(id => {
+                  const track = tracks.find(t => t.id === id);
+                  return track?.name;
+                }).join(', ')}
+                {selectedTracks.size > 5 ? ` and ${selectedTracks.size - 5} more...` : ''}
+              </span>
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel className="border-black text-black">Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={handleBulkDeleteConfirm}
+              className="bg-red-600 text-white hover:bg-red-700"
+            >
+              Delete All
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

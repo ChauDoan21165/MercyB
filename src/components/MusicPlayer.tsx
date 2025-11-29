@@ -123,6 +123,16 @@ const TRACKS = [
   { id: '100', name: 'Heaven (1)', url: '/audio/2021-10-20_-_Heaven_-_David_Fesliyan-2.mp3' },
   { id: '101', name: 'Our Hopes And Dreams (1)', url: '/audio/2022-07-13_-_Our_Hopes_And_Dreams_-_www.FesliyanStudios.com-2.mp3' },
   { id: '102', name: 'Galaxys Endless Expanse (1)', url: '/audio/2023-05-02_-_Galaxys_Endless_Expanse_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '103', name: 'Glistening Gifts (1)', url: '/audio/2023-08-25_-_Glistening_Gifts_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '104', name: 'Broken Inside (1)', url: '/audio/2024-10-28_-_Broken_Inside_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '105', name: 'Requiem (1)', url: '/audio/2024-12-18_-_Requiem_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '106', name: 'News Chill (1)', url: '/audio/2025-01-21_-_News_Chill_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '107', name: 'Wishing Well (1)', url: '/audio/2025-02-04_-_Wishing_Well_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '108', name: 'Anhedonia (1)', url: '/audio/2025-03-27_-_Anhedonia_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '109', name: 'Saying Goodbye (1)', url: '/audio/2025-05-05_-_Saying_Goodbye_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '110', name: 'I Wish I Told You (1)', url: '/audio/2025-06-05_I_Wish_I_Told_You_-_www.FesliyanStudios.com_David_Fesliyan-2.mp3' },
+  { id: '111', name: 'Deep Meditation (1)', url: '/audio/2019-04-06_-_Deep_Meditation_-_David_Fesliyan-2.mp3' },
+  { id: '112', name: 'Slow Funny Music A', url: '/audio/2019-02-21_-_Slow_Funny_Music_A_-_www.fesliyanstudios.com_-_David_Renda.mp3' },
 ];
 
 export const MusicPlayer = () => {
