@@ -284,14 +284,9 @@ const ChatHub = () => {
           });
         }
         
-        // Load custom keyword colors for this room
-        const customKeywords = await loadRoomKeywords(roomId || '');
-        if (customKeywords.length > 0) {
-          setCustomKeywordMappings(customKeywords);
-          console.log(`Loaded ${customKeywords.length} custom keyword color mappings for ${roomId}`);
-        } else {
-          clearCustomKeywordMappings();
-        }
+        // Load custom keyword colors for this room (only for JSON-based rooms)
+        // Database rooms use standard semantic colors
+        clearCustomKeywordMappings();
         
         // Don't add welcome message to chat - it's displayed in the card above
         setMainMessages([]);
@@ -1063,26 +1058,27 @@ const ChatHub = () => {
             </DropdownMenu>
           </div>
          
-          <div className="text-center space-y-1">
-            <div className="flex items-center justify-center gap-2">
-              {isAdmin && roomId && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    const key = roomId && (/(?:-(free|vip1|vip2|vip3|vip4))$/.test(roomId) ? roomId : (info?.tier ? `${roomId}-${info.tier}` : roomId));
-                    const manifestVal = key ? PUBLIC_ROOM_MANIFEST[key] : undefined;
-                    const fileName = manifestVal ? manifestVal.replace(/^data\//, '') : `${roomId.replace(/-/g, '_')}.json`;
-                    navigator.clipboard.writeText(fileName);
-                    toast({
-                      title: "Copied!",
-                      description: `JSON: ${fileName}`,
-                    });
-                  }}
-                  className="w-[1em] h-[1em] rounded-full bg-primary hover:bg-primary/90 cursor-pointer flex-shrink-0 transition-colors"
-                  title="Copy JSON filename"
-                />
-              )}
-              {isAdmin && (
+          <div className="text-center space-y-1 relative">
+            {/* Admin buttons - positioned absolutely to not affect centering */}
+            {isAdmin && (
+              <div className="absolute left-0 top-0 flex items-center gap-2">
+                {roomId && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const key = roomId && (/(?:-(free|vip1|vip2|vip3|vip4))$/.test(roomId) ? roomId : (info?.tier ? `${roomId}-${info.tier}` : roomId));
+                      const manifestVal = key ? PUBLIC_ROOM_MANIFEST[key] : undefined;
+                      const fileName = manifestVal ? manifestVal.replace(/^data\//, '') : `${roomId.replace(/-/g, '_')}.json`;
+                      navigator.clipboard.writeText(fileName);
+                      toast({
+                        title: "Copied!",
+                        description: `JSON: ${fileName}`,
+                      });
+                    }}
+                    className="w-[1em] h-[1em] rounded-full bg-primary hover:bg-primary/90 cursor-pointer flex-shrink-0 transition-colors"
+                    title="Copy JSON filename"
+                  />
+                )}
                 <button
                   type="button"
                   onClick={() => {
@@ -1095,7 +1091,11 @@ const ChatHub = () => {
                   className="w-[1em] h-[1em] rounded-full bg-blue-600 hover:bg-blue-700 cursor-pointer flex-shrink-0 transition-colors"
                   title="Copy Room ID"
                 />
-              )}
+              </div>
+            )}
+            
+            {/* Title - centered */}
+            <div className="flex items-center justify-center gap-2">
               <h2 className="text-lg font-semibold text-gray-900">
                 {currentRoom.nameEn === currentRoom.nameVi 
                   ? currentRoom.nameEn 
