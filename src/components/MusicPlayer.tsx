@@ -93,6 +93,16 @@ const TRACKS = [
   { id: '70', name: 'Simplicity (v2)', url: '/music/2020-09-24_-_Simplicity_-_David_Fesliyan-2.mp3' },
   { id: '71', name: 'Tropical Keys (v2)', url: '/music/2020-09-14_-_Tropical_Keys_-_www.FesliyanStudios.com_David_Renda_1.mp3' },
   { id: '72', name: 'Chill Gaming (v2)', url: '/music/2019-06-07_-_Chill_Gaming_-_David_Fesliyan-2.mp3' },
+  { id: '73', name: 'Peace (v2)', url: '/music/2015-11-08_-_Peace_-_David_Fesliyan-2.mp3' },
+  { id: '74', name: 'An Ambient Day (v2)', url: '/music/2015-12-22_-_An_Ambient_Day_-_David_Fesliyan-2.mp3' },
+  { id: '75', name: 'Peace And Happy (v2)', url: '/music/2016-04-26_-_Peace_And_Happy_-_David_Fesliyan-2.mp3' },
+  { id: '76', name: 'On My Own (v2)', url: '/music/2019-06-27_-_On_My_Own_-_www.FesliyanStudios.com_-_David_Renda-2.mp3' },
+  { id: '77', name: 'Strings of Time (v2)', url: '/music/2016-05-06_-_Strings_of_Time_-_David_Fesliyan_1.mp3' },
+  { id: '78', name: 'Elven Forest (v2)', url: '/music/2019-07-29_-_Elven_Forest_-_FesliyanStudios.com_-_David_Renda-2.mp3' },
+  { id: '79', name: 'Elevator Ride (v2)', url: '/music/2019-05-03_-_Elevator_Ride_-_www.fesliyanstudios.com-2.mp3' },
+  { id: '80', name: 'The Lounge (v2)', url: '/music/2019-06-05_-_The_Lounge_-_www.fesliyanstudios.com_-_David_Renda-2.mp3' },
+  { id: '81', name: 'The Soft Lullaby (v2)', url: '/music/2020-03-22_-_The_Soft_Lullaby_-_FesliyanStudios.com_-_David_Renda-2.mp3' },
+  { id: '82', name: 'Not Much To Say (v2)', url: '/music/2020-02-11_-_Not_Much_To_Say_-_David_Fesliyan-2.mp3' },
 ];
 
 export const MusicPlayer = () => {
