@@ -1,11 +1,16 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
+let _supabaseAdmin: ReturnType<typeof createClient> | null = null;
+
 export const createSupabaseAdminClient = () => {
+  if (_supabaseAdmin) return _supabaseAdmin;
+  
   const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
   const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-  return createClient(supabaseUrl, serviceRoleKey, {
+  _supabaseAdmin = createClient(supabaseUrl, serviceRoleKey, {
     auth: { persistSession: false },
   });
+  return _supabaseAdmin;
 };
 
 export const getUserFromAuthHeader = async (req: Request) => {
@@ -24,10 +29,10 @@ export const getUserFromAuthHeader = async (req: Request) => {
 
 export const assertAdmin = async (userId: string) => {
   const supabase = createSupabaseAdminClient();
-  const { data, error } = await supabase.rpc('has_role', {
+  const { data, error } = await supabase.rpc('has_role' as any, {
     _role: 'admin',
     _user_id: userId,
-  });
+  } as any);
 
   if (error || !data) {
     throw new Response(JSON.stringify({ error: 'FORBIDDEN' }), {
@@ -42,10 +47,10 @@ export const checkEndpointRateLimit = async (
   userId: string
 ) => {
   const supabase = createSupabaseAdminClient();
-  const { data, error } = await supabase.rpc('check_endpoint_rate_limit', {
+  const { data, error } = await supabase.rpc('check_endpoint_rate_limit' as any, {
     endpoint_name: endpointName,
     user_uuid: userId,
-  });
+  } as any);
 
   if (error) {
     console.error('checkEndpointRateLimit error', error);
@@ -77,7 +82,7 @@ export const logAudit = async (params: {
     type,
     user_id: userId,
     metadata: metadata ?? {},
-  });
+  } as any);
 
   if (error) {
     console.error('Failed to insert audit log', error);

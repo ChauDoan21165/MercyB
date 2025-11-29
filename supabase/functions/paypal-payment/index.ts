@@ -107,7 +107,7 @@ serve(async (req) => {
         .from('subscription_tiers')
         .select('*')
         .eq('id', tierId)
-        .single();
+        .single() as any;
 
       if (tierError || !tier) {
         console.error('Tier lookup error:', tierError);
@@ -238,7 +238,7 @@ serve(async (req) => {
         .from('subscription_tiers')
         .select('name, price_monthly')
         .eq('id', tierId)
-        .single();
+        .single() as any;
 
       // Update user subscription
       const { data: subscription, error: subError } = await supabaseAdmin
@@ -249,9 +249,9 @@ serve(async (req) => {
           status: 'active',
           current_period_start: new Date().toISOString(),
           current_period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
-        })
+        } as any)
         .select()
-        .single();
+        .single() as any;
 
       if (subError || !subscription) {
         console.error('CRITICAL: Subscription update FAILED after successful payment', {
@@ -307,7 +307,7 @@ serve(async (req) => {
       });
 
       // Log security event
-      await supabaseAdmin.rpc('log_security_event', {
+      await supabaseAdmin.rpc('log_security_event' as any, {
         _user_id: user.id,
         _event_type: 'payment_completed',
         _severity: 'low',
@@ -317,13 +317,13 @@ serve(async (req) => {
           amount: tier?.price_monthly,
           transaction_id: captureData.id,
         },
-      });
+      } as any);
 
       // Send notification to admin
       const { data: adminUsers } = await supabaseAdmin
         .from('user_roles')
         .select('user_id')
-        .eq('role', 'admin');
+        .eq('role', 'admin') as any;
 
       if (adminUsers && adminUsers.length > 0) {
         const notificationMessage = `🎉 New Payment Received!\n\nUser: ${user.email}\nTier: ${tier?.name || 'Unknown'}\nAmount: $${tier?.price_monthly || 0}\nDate: ${new Date().toLocaleString()}`;
@@ -337,7 +337,7 @@ serve(async (req) => {
               message: notificationMessage,
               priority: 'high',
               status: 'new'
-            });
+            } as any);
         }
       }
 
