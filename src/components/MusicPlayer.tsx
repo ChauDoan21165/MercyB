@@ -193,6 +193,10 @@ const TRACKS = [
   { id: '170', name: 'Too Fly', url: '/audio/2018-04-29_-_Too_Fly_David_Fesliyan.mp3' },
   { id: '171', name: 'Super Spiffy', url: '/audio/2019-06-17_-_Super_Spiffy_-_David_Fesliyan.mp3' },
   { id: '172', name: 'Beautiful Memories (2)', url: '/audio/Happy_Music-2018-09-18_-_Beautiful_Memories_-_David_Fesliyan-2.mp3' },
+  { id: '173', name: 'Happy Dreams', url: '/audio/2017-04-14_-_Happy_Dreams_-_David_Fesliyan.mp3' },
+  { id: '174', name: 'In The Light (1)', url: '/audio/2019-12-13_-_In_The_Light_-_FesliyanStudios.com_-_David_Renda-2.mp3' },
+  { id: '175', name: 'Quiet Time (1)', url: '/audio/2019-04-20_-_Quiet_Time_-_David_Fesliyan-2.mp3' },
+  { id: '176', name: 'Tranquility (1)', url: '/audio/2019-04-26_-_Tranquility_-_www.fesliyanstudios.com-2.mp3' },
 ];
 
 export const MusicPlayer = () => {
