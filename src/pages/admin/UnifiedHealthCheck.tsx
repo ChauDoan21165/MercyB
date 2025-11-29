@@ -94,20 +94,6 @@ function getTierDisplayName(tier: string | null | undefined): string {
   const label = tierIdToLabel(tierId);
   return label.split(' / ')[0]; // Return English part only
 }
-  VIP5: "VIP5",
-  vip6: "VIP6",
-  VIP6: "VIP6",
-  vip7: "VIP7",
-  VIP7: "VIP7",
-  vip8: "VIP8",
-  VIP8: "VIP8",
-  vip9: "VIP9",
-  VIP9: "VIP9",
-  kids: "Kids",
-  kidslevel1: "Kids Level 1",
-  kidslevel2: "Kids Level 2",
-  kidslevel3: "Kids Level 3",
-};
 
 // Helper to convert schema_id to proper JSON filename
 const getSuggestedJsonBaseName = (schemaId: string, tier: string): string => {
