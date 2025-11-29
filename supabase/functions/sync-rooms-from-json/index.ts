@@ -8,9 +8,11 @@ const corsHeaders = {
 interface RoomJson {
   id: string;
   title?: { en: string; vi: string };
+  description?: { en: string; vi: string };
   name?: string;
   name_vi?: string;
   content?: { en: string; vi: string };
+  room_essay?: { en: string; vi: string };
   room_essay_en?: string;
   room_essay_vi?: string;
   tier?: string;
@@ -18,6 +20,22 @@ interface RoomJson {
   entries: any[];
   keywords?: string[];
   schema_id?: string;
+}
+
+interface RoomSyncLog {
+  roomId: string;
+  sourceFieldUsed: 'title' | 'description' | 'name_fallback';
+  status: 'updated' | 'inserted' | 'skipped' | 'error';
+  errorMessage?: string;
+}
+
+interface SyncSummary {
+  discovered: number;
+  inserted: number;
+  updated: number;
+  skipped: number;
+  errors: number;
+  logs: RoomSyncLog[];
 }
 
 Deno.serve(async (req) => {
@@ -73,8 +91,11 @@ Deno.serve(async (req) => {
     ];
 
     console.log('🔍 Attempting to discover JSON files...');
+    const syncLogs: RoomSyncLog[] = [];
     let discoveredCount = 0;
-    let syncedCount = 0;
+    let insertedCount = 0;
+    let updatedCount = 0;
+    let skippedCount = 0;
     let errorCount = 0;
 
     for (const filename of potentialFiles) {
@@ -91,19 +112,57 @@ Deno.serve(async (req) => {
 
         // Validate JSON structure
         if (!jsonData.id || !jsonData.entries || !Array.isArray(jsonData.entries)) {
-          errors.push(`Invalid JSON structure in ${filename}`);
+          const log: RoomSyncLog = {
+            roomId: jsonData.id || filename,
+            sourceFieldUsed: 'title',
+            status: 'error',
+            errorMessage: 'Invalid JSON structure: missing id or entries array'
+          };
+          syncLogs.push(log);
           errorCount++;
           continue;
         }
 
-        // Extract room data
         const roomId = jsonData.id;
-        // Support both title and description fields
-        const titleEn = jsonData.title?.en || (jsonData as any).description?.en || jsonData.name || 'Untitled';
-        const titleVi = jsonData.title?.vi || (jsonData as any).description?.vi || jsonData.name_vi || 'Chưa có tiêu đề';
-        // Support both content and room_essay fields
-        const contentEn = jsonData.content?.en || (jsonData as any).room_essay?.en || jsonData.room_essay_en || null;
-        const contentVi = jsonData.content?.vi || (jsonData as any).room_essay?.vi || jsonData.room_essay_vi || null;
+
+        // EXPLICIT TITLE MAPPING RULES
+        let titleEn: string;
+        let titleVi: string;
+        let sourceFieldUsed: 'title' | 'description' | 'name_fallback';
+
+        if (jsonData.title?.en && jsonData.title?.vi) {
+          // Rule 1: title.en/vi is canonical
+          titleEn = jsonData.title.en;
+          titleVi = jsonData.title.vi;
+          sourceFieldUsed = 'title';
+        } else if (jsonData.description?.en && jsonData.description?.vi) {
+          // Rule 2: fallback to description.en/vi
+          titleEn = jsonData.description.en;
+          titleVi = jsonData.description.vi;
+          sourceFieldUsed = 'description';
+        } else if (jsonData.name || jsonData.name_vi) {
+          // Rule 3: fallback to name/name_vi
+          titleEn = jsonData.name || 'Untitled';
+          titleVi = jsonData.name_vi || 'Chưa có tiêu đề';
+          sourceFieldUsed = 'name_fallback';
+        } else {
+          // Rule 4: ERROR - no title source found
+          const log: RoomSyncLog = {
+            roomId,
+            sourceFieldUsed: 'title',
+            status: 'error',
+            errorMessage: 'No title source found (checked title, description, name)'
+          };
+          syncLogs.push(log);
+          errorCount++;
+          console.error('❌ No title source for:', roomId);
+          continue;
+        }
+
+        // Extract essay content (support multiple field names)
+        const contentEn = jsonData.content?.en || jsonData.room_essay?.en || jsonData.room_essay_en || null;
+        const contentVi = jsonData.content?.vi || jsonData.room_essay?.vi || jsonData.room_essay_vi || null;
+        
         const tier = jsonData.tier || 'free';
         const domain = jsonData.domain || null;
         const entries = jsonData.entries || [];
@@ -130,11 +189,24 @@ Deno.serve(async (req) => {
             .eq('id', roomId);
 
           if (updateError) {
-            errors.push(`Failed to update ${roomId}: ${updateError.message}`);
+            const log: RoomSyncLog = {
+              roomId,
+              sourceFieldUsed,
+              status: 'error',
+              errorMessage: updateError.message
+            };
+            syncLogs.push(log);
             errorCount++;
+            console.error('❌ Update failed:', roomId, updateError.message);
           } else {
-            syncedCount++;
-            console.log('✅ Updated:', roomId);
+            const log: RoomSyncLog = {
+              roomId,
+              sourceFieldUsed,
+              status: 'updated'
+            };
+            syncLogs.push(log);
+            updatedCount++;
+            console.log('✅ Updated:', roomId, `(source: ${sourceFieldUsed})`);
           }
         } else {
           // Insert new room
@@ -156,11 +228,24 @@ Deno.serve(async (req) => {
             });
 
           if (insertError) {
-            errors.push(`Failed to insert ${roomId}: ${insertError.message}`);
+            const log: RoomSyncLog = {
+              roomId,
+              sourceFieldUsed,
+              status: 'error',
+              errorMessage: insertError.message
+            };
+            syncLogs.push(log);
             errorCount++;
+            console.error('❌ Insert failed:', roomId, insertError.message);
           } else {
-            syncedCount++;
-            console.log('✅ Inserted:', roomId);
+            const log: RoomSyncLog = {
+              roomId,
+              sourceFieldUsed,
+              status: 'inserted'
+            };
+            syncLogs.push(log);
+            insertedCount++;
+            console.log('✅ Inserted:', roomId, `(source: ${sourceFieldUsed})`);
           }
         }
       } catch (error) {
@@ -169,20 +254,22 @@ Deno.serve(async (req) => {
       }
     }
 
-    console.log('🎉 Sync complete!');
-    console.log('📊 Stats:', {
+    const summary: SyncSummary = {
       discovered: discoveredCount,
-      synced: syncedCount,
-      errors: errorCount
-    });
+      inserted: insertedCount,
+      updated: updatedCount,
+      skipped: skippedCount,
+      errors: errorCount,
+      logs: syncLogs
+    };
+
+    console.log('🎉 Sync complete!');
+    console.log('📊 Summary:', summary);
 
     return new Response(
       JSON.stringify({
-        success: true,
-        discovered: discoveredCount,
-        synced: syncedCount,
-        errors: errorCount,
-        errorDetails: errors.length > 0 ? errors : undefined
+        success: errorCount === 0,
+        ...summary
       }),
       {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },

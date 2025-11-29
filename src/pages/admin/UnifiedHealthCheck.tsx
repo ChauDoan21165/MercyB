@@ -13,7 +13,7 @@ import { KIDS_ROOM_JSON_MAP } from "@/pages/KidsChat";
 import { useToast } from "@/hooks/use-toast";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { SyncHealthSummary } from "@/components/admin/SyncHealthSummary";
+import { guardedCall } from "@/lib/guardedCall";
 
 interface RoomIssue {
   roomId: string;
@@ -640,31 +640,37 @@ export default function UnifiedHealthCheck() {
     console.log('🔄 Starting GitHub sync...');
     setLoading(true);
 
-    try {
-      const { data, error } = await supabase.functions.invoke('sync-rooms-from-json');
+    const result = await guardedCall(
+      'Sync rooms from JSON',
+      async () => {
+        const { data, error } = await supabase.functions.invoke('sync-rooms-from-json');
+        
+        if (error) {
+          throw new Error(error.message || 'Failed to invoke sync function');
+        }
 
-      if (error) throw error;
+        return data;
+      },
+      {
+        showSuccessToast: false, // We'll show custom success toast
+        showErrorToast: true
+      }
+    );
 
-      const result = data;
-      console.log('✅ Sync complete:', result);
+    if (result.success && result.data) {
+      const syncData = result.data;
+      console.log('✅ Sync complete:', syncData);
 
       toast({
         title: "Sync Complete",
-        description: `Discovered ${result.discovered} files, synced ${result.synced} rooms${result.errors > 0 ? `, ${result.errors} errors` : ''}`,
+        description: `Discovered ${syncData.discovered} files, inserted ${syncData.inserted}, updated ${syncData.updated}${syncData.errors > 0 ? `, ${syncData.errors} errors` : ''}`,
       });
 
       // Refresh the room counts
       runQuickScan();
-    } catch (error: any) {
-      console.error('❌ Sync failed:', error);
-      toast({
-        title: "Sync Failed",
-        description: error.message || 'Failed to sync rooms from GitHub',
-        variant: "destructive"
-      });
-    } finally {
-      setLoading(false);
     }
+
+    setLoading(false);
   };
 
   // Run deep scan for current tier
