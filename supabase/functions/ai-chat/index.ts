@@ -8,6 +8,7 @@ const corsHeaders = {
 };
 
 // Helper function to verify user tier access
+// Uses canonical tier hierarchy matching lib/constants/tiers.ts
 async function verifyUserTierAccess(supabaseClient: any, userId: string, roomTier: string): Promise<{ hasAccess: boolean; tier: string }> {
   try {
     // Check admin status first
@@ -29,18 +30,54 @@ async function verifyUserTierAccess(supabaseClient: any, userId: string, roomTie
       .maybeSingle();
 
     if (!subscription) {
-      return { hasAccess: roomTier === 'free', tier: 'free' };
+      return { hasAccess: roomTier.toLowerCase() === 'free', tier: 'free' };
     }
 
-    const tierName = subscription.subscription_tiers?.name?.toLowerCase() || 'free';
-    const userTier = tierName.includes('vip3') ? 'vip3' :
-                     tierName.includes('vip2') ? 'vip2' :
-                     tierName.includes('vip1') ? 'vip1' : 'free';
+    // Normalize tier name to canonical TierId format
+    const rawTierName = subscription.subscription_tiers?.name?.toLowerCase() || 'free';
+    let userTier = 'free';
+    
+    if (rawTierName.includes('vip3 ii') || rawTierName.includes('vip3ii')) {
+      userTier = 'vip3ii';
+    } else if (rawTierName.includes('vip9')) {
+      userTier = 'vip9';
+    } else if (rawTierName.includes('vip6')) {
+      userTier = 'vip6';
+    } else if (rawTierName.includes('vip5')) {
+      userTier = 'vip5';
+    } else if (rawTierName.includes('vip4')) {
+      userTier = 'vip4';
+    } else if (rawTierName.includes('vip3')) {
+      userTier = 'vip3';
+    } else if (rawTierName.includes('vip2')) {
+      userTier = 'vip2';
+    } else if (rawTierName.includes('vip1')) {
+      userTier = 'vip1';
+    } else if (rawTierName.includes('kids')) {
+      if (rawTierName.includes('3')) userTier = 'kids_3';
+      else if (rawTierName.includes('2')) userTier = 'kids_2';
+      else userTier = 'kids_1';
+    }
 
-    // Check if user has required tier
-    const tierHierarchy = { free: 0, vip1: 1, vip2: 2, vip3: 3 };
-    const requiredLevel = tierHierarchy[roomTier as keyof typeof tierHierarchy] || 0;
-    const userLevel = tierHierarchy[userTier as keyof typeof tierHierarchy] || 0;
+    // Canonical tier hierarchy (matches lib/constants/tiers.ts)
+    const tierHierarchy: Record<string, number> = {
+      free: 1,
+      vip1: 2,
+      vip2: 3,
+      vip3: 4,
+      vip3ii: 4.5,
+      vip4: 5,
+      vip5: 6,
+      vip6: 7,
+      vip9: 10,
+      kids_1: 2,
+      kids_2: 3,
+      kids_3: 4,
+    };
+    
+    const normalizedRoomTier = roomTier.toLowerCase().replace(/\s+/g, '').replace('vip3ii', 'vip3ii').replace('vip3_ii', 'vip3ii');
+    const requiredLevel = tierHierarchy[normalizedRoomTier] || 0;
+    const userLevel = tierHierarchy[userTier] || 0;
 
     return {
       hasAccess: userLevel >= requiredLevel,
