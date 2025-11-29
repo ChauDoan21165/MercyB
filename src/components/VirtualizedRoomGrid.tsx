@@ -1,5 +1,6 @@
 // src/components/VirtualizedRoomGrid.tsx
 import { useRef, useMemo } from "react";
+import type { CSSProperties, KeyboardEvent } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { Card } from "@/components/ui/card";
 import { CheckCircle2, Lock, Palette } from "lucide-react";
@@ -24,14 +25,15 @@ interface VirtualizedRoomGridProps {
   rooms: RoomData[];
   onRoomClick: (room: RoomData) => void;
   highlightColors?: Record<string, string>;
-  columnCount?: number;
 }
+
+// Internal constant - locked to match ROOM_GRID_CLASS canonical grid
+const COLUMN_COUNT = 6;
 
 export const VirtualizedRoomGrid = ({
   rooms,
   onRoomClick,
   highlightColors = {},
-  columnCount = 6,
 }: VirtualizedRoomGridProps) => {
   const parentRef = useRef<HTMLDivElement>(null);
   const { isLowDataMode } = useLowDataMode();
@@ -45,7 +47,7 @@ export const VirtualizedRoomGrid = ({
     });
   }, [rooms]);
 
-  const rowCount = Math.ceil(sortedRooms.length / columnCount);
+  const rowCount = Math.ceil(sortedRooms.length / COLUMN_COUNT);
 
   const rowVirtualizer = useVirtualizer({
     count: rowCount,
@@ -54,7 +56,7 @@ export const VirtualizedRoomGrid = ({
     overscan: 3,
   });
 
-  const handleCardKeyDown = (e: React.KeyboardEvent, room: RoomData) => {
+  const handleCardKeyDown = (e: KeyboardEvent, room: RoomData) => {
     if (!room.hasData) return;
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
@@ -92,10 +94,10 @@ export const VirtualizedRoomGrid = ({
           }}
         >
           {rowVirtualizer.getVirtualItems().map((virtualRow) => {
-            const startIdx = virtualRow.index * columnCount;
+            const startIdx = virtualRow.index * COLUMN_COUNT;
             const rowRooms = sortedRooms.slice(
               startIdx,
-              startIdx + columnCount
+              startIdx + COLUMN_COUNT
             );
 
             return (
@@ -129,7 +131,7 @@ export const VirtualizedRoomGrid = ({
                       .filter(Boolean)
                       .join(" ");
 
-                    const baseStyle: React.CSSProperties = isHighlighted
+                    const baseStyle: CSSProperties = isHighlighted
                       ? {
                           border: `2px solid ${roomColor}`,
                           boxShadow: isLowDataMode
@@ -148,6 +150,7 @@ export const VirtualizedRoomGrid = ({
                           <Card
                             role={room.hasData ? "button" : "group"}
                             tabIndex={room.hasData ? 0 : -1}
+                            aria-disabled={!room.hasData}
                             aria-label={
                               room.hasData
                                 ? `Open room ${room.nameEn}`
