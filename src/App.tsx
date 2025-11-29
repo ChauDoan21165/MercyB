@@ -145,16 +145,17 @@ const App = () => {
           <Route path="/auth" element={<Auth />} />
           <Route path="/reset" element={<ResetPassword />} />
           <Route path="/join/:code" element={<JoinCode />} />
+          {/* Canonical routes per Design System v1.1 */}
           <Route path="/rooms" element={<RoomGrid />} />
           <Route path="/english-pathway" element={<EnglishLearningPathway />} />
-          <Route path="/rooms-vip1" element={<RoomGridVIP1 />} />
-          <Route path="/rooms-vip2" element={<RoomGridVIP2 />} />
-          <Route path="/rooms-vip3" element={<RoomGridVIP3 />} />
-          <Route path="/rooms-vip3-ii" element={<RoomGridVIP3II />} />
-          <Route path="/rooms-vip4" element={<RoomGridVIP4 />} />
-          <Route path="/rooms-vip5" element={<RoomGridVIP5 />} />
-          <Route path="/vip6" element={<RoomGridVIP6 />} />
-          <Route path="/rooms-vip9" element={<RoomsVIP9 />} />
+          <Route path="/vip/vip1" element={<RoomGridVIP1 />} />
+          <Route path="/vip/vip2" element={<RoomGridVIP2 />} />
+          <Route path="/vip/vip3" element={<RoomGridVIP3 />} />
+          <Route path="/vip/vip3ii" element={<RoomGridVIP3II />} />
+          <Route path="/vip/vip4" element={<RoomGridVIP4 />} />
+          <Route path="/vip/vip5" element={<RoomGridVIP5 />} />
+          <Route path="/vip/vip6" element={<RoomGridVIP6 />} />
+          <Route path="/vip/vip9" element={<RoomsVIP9 />} />
           <Route path="/kids-level1" element={<KidsLevel1 />} />
           <Route path="/kids-level2" element={<KidsLevel2 />} />
           <Route path="/kids-level3" element={<KidsLevel3 />} />
@@ -162,7 +163,7 @@ const App = () => {
           <Route path="/sexuality-culture" element={<SexualityCultureRoom />} />
           <Route path="/finance-calm" element={<FinanceCalmRoom />} />
           <Route path="/all-rooms" element={<AllRooms />} />
-          <Route path="/chat/:roomId" element={<ChatHub />} />
+          <Route path="/room/:roomId" element={<ChatHub />} />
           <Route path="/vip-request" element={<VIPRequestForm />} />
           <Route path="/vip-requests" element={<VIPRequests />} />
           <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
