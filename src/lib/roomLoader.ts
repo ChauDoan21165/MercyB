@@ -101,9 +101,27 @@ const loadFromJson = async (roomId: string) => {
 
 /**
  * Main room loader - optimized for fast loading with tier-based access control
+ * SECURITY: Fetches authenticated user tier internally, never trusts caller
  */
-export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
+export const loadMergedRoom = async (roomId: string) => {
   const { canUserAccessRoom } = await import('./accessControl');
+  
+  // 1. Get authenticated user
+  const { data: { user } } = await supabase.auth.getUser();
+  
+  if (!user) {
+    throw new Error('AUTHENTICATION_REQUIRED');
+  }
+  
+  // 2. Get user's tier from database
+  const { data: subscription } = await supabase
+    .from('user_subscriptions')
+    .select('subscription_tiers(name)')
+    .eq('user_id', user.id)
+    .eq('status', 'active')
+    .maybeSingle();
+  
+  const userTier = (subscription?.subscription_tiers as any)?.name?.toLowerCase() || 'free';
   
   // Normalize room ID
   const dbRoomId = normalizeRoomId(roomId);
@@ -112,7 +130,7 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
   try {
     const dbResult = await loadFromDatabase(dbRoomId);
     if (dbResult) {
-      // Get room tier from database
+      // 3. Get room's required tier from database
       const { data: roomData } = await supabase
         .from('rooms')
         .select('tier')
@@ -121,19 +139,19 @@ export const loadMergedRoom = async (roomId: string, tier: string = 'free') => {
       
       if (roomData) {
         // Normalize tier strings for comparison
-        const userTier = tier.toLowerCase().replace(/\s+/g, '').replace('vip', 'vip') as any;
+        const normalizedUserTier = userTier.toLowerCase().replace(/\s+/g, '').replace('vip', 'vip') as any;
         const roomTier = (roomData.tier || 'free').toLowerCase().replace(/\s+/g, '').replace('vip', 'vip') as any;
         
-        // Enforce access control
-        if (!canUserAccessRoom(userTier, roomTier)) {
-          throw new Error('ACCESS_DENIED: insufficient tier');
+        // 4. Enforce access control using authenticated tier
+        if (!canUserAccessRoom(normalizedUserTier, roomTier)) {
+          throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
         }
       }
       
       return dbResult;
     }
   } catch (dbError: any) {
-    if (dbError?.message === 'ACCESS_DENIED: insufficient tier') {
+    if (dbError?.message === 'ACCESS_DENIED_INSUFFICIENT_TIER') {
       throw dbError;
     }
     console.error('Database load failed:', dbError);
