@@ -403,6 +403,15 @@ const PaymentTest = () => {
             </p>
           </div>
 
+          {/* Legal Links Footer */}
+          <div className="mt-8 text-center text-xs text-gray-500 space-x-3">
+            <a href="/terms" className="underline hover:text-gray-700">Terms of Service</a>
+            <span>•</span>
+            <a href="/privacy" className="underline hover:text-gray-700">Privacy Policy</a>
+            <span>•</span>
+            <a href="/refund" className="underline hover:text-gray-700">Refund Policy</a>
+          </div>
+
           {/* All Tiers Overview */}
           <div className="mt-16 max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-3 bg-gradient-to-r from-green-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">

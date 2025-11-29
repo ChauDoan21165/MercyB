@@ -85,6 +85,9 @@ import UserMusicUpload from "./pages/UserMusicUpload";
 import MusicApproval from "./pages/admin/MusicApproval";
 import MusicManager from "./pages/admin/MusicManager";
 import TierMap from "./pages/TierMap";
+import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
+import Refund from "./pages/Refund";
 
 const queryClient = new QueryClient();
 
@@ -203,6 +206,9 @@ const App = () => {
           <Route path="/kids-validation" element={<KidsRoomValidation />} />
           <Route path="/security-dashboard" element={<SecurityDashboard />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/refund" element={<Refund />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <MusicPlayer />
