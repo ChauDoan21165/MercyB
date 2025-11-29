@@ -143,6 +143,16 @@ const TRACKS = [
   { id: '120', name: 'Joy', url: '/audio/2015-12-12_-_Joy_-_David_Fesliyan.mp3' },
   { id: '121', name: 'We Fought For Freedom', url: '/audio/2016-02-15_-_We_Fought_For_Freedom_-_David_Fesliyan.mp3' },
   { id: '122', name: 'Our Memories', url: '/audio/2016-04-05_-_Our_Memories_-_David_Fesliyan.mp3' },
+  { id: '123', name: 'Spirit', url: '/audio/2016-03-20_-_Spirit_-_David_Fesliyan.mp3' },
+  { id: '124', name: 'Strings of Time (1)', url: '/audio/2016-05-06_-_Strings_of_Time_-_David_Fesliyan-2.mp3' },
+  { id: '125', name: 'Tiny Kingdom', url: '/audio/2016-10-30_-_Tiny_Kingdom_-_David_Fesliyan.mp3' },
+  { id: '126', name: 'Unseen Affection', url: '/audio/2016-11-13_-_Unseen_Affection_-_David_Fesliyan.mp3' },
+  { id: '127', name: 'Absurd', url: '/audio/2017-01-06_-_Absurd_-_David_Fesliyan.mp3' },
+  { id: '128', name: 'Childhood Nostalgia (1)', url: '/audio/2016-11-29_-_Childhood_Nostalgia_-_David_Fesliyan-2.mp3' },
+  { id: '129', name: 'Funktastic (1)', url: '/audio/2017-01-25_-_Funktastic_-_David_Fesliyan_1.mp3' },
+  { id: '130', name: 'Funktastic', url: '/audio/2017-01-25_-_Funktastic_-_David_Fesliyan.mp3' },
+  { id: '131', name: 'Happy Streams', url: '/audio/2017-06-02_-_Happy_Streams_-_David_Fesliyan.mp3' },
+  { id: '132', name: 'A Rockin Time', url: '/audio/2017-10-07_-_A_Rockin_Time_-_David_Fesliyan.mp3' },
 ];
 
 export const MusicPlayer = () => {
@@ -151,6 +161,7 @@ export const MusicPlayer = () => {
   const [currentTrackId, setCurrentTrackId] = useState<string>('1');
   const [volume, setVolume] = useState<number>(50);
   const [showAllTracks, setShowAllTracks] = useState(true);
+  const [playFromFavorites, setPlayFromFavorites] = useState(false);
   const [isShuffle, setIsShuffle] = useState(false);
   const [shuffledTracks, setShuffledTracks] = useState<typeof TRACKS>([]);
   const { favoriteIds, toggleFavorite, isFavorite } = useFavoriteTracks();
@@ -160,10 +171,12 @@ export const MusicPlayer = () => {
     const savedTrackId = localStorage.getItem('musicPlayerTrackId');
     const savedVolume = localStorage.getItem('musicPlayerVolume');
     const savedShuffle = localStorage.getItem('musicPlayerShuffle');
+    const savedPlayFrom = localStorage.getItem('musicPlayerPlayFrom');
     
     if (savedTrackId) setCurrentTrackId(savedTrackId);
     if (savedVolume) setVolume(parseInt(savedVolume, 10));
     if (savedShuffle) setIsShuffle(savedShuffle === 'true');
+    if (savedPlayFrom) setPlayFromFavorites(savedPlayFrom === 'favorites');
   }, []);
 
   // Update audio volume
@@ -211,12 +224,18 @@ export const MusicPlayer = () => {
 
   // Play next track
   const playNextTrack = () => {
-    let trackList = TRACKS;
+    // Determine which pool of tracks to use
+    const baseTrackList = playFromFavorites 
+      ? TRACKS.filter(t => favoriteIds.includes(t.id))
+      : TRACKS;
+    
+    // If playing from favorites but none exist, fallback to all tracks
+    let trackList = baseTrackList.length > 0 ? baseTrackList : TRACKS;
     
     if (isShuffle) {
       // If shuffle is on but shuffledTracks is empty, create it
       if (shuffledTracks.length === 0) {
-        trackList = shuffleArray(TRACKS);
+        trackList = shuffleArray(trackList);
         setShuffledTracks(trackList);
       } else {
         trackList = shuffledTracks;
@@ -265,8 +284,10 @@ export const MusicPlayer = () => {
           onClick={toggleShuffle}
           variant="outline"
           size="sm"
-          className={`border-black hover:bg-gray-100 h-8 w-8 p-0 ${
-            isShuffle ? 'bg-gray-200 text-black' : 'text-black'
+          className={`border-black h-8 w-8 p-0 transition-colors ${
+            isShuffle 
+              ? 'bg-yellow-400 text-black hover:bg-yellow-500 border-2' 
+              : 'text-black hover:bg-gray-100'
           }`}
           title={isShuffle ? "Shuffle: On" : "Shuffle: Off"}
         >
@@ -303,6 +324,28 @@ export const MusicPlayer = () => {
           />
         </Button>
 
+        {/* Play Mode Toggle: My Playlist vs All Tracks */}
+        <Button
+          onClick={() => {
+            const newMode = !playFromFavorites;
+            setPlayFromFavorites(newMode);
+            localStorage.setItem('musicPlayerPlayFrom', newMode ? 'favorites' : 'all');
+          }}
+          variant="outline"
+          size="sm"
+          className={`border-black h-8 px-2 gap-1 transition-colors ${
+            playFromFavorites
+              ? 'bg-pink-400 text-black hover:bg-pink-500 border-2'
+              : 'text-black hover:bg-gray-100'
+          }`}
+          title={playFromFavorites ? "Playing: My Playlist" : "Playing: All Tracks"}
+        >
+          <Music className="h-3 w-3" />
+          <span className="text-xs font-bold">
+            {playFromFavorites ? 'My Playlist' : 'Album'}
+          </span>
+        </Button>
+
         {/* My Playlist Dropdown */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -311,8 +354,8 @@ export const MusicPlayer = () => {
               size="sm"
               className="border-black text-black hover:bg-gray-100 h-8 px-2 gap-1"
             >
-              <Music className="h-3 w-3" />
-              <span className="text-xs">My Playlist ({favoriteIds.length})</span>
+              <Heart className="h-3 w-3" />
+              <span className="text-xs">({favoriteIds.length})</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-[300px] bg-white border-black z-[100]">
