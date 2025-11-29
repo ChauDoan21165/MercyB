@@ -183,6 +183,16 @@ const TRACKS = [
   { id: '160', name: 'Its A Good Day', url: '/audio/2020-10-19_-_Its_A_Good_Day_-_www.FesliyanStudios.com_Steve_Oxen.mp3' },
   { id: '161', name: 'Tropical Keys (1)', url: '/audio/2020-09-14_-_Tropical_Keys_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
   { id: '162', name: 'Feeling Free', url: '/audio/2021-01-09_-_Feeling_Free_-_www.FesliyanStudios.com_David_Renda.mp3' },
+  { id: '163', name: 'Happy Feet', url: '/audio/2021-06-15_-_Happy_Feet_-_www.FesliyanStudios.com.mp3' },
+  { id: '164', name: 'Prairie Evening (1)', url: '/audio/2023-05-15_-_Prairie_Evening_-_www.FesliyanStudios.com-2.mp3' },
+  { id: '165', name: 'Swingin Yuletide', url: '/audio/2023-08-18_-_Swingin_Yuletide_-_www.FesliyanStudios.com.mp3' },
+  { id: '166', name: 'Soaring Through The Skies', url: '/audio/2023-10-17_-_Soaring_Through_The_Skies_-_www.FesliyanStudios.com.mp3' },
+  { id: '167', name: 'Step-by-step', url: '/audio/2024-05-21_-_Step-by-step_-_www.FesliyanStudios.com.mp3' },
+  { id: '168', name: 'Information Regime', url: '/audio/2025-01-14_-_Information_Regime_-_www.FesliyanStudios.com.mp3' },
+  { id: '169', name: 'A Happy Christmas', url: '/audio/ChristmasBackgroundMusic2018-12-5_-_A_Happy_Christmas_-_David_Fesliyan.mp3' },
+  { id: '170', name: 'Too Fly', url: '/audio/2018-04-29_-_Too_Fly_David_Fesliyan.mp3' },
+  { id: '171', name: 'Super Spiffy', url: '/audio/2019-06-17_-_Super_Spiffy_-_David_Fesliyan.mp3' },
+  { id: '172', name: 'Beautiful Memories (2)', url: '/audio/Happy_Music-2018-09-18_-_Beautiful_Memories_-_David_Fesliyan-2.mp3' },
 ];
 
 export const MusicPlayer = () => {
