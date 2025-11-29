@@ -18,23 +18,17 @@
 
 ## 1. Color Tokens & Gradients
 
-### Rule: Solid Colors
-**All solid colors must be defined as HSL semantic tokens in `index.css` and used via `hsl(var(--token-name))`.**
+### Rule
 
-- No raw Tailwind palette utilities like `bg-blue-500`, `text-gray-700`.
-- Only semantic utilities like `text-foreground`, `bg-background`, `text-muted-foreground` are allowed.
-- All color values in CSS must use HSL format.
+All solid colors must be defined as HSL semantic tokens in `index.css` and used via `hsl(var(--token-name))`. All gradients must be defined as `--gradient-*` tokens and used via `var(--gradient-*)`. Components must never inline `linear-gradient(...)`.
 
-### Rule: Gradients
-**All gradients must be defined as semantic tokens (`--gradient-*`) in CSS and used via `var(--gradient-*)`.** 
+**Allowed:** Semantic Tailwind utilities (`text-foreground`, `bg-background`, `text-muted-foreground`).  
+**Forbidden:** Raw Tailwind palette (`bg-blue-500`, `text-gray-700`), hex colors in components, inline gradients.
 
-- It is **forbidden** to write `linear-gradient(...)` directly inside React components.
-- Gradients may use hex colors *inside the CSS definition*, but never inline in JSX.
-
-### Required Tokens
+### Contract
 
 ```css
-/* index.css — Colors */
+/* index.css */
 :root {
   /* Page backgrounds */
   --page-kids-bg: 210 100% 95%;
@@ -45,7 +39,7 @@
   --page-vip4-bg: 180 50% 96%;
   --page-vip5-bg: 40 70% 96%;
   --page-vip6-bg: 300 45% 95%;
-  --page-vip9-bg: 220 15% 18%; /* Dark slate for VIP9 */
+  --page-vip9-bg: 220 15% 18%;
 
   /* Kids level colors */
   --kids-l1: 200 100% 85%;
@@ -56,7 +50,7 @@
   --vip-badge: 280 60% 50%;
   --vip-locked: 0 0% 70%;
 
-  /* Gradients (use in style={{ background: 'var(--gradient-name)' }}) */
+  /* Gradients */
   --gradient-rainbow: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
   --gradient-kids-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   --gradient-vip-hero: linear-gradient(135deg, #f093fb 0%, #4facfe 50%, #00f2fe 100%);
@@ -79,58 +73,30 @@
 }
 ```
 
-### Dark Mode Testing
-**Rule:** Every major token used on kids/VIP pages must have a `.dark` variant.
-
-Test checklist:
+**Dark Mode Testing:**
 - [ ] Test kids and VIP hero gradients in dark mode on a real device
-- [ ] Verify all page backgrounds are readable in dark mode
-- [ ] Check text contrast ratios meet WCAG AA standards in both modes
+- [ ] Verify page backgrounds readable in dark mode
+- [ ] Check text contrast meets WCAG AA in both modes
 
-### Example (Kids Hero Button)
-
-```tsx
-// ❌ WRONG — inline gradient + literal 'white'
-<Button
-  className="rounded-full shadow-lg"
-  style={{ 
-    background: 'linear-gradient(135deg, #667eea, #764ba2)',
-    color: 'white'
-  }}
->
-
-// ✅ CORRECT — semantic tokens only
-<Button
-  className="rounded-full shadow-lg transition-all duration-300 hover:scale-105 text-foreground"
-  style={{ 
-    background: 'var(--gradient-kids-hero)'
-  }}
->
-  Start Learning / Bắt đầu học
-</Button>
-```
-
-### Example (Page Background)
+### Example
 
 ```tsx
-// ❌ WRONG
-<div className="min-h-screen bg-purple-50">
-
-// ✅ CORRECT
+// Page background
 <div 
   className="min-h-screen"
   style={{ background: 'hsl(var(--page-vip3-bg))' }}
 >
-```
 
-### Example (Icon Colors)
+// Button with gradient
+<Button
+  className="rounded-full text-foreground"
+  style={{ background: 'var(--gradient-kids-hero)' }}
+>
+  Start Learning / Bắt đầu học
+</Button>
 
-```tsx
-// ❌ WRONG
-<Star className="h-10 w-10 text-white animate-bounce" />
-
-// ✅ CORRECT
-<Star className="h-10 w-10 text-foreground animate-bounce" />
+// Icon with semantic color
+<Star className="h-10 w-10 text-foreground" />
 ```
 
 ---
@@ -138,78 +104,43 @@ Test checklist:
 ## 2. Room Card Grid Pattern
 
 ### Rule
-All room listing pages (Kids, VIP1-9) **MUST** use this exact responsive grid:
+
+All room listings (Kids + VIP) must use the canonical grid layout. Do not change column counts or gaps per breakpoint. Pages must not create custom grids; the grid class lives inside `KidsRoomGrid` or `VipRoomGrid`.
+
+### Contract / API
 
 ```tsx
-className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4"
+// Canonical grid class (MUST NOT CHANGE)
+const ROOM_GRID_CLASS =
+  "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4";
+
+interface KidsRoomGridProps {
+  rooms: KidsRoom[];
+  onRoomClick: (room: KidsRoom) => void;
+}
+
+interface VipRoomGridProps {
+  rooms: VipRoom[];
+  onRoomClick: (room: VipRoom) => void;
+}
 ```
 
-**No exceptions.** This ensures consistent card sizing across all tiers.
+**Performance:** If `rooms.length > 50`, apply virtualization or `loading="lazy"` on images.
 
-### KidsRoomGrid Component
-Kids pages should use the `<KidsRoomGrid />` abstraction:
+### Example
 
 ```tsx
+// Kids
 <KidsRoomGrid
   rooms={rooms}
   onRoomClick={(room) => navigate(`/kids-chat/${room.id}`)}
 />
-```
 
-Inside this component, the grid class **must** be the canonical grid pattern above.
-
-### Performance: Large Levels
-If a level might have **> 50 rooms**, the implementation should consider:
-- Virtualized grid (e.g. `react-window`), or
-- At minimum, `loading="lazy"` on images/illustrations
-
-Checklist:
-- [ ] Levels > 50 rooms: use virtualization or lazy-loading
-
-### Required Props
-- Grid container: exact className above
-- Gap: `gap-4` (no other gap values)
-- Cards: use `KidsRoomCard` for Kids, `VipRoomCard` for VIP (or equivalent)
-
-### Example (Kids Room Grid with Component)
-
-```tsx
-import { KidsRoomGrid } from "@/components/kids/KidsRoomGrid";
-
-<KidsRoomGrid
+// VIP
+<VipRoomGrid
   rooms={rooms}
-  onRoomClick={(room) => navigate(`/kids-chat/${room.id}`)}
+  onRoomClick={(room) => navigate(`/room/${room.id}`)}
 />
-```
-
-### Example (Manual Grid for Reference)
-
-```tsx
-<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-  {rooms.map((room, index) => (
-    <KidsRoomCard
-      key={room.id}
-      room={room}
-      index={index}
-      onClick={() => navigate(`/kids-chat/${room.id}`)}
-    />
-  ))}
-</div>
-```
-
-### Example (VIP Room Grid)
-
-```tsx
-<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-  {rooms.map((room, index) => (
-    <VipRoomCard
-      key={room.id}
-      room={room}
-      index={index}
-      onClick={() => navigate(`/room/${room.id}`)}
-    />
-  ))}
-</div>
 ```
 
 ---
@@ -217,10 +148,20 @@ import { KidsRoomGrid } from "@/components/kids/KidsRoomGrid";
 ## 3. Kids Room Card (KidsRoomCard)
 
 ### Rule
-All Kids tier room cards **MUST** use the `KidsRoomCard` component with no local style overrides.
 
-### Required Props
+All Kids rooms must be rendered using `KidsRoomCard`. Pages must not override its layout or typography.
+
+### Contract / API
+
 ```tsx
+interface KidsRoom {
+  id: string;
+  title_en: string;
+  title_vi: string;
+  tier: "kids_level1" | "kids_level2" | "kids_level3";
+  icon: string | null;
+}
+
 interface KidsRoomCardProps {
   room: KidsRoom;
   index: number;
@@ -228,73 +169,47 @@ interface KidsRoomCardProps {
 }
 ```
 
-### API Contract
-- `room.title_en` — English title
-- `room.title_vi` — Vietnamese title
-- `room.icon` — Icon name (e.g., "Star", "Heart")
-- `index` — Used for staggered animations
-
-### Example (Complete)
+### Example
 
 ```tsx
-import { KidsRoomCard } from "@/components/KidsRoomCard";
-
-<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-  {rooms.map((room, index) => (
-    <KidsRoomCard
-      key={room.id}
-      room={room}
-      index={index}
-      onClick={() => navigate(`/kids-chat/${room.id}`)}
-    />
-  ))}
-</div>
+<KidsRoomCard
+  room={room}
+  index={index}
+  onClick={() => navigate(`/kids-chat/${room.id}`)}
+/>
 ```
-
-### Visual Spec
-- Card border: thin, subtle shadow
-- Title: bilingual, `line-clamp-2` for both English and Vietnamese
-- Icon: centered, animated bounce on hover
-- Gradient title bar: uses `var(--gradient-rainbow)`
-- Click feedback: scale-105 hover
 
 ---
 
 ## 4. VIP Room Pattern (Canonical Template)
 
 ### Rule
-All VIP tier pages **MUST** follow the structure of **`src/pages/vip/VipTier1Rooms.tsx`** as the base template.
 
-When adding new VIP pages, copy this file and only change:
-1. Title and subtitle text
-2. Supabase query filter (`tier_id = 'vip1'` → `tier_id = 'vip3'`, etc.)
-3. Page background token (`--page-vip1-bg` → `--page-vip3-bg`, etc.)
-4. Hero icon (optional)
+All VIP tier listing pages must be clones of the canonical VIP template. Only tier-specific text, filter, and background token may change. Do not change the grid layout, card component, routing pattern, or data loading pattern without updating this design system.
 
-**Do NOT change the grid layout, card component, routing pattern, or data loading pattern in the VIP template without updating this design system.**
+**Canonical template:** `src/pages/vip/VipTier1Rooms.tsx`
 
-### Required Structure
+### Contract / API
+
 ```tsx
-// 1. Hero section with gradient background
-<div style={{ background: 'var(--gradient-vip-hero)' }}>
-  <h1>VIP Tier Name</h1>
-  <p>Subtitle / Phụ đề</p>
-</div>
+interface VipRoom {
+  id: string;
+  tier_id: "vip1" | "vip2" | "vip3" | "vip3ii" | "vip4" | "vip5" | "vip6" | "vip9";
+  title_en: string;
+  title_vi: string;
+}
 
-// 2. Room grid (exact same pattern as Kids)
-<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-  {rooms.map((room, index) => (
-    <VipRoomCard
-      key={room.id}
-      room={room}
-      index={index}
-      onClick={() => navigate(`/room/${room.id}`)}
-    />
-  ))}
-</div>
+interface VipTierPageProps {
+  tierId: VipRoom["tier_id"];
+}
 ```
 
-### Example (VIP3 Page)
+**Required components:**
+- Must use `VipRoomCard`
+- Must use `ROOM_GRID_CLASS`
+- Must fetch via Supabase filtered by `tier_id`
+
+### Example
 
 ```tsx
 // src/pages/vip/VipTier3Rooms.tsx
@@ -302,46 +217,21 @@ export default function VipTier3Rooms() {
   const { data: rooms } = useQuery({
     queryKey: ['vip3-rooms'],
     queryFn: async () => {
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from('rooms')
         .select('*')
         .eq('tier_id', 'vip3')
         .order('display_order');
-      
-      if (error) throw error;
       return data;
     }
   });
 
   return (
-    <div 
-      className="min-h-screen p-8"
-      style={{ background: 'hsl(var(--page-vip3-bg))' }}
-    >
-      {/* Hero */}
-      <div 
-        className="text-center mb-8 p-8 rounded-lg"
-        style={{ background: 'var(--gradient-vip-hero)' }}
-      >
-        <h1 className="text-4xl font-bold text-foreground mb-2">
-          VIP3 — Advanced English
-        </h1>
-        <p className="text-lg text-foreground/90">
-          Master fluency with deeper patterns / Làm chủ sự trôi chảy với các mẫu sâu hơn
-        </p>
+    <div style={{ background: 'hsl(var(--page-vip3-bg))' }}>
+      <div style={{ background: 'var(--gradient-vip-hero)' }}>
+        <h1>VIP3 — Advanced English</h1>
       </div>
-
-      {/* Room grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-        {rooms?.map((room, index) => (
-          <VipRoomCard
-            key={room.id}
-            room={room}
-            index={index}
-            onClick={() => navigate(`/room/${room.id}`)}
-          />
-        ))}
-      </div>
+      <VipRoomGrid rooms={rooms} onRoomClick={...} />
     </div>
   );
 }
@@ -352,46 +242,56 @@ export default function VipTier3Rooms() {
 ## 5. Room Data Source of Truth
 
 ### Rule
-All rooms (Kids + VIP) **MUST** use the Mercy Blade JSON standard / `rooms` table schema.
 
-UI must **NEVER** hardcode:
-- Essays or descriptions
-- Audio filenames
-- Entry content
+All rooms (Kids + VIP) must use the Mercy Blade JSON Generator / `rooms` table schema. UI must never hardcode essays, audio filenames, or entry content.
 
-### Required Data Fields
+### Contract / API
+
 ```tsx
-// From database/JSON
-room.entries[].copy.en       // English essay
-room.entries[].copy.vi       // Vietnamese essay
-room.entries[].audio         // Audio filename (e.g., "ef01_1_en.mp3")
-room.room_essay_en           // Room-level intro (English)
-room.room_essay_vi           // Room-level intro (Vietnamese)
+interface RoomEntry {
+  slug: string;               // kebab-case, unique within room
+  keywords_en: string[];      // 3–5
+  keywords_vi: string[];      // 3–5
+  copy: {
+    en: string;               // 50–150 words
+    vi: string;               // 50–150 words
+  };
+  tags: string[];             // 2–4 tags
+  audio: string;              // "meaning_of_life_vip3_01_en.mp3"
+}
+
+interface RoomJson {
+  tier: string;               // e.g. "VIP3 / VIP3"
+  title: { en: string; vi: string };
+  content: { en: string; vi: string; audio?: string };
+  entries: RoomEntry[];
+}
 ```
 
-### Example (Correct Data Consumption)
+**UI must consume:**
+- `room.entries[].copy.en` / `room.entries[].copy.vi`
+- `room.entries[].audio`
+- `room.room_essay_en` / `room.room_essay_vi`
+
+### Example
 
 ```tsx
-// ❌ WRONG — hardcoded essay
-<p>This room teaches you about writing skills...</p>
-
-// ✅ CORRECT — consumed from database
+// ✅ CORRECT
 <PairedHighlightedContent
   englishContent={room.room_essay_en}
   vietnameseContent={room.room_essay_vi}
 />
 ```
 
-### See Also
-- Full JSON schema: `docs/mercyblade-json-standard.md`
-- Room registration: `docs/room-registration-workflow.md`
-
 ---
 
 ## 6. Routing Conventions
 
 ### Rule
-**All routes must follow these exact patterns:**
+
+All routes must follow these patterns only: `/kids-chat/:roomId`, `/room/:roomId`, `/vip/:tier`.
+
+### Contract
 
 | Tier | Route Pattern | Example |
 |------|---------------|---------|
@@ -399,12 +299,18 @@ room.room_essay_vi           // Room-level intro (Vietnamese)
 | Adult Free/VIP | `/room/:roomId` | `/room/nutrition-vip2` |
 | VIP Tier Listing | `/vip/:tier` | `/vip/vip3` |
 
-**No other route formats permitted.** This prevents `/vip3chat`, `/chat-kids`, etc.
+### Example
 
-### Entry Points
-- Kids rooms: `KidsLevel1Page.tsx`, `KidsLevel2Page.tsx`, `KidsLevel3Page.tsx`
-- Adult rooms: `ChatHub.tsx` (single entry point for all adult rooms)
-- VIP tier pages: `VipTier1Rooms.tsx`, `VipTier3Rooms.tsx`, etc.
+```tsx
+// Kids
+navigate(`/kids-chat/${room.id}`);
+
+// Adult/VIP room
+navigate(`/room/${room.id}`);
+
+// VIP tier listing
+<Link to="/vip/vip3">VIP3 Rooms</Link>
+```
 
 ---
 
@@ -527,38 +433,35 @@ navigate(`${KIDS_ROUTE_PREFIX}/${room.id}`);
 
 ---
 
-## 9. Data Hooks
+## 9. Data Hooks & Types
 
-### useKidsRooms(levelId)
-All Kids level pages must use a shared `useKidsRooms(levelId: string)` hook instead of custom Supabase queries.
+### Rule
 
-### Required Return Shape
+All Kids level pages must use `useKidsRooms(levelId)`; no inline Supabase queries in pages.
 
-```ts
-const { rooms, loading, error, refresh } = useKidsRooms(levelId);
-```
-
-### Example (Level Page)
+### Contract
 
 ```tsx
-import { useKidsRooms } from '@/hooks/useKidsRooms';
-import { LEVEL_IDS } from '@/lib/constants/kids';
+type KidsLevelId = "level1" | "level2" | "level3";
 
-export default function KidsLevel1() {
-  const { rooms, loading, error, refresh } = useKidsRooms(LEVEL_IDS[0]);
-
-  if (loading) return <LoadingSpinner />;
-  if (error) return <ErrorMessage error={error} />;
-
-  return (
-    <div className="min-h-screen p-8">
-      <KidsRoomGrid
-        rooms={rooms}
-        onRoomClick={(room) => navigate(`${KIDS_ROUTE_PREFIX}/${room.id}`)}
-      />
-    </div>
-  );
+interface UseKidsRoomsResult {
+  rooms: KidsRoom[];
+  loading: boolean;
+  error: Error | null;
+  refresh: () => void;
 }
+
+declare function useKidsRooms(levelId: KidsLevelId): UseKidsRoomsResult;
+```
+
+### Example
+
+```tsx
+const { rooms, loading, error, refresh } = useKidsRooms("level1");
+
+if (loading) return <LoadingSpinner />;
+
+return <KidsRoomGrid rooms={rooms} onRoomClick={...} />;
 ```
 
 ---
@@ -566,40 +469,25 @@ export default function KidsLevel1() {
 ## 10. Bilingual Entry Component
 
 ### Rule
-Pages **must not** hand-roll the order of EN/VI text and audio.
 
-Always use `<BilingualEntryWithAudio />` wrapper that enforces:
-1. English content
-2. Vietnamese content
-3. Audio player
+Entry pages must use `BilingualEntryWithAudio` to enforce EN/VI order and audio position. Pages must not hand-roll the order of EN/VI text and audio.
 
-### API Contract
+### Contract
 
 ```tsx
-interface BilingualEntryProps {
+interface BilingualEntryWithAudioProps {
   entry: {
-    copy: {
-      en: string;
-      vi: string;
-    };
+    copy: { en: string; vi: string };
     audio: string;
   };
 }
 ```
 
+Component must render: (1) `entry.copy.en`, (2) `entry.copy.vi`, (3) Audio player using `entry.audio`.
+
 ### Example
 
 ```tsx
-import { BilingualEntryWithAudio } from '@/components/BilingualEntryWithAudio';
-
-// ❌ WRONG — custom layout
-<div>
-  <p>{entry.copy.en}</p>
-  <p>{entry.copy.vi}</p>
-  <AudioPlayer src={entry.audio} />
-</div>
-
-// ✅ CORRECT — consistent wrapper
 <BilingualEntryWithAudio entry={entry} />
 ```
 
@@ -608,59 +496,65 @@ import { BilingualEntryWithAudio } from '@/components/BilingualEntryWithAudio';
 ## 11. Types & Supabase
 
 ### Rule
-The Kids rooms type must come from a generated Supabase type file, not manual interfaces.
 
-### Example (Type Import)
+All room types must come from generated Supabase type file, not manual interfaces.
 
-```ts
-// types/supabase.ts (generated via `npx supabase gen types typescript`)
-export type KidsRoom = Database['public']['Tables']['kids_rooms']['Row'];
-```
-
-### Example (Usage)
+### Contract
 
 ```tsx
-// ❌ WRONG — manual interface
-interface KidsRoom {
-  id: string;
-  title_en: string;
-  title_vi: string;
-  // ...
-}
-
-// ✅ CORRECT — generated types
-import type { KidsRoom } from '@/types/supabase';
-
-const rooms: KidsRoom[] = await fetchKidsRooms();
+// types/supabase.ts (generated via `npx supabase gen types typescript`)
+export type KidsRoom = Database['public']['Tables']['kids_rooms']['Row'];
+export type VipRoom = Database['public']['Tables']['rooms']['Row'];
 ```
 
-### Checklist
-- [ ] Run `npx supabase gen types typescript` after database changes
-- [ ] Import all room types from generated file
+### Example
+
+```tsx
+import type { KidsRoom } from '@/types/supabase';
+const rooms: KidsRoom[] = await fetchKidsRooms();
+```
 
 ---
 
 ## 12. Accessibility
 
 ### Rule
-- All interactive icons/buttons must have `aria-label` if their meaning isn't obvious from text
-- Pure decorative icons must use `aria-hidden="true"`
+
+All non-text buttons must have `aria-label`; decorative icons must use `aria-hidden="true"`.
+
+### Contract
+
+- Interactive icon without text → `aria-label`
+- Decorative icon → `aria-hidden="true"`
 
 ### Example
 
 ```tsx
-// ❌ WRONG — no accessibility attributes
-<Button onClick={handleRefresh}>
-  <RefreshCw className="w-4 h-4" />
-</Button>
-
-// ✅ CORRECT — descriptive label, hidden icon
 <Button aria-label="Refresh rooms" onClick={handleRefresh}>
   <RefreshCw className="w-4 h-4" aria-hidden="true" />
 </Button>
+```
 
-// ✅ CORRECT — decorative background icon
-<Star className="absolute top-4 right-4 opacity-20" aria-hidden="true" />
+---
+
+## 13. Performance
+
+### Rule
+
+Any level with >50 rooms must apply lazy-loading or virtualization.
+
+### Contract
+
+```tsx
+if (rooms.length > 50) {
+  // Use virtualised list OR lazy-loading
+}
+```
+
+### Example
+
+```tsx
+<img src={room.image} loading="lazy" alt={room.title_en} />
 ```
 
 ---
@@ -690,33 +584,21 @@ To enforce this design system automatically:
 
 Before shipping any new Kids or VIP page, verify:
 
-- [ ] Page background uses semantic token (`hsl(var(--page-*-bg))`)
-- [ ] Grid uses exact responsive pattern (2/3/4/5/6 cols)
-- [ ] Cards use `KidsRoomCard` or `VipRoomCard` (no local overrides)
+- [ ] Colors: all solids via `hsl(var(--token))`; gradients via `var(--gradient-*)`; no inline `linear-gradient(` in components
+- [ ] Grid: all room listings use `ROOM_GRID_CLASS` via `KidsRoomGrid` or `VipRoomGrid`
+- [ ] Rooms: all UI consumes `RoomJson` structure; no hardcoded essays/audio
+- [ ] Hooks: Kids pages use `useKidsRooms(levelId)`
+- [ ] Entries: use `BilingualEntryWithAudio` for EN/VI + audio
+- [ ] Routing: only `/kids-chat/:roomId`, `/room/:roomId`, `/vip/:tier`
+- [ ] Types: `KidsRoom`, `VipRoom`, `RoomEntry` imported from shared types/Supabase
+- [ ] Accessibility: `aria-label` and `aria-hidden` applied correctly
+- [ ] Performance: lazy-loading or virtualization used when `rooms.length > 50`
+- [ ] Constants: all shared strings (table names, route prefixes, level IDs) come from constants files
 - [ ] No `text-white`, `bg-blue-500`, or hex colors anywhere
-- [ ] Gradients use named tokens (`var(--gradient-*)`)
-- [ ] No `linear-gradient(...)` strings inside components (all gradients via `var(--gradient-*)`)
-- [ ] All shared strings (table names, route prefixes, level IDs) come from constants files
-- [ ] Kids pages use `useKidsRooms(levelId)` and `<KidsRoomGrid />`
-- [ ] Bilingual entries use `<BilingualEntryWithAudio />`
-- [ ] Room data consumed from database/JSON (no hardcoded content)
-- [ ] Route follows conventions (`/kids-chat/:id` or `/room/:id`)
 - [ ] Bilingual titles use single line with `line-clamp-2` and ` / ` separator
 - [ ] Staggered animations use `index * 0.05s` delay
-- [ ] Supabase types are imported from a single generated file
-- [ ] Basic accessibility: `aria-label` on interactive icons, `aria-hidden` on decorative ones
-- [ ] For large levels (>50 rooms), we apply lazy-loading or virtualization
 - [ ] Dark mode: test all page backgrounds and gradients in dark mode
 
 ---
-
-## Questions?
-
-If a pattern isn't covered in this doc, check:
-1. Existing Kids Level 1 page (`KidsLevel1Page.tsx`)
-2. VIP tier template (`VipTier1Rooms.tsx`)
-3. KidsRoomCard component source
-
-If still unclear, ask in team chat before implementing — don't guess.
 
 **End of Design System v1.1**
