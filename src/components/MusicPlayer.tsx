@@ -340,6 +340,7 @@ export const MusicPlayer = () => {
           variant="outline"
           size="sm"
           className="border-black text-black hover:bg-gray-100 h-8 w-8 p-0"
+          aria-label={isPlaying ? "Pause music" : "Play music"}
         >
           {isPlaying ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
         </Button>
@@ -355,6 +356,7 @@ export const MusicPlayer = () => {
               : 'text-black hover:bg-gray-100'
           }`}
           title={isShuffle ? "Shuffle: On" : "Shuffle: Off"}
+          aria-label={isShuffle ? "Turn shuffle off" : "Turn shuffle on"}
         >
           <Shuffle className="h-3 w-3" />
         </Button>
@@ -497,11 +499,12 @@ export const MusicPlayer = () => {
         </Select>
 
         {/* Hidden Audio Element */}
-        <audio
-          ref={audioRef}
-          src={currentTrack.url}
-          onEnded={playNextTrack}
-        />
+      <audio
+        ref={audioRef}
+        src={currentTrack.url}
+        preload="none"
+        onEnded={playNextTrack}
+      />
       </div>
     </div>
   );

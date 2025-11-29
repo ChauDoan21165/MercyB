@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Palette } from "lucide-react";
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
+import { ROOMS_TABLE } from '@/lib/constants/rooms';
 
 const EnglishLearningPathway = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const EnglishLearningPathway = () => {
     queryKey: ['english-ladder-rooms'],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from('rooms')
+        .from(ROOMS_TABLE)
         .select('id, title_en, title_vi, tier, domain')
         .eq('domain', 'English Foundation Ladder')
         .order('id');

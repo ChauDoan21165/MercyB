@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
+import { ROOMS_TABLE } from '@/lib/constants/rooms';
 
 export const useDemoMode = () => {
   const [isDemoMode, setIsDemoMode] = useState(false);
@@ -44,7 +45,7 @@ export const useDemoMode = () => {
 // Get demo-accessible rooms
 export const getDemoRooms = async () => {
   const { data, error } = await supabase
-    .from('rooms')
+    .from(ROOMS_TABLE)
     .select('*')
     .eq('is_demo', true)
     .order('created_at', { ascending: true })
