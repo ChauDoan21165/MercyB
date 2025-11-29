@@ -211,6 +211,10 @@ const AdminStats = () => {
                 <LayoutDashboard className="h-4 w-4 mr-2" />
                 System Metrics
               </Button>
+              <Button onClick={() => navigate('/admin/payment-monitoring')} variant="outline" className="gap-2 border-black text-black hover:bg-gray-100">
+                <DollarSign className="h-4 w-4" />
+                Payment Monitoring
+              </Button>
               <Button onClick={() => navigate('/admin/rooms')} variant="outline" className="border-black text-black hover:bg-gray-100">
                 <LayoutDashboard className="h-4 w-4 mr-2" />
                 Room Management

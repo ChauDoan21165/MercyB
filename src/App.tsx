@@ -44,7 +44,8 @@ import VIPTopicRequest from "./pages/VIPTopicRequest";
 import AdminReports from "./pages/AdminReports";
 import FeedbackInbox from "./pages/admin/FeedbackInbox";
 import AdminStats from "./pages/AdminStats";
-import AdminPaymentVerification from "./pages/AdminPaymentVerification";
+import AdminSystemMetrics from "./pages/AdminSystemMetrics";
+import PaymentMonitoring from "./pages/admin/PaymentMonitoring";
 import AdminAudioUpload from "./pages/AdminAudioUpload";
 import AdminModeration from "./pages/AdminModeration";
 import ResetPassword from "./pages/ResetPassword";
@@ -179,6 +180,7 @@ const App = () => {
           <Route path="/admin/code-editor" element={<AdminCodeEditor />} />
           <Route path="/admin/payments" element={<AdminPayments />} />
           <Route path="/admin/system-metrics" element={<AdminSystemMetrics />} />
+          <Route path="/admin/payment-monitoring" element={<PaymentMonitoring />} />
           <Route path="/admin/gift-codes" element={<AdminGiftCodes />} />
           <Route path="/admin/specification" element={<AdminSpecification />} />
           <Route path="/admin/room-specification" element={<RoomSpecification />} />
