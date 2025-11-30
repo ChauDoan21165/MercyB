@@ -36,15 +36,19 @@ Deno.serve(async (req) => {
 
     // Database metrics with tier breakdown
     const { count: roomsCount } = await supabase.from('rooms').select('*', { count: 'exact', head: true });
-    const { data: rooms } = await supabase.from('rooms').select('entries, tier');
-    const totalEntries = rooms?.reduce(
-      (sum, room: any) => sum + (Array.isArray(room.entries) ? room.entries.length : 0),
+    const { data: roomsRaw } = await supabase.from('rooms').select('entries, tier');
+    
+    // Normalize rooms array once to avoid repeated null checks
+    const rooms = (roomsRaw || []) as any[];
+    
+    const totalEntries = rooms.reduce(
+      (sum, room) => sum + (Array.isArray(room.entries) ? room.entries.length : 0),
       0
-    ) || 0;
+    );
 
     // Audio files count based on room entries
     let audioFilesCount = 0;
-    rooms?.forEach((room: any) => {
+    rooms.forEach((room) => {
       if (Array.isArray(room.entries)) {
         room.entries.forEach((entry: any) => {
           const audio = entry?.audio || entry?.audio_en;
@@ -57,7 +61,7 @@ Deno.serve(async (req) => {
     
     // Rooms by tier
     const roomsByTier: Record<string, number> = {};
-    rooms?.forEach((room: any) => {
+    rooms.forEach((room) => {
       const tier = room.tier || 'free';
       roomsByTier[tier] = (roomsByTier[tier] || 0) + 1;
     });
@@ -98,7 +102,7 @@ Deno.serve(async (req) => {
       .ilike('tier', '%vip9%');
     
     const vip9Domains: Record<string, number> = {};
-    vip9Rooms?.forEach((room: any) => {
+    (vip9Rooms || []).forEach((room: any) => {
       if (room.domain) {
         vip9Domains[room.domain] = (vip9Domains[room.domain] || 0) + 1;
       }
@@ -206,10 +210,13 @@ Deno.serve(async (req) => {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'Unknown error';
-    return new Response(JSON.stringify({ error: message }), {
-      status: 500,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
+    console.error('[system-metrics] Unexpected error', error);
+    return new Response(
+      JSON.stringify({ error: 'Internal server error' }),
+      {
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      }
+    );
   }
 });
