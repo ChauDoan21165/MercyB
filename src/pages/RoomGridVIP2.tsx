@@ -92,7 +92,13 @@ const RoomGridVIP2 = () => {
 
           {!loading && rooms && (
             <VirtualizedRoomGrid
-              rooms={rooms}
+              rooms={rooms.map((room) => ({
+                id: room.id,
+                nameEn: room.title_en,
+                nameVi: room.title_vi,
+                tier: room.tier || 'vip2',
+                hasData: Array.isArray(room.entries) ? room.entries.length > 0 : !!room.entries,
+              }))}
               onRoomClick={(room) => navigate(`/room/${room.id}`)}
             />
           )}
