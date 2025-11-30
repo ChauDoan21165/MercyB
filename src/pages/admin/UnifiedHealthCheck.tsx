@@ -213,6 +213,33 @@ export default function UnifiedHealthCheck() {
   const [availableRooms, setAvailableRooms] = useState<Array<{ id: string; title: string; level: string }>>([]);
   const [selectedRooms, setSelectedRooms] = useState<string[]>([]);
 
+  // Room health summary from edge function
+  interface RoomHealthSummary {
+    global: {
+      total_rooms: number;
+      rooms_zero_audio: number;
+      rooms_low_health: number;
+      rooms_missing_json: number;
+    };
+    byTier: Record<string, {
+      total_rooms: number;
+      rooms_zero_audio: number;
+      rooms_low_health: number;
+      rooms_missing_json: number;
+    }>;
+    vip_track_gaps: Array<{
+      tier: string;
+      title: string;
+      total_rooms: number;
+      min_required: number;
+      issue: string;
+    }>;
+    tier_counts: Record<string, number>;
+  }
+  
+  const [healthSummary, setHealthSummary] = useState<RoomHealthSummary | null>(null);
+  const [loadingSummary, setLoadingSummary] = useState(false);
+
   const allTiers = [
     { value: "free", label: "Free" },
     { value: "vip1", label: "VIP1" },
@@ -237,7 +264,41 @@ export default function UnifiedHealthCheck() {
     }
   }, [selectedTier, selectedLevel]);
 
+  useEffect(() => {
+    fetchHealthSummary();
+  }, [selectedTier]);
+
   // Removed auto-run - user must manually trigger scans
+
+  const fetchHealthSummary = async () => {
+    setLoadingSummary(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('room-health-summary', {
+        body: { tier: selectedTier }
+      });
+      
+      if (error) {
+        console.error('Error fetching health summary:', error);
+        toast({
+          title: "Failed to load health summary",
+          description: error.message || "Could not fetch room health data",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      setHealthSummary(data);
+    } catch (err: any) {
+      console.error('Error fetching health summary:', err);
+      toast({
+        title: "Failed to load health summary",
+        description: err.message || "An unexpected error occurred",
+        variant: "destructive"
+      });
+    } finally {
+      setLoadingSummary(false);
+    }
+  };
 
   const loadAvailableKidsRooms = async () => {
     try {
@@ -2435,6 +2496,94 @@ export default function UnifiedHealthCheck() {
 
       {/* Sync Health Summary Panel */}
       <SyncHealthSummary />
+
+      {/* Room Health Summary from Edge Function */}
+      {loadingSummary ? (
+        <Card className="p-6">
+          <div className="flex items-center gap-2">
+            <Loader2 className="h-4 w-4 animate-spin" />
+            <span className="text-sm text-muted-foreground">Loading health summary...</span>
+          </div>
+        </Card>
+      ) : healthSummary && (
+        <Card className="p-6">
+          <h2 className="text-xl font-semibold mb-4">Health Summary</h2>
+          
+          {/* Global Metrics */}
+          <div className="mb-6">
+            <h3 className="text-sm font-medium text-muted-foreground mb-3">Global Metrics</h3>
+            <div className="grid grid-cols-4 gap-4">
+              <div className="p-4 bg-muted/50 rounded-lg">
+                <div className="text-2xl font-bold">{healthSummary.global.total_rooms}</div>
+                <div className="text-sm text-muted-foreground">Total Rooms</div>
+              </div>
+              <div className="p-4 bg-destructive/10 rounded-lg">
+                <div className="text-2xl font-bold text-destructive">{healthSummary.global.rooms_zero_audio}</div>
+                <div className="text-sm text-muted-foreground">0% Audio</div>
+              </div>
+              <div className="p-4 bg-yellow-500/10 rounded-lg">
+                <div className="text-2xl font-bold text-yellow-600">{healthSummary.global.rooms_low_health}</div>
+                <div className="text-sm text-muted-foreground">Low Health</div>
+              </div>
+              <div className="p-4 bg-orange-500/10 rounded-lg">
+                <div className="text-2xl font-bold text-orange-600">{healthSummary.global.rooms_missing_json}</div>
+                <div className="text-sm text-muted-foreground">Missing JSON</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Tier-Specific Metrics */}
+          {selectedTier && healthSummary.byTier[selectedTier.toLowerCase()] && (
+            <div>
+              <h3 className="text-sm font-medium text-muted-foreground mb-3">
+                {tierDisplay} Tier Metrics
+              </h3>
+              <div className="grid grid-cols-4 gap-4">
+                <div className="p-4 bg-muted/50 rounded-lg">
+                  <div className="text-2xl font-bold">
+                    {healthSummary.byTier[selectedTier.toLowerCase()].total_rooms}
+                  </div>
+                  <div className="text-sm text-muted-foreground">Total Rooms</div>
+                </div>
+                <div className="p-4 bg-destructive/10 rounded-lg">
+                  <div className="text-2xl font-bold text-destructive">
+                    {healthSummary.byTier[selectedTier.toLowerCase()].rooms_zero_audio}
+                  </div>
+                  <div className="text-sm text-muted-foreground">0% Audio</div>
+                </div>
+                <div className="p-4 bg-yellow-500/10 rounded-lg">
+                  <div className="text-2xl font-bold text-yellow-600">
+                    {healthSummary.byTier[selectedTier.toLowerCase()].rooms_low_health}
+                  </div>
+                  <div className="text-sm text-muted-foreground">Low Health</div>
+                </div>
+                <div className="p-4 bg-orange-500/10 rounded-lg">
+                  <div className="text-2xl font-bold text-orange-600">
+                    {healthSummary.byTier[selectedTier.toLowerCase()].rooms_missing_json}
+                  </div>
+                  <div className="text-sm text-muted-foreground">Missing JSON</div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* VIP Track Gaps */}
+          {healthSummary.vip_track_gaps.length > 0 && (
+            <div className="mt-6">
+              <h3 className="text-sm font-medium text-muted-foreground mb-3">
+                VIP Tier Gaps ({healthSummary.vip_track_gaps.length})
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {healthSummary.vip_track_gaps.map(gap => (
+                  <Badge key={gap.tier} variant="destructive">
+                    {gap.title}: 0 rooms
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          )}
+        </Card>
+      )}
 
       {error && (
         <Alert variant="destructive">
