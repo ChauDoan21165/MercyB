@@ -293,7 +293,7 @@ const AdminDashboard = () => {
               value={metrics.totalRooms}
               subtext={`${metrics.roomsZeroAudio} no audio | ${metrics.roomsLowHealth} low health`}
               icon={Database}
-              onClick={() => navigate("/admin/health-dashboard")}
+              onClick={() => navigate("/admin/health")}
             />
             <StatCard
               title="System Readiness"
@@ -314,7 +314,7 @@ const AdminDashboard = () => {
             <QuickActionButton
               label="Room Health Check"
               icon={Activity}
-              onClick={() => navigate("/admin/health-dashboard")}
+              onClick={() => navigate("/admin/health")}
             />
             <QuickActionButton
               label="Payment Dashboard"
