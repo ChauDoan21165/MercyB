@@ -9,7 +9,9 @@ import { AdminFloatingButton } from "@/components/AdminFloatingButton";
 import { ZoomControl } from "@/components/ZoomControl";
 import { HomeButton } from "@/components/HomeButton";
 import { BackButton } from "@/components/BackButton";
+import { GlobalPlayingIndicator } from "@/components/GlobalPlayingIndicator";
 import { AdminRoute } from "@/components/AdminRoute";
+import { MusicPlayerProvider } from "@/contexts/MusicPlayerContext";
 import { LowDataModeProvider } from "@/contexts/LowDataModeContext";
 import { MusicPlayer } from "@/components/MusicPlayer";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
@@ -131,11 +133,13 @@ const App = () => {
               <Toaster />
               <Sonner />
               <OfflineDetector />
-              <BrowserRouter>
-                <AdminFloatingButton />
-                <ZoomControl />
-                <HomeButton />
-                <BackButton />
+              <MusicPlayerProvider>
+                <BrowserRouter>
+                  <AdminFloatingButton />
+                  <ZoomControl />
+                  <HomeButton />
+                  <BackButton />
+                  <GlobalPlayingIndicator />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/onboarding" element={<OnboardingFlow />} />
@@ -219,7 +223,8 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <MusicPlayer />
-              </BrowserRouter>
+                </BrowserRouter>
+              </MusicPlayerProvider>
             </TooltipProvider>
           </LowDataModeProvider>
         </ThemeProvider>
