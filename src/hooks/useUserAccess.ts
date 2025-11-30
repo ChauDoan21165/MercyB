@@ -63,13 +63,17 @@ export const useUserAccess = (): UserAccess => {
         return;
       }
 
-      // Check admin status
-      const { data: roles } = await supabase
-        .from('user_roles')
-        .select('role')
-        .eq('user_id', user.id);
+      // Check admin status via has_role() RPC to stay consistent with AdminRoute
+      const { data: isAdminRpc, error: adminError } = await supabase.rpc('has_role', {
+        _role: 'admin',
+        _user_id: user.id,
+      });
 
-      const isAdmin = roles?.some(r => r.role === 'admin') || false;
+      if (adminError) {
+        console.error('Error checking admin role via has_role RPC:', adminError);
+      }
+
+      const isAdmin = !!isAdminRpc;
 
       // Check subscription tier
       const { data: subscription } = await supabase

@@ -19,18 +19,16 @@ export const useAdminCheck = () => {
         return;
       }
 
-      const { data, error } = await supabase
-        .from('user_roles')
-        .select('role')
-        .eq('user_id', user.id)
-        .eq('role', 'admin')
-        .single();
+      const { data: isAdminRpc, error } = await supabase.rpc('has_role', {
+        _role: 'admin',
+        _user_id: user.id,
+      });
 
-      if (error && error.code !== 'PGRST116') {
+      if (error) {
         console.error('Error checking admin status:', error);
       }
 
-      setIsAdmin(!!data);
+      setIsAdmin(!!isAdminRpc);
     } catch (error) {
       console.error('Error in admin check:', error);
       setIsAdmin(false);
