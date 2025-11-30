@@ -72,6 +72,37 @@ serve(async (req) => {
       }
     }
 
+    // Check for rooms with missing or invalid JSON
+    const { data: roomJsonRows, error: roomJsonErr } = await supabase
+      .from("rooms")
+      .select("id, tier, entries");
+
+    if (roomJsonErr) throw roomJsonErr;
+
+    const roomsMissingJson: any[] = [];
+
+    for (const r of roomJsonRows ?? []) {
+      // 1) No entries at all (null or undefined)
+      if (!r.entries) {
+        roomsMissingJson.push({
+          id: r.id,
+          tier: r.tier,
+          issue: "missing_entries",
+        });
+        continue;
+      }
+
+      // 2) Valid JSON but no entries array or empty
+      const parsed = r.entries as any;
+      if (!Array.isArray(parsed) || parsed.length === 0) {
+        roomsMissingJson.push({
+          id: r.id,
+          tier: r.tier,
+          issue: "no_entries",
+        });
+      }
+    }
+
     return new Response(
       JSON.stringify({
         rooms_zero_audio: roomsZeroAudio || 0,
@@ -79,6 +110,8 @@ serve(async (req) => {
         vip_track_gaps_count: trackGaps.length,
         vip_track_gaps: trackGaps,
         tier_counts: tierCounts,
+        rooms_missing_json_count: roomsMissingJson.length,
+        rooms_missing_json: roomsMissingJson,
       }),
       { 
         status: 200, 
