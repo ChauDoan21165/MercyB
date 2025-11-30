@@ -9,8 +9,10 @@ import { AdminFloatingButton } from "@/components/AdminFloatingButton";
 import { ZoomControl } from "@/components/ZoomControl";
 import { HomeButton } from "@/components/HomeButton";
 import { BackButton } from "@/components/BackButton";
+import { GlobalPlayingIndicator } from "@/components/GlobalPlayingIndicator";
 import { AdminRoute } from "@/components/AdminRoute";
 import { LowDataModeProvider } from "@/contexts/LowDataModeContext";
+import { MusicPlayerProvider } from "@/contexts/MusicPlayerContext";
 import { MusicPlayer } from "@/components/MusicPlayer";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { OfflineDetector } from "@/components/OfflineDetector";
@@ -127,7 +129,8 @@ const App = () => {
       <QueryClientProvider client={queryClient}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <LowDataModeProvider>
-            <TooltipProvider>
+            <MusicPlayerProvider>
+              <TooltipProvider>
               <Toaster />
               <Sonner />
               <OfflineDetector />
@@ -136,6 +139,7 @@ const App = () => {
                 <ZoomControl />
                 <HomeButton />
                 <BackButton />
+                <GlobalPlayingIndicator />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/onboarding" element={<OnboardingFlow />} />
@@ -221,6 +225,7 @@ const App = () => {
         <MusicPlayer />
               </BrowserRouter>
             </TooltipProvider>
+            </MusicPlayerProvider>
           </LowDataModeProvider>
         </ThemeProvider>
       </QueryClientProvider>

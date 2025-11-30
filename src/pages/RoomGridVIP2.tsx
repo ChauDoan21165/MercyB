@@ -9,12 +9,16 @@ import { RoomGridSkeleton } from '@/components/RoomCardSkeleton';
 import { VirtualizedRoomGrid } from '@/components/VirtualizedRoomGrid';
 import { useToast } from "@/hooks/use-toast";
 import { TIERS } from '@/lib/constants';
+import { usePrefetchRooms } from "@/hooks/usePrefetchRooms";
 
 const RoomGridVIP2 = () => {
   const navigate = useNavigate();
   const { isAdmin, loading: accessLoading } = useUserAccess();
   const { toast } = useToast();
   const { rooms, loading, error, refresh } = useVipRooms('vip2');
+  
+  // Prefetch first 5 rooms for instant navigation
+  usePrefetchRooms(rooms || [], 5);
 
   const handleRefreshRooms = async () => {
     toast({

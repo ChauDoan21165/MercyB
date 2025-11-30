@@ -13,6 +13,7 @@ import { useVipRooms } from '@/hooks/useVipRooms';
 import { VirtualizedRoomGrid } from '@/components/VirtualizedRoomGrid';
 import { RoomGridSkeleton } from '@/components/RoomCardSkeleton';
 import { TIERS, ROOM_GRID_CLASS } from '@/lib/constants';
+import { usePrefetchRooms } from "@/hooks/usePrefetchRooms";
 
 const RoomGridVIP3II = () => {
   const navigate = useNavigate();
@@ -20,6 +21,9 @@ const RoomGridVIP3II = () => {
   const { toast } = useToast();
   const [isIntroPlaying, setIsIntroPlaying] = useState(false);
   const { rooms, loading, error, refresh } = useVipRooms('vip3');
+  
+  // Prefetch first 5 rooms for instant navigation
+  usePrefetchRooms(rooms || [], 5);
 
   const handleRefreshRooms = async () => {
     toast({
