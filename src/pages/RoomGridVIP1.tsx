@@ -9,12 +9,16 @@ import { RoomGridSkeleton } from '@/components/RoomCardSkeleton';
 import { VirtualizedRoomGrid } from '@/components/VirtualizedRoomGrid';
 import { LowDataModeToggle } from '@/components/LowDataModeToggle';
 import { useToast } from "@/hooks/use-toast";
+import { usePrefetchRooms } from "@/hooks/usePrefetchRooms";
 
 const RoomGridVIP1 = () => {
   const navigate = useNavigate();
   const { isAdmin, loading } = useUserAccess();
   const { toast } = useToast();
   const { data: rooms, isLoading, refetch } = useCachedRooms('vip1');
+  
+  // Prefetch first 5 rooms for instant navigation
+  usePrefetchRooms(rooms || [], 5);
 
   const handleRefreshRooms = async () => {
     toast({
