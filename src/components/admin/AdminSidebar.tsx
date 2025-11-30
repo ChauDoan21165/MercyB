@@ -32,6 +32,7 @@ import {
 const adminItems = [
   { title: "Dashboard", url: "/admin", icon: Home, end: true },
   { title: "Room Management", url: "/admin/rooms", icon: LayoutDashboard },
+  { title: "Room Health", url: "/admin/room-health-dashboard", icon: Activity },
   { title: "Room Health Check", url: "/admin/kids-room-health", icon: Stethoscope },
   { title: "System Health", url: "/admin/system-health", icon: Activity },
   { title: "Code Editor", url: "/admin/code-editor", icon: Code },
