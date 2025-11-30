@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Activity, Shield, Zap, ArrowLeft, Settings, Baby } from "lucide-react";
+import { Activity, Shield, Zap, ArrowLeft, Settings, Baby, AlertTriangle } from "lucide-react";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
 const tiers = [
   { id: "free", name: "Free", icon: Zap, color: "text-black" },
@@ -19,6 +21,29 @@ const tiers = [
 ];
 
 export default function HealthDashboard() {
+  const [roomsMissingJson, setRoomsMissingJson] = useState<any[]>([]);
+  const [vipTrackGaps, setVipTrackGaps] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchHealthSummary();
+  }, []);
+
+  const fetchHealthSummary = async () => {
+    try {
+      const { data, error } = await supabase.functions.invoke('room-health-summary');
+      
+      if (error) throw error;
+      
+      setRoomsMissingJson(data?.rooms_missing_json || []);
+      setVipTrackGaps(data?.vip_track_gaps || []);
+    } catch (error) {
+      console.error("Error fetching health summary:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="container mx-auto p-6 space-y-6">
       <div>
@@ -84,6 +109,82 @@ export default function HealthDashboard() {
             })}
           </div>
         </Card>
+
+        {!loading && (roomsMissingJson.length > 0 || vipTrackGaps.length > 0) && (
+          <>
+            <Card className="p-6 border-2 border-black bg-white">
+              <div className="flex items-center space-x-3 mb-4">
+                <AlertTriangle className="h-6 w-6 text-black" />
+                <div>
+                  <h2 className="text-xl font-bold text-black">Tier Coverage Gaps</h2>
+                  <p className="text-sm text-gray-600">
+                    VIP tiers with missing or insufficient rooms
+                  </p>
+                </div>
+              </div>
+              {vipTrackGaps.length === 0 ? (
+                <p className="text-sm text-gray-600">
+                  ✅ All visible VIP tiers have at least one room.
+                </p>
+              ) : (
+                <ul className="space-y-2 text-sm">
+                  {vipTrackGaps.map((gap) => (
+                    <li
+                      key={gap.tier}
+                      className="flex items-center justify-between rounded-md border border-black px-3 py-2 bg-white"
+                    >
+                      <div>
+                        <p className="font-bold text-black">
+                          {gap.tier?.toUpperCase()} – {gap.title}
+                        </p>
+                        <p className="text-xs text-gray-600">
+                          {gap.issue === "no_rooms_found"
+                            ? `Has ${gap.total_rooms} rooms, needs at least ${gap.min_required}.`
+                            : gap.issue}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </Card>
+
+            <Card className="p-6 border-2 border-black bg-white">
+              <div className="flex items-center space-x-3 mb-4">
+                <AlertTriangle className="h-6 w-6 text-black" />
+                <div>
+                  <h2 className="text-xl font-bold text-black">Rooms Missing JSON</h2>
+                  <p className="text-sm text-gray-600">
+                    Rooms with missing or broken entry data
+                  </p>
+                </div>
+              </div>
+              {roomsMissingJson.length === 0 ? (
+                <p className="text-sm text-gray-600">
+                  ✅ No rooms with missing or broken JSON.
+                </p>
+              ) : (
+                <ul className="space-y-2 text-sm">
+                  {roomsMissingJson.map((r) => (
+                    <li
+                      key={r.id}
+                      className="flex items-center justify-between rounded-md border border-black px-3 py-2 bg-white"
+                    >
+                      <div>
+                        <p className="font-bold text-black">
+                          {r.tier?.toUpperCase()} – {r.id}
+                        </p>
+                        <p className="text-xs text-gray-600">
+                          Issue: {r.issue === "missing_entries" ? "No entries field" : "Empty entries array"}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </Card>
+          </>
+        )}
       </div>
     </div>
   );
