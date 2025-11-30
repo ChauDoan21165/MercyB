@@ -30,6 +30,8 @@ interface RoomIssue {
   levelId?: string;
   audioFile?: string;
   entrySlug?: string;
+  httpStatus?: number;
+  url?: string;
 }
 
 interface AudioCheckResult {
@@ -775,10 +777,23 @@ export default function UnifiedHealthCheck() {
         // Use strict canonical resolver - NO FALLBACKS
         let jsonData: any = null;
         let resolvedPath: string = "";
+        let httpStatus: number | undefined = undefined;
+        let fileUrl: string = "";
         
         try {
           const { loadRoomJson, resolveRoomJsonPath } = await import('@/lib/roomJsonResolver');
           resolvedPath = await resolveRoomJsonPath(room.id || "");
+          fileUrl = `/public/data/${room.id}.json`;
+          
+          // First, check if the file exists and capture HTTP status
+          try {
+            const checkResponse = await fetch(fileUrl, { method: 'HEAD' });
+            httpStatus = checkResponse.status;
+            console.log(`🔍 File check for ${room.id}: HTTP ${httpStatus}`);
+          } catch (fetchError) {
+            console.warn(`⚠️ Failed to check file ${fileUrl}:`, fetchError);
+          }
+          
           jsonData = await loadRoomJson(room.id || "");
           console.log(`✅ Loaded JSON for ${room.id}:`, resolvedPath);
         } catch (error: any) {
@@ -810,7 +825,9 @@ export default function UnifiedHealthCheck() {
                   tier: selectedTier,
                   issueType: "missing_file",
                   message: `Missing JSON file at public/data/${room.id}.json`,
-                  details: "Room has database entries but no JSON file. Fix JSON path or export JSON from DB.",
+                  details: `Room has database entries but no JSON file. Fix JSON path or export JSON from DB.${httpStatus ? ` HTTP Status: ${httpStatus}` : ''}`,
+                  httpStatus,
+                  url: fileUrl,
                 },
               ],
             };
@@ -880,24 +897,37 @@ export default function UnifiedHealthCheck() {
         setPhantomRooms(failedRooms);
         
         // Add phantom rooms to results with proper DeepRoomReport structure
-        const phantomReports: DeepRoomReport[] = failedRooms.map(r => ({
-          roomId: r.id,
-          roomTitle: r.title,
-          tier: selectedTier,
-          summary: {
-            totalIssues: 1,
-            audioIssues: 0,
-            entryIssues: 0,
-            healthScore: 0
-          },
-          audioChecks: [],
-          entryValidation: [],
-          issues: [{
+        const phantomReports: DeepRoomReport[] = await Promise.all(failedRooms.map(async r => {
+          // Check HTTP status for phantom rooms too
+          let phantomStatus: number | undefined = undefined;
+          const phantomUrl = `/public/data/${r.id}.json`;
+          try {
+            const checkResponse = await fetch(phantomUrl, { method: 'HEAD' });
+            phantomStatus = checkResponse.status;
+          } catch (err) {
+            console.warn(`Failed to check phantom room ${r.id}`);
+          }
+          
+          return {
             roomId: r.id,
             roomTitle: r.title,
             tier: selectedTier,
-            issueType: "missing_file",
-            message: `Missing JSON file at public/data/${r.id}.json`,
+            summary: {
+              totalIssues: 1,
+              audioIssues: 0,
+              entryIssues: 0,
+              healthScore: 0
+            },
+            audioChecks: [],
+            entryValidation: [],
+            issues: [{
+              roomId: r.id,
+              roomTitle: r.title,
+              tier: selectedTier,
+              issueType: "missing_file",
+              message: `Missing JSON file at public/data/${r.id}.json`,
+              httpStatus: phantomStatus,
+              url: phantomUrl,
             details: r.error
           }]
         }));
@@ -3033,6 +3063,33 @@ export default function UnifiedHealthCheck() {
                               </div>
                             </div>
                           )}
+                          {(issue.url || issue.httpStatus) && (
+                            <div className="mt-2 space-y-1">
+                              {issue.url && (
+                                <div className="inline-flex items-center gap-2 px-2 py-1 bg-destructive/10 rounded text-xs font-mono">
+                                  <span className="text-muted-foreground">URL:</span>
+                                  <span className="text-foreground">{issue.url}</span>
+                                </div>
+                              )}
+                              {issue.httpStatus && (
+                                <div className="inline-flex items-center gap-2 px-2 py-1 bg-destructive/10 rounded text-xs font-mono ml-2">
+                                  <span className="text-muted-foreground">HTTP Status:</span>
+                                  <span className={`font-bold ${
+                                    issue.httpStatus === 404 ? 'text-red-600' : 
+                                    issue.httpStatus >= 500 ? 'text-orange-600' : 
+                                    'text-yellow-600'
+                                  }`}>
+                                    {issue.httpStatus} {
+                                      issue.httpStatus === 404 ? '(Not Found)' :
+                                      issue.httpStatus >= 500 ? '(Server Error)' :
+                                      issue.httpStatus >= 400 ? '(Client Error)' :
+                                      '(Other)'
+                                    }
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+                          )}
                           {issue.details && (
                             <p className="text-xs text-muted-foreground mt-1 font-mono bg-muted/30 p-2 rounded">
                               {issue.details}
@@ -3352,6 +3409,33 @@ export default function UnifiedHealthCheck() {
                               <AlertCircle className="h-4 w-4" />
                               <AlertDescription className="text-xs">
                                 <strong>[{issue.issueType}]</strong> {issue.message}
+                                {(issue.url || issue.httpStatus) && (
+                                  <div className="mt-2 space-y-1">
+                                    {issue.url && (
+                                      <div className="flex items-center gap-2">
+                                        <span className="text-muted-foreground">URL:</span>
+                                        <code className="text-xs bg-muted px-1 py-0.5 rounded">{issue.url}</code>
+                                      </div>
+                                    )}
+                                    {issue.httpStatus && (
+                                      <div className="flex items-center gap-2">
+                                        <span className="text-muted-foreground">HTTP:</span>
+                                        <code className={`text-xs px-1 py-0.5 rounded font-bold ${
+                                          issue.httpStatus === 404 ? 'bg-red-100 text-red-700' : 
+                                          issue.httpStatus >= 500 ? 'bg-orange-100 text-orange-700' : 
+                                          'bg-yellow-100 text-yellow-700'
+                                        }`}>
+                                          {issue.httpStatus} {
+                                            issue.httpStatus === 404 ? 'Not Found' :
+                                            issue.httpStatus >= 500 ? 'Server Error' :
+                                            issue.httpStatus >= 400 ? 'Client Error' :
+                                            'Other'
+                                          }
+                                        </code>
+                                      </div>
+                                    )}
+                                  </div>
+                                )}
                                 {issue.details && <p className="mt-1 text-muted-foreground">{issue.details}</p>}
                               </AlertDescription>
                             </Alert>
