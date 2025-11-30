@@ -21,7 +21,14 @@ Deno.serve(async (req) => {
       });
     }
 
-    await assertAdmin(user.id);
+    try {
+      await assertAdmin(user.id);
+    } catch {
+      return new Response(JSON.stringify({ error: 'Admin access required' }), {
+        status: 403,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
 
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
