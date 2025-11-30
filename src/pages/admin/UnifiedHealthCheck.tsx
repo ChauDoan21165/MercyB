@@ -272,13 +272,17 @@ export default function UnifiedHealthCheck() {
 
   const fetchHealthSummary = async () => {
     setLoadingSummary(true);
+    setError(null);
     try {
+      console.log('[room-health-summary] Fetching health data for tier:', selectedTier);
+      
       const { data, error } = await supabase.functions.invoke('room-health-summary', {
         body: { tier: selectedTier }
       });
       
       if (error) {
-        console.error('Error fetching health summary:', error);
+        console.error('[room-health-summary] Edge function error:', error);
+        setError(`Failed to load health summary: ${error.message || 'Unknown error'}`);
         toast({
           title: "Failed to load health summary",
           description: error.message || "Could not fetch room health data",
@@ -287,9 +291,24 @@ export default function UnifiedHealthCheck() {
         return;
       }
 
+      console.log('[room-health-summary] Response data:', data);
+      
+      // Validate response structure
+      if (!data || typeof data !== 'object') {
+        console.error('[room-health-summary] Invalid response structure:', data);
+        setError('Invalid response from health summary endpoint');
+        toast({
+          title: "Invalid Response",
+          description: "The health summary endpoint returned invalid data",
+          variant: "destructive"
+        });
+        return;
+      }
+
       setHealthSummary(data);
     } catch (err: any) {
-      console.error('Error fetching health summary:', err);
+      console.error('[room-health-summary] Exception:', err);
+      setError(`Error: ${err.message || 'An unexpected error occurred'}`);
       toast({
         title: "Failed to load health summary",
         description: err.message || "An unexpected error occurred",
@@ -2533,7 +2552,7 @@ export default function UnifiedHealthCheck() {
           </div>
 
           {/* Tier-Specific Metrics */}
-          {selectedTier && healthSummary.byTier[selectedTier.toLowerCase()] && (
+          {selectedTier && healthSummary.byTier && healthSummary.byTier[selectedTier.toLowerCase()] ? (
             <div>
               <h3 className="text-sm font-medium text-muted-foreground mb-3">
                 {tierDisplay} Tier Metrics
@@ -2541,40 +2560,47 @@ export default function UnifiedHealthCheck() {
               <div className="grid grid-cols-4 gap-4">
                 <div className="p-4 bg-muted/50 rounded-lg">
                   <div className="text-2xl font-bold">
-                    {healthSummary.byTier[selectedTier.toLowerCase()].total_rooms}
+                    {healthSummary.byTier[selectedTier.toLowerCase()]?.total_rooms ?? 0}
                   </div>
                   <div className="text-sm text-muted-foreground">Total Rooms</div>
                 </div>
                 <div className="p-4 bg-destructive/10 rounded-lg">
                   <div className="text-2xl font-bold text-destructive">
-                    {healthSummary.byTier[selectedTier.toLowerCase()].rooms_zero_audio}
+                    {healthSummary.byTier[selectedTier.toLowerCase()]?.rooms_zero_audio ?? 0}
                   </div>
                   <div className="text-sm text-muted-foreground">0% Audio</div>
                 </div>
                 <div className="p-4 bg-yellow-500/10 rounded-lg">
                   <div className="text-2xl font-bold text-yellow-600">
-                    {healthSummary.byTier[selectedTier.toLowerCase()].rooms_low_health}
+                    {healthSummary.byTier[selectedTier.toLowerCase()]?.rooms_low_health ?? 0}
                   </div>
                   <div className="text-sm text-muted-foreground">Low Health</div>
                 </div>
                 <div className="p-4 bg-orange-500/10 rounded-lg">
                   <div className="text-2xl font-bold text-orange-600">
-                    {healthSummary.byTier[selectedTier.toLowerCase()].rooms_missing_json}
+                    {healthSummary.byTier[selectedTier.toLowerCase()]?.rooms_missing_json ?? 0}
                   </div>
                   <div className="text-sm text-muted-foreground">Missing JSON</div>
                 </div>
               </div>
             </div>
+          ) : selectedTier && (
+            <Alert>
+              <AlertCircle className="h-4 w-4" />
+              <AlertDescription>
+                No data available for {tierDisplay} tier yet. This tier may not have any rooms registered.
+              </AlertDescription>
+            </Alert>
           )}
 
           {/* VIP Track Gaps */}
-          {healthSummary.vip_track_gaps.length > 0 && (
+          {healthSummary.vip_track_gaps && healthSummary.vip_track_gaps.length > 0 && (
             <div className="mt-6">
               <h3 className="text-sm font-medium text-muted-foreground mb-3">
                 VIP Tier Gaps ({healthSummary.vip_track_gaps.length})
               </h3>
               <div className="flex flex-wrap gap-2">
-                {healthSummary.vip_track_gaps.map(gap => (
+                {healthSummary.vip_track_gaps.map((gap) => (
                   <Badge key={gap.tier} variant="destructive">
                     {gap.title}: 0 rooms
                   </Badge>
@@ -2585,11 +2611,28 @@ export default function UnifiedHealthCheck() {
         </Card>
       )}
 
+      {/* Error State Display */}
       {error && (
-        <Alert variant="destructive">
-          <AlertCircle className="h-4 w-4" />
-          <AlertDescription>{error}</AlertDescription>
-        </Alert>
+        <Card className="p-6 border-destructive">
+          <Alert variant="destructive">
+            <AlertCircle className="h-4 w-4" />
+            <AlertDescription>
+              <div className="space-y-2">
+                <p className="font-semibold">Health Summary Error</p>
+                <p className="text-sm">{error}</p>
+                <Button 
+                  size="sm" 
+                  variant="outline" 
+                  onClick={fetchHealthSummary}
+                  className="mt-2"
+                >
+                  <RefreshCw className="h-3 w-3 mr-1" />
+                  Retry
+                </Button>
+              </div>
+            </AlertDescription>
+          </Alert>
+        </Card>
       )}
 
       {deepScanning && progress && (

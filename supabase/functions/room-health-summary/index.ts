@@ -42,6 +42,8 @@ serve(async (req) => {
       tierFilter = tierFilter.toLowerCase();
     }
 
+    console.log('[room-health-summary] Processing request with tier filter:', tierFilter);
+
     // Build base query for rooms with health view data
     let healthQuery = supabase
       .from("room_health_view")
@@ -52,19 +54,27 @@ serve(async (req) => {
     }
 
     const { data: healthData, error: healthErr } = await healthQuery;
-    if (healthErr) throw healthErr;
+    if (healthErr) {
+      console.error('[room-health-summary] Health view query error:', healthErr);
+      throw healthErr;
+    }
 
     // Build query for rooms with raw_json data
     let roomsQuery = supabase
       .from("rooms")
-      .select("id, tier, raw_json, entries");
+      .select("id, tier, raw_json");
     
     if (tierFilter) {
       roomsQuery = roomsQuery.eq("tier", tierFilter);
     }
 
     const { data: roomsData, error: roomsErr } = await roomsQuery;
-    if (roomsErr) throw roomsErr;
+    if (roomsErr) {
+      console.error('[room-health-summary] Rooms query error:', roomsErr);
+      throw roomsErr;
+    }
+
+    console.log('[room-health-summary] Fetched', roomsData?.length || 0, 'rooms and', healthData?.length || 0, 'health records');
 
     // Initialize result structure
     const byTier: Record<string, {
@@ -96,15 +106,16 @@ serve(async (req) => {
       tierCounts[tier] = (tierCounts[tier] || 0) + 1;
       
       // Check for missing or invalid raw_json
-      const hasValidRawJson = room.raw_json && typeof room.raw_json === 'object';
-      const hasEntries = hasValidRawJson && 
-        Array.isArray((room.raw_json as any).entries) && 
-        ((room.raw_json as any).entries.length > 0);
-      
       if (!room.raw_json) {
         byTier[tier].rooms_missing_json++;
-      } else if (!hasEntries) {
-        byTier[tier].rooms_missing_json++;
+      } else {
+        // Validate raw_json structure
+        const rawJson = room.raw_json as any;
+        const hasValidEntries = Array.isArray(rawJson.entries) && rawJson.entries.length > 0;
+        
+        if (!hasValidEntries) {
+          byTier[tier].rooms_missing_json++;
+        }
       }
     }
 
@@ -147,21 +158,25 @@ serve(async (req) => {
       }
     }
 
-    // Calculate global totals
+    // Calculate global totals with safety checks
     const global = {
-      total_rooms: Object.values(byTier).reduce((sum, t) => sum + t.total_rooms, 0),
-      rooms_zero_audio: Object.values(byTier).reduce((sum, t) => sum + t.rooms_zero_audio, 0),
-      rooms_low_health: Object.values(byTier).reduce((sum, t) => sum + t.rooms_low_health, 0),
-      rooms_missing_json: Object.values(byTier).reduce((sum, t) => sum + t.rooms_missing_json, 0),
+      total_rooms: Object.values(byTier).reduce((sum, t) => sum + (t?.total_rooms || 0), 0),
+      rooms_zero_audio: Object.values(byTier).reduce((sum, t) => sum + (t?.rooms_zero_audio || 0), 0),
+      rooms_low_health: Object.values(byTier).reduce((sum, t) => sum + (t?.rooms_low_health || 0), 0),
+      rooms_missing_json: Object.values(byTier).reduce((sum, t) => sum + (t?.rooms_missing_json || 0), 0),
     };
 
+    const response = {
+      global,
+      byTier,
+      vip_track_gaps: trackGaps,
+      tier_counts: tierCounts,
+    };
+
+    console.log('[room-health-summary] Returning response:', JSON.stringify(response, null, 2));
+
     return new Response(
-      JSON.stringify({
-        global,
-        byTier,
-        vip_track_gaps: trackGaps,
-        tier_counts: tierCounts,
-      }),
+      JSON.stringify(response),
       { 
         status: 200, 
         headers: { ...corsHeaders, "Content-Type": "application/json" } 
