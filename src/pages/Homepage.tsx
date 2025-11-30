@@ -93,31 +93,31 @@ const Homepage = () => {
 
       {/* Hero Section with Rainbow Background */}
       <section 
-        className="relative w-full min-h-[60vh] md:min-h-[70vh] bg-cover bg-top md:bg-[center_20%] flex flex-col items-center justify-center px-4 sm:px-6 md:px-8"
+        className="relative w-full min-h-[60vh] md:min-h-[70vh] bg-cover bg-top md:bg-[center_20%] flex flex-col items-start justify-end px-4 sm:px-6 md:px-8 pb-12"
         style={{ 
           backgroundImage: `url(${heroRainbowBg})`
         }}
       >
-        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
         
-        {/* Hero Content */}
-        <div className="relative z-10 text-center space-y-6 max-w-4xl">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-2xl leading-tight">
+        {/* Hero Content - Bottom Left */}
+        <div className="relative z-10 space-y-4 max-w-2xl">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-2xl leading-tight">
             Mercy Blade
           </h1>
-          <p className="text-xl md:text-2xl lg:text-3xl text-white/95 drop-shadow-lg font-medium">
+          <p className="text-lg md:text-xl lg:text-2xl text-white/95 drop-shadow-lg font-medium">
             Your journey to mastery begins here
           </p>
-          <p className="text-lg md:text-xl text-white/90 drop-shadow-lg">
+          <p className="text-base md:text-lg text-white/90 drop-shadow-lg">
             Hành trình chinh phục bắt đầu từ đây
           </p>
-          <div className="pt-4">
+          <div className="pt-2">
             <Button
               size="lg"
               onClick={() => navigate('/tiers')}
-              className="gap-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-2 border-white/40 text-lg px-8 py-6"
+              className="gap-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-2 border-white/40 px-6 py-5"
             >
-              Explore Tiers <ArrowRight className="w-5 h-5" />
+              Explore Tiers <ArrowRight className="w-4 h-4" />
             </Button>
           </div>
         </div>
