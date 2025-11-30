@@ -1332,6 +1332,20 @@ export type Database = {
             foreignKeyName: "responses_room_id_fkey"
             columns: ["room_id"]
             isOneToOne: false
+            referencedRelation: "room_health_view"
+            referencedColumns: ["room_id"]
+          },
+          {
+            foreignKeyName: "responses_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: false
+            referencedRelation: "room_health_view"
+            referencedColumns: ["slug"]
+          },
+          {
+            foreignKeyName: "responses_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: false
             referencedRelation: "rooms"
             referencedColumns: ["id"]
           },
@@ -1367,6 +1381,20 @@ export type Database = {
             foreignKeyName: "room_assignments_room_id_fkey"
             columns: ["room_id"]
             isOneToOne: false
+            referencedRelation: "room_health_view"
+            referencedColumns: ["room_id"]
+          },
+          {
+            foreignKeyName: "room_assignments_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: false
+            referencedRelation: "room_health_view"
+            referencedColumns: ["slug"]
+          },
+          {
+            foreignKeyName: "room_assignments_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: false
             referencedRelation: "rooms"
             referencedColumns: ["id"]
           },
@@ -1395,6 +1423,20 @@ export type Database = {
           updated_at?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "room_pins_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: true
+            referencedRelation: "room_health_view"
+            referencedColumns: ["room_id"]
+          },
+          {
+            foreignKeyName: "room_pins_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: true
+            referencedRelation: "room_health_view"
+            referencedColumns: ["slug"]
+          },
           {
             foreignKeyName: "room_pins_room_id_fkey"
             columns: ["room_id"]
@@ -2341,6 +2383,42 @@ export type Database = {
           new_feedback: number | null
           normal_priority: number | null
           total_feedback: number | null
+        }
+        Relationships: []
+      }
+      room_health_view: {
+        Row: {
+          audio_coverage: number | null
+          has_zero_audio: boolean | null
+          health_score: number | null
+          is_low_health: boolean | null
+          room_id: string | null
+          slug: string | null
+          tier: string | null
+          title_en: string | null
+          title_vi: string | null
+        }
+        Insert: {
+          audio_coverage?: never
+          has_zero_audio?: never
+          health_score?: never
+          is_low_health?: never
+          room_id?: string | null
+          slug?: string | null
+          tier?: string | null
+          title_en?: string | null
+          title_vi?: string | null
+        }
+        Update: {
+          audio_coverage?: never
+          has_zero_audio?: never
+          health_score?: never
+          is_low_health?: never
+          room_id?: string | null
+          slug?: string | null
+          tier?: string | null
+          title_en?: string | null
+          title_vi?: string | null
         }
         Relationships: []
       }
