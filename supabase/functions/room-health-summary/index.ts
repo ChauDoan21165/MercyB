@@ -356,14 +356,18 @@ serve(async (req) => {
     body = await req.json().catch(() => ({}));
   }
 
-  // 🔹 Tier filter from body or query string
+  // 🔹 Tier filter from body or query string (normalized)
   let tierFilter: string | null = null;
-  if (typeof body.tier === "string" && body.tier.trim()) {
-    tierFilter = body.tier.trim().toLowerCase();
+  if (req.method === "POST") {
+    if (typeof body.tier === "string" && body.tier.trim()) {
+      tierFilter = body.tier.trim().toLowerCase();
+    }
   } else if (req.method === "GET") {
     const url = new URL(req.url);
     const t = url.searchParams.get("tier");
-    if (t) tierFilter = t.toLowerCase();
+    if (t && t.trim()) {
+      tierFilter = t.trim().toLowerCase();
+    }
   }
 
   // 🔹 Deep scan flag comes ONLY from body.deepScan
@@ -383,10 +387,10 @@ serve(async (req) => {
   const trackGaps: any[] = [];
 
   try {
-    // Fetch rooms from database (just to get room IDs and tiers)
+    // Fetch rooms from database - include slug for JSON filename matching
     let roomsQuery = supabase
       .from("rooms")
-      .select("id, tier");
+      .select("id, tier, slug");
     
     if (tierFilter) {
       roomsQuery = roomsQuery.eq("tier", tierFilter);
@@ -404,7 +408,9 @@ serve(async (req) => {
     const validationResults: RoomValidationResult[] = [];
     
     for (const room of roomsData || []) {
-      const result = await validateRoom(room.id, room.tier || 'free');
+      // CRITICAL: Use slug (which matches JSON filenames) instead of UUID id
+      const jsonId = ((room as any).slug || room.id) as string;
+      const result = await validateRoom(jsonId, room.tier || 'free');
       validationResults.push(result);
       
       const tier = result.tier.toLowerCase();
@@ -468,6 +474,7 @@ serve(async (req) => {
       byTier,
       vip_track_gaps: trackGaps,
       tier_counts: tierCounts,
+      room_details: validationResults, // Per-room health details for advanced UI panels
     };
 
     console.log('[room-health-summary] Returning response:', JSON.stringify(response, null, 2));
