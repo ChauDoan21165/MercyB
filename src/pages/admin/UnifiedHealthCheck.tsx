@@ -607,7 +607,7 @@ export default function UnifiedHealthCheck() {
       setDeepScanResults([]);
       
       // Re-run quick scan to refresh counts
-      runQuickScan();
+      checkRoomHealth();
     } catch (error: any) {
       console.error('❌ Error removing phantom rooms:', error);
       toast({
@@ -650,7 +650,7 @@ export default function UnifiedHealthCheck() {
       });
 
       // Refresh the room counts
-      runQuickScan();
+      checkRoomHealth();
     }
 
     setLoading(false);
