@@ -12,7 +12,7 @@ export const ROOM_GRID_CLASS =
 export const VIRTUALIZATION_THRESHOLD = 50;
 
 // Audio and storage
-export const AUDIO_FOLDER = "public/audio";
+export const AUDIO_FOLDER = "audio";
 export const ROOM_AUDIO_BUCKET = "room-audio";
 
 // Slug validation pattern

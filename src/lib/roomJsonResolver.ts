@@ -76,7 +76,7 @@ export function getCanonicalPath(roomId: string): string {
  */
 export function validateRoomJson(data: any, roomId: string, filename: string): void {
   // Check if we got HTML instead of JSON
-  if (typeof data === 'string' && data.trim().startsWith('<!DOCTYPE') || data.trim().startsWith('<html')) {
+  if (typeof data === 'string' && (data.trim().startsWith('<!DOCTYPE') || data.trim().startsWith('<html'))) {
     throw new RoomJsonNotFoundError(
       roomId,
       filename,
