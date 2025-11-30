@@ -2928,18 +2928,24 @@ export default function UnifiedHealthCheck() {
               >
                 {loadingDesignScan ? 'Scanning...' : 'Scan Design'}
               </Button>
-              {scanningMissingAudio ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Scanning Audio...
-                </>
-              ) : (
-                <>
-                  <Music className="mr-2 h-4 w-4" />
-                  Scan Missing Audio Files (All Rooms)
-                </>
-              )}
-            </Button>
+              
+              <Button
+                onClick={scanMissingAudio}
+                disabled={loading || deepScanning || scanningMissingAudio}
+                className="bg-orange-600 hover:bg-orange-700"
+              >
+                {scanningMissingAudio ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Scanning Audio...
+                  </>
+                ) : (
+                  <>
+                    <Music className="mr-2 h-4 w-4" />
+                    Scan Missing Audio Files (All Rooms)
+                  </>
+                )}
+              </Button>
           </div>
         </div>
       </Card>
