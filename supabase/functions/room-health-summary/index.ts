@@ -27,104 +27,140 @@ serve(async (req) => {
 
   try {
     // Parse request parameters - support both POST (body) and GET (query params)
-    let tier = null;
-    let mode = null;
+    let tierFilter: string | null = null;
     
     if (req.method === "POST") {
       const body = await req.json().catch(() => ({}));
-      tier = body.tier ?? null;
-      mode = body.mode ?? null;
+      tierFilter = body.tier ?? null;
     } else if (req.method === "GET") {
       const url = new URL(req.url);
-      tier = url.searchParams.get("tier");
-      mode = url.searchParams.get("mode");
+      tierFilter = url.searchParams.get("tier");
     }
-    // Use room_health_view for health metrics
-    const { count: roomsZeroAudio, error: zeroAudioErr } = await supabase
+
+    // Normalize tier filter to lowercase if provided
+    if (tierFilter) {
+      tierFilter = tierFilter.toLowerCase();
+    }
+
+    // Build base query for rooms with health view data
+    let healthQuery = supabase
       .from("room_health_view")
-      .select("*", { count: "exact", head: true })
-      .eq("has_zero_audio", true);
+      .select("*");
+    
+    if (tierFilter) {
+      healthQuery = healthQuery.eq("tier", tierFilter);
+    }
 
-    if (zeroAudioErr) throw zeroAudioErr;
+    const { data: healthData, error: healthErr } = await healthQuery;
+    if (healthErr) throw healthErr;
 
-    const { count: roomsLowHealth, error: lowHealthErr } = await supabase
-      .from("room_health_view")
-      .select("*", { count: "exact", head: true })
-      .eq("is_low_health", true);
-
-    if (lowHealthErr) throw lowHealthErr;
-
-    // Check tier coverage by grouping rooms by tier
-    const { data: tierData, error: tierErr } = await supabase
+    // Build query for rooms with raw_json data
+    let roomsQuery = supabase
       .from("rooms")
-      .select("tier");
+      .select("id, tier, raw_json, entries");
+    
+    if (tierFilter) {
+      roomsQuery = roomsQuery.eq("tier", tierFilter);
+    }
 
-    if (tierErr) throw tierErr;
+    const { data: roomsData, error: roomsErr } = await roomsQuery;
+    if (roomsErr) throw roomsErr;
 
-    // Count rooms per tier
-    const tierCounts = (tierData || []).reduce((acc: Record<string, number>, room: any) => {
-      const tier = room.tier || 'unknown';
-      acc[tier] = (acc[tier] || 0) + 1;
-      return acc;
-    }, {});
+    // Initialize result structure
+    const byTier: Record<string, {
+      total_rooms: number;
+      rooms_zero_audio: number;
+      rooms_low_health: number;
+      rooms_missing_json: number;
+    }> = {};
 
-    // Check for VIP tiers with 0 rooms
-    const vipTiers = ['vip1', 'vip2', 'vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'];
+    const tierCounts: Record<string, number> = {};
     const trackGaps: any[] = [];
-
-    for (const tier of vipTiers) {
-      const count = tierCounts[tier] || 0;
-      if (count === 0) {
-        trackGaps.push({
-          tier,
-          title: tier.toUpperCase(),
+    
+    // Process each room to build tier-specific metrics
+    for (const room of roomsData || []) {
+      const tier = (room.tier || 'free').toLowerCase();
+      
+      // Initialize tier object if not exists
+      if (!byTier[tier]) {
+        byTier[tier] = {
           total_rooms: 0,
-          min_required: 1,
-          issue: "no_rooms_found",
-        });
+          rooms_zero_audio: 0,
+          rooms_low_health: 0,
+          rooms_missing_json: 0,
+        };
+      }
+      
+      // Count total rooms per tier
+      byTier[tier].total_rooms++;
+      tierCounts[tier] = (tierCounts[tier] || 0) + 1;
+      
+      // Check for missing or invalid raw_json
+      const hasValidRawJson = room.raw_json && typeof room.raw_json === 'object';
+      const hasEntries = hasValidRawJson && 
+        Array.isArray((room.raw_json as any).entries) && 
+        ((room.raw_json as any).entries.length > 0);
+      
+      if (!room.raw_json) {
+        byTier[tier].rooms_missing_json++;
+      } else if (!hasEntries) {
+        byTier[tier].rooms_missing_json++;
       }
     }
 
-    // Check for rooms with missing or invalid JSON
-    const { data: roomJsonRows, error: roomJsonErr } = await supabase
-      .from("rooms")
-      .select("id, tier, entries");
-
-    if (roomJsonErr) throw roomJsonErr;
-
-    const roomsMissingJson: any[] = [];
-
-    for (const r of roomJsonRows ?? []) {
-      // 1) No entries at all (null or undefined)
-      if (!r.entries) {
-        roomsMissingJson.push({
-          id: r.id,
-          tier: r.tier,
-          issue: "missing_entries",
-        });
-        continue;
+    // Process health view data for audio and health metrics
+    for (const healthRow of healthData || []) {
+      const tier = (healthRow.tier || 'free').toLowerCase();
+      
+      if (!byTier[tier]) {
+        byTier[tier] = {
+          total_rooms: 0,
+          rooms_zero_audio: 0,
+          rooms_low_health: 0,
+          rooms_missing_json: 0,
+        };
       }
-
-      // 2) Valid JSON but no entries array or empty
-      const parsed = r.entries as any;
-      if (!Array.isArray(parsed) || parsed.length === 0) {
-        roomsMissingJson.push({
-          id: r.id,
-          tier: r.tier,
-          issue: "no_entries",
-        });
+      
+      if (healthRow.has_zero_audio) {
+        byTier[tier].rooms_zero_audio++;
+      }
+      
+      if (healthRow.is_low_health) {
+        byTier[tier].rooms_low_health++;
       }
     }
+
+    // Check for VIP tiers with 0 rooms (only if not filtering by specific tier)
+    if (!tierFilter) {
+      const vipTiers = ['vip1', 'vip2', 'vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'];
+      for (const tier of vipTiers) {
+        const count = tierCounts[tier] || 0;
+        if (count === 0) {
+          trackGaps.push({
+            tier,
+            title: tier.toUpperCase(),
+            total_rooms: 0,
+            min_required: 1,
+            issue: "no_rooms_found",
+          });
+        }
+      }
+    }
+
+    // Calculate global totals
+    const global = {
+      total_rooms: Object.values(byTier).reduce((sum, t) => sum + t.total_rooms, 0),
+      rooms_zero_audio: Object.values(byTier).reduce((sum, t) => sum + t.rooms_zero_audio, 0),
+      rooms_low_health: Object.values(byTier).reduce((sum, t) => sum + t.rooms_low_health, 0),
+      rooms_missing_json: Object.values(byTier).reduce((sum, t) => sum + t.rooms_missing_json, 0),
+    };
 
     return new Response(
       JSON.stringify({
-        rooms_zero_audio: roomsZeroAudio || 0,
-        rooms_low_health: roomsLowHealth || 0,
-        vip_track_gaps_count: trackGaps.length,
+        global,
+        byTier,
         vip_track_gaps: trackGaps,
         tier_counts: tierCounts,
-        rooms_missing_json_count: roomsMissingJson.length,
-        rooms_missing_json: roomsMissingJson,
       }),
       { 
         status: 200, 
