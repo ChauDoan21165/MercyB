@@ -26,6 +26,19 @@ serve(async (req) => {
   }
 
   try {
+    // Parse request parameters - support both POST (body) and GET (query params)
+    let tier = null;
+    let mode = null;
+    
+    if (req.method === "POST") {
+      const body = await req.json().catch(() => ({}));
+      tier = body.tier ?? null;
+      mode = body.mode ?? null;
+    } else if (req.method === "GET") {
+      const url = new URL(req.url);
+      tier = url.searchParams.get("tier");
+      mode = url.searchParams.get("mode");
+    }
     // Use room_health_view for health metrics
     const { count: roomsZeroAudio, error: zeroAudioErr } = await supabase
       .from("room_health_view")
