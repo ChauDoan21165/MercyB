@@ -73,7 +73,7 @@ export const VirtualizedRoomGrid = ({
           size="sm"
           onClick={toggleColorMode}
           className="gap-2"
-          data-theme-toggle={colorMode ? "bw" : "mercy"}
+          data-theme-toggle={useColorTheme ? "color" : "blackWhite"}
           aria-label="Toggle room color mode"
         >
           <Palette className="w-4 h-4" aria-hidden="true" />
