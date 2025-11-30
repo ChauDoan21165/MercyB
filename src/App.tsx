@@ -137,8 +137,16 @@ const App = () => {
                 <BrowserRouter>
                   <AdminFloatingButton />
                   <ZoomControl />
-                  <HomeButton />
-                  <BackButton />
+                  
+                  <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur">
+                    <div className="mx-auto flex h-12 max-w-7xl items-center justify-between px-4">
+                      <div className="flex items-center gap-2">
+                        <HomeButton />
+                        <BackButton />
+                      </div>
+                    </div>
+                  </header>
+                  
                   <GlobalPlayingIndicator />
         <Routes>
           <Route path="/" element={<Homepage />} />
