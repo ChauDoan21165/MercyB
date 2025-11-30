@@ -2,23 +2,25 @@ import { ArrowLeft } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
+const ROOT_PATHS = ["/", "/admin"];
+
 export function BackButton() {
   const navigate = useNavigate();
-  const location = useLocation();
+  const { pathname } = useLocation();
 
-  // Hide back button on homepage where there is no meaningful "back" destination
-  if (location.pathname === "/") return null;
+  // Hide back button on root pages where there is no meaningful "back" destination
+  if (ROOT_PATHS.includes(pathname)) return null;
 
   return (
     <Button
       type="button"
-      variant="outline"
+      variant="ghost"
       size="sm"
       onClick={() => navigate(-1)}
-      className="fixed top-4 left-28 z-50 bg-background/95 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-200 border-2 hover:scale-105"
+      className="hover:bg-accent"
     >
       <ArrowLeft className="h-4 w-4 mr-2" />
-      <span className="font-semibold">Back</span>
+      <span className="font-medium">Back</span>
     </Button>
   );
 }

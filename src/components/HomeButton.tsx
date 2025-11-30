@@ -4,15 +4,16 @@ import { Button } from "@/components/ui/button";
 
 export function HomeButton() {
   return (
-    <Link to="/">
-      <Button
-        variant="outline"
-        size="sm"
-        className="fixed top-4 left-4 z-50 bg-background/95 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-200 border-2 hover:scale-105"
-      >
+    <Button
+      variant="ghost"
+      size="sm"
+      asChild
+      className="hover:bg-accent"
+    >
+      <Link to="/">
         <Home className="h-4 w-4 mr-2" />
-        <span className="font-semibold">Home</span>
-      </Button>
-    </Link>
+        <span className="font-medium">Home</span>
+      </Link>
+    </Button>
   );
 }
