@@ -15,6 +15,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { guardedCall } from "@/lib/guardedCall";
 import { normalizeTier, tierIdToLabel, type TierId } from "@/lib/constants/tiers";
+import { UiHealthPanel } from "@/components/admin/UiHealthPanel";
 
 interface RoomIssue {
   roomId: string;

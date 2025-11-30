@@ -17,6 +17,8 @@ import { RelatedRooms } from "@/components/RelatedRooms";
 import { MessageActions } from "@/components/MessageActions";
 import { usePoints } from "@/hooks/usePoints";
 import { RoomErrorState } from "@/components/RoomErrorState";
+import { useUiHealthReporter } from "@/hooks/useUiHealthReporter";
+
 
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useCredits } from "@/hooks/useCredits";
@@ -768,6 +770,12 @@ const ChatHub = () => {
     );
   };
 
+  // UI health reporter
+  useUiHealthReporter({
+    roomId: roomId || undefined,
+    path: location.pathname,
+  });
+
   // Get background color based on room tier
   const roomInfo = getRoomInfo(roomId || "");
   const getBgColor = () => {
@@ -856,7 +864,7 @@ const ChatHub = () => {
             {/* Title */}
             <div className="text-center space-y-1">
               <div className="flex items-center justify-center gap-2">
-                <h2 className="text-lg font-semibold text-gray-900">
+                <h2 data-room-title className="text-lg font-semibold text-gray-900">
                   {currentRoom.nameEn === currentRoom.nameVi 
                     ? currentRoom.nameEn 
                     : `${currentRoom.nameEn} / ${currentRoom.nameVi}`}

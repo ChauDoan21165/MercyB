@@ -1808,6 +1808,36 @@ export type Database = {
         }
         Relationships: []
       }
+      ui_health_issues: {
+        Row: {
+          created_at: string | null
+          details: Json | null
+          id: string
+          issue_type: string
+          path: string
+          room_id: string | null
+          severity: string
+        }
+        Insert: {
+          created_at?: string | null
+          details?: Json | null
+          id?: string
+          issue_type: string
+          path: string
+          room_id?: string | null
+          severity?: string
+        }
+        Update: {
+          created_at?: string | null
+          details?: Json | null
+          id?: string
+          issue_type?: string
+          path?: string
+          room_id?: string | null
+          severity?: string
+        }
+        Relationships: []
+      }
       uptime_checks: {
         Row: {
           checked_at: string | null
