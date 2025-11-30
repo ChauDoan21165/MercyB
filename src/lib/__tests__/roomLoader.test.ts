@@ -19,7 +19,7 @@ vi.mock("@/integrations/supabase/client", () => ({
 // 2) Mock accessControl (only care that canUserAccessRoom is used)
 const mockCanUserAccessRoom = vi.fn();
 
-vi.mock("@/lib/roomLoaderHelpers", () => ({
+vi.mock("../roomLoaderHelpers", () => ({
   processEntriesOptimized: vi.fn(() => ({
     merged: [{ slug: "dummy-entry" }],
     keywordMenu: { en: ["dummy"], vi: ["dummy"] },
@@ -311,5 +311,31 @@ describe("loadMergedRoom", () => {
 
     // We expect normalized ID to be used in the DB query
     expect(seenIds).toContain("english-writing-deep-dive-vip3II");
+  });
+
+  it("matches stable shape snapshot for a simple DB room", async () => {
+    // Use the default DB mocks from beforeEach
+    const result = await loadMergedRoom("test-room");
+
+    // Only snapshot the public shape ChatHub cares about
+    expect(result).toMatchInlineSnapshot(`
+      {
+        "audioBasePath": "audio/",
+        "keywordMenu": {
+          "en": [
+            "dummy",
+          ],
+          "vi": [
+            "dummy",
+          ],
+        },
+        "merged": [
+          {
+            "slug": "dummy-entry",
+          },
+        ],
+        "roomTier": "free",
+      }
+    `);
   });
 });

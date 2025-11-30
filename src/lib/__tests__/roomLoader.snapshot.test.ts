@@ -15,7 +15,7 @@ vi.mock("@/integrations/supabase/client", () => ({
   },
 }));
 
-vi.mock("@/lib/roomLoaderHelpers", () => ({
+vi.mock("../roomLoaderHelpers", () => ({
   processEntriesOptimized: vi.fn(() => ({
     merged: [{ slug: "dummy-entry", copy: { en: "EN", vi: "VI" } }],
     keywordMenu: { en: ["dummy"], vi: ["dummy"] },
