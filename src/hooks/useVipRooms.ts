@@ -24,12 +24,10 @@ export function useVipRooms(tierId: VipTierId): UseVipRoomsResult {
       setLoading(true);
       setError(null);
 
-      const tierFilter = `${tierId.toUpperCase()} / ${tierId.toUpperCase()}`;
-
       const { data, error: fetchError } = await supabase
         .from(ROOMS_TABLE)
         .select('*')
-        .ilike('tier', `%${tierFilter}%`)
+        .eq('tier', tierId.toLowerCase())
         .order('created_at', { ascending: false });
 
       if (fetchError) throw fetchError;
