@@ -186,8 +186,35 @@ export const loadMergedRoom = async (roomId: string) => {
   // 5. Try database first
   try {
     const dbResult = await loadFromDatabase(dbRoomId);
-
+ 
     if (dbResult) {
+      // Safety net: if keyword menu is empty but merged entries exist,
+      // rebuild keyword menu from entry-level keywordEn/keywordVi fields
+      if (
+        dbResult.keywordMenu &&
+        Array.isArray(dbResult.merged) &&
+        dbResult.merged.length > 0 &&
+        (!dbResult.keywordMenu.en || dbResult.keywordMenu.en.length === 0)
+      ) {
+        const fallbackEn: string[] = [];
+        const fallbackVi: string[] = [];
+ 
+        (dbResult.merged as any[]).forEach((entry) => {
+          const en = String(entry.keywordEn || entry.slug || entry.identifier || '').trim();
+          const vi = String(entry.keywordVi || entry.keywordEn || entry.slug || '').trim();
+ 
+          if (en) {
+            fallbackEn.push(en);
+            fallbackVi.push(vi);
+          }
+        });
+ 
+        dbResult.keywordMenu = {
+          en: fallbackEn,
+          vi: fallbackVi,
+        };
+      }
+ 
       const normalizedRoomTier = dbResult.roomTier ?? ('free' as TierId);
       console.log(
         '[roomLoader] Room tier:',
@@ -195,7 +222,7 @@ export const loadMergedRoom = async (roomId: string) => {
         '| Access check:',
         canUserAccessRoom(normalizedUserTier, normalizedRoomTier),
       );
-
+ 
       // 6. Enforce access control using authenticated tier (admins bypass)
       if (!isAdmin && !canUserAccessRoom(normalizedUserTier, normalizedRoomTier)) {
         console.warn(
@@ -206,7 +233,7 @@ export const loadMergedRoom = async (roomId: string) => {
         );
         throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
       }
-
+ 
       return dbResult;
     }
   } catch (dbError: any) {
