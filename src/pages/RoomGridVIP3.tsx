@@ -25,6 +25,7 @@ const VIP3_SPECIAL_ROOMS: Record<string, string> = {
 const RoomGridVIP3 = () => {
   const navigate = useNavigate();
   const { canAccessVIP3, isAdmin, loading: accessLoading } = useUserAccess();
+  const hasAccess = canAccessVIP3 || isAdmin;
   const { toast } = useToast();
   const { rooms, loading, error, refresh } = useVipRooms('vip3');
   const { useColorTheme, toggleColorMode } = useColorMode();
@@ -70,7 +71,7 @@ const RoomGridVIP3 = () => {
                 You are in VIP 3 area / Bạn đang ở khu vực VIP 3
               </span>
               
-              {isAdmin && (
+              {hasAccess && isAdmin && (
                 <Button
                   variant="outline"
                   size="sm"
@@ -103,8 +104,15 @@ const RoomGridVIP3 = () => {
             </div>
           </div>
 
+          {!hasAccess && !loading && (
+            <div className="text-center py-8 text-sm text-muted-foreground">
+              <p>You don't have access to VIP3 yet.</p>
+              <p className="text-xs mt-1">Bạn chưa có quyền truy cập khu vực VIP3.</p>
+            </div>
+          )}
+
           {/* VIP3 II Navigation Card */}
-          {canAccessVIP3 && (
+          {hasAccess && canAccessVIP3 && (
             <div className="mb-8">
               <Card 
                 className="p-6 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl border-2"
@@ -140,20 +148,22 @@ const RoomGridVIP3 = () => {
           )}
 
           {/* Color Mode Toggle */}
-          <div className="flex justify-end mb-4">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={toggleColorMode}
-              className="gap-2"
-              aria-label={useColorTheme ? 'Switch to black and white mode' : 'Switch to Mercy Blade colors'}
-            >
-              <Palette className="w-4 h-4" aria-hidden="true" />
-              {useColorTheme ? 'Black & White' : 'Mercy Blade Colors'}
-            </Button>
-          </div>
+          {hasAccess && (
+            <div className="flex justify-end mb-4">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={toggleColorMode}
+                className="gap-2"
+                aria-label={useColorTheme ? 'Switch to black and white mode' : 'Switch to Mercy Blade colors'}
+              >
+                <Palette className="w-4 h-4" aria-hidden="true" />
+                {useColorTheme ? 'Black & White' : 'Mercy Blade Colors'}
+              </Button>
+            </div>
+          )}
 
-          {loading && <div className="text-center py-8"><p className="text-muted-foreground">Loading VIP3 rooms...</p></div>}
+          {hasAccess && loading && <div className="text-center py-8"><p className="text-muted-foreground">Loading VIP3 rooms...</p></div>}
 
           {error && (
             <div className="text-center py-8">
@@ -162,7 +172,7 @@ const RoomGridVIP3 = () => {
           )}
 
           {/* Room Grid */}
-          {!loading && vip3Rooms.length > 0 && (
+          {hasAccess && !loading && vip3Rooms.length > 0 && (
             <div className={ROOM_GRID_CLASS}>
               {vip3Rooms.map((room, index) => {
                 const isSpecialRoom = VIP3_SPECIAL_ROOMS[room.id];

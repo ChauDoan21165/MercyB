@@ -13,7 +13,8 @@ import { usePrefetchRooms } from "@/hooks/usePrefetchRooms";
 
 const RoomGridVIP2 = () => {
   const navigate = useNavigate();
-  const { isAdmin, loading: accessLoading } = useUserAccess();
+  const { canAccessVIP2, isAdmin, loading: accessLoading } = useUserAccess();
+  const hasAccess = canAccessVIP2 || isAdmin;
   const { toast } = useToast();
   const { rooms, loading, error, refresh } = useVipRooms('vip2');
   
@@ -55,7 +56,7 @@ const RoomGridVIP2 = () => {
                 You are in VIP 2 area / Bạn đang ở khu vực VIP 2
               </span>
               
-              {isAdmin && (
+              {hasAccess && isAdmin && (
                 <Button
                   variant="outline"
                   size="sm"
@@ -88,9 +89,16 @@ const RoomGridVIP2 = () => {
 
           <VIPNavigation currentPage="vip2" />
 
-          {loading && <RoomGridSkeleton count={24} />}
+          {!hasAccess && !loading && (
+            <div className="text-center py-8 text-sm text-muted-foreground">
+              <p>You don't have access to VIP2 yet.</p>
+              <p className="text-xs mt-1">Bạn chưa có quyền truy cập khu vực VIP2.</p>
+            </div>
+          )}
 
-          {!loading && rooms && (
+          {hasAccess && loading && <RoomGridSkeleton count={24} />}
+
+          {hasAccess && !loading && rooms && (
             <VirtualizedRoomGrid
               rooms={rooms.map((room) => ({
                 id: room.id,
