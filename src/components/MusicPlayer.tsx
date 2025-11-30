@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Play, Pause, Volume2, Heart, Music, Shuffle } from 'lucide-react';
+import { useMusicPlayer } from '@/contexts/MusicPlayerContext';
 import { Button } from '@/components/ui/button';
 import {
   Select,
@@ -330,6 +331,16 @@ export const MusicPlayer = () => {
   const currentTrack = TRACKS.find(t => t.id === currentTrackId) || TRACKS[0];
   const currentPlaylist = getCurrentPlaylist();
   const displayTracks = currentPlaylist;
+
+  const { updateFromPlayer } = useMusicPlayer();
+
+  // Sync player state to context so GlobalPlayingIndicator can show it
+  useEffect(() => {
+    updateFromPlayer({
+      isPlaying,
+      currentTrackName: currentTrack?.name,
+    });
+  }, [isPlaying, currentTrack?.name, updateFromPlayer]);
 
   return (
     <div className="fixed bottom-0 left-0 right-0 h-[50px] bg-white border-t-2 border-black z-50">
