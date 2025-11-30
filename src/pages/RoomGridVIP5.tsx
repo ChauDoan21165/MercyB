@@ -17,6 +17,7 @@ const RoomGridVIP5 = () => {
   const { canAccessVIP5, isAdmin, loading: accessLoading } = useUserAccess();
   const { toast } = useToast();
   const { rooms, loading, error, refresh } = useVipRooms('vip5');
+  const hasAccess = canAccessVIP5 || isAdmin;
   
   // Prefetch first 5 rooms for instant navigation
   usePrefetchRooms(rooms || [], 5);
@@ -41,9 +42,6 @@ const RoomGridVIP5 = () => {
     );
   }
 
-  if (!canAccessVIP5 && !isAdmin) {
-    return null;
-  }
 
   return (
     <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip5))' }}>
@@ -86,9 +84,16 @@ const RoomGridVIP5 = () => {
           )}
         </div>
 
-        {loading && <RoomGridSkeleton count={24} />}
+        {!hasAccess && !loading && (
+          <div className="text-center py-8 text-sm text-muted-foreground">
+            <p>You don't have access to VIP5 yet.</p>
+            <p className="text-xs mt-1">Bạn chưa có quyền truy cập khu vực VIP5.</p>
+          </div>
+        )}
 
-        {!loading && rooms && (
+        {hasAccess && loading && <RoomGridSkeleton count={24} />}
+
+        {hasAccess && !loading && rooms && (
           <VirtualizedRoomGrid
             rooms={rooms}
             onRoomClick={(room) => navigate(`/room/${room.id}`)}
