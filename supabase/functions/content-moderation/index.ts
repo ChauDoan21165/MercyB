@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
+import { getUserFromAuthHeader } from '../_shared/security.ts';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -145,32 +146,24 @@ serve(async (req) => {
   }
 
   try {
+    // Require authentication and get user from token
+    const user = await getUserFromAuthHeader(req);
+    if (!user) {
+      return new Response(
+        JSON.stringify({ error: 'Authentication required' }),
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Extract userId from authenticated user (NEVER trust userId from request body)
+    const userId = user.id;
+
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    // Get userId from authenticated user, not from request body
-    const authHeader = req.headers.get('Authorization');
-    if (!authHeader) {
-      return new Response(
-        JSON.stringify({ error: "Authentication required" }),
-        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
-    }
-
-    const token = authHeader.replace('Bearer ', '').trim();
-    const { data: { user }, error: authError } = await supabase.auth.getUser(token);
-    
-    if (authError || !user) {
-      return new Response(
-        JSON.stringify({ error: "Invalid authentication" }),
-        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
-    }
-
-    // Extract content and roomId from body, but derive userId from authenticated user
+    // Extract content and roomId from body
     const { content, roomId, language = "en" } = await req.json();
-    const userId = user.id; // NEVER trust userId from request body
 
     if (!content) {
       return new Response(
