@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 
-export const useFeatureFlag = (key: string) => {
-  const [enabled, setEnabled] = useState<boolean>(false);
+export const useFeatureFlag = (key: string, defaultValue = false) => {
+  const [enabled, setEnabled] = useState<boolean>(defaultValue);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export const useFeatureFlag = (key: string) => {
           .from("feature_flags")
           .select("is_enabled")
           .eq("flag_key", key)
-          .single();
+          .maybeSingle();
 
         if (error) {
           // If missing, default to false — no crash in production
