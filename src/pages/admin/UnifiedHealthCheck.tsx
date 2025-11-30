@@ -221,24 +221,27 @@ export default function UnifiedHealthCheck() {
       rooms_low_health: number;
       rooms_missing_json: number;
     };
-    byTier: Record<string, {
-      total_rooms: number;
-      rooms_zero_audio: number;
-      rooms_low_health: number;
-      rooms_missing_json: number;
-    }>;
-    vip_track_gaps: Array<{
+    byTier: {
+      [tier: string]: {
+        total_rooms: number;
+        rooms_zero_audio: number;
+        rooms_low_health: number;
+        rooms_missing_json: number;
+      };
+    };
+    vip_track_gaps: {
       tier: string;
       title: string;
       total_rooms: number;
       min_required: number;
       issue: string;
-    }>;
+    }[];
     tier_counts: Record<string, number>;
   }
   
-  const [healthSummary, setHealthSummary] = useState<RoomHealthSummary | null>(null);
-  const [loadingSummary, setLoadingSummary] = useState(false);
+  const [summary, setSummary] = useState<RoomHealthSummary | null>(null);
+  const [summaryLoading, setSummaryLoading] = useState(true);
+  const [summaryError, setSummaryError] = useState<string | null>(null);
 
   const allTiers = [
     { value: "free", label: "Free" },
@@ -259,63 +262,43 @@ export default function UnifiedHealthCheck() {
   const tierDisplay = getTierDisplayName(selectedTier);
 
   useEffect(() => {
-    if (selectedTier.startsWith("kidslevel")) {
-      loadAvailableKidsRooms();
-    }
-  }, [selectedTier, selectedLevel]);
+    // Load summary for all tiers on initial mount
+    fetchSummary();
+  }, []);
 
-  useEffect(() => {
-    fetchHealthSummary();
-  }, [selectedTier]);
+  // Removed auto-run - user must manually trigger scans for deep checks
 
-  // Removed auto-run - user must manually trigger scans
-
-  const fetchHealthSummary = async () => {
-    setLoadingSummary(true);
-    setError(null);
+  const fetchSummary = async (tierOverride?: string) => {
+    setSummaryLoading(true);
+    setSummaryError(null);
     try {
-      console.log('[room-health-summary] Fetching health data for tier:', selectedTier);
-      
-      const { data, error } = await supabase.functions.invoke('room-health-summary', {
-        body: { tier: selectedTier }
+      const { data, error } = await supabase.functions.invoke("room-health-summary", {
+        body: tierOverride ? { tier: tierOverride } : {},
       });
-      
+
       if (error) {
-        console.error('[room-health-summary] Edge function error:', error);
-        setError(`Failed to load health summary: ${error.message || 'Unknown error'}`);
-        toast({
-          title: "Failed to load health summary",
-          description: error.message || "Could not fetch room health data",
-          variant: "destructive"
-        });
-        return;
+        throw error;
       }
 
-      console.log('[room-health-summary] Response data:', data);
-      
-      // Validate response structure
-      if (!data || typeof data !== 'object') {
-        console.error('[room-health-summary] Invalid response structure:', data);
-        setError('Invalid response from health summary endpoint');
-        toast({
-          title: "Invalid Response",
-          description: "The health summary endpoint returned invalid data",
-          variant: "destructive"
-        });
-        return;
+      if (!data) {
+        throw new Error("No data returned from room-health-summary");
       }
 
-      setHealthSummary(data);
+      console.log("[Health] raw room-health-summary response:", data);
+
+      const typed = data as RoomHealthSummary;
+
+      // Basic structure sanity check
+      if (!typed.global || !typed.byTier) {
+        throw new Error("Invalid health summary structure");
+      }
+
+      setSummary(typed);
     } catch (err: any) {
-      console.error('[room-health-summary] Exception:', err);
-      setError(`Error: ${err.message || 'An unexpected error occurred'}`);
-      toast({
-        title: "Failed to load health summary",
-        description: err.message || "An unexpected error occurred",
-        variant: "destructive"
-      });
+      console.error("[Health] room-health-summary error:", err);
+      setSummaryError(err?.message ?? "Unknown error");
     } finally {
-      setLoadingSummary(false);
+      setSummaryLoading(false);
     }
   };
 
@@ -2513,18 +2496,15 @@ export default function UnifiedHealthCheck() {
         </div>
       </div>
 
-      {/* Sync Health Summary Panel */}
-      <SyncHealthSummary />
-
       {/* Room Health Summary from Edge Function */}
-      {loadingSummary ? (
+      {summaryLoading ? (
         <Card className="p-6">
           <div className="flex items-center gap-2">
             <Loader2 className="h-4 w-4 animate-spin" />
             <span className="text-sm text-muted-foreground">Loading health summary...</span>
           </div>
         </Card>
-      ) : healthSummary && (
+      ) : summary ? (
         <Card className="p-6">
           <h2 className="text-xl font-semibold mb-4">Health Summary</h2>
           
@@ -2533,74 +2513,87 @@ export default function UnifiedHealthCheck() {
             <h3 className="text-sm font-medium text-muted-foreground mb-3">Global Metrics</h3>
             <div className="grid grid-cols-4 gap-4">
               <div className="p-4 bg-muted/50 rounded-lg">
-                <div className="text-2xl font-bold">{healthSummary.global.total_rooms}</div>
+                <div className="text-2xl font-bold">{summary.global?.total_rooms ?? 0}</div>
                 <div className="text-sm text-muted-foreground">Total Rooms</div>
               </div>
               <div className="p-4 bg-destructive/10 rounded-lg">
-                <div className="text-2xl font-bold text-destructive">{healthSummary.global.rooms_zero_audio}</div>
+                <div className="text-2xl font-bold text-destructive">{summary.global?.rooms_zero_audio ?? 0}</div>
                 <div className="text-sm text-muted-foreground">0% Audio</div>
               </div>
               <div className="p-4 bg-yellow-500/10 rounded-lg">
-                <div className="text-2xl font-bold text-yellow-600">{healthSummary.global.rooms_low_health}</div>
+                <div className="text-2xl font-bold text-yellow-600">{summary.global?.rooms_low_health ?? 0}</div>
                 <div className="text-sm text-muted-foreground">Low Health</div>
               </div>
               <div className="p-4 bg-orange-500/10 rounded-lg">
-                <div className="text-2xl font-bold text-orange-600">{healthSummary.global.rooms_missing_json}</div>
+                <div className="text-2xl font-bold text-orange-600">{summary.global?.rooms_missing_json ?? 0}</div>
                 <div className="text-sm text-muted-foreground">Missing JSON</div>
               </div>
             </div>
           </div>
 
           {/* Tier-Specific Metrics */}
-          {selectedTier && healthSummary.byTier && healthSummary.byTier[selectedTier.toLowerCase()] ? (
-            <div>
-              <h3 className="text-sm font-medium text-muted-foreground mb-3">
-                {tierDisplay} Tier Metrics
-              </h3>
-              <div className="grid grid-cols-4 gap-4">
-                <div className="p-4 bg-muted/50 rounded-lg">
-                  <div className="text-2xl font-bold">
-                    {healthSummary.byTier[selectedTier.toLowerCase()]?.total_rooms ?? 0}
+          {(() => {
+            const tierKey = selectedTier?.toLowerCase() ?? null;
+            const tierData = tierKey ? summary.byTier?.[tierKey] ?? null : null;
+
+            if (!tierKey) {
+              return null;
+            }
+
+            if (!tierData) {
+              return (
+                <Alert>
+                  <AlertCircle className="h-4 w-4" />
+                  <AlertDescription>
+                    No data available for {tierDisplay} tier yet. This tier may not have any rooms registered.
+                  </AlertDescription>
+                </Alert>
+              );
+            }
+
+            return (
+              <div>
+                <h3 className="text-sm font-medium text-muted-foreground mb-3">
+                  {tierDisplay} Tier Metrics
+                </h3>
+                <div className="grid grid-cols-4 gap-4">
+                  <div className="p-4 bg-muted/50 rounded-lg">
+                    <div className="text-2xl font-bold">
+                      {tierData.total_rooms ?? 0}
+                    </div>
+                    <div className="text-sm text-muted-foreground">Total Rooms</div>
                   </div>
-                  <div className="text-sm text-muted-foreground">Total Rooms</div>
-                </div>
-                <div className="p-4 bg-destructive/10 rounded-lg">
-                  <div className="text-2xl font-bold text-destructive">
-                    {healthSummary.byTier[selectedTier.toLowerCase()]?.rooms_zero_audio ?? 0}
+                  <div className="p-4 bg-destructive/10 rounded-lg">
+                    <div className="text-2xl font-bold text-destructive">
+                      {tierData.rooms_zero_audio ?? 0}
+                    </div>
+                    <div className="text-sm text-muted-foreground">0% Audio</div>
                   </div>
-                  <div className="text-sm text-muted-foreground">0% Audio</div>
-                </div>
-                <div className="p-4 bg-yellow-500/10 rounded-lg">
-                  <div className="text-2xl font-bold text-yellow-600">
-                    {healthSummary.byTier[selectedTier.toLowerCase()]?.rooms_low_health ?? 0}
+                  <div className="p-4 bg-yellow-500/10 rounded-lg">
+                    <div className="text-2xl font-bold text-yellow-600">
+                      {tierData.rooms_low_health ?? 0}
+                    </div>
+                    <div className="text-sm text-muted-foreground">Low Health</div>
                   </div>
-                  <div className="text-sm text-muted-foreground">Low Health</div>
-                </div>
-                <div className="p-4 bg-orange-500/10 rounded-lg">
-                  <div className="text-2xl font-bold text-orange-600">
-                    {healthSummary.byTier[selectedTier.toLowerCase()]?.rooms_missing_json ?? 0}
+                  <div className="p-4 bg-orange-500/10 rounded-lg">
+                    <div className="text-2xl font-bold text-orange-600">
+                      {tierData.rooms_missing_json ?? 0}
+                    </div>
+                    <div className="text-sm text-muted-foreground">Missing JSON</div>
                   </div>
-                  <div className="text-sm text-muted-foreground">Missing JSON</div>
                 </div>
               </div>
-            </div>
-          ) : selectedTier && (
-            <Alert>
-              <AlertCircle className="h-4 w-4" />
-              <AlertDescription>
-                No data available for {tierDisplay} tier yet. This tier may not have any rooms registered.
-              </AlertDescription>
-            </Alert>
-          )}
+            );
+          })()}
 
           {/* VIP Track Gaps */}
-          {healthSummary.vip_track_gaps && healthSummary.vip_track_gaps.length > 0 && (
+          {(summary.vip_track_gaps ?? []).length > 0 && (
             <div className="mt-6">
               <h3 className="text-sm font-medium text-muted-foreground mb-3">
-                VIP Tier Gaps ({healthSummary.vip_track_gaps.length})
+                VIP Tier Gaps {(summary.vip_track_gaps ?? []).length}
               </h3>
               <div className="flex flex-wrap gap-2">
-                {healthSummary.vip_track_gaps.map((gap) => (
+                {(summary.vip_track_gaps ?? []).map((gap) => (
                   <Badge key={gap.tier} variant="destructive">
                     {gap.title}: 0 rooms
                   </Badge>
@@ -2609,21 +2602,27 @@ export default function UnifiedHealthCheck() {
             </div>
           )}
         </Card>
+      ) : (
+        <Card className="p-6">
+          <p className="text-sm text-muted-foreground">
+            No health data available yet.
+          </p>
+        </Card>
       )}
 
       {/* Error State Display */}
-      {error && (
+      {(summaryError || error) && (
         <Card className="p-6 border-destructive">
           <Alert variant="destructive">
             <AlertCircle className="h-4 w-4" />
             <AlertDescription>
               <div className="space-y-2">
                 <p className="font-semibold">Health Summary Error</p>
-                <p className="text-sm">{error}</p>
+                <p className="text-sm">{summaryError || error}</p>
                 <Button 
                   size="sm" 
                   variant="outline" 
-                  onClick={fetchHealthSummary}
+                  onClick={() => fetchSummary(selectedTier)}
                   className="mt-2"
                 >
                   <RefreshCw className="h-3 w-3 mr-1" />
