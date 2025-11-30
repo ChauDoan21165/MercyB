@@ -16,6 +16,7 @@ import { WelcomeBack } from "@/components/WelcomeBack";
 import { RelatedRooms } from "@/components/RelatedRooms";
 import { MessageActions } from "@/components/MessageActions";
 import { usePoints } from "@/hooks/usePoints";
+import { RoomErrorState } from "@/components/RoomErrorState";
 
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useCredits } from "@/hooks/useCredits";
@@ -288,11 +289,18 @@ const ChatHub = () => {
       } catch (error: any) {
         console.error('Failed to load room data', error);
         
-        // Handle specific error cases
-        if (error?.message === 'AUTHENTICATION_REQUIRED') {
+        // Handle specific error cases with RoomErrorState component
+        const errorMessage = String(error?.message || error);
+        let errorCode = undefined;
+        
+        if (errorMessage.includes("AUTHENTICATION_REQUIRED")) {
+          errorCode = "AUTHENTICATION_REQUIRED";
           setShowSignupPrompt(true);
-        } else if (error?.message === 'ACCESS_DENIED_INSUFFICIENT_TIER') {
+        } else if (errorMessage.includes("ACCESS_DENIED_INSUFFICIENT_TIER")) {
+          errorCode = "ACCESS_DENIED_INSUFFICIENT_TIER";
           setShowAccessDenied(true);
+        } else if (errorMessage.includes("ROOM_NOT_FOUND")) {
+          errorCode = "ROOM_NOT_FOUND";
         } else {
           toast({
             title: 'Failed to load room',
