@@ -928,8 +928,9 @@ export default function UnifiedHealthCheck() {
               message: `Missing JSON file at public/data/${r.id}.json`,
               httpStatus: phantomStatus,
               url: phantomUrl,
-            details: r.error
-          }]
+              details: r.error
+            }]
+          };
         }));
         
         // Combine successful and failed scans for display (incremental update)
