@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -20,53 +19,8 @@ import {
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { ScrollArea } from "@/components/ui/scroll-area";
-
-// ============= TYPES =============
-
-interface RoomIssue {
-  code: string;
-  severity: "error" | "warning" | "info";
-  message: string;
-  context?: string;
-}
-
-interface RoomValidationResult {
-  room_id: string;
-  tier: string;
-  slug?: string;
-  issues: RoomIssue[];
-  health_score: number;
-  audio_coverage: number;
-  json_missing?: boolean;
-  json_invalid?: boolean;
-  has_zero_audio?: boolean;
-  is_low_health?: boolean;
-}
-
-interface TierStats {
-  total_rooms: number;
-  rooms_zero_audio: number;
-  rooms_low_health: number;
-  rooms_missing_json: number;
-}
-
-interface VipTrackGap {
-  tier: string;
-  title: string;
-  total_rooms: number;
-  min_required: number;
-  issue: string;
-}
-
-interface RoomHealthSummary {
-  global: TierStats;
-  byTier: Record<string, TierStats>;
-  vip_track_gaps: VipTrackGap[];
-  tier_counts: Record<string, number>;
-  room_details?: RoomValidationResult[];
-  fatal_error?: boolean;
-  error_message?: string;
-}
+import { useRoomHealth } from "@/hooks/useRoomHealth";
+import type { RoomValidationResult } from "@/hooks/useRoomHealth";
 
 // ============= CONSTANTS =============
 
@@ -112,70 +66,48 @@ function getSeverityIcon(severity: "error" | "warning" | "info") {
 
 export default function RoomHealthDashboard() {
   const { toast } = useToast();
-  const [loading, setLoading] = useState(false);
-  const [summary, setSummary] = useState<RoomHealthSummary | null>(null);
   const [selectedTier, setSelectedTier] = useState<string>("all");
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
-  // Fetch health summary from edge function
-  const fetchHealthSummary = async (tierFilter?: string) => {
-    setLoading(true);
-    try {
-      const body = tierFilter && tierFilter !== "all" ? { tier: tierFilter } : {};
-      
-      const { data, error } = await supabase.functions.invoke("room-health-summary", {
-        body,
-      });
-
-      if (error) {
-        throw error;
-      }
-
-      if (!data) {
-        throw new Error("No data returned from room-health-summary");
-      }
-
-      const typed = data as RoomHealthSummary;
-
-      // Check for fatal errors
-      if (typed.fatal_error) {
-        throw new Error(typed.error_message || "Unknown error occurred");
-      }
-
-      // Validate structure
-      if (!typed.global || !typed.byTier) {
-        throw new Error("Invalid health summary structure");
-      }
-
-      setSummary(typed);
-      setLastUpdated(new Date());
-      
-      toast({
-        title: "Health data loaded",
-        description: `Scanned ${typed.global.total_rooms} rooms successfully`,
-      });
-    } catch (err: any) {
-      console.error("[RoomHealthDashboard] Error fetching summary:", err);
-      toast({
-        title: "Failed to fetch health data",
-        description: err?.message || "Unknown error",
-        variant: "destructive",
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Load on mount
-  useEffect(() => {
-    fetchHealthSummary(selectedTier);
-  }, []);
+  // Use the room health hook
+  const { data: summary, loading, error, refetch } = useRoomHealth({
+    tier: selectedTier,
+    autoFetch: false,
+  });
 
   // Handle tier change
   const handleTierChange = (value: string) => {
     setSelectedTier(value);
-    fetchHealthSummary(value);
   };
+
+  // Handle refresh
+  const handleRefresh = async () => {
+    await refetch();
+    setLastUpdated(new Date());
+    
+    if (summary && !error) {
+      toast({
+        title: "Health data loaded",
+        description: `Scanned ${summary.global.total_rooms} rooms successfully`,
+      });
+    }
+  };
+
+  // Show error toast when error changes
+  useEffect(() => {
+    if (error) {
+      toast({
+        title: "Failed to fetch health data",
+        description: error,
+        variant: "destructive",
+      });
+    }
+  }, [error, toast]);
+
+  // Fetch data on tier change
+  useEffect(() => {
+    handleRefresh();
+  }, [selectedTier]);
 
   // Get filtered room details
   const filteredRooms = summary?.room_details?.filter(room => {
@@ -218,7 +150,7 @@ export default function RoomHealthDashboard() {
             </Select>
             
             <Button 
-              onClick={() => fetchHealthSummary(selectedTier)}
+              onClick={handleRefresh}
               disabled={loading}
               variant="outline"
             >
@@ -457,7 +389,7 @@ export default function RoomHealthDashboard() {
                 <Database className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
                 <h3 className="text-lg font-semibold text-foreground mb-2">No health data loaded</h3>
                 <p className="text-muted-foreground mb-4">Click refresh to scan room health</p>
-                <Button onClick={() => fetchHealthSummary(selectedTier)}>
+                <Button onClick={handleRefresh}>
                   <RefreshCw className="h-4 w-4 mr-2" />
                   Load Health Data
                 </Button>
