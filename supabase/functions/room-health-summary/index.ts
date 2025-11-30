@@ -59,10 +59,10 @@ serve(async (req) => {
       throw healthErr;
     }
 
-    // Build query for rooms with raw_json data
+    // Build query for rooms with entries data
     let roomsQuery = supabase
       .from("rooms")
-      .select("id, tier, raw_json");
+      .select("id, tier, entries");
     
     if (tierFilter) {
       roomsQuery = roomsQuery.eq("tier", tierFilter);
@@ -105,17 +105,9 @@ serve(async (req) => {
       byTier[tier].total_rooms++;
       tierCounts[tier] = (tierCounts[tier] || 0) + 1;
       
-      // Check for missing or invalid raw_json
-      if (!room.raw_json) {
+      // Check for missing or invalid entries
+      if (!room.entries || !Array.isArray(room.entries) || room.entries.length === 0) {
         byTier[tier].rooms_missing_json++;
-      } else {
-        // Validate raw_json structure
-        const rawJson = room.raw_json as any;
-        const hasValidEntries = Array.isArray(rawJson.entries) && rawJson.entries.length > 0;
-        
-        if (!hasValidEntries) {
-          byTier[tier].rooms_missing_json++;
-        }
       }
     }
 
