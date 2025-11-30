@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -92,13 +92,15 @@ const SectionTile = ({
   description, 
   icon: Icon, 
   onClick,
-  metric 
+  metric,
+  subtext
 }: { 
   title: string;
   description: string;
   icon: any;
   onClick: () => void;
   metric?: string;
+  subtext?: string;
 }) => (
   <Card 
     className="cursor-pointer hover:border-primary transition-all"
@@ -115,6 +117,9 @@ const SectionTile = ({
     </CardHeader>
     <CardContent className="pt-0">
       <p className="text-xs text-muted-foreground">{description}</p>
+      {subtext && (
+        <p className="text-xs text-muted-foreground mt-1 italic">{subtext}</p>
+      )}
     </CardContent>
   </Card>
 );
@@ -138,15 +143,7 @@ const AdminDashboard = () => {
     moderationQueue: 0,
   });
 
-  useEffect(() => {
-    checkAdminAccess();
-    const interval = setInterval(() => {
-      fetchLiveMetrics();
-    }, 5000); // Refresh every 5 seconds
-    return () => clearInterval(interval);
-  }, []);
-
-  const checkAdminAccess = async () => {
+  const checkAdminAccess = useCallback(async () => {
     try {
       const { data: { user } } = await supabase.auth.getUser();
       
@@ -183,9 +180,9 @@ const AdminDashboard = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [navigate, toast]);
 
-  const fetchLiveMetrics = async () => {
+  const fetchLiveMetrics = useCallback(async () => {
     try {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
@@ -194,79 +191,58 @@ const AdminDashboard = () => {
       const monthStart = new Date(today.getFullYear(), today.getMonth(), 1);
       const monthStartISO = monthStart.toISOString();
 
-      // Users metrics
-      const { count: totalUsers } = await supabase
-        .from("profiles")
-        .select("*", { count: "exact", head: true });
+      // Parallelize all queries for speed
+      const [
+        usersResult,
+        newUsersResult,
+        activeUsersResult,
+        roomsResult,
+        paymentsTodayResult,
+        paymentsMonthResult,
+        pendingPayoutsResult,
+        activeSubscriptionsResult,
+        moderationQueueResult,
+      ] = await Promise.all([
+        supabase.from("profiles").select("*", { count: "exact", head: true }),
+        supabase.from("profiles").select("*", { count: "exact", head: true }).gte("created_at", todayISO),
+        supabase.from("user_sessions").select("*", { count: "exact", head: true }).gte("last_activity", todayISO),
+        supabase.from("rooms").select("*", { count: "exact", head: true }),
+        supabase.from("payment_transactions").select("amount").gte("created_at", todayISO).eq("status", "completed"),
+        supabase.from("payment_transactions").select("amount").gte("created_at", monthStartISO).eq("status", "completed"),
+        supabase.from("payment_proof_submissions").select("*", { count: "exact", head: true }).eq("status", "pending"),
+        supabase.from("user_subscriptions").select("*", { count: "exact", head: true }).eq("status", "active"),
+        supabase.from("user_moderation_violations").select("*", { count: "exact", head: true }).is("action_taken", null), // Fixed: check for pending (null) violations
+      ]);
 
-      const { count: newUsersToday } = await supabase
-        .from("profiles")
-        .select("*", { count: "exact", head: true })
-        .gte("created_at", todayISO);
-
-      const { count: activeToday } = await supabase
-        .from("user_sessions")
-        .select("*", { count: "exact", head: true })
-        .gte("last_activity", todayISO);
-
-      // Rooms metrics
-      const { count: totalRooms } = await supabase
-        .from("rooms")
-        .select("*", { count: "exact", head: true });
-
-      // Revenue metrics
-      const { data: paymentsToday } = await supabase
-        .from("payment_transactions")
-        .select("amount")
-        .gte("created_at", todayISO)
-        .eq("status", "completed");
-
-      const { data: paymentsMonth } = await supabase
-        .from("payment_transactions")
-        .select("amount")
-        .gte("created_at", monthStartISO)
-        .eq("status", "completed");
-
-      const { count: pendingPayouts } = await supabase
-        .from("payment_proof_submissions")
-        .select("*", { count: "exact", head: true })
-        .eq("status", "pending");
-
-      // Active subscriptions
-      const { count: activeSubscriptions } = await supabase
-        .from("user_subscriptions")
-        .select("*", { count: "exact", head: true })
-        .eq("status", "active");
-
-      // Moderation queue
-      const { count: moderationQueue } = await supabase
-        .from("user_moderation_violations")
-        .select("*", { count: "exact", head: true })
-        .eq("action_taken", "warn");
-
-      const revenueToday = paymentsToday?.reduce((sum, p) => sum + Number(p.amount), 0) || 0;
-      const revenueMonth = paymentsMonth?.reduce((sum, p) => sum + Number(p.amount), 0) || 0;
+      const revenueToday = paymentsTodayResult.data?.reduce((sum, p) => sum + Number(p.amount), 0) || 0;
+      const revenueMonth = paymentsMonthResult.data?.reduce((sum, p) => sum + Number(p.amount), 0) || 0;
 
       // TODO: Calculate roomsZeroAudio and roomsLowHealth from health check endpoint
 
       setMetrics({
-        totalUsers: totalUsers || 0,
-        newUsersToday: newUsersToday || 0,
-        activeToday: activeToday || 0,
-        totalRooms: totalRooms || 0,
+        totalUsers: usersResult.count || 0,
+        newUsersToday: newUsersResult.count || 0,
+        activeToday: activeUsersResult.count || 0,
+        totalRooms: roomsResult.count || 0,
         roomsZeroAudio: 0, // TODO: Wire up from health check
         roomsLowHealth: 0, // TODO: Wire up from health check
         revenueToday,
         revenueMonth,
-        pendingPayouts: pendingPayouts || 0,
-        activeSubscriptions: activeSubscriptions || 0,
+        pendingPayouts: pendingPayoutsResult.count || 0,
+        activeSubscriptions: activeSubscriptionsResult.count || 0,
         systemReadiness: 92, // TODO: Wire up from system-metrics
-        moderationQueue: moderationQueue || 0,
+        moderationQueue: moderationQueueResult.count || 0,
       });
     } catch (error) {
       console.error("Error fetching live metrics:", error);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    checkAdminAccess();
+    const interval = setInterval(fetchLiveMetrics, 5000); // Refresh every 5 seconds
+    return () => clearInterval(interval);
+  }, [checkAdminAccess, fetchLiveMetrics]);
 
   if (loading) {
     return (
@@ -471,7 +447,7 @@ const AdminDashboard = () => {
               title="Subscription Tiers"
               description="Manage tier pricing & features"
               icon={Settings}
-              onClick={() => navigate("/admin/tiers")}
+              onClick={() => navigate("/tiers")}
               metric={`${metrics.activeSubscriptions} active`}
             />
           </div>
@@ -577,12 +553,6 @@ const AdminDashboard = () => {
               icon={FileText}
               onClick={() => navigate("/admin/specification")}
             />
-            <SectionTile
-              title="Feature Flags"
-              description="Toggle experimental features"
-              icon={Settings}
-              onClick={() => navigate("/admin/feature-flags")}
-            />
             <Card className="opacity-60">
               <CardHeader className="pb-3">
                 <CardTitle className="text-base flex items-center gap-2">
@@ -594,6 +564,84 @@ const AdminDashboard = () => {
                 <p className="text-xs text-muted-foreground">Coming soon</p>
               </CardContent>
             </Card>
+          </div>
+        </section>
+
+        {/* 9. Audit & Logs */}
+        <section>
+          <h2 className="text-lg font-semibold mb-4">📋 Audit & Logs</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <SectionTile
+              title="Audit Log"
+              description="Admin actions & changes"
+              icon={FileText}
+              onClick={() => navigate("/admin/security")}
+              subtext="TODO: wire up audit_logs count"
+            />
+            <SectionTile
+              title="Security Events"
+              description="Login attempts, violations"
+              icon={Shield}
+              onClick={() => navigate("/admin/security")}
+              subtext="TODO: wire up security_events count"
+            />
+          </div>
+        </section>
+
+        {/* 10. Backup & Data Safety */}
+        <section>
+          <h2 className="text-lg font-semibold mb-4">💾 Backup & Data Safety</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Card className="opacity-60">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-base flex items-center gap-2">
+                  <Database className="h-4 w-4" />
+                  Backups & Snapshots
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-xs text-muted-foreground">DB backup & restore</p>
+                <p className="text-xs text-muted-foreground mt-1 italic">TODO: wire up backup timestamp</p>
+              </CardContent>
+            </Card>
+            <Card className="opacity-60">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-base flex items-center gap-2">
+                  <FileText className="h-4 w-4" />
+                  Data Export
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-xs text-muted-foreground">Export rooms, users, logs</p>
+                <p className="text-xs text-muted-foreground mt-1 italic">Coming soon</p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* 11. Compliance & Policy */}
+        <section>
+          <h2 className="text-lg font-semibold mb-4">⚖️ Compliance & Policy</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <SectionTile
+              title="Terms & Privacy"
+              description="Legal documents & versions"
+              icon={FileText}
+              onClick={() => navigate("/terms")}
+              subtext="Active: v1.0"
+            />
+            <SectionTile
+              title="Privacy Policy"
+              description="View privacy terms"
+              icon={Shield}
+              onClick={() => navigate("/privacy")}
+            />
+            <SectionTile
+              title="Refund Policy"
+              description="View refund terms"
+              icon={DollarSign}
+              onClick={() => navigate("/refund")}
+            />
           </div>
         </section>
       </div>
