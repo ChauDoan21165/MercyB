@@ -82,7 +82,7 @@ const RoomGridVIP2 = () => {
                 Phòng Học VIP2
               </p>
               <p className="text-sm text-gray-600">
-                {loading ? 'Loading...' : `Showing ${rooms.length} rooms`}
+                {loading ? 'Loading...' : `Showing ${(rooms ?? []).length} rooms`}
               </p>
             </div>
           </div>
