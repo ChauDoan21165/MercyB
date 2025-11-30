@@ -95,6 +95,9 @@ import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import Refund from "./pages/Refund";
 import { OnboardingFlow } from "./components/onboarding/OnboardingFlow";
+import FeatureFlags from "./pages/admin/FeatureFlags";
+import AudioAssetAuditor from "./pages/admin/AudioAssetAuditor";
+import UserSupportConsole from "./pages/admin/UserSupportConsole";
 
 const queryClient = new QueryClient();
 
@@ -224,6 +227,9 @@ const App = () => {
           <Route path="/admin/music-manager" element={<AdminRoute><MusicManager /></AdminRoute>} />
           <Route path="/admin/audit-log" element={<AdminRoute><AuditLog /></AdminRoute>} />
           <Route path="/admin/ai-usage" element={<AdminRoute><AIUsage /></AdminRoute>} />
+          <Route path="/admin/feature-flags" element={<AdminRoute><FeatureFlags /></AdminRoute>} />
+          <Route path="/admin/audio-audit" element={<AdminRoute><AudioAssetAuditor /></AdminRoute>} />
+          <Route path="/admin/user-support" element={<AdminRoute><UserSupportConsole /></AdminRoute>} />
           <Route path="/tier-map" element={<TierMap />} />
           <Route path="/audio-upload" element={<AudioUpload />} />
           <Route path="/kids-validation" element={<KidsRoomValidation />} />
