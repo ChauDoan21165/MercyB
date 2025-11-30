@@ -80,7 +80,11 @@ function stripFolder(path: string): string {
 
 function ensureSeverity(entry: any, issues: string[], index: number) {
   const key = "severity_level";
-  if (entry[key] == null) return;
+  if (entry[key] == null) {
+    entry[key] = 3;
+    issues.push(`entry[${index}]: missing severity_level -> set to 3`);
+    return;
+  }
 
   const raw = Number(entry[key]);
   if (Number.isNaN(raw)) {
@@ -103,10 +107,8 @@ function ensureAllEntry(roomJson: any, issues: string[]) {
   const entries = roomJson.entries;
   const hasAll = entries.some((e: any) => {
     if (!e || typeof e !== "object") return false;
+    // Stricter detection: require exact slug match
     if (e.slug === "all" || e.slug === "all-entry") return true;
-    if (Array.isArray(e.keywords_en) && e.keywords_en.map((s: string) => s.toLowerCase()).includes("all")) {
-      return true;
-    }
     return false;
   });
 
@@ -138,7 +140,7 @@ function ensureAllEntry(roomJson: any, issues: string[]) {
   };
 
   roomJson.entries.push(newEntry);
-  issues.push("added All entry");
+  issues.push("added All entry (no audio yet)");
 }
 
 function kebabCase(str: string): string {
@@ -175,6 +177,17 @@ function transformRoomJson(roomJson: any): { fixed: any; issues: string[]; healt
   if (!Array.isArray(json.entries)) {
     json.entries = [];
     issues.push("entries: created empty array");
+  }
+
+  // Protect against huge rooms
+  if (json.entries.length > 1000) {
+    issues.push("too many entries (>1000), skipping auto-fix");
+    return {
+      fixed: json,
+      issues,
+      health_score: 0,
+      audio_coverage: 0,
+    };
   }
 
   // Root bilingual fields
@@ -268,12 +281,11 @@ async function processRoom(room: RoomRow): Promise<FixSummary> {
     transformRoomJson(parsed);
   issues.push(...fixIssues);
 
-  const updatedRaw = JSON.stringify(fixed);
-
+  // Store as jsonb object directly (not stringified)
   const { error } = await supabase
     .from("rooms")
     .update({
-      raw_json: updatedRaw,
+      raw_json: fixed,
       health_score,
       audio_coverage,
       updated_at: new Date().toISOString(),
