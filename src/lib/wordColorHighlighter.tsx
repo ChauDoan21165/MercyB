@@ -130,6 +130,10 @@ export function highlightShortTitle(
   titleIndex: number = 0,
   isVietnamese: boolean = false
 ): JSX.Element[] {
+  if (!text) {
+    return [<span key="empty-title">Untitled</span>];
+  }
+  
   const segments = text.split(/(\s+)/);
   const result: JSX.Element[] = [];
   const keywordIndices: number[] = [];
