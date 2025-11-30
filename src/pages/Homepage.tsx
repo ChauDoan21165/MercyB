@@ -99,6 +99,28 @@ const Homepage = () => {
         }}
       >
         <div className="absolute inset-0 bg-black/10"></div>
+        
+        {/* Hero Content */}
+        <div className="relative z-10 text-center space-y-6 max-w-4xl">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-2xl leading-tight">
+            Mercy Blade
+          </h1>
+          <p className="text-xl md:text-2xl lg:text-3xl text-white/95 drop-shadow-lg font-medium">
+            Your journey to mastery begins here
+          </p>
+          <p className="text-lg md:text-xl text-white/90 drop-shadow-lg">
+            Hành trình chinh phục bắt đầu từ đây
+          </p>
+          <div className="pt-4">
+            <Button
+              size="lg"
+              onClick={() => navigate('/tiers')}
+              className="gap-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-2 border-white/40 text-lg px-8 py-6"
+            >
+              Explore Tiers <ArrowRight className="w-5 h-5" />
+            </Button>
+          </div>
+        </div>
       </section>
 
       {/* Search box - top right corner */}
