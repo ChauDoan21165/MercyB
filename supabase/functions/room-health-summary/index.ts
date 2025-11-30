@@ -94,10 +94,103 @@ const supabase = createClient(supabaseUrl, serviceRoleKey, {
   auth: { persistSession: false },
 });
 
-// Types imported from shared module
+// ============= MERCY BLADE JSON TYPES (ENHANCED) =============
+
+interface BilingualText {
+  en: string;
+  vi: string;
+}
+
+interface RoomEntry {
+  slug: string;
+  keywords_en: string[];
+  keywords_vi: string[];
+  copy: BilingualText;
+  tags: string[];
+  severity_level: number;
+  audio?: string;  // Optional for some entries
+}
+
+interface RoomJson {
+  id: string;
+  tier: string;
+  domain: string;
+  title: BilingualText;
+  content?: BilingualText;  // Optional intro/description
+  entries: RoomEntry[];
+  keywords_en?: string[];
+  keywords_vi?: string[];
+  meta?: {
+    created_at?: string;
+    updated_at?: string;
+    entry_count?: number;
+  };
+}
+
+// Helper: Validate bilingual text structure
+function validateBilingualText(field: string, value: any, issues: RoomIssue[]): void {
+  if (!value || typeof value !== 'object') {
+    issues.push({
+      code: 'bilingual_missing',
+      severity: 'error',
+      message: `${field} must be an object with {en, vi} fields`,
+      context: field,
+    });
+    return;
+  }
+  
+  if (!value.en || typeof value.en !== 'string' || value.en.trim().length === 0) {
+    issues.push({
+      code: 'bilingual_missing',
+      severity: 'error',
+      message: `${field}.en is missing or empty`,
+      context: `${field}.en`,
+    });
+  }
+  
+  if (!value.vi || typeof value.vi !== 'string' || value.vi.trim().length === 0) {
+    issues.push({
+      code: 'bilingual_missing',
+      severity: 'error',
+      message: `${field}.vi is missing or empty`,
+      context: `${field}.vi`,
+    });
+  }
+}
+
+// Helper: Validate audio filename pattern
+function validateAudioFilename(roomId: string, filename: string, entryIndex: number, issues: RoomIssue[]): void {
+  // Audio should be a simple filename, not a path
+  if (filename.includes('/')) {
+    issues.push({
+      code: 'audio_path_has_folder',
+      severity: 'warning',
+      message: `Entry ${entryIndex} audio contains folder path (should be filename only)`,
+      context: `entries[${entryIndex}].audio`,
+    });
+    return;
+  }
+  
+  // Expected pattern: {room_id}_{number}_{lang}.mp3 or {room_id}_all_{lang}.mp3
+  const expectedPatterns = [
+    new RegExp(`^${roomId.replace(/_/g, '_')}_(\\d+|all)_(en|vi)\\.mp3$`),
+    new RegExp(`^[a-z0-9_]+_(\\d+|all)_(en|vi)\\.mp3$`), // More lenient pattern
+  ];
+  
+  const matchesPattern = expectedPatterns.some(pattern => pattern.test(filename));
+  
+  if (!matchesPattern) {
+    issues.push({
+      code: 'audio_filename_invalid',
+      severity: 'info',
+      message: `Entry ${entryIndex} audio filename doesn't match expected pattern: {room_id}_{number|all}_{en|vi}.mp3`,
+      context: `entries[${entryIndex}].audio = "${filename}"`,
+    });
+  }
+}
 
 // Helper: Validate JSON structure following Mercy Blade standard
-function validateRoomJson(roomId: string, jsonData: Partial<MercyBladeRoomJson>): RoomIssue[] {
+function validateRoomJson(roomId: string, jsonData: any): RoomIssue[] {
   const issues: RoomIssue[] = [];
   
   // Check root structure
@@ -110,60 +203,61 @@ function validateRoomJson(roomId: string, jsonData: Partial<MercyBladeRoomJson>)
     return issues;
   }
   
-  // Check required root fields - COMPLETE MERCY BLADE SPEC
-  if (!jsonData.id) {
+  // ============= ROOT FIELD VALIDATION =============
+  
+  // 1. ID field (required, should match filename)
+  if (!jsonData.id || typeof jsonData.id !== 'string' || jsonData.id.trim().length === 0) {
     issues.push({
       code: 'missing_id',
       severity: 'error',
-      message: 'Missing root field: id',
+      message: 'Missing or invalid root field: id',
+      context: 'id',
+    });
+  } else if (jsonData.id !== roomId) {
+    issues.push({
+      code: 'schema_invalid_field',
+      severity: 'warning',
+      message: `JSON id "${jsonData.id}" does not match filename "${roomId}"`,
+      context: 'id',
     });
   }
   
-  if (!jsonData.tier) {
+  // 2. Tier field (required)
+  if (!jsonData.tier || typeof jsonData.tier !== 'string' || jsonData.tier.trim().length === 0) {
     issues.push({
       code: 'schema_missing_field',
       severity: 'error',
-      message: 'Missing root field: tier',
+      message: 'Missing or invalid root field: tier',
+      context: 'tier',
     });
   }
   
-  if (!jsonData.domain) {
+  // 3. Domain field (recommended)
+  if (!jsonData.domain || typeof jsonData.domain !== 'string' || jsonData.domain.trim().length === 0) {
     issues.push({
       code: 'missing_domain',
       severity: 'warning',
-      message: 'Missing root field: domain',
+      message: 'Missing or invalid root field: domain',
+      context: 'domain',
     });
   }
   
-  if (!jsonData.title || typeof jsonData.title !== 'object') {
-    issues.push({
-      code: 'schema_missing_field',
-      severity: 'error',
-      message: 'Missing or invalid root field: title',
-    });
-  } else {
-    if (!jsonData.title.en) {
-      issues.push({
-        code: 'schema_missing_field',
-        severity: 'error',
-        message: 'Missing title.en',
-      });
-    }
-    if (!jsonData.title.vi) {
-      issues.push({
-        code: 'schema_missing_field',
-        severity: 'error',
-        message: 'Missing title.vi',
-      });
-    }
+  // 4. Title field (required bilingual)
+  validateBilingualText('title', jsonData.title, issues);
+  
+  // 5. Content field (optional bilingual intro/description)
+  if (jsonData.content) {
+    validateBilingualText('content', jsonData.content, issues);
   }
   
-  // Check entries array
+  // ============= ENTRIES ARRAY VALIDATION =============
+  
   if (!Array.isArray(jsonData.entries)) {
     issues.push({
       code: 'schema_missing_field',
       severity: 'error',
       message: 'Missing or invalid entries array',
+      context: 'entries',
     });
     return issues;
   }
@@ -172,131 +266,207 @@ function validateRoomJson(roomId: string, jsonData: Partial<MercyBladeRoomJson>)
     issues.push({
       code: 'schema_missing_field',
       severity: 'error',
-      message: 'Entries array is empty',
+      message: 'Entries array is empty (must have at least 1 entry)',
+      context: 'entries',
     });
     return issues;
   }
   
-  // Validate each entry
+  // Typical entry count is 6-8, warn if unusual
+  if (jsonData.entries.length < 3) {
+    issues.push({
+      code: 'schema_invalid_field',
+      severity: 'info',
+      message: `Only ${jsonData.entries.length} entries (typical rooms have 6-8)`,
+      context: 'entries.length',
+    });
+  } else if (jsonData.entries.length > 12) {
+    issues.push({
+      code: 'schema_invalid_field',
+      severity: 'info',
+      message: `${jsonData.entries.length} entries (typical rooms have 6-8)`,
+      context: 'entries.length',
+    });
+  }
+  
+  // ============= INDIVIDUAL ENTRY VALIDATION =============
+  
   let hasAllEntry = false;
+  let allEntryIndex = -1;
+  
   jsonData.entries.forEach((entry: any, idx: number) => {
     if (!entry || typeof entry !== 'object') {
       issues.push({
         code: 'schema_wrong_type',
         severity: 'error',
         message: `Entry ${idx} is not an object`,
+        context: `entries[${idx}]`,
       });
       return;
     }
     
-    // Check for All entry
-    if (entry.slug === 'all' || entry.slug === 'all-entry') {
-      hasAllEntry = true;
-    }
-    
-    // Check required entry fields
-    if (!entry.slug) {
+    // 1. Slug field (required, should be kebab-case or special "all")
+    if (!entry.slug || typeof entry.slug !== 'string' || entry.slug.trim().length === 0) {
       issues.push({
         code: 'schema_missing_field',
-        severity: 'warning',
-        message: `Entry ${idx} missing slug`,
-        context: `entry[${idx}].slug`,
-      });
-    }
-    
-    // Check bilingual copy
-    if (!entry.copy || typeof entry.copy !== 'object') {
-      issues.push({
-        code: 'bilingual_missing',
         severity: 'error',
-        message: `Entry ${idx} missing copy object`,
-        context: `entry[${idx}].copy`,
+        message: `Entry ${idx} missing slug`,
+        context: `entries[${idx}].slug`,
       });
     } else {
-      if (!entry.copy.en || entry.copy.en.trim().length === 0) {
-        issues.push({
-          code: 'bilingual_missing',
-          severity: 'error',
-          message: `Entry ${idx} missing copy.en`,
-          context: `entry[${idx}].copy.en`,
-        });
+      // Check for All entry
+      if (entry.slug === 'all' || entry.slug === 'all-entry') {
+        hasAllEntry = true;
+        allEntryIndex = idx;
       }
-      if (!entry.copy.vi || entry.copy.vi.trim().length === 0) {
+      
+      // Slug should be lowercase with hyphens or underscores
+      if (!/^[a-z0-9_-]+$/.test(entry.slug)) {
         issues.push({
-          code: 'bilingual_missing',
-          severity: 'error',
-          message: `Entry ${idx} missing copy.vi`,
-          context: `entry[${idx}].copy.vi`,
+          code: 'schema_invalid_field',
+          severity: 'info',
+          message: `Entry ${idx} slug "${entry.slug}" contains uppercase or special chars`,
+          context: `entries[${idx}].slug`,
         });
       }
     }
     
-    // Check keywords
-    if (!Array.isArray(entry.keywords_en) || entry.keywords_en.length < 3 || entry.keywords_en.length > 5) {
+    // 2. Bilingual copy (required)
+    validateBilingualText(`entries[${idx}].copy`, entry.copy, issues);
+    
+    // 3. Keywords EN (required, 3-5 items)
+    if (!Array.isArray(entry.keywords_en)) {
+      issues.push({
+        code: 'keywords_invalid',
+        severity: 'error',
+        message: `Entry ${idx} keywords_en must be an array`,
+        context: `entries[${idx}].keywords_en`,
+      });
+    } else if (entry.keywords_en.length < 3) {
       issues.push({
         code: 'keywords_invalid',
         severity: 'warning',
-        message: `Entry ${idx} keywords_en should have 3-5 items`,
-        context: `entry[${idx}].keywords_en`,
+        message: `Entry ${idx} keywords_en has only ${entry.keywords_en.length} items (should be 3-5)`,
+        context: `entries[${idx}].keywords_en`,
+      });
+    } else if (entry.keywords_en.length > 5) {
+      issues.push({
+        code: 'keywords_invalid',
+        severity: 'info',
+        message: `Entry ${idx} keywords_en has ${entry.keywords_en.length} items (recommended 3-5)`,
+        context: `entries[${idx}].keywords_en`,
       });
     }
     
-    if (!Array.isArray(entry.keywords_vi) || entry.keywords_vi.length < 3 || entry.keywords_vi.length > 5) {
+    // 4. Keywords VI (required, 3-5 items)
+    if (!Array.isArray(entry.keywords_vi)) {
+      issues.push({
+        code: 'keywords_invalid',
+        severity: 'error',
+        message: `Entry ${idx} keywords_vi must be an array`,
+        context: `entries[${idx}].keywords_vi`,
+      });
+    } else if (entry.keywords_vi.length < 3) {
       issues.push({
         code: 'keywords_invalid',
         severity: 'warning',
-        message: `Entry ${idx} keywords_vi should have 3-5 items`,
-        context: `entry[${idx}].keywords_vi`,
+        message: `Entry ${idx} keywords_vi has only ${entry.keywords_vi.length} items (should be 3-5)`,
+        context: `entries[${idx}].keywords_vi`,
+      });
+    } else if (entry.keywords_vi.length > 5) {
+      issues.push({
+        code: 'keywords_invalid',
+        severity: 'info',
+        message: `Entry ${idx} keywords_vi has ${entry.keywords_vi.length} items (recommended 3-5)`,
+        context: `entries[${idx}].keywords_vi`,
       });
     }
     
-    // Check tags
-    if (!Array.isArray(entry.tags) || entry.tags.length === 0) {
+    // 5. Tags (recommended)
+    if (!Array.isArray(entry.tags)) {
       issues.push({
         code: 'tags_missing',
         severity: 'info',
-        message: `Entry ${idx} missing tags array`,
-        context: `entry[${idx}].tags`,
+        message: `Entry ${idx} tags should be an array`,
+        context: `entries[${idx}].tags`,
+      });
+    } else if (entry.tags.length === 0) {
+      issues.push({
+        code: 'tags_missing',
+        severity: 'info',
+        message: `Entry ${idx} has empty tags array`,
+        context: `entries[${idx}].tags`,
       });
     }
     
-    // Check severity
+    // 6. Severity level (required, 1-5)
     const severity = entry.severity_level;
-    if (severity == null || typeof severity !== 'number' || severity < 1 || severity > 5) {
+    if (severity == null) {
       issues.push({
         code: 'severity_invalid',
         severity: 'warning',
-        message: `Entry ${idx} severity_level should be 1-5`,
-        context: `entry[${idx}].severity_level`,
+        message: `Entry ${idx} missing severity_level`,
+        context: `entries[${idx}].severity_level`,
+      });
+    } else if (typeof severity !== 'number' || !Number.isInteger(severity)) {
+      issues.push({
+        code: 'severity_invalid',
+        severity: 'warning',
+        message: `Entry ${idx} severity_level must be an integer`,
+        context: `entries[${idx}].severity_level`,
+      });
+    } else if (severity < 1 || severity > 5) {
+      issues.push({
+        code: 'severity_invalid',
+        severity: 'warning',
+        message: `Entry ${idx} severity_level is ${severity} (should be 1-5)`,
+        context: `entries[${idx}].severity_level`,
       });
     }
     
-    // Check audio format
+    // 7. Audio field (optional, but recommended)
     const audio = entry.audio;
-    if (audio && typeof audio === 'object') {
+    if (!audio) {
+      // Missing audio is tracked separately for audio coverage metric
+      // Don't add an issue here
+    } else if (typeof audio === 'object') {
       issues.push({
-        code: 'audio_path_has_folder',
-        severity: 'warning',
-        message: `Entry ${idx} audio is object, should be string`,
-        context: `entry[${idx}].audio`,
+        code: 'audio_object_invalid',
+        severity: 'error',
+        message: `Entry ${idx} audio is an object (should be string filename)`,
+        context: `entries[${idx}].audio`,
       });
-    } else if (audio && typeof audio === 'string' && audio.includes('/')) {
-      issues.push({
-        code: 'audio_path_has_folder',
-        severity: 'warning',
-        message: `Entry ${idx} audio contains folder path`,
-        context: `entry[${idx}].audio`,
-      });
+    } else if (typeof audio === 'string') {
+      // Validate audio filename pattern
+      validateAudioFilename(roomId, audio, idx, issues);
     }
   });
   
-  // Check for All entry
+  // ============= SPECIAL ENTRY CHECKS =============
+  
+  // Check for "All" entry (recommended for most rooms)
   if (!hasAllEntry) {
     issues.push({
       code: 'all_entry_missing',
       severity: 'warning',
-      message: 'Missing "All" entry (slug="all")',
+      message: 'Missing "All" entry (slug="all" or "all-entry")',
+      context: 'entries',
     });
+  } else if (allEntryIndex >= 0) {
+    // Validate that All entry has proper structure
+    const allEntry = jsonData.entries[allEntryIndex];
+    
+    if (Array.isArray(allEntry.keywords_en) && allEntry.keywords_en.length > 0) {
+      const firstKeyword = allEntry.keywords_en[0].toLowerCase();
+      if (firstKeyword !== 'all' && firstKeyword !== 'summary' && firstKeyword !== 'overview') {
+        issues.push({
+          code: 'schema_invalid_field',
+          severity: 'info',
+          message: `"All" entry keywords_en[0] should be "All", "summary", or "overview" (found "${allEntry.keywords_en[0]}")`,
+          context: `entries[${allEntryIndex}].keywords_en[0]`,
+        });
+      }
+    }
   }
   
   return issues;
