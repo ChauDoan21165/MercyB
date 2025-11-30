@@ -2,13 +2,15 @@
 // Single source of truth: public/data/*.json files
 // Reuses Deep Scan validation logic for consistency
 
-// deno-lint-ignore-file no-explicit-any
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.4";
+import { normalizeTier, type TierId, VIP_TIER_IDS } from "../_shared/tier-utils.ts";
+import type { RoomIssue, RoomValidationResult, RoomHealthSummary, MercyBladeRoomJson } from "../_shared/room-types.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
 };
 
 const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
@@ -17,34 +19,10 @@ const supabase = createClient(supabaseUrl, serviceRoleKey, {
   auth: { persistSession: false },
 });
 
-type RoomIssue = {
-  code: string;
-  severity: 'error' | 'warning' | 'info';
-  message: string;
-  context?: string;
-};
-
-type RoomHealthDetail = {
-  room_id: string;
-  issues: RoomIssue[];
-  health_score: number;
-  audio_coverage: number;
-};
-
-type RoomValidationResult = {
-  room_id: string;
-  tier: string;
-  json_missing: boolean;
-  json_invalid: boolean;
-  health_score: number;
-  audio_coverage: number;
-  has_zero_audio: boolean;
-  is_low_health: boolean;
-  issues: RoomIssue[];
-};
+// Types imported from shared module
 
 // Helper: Validate JSON structure following Mercy Blade standard
-function validateRoomJson(roomId: string, jsonData: any): RoomIssue[] {
+function validateRoomJson(roomId: string, jsonData: Partial<MercyBladeRoomJson>): RoomIssue[] {
   const issues: RoomIssue[] = [];
   
   // Check root structure
@@ -57,12 +35,28 @@ function validateRoomJson(roomId: string, jsonData: any): RoomIssue[] {
     return issues;
   }
   
-  // Check required root fields
+  // Check required root fields - COMPLETE MERCY BLADE SPEC
+  if (!jsonData.id) {
+    issues.push({
+      code: 'missing_id',
+      severity: 'error',
+      message: 'Missing root field: id',
+    });
+  }
+  
   if (!jsonData.tier) {
     issues.push({
       code: 'schema_missing_field',
       severity: 'error',
       message: 'Missing root field: tier',
+    });
+  }
+  
+  if (!jsonData.domain) {
+    issues.push({
+      code: 'missing_domain',
+      severity: 'warning',
+      message: 'Missing root field: domain',
     });
   }
   
@@ -388,15 +382,11 @@ serve(async (req) => {
 
   try {
     // Fetch rooms from database - include slug for JSON filename matching
-    let roomsQuery = supabase
+    // NOTE: Do NOT filter by tier in SQL - we need to normalize first
+    const { data: roomsData, error: roomsErr } = await supabase
       .from("rooms")
       .select("id, tier, slug");
     
-    if (tierFilter) {
-      roomsQuery = roomsQuery.eq("tier", tierFilter);
-    }
-
-    const { data: roomsData, error: roomsErr } = await roomsQuery;
     if (roomsErr) {
       console.error('[room-health-summary] Rooms query error:', roomsErr);
       // Don't throw - continue with empty data
@@ -408,12 +398,21 @@ serve(async (req) => {
     const validationResults: RoomValidationResult[] = [];
     
     for (const room of roomsData || []) {
+      // Normalize tier from DB format (e.g., "VIP1 / VIP1" -> "vip1")
+      const normalizedRoomTier = normalizeTier(room.tier);
+      
+      // Skip if tier filter is set and doesn't match
+      if (tierFilter && normalizedRoomTier !== tierFilter) {
+        continue;
+      }
+      
       // CRITICAL: Use slug (which matches JSON filenames) instead of UUID id
       const jsonId = ((room as any).slug || room.id) as string;
       const result = await validateRoom(jsonId, room.tier || 'free');
       validationResults.push(result);
       
-      const tier = result.tier.toLowerCase();
+      // Use normalized tier for aggregation
+      const tier = normalizedRoomTier;
       
       // Initialize tier object if not exists
       if (!byTier[tier]) {
@@ -446,8 +445,7 @@ serve(async (req) => {
 
     // Check for VIP tiers with 0 rooms (only if not filtering by specific tier)
     if (!tierFilter) {
-      const vipTiers = ['vip1', 'vip2', 'vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'];
-      for (const tier of vipTiers) {
+      for (const tier of VIP_TIER_IDS) {
         const count = tierCounts[tier] || 0;
         if (count === 0) {
           trackGaps.push({
@@ -469,7 +467,7 @@ serve(async (req) => {
       rooms_missing_json: Object.values(byTier).reduce((sum, t) => sum + (t?.rooms_missing_json || 0), 0),
     };
 
-    const response = {
+    const response: RoomHealthSummary = {
       global,
       byTier,
       vip_track_gaps: trackGaps,
@@ -489,21 +487,23 @@ serve(async (req) => {
   } catch (err: any) {
     console.error("[room-health-summary] Fatal error:", err);
     
-    // Even on fatal error, return 200 with empty/safe response structure
-    const safeResponse = {
+    // Return 200 but with fatal_error flag to distinguish from empty results
+    const errorResponse: RoomHealthSummary = {
       global: {
         total_rooms: 0,
         rooms_zero_audio: 0,
         rooms_low_health: 0,
         rooms_missing_json: 0,
       },
-      byTier,
-      vip_track_gaps: trackGaps,
-      tier_counts: tierCounts,
+      byTier: {},
+      vip_track_gaps: [],
+      tier_counts: {},
+      fatal_error: true,
+      error_message: err?.message || 'Unknown error occurred',
     };
     
     return new Response(
-      JSON.stringify(safeResponse),
+      JSON.stringify(errorResponse),
       { 
         status: 200, 
         headers: { ...corsHeaders, "Content-Type": "application/json" } 
