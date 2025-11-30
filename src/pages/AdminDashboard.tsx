@@ -575,15 +575,19 @@ const AdminDashboard = () => {
               title="Audit Log"
               description="Admin actions & changes"
               icon={FileText}
-              onClick={() => navigate("/admin/security")}
-              subtext="TODO: wire up audit_logs count"
+              onClick={() => navigate("/admin/audit-log")}
+            />
+            <SectionTile
+              title="AI Usage & Costs"
+              description="Track AI model usage & expenses"
+              icon={BarChart3}
+              onClick={() => navigate("/admin/ai-usage")}
             />
             <SectionTile
               title="Security Events"
               description="Login attempts, violations"
               icon={Shield}
               onClick={() => navigate("/admin/security")}
-              subtext="TODO: wire up security_events count"
             />
           </div>
         </section>
