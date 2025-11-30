@@ -202,6 +202,7 @@ const AdminDashboard = () => {
         pendingPayoutsResult,
         activeSubscriptionsResult,
         moderationQueueResult,
+        healthSummaryResult,
       ] = await Promise.all([
         supabase.from("profiles").select("*", { count: "exact", head: true }),
         supabase.from("profiles").select("*", { count: "exact", head: true }).gte("created_at", todayISO),
@@ -211,26 +212,31 @@ const AdminDashboard = () => {
         supabase.from("payment_transactions").select("amount").gte("created_at", monthStartISO).eq("status", "completed"),
         supabase.from("payment_proof_submissions").select("*", { count: "exact", head: true }).eq("status", "pending"),
         supabase.from("user_subscriptions").select("*", { count: "exact", head: true }).eq("status", "active"),
-        supabase.from("user_moderation_violations").select("*", { count: "exact", head: true }).is("action_taken", null), // Fixed: check for pending (null) violations
+        supabase.from("user_moderation_violations").select("*", { count: "exact", head: true }).is("action_taken", null),
+        supabase.functions.invoke('room-health-summary'),
       ]);
 
       const revenueToday = paymentsTodayResult.data?.reduce((sum, p) => sum + Number(p.amount), 0) || 0;
       const revenueMonth = paymentsMonthResult.data?.reduce((sum, p) => sum + Number(p.amount), 0) || 0;
 
-      // TODO: Calculate roomsZeroAudio and roomsLowHealth from health check endpoint
+      // Extract room health metrics from edge function response
+      const healthData = healthSummaryResult.data || {};
+      const roomsZeroAudio = healthData.rooms_zero_audio ?? 0;
+      const roomsLowHealth = healthData.rooms_low_health ?? 0;
+      const vipTrackGaps = healthData.vip_track_gaps_count ?? 0;
 
       setMetrics({
         totalUsers: usersResult.count || 0,
         newUsersToday: newUsersResult.count || 0,
         activeToday: activeUsersResult.count || 0,
         totalRooms: roomsResult.count || 0,
-        roomsZeroAudio: 0, // TODO: Wire up from health check
-        roomsLowHealth: 0, // TODO: Wire up from health check
+        roomsZeroAudio,
+        roomsLowHealth,
         revenueToday,
         revenueMonth,
         pendingPayouts: pendingPayoutsResult.count || 0,
         activeSubscriptions: activeSubscriptionsResult.count || 0,
-        systemReadiness: 92, // TODO: Wire up from system-metrics
+        systemReadiness: vipTrackGaps === 0 && roomsLowHealth === 0 && roomsZeroAudio === 0 ? 100 : 92,
         moderationQueue: moderationQueueResult.count || 0,
       });
     } catch (error) {
