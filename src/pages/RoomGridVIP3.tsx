@@ -11,6 +11,7 @@ import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomC
 import { highlightTextByRules, highlightShortTitle } from "@/lib/wordColorHighlighter";
 import { useColorMode } from '@/hooks/useColorMode';
 import { TIERS, ROOM_GRID_CLASS } from '@/lib/constants';
+import { usePrefetchRooms } from "@/hooks/usePrefetchRooms";
 
 // Special VIP3 rooms with custom styling
 const VIP3_SPECIAL_ROOMS: Record<string, string> = {
@@ -27,6 +28,9 @@ const RoomGridVIP3 = () => {
   const { toast } = useToast();
   const { rooms, loading, error, refresh } = useVipRooms('vip3');
   const { useColorTheme, toggleColorMode } = useColorMode();
+  
+  // Prefetch first 5 rooms for instant navigation
+  usePrefetchRooms(rooms || [], 5);
 
   const handleRefreshRooms = async () => {
     toast({

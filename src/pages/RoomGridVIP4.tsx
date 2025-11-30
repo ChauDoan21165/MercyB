@@ -10,6 +10,7 @@ import { useVipRooms } from '@/hooks/useVipRooms';
 import { VirtualizedRoomGrid } from '@/components/VirtualizedRoomGrid';
 import { RoomGridSkeleton } from '@/components/RoomCardSkeleton';
 import { TIERS } from '@/lib/constants';
+import { usePrefetchRooms } from "@/hooks/usePrefetchRooms";
 
 const VIP4_CAREER_ROOMS = [
   { id: "courage-to-begin", name: "Courage to Begin" },
@@ -31,6 +32,9 @@ const RoomGridVIP4 = () => {
   const { canAccessVIP4, isAdmin, loading: accessLoading } = useUserAccess();
   const { toast } = useToast();
   const { rooms, loading, error, refresh } = useVipRooms('vip4');
+  
+  // Prefetch first 5 rooms for instant navigation
+  usePrefetchRooms(rooms || [], 5);
 
   const handleRefreshRooms = async () => {
     toast({
