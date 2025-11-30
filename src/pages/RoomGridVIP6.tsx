@@ -96,10 +96,16 @@ const RoomGridVIP6 = () => {
           <VIPNavigation currentPage="vip6" />
 
           {loading && <RoomGridSkeleton count={24} />}
-
+ 
           {!loading && rooms && (
             <VirtualizedRoomGrid
-              rooms={rooms}
+              rooms={rooms.map((room) => ({
+                id: room.id,
+                nameEn: room.title_en,
+                nameVi: room.title_vi,
+                tier: room.tier || 'vip6',
+                hasData: Array.isArray(room.entries) ? room.entries.length > 0 : !!room.entries,
+              }))}
               onRoomClick={(room) => navigate(`/room/${room.id}`)}
             />
           )}
