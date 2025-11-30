@@ -18,7 +18,7 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
-  if (req.method !== "GET") {
+  if (req.method !== "POST" && req.method !== "GET") {
     return new Response("Method not allowed", { 
       status: 405,
       headers: corsHeaders 
