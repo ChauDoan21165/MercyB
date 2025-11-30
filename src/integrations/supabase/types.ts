@@ -238,6 +238,51 @@ export type Database = {
           },
         ]
       }
+      ai_usage: {
+        Row: {
+          cost_usd: number | null
+          created_at: string | null
+          endpoint: string | null
+          error_message: string | null
+          id: string
+          metadata: Json | null
+          model: string
+          request_duration_ms: number | null
+          status: string | null
+          tokens_input: number | null
+          tokens_output: number | null
+          user_id: string | null
+        }
+        Insert: {
+          cost_usd?: number | null
+          created_at?: string | null
+          endpoint?: string | null
+          error_message?: string | null
+          id?: string
+          metadata?: Json | null
+          model: string
+          request_duration_ms?: number | null
+          status?: string | null
+          tokens_input?: number | null
+          tokens_output?: number | null
+          user_id?: string | null
+        }
+        Update: {
+          cost_usd?: number | null
+          created_at?: string | null
+          endpoint?: string | null
+          error_message?: string | null
+          id?: string
+          metadata?: Json | null
+          model?: string
+          request_duration_ms?: number | null
+          status?: string | null
+          tokens_input?: number | null
+          tokens_output?: number | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       app_settings: {
         Row: {
           id: string
@@ -264,25 +309,37 @@ export type Database = {
       }
       audit_logs: {
         Row: {
+          action: string
+          admin_id: string | null
           created_at: string | null
           id: string
+          ip_address: string | null
           metadata: Json | null
-          type: string
-          user_id: string | null
+          target_id: string | null
+          target_type: string | null
+          user_agent: string | null
         }
         Insert: {
+          action: string
+          admin_id?: string | null
           created_at?: string | null
           id?: string
+          ip_address?: string | null
           metadata?: Json | null
-          type: string
-          user_id?: string | null
+          target_id?: string | null
+          target_type?: string | null
+          user_agent?: string | null
         }
         Update: {
+          action?: string
+          admin_id?: string | null
           created_at?: string | null
           id?: string
+          ip_address?: string | null
           metadata?: Json | null
-          type?: string
-          user_id?: string | null
+          target_id?: string | null
+          target_type?: string | null
+          user_agent?: string | null
         }
         Relationships: []
       }
@@ -2318,6 +2375,24 @@ export type Database = {
       }
       clean_expired_responses: { Args: never; Returns: undefined }
       cleanup_rate_limits: { Args: never; Returns: undefined }
+      get_ai_usage_summary: {
+        Args: { end_date?: string; start_date?: string }
+        Returns: {
+          avg_cost: number
+          avg_tokens: number
+          total_cost: number
+          total_requests: number
+          total_tokens: number
+        }[]
+      }
+      get_audit_summary: {
+        Args: { days_back?: number }
+        Returns: {
+          action: string
+          action_count: number
+          unique_admins: number
+        }[]
+      }
       get_room_tier_level: { Args: { tier_name: string }; Returns: number }
       get_user_tier: {
         Args: { user_uuid: string }

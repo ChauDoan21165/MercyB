@@ -68,6 +68,8 @@ import AdminPaymentVerification from "./pages/AdminPaymentVerification";
 import AdminUsers from "./pages/AdminUsers";
 import AdminUserDetail from "./pages/AdminUserDetail";
 import AdminSecurity from "./pages/AdminSecurity";
+import AuditLog from "./pages/admin/AuditLog";
+import AIUsage from "./pages/admin/AIUsage";
 import JoinCode from "./pages/JoinCode";
 import KidsLevel1 from "./pages/KidsLevel1";
 import KidsLevel2 from "./pages/KidsLevel2";
@@ -220,6 +222,8 @@ const App = () => {
           <Route path="/user-music-upload" element={<UserMusicUpload />} />
           <Route path="/admin/music-approval" element={<AdminRoute><MusicApproval /></AdminRoute>} />
           <Route path="/admin/music-manager" element={<AdminRoute><MusicManager /></AdminRoute>} />
+          <Route path="/admin/audit-log" element={<AdminRoute><AuditLog /></AdminRoute>} />
+          <Route path="/admin/ai-usage" element={<AdminRoute><AIUsage /></AdminRoute>} />
           <Route path="/tier-map" element={<TierMap />} />
           <Route path="/audio-upload" element={<AudioUpload />} />
           <Route path="/kids-validation" element={<KidsRoomValidation />} />
