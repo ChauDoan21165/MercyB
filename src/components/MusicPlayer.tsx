@@ -338,8 +338,12 @@ export const MusicPlayer = () => {
   useEffect(() => {
     updateFromPlayer({
       isPlaying,
-      currentTrackName: currentTrack?.name,
+      currentTrackName: isPlaying ? currentTrack?.name : undefined,
     });
+
+    return () => {
+      updateFromPlayer({ isPlaying: false, currentTrackName: undefined });
+    };
   }, [isPlaying, currentTrack?.name, updateFromPlayer]);
 
   return (
