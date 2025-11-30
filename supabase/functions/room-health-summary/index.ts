@@ -344,11 +344,32 @@ serve(async (req) => {
   }
 
   if (req.method !== "POST" && req.method !== "GET") {
-    return new Response("Method not allowed", { 
+    return new Response("Method not allowed", {
       status: 405,
-      headers: corsHeaders 
+      headers: corsHeaders,
     });
   }
+
+  // 🔹 Read body ONCE (POST only)
+  let body: any = {};
+  if (req.method === "POST") {
+    body = await req.json().catch(() => ({}));
+  }
+
+  // 🔹 Tier filter from body or query string
+  let tierFilter: string | null = null;
+  if (typeof body.tier === "string" && body.tier.trim()) {
+    tierFilter = body.tier.trim().toLowerCase();
+  } else if (req.method === "GET") {
+    const url = new URL(req.url);
+    const t = url.searchParams.get("tier");
+    if (t) tierFilter = t.toLowerCase();
+  }
+
+  // 🔹 Deep scan flag comes ONLY from body.deepScan
+  const deepScan = body.deepScan === true;
+
+  console.log("[room-health-summary] tierFilter:", tierFilter, "deepScan:", deepScan);
 
   // Initialize result structure with safe defaults
   const byTier: Record<string, {
@@ -362,24 +383,6 @@ serve(async (req) => {
   const trackGaps: any[] = [];
 
   try {
-    // Parse request parameters - support both POST (body) and GET (query params)
-    let tierFilter: string | null = null;
-    
-    if (req.method === "POST") {
-      const body = await req.json().catch(() => ({}));
-      tierFilter = body.tier ?? null;
-    } else if (req.method === "GET") {
-      const url = new URL(req.url);
-      tierFilter = url.searchParams.get("tier");
-    }
-
-    // Normalize tier filter to lowercase if provided
-    if (tierFilter) {
-      tierFilter = tierFilter.toLowerCase();
-    }
-
-    console.log('[room-health-summary] Processing request with tier filter:', tierFilter);
-
     // Fetch rooms from database (just to get room IDs and tiers)
     let roomsQuery = supabase
       .from("rooms")

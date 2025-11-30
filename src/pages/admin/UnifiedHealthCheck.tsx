@@ -2965,60 +2965,58 @@ export default function UnifiedHealthCheck() {
           )}
           
           {/* Action Buttons */}
-          <div className="flex gap-2 flex-wrap pt-4 border-t">
-            <Button 
+          <div className="flex flex-wrap gap-2 pt-4 border-t">
+            {/* Quick Scan - placeholder for future implementation */}
+            
+            {/* Deep Scan */}
+            <Button
               onClick={runDeepScan}
-              disabled={loading || deepScanning || scanningMissingAudio}
-              className="bg-black text-white hover:bg-gray-800 border-2 border-black"
+              disabled={loading || deepScanning}
+              className="bg-blue-600 hover:bg-blue-700 text-white border-2 border-blue-600"
             >
-              {deepScanning ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Deep Scanning...
-                </>
-              ) : (
-                <>
-                  <Play className="mr-2 h-4 w-4" />
-                  Deep Scan
-                </>
+              {deepScanning && !scanningMissingAudio && !autoFixing && (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               )}
+              Deep Scan
             </Button>
 
-              {deepScanResults.length > 0 && (
-                <Button
-                  onClick={handleAutoFix}
-                  disabled={autoFixing}
-                  className="bg-green-600 hover:bg-green-700"
-                >
-                  {autoFixing ? 'Fixing...' : 'Auto-Fix All'}
-                </Button>
+            {/* Scan Missing Audio */}
+            <Button
+              onClick={scanMissingAudio}
+              disabled={loading || deepScanning || scanningMissingAudio}
+              className="bg-orange-600 hover:bg-orange-700 text-white border-2 border-orange-600"
+            >
+              {scanningMissingAudio && (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               )}
-              
+              Scan Missing Audio
+            </Button>
+
+            {/* Auto-Fix All (only when we have deep scan results) */}
+            {deepScanResults.length > 0 && (
               <Button
-                onClick={loadDesignViolations}
-                disabled={loadingDesignScan}
-                className="bg-purple-600 hover:bg-purple-700"
+                onClick={handleAutoFix}
+                disabled={autoFixing}
+                className="bg-green-600 hover:bg-green-700 text-white border-2 border-green-600"
               >
-                {loadingDesignScan ? 'Scanning...' : 'Scan Design'}
-              </Button>
-              
-              <Button
-                onClick={scanMissingAudio}
-                disabled={loading || deepScanning || scanningMissingAudio}
-                className="bg-orange-600 hover:bg-orange-700"
-              >
-                {scanningMissingAudio ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Scanning Audio...
-                  </>
-                ) : (
-                  <>
-                    <Music className="mr-2 h-4 w-4" />
-                    Scan Missing Audio Files (All Rooms)
-                  </>
+                {autoFixing && (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 )}
+                {autoFixing ? "Fixing..." : "Auto-Fix All"}
               </Button>
+            )}
+
+            {/* Design Scan */}
+            <Button
+              onClick={loadDesignViolations}
+              disabled={loadingDesignScan}
+              className="bg-purple-600 hover:bg-purple-700 text-white border-2 border-purple-600"
+            >
+              {loadingDesignScan && (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              )}
+              Scan Design
+            </Button>
           </div>
         </div>
       </Card>
