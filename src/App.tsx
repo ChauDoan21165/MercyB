@@ -83,6 +83,7 @@ import AdminSpecification from "./pages/AdminSpecification";
 import SecurityDashboard from "./pages/SecurityDashboard";
 import Settings from "./pages/Settings";
 import HealthDashboard from "./pages/admin/HealthDashboard";
+import RoomHealthDashboard from "./pages/admin/RoomHealthDashboard";
 import UnifiedHealthCheck from "./pages/admin/UnifiedHealthCheck";
 import SystemHealth from "./pages/admin/SystemHealth";
 import EdgeFunctions from "./pages/admin/EdgeFunctions";
@@ -218,8 +219,9 @@ const App = () => {
            <Route path="/admin/health" element={<AdminRoute><UnifiedHealthCheck /></AdminRoute>} />
            <Route path="/admin/kids-room-health" element={<AdminRoute><KidsRoomHealthCheck /></AdminRoute>} />
            <Route path="/admin/health-dashboard" element={<AdminRoute><HealthDashboard /></AdminRoute>} />
+           <Route path="/admin/room-health-dashboard" element={<AdminRoute><RoomHealthDashboard /></AdminRoute>} />
            <Route path="/admin/room-health/:tier" element={<AdminRoute><UnifiedHealthCheck /></AdminRoute>} />
-          <Route path="/admin/system-health" element={<AdminRoute><SystemHealth /></AdminRoute>} />
+           <Route path="/admin/system-health" element={<AdminRoute><SystemHealth /></AdminRoute>} />
           <Route path="/admin/edge-functions" element={<AdminRoute><EdgeFunctions /></AdminRoute>} />
           <Route path="/redeem-gift" element={<RedeemGiftCode />} />
           <Route path="/user-music-upload" element={<UserMusicUpload />} />
