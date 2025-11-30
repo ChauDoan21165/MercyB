@@ -24,6 +24,9 @@ verify_jwt = true
 [functions.room-sync-health]
 verify_jwt = true
 
+[functions.room-health-summary]
+verify_jwt = true
+
 [functions.security-alert]
 verify_jwt = false
 
