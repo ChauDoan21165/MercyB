@@ -4,7 +4,6 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.4";
-import { normalizeTier, type TierId, VIP_TIER_IDS } from "../_shared/tier-utils.ts";
 import type { RoomIssue, RoomValidationResult, RoomHealthSummary, MercyBladeRoomJson } from "../_shared/room-types.ts";
 
 const corsHeaders = {
@@ -12,6 +11,82 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
   'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
 };
+
+// ============= CANONICAL TIER TYPES =============
+
+export type TierKey =
+  | "free"
+  | "vip1"
+  | "vip2"
+  | "vip3"
+  | "vip4"
+  | "vip5"
+  | "vip6"
+  | "vip7"
+  | "vip8"
+  | "vip9";
+
+function normalizeTier(tierRaw: string | null | undefined): TierKey | null {
+  if (!tierRaw) return null;
+  const t = tierRaw.toLowerCase().trim();
+
+  // Common DB formats, e.g. "Free / Miễn phí", "VIP1 / VIP1"
+  if (t.startsWith("free") || t.includes("miễn phí")) return "free";
+  if (t.startsWith("vip1") || t.includes("vip1")) return "vip1";
+  if (t.startsWith("vip2") || t.includes("vip2")) return "vip2";
+  if (t.startsWith("vip3") || t.includes("vip3")) return "vip3";
+  if (t.startsWith("vip4") || t.includes("vip4")) return "vip4";
+  if (t.startsWith("vip5") || t.includes("vip5")) return "vip5";
+  if (t.startsWith("vip6") || t.includes("vip6")) return "vip6";
+  if (t.startsWith("vip7") || t.includes("vip7")) return "vip7";
+  if (t.startsWith("vip8") || t.includes("vip8")) return "vip8";
+  if (t.startsWith("vip9") || t.includes("vip9")) return "vip9";
+
+  // Fallback: already like "vip1", "free"
+  if (
+    [
+      "free",
+      "vip1",
+      "vip2",
+      "vip3",
+      "vip4",
+      "vip5",
+      "vip6",
+      "vip7",
+      "vip8",
+      "vip9",
+    ].includes(t)
+  ) {
+    return t as TierKey;
+  }
+
+  return null;
+}
+
+function tierKeyToLabel(tier: TierKey): string {
+  switch (tier) {
+    case "free":
+      return "Free / Miễn phí";
+    case "vip1":
+      return "VIP1 / VIP1";
+    case "vip2":
+      return "VIP2 / VIP2";
+    case "vip3":
+      return "VIP3 / VIP3";
+    case "vip4":
+      return "VIP4 / VIP4";
+    case "vip5":
+      return "VIP5 / VIP5";
+    case "vip6":
+      return "VIP6 / VIP6";
+    case "vip7":
+      return "VIP7 / VIP7";
+    case "vip8":
+      return "VIP8 / VIP8";
+    case "vip9":
+      return "VIP9 / VIP9";
+  }
+}
 
 const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
 const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
@@ -351,23 +426,21 @@ serve(async (req) => {
   }
 
   // 🔹 Tier filter from body or query string (normalized)
-  let tierFilter: string | null = null;
+  let tierFilterKey: TierKey | null = null;
   if (req.method === "POST") {
     if (typeof body.tier === "string" && body.tier.trim()) {
-      tierFilter = body.tier.trim().toLowerCase();
+      tierFilterKey = normalizeTier(body.tier);
     }
   } else if (req.method === "GET") {
     const url = new URL(req.url);
-    const t = url.searchParams.get("tier");
-    if (t && t.trim()) {
-      tierFilter = t.trim().toLowerCase();
-    }
+    const rawTierFilter = url.searchParams.get("tier");
+    tierFilterKey = rawTierFilter ? normalizeTier(rawTierFilter) : null;
   }
 
   // 🔹 Deep scan flag comes ONLY from body.deepScan
   const deepScan = body.deepScan === true;
 
-  console.log("[room-health-summary] tierFilter:", tierFilter, "deepScan:", deepScan);
+  console.log("[room-health-summary] tierFilterKey:", tierFilterKey, "deepScan:", deepScan);
 
   // Initialize result structure with safe defaults
   const byTier: Record<string, {
@@ -402,7 +475,7 @@ serve(async (req) => {
       const normalizedRoomTier = normalizeTier(room.tier);
       
       // Skip if tier filter is set and doesn't match
-      if (tierFilter && normalizedRoomTier !== tierFilter) {
+      if (tierFilterKey && normalizedRoomTier !== tierFilterKey) {
         continue;
       }
       
@@ -411,8 +484,8 @@ serve(async (req) => {
       const result = await validateRoom(jsonId, room.tier || 'free');
       validationResults.push(result);
       
-      // Use normalized tier for aggregation
-      const tier = normalizedRoomTier;
+      // Use normalized tier for aggregation (use "free" if normalization fails)
+      const tier = normalizedRoomTier || "free";
       
       // Initialize tier object if not exists
       if (!byTier[tier]) {
@@ -444,18 +517,43 @@ serve(async (req) => {
     console.log('[room-health-summary] Validation complete. Results by tier:', JSON.stringify(byTier, null, 2));
 
     // Check for VIP tiers with 0 rooms (only if not filtering by specific tier)
-    if (!tierFilter) {
-      for (const tier of VIP_TIER_IDS) {
-        const count = tierCounts[tier] || 0;
-        if (count === 0) {
-          trackGaps.push({
-            tier,
-            title: tier.toUpperCase(),
-            total_rooms: 0,
-            min_required: 1,
-            issue: "no_rooms_found",
-          });
+    if (!tierFilterKey) {
+      // Build set of existing VIP tiers using normalization
+      const existingVipTiers = new Set<TierKey>();
+      
+      for (const result of validationResults) {
+        const tierKey = normalizeTier(result.tier);
+        if (tierKey && (tierKey as string).startsWith("vip")) {
+          existingVipTiers.add(tierKey);
         }
+      }
+      
+      // Check all VIP tiers for gaps
+      const allVipTiers: TierKey[] = [
+        "vip1",
+        "vip2",
+        "vip3",
+        "vip4",
+        "vip5",
+        "vip6",
+        "vip7",
+        "vip8",
+        "vip9",
+      ];
+      
+      const missingVipTiers = allVipTiers.filter(
+        (tier) => !existingVipTiers.has(tier)
+      );
+      
+      // Add missing tiers to track gaps
+      for (const tier of missingVipTiers) {
+        trackGaps.push({
+          tier,
+          title: tier.toUpperCase(),
+          total_rooms: 0,
+          min_required: 1,
+          issue: "no_rooms_found",
+        });
       }
     }
 
