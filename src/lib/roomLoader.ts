@@ -145,7 +145,19 @@ export const loadMergedRoom = async (roomId: string) => {
     throw new Error('AUTHENTICATION_REQUIRED');
   }
 
-  // 2. Get user's tier from database
+  // 2. Check admin status via has_role RPC
+  const { data: isAdminRpc, error: adminError } = await supabase.rpc('has_role', {
+    _role: 'admin',
+    _user_id: user.id,
+  });
+
+  if (adminError) {
+    console.error('[roomLoader] Error checking admin role via has_role RPC:', adminError);
+  }
+
+  const isAdmin = !!isAdminRpc;
+
+  // 3. Get user's tier from database
   const { data: subscription } = await supabase
     .from('user_subscriptions')
     .select('subscription_tiers(name)')
@@ -154,24 +166,44 @@ export const loadMergedRoom = async (roomId: string) => {
     .maybeSingle();
 
   const rawUserTier = (subscription?.subscription_tiers as any)?.name || 'Free / Miễn phí';
-  const normalizedUserTier: TierId = normalizeTier(rawUserTier);
+  const baseTier: TierId = normalizeTier(rawUserTier);
+  const normalizedUserTier: TierId = isAdmin ? 'vip9' : baseTier;
 
-  // 3. Normalize room ID
+  // 4. Normalize room ID
   const dbRoomId = normalizeRoomId(roomId);
   
-  console.log('[roomLoader] Loading room:', roomId, '→', dbRoomId, '| User tier:', normalizedUserTier);
+  console.log(
+    '[roomLoader] Loading room:',
+    roomId,
+    '→',
+    dbRoomId,
+    '| User tier:',
+    normalizedUserTier,
+    '| isAdmin:',
+    isAdmin,
+  );
 
-  // 4. Try database first
+  // 5. Try database first
   try {
     const dbResult = await loadFromDatabase(dbRoomId);
 
     if (dbResult) {
       const normalizedRoomTier = dbResult.roomTier ?? ('free' as TierId);
-      console.log('[roomLoader] Room tier:', normalizedRoomTier, '| Access check:', canUserAccessRoom(normalizedUserTier, normalizedRoomTier));
+      console.log(
+        '[roomLoader] Room tier:',
+        normalizedRoomTier,
+        '| Access check:',
+        canUserAccessRoom(normalizedUserTier, normalizedRoomTier),
+      );
 
-      // 5. Enforce access control using authenticated tier
-      if (!canUserAccessRoom(normalizedUserTier, normalizedRoomTier)) {
-        console.warn('[roomLoader] Access denied:', normalizedUserTier, 'cannot access', normalizedRoomTier);
+      // 6. Enforce access control using authenticated tier (admins bypass)
+      if (!isAdmin && !canUserAccessRoom(normalizedUserTier, normalizedRoomTier)) {
+        console.warn(
+          '[roomLoader] Access denied:',
+          normalizedUserTier,
+          'cannot access',
+          normalizedRoomTier,
+        );
         throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
       }
 
@@ -184,15 +216,20 @@ export const loadMergedRoom = async (roomId: string) => {
     console.error('[roomLoader] Database load failed:', dbError);
   }
 
-  // 6. Fallback to JSON files (with tier enforcement)
+  // 7. Fallback to JSON files (with tier enforcement)
   try {
     console.warn('[roomLoader] Falling back to JSON for room:', roomId);
     const jsonResult = await loadFromJson(roomId);
     if (jsonResult) {
-      // Enforce tier access for JSON rooms too
-      if (jsonResult.roomTier) {
+      // Enforce tier access for JSON rooms too (admins bypass)
+      if (jsonResult.roomTier && !isAdmin) {
         if (!canUserAccessRoom(normalizedUserTier, jsonResult.roomTier)) {
-          console.warn('[roomLoader] Access denied (JSON):', normalizedUserTier, 'cannot access', jsonResult.roomTier);
+          console.warn(
+            '[roomLoader] Access denied (JSON):',
+            normalizedUserTier,
+            'cannot access',
+            jsonResult.roomTier,
+          );
           throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
         }
       }
@@ -205,7 +242,7 @@ export const loadMergedRoom = async (roomId: string) => {
     console.error('[roomLoader] Failed to load room:', error);
   }
 
-  // 7. Empty fallback
+  // 8. Empty fallback
   return {
     merged: [],
     keywordMenu: { en: [], vi: [] },
