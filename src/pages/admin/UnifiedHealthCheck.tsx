@@ -1478,6 +1478,79 @@ export default function UnifiedHealthCheck() {
     }
   };
 
+  // Load design violations scan
+  const loadDesignViolations = async () => {
+    setLoadingDesignScan(true);
+    setDesignViolations(null);
+    
+    try {
+      const { data, error } = await supabase.functions.invoke('scan-design-violations');
+      
+      if (error) throw error;
+      
+      setDesignViolations(data);
+      
+      const violationCount = data?.total_violations ?? 0;
+      toast({
+        title: "Design Scan Complete",
+        description: violationCount === 0 
+          ? "✅ No design violations found!" 
+          : `Found ${violationCount} design contract violations`,
+        variant: violationCount > 0 ? "destructive" : "default"
+      });
+    } catch (error: any) {
+      console.error('Error scanning design violations:', error);
+      toast({
+        title: "Scan Failed",
+        description: error.message || 'Failed to scan design violations',
+        variant: "destructive"
+      });
+    } finally {
+      setLoadingDesignScan(false);
+    }
+  };
+
+  // Auto-fix rooms using room-health-auto-fix edge function
+  const handleAutoFix = async () => {
+    if (deepScanResults.length === 0) return;
+    
+    setAutoFixing(true);
+    setAutoFixResults([]);
+    
+    try {
+      const roomIds = deepScanResults.map(r => r.roomId);
+      
+      const { data, error } = await supabase.functions.invoke('room-health-auto-fix', {
+        body: { room_ids: roomIds }
+      });
+      
+      if (error) throw error;
+      
+      if (!data || !data.summaries) {
+        throw new Error('Invalid response from auto-fix function');
+      }
+      
+      setAutoFixResults(data.summaries);
+      
+      toast({
+        title: "Auto-Fix Complete",
+        description: `Fixed ${data.processed} rooms. Check results below.`,
+      });
+      
+      // Refresh deep scan to show updated state
+      await runDeepScan();
+    } catch (error: any) {
+      console.error('Error auto-fixing rooms:', error);
+      toast({
+        title: "Auto-Fix Failed",
+        description: error.message || 'Failed to auto-fix rooms',
+        variant: "destructive"
+      });
+    } finally {
+      setAutoFixing(false);
+    }
+  };
+
   // Export missing audio as CSV
   const exportMissingAudioCSV = () => {
     if (!audioScanResults || audioScanResults.missingCount === 0) return;
@@ -2911,7 +2984,7 @@ export default function UnifiedHealthCheck() {
               )}
             </Button>
 
-              {deepScanReport.length > 0 && (
+              {deepScanResults.length > 0 && (
                 <Button
                   onClick={handleAutoFix}
                   disabled={autoFixing}
@@ -3476,6 +3549,138 @@ export default function UnifiedHealthCheck() {
             </div>
           </Card>
         </div>
+      )}
+
+      {/* Auto-Fix Results Panel */}
+      {autoFixResults && autoFixResults.length > 0 && (
+        <Card className="p-6 border-2 border-green-600">
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-2xl font-bold text-black">
+                Auto-Fix Results 
+                <Badge className="ml-2 bg-green-600 text-white">{autoFixResults.length} rooms fixed</Badge>
+              </h2>
+            </div>
+            
+            <div className="space-y-3 max-h-96 overflow-y-auto">
+              {autoFixResults.map((result, idx) => (
+                <Card key={idx} className="p-4 border border-gray-300">
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-bold text-black">{result.slug || result.room_id}</h3>
+                      <div className="flex gap-2">
+                        <Badge variant="outline">
+                          Health: {result.health_score ?? 0}%
+                        </Badge>
+                        <Badge variant="outline">
+                          Audio: {result.audio_coverage ?? 0}%
+                        </Badge>
+                      </div>
+                    </div>
+                    
+                    {result.issues_fixed && result.issues_fixed.length > 0 && (
+                      <div className="pl-4 space-y-1">
+                        <p className="text-sm font-medium text-black">Issues Fixed:</p>
+                        <ul className="list-disc list-inside space-y-1">
+                          {result.issues_fixed.map((issue: string, i: number) => (
+                            <li key={i} className="text-sm text-gray-700">{issue}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </Card>
+      )}
+
+      {/* Design Violations Panel */}
+      {loadingDesignScan && (
+        <Card className="p-6 border-2 border-purple-600">
+          <div className="flex items-center gap-3">
+            <Loader2 className="h-6 w-6 animate-spin text-purple-600" />
+            <p className="text-lg font-bold text-black">Scanning codebase for design violations…</p>
+          </div>
+        </Card>
+      )}
+
+      {!loadingDesignScan && designViolations && (
+        <Card className="p-6 border-2 border-purple-600">
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-2xl font-bold text-black">
+                Design Contract Violations
+                {designViolations.total_violations !== undefined && (
+                  <Badge className="ml-2 bg-purple-600 text-white">
+                    {designViolations.total_violations} violations
+                  </Badge>
+                )}
+              </h2>
+              <Button 
+                onClick={loadDesignViolations}
+                variant="outline"
+                className="border-black text-black hover:bg-gray-100"
+              >
+                <RefreshCw className="mr-2 h-4 w-4" />
+                Re-scan
+              </Button>
+            </div>
+
+            {designViolations.total_violations === 0 ? (
+              <Alert className="bg-green-50 border-green-500">
+                <CheckCircle2 className="h-4 w-4 text-green-600" />
+                <AlertDescription className="text-green-800">
+                  ✅ No design violations detected! All code follows semantic token guidelines.
+                </AlertDescription>
+              </Alert>
+            ) : (
+              <div className="space-y-3 max-h-96 overflow-y-auto">
+                {designViolations.violations && designViolations.violations.length > 0 ? (
+                  designViolations.violations.map((fileViolation: any, idx: number) => (
+                    <Card key={idx} className="p-4 border border-gray-300">
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <code className="text-sm font-mono text-black">{fileViolation.file}</code>
+                          <Badge variant="outline" className="bg-red-50 text-red-700 border-red-300">
+                            {fileViolation.violations?.length ?? 0} issues
+                          </Badge>
+                        </div>
+                        
+                        {fileViolation.violations && fileViolation.violations.length > 0 && (
+                          <div className="pl-4 space-y-2">
+                            {fileViolation.violations.map((violation: any, i: number) => (
+                              <div key={i} className="border-l-2 border-purple-600 pl-3">
+                                <div className="flex items-start gap-2">
+                                  <Badge variant="outline" className="text-xs shrink-0">
+                                    {violation.type || 'unknown'}
+                                  </Badge>
+                                  <div className="flex-1">
+                                    <p className="text-sm text-gray-700">{violation.message}</p>
+                                    {violation.line && (
+                                      <p className="text-xs text-gray-500 mt-1">Line {violation.line}</p>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </Card>
+                  ))
+                ) : (
+                  <Alert>
+                    <AlertDescription>
+                      No detailed violations found. Check console for details.
+                    </AlertDescription>
+                  </Alert>
+                )}
+              </div>
+            )}
+          </div>
+        </Card>
       )}
     </div>
   );
