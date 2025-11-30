@@ -17,6 +17,20 @@ const supabase = createClient(supabaseUrl, serviceRoleKey, {
   auth: { persistSession: false },
 });
 
+type RoomIssue = {
+  code: string;
+  severity: 'error' | 'warning' | 'info';
+  message: string;
+  context?: string;
+};
+
+type RoomHealthDetail = {
+  room_id: string;
+  issues: RoomIssue[];
+  health_score: number;
+  audio_coverage: number;
+};
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
@@ -138,6 +152,183 @@ serve(async (req) => {
       }
     }
 
+    // Deep validation for specified tier (if deepScan=true)
+    const roomDetails: RoomHealthDetail[] = [];
+    const deepScan = tierFilter && (await req.json().catch(() => ({}))).deepScan === true;
+    
+    if (deepScan && tierFilter) {
+      console.log('[room-health-summary] Running deep scan for tier:', tierFilter);
+      
+      for (const room of roomsData || []) {
+        if ((room.tier || 'free').toLowerCase() !== tierFilter.toLowerCase()) continue;
+        
+        const issues: RoomIssue[] = [];
+        let healthScore = 100;
+        let audioCoverage = 0;
+        
+        // Check JSON structure
+        const entries = Array.isArray(room.entries) ? room.entries : [];
+        
+        if (entries.length === 0) {
+          issues.push({
+            code: 'schema_missing_field',
+            severity: 'error',
+            message: 'No entries array or empty entries',
+          });
+          healthScore -= 50;
+        } else {
+          let entriesWithAudio = 0;
+          let hasAllEntry = false;
+          
+          entries.forEach((entry: any, idx: number) => {
+            if (!entry || typeof entry !== 'object') {
+              issues.push({
+                code: 'schema_wrong_type',
+                severity: 'error',
+                message: `Entry ${idx} is not an object`,
+              });
+              return;
+            }
+            
+            // Check slug
+            if (entry.slug === 'all' || entry.slug === 'all-entry') {
+              hasAllEntry = true;
+            }
+            
+            if (!entry.slug || typeof entry.slug !== 'string') {
+              issues.push({
+                code: 'schema_missing_field',
+                severity: 'warning',
+                message: `Entry ${idx} missing slug`,
+                context: `entry[${idx}]`,
+              });
+            }
+            
+            // Check bilingual content
+            const copy = entry.copy;
+            if (!copy || typeof copy !== 'object') {
+              issues.push({
+                code: 'bilingual_missing',
+                severity: 'error',
+                message: `Entry ${idx} missing copy object`,
+                context: `entry[${idx}]`,
+              });
+            } else {
+              if (!copy.en || typeof copy.en !== 'string' || copy.en.trim().length === 0) {
+                issues.push({
+                  code: 'bilingual_missing',
+                  severity: 'error',
+                  message: `Entry ${idx} missing copy.en`,
+                  context: `entry[${idx}].copy.en`,
+                });
+              }
+              if (!copy.vi || typeof copy.vi !== 'string' || copy.vi.trim().length === 0) {
+                issues.push({
+                  code: 'bilingual_missing',
+                  severity: 'error',
+                  message: `Entry ${idx} missing copy.vi`,
+                  context: `entry[${idx}].copy.vi`,
+                });
+              }
+            }
+            
+            // Check keywords
+            const keywordsEn = entry.keywords_en;
+            const keywordsVi = entry.keywords_vi;
+            
+            if (!Array.isArray(keywordsEn) || keywordsEn.length < 3 || keywordsEn.length > 5) {
+              issues.push({
+                code: 'keywords_invalid',
+                severity: 'warning',
+                message: `Entry ${idx} keywords_en should have 3-5 items`,
+                context: `entry[${idx}].keywords_en`,
+              });
+            }
+            
+            if (!Array.isArray(keywordsVi) || keywordsVi.length < 3 || keywordsVi.length > 5) {
+              issues.push({
+                code: 'keywords_invalid',
+                severity: 'warning',
+                message: `Entry ${idx} keywords_vi should have 3-5 items`,
+                context: `entry[${idx}].keywords_vi`,
+              });
+            }
+            
+            // Check tags
+            if (!Array.isArray(entry.tags) || entry.tags.length === 0) {
+              issues.push({
+                code: 'tags_missing',
+                severity: 'info',
+                message: `Entry ${idx} missing tags array`,
+                context: `entry[${idx}].tags`,
+              });
+            }
+            
+            // Check severity
+            const severity = entry.severity_level;
+            if (severity == null || typeof severity !== 'number' || severity < 1 || severity > 5) {
+              issues.push({
+                code: 'severity_invalid',
+                severity: 'warning',
+                message: `Entry ${idx} severity_level should be 1-5`,
+                context: `entry[${idx}].severity_level`,
+              });
+            }
+            
+            // Check audio
+            const audio = entry.audio;
+            if (audio && typeof audio === 'string' && audio.trim().length > 0) {
+              if (audio.includes('/')) {
+                issues.push({
+                  code: 'audio_path_has_folder',
+                  severity: 'warning',
+                  message: `Entry ${idx} audio contains folder path`,
+                  context: `entry[${idx}].audio`,
+                });
+              }
+              entriesWithAudio++;
+            } else if (audio && typeof audio === 'object') {
+              issues.push({
+                code: 'audio_path_has_folder',
+                severity: 'warning',
+                message: `Entry ${idx} audio is object, should be string`,
+                context: `entry[${idx}].audio`,
+              });
+            }
+          });
+          
+          // Check All entry
+          if (!hasAllEntry) {
+            issues.push({
+              code: 'all_entry_missing',
+              severity: 'warning',
+              message: 'Missing "All" entry',
+            });
+          }
+          
+          // Calculate audio coverage
+          audioCoverage = entries.length > 0 
+            ? Math.round((entriesWithAudio / entries.length) * 100)
+            : 0;
+          
+          // Adjust health score based on issues
+          const errorCount = issues.filter(i => i.severity === 'error').length;
+          const warningCount = issues.filter(i => i.severity === 'warning').length;
+          
+          healthScore -= (errorCount * 10);
+          healthScore -= (warningCount * 3);
+          healthScore = Math.max(0, Math.min(100, healthScore));
+        }
+        
+        roomDetails.push({
+          room_id: room.id,
+          issues,
+          health_score: healthScore,
+          audio_coverage: audioCoverage,
+        });
+      }
+    }
+
     // Check for VIP tiers with 0 rooms (only if not filtering by specific tier)
     if (!tierFilter) {
       const vipTiers = ['vip1', 'vip2', 'vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'];
@@ -168,6 +359,7 @@ serve(async (req) => {
       byTier,
       vip_track_gaps: trackGaps,
       tier_counts: tierCounts,
+      room_details: roomDetails.length > 0 ? roomDetails : undefined,
     };
 
     console.log('[room-health-summary] Returning response:', JSON.stringify(response, null, 2));

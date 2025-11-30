@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 // Tabs component removed - using unified tier dropdown instead
-import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench, Download, Play, Volume2, FileText, Trash2, RefreshCw, FileEdit, Music } from "lucide-react";
+import { AlertCircle, CheckCircle2, XCircle, ArrowLeft, Loader2, Wrench, Download, Play, Volume2, FileText, Trash2, RefreshCw, FileEdit, Music, Search } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
@@ -209,6 +209,14 @@ export default function UnifiedHealthCheck() {
   // Missing audio scanner state
   const [scanningMissingAudio, setScanningMissingAudio] = useState(false);
   const [audioScanResults, setAudioScanResults] = useState<AudioScanResult | null>(null);
+  
+  // Auto-fix state
+  const [autoFixing, setAutoFixing] = useState(false);
+  const [autoFixResults, setAutoFixResults] = useState<any[]>([]);
+  
+  // Design violations state
+  const [designViolations, setDesignViolations] = useState<any>(null);
+  const [loadingDesignScan, setLoadingDesignScan] = useState(false);
   
   // Kids room filtering state (for kids tiers only)
   const [selectedLevel, setSelectedLevel] = useState<string>("all");
@@ -2903,11 +2911,23 @@ export default function UnifiedHealthCheck() {
               )}
             </Button>
 
-            <Button 
-              onClick={scanMissingAudio}
-              disabled={loading || deepScanning || scanningMissingAudio}
-              className="bg-orange-600 hover:bg-orange-700 text-white border-2 border-orange-600"
-            >
+              {deepScanReport.length > 0 && (
+                <Button
+                  onClick={handleAutoFix}
+                  disabled={autoFixing}
+                  className="bg-green-600 hover:bg-green-700"
+                >
+                  {autoFixing ? 'Fixing...' : 'Auto-Fix All'}
+                </Button>
+              )}
+              
+              <Button
+                onClick={loadDesignViolations}
+                disabled={loadingDesignScan}
+                className="bg-purple-600 hover:bg-purple-700"
+              >
+                {loadingDesignScan ? 'Scanning...' : 'Scan Design'}
+              </Button>
               {scanningMissingAudio ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
