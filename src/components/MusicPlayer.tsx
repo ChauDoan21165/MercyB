@@ -340,11 +340,14 @@ export const MusicPlayer = () => {
       isPlaying,
       currentTrackName: isPlaying ? currentTrack?.name : undefined,
     });
+  }, [isPlaying, currentTrack?.name, updateFromPlayer]);
 
+  // Reset state on unmount only
+  useEffect(() => {
     return () => {
       updateFromPlayer({ isPlaying: false, currentTrackName: undefined });
     };
-  }, [isPlaying, currentTrack?.name, updateFromPlayer]);
+  }, [updateFromPlayer]);
 
   return (
     <div className="fixed bottom-0 left-0 right-0 h-[50px] bg-white border-t-2 border-black z-50">
