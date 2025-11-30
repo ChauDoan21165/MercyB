@@ -78,32 +78,21 @@ This document tracks Row-Level Security (RLS) policies for critical tables in th
 
 ---
 
-### ⚠️ `access_codes` Table
+### ✅ `access_codes` Table
 
-**Current Status:** NEEDS IMPROVEMENT - Codes are enumerable
+**Current Status:** Properly secured - Fixed enumeration vulnerability
 
 - [x] RLS enabled
+- [x] SELECT: Users can view only their assigned codes or public codes (via `for_user_id IS NULL OR for_user_id = auth.uid()`)
 - [x] SELECT: Admins can view all codes (via `has_role(auth.uid(), 'admin')`)
-- [ ] **ISSUE:** SELECT: Authenticated users can view ALL active codes (not restricted to intended user)
 - [x] INSERT: Admin only (via `has_role(auth.uid(), 'admin')`)
 - [x] UPDATE: Admin only (via `has_role(auth.uid(), 'admin')`)
 - [x] DELETE: Admin only (via `has_role(auth.uid(), 'admin')`)
 
-**Security Recommendation:**
-```sql
--- Fix: Restrict SELECT to only show codes for the user or public codes
-DROP POLICY "Authenticated users can view active codes for redemption" ON access_codes;
-
-CREATE POLICY "Users can view their assigned codes or public codes"
-ON access_codes
-FOR SELECT
-TO authenticated
-USING (
-  (is_active = true) 
-  AND ((expires_at IS NULL) OR (expires_at > now()))
-  AND (for_user_id IS NULL OR for_user_id = auth.uid())
-);
-```
+**Security Notes:**
+- Fixed: Users can no longer enumerate all active access codes
+- Codes are restricted to intended recipients or public codes only
+- Admins retain full visibility for management
 
 ---
 
@@ -189,10 +178,8 @@ All SECURITY DEFINER functions MUST have explicit `SET search_path = public`:
 - [x] `check_usage_limit()` - ✅ Has search_path
 - [x] `is_user_blocked()` - ✅ Has search_path
 - [x] `check_rate_limit()` - ✅ Has search_path
-- [ ] `update_kids_updated_at_column()` - ⚠️ Missing search_path
-- [ ] `update_app_settings_updated_at()` - ⚠️ Missing search_path
-
-**Action Required:** Add `SET search_path = public` to the two functions above.
+- [x] `update_kids_updated_at_column()` - ✅ Has search_path (fixed)
+- [x] `update_app_settings_updated_at()` - ✅ Has search_path (fixed)
 
 ---
 
@@ -202,6 +189,18 @@ All SECURITY DEFINER functions MUST have explicit `SET search_path = public`:
   - Navigate to: Lovable Cloud → Authentication → Password Settings
   - Toggle ON: "Leaked Password Protection"
   - This prevents users from using passwords found in breach databases
+  - **Status:** Awaiting manual configuration by admin
+
+---
+
+## Edge Function Security Checklist
+
+### ✅ Recently Fixed
+
+- [x] **system-metrics** - Now requires admin authentication
+- [x] **content-moderation** - Now derives userId from auth token, not request body
+- [x] **access_codes RLS** - Restricted to prevent enumeration attacks
+- [x] **Database functions** - Added search_path to prevent manipulation
 
 ---
 
