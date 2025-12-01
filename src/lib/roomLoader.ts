@@ -5,8 +5,7 @@ import { ROOMS_TABLE, AUDIO_FOLDER } from '@/lib/constants/rooms';
 import { normalizeTier, type TierId } from '@/lib/constants/tiers';
 import type { Database } from '@/integrations/supabase/types';
 import { logger } from './logger';
-
-// ... keep existing code (room loader implementation)
+import { useSWR } from './cache/swrCache';
 
 type RoomRow = Database['public']['Tables']['rooms']['Row'];
 
@@ -128,10 +127,23 @@ const loadFromJson = async (roomId: string) => {
 };
 
 /**
- * Main room loader - optimized for fast loading with tier-based access control
- * SECURITY: Fetches authenticated user tier internally, never trusts caller
+ * Main room loader with SWR caching - returns cached data instantly, revalidates in background
  */
 export const loadMergedRoom = async (roomId: string) => {
+  const cacheKey = `room:${roomId}`;
+  
+  return useSWR({
+    key: cacheKey,
+    fetcher: () => loadMergedRoomInternal(roomId),
+    ttl: 5 * 60 * 1000, // 5 minutes
+  });
+};
+
+/**
+ * Internal room loader - optimized for fast loading with tier-based access control
+ * SECURITY: Fetches authenticated user tier internally, never trusts caller
+ */
+const loadMergedRoomInternal = async (roomId: string) => {
   const startTime = performance.now();
   const { canUserAccessRoom } = await import('./accessControl');
 

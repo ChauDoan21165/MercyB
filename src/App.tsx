@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -16,6 +16,7 @@ import { LowDataModeProvider } from "@/contexts/LowDataModeContext";
 import { MusicPlayer } from "@/components/MusicPlayer";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { OfflineDetector } from "@/components/OfflineDetector";
+import { PerformanceProfiler } from "@/lib/performance/profiler";
 
 import Welcome from "./pages/Welcome";
 import Homepage from "./pages/Homepage";
@@ -158,7 +159,9 @@ const App = () => {
                   </header>
                   
                   <GlobalPlayingIndicator />
-        <Routes>
+                  <PerformanceProfiler />
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-muted-foreground">Loading...</div>}>
+          <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/onboarding" element={<OnboardingFlow />} />
           <Route path="/tiers" element={<Tiers />} />
@@ -247,6 +250,7 @@ const App = () => {
           <Route path="/refund" element={<Refund />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </Suspense>
         <MusicPlayer />
                 </BrowserRouter>
               </MusicPlayerProvider>

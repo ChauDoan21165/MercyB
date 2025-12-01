@@ -15,7 +15,7 @@ interface Room {
  * @param rooms - Array of rooms to prefetch
  * @param maxPrefetch - Maximum number of rooms to prefetch (default: 5)
  */
-export function usePrefetchRooms(rooms: Room[], maxPrefetch = 5) {
+export function usePrefetchRooms(rooms: Room[], maxPrefetch = 5, onHover = false) {
   const queryClient = useQueryClient();
 
   useEffect(() => {
@@ -24,8 +24,7 @@ export function usePrefetchRooms(rooms: Room[], maxPrefetch = 5) {
     // Prefetch the first N rooms that users are most likely to click
     const roomsToPrefetch = rooms.slice(0, maxPrefetch);
 
-    roomsToPrefetch.forEach((room) => {
-      // Only prefetch if not already in cache
+    const prefetchRoom = (room: Room) => {
       if (!queryClient.getQueryData(['room', room.id])) {
         queryClient.prefetchQuery({
           queryKey: ['room', room.id],
@@ -33,6 +32,21 @@ export function usePrefetchRooms(rooms: Room[], maxPrefetch = 5) {
           staleTime: 5 * 60 * 1000, // 5 minutes
         });
       }
-    });
-  }, [rooms, maxPrefetch, queryClient]);
+    };
+
+    if (!onHover) {
+      // Immediate prefetch
+      roomsToPrefetch.forEach(prefetchRoom);
+    } else {
+      // Prefetch on hover/interaction
+      roomsToPrefetch.forEach((room) => {
+        const elements = document.querySelectorAll(`[data-room-id="${room.id}"]`);
+        elements.forEach((el) => {
+          const handleHover = () => prefetchRoom(room);
+          el.addEventListener('mouseenter', handleHover, { once: true });
+          el.addEventListener('touchstart', handleHover, { once: true, passive: true });
+        });
+      });
+    }
+  }, [rooms, maxPrefetch, onHover, queryClient]);
 }
