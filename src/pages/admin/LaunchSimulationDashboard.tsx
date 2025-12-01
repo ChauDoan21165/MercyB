@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Loader2, PlayCircle, CheckCircle2, XCircle, AlertCircle, Download } from 'lucide-react';
-import AdminButton from '@/components/design-system/AdminButton';
+import { AdminButton } from '@/components/design-system/AdminButton';
 import { runFullSimulation } from '@/simulator/runFullSimulation';
 import type { LaunchReport } from '@/simulator/LaunchReportBuilder';
 
