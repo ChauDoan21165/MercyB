@@ -26,6 +26,8 @@ export interface RegistryRoom {
   tier: string;
   domain?: string;
   is_active: boolean;
+  hasData: boolean;
+  entries?: any[]; // For compatibility with existing code
   // Additional DB fields can be added as optional
 }
 
@@ -73,6 +75,8 @@ async function fetchRegistryVipRooms(tierId: TierId): Promise<RegistryRoom[]> {
       tier: tierLabel, // Use canonical tier label
       domain: dbRoom?.domain,
       is_active: dbRoom?.is_active !== false, // Default true if no DB row
+      hasData: registryRoom.hasData !== false, // From registry - rooms in registry have data
+      entries: registryRoom.entries, // Pass through entries if available
     };
   });
 
