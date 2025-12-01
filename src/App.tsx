@@ -19,6 +19,8 @@ import { OfflineDetector } from "@/components/OfflineDetector";
 import { PerformanceProfiler } from "@/lib/performance/profiler";
 import { LoadingSkeleton } from "@/components/ui/loading-skeleton";
 import { preloadCriticalRoutes } from "@/lib/performance";
+import { DevObservabilityPanel } from "@/components/dev/DevObservabilityPanel";
+import { logger } from "@/lib/logger";
 
 // Critical pages - loaded immediately
 import Welcome from "./pages/Welcome";
@@ -130,6 +132,13 @@ const queryClient = new QueryClient({
 
 const App = () => {
   useEffect(() => {
+    // Log app startup
+    logger.info('App initialized', {
+      scope: 'App',
+      validationMode: import.meta.env.VITE_MB_VALIDATION_MODE || 'strict',
+      environment: import.meta.env.DEV ? 'development' : 'production',
+    });
+
     // Remove tracking parameters from URL if present
     const url = new URL(window.location.href);
     const trackingParams = [
@@ -174,6 +183,7 @@ const App = () => {
               <Toaster />
               <Sonner />
               <OfflineDetector />
+              <DevObservabilityPanel />
               <MusicPlayerProvider>
                 <BrowserRouter>
                   <EnvironmentBanner />
