@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
+import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
 import { useUserAccess } from "@/hooks/useUserAccess";
@@ -32,6 +33,7 @@ const RoomGridVIP4 = () => {
   const { canAccessVIP4, isAdmin, loading: accessLoading } = useUserAccess();
   const { toast } = useToast();
   const { rooms, loading, error, refresh } = useVipRooms('vip4');
+  const { mode } = useMercyBladeTheme({ defaultMode: "color" });
   
   // Prefetch first 5 rooms for instant navigation
   usePrefetchRooms(rooms || [], 5);
@@ -63,6 +65,7 @@ const RoomGridVIP4 = () => {
   return (
     <div className="min-h-screen">
       <ColorfulMercyBladeHeader
+        mode={mode}
         subtitle="VIP4 Career Consultance"
         showBackButton={true}
       />

@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
+import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
 import { CheckCircle2, Lock, Crown, Sparkles, RefreshCw, Building2, ChevronRight, Palette } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -29,6 +30,7 @@ const RoomGridVIP3 = () => {
   const { toast } = useToast();
   const { rooms, loading, error, refresh } = useVipRooms('vip3');
   const { useColorTheme, toggleColorMode } = useColorMode();
+  const { mode } = useMercyBladeTheme({ defaultMode: "color" });
   
   // Prefetch first 5 rooms for instant navigation
   usePrefetchRooms(rooms || [], 5);
@@ -59,6 +61,7 @@ const RoomGridVIP3 = () => {
   return (
     <div className="min-h-screen">
       <ColorfulMercyBladeHeader
+        mode={mode}
         subtitle="VIP3 Premium Rooms"
         showBackButton={true}
       />
