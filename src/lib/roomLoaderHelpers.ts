@@ -1,4 +1,14 @@
-// Helper functions for room loading - extracted for reusability and performance
+/**
+ * Helper functions for room loading - extracted for reusability and performance
+ * 
+ * CANONICAL ROOM ENTRY STRUCTURE (aligned with roomJsonResolver.ts and validation):
+ * - audio: entry.audio (string filename, no paths) OR legacy: audio_en, audioEn
+ * - copy: entry.copy.en + entry.copy.vi OR legacy: copy_en, copy_vi, essay.en, essay.vi
+ * - identifiers: entry.slug OR entry.id OR entry.artifact_id
+ * - keywords: entry.keywords_en (array) + entry.keywords_vi (array)
+ * 
+ * Legacy fallbacks are marked and minimal to support gradual migration.
+ */
 
 // Pre-compiled regex patterns for performance
 const LEADING_SLASHES = /^\/+/;
@@ -50,9 +60,12 @@ export const processAudioField = (audioRaw: any): { audioPath?: string; audioPla
 };
 
 /**
- * Extract audio from entry - handles various formats
+ * Extract audio from entry - canonical structure with minimal legacy fallbacks
+ * CANONICAL: entry.audio (string filename, no paths)
+ * LEGACY: audio_en, audioEn (deprecated - migrate to audio)
  */
 export const extractAudio = (entry: any): any => {
+  // Canonical field
   if (entry?.audio) {
     if (typeof entry.audio === 'object') {
       return entry.audio.en ?? entry.audio.vi ?? Object.values(entry.audio)[0];
@@ -60,20 +73,23 @@ export const extractAudio = (entry: any): any => {
     return entry.audio;
   }
   
-  // Fallback to other possible audio fields
-  return entry?.audio_en || entry?.audio_vi || entry?.audio_file || 
-         entry?.meta?.audio_file || entry?.audioFile || 
-         entry?.copy?.audio || entry?.content?.audio;
+  // Legacy fallbacks (deprecated)
+  return entry?.audio_en || entry?.audioEn || null;
 };
 
 /**
- * Extract content fields (essay/reply/copy) - handles various formats
+ * Extract content fields (essay/reply/copy) - canonical structure with minimal legacy fallbacks
+ * CANONICAL: entry.copy.en + entry.copy.vi
+ * LEGACY: copy_en, copy_vi, essay.en, essay.vi (deprecated - migrate to copy.en/vi)
  */
 export const extractContent = (entry: any) => {
-  const replyEn = entry.copy_en || entry.reply_en || entry.essay_en || entry.essay?.en || 
-                  entry.copy?.en || entry.content?.en || entry.content_en || '';
-  const replyVi = entry.copy_vi || entry.reply_vi || entry.essay_vi || entry.essay?.vi || 
-                  entry.copy?.vi || entry.content?.vi || entry.content_vi || '';
+  // Canonical nested structure
+  const replyEn = entry.copy?.en || 
+                  // Legacy flat fields (deprecated)
+                  entry.copy_en || entry.essay?.en || entry.essay_en || '';
+  const replyVi = entry.copy?.vi || 
+                  // Legacy flat fields (deprecated)
+                  entry.copy_vi || entry.essay?.vi || entry.essay_vi || '';
   
   return { replyEn, replyVi };
 };
