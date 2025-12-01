@@ -39,7 +39,6 @@ async function fetchStrictVipRooms(tierId: TierId): Promise<VipRoom[]> {
     .from(ROOMS_TABLE)
     .select('*')
     .eq('tier', tierLabel)         // STRICT: exact match only
-    .neq('is_active', false)        // Active rooms only
     .order('created_at', { ascending: false });
 
   if (error) {
