@@ -16,6 +16,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { guardedCall } from "@/lib/guardedCall";
 import { normalizeTier, tierIdToLabel, type TierId } from "@/lib/constants/tiers";
 import { UiHealthPanel } from "@/components/admin/UiHealthPanel";
+import { RoomLinkHealth } from "@/components/admin/RoomLinkHealth";
 import EnvironmentBanner from "@/components/admin/EnvironmentBanner";
 
 interface RoomIssue {
@@ -2878,6 +2879,9 @@ export default function UnifiedHealthCheck() {
           </div>
         </Card>
       )}
+
+      {/* Room Link Health - Check UI References vs Data */}
+      <RoomLinkHealth />
 
       {/* Unified Tier Selection */}
       <Card className="p-6">
