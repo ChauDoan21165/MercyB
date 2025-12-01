@@ -19,6 +19,30 @@
     <meta property="twitter:url" content="https://mercyblade.link/" />
     <meta property="twitter:title" content="Mercy Blade: English & Knowledge - Colors of Life" />
     <meta property="twitter:description" content="Learn English and explore knowledge across colors of life with 48 themed rooms for growth and discovery" />
+    
+    <!-- Theme Loader - Prevents flicker during hydration -->
+    <script>
+      (function() {
+        try {
+          const theme = localStorage.getItem('mercy-blade-theme') || 'system';
+          const root = document.documentElement;
+          
+          root.setAttribute('data-theme', theme);
+          
+          if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            root.classList.add('dark');
+          } else {
+            root.classList.remove('dark');
+          }
+          
+          if (theme === 'color') {
+            document.body.classList.add('mb-theme-color');
+          } else {
+            document.body.classList.add('mb-theme-bw');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
