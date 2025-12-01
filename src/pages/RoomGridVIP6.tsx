@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { RoomHeader } from "@/components/RoomHeader";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { useNavigate } from "react-router-dom";
@@ -52,6 +53,7 @@ const RoomGridVIP6 = () => {
 
   return (
     <div className="min-h-screen">
+      <ColorfulMercyBladeHeader />
       <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip6))' }}>
         <div className="container mx-auto px-4 py-8 max-w-7xl">
           <RoomHeader title="VIP6 — Shadow & Deep Psychology" tier="VIP6" />

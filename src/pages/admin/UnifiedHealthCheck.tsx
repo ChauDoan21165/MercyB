@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -2527,6 +2528,7 @@ export default function UnifiedHealthCheck() {
 
   return (
     <>
+      <ColorfulMercyBladeHeader subtitle="Room Health Check" />
       <EnvironmentBanner />
       <div className="container mx-auto p-6 space-y-6">
       <div className="flex items-center justify-between">
