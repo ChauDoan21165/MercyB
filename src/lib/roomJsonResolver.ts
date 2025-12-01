@@ -187,6 +187,10 @@ export function validateRoomJson(data: any, roomId: string, filename: string, mo
  * Tries paths in order of preference, validates strictly
  */
 export async function resolveRoomJsonPath(roomId: string): Promise<string> {
+  const MODE =
+    import.meta.env.VITE_MB_VALIDATION_MODE ||
+    (import.meta.env.MODE === "production" ? "strict" : "wip");
+
   // 1. Try manifest path first (already validated during registry generation)
   if (PUBLIC_ROOM_MANIFEST[roomId]) {
     const manifestPath = PUBLIC_ROOM_MANIFEST[roomId];
@@ -197,7 +201,7 @@ export async function resolveRoomJsonPath(roomId: string): Promise<string> {
       });
       if (response.ok) {
         const data = await response.json();
-        validateRoomJson(data, roomId, manifestPath);
+        validateRoomJson(data, roomId, manifestPath, MODE);
         return manifestPath;
       }
     } catch (error) {
@@ -214,7 +218,7 @@ export async function resolveRoomJsonPath(roomId: string): Promise<string> {
     });
     if (response.ok) {
       const data = await response.json();
-      validateRoomJson(data, roomId, canonicalPath);
+      validateRoomJson(data, roomId, canonicalPath, MODE);
       return canonicalPath;
     }
   } catch (error) {
@@ -234,6 +238,10 @@ export async function resolveRoomJsonPath(roomId: string): Promise<string> {
  * Load and validate room JSON data
  */
 export async function loadRoomJson(roomId: string): Promise<any> {
+  const MODE =
+    import.meta.env.VITE_MB_VALIDATION_MODE ||
+    (import.meta.env.MODE === "production" ? "strict" : "wip");
+
   const path = await resolveRoomJsonPath(roomId);
   const cacheBuster = Date.now();
   const response = await fetch(`/${path}?t=${cacheBuster}`, {
@@ -250,7 +258,12 @@ export async function loadRoomJson(roomId: string): Promise<any> {
   }
 
   const data = await response.json();
-  validateRoomJson(data, roomId, path);
+  validateRoomJson(data, roomId, path, MODE);
+
+  // Dev console audit logs
+  if (import.meta.env.MODE !== "production") {
+    console.log(`🔍 [RoomJson] Loaded: ${roomId} | Mode: ${MODE} | File: ${path}`);
+  }
   
   return data;
 }

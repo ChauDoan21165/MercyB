@@ -16,6 +16,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { guardedCall } from "@/lib/guardedCall";
 import { normalizeTier, tierIdToLabel, type TierId } from "@/lib/constants/tiers";
 import { UiHealthPanel } from "@/components/admin/UiHealthPanel";
+import EnvironmentBanner from "@/components/admin/EnvironmentBanner";
 
 interface RoomIssue {
   roomId: string;
@@ -2507,7 +2508,9 @@ export default function UnifiedHealthCheck() {
   };
 
   return (
-    <div className="container mx-auto p-6 space-y-6">
+    <>
+      <EnvironmentBanner />
+      <div className="container mx-auto p-6 space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <Link to="/admin/health-dashboard">
@@ -3681,5 +3684,6 @@ export default function UnifiedHealthCheck() {
         </Card>
       )}
     </div>
+    </>
   );
 }

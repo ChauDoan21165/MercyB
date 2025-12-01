@@ -1,0 +1,18 @@
+name: Validate JSON
+
+on:
+  pull_request:
+    branches: ["main", "production"]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      VITE_MB_VALIDATION_MODE: strict
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm install
+      - run: node scripts/validate-json.js
