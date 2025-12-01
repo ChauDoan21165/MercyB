@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { AdminLayout } from "@/components/admin/AdminLayout";
+import EnvironmentBanner from "@/components/admin/EnvironmentBanner";
 
 interface LiveMetrics {
   totalUsers: number;
@@ -262,6 +263,7 @@ const AdminDashboard = () => {
 
   return (
     <AdminLayout>
+      <EnvironmentBanner />
       <div className="container mx-auto max-w-7xl px-4 py-6 space-y-8">
         {/* Header */}
         <div>
