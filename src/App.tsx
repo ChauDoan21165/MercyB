@@ -103,6 +103,8 @@ import EnvironmentBanner from "./components/admin/EnvironmentBanner";
 
 const queryClient = new QueryClient();
 
+import SystemLogs from "./pages/admin/SystemLogs";
+
 const App = () => {
   useEffect(() => {
     // Remove tracking parameters from URL if present
@@ -234,6 +236,7 @@ const App = () => {
           <Route path="/admin/feature-flags" element={<AdminRoute><FeatureFlags /></AdminRoute>} />
           <Route path="/admin/audio-audit" element={<AdminRoute><AudioAssetAuditor /></AdminRoute>} />
           <Route path="/admin/user-support" element={<AdminRoute><UserSupportConsole /></AdminRoute>} />
+          <Route path="/admin/system-logs" element={<AdminRoute><SystemLogs /></AdminRoute>} />
           <Route path="/tier-map" element={<TierMap />} />
           <Route path="/audio-upload" element={<AudioUpload />} />
           <Route path="/kids-validation" element={<KidsRoomValidation />} />

@@ -4,9 +4,9 @@ import { processEntriesOptimized } from './roomLoaderHelpers';
 import { ROOMS_TABLE, AUDIO_FOLDER } from '@/lib/constants/rooms';
 import { normalizeTier, type TierId } from '@/lib/constants/tiers';
 import type { Database } from '@/integrations/supabase/types';
+import { logger } from './logger';
 
-// Optional: if you want to plug hygiene checks later
-// import { validateRoom } from '@/lib/validation/roomValidator';
+// ... keep existing code (room loader implementation)
 
 type RoomRow = Database['public']['Tables']['rooms']['Row'];
 
@@ -132,149 +132,163 @@ const loadFromJson = async (roomId: string) => {
  * SECURITY: Fetches authenticated user tier internally, never trusts caller
  */
 export const loadMergedRoom = async (roomId: string) => {
+  const startTime = performance.now();
   const { canUserAccessRoom } = await import('./accessControl');
 
-  // 1. Get authenticated user
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  try {
+    // 1. Get authenticated user
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
-  if (!user) {
-    throw new Error('AUTHENTICATION_REQUIRED');
-  }
+    if (!user) {
+      throw new Error('AUTHENTICATION_REQUIRED');
+    }
 
-  // 2. Check admin status via has_role RPC
-  const { data: isAdminRpc, error: adminError } = await supabase.rpc('has_role', {
-    _role: 'admin',
-    _user_id: user.id,
-  });
+    // 2. Check admin status via has_role RPC
+    const { data: isAdminRpc, error: adminError } = await supabase.rpc('has_role', {
+      _role: 'admin',
+      _user_id: user.id,
+    });
 
-  if (adminError) {
-    console.error('[roomLoader] Error checking admin role via has_role RPC:', adminError);
-  }
+    if (adminError) {
+      logger.error('Error checking admin role', { scope: 'roomLoader', error: adminError.message });
+    }
 
-  const isAdmin = !!isAdminRpc;
+    const isAdmin = !!isAdminRpc;
 
-  // 3. Get user's tier from database
-  const { data: subscription } = await supabase
-    .from('user_subscriptions')
-    .select('subscription_tiers(name)')
-    .eq('user_id', user.id)
-    .eq('status', 'active')
-    .maybeSingle();
+    // 3. Get user's tier from database
+    const { data: subscription } = await supabase
+      .from('user_subscriptions')
+      .select('subscription_tiers(name)')
+      .eq('user_id', user.id)
+      .eq('status', 'active')
+      .maybeSingle();
 
-  const rawUserTier = (subscription?.subscription_tiers as any)?.name || 'Free / Miễn phí';
-  const baseTier: TierId = normalizeTier(rawUserTier);
-  const normalizedUserTier: TierId = isAdmin ? 'vip9' : baseTier;
+    const rawUserTier = (subscription?.subscription_tiers as any)?.name || 'Free / Miễn phí';
+    const baseTier: TierId = normalizeTier(rawUserTier);
+    const normalizedUserTier: TierId = isAdmin ? 'vip9' : baseTier;
 
-  // Special handling for Kids tiers
-  const isUserKidsTier = baseTier === 'kids_1' || baseTier === 'kids_2' || baseTier === 'kids_3';
+    // Special handling for Kids tiers
+    const isUserKidsTier = baseTier === 'kids_1' || baseTier === 'kids_2' || baseTier === 'kids_3';
 
-  // 4. Normalize room ID
-  const dbRoomId = normalizeRoomId(roomId);
+    // 4. Normalize room ID
+    const dbRoomId = normalizeRoomId(roomId);
+
+    // 5. Try database first
+    try {
+      const dbResult = await loadFromDatabase(dbRoomId);
   
-  // Removed console logging for production
-
-  // 5. Try database first
-  try {
-    const dbResult = await loadFromDatabase(dbRoomId);
- 
-    if (dbResult) {
-      // Safety net: if keyword menu is empty but merged entries exist,
-      // rebuild keyword menu from entry-level keywordEn/keywordVi fields
-      if (
-        dbResult.keywordMenu &&
-        Array.isArray(dbResult.merged) &&
-        dbResult.merged.length > 0 &&
-        (!dbResult.keywordMenu.en || dbResult.keywordMenu.en.length === 0)
-      ) {
-        const fallbackEn: string[] = [];
-        const fallbackVi: string[] = [];
- 
-        (dbResult.merged as any[]).forEach((entry) => {
-          const en = String(entry.keywordEn || entry.slug || entry.identifier || '').trim();
-          const vi = String(entry.keywordVi || entry.keywordEn || entry.slug || '').trim();
- 
-          if (en) {
-            fallbackEn.push(en);
-            fallbackVi.push(vi);
+      if (dbResult) {
+        // Safety net: if keyword menu is empty but merged entries exist,
+        // rebuild keyword menu from entry-level keywordEn/keywordVi fields
+        if (
+          dbResult.keywordMenu &&
+          Array.isArray(dbResult.merged) &&
+          dbResult.merged.length > 0 &&
+          (!dbResult.keywordMenu.en || dbResult.keywordMenu.en.length === 0)
+        ) {
+          const fallbackEn: string[] = [];
+          const fallbackVi: string[] = [];
+  
+          (dbResult.merged as any[]).forEach((entry) => {
+            const en = String(entry.keywordEn || entry.slug || entry.identifier || '').trim();
+            const vi = String(entry.keywordVi || entry.keywordEn || entry.slug || '').trim();
+  
+            if (en) {
+              fallbackEn.push(en);
+              fallbackVi.push(vi);
+            }
+          });
+  
+          dbResult.keywordMenu = {
+            en: fallbackEn,
+            vi: fallbackVi,
+          };
+        }
+  
+        const normalizedRoomTier = dbResult.roomTier ?? ('free' as TierId);
+        const isRoomKidsTier = 
+          normalizedRoomTier === 'kids_1' || 
+          normalizedRoomTier === 'kids_2' || 
+          normalizedRoomTier === 'kids_3';
+        
+        // 6. Enforce access control using authenticated tier (admins bypass)
+        if (!isAdmin) {
+          if (isUserKidsTier && !isRoomKidsTier) {
+            throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
           }
-        });
- 
-        dbResult.keywordMenu = {
-          en: fallbackEn,
-          vi: fallbackVi,
-        };
-      }
- 
-      const normalizedRoomTier = dbResult.roomTier ?? ('free' as TierId);
-      const isRoomKidsTier = 
-        normalizedRoomTier === 'kids_1' || 
-        normalizedRoomTier === 'kids_2' || 
-        normalizedRoomTier === 'kids_3';
-      
-      // Access check performed internally
- 
-      // 6. Enforce access control using authenticated tier (admins bypass)
-      // Special Kids tier logic:
-      // - Kids tier users can ONLY access kids rooms (not adult VIP rooms)
-      // - Adult VIP users (parents) CAN access kids rooms for family accounts
-      // - Admins can access everything
-      if (!isAdmin) {
-        // If user has a kids tier, block access to non-kids rooms
-        if (isUserKidsTier && !isRoomKidsTier) {
-          throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
+          
+          if (!canUserAccessRoom(normalizedUserTier, normalizedRoomTier)) {
+            throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
+          }
         }
+  
+        // Log successful load with performance
+        const duration = performance.now() - startTime;
+        logger.roomLoad(roomId, duration, true, { source: 'database', entryCount: dbResult.merged.length });
         
-        // Standard tier access check (allows parents with VIP to access kids rooms)
-        if (!canUserAccessRoom(normalizedUserTier, normalizedRoomTier)) {
-          throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
-        }
+        return dbResult;
       }
- 
-      return dbResult;
+    } catch (dbError: any) {
+      if (dbError?.message === 'ACCESS_DENIED_INSUFFICIENT_TIER') {
+        throw dbError;
+      }
+      // Database load failed, continue to JSON fallback
     }
-  } catch (dbError: any) {
-    if (dbError?.message === 'ACCESS_DENIED_INSUFFICIENT_TIER') {
-      throw dbError;
-    }
-    // Database load failed, continue to JSON fallback
-  }
 
-  // 7. Fallback to JSON files (with tier enforcement)
-  try {
-    const jsonResult = await loadFromJson(roomId);
-    if (jsonResult) {
-      const isRoomKidsTierJson = 
-        jsonResult.roomTier === 'kids_1' || 
-        jsonResult.roomTier === 'kids_2' || 
-        jsonResult.roomTier === 'kids_3';
-      
-      // Enforce tier access for JSON rooms too (admins bypass)
-      if (jsonResult.roomTier && !isAdmin) {
-        // Block kids tier users from accessing adult rooms
-        if (isUserKidsTier && !isRoomKidsTierJson) {
-          throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
+    // 7. Fallback to JSON files (with tier enforcement)
+    try {
+      const jsonResult = await loadFromJson(roomId);
+      if (jsonResult) {
+        const isRoomKidsTierJson = 
+          jsonResult.roomTier === 'kids_1' || 
+          jsonResult.roomTier === 'kids_2' || 
+          jsonResult.roomTier === 'kids_3';
+        
+        // Enforce tier access for JSON rooms too (admins bypass)
+        if (jsonResult.roomTier && !isAdmin) {
+          if (isUserKidsTier && !isRoomKidsTierJson) {
+            throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
+          }
+          
+          if (!canUserAccessRoom(normalizedUserTier, jsonResult.roomTier)) {
+            throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
+          }
         }
         
-        // Standard tier check (allows parents to access kids rooms)
-        if (!canUserAccessRoom(normalizedUserTier, jsonResult.roomTier)) {
-          throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
-        }
+        // Log successful load with performance
+        const duration = performance.now() - startTime;
+        logger.roomLoad(roomId, duration, true, { source: 'json', entryCount: jsonResult.merged.length });
+        
+        return jsonResult;
       }
-      return jsonResult;
+    } catch (error: any) {
+      if (error?.message === 'ACCESS_DENIED_INSUFFICIENT_TIER') {
+        throw error;
+      }
+      // Failed to load room from both database and JSON
     }
+
+    // 8. Empty fallback - log failure
+    const duration = performance.now() - startTime;
+    logger.roomLoad(roomId, duration, false, { error: 'Room not found in database or JSON' });
+
+    return {
+      merged: [],
+      keywordMenu: { en: [], vi: [] },
+      audioBasePath: AUDIO_BASE_PATH,
+    };
   } catch (error: any) {
-    if (error?.message === 'ACCESS_DENIED_INSUFFICIENT_TIER') {
-      throw error;
-    }
-    // Failed to load room from both database and JSON
+    // Log error and re-throw
+    const duration = performance.now() - startTime;
+    logger.error('Room load error', {
+      scope: 'roomLoader',
+      roomId,
+      duration_ms: duration,
+      error: error.message,
+      errorStack: error.stack,
+    });
+    throw error;
   }
-
-  // 8. Empty fallback
-  return {
-    merged: [],
-    keywordMenu: { en: [], vi: [] },
-    audioBasePath: AUDIO_BASE_PATH,
-  };
 };
