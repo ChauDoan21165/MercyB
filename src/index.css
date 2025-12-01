@@ -1,10 +1,10 @@
+/* Import global theme CSS - must come first */
+@import './styles/theme.css';
+@import './styles/scrollbar.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Import global theme CSS */
-@import './styles/theme.css';
-@import './styles/scrollbar.css';
 
 /* ============================================
    MERCY BLADE DESIGN SYSTEM V2.0
