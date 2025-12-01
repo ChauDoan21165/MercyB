@@ -20,7 +20,6 @@ import { RoomErrorState } from "@/components/RoomErrorState";
 import { useUiHealthReporter } from "@/hooks/useUiHealthReporter";
 import { RoomHeader } from "@/components/RoomHeader";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
-
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useCredits } from "@/hooks/useCredits";
 import { CreditLimitModal } from "@/components/CreditLimitModal";
@@ -38,7 +37,6 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { getTierRoute } from "@/lib/tierRoutes";
 import { useFavoriteRooms } from "@/hooks/useFavoriteRooms";
 import { useRecentRooms } from "@/hooks/useRecentRooms";
-import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { Heart, Star, History, Clock } from "lucide-react";
 import {
   DropdownMenu,

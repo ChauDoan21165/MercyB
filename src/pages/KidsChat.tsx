@@ -14,6 +14,8 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { User, Copy, ChevronDown, ChevronUp, Lock } from "lucide-react";
 import { ProfileAvatarUpload } from "@/components/ProfileAvatarUpload";
 import { KIDS_TIER_IDS, type KidsTierId } from "@/lib/constants/tiers";
+import { MercyBladeThemeToggle } from "@/components/MercyBladeThemeToggle";
+import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
 
 interface KidsRoom {
   id: string;
@@ -238,6 +240,7 @@ const KidsChat = () => {
   const [userSubscription, setUserSubscription] = useState<KidsSubscription | null>(null);
   const [roomsExplored, setRoomsExplored] = useState<number>(0);
   const [showRoomSpec, setShowRoomSpec] = useState(false);
+  const { isColor } = useMercyBladeTheme();
 
   const fetchUserData = async () => {
     try {
@@ -457,15 +460,18 @@ const KidsChat = () => {
             Back / Quay lại
           </Button>
           
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={fetchRoomData}
-            className="flex items-center gap-2"
-          >
-            <RefreshCw className="h-4 w-4" />
-            Refresh
-          </Button>
+          <div className="flex items-center gap-2">
+            <MercyBladeThemeToggle variant="outline" size="sm" />
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={fetchRoomData}
+              className="flex items-center gap-2"
+            >
+              <RefreshCw className="h-4 w-4" />
+              Refresh
+            </Button>
+          </div>
         </div>
       </div>
       
