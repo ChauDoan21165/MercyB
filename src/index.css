@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import global theme CSS */
+@import './styles/theme.css';
+@import './styles/scrollbar.css';
+
 /* ============================================
    MERCY BLADE DESIGN SYSTEM V2.0
    Apple-quality polish tokens
