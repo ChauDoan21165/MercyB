@@ -9,7 +9,7 @@ import { getRoomColor } from "@/lib/roomColors";
 import { highlightShortTitle } from "@/lib/wordColorHighlighter";
 import { useLowDataMode } from "@/contexts/LowDataModeContext";
 import { Button } from "@/components/ui/button";
-import { useColorMode } from "@/hooks/useColorMode";
+import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
 import { ROOM_GRID_CLASS } from "@/lib/constants/rooms";
 
 interface RoomData {

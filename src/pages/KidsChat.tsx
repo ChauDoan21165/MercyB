@@ -5,9 +5,8 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ArrowLeft, RefreshCw } from "lucide-react";
-import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
+import { RoomHeader } from "@/components/RoomHeader";
 import { useToast } from "@/hooks/use-toast";
-import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { HighlightedContent } from "@/components/HighlightedContent";
 import { MessageActions } from "@/components/MessageActions";
@@ -234,9 +233,6 @@ const KidsChat = () => {
   const [roomsExplored, setRoomsExplored] = useState<number>(0);
   const [showRoomSpec, setShowRoomSpec] = useState(false);
 
-  // Global theme mode
-  const { mode } = useMercyBladeTheme({ defaultMode: "color" });
-
   const fetchUserData = async () => {
     try {
       const { data: { user } } = await supabase.auth.getUser();
@@ -437,8 +433,10 @@ const KidsChat = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="border-b">
-        <div className="container mx-auto px-4 py-2 max-w-6xl flex items-center justify-between">
+      <div className="container mx-auto px-4 py-6 max-w-6xl">
+        <RoomHeader title={`${room.title_en} / ${room.title_vi}`} tier={userSubscription?.kids_levels.name_en || "Kids"} />
+        
+        <div className="flex items-center justify-between mb-4">
           <Button
             variant="outline"
             size="sm"
@@ -448,8 +446,6 @@ const KidsChat = () => {
             <ArrowLeft className="h-4 w-4" />
             Back / Quay lại
           </Button>
-          
-          <ColorfulMercyBladeHeader mode={mode} subtitle={`${room.title_en} / ${room.title_vi}`} />
           
           <Button
             variant="outline"
