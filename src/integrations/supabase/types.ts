@@ -2646,6 +2646,17 @@ export type Database = {
         }
         Returns: string
       }
+      log_security_event_v2: {
+        Args: {
+          _event_type: string
+          _ip_address?: string
+          _metadata?: Json
+          _severity: string
+          _user_agent?: string
+          _user_id?: string
+        }
+        Returns: string
+      }
       purge_old_payment_proofs: { Args: never; Returns: undefined }
       remove_room_pin: {
         Args: { _pin: string; _room_id: string }
