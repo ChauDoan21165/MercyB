@@ -1,31 +1,31 @@
-# Locked State UX System
+# Locked State UX System - Mercy Blade Edition
 
 ## Overview
 
-This document defines the canonical locked-state UX system used consistently across all room grids and lists in the Mercy Blade application.
+This document defines the canonical locked-state UX system that respects the Mercy Blade aesthetic across all room grids and lists.
 
 ## Principles
 
-1. **Readable**: Locked content has full text contrast - users can read all titles and descriptions clearly
-2. **Distinct**: Locked rooms are visually different from accessible rooms using subtle styling cues
-3. **Accessible**: All styling meets WCAG AA contrast requirements
-4. **Consistent**: Same locked styling everywhere (VIP grids, Kids rooms, admin lists)
+1. **Mercy Blade First**: Locked styling preserves the brand's gradient backgrounds and elegant aesthetic
+2. **Frosted Effect**: Locked rooms use a subtle white overlay with backdrop blur - like looking through frosted glass
+3. **Still Readable**: Text remains visible and readable through the frosted effect
+4. **Minimal**: No yellow, no dashed borders, no color pollution - just elegant dimming
 
 ## Design System
 
 ### Visual Treatment
 
 **Accessible Rooms:**
-- Normal background and border
+- Normal Mercy Blade styling (gradients, shadows, colors)
 - Full interaction (hover effects, scale animations)
-- Green checkmark badge
+- Green checkmark or status badge
 - Click to enter
 
 **Locked Rooms:**
-- Dashed yellow/gray border (color mode dependent)
-- Subtle yellow/gray background tint
-- Lock badge with "Locked" label
-- Full text contrast (no opacity reduction)
+- Subtle frosted glass overlay (`bg-white/40 backdrop-blur-[1px]` in color mode)
+- Reduced opacity (60% in color mode, 65% with grayscale in B&W mode)
+- Muted gray lock badge
+- Full text visibility (slightly dimmed)
 - No hover effects
 - Cursor: not-allowed
 - Not clickable
@@ -33,24 +33,28 @@ This document defines the canonical locked-state UX system used consistently acr
 ### Color Modes
 
 **Color Mode:**
-- Container: `border-yellow-400/80 bg-yellow-50/70`
-- Badge: `bg-yellow-500 text-white`
+- Container: `opacity-60`
+- Overlay: `bg-white/40 backdrop-blur-[1px]`
+- Badge: `bg-gray-400/80 text-white`
+- Preserves Mercy Blade gradients underneath
 
 **Black & White Mode:**
-- Container: `border-gray-400 bg-gray-50/70`
-- Badge: `bg-gray-600 text-white`
+- Container: `opacity-65 grayscale`
+- No overlay (grayscale handles the effect)
+- Badge: `bg-gray-500 text-white`
 
 ## Components
 
 ### Core Utilities
 
 **`src/components/room/LockedRoomStyles.ts`**
-- `getLockedRoomClassNames(isColor)` - Returns container, title, subtitle class names
-- `getLockedRoomStyles(isColor)` - Returns inline styles when needed
+- `getLockedRoomClassNames(isColor)` - Returns container, overlay, title, subtitle class names
+- Frosted effect that respects Mercy Blade aesthetic
+- No yellow, no dashed borders
 
 **`src/components/room/LockedBadge.tsx`**
-- `<LockedBadge />` - Standard lock icon badge
-- `<BilingualLockedBadge />` - Lock badge with "Locked / Đã khoá" text
+- `<LockedBadge />` - Minimal gray lock icon badge
+- Subtle, elegant, matches Mercy Blade minimalism
 
 ### Usage Examples
 
@@ -59,21 +63,17 @@ This document defines the canonical locked-state UX system used consistently acr
 ```tsx
 const lockedStyles = getLockedRoomClassNames(isColor);
 
-<Card
-  className={`... ${room.hasData ? 'cursor-pointer' : `cursor-not-allowed ${lockedStyles.container}`}`}
-  data-locked={!room.hasData ? "true" : undefined}
->
-  {/* Badge */}
-  {room.hasData ? (
-    <CheckCircle2 />
-  ) : (
-    <LockedBadge isColor={isColor} />
+<Card className={room.hasData ? 'cursor-pointer' : lockedStyles.container}>
+  {/* Frosted overlay */}
+  {!room.hasData && lockedStyles.overlay && (
+    <div className={lockedStyles.overlay} aria-hidden="true" />
   )}
   
-  {/* Title - always full contrast */}
-  <p className={lockedStyles.title}>
-    {room.nameEn}
-  </p>
+  {/* Badge */}
+  {room.hasData ? <CheckCircle2 /> : <LockedBadge isColor={isColor} />}
+  
+  {/* Title - still readable */}
+  <p className={lockedStyles.title}>{room.nameEn}</p>
 </Card>
 ```
 
@@ -88,25 +88,13 @@ const lockedStyles = getLockedRoomClassNames(isColor);
 />
 ```
 
-#### KidsRoomCard
-
-```tsx
-<KidsRoomCard
-  room={room}
-  index={index}
-  onClick={onClick}
-  useColorTheme={isColor}
-  isLocked={!hasKidsAccess}
-/>
-```
-
 ## Implementation Checklist
 
-✅ **VirtualizedRoomGrid** - Uses canonical locked styles
-✅ **RoomCard** (design-system) - Supports `isLocked` prop
-✅ **KidsRoomCard** - Supports `isLocked` prop
-✅ **RoomsVIP9** - Uses canonical locked styles for non-accessible rooms
-✅ **All VIP grid pages** - Use VirtualizedRoomGrid with locked support
+✅ **VirtualizedRoomGrid** - Uses frosted overlay approach
+✅ **RoomCard** (design-system) - Supports `isLocked` prop with frosted effect
+✅ **KidsRoomCard** - Supports `isLocked` prop with frosted effect
+✅ **RoomsVIP9** - Uses frosted overlay for non-accessible rooms
+✅ **All VIP grid pages** - Use VirtualizedRoomGrid with Mercy Blade locked styling
 
 ## Accessibility
 
@@ -115,43 +103,59 @@ const lockedStyles = getLockedRoomClassNames(isColor);
 - `role="button"` only on accessible rooms
 - `tabIndex={-1}` on locked elements
 - `data-locked="true"` attribute for dev/QA inspection
+- Text remains readable with WCAG compliant contrast
+
+## Mercy Blade Aesthetic Rules
+
+### ✅ DO
+
+- Use frosted glass overlay effect
+- Preserve underlying gradients
+- Use subtle gray lock badges
+- Maintain elegant opacity reduction
+- Keep Mercy Blade color palette intact
+
+### ❌ DON'T
+
+- Use yellow backgrounds
+- Use dashed borders
+- Use bright outlines
+- Override the theme system
+- Introduce non-Mercy-Blade colors
+- Make text unreadable
+- Use heavy blur or grayscale on accessible content
 
 ## Testing
 
 ### Manual Testing
 1. View VIP tier pages with lower-tier access
 2. Locked rooms should:
-   - Show dashed border and subtle background
-   - Display lock badge
-   - Have full-contrast readable text
+   - Show frosted overlay (color mode) or grayscale (B&W mode)
+   - Display subtle gray lock badge
+   - Have readable (slightly dimmed) text
+   - Preserve Mercy Blade gradients underneath
    - Not respond to hover/click
-   - Show "Locked" in tooltip/aria-label
+   - Look elegant and professional
 
 ### Dev Helper
 
-In development mode, locked cards have `data-locked="true"` attribute for easy inspection:
+In development mode, locked cards have `data-locked="true"` attribute:
 
 ```javascript
 // Count locked cards on current page
 document.querySelectorAll('[data-locked="true"]').length
 ```
 
-## Migration Notes
+## Migration from Previous Implementation
 
-**Removed Patterns:**
-- ❌ `opacity-30` / `opacity-40` (makes text unreadable)
-- ❌ `blur` (inaccessible)
-- ❌ `grayscale` (not sufficient distinction)
-- ❌ Heavy opacity on text (fails WCAG)
+**Removed (Old Approach):**
+- ❌ `border-yellow-400/80 bg-yellow-50/70` (yellow color pollution)
+- ❌ `border-dashed` (not Mercy Blade aesthetic)
+- ❌ High contrast borders (too harsh)
 
-**New Patterns:**
-- ✅ Dashed border + subtle background tint
-- ✅ Full contrast text
-- ✅ Clear lock badge
-- ✅ data-locked attribute
-
-## Future Considerations
-
-- May add tier-specific lock colors (e.g., gold for VIP9)
-- Could add unlock animations when user upgrades
-- Potential for preview/teaser on locked rooms (first paragraph visible)
+**New (Mercy Blade Approach):**
+- ✅ `opacity-60` with frosted overlay (color mode)
+- ✅ `opacity-65 grayscale` (B&W mode)
+- ✅ `bg-white/40 backdrop-blur-[1px]` (elegant frosted effect)
+- ✅ Subtle gray lock badge
+- ✅ Preserves brand identity

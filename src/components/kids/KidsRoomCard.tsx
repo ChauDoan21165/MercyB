@@ -34,7 +34,7 @@ export const KidsRoomCard = ({ room, index, onClick, useColorTheme = true, isLoc
     <Card
       className={`relative p-4 transition-all duration-500 group border-2 hover:border-transparent bg-card backdrop-blur-sm overflow-hidden ${
         isLocked 
-          ? `cursor-not-allowed ${lockedStyles.container}` 
+          ? lockedStyles.container 
           : 'cursor-pointer hover:scale-110 hover:shadow-2xl hover:z-10'
       }`}
       style={{
@@ -56,10 +56,13 @@ export const KidsRoomCard = ({ room, index, onClick, useColorTheme = true, isLoc
     >
       {/* Animated Background Gradient */}
       <div className={`absolute inset-0 bg-gradient-to-br transition-all duration-500 ${
-        isLocked 
-          ? 'from-primary/0 via-accent/0 to-primary/0' 
-          : 'from-primary/0 via-accent/0 to-primary/0 group-hover:from-primary/10 group-hover:via-accent/10 group-hover:to-primary/10'
+        !isLocked && 'from-primary/0 via-accent/0 to-primary/0 group-hover:from-primary/10 group-hover:via-accent/10 group-hover:to-primary/10'
       }`} aria-hidden="true" />
+
+      {/* Frosted overlay for locked rooms */}
+      {isLocked && lockedStyles.overlay && (
+        <div className={lockedStyles.overlay} aria-hidden="true" />
+      )}
       
       {/* Status Badge */}
       <div className="absolute top-2 right-2 z-10" aria-hidden="true">
@@ -75,16 +78,18 @@ export const KidsRoomCard = ({ room, index, onClick, useColorTheme = true, isLoc
         )}
       </div>
 
-      <div className="relative space-y-3">
+      <div className="relative space-y-3 z-[1]">
         {/* Icon with Animated Circle */}
         <div className="flex justify-center">
           <div className="relative">
-            <div 
-              className="absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500"
-              style={{ background: 'var(--gradient-rainbow)' }}
-              aria-hidden="true"
-            />
-            <div className="relative bg-muted p-3 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+            {!isLocked && (
+              <div 
+                className="absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500"
+                style={{ background: 'var(--gradient-rainbow)' }}
+                aria-hidden="true"
+              />
+            )}
+            <div className={`relative bg-muted p-3 rounded-2xl transition-transform duration-300 ${!isLocked && 'group-hover:scale-110'}`}>
               <IconComponent className="w-8 h-8 text-primary" aria-hidden="true" />
             </div>
           </div>
@@ -93,9 +98,7 @@ export const KidsRoomCard = ({ room, index, onClick, useColorTheme = true, isLoc
         {/* Room Names */}
         <div className="space-y-1">
           <p 
-            className={`text-xs font-bold leading-tight line-clamp-2 text-center transition-all duration-300 ${
-              isLocked ? lockedStyles.title : ''
-            }`}
+            className={`text-xs font-bold leading-tight line-clamp-2 text-center transition-all duration-300 ${lockedStyles.title}`}
             style={useColorTheme ? {
               color: isLocked ? undefined : roomColor
             } : {
@@ -106,9 +109,7 @@ export const KidsRoomCard = ({ room, index, onClick, useColorTheme = true, isLoc
             {room.title_en}
           </p>
           <p 
-            className={`text-[10px] font-semibold leading-tight line-clamp-2 text-center transition-all duration-300 ${
-              isLocked ? lockedStyles.subtitle : ''
-            }`}
+            className={`text-[10px] font-semibold leading-tight line-clamp-2 text-center transition-all duration-300 ${lockedStyles.subtitle}`}
             style={useColorTheme ? {
               color: isLocked ? undefined : roomColor
             } : {

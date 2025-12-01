@@ -1,8 +1,8 @@
 /**
- * Canonical Locked Room Style System
+ * Canonical Locked Room Style System - Mercy Blade Edition
  * 
- * Provides consistent locked-state styling across all room grids and lists.
- * Locked rooms are clearly readable but visually distinct from accessible rooms.
+ * Provides consistent locked-state styling that respects Mercy Blade's aesthetic.
+ * Locked rooms use a subtle frosted/dimmed overlay that preserves the brand identity.
  */
 
 import { cn } from "@/lib/utils";
@@ -11,46 +11,37 @@ import { cn } from "@/lib/utils";
  * Get standardized class names for locked room containers
  * 
  * Key principles:
- * - Readable: Full contrast text, no heavy opacity
- * - Distinct: Subtle visual difference (border, background)
- * - Accessible: WCAG AA compliant contrast
+ * - Frosted overlay effect that preserves Mercy Blade gradients
+ * - Dimmed but still readable
+ * - No yellow, no dashed borders, no color pollution
+ * - Works in both Color and B&W modes
  */
 export function getLockedRoomClassNames(isColor: boolean = true) {
   return {
-    // Container: dashed border, subtle background tint
+    // Container: frosted overlay with opacity reduction
     container: cn(
-      "relative border-2 border-dashed",
+      "relative cursor-not-allowed",
       isColor 
-        ? "border-yellow-400/80 bg-yellow-50/70" 
-        : "border-gray-400 bg-gray-50/70"
+        ? "opacity-60" 
+        : "opacity-65 grayscale"
     ),
     
-    // Title: normal contrast, readable
-    title: cn(
-      "leading-tight line-clamp-2",
-      isColor 
-        ? "text-foreground" 
-        : "font-black text-black"
-    ),
+    // Overlay: subtle white frosted glass effect (only in color mode)
+    overlay: isColor 
+      ? "absolute inset-0 bg-white/40 backdrop-blur-[1px] pointer-events-none" 
+      : "",
     
-    // Subtitle: normal contrast, readable
-    subtitle: cn(
-      "leading-tight line-clamp-2",
-      isColor 
-        ? "text-muted-foreground" 
-        : "font-black text-black"
-    ),
+    // Title: inherits opacity from container, still readable
+    title: "leading-tight line-clamp-2",
+    
+    // Subtitle: inherits opacity from container, still readable
+    subtitle: "leading-tight line-clamp-2",
   };
 }
 
 /**
- * Get inline styles for locked rooms (used when theme classes aren't sufficient)
+ * Get inline styles for locked rooms (minimal - most styling via classes)
  */
-export function getLockedRoomStyles(isColor: boolean = true) {
-  return isColor 
-    ? {} 
-    : {
-        fontWeight: 900,
-        color: "#000000",
-      };
+export function getLockedRoomStyles() {
+  return {};
 }
