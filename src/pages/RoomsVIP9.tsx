@@ -9,13 +9,13 @@ import { useToast } from '@/hooks/use-toast';
 import { MercyBladeThemeToggle } from '@/components/MercyBladeThemeToggle';
 import { useMercyBladeTheme } from '@/hooks/useMercyBladeTheme';
 import { highlightShortTitle } from '@/lib/wordColorHighlighter';
-import { useVipRooms } from '@/hooks/useVipRooms';
-import type { VipRoom } from '@/hooks/useVipRooms';
+import { useRegistryVipRooms } from '@/hooks/useRegistryVipRooms';
+import type { RegistryRoom } from '@/hooks/useRegistryVipRooms';
 
 interface DomainSection {
   id: string;
   title: { en: string; vi: string };
-  rooms: VipRoom[];
+  rooms: RegistryRoom[];
 }
 
 const RoomsVIP9 = () => {
@@ -23,7 +23,7 @@ const RoomsVIP9 = () => {
   const { toast } = useToast();
   const { isLoading: accessLoading, canAccessTier } = useUserAccess();
   const hasAccess = canAccessTier('vip9');
-  const { data: rooms, isLoading: loading, error, refetch: refresh } = useVipRooms('vip9');
+  const { data: rooms, isLoading: loading, error, refetch: refresh } = useRegistryVipRooms('vip9');
   const [domains, setDomains] = useState<DomainSection[]>([]);
   const { isColor } = useMercyBladeTheme();
 

@@ -9,7 +9,7 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { highlightTextByRules } from "@/lib/wordColorHighlighter";
 import { AudioPlayer } from "@/components/AudioPlayer";
-import { useVipRooms } from '@/hooks/useVipRooms';
+import { useRegistryVipRooms } from '@/hooks/useRegistryVipRooms';
 import { VirtualizedRoomGrid } from '@/components/VirtualizedRoomGrid';
 import { RoomGridSkeleton } from '@/components/RoomCardSkeleton';
 import { TIERS, ROOM_GRID_CLASS } from '@/lib/constants';
@@ -20,7 +20,7 @@ const RoomGridVIP3II = () => {
   const { canAccessVIP3II, isAdmin, loading: accessLoading } = useUserAccess();
   const { toast } = useToast();
   const [isIntroPlaying, setIsIntroPlaying] = useState(false);
-  const { data: rooms, isLoading: loading, error, refetch: refresh } = useVipRooms('vip3ii');
+  const { data: rooms, isLoading: loading, error, refetch: refresh } = useRegistryVipRooms('vip3ii');
   
   // Prefetch first 5 rooms for instant navigation
   usePrefetchRooms(rooms || [], 5);
