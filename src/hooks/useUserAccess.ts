@@ -17,6 +17,8 @@ export interface UserAccess {
   canAccessVIP6: boolean;
   canAccessVIP9: boolean;
   loading: boolean;
+  isLoading: boolean; // Alias for loading (clearer name)
+  canAccessTier: (tierId: TierId) => boolean; // Generic tier access check
 }
 
 export const useUserAccess = (): UserAccess => {
@@ -34,6 +36,8 @@ export const useUserAccess = (): UserAccess => {
     canAccessVIP6: false,
     canAccessVIP9: false,
     loading: true,
+    isLoading: true,
+    canAccessTier: () => false, // Default to no access while loading
   });
 
   useEffect(() => {
@@ -45,7 +49,7 @@ export const useUserAccess = (): UserAccess => {
       const { data: { user } } = await supabase.auth.getUser();
       
       if (!user) {
-        setAccess({
+        const guestAccess: UserAccess = {
           isAdmin: false,
           isAuthenticated: false,
           isDemoMode: true,
@@ -59,7 +63,10 @@ export const useUserAccess = (): UserAccess => {
           canAccessVIP6: false,
           canAccessVIP9: false,
           loading: false,
-        });
+          isLoading: false,
+          canAccessTier: (tierId: TierId) => tierId === 'free',
+        };
+        setAccess(guestAccess);
         return;
       }
 
@@ -87,24 +94,34 @@ export const useUserAccess = (): UserAccess => {
       const tier: TierId = normalizeTier(rawTierName);
       const finalTier: TierId = isAdmin ? 'vip9' : tier;
 
-      setAccess({
+      // Generic access checker - single source of truth
+      const canAccessTier = (targetTier: TierId): boolean => {
+        return canAccessVIPTier(finalTier, targetTier);
+      };
+
+      const authenticatedAccess: UserAccess = {
         isAdmin,
         isAuthenticated: true,
         isDemoMode: false,
         tier: finalTier,
-        canAccessVIP1: canAccessVIPTier(finalTier, 'vip1'),
-        canAccessVIP2: canAccessVIPTier(finalTier, 'vip2'),
-        canAccessVIP3: canAccessVIPTier(finalTier, 'vip3'),
-        canAccessVIP3II: canAccessVIPTier(finalTier, 'vip3ii'),
-        canAccessVIP4: canAccessVIPTier(finalTier, 'vip4'),
-        canAccessVIP5: canAccessVIPTier(finalTier, 'vip5'),
-        canAccessVIP6: canAccessVIPTier(finalTier, 'vip6'),
-        canAccessVIP9: canAccessVIPTier(finalTier, 'vip9'),
+        // Implement existing flags via canAccessTier for consistency
+        canAccessVIP1: canAccessTier('vip1'),
+        canAccessVIP2: canAccessTier('vip2'),
+        canAccessVIP3: canAccessTier('vip3'),
+        canAccessVIP3II: canAccessTier('vip3ii'),
+        canAccessVIP4: canAccessTier('vip4'),
+        canAccessVIP5: canAccessTier('vip5'),
+        canAccessVIP6: canAccessTier('vip6'),
+        canAccessVIP9: canAccessTier('vip9'),
         loading: false,
-      });
+        isLoading: false,
+        canAccessTier, // Expose generic helper
+      };
+      
+      setAccess(authenticatedAccess);
     } catch (error) {
       console.error('Error checking user access:', error);
-      setAccess({
+      const errorAccess: UserAccess = {
         isAdmin: false,
         isAuthenticated: false,
         isDemoMode: true,
@@ -118,7 +135,10 @@ export const useUserAccess = (): UserAccess => {
         canAccessVIP6: false,
         canAccessVIP9: false,
         loading: false,
-      });
+        isLoading: false,
+        canAccessTier: (tierId: TierId) => tierId === 'free',
+      };
+      setAccess(errorAccess);
     }
   };
 

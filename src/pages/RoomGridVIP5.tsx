@@ -16,10 +16,10 @@ import { usePrefetchRooms } from "@/hooks/usePrefetchRooms";
 
 const RoomGridVIP5 = () => {
   const navigate = useNavigate();
-  const { canAccessVIP5, isAdmin, loading: accessLoading } = useUserAccess();
+  const { isAdmin, isLoading: accessLoading, canAccessTier } = useUserAccess();
+  const hasAccess = canAccessTier('vip5');
   const { toast } = useToast();
   const { rooms, loading, error, refresh } = useVipRooms('vip5');
-  const hasAccess = canAccessVIP5 || isAdmin;
   const { mode } = useMercyBladeTheme({ defaultMode: "color" });
   
   // Prefetch first 5 rooms for instant navigation

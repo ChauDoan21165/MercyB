@@ -26,8 +26,8 @@ const VIP3_SPECIAL_ROOMS: Record<string, string> = {
 
 const RoomGridVIP3 = () => {
   const navigate = useNavigate();
-  const { canAccessVIP3, isAdmin, loading: accessLoading } = useUserAccess();
-  const hasAccess = canAccessVIP3 || isAdmin;
+  const { isAdmin, isLoading: accessLoading, canAccessTier } = useUserAccess();
+  const hasAccess = canAccessTier('vip3');
   const { toast } = useToast();
   const { rooms, loading, error, refresh } = useVipRooms('vip3');
   const { useColorTheme, toggleColorMode } = useColorMode();
@@ -116,7 +116,7 @@ const RoomGridVIP3 = () => {
           )}
 
           {/* VIP3 II Navigation Card */}
-          {hasAccess && canAccessVIP3 && (
+          {hasAccess && (
             <div className="mb-8">
               <Card 
                 className="p-6 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl border-2"

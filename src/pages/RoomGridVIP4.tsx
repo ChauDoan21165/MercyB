@@ -31,7 +31,8 @@ const VIP4_CAREER_ROOMS = [
 
 const RoomGridVIP4 = () => {
   const navigate = useNavigate();
-  const { canAccessVIP4, isAdmin, loading: accessLoading } = useUserAccess();
+  const { isAdmin, isLoading: accessLoading, canAccessTier } = useUserAccess();
+  const hasAccess = canAccessTier('vip4');
   const { toast } = useToast();
   const { rooms, loading, error, refresh } = useVipRooms('vip4');
   const { mode } = useMercyBladeTheme({ defaultMode: "color" });
@@ -59,8 +60,12 @@ const RoomGridVIP4 = () => {
     );
   }
 
-  if (!canAccessVIP4 && !isAdmin) {
-    return null;
+  if (!hasAccess) {
+    return (
+      <div className="min-h-screen flex items-center justify-center" style={{ background: 'hsl(var(--page-vip4))' }}>
+        <p className="text-muted-foreground">You don't have access to VIP4 yet.</p>
+      </div>
+    );
   }
 
   return (

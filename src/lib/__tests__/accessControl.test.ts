@@ -91,4 +91,37 @@ describe('Access Control', () => {
       expect(canUserAccessRoom('vip3ii', 'vip3')).toBe(true);
     });
   });
+
+  describe('Generic canAccessTier behavior', () => {
+    it('should allow VIP2 to access VIP1 but not VIP3', () => {
+      expect(canAccessVIPTier('vip2', 'vip1')).toBe(true);
+      expect(canAccessVIPTier('vip2', 'vip3')).toBe(false);
+    });
+
+    it('should allow VIP3ii to access both VIP3 and VIP3ii', () => {
+      expect(canAccessVIPTier('vip3ii', 'vip3')).toBe(true);
+      expect(canAccessVIPTier('vip3ii', 'vip3ii')).toBe(true);
+    });
+
+    it('should treat kids_2 as same level as vip2', () => {
+      expect(canAccessVIPTier('kids_2', 'vip1')).toBe(true);
+      expect(canAccessVIPTier('kids_2', 'vip2')).toBe(true);
+      expect(canAccessVIPTier('kids_2', 'vip3')).toBe(false);
+    });
+
+    it('should allow VIP9 to access any tier', () => {
+      expect(canAccessVIPTier('vip9', 'free')).toBe(true);
+      expect(canAccessVIPTier('vip9', 'vip1')).toBe(true);
+      expect(canAccessVIPTier('vip9', 'vip6')).toBe(true);
+      expect(canAccessVIPTier('vip9', 'vip9')).toBe(true);
+      expect(canAccessVIPTier('vip9', 'kids_1')).toBe(true);
+      expect(canAccessVIPTier('vip9', 'kids_3')).toBe(true);
+    });
+
+    it('should deny free tier from accessing any VIP tier', () => {
+      expect(canAccessVIPTier('free', 'vip1')).toBe(false);
+      expect(canAccessVIPTier('free', 'vip2')).toBe(false);
+      expect(canAccessVIPTier('free', 'kids_1')).toBe(false);
+    });
+  });
 });

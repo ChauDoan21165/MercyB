@@ -213,10 +213,13 @@ const KidsChat = () => {
   const { roomId } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { isAdmin, tier, loading: accessLoading } = useUserAccess();
+  const { isAdmin, isLoading: accessLoading, canAccessTier } = useUserAccess();
   
-  // Check if user has kids tier access
-  const hasKidsAccess = isAdmin || (KIDS_TIER_IDS as readonly string[]).includes(tier);
+  // Check if user has kids tier access using unified helper
+  const hasKidsAccess = isAdmin || 
+    canAccessTier('kids_1') || 
+    canAccessTier('kids_2') || 
+    canAccessTier('kids_3');
   const [room, setRoom] = useState<KidsRoom | null>(null);
   const [entries, setEntries] = useState<KidsEntry[]>([]);
   const [loading, setLoading] = useState(true);
@@ -384,7 +387,7 @@ const KidsChat = () => {
     });
   };
 
-  // Show loading while checking access
+  // Show loading while checking access or room data
   if (accessLoading || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -394,7 +397,8 @@ const KidsChat = () => {
   }
 
   // Access control: Only kids tiers or admins can access Kids rooms
-  if (!hasKidsAccess) {
+  // Only show access denied after loading completes
+  if (!accessLoading && !hasKidsAccess) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-6 px-4">
         <Lock className="h-16 w-16 text-muted-foreground" />

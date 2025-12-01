@@ -15,7 +15,8 @@ import { usePrefetchRooms } from "@/hooks/usePrefetchRooms";
 
 const RoomGridVIP1 = () => {
   const navigate = useNavigate();
-  const { isAdmin, loading } = useUserAccess();
+  const { isAdmin, isLoading: accessLoading, canAccessTier } = useUserAccess();
+  const hasAccess = canAccessTier('vip1');
   const { toast } = useToast();
   const { data: rooms, isLoading, refetch } = useCachedRooms('vip1');
   const { mode } = useMercyBladeTheme({ defaultMode: "color" });
@@ -35,10 +36,18 @@ const RoomGridVIP1 = () => {
     });
   };
 
-  if (loading) {
+  if (accessLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <p className="text-muted-foreground">Loading...</p>
+      </div>
+    );
+  }
+
+  if (!hasAccess) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <p className="text-muted-foreground">You don't have access to VIP1 yet.</p>
       </div>
     );
   }
