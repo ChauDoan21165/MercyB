@@ -38,6 +38,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { getTierRoute } from "@/lib/tierRoutes";
 import { useFavoriteRooms } from "@/hooks/useFavoriteRooms";
 import { useRecentRooms } from "@/hooks/useRecentRooms";
+import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { Heart, Star, History, Clock } from "lucide-react";
 import {
   DropdownMenu,
@@ -66,6 +67,8 @@ const ChatHub = () => {
   const [mainInput, setMainInput] = useState("");
   const [feedbackInput, setFeedbackInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [roomLoading, setRoomLoading] = useState(true);
+  const [roomError, setRoomError] = useState<string | null>(null);
   const [username, setUsername] = useState<string>("");
   const [noKeywordCount, setNoKeywordCount] = useState(0);
   const [matchedEntryCount, setMatchedEntryCount] = useState(0);
@@ -73,6 +76,7 @@ const ChatHub = () => {
   const mainScrollRef = useRef<HTMLDivElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
   const audioPlayerRef = useRef<HTMLDivElement>(null);
+  const mainInputRef = useRef<HTMLInputElement>(null);
   const scrollToBottom = () => {
     endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   };
@@ -240,6 +244,9 @@ const ChatHub = () => {
   // Initialize room on load or when roomId changes
   useEffect(() => {
     const loadRoomData = async () => {
+      setRoomLoading(true);
+      setRoomError(null);
+      
       // Reset state when switching rooms
       setMainMessages([]);
       setKeywordMenu(null);
@@ -292,35 +299,45 @@ const ChatHub = () => {
         
         // Don't add welcome message to chat - it's displayed in the card above
         setMainMessages([]);
+        setRoomLoading(false);
       } catch (error: any) {
         console.error('Failed to load room data', error);
         
-        // Handle specific error cases with RoomErrorState component
+        // Handle specific error cases
         const errorMessage = String(error?.message || error);
-        let errorCode = undefined;
         
         if (errorMessage.includes("AUTHENTICATION_REQUIRED")) {
-          errorCode = "AUTHENTICATION_REQUIRED";
+          setRoomError("Please sign in to access this room");
           setShowSignupPrompt(true);
         } else if (errorMessage.includes("ACCESS_DENIED_INSUFFICIENT_TIER")) {
-          errorCode = "ACCESS_DENIED_INSUFFICIENT_TIER";
+          setRoomError("You need a higher subscription tier to access this room");
           setShowAccessDenied(true);
         } else if (errorMessage.includes("ROOM_NOT_FOUND")) {
-          errorCode = "ROOM_NOT_FOUND";
+          setRoomError("This room could not be found");
         } else {
-          toast({
-            title: 'Failed to load room',
-            description: 'This room may not exist or you may not have access',
-            variant: 'destructive'
-          });
+          setRoomError("Failed to load room. This room may not exist or you may not have access.");
         }
         
         setMainMessages([]);
+        setRoomLoading(false);
       }
     };
    
     loadRoomData();
   }, [roomId]);
+
+  // Scroll to top and focus input when room loads
+  useEffect(() => {
+    if (!roomLoading && !roomError && mainScrollRef.current) {
+      // Scroll chat container to top smoothly
+      mainScrollRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      // Focus input after a brief delay
+      setTimeout(() => {
+        mainInputRef.current?.focus();
+      }, 300);
+    }
+  }, [roomLoading, roomError, roomId]);
 
   const handleKeywordClick = async (keyword: string) => {
     if (!isAuthenticated) {
@@ -1149,8 +1166,14 @@ const ChatHub = () => {
           </div>
         </div>
         
-        {/* Welcome Message and Keywords Combined */}
-        <Card className="p-4 shadow-soft bg-card border border-border">
+        {/* Main Room Content - wrapped with RoomLoadShell */}
+        <RoomLoadShell 
+          isLoading={roomLoading} 
+          error={roomError}
+          onRetry={() => window.location.reload()}
+        >
+          {/* Welcome Message and Keywords Combined */}
+          <Card className="p-4 shadow-soft bg-card border border-border">
           <div className="text-center space-y-0 mb-4">
             {keywordMenu && keywordMenu.en && keywordMenu.en.length > 0 ? (
               <p className="text-sm text-foreground leading-tight">
@@ -1288,6 +1311,7 @@ const ChatHub = () => {
             </Button>
           </div>
         </Card>
+        </RoomLoadShell>
       </div>
     </div>
     <CreditLimitModal

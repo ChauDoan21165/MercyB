@@ -1,5 +1,6 @@
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
+import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { Gem, RefreshCw } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -92,33 +93,33 @@ const RoomGridVIP2 = () => {
 
           <VIPNavigation currentPage="vip2" />
 
-          {!hasAccess && !loading && (
-            <div className="text-center py-8 text-sm text-muted-foreground">
-              <p>You don't have access to VIP2 yet.</p>
-              <p className="text-xs mt-1">Bạn chưa có quyền truy cập khu vực VIP2.</p>
-            </div>
-          )}
-
-          {hasAccess && loading && <RoomGridSkeleton count={24} />}
-
-          {hasAccess && !loading && rooms && (
-            <VirtualizedRoomGrid
-              rooms={rooms.map((room) => ({
-                id: room.id,
-                nameEn: room.title_en,
-                nameVi: room.title_vi,
-                tier: room.tier || 'vip2',
-                hasData: Array.isArray(room.entries) ? room.entries.length > 0 : !!room.entries,
-              }))}
-              onRoomClick={(room) => navigate(`/room/${room.id}`)}
-            />
-          )}
-
-          {error && (
-            <div className="text-center py-8">
-              <p className="text-destructive">Error loading rooms: {error.message}</p>
-            </div>
-          )}
+          <RoomLoadShell 
+            isLoading={loading} 
+            error={error ? "Failed to load VIP2 rooms" : null}
+            onRetry={handleRefreshRooms}
+          >
+            {!hasAccess ? (
+              <div className="text-center py-8 text-sm text-muted-foreground">
+                <p>You don't have access to VIP2 yet.</p>
+                <p className="text-xs mt-1">Bạn chưa có quyền truy cập khu vực VIP2.</p>
+              </div>
+            ) : rooms && rooms.length > 0 ? (
+              <VirtualizedRoomGrid
+                rooms={rooms.map((room) => ({
+                  id: room.id,
+                  nameEn: room.title_en,
+                  nameVi: room.title_vi,
+                  tier: room.tier || 'vip2',
+                  hasData: Array.isArray(room.entries) ? room.entries.length > 0 : !!room.entries,
+                }))}
+                onRoomClick={(room) => navigate(`/room/${room.id}`)}
+              />
+            ) : (
+              <div className="text-center py-8 text-sm text-muted-foreground">
+                <p>No rooms available yet.</p>
+              </div>
+            )}
+          </RoomLoadShell>
         </div>
       </div>
     </div>

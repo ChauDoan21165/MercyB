@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
+import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { CheckCircle2, Lock, Crown, Sparkles, RefreshCw, Building2, ChevronRight, Palette } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -166,17 +167,18 @@ const RoomGridVIP3 = () => {
             </div>
           )}
 
-          {hasAccess && loading && <div className="text-center py-8"><p className="text-muted-foreground">Loading VIP3 rooms...</p></div>}
-
-          {error && (
-            <div className="text-center py-8">
-              <p className="text-destructive">Error loading rooms: {error.message}</p>
-            </div>
-          )}
-
-          {/* Room Grid */}
-          {hasAccess && !loading && vip3Rooms.length > 0 && (
-            <div className={ROOM_GRID_CLASS}>
+          <RoomLoadShell 
+            isLoading={loading} 
+            error={error ? "Failed to load VIP3 rooms" : null}
+            onRetry={handleRefreshRooms}
+          >
+            {!hasAccess ? (
+              <div className="text-center py-8 text-sm text-muted-foreground">
+                <p>You don't have access to VIP3 yet.</p>
+                <p className="text-xs mt-1">Bạn chưa có quyền truy cập khu vực VIP3.</p>
+              </div>
+            ) : vip3Rooms.length > 0 ? (
+              <div className={ROOM_GRID_CLASS}>
               {vip3Rooms.map((room, index) => {
                 const isSpecialRoom = VIP3_SPECIAL_ROOMS[room.id];
                 const isSexualityCultureRoom = room.id === 'sexuality-and-curiosity-and-culture-vip3';
@@ -291,7 +293,12 @@ const RoomGridVIP3 = () => {
                 );
               })}
             </div>
-          )}
+            ) : (
+              <div className="text-center py-8 text-sm text-muted-foreground">
+                <p>No rooms available yet.</p>
+              </div>
+            )}
+          </RoomLoadShell>
         </div>
 
         <VIPNavigation currentPage="vip3" />
