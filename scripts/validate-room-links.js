@@ -52,7 +52,7 @@ function getAvailableRoomFiles() {
 
 /**
  * Extract room IDs from roomDataImports.ts
- * These are the registry entries
+ * These are the registry entries (normalized to lowercase kebab-case for comparison)
  */
 function getRegistryRoomIds() {
   const registryPath = path.join(PROJECT_ROOT, 'src/lib/roomDataImports.ts');
@@ -70,10 +70,12 @@ function getRegistryRoomIds() {
   let match;
   
   while ((match = idPattern.exec(content)) !== null) {
-    ids.add(match[1]);
+    // Normalize to lowercase kebab-case for consistent comparison
+    const normalized = match[1].toLowerCase().replace(/_/g, '-');
+    ids.add(normalized);
   }
 
-  console.log(`📋 Found ${ids.size} rooms in registry (roomDataImports.ts)`);
+  console.log(`📋 Found ${ids.size} normalized rooms in registry (roomDataImports.ts)`);
   return ids;
 }
 
