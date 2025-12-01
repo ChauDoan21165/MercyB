@@ -112,7 +112,6 @@ const RoomGridVIP6 = () => {
                   navigate(`/room/${room.id}`);
                 }}
               />
-              />
             ) : (
               <div className="text-center py-8 text-sm text-muted-foreground">
                 <p>No rooms available yet.</p>
