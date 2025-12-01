@@ -51,7 +51,7 @@ async function fetchRegistryVipRooms(tierId: TierId): Promise<RegistryRoom[]> {
   const roomIds = registryRooms.map((r) => r.id);
   const { data: dbRooms, error } = await supabase
     .from('rooms')
-    .select('id, tier, domain, is_active')
+    .select('id, tier, domain')
     .in('id', roomIds);
 
   if (error) {
@@ -64,7 +64,7 @@ async function fetchRegistryVipRooms(tierId: TierId): Promise<RegistryRoom[]> {
     (dbRooms || []).map((r) => [r.id, r])
   );
 
-  // 5. Merge registry + DB data
+  // 5. Merge registry + DB data (no is_active column in DB, all registry rooms are active)
   const mergedRooms: RegistryRoom[] = registryRooms.map((registryRoom) => {
     const dbRoom = dbRoomMap.get(registryRoom.id);
 
@@ -74,28 +74,17 @@ async function fetchRegistryVipRooms(tierId: TierId): Promise<RegistryRoom[]> {
       title_vi: registryRoom.nameVi,
       tier: tierLabel, // Use canonical tier label
       domain: dbRoom?.domain,
-      is_active: dbRoom?.is_active !== false, // Default true if no DB row
+      is_active: true, // Registry is source of truth - all rooms active
       hasData: registryRoom.hasData !== false, // From registry - rooms in registry have data
       entries: registryRoom.entries, // Pass through entries if available
     };
   });
 
-  // 6. Filter out rooms marked inactive in DB (only if DB row exists)
-  const activeRooms = mergedRooms.filter((room) => {
-    const dbRoom = dbRoomMap.get(room.id);
-    // If DB row exists and is_active is explicitly false, hide it
-    // Otherwise show it (registry is source of truth)
-    if (dbRoom && dbRoom.is_active === false) {
-      return false;
-    }
-    return true;
-  });
-
   if (import.meta.env.DEV) {
-    console.log(`[RegistryVipRooms] ${tierId} → ${activeRooms.length} active rooms after filtering`);
+    console.log(`[RegistryVipRooms] ${tierId} → ${mergedRooms.length} rooms loaded`);
   }
 
-  return activeRooms;
+  return mergedRooms;
 }
 
 /**
