@@ -17,6 +17,7 @@ import { guardedCall } from "@/lib/guardedCall";
 import { normalizeTier, tierIdToLabel, type TierId } from "@/lib/constants/tiers";
 import { UiHealthPanel } from "@/components/admin/UiHealthPanel";
 import { RoomLinkHealth } from "@/components/admin/RoomLinkHealth";
+import { AudioCoveragePanel } from "@/components/admin/AudioCoveragePanel";
 import EnvironmentBanner from "@/components/admin/EnvironmentBanner";
 
 interface RoomIssue {
@@ -2882,6 +2883,9 @@ export default function UnifiedHealthCheck() {
 
       {/* Room Link Health - Check UI References vs Data */}
       <RoomLinkHealth />
+
+      {/* Audio Coverage - Audio Completeness by Room/Tier */}
+      <AudioCoveragePanel />
 
       {/* Unified Tier Selection */}
       <Card className="p-6">
