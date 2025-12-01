@@ -23,12 +23,20 @@ export class ErrorBoundary extends Component<Props, State> {
     return { hasError: true, error };
   }
 
-  componentDidCatch(error: Error, errorInfo: any) {
+  async componentDidCatch(error: Error, errorInfo: any) {
     // Log error to console for debugging
     console.error('ErrorBoundary caught error:', error, errorInfo);
     
-    // TODO: Log to monitoring service in production
-    // Example: logErrorToService(error, errorInfo);
+    // Log to unified logging system with full context
+    const { logger } = await import('@/lib/logger');
+    logger.error('React Error Boundary caught crash', {
+      route: window.location.pathname,
+      errorName: error.name,
+      errorMessage: error.message,
+      errorStack: error.stack,
+      componentStack: errorInfo?.componentStack,
+      errorInfo: JSON.stringify(errorInfo),
+    });
   }
 
   handleReset = () => {
