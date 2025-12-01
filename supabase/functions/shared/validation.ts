@@ -36,6 +36,32 @@ export const paymentVerificationSchema = z.object({
 // Match generation validation (no body needed, just auth check)
 export const matchGenerationSchema = z.object({});
 
+// Room request validation
+export const roomRequestSchema = z.object({
+  roomId: z.string().trim().min(1).max(100),
+});
+
+// Admin set tier validation
+export const setTierSchema = z.object({
+  user_id: z.string().uuid(),
+  tier_name: z.string().trim().min(1).max(50),
+  days: z.number().int().positive().max(365),
+});
+
+// Profile update validation
+export const profileUpdateSchema = z.object({
+  full_name: z.string().trim().max(100).optional(),
+  username: z.string().trim().min(3).max(50).optional(),
+  avatar_url: z.string().url().optional(),
+  phone: z.string().trim().max(20).optional(),
+});
+
+// Feedback submission validation
+export const feedbackSchema = z.object({
+  message: z.string().trim().min(10).max(2000),
+  category: z.enum(["bug", "feature", "general"]).optional(),
+});
+
 // Helper to validate and return typed data
 export function validateInput<T>(schema: z.ZodSchema<T>, data: unknown): T {
   const result = schema.safeParse(data);
@@ -43,4 +69,15 @@ export function validateInput<T>(schema: z.ZodSchema<T>, data: unknown): T {
     throw new Error(`Validation failed: ${result.error.errors.map(e => e.message).join(", ")}`);
   }
   return result.data;
+}
+
+// Sanitize error messages for production
+export function sanitizeError(error: any): string {
+  if (Deno.env.get('ENVIRONMENT') === 'production') {
+    // Remove stack traces and SQL details
+    return 'An error occurred. Please try again later.';
+  }
+  
+  // In development, return full error
+  return error?.message || String(error);
 }
