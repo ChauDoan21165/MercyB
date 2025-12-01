@@ -7,7 +7,7 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { VIPNavigation } from "@/components/VIPNavigation";
 import { BookOpen, RefreshCw } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { useRegistryVipRooms } from '@/hooks/useRegistryVipRooms';
+import { useVipRooms } from '@/hooks/useVipRooms';
 import { VirtualizedRoomGrid } from '@/components/VirtualizedRoomGrid';
 import { RoomGridSkeleton } from '@/components/RoomCardSkeleton';
 import { getHeadingColor } from '@/lib/roomColors';
@@ -19,7 +19,7 @@ const RoomGridVIP5 = () => {
   const { isAdmin, isLoading: accessLoading, canAccessTier } = useUserAccess();
   const hasAccess = canAccessTier('vip5');
   const { toast } = useToast();
-  const { data: rooms, isLoading: loading, error, refetch: refresh } = useRegistryVipRooms('vip5');
+  const { data: rooms, isLoading: loading, error, refetch: refresh } = useVipRooms('vip5');
   
   // Prefetch first 5 rooms for instant navigation
   usePrefetchRooms(rooms || [], 5);
@@ -63,7 +63,7 @@ const RoomGridVIP5 = () => {
 
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-semibold" style={{ color: getHeadingColor('vip5', 'writing') }}>
-            VIP5 Writing Rooms ({loading ? '...' : rooms.length})
+            VIP5 Writing Rooms ({loading ? '...' : (rooms || []).length})
           </h2>
           {isAdmin && (
             <Button 
@@ -92,12 +92,12 @@ const RoomGridVIP5 = () => {
             </div>
           ) : rooms && rooms.length > 0 ? (
             <VirtualizedRoomGrid
-              rooms={rooms.map((room) => ({
+              rooms={(rooms || []).map((room) => ({
                 id: room.id,
                 nameEn: room.title_en,
                 nameVi: room.title_vi,
                 tier: room.tier || 'vip5',
-                hasData: room.hasData, // Use hasData from registry
+                hasData: true,
               }))}
               onRoomClick={(room) => {
                 console.log('[RoomClick] Opening room:', room.id);

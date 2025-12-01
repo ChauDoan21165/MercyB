@@ -26,7 +26,7 @@ const __dirname = path.dirname(__filename);
 // Get project root (one level up from scripts/)
 const projectRoot = path.resolve(__dirname, '..');
 const publicDir = path.join(projectRoot, 'public');
-const ROOM_FILE_REGEX = /(free|vip1|vip2|vip3|vip3_ii|vip4|vip5|vip6)\.json$/i;
+const ROOM_FILE_REGEX = /(free|vip1|vip2|vip3|vip3_ii|vip4|vip5|vip6|vip7|vip8|vip9|kidslevel[123])\.json$/i;
 
 // Helper to convert filename to room ID (kebab-case with tier)
 function filenameToRoomId(filename) {
