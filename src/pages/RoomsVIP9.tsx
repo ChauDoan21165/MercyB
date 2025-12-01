@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { RoomHeader } from '@/components/RoomHeader';
 import { RoomLoadShell } from '@/components/RoomLoadShell';
 import { Button } from '@/components/ui/button';
-import { Lock, Unlock, TrendingUp, Building2, Globe2, Crown, Palette } from 'lucide-react';
+import { Lock, Unlock, TrendingUp, Building2, Globe2, Crown } from 'lucide-react';
 import { useUserAccess } from '@/hooks/useUserAccess';
 import { useToast } from '@/hooks/use-toast';
-
+import { MercyBladeThemeToggle } from '@/components/MercyBladeThemeToggle';
+import { useMercyBladeTheme } from '@/hooks/useMercyBladeTheme';
 import { highlightShortTitle } from '@/lib/wordColorHighlighter';
 import { useVipRooms } from '@/hooks/useVipRooms';
-import { TIERS, ROOMS_TABLE, ROOM_GRID_CLASS } from '@/lib/constants';
 import { VipRoom } from '@/hooks/useVipRooms';
 
 interface DomainSection {
@@ -25,6 +25,7 @@ const RoomsVIP9 = () => {
   const hasAccess = canAccessTier('vip9');
   const { rooms, loading, error } = useVipRooms('vip9');
   const [domains, setDomains] = useState<DomainSection[]>([]);
+  const { isColor } = useMercyBladeTheme();
 
   useEffect(() => {
     // Organize rooms by their domain field
@@ -192,7 +193,7 @@ const RoomsVIP9 = () => {
                     onClick={() => handleRoomClick(room.id)}
                     className="group relative p-6 rounded-lg border transition-all duration-300 text-left backdrop-blur-sm"
                     style={
-                      useColorTheme
+                      isColor
                         ? {
                             borderColor: '#475569',
                             background: 'rgba(51, 65, 85, 0.5)',
@@ -207,10 +208,10 @@ const RoomsVIP9 = () => {
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex-1 space-y-2">
                         <h3 className="font-semibold text-white group-hover:text-slate-100 transition-colors leading-snug">
-                          {useColorTheme ? highlightShortTitle(room.title_en, index, false) : room.title_en}
+                          {isColor ? highlightShortTitle(room.title_en, index, false) : room.title_en}
                         </h3>
                         <p className="text-sm text-slate-400 leading-relaxed">
-                          {useColorTheme ? highlightShortTitle(room.title_vi, index, true) : room.title_vi}
+                          {isColor ? highlightShortTitle(room.title_vi, index, true) : room.title_vi}
                         </p>
                       </div>
                       {hasAccess ? (

@@ -92,12 +92,14 @@ export const extractAudio = (entry: any, roomId?: string): any => {
     return legacyAudio;
   }
   
-  // No audio found - log warning for content team to fix
-  const identifier = entry?.slug || entry?.id || entry?.artifact_id || 'unknown-entry';
-  console.warn(
-    `⚠️ Missing audio: Room "${roomId || 'unknown'}" → Entry "${identifier}"`,
-    '\n   Add "audio" field to entry in JSON file'
-  );
+  // No audio found - log warning in development only
+  if (process.env.NODE_ENV !== 'production') {
+    const identifier = entry?.slug || entry?.id || entry?.artifact_id || 'unknown-entry';
+    console.warn(
+      `⚠️ Missing audio: Room "${roomId || 'unknown'}" → Entry "${identifier}"`,
+      '\n   Add "audio" field to entry in JSON file'
+    );
+  }
   
   return null;
 };
