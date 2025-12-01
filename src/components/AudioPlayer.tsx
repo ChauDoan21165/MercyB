@@ -16,6 +16,7 @@ interface AudioPlayerProps {
   onEnded: () => void;
   className?: string;
   playlist?: string[];
+  preload?: "none" | "metadata" | "auto";
 }
 
 interface AudioPlayerState {
@@ -30,7 +31,8 @@ export const AudioPlayer = ({
   onPlayPause, 
   onEnded,
   className,
-  playlist = []
+  playlist = [],
+  preload = "metadata"
 }: AudioPlayerProps) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -130,11 +132,32 @@ export const AudioPlayer = ({
       console.error('Error details:', audio.error);
       console.error('Error event:', e);
       
+      // Determine error message based on error code
+      let errorMessage = 'Audio not available';
+      if (audio.error) {
+        switch (audio.error.code) {
+          case MediaError.MEDIA_ERR_ABORTED:
+            errorMessage = 'Audio playback aborted';
+            break;
+          case MediaError.MEDIA_ERR_NETWORK:
+            errorMessage = 'Network error loading audio';
+            break;
+          case MediaError.MEDIA_ERR_DECODE:
+            errorMessage = 'Audio file is corrupted or unplayable';
+            break;
+          case MediaError.MEDIA_ERR_SRC_NOT_SUPPORTED:
+            errorMessage = 'Audio format not supported';
+            break;
+          default:
+            errorMessage = 'Audio failed to load';
+        }
+      }
+      
       // Set inline error state instead of toast
       setState({
         isAudioReady: false,
         hasError: true,
-        errorMessage: 'Audio failed to load. Please check your connection or try another entry.',
+        errorMessage,
       });
     };
 
@@ -351,7 +374,7 @@ export const AudioPlayer = ({
 
   return (
     <div className={cn("flex items-center gap-2 w-full", className)}>
-      <audio ref={audioRef} preload="metadata" />
+      <audio ref={audioRef} preload={preload} />
       
       {/* Skip Backward Button */}
       <Button
