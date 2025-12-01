@@ -3,7 +3,7 @@ import { useRef, useMemo } from "react";
 import type { CSSProperties, KeyboardEvent } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { Card } from "@/components/ui/card";
-import { CheckCircle2, Lock, Palette } from "lucide-react";
+import { CheckCircle2, Palette } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { getRoomColor } from "@/lib/roomColors";
 import { highlightShortTitle } from "@/lib/wordColorHighlighter";
@@ -11,6 +11,8 @@ import { useLowDataMode } from "@/contexts/LowDataModeContext";
 import { Button } from "@/components/ui/button";
 import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
 import { ROOM_GRID_CLASS } from "@/lib/constants/rooms";
+import { getLockedRoomClassNames, getLockedRoomStyles } from "@/components/room/LockedRoomStyles";
+import { LockedBadge } from "@/components/room/LockedBadge";
 
 interface RoomData {
   id: string;
@@ -117,14 +119,17 @@ export const VirtualizedRoomGrid = ({
                     const roomColor =
                       highlightColors[room.id] || getRoomColor(room.id);
                     const isHighlighted = !!highlightColors[room.id];
+                    const lockedStyles = getLockedRoomClassNames(isColor);
 
+                    // Accessible rooms: normal styling with hover effects
+                    // Locked rooms: canonical locked styling (readable but distinct)
                     const baseCardClasses = [
                       "relative",
                       "p-3",
                       "group",
                       room.hasData
                         ? "cursor-pointer"
-                        : "opacity-30 cursor-not-allowed grayscale",
+                        : `cursor-not-allowed ${lockedStyles.container}`,
                       !isLowDataMode &&
                         room.hasData &&
                         "transition-all duration-300 hover:scale-110 hover:shadow-hover hover:z-10",
@@ -140,9 +145,13 @@ export const VirtualizedRoomGrid = ({
                             : `0 0 20px ${roomColor}60`,
                           background: "white",
                         }
-                      : {
+                      : room.hasData
+                      ? {
                           background: "white",
                           border: "1px solid #e5e7eb",
+                        }
+                      : {
+                          background: "white",
                         };
 
                     return (
@@ -161,6 +170,7 @@ export const VirtualizedRoomGrid = ({
                             style={baseStyle}
                             onClick={() => room.hasData && onRoomClick(room)}
                             onKeyDown={(e) => handleCardKeyDown(e, room)}
+                            data-locked={!room.hasData ? "true" : undefined}
                           >
                             {/* Status Badge */}
                             <div className="absolute top-1 right-1 z-10">
@@ -172,12 +182,7 @@ export const VirtualizedRoomGrid = ({
                                   />
                                 </div>
                               ) : (
-                                <div className="bg-gray-400 rounded-full p-1">
-                                  <Lock
-                                    className="w-3 h-3 text-white"
-                                    aria-hidden="true"
-                                  />
-                                </div>
+                                <LockedBadge isColor={isColor} size="sm" />
                               )}
                             </div>
 
@@ -186,21 +191,11 @@ export const VirtualizedRoomGrid = ({
                                 <p
                                   className={`${
                                     isLowDataMode ? "text-[10px]" : "text-xs"
-                                  } leading-tight line-clamp-2 ${
-                                    isColor
-                                      ? "text-foreground"
-                                      : "font-black text-black"
-                                  }`}
-                                  style={
-                                    isColor
-                                      ? {}
-                                      : {
-                                          fontWeight: 900,
-                                          color: "#000000",
-                                        }
-                                  }
+                                  } ${room.hasData ? lockedStyles.title : lockedStyles.title}`}
+                                  style={room.hasData ? (isColor ? {} : getLockedRoomStyles(isColor)) : getLockedRoomStyles(isColor)}
+                                  data-room-title={room.nameEn}
                                 >
-                                  {isColor
+                                  {isColor && room.hasData
                                     ? highlightShortTitle(
                                         room.nameEn,
                                         startIdx + colIndex,
@@ -213,21 +208,10 @@ export const VirtualizedRoomGrid = ({
                                     isLowDataMode
                                       ? "text-[8px]"
                                       : "text-[10px]"
-                                  } leading-tight line-clamp-2 ${
-                                    isColor
-                                      ? "text-muted-foreground"
-                                      : "font-black text-black"
-                                  }`}
-                                  style={
-                                    isColor
-                                      ? {}
-                                      : {
-                                          fontWeight: 900,
-                                          color: "#000000",
-                                        }
-                                  }
+                                  } ${room.hasData ? lockedStyles.subtitle : lockedStyles.subtitle}`}
+                                  style={room.hasData ? (isColor ? {} : getLockedRoomStyles(isColor)) : getLockedRoomStyles(isColor)}
                                 >
-                                  {isColor
+                                  {isColor && room.hasData
                                     ? highlightShortTitle(
                                         room.nameVi,
                                         startIdx + colIndex,
