@@ -13,6 +13,48 @@ export default {
       },
     },
     extend: {
+      /* Typography Scale */
+      fontSize: {
+        xs: ["var(--font-xs)", { lineHeight: "var(--leading-tight)" }],
+        sm: ["var(--font-sm)", { lineHeight: "var(--leading-normal)" }],
+        base: ["var(--font-base)", { lineHeight: "var(--leading-normal)" }],
+        lg: ["var(--font-lg)", { lineHeight: "var(--leading-normal)" }],
+        xl: ["var(--font-xl)", { lineHeight: "var(--leading-snug)" }],
+        "2xl": ["var(--font-2xl)", { lineHeight: "var(--leading-snug)" }],
+        "3xl": ["var(--font-3xl)", { lineHeight: "var(--leading-tight)" }],
+        "4xl": ["var(--font-4xl)", { lineHeight: "var(--leading-tight)" }],
+      },
+      /* Spacing Scale */
+      spacing: {
+        1: "var(--space-1)",
+        2: "var(--space-2)",
+        3: "var(--space-3)",
+        4: "var(--space-4)",
+        6: "var(--space-6)",
+        8: "var(--space-8)",
+        12: "var(--space-12)",
+        16: "var(--space-16)",
+      },
+      /* Box Shadow */
+      boxShadow: {
+        xs: "var(--shadow-xs)",
+        sm: "var(--shadow-sm)",
+        md: "var(--shadow-md)",
+        lg: "var(--shadow-lg)",
+        xl: "var(--shadow-xl)",
+        glow: "var(--shadow-glow)",
+      },
+      /* Transition Duration */
+      transitionDuration: {
+        fast: "var(--duration-fast)",
+        slow: "var(--duration-slow)",
+        slower: "var(--duration-slower)",
+      },
+      /* Transition Timing */
+      transitionTimingFunction: {
+        spring: "var(--ease-spring)",
+        out: "var(--ease-out)",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -87,9 +129,11 @@ export default {
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        sm: "var(--radius-sm)",
+        md: "var(--radius-md)",
+        lg: "var(--radius-lg)",
+        xl: "var(--radius-xl)",
+        full: "var(--radius-full)",
       },
       keyframes: {
         "accordion-down": {
