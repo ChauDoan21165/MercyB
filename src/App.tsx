@@ -1,4 +1,4 @@
-import { useEffect, Suspense } from "react";
+import { useEffect, Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -17,94 +17,116 @@ import { MusicPlayer } from "@/components/MusicPlayer";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { OfflineDetector } from "@/components/OfflineDetector";
 import { PerformanceProfiler } from "@/lib/performance/profiler";
+import { LoadingSkeleton } from "@/components/ui/loading-skeleton";
+import { preloadCriticalRoutes } from "@/lib/performance";
 
+// Critical pages - loaded immediately
 import Welcome from "./pages/Welcome";
 import Homepage from "./pages/Homepage";
-import Tiers from "./pages/Tiers";
-import MeaningOfLife from "./pages/MeaningOfLife";
-import RoomGrid from "./pages/RoomGrid";
-import EnglishLearningPathway from "./pages/EnglishLearningPathway";
-import RoomGridVIP1 from "./pages/RoomGridVIP1";
-import RoomGridVIP2 from "./pages/RoomGridVIP2";
-import RoomGridVIP3 from "./pages/RoomGridVIP3";
-import RoomGridVIP3II from "./pages/RoomGridVIP3II";
-import RoomGridVIP4 from "./pages/RoomGridVIP4";
-import RoomGridVIP5 from "./pages/RoomGridVIP5";
-import RoomGridVIP6 from "./pages/RoomGridVIP6";
-import RoomsVIP9 from "./pages/RoomsVIP9";
-import AllRooms from "./pages/AllRooms";
-import ChatHub from "./pages/ChatHub";
-import NotFound from "./pages/NotFound";
-import VIPRequestForm from "./pages/VIPRequestForm";
-import VIPRequests from "./pages/VIPRequests";
-import AdminDashboard from "./pages/AdminDashboard";
-import AdminVIPRooms from "./pages/AdminVIPRooms";
-import AdminDesignAudit from "./pages/AdminDesignAudit";
-import AppMetrics from "./pages/admin/AppMetrics";
-import MatchmakingHub from "./pages/MatchmakingHub";
 import Auth from "./pages/Auth";
-import PaymentTest from "./pages/PaymentTest";
-import ManualPayment from "./pages/ManualPayment";
-import PromoCode from "./pages/PromoCode";
-import VIPTopicRequest from "./pages/VIPTopicRequest";
-import AdminReports from "./pages/AdminReports";
-import FeedbackInbox from "./pages/admin/FeedbackInbox";
-import AdminStats from "./pages/AdminStats";
-import AdminSystemMetrics from "./pages/AdminSystemMetrics";
-import PaymentMonitoring from "./pages/admin/PaymentMonitoring";
-import AdminAudioUpload from "./pages/AdminAudioUpload";
-import AdminModeration from "./pages/AdminModeration";
-import ResetPassword from "./pages/ResetPassword";
-import SexualityCultureRoom from "./pages/SexualityCultureRoom";
-import FinanceCalmRoom from "./pages/FinanceCalmRoom";
-import AdminRooms from "./pages/AdminRooms";
-import AdminRoomEditor from "./pages/AdminRoomEditor";
-import AdminRoomImport from "./pages/AdminRoomImport";
-import AdminUserRoles from "./pages/AdminUserRoles";
-import AdminCodeEditor from "./pages/AdminCodeEditor";
-import AudioUpload from "./pages/AudioUpload";
-import AdminFeedbackAnalytics from "./pages/AdminFeedbackAnalytics";
-import AdminPayments from "./pages/AdminPayments";
-import AdminPaymentVerification from "./pages/AdminPaymentVerification";
-import AdminUsers from "./pages/AdminUsers";
-import AdminUserDetail from "./pages/AdminUserDetail";
-import AdminSecurity from "./pages/AdminSecurity";
-import AuditLog from "./pages/admin/AuditLog";
-import AIUsage from "./pages/admin/AIUsage";
-import JoinCode from "./pages/JoinCode";
-import KidsLevel1 from "./pages/KidsLevel1";
-import KidsLevel2 from "./pages/KidsLevel2";
-import KidsLevel3 from "./pages/KidsLevel3";
-import KidsChat from "./pages/KidsChat";
-import KidsRoomValidation from "./pages/KidsRoomValidation";
-import KidsRoomHealthCheck from "./pages/KidsRoomHealthCheck";
-import RedeemGiftCode from "./pages/RedeemGiftCode";
-import AdminGiftCodes from "./pages/AdminGiftCodes";
-import AdminSpecification from "./pages/AdminSpecification";
-import SecurityDashboard from "./pages/SecurityDashboard";
-import Settings from "./pages/Settings";
-import HealthDashboard from "./pages/admin/HealthDashboard";
-import RoomHealthDashboard from "./pages/admin/RoomHealthDashboard";
-import UnifiedHealthCheck from "./pages/admin/UnifiedHealthCheck";
-import SystemHealth from "./pages/admin/SystemHealth";
-import EdgeFunctions from "./pages/admin/EdgeFunctions";
-import RoomSpecification from "./pages/admin/RoomSpecification";
-import UserMusicUpload from "./pages/UserMusicUpload";
-import MusicApproval from "./pages/admin/MusicApproval";
-import MusicManager from "./pages/admin/MusicManager";
-import TierMap from "./pages/TierMap";
-import Terms from "./pages/Terms";
-import Privacy from "./pages/Privacy";
-import Refund from "./pages/Refund";
+import NotFound from "./pages/NotFound";
 import { OnboardingFlow } from "./components/onboarding/OnboardingFlow";
-import FeatureFlags from "./pages/admin/FeatureFlags";
-import AudioAssetAuditor from "./pages/admin/AudioAssetAuditor";
-import UserSupportConsole from "./pages/admin/UserSupportConsole";
 import EnvironmentBanner from "./components/admin/EnvironmentBanner";
 
-const queryClient = new QueryClient();
+// Heavy components - lazy loaded
+const ChatHub = lazy(() => import("./pages/ChatHub"));
+const UnifiedHealthCheck = lazy(() => import("./pages/admin/UnifiedHealthCheck"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+const KidsChat = lazy(() => import("./pages/KidsChat"));
 
-import SystemLogs from "./pages/admin/SystemLogs";
+// VIP Tier pages - lazy loaded
+const Tiers = lazy(() => import("./pages/Tiers"));
+const RoomGrid = lazy(() => import("./pages/RoomGrid"));
+const EnglishLearningPathway = lazy(() => import("./pages/EnglishLearningPathway"));
+const RoomGridVIP1 = lazy(() => import("./pages/RoomGridVIP1"));
+const RoomGridVIP2 = lazy(() => import("./pages/RoomGridVIP2"));
+const RoomGridVIP3 = lazy(() => import("./pages/RoomGridVIP3"));
+const RoomGridVIP3II = lazy(() => import("./pages/RoomGridVIP3II"));
+const RoomGridVIP4 = lazy(() => import("./pages/RoomGridVIP4"));
+const RoomGridVIP5 = lazy(() => import("./pages/RoomGridVIP5"));
+const RoomGridVIP6 = lazy(() => import("./pages/RoomGridVIP6"));
+const RoomsVIP9 = lazy(() => import("./pages/RoomsVIP9"));
+
+// Kids pages - lazy loaded
+const KidsLevel1 = lazy(() => import("./pages/KidsLevel1"));
+const KidsLevel2 = lazy(() => import("./pages/KidsLevel2"));
+const KidsLevel3 = lazy(() => import("./pages/KidsLevel3"));
+
+// Admin pages - lazy loaded
+const AdminVIPRooms = lazy(() => import("./pages/AdminVIPRooms"));
+const AdminDesignAudit = lazy(() => import("./pages/AdminDesignAudit"));
+const AppMetrics = lazy(() => import("./pages/admin/AppMetrics"));
+const AdminReports = lazy(() => import("./pages/AdminReports"));
+const FeedbackInbox = lazy(() => import("./pages/admin/FeedbackInbox"));
+const AdminStats = lazy(() => import("./pages/AdminStats"));
+const AdminSystemMetrics = lazy(() => import("./pages/AdminSystemMetrics"));
+const PaymentMonitoring = lazy(() => import("./pages/admin/PaymentMonitoring"));
+const AdminAudioUpload = lazy(() => import("./pages/AdminAudioUpload"));
+const AdminModeration = lazy(() => import("./pages/AdminModeration"));
+const AdminRooms = lazy(() => import("./pages/AdminRooms"));
+const AdminRoomEditor = lazy(() => import("./pages/AdminRoomEditor"));
+const AdminRoomImport = lazy(() => import("./pages/AdminRoomImport"));
+const AdminUserRoles = lazy(() => import("./pages/AdminUserRoles"));
+const AdminCodeEditor = lazy(() => import("./pages/AdminCodeEditor"));
+const AdminFeedbackAnalytics = lazy(() => import("./pages/AdminFeedbackAnalytics"));
+const AdminPayments = lazy(() => import("./pages/AdminPayments"));
+const AdminPaymentVerification = lazy(() => import("./pages/AdminPaymentVerification"));
+const AdminUsers = lazy(() => import("./pages/AdminUsers"));
+const AdminUserDetail = lazy(() => import("./pages/AdminUserDetail"));
+const AdminSecurity = lazy(() => import("./pages/AdminSecurity"));
+const AuditLog = lazy(() => import("./pages/admin/AuditLog"));
+const AIUsage = lazy(() => import("./pages/admin/AIUsage"));
+const AdminGiftCodes = lazy(() => import("./pages/AdminGiftCodes"));
+const AdminSpecification = lazy(() => import("./pages/AdminSpecification"));
+const HealthDashboard = lazy(() => import("./pages/admin/HealthDashboard"));
+const RoomHealthDashboard = lazy(() => import("./pages/admin/RoomHealthDashboard"));
+const KidsRoomHealthCheck = lazy(() => import("./pages/KidsRoomHealthCheck"));
+const SystemHealth = lazy(() => import("./pages/admin/SystemHealth"));
+const EdgeFunctions = lazy(() => import("./pages/admin/EdgeFunctions"));
+const RoomSpecification = lazy(() => import("./pages/admin/RoomSpecification"));
+const MusicApproval = lazy(() => import("./pages/admin/MusicApproval"));
+const MusicManager = lazy(() => import("./pages/admin/MusicManager"));
+const FeatureFlags = lazy(() => import("./pages/admin/FeatureFlags"));
+const AudioAssetAuditor = lazy(() => import("./pages/admin/AudioAssetAuditor"));
+const UserSupportConsole = lazy(() => import("./pages/admin/UserSupportConsole"));
+const SystemLogs = lazy(() => import("./pages/admin/SystemLogs"));
+
+// Other pages - lazy loaded
+const MeaningOfLife = lazy(() => import("./pages/MeaningOfLife"));
+const AllRooms = lazy(() => import("./pages/AllRooms"));
+const VIPRequestForm = lazy(() => import("./pages/VIPRequestForm"));
+const VIPRequests = lazy(() => import("./pages/VIPRequests"));
+const MatchmakingHub = lazy(() => import("./pages/MatchmakingHub"));
+const PaymentTest = lazy(() => import("./pages/PaymentTest"));
+const ManualPayment = lazy(() => import("./pages/ManualPayment"));
+const PromoCode = lazy(() => import("./pages/PromoCode"));
+const VIPTopicRequest = lazy(() => import("./pages/VIPTopicRequest"));
+const ResetPassword = lazy(() => import("./pages/ResetPassword"));
+const SexualityCultureRoom = lazy(() => import("./pages/SexualityCultureRoom"));
+const FinanceCalmRoom = lazy(() => import("./pages/FinanceCalmRoom"));
+const AudioUpload = lazy(() => import("./pages/AudioUpload"));
+const JoinCode = lazy(() => import("./pages/JoinCode"));
+const KidsRoomValidation = lazy(() => import("./pages/KidsRoomValidation"));
+const RedeemGiftCode = lazy(() => import("./pages/RedeemGiftCode"));
+const SecurityDashboard = lazy(() => import("./pages/SecurityDashboard"));
+const Settings = lazy(() => import("./pages/Settings"));
+const UserMusicUpload = lazy(() => import("./pages/UserMusicUpload"));
+const TierMap = lazy(() => import("./pages/TierMap"));
+const Terms = lazy(() => import("./pages/Terms"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const Refund = lazy(() => import("./pages/Refund"));
+
+// Optimized QueryClient config
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      gcTime: 10 * 60 * 1000, // 10 minutes
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const App = () => {
   useEffect(() => {
@@ -132,6 +154,15 @@ const App = () => {
     if (hasTrackingParams) {
       window.history.replaceState({}, '', url.toString());
     }
+
+    // Preload critical routes on idle
+    preloadCriticalRoutes([
+      '/vip/vip1',
+      '/vip/vip2',
+      '/vip/vip3',
+      '/room',
+      '/kids-chat',
+    ]);
   }, []);
 
   return (
@@ -160,7 +191,7 @@ const App = () => {
                   
                   <GlobalPlayingIndicator />
                   <PerformanceProfiler />
-        <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-muted-foreground">Loading...</div>}>
+        <Suspense fallback={<LoadingSkeleton variant="page" />}>
           <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/onboarding" element={<OnboardingFlow />} />
