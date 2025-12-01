@@ -19,10 +19,11 @@ import { UiHealthPanel } from "@/components/admin/UiHealthPanel";
 import { RoomLinkHealth } from "@/components/admin/RoomLinkHealth";
 import { AudioCoveragePanel } from "@/components/admin/AudioCoveragePanel";
 import EnvironmentBanner from "@/components/admin/EnvironmentBanner";
-import { RoomHealthSummary } from "@/components/admin/RoomHealthSummary";
+import { RoomHealthSummary as RoomHealthSummaryComponent } from "@/components/admin/RoomHealthSummary";
 import { TierFilterBar } from "@/components/admin/TierFilterBar";
 import { RoomIssuesTable } from "@/components/admin/RoomIssuesTable";
 import { DeepScanPanel } from "@/components/admin/DeepScanPanel";
+import { VipTierCoveragePanel } from "@/components/admin/VipTierCoveragePanel";
 
 interface RoomIssue {
   roomId: string;
@@ -231,6 +232,16 @@ export default function UnifiedHealthCheck() {
   const [selectedRooms, setSelectedRooms] = useState<string[]>([]);
 
   // Room health summary from edge function
+  interface VipTierCoverage {
+    tierId: string;
+    label: string;
+    expectedCount: number;
+    dbActiveCount: number;
+    missingRoomIds: string[];
+    inactiveRoomIds: string[];
+    wrongTierRoomIds: string[];
+  }
+
   interface RoomHealthSummary {
     global: {
       total_rooms: number;
@@ -254,6 +265,7 @@ export default function UnifiedHealthCheck() {
       issue: string;
     }[];
     tier_counts: Record<string, number>;
+    vipTierCoverage?: VipTierCoverage[];
   }
   
   const [summary, setSummary] = useState<RoomHealthSummary | null>(null);
@@ -2883,6 +2895,11 @@ export default function UnifiedHealthCheck() {
             </div>
           </div>
         </Card>
+      )}
+
+      {/* VIP Tier Coverage Panel */}
+      {summary?.vipTierCoverage && summary.vipTierCoverage.length > 0 && (
+        <VipTierCoveragePanel coverage={summary.vipTierCoverage} />
       )}
 
       {/* Room Link Health - Check UI References vs Data */}
