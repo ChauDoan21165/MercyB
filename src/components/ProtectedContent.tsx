@@ -8,9 +8,14 @@ import { highlightTextByRules } from '@/lib/wordColorHighlighter';
 interface ProtectedContentProps {
   content: string;
   className?: string;
+  showCopyButton?: boolean;
 }
 
-export const ProtectedContent = ({ content, className = '' }: ProtectedContentProps) => {
+export const ProtectedContent = ({ 
+  content, 
+  className = '', 
+  showCopyButton: showCopyButtonProp = true 
+}: ProtectedContentProps) => {
   const { isAdmin } = useAdminCheck();
   const contentRef = useRef<HTMLDivElement>(null);
   const [showCopyButton, setShowCopyButton] = useState(false);
@@ -98,7 +103,7 @@ export const ProtectedContent = ({ content, className = '' }: ProtectedContentPr
         {highlightTextByRules(content, false)}
       </div>
       
-      {isAdmin && showCopyButton && (
+      {isAdmin && showCopyButton && showCopyButtonProp && (
         <Button
           variant="ghost"
           size="sm"
