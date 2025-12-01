@@ -24,6 +24,8 @@ interface RoomSpecification {
   created_at: string;
 }
 
+type ApplyScope = 'room' | 'tier' | 'app';
+
 export function RoomSpecificationManager() {
   const [specifications, setSpecifications] = useState<RoomSpecification[]>([]);
   const [loading, setLoading] = useState(false);
@@ -36,7 +38,7 @@ export function RoomSpecificationManager() {
   
   // Apply state
   const [selectedSpec, setSelectedSpec] = useState('');
-  const [applyScope, setApplyScope] = useState<'room' | 'tier' | 'app'>('tier');
+  const [applyScope, setApplyScope] = useState<ApplyScope>('tier');
   const [targetId, setTargetId] = useState('');
   const [applying, setApplying] = useState(false);
 
@@ -47,12 +49,14 @@ export function RoomSpecificationManager() {
   const loadSpecifications = async () => {
     setLoading(true);
     try {
-      const { data, error } = await supabase.functions.invoke('apply-room-specification', {
+      const { data, error } = await supabase.functions.invoke<{
+        specifications: RoomSpecification[];
+      }>('apply-room-specification', {
         body: { action: 'list' },
       });
 
       if (error) throw error;
-      setSpecifications(data.specifications || []);
+      setSpecifications(data?.specifications || []);
     } catch (error: any) {
       console.error('Error loading specifications:', error);
       toast.error('Failed to load specifications');
@@ -69,10 +73,10 @@ export function RoomSpecificationManager() {
 
     setCreating(true);
     try {
-      const { data, error } = await supabase.functions.invoke('apply-room-specification', {
+      const { error } = await supabase.functions.invoke('apply-room-specification', {
         body: {
           action: 'create',
-          targetId: {
+          specification: {
             name: name.trim(),
             description: description.trim() || null,
             use_color_theme: useColorTheme,
@@ -215,7 +219,10 @@ export function RoomSpecificationManager() {
 
           <div>
             <Label htmlFor="apply-scope" className="font-bold">Apply To</Label>
-            <Select value={applyScope} onValueChange={(v: any) => setApplyScope(v)}>
+            <Select
+              value={applyScope}
+              onValueChange={(v: ApplyScope) => setApplyScope(v)}
+            >
               <SelectTrigger className="border-2 border-black">
                 <SelectValue />
               </SelectTrigger>
