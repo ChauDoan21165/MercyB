@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
 import { useMercyBladeTheme } from '@/hooks/useMercyBladeTheme';
+import { RoomLoadShell } from '@/components/RoomLoadShell';
 import { Button } from '@/components/ui/button';
 import { Lock, Unlock, TrendingUp, Building2, Globe2, Crown, Palette } from 'lucide-react';
 import { useUserAccess } from '@/hooks/useUserAccess';
@@ -157,14 +158,12 @@ const RoomsVIP9 = () => {
           )}
         </div>
 
-        {error && (
-          <div className="text-center py-8">
-            <p className="text-destructive">Error loading rooms: {error.message}</p>
-          </div>
-        )}
-
-        {/* Domain Sections */}
-        {domains.map((domain) => {
+        <RoomLoadShell 
+          isLoading={loading} 
+          error={error ? "Failed to load VIP9 rooms" : null}
+        >
+          {/* Domain Sections */}
+          {domains.map((domain) => {
           const Icon = domainIcons[domain.id as keyof typeof domainIcons];
           return (
             <div key={domain.id} className="space-y-8">
@@ -257,6 +256,7 @@ const RoomsVIP9 = () => {
             </Button>
           </div>
         )}
+        </RoomLoadShell>
       </div>
     </div>
   );
