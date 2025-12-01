@@ -28,14 +28,18 @@ export const PairedHighlightedContent = ({
   
   return (
     <div className={className}>
+      {/* English Content */}
       <div className="mb-3">
-        <ProtectedContent content={enText} />
+        <ProtectedContent content={enText} showCopyButton={true} />
       </div>
       
+      {/* Audio bar would go here - passed from parent */}
+      
+      {/* Vietnamese Content */}
       {showVietnamese && (
         <>
           <hr className="border-border my-3" />
-          <ProtectedContent content={viText} />
+          <ProtectedContent content={viText} showCopyButton={true} />
         </>
       )}
     </div>

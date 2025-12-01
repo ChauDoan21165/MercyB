@@ -26,6 +26,7 @@ import { useCredits } from "@/hooks/useCredits";
 import { CreditLimitModal } from "@/components/CreditLimitModal";
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { HighlightedContent } from "@/components/HighlightedContent";
+import { KeywordAudioCopyDot } from "@/components/admin/KeywordAudioCopyDot";
 import { PairedHighlightedContent } from "@/components/PairedHighlightedContent";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
