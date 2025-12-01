@@ -20,6 +20,7 @@ import { RoomErrorState } from "@/components/RoomErrorState";
 import { useUiHealthReporter } from "@/hooks/useUiHealthReporter";
 import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
+import { useRoomAudioPreload } from "@/hooks/useRoomAudioPreload";
 
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useCredits } from "@/hooks/useCredits";
@@ -125,6 +126,13 @@ const ChatHub = () => {
 
   // Global theme mode
   const { mode } = useMercyBladeTheme({ defaultMode: "color" });
+
+  // Preload audio files for current room
+  const audioFilesToPreload = mergedEntries
+    .map(entry => entry.audio || entry.audioFile)
+    .filter((audio): audio is string => Boolean(audio));
+  
+  useRoomAudioPreload(audioBasePath, audioFilesToPreload);
 
   // Use centralized room metadata
   const info = getRoomInfo(roomId || "");
