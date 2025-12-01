@@ -448,10 +448,11 @@ const KidsChat = () => {
   return (
     <div className="min-h-screen bg-background">
       <ColorfulMercyBladeHeader />
-      <div className="container mx-auto px-4 py-6 max-w-6xl">
+      <div className="max-w-4xl mx-auto px-4 py-6">
         <RoomHeader title={`${room.title_en} / ${room.title_vi}`} tier={userSubscription?.kids_levels.name_en || "Kids"} />
         
-        <div className="flex items-center justify-between mb-4">
+        {/* Controls - Aligned left and right */}
+        <div className="flex items-center justify-between mb-6">
           <Button
             variant="outline"
             size="sm"
@@ -477,7 +478,7 @@ const KidsChat = () => {
         </div>
       </div>
       
-      <div className="container mx-auto px-4 py-3 max-w-6xl space-y-3">
+      <div className="max-w-4xl mx-auto px-4 py-3 space-y-3">
         {/* User Profile Info - Compact VIP3 Style */}
         {userProfile && (
           <div className="flex items-center justify-center gap-2 text-xs font-medium text-primary">

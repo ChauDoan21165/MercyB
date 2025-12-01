@@ -55,40 +55,40 @@ const RoomGridVIP6 = () => {
     <div className="min-h-screen">
       <ColorfulMercyBladeHeader />
       <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip6))' }}>
-        <div className="container mx-auto px-4 py-8 max-w-7xl">
+        <div className="max-w-4xl mx-auto px-4">
           <RoomHeader title="VIP6 — Shadow & Deep Psychology" tier="VIP6" />
           
-          <div className="mb-8 space-y-4">
-            <div className="flex items-center justify-end mb-4">
-              {isAdmin && (
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleRefreshRooms}
-                  disabled={loading}
-                  className="flex items-center gap-2 bg-white/80"
-                  aria-label="Refresh VIP6 rooms"
-                >
-                  <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} aria-hidden="true" />
-                  Refresh Rooms
-                </Button>
-              )}
-            </div>
-            
-            <div className="text-center space-y-2">
-              <p className="text-lg text-gray-700 font-medium">
-                You are in VIP 6 area / Bạn đang ở khu vực VIP 6
-              </p>
-              <p className="text-base text-gray-700 max-w-3xl mx-auto">
-                VIP6 opens a dedicated universe for shadow work, inner child healing, trauma patterns, subconscious identity, and emotional integration. This tier helps users understand the hidden forces shaping their reactions, choices, relationships, and life direction.
-              </p>
-              <p className="text-base text-gray-700 max-w-3xl mx-auto">
-                VIP6 mở ra một vũ trụ riêng dành cho bóng tối nội tâm, chữa lành đứa trẻ bên trong, mô thức tổn thương, bản sắc tiềm thức và sự tích hợp cảm xúc. Cấp độ này giúp người dùng hiểu những lực vô hình đang định hình phản ứng, lựa chọn, các mối quan hệ và hướng đi cuộc sống.
-              </p>
-              <p className="text-sm text-gray-600">
-                {loading ? 'Loading...' : `Showing ${rooms.length} rooms`}
-              </p>
-            </div>
+          {/* Controls - Aligned right */}
+          <div className="flex items-center justify-end gap-2 mb-6">
+            {isAdmin && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleRefreshRooms}
+                disabled={loading}
+                className="flex items-center gap-2 bg-white/80"
+                aria-label="Refresh VIP6 rooms"
+              >
+                <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} aria-hidden="true" />
+                Refresh Rooms
+              </Button>
+            )}
+          </div>
+          
+          {/* Subtitle - Centered, max-w-3xl, proper spacing */}
+          <div className="text-center space-y-3 mb-6 max-w-3xl mx-auto">
+            <p className="text-base text-gray-700 font-medium">
+              You are in VIP 6 area / Bạn đang ở khu vực VIP 6
+            </p>
+            <p className="text-[15px] leading-relaxed text-gray-700">
+              VIP6 opens a dedicated universe for shadow work, inner child healing, trauma patterns, subconscious identity, and emotional integration. This tier helps users understand the hidden forces shaping their reactions, choices, relationships, and life direction.
+            </p>
+            <p className="text-[15px] leading-relaxed text-gray-700">
+              VIP6 mở ra một vũ trụ riêng dành cho bóng tối nội tâm, chữa lành đứa trẻ bên trong, mô thức tổn thương, bản sắc tiềm thức và sự tích hợp cảm xúc. Cấp độ này giúp người dùng hiểu những lực vô hình đang định hình phản ứng, lựa chọn, các mối quan hệ và hướng đi cuộc sống.
+            </p>
+            <p className="text-sm text-gray-600">
+              {loading ? 'Loading...' : `Showing ${rooms.length} rooms`}
+            </p>
           </div>
 
           <VIPNavigation currentPage="vip6" />
@@ -99,21 +99,23 @@ const RoomGridVIP6 = () => {
             onRetry={handleRefreshRooms}
           >
             {rooms && rooms.length > 0 ? (
-              <VirtualizedRoomGrid
-                rooms={rooms.map((room) => ({
-                  id: room.id,
-                  nameEn: room.title_en,
-                  nameVi: room.title_vi,
-                  tier: room.tier || 'vip6',
-                  hasData: room.hasData, // Use hasData from registry
-                }))}
-                onRoomClick={(room) => {
-                  console.log('[RoomClick] Opening room:', room.id);
-                  navigate(`/room/${room.id}`);
-                }}
-              />
+              <div className="mt-6">
+                <VirtualizedRoomGrid
+                  rooms={rooms.map((room) => ({
+                    id: room.id,
+                    nameEn: room.title_en,
+                    nameVi: room.title_vi,
+                    tier: room.tier || 'vip6',
+                    hasData: room.hasData,
+                  }))}
+                  onRoomClick={(room) => {
+                    console.log('[RoomClick] Opening room:', room.id);
+                    navigate(`/room/${room.id}`);
+                  }}
+                />
+              </div>
             ) : (
-              <div className="text-center py-8 text-sm text-muted-foreground">
+              <div className="text-center py-8 text-sm text-muted-foreground max-w-3xl mx-auto">
                 <p>No rooms available yet.</p>
               </div>
             )}

@@ -23,22 +23,29 @@ export function RoomHeader({
   roomId
 }: RoomHeaderProps) {
   return (
-    <div className={`flex items-center justify-between gap-4 mb-6 ${className}`}>
-      <div className="flex items-center gap-3">
-        <h1 className="text-2xl font-bold transition-colors duration-200">
-          {title}
+    <div className={`max-w-4xl mx-auto ${className}`}>
+      {/* Title Block - Centered with 24px top spacing */}
+      <div className="text-center space-y-3 pt-6 pb-3">
+        <div className="flex items-center justify-center gap-3">
+          <h1 className="text-2xl font-bold transition-colors duration-200">
+            {title}
+          </h1>
+          {tier && (
+            <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium transition-colors duration-200">
+              {tier}
+            </span>
+          )}
           {roomData && roomId && (
             <RoomAdminTools roomData={roomData} roomId={roomId} />
           )}
-        </h1>
-        {tier && (
-          <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium transition-colors duration-200">
-            {tier}
-          </span>
-        )}
+        </div>
       </div>
+      
+      {/* Controls - Aligned right */}
       {showThemeToggle && (
-        <MercyBladeThemeToggle variant="outline" size="sm" />
+        <div className="flex justify-end mb-6">
+          <MercyBladeThemeToggle variant="outline" size="sm" />
+        </div>
       )}
     </div>
   );

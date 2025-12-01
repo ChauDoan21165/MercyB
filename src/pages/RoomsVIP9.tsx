@@ -110,24 +110,24 @@ const RoomsVIP9 = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       <ColorfulMercyBladeHeader />
-      <div className="container max-w-7xl mx-auto px-4 py-12 space-y-16">
+      <div className="max-w-4xl mx-auto px-4 py-12 space-y-16">
         <RoomHeader title="VIP9 Strategic Mastery" tier="VIP9" />
         
-        {/* Header Section */}
-        <div className="text-center space-y-6 max-w-4xl mx-auto">
+        {/* Header Section - Centered with proper spacing */}
+        <div className="text-center space-y-6 pt-6">
           <div className="inline-block px-4 py-1.5 bg-slate-800/50 border border-slate-700 rounded-full">
             <span className="text-xs font-semibold text-slate-300 tracking-wider uppercase">Executive Level</span>
           </div>
           
-          <h1 className="text-5xl md:text-6xl font-bold text-white tracking-tight">
+          <h1 className="text-2xl font-bold text-white tracking-tight">
             VIP9 Strategic Mastery
           </h1>
           
-          <p className="text-xl text-slate-300 font-light">
+          <p className="text-lg text-slate-300">
             Strategic Wisdom from History's Greatest Minds
           </p>
           
-          <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base text-slate-400 max-w-3xl mx-auto leading-relaxed">
             Elite strategic frameworks combining modern strategy with timeless wisdom from 
             legendary strategists: Sun Tzu, Napoleon, Machiavelli, Bismarck, Churchill, 
             Eisenhower, Cleopatra, and Genghis Khan.
