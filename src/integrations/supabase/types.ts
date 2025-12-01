@@ -1784,6 +1784,51 @@ export type Database = {
         }
         Relationships: []
       }
+      testimonials: {
+        Row: {
+          avatar_url: string | null
+          content_en: string
+          content_vi: string
+          created_at: string | null
+          display_order: number | null
+          id: string
+          is_featured: boolean | null
+          rating: number | null
+          tier: string | null
+          updated_at: string | null
+          user_name: string
+          user_title: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          content_en: string
+          content_vi: string
+          created_at?: string | null
+          display_order?: number | null
+          id?: string
+          is_featured?: boolean | null
+          rating?: number | null
+          tier?: string | null
+          updated_at?: string | null
+          user_name: string
+          user_title?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          content_en?: string
+          content_vi?: string
+          created_at?: string | null
+          display_order?: number | null
+          id?: string
+          is_featured?: boolean | null
+          rating?: number | null
+          tier?: string | null
+          updated_at?: string | null
+          user_name?: string
+          user_title?: string | null
+        }
+        Relationships: []
+      }
       tts_usage_log: {
         Row: {
           created_at: string
@@ -2167,6 +2212,36 @@ export type Database = {
         }
         Relationships: []
       }
+      user_referrals: {
+        Row: {
+          created_at: string | null
+          id: string
+          referral_code: string
+          referred_at: string | null
+          referred_user_id: string | null
+          referrer_user_id: string
+          reward_granted: boolean | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          referral_code: string
+          referred_at?: string | null
+          referred_user_id?: string | null
+          referrer_user_id: string
+          reward_granted?: boolean | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          referral_code?: string
+          referred_at?: string | null
+          referred_user_id?: string | null
+          referrer_user_id?: string
+          reward_granted?: boolean | null
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string | null
@@ -2483,6 +2558,7 @@ export type Database = {
       }
       clean_expired_responses: { Args: never; Returns: undefined }
       cleanup_rate_limits: { Args: never; Returns: undefined }
+      generate_referral_code: { Args: never; Returns: string }
       get_ai_usage_summary: {
         Args: { end_date?: string; start_date?: string }
         Returns: {
