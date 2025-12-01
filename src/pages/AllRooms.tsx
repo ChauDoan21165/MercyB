@@ -16,7 +16,7 @@ const AllRooms = () => {
   const navigate = useNavigate();
   const { tier } = useUserAccess();
   const [roomsVersion, setRoomsVersion] = useState(0);
-  const { useColorTheme, toggleColorMode } = useColorMode();
+  const { isColor, toggleMode } = useMercyBladeTheme();
 
   useEffect(() => {
     const handle = () => setRoomsVersion(v => v + 1);
@@ -89,11 +89,11 @@ const AllRooms = () => {
           <Button
             variant="outline"
             size="sm"
-            onClick={toggleColorMode}
+            onClick={toggleMode}
             className="gap-2"
           >
             <Palette className="w-4 h-4" />
-            {useColorTheme ? 'Black & White' : 'Mercy Blade Colors'}
+            {isColor ? 'Black & White' : 'Mercy Blade Colors'}
           </Button>
         </div>
 
@@ -119,7 +119,7 @@ const AllRooms = () => {
                         : "opacity-60 cursor-not-allowed"
                     }`}
                     style={
-                      useColorTheme
+                      isColor
                         ? { background: roomColor, border: '1px solid rgba(0,0,0,0.1)' }
                         : { background: 'white', border: '1px solid #e5e7eb' }
                     }
@@ -159,7 +159,7 @@ const AllRooms = () => {
                           <>
                             <p 
                               className="text-xs font-semibold leading-tight line-clamp-2"
-                              style={useColorTheme 
+                              style={isColor 
                                 ? { color: `color-mix(in srgb, ${roomColor} 85%, black)` }
                                 : { color: 'black' }
                               }
@@ -168,7 +168,7 @@ const AllRooms = () => {
                             </p>
                             <p 
                               className="text-[10px] leading-tight line-clamp-2"
-                              style={useColorTheme 
+                              style={isColor 
                                 ? { color: `color-mix(in srgb, ${roomColor} 70%, black)` }
                                 : { color: '#4b5563' }
                               }
@@ -184,7 +184,7 @@ const AllRooms = () => {
                     {room.hasData && (
                       <div 
                         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"
-                        style={useColorTheme 
+                        style={isColor 
                           ? { background: `linear-gradient(to bottom right, ${roomColor}20, ${roomColor}10)` }
                           : { background: 'rgba(0, 0, 0, 0.05)' }
                         }
