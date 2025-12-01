@@ -1,21 +1,47 @@
-import { Badge } from "@/components/ui/badge";
+/**
+ * L9 — Environment Banner
+ * Shows DEV/PREVIEW/PRODUCTION indicator at top of all pages
+ */
 
-const MODE = import.meta.env.VITE_MB_VALIDATION_MODE || "strict";
+import { AlertCircle } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function EnvironmentBanner() {
-  const color =
-    MODE === "strict" ? "bg-red-600" :
-    MODE === "preview" ? "bg-blue-600" :
-    "bg-orange-600";
+  const environment = import.meta.env.MODE;
+  
+  // Only show in non-production environments
+  if (environment === 'production') {
+    return null;
+  }
 
-  const label =
-    MODE === "strict" ? "STRICT VALIDATION (PRODUCTION)" :
-    MODE === "preview" ? "PREVIEW VALIDATION (STAGING)" :
-    "WIP VALIDATION (LOCAL DEV)";
+  const configs = {
+    development: {
+      label: 'DEV',
+      bg: 'bg-yellow-500',
+      text: 'text-yellow-950',
+      description: 'Development Environment'
+    },
+    preview: {
+      label: 'PREVIEW',
+      bg: 'bg-blue-500',
+      text: 'text-blue-950',
+      description: 'Preview Environment'
+    }
+  };
+
+  const config = configs[environment as keyof typeof configs] || configs.development;
 
   return (
-    <div className={`w-full py-2 text-white text-center font-semibold ${color}`}>
-      {label}
+    <div className={cn(
+      "fixed top-0 left-0 right-0 z-50 py-1 px-4 text-center text-xs font-semibold",
+      config.bg,
+      config.text
+    )}>
+      <div className="flex items-center justify-center gap-2">
+        <AlertCircle className="h-3 w-3" />
+        <span>{config.label}</span>
+        <span className="hidden sm:inline">— {config.description}</span>
+      </div>
     </div>
   );
 }
