@@ -60,6 +60,8 @@ interface Message {
   audioPlaylist?: string[];
 }
 
+type RoomErrorKind = "auth" | "access" | "not_found" | "unknown";
+
 const ChatHub = () => {
   const { roomId } = useParams();
   const navigate = useNavigate();
@@ -69,7 +71,7 @@ const ChatHub = () => {
   const [feedbackInput, setFeedbackInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [roomLoading, setRoomLoading] = useState(true);
-  const [roomError, setRoomError] = useState<string | null>(null);
+  const [roomError, setRoomError] = useState<{ kind: RoomErrorKind; message?: string } | null>(null);
   const [username, setUsername] = useState<string>("");
   const [noKeywordCount, setNoKeywordCount] = useState(0);
   const [matchedEntryCount, setMatchedEntryCount] = useState(0);
@@ -291,21 +293,24 @@ const ChatHub = () => {
       } catch (error: any) {
         console.error('Failed to load room data', error);
         
-        // Handle specific error cases
+        // Map error to unified error kind
         const errorMessage = String(error?.message || error);
+        let errorKind: RoomErrorKind = "unknown";
+        let errorText: string | undefined;
         
         if (errorMessage.includes("AUTHENTICATION_REQUIRED")) {
-          setRoomError("Please sign in to access this room");
-          setShowSignupPrompt(true);
+          errorKind = "auth";
         } else if (errorMessage.includes("ACCESS_DENIED_INSUFFICIENT_TIER")) {
-          setRoomError("You need a higher subscription tier to access this room");
-          setShowAccessDenied(true);
-        } else if (errorMessage.includes("ROOM_NOT_FOUND")) {
-          setRoomError("This room could not be found");
+          errorKind = "access";
+        } else if (errorMessage.includes("ROOM_NOT_FOUND") || error?.name === "RoomJsonNotFoundError") {
+          errorKind = "not_found";
+          errorText = roomId ? `Room ID: ${roomId}` : undefined;
         } else {
-          setRoomError("Failed to load room. This room may not exist or you may not have access.");
+          errorKind = "unknown";
+          errorText = "Failed to load room. This room may not exist or you may not have access.";
         }
         
+        setRoomError({ kind: errorKind, message: errorText });
         setMainMessages([]);
         setRoomLoading(false);
       }
@@ -1154,12 +1159,19 @@ const ChatHub = () => {
           </div>
         </div>
         
-        {/* Main Room Content - wrapped with RoomLoadShell */}
-        <RoomLoadShell 
-          isLoading={roomLoading} 
-          error={roomError}
-          onRetry={() => window.location.reload()}
-        >
+        {/* Main Room Content - Loading and Error States */}
+        {roomLoading && !roomError ? (
+          <RoomLoadShell isLoading={true} error={null}>
+            <></>
+          </RoomLoadShell>
+        ) : roomError ? (
+          <RoomErrorState 
+            kind={roomError.kind}
+            message={roomError.message}
+            roomId={roomId}
+          />
+        ) : (
+          <>
           {/* Welcome Message and Keywords Combined */}
           <Card className="p-4 shadow-soft bg-card border border-border">
           <div className="text-center space-y-0 mb-4">
@@ -1298,8 +1310,8 @@ const ChatHub = () => {
               <Send className="w-3 h-3" />
             </Button>
           </div>
-        </Card>
-        </RoomLoadShell>
+          </Card>
+        )}
       </div>
     </div>
     <CreditLimitModal
