@@ -99,6 +99,7 @@ import { OnboardingFlow } from "./components/onboarding/OnboardingFlow";
 import FeatureFlags from "./pages/admin/FeatureFlags";
 import AudioAssetAuditor from "./pages/admin/AudioAssetAuditor";
 import UserSupportConsole from "./pages/admin/UserSupportConsole";
+import EnvironmentBanner from "./components/admin/EnvironmentBanner";
 
 const queryClient = new QueryClient();
 
@@ -141,6 +142,7 @@ const App = () => {
               <OfflineDetector />
               <MusicPlayerProvider>
                 <BrowserRouter>
+                  <EnvironmentBanner />
                   <AdminFloatingButton />
                   <ZoomControl />
                   

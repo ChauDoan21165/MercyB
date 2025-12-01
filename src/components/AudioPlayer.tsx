@@ -129,7 +129,7 @@ export const AudioPlayer = ({
           setCurrentTime(saved);
         }
       } catch {}
-      console.log('✅ Audio loaded successfully:', currentAudioPath, 'Duration:', audio.duration);
+      // Audio loaded successfully
     };
 
     const handleEnded = () => {
@@ -145,10 +145,6 @@ export const AudioPlayer = ({
     };
 
     const handleError = (e: Event) => {
-      console.error('❌ Audio failed to load:', currentAudioPath);
-      console.error('Error details:', audio.error);
-      console.error('Error event:', e);
-      
       // Determine error message based on error code
       let errorMessage = 'Audio not available';
       if (audio.error) {
@@ -179,7 +175,6 @@ export const AudioPlayer = ({
     };
 
     const handleCanPlay = () => {
-      console.log('✅ Audio can play:', currentAudioPath);
       // Double-check resume in case metadata loaded earlier
       try {
         const saved = parseFloat(sessionStorage.getItem(storageKey(currentAudioPath)) || '0');
@@ -221,7 +216,9 @@ export const AudioPlayer = ({
     if (!audio) return;
 
     if (isPlaying && state.isAudioReady) {
-      audio.play().catch(console.error);
+      audio.play().catch(() => {
+        // Play failed silently
+      });
     } else if (!isPlaying) {
       // Save position on pause
       try { sessionStorage.setItem(storageKey(currentAudioPath), String(audio.currentTime)); } catch {}

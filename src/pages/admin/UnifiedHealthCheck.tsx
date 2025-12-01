@@ -19,6 +19,10 @@ import { UiHealthPanel } from "@/components/admin/UiHealthPanel";
 import { RoomLinkHealth } from "@/components/admin/RoomLinkHealth";
 import { AudioCoveragePanel } from "@/components/admin/AudioCoveragePanel";
 import EnvironmentBanner from "@/components/admin/EnvironmentBanner";
+import { RoomHealthSummary } from "@/components/admin/RoomHealthSummary";
+import { TierFilterBar } from "@/components/admin/TierFilterBar";
+import { RoomIssuesTable } from "@/components/admin/RoomIssuesTable";
+import { DeepScanPanel } from "@/components/admin/DeepScanPanel";
 
 interface RoomIssue {
   roomId: string;

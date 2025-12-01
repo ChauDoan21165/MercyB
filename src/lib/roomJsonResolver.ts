@@ -176,9 +176,10 @@ export function validateRoomJson(data: any, roomId: string, filename: string, mo
     }
   });
 
-  // Validate tier if present
-  if (data.tier && !['free', 'vip1', 'vip2', 'vip3', 'vip3_ii', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'].includes(data.tier.toLowerCase().replace(/\s*\/.*$/, '').replace(/\s+/g, ''))) {
-    console.warn(`⚠️ Unusual tier value for ${roomId}: ${data.tier}`);
+  // Validate tier if present (silent validation in production)
+  const validTiers = ['free', 'vip1', 'vip2', 'vip3', 'vip3_ii', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'];
+  if (data.tier && !validTiers.includes(data.tier.toLowerCase().replace(/\s*\/.*$/, '').replace(/\s+/g, ''))) {
+    // Invalid tier detected but not blocking in production
   }
 }
 
@@ -260,11 +261,6 @@ export async function loadRoomJson(roomId: string): Promise<any> {
   const data = await response.json();
   validateRoomJson(data, roomId, path, MODE);
 
-  // Dev console audit logs
-  if (import.meta.env.MODE !== "production") {
-    console.log(`🔍 [RoomJson] Loaded: ${roomId} | Mode: ${MODE} | File: ${path}`);
-  }
-  
   return data;
 }
 
