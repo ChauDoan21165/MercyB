@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Home, ArrowRight } from 'lucide-react';
+import { Home, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useUserAccess } from '@/hooks/useUserAccess';
 
@@ -38,7 +38,7 @@ const TierMap = () => {
       core: {
         title: 'Strategy Mindset',
         titleVi: 'Tư Duy Chiến Lược',
-        subtitle: '55 rooms across 4 strategic domains',
+        subtitle: '55 rooms: Individual, Corporate, National, Historical',
         href: '/vip/vip9',
       },
     },
@@ -67,8 +67,8 @@ const TierMap = () => {
         href: '/vip/vip5',
       },
       other: {
-        title: 'Interpersonal Intelligence Mastery',
-        titleVi: 'Thành Thạo Trí Tuệ Giao Tiếp',
+        title: 'Interpersonal Intelligence',
+        titleVi: 'Trí Tuệ Giao Tiếp',
         href: '/vip/vip5',
       },
     },
@@ -78,7 +78,7 @@ const TierMap = () => {
       core: {
         title: 'CareerZ',
         titleVi: 'Nghề Nghiệp',
-        subtitle: 'Career Development & Strategy',
+        subtitle: 'Career Development',
         href: '/vip/vip4',
       },
       other: {
@@ -91,14 +91,13 @@ const TierMap = () => {
       id: 'vip3ii',
       label: 'VIP3 II',
       core: {
-        title: 'English Specialization Mastery',
-        titleVi: 'Thành Thạo Chuyên Môn Tiếng Anh',
-        subtitle: 'Advanced English Skills',
+        title: 'English Specialization',
+        titleVi: 'Chuyên Môn Tiếng Anh',
         href: '/vip/vip3ii',
       },
       english: {
-        title: 'VIP3 II – English Specialization',
-        titleVi: 'VIP3 II – Chuyên Môn Tiếng Anh',
+        title: 'VIP3 II – Advanced English',
+        titleVi: 'VIP3 II – Tiếng Anh Nâng Cao',
         href: '/vip/vip3ii',
       },
     },
@@ -126,14 +125,14 @@ const TierMap = () => {
       id: 'vip2',
       label: 'VIP2',
       core: {
-        title: 'Productivity and Systems',
+        title: 'Productivity & Systems',
         titleVi: 'Năng Suất và Hệ Thống',
         href: '/vip/vip2',
       },
       english: {
         title: 'A2 + B1',
         titleVi: 'A2 + B1',
-        subtitle: 'Pre-Intermediate English',
+        subtitle: 'Pre-Intermediate',
         href: '/vip/vip2',
       },
       other: {
@@ -148,7 +147,7 @@ const TierMap = () => {
       core: {
         title: 'Basic Habits',
         titleVi: 'Thói Quen Cơ Bản',
-        subtitle: 'Foundation habits & survival skills',
+        subtitle: 'Foundation habits & survival',
         href: '/vip/vip1',
       },
       english: {
@@ -169,13 +168,13 @@ const TierMap = () => {
       english: {
         title: 'English Foundation',
         titleVi: 'Nền Tảng Tiếng Anh',
-        subtitle: '14 rooms for absolute beginners',
+        subtitle: '14 rooms for beginners',
         href: '/rooms',
       },
       other: {
         title: 'Survival Skills',
         titleVi: 'Kỹ Năng Sinh Tồn',
-        subtitle: '15 essential safety & preparedness rooms',
+        subtitle: '15 safety rooms',
         href: '/rooms',
       },
     },
@@ -187,85 +186,77 @@ const TierMap = () => {
     }
   };
 
-  const renderCell = (
+  const renderTableCell = (
     content?: { title: string; titleVi: string; subtitle?: string; href: string },
     type: 'english' | 'core' | 'other' = 'core',
     tierId?: string
   ) => {
     if (!content) {
       return (
-        <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 flex items-center justify-center min-h-[100px]">
-          <span className="text-xs text-gray-400 text-center">
-            Coming soon / Sắp ra mắt
+        <td className="border-2 border-gray-300 p-4 bg-gray-50 text-center align-middle">
+          <span className="text-xs text-gray-400 italic">
+            Coming soon<br/>Sắp ra mắt
           </span>
-        </div>
+        </td>
       );
     }
 
     let bgClass = 'bg-white';
-    let borderClass = 'border-gray-200';
     let textClass = 'text-gray-900';
-    let hoverClass = 'hover:shadow-lg hover:scale-[1.02]';
 
     if (type === 'core') {
-      // Core column: dark, serious look
       if (tierId === 'vip9' || tierId === 'vip6') {
         bgClass = 'bg-[#052B4A]';
-        borderClass = 'border-[#0A3F5C]';
         textClass = 'text-white';
       } else {
         bgClass = 'bg-gray-900';
-        borderClass = 'border-gray-800';
         textClass = 'text-white';
       }
     } else if (type === 'english') {
-      // English column: soft yellow/warm
       bgClass = 'bg-[#FFF9E6]';
-      borderClass = 'border-[#FFE4A3]';
-      textClass = 'text-gray-900';
     } else if (type === 'other') {
-      // Other Skills column: light neutral
       bgClass = 'bg-gray-50';
-      borderClass = 'border-gray-200';
-      textClass = 'text-gray-900';
     }
 
     return (
-      <button
-        onClick={() => handleCellClick(content.href)}
-        className={`rounded-xl border-2 ${borderClass} ${bgClass} p-4 text-left transition-all ${hoverClass} min-h-[100px] w-full`}
-      >
-        <div className={`font-bold text-sm mb-1 ${textClass}`}>
-          {content.title}
-        </div>
-        <div className={`text-xs ${type === 'core' ? 'opacity-80' : 'opacity-70'} ${textClass}`}>
-          {content.titleVi}
-        </div>
-        {content.subtitle && (
-          <div className={`text-xs mt-2 italic ${type === 'core' ? 'opacity-60' : 'opacity-50'} ${textClass}`}>
-            {content.subtitle}
+      <td className={`border-2 border-gray-300 p-4 ${bgClass} align-middle`}>
+        <button
+          onClick={() => handleCellClick(content.href)}
+          className={`text-left w-full hover:opacity-80 transition-opacity group`}
+        >
+          <div className={`font-bold text-sm mb-1 ${textClass} group-hover:underline flex items-center gap-1`}>
+            {content.title}
+            <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
-        )}
-        {isAdmin && (
-          <div className="text-[10px] mt-2 opacity-40 font-mono">
-            {content.href}
+          <div className={`text-xs ${type === 'core' ? 'opacity-80' : 'opacity-70'} ${textClass}`}>
+            {content.titleVi}
           </div>
-        )}
-      </button>
+          {content.subtitle && (
+            <div className={`text-xs mt-1 italic ${type === 'core' ? 'opacity-60' : 'opacity-50'} ${textClass}`}>
+              {content.subtitle}
+            </div>
+          )}
+          {isAdmin && (
+            <div className="text-[9px] mt-1 opacity-40 font-mono">
+              {content.href}
+            </div>
+          )}
+        </button>
+      </td>
     );
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="bg-black text-white py-5 px-6 border-b-4 border-gray-800">
-        <div className="max-w-[1400px] mx-auto flex items-center justify-between">
+        <div className="max-w-[1600px] mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Button
               onClick={() => navigate('/')}
               variant="outline"
               size="sm"
-              className="border-white text-white hover:bg-white hover:text-black transition-all"
+              className="border-white text-white hover:bg-white hover:text-black"
             >
               <Home className="h-4 w-4 mr-2" />
               Home
@@ -278,88 +269,61 @@ const TierMap = () => {
         </div>
       </header>
 
-      {/* Main Content */}
-      <div className="max-w-[1400px] mx-auto p-6 md:p-8 space-y-6">
-        {/* Column Headers - Desktop Only */}
-        <div className="hidden md:grid md:grid-cols-3 gap-6 mb-4">
-          <div className="text-center">
-            <h2 className="text-lg font-bold text-gray-900 border-b-2 border-yellow-400 pb-2 inline-block">
-              English Pathway
-            </h2>
-            <p className="text-sm text-gray-600 mt-1">Lộ Trình Tiếng Anh</p>
-          </div>
-          <div className="text-center">
-            <h2 className="text-lg font-bold text-gray-900 border-b-2 border-gray-800 pb-2 inline-block">
-              Core Tier / Cấp Cốt Lõi
-            </h2>
-            <p className="text-xs text-gray-500 mt-1 italic">Main curriculum for each tier</p>
-          </div>
-          <div className="text-center">
-            <h2 className="text-lg font-bold text-gray-900 border-b-2 border-gray-400 pb-2 inline-block">
-              Other Skills
-            </h2>
-            <p className="text-sm text-gray-600 mt-1">Kỹ Năng Khác</p>
-          </div>
+      {/* Table Container */}
+      <div className="max-w-[1600px] mx-auto p-6 overflow-x-auto">
+        <table className="w-full border-collapse border-2 border-gray-400">
+          {/* Table Header */}
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="border-2 border-gray-400 p-4 text-left w-24 bg-gray-200">
+                <div className="font-bold text-sm">Tier</div>
+                <div className="text-xs opacity-70">Cấp</div>
+              </th>
+              <th className="border-2 border-gray-400 p-4 text-center bg-[#FFF9E6]">
+                <div className="font-bold text-base">English Pathway</div>
+                <div className="text-xs opacity-70">Lộ Trình Tiếng Anh</div>
+              </th>
+              <th className="border-2 border-gray-400 p-4 text-center bg-gray-900 text-white">
+                <div className="font-bold text-base">Core Tier / Cấp Cốt Lõi</div>
+                <div className="text-xs opacity-70">Main curriculum</div>
+              </th>
+              <th className="border-2 border-gray-400 p-4 text-center bg-gray-50">
+                <div className="font-bold text-base">Other Skills</div>
+                <div className="text-xs opacity-70">Kỹ Năng Khác</div>
+              </th>
+            </tr>
+          </thead>
+
+          {/* Table Body */}
+          <tbody>
+            {tierRows.map((row) => (
+              <tr key={row.id} className="hover:bg-gray-50/50">
+                {/* Tier Label Column */}
+                <td className="border-2 border-gray-400 p-4 text-center font-bold bg-gray-100 align-middle">
+                  <div className="inline-flex items-center justify-center rounded-full bg-gray-900 text-white px-3 py-1 text-xs font-semibold whitespace-nowrap">
+                    {row.label}
+                  </div>
+                </td>
+
+                {/* English Column */}
+                {renderTableCell(row.english, 'english', row.id)}
+
+                {/* Core Column */}
+                {renderTableCell(row.core, 'core', row.id)}
+
+                {/* Other Skills Column */}
+                {renderTableCell(row.other, 'other', row.id)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        {/* Footer Note */}
+        <div className="mt-6 text-center">
+          <p className="text-xs text-gray-500 italic">
+            Click any cell to explore that tier's content / Nhấp vào ô để khám phá nội dung
+          </p>
         </div>
-
-        {/* Tier Rows */}
-        {tierRows.map((row) => (
-          <section
-            key={row.id}
-            className="rounded-3xl border border-gray-200 bg-white shadow-sm p-5 hover:shadow-md transition-shadow"
-          >
-            <div className="flex items-center gap-2 mb-4">
-              <span className="inline-flex items-center rounded-full bg-gray-900 text-white px-3 py-1 text-xs font-semibold">
-                {row.label}
-              </span>
-              <span className="text-xs text-gray-500 hidden md:inline">
-                Core Tier / Cấp cốt lõi
-              </span>
-            </div>
-
-            {/* Desktop: 3-column grid */}
-            <div className="hidden md:grid md:grid-cols-3 gap-6">
-              {renderCell(row.english, 'english', row.id)}
-              {renderCell(row.core, 'core', row.id)}
-              {renderCell(row.other, 'other', row.id)}
-            </div>
-
-            {/* Mobile: Stacked with labels */}
-            <div className="md:hidden space-y-4">
-              <div>
-                <h3 className="text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wide">
-                  Core / Cốt lõi
-                </h3>
-                {renderCell(row.core, 'core', row.id)}
-              </div>
-              
-              {row.english && (
-                <div>
-                  <h3 className="text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wide">
-                    English / Tiếng Anh
-                  </h3>
-                  {renderCell(row.english, 'english', row.id)}
-                </div>
-              )}
-              
-              {row.other && (
-                <div>
-                  <h3 className="text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wide">
-                    Other Skills / Kỹ Năng Khác
-                  </h3>
-                  {renderCell(row.other, 'other', row.id)}
-                </div>
-              )}
-            </div>
-          </section>
-        ))}
-      </div>
-
-      {/* Footer Note */}
-      <div className="max-w-[1400px] mx-auto px-6 pb-12 text-center">
-        <p className="text-xs text-gray-500 italic">
-          Click any cell to explore that tier's content / Nhấp vào ô để khám phá nội dung cấp độ đó
-        </p>
       </div>
     </div>
   );
