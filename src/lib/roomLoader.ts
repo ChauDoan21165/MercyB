@@ -169,6 +169,9 @@ export const loadMergedRoom = async (roomId: string) => {
   const baseTier: TierId = normalizeTier(rawUserTier);
   const normalizedUserTier: TierId = isAdmin ? 'vip9' : baseTier;
 
+  // Special handling for Kids tiers
+  const isUserKidsTier = baseTier === 'kids_1' || baseTier === 'kids_2' || baseTier === 'kids_3';
+
   // 4. Normalize room ID
   const dbRoomId = normalizeRoomId(roomId);
   
@@ -216,6 +219,11 @@ export const loadMergedRoom = async (roomId: string) => {
       }
  
       const normalizedRoomTier = dbResult.roomTier ?? ('free' as TierId);
+      const isRoomKidsTier = 
+        normalizedRoomTier === 'kids_1' || 
+        normalizedRoomTier === 'kids_2' || 
+        normalizedRoomTier === 'kids_3';
+      
       console.log(
         '[roomLoader] Room tier:',
         normalizedRoomTier,
@@ -224,14 +232,32 @@ export const loadMergedRoom = async (roomId: string) => {
       );
  
       // 6. Enforce access control using authenticated tier (admins bypass)
-      if (!isAdmin && !canUserAccessRoom(normalizedUserTier, normalizedRoomTier)) {
-        console.warn(
-          '[roomLoader] Access denied:',
-          normalizedUserTier,
-          'cannot access',
-          normalizedRoomTier,
-        );
-        throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
+      // Special Kids tier logic:
+      // - Kids tier users can ONLY access kids rooms (not adult VIP rooms)
+      // - Adult VIP users (parents) CAN access kids rooms for family accounts
+      // - Admins can access everything
+      if (!isAdmin) {
+        // If user has a kids tier, block access to non-kids rooms
+        if (isUserKidsTier && !isRoomKidsTier) {
+          console.warn(
+            '[roomLoader] Kids tier user cannot access adult room:',
+            normalizedUserTier,
+            'blocked from',
+            normalizedRoomTier,
+          );
+          throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
+        }
+        
+        // Standard tier access check (allows parents with VIP to access kids rooms)
+        if (!canUserAccessRoom(normalizedUserTier, normalizedRoomTier)) {
+          console.warn(
+            '[roomLoader] Access denied:',
+            normalizedUserTier,
+            'cannot access',
+            normalizedRoomTier,
+          );
+          throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
+        }
       }
  
       return dbResult;
@@ -248,8 +274,25 @@ export const loadMergedRoom = async (roomId: string) => {
     console.warn('[roomLoader] Falling back to JSON for room:', roomId);
     const jsonResult = await loadFromJson(roomId);
     if (jsonResult) {
+      const isRoomKidsTierJson = 
+        jsonResult.roomTier === 'kids_1' || 
+        jsonResult.roomTier === 'kids_2' || 
+        jsonResult.roomTier === 'kids_3';
+      
       // Enforce tier access for JSON rooms too (admins bypass)
       if (jsonResult.roomTier && !isAdmin) {
+        // Block kids tier users from accessing adult rooms
+        if (isUserKidsTier && !isRoomKidsTierJson) {
+          console.warn(
+            '[roomLoader] Kids tier user cannot access adult room (JSON):',
+            normalizedUserTier,
+            'blocked from',
+            jsonResult.roomTier,
+          );
+          throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
+        }
+        
+        // Standard tier check (allows parents to access kids rooms)
         if (!canUserAccessRoom(normalizedUserTier, jsonResult.roomTier)) {
           console.warn(
             '[roomLoader] Access denied (JSON):',
