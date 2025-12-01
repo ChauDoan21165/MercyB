@@ -37,6 +37,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { getTierRoute } from "@/lib/tierRoutes";
 import { useFavoriteRooms } from "@/hooks/useFavoriteRooms";
 import { useRecentRooms } from "@/hooks/useRecentRooms";
+import { useRoomAudioPreload } from "@/hooks/useRoomAudioPreload";
 import { Heart, Star, History, Clock } from "lucide-react";
 import {
   DropdownMenu,
