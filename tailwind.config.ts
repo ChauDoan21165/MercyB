@@ -196,6 +196,14 @@ export default {
             transform: "scale(1) rotate(180deg)",
           },
         },
+        "shimmer": {
+          "0%": {
+            transform: "translateX(-100%)",
+          },
+          "100%": {
+            transform: "translateX(100%)",
+          },
+        },
         "rainbow-border": {
           "0%": {
             borderColor: "#ef4444",
@@ -231,6 +239,7 @@ export default {
         "glow": "glow 2s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "sparkle": "sparkle 1.5s ease-in-out infinite",
+        "shimmer": "shimmer 2s infinite",
         "rainbow-border": "rainbow-border 3s linear infinite",
       },
     },
