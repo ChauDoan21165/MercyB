@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Database } from '@/integrations/supabase/types';
-import { ROOMS_TABLE, VipTierId } from '@/lib/constants';
+import { ROOMS_TABLE, VipTierId, tierIdToLabel } from '@/lib/constants';
 
 export type VipRoom = Database["public"]["Tables"]["rooms"]["Row"];
 
@@ -24,10 +24,11 @@ export function useVipRooms(tierId: VipTierId): UseVipRoomsResult {
       setLoading(true);
       setError(null);
 
+      const tierLabel = tierIdToLabel(tierId);
       const { data, error: fetchError } = await supabase
         .from(ROOMS_TABLE)
         .select('*')
-        .eq('tier', tierId.toLowerCase())
+        .eq('tier', tierLabel)
         .order('created_at', { ascending: false });
 
       if (fetchError) throw fetchError;
