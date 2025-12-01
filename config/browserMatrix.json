@@ -1,0 +1,71 @@
+{
+  "browsers": {
+    "chrome_latest_desktop": {
+      "viewport": { "width": 1920, "height": 1080 },
+      "devicePixelRatio": 1,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      "notes": "Primary target browser, latest Chrome on desktop"
+    },
+    "safari_ios_latest": {
+      "viewport": { "width": 390, "height": 844 },
+      "devicePixelRatio": 3,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
+      "notes": "Latest Safari on iPhone, watch for flex gap support and CSS variables"
+    },
+    "safari_ios_old": {
+      "viewport": { "width": 375, "height": 667 },
+      "devicePixelRatio": 2,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1",
+      "notes": "Older Safari on iOS 14, test graceful degradation"
+    },
+    "android_chrome_latest": {
+      "viewport": { "width": 412, "height": 915 },
+      "devicePixelRatio": 2.625,
+      "userAgent": "Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
+      "notes": "Latest Chrome on Android, primary mobile target"
+    },
+    "firefox_desktop": {
+      "viewport": { "width": 1920, "height": 1080 },
+      "devicePixelRatio": 1,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
+      "notes": "Firefox desktop, check flexbox and grid compatibility"
+    },
+    "edge_desktop": {
+      "viewport": { "width": 1920, "height": 1080 },
+      "devicePixelRatio": 1,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0",
+      "notes": "Microsoft Edge, Chromium-based, similar to Chrome"
+    }
+  },
+  "testPriority": [
+    "chrome_latest_desktop",
+    "safari_ios_latest",
+    "android_chrome_latest",
+    "firefox_desktop",
+    "safari_ios_old",
+    "edge_desktop"
+  ],
+  "criticalFeatures": [
+    "CSS Grid",
+    "Flexbox with gap",
+    "CSS custom properties (variables)",
+    "Intersection Observer",
+    "ResizeObserver",
+    "Audio API",
+    "LocalStorage",
+    "Fetch API",
+    "Promises/async-await",
+    "ES6+ features"
+  ],
+  "knownIssues": {
+    "safari_ios_old": [
+      "Limited CSS gap support in flex containers",
+      "CSS custom properties performance issues",
+      "Buggy Intersection Observer in some cases"
+    ],
+    "firefox_desktop": [
+      "Minor flexbox differences with flex-shrink",
+      "Different default font rendering"
+    ]
+  }
+}
