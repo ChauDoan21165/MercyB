@@ -44,17 +44,6 @@ export default {
         xl: "var(--shadow-xl)",
         glow: "var(--shadow-glow)",
       },
-      /* Transition Duration */
-      transitionDuration: {
-        fast: "var(--duration-fast)",
-        slow: "var(--duration-slow)",
-        slower: "var(--duration-slower)",
-      },
-      /* Transition Timing */
-      transitionTimingFunction: {
-        spring: "var(--ease-spring)",
-        out: "var(--ease-out)",
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -240,10 +229,21 @@ export default {
             opacity: "0",
           },
         },
+        "pulse-soft": {
+          "0%, 100%": {
+            opacity: "1",
+            transform: "scale(1)",
+          },
+          "50%": {
+            opacity: "0.9",
+            transform: "scale(1.02)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "pulse-soft": "pulse-soft 3s ease-in-out infinite",
         "blink": "blink 1.5s ease-in-out infinite",
         "shine": "shine 3s linear infinite",
         "glow": "glow 2s ease-in-out infinite",
@@ -252,6 +252,24 @@ export default {
         "shimmer": "shimmer 2s infinite",
         "rainbow-border": "rainbow-border 3s linear infinite",
         "ripple": "ripple 0.6s ease-out",
+      },
+      transitionDuration: {
+        ...{
+          fast: "var(--duration-fast)",
+          slow: "var(--duration-slow)",
+          slower: "var(--duration-slower)",
+        },
+        'mb-short': '150ms',
+        'mb-medium': '250ms',
+        'mb-long': '400ms',
+      },
+      transitionTimingFunction: {
+        ...{
+          spring: "var(--ease-spring)",
+          out: "var(--ease-out)",
+        },
+        'mb-default': 'cubic-bezier(0.16, 1, 0.3, 1)',
+        'mb-soft': 'cubic-bezier(0.4, 0, 0.2, 1)',
       },
     },
   },

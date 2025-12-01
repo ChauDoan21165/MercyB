@@ -5,6 +5,7 @@
 
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
+import { messageEnter, getVariants } from "@/lib/motion";
 
 interface AnimatedMessageProps {
   children: ReactNode;
@@ -12,14 +13,15 @@ interface AnimatedMessageProps {
 }
 
 export function AnimatedMessage({ children, index }: AnimatedMessageProps) {
+  const variants = getVariants(messageEnter);
+  
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
+      variants={variants}
+      initial="hidden"
+      animate="visible"
       transition={{
-        duration: 0.18,
         delay: Math.min(index * 0.05, 0.3), // Stagger with max delay
-        ease: [0.16, 1, 0.3, 1],
       }}
     >
       {children}
