@@ -23,9 +23,9 @@ export const animations = {
   slideInFromTop: 'animate-in slide-in-from-top-4 duration-300',
   scaleIn: 'animate-in zoom-in-95 duration-200',
   
-  // Hover effects
-  hoverScale: 'transition-transform duration-200 hover:scale-105 active:scale-95',
-  hoverLift: 'transition-all duration-200 hover:-translate-y-1 hover:shadow-lg',
+  // Hover effects - ENHANCED
+  hoverScale: 'transition-all duration-150 ease-out hover:scale-[1.02] active:scale-95',
+  hoverLift: 'transition-all duration-150 ease-out hover:-translate-y-1 hover:shadow-lg',
   hoverGlow: 'transition-shadow duration-200 hover:shadow-glow',
   
   // Focus effects
@@ -35,14 +35,36 @@ export const animations = {
   pulse: 'animate-pulse',
   spin: 'animate-spin',
 
-  // Message animations
-  messageEnter: 'animate-in slide-in-from-bottom-2 fade-in duration-300',
+  // Message animations - ENHANCED
+  messageEnter: 'animate-in slide-in-from-bottom-2 fade-in duration-180',
   
-  // Card animations
-  cardHover: 'transition-all duration-200 hover:shadow-md hover:-translate-y-0.5',
+  // Card animations - ENHANCED
+  cardHover: 'transition-all duration-150 ease-out hover:shadow-lg hover:-translate-y-0.5 hover:scale-[1.02]',
   
-  // Room grid item
+  // Room grid item - ENHANCED
   roomCardEnter: 'animate-in fade-in zoom-in-95 duration-300',
+  roomCardHover: 'transition-all duration-150 ease-out hover:scale-[1.02] hover:shadow-lg',
+  
+  // Button ripple/feedback
+  buttonPress: 'active:scale-95 transition-transform duration-100',
+  
+  // Theme toggle smooth transition
+  themeSwitch: 'transition-all duration-300 ease-in-out',
+  
+  // Search bar interactions
+  searchFocus: 'focus:ring-2 focus:ring-primary focus:scale-[1.01] transition-all duration-150',
+  
+  // Modal animations
+  modalEnter: 'animate-in fade-in zoom-in-95 duration-200',
+  modalExit: 'animate-out fade-out zoom-out-95 duration-150',
+  overlayEnter: 'animate-in fade-in duration-200',
+  overlayExit: 'animate-out fade-out duration-150',
+  
+  // Audio player states
+  audioActive: 'scale-[1.05] transition-transform duration-150',
+  
+  // Smooth scroll behavior
+  smoothScroll: 'scroll-smooth',
 } as const;
 
 /**
@@ -54,3 +76,15 @@ export function getAnimationClass(animationClass: string): string {
   }
   return animationClass;
 }
+
+/**
+ * Shadow scale for consistency
+ */
+export const shadows = {
+  sm: 'shadow-sm',
+  md: 'shadow-md',
+  lg: 'shadow-lg',
+  xl: 'shadow-xl',
+  glow: 'shadow-[0_0_20px_rgba(var(--primary),0.3)]',
+  hover: 'shadow-[0_8px_30px_rgba(0,0,0,0.12)]',
+} as const;
