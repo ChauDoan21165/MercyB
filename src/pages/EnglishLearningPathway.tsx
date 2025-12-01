@@ -155,11 +155,11 @@ const EnglishLearningPathway = () => {
             <div 
               className="text-xs leading-tight" 
               style={{ 
-                color: useColorTheme ? undefined : '#000000',
-                fontWeight: useColorTheme ? undefined : 700
+                color: isColor ? undefined : '#000000',
+                fontWeight: isColor ? undefined : 700
               }}
             >
-              {useColorTheme 
+              {isColor 
                 ? highlightShortTitle(room.name || room.id)
                 : (room.name || room.id)}
             </div>
@@ -167,11 +167,11 @@ const EnglishLearningPathway = () => {
               <div 
                 className="text-[10px] leading-tight"
                 style={{ 
-                  color: useColorTheme ? undefined : '#000000',
-                  fontWeight: useColorTheme ? undefined : 600
+                  color: isColor ? undefined : '#000000',
+                  fontWeight: isColor ? undefined : 600
                 }}
               >
-                {useColorTheme 
+                {isColor 
                   ? highlightShortTitle(room.nameVi)
                   : room.nameVi}
               </div>
@@ -218,11 +218,11 @@ const EnglishLearningPathway = () => {
               <Button
                 variant="outline"
                 size="sm"
-                onClick={toggleColorMode}
+                onClick={toggleMode}
                 className="gap-2"
               >
                 <Palette className="w-4 h-4" />
-                {useColorTheme ? 'Black & White' : 'Mercy Blade Colors'}
+                {isColor ? 'Black & White' : 'Mercy Blade Colors'}
               </Button>
             </div>
           </div>

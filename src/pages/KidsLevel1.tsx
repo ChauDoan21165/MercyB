@@ -102,7 +102,7 @@ const KidsLevel1 = () => {
               className="gap-2 rounded-full border-2 border-white/30"
             >
               <Palette className="w-4 h-4" />
-              {useColorTheme ? 'Simple' : 'Colorful'}
+              {isColor ? 'Simple' : 'Colorful'}
             </Button>
           </div>
         </div>
@@ -115,7 +115,7 @@ const KidsLevel1 = () => {
               room={room}
               index={index}
               onClick={() => navigate(`${KIDS_ROUTE_PREFIX}/${room.id}`)}
-              useColorTheme={useColorTheme}
+              useColorTheme={isColor}
             />
           ))}
         </div>

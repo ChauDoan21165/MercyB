@@ -7,6 +7,7 @@ import { AdminSidebar } from "./AdminSidebar";
 import { AdminBreadcrumbs } from "./AdminBreadcrumbs";
 import { AdminCommandPalette } from "./AdminCommandPalette";
 import { AdminThemeToggle } from "./AdminThemeToggle";
+import { AdminThemeProvider } from "@/lib/admin/theme";
 
 interface AdminLayoutProps {
   children: ReactNode;
@@ -24,7 +25,8 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
   const navigate = useNavigate();
 
   return (
-    <SidebarProvider defaultOpen={true} collapsedWidth={56}>
+    <AdminThemeProvider>
+      <SidebarProvider defaultOpen={true} collapsedWidth={56}>
       <div className="min-h-screen flex w-full bg-white">
         <AdminSidebar />
         
@@ -69,5 +71,6 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
         <AdminCommandPalette />
       </div>
     </SidebarProvider>
+    </AdminThemeProvider>
   );
 };
