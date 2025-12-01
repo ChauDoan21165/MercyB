@@ -1,53 +1,55 @@
 // VIP rooms data hook following Mercy Blade Design System v1.1
+// EMERGENCY RESTORATION: Show ALL rooms for tier, ignore domain filters
 
-import { useState, useEffect, useCallback } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { Database } from '@/integrations/supabase/types';
-import { ROOMS_TABLE, VipTierId, tierIdToLabel } from '@/lib/constants';
+import { ROOMS_TABLE, TierId, TIER_ID_TO_LABEL } from '@/lib/constants';
 
 export type VipRoom = Database["public"]["Tables"]["rooms"]["Row"];
 
-export interface UseVipRoomsResult {
-  rooms: VipRoom[];
-  loading: boolean;
-  error: Error | null;
-  refresh: () => void;
+// Emergency helper: Get ALL rooms for a tier (no domain filtering)
+async function getEmergencyRoomsForTier(tierId: TierId): Promise<VipRoom[]> {
+  const isDev = import.meta.env.DEV;
+  
+  // Get canonical tier label
+  const tierLabel = TIER_ID_TO_LABEL[tierId];
+  
+  if (isDev) {
+    console.log('[EmergencyRooms] Fetching for tier:', tierId, '→ label:', tierLabel);
+  }
+
+  try {
+    // Query DB: tier match + active only, NO domain filter
+    const { data, error } = await supabase
+      .from(ROOMS_TABLE)
+      .select('*')
+      .eq('tier', tierLabel)
+      .neq('is_active', false)
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('[EmergencyRooms] DB error:', error);
+      throw error;
+    }
+
+    if (isDev) {
+      console.log('[EmergencyRooms]', tierId, '→', (data || []).length, 'rooms');
+    }
+
+    return data || [];
+  } catch (err) {
+    console.error(`[EmergencyRooms] Failed to fetch ${tierId} rooms:`, err);
+    // TODO: Fallback to JSON if needed
+    return [];
+  }
 }
 
-export function useVipRooms(tierId: VipTierId): UseVipRoomsResult {
-  const [rooms, setRooms] = useState<VipRoom[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
-
-  const fetchRooms = useCallback(async () => {
-    try {
-      setLoading(true);
-      setError(null);
-
-      const tierLabel = tierIdToLabel(tierId);
-      const { data, error: fetchError } = await supabase
-        .from(ROOMS_TABLE)
-        .select('*')
-        .eq('tier', tierLabel)
-        .order('created_at', { ascending: false });
-
-      if (fetchError) throw fetchError;
-      setRooms(data || []);
-    } catch (err) {
-      console.error(`Error fetching ${tierId} rooms:`, err);
-      setError(err instanceof Error ? err : new Error('Failed to fetch rooms'));
-    } finally {
-      setLoading(false);
-    }
-  }, [tierId]);
-
-  useEffect(() => {
-    fetchRooms();
-  }, [fetchRooms]);
-
-  const refresh = useCallback(() => {
-    fetchRooms();
-  }, [fetchRooms]);
-
-  return { rooms, loading, error, refresh };
+// Emergency hook: Show ALL rooms for tier
+export function useEmergencyVipRooms(tierId: TierId) {
+  return useQuery({
+    queryKey: ['emergency-rooms', tierId],
+    queryFn: () => getEmergencyRoomsForTier(tierId),
+    staleTime: 2 * 60 * 1000, // 2 min
+  });
 }

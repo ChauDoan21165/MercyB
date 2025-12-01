@@ -6,7 +6,7 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { VIPNavigation } from "@/components/VIPNavigation";
 import { Brain, RefreshCw } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { useVipRooms } from '@/hooks/useVipRooms';
+import { useEmergencyVipRooms } from '@/hooks/useVipRooms';
 import { VirtualizedRoomGrid } from '@/components/VirtualizedRoomGrid';
 import { RoomGridSkeleton } from '@/components/RoomCardSkeleton';
 import { TIERS } from '@/lib/constants';
@@ -17,7 +17,8 @@ const RoomGridVIP6 = () => {
   const { isAdmin, isLoading: accessLoading, canAccessTier } = useUserAccess();
   const hasAccess = canAccessTier('vip6');
   const { toast } = useToast();
-  const { rooms, loading, error, refresh } = useVipRooms('vip6');
+  const { data: rooms, isLoading: loading, error: queryError, refetch: refresh } = useEmergencyVipRooms('vip6');
+  const error = queryError ? new Error('Failed to load VIP6 rooms') : null;
   
   // Prefetch first 5 rooms for instant navigation
   usePrefetchRooms(rooms || [], 5);
