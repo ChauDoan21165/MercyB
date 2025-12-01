@@ -44,6 +44,16 @@ export interface RoomValidationResult {
   issues: RoomIssue[];
 }
 
+export interface VipTierCoverage {
+  tierId: string;          // "vip1", "vip2", ...
+  label: string;           // from TIER_ID_TO_LABEL
+  expectedCount: number;   // from registry/JSON
+  dbActiveCount: number;   // from Supabase rooms table
+  missingRoomIds: string[];    // in registry/JSON but not in DB
+  inactiveRoomIds: string[];   // in DB but is_active = false
+  wrongTierRoomIds: string[];  // in DB but with different tier label
+}
+
 export interface RoomHealthSummary {
   global: {
     total_rooms: number;
@@ -65,6 +75,7 @@ export interface RoomHealthSummary {
     issue: string;
   }>;
   tier_counts: Record<string, number>;
+  vipTierCoverage?: VipTierCoverage[];  // NEW: VIP tier coverage analysis
   room_details?: RoomValidationResult[];
   fatal_error?: boolean;
   error_message?: string;

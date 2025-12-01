@@ -4,7 +4,7 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.4";
-import type { RoomIssue, RoomValidationResult, RoomHealthSummary, MercyBladeRoomJson } from "../_shared/room-types.ts";
+import type { RoomIssue, RoomValidationResult, RoomHealthSummary, VipTierCoverage, MercyBladeRoomJson } from "../_shared/room-types.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -624,11 +624,11 @@ serve(async (req) => {
   const trackGaps: any[] = [];
 
   try {
-    // Fetch rooms from database - include slug for JSON filename matching
+    // Fetch rooms from database - include slug and is_active for JSON filename matching
     // NOTE: Do NOT filter by tier in SQL - we need to normalize first
     const { data: roomsData, error: roomsErr } = await supabase
       .from("rooms")
-      .select("id, tier, slug");
+      .select("id, tier, slug, is_active");
     
     if (roomsErr) {
       console.error('[room-health-summary] Rooms query error:', roomsErr);
@@ -686,6 +686,83 @@ serve(async (req) => {
 
     console.log('[room-health-summary] Validation complete. Results by tier:', JSON.stringify(byTier, null, 2));
 
+    // ============= NEW: Build VIP tier coverage analysis =============
+    const vipTierCoverage: VipTierCoverage[] = [];
+    const allVipTierKeys: TierKey[] = ["vip1", "vip2", "vip3", "vip4", "vip5", "vip6", "vip7", "vip8", "vip9"];
+    
+    for (const tierId of allVipTierKeys) {
+      const label = tierKeyToLabel(tierId);
+      
+      // Build expected rooms for this tier from room IDs
+      // Expected pattern: room IDs ending in _{tierId} or containing _{tierId}_ or -{tierId}
+      const expectedIds: string[] = [];
+      const dbActiveIds: string[] = [];
+      const dbInactiveIds: string[] = [];
+      
+      // Scan all DB rooms to build expected and actual lists
+      for (const room of roomsData || []) {
+        const roomId = room.id as string;
+        const slug = (room as any).slug as string | null;
+        const roomTier = room.tier as string | null;
+        const isActive = (room as any).is_active !== false;
+        
+        // Check if this room belongs to this tier based on ID pattern
+        const idLower = roomId.toLowerCase();
+        const tierPattern = tierId.toLowerCase();
+        const belongsToTier = 
+          idLower.endsWith(`_${tierPattern}`) ||
+          idLower.includes(`_${tierPattern}_`) ||
+          idLower.endsWith(`-${tierPattern}`) ||
+          idLower.includes(`-${tierPattern}-`);
+        
+        if (belongsToTier) {
+          expectedIds.push(slug || roomId);
+          
+          // Check if it's actually in DB with correct tier
+          const normalizedRoomTier = normalizeTier(roomTier);
+          if (normalizedRoomTier === tierId) {
+            if (isActive) {
+              dbActiveIds.push(slug || roomId);
+            } else {
+              dbInactiveIds.push(slug || roomId);
+            }
+          }
+        }
+      }
+      
+      // Find missing rooms (expected but not active in DB)
+      const missingRoomIds = expectedIds.filter(id => !dbActiveIds.includes(id) && !dbInactiveIds.includes(id));
+      
+      // Find wrong-tier rooms (in DB with this tier but not in expected)
+      const wrongTierRoomIds: string[] = [];
+      for (const room of roomsData || []) {
+        const roomId = room.id as string;
+        const slug = (room as any).slug as string | null;
+        const roomTier = room.tier as string | null;
+        const normalizedRoomTier = normalizeTier(roomTier);
+        const isActive = (room as any).is_active !== false;
+        
+        if (normalizedRoomTier === tierId && isActive) {
+          const actualId = slug || roomId;
+          if (!expectedIds.includes(actualId)) {
+            wrongTierRoomIds.push(actualId);
+          }
+        }
+      }
+      
+      vipTierCoverage.push({
+        tierId,
+        label,
+        expectedCount: expectedIds.length,
+        dbActiveCount: dbActiveIds.length,
+        missingRoomIds,
+        inactiveRoomIds: dbInactiveIds,
+        wrongTierRoomIds,
+      });
+    }
+    
+    console.log('[room-health-summary] VIP tier coverage:', JSON.stringify(vipTierCoverage, null, 2));
+
     // Check for VIP tiers with 0 rooms (only if not filtering by specific tier)
     if (!tierFilterKey) {
       // Build set of existing VIP tiers using normalization
@@ -740,6 +817,7 @@ serve(async (req) => {
       byTier,
       vip_track_gaps: trackGaps,
       tier_counts: tierCounts,
+      vipTierCoverage,  // NEW: VIP tier coverage analysis
       room_details: validationResults, // Per-room health details for advanced UI panels
     };
 
