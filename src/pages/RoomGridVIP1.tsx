@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { VIPNavigation } from "@/components/VIPNavigation";
 import { useUserAccess } from "@/hooks/useUserAccess";
-import { useCachedRooms } from '@/hooks/useCachedRooms';
+import { useEmergencyVipRooms } from '@/hooks/useVipRooms';
 import { RoomGridSkeleton } from '@/components/RoomCardSkeleton';
 import { VirtualizedRoomGrid } from '@/components/VirtualizedRoomGrid';
 import { LowDataModeToggle } from '@/components/LowDataModeToggle';
@@ -17,7 +17,7 @@ const RoomGridVIP1 = () => {
   const { isAdmin, isLoading: accessLoading, canAccessTier } = useUserAccess();
   const hasAccess = canAccessTier('vip1');
   const { toast } = useToast();
-  const { data: rooms, isLoading, refetch } = useCachedRooms('vip1');
+  const { data: rooms, isLoading, error, refetch } = useEmergencyVipRooms('vip1');
   
   // Prefetch first 5 rooms for instant navigation
   usePrefetchRooms(rooms || [], 5);
@@ -88,7 +88,14 @@ const RoomGridVIP1 = () => {
 
           {isLoading && <RoomGridSkeleton count={24} />}
 
-          {!isLoading && (!rooms || rooms.length === 0) && (
+          {error && (
+            <div className="mt-8 text-center text-sm text-red-600">
+              <p>Failed to load VIP1 rooms</p>
+              <p className="text-xs mt-1">{error.message}</p>
+            </div>
+          )}
+
+          {!isLoading && (!rooms || rooms.length === 0) && !error && (
             <div className="mt-8 text-center text-sm text-gray-600">
               <p>No VIP1 rooms available yet.</p>
               <p className="text-xs text-gray-500 mt-1">Chưa có phòng VIP1 nào.</p>
@@ -97,7 +104,13 @@ const RoomGridVIP1 = () => {
 
           {!isLoading && rooms && rooms.length > 0 && (
             <VirtualizedRoomGrid
-              rooms={rooms}
+              rooms={rooms.map((room) => ({
+                id: room.id,
+                nameEn: room.title_en,
+                nameVi: room.title_vi,
+                tier: room.tier || 'vip1',
+                hasData: Array.isArray(room.entries) ? room.entries.length > 0 : !!room.entries,
+              }))}
               onRoomClick={(room) => navigate(`/room/${room.id}`)}
             />
           )}
