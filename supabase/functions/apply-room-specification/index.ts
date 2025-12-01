@@ -44,7 +44,7 @@ Deno.serve(async (req) => {
       });
     }
 
-    const { specificationId, scope, targetId, action } = await req.json();
+    const { specificationId, scope, targetId, action, specification } = await req.json();
 
     console.log('Apply room specification:', { specificationId, scope, targetId, action, userId: user.id });
 
@@ -53,9 +53,9 @@ Deno.serve(async (req) => {
       const { data: spec, error: specError } = await supabaseClient
         .from('room_specifications')
         .insert({
-          name: targetId.name,
-          description: targetId.description,
-          use_color_theme: targetId.use_color_theme,
+          name: specification.name,
+          description: specification.description,
+          use_color_theme: specification.use_color_theme,
           created_by: user.id,
         })
         .select()
