@@ -197,36 +197,39 @@ const RoomsVIP9 = () => {
                     onClick={() => handleRoomClick(room.id)}
                     disabled={!hasAccess}
                     className={`group relative p-6 rounded-lg border transition-all duration-300 text-left backdrop-blur-sm ${
-                      !hasAccess ? `cursor-not-allowed ${lockedStyles.container}` : 'cursor-pointer hover:shadow-lg'
-                    }`}
+                      !hasAccess && lockedStyles.container
+                    } ${hasAccess && 'cursor-pointer hover:shadow-lg'}`}
                     style={
-                      hasAccess ? (
-                        isColor
-                          ? {
-                              borderColor: '#475569',
-                              background: 'rgba(51, 65, 85, 0.5)',
-                            }
-                          : {
-                              borderColor: '#1e293b',
-                              background: '#0f172a',
-                            }
-                      ) : undefined
+                      isColor
+                        ? {
+                            borderColor: '#475569',
+                            background: 'rgba(51, 65, 85, 0.5)',
+                          }
+                        : {
+                            borderColor: '#1e293b',
+                            background: '#0f172a',
+                          }
                     }
                     aria-label={`${!hasAccess ? 'Locked - ' : ''}${room.title_en} - ${room.title_vi}`}
                     aria-disabled={!hasAccess}
                     data-locked={!hasAccess ? "true" : undefined}
                   >
-                    <div className="flex items-start justify-between gap-3">
+                    {/* Frosted overlay for locked rooms */}
+                    {!hasAccess && lockedStyles.overlay && (
+                      <div className={lockedStyles.overlay} aria-hidden="true" />
+                    )}
+
+                    <div className="flex items-start justify-between gap-3 relative z-[1]">
                       <div className="flex-1 space-y-2">
-                        <h3 className={`font-semibold transition-colors leading-snug ${
-                          hasAccess ? 'text-white group-hover:text-slate-100' : lockedStyles.title
+                        <h3 className={`font-semibold transition-colors leading-snug ${lockedStyles.title} ${
+                          hasAccess && 'text-white group-hover:text-slate-100'
                         }`}
                         data-room-title={room.title_en}
                         >
                           {isColor && hasAccess ? highlightShortTitle(room.title_en, index, false) : room.title_en}
                         </h3>
-                        <p className={`text-sm leading-relaxed ${
-                          hasAccess ? 'text-slate-400' : lockedStyles.subtitle
+                        <p className={`text-sm leading-relaxed ${lockedStyles.subtitle} ${
+                          hasAccess && 'text-slate-400'
                         }`}>
                           {isColor && hasAccess ? highlightShortTitle(room.title_vi, index, true) : room.title_vi}
                         </p>

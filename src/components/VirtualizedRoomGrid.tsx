@@ -122,14 +122,14 @@ export const VirtualizedRoomGrid = ({
                     const lockedStyles = getLockedRoomClassNames(isColor);
 
                     // Accessible rooms: normal styling with hover effects
-                    // Locked rooms: canonical locked styling (readable but distinct)
+                    // Locked rooms: frosted overlay effect that preserves Mercy Blade aesthetic
                     const baseCardClasses = [
                       "relative",
                       "p-3",
                       "group",
                       room.hasData
                         ? "cursor-pointer"
-                        : `cursor-not-allowed ${lockedStyles.container}`,
+                        : lockedStyles.container,
                       !isLowDataMode &&
                         room.hasData &&
                         "transition-all duration-300 hover:scale-110 hover:shadow-hover hover:z-10",
@@ -145,13 +145,9 @@ export const VirtualizedRoomGrid = ({
                             : `0 0 20px ${roomColor}60`,
                           background: "white",
                         }
-                      : room.hasData
-                      ? {
-                          background: "white",
-                          border: "1px solid #e5e7eb",
-                        }
                       : {
                           background: "white",
+                          border: "1px solid #e5e7eb",
                         };
 
                     return (
@@ -172,6 +168,11 @@ export const VirtualizedRoomGrid = ({
                             onKeyDown={(e) => handleCardKeyDown(e, room)}
                             data-locked={!room.hasData ? "true" : undefined}
                           >
+                            {/* Frosted overlay for locked rooms */}
+                            {!room.hasData && lockedStyles.overlay && (
+                              <div className={lockedStyles.overlay} aria-hidden="true" />
+                            )}
+
                             {/* Status Badge */}
                             <div className="absolute top-1 right-1 z-10">
                               {room.hasData ? (
@@ -186,13 +187,24 @@ export const VirtualizedRoomGrid = ({
                               )}
                             </div>
 
-                            <div className="space-y-2">
+                            <div className="space-y-2 relative z-[1]">
                               <div className="space-y-1">
                                 <p
                                   className={`${
                                     isLowDataMode ? "text-[10px]" : "text-xs"
-                                  } ${room.hasData ? lockedStyles.title : lockedStyles.title}`}
-                                  style={room.hasData ? (isColor ? {} : getLockedRoomStyles(isColor)) : getLockedRoomStyles(isColor)}
+                                  } ${lockedStyles.title} ${
+                                    isColor
+                                      ? "text-foreground"
+                                      : "font-black text-black"
+                                  }`}
+                                  style={
+                                    isColor
+                                      ? {}
+                                      : {
+                                          fontWeight: 900,
+                                          color: "#000000",
+                                        }
+                                  }
                                   data-room-title={room.nameEn}
                                 >
                                   {isColor && room.hasData
@@ -208,8 +220,19 @@ export const VirtualizedRoomGrid = ({
                                     isLowDataMode
                                       ? "text-[8px]"
                                       : "text-[10px]"
-                                  } ${room.hasData ? lockedStyles.subtitle : lockedStyles.subtitle}`}
-                                  style={room.hasData ? (isColor ? {} : getLockedRoomStyles(isColor)) : getLockedRoomStyles(isColor)}
+                                  } ${lockedStyles.subtitle} ${
+                                    isColor
+                                      ? "text-muted-foreground"
+                                      : "font-black text-black"
+                                  }`}
+                                  style={
+                                    isColor
+                                      ? {}
+                                      : {
+                                          fontWeight: 900,
+                                          color: "#000000",
+                                        }
+                                  }
                                 >
                                   {isColor && room.hasData
                                     ? highlightShortTitle(

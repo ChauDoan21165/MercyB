@@ -45,12 +45,11 @@ export function RoomCard({
       onClick={isLocked ? undefined : onClick}
       className={cn(
         "group relative overflow-hidden bg-card text-card-foreground",
-        "transition-all duration-150",
-        isLocked ? lockedStyles.container : "border border-border",
+        "border border-border transition-all duration-150",
+        isLocked && lockedStyles.container,
         radiusClasses.lg,
         shadowClasses.sm,
         onClick && !isLocked && "cursor-pointer hover:shadow-md",
-        isLocked && "cursor-not-allowed",
         variant === 'default' && spaceClasses.p.base,
         variant === 'compact' && spaceClasses.p.md,
         variant === 'featured' && spaceClasses.p.lg,
@@ -66,10 +65,15 @@ export function RoomCard({
       }}
       data-locked={isLocked ? "true" : undefined}
     >
+      {/* Frosted overlay for locked rooms */}
+      {isLocked && lockedStyles.overlay && (
+        <div className={lockedStyles.overlay} aria-hidden="true" />
+      )}
+
       {/* Locked Badge */}
       {isLocked && (
         <div className="absolute top-2 right-2 z-10">
-          <LockedBadge isColor={isColor} size="md" showText />
+          <LockedBadge isColor={isColor} size="md" />
         </div>
       )}
 
@@ -82,17 +86,18 @@ export function RoomCard({
       )}
 
       {/* Content */}
-      <div className={cn("flex flex-col", spaceClasses.gap.sm)}>
+      <div className={cn("flex flex-col relative z-[1]", spaceClasses.gap.sm)}>
         <h3 className={cn(
           "text-lg font-semibold leading-snug",
-          isLocked && lockedStyles.title
+          lockedStyles.title
         )}>
           {title}
         </h3>
         {subtitle && (
           <p className={cn(
             "text-sm",
-            isLocked ? lockedStyles.subtitle : "text-muted-foreground"
+            lockedStyles.subtitle,
+            !isLocked && "text-muted-foreground"
           )}>
             {subtitle}
           </p>
