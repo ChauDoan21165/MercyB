@@ -1,0 +1,45 @@
+name: Launch Simulation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize]
+
+jobs:
+  simulate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run launch simulation
+        run: npm run launch-sim
+      
+      - name: Upload simulation report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: launch-simulation-report
+          path: |
+            launch-report.json
+            launch-report.html
+      
+      - name: Fail if simulation failed
+        if: failure()
+        run: |
+          echo "❌ Launch simulation failed"
+          echo "Check the simulation report artifact for details"
+          exit 1
