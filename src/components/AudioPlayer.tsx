@@ -9,6 +9,23 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+/**
+ * AudioPlayer Component
+ * 
+ * AUDIO PATH FORMAT:
+ * - Expects audioPath in format: "/audio/{filename}.mp3"
+ * - Base path is constructed by roomLoader using AUDIO_FOLDER constant ("audio")
+ * - AudioPlayer receives final path like "/audio/room_entry_01_en.mp3"
+ * - NO "public/" prefix should ever be in the path
+ * 
+ * RESILIENCE FEATURES:
+ * - Shows loading spinner while audio is buffering
+ * - Displays inline error message with retry button if audio fails to load
+ * - Logs clear error messages to console for debugging
+ * - Supports playlists with automatic track progression
+ * - Saves/restores playback position per track
+ */
+
 interface AudioPlayerProps {
   audioPath: string;
   isPlaying: boolean;
@@ -351,8 +368,8 @@ export const AudioPlayer = ({
   if (state.hasError) {
     return (
       <div className={cn("flex items-center gap-2 p-3 bg-destructive/10 rounded-lg border border-destructive/20", className)}>
-        <div className="text-sm text-destructive">
-          {state.errorMessage || 'Audio failed to load. Please check your connection or try again later.'}
+        <div className="text-sm text-destructive flex-1">
+          {state.errorMessage || 'Audio not available right now'}
         </div>
         <Button
           onClick={() => {
@@ -364,10 +381,22 @@ export const AudioPlayer = ({
           }}
           size="sm"
           variant="outline"
-          className="ml-auto shrink-0"
+          className="shrink-0"
         >
           Retry
         </Button>
+      </div>
+    );
+  }
+
+  // Show loading state while audio is buffering
+  if (!state.isAudioReady) {
+    return (
+      <div className={cn("flex items-center gap-2 p-2 bg-muted/50 rounded-lg", className)}>
+        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <div className="h-4 w-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+          <span>Loading audio...</span>
+        </div>
       </div>
     );
   }

@@ -85,7 +85,7 @@ const loadFromDatabase = async (dbRoomId: string) => {
   //   console.warn('Room validation failed', dbRoom.id, validation.errors);
   // }
 
-  const { keywordMenu, merged } = processEntriesOptimized(dbRoom.entries);
+  const { keywordMenu, merged } = processEntriesOptimized(dbRoom.entries, dbRoomId);
 
   return {
     merged,
@@ -114,7 +114,7 @@ const loadFromJson = async (roomId: string) => {
     //   console.warn('JSON room validation failed', jsonData.id, validation.errors);
     // }
 
-    const { keywordMenu, merged } = processEntriesOptimized(jsonData.entries);
+    const { keywordMenu, merged } = processEntriesOptimized(jsonData.entries, roomId);
     const roomTier: TierId | null = jsonData.tier ? normalizeTier(jsonData.tier) : null;
 
     return {
