@@ -15,8 +15,8 @@ import { usePrefetchRooms } from "@/hooks/usePrefetchRooms";
 
 const RoomGridVIP2 = () => {
   const navigate = useNavigate();
-  const { canAccessVIP2, isAdmin, loading: accessLoading } = useUserAccess();
-  const hasAccess = canAccessVIP2 || isAdmin;
+  const { isAdmin, isLoading: accessLoading, canAccessTier } = useUserAccess();
+  const hasAccess = canAccessTier('vip2');
   const { toast } = useToast();
   const { rooms, loading, error, refresh } = useVipRooms('vip2');
   const { mode } = useMercyBladeTheme({ defaultMode: "color" });

@@ -88,18 +88,11 @@ const ChatHub = () => {
   const { trackMessage, trackKeyword, trackCompletion } = useBehaviorTracking(roomId || "");
   const { awardPoints } = usePoints();
   const {
-    canAccessVIP1,
-    canAccessVIP2,
-    canAccessVIP3,
-    canAccessVIP3II,
-    canAccessVIP4,
-    canAccessVIP5,
-    canAccessVIP6,
-    canAccessVIP9,
     tier,
     isAdmin,
     isAuthenticated,
-    loading: accessLoading,
+    isLoading: accessLoading,
+    canAccessTier,
   } = useUserAccess();
   const { creditInfo, hasCreditsRemaining, incrementUsage, refreshCredits } = useCredits();
   const [showAccessDenied, setShowAccessDenied] = useState(false);
@@ -205,44 +198,31 @@ const ChatHub = () => {
 
   // Check access - Free rooms require registration, VIP rooms require subscription
   useEffect(() => {
-    if (!accessLoading && info) {
-      // Unauthenticated users can't access any rooms
-      if (!isAuthenticated) {
-        setShowAccessDenied(true);
-        return;
-      }
-      
-      // Authenticated users: check tier access
-      const hasAccess =
-        isAdmin || // Admins can access all rooms
-        info.tier === 'free' ||
-        (info.tier === 'vip1' && canAccessVIP1) ||
-        (info.tier === 'vip2' && canAccessVIP2) ||
-        (info.tier === 'vip3' && canAccessVIP3) ||
-        (info.tier === 'vip3_ii' && canAccessVIP3II) ||
-        (info.tier === 'vip4' && canAccessVIP4) ||
-        (info.tier === 'vip5' && canAccessVIP5) ||
-        (info.tier === 'vip6' && canAccessVIP6) ||
-        (info.tier === 'vip9' && canAccessVIP9);
-      if (!hasAccess) {
-        setShowAccessDenied(true);
-      } else {
-        setShowAccessDenied(false);
-      }
+    if (accessLoading) {
+      // Don't show access denied while still loading
+      return;
     }
+    
+    if (!info) {
+      return;
+    }
+
+    // Unauthenticated users can't access any rooms
+    if (!isAuthenticated) {
+      setShowAccessDenied(true);
+      return;
+    }
+    
+    // Authenticated users: check tier access using unified helper
+    const roomTierId = info.tier === 'vip3_ii' ? 'vip3ii' : info.tier || 'free';
+    const hasAccess = canAccessTier(roomTierId);
+    
+    setShowAccessDenied(!hasAccess);
   }, [
     accessLoading,
     info,
     isAuthenticated,
-    canAccessVIP1,
-    canAccessVIP2,
-    canAccessVIP3,
-    canAccessVIP3II,
-    canAccessVIP4,
-    canAccessVIP5,
-    canAccessVIP6,
-    canAccessVIP9,
-    isAdmin,
+    canAccessTier,
   ]);
 
   const handleAccessDenied = () => {

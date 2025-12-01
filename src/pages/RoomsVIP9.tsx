@@ -22,7 +22,8 @@ interface DomainSection {
 const RoomsVIP9 = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { canAccessVIP9, loading: accessLoading } = useUserAccess();
+  const { isLoading: accessLoading, canAccessTier } = useUserAccess();
+  const hasAccess = canAccessTier('vip9');
   const { rooms, loading, error } = useVipRooms('vip9');
   const [domains, setDomains] = useState<DomainSection[]>([]);
   const { useColorTheme, toggleColorMode } = useColorMode();
@@ -72,7 +73,7 @@ const RoomsVIP9 = () => {
   }, [rooms]);
 
   const handleRoomClick = (roomId: string) => {
-    if (!canAccessVIP9) {
+    if (!hasAccess) {
       toast({
         title: 'VIP9 Access Required',
         description: 'Upgrade to VIP9 to access Strategic Mastery rooms',
@@ -144,7 +145,7 @@ const RoomsVIP9 = () => {
             </div>
           </div>
           
-          {!canAccessVIP9 && (
+          {!hasAccess && (
             <div className="pt-6">
               <Button 
                 size="lg"
@@ -220,7 +221,7 @@ const RoomsVIP9 = () => {
                           {useColorTheme ? highlightShortTitle(room.title_vi, index, true) : room.title_vi}
                         </p>
                       </div>
-                      {canAccessVIP9 ? (
+                      {hasAccess ? (
                         <Unlock className="h-5 w-5 text-slate-400 group-hover:text-white flex-shrink-0 transition-colors" aria-hidden="true" />
                       ) : (
                         <Lock className="h-5 w-5 text-slate-600 flex-shrink-0" aria-hidden="true" />
@@ -237,7 +238,7 @@ const RoomsVIP9 = () => {
         })}
 
         {/* Footer CTA */}
-        {!canAccessVIP9 && (
+        {!hasAccess && (
           <div className="text-center space-y-6 py-16 border-t border-slate-800">
             <h3 className="text-3xl font-bold text-white">
               Elevate Your Strategic Capability
