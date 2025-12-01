@@ -61,6 +61,7 @@ const AppMetrics = lazy(() => import("./pages/admin/AppMetrics"));
 const AdminReports = lazy(() => import("./pages/AdminReports"));
 const FeedbackInbox = lazy(() => import("./pages/admin/FeedbackInbox"));
 const AdminStats = lazy(() => import("./pages/AdminStats"));
+const ContentQualityDashboard = lazy(() => import("./pages/admin/ContentQualityDashboard"));
 const AdminSystemMetrics = lazy(() => import("./pages/AdminSystemMetrics"));
 const PaymentMonitoring = lazy(() => import("./pages/admin/PaymentMonitoring"));
 const AdminAudioUpload = lazy(() => import("./pages/AdminAudioUpload"));
@@ -245,7 +246,8 @@ const App = () => {
                 <Route path="/admin/reports" element={<AdminRoute><AdminReports /></AdminRoute>} />
                 <Route path="/admin/feedback" element={<AdminRoute><FeedbackInbox /></AdminRoute>} />
                 <Route path="/admin/feedback-analytics" element={<AdminRoute><AdminFeedbackAnalytics /></AdminRoute>} />
-                <Route path="/admin/stats" element={<AdminRoute><AdminStats /></AdminRoute>} />
+          <Route path="/admin/stats" element={<AdminRoute><AdminStats /></AdminRoute>} />
+          <Route path="/admin/content-quality" element={<AdminRoute><ContentQualityDashboard /></AdminRoute>} />
           <Route path="/admin/payment-verification" element={<AdminRoute><AdminPaymentVerification /></AdminRoute>} />
           <Route path="/admin/audio-upload" element={<AdminRoute><AdminAudioUpload /></AdminRoute>} />
           <Route path="/admin/moderation" element={<AdminRoute><AdminModeration /></AdminRoute>} />
