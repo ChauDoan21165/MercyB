@@ -77,7 +77,11 @@ function validateEntryAudio(entry, index) {
 function validateEntryBilingualCopy(entry, index) {
   if (!config.requireBilingualCopy) return { valid: true };
   
-  const hasBilingual = (entry.copy_en && entry.copy_vi) || (entry.content_en && entry.content_vi);
+  const hasBilingual =
+    (entry.copy && entry.copy.en && entry.copy.vi) ||
+    (entry.copy_en && entry.copy_vi) ||
+    (entry.content_en && entry.content_vi);
+    
   if (!hasBilingual) {
     return {
       valid: false,
