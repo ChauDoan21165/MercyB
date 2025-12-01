@@ -101,3 +101,34 @@ export function SearchSkeleton() {
     <Skeleton className="h-10 w-full rounded-lg" />
   );
 }
+
+// Generic Loading Skeleton with variants
+interface LoadingSkeletonProps {
+  variant?: 'page' | 'card' | 'list' | 'grid';
+}
+
+export function LoadingSkeleton({ variant = 'page' }: LoadingSkeletonProps) {
+  if (variant === 'page') {
+    return (
+      <div className="space-y-4 p-4">
+        <Skeleton className="h-8 w-1/3" />
+        <Skeleton className="h-4 w-2/3" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+          <Skeleton className="h-32" />
+          <Skeleton className="h-32" />
+          <Skeleton className="h-32" />
+        </div>
+      </div>
+    );
+  }
+  if (variant === 'card') {
+    return <Skeleton className="h-48 w-full rounded-lg" />;
+  }
+  if (variant === 'list') {
+    return <ListSkeleton />;
+  }
+  if (variant === 'grid') {
+    return <RoomGridSkeleton count={6} />;
+  }
+  return <Skeleton className="h-full w-full" />;
+}
