@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
+import { MercyBladeThemeToggle } from "@/components/MercyBladeThemeToggle";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
@@ -35,7 +36,7 @@ const RoomGridVIP4 = () => {
   const hasAccess = canAccessTier('vip4');
   const { toast } = useToast();
   const { rooms, loading, error, refresh } = useVipRooms('vip4');
-  const { mode } = useMercyBladeTheme({ defaultMode: "color" });
+  const { mode } = useMercyBladeTheme();
   
   // Prefetch first 5 rooms for instant navigation
   usePrefetchRooms(rooms || [], 5);
@@ -79,7 +80,8 @@ const RoomGridVIP4 = () => {
       <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip4))' }}>
         <div className="container mx-auto px-4 py-8 max-w-7xl">
           <div className="mb-12 text-center space-y-4">
-            <div className="flex items-center justify-end mb-4">
+            <div className="flex items-center justify-end mb-4 gap-2">
+              <MercyBladeThemeToggle />
               {isAdmin && (
                 <Button
                   variant="outline"

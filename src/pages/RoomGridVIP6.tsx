@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
+import { MercyBladeThemeToggle } from "@/components/MercyBladeThemeToggle";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { useNavigate } from "react-router-dom";
 import { useUserAccess } from "@/hooks/useUserAccess";
@@ -19,7 +20,7 @@ const RoomGridVIP6 = () => {
   const hasAccess = canAccessTier('vip6');
   const { toast } = useToast();
   const { rooms, loading, error, refresh } = useVipRooms('vip6');
-  const { mode } = useMercyBladeTheme({ defaultMode: "color" });
+  const { mode } = useMercyBladeTheme();
   
   // Prefetch first 5 rooms for instant navigation
   usePrefetchRooms(rooms || [], 5);
@@ -68,19 +69,22 @@ const RoomGridVIP6 = () => {
                 You are in VIP 6 area / Bạn đang ở khu vực VIP 6
               </span>
               
-              {isAdmin && (
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleRefreshRooms}
-                  disabled={loading}
-                  className="flex items-center gap-2 bg-white/80"
-                  aria-label="Refresh VIP6 rooms"
-                >
-                  <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} aria-hidden="true" />
-                  Refresh Rooms
-                </Button>
-              )}
+              <div className="flex items-center gap-2">
+                <MercyBladeThemeToggle />
+                {isAdmin && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={handleRefreshRooms}
+                    disabled={loading}
+                    className="flex items-center gap-2 bg-white/80"
+                    aria-label="Refresh VIP6 rooms"
+                  >
+                    <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} aria-hidden="true" />
+                    Refresh Rooms
+                  </Button>
+                )}
+              </div>
             </div>
             
             <div className="text-center space-y-2">

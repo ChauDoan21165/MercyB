@@ -1,5 +1,6 @@
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
+import { MercyBladeThemeToggle } from "@/components/MercyBladeThemeToggle";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { Gem, RefreshCw } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +20,7 @@ const RoomGridVIP2 = () => {
   const hasAccess = canAccessTier('vip2');
   const { toast } = useToast();
   const { rooms, loading, error, refresh } = useVipRooms('vip2');
-  const { mode } = useMercyBladeTheme({ defaultMode: "color" });
+  const { mode } = useMercyBladeTheme();
   
   // Prefetch first 5 rooms for instant navigation
   usePrefetchRooms(rooms || [], 5);
@@ -60,19 +61,22 @@ const RoomGridVIP2 = () => {
                 You are in VIP 2 area / Bạn đang ở khu vực VIP 2
               </span>
               
-              {hasAccess && isAdmin && (
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleRefreshRooms}
-                  disabled={loading}
-                  className="flex items-center gap-2 bg-white/80"
-                  aria-label="Refresh VIP2 rooms"
-                >
-                  <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} aria-hidden="true" />
-                  Refresh Rooms
-                </Button>
-              )}
+              <div className="flex items-center gap-2">
+                <MercyBladeThemeToggle />
+                {isAdmin && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={handleRefreshRooms}
+                    disabled={loading}
+                    className="flex items-center gap-2 bg-white/80"
+                    aria-label="Refresh VIP2 rooms"
+                  >
+                    <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} aria-hidden="true" />
+                    Refresh Rooms
+                  </Button>
+                )}
+              </div>
             </div>
             
             <div className="text-center space-y-2">

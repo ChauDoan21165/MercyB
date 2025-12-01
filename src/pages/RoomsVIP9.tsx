@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
 import { useMercyBladeTheme } from '@/hooks/useMercyBladeTheme';
+import { MercyBladeThemeToggle } from '@/components/MercyBladeThemeToggle';
 import { RoomLoadShell } from '@/components/RoomLoadShell';
 import { Button } from '@/components/ui/button';
 import { Lock, Unlock, TrendingUp, Building2, Globe2, Crown, Palette } from 'lucide-react';
@@ -26,8 +27,7 @@ const RoomsVIP9 = () => {
   const hasAccess = canAccessTier('vip9');
   const { rooms, loading, error } = useVipRooms('vip9');
   const [domains, setDomains] = useState<DomainSection[]>([]);
-  const { useColorTheme, toggleColorMode } = useColorMode();
-  const { mode } = useMercyBladeTheme({ defaultMode: "color" });
+  const { mode, isColor } = useMercyBladeTheme();
 
   useEffect(() => {
     // Organize rooms by their domain field
@@ -181,16 +181,11 @@ const RoomsVIP9 = () => {
 
               {/* Color Mode Toggle */}
               <div className="flex justify-end mb-4">
-                <Button
+                <MercyBladeThemeToggle 
                   variant="outline"
                   size="sm"
-                  onClick={toggleColorMode}
-                  className="gap-2 bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700"
-                  aria-label={useColorTheme ? 'Switch to professional mode' : 'Switch to Mercy Blade colors'}
-                >
-                  <Palette className="w-4 h-4" aria-hidden="true" />
-                  {useColorTheme ? 'Professional' : 'Mercy Blade Colors'}
-                </Button>
+                  className="bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700"
+                />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
+import { MercyBladeThemeToggle } from "@/components/MercyBladeThemeToggle";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { CheckCircle2, Lock, Crown, Sparkles, RefreshCw, Building2, ChevronRight, Palette } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -30,8 +31,7 @@ const RoomGridVIP3 = () => {
   const hasAccess = canAccessTier('vip3');
   const { toast } = useToast();
   const { rooms, loading, error, refresh } = useVipRooms('vip3');
-  const { useColorTheme, toggleColorMode } = useColorMode();
-  const { mode } = useMercyBladeTheme({ defaultMode: "color" });
+  const { mode, isColor } = useMercyBladeTheme();
   
   // Prefetch first 5 rooms for instant navigation
   usePrefetchRooms(rooms || [], 5);
@@ -154,16 +154,9 @@ const RoomGridVIP3 = () => {
           {/* Color Mode Toggle */}
           {hasAccess && (
             <div className="flex justify-end mb-4">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={toggleColorMode}
-                className="gap-2"
-                aria-label={useColorTheme ? 'Switch to black and white mode' : 'Switch to Mercy Blade colors'}
-              >
-                <Palette className="w-4 h-4" aria-hidden="true" />
-                {useColorTheme ? 'Black & White' : 'Mercy Blade Colors'}
-              </Button>
+              <MercyBladeThemeToggle />
+            </div>
+          )}
             </div>
           )}
 
