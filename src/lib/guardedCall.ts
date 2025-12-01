@@ -55,7 +55,9 @@ export async function guardedCall<T>(
     successMessage = `${label} completed successfully`
   } = options;
 
-  console.log(`🔄 [${label}] Starting...`);
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(`🔄 [${label}] Starting...`);
+  }
 
   try {
     const result = await fn();
@@ -65,7 +67,9 @@ export async function guardedCall<T>(
       const error = (result as any).error;
       const errorMessage = error.message || error.toString() || 'Unknown error';
       
-      console.error(`❌ [${label}] Failed:`, errorMessage);
+      if (process.env.NODE_ENV !== 'production') {
+        console.error(`❌ [${label}] Failed:`, errorMessage);
+      }
       
       if (showErrorToast) {
         toast.error(`${label} failed: ${errorMessage}`);
@@ -79,7 +83,9 @@ export async function guardedCall<T>(
     }
 
     // Success case
-    console.log(`✅ [${label}] Completed successfully`);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`✅ [${label}] Completed successfully`);
+    }
     
     if (showSuccessToast) {
       toast.success(successMessage);
@@ -93,11 +99,13 @@ export async function guardedCall<T>(
   } catch (error: any) {
     const errorMessage = error?.message || error?.toString() || 'Unknown error occurred';
     
-    console.error(`❌ [${label}] Error:`, {
-      label,
-      error: errorMessage,
-      stack: error?.stack
-    });
+    if (process.env.NODE_ENV !== 'production') {
+      console.error(`❌ [${label}] Error:`, {
+        label,
+        error: errorMessage,
+        stack: error?.stack
+      });
+    }
 
     if (showErrorToast) {
       toast.error(`${label} failed: ${errorMessage}`);

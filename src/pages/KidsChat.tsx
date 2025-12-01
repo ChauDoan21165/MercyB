@@ -144,14 +144,18 @@ async function loadEntriesFromJson(roomId: string, levelId: string): Promise<Kid
   try {
     const response = await fetch(`/data/${filename}`);
     if (!response.ok) {
-      console.warn("KidsChat: JSON file not found for room", roomId, "->", filename);
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn("KidsChat: JSON file not found for room", roomId, "->", filename);
+      }
       return [];
     }
 
     const json = await response.json();
 
     if (!json.entries || !Array.isArray(json.entries)) {
-      console.warn("KidsChat: JSON entries missing or invalid for room", roomId);
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn("KidsChat: JSON entries missing or invalid for room", roomId);
+      }
       return [];
     }
 
@@ -203,7 +207,9 @@ async function loadEntriesFromJson(roomId: string, levelId: string): Promise<Kid
 
     return entries;
   } catch (error) {
-    console.error("KidsChat: Failed to load JSON for room", roomId, error);
+    if (process.env.NODE_ENV !== 'production') {
+      console.error("KidsChat: Failed to load JSON for room", roomId, error);
+    }
     return [];
   }
 }
@@ -279,7 +285,9 @@ const KidsChat = () => {
         setRoomsExplored(uniqueRooms.size);
       }
     } catch (error) {
-      console.error('Error fetching user data:', error);
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('Error fetching user data:', error);
+      }
     }
   };
 
@@ -331,7 +339,9 @@ const KidsChat = () => {
         setSelectedEntry(finalEntries[0]);
       }
     } catch (error) {
-      console.error('Error fetching room data:', error);
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('Error fetching room data:', error);
+      }
       toast({
         title: "Error",
         description: "Failed to load room data",
