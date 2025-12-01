@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { RoomHeader } from '@/components/RoomHeader';
 import { RoomLoadShell } from '@/components/RoomLoadShell';
 import { Button } from '@/components/ui/button';
-import { Lock, Unlock, TrendingUp, Building2, Globe2, Crown } from 'lucide-react';
+import { Unlock, TrendingUp, Building2, Globe2, Crown } from 'lucide-react';
 import { useUserAccess } from '@/hooks/useUserAccess';
 import { useToast } from '@/hooks/use-toast';
 import { MercyBladeThemeToggle } from '@/components/MercyBladeThemeToggle';
@@ -11,6 +11,8 @@ import { useMercyBladeTheme } from '@/hooks/useMercyBladeTheme';
 import { highlightShortTitle } from '@/lib/wordColorHighlighter';
 import { useRegistryVipRooms } from '@/hooks/useRegistryVipRooms';
 import type { RegistryRoom } from '@/hooks/useRegistryVipRooms';
+import { getLockedRoomClassNames } from '@/components/room/LockedRoomStyles';
+import { LockedBadge } from '@/components/room/LockedBadge';
 
 interface DomainSection {
   id: string;
@@ -26,6 +28,7 @@ const RoomsVIP9 = () => {
   const { data: rooms, isLoading: loading, error, refetch: refresh } = useRegistryVipRooms('vip9');
   const [domains, setDomains] = useState<DomainSection[]>([]);
   const { isColor } = useMercyBladeTheme();
+  const lockedStyles = getLockedRoomClassNames(isColor);
 
   useEffect(() => {
     if (!rooms) return;
@@ -192,38 +195,55 @@ const RoomsVIP9 = () => {
                   <button
                     key={room.id}
                     onClick={() => handleRoomClick(room.id)}
-                    className="group relative p-6 rounded-lg border transition-all duration-300 text-left backdrop-blur-sm"
+                    disabled={!hasAccess}
+                    className={`group relative p-6 rounded-lg border transition-all duration-300 text-left backdrop-blur-sm ${
+                      !hasAccess ? `cursor-not-allowed ${lockedStyles.container}` : 'cursor-pointer hover:shadow-lg'
+                    }`}
                     style={
-                      isColor
-                        ? {
-                            borderColor: '#475569',
-                            background: 'rgba(51, 65, 85, 0.5)',
-                          }
-                        : {
-                            borderColor: '#1e293b',
-                            background: '#0f172a',
-                          }
+                      hasAccess ? (
+                        isColor
+                          ? {
+                              borderColor: '#475569',
+                              background: 'rgba(51, 65, 85, 0.5)',
+                            }
+                          : {
+                              borderColor: '#1e293b',
+                              background: '#0f172a',
+                            }
+                      ) : undefined
                     }
-                    aria-label={`${room.title_en} - ${room.title_vi}`}
+                    aria-label={`${!hasAccess ? 'Locked - ' : ''}${room.title_en} - ${room.title_vi}`}
+                    aria-disabled={!hasAccess}
+                    data-locked={!hasAccess ? "true" : undefined}
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex-1 space-y-2">
-                        <h3 className="font-semibold text-white group-hover:text-slate-100 transition-colors leading-snug">
-                          {isColor ? highlightShortTitle(room.title_en, index, false) : room.title_en}
+                        <h3 className={`font-semibold transition-colors leading-snug ${
+                          hasAccess ? 'text-white group-hover:text-slate-100' : lockedStyles.title
+                        }`}
+                        data-room-title={room.title_en}
+                        >
+                          {isColor && hasAccess ? highlightShortTitle(room.title_en, index, false) : room.title_en}
                         </h3>
-                        <p className="text-sm text-slate-400 leading-relaxed">
-                          {isColor ? highlightShortTitle(room.title_vi, index, true) : room.title_vi}
+                        <p className={`text-sm leading-relaxed ${
+                          hasAccess ? 'text-slate-400' : lockedStyles.subtitle
+                        }`}>
+                          {isColor && hasAccess ? highlightShortTitle(room.title_vi, index, true) : room.title_vi}
                         </p>
                       </div>
                       {hasAccess ? (
                         <Unlock className="h-5 w-5 text-slate-400 group-hover:text-white flex-shrink-0 transition-colors" aria-hidden="true" />
                       ) : (
-                        <Lock className="h-5 w-5 text-slate-600 flex-shrink-0" aria-hidden="true" />
+                        <div className="flex-shrink-0">
+                          <LockedBadge isColor={isColor} size="sm" />
+                        </div>
                       )}
                     </div>
                     
-                    {/* Subtle hover effect line */}
-                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-slate-600 via-slate-500 to-slate-600 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true"></div>
+                    {/* Subtle hover effect line - only when accessible */}
+                    {hasAccess && (
+                      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-slate-600 via-slate-500 to-slate-600 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true"></div>
+                    )}
                   </button>
                 ))}
               </div>
