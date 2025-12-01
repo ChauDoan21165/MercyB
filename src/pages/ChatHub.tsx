@@ -1302,7 +1302,6 @@ const ChatHub = () => {
         </>
         )}
       </div>
-    </div>
     <CreditLimitModal
       open={showCreditLimit}
       onClose={() => setShowCreditLimit(false)}
