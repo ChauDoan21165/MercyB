@@ -1,0 +1,37 @@
+name: RoomMaster Validation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate-rooms:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run RoomMaster validation
+        run: node scripts/roommaster-validate.js
+      
+      - name: Upload validation report
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: roommaster-validation-report
+          path: |
+            ROOM_VALIDATION_REPORT.json
+            ROOM_VALIDATION_RESULTS.md
