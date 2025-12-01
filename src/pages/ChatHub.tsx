@@ -18,7 +18,8 @@ import { MessageActions } from "@/components/MessageActions";
 import { usePoints } from "@/hooks/usePoints";
 import { RoomErrorState } from "@/components/RoomErrorState";
 import { useUiHealthReporter } from "@/hooks/useUiHealthReporter";
-
+import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
+import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useCredits } from "@/hooks/useCredits";
@@ -117,6 +118,9 @@ const ChatHub = () => {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [roomNameOverride, setRoomNameOverride] = useState<{ nameEn: string; nameVi: string } | null>(null);
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+
+  // Global theme mode
+  const { mode } = useMercyBladeTheme({ defaultMode: "color" });
 
   // Use centralized room metadata
   const info = getRoomInfo(roomId || "");

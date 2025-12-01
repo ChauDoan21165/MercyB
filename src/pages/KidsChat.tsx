@@ -7,6 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { ArrowLeft, RefreshCw } from "lucide-react";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { useToast } from "@/hooks/use-toast";
+import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { HighlightedContent } from "@/components/HighlightedContent";
 import { MessageActions } from "@/components/MessageActions";
@@ -226,6 +227,9 @@ const KidsChat = () => {
   const [roomsExplored, setRoomsExplored] = useState<number>(0);
   const [showRoomSpec, setShowRoomSpec] = useState(false);
 
+  // Global theme mode
+  const { mode } = useMercyBladeTheme({ defaultMode: "color" });
+
   const fetchUserData = async () => {
     try {
       const { data: { user } } = await supabase.auth.getUser();
@@ -407,7 +411,7 @@ const KidsChat = () => {
             Back / Quay lại
           </Button>
           
-          <ColorfulMercyBladeHeader subtitle={`${room.title_en} / ${room.title_vi}`} />
+          <ColorfulMercyBladeHeader mode={mode} subtitle={`${room.title_en} / ${room.title_vi}`} />
           
           <Button
             variant="outline"

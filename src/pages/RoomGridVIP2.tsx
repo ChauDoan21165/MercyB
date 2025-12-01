@@ -1,4 +1,5 @@
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
+import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
 import { Gem, RefreshCw } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -17,6 +18,7 @@ const RoomGridVIP2 = () => {
   const hasAccess = canAccessVIP2 || isAdmin;
   const { toast } = useToast();
   const { rooms, loading, error, refresh } = useVipRooms('vip2');
+  const { mode } = useMercyBladeTheme({ defaultMode: "color" });
   
   // Prefetch first 5 rooms for instant navigation
   usePrefetchRooms(rooms || [], 5);
@@ -44,6 +46,7 @@ const RoomGridVIP2 = () => {
   return (
     <div className="min-h-screen">
       <ColorfulMercyBladeHeader
+        mode={mode}
         subtitle="VIP2 Learning Rooms"
         showBackButton={true}
       />

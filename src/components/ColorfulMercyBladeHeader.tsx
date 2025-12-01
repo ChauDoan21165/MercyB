@@ -20,6 +20,7 @@ interface ColorfulMercyBladeHeaderProps {
   subtitle?: string;
   showResetButton?: boolean;
   onReset?: () => void;
+  mode?: "color" | "bw";
 }
 
 // TIER SYSTEM PAGE - EXACT LAYOUT (DO NOT MODIFY)
@@ -29,6 +30,7 @@ export const ColorfulMercyBladeHeader = ({
   subtitle,
   showResetButton = false,
   onReset,
+  mode = "color",
 }: ColorfulMercyBladeHeaderProps) => {
   const navigate = useNavigate();
   const [user, setUser] = useState<any>(null);
@@ -48,23 +50,33 @@ export const ColorfulMercyBladeHeader = ({
     return () => subscription.unsubscribe();
   }, []);
 
+  const headerBg = mode === "bw" 
+    ? "bg-white/95" 
+    : "bg-background/95";
+
   return (
-    <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border py-4 px-6">
+    <header className={`sticky top-0 z-40 ${headerBg} backdrop-blur-sm border-b border-border py-4 px-6`}>
       <div className="max-w-7xl mx-auto relative flex items-center justify-between">
         {/* Center - Title */}
         <div className="flex-1 text-center px-2 sm:px-4">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-            <span className="inline-block animate-fade-in" style={{ color: '#E91E63' }}>M</span>
-            <span className="inline-block animate-fade-in" style={{ color: '#9C27B0', animationDelay: '0.1s' }}>e</span>
-            <span className="inline-block animate-fade-in" style={{ color: '#3F51B5', animationDelay: '0.2s' }}>r</span>
-            <span className="inline-block animate-fade-in" style={{ color: '#2196F3', animationDelay: '0.3s' }}>c</span>
-            <span className="inline-block animate-fade-in" style={{ color: '#00BCD4', animationDelay: '0.4s' }}>y</span>
-            <span className="inline-block mx-1 sm:mx-2"></span>
-            <span className="inline-block animate-fade-in" style={{ color: '#009688', animationDelay: '0.5s' }}>B</span>
-            <span className="inline-block animate-fade-in" style={{ color: '#4CAF50', animationDelay: '0.6s' }}>l</span>
-            <span className="inline-block animate-fade-in" style={{ color: '#8BC34A', animationDelay: '0.7s' }}>a</span>
-            <span className="inline-block animate-fade-in" style={{ color: '#FFC107', animationDelay: '0.8s' }}>d</span>
-            <span className="inline-block animate-fade-in" style={{ color: '#FF9800', animationDelay: '0.9s' }}>e</span>
+            {mode === "color" ? (
+              <>
+                <span className="inline-block animate-fade-in" style={{ color: '#E91E63' }}>M</span>
+                <span className="inline-block animate-fade-in" style={{ color: '#9C27B0', animationDelay: '0.1s' }}>e</span>
+                <span className="inline-block animate-fade-in" style={{ color: '#3F51B5', animationDelay: '0.2s' }}>r</span>
+                <span className="inline-block animate-fade-in" style={{ color: '#2196F3', animationDelay: '0.3s' }}>c</span>
+                <span className="inline-block animate-fade-in" style={{ color: '#00BCD4', animationDelay: '0.4s' }}>y</span>
+                <span className="inline-block mx-1 sm:mx-2"></span>
+                <span className="inline-block animate-fade-in" style={{ color: '#009688', animationDelay: '0.5s' }}>B</span>
+                <span className="inline-block animate-fade-in" style={{ color: '#4CAF50', animationDelay: '0.6s' }}>l</span>
+                <span className="inline-block animate-fade-in" style={{ color: '#8BC34A', animationDelay: '0.7s' }}>a</span>
+                <span className="inline-block animate-fade-in" style={{ color: '#FFC107', animationDelay: '0.8s' }}>d</span>
+                <span className="inline-block animate-fade-in" style={{ color: '#FF9800', animationDelay: '0.9s' }}>e</span>
+              </>
+            ) : (
+              <span className="text-black font-black">Mercy Blade</span>
+            )}
           </h1>
           {subtitle && (
             <p className="text-center text-sm text-gray-600 mt-2">{subtitle}</p>

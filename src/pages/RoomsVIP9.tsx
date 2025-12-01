@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
+import { useMercyBladeTheme } from '@/hooks/useMercyBladeTheme';
 import { Button } from '@/components/ui/button';
 import { Lock, Unlock, TrendingUp, Building2, Globe2, Crown, Palette } from 'lucide-react';
 import { useUserAccess } from '@/hooks/useUserAccess';
@@ -24,6 +25,7 @@ const RoomsVIP9 = () => {
   const { rooms, loading, error } = useVipRooms('vip9');
   const [domains, setDomains] = useState<DomainSection[]>([]);
   const { useColorTheme, toggleColorMode } = useColorMode();
+  const { mode } = useMercyBladeTheme({ defaultMode: "color" });
 
   useEffect(() => {
     // Organize rooms by their domain field
@@ -101,7 +103,7 @@ const RoomsVIP9 = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      <ColorfulMercyBladeHeader showBackButton={true} />
+      <ColorfulMercyBladeHeader mode={mode} showBackButton={true} />
       
       <div className="container max-w-7xl mx-auto px-4 py-12 space-y-16">
         {/* Header Section */}
