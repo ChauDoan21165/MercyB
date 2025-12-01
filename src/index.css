@@ -266,6 +266,49 @@ All colors MUST be HSL.
   html {
     transition: font-size 0.3s ease-in-out;
   }
+  
+  /* Mercy Blade Theme System - Color Mode (default) */
+  [data-mb-theme="color"] {
+    /* Rainbow colors active */
+    --theme-text: var(--foreground);
+    --theme-bg: var(--background);
+    --theme-card: var(--card);
+    --theme-primary: var(--primary);
+    --theme-accent: var(--accent);
+    --theme-gradient: var(--gradient-rainbow);
+  }
+  
+  /* Mercy Blade Theme System - Black & White Mode */
+  [data-mb-theme="bw"] {
+    /* Desaturate everything to grayscale */
+    --theme-text: 0 0% 10%;
+    --theme-bg: 0 0% 100%;
+    --theme-card: 0 0% 98%;
+    --theme-primary: 0 0% 20%;
+    --theme-accent: 0 0% 30%;
+    --theme-gradient: linear-gradient(90deg, hsl(0 0% 20%), hsl(0 0% 40%), hsl(0 0% 20%));
+    
+    /* Override rainbow colors with grayscale */
+    --rainbow-red: 0 0% 30%;
+    --rainbow-orange: 0 0% 35%;
+    --rainbow-yellow: 0 0% 40%;
+    --rainbow-green: 0 0% 35%;
+    --rainbow-cyan: 0 0% 30%;
+    --rainbow-blue: 0 0% 25%;
+    --rainbow-purple: 0 0% 30%;
+    --rainbow-magenta: 0 0% 35%;
+    
+    /* Filter images to grayscale */
+    filter: grayscale(100%);
+  }
+  
+  [data-mb-theme="bw"] .dark {
+    --theme-text: 0 0% 95%;
+    --theme-bg: 0 0% 10%;
+    --theme-card: 0 0% 12%;
+    --theme-primary: 0 0% 80%;
+    --theme-accent: 0 0% 70%;
+  }
 }
 
 @layer base {

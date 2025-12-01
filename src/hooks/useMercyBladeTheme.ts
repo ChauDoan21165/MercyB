@@ -90,9 +90,11 @@ export function useMercyBladeTheme(
   
   const [mode, setModeState] = useState<VisualMode>(() => loadMode(defaultMode));
 
-  // Persist mode changes to localStorage
+  // Persist mode changes to localStorage AND set data attribute on html element
   useEffect(() => {
     saveMode(mode);
+    // Set data attribute for CSS theming
+    document.documentElement.dataset.mbTheme = mode;
   }, [mode]);
 
   const setMode = (newMode: VisualMode) => {
