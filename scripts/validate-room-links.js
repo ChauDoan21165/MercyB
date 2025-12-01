@@ -20,94 +20,9 @@ const path = require('path');
 const DATA_DIR = path.join(__dirname, '../public/data');
 const PROJECT_ROOT = path.join(__dirname, '..');
 
-console.log('\n🔗 CI: ROOM LINK VALIDATION\n');
-
-// Get all JSON files (actual room data available)
-function getAvailableRoomFiles() {
-  if (!fs.existsSync(DATA_DIR)) {
-    console.error('❌ Data directory not found:', DATA_DIR);
-    return new Set();
-  }
-
-  const files = fs.readdirSync(DATA_DIR)
-    .filter(f => f.endsWith('.json') && !f.startsWith('.'));
-
-  // Normalize to lowercase kebab-case for comparison
-  const roomIds = files.map(f => {
-    return f.replace(/\.json$/i, '').toLowerCase().replace(/_/g, '-');
-  });
-
-  return new Set(roomIds);
-}
-
-// Extract hardcoded UI room references
-function getUiReferencedRooms() {
-  const uiRoomIds = new Set();
-  const brokenLinks = [];
-
-  // VIP4 hardcoded rooms
-  const vip4Path = path.join(PROJECT_ROOT, 'src/pages/RoomGridVIP4.tsx');
-  if (fs.existsSync(vip4Path)) {
-    const content = fs.readFileSync(vip4Path, 'utf-8');
-    const idMatches = content.match(/id:\s*"([^"]+)"/g);
-    if (idMatches) {
-      idMatches.forEach(match => {
-        const id = match.match(/"([^"]+)"/)[1];
-        uiRoomIds.add(id.toLowerCase().replace(/_/g, '-'));
-      });
-    }
-  }
-
-  // KidsChat hardcoded rooms
-  const kidsChatPath = path.join(PROJECT_ROOT, 'src/pages/KidsChat.tsx');
-  if (fs.existsSync(kidsChatPath)) {
-    const content = fs.readFileSync(kidsChatPath, 'utf-8');
-    const mapMatches = content.match(/"([a-z0-9-_]+)":\s*"[^"]+\.json"/g);
-    if (mapMatches) {
-      mapMatches.forEach(match => {
-        const id = match.match(/"([a-z0-9-_]+)":/)[1];
-        uiRoomIds.add(id.toLowerCase().replace(/_/g, '-'));
-      });
-    }
-  }
-
-  return uiRoomIds;
-}
-
-// Main validation
-try {
-  const availableFiles = getAvailableRoomFiles();
-  const uiIds = getUiReferencedRooms();
-  const brokenLinks = [];
-
-  // Check for broken links
-  uiIds.forEach(id => {
-    if (!availableFiles.has(id)) {
-      brokenLinks.push(id);
-    }
-  });
-
-  // Report
-  console.log(`📁 Available JSON files: ${availableFiles.size}`);
-  console.log(`🎨 Hardcoded UI references: ${uiIds.size}`);
-  console.log(`🔗 Broken links: ${brokenLinks.length}`);
-
-  if (brokenLinks.length > 0) {
-    console.error('\n❌ BROKEN ROOM LINKS DETECTED\n');
-    console.error('These room IDs are used in UI but have no JSON file:\n');
-    brokenLinks.forEach(id => console.error(`  • ${id}`));
-    console.error('\nFix: Either create the missing JSON files or remove these IDs from UI code.\n');
-    process.exit(1);
-  }
-
-  console.log('\n✅ ALL ROOM LINKS VALID - No broken references\n');
-  process.exit(0);
-
-} catch (error) {
-  console.error('\n❌ FATAL ERROR:', error.message);
-  process.exit(1);
-}
-
+console.log('\n' + '='.repeat(60));
+console.log('🔗 CI: ROOM LINK VALIDATION');
+console.log('='.repeat(60) + '\n');
 
 // ============= Step 1: Extract Room IDs from Data Sources =============
 
