@@ -1,9 +1,11 @@
 import { AlertCircle, Lock, LogIn } from "lucide-react";
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { normalizeRoomError, type RoomErrorPayload } from "@/lib/errors";
 import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
 import { getErrorMessage, BUTTON_LABELS } from "@/lib/constants/uiText";
 import { logger } from "@/lib/logger";
+import { fadeInScale, shakeError, getVariants } from "@/lib/motion";
 
 type RoomErrorStateProps = RoomErrorPayload & {
   onBack?: () => void;
@@ -101,8 +103,18 @@ export function RoomErrorState(props: RoomErrorStateProps) {
 
   // Generic error (unknown)
   return (
-    <div className="flex flex-col items-center justify-center min-h-[400px] gap-4 p-6 transition-colors duration-200">
-      <AlertCircle className="w-16 h-16 text-destructive transition-colors duration-200" />
+    <motion.div
+      variants={getVariants(fadeInScale)}
+      initial="hidden"
+      animate="visible"
+      className="flex flex-col items-center justify-center min-h-[400px] gap-4 p-6 transition-colors duration-200"
+    >
+      <motion.div
+        animate="shake"
+        variants={shakeError}
+      >
+        <AlertCircle className="w-16 h-16 text-destructive transition-colors duration-200" />
+      </motion.div>
       <div className="text-center space-y-2">
         <h2 className="text-2xl font-bold transition-colors duration-200">
           {getErrorMessage('generic', 'en')}
@@ -111,12 +123,14 @@ export function RoomErrorState(props: RoomErrorStateProps) {
           {message || getErrorMessage('generic', 'vi')}
         </p>
       </div>
-      <button
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
         onClick={handleBack}
         className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-200"
       >
         {BUTTON_LABELS.en.back} / {BUTTON_LABELS.vi.back}
-      </button>
-    </div>
+      </motion.button>
+    </motion.div>
   );
 }

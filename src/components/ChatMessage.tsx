@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import { animations } from '@/styles/animations';
+import { motion } from 'framer-motion';
+import { messageEnter, getVariants } from '@/lib/motion';
 import { typography } from '@/styles/typography';
 import { spacing } from '@/styles/spacing';
 import { formatDistanceToNow } from 'date-fns';
@@ -22,11 +23,13 @@ export function ChatMessage({
   showTimestamp = true 
 }: ChatMessageProps) {
   return (
-    <div 
+    <motion.div 
+      variants={getVariants(messageEnter)}
+      initial="hidden"
+      animate="visible"
       className={`
         flex flex-col
         ${isUser ? 'items-end' : 'items-start'}
-        ${animations.messageEnter}
       `}
     >
       {/* Message bubble */}
@@ -59,6 +62,6 @@ export function ChatMessage({
           {formatDistanceToNow(timestamp, { addSuffix: true })}
         </span>
       )}
-    </div>
+    </motion.div>
   );
 }

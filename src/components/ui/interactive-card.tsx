@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { haptics } from "@/utils/haptics";
-import { hoverScale, pressScale } from "@/lib/animations";
+import { cardHover, cardTap } from "@/lib/motion";
 
 interface InteractiveCardProps {
   children: ReactNode;
@@ -33,8 +33,8 @@ export function InteractiveCard({
 
   return (
     <motion.div
-      whileHover={hoverScale}
-      whileTap={pressScale}
+      whileHover={cardHover}
+      whileTap={cardTap}
       onClick={handleClick}
       className={cn(
         "rounded-[var(--radius-md)] border border-border bg-card",
