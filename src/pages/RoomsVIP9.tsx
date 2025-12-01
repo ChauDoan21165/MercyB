@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
 import { RoomHeader } from '@/components/RoomHeader';
 import { RoomLoadShell } from '@/components/RoomLoadShell';
 import { Button } from '@/components/ui/button';
@@ -107,6 +108,7 @@ const RoomsVIP9 = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      <ColorfulMercyBladeHeader />
       <div className="container max-w-7xl mx-auto px-4 py-12 space-y-16">
         <RoomHeader title="VIP9 Strategic Mastery" tier="VIP9" />
         

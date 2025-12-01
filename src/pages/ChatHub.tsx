@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -801,6 +802,7 @@ const ChatHub = () => {
 
   return (
     <>
+      <ColorfulMercyBladeHeader />
       {!isAdmin && (
         <AlertDialog open={showAccessDenied} onOpenChange={setShowAccessDenied}>
           <AlertDialogContent>

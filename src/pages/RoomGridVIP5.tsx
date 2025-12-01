@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { RoomHeader } from "@/components/RoomHeader";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { useNavigate } from "react-router-dom";

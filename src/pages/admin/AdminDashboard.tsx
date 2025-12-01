@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
 import { useUserAccess } from '@/hooks/useUserAccess';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -84,6 +85,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <ColorfulMercyBladeHeader subtitle="Admin Dashboard" />
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="mb-8">

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -446,6 +447,7 @@ const KidsChat = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <ColorfulMercyBladeHeader />
       <div className="container mx-auto px-4 py-6 max-w-6xl">
         <RoomHeader title={`${room.title_en} / ${room.title_vi}`} tier={userSubscription?.kids_levels.name_en || "Kids"} />
         

@@ -61,6 +61,7 @@ const RoomGridVIP3 = () => {
 
   return (
     <div className="min-h-screen">
+      <ColorfulMercyBladeHeader />
       <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip3))' }}>
         <div className="container mx-auto px-4 py-8 max-w-7xl">
           <RoomHeader title="VIP3 Premium Rooms / Phòng VIP3 Chuyên Biệt" tier="VIP3" />

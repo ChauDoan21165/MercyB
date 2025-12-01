@@ -1,3 +1,4 @@
+import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { RoomHeader } from "@/components/RoomHeader";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { Crown, RefreshCw } from "lucide-react";
@@ -52,6 +53,7 @@ const RoomGridVIP1 = () => {
 
   return (
     <div className="min-h-screen">
+      <ColorfulMercyBladeHeader />
       <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip1))' }}>
         <div className="container mx-auto px-4 py-8 max-w-7xl">
           <RoomHeader title="VIP1 Learning Rooms / Phòng Học VIP1" tier="VIP1" />

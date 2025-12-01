@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { RoomHeader } from "@/components/RoomHeader";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { Badge } from "@/components/ui/badge";
@@ -68,6 +69,7 @@ const RoomGridVIP4 = () => {
 
   return (
     <div className="min-h-screen">
+      <ColorfulMercyBladeHeader />
       <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip4))' }}>
         <div className="container mx-auto px-4 py-8 max-w-7xl">
           <RoomHeader title="VIP4 Career Consultance" tier="VIP4" />
