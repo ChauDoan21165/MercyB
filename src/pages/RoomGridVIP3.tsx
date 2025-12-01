@@ -153,7 +153,7 @@ const RoomGridVIP3 = () => {
                 const isSpecialRoom = VIP3_SPECIAL_ROOMS[room.id];
                 const isSexualityCultureRoom = room.id === 'sexuality-and-curiosity-and-culture-vip3';
                 const isFinanceRoom = room.id === 'finance-glory-vip3';
-                const hasData = room.entries && (Array.isArray(room.entries) ? room.entries.length > 0 : true);
+                const hasData = room.hasData !== false; // Use hasData from registry
 
                 return (
                   <Card
@@ -179,6 +179,7 @@ const RoomGridVIP3 = () => {
                     }
                     onClick={() => {
                       if (!hasData) return;
+                      console.log('[RoomClick] Opening VIP3 room:', room.id);
                       if (isSexualityCultureRoom) {
                         navigate('/sexuality-culture');
                       } else if (isFinanceRoom) {

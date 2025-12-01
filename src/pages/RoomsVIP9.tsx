@@ -76,6 +76,7 @@ const RoomsVIP9 = () => {
   }, [rooms]);
 
   const handleRoomClick = (roomId: string) => {
+    console.log('[RoomClick] Opening VIP9 room:', roomId);
     if (!hasAccess) {
       toast({
         title: 'VIP9 Access Required',

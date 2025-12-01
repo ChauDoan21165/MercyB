@@ -168,7 +168,7 @@ const RoomGridVIP3II = () => {
           {!loading && vip3IIRooms.length > 0 && (
             <div className={ROOM_GRID_CLASS}>
               {vip3IIRooms.map((room, index) => {
-                const hasData = room.entries && (Array.isArray(room.entries) ? room.entries.length > 0 : true);
+                const hasData = room.hasData !== false; // Use hasData from registry
                 
                 return (
                   <Card
@@ -185,6 +185,7 @@ const RoomGridVIP3II = () => {
                     }}
                     onClick={() => {
                       if (!hasData) return;
+                      console.log('[RoomClick] Opening room:', room.id);
                       navigate(`/room/${room.id}`);
                     }}
                     role="button"

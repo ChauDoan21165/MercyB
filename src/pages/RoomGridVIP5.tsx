@@ -97,9 +97,12 @@ const RoomGridVIP5 = () => {
                 nameEn: room.title_en,
                 nameVi: room.title_vi,
                 tier: room.tier || 'vip5',
-                hasData: Array.isArray(room.entries) ? room.entries.length > 0 : !!room.entries,
+                hasData: room.hasData, // Use hasData from registry
               }))}
-              onRoomClick={(room) => navigate(`/room/${room.id}`)}
+              onRoomClick={(room) => {
+                console.log('[RoomClick] Opening room:', room.id);
+                navigate(`/room/${room.id}`);
+              }}
             />
           ) : (
             <div className="text-center py-8 text-sm text-muted-foreground">
