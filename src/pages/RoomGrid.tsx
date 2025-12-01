@@ -40,7 +40,7 @@ const RoomGrid = () => {
 
   const handleRoomClick = (room: any) => {
     // Always allow navigation - access control happens in ChatHub
-    navigate(`/chat/${room.id}`);
+    navigate(`/room/${room.id}`);
   };
 
   const getTierColor = (tier: string) => {
