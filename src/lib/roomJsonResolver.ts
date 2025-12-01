@@ -71,10 +71,19 @@ export function getCanonicalPath(roomId: string): string {
   return `data/${roomId}.json`;
 }
 
+import { 
+  getValidationConfig, 
+  validateEntryCount, 
+  validateEntryAudio, 
+  validateEntryBilingualCopy,
+  type ValidationMode 
+} from './validation/roomJsonValidation';
+
 /**
  * Validates that JSON structure meets requirements
+ * Now supports environment-aware validation modes
  */
-export function validateRoomJson(data: any, roomId: string, filename: string): void {
+export function validateRoomJson(data: any, roomId: string, filename: string, mode?: ValidationMode): void {
   // Check if we got HTML instead of JSON
   if (typeof data === 'string' && (data.trim().startsWith('<!DOCTYPE') || data.trim().startsWith('<html'))) {
     throw new RoomJsonNotFoundError(
@@ -96,16 +105,18 @@ export function validateRoomJson(data: any, roomId: string, filename: string): v
     );
   }
 
+  // Get validation config
+  const config = getValidationConfig(mode);
+
   // Validate bilingual fields
   const hasBilingualTitle = (data.title?.en && data.title?.vi) || (data.name && data.name_vi);
-  const hasBilingualContent = (data.content?.en && data.content?.vi) || data.room_essay_en || data.room_essay_vi;
   
-  if (!hasBilingualTitle) {
+  if (!hasBilingualTitle && !config.allowMissingFields) {
     throw new RoomJsonNotFoundError(
       roomId,
       filename,
       'Missing bilingual title fields',
-      'Required: title.en + title.vi OR name + name_vi'
+      `Required: title.en + title.vi OR name + name_vi (${config.mode} mode)`
     );
   }
 
@@ -119,17 +130,18 @@ export function validateRoomJson(data: any, roomId: string, filename: string): v
     );
   }
 
-  const entryCount = data.entries.length;
-  if (entryCount < 2 || entryCount > 8) {
+  // Validate entry count with mode-specific rules
+  const entryCountResult = validateEntryCount(data.entries.length, mode);
+  if (!entryCountResult.valid) {
     throw new RoomJsonNotFoundError(
       roomId,
       filename,
       'Invalid entry count',
-      `Expected: 2-8 entries, Got: ${entryCount}`
+      entryCountResult.message
     );
   }
 
-  // Validate each entry has required fields
+  // Validate each entry has required fields (mode-aware)
   data.entries.forEach((entry: any, index: number) => {
     const hasId = entry.slug || entry.artifact_id || entry.id;
     if (!hasId) {
@@ -141,25 +153,25 @@ export function validateRoomJson(data: any, roomId: string, filename: string): v
       );
     }
 
-    // Check for audio
-    const hasAudio = entry.audio || entry.audio_en || entry.audioEn;
-    if (!hasAudio) {
+    // Check for audio (mode-aware)
+    const audioResult = validateEntryAudio(entry, index, mode);
+    if (!audioResult.valid) {
       throw new RoomJsonNotFoundError(
         roomId,
         filename,
-        `Entry ${index + 1} missing audio`,
-        'Each entry must have audio field'
+        `Entry ${index + 1} audio validation failed`,
+        audioResult.message
       );
     }
 
-    // Check for bilingual content
-    const hasBilingualCopy = (entry.copy?.en && entry.copy?.vi) || (entry.copy_en && entry.copy_vi);
-    if (!hasBilingualCopy) {
+    // Check for bilingual content (mode-aware)
+    const bilingualResult = validateEntryBilingualCopy(entry, index, mode);
+    if (!bilingualResult.valid) {
       throw new RoomJsonNotFoundError(
         roomId,
         filename,
-        `Entry ${index + 1} missing bilingual copy`,
-        'Each entry must have copy in both English and Vietnamese'
+        `Entry ${index + 1} bilingual copy validation failed`,
+        bilingualResult.message
       );
     }
   });
