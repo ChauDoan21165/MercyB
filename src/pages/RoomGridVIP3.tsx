@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { VIPNavigation } from "@/components/VIPNavigation";
 import { useUserAccess } from "@/hooks/useUserAccess";
-import { useEmergencyVipRooms } from '@/hooks/useVipRooms';
+import { useVipRooms } from '@/hooks/useVipRooms';
 import { useToast } from "@/hooks/use-toast";
 import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
 import { highlightTextByRules, highlightShortTitle } from "@/lib/wordColorHighlighter";
@@ -29,8 +29,7 @@ const RoomGridVIP3 = () => {
   const { isAdmin, isLoading: accessLoading, canAccessTier } = useUserAccess();
   const hasAccess = canAccessTier('vip3');
   const { toast } = useToast();
-  const { data: allRooms, isLoading: loading, error: queryError, refetch: refresh } = useEmergencyVipRooms('vip3');
-  const error = queryError ? new Error('Failed to load VIP3 rooms') : null;
+  const { data: allRooms, isLoading: loading, error, refetch: refresh } = useVipRooms('vip3');
   const rooms = allRooms || [];
   const { mode, isColor } = useMercyBladeTheme();
   

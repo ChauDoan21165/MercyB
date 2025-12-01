@@ -9,7 +9,7 @@ import { useToast } from '@/hooks/use-toast';
 import { MercyBladeThemeToggle } from '@/components/MercyBladeThemeToggle';
 import { useMercyBladeTheme } from '@/hooks/useMercyBladeTheme';
 import { highlightShortTitle } from '@/lib/wordColorHighlighter';
-import { useEmergencyVipRooms } from '@/hooks/useVipRooms';
+import { useVipRooms } from '@/hooks/useVipRooms';
 import type { VipRoom } from '@/hooks/useVipRooms';
 
 interface DomainSection {
@@ -23,10 +23,9 @@ const RoomsVIP9 = () => {
   const { toast } = useToast();
   const { isLoading: accessLoading, canAccessTier } = useUserAccess();
   const hasAccess = canAccessTier('vip9');
-  const { data: rooms, isLoading: loading, error: queryError } = useEmergencyVipRooms('vip9');
+  const { data: rooms, isLoading: loading, error, refetch: refresh } = useVipRooms('vip9');
   const [domains, setDomains] = useState<DomainSection[]>([]);
   const { isColor } = useMercyBladeTheme();
-  const error = queryError ? new Error('Failed to load VIP9 rooms') : null;
 
   useEffect(() => {
     if (!rooms) return;

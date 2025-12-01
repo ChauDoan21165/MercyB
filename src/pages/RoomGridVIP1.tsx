@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { VIPNavigation } from "@/components/VIPNavigation";
 import { useUserAccess } from "@/hooks/useUserAccess";
-import { useEmergencyVipRooms } from '@/hooks/useVipRooms';
+import { useVipRooms } from '@/hooks/useVipRooms';
 import { RoomGridSkeleton } from '@/components/RoomCardSkeleton';
 import { VirtualizedRoomGrid } from '@/components/VirtualizedRoomGrid';
 import { LowDataModeToggle } from '@/components/LowDataModeToggle';
@@ -17,7 +17,7 @@ const RoomGridVIP1 = () => {
   const { isAdmin, isLoading: accessLoading, canAccessTier } = useUserAccess();
   const hasAccess = canAccessTier('vip1');
   const { toast } = useToast();
-  const { data: rooms, isLoading, error, refetch } = useEmergencyVipRooms('vip1');
+  const { data: rooms, isLoading, error, refetch } = useVipRooms('vip1');
   
   // Prefetch first 5 rooms for instant navigation
   usePrefetchRooms(rooms || [], 5);
