@@ -32,9 +32,18 @@ class Logger {
   private isProd = import.meta.env.PROD;
 
   /**
+   * Remove all console.log calls in production
+   */
+  private shouldLog(level: LogLevel): boolean {
+    if (this.isProd && level === "debug") return false;
+    return true;
+  }
+
+  /**
    * Core logging implementation
    */
   private async log(level: LogLevel, scopeOrMessage: string, messageOrMeta?: string | LogContext, metaOrUndefined?: LogContext) {
+    if (!this.shouldLog(level)) return;
     // Support both old and new API
     let message: string;
     let context: LogContext = {};
