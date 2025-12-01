@@ -12,8 +12,9 @@ import { AudioPlayer } from "@/components/AudioPlayer";
 import { HighlightedContent } from "@/components/HighlightedContent";
 import { MessageActions } from "@/components/MessageActions";
 import { useUserAccess } from "@/hooks/useUserAccess";
-import { User, Copy, ChevronDown, ChevronUp } from "lucide-react";
+import { User, Copy, ChevronDown, ChevronUp, Lock } from "lucide-react";
 import { ProfileAvatarUpload } from "@/components/ProfileAvatarUpload";
+import { KIDS_TIER_IDS, type KidsTierId } from "@/lib/constants/tiers";
 
 interface KidsRoom {
   id: string;
@@ -212,7 +213,10 @@ const KidsChat = () => {
   const { roomId } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { isAdmin } = useUserAccess();
+  const { isAdmin, tier, loading: accessLoading } = useUserAccess();
+  
+  // Check if user has kids tier access
+  const hasKidsAccess = isAdmin || (KIDS_TIER_IDS as readonly string[]).includes(tier);
   const [room, setRoom] = useState<KidsRoom | null>(null);
   const [entries, setEntries] = useState<KidsEntry[]>([]);
   const [loading, setLoading] = useState(true);
@@ -380,10 +384,40 @@ const KidsChat = () => {
     });
   };
 
-  if (loading) {
+  // Show loading while checking access
+  if (accessLoading || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <RefreshCw className="animate-spin h-8 w-8" />
+      </div>
+    );
+  }
+
+  // Access control: Only kids tiers or admins can access Kids rooms
+  if (!hasKidsAccess) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center gap-6 px-4">
+        <Lock className="h-16 w-16 text-muted-foreground" />
+        <div className="text-center space-y-2">
+          <h2 className="text-2xl font-bold">Kids Area Access Required</h2>
+          <h2 className="text-2xl font-bold text-muted-foreground">Yêu cầu quyền truy cập khu vực trẻ em</h2>
+          <p className="text-muted-foreground max-w-md">
+            This content is designed for Kids Level subscribers. 
+            Please subscribe to a Kids tier to access these rooms.
+          </p>
+          <p className="text-muted-foreground max-w-md">
+            Nội dung này dành cho người đăng ký Cấp Trẻ em. 
+            Vui lòng đăng ký cấp Trẻ em để truy cập các phòng này.
+          </p>
+        </div>
+        <div className="flex gap-3">
+          <Button onClick={() => navigate('/')} variant="outline">
+            Go Home / Về trang chủ
+          </Button>
+          <Button onClick={() => navigate('/subscription')}>
+            View Plans / Xem gói
+          </Button>
+        </div>
       </div>
     );
   }
