@@ -1,7 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
-import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
-import { MercyBladeThemeToggle } from "@/components/MercyBladeThemeToggle";
+import { RoomHeader } from "@/components/RoomHeader";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { useNavigate } from "react-router-dom";
 import { useUserAccess } from "@/hooks/useUserAccess";
@@ -21,7 +19,6 @@ const RoomGridVIP5 = () => {
   const hasAccess = canAccessTier('vip5');
   const { toast } = useToast();
   const { rooms, loading, error, refresh } = useVipRooms('vip5');
-  const { mode } = useMercyBladeTheme();
   
   // Prefetch first 5 rooms for instant navigation
   usePrefetchRooms(rooms || [], 5);
@@ -50,15 +47,9 @@ const RoomGridVIP5 = () => {
   return (
     <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip5))' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <ColorfulMercyBladeHeader mode={mode} />
+        <RoomHeader title="VIP5 - English Writing Master Support" tier="VIP5" />
         
         <div className="mt-8 text-center">
-          <div className="inline-flex items-center justify-center gap-2 mb-4">
-            <BookOpen className="w-8 h-8 text-emerald-600" aria-hidden="true" />
-            <h1 className="text-3xl font-bold" style={{ color: getHeadingColor('vip5', 'writing') }}>
-              VIP5 - English Writing Master Support
-            </h1>
-          </div>
           <p className="text-base text-muted-foreground max-w-3xl mx-auto mb-2">
             VIP5 offers complete English writing support. Students write, and AI gives expert feedback: strengths, mistakes, clarity fixes, rewriting steps, and IELTS-style comments.
           </p>
@@ -73,22 +64,19 @@ const RoomGridVIP5 = () => {
           <h2 className="text-2xl font-semibold" style={{ color: getHeadingColor('vip5', 'writing') }}>
             VIP5 Writing Rooms ({loading ? '...' : rooms.length})
           </h2>
-          <div className="flex items-center gap-2">
-            <MercyBladeThemeToggle />
-            {isAdmin && (
-              <Button 
-                onClick={handleRefreshRooms}
-                disabled={loading}
-                variant="outline"
-                size="sm"
-                className="gap-2"
-                aria-label="Refresh VIP5 rooms"
-              >
-                <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} aria-hidden="true" />
-                Refresh Rooms
-              </Button>
-            )}
-          </div>
+          {isAdmin && (
+            <Button 
+              onClick={handleRefreshRooms}
+              disabled={loading}
+              variant="outline"
+              size="sm"
+              className="gap-2"
+              aria-label="Refresh VIP5 rooms"
+            >
+              <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} aria-hidden="true" />
+              Refresh Rooms
+            </Button>
+          )}
         </div>
 
         <RoomLoadShell 

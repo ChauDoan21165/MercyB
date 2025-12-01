@@ -1,6 +1,4 @@
-import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
-import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
-import { MercyBladeThemeToggle } from "@/components/MercyBladeThemeToggle";
+import { RoomHeader } from "@/components/RoomHeader";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { Crown, RefreshCw } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +18,6 @@ const RoomGridVIP1 = () => {
   const hasAccess = canAccessTier('vip1');
   const { toast } = useToast();
   const { data: rooms, isLoading, refetch } = useCachedRooms('vip1');
-  const { mode } = useMercyBladeTheme();
   
   // Prefetch first 5 rooms for instant navigation
   usePrefetchRooms(rooms || [], 5);
@@ -55,48 +52,31 @@ const RoomGridVIP1 = () => {
 
   return (
     <div className="min-h-screen">
-      <ColorfulMercyBladeHeader
-        mode={mode}
-        subtitle="VIP1 Learning Rooms"
-        showBackButton={true}
-      />
-      
       <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip1))' }}>
         <div className="container mx-auto px-4 py-8 max-w-7xl">
+          <RoomHeader title="VIP1 Learning Rooms / Phòng Học VIP1" tier="VIP1" />
+          
           <div className="mb-8 space-y-4">
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-lg text-gray-700 font-medium">
-                You are in VIP 1 area / Bạn đang ở khu vực VIP 1
-              </span>
-              
-              <div className="flex gap-2">
-                <MercyBladeThemeToggle />
-                <LowDataModeToggle />
-                {isAdmin && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={handleRefreshRooms}
-                    disabled={isLoading}
-                    className="flex items-center gap-2 bg-white/80"
-                    aria-label="Refresh VIP1 rooms"
-                  >
-                    <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} aria-hidden="true" />
-                    Refresh
-                  </Button>
-                )}
-              </div>
+            <div className="flex items-center justify-end mb-4 gap-2">
+              <LowDataModeToggle />
+              {isAdmin && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleRefreshRooms}
+                  disabled={isLoading}
+                  className="flex items-center gap-2 bg-white/80"
+                  aria-label="Refresh VIP1 rooms"
+                >
+                  <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} aria-hidden="true" />
+                  Refresh
+                </Button>
+              )}
             </div>
             
             <div className="text-center space-y-2">
-              <div className="flex items-center justify-center gap-2">
-                <Crown className="h-8 w-8" style={{ color: 'hsl(var(--vip1-primary))' }} aria-hidden="true" />
-                <h1 className="text-4xl font-bold bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
-                  VIP1 Learning Rooms
-                </h1>
-              </div>
               <p className="text-lg text-gray-700">
-                Phòng Học VIP1
+                You are in VIP 1 area / Bạn đang ở khu vực VIP 1
               </p>
               <p className="text-sm text-gray-600">
                 {isLoading ? 'Loading...' : `Showing ${rooms?.length || 0} rooms`}

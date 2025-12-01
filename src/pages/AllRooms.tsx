@@ -9,7 +9,7 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { UserTier } from "@/lib/accessControl";
 import { useEffect, useState } from "react";
 import { AnimatedTierBadge } from "@/components/AnimatedTierBadge";
-import { useColorMode } from "@/hooks/useColorMode";
+import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
 import { getRoomColor } from "@/lib/roomColors";
 
 const AllRooms = () => {

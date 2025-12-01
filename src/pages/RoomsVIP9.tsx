@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
-import { useMercyBladeTheme } from '@/hooks/useMercyBladeTheme';
-import { MercyBladeThemeToggle } from '@/components/MercyBladeThemeToggle';
+import { RoomHeader } from '@/components/RoomHeader';
 import { RoomLoadShell } from '@/components/RoomLoadShell';
 import { Button } from '@/components/ui/button';
 import { Lock, Unlock, TrendingUp, Building2, Globe2, Crown, Palette } from 'lucide-react';
 import { useUserAccess } from '@/hooks/useUserAccess';
 import { useToast } from '@/hooks/use-toast';
-import { useColorMode } from '@/hooks/useColorMode';
+
 import { highlightShortTitle } from '@/lib/wordColorHighlighter';
 import { useVipRooms } from '@/hooks/useVipRooms';
 import { TIERS, ROOMS_TABLE, ROOM_GRID_CLASS } from '@/lib/constants';
@@ -27,7 +25,6 @@ const RoomsVIP9 = () => {
   const hasAccess = canAccessTier('vip9');
   const { rooms, loading, error } = useVipRooms('vip9');
   const [domains, setDomains] = useState<DomainSection[]>([]);
-  const { mode, isColor } = useMercyBladeTheme();
 
   useEffect(() => {
     // Organize rooms by their domain field
@@ -105,9 +102,9 @@ const RoomsVIP9 = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      <ColorfulMercyBladeHeader mode={mode} showBackButton={true} />
-      
       <div className="container max-w-7xl mx-auto px-4 py-12 space-y-16">
+        <RoomHeader title="VIP9 Strategic Mastery" tier="VIP9" />
+        
         {/* Header Section */}
         <div className="text-center space-y-6 max-w-4xl mx-auto">
           <div className="inline-block px-4 py-1.5 bg-slate-800/50 border border-slate-700 rounded-full">

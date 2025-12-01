@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { KidsRoomCard } from "@/components/kids/KidsRoomCard";
-import { useColorMode } from "@/hooks/useColorMode";
+import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
 import { useKidsRooms } from "@/hooks/useKidsRooms";
 import { KIDS_ROUTE_PREFIX, KIDS_LEVEL_LABELS, ROOM_GRID_CLASS } from "@/lib/constants";
 
 const KidsLevel3 = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { useColorTheme, toggleColorMode } = useColorMode();
+  const { isColor, toggleMode } = useMercyBladeTheme();
   const { rooms, loading, error, refresh } = useKidsRooms("level3");
 
   const handleRefresh = async () => {

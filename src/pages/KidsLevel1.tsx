@@ -4,14 +4,14 @@ import { KidsRoomCard } from "@/components/kids/KidsRoomCard";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { useColorMode } from "@/hooks/useColorMode";
+import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
 import { useKidsRooms } from "@/hooks/useKidsRooms";
 import { KIDS_ROUTE_PREFIX, KIDS_LEVEL_LABELS, ROOM_GRID_CLASS } from "@/lib/constants";
 
 const KidsLevel1 = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { useColorTheme, toggleColorMode } = useColorMode();
+  const { isColor, toggleMode } = useMercyBladeTheme();
   const { rooms, loading, error, refresh } = useKidsRooms("level1");
 
   const handleRefresh = async () => {
@@ -98,7 +98,7 @@ const KidsLevel1 = () => {
             <Button
               variant="outline"
               size="sm"
-              onClick={toggleColorMode}
+              onClick={toggleMode}
               className="gap-2 rounded-full border-2 border-white/30"
             >
               <Palette className="w-4 h-4" />

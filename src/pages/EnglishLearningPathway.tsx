@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
 import { highlightShortTitle } from "@/lib/wordColorHighlighter";
-import { useColorMode } from '@/hooks/useColorMode';
+import { useMercyBladeTheme } from '@/hooks/useMercyBladeTheme';
 import { Button } from "@/components/ui/button";
 import { Palette } from "lucide-react";
 import { useQuery } from '@tanstack/react-query';
@@ -23,7 +23,7 @@ const EnglishLearningPathway = () => {
     isAuthenticated, 
     loading 
   } = useUserAccess();
-  const { useColorTheme, toggleColorMode } = useColorMode();
+  const { isColor, toggleMode } = useMercyBladeTheme();
 
   // Fetch English Foundation Ladder rooms from database
   const { data: englishRooms = [], isLoading: roomsLoading } = useQuery({

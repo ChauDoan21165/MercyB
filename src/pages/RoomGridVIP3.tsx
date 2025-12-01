@@ -1,7 +1,6 @@
 import { Card } from "@/components/ui/card";
-import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
+import { RoomHeader } from "@/components/RoomHeader";
 import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
-import { MercyBladeThemeToggle } from "@/components/MercyBladeThemeToggle";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { CheckCircle2, Lock, Crown, Sparkles, RefreshCw, Building2, ChevronRight, Palette } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +11,7 @@ import { useVipRooms } from '@/hooks/useVipRooms';
 import { useToast } from "@/hooks/use-toast";
 import { getRoomColor, getContrastTextColor, getHeadingColor } from '@/lib/roomColors';
 import { highlightTextByRules, highlightShortTitle } from "@/lib/wordColorHighlighter";
-import { useColorMode } from '@/hooks/useColorMode';
+
 import { TIERS, ROOM_GRID_CLASS } from '@/lib/constants';
 import { usePrefetchRooms } from "@/hooks/usePrefetchRooms";
 
@@ -61,20 +60,12 @@ const RoomGridVIP3 = () => {
 
   return (
     <div className="min-h-screen">
-      <ColorfulMercyBladeHeader
-        mode={mode}
-        subtitle="VIP3 Premium Rooms"
-        showBackButton={true}
-      />
-      
       <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip3))' }}>
         <div className="container mx-auto px-4 py-8 max-w-7xl">
+          <RoomHeader title="VIP3 Premium Rooms / Phòng VIP3 Chuyên Biệt" tier="VIP3" />
+          
           <div className="mb-8 space-y-4">
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-lg text-gray-700 font-medium">
-                You are in VIP 3 area / Bạn đang ở khu vực VIP 3
-              </span>
-              
+            <div className="flex items-center justify-end mb-4">
               {hasAccess && isAdmin && (
                 <Button
                   variant="outline"
@@ -91,16 +82,8 @@ const RoomGridVIP3 = () => {
             </div>
             
             <div className="text-center space-y-2">
-              <div className="flex items-center justify-center gap-2">
-                <Crown className="h-8 w-8" style={{ color: 'hsl(var(--vip3-primary))' }} aria-hidden="true" />
-                <Building2 className="h-8 w-8" style={{ color: 'hsl(var(--vip3-primary))' }} aria-hidden="true" />
-                <Sparkles className="h-8 w-8" style={{ color: 'hsl(var(--vip3-gold))' }} aria-hidden="true" />
-                <h1 className="text-4xl font-bold bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
-                  VIP3 Premium Rooms
-                </h1>
-              </div>
               <p className="text-lg text-gray-700">
-                Phòng VIP3 Chuyên Biệt
+                You are in VIP 3 area / Bạn đang ở khu vực VIP 3
               </p>
               <p className="text-sm text-gray-600">
                 {loading ? 'Loading...' : `${vip3Rooms.length} exclusive rooms`}
@@ -151,12 +134,6 @@ const RoomGridVIP3 = () => {
             </div>
           )}
 
-          {/* Color Mode Toggle */}
-          {hasAccess && (
-            <div className="flex justify-end mb-4">
-              <MercyBladeThemeToggle />
-            </div>
-          )}
 
           <RoomLoadShell 
             isLoading={loading} 

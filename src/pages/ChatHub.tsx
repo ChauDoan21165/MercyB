@@ -18,10 +18,7 @@ import { MessageActions } from "@/components/MessageActions";
 import { usePoints } from "@/hooks/usePoints";
 import { RoomErrorState } from "@/components/RoomErrorState";
 import { useUiHealthReporter } from "@/hooks/useUiHealthReporter";
-import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
-import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
-import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
-import { MercyBladeThemeToggle } from "@/components/MercyBladeThemeToggle";
+import { RoomHeader } from "@/components/RoomHeader";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
 
 import { useUserAccess } from "@/hooks/useUserAccess";
@@ -120,9 +117,6 @@ const ChatHub = () => {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [roomNameOverride, setRoomNameOverride] = useState<{ nameEn: string; nameVi: string } | null>(null);
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
-
-  // Global theme mode
-  const { mode } = useMercyBladeTheme();
 
   // Preload audio files for current room
   const audioFilesToPreload = mergedEntries
@@ -875,35 +869,27 @@ const ChatHub = () => {
 
         {/* Header */}
         <div className="bg-card rounded-lg p-4 shadow-soft">
-          {/* Title and button group */}
-          <div className="flex flex-col items-center justify-center space-y-3">
-            {/* Title */}
-            <div className="text-center space-y-1">
-              <div className="flex items-center justify-center gap-2">
-                <h2 data-room-title className="text-lg font-semibold text-gray-900">
-                  {currentRoom.nameEn === currentRoom.nameVi 
-                    ? currentRoom.nameEn 
-                    : `${currentRoom.nameEn} / ${currentRoom.nameVi}`}
-                </h2>
-                {info && (
-                  <Badge variant="secondary" className="text-xs">
-                    {info.tier === 'free' ? 'Free' : info.tier?.toUpperCase().replace('VIP', 'VIP ')}
-                  </Badge>
-                )}
-              </div>
-              <div className="flex items-center justify-center gap-2 text-xs font-medium text-primary">
-                <ProfileAvatarUpload
-                  currentAvatarUrl={avatarUrl}
-                  onUploadSuccess={(url) => setAvatarUrl(url)}
-                />
-                <span>{username || 'User'}</span>
-                {tier && (
-                  <span className="font-semibold">{tier.toUpperCase()}</span>
-                )}
-                <span>•</span>
-                <span>You have explored {progress.totalRooms} {progress.totalRooms === 1 ? 'topic' : 'topics'}, {progress.streak} day streak! 🔥</span>
-              </div>
-            </div>
+          <RoomHeader 
+            title={currentRoom.nameEn === currentRoom.nameVi 
+              ? currentRoom.nameEn 
+              : `${currentRoom.nameEn} / ${currentRoom.nameVi}`}
+            tier={info?.tier === 'free' ? 'Free' : info?.tier?.toUpperCase().replace('VIP', 'VIP ')}
+            showThemeToggle={true}
+          />
+          
+          {/* User info and stats */}
+          <div className="flex items-center justify-center gap-2 text-xs font-medium text-primary mt-2">
+            <ProfileAvatarUpload
+              currentAvatarUrl={avatarUrl}
+              onUploadSuccess={(url) => setAvatarUrl(url)}
+            />
+            <span>{username || 'User'}</span>
+            {tier && (
+              <span className="font-semibold">{tier.toUpperCase()}</span>
+            )}
+            <span>•</span>
+            <span>You have explored {progress.totalRooms} {progress.totalRooms === 1 ? 'topic' : 'topics'}, {progress.streak} day streak! 🔥</span>
+          </div>
             
             {/* Button group: Favorite, My Rooms, Recent */}
             <div className="flex gap-2">

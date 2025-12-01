@@ -1,7 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
-import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
-import { MercyBladeThemeToggle } from "@/components/MercyBladeThemeToggle";
+import { RoomHeader } from "@/components/RoomHeader";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { useNavigate } from "react-router-dom";
 import { useUserAccess } from "@/hooks/useUserAccess";
@@ -20,7 +18,6 @@ const RoomGridVIP6 = () => {
   const hasAccess = canAccessTier('vip6');
   const { toast } = useToast();
   const { rooms, loading, error, refresh } = useVipRooms('vip6');
-  const { mode } = useMercyBladeTheme();
   
   // Prefetch first 5 rooms for instant navigation
   usePrefetchRooms(rooms || [], 5);
@@ -55,45 +52,31 @@ const RoomGridVIP6 = () => {
 
   return (
     <div className="min-h-screen">
-      <ColorfulMercyBladeHeader
-        mode={mode}
-        subtitle="VIP6 Learning Rooms"
-        showBackButton={true}
-      />
-      
       <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip6))' }}>
         <div className="container mx-auto px-4 py-8 max-w-7xl">
+          <RoomHeader title="VIP6 — Shadow & Deep Psychology" tier="VIP6" />
+          
           <div className="mb-8 space-y-4">
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-lg text-gray-700 font-medium">
-                You are in VIP 6 area / Bạn đang ở khu vực VIP 6
-              </span>
-              
-              <div className="flex items-center gap-2">
-                <MercyBladeThemeToggle />
-                {isAdmin && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={handleRefreshRooms}
-                    disabled={loading}
-                    className="flex items-center gap-2 bg-white/80"
-                    aria-label="Refresh VIP6 rooms"
-                  >
-                    <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} aria-hidden="true" />
-                    Refresh Rooms
-                  </Button>
-                )}
-              </div>
+            <div className="flex items-center justify-end mb-4">
+              {isAdmin && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleRefreshRooms}
+                  disabled={loading}
+                  className="flex items-center gap-2 bg-white/80"
+                  aria-label="Refresh VIP6 rooms"
+                >
+                  <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} aria-hidden="true" />
+                  Refresh Rooms
+                </Button>
+              )}
             </div>
             
             <div className="text-center space-y-2">
-              <div className="flex items-center justify-center gap-2">
-                <Brain className="h-8 w-8" style={{ color: 'hsl(var(--vip6-primary))' }} aria-hidden="true" />
-                <h1 className="text-4xl font-bold bg-[image:var(--gradient-rainbow)] bg-clip-text text-transparent">
-                  VIP6 — Shadow & Deep Psychology
-                </h1>
-              </div>
+              <p className="text-lg text-gray-700 font-medium">
+                You are in VIP 6 area / Bạn đang ở khu vực VIP 6
+              </p>
               <p className="text-base text-gray-700 max-w-3xl mx-auto">
                 VIP6 opens a dedicated universe for shadow work, inner child healing, trauma patterns, subconscious identity, and emotional integration. This tier helps users understand the hidden forces shaping their reactions, choices, relationships, and life direction.
               </p>
