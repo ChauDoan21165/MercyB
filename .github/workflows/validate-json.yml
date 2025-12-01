@@ -15,4 +15,4 @@ jobs:
         with:
           node-version: 18
       - run: npm install
-      - run: node scripts/validate-json.js
+      - run: node scripts/validate-rooms-ci.js
