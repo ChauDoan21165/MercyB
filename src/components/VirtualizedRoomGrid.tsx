@@ -37,7 +37,7 @@ export const VirtualizedRoomGrid = ({
 }: VirtualizedRoomGridProps) => {
   const parentRef = useRef<HTMLDivElement>(null);
   const { isLowDataMode } = useLowDataMode();
-  const { useColorTheme, toggleColorMode } = useColorMode();
+  const { isColor, toggleMode } = useMercyBladeTheme();
 
   const sortedRooms = useMemo(() => {
     return [...rooms].sort((a, b) => {
@@ -71,13 +71,13 @@ export const VirtualizedRoomGrid = ({
         <Button
           variant="outline"
           size="sm"
-          onClick={toggleColorMode}
+          onClick={toggleMode}
           className="gap-2"
-          data-theme-toggle={useColorTheme ? "color" : "blackWhite"}
+          data-theme-toggle={isColor ? "color" : "blackWhite"}
           aria-label="Toggle room color mode"
         >
           <Palette className="w-4 h-4" aria-hidden="true" />
-          {useColorTheme ? "Black & White" : "Mercy Blade Colors"}
+          {isColor ? "Black & White" : "Mercy Blade Colors"}
         </Button>
       </div>
 
@@ -187,12 +187,12 @@ export const VirtualizedRoomGrid = ({
                                   className={`${
                                     isLowDataMode ? "text-[10px]" : "text-xs"
                                   } leading-tight line-clamp-2 ${
-                                    useColorTheme
+                                    isColor
                                       ? "text-foreground"
                                       : "font-black text-black"
                                   }`}
                                   style={
-                                    useColorTheme
+                                    isColor
                                       ? {}
                                       : {
                                           fontWeight: 900,
@@ -200,7 +200,7 @@ export const VirtualizedRoomGrid = ({
                                         }
                                   }
                                 >
-                                  {useColorTheme
+                                  {isColor
                                     ? highlightShortTitle(
                                         room.nameEn,
                                         startIdx + colIndex,
@@ -214,12 +214,12 @@ export const VirtualizedRoomGrid = ({
                                       ? "text-[8px]"
                                       : "text-[10px]"
                                   } leading-tight line-clamp-2 ${
-                                    useColorTheme
+                                    isColor
                                       ? "text-muted-foreground"
                                       : "font-black text-black"
                                   }`}
                                   style={
-                                    useColorTheme
+                                    isColor
                                       ? {}
                                       : {
                                           fontWeight: 900,
@@ -227,7 +227,7 @@ export const VirtualizedRoomGrid = ({
                                         }
                                   }
                                 >
-                                  {useColorTheme
+                                  {isColor
                                     ? highlightShortTitle(
                                         room.nameVi,
                                         startIdx + colIndex,
