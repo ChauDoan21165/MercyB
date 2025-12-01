@@ -86,7 +86,7 @@ const RoomsVIP9 = () => {
       navigate('/subscribe');
       return;
     }
-    navigate(`/chat/${roomId}`);
+    navigate(`/room/${roomId}`);
   };
 
   if (loading || accessLoading) {
