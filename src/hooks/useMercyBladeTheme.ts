@@ -1,57 +1,113 @@
+import { useState, useEffect } from 'react';
+
 /**
- * Global Mercy Blade Theme Hook
+ * CANONICAL Mercy Blade Theme Hook
  * 
- * Determines whether to use "color" (Mercy Blade rainbow colors) or "bw" (black & white) mode.
+ * Single source of truth for visual mode (color vs black & white)
+ * across the entire application.
  * 
- * Priority:
- * 1. Room specification use_color_theme (if useColorThemeFromSpec is true)
- * 2. Default mode (fallback)
- * 
- * Future: Can be extended with user preferences from localStorage.
+ * Persistence: localStorage key "mb_visual_mode"
+ * Default: "color"
  */
+
+export type VisualMode = "color" | "bw";
 
 export interface UseMercyBladeThemeOptions {
   /**
-   * Whether to use the specification's use_color_theme field
+   * Default mode when no stored preference exists
+   * @default "color"
    */
-  useColorThemeFromSpec?: boolean;
-  
-  /**
-   * Default mode when no specification or preference is available
-   */
-  defaultMode?: "color" | "bw";
-  
-  /**
-   * The specification's use_color_theme boolean value
-   */
-  specUseColorTheme?: boolean | null;
+  defaultMode?: VisualMode;
 }
 
 export interface UseMercyBladeThemeResult {
-  mode: "color" | "bw";
+  /**
+   * Current visual mode
+   */
+  mode: VisualMode;
+  
+  /**
+   * Set visual mode (persists to localStorage)
+   */
+  setMode: (mode: VisualMode) => void;
+  
+  /**
+   * Toggle between color and bw
+   */
+  toggleMode: () => void;
+  
+  /**
+   * Convenience booleans
+   */
+  isColor: boolean;
+  isBW: boolean;
 }
 
+const STORAGE_KEY = 'mb_visual_mode';
+
+/**
+ * Load mode from localStorage with fallback
+ */
+function loadMode(defaultMode: VisualMode = "color"): VisualMode {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === "color" || stored === "bw") {
+      return stored;
+    }
+  } catch (error) {
+    console.warn('[useMercyBladeTheme] Failed to read from localStorage:', error);
+  }
+  return defaultMode;
+}
+
+/**
+ * Save mode to localStorage
+ */
+function saveMode(mode: VisualMode): void {
+  try {
+    localStorage.setItem(STORAGE_KEY, mode);
+  } catch (error) {
+    console.warn('[useMercyBladeTheme] Failed to write to localStorage:', error);
+  }
+}
+
+/**
+ * Unified Mercy Blade theme hook
+ * 
+ * @example
+ * const { mode, setMode, toggleMode, isColor, isBW } = useMercyBladeTheme();
+ * 
+ * // Use mode to conditionally render
+ * {mode === "color" ? <ColorfulComponent /> : <BWComponent />}
+ * 
+ * // Or use convenience booleans
+ * {isColor && <RainbowGradient />}
+ */
 export function useMercyBladeTheme(
   options?: UseMercyBladeThemeOptions
 ): UseMercyBladeThemeResult {
-  const {
-    useColorThemeFromSpec = false,
-    defaultMode = "color",
-    specUseColorTheme = null,
-  } = options || {};
+  const defaultMode = options?.defaultMode || "color";
+  
+  const [mode, setModeState] = useState<VisualMode>(() => loadMode(defaultMode));
 
-  let mode: "color" | "bw" = defaultMode;
+  // Persist mode changes to localStorage
+  useEffect(() => {
+    saveMode(mode);
+  }, [mode]);
 
-  // If we're using specification and it has a boolean value
-  if (useColorThemeFromSpec && typeof specUseColorTheme === "boolean") {
-    mode = specUseColorTheme ? "color" : "bw";
-  }
+  const setMode = (newMode: VisualMode) => {
+    setModeState(newMode);
+  };
 
-  // Future: Add user preference from localStorage here
-  // const userPreference = localStorage.getItem('mercy-blade-theme');
-  // if (userPreference === 'color' || userPreference === 'bw') {
-  //   mode = userPreference;
-  // }
+  const toggleMode = () => {
+    setModeState(prev => prev === "color" ? "bw" : "color");
+  };
 
-  return { mode };
+  return {
+    mode,
+    setMode,
+    toggleMode,
+    isColor: mode === "color",
+    isBW: mode === "bw",
+  };
 }
