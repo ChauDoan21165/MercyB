@@ -157,8 +157,6 @@ const RoomGridVIP3 = () => {
               <MercyBladeThemeToggle />
             </div>
           )}
-            </div>
-          )}
 
           <RoomLoadShell 
             isLoading={loading} 

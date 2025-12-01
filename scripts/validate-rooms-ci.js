@@ -1,6 +1,13 @@
 /**
  * CI VALIDATION SCRIPT - Uses same validator as runtime
  * 
+ * CANONICAL ROOM ENTRY STRUCTURE (aligned with roomJsonResolver.ts):
+ * - audio: entry.audio (string filename, no paths) OR legacy: audio_en, audioEn
+ * - copy: entry.copy.en + entry.copy.vi OR legacy: copy_en, copy_vi
+ * - identifiers: entry.slug OR entry.id OR entry.artifact_id (at least one required)
+ * - keywords: entry.keywords_en (array) + entry.keywords_vi (array)
+ * - entry count: 2-8 (strict mode), 1-20 (wip mode)
+ * 
  * This script:
  * - Reads from public/data (same as production)
  * - Uses shared validation logic from roomJsonValidation
@@ -65,7 +72,10 @@ function validateEntryCount(count) {
 function validateEntryAudio(entry, index) {
   if (!config.requireAudio) return { valid: true };
   
-  if (!entry.audio) {
+  // CANONICAL: entry.audio (string filename)
+  // LEGACY: audio_en, audioEn (same as roomJsonResolver.ts)
+  const hasAudio = entry.audio || entry.audio_en || entry.audioEn;
+  if (!hasAudio) {
     return {
       valid: false,
       message: `Entry ${index + 1} missing audio field (required in ${config.mode} mode)`
@@ -77,10 +87,11 @@ function validateEntryAudio(entry, index) {
 function validateEntryBilingualCopy(entry, index) {
   if (!config.requireBilingualCopy) return { valid: true };
   
+  // CANONICAL: entry.copy.en + entry.copy.vi
+  // LEGACY: copy_en, copy_vi (same as roomJsonResolver.ts)
   const hasBilingual =
     (entry.copy && entry.copy.en && entry.copy.vi) ||
-    (entry.copy_en && entry.copy_vi) ||
-    (entry.content_en && entry.content_vi);
+    (entry.copy_en && entry.copy_vi);
     
   if (!hasBilingual) {
     return {
@@ -122,19 +133,19 @@ function validateRoomJson(data, roomId, filename) {
 
   // Validate each entry
   data.entries.forEach((entry, index) => {
-    // Check identifier
+    // Check identifier - CANONICAL: slug OR id OR artifact_id (same as roomJsonResolver.ts)
     const hasId = entry.slug || entry.artifact_id || entry.id;
     if (!hasId) {
       throw new Error(`Entry ${index + 1} missing identifier (slug/artifact_id/id)`);
     }
 
-    // Check audio
+    // Check audio - CANONICAL: entry.audio (string filename)
     const audioResult = validateEntryAudio(entry, index);
     if (!audioResult.valid) {
       throw new Error(audioResult.message);
     }
 
-    // Check bilingual copy
+    // Check bilingual copy - CANONICAL: copy.en + copy.vi
     const bilingualResult = validateEntryBilingualCopy(entry, index);
     if (!bilingualResult.valid) {
       throw new Error(bilingualResult.message);

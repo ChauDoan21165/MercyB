@@ -1,5 +1,17 @@
 /**
  * Auto-generate room registry from all JSON files in public directory
+ * 
+ * CANONICAL ROOM ENTRY STRUCTURE (aligned with roomJsonResolver.ts):
+ * - audio: entry.audio (string filename) OR legacy: audio_en, audioEn
+ * - copy: entry.copy.en + entry.copy.vi OR legacy: copy_en, copy_vi
+ * - identifiers: entry.slug OR entry.id OR entry.artifact_id
+ * - entry count: 2-8 entries per room (strict)
+ * 
+ * VALIDATES:
+ * - JSON.id matches filename exactly (lowercase snake_case only)
+ * - All entries have required fields (identifier, audio, bilingual copy)
+ * - Entry count is within valid range
+ * 
  * Run with: node scripts/generate-room-registry.js
  */
 
@@ -115,10 +127,37 @@ function extractNames(jsonPath, filename) {
       return null;
     }
 
+    // Validate entry count matches canonical rules (2-8 for strict mode)
     const entryCount = content.entries.length;
     if (entryCount < 2 || entryCount > 8) {
-      console.error(`❌ REJECTED: ${filename} - Invalid entry count: ${entryCount} (must be 2-8)`);
+      console.error(`❌ REJECTED: ${filename} - Invalid entry count: ${entryCount} (must be 2-8 per canonical validation)`);
       return null;
+    }
+    
+    // Validate each entry has required fields (canonical structure check)
+    for (let i = 0; i < content.entries.length; i++) {
+      const entry = content.entries[i];
+      
+      // CANONICAL: slug OR id OR artifact_id
+      const hasId = entry.slug || entry.artifact_id || entry.id;
+      if (!hasId) {
+        console.error(`❌ REJECTED: ${filename} - Entry ${i + 1} missing identifier (slug/artifact_id/id)`);
+        return null;
+      }
+      
+      // CANONICAL: entry.audio (with legacy fallbacks)
+      const hasAudio = entry.audio || entry.audio_en || entry.audioEn;
+      if (!hasAudio) {
+        console.error(`❌ REJECTED: ${filename} - Entry ${i + 1} missing audio field`);
+        return null;
+      }
+      
+      // CANONICAL: copy.en + copy.vi (with legacy fallbacks)
+      const hasCopy = (entry.copy?.en && entry.copy?.vi) || (entry.copy_en && entry.copy_vi);
+      if (!hasCopy) {
+        console.error(`❌ REJECTED: ${filename} - Entry ${i + 1} missing bilingual copy (copy.en/vi or copy_en/vi)`);
+        return null;
+      }
     }
     
     return { nameEn, nameVi };
