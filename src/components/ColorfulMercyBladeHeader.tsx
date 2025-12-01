@@ -55,71 +55,71 @@ export const ColorfulMercyBladeHeader = ({
     : "bg-background/95";
 
   return (
-    <header className={`sticky top-0 z-40 ${headerBg} backdrop-blur-sm border-b border-border py-4 px-6`}>
-      <div className="max-w-7xl mx-auto relative flex items-center justify-between">
-        {/* Center - Title */}
-        <div className="flex-1 text-center px-2 sm:px-4">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-            {mode === "color" ? (
-              <>
-                <span className="inline-block animate-fade-in" style={{ color: '#E91E63' }}>M</span>
-                <span className="inline-block animate-fade-in" style={{ color: '#9C27B0', animationDelay: '0.1s' }}>e</span>
-                <span className="inline-block animate-fade-in" style={{ color: '#3F51B5', animationDelay: '0.2s' }}>r</span>
-                <span className="inline-block animate-fade-in" style={{ color: '#2196F3', animationDelay: '0.3s' }}>c</span>
-                <span className="inline-block animate-fade-in" style={{ color: '#00BCD4', animationDelay: '0.4s' }}>y</span>
-                <span className="inline-block mx-1 sm:mx-2"></span>
-                <span className="inline-block animate-fade-in" style={{ color: '#009688', animationDelay: '0.5s' }}>B</span>
-                <span className="inline-block animate-fade-in" style={{ color: '#4CAF50', animationDelay: '0.6s' }}>l</span>
-                <span className="inline-block animate-fade-in" style={{ color: '#8BC34A', animationDelay: '0.7s' }}>a</span>
-                <span className="inline-block animate-fade-in" style={{ color: '#FFC107', animationDelay: '0.8s' }}>d</span>
-                <span className="inline-block animate-fade-in" style={{ color: '#FF9800', animationDelay: '0.9s' }}>e</span>
-              </>
-            ) : (
-              <span className="text-black font-black">Mercy Blade</span>
+    <header className={`sticky top-0 z-40 ${headerBg} backdrop-blur-sm border-b border-border py-4`}>
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="flex items-center justify-between">
+          {/* Center - Title */}
+          <div className="flex-1 text-center">
+            <h1 className="text-2xl font-bold tracking-tight">
+              {mode === "color" ? (
+                <>
+                  <span className="inline-block animate-fade-in" style={{ color: '#E91E63' }}>M</span>
+                  <span className="inline-block animate-fade-in" style={{ color: '#9C27B0', animationDelay: '0.1s' }}>e</span>
+                  <span className="inline-block animate-fade-in" style={{ color: '#3F51B5', animationDelay: '0.2s' }}>r</span>
+                  <span className="inline-block animate-fade-in" style={{ color: '#2196F3', animationDelay: '0.3s' }}>c</span>
+                  <span className="inline-block animate-fade-in" style={{ color: '#00BCD4', animationDelay: '0.4s' }}>y</span>
+                  <span className="inline-block mx-2"></span>
+                  <span className="inline-block animate-fade-in" style={{ color: '#009688', animationDelay: '0.5s' }}>B</span>
+                  <span className="inline-block animate-fade-in" style={{ color: '#4CAF50', animationDelay: '0.6s' }}>l</span>
+                  <span className="inline-block animate-fade-in" style={{ color: '#8BC34A', animationDelay: '0.7s' }}>a</span>
+                  <span className="inline-block animate-fade-in" style={{ color: '#FFC107', animationDelay: '0.8s' }}>d</span>
+                  <span className="inline-block animate-fade-in" style={{ color: '#FF9800', animationDelay: '0.9s' }}>e</span>
+                </>
+              ) : (
+                <span className="text-black font-black">Mercy Blade</span>
+              )}
+            </h1>
+            {subtitle && (
+              <p className="text-center text-base text-gray-600 mt-3 max-w-3xl mx-auto">{subtitle}</p>
             )}
-          </h1>
-          {subtitle && (
-            <p className="text-center text-sm text-gray-600 mt-2">{subtitle}</p>
-          )}
-        </div>
+          </div>
 
-        {/* Right side - Sign Up / User Info / Reset */}
-        <div className="flex-none w-24 flex justify-end items-center gap-2">
-          <ThemeToggle />
-          
-          {showResetButton && onReset && (
-            <Button
-              onClick={onReset}
-              size="sm"
-              className="gap-2 bg-gray-900 hover:bg-gray-800 text-white shadow-lg"
-              title="Reset cached configuration"
-            >
-              <RotateCcw className="w-4 h-4" />
-            </Button>
-          )}
-          
-          {!user ? (
-            <Button
-              onClick={() => navigate('/auth')}
-              size="sm"
-              className="gap-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-lg"
-            >
-              <UserPlus className="w-4 h-4" />
-              <span className="hidden sm:inline">Sign Up</span>
-              <span className="hidden sm:inline text-xs">/ Đăng ký</span>
-            </Button>
-          ) : (
-            <Button 
-              onClick={() => navigate('/tier-map')}
-              variant="outline" 
-              size="sm" 
-              className="gap-2 border-2 hover:bg-primary hover:text-primary-foreground"
-            >
-              <Eye className="w-4 h-4" />
-              <span>Tier Map</span>
-              <span className="hidden sm:inline text-xs">/ Sơ Đồ</span>
-            </Button>
-          )}
+          {/* Right side - Controls aligned right, same row */}
+          <div className="flex items-center gap-2 ml-4">
+            <ThemeToggle />
+            
+            {showResetButton && onReset && (
+              <Button
+                onClick={onReset}
+                size="sm"
+                className="gap-2 bg-gray-900 hover:bg-gray-800 text-white shadow-lg"
+                title="Reset cached configuration"
+              >
+                <RotateCcw className="w-4 h-4" />
+              </Button>
+            )}
+            
+            {!user ? (
+              <Button
+                onClick={() => navigate('/auth')}
+                size="sm"
+                className="gap-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-lg"
+              >
+                <UserPlus className="w-4 h-4" />
+                <span className="hidden sm:inline">Sign Up</span>
+              </Button>
+            ) : (
+              <Button 
+                onClick={() => navigate('/tier-map')}
+                variant="outline" 
+                size="sm" 
+                className="gap-2 border-2 hover:bg-primary hover:text-primary-foreground"
+              >
+                <Eye className="w-4 h-4" />
+                <span className="hidden sm:inline">Tier Map</span>
+              </Button>
+            )}
+          </div>
         </div>
       </div>
     </header>

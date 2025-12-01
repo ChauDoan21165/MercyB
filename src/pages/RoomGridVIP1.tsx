@@ -55,35 +55,35 @@ const RoomGridVIP1 = () => {
     <div className="min-h-screen">
       <ColorfulMercyBladeHeader />
       <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip1))' }}>
-        <div className="container mx-auto px-4 py-8 max-w-7xl">
+        <div className="max-w-4xl mx-auto px-4">
           <RoomHeader title="VIP1 Learning Rooms / Phòng Học VIP1" tier="VIP1" />
           
-          <div className="mb-8 space-y-4">
-            <div className="flex items-center justify-end mb-4 gap-2">
-              <LowDataModeToggle />
-              {isAdmin && (
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleRefreshRooms}
-                  disabled={isLoading}
-                  className="flex items-center gap-2 bg-white/80"
-                  aria-label="Refresh VIP1 rooms"
-                >
-                  <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} aria-hidden="true" />
-                  Refresh
-                </Button>
-              )}
-            </div>
-            
-            <div className="text-center space-y-2">
-              <p className="text-lg text-gray-700">
-                You are in VIP 1 area / Bạn đang ở khu vực VIP 1
-              </p>
-              <p className="text-sm text-gray-600">
-                {isLoading ? 'Loading...' : `Showing ${rooms?.length || 0} rooms`}
-              </p>
-            </div>
+          {/* Controls - Aligned right, same row */}
+          <div className="flex items-center justify-end gap-2 mb-6">
+            <LowDataModeToggle />
+            {isAdmin && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleRefreshRooms}
+                disabled={isLoading}
+                className="flex items-center gap-2 bg-white/80"
+                aria-label="Refresh VIP1 rooms"
+              >
+                <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} aria-hidden="true" />
+                Refresh
+              </Button>
+            )}
+          </div>
+          
+          {/* Subtitle - Centered, max-w-3xl */}
+          <div className="text-center space-y-2 mb-6 max-w-3xl mx-auto">
+            <p className="text-base text-gray-700">
+              You are in VIP 1 area / Bạn đang ở khu vực VIP 1
+            </p>
+            <p className="text-sm text-gray-600">
+              {isLoading ? 'Loading...' : `Showing ${rooms?.length || 0} rooms`}
+            </p>
           </div>
 
           <VIPNavigation currentPage="vip1" />
@@ -104,20 +104,23 @@ const RoomGridVIP1 = () => {
             </div>
           )}
 
+          {/* Room Grid - Left-aligned inside centered container with gap-4 */}
           {!isLoading && rooms && rooms.length > 0 && (
-            <VirtualizedRoomGrid
-              rooms={rooms.map((room) => ({
-                id: room.id,
-                nameEn: room.title_en,
-                nameVi: room.title_vi,
-                tier: room.tier || 'vip1',
-                hasData: room.hasData, // Use hasData from registry
-              }))}
-              onRoomClick={(room) => {
-                console.log('[RoomClick] Opening room:', room.id);
-                navigate(`/room/${room.id}`);
-              }}
-            />
+            <div className="mt-6">
+              <VirtualizedRoomGrid
+                rooms={rooms.map((room) => ({
+                  id: room.id,
+                  nameEn: room.title_en,
+                  nameVi: room.title_vi,
+                  tier: room.tier || 'vip1',
+                  hasData: room.hasData,
+                }))}
+                onRoomClick={(room) => {
+                  console.log('[RoomClick] Opening room:', room.id);
+                  navigate(`/room/${room.id}`);
+                }}
+              />
+            </div>
           )}
         </div>
       </div>
