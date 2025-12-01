@@ -19,6 +19,17 @@ const WHITESPACE_SPLIT = /\s+/;
 
 /**
  * Normalize audio path - optimized version with fewer operations
+ * 
+ * CRITICAL: Always produces paths in format /audio/{filename}
+ * - Strips "public/" prefix (should never be in audio field)
+ * - Strips redundant "audio/" prefix
+ * - Ensures leading "/" for absolute URL
+ * 
+ * Example inputs → output:
+ * - "file.mp3" → "/audio/file.mp3"
+ * - "audio/file.mp3" → "/audio/file.mp3"
+ * - "public/audio/file.mp3" → "/audio/file.mp3" (strips invalid public/)
+ * - "/audio/file.mp3" → "/audio/file.mp3"
  */
 export const normalizeAudioPath = (path: string): string => {
   let p = path.replace(LEADING_SLASHES, '').replace(PUBLIC_PREFIX, '');
@@ -63,8 +74,10 @@ export const processAudioField = (audioRaw: any): { audioPath?: string; audioPla
  * Extract audio from entry - canonical structure with minimal legacy fallbacks
  * CANONICAL: entry.audio (string filename, no paths)
  * LEGACY: audio_en, audioEn (deprecated - migrate to audio)
+ * 
+ * Logs warning if audio is missing to help with content fixes.
  */
-export const extractAudio = (entry: any): any => {
+export const extractAudio = (entry: any, roomId?: string): any => {
   // Canonical field
   if (entry?.audio) {
     if (typeof entry.audio === 'object') {
@@ -74,7 +87,19 @@ export const extractAudio = (entry: any): any => {
   }
   
   // Legacy fallbacks (deprecated)
-  return entry?.audio_en || entry?.audioEn || null;
+  const legacyAudio = entry?.audio_en || entry?.audioEn;
+  if (legacyAudio) {
+    return legacyAudio;
+  }
+  
+  // No audio found - log warning for content team to fix
+  const identifier = entry?.slug || entry?.id || entry?.artifact_id || 'unknown-entry';
+  console.warn(
+    `⚠️ Missing audio: Room "${roomId || 'unknown'}" → Entry "${identifier}"`,
+    '\n   Add "audio" field to entry in JSON file'
+  );
+  
+  return null;
 };
 
 /**
@@ -106,8 +131,18 @@ export const extractTitle = (entry: any) => {
 /**
  * Single-pass entry processor: extracts keywords AND transforms entry
  * Returns both keywords and transformed entry
+ * 
+ * @param entry - Room entry to process
+ * @param idx - Entry index (for fallback identifiers)
+ * @param seenKeywords - Set of already-seen keywords for deduplication
+ * @param roomId - Optional room ID for better error logging
  */
-export const processEntry = (entry: any, idx: number, seenKeywords: Set<string>) => {
+export const processEntry = (
+  entry: any, 
+  idx: number, 
+  seenKeywords: Set<string>,
+  roomId?: string
+) => {
   // Extract keywords for keyword menu
   let keywords: { en: string; vi: string } | null = null;
   
@@ -140,8 +175,8 @@ export const processEntry = (entry: any, idx: number, seenKeywords: Set<string>)
     }
   }
   
-  // Process audio
-  const audioRaw = extractAudio(entry);
+  // Process audio (with room context for better logging)
+  const audioRaw = extractAudio(entry, roomId);
   const { audioPath, audioPlaylist } = processAudioField(audioRaw);
   
   // Extract content
@@ -174,15 +209,18 @@ export const processEntry = (entry: any, idx: number, seenKeywords: Set<string>)
 
 /**
  * Process all entries in a single pass
+ * 
+ * @param entries - Array of room entries to process
+ * @param roomId - Optional room ID for better error logging
  */
-export const processEntriesOptimized = (entries: any[]) => {
+export const processEntriesOptimized = (entries: any[], roomId?: string) => {
   const enList: string[] = [];
   const viList: string[] = [];
   const seenKeywords = new Set<string>();
   const transformedEntries: any[] = [];
   
   entries.forEach((entry, idx) => {
-    const { keywords, transformedEntry } = processEntry(entry, idx, seenKeywords);
+    const { keywords, transformedEntry } = processEntry(entry, idx, seenKeywords, roomId);
     
     if (keywords) {
       enList.push(keywords.en);
