@@ -28,6 +28,7 @@ import { CreditLimitModal } from "@/components/CreditLimitModal";
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { HighlightedContent } from "@/components/HighlightedContent";
 import { KeywordAudioCopyDot } from "@/components/admin/KeywordAudioCopyDot";
+import { AdminRoomTools } from "@/components/admin/AdminCopyTools";
 import { PairedHighlightedContent } from "@/components/PairedHighlightedContent";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
@@ -850,6 +851,16 @@ const ChatHub = () => {
       )}
       <RoomLayout bgColor={getBgColor()}>
         <div className="max-w-4xl mx-auto space-y-6">
+        
+        {/* Admin Copy Tools - Only visible to admins */}
+        {isAdmin && roomId && (
+          <AdminRoomTools
+            roomId={roomId}
+            audioFilename={mergedEntries[0]?.audio || ''}
+            essayEn={roomEssay?.en}
+            essayVi={roomEssay?.vi}
+          />
+        )}
         
         {/* Header with Breadcrumbs */}
         <RoomHeader 
