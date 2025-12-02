@@ -468,7 +468,11 @@ export const AudioPlayer = ({
 
   return (
     <div className={cn("flex items-center gap-2 w-full", className)}>
-      <audio ref={audioRef} preload={preload} />
+      <audio
+        ref={audioRef}
+        preload={preload}
+        src={currentAudioPath ? `${currentAudioPath}?t=${currentTrackIndex}` : undefined}
+      />
       
       {/* Skip Backward Button */}
       <Button
