@@ -1088,8 +1088,8 @@ const ChatHub = () => {
       open={showCreditLimit}
       onClose={() => setShowCreditLimit(false)}
       onSuccess={refreshCredits}
-      questionsUsed={creditInfo.questionsUsed}
-      questionsLimit={creditInfo.questionsLimit}
+questionsUsed={creditInfo?.questionsUsed ?? 0}
+        questionsLimit={creditInfo?.questionsLimit ?? 0}
     />
     
     {/* Signup Prompt Modal - Only shown when unauthenticated users try to interact */}
