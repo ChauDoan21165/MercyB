@@ -133,6 +133,8 @@ export const AdminFloatingButton = () => {
     }
   };
 
+  const isDev = import.meta.env.DEV;
+
   return (
     <div className="fixed bottom-[66px] right-6 z-50 flex items-center gap-1">
       {/* Version Indicator Dot - Change the character to track versions */}
@@ -143,7 +145,7 @@ export const AdminFloatingButton = () => {
         {versionIndicator}
       </div>
 
-      {!isAdmin && (
+      {!isAdmin && !isDev && (
         <Button
           onClick={fetchVersionIndicator}
           size="sm"
@@ -154,14 +156,16 @@ export const AdminFloatingButton = () => {
         </Button>
       )}
       
-      {isAdmin && (
+      {/* Show admin button for admins OR in dev mode */}
+      {(isAdmin || isDev) && (
         <Button
-          onClick={() => navigate('/admin/stats')}
+          onClick={() => navigate('/admin')}
           size="sm"
           variant="outline"
-          className="rounded-full shadow-sm h-5 w-5 p-0 bg-gray-400 hover:bg-gray-500 border-gray-500 relative"
+          className="rounded-full shadow-sm h-8 w-8 p-0 bg-gray-800 hover:bg-gray-700 border-gray-600 relative"
+          title="Admin Dashboard"
         >
-          <Settings className="h-3 w-3 text-white" />
+          <Settings className="h-4 w-4 text-white" />
           {unreadCount > 0 && (
             <Badge
               variant="destructive"
