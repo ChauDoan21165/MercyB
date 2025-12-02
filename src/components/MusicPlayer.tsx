@@ -350,8 +350,8 @@ export const MusicPlayer = () => {
   }, [updateFromPlayer]);
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 h-[50px] bg-white border-t-2 border-black z-50">
-      <div className="h-full max-w-7xl mx-auto px-2 flex items-center gap-2">
+    <div className="fixed left-4 right-4 bottom-6 md:bottom-8 h-[50px] bg-white border-2 border-black rounded-xl shadow-lg z-30">
+      <div className="h-full max-w-7xl mx-auto px-3 flex items-center gap-2">
         {/* Play/Pause Button */}
         <Button
           onClick={togglePlay}
