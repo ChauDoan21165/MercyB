@@ -21,6 +21,7 @@ import { RoomErrorState } from "@/components/RoomErrorState";
 import { useUiHealthReporter } from "@/hooks/useUiHealthReporter";
 import { RoomHeader } from "@/components/RoomHeader";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
+import { RoomLayout } from "@/components/room/RoomLayout";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useCredits } from "@/hooks/useCredits";
 import { CreditLimitModal } from "@/components/CreditLimitModal";
@@ -847,54 +848,46 @@ const ChatHub = () => {
           </AlertDialogContent>
         </AlertDialog>
       )}
-      <div className="min-h-screen p-4" style={{ background: getBgColor() }}>
-        <div className="max-w-7xl mx-auto space-y-4">
+      <RoomLayout bgColor={getBgColor()}>
+        <div className="max-w-4xl mx-auto space-y-6">
         
-        {/* Breadcrumb Navigation */}
-        <div className="bg-card rounded-lg p-3 shadow-soft">
-          <Breadcrumb
-            items={[
-              ...(info?.tier ? [
+        {/* Header with Breadcrumbs */}
+        <RoomHeader 
+          title={currentRoom.nameEn === currentRoom.nameVi 
+            ? currentRoom.nameEn 
+            : `${currentRoom.nameEn} / ${currentRoom.nameVi}`}
+          tier={info?.tier === 'free' ? 'Free' : info?.tier?.toUpperCase().replace('VIP', 'VIP ')}
+          showThemeToggle={true}
+          breadcrumbs={
+            <Breadcrumb
+              items={[
+                ...(info?.tier ? [
+                  {
+                    label: getTierRoute(info.tier)?.name || info.tier.toUpperCase(),
+                    href: getTierRoute(info.tier)?.path
+                  }
+                ] : []),
                 {
-                  label: getTierRoute(info.tier)?.name || info.tier.toUpperCase(),
-                  href: getTierRoute(info.tier)?.path
+                  label: currentRoom.nameEn === currentRoom.nameVi 
+                    ? currentRoom.nameEn 
+                    : `${currentRoom.nameEn} / ${currentRoom.nameVi}`
                 }
-              ] : []),
-              {
-                label: currentRoom.nameEn === currentRoom.nameVi 
-                  ? currentRoom.nameEn 
-                  : `${currentRoom.nameEn} / ${currentRoom.nameVi}`
-              }
-            ]}
-          />
-        </div>
-
-        {/* Header */}
-        <div className="bg-card rounded-lg p-4 shadow-soft">
-          <RoomHeader 
-            title={currentRoom.nameEn === currentRoom.nameVi 
-              ? currentRoom.nameEn 
-              : `${currentRoom.nameEn} / ${currentRoom.nameVi}`}
-            tier={info?.tier === 'free' ? 'Free' : info?.tier?.toUpperCase().replace('VIP', 'VIP ')}
-            showThemeToggle={true}
-          />
-          
-          {/* User info and stats */}
-          <div className="flex items-center justify-center gap-2 text-xs font-medium text-primary mt-2">
-            <ProfileAvatarUpload
-              currentAvatarUrl={avatarUrl}
-              onUploadSuccess={(url) => setAvatarUrl(url)}
+              ]}
             />
-            <span>{username || 'User'}</span>
-            {tier && (
-              <span className="font-semibold">{tier.toUpperCase()}</span>
-            )}
-            <span>•</span>
-            <span>You have explored {progress.totalRooms} {progress.totalRooms === 1 ? 'topic' : 'topics'}, {progress.streak} day streak! 🔥</span>
-          </div>
-            
-            {/* Button group: Favorite, My Rooms, Recent */}
-            <div className="flex gap-2">
+          }
+          actions={
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              {/* User info */}
+              <div className="flex items-center gap-2 text-xs font-medium text-primary">
+                <ProfileAvatarUpload
+                  currentAvatarUrl={avatarUrl}
+                  onUploadSuccess={(url) => setAvatarUrl(url)}
+                />
+                <span>{username || 'User'}</span>
+                {tier && <span className="font-semibold">{tier.toUpperCase()}</span>}
+              </div>
+              
+              {/* Favorite button */}
               <Button
                 variant="ghost"
                 size="sm"
@@ -904,250 +897,25 @@ const ChatHub = () => {
                   nameVi: currentRoom.nameVi,
                   tier: info?.tier || 'free'
                 })}
-                className="gap-2"
+                className="gap-1 h-8"
                 title={isRoomFavorite(roomId || '') ? "Remove from favorites" : "Add to favorites"}
               >
-                <Heart className={`w-4 h-4 ${isRoomFavorite(roomId || '') ? 'fill-red-500 text-red-500' : 'text-gray-400'}`} />
-                Favorite
+                <Heart className={`w-4 h-4 ${isRoomFavorite(roomId || '') ? 'fill-red-500 text-red-500' : 'text-muted-foreground'}`} />
               </Button>
-              <DropdownMenu onOpenChange={(open) => !open && setFavoriteSearch("")}>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="gap-2"
-                  >
-                    <Star className="w-4 h-4 text-yellow-500" />
-                    My Rooms ({favoriteRooms.length})
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-[320px] bg-background border-2 z-[100]">
-                  <DropdownMenuLabel>My Favorite Rooms</DropdownMenuLabel>
-                  <div className="px-2 pb-2">
-                    <Input
-                      placeholder="Search favorites..."
-                      value={favoriteSearch}
-                      onChange={(e) => setFavoriteSearch(e.target.value)}
-                      className="h-8 text-sm"
-                      onClick={(e) => e.stopPropagation()}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Escape') {
-                          setFavoriteSearch('');
-                        }
-                        e.stopPropagation();
-                      }}
-                      autoFocus
-                    />
-                  </div>
-                  <DropdownMenuSeparator />
-                  <ScrollArea className="h-[300px]">
-                    {favoriteRooms.length === 0 ? (
-                      <div className="p-4 text-center text-sm text-muted-foreground">
-                        No favorite rooms yet. Click the heart icon to add rooms.
-                      </div>
-                    ) : (
-                      favoriteRooms
-                        .filter(room => {
-                          if (!favoriteSearch) return true;
-                          const search = favoriteSearch.toLowerCase();
-                          return (
-                            room.nameEn.toLowerCase().includes(search) ||
-                            room.nameVi.toLowerCase().includes(search) ||
-                            room.tier.toLowerCase().includes(search)
-                          );
-                        })
-                        .map((room) => (
-                          <DropdownMenuItem
-                            key={room.id}
-                            onClick={() => navigate(`/room/${room.id}`)}
-                            className="cursor-pointer flex items-center justify-between"
-                          >
-                            <div className="flex flex-col">
-                              <span className="text-sm font-medium">{room.nameEn}</span>
-                              {room.nameEn !== room.nameVi && (
-                                <span className="text-xs text-muted-foreground">{room.nameVi}</span>
-                              )}
-                              <Badge variant="secondary" className="text-xs w-fit mt-1">
-                                {room.tier === 'free' ? 'Free' : room.tier.toUpperCase()}
-                              </Badge>
-                            </div>
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                toggleRoomFavorite(room);
-                              }}
-                              className="h-6 w-6 p-0"
-                            >
-                              <Heart className="h-3 w-3 fill-red-500 text-red-500" />
-                            </Button>
-                          </DropdownMenuItem>
-                        ))
-                    )}
-                    {favoriteSearch && favoriteRooms.filter(room => {
-                      const search = favoriteSearch.toLowerCase();
-                      return (
-                        room.nameEn.toLowerCase().includes(search) ||
-                        room.nameVi.toLowerCase().includes(search) ||
-                        room.tier.toLowerCase().includes(search)
-                      );
-                    }).length === 0 && (
-                      <div className="p-4 text-center text-sm text-muted-foreground">
-                        No rooms match "{favoriteSearch}"
-                      </div>
-                    )}
-                  </ScrollArea>
-                </DropdownMenuContent>
-              </DropdownMenu>
               
-              <DropdownMenu onOpenChange={(open) => !open && setRecentSearch("")}>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="gap-2"
-                  >
-                    <History className="w-4 h-4 text-blue-500" />
-                    Recent ({recentRooms.length})
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-[320px] bg-background border-2 z-[100]">
-                  <DropdownMenuLabel className="flex items-center justify-between">
-                    <span>Recently Visited</span>
-                    {recentRooms.length > 0 && (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={clearRecentRooms}
-                        className="h-6 px-2 text-xs"
-                      >
-                        Clear
-                      </Button>
-                    )}
-                  </DropdownMenuLabel>
-                  <div className="px-2 pb-2">
-                    <Input
-                      placeholder="Search recent..."
-                      value={recentSearch}
-                      onChange={(e) => setRecentSearch(e.target.value)}
-                      className="h-8 text-sm"
-                      onClick={(e) => e.stopPropagation()}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Escape') {
-                          setRecentSearch('');
-                        }
-                        e.stopPropagation();
-                      }}
-                      autoFocus
-                    />
-                  </div>
-                  <DropdownMenuSeparator />
-                  <ScrollArea className="h-[300px]">
-                    {recentRooms.length === 0 ? (
-                      <div className="p-4 text-center text-sm text-muted-foreground">
-                        No recent rooms yet. Visit some rooms to see them here.
-                      </div>
-                    ) : (
-                      recentRooms
-                        .filter(room => {
-                          if (!recentSearch) return true;
-                          const search = recentSearch.toLowerCase();
-                          return (
-                            room.nameEn.toLowerCase().includes(search) ||
-                            room.nameVi.toLowerCase().includes(search) ||
-                            room.tier.toLowerCase().includes(search)
-                          );
-                        })
-                        .map((room) => (
-                          <DropdownMenuItem
-                            key={room.id}
-                            onClick={() => navigate(`/room/${room.id}`)}
-                            className="cursor-pointer flex items-center justify-between"
-                          >
-                            <div className="flex flex-col flex-1">
-                              <span className="text-sm font-medium">{room.nameEn}</span>
-                              {room.nameEn !== room.nameVi && (
-                                <span className="text-xs text-muted-foreground">{room.nameVi}</span>
-                              )}
-                              <div className="flex items-center gap-2 mt-1">
-                                <Badge variant="secondary" className="text-xs w-fit">
-                                  {room.tier === 'free' ? 'Free' : room.tier.toUpperCase()}
-                                </Badge>
-                                <span className="text-xs text-muted-foreground flex items-center gap-1">
-                                  <Clock className="h-3 w-3" />
-                                  {new Date(room.visitedAt).toLocaleDateString()}
-                                </span>
-                              </div>
-                            </div>
-                          </DropdownMenuItem>
-                        ))
-                    )}
-                    {recentSearch && recentRooms.filter(room => {
-                      const search = recentSearch.toLowerCase();
-                      return (
-                        room.nameEn.toLowerCase().includes(search) ||
-                        room.nameVi.toLowerCase().includes(search) ||
-                        room.tier.toLowerCase().includes(search)
-                      );
-                    }).length === 0 && (
-                      <div className="p-4 text-center text-sm text-muted-foreground">
-                        No rooms match "{recentSearch}"
-                      </div>
-                    )}
-                  </ScrollArea>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              {/* Refresh button */}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleRefreshRooms}
+                disabled={isRefreshing}
+                className="gap-1 h-8"
+              >
+                <RefreshCw className={`w-3 h-3 ${isRefreshing ? 'animate-spin' : ''}`} />
+              </Button>
             </div>
-          </div>
-         
-          {/* Right: Admin buttons and Refresh */}
-          <div className="flex flex-col gap-2 items-end">
-            {isAdmin && (
-              <div className="flex items-center gap-2">
-                {roomId && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const key = roomId && (/(?:-(free|vip1|vip2|vip3|vip4))$/.test(roomId) ? roomId : (info?.tier ? `${roomId}-${info.tier}` : roomId));
-                      const manifestVal = key ? PUBLIC_ROOM_MANIFEST[key] : undefined;
-                      const fileName = manifestVal ? manifestVal.replace(/^data\//, '') : `${roomId.replace(/-/g, '_')}.json`;
-                      navigator.clipboard.writeText(fileName);
-                      toast({
-                        title: "Copied!",
-                        description: `JSON: ${fileName}`,
-                      });
-                    }}
-                    className="w-[1em] h-[1em] rounded-full bg-primary hover:bg-primary/90 cursor-pointer flex-shrink-0 transition-colors"
-                    title="Copy JSON filename"
-                  />
-                )}
-                <button
-                  type="button"
-                  onClick={() => {
-                    navigator.clipboard.writeText(roomId || '');
-                    toast({
-                      title: "Copied!",
-                      description: `Room ID: ${roomId}`,
-                    });
-                  }}
-                  className="w-[1em] h-[1em] rounded-full bg-blue-600 hover:bg-blue-700 cursor-pointer flex-shrink-0 transition-colors"
-                  title="Copy Room ID"
-                />
-              </div>
-            )}
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={handleRefreshRooms}
-              disabled={isRefreshing}
-              className="gap-1"
-            >
-              <RefreshCw className={`w-3 h-3 ${isRefreshing ? 'animate-spin' : ''}`} />
-              Refresh
-            </Button>
-          </div>
-        </div>
+          }
+        />
         
         {/* Main Room Content - Loading and Error States */}
         {roomLoading && !roomError ? (
@@ -1162,8 +930,8 @@ const ChatHub = () => {
           />
         ) : (
           <>
-          {/* Welcome Message and Keywords Combined */}
-          <Card className="p-4 shadow-soft bg-card border border-border">
+          {/* Welcome / Intro Section */}
+          <section className="rounded-2xl bg-card/90 shadow-sm border border-border px-4 sm:px-6 py-4 sm:py-5">
           <div className="text-center space-y-0 mb-4">
             {keywordMenu && keywordMenu.en && keywordMenu.en.length > 0 ? (
               <p className="text-sm text-foreground leading-tight">
@@ -1232,10 +1000,10 @@ const ChatHub = () => {
               </div>
             </div>
           )}
-        </Card>
+        </section>
         
         {/* Main Chat Area */}
-        <Card className="p-4 shadow-soft bg-card border border-border">
+        <section className="rounded-2xl bg-card shadow-sm border border-border px-4 sm:px-6 py-5">
           <div className="space-y-3">
             <ScrollArea className="h-[560px] pr-4" ref={mainScrollRef}>
               <WelcomeBack lastRoomId={progress.lastVisit} currentRoomId={roomId || ""} />
@@ -1254,9 +1022,9 @@ const ChatHub = () => {
               <div ref={endRef} />
             </ScrollArea>
           </div>
-        </Card>
+        </section>
         {/* Feedback - Single Line at Bottom */}
-        <Card className="p-3 shadow-soft">
+        <section className="rounded-2xl bg-card/70 border border-border px-4 sm:px-6 py-3">
           <div className="flex items-center gap-2">
             <MessageCircle className="w-4 h-4 text-secondary flex-shrink-0" />
             <Input
@@ -1300,10 +1068,11 @@ const ChatHub = () => {
               <Send className="w-3 h-3" />
             </Button>
           </div>
-          </Card>
+          </section>
         </>
         )}
-      </div>
+        </div>
+      </RoomLayout>
     <CreditLimitModal
       open={showCreditLimit}
       onClose={() => setShowCreditLimit(false)}
