@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import { AdminFloatingButton } from "@/components/AdminFloatingButton";
 import { ZoomControl } from "@/components/ZoomControl";
@@ -132,6 +132,18 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+// Route-aware music player - hides on onboarding
+const RouteAwareMusicPlayer = () => {
+  const location = useLocation();
+  const hideOnRoutes = ['/onboarding'];
+  
+  if (hideOnRoutes.includes(location.pathname)) {
+    return null;
+  }
+  
+  return <MusicPlayer />;
+};
 
 const App = () => {
   useEffect(() => {
@@ -298,7 +310,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
         </Suspense>
-        <MusicPlayer />
+        <RouteAwareMusicPlayer />
                 </BrowserRouter>
               </MusicPlayerProvider>
             </TooltipProvider>
