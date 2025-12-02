@@ -15,6 +15,7 @@ export interface MinimalRoomData {
   tier: TierId;
   hasData: boolean;
   color?: string;
+  track?: 'core' | 'bonus';
 }
 
 const CACHE_KEY = "rooms-cache";
@@ -53,6 +54,7 @@ type RoomRow = {
   title_vi: string | null;
   tier: string | null;
   domain: string | null;
+  track: string | null;
 };
 
 // Fetch minimal room data from database
@@ -60,7 +62,7 @@ async function fetchCachedRooms(tierId?: TierId): Promise<MinimalRoomData[]> {
   try {
     let query = supabase
       .from(ROOMS_TABLE)
-      .select("id, title_en, title_vi, tier, domain");
+      .select("id, title_en, title_vi, tier, domain, track");
 
     if (tierId) {
       // Map TierId → canonical human label from TIERS
@@ -88,6 +90,7 @@ async function fetchCachedRooms(tierId?: TierId): Promise<MinimalRoomData[]> {
         // Normalize whatever is in DB to TierId canon
         tier: normalizeTier(room.tier || "free"),
         hasData: true,
+        track: (room.track as 'core' | 'bonus') || 'core',
       }));
   } catch (err) {
     console.warn("Failed to fetch rooms:", err);

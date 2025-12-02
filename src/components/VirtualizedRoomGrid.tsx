@@ -27,6 +27,7 @@ interface VirtualizedRoomGridProps {
   rooms: RoomData[];
   onRoomClick: (room: RoomData) => void;
   highlightColors?: Record<string, string>;
+  showBonusBadge?: boolean;
 }
 
 // Internal constant - locked to match ROOM_GRID_CLASS canonical grid
@@ -36,6 +37,7 @@ export const VirtualizedRoomGrid = ({
   rooms,
   onRoomClick,
   highlightColors = {},
+  showBonusBadge = false,
 }: VirtualizedRoomGridProps) => {
   const parentRef = useRef<HTMLDivElement>(null);
   const { isLowDataMode } = useLowDataMode();
@@ -171,6 +173,15 @@ export const VirtualizedRoomGrid = ({
                             {/* Frosted overlay for locked rooms */}
                             {!room.hasData && lockedStyles.overlay && (
                               <div className={lockedStyles.overlay} aria-hidden="true" />
+                            )}
+
+                            {/* Bonus Badge */}
+                            {showBonusBadge && (
+                              <div className="absolute top-1 left-1 z-10">
+                                <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-700 border border-amber-200">
+                                  BONUS
+                                </span>
+                              </div>
                             )}
 
                             {/* Status Badge */}
