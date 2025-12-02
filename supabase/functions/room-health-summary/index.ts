@@ -500,78 +500,87 @@ function computeHealthMetrics(jsonData: any, issues: RoomIssue[]): { health_scor
   return { health_score: healthScore, audio_coverage: audioCoverage };
 }
 
-// Helper: Validate a single room by fetching and parsing its JSON
-async function validateRoom(roomId: string, tier: string): Promise<RoomValidationResult> {
+// Helper: Validate a room using its entries from the database
+function validateRoomFromDb(roomId: string, tier: string, entries: any[]): RoomValidationResult {
   const result: RoomValidationResult = {
     room_id: roomId,
     tier,
     json_missing: false,
     json_invalid: false,
-    health_score: 0,
+    health_score: 100,
     audio_coverage: 0,
     has_zero_audio: false,
     is_low_health: false,
     issues: [],
   };
   
-  try {
-    // Fetch JSON file from public/data/ (frontend deployment)
-    // Try the primary deployment URL first
-    const primaryUrl = `https://mercyblade.lovable.app/public/data/${roomId}.json`;
-    let jsonResponse = await fetch(primaryUrl);
-    
-    // If primary fails, try alternative paths
-    if (!jsonResponse.ok) {
-      const altUrl = `https://mercyblade.lovable.app/data/${roomId}.json`;
-      jsonResponse = await fetch(altUrl);
-    }
-    
-    if (!jsonResponse.ok) {
-      result.json_missing = true;
-      result.issues.push({
-        code: 'missing_file',
-        severity: 'error',
-        message: `Missing JSON file at public/data/${roomId}.json`,
-      });
-      return result;
-    }
-    
-    // Parse JSON
-    let jsonData: any;
-    try {
-      jsonData = await jsonResponse.json();
-    } catch (parseErr) {
-      result.json_invalid = true;
-      result.issues.push({
-        code: 'invalid_json',
-        severity: 'error',
-        message: 'JSON file cannot be parsed',
-      });
-      return result;
-    }
-    
-    // Validate JSON structure
-    const validationIssues = validateRoomJson(roomId, jsonData);
-    result.issues = validationIssues;
-    
-    // Compute health metrics
-    const metrics = computeHealthMetrics(jsonData, validationIssues);
-    result.health_score = metrics.health_score;
-    result.audio_coverage = metrics.audio_coverage;
-    
-    // Set flags
-    result.has_zero_audio = metrics.audio_coverage === 0;
-    result.is_low_health = metrics.health_score < 50;
-    
-  } catch (err: any) {
-    console.error(`[room-health-summary] Error validating room ${roomId}:`, err.message);
+  // Check if entries exist
+  if (!entries || !Array.isArray(entries)) {
     result.json_missing = true;
     result.issues.push({
-      code: 'missing_file',
+      code: 'missing_entries',
       severity: 'error',
-      message: `Failed to fetch or validate JSON: ${err.message}`,
+      message: `Room ${roomId} has no entries array in database`,
+    });
+    result.health_score = 0;
+    return result;
+  }
+  
+  if (entries.length === 0) {
+    result.issues.push({
+      code: 'empty_entries',
+      severity: 'error',
+      message: `Room ${roomId} has empty entries array`,
+    });
+    result.health_score = 50;
+    result.has_zero_audio = true;
+    return result;
+  }
+  
+  // Calculate audio coverage
+  let entriesWithAudio = 0;
+  for (const entry of entries) {
+    const audio = entry?.audio || entry?.audio_en || entry?.audioEn;
+    if (audio && typeof audio === 'string' && audio.trim().length > 0) {
+      entriesWithAudio++;
+    }
+  }
+  
+  result.audio_coverage = Math.round((entriesWithAudio / entries.length) * 100);
+  result.has_zero_audio = result.audio_coverage === 0;
+  
+  // Calculate health score based on audio coverage and entry count
+  let healthScore = 100;
+  
+  // Deduct for missing audio
+  if (result.audio_coverage === 0) {
+    healthScore -= 30;
+    result.issues.push({
+      code: 'no_audio',
+      severity: 'warning',
+      message: `Room ${roomId} has 0% audio coverage`,
+    });
+  } else if (result.audio_coverage < 50) {
+    healthScore -= 15;
+    result.issues.push({
+      code: 'low_audio',
+      severity: 'info',
+      message: `Room ${roomId} has only ${result.audio_coverage}% audio coverage`,
     });
   }
+  
+  // Check entry count
+  if (entries.length < 3) {
+    healthScore -= 10;
+    result.issues.push({
+      code: 'few_entries',
+      severity: 'info',
+      message: `Room ${roomId} has only ${entries.length} entries`,
+    });
+  }
+  
+  result.health_score = Math.max(0, Math.min(100, healthScore));
+  result.is_low_health = result.health_score < 50;
   
   return result;
 }
@@ -624,11 +633,10 @@ serve(async (req) => {
   const trackGaps: any[] = [];
 
   try {
-    // Fetch rooms from database - include slug and is_active for JSON filename matching
-    // NOTE: Do NOT filter by tier in SQL - we need to normalize first
+    // Fetch rooms from database - include entries for validation
     const { data: roomsData, error: roomsErr } = await supabase
       .from("rooms")
-      .select("id, tier, slug, is_active");
+      .select("id, tier, entries, is_locked, is_demo");
     
     if (roomsErr) {
       console.error('[room-health-summary] Rooms query error:', roomsErr);
@@ -637,7 +645,7 @@ serve(async (req) => {
 
     console.log('[room-health-summary] Fetched', roomsData?.length || 0, 'rooms from database');
     
-    // Validate each room by fetching and parsing its JSON file
+    // Validate each room using database entries
     const validationResults: RoomValidationResult[] = [];
     
     for (const room of roomsData || []) {
@@ -649,9 +657,9 @@ serve(async (req) => {
         continue;
       }
       
-      // CRITICAL: Use slug (which matches JSON filenames) instead of UUID id
-      const jsonId = ((room as any).slug || room.id) as string;
-      const result = await validateRoom(jsonId, room.tier || 'free');
+      // Validate using entries from database
+      const entries = Array.isArray(room.entries) ? room.entries : [];
+      const result = validateRoomFromDb(room.id, room.tier || 'free', entries);
       validationResults.push(result);
       
       // Use normalized tier for aggregation (use "free" if normalization fails)
@@ -702,9 +710,8 @@ serve(async (req) => {
       // Scan all DB rooms to build expected and actual lists
       for (const room of roomsData || []) {
         const roomId = room.id as string;
-        const slug = (room as any).slug as string | null;
         const roomTier = room.tier as string | null;
-        const isActive = (room as any).is_active !== false;
+        const isActive = !room.is_locked && !room.is_demo;
         
         // Check if this room belongs to this tier based on ID pattern
         const idLower = roomId.toLowerCase();
@@ -716,15 +723,15 @@ serve(async (req) => {
           idLower.includes(`-${tierPattern}-`);
         
         if (belongsToTier) {
-          expectedIds.push(slug || roomId);
+          expectedIds.push(roomId);
           
           // Check if it's actually in DB with correct tier
           const normalizedRoomTier = normalizeTier(roomTier);
           if (normalizedRoomTier === tierId) {
             if (isActive) {
-              dbActiveIds.push(slug || roomId);
+              dbActiveIds.push(roomId);
             } else {
-              dbInactiveIds.push(slug || roomId);
+              dbInactiveIds.push(roomId);
             }
           }
         }
@@ -737,15 +744,13 @@ serve(async (req) => {
       const wrongTierRoomIds: string[] = [];
       for (const room of roomsData || []) {
         const roomId = room.id as string;
-        const slug = (room as any).slug as string | null;
         const roomTier = room.tier as string | null;
         const normalizedRoomTier = normalizeTier(roomTier);
-        const isActive = (room as any).is_active !== false;
+        const isActive = !room.is_locked && !room.is_demo;
         
         if (normalizedRoomTier === tierId && isActive) {
-          const actualId = slug || roomId;
-          if (!expectedIds.includes(actualId)) {
-            wrongTierRoomIds.push(actualId);
+          if (!expectedIds.includes(roomId)) {
+            wrongTierRoomIds.push(roomId);
           }
         }
       }
