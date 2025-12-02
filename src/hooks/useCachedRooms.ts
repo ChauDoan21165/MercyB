@@ -66,7 +66,9 @@ async function fetchCachedRooms(tierId?: TierId): Promise<MinimalRoomData[]> {
       .from(ROOMS_TABLE)
       .select("id, title_en, title_vi, tier, domain, track");
     
-    console.log('[useCachedRooms] Fetching rooms, tierId:', tierId);
+    if (import.meta.env.DEV) {
+      console.log('[useCachedRooms] Fetching rooms, tierId:', tierId);
+    }
 
     if (tierId) {
       // Map TierId → canonical human label from TIERS
@@ -84,11 +86,15 @@ async function fetchCachedRooms(tierId?: TierId): Promise<MinimalRoomData[]> {
     const { data, error } = await query.returns<RoomRow[]>().order("title_en");
 
     if (error) {
-      console.error('[useCachedRooms] Query error:', error);
+      if (import.meta.env.DEV) {
+        console.error('[useCachedRooms] Query error:', error);
+      }
       throw error;
     }
     
-    console.log('[useCachedRooms] Fetched', data?.length, 'rooms');
+    if (import.meta.env.DEV) {
+      console.log('[useCachedRooms] Fetched', data?.length, 'rooms');
+    }
 
     return (data || [])
       .filter((room) => !isSystemFile(room.id))
