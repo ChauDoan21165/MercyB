@@ -85,6 +85,7 @@ const AdminSpecification = lazy(() => import("./pages/AdminSpecification"));
 const HealthDashboard = lazy(() => import("./pages/admin/HealthDashboard"));
 const RoomHealthDashboard = lazy(() => import("./pages/admin/RoomHealthDashboard"));
 const UnifiedRoomHealthCheck = lazy(() => import("./pages/admin/UnifiedRoomHealthCheck"));
+const RoomHealthCheckV2 = lazy(() => import("./pages/admin/RoomHealthCheckV2"));
 const SystemHealth = lazy(() => import("./pages/admin/SystemHealth"));
 const EdgeFunctions = lazy(() => import("./pages/admin/EdgeFunctions"));
 const RoomSpecification = lazy(() => import("./pages/admin/RoomSpecification"));
@@ -274,6 +275,7 @@ const App = () => {
            <Route path="/admin/room-health-dashboard" element={<AdminRoute><RoomHealthDashboard /></AdminRoute>} />
            <Route path="/admin/room-health/:tier" element={<AdminRoute><UnifiedRoomHealthCheck /></AdminRoute>} />
            <Route path="/admin/system-health" element={<AdminRoute><SystemHealth /></AdminRoute>} />
+           <Route path="/admin/room-health-v2" element={<AdminRoute><RoomHealthCheckV2 /></AdminRoute>} />
           <Route path="/admin/edge-functions" element={<AdminRoute><EdgeFunctions /></AdminRoute>} />
           <Route path="/redeem-gift" element={<RedeemGiftCode />} />
           <Route path="/user-music-upload" element={<UserMusicUpload />} />
