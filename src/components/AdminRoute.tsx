@@ -11,8 +11,16 @@ type Props = {
 export const AdminRoute = ({ children }: Props) => {
   const [checking, setChecking] = useState(true);
   const [allowed, setAllowed] = useState(false);
+  const isDev = import.meta.env.DEV;
 
   useEffect(() => {
+    // In DEV mode, allow access without admin check
+    if (isDev) {
+      setAllowed(true);
+      setChecking(false);
+      return;
+    }
+
     const check = async () => {
       try {
         const {
@@ -47,7 +55,7 @@ export const AdminRoute = ({ children }: Props) => {
     };
 
     check();
-  }, []);
+  }, [isDev]);
 
   if (checking) {
     return (
