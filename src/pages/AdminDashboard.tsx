@@ -314,7 +314,12 @@ const AdminDashboard = () => {
           <h2 className="text-lg font-semibold mb-4">⚡ Quick Actions</h2>
           <div className="flex flex-wrap gap-2">
             <QuickActionButton
-              label="Room Health Check"
+              label="Room Health V2 (JSON)"
+              icon={Activity}
+              onClick={() => navigate("/admin/room-health-v2")}
+            />
+            <QuickActionButton
+              label="Room Health (Legacy)"
               icon={Activity}
               onClick={() => navigate("/admin/health")}
             />
