@@ -416,7 +416,7 @@ export const AudioPlayer = ({
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
-  // Show error if no audio path provided
+  // No audio configured - only case where we don't render audio element
   if (!currentAudioPath) {
     return (
       <div className={cn("flex items-center gap-2 p-3 bg-muted/50 rounded-lg border border-muted", className)}>
@@ -428,51 +428,44 @@ export const AudioPlayer = ({
     );
   }
 
-  // Show error state inline instead of controls
-  if (state.hasError) {
-    return (
-      <div className={cn("flex items-center gap-2 p-3 bg-destructive/10 rounded-lg border border-destructive/20", className)}>
-        <div className="text-sm text-destructive flex-1">
-          {state.errorMessage || 'Audio not available'}
-          <span className="text-xs block text-muted-foreground mt-1">Âm thanh không khả dụng</span>
-        </div>
-        <Button
-          onClick={() => {
-            setState({ isAudioReady: false, hasError: false });
-            const audio = audioRef.current;
-            if (audio) {
-              audio.load();
-            }
-          }}
-          size="sm"
-          variant="outline"
-          className="shrink-0"
-        >
-          Retry
-        </Button>
-      </div>
-    );
-  }
-
-  // Show loading state while audio is buffering
-  if (!state.isAudioReady) {
-    return (
-      <div className={cn("flex items-center gap-2 p-2 bg-muted/50 rounded-lg", className)}>
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <div className="h-4 w-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-          <span>Loading audio... / Đang tải âm thanh...</span>
-        </div>
-      </div>
-    );
-  }
-
+  // ALWAYS render audio element so it can load - only switch inner UI
   return (
     <div className={cn("flex items-center gap-2 w-full", className)}>
+      {/* Audio element ALWAYS mounted */}
       <audio
         ref={audioRef}
         preload={preload}
-        src={currentAudioPath ? `${currentAudioPath}?t=${currentTrackIndex}` : undefined}
+        src={`${currentAudioPath}?t=${currentTrackIndex}`}
       />
+
+      {state.hasError ? (
+        /* Error state */
+        <div className="flex items-center gap-2 p-3 bg-destructive/10 rounded-lg border border-destructive/20 flex-1">
+          <div className="text-sm text-destructive flex-1">
+            {state.errorMessage || 'Audio not available'}
+            <span className="text-xs block text-muted-foreground mt-1">Âm thanh không khả dụng</span>
+          </div>
+          <Button
+            onClick={() => {
+              setState({ isAudioReady: false, hasError: false, errorMessage: undefined });
+              audioRef.current?.load();
+            }}
+            size="sm"
+            variant="outline"
+            className="shrink-0"
+          >
+            Retry
+          </Button>
+        </div>
+      ) : !state.isAudioReady ? (
+        /* Loading state */
+        <div className="flex items-center gap-2 p-2 bg-muted/50 rounded-lg flex-1">
+          <div className="h-4 w-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+          <span className="text-sm text-muted-foreground">Loading audio... / Đang tải âm thanh...</span>
+        </div>
+      ) : (
+        /* Ready - show full controls */
+        <>
       
       {/* Skip Backward Button */}
       <Button
@@ -628,6 +621,8 @@ export const AudioPlayer = ({
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
+        </>
+      )}
     </div>
   );
 };
