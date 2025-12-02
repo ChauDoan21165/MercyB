@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { RoomHeader } from "@/components/RoomHeader";
+import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { CheckCircle2, Lock, Crown, Sparkles, RefreshCw, Building2, ChevronRight, Palette } from "lucide-react";
