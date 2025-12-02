@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useAdminCheck } from '@/hooks/useAdminCheck';
 import { AdminLayout } from '@/components/admin/AdminLayout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { CheckCircle2, XCircle, AlertCircle, Loader2, Wrench, Download, ArrowLeft } from 'lucide-react';
+import { CheckCircle2, XCircle, AlertCircle, Loader2, Wrench, Download } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { KIDS_ROOM_JSON_MAP } from '@/pages/KidsChat';
 
@@ -35,7 +34,6 @@ const getJsonFilenameForRoom = (roomId: string, levelId: string): string => {
 };
 
 export default function KidsRoomHealthCheck() {
-  const navigate = useNavigate();
   const { isAdmin, loading: adminLoading } = useAdminCheck();
   const { toast } = useToast();
   const [checking, setChecking] = useState(false);
@@ -422,15 +420,6 @@ export default function KidsRoomHealthCheck() {
     <AdminLayout>
       <div className="max-w-7xl mx-auto p-6 space-y-6">
         <div>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => navigate('/admin/health-dashboard')}
-            className="mb-2"
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Health Dashboard
-          </Button>
           <h1 className="text-3xl font-bold text-foreground">Kids Room Health Check</h1>
           <p className="text-muted-foreground mt-1">Verify and fix room data integrity across all levels</p>
         </div>
