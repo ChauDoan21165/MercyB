@@ -11,41 +11,35 @@
  */
 
 // Pre-compiled regex patterns for performance
-const LEADING_SLASHES = /^\/+/;
-const PUBLIC_PREFIX = /^public\//;
-const AUDIO_LANG_PREFIX = /^audio\/(en|vi)\//;
-const AUDIO_PREFIX = /^audio\//;
 const WHITESPACE_SPLIT = /\s+/;
 
 /**
- * Normalize audio path - optimized version with fewer operations
- * 
- * CRITICAL: Always produces paths in format /audio/{filename}
- * - Strips "public/" prefix (should never be in audio field)
- * - Strips redundant "audio/" prefix
- * - Ensures leading "/" for absolute URL
- * 
- * Example inputs → output:
- * - "file.mp3" → "/audio/file.mp3"
- * - "audio/file.mp3" → "/audio/file.mp3"
- * - "public/audio/file.mp3" → "/audio/file.mp3" (strips invalid public/)
- * - "/audio/file.mp3" → "/audio/file.mp3"
+ * Normalize audio filename - strips any path prefixes, returns just filename
+ * This is the canonical normalizer for room entry audio fields.
  */
-export const normalizeAudioPath = (path: string): string => {
-  let p = path.replace(LEADING_SLASHES, '').replace(PUBLIC_PREFIX, '');
+export const normalizeAudioFilename = (raw: string | null | undefined): string | null => {
+  if (!raw) return null;
+  let name = String(raw).trim();
+  if (!name) return null;
   
-  if (p.startsWith('rooms/')) {
-    return `/audio/${p}`;
-  }
+  // Strip any path prefixes to get just filename
+  if (name.startsWith('public/')) name = name.slice('public/'.length);
+  if (name.startsWith('/audio/')) name = name.slice('/audio/'.length);
+  if (name.startsWith('audio/')) name = name.slice('audio/'.length);
+  if (name.startsWith('/')) name = name.slice(1);
   
-  p = p.replace(AUDIO_LANG_PREFIX, 'audio/').replace(AUDIO_PREFIX, '');
-  return `/audio/${p}`;
+  // Handle legacy en/vi subdirectories
+  if (name.startsWith('en/')) name = name.slice('en/'.length);
+  if (name.startsWith('vi/')) name = name.slice('vi/'.length);
+  
+  return name || null;
 };
 
 /**
  * Process audio field - handles single files and playlists
+ * Returns FILENAMES ONLY (no paths) - path construction happens at UI layer
  */
-export const processAudioField = (audioRaw: any): { audioPath?: string; audioPlaylist?: string[] } => {
+export const processAudioField = (audioRaw: any): { audioFilename?: string; audioPlaylist?: string[] } => {
   if (!audioRaw) return {};
   
   const rawString = String(audioRaw);
@@ -54,20 +48,20 @@ export const processAudioField = (audioRaw: any): { audioPath?: string; audioPla
   if (audioFiles.length === 0) return {};
   
   if (audioFiles.length > 1) {
-    // Multiple files - create playlist
-    const audioPlaylist = audioFiles.map(normalizeAudioPath);
+    // Multiple files - create playlist of filenames
+    const audioPlaylist = audioFiles.map(f => normalizeAudioFilename(f)).filter((f): f is string => !!f);
     return {
-      audioPath: audioPlaylist[0],
+      audioFilename: audioPlaylist[0],
       audioPlaylist
     };
   }
   
-  // Single file
-  const audioPath = normalizeAudioPath(rawString);
-  return {
-    audioPath,
-    audioPlaylist: [audioPath]
-  };
+  // Single file - return just filename
+  const audioFilename = normalizeAudioFilename(rawString);
+  return audioFilename ? {
+    audioFilename,
+    audioPlaylist: [audioFilename]
+  } : {};
 };
 
 /**
@@ -196,8 +190,9 @@ export const processEntry = (
   }
   
   // Process audio (with room context for better logging)
+  // Returns filenames only - path construction happens at UI layer
   const audioRaw = extractAudio(entry, roomId);
-  const { audioPath, audioPlaylist } = processAudioField(audioRaw);
+  const { audioFilename, audioPlaylist } = processAudioField(audioRaw);
   
   // Extract content
   const { replyEn, replyVi } = extractContent(entry);
@@ -210,12 +205,12 @@ export const processEntry = (
     ? entry.keywords_vi[0] 
     : entry.identifier || entry.slug || '';
   
-  // Transform entry
+  // Transform entry - audio contains FILENAME ONLY (no path prefix)
   const transformedEntry = {
     ...entry,
     slug: entry.slug || entry.identifier,
-    audio: audioPath,
-    audioPlaylist,
+    audio: audioFilename, // Just filename, e.g. "debate_01_vip2.mp3"
+    audioPlaylist,        // Array of filenames
     keywordEn,
     keywordVi,
     replyEn,
