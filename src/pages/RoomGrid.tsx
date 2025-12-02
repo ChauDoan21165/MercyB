@@ -32,13 +32,11 @@ const RoomGrid = () => {
   // Filter to show only free tier rooms, split by track
   const { coreRooms, bonusRooms } = useMemo(() => {
     if (!cachedRooms) return { coreRooms: [], bonusRooms: [] };
-    const freeRooms = cachedRooms.filter(room => {
-      const t = room.tier?.toLowerCase() || 'free';
-      return t.includes('free') || t.includes('miễn phí');
-    });
+    // Use normalized tier (TierId) which is already "free" for Free tier rooms
+    const freeRooms = cachedRooms.filter(room => room.tier === 'free');
     return {
       coreRooms: freeRooms.filter(room => room.track === 'core'),
-      bonusRooms: freeRooms.filter(room => room.track === 'bonus'),
+      bonusRooms: freeRooms.filter(room => room.track === 'bonus' || !room.track),
     };
   }, [cachedRooms]);
   
