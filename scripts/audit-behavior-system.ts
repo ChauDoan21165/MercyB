@@ -22,10 +22,10 @@ async function auditBehaviorSystem(): Promise<void> {
   console.log("==================================\n");
 
   if (!SUPABASE_URL || !SUPABASE_KEY) {
-    console.log("⚠️ Supabase credentials not found in environment.");
-    console.log("   Set VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY");
-    console.log("   Skipping database checks.\n");
-    process.exit(0);
+    console.log("❌ Supabase credentials not found in environment.");
+    console.log("   Expected VITE_SUPABASE_URL + VITE_SUPABASE_PUBLISHABLE_KEY");
+    console.log("   or SUPABASE_URL + SUPABASE_ANON_KEY.\n");
+    process.exit(1);
   }
 
   const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
