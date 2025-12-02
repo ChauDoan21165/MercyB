@@ -65,6 +65,7 @@ export const AudioPlayer = ({
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
+  const loadingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Use playlist if available, otherwise single audio
   const isPlaylist = playlist.length > 1;
@@ -89,6 +90,12 @@ export const AudioPlayer = ({
     const audio = audioRef.current;
     if (!audio) return;
 
+    // Clear any existing timeout
+    if (loadingTimeoutRef.current) {
+      clearTimeout(loadingTimeoutRef.current);
+      loadingTimeoutRef.current = null;
+    }
+
     // Determine if the source actually changed (ignore query params/signatures)
     const currentSrcNoQuery = stripQuery(audio.src);
     const newSrcNoQuery = stripQuery(currentAudioPath);
@@ -104,9 +111,32 @@ export const AudioPlayer = ({
         ? `${currentAudioPath}&v=${Date.now()}` 
         : `${currentAudioPath}?v=${Date.now()}`;
       audio.src = cacheBustedPath;
+      
+      // DEV-only logging for debugging
+      if (import.meta.env.DEV) {
+        console.log('[AudioPlayer] Loading audio:', { src: cacheBustedPath });
+      }
+      
       // Ensure a fresh load only when switching tracks
       audio.load();
       setCurrentTime(0);
+      
+      // Set loading timeout - if still loading after 5 seconds, show error
+      loadingTimeoutRef.current = setTimeout(() => {
+        setState(prev => {
+          if (!prev.isAudioReady && !prev.hasError) {
+            if (import.meta.env.DEV) {
+              console.warn('[AudioPlayer] Loading timeout - audio took too long', { src: currentAudioPath });
+            }
+            return {
+              isAudioReady: false,
+              hasError: true,
+              errorMessage: 'Audio loading timed out',
+            };
+          }
+          return prev;
+        });
+      }, 5000);
     }
 
     const handleTimeUpdate = () => {
@@ -119,8 +149,19 @@ export const AudioPlayer = ({
     };
 
     const handleLoadedMetadata = () => {
+      // Clear loading timeout on success
+      if (loadingTimeoutRef.current) {
+        clearTimeout(loadingTimeoutRef.current);
+        loadingTimeoutRef.current = null;
+      }
+      
       setDuration(audio.duration);
       setState({ isAudioReady: true, hasError: false });
+      
+      if (import.meta.env.DEV) {
+        console.log('[AudioPlayer] Audio ready:', { src: currentAudioPath, duration: audio.duration });
+      }
+      
       // Restore saved position if available
       try {
         const saved = parseFloat(sessionStorage.getItem(storageKey(currentAudioPath)) || '0');
@@ -129,7 +170,6 @@ export const AudioPlayer = ({
           setCurrentTime(saved);
         }
       } catch {}
-      // Audio loaded successfully
     };
 
     const handleEnded = () => {
@@ -145,6 +185,12 @@ export const AudioPlayer = ({
     };
 
     const handleError = (e: Event) => {
+      // Clear loading timeout on error
+      if (loadingTimeoutRef.current) {
+        clearTimeout(loadingTimeoutRef.current);
+        loadingTimeoutRef.current = null;
+      }
+      
       // Determine error message based on error code
       let errorMessage = 'Audio not available';
       if (audio.error) {
@@ -375,7 +421,8 @@ export const AudioPlayer = ({
     return (
       <div className={cn("flex items-center gap-2 p-3 bg-muted/50 rounded-lg border border-muted", className)}>
         <div className="text-sm text-muted-foreground flex-1">
-          Audio not configured for this entry
+          <span>Audio not configured for this entry</span>
+          <span className="text-xs block mt-0.5">Mục này chưa được cấu hình âm thanh</span>
         </div>
       </div>
     );
@@ -413,7 +460,7 @@ export const AudioPlayer = ({
       <div className={cn("flex items-center gap-2 p-2 bg-muted/50 rounded-lg", className)}>
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <div className="h-4 w-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-          <span>Loading audio...</span>
+          <span>Loading audio... / Đang tải âm thanh...</span>
         </div>
       </div>
     );
