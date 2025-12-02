@@ -50,26 +50,42 @@ const normalizeAudioPath = (audioPath) => {
   return normalized;
 };
 
-// Extract audio references from entry
+/**
+ * Get audio filename from entry - mirrors getAudioFilename in roomLoaderHelpers.ts
+ * Returns just the filename (no path prefix), or null if not configured.
+ * CANONICAL: entry.audio (string)
+ * LEGACY: audio_en, audioEn
+ */
+const getAudioFilename = (entry) => {
+  // Canonical field first
+  if (entry?.audio && typeof entry.audio === 'string') {
+    return entry.audio.trim();
+  }
+  
+  // Handle object format { en: "...", vi: "..." }
+  if (entry?.audio && typeof entry.audio === 'object') {
+    const val = entry.audio.en ?? entry.audio.vi ?? Object.values(entry.audio)[0];
+    return val ? String(val).trim() : null;
+  }
+  
+  // Minimal legacy fallbacks
+  if (entry?.audio_en) return String(entry.audio_en).trim();
+  if (entry?.audioEn) return String(entry.audioEn).trim();
+  
+  return null;
+};
+
+// Extract audio references from entry (handles playlists)
 const extractAudioFromEntry = (entry) => {
   const audioRefs = [];
   
-  // Handle direct audio field
-  if (entry.audio) {
-    const audioValue = typeof entry.audio === 'object' 
-      ? (entry.audio.en || entry.audio.vi || Object.values(entry.audio)[0])
-      : entry.audio;
-      
-    // Handle space-separated playlists
-    if (typeof audioValue === 'string') {
-      const files = audioValue.trim().split(/\s+/);
-      audioRefs.push(...files.filter(Boolean));
-    }
-  }
+  const filename = getAudioFilename(entry);
   
-  // Handle legacy fields
-  if (entry.audio_en) audioRefs.push(entry.audio_en);
-  if (entry.audioEn) audioRefs.push(entry.audioEn);
+  if (filename) {
+    // Handle space-separated playlists
+    const files = filename.split(/\s+/).filter(Boolean);
+    audioRefs.push(...files);
+  }
   
   return audioRefs;
 };

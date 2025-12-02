@@ -71,6 +71,32 @@ export const processAudioField = (audioRaw: any): { audioPath?: string; audioPla
 };
 
 /**
+ * Get audio filename from entry - single canonical helper
+ * Returns just the filename (no path prefix), or null if not configured.
+ * 
+ * CANONICAL: entry.audio (string filename, no paths)
+ * LEGACY: audio_en, audioEn (deprecated - migrate to audio)
+ */
+export const getAudioFilename = (entry: any): string | null => {
+  // Canonical field first
+  if (entry?.audio && typeof entry.audio === 'string') {
+    return entry.audio.trim();
+  }
+  
+  // Handle object format { en: "...", vi: "..." }
+  if (entry?.audio && typeof entry.audio === 'object') {
+    const val = entry.audio.en ?? entry.audio.vi ?? Object.values(entry.audio)[0];
+    return val ? String(val).trim() : null;
+  }
+  
+  // Minimal legacy fallbacks
+  if (entry?.audio_en) return String(entry.audio_en).trim();
+  if (entry?.audioEn) return String(entry.audioEn).trim();
+  
+  return null;
+};
+
+/**
  * Extract audio from entry - canonical structure with minimal legacy fallbacks
  * CANONICAL: entry.audio (string filename, no paths)
  * LEGACY: audio_en, audioEn (deprecated - migrate to audio)
@@ -78,22 +104,14 @@ export const processAudioField = (audioRaw: any): { audioPath?: string; audioPla
  * Logs warning if audio is missing to help with content fixes.
  */
 export const extractAudio = (entry: any, roomId?: string): any => {
-  // Canonical field
-  if (entry?.audio) {
-    if (typeof entry.audio === 'object') {
-      return entry.audio.en ?? entry.audio.vi ?? Object.values(entry.audio)[0];
-    }
-    return entry.audio;
-  }
+  const filename = getAudioFilename(entry);
   
-  // Legacy fallbacks (deprecated)
-  const legacyAudio = entry?.audio_en || entry?.audioEn;
-  if (legacyAudio) {
-    return legacyAudio;
+  if (filename) {
+    return filename;
   }
   
   // No audio found - log warning in development only
-  if (process.env.NODE_ENV !== 'production') {
+  if (import.meta.env.DEV) {
     const identifier = entry?.slug || entry?.id || entry?.artifact_id || 'unknown-entry';
     console.warn(
       `⚠️ Missing audio: Room "${roomId || 'unknown'}" → Entry "${identifier}"`,
