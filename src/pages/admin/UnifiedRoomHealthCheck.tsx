@@ -129,25 +129,51 @@ export default function UnifiedRoomHealthCheck() {
             missingEntries++;
           }
 
-          // Check audio in entries
+          // Check audio in entries - verify actual files exist
           let audioCount = 0;
-          entries.forEach((entry: any) => {
-            const audio = entry.audio || entry.audio_en || entry.audioEn;
-            if (audio) audioCount++;
-          });
+          let audioFieldCount = 0;
+          const missingAudioFiles: string[] = [];
+          
+          for (const entry of entries as any[]) {
+            const audioField = entry.audio || entry.audio_en || entry.audioEn;
+            if (audioField) {
+              audioFieldCount++;
+              // Actually check if the audio file exists
+              try {
+                const audioPath = audioField.startsWith('/') ? audioField : `/audio/${audioField}`;
+                const audioResponse = await fetch(audioPath, { method: 'HEAD' });
+                if (audioResponse.ok) {
+                  audioCount++;
+                } else {
+                  missingAudioFiles.push(audioField);
+                }
+              } catch {
+                missingAudioFiles.push(audioField);
+              }
+            }
+          }
 
-          if (entryCount > 0 && audioCount === 0) {
+          // Count rooms with zero audio as "missingAudio"
+          if (entryCount > 0 && audioFieldCount === 0) {
             issues.push({
-              code: 'no_audio',
+              code: 'no_audio_defined',
               severity: 'error',
-              message: 'No entries have audio files',
+              message: 'No entries have audio field defined',
             });
             missingAudio++;
-          } else if (entryCount > 0 && audioCount < entryCount) {
+          } else if (missingAudioFiles.length > 0) {
+            issues.push({
+              code: 'missing_audio_files',
+              severity: 'error',
+              message: `${missingAudioFiles.length} audio file(s) missing`,
+              details: missingAudioFiles.slice(0, 5).join(', ') + (missingAudioFiles.length > 5 ? '...' : ''),
+            });
+            if (audioCount === 0) missingAudio++;
+          } else if (entryCount > 0 && audioFieldCount < entryCount) {
             issues.push({
               code: 'low_audio',
               severity: 'warning',
-              message: `Only ${audioCount}/${entryCount} entries have audio`,
+              message: `Only ${audioFieldCount}/${entryCount} entries have audio defined`,
             });
           }
 
@@ -234,8 +260,13 @@ export default function UnifiedRoomHealthCheck() {
             missingEntries++;
           }
 
-          // Check JSON file
+          // Check JSON file and audio
           const jsonFileName = getKidsJsonFilename(room.id, room.level_id);
+          let kidsAudioCount = 0;
+          let kidsAudioFieldCount = 0;
+          let kidsEntryCountFromJson = entryCount;
+          const kidsMissingAudioFiles: string[] = [];
+          
           try {
             const response = await fetch(`/data/${jsonFileName}`);
             if (!response.ok) {
@@ -247,9 +278,31 @@ export default function UnifiedRoomHealthCheck() {
               });
               missingJson++;
             } else {
-              // Validate JSON content
-              const contentType = response.headers.get('content-type');
-              if (!contentType?.includes('application/json')) {
+              // Parse JSON and check audio
+              try {
+                const jsonData = await response.json();
+                const entries = jsonData.entries || [];
+                kidsEntryCountFromJson = entries.length;
+                
+                for (const entry of entries) {
+                  const audioField = entry.audio || entry.audio_en || entry.audioEn;
+                  if (audioField) {
+                    kidsAudioFieldCount++;
+                    // Check if audio file exists
+                    try {
+                      const audioPath = audioField.startsWith('/') ? audioField : `/audio/${audioField}`;
+                      const audioResponse = await fetch(audioPath, { method: 'HEAD' });
+                      if (audioResponse.ok) {
+                        kidsAudioCount++;
+                      } else {
+                        kidsMissingAudioFiles.push(audioField);
+                      }
+                    } catch {
+                      kidsMissingAudioFiles.push(audioField);
+                    }
+                  }
+                }
+              } catch {
                 issues.push({
                   code: 'invalid_json',
                   severity: 'error',
@@ -267,6 +320,30 @@ export default function UnifiedRoomHealthCheck() {
             missingJson++;
           }
 
+          // Audio issues for kids rooms
+          if (kidsEntryCountFromJson > 0 && kidsAudioFieldCount === 0) {
+            issues.push({
+              code: 'no_audio_defined',
+              severity: 'error',
+              message: 'No entries have audio field defined',
+            });
+            missingAudio++;
+          } else if (kidsMissingAudioFiles.length > 0) {
+            issues.push({
+              code: 'missing_audio_files',
+              severity: 'error',
+              message: `${kidsMissingAudioFiles.length} audio file(s) missing`,
+              details: kidsMissingAudioFiles.slice(0, 5).join(', ') + (kidsMissingAudioFiles.length > 5 ? '...' : ''),
+            });
+            if (kidsAudioCount === 0) missingAudio++;
+          } else if (kidsEntryCountFromJson > 0 && kidsAudioFieldCount < kidsEntryCountFromJson) {
+            issues.push({
+              code: 'low_audio',
+              severity: 'warning',
+              message: `Only ${kidsAudioFieldCount}/${kidsEntryCountFromJson} entries have audio defined`,
+            });
+          }
+
           // Check if inactive
           if (!room.is_active) {
             issues.push({
@@ -278,6 +355,7 @@ export default function UnifiedRoomHealthCheck() {
 
           const tierLabel = room.level_id === 'level1' ? 'kids_1' : 
                            room.level_id === 'level2' ? 'kids_2' : 'kids_3';
+          const kidsAudioCoverage = kidsEntryCountFromJson > 0 ? Math.round((kidsAudioCount / kidsEntryCountFromJson) * 100) : 0;
 
           results.push({
             roomId: room.id,
@@ -285,10 +363,10 @@ export default function UnifiedRoomHealthCheck() {
             tier: tierLabel,
             isKids: true,
             issues,
-            entryCount,
-            audioCount: 0, // Kids audio check would need separate logic
-            audioCoverage: 0,
-            healthScore: calculateHealthScore(issues, 50), // Default 50% for kids without audio check
+            entryCount: kidsEntryCountFromJson,
+            audioCount: kidsAudioCount,
+            audioCoverage: kidsAudioCoverage,
+            healthScore: calculateHealthScore(issues, kidsAudioCoverage),
           });
         }
       }
