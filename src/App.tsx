@@ -84,7 +84,7 @@ const AdminGiftCodes = lazy(() => import("./pages/AdminGiftCodes"));
 const AdminSpecification = lazy(() => import("./pages/AdminSpecification"));
 const HealthDashboard = lazy(() => import("./pages/admin/HealthDashboard"));
 const RoomHealthDashboard = lazy(() => import("./pages/admin/RoomHealthDashboard"));
-const KidsRoomHealthCheck = lazy(() => import("./pages/KidsRoomHealthCheck"));
+const UnifiedRoomHealthCheck = lazy(() => import("./pages/admin/UnifiedRoomHealthCheck"));
 const SystemHealth = lazy(() => import("./pages/admin/SystemHealth"));
 const EdgeFunctions = lazy(() => import("./pages/admin/EdgeFunctions"));
 const RoomSpecification = lazy(() => import("./pages/admin/RoomSpecification"));
@@ -268,11 +268,11 @@ const App = () => {
           <Route path="/admin/gift-codes" element={<AdminRoute><AdminGiftCodes /></AdminRoute>} />
           <Route path="/admin/specification" element={<AdminRoute><AdminSpecification /></AdminRoute>} />
           <Route path="/admin/room-specification" element={<AdminRoute><RoomSpecification /></AdminRoute>} />
-           <Route path="/admin/health" element={<AdminRoute><UnifiedHealthCheck /></AdminRoute>} />
-           <Route path="/admin/kids-room-health" element={<AdminRoute><KidsRoomHealthCheck /></AdminRoute>} />
+           <Route path="/admin/health" element={<AdminRoute><UnifiedRoomHealthCheck /></AdminRoute>} />
+           <Route path="/admin/room-health" element={<AdminRoute><UnifiedRoomHealthCheck /></AdminRoute>} />
            <Route path="/admin/health-dashboard" element={<AdminRoute><HealthDashboard /></AdminRoute>} />
            <Route path="/admin/room-health-dashboard" element={<AdminRoute><RoomHealthDashboard /></AdminRoute>} />
-           <Route path="/admin/room-health/:tier" element={<AdminRoute><UnifiedHealthCheck /></AdminRoute>} />
+           <Route path="/admin/room-health/:tier" element={<AdminRoute><UnifiedRoomHealthCheck /></AdminRoute>} />
            <Route path="/admin/system-health" element={<AdminRoute><SystemHealth /></AdminRoute>} />
           <Route path="/admin/edge-functions" element={<AdminRoute><EdgeFunctions /></AdminRoute>} />
           <Route path="/redeem-gift" element={<RedeemGiftCode />} />
