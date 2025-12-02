@@ -36,6 +36,7 @@ import { messageSchema } from "@/lib/inputValidation";
 import { supabase } from "@/integrations/supabase/client";
 import { roomDataMap } from "@/lib/roomDataImports";
 import { setCustomKeywordMappings, clearCustomKeywordMappings, loadRoomKeywords } from "@/lib/customKeywordLoader";
+import { buildAudioSrc } from "@/lib/audioHelpers";
 import { ProfileAvatarUpload } from "@/components/ProfileAvatarUpload";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { getTierRoute } from "@/lib/tierRoutes";
@@ -651,15 +652,8 @@ const ChatHub = () => {
     const englishContent = parts[0]?.trim() || message.text;
     const vietnameseContent = parts[1]?.trim() || '';
 
-    // Compute audio URL if available (normalized to /audio/...)
-    const audioUrl = message.audioFile 
-      ? (() => {
-          let p = String(message.audioFile).replace(/^\/+/, '').replace(/^public\//, '');
-          p = p.replace(/^audio\/(en|vi)\//, 'audio/');
-          if (!p.startsWith('audio/')) p = `audio/${p}`;
-          return `/${p}`;
-        })()
-      : null;
+    // Compute audio URL if available - use canonical buildAudioSrc helper
+    const audioUrl = message.audioFile ? buildAudioSrc(message.audioFile) : null;
 
     const handleAudioClick = () => {
       if (!message.audioFile) {
@@ -671,11 +665,9 @@ const ChatHub = () => {
         return;
       }
 
-      // Normalize path
-      let p = String(message.audioFile).replace(/^\/+/, '').replace(/^public\//, '');
-      p = p.replace(/^audio\/(en|vi)\//, 'audio/');
-      if (!p.startsWith('audio/')) p = `audio/${p}`;
-      const url = `/${p}`;
+      // Normalize path using canonical helper
+      const url = buildAudioSrc(message.audioFile);
+      if (!url) return;
 
       // Toggle or switch track; Audio element is managed inside AudioPlayer
       if (currentAudio === url) {
