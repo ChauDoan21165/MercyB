@@ -29,14 +29,20 @@ const RoomGrid = () => {
   // Use cached rooms hook - fetch ALL rooms to show to everyone
   const { data: cachedRooms, isLoading, refetch } = useCachedRooms();
   
-  // Filter to show only free tier rooms on this page
-  const filteredRooms = useMemo(() => {
-    if (!cachedRooms) return [];
-    return cachedRooms.filter(room => {
+  // Filter to show only free tier rooms, split by track
+  const { coreRooms, bonusRooms } = useMemo(() => {
+    if (!cachedRooms) return { coreRooms: [], bonusRooms: [] };
+    const freeRooms = cachedRooms.filter(room => {
       const t = room.tier?.toLowerCase() || 'free';
       return t.includes('free') || t.includes('miễn phí');
     });
+    return {
+      coreRooms: freeRooms.filter(room => room.track === 'core'),
+      bonusRooms: freeRooms.filter(room => room.track === 'bonus'),
+    };
   }, [cachedRooms]);
+  
+  const totalRoomCount = coreRooms.length + bonusRooms.length;
 
   const handleRoomClick = (room: any) => {
     // Always allow navigation - access control happens in ChatHub
@@ -114,7 +120,7 @@ const RoomGrid = () => {
                   Chọn Phòng Học Của Bạn
                 </p>
                 <p className="text-sm text-muted-foreground/80">
-                  {isLoading ? 'Loading...' : `Showing ${filteredRooms.length} rooms`}
+                  {isLoading ? 'Loading...' : `Showing ${totalRoomCount} rooms`}
                 </p>
               </div>
             </div>
@@ -123,7 +129,7 @@ const RoomGrid = () => {
             {isLoading && <RoomGridSkeleton count={24} />}
 
             {/* Empty state message when no rooms are visible */}
-            {!isLoading && filteredRooms.length === 0 && (
+            {!isLoading && totalRoomCount === 0 && (
               <div className="mt-12 text-center space-y-4 max-w-xl mx-auto">
                 <p className="text-base text-muted-foreground">
                   No free tier rooms are available right now.
@@ -135,13 +141,54 @@ const RoomGrid = () => {
               </div>
             )}
 
-            {/* Virtualized Room Grid */}
-            {!isLoading && filteredRooms.length > 0 && (
-              <VirtualizedRoomGrid
-                rooms={filteredRooms}
-                onRoomClick={handleRoomClick}
-                highlightColors={FREE_INTRO_ROOMS}
-              />
+            {/* Core English Foundation Section */}
+            {!isLoading && coreRooms.length > 0 && (
+              <div className="space-y-4">
+                <div className="text-center space-y-1">
+                  <h2 className="text-2xl font-semibold text-foreground">
+                    Core English Foundation
+                  </h2>
+                  <p className="text-sm text-muted-foreground">
+                    Nền Tảng Tiếng Anh Cốt Lõi
+                  </p>
+                </div>
+                <VirtualizedRoomGrid
+                  rooms={coreRooms}
+                  onRoomClick={handleRoomClick}
+                  highlightColors={FREE_INTRO_ROOMS}
+                />
+              </div>
+            )}
+
+            {/* Divider between sections */}
+            {!isLoading && coreRooms.length > 0 && bonusRooms.length > 0 && (
+              <div className="flex items-center gap-4 my-8">
+                <div className="flex-1 h-px bg-border" />
+                <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                  Bonus Rooms / Phòng Bonus
+                </span>
+                <div className="flex-1 h-px bg-border" />
+              </div>
+            )}
+
+            {/* Bonus Rooms Section */}
+            {!isLoading && bonusRooms.length > 0 && (
+              <div className="space-y-4">
+                <div className="text-center space-y-1">
+                  <h2 className="text-2xl font-semibold text-foreground">
+                    Bonus Practice & Skills
+                  </h2>
+                  <p className="text-sm text-muted-foreground">
+                    Luyện Tập & Kỹ Năng Bonus
+                  </p>
+                </div>
+                <VirtualizedRoomGrid
+                  rooms={bonusRooms}
+                  onRoomClick={handleRoomClick}
+                  highlightColors={FREE_INTRO_ROOMS}
+                  showBonusBadge
+                />
+              </div>
             )}
 
           </div>
