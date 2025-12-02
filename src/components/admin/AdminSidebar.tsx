@@ -47,7 +47,7 @@ const mainItems = [
 // Room management tools
 const roomItems = [
   { title: "Room Management", url: "/admin/rooms", icon: LayoutDashboard },
-  { title: "Room Health Check", url: "/admin/kids-room-health", icon: Stethoscope },
+  { title: "Room Health Check", url: "/admin/room-health", icon: Stethoscope },
   { title: "VIP Rooms", url: "/admin/vip-rooms", icon: LayoutDashboard },
   { title: "Audio Management", url: "/admin/audio-upload", icon: Music },
 ];

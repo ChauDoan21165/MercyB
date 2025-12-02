@@ -39,7 +39,7 @@ const adminCommands: CommandItem[] = [
   
   // Rooms
   { id: "room-mgmt", title: "Room Management", description: "Manage all rooms", url: "/admin/rooms", icon: LayoutDashboard, category: "Rooms" },
-  { id: "room-health-check", title: "Room Health Check", description: "Validate room files", url: "/admin/kids-room-health", icon: Stethoscope, category: "Rooms" },
+  { id: "room-health-check", title: "Room Health Check", description: "Validate all rooms", url: "/admin/room-health", icon: Stethoscope, category: "Rooms" },
   { id: "vip-rooms", title: "VIP Rooms", description: "VIP room management", url: "/admin/vip-rooms", icon: LayoutDashboard, category: "Rooms" },
   { id: "audio", title: "Audio Management", description: "Upload and manage audio", url: "/admin/audio-upload", icon: Music, category: "Rooms" },
   
