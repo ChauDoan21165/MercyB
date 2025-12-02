@@ -166,6 +166,15 @@ export const AudioPlayer = ({
         }
       }
       
+      // DEV-only console warning for debugging
+      if (import.meta.env.DEV) {
+        console.warn('[AudioPlayer] Failed to load audio', { 
+          src: currentAudioPath,
+          errorCode: audio.error?.code,
+          errorMessage 
+        });
+      }
+      
       // Set inline error state instead of toast
       setState({
         isAudioReady: false,
@@ -361,12 +370,24 @@ export const AudioPlayer = ({
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
+  // Show error if no audio path provided
+  if (!currentAudioPath) {
+    return (
+      <div className={cn("flex items-center gap-2 p-3 bg-muted/50 rounded-lg border border-muted", className)}>
+        <div className="text-sm text-muted-foreground flex-1">
+          Audio not configured for this entry
+        </div>
+      </div>
+    );
+  }
+
   // Show error state inline instead of controls
   if (state.hasError) {
     return (
       <div className={cn("flex items-center gap-2 p-3 bg-destructive/10 rounded-lg border border-destructive/20", className)}>
         <div className="text-sm text-destructive flex-1">
-          {state.errorMessage || 'Audio not available right now'}
+          {state.errorMessage || 'Audio not available'}
+          <span className="text-xs block text-muted-foreground mt-1">Âm thanh không khả dụng</span>
         </div>
         <Button
           onClick={() => {
