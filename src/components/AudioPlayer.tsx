@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Play, Pause, RotateCcw, Volume2, VolumeX, Gauge, SkipBack, SkipForward } from "lucide-react";
+import { RotateCcw, Volume2, VolumeX, Gauge, SkipBack, SkipForward } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
@@ -492,21 +492,25 @@ export const AudioPlayer = ({
         <SkipBack className="h-3 w-3" />
       </Button>
 
-      {/* Play/Pause Button */}
-      <Button
+      {/* Play/Pause Talking Mouth Button */}
+      <button
         onClick={onPlayPause}
-        size="sm"
-        variant="ghost"
-        className="h-6 w-6 p-0 shrink-0"
-        title={!state.isAudioReady ? "Audio unavailable" : "Play/Pause (Space)"}
         disabled={!state.isAudioReady}
+        aria-label={isPlaying ? "Pause" : "Play"}
+        title={!state.isAudioReady ? "Audio unavailable" : "Play/Pause (Space)"}
+        className="relative w-10 h-10 rounded-full bg-gradient-to-tr from-primary/80 to-primary shadow-md flex items-center justify-center transition-transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
       >
-        {isPlaying ? (
-          <Pause className="h-3 w-3" />
-        ) : (
-          <Play className="h-3 w-3" />
-        )}
-      </Button>
+        {/* Eyes */}
+        <div className="absolute top-2.5 left-2 w-1.5 h-1.5 rounded-full bg-primary-foreground" />
+        <div className="absolute top-2.5 right-2 w-1.5 h-1.5 rounded-full bg-primary-foreground" />
+        {/* Mouth */}
+        <div
+          className={cn(
+            "absolute bottom-2.5 left-1/2 -translate-x-1/2 w-3 bg-primary-foreground transition-all",
+            isPlaying ? "h-2 rounded-sm animate-mouth-talk" : "h-0.5 rounded-full"
+          )}
+        />
+      </button>
 
       {/* Skip Forward Button */}
       <Button
