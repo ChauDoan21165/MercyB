@@ -146,8 +146,8 @@
   "vip_english_advanced_4": {
     "id": "vip_english_advanced_4",
     "category": "vip_english",
-    "text_en": "Native speakers often use "to be honest" at the start. It signals authenticity.",
-    "text_vi": "Người bản xứ hay dùng "to be honest" ở đầu câu. Nó báo hiệu sự chân thực.",
+    "text_en": "Native speakers often use 'to be honest' at the start. It signals authenticity.",
+    "text_vi": "Người bản xứ hay dùng 'to be honest' ở đầu câu. Nó báo hiệu sự chân thực.",
     "audio_en": "/audio/mercy_vip/vip_english_advanced_4_en.mp3",
     "audio_vi": "/audio/mercy_vip/vip_english_advanced_4_vi.mp3"
   },
@@ -162,16 +162,16 @@
   "vip_english_advanced_6": {
     "id": "vip_english_advanced_6",
     "category": "vip_english",
-    "text_en": "Try this phrase: "That makes sense." It shows you're engaged and understanding.",
-    "text_vi": "Thử câu này: "That makes sense." Nó cho thấy bạn đang chú ý và hiểu.",
+    "text_en": "Try this phrase: 'That makes sense.' It shows you're engaged and understanding.",
+    "text_vi": "Thử câu này: 'That makes sense.' Nó cho thấy bạn đang chú ý và hiểu.",
     "audio_en": "/audio/mercy_vip/vip_english_advanced_6_en.mp3",
     "audio_vi": "/audio/mercy_vip/vip_english_advanced_6_vi.mp3"
   },
   "vip_english_advanced_7": {
     "id": "vip_english_advanced_7",
     "category": "vip_english",
-    "text_en": "A powerful connector is "having said that." It shows balanced thinking.",
-    "text_vi": "Một từ nối mạnh là "having said that." Nó thể hiện suy nghĩ cân bằng.",
+    "text_en": "A powerful connector is 'having said that.' It shows balanced thinking.",
+    "text_vi": "Một từ nối mạnh là 'having said that.' Nó thể hiện suy nghĩ cân bằng.",
     "audio_en": "/audio/mercy_vip/vip_english_advanced_7_en.mp3",
     "audio_vi": "/audio/mercy_vip/vip_english_advanced_7_vi.mp3"
   },
