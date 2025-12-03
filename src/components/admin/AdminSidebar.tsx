@@ -16,6 +16,7 @@ import {
   BarChart3,
   Settings,
   AlertTriangle,
+  Volume2,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 
@@ -50,6 +51,7 @@ const roomItems = [
   { title: "Room Health Check", url: "/admin/room-health", icon: Stethoscope },
   { title: "VIP Rooms", url: "/admin/vip-rooms", icon: LayoutDashboard },
   { title: "Audio Management", url: "/admin/audio-upload", icon: Music },
+  { title: "Audio Scanner", url: "/admin/audio-scanner", icon: Volume2 },
 ];
 
 // Monitoring & analytics
