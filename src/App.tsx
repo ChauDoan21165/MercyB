@@ -85,7 +85,6 @@ const AdminSpecification = lazy(() => import("./pages/AdminSpecification"));
 const HealthDashboard = lazy(() => import("./pages/admin/HealthDashboard"));
 const RoomHealthDashboard = lazy(() => import("./pages/admin/RoomHealthDashboard"));
 const UnifiedRoomHealthCheck = lazy(() => import("./pages/admin/UnifiedRoomHealthCheck"));
-const RoomHealthCheckV2 = lazy(() => import("./pages/admin/RoomHealthCheckV2"));
 const SystemHealth = lazy(() => import("./pages/admin/SystemHealth"));
 const EdgeFunctions = lazy(() => import("./pages/admin/EdgeFunctions"));
 const RoomSpecification = lazy(() => import("./pages/admin/RoomSpecification"));
@@ -148,6 +147,11 @@ const RouteAwareMusicPlayer = () => {
   return <MusicPlayer />;
 };
 
+// Admin floating button wrapper - only shows for admins (handled internally)
+const AdminFloatingButtonWrapper = () => {
+  return <AdminFloatingButton />;
+};
+
 const App = () => {
   useEffect(() => {
     // Log app startup
@@ -205,7 +209,7 @@ const App = () => {
               <MusicPlayerProvider>
                 <BrowserRouter>
                   <EnvironmentBanner />
-                  <AdminFloatingButton />
+                  <AdminFloatingButtonWrapper />
                   <ZoomControl />
                   
                   <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur">
@@ -219,104 +223,121 @@ const App = () => {
                   
                   <GlobalPlayingIndicator />
                   <PerformanceProfiler />
-        <Suspense fallback={<LoadingSkeleton variant="page" />}>
-          <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/onboarding" element={<OnboardingFlow />} />
-          <Route path="/tiers" element={<Tiers />} />
-          <Route path="/welcome" element={<Welcome />} />
-          <Route path="/meaning-of-life" element={<MeaningOfLife />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/reset" element={<ResetPassword />} />
-          <Route path="/join/:code" element={<JoinCode />} />
-          {/* Canonical routes per Design System v1.1 */}
-          <Route path="/rooms" element={<RoomGrid />} />
-          <Route path="/english-pathway" element={<EnglishLearningPathway />} />
-          <Route path="/vip/vip1" element={<RoomGridVIP1 />} />
-          <Route path="/vip/vip2" element={<RoomGridVIP2 />} />
-          <Route path="/vip/vip3" element={<RoomGridVIP3 />} />
-          <Route path="/vip/vip3ii" element={<RoomGridVIP3II />} />
-          <Route path="/vip/vip4" element={<RoomGridVIP4 />} />
-          <Route path="/vip/vip5" element={<RoomGridVIP5 />} />
-          <Route path="/vip/vip6" element={<RoomGridVIP6 />} />
-          <Route path="/vip/vip9" element={<RoomsVIP9 />} />
-          <Route path="/kids-level1" element={<KidsLevel1 />} />
-          <Route path="/kids-level2" element={<KidsLevel2 />} />
-          <Route path="/kids-level3" element={<KidsLevel3 />} />
-          <Route path="/kids-chat/:roomId" element={<KidsChat />} />
-          <Route path="/sexuality-culture" element={<SexualityCultureRoom />} />
-          <Route path="/finance-calm" element={<FinanceCalmRoom />} />
-          <Route path="/all-rooms" element={<AllRooms />} />
-          <Route path="/room/:roomId" element={<ChatHub />} />
-          <Route path="/vip-request" element={<VIPRequestForm />} />
-          <Route path="/vip-requests" element={<VIPRequests />} />
-          <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
-          <Route path="/admin/vip-rooms" element={<AdminRoute><AdminVIPRooms /></AdminRoute>} />
-          <Route path="/admin/design-audit" element={<AdminRoute><AdminDesignAudit /></AdminRoute>} />
-          <Route path="/admin/app-metrics" element={<AdminRoute><AppMetrics /></AdminRoute>} />
-          <Route path="/matchmaking" element={<MatchmakingHub />} />
-          <Route path="/subscribe" element={<PaymentTest />} />
-          <Route path="/payment-test" element={<PaymentTest />} /> {/* Legacy redirect */}
-          <Route path="/manual-payment" element={<ManualPayment />} />
-          <Route path="/promo-code" element={<PromoCode />} />
-          <Route path="/vip-topic-request" element={<VIPTopicRequest />} />
-                <Route path="/admin/reports" element={<AdminRoute><AdminReports /></AdminRoute>} />
-                <Route path="/admin/feedback" element={<AdminRoute><FeedbackInbox /></AdminRoute>} />
-                <Route path="/admin/feedback-analytics" element={<AdminRoute><AdminFeedbackAnalytics /></AdminRoute>} />
-          <Route path="/admin/stats" element={<AdminRoute><AdminStats /></AdminRoute>} />
-          <Route path="/admin/content-quality" element={<AdminRoute><ContentQualityDashboard /></AdminRoute>} />
-          <Route path="/admin/launch-simulation" element={<AdminRoute><LaunchSimulationDashboard /></AdminRoute>} />
-          <Route path="/admin/payment-verification" element={<AdminRoute><AdminPaymentVerification /></AdminRoute>} />
-          <Route path="/admin/audio-upload" element={<AdminRoute><AdminAudioUpload /></AdminRoute>} />
-          <Route path="/admin/audio-scanner" element={<AdminRoute><FastAudioScannerPage /></AdminRoute>} />
-          <Route path="/admin/missing-audio" element={<AdminRoute><EntriesWithoutAudioPage /></AdminRoute>} />
-          <Route path="/admin/moderation" element={<AdminRoute><AdminModeration /></AdminRoute>} />
-          <Route path="/admin/rooms" element={<AdminRoute><AdminRooms /></AdminRoute>} />
-          <Route path="/admin/rooms/new" element={<AdminRoute><AdminRoomEditor /></AdminRoute>} />
-          <Route path="/admin/rooms/edit/:roomId" element={<AdminRoute><AdminRoomEditor /></AdminRoute>} />
-          <Route path="/admin/rooms/import" element={<AdminRoute><AdminRoomImport /></AdminRoute>} />
-          <Route path="/admin/user-roles" element={<AdminRoute><AdminUserRoles /></AdminRoute>} />
-          <Route path="/admin/users" element={<AdminRoute><AdminUsers /></AdminRoute>} />
-          <Route path="/admin/users/:userId" element={<AdminRoute><AdminUserDetail /></AdminRoute>} />
-          <Route path="/admin/security" element={<AdminRoute><AdminSecurity /></AdminRoute>} />
-          <Route path="/admin/code-editor" element={<AdminRoute><AdminCodeEditor /></AdminRoute>} />
-          <Route path="/admin/payments" element={<AdminRoute><AdminPayments /></AdminRoute>} />
-          <Route path="/admin/system-metrics" element={<AdminRoute><AdminSystemMetrics /></AdminRoute>} />
-          <Route path="/admin/payment-monitoring" element={<AdminRoute><PaymentMonitoring /></AdminRoute>} />
-          <Route path="/admin/gift-codes" element={<AdminRoute><AdminGiftCodes /></AdminRoute>} />
-          <Route path="/admin/specification" element={<AdminRoute><AdminSpecification /></AdminRoute>} />
-          <Route path="/admin/room-specification" element={<AdminRoute><RoomSpecification /></AdminRoute>} />
-           <Route path="/admin/health" element={<AdminRoute><UnifiedRoomHealthCheck /></AdminRoute>} />
-           <Route path="/admin/room-health" element={<AdminRoute><UnifiedRoomHealthCheck /></AdminRoute>} />
-           <Route path="/admin/health-dashboard" element={<AdminRoute><HealthDashboard /></AdminRoute>} />
-           <Route path="/admin/room-health-dashboard" element={<AdminRoute><RoomHealthDashboard /></AdminRoute>} />
-           <Route path="/admin/room-health/:tier" element={<AdminRoute><UnifiedRoomHealthCheck /></AdminRoute>} />
-           <Route path="/admin/system-health" element={<AdminRoute><SystemHealth /></AdminRoute>} />
-           <Route path="/admin/room-health-v2" element={<AdminRoute><RoomHealthCheckV2 /></AdminRoute>} />
-           <Route path="/admin/audit-v4" element={<AdminRoute><AuditSafeShield /></AdminRoute>} />
-          <Route path="/admin/edge-functions" element={<AdminRoute><EdgeFunctions /></AdminRoute>} />
-          <Route path="/redeem-gift" element={<RedeemGiftCode />} />
-          <Route path="/user-music-upload" element={<UserMusicUpload />} />
-          <Route path="/admin/music-approval" element={<AdminRoute><MusicApproval /></AdminRoute>} />
-          <Route path="/admin/music-manager" element={<AdminRoute><MusicManager /></AdminRoute>} />
-          <Route path="/admin/audit-log" element={<AdminRoute><AuditLog /></AdminRoute>} />
-          <Route path="/admin/ai-usage" element={<AdminRoute><AIUsage /></AdminRoute>} />
-          <Route path="/admin/feature-flags" element={<AdminRoute><FeatureFlags /></AdminRoute>} />
-          <Route path="/admin/audio-audit" element={<AdminRoute><AudioAssetAuditor /></AdminRoute>} />
-          <Route path="/admin/user-support" element={<AdminRoute><UserSupportConsole /></AdminRoute>} />
-          <Route path="/admin/system-logs" element={<AdminRoute><SystemLogs /></AdminRoute>} />
-          <Route path="/tier-map" element={<TierMap />} />
-          <Route path="/audio-upload" element={<AudioUpload />} />
-          <Route path="/kids-validation" element={<KidsRoomValidation />} />
-          <Route path="/security-dashboard" element={<SecurityDashboard />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/refund" element={<Refund />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        </Suspense>
-        <RouteAwareMusicPlayer />
+                  
+                  <Suspense fallback={<LoadingSkeleton variant="page" />}>
+                    <Routes>
+                      {/* Public routes */}
+                      <Route path="/" element={<Homepage />} />
+                      <Route path="/onboarding" element={<OnboardingFlow />} />
+                      <Route path="/tiers" element={<Tiers />} />
+                      <Route path="/welcome" element={<Welcome />} />
+                      <Route path="/meaning-of-life" element={<MeaningOfLife />} />
+                      <Route path="/auth" element={<Auth />} />
+                      <Route path="/reset" element={<ResetPassword />} />
+                      <Route path="/join/:code" element={<JoinCode />} />
+                      
+                      {/* Room routes */}
+                      <Route path="/rooms" element={<RoomGrid />} />
+                      <Route path="/english-pathway" element={<EnglishLearningPathway />} />
+                      <Route path="/all-rooms" element={<AllRooms />} />
+                      <Route path="/room/:roomId" element={<ChatHub />} />
+                      
+                      {/* VIP tier routes */}
+                      <Route path="/vip/vip1" element={<RoomGridVIP1 />} />
+                      <Route path="/vip/vip2" element={<RoomGridVIP2 />} />
+                      <Route path="/vip/vip3" element={<RoomGridVIP3 />} />
+                      <Route path="/vip/vip3ii" element={<RoomGridVIP3II />} />
+                      <Route path="/vip/vip4" element={<RoomGridVIP4 />} />
+                      <Route path="/vip/vip5" element={<RoomGridVIP5 />} />
+                      <Route path="/vip/vip6" element={<RoomGridVIP6 />} />
+                      <Route path="/vip/vip9" element={<RoomsVIP9 />} />
+                      
+                      {/* Kids routes */}
+                      <Route path="/kids-level1" element={<KidsLevel1 />} />
+                      <Route path="/kids-level2" element={<KidsLevel2 />} />
+                      <Route path="/kids-level3" element={<KidsLevel3 />} />
+                      <Route path="/kids-chat/:roomId" element={<KidsChat />} />
+                      
+                      {/* Special rooms */}
+                      <Route path="/sexuality-culture" element={<SexualityCultureRoom />} />
+                      <Route path="/finance-calm" element={<FinanceCalmRoom />} />
+                      
+                      {/* User features */}
+                      <Route path="/vip-request" element={<VIPRequestForm />} />
+                      <Route path="/vip-requests" element={<VIPRequests />} />
+                      <Route path="/matchmaking" element={<MatchmakingHub />} />
+                      <Route path="/subscribe" element={<PaymentTest />} />
+                      <Route path="/payment-test" element={<PaymentTest />} />
+                      <Route path="/manual-payment" element={<ManualPayment />} />
+                      <Route path="/promo-code" element={<PromoCode />} />
+                      <Route path="/vip-topic-request" element={<VIPTopicRequest />} />
+                      <Route path="/redeem-gift" element={<RedeemGiftCode />} />
+                      <Route path="/user-music-upload" element={<UserMusicUpload />} />
+                      <Route path="/tier-map" element={<TierMap />} />
+                      <Route path="/audio-upload" element={<AudioUpload />} />
+                      <Route path="/kids-validation" element={<KidsRoomValidation />} />
+                      <Route path="/security-dashboard" element={<SecurityDashboard />} />
+                      <Route path="/settings" element={<Settings />} />
+                      <Route path="/terms" element={<Terms />} />
+                      <Route path="/privacy" element={<Privacy />} />
+                      <Route path="/refund" element={<Refund />} />
+                      
+                      {/* Admin routes - all kebab-case, standardized */}
+                      <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
+                      <Route path="/admin/vip-rooms" element={<AdminRoute><AdminVIPRooms /></AdminRoute>} />
+                      <Route path="/admin/design-audit" element={<AdminRoute><AdminDesignAudit /></AdminRoute>} />
+                      <Route path="/admin/app-metrics" element={<AdminRoute><AppMetrics /></AdminRoute>} />
+                      <Route path="/admin/reports" element={<AdminRoute><AdminReports /></AdminRoute>} />
+                      <Route path="/admin/feedback" element={<AdminRoute><FeedbackInbox /></AdminRoute>} />
+                      <Route path="/admin/feedback-analytics" element={<AdminRoute><AdminFeedbackAnalytics /></AdminRoute>} />
+                      <Route path="/admin/stats" element={<AdminRoute><AdminStats /></AdminRoute>} />
+                      <Route path="/admin/content-quality" element={<AdminRoute><ContentQualityDashboard /></AdminRoute>} />
+                      <Route path="/admin/launch-simulation" element={<AdminRoute><LaunchSimulationDashboard /></AdminRoute>} />
+                      <Route path="/admin/payment-verification" element={<AdminRoute><AdminPaymentVerification /></AdminRoute>} />
+                      <Route path="/admin/audio-upload" element={<AdminRoute><AdminAudioUpload /></AdminRoute>} />
+                      <Route path="/admin/audio-scanner" element={<AdminRoute><FastAudioScannerPage /></AdminRoute>} />
+                      <Route path="/admin/missing-audio" element={<AdminRoute><EntriesWithoutAudioPage /></AdminRoute>} />
+                      <Route path="/admin/moderation" element={<AdminRoute><AdminModeration /></AdminRoute>} />
+                      <Route path="/admin/rooms" element={<AdminRoute><AdminRooms /></AdminRoute>} />
+                      <Route path="/admin/rooms/new" element={<AdminRoute><AdminRoomEditor /></AdminRoute>} />
+                      <Route path="/admin/rooms/edit/:roomId" element={<AdminRoute><AdminRoomEditor /></AdminRoute>} />
+                      <Route path="/admin/rooms/import" element={<AdminRoute><AdminRoomImport /></AdminRoute>} />
+                      <Route path="/admin/user-roles" element={<AdminRoute><AdminUserRoles /></AdminRoute>} />
+                      <Route path="/admin/users" element={<AdminRoute><AdminUsers /></AdminRoute>} />
+                      <Route path="/admin/users/:userId" element={<AdminRoute><AdminUserDetail /></AdminRoute>} />
+                      <Route path="/admin/security" element={<AdminRoute><AdminSecurity /></AdminRoute>} />
+                      <Route path="/admin/code-editor" element={<AdminRoute><AdminCodeEditor /></AdminRoute>} />
+                      <Route path="/admin/payments" element={<AdminRoute><AdminPayments /></AdminRoute>} />
+                      <Route path="/admin/system-metrics" element={<AdminRoute><AdminSystemMetrics /></AdminRoute>} />
+                      <Route path="/admin/payment-monitoring" element={<AdminRoute><PaymentMonitoring /></AdminRoute>} />
+                      <Route path="/admin/gift-codes" element={<AdminRoute><AdminGiftCodes /></AdminRoute>} />
+                      <Route path="/admin/specification" element={<AdminRoute><AdminSpecification /></AdminRoute>} />
+                      <Route path="/admin/room-specification" element={<AdminRoute><RoomSpecification /></AdminRoute>} />
+                      
+                      {/* Room Health - canonical routes only */}
+                      <Route path="/admin/room-health" element={<AdminRoute><UnifiedRoomHealthCheck /></AdminRoute>} />
+                      <Route path="/admin/room-health/:tier" element={<AdminRoute><UnifiedRoomHealthCheck /></AdminRoute>} />
+                      <Route path="/admin/health-dashboard" element={<AdminRoute><HealthDashboard /></AdminRoute>} />
+                      <Route path="/admin/room-health-dashboard" element={<AdminRoute><RoomHealthDashboard /></AdminRoute>} />
+                      <Route path="/admin/system-health" element={<AdminRoute><SystemHealth /></AdminRoute>} />
+                      <Route path="/admin/audit-v4" element={<AdminRoute><AuditSafeShield /></AdminRoute>} />
+                      
+                      <Route path="/admin/edge-functions" element={<AdminRoute><EdgeFunctions /></AdminRoute>} />
+                      <Route path="/admin/music-approval" element={<AdminRoute><MusicApproval /></AdminRoute>} />
+                      <Route path="/admin/music-manager" element={<AdminRoute><MusicManager /></AdminRoute>} />
+                      <Route path="/admin/audit-log" element={<AdminRoute><AuditLog /></AdminRoute>} />
+                      <Route path="/admin/ai-usage" element={<AdminRoute><AIUsage /></AdminRoute>} />
+                      <Route path="/admin/feature-flags" element={<AdminRoute><FeatureFlags /></AdminRoute>} />
+                      <Route path="/admin/audio-audit" element={<AdminRoute><AudioAssetAuditor /></AdminRoute>} />
+                      <Route path="/admin/user-support" element={<AdminRoute><UserSupportConsole /></AdminRoute>} />
+                      <Route path="/admin/system-logs" element={<AdminRoute><SystemLogs /></AdminRoute>} />
+                      
+                      {/* 404 */}
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </Suspense>
+                  
+                  <RouteAwareMusicPlayer />
                 </BrowserRouter>
               </MusicPlayerProvider>
             </TooltipProvider>
