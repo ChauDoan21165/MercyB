@@ -1,0 +1,215 @@
+{
+  "path_slug": "calm-mind-7",
+  "days": [
+    {
+      "id": "calm_mind_7_day1",
+      "day_index": 1,
+      "audio": {
+        "content": {
+          "en": "calm_mind_7_day1_content_en.mp3",
+          "vi": "calm_mind_7_day1_content_vi.mp3"
+        },
+        "reflection": {
+          "en": "calm_mind_7_day1_reflection_en.mp3",
+          "vi": "calm_mind_7_day1_reflection_vi.mp3"
+        },
+        "dare": {
+          "en": "calm_mind_7_day1_dare_en.mp3",
+          "vi": "calm_mind_7_day1_dare_vi.mp3"
+        }
+      },
+      "content": {
+        "en": "Today's calm begins in the simplest place: noticing your breath. Not fixing it, not controlling it — just noticing it arrive and leave. Your mind may try to fill the space with noise. Let it. You don't need to wrestle the noise. Just hold one small intention: I am allowed to slow down.",
+        "vi": "Sự bình yên hôm nay bắt đầu từ một điều đơn giản: nhận biết hơi thở. Không chỉnh, không ép — chỉ nhận biết hơi đến rồi đi. Tâm trí có thể chen vào bằng tiếng ồn. Cứ để nó. Bạn không cần chống lại tiếng ồn. Chỉ giữ một ý nhỏ: Tôi được phép chậm lại."
+      },
+      "reflection": {
+        "en": "One sentence: what kept you from slowing down lately?",
+        "vi": "Viết một câu: điều gì khiến bạn khó chậm lại gần đây?"
+      },
+      "dare": {
+        "en": "For the next 10 breaths, don't try to improve anything.",
+        "vi": "Trong 10 hơi thở tới, đừng cố làm tốt hơn điều gì."
+      }
+    },
+    {
+      "id": "calm_mind_7_day2",
+      "day_index": 2,
+      "audio": {
+        "content": {
+          "en": "calm_mind_7_day2_content_en.mp3",
+          "vi": "calm_mind_7_day2_content_vi.mp3"
+        },
+        "reflection": {
+          "en": "calm_mind_7_day2_reflection_en.mp3",
+          "vi": "calm_mind_7_day2_reflection_vi.mp3"
+        },
+        "dare": {
+          "en": "calm_mind_7_day2_dare_en.mp3",
+          "vi": "calm_mind_7_day2_dare_vi.mp3"
+        }
+      },
+      "content": {
+        "en": "A calm mind is not a silent mind. Noise becomes softer the moment you name it: "Ah, this is worry." You don't have to push it away. Naming the feeling is already an act of control.",
+        "vi": "Tâm trí bình yên không phải tâm trí không tiếng động. Tiếng ồn sẽ dịu lại khi bạn gọi tên nó: "À, đây là lo lắng." Không cần xua đuổi. Chỉ cần gọi tên đã là một hành động kiểm soát."
+      },
+      "reflection": {
+        "en": "Name one noise in your mind now.",
+        "vi": "Gọi tên một tiếng ồn trong tâm bạn lúc này."
+      },
+      "dare": {
+        "en": "Say the name of the feeling once out loud.",
+        "vi": "Hãy nói tên cảm xúc đó thành tiếng một lần."
+      }
+    },
+    {
+      "id": "calm_mind_7_day3",
+      "day_index": 3,
+      "audio": {
+        "content": {
+          "en": "calm_mind_7_day3_content_en.mp3",
+          "vi": "calm_mind_7_day3_content_vi.mp3"
+        },
+        "reflection": {
+          "en": "calm_mind_7_day3_reflection_en.mp3",
+          "vi": "calm_mind_7_day3_reflection_vi.mp3"
+        },
+        "dare": {
+          "en": "calm_mind_7_day3_dare_en.mp3",
+          "vi": "calm_mind_7_day3_dare_vi.mp3"
+        }
+      },
+      "content": {
+        "en": "Judgment makes noise louder. Your mind says: "You shouldn't feel this." But calm comes when we answer: "I'm allowed to feel the beginning of anything."",
+        "vi": "Sự phán xét làm tiếng ồn lớn hơn. Tâm trí nói: "Mày không nên cảm thấy như thế." Bình yên đến khi ta đáp lại: "Mình được phép cảm nhận bất cứ điều gì đang bắt đầu.""
+      },
+      "reflection": {
+        "en": "What is your mind judging most harshly today?",
+        "vi": "Hôm nay tâm trí bạn đang phán xét điều gì nhất?"
+      },
+      "dare": {
+        "en": "Replace one judgment with: "It's okay that I'm learning."",
+        "vi": "Thay một phán xét bằng câu: "Không sao, mình đang học.""
+      }
+    },
+    {
+      "id": "calm_mind_7_day4",
+      "day_index": 4,
+      "audio": {
+        "content": {
+          "en": "calm_mind_7_day4_content_en.mp3",
+          "vi": "calm_mind_7_day4_content_vi.mp3"
+        },
+        "reflection": {
+          "en": "calm_mind_7_day4_reflection_en.mp3",
+          "vi": "calm_mind_7_day4_reflection_vi.mp3"
+        },
+        "dare": {
+          "en": "calm_mind_7_day4_dare_en.mp3",
+          "vi": "calm_mind_7_day4_dare_vi.mp3"
+        }
+      },
+      "content": {
+        "en": "A calm mind lives in a calm body. Your shoulders, jaw, stomach — they hold the stories your mind skipped. Loosen one place today. Let your body teach your brain that safety is allowed.",
+        "vi": "Một tâm trí bình yên nằm trong một cơ thể bình yên. Vai, hàm, bụng — đều giữ những câu chuyện mà tâm trí đã bỏ qua. Hôm nay hãy thả lỏng một vị trí. Cơ thể sẽ dạy lại bộ não rằng bình an là điều được phép."
+      },
+      "reflection": {
+        "en": "Where do you store tension right now?",
+        "vi": "Hiện tại bạn đang căng ở vị trí nào?"
+      },
+      "dare": {
+        "en": "Relax that spot for 30 seconds.",
+        "vi": "Thả lỏng vị trí đó trong 30 giây."
+      }
+    },
+    {
+      "id": "calm_mind_7_day5",
+      "day_index": 5,
+      "audio": {
+        "content": {
+          "en": "calm_mind_7_day5_content_en.mp3",
+          "vi": "calm_mind_7_day5_content_vi.mp3"
+        },
+        "reflection": {
+          "en": "calm_mind_7_day5_reflection_en.mp3",
+          "vi": "calm_mind_7_day5_reflection_vi.mp3"
+        },
+        "dare": {
+          "en": "calm_mind_7_day5_dare_en.mp3",
+          "vi": "calm_mind_7_day5_dare_vi.mp3"
+        }
+      },
+      "content": {
+        "en": "You can't mute every thought. But you can turn the volume down. Imagine a dial in your mind labeled: "Intensity." Set it one click lower — not to zero. Just lower.",
+        "vi": "Bạn không thể tắt mọi suy nghĩ. Nhưng bạn có thể giảm âm lượng. Hãy tưởng tượng một núm xoay mang tên: "Mức độ." Vặn xuống một nấc — không phải về 0. Chỉ thấp hơn một chút."
+      },
+      "reflection": {
+        "en": "Which thought is loudest today?",
+        "vi": "Hôm nay ý nghĩ nào đang ồn nhất?"
+      },
+      "dare": {
+        "en": "Lower its intensity by imagining the dial.",
+        "vi": "Hãy vặn mức độ ý nghĩ đó xuống một nấc."
+      }
+    },
+    {
+      "id": "calm_mind_7_day6",
+      "day_index": 6,
+      "audio": {
+        "content": {
+          "en": "calm_mind_7_day6_content_en.mp3",
+          "vi": "calm_mind_7_day6_content_vi.mp3"
+        },
+        "reflection": {
+          "en": "calm_mind_7_day6_reflection_en.mp3",
+          "vi": "calm_mind_7_day6_reflection_vi.mp3"
+        },
+        "dare": {
+          "en": "calm_mind_7_day6_dare_en.mp3",
+          "vi": "calm_mind_7_day6_dare_vi.mp3"
+        }
+      },
+      "content": {
+        "en": "A mind becomes calm when it feels seen. Speak to yourself the way you would comfort a friend: "I know this hurts. I'm staying with you." Your nervous system listens.",
+        "vi": "Tâm trí trở nên bình yên khi được thấu hiểu. Hãy nói với chính mình như cách bạn an ủi một người bạn: "Mình biết điều này đau. Mình ở đây với bạn." Hệ thần kinh sẽ lắng nghe."
+      },
+      "reflection": {
+        "en": "Write one sentence you needed to hear this week.",
+        "vi": "Viết một câu bạn cần nghe nhất tuần này."
+      },
+      "dare": {
+        "en": "Say that same sentence to yourself before sleep.",
+        "vi": "Nói câu đó với bản thân trước khi ngủ."
+      }
+    },
+    {
+      "id": "calm_mind_7_day7",
+      "day_index": 7,
+      "audio": {
+        "content": {
+          "en": "calm_mind_7_day7_content_en.mp3",
+          "vi": "calm_mind_7_day7_content_vi.mp3"
+        },
+        "reflection": {
+          "en": "calm_mind_7_day7_reflection_en.mp3",
+          "vi": "calm_mind_7_day7_reflection_vi.mp3"
+        },
+        "dare": {
+          "en": "calm_mind_7_day7_dare_en.mp3",
+          "vi": "calm_mind_7_day7_dare_vi.mp3"
+        }
+      },
+      "content": {
+        "en": "Calm is not the absence of storms. It is a home inside you that the storm cannot move. And the more you visit that home, the easier it is to find it again.",
+        "vi": "Bình yên không phải là không có bão tố. Đó là một ngôi nhà bên trong bạn mà bão không thể lay chuyển. Bạn càng quay lại ngôi nhà ấy, thì việc tìm thấy nó càng dễ."
+      },
+      "reflection": {
+        "en": "What does your inner home feel like?",
+        "vi": "Ngôi nhà bình yên bên trong bạn trông như thế nào?"
+      },
+      "dare": {
+        "en": "Return to this feeling for 20 seconds anytime today.",
+        "vi": "Trong hôm nay, hãy quay lại cảm giác này 20 giây."
+      }
+    }
+  ]
+}

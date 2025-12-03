@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { usePath, usePathDay, useUserPathProgress, useCompleteDay, useStartPath } from '@/hooks/usePaths';
+import { useCompanionLines } from '@/hooks/useCompanionLines';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { AudioPlayer } from '@/components/AudioPlayer';
+import { CompanionBubble } from '@/components/companion/CompanionBubble';
 import { ArrowLeft, ArrowRight, CheckCircle2, Sparkles, Lightbulb, Flame } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -18,13 +20,61 @@ export default function PathDayCard() {
   const { data: progress } = useUserPathProgress(path?.id);
   const completeDay = useCompleteDay();
   const startPath = useStartPath();
+  const { getRandomLine } = useCompanionLines();
 
   const [reflection, setReflection] = useState('');
   const [isCompleting, setIsCompleting] = useState(false);
 
+  // Companion bubble states
+  const [showGreeting, setShowGreeting] = useState(false);
+  const [showReflectionHint, setShowReflectionHint] = useState(false);
+  const [showCompletion, setShowCompletion] = useState(false);
+  const [greetingLine, setGreetingLine] = useState<{ en: string; vi: string } | null>(null);
+  const [reflectionLine, setReflectionLine] = useState<{ en: string; vi: string } | null>(null);
+  const [completionLine, setCompletionLine] = useState<{ en: string; vi: string } | null>(null);
+  
+  const greetingShownRef = useRef(false);
+  const reflectionSectionRef = useRef<HTMLDivElement>(null);
+
   const isLoading = pathLoading || dayLoading;
   const isCompleted = progress?.completed_days.includes(dayIndex) || false;
   const isLastDay = path ? dayIndex >= path.total_days : false;
+
+  // Show greeting on mount (once per page load)
+  useEffect(() => {
+    if (!greetingShownRef.current && dayData) {
+      greetingShownRef.current = true;
+      const line = getRandomLine('greeting');
+      if (line) {
+        setGreetingLine(line);
+        setShowGreeting(true);
+      }
+    }
+  }, [dayData, getRandomLine]);
+
+  // Show reflection hint when scrolling to reflection section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !showReflectionHint && !reflectionLine) {
+            const line = getRandomLine('reflection');
+            if (line) {
+              setReflectionLine(line);
+              setShowReflectionHint(true);
+            }
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (reflectionSectionRef.current) {
+      observer.observe(reflectionSectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [getRandomLine, showReflectionHint, reflectionLine]);
 
   if (isLoading) {
     return (
@@ -65,16 +115,25 @@ export default function PathDayCard() {
         totalDays: path.total_days,
       });
 
+      // Show completion bubble
+      const line = getRandomLine('completion');
+      if (line) {
+        setCompletionLine(line);
+        setShowCompletion(true);
+      }
+
       toast.success('Day completed! 🎉');
 
-      if (isLastDay) {
-        navigate(`/paths/${slug}/completed`);
-      } else {
-        navigate(`/paths/${slug}/day/${dayIndex + 1}`);
-      }
+      // Navigate after a short delay to show bubble
+      setTimeout(() => {
+        if (isLastDay) {
+          navigate(`/paths/${slug}/completed`);
+        } else {
+          navigate(`/paths/${slug}/day/${dayIndex + 1}`);
+        }
+      }, 2000);
     } catch (error) {
       toast.error('Failed to complete day. Please try again.');
-    } finally {
       setIsCompleting(false);
     }
   };
@@ -83,11 +142,45 @@ export default function PathDayCard() {
     if (!audio) return '';
     if (audio.startsWith('/')) return audio;
     if (audio.startsWith('http')) return audio;
-    return `/audio/${audio}`;
+    return `/audio/paths/${audio}`;
   };
 
+  // Use new expanded audio columns if available, fallback to legacy
+  const contentAudioEn = dayData.audio_content_en || dayData.audio_intro_en;
+  const contentAudioVi = dayData.audio_content_vi || dayData.audio_intro_vi;
+  const reflectionAudioEn = dayData.audio_reflection_en;
+  const reflectionAudioVi = dayData.audio_reflection_vi;
+  const dareAudioEn = dayData.audio_dare_en;
+  const dareAudioVi = dayData.audio_dare_vi;
+
   return (
-    <div className="min-h-screen bg-background pb-24">
+    <div className="min-h-screen bg-background pb-24 relative">
+      {/* Greeting Bubble */}
+      {greetingLine && (
+        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50">
+          <CompanionBubble
+            textEn={greetingLine.en}
+            textVi={greetingLine.vi}
+            show={showGreeting}
+            onHide={() => setShowGreeting(false)}
+            duration={3000}
+          />
+        </div>
+      )}
+
+      {/* Completion Bubble */}
+      {completionLine && (
+        <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
+          <CompanionBubble
+            textEn={completionLine.en}
+            textVi={completionLine.vi}
+            show={showCompletion}
+            onHide={() => setShowCompletion(false)}
+            duration={2000}
+          />
+        </div>
+      )}
+
       <div className="max-w-[720px] mx-auto px-4 py-8 space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
@@ -116,15 +209,15 @@ export default function PathDayCard() {
         {/* Content Card - English */}
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-base text-muted-foreground">Today's Practice</CardTitle>
+            <CardTitle className="text-base text-muted-foreground">Today&apos;s Practice</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-foreground leading-relaxed whitespace-pre-wrap">
               {dayData.content_en}
             </p>
-            {dayData.audio_intro_en && (
+            {contentAudioEn && (
               <AudioPlayer 
-                src={normalizeAudioPath(dayData.audio_intro_en)} 
+                src={normalizeAudioPath(contentAudioEn)} 
                 title="Listen (EN)"
               />
             )}
@@ -140,9 +233,9 @@ export default function PathDayCard() {
             <p className="text-foreground leading-relaxed whitespace-pre-wrap">
               {dayData.content_vi}
             </p>
-            {dayData.audio_intro_vi && (
+            {contentAudioVi && (
               <AudioPlayer 
-                src={normalizeAudioPath(dayData.audio_intro_vi)} 
+                src={normalizeAudioPath(contentAudioVi)} 
                 title="Nghe (VI)"
               />
             )}
@@ -150,39 +243,84 @@ export default function PathDayCard() {
         </Card>
 
         {/* Reflection */}
-        <Card className="border-primary/20 bg-primary/5">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-base flex items-center gap-2">
-              <Lightbulb className="h-4 w-4 text-primary" />
-              Reflection / Suy Ngẫm
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <p className="text-sm text-foreground">{dayData.reflection_en}</p>
-              <p className="text-sm text-muted-foreground">{dayData.reflection_vi}</p>
+        <div ref={reflectionSectionRef} className="relative">
+          {/* Reflection Hint Bubble */}
+          {reflectionLine && (
+            <div className="absolute -top-16 left-1/2 -translate-x-1/2">
+              <CompanionBubble
+                textEn={reflectionLine.en}
+                textVi={reflectionLine.vi}
+                show={showReflectionHint}
+                onHide={() => setShowReflectionHint(false)}
+                duration={4000}
+              />
             </div>
-            <Textarea
-              placeholder="Write your thoughts here... / Viết suy nghĩ của bạn ở đây..."
-              value={reflection}
-              onChange={(e) => setReflection(e.target.value)}
-              className="min-h-[100px] resize-none"
-            />
-          </CardContent>
-        </Card>
+          )}
+
+          <Card className="border-primary/20 bg-primary/5">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-base flex items-center gap-2">
+                <Lightbulb className="h-4 w-4 text-primary" />
+                Reflection / Suy Ngẫm
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-3">
+                <div className="space-y-1">
+                  <p className="text-sm text-foreground">{dayData.reflection_en}</p>
+                  {reflectionAudioEn && (
+                    <AudioPlayer 
+                      src={normalizeAudioPath(reflectionAudioEn)} 
+                      title="Listen"
+                    />
+                  )}
+                </div>
+                <div className="space-y-1">
+                  <p className="text-sm text-muted-foreground">{dayData.reflection_vi}</p>
+                  {reflectionAudioVi && (
+                    <AudioPlayer 
+                      src={normalizeAudioPath(reflectionAudioVi)} 
+                      title="Nghe"
+                    />
+                  )}
+                </div>
+              </div>
+              <Textarea
+                placeholder="Write your thoughts here... / Viết suy nghĩ của bạn ở đây..."
+                value={reflection}
+                onChange={(e) => setReflection(e.target.value)}
+                className="min-h-[100px] resize-none"
+              />
+            </CardContent>
+          </Card>
+        </div>
 
         {/* Today's Dare */}
         <Card className="border-orange-500/20 bg-orange-500/5">
           <CardHeader className="pb-2">
             <CardTitle className="text-base flex items-center gap-2">
               <Flame className="h-4 w-4 text-orange-500" />
-              Today's Dare / Thử Thách Hôm Nay
+              Today&apos;s Dare / Thử Thách Hôm Nay
             </CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="space-y-2">
+          <CardContent className="space-y-3">
+            <div className="space-y-1">
               <p className="text-sm text-foreground font-medium">{dayData.dare_en}</p>
+              {dareAudioEn && (
+                <AudioPlayer 
+                  src={normalizeAudioPath(dareAudioEn)} 
+                  title="Listen"
+                />
+              )}
+            </div>
+            <div className="space-y-1">
               <p className="text-sm text-muted-foreground">{dayData.dare_vi}</p>
+              {dareAudioVi && (
+                <AudioPlayer 
+                  src={normalizeAudioPath(dareAudioVi)} 
+                  title="Nghe"
+                />
+              )}
             </div>
           </CardContent>
         </Card>

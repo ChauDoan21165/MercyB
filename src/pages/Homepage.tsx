@@ -6,6 +6,7 @@ import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { RoomSearch } from '@/components/RoomSearch';
+import { CalmMindWidget } from '@/components/paths/CalmMindWidget';
 import heroRainbowBg from '@/assets/hero-rainbow-bg.jpg';
 
 const Homepage = () => {
@@ -105,6 +106,13 @@ const Homepage = () => {
       <div className="fixed top-28 right-6 z-30 w-80">
         <RoomSearch />
       </div>
+
+      {/* Calm Mind 7-Day Path Widget */}
+      <section className="py-8 px-6 bg-gradient-to-b from-white to-indigo-50/50 dark:from-background dark:to-indigo-950/20">
+        <div className="max-w-[720px] mx-auto">
+          <CalmMindWidget />
+        </div>
+      </section>
 
       {/* Main content - sections (excluding VIP9) */}
       <main>
