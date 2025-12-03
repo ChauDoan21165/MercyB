@@ -237,26 +237,24 @@ export default function AuditSafeShield() {
                 Run Audit
               </Button>
             )}
-            {autoFixableIssues.length > 0 && !isRunning && (
-              <Button
-                onClick={handleAutoRepair}
-                variant="outline"
-                className="border-black"
-                disabled={isRepairing}
-              >
-                {isRepairing ? (
-                  <>
-                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                    Repairing...
-                  </>
-                ) : (
-                  <>
-                    <Wrench className="h-4 w-4 mr-2" />
-                    Auto-Repair ({autoFixableIssues.length})
-                  </>
-                )}
-              </Button>
-            )}
+            <Button
+              onClick={handleAutoRepair}
+              variant="outline"
+              className="border-black"
+              disabled={isRepairing || isRunning || autoFixableIssues.length === 0}
+            >
+              {isRepairing ? (
+                <>
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  Repairing...
+                </>
+              ) : (
+                <>
+                  <Wrench className="h-4 w-4 mr-2" />
+                  Fix Issues ({autoFixableIssues.length})
+                </>
+              )}
+            </Button>
           </div>
         </div>
 
