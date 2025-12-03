@@ -88,7 +88,7 @@ export async function getRandomCompanionLineAsync(category: CompanionCategory): 
   const categoryLines = lines[category];
   
   if (!categoryLines || categoryLines.length === 0) {
-    return 'I'm here with you.';
+    return "I'm here with you.";
   }
   
   const randomIndex = Math.floor(Math.random() * categoryLines.length);
