@@ -231,10 +231,19 @@ export default function AuditSafeShield() {
               <Button
                 onClick={runAudit}
                 className="bg-black text-white hover:bg-gray-800"
-                disabled={isRepairing}
+                disabled={isRepairing || isRunning}
               >
-                <Play className="h-4 w-4 mr-2" />
-                Run Audit
+                {isRunning ? (
+                  <>
+                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    Running...
+                  </>
+                ) : (
+                  <>
+                    <Play className="h-4 w-4 mr-2" />
+                    Run Audit
+                  </>
+                )}
               </Button>
             )}
             <Button
