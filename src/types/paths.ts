@@ -26,8 +26,16 @@ export interface PathDay {
   reflection_vi: string;
   dare_en: string;
   dare_vi: string;
+  // Legacy audio (single intro)
   audio_intro_en: string | null;
   audio_intro_vi: string | null;
+  // New expanded audio (content, reflection, dare)
+  audio_content_en: string | null;
+  audio_content_vi: string | null;
+  audio_reflection_en: string | null;
+  audio_reflection_vi: string | null;
+  audio_dare_en: string | null;
+  audio_dare_vi: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -70,6 +78,12 @@ export const pathDaySchema = z.object({
   dare_vi: z.string().min(1),
   audio_intro_en: z.string().nullable(),
   audio_intro_vi: z.string().nullable(),
+  audio_content_en: z.string().nullable(),
+  audio_content_vi: z.string().nullable(),
+  audio_reflection_en: z.string().nullable(),
+  audio_reflection_vi: z.string().nullable(),
+  audio_dare_en: z.string().nullable(),
+  audio_dare_vi: z.string().nullable(),
   created_at: z.string(),
   updated_at: z.string(),
 });

@@ -1,0 +1,40 @@
+{
+  "greeting": {
+    "en": [
+      "Welcome back.",
+      "Nice to see you again.",
+      "You made time for yourself today. That matters.",
+      "I'm here with you."
+    ],
+    "vi": [
+      "Chào mừng bạn quay lại.",
+      "Rất vui được gặp lại bạn.",
+      "Hôm nay bạn dành thời gian cho mình — điều đó quan trọng.",
+      "Mình ở đây với bạn."
+    ]
+  },
+  "reflection": {
+    "en": [
+      "What stayed with you after reading?",
+      "Which line felt closest to your heart?",
+      "What did this remind you of?"
+    ],
+    "vi": [
+      "Điều gì còn lại trong bạn sau khi đọc?",
+      "Câu nào chạm vào bạn nhất?",
+      "Điều này khiến bạn nhớ điều gì?"
+    ]
+  },
+  "completion": {
+    "en": [
+      "You finished this room beautifully.",
+      "You stayed with the feeling — well done.",
+      "That was gentle and honest."
+    ],
+    "vi": [
+      "Bạn đã hoàn thành phòng này rất đẹp.",
+      "Bạn ở lại với cảm xúc — rất tốt.",
+      "Bạn đã nhẹ nhàng và chân thành."
+    ]
+  }
+}

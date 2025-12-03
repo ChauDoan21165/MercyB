@@ -921,8 +921,14 @@ export type Database = {
       }
       path_days: {
         Row: {
+          audio_content_en: string | null
+          audio_content_vi: string | null
+          audio_dare_en: string | null
+          audio_dare_vi: string | null
           audio_intro_en: string | null
           audio_intro_vi: string | null
+          audio_reflection_en: string | null
+          audio_reflection_vi: string | null
           content_en: string
           content_vi: string
           created_at: string
@@ -938,8 +944,14 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          audio_content_en?: string | null
+          audio_content_vi?: string | null
+          audio_dare_en?: string | null
+          audio_dare_vi?: string | null
           audio_intro_en?: string | null
           audio_intro_vi?: string | null
+          audio_reflection_en?: string | null
+          audio_reflection_vi?: string | null
           content_en: string
           content_vi: string
           created_at?: string
@@ -955,8 +967,14 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          audio_content_en?: string | null
+          audio_content_vi?: string | null
+          audio_dare_en?: string | null
+          audio_dare_vi?: string | null
           audio_intro_en?: string | null
           audio_intro_vi?: string | null
+          audio_reflection_en?: string | null
+          audio_reflection_vi?: string | null
           content_en?: string
           content_vi?: string
           created_at?: string
