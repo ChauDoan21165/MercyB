@@ -1903,6 +1903,14 @@ export default function UnifiedHealthCheck() {
     setLoading(true);
     setError(null);
     setProgress(null);
+    
+    // Initialize health state for streaming updates
+    setHealth({
+      totalRooms: 0,
+      healthyRooms: 0,
+      issuesFound: 0,
+      issues: [],
+    });
 
     try {
       if (selectedTier.startsWith("kidslevel")) {
@@ -1933,9 +1941,15 @@ export default function UnifiedHealthCheck() {
 
     if (roomsError) throw roomsError;
 
-    const issues: RoomIssue[] = [];
-    let healthyCount = 0;
     const totalRooms = rooms?.length || 0;
+    
+    // Initialize streaming state
+    setHealth({
+      totalRooms,
+      healthyRooms: 0,
+      issuesFound: 0,
+      issues: [],
+    });
 
     for (let i = 0; i < (rooms?.length || 0); i++) {
       const room = rooms![i];
@@ -2183,19 +2197,18 @@ export default function UnifiedHealthCheck() {
         });
       }
 
-      if (roomIssues.length === 0) {
-        healthyCount++;
-      } else {
-        issues.push(...roomIssues);
-      }
+      // Stream update: update health state immediately after each room
+      setHealth(prev => {
+        if (!prev) return prev;
+        const newIssues = roomIssues.length > 0 ? [...prev.issues, ...roomIssues] : prev.issues;
+        return {
+          totalRooms: prev.totalRooms,
+          healthyRooms: roomIssues.length === 0 ? prev.healthyRooms + 1 : prev.healthyRooms,
+          issuesFound: newIssues.length,
+          issues: newIssues,
+        };
+      });
     }
-
-    setHealth({
-      totalRooms: rooms?.length || 0,
-      healthyRooms: healthyCount,
-      issuesFound: issues.length,
-      issues,
-    });
   };
 
   const checkKidsRooms = async () => {
@@ -2226,9 +2239,15 @@ export default function UnifiedHealthCheck() {
       ? allRooms?.filter(room => selectedRooms.includes(room.id))
       : allRooms;
 
-    const issues: RoomIssue[] = [];
-    let healthyCount = 0;
     const totalRooms = rooms?.length || 0;
+    
+    // Initialize streaming state
+    setHealth({
+      totalRooms,
+      healthyRooms: 0,
+      issuesFound: 0,
+      issues: [],
+    });
 
     for (let i = 0; i < (rooms?.length || 0); i++) {
       const room = rooms![i];
@@ -2323,19 +2342,18 @@ export default function UnifiedHealthCheck() {
         });
       }
 
-      if (roomIssues.length === 0) {
-        healthyCount++;
-      } else {
-        issues.push(...roomIssues);
-      }
+      // Stream update: update health state immediately after each room
+      setHealth(prev => {
+        if (!prev) return prev;
+        const newIssues = roomIssues.length > 0 ? [...prev.issues, ...roomIssues] : prev.issues;
+        return {
+          totalRooms: prev.totalRooms,
+          healthyRooms: roomIssues.length === 0 ? prev.healthyRooms + 1 : prev.healthyRooms,
+          issuesFound: newIssues.length,
+          issues: newIssues,
+        };
+      });
     }
-
-    setHealth({
-      totalRooms: rooms?.length || 0,
-      healthyRooms: healthyCount,
-      issuesFound: issues.length,
-      issues,
-    });
   };
 
   const fixKidsRoom = async (roomId: string, levelId: string) => {
