@@ -50,3 +50,6 @@ verify_jwt = true
 
 [functions.generate-room-audio]
 verify_jwt = false
+
+[functions.generate-warmth-audio]
+verify_jwt = false
