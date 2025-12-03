@@ -2,17 +2,21 @@ import { useState } from 'react';
 import { useStabilityAudit } from '@/hooks/useStabilityAudit';
 import { useDesignTokenAudit } from '@/hooks/useDesignTokenAudit';
 import { useUiUxAudit } from '@/hooks/useUiUxAudit';
+import { useJsonStructureAudit } from '@/hooks/useJsonStructureAudit';
+import { usePerformanceAudit } from '@/hooks/usePerformanceAudit';
+import { useCrossLanguageAudit } from '@/hooks/useCrossLanguageAudit';
+import { useLaunchReadinessAudit } from '@/hooks/useLaunchReadinessAudit';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { CheckCircle, XCircle, AlertTriangle, Info, Play, Loader2, Zap } from 'lucide-react';
+import { CheckCircle, XCircle, AlertTriangle, SkipForward, Play, Loader2, Zap } from 'lucide-react';
 
-const severityConfig = {
+const statusConfig = {
   pass: { icon: CheckCircle, color: 'text-green-600', bg: 'bg-green-100' },
-  error: { icon: XCircle, color: 'text-red-600', bg: 'bg-red-100' },
-  warning: { icon: AlertTriangle, color: 'text-yellow-600', bg: 'bg-yellow-100' },
-  info: { icon: Info, color: 'text-blue-600', bg: 'bg-blue-100' },
+  fail: { icon: XCircle, color: 'text-red-600', bg: 'bg-red-100' },
+  warn: { icon: AlertTriangle, color: 'text-yellow-600', bg: 'bg-yellow-100' },
+  skip: { icon: SkipForward, color: 'text-gray-500', bg: 'bg-gray-100' },
 };
 
 interface AuditPanelProps {
@@ -23,6 +27,10 @@ export function FullAuditPanel({ roomId }: AuditPanelProps) {
   const stability = useStabilityAudit();
   const design = useDesignTokenAudit();
   const uiux = useUiUxAudit(roomId);
+  const jsonStructure = useJsonStructureAudit();
+  const performance = usePerformanceAudit();
+  const crossLanguage = useCrossLanguageAudit();
+  const launchReadiness = useLaunchReadinessAudit();
   const [activeTab, setActiveTab] = useState('all');
 
   const runAllAudits = async () => {
@@ -30,46 +38,86 @@ export function FullAuditPanel({ roomId }: AuditPanelProps) {
       stability.runAudit(),
       design.runAudit(),
       uiux.runAudit(),
+      jsonStructure.runAudit(),
+      performance.runAudit(),
+      crossLanguage.runAudit(),
+      launchReadiness.runAudit(),
     ]);
   };
 
-  const isRunning = stability.isRunning || design.isRunning || uiux.isRunning;
+  const isRunning = stability.isRunning || design.isRunning || uiux.isRunning || 
+    jsonStructure.isRunning || performance.isRunning || crossLanguage.isRunning || launchReadiness.isRunning;
 
-  const allIssues = [
-    ...(stability.result?.issues.map(i => ({ ...i, source: 'stability' })) || []),
-    ...(design.result?.issues.map(i => ({ ...i, source: 'design' })) || []),
-    ...(uiux.result?.issues.map(i => ({ ...i, source: 'uiux' })) || []),
+  // Convert old format to new unified format
+  const stabilityResults = stability.result?.issues.map(i => ({
+    id: i.id,
+    name: i.check,
+    status: i.severity === 'error' ? 'fail' : i.severity === 'warning' ? 'warn' : 'pass',
+    message: i.message,
+    source: 'stability'
+  })) || [];
+
+  const designResults = design.result?.issues.map(i => ({
+    id: i.id,
+    name: i.check,
+    status: i.severity === 'error' ? 'fail' : i.severity === 'warning' ? 'warn' : 'pass',
+    message: i.message,
+    source: 'design'
+  })) || [];
+
+  const uiuxResults = uiux.result?.issues.map(i => ({
+    id: i.id,
+    name: i.check,
+    status: i.severity === 'error' ? 'fail' : i.severity === 'warning' ? 'warn' : 'pass',
+    message: i.message,
+    source: 'uiux'
+  })) || [];
+
+  const jsonResults = jsonStructure.results.map(r => ({ ...r, source: 'json' }));
+  const perfResults = performance.results.map(r => ({ ...r, source: 'performance' }));
+  const langResults = crossLanguage.results.map(r => ({ ...r, source: 'language' }));
+  const launchResults = launchReadiness.results.map(r => ({ ...r, source: 'launch' }));
+
+  const allResults = [
+    ...stabilityResults,
+    ...designResults,
+    ...uiuxResults,
+    ...jsonResults,
+    ...perfResults,
+    ...langResults,
+    ...launchResults,
   ];
 
-  const totalPassed = (stability.result?.passed || 0) + (design.result?.passed || 0) + (uiux.result?.passed || 0);
-  const totalFailed = (stability.result?.failed || 0) + (design.result?.failed || 0) + (uiux.result?.failed || 0);
-  const totalWarnings = (stability.result?.warnings || 0) + (design.result?.warnings || 0) + (uiux.result?.warnings || 0);
+  const totalPassed = allResults.filter(r => r.status === 'pass').length;
+  const totalFailed = allResults.filter(r => r.status === 'fail').length;
+  const totalWarnings = allResults.filter(r => r.status === 'warn').length;
+  const totalSkipped = allResults.filter(r => r.status === 'skip').length;
 
-  const renderIssues = (issues: typeof allIssues, filter?: string) => {
+  const renderResults = (results: typeof allResults, filter?: string) => {
     const filtered = filter === 'issues' 
-      ? issues.filter(i => i.severity !== 'pass')
-      : issues;
+      ? results.filter(r => r.status === 'fail' || r.status === 'warn')
+      : results;
     
     return (
-      <div className="space-y-2 max-h-96 overflow-y-auto">
+      <div className="space-y-2 max-h-[500px] overflow-y-auto">
         {filtered.length === 0 ? (
-          <p className="text-muted-foreground text-sm">No issues to display</p>
+          <p className="text-muted-foreground text-sm">No results to display</p>
         ) : (
-          filtered.map((issue, idx) => {
-            const config = severityConfig[issue.severity];
+          filtered.map((result, idx) => {
+            const config = statusConfig[result.status as keyof typeof statusConfig] || statusConfig.skip;
             const Icon = config.icon;
             return (
               <div
-                key={`${issue.id}-${idx}`}
+                key={`${result.id}-${idx}`}
                 className={`flex items-start gap-3 p-2 rounded-md ${config.bg} bg-opacity-50`}
               >
                 <Icon className={`h-4 w-4 mt-0.5 flex-shrink-0 ${config.color}`} />
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium">{issue.check}</p>
-                  <p className="text-xs text-muted-foreground truncate">{issue.message}</p>
+                  <p className="text-sm font-medium">{result.name}</p>
+                  <p className="text-xs text-muted-foreground truncate">{result.message}</p>
                 </div>
                 <Badge variant="outline" className="text-xs flex-shrink-0">
-                  {issue.source}
+                  {result.source}
                 </Badge>
               </div>
             );
@@ -85,7 +133,7 @@ export function FullAuditPanel({ roomId }: AuditPanelProps) {
         <div className="flex items-center justify-between flex-wrap gap-2">
           <CardTitle className="text-lg font-bold flex items-center gap-2">
             <Zap className="h-5 w-5" />
-            Full System Audit (90 Checks)
+            Full System Audit (210 Checks)
           </CardTitle>
           <Button 
             onClick={runAllAudits} 
@@ -100,56 +148,57 @@ export function FullAuditPanel({ roomId }: AuditPanelProps) {
           </Button>
         </div>
         
-        {allIssues.length > 0 && (
+        {allResults.length > 0 && (
           <div className="flex gap-2 mt-2 flex-wrap">
             <Badge variant="outline" className="bg-green-100 text-green-800">
               {totalPassed} Passed
             </Badge>
             <Badge variant="outline" className="bg-red-100 text-red-800">
-              {totalFailed} Errors
+              {totalFailed} Failed
             </Badge>
             <Badge variant="outline" className="bg-yellow-100 text-yellow-800">
               {totalWarnings} Warnings
             </Badge>
+            <Badge variant="outline" className="bg-gray-100 text-gray-600">
+              {totalSkipped} Skipped
+            </Badge>
             <Badge variant="outline" className="bg-blue-100 text-blue-800">
-              {allIssues.length} Total
+              {allResults.length} Total
             </Badge>
           </div>
         )}
       </CardHeader>
 
       <CardContent>
-        {allIssues.length === 0 && !isRunning && (
+        {allResults.length === 0 && !isRunning && (
           <p className="text-muted-foreground text-sm">
-            Click "Run All Audits" to evaluate 90 checks across stability, design tokens, and UI/UX.
+            Click "Run All Audits" to evaluate 210 checks across 7 categories.
           </p>
         )}
 
-        {allIssues.length > 0 && (
+        {allResults.length > 0 && (
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="mb-4">
-              <TabsTrigger value="all">All ({allIssues.length})</TabsTrigger>
+            <TabsList className="mb-4 flex-wrap h-auto gap-1">
+              <TabsTrigger value="all">All ({allResults.length})</TabsTrigger>
               <TabsTrigger value="issues">Issues ({totalFailed + totalWarnings})</TabsTrigger>
-              <TabsTrigger value="stability">Stability ({stability.result?.issues.length || 0})</TabsTrigger>
-              <TabsTrigger value="design">Design ({design.result?.issues.length || 0})</TabsTrigger>
-              <TabsTrigger value="uiux">UI/UX ({uiux.result?.issues.length || 0})</TabsTrigger>
+              <TabsTrigger value="stability">Stability ({stabilityResults.length})</TabsTrigger>
+              <TabsTrigger value="design">Design ({designResults.length})</TabsTrigger>
+              <TabsTrigger value="uiux">UI/UX ({uiuxResults.length})</TabsTrigger>
+              <TabsTrigger value="json">JSON ({jsonResults.length})</TabsTrigger>
+              <TabsTrigger value="performance">Perf ({perfResults.length})</TabsTrigger>
+              <TabsTrigger value="language">Lang ({langResults.length})</TabsTrigger>
+              <TabsTrigger value="launch">Launch ({launchResults.length})</TabsTrigger>
             </TabsList>
 
-            <TabsContent value="all">
-              {renderIssues(allIssues)}
-            </TabsContent>
-            <TabsContent value="issues">
-              {renderIssues(allIssues, 'issues')}
-            </TabsContent>
-            <TabsContent value="stability">
-              {renderIssues(stability.result?.issues.map(i => ({ ...i, source: 'stability' })) || [])}
-            </TabsContent>
-            <TabsContent value="design">
-              {renderIssues(design.result?.issues.map(i => ({ ...i, source: 'design' })) || [])}
-            </TabsContent>
-            <TabsContent value="uiux">
-              {renderIssues(uiux.result?.issues.map(i => ({ ...i, source: 'uiux' })) || [])}
-            </TabsContent>
+            <TabsContent value="all">{renderResults(allResults)}</TabsContent>
+            <TabsContent value="issues">{renderResults(allResults, 'issues')}</TabsContent>
+            <TabsContent value="stability">{renderResults(stabilityResults)}</TabsContent>
+            <TabsContent value="design">{renderResults(designResults)}</TabsContent>
+            <TabsContent value="uiux">{renderResults(uiuxResults)}</TabsContent>
+            <TabsContent value="json">{renderResults(jsonResults)}</TabsContent>
+            <TabsContent value="performance">{renderResults(perfResults)}</TabsContent>
+            <TabsContent value="language">{renderResults(langResults)}</TabsContent>
+            <TabsContent value="launch">{renderResults(launchResults)}</TabsContent>
           </Tabs>
         )}
       </CardContent>
