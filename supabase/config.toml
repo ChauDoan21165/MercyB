@@ -42,3 +42,6 @@ verify_jwt = true
 [functions.audit-v4-safe-shield]
 verify_jwt = true
 
+[functions.audit-audio-health]
+verify_jwt = true
+
