@@ -6,7 +6,7 @@ import {
   Activity, AlertCircle, Users, DollarSign, Database, 
   Shield, MessageSquare, Settings, Code, FileText,
   Music, Heart, Lock, UserCog, Gift, Zap,
-  BarChart3, Server, Gauge, Search, Home as HomeIcon
+  BarChart3, Server, Gauge, Search, Home as HomeIcon, Volume2
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import EnvironmentBanner from "@/components/admin/EnvironmentBanner";
+import { FastAudioScanner } from "@/components/admin/FastAudioScanner";
 
 interface LiveMetrics {
   totalUsers: number;
@@ -542,6 +543,12 @@ const AdminDashboard = () => {
               onClick={() => navigate("/admin/app-metrics")}
             />
           </div>
+        </section>
+
+        {/* Fast Audio Scanner - Inline Tool */}
+        <section>
+          <h2 className="text-lg font-semibold mb-4">🎧 Audio Validation</h2>
+          <FastAudioScanner />
         </section>
 
         {/* 8. Configuration & Experiments */}
