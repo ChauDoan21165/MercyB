@@ -1,5 +1,4 @@
-import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
-import { RoomHeader } from "@/components/RoomHeader";
+import { GlobalAppBar } from "@/components/GlobalAppBar";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { Crown, RefreshCw } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -53,13 +52,16 @@ const RoomGridVIP1 = () => {
 
   return (
     <div className="min-h-screen">
-      <ColorfulMercyBladeHeader />
+      <GlobalAppBar breadcrumbs={[{ label: 'VIP1 Rooms' }]} />
       <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip1))' }}>
-        <div className="max-w-4xl mx-auto px-4">
-          <RoomHeader title="VIP1 Learning Rooms / Phòng Học VIP1" tier="VIP1" />
+        <div className="max-w-4xl mx-auto px-4 py-6">
+          {/* Page Title */}
+          <h1 className="text-2xl font-semibold text-foreground mb-2">
+            VIP1 Learning Rooms / Phòng Học VIP1
+          </h1>
           
-          {/* Controls - Aligned right, same row */}
-          <div className="flex items-center justify-end gap-2 mb-6">
+          {/* Controls - Aligned right */}
+          <div className="flex items-center justify-end gap-2 mb-4">
             <LowDataModeToggle />
             {isAdmin && (
               <Button

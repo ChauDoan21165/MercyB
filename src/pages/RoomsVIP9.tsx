@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
-import { RoomHeader } from '@/components/RoomHeader';
+import { GlobalAppBar } from '@/components/GlobalAppBar';
 import { RoomLoadShell } from '@/components/RoomLoadShell';
 import { Button } from '@/components/ui/button';
 import { Unlock, TrendingUp, Building2, Globe2, Crown } from 'lucide-react';
@@ -109,9 +108,8 @@ const RoomsVIP9 = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      <ColorfulMercyBladeHeader />
-      <div className="max-w-4xl mx-auto px-4 py-12 space-y-16">
-        <RoomHeader title="VIP9 Strategic Mastery" tier="VIP9" />
+      <GlobalAppBar breadcrumbs={[{ label: 'VIP9 Strategic' }]} />
+      <div className="max-w-4xl mx-auto px-4 py-8 space-y-12">
         
         {/* Header Section - Centered with proper spacing */}
         <div className="text-center space-y-6 pt-6">

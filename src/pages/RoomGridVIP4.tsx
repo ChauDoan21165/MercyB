@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
-import { RoomHeader } from "@/components/RoomHeader";
+import { GlobalAppBar } from "@/components/GlobalAppBar";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
@@ -69,10 +68,12 @@ const RoomGridVIP4 = () => {
 
   return (
     <div className="min-h-screen">
-      <ColorfulMercyBladeHeader />
+      <GlobalAppBar breadcrumbs={[{ label: 'VIP4 Career' }]} />
       <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip4))' }}>
-        <div className="container mx-auto px-4 py-8 max-w-7xl">
-          <RoomHeader title="VIP4 Career Consultance" tier="VIP4" />
+        <div className="container mx-auto px-4 py-6 max-w-7xl">
+          <h1 className="text-2xl font-semibold text-foreground mb-4">
+            VIP4 Career Consultance / Tư Vấn Nghề Nghiệp VIP4
+          </h1>
           
           <div className="mb-12 text-center space-y-4">
             <div className="flex items-center justify-end mb-4">
