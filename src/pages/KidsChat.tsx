@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
+import { GlobalAppBar } from "@/components/GlobalAppBar";
+import { RoomHeaderStandard } from "@/components/RoomHeaderStandard";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ArrowLeft, RefreshCw } from "lucide-react";
-import { RoomHeader } from "@/components/RoomHeader";
 import { useToast } from "@/hooks/use-toast";
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { HighlightedContent } from "@/components/HighlightedContent";
@@ -447,34 +447,21 @@ const KidsChat = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <ColorfulMercyBladeHeader />
+      <GlobalAppBar breadcrumbs={[
+        { label: 'Kids', href: '/kids-level1' },
+        { label: room.title_en }
+      ]} />
       <div className="max-w-4xl mx-auto px-4 py-6">
-        <RoomHeader title={`${room.title_en} / ${room.title_vi}`} tier={userSubscription?.kids_levels.name_en || "Kids"} />
+        <RoomHeaderStandard
+          titleEn={room.title_en}
+          titleVi={room.title_vi}
+          tier={userSubscription?.kids_levels.name_en || "Kids"}
+          onRefresh={fetchRoomData}
+        />
         
-        {/* Controls - Aligned left and right */}
-        <div className="flex items-center justify-between mb-6">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={handleBack}
-            className="flex items-center gap-2"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back / Quay lại
-          </Button>
-          
-          <div className="flex items-center gap-2">
-            <MercyBladeThemeToggle variant="outline" size="sm" />
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={fetchRoomData}
-              className="flex items-center gap-2"
-            >
-              <RefreshCw className="h-4 w-4" />
-              Refresh
-            </Button>
-          </div>
+        {/* Controls - Aligned right */}
+        <div className="flex items-center justify-end gap-2 mt-4 mb-6">
+          <MercyBladeThemeToggle variant="outline" size="sm" />
         </div>
       </div>
       

@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
-import { RoomHeader } from "@/components/RoomHeader";
+import { GlobalAppBar } from "@/components/GlobalAppBar";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { useNavigate } from "react-router-dom";
 import { useUserAccess } from "@/hooks/useUserAccess";
@@ -46,9 +45,13 @@ const RoomGridVIP5 = () => {
 
 
   return (
-    <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip5))' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <RoomHeader title="VIP5 - English Writing Master Support" tier="VIP5" />
+    <div className="min-h-screen">
+      <GlobalAppBar breadcrumbs={[{ label: 'VIP5 Writing' }]} />
+      <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip5))' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <h1 className="text-2xl font-semibold text-foreground mb-4">
+            VIP5 - English Writing Master Support
+          </h1>
         
         <div className="mt-8 text-center">
           <p className="text-base text-muted-foreground max-w-3xl mx-auto mb-2">

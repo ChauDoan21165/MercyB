@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { RoomHeader } from "@/components/RoomHeader";
-import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
+import { GlobalAppBar } from "@/components/GlobalAppBar";
 import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { CheckCircle2, Lock, Crown, Sparkles, RefreshCw, Building2, ChevronRight, Palette } from "lucide-react";
@@ -62,10 +61,12 @@ const RoomGridVIP3 = () => {
 
   return (
     <div className="min-h-screen">
-      <ColorfulMercyBladeHeader />
+      <GlobalAppBar breadcrumbs={[{ label: 'VIP3 Rooms' }]} />
       <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip3))' }}>
-        <div className="container mx-auto px-4 py-8 max-w-7xl">
-          <RoomHeader title="VIP3 Premium Rooms / Phòng VIP3 Chuyên Biệt" tier="VIP3" />
+        <div className="container mx-auto px-4 py-6 max-w-7xl">
+          <h1 className="text-2xl font-semibold text-foreground mb-4">
+            VIP3 Premium Rooms / Phòng VIP3 Chuyên Biệt
+          </h1>
           
           <div className="mb-8 space-y-4">
             <div className="flex items-center justify-end mb-4">
