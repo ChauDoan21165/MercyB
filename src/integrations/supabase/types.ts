@@ -373,28 +373,40 @@ export type Database = {
       companion_state: {
         Row: {
           emotional_tags: Json | null
+          english_level: string | null
           last_active_at: string | null
+          last_english_activity: string | null
           last_mood: string | null
           last_room: string | null
+          learning_goal: string | null
           path_progress: Json | null
+          preferred_name: string | null
           reflection_history: Json | null
           user_id: string
         }
         Insert: {
           emotional_tags?: Json | null
+          english_level?: string | null
           last_active_at?: string | null
+          last_english_activity?: string | null
           last_mood?: string | null
           last_room?: string | null
+          learning_goal?: string | null
           path_progress?: Json | null
+          preferred_name?: string | null
           reflection_history?: Json | null
           user_id: string
         }
         Update: {
           emotional_tags?: Json | null
+          english_level?: string | null
           last_active_at?: string | null
+          last_english_activity?: string | null
           last_mood?: string | null
           last_room?: string | null
+          learning_goal?: string | null
           path_progress?: Json | null
+          preferred_name?: string | null
           reflection_history?: Json | null
           user_id?: string
         }

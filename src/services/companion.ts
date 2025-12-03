@@ -1,5 +1,7 @@
 import { supabase } from '@/integrations/supabase/client';
 
+export type EnglishLevel = "beginner" | "lower_intermediate" | "intermediate" | "advanced";
+
 export interface CompanionState {
   user_id: string;
   last_room: string | null;
@@ -8,6 +10,13 @@ export interface CompanionState {
   reflection_history: string[];
   path_progress: Record<string, number>;
   last_active_at: string;
+}
+
+export interface CompanionProfile {
+  preferred_name?: string | null;
+  english_level?: EnglishLevel | null;
+  learning_goal?: string | null;
+  last_english_activity?: string | null;
 }
 
 export interface CompanionEvent {
@@ -87,6 +96,89 @@ export async function updateCompanionState(
     path_progress: (data.path_progress as Record<string, number>) || {},
     last_active_at: data.last_active_at || new Date().toISOString(),
   };
+}
+
+/**
+ * Get companion profile (name, English level, learning goal)
+ */
+export async function getCompanionProfile(): Promise<CompanionProfile> {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return {};
+
+  const { data, error } = await supabase
+    .from('companion_state')
+    .select('preferred_name, english_level, learning_goal, last_english_activity')
+    .eq('user_id', user.id)
+    .maybeSingle();
+
+  if (error) {
+    console.error('Failed to get companion profile:', error);
+    return {};
+  }
+
+  // If no row exists, create one lazily
+  if (!data) {
+    const { error: insertError } = await supabase
+      .from('companion_state')
+      .insert({ user_id: user.id })
+      .select()
+      .single();
+    
+    if (insertError && !insertError.message.includes('duplicate')) {
+      console.error('Failed to create companion state:', insertError);
+    }
+    return {};
+  }
+
+  return {
+    preferred_name: data.preferred_name,
+    english_level: data.english_level as EnglishLevel | null,
+    learning_goal: data.learning_goal,
+    last_english_activity: data.last_english_activity,
+  };
+}
+
+/**
+ * Update companion profile (name, English level, learning goal)
+ */
+export async function updateCompanionProfile(
+  patch: Partial<CompanionProfile>
+): Promise<void> {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return;
+
+  const { error } = await supabase
+    .from('companion_state')
+    .upsert({
+      user_id: user.id,
+      ...patch,
+      last_active_at: new Date().toISOString(),
+    });
+
+  if (error) {
+    console.error('Failed to update companion profile:', error);
+    throw error;
+  }
+}
+
+/**
+ * Update last English activity timestamp
+ */
+export async function markEnglishActivity(): Promise<void> {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return;
+
+  const { error } = await supabase
+    .from('companion_state')
+    .upsert({
+      user_id: user.id,
+      last_english_activity: new Date().toISOString(),
+      last_active_at: new Date().toISOString(),
+    });
+
+  if (error) {
+    console.error('Failed to mark English activity:', error);
+  }
 }
 
 /**
