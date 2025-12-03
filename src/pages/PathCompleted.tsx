@@ -1,17 +1,17 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { usePath, usePaths, useResetPath } from '@/hooks/usePaths';
+import { usePath, useResetPath } from '@/hooks/usePaths';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Trophy, Sparkles, ArrowRight, RotateCcw, Home } from 'lucide-react';
+import { Trophy, Sparkles, ArrowRight, RotateCcw, Home, List } from 'lucide-react';
 import { toast } from 'sonner';
 import confetti from 'canvas-confetti';
 import { useEffect } from 'react';
 
-// Suggested next paths
+// Recommended next paths (placeholders)
 const NEXT_PATHS = [
-  { slug: 'heart-repair', title_en: 'Heart Repair', title_vi: 'Chữa Lành Trái Tim' },
-  { slug: 'self-worth', title_en: 'Self-Worth', title_vi: 'Giá Trị Bản Thân' },
-  { slug: 'quiet-strength', title_en: 'Quiet Strength', title_vi: 'Sức Mạnh Tĩnh Lặng' },
+  { slug: 'heart-repair', title_en: 'Heart Repair', title_vi: 'Chữa Lành Trái Tim', days: 7 },
+  { slug: 'self-worth', title_en: 'Self-Worth', title_vi: 'Giá Trị Bản Thân', days: 14 },
+  { slug: 'quiet-strength', title_en: 'Quiet Strength', title_vi: 'Sức Mạnh Tĩnh Lặng', days: 21 },
 ];
 
 export default function PathCompleted() {
@@ -19,7 +19,6 @@ export default function PathCompleted() {
   const navigate = useNavigate();
   
   const { data: path, isLoading } = usePath(slug);
-  const { data: allPaths } = usePaths();
   const resetPath = useResetPath();
 
   // Confetti on mount
@@ -82,11 +81,6 @@ export default function PathCompleted() {
     );
   }
 
-  // Filter available next paths from database
-  const availableNextPaths = allPaths?.filter(p => 
-    p.slug !== slug && NEXT_PATHS.some(np => np.slug === p.slug)
-  ) || [];
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-primary/5 via-background to-background">
       <div className="max-w-[720px] mx-auto px-4 py-12 space-y-8">
@@ -100,87 +94,61 @@ export default function PathCompleted() {
           </div>
         </div>
 
-        {/* Congratulations */}
+        {/* Title */}
         <div className="text-center space-y-4">
-          <h1 className="text-3xl font-bold">
-            Congratulations! 🎉
+          <h1 className="text-2xl font-bold">
+            You finished the 7-Day Calm Mind Path.
           </h1>
           <p className="text-xl text-muted-foreground">
-            Chúc mừng bạn!
+            Bạn đã hoàn thành lộ trình 7 Ngày Tâm Trí Bình Yên.
           </p>
         </div>
 
-        {/* Message */}
+        {/* Gratitude Message */}
         <Card className="border-primary/20">
           <CardContent className="p-6 space-y-4 text-center">
-            <p className="text-lg leading-relaxed">
-              You've completed <span className="font-semibold text-primary">{path.title_en}</span>.
+            <p className="text-foreground leading-relaxed">
+              Every small step counts. You showed up for yourself, day after day. 
+              That takes courage. Be proud of what you've built inside — a quieter place 
+              you can always return to.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Bạn đã hoàn thành <span className="font-semibold text-primary">{path.title_vi}</span>.
+              Mỗi bước nhỏ đều có ý nghĩa. Bạn đã xuất hiện vì chính mình, ngày này qua ngày khác.
+              Điều đó cần can đảm. Hãy tự hào về điều bạn đã xây bên trong — một nơi yên tĩnh hơn
+              mà bạn luôn có thể quay về.
             </p>
-            <div className="pt-4 border-t">
-              <p className="text-sm text-muted-foreground">
-                Every small step counts. You showed up for yourself, day after day. 
-                That takes courage. Be proud.
-              </p>
-              <p className="text-sm text-muted-foreground mt-2">
-                Mỗi bước nhỏ đều có ý nghĩa. Bạn đã xuất hiện vì chính mình, ngày này qua ngày khác.
-                Điều đó cần can đảm. Hãy tự hào.
-              </p>
-            </div>
           </CardContent>
         </Card>
 
-        {/* Next Paths */}
-        {availableNextPaths.length > 0 && (
-          <div className="space-y-4">
-            <h2 className="text-lg font-semibold flex items-center gap-2">
-              <Sparkles className="h-5 w-5 text-primary" />
-              Continue Your Journey
-            </h2>
-            <div className="space-y-3">
-              {availableNextPaths.map(nextPath => (
-                <Card 
-                  key={nextPath.slug}
-                  className="cursor-pointer hover:shadow-md transition-all"
-                  onClick={() => navigate(`/paths/${nextPath.slug}`)}
-                >
-                  <CardContent className="p-4 flex items-center justify-between">
-                    <div>
-                      <p className="font-medium">{nextPath.title_en}</p>
-                      <p className="text-sm text-muted-foreground">{nextPath.title_vi}</p>
-                    </div>
+        {/* Recommended Next Paths */}
+        <div className="space-y-4">
+          <h2 className="text-lg font-semibold flex items-center gap-2">
+            <Sparkles className="h-5 w-5 text-primary" />
+            Continue Your Journey
+          </h2>
+          <div className="space-y-3">
+            {NEXT_PATHS.map(nextPath => (
+              <Card 
+                key={nextPath.slug}
+                className="cursor-pointer hover:shadow-md transition-all opacity-80 hover:opacity-100"
+                onClick={() => navigate(`/paths/${nextPath.slug}`)}
+              >
+                <CardContent className="p-4 flex items-center justify-between">
+                  <div>
+                    <p className="font-medium">{nextPath.title_en}</p>
+                    <p className="text-sm text-muted-foreground">{nextPath.title_vi}</p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs bg-muted px-2 py-1 rounded-full">
+                      {nextPath.days} days
+                    </span>
                     <ArrowRight className="h-5 w-5 text-muted-foreground" />
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-        )}
-
-        {/* Suggested paths not in DB yet */}
-        {availableNextPaths.length === 0 && (
-          <div className="space-y-4">
-            <h2 className="text-lg font-semibold flex items-center gap-2">
-              <Sparkles className="h-5 w-5 text-primary" />
-              Coming Soon
-            </h2>
-            <div className="space-y-3">
-              {NEXT_PATHS.map(nextPath => (
-                <Card key={nextPath.slug} className="opacity-60">
-                  <CardContent className="p-4 flex items-center justify-between">
-                    <div>
-                      <p className="font-medium">{nextPath.title_en}</p>
-                      <p className="text-sm text-muted-foreground">{nextPath.title_vi}</p>
-                    </div>
-                    <span className="text-xs bg-muted px-2 py-1 rounded-full">Coming soon</span>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        )}
+        </div>
 
         {/* Actions */}
         <div className="space-y-3 pt-4">
@@ -189,10 +157,18 @@ export default function PathCompleted() {
             onClick={() => navigate('/')}
           >
             <Home className="h-4 w-4 mr-2" />
-            Return Home
+            Back to Home
           </Button>
           <Button 
             variant="outline"
+            className="w-full h-12"
+            onClick={() => navigate('/paths')}
+          >
+            <List className="h-4 w-4 mr-2" />
+            View all paths
+          </Button>
+          <Button 
+            variant="ghost"
             className="w-full"
             onClick={handleReset}
             disabled={resetPath.isPending}
