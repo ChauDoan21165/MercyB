@@ -52,6 +52,7 @@ const roomItems = [
   { title: "VIP Rooms", url: "/admin/vip-rooms", icon: LayoutDashboard },
   { title: "Audio Management", url: "/admin/audio-upload", icon: Music },
   { title: "Audio Scanner", url: "/admin/audio-scanner", icon: Volume2 },
+  { title: "Missing Audio", url: "/admin/missing-audio", icon: AlertTriangle },
 ];
 
 // Monitoring & analytics

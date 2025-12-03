@@ -96,6 +96,7 @@ const AudioAssetAuditor = lazy(() => import("./pages/admin/AudioAssetAuditor"));
 const UserSupportConsole = lazy(() => import("./pages/admin/UserSupportConsole"));
 const SystemLogs = lazy(() => import("./pages/admin/SystemLogs"));
 const FastAudioScannerPage = lazy(() => import("./pages/admin/FastAudioScannerPage"));
+const EntriesWithoutAudioPage = lazy(() => import("./pages/admin/EntriesWithoutAudioPage"));
 
 // Other pages - lazy loaded
 const MeaningOfLife = lazy(() => import("./pages/MeaningOfLife"));
@@ -267,6 +268,7 @@ const App = () => {
           <Route path="/admin/payment-verification" element={<AdminRoute><AdminPaymentVerification /></AdminRoute>} />
           <Route path="/admin/audio-upload" element={<AdminRoute><AdminAudioUpload /></AdminRoute>} />
           <Route path="/admin/audio-scanner" element={<AdminRoute><FastAudioScannerPage /></AdminRoute>} />
+          <Route path="/admin/missing-audio" element={<AdminRoute><EntriesWithoutAudioPage /></AdminRoute>} />
           <Route path="/admin/moderation" element={<AdminRoute><AdminModeration /></AdminRoute>} />
           <Route path="/admin/rooms" element={<AdminRoute><AdminRooms /></AdminRoute>} />
           <Route path="/admin/rooms/new" element={<AdminRoute><AdminRoomEditor /></AdminRoute>} />
