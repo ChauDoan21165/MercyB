@@ -14,9 +14,6 @@ export const AdminFloatingButton = () => {
   const [unreadCount, setUnreadCount] = useState(0);
   const [versionIndicator, setVersionIndicator] = useState('A');
 
-  // When music is playing, GlobalPlayingIndicator shows admin controls instead
-  if (isPlaying) return null;
-
   useEffect(() => {
     // Fetch version indicator for everyone
     fetchVersionIndicator();
@@ -88,6 +85,9 @@ export const AdminFloatingButton = () => {
       supabase.removeChannel(channel);
     };
   }, [isAdmin]);
+
+  // When music is playing, GlobalPlayingIndicator shows admin controls instead
+  if (isPlaying) return null;
 
   const fetchVersionIndicator = async () => {
     try {
