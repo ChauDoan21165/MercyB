@@ -8,12 +8,15 @@ import { useEffect, useState } from 'react';
 import { RoomSearch } from '@/components/RoomSearch';
 import { CalmMindWidget } from '@/components/paths/CalmMindWidget';
 import heroRainbowBg from '@/assets/hero-rainbow-bg.jpg';
+import { CompanionBubble, MercyToggle } from '@/components/companion';
+import { useHomeCompanion } from '@/hooks/useHomeCompanion';
 
 const Homepage = () => {
   const { config, loading, error } = useHomepageConfig();
   const navigate = useNavigate();
   const [headerBg, setHeaderBg] = useState('#ffffff');
   const [textColor, setTextColor] = useState('#111827');
+  const companion = useHomeCompanion();
 
   const handleResetConfig = () => {
     localStorage.removeItem('pinnedHomepageConfig');
@@ -279,6 +282,15 @@ Kids English không chỉ là chương trình dành cho trẻ.
           </Button>
         </div>
       </footer>
+
+      {/* Mercy Companion */}
+      <CompanionBubble
+        text={companion.text}
+        visible={companion.visible}
+        onClose={companion.hide}
+        title="Mercy"
+      />
+      <MercyToggle />
     </div>
   );
 };
