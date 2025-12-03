@@ -2,7 +2,7 @@
  * Global App Bar
  * Unified top navigation bar with:
  * - Left: Breadcrumb navigation
- * - Center: Mercy Blade logo (truly centered in viewport)
+ * - Center: Mercy Blade logo (truly centered in viewport using absolute positioning)
  * - Right: Theme toggle, Tier Map, User actions
  */
 
@@ -49,13 +49,13 @@ export function GlobalAppBar({
     : "bg-background/95";
 
   return (
-    <header className={`sticky top-0 z-40 ${headerBg} backdrop-blur-sm border-b border-border`}>
-      <div className="max-w-4xl mx-auto px-4 py-3">
-        {/* Main row: 3-column grid for true center alignment */}
-        <div className="grid grid-cols-3 items-center gap-2">
+    <header className={`sticky top-0 z-40 w-full ${headerBg} backdrop-blur-sm border-b border-border`}>
+      <div className="relative w-full px-4 py-3">
+        {/* 3-column flex layout for left/right balance */}
+        <div className="flex items-center justify-between">
           
-          {/* Left: Breadcrumb */}
-          <nav className="flex items-center gap-1.5 text-sm overflow-hidden">
+          {/* Left: Breadcrumb - flex-1 to take equal space */}
+          <nav className="flex-1 flex items-center gap-1.5 text-sm overflow-hidden">
             <Link 
               to="/" 
               className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors shrink-0"
@@ -83,33 +83,8 @@ export function GlobalAppBar({
             ))}
           </nav>
 
-          {/* Center: Logo - truly centered */}
-          <div className="flex justify-center">
-            <Link to="/" className="inline-block">
-              <h1 className="text-lg sm:text-xl font-bold tracking-tight whitespace-nowrap">
-                {mode === "color" ? (
-                  <>
-                    <span style={{ color: '#E91E63' }}>M</span>
-                    <span style={{ color: '#9C27B0' }}>e</span>
-                    <span style={{ color: '#3F51B5' }}>r</span>
-                    <span style={{ color: '#2196F3' }}>c</span>
-                    <span style={{ color: '#00BCD4' }}>y</span>
-                    <span className="mx-1"></span>
-                    <span style={{ color: '#009688' }}>B</span>
-                    <span style={{ color: '#4CAF50' }}>l</span>
-                    <span style={{ color: '#8BC34A' }}>a</span>
-                    <span style={{ color: '#FFC107' }}>d</span>
-                    <span style={{ color: '#FF9800' }}>e</span>
-                  </>
-                ) : (
-                  <span className="text-foreground font-black">Mercy Blade</span>
-                )}
-              </h1>
-            </Link>
-          </div>
-
-          {/* Right: Controls */}
-          <div className="flex items-center justify-end gap-2">
+          {/* Right: Controls - flex-1 to take equal space */}
+          <div className="flex-1 flex items-center justify-end gap-2">
             <ThemeToggle />
             
             {!user ? (
@@ -133,6 +108,31 @@ export function GlobalAppBar({
               </Button>
             )}
           </div>
+        </div>
+
+        {/* Center: Logo - absolutely positioned for true viewport centering */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto">
+          <Link to="/" className="inline-block">
+            <h1 className="text-lg sm:text-xl font-bold tracking-tight whitespace-nowrap">
+              {mode === "color" ? (
+                <>
+                  <span style={{ color: '#E91E63' }}>M</span>
+                  <span style={{ color: '#9C27B0' }}>e</span>
+                  <span style={{ color: '#3F51B5' }}>r</span>
+                  <span style={{ color: '#2196F3' }}>c</span>
+                  <span style={{ color: '#00BCD4' }}>y</span>
+                  <span className="mx-1"></span>
+                  <span style={{ color: '#009688' }}>B</span>
+                  <span style={{ color: '#4CAF50' }}>l</span>
+                  <span style={{ color: '#8BC34A' }}>a</span>
+                  <span style={{ color: '#FFC107' }}>d</span>
+                  <span style={{ color: '#FF9800' }}>e</span>
+                </>
+              ) : (
+                <span className="text-foreground font-black">Mercy Blade</span>
+              )}
+            </h1>
+          </Link>
         </div>
       </div>
     </header>
