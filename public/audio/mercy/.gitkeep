@@ -1,0 +1,3 @@
+# Mercy reply audio cache directory
+# MP3 files for cached mercy replies go here
+# Format: {reply_id}_{lang}.mp3

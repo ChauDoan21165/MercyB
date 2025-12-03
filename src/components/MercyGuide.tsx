@@ -14,6 +14,17 @@ import { getYesterdayAndTodaySummary, getRecentMoods, StudyLogEntry, MoodKey } f
 import { BREATHING_SCRIPT_SHORT, POSITIVE_REFRAME_SHORT, COMPASSIONATE_HEAVY_MOOD_MESSAGE } from '@/data/breathing_scripts_en_vi';
 import { MercyGuideProfileSettings } from './MercyGuideProfileSettings';
 import { useNavigate } from 'react-router-dom';
+import { 
+  getMercyReply, 
+  preloadMercyLibrary,
+  getGreetingReplyId,
+  getBreathingReplyId,
+  getTeacherReplyId,
+  getPraiseReplyId,
+  buildMercyContext,
+  type MercyReply,
+  type MercyReplyId,
+} from '@/mercy';
 
 interface MercyGuideProps {
   roomId?: string;
@@ -190,6 +201,10 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
   const [speakAttempts, setSpeakAttempts] = useState(0);
   const [speakLimitReached, setSpeakLimitReached] = useState(false);
   
+  // Cached reply state
+  const [cachedGreeting, setCachedGreeting] = useState<MercyReply | null>(null);
+  const [cachedBreathingIntro, setCachedBreathingIntro] = useState<MercyReply | null>(null);
+  
   const audioRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   const { 
@@ -201,6 +216,11 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
   } = useMercyGuide();
   
   const recorder = usePronunciationRecorder();
+  
+  // Preload mercy reply library
+  useEffect(() => {
+    preloadMercyLibrary();
+  }, []);
 
   // Load profile and suggestions when panel opens
   useEffect(() => {
@@ -211,13 +231,29 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
         const profileData = await getCompanionProfile();
         setProfile(profileData);
         
-        // Generate check-in message
-        const message = getCheckInMessage(
-          profileData, 
-          profileData.last_english_activity || undefined,
-          profileData.last_english_activity || undefined
-        );
-        setCheckInMessage(message);
+        // Load cached greeting based on context
+        const ctx = buildMercyContext({
+          lastActiveAt: profileData.last_english_activity,
+          isFirstVisit: !profileData.last_english_activity,
+        });
+        const greetingId = getGreetingReplyId(ctx);
+        const greetingReply = await getMercyReply(greetingId);
+        if (greetingReply) {
+          setCachedGreeting(greetingReply);
+          setCheckInMessage({ en: greetingReply.text_en, vi: greetingReply.text_vi });
+        } else {
+          // Fallback to dynamic message
+          const message = getCheckInMessage(
+            profileData, 
+            profileData.last_english_activity || undefined,
+            profileData.last_english_activity || undefined
+          );
+          setCheckInMessage(message);
+        }
+        
+        // Load cached breathing intro
+        const breathingReply = await getMercyReply(getBreathingReplyId('intro'));
+        if (breathingReply) setCachedBreathingIntro(breathingReply);
         
         // Load suggestions
         const suggestionsData = await getSuggestionsForUser({
