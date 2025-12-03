@@ -139,10 +139,20 @@ export default function AuditSafeShield() {
   const autoFixableCount = issues.filter(isAutoFixable).length;
 
   const handleAutoRepair = async () => {
+    console.log("[handleAutoRepair] Called. autoFixableCount:", autoFixableCount, "issues:", issues.length);
+    
+    if (issues.length === 0) {
+      toast({
+        title: "Run Audit First",
+        description: "Please run an audit before attempting repairs.",
+      });
+      return;
+    }
+    
     if (autoFixableCount === 0) {
       toast({
         title: "Nothing to repair",
-        description: "No auto-fixable issues found. Run an audit first.",
+        description: "No auto-fixable issues found in current scan.",
       });
       return;
     }
@@ -255,7 +265,7 @@ export default function AuditSafeShield() {
               onClick={handleAutoRepair}
               variant="outline"
               className="border-black"
-              disabled={isRepairing || isRunning || autoFixableCount === 0}
+              disabled={isRepairing || isRunning}
             >
               {isRepairing ? (
                 <>
