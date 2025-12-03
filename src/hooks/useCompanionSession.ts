@@ -168,6 +168,8 @@ export function useCompanionSession(roomId: string): UseCompanionSessionReturn {
 export function setCompanionEnabled(enabled: boolean): void {
   if (typeof window !== 'undefined') {
     localStorage.setItem('companion_enabled', String(enabled));
+    // Dispatch custom event for cross-component sync
+    window.dispatchEvent(new CustomEvent('companion-enabled-change', { detail: enabled }));
   }
 }
 
@@ -176,4 +178,33 @@ export function setCompanionEnabled(enabled: boolean): void {
  */
 export function getCompanionEnabled(): boolean {
   return isCompanionEnabled();
+}
+
+/**
+ * Hook to listen for companion enabled state changes
+ */
+export function useCompanionEnabledState(): boolean {
+  const [enabled, setEnabled] = useState(isCompanionEnabled());
+  
+  useEffect(() => {
+    const handleChange = (e: CustomEvent<boolean>) => {
+      setEnabled(e.detail);
+    };
+    
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === 'companion_enabled') {
+        setEnabled(e.newValue !== 'false');
+      }
+    };
+    
+    window.addEventListener('companion-enabled-change', handleChange as EventListener);
+    window.addEventListener('storage', handleStorage);
+    
+    return () => {
+      window.removeEventListener('companion-enabled-change', handleChange as EventListener);
+      window.removeEventListener('storage', handleStorage);
+    };
+  }, []);
+  
+  return enabled;
 }

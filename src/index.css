@@ -562,6 +562,20 @@ All colors MUST be HSL.
   }
 }
 
+/* Mercy Avatar Breathing Animation */
+@keyframes mercy-breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-mercy-breathe {
+  animation: mercy-breathe 2s ease-in-out infinite;
+}
+
 @layer base {
   * {
     @apply border-border;
