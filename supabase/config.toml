@@ -65,3 +65,6 @@ verify_jwt = false
 
 [functions.guide-english-helper]
 verify_jwt = false
+
+[functions.guide-pronunciation-coach]
+verify_jwt = false

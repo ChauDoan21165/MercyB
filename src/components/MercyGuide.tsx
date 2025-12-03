@@ -1,13 +1,14 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { MessageCircleQuestion, X, Send, BookOpen, User, Sparkles, ChevronRight, Loader2 } from 'lucide-react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { MessageCircleQuestion, X, Send, BookOpen, User, Sparkles, ChevronRight, Loader2, Mic, Square, Volume2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useMercyGuide, GuideArticle } from '@/hooks/useMercyGuide';
+import { usePronunciationRecorder } from '@/hooks/usePronunciationRecorder';
 import { supabase } from '@/integrations/supabase/client';
 import { cn } from '@/lib/utils';
-import { CompanionProfile, getCompanionProfile } from '@/services/companion';
+import { CompanionProfile, getCompanionProfile, markEnglishActivity } from '@/services/companion';
 import { getSuggestionsForUser, SuggestedItem } from '@/services/suggestions';
 import { MercyGuideProfileSettings } from './MercyGuideProfileSettings';
 import { useNavigate } from 'react-router-dom';
@@ -41,6 +42,25 @@ interface EnglishHelperResult {
   encouragement_vi: string;
 }
 
+interface PronunciationFeedback {
+  praise_en: string;
+  praise_vi: string;
+  focus_items: {
+    word: string;
+    tip_en: string;
+    tip_vi: string;
+  }[];
+  encouragement_en: string;
+  encouragement_vi: string;
+}
+
+interface PronunciationResult {
+  targetText: string;
+  transcribedText: string;
+  score: number;
+  feedback: PronunciationFeedback;
+}
+
 const QUICK_BUTTONS = [
   { key: 'what_is_room', label_en: 'What is a room?', label_vi: 'Phòng là gì?' },
   { key: 'how_to_use_room', label_en: 'How to use?', label_vi: 'Cách sử dụng?' },
@@ -53,6 +73,14 @@ const RATE_LIMIT_MESSAGE = {
   en: "Let us pause a bit. You can ask more questions later.",
   vi: "Mình tạm dừng một chút nhé. Bạn có thể hỏi thêm sau."
 };
+
+const FALLBACK_PRAISE = {
+  en: "Thank you for trying. Speaking out loud is already a brave step.",
+  vi: "Cảm ơn bạn đã thử. Dám nói ra thành tiếng đã là một bước rất can đảm rồi."
+};
+
+const MAX_SPEAK_ATTEMPTS = 20;
+const SPEAK_SESSION_KEY = 'mb_speak_attempts';
 
 function getCheckInMessage(profile: CompanionProfile, lastActiveAt?: string, lastEnglishActivity?: string): { en: string; vi: string } | null {
   const name = profile.preferred_name || 'friend';
@@ -87,6 +115,47 @@ function getCheckInMessage(profile: CompanionProfile, lastActiveAt?: string, las
   };
 }
 
+function getSpeakProgressHint(profile: CompanionProfile): { en: string; vi: string } {
+  const lastActivity = profile.last_english_activity;
+  
+  if (!lastActivity) {
+    return {
+      en: "This might be your first speaking practice here. Take it slow.",
+      vi: "Có thể đây là lần đầu bạn luyện nói ở đây. Mình cứ đi thật chậm nhé."
+    };
+  }
+  
+  const now = Date.now();
+  const daysSince = (now - new Date(lastActivity).getTime()) / (1000 * 60 * 60 * 24);
+  
+  if (daysSince < 1) {
+    return {
+      en: "You already practiced speaking today. One more try is a bonus.",
+      vi: "Hôm nay bạn đã luyện nói rồi. Thử thêm lần nữa chỉ là phần thưởng thôi."
+    };
+  }
+  
+  if (daysSince > 3) {
+    return {
+      en: "It has been a few days since we spoke together. Let's keep it light.",
+      vi: "Mình đã vài ngày chưa luyện nói cùng nhau. Hôm nay mình làm thật nhẹ nhàng nhé."
+    };
+  }
+  
+  return {
+    en: "You are doing well just by showing up here.",
+    vi: "Chỉ cần bạn có mặt ở đây đã là rất tốt rồi."
+  };
+}
+
+function extractFirstSentence(text: string): string {
+  if (!text) return '';
+  // Get first sentence, max ~80 chars
+  const sentences = text.split(/[.!?]+/);
+  const first = sentences[0]?.trim() || '';
+  return first.length > 80 ? first.slice(0, 77) + '...' : first;
+}
+
 export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn }: MercyGuideProps) {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -102,6 +171,16 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
   const [suggestions, setSuggestions] = useState<SuggestedItem[]>([]);
   const [isLoadingEnglish, setIsLoadingEnglish] = useState(false);
   const [englishResult, setEnglishResult] = useState<EnglishHelperResult | null>(null);
+  
+  // Pronunciation coach state
+  const [targetPhrase, setTargetPhrase] = useState('');
+  const [isPlayingTarget, setIsPlayingTarget] = useState(false);
+  const [pronunciationResult, setPronunciationResult] = useState<PronunciationResult | null>(null);
+  const [isEvaluating, setIsEvaluating] = useState(false);
+  const [speakAttempts, setSpeakAttempts] = useState(0);
+  const [speakLimitReached, setSpeakLimitReached] = useState(false);
+  
+  const audioRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   const { 
     articles, 
@@ -110,6 +189,8 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
     incrementQuestionCount,
     getQuestionsRemaining 
   } = useMercyGuide();
+  
+  const recorder = usePronunciationRecorder();
 
   // Load profile and suggestions when panel opens
   useEffect(() => {
@@ -142,6 +223,23 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
     
     loadData();
   }, [isOpen, roomId, tags]);
+  
+  // Set target phrase from room content
+  useEffect(() => {
+    if (contentEn && !targetPhrase) {
+      setTargetPhrase(extractFirstSentence(contentEn));
+    }
+  }, [contentEn, targetPhrase]);
+  
+  // Load speak attempts from session
+  useEffect(() => {
+    const stored = sessionStorage.getItem(SPEAK_SESSION_KEY);
+    if (stored) {
+      const attempts = parseInt(stored, 10);
+      setSpeakAttempts(attempts);
+      setSpeakLimitReached(attempts >= MAX_SPEAK_ATTEMPTS);
+    }
+  }, []);
 
   const handleQuickButton = useCallback((key: string) => {
     if (!articles || !articles[key]) return;
@@ -272,6 +370,108 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
       setIsLoadingEnglish(false);
     }
   }, [contentEn, isLoadingEnglish, roomId, roomTitle, profile.english_level]);
+  
+  // Play target phrase using browser TTS
+  const handlePlayTarget = useCallback(() => {
+    if (!targetPhrase || isPlayingTarget) return;
+    
+    // Stop any existing speech
+    window.speechSynthesis.cancel();
+    
+    const utterance = new SpeechSynthesisUtterance(targetPhrase);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.9;
+    
+    utterance.onstart = () => setIsPlayingTarget(true);
+    utterance.onend = () => setIsPlayingTarget(false);
+    utterance.onerror = () => setIsPlayingTarget(false);
+    
+    audioRef.current = utterance;
+    window.speechSynthesis.speak(utterance);
+  }, [targetPhrase, isPlayingTarget]);
+  
+  // Handle recording toggle
+  const handleRecordToggle = useCallback(async () => {
+    if (recorder.status === 'recording') {
+      await recorder.stopRecording();
+    } else {
+      setPronunciationResult(null);
+      await recorder.startRecording();
+    }
+  }, [recorder]);
+  
+  // Evaluate pronunciation when recording stops
+  useEffect(() => {
+    if (recorder.audioBlob && recorder.status === 'idle' && targetPhrase && !isEvaluating) {
+      evaluatePronunciation();
+    }
+  }, [recorder.audioBlob, recorder.status]);
+  
+  const evaluatePronunciation = useCallback(async () => {
+    if (!recorder.audioBlob || !targetPhrase) return;
+    
+    // Check attempt limit
+    if (speakAttempts >= MAX_SPEAK_ATTEMPTS) {
+      setSpeakLimitReached(true);
+      return;
+    }
+    
+    setIsEvaluating(true);
+    
+    try {
+      // Convert blob to base64
+      const arrayBuffer = await recorder.audioBlob.arrayBuffer();
+      const base64 = btoa(
+        new Uint8Array(arrayBuffer).reduce((data, byte) => data + String.fromCharCode(byte), '')
+      );
+      
+      const { data, error } = await supabase.functions.invoke('guide-pronunciation-coach', {
+        body: {
+          audioBase64: base64,
+          targetText: targetPhrase.slice(0, 120),
+          englishLevel: profile.english_level || 'beginner',
+          preferredName: profile.preferred_name,
+        },
+      });
+      
+      if (error || !data?.ok) {
+        throw new Error(data?.error || 'Failed to evaluate pronunciation');
+      }
+      
+      setPronunciationResult(data as PronunciationResult);
+      
+      // Update attempts
+      const newAttempts = speakAttempts + 1;
+      setSpeakAttempts(newAttempts);
+      sessionStorage.setItem(SPEAK_SESSION_KEY, String(newAttempts));
+      
+      if (newAttempts >= MAX_SPEAK_ATTEMPTS) {
+        setSpeakLimitReached(true);
+      }
+      
+      // Mark English activity
+      markEnglishActivity();
+      
+    } catch (err) {
+      console.error('Pronunciation evaluation error:', err);
+      // Show fallback praise
+      setPronunciationResult({
+        targetText: targetPhrase,
+        transcribedText: '',
+        score: 0,
+        feedback: {
+          praise_en: FALLBACK_PRAISE.en,
+          praise_vi: FALLBACK_PRAISE.vi,
+          focus_items: [],
+          encouragement_en: '',
+          encouragement_vi: '',
+        },
+      });
+    } finally {
+      setIsEvaluating(false);
+      recorder.reset();
+    }
+  }, [recorder.audioBlob, targetPhrase, profile, speakAttempts]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -283,6 +483,8 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
   const greeting = profile.preferred_name 
     ? { en: `Hi, ${profile.preferred_name}. How can I help?`, vi: `Chào ${profile.preferred_name}. Mình giúp gì được cho bạn?` }
     : { en: 'Hi! How can I help?', vi: 'Chào bạn! Mình giúp gì được?' };
+    
+  const speakProgressHint = getSpeakProgressHint(profile);
 
   if (!isEnabled) return null;
 
@@ -361,7 +563,7 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
 
               {/* Tabs */}
               <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col overflow-hidden">
-                <TabsList className="grid grid-cols-3 mx-3 mt-2">
+                <TabsList className="grid grid-cols-4 mx-3 mt-2">
                   <TabsTrigger value="guide" className="text-xs">
                     <MessageCircleQuestion className="h-3 w-3 mr-1" />
                     Guide
@@ -369,6 +571,10 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
                   <TabsTrigger value="english" className="text-xs" disabled={!contentEn && !roomId}>
                     <BookOpen className="h-3 w-3 mr-1" />
                     English
+                  </TabsTrigger>
+                  <TabsTrigger value="speak" className="text-xs" disabled={!contentEn && !roomId}>
+                    <Mic className="h-3 w-3 mr-1" />
+                    Speak
                   </TabsTrigger>
                   <TabsTrigger value="suggest" className="text-xs">
                     <Sparkles className="h-3 w-3 mr-1" />
@@ -518,6 +724,161 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
                             </p>
                           </div>
                         )}
+                      </div>
+                    )}
+                  </ScrollArea>
+                </TabsContent>
+
+                {/* Speak Tab - Pronunciation Coach */}
+                <TabsContent value="speak" className="flex-1 overflow-hidden m-0">
+                  <ScrollArea className="h-full px-4 py-3">
+                    {!contentEn && !roomId ? (
+                      <p className="text-sm text-muted-foreground text-center py-4">
+                        Open a room to practice speaking English.
+                      </p>
+                    ) : speakLimitReached ? (
+                      <div className="text-center py-8 space-y-2">
+                        <p className="text-sm text-foreground">Let's rest your voice a bit.</p>
+                        <p className="text-xs text-muted-foreground">You can practice more later.</p>
+                        <p className="text-xs text-muted-foreground mt-4">Mình cho giọng bạn nghỉ một chút nhé. Lát nữa luyện tiếp cũng được.</p>
+                      </div>
+                    ) : (
+                      <div className="space-y-4">
+                        {/* Progress hint */}
+                        <div className="p-2 bg-muted/50 rounded-lg text-center">
+                          <p className="text-xs text-muted-foreground">{speakProgressHint.en}</p>
+                          <p className="text-xs text-muted-foreground/70">{speakProgressHint.vi}</p>
+                        </div>
+                        
+                        {/* Target phrase */}
+                        <div className="space-y-2">
+                          <label className="text-xs font-medium text-foreground">
+                            Practice this phrase:
+                          </label>
+                          <Input
+                            value={targetPhrase}
+                            onChange={(e) => setTargetPhrase(e.target.value.slice(0, 120))}
+                            placeholder="Enter a phrase to practice..."
+                            className="text-sm"
+                          />
+                          <p className="text-xs text-muted-foreground">
+                            Luyện cụm từ này:
+                          </p>
+                        </div>
+                        
+                        {/* Listen button */}
+                        <div className="space-y-1">
+                          <Button
+                            variant="outline"
+                            className="w-full"
+                            onClick={handlePlayTarget}
+                            disabled={!targetPhrase || isPlayingTarget}
+                          >
+                            {isPlayingTarget ? (
+                              <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                            ) : (
+                              <Volume2 className="h-4 w-4 mr-2" />
+                            )}
+                            Listen / Nghe
+                          </Button>
+                          <p className="text-xs text-muted-foreground text-center">
+                            Listen once or twice before you speak. / Hãy nghe một hai lần trước khi nói.
+                          </p>
+                        </div>
+                        
+                        {/* Record button */}
+                        <div className="space-y-2">
+                          <Button
+                            variant={recorder.status === 'recording' ? 'destructive' : 'default'}
+                            className="w-full"
+                            onClick={handleRecordToggle}
+                            disabled={!targetPhrase || isEvaluating || recorder.status === 'processing'}
+                          >
+                            {isEvaluating || recorder.status === 'processing' ? (
+                              <>
+                                <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                                Evaluating...
+                              </>
+                            ) : recorder.status === 'recording' ? (
+                              <>
+                                <Square className="h-4 w-4 mr-2" />
+                                Tap to stop / Nhấn để dừng
+                              </>
+                            ) : (
+                              <>
+                                <Mic className="h-4 w-4 mr-2" />
+                                Tap to record / Nhấn để thu
+                              </>
+                            )}
+                          </Button>
+                          
+                          {recorder.error && (
+                            <div className="p-2 bg-destructive/10 rounded-lg">
+                              <p className="text-xs text-destructive whitespace-pre-line">{recorder.error}</p>
+                              <p className="text-xs text-muted-foreground mt-1">
+                                If you can't use the mic, you can still read the phrase out loud to yourself. That still helps.
+                              </p>
+                              <p className="text-xs text-muted-foreground">
+                                Nếu chưa dùng được micro, bạn vẫn có thể tự đọc câu này thành tiếng. Vậy vẫn có ích lắm.
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                        
+                        {/* Pronunciation results */}
+                        {pronunciationResult && (
+                          <div className="space-y-4 pt-4 border-t border-border">
+                            {/* Praise */}
+                            <div className="p-3 bg-primary/10 rounded-lg text-center">
+                              <p className="text-sm font-medium text-primary">{pronunciationResult.feedback.praise_en}</p>
+                              <p className="text-xs text-primary/70 mt-1">{pronunciationResult.feedback.praise_vi}</p>
+                            </div>
+                            
+                            {/* Score - soft presentation */}
+                            <div className="flex justify-center">
+                              <span className="px-3 py-1 rounded-full bg-secondary text-secondary-foreground text-sm">
+                                Pronunciation clarity: {pronunciationResult.score}/100
+                              </span>
+                            </div>
+                            
+                            {/* What was heard */}
+                            {pronunciationResult.transcribedText && (
+                              <div className="p-2 bg-muted rounded-lg">
+                                <p className="text-xs text-muted-foreground mb-1">I heard:</p>
+                                <p className="text-sm">{pronunciationResult.transcribedText}</p>
+                              </div>
+                            )}
+                            
+                            {/* Focus items */}
+                            {pronunciationResult.feedback.focus_items.length > 0 && (
+                              <div className="space-y-2">
+                                <p className="text-xs font-medium text-foreground">Focus on:</p>
+                                {pronunciationResult.feedback.focus_items.map((item, idx) => (
+                                  <div key={idx} className="p-2 bg-secondary/30 rounded-lg">
+                                    <p className="font-semibold text-sm text-primary">{item.word}</p>
+                                    <p className="text-xs text-foreground mt-1">{item.tip_en}</p>
+                                    <p className="text-xs text-muted-foreground">{item.tip_vi}</p>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                            
+                            {/* Encouragement */}
+                            {pronunciationResult.feedback.encouragement_en && (
+                              <div className="p-3 bg-primary/5 rounded-lg text-center">
+                                <p className="text-sm text-primary">{pronunciationResult.feedback.encouragement_en}</p>
+                                {pronunciationResult.feedback.encouragement_vi && (
+                                  <p className="text-xs text-primary/70">{pronunciationResult.feedback.encouragement_vi}</p>
+                                )}
+                              </div>
+                            )}
+                          </div>
+                        )}
+                        
+                        {/* Attempts remaining */}
+                        <p className="text-xs text-muted-foreground text-center pt-2">
+                          {MAX_SPEAK_ATTEMPTS - speakAttempts} attempts remaining this session
+                        </p>
                       </div>
                     )}
                   </ScrollArea>
