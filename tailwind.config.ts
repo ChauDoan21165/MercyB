@@ -239,6 +239,16 @@ export default {
             transform: "scale(1.02)",
           },
         },
+        "mouth-talk": {
+          "0%, 100%": {
+            height: "4px",
+            borderRadius: "9999px",
+          },
+          "50%": {
+            height: "10px",
+            borderRadius: "50%",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -252,6 +262,7 @@ export default {
         "shimmer": "shimmer 2s infinite",
         "rainbow-border": "rainbow-border 3s linear infinite",
         "ripple": "ripple 0.6s ease-out",
+        "mouth-talk": "mouth-talk 0.3s ease-in-out infinite",
       },
       transitionDuration: {
         ...{

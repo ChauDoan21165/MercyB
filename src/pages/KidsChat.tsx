@@ -17,6 +17,7 @@ import { ProfileAvatarUpload } from "@/components/ProfileAvatarUpload";
 import { KIDS_TIER_IDS, type KidsTierId } from "@/lib/constants/tiers";
 import { MercyBladeThemeToggle } from "@/components/MercyBladeThemeToggle";
 import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
+import { CornerTalker } from "@/components/CornerTalker";
 
 interface KidsRoom {
   id: string;
@@ -652,6 +653,13 @@ const KidsChat = () => {
           </ScrollArea>
         </Card>
       </div>
+      {roomId && (
+        <CornerTalker
+          roomId={roomId}
+          introAudioEn={`${roomId}_intro_en.mp3`}
+          introAudioVi={`${roomId}_intro_vi.mp3`}
+        />
+      )}
     </div>
   );
 };

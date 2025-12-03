@@ -42,6 +42,7 @@ import { getTierRoute } from "@/lib/tierRoutes";
 import { useFavoriteRooms } from "@/hooks/useFavoriteRooms";
 import { useRecentRooms } from "@/hooks/useRecentRooms";
 import { useRoomAudioPreload } from "@/hooks/useRoomAudioPreload";
+import { CornerTalker } from "@/components/CornerTalker";
 import { Heart, Star, History, Clock } from "lucide-react";
 import {
   DropdownMenu,
@@ -1075,6 +1076,15 @@ questionsUsed={creditInfo?.questionsUsed ?? 0}
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
+    
+    {/* Talking guide - plays room intro audio */}
+    {roomId && (
+      <CornerTalker
+        roomId={roomId}
+        introAudioEn={`${roomId}_intro_en.mp3`}
+        introAudioVi={`${roomId}_intro_vi.mp3`}
+      />
+    )}
     </>
   );
 };
