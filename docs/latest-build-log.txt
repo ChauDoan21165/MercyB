@@ -1,0 +1,35 @@
+=== BUILD DIAGNOSIS LOG ===
+Date: 2025-12-03
+
+=== ISSUES IDENTIFIED ===
+
+1. CRITICAL: netlify.toml Misconfiguration
+   - File: netlify.toml
+   - Problem: Configured for Next.js (.next directory, @netlify/plugin-nextjs)
+   - This is a Vite/React project that outputs to dist/
+   - Status: FIXED
+
+2. DATA: Missing voiceQuiet key in EN companion JSON
+   - File: public/data/companion_lines_friend_en.json
+   - Problem: VI file had voiceQuiet, EN file did not
+   - getRandomCompanionLine('voiceQuiet') would fail for EN users
+   - Status: FIXED
+
+=== FILES MODIFIED ===
+
+1. netlify.toml
+   - Changed: publish = ".next" → publish = "dist"
+   - Removed: [[plugins]] package = "@netlify/plugin-nextjs"
+   - Fixed: redirect paths /public/data/* → /data/*
+
+2. public/data/companion_lines_friend_en.json
+   - Added: "voiceQuiet" array with 2 fallback messages
+
+=== VERIFICATION CHECKLIST ===
+[x] netlify.toml uses correct Vite config
+[x] Both companion JSON files have all required keys
+[x] No process.env references in client code
+[x] No NEXT_PUBLIC_ references (not needed for Vite)
+[x] Companion imports use fetch, not static imports
+
+=== PUBLISH SHOULD NOW SUCCEED ===
