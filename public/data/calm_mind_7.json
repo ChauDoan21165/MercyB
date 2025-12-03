@@ -1,0 +1,89 @@
+{
+  "path_slug": "calm-mind-7",
+  "days": [
+    {
+      "id": "calm_mind_7_day1",
+      "day_index": 1,
+      "audio": {
+        "en": "calm_mind_7_day1_en.mp3",
+        "vi": "calm_mind_7_day1_vi.mp3"
+      },
+      "content": {
+        "en": "Today’s calm begins in the simplest place: noticing your breath. Not fixing it, not controlling it — just noticing it arrive and leave. Your mind may try to fill the space with noise. Let it. You don’t need to wrestle the noise. Just hold one small intention: I am allowed to slow down.",
+        "vi": "Sự bình yên hôm nay bắt đầu từ một điều đơn giản: nhận biết hơi thở. Không chỉnh, không ép — chỉ nhận biết hơi đến rồi đi. Tâm trí có thể chen vào bằng tiếng ồn. Cứ để nó. Bạn không cần chống lại tiếng ồn. Chỉ giữ một ý nhỏ: Tôi được phép chậm lại."
+      }
+    },
+    {
+      "id": "calm_mind_7_day2",
+      "day_index": 2,
+      "audio": {
+        "en": "calm_mind_7_day2_en.mp3",
+        "vi": "calm_mind_7_day2_vi.mp3"
+      },
+      "content": {
+        "en": "A calm mind is not a silent mind. Noise becomes softer the moment you name it: “Ah, this is worry.” You don’t have to push it away. Naming the feeling is already an act of control.",
+        "vi": "Tâm trí bình yên không phải tâm trí không tiếng động. Tiếng ồn sẽ dịu lại khi bạn gọi tên nó: “À, đây là lo lắng.” Không cần xua đuổi. Chỉ cần gọi tên đã là một hành động kiểm soát."
+      }
+    },
+    {
+      "id": "calm_mind_7_day3",
+      "day_index": 3,
+      "audio": {
+        "en": "calm_mind_7_day3_en.mp3",
+        "vi": "calm_mind_7_day3_vi.mp3"
+      },
+      "content": {
+        "en": "Judgment makes noise louder. Your mind says: “You shouldn’t feel this.” But calm comes when we answer: “I’m allowed to feel the beginning of anything.”",
+        "vi": "Sự phán xét làm tiếng ồn lớn hơn. Tâm trí nói: “Mày không nên cảm thấy như thế.” Bình yên đến khi ta đáp lại: “Mình được phép cảm nhận bất cứ điều gì đang bắt đầu.”"
+      }
+    },
+    {
+      "id": "calm_mind_7_day4",
+      "day_index": 4,
+      "audio": {
+        "en": "calm_mind_7_day4_en.mp3",
+        "vi": "calm_mind_7_day4_vi.mp3"
+      },
+      "content": {
+        "en": "A calm mind lives in a calm body. Your shoulders, jaw, stomach — they hold the stories your mind skipped. Loosen one place today. Let your body teach your brain that safety is allowed.",
+        "vi": "Một tâm trí bình yên nằm trong một cơ thể bình yên. Vai, hàm, bụng — đều giữ những câu chuyện mà tâm trí đã bỏ qua. Hôm nay hãy thả lỏng một vị trí. Cơ thể sẽ dạy lại bộ não rằng bình an là điều được phép."
+      }
+    },
+    {
+      "id": "calm_mind_7_day5",
+      "day_index": 5,
+      "audio": {
+        "en": "calm_mind_7_day5_en.mp3",
+        "vi": "calm_mind_7_day5_vi.mp3"
+      },
+      "content": {
+        "en": "You can’t mute every thought. But you can turn the volume down. Imagine a dial in your mind labeled: “Intensity.” Set it one click lower — not to zero. Just lower.",
+        "vi": "Bạn không thể tắt mọi suy nghĩ. Nhưng bạn có thể giảm âm lượng. Hãy tưởng tượng một núm xoay mang tên: “Mức độ.” Vặn xuống một nấc — không phải về 0. Chỉ thấp hơn một chút."
+      }
+    },
+    {
+      "id": "calm_mind_7_day6",
+      "day_index": 6,
+      "audio": {
+        "en": "calm_mind_7_day6_en.mp3",
+        "vi": "calm_mind_7_day6_vi.mp3"
+      },
+      "content": {
+        "en": "A mind becomes calm when it feels seen. Speak to yourself the way you would comfort a friend: “I know this hurts. I’m staying with you.” Your nervous system listens.",
+        "vi": "Tâm trí trở nên bình yên khi được thấu hiểu. Hãy nói với chính mình như cách bạn an ủi một người bạn: “Mình biết điều này đau. Mình ở đây với bạn.” Hệ thần kinh sẽ lắng nghe."
+      }
+    },
+    {
+      "id": "calm_mind_7_day7",
+      "day_index": 7,
+      "audio": {
+        "en": "calm_mind_7_day7_en.mp3",
+        "vi": "calm_mind_7_day7_vi.mp3"
+      },
+      "content": {
+        "en": "Calm is not the absence of storms. It is a home inside you that the storm cannot move. And the more you visit that home, the easier it is to find it again.",
+        "vi": "Bình yên không phải là không có bão tố. Đó là một ngôi nhà bên trong bạn mà bão không thể lay chuyển. Bạn càng quay lại ngôi nhà ấy, thì việc tìm thấy nó càng dễ."
+      }
+    }
+  ]
+}
