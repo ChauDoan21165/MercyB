@@ -131,7 +131,7 @@ serve(async (req) => {
             type: "missing_tier",
             severity: "warning",
             message: `Missing tier: ${roomId}`,
-            fix: `Set tier field`,
+            fix: `Set tier to "Free / Miễn phí"`,
             autoFixable: true,
           });
           warnings++;
@@ -146,6 +146,32 @@ serve(async (req) => {
             message: `Missing bilingual title: ${roomId}`,
           });
           warnings++;
+        }
+
+        // Check schema_id
+        if (!room.schema_id) {
+          addIssue({
+            id: `schema-${roomId}`,
+            file: `${roomId}.json`,
+            type: "missing_tier",
+            severity: "info",
+            message: `Missing schema_id: ${roomId}`,
+            fix: `Set schema_id to "mercy-blade-v1"`,
+            autoFixable: true,
+          });
+        }
+
+        // Check domain
+        if (!room.domain) {
+          addIssue({
+            id: `domain-${roomId}`,
+            file: `${roomId}.json`,
+            type: "missing_tier",
+            severity: "info",
+            message: `Missing domain: ${roomId}`,
+            fix: `Set domain based on tier`,
+            autoFixable: true,
+          });
         }
 
         // Check entries
