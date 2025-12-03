@@ -1,0 +1,101 @@
+{
+  "biz_touch_base": {
+    "id": "biz_touch_base",
+    "category": "business",
+    "phrase_en": "touch base",
+    "meaning_en": "to briefly connect or update someone",
+    "meaning_vi": "liên lạc nhanh, cập nhật ngắn",
+    "example_en": "Let's touch base tomorrow about the next steps.",
+    "example_vi": "Ngày mai mình liên lạc nhanh để cập nhật bước tiếp theo nhé.",
+    "audio_en": "/audio/mercy_vip_business/touch_base_en.mp3",
+    "audio_vi": "/audio/mercy_vip_business/touch_base_vi.mp3"
+  },
+  "biz_follow_up": {
+    "id": "biz_follow_up",
+    "category": "business",
+    "phrase_en": "follow up",
+    "meaning_en": "to contact again to check progress or get an answer",
+    "meaning_vi": "liên hệ lại để kiểm tra tiến độ hoặc nhận phản hồi",
+    "example_en": "I'm just following up on the email I sent yesterday.",
+    "example_vi": "Mình chỉ liên hệ lại về email mình gửi hôm qua.",
+    "audio_en": "/audio/mercy_vip_business/follow_up_en.mp3",
+    "audio_vi": "/audio/mercy_vip_business/follow_up_vi.mp3"
+  },
+  "biz_run_with_it": {
+    "id": "biz_run_with_it",
+    "category": "business",
+    "phrase_en": "run with it",
+    "meaning_en": "to take an idea and develop it independently",
+    "meaning_vi": "nhận một ý tưởng và tự triển khai tiếp",
+    "example_en": "That's a great idea. Please run with it and see what you can build.",
+    "example_vi": "Đó là một ý tưởng hay. Bạn cứ triển khai tiếp và xem có thể làm được gì nhé.",
+    "audio_en": "/audio/mercy_vip_business/run_with_it_en.mp3",
+    "audio_vi": "/audio/mercy_vip_business/run_with_it_vi.mp3"
+  },
+  "biz_on_the_same_page": {
+    "id": "biz_on_the_same_page",
+    "category": "business",
+    "phrase_en": "be on the same page",
+    "meaning_en": "to share the same understanding in a team or meeting",
+    "meaning_vi": "cùng hiểu giống nhau trong một nhóm hoặc cuộc họp",
+    "example_en": "Before we close this meeting, I want to make sure we're all on the same page.",
+    "example_vi": "Trước khi kết thúc họp, mình muốn chắc là mọi người đều hiểu giống nhau.",
+    "audio_en": "/audio/mercy_vip_business/on_the_same_page_en.mp3",
+    "audio_vi": "/audio/mercy_vip_business/on_the_same_page_vi.mp3"
+  },
+  "biz_move_the_needle": {
+    "id": "biz_move_the_needle",
+    "category": "business",
+    "phrase_en": "move the needle",
+    "meaning_en": "to create real, noticeable progress",
+    "meaning_vi": "tạo ra tiến triển rõ rệt",
+    "example_en": "Let's focus on actions that truly move the needle.",
+    "example_vi": "Hãy tập trung vào những hành động thật sự tạo ra thay đổi.",
+    "audio_en": "/audio/mercy_vip_business/move_the_needle_en.mp3",
+    "audio_vi": "/audio/mercy_vip_business/move_the_needle_vi.mp3"
+  },
+  "biz_in_the_loop": {
+    "id": "biz_in_the_loop",
+    "category": "business",
+    "phrase_en": "keep someone in the loop",
+    "meaning_en": "to keep someone informed about a project or decision",
+    "meaning_vi": "giữ cho ai đó luôn được cập nhật thông tin",
+    "example_en": "Please keep me in the loop on any changes.",
+    "example_vi": "Có thay đổi gì bạn nhớ cập nhật cho mình nhé.",
+    "audio_en": "/audio/mercy_vip_business/in_the_loop_en.mp3",
+    "audio_vi": "/audio/mercy_vip_business/in_the_loop_vi.mp3"
+  },
+  "biz_take_the_lead": {
+    "id": "biz_take_the_lead",
+    "category": "business",
+    "phrase_en": "take the lead",
+    "meaning_en": "to accept responsibility for guiding a project or team",
+    "meaning_vi": "đảm nhận vai trò dẫn dắt một dự án hoặc nhóm",
+    "example_en": "You have a clear vision—please take the lead on this project.",
+    "example_vi": "Bạn có tầm nhìn rõ ràng—hãy đứng ra dẫn dắt dự án này nhé.",
+    "audio_en": "/audio/mercy_vip_business/take_the_lead_en.mp3",
+    "audio_vi": "/audio/mercy_vip_business/take_the_lead_vi.mp3"
+  },
+  "biz_close_the_loop": {
+    "id": "biz_close_the_loop",
+    "category": "business",
+    "phrase_en": "close the loop",
+    "meaning_en": "to finish all open tasks or questions on a topic",
+    "meaning_vi": "khép lại, xử lý xong tất cả đầu việc liên quan",
+    "example_en": "Let's close the loop on last week's action items.",
+    "example_vi": "Mình xử lý nốt các đầu việc tuần trước để khép lại nhé.",
+    "audio_en": "/audio/mercy_vip_business/close_the_loop_en.mp3",
+    "audio_vi": "/audio/mercy_vip_business/close_the_loop_vi.mp3"
+  },
+  "biz_from_big_picture_to_details": {
+    "id": "biz_from_big_picture_to_details",
+    "category": "business",
+    "phrase_en": "from the big picture down to the details",
+    "meaning_en": "to move from overall strategy to small actions",
+    "meaning_vi": "đi từ bức tranh tổng thể xuống từng chi tiết",
+    "example_en": "We'll look at the big picture first, then move down to the details.",
+    "example_vi": "Trước hết mình nhìn tổng thể, rồi mới xuống từng chi tiết.",
+    "audio_en": "/audio/mercy_vip_business/from_big_picture_to_details_en.mp3",
+    "audio_vi": "/audio/mercy_vip_business/from_big_picture_to_details_vi.mp3"
+  }
+}
