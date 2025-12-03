@@ -15,6 +15,10 @@ type LineCategory = 'greeting' | 'reflection' | 'completion';
 
 let cachedLines: CompanionLinesData | null = null;
 
+/**
+ * Hook for bilingual companion lines (legacy/Vietnamese support)
+ * For English-only friend mode, use companionLines.ts utility
+ */
 export function useCompanionLines() {
   const [lines, setLines] = useState<CompanionLinesData | null>(cachedLines);
   const [loading, setLoading] = useState(!cachedLines);

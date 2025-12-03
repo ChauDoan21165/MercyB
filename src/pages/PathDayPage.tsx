@@ -1,7 +1,8 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { usePath, usePathDay, useUserPathProgress, useCompleteDay } from '@/hooks/usePaths';
-import { useCompanionLines } from '@/hooks/useCompanionLines';
+import { useCompanionIntegration } from '@/hooks/useCompanionIntegration';
+import { useReflectionObserver } from '@/hooks/useReflectionObserver';
 import { CompanionBubble } from '@/components/companion/CompanionBubble';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -11,6 +12,7 @@ import { toast } from 'sonner';
 /**
  * PathDayPage - Displays a single day of a path with content, reflection, dare
  * Each section has bilingual text and audio bars
+ * Integrated with Companion Friend Mode
  */
 export default function PathDayPage() {
   const { slug, day } = useParams<{ slug: string; day: string }>();
@@ -21,38 +23,20 @@ export default function PathDayPage() {
   const { data: pathDay, isLoading: dayLoading } = usePathDay(path?.id, dayIndex);
   const { data: progress } = useUserPathProgress(path?.id);
   const completeDay = useCompleteDay();
-  const { getRandomLine } = useCompanionLines();
 
-  // Companion bubble states
-  const [greetingLine, setGreetingLine] = useState<{ en: string; vi: string } | null>(null);
-  const [showGreeting, setShowGreeting] = useState(false);
-  const [reflectionLine, setReflectionLine] = useState<{ en: string; vi: string } | null>(null);
-  const [showReflection, setShowReflection] = useState(false);
-  const [completionLine, setCompletionLine] = useState<{ en: string; vi: string } | null>(null);
-  const [showCompletion, setShowCompletion] = useState(false);
+  const roomId = `path-${slug}-day-${dayIndex}`;
+  
+  // Companion integration
+  const companion = useCompanionIntegration({
+    roomId,
+    isPathDay: true,
+    dayIndex,
+  });
 
-  const [reflectionSeen, setReflectionSeen] = useState(false);
-
-  // Show greeting on mount
-  useEffect(() => {
-    const line = getRandomLine('greeting');
-    if (line) {
-      setGreetingLine(line);
-      setShowGreeting(true);
-    }
-  }, [getRandomLine]);
-
-  // Track reflection section visibility
-  const handleReflectionVisible = useCallback(() => {
-    if (!reflectionSeen) {
-      setReflectionSeen(true);
-      const line = getRandomLine('reflection');
-      if (line) {
-        setReflectionLine(line);
-        setShowReflection(true);
-      }
-    }
-  }, [reflectionSeen, getRandomLine]);
+  // Reflection observer
+  const { ref: reflectionRef } = useReflectionObserver({
+    onVisible: companion.onReflectionVisible,
+  });
 
   const isCompleted = progress?.completed_days?.includes(dayIndex) || false;
   const isLastDay = path && dayIndex >= path.total_days;
@@ -67,12 +51,8 @@ export default function PathDayPage() {
         totalDays: path.total_days,
       });
 
-      // Show completion bubble
-      const line = getRandomLine('completion');
-      if (line) {
-        setCompletionLine(line);
-        setShowCompletion(true);
-      }
+      // Trigger companion day complete
+      companion.onDayComplete();
 
       toast.success('Day completed!');
 
@@ -111,16 +91,16 @@ export default function PathDayPage() {
 
   return (
     <div className="min-h-screen bg-background pb-24">
-      {/* Greeting Bubble */}
-      {greetingLine && (
-        <CompanionBubble
-          textEn={greetingLine.en}
-          textVi={greetingLine.vi}
-          show={showGreeting}
-          onHide={() => setShowGreeting(false)}
-          className="fixed top-20 left-1/2 -translate-x-1/2"
-        />
-      )}
+      {/* Companion Bubble */}
+      <div className="fixed bottom-32 left-1/2 -translate-x-1/2 z-50 max-w-[720px] w-full px-4">
+        <div className="flex justify-center">
+          <CompanionBubble
+            text={companion.bubbleData.text}
+            visible={companion.bubbleData.visible}
+            onClose={companion.hideBubble}
+          />
+        </div>
+      </div>
 
       {/* Header */}
       <div className="sticky top-0 z-40 bg-background/95 backdrop-blur border-b border-border">
@@ -149,7 +129,12 @@ export default function PathDayPage() {
             <div className="space-y-2">
               <p className="text-foreground leading-relaxed">{pathDay.content_en}</p>
               {pathDay.audio_content_en && (
-                <AudioBar src={pathDay.audio_content_en} label="EN" />
+                <AudioBar 
+                  src={pathDay.audio_content_en} 
+                  label="EN" 
+                  onPlay={companion.onAudioPlay}
+                  onEnded={companion.onAudioEnded}
+                />
               )}
             </div>
 
@@ -157,29 +142,20 @@ export default function PathDayPage() {
             <div className="space-y-2 pt-4 border-t border-border/50">
               <p className="text-muted-foreground leading-relaxed">{pathDay.content_vi}</p>
               {pathDay.audio_content_vi && (
-                <AudioBar src={pathDay.audio_content_vi} label="VI" />
+                <AudioBar 
+                  src={pathDay.audio_content_vi} 
+                  label="VI" 
+                  onPlay={companion.onAudioPlay}
+                  onEnded={companion.onAudioEnded}
+                />
               )}
             </div>
           </CardContent>
         </Card>
 
         {/* Reflection Section */}
-        <Card 
-          onMouseEnter={handleReflectionVisible}
-          onTouchStart={handleReflectionVisible}
-        >
-          <CardContent className="p-6 space-y-4 relative">
-            {/* Reflection Bubble */}
-            {reflectionLine && (
-              <CompanionBubble
-                textEn={reflectionLine.en}
-                textVi={reflectionLine.vi}
-                show={showReflection}
-                onHide={() => setShowReflection(false)}
-                className="absolute -top-16 left-1/2 -translate-x-1/2"
-              />
-            )}
-
+        <Card ref={reflectionRef as any}>
+          <CardContent className="p-6 space-y-4">
             <h2 className="text-lg font-semibold text-foreground">Reflection</h2>
             
             {/* English */}
@@ -224,17 +200,6 @@ export default function PathDayPage() {
         </Card>
       </div>
 
-      {/* Completion Bubble */}
-      {completionLine && (
-        <CompanionBubble
-          textEn={completionLine.en}
-          textVi={completionLine.vi}
-          show={showCompletion}
-          onHide={() => setShowCompletion(false)}
-          className="fixed bottom-32 left-1/2 -translate-x-1/2"
-        />
-      )}
-
       {/* Complete Button */}
       <div className="fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur border-t border-border p-4">
         <div className="max-w-[720px] mx-auto">
@@ -270,25 +235,54 @@ export default function PathDayPage() {
 /**
  * Simple audio bar component for playing path audio
  */
-function AudioBar({ src, label }: { src: string; label: string }) {
+function AudioBar({ 
+  src, 
+  label,
+  onPlay,
+  onEnded,
+}: { 
+  src: string; 
+  label: string;
+  onPlay?: () => void;
+  onEnded?: () => void;
+}) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [audio] = useState(() => new Audio(src));
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const hasPlayedRef = useRef(false);
 
   useEffect(() => {
-    audio.addEventListener('ended', () => setIsPlaying(false));
+    const audio = new Audio(src);
+    audioRef.current = audio;
+
+    const handleEnded = () => {
+      setIsPlaying(false);
+      onEnded?.();
+    };
+
+    audio.addEventListener('ended', handleEnded);
+    
     return () => {
       audio.pause();
-      audio.removeEventListener('ended', () => setIsPlaying(false));
+      audio.removeEventListener('ended', handleEnded);
     };
-  }, [audio]);
+  }, [src, onEnded]);
 
   const togglePlay = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
     if (isPlaying) {
       audio.pause();
       setIsPlaying(false);
     } else {
       audio.play();
       setIsPlaying(true);
+      
+      // Trigger onPlay only on first play
+      if (!hasPlayedRef.current) {
+        hasPlayedRef.current = true;
+        onPlay?.();
+      }
     }
   };
 

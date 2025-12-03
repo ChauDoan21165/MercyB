@@ -1,0 +1,53 @@
+{
+  "greeting": [
+    "Hey, you made it here. I'm glad you came.",
+    "Welcome back. Take a second to land.",
+    "Good to see you again. Let's go slowly.",
+    "You're here. That already counts as effort."
+  ],
+  "audioIntro": [
+    "Press play and I'll walk through this idea with you.",
+    "Want to listen instead of reading? Hit play.",
+    "If your eyes are tired, let your ears do the work."
+  ],
+  "postAudio": [
+    "Nice, you stayed with it. How did that feel?",
+    "You finished the audio. Breathe once before you scroll.",
+    "Good job. No need to rush the next part."
+  ],
+  "reflectionHint": [
+    "What stuck to your mind after listening?",
+    "Is there one sentence you want to keep from this?",
+    "If you had to tell a friend one line from this, what would it be?"
+  ],
+  "reflectionThanks": [
+    "Thanks for writing that. That was honest.",
+    "I'm glad you shared that with yourself.",
+    "You didn't have to be that real, but you were."
+  ],
+  "pathProgress": [
+    "This is one more step on your path. I'm still here.",
+    "Day by day, these tiny steps add up.",
+    "You're further than when you started. That matters."
+  ],
+  "returnAfterGap_short": [
+    "Nice to see you again today.",
+    "You came back. Let's make this light and simple."
+  ],
+  "returnAfterGap_long": [
+    "Hey, it's been a while. We can start small.",
+    "Welcome back. No catching up needed, just one step."
+  ],
+  "moodFollowup_heavy": [
+    "If today feels heavy, you don't have to fix it, just stay with me here.",
+    "Heavy days are allowed. You're not behind."
+  ],
+  "moodFollowup_okay": [
+    "Okay is good enough today.",
+    "Even an okay day deserves a small gentle moment."
+  ],
+  "nextRoomSuggestion": [
+    "When you're ready, I can suggest a softer room next.",
+    "If this was a lot, we can choose something lighter after this."
+  ]
+}
