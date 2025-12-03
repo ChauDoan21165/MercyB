@@ -5,12 +5,17 @@ import { Badge } from "@/components/ui/badge";
 import { Settings } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useUserAccess } from "@/hooks/useUserAccess";
+import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
 
 export const AdminFloatingButton = () => {
   const navigate = useNavigate();
   const { isAdmin } = useUserAccess();
+  const { isPlaying } = useMusicPlayer();
   const [unreadCount, setUnreadCount] = useState(0);
   const [versionIndicator, setVersionIndicator] = useState('A');
+
+  // When music is playing, GlobalPlayingIndicator shows admin controls instead
+  if (isPlaying) return null;
 
   useEffect(() => {
     // Fetch version indicator for everyone
@@ -135,11 +140,13 @@ export const AdminFloatingButton = () => {
 
   const isDev = import.meta.env.DEV;
 
+  // Only show when music is NOT playing (GlobalPlayingIndicator handles it when music plays)
+  // Position higher to avoid overlap with music player bar
   return (
-    <div className="fixed bottom-[66px] right-6 z-50 flex items-center gap-1">
-      {/* Version Indicator Dot - Change the character to track versions */}
+    <div className="fixed bottom-20 md:bottom-24 right-4 z-40 flex items-center gap-1">
+      {/* Version Indicator Dot */}
       <div 
-        className="h-4 w-4 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white text-[9px] font-bold shadow-sm"
+        className="h-5 w-5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white text-[10px] font-bold shadow-sm"
         title="App Version"
       >
         {versionIndicator}
@@ -150,7 +157,7 @@ export const AdminFloatingButton = () => {
           onClick={fetchVersionIndicator}
           size="sm"
           variant="outline"
-          className="rounded-full h-5 px-2 text-[9px] leading-none"
+          className="rounded-full h-6 px-2 text-[10px] leading-none"
         >
           Update
         </Button>
@@ -162,10 +169,10 @@ export const AdminFloatingButton = () => {
           onClick={() => navigate('/admin')}
           size="sm"
           variant="outline"
-          className="rounded-full shadow-sm h-8 w-8 p-0 bg-gray-800 hover:bg-gray-700 border-gray-600 relative"
+          className="rounded-full shadow-sm h-7 w-7 p-0 bg-gray-800 hover:bg-gray-700 border-gray-600 relative"
           title="Admin Dashboard"
         >
-          <Settings className="h-4 w-4 text-white" />
+          <Settings className="h-3.5 w-3.5 text-white" />
           {unreadCount > 0 && (
             <Badge
               variant="destructive"
