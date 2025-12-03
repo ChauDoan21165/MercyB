@@ -203,12 +203,26 @@ const App = () => {
                 <BrowserRouter>
                   <EnvironmentBanner />
                   
-                  <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur">
-                    <div className="mx-auto flex h-12 max-w-7xl items-center justify-between px-4">
-                      <div className="flex items-center gap-2">
+                  <header className="sticky top-0 z-40 border-b border-border/40 bg-background/80 backdrop-blur-sm">
+                    <div className="relative mx-auto max-w-[720px] h-12 px-4 flex items-center justify-between">
+                      {/* Left: navigation */}
+                      <div className="flex items-center gap-2 z-10">
                         <HomeButton />
                         <BackButton />
                       </div>
+                      
+                      {/* Center: Mercy Blade logo - truly centered */}
+                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                        <a 
+                          href="/" 
+                          className="font-semibold text-lg tracking-tight bg-gradient-to-r from-[hsl(var(--rainbow-magenta))] via-[hsl(var(--rainbow-purple))] to-[hsl(var(--rainbow-cyan))] bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+                        >
+                          Mercy Blade
+                        </a>
+                      </div>
+                      
+                      {/* Right: empty for now, tier map etc can go here */}
+                      <div className="flex items-center gap-2 z-10" />
                     </div>
                   </header>
                   
