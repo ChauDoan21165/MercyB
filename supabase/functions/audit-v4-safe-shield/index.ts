@@ -185,7 +185,8 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
             type: "missing_slug",
             severity: "warning",
             message: `Entry ${j} missing identifier in ${roomId}`,
-            autoFixable: false,
+            fix: `Generate slug: ${roomId}_entry_${j}`,
+            autoFixable: true,
           });
         }
 
@@ -286,6 +287,37 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
         if (!error) {
           fixesApplied++;
           log(`Extracted ${keywords.size} keywords for room: ${room.id}`);
+        }
+      }
+    }
+
+    // Repair: Fix entries with missing slugs
+    log("Checking for entries with missing slugs...");
+    for (const room of dbRooms || []) {
+      const entries = Array.isArray(room.entries) ? room.entries : [];
+      let modified = false;
+      
+      const fixedEntries = entries.map((entry, idx) => {
+        const e = entry as Record<string, unknown>;
+        if (!e.slug && !e.artifact_id && !e.id) {
+          modified = true;
+          return { ...e, slug: `${room.id}_entry_${idx}` };
+        }
+        return e;
+      });
+
+      if (modified) {
+        const { error } = await supabase
+          .from("rooms")
+          .update({ entries: fixedEntries })
+          .eq("id", room.id);
+
+        if (!error) {
+          const fixedCount = fixedEntries.filter((e, i) => 
+            (e as Record<string, unknown>).slug === `${room.id}_entry_${i}`
+          ).length;
+          fixesApplied += fixedCount;
+          log(`Generated ${fixedCount} slugs for room: ${room.id}`);
         }
       }
     }
