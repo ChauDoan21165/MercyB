@@ -1,0 +1,86 @@
+{
+  "day01": {
+    "id": "vocab_day_01",
+    "day": 1,
+    "theme_en": "Calm Mind Basics",
+    "theme_vi": "Nền Tảng Tâm Trí Bình Yên",
+    "focus_en": "Learn 5 core words: calm, tense, breath, focus, rest.",
+    "focus_vi": "Học 5 từ cốt lõi: calm, tense, breath, focus, rest.",
+    "suggestion_en": "Use each word in one simple sentence about your real day.",
+    "suggestion_vi": "Dùng mỗi từ trong một câu đơn giản về ngày thực tế của bạn.",
+    "audio_en": "/audio/mercy_vocab/day01_en.mp3",
+    "audio_vi": "/audio/mercy_vocab/day01_vi.mp3"
+  },
+  "day02": {
+    "id": "vocab_day_02",
+    "day": 2,
+    "theme_en": "Feelings – Soft Words",
+    "theme_vi": "Cảm Xúc – Từ Ngữ Dịu",
+    "focus_en": "Learn: overwhelmed, relieved, hopeful, drained, steady.",
+    "focus_vi": "Học: overwhelmed, relieved, hopeful, drained, steady.",
+    "suggestion_en": "Choose one word that matches your mood and write one sentence.",
+    "suggestion_vi": "Chọn một từ đúng với tâm trạng của bạn và viết một câu.",
+    "audio_en": "/audio/mercy_vocab/day02_en.mp3",
+    "audio_vi": "/audio/mercy_vocab/day02_vi.mp3"
+  },
+  "day03": {
+    "id": "vocab_day_03",
+    "day": 3,
+    "theme_en": "Daily Energy",
+    "theme_vi": "Năng Lượng Hằng Ngày",
+    "focus_en": "Learn: routine, boost, crash, balance, pace.",
+    "focus_vi": "Học: routine, boost, crash, balance, pace.",
+    "suggestion_en": "Describe your current daily routine using at least two new words.",
+    "suggestion_vi": "Mô tả thói quen hằng ngày của bạn dùng ít nhất hai từ mới.",
+    "audio_en": "/audio/mercy_vocab/day03_en.mp3",
+    "audio_vi": "/audio/mercy_vocab/day03_vi.mp3"
+  },
+  "day04": {
+    "id": "vocab_day_04",
+    "day": 4,
+    "theme_en": "Support & Connection",
+    "theme_vi": "Sự Hỗ Trợ & Gắn Kết",
+    "focus_en": "Learn: support, listener, boundary, trust, comfort.",
+    "focus_vi": "Học: support, listener, boundary, trust, comfort.",
+    "suggestion_en": "Think of one person who supports you and describe them with two words.",
+    "suggestion_vi": "Nghĩ về một người luôn hỗ trợ bạn và miêu tả họ bằng hai từ mới.",
+    "audio_en": "/audio/mercy_vocab/day04_en.mp3",
+    "audio_vi": "/audio/mercy_vocab/day04_vi.mp3"
+  },
+  "day05": {
+    "id": "vocab_day_05",
+    "day": 5,
+    "theme_en": "Study & Focus",
+    "theme_vi": "Học Tập & Tập Trung",
+    "focus_en": "Learn: distraction, deadline, progress, review, concentrate.",
+    "focus_vi": "Học: distraction, deadline, progress, review, concentrate.",
+    "suggestion_en": "Write one sentence about how you deal with distractions.",
+    "suggestion_vi": "Viết một câu về cách bạn đối diện với sự xao nhãng.",
+    "audio_en": "/audio/mercy_vocab/day05_en.mp3",
+    "audio_vi": "/audio/mercy_vocab/day05_vi.mp3"
+  },
+  "day06": {
+    "id": "vocab_day_06",
+    "day": 6,
+    "theme_en": "Body & Signals",
+    "theme_vi": "Cơ Thể & Tín Hiệu",
+    "focus_en": "Learn: tension, headache, appetite, posture, fatigue.",
+    "focus_vi": "Học: tension, headache, appetite, posture, fatigue.",
+    "suggestion_en": "Notice one signal from your body today and name it in English.",
+    "suggestion_vi": "Để ý một tín hiệu từ cơ thể hôm nay và gọi tên nó bằng tiếng Anh.",
+    "audio_en": "/audio/mercy_vocab/day06_en.mp3",
+    "audio_vi": "/audio/mercy_vocab/day06_vi.mp3"
+  },
+  "day07": {
+    "id": "vocab_day_07",
+    "day": 7,
+    "theme_en": "Week 1 Review",
+    "theme_vi": "Ôn Lại Tuần 1",
+    "focus_en": "Review all previous words. Choose five favorites.",
+    "focus_vi": "Ôn lại toàn bộ từ đã học. Chọn năm từ bạn thích nhất.",
+    "suggestion_en": "Use your five favorite words to describe your week.",
+    "suggestion_vi": "Dùng năm từ yêu thích để miêu tả tuần vừa qua.",
+    "audio_en": "/audio/mercy_vocab/day07_en.mp3",
+    "audio_vi": "/audio/mercy_vocab/day07_vi.mp3"
+  }
+}
