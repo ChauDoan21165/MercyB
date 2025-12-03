@@ -63,6 +63,7 @@ type DbRoom = {
   entries?: unknown;
 };
 
+// MAIN AUDIT
 async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
   const logs: string[] = [];
   const issues: AuditIssue[] = [];
@@ -75,7 +76,7 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
 
   log(`Starting Safe Shield audit in ${mode} mode`);
 
-  // Phase 1 – load rooms from DB
+  // Phase 1 – load rooms
   const { data: dbRooms, error: dbError } = await supabase
     .from("rooms")
     .select(
@@ -93,12 +94,12 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
   let scannedRooms = 0;
   const seenIds = new Set<string>();
 
-  // Phase 2 – scan rooms, collect issues
+  // Phase 2 – scan rooms and collect issues
   for (const room of rooms) {
     const roomId = room.id;
     scannedRooms++;
 
-    // Duplicate ID
+    // Duplicate id
     if (seenIds.has(roomId)) {
       issues.push({
         id: `dup-${roomId}`,
@@ -125,7 +126,7 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
       });
     }
 
-    // Missing EN/VI titles
+    // Missing titles EN/VI
     if (!room.title_en || !room.title_vi) {
       issues.push({
         id: `title-${roomId}`,
@@ -163,20 +164,7 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
       });
     }
 
-    // Missing keywords
-    if (!room.keywords || room.keywords.length === 0) {
-      issues.push({
-        id: `keywords-${roomId}`,
-        file: `${roomId}.json`,
-        type: "missing_keywords",
-        severity: "warning",
-        message: `Missing keywords for room: ${roomId}`,
-        fix: "Extract keywords from entries",
-        autoFixable: true,
-      });
-    }
-
-    // Entries & audio checks
+    // Entries
     const entries = Array.isArray(room.entries)
       ? (room.entries as any[])
       : [];
@@ -193,6 +181,41 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
       continue;
     }
 
+    // --- NEW: detect "pink room" problem (no entry keywords at all) ---
+    const hasAnyEntryKeywords = entries.some((raw) => {
+      const e = raw as Record<string, any>;
+      const kwEn = e.keywords_en as string[] | undefined;
+      const kwVi = e.keywords_vi as string[] | undefined;
+      return (Array.isArray(kwEn) && kwEn.length > 0) ||
+             (Array.isArray(kwVi) && kwVi.length > 0);
+    });
+
+    if (!hasAnyEntryKeywords) {
+      issues.push({
+        id: `entry-keywords-room-${roomId}`,
+        file: `${roomId}.json`,
+        type: "missing_entry_keywords_room",
+        severity: "warning",
+        message:
+          `Room ${roomId} has no entry keywords; keyword panel will appear empty in the UI.`,
+        autoFixable: false, // manual or Lovable-assisted fix
+      });
+    }
+
+    // Missing room-level keywords[] (for search)
+    if (!room.keywords || room.keywords.length === 0) {
+      issues.push({
+        id: `keywords-${roomId}`,
+        file: `${roomId}.json`,
+        type: "missing_keywords",
+        severity: "warning",
+        message: `Missing room-level keywords for room: ${roomId}`,
+        fix: "Extract keywords from entry keywords_en/keywords_vi",
+        autoFixable: true,
+      });
+    }
+
+    // Entry-level structural checks (slug + audio)
     for (let index = 0; index < entries.length; index++) {
       const entry = entries[index] as Record<string, any>;
       const entryId =
@@ -201,7 +224,6 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
         (entry.id as string | undefined) ||
         `entry-${index}`;
 
-      // Missing identifier (slug/artifact_id/id)
       if (!entry.slug && !entry.artifact_id && !entry.id) {
         issues.push({
           id: `slug-${roomId}-${index}`,
@@ -213,7 +235,6 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
         });
       }
 
-      // Missing audio
       const audio: string | undefined =
         entry.audio || entry.audio_en;
 
@@ -231,11 +252,11 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
     }
   }
 
-  // Phase 3 – Safe repairs (only when mode === "repair")
+  // Phase 3 – SAFE repairs (DB only)
   if (mode === "repair" && rooms.length > 0) {
     log("Starting Safe Shield repairs (DB only, no deletions)");
 
-    // 1) Default tier where missing
+    // 1) default tier
     const roomsMissingTier = rooms.filter((r) => !r.tier);
     for (const room of roomsMissingTier) {
       const { error } = await supabase
@@ -249,7 +270,7 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
       }
     }
 
-    // 2) Default schema_id where missing
+    // 2) default schema_id
     const roomsMissingSchema = rooms.filter((r) => !r.schema_id);
     for (const room of roomsMissingSchema) {
       const { error } = await supabase
@@ -263,7 +284,7 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
       }
     }
 
-    // 3) Default domain inferred from tier
+    // 3) infer domain from tier
     const roomsMissingDomain = rooms.filter((r) => !r.domain && r.tier);
     for (const room of roomsMissingDomain) {
       const tierLower = (room.tier || "").toLowerCase();
@@ -285,7 +306,7 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
       }
     }
 
-    // 4) Extract keywords from entries when keywords[] is empty
+    // 4) fill room.keywords from entries' keywords_en/keywords_vi
     const roomsMissingKeywords = rooms.filter(
       (r) => !r.keywords || r.keywords.length === 0,
     );
@@ -345,7 +366,7 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
   return { issues, summary, fixesApplied, logs };
 }
 
-// HTTP handler – matches supabase.functions.invoke("audit-v4-safe-shield", { body: { mode } })
+// HTTP HANDLER
 serve(async (req: Request): Promise<Response> => {
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
@@ -365,7 +386,7 @@ serve(async (req: Request): Promise<Response> => {
       ok: true,
       issues: result.issues,
       fixesApplied: result.fixesApplied,
-      fixed: result.fixesApplied, // for V5/V6
+      fixed: result.fixesApplied,
       logs: result.logs,
       summary: result.summary,
     };
