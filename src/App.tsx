@@ -97,6 +97,7 @@ const UserSupportConsole = lazy(() => import("./pages/admin/UserSupportConsole")
 const SystemLogs = lazy(() => import("./pages/admin/SystemLogs"));
 const FastAudioScannerPage = lazy(() => import("./pages/admin/FastAudioScannerPage"));
 const EntriesWithoutAudioPage = lazy(() => import("./pages/admin/EntriesWithoutAudioPage"));
+const AuditSafeShield = lazy(() => import("./components/admin/AuditSafeShield"));
 
 // Other pages - lazy loaded
 const MeaningOfLife = lazy(() => import("./pages/MeaningOfLife"));
@@ -292,6 +293,7 @@ const App = () => {
            <Route path="/admin/room-health/:tier" element={<AdminRoute><UnifiedRoomHealthCheck /></AdminRoute>} />
            <Route path="/admin/system-health" element={<AdminRoute><SystemHealth /></AdminRoute>} />
            <Route path="/admin/room-health-v2" element={<AdminRoute><RoomHealthCheckV2 /></AdminRoute>} />
+           <Route path="/admin/audit" element={<AdminRoute><AuditSafeShield /></AdminRoute>} />
           <Route path="/admin/edge-functions" element={<AdminRoute><EdgeFunctions /></AdminRoute>} />
           <Route path="/redeem-gift" element={<RedeemGiftCode />} />
           <Route path="/user-music-upload" element={<UserMusicUpload />} />
