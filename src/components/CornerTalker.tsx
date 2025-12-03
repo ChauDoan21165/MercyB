@@ -1,48 +1,100 @@
-import { useEffect, useState } from "react";
-import { Info } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Info, Volume2, VolumeX, RotateCw } from "lucide-react";
 
-const messages = [
+type Props = {
+  roomId: string;
+  introEn: string;
+  introVi: string;
+  introAudioUrl?: string;
+};
+
+const tips = [
   {
-    id: "welcome",
-    en: "Welcome to Mercy Blade! Tap a keyword bubble to start exploring a room.",
-    vi: "Chào mừng bạn đến với Mercy Blade! Hãy nhấp vào bong bóng từ khóa để bắt đầu khám phá phòng.",
+    id: "keywords",
+    en: "Tap a keyword bubble to jump to the topic you care about most.",
+    vi: "Hãy nhấp vào bong bóng từ khóa để đi thẳng tới chủ đề bạn quan tâm nhất.",
   },
   {
-    id: "rooms",
-    en: "Each room is a mini library. Scroll keywords, then tap to see the essay and audio.",
-    vi: "Mỗi phòng là một thư viện nhỏ. Hãy cuộn danh sách từ khóa, sau đó chạm để xem bài viết và nghe audio.",
-  },
-  {
-    id: "guide",
-    en: "Not sure where to go? Open the Tier Map at the top right and follow your curiosity.",
-    vi: "Chưa biết bắt đầu từ đâu? Mở Tier Map ở góc trên bên phải và đi theo sự tò mò của bạn.",
+    id: "audio",
+    en: "You can read and listen together to make the ideas sink in deeper.",
+    vi: "Bạn có thể vừa đọc vừa nghe để ý tưởng thấm sâu hơn.",
   },
 ];
 
-export function CornerTalker() {
+export function CornerTalker({ roomId, introEn, introVi, introAudioUrl }: Props) {
   const [open, setOpen] = useState(true);
-  const [step, setStep] = useState(0);
-  const [talking, setTalking] = useState(true);
+  const [talking, setTalking] = useState(false);
+  const [tipIndex, setTipIndex] = useState(0);
+  const [enabled, setEnabled] = useState(true);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  // Load user preference
   useEffect(() => {
-    // cycle messages every 18s, pause talking between
-    const interval = setInterval(() => {
-      setTalking(true);
-      setStep((prev) => (prev + 1) % messages.length);
-      setTimeout(() => setTalking(false), 5000);
-    }, 18000);
-    // stop mouth after initial 5s
-    const timeout = setTimeout(() => setTalking(false), 5000);
-    return () => {
-      clearInterval(interval);
-      clearTimeout(timeout);
-    };
+    const stored = window.localStorage.getItem("mb_talker_enabled");
+    if (stored === "false") setEnabled(false);
   }, []);
 
-  const msg = messages[step];
+  // Set up audio element
+  useEffect(() => {
+    if (!introAudioUrl) return;
+    const audio = new Audio(introAudioUrl);
+    audioRef.current = audio;
+
+    const stopTalking = () => setTalking(false);
+    audio.addEventListener("ended", stopTalking);
+    audio.addEventListener("pause", stopTalking);
+
+    return () => {
+      audio.pause();
+      audio.removeEventListener("ended", stopTalking);
+      audio.removeEventListener("pause", stopTalking);
+    };
+  }, [introAudioUrl]);
+
+  // Auto-play intro once per room when enabled
+  useEffect(() => {
+    if (!enabled || !introAudioUrl) return;
+    const key = `mb_talker_intro_played_${roomId}`;
+    if (window.sessionStorage.getItem(key) === "yes") return;
+
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play().catch(() => {});
+      setTalking(true);
+      window.sessionStorage.setItem(key, "yes");
+      setTimeout(() => setTalking(false), 6000);
+    }
+  }, [roomId, enabled, introAudioUrl]);
+
+  // Cycle tips quietly
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTipIndex((i) => (i + 1) % tips.length);
+    }, 20000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentTip = tips[tipIndex];
+
+  const handleReplayIntro = () => {
+    if (!introAudioUrl || !audioRef.current || !enabled) return;
+    audioRef.current.currentTime = 0;
+    audioRef.current.play().catch(() => {});
+    setTalking(true);
+    setTimeout(() => setTalking(false), 6000);
+  };
+
+  const handleToggleEnabled = () => {
+    const next = !enabled;
+    setEnabled(next);
+    window.localStorage.setItem("mb_talker_enabled", next ? "true" : "false");
+    if (!next && audioRef.current) {
+      audioRef.current.pause();
+    }
+  };
 
   if (!open) {
-    // collapsed pill (tiny face only)
+    // Collapsed pill
     return (
       <button
         className="fixed bottom-20 right-4 z-40 flex items-center justify-center rounded-full bg-card/90 shadow-lg border border-border w-10 h-10 hover:shadow-xl transition"
@@ -54,9 +106,7 @@ export function CornerTalker() {
             <span>•</span>
             <span>•</span>
           </div>
-          <div
-            className="mb-mouth absolute bottom-2 left-1/2 -translate-x-1/2 w-3 h-[3px] rounded-full bg-foreground"
-          />
+          <div className="mb-mouth absolute bottom-2 left-1/2 -translate-x-1/2 w-3 h-[3px] rounded-full bg-foreground" />
         </div>
       </button>
     );
@@ -64,27 +114,48 @@ export function CornerTalker() {
 
   return (
     <div className="fixed bottom-20 right-4 z-40 flex gap-3 items-end max-w-xs sm:max-w-sm">
-      {/* speech bubble */}
+      {/* Speech bubble */}
       <div className="bg-card/95 backdrop-blur-sm shadow-xl border border-border rounded-2xl px-3.5 py-2.5 text-xs leading-snug text-foreground">
-        <div className="mb-1 flex items-center gap-1.5 text-[11px] font-semibold text-primary">
-          <Info className="w-3 h-3" />
-          <span>Mercy Guide</span>
+        <div className="mb-1 flex items-center justify-between gap-1.5 text-[11px] font-semibold text-primary">
+          <span className="inline-flex items-center gap-1">
+            <Info className="w-3 h-3" />
+            <span>Mercy Guide</span>
+          </span>
+          <button
+            onClick={handleToggleEnabled}
+            className="inline-flex items-center gap-1 text-[11px] text-muted-foreground hover:text-foreground transition-colors"
+          >
+            {enabled ? <Volume2 className="w-3 h-3" /> : <VolumeX className="w-3 h-3" />}
+          </button>
         </div>
+
+        {/* Room intro text */}
         <p className="mb-1">
           <span className="font-semibold text-foreground">EN: </span>
-          {msg.en}
+          {introEn}
         </p>
-        <p>
+        <p className="mb-2">
           <span className="font-semibold text-foreground">VI: </span>
-          {msg.vi}
+          {introVi}
         </p>
-        <div className="mt-2 flex items-center justify-between gap-2">
-          <button
-            className="text-[11px] underline text-muted-foreground hover:text-foreground transition-colors"
-            onClick={() => setStep((s) => (s + 1) % messages.length)}
-          >
-            Next tip
-          </button>
+
+        {/* Rotating tip */}
+        <p className="text-[11px] text-muted-foreground mb-2">
+          <span className="font-semibold">Tip: </span>
+          {currentTip.en} / {currentTip.vi}
+        </p>
+
+        <div className="flex items-center justify-between gap-2">
+          {introAudioUrl && (
+            <button
+              className="text-[11px] inline-flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors disabled:opacity-50"
+              onClick={handleReplayIntro}
+              disabled={!enabled}
+            >
+              <RotateCw className="w-3 h-3" />
+              Replay intro
+            </button>
+          )}
           <button
             className="text-[11px] text-muted-foreground/70 hover:text-muted-foreground transition-colors"
             onClick={() => setOpen(false)}
@@ -94,18 +165,16 @@ export function CornerTalker() {
         </div>
       </div>
 
-      {/* tiny cartoon face */}
+      {/* Tiny cartoon face */}
       <div className="relative w-11 h-11 rounded-full bg-gradient-to-tr from-[hsl(var(--rainbow-magenta))] to-[hsl(var(--rainbow-cyan))] shadow-lg flex items-center justify-center shrink-0">
-        {/* eyes */}
         <div className="absolute inset-x-2 top-2 flex justify-between text-[7px] text-foreground">
           <span>•</span>
           <span>•</span>
         </div>
-        {/* mouth */}
         <div
           className={
             "mb-mouth absolute bottom-2 left-1/2 -translate-x-1/2 w-3.5 h-[4px] rounded-full bg-foreground " +
-            (talking ? "mb-mouth-talking" : "")
+            (enabled && talking ? "mb-mouth-talking" : "")
           }
         />
       </div>
