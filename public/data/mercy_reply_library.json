@@ -1,0 +1,182 @@
+{
+  "greeting_return_short_break": {
+    "id": "greeting_return_short_break",
+    "category": "greeting",
+    "context": "user returns within 24 hours",
+    "text_en": "Welcome back. Even a small visit like this is already a kind act for yourself.",
+    "text_vi": "Chào mừng bạn quay lại. Chỉ cần ghé vào một chút như thế này đã là một hành động tử tế với chính mình rồi.",
+    "audio_en": "/audio/mercy/greeting_return_short_break_en.mp3",
+    "audio_vi": "/audio/mercy/greeting_return_short_break_vi.mp3"
+  },
+  "greeting_return_long_break": {
+    "id": "greeting_return_long_break",
+    "category": "greeting",
+    "context": "user returns after many days",
+    "text_en": "It has been a little while. We can start with something very small today.",
+    "text_vi": "Cũng khá lâu rồi mình mới gặp nhau. Hôm nay mình bắt đầu bằng một điều thật nhỏ thôi nhé.",
+    "audio_en": "/audio/mercy/greeting_return_long_break_en.mp3",
+    "audio_vi": "/audio/mercy/greeting_return_long_break_vi.mp3"
+  },
+  "greeting_first_time": {
+    "id": "greeting_first_time",
+    "category": "greeting",
+    "context": "user's first visit",
+    "text_en": "Hello. This might be your first time here. Take everything at your own pace.",
+    "text_vi": "Xin chào. Có thể đây là lần đầu bạn ghé thăm. Hãy đi theo nhịp của riêng bạn nhé.",
+    "audio_en": "/audio/mercy/greeting_first_time_en.mp3",
+    "audio_vi": "/audio/mercy/greeting_first_time_vi.mp3"
+  },
+  "praise_show_up": {
+    "id": "praise_show_up",
+    "category": "praise",
+    "context": "user opens a room/path",
+    "text_en": "You showed up. That alone is a quiet kind of courage.",
+    "text_vi": "Việc bạn có mặt ở đây đã là một dạng can đảm rất dịu rồi.",
+    "audio_en": "/audio/mercy/praise_show_up_en.mp3",
+    "audio_vi": "/audio/mercy/praise_show_up_vi.mp3"
+  },
+  "praise_completed_session": {
+    "id": "praise_completed_session",
+    "category": "praise",
+    "context": "user finishes a room or path day",
+    "text_en": "You finished. That small step is real progress.",
+    "text_vi": "Bạn đã hoàn thành. Bước nhỏ đó là tiến bộ thật sự.",
+    "audio_en": "/audio/mercy/praise_completed_session_en.mp3",
+    "audio_vi": "/audio/mercy/praise_completed_session_vi.mp3"
+  },
+  "praise_consistency": {
+    "id": "praise_consistency",
+    "category": "praise",
+    "context": "user has studied multiple days",
+    "text_en": "You keep coming back. That consistency matters more than perfection.",
+    "text_vi": "Bạn cứ quay lại đây. Sự kiên trì đó quan trọng hơn sự hoàn hảo.",
+    "audio_en": "/audio/mercy/praise_consistency_en.mp3",
+    "audio_vi": "/audio/mercy/praise_consistency_vi.mp3"
+  },
+  "breathing_intro": {
+    "id": "breathing_intro",
+    "category": "breathing",
+    "context": "user chooses breathe/relax",
+    "text_en": "Let's slow down together for a moment. You don't have to fix anything, just breathe with me.",
+    "text_vi": "Mình cùng chậm lại một chút nhé. Bạn không cần sửa chữa gì cả, chỉ cần thở cùng mình thôi.",
+    "audio_en": "/audio/mercy/breathing_intro_en.mp3",
+    "audio_vi": "/audio/mercy/breathing_intro_vi.mp3"
+  },
+  "breathing_complete": {
+    "id": "breathing_complete",
+    "category": "breathing",
+    "context": "user finishes breathing exercise",
+    "text_en": "That was good. Your body thanks you for that pause.",
+    "text_vi": "Tốt lắm. Cơ thể bạn cảm ơn vì khoảng nghỉ đó.",
+    "audio_en": "/audio/mercy/breathing_complete_en.mp3",
+    "audio_vi": "/audio/mercy/breathing_complete_vi.mp3"
+  },
+  "calm_heavy_mood": {
+    "id": "calm_heavy_mood",
+    "category": "calm",
+    "context": "user indicates heavy or anxious mood",
+    "text_en": "It sounds like you're carrying something heavy right now. That's okay. We can go very gently.",
+    "text_vi": "Có vẻ như bạn đang mang theo điều gì đó nặng nề. Không sao cả. Mình sẽ đi rất nhẹ nhàng.",
+    "audio_en": "/audio/mercy/calm_heavy_mood_en.mp3",
+    "audio_vi": "/audio/mercy/calm_heavy_mood_vi.mp3"
+  },
+  "calm_encouragement": {
+    "id": "calm_encouragement",
+    "category": "calm",
+    "context": "general encouragement when user seems down",
+    "text_en": "You don't have to be strong all the time. Just being here is enough for now.",
+    "text_vi": "Bạn không cần phải mạnh mẽ mọi lúc. Chỉ cần ở đây như thế này đã là đủ rồi.",
+    "audio_en": "/audio/mercy/calm_encouragement_en.mp3",
+    "audio_vi": "/audio/mercy/calm_encouragement_vi.mp3"
+  },
+  "suggestion_calm_mind": {
+    "id": "suggestion_calm_mind",
+    "category": "suggestion",
+    "context": "suggest Calm Mind path",
+    "text_en": "If you want, we can try a short calming exercise together.",
+    "text_vi": "Nếu bạn muốn, mình có thể thử một bài tập nhỏ giúp bình tĩnh cùng nhau.",
+    "audio_en": "/audio/mercy/suggestion_calm_mind_en.mp3",
+    "audio_vi": "/audio/mercy/suggestion_calm_mind_vi.mp3"
+  },
+  "suggestion_continue_path": {
+    "id": "suggestion_continue_path",
+    "category": "suggestion",
+    "context": "suggest continuing current path",
+    "text_en": "You were on a path. Want to continue where you left off?",
+    "text_vi": "Bạn đang đi trên một lộ trình. Muốn tiếp tục từ chỗ dừng lại không?",
+    "audio_en": "/audio/mercy/suggestion_continue_path_en.mp3",
+    "audio_vi": "/audio/mercy/suggestion_continue_path_vi.mp3"
+  },
+  "end_session_gentle": {
+    "id": "end_session_gentle",
+    "category": "end_of_session",
+    "context": "user finishes session",
+    "text_en": "That's a good place to stop. See you next time.",
+    "text_vi": "Đây là chỗ dừng tốt rồi. Hẹn gặp lại bạn.",
+    "audio_en": "/audio/mercy/end_session_gentle_en.mp3",
+    "audio_vi": "/audio/mercy/end_session_gentle_vi.mp3"
+  },
+  "end_session_proud": {
+    "id": "end_session_proud",
+    "category": "end_of_session",
+    "context": "user completed something meaningful",
+    "text_en": "You did well today. Rest now, and come back when you're ready.",
+    "text_vi": "Hôm nay bạn làm tốt lắm. Nghỉ ngơi đi, và quay lại khi nào bạn sẵn sàng nhé.",
+    "audio_en": "/audio/mercy/end_session_proud_en.mp3",
+    "audio_vi": "/audio/mercy/end_session_proud_vi.mp3"
+  },
+  "english_coach_start": {
+    "id": "english_coach_start",
+    "category": "english_coach",
+    "context": "user starts English practice",
+    "text_en": "Let's practice some English together. No pressure, just exploration.",
+    "text_vi": "Mình cùng luyện tiếng Anh một chút nhé. Không áp lực, chỉ là khám phá thôi.",
+    "audio_en": "/audio/mercy/english_coach_start_en.mp3",
+    "audio_vi": "/audio/mercy/english_coach_start_vi.mp3"
+  },
+  "pronunciation_praise_good": {
+    "id": "pronunciation_praise_good",
+    "category": "pronunciation_praise",
+    "context": "user did well on pronunciation",
+    "text_en": "That sounded clear. Your effort is showing.",
+    "text_vi": "Nghe rõ ràng lắm. Nỗ lực của bạn đang thể hiện rồi đó.",
+    "audio_en": "/audio/mercy/pronunciation_praise_good_en.mp3",
+    "audio_vi": "/audio/mercy/pronunciation_praise_good_vi.mp3"
+  },
+  "pronunciation_praise_try": {
+    "id": "pronunciation_praise_try",
+    "category": "pronunciation_praise",
+    "context": "user tried but needs improvement",
+    "text_en": "Good try. Speaking out loud already takes courage.",
+    "text_vi": "Cố gắng tốt lắm. Nói thành tiếng đã cần can đảm rồi.",
+    "audio_en": "/audio/mercy/pronunciation_praise_try_en.mp3",
+    "audio_vi": "/audio/mercy/pronunciation_praise_try_vi.mp3"
+  },
+  "teacher_yesterday_studied": {
+    "id": "teacher_yesterday_studied",
+    "category": "teacher_yesterday_today",
+    "context": "recap when user studied yesterday",
+    "text_en": "Yesterday you took time to learn. That rhythm is building something.",
+    "text_vi": "Hôm qua bạn đã dành thời gian để học. Nhịp độ đó đang xây dựng nên điều gì đó.",
+    "audio_en": "/audio/mercy/teacher_yesterday_studied_en.mp3",
+    "audio_vi": "/audio/mercy/teacher_yesterday_studied_vi.mp3"
+  },
+  "teacher_no_yesterday": {
+    "id": "teacher_no_yesterday",
+    "category": "teacher_yesterday_today",
+    "context": "no study log from yesterday",
+    "text_en": "We don't have a log from yesterday. That's okay. Today is a fresh start.",
+    "text_vi": "Hôm qua mình không có ghi nhận nào. Không sao cả. Hôm nay là một khởi đầu mới.",
+    "audio_en": "/audio/mercy/teacher_no_yesterday_en.mp3",
+    "audio_vi": "/audio/mercy/teacher_no_yesterday_vi.mp3"
+  },
+  "teacher_today_start": {
+    "id": "teacher_today_start",
+    "category": "teacher_yesterday_today",
+    "context": "encourage starting today",
+    "text_en": "Today we can start with just 5-10 minutes. Small is enough.",
+    "text_vi": "Hôm nay mình chỉ cần bắt đầu với 5-10 phút thôi. Nhỏ thôi cũng đủ rồi.",
+    "audio_en": "/audio/mercy/teacher_today_start_en.mp3",
+    "audio_vi": "/audio/mercy/teacher_today_start_vi.mp3"
+  }
+}
