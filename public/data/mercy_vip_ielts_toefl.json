@@ -1,0 +1,90 @@
+{
+  "ielts_toefl_in_terms_of": {
+    "id": "ielts_toefl_in_terms_of",
+    "category": "academic",
+    "phrase_en": "in terms of",
+    "meaning_en": "used to specify the aspect you are talking about",
+    "meaning_vi": "xét về mặt…, nói về khía cạnh…",
+    "example_en": "In terms of mental health, regular sleep is essential.",
+    "example_vi": "Xét về mặt sức khỏe tinh thần, giấc ngủ đều đặn là rất quan trọng.",
+    "audio_en": "/audio/mercy_vip_ielts/in_terms_of_en.mp3",
+    "audio_vi": "/audio/mercy_vip_ielts/in_terms_of_vi.mp3"
+  },
+  "ielts_toefl_from_a_broader_perspective": {
+    "id": "ielts_toefl_from_a_broader_perspective",
+    "category": "academic",
+    "phrase_en": "from a broader perspective",
+    "meaning_en": "considering the bigger picture, not only details",
+    "meaning_vi": "nhìn từ góc độ rộng hơn, bức tranh tổng thể",
+    "example_en": "From a broader perspective, stress can also be seen as a signal, not only a problem.",
+    "example_vi": "Nhìn từ góc độ rộng hơn, căng thẳng cũng có thể được xem như một tín hiệu chứ không chỉ là vấn đề.",
+    "audio_en": "/audio/mercy_vip_ielts/from_a_broader_perspective_en.mp3",
+    "audio_vi": "/audio/mercy_vip_ielts/from_a_broader_perspective_vi.mp3"
+  },
+  "ielts_toefl_play_a_crucial_role": {
+    "id": "ielts_toefl_play_a_crucial_role",
+    "category": "academic",
+    "phrase_en": "play a crucial role",
+    "meaning_en": "to be extremely important",
+    "meaning_vi": "đóng vai trò then chốt, rất quan trọng",
+    "example_en": "Family support can play a crucial role in recovery.",
+    "example_vi": "Sự hỗ trợ của gia đình có thể đóng vai trò then chốt trong quá trình hồi phục.",
+    "audio_en": "/audio/mercy_vip_ielts/play_a_crucial_role_en.mp3",
+    "audio_vi": "/audio/mercy_vip_ielts/play_a_crucial_role_vi.mp3"
+  },
+  "ielts_toefl_it_is_widely_believed": {
+    "id": "ielts_toefl_it_is_widely_believed",
+    "category": "academic",
+    "phrase_en": "it is widely believed that",
+    "meaning_en": "many people think that",
+    "meaning_vi": "người ta tin rộng rãi rằng",
+    "example_en": "It is widely believed that technology isolates people, but this is not always the case.",
+    "example_vi": "Người ta tin rộng rãi rằng công nghệ làm con người cô lập, nhưng điều này không phải lúc nào cũng đúng.",
+    "audio_en": "/audio/mercy_vip_ielts/it_is_widely_believed_en.mp3",
+    "audio_vi": "/audio/mercy_vip_ielts/it_is_widely_believed_vi.mp3"
+  },
+  "ielts_toefl_one_could_argue_that": {
+    "id": "ielts_toefl_one_could_argue_that",
+    "category": "academic",
+    "phrase_en": "one could argue that",
+    "meaning_en": "it is reasonable to say that",
+    "meaning_vi": "có thể lập luận rằng",
+    "example_en": "One could argue that self-compassion increases long-term motivation.",
+    "example_vi": "Có thể lập luận rằng lòng tự bi giúp tăng động lực lâu dài.",
+    "audio_en": "/audio/mercy_vip_ielts/one_could_argue_that_en.mp3",
+    "audio_vi": "/audio/mercy_vip_ielts/one_could_argue_that_vi.mp3"
+  },
+  "ielts_toefl_on_the_other_hand": {
+    "id": "ielts_toefl_on_the_other_hand",
+    "category": "academic",
+    "phrase_en": "on the other hand",
+    "meaning_en": "introducing a contrasting point",
+    "meaning_vi": "mặt khác, ngược lại",
+    "example_en": "Some people thrive under pressure. On the other hand, many become overwhelmed.",
+    "example_vi": "Một số người phát triển tốt dưới áp lực. Mặt khác, nhiều người lại bị quá tải.",
+    "audio_en": "/audio/mercy_vip_ielts/on_the_other_hand_en.mp3",
+    "audio_vi": "/audio/mercy_vip_ielts/on_the_other_hand_vi.mp3"
+  },
+  "ielts_toefl_in_addition": {
+    "id": "ielts_toefl_in_addition",
+    "category": "academic",
+    "phrase_en": "in addition",
+    "meaning_en": "used to add another point",
+    "meaning_vi": "ngoài ra, thêm vào đó",
+    "example_en": "In addition, regular exercise can improve mood and sleep.",
+    "example_vi": "Ngoài ra, vận động đều đặn có thể cải thiện tâm trạng và giấc ngủ.",
+    "audio_en": "/audio/mercy_vip_ielts/in_addition_en.mp3",
+    "audio_vi": "/audio/mercy_vip_ielts/in_addition_vi.mp3"
+  },
+  "ielts_toefl_to_sum_up": {
+    "id": "ielts_toefl_to_sum_up",
+    "category": "academic",
+    "phrase_en": "to sum up",
+    "meaning_en": "to briefly repeat the main points",
+    "meaning_vi": "tóm lại, tổng kết lại",
+    "example_en": "To sum up, emotional awareness is a key skill for modern life.",
+    "example_vi": "Tóm lại, nhận biết cảm xúc là một kỹ năng then chốt trong cuộc sống hiện đại.",
+    "audio_en": "/audio/mercy_vip_ielts/to_sum_up_en.mp3",
+    "audio_vi": "/audio/mercy_vip_ielts/to_sum_up_vi.mp3"
+  }
+}
