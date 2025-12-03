@@ -43,17 +43,17 @@ async function loadCompanionLines(): Promise<CompanionLinesData> {
 
 function getDefaultLines(): CompanionLinesData {
   return {
-    greeting: ['Welcome back.'],
-    audioIntro: ['Press play to listen.'],
-    postAudio: ['Nice job finishing that.'],
-    reflectionHint: ['What stayed with you?'],
-    reflectionThanks: ['Thanks for sharing.'],
-    pathProgress: ['One more step forward.'],
-    returnAfterGap_short: ['Good to see you.'],
-    returnAfterGap_long: ['Welcome back after a while.'],
-    moodFollowup_heavy: ['Heavy days are allowed.'],
-    moodFollowup_okay: ['Okay is good enough.'],
-    nextRoomSuggestion: ['Ready for the next room?'],
+    greeting: ["Welcome back."],
+    audioIntro: ["Press play to listen."],
+    postAudio: ["Nice job finishing that."],
+    reflectionHint: ["What stayed with you?"],
+    reflectionThanks: ["Thanks for sharing."],
+    pathProgress: ["One more step forward."],
+    returnAfterGap_short: ["Good to see you."],
+    returnAfterGap_long: ["Welcome back after a while."],
+    moodFollowup_heavy: ["Heavy days are allowed."],
+    moodFollowup_okay: ["Okay is good enough."],
+    nextRoomSuggestion: ["Ready for the next room?"],
   };
 }
 
@@ -66,7 +66,7 @@ export function getRandomCompanionLine(category: CompanionCategory): string {
   const categoryLines = lines[category];
   
   if (!categoryLines || categoryLines.length === 0) {
-    return 'I'm here with you.';
+    return "I'm here with you.";
   }
   
   const randomIndex = Math.floor(Math.random() * categoryLines.length);
