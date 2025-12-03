@@ -293,7 +293,7 @@ const App = () => {
            <Route path="/admin/room-health/:tier" element={<AdminRoute><UnifiedRoomHealthCheck /></AdminRoute>} />
            <Route path="/admin/system-health" element={<AdminRoute><SystemHealth /></AdminRoute>} />
            <Route path="/admin/room-health-v2" element={<AdminRoute><RoomHealthCheckV2 /></AdminRoute>} />
-           <Route path="/admin/audit" element={<AdminRoute><AuditSafeShield /></AdminRoute>} />
+           <Route path="/admin/audit-v4" element={<AdminRoute><AuditSafeShield /></AdminRoute>} />
           <Route path="/admin/edge-functions" element={<AdminRoute><EdgeFunctions /></AdminRoute>} />
           <Route path="/redeem-gift" element={<RedeemGiftCode />} />
           <Route path="/user-music-upload" element={<UserMusicUpload />} />
