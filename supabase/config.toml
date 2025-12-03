@@ -45,3 +45,5 @@ verify_jwt = true
 [functions.audit-audio-health]
 verify_jwt = true
 
+[functions.audit-db-health]
+verify_jwt = true
