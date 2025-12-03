@@ -12,6 +12,7 @@ import type { Json } from '../_shared/database.types.ts';
 
 const PAYPAL_CLIENT_ID = Deno.env.get('PAYPAL_CLIENT_ID');
 const PAYPAL_CLIENT_SECRET = Deno.env.get('PAYPAL_CLIENT_SECRET');
+const PAYPAL_MERCHANT_EMAIL = Deno.env.get('PAYPAL_MERCHANT_EMAIL');
 const PAYPAL_API_BASE =
   Deno.env.get('PAYPAL_MODE') === 'live'
     ? 'https://api-m.paypal.com'
@@ -21,6 +22,10 @@ if (!PAYPAL_CLIENT_ID || !PAYPAL_CLIENT_SECRET) {
   console.warn(
     '[paypal-payment] Missing PAYPAL_CLIENT_ID or PAYPAL_CLIENT_SECRET env vars',
   );
+}
+
+if (!PAYPAL_MERCHANT_EMAIL) {
+  console.warn('[paypal-payment] Missing PAYPAL_MERCHANT_EMAIL env var');
 }
 
 type BillingPeriod = 'monthly' | 'yearly';
@@ -99,6 +104,22 @@ async function createPayPalOrder(
 ) {
   const { amount, currency, userId, tierId, period } = params;
 
+  // Build purchase unit with optional payee (merchant email)
+  const purchaseUnit: Record<string, unknown> = {
+    amount: {
+      currency_code: currency,
+      value: amount,
+    },
+    custom_id: `${userId}:${tierId}:${period}`,
+  };
+
+  // Add payee if merchant email is configured
+  if (PAYPAL_MERCHANT_EMAIL) {
+    purchaseUnit.payee = {
+      email_address: PAYPAL_MERCHANT_EMAIL,
+    };
+  }
+
   const res = await fetch(`${PAYPAL_API_BASE}/v2/checkout/orders`, {
     method: 'POST',
     headers: {
@@ -107,15 +128,7 @@ async function createPayPalOrder(
     },
     body: JSON.stringify({
       intent: 'CAPTURE',
-      purchase_units: [
-        {
-          amount: {
-            currency_code: currency,
-            value: amount,
-          },
-          custom_id: `${userId}:${tierId}:${period}`,
-        },
-      ],
+      purchase_units: [purchaseUnit],
       application_context: {
         shipping_preference: 'NO_SHIPPING',
         user_action: 'PAY_NOW',
