@@ -1,0 +1,101 @@
+{
+  "travel_check_in": {
+    "id": "travel_check_in",
+    "category": "travel",
+    "phrase_en": "check in",
+    "meaning_en": "to register at a hotel or airport counter",
+    "meaning_vi": "làm thủ tục tại khách sạn hoặc quầy sân bay",
+    "example_en": "I'd like to check in for my flight.",
+    "example_vi": "Tôi muốn làm thủ tục lên máy bay.",
+    "audio_en": "/audio/mercy_vip_travel/check_in_en.mp3",
+    "audio_vi": "/audio/mercy_vip_travel/check_in_vi.mp3"
+  },
+  "travel_connection_flight": {
+    "id": "travel_connection_flight",
+    "category": "travel",
+    "phrase_en": "connecting flight",
+    "meaning_en": "a second flight you take after the first one, usually during a trip with stops",
+    "meaning_vi": "chuyến bay nối tiếp sau chuyến đầu tiên, thường có điểm trung chuyển",
+    "example_en": "Do I need to pick up my luggage for my connecting flight?",
+    "example_vi": "Tôi có cần lấy hành lý cho chuyến bay nối tiếp không?",
+    "audio_en": "/audio/mercy_vip_travel/connecting_flight_en.mp3",
+    "audio_vi": "/audio/mercy_vip_travel/connecting_flight_vi.mp3"
+  },
+  "travel_full_board": {
+    "id": "travel_full_board",
+    "category": "travel",
+    "phrase_en": "full board",
+    "meaning_en": "room including breakfast, lunch, and dinner",
+    "meaning_vi": "phòng bao gồm cả sáng, trưa, tối",
+    "example_en": "Is the price for full board or just breakfast?",
+    "example_vi": "Giá đó bao gồm ba bữa hay chỉ bữa sáng?",
+    "audio_en": "/audio/mercy_vip_travel/full_board_en.mp3",
+    "audio_vi": "/audio/mercy_vip_travel/full_board_vi.mp3"
+  },
+  "travel_double_check_reservation": {
+    "id": "travel_double_check_reservation",
+    "category": "travel",
+    "phrase_en": "double-check the reservation",
+    "meaning_en": "to confirm the booking details again",
+    "meaning_vi": "kiểm tra lại thông tin đặt phòng/đặt vé cho chắc",
+    "example_en": "Could you double-check my reservation, please?",
+    "example_vi": "Bạn có thể kiểm tra lại đặt phòng của tôi được không?",
+    "audio_en": "/audio/mercy_vip_travel/double_check_reservation_en.mp3",
+    "audio_vi": "/audio/mercy_vip_travel/double_check_reservation_vi.mp3"
+  },
+  "travel_lost_and_found": {
+    "id": "travel_lost_and_found",
+    "category": "travel",
+    "phrase_en": "lost and found",
+    "meaning_en": "the place where lost items are kept",
+    "meaning_vi": "nơi giữ đồ thất lạc",
+    "example_en": "Excuse me, where is the lost and found desk?",
+    "example_vi": "Xin lỗi, quầy giữ đồ thất lạc ở đâu ạ?",
+    "audio_en": "/audio/mercy_vip_travel/lost_and_found_en.mp3",
+    "audio_vi": "/audio/mercy_vip_travel/lost_and_found_vi.mp3"
+  },
+  "travel_emergency_contact": {
+    "id": "travel_emergency_contact",
+    "category": "travel",
+    "phrase_en": "emergency contact",
+    "meaning_en": "a person to call in urgent situations",
+    "meaning_vi": "người liên lạc khẩn cấp",
+    "example_en": "Please write down your emergency contact here.",
+    "example_vi": "Vui lòng ghi thông tin người liên lạc khẩn cấp tại đây.",
+    "audio_en": "/audio/mercy_vip_travel/emergency_contact_en.mp3",
+    "audio_vi": "/audio/mercy_vip_travel/emergency_contact_vi.mp3"
+  },
+  "travel_room_with_view": {
+    "id": "travel_room_with_view",
+    "category": "travel",
+    "phrase_en": "room with a view",
+    "meaning_en": "a room that looks out over something beautiful",
+    "meaning_vi": "phòng có tầm nhìn đẹp",
+    "example_en": "Is there a room with a view of the sea?",
+    "example_vi": "Có phòng nào nhìn ra biển không ạ?",
+    "audio_en": "/audio/mercy_vip_travel/room_with_view_en.mp3",
+    "audio_vi": "/audio/mercy_vip_travel/room_with_view_vi.mp3"
+  },
+  "travel_split_the_bill": {
+    "id": "travel_split_the_bill",
+    "category": "travel",
+    "phrase_en": "split the bill",
+    "meaning_en": "to share the cost of a meal between people",
+    "meaning_vi": "chia tiền hóa đơn giữa nhiều người",
+    "example_en": "Shall we split the bill?",
+    "example_vi": "Mình chia tiền hóa đơn nhé?",
+    "audio_en": "/audio/mercy_vip_travel/split_the_bill_en.mp3",
+    "audio_vi": "/audio/mercy_vip_travel/split_the_bill_vi.mp3"
+  },
+  "travel_dietary_restrictions": {
+    "id": "travel_dietary_restrictions",
+    "category": "travel",
+    "phrase_en": "dietary restrictions",
+    "meaning_en": "foods that a person cannot or does not eat",
+    "meaning_vi": "chế độ ăn kiêng/kỵ, những món không ăn được",
+    "example_en": "I have some dietary restrictions. Is there a vegetarian option?",
+    "example_vi": "Tôi có chế độ ăn riêng. Có món chay nào không ạ?",
+    "audio_en": "/audio/mercy_vip_travel/dietary_restrictions_en.mp3",
+    "audio_vi": "/audio/mercy_vip_travel/dietary_restrictions_vi.mp3"
+  }
+}
