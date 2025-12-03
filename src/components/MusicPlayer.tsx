@@ -350,14 +350,14 @@ export const MusicPlayer = () => {
   }, [updateFromPlayer]);
 
   return (
-    <div className="h-full w-full bg-white border-2 border-black rounded-xl shadow-lg">
+    <div className="h-full w-full bg-card border border-border rounded-lg shadow-sm">
       <div className="h-full px-3 flex items-center gap-2">
         {/* Play/Pause Button */}
         <Button
           onClick={togglePlay}
           variant="outline"
           size="sm"
-          className="border-black text-black hover:bg-gray-100 h-8 w-8 p-0"
+          className="h-8 w-8 p-0"
           aria-label={isPlaying ? "Pause music" : "Play music"}
         >
           {isPlaying ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
@@ -368,10 +368,10 @@ export const MusicPlayer = () => {
           onClick={toggleShuffle}
           variant="outline"
           size="sm"
-          className={`border-black h-8 w-8 p-0 transition-colors ${
+          className={`h-8 w-8 p-0 transition-colors ${
             isShuffle 
-              ? 'bg-yellow-400 text-black hover:bg-yellow-500 border-2' 
-              : 'text-black hover:bg-gray-100'
+              ? 'bg-amber-400 text-amber-950 hover:bg-amber-500 border-2 border-amber-500' 
+              : ''
           }`}
           title={isShuffle ? "Shuffle: On" : "Shuffle: Off"}
           aria-label={isShuffle ? "Turn shuffle off" : "Turn shuffle on"}
@@ -381,7 +381,7 @@ export const MusicPlayer = () => {
 
         {/* Volume Slider */}
         <div className="flex items-center gap-1 w-24">
-          <Volume2 className="h-3 w-3 text-black" />
+          <Volume2 className="h-3 w-3 text-muted-foreground" />
           <Slider
             value={[volume]}
             onValueChange={handleVolumeChange}
@@ -393,7 +393,7 @@ export const MusicPlayer = () => {
 
         {/* Track Name */}
         <div className="flex-1 min-w-0">
-          <p className="text-xs font-bold text-black truncate">{currentTrack.name}</p>
+          <p className="text-xs font-bold text-foreground truncate">{currentTrack.name}</p>
         </div>
 
         {/* Favorite Current Track Button */}
@@ -401,11 +401,11 @@ export const MusicPlayer = () => {
           onClick={() => toggleFavorite(currentTrackId)}
           variant="ghost"
           size="sm"
-          className="h-8 w-8 p-0 hover:bg-gray-100"
+          className="h-8 w-8 p-0"
           title={isFavorite(currentTrackId) ? "Remove from favorites" : "Add to favorites"}
         >
           <Heart 
-            className={`h-3 w-3 ${isFavorite(currentTrackId) ? 'fill-red-500 text-red-500' : 'text-gray-400'}`}
+            className={`h-3 w-3 ${isFavorite(currentTrackId) ? 'fill-red-500 text-red-500' : 'text-muted-foreground'}`}
           />
         </Button>
 
@@ -418,10 +418,10 @@ export const MusicPlayer = () => {
             }}
             variant="outline"
             size="sm"
-            className={`border-black h-8 px-2 transition-colors text-xs ${
+            className={`h-8 px-2 transition-colors text-xs ${
               mode === "common"
-                ? 'bg-blue-400 text-white hover:bg-blue-500 border-2 font-bold'
-                : 'text-black hover:bg-gray-100'
+                ? 'bg-blue-500 text-white hover:bg-blue-600 border-blue-500 font-bold'
+                : ''
             }`}
             title="Play common playlist (all tracks)"
           >
@@ -437,10 +437,10 @@ export const MusicPlayer = () => {
             disabled={favoriteTracks.length === 0}
             variant="outline"
             size="sm"
-            className={`border-black h-8 px-2 transition-colors text-xs ${
+            className={`h-8 px-2 transition-colors text-xs ${
               mode === "favorites"
-                ? 'bg-pink-400 text-white hover:bg-pink-500 border-2 font-bold'
-                : 'text-black hover:bg-gray-100'
+                ? 'bg-pink-500 text-white hover:bg-pink-600 border-pink-500 font-bold'
+                : ''
             }`}
             title={favoriteTracks.length === 0 ? "No favorites yet" : `Play my favorites only (${favoriteTracks.length})`}
           >
@@ -455,18 +455,18 @@ export const MusicPlayer = () => {
             <Button
               variant="outline"
               size="sm"
-              className="border-black hover:bg-gray-100 h-8 px-2 gap-1 text-black bg-white"
+              className="h-8 px-2 gap-1"
             >
               <Music className="h-3 w-3" />
               <span className="text-xs">({favoriteIds.length})</span>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-[300px] bg-white border-black z-[100]">
+          <DropdownMenuContent align="end" className="w-[300px] z-[100]">
             <DropdownMenuLabel>Favorite Tracks</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <ScrollArea className="h-[300px]">
               {favoriteIds.length === 0 ? (
-                <div className="p-4 text-center text-sm text-gray-500">
+                <div className="p-4 text-center text-sm text-muted-foreground">
                   No favorites yet. Click the heart icon to add tracks.
                 </div>
               ) : (
@@ -497,13 +497,13 @@ export const MusicPlayer = () => {
 
         {/* Track Selector */}
         <Select value={currentTrackId} onValueChange={handleTrackChange}>
-          <SelectTrigger className="w-[180px] h-8 border-black text-xs text-black bg-white">
+          <SelectTrigger className="w-[180px] h-8 text-xs">
             <SelectValue placeholder="Select track" />
           </SelectTrigger>
-          <SelectContent className="bg-white border-black z-[100]">
+          <SelectContent className="z-[100]">
             <ScrollArea className="h-[300px]">
               {displayTracks.map((track) => (
-                <SelectItem key={track.id} value={track.id} className="text-black text-xs">
+                <SelectItem key={track.id} value={track.id} className="text-xs">
                   <div className="flex items-center justify-between w-full">
                     <span className="truncate">{track.name}</span>
                     {isFavorite(track.id) && (
