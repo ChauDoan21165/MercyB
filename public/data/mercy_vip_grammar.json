@@ -1,0 +1,122 @@
+{
+  "present_simple_vs_continuous": {
+    "id": "present_simple_vs_continuous",
+    "category": "grammar",
+    "title_en": "Present Simple vs Present Continuous",
+    "title_vi": "Hiện Tại Đơn vs Hiện Tại Tiếp Diễn",
+    "explanation_en": "Use Present Simple for habits and facts. Use Present Continuous for actions happening now or around now.",
+    "explanation_vi": "Dùng Hiện Tại Đơn cho thói quen và sự thật. Dùng Hiện Tại Tiếp Diễn cho hành động đang xảy ra ngay lúc nói hoặc xung quanh thời điểm này.",
+    "example_en": "I study English every day. (habit) / I am studying English right now. (now)",
+    "example_vi": "I study English every day. (thói quen) / I am studying English right now. (ngay lúc này)",
+    "audio_en": "/audio/mercy_vip_grammar/present_simple_vs_continuous_en.mp3",
+    "audio_vi": "/audio/mercy_vip_grammar/present_simple_vs_continuous_vi.mp3"
+  },
+  "present_perfect_experience": {
+    "id": "present_perfect_experience",
+    "category": "grammar",
+    "title_en": "Present Perfect for Experience",
+    "title_vi": "Hiện Tại Hoàn Thành cho Trải Nghiệm",
+    "explanation_en": "Use Present Perfect to talk about life experience without saying exactly when it happened.",
+    "explanation_vi": "Dùng Hiện Tại Hoàn Thành để nói về trải nghiệm cuộc đời mà không nêu rõ thời điểm xảy ra.",
+    "example_en": "I have visited Japan three times.",
+    "example_vi": "Tôi đã đến Nhật ba lần.",
+    "audio_en": "/audio/mercy_vip_grammar/present_perfect_experience_en.mp3",
+    "audio_vi": "/audio/mercy_vip_grammar/present_perfect_experience_vi.mp3"
+  },
+  "present_perfect_result": {
+    "id": "present_perfect_result",
+    "category": "grammar",
+    "title_en": "Present Perfect for Result Now",
+    "title_vi": "Hiện Tại Hoàn Thành cho Kết Quả Hiện Tại",
+    "explanation_en": "Use Present Perfect when a past action has a result now.",
+    "explanation_vi": "Dùng Hiện Tại Hoàn Thành khi hành động quá khứ có kết quả ở hiện tại.",
+    "example_en": "I have lost my keys. I can't open the door.",
+    "example_vi": "Tôi đã mất chìa khóa nên không mở được cửa.",
+    "audio_en": "/audio/mercy_vip_grammar/present_perfect_result_en.mp3",
+    "audio_vi": "/audio/mercy_vip_grammar/present_perfect_result_vi.mp3"
+  },
+  "past_simple_vs_past_continuous": {
+    "id": "past_simple_vs_past_continuous",
+    "category": "grammar",
+    "title_en": "Past Simple vs Past Continuous",
+    "title_vi": "Quá Khứ Đơn vs Quá Khứ Tiếp Diễn",
+    "explanation_en": "Use Past Simple for finished actions. Use Past Continuous for background actions in progress.",
+    "explanation_vi": "Dùng Quá Khứ Đơn cho hành động đã kết thúc. Dùng Quá Khứ Tiếp Diễn cho hành động nền đang diễn ra.",
+    "example_en": "I was reading when the phone rang.",
+    "example_vi": "Tôi đang đọc sách thì điện thoại reo.",
+    "audio_en": "/audio/mercy_vip_grammar/past_simple_vs_past_continuous_en.mp3",
+    "audio_vi": "/audio/mercy_vip_grammar/past_simple_vs_past_continuous_vi.mp3"
+  },
+  "first_conditional": {
+    "id": "first_conditional",
+    "category": "grammar",
+    "title_en": "First Conditional (Real Future)",
+    "title_vi": "Câu Điều Kiện Loại 1 (Tương Lai Thật)",
+    "explanation_en": "Use If + Present Simple, will + V to talk about real future results.",
+    "explanation_vi": "Dùng If + Hiện Tại Đơn, will + V để nói về kết quả thật trong tương lai.",
+    "example_en": "If you practice every day, you will feel more confident.",
+    "example_vi": "Nếu bạn luyện tập mỗi ngày, bạn sẽ tự tin hơn.",
+    "audio_en": "/audio/mercy_vip_grammar/first_conditional_en.mp3",
+    "audio_vi": "/audio/mercy_vip_grammar/first_conditional_vi.mp3"
+  },
+  "second_conditional": {
+    "id": "second_conditional",
+    "category": "grammar",
+    "title_en": "Second Conditional (Unreal Present)",
+    "title_vi": "Câu Điều Kiện Loại 2 (Không Thật Ở Hiện Tại)",
+    "explanation_en": "Use If + Past Simple, would + V to imagine unreal or unlikely situations now.",
+    "explanation_vi": "Dùng If + Quá Khứ Đơn, would + V để tưởng tượng tình huống không có thật hoặc khó xảy ra ở hiện tại.",
+    "example_en": "If I had more time, I would study English longer.",
+    "example_vi": "Nếu tôi có nhiều thời gian hơn, tôi sẽ học tiếng Anh lâu hơn.",
+    "audio_en": "/audio/mercy_vip_grammar/second_conditional_en.mp3",
+    "audio_vi": "/audio/mercy_vip_grammar/second_conditional_vi.mp3"
+  },
+  "comparatives_superlatives": {
+    "id": "comparatives_superlatives",
+    "category": "grammar",
+    "title_en": "Comparatives and Superlatives",
+    "title_vi": "So Sánh Hơn và So Sánh Nhất",
+    "explanation_en": "Use comparatives to compare two things. Use superlatives to talk about the most in a group.",
+    "explanation_vi": "Dùng so sánh hơn để so hai đối tượng. Dùng so sánh nhất để nói về cái nhất trong một nhóm.",
+    "example_en": "This lesson is easier than yesterday's. / This is the most useful lesson for me.",
+    "example_vi": "Bài hôm nay dễ hơn bài hôm qua. / Đây là bài hữu ích nhất với tôi.",
+    "audio_en": "/audio/mercy_vip_grammar/comparatives_superlatives_en.mp3",
+    "audio_vi": "/audio/mercy_vip_grammar/comparatives_superlatives_vi.mp3"
+  },
+  "quantifiers_some_any_much_many": {
+    "id": "quantifiers_some_any_much_many",
+    "category": "grammar",
+    "title_en": "Some, Any, Much, Many",
+    "title_vi": "Some, Any, Much, Many",
+    "explanation_en": "Use some in positive sentences. Use any in negatives and questions. Use much with uncountable nouns, many with countable nouns.",
+    "explanation_vi": "Dùng some trong câu khẳng định. Dùng any trong câu phủ định và nghi vấn. Dùng much với danh từ không đếm được, many với danh từ đếm được.",
+    "example_en": "I have some questions. / I don't have any energy. / How many new words? / How much time?",
+    "example_vi": "Tôi có vài câu hỏi. / Tôi không còn chút năng lượng nào. / Có bao nhiêu từ mới? / Có bao nhiêu thời gian?",
+    "audio_en": "/audio/mercy_vip_grammar/quantifiers_some_any_much_many_en.mp3",
+    "audio_vi": "/audio/mercy_vip_grammar/quantifiers_some_any_much_many_vi.mp3"
+  },
+  "modal_can_could_requests": {
+    "id": "modal_can_could_requests",
+    "category": "grammar",
+    "title_en": "Can vs Could for Requests",
+    "title_vi": "Can vs Could cho Câu Xin Phép / Nhờ Vả",
+    "explanation_en": "Use can for direct, friendly requests. Use could to sound softer and more polite.",
+    "explanation_vi": "Dùng can cho lời nhờ vả thân mật, trực tiếp. Dùng could để nghe mềm hơn và lịch sự hơn.",
+    "example_en": "Can you repeat that? / Could you speak a bit more slowly?",
+    "example_vi": "Bạn có thể nhắc lại được không? / Bạn có thể nói chậm hơn một chút được không?",
+    "audio_en": "/audio/mercy_vip_grammar/modal_can_could_requests_en.mp3",
+    "audio_vi": "/audio/mercy_vip_grammar/modal_can_could_requests_vi.mp3"
+  },
+  "modal_should_advice": {
+    "id": "modal_should_advice",
+    "category": "grammar",
+    "title_en": "Should for Soft Advice",
+    "title_vi": "Should cho Lời Khuyên Nhẹ Nhàng",
+    "explanation_en": "Use should to give gentle advice, not an order.",
+    "explanation_vi": "Dùng should để đưa ra lời khuyên nhẹ nhàng, không phải mệnh lệnh.",
+    "example_en": "You should take a short break when your mind feels tired.",
+    "example_vi": "Bạn nên nghỉ một chút khi thấy tâm trí mệt.",
+    "audio_en": "/audio/mercy_vip_grammar/modal_should_advice_en.mp3",
+    "audio_vi": "/audio/mercy_vip_grammar/modal_should_advice_vi.mp3"
+  }
+}
