@@ -5,8 +5,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
-import { HomeButton } from "@/components/HomeButton";
-import { BackButton } from "@/components/BackButton";
 import { AdminRoute } from "@/components/AdminRoute";
 import { MusicPlayerProvider } from "@/contexts/MusicPlayerContext";
 import { LowDataModeProvider } from "@/contexts/LowDataModeContext";
@@ -17,6 +15,7 @@ import { PerformanceProfiler } from "@/lib/performance/profiler";
 import { LoadingSkeleton } from "@/components/ui/loading-skeleton";
 import { preloadCriticalRoutes } from "@/lib/performance";
 import { DevObservabilityPanel } from "@/components/dev/DevObservabilityPanel";
+import { GlobalHeader } from "@/components/layout/GlobalHeader";
 import { logger } from "@/lib/logger";
 
 // Critical pages - loaded immediately
@@ -202,28 +201,7 @@ const App = () => {
                 <BrowserRouter>
                   <EnvironmentBanner />
                   
-                  <header className="sticky top-0 z-40 border-b border-border/40 bg-background/80 backdrop-blur-sm">
-                    <div className="relative mx-auto max-w-[720px] h-12 px-4 flex items-center justify-between">
-                      {/* Left: navigation */}
-                      <div className="flex items-center gap-2 z-10">
-                        <HomeButton />
-                        <BackButton />
-                      </div>
-                      
-                      {/* Center: Mercy Blade logo - truly centered */}
-                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <a 
-                          href="/" 
-                          className="font-semibold text-lg tracking-tight bg-gradient-to-r from-[hsl(var(--rainbow-magenta))] via-[hsl(var(--rainbow-purple))] to-[hsl(var(--rainbow-cyan))] bg-clip-text text-transparent hover:opacity-80 transition-opacity"
-                        >
-                          Mercy Blade
-                        </a>
-                      </div>
-                      
-                      {/* Right: empty for now, tier map etc can go here */}
-                      <div className="flex items-center gap-2 z-10" />
-                    </div>
-                  </header>
+                  <GlobalHeader />
                   
                   <PerformanceProfiler />
                   
