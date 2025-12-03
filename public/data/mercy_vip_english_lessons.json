@@ -1,0 +1,182 @@
+{
+  "vip_eng_on_the_same_page": {
+    "id": "vip_eng_on_the_same_page",
+    "phrase_en": "on the same page",
+    "meaning_en": "to share the same understanding or intention",
+    "meaning_vi": "cùng chung hiểu biết hoặc ý định",
+    "example_en": "Let's make sure we're on the same page before we continue.",
+    "example_vi": "Hãy đảm bảo chúng ta hiểu nhau trước khi tiếp tục.",
+    "audio_en": "/audio/mercy_vip_eng/on_the_same_page_en.mp3",
+    "audio_vi": "/audio/mercy_vip_eng/on_the_same_page_vi.mp3"
+  },
+  "vip_eng_in_the_long_run": {
+    "id": "vip_eng_in_the_long_run",
+    "phrase_en": "in the long run",
+    "meaning_en": "over a long period of time; eventually",
+    "meaning_vi": "về lâu dài; cuối cùng",
+    "example_en": "This habit may feel small, but it will help you a lot in the long run.",
+    "example_vi": "Thói quen này có vẻ nhỏ nhưng sẽ giúp bạn rất nhiều về lâu dài.",
+    "audio_en": "/audio/mercy_vip_eng/in_the_long_run_en.mp3",
+    "audio_vi": "/audio/mercy_vip_eng/in_the_long_run_vi.mp3"
+  },
+  "vip_eng_take_it_in_stride": {
+    "id": "vip_eng_take_it_in_stride",
+    "phrase_en": "take it in stride",
+    "meaning_en": "to deal with something calmly and without stress",
+    "meaning_vi": "xử lý việc gì đó một cách bình tĩnh, không căng thẳng",
+    "example_en": "Whatever happens, try to take it in stride.",
+    "example_vi": "Dù có chuyện gì xảy ra, hãy cố gắng xử lý bình tĩnh.",
+    "audio_en": "/audio/mercy_vip_eng/take_it_in_stride_en.mp3",
+    "audio_vi": "/audio/mercy_vip_eng/take_it_in_stride_vi.mp3"
+  },
+  "vip_eng_put_things_in_perspective": {
+    "id": "vip_eng_put_things_in_perspective",
+    "phrase_en": "put things in perspective",
+    "meaning_en": "to help someone see something more realistically or calmly",
+    "meaning_vi": "giúp ai đó nhìn một việc rõ ràng, bình tĩnh hơn",
+    "example_en": "A short break can help you put things in perspective.",
+    "example_vi": "Một chút nghỉ ngơi có thể giúp bạn nhìn sự việc rõ hơn.",
+    "audio_en": "/audio/mercy_vip_eng/put_things_in_perspective_en.mp3",
+    "audio_vi": "/audio/mercy_vip_eng/put_things_in_perspective_vi.mp3"
+  },
+  "vip_eng_in_good_hands": {
+    "id": "vip_eng_in_good_hands",
+    "phrase_en": "in good hands",
+    "meaning_en": "to be taken care of well",
+    "meaning_vi": "được chăm sóc tốt",
+    "example_en": "Don't worry, you're in good hands here.",
+    "example_vi": "Đừng lo, bạn đang được chăm sóc tốt ở đây.",
+    "audio_en": "/audio/mercy_vip_eng/in_good_hands_en.mp3",
+    "audio_vi": "/audio/mercy_vip_eng/in_good_hands_vi.mp3"
+  },
+  "vip_eng_a_step_ahead": {
+    "id": "vip_eng_a_step_ahead",
+    "phrase_en": "a step ahead",
+    "meaning_en": "slightly more advanced or prepared",
+    "meaning_vi": "tiến bộ hoặc chuẩn bị kỹ hơn một chút",
+    "example_en": "Doing this now puts you a step ahead of yesterday.",
+    "example_vi": "Làm điều này bây giờ giúp bạn tiến xa hơn hôm qua một chút.",
+    "audio_en": "/audio/mercy_vip_eng/a_step_ahead_en.mp3",
+    "audio_vi": "/audio/mercy_vip_eng/a_step_ahead_vi.mp3"
+  },
+  "vip_eng_light_years_better": {
+    "id": "vip_eng_light_years_better",
+    "phrase_en": "light-years better",
+    "meaning_en": "extremely improved",
+    "meaning_vi": "cải thiện vượt bậc",
+    "example_en": "Your pronunciation now is light-years better than last month.",
+    "example_vi": "Phát âm của bạn bây giờ tốt hơn tháng trước rất nhiều.",
+    "audio_en": "/audio/mercy_vip_eng/light_years_better_en.mp3",
+    "audio_vi": "/audio/mercy_vip_eng/light_years_better_vi.mp3"
+  },
+  "vip_eng_keep_me_posted": {
+    "id": "vip_eng_keep_me_posted",
+    "phrase_en": "keep me posted",
+    "meaning_en": "to keep someone updated",
+    "meaning_vi": "cập nhật thông tin cho ai đó",
+    "example_en": "Keep me posted on how today's lesson feels for you.",
+    "example_vi": "Cho mình biết cảm nhận của bạn về bài hôm nay nhé.",
+    "audio_en": "/audio/mercy_vip_eng/keep_me_posted_en.mp3",
+    "audio_vi": "/audio/mercy_vip_eng/keep_me_posted_vi.mp3"
+  },
+  "vip_eng_speak_volumes": {
+    "id": "vip_eng_speak_volumes",
+    "phrase_en": "speak volumes",
+    "meaning_en": "to say something important without using words",
+    "meaning_vi": "nói lên nhiều điều mà không cần lời",
+    "example_en": "Your consistency speaks volumes about your strength.",
+    "example_vi": "Sự đều đặn của bạn nói lên rất nhiều về nghị lực của bạn.",
+    "audio_en": "/audio/mercy_vip_eng/speak_volumes_en.mp3",
+    "audio_vi": "/audio/mercy_vip_eng/speak_volumes_vi.mp3"
+  },
+  "vip_eng_cut_to_the_chase": {
+    "id": "vip_eng_cut_to_the_chase",
+    "phrase_en": "cut to the chase",
+    "meaning_en": "to get to the main point quickly",
+    "meaning_vi": "đi thẳng vào vấn đề chính",
+    "example_en": "Let me cut to the chase—you're improving well.",
+    "example_vi": "Mình nói thẳng nhé—bạn đang tiến bộ rất tốt.",
+    "audio_en": "/audio/mercy_vip_eng/cut_to_the_chase_en.mp3",
+    "audio_vi": "/audio/mercy_vip_eng/cut_to_the_chase_vi.mp3"
+  },
+  "vip_eng_walk_me_through": {
+    "id": "vip_eng_walk_me_through",
+    "phrase_en": "walk me through",
+    "meaning_en": "explain step by step",
+    "meaning_vi": "giải thích từng bước",
+    "example_en": "Walk me through what confused you, and we'll fix it together.",
+    "example_vi": "Bạn nói rõ từng bước khiến bạn rối, rồi mình cùng sửa nhé.",
+    "audio_en": "/audio/mercy_vip_eng/walk_me_through_en.mp3",
+    "audio_vi": "/audio/mercy_vip_eng/walk_me_through_vi.mp3"
+  },
+  "vip_eng_go_the_extra_mile": {
+    "id": "vip_eng_go_the_extra_mile",
+    "phrase_en": "go the extra mile",
+    "meaning_en": "to make extra effort",
+    "meaning_vi": "nỗ lực nhiều hơn mức cần thiết",
+    "example_en": "You went the extra mile today. Well done.",
+    "example_vi": "Hôm nay bạn đã cố gắng hơn cả mong đợi. Rất tuyệt.",
+    "audio_en": "/audio/mercy_vip_eng/go_the_extra_mile_en.mp3",
+    "audio_vi": "/audio/mercy_vip_eng/go_the_extra_mile_vi.mp3"
+  },
+  "vip_eng_raise_the_bar": {
+    "id": "vip_eng_raise_the_bar",
+    "phrase_en": "raise the bar",
+    "meaning_en": "to set a higher standard",
+    "meaning_vi": "nâng tiêu chuẩn lên cao hơn",
+    "example_en": "Your progress raises the bar for your own learning.",
+    "example_vi": "Tiến bộ của bạn đang nâng tiêu chuẩn học tập của chính bạn.",
+    "audio_en": "/audio/mercy_vip_eng/raise_the_bar_en.mp3",
+    "audio_vi": "/audio/mercy_vip_eng/raise_the_bar_vi.mp3"
+  },
+  "vip_eng_high_stakes": {
+    "id": "vip_eng_high_stakes",
+    "phrase_en": "high stakes",
+    "meaning_en": "high pressure or high importance",
+    "meaning_vi": "áp lực cao hoặc rất quan trọng",
+    "example_en": "Don't worry—this isn't a high-stakes moment. You can breathe and learn slowly.",
+    "example_vi": "Đừng lo—đây không phải lúc căng thẳng. Cứ thở và học từ từ.",
+    "audio_en": "/audio/mercy_vip_eng/high_stakes_en.mp3",
+    "audio_vi": "/audio/mercy_vip_eng/high_stakes_vi.mp3"
+  },
+  "vip_eng_tip_of_the_iceberg": {
+    "id": "vip_eng_tip_of_the_iceberg",
+    "phrase_en": "tip of the iceberg",
+    "meaning_en": "only a small part of a much larger situation",
+    "meaning_vi": "phần nổi của tảng băng chìm (một phần rất nhỏ của vấn đề lớn hơn)",
+    "example_en": "This confusion is just the tip of the iceberg—we will sort it out.",
+    "example_vi": "Sự rối này chỉ là phần nổi của tảng băng thôi—mình sẽ giải quyết dần.",
+    "audio_en": "/audio/mercy_vip_eng/tip_of_the_iceberg_en.mp3",
+    "audio_vi": "/audio/mercy_vip_eng/tip_of_the_iceberg_vi.mp3"
+  },
+  "vip_eng_keep_it_up": {
+    "id": "vip_eng_keep_it_up",
+    "phrase_en": "keep it up",
+    "meaning_en": "continue doing something well",
+    "meaning_vi": "tiếp tục phát huy",
+    "example_en": "Your effort is clear—keep it up.",
+    "example_vi": "Nỗ lực của bạn thấy rõ lắm—cứ phát huy nhé.",
+    "audio_en": "/audio/mercy_vip_eng/keep_it_up_en.mp3",
+    "audio_vi": "/audio/mercy_vip_eng/keep_it_up_vi.mp3"
+  },
+  "vip_eng_in_full_swing": {
+    "id": "vip_eng_in_full_swing",
+    "phrase_en": "in full swing",
+    "meaning_en": "at the peak of activity",
+    "meaning_vi": "đang diễn ra hết sức mạnh mẽ",
+    "example_en": "Your learning momentum is in full swing now.",
+    "example_vi": "Đà học của bạn đang rất mạnh đấy.",
+    "audio_en": "/audio/mercy_vip_eng/in_full_swing_en.mp3",
+    "audio_vi": "/audio/mercy_vip_eng/in_full_swing_vi.mp3"
+  },
+  "vip_eng_let_it_sink_in": {
+    "id": "vip_eng_let_it_sink_in",
+    "phrase_en": "let it sink in",
+    "meaning_en": "to allow something to be fully understood",
+    "meaning_vi": "để một ý tưởng thấm vào, hiểu sâu",
+    "example_en": "Take a moment and let the meaning sink in.",
+    "example_vi": "Hãy dành chút thời gian để ý nghĩa này thấm vào nhé.",
+    "audio_en": "/audio/mercy_vip_eng/let_it_sink_in_en.mp3",
+    "audio_vi": "/audio/mercy_vip_eng/let_it_sink_in_vi.mp3"
+  }
+}
