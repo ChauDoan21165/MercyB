@@ -113,6 +113,7 @@ const RoomGridVIP5 = () => {
             </div>
           )}
         </RoomLoadShell>
+        </div>
       </div>
     </div>
   );
