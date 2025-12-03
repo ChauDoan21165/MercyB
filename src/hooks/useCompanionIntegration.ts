@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, useMemo } from 'react';
 import { useCompanionSession } from './useCompanionSession';
 import { CompanionCategory } from '@/lib/companionLines';
 import { getCompanionState, updateCompanionState, logCompanionEvent } from '@/services/companion';
@@ -7,6 +7,30 @@ interface UseCompanionIntegrationOptions {
   roomId: string;
   isPathDay?: boolean;
   dayIndex?: number;
+}
+
+// Debounce helper for batching state updates
+function useDebouncedCallback<T extends (...args: unknown[]) => void>(
+  callback: T,
+  delay: number
+): T {
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const pendingArgsRef = useRef<unknown[] | null>(null);
+
+  return useCallback((...args: unknown[]) => {
+    pendingArgsRef.current = args;
+    
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    
+    timeoutRef.current = setTimeout(() => {
+      if (pendingArgsRef.current) {
+        callback(...pendingArgsRef.current);
+        pendingArgsRef.current = null;
+      }
+    }, delay);
+  }, [callback, delay]) as T;
 }
 
 /**
@@ -22,6 +46,30 @@ export function useCompanionIntegration(options: UseCompanionIntegrationOptions)
   const hasShownReflectionHintRef = useRef(false);
   const reflectionVisibleTimerRef = useRef<NodeJS.Timeout | null>(null);
   const nextRoomTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Debounced state update to batch writes
+  const debouncedUpdateState = useDebouncedCallback(
+    async (updates: Parameters<typeof updateCompanionState>[0]) => {
+      try {
+        await updateCompanionState(updates);
+      } catch (err) {
+        console.warn('Failed to update companion state:', err);
+      }
+    },
+    3000 // Batch updates every 3 seconds
+  );
+
+  // Debounced event logging
+  const debouncedLogEvent = useDebouncedCallback(
+    async (eventType: string, metadata: Record<string, unknown>, roomIdArg?: string) => {
+      try {
+        await logCompanionEvent(eventType, metadata, roomIdArg);
+      } catch (err) {
+        console.warn('Failed to log companion event:', err);
+      }
+    },
+    3000
+  );
 
   // Show greeting on mount
   useEffect(() => {
@@ -50,8 +98,8 @@ export function useCompanionIntegration(options: UseCompanionIntegrationOptions)
           session.showBubble(category);
         }, 800);
 
-        // Update companion state
-        await updateCompanionState({
+        // Update companion state (debounced)
+        debouncedUpdateState({
           last_room: roomId,
         });
       } catch (err) {
@@ -63,7 +111,7 @@ export function useCompanionIntegration(options: UseCompanionIntegrationOptions)
     };
 
     showGreeting();
-  }, [roomId, session]);
+  }, [roomId, session, debouncedUpdateState]);
 
   // Show path progress for day > 1
   useEffect(() => {
@@ -89,8 +137,8 @@ export function useCompanionIntegration(options: UseCompanionIntegrationOptions)
   // Handler for audio ended
   const onAudioEnded = useCallback(() => {
     session.showBubble('postAudio', true); // Override cooldown
-    logCompanionEvent('audio_completed', { room_id: roomId }, roomId);
-  }, [session, roomId]);
+    debouncedLogEvent('audio_completed', { room_id: roomId }, roomId);
+  }, [session, roomId, debouncedLogEvent]);
 
   // Handler for reflection area becoming visible
   const onReflectionVisible = useCallback(() => {
@@ -108,7 +156,7 @@ export function useCompanionIntegration(options: UseCompanionIntegrationOptions)
     async (reflectionText: string) => {
       session.showBubble('reflectionThanks', true);
       
-      await logCompanionEvent(
+      debouncedLogEvent(
         'reflection_submitted',
         { room_id: roomId, text_length: reflectionText.length },
         roomId
@@ -121,7 +169,7 @@ export function useCompanionIntegration(options: UseCompanionIntegrationOptions)
         }
       }, 15000);
     },
-    [session, roomId]
+    [session, roomId, debouncedLogEvent]
   );
 
   // Handler for mood selection
@@ -136,16 +184,16 @@ export function useCompanionIntegration(options: UseCompanionIntegrationOptions)
         session.showBubble('moodFollowup_okay', true);
       }
 
-      logCompanionEvent('mood_selected', { mood, room_id: roomId }, roomId);
+      debouncedLogEvent('mood_selected', { mood, room_id: roomId }, roomId);
     },
-    [session, roomId]
+    [session, roomId, debouncedLogEvent]
   );
 
   // Handler for path day completion
   const onDayComplete = useCallback(() => {
     session.showBubble('pathProgress', true);
-    logCompanionEvent('path_day_completed', { day_index: dayIndex, room_id: roomId }, roomId);
-  }, [session, dayIndex, roomId]);
+    debouncedLogEvent('path_day_completed', { day_index: dayIndex, room_id: roomId }, roomId);
+  }, [session, dayIndex, roomId, debouncedLogEvent]);
 
   // Cleanup timers
   useEffect(() => {
@@ -159,7 +207,8 @@ export function useCompanionIntegration(options: UseCompanionIntegrationOptions)
     };
   }, []);
 
-  return {
+  // Memoize return value to prevent unnecessary re-renders
+  return useMemo(() => ({
     ...session,
     // Integration handlers
     onAudioPlay,
@@ -168,5 +217,5 @@ export function useCompanionIntegration(options: UseCompanionIntegrationOptions)
     onReflectionSubmit,
     onMoodSelect,
     onDayComplete,
-  };
+  }), [session, onAudioPlay, onAudioEnded, onReflectionVisible, onReflectionSubmit, onMoodSelect, onDayComplete]);
 }

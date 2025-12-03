@@ -1,10 +1,13 @@
-import { useState, useCallback, useRef, useEffect } from 'react';
-import { CompanionCategory, getRandomCompanionLine } from '@/lib/companionLines';
+import { useState, useCallback, useRef, useMemo, useEffect } from 'react';
+import { getRandomCompanionLine, CompanionCategory } from '@/lib/companionLines';
 import { canCompanionSpeakGlobally, markCompanionSpoken } from '@/lib/companionGlobal';
 
-// Friend mode configuration
-const COMPANION_MAX_BUBBLES_PER_SESSION = 10;
-const COMPANION_MIN_INTERVAL_MS = 25_000; // 25 seconds between bubbles
+const STORAGE_KEY = 'companion_enabled';
+const MUTED_ROOMS_KEY = 'mercy_muted_rooms';
+const VISIT_COUNTS_KEY = 'mercy_room_visits';
+const SESSION_COOLDOWN_MS = 30_000;
+const MAX_BUBBLES_EARLY = 3;
+const MAX_BUBBLES_LATER = 1;
 
 export interface CompanionSessionState {
   roomId: string;
@@ -13,198 +16,115 @@ export interface CompanionSessionState {
   lastShownAt?: number;
 }
 
-interface CompanionBubbleData {
-  text: string;
-  visible: boolean;
+function getMutedRooms(): string[] {
+  try {
+    return JSON.parse(localStorage.getItem(MUTED_ROOMS_KEY) || '[]');
+  } catch { return []; }
 }
 
-interface UseCompanionSessionReturn {
-  sessionState: CompanionSessionState;
-  bubbleData: CompanionBubbleData;
-  showBubble: (category: CompanionCategory, overrideCooldown?: boolean) => void;
-  canSpeak: () => boolean;
-  resetSession: () => void;
-  hideBubble: () => void;
+function setMutedRooms(rooms: string[]): void {
+  localStorage.setItem(MUTED_ROOMS_KEY, JSON.stringify(rooms));
 }
 
-/**
- * Check if companion is enabled (localStorage setting)
- */
-function isCompanionEnabled(): boolean {
-  if (typeof window === 'undefined') return true;
-  const stored = localStorage.getItem('companion_enabled');
-  return stored !== 'false'; // Default to true
+function getVisitCounts(): Record<string, number> {
+  try {
+    return JSON.parse(sessionStorage.getItem(VISIT_COUNTS_KEY) || '{}');
+  } catch { return {}; }
 }
 
-/**
- * Hook to manage companion session state and bubble display
- */
-export function useCompanionSession(roomId: string): UseCompanionSessionReturn {
-  const [sessionState, setSessionState] = useState<CompanionSessionState>({
-    roomId,
-    bubblesShown: 0,
-  });
+function incrementVisitCount(roomId: string): number {
+  const counts = getVisitCounts();
+  counts[roomId] = (counts[roomId] || 0) + 1;
+  sessionStorage.setItem(VISIT_COUNTS_KEY, JSON.stringify(counts));
+  return counts[roomId];
+}
 
-  const [bubbleData, setBubbleData] = useState<CompanionBubbleData>({
-    text: '',
-    visible: false,
-  });
-
+export function useCompanionSession(roomId: string) {
+  const [sessionState, setSessionState] = useState<CompanionSessionState>({ roomId, bubblesShown: 0 });
+  const [bubbleData, setBubbleData] = useState({ text: '', visible: false });
+  const [isRoomMuted, setIsRoomMuted] = useState(() => getMutedRooms().includes(roomId));
+  const [visitCount, setVisitCount] = useState(0);
   const hideTimerRef = useRef<NodeJS.Timeout | null>(null);
   const shownCategoriesRef = useRef<Set<CompanionCategory>>(new Set());
 
-  // Reset session when roomId changes
   useEffect(() => {
-    setSessionState({
-      roomId,
-      bubblesShown: 0,
-    });
+    setVisitCount(incrementVisitCount(roomId));
+    setIsRoomMuted(getMutedRooms().includes(roomId));
+    setSessionState({ roomId, bubblesShown: 0 });
     shownCategoriesRef.current.clear();
-    setBubbleData({ text: '', visible: false });
   }, [roomId]);
 
-  // Cleanup timer on unmount
-  useEffect(() => {
-    return () => {
-      if (hideTimerRef.current) {
-        clearTimeout(hideTimerRef.current);
-      }
-    };
-  }, []);
+  useEffect(() => () => { if (hideTimerRef.current) clearTimeout(hideTimerRef.current); }, []);
+
+  const getMaxBubbles = useCallback(() => visitCount <= 3 ? MAX_BUBBLES_EARLY : MAX_BUBBLES_LATER, [visitCount]);
 
   const canSpeak = useCallback((): boolean => {
-    // Check if companion is enabled
-    if (!isCompanionEnabled()) return false;
-
-    // Check max bubbles per session
-    if (sessionState.bubblesShown >= COMPANION_MAX_BUBBLES_PER_SESSION) return false;
-
-    // Check global rate limit
+    if (!getCompanionEnabled() || isRoomMuted) return false;
     if (!canCompanionSpeakGlobally()) return false;
-
-    // Check session cooldown
-    if (sessionState.lastShownAt) {
-      const elapsed = Date.now() - sessionState.lastShownAt;
-      if (elapsed < COMPANION_MIN_INTERVAL_MS) return false;
-    }
-
+    if (sessionState.lastShownAt && Date.now() - sessionState.lastShownAt < SESSION_COOLDOWN_MS) return false;
+    if (sessionState.bubblesShown >= getMaxBubbles()) return false;
     return true;
-  }, [sessionState]);
+  }, [sessionState, isRoomMuted, getMaxBubbles]);
 
-  const hideBubble = useCallback(() => {
-    setBubbleData((prev) => ({ ...prev, visible: false }));
-  }, []);
+  const hideBubble = useCallback(() => setBubbleData(p => ({ ...p, visible: false })), []);
 
-  const showBubble = useCallback(
-    (category: CompanionCategory, overrideCooldown = false) => {
-      // Check if companion is enabled
-      if (!isCompanionEnabled()) return;
+  const showBubble = useCallback((category: CompanionCategory, overrideCooldown = false) => {
+    if (!getCompanionEnabled() || isRoomMuted) return;
+    if (!overrideCooldown && shownCategoriesRef.current.has(category)) return;
+    if (!overrideCooldown && !canSpeak()) return;
+    if (sessionState.bubblesShown >= getMaxBubbles()) return;
 
-      // Check if already shown this category in session (for non-critical)
-      if (!overrideCooldown && shownCategoriesRef.current.has(category)) return;
-
-      // Check if we can speak (unless overriding cooldown)
-      if (!overrideCooldown && !canSpeak()) return;
-
-      // For override, still check max bubbles
-      if (sessionState.bubblesShown >= COMPANION_MAX_BUBBLES_PER_SESSION) return;
-
-      // Get random line for category
-      const text = getRandomCompanionLine(category);
-
-      // Clear any existing timer
-      if (hideTimerRef.current) {
-        clearTimeout(hideTimerRef.current);
-      }
-
-      // Show bubble
-      setBubbleData({ text, visible: true });
-
-      // Mark as shown
-      shownCategoriesRef.current.add(category);
-      markCompanionSpoken();
-
-      // Update session state
-      setSessionState((prev) => ({
-        ...prev,
-        bubblesShown: prev.bubblesShown + 1,
-        lastCategory: category,
-        lastShownAt: Date.now(),
-      }));
-
-      // Auto-hide after 3 seconds
-      hideTimerRef.current = setTimeout(() => {
-        setBubbleData((prev) => ({ ...prev, visible: false }));
-      }, 3000);
-    },
-    [canSpeak, sessionState.bubblesShown]
-  );
+    const text = getRandomCompanionLine(category);
+    if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+    setBubbleData({ text, visible: true });
+    shownCategoriesRef.current.add(category);
+    markCompanionSpoken();
+    setSessionState(p => ({ ...p, bubblesShown: p.bubblesShown + 1, lastCategory: category, lastShownAt: Date.now() }));
+    hideTimerRef.current = setTimeout(hideBubble, 8000);
+  }, [canSpeak, sessionState.bubblesShown, isRoomMuted, getMaxBubbles, hideBubble]);
 
   const resetSession = useCallback(() => {
-    setSessionState({
-      roomId,
-      bubblesShown: 0,
-    });
+    setSessionState({ roomId, bubblesShown: 0 });
     shownCategoriesRef.current.clear();
     setBubbleData({ text: '', visible: false });
-    if (hideTimerRef.current) {
-      clearTimeout(hideTimerRef.current);
-    }
   }, [roomId]);
 
-  return {
-    sessionState,
-    bubbleData,
-    showBubble,
-    canSpeak,
-    resetSession,
-    hideBubble,
-  };
+  const muteRoom = useCallback(() => {
+    const muted = getMutedRooms();
+    if (!muted.includes(roomId)) setMutedRooms([...muted, roomId]);
+    setIsRoomMuted(true);
+    hideBubble();
+  }, [roomId, hideBubble]);
+
+  const unmuteRoom = useCallback(() => {
+    setMutedRooms(getMutedRooms().filter(id => id !== roomId));
+    setIsRoomMuted(false);
+  }, [roomId]);
+
+  return useMemo(() => ({ sessionState, bubbleData, showBubble, canSpeak, resetSession, hideBubble, isRoomMuted, muteRoom, unmuteRoom, visitCount }), [sessionState, bubbleData, showBubble, canSpeak, resetSession, hideBubble, isRoomMuted, muteRoom, unmuteRoom, visitCount]);
 }
 
-/**
- * Toggle companion enabled state
- */
 export function setCompanionEnabled(enabled: boolean): void {
-  if (typeof window !== 'undefined') {
-    localStorage.setItem('companion_enabled', String(enabled));
-    // Dispatch custom event for cross-component sync
-    window.dispatchEvent(new CustomEvent('companion-enabled-change', { detail: enabled }));
-  }
+  localStorage.setItem(STORAGE_KEY, String(enabled));
+  window.dispatchEvent(new CustomEvent('companion-enabled-change', { detail: enabled }));
 }
 
-/**
- * Get companion enabled state
- */
 export function getCompanionEnabled(): boolean {
-  return isCompanionEnabled();
+  const stored = localStorage.getItem(STORAGE_KEY);
+  return stored !== 'false';
 }
 
-/**
- * Hook to listen for companion enabled state changes
- */
 export function useCompanionEnabledState(): boolean {
-  const [enabled, setEnabled] = useState(isCompanionEnabled());
-  
+  const [enabled, setEnabled] = useState(getCompanionEnabled);
   useEffect(() => {
-    const handleChange = (e: CustomEvent<boolean>) => {
-      setEnabled(e.detail);
-    };
-    
-    const handleStorage = (e: StorageEvent) => {
-      if (e.key === 'companion_enabled') {
-        setEnabled(e.newValue !== 'false');
-      }
-    };
-    
-    window.addEventListener('companion-enabled-change', handleChange as EventListener);
-    window.addEventListener('storage', handleStorage);
-    
-    return () => {
-      window.removeEventListener('companion-enabled-change', handleChange as EventListener);
-      window.removeEventListener('storage', handleStorage);
-    };
+    const h1 = (e: CustomEvent<boolean>) => setEnabled(e.detail);
+    const h2 = (e: StorageEvent) => { if (e.key === STORAGE_KEY) setEnabled(e.newValue !== 'false'); };
+    window.addEventListener('companion-enabled-change', h1 as EventListener);
+    window.addEventListener('storage', h2);
+    return () => { window.removeEventListener('companion-enabled-change', h1 as EventListener); window.removeEventListener('storage', h2); };
   }, []);
-  
   return enabled;
 }
+
+export function getMutedRoomsList(): string[] { return getMutedRooms(); }
+export function clearMutedRooms(): void { localStorage.removeItem(MUTED_ROOMS_KEY); }

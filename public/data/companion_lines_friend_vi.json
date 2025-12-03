@@ -1,0 +1,57 @@
+{
+  "greeting": [
+    "Chào bạn, bạn đã đến đây. Mình vui vì bạn đến.",
+    "Chào mừng trở lại. Hãy dành một giây để ổn định.",
+    "Vui được gặp lại bạn. Hãy đi chậm thôi nhé.",
+    "Bạn ở đây rồi. Điều đó đã là một nỗ lực rồi."
+  ],
+  "audioIntro": [
+    "Nhấn play và mình sẽ cùng bạn đi qua ý tưởng này.",
+    "Muốn nghe thay vì đọc không? Nhấn play nhé.",
+    "Nếu mắt bạn mỏi, hãy để tai làm việc."
+  ],
+  "postAudio": [
+    "Tốt lắm, bạn đã nghe xong. Cảm giác thế nào?",
+    "Bạn đã nghe xong. Hít thở một hơi trước khi cuộn tiếp.",
+    "Giỏi lắm. Không cần vội phần tiếp theo."
+  ],
+  "reflectionHint": [
+    "Điều gì đọng lại trong tâm trí bạn sau khi nghe?",
+    "Có câu nào bạn muốn giữ lại từ phần này không?",
+    "Nếu phải kể cho bạn bè một câu từ phần này, bạn sẽ chọn câu nào?"
+  ],
+  "reflectionThanks": [
+    "Cảm ơn bạn đã viết. Đó là sự chân thành.",
+    "Mình vui vì bạn đã chia sẻ điều đó với chính mình.",
+    "Bạn không cần phải thật như vậy, nhưng bạn đã làm."
+  ],
+  "pathProgress": [
+    "Đây là một bước nữa trên hành trình của bạn. Mình vẫn ở đây.",
+    "Từng ngày, những bước nhỏ này sẽ tích lũy.",
+    "Bạn đã đi xa hơn lúc bắt đầu. Điều đó có ý nghĩa."
+  ],
+  "returnAfterGap_short": [
+    "Vui được gặp lại bạn hôm nay.",
+    "Bạn đã quay lại. Hãy làm mọi thứ nhẹ nhàng và đơn giản."
+  ],
+  "returnAfterGap_long": [
+    "Chào, đã lâu rồi nhỉ. Chúng ta có thể bắt đầu từ nhỏ.",
+    "Chào mừng trở lại. Không cần bắt kịp gì, chỉ một bước thôi."
+  ],
+  "moodFollowup_heavy": [
+    "Nếu hôm nay cảm thấy nặng nề, bạn không cần sửa nó, chỉ cần ở đây với mình.",
+    "Những ngày nặng nề được phép có. Bạn không tụt lại đâu."
+  ],
+  "moodFollowup_okay": [
+    "Ổn là đủ tốt cho hôm nay rồi.",
+    "Ngay cả một ngày bình thường cũng xứng đáng có một khoảnh khắc nhẹ nhàng."
+  ],
+  "nextRoomSuggestion": [
+    "Khi bạn sẵn sàng, mình có thể gợi ý một phòng nhẹ nhàng hơn.",
+    "Nếu phần này hơi nhiều, chúng ta có thể chọn gì đó nhẹ hơn sau."
+  ],
+  "voiceQuiet": [
+    "Hôm nay giọng mình hơi nhỏ, nhưng mình vẫn ở đây với bạn.",
+    "Mình không nói được hôm nay, nhưng mình vẫn lắng nghe."
+  ]
+}

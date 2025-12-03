@@ -1,4 +1,4 @@
-import React, { createContext, useContext, ReactNode } from 'react';
+import React, { createContext, useContext, ReactNode, useMemo } from 'react';
 import { useCompanionIntegration } from '@/hooks/useCompanionIntegration';
 import { CompanionBubble } from './CompanionBubble';
 
@@ -10,96 +10,29 @@ interface CompanionContextValue {
   onMoodSelect: (mood: string) => void;
   onDayComplete: () => void;
   canSpeak: () => boolean;
+  isRoomMuted: boolean;
+  muteRoom: () => void;
+  unmuteRoom: () => void;
+  visitCount: number;
 }
 
 const CompanionContext = createContext<CompanionContextValue | null>(null);
 
-interface CompanionProviderProps {
-  children: ReactNode;
-  roomId: string;
-  isPathDay?: boolean;
-  dayIndex?: number;
-}
-
-/**
- * Provider component that wraps room/path pages with companion functionality
- */
-export function CompanionProvider({
-  children,
-  roomId,
-  isPathDay = false,
-  dayIndex = 1,
-}: CompanionProviderProps) {
-  const companion = useCompanionIntegration({
-    roomId,
-    isPathDay,
-    dayIndex,
-  });
-
-  const contextValue: CompanionContextValue = {
-    onAudioPlay: companion.onAudioPlay,
-    onAudioEnded: companion.onAudioEnded,
-    onReflectionVisible: companion.onReflectionVisible,
-    onReflectionSubmit: companion.onReflectionSubmit,
-    onMoodSelect: companion.onMoodSelect,
-    onDayComplete: companion.onDayComplete,
-    canSpeak: companion.canSpeak,
-  };
+export function CompanionProvider({ children, roomId, isPathDay = false, dayIndex = 1 }: { children: ReactNode; roomId: string; isPathDay?: boolean; dayIndex?: number }) {
+  const c = useCompanionIntegration({ roomId, isPathDay, dayIndex });
+  const ctx = useMemo(() => ({ onAudioPlay: c.onAudioPlay, onAudioEnded: c.onAudioEnded, onReflectionVisible: c.onReflectionVisible, onReflectionSubmit: c.onReflectionSubmit, onMoodSelect: c.onMoodSelect, onDayComplete: c.onDayComplete, canSpeak: c.canSpeak, isRoomMuted: c.isRoomMuted, muteRoom: c.muteRoom, unmuteRoom: c.unmuteRoom, visitCount: c.visitCount }), [c]);
 
   return (
-    <CompanionContext.Provider value={contextValue}>
+    <CompanionContext.Provider value={ctx}>
       {children}
-      {/* Bubble container - positioned relative to audio player */}
-      <CompanionBubbleContainer
-        text={companion.bubbleData.text}
-        visible={companion.bubbleData.visible}
-        onClose={companion.hideBubble}
-      />
+      <CompanionBubble text={c.bubbleData.text} visible={c.bubbleData.visible} onClose={c.hideBubble} title="Mercy" onMuteRoom={c.muteRoom} showMuteOption={c.visitCount > 1} />
     </CompanionContext.Provider>
   );
 }
 
-/**
- * Hook to access companion context
- */
 export function useCompanion() {
-  const context = useContext(CompanionContext);
-  if (!context) {
-    // Return no-op functions if not in provider
-    return {
-      onAudioPlay: () => {},
-      onAudioEnded: () => {},
-      onReflectionVisible: () => {},
-      onReflectionSubmit: async () => {},
-      onMoodSelect: () => {},
-      onDayComplete: () => {},
-      canSpeak: () => false,
-    };
-  }
-  return context;
-}
-
-/**
- * Bubble container - CompanionBubble now handles its own fixed positioning
- */
-function CompanionBubbleContainer({
-  text,
-  visible,
-  onClose,
-}: {
-  text: string;
-  visible: boolean;
-  onClose: () => void;
-}) {
-  // CompanionBubble handles its own positioning now
-  return (
-    <CompanionBubble 
-      text={text} 
-      visible={visible} 
-      onClose={onClose}
-      title="Mercy"
-    />
-  );
+  const ctx = useContext(CompanionContext);
+  return ctx || { onAudioPlay: () => {}, onAudioEnded: () => {}, onReflectionVisible: () => {}, onReflectionSubmit: async () => {}, onMoodSelect: () => {}, onDayComplete: () => {}, canSpeak: () => false, isRoomMuted: false, muteRoom: () => {}, unmuteRoom: () => {}, visitCount: 0 };
 }
 
 export default CompanionProvider;
