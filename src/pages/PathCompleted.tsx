@@ -55,7 +55,7 @@ export default function PathCompleted() {
     
     try {
       await resetPath.mutateAsync(path.id);
-      toast.success('Path reset. Start fresh whenever you're ready.');
+      toast.success("Path reset. Start fresh whenever you're ready.");
       navigate(`/paths/${slug}`);
     } catch (error) {
       toast.error('Failed to reset path.');
