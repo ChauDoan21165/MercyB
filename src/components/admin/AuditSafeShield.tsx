@@ -44,6 +44,10 @@ export default function AuditSafeShield() {
   const abortRef = useRef(false);
   const { toast } = useToast();
 
+  // Helper to check both camelCase and snake_case from backend
+  const isAutoFixable = (issue: AuditIssue) =>
+    (issue as any).autoFixable || (issue as any).auto_fixable;
+
   // Call backend audit endpoint
   const callAuditEndpoint = async (mode: AuditMode): Promise<AuditResponse | null> => {
     const { data, error } = await supabase.functions.invoke("audit-v4-safe-shield", {
@@ -131,10 +135,11 @@ export default function AuditSafeShield() {
     }
   });
 
-  const autoFixableIssues = filteredIssues.filter((i) => i.autoFixable);
+  // Count auto-fixable from ALL issues, not just filtered
+  const autoFixableCount = issues.filter(isAutoFixable).length;
 
   const handleAutoRepair = async () => {
-    if (autoFixableIssues.length === 0) {
+    if (autoFixableCount === 0) {
       toast({
         title: "Nothing to repair",
         description: "No auto-fixable issues found. Run an audit first.",
@@ -250,7 +255,7 @@ export default function AuditSafeShield() {
               onClick={handleAutoRepair}
               variant="outline"
               className="border-black"
-              disabled={isRepairing || isRunning || autoFixableIssues.length === 0}
+              disabled={isRepairing || isRunning || autoFixableCount === 0}
             >
               {isRepairing ? (
                 <>
@@ -260,7 +265,7 @@ export default function AuditSafeShield() {
               ) : (
                 <>
                   <Wrench className="h-4 w-4 mr-2" />
-                  Fix Issues ({autoFixableIssues.length})
+                  Fix Issues ({autoFixableCount})
                 </>
               )}
             </Button>
@@ -424,7 +429,7 @@ export default function AuditSafeShield() {
                           >
                             {issue.type.replace(/_/g, " ")}
                           </Badge>
-                          {issue.autoFixable && (
+                          {isAutoFixable(issue) && (
                             <Badge className="bg-green-100 text-green-700 text-xs">
                               Auto-fixable
                             </Badge>
