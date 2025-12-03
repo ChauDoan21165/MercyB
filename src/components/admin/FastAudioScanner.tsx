@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Play, CheckCircle, XCircle, Loader2, Volume2 } from "lucide-react";
+import { Play, CheckCircle, XCircle, Loader2, Volume2, AlertTriangle } from "lucide-react";
 
 interface MissingAudio {
   roomId: string;
@@ -15,6 +15,8 @@ interface MissingAudio {
 
 interface ScanResult {
   totalJsonFiles: number;
+  validRoomFiles: number;
+  orphanFiles: string[];
   totalEntries: number;
   totalAudioRefs: number;
   uniqueFilenames: number;
@@ -25,11 +27,36 @@ interface ScanResult {
 // Import all JSON files from public/data
 const dataModules = import.meta.glob('/public/data/*.json', { eager: true });
 
+// Non-room files to exclude
+const EXCLUDED_FILES = new Set([
+  'components.json',
+  'Tiers.json',
+  'Tiers_.json',
+  'Package_Lock.json',
+  '.gitkeep',
+]);
+
 function normalizeAudioFilename(raw: string): string {
   let s = raw.trim();
   if (s.startsWith("/")) s = s.slice(1);
   if (s.toLowerCase().startsWith("audio/")) s = s.slice("audio/".length);
   return s;
+}
+
+function isValidRoomJson(json: any, fileName: string): boolean {
+  // Exclude known non-room files
+  if (EXCLUDED_FILES.has(fileName)) return false;
+  
+  // Must have entries array
+  if (!json.entries || !Array.isArray(json.entries)) return false;
+  
+  // Must have at least one entry
+  if (json.entries.length === 0) return false;
+  
+  // Must have id or be a proper room structure
+  if (!json.id && !json.name && !json.title) return false;
+  
+  return true;
 }
 
 async function checkAudioExists(filename: string): Promise<boolean> {
@@ -46,6 +73,7 @@ export function FastAudioScanner() {
   const [progress, setProgress] = useState(0);
   const [result, setResult] = useState<ScanResult | null>(null);
   const [currentFile, setCurrentFile] = useState<string>("");
+  const [showOrphans, setShowOrphans] = useState(false);
 
   const runScan = useCallback(async () => {
     setScanning(true);
@@ -56,8 +84,10 @@ export function FastAudioScanner() {
     const jsonFiles = Object.entries(dataModules);
     const totalFiles = jsonFiles.length;
     
+    let validRoomFiles = 0;
     let totalEntries = 0;
     let totalAudioRefs = 0;
+    const orphanFiles: string[] = [];
     const allAudioRefs: { roomId: string; tier: string; entrySlug: string; filename: string }[] = [];
 
     // Phase 1: Collect all audio references
@@ -65,10 +95,18 @@ export function FastAudioScanner() {
       const [path, module] = jsonFiles[i];
       const fileName = path.split('/').pop() || path;
       setCurrentFile(fileName);
-      setProgress((i / totalFiles) * 50); // First 50% for collection
+      setProgress((i / totalFiles) * 50);
 
       try {
         const json = (module as any).default || module;
+        
+        // Check if valid room file
+        if (!isValidRoomJson(json, fileName)) {
+          orphanFiles.push(fileName);
+          continue;
+        }
+        
+        validRoomFiles++;
         const roomId = json.id || fileName.replace('.json', '');
         const tier = json.tier || 'unknown';
         const entries = json.entries || [];
@@ -96,6 +134,7 @@ export function FastAudioScanner() {
           });
         }
       } catch (err) {
+        orphanFiles.push(fileName);
         console.warn(`Skipping invalid JSON: ${fileName}`, err);
       }
     }
@@ -106,19 +145,17 @@ export function FastAudioScanner() {
     
     setCurrentFile("Checking audio files...");
     
-    // Check in batches of 10 for performance
     const batchSize = 10;
     for (let i = 0; i < uniqueFilenames.length; i += batchSize) {
       const batch = uniqueFilenames.slice(i, i + batchSize);
       const results = await Promise.all(batch.map(f => checkAudioExists(f)));
       batch.forEach((f, idx) => existsMap.set(f, results[idx]));
-      setProgress(50 + (i / uniqueFilenames.length) * 50); // Second 50% for checking
+      setProgress(50 + (i / uniqueFilenames.length) * 50);
     }
 
     // Build missing list
     const missing = allAudioRefs.filter(r => !existsMap.get(r.filename));
     
-    // Group by room
     const missingByRoom: Record<string, MissingAudio[]> = {};
     for (const m of missing) {
       const key = m.roomId;
@@ -128,6 +165,8 @@ export function FastAudioScanner() {
 
     setResult({
       totalJsonFiles: totalFiles,
+      validRoomFiles,
+      orphanFiles,
       totalEntries,
       totalAudioRefs,
       uniqueFilenames: uniqueFilenames.length,
@@ -180,28 +219,62 @@ export function FastAudioScanner() {
         {result && (
           <>
             {/* Summary Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 text-center">
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-3 text-center">
               <div className="p-2 rounded bg-muted/50">
                 <div className="text-lg font-bold">{result.totalJsonFiles}</div>
-                <div className="text-xs text-muted-foreground">JSON Files</div>
+                <div className="text-xs text-muted-foreground">Total Files</div>
+              </div>
+              <div className="p-2 rounded bg-green-500/10">
+                <div className="text-lg font-bold text-green-600">{result.validRoomFiles}</div>
+                <div className="text-xs text-muted-foreground">Valid Rooms</div>
+              </div>
+              <div className={`p-2 rounded ${result.orphanFiles.length > 0 ? 'bg-yellow-500/10' : 'bg-muted/50'}`}>
+                <div className={`text-lg font-bold ${result.orphanFiles.length > 0 ? 'text-yellow-600' : ''}`}>
+                  {result.orphanFiles.length}
+                </div>
+                <div className="text-xs text-muted-foreground">Non-Room</div>
               </div>
               <div className="p-2 rounded bg-muted/50">
                 <div className="text-lg font-bold">{result.totalEntries}</div>
                 <div className="text-xs text-muted-foreground">Entries</div>
               </div>
               <div className="p-2 rounded bg-muted/50">
-                <div className="text-lg font-bold">{result.totalAudioRefs}</div>
-                <div className="text-xs text-muted-foreground">Audio Refs</div>
-              </div>
-              <div className="p-2 rounded bg-muted/50">
                 <div className="text-lg font-bold">{result.uniqueFilenames}</div>
-                <div className="text-xs text-muted-foreground">Unique Files</div>
+                <div className="text-xs text-muted-foreground">Audio Files</div>
               </div>
               <div className={`p-2 rounded ${result.missingCount > 0 ? 'bg-destructive/10' : 'bg-green-500/10'}`}>
-                <div className="text-lg font-bold">{result.missingCount}</div>
+                <div className={`text-lg font-bold ${result.missingCount > 0 ? 'text-destructive' : 'text-green-600'}`}>
+                  {result.missingCount}
+                </div>
                 <div className="text-xs text-muted-foreground">Missing</div>
               </div>
             </div>
+
+            {/* Orphan Files Warning */}
+            {result.orphanFiles.length > 0 && (
+              <div className="space-y-2">
+                <button
+                  onClick={() => setShowOrphans(!showOrphans)}
+                  className="flex items-center gap-2 text-yellow-600 p-3 rounded bg-yellow-500/10 w-full text-left"
+                >
+                  <AlertTriangle className="h-5 w-5" />
+                  <span className="font-medium">
+                    {result.orphanFiles.length} non-room files (click to {showOrphans ? 'hide' : 'show'})
+                  </span>
+                </button>
+                {showOrphans && (
+                  <ScrollArea className="h-[150px] border rounded p-3">
+                    <div className="space-y-1">
+                      {result.orphanFiles.map((f, i) => (
+                        <div key={i} className="text-xs font-mono text-muted-foreground">
+                          • {f}
+                        </div>
+                      ))}
+                    </div>
+                  </ScrollArea>
+                )}
+              </div>
+            )}
 
             {/* Result Status */}
             {result.missingCount === 0 ? (
@@ -218,7 +291,6 @@ export function FastAudioScanner() {
                   </span>
                 </div>
 
-                {/* Missing Files List */}
                 <ScrollArea className="h-[300px] border rounded p-3">
                   {Object.entries(result.missingByRoom).map(([roomId, files]) => (
                     <div key={roomId} className="mb-4">
@@ -248,7 +320,7 @@ export function FastAudioScanner() {
           <p className="text-sm text-muted-foreground text-center py-4">
             Click "Run Scan" to check all room JSON files for missing audio references.
             <br />
-            <span className="text-xs">This runs locally without hitting Supabase.</span>
+            <span className="text-xs">This runs locally without hitting the database.</span>
           </p>
         )}
       </CardContent>
