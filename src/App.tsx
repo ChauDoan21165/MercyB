@@ -19,6 +19,7 @@ import { PerformanceProfiler } from "@/lib/performance/profiler";
 import { LoadingSkeleton } from "@/components/ui/loading-skeleton";
 import { preloadCriticalRoutes } from "@/lib/performance";
 import { DevObservabilityPanel } from "@/components/dev/DevObservabilityPanel";
+import { MercyToggle } from "@/components/companion/MercyToggle";
 // GlobalHeader removed from global render - individual pages handle their own headers
 import { logger } from "@/lib/logger";
 
@@ -331,6 +332,9 @@ const App = () => {
                   </Suspense>
                   
                   <RouteAwareBottomBar />
+                  
+                  {/* Mercy Toggle - shows when companion is disabled */}
+                  <MercyToggle />
                 </BrowserRouter>
               </MusicPlayerProvider>
             </TooltipProvider>

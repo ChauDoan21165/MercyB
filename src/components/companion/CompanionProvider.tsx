@@ -80,7 +80,7 @@ export function useCompanion() {
 }
 
 /**
- * Bubble container that positions itself above the audio player
+ * Bubble container - CompanionBubble now handles its own fixed positioning
  */
 function CompanionBubbleContainer({
   text,
@@ -91,17 +91,14 @@ function CompanionBubbleContainer({
   visible: boolean;
   onClose: () => void;
 }) {
-  if (!visible && !text) return null;
-
+  // CompanionBubble handles its own positioning now
   return (
-    <div
-      className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50"
-      style={{ maxWidth: '720px', width: '100%', pointerEvents: 'none' }}
-    >
-      <div className="relative flex justify-center" style={{ pointerEvents: 'auto' }}>
-        <CompanionBubble text={text} visible={visible} onClose={onClose} />
-      </div>
-    </div>
+    <CompanionBubble 
+      text={text} 
+      visible={visible} 
+      onClose={onClose}
+      title="Mercy"
+    />
   );
 }
 

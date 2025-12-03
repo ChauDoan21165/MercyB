@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { ColorfulMercyBladeHeader } from '@/components/headers/ColorfulMercyBladeHeader';
+import { MercyToggle } from '@/components/companion/MercyToggle';
 
 interface LayoutShellProps {
   children: ReactNode;
@@ -40,6 +41,9 @@ export function LayoutShell({
       <main className={`${maxWidthClass} mx-auto px-4 py-6`}>
         {children}
       </main>
+      
+      {/* Mercy Toggle - shows when companion is disabled */}
+      <MercyToggle />
     </div>
   );
 }
