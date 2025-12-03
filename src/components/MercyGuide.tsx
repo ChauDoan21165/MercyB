@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { MessageCircleQuestion, X, Send, BookOpen, User, Sparkles, ChevronRight, Loader2, Mic, Square, Volume2 } from 'lucide-react';
+import { MessageCircleQuestion, X, Send, BookOpen, User, Sparkles, ChevronRight, Loader2, Mic, Square, Volume2, GraduationCap, Wind } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -10,6 +10,8 @@ import { supabase } from '@/integrations/supabase/client';
 import { cn } from '@/lib/utils';
 import { CompanionProfile, getCompanionProfile, markEnglishActivity } from '@/services/companion';
 import { getSuggestionsForUser, SuggestedItem } from '@/services/suggestions';
+import { getYesterdayAndTodaySummary, getRecentMoods, StudyLogEntry, MoodKey } from '@/services/studyLog';
+import { BREATHING_SCRIPT_SHORT, POSITIVE_REFRAME_SHORT, COMPASSIONATE_HEAVY_MOOD_MESSAGE } from '@/data/breathing_scripts_en_vi';
 import { MercyGuideProfileSettings } from './MercyGuideProfileSettings';
 import { useNavigate } from 'react-router-dom';
 
@@ -172,6 +174,14 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
   const [isLoadingEnglish, setIsLoadingEnglish] = useState(false);
   const [englishResult, setEnglishResult] = useState<EnglishHelperResult | null>(null);
   
+  // Teacher tab state
+  const [yesterdaySummary, setYesterdaySummary] = useState<StudyLogEntry | undefined>();
+  const [todayTotalMinutes, setTodayTotalMinutes] = useState(0);
+  const [hasHeavyMoods, setHasHeavyMoods] = useState(false);
+  const [showBreathingScript, setShowBreathingScript] = useState(false);
+  const [breathingStep, setBreathingStep] = useState(0);
+  const [showReframe, setShowReframe] = useState(false);
+  
   // Pronunciation coach state
   const [targetPhrase, setTargetPhrase] = useState('');
   const [isPlayingTarget, setIsPlayingTarget] = useState(false);
@@ -216,6 +226,16 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
           lastTags: tags,
         });
         setSuggestions(suggestionsData);
+        
+        // Load teacher tab data
+        const summary = await getYesterdayAndTodaySummary();
+        setYesterdaySummary(summary.yesterday);
+        setTodayTotalMinutes(summary.todayTotalMinutes);
+        
+        // Check for heavy moods
+        const recentMoods = await getRecentMoods(3);
+        const heavyCount = recentMoods.filter(m => m === 'heavy' || m === 'anxious').length;
+        setHasHeavyMoods(heavyCount >= 2);
       } catch (error) {
         console.error('Failed to load guide data:', error);
       }
@@ -563,10 +583,14 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
 
               {/* Tabs */}
               <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col overflow-hidden">
-                <TabsList className="grid grid-cols-4 mx-3 mt-2">
+                <TabsList className="grid grid-cols-5 mx-3 mt-2">
                   <TabsTrigger value="guide" className="text-xs">
                     <MessageCircleQuestion className="h-3 w-3 mr-1" />
                     Guide
+                  </TabsTrigger>
+                  <TabsTrigger value="teacher" className="text-xs">
+                    <GraduationCap className="h-3 w-3 mr-1" />
+                    Teacher
                   </TabsTrigger>
                   <TabsTrigger value="english" className="text-xs" disabled={!contentEn && !roomId}>
                     <BookOpen className="h-3 w-3 mr-1" />
@@ -655,6 +679,190 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
                       {getQuestionsRemaining()} questions remaining this hour
                     </p>
                   </div>
+                </TabsContent>
+
+                {/* Teacher Tab */}
+                <TabsContent value="teacher" className="flex-1 overflow-hidden m-0">
+                  <ScrollArea className="h-full px-4 py-3">
+                    <div className="space-y-4">
+                      {/* Greeting with name + yesterday/today */}
+                      <div className="p-3 bg-primary/5 rounded-lg space-y-2">
+                        <p className="text-sm font-medium text-foreground">
+                          {profile.preferred_name 
+                            ? `Hi ${profile.preferred_name}, here is where we are.`
+                            : 'Hi, here is where we are.'}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          {profile.preferred_name
+                            ? `Chào ${profile.preferred_name}, đây là chặng mình đang đi.`
+                            : 'Chào bạn, đây là chặng mình đang đi.'}
+                        </p>
+                      </div>
+
+                      {/* Yesterday summary */}
+                      <div className="p-3 bg-muted rounded-lg space-y-1">
+                        <p className="text-xs font-medium text-muted-foreground uppercase">Yesterday</p>
+                        {yesterdaySummary ? (
+                          <>
+                            <p className="text-sm">
+                              You studied: <span className="font-medium">{yesterdaySummary.topic_en}</span>
+                              {yesterdaySummary.minutes && ` (about ${yesterdaySummary.minutes} minutes)`}
+                            </p>
+                            <p className="text-xs text-muted-foreground">
+                              Hôm qua bạn đã học: {yesterdaySummary.topic_vi}
+                              {yesterdaySummary.minutes && ` (khoảng ${yesterdaySummary.minutes} phút)`}
+                            </p>
+                          </>
+                        ) : (
+                          <>
+                            <p className="text-sm">We don't have a study log from yesterday. That's okay.</p>
+                            <p className="text-xs text-muted-foreground">Hôm qua mình không có ghi nhận buổi học nào. Không sao cả.</p>
+                          </>
+                        )}
+                      </div>
+
+                      {/* Today summary */}
+                      <div className="p-3 bg-muted rounded-lg space-y-1">
+                        <p className="text-xs font-medium text-muted-foreground uppercase">Today</p>
+                        {todayTotalMinutes > 0 ? (
+                          <>
+                            <p className="text-sm">You already spent about <span className="font-medium">{todayTotalMinutes} minutes</span> here.</p>
+                            <p className="text-xs text-muted-foreground">Hôm nay bạn đã ở đây khoảng {todayTotalMinutes} phút rồi.</p>
+                          </>
+                        ) : (
+                          <>
+                            <p className="text-sm">Today we can start with just 5–10 minutes.</p>
+                            <p className="text-xs text-muted-foreground">Hôm nay mình chỉ cần bắt đầu với 5–10 phút thôi.</p>
+                          </>
+                        )}
+                      </div>
+
+                      {/* Heavy mood compassion message */}
+                      {hasHeavyMoods && (
+                        <div className="p-3 bg-primary/10 rounded-lg text-center">
+                          <p className="text-sm text-primary">{COMPASSIONATE_HEAVY_MOOD_MESSAGE.en}</p>
+                          <p className="text-xs text-primary/70 mt-1">{COMPASSIONATE_HEAVY_MOOD_MESSAGE.vi}</p>
+                        </div>
+                      )}
+
+                      {/* Today's suggestion */}
+                      {suggestions.length > 0 && (
+                        <div className="p-3 bg-secondary/30 rounded-lg space-y-2">
+                          <p className="text-xs font-medium text-foreground">Suggested for today:</p>
+                          <div>
+                            <p className="font-medium text-sm">{suggestions[0].title_en}</p>
+                            <p className="text-xs text-muted-foreground">{suggestions[0].title_vi}</p>
+                          </div>
+                          <p className="text-xs text-foreground/80">{suggestions[0].reason_en}</p>
+                          <p className="text-xs text-muted-foreground">{suggestions[0].reason_vi}</p>
+                          <Button
+                            size="sm"
+                            className="w-full mt-2"
+                            onClick={() => {
+                              const url = suggestions[0].type === 'path' 
+                                ? `/paths/${suggestions[0].slug}`
+                                : `/room/${suggestions[0].slug}`;
+                              navigate(url);
+                              setIsOpen(false);
+                            }}
+                          >
+                            Study this today / Học cái này hôm nay
+                          </Button>
+                        </div>
+                      )}
+
+                      {/* Stress relief mini block */}
+                      <div className="p-3 border border-border rounded-lg space-y-3">
+                        <div className="text-center">
+                          <p className="text-sm font-medium text-foreground">Feeling heavy or stressed?</p>
+                          <p className="text-xs text-muted-foreground">Đang thấy nặng hay căng thẳng?</p>
+                        </div>
+                        
+                        {!showBreathingScript ? (
+                          <Button
+                            variant="outline"
+                            className="w-full"
+                            onClick={() => {
+                              setShowBreathingScript(true);
+                              setBreathingStep(0);
+                              setShowReframe(false);
+                            }}
+                          >
+                            <Wind className="h-4 w-4 mr-2" />
+                            Guide me to breathe for 1 minute
+                          </Button>
+                        ) : (
+                          <div className="space-y-3">
+                            {!showReframe ? (
+                              <>
+                                {/* Breathing steps */}
+                                <div className="space-y-2">
+                                  {BREATHING_SCRIPT_SHORT.en.slice(0, breathingStep + 1).map((line, idx) => (
+                                    <div key={idx} className={cn(
+                                      "p-2 rounded transition-all",
+                                      idx === breathingStep ? "bg-primary/10" : "bg-muted/50"
+                                    )}>
+                                      <p className="text-sm">{line}</p>
+                                      <p className="text-xs text-muted-foreground">{BREATHING_SCRIPT_SHORT.vi[idx]}</p>
+                                    </div>
+                                  ))}
+                                </div>
+                                
+                                {breathingStep < BREATHING_SCRIPT_SHORT.en.length - 1 ? (
+                                  <Button
+                                    size="sm"
+                                    variant="secondary"
+                                    className="w-full"
+                                    onClick={() => setBreathingStep(prev => prev + 1)}
+                                  >
+                                    Next step / Bước tiếp
+                                  </Button>
+                                ) : (
+                                  <Button
+                                    size="sm"
+                                    className="w-full"
+                                    onClick={() => setShowReframe(true)}
+                                  >
+                                    Done / Xong
+                                  </Button>
+                                )}
+                              </>
+                            ) : (
+                              <>
+                                {/* Positive reframe */}
+                                <div className="space-y-2 p-3 bg-primary/5 rounded-lg">
+                                  {POSITIVE_REFRAME_SHORT.en.map((line, idx) => (
+                                    <div key={idx}>
+                                      <p className="text-sm text-primary">{line}</p>
+                                      <p className="text-xs text-primary/70">{POSITIVE_REFRAME_SHORT.vi[idx]}</p>
+                                    </div>
+                                  ))}
+                                </div>
+                                <Button
+                                  size="sm"
+                                  variant="outline"
+                                  className="w-full"
+                                  onClick={() => {
+                                    setShowBreathingScript(false);
+                                    setBreathingStep(0);
+                                    setShowReframe(false);
+                                  }}
+                                >
+                                  Close / Đóng
+                                </Button>
+                              </>
+                            )}
+                          </div>
+                        )}
+                        
+                        {!showBreathingScript && (
+                          <p className="text-xs text-muted-foreground text-center">
+                            Dẫn mình thở 1 phút
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </ScrollArea>
                 </TabsContent>
 
                 {/* English Tab */}
