@@ -343,6 +343,45 @@ export type Database = {
         }
         Relationships: []
       }
+      bank_payment_requests: {
+        Row: {
+          admin_note: string | null
+          amount: number
+          approved_at: string | null
+          created_at: string | null
+          id: string
+          screenshot_url: string
+          status: string
+          tier: string
+          transfer_note: string | null
+          user_id: string
+        }
+        Insert: {
+          admin_note?: string | null
+          amount: number
+          approved_at?: string | null
+          created_at?: string | null
+          id?: string
+          screenshot_url: string
+          status?: string
+          tier: string
+          transfer_note?: string | null
+          user_id: string
+        }
+        Update: {
+          admin_note?: string | null
+          amount?: number
+          approved_at?: string | null
+          created_at?: string | null
+          id?: string
+          screenshot_url?: string
+          status?: string
+          tier?: string
+          transfer_note?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       companion_events: {
         Row: {
           created_at: string | null
