@@ -343,6 +343,63 @@ export type Database = {
         }
         Relationships: []
       }
+      companion_events: {
+        Row: {
+          created_at: string | null
+          event_type: string
+          id: string
+          metadata: Json | null
+          room_id: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          event_type: string
+          id?: string
+          metadata?: Json | null
+          room_id?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          event_type?: string
+          id?: string
+          metadata?: Json | null
+          room_id?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      companion_state: {
+        Row: {
+          emotional_tags: Json | null
+          last_active_at: string | null
+          last_mood: string | null
+          last_room: string | null
+          path_progress: Json | null
+          reflection_history: Json | null
+          user_id: string
+        }
+        Insert: {
+          emotional_tags?: Json | null
+          last_active_at?: string | null
+          last_mood?: string | null
+          last_room?: string | null
+          path_progress?: Json | null
+          reflection_history?: Json | null
+          user_id: string
+        }
+        Update: {
+          emotional_tags?: Json | null
+          last_active_at?: string | null
+          last_mood?: string | null
+          last_room?: string | null
+          path_progress?: Json | null
+          reflection_history?: Json | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       favorite_rooms: {
         Row: {
           created_at: string

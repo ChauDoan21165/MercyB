@@ -96,7 +96,7 @@ const AuditSafeShield = lazy(() => import("./components/admin/AuditSafeShield"))
 
 // Paths pages - lazy loaded
 const PathOverview = lazy(() => import("./pages/PathOverview"));
-const PathDayCard = lazy(() => import("./pages/PathDayCard"));
+const PathDayPage = lazy(() => import("./pages/PathDayPage"));
 const PathCompleted = lazy(() => import("./pages/PathCompleted"));
 
 // Other pages - lazy loaded
@@ -238,7 +238,7 @@ const App = () => {
                       
                       {/* Paths routes */}
                       <Route path="/paths/:slug" element={<PathOverview />} />
-                      <Route path="/paths/:slug/day/:day" element={<PathDayCard />} />
+                      <Route path="/paths/:slug/day/:day" element={<PathDayPage />} />
                       <Route path="/paths/:slug/completed" element={<PathCompleted />} />
                       
                       {/* Kids routes */}
