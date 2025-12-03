@@ -1,6 +1,7 @@
 /**
  * Companion Lines Utility
  * Loads and provides random lines for the Companion Friend Mode
+ * Supports EN and VI languages
  */
 
 export type CompanionCategory =
@@ -14,31 +15,59 @@ export type CompanionCategory =
   | 'returnAfterGap_long'
   | 'moodFollowup_heavy'
   | 'moodFollowup_okay'
-  | 'nextRoomSuggestion';
+  | 'nextRoomSuggestion'
+  | 'voiceQuiet';
 
 type CompanionLinesData = Record<CompanionCategory, string[]>;
 
-let cachedLines: CompanionLinesData | null = null;
-let loadPromise: Promise<CompanionLinesData> | null = null;
+// Cache for both languages
+const cachedLines: Record<string, CompanionLinesData> = {};
+const loadPromises: Record<string, Promise<CompanionLinesData>> = {};
 
-async function loadCompanionLines(): Promise<CompanionLinesData> {
-  if (cachedLines) return cachedLines;
+/**
+ * Get current app language from localStorage or default to 'en'
+ */
+export function getAppLanguage(): 'en' | 'vi' {
+  const stored = localStorage.getItem('app_language');
+  return stored === 'vi' ? 'vi' : 'en';
+}
+
+/**
+ * Set app language
+ */
+export function setAppLanguage(lang: 'en' | 'vi'): void {
+  localStorage.setItem('app_language', lang);
+}
+
+async function loadCompanionLines(lang: 'en' | 'vi' = 'en'): Promise<CompanionLinesData> {
+  const cacheKey = lang;
   
-  if (loadPromise) return loadPromise;
+  if (cachedLines[cacheKey]) return cachedLines[cacheKey];
+  if (loadPromises[cacheKey]) return loadPromises[cacheKey];
   
-  loadPromise = fetch('/data/companion_lines_friend_en.json')
-    .then((res) => res.json())
+  const filename = lang === 'vi' 
+    ? '/data/companion_lines_friend_vi.json'
+    : '/data/companion_lines_friend_en.json';
+  
+  loadPromises[cacheKey] = fetch(filename)
+    .then((res) => {
+      if (!res.ok) throw new Error(`Failed to load ${filename}`);
+      return res.json();
+    })
     .then((data: CompanionLinesData) => {
-      cachedLines = data;
+      cachedLines[cacheKey] = data;
       return data;
     })
     .catch((err) => {
-      console.error('Failed to load companion lines:', err);
-      // Return fallback
+      console.warn(`Failed to load companion lines for ${lang}:`, err);
+      // Fall back to English if Vietnamese fails
+      if (lang === 'vi' && cachedLines['en']) {
+        return cachedLines['en'];
+      }
       return getDefaultLines();
     });
   
-  return loadPromise;
+  return loadPromises[cacheKey];
 }
 
 function getDefaultLines(): CompanionLinesData {
@@ -54,15 +83,17 @@ function getDefaultLines(): CompanionLinesData {
     moodFollowup_heavy: ["Heavy days are allowed."],
     moodFollowup_okay: ["Okay is good enough."],
     nextRoomSuggestion: ["Ready for the next room?"],
+    voiceQuiet: ["Today my voice is a bit quiet, but I'm still here with you."],
   };
 }
 
 /**
  * Get a random companion line for the given category
- * Returns synchronously if lines are cached, otherwise returns a default
+ * Uses current app language
  */
 export function getRandomCompanionLine(category: CompanionCategory): string {
-  const lines = cachedLines || getDefaultLines();
+  const lang = getAppLanguage();
+  const lines = cachedLines[lang] || cachedLines['en'] || getDefaultLines();
   const categoryLines = lines[category];
   
   if (!categoryLines || categoryLines.length === 0) {
@@ -74,23 +105,44 @@ export function getRandomCompanionLine(category: CompanionCategory): string {
 }
 
 /**
- * Preload companion lines (call early in app lifecycle)
+ * Preload companion lines for both languages
  */
 export function preloadCompanionLines(): void {
-  loadCompanionLines();
+  loadCompanionLines('en');
+  loadCompanionLines('vi');
 }
 
 /**
  * Get line with async loading guarantee
+ * Uses current app language
  */
 export async function getRandomCompanionLineAsync(category: CompanionCategory): Promise<string> {
-  const lines = await loadCompanionLines();
-  const categoryLines = lines[category];
+  const lang = getAppLanguage();
   
-  if (!categoryLines || categoryLines.length === 0) {
-    return "I'm here with you.";
+  try {
+    const lines = await loadCompanionLines(lang);
+    const categoryLines = lines[category];
+    
+    if (!categoryLines || categoryLines.length === 0) {
+      return "I'm here with you.";
+    }
+    
+    const randomIndex = Math.floor(Math.random() * categoryLines.length);
+    return categoryLines[randomIndex];
+  } catch {
+    // Graceful fallback
+    const defaults = getDefaultLines();
+    const categoryLines = defaults[category];
+    if (!categoryLines || categoryLines.length === 0) {
+      return "I'm here with you.";
+    }
+    return categoryLines[Math.floor(Math.random() * categoryLines.length)];
   }
-  
-  const randomIndex = Math.floor(Math.random() * categoryLines.length);
-  return categoryLines[randomIndex];
+}
+
+/**
+ * Get the "voice quiet" fallback line for when TTS fails
+ */
+export function getVoiceQuietLine(): string {
+  return getRandomCompanionLine('voiceQuiet');
 }
