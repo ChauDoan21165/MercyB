@@ -1897,6 +1897,51 @@ export type Database = {
         }
         Relationships: []
       }
+      study_log: {
+        Row: {
+          created_at: string | null
+          date: string
+          day_index: number | null
+          id: string
+          minutes: number | null
+          mood_after: string | null
+          mood_before: string | null
+          path_slug: string | null
+          room_id: string | null
+          topic_en: string | null
+          topic_vi: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          date?: string
+          day_index?: number | null
+          id?: string
+          minutes?: number | null
+          mood_after?: string | null
+          mood_before?: string | null
+          path_slug?: string | null
+          room_id?: string | null
+          topic_en?: string | null
+          topic_vi?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          date?: string
+          day_index?: number | null
+          id?: string
+          minutes?: number | null
+          mood_after?: string | null
+          mood_before?: string | null
+          path_slug?: string | null
+          room_id?: string | null
+          topic_en?: string | null
+          topic_vi?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       subscription_tiers: {
         Row: {
           created_at: string | null
