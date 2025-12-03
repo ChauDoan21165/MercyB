@@ -67,9 +67,23 @@ export const AudioPlayer = ({
   const progressBarRef = useRef<HTMLDivElement>(null);
   const loadingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Normalize audio path to ensure /audio/ prefix
+  const normalizeAudioPath = (path: string): string => {
+    if (!path) return path;
+    // Remove any leading slash for consistent handling
+    const cleanPath = path.replace(/^\/+/, '');
+    // If it already has audio/ prefix, just ensure leading slash
+    if (cleanPath.startsWith('audio/')) {
+      return `/${cleanPath}`;
+    }
+    // Otherwise prepend /audio/
+    return `/audio/${cleanPath}`;
+  };
+
   // Use playlist if available, otherwise single audio
   const isPlaylist = playlist.length > 1;
-  const currentAudioPath = isPlaylist ? playlist[currentTrackIndex] : audioPath;
+  const rawAudioPath = isPlaylist ? playlist[currentTrackIndex] : audioPath;
+  const currentAudioPath = normalizeAudioPath(rawAudioPath);
 
   const speedOptions = [0.5, 0.75, 1, 1.25, 1.5, 2];
   const stripQuery = (url: string) => {
