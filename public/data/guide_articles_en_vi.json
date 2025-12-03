@@ -1,0 +1,32 @@
+{
+  "what_is_room": {
+    "title_en": "What is a room?",
+    "title_vi": "Phòng là gì?",
+    "body_en": "A room is a focused space around one topic: calm, self-worth, heartbreak, learning English and more. You can read, listen to audio, and write short reflections. You do not have to finish everything in one go.",
+    "body_vi": "Một phòng là một không gian tập trung vào một chủ đề: bình yên, giá trị bản thân, tan vỡ, học tiếng Anh và nhiều nữa. Bạn có thể đọc, nghe audio và viết vài dòng suy nghĩ. Bạn không cần hoàn thành mọi thứ trong một lần."
+  },
+  "how_to_use_room": {
+    "title_en": "How do I use a room?",
+    "title_vi": "Sử dụng một phòng như thế nào?",
+    "body_en": "Start by taking a breath. You can listen to the audio or read the text. When you are ready, scroll down to the reflection box and write one honest sentence. There is no right answer. Visiting the room again on another day is completely okay.",
+    "body_vi": "Hãy bắt đầu bằng một hơi thở. Bạn có thể nghe audio hoặc đọc chữ. Khi sẵn sàng, cuộn xuống ô reflection và viết một câu chân thật. Không có câu trả lời đúng. Quay lại phòng này vào một ngày khác hoàn toàn được."
+  },
+  "how_to_use_paths": {
+    "title_en": "What is a path (like Calm Mind 7 Days)?",
+    "title_vi": "Path là gì (như Bình Tâm 7 Ngày)?",
+    "body_en": "A path is a gentle sequence of days around one healing theme. Each day has a short text, audio, reflection, and a tiny dare. You can go in order, repeat days, or move slowly. Missing a day is not failure; you just continue from where you are.",
+    "body_vi": "Path là một chuỗi ngày nhẹ nhàng xoay quanh một chủ đề hồi phục. Mỗi ngày có đoạn chữ ngắn, audio, reflection và một thử thách nhỏ. Bạn có thể đi theo thứ tự, lặp lại ngày hoặc đi thật chậm. Bỏ lỡ một ngày không phải thất bại; bạn chỉ đơn giản tiếp tục từ chỗ mình đang ở."
+  },
+  "language_switch": {
+    "title_en": "How do English and Vietnamese work together?",
+    "title_vi": "Tiếng Anh và tiếng Việt hoạt động cùng nhau thế nào?",
+    "body_en": "Most rooms are bilingual. You can switch to English for learning, and check Vietnamese when you need comfort or clarity. It is okay to use more Vietnamese on heavy days and more English on curious days.",
+    "body_vi": "Hầu hết các phòng đều song ngữ. Bạn có thể chuyển sang tiếng Anh để luyện, và dùng tiếng Việt khi cần được vỗ về hoặc cần hiểu rõ. Những ngày nặng nề, dùng nhiều tiếng Việt cũng được; những ngày tò mò, dùng nhiều tiếng Anh hơn cũng tốt."
+  },
+  "where_to_start": {
+    "title_en": "Where should I start?",
+    "title_vi": "Mình nên bắt đầu từ đâu?",
+    "body_en": "If you feel overwhelmed, start with Calm Mind 7 Days. If your heart is sore, choose a gentle healing room. If you want English practice, open an English learning room and just aim for one paragraph today.",
+    "body_vi": "Nếu bạn thấy quá tải, hãy bắt đầu với Bình Tâm 7 Ngày. Nếu trái tim đau, hãy chọn một phòng chữa lành nhẹ nhàng. Nếu muốn luyện tiếng Anh, hãy mở một phòng học tiếng Anh và chỉ đặt mục tiêu cho một đoạn ngắn hôm nay."
+  }
+}
