@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
+import { GlobalAppBar } from "@/components/GlobalAppBar";
+import { RoomHeaderStandard } from "@/components/RoomHeaderStandard";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -19,7 +20,6 @@ import { MessageActions } from "@/components/MessageActions";
 import { usePoints } from "@/hooks/usePoints";
 import { RoomErrorState } from "@/components/RoomErrorState";
 import { useUiHealthReporter } from "@/hooks/useUiHealthReporter";
-import { RoomHeader } from "@/components/RoomHeader";
 import { RoomLoadShell } from "@/components/RoomLoadShell";
 import { RoomLayout } from "@/components/room/RoomLayout";
 import { useUserAccess } from "@/hooks/useUserAccess";
@@ -38,7 +38,6 @@ import { roomDataMap } from "@/lib/roomDataImports";
 import { setCustomKeywordMappings, clearCustomKeywordMappings, loadRoomKeywords } from "@/lib/customKeywordLoader";
 import { buildAudioSrc } from "@/lib/audioHelpers";
 import { ProfileAvatarUpload } from "@/components/ProfileAvatarUpload";
-import { Breadcrumb } from "@/components/Breadcrumb";
 import { getTierRoute } from "@/lib/tierRoutes";
 import { useFavoriteRooms } from "@/hooks/useFavoriteRooms";
 import { useRecentRooms } from "@/hooks/useRecentRooms";
@@ -795,9 +794,18 @@ const ChatHub = () => {
     }
   };
 
+  // Build breadcrumbs for GlobalAppBar
+  const breadcrumbItems = [
+    ...(info?.tier ? [{
+      label: getTierRoute(info.tier)?.name || info.tier.toUpperCase(),
+      href: getTierRoute(info.tier)?.path
+    }] : []),
+    { label: currentRoom.nameEn }
+  ];
+
   return (
     <>
-      <ColorfulMercyBladeHeader />
+      <GlobalAppBar breadcrumbs={breadcrumbItems} />
       {!isAdmin && (
         <AlertDialog open={showAccessDenied} onOpenChange={setShowAccessDenied}>
           <AlertDialogContent>
@@ -854,70 +862,20 @@ const ChatHub = () => {
           />
         )}
         
-        {/* Header with Breadcrumbs */}
-        <RoomHeader 
-          title={currentRoom.nameEn === currentRoom.nameVi 
-            ? currentRoom.nameEn 
-            : `${currentRoom.nameEn} / ${currentRoom.nameVi}`}
-          tier={info?.tier === 'free' ? 'Free' : info?.tier?.toUpperCase().replace('VIP', 'VIP ')}
-          showThemeToggle={true}
-          breadcrumbs={
-            <Breadcrumb
-              items={[
-                ...(info?.tier ? [
-                  {
-                    label: getTierRoute(info.tier)?.name || info.tier.toUpperCase(),
-                    href: getTierRoute(info.tier)?.path
-                  }
-                ] : []),
-                {
-                  label: currentRoom.nameEn === currentRoom.nameVi 
-                    ? currentRoom.nameEn 
-                    : `${currentRoom.nameEn} / ${currentRoom.nameVi}`
-                }
-              ]}
-            />
-          }
-          actions={
-            <div className="flex flex-wrap items-center justify-center gap-2">
-              {/* User info */}
-              <div className="flex items-center gap-2 text-xs font-medium text-primary">
-                <ProfileAvatarUpload
-                  currentAvatarUrl={avatarUrl}
-                  onUploadSuccess={(url) => setAvatarUrl(url)}
-                />
-                <span>{username || 'User'}</span>
-                {tier && <span className="font-semibold">{tier.toUpperCase()}</span>}
-              </div>
-              
-              {/* Favorite button */}
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => toggleRoomFavorite({
-                  id: roomId || '',
-                  nameEn: currentRoom.nameEn,
-                  nameVi: currentRoom.nameVi,
-                  tier: info?.tier || 'free'
-                })}
-                className="gap-1 h-8"
-                title={isRoomFavorite(roomId || '') ? "Remove from favorites" : "Add to favorites"}
-              >
-                <Heart className={`w-4 h-4 ${isRoomFavorite(roomId || '') ? 'fill-red-500 text-red-500' : 'text-muted-foreground'}`} />
-              </Button>
-              
-              {/* Refresh button */}
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={handleRefreshRooms}
-                disabled={isRefreshing}
-                className="gap-1 h-8"
-              >
-                <RefreshCw className={`w-3 h-3 ${isRefreshing ? 'animate-spin' : ''}`} />
-              </Button>
-            </div>
-          }
+        {/* Room Header Standard - Clean, single H1 + meta row */}
+        <RoomHeaderStandard
+          titleEn={currentRoom.nameEn}
+          titleVi={currentRoom.nameVi}
+          tier={info?.tier || 'free'}
+          isFavorite={isRoomFavorite(roomId || '')}
+          onFavoriteToggle={() => toggleRoomFavorite({
+            id: roomId || '',
+            nameEn: currentRoom.nameEn,
+            nameVi: currentRoom.nameVi,
+            tier: info?.tier || 'free'
+          })}
+          onRefresh={handleRefreshRooms}
+          isRefreshing={isRefreshing}
         />
         
         {/* Main Room Content - Loading and Error States */}
