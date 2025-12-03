@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -21,16 +21,7 @@ import {
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-
-interface AuditIssue {
-  id: string;
-  file: string;
-  type: "missing_json" | "missing_audio" | "missing_entries" | "missing_db" | "mismatched_slug" | "duplicate_room" | "invalid_json" | "missing_tier" | "missing_title" | "registry_missing";
-  severity: "error" | "warning" | "info";
-  message: string;
-  fix?: string;
-  autoFixable?: boolean;
-}
+import type { AuditIssue, AuditResponse, AuditMode } from "@/lib/audit-v4-types";
 
 type FilterType = "all" | "errors" | "missing_audio" | "missing_json" | "missing_entries";
 
@@ -53,14 +44,18 @@ export default function AuditSafeShield() {
   const abortRef = useRef(false);
   const { toast } = useToast();
 
-  const addIssue = useCallback((issue: AuditIssue) => {
-    setIssues((prev) => [...prev, issue]);
-    setStats((prev) => ({
-      ...prev,
-      errors: issue.severity === "error" ? prev.errors + 1 : prev.errors,
-      warnings: issue.severity === "warning" ? prev.warnings + 1 : prev.warnings,
-    }));
-  }, []);
+  // Call backend audit endpoint
+  const callAuditEndpoint = async (mode: AuditMode): Promise<AuditResponse | null> => {
+    const { data, error } = await supabase.functions.invoke("audit-v4-safe-shield", {
+      body: { mode },
+    });
+
+    if (error) {
+      throw new Error(error.message || "Failed to call audit endpoint");
+    }
+
+    return data as AuditResponse;
+  };
 
   const runAudit = async () => {
     setIsRunning(true);
@@ -70,207 +65,27 @@ export default function AuditSafeShield() {
     abortRef.current = false;
 
     try {
-      // Phase 1: Load database rooms
-      setCurrentTask("Loading rooms from database...");
-      const { data: dbRooms, error: dbError } = await supabase
-        .from("rooms")
-        .select("id, title_en, title_vi, tier, entries, schema_id");
-
-      if (dbError) {
-        addIssue({
-          id: "db-error",
-          file: "database",
-          type: "missing_db",
-          severity: "error",
-          message: `Database error: ${dbError.message}`,
-        });
-        return;
-      }
-
-      const totalRooms = dbRooms?.length || 0;
-      setStats((prev) => ({ ...prev, totalRooms }));
-      setProgress(10);
-
-      // Phase 2: Load manifest for JSON file reference
-      setCurrentTask("Loading room manifest...");
-      let manifest: Record<string, any> = {};
-      try {
-        const manifestRes = await fetch("/room-manifest.json");
-        if (manifestRes.ok) {
-          manifest = await manifestRes.json();
-        }
-      } catch {
-        addIssue({
-          id: "manifest-missing",
-          file: "room-manifest.json",
-          type: "missing_json",
-          severity: "warning",
-          message: "Could not load room-manifest.json",
-          autoFixable: true,
-        });
-      }
+      setCurrentTask("Running audit via backend...");
       setProgress(20);
 
-      // Phase 3: Load registry
-      setCurrentTask("Loading registry...");
-      let registry: any[] = [];
-      try {
-        const regRes = await fetch("/registry.json");
-        if (regRes.ok) {
-          registry = await regRes.json();
-        }
-      } catch {
-        addIssue({
-          id: "registry-missing",
-          file: "registry.json",
-          type: "registry_missing",
-          severity: "warning",
-          message: "Could not load registry.json",
-          autoFixable: true,
-        });
-      }
-      setProgress(30);
+      const response = await callAuditEndpoint("dry-run");
 
-      const manifestIds = new Set(Object.keys(manifest));
-      const registryIds = new Set(registry.map((r: any) => r.id));
-      const dbIds = new Set(dbRooms?.map((r) => r.id) || []);
-      const seenIds = new Set<string>();
-
-      // Phase 4: Scan each room with streaming
-      if (dbRooms) {
-        for (let i = 0; i < dbRooms.length; i++) {
-          if (abortRef.current) break;
-
-          const room = dbRooms[i];
-          const roomId = room.id;
-          setCurrentTask(`Scanning: ${roomId}`);
-          setStats((prev) => ({ ...prev, scanned: i + 1 }));
-          setProgress(30 + Math.floor((i / dbRooms.length) * 60));
-
-          // Check for duplicates
-          if (seenIds.has(roomId)) {
-            addIssue({
-              id: `dup-${roomId}`,
-              file: `${roomId}.json`,
-              type: "duplicate_room",
-              severity: "error",
-              message: `Duplicate room ID: ${roomId}`,
-            });
-          }
-          seenIds.add(roomId);
-
-          // Check missing JSON in manifest
-          if (!manifestIds.has(roomId)) {
-            addIssue({
-              id: `json-${roomId}`,
-              file: `${roomId}.json`,
-              type: "missing_json",
-              severity: "warning",
-              message: `Room not in manifest: ${roomId}`,
-              fix: `Add ${roomId} to room-manifest.json`,
-              autoFixable: true,
-            });
-          }
-
-          // Check missing registry entry
-          if (!registryIds.has(roomId)) {
-            addIssue({
-              id: `reg-${roomId}`,
-              file: `${roomId}.json`,
-              type: "registry_missing",
-              severity: "info",
-              message: `Room not in registry: ${roomId}`,
-              fix: `Add ${roomId} to registry.json`,
-              autoFixable: true,
-            });
-          }
-
-          // Check required fields
-          if (!room.tier) {
-            addIssue({
-              id: `tier-${roomId}`,
-              file: `${roomId}.json`,
-              type: "missing_tier",
-              severity: "warning",
-              message: `Missing tier: ${roomId}`,
-              fix: `Set tier field`,
-            });
-          }
-
-          if (!room.title_en || !room.title_vi) {
-            addIssue({
-              id: `title-${roomId}`,
-              file: `${roomId}.json`,
-              type: "missing_title",
-              severity: "warning",
-              message: `Missing bilingual title: ${roomId}`,
-            });
-          }
-
-          // Check entries
-          const entries = Array.isArray(room.entries) ? room.entries : [];
-          if (entries.length === 0) {
-            addIssue({
-              id: `entries-${roomId}`,
-              file: `${roomId}.json`,
-              type: "missing_entries",
-              severity: "error",
-              message: `No entries: ${roomId}`,
-            });
-            continue;
-          }
-
-          // Check each entry
-          for (let j = 0; j < entries.length; j++) {
-            const entry = entries[j];
-            const entryId = entry.slug || entry.artifact_id || entry.id || `entry-${j}`;
-
-            // Check slug
-            if (!entry.slug && !entry.artifact_id && !entry.id) {
-              addIssue({
-                id: `slug-${roomId}-${j}`,
-                file: `${roomId}.json`,
-                type: "mismatched_slug",
-                severity: "warning",
-                message: `Entry ${j} missing identifier in ${roomId}`,
-              });
-            }
-
-            // Check audio
-            const audio = entry.audio;
-            if (!audio) {
-              addIssue({
-                id: `audio-${roomId}-${j}`,
-                file: `${roomId}.json`,
-                type: "missing_audio",
-                severity: "warning",
-                message: `Entry "${entryId}" missing audio in ${roomId}`,
-                fix: `Generate TTS for entry ${j}`,
-                autoFixable: true,
-              });
-            }
-          }
-
-          // Small delay for streaming effect
-          await new Promise((r) => setTimeout(r, 5));
-        }
+      if (!response?.ok) {
+        throw new Error(response?.error || "Audit failed");
       }
 
-      // Phase 5: Check for manifest entries without DB records
-      setCurrentTask("Cross-checking manifest vs database...");
-      for (const manifestId of manifestIds) {
-        if (!dbIds.has(manifestId)) {
-          addIssue({
-            id: `orphan-${manifestId}`,
-            file: `${manifestId}.json`,
-            type: "missing_db",
-            severity: "warning",
-            message: `Manifest entry not in DB: ${manifestId}`,
-            fix: `Insert ${manifestId} into database`,
-            autoFixable: true,
-          });
-        }
-      }
+      setProgress(80);
+      setCurrentTask("Processing results...");
+
+      // Update state from backend response
+      setIssues(response.issues || []);
+      setStats({
+        totalRooms: response.summary.totalRooms,
+        scanned: response.summary.scannedRooms,
+        errors: response.summary.errors,
+        warnings: response.summary.warnings,
+        fixed: response.summary.fixed,
+      });
 
       setProgress(100);
       setCurrentTask("Audit complete");
@@ -279,7 +94,7 @@ export default function AuditSafeShield() {
       console.error("Audit error:", error);
       toast({
         title: "Audit Error",
-        description: String(error),
+        description: error instanceof Error ? error.message : String(error),
         variant: "destructive",
       });
     } finally {
@@ -322,112 +137,45 @@ export default function AuditSafeShield() {
     if (autoFixableIssues.length === 0) {
       toast({
         title: "Nothing to repair",
-        description: "No auto-fixable issues found.",
+        description: "No auto-fixable issues found. Run an audit first.",
       });
       return;
     }
 
     setIsRepairing(true);
     setRepairProgress(0);
-    setCurrentTask("Starting auto-repair...");
-    let fixedCount = 0;
+    setCurrentTask("Running Safe Shield repairs via backend...");
 
     try {
-      // Get all rooms from DB for syncing
-      const { data: dbRooms, error: dbError } = await supabase
-        .from("rooms")
-        .select("id, title_en, title_vi, tier, entries, schema_id");
-
-      if (dbError) {
-        throw new Error(`Database error: ${dbError.message}`);
-      }
-
-      const totalToFix = autoFixableIssues.length;
+      setRepairProgress(20);
       
-      // Group issues by type for batch processing
-      const registryMissing = autoFixableIssues.filter(i => i.type === "registry_missing");
-      const manifestMissing = autoFixableIssues.filter(i => i.type === "missing_json" && i.message.includes("not in manifest"));
-      const dbMissing = autoFixableIssues.filter(i => i.type === "missing_db" && i.message.includes("Manifest entry not in DB"));
+      // Call backend with repair mode
+      const response = await callAuditEndpoint("repair");
 
-      // Phase 1: Sync missing registry entries (add to DB if they're in manifest but not DB)
-      setCurrentTask("Syncing registry entries...");
-      for (let i = 0; i < registryMissing.length; i++) {
-        const issue = registryMissing[i];
-        const roomId = issue.file.replace(".json", "");
-        
-        // Check if room exists in DB - if not, we can't sync
-        const roomInDb = dbRooms?.find(r => r.id === roomId);
-        if (roomInDb) {
-          // Room exists, just needs registry sync - mark as fixed
-          fixedCount++;
-        }
-        setRepairProgress(Math.floor((i / totalToFix) * 30));
-        await new Promise(r => setTimeout(r, 10));
+      if (!response?.ok) {
+        throw new Error(response?.error || "Auto-repair failed");
       }
 
-      // Phase 2: Handle manifest missing entries
-      setCurrentTask("Updating manifest entries...");
-      for (let i = 0; i < manifestMissing.length; i++) {
-        const issue = manifestMissing[i];
-        const roomId = issue.file.replace(".json", "");
-        
-        // Check if room exists in DB
-        const roomInDb = dbRooms?.find(r => r.id === roomId);
-        if (roomInDb) {
-          // Room is in DB, just needs manifest update - mark as fixed
-          fixedCount++;
-        }
-        setRepairProgress(30 + Math.floor((i / totalToFix) * 30));
-        await new Promise(r => setTimeout(r, 10));
-      }
+      setRepairProgress(80);
+      setCurrentTask("Processing repair results...");
 
-      // Phase 3: Handle DB missing entries (manifest has room but DB doesn't)
-      setCurrentTask("Syncing database records...");
-      for (let i = 0; i < dbMissing.length; i++) {
-        const issue = dbMissing[i];
-        const roomId = issue.file.replace(".json", "");
-        
-        // Try to fetch JSON file and insert into DB
-        try {
-          const jsonRes = await fetch(`/data/${roomId}.json`);
-          if (jsonRes.ok) {
-            const jsonData = await jsonRes.json();
-            
-            // Insert into DB
-            const { error: insertError } = await supabase
-              .from("rooms")
-              .upsert({
-                id: roomId,
-                title_en: jsonData.title?.en || jsonData.name_en || roomId,
-                title_vi: jsonData.title?.vi || jsonData.name_vi || roomId,
-                tier: jsonData.tier || "Free",
-                entries: jsonData.entries || [],
-                schema_id: "mercy-blade-v1",
-              }, { onConflict: "id" });
-
-            if (!insertError) {
-              fixedCount++;
-            }
-          }
-        } catch {
-          // Skip if JSON file doesn't exist - safe mode, no deletions
-        }
-        setRepairProgress(60 + Math.floor((i / totalToFix) * 30));
-        await new Promise(r => setTimeout(r, 10));
+      // Log backend repair actions
+      if (response.logs && response.logs.length > 0) {
+        console.log("[Auto-Repair Logs]", response.logs);
       }
 
       setRepairProgress(100);
       setCurrentTask("Repair complete");
 
-      // Update fixed count in stats
-      setStats(prev => ({ ...prev, fixed: fixedCount }));
+      // Update stats
+      setStats(prev => ({ ...prev, fixed: response.fixesApplied || 0 }));
 
       toast({
         title: "Auto-Repair Complete",
-        description: `Fixed ${fixedCount} of ${totalToFix} issues. Safe mode: no deletions performed.`,
+        description: `Fixed ${response.fixesApplied || 0} issues. Safe mode: no deletions performed.`,
       });
 
-      // Re-run audit to refresh stats
+      // Re-run audit to refresh the issues list
       setIsRepairing(false);
       await runAudit();
 

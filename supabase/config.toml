@@ -39,3 +39,6 @@ verify_jwt = false
 [functions.ai-reasoning]
 verify_jwt = true
 
+[functions.audit-v4-safe-shield]
+verify_jwt = true
+
