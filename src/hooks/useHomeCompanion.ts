@@ -20,12 +20,16 @@ export function useHomeCompanion() {
     // Prevent double trigger
     if (hasTriggeredRef.current) return;
     
-    // Check if companion is enabled
-    if (!getCompanionEnabled()) return;
+    // Check for debug mode - force show companion
+    const params = new URLSearchParams(window.location.search);
+    const debugMode = params.get('debug') === 'companion';
+    
+    // Check if companion is enabled (unless debug mode)
+    if (!debugMode && !getCompanionEnabled()) return;
 
-    // Check if we already showed greeting this session
+    // Check if we already showed greeting this session (unless debug mode)
     const sessionKey = 'mercy_home_greeted';
-    if (sessionStorage.getItem(sessionKey)) return;
+    if (!debugMode && sessionStorage.getItem(sessionKey)) return;
     
     hasTriggeredRef.current = true;
 
@@ -36,26 +40,33 @@ export function useHomeCompanion() {
         if (line) {
           setText(line);
           setVisible(true);
-          sessionStorage.setItem(sessionKey, 'true');
+          if (!debugMode) {
+            sessionStorage.setItem(sessionKey, 'true');
+          }
         }
       } catch (err) {
         // Use fallback
         setText("Welcome! I'm Mercy, your gentle companion.");
         setVisible(true);
-        sessionStorage.setItem(sessionKey, 'true');
+        if (!debugMode) {
+          sessionStorage.setItem(sessionKey, 'true');
+        }
       }
     };
 
-    const timer = setTimeout(loadAndShow, 1200);
+    const timer = setTimeout(loadAndShow, debugMode ? 500 : 1200);
     return () => clearTimeout(timer);
   }, []);
 
-  // Auto-hide after 6 seconds
+  // Auto-hide after 6 seconds (12 seconds in debug mode)
   useEffect(() => {
     if (!visible || !text) return;
+    const params = new URLSearchParams(window.location.search);
+    const debugMode = params.get('debug') === 'companion';
+    const hideDelay = debugMode ? 12000 : 6000;
     const timer = setTimeout(() => {
       setVisible(false);
-    }, 6000);
+    }, hideDelay);
     return () => clearTimeout(timer);
   }, [visible, text]);
 
