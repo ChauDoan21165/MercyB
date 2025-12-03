@@ -1,0 +1,112 @@
+{
+  "ei_idiom_wear_many_hats": {
+    "id": "ei_idiom_wear_many_hats",
+    "category": "emotional_idiom",
+    "phrase_en": "wear many hats",
+    "meaning_en": "to have many roles or responsibilities",
+    "meaning_vi": "đảm nhận nhiều vai trò, nhiều trách nhiệm",
+    "example_en": "You wear many hats in your life, so it makes sense that you feel tired.",
+    "example_vi": "Bạn gánh nhiều vai trò trong cuộc sống, nên thấy mệt là điều dễ hiểu.",
+    "audio_en": "/audio/mercy_vip_ei/wear_many_hats_en.mp3",
+    "audio_vi": "/audio/mercy_vip_ei/wear_many_hats_vi.mp3"
+  },
+  "ei_idiom_heart_in_the_right_place": {
+    "id": "ei_idiom_heart_in_the_right_place",
+    "category": "emotional_idiom",
+    "phrase_en": "have your heart in the right place",
+    "meaning_en": "to have good and kind intentions, even if things are not perfect",
+    "meaning_vi": "có ý tốt, tấm lòng tử tế dù mọi chuyện chưa hoàn hảo",
+    "example_en": "You may make mistakes, but your heart is in the right place.",
+    "example_vi": "Bạn có thể mắc lỗi, nhưng tấm lòng của bạn là rất tốt.",
+    "audio_en": "/audio/mercy_vip_ei/heart_in_the_right_place_en.mp3",
+    "audio_vi": "/audio/mercy_vip_ei/heart_in_the_right_place_vi.mp3"
+  },
+  "ei_idiom_bottle_things_up": {
+    "id": "ei_idiom_bottle_things_up",
+    "category": "emotional_idiom",
+    "phrase_en": "bottle things up",
+    "meaning_en": "to keep emotions inside instead of expressing them",
+    "meaning_vi": "dồn nén cảm xúc, không bộc lộ ra",
+    "example_en": "When you bottle things up, the pressure quietly grows.",
+    "example_vi": "Khi bạn dồn nén cảm xúc, áp lực sẽ âm thầm tăng lên.",
+    "audio_en": "/audio/mercy_vip_ei/bottle_things_up_en.mp3",
+    "audio_vi": "/audio/mercy_vip_ei/bottle_things_up_vi.mp3"
+  },
+  "ei_idiom_open_up": {
+    "id": "ei_idiom_open_up",
+    "category": "emotional_idiom",
+    "phrase_en": "open up",
+    "meaning_en": "to share your thoughts or feelings more honestly",
+    "meaning_vi": "mở lòng, chia sẻ cảm xúc thật",
+    "example_en": "You don't have to open up all at once. A few honest words are enough.",
+    "example_vi": "Bạn không cần mở lòng ngay lập tức. Vài lời thật lòng là đủ rồi.",
+    "audio_en": "/audio/mercy_vip_ei/open_up_en.mp3",
+    "audio_vi": "/audio/mercy_vip_ei/open_up_vi.mp3"
+  },
+  "ei_idiom_hit_close_to_home": {
+    "id": "ei_idiom_hit_close_to_home",
+    "category": "emotional_idiom",
+    "phrase_en": "hit close to home",
+    "meaning_en": "to affect you personally and emotionally",
+    "meaning_vi": "đụng chạm đến nỗi lòng, rất gần với trải nghiệm cá nhân",
+    "example_en": "This topic might hit close to home, so go gently with yourself.",
+    "example_vi": "Chủ đề này có thể chạm đến nỗi lòng bạn, nên hãy nhẹ nhàng với chính mình.",
+    "audio_en": "/audio/mercy_vip_ei/hit_close_to_home_en.mp3",
+    "audio_vi": "/audio/mercy_vip_ei/hit_close_to_home_vi.mp3"
+  },
+  "ei_idiom_on_edge": {
+    "id": "ei_idiom_on_edge",
+    "category": "emotional_idiom",
+    "phrase_en": "on edge",
+    "meaning_en": "feeling nervous, tense, or easily triggered",
+    "meaning_vi": "căng thẳng, dễ bị kích động",
+    "example_en": "When you're on edge, even small things feel big.",
+    "example_vi": "Khi bạn đang căng, những chuyện nhỏ cũng thành rất lớn.",
+    "audio_en": "/audio/mercy_vip_ei/on_edge_en.mp3",
+    "audio_vi": "/audio/mercy_vip_ei/on_edge_vi.mp3"
+  },
+  "ei_idiom_bounce_back": {
+    "id": "ei_idiom_bounce_back",
+    "category": "emotional_idiom",
+    "phrase_en": "bounce back",
+    "meaning_en": "to recover emotionally from difficulty",
+    "meaning_vi": "hồi phục sau khó khăn, đứng dậy trở lại",
+    "example_en": "You don't have to bounce back immediately. Slow recovery is still recovery.",
+    "example_vi": "Bạn không cần bật dậy ngay. Hồi phục chậm vẫn là hồi phục.",
+    "audio_en": "/audio/mercy_vip_ei/bounce_back_en.mp3",
+    "audio_vi": "/audio/mercy_vip_ei/bounce_back_vi.mp3"
+  },
+  "ei_idiom_set_boundaries": {
+    "id": "ei_idiom_set_boundaries",
+    "category": "emotional_idiom",
+    "phrase_en": "set boundaries",
+    "meaning_en": "to clearly protect your time, energy, or needs",
+    "meaning_vi": "đặt giới hạn để bảo vệ thời gian, năng lượng, nhu cầu của mình",
+    "example_en": "It's healthy to set boundaries, even with people you love.",
+    "example_vi": "Đặt giới hạn là điều lành mạnh, kể cả với người bạn yêu thương.",
+    "audio_en": "/audio/mercy_vip_ei/set_boundaries_en.mp3",
+    "audio_vi": "/audio/mercy_vip_ei/set_boundaries_vi.mp3"
+  },
+  "ei_idiom_walk_on_eggshells": {
+    "id": "ei_idiom_walk_on_eggshells",
+    "category": "emotional_idiom",
+    "phrase_en": "walk on eggshells",
+    "meaning_en": "to behave very carefully to avoid upsetting someone",
+    "meaning_vi": "cư xử rất dè dặt để không làm ai khó chịu",
+    "example_en": "If you always walk on eggshells, your body will stay tense.",
+    "example_vi": "Nếu lúc nào bạn cũng phải dè dặt, cơ thể bạn sẽ luôn căng thẳng.",
+    "audio_en": "/audio/mercy_vip_ei/walk_on_eggshells_en.mp3",
+    "audio_vi": "/audio/mercy_vip_ei/walk_on_eggshells_vi.mp3"
+  },
+  "ei_idiom_make_peace_with": {
+    "id": "ei_idiom_make_peace_with",
+    "category": "emotional_idiom",
+    "phrase_en": "make peace with something",
+    "meaning_en": "to accept something difficult and stop fighting it internally",
+    "meaning_vi": "làm hòa, chấp nhận một điều khó khăn và thôi chống lại nó trong lòng",
+    "example_en": "You don't have to like it, but you can slowly make peace with it.",
+    "example_vi": "Bạn không cần phải thích, nhưng bạn có thể dần dần làm hòa với nó.",
+    "audio_en": "/audio/mercy_vip_ei/make_peace_with_en.mp3",
+    "audio_vi": "/audio/mercy_vip_ei/make_peace_with_vi.mp3"
+  }
+}
