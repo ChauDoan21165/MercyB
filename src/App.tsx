@@ -5,15 +5,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
-import { AdminFloatingButton } from "@/components/AdminFloatingButton";
-import { ZoomControl } from "@/components/ZoomControl";
 import { HomeButton } from "@/components/HomeButton";
 import { BackButton } from "@/components/BackButton";
-import { GlobalPlayingIndicator } from "@/components/GlobalPlayingIndicator";
 import { AdminRoute } from "@/components/AdminRoute";
 import { MusicPlayerProvider } from "@/contexts/MusicPlayerContext";
 import { LowDataModeProvider } from "@/contexts/LowDataModeContext";
-import { MusicPlayer } from "@/components/MusicPlayer";
+import { UnifiedBottomBar } from "@/components/UnifiedBottomBar";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { OfflineDetector } from "@/components/OfflineDetector";
 import { PerformanceProfiler } from "@/lib/performance/profiler";
@@ -135,8 +132,8 @@ const queryClient = new QueryClient({
   },
 });
 
-// Route-aware music player - hides on onboarding
-const RouteAwareMusicPlayer = () => {
+// Route-aware unified bottom bar - hides on onboarding
+const RouteAwareBottomBar = () => {
   const location = useLocation();
   const hideOnRoutes = ['/onboarding'];
   
@@ -144,12 +141,7 @@ const RouteAwareMusicPlayer = () => {
     return null;
   }
   
-  return <MusicPlayer />;
-};
-
-// Admin floating button wrapper - only shows for admins (handled internally)
-const AdminFloatingButtonWrapper = () => {
-  return <AdminFloatingButton />;
+  return <UnifiedBottomBar />;
 };
 
 const App = () => {
@@ -209,8 +201,6 @@ const App = () => {
               <MusicPlayerProvider>
                 <BrowserRouter>
                   <EnvironmentBanner />
-                  <AdminFloatingButtonWrapper />
-                  <ZoomControl />
                   
                   <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur">
                     <div className="mx-auto flex h-12 max-w-7xl items-center justify-between px-4">
@@ -221,7 +211,6 @@ const App = () => {
                     </div>
                   </header>
                   
-                  <GlobalPlayingIndicator />
                   <PerformanceProfiler />
                   
                   <Suspense fallback={<LoadingSkeleton variant="page" />}>
@@ -337,7 +326,7 @@ const App = () => {
                     </Routes>
                   </Suspense>
                   
-                  <RouteAwareMusicPlayer />
+                  <RouteAwareBottomBar />
                 </BrowserRouter>
               </MusicPlayerProvider>
             </TooltipProvider>
