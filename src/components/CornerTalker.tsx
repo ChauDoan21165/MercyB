@@ -175,7 +175,7 @@ export function CornerTalker({ roomId, introAudioEn, introAudioVi }: CornerTalke
   };
 
   return (
-    <div className="fixed bottom-24 right-4 z-40 flex flex-col items-end gap-1">
+    <div className="fixed bottom-32 right-4 z-40 flex flex-col items-end gap-1">
       {/* Toggle button */}
       <button
         onClick={handleToggle}
