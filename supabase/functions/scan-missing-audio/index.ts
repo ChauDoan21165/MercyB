@@ -12,7 +12,56 @@ interface MissingAudioEntry {
   field: string;
   filename: string;
   status: string;
+  checkedUrl: string; // Show the exact URL that was checked for debugging
   httpStatus?: number;
+}
+
+/**
+ * Normalize audio path to canonical format
+ * - Strips leading slashes
+ * - Removes "public/" prefix
+ * - Removes redundant "audio/" or "audio/en/" prefixes
+ * - Returns just the filename
+ */
+function normalizeAudioFilename(raw: string | null | undefined): string | null {
+  if (!raw) return null;
+  
+  let p = raw.trim();
+  if (!p) return null;
+  
+  // Remove any leading slashes
+  p = p.replace(/^\/+/, '');
+  
+  // Remove "public/" prefix if present
+  p = p.replace(/^public\//, '');
+  
+  // Remove "audio/en/" or "audio/vi/" prefixes
+  p = p.replace(/^audio\/(en|vi)\//, '');
+  
+  // Remove "audio/" prefix if present
+  p = p.replace(/^audio\//, '');
+  
+  // Extract just the filename (last segment after any remaining slashes)
+  const lastSlash = Math.max(p.lastIndexOf('/'), p.lastIndexOf('\\'));
+  if (lastSlash >= 0) {
+    p = p.substring(lastSlash + 1);
+  }
+  
+  // Remove any query params
+  const queryIndex = p.indexOf('?');
+  if (queryIndex >= 0) {
+    p = p.substring(0, queryIndex);
+  }
+  
+  return p || null;
+}
+
+/**
+ * Build the full audio URL for checking
+ * Files are served from /audio/{filename} in the deployed app
+ */
+function buildAudioCheckUrl(baseUrl: string, filename: string): string {
+  return `${baseUrl}/audio/${filename}`;
 }
 
 Deno.serve(async (req) => {
@@ -25,7 +74,26 @@ Deno.serve(async (req) => {
     const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    console.log('Starting missing audio scan...');
+    // Get the app base URL from request or use a fallback
+    // The audio files are served from the deployed app, not Supabase storage
+    const requestUrl = new URL(req.url);
+    const origin = req.headers.get('origin') || req.headers.get('referer');
+    
+    // Extract base URL from origin/referer, or use a fallback pattern
+    let appBaseUrl: string;
+    if (origin) {
+      const originUrl = new URL(origin);
+      appBaseUrl = `${originUrl.protocol}//${originUrl.host}`;
+    } else {
+      // Fallback: derive from the function URL pattern
+      // Lovable preview URLs follow pattern: https://{project-id}.lovableproject.com
+      const projectId = supabaseUrl.match(/https:\/\/([^.]+)/)?.[1];
+      appBaseUrl = projectId 
+        ? `https://${projectId}.lovableproject.com`
+        : 'https://localhost:8080'; // Local dev fallback
+    }
+
+    console.log(`Starting missing audio scan... Checking against: ${appBaseUrl}`);
 
     // Fetch all rooms from database
     const { data: rooms, error: roomsError } = await supabase
@@ -48,6 +116,7 @@ Deno.serve(async (req) => {
       roomTitle: string;
       entrySlug: string;
       field: string;
+      rawValue: string;
       filename: string;
       url: string;
     }> = [];
@@ -59,42 +128,38 @@ Deno.serve(async (req) => {
         const entrySlug = entry.slug || entry.artifact_id || entry.id || 'unknown';
         const roomTitle = room.title_en || room.title_vi || room.id;
         
-        // Collect audio_en checks
-        if (entry.audio_en) {
-          const filename = entry.audio_en.split('/').pop();
+        // Check all possible audio field formats
+        const audioFields: Array<{ field: string; value: string | undefined }> = [
+          { field: 'audio', value: typeof entry.audio === 'string' ? entry.audio : undefined },
+          { field: 'audio.en', value: entry.audio?.en },
+          { field: 'audio.vi', value: entry.audio?.vi },
+          { field: 'audio_en', value: entry.audio_en },
+          { field: 'audio_vi', value: entry.audio_vi },
+          { field: 'audioEn', value: entry.audioEn },
+        ];
+
+        for (const { field, value } of audioFields) {
+          if (!value) continue;
+          
+          const filename = normalizeAudioFilename(value);
+          if (!filename) continue;
+          
+          // Avoid duplicate checks for the same filename in the same entry
+          const existingCheck = audioChecks.find(
+            c => c.roomId === room.id && c.entrySlug === entrySlug && c.filename === filename
+          );
+          if (existingCheck) continue;
+          
+          const url = buildAudioCheckUrl(appBaseUrl, filename);
+          
           audioChecks.push({
             roomId: room.id,
             roomTitle,
             entrySlug,
-            field: 'audio_en',
+            field,
+            rawValue: value,
             filename,
-            url: `${supabaseUrl}/storage/v1/object/public/room-audio/${filename}`
-          });
-        }
-        
-        // Collect audio checks (old format)
-        if (entry.audio && typeof entry.audio === 'string') {
-          const filename = entry.audio.split('/').pop();
-          audioChecks.push({
-            roomId: room.id,
-            roomTitle,
-            entrySlug,
-            field: 'audio',
-            filename,
-            url: `${supabaseUrl}/storage/v1/object/public/room-audio/${filename}`
-          });
-        }
-        
-        // Collect audio.en checks (nested format)
-        if (entry.audio && typeof entry.audio === 'object' && entry.audio.en) {
-          const filename = entry.audio.en.split('/').pop();
-          audioChecks.push({
-            roomId: room.id,
-            roomTitle,
-            entrySlug,
-            field: 'audio.en',
-            filename,
-            url: `${supabaseUrl}/storage/v1/object/public/room-audio/${filename}`
+            url
           });
         }
       }
@@ -121,6 +186,7 @@ Deno.serve(async (req) => {
                 field: check.field,
                 filename: check.filename,
                 status,
+                checkedUrl: check.url,
                 httpStatus: response.status
               },
               exists: response.ok
@@ -134,7 +200,8 @@ Deno.serve(async (req) => {
                 entrySlug: check.entrySlug,
                 field: check.field,
                 filename: check.filename,
-                status: `Error: ${errorMsg}`
+                status: `Error: ${errorMsg}`,
+                checkedUrl: check.url
               },
               exists: false
             };
@@ -164,6 +231,7 @@ Deno.serve(async (req) => {
         existingCount: existingAudioFiles.length,
         missingFiles: missingAudioFiles,
         existingFiles: existingAudioFiles,
+        appBaseUrl, // Include for debugging
       }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );

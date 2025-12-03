@@ -80,6 +80,7 @@ interface MissingAudioEntry {
   field: string;
   filename: string;
   status: string;
+  checkedUrl?: string; // The exact URL that was checked for debugging
   httpStatus?: number;
 }
 
@@ -3093,6 +3094,7 @@ export default function UnifiedHealthCheck() {
                       <th className="border border-black p-2 text-left font-bold">Entry Slug</th>
                       <th className="border border-black p-2 text-left font-bold">Field</th>
                       <th className="border border-black p-2 text-left font-bold">Filename</th>
+                      <th className="border border-black p-2 text-left font-bold">Checked URL</th>
                       <th className="border border-black p-2 text-left font-bold">Status</th>
                     </tr>
                   </thead>
@@ -3104,6 +3106,7 @@ export default function UnifiedHealthCheck() {
                         <td className="border border-black p-2 font-mono text-sm">{entry.entrySlug}</td>
                         <td className="border border-black p-2 font-mono text-sm">{entry.field}</td>
                         <td className="border border-black p-2 font-mono text-sm">{entry.filename}</td>
+                        <td className="border border-black p-2 font-mono text-xs text-gray-600 max-w-xs truncate" title={entry.checkedUrl}>{entry.checkedUrl}</td>
                         <td className="border border-black p-2 text-sm text-red-600 font-bold">{entry.status}</td>
                       </tr>
                     ))}
