@@ -238,6 +238,21 @@
   }
 }
 
+/* Mercy Blade Talking Mouth Animation */
+@keyframes mb-mouth-talk {
+  0%, 100% { transform: scaleY(0.2); }
+  30% { transform: scaleY(1); }
+  60% { transform: scaleY(0.4); }
+}
+
+.mb-mouth {
+  transform-origin: center center;
+}
+
+.mb-mouth-talking {
+  animation: mb-mouth-talk 0.35s infinite;
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */

@@ -11,6 +11,7 @@ import { AdminRoute } from "@/components/AdminRoute";
 import { MusicPlayerProvider } from "@/contexts/MusicPlayerContext";
 import { LowDataModeProvider } from "@/contexts/LowDataModeContext";
 import { UnifiedBottomBar } from "@/components/UnifiedBottomBar";
+import { CornerTalker } from "@/components/CornerTalker";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { OfflineDetector } from "@/components/OfflineDetector";
 import { PerformanceProfiler } from "@/lib/performance/profiler";
@@ -327,6 +328,7 @@ const App = () => {
                   </Suspense>
                   
                   <RouteAwareBottomBar />
+                  <CornerTalker />
                 </BrowserRouter>
               </MusicPlayerProvider>
             </TooltipProvider>
