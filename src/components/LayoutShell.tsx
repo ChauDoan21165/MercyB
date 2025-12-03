@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 import { ColorfulMercyBladeHeader } from '@/components/headers/ColorfulMercyBladeHeader';
 import { MercyToggle } from '@/components/companion/MercyToggle';
+import { CompanionBubble } from '@/components/companion/CompanionBubble';
+import { useHomeCompanion } from '@/hooks/useHomeCompanion';
 
 interface LayoutShellProps {
   children: ReactNode;
@@ -11,11 +13,6 @@ interface LayoutShellProps {
 /**
  * Shared layout shell for main experiences
  * Ensures consistent spacing, max-width, and header placement
- * 
- * Usage:
- *   <LayoutShell showHeader maxWidth="container">
- *     <YourContent />
- *   </LayoutShell>
  */
 export function LayoutShell({ 
   children, 
@@ -27,6 +24,9 @@ export function LayoutShell({
     container: 'max-w-7xl',
     narrow: 'max-w-4xl',
   }[maxWidth];
+
+  // Home companion greeting
+  const { visible, text, hide } = useHomeCompanion();
 
   return (
     <div className="min-h-screen bg-background">
@@ -41,6 +41,14 @@ export function LayoutShell({
       <main className={`${maxWidthClass} mx-auto px-4 py-6`}>
         {children}
       </main>
+      
+      {/* Mercy Companion Bubble */}
+      <CompanionBubble 
+        text={text} 
+        visible={visible} 
+        onClose={hide}
+        title="Mercy"
+      />
       
       {/* Mercy Toggle - shows when companion is disabled */}
       <MercyToggle />
