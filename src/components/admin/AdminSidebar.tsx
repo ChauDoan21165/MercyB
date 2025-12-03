@@ -49,6 +49,7 @@ const mainItems = [
 const roomItems = [
   { title: "Room Management", url: "/admin/rooms", icon: LayoutDashboard },
   { title: "Room Health Check", url: "/admin/room-health", icon: Stethoscope },
+  { title: "Audit v4 Safe Shield", url: "/admin/audit-v4", icon: Shield },
   { title: "VIP Rooms", url: "/admin/vip-rooms", icon: LayoutDashboard },
   { title: "Audio Management", url: "/admin/audio-upload", icon: Music },
   { title: "Audio Scanner", url: "/admin/audio-scanner", icon: Volume2 },
