@@ -49,5 +49,9 @@
   "nextRoomSuggestion": [
     "When you're ready, I can suggest a softer room next.",
     "If this was a lot, we can choose something lighter after this."
+  ],
+  "voiceQuiet": [
+    "Today my voice is a bit quiet, but I'm still here with you.",
+    "I can't speak right now, but I'm still listening."
   ]
 }
