@@ -1,0 +1,386 @@
+{
+  "vip_calm_depth_1": {
+    "id": "vip_calm_depth_1",
+    "category": "vip_calm",
+    "text_en": "Before you move forward, let your breath expand your chest, and let the tension melt just a little.",
+    "text_vi": "Trước khi bước tiếp, bạn để hơi thở làm ngực mình nở ra, và để căng thẳng tan đi một chút nhé.",
+    "audio_en": "/audio/mercy_vip/vip_calm_depth_1_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_calm_depth_1_vi.mp3"
+  },
+  "vip_calm_depth_2": {
+    "id": "vip_calm_depth_2",
+    "category": "vip_calm",
+    "text_en": "When your mind softens, even slightly, clarity appears naturally.",
+    "text_vi": "Khi tâm trí bạn mềm lại dù chỉ một chút, sự rõ ràng sẽ tự nhiên xuất hiện.",
+    "audio_en": "/audio/mercy_vip/vip_calm_depth_2_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_calm_depth_2_vi.mp3"
+  },
+  "vip_calm_depth_3": {
+    "id": "vip_calm_depth_3",
+    "category": "vip_calm",
+    "text_en": "There is no need to rush. Peace grows in slow breaths.",
+    "text_vi": "Không cần vội. Sự bình yên lớn lên trong từng hơi thở chậm.",
+    "audio_en": "/audio/mercy_vip/vip_calm_depth_3_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_calm_depth_3_vi.mp3"
+  },
+  "vip_calm_body_1": {
+    "id": "vip_calm_body_1",
+    "category": "vip_calm",
+    "text_en": "Notice where your jaw holds tension. Let it soften. That small release changes everything.",
+    "text_vi": "Để ý nơi hàm bạn đang giữ căng thẳng. Hãy để nó mềm đi. Sự giải tỏa nhỏ đó thay đổi mọi thứ.",
+    "audio_en": "/audio/mercy_vip/vip_calm_body_1_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_calm_body_1_vi.mp3"
+  },
+  "vip_calm_body_2": {
+    "id": "vip_calm_body_2",
+    "category": "vip_calm",
+    "text_en": "Drop your shoulders. You don't need to carry the weight so high.",
+    "text_vi": "Hạ vai xuống. Bạn không cần giữ sức nặng cao như thế.",
+    "audio_en": "/audio/mercy_vip/vip_calm_body_2_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_calm_body_2_vi.mp3"
+  },
+  "vip_support_depth_1": {
+    "id": "vip_support_depth_1",
+    "category": "vip_support",
+    "text_en": "You are carrying more than you say out loud. I'm glad you're giving yourself a moment here.",
+    "text_vi": "Bạn đang mang nhiều hơn những gì bạn nói thành lời. Mình mừng vì bạn dành thời gian cho chính mình ở đây.",
+    "audio_en": "/audio/mercy_vip/vip_support_depth_1_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_support_depth_1_vi.mp3"
+  },
+  "vip_support_depth_2": {
+    "id": "vip_support_depth_2",
+    "category": "vip_support",
+    "text_en": "Some emotions rise quietly. Let's acknowledge them gently.",
+    "text_vi": "Có những cảm xúc trỗi dậy rất khẽ. Chúng ta cùng ghi nhận chúng nhẹ nhàng nhé.",
+    "audio_en": "/audio/mercy_vip/vip_support_depth_2_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_support_depth_2_vi.mp3"
+  },
+  "vip_support_depth_3": {
+    "id": "vip_support_depth_3",
+    "category": "vip_support",
+    "text_en": "It's okay if you don't feel strong today. Strength is not a mood—it's a direction.",
+    "text_vi": "Không sao nếu hôm nay bạn không thấy mạnh mẽ. Sức mạnh không phải cảm xúc, mà là hướng đi.",
+    "audio_en": "/audio/mercy_vip/vip_support_depth_3_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_support_depth_3_vi.mp3"
+  },
+  "vip_support_depth_4": {
+    "id": "vip_support_depth_4",
+    "category": "vip_support",
+    "text_en": "You don't have to explain everything you feel. Just being aware of it is already a step.",
+    "text_vi": "Bạn không cần giải thích mọi cảm xúc. Chỉ cần nhận thức về nó đã là một bước tiến rồi.",
+    "audio_en": "/audio/mercy_vip/vip_support_depth_4_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_support_depth_4_vi.mp3"
+  },
+  "vip_support_depth_5": {
+    "id": "vip_support_depth_5",
+    "category": "vip_support",
+    "text_en": "Whatever happened today, you still deserve gentleness.",
+    "text_vi": "Dù hôm nay có chuyện gì, bạn vẫn xứng đáng được đối xử nhẹ nhàng.",
+    "audio_en": "/audio/mercy_vip/vip_support_depth_5_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_support_depth_5_vi.mp3"
+  },
+  "vip_discipline_poise_1": {
+    "id": "vip_discipline_poise_1",
+    "category": "vip_discipline",
+    "text_en": "Return to your center. A stable stance begins in the hips, not the shoulders.",
+    "text_vi": "Quay về trung tâm của bạn. Một thế đứng ổn định bắt đầu ở hông, không phải ở vai.",
+    "audio_en": "/audio/mercy_vip/vip_discipline_poise_1_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_discipline_poise_1_vi.mp3"
+  },
+  "vip_discipline_poise_2": {
+    "id": "vip_discipline_poise_2",
+    "category": "vip_discipline",
+    "text_en": "Strength is only real when it's calm. Angry strength collapses quickly.",
+    "text_vi": "Sức mạnh chỉ thật khi nó bình tĩnh. Sức mạnh giận dữ sụp đổ rất nhanh.",
+    "audio_en": "/audio/mercy_vip/vip_discipline_poise_2_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_discipline_poise_2_vi.mp3"
+  },
+  "vip_discipline_poise_3": {
+    "id": "vip_discipline_poise_3",
+    "category": "vip_discipline",
+    "text_en": "Consistency is a silent art. Keep moving—lightly, but surely.",
+    "text_vi": "Sự kiên định là một nghệ thuật thầm lặng. Cứ tiếp tục—nhẹ thôi nhưng chắc.",
+    "audio_en": "/audio/mercy_vip/vip_discipline_poise_3_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_discipline_poise_3_vi.mp3"
+  },
+  "vip_discipline_poise_4": {
+    "id": "vip_discipline_poise_4",
+    "category": "vip_discipline",
+    "text_en": "Discipline isn't punishment. It's a form of self-respect.",
+    "text_vi": "Kỷ luật không phải trừng phạt. Nó là một dạng tự tôn trọng bản thân.",
+    "audio_en": "/audio/mercy_vip/vip_discipline_poise_4_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_discipline_poise_4_vi.mp3"
+  },
+  "vip_discipline_poise_5": {
+    "id": "vip_discipline_poise_5",
+    "category": "vip_discipline",
+    "text_en": "True mastery is gentle. Force is always a sign of impatience.",
+    "text_vi": "Sự thành thạo thật sự luôn nhẹ nhàng. Sức mạnh cưỡng ép luôn là dấu hiệu của thiếu kiên nhẫn.",
+    "audio_en": "/audio/mercy_vip/vip_discipline_poise_5_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_discipline_poise_5_vi.mp3"
+  },
+  "vip_english_advanced_1": {
+    "id": "vip_english_advanced_1",
+    "category": "vip_english",
+    "text_en": "Here's a natural advanced expression: "on the right track." It means you're progressing correctly.",
+    "text_vi": "Đây là một cụm nâng cao tự nhiên: "on the right track." Nghĩa là bạn đang đi đúng hướng.",
+    "audio_en": "/audio/mercy_vip/vip_english_advanced_1_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_english_advanced_1_vi.mp3"
+  },
+  "vip_english_advanced_2": {
+    "id": "vip_english_advanced_2",
+    "category": "vip_english",
+    "text_en": "A strong phrase you can use is: "I'll take it one step at a time." Very natural and confident.",
+    "text_vi": "Một câu rất hay bạn có thể dùng là: "I'll take it one step at a time." Nghe tự nhiên và tự tin.",
+    "audio_en": "/audio/mercy_vip/vip_english_advanced_2_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_english_advanced_2_vi.mp3"
+  },
+  "vip_english_advanced_3": {
+    "id": "vip_english_advanced_3",
+    "category": "vip_english",
+    "text_en": "Advanced English often sounds simple. Clarity is more powerful than complicated words.",
+    "text_vi": "Tiếng Anh nâng cao thường nghe rất đơn giản. Sự rõ ràng mạnh hơn từ ngữ phức tạp.",
+    "audio_en": "/audio/mercy_vip/vip_english_advanced_3_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_english_advanced_3_vi.mp3"
+  },
+  "vip_english_advanced_4": {
+    "id": "vip_english_advanced_4",
+    "category": "vip_english",
+    "text_en": "Native speakers often use "to be honest" at the start. It signals authenticity.",
+    "text_vi": "Người bản xứ hay dùng "to be honest" ở đầu câu. Nó báo hiệu sự chân thực.",
+    "audio_en": "/audio/mercy_vip/vip_english_advanced_4_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_english_advanced_4_vi.mp3"
+  },
+  "vip_english_advanced_5": {
+    "id": "vip_english_advanced_5",
+    "category": "vip_english",
+    "text_en": "When you speak slowly and clearly, you sound more confident—not less.",
+    "text_vi": "Khi bạn nói chậm và rõ, bạn nghe tự tin hơn—không phải ít hơn.",
+    "audio_en": "/audio/mercy_vip/vip_english_advanced_5_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_english_advanced_5_vi.mp3"
+  },
+  "vip_english_advanced_6": {
+    "id": "vip_english_advanced_6",
+    "category": "vip_english",
+    "text_en": "Try this phrase: "That makes sense." It shows you're engaged and understanding.",
+    "text_vi": "Thử câu này: "That makes sense." Nó cho thấy bạn đang chú ý và hiểu.",
+    "audio_en": "/audio/mercy_vip/vip_english_advanced_6_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_english_advanced_6_vi.mp3"
+  },
+  "vip_english_advanced_7": {
+    "id": "vip_english_advanced_7",
+    "category": "vip_english",
+    "text_en": "A powerful connector is "having said that." It shows balanced thinking.",
+    "text_vi": "Một từ nối mạnh là "having said that." Nó thể hiện suy nghĩ cân bằng.",
+    "audio_en": "/audio/mercy_vip/vip_english_advanced_7_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_english_advanced_7_vi.mp3"
+  },
+  "vip_reflection_depth_1": {
+    "id": "vip_reflection_depth_1",
+    "category": "vip_reflection",
+    "text_en": "What emotion sits beneath the first one? Often the second layer is the real message.",
+    "text_vi": "Cảm xúc nào nằm dưới cảm xúc đầu tiên? Thường thì tầng thứ hai mới là thông điệp thật.",
+    "audio_en": "/audio/mercy_vip/vip_reflection_depth_1_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_reflection_depth_1_vi.mp3"
+  },
+  "vip_reflection_depth_2": {
+    "id": "vip_reflection_depth_2",
+    "category": "vip_reflection",
+    "text_en": "Who were you trying to protect today—your heart, your energy, or your peace?",
+    "text_vi": "Hôm nay bạn đang cố bảo vệ điều gì—trái tim, năng lượng hay sự bình yên của mình?",
+    "audio_en": "/audio/mercy_vip/vip_reflection_depth_2_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_reflection_depth_2_vi.mp3"
+  },
+  "vip_reflection_depth_3": {
+    "id": "vip_reflection_depth_3",
+    "category": "vip_reflection",
+    "text_en": "If you could speak honestly to yourself for a moment, what truth wants to be seen?",
+    "text_vi": "Nếu lúc này bạn có thể thành thật với mình, sự thật nào đang muốn được nhìn thấy?",
+    "audio_en": "/audio/mercy_vip/vip_reflection_depth_3_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_reflection_depth_3_vi.mp3"
+  },
+  "vip_reflection_depth_4": {
+    "id": "vip_reflection_depth_4",
+    "category": "vip_reflection",
+    "text_en": "Sometimes we avoid thoughts because they feel too big. But naming them shrinks them.",
+    "text_vi": "Đôi khi ta tránh những suy nghĩ vì chúng có vẻ quá lớn. Nhưng gọi tên chúng sẽ làm chúng nhỏ lại.",
+    "audio_en": "/audio/mercy_vip/vip_reflection_depth_4_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_reflection_depth_4_vi.mp3"
+  },
+  "vip_reflection_depth_5": {
+    "id": "vip_reflection_depth_5",
+    "category": "vip_reflection",
+    "text_en": "What part of yourself did you ignore today? Let's give it a moment now.",
+    "text_vi": "Phần nào của bạn đã bị bỏ qua hôm nay? Hãy dành cho nó một chút thời gian bây giờ.",
+    "audio_en": "/audio/mercy_vip/vip_reflection_depth_5_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_reflection_depth_5_vi.mp3"
+  },
+  "vip_direction_1": {
+    "id": "vip_direction_1",
+    "category": "vip_direction",
+    "text_en": "You don't need to see the whole path—only the next clear step.",
+    "text_vi": "Bạn không cần nhìn cả con đường—chỉ cần bước rõ ràng tiếp theo.",
+    "audio_en": "/audio/mercy_vip/vip_direction_1_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_direction_1_vi.mp3"
+  },
+  "vip_direction_2": {
+    "id": "vip_direction_2",
+    "category": "vip_direction",
+    "text_en": "Structure doesn't limit you. It frees your mind from chaos.",
+    "text_vi": "Cấu trúc không giới hạn bạn. Nó giải phóng tâm trí khỏi sự rối loạn.",
+    "audio_en": "/audio/mercy_vip/vip_direction_2_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_direction_2_vi.mp3"
+  },
+  "vip_direction_3": {
+    "id": "vip_direction_3",
+    "category": "vip_direction",
+    "text_en": "You can build a life brick by brick. Today's brick is enough.",
+    "text_vi": "Bạn có thể xây cuộc đời mình từng viên gạch. Viên gạch hôm nay là đủ.",
+    "audio_en": "/audio/mercy_vip/vip_direction_3_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_direction_3_vi.mp3"
+  },
+  "vip_direction_4": {
+    "id": "vip_direction_4",
+    "category": "vip_direction",
+    "text_en": "If you're unsure where to start, start with what you can control: your breath, your posture, your next choice.",
+    "text_vi": "Nếu không biết bắt đầu từ đâu, hãy bắt đầu từ thứ bạn kiểm soát được: hơi thở, tư thế, lựa chọn tiếp theo.",
+    "audio_en": "/audio/mercy_vip/vip_direction_4_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_direction_4_vi.mp3"
+  },
+  "vip_direction_5": {
+    "id": "vip_direction_5",
+    "category": "vip_direction",
+    "text_en": "Progress doesn't always look dramatic. Sometimes it's invisible and internal—and that's still real.",
+    "text_vi": "Tiến bộ không phải lúc nào cũng rõ ràng. Đôi khi nó vô hình và bên trong—và vẫn là thật.",
+    "audio_en": "/audio/mercy_vip/vip_direction_5_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_direction_5_vi.mp3"
+  },
+  "vip_philosophy_1": {
+    "id": "vip_philosophy_1",
+    "category": "vip_philosophy",
+    "text_en": "Some days you grow upward. Some days you grow inward. Both are progress.",
+    "text_vi": "Có ngày bạn lớn lên theo chiều cao. Có ngày bạn lớn lên theo chiều sâu. Cả hai đều là tiến bộ.",
+    "audio_en": "/audio/mercy_vip/vip_philosophy_1_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_philosophy_1_vi.mp3"
+  },
+  "vip_philosophy_2": {
+    "id": "vip_philosophy_2",
+    "category": "vip_philosophy",
+    "text_en": "Calm is not the absence of noise. It is the strength to stay centered inside it.",
+    "text_vi": "Bình yên không phải là không có tiếng ồn. Đó là sức mạnh để giữ sự ổn định bên trong nó.",
+    "audio_en": "/audio/mercy_vip/vip_philosophy_2_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_philosophy_2_vi.mp3"
+  },
+  "vip_philosophy_3": {
+    "id": "vip_philosophy_3",
+    "category": "vip_philosophy",
+    "text_en": "Every person has two voices: the fearful one, and the wise one. You're listening to the wise one now.",
+    "text_vi": "Mỗi người đều có hai giọng nói: giọng sợ hãi và giọng khôn ngoan. Bạn đang lắng nghe giọng khôn ngoan đấy.",
+    "audio_en": "/audio/mercy_vip/vip_philosophy_3_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_philosophy_3_vi.mp3"
+  },
+  "vip_philosophy_4": {
+    "id": "vip_philosophy_4",
+    "category": "vip_philosophy",
+    "text_en": "You don't need to be fixed. You need to be understood—starting with yourself.",
+    "text_vi": "Bạn không cần được sửa chữa. Bạn cần được hiểu—bắt đầu từ chính bạn.",
+    "audio_en": "/audio/mercy_vip/vip_philosophy_4_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_philosophy_4_vi.mp3"
+  },
+  "vip_philosophy_5": {
+    "id": "vip_philosophy_5",
+    "category": "vip_philosophy",
+    "text_en": "Life is not a race. It's a rhythm. Find yours.",
+    "text_vi": "Cuộc sống không phải cuộc đua. Nó là nhịp điệu. Hãy tìm nhịp của bạn.",
+    "audio_en": "/audio/mercy_vip/vip_philosophy_5_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_philosophy_5_vi.mp3"
+  },
+  "vip_philosophy_6": {
+    "id": "vip_philosophy_6",
+    "category": "vip_philosophy",
+    "text_en": "Wisdom doesn't always speak loudly. Sometimes it whispers: slow down.",
+    "text_vi": "Sự khôn ngoan không phải lúc nào cũng nói to. Đôi khi nó chỉ thì thầm: hãy chậm lại.",
+    "audio_en": "/audio/mercy_vip/vip_philosophy_6_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_philosophy_6_vi.mp3"
+  },
+  "vip_session_end_wisdom_1": {
+    "id": "vip_session_end_wisdom_1",
+    "category": "vip_session_end",
+    "text_en": "You honored your own time today. Let the mind settle as if dust in water.",
+    "text_vi": "Hôm nay bạn đã trân trọng thời gian của chính mình. Hãy để tâm trí lắng lại như bụi trong nước.",
+    "audio_en": "/audio/mercy_vip/vip_session_end_wisdom_1_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_session_end_wisdom_1_vi.mp3"
+  },
+  "vip_session_end_wisdom_2": {
+    "id": "vip_session_end_wisdom_2",
+    "category": "vip_session_end",
+    "text_en": "Let this learning settle inside you. Tomorrow will take care of itself.",
+    "text_vi": "Hãy để bài học này lắng lại trong bạn. Ngày mai sẽ tự lo phần còn lại.",
+    "audio_en": "/audio/mercy_vip/vip_session_end_wisdom_2_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_session_end_wisdom_2_vi.mp3"
+  },
+  "vip_session_end_wisdom_3": {
+    "id": "vip_session_end_wisdom_3",
+    "category": "vip_session_end",
+    "text_en": "Close this moment gently. You've taken a meaningful step today.",
+    "text_vi": "Kết thúc khoảnh khắc này nhẹ nhàng nhé. Hôm nay bạn đã tiến thêm một bước rất có ý nghĩa.",
+    "audio_en": "/audio/mercy_vip/vip_session_end_wisdom_3_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_session_end_wisdom_3_vi.mp3"
+  },
+  "vip_session_end_wisdom_4": {
+    "id": "vip_session_end_wisdom_4",
+    "category": "vip_session_end",
+    "text_en": "Rest well. What you planted today will grow in ways you cannot see yet.",
+    "text_vi": "Nghỉ ngơi nhé. Những gì bạn gieo hôm nay sẽ lớn lên theo cách bạn chưa thể thấy.",
+    "audio_en": "/audio/mercy_vip/vip_session_end_wisdom_4_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_session_end_wisdom_4_vi.mp3"
+  },
+  "vip_session_end_wisdom_5": {
+    "id": "vip_session_end_wisdom_5",
+    "category": "vip_session_end",
+    "text_en": "You did something valuable for your future self today. That deserves quiet pride.",
+    "text_vi": "Hôm nay bạn đã làm điều có giá trị cho bản thân tương lai. Điều đó xứng đáng một niềm tự hào thầm lặng.",
+    "audio_en": "/audio/mercy_vip/vip_session_end_wisdom_5_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_session_end_wisdom_5_vi.mp3"
+  },
+  "vip_gratitude_1": {
+    "id": "vip_gratitude_1",
+    "category": "vip_gratitude",
+    "text_en": "Gratitude is not about big things. It's about noticing what already holds you up.",
+    "text_vi": "Lòng biết ơn không phải về những điều lớn lao. Nó là nhận ra những gì đang nâng đỡ bạn.",
+    "audio_en": "/audio/mercy_vip/vip_gratitude_1_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_gratitude_1_vi.mp3"
+  },
+  "vip_gratitude_2": {
+    "id": "vip_gratitude_2",
+    "category": "vip_gratitude",
+    "text_en": "What small thing gave you comfort today? Even that is worth honoring.",
+    "text_vi": "Điều nhỏ bé nào mang lại sự thoải mái cho bạn hôm nay? Dù nhỏ cũng đáng được trân trọng.",
+    "audio_en": "/audio/mercy_vip/vip_gratitude_2_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_gratitude_2_vi.mp3"
+  },
+  "vip_mindfulness_1": {
+    "id": "vip_mindfulness_1",
+    "category": "vip_mindfulness",
+    "text_en": "Right now, notice the weight of your body in your seat. That presence is your anchor.",
+    "text_vi": "Ngay bây giờ, cảm nhận trọng lượng cơ thể bạn trên ghế. Sự hiện diện đó là điểm neo của bạn.",
+    "audio_en": "/audio/mercy_vip/vip_mindfulness_1_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_mindfulness_1_vi.mp3"
+  },
+  "vip_mindfulness_2": {
+    "id": "vip_mindfulness_2",
+    "category": "vip_mindfulness",
+    "text_en": "Let your eyes soften. Don't look at anything sharply. Just let your gaze rest.",
+    "text_vi": "Để mắt bạn mềm lại. Đừng nhìn thứ gì quá sắc. Chỉ để ánh mắt nghỉ ngơi.",
+    "audio_en": "/audio/mercy_vip/vip_mindfulness_2_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_mindfulness_2_vi.mp3"
+  },
+  "vip_mindfulness_3": {
+    "id": "vip_mindfulness_3",
+    "category": "vip_mindfulness",
+    "text_en": "Feel your feet on the floor. That simple connection brings you back to now.",
+    "text_vi": "Cảm nhận đôi chân bạn trên sàn. Kết nối đơn giản đó đưa bạn trở về hiện tại.",
+    "audio_en": "/audio/mercy_vip/vip_mindfulness_3_en.mp3",
+    "audio_vi": "/audio/mercy_vip/vip_mindfulness_3_vi.mp3"
+  }
+}
