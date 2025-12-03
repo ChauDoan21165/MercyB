@@ -94,6 +94,11 @@ const FastAudioScannerPage = lazy(() => import("./pages/admin/FastAudioScannerPa
 const EntriesWithoutAudioPage = lazy(() => import("./pages/admin/EntriesWithoutAudioPage"));
 const AuditSafeShield = lazy(() => import("./components/admin/AuditSafeShield"));
 
+// Paths pages - lazy loaded
+const PathOverview = lazy(() => import("./pages/PathOverview"));
+const PathDayCard = lazy(() => import("./pages/PathDayCard"));
+const PathCompleted = lazy(() => import("./pages/PathCompleted"));
+
 // Other pages - lazy loaded
 const MeaningOfLife = lazy(() => import("./pages/MeaningOfLife"));
 const AllRooms = lazy(() => import("./pages/AllRooms"));
@@ -230,6 +235,11 @@ const App = () => {
                       <Route path="/vip/vip5" element={<RoomGridVIP5 />} />
                       <Route path="/vip/vip6" element={<RoomGridVIP6 />} />
                       <Route path="/vip/vip9" element={<RoomsVIP9 />} />
+                      
+                      {/* Paths routes */}
+                      <Route path="/paths/:slug" element={<PathOverview />} />
+                      <Route path="/paths/:slug/day/:day" element={<PathDayCard />} />
+                      <Route path="/paths/:slug/completed" element={<PathCompleted />} />
                       
                       {/* Kids routes */}
                       <Route path="/kids-level1" element={<KidsLevel1 />} />

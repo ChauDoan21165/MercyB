@@ -919,6 +919,107 @@ export type Database = {
         }
         Relationships: []
       }
+      path_days: {
+        Row: {
+          audio_intro_en: string | null
+          audio_intro_vi: string | null
+          content_en: string
+          content_vi: string
+          created_at: string
+          dare_en: string
+          dare_vi: string
+          day_index: number
+          id: string
+          path_id: string
+          reflection_en: string
+          reflection_vi: string
+          title_en: string
+          title_vi: string
+          updated_at: string
+        }
+        Insert: {
+          audio_intro_en?: string | null
+          audio_intro_vi?: string | null
+          content_en: string
+          content_vi: string
+          created_at?: string
+          dare_en: string
+          dare_vi: string
+          day_index: number
+          id?: string
+          path_id: string
+          reflection_en: string
+          reflection_vi: string
+          title_en: string
+          title_vi: string
+          updated_at?: string
+        }
+        Update: {
+          audio_intro_en?: string | null
+          audio_intro_vi?: string | null
+          content_en?: string
+          content_vi?: string
+          created_at?: string
+          dare_en?: string
+          dare_vi?: string
+          day_index?: number
+          id?: string
+          path_id?: string
+          reflection_en?: string
+          reflection_vi?: string
+          title_en?: string
+          title_vi?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "path_days_path_id_fkey"
+            columns: ["path_id"]
+            isOneToOne: false
+            referencedRelation: "paths"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      paths: {
+        Row: {
+          cover_image: string | null
+          created_at: string
+          description_en: string
+          description_vi: string
+          id: string
+          slug: string
+          title_en: string
+          title_vi: string
+          total_days: number
+          updated_at: string
+        }
+        Insert: {
+          cover_image?: string | null
+          created_at?: string
+          description_en: string
+          description_vi: string
+          id?: string
+          slug: string
+          title_en: string
+          title_vi: string
+          total_days?: number
+          updated_at?: string
+        }
+        Update: {
+          cover_image?: string | null
+          created_at?: string
+          description_en?: string
+          description_vi?: string
+          id?: string
+          slug?: string
+          title_en?: string
+          title_vi?: string
+          total_days?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       payment_proof_audit_log: {
         Row: {
           action: string
@@ -2149,6 +2250,44 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      user_path_progress: {
+        Row: {
+          completed_days: Json
+          current_day: number
+          id: string
+          path_id: string
+          started_at: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          completed_days?: Json
+          current_day?: number
+          id?: string
+          path_id: string
+          started_at?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          completed_days?: Json
+          current_day?: number
+          id?: string
+          path_id?: string
+          started_at?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_path_progress_path_id_fkey"
+            columns: ["path_id"]
+            isOneToOne: false
+            referencedRelation: "paths"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_points: {
         Row: {
