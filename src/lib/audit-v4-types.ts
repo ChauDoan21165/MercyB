@@ -7,9 +7,23 @@ export type AuditIssueType =
   | "missing_db"
   | "mismatched_slug"
   | "duplicate_room"
+  | "duplicate_slug"
   | "invalid_json"
   | "missing_tier"
+  | "invalid_tier"
   | "missing_title"
+  | "missing_title_en"
+  | "missing_title_vi"
+  | "missing_schema_id"
+  | "missing_domain"
+  | "missing_room_keywords"
+  | "missing_slug"
+  | "missing_copy_en"
+  | "missing_copy_vi"
+  | "copy_word_count_extreme"
+  | "malformed_entries"
+  | "entry_count_info"
+  | "slug_format_info"
   | "registry_missing";
 
 export type AuditSeverity = "error" | "warning" | "info";
@@ -17,7 +31,7 @@ export type AuditSeverity = "error" | "warning" | "info";
 export interface AuditIssue {
   id: string;
   file: string;
-  type: AuditIssueType;
+  type: AuditIssueType | string;
   severity: AuditSeverity;
   message: string;
   fix?: string;
@@ -36,10 +50,11 @@ export type AuditMode = "dry-run" | "repair";
 
 export interface AuditResponse {
   ok: boolean;
-  mode: AuditMode;
+  mode?: AuditMode;
   summary: AuditSummary;
   issues: AuditIssue[];
   fixesApplied?: number;
+  fixed?: number;
   logs?: string[];
   error?: string;
 }
