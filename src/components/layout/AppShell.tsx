@@ -8,8 +8,10 @@ import { Button } from "@/components/ui/button";
 
 interface AppShellProps {
   children: React.ReactNode;
-  /** If true, uses AppShell's own header instead of the global one */
-  useLocalHeader?: boolean;
+  /** Custom bottom bar content */
+  bottomBar?: React.ReactNode;
+  /** If true, hides the global header (for pages with custom headers) */
+  hideHeader?: boolean;
   /** Custom class for main content area */
   mainClassName?: string;
 }
@@ -17,20 +19,21 @@ interface AppShellProps {
 /**
  * AppShell - Centered layout container for room pages
  * 
+ * - Single "Mercy Blade" logo in header (no duplicates)
  * - max-width: 720px centered content
- * - Header with centered logo
- * - Minimal vertical spacing
+ * - 2-row bottom bar: Row 1 controls, Row 2 audio
  */
 export function AppShell({ 
   children, 
-  useLocalHeader = false,
+  bottomBar,
+  hideHeader = false,
   mainClassName = ""
 }: AppShellProps) {
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      {useLocalHeader && (
+      {!hideHeader && (
         <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background/80 backdrop-blur-sm">
-          <div className="relative mx-auto max-w-[720px] px-4 py-3 flex items-center justify-between">
+          <div className="relative mx-auto max-w-[720px] h-12 px-4 flex items-center justify-between">
             {/* Left: navigation */}
             <div className="flex items-center gap-2 z-10">
               <HomeButton />
@@ -71,6 +74,9 @@ export function AppShell({
           {children}
         </div>
       </main>
+
+      {/* Bottom bar - same 720px width, 2-row layout */}
+      {bottomBar}
     </div>
   );
 }

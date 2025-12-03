@@ -144,7 +144,6 @@ export const UnifiedBottomBar = () => {
   };
 
   const handleCopyJson = () => {
-    // Emit event for JSON copy (handled by room page)
     window.dispatchEvent(new CustomEvent('copy-room-json'));
     toast({ title: "📄 JSON", description: "Room JSON copied" });
   };
@@ -162,128 +161,130 @@ export const UnifiedBottomBar = () => {
   const showAdminControls = isAdmin || isDev;
 
   return (
-    <div className="fixed bottom-0 inset-x-0 z-40 bg-background/95 backdrop-blur-sm border-t border-border">
+    <footer className="fixed bottom-0 inset-x-0 z-40 border-t border-border bg-background/95 backdrop-blur-sm">
       {/* Centered container matching content width */}
-      <div className="mx-auto max-w-[720px] px-4 py-2 flex flex-col sm:flex-row items-stretch gap-2">
-        {/* LEFT 1/3: Utility Strip */}
-        <div className="flex-1 sm:basis-1/3 sm:max-w-[33%] bg-card/50 border border-border/50 rounded-md px-1.5 py-1 flex items-center gap-0.5 min-h-[36px]">
-          {/* Zoom Controls */}
-          <Button
-            onClick={handleZoomOut}
-            disabled={!canZoomOut}
-            size="sm"
-            variant="ghost"
-            className="h-6 w-6 p-0 shrink-0"
-            title="Zoom Out (Ctrl + -)"
-          >
-            <ZoomOut className="h-3 w-3" />
-          </Button>
-          <Button
-            onClick={handleReset}
-            size="sm"
-            variant="ghost"
-            className="h-6 px-1 shrink-0"
-            title="Reset Zoom"
-          >
-            <span className="text-[9px] font-medium">{Math.round(zoomLevel * 100)}%</span>
-          </Button>
-          <Button
-            onClick={handleZoomIn}
-            disabled={!canZoomIn}
-            size="sm"
-            variant="ghost"
-            className="h-6 w-6 p-0 shrink-0"
-            title="Zoom In (Ctrl + +)"
-          >
-            <ZoomIn className="h-3 w-3" />
-          </Button>
+      <div className="mx-auto max-w-[720px] px-4 py-2">
+        <div className="flex flex-col gap-2">
+          {/* Row 1: All controls, buttons, toggles, dots */}
+          <div className="flex flex-wrap items-center gap-2">
+            {/* Zoom Controls */}
+            <div className="flex items-center gap-0.5 bg-card/50 border border-border/50 rounded-md px-1 py-0.5">
+              <Button
+                onClick={handleZoomOut}
+                disabled={!canZoomOut}
+                size="sm"
+                variant="ghost"
+                className="h-6 w-6 p-0"
+                title="Zoom Out (Ctrl + -)"
+              >
+                <ZoomOut className="h-3 w-3" />
+              </Button>
+              <Button
+                onClick={handleReset}
+                size="sm"
+                variant="ghost"
+                className="h-6 px-1"
+                title="Reset Zoom"
+              >
+                <span className="text-[10px] font-medium">{Math.round(zoomLevel * 100)}%</span>
+              </Button>
+              <Button
+                onClick={handleZoomIn}
+                disabled={!canZoomIn}
+                size="sm"
+                variant="ghost"
+                className="h-6 w-6 p-0"
+                title="Zoom In (Ctrl + +)"
+              >
+                <ZoomIn className="h-3 w-3" />
+              </Button>
+            </div>
 
-          {/* Separator */}
-          <div className="h-4 w-px bg-border/50 shrink-0 mx-0.5" />
-
-          {/* Copy URL */}
-          <Button
-            onClick={handleCopyPage}
-            size="sm"
-            variant="ghost"
-            className="h-6 w-6 p-0 shrink-0"
-            title="Copy page URL"
-          >
-            <Copy className="h-3 w-3" />
-          </Button>
-
-          {/* Copy JSON (Admin) */}
-          {showAdminControls && (
+            {/* EN/VI Toggle */}
             <Button
-              onClick={handleCopyJson}
+              onClick={toggleLang}
+              size="sm"
+              variant="outline"
+              className="h-7 px-2 gap-1"
+              title="Toggle EN / VI"
+            >
+              <Languages className="h-3 w-3" />
+              <span className="text-[10px] font-bold uppercase">{activeLang}</span>
+            </Button>
+
+            {/* Copy URL */}
+            <Button
+              onClick={handleCopyPage}
               size="sm"
               variant="ghost"
-              className="h-6 w-6 p-0 shrink-0"
-              title="Copy room JSON"
+              className="h-7 w-7 p-0"
+              title="Copy page URL"
             >
-              <FileJson className="h-3 w-3 text-amber-500" />
+              <Copy className="h-3 w-3" />
             </Button>
-          )}
 
-          {/* EN/VI Toggle */}
-          <Button
-            onClick={toggleLang}
-            size="sm"
-            variant="ghost"
-            className="h-6 px-1 shrink-0 gap-0.5"
-            title="Toggle EN / VI"
-          >
-            <Languages className="h-3 w-3" />
-            <span className="text-[9px] font-bold uppercase">{activeLang}</span>
-          </Button>
+            {/* Copy JSON (Admin) */}
+            {showAdminControls && (
+              <Button
+                onClick={handleCopyJson}
+                size="sm"
+                variant="ghost"
+                className="h-7 w-7 p-0"
+                title="Copy room JSON"
+              >
+                <FileJson className="h-3 w-3 text-amber-500" />
+              </Button>
+            )}
 
-          {/* Status Dots */}
-          <div className="flex items-center gap-0.5 shrink-0">
-            <Circle className="h-2 w-2 fill-emerald-500 text-emerald-500" title="Online" />
-            <Circle className="h-2 w-2 fill-blue-500 text-blue-500" title="Synced" />
-            {unreadCount > 0 && (
-              <Circle className="h-2 w-2 fill-red-500 text-red-500" title="Alerts" />
+            {/* Status Dots */}
+            <div className="flex items-center gap-1 px-1">
+              <Circle className="h-2 w-2 fill-emerald-500 text-emerald-500" title="Online" />
+              <Circle className="h-2 w-2 fill-blue-500 text-blue-500" title="Synced" />
+              {unreadCount > 0 && (
+                <Circle className="h-2 w-2 fill-red-500 text-red-500" title="Alerts" />
+              )}
+            </div>
+
+            {/* Version Indicator */}
+            <div 
+              className="h-5 w-5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white text-[9px] font-bold"
+              title={`Version ${versionIndicator}`}
+            >
+              {versionIndicator}
+            </div>
+
+            {/* Spacer */}
+            <div className="flex-1" />
+
+            {/* Admin Dashboard Button */}
+            {showAdminControls && (
+              <Button
+                onClick={() => navigate('/admin')}
+                size="sm"
+                variant="outline"
+                className="h-7 px-2 gap-1 relative"
+                title="Admin Dashboard"
+              >
+                <Settings className="h-3 w-3" />
+                <span className="text-[10px]">Admin</span>
+                {unreadCount > 0 && (
+                  <Badge
+                    variant="destructive"
+                    className="absolute -top-1 -right-1 h-4 w-4 flex items-center justify-center p-0 rounded-full text-[8px]"
+                  >
+                    {unreadCount > 9 ? '9+' : unreadCount}
+                  </Badge>
+                )}
+              </Button>
             )}
           </div>
 
-          {/* Spacer */}
-          <div className="flex-1 min-w-0" />
-
-          {/* Version Dot */}
-          <div 
-            className="h-4 w-4 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white text-[8px] font-bold shrink-0"
-            title={`Version ${versionIndicator}`}
-          >
-            {versionIndicator}
+          {/* Row 2: Music / Audio Bar */}
+          <div className="w-full">
+            <MusicPlayer />
           </div>
-
-          {/* Admin Dashboard Button */}
-          {showAdminControls && (
-            <Button
-              onClick={() => navigate('/admin')}
-              size="sm"
-              variant="outline"
-              className="rounded-full h-6 w-6 p-0 bg-muted hover:bg-muted/80 border-border relative shrink-0 ml-0.5"
-              title="Admin Dashboard"
-            >
-              <Settings className="h-3 w-3" />
-              {unreadCount > 0 && (
-                <Badge
-                  variant="destructive"
-                  className="absolute -top-1 -right-1 h-2.5 w-2.5 flex items-center justify-center p-0 rounded-full text-[7px]"
-                >
-                  {unreadCount > 9 ? '9+' : unreadCount}
-                </Badge>
-              )}
-            </Button>
-          )}
-        </div>
-
-        {/* RIGHT 2/3: Music Player */}
-        <div className="flex-[2] sm:basis-2/3 min-h-[36px]">
-          <MusicPlayer />
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
