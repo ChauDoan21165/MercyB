@@ -32,7 +32,7 @@ import EnvironmentBanner from "./components/admin/EnvironmentBanner";
 
 // Heavy components - lazy loaded
 const ChatHub = lazy(() => import("./pages/ChatHub"));
-const UnifiedHealthCheck = lazy(() => import("./pages/admin/UnifiedHealthCheck"));
+
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 const KidsChat = lazy(() => import("./pages/KidsChat"));
 
