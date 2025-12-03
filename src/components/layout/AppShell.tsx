@@ -5,6 +5,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { Link } from "react-router-dom";
 import { Map } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { MercyGuide } from "@/components/MercyGuide";
 
 interface AppShellProps {
   children: React.ReactNode;
@@ -77,6 +78,9 @@ export function AppShell({
 
       {/* Bottom bar - same 720px width, 2-row layout */}
       {bottomBar}
+      
+      {/* Mercy Guide assistant */}
+      <MercyGuide />
     </div>
   );
 }
