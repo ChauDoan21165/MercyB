@@ -918,10 +918,16 @@ const ChatHub = () => {
           
           {keywordMenu && keywordMenu.en && keywordMenu.vi && keywordMenu.en.length > 0 && (
             <div>
-              <div className="flex flex-wrap gap-2 justify-center">
+            <div className="flex flex-wrap gap-2 justify-center">
                 {keywordMenu.en.map((keywordEn, idx) => {
                   const keywordVi = keywordMenu.vi[idx] || '';
                   const isClicked = clickedKeyword === keywordEn || clickedKeyword === keywordVi;
+                  const entry = mergedEntries.find(e => 
+                    e.keywordEn === keywordEn || 
+                    (Array.isArray(e.keywords_en) && e.keywords_en.includes(keywordEn))
+                  );
+                  const audioFile = entry?.audio;
+                  
                   return (
                     <Button
                       key={`pair-${idx}`}
@@ -933,26 +939,37 @@ const ChatHub = () => {
                       }}
                       disabled={isLoading || !isAuthenticated}
                     >
+                      {/* Audio indicator dot - shows for admin */}
                       {isAdmin && (
                         <span
                           role="button"
                           onClick={(e) => {
                             e.stopPropagation();
-                            const entry = resolveEntryByKeyword(keywordEn);
-                            const audioFile = entry?.audio;
                             if (!audioFile) {
-                              toast({ title: "No audio", description: "This entry has no audio filename" });
+                              toast({ 
+                                title: "No audio configured", 
+                                description: `Entry "${keywordEn}" has no audio field`,
+                                variant: "destructive"
+                              });
                               return;
                             }
-                            // Automatically add /audio/ prefix if not already present
-                            const out = audioFile.startsWith('/audio/') 
-                              ? audioFile 
-                              : `/audio/${audioFile.replace(/^\//, '')}`;
+                            const out = `/audio/${audioFile.replace(/^\/?(audio\/)?/, '')}`;
                             navigator.clipboard.writeText(out);
-                            toast({ title: "Copied!", description: `Audio: ${out}` });
+                            toast({ 
+                              title: "Audio filename copied!", 
+                              description: out,
+                              duration: 3000
+                            });
                           }}
-                          className="inline-flex w-[1em] h-[1em] rounded-full bg-destructive hover:bg-destructive/90 mr-2 align-middle cursor-pointer"
-                          title="Copy audio filename"
+                          className={`inline-flex w-[0.75em] h-[0.75em] rounded-full mr-1.5 align-middle cursor-pointer transition-colors ${
+                            audioFile 
+                              ? 'bg-destructive hover:bg-destructive/80' 
+                              : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                          }`}
+                          title={audioFile 
+                            ? `Click to copy: ${audioFile}` 
+                            : 'No audio configured for this entry'
+                          }
                         />
                       )}
                       {keywordEn} / {keywordVi}
