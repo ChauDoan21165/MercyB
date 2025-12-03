@@ -15,7 +15,7 @@ const AUDIO_FOLDER = 'audio';
 
 /**
  * Build audio source URL from filename
- * Ensures consistent path format: /audio/{filename}
+ * Ensures consistent path format: /audio/{filename} or preserves /music/ paths
  */
 export function buildAudioSrc(filename: string | null | undefined): string | null {
   if (!filename) return null;
@@ -23,16 +23,18 @@ export function buildAudioSrc(filename: string | null | undefined): string | nul
   let clean = filename.trim();
   if (!clean) return null;
   
-  // Remove any leading slashes
+  // Remove any leading slashes for consistent handling
   clean = clean.replace(/^\/+/, '');
   
   // Remove "public/" prefix if present (should never be in runtime paths)
   clean = clean.replace(/^public\//, '');
   
-  // Remove redundant "audio/" prefix
-  clean = clean.replace(/^audio\//, '');
+  // If already has valid prefix (audio/, music/), just ensure leading slash
+  if (clean.startsWith('audio/') || clean.startsWith('music/')) {
+    return `/${clean}`;
+  }
   
-  // Return canonical path
+  // For bare filenames, prepend /audio/
   return `/${AUDIO_FOLDER}/${clean}`;
 }
 
@@ -112,8 +114,8 @@ export function isValidAudioUrl(url: string | null | undefined): boolean {
     return false;
   }
   
-  // Must start with /audio/ or be relative audio path
-  if (!clean.startsWith('/audio/') && !clean.includes('/audio/')) {
+  // Must start with /audio/ or /music/ (valid asset folders)
+  if (!clean.startsWith('/audio/') && !clean.startsWith('/music/')) {
     return false;
   }
   

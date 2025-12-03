@@ -15,7 +15,7 @@ import { PerformanceProfiler } from "@/lib/performance/profiler";
 import { LoadingSkeleton } from "@/components/ui/loading-skeleton";
 import { preloadCriticalRoutes } from "@/lib/performance";
 import { DevObservabilityPanel } from "@/components/dev/DevObservabilityPanel";
-import { GlobalHeader } from "@/components/layout/GlobalHeader";
+// GlobalHeader removed from global render - individual pages handle their own headers
 import { logger } from "@/lib/logger";
 
 // Critical pages - loaded immediately
@@ -200,8 +200,6 @@ const App = () => {
               <MusicPlayerProvider>
                 <BrowserRouter>
                   <EnvironmentBanner />
-                  
-                  <GlobalHeader />
                   
                   <PerformanceProfiler />
                   

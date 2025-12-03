@@ -67,16 +67,16 @@ export const AudioPlayer = ({
   const progressBarRef = useRef<HTMLDivElement>(null);
   const loadingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Normalize audio path to ensure /audio/ prefix
+  // Normalize audio path to ensure proper prefix
   const normalizeAudioPath = (path: string): string => {
     if (!path) return path;
     // Remove any leading slash for consistent handling
     const cleanPath = path.replace(/^\/+/, '');
-    // If it already has audio/ prefix, just ensure leading slash
-    if (cleanPath.startsWith('audio/')) {
+    // If it already has a valid path prefix (audio/, music/, etc.), just ensure leading slash
+    if (cleanPath.startsWith('audio/') || cleanPath.startsWith('music/')) {
       return `/${cleanPath}`;
     }
-    // Otherwise prepend /audio/
+    // For bare filenames, prepend /audio/
     return `/audio/${cleanPath}`;
   };
 
