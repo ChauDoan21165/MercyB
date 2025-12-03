@@ -1,0 +1,144 @@
+{
+  "firstImpression": {
+    "en": [
+      "Thank you for being here. Let us take this gently.",
+      "You are safe here. Take your time.",
+      "I am glad you are here. We can go slowly.",
+      "Just by opening this app, you have already done something for yourself.",
+      "You do not need to be perfect here. Just honest.",
+      "Whatever you are carrying today is welcome here.",
+      "You can rest your mind for a moment here.",
+      "You are not late. You arrived exactly when you could.",
+      "We will take small steps together.",
+      "You are not alone with your thoughts right now."
+    ],
+    "vi": [
+      "Cảm ơn bạn đã đến đây. Mình sẽ đi thật nhẹ nhàng cùng bạn.",
+      "Bạn an toàn ở đây. Cứ từ từ nhé.",
+      "Mình rất mừng vì bạn đã mở ứng dụng. Ta sẽ đi chậm thôi.",
+      "Chỉ cần mở ứng dụng này, bạn đã làm điều gì đó cho chính mình rồi.",
+      "Ở đây bạn không cần hoàn hảo, chỉ cần chân thật.",
+      "Bất cứ điều gì bạn mang theo hôm nay cũng được chào đón ở đây.",
+      "Bạn có thể để tâm trí nghỉ một chút ở nơi này.",
+      "Bạn không hề muộn. Bạn đến đúng lúc mà mình có thể.",
+      "Chúng ta sẽ đi cùng nhau từng bước nhỏ.",
+      "Ngay lúc này bạn không phải một mình với những suy nghĩ của mình nữa."
+    ]
+  },
+  "roomEntry": {
+    "en": [
+      "Welcome. This room is a calm place for you.",
+      "You made it here. Before you read, take one soft breath.",
+      "Let this room be a small pause in your day.",
+      "Whatever your mood is, it is allowed in this room.",
+      "You can read all of this or just one line. Both are okay.",
+      "If today feels heavy, let this room be a gentler corner.",
+      "Let us not rush. Just arrive here for a moment.",
+      "This room is here to sit beside you, not to judge you.",
+      "You can close your eyes for a moment before you start.",
+      "Think of this room as a quiet friend who listens first."
+    ],
+    "vi": [
+      "Chào bạn. Phòng này là một nơi yên cho bạn.",
+      "Bạn đã đến đây rồi. Trước khi đọc, hãy hít một hơi thật nhẹ.",
+      "Hãy để căn phòng này là một khoảng dừng nhỏ trong ngày của bạn.",
+      "Dù hôm nay tâm trạng bạn thế nào, nó đều được phép xuất hiện trong phòng này.",
+      "Bạn có thể đọc hết hoặc chỉ một câu. Cả hai đều được.",
+      "Nếu hôm nay thấy nặng, hãy coi phòng này là một góc hiền hơn.",
+      "Mình không vội. Chỉ cần bạn cho phép mình cùng hiện diện ở đây một chút.",
+      "Phòng này ở đây để ngồi cạnh bạn, không phải để phán xét bạn.",
+      "Bạn có thể nhắm mắt một lát trước khi bắt đầu.",
+      "Hãy coi phòng này như một người bạn trầm lặng, lắng nghe trước rồi mới nói."
+    ]
+  },
+  "audioStart": {
+    "en": [
+      "Press play and I will go through this with you.",
+      "If your eyes are tired, let your ears do the work.",
+      "You can just listen. You do not have to remember every word.",
+      "Let the words wash over you. You can come back later.",
+      "You can pause me anytime. I will still be here.",
+      "Today, listening is already enough."
+    ],
+    "vi": [
+      "Nhấn play, mình sẽ cùng bạn đi qua nội dung này.",
+      "Nếu mắt bạn mỏi, hãy để đôi tai giúp bạn.",
+      "Bạn chỉ cần lắng nghe, không cần nhớ hết từng chữ.",
+      "Cứ để lời trôi qua người bạn. Lúc khác quay lại cũng được.",
+      "Bạn có thể tạm dừng bất cứ lúc nào. Mình vẫn ở đây.",
+      "Chỉ cần lắng nghe hôm nay thôi cũng đã là đủ rồi."
+    ]
+  },
+  "afterAudio": {
+    "en": [
+      "You stayed with it. I am here.",
+      "Nice job. Take one gentle breath before you scroll.",
+      "You listened all the way. Let your mind stretch a little.",
+      "Notice how you feel now, even if it is only a tiny change.",
+      "You do not need to decide anything yet. Just sit with this.",
+      "Thank you for giving these words a home in your mind."
+    ],
+    "vi": [
+      "Bạn đã lắng nghe đến cuối. Mình ở đây.",
+      "Bạn làm tốt lắm. Hãy thở nhẹ một cái rồi hãy cuộn tiếp.",
+      "Bạn đã nghe tới cuối. Hãy cho tâm trí duỗi ra một chút.",
+      "Thử để ý xem bây giờ bạn thấy thế nào, dù chỉ là chút xíu.",
+      "Chưa cần quyết định điều gì vội. Cứ ngồi với cảm giác này đã.",
+      "Cảm ơn bạn đã cho những lời này một chỗ trú trong tâm trí."
+    ]
+  },
+  "reflectionIntro": {
+    "en": [
+      "What stayed in your heart after reading?",
+      "If you had to keep one sentence, which one would it be?",
+      "You do not need a long answer. Even one honest line is enough.",
+      "Write as if you are talking to a kind friend.",
+      "There is no right answer here, only your answer.",
+      "You can even write: I do not know yet. That is still real."
+    ],
+    "vi": [
+      "Điều gì đọng lại trong tim bạn sau khi đọc?",
+      "Nếu chỉ giữ một câu, bạn sẽ chọn câu nào?",
+      "Bạn không cần trả lời dài. Một dòng chân thật cũng đủ.",
+      "Hãy viết như đang kể với một người bạn hiền.",
+      "Không có câu trả lời đúng, chỉ có câu trả lời của bạn.",
+      "Bạn thậm chí có thể viết: Mình chưa biết. Vậy vẫn là thật."
+    ]
+  },
+  "reflectionThanks": {
+    "en": [
+      "Thank you for sharing that. That was honest.",
+      "You did not have to write that, but you did. I am glad.",
+      "What you wrote matters, even if no one else reads it.",
+      "You just turned a feeling into words. That is a brave act.",
+      "Your reflection does not need to be beautiful to be valuable.",
+      "I am proud of you for staying with yourself for this moment."
+    ],
+    "vi": [
+      "Cảm ơn bạn vì đã viết ra điều đó. Bạn thật chân thành.",
+      "Bạn không nhất thiết phải viết đâu, nhưng bạn đã làm. Mình rất quý.",
+      "Những gì bạn viết ra có ý nghĩa, dù không ai khác đọc.",
+      "Bạn vừa biến một cảm giác thành lời. Đó là một hành động can đảm.",
+      "Suy nghĩ của bạn không cần phải hay mới có giá trị.",
+      "Mình tự hào vì bạn đã ở lại với chính mình trong khoảnh khắc này."
+    ]
+  },
+  "returnAfterGap": {
+    "en": [
+      "Welcome back. Let us go slowly today.",
+      "Good to see you again. One small step is enough.",
+      "You did not lose your progress. You are just picking up the thread.",
+      "Breaks are part of the journey, not a failure.",
+      "You came back. That is more important than how long you were away.",
+      "Today we start from where you are, not from where you think you should be."
+    ],
+    "vi": [
+      "Chào mừng bạn quay lại. Hôm nay mình đi chậm thôi nhé.",
+      "Rất vui được gặp lại bạn. Chỉ cần một bước nhỏ là đủ.",
+      "Bạn không hề mất đi tiến bộ nào. Bạn chỉ đang nhặt lại sợi chỉ thôi.",
+      "Những lần tạm nghỉ là một phần của hành trình, không phải thất bại.",
+      "Điều quan trọng là bạn quay lại, không phải bạn đã vắng bao lâu.",
+      "Hôm nay mình bắt đầu từ chỗ bạn đang đứng, không phải chỗ bạn nghĩ mình phải đạt tới."
+    ]
+  }
+}
