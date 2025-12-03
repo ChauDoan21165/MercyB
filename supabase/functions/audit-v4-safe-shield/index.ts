@@ -1,9 +1,12 @@
+// supabase/functions/audit-v4-safe-shield/index.ts
+// deno-lint-ignore-file no-explicit-any
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.4";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type",
 };
 
 const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
@@ -20,7 +23,7 @@ type AuditIssue = {
   type: string;
   severity: "error" | "warning" | "info";
   message: string;
-  fix?: string | null;
+  fix?: string;
   autoFixable?: boolean;
 };
 
@@ -44,8 +47,20 @@ type AuditResponse = {
   error?: string;
   issues: AuditIssue[];
   fixesApplied: number;
+  fixed?: number; // V5/V6 compatibility
   logs: string[];
   summary: AuditSummary;
+};
+
+type DbRoom = {
+  id: string;
+  tier?: string | null;
+  schema_id?: string | null;
+  domain?: string | null;
+  title_en?: string | null;
+  title_vi?: string | null;
+  keywords?: string[] | null;
+  entries?: unknown;
 };
 
 async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
@@ -55,167 +70,174 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
 
   const log = (msg: string) => {
     logs.push(msg);
-    console.log(`[Audit] ${msg}`);
+    console.log(`[SafeShield] ${msg}`);
   };
 
-  log(`Starting Safe Shield Audit in ${mode} mode...`);
+  log(`Starting Safe Shield audit in ${mode} mode`);
 
-  // Phase 1: Load all rooms from database
+  // Phase 1 – load rooms from DB
   const { data: dbRooms, error: dbError } = await supabase
     .from("rooms")
-    .select("id, title_en, title_vi, tier, entries, schema_id, domain, keywords");
+    .select(
+      "id, tier, schema_id, domain, title_en, title_vi, keywords, entries",
+    );
 
   if (dbError) {
-    throw new Error(`Database error: ${dbError.message}`);
+    const message = dbError.message || String(dbError);
+    log(`Database error: ${message}`);
+    throw new Error(`Database error: ${message}`);
   }
 
-  const totalRooms = dbRooms?.length || 0;
-  log(`Found ${totalRooms} rooms in database`);
-
-  const seenIds = new Set<string>();
+  const rooms: DbRoom[] = (dbRooms ?? []) as DbRoom[];
+  const totalRooms = rooms.length;
   let scannedRooms = 0;
+  const seenIds = new Set<string>();
 
-  // Phase 2: Scan each room for issues
-  if (dbRooms) {
-    for (const room of dbRooms) {
-      const roomId = room.id;
-      scannedRooms++;
+  // Phase 2 – scan rooms, collect issues
+  for (const room of rooms) {
+    const roomId = room.id;
+    scannedRooms++;
 
-      // Check for duplicates
-      if (seenIds.has(roomId)) {
+    // Duplicate ID
+    if (seenIds.has(roomId)) {
+      issues.push({
+        id: `dup-${roomId}`,
+        file: `${roomId}.json`,
+        type: "duplicate_room",
+        severity: "error",
+        message: `Duplicate room id detected: ${roomId}`,
+        autoFixable: false,
+      });
+      continue;
+    }
+    seenIds.add(roomId);
+
+    // Missing tier
+    if (!room.tier) {
+      issues.push({
+        id: `tier-${roomId}`,
+        file: `${roomId}.json`,
+        type: "missing_tier",
+        severity: "warning",
+        message: `Missing tier for room: ${roomId}`,
+        fix: `Set tier to "Free / Miễn phí"`,
+        autoFixable: true,
+      });
+    }
+
+    // Missing EN/VI titles
+    if (!room.title_en || !room.title_vi) {
+      issues.push({
+        id: `title-${roomId}`,
+        file: `${roomId}.json`,
+        type: "missing_title",
+        severity: "warning",
+        message: `Missing bilingual title for room: ${roomId}`,
+        autoFixable: false,
+      });
+    }
+
+    // Missing schema_id
+    if (!room.schema_id) {
+      issues.push({
+        id: `schema-${roomId}`,
+        file: `${roomId}.json`,
+        type: "missing_schema",
+        severity: "info",
+        message: `Missing schema_id for room: ${roomId}`,
+        fix: `Set schema_id to "mercy-blade-v1"`,
+        autoFixable: true,
+      });
+    }
+
+    // Missing domain
+    if (!room.domain) {
+      issues.push({
+        id: `domain-${roomId}`,
+        file: `${roomId}.json`,
+        type: "missing_domain",
+        severity: "info",
+        message: `Missing domain for room: ${roomId}`,
+        fix: `Set domain based on tier`,
+        autoFixable: true,
+      });
+    }
+
+    // Missing keywords
+    if (!room.keywords || room.keywords.length === 0) {
+      issues.push({
+        id: `keywords-${roomId}`,
+        file: `${roomId}.json`,
+        type: "missing_keywords",
+        severity: "warning",
+        message: `Missing keywords for room: ${roomId}`,
+        fix: "Extract keywords from entries",
+        autoFixable: true,
+      });
+    }
+
+    // Entries & audio checks
+    const entries = Array.isArray(room.entries)
+      ? (room.entries as any[])
+      : [];
+
+    if (entries.length === 0) {
+      issues.push({
+        id: `entries-${roomId}`,
+        file: `${roomId}.json`,
+        type: "missing_entries",
+        severity: "error",
+        message: `Room has no entries: ${roomId}`,
+        autoFixable: false,
+      });
+      continue;
+    }
+
+    for (let index = 0; index < entries.length; index++) {
+      const entry = entries[index] as Record<string, any>;
+      const entryId =
+        (entry.slug as string | undefined) ||
+        (entry.artifact_id as string | undefined) ||
+        (entry.id as string | undefined) ||
+        `entry-${index}`;
+
+      // Missing identifier (slug/artifact_id/id)
+      if (!entry.slug && !entry.artifact_id && !entry.id) {
         issues.push({
-          id: `dup-${roomId}`,
+          id: `slug-${roomId}-${index}`,
           file: `${roomId}.json`,
-          type: "duplicate_room",
-          severity: "error",
-          message: `Duplicate room ID: ${roomId}`,
+          type: "missing_slug",
+          severity: "warning",
+          message: `Entry ${index} is missing identifier in room ${roomId}`,
           autoFixable: false,
         });
       }
-      seenIds.add(roomId);
 
-      // Check tier
-      if (!room.tier) {
+      // Missing audio
+      const audio: string | undefined =
+        entry.audio || entry.audio_en;
+
+      if (!audio) {
         issues.push({
-          id: `tier-${roomId}`,
+          id: `audio-${roomId}-${index}`,
           file: `${roomId}.json`,
-          type: "missing_tier",
+          type: "missing_audio",
           severity: "warning",
-          message: `Missing tier: ${roomId}`,
-          fix: `Set tier to "Free / Miễn phí"`,
+          message: `Entry "${entryId}" is missing audio in room ${roomId}`,
+          fix: "Generate TTS for this entry",
           autoFixable: true,
         });
-      }
-
-      // Check titles
-      if (!room.title_en || !room.title_vi) {
-        issues.push({
-          id: `title-${roomId}`,
-          file: `${roomId}.json`,
-          type: "missing_title",
-          severity: "warning",
-          message: `Missing bilingual title: ${roomId}`,
-          autoFixable: false,
-        });
-      }
-
-      // Check schema_id
-      if (!room.schema_id) {
-        issues.push({
-          id: `schema-${roomId}`,
-          file: `${roomId}.json`,
-          type: "missing_schema",
-          severity: "info",
-          message: `Missing schema_id: ${roomId}`,
-          fix: `Set schema_id to "mercy-blade-v1"`,
-          autoFixable: true,
-        });
-      }
-
-      // Check domain
-      if (!room.domain) {
-        issues.push({
-          id: `domain-${roomId}`,
-          file: `${roomId}.json`,
-          type: "missing_domain",
-          severity: "info",
-          message: `Missing domain: ${roomId}`,
-          fix: `Set domain based on tier`,
-          autoFixable: true,
-        });
-      }
-
-      // Check keywords
-      if (!room.keywords || (Array.isArray(room.keywords) && room.keywords.length === 0)) {
-        issues.push({
-          id: `keywords-${roomId}`,
-          file: `${roomId}.json`,
-          type: "missing_keywords",
-          severity: "warning",
-          message: `Missing keywords: ${roomId}`,
-          fix: `Extract keywords from entries`,
-          autoFixable: true,
-        });
-      }
-
-      // Check entries
-      const entries = Array.isArray(room.entries) ? room.entries : [];
-      if (entries.length === 0) {
-        issues.push({
-          id: `entries-${roomId}`,
-          file: `${roomId}.json`,
-          type: "missing_entries",
-          severity: "error",
-          message: `No entries: ${roomId}`,
-          autoFixable: false,
-        });
-        continue;
-      }
-
-      // Check each entry
-      for (let j = 0; j < entries.length; j++) {
-        const entry = entries[j] as Record<string, unknown>;
-        const entryId = entry.slug || entry.artifact_id || entry.id || `entry-${j}`;
-
-        // Check identifier
-        if (!entry.slug && !entry.artifact_id && !entry.id) {
-          issues.push({
-            id: `slug-${roomId}-${j}`,
-            file: `${roomId}.json`,
-            type: "missing_slug",
-            severity: "warning",
-            message: `Entry ${j} missing identifier in ${roomId}`,
-            fix: `Generate slug: ${roomId}_entry_${j}`,
-            autoFixable: true,
-          });
-        }
-
-        // Check audio
-        const audio = entry.audio || entry.audio_en;
-        if (!audio) {
-          issues.push({
-            id: `audio-${roomId}-${j}`,
-            file: `${roomId}.json`,
-            type: "missing_audio",
-            severity: "warning",
-            message: `Entry "${entryId}" missing audio in ${roomId}`,
-            fix: `Generate TTS for entry`,
-            autoFixable: true,
-          });
-        }
       }
     }
   }
 
-  log(`Scanned ${scannedRooms} rooms, found ${issues.length} issues`);
+  // Phase 3 – Safe repairs (only when mode === "repair")
+  if (mode === "repair" && rooms.length > 0) {
+    log("Starting Safe Shield repairs (DB only, no deletions)");
 
-  // Phase 3: Apply repairs if mode is "repair"
-  if (mode === "repair") {
-    log("Starting Safe Shield repairs...");
-
-    // Repair: Fix rooms with missing tier
-    const roomsWithMissingTier = dbRooms?.filter((r) => !r.tier) || [];
-    for (const room of roomsWithMissingTier) {
+    // 1) Default tier where missing
+    const roomsMissingTier = rooms.filter((r) => !r.tier);
+    for (const room of roomsMissingTier) {
       const { error } = await supabase
         .from("rooms")
         .update({ tier: "Free / Miễn phí" })
@@ -227,9 +249,9 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
       }
     }
 
-    // Repair: Fix rooms with missing schema_id
-    const roomsWithMissingSchema = dbRooms?.filter((r) => !r.schema_id) || [];
-    for (const room of roomsWithMissingSchema) {
+    // 2) Default schema_id where missing
+    const roomsMissingSchema = rooms.filter((r) => !r.schema_id);
+    for (const room of roomsMissingSchema) {
       const { error } = await supabase
         .from("rooms")
         .update({ schema_id: "mercy-blade-v1" })
@@ -241,15 +263,16 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
       }
     }
 
-    // Repair: Fix rooms with missing domain
-    const roomsWithMissingDomain = dbRooms?.filter((r) => !r.domain && r.tier) || [];
-    for (const room of roomsWithMissingDomain) {
+    // 3) Default domain inferred from tier
+    const roomsMissingDomain = rooms.filter((r) => !r.domain && r.tier);
+    for (const room of roomsMissingDomain) {
+      const tierLower = (room.tier || "").toLowerCase();
       let domain = "General";
-      const tier = room.tier?.toLowerCase() || "";
-      if (tier.includes("vip9")) domain = "Strategic Intelligence";
-      else if (tier.includes("vip")) domain = "VIP Learning";
-      else if (tier.includes("free")) domain = "English Foundation";
-      else if (tier.includes("kids")) domain = "Kids English";
+
+      if (tierLower.includes("vip9")) domain = "Strategic Intelligence";
+      else if (tierLower.includes("vip")) domain = "VIP Learning";
+      else if (tierLower.includes("free")) domain = "English Foundation";
+      else if (tierLower.includes("kids")) domain = "Kids English";
 
       const { error } = await supabase
         .from("rooms")
@@ -262,70 +285,48 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
       }
     }
 
-    // Repair: Extract keywords from entries for rooms missing keywords
-    const roomsWithMissingKeywords = dbRooms?.filter(
-      (r) => !r.keywords || (Array.isArray(r.keywords) && r.keywords.length === 0)
-    ) || [];
-    for (const room of roomsWithMissingKeywords) {
-      const entries = Array.isArray(room.entries) ? room.entries : [];
-      const keywords = new Set<string>();
-      
-      for (const entry of entries) {
-        const e = entry as Record<string, unknown>;
-        const kwEn = e.keywords_en as string[] | undefined;
-        const kwVi = e.keywords_vi as string[] | undefined;
-        if (Array.isArray(kwEn)) kwEn.forEach(k => keywords.add(k));
-        if (Array.isArray(kwVi)) kwVi.forEach(k => keywords.add(k));
+    // 4) Extract keywords from entries when keywords[] is empty
+    const roomsMissingKeywords = rooms.filter(
+      (r) => !r.keywords || r.keywords.length === 0,
+    );
+
+    for (const room of roomsMissingKeywords) {
+      const entries = Array.isArray(room.entries)
+        ? (room.entries as any[])
+        : [];
+      const keywordSet = new Set<string>();
+
+      for (const raw of entries) {
+        const entry = raw as Record<string, any>;
+        const kwEn = entry.keywords_en as string[] | undefined;
+        const kwVi = entry.keywords_vi as string[] | undefined;
+
+        if (Array.isArray(kwEn)) {
+          for (const k of kwEn) keywordSet.add(k);
+        }
+        if (Array.isArray(kwVi)) {
+          for (const k of kwVi) keywordSet.add(k);
+        }
       }
 
-      if (keywords.size > 0) {
+      if (keywordSet.size > 0) {
         const { error } = await supabase
           .from("rooms")
-          .update({ keywords: Array.from(keywords) })
+          .update({ keywords: Array.from(keywordSet) })
           .eq("id", room.id);
 
         if (!error) {
           fixesApplied++;
-          log(`Extracted ${keywords.size} keywords for room: ${room.id}`);
+          log(
+            `Extracted ${keywordSet.size} keywords for room: ${room.id}`,
+          );
         }
       }
     }
 
-    // Repair: Fix entries with missing slugs
-    log("Checking for entries with missing slugs...");
-    for (const room of dbRooms || []) {
-      const entries = Array.isArray(room.entries) ? room.entries : [];
-      let modified = false;
-      
-      const fixedEntries = entries.map((entry, idx) => {
-        const e = entry as Record<string, unknown>;
-        if (!e.slug && !e.artifact_id && !e.id) {
-          modified = true;
-          return { ...e, slug: `${room.id}_entry_${idx}` };
-        }
-        return e;
-      });
-
-      if (modified) {
-        const { error } = await supabase
-          .from("rooms")
-          .update({ entries: fixedEntries })
-          .eq("id", room.id);
-
-        if (!error) {
-          const fixedCount = fixedEntries.filter((e, i) => 
-            (e as Record<string, unknown>).slug === `${room.id}_entry_${i}`
-          ).length;
-          fixesApplied += fixedCount;
-          log(`Generated ${fixedCount} slugs for room: ${room.id}`);
-        }
-      }
-    }
-
-    log(`Safe Shield repairs complete. Fixed ${fixesApplied} issues.`);
+    log(`Safe Shield repairs complete: ${fixesApplied} fixes applied`);
   }
 
-  // Build summary
   const errors = issues.filter((i) => i.severity === "error").length;
   const warnings = issues.filter((i) => i.severity === "warning").length;
 
@@ -337,12 +338,14 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
     fixed: fixesApplied,
   };
 
-  log(`Summary: ${totalRooms} total, ${scannedRooms} scanned, ${errors} errors, ${warnings} warnings, ${fixesApplied} fixed`);
+  log(
+    `Summary: ${totalRooms} total, ${scannedRooms} scanned, ${errors} errors, ${warnings} warnings, ${fixesApplied} fixed`,
+  );
 
   return { issues, summary, fixesApplied, logs };
 }
 
-// HTTP HANDLER
+// HTTP handler – matches supabase.functions.invoke("audit-v4-safe-shield", { body: { mode } })
 serve(async (req: Request): Promise<Response> => {
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
@@ -350,7 +353,7 @@ serve(async (req: Request): Promise<Response> => {
 
   try {
     const contentType = req.headers.get("content-type") || "";
-    let body: Record<string, unknown> = {};
+    let body: any = {};
     if (contentType.includes("application/json")) {
       body = await req.json();
     }
@@ -362,6 +365,7 @@ serve(async (req: Request): Promise<Response> => {
       ok: true,
       issues: result.issues,
       fixesApplied: result.fixesApplied,
+      fixed: result.fixesApplied, // for V5/V6
       logs: result.logs,
       summary: result.summary,
     };
@@ -377,6 +381,7 @@ serve(async (req: Request): Promise<Response> => {
       error: err instanceof Error ? err.message : String(err),
       issues: [],
       fixesApplied: 0,
+      fixed: 0,
       logs: [],
       summary: {
         totalRooms: 0,
