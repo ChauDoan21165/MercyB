@@ -666,39 +666,43 @@ export default function CodeViewer() {
     }
   };
 
-  // No file specified or invalid file - redirect to default
+  // No file specified or invalid file - show file selector
   if (!filePath || !content) {
-    // Auto-redirect to the default file
-    if (!filePath) {
-      setSearchParams({ file: DEFAULT_FILE });
-    } else if (!content) {
-      // Show brief message then redirect
-      return (
-        <div className="min-h-screen bg-white p-8">
-          <h1 className="text-2xl font-bold text-black mb-4">Redirecting...</h1>
-          <p className="text-gray-600 mb-4">
-            File <code className="bg-gray-100 px-2 py-1 rounded">{rawFilePath}</code> not found.
-          </p>
-          <p className="text-gray-500 mb-6">Select a file:</p>
-          <div className="grid gap-2 mb-6">
+    return (
+      <div className="min-h-screen bg-white p-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center gap-3 mb-6">
+            <Button variant="outline" className="border-black" onClick={() => navigate("/admin/system-codes")}>
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back
+            </Button>
+            <h1 className="text-2xl font-bold text-black">Code Viewer</h1>
+          </div>
+          
+          {filePath && !content && (
+            <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+              <p className="text-red-800">
+                File <code className="bg-red-100 px-2 py-1 rounded font-mono">{rawFilePath}</code> not found in available files.
+              </p>
+            </div>
+          )}
+          
+          <h2 className="text-lg font-bold text-black mb-4">Select a file to view:</h2>
+          <div className="grid gap-3">
             {AVAILABLE_FILES.map(f => (
               <button 
                 key={f}
                 onClick={() => setSearchParams({ file: f })}
-                className="text-left p-3 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded font-mono text-sm"
+                className="text-left p-4 bg-gray-50 hover:bg-gray-100 border-2 border-gray-300 hover:border-black rounded-lg font-mono text-sm transition-colors"
               >
+                <FileCode className="h-4 w-4 inline mr-2 text-gray-600" />
                 {f}
               </button>
             ))}
           </div>
-          <Button variant="outline" className="border-black" onClick={() => navigate("/admin/system-codes")}>
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Back
-          </Button>
         </div>
-      );
-    }
-    return null;
+      </div>
+    );
   }
 
   // Show file with single Copy Code button
