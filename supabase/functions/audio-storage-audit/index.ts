@@ -63,11 +63,12 @@ async function listFolderRecursive(
 
       const fullPath = folderPath ? `${folderPath}/${obj.name}` : obj.name;
 
-      // Check if it's a folder (folders have id = null in Supabase storage)
-      if (obj.id === null) {
-        // It's a folder, recurse into it
+      // More robust folder detection: if it's not an mp3, treat as potential folder
+      // This is more future-proof than relying on obj.id === null
+      if (!obj.name.toLowerCase().endsWith('.mp3')) {
+        // Assume it's a folder and recurse into it
         await listFolderRecursive(supabase, fullPath, allFiles);
-      } else if (obj.name.toLowerCase().endsWith('.mp3')) {
+      } else {
         // It's an mp3 file - normalize to bare filename
         const normalized = normalizeAudioName(obj.name);
         if (normalized) {
