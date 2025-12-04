@@ -5,287 +5,104 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 import {
-  Shield,
-  Play,
-  Loader2,
-  CheckCircle,
-  AlertTriangle,
-  Search,
-  Wrench,
-  FileJson,
-  Music,
-  Database,
-  Filter,
-  RefreshCw,
-  Heart,
-  Stethoscope,
-  AlertOctagon,
-  Baby,
+  Shield, Play, Loader2, CheckCircle, AlertTriangle, Search, Wrench,
+  FileJson, Music, Database, Filter, Heart, Stethoscope, AlertOctagon,
+  Baby, Clock, FileAudio, Trash2, Terminal,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import type { AuditIssue, AuditResponse, AuditMode } from "@/lib/audit-v4-types";
+import type { AuditIssue, AuditResponse, AuditMode, AuditSummary, ISSUE_TYPE_LABELS } from "@/lib/audit-v4-types";
 import AuditCodeViewer from "./AuditCodeViewer";
 
-type FilterType = "all" | "errors" | "missing_audio" | "missing_json" | "missing_entries" | "crisis" | "medical" | "safety" | "essays" | "tts" | "keywords" | "deprecated";
+type FilterType = "all" | "errors" | "warnings" | "audio" | "intro_audio" | "orphan_audio" | "essays" | "keywords" | "tts" | "safety" | "deprecated";
 
 export default function AuditSafeShield() {
   const [isRunning, setIsRunning] = useState(false);
   const [isRepairing, setIsRepairing] = useState(false);
   const [issues, setIssues] = useState<AuditIssue[]>([]);
+  const [logs, setLogs] = useState<string[]>([]);
   const [progress, setProgress] = useState(0);
-  const [repairProgress, setRepairProgress] = useState(0);
-  const [currentTask, setCurrentTask] = useState("");
   const [filter, setFilter] = useState<FilterType>("all");
   const [search, setSearch] = useState("");
-  const [stats, setStats] = useState({
-    totalRooms: 0,
-    scanned: 0,
-    errors: 0,
-    warnings: 0,
-    fixed: 0,
-  });
-  const abortRef = useRef(false);
+  const [checkFiles, setCheckFiles] = useState(true);
+  const [roomIdPrefix, setRoomIdPrefix] = useState("");
+  const [summary, setSummary] = useState<AuditSummary | null>(null);
   const { toast } = useToast();
 
-  // Helper to check both camelCase and snake_case from backend
-  const isAutoFixable = (issue: AuditIssue) =>
-    (issue as any).autoFixable || (issue as any).auto_fixable;
+  const isAutoFixable = (issue: AuditIssue) => (issue as any).autoFixable || (issue as any).auto_fixable;
 
-  // Call backend audit endpoint
   const callAuditEndpoint = async (mode: AuditMode): Promise<AuditResponse | null> => {
     const { data, error } = await supabase.functions.invoke("audit-v4-safe-shield", {
-      body: { mode },
+      body: { mode, checkFiles, roomIdPrefix: roomIdPrefix || undefined },
     });
-
-    if (error) {
-      throw new Error(error.message || "Failed to call audit endpoint");
-    }
-
+    if (error) throw new Error(error.message || "Failed to call audit endpoint");
     return data as AuditResponse;
   };
 
   const runAudit = async () => {
     setIsRunning(true);
     setIssues([]);
-    setProgress(0);
-    setStats({ totalRooms: 0, scanned: 0, errors: 0, warnings: 0, fixed: 0 });
-    abortRef.current = false;
+    setLogs([]);
+    setSummary(null);
+    setProgress(10);
 
     try {
-      setCurrentTask("Running audit via backend...");
-      setProgress(20);
-
       const response = await callAuditEndpoint("dry-run");
-
-      if (!response?.ok) {
-        throw new Error(response?.error || "Audit failed");
-      }
-
-      setProgress(80);
-      setCurrentTask("Processing results...");
-
-      // Update state from backend response
-      setIssues(response.issues || []);
-      setStats({
-        totalRooms: response.summary.totalRooms,
-        scanned: response.summary.scannedRooms,
-        errors: response.summary.errors,
-        warnings: response.summary.warnings,
-        fixed: response.summary.fixed,
-      });
+      if (!response?.ok) throw new Error(response?.error || "Audit failed");
 
       setProgress(100);
-      setCurrentTask("Audit complete");
-
+      setIssues(response.issues || []);
+      setLogs(response.logs || []);
+      setSummary(response.summary);
     } catch (error) {
-      console.error("Audit error:", error);
-      toast({
-        title: "Audit Error",
-        description: error instanceof Error ? error.message : String(error),
-        variant: "destructive",
-      });
+      toast({ title: "Audit Error", description: error instanceof Error ? error.message : String(error), variant: "destructive" });
     } finally {
       setIsRunning(false);
     }
   };
 
-  const stopAudit = () => {
-    abortRef.current = true;
-    setIsRunning(false);
-    setCurrentTask("Audit stopped");
+  const handleAutoRepair = async () => {
+    if (issues.length === 0) {
+      toast({ title: "Run Audit First", description: "Please run an audit before repairs." });
+      return;
+    }
+    
+    setIsRepairing(true);
+    try {
+      const response = await callAuditEndpoint("repair");
+      if (!response?.ok) throw new Error(response?.error || "Repair failed");
+
+      toast({ title: "Repair Complete", description: `Fixed ${response.fixesApplied || 0} issues.` });
+      await runAudit();
+    } catch (error) {
+      toast({ title: "Repair Failed", description: error instanceof Error ? error.message : String(error), variant: "destructive" });
+    } finally {
+      setIsRepairing(false);
+    }
   };
 
-  // Filter issues
   const filteredIssues = issues.filter((issue) => {
-    // Search filter
-    if (search && !issue.file.toLowerCase().includes(search.toLowerCase()) &&
-        !issue.message.toLowerCase().includes(search.toLowerCase())) {
-      return false;
-    }
-
-    // Type filter
+    if (search && !issue.file.toLowerCase().includes(search.toLowerCase()) && !issue.message.toLowerCase().includes(search.toLowerCase())) return false;
     switch (filter) {
-      case "errors":
-        return issue.severity === "error";
-      case "missing_audio":
-        return issue.type === "missing_audio" || issue.type === "missing_audio_field" || issue.type === "missing_audio_file";
-      case "missing_json":
-        return issue.type === "missing_json" || issue.type === "missing_db";
-      case "missing_entries":
-        return issue.type === "missing_entries";
-      case "crisis":
-        return issue.type === "crisis_content" || issue.type === "kids_crisis_blocker";
-      case "medical":
-        return issue.type === "medical_claims";
-      case "safety":
-        return issue.type === "crisis_content" || issue.type === "kids_crisis_blocker" || 
-               issue.type === "medical_claims" || issue.type === "emergency_phrasing";
-      case "essays":
-        return issue.type === "missing_room_essay_en" || issue.type === "missing_room_essay_vi" ||
-               issue.type === "essay_placeholder_detected" || issue.type === "essay_too_short" || 
-               issue.type === "essay_too_long";
-      case "tts":
-        return issue.type === "tts_unstable_text" || issue.type === "tts_length_exceeded";
-      case "keywords":
-        return issue.type === "entry_keyword_missing_en" || issue.type === "entry_keyword_missing_vi" ||
-               issue.type === "entry_keyword_too_few" || issue.type === "entry_keyword_duplicate_across_room";
-      case "deprecated":
-        return issue.type === "deprecated_field_present";
-      default:
-        return true;
+      case "errors": return issue.severity === "error";
+      case "warnings": return issue.severity === "warning";
+      case "audio": return ["missing_audio", "missing_audio_field", "missing_audio_file"].includes(issue.type);
+      case "intro_audio": return ["missing_intro_audio_en", "missing_intro_audio_vi"].includes(issue.type);
+      case "orphan_audio": return issue.type === "orphan_audio_files";
+      case "essays": return ["missing_room_essay_en", "missing_room_essay_vi", "essay_placeholder_detected", "essay_too_short", "essay_too_long"].includes(issue.type);
+      case "keywords": return ["entry_keyword_missing_en", "entry_keyword_missing_vi", "entry_keyword_too_few", "entry_keyword_duplicate_across_room", "missing_room_keywords"].includes(issue.type);
+      case "tts": return ["tts_unstable_text", "tts_length_exceeded", "copy_placeholder_detected"].includes(issue.type);
+      case "safety": return ["crisis_content", "kids_crisis_blocker", "medical_claims", "emergency_phrasing"].includes(issue.type);
+      case "deprecated": return issue.type === "deprecated_field_present";
+      default: return true;
     }
   });
 
-  // Human-readable labels for issue types
-  const typeLabels: Record<string, string> = {
-    // Safety
-    crisis_content: "Crisis / self-harm content",
-    medical_claims: "Medical over-claiming",
-    emergency_phrasing: "Emergency phrasing",
-    kids_crisis_blocker: "Kids crisis blocker",
-    // Audio
-    missing_audio_field: "Missing audio field",
-    missing_audio_file: "Missing audio file",
-    missing_intro_audio_en: "Missing intro audio (EN)",
-    missing_intro_audio_vi: "Missing intro audio (VI)",
-    orphan_audio_files: "Orphan audio files",
-    // Essays
-    missing_room_essay_en: "Missing essay (EN)",
-    missing_room_essay_vi: "Missing essay (VI)",
-    essay_placeholder_detected: "Essay has placeholder",
-    essay_too_short: "Essay too short",
-    essay_too_long: "Essay too long",
-    // Keywords
-    entry_keyword_missing_en: "Missing keywords (EN)",
-    entry_keyword_missing_vi: "Missing keywords (VI)",
-    entry_keyword_too_few: "Too few keywords",
-    entry_keyword_duplicate_across_room: "Duplicate keyword",
-    // TTS
-    tts_unstable_text: "TTS-unsafe text",
-    tts_length_exceeded: "TTS length exceeded",
-    copy_placeholder_detected: "Copy has placeholder",
-    // Deprecated
-    deprecated_field_present: "Deprecated field",
-  };
-
-  // Count auto-fixable from ALL issues, not just filtered
   const autoFixableCount = issues.filter(isAutoFixable).length;
-
-  const handleAutoRepair = async () => {
-    console.log("[handleAutoRepair] Called. autoFixableCount:", autoFixableCount, "issues:", issues.length);
-    
-    if (issues.length === 0) {
-      toast({
-        title: "Run Audit First",
-        description: "Please run an audit before attempting repairs.",
-      });
-      return;
-    }
-    
-    if (autoFixableCount === 0) {
-      toast({
-        title: "Nothing to repair",
-        description: "No auto-fixable issues found in current scan.",
-      });
-      return;
-    }
-
-    setIsRepairing(true);
-    setRepairProgress(0);
-    setCurrentTask("Running Safe Shield repairs via backend...");
-
-    try {
-      setRepairProgress(20);
-      
-      // Call backend with repair mode
-      const response = await callAuditEndpoint("repair");
-
-      if (!response?.ok) {
-        throw new Error(response?.error || "Auto-repair failed");
-      }
-
-      setRepairProgress(80);
-      setCurrentTask("Processing repair results...");
-
-      // Log backend repair actions
-      if (response.logs && response.logs.length > 0) {
-        console.log("[Auto-Repair Logs]", response.logs);
-      }
-
-      setRepairProgress(100);
-      setCurrentTask("Repair complete");
-
-      // Update stats
-      setStats(prev => ({ ...prev, fixed: response.fixesApplied || 0 }));
-
-      toast({
-        title: "Auto-Repair Complete",
-        description: `Fixed ${response.fixesApplied || 0} issues. Safe mode: no deletions performed.`,
-      });
-
-      // Re-run audit to refresh the issues list
-      setIsRepairing(false);
-      await runAudit();
-
-    } catch (error) {
-      console.error("Auto-repair error:", error);
-      toast({
-        title: "Auto-Repair Failed",
-        description: error instanceof Error ? error.message : String(error),
-        variant: "destructive",
-      });
-    } finally {
-      setIsRepairing(false);
-      setCurrentTask("");
-    }
-  };
-
-  const severityColors = {
-    error: "bg-red-100 text-red-800 border-red-200",
-    warning: "bg-amber-100 text-amber-800 border-amber-200",
-    info: "bg-blue-100 text-blue-800 border-blue-200",
-  };
-
-  const typeIcons: Record<string, React.ReactNode> = {
-    missing_json: <FileJson className="h-4 w-4" />,
-    missing_audio: <Music className="h-4 w-4" />,
-    missing_audio_field: <Music className="h-4 w-4" />,
-    missing_audio_file: <Music className="h-4 w-4" />,
-    missing_db: <Database className="h-4 w-4" />,
-    missing_entries: <AlertTriangle className="h-4 w-4" />,
-    crisis_content: <Heart className="h-4 w-4" />,
-    medical_claims: <Stethoscope className="h-4 w-4" />,
-    emergency_phrasing: <AlertOctagon className="h-4 w-4" />,
-    kids_crisis_blocker: <Baby className="h-4 w-4" />,
-  };
-
-  // Count safety issues for badge
-  const safetyIssueCount = issues.filter(i => 
-    i.type === "crisis_content" || i.type === "kids_crisis_blocker" || 
-    i.type === "medical_claims" || i.type === "emergency_phrasing"
-  ).length;
+  const severityColors = { error: "bg-red-100 text-red-800", warning: "bg-amber-100 text-amber-800", info: "bg-blue-100 text-blue-800" };
 
   return (
     <div className="min-h-screen bg-white p-6">
@@ -295,183 +112,82 @@ export default function AuditSafeShield() {
           <div className="flex items-center gap-3">
             <Shield className="h-8 w-8 text-black" />
             <div>
-              <h1 className="text-2xl font-bold text-black">
-                Full System Sync Auditor
-              </h1>
-              <p className="text-gray-600 text-sm">
-                Safe Shield Edition — Cross-system sync check (GitHub, Database, Registry)
-              </p>
+              <h1 className="text-2xl font-bold text-black">Full System Sync Auditor</h1>
+              <p className="text-gray-600 text-sm">Safe Shield Edition v2 — Complete room & audio validation</p>
             </div>
           </div>
-
           <div className="flex gap-2">
-            {isRunning ? (
-              <Button onClick={stopAudit} variant="outline" className="border-black">
-                Stop
-              </Button>
-            ) : (
-              <Button
-                onClick={runAudit}
-                className="bg-black text-white hover:bg-gray-800"
-                disabled={isRepairing || isRunning}
-              >
-                {isRunning ? (
-                  <>
-                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                    Running...
-                  </>
-                ) : (
-                  <>
-                    <Play className="h-4 w-4 mr-2" />
-                    Run Audit
-                  </>
-                )}
-              </Button>
-            )}
-            <Button
-              onClick={handleAutoRepair}
-              variant="outline"
-              className="border-black"
-              disabled={isRepairing || isRunning}
-            >
-              {isRepairing ? (
-                <>
-                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                  Repairing...
-                </>
-              ) : (
-                <>
-                  <Wrench className="h-4 w-4 mr-2" />
-                  Fix Issues ({autoFixableCount})
-                </>
-              )}
+            <Button onClick={runAudit} className="bg-black text-white hover:bg-gray-800" disabled={isRepairing || isRunning}>
+              {isRunning ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" />Running...</> : <><Play className="h-4 w-4 mr-2" />Run Audit</>}
+            </Button>
+            <Button onClick={handleAutoRepair} variant="outline" className="border-black" disabled={isRepairing || isRunning || autoFixableCount === 0}>
+              {isRepairing ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" />Repairing...</> : <><Wrench className="h-4 w-4 mr-2" />Fix ({autoFixableCount})</>}
             </Button>
           </div>
         </div>
 
+        {/* Options */}
+        <Card className="border border-gray-200">
+          <CardContent className="py-4 flex flex-wrap gap-6 items-center">
+            <div className="flex items-center gap-2">
+              <Switch id="checkFiles" checked={checkFiles} onCheckedChange={setCheckFiles} />
+              <Label htmlFor="checkFiles" className="text-sm">Deep audio file check</Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <Label className="text-sm">Room prefix:</Label>
+              <Input placeholder="e.g. english_foundation_" value={roomIdPrefix} onChange={(e) => setRoomIdPrefix(e.target.value)} className="w-48 h-8 text-sm" />
+            </div>
+            {summary?.durationMs && <Badge variant="outline" className="flex items-center gap-1"><Clock className="h-3 w-3" />{summary.durationMs}ms</Badge>}
+          </CardContent>
+        </Card>
+
         {/* Progress */}
-        {isRunning && (
-          <Card className="border border-black">
-            <CardContent className="py-4 space-y-3">
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-black font-medium">{currentTask}</span>
-                <span className="text-gray-500">{stats.scanned} / {stats.totalRooms}</span>
-              </div>
-              <Progress value={progress} className="h-2" />
-            </CardContent>
-          </Card>
+        {isRunning && <Card className="border border-black"><CardContent className="py-4"><Progress value={progress} className="h-2" /></CardContent></Card>}
+
+        {/* Summary Stats */}
+        {summary && (
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-3">
+            <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold">{summary.totalRooms}</div><div className="text-xs text-gray-500">Rooms</div></CardContent></Card>
+            <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold text-red-600">{summary.errors}</div><div className="text-xs text-gray-500">Errors</div></CardContent></Card>
+            <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold text-amber-600">{summary.warnings}</div><div className="text-xs text-gray-500">Warnings</div></CardContent></Card>
+            <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold text-green-600">{summary.fixed}</div><div className="text-xs text-gray-500">Fixed</div></CardContent></Card>
+            <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold">{summary.audioCoveragePercent}%</div><div className="text-xs text-gray-500">Audio Coverage</div></CardContent></Card>
+            <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold text-purple-600">{summary.orphanAudioFiles}</div><div className="text-xs text-gray-500">Orphan Audio</div></CardContent></Card>
+          </div>
         )}
 
-        {/* Repair Progress */}
-        {isRepairing && (
-          <Card className="border border-green-500 bg-green-50">
-            <CardContent className="py-4 space-y-3">
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-green-800 font-medium flex items-center gap-2">
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                  {currentTask || "Repairing..."}
-                </span>
-                <span className="text-green-600">{repairProgress}%</span>
-              </div>
-              <Progress value={repairProgress} className="h-2 bg-green-200" />
-            </CardContent>
-          </Card>
+        {/* Audio & Intro Stats */}
+        {summary && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Card className="border"><CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><Music className="h-4 w-4" />Entry Audio</CardTitle></CardHeader>
+              <CardContent className="text-sm space-y-1">
+                <div className="flex justify-between"><span>Total slots:</span><span className="font-mono">{summary.totalAudioSlots}</span></div>
+                <div className="flex justify-between"><span>Present:</span><span className="font-mono text-green-600">{summary.totalAudioPresent}</span></div>
+                <div className="flex justify-between"><span>Missing:</span><span className="font-mono text-red-600">{summary.totalAudioMissing}</span></div>
+              </CardContent>
+            </Card>
+            <Card className="border"><CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><FileAudio className="h-4 w-4" />Intro Audio</CardTitle></CardHeader>
+              <CardContent className="text-sm space-y-1">
+                <div className="flex justify-between"><span>With EN intro:</span><span className="font-mono">{summary.roomsWithIntroEn}</span></div>
+                <div className="flex justify-between"><span>With VI intro:</span><span className="font-mono">{summary.roomsWithIntroVi}</span></div>
+                <div className="flex justify-between"><span>Missing EN:</span><span className="font-mono text-amber-600">{summary.roomsMissingIntroEn}</span></div>
+                <div className="flex justify-between"><span>Missing VI:</span><span className="font-mono text-amber-600">{summary.roomsMissingIntroVi}</span></div>
+              </CardContent>
+            </Card>
+          </div>
         )}
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-          <Card className="border border-gray-200">
-            <CardContent className="py-4 text-center">
-              <div className="text-2xl font-bold text-black">{stats.totalRooms}</div>
-              <div className="text-xs text-gray-500">Total Rooms</div>
-            </CardContent>
-          </Card>
-          <Card className="border border-gray-200">
-            <CardContent className="py-4 text-center">
-              <div className="text-2xl font-bold text-black">{stats.scanned}</div>
-              <div className="text-xs text-gray-500">Scanned</div>
-            </CardContent>
-          </Card>
-          <Card className="border border-gray-200">
-            <CardContent className="py-4 text-center">
-              <div className="text-2xl font-bold text-red-600">{stats.errors}</div>
-              <div className="text-xs text-gray-500">Errors</div>
-            </CardContent>
-          </Card>
-          <Card className="border border-gray-200">
-            <CardContent className="py-4 text-center">
-              <div className="text-2xl font-bold text-amber-600">{stats.warnings}</div>
-              <div className="text-xs text-gray-500">Warnings</div>
-            </CardContent>
-          </Card>
-          <Card className="border border-gray-200">
-            <CardContent className="py-4 text-center">
-              <div className="text-2xl font-bold text-green-600">{stats.fixed}</div>
-              <div className="text-xs text-gray-500">Fixed</div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Filters & Search */}
+        {/* Filters */}
         <div className="flex flex-col md:flex-row gap-4">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
-            <Input
-              placeholder="Search rooms or issues..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="pl-10 border-gray-300"
-            />
+            <Input placeholder="Search..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-10" />
           </div>
-          <div className="flex gap-2 flex-wrap">
-            {[
-              { key: "all", label: "All" },
-              { key: "errors", label: "Errors" },
-              { key: "missing_audio", label: "Audio" },
-              { key: "essays", label: "Essays" },
-              { key: "keywords", label: "Keywords" },
-              { key: "tts", label: "TTS" },
-              { key: "safety", label: "⚠️ Safety" },
-              { key: "deprecated", label: "Deprecated" },
-            ].map(({ key, label }) => (
-              <Button
-                key={key}
-                variant={filter === key ? "default" : "outline"}
-                size="sm"
-                onClick={() => setFilter(key as FilterType)}
-                className={
-                  filter === key 
-                    ? key === "safety" 
-                      ? "bg-red-600 text-white" 
-                      : "bg-black text-white" 
-                    : key === "safety"
-                      ? "border-red-300 text-red-700 hover:bg-red-50"
-                      : "border-gray-300"
-                }
-              >
-                {label}
-                {key !== "all" && (
-                  <Badge 
-                    variant="secondary" 
-                    className={`ml-1 text-xs ${
-                      key === "safety" && issues.filter((i) => 
-                        i.type === "crisis_content" || i.type === "kids_crisis_blocker" || 
-                        i.type === "medical_claims" || i.type === "emergency_phrasing"
-                      ).length > 0 ? "bg-red-100 text-red-700" : ""
-                    }`}
-                  >
-                    {issues.filter((i) => {
-                      if (key === "errors") return i.severity === "error";
-                      if (key === "missing_audio") return i.type === "missing_audio" || i.type === "missing_audio_field" || i.type === "missing_audio_file" || i.type === "missing_intro_audio_en" || i.type === "missing_intro_audio_vi";
-                      if (key === "essays") return i.type === "missing_room_essay_en" || i.type === "missing_room_essay_vi" || i.type === "essay_placeholder_detected" || i.type === "essay_too_short" || i.type === "essay_too_long";
-                      if (key === "keywords") return i.type === "entry_keyword_missing_en" || i.type === "entry_keyword_missing_vi" || i.type === "entry_keyword_too_few" || i.type === "entry_keyword_duplicate_across_room";
-                      if (key === "tts") return i.type === "tts_unstable_text" || i.type === "tts_length_exceeded" || i.type === "copy_placeholder_detected";
-                      if (key === "safety") return i.type === "crisis_content" || i.type === "kids_crisis_blocker" || i.type === "medical_claims" || i.type === "emergency_phrasing";
-                      if (key === "deprecated") return i.type === "deprecated_field_present";
-                      return false;
-                    }).length}
-                  </Badge>
-                )}
+          <div className="flex gap-1 flex-wrap">
+            {(["all", "errors", "warnings", "audio", "intro_audio", "orphan_audio", "safety", "essays", "tts", "deprecated"] as FilterType[]).map((key) => (
+              <Button key={key} variant={filter === key ? "default" : "outline"} size="sm" onClick={() => setFilter(key)}
+                className={filter === key ? (key === "safety" ? "bg-red-600" : "bg-black") + " text-white" : "border-gray-300"}>
+                {key.replace(/_/g, " ")}
               </Button>
             ))}
           </div>
@@ -479,67 +195,26 @@ export default function AuditSafeShield() {
 
         {/* Issues List */}
         <Card className="border border-black">
-          <CardHeader className="pb-2 border-b">
-            <CardTitle className="text-black flex items-center gap-2">
-              <Filter className="h-5 w-5" />
-              Issues ({filteredIssues.length})
-            </CardTitle>
-          </CardHeader>
+          <CardHeader className="pb-2 border-b"><CardTitle className="flex items-center gap-2"><Filter className="h-5 w-5" />Issues ({filteredIssues.length})</CardTitle></CardHeader>
           <CardContent className="p-0">
             {filteredIssues.length === 0 ? (
-              <div className="py-12 text-center text-gray-500">
-                {issues.length === 0 ? (
-                  <>
-                    <CheckCircle className="h-12 w-12 mx-auto mb-3 text-gray-300" />
-                    <p>Run the audit to check for issues</p>
-                  </>
-                ) : (
-                  <>
-                    <CheckCircle className="h-12 w-12 mx-auto mb-3 text-green-500" />
-                    <p>No issues match the current filter</p>
-                  </>
-                )}
-              </div>
+              <div className="py-12 text-center text-gray-500"><CheckCircle className="h-12 w-12 mx-auto mb-3 text-green-500" /><p>{issues.length === 0 ? "Run audit to check" : "No matching issues"}</p></div>
             ) : (
-              <ScrollArea className="h-[500px]">
-                <div className="divide-y divide-gray-100">
+              <ScrollArea className="h-[400px]">
+                <div className="divide-y">
                   {filteredIssues.map((issue) => (
-                    <div
-                      key={issue.id}
-                      className="p-3 hover:bg-gray-50 flex items-start gap-3"
-                    >
-                      <div className={`p-1.5 rounded ${severityColors[issue.severity]}`}>
-                        {typeIcons[issue.type] || <AlertTriangle className="h-4 w-4" />}
-                      </div>
+                    <div key={issue.id} className="p-3 hover:bg-gray-50 flex items-start gap-3">
+                      <div className={`p-1.5 rounded ${severityColors[issue.severity]}`}><AlertTriangle className="h-4 w-4" /></div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <code className="text-xs font-mono bg-gray-100 px-1.5 py-0.5 rounded text-black">
-                            {issue.file}
-                          </code>
-                          <Badge
-                            variant="outline"
-                            className={`text-xs ${
-                              issue.severity === "error"
-                                ? "border-red-300 text-red-700"
-                                : issue.severity === "warning"
-                                ? "border-amber-300 text-amber-700"
-                                : "border-blue-300 text-blue-700"
-                            }`}
-                          >
-                            {typeLabels[issue.type] || issue.type.replace(/_/g, " ")}
+                          <code className="text-xs font-mono bg-gray-100 px-1.5 py-0.5 rounded">{issue.file}</code>
+                          <Badge variant="outline" className={`text-xs ${issue.severity === "error" ? "border-red-300 text-red-700" : issue.severity === "warning" ? "border-amber-300 text-amber-700" : "border-blue-300 text-blue-700"}`}>
+                            {issue.type.replace(/_/g, " ")}
                           </Badge>
-                          {isAutoFixable(issue) && (
-                            <Badge className="bg-green-100 text-green-700 text-xs">
-                              Auto-fixable
-                            </Badge>
-                          )}
+                          {isAutoFixable(issue) && <Badge className="bg-green-100 text-green-700 text-xs">Auto-fixable</Badge>}
                         </div>
                         <p className="text-sm text-gray-700 mt-1">{issue.message}</p>
-                        {issue.fix && (
-                          <p className="text-xs text-gray-500 mt-1">
-                            Fix: {issue.fix}
-                          </p>
-                        )}
+                        {issue.fix && <p className="text-xs text-gray-500 mt-1">Fix: {issue.fix}</p>}
                       </div>
                     </div>
                   ))}
@@ -549,18 +224,19 @@ export default function AuditSafeShield() {
           </CardContent>
         </Card>
 
+        {/* Logs */}
+        {logs.length > 0 && (
+          <Card className="border"><CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><Terminal className="h-4 w-4" />Logs</CardTitle></CardHeader>
+            <CardContent><ScrollArea className="h-32 bg-gray-900 rounded p-3"><pre className="text-xs text-green-400 font-mono">{logs.join("\n")}</pre></ScrollArea></CardContent>
+          </Card>
+        )}
+
         {/* Safe Mode Notice */}
-        <div className="p-4 bg-gray-100 border border-gray-300 rounded text-center">
-          <p className="text-black font-medium flex items-center justify-center gap-2">
-            <Shield className="h-4 w-4" />
-            SAFE MODE ACTIVE
-          </p>
-          <p className="text-gray-600 text-sm mt-1">
-            Auto-repair only adds missing items. No destructive actions (deletions) will be performed.
-          </p>
+        <div className="p-4 bg-gray-100 border rounded text-center">
+          <p className="text-black font-medium flex items-center justify-center gap-2"><Shield className="h-4 w-4" />SAFE MODE ACTIVE</p>
+          <p className="text-gray-600 text-sm mt-1">Auto-repair only fixes metadata. No deletions performed.</p>
         </div>
 
-        {/* Code Viewer Table */}
         <AuditCodeViewer />
       </div>
     </div>
