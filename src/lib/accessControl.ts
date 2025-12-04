@@ -6,7 +6,7 @@
  * All access checks in the app should use these functions.
  */
 
-import { type TierId, isKidsTier, TIER_ORDER } from '@/lib/constants/tiers';
+import { type TierId, isKidsTier, TIER_ORDER, KIDS_TIER_IDS } from '@/lib/constants/tiers';
 
 /**
  * Tier hierarchy (higher tiers include access to all lower tiers)
