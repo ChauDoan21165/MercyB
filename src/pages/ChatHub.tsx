@@ -43,7 +43,7 @@ import { buildAudioSrc } from "@/lib/audioHelpers";
 import { ProfileAvatarUpload } from "@/components/ProfileAvatarUpload";
 import { getTierRoute } from "@/lib/tierRoutes";
 import { PrimaryHero } from "@/components/layout/PrimaryHero";
-import heroRainbowBg from '@/assets/hero-rainbow-bg.png';
+import heroRainbowBg from '@/assets/hero-rainbow-clean.png';
 import { useFavoriteRooms } from "@/hooks/useFavoriteRooms";
 import { useRecentRooms } from "@/hooks/useRecentRooms";
 import { useRoomAudioPreload } from "@/hooks/useRoomAudioPreload";

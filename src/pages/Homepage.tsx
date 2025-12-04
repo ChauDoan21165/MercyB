@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { RoomSearch } from '@/components/RoomSearch';
 import { CalmMindWidget } from '@/components/paths/CalmMindWidget';
-import heroRainbowBg from '@/assets/hero-rainbow-bg.jpg';
+import heroRainbowBg from '@/assets/hero-rainbow-clean.png';
 import { PrimaryHero } from '@/components/layout/PrimaryHero';
 import { CompanionBubble, MercyToggle } from '@/components/companion';
 import { MercyDockIcon } from '@/components/companion/MercyDockIcon';
