@@ -8,8 +8,8 @@
  * Run: node scripts/generate-audio-manifest.js
  */
 
-import fs from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
 
 const AUDIO_DIR = 'public/audio';
 const OUTPUT_FILE = 'public/audio/manifest.json';

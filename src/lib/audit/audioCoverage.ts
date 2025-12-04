@@ -86,50 +86,55 @@ function extractAudioFromEntry(entry: any): { en: string[]; vi: string[] } {
 }
 
 /**
+ * Audio Manifest type from scripts/generate-audio-manifest.js
+ */
+interface AudioManifest {
+  generated: string;
+  totalFiles: number;
+  files: string[];
+}
+
+/**
  * Fetch audio files from the manifest (static files in public/audio/)
  * 
  * ARCHITECTURE NOTE:
  * Audio files are stored in public/audio/ as static files served by Vite,
  * NOT in Supabase storage. The manifest.json is generated at build time
  * by scripts/generate-audio-manifest.js
+ * 
+ * Run: node scripts/generate-audio-manifest.js
  */
-async function fetchStorageFiles(): Promise<Set<string>> {
+async function fetchManifestFiles(): Promise<Set<string>> {
   try {
-    // First try to fetch from the static manifest file
-    const manifestResponse = await fetch('/audio/manifest.json');
+    const res = await fetch('/audio/manifest.json', { cache: 'no-store' });
     
-    if (manifestResponse.ok) {
-      const manifest = await manifestResponse.json();
-      const rawFiles: string[] = manifest.files || [];
-      
-      // Normalize filenames (get just the filename part, lowercase)
-      const normalized = rawFiles
-        .map((name: string) => normalizeAudioName(name))
-        .filter((n: string) => n.endsWith(".mp3") && n.length > 0);
-      
-      console.log(`Loaded ${normalized.length} files from audio manifest`);
-      return new Set(normalized);
-    }
-    
-    // Fallback: try the edge function (for Supabase storage bucket)
-    console.warn("Manifest not found, falling back to edge function...");
-    const { data, error } = await supabase.functions.invoke("audio-storage-audit", {
-      body: {},
-    });
-    
-    if (error || !data?.ok) {
-      console.error("Failed to fetch storage files:", error || data?.error);
+    if (!res.ok) {
+      console.error('Failed to load audio manifest:', res.status, res.statusText);
       return new Set();
     }
     
-    const rawFiles: string[] = data.storageFiles || [];
-    const normalized = rawFiles
-      .map((name: string) => normalizeAudioName(name))
-      .filter((n: string) => n.endsWith(".mp3") && n.length > 0);
-
+    // Check content type to avoid parsing HTML as JSON
+    const contentType = res.headers.get('content-type') || '';
+    if (!contentType.includes('application/json')) {
+      console.error('Audio manifest not found (got HTML instead of JSON). Run: node scripts/generate-audio-manifest.js');
+      return new Set();
+    }
+    
+    const manifest = await res.json() as AudioManifest;
+    
+    if (!Array.isArray(manifest.files)) {
+      console.error('Invalid manifest format:', manifest);
+      return new Set();
+    }
+    
+    const normalized = manifest.files
+      .map((name) => normalizeAudioName(name))
+      .filter((n) => n.endsWith('.mp3') && n.length > 0);
+    
+    console.log(`Loaded ${normalized.length} files from /audio/manifest.json (generated: ${manifest.generated})`);
     return new Set(normalized);
   } catch (err) {
-    console.error("Error fetching storage files:", err);
+    console.error('Error fetching audio manifest:', err);
     return new Set();
   }
 }
@@ -138,9 +143,9 @@ async function fetchStorageFiles(): Promise<Set<string>> {
  * Get audio coverage for all rooms
  */
 export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
-  // Fetch storage files first
-  const storageFilesSet = await fetchStorageFiles();
-  console.log(`Loaded ${storageFilesSet.size} storage files`);
+  // Fetch audio files from manifest (static files in public/audio/)
+  const storageFilesSet = await fetchManifestFiles();
+  console.log(`Loaded ${storageFilesSet.size} files from /audio/manifest.json`);
 
   // Fetch all rooms
   const { data: rooms, error } = await supabase
