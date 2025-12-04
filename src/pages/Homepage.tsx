@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { RoomSearch } from '@/components/RoomSearch';
 import { CalmMindWidget } from '@/components/paths/CalmMindWidget';
 import heroRainbowBg from '@/assets/hero-rainbow-bg.jpg';
+import { PrimaryHero } from '@/components/layout/PrimaryHero';
 import { CompanionBubble, MercyToggle } from '@/components/companion';
 import { MercyDockIcon } from '@/components/companion/MercyDockIcon';
 import { useHomeCompanion } from '@/hooks/useHomeCompanion';
@@ -97,25 +98,11 @@ const Homepage = () => {
       />
 
       {/* Hero Section with Rainbow Background - Mobile responsive */}
-      <section 
-        className="relative w-full min-h-[45vh] sm:min-h-[55vh] md:min-h-[70vh] bg-cover bg-center flex flex-col items-center justify-center px-4 sm:px-6 md:px-8"
-        style={{ 
-          backgroundImage: `url(${heroRainbowBg})`,
-          backgroundPosition: 'center 30%'
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/20"></div>
-        
-        {/* Hero Title - Responsive, never cut off */}
-        <div className="relative z-10 max-w-[720px] mx-auto text-center px-4">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg leading-tight">
-            English & Knowledge
-          </h1>
-          <p className="text-xl sm:text-2xl md:text-3xl text-white/90 mt-2 sm:mt-3 drop-shadow-md font-medium">
-            Colors of Life
-          </p>
-        </div>
-      </section>
+      <PrimaryHero
+        title="English & Knowledge"
+        subtitle="Colors of Life"
+        background={heroRainbowBg}
+      />
 
       {/* Search box - top right corner */}
       <div className="fixed top-28 right-6 z-30 w-80">
