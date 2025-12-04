@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+// Import bundled config directly - this will always work
+import bundledConfig from '@/data/homepage-config.json';
 
 interface HomepageSection {
   id: string;
@@ -31,19 +33,6 @@ interface HomepageConfig {
   sections: HomepageSection[];
 }
 
-// Default fallback config when JSON fails to load
-const DEFAULT_CONFIG: HomepageConfig = {
-  id: "homepage_fallback",
-  name: "Mercy Blade Homepage",
-  name_vi: "Trang Chủ Mercy Blade",
-  layout: {
-    mobile_first: true,
-    section_spacing: "medium",
-    max_width: "640px"
-  },
-  sections: []
-};
-
 export const useHomepageConfig = () => {
   const [config, setConfig] = useState<HomepageConfig | null>(null);
   const [loading, setLoading] = useState(true);
@@ -58,37 +47,29 @@ export const useHomepageConfig = () => {
           localStorage.removeItem('pinnedHomepageConfig');
         }
 
-        // Always prefer fresh JSON; fallback to pinned if fetch fails
+        // Try to fetch fresh config, but use bundled as fallback
         try {
           const response = await fetch(`/data/Mercy_Blade_home_page.json?t=${Date.now()}`, { 
             cache: 'no-store',
             headers: { 'Accept': 'application/json' }
           });
           if (!response.ok) {
-            throw new Error(`Failed to load homepage config: ${response.status}`);
+            throw new Error(`HTTP ${response.status}`);
           }
-          const contentType = response.headers.get('content-type');
-          if (contentType && !contentType.includes('application/json')) {
-            throw new Error('Response is not JSON');
+          const text = await response.text();
+          if (text.startsWith('<!') || text.startsWith('<html')) {
+            throw new Error('Response is HTML');
           }
-          const data = await response.json();
+          const data = JSON.parse(text);
           setConfig(data);
         } catch (fetchErr) {
-          console.warn('Failed to fetch homepage config:', fetchErr);
-          // Try pinned config
-          const pinned = localStorage.getItem('pinnedHomepageConfig');
-          if (pinned) {
-            console.warn('Using pinned homepage config');
-            setConfig(JSON.parse(pinned));
-          } else {
-            // Use default fallback
-            console.warn('Using default homepage config');
-            setConfig(DEFAULT_CONFIG);
-          }
+          console.warn('Using bundled homepage config:', fetchErr);
+          // Use bundled config - this will always work
+          setConfig(bundledConfig as HomepageConfig);
         }
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Unknown error');
-        setConfig(DEFAULT_CONFIG);
+        setConfig(bundledConfig as HomepageConfig);
       } finally {
         setLoading(false);
       }
