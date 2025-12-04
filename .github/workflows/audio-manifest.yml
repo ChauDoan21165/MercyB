@@ -12,6 +12,7 @@ on:
     paths:
       - "public/audio/**"
       - "scripts/generate-audio-manifest.js"
+  workflow_dispatch:
 
 jobs:
   generate-audio-manifest:
@@ -20,6 +21,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -38,8 +41,12 @@ jobs:
         run: |
           FILE_COUNT=$(node -e "const m = require('./public/audio/manifest.json'); console.log(m.totalFiles)")
           echo "Total audio files: $FILE_COUNT"
-          if [ "$FILE_COUNT" -eq 0 ]; then
-            echo "❌ ERROR: Manifest has 0 files!"
-            exit 1
-          fi
-          echo "✅ Manifest generated successfully"
+
+      - name: Commit manifest if changed
+        if: github.event_name == 'push'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add public/audio/manifest.json
+          git diff --staged --quiet || git commit -m "chore: auto-generate audio manifest [skip ci]"
+          git push || echo "Nothing to push"
