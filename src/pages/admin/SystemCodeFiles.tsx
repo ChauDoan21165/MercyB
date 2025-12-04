@@ -300,15 +300,12 @@ ${category.files.map((f, i) => `${i + 1}. ${f.path}
                       {category.files.map((file, index) => (
                         <div
                           key={file.path}
-                          className={`flex items-center justify-between p-3 rounded border cursor-pointer transition-colors ${
+                          className={`flex items-center justify-between p-3 rounded border transition-colors ${
                             copiedPath === file.path 
                               ? "bg-green-50 border-green-300" 
                               : "bg-gray-50 border-gray-200 hover:bg-gray-100"
                           }`}
-                          onClick={() => copyPath(file.path)}
-                          role="button"
-                          tabIndex={0}
-                          onKeyDown={(e) => e.key === "Enter" && copyPath(file.path)}
+                          role="listitem"
                         >
                           <div className="flex items-center gap-3 flex-1 min-w-0">
                             <span className="text-xs text-gray-400 w-6">{index + 1}.</span>
@@ -318,7 +315,7 @@ ${category.files.map((f, i) => `${i + 1}. ${f.path}
                               <FileCode className="h-4 w-4 text-black flex-shrink-0" />
                             )}
                             <div className="min-w-0">
-                              <code className="text-sm font-mono text-black block truncate">
+                              <code className="text-sm font-mono text-black block truncate select-all">
                                 {file.path}
                               </code>
                               <span className="text-xs text-gray-500">
@@ -326,13 +323,28 @@ ${category.files.map((f, i) => `${i + 1}. ${f.path}
                               </span>
                             </div>
                           </div>
-                          <div className="flex items-center gap-1 flex-shrink-0">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="border-black text-black flex-shrink-0"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              copyPath(file.path);
+                            }}
+                          >
                             {copiedPath === file.path ? (
-                              <span className="text-xs text-green-600 font-medium px-2">Copied!</span>
+                              <>
+                                <Check className="h-4 w-4 mr-1 text-green-600" />
+                                Copied!
+                              </>
                             ) : (
-                              <span className="text-xs text-gray-400">Click to copy</span>
+                              <>
+                                <Copy className="h-4 w-4 mr-1" />
+                                Copy
+                              </>
                             )}
-                          </div>
+                          </Button>
                         </div>
                       ))}
                     </div>
