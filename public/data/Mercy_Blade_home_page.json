@@ -45,6 +45,24 @@
       }
     },
     {
+      "id": "song_lyrics",
+      "background_color": "#EDE9FE",
+      "heading_color": "#5B21B6",
+      "accent_color": "#7C3AED",
+      "title": {
+        "en": "🎵 \"The Song of Mercy Blade\" — A Signature Anthem for Your Inner Life",
+        "vi": "🎵 \"Khúc Ca Mercy Blade\" — Bài Ca Dành Cho Thế Giới Bên Trong"
+      },
+      "body": {
+        "en": "**Verse 1**\nWhen the night is loud and heavy\nAnd your thoughts won't fall asleep,\nThere is a place inside your chest\nWhere a quiet river keeps.\nIt doesn't rush, it doesn't shout,\nIt simply waits for you to breathe —\nA softer world inside your world,\nA hidden room for peace.\n\n**Chorus**\nMercy Blade, gentle light,\nCut the noise but keep the sky.\nShow me how to stand again\nWhen I forget the reasons why.\nMercy Blade, steady hand,\nGuide me through the storms I make.\nTeach my heart the words to say\nSo I can heal, and bend, not break.\n\n**Verse 2**\nEvery sorrow has a language,\nEvery fear has a small name.\nWhen you write them in two voices,\nThey no longer burn the same.\nEnglish for the understanding,\nVietnamese for feeling whole —\nTwo soft wings upon your back\nWhen life is heavy on your soul.\n\n**Bridge**\nNo battles here, only breathing.\nNo judgment here, only ground.\nNo pretending to be stronger —\nJust a place where you are found.\n\n**Final Chorus**\nMercy Blade, quiet flame,\nShining where the shadows ache.\nTeach me how to walk again\nWith every gentle step I take.\nMercy Blade, calm and clear,\nStay with me when nights are long.\nTurn my trembling into strength,\nAnd let my life become a song.",
+        "vi": "**Đoạn 1**\nKhi đêm dài và ồn ã,\nKhi tâm trí chẳng thể yên,\nTrong lồng ngực luôn có chỗ\nNhư dòng nước rất dịu hiền.\nKhông vội vã, không gào thét,\nChỉ chờ bạn thở nhẹ thôi —\nMột thế giới mềm bên thế giới,\nMột căn phòng lặng giữa cuộc đời.\n\n**Điệp khúc**\nMercy Blade, ánh dịu dàng,\nCắt tiếng ồn, giữ trời trong.\nDạy tôi đứng dậy một lần nữa\nKhi chẳng biết vì sao mình mỏi lòng.\nMercy Blade, bàn tay vững,\nDẫn tôi qua bão do chính tôi gây.\nDạy tim biết lời cần nói\nĐể tôi lành lại — uốn, nhưng không gãy.\n\n**Đoạn 2**\nMỗi nỗi buồn đều có tiếng,\nMỗi nỗi sợ mang tên riêng.\nKhi viết chúng thành hai ngôn ngữ,\nNgọn lửa trong lòng thôi còn thiêu đốt mình.\nTiếng Anh để hiểu rõ ràng,\nTiếng Việt để thấy bình yên —\nNhư đôi cánh mềm phía sau\nGiữ tôi đứng vững giữa trăm miền.\n\n**Cao trào**\nKhông chiến đấu — chỉ hơi thở.\nKhông phán xét — chỉ mặt đất.\nKhông cần cố tỏ ra mạnh —\nChỉ cần một nơi để được thật.\n\n**Điệp khúc cuối**\nMercy Blade, ngọn lửa nhỏ,\nSoi vào chỗ tim tôi đau.\nDẫn tôi học từng bước chậm\nĐể ngày mai đi vững hơn hôm nào.\nMercy Blade, trong và lặng,\nỞ cùng tôi khi đêm dài.\nHóa run rẩy thành sức mạnh,\nVà cho đời tôi hóa thành một khúc ca."
+      },
+      "audio": {
+        "en": "song_of_mercy_blade.mp3",
+        "vi": "song_of_mercy_blade.mp3"
+      }
+    },
+    {
       "id": "language_layer",
       "background_color": "#E9F3FF",
       "heading_color": "#1D4ED8",
