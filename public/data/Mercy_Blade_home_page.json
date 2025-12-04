@@ -27,6 +27,24 @@
       }
     },
     {
+      "id": "theme_song",
+      "background_color": "#F5F0FF",
+      "heading_color": "#4C1D95",
+      "accent_color": "#8B5CF6",
+      "title": {
+        "en": "A Quiet Song for Your Journey",
+        "vi": "Một Khúc Ca Cho Hành Trình Của Bạn"
+      },
+      "body": {
+        "en": "And for moments when words are not enough, Mercy Blade has a quiet song—a theme written to support your breathing, grounding, and emotional steadiness.",
+        "vi": "Và trong những khoảnh khắc khi lời nói thôi chưa đủ, Mercy Blade có một khúc ca riêng—bài nhạc được viết để nâng nhịp thở, tiếp đất và làm dịu cảm xúc của bạn."
+      },
+      "audio": {
+        "en": "homepage_song.mp3",
+        "vi": "homepage_song.mp3"
+      }
+    },
+    {
       "id": "language_layer",
       "background_color": "#E9F3FF",
       "heading_color": "#1D4ED8",
