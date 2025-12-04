@@ -48,7 +48,7 @@ export const useHomepageConfig = () => {
         // Always prefer fresh JSON; fallback to pinned if fetch fails
         let data: HomepageConfig | null = null;
         try {
-          const response = await fetch('/data/Mercy_Blade_home_page.json', { cache: 'no-store' });
+          const response = await fetch(`/data/Mercy_Blade_home_page.json?t=${Date.now()}`, { cache: 'no-store' });
           if (!response.ok) {
             throw new Error('Failed to load homepage config');
           }
