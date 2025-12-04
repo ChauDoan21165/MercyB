@@ -6,11 +6,19 @@ on:
     paths:
       - "public/audio/**"
 
+# ✅ allow this workflow to push commits
+permissions:
+  contents: write
+
 jobs:
   generate:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0        # needed so the auto-commit action can push
 
       - name: Use Node 20
         uses: actions/setup-node@v4
@@ -18,8 +26,7 @@ jobs:
           node-version: 20
 
       - name: Generate manifest
-        run: |
-          node scripts/generate-audio-manifest.js
+        run: node scripts/generate-audio-manifest.js
 
       - name: Commit manifest
         uses: stefanzweifel/git-auto-commit-action@v5
