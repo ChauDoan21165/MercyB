@@ -86,10 +86,33 @@ function extractAudioFromEntry(entry: any): { en: string[]; vi: string[] } {
 }
 
 /**
- * Fetch storage files from the audio-storage-audit edge function
+ * Fetch audio files from the manifest (static files in public/audio/)
+ * 
+ * ARCHITECTURE NOTE:
+ * Audio files are stored in public/audio/ as static files served by Vite,
+ * NOT in Supabase storage. The manifest.json is generated at build time
+ * by scripts/generate-audio-manifest.js
  */
 async function fetchStorageFiles(): Promise<Set<string>> {
   try {
+    // First try to fetch from the static manifest file
+    const manifestResponse = await fetch('/audio/manifest.json');
+    
+    if (manifestResponse.ok) {
+      const manifest = await manifestResponse.json();
+      const rawFiles: string[] = manifest.files || [];
+      
+      // Normalize filenames (get just the filename part, lowercase)
+      const normalized = rawFiles
+        .map((name: string) => normalizeAudioName(name))
+        .filter((n: string) => n.endsWith(".mp3") && n.length > 0);
+      
+      console.log(`Loaded ${normalized.length} files from audio manifest`);
+      return new Set(normalized);
+    }
+    
+    // Fallback: try the edge function (for Supabase storage bucket)
+    console.warn("Manifest not found, falling back to edge function...");
     const { data, error } = await supabase.functions.invoke("audio-storage-audit", {
       body: {},
     });
@@ -100,11 +123,9 @@ async function fetchStorageFiles(): Promise<Set<string>> {
     }
     
     const rawFiles: string[] = data.storageFiles || [];
-
-    // 🔧 Normalize here as well to match entry audio normalization
     const normalized = rawFiles
-      .map((name) => normalizeAudioName(name))
-      .filter((n) => n.endsWith(".mp3") && n.length > 0);
+      .map((name: string) => normalizeAudioName(name))
+      .filter((n: string) => n.endsWith(".mp3") && n.length > 0);
 
     return new Set(normalized);
   } catch (err) {
