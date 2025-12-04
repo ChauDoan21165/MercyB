@@ -34,7 +34,25 @@ export type AuditIssueType =
   | "crisis_content"
   | "medical_claims"
   | "emergency_phrasing"
-  | "kids_crisis_blocker";
+  | "kids_crisis_blocker"
+  // Essay checks
+  | "missing_room_essay_en"
+  | "missing_room_essay_vi"
+  | "essay_placeholder_detected"
+  | "essay_too_short"
+  | "essay_too_long"
+  // Entry keyword checks
+  | "entry_keyword_missing_en"
+  | "entry_keyword_missing_vi"
+  | "entry_keyword_too_few"
+  | "entry_keyword_duplicate_across_room"
+  // TTS safety checks
+  | "tts_unstable_text"
+  | "tts_length_exceeded"
+  // Copy placeholder
+  | "copy_placeholder_detected"
+  // Deprecated fields
+  | "deprecated_field_present";
 
 export type AuditSeverity = "error" | "warning" | "info";
 

@@ -28,7 +28,7 @@ import { useToast } from "@/hooks/use-toast";
 import type { AuditIssue, AuditResponse, AuditMode } from "@/lib/audit-v4-types";
 import AuditCodeViewer from "./AuditCodeViewer";
 
-type FilterType = "all" | "errors" | "missing_audio" | "missing_json" | "missing_entries" | "crisis" | "medical" | "safety";
+type FilterType = "all" | "errors" | "missing_audio" | "missing_json" | "missing_entries" | "crisis" | "medical" | "safety" | "essays" | "tts" | "keywords" | "deprecated";
 
 export default function AuditSafeShield() {
   const [isRunning, setIsRunning] = useState(false);
@@ -142,6 +142,17 @@ export default function AuditSafeShield() {
       case "safety":
         return issue.type === "crisis_content" || issue.type === "kids_crisis_blocker" || 
                issue.type === "medical_claims" || issue.type === "emergency_phrasing";
+      case "essays":
+        return issue.type === "missing_room_essay_en" || issue.type === "missing_room_essay_vi" ||
+               issue.type === "essay_placeholder_detected" || issue.type === "essay_too_short" || 
+               issue.type === "essay_too_long";
+      case "tts":
+        return issue.type === "tts_unstable_text" || issue.type === "tts_length_exceeded";
+      case "keywords":
+        return issue.type === "entry_keyword_missing_en" || issue.type === "entry_keyword_missing_vi" ||
+               issue.type === "entry_keyword_too_few" || issue.type === "entry_keyword_duplicate_across_room";
+      case "deprecated":
+        return issue.type === "deprecated_field_present";
       default:
         return true;
     }
@@ -149,15 +160,34 @@ export default function AuditSafeShield() {
 
   // Human-readable labels for issue types
   const typeLabels: Record<string, string> = {
+    // Safety
     crisis_content: "Crisis / self-harm content",
     medical_claims: "Medical over-claiming",
     emergency_phrasing: "Emergency phrasing",
     kids_crisis_blocker: "Kids crisis blocker",
+    // Audio
     missing_audio_field: "Missing audio field",
     missing_audio_file: "Missing audio file",
     missing_intro_audio_en: "Missing intro audio (EN)",
     missing_intro_audio_vi: "Missing intro audio (VI)",
     orphan_audio_files: "Orphan audio files",
+    // Essays
+    missing_room_essay_en: "Missing essay (EN)",
+    missing_room_essay_vi: "Missing essay (VI)",
+    essay_placeholder_detected: "Essay has placeholder",
+    essay_too_short: "Essay too short",
+    essay_too_long: "Essay too long",
+    // Keywords
+    entry_keyword_missing_en: "Missing keywords (EN)",
+    entry_keyword_missing_vi: "Missing keywords (VI)",
+    entry_keyword_too_few: "Too few keywords",
+    entry_keyword_duplicate_across_room: "Duplicate keyword",
+    // TTS
+    tts_unstable_text: "TTS-unsafe text",
+    tts_length_exceeded: "TTS length exceeded",
+    copy_placeholder_detected: "Copy has placeholder",
+    // Deprecated
+    deprecated_field_present: "Deprecated field",
   };
 
   // Count auto-fixable from ALL issues, not just filtered
@@ -397,12 +427,12 @@ export default function AuditSafeShield() {
             {[
               { key: "all", label: "All" },
               { key: "errors", label: "Errors" },
-              { key: "missing_audio", label: "Missing Audio" },
-              { key: "missing_json", label: "Missing JSON" },
-              { key: "missing_entries", label: "Missing Entries" },
-              { key: "safety", label: "⚠️ Safety Issues" },
-              { key: "crisis", label: "Crisis" },
-              { key: "medical", label: "Medical" },
+              { key: "missing_audio", label: "Audio" },
+              { key: "essays", label: "Essays" },
+              { key: "keywords", label: "Keywords" },
+              { key: "tts", label: "TTS" },
+              { key: "safety", label: "⚠️ Safety" },
+              { key: "deprecated", label: "Deprecated" },
             ].map(({ key, label }) => (
               <Button
                 key={key}
@@ -411,10 +441,10 @@ export default function AuditSafeShield() {
                 onClick={() => setFilter(key as FilterType)}
                 className={
                   filter === key 
-                    ? key === "safety" || key === "crisis" 
+                    ? key === "safety" 
                       ? "bg-red-600 text-white" 
                       : "bg-black text-white" 
-                    : key === "safety" || key === "crisis"
+                    : key === "safety"
                       ? "border-red-300 text-red-700 hover:bg-red-50"
                       : "border-gray-300"
                 }
@@ -424,21 +454,20 @@ export default function AuditSafeShield() {
                   <Badge 
                     variant="secondary" 
                     className={`ml-1 text-xs ${
-                      (key === "safety" || key === "crisis") && issues.filter((i) => {
-                        if (key === "crisis") return i.type === "crisis_content" || i.type === "kids_crisis_blocker";
-                        if (key === "safety") return i.type === "crisis_content" || i.type === "kids_crisis_blocker" || i.type === "medical_claims" || i.type === "emergency_phrasing";
-                        return false;
-                      }).length > 0 ? "bg-red-100 text-red-700" : ""
+                      key === "safety" && issues.filter((i) => 
+                        i.type === "crisis_content" || i.type === "kids_crisis_blocker" || 
+                        i.type === "medical_claims" || i.type === "emergency_phrasing"
+                      ).length > 0 ? "bg-red-100 text-red-700" : ""
                     }`}
                   >
                     {issues.filter((i) => {
                       if (key === "errors") return i.severity === "error";
-                      if (key === "missing_audio") return i.type === "missing_audio" || i.type === "missing_audio_field" || i.type === "missing_audio_file";
-                      if (key === "missing_json") return i.type === "missing_json" || i.type === "missing_db";
-                      if (key === "missing_entries") return i.type === "missing_entries";
-                      if (key === "crisis") return i.type === "crisis_content" || i.type === "kids_crisis_blocker";
-                      if (key === "medical") return i.type === "medical_claims";
+                      if (key === "missing_audio") return i.type === "missing_audio" || i.type === "missing_audio_field" || i.type === "missing_audio_file" || i.type === "missing_intro_audio_en" || i.type === "missing_intro_audio_vi";
+                      if (key === "essays") return i.type === "missing_room_essay_en" || i.type === "missing_room_essay_vi" || i.type === "essay_placeholder_detected" || i.type === "essay_too_short" || i.type === "essay_too_long";
+                      if (key === "keywords") return i.type === "entry_keyword_missing_en" || i.type === "entry_keyword_missing_vi" || i.type === "entry_keyword_too_few" || i.type === "entry_keyword_duplicate_across_room";
+                      if (key === "tts") return i.type === "tts_unstable_text" || i.type === "tts_length_exceeded" || i.type === "copy_placeholder_detected";
                       if (key === "safety") return i.type === "crisis_content" || i.type === "kids_crisis_blocker" || i.type === "medical_claims" || i.type === "emergency_phrasing";
+                      if (key === "deprecated") return i.type === "deprecated_field_present";
                       return false;
                     }).length}
                   </Badge>
