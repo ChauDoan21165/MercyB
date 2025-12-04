@@ -4,13 +4,24 @@
  * Uses canonical tier system from lib/constants/tiers.ts
  * This module defines the single source of truth for tier-based access control.
  * All access checks in the app should use these functions.
+ * 
+ * IMPORTANT:
+ * Access control determines *full access*, not *visibility*.
+ * RoomLoader must ALWAYS load the room for ALL users, including visitors.
+ * If canUserAccessRoom() returns false, RoomLoader must return a PREVIEW
+ * instead of blocking or returning an empty room.
  */
 
-import { type TierId, isKidsTier, TIER_ORDER, KIDS_TIER_IDS } from '@/lib/constants/tiers';
+import { type TierId, isKidsTier, KIDS_TIER_IDS } from '@/lib/constants/tiers';
 
 /**
  * Tier hierarchy (higher tiers include access to all lower tiers)
  * Keys must match TierId exactly
+ * 
+ * NOTE: Kids tiers share numeric values with VIP tiers (kids_1=2, kids_2=3, kids_3=4)
+ * but cross-family access is ALWAYS blocked except for VIP9.
+ * This is intentional - the numeric comparison only applies within the same family.
+ * Do NOT "fix" this by giving kids tiers unique numbers.
  */
 const TIER_HIERARCHY: Record<TierId, number> = {
   free: 1,
@@ -22,10 +33,10 @@ const TIER_HIERARCHY: Record<TierId, number> = {
   vip6: 7,
   vip7: 8,
   vip8: 9,
-  vip9: 10, // Admins and VIP9 have full access
-  kids_1: 2, // Kids tiers map to VIP1 level
-  kids_2: 3, // Kids tier 2 maps to VIP2 level
-  kids_3: 4, // Kids tier 3 maps to VIP3 level
+  vip9: 10, // Admins and VIP9 have full access to everything
+  kids_1: 2, // Kids tiers use same numeric scale but are blocked from VIP rooms
+  kids_2: 3, // Cross-family blocking happens BEFORE numeric comparison
+  kids_3: 4, // Only VIP9 bypasses the cross-family block
 };
 
 /**
@@ -33,7 +44,7 @@ const TIER_HIERARCHY: Record<TierId, number> = {
  * 
  * @param userTier - The user's canonical tier ID
  * @param roomTier - The tier requirement of the room (canonical tier ID)
- * @returns true if user can access the room, false otherwise
+ * @returns true if user has FULL access, false if preview only
  */
 export function canUserAccessRoom(userTier: TierId, roomTier: TierId): boolean {
   // Kids tiers are separate from VIP tiers - can't cross access
@@ -49,6 +60,23 @@ export function canUserAccessRoom(userTier: TierId, roomTier: TierId): boolean {
   const roomLevel = TIER_HIERARCHY[roomTier] || 0;
   
   return userLevel >= roomLevel;
+}
+
+/**
+ * Helper for roomLoader to determine access mode
+ * Returns hasFullAccess and isPreview flags
+ * 
+ * RoomLoader should use this to decide:
+ * - hasFullAccess: true → show all entries
+ * - isPreview: true → show preview entries (first 2)
+ * - NEVER hide the room entirely
+ */
+export function determineAccess(userTier: TierId, roomTier: TierId) {
+  const hasFullAccess = canUserAccessRoom(userTier, roomTier);
+  return {
+    hasFullAccess,
+    isPreview: !hasFullAccess,
+  };
 }
 
 /**
