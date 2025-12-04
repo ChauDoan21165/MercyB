@@ -198,6 +198,7 @@ const TRACKS = [
   { id: '174', name: 'In The Light (1)', url: '/audio/2019-12-13_-_In_The_Light_-_FesliyanStudios.com_-_David_Renda-2.mp3' },
   { id: '175', name: 'Quiet Time (1)', url: '/audio/2019-04-20_-_Quiet_Time_-_David_Fesliyan-2.mp3' },
   { id: '176', name: 'Tranquility (1)', url: '/audio/2019-04-26_-_Tranquility_-_www.fesliyanstudios.com-2.mp3' },
+  { id: '177', name: 'In A Quiet Room I Open My Mind', url: '/audio/in_a_quiet_room_i_open_my_mind.mp3' },
 ];
 
 export const MusicPlayer = () => {
