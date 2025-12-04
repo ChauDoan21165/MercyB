@@ -263,7 +263,7 @@ Kids English không chỉ là chương trình dành cho trẻ.
           </section>
         ))}
 
-      {/* Music Album Section */}
+      {/* Music Album Section - Mercy Blade Songs */}
       <section className="py-16 px-6 bg-gradient-to-b from-purple-50 to-indigo-100 dark:from-purple-950/30 dark:to-indigo-950/30">
         <div className="max-w-4xl mx-auto space-y-8">
           <div className="text-center space-y-4">
