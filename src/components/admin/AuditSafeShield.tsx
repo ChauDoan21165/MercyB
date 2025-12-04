@@ -16,7 +16,22 @@ import {
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import type { AuditIssue, AuditResponse, AuditMode, AuditSummary, AuditTaskSuggestion, AudioJob } from "@/lib/audit-v4-types";
+import type { AuditIssue, AuditSummary, AuditTaskSuggestion, AudioJob } from "@/lib/audit-v4-types";
+
+interface StorageScanResult {
+  ok: boolean;
+  error?: string;
+  filesInBucket: number;
+  basenamesInBucket: number;
+}
+
+interface AudioFileStats {
+  referenced: number;
+  present: number;
+  missing: number;
+  coverage: number;
+  missingFiles: string[];
+}
 import { ISSUE_TYPE_LABELS, TASK_TYPE_LABELS } from "@/lib/audit-v4-types";
 import AuditCodeViewer from "./AuditCodeViewer";
 

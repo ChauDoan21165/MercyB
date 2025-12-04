@@ -1,6 +1,7 @@
 // supabase/functions/audit-v4-safe-shield/index.ts
-// Full System Sync Auditor - Safe Shield V5
+// Full System Sync Auditor - Safe Shield V5.1
 // NON-DESTRUCTIVE: Only detects issues and generates fix tasks + audio jobs
+// NO DATABASE WRITES - read-only audit mode
 // deno-lint-ignore-file no-explicit-any
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.4";
@@ -22,17 +23,16 @@ const supabase = createClient(supabaseUrl, serviceRoleKey, {
 });
 
 // ============================================================================
-// TYPES — Mirrored from src/lib/audit-v4-types.ts for Deno compatibility
+// TYPES
 // ============================================================================
 
 const AUDIO_BUCKET = "audio";
 
-type AuditMode = "dry-run" | "repair" | "scan";
+type AuditMode = "dry-run" | "scan";
 type AuditSeverity = "error" | "warning" | "info";
-type TaskType = "fix_json" | "fix_audio" | "create_intro_audio" | "fill_keywords" | "rewrite_essay" | "review_content" | "delete_orphan";
+type TaskType = "fix_json" | "fix_audio" | "create_intro_audio" | "fill_keywords" | "rewrite_essay" | "review_content" | "delete_orphan" | "generate_entry_tts" | "generate_intro_tts_en" | "generate_intro_tts_vi";
 type TaskPriority = "low" | "medium" | "high" | "critical";
 
-// Complete AuditIssueType union - keep in sync with src/lib/audit-v4-types.ts
 type AuditIssueType =
   | "duplicate_room" | "missing_tier" | "invalid_tier" | "tier_incorrect"
   | "missing_schema_id" | "missing_schema" | "missing_domain" | "domain_incorrect"
@@ -75,6 +75,7 @@ interface AuditIssue {
 
 interface AuditTaskSuggestion {
   room_id: string;
+  entry_slug?: string;
   priority: TaskPriority;
   task_type: TaskType;
   description: string;
@@ -90,6 +91,21 @@ interface AudioJob {
   lang: "en" | "vi";
   text: string;
   filename: string;
+}
+
+interface AudioFileStats {
+  referenced: number;
+  present: number;
+  missing: number;
+  coverage: number;
+  missingFiles: string[];
+}
+
+interface StorageScanResult {
+  ok: boolean;
+  error?: string;
+  filesInBucket: number;
+  basenamesInBucket: number;
 }
 
 interface AuditSummary {
@@ -138,6 +154,8 @@ interface AuditResponse {
   fixesApplied: number;
   fixed: number;
   logs: string[];
+  storageScan: StorageScanResult;
+  audioFileStats: AudioFileStats;
 }
 
 type AudioIndex = {
@@ -156,10 +174,15 @@ type DbRoom = {
   room_essay_vi?: string | null;
   keywords?: string[] | null;
   entries?: unknown;
+  // Intro audio fields
+  room_intro_en?: string | null;
+  room_intro_vi?: string | null;
+  room_intro_audio_en?: string | null;
+  room_intro_audio_vi?: string | null;
 };
 
 // ============================================================================
-// CANONICAL TIERS - ordered for priority matching (vip3ii before vip3, etc.)
+// CANONICAL TIERS
 // ============================================================================
 
 const TIER_PRIORITY: Array<{ pattern: string; tier: string; label: string }> = [
@@ -187,7 +210,6 @@ const TIER_PRIORITY: Array<{ pattern: string; tier: string; label: string }> = [
 
 const CANONICAL_TIER_LABELS = new Set(TIER_PRIORITY.map(t => t.label));
 
-// Valid entry keys
 const VALID_ENTRY_KEYS = new Set([
   "slug", "artifact_id", "id", "identifier",
   "keywords_en", "keywords_vi",
@@ -196,7 +218,6 @@ const VALID_ENTRY_KEYS = new Set([
   "severity_level", "title", "title_en", "title_vi",
 ]);
 
-// Deprecated field names
 const DEPRECATED_FIELDS = new Set([
   "artifact_id", "identifier", "copy_en", "copy_vi", "audio_en", "audio_vi",
   "answers", "essay", "essay_en", "essay_vi",
@@ -231,8 +252,8 @@ const PLACEHOLDER_PATTERNS: RegExp[] = [
 ];
 
 const CORRUPT_CHAR_PATTERNS: RegExp[] = [
-  /[\u0000-\u0008\u000B\u000C\u000E-\u001F]/, // Control characters
-  /\uFFFD/, // Replacement character
+  /[\u0000-\u0008\u000B\u000C\u000E-\u001F]/,
+  /\uFFFD/,
 ];
 
 // ============================================================================
@@ -245,6 +266,10 @@ function countWords(text: string): number {
 
 function isKebabCase(str: string): boolean {
   return /^[a-z0-9]+(-[a-z0-9]+)*$/.test(str);
+}
+
+function toSafeFilename(str: string): string {
+  return str.toLowerCase().replace(/[^a-z0-9_-]/g, "_").replace(/_+/g, "_").replace(/^_|_$/g, "");
 }
 
 function inferTierFromRoomId(roomId: string): string {
@@ -312,55 +337,89 @@ function detectTtsUnsafe(text: string): { unsafe: boolean; reasons: string[] } {
   return { unsafe: reasons.length > 0, reasons };
 }
 
-function getPriority(severity: AuditSeverity): TaskPriority {
-  if (severity === "error") return "high";
-  if (severity === "warning") return "medium";
-  return "low";
-}
-
 // ============================================================================
-// AUDIO INDEX BUILDER
+// AUDIO INDEX BUILDER - with pagination
 // ============================================================================
 
-async function buildAudioIndex(log: (msg: string) => void): Promise<AudioIndex> {
+async function buildAudioIndex(log: (msg: string) => void): Promise<{ index: AudioIndex; scanResult: StorageScanResult }> {
   const allKeys: string[] = [];
+  let scanError: string | undefined;
+  let scanOk = true;
 
-  async function listFolder(path: string): Promise<void> {
-    try {
-      const { data, error } = await supabase.storage
-        .from(AUDIO_BUCKET)
-        .list(path, { limit: 10000, offset: 0 });
+  async function listFolderRecursive(path: string): Promise<void> {
+    const BATCH_SIZE = 1000;
+    let offset = 0;
+    let hasMore = true;
 
-      if (error || !data) return;
+    while (hasMore) {
+      try {
+        const { data, error } = await supabase.storage
+          .from(AUDIO_BUCKET)
+          .list(path, { limit: BATCH_SIZE, offset });
 
-      for (const obj of data) {
-        if (!obj.name) continue;
-        const fullPath = path ? `${path}/${obj.name}` : obj.name;
-        if (obj.metadata === null) {
-          await listFolder(fullPath);
-        } else {
-          allKeys.push(fullPath);
+        if (error) {
+          scanOk = false;
+          scanError = `Storage list error at ${path}: ${error.message}`;
+          log(`ERROR: ${scanError}`);
+          return;
         }
+
+        if (!data || data.length === 0) {
+          hasMore = false;
+          break;
+        }
+
+        for (const obj of data) {
+          if (!obj.name) continue;
+          const fullPath = path ? `${path}/${obj.name}` : obj.name;
+          
+          // If metadata is null, it's a folder
+          if (obj.metadata === null) {
+            await listFolderRecursive(fullPath);
+          } else {
+            allKeys.push(fullPath);
+          }
+        }
+
+        if (data.length < BATCH_SIZE) {
+          hasMore = false;
+        } else {
+          offset += BATCH_SIZE;
+        }
+      } catch (err) {
+        scanOk = false;
+        scanError = `Exception listing ${path}: ${err}`;
+        log(`ERROR: ${scanError}`);
+        return;
       }
-    } catch (err) {
-      log(`Audio index error for ${path}: ${err}`);
     }
   }
 
   try {
-    await listFolder("");
+    await listFolderRecursive("");
   } catch (err) {
-    log(`Failed to build audio index: ${err}`);
+    scanOk = false;
+    scanError = `Failed to build audio index: ${err}`;
+    log(`ERROR: ${scanError}`);
   }
 
-  return {
+  const index: AudioIndex = {
     allKeys: new Set(allKeys),
-    basenames: new Set(allKeys.map(k => k.split("/").pop() || k)),
+    basenames: new Set(allKeys.map(k => k.split("/").pop()?.toLowerCase() || k.toLowerCase())),
   };
+
+  const scanResult: StorageScanResult = {
+    ok: scanOk,
+    error: scanError,
+    filesInBucket: allKeys.length,
+    basenamesInBucket: index.basenames.size,
+  };
+
+  return { index, scanResult };
 }
 
 // ============================================================================
-// MAIN AUDIT FUNCTION - V5 with task generation
+// MAIN AUDIT FUNCTION - V5.1 (Read-Only)
 // ============================================================================
 
 async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
@@ -368,17 +427,17 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
   tasks: AuditTaskSuggestion[];
   audioJobs: AudioJob[];
   summary: AuditSummary;
-  fixesApplied: number;
   logs: string[];
+  storageScan: StorageScanResult;
+  audioFileStats: AudioFileStats;
 }> {
   const startTime = performance.now();
-  const { mode, limit, roomIdPrefix, checkFiles = true } = options;
+  const { limit, roomIdPrefix, checkFiles = true } = options;
 
   const logs: string[] = [];
   const issues: AuditIssue[] = [];
   const tasks: AuditTaskSuggestion[] = [];
   const audioJobs: AudioJob[] = [];
-  let fixesApplied = 0;
 
   const log = (msg: string) => {
     const timestamp = new Date().toISOString().split("T")[1].slice(0, 12);
@@ -387,20 +446,25 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
     console.log(`[SafeShield] ${msg}`);
   };
 
-  log(`=== Safe Shield V5 Audit Started ===`);
-  log(`Mode: ${mode}, Limit: ${limit || "all"}, Prefix: ${roomIdPrefix || "none"}, CheckFiles: ${checkFiles}`);
+  log(`=== Safe Shield V5.1 Audit Started (READ-ONLY) ===`);
+  log(`Limit: ${limit || "all"}, Prefix: ${roomIdPrefix || "none"}, CheckFiles: ${checkFiles}`);
 
   // =========================================================================
-  // PHASE 0: Build audio index (if checkFiles enabled)
+  // PHASE 0: Build audio index from storage
   // =========================================================================
   let audioIndex: AudioIndex = { allKeys: new Set(), basenames: new Set() };
+  let storageScan: StorageScanResult = { ok: false, error: "Not scanned", filesInBucket: 0, basenamesInBucket: 0 };
+  
   if (checkFiles) {
-    log("Phase 0: Building audio index from storage...");
-    try {
-      audioIndex = await buildAudioIndex(log);
-      log(`Audio index ready: ${audioIndex.allKeys.size} files, ${audioIndex.basenames.size} basenames`);
-    } catch (err) {
-      log(`WARNING: Audio index build failed: ${err}`);
+    log("Phase 0: Building audio index from storage (with pagination)...");
+    const result = await buildAudioIndex(log);
+    audioIndex = result.index;
+    storageScan = result.scanResult;
+    
+    if (storageScan.ok) {
+      log(`Audio index ready: ${storageScan.filesInBucket} files, ${storageScan.basenamesInBucket} basenames`);
+    } else {
+      log(`WARNING: Storage scan failed - ${storageScan.error}`);
     }
   }
 
@@ -429,11 +493,10 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
   const totalRooms = rooms.length;
   log(`Loaded ${totalRooms} rooms from database`);
 
-  // Tracking
+  // Tracking sets
   const seenIds = new Set<string>();
-  const roomFixes = new Map<string, Record<string, any>>();
-  const fixedIssueIds = new Set<string>();
   const referencedAudioBasenames = new Set<string>();
+  const missingAudioFiles: string[] = [];
 
   // Metrics
   let scannedRooms = 0;
@@ -445,18 +508,19 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
   let roomsMissingIntroEn = 0;
   let roomsMissingIntroVi = 0;
 
-  const addFix = (roomId: string, field: string, value: any, issueId: string) => {
-    if (!roomFixes.has(roomId)) roomFixes.set(roomId, {});
-    roomFixes.get(roomId)![field] = value;
-    fixedIssueIds.add(issueId);
-  };
-
   const addTask = (task: AuditTaskSuggestion) => {
     tasks.push(task);
   };
 
   const addAudioJob = (job: AudioJob) => {
     audioJobs.push(job);
+  };
+
+  // Check if audio file exists in storage
+  const audioFileExists = (filename: string): boolean => {
+    if (!storageScan.ok) return true; // Can't verify, assume exists
+    const basename = filename.split("/").pop()?.toLowerCase() || filename.toLowerCase();
+    return audioIndex.basenames.has(basename);
   };
 
   // =========================================================================
@@ -471,7 +535,6 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
 
     // --- PHASE 2A: Room identity validation ---
     
-    // Duplicate check
     if (seenIds.has(roomId)) {
       issues.push({ id: `dup-${roomId}`, file, type: "duplicate_room", severity: "error", message: `Duplicate room id: ${roomId}`, autoFixable: false });
       continue;
@@ -479,38 +542,31 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
     seenIds.add(roomId);
 
     // Tier validation
-    const tierIssueId = `tier-${roomId}`;
     if (!room.tier) {
       const inferredTier = inferTierFromRoomId(roomId);
-      issues.push({ id: tierIssueId, file, type: "missing_tier", severity: "warning", message: `Missing tier`, fix: `Set to "${inferredTier}"`, autoFixable: true });
-      addFix(roomId, "tier", inferredTier, tierIssueId);
+      issues.push({ id: `tier-${roomId}`, file, type: "missing_tier", severity: "warning", message: `Missing tier`, fix: `Should be "${inferredTier}"`, autoFixable: false });
       addTask({ room_id: roomId, priority: "medium", task_type: "fix_json", description: `Set tier to "${inferredTier}"` });
     } else if (!isCanonicalTier(room.tier)) {
       const inferredTier = inferTierFromRoomId(roomId);
-      issues.push({ id: tierIssueId, file, type: "invalid_tier", severity: "warning", message: `Invalid tier: "${room.tier}"`, fix: `Set to "${inferredTier}"`, autoFixable: true });
-      addFix(roomId, "tier", inferredTier, tierIssueId);
+      issues.push({ id: `tier-${roomId}`, file, type: "invalid_tier", severity: "warning", message: `Invalid tier: "${room.tier}"`, fix: `Should be "${inferredTier}"`, autoFixable: false });
       addTask({ room_id: roomId, priority: "medium", task_type: "fix_json", description: `Fix invalid tier "${room.tier}" → "${inferredTier}"` });
     }
 
     // Schema ID
-    const schemaIssueId = `schema-${roomId}`;
     if (!room.schema_id) {
-      issues.push({ id: schemaIssueId, file, type: "missing_schema_id", severity: "warning", message: `Missing schema_id`, fix: `Set to "mercy-blade-v1"`, autoFixable: true });
-      addFix(roomId, "schema_id", "mercy-blade-v1", schemaIssueId);
+      issues.push({ id: `schema-${roomId}`, file, type: "missing_schema_id", severity: "warning", message: `Missing schema_id`, fix: `Should be "mercy-blade-v1"`, autoFixable: false });
       addTask({ room_id: roomId, priority: "low", task_type: "fix_json", description: `Set schema_id to "mercy-blade-v1"` });
     }
 
     // Domain
-    const domainIssueId = `domain-${roomId}`;
     if (!room.domain) {
       const currentTier = room.tier || inferTierFromRoomId(roomId);
       const inferredDomain = inferDomainFromTier(currentTier);
-      issues.push({ id: domainIssueId, file, type: "missing_domain", severity: "warning", message: `Missing domain`, fix: `Set to "${inferredDomain}"`, autoFixable: true });
-      addFix(roomId, "domain", inferredDomain, domainIssueId);
+      issues.push({ id: `domain-${roomId}`, file, type: "missing_domain", severity: "warning", message: `Missing domain`, fix: `Should be "${inferredDomain}"`, autoFixable: false });
       addTask({ room_id: roomId, priority: "low", task_type: "fix_json", description: `Set domain to "${inferredDomain}"` });
     }
 
-    // Titles (warning only, not auto-fixable)
+    // Titles
     if (!room.title_en) {
       issues.push({ id: `title_en-${roomId}`, file, type: "missing_title_en", severity: "warning", message: `Missing title_en`, autoFixable: false });
       addTask({ room_id: roomId, priority: "high", task_type: "review_content", description: `Add English title`, language: "en" });
@@ -531,19 +587,15 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
       const wc = countWords(essayEn);
       if (wc < 25) {
         issues.push({ id: `essay_short_en-${roomId}`, file, type: "essay_too_short", severity: "warning", message: `room_essay_en has ${wc} words (min 25)`, autoFixable: false });
-        addTask({ room_id: roomId, priority: "medium", task_type: "rewrite_essay", description: `Expand English essay (${wc} → 25+ words)`, language: "en" });
       }
       if (wc > 300) {
         issues.push({ id: `essay_long_en-${roomId}`, file, type: "essay_too_long", severity: "warning", message: `room_essay_en has ${wc} words (max 300)`, autoFixable: false });
-        addTask({ room_id: roomId, priority: "low", task_type: "rewrite_essay", description: `Trim English essay (${wc} → 300 words)`, language: "en" });
       }
       if (detectPlaceholder(essayEn)) {
         issues.push({ id: `essay_ph_en-${roomId}`, file, type: "essay_placeholder_detected", severity: "error", message: `room_essay_en contains placeholder`, autoFixable: false });
-        addTask({ room_id: roomId, priority: "critical", task_type: "rewrite_essay", description: `Remove placeholder from English essay`, language: "en" });
       }
       if (detectCorruptChars(essayEn)) {
         issues.push({ id: `essay_corrupt_en-${roomId}`, file, type: "corrupt_characters_detected", severity: "error", message: `room_essay_en contains corrupt characters`, autoFixable: false });
-        addTask({ room_id: roomId, priority: "high", task_type: "fix_json", description: `Fix corrupt characters in English essay`, language: "en" });
       }
     }
 
@@ -554,23 +606,86 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
       const wc = countWords(essayVi);
       if (wc < 25) {
         issues.push({ id: `essay_short_vi-${roomId}`, file, type: "essay_too_short", severity: "warning", message: `room_essay_vi has ${wc} words (min 25)`, autoFixable: false });
-        addTask({ room_id: roomId, priority: "medium", task_type: "rewrite_essay", description: `Expand Vietnamese essay (${wc} → 25+ words)`, language: "vi" });
       }
       if (wc > 300) {
         issues.push({ id: `essay_long_vi-${roomId}`, file, type: "essay_too_long", severity: "warning", message: `room_essay_vi has ${wc} words (max 300)`, autoFixable: false });
-        addTask({ room_id: roomId, priority: "low", task_type: "rewrite_essay", description: `Trim Vietnamese essay (${wc} → 300 words)`, language: "vi" });
       }
       if (detectPlaceholder(essayVi)) {
         issues.push({ id: `essay_ph_vi-${roomId}`, file, type: "essay_placeholder_detected", severity: "error", message: `room_essay_vi contains placeholder`, autoFixable: false });
-        addTask({ room_id: roomId, priority: "critical", task_type: "rewrite_essay", description: `Remove placeholder from Vietnamese essay`, language: "vi" });
       }
       if (detectCorruptChars(essayVi)) {
         issues.push({ id: `essay_corrupt_vi-${roomId}`, file, type: "corrupt_characters_detected", severity: "error", message: `room_essay_vi contains corrupt characters`, autoFixable: false });
-        addTask({ room_id: roomId, priority: "high", task_type: "fix_json", description: `Fix corrupt characters in Vietnamese essay`, language: "vi" });
       }
     }
 
-    // --- PHASE 2C: Entries structure validation ---
+    // --- PHASE 2C: Intro audio validation (new schema) ---
+    // If room_intro_en has content, it should have intro audio
+    const introTextEn = essayEn; // Using essay as intro text for now
+    const introTextVi = essayVi;
+    const introAudioEn = `${roomId}_intro_en.mp3`;
+    const introAudioVi = `${roomId}_intro_vi.mp3`;
+
+    // EN intro audio check
+    if (introTextEn) {
+      referencedAudioBasenames.add(introAudioEn.toLowerCase());
+      const exists = checkFiles ? audioFileExists(introAudioEn) : true;
+      if (exists) {
+        roomsWithIntroEn++;
+      } else {
+        roomsMissingIntroEn++;
+        missingAudioFiles.push(introAudioEn);
+        issues.push({ 
+          id: `intro-en-${roomId}`, 
+          file, 
+          type: "missing_intro_audio_en", 
+          severity: "warning", 
+          message: `Room has intro text but missing audio "${introAudioEn}"`, 
+          fix: `Generate TTS for room intro`, 
+          autoFixable: false 
+        });
+        addAudioJob({ room_id: roomId, field: "intro", lang: "en", text: introTextEn.slice(0, 4000), filename: introAudioEn });
+        addTask({ 
+          room_id: roomId, 
+          priority: "medium", 
+          task_type: "generate_intro_tts_en", 
+          description: `Generate English intro audio`, 
+          suggested_filename: introAudioEn, 
+          language: "en" 
+        });
+      }
+    }
+
+    // VI intro audio check
+    if (introTextVi) {
+      referencedAudioBasenames.add(introAudioVi.toLowerCase());
+      const exists = checkFiles ? audioFileExists(introAudioVi) : true;
+      if (exists) {
+        roomsWithIntroVi++;
+      } else {
+        roomsMissingIntroVi++;
+        missingAudioFiles.push(introAudioVi);
+        issues.push({ 
+          id: `intro-vi-${roomId}`, 
+          file, 
+          type: "missing_intro_audio_vi", 
+          severity: "warning", 
+          message: `Room has intro text but missing audio "${introAudioVi}"`, 
+          fix: `Generate TTS for room intro`, 
+          autoFixable: false 
+        });
+        addAudioJob({ room_id: roomId, field: "intro", lang: "vi", text: introTextVi.slice(0, 4000), filename: introAudioVi });
+        addTask({ 
+          room_id: roomId, 
+          priority: "medium", 
+          task_type: "generate_intro_tts_vi", 
+          description: `Generate Vietnamese intro audio`, 
+          suggested_filename: introAudioVi, 
+          language: "vi" 
+        });
+      }
+    }
+
+    // --- PHASE 2D: Entries structure validation ---
     const entries = Array.isArray(room.entries) ? (room.entries as any[]) : [];
 
     if (!Array.isArray(room.entries)) {
@@ -589,14 +704,12 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
       issues.push({ id: `count-${roomId}`, file, type: "entry_count_info", severity: "info", message: `Has ${entries.length} entries (typical: 2-8)`, autoFixable: false });
     }
 
-    // Malformed entries check (early)
     if (!entries.every((e: any) => typeof e === "object" && e !== null)) {
       issues.push({ id: `malformed-${roomId}`, file, type: "malformed_entries", severity: "error", message: `Entries contains non-object elements`, autoFixable: false });
       addTask({ room_id: roomId, priority: "critical", task_type: "fix_json", description: `Fix malformed entries` });
       continue;
     }
 
-    // Track slugs for duplicates
     const slugs = new Set<string>();
     const allKeywordsInRoom = new Map<string, number[]>();
 
@@ -605,7 +718,7 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
       const entrySlug = entry.slug || entry.artifact_id || entry.id || `entry-${i}`;
       const entryPrefix = `${roomId}-e${i}`;
 
-      // Check for unknown keys
+      // Unknown keys
       for (const key of Object.keys(entry)) {
         if (!VALID_ENTRY_KEYS.has(key)) {
           issues.push({ id: `unk-${entryPrefix}-${key}`, file, type: "unknown_entry_key", severity: "info", message: `Entry "${entrySlug}" has unknown key "${key}"`, autoFixable: false });
@@ -618,12 +731,8 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
           issues.push({
             id: `dep-${entryPrefix}-${key}`, file, type: "deprecated_field_present", severity: "info",
             message: `Entry "${entrySlug}" uses deprecated field "${key}"`,
-            fix: key === "artifact_id" || key === "identifier" ? "Rename to 'slug'" :
-              key === "copy_en" || key === "copy_vi" ? "Use copy: { en, vi } structure" :
-              key === "audio_en" || key === "audio_vi" ? "Use 'audio' field only" : undefined,
             autoFixable: false
           });
-          addTask({ room_id: roomId, priority: "low", task_type: "fix_json", description: `Replace deprecated field "${key}" in entry "${entrySlug}"` });
         }
       }
 
@@ -635,7 +744,6 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
       } else {
         if (slugs.has(slug)) {
           issues.push({ id: `dup-slug-${entryPrefix}`, file, type: "duplicate_slug", severity: "error", message: `Duplicate slug "${slug}"`, autoFixable: false });
-          addTask({ room_id: roomId, priority: "high", task_type: "fix_json", description: `Fix duplicate slug "${slug}"` });
         }
         slugs.add(slug);
         if (!isKebabCase(slug)) {
@@ -643,7 +751,7 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
         }
       }
 
-      // --- PHASE 2D: Keywords validation ---
+      // --- PHASE 2E: Keywords validation ---
       const kwEn = entry.keywords_en;
       const kwVi = entry.keywords_vi;
 
@@ -653,10 +761,6 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
       } else {
         if (kwEn.length < 3) {
           issues.push({ id: `kw_few-${entryPrefix}`, file, type: "entry_keyword_too_few", severity: "info", message: `Entry "${entrySlug}" has ${kwEn.length} keywords (3-5 recommended)`, autoFixable: false });
-          addTask({ room_id: roomId, priority: "low", task_type: "fill_keywords", description: `Add more keywords to entry "${entrySlug}" (${kwEn.length} → 3-5)`, language: "en" });
-        }
-        if (kwEn.length > 5) {
-          issues.push({ id: `kw_many-${entryPrefix}`, file, type: "keyword_too_few", severity: "info", message: `Entry "${entrySlug}" has ${kwEn.length} keywords (3-5 recommended)`, autoFixable: false });
         }
         for (const kw of kwEn) {
           if (typeof kw === "string") {
@@ -672,16 +776,12 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
         addTask({ room_id: roomId, priority: "medium", task_type: "fill_keywords", description: `Add Vietnamese keywords to entry "${entrySlug}"`, language: "vi" });
       }
 
-      // --- PHASE 2E: Copy validation ---
+      // --- PHASE 2F: Copy validation ---
       const copyEn = entry.copy?.en || entry.copy_en;
       const copyVi = entry.copy?.vi || entry.copy_vi;
 
-      // Check copy structure
-      if (!entry.copy && (entry.copy_en || entry.copy_vi)) {
-        // Using deprecated structure - already flagged above
-      } else if (entry.copy && (typeof entry.copy !== "object" || (!entry.copy.en && !entry.copy.vi))) {
+      if (entry.copy && (typeof entry.copy !== "object" || (!entry.copy.en && !entry.copy.vi))) {
         issues.push({ id: `copy_struct-${entryPrefix}`, file, type: "entry_copy_structure_invalid", severity: "error", message: `Entry "${entrySlug}" has invalid copy structure`, autoFixable: false });
-        addTask({ room_id: roomId, priority: "high", task_type: "fix_json", description: `Fix copy structure in entry "${entrySlug}"` });
       }
 
       if (!copyEn) {
@@ -694,20 +794,16 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
         }
         if (wc > 300) {
           issues.push({ id: `tts_long-${entryPrefix}`, file, type: "tts_length_exceeded", severity: "warning", message: `Entry "${entrySlug}" copy.en has ${wc} words (TTS max 300)`, autoFixable: false });
-          addTask({ room_id: roomId, priority: "medium", task_type: "review_content", description: `Trim English copy in entry "${entrySlug}" (${wc} → 300 words)`, language: "en" });
         }
         const tts = detectTtsUnsafe(copyEn);
         if (tts.unsafe) {
           issues.push({ id: `tts_en-${entryPrefix}`, file, type: "tts_unstable_text", severity: "warning", message: `Entry "${entrySlug}" TTS-unsafe: ${tts.reasons.join(", ")}`, autoFixable: false });
-          addTask({ room_id: roomId, priority: "medium", task_type: "fix_json", description: `Fix TTS-unsafe text in entry "${entrySlug}": ${tts.reasons.join(", ")}`, language: "en" });
         }
         if (detectPlaceholder(copyEn)) {
           issues.push({ id: `ph_en-${entryPrefix}`, file, type: "copy_placeholder_detected", severity: "error", message: `Entry "${entrySlug}" copy.en contains placeholder`, autoFixable: false });
-          addTask({ room_id: roomId, priority: "critical", task_type: "review_content", description: `Remove placeholder from English copy in entry "${entrySlug}"`, language: "en" });
         }
         if (detectCorruptChars(copyEn)) {
           issues.push({ id: `corrupt_en-${entryPrefix}`, file, type: "corrupt_characters_detected", severity: "error", message: `Entry "${entrySlug}" copy.en has corrupt characters`, autoFixable: false });
-          addTask({ room_id: roomId, priority: "high", task_type: "fix_json", description: `Fix corrupt characters in entry "${entrySlug}"`, language: "en" });
         }
       }
 
@@ -718,9 +814,6 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
         const wc = countWords(copyVi);
         if (wc < 30 || wc > 260) {
           issues.push({ id: `wc_vi-${entryPrefix}`, file, type: "copy_word_count_extreme", severity: "warning", message: `Entry "${entrySlug}" copy.vi has ${wc} words`, autoFixable: false });
-        }
-        if (wc > 300) {
-          issues.push({ id: `tts_long_vi-${entryPrefix}`, file, type: "tts_length_exceeded", severity: "warning", message: `Entry "${entrySlug}" copy.vi TTS too long`, autoFixable: false });
         }
         const tts = detectTtsUnsafe(copyVi);
         if (tts.unsafe) {
@@ -734,101 +827,97 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
         }
       }
 
-      // --- PHASE 2F: Entry audio validation ---
+      // --- PHASE 2G: Entry audio validation with real storage check ---
       totalAudioSlots++;
       const audio = entry.audio || entry.audio_en;
       
       if (!audio || (typeof audio === "string" && audio.trim() === "")) {
         entriesMissingAudio++;
-        issues.push({ id: `audio-${entryPrefix}`, file, type: "missing_audio_field", severity: "error", message: `Entry "${entrySlug}" missing audio`, fix: "Generate TTS", autoFixable: false });
+        const suggestedFilename = `${toSafeFilename(roomId)}_${toSafeFilename(entrySlug)}_en.mp3`;
+        missingAudioFiles.push(suggestedFilename);
         
-        // Generate audio job if we have copy text
+        issues.push({ 
+          id: `audio-${entryPrefix}`, 
+          file, 
+          type: "missing_audio_field", 
+          severity: "error", 
+          message: `Entry "${entrySlug}" missing audio field`, 
+          fix: "Generate TTS", 
+          autoFixable: false 
+        });
+        
         if (copyEn) {
-          const suggestedFilename = `${roomId}_${entrySlug}_en.mp3`.replace(/[^a-z0-9_.-]/gi, "_");
-          addAudioJob({ room_id: roomId, entry_slug: entrySlug, field: "content", lang: "en", text: copyEn.slice(0, 4000), filename: suggestedFilename });
-          addTask({ room_id: roomId, priority: "high", task_type: "fix_audio", description: `Generate TTS for entry "${entrySlug}"`, suggested_filename: suggestedFilename, language: "en" });
+          addAudioJob({ 
+            room_id: roomId, 
+            entry_slug: entrySlug, 
+            field: "content", 
+            lang: "en", 
+            text: copyEn.slice(0, 4000), 
+            filename: suggestedFilename 
+          });
+          addTask({ 
+            room_id: roomId, 
+            entry_slug: entrySlug,
+            priority: "high", 
+            task_type: "generate_entry_tts", 
+            description: `Generate TTS for entry "${entrySlug}"`, 
+            suggested_filename: suggestedFilename, 
+            language: "en" 
+          });
         }
       } else if (typeof audio === "string") {
-        const trimmed = audio.trim().replace(/^\/+/, ""); // Remove leading slashes
+        const trimmed = audio.trim().replace(/^\/+/, "");
         const basename = trimmed.split("/").pop() || trimmed;
-        referencedAudioBasenames.add(basename);
-        totalAudioPresent++;
-
-        // Validate filename pattern (optional info)
-        const expectedPattern = /^[a-z0-9_-]+\.(mp3|wav|m4a)$/i;
-        if (!expectedPattern.test(basename)) {
-          issues.push({ id: `audio-fmt-${entryPrefix}`, file, type: "general_info", severity: "info", message: `Entry "${entrySlug}" audio filename "${basename}" has non-standard format`, autoFixable: false });
-        }
-
-        if (checkFiles) {
-          const existsByKey = audioIndex.allKeys.has(trimmed);
-          const existsByBasename = audioIndex.basenames.has(basename);
-          if (!existsByKey && !existsByBasename) {
-            issues.push({ id: `audio-file-${entryPrefix}`, file, type: "missing_audio_file", severity: "error", message: `Entry "${entrySlug}" audio "${basename}" not in storage`, fix: "Generate TTS and upload", autoFixable: false });
+        referencedAudioBasenames.add(basename.toLowerCase());
+        
+        // Real storage existence check
+        if (checkFiles && storageScan.ok) {
+          const exists = audioFileExists(basename);
+          if (exists) {
+            totalAudioPresent++;
+          } else {
+            entriesMissingAudio++;
+            missingAudioFiles.push(basename);
+            issues.push({ 
+              id: `audio-file-${entryPrefix}`, 
+              file, 
+              type: "missing_audio_file", 
+              severity: "error", 
+              message: `Entry "${entrySlug}" references "${basename}" but file not found in storage`, 
+              fix: "Upload or generate audio file", 
+              autoFixable: false 
+            });
             
-            // Generate audio job
             if (copyEn) {
-              addAudioJob({ room_id: roomId, entry_slug: entrySlug, field: "content", lang: "en", text: copyEn.slice(0, 4000), filename: basename });
-              addTask({ room_id: roomId, priority: "high", task_type: "fix_audio", description: `Upload or generate "${basename}"`, suggested_filename: basename, language: "en" });
+              addTask({ 
+                room_id: roomId, 
+                entry_slug: entrySlug,
+                priority: "high", 
+                task_type: "generate_entry_tts", 
+                description: `Generate TTS for entry "${entrySlug}" (missing: ${basename})`, 
+                suggested_filename: basename, 
+                language: "en" 
+              });
             }
           }
+        } else {
+          // Can't verify, count as present
+          totalAudioPresent++;
         }
       }
     }
 
-    // Duplicate keywords across entries
-    for (const [keyword, indices] of allKeywordsInRoom.entries()) {
+    // Duplicate keywords check
+    for (const [kw, indices] of allKeywordsInRoom.entries()) {
       if (indices.length > 1) {
-        issues.push({ id: `kw_dup-${roomId}-${keyword.slice(0, 20)}`, file, type: "entry_keyword_duplicate_across_room", severity: "info", message: `Keyword "${keyword}" in ${indices.length} entries`, autoFixable: false });
-      }
-    }
-
-    // Room keywords auto-fix
-    const kwIssueId = `kw-${roomId}`;
-    if (!room.keywords || room.keywords.length === 0) {
-      const keywordSet = new Set<string>();
-      for (const e of entries) {
-        const kwEn = (e as any).keywords_en as string[] | undefined;
-        const kwVi = (e as any).keywords_vi as string[] | undefined;
-        if (Array.isArray(kwEn)) kwEn.forEach(k => keywordSet.add(k));
-        if (Array.isArray(kwVi)) kwVi.forEach(k => keywordSet.add(k));
-      }
-      if (keywordSet.size > 0) {
-        issues.push({ id: kwIssueId, file, type: "missing_room_keywords", severity: "warning", message: `Missing room keywords`, fix: `Extract ${keywordSet.size} keywords`, autoFixable: true });
-        addFix(roomId, "keywords", Array.from(keywordSet), kwIssueId);
-        addTask({ room_id: roomId, priority: "low", task_type: "fill_keywords", description: `Merge ${keywordSet.size} entry keywords to room level` });
-      }
-    }
-
-    // --- PHASE 2G: Intro audio validation ---
-    const hasIntroEn = !!essayEn;
-    const hasIntroVi = !!essayVi;
-    const introEnName = `${roomId}_intro_en.mp3`;
-    const introViName = `${roomId}_intro_vi.mp3`;
-
-    if (hasIntroEn) {
-      referencedAudioBasenames.add(introEnName);
-      const exists = checkFiles ? audioIndex.basenames.has(introEnName) : true;
-      if (exists) {
-        roomsWithIntroEn++;
-      } else {
-        roomsMissingIntroEn++;
-        issues.push({ id: `intro-en-${roomId}`, file, type: "missing_intro_audio_en", severity: "warning", message: `Missing intro audio "${introEnName}"`, fix: `Generate TTS for room_essay_en`, autoFixable: false });
-        addAudioJob({ room_id: roomId, field: "intro", lang: "en", text: essayEn.slice(0, 4000), filename: introEnName });
-        addTask({ room_id: roomId, priority: "medium", task_type: "create_intro_audio", description: `Generate English intro audio`, suggested_filename: introEnName, language: "en" });
-      }
-    }
-
-    if (hasIntroVi) {
-      referencedAudioBasenames.add(introViName);
-      const exists = checkFiles ? audioIndex.basenames.has(introViName) : true;
-      if (exists) {
-        roomsWithIntroVi++;
-      } else {
-        roomsMissingIntroVi++;
-        issues.push({ id: `intro-vi-${roomId}`, file, type: "missing_intro_audio_vi", severity: "warning", message: `Missing intro audio "${introViName}"`, fix: `Generate TTS for room_essay_vi`, autoFixable: false });
-        addAudioJob({ room_id: roomId, field: "intro", lang: "vi", text: essayVi.slice(0, 4000), filename: introViName });
-        addTask({ room_id: roomId, priority: "medium", task_type: "create_intro_audio", description: `Generate Vietnamese intro audio`, suggested_filename: introViName, language: "vi" });
+        issues.push({ 
+          id: `kw-dup-${roomId}-${kw}`, 
+          file, 
+          type: "entry_keyword_duplicate_across_room", 
+          severity: "info", 
+          message: `Keyword "${kw}" used in entries ${indices.join(", ")}`, 
+          autoFixable: false 
+        });
       }
     }
 
@@ -856,16 +945,15 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
     }
     if (medical.found) {
       issues.push({ id: `medical-${roomId}`, file, type: "medical_claims", severity: "warning", message: `Medical claims: ${medical.patterns.join(", ")}`, autoFixable: false });
-      addTask({ room_id: roomId, priority: "high", task_type: "review_content", description: `Review medical claims` });
     }
     if (emergency.found) {
-      issues.push({ id: `emergency-${roomId}`, file, type: "emergency_phrasing", severity: "warning", message: `Emergency phrasing detected - ensure proper framing`, autoFixable: false });
+      issues.push({ id: `emergency-${roomId}`, file, type: "emergency_phrasing", severity: "warning", message: `Emergency phrasing detected`, autoFixable: false });
     }
 
     // Kids crisis blocker
     const effectiveTier = room.tier || inferTierFromRoomId(roomId);
     if (effectiveTier.toLowerCase().includes("kids") && crisis.found) {
-      issues.push({ id: `kids-crisis-${roomId}`, file, type: "kids_crisis_blocker", severity: "error", message: `Kids room contains crisis content - must be removed`, autoFixable: false });
+      issues.push({ id: `kids-crisis-${roomId}`, file, type: "kids_crisis_blocker", severity: "error", message: `Kids room contains crisis content`, autoFixable: false });
       addTask({ room_id: roomId, priority: "critical", task_type: "review_content", description: `URGENT: Remove crisis content from Kids room` });
     }
   }
@@ -876,17 +964,16 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
   // PHASE 3: Orphan audio detection
   // =========================================================================
   const orphanBasenames: string[] = [];
-  if (checkFiles) {
+  if (checkFiles && storageScan.ok) {
     log("Phase 3: Detecting orphan audio files...");
     for (const fullKey of audioIndex.allKeys) {
-      const basename = fullKey.split("/").pop() || fullKey;
+      const basename = (fullKey.split("/").pop() || fullKey).toLowerCase();
       if (!referencedAudioBasenames.has(basename)) {
         orphanBasenames.push(fullKey);
       }
     }
 
     if (orphanBasenames.length > 0) {
-      // Group by prefix for cleaner reporting
       const groups = new Map<string, string[]>();
       for (const path of orphanBasenames) {
         const parts = path.split("/");
@@ -907,7 +994,6 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
         context: { groupCount: groups.size, totalFiles: orphanBasenames.length },
       });
 
-      // Create delete tasks for orphans (grouped)
       for (const [prefix, files] of groups.entries()) {
         addTask({ room_id: `orphans_${prefix}`, priority: "low", task_type: "delete_orphan", description: `Review ${files.length} orphan files in ${prefix}` });
       }
@@ -917,39 +1003,24 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
   }
 
   // =========================================================================
-  // PHASE 4: Apply fixes (repair mode only)
+  // Calculate final stats
   // =========================================================================
-  if (mode === "repair" && roomFixes.size > 0) {
-    log("Phase 4: Applying safe fixes...");
-
-    for (const [roomId, fixes] of roomFixes.entries()) {
-      const { error } = await supabase.from("rooms").update(fixes).eq("id", roomId);
-
-      if (!error) {
-        fixesApplied += Object.keys(fixes).length;
-        log(`Fixed ${Object.keys(fixes).join(", ")} for ${roomId}`);
-      } else {
-        log(`Failed to fix ${roomId}: ${error.message}`);
-        for (const key of Object.keys(fixes)) {
-          const issueId = key === "tier" ? `tier-${roomId}` : key === "schema_id" ? `schema-${roomId}` : key === "domain" ? `domain-${roomId}` : `kw-${roomId}`;
-          fixedIssueIds.delete(issueId);
-        }
-      }
-    }
-
-    log(`Repairs complete: ${fixesApplied} fixes applied`);
-  }
-
-  // Filter out fixed issues
-  const finalIssues = mode === "repair"
-    ? issues.filter(issue => !fixedIssueIds.has(issue.id))
-    : issues;
-
-  const errors = finalIssues.filter(i => i.severity === "error").length;
-  const warnings = finalIssues.filter(i => i.severity === "warning").length;
-  const infos = finalIssues.filter(i => i.severity === "info").length;
+  const errors = issues.filter(i => i.severity === "error").length;
+  const warnings = issues.filter(i => i.severity === "warning").length;
+  const infos = issues.filter(i => i.severity === "info").length;
 
   const durationMs = Math.round(performance.now() - startTime);
+
+  // Audio file stats - based on real storage checks
+  const audioFileStats: AudioFileStats = {
+    referenced: referencedAudioBasenames.size,
+    present: totalAudioPresent + roomsWithIntroEn + roomsWithIntroVi,
+    missing: missingAudioFiles.length,
+    coverage: referencedAudioBasenames.size > 0 
+      ? Math.round(((totalAudioPresent + roomsWithIntroEn + roomsWithIntroVi) / referencedAudioBasenames.size) * 100) 
+      : 100,
+    missingFiles: missingAudioFiles.slice(0, 100),
+  };
 
   const summary: AuditSummary = {
     totalRooms,
@@ -957,9 +1028,9 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
     errors,
     warnings,
     infos,
-    fixed: fixesApplied,
-    audioFilesInBucket: audioIndex.allKeys.size,
-    audioBasenamesInBucket: audioIndex.basenames.size,
+    fixed: 0, // No fixes in read-only mode
+    audioFilesInBucket: storageScan.filesInBucket,
+    audioBasenamesInBucket: storageScan.basenamesInBucket,
     orphanAudioCount: orphanBasenames.length,
     orphanAudioFiles: orphanBasenames.length,
     referencedAudioFiles: referencedAudioBasenames.size,
@@ -967,7 +1038,7 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
     totalAudioPresent,
     totalAudioMissing: entriesMissingAudio,
     entriesMissingAudio,
-    audioCoveragePercent: totalAudioSlots > 0 ? Math.round((totalAudioPresent / totalAudioSlots) * 100) : 100,
+    audioCoveragePercent: audioFileStats.coverage,
     roomsWithIntroEn,
     roomsWithIntroVi,
     roomsMissingIntroEn,
@@ -978,11 +1049,13 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
     durationMs,
   };
 
-  log(`=== Safe Shield V5 Audit Complete ===`);
+  log(`=== Safe Shield V5.1 Audit Complete (READ-ONLY) ===`);
   log(`Duration: ${durationMs}ms | Errors: ${errors} | Warnings: ${warnings} | Infos: ${infos}`);
-  log(`Tasks: ${tasks.length} | Audio Jobs: ${audioJobs.length} | Fixes: ${fixesApplied}`);
+  log(`Storage: ${storageScan.ok ? `${storageScan.filesInBucket} files` : `FAILED - ${storageScan.error}`}`);
+  log(`Audio Coverage: ${audioFileStats.coverage}% (${audioFileStats.present}/${audioFileStats.referenced} present, ${audioFileStats.missing} missing)`);
+  log(`Tasks: ${tasks.length} | Audio Jobs: ${audioJobs.length}`);
 
-  return { issues: finalIssues, tasks, audioJobs, summary, fixesApplied, logs };
+  return { issues, tasks, audioJobs, summary, logs, storageScan, audioFileStats };
 }
 
 // ============================================================================
@@ -1001,13 +1074,9 @@ serve(async (req: Request): Promise<Response> => {
       body = await req.json();
     }
 
-    // Support both "scan" and legacy modes
-    let effectiveMode: AuditMode = "scan";
-    if (body.mode === "repair") effectiveMode = "repair";
-    else if (body.mode === "dry-run") effectiveMode = "dry-run";
-
+    // V5.1: Only scan mode supported (read-only)
     const options: AuditRequestOptions = {
-      mode: effectiveMode,
+      mode: "scan",
       limit: body.limit ? parseInt(body.limit, 10) : undefined,
       roomIdPrefix: body.roomIdPrefix || undefined,
       checkFiles: body.checkFiles !== false,
@@ -1017,15 +1086,17 @@ serve(async (req: Request): Promise<Response> => {
 
     const response: AuditResponse = {
       ok: true,
-      mode: options.mode,
+      mode: "scan",
       stats: result.summary,
       summary: result.summary,
       issues: result.issues,
       tasks: result.tasks,
       audioJobs: result.audioJobs,
-      fixesApplied: result.fixesApplied,
-      fixed: result.fixesApplied,
+      fixesApplied: 0,
+      fixed: 0,
       logs: result.logs,
+      storageScan: result.storageScan,
+      audioFileStats: result.audioFileStats,
     };
 
     return new Response(JSON.stringify(response), {
@@ -1059,6 +1130,8 @@ serve(async (req: Request): Promise<Response> => {
       fixesApplied: 0,
       fixed: 0,
       logs: [`Error: ${err instanceof Error ? err.message : String(err)}`],
+      storageScan: { ok: false, error: err instanceof Error ? err.message : String(err), filesInBucket: 0, basenamesInBucket: 0 },
+      audioFileStats: { referenced: 0, present: 0, missing: 0, coverage: 0, missingFiles: [] },
     };
     return new Response(JSON.stringify(errorResponse), {
       status: 500,
