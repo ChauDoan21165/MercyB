@@ -323,28 +323,43 @@ ${category.files.map((f, i) => `${i + 1}. ${f.path}
                               </span>
                             </div>
                           </div>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            className="border-black text-black flex-shrink-0"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              copyPath(file.path);
-                            }}
-                          >
-                            {copiedPath === file.path ? (
-                              <>
-                                <Check className="h-4 w-4 mr-1 text-green-600" />
-                                Copied!
-                              </>
-                            ) : (
-                              <>
-                                <Copy className="h-4 w-4 mr-1" />
-                                Copy
-                              </>
-                            )}
-                          </Button>
+                          <div className="flex items-center gap-2 flex-shrink-0">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="border-black text-black"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                navigate(`/admin/code-viewer?file=${encodeURIComponent(file.path)}`);
+                              }}
+                            >
+                              <Eye className="h-4 w-4 mr-1" />
+                              View
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="border-black text-black"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                copyPath(file.path);
+                              }}
+                            >
+                              {copiedPath === file.path ? (
+                                <>
+                                  <Check className="h-4 w-4 mr-1 text-green-600" />
+                                  Copied!
+                                </>
+                              ) : (
+                                <>
+                                  <Copy className="h-4 w-4 mr-1" />
+                                  Copy
+                                </>
+                              )}
+                            </Button>
+                          </div>
                         </div>
                       ))}
                     </div>
