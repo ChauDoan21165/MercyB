@@ -99,6 +99,7 @@ const UserSupportConsole = lazy(() => import("./pages/admin/UserSupportConsole")
 const SystemLogs = lazy(() => import("./pages/admin/SystemLogs"));
 const FastAudioScannerPage = lazy(() => import("./pages/admin/FastAudioScannerPage"));
 const EntriesWithoutAudioPage = lazy(() => import("./pages/admin/EntriesWithoutAudioPage"));
+const AudioCoverage = lazy(() => import("./pages/admin/AudioCoverage"));
 const AuditSafeShield = lazy(() => import("./components/admin/AuditSafeShield"));
 const SystemCodeFiles = lazy(() => import("./pages/admin/SystemCodeFiles"));
 const CodeViewer = lazy(() => import("./pages/admin/CodeViewer"));
@@ -296,6 +297,7 @@ const App = () => {
                       <Route path="/admin/audio-upload" element={<AdminRoute><AdminAudioUpload /></AdminRoute>} />
                       <Route path="/admin/audio-scanner" element={<AdminRoute><FastAudioScannerPage /></AdminRoute>} />
                       <Route path="/admin/missing-audio" element={<AdminRoute><EntriesWithoutAudioPage /></AdminRoute>} />
+                      <Route path="/admin/audio-coverage" element={<AdminRoute><AudioCoverage /></AdminRoute>} />
                       <Route path="/admin/moderation" element={<AdminRoute><AdminModeration /></AdminRoute>} />
                       <Route path="/admin/rooms" element={<AdminRoute><AdminRooms /></AdminRoute>} />
                       <Route path="/admin/rooms/new" element={<AdminRoute><AdminRoomEditor /></AdminRoute>} />
