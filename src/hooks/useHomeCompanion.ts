@@ -3,37 +3,33 @@ import { getCompanionEnabled } from './useCompanionSession';
 import { preloadCompanionLines, getRandomCompanionLineAsync } from '@/lib/companionLines';
 
 /**
- * Simple companion hook for home/landing page
- * Shows a greeting bubble for first-time or returning visitors
+ * Enhanced companion hook for home/landing page
+ * Shows a greeting bubble - NO auto-hide (user must close it)
+ * With dock icon support when closed
  */
 export function useHomeCompanion() {
   const [visible, setVisible] = useState(false);
   const [text, setText] = useState('');
+  const [wasClosed, setWasClosed] = useState(false);
   const hasTriggeredRef = useRef(false);
 
   useEffect(() => {
-    // Preload lines early
     preloadCompanionLines();
   }, []);
 
   useEffect(() => {
-    // Prevent double trigger
     if (hasTriggeredRef.current) return;
     
-    // Check for debug mode - force show companion
     const params = new URLSearchParams(window.location.search);
     const debugMode = params.get('debug') === 'companion';
     
-    // Check if companion is enabled (unless debug mode)
     if (!debugMode && !getCompanionEnabled()) return;
 
-    // Check if we already showed greeting this session (unless debug mode)
     const sessionKey = 'mercy_home_greeted';
     if (!debugMode && sessionStorage.getItem(sessionKey)) return;
     
     hasTriggeredRef.current = true;
 
-    // Show greeting after short delay
     const loadAndShow = async () => {
       try {
         const line = await getRandomCompanionLineAsync('greeting');
@@ -45,8 +41,7 @@ export function useHomeCompanion() {
           }
         }
       } catch (err) {
-        // Use fallback
-        setText("Welcome! I'm Mercy, your gentle companion.");
+        setText("Welcome! I'm Mercy, your gentle companion on this journey.");
         setVisible(true);
         if (!debugMode) {
           sessionStorage.setItem(sessionKey, 'true');
@@ -58,22 +53,25 @@ export function useHomeCompanion() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Auto-hide after 6 seconds (12 seconds in debug mode)
-  useEffect(() => {
-    if (!visible || !text) return;
-    const params = new URLSearchParams(window.location.search);
-    const debugMode = params.get('debug') === 'companion';
-    const hideDelay = debugMode ? 12000 : 6000;
-    const timer = setTimeout(() => {
-      setVisible(false);
-    }, hideDelay);
-    return () => clearTimeout(timer);
-  }, [visible, text]);
+  // NO AUTO-HIDE - Mercy stays until user closes her
 
   const hide = useCallback(() => {
     setVisible(false);
+    setWasClosed(true);
   }, []);
 
-  // Only return visible true if we have text
-  return { visible: visible && !!text, text, hide };
+  const show = useCallback(() => {
+    if (text) {
+      setVisible(true);
+      setWasClosed(false);
+    }
+  }, [text]);
+
+  return { 
+    visible: visible && !!text, 
+    text, 
+    hide,
+    show,
+    showDock: wasClosed && !!text && !visible
+  };
 }

@@ -30,6 +30,9 @@ import { HighlightedContent } from "@/components/HighlightedContent";
 import { KeywordAudioCopyDot } from "@/components/admin/KeywordAudioCopyDot";
 import { AdminRoomTools } from "@/components/admin/AdminCopyTools";
 import { PairedHighlightedContent } from "@/components/PairedHighlightedContent";
+import { CompanionBubble } from "@/components/companion/CompanionBubble";
+import { MercyDockIcon } from "@/components/companion/MercyDockIcon";
+import { useRoomCompanion } from "@/hooks/useRoomCompanion";
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { messageSchema } from "@/lib/inputValidation";
@@ -69,6 +72,7 @@ const ChatHub = () => {
   const { roomId } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const mercyCompanion = useRoomCompanion(roomId);
   const [mainMessages, setMainMessages] = useState<Message[]>([]);
   const [mainInput, setMainInput] = useState("");
   const [feedbackInput, setFeedbackInput] = useState("");
@@ -1093,6 +1097,20 @@ questionsUsed={creditInfo?.questionsUsed ?? 0}
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
+    
+    {/* Mercy Companion - Persistent Host in Rooms */}
+    <CompanionBubble
+      text={mercyCompanion.text}
+      visible={mercyCompanion.visible}
+      onClose={mercyCompanion.hide}
+      title="Mercy"
+      onMuteRoom={mercyCompanion.muteRoom}
+      showMuteOption={true}
+    />
+    <MercyDockIcon 
+      visible={mercyCompanion.showDock} 
+      onClick={mercyCompanion.show} 
+    />
     </>
   );
 };
