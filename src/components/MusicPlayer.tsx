@@ -199,6 +199,15 @@ const TRACKS = [
   { id: '175', name: 'Quiet Time (1)', url: '/audio/2019-04-20_-_Quiet_Time_-_David_Fesliyan-2.mp3' },
   { id: '176', name: 'Tranquility (1)', url: '/audio/2019-04-26_-_Tranquility_-_www.fesliyanstudios.com-2.mp3' },
   { id: '177', name: 'In A Quiet Room I Open My Mind', url: '/audio/in_a_quiet_room_i_open_my_mind.mp3' },
+  { id: '178', name: 'When Mercy Looks at Me (3)', url: '/audio/when_mercy_looks_at_me_3.mp3' },
+  { id: '179', name: 'When Mercy Looks at Me (2)', url: '/audio/when_mercy_looks_at_me_2.mp3' },
+  { id: '180', name: 'When Mercy Looks at Me (1)', url: '/audio/when_mercy_looks_at_me_1.mp3' },
+  { id: '181', name: 'When Mercy Looks at Me', url: '/audio/when_mercy_looks_at_me.mp3' },
+  { id: '182', name: 'Heart of the Blade (1)', url: '/audio/heart_of_the_blade_1.mp3' },
+  { id: '183', name: 'Heart of the Blade', url: '/audio/heart_of_the_blade.mp3' },
+  { id: '184', name: 'Rise With Mercy', url: '/audio/rise_with_mercy.mp3' },
+  { id: '185', name: 'Where Mercy Finds Me (5)', url: '/audio/where_mercy_finds_me_5.mp3' },
+  { id: '186', name: 'Where Mercy Finds Me (4)', url: '/audio/where_mercy_finds_me_4.mp3' },
 ];
 
 export const MusicPlayer = () => {
