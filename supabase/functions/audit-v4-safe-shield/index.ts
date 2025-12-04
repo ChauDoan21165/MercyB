@@ -1,5 +1,5 @@
 // supabase/functions/audit-v4-safe-shield/index.ts
-// Full System Sync Auditor - Safe Shield V5.1
+// Full System Sync Auditor - Safe Shield V5.2
 // NON-DESTRUCTIVE: Only detects issues and generates fix tasks + audio jobs
 // NO DATABASE WRITES - read-only audit mode
 // deno-lint-ignore-file no-explicit-any
@@ -30,7 +30,7 @@ const AUDIO_BUCKET = "audio";
 
 type AuditMode = "dry-run" | "scan";
 type AuditSeverity = "error" | "warning" | "info";
-type TaskType = "fix_json" | "fix_audio" | "create_intro_audio" | "fill_keywords" | "rewrite_essay" | "review_content" | "delete_orphan" | "generate_entry_tts" | "generate_intro_tts_en" | "generate_intro_tts_vi";
+type TaskType = "generate_tts" | "generate_entry_tts" | "generate_intro_tts" | "fix_json" | "fix_audio" | "fill_keywords" | "rewrite_essay" | "review_content" | "delete_orphan";
 type TaskPriority = "low" | "medium" | "high" | "critical";
 
 type AuditIssueType =
@@ -58,7 +58,6 @@ type AuditIssueType =
   | "emergency_phrasing" | "kids_crisis_blocker" | "kids_blocker_detected"
   | "corrupt_characters_detected"
   | "deprecated_field_present" | "unknown_entry_key" | "unknown_field_present"
-  | "tts_job_generated" | "tts_intro_job_generated"
   | "general_warning" | "general_info";
 
 interface AuditIssue {
@@ -71,6 +70,16 @@ interface AuditIssue {
   autoFixable?: boolean;
   orphanList?: string[];
   context?: Record<string, unknown>;
+}
+
+interface TTSTask {
+  taskId: string;
+  taskType: "generate_tts" | "generate_entry_tts" | "generate_intro_tts";
+  roomId: string;
+  entrySlug: string | null;
+  language: "en" | "vi";
+  filename: string;
+  text: string;
 }
 
 interface AuditTaskSuggestion {
@@ -101,23 +110,37 @@ interface AudioFileStats {
   missingFiles: string[];
 }
 
+interface IntroStats {
+  withIntroEn: number;
+  missingIntroEn: number;
+  withIntroVi: number;
+  missingIntroVi: number;
+}
+
 interface StorageScanResult {
   ok: boolean;
   error?: string;
+  fileCount: number;
   filesInBucket: number;
   basenamesInBucket: number;
 }
 
 interface AuditSummary {
   totalRooms: number;
+  totalEntries: number;
   scannedRooms: number;
   errors: number;
   warnings: number;
   infos: number;
   fixed: number;
+  audio: AudioFileStats;
+  intro: IntroStats;
+  storageScan: StorageScanResult;
+  orphanAudioCount: number;
+  referencedAudioCount: number;
+  // Legacy fields for backward compatibility
   audioFilesInBucket: number;
   audioBasenamesInBucket: number;
-  orphanAudioCount: number;
   orphanAudioFiles: number;
   referencedAudioFiles: number;
   totalAudioSlots: number;
@@ -149,8 +172,10 @@ interface AuditResponse {
   stats: AuditSummary;
   summary: AuditSummary;
   issues: AuditIssue[];
-  tasks: AuditTaskSuggestion[];
+  tasks: TTSTask[];
+  legacyTasks: AuditTaskSuggestion[];
   audioJobs: AudioJob[];
+  orphanFiles: string[];
   fixesApplied: number;
   fixed: number;
   logs: string[];
@@ -174,7 +199,7 @@ type DbRoom = {
   room_essay_vi?: string | null;
   keywords?: string[] | null;
   entries?: unknown;
-  // Intro audio fields
+  // Intro audio fields (canonical schema)
   room_intro_en?: string | null;
   room_intro_vi?: string | null;
   room_intro_audio_en?: string | null;
@@ -272,6 +297,37 @@ function toSafeFilename(str: string): string {
   return str.toLowerCase().replace(/[^a-z0-9_-]/g, "_").replace(/_+/g, "_").replace(/^_|_$/g, "");
 }
 
+/**
+ * Normalize audio filename for consistent comparison:
+ * - lowercase
+ * - remove leading /audio/ or audio/
+ * - remove querystrings
+ * - convert spaces to underscores
+ * - ensure .mp3 extension
+ */
+function normalizeAudioFilename(filename: string): string {
+  if (!filename || typeof filename !== "string") return "";
+  
+  let normalized = filename.trim().toLowerCase();
+  
+  // Remove leading paths like /audio/, audio/, /
+  normalized = normalized.replace(/^\/?(audio\/)?/, "");
+  
+  // Remove querystrings
+  const qIndex = normalized.indexOf("?");
+  if (qIndex > -1) normalized = normalized.slice(0, qIndex);
+  
+  // Convert spaces to underscores
+  normalized = normalized.replace(/\s+/g, "_");
+  
+  // Ensure .mp3 extension
+  if (!normalized.endsWith(".mp3")) {
+    normalized = normalized.replace(/\.[^.]+$/, "") + ".mp3";
+  }
+  
+  return normalized;
+}
+
 function inferTierFromRoomId(roomId: string): string {
   const idLower = roomId.toLowerCase();
   for (const { pattern, label } of TIER_PRIORITY) {
@@ -338,7 +394,7 @@ function detectTtsUnsafe(text: string): { unsafe: boolean; reasons: string[] } {
 }
 
 // ============================================================================
-// AUDIO INDEX BUILDER - with pagination
+// AUDIO INDEX BUILDER - with pagination (handles 4000+ files)
 // ============================================================================
 
 async function buildAudioIndex(log: (msg: string) => void): Promise<{ index: AudioIndex; scanResult: StorageScanResult }> {
@@ -373,7 +429,7 @@ async function buildAudioIndex(log: (msg: string) => void): Promise<{ index: Aud
           if (!obj.name) continue;
           const fullPath = path ? `${path}/${obj.name}` : obj.name;
           
-          // If metadata is null, it's a folder
+          // If metadata is null, it's a folder - recurse into it
           if (obj.metadata === null) {
             await listFolderRecursive(fullPath);
           } else {
@@ -396,36 +452,48 @@ async function buildAudioIndex(log: (msg: string) => void): Promise<{ index: Aud
   }
 
   try {
+    log("Starting storage scan with pagination...");
     await listFolderRecursive("");
+    log(`Storage scan complete: found ${allKeys.length} files`);
   } catch (err) {
     scanOk = false;
     scanError = `Failed to build audio index: ${err}`;
     log(`ERROR: ${scanError}`);
   }
 
+  // Build basename index for fast lookup
+  const basenames = new Set<string>();
+  for (const key of allKeys) {
+    const basename = (key.split("/").pop() || key).toLowerCase();
+    basenames.add(basename);
+  }
+
   const index: AudioIndex = {
     allKeys: new Set(allKeys),
-    basenames: new Set(allKeys.map(k => k.split("/").pop()?.toLowerCase() || k.toLowerCase())),
+    basenames,
   };
 
   const scanResult: StorageScanResult = {
     ok: scanOk,
     error: scanError,
+    fileCount: allKeys.length,
     filesInBucket: allKeys.length,
-    basenamesInBucket: index.basenames.size,
+    basenamesInBucket: basenames.size,
   };
 
   return { index, scanResult };
 }
 
 // ============================================================================
-// MAIN AUDIT FUNCTION - V5.1 (Read-Only)
+// MAIN AUDIT FUNCTION - V5.2 (Read-Only, Real Storage Check)
 // ============================================================================
 
 async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
   issues: AuditIssue[];
-  tasks: AuditTaskSuggestion[];
+  tasks: TTSTask[];
+  legacyTasks: AuditTaskSuggestion[];
   audioJobs: AudioJob[];
+  orphanFiles: string[];
   summary: AuditSummary;
   logs: string[];
   storageScan: StorageScanResult;
@@ -436,8 +504,10 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
 
   const logs: string[] = [];
   const issues: AuditIssue[] = [];
-  const tasks: AuditTaskSuggestion[] = [];
+  const tasks: TTSTask[] = [];
+  const legacyTasks: AuditTaskSuggestion[] = [];
   const audioJobs: AudioJob[] = [];
+  let taskIdCounter = 0;
 
   const log = (msg: string) => {
     const timestamp = new Date().toISOString().split("T")[1].slice(0, 12);
@@ -446,26 +516,28 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
     console.log(`[SafeShield] ${msg}`);
   };
 
-  log(`=== Safe Shield V5.1 Audit Started (READ-ONLY) ===`);
-  log(`Limit: ${limit || "all"}, Prefix: ${roomIdPrefix || "none"}, CheckFiles: ${checkFiles}`);
+  log(`=== Safe Shield V5.2 Audit Started (READ-ONLY) ===`);
+  log(`Options: limit=${limit || "all"}, prefix=${roomIdPrefix || "none"}, checkFiles=${checkFiles}`);
 
   // =========================================================================
   // PHASE 0: Build audio index from storage
   // =========================================================================
   let audioIndex: AudioIndex = { allKeys: new Set(), basenames: new Set() };
-  let storageScan: StorageScanResult = { ok: false, error: "Not scanned", filesInBucket: 0, basenamesInBucket: 0 };
+  let storageScan: StorageScanResult = { ok: false, error: "Not scanned", fileCount: 0, filesInBucket: 0, basenamesInBucket: 0 };
   
   if (checkFiles) {
-    log("Phase 0: Building audio index from storage (with pagination)...");
+    log("Phase 0: Building audio index from Supabase storage...");
     const result = await buildAudioIndex(log);
     audioIndex = result.index;
     storageScan = result.scanResult;
     
     if (storageScan.ok) {
-      log(`Audio index ready: ${storageScan.filesInBucket} files, ${storageScan.basenamesInBucket} basenames`);
+      log(`Audio index ready: ${storageScan.fileCount} files, ${storageScan.basenamesInBucket} unique basenames`);
     } else {
       log(`WARNING: Storage scan failed - ${storageScan.error}`);
     }
+  } else {
+    log("Phase 0: Skipping storage scan (checkFiles=false)");
   }
 
   // =========================================================================
@@ -493,13 +565,14 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
   const totalRooms = rooms.length;
   log(`Loaded ${totalRooms} rooms from database`);
 
-  // Tracking sets
+  // Tracking sets for audio comparison
   const seenIds = new Set<string>();
-  const referencedAudioBasenames = new Set<string>();
+  const referencedAudioFilenames = new Set<string>();
   const missingAudioFiles: string[] = [];
 
   // Metrics
   let scannedRooms = 0;
+  let totalEntries = 0;
   let totalAudioSlots = 0;
   let totalAudioPresent = 0;
   let entriesMissingAudio = 0;
@@ -508,8 +581,29 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
   let roomsMissingIntroEn = 0;
   let roomsMissingIntroVi = 0;
 
-  const addTask = (task: AuditTaskSuggestion) => {
-    tasks.push(task);
+  // Add TTS task
+  const addTask = (
+    roomId: string,
+    entrySlug: string | null,
+    lang: "en" | "vi",
+    filename: string,
+    text: string,
+    taskType: "generate_entry_tts" | "generate_intro_tts"
+  ) => {
+    tasks.push({
+      taskId: `tts_${++taskIdCounter}`,
+      taskType,
+      roomId,
+      entrySlug,
+      language: lang,
+      filename,
+      text: text.slice(0, 4000), // Limit for TTS
+    });
+  };
+
+  // Add legacy task (backward compatibility)
+  const addLegacyTask = (task: AuditTaskSuggestion) => {
+    legacyTasks.push(task);
   };
 
   const addAudioJob = (job: AudioJob) => {
@@ -519,8 +613,8 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
   // Check if audio file exists in storage
   const audioFileExists = (filename: string): boolean => {
     if (!storageScan.ok) return true; // Can't verify, assume exists
-    const basename = filename.split("/").pop()?.toLowerCase() || filename.toLowerCase();
-    return audioIndex.basenames.has(basename);
+    const normalized = normalizeAudioFilename(filename);
+    return audioIndex.basenames.has(normalized);
   };
 
   // =========================================================================
@@ -545,17 +639,17 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
     if (!room.tier) {
       const inferredTier = inferTierFromRoomId(roomId);
       issues.push({ id: `tier-${roomId}`, file, type: "missing_tier", severity: "warning", message: `Missing tier`, fix: `Should be "${inferredTier}"`, autoFixable: false });
-      addTask({ room_id: roomId, priority: "medium", task_type: "fix_json", description: `Set tier to "${inferredTier}"` });
+      addLegacyTask({ room_id: roomId, priority: "medium", task_type: "fix_json", description: `Set tier to "${inferredTier}"` });
     } else if (!isCanonicalTier(room.tier)) {
       const inferredTier = inferTierFromRoomId(roomId);
       issues.push({ id: `tier-${roomId}`, file, type: "invalid_tier", severity: "warning", message: `Invalid tier: "${room.tier}"`, fix: `Should be "${inferredTier}"`, autoFixable: false });
-      addTask({ room_id: roomId, priority: "medium", task_type: "fix_json", description: `Fix invalid tier "${room.tier}" → "${inferredTier}"` });
+      addLegacyTask({ room_id: roomId, priority: "medium", task_type: "fix_json", description: `Fix invalid tier "${room.tier}" → "${inferredTier}"` });
     }
 
     // Schema ID
     if (!room.schema_id) {
       issues.push({ id: `schema-${roomId}`, file, type: "missing_schema_id", severity: "warning", message: `Missing schema_id`, fix: `Should be "mercy-blade-v1"`, autoFixable: false });
-      addTask({ room_id: roomId, priority: "low", task_type: "fix_json", description: `Set schema_id to "mercy-blade-v1"` });
+      addLegacyTask({ room_id: roomId, priority: "low", task_type: "fix_json", description: `Set schema_id to "mercy-blade-v1"` });
     }
 
     // Domain
@@ -563,17 +657,17 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
       const currentTier = room.tier || inferTierFromRoomId(roomId);
       const inferredDomain = inferDomainFromTier(currentTier);
       issues.push({ id: `domain-${roomId}`, file, type: "missing_domain", severity: "warning", message: `Missing domain`, fix: `Should be "${inferredDomain}"`, autoFixable: false });
-      addTask({ room_id: roomId, priority: "low", task_type: "fix_json", description: `Set domain to "${inferredDomain}"` });
+      addLegacyTask({ room_id: roomId, priority: "low", task_type: "fix_json", description: `Set domain to "${inferredDomain}"` });
     }
 
     // Titles
     if (!room.title_en) {
       issues.push({ id: `title_en-${roomId}`, file, type: "missing_title_en", severity: "warning", message: `Missing title_en`, autoFixable: false });
-      addTask({ room_id: roomId, priority: "high", task_type: "review_content", description: `Add English title`, language: "en" });
+      addLegacyTask({ room_id: roomId, priority: "high", task_type: "review_content", description: `Add English title`, language: "en" });
     }
     if (!room.title_vi) {
       issues.push({ id: `title_vi-${roomId}`, file, type: "missing_title_vi", severity: "warning", message: `Missing title_vi`, autoFixable: false });
-      addTask({ room_id: roomId, priority: "high", task_type: "review_content", description: `Add Vietnamese title`, language: "vi" });
+      addLegacyTask({ room_id: roomId, priority: "high", task_type: "review_content", description: `Add Vietnamese title`, language: "vi" });
     }
 
     // --- PHASE 2B: Essay validation ---
@@ -582,7 +676,7 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
 
     if (!essayEn) {
       issues.push({ id: `essay_en-${roomId}`, file, type: "missing_room_essay_en", severity: "warning", message: `Missing room_essay_en`, autoFixable: false });
-      addTask({ room_id: roomId, priority: "medium", task_type: "rewrite_essay", description: `Write English essay`, language: "en" });
+      addLegacyTask({ room_id: roomId, priority: "medium", task_type: "rewrite_essay", description: `Write English essay`, language: "en" });
     } else {
       const wc = countWords(essayEn);
       if (wc < 25) {
@@ -601,7 +695,7 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
 
     if (!essayVi) {
       issues.push({ id: `essay_vi-${roomId}`, file, type: "missing_room_essay_vi", severity: "warning", message: `Missing room_essay_vi`, autoFixable: false });
-      addTask({ room_id: roomId, priority: "medium", task_type: "rewrite_essay", description: `Write Vietnamese essay`, language: "vi" });
+      addLegacyTask({ room_id: roomId, priority: "medium", task_type: "rewrite_essay", description: `Write Vietnamese essay`, language: "vi" });
     } else {
       const wc = countWords(essayVi);
       if (wc < 25) {
@@ -618,85 +712,80 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
       }
     }
 
-    // --- PHASE 2C: Intro audio validation (new schema) ---
-    // If room_intro_en has content, it should have intro audio
-    const introTextEn = essayEn; // Using essay as intro text for now
-    const introTextVi = essayVi;
-    const introAudioEn = `${roomId}_intro_en.mp3`;
-    const introAudioVi = `${roomId}_intro_vi.mp3`;
+    // --- PHASE 2C: Intro audio validation (canonical schema) ---
+    // Use room_intro_en/vi if available, otherwise fall back to essay
+    const introTextEn = (room as any).room_intro_en?.trim() || essayEn;
+    const introTextVi = (room as any).room_intro_vi?.trim() || essayVi;
+    
+    // Check for existing intro audio fields or generate canonical filenames
+    const introAudioEnField = (room as any).room_intro_audio_en?.trim() || "";
+    const introAudioViField = (room as any).room_intro_audio_vi?.trim() || "";
+    const introAudioEnFilename = introAudioEnField || `${roomId}_intro_en.mp3`;
+    const introAudioViFilename = introAudioViField || `${roomId}_intro_vi.mp3`;
 
-    // EN intro audio check
+    // EN intro audio check - only if room has intro text
     if (introTextEn) {
-      referencedAudioBasenames.add(introAudioEn.toLowerCase());
-      const exists = checkFiles ? audioFileExists(introAudioEn) : true;
+      const normalizedFilename = normalizeAudioFilename(introAudioEnFilename);
+      referencedAudioFilenames.add(normalizedFilename);
+      
+      const exists = checkFiles ? audioFileExists(normalizedFilename) : true;
       if (exists) {
         roomsWithIntroEn++;
       } else {
         roomsMissingIntroEn++;
-        missingAudioFiles.push(introAudioEn);
+        missingAudioFiles.push(normalizedFilename);
         issues.push({ 
           id: `intro-en-${roomId}`, 
           file, 
           type: "missing_intro_audio_en", 
           severity: "warning", 
-          message: `Room has intro text but missing audio "${introAudioEn}"`, 
+          message: `Room has intro text but missing EN audio "${normalizedFilename}"`, 
           fix: `Generate TTS for room intro`, 
           autoFixable: false 
         });
-        addAudioJob({ room_id: roomId, field: "intro", lang: "en", text: introTextEn.slice(0, 4000), filename: introAudioEn });
-        addTask({ 
-          room_id: roomId, 
-          priority: "medium", 
-          task_type: "generate_intro_tts_en", 
-          description: `Generate English intro audio`, 
-          suggested_filename: introAudioEn, 
-          language: "en" 
-        });
+        addAudioJob({ room_id: roomId, field: "intro", lang: "en", text: introTextEn.slice(0, 4000), filename: normalizedFilename });
+        addTask(roomId, null, "en", normalizedFilename, introTextEn, "generate_intro_tts");
       }
     }
 
-    // VI intro audio check
+    // VI intro audio check - only if room has intro text
     if (introTextVi) {
-      referencedAudioBasenames.add(introAudioVi.toLowerCase());
-      const exists = checkFiles ? audioFileExists(introAudioVi) : true;
+      const normalizedFilename = normalizeAudioFilename(introAudioViFilename);
+      referencedAudioFilenames.add(normalizedFilename);
+      
+      const exists = checkFiles ? audioFileExists(normalizedFilename) : true;
       if (exists) {
         roomsWithIntroVi++;
       } else {
         roomsMissingIntroVi++;
-        missingAudioFiles.push(introAudioVi);
+        missingAudioFiles.push(normalizedFilename);
         issues.push({ 
           id: `intro-vi-${roomId}`, 
           file, 
           type: "missing_intro_audio_vi", 
           severity: "warning", 
-          message: `Room has intro text but missing audio "${introAudioVi}"`, 
+          message: `Room has intro text but missing VI audio "${normalizedFilename}"`, 
           fix: `Generate TTS for room intro`, 
           autoFixable: false 
         });
-        addAudioJob({ room_id: roomId, field: "intro", lang: "vi", text: introTextVi.slice(0, 4000), filename: introAudioVi });
-        addTask({ 
-          room_id: roomId, 
-          priority: "medium", 
-          task_type: "generate_intro_tts_vi", 
-          description: `Generate Vietnamese intro audio`, 
-          suggested_filename: introAudioVi, 
-          language: "vi" 
-        });
+        addAudioJob({ room_id: roomId, field: "intro", lang: "vi", text: introTextVi.slice(0, 4000), filename: normalizedFilename });
+        addTask(roomId, null, "vi", normalizedFilename, introTextVi, "generate_intro_tts");
       }
     }
 
     // --- PHASE 2D: Entries structure validation ---
     const entries = Array.isArray(room.entries) ? (room.entries as any[]) : [];
+    totalEntries += entries.length;
 
     if (!Array.isArray(room.entries)) {
       issues.push({ id: `entries-${roomId}`, file, type: "missing_entries", severity: "error", message: `Missing entries array`, autoFixable: false });
-      addTask({ room_id: roomId, priority: "critical", task_type: "fix_json", description: `Add entries array` });
+      addLegacyTask({ room_id: roomId, priority: "critical", task_type: "fix_json", description: `Add entries array` });
       continue;
     }
 
     if (entries.length === 0) {
       issues.push({ id: `empty-entries-${roomId}`, file, type: "missing_entries", severity: "error", message: `Entries array is empty`, autoFixable: false });
-      addTask({ room_id: roomId, priority: "critical", task_type: "fix_json", description: `Add entries to empty room` });
+      addLegacyTask({ room_id: roomId, priority: "critical", task_type: "fix_json", description: `Add entries to empty room` });
       continue;
     }
 
@@ -706,7 +795,7 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
 
     if (!entries.every((e: any) => typeof e === "object" && e !== null)) {
       issues.push({ id: `malformed-${roomId}`, file, type: "malformed_entries", severity: "error", message: `Entries contains non-object elements`, autoFixable: false });
-      addTask({ room_id: roomId, priority: "critical", task_type: "fix_json", description: `Fix malformed entries` });
+      addLegacyTask({ room_id: roomId, priority: "critical", task_type: "fix_json", description: `Fix malformed entries` });
       continue;
     }
 
@@ -740,7 +829,7 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
       const slug = entry.slug || entry.artifact_id || entry.id;
       if (!slug) {
         issues.push({ id: `slug-${entryPrefix}`, file, type: "missing_slug", severity: "warning", message: `Entry ${i} missing identifier`, autoFixable: false });
-        addTask({ room_id: roomId, priority: "medium", task_type: "fix_json", description: `Add slug to entry ${i}` });
+        addLegacyTask({ room_id: roomId, priority: "medium", task_type: "fix_json", description: `Add slug to entry ${i}` });
       } else {
         if (slugs.has(slug)) {
           issues.push({ id: `dup-slug-${entryPrefix}`, file, type: "duplicate_slug", severity: "error", message: `Duplicate slug "${slug}"`, autoFixable: false });
@@ -757,7 +846,7 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
 
       if (!Array.isArray(kwEn) || kwEn.length === 0) {
         issues.push({ id: `kw_en-${entryPrefix}`, file, type: "entry_keyword_missing_en", severity: "warning", message: `Entry "${entrySlug}" missing keywords_en`, autoFixable: false });
-        addTask({ room_id: roomId, priority: "medium", task_type: "fill_keywords", description: `Add English keywords to entry "${entrySlug}"`, language: "en" });
+        addLegacyTask({ room_id: roomId, priority: "medium", task_type: "fill_keywords", description: `Add English keywords to entry "${entrySlug}"`, language: "en" });
       } else {
         if (kwEn.length < 3) {
           issues.push({ id: `kw_few-${entryPrefix}`, file, type: "entry_keyword_too_few", severity: "info", message: `Entry "${entrySlug}" has ${kwEn.length} keywords (3-5 recommended)`, autoFixable: false });
@@ -773,7 +862,7 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
 
       if (!Array.isArray(kwVi) || kwVi.length === 0) {
         issues.push({ id: `kw_vi-${entryPrefix}`, file, type: "entry_keyword_missing_vi", severity: "warning", message: `Entry "${entrySlug}" missing keywords_vi`, autoFixable: false });
-        addTask({ room_id: roomId, priority: "medium", task_type: "fill_keywords", description: `Add Vietnamese keywords to entry "${entrySlug}"`, language: "vi" });
+        addLegacyTask({ room_id: roomId, priority: "medium", task_type: "fill_keywords", description: `Add Vietnamese keywords to entry "${entrySlug}"`, language: "vi" });
       }
 
       // --- PHASE 2F: Copy validation ---
@@ -786,7 +875,7 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
 
       if (!copyEn) {
         issues.push({ id: `copy_en-${entryPrefix}`, file, type: "missing_copy_en", severity: "error", message: `Entry "${entrySlug}" missing copy.en`, autoFixable: false });
-        addTask({ room_id: roomId, priority: "critical", task_type: "review_content", description: `Add English copy to entry "${entrySlug}"`, language: "en" });
+        addLegacyTask({ room_id: roomId, priority: "critical", task_type: "review_content", description: `Add English copy to entry "${entrySlug}"`, language: "en" });
       } else {
         const wc = countWords(copyEn);
         if (wc < 30 || wc > 260) {
@@ -809,7 +898,7 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
 
       if (!copyVi) {
         issues.push({ id: `copy_vi-${entryPrefix}`, file, type: "missing_copy_vi", severity: "error", message: `Entry "${entrySlug}" missing copy.vi`, autoFixable: false });
-        addTask({ room_id: roomId, priority: "critical", task_type: "review_content", description: `Add Vietnamese copy to entry "${entrySlug}"`, language: "vi" });
+        addLegacyTask({ room_id: roomId, priority: "critical", task_type: "review_content", description: `Add Vietnamese copy to entry "${entrySlug}"`, language: "vi" });
       } else {
         const wc = countWords(copyVi);
         if (wc < 30 || wc > 260) {
@@ -827,11 +916,16 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
         }
       }
 
-      // --- PHASE 2G: Entry audio validation with real storage check ---
+      // --- PHASE 2G: Entry audio validation with REAL storage check ---
       totalAudioSlots++;
-      const audio = entry.audio || entry.audio_en;
       
-      if (!audio || (typeof audio === "string" && audio.trim() === "")) {
+      // Collect all audio references from entry
+      const audioRefs: string[] = [];
+      if (entry.audio) audioRefs.push(String(entry.audio));
+      if (entry.audio_en) audioRefs.push(String(entry.audio_en));
+      if (entry.audio_vi) audioRefs.push(String(entry.audio_vi));
+
+      if (audioRefs.length === 0) {
         entriesMissingAudio++;
         const suggestedFilename = `${toSafeFilename(roomId)}_${toSafeFilename(entrySlug)}_en.mp3`;
         missingAudioFiles.push(suggestedFilename);
@@ -855,54 +949,43 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
             text: copyEn.slice(0, 4000), 
             filename: suggestedFilename 
           });
-          addTask({ 
-            room_id: roomId, 
-            entry_slug: entrySlug,
-            priority: "high", 
-            task_type: "generate_entry_tts", 
-            description: `Generate TTS for entry "${entrySlug}"`, 
-            suggested_filename: suggestedFilename, 
-            language: "en" 
-          });
+          addTask(roomId, entrySlug, "en", suggestedFilename, copyEn, "generate_entry_tts");
         }
-      } else if (typeof audio === "string") {
-        const trimmed = audio.trim().replace(/^\/+/, "");
-        const basename = trimmed.split("/").pop() || trimmed;
-        referencedAudioBasenames.add(basename.toLowerCase());
-        
-        // Real storage existence check
-        if (checkFiles && storageScan.ok) {
-          const exists = audioFileExists(basename);
-          if (exists) {
-            totalAudioPresent++;
-          } else {
-            entriesMissingAudio++;
-            missingAudioFiles.push(basename);
-            issues.push({ 
-              id: `audio-file-${entryPrefix}`, 
-              file, 
-              type: "missing_audio_file", 
-              severity: "error", 
-              message: `Entry "${entrySlug}" references "${basename}" but file not found in storage`, 
-              fix: "Upload or generate audio file", 
-              autoFixable: false 
-            });
-            
-            if (copyEn) {
-              addTask({ 
-                room_id: roomId, 
-                entry_slug: entrySlug,
-                priority: "high", 
-                task_type: "generate_entry_tts", 
-                description: `Generate TTS for entry "${entrySlug}" (missing: ${basename})`, 
-                suggested_filename: basename, 
-                language: "en" 
+      } else {
+        // Check each referenced audio file against storage
+        for (const audioRef of audioRefs) {
+          const trimmed = audioRef.trim();
+          if (!trimmed) continue;
+          
+          const normalized = normalizeAudioFilename(trimmed);
+          referencedAudioFilenames.add(normalized);
+          
+          // Real storage existence check
+          if (checkFiles && storageScan.ok) {
+            const exists = audioFileExists(normalized);
+            if (exists) {
+              totalAudioPresent++;
+            } else {
+              entriesMissingAudio++;
+              missingAudioFiles.push(normalized);
+              issues.push({ 
+                id: `audio-file-${entryPrefix}-${normalized}`, 
+                file, 
+                type: "missing_audio_file", 
+                severity: "error", 
+                message: `Entry "${entrySlug}" references "${normalized}" but file not found in storage`, 
+                fix: "Upload or generate audio file", 
+                autoFixable: false 
               });
+              
+              if (copyEn) {
+                addTask(roomId, entrySlug, "en", normalized, copyEn, "generate_entry_tts");
+              }
             }
+          } else {
+            // Can't verify, count as present
+            totalAudioPresent++;
           }
-        } else {
-          // Can't verify, count as present
-          totalAudioPresent++;
         }
       }
     }
@@ -941,7 +1024,7 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
 
     if (crisis.found) {
       issues.push({ id: `crisis-${roomId}`, file, type: "crisis_content", severity: "error", message: `Crisis content: ${crisis.patterns.join(", ")}`, autoFixable: false });
-      addTask({ room_id: roomId, priority: "critical", task_type: "review_content", description: `Review crisis content patterns` });
+      addLegacyTask({ room_id: roomId, priority: "critical", task_type: "review_content", description: `Review crisis content patterns` });
     }
     if (medical.found) {
       issues.push({ id: `medical-${roomId}`, file, type: "medical_claims", severity: "warning", message: `Medical claims: ${medical.patterns.join(", ")}`, autoFixable: false });
@@ -954,28 +1037,28 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
     const effectiveTier = room.tier || inferTierFromRoomId(roomId);
     if (effectiveTier.toLowerCase().includes("kids") && crisis.found) {
       issues.push({ id: `kids-crisis-${roomId}`, file, type: "kids_crisis_blocker", severity: "error", message: `Kids room contains crisis content`, autoFixable: false });
-      addTask({ room_id: roomId, priority: "critical", task_type: "review_content", description: `URGENT: Remove crisis content from Kids room` });
+      addLegacyTask({ room_id: roomId, priority: "critical", task_type: "review_content", description: `URGENT: Remove crisis content from Kids room` });
     }
   }
 
-  log(`Phase 2 complete: Scanned ${scannedRooms} rooms`);
+  log(`Phase 2 complete: Scanned ${scannedRooms} rooms with ${totalEntries} entries`);
 
   // =========================================================================
   // PHASE 3: Orphan audio detection
   // =========================================================================
-  const orphanBasenames: string[] = [];
+  const orphanFiles: string[] = [];
   if (checkFiles && storageScan.ok) {
     log("Phase 3: Detecting orphan audio files...");
     for (const fullKey of audioIndex.allKeys) {
       const basename = (fullKey.split("/").pop() || fullKey).toLowerCase();
-      if (!referencedAudioBasenames.has(basename)) {
-        orphanBasenames.push(fullKey);
+      if (!referencedAudioFilenames.has(basename)) {
+        orphanFiles.push(fullKey);
       }
     }
 
-    if (orphanBasenames.length > 0) {
+    if (orphanFiles.length > 0) {
       const groups = new Map<string, string[]>();
-      for (const path of orphanBasenames) {
+      for (const path of orphanFiles) {
         const parts = path.split("/");
         const prefix = parts.length > 1 ? parts.slice(0, -1).join("/") : "(root)";
         if (!groups.has(prefix)) groups.set(prefix, []);
@@ -987,19 +1070,19 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
         file: "(storage)",
         type: "orphan_audio_files",
         severity: "info",
-        message: `${orphanBasenames.length} orphan audio files in ${groups.size} folders`,
+        message: `${orphanFiles.length} orphan audio files in ${groups.size} folders`,
         fix: "Review and delete unused files",
         autoFixable: false,
-        orphanList: orphanBasenames.slice(0, 200),
-        context: { groupCount: groups.size, totalFiles: orphanBasenames.length },
+        orphanList: orphanFiles.slice(0, 200),
+        context: { groupCount: groups.size, totalFiles: orphanFiles.length },
       });
 
       for (const [prefix, files] of groups.entries()) {
-        addTask({ room_id: `orphans_${prefix}`, priority: "low", task_type: "delete_orphan", description: `Review ${files.length} orphan files in ${prefix}` });
+        addLegacyTask({ room_id: `orphans_${prefix}`, priority: "low", task_type: "delete_orphan", description: `Review ${files.length} orphan files in ${prefix}` });
       }
     }
 
-    log(`Orphan detection complete: ${orphanBasenames.length} orphan files`);
+    log(`Orphan detection complete: ${orphanFiles.length} orphan files found`);
   }
 
   // =========================================================================
@@ -1013,27 +1096,40 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
 
   // Audio file stats - based on real storage checks
   const audioFileStats: AudioFileStats = {
-    referenced: referencedAudioBasenames.size,
+    referenced: referencedAudioFilenames.size,
     present: totalAudioPresent + roomsWithIntroEn + roomsWithIntroVi,
     missing: missingAudioFiles.length,
-    coverage: referencedAudioBasenames.size > 0 
-      ? Math.round(((totalAudioPresent + roomsWithIntroEn + roomsWithIntroVi) / referencedAudioBasenames.size) * 100) 
+    coverage: referencedAudioFilenames.size > 0 
+      ? Math.round(((totalAudioPresent + roomsWithIntroEn + roomsWithIntroVi) / referencedAudioFilenames.size) * 100) 
       : 100,
     missingFiles: missingAudioFiles.slice(0, 100),
   };
 
+  const introStats: IntroStats = {
+    withIntroEn: roomsWithIntroEn,
+    missingIntroEn: roomsMissingIntroEn,
+    withIntroVi: roomsWithIntroVi,
+    missingIntroVi: roomsMissingIntroVi,
+  };
+
   const summary: AuditSummary = {
     totalRooms,
+    totalEntries,
     scannedRooms,
     errors,
     warnings,
     infos,
     fixed: 0, // No fixes in read-only mode
-    audioFilesInBucket: storageScan.filesInBucket,
+    audio: audioFileStats,
+    intro: introStats,
+    storageScan,
+    orphanAudioCount: orphanFiles.length,
+    referencedAudioCount: referencedAudioFilenames.size,
+    // Legacy fields for backward compatibility
+    audioFilesInBucket: storageScan.fileCount,
     audioBasenamesInBucket: storageScan.basenamesInBucket,
-    orphanAudioCount: orphanBasenames.length,
-    orphanAudioFiles: orphanBasenames.length,
-    referencedAudioFiles: referencedAudioBasenames.size,
+    orphanAudioFiles: orphanFiles.length,
+    referencedAudioFiles: referencedAudioFilenames.size,
     totalAudioSlots,
     totalAudioPresent,
     totalAudioMissing: entriesMissingAudio,
@@ -1049,13 +1145,15 @@ async function runSafeShieldAudit(options: AuditRequestOptions): Promise<{
     durationMs,
   };
 
-  log(`=== Safe Shield V5.1 Audit Complete (READ-ONLY) ===`);
+  log(`=== Safe Shield V5.2 Audit Complete (READ-ONLY) ===`);
   log(`Duration: ${durationMs}ms | Errors: ${errors} | Warnings: ${warnings} | Infos: ${infos}`);
-  log(`Storage: ${storageScan.ok ? `${storageScan.filesInBucket} files` : `FAILED - ${storageScan.error}`}`);
+  log(`Storage: ${storageScan.ok ? `${storageScan.fileCount} files` : `FAILED - ${storageScan.error}`}`);
   log(`Audio Coverage: ${audioFileStats.coverage}% (${audioFileStats.present}/${audioFileStats.referenced} present, ${audioFileStats.missing} missing)`);
-  log(`Tasks: ${tasks.length} | Audio Jobs: ${audioJobs.length}`);
+  log(`Intro: EN ${roomsWithIntroEn}/${roomsWithIntroEn + roomsMissingIntroEn}, VI ${roomsWithIntroVi}/${roomsWithIntroVi + roomsMissingIntroVi}`);
+  log(`Orphans: ${orphanFiles.length} files not referenced by any room`);
+  log(`TTS Tasks: ${tasks.length} | Audio Jobs: ${audioJobs.length}`);
 
-  return { issues, tasks, audioJobs, summary, logs, storageScan, audioFileStats };
+  return { issues, tasks, legacyTasks, audioJobs, orphanFiles, summary, logs, storageScan, audioFileStats };
 }
 
 // ============================================================================
@@ -1074,7 +1172,7 @@ serve(async (req: Request): Promise<Response> => {
       body = await req.json();
     }
 
-    // V5.1: Only scan mode supported (read-only)
+    // V5.2: Only scan mode supported (read-only)
     const options: AuditRequestOptions = {
       mode: "scan",
       limit: body.limit ? parseInt(body.limit, 10) : undefined,
@@ -1091,7 +1189,9 @@ serve(async (req: Request): Promise<Response> => {
       summary: result.summary,
       issues: result.issues,
       tasks: result.tasks,
+      legacyTasks: result.legacyTasks,
       audioJobs: result.audioJobs,
+      orphanFiles: result.orphanFiles,
       fixesApplied: 0,
       fixed: 0,
       logs: result.logs,
@@ -1104,33 +1204,33 @@ serve(async (req: Request): Promise<Response> => {
     });
   } catch (err) {
     console.error("[SafeShield] Error:", err);
+    const emptyStats: AuditSummary = {
+      totalRooms: 0, totalEntries: 0, scannedRooms: 0, errors: 1, warnings: 0, infos: 0, fixed: 0,
+      audio: { referenced: 0, present: 0, missing: 0, coverage: 0, missingFiles: [] },
+      intro: { withIntroEn: 0, missingIntroEn: 0, withIntroVi: 0, missingIntroVi: 0 },
+      storageScan: { ok: false, error: err instanceof Error ? err.message : String(err), fileCount: 0, filesInBucket: 0, basenamesInBucket: 0 },
+      orphanAudioCount: 0, referencedAudioCount: 0,
+      audioFilesInBucket: 0, audioBasenamesInBucket: 0, orphanAudioFiles: 0,
+      referencedAudioFiles: 0, totalAudioSlots: 0, totalAudioPresent: 0, totalAudioMissing: 0,
+      entriesMissingAudio: 0, audioCoveragePercent: 0, roomsWithIntroEn: 0, roomsWithIntroVi: 0,
+      roomsMissingIntroEn: 0, roomsMissingIntroVi: 0, roomsWithFullIntroAudio: 0,
+      tasksGenerated: 0, audioJobsGenerated: 0, durationMs: 0,
+    };
     const errorResponse: Partial<AuditResponse> = {
       ok: false,
       mode: "scan",
       error: err instanceof Error ? err.message : String(err),
-      stats: {
-        totalRooms: 0, scannedRooms: 0, errors: 1, warnings: 0, infos: 0, fixed: 0,
-        audioFilesInBucket: 0, audioBasenamesInBucket: 0, orphanAudioCount: 0, orphanAudioFiles: 0,
-        referencedAudioFiles: 0, totalAudioSlots: 0, totalAudioPresent: 0, totalAudioMissing: 0,
-        entriesMissingAudio: 0, audioCoveragePercent: 0, roomsWithIntroEn: 0, roomsWithIntroVi: 0,
-        roomsMissingIntroEn: 0, roomsMissingIntroVi: 0, roomsWithFullIntroAudio: 0,
-        tasksGenerated: 0, audioJobsGenerated: 0, durationMs: 0,
-      },
-      summary: {
-        totalRooms: 0, scannedRooms: 0, errors: 1, warnings: 0, infos: 0, fixed: 0,
-        audioFilesInBucket: 0, audioBasenamesInBucket: 0, orphanAudioCount: 0, orphanAudioFiles: 0,
-        referencedAudioFiles: 0, totalAudioSlots: 0, totalAudioPresent: 0, totalAudioMissing: 0,
-        entriesMissingAudio: 0, audioCoveragePercent: 0, roomsWithIntroEn: 0, roomsWithIntroVi: 0,
-        roomsMissingIntroEn: 0, roomsMissingIntroVi: 0, roomsWithFullIntroAudio: 0,
-        tasksGenerated: 0, audioJobsGenerated: 0, durationMs: 0,
-      },
+      stats: emptyStats,
+      summary: emptyStats,
       issues: [],
       tasks: [],
+      legacyTasks: [],
       audioJobs: [],
+      orphanFiles: [],
       fixesApplied: 0,
       fixed: 0,
       logs: [`Error: ${err instanceof Error ? err.message : String(err)}`],
-      storageScan: { ok: false, error: err instanceof Error ? err.message : String(err), filesInBucket: 0, basenamesInBucket: 0 },
+      storageScan: { ok: false, error: err instanceof Error ? err.message : String(err), fileCount: 0, filesInBucket: 0, basenamesInBucket: 0 },
       audioFileStats: { referenced: 0, present: 0, missing: 0, coverage: 0, missingFiles: [] },
     };
     return new Response(JSON.stringify(errorResponse), {
