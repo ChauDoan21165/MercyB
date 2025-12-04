@@ -13,12 +13,40 @@ import { CompanionBubble, MercyToggle } from '@/components/companion';
 import { MercyDockIcon } from '@/components/companion/MercyDockIcon';
 import { useHomeCompanion } from '@/hooks/useHomeCompanion';
 
+interface HomepageSong {
+  id: string;
+  title_en: string;
+  title_vi: string;
+  audioSrc: string;
+}
+
+const SONGS_STORAGE_KEY = 'mercyBladeHomepageSongs';
+
 const Homepage = () => {
   const { config, loading, error } = useHomepageConfig();
   const navigate = useNavigate();
   const [headerBg, setHeaderBg] = useState('#ffffff');
   const [textColor, setTextColor] = useState('#111827');
   const companion = useHomeCompanion();
+  
+  // Load songs from localStorage (synced with admin Music Controller)
+  const [homepageSongs, setHomepageSongs] = useState<HomepageSong[]>([]);
+  
+  useEffect(() => {
+    const stored = localStorage.getItem(SONGS_STORAGE_KEY);
+    if (stored) {
+      try {
+        setHomepageSongs(JSON.parse(stored));
+      } catch {
+        setHomepageSongs([{
+          id: 'default',
+          title_en: 'The Song of Mercy Blade',
+          title_vi: 'Khúc Ca Mercy Blade',
+          audioSrc: '/audio/mercy_blade_theme.mp3'
+        }]);
+      }
+    }
+  }, []);
 
   const handleResetConfig = () => {
     localStorage.removeItem('pinnedHomepageConfig');
@@ -264,24 +292,36 @@ Kids English không chỉ là chương trình dành cho trẻ.
         ))}
 
       {/* Theme Song Section */}
-      <section className="py-16 px-6 bg-gradient-to-b from-purple-50 to-indigo-100 dark:from-purple-950/30 dark:to-indigo-950/30">
-        <div className="max-w-4xl mx-auto space-y-6">
-          <div className="text-center space-y-2">
-            <h2 className="text-2xl md:text-3xl font-bold text-purple-900 dark:text-purple-100">
-              🎵 The Song of Mercy Blade
-            </h2>
-            <p className="text-purple-700 dark:text-purple-300">
-              Khúc Ca Mercy Blade — A Signature Anthem for Your Inner Life
-            </p>
+      {homepageSongs.length > 0 && (
+        <section className="py-16 px-6 bg-gradient-to-b from-purple-50 to-indigo-100 dark:from-purple-950/30 dark:to-indigo-950/30">
+          <div className="max-w-4xl mx-auto space-y-6">
+            <div className="text-center space-y-2">
+              <h2 className="text-2xl md:text-3xl font-bold text-purple-900 dark:text-purple-100">
+                🎵 Mercy Blade Music
+              </h2>
+              <p className="text-purple-700 dark:text-purple-300">
+                Âm Nhạc Mercy Blade
+              </p>
+            </div>
+            
+            <div className="space-y-4">
+              {homepageSongs.map((song) => (
+                <div key={song.id} className="bg-white/80 dark:bg-gray-800/80 rounded-xl p-4 shadow-sm">
+                  <p className="font-semibold text-purple-800 dark:text-purple-200 mb-1">
+                    {song.title_en}
+                  </p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                    {song.title_vi}
+                  </p>
+                  <audio controls className="w-full" preload="metadata">
+                    <source src={song.audioSrc} type="audio/mpeg" />
+                  </audio>
+                </div>
+              ))}
+            </div>
           </div>
-          
-          <div className="flex justify-center">
-            <audio controls className="w-full max-w-md" preload="metadata">
-              <source src="/audio/mercy_blade_theme.mp3" type="audio/mpeg" />
-            </audio>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Footer CTA */}
       <footer className="py-12 px-6 bg-gradient-to-b from-teal-100 to-teal-200">
