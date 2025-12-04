@@ -138,10 +138,7 @@ const SystemCodeFiles = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [openCategories, setOpenCategories] = useState<string[]>(["core-runtime"]);
-  const [viewingFile, setViewingFile] = useState<string | null>(null);
-  const [fileContent, setFileContent] = useState<string>("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [copiedPath, setCopiedPath] = useState<string | null>(null);
 
   const toggleCategory = (id: string) => {
     setOpenCategories((prev) =>
@@ -149,50 +146,23 @@ const SystemCodeFiles = () => {
     );
   };
 
-  const viewFile = async (path: string) => {
-    setIsLoading(true);
-    setViewingFile(path);
-    setFileContent("");
-    
-    try {
-      // Try to fetch from Lovable's file system (works in development)
-      // Use the code editor API endpoint if available
-      const content = `// ================================================
-// FILE: ${path}
-// ================================================
-// 
-// To view the full source code:
-// 
-// 1. Open the Code Editor in Lovable (top-left toggle)
-// 2. Navigate to: ${path}
-// 3. Copy the entire file content
-//
-// Or use the "Copy Path" button to copy the file path,
-// then paste it in the Lovable chat to request the code.
-//
-// ================================================
-
-// This file contains the implementation for:
-// ${codeCategories.flatMap(c => c.files).find(f => f.path === path)?.description || 'Unknown'}
-
-// File path: ${path}
-`;
-      setFileContent(content);
-    } catch (error) {
-      setFileContent(`// Error loading file: ${path}\n// ${error}`);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   const copyPath = (path: string) => {
     navigator.clipboard.writeText(path);
-    setCopied(true);
+    setCopiedPath(path);
     toast({
-      title: "Path copied",
-      description: `Copied: ${path}`,
+      title: "Path copied!",
+      description: "Paste this path in chat to view the full code",
     });
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setCopiedPath(null), 2000);
+  };
+
+  const copyForChat = (path: string) => {
+    const chatPrompt = `Show me the full code of: ${path}`;
+    navigator.clipboard.writeText(chatPrompt);
+    toast({
+      title: "Ready to paste in chat!",
+      description: "Paste in Lovable chat to view the full code",
+    });
   };
 
   const copyAllPaths = (category: CodeCategory) => {
@@ -204,16 +174,14 @@ const SystemCodeFiles = () => {
     });
   };
 
-  const downloadFile = (path: string, content: string) => {
-    const blob = new Blob([content], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = path.split("/").pop() || "file.txt";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+  const copyAllForChat = () => {
+    const allPaths = codeCategories.flatMap(c => c.files.map(f => f.path)).join("\n");
+    const chatPrompt = `Here are the key system files I want to review:\n\n${allPaths}`;
+    navigator.clipboard.writeText(chatPrompt);
+    toast({ 
+      title: "All paths ready for chat!",
+      description: "Paste in Lovable chat to request code review"
+    });
   };
 
   const generateCategoryReport = (category: CodeCategory) => {
@@ -239,14 +207,6 @@ ${category.files.map((f, i) => `${i + 1}. ${f.path}
     URL.revokeObjectURL(url);
   };
 
-  const openInCodeEditor = (path: string) => {
-    // This will prompt user to open the code editor
-    toast({
-      title: "Open Code Editor",
-      description: `Navigate to: ${path}`,
-    });
-  };
-
   return (
     <div className="min-h-screen bg-white">
       <div className="border-b-2 border-black bg-white p-4">
@@ -262,7 +222,7 @@ ${category.files.map((f, i) => `${i + 1}. ${f.path}
           </Button>
           <div>
             <h1 className="text-2xl font-bold text-black">Mercy Blade System Codes</h1>
-            <p className="text-sm text-gray-600">Complete file reference for all system components</p>
+            <p className="text-sm text-gray-600">Click any file to copy its path, then paste in chat to view full code</p>
           </div>
         </div>
       </div>
@@ -272,8 +232,8 @@ ${category.files.map((f, i) => `${i + 1}. ${f.path}
         <Card className="mb-6 border-2 border-black bg-gray-50">
           <CardContent className="p-4">
             <p className="text-sm text-black">
-              <strong>How to view full code:</strong> Click "View" on any file, then use Lovable's Code Editor 
-              (toggle in top-left) to navigate to the file path. You can also copy paths and paste them in chat.
+              <strong>How to view full code:</strong> Click any file row to copy its path. 
+              Then paste in Lovable chat with "Show me the full code of:" to see the complete source.
             </p>
           </CardContent>
         </Card>
@@ -340,11 +300,23 @@ ${category.files.map((f, i) => `${i + 1}. ${f.path}
                       {category.files.map((file, index) => (
                         <div
                           key={file.path}
-                          className="flex items-center justify-between p-3 bg-gray-50 rounded border border-gray-200 hover:bg-gray-100"
+                          className={`flex items-center justify-between p-3 rounded border cursor-pointer transition-colors ${
+                            copiedPath === file.path 
+                              ? "bg-green-50 border-green-300" 
+                              : "bg-gray-50 border-gray-200 hover:bg-gray-100"
+                          }`}
+                          onClick={() => copyPath(file.path)}
+                          role="button"
+                          tabIndex={0}
+                          onKeyDown={(e) => e.key === "Enter" && copyPath(file.path)}
                         >
                           <div className="flex items-center gap-3 flex-1 min-w-0">
                             <span className="text-xs text-gray-400 w-6">{index + 1}.</span>
-                            <FileCode className="h-4 w-4 text-black flex-shrink-0" />
+                            {copiedPath === file.path ? (
+                              <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
+                            ) : (
+                              <FileCode className="h-4 w-4 text-black flex-shrink-0" />
+                            )}
                             <div className="min-w-0">
                               <code className="text-sm font-mono text-black block truncate">
                                 {file.path}
@@ -355,24 +327,11 @@ ${category.files.map((f, i) => `${i + 1}. ${f.path}
                             </div>
                           </div>
                           <div className="flex items-center gap-1 flex-shrink-0">
-                            <Button
-                              size="sm"
-                              variant="ghost"
-                              className="text-black hover:bg-gray-200"
-                              onClick={() => copyPath(file.path)}
-                              title="Copy path"
-                            >
-                              <Copy className="h-4 w-4" />
-                            </Button>
-                            <Button
-                              size="sm"
-                              variant="ghost"
-                              className="text-black hover:bg-gray-200"
-                              onClick={() => viewFile(file.path)}
-                              title="View info"
-                            >
-                              <Eye className="h-4 w-4" />
-                            </Button>
+                            {copiedPath === file.path ? (
+                              <span className="text-xs text-green-600 font-medium px-2">Copied!</span>
+                            ) : (
+                              <span className="text-xs text-gray-400">Click to copy</span>
+                            )}
                           </div>
                         </div>
                       ))}
@@ -387,73 +346,38 @@ ${category.files.map((f, i) => `${i + 1}. ${f.path}
         {/* Quick Stats */}
         <Card className="mt-6 border-2 border-black">
           <CardContent className="p-4">
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center flex-wrap gap-2">
               <span className="text-sm text-black font-medium">
                 Total: {codeCategories.reduce((acc, c) => acc + c.files.length, 0)} files across {codeCategories.length} categories
               </span>
-              <Button
-                size="sm"
-                variant="outline"
-                className="border-black text-black"
-                onClick={() => {
-                  const allPaths = codeCategories.flatMap(c => c.files.map(f => f.path)).join("\n");
-                  navigator.clipboard.writeText(allPaths);
-                  toast({ title: "All file paths copied!" });
-                }}
-              >
-                <Copy className="h-4 w-4 mr-1" />
-                Copy All Paths
-              </Button>
+              <div className="flex gap-2">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="border-black text-black"
+                  onClick={() => {
+                    const allPaths = codeCategories.flatMap(c => c.files.map(f => f.path)).join("\n");
+                    navigator.clipboard.writeText(allPaths);
+                    toast({ title: "All file paths copied!" });
+                  }}
+                >
+                  <Copy className="h-4 w-4 mr-1" />
+                  Copy All Paths
+                </Button>
+                <Button
+                  size="sm"
+                  variant="default"
+                  className="bg-black text-white hover:bg-gray-800"
+                  onClick={copyAllForChat}
+                >
+                  <ExternalLink className="h-4 w-4 mr-1" />
+                  Copy for Chat
+                </Button>
+              </div>
             </div>
           </CardContent>
         </Card>
       </div>
-
-      {/* File Viewer Modal */}
-      {viewingFile && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <Card className="w-full max-w-4xl max-h-[80vh] flex flex-col border-2 border-black">
-            <CardHeader className="flex-shrink-0 border-b border-black">
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-black font-mono text-sm truncate">
-                  {viewingFile}
-                </CardTitle>
-                <div className="flex gap-2">
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="border-black text-black"
-                    onClick={() => copyPath(viewingFile)}
-                  >
-                    <Copy className="h-4 w-4 mr-1" />
-                    Copy Path
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="border-black text-black"
-                    onClick={() => {
-                      setViewingFile(null);
-                      setFileContent("");
-                    }}
-                  >
-                    Close
-                  </Button>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent className="flex-1 overflow-auto p-0">
-              {isLoading ? (
-                <div className="p-4 text-center text-gray-500">Loading...</div>
-              ) : (
-                <pre className="p-4 text-sm font-mono bg-gray-50 overflow-x-auto whitespace-pre-wrap text-black">
-                  {fileContent}
-                </pre>
-              )}
-            </CardContent>
-          </Card>
-        </div>
-      )}
     </div>
   );
 };
