@@ -42,6 +42,8 @@ import { setCustomKeywordMappings, clearCustomKeywordMappings, loadRoomKeywords 
 import { buildAudioSrc } from "@/lib/audioHelpers";
 import { ProfileAvatarUpload } from "@/components/ProfileAvatarUpload";
 import { getTierRoute } from "@/lib/tierRoutes";
+import { PrimaryHero } from "@/components/layout/PrimaryHero";
+import heroRainbowBg from '@/assets/hero-rainbow-bg.jpg';
 import { useFavoriteRooms } from "@/hooks/useFavoriteRooms";
 import { useRecentRooms } from "@/hooks/useRecentRooms";
 import { useRoomAudioPreload } from "@/hooks/useRoomAudioPreload";
@@ -824,6 +826,16 @@ const ChatHub = () => {
   return (
     <>
       <GlobalAppBar breadcrumbs={breadcrumbItems} />
+      
+      {/* English Foundation Hero - only for EF rooms */}
+      {roomId?.startsWith('english_foundation_') && (
+        <PrimaryHero
+          title="English Foundation"
+          subtitle={currentRoom.nameEn}
+          background={heroRainbowBg}
+        />
+      )}
+      
       {!isAdmin && (
         <AlertDialog open={showAccessDenied} onOpenChange={setShowAccessDenied}>
           <AlertDialogContent>

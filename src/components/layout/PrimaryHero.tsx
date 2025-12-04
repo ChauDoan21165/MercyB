@@ -25,17 +25,17 @@ export function PrimaryHero({
             className="h-full w-full object-cover"
           />
           {/* optional soft overlay */}
-          <div className="absolute inset-0 bg-black/10" />
+          <div className="absolute inset-0 bg-white/10" />
         </div>
       )}
 
       {/* Safe text container */}
       <div className="relative mx-auto flex min-h-[260px] max-w-screen-md flex-col items-center justify-center px-5 py-16 text-center sm:min-h-[340px] sm:px-6 lg:min-h-[420px]">
-        <h1 className="text-balance text-[clamp(2.1rem,4.2vw,3.4rem)] font-semibold leading-tight tracking-tight text-white drop-shadow-lg">
+        <h1 className="text-balance text-[clamp(2.1rem,4.2vw,3.4rem)] font-semibold leading-tight tracking-tight text-slate-900">
           {title}
         </h1>
         {subtitle && (
-          <p className="mt-3 text-balance text-[clamp(1.1rem,2.3vw,1.6rem)] text-white/90 drop-shadow-md">
+          <p className="mt-3 text-balance text-[clamp(1.1rem,2.3vw,1.6rem)] text-slate-900">
             {subtitle}
           </p>
         )}
