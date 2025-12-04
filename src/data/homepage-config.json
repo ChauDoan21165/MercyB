@@ -22,8 +22,8 @@
         "vi": "Mercy Blade là ứng dụng song ngữ (Anh–Việt) đồng hành cùng bạn trong đời sống thật: sức khỏe, cảm xúc, tiền bạc, mối quan hệ, công việc và ý nghĩa sống. Mỗi chủ đề được chia thành các thẻ nhỏ, nhẹ nhàng, kèm audio để bạn có thể nghe ở bất cứ đâu—trên xe buýt, trước khi ngủ, hay giữa giờ học. Không áp lực. Không phán xét. Chỉ là sự rõ ràng, dịu dàng và những bước bạn có thể làm ngay.\n\nVà khi cuộc sống trở nên quá ồn, ứng dụng có một điều đặc biệt: Giờ Lặng—nghi thức một phút, nơi bạn đọc một thẻ song ngữ, hít thở và trở về với chính mình. Theo thời gian, những khoảnh khắc nhỏ này trở thành thói quen vững vàng: suy nghĩ sáng hơn, cách tự nói với mình tử tế hơn và tiếng Anh phát triển tự nhiên cùng hiểu biết cảm xúc."
       },
       "audio": {
-        "en": "homepage_1.mp3",
-        "vi": "homepage_1.mp3"
+        "en": "Homepage_1.mp3",
+        "vi": "Homepage_1.mp3"
       }
     },
     {
@@ -40,8 +40,8 @@
         "vi": "Và trong những khoảnh khắc khi lời nói thôi chưa đủ, Mercy Blade có một khúc ca riêng—bài nhạc được viết để nâng nhịp thở, tiếp đất và làm dịu cảm xúc của bạn."
       },
       "audio": {
-        "en": "homepage_song.mp3",
-        "vi": "homepage_song.mp3"
+        "en": "Homepage_song.mp3",
+        "vi": "Homepage_song.mp3"
       }
     },
     {
