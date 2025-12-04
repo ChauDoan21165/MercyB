@@ -5,31 +5,36 @@ on:
   push:
     paths:
       - "public/audio/**"
-
-# ✅ allow this workflow to push commits
-permissions:
-  contents: write
+      - "src/**/*.json"
 
 jobs:
   generate:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0        # needed so the auto-commit action can push
+      - uses: actions/checkout@v4
 
       - name: Use Node 20
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Generate manifest
-        run: node scripts/generate-audio-manifest.js
+      - name: Install deps
+        run: npm ci
 
-      - name: Commit manifest
+      - name: Generate manifest
+        run: npm run generate:audio-manifest
+
+      - name: Audio audit + cleanup
+        run: npm run audio:audit:cleanup
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          AUDIO_AUDIT_WEBHOOK_URL: ${{ secrets.AUDIO_AUDIT_WEBHOOK_URL }}
+
+      - name: Commit manifest & audio cleanup
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "[skip ci] Update audio manifest"
-          file_pattern: "public/audio/manifest.json"
+          commit_message: "[skip ci] Update audio manifest & cleanup"
+          file_pattern: |
+            public/audio/**
