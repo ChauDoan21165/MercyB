@@ -440,6 +440,7 @@ export default function AuditSafeShield() {
               )}
             </CardContent>
           </Card>
+        )}
 
         {/* Filters */}
         <Card className="border">
