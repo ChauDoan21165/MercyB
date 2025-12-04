@@ -263,6 +263,48 @@ Kids English không chỉ là chương trình dành cho trẻ.
           </section>
         ))}
 
+      {/* Music Album Section */}
+      <section className="py-16 px-6 bg-gradient-to-b from-purple-50 to-indigo-100 dark:from-purple-950/30 dark:to-indigo-950/30">
+        <div className="max-w-4xl mx-auto space-y-8">
+          <div className="text-center space-y-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-purple-900 dark:text-purple-100">
+              🎵 The Mercy Blade Music Album
+            </h2>
+            <p className="text-purple-700 dark:text-purple-300">
+              Bộ Sưu Tập Âm Nhạc Mercy Blade
+            </p>
+          </div>
+          
+          <div className="grid gap-4">
+            {/* Track 1 */}
+            <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl p-6 shadow-md">
+              <h3 className="font-semibold text-purple-800 dark:text-purple-200 mb-2">
+                The Song of Mercy Blade — Full Version
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                Khúc Ca Mercy Blade — Bản Đầy Đủ
+              </p>
+              <audio controls className="w-full" preload="metadata">
+                <source src="/audio/mercy_blade_song_full.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+            
+            {/* Track 2 */}
+            <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl p-6 shadow-md">
+              <h3 className="font-semibold text-purple-800 dark:text-purple-200 mb-2">
+                The Song of Mercy Blade — Instrumental
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                Khúc Ca Mercy Blade — Bản Nhạc Nền
+              </p>
+              <audio controls className="w-full" preload="metadata">
+                <source src="/audio/mercy_blade_song_instrumental.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer CTA */}
       <footer className="py-12 px-6 bg-gradient-to-b from-teal-100 to-teal-200">
         <div className="max-w-[640px] mx-auto text-center space-y-6">
