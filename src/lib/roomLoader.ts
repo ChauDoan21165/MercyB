@@ -2,7 +2,7 @@
 import { supabase } from '@/integrations/supabase/client';
 import { processEntriesOptimized } from './roomLoaderHelpers';
 import { ROOMS_TABLE, AUDIO_FOLDER } from '@/lib/constants/rooms';
-import { normalizeTier, type TierId, KIDS_TIER_IDS } from '@/lib/constants/tiers';
+import { normalizeTier, type TierId, isKidsTier } from '@/lib/constants/tiers';
 import type { Database } from '@/integrations/supabase/types';
 import { logger } from './logger';
 import { useSWR } from './cache/swrCache';
@@ -22,8 +22,7 @@ export type LoadedRoomResult = {
   hasFullAccess?: boolean; // NEW: true = full access, false = preview only
 };
 
-// Kids tier array for cleaner checks
-const KIDS_TIERS: readonly TierId[] = KIDS_TIER_IDS;
+// isKidsTier is now imported from '@/lib/constants/tiers'
 
 const ROOM_ID_OVERRIDES: Record<string, string> = {
   // VIP3 II Writing Deep-Dive rooms - map URL IDs to canonical DB IDs
@@ -138,12 +137,11 @@ const loadFromJson = async (roomId: string) => {
   }
 };
 
-/**
- * Helper to check if a tier is a kids tier
- */
-const isKidsTier = (tier: TierId | null | undefined): boolean => {
+// isKidsTier is imported from '@/lib/constants/tiers'
+// Wrapper to handle null/undefined for local usage
+const checkIsKidsTier = (tier: TierId | null | undefined): boolean => {
   if (!tier) return false;
-  return (KIDS_TIERS as readonly string[]).includes(tier);
+  return isKidsTier(tier);
 };
 
 /**
@@ -206,7 +204,7 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
     }
 
     const normalizedUserTier: TierId = isAdmin ? 'vip9' : baseTier;
-    const isUserKidsTier = isKidsTier(baseTier);
+    const isUserKidsTier = checkIsKidsTier(baseTier);
 
     // 4. Normalize room ID
     const dbRoomId = normalizeRoomId(roomId);
@@ -244,7 +242,7 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
         }
   
         const normalizedRoomTier = dbResult.roomTier ?? ('free' as TierId);
-        const isRoomKidsTier = isKidsTier(normalizedRoomTier);
+        const isRoomKidsTier = checkIsKidsTier(normalizedRoomTier);
         
         // 6. Determine access level (but don't block - return preview instead)
         let hasFullAccess = true;
@@ -304,7 +302,7 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
       
       if (jsonResult) {
         const normalizedRoomTier = jsonResult.roomTier ?? ('free' as TierId);
-        const isRoomKidsTierJson = isKidsTier(normalizedRoomTier);
+        const isRoomKidsTierJson = checkIsKidsTier(normalizedRoomTier);
         
         // Determine access level for JSON rooms (same logic)
         let hasFullAccess = true;

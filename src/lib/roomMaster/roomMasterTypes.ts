@@ -1,20 +1,7 @@
 // RoomMaster Types - Shared type definitions for the RoomMaster engine
 
-export type TierId = 
-  | 'free'
-  | 'vip1'
-  | 'vip2'
-  | 'vip3'
-  | 'vip3ii'
-  | 'vip4'
-  | 'vip5'
-  | 'vip6'
-  | 'vip7'
-  | 'vip8'
-  | 'vip9'
-  | 'kids_1'
-  | 'kids_2'
-  | 'kids_3';
+// Re-export canonical TierId from the single source of truth
+export { type TierId } from '@/lib/constants/tiers';
 
 export interface RoomEntry {
   slug: string;
