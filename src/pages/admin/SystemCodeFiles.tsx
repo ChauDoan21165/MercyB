@@ -36,7 +36,7 @@ const codeCategories: CodeCategory[] = [
       { path: "src/lib/roomSchema.ts", description: "Zod/type schema for rooms" },
       { path: "src/lib/roomRegistry.ts", description: "Mapping slug/id → JSON file path" },
       { path: "src/lib/getRoomBySlug.ts", description: "Helper used by page" },
-      { path: "src/lib/tierUtils.ts", description: "Free/VIP logic" },
+      { path: "src/lib/constants/tiers.ts", description: "Free/VIP logic" },
       { path: "src/lib/i18n.ts", description: "Language selection for EN/VI" },
       { path: "src/config/featureFlags.ts", description: "Flags that might hide features" },
     ],
