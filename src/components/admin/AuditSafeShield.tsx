@@ -22,6 +22,7 @@ import {
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import type { AuditIssue, AuditResponse, AuditMode } from "@/lib/audit-v4-types";
+import AuditCodeViewer from "./AuditCodeViewer";
 
 type FilterType = "all" | "errors" | "missing_audio" | "missing_json" | "missing_entries";
 
@@ -470,6 +471,9 @@ export default function AuditSafeShield() {
             Auto-repair only adds missing items. No destructive actions (deletions) will be performed.
           </p>
         </div>
+
+        {/* Code Viewer Table */}
+        <AuditCodeViewer />
       </div>
     </div>
   );
