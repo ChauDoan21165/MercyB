@@ -12,7 +12,7 @@ import {
   Shield, Play, Loader2, CheckCircle, AlertTriangle, Search,
   FileJson, Music, Database, Filter, Heart, AlertOctagon,
   Clock, FileAudio, Trash2, Terminal, Download,
-  BookOpen, Key, AlertCircle, Info, XCircle, ListTodo, Mic,
+  BookOpen, Key, AlertCircle, Info, XCircle, ListTodo, Mic, HardDrive,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -91,6 +91,20 @@ type AuditMode = "scan";
 
 type FilterType = "all" | "errors" | "warnings" | "infos" | "audio" | "intro_audio" | "orphan_audio" | "essays" | "keywords" | "tts" | "safety" | "deprecated" | "room_identity" | "entry_structure";
 
+interface AudioStorageReport {
+  storageFiles: string[];
+  referencedAudio: string[];
+  missingInStorage: string[];
+  orphans: string[];
+  summary: {
+    storageCount: number;
+    referencedCount: number;
+    missingCount: number;
+    orphanCount: number;
+    coveragePercent: number;
+  };
+}
+
 export default function AuditSafeShield() {
   const [isRunning, setIsRunning] = useState(false);
   const [issues, setIssues] = useState<AuditIssue[]>([]);
@@ -106,6 +120,8 @@ export default function AuditSafeShield() {
   const [summary, setSummary] = useState<AuditResponse["summary"] | null>(null);
   const [storageScan, setStorageScan] = useState<StorageScanResult | null>(null);
   const [audioFileStats, setAudioFileStats] = useState<AudioFileStats | null>(null);
+  const [audioStorageReport, setAudioStorageReport] = useState<AudioStorageReport | null>(null);
+  const [isRunningStorageAudit, setIsRunningStorageAudit] = useState(false);
   const { toast } = useToast();
 
   const callAuditEndpoint = async (_mode: AuditMode): Promise<AuditResponse | null> => {
@@ -147,6 +163,27 @@ export default function AuditSafeShield() {
       toast({ title: "Audit Error", description: error instanceof Error ? error.message : String(error), variant: "destructive" });
     } finally {
       setIsRunning(false);
+    }
+  };
+
+  const runAudioStorageAudit = async () => {
+    setIsRunningStorageAudit(true);
+    setAudioStorageReport(null);
+    try {
+      const { data, error } = await supabase.functions.invoke("audio-storage-audit", {
+        body: {},
+      });
+      if (error) throw new Error(error.message || "Failed to call audio storage audit");
+      if (!data?.ok) throw new Error(data?.error || "Audio storage audit failed");
+      setAudioStorageReport(data as AudioStorageReport);
+      toast({ 
+        title: "Audio Storage Audit Complete", 
+        description: `Storage: ${data.summary.storageCount}, Referenced: ${data.summary.referencedCount}, Missing: ${data.summary.missingCount}, Orphans: ${data.summary.orphanCount}` 
+      });
+    } catch (error) {
+      toast({ title: "Audio Storage Audit Error", description: error instanceof Error ? error.message : String(error), variant: "destructive" });
+    } finally {
+      setIsRunningStorageAudit(false);
     }
   };
 
@@ -233,6 +270,9 @@ export default function AuditSafeShield() {
             </div>
           </div>
           <div className="flex gap-2">
+            <Button onClick={runAudioStorageAudit} variant="outline" className="border-black" disabled={isRunningStorageAudit}>
+              {isRunningStorageAudit ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" />Checking Storage...</> : <><HardDrive className="h-4 w-4 mr-2" />Audio Storage Audit</>}
+            </Button>
             <Button onClick={runAudit} className="bg-black text-white hover:bg-gray-800" disabled={isRunning}>
               {isRunning ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" />Scanning...</> : <><Play className="h-4 w-4 mr-2" />Run Audit</>}
             </Button>
@@ -321,6 +361,85 @@ export default function AuditSafeShield() {
             </Card>
           </div>
         )}
+
+        {/* Audio Storage Audit Report */}
+        {audioStorageReport && (
+          <Card className="border-2 border-blue-500 bg-blue-50">
+            <CardHeader className="pb-2">
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-lg flex items-center gap-2">
+                  <HardDrive className="h-5 w-5" />
+                  Audio Storage Sync Report
+                </CardTitle>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="outline" onClick={() => exportToJson(audioStorageReport, "audio-storage-report.json")}>
+                    <Download className="h-4 w-4 mr-1" />Export
+                  </Button>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {/* Summary Stats */}
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+                <div className="bg-white p-3 rounded border text-center">
+                  <div className="text-xl font-bold">{audioStorageReport.summary.storageCount}</div>
+                  <div className="text-xs text-gray-500">In Storage</div>
+                </div>
+                <div className="bg-white p-3 rounded border text-center">
+                  <div className="text-xl font-bold">{audioStorageReport.summary.referencedCount}</div>
+                  <div className="text-xs text-gray-500">Referenced</div>
+                </div>
+                <div className="bg-white p-3 rounded border text-center">
+                  <div className="text-xl font-bold text-red-600">{audioStorageReport.summary.missingCount}</div>
+                  <div className="text-xs text-gray-500">Missing in Storage</div>
+                </div>
+                <div className="bg-white p-3 rounded border text-center">
+                  <div className="text-xl font-bold text-amber-600">{audioStorageReport.summary.orphanCount}</div>
+                  <div className="text-xs text-gray-500">Orphans</div>
+                </div>
+                <div className="bg-white p-3 rounded border text-center">
+                  <div className={`text-xl font-bold ${audioStorageReport.summary.coveragePercent === 100 ? 'text-green-600' : audioStorageReport.summary.coveragePercent < 80 ? 'text-red-600' : 'text-amber-600'}`}>
+                    {audioStorageReport.summary.coveragePercent}%
+                  </div>
+                  <div className="text-xs text-gray-500">Coverage</div>
+                </div>
+              </div>
+
+              {/* Missing Files List */}
+              {audioStorageReport.missingInStorage.length > 0 && (
+                <div className="bg-white p-3 rounded border">
+                  <h4 className="font-semibold text-red-700 mb-2">Missing in Storage ({audioStorageReport.missingInStorage.length})</h4>
+                  <ScrollArea className="h-32">
+                    <div className="space-y-1 text-xs font-mono">
+                      {audioStorageReport.missingInStorage.slice(0, 50).map((file, i) => (
+                        <div key={i} className="text-red-600">{file}</div>
+                      ))}
+                      {audioStorageReport.missingInStorage.length > 50 && (
+                        <div className="text-gray-500">...and {audioStorageReport.missingInStorage.length - 50} more</div>
+                      )}
+                    </div>
+                  </ScrollArea>
+                </div>
+              )}
+
+              {/* Orphan Files List */}
+              {audioStorageReport.orphans.length > 0 && (
+                <div className="bg-white p-3 rounded border">
+                  <h4 className="font-semibold text-amber-700 mb-2">Orphan Files ({audioStorageReport.orphans.length})</h4>
+                  <ScrollArea className="h-32">
+                    <div className="space-y-1 text-xs font-mono">
+                      {audioStorageReport.orphans.slice(0, 50).map((file, i) => (
+                        <div key={i} className="text-amber-600">{file}</div>
+                      ))}
+                      {audioStorageReport.orphans.length > 50 && (
+                        <div className="text-gray-500">...and {audioStorageReport.orphans.length - 50} more</div>
+                      )}
+                    </div>
+                  </ScrollArea>
+                </div>
+              )}
+            </CardContent>
+          </Card>
 
         {/* Filters */}
         <Card className="border">
