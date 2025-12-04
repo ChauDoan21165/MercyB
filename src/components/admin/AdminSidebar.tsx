@@ -74,6 +74,7 @@ const userManagementItems = [
 
 // Developer tools
 const devToolsItems = [
+  { title: "System Codes", url: "/admin/system-codes", icon: FileText },
   { title: "Code Editor", url: "/admin/code-editor", icon: Code },
   { title: "Design Audit", url: "/admin/design-audit", icon: Palette },
 ];
