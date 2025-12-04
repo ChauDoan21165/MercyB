@@ -167,7 +167,7 @@ export const loadMergedRoom = async (roomId: string): Promise<LoadedRoomResult> 
  */
 const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult> => {
   const startTime = performance.now();
-  const { canUserAccessRoom } = await import('./accessControl');
+  const { determineAccess } = await import('./accessControl');
 
   try {
     // 1. Get authenticated user (guests treated as free tier)
@@ -244,14 +244,16 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
         const normalizedRoomTier = dbResult.roomTier ?? ('free' as TierId);
         const isRoomKidsTier = checkIsKidsTier(normalizedRoomTier);
         
-        // 6. Determine access level (but don't block - return preview instead)
+        // 6. Determine access level using centralized helper
+        // (but don't block - return preview instead)
         let hasFullAccess = true;
         
         if (!isAdmin) {
           if (isUserKidsTier && !isRoomKidsTier) {
             hasFullAccess = false;
-          } else if (!canUserAccessRoom(normalizedUserTier, normalizedRoomTier)) {
-            hasFullAccess = false;
+          } else {
+            const access = determineAccess(normalizedUserTier, normalizedRoomTier);
+            hasFullAccess = access.hasFullAccess;
           }
         }
 
@@ -310,8 +312,9 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
         if (!isAdmin) {
           if (isUserKidsTier && !isRoomKidsTierJson) {
             hasFullAccess = false;
-          } else if (jsonResult.roomTier && !canUserAccessRoom(normalizedUserTier, jsonResult.roomTier)) {
-            hasFullAccess = false;
+          } else if (jsonResult.roomTier) {
+            const access = determineAccess(normalizedUserTier, jsonResult.roomTier);
+            hasFullAccess = access.hasFullAccess;
           }
         }
 
