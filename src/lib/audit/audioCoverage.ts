@@ -98,8 +98,14 @@ async function fetchStorageFiles(): Promise<Set<string>> {
       return new Set();
     }
     
-    // Return normalized storage files as a Set
-    return new Set(data.storageFiles || []);
+    const rawFiles: string[] = data.storageFiles || [];
+
+    // 🔧 Normalize here as well to match entry audio normalization
+    const normalized = rawFiles
+      .map((name) => normalizeAudioName(name))
+      .filter((n) => n.endsWith(".mp3") && n.length > 0);
+
+    return new Set(normalized);
   } catch (err) {
     console.error("Error fetching storage files:", err);
     return new Set();
@@ -140,6 +146,12 @@ export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
   let totalMissingVi = 0;
   let roomsWithMissingAudio = 0;
 
+  // Guard: if storage is empty, skip missing calculation to avoid false positives
+  const storageEmpty = storageFiles.size === 0;
+  if (storageEmpty) {
+    console.warn("audioCoverage: storageFiles is empty, skipping missing calculation - all rooms will show as unknown");
+  }
+
   for (const room of rooms || []) {
     const entries = Array.isArray(room.entries) ? room.entries : [];
     
@@ -152,9 +164,13 @@ export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
       allViAudio.push(...vi);
     }
 
-    // Check which files are missing from storage
-    const missingEn = allEnAudio.filter(f => !storageFiles.has(f));
-    const missingVi = allViAudio.filter(f => !storageFiles.has(f));
+    // De-duplicate per-room references
+    const uniqueEn = Array.from(new Set(allEnAudio));
+    const uniqueVi = Array.from(new Set(allViAudio));
+
+    // Check which files are missing from storage (skip if storage is empty)
+    const missingEn = storageEmpty ? [] : uniqueEn.filter(f => !storageFiles.has(f));
+    const missingVi = storageEmpty ? [] : uniqueVi.filter(f => !storageFiles.has(f));
 
     const coverage: RoomAudioCoverage = {
       roomId: room.id,
@@ -162,10 +178,10 @@ export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
       titleVi: room.title_vi,
       tier: room.tier,
       totalEntries: entries.length,
-      totalAudioRefsEn: allEnAudio.length,
-      totalAudioRefsVi: allViAudio.length,
-      presentEn: allEnAudio.length - missingEn.length,
-      presentVi: allViAudio.length - missingVi.length,
+      totalAudioRefsEn: uniqueEn.length,
+      totalAudioRefsVi: uniqueVi.length,
+      presentEn: storageEmpty ? 0 : uniqueEn.length - missingEn.length,
+      presentVi: storageEmpty ? 0 : uniqueVi.length - missingVi.length,
       missingEn,
       missingVi,
     };
