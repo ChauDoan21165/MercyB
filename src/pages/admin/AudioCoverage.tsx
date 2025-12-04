@@ -214,11 +214,17 @@ export default function AudioCoverage() {
               <AlertCircle className="h-6 w-6 text-yellow-600 flex-shrink-0 mt-0.5" />
               <div>
                 <h3 className="font-semibold text-yellow-800">
-                  Audio Storage List is Empty
+                  Audio Manifest Not Found
                 </h3>
                 <p className="text-sm text-yellow-700 mt-1">
-                  Check Supabase function <code className="bg-yellow-100 px-1 rounded">audio-storage-audit</code> configuration.
-                  All rooms will appear to have missing audio until this is resolved.
+                  Audio files are stored in <code className="bg-yellow-100 px-1 rounded">public/audio/</code> (static files).
+                  To enable coverage checking, generate the manifest:
+                </p>
+                <pre className="text-xs bg-yellow-100 p-2 rounded mt-2 text-yellow-800">
+                  node scripts/generate-audio-manifest.js
+                </pre>
+                <p className="text-xs text-yellow-600 mt-2">
+                  This creates <code className="bg-yellow-100 px-1 rounded">/audio/manifest.json</code> listing all .mp3 files.
                 </p>
               </div>
             </CardContent>
