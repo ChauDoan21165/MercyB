@@ -2,7 +2,7 @@ import { useHomepageConfig } from '@/hooks/useHomepageConfig';
 import { HomepageSection } from '@/components/homepage/HomepageSection';
 import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Trash2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { RoomSearch } from '@/components/RoomSearch';
@@ -13,12 +13,48 @@ import { CompanionBubble, MercyToggle } from '@/components/companion';
 import { MercyDockIcon } from '@/components/companion/MercyDockIcon';
 import { useHomeCompanion } from '@/hooks/useHomeCompanion';
 
+interface AlbumTrack {
+  id: string;
+  title_en: string;
+  title_vi: string;
+  audioSrc: string;
+}
+
+const DEFAULT_TRACKS: AlbumTrack[] = [
+  {
+    id: 'mercy_blade_full',
+    title_en: 'The Song of Mercy Blade — Full Version',
+    title_vi: 'Khúc Ca Mercy Blade — Bản Đầy Đủ',
+    audioSrc: '/audio/mercy_blade_song_full.mp3'
+  },
+  {
+    id: 'mercy_blade_instrumental',
+    title_en: 'The Song of Mercy Blade — Instrumental',
+    title_vi: 'Khúc Ca Mercy Blade — Bản Nhạc Nền',
+    audioSrc: '/audio/mercy_blade_song_instrumental.mp3'
+  }
+];
+
 const Homepage = () => {
   const { config, loading, error } = useHomepageConfig();
   const navigate = useNavigate();
   const [headerBg, setHeaderBg] = useState('#ffffff');
   const [textColor, setTextColor] = useState('#111827');
   const companion = useHomeCompanion();
+  
+  // Music album state with localStorage persistence
+  const [albumTracks, setAlbumTracks] = useState<AlbumTrack[]>(() => {
+    const saved = localStorage.getItem('mercyBladeAlbumTracks');
+    return saved ? JSON.parse(saved) : DEFAULT_TRACKS;
+  });
+
+  const handleDeleteTrack = (trackId: string) => {
+    if (window.confirm('Are you sure you want to delete this song? / Bạn có chắc muốn xóa bài hát này không?')) {
+      const updated = albumTracks.filter(t => t.id !== trackId);
+      setAlbumTracks(updated);
+      localStorage.setItem('mercyBladeAlbumTracks', JSON.stringify(updated));
+    }
+  };
 
   const handleResetConfig = () => {
     localStorage.removeItem('pinnedHomepageConfig');
@@ -276,31 +312,36 @@ Kids English không chỉ là chương trình dành cho trẻ.
           </div>
           
           <div className="grid gap-4">
-            {/* Track 1 */}
-            <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl p-6 shadow-md">
-              <h3 className="font-semibold text-purple-800 dark:text-purple-200 mb-2">
-                The Song of Mercy Blade — Full Version
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                Khúc Ca Mercy Blade — Bản Đầy Đủ
-              </p>
-              <audio controls className="w-full" preload="metadata">
-                <source src="/audio/mercy_blade_song_full.mp3" type="audio/mpeg" />
-              </audio>
-            </div>
-            
-            {/* Track 2 */}
-            <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl p-6 shadow-md">
-              <h3 className="font-semibold text-purple-800 dark:text-purple-200 mb-2">
-                The Song of Mercy Blade — Instrumental
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                Khúc Ca Mercy Blade — Bản Nhạc Nền
-              </p>
-              <audio controls className="w-full" preload="metadata">
-                <source src="/audio/mercy_blade_song_instrumental.mp3" type="audio/mpeg" />
-              </audio>
-            </div>
+            {albumTracks.length === 0 ? (
+              <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+                No songs in album / Không có bài hát trong album
+              </div>
+            ) : (
+              albumTracks.map((track) => (
+                <div key={track.id} className="bg-white/80 dark:bg-gray-800/80 rounded-xl p-6 shadow-md">
+                  <div className="flex justify-between items-start mb-2">
+                    <div>
+                      <h3 className="font-semibold text-purple-800 dark:text-purple-200">
+                        {track.title_en}
+                      </h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                        {track.title_vi}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => handleDeleteTrack(track.id)}
+                      className="p-2 text-red-500 hover:text-red-700 hover:bg-red-100 dark:hover:bg-red-900/30 rounded-lg transition-colors"
+                      title="Delete song / Xóa bài hát"
+                    >
+                      <Trash2 className="w-5 h-5" />
+                    </button>
+                  </div>
+                  <audio controls className="w-full mt-4" preload="metadata">
+                    <source src={track.audioSrc} type="audio/mpeg" />
+                  </audio>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </section>
