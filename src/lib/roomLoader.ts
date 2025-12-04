@@ -2,12 +2,27 @@
 import { supabase } from '@/integrations/supabase/client';
 import { processEntriesOptimized } from './roomLoaderHelpers';
 import { ROOMS_TABLE, AUDIO_FOLDER } from '@/lib/constants/rooms';
-import { normalizeTier, type TierId } from '@/lib/constants/tiers';
+import { normalizeTier, type TierId, KIDS_TIER_IDS } from '@/lib/constants/tiers';
 import type { Database } from '@/integrations/supabase/types';
 import { logger } from './logger';
 import { useSWR } from './cache/swrCache';
 
 type RoomRow = Database['public']['Tables']['rooms']['Row'];
+
+// Error codes for distinguishing room load failures
+export type RoomLoadErrorCode = 'ROOM_NOT_FOUND' | 'ACCESS_DENIED' | 'AUTH_REQUIRED';
+
+// Return type for room loader
+export type LoadedRoomResult = {
+  merged: any[];
+  keywordMenu: { en: string[]; vi: string[] };
+  audioBasePath: string;
+  roomTier?: TierId | null;
+  errorCode?: RoomLoadErrorCode;
+};
+
+// Kids tier array for cleaner checks
+const KIDS_TIERS: readonly TierId[] = KIDS_TIER_IDS;
 
 const ROOM_ID_OVERRIDES: Record<string, string> = {
   // VIP3 II Writing Deep-Dive rooms - map URL IDs to canonical DB IDs
@@ -76,12 +91,6 @@ const loadFromDatabase = async (dbRoomId: string) => {
     };
   }
 
-  // Optional: data hygiene validation (non-blocking for now)
-  // const validation = validateRoom(dbRoom);
-  // if (!validation.isValid) {
-  //   console.warn('Room validation failed', dbRoom.id, validation.errors);
-  // }
-
   const { keywordMenu, merged } = processEntriesOptimized(dbRoom.entries, dbRoomId);
 
   return {
@@ -105,12 +114,6 @@ const loadFromJson = async (roomId: string) => {
       return null;
     }
 
-    // Optional hygiene check here too
-    // const validation = validateRoom(jsonData);
-    // if (!validation.isValid) {
-    //   console.warn('JSON room validation failed', jsonData.id, validation.errors);
-    // }
-
     const { keywordMenu, merged } = processEntriesOptimized(jsonData.entries, roomId);
     const roomTier: TierId | null = jsonData.tier ? normalizeTier(jsonData.tier) : null;
 
@@ -127,9 +130,17 @@ const loadFromJson = async (roomId: string) => {
 };
 
 /**
+ * Helper to check if a tier is a kids tier
+ */
+const isKidsTier = (tier: TierId | null | undefined): boolean => {
+  if (!tier) return false;
+  return (KIDS_TIERS as readonly string[]).includes(tier);
+};
+
+/**
  * Main room loader with SWR caching - returns cached data instantly, revalidates in background
  */
-export const loadMergedRoom = async (roomId: string) => {
+export const loadMergedRoom = async (roomId: string): Promise<LoadedRoomResult> => {
   const cacheKey = `room:${roomId}`;
   
   return useSWR({
@@ -143,7 +154,7 @@ export const loadMergedRoom = async (roomId: string) => {
  * Internal room loader - optimized for fast loading with tier-based access control
  * SECURITY: Fetches authenticated user tier internally, never trusts caller
  */
-const loadMergedRoomInternal = async (roomId: string) => {
+const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult> => {
   const startTime = performance.now();
   const { canUserAccessRoom } = await import('./accessControl');
 
@@ -154,7 +165,12 @@ const loadMergedRoomInternal = async (roomId: string) => {
     } = await supabase.auth.getUser();
 
     if (!user) {
-      throw new Error('AUTHENTICATION_REQUIRED');
+      return {
+        merged: [],
+        keywordMenu: { en: [], vi: [] },
+        audioBasePath: AUDIO_BASE_PATH,
+        errorCode: 'AUTH_REQUIRED',
+      };
     }
 
     // 2. Check admin status via has_role RPC
@@ -181,8 +197,8 @@ const loadMergedRoomInternal = async (roomId: string) => {
     const baseTier: TierId = normalizeTier(rawUserTier);
     const normalizedUserTier: TierId = isAdmin ? 'vip9' : baseTier;
 
-    // Special handling for Kids tiers
-    const isUserKidsTier = baseTier === 'kids_1' || baseTier === 'kids_2' || baseTier === 'kids_3';
+    // Special handling for Kids tiers (using helper)
+    const isUserKidsTier = isKidsTier(baseTier);
 
     // 4. Normalize room ID
     const dbRoomId = normalizeRoomId(roomId);
@@ -220,19 +236,28 @@ const loadMergedRoomInternal = async (roomId: string) => {
         }
   
         const normalizedRoomTier = dbResult.roomTier ?? ('free' as TierId);
-        const isRoomKidsTier = 
-          normalizedRoomTier === 'kids_1' || 
-          normalizedRoomTier === 'kids_2' || 
-          normalizedRoomTier === 'kids_3';
+        const isRoomKidsTier = isKidsTier(normalizedRoomTier);
         
         // 6. Enforce access control using authenticated tier (admins bypass)
         if (!isAdmin) {
           if (isUserKidsTier && !isRoomKidsTier) {
-            throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
+            return {
+              merged: [],
+              keywordMenu: { en: [], vi: [] },
+              audioBasePath: AUDIO_BASE_PATH,
+              roomTier: normalizedRoomTier,
+              errorCode: 'ACCESS_DENIED',
+            };
           }
           
           if (!canUserAccessRoom(normalizedUserTier, normalizedRoomTier)) {
-            throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
+            return {
+              merged: [],
+              keywordMenu: { en: [], vi: [] },
+              audioBasePath: AUDIO_BASE_PATH,
+              roomTier: normalizedRoomTier,
+              errorCode: 'ACCESS_DENIED',
+            };
           }
         }
   
@@ -243,29 +268,43 @@ const loadMergedRoomInternal = async (roomId: string) => {
         return dbResult;
       }
     } catch (dbError: any) {
-      if (dbError?.message === 'ACCESS_DENIED_INSUFFICIENT_TIER') {
-        throw dbError;
-      }
       // Database load failed, continue to JSON fallback
+      logger.error('Database load error', { scope: 'roomLoader', roomId, error: dbError?.message });
     }
 
     // 7. Fallback to JSON files (with tier enforcement)
+    // Use normalized ID first, then try original if different
     try {
-      const jsonResult = await loadFromJson(roomId);
+      let jsonResult = await loadFromJson(dbRoomId);
+      
+      // Extra safety: if normalized ID didn't find it, try original
+      if (!jsonResult && dbRoomId !== roomId) {
+        jsonResult = await loadFromJson(roomId);
+      }
+      
       if (jsonResult) {
-        const isRoomKidsTierJson = 
-          jsonResult.roomTier === 'kids_1' || 
-          jsonResult.roomTier === 'kids_2' || 
-          jsonResult.roomTier === 'kids_3';
+        const isRoomKidsTierJson = isKidsTier(jsonResult.roomTier);
         
         // Enforce tier access for JSON rooms too (admins bypass)
         if (jsonResult.roomTier && !isAdmin) {
           if (isUserKidsTier && !isRoomKidsTierJson) {
-            throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
+            return {
+              merged: [],
+              keywordMenu: { en: [], vi: [] },
+              audioBasePath: AUDIO_BASE_PATH,
+              roomTier: jsonResult.roomTier,
+              errorCode: 'ACCESS_DENIED',
+            };
           }
           
           if (!canUserAccessRoom(normalizedUserTier, jsonResult.roomTier)) {
-            throw new Error('ACCESS_DENIED_INSUFFICIENT_TIER');
+            return {
+              merged: [],
+              keywordMenu: { en: [], vi: [] },
+              audioBasePath: AUDIO_BASE_PATH,
+              roomTier: jsonResult.roomTier,
+              errorCode: 'ACCESS_DENIED',
+            };
           }
         }
         
@@ -276,13 +315,11 @@ const loadMergedRoomInternal = async (roomId: string) => {
         return jsonResult;
       }
     } catch (error: any) {
-      if (error?.message === 'ACCESS_DENIED_INSUFFICIENT_TIER') {
-        throw error;
-      }
-      // Failed to load room from both database and JSON
+      // Failed to load room from JSON
+      logger.error('JSON load error', { scope: 'roomLoader', roomId, error: error?.message });
     }
 
-    // 8. Empty fallback - log failure
+    // 8. Room not found - return with explicit errorCode
     const duration = performance.now() - startTime;
     logger.roomLoad(roomId, duration, false, { error: 'Room not found in database or JSON' });
 
@@ -290,9 +327,10 @@ const loadMergedRoomInternal = async (roomId: string) => {
       merged: [],
       keywordMenu: { en: [], vi: [] },
       audioBasePath: AUDIO_BASE_PATH,
+      errorCode: 'ROOM_NOT_FOUND',
     };
   } catch (error: any) {
-    // Log error and re-throw
+    // Log error and return with error code
     const duration = performance.now() - startTime;
     logger.error('Room load error', {
       scope: 'roomLoader',
@@ -301,6 +339,12 @@ const loadMergedRoomInternal = async (roomId: string) => {
       error: error.message,
       errorStack: error.stack,
     });
-    throw error;
+    
+    return {
+      merged: [],
+      keywordMenu: { en: [], vi: [] },
+      audioBasePath: AUDIO_BASE_PATH,
+      errorCode: 'ROOM_NOT_FOUND',
+    };
   }
 };
