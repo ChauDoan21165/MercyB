@@ -56,15 +56,13 @@ function main() {
     files: mp3Files,
   };
 
-  // Ensure folder exists
-  fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
-
   // Write manifest
   fs.writeFileSync(OUTPUT_FILE, JSON.stringify(manifest, null, 2));
 
   console.log(`✅ Generated ${OUTPUT_FILE}`);
   console.log(`   Total .mp3 files: ${mp3Files.length}`);
 
+  // Show some stats
   const rootFiles = mp3Files.filter((f) => !f.includes("/"));
   const subfolderFiles = mp3Files.filter((f) => f.includes("/"));
   console.log(`   - Root files: ${rootFiles.length}`);
