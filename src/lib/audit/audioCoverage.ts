@@ -16,7 +16,8 @@ export interface RoomAudioCoverage {
 
 export interface AudioCoverageReport {
   rooms: RoomAudioCoverage[];
-  storageFiles: Set<string>;
+  storageFiles: string[]; // Array for safer serialization
+  storageFileCount: number;
   summary: {
     totalRooms: number;
     roomsWithMissingAudio: number;
@@ -117,8 +118,8 @@ async function fetchStorageFiles(): Promise<Set<string>> {
  */
 export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
   // Fetch storage files first
-  const storageFiles = await fetchStorageFiles();
-  console.log(`Loaded ${storageFiles.size} storage files`);
+  const storageFilesSet = await fetchStorageFiles();
+  console.log(`Loaded ${storageFilesSet.size} storage files`);
 
   // Fetch all rooms
   const { data: rooms, error } = await supabase
@@ -131,7 +132,8 @@ export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
     console.error("Error fetching rooms:", error);
     return {
       rooms: [],
-      storageFiles,
+      storageFiles: [],
+      storageFileCount: 0,
       summary: {
         totalRooms: 0,
         roomsWithMissingAudio: 0,
@@ -147,7 +149,7 @@ export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
   let roomsWithMissingAudio = 0;
 
   // Guard: if storage is empty, skip missing calculation to avoid false positives
-  const storageEmpty = storageFiles.size === 0;
+  const storageEmpty = storageFilesSet.size === 0;
   if (storageEmpty) {
     console.warn("audioCoverage: storageFiles is empty, skipping missing calculation - all rooms will show as unknown");
   }
@@ -169,8 +171,8 @@ export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
     const uniqueVi = Array.from(new Set(allViAudio));
 
     // Check which files are missing from storage (skip if storage is empty)
-    const missingEn = storageEmpty ? [] : uniqueEn.filter(f => !storageFiles.has(f));
-    const missingVi = storageEmpty ? [] : uniqueVi.filter(f => !storageFiles.has(f));
+    const missingEn = storageEmpty ? [] : uniqueEn.filter(f => !storageFilesSet.has(f));
+    const missingVi = storageEmpty ? [] : uniqueVi.filter(f => !storageFilesSet.has(f));
 
     const coverage: RoomAudioCoverage = {
       roomId: room.id,
@@ -197,7 +199,8 @@ export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
 
   return {
     rooms: roomCoverages,
-    storageFiles,
+    storageFiles: Array.from(storageFilesSet),
+    storageFileCount: storageFilesSet.size,
     summary: {
       totalRooms: roomCoverages.length,
       roomsWithMissingAudio,

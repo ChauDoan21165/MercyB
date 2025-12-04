@@ -45,7 +45,7 @@ export default function AudioCoverage() {
   const [report, setReport] = useState<AudioCoverageReport | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState("");
-  const [showOnlyMissing, setShowOnlyMissing] = useState(true); // Default ON
+  const [showOnlyMissing, setShowOnlyMissing] = useState(true);
   const [selectedRoom, setSelectedRoom] = useState<RoomAudioCoverage | null>(null);
   const { toast } = useToast();
 
@@ -80,12 +80,10 @@ export default function AudioCoverage() {
     if (!report) return [];
     
     return report.rooms.filter((room) => {
-      // Filter by missing audio
       if (showOnlyMissing && room.missingEn.length === 0 && room.missingVi.length === 0) {
         return false;
       }
       
-      // Filter by search
       if (search) {
         const searchLower = search.toLowerCase();
         return (
@@ -99,7 +97,6 @@ export default function AudioCoverage() {
     });
   }, [report, showOnlyMissing, search]);
 
-  // CSV Export function
   const handleExportCSV = () => {
     if (!filteredRooms.length) return;
 
@@ -163,7 +160,8 @@ export default function AudioCoverage() {
     return "bg-gray-100 text-gray-800";
   };
 
-  const storageEmpty = report && report.storageFiles.size === 0;
+  // Safe check for empty storage - using array-based storageFileCount
+  const storageEmpty = !!report && report.storageFileCount === 0;
 
   return (
     <div className="min-h-screen bg-white p-6">
@@ -269,7 +267,7 @@ export default function AudioCoverage() {
               <Card className="border border-gray-200">
                 <CardContent className="py-4">
                   <div className={`text-2xl font-bold ${storageEmpty ? 'text-yellow-600' : 'text-black'}`}>
-                    {report.storageFiles.size}
+                    {report.storageFileCount}
                   </div>
                   <div className="text-sm text-gray-600">In Storage</div>
                 </CardContent>
@@ -341,6 +339,7 @@ export default function AudioCoverage() {
                         <TableHead className="text-black font-semibold">Room ID</TableHead>
                         <TableHead className="text-black font-semibold">Title</TableHead>
                         <TableHead className="text-black font-semibold">Tier</TableHead>
+                        <TableHead className="text-black font-semibold text-center">Status</TableHead>
                         <TableHead className="text-black font-semibold text-center">Entries</TableHead>
                         <TableHead className="text-black font-semibold text-center">EN Audio</TableHead>
                         <TableHead className="text-black font-semibold text-center">VI Audio</TableHead>
@@ -350,7 +349,7 @@ export default function AudioCoverage() {
                     <TableBody>
                       {filteredRooms.length === 0 ? (
                         <TableRow>
-                          <TableCell colSpan={7} className="text-center py-8 text-gray-500">
+                          <TableCell colSpan={8} className="text-center py-8 text-gray-500">
                             {showOnlyMissing
                               ? "No rooms with missing audio found"
                               : "No rooms found"}
@@ -378,6 +377,17 @@ export default function AudioCoverage() {
                               <Badge className={getTierColor(room.tier)}>
                                 {room.tier || "unknown"}
                               </Badge>
+                            </TableCell>
+                            <TableCell className="text-center">
+                              {room.missingEn.length + room.missingVi.length === 0 ? (
+                                <span className="inline-flex items-center gap-1 text-xs text-green-600">
+                                  <span className="h-2 w-2 rounded-full bg-green-500" /> OK
+                                </span>
+                              ) : (
+                                <span className="inline-flex items-center gap-1 text-xs text-red-600">
+                                  <span className="h-2 w-2 rounded-full bg-red-500" /> Missing
+                                </span>
+                              )}
                             </TableCell>
                             <TableCell className="text-center">{room.totalEntries}</TableCell>
                             <TableCell className="text-center">
