@@ -1,0 +1,45 @@
+name: Audio Manifest Check
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "public/audio/**"
+      - "scripts/generate-audio-manifest.js"
+      - ".github/workflows/audio-manifest.yml"
+  pull_request:
+    branches: [main, master]
+    paths:
+      - "public/audio/**"
+      - "scripts/generate-audio-manifest.js"
+
+jobs:
+  generate-audio-manifest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate audio manifest
+        run: node scripts/generate-audio-manifest.js
+
+      - name: Show manifest summary
+        run: |
+          echo "Generated manifest:"
+          cat public/audio/manifest.json | head -n 30
+
+      - name: Verify manifest has files
+        run: |
+          FILE_COUNT=$(node -e "const m = require('./public/audio/manifest.json'); console.log(m.totalFiles)")
+          echo "Total audio files: $FILE_COUNT"
+          if [ "$FILE_COUNT" -eq 0 ]; then
+            echo "❌ ERROR: Manifest has 0 files!"
+            exit 1
+          fi
+          echo "✅ Manifest generated successfully"
