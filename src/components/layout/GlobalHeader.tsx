@@ -15,7 +15,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 export function GlobalHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background/80 backdrop-blur-sm">
-      <div className="mx-auto max-w-[720px] h-12 px-4 grid grid-cols-[auto,1fr,auto] items-center">
+      <div className="h-12 px-4 grid grid-cols-[auto,1fr,auto] items-center">
         {/* Left: navigation */}
         <div className="flex items-center gap-2">
           <HomeButton />
