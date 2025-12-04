@@ -15,6 +15,16 @@ const supabase = createClient(supabaseUrl, serviceRoleKey, {
   auth: { persistSession: false },
 });
 
+// 🔊 Audio bucket name - using the public "audio" bucket
+const AUDIO_BUCKET = "audio";
+
+type AudioIndex = {
+  /** Full paths, e.g. "free/english/ef01_intro_en.mp3" */
+  allKeys: Set<string>;
+  /** Basenames, e.g. "ef01_intro_en.mp3" */
+  basenames: Set<string>;
+};
+
 type AuditMode = "dry-run" | "repair";
 
 type AuditIssue = {
@@ -25,6 +35,7 @@ type AuditIssue = {
   message: string;
   fix?: string;
   autoFixable?: boolean;
+  orphanList?: string[];
 };
 
 type AuditSummary = {
@@ -33,6 +44,11 @@ type AuditSummary = {
   errors: number;
   warnings: number;
   fixed: number;
+  // 🔊 Audio stats
+  audioFilesInBucket?: number;
+  audioBasenamesInBucket?: number;
+  orphanAudioFiles?: number;
+  referencedAudioFiles?: number;
 };
 
 type AuditResult = {
@@ -143,6 +159,76 @@ function isCanonicalTier(tier: string): boolean {
   return VALID_CANONICAL_TIER_VALUES.includes(tier);
 }
 
+// 🔊 Build audio index from Supabase Storage
+async function buildAudioIndex(): Promise<AudioIndex> {
+  const allKeys: string[] = [];
+
+  try {
+    // List files from root of audio bucket
+    const { data, error } = await supabase.storage
+      .from(AUDIO_BUCKET)
+      .list("", { limit: 10000, offset: 0 });
+
+    if (error) {
+      console.error("[SafeShield] Audio index error:", error.message);
+      return { allKeys: new Set(), basenames: new Set() };
+    }
+
+    // Process root-level files and folders
+    for (const obj of data ?? []) {
+      if (!obj.name) continue;
+      
+      // If it's a folder (no metadata), recursively list its contents
+      if (obj.metadata === null) {
+        const folderContents = await listFolderRecursive(obj.name);
+        allKeys.push(...folderContents);
+      } else {
+        // It's a file at root level
+        allKeys.push(obj.name);
+      }
+    }
+  } catch (err) {
+    console.error("[SafeShield] Audio index exception:", err);
+    return { allKeys: new Set(), basenames: new Set() };
+  }
+
+  const keySet = new Set(allKeys);
+  const basenameSet = new Set(allKeys.map((k) => k.split("/").pop() || k));
+
+  return { allKeys: keySet, basenames: basenameSet };
+}
+
+// Helper: recursively list folder contents
+async function listFolderRecursive(folderPath: string): Promise<string[]> {
+  const files: string[] = [];
+  
+  try {
+    const { data, error } = await supabase.storage
+      .from(AUDIO_BUCKET)
+      .list(folderPath, { limit: 10000, offset: 0 });
+
+    if (error || !data) return files;
+
+    for (const obj of data) {
+      if (!obj.name) continue;
+      const fullPath = `${folderPath}/${obj.name}`;
+      
+      if (obj.metadata === null) {
+        // It's a subfolder, recurse
+        const subFiles = await listFolderRecursive(fullPath);
+        files.push(...subFiles);
+      } else {
+        // It's a file
+        files.push(fullPath);
+      }
+    }
+  } catch (err) {
+    console.error(`[SafeShield] Error listing folder ${folderPath}:`, err);
+  }
+
+  return files;
+}
+
 // MAIN AUDIT - Simplified rules
 async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
   const logs: string[] = [];
@@ -155,6 +241,10 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
   };
 
   log(`Starting Safe Shield audit in ${mode} mode`);
+
+  // 🔊 Build audio index once
+  const audioIndex = await buildAudioIndex();
+  log(`Audio index: ${audioIndex.allKeys.size} files, ${audioIndex.basenames.size} unique basenames`);
 
   // Phase 1 – load rooms
   const { data: dbRooms, error: dbError } = await supabase
@@ -174,6 +264,9 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
   const roomFixes: Map<string, Record<string, any>> = new Map();
   // Track which issues were auto-fixed (to exclude from final list)
   const fixedIssueIds: Set<string> = new Set();
+
+  // 🔊 Track all audio filenames that rooms refer to
+  const referencedAudioBasenames = new Set<string>();
 
   const addFix = (roomId: string, field: string, value: any, issueId: string) => {
     if (!roomFixes.has(roomId)) roomFixes.set(roomId, {});
@@ -299,12 +392,41 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
         }
       }
 
-      // Audio - ONLY flag if truly missing (empty or undefined)
+      // 🔊 Audio deep check
       const audio = entry.audio || entry.audio_en;
       if (!audio || (typeof audio === "string" && audio.trim() === "")) {
-        issues.push({ id: `audio-${entryPrefix}`, file, type: "missing_audio", severity: "error", message: `Entry "${entrySlug}" missing audio`, fix: "Generate TTS", autoFixable: false });
+        issues.push({
+          id: `audio-${entryPrefix}`,
+          file,
+          type: "missing_audio_field",
+          severity: "error",
+          message: `Entry "${entrySlug}" missing audio field`,
+          fix: "Add or generate TTS filename",
+          autoFixable: false,
+        });
+      } else if (typeof audio === "string") {
+        const trimmed = audio.trim();
+
+        // Register as referenced (by basename)
+        const basename = trimmed.split("/").pop() || trimmed;
+        referencedAudioBasenames.add(basename);
+
+        // 🔍 Check if file actually exists in storage
+        const existsByKey = audioIndex.allKeys.has(trimmed);
+        const existsByBasename = audioIndex.basenames.has(basename);
+
+        if (!existsByKey && !existsByBasename) {
+          issues.push({
+            id: `audio-file-${entryPrefix}`,
+            file,
+            type: "missing_audio_file",
+            severity: "error",
+            message: `Entry "${entrySlug}" points to audio "${trimmed}", but no matching file found in "${AUDIO_BUCKET}"`,
+            fix: "Generate TTS and upload with this filename",
+            autoFixable: false,
+          });
+        }
       }
-      // If audio exists (non-empty string), no issue - we don't check format anymore
     }
 
     // Check for malformed entries
@@ -328,7 +450,74 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
         addFix(roomId, "keywords", Array.from(keywordSet), kwIssueId);
       }
     }
+
+    // 🔊 Room-level intro audio (based on room_essay_en / room_essay_vi)
+    const hasIntroEn = typeof room.room_essay_en === "string" && room.room_essay_en.trim().length > 0;
+    const hasIntroVi = typeof room.room_essay_vi === "string" && room.room_essay_vi.trim().length > 0;
+
+    // Convention: <roomId>_intro_en.mp3 / _intro_vi.mp3
+    const introEnName = `${roomId}_intro_en.mp3`;
+    const introViName = `${roomId}_intro_vi.mp3`;
+
+    if (hasIntroEn) {
+      const exists = audioIndex.basenames.has(introEnName);
+      if (!exists) {
+        issues.push({
+          id: `intro-audio-en-${roomId}`,
+          file,
+          type: "missing_intro_audio_en",
+          severity: "warning",
+          message: `Room has room_essay_en but no intro audio file "${introEnName}" in "${AUDIO_BUCKET}"`,
+          fix: `Generate TTS and store as "${introEnName}"`,
+          autoFixable: false,
+        });
+      } else {
+        referencedAudioBasenames.add(introEnName);
+      }
+    }
+
+    if (hasIntroVi) {
+      const exists = audioIndex.basenames.has(introViName);
+      if (!exists) {
+        issues.push({
+          id: `intro-audio-vi-${roomId}`,
+          file,
+          type: "missing_intro_audio_vi",
+          severity: "warning",
+          message: `Room has room_essay_vi but no intro audio file "${introViName}" in "${AUDIO_BUCKET}"`,
+          fix: `Generate TTS and store as "${introViName}"`,
+          autoFixable: false,
+        });
+      } else {
+        referencedAudioBasenames.add(introViName);
+      }
+    }
   }
+
+  // 🔎 Orphan audio detection: files in bucket that no room references
+  const orphanBasenames: string[] = [];
+  for (const fullKey of audioIndex.allKeys) {
+    const basename = fullKey.split("/").pop() || fullKey;
+    if (!referencedAudioBasenames.has(basename)) {
+      orphanBasenames.push(fullKey);
+    }
+  }
+
+  // Report orphan files as info issue
+  if (orphanBasenames.length > 0) {
+    issues.push({
+      id: "orphan-audio",
+      file: "(storage)",
+      type: "orphan_audio_files",
+      severity: "info",
+      message: `Found ${orphanBasenames.length} audio files in "${AUDIO_BUCKET}" that are not referenced by any room`,
+      fix: "Consider deleting or relinking these files",
+      autoFixable: false,
+      orphanList: orphanBasenames.slice(0, 200),
+    });
+  }
+
+  log(`Audio analysis: ${referencedAudioBasenames.size} referenced, ${orphanBasenames.length} orphans`);
 
   // Phase 3 – Apply fixes in repair mode
   if (mode === "repair" && roomFixes.size > 0) {
@@ -370,9 +559,15 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
     errors,
     warnings,
     fixed: fixesApplied,
+    // 🔊 Audio stats
+    audioFilesInBucket: audioIndex.allKeys.size,
+    audioBasenamesInBucket: audioIndex.basenames.size,
+    orphanAudioFiles: orphanBasenames.length,
+    referencedAudioFiles: referencedAudioBasenames.size,
   };
 
   log(`Summary: ${totalRooms} total, ${scannedRooms} scanned, ${errors} errors, ${warnings} warnings, ${fixesApplied} fixed`);
+  log(`Audio: ${audioIndex.allKeys.size} in bucket, ${referencedAudioBasenames.size} referenced, ${orphanBasenames.length} orphans`);
 
   return { issues: finalIssues, summary, fixesApplied, logs };
 }

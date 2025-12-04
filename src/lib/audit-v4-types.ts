@@ -3,6 +3,11 @@
 export type AuditIssueType =
   | "missing_json"
   | "missing_audio"
+  | "missing_audio_field"
+  | "missing_audio_file"
+  | "missing_intro_audio_en"
+  | "missing_intro_audio_vi"
+  | "orphan_audio_files"
   | "missing_entries"
   | "missing_db"
   | "mismatched_slug"
@@ -36,6 +41,7 @@ export interface AuditIssue {
   message: string;
   fix?: string;
   autoFixable?: boolean;
+  orphanList?: string[];
 }
 
 export interface AuditSummary {
@@ -44,6 +50,11 @@ export interface AuditSummary {
   errors: number;
   warnings: number;
   fixed: number;
+  // Audio stats
+  audioFilesInBucket?: number;
+  audioBasenamesInBucket?: number;
+  orphanAudioFiles?: number;
+  referencedAudioFiles?: number;
 }
 
 export type AuditMode = "dry-run" | "repair";
