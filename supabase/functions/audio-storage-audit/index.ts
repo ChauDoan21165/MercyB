@@ -5,7 +5,8 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-const BUCKET_NAME = 'room-audio';
+// 🔧 FIX: Use the correct bucket name - "audio" is the public bucket with mp3 files
+const BUCKET_NAME = 'audio';
 
 interface AudioSyncReport {
   storageFiles: string[];
@@ -21,6 +22,7 @@ interface AudioSyncReport {
   };
   debug?: {
     sanityTests: Record<string, { inStorage: boolean; inReferenced: boolean }>;
+    bucketName: string;
   };
 }
 
@@ -168,11 +170,12 @@ Deno.serve(async (req) => {
     const supabase = createClient(supabaseUrl, serviceRoleKey);
 
     console.log('Starting audio storage audit...');
+    console.log(`Using bucket: ${BUCKET_NAME}`);
 
     // Get all files from storage bucket (recursively)
     console.log('Listing storage bucket files (recursive)...');
     const storageFiles = await listAllBucketFiles(supabase);
-    console.log(`Found ${storageFiles.length} .mp3 files in storage`);
+    console.log(`Found ${storageFiles.length} .mp3 files in storage bucket "${BUCKET_NAME}"`);
 
     // Get all referenced audio from database
     console.log('Getting referenced audio from database...');
@@ -226,6 +229,7 @@ Deno.serve(async (req) => {
       },
       debug: {
         sanityTests,
+        bucketName: BUCKET_NAME,
       },
     };
 
