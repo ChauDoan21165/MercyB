@@ -21,7 +21,8 @@ const supabase = createClient(supabaseUrl, serviceRoleKey, {
 });
 
 // ============================================================================
-// TYPES (mirrored from src/lib/audit-v4-types.ts for Deno compatibility)
+// TYPES — Mirrored from src/lib/audit-v4-types.ts for Deno compatibility
+// SINGLE SOURCE OF TRUTH: Ensure these match audit-v4-types.ts exactly
 // ============================================================================
 
 const AUDIO_BUCKET = "audio";
@@ -29,22 +30,38 @@ const AUDIO_BUCKET = "audio";
 type AuditMode = "dry-run" | "repair";
 type AuditSeverity = "error" | "warning" | "info";
 
+// Complete AuditIssueType union - keep in sync with src/lib/audit-v4-types.ts
 type AuditIssueType =
+  // Room identity issues
   | "duplicate_room" | "missing_tier" | "invalid_tier" | "missing_schema_id"
   | "missing_domain" | "missing_title" | "missing_title_en" | "missing_title_vi"
+  // Entry structure issues
   | "missing_entries" | "malformed_entries" | "entry_count_info"
   | "missing_slug" | "duplicate_slug" | "slug_format_info"
+  // Copy issues
   | "missing_copy_en" | "missing_copy_vi" | "copy_word_count_extreme" | "copy_placeholder_detected"
+  // Keywords issues
   | "missing_room_keywords" | "entry_keyword_missing_en" | "entry_keyword_missing_vi"
   | "entry_keyword_too_few" | "entry_keyword_duplicate_across_room"
+  // Audio issues - entry level
   | "missing_audio" | "missing_audio_field" | "missing_audio_file"
-  | "missing_intro_audio_en" | "missing_intro_audio_vi" | "orphan_audio_files"
+  // Audio issues - room intro level
+  | "missing_intro_audio_en" | "missing_intro_audio_vi"
+  // Audio issues - orphan detection
+  | "orphan_audio_files"
+  // JSON/Registry issues
   | "missing_json" | "invalid_json" | "missing_db" | "mismatched_slug" | "registry_missing"
+  // Essay issues
   | "missing_room_essay_en" | "missing_room_essay_vi" | "essay_placeholder_detected"
   | "essay_too_short" | "essay_too_long"
+  // TTS safety issues
   | "tts_unstable_text" | "tts_length_exceeded"
+  // Content safety issues
   | "crisis_content" | "medical_claims" | "emergency_phrasing" | "kids_crisis_blocker"
-  | "deprecated_field_present" | "unknown_entry_key";
+  // Deprecated fields
+  | "deprecated_field_present"
+  // Unknown entry keys
+  | "unknown_entry_key";
 
 interface AuditIssue {
   id: string;
@@ -215,15 +232,20 @@ function inferTierFromRoomId(roomId: string): string {
 
 function inferDomainFromTier(tier: string): string {
   const t = tier.toLowerCase();
+  // Strategic tiers
   if (t.includes("vip9")) return "Strategic Intelligence";
   if (t.includes("vip8")) return "Advanced Mastery";
   if (t.includes("vip7")) return "Professional Growth";
+  // Specialized tiers
   if (t.includes("vip6")) return "Deep Psychology";
   if (t.includes("vip5")) return "Creative Writing";
   if (t.includes("vip4")) return "CareerZ";
-  if (t.includes("vip3")) return "Intermediate English";
-  if (t.includes("vip2")) return "Pre-Intermediate English";
-  if (t.includes("vip1")) return "Beginner English";
+  // English learning ladder (VIP1-VIP3 = VIP English Learning)
+  if (t.includes("vip3ii")) return "VIP English Learning";
+  if (t.includes("vip3")) return "VIP English Learning";
+  if (t.includes("vip2")) return "VIP English Learning";
+  if (t.includes("vip1")) return "VIP English Learning";
+  // Foundation tiers
   if (t.includes("free") || t.includes("miễn phí")) return "English Foundation";
   if (t.includes("kids") || t.includes("trẻ em")) return "Kids English";
   return "General";
