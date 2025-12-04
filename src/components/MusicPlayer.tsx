@@ -208,6 +208,16 @@ const TRACKS = [
   { id: '184', name: 'Rise With Mercy', url: '/audio/rise_with_mercy.mp3' },
   { id: '185', name: 'Where Mercy Finds Me (5)', url: '/audio/where_mercy_finds_me_5.mp3' },
   { id: '186', name: 'Where Mercy Finds Me (4)', url: '/audio/where_mercy_finds_me_4.mp3' },
+  { id: '187', name: 'Where Mercy Finds Me (4 v2)', url: '/audio/where_mercy_finds_me_4_v2.mp3' },
+  { id: '188', name: 'Where Mercy Finds Me (3)', url: '/audio/where_mercy_finds_me_3.mp3' },
+  { id: '189', name: 'Where Mercy Finds Me (2)', url: '/audio/where_mercy_finds_me_2.mp3' },
+  { id: '190', name: 'Where Mercy Finds Me (1)', url: '/audio/where_mercy_finds_me_1.mp3' },
+  { id: '191', name: 'Where Mercy Finds Me', url: '/audio/where_mercy_finds_me.mp3' },
+  { id: '192', name: 'Mercy On My Mind (1)', url: '/audio/mercy_on_my_mind_1.mp3' },
+  { id: '193', name: 'Mercy On My Mind', url: '/audio/mercy_on_my_mind.mp3' },
+  { id: '194', name: 'In the Quiet Mercy', url: '/audio/in_the_quiet_mercy.mp3' },
+  { id: '195', name: 'Step With Me Mercy', url: '/audio/step_with_me_mercy.mp3' },
+  { id: '196', name: 'In A Quiet Room I Open My Mind (2)', url: '/audio/in_a_quiet_room_i_open_my_mind_2.mp3' },
 ];
 
 export const MusicPlayer = () => {
