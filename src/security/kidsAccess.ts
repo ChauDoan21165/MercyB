@@ -1,14 +1,12 @@
 // Kids Access Logic - Separate access rules for kids content
 
-import type { TierId } from '@/lib/roomMaster/roomMasterTypes';
+import { type TierId, isKidsTier as canonicalIsKidsTier, KIDS_TIER_IDS } from '@/lib/constants/tiers';
 
-const KIDS_TIERS: TierId[] = ['kids_1', 'kids_2', 'kids_3'];
 const ADULT_TIERS: TierId[] = [
   'free',
   'vip1',
   'vip2',
   'vip3',
-  'vip3ii',
   'vip4',
   'vip5',
   'vip6',
@@ -21,7 +19,7 @@ const ADULT_TIERS: TierId[] = [
  * Check if tier is a kids tier
  */
 export function isKidsTier(tier: TierId): boolean {
-  return KIDS_TIERS.includes(tier);
+  return canonicalIsKidsTier(tier);
 }
 
 /**

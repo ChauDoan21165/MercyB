@@ -1,6 +1,6 @@
 // Global Access Policy - Central access control rules
 
-import type { TierId } from '@/lib/roomMaster/roomMasterTypes';
+import { type TierId, ALL_TIER_IDS } from '@/lib/constants/tiers';
 import type { AppRole } from './typeGuards';
 import { getTierLevel } from './typeGuards';
 import { isKidsTier, canKidsAccessAdult } from './kidsAccess';
@@ -12,18 +12,27 @@ export interface AccessRule {
   description: string;
 }
 
+// All tiers for pages accessible to everyone
+const ALL_TIERS: TierId[] = ALL_TIER_IDS;
+
+// Adult tiers only (no kids)
+const ADULT_TIERS: TierId[] = ['free', 'vip1', 'vip2', 'vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'];
+
+// Kids + adult tiers that can access kids content
+const KIDS_ACCESSIBLE_TIERS: TierId[] = ['kids_1', 'kids_2', 'kids_3', ...ADULT_TIERS];
+
 export const ACCESS_POLICIES: Record<string, AccessRule> = {
   // Public pages
   homepage: {
     allowedRoles: ['user', 'moderator', 'admin'],
-    allowedTiers: ['free', 'vip1', 'vip2', 'vip3', 'vip3ii', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9', 'kids_1', 'kids_2', 'kids_3'],
+    allowedTiers: ALL_TIERS,
     requireAuth: false,
     description: 'Public homepage - accessible to all',
   },
 
   pricing: {
     allowedRoles: ['user', 'moderator', 'admin'],
-    allowedTiers: ['free', 'vip1', 'vip2', 'vip3', 'vip3ii', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9', 'kids_1', 'kids_2', 'kids_3'],
+    allowedTiers: ALL_TIERS,
     requireAuth: false,
     description: 'Pricing page - accessible to all',
   },
@@ -31,7 +40,7 @@ export const ACCESS_POLICIES: Record<string, AccessRule> = {
   // Free tier
   free_rooms: {
     allowedRoles: ['user', 'moderator', 'admin'],
-    allowedTiers: ['free', 'vip1', 'vip2', 'vip3', 'vip3ii', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'],
+    allowedTiers: ADULT_TIERS,
     requireAuth: true,
     description: 'Free rooms - accessible to all authenticated users except kids',
   },
@@ -39,16 +48,58 @@ export const ACCESS_POLICIES: Record<string, AccessRule> = {
   // VIP tiers
   vip1_rooms: {
     allowedRoles: ['user', 'moderator', 'admin'],
-    allowedTiers: ['vip1', 'vip2', 'vip3', 'vip3ii', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'],
+    allowedTiers: ['vip1', 'vip2', 'vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'],
     requireAuth: true,
     description: 'VIP1 rooms - requires VIP1 or higher',
   },
 
   vip2_rooms: {
     allowedRoles: ['user', 'moderator', 'admin'],
-    allowedTiers: ['vip2', 'vip3', 'vip3ii', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'],
+    allowedTiers: ['vip2', 'vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'],
     requireAuth: true,
     description: 'VIP2 rooms - requires VIP2 or higher',
+  },
+
+  vip3_rooms: {
+    allowedRoles: ['user', 'moderator', 'admin'],
+    allowedTiers: ['vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'],
+    requireAuth: true,
+    description: 'VIP3 rooms - requires VIP3 or higher',
+  },
+
+  vip4_rooms: {
+    allowedRoles: ['user', 'moderator', 'admin'],
+    allowedTiers: ['vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'],
+    requireAuth: true,
+    description: 'VIP4 rooms - requires VIP4 or higher',
+  },
+
+  vip5_rooms: {
+    allowedRoles: ['user', 'moderator', 'admin'],
+    allowedTiers: ['vip5', 'vip6', 'vip7', 'vip8', 'vip9'],
+    requireAuth: true,
+    description: 'VIP5 rooms - requires VIP5 or higher',
+  },
+
+  vip6_rooms: {
+    allowedRoles: ['user', 'moderator', 'admin'],
+    allowedTiers: ['vip6', 'vip7', 'vip8', 'vip9'],
+    requireAuth: true,
+    description: 'VIP6 rooms - requires VIP6 or higher',
+  },
+
+  vip7_rooms: {
+    allowedRoles: ['user', 'moderator', 'admin'],
+    allowedTiers: ['vip7', 'vip8', 'vip9'],
+    requireAuth: true,
+    description: 'VIP7 rooms - requires VIP7 or higher',
+  },
+
+  vip8_rooms: {
+    allowedRoles: ['user', 'moderator', 'admin'],
+    allowedTiers: ['vip8', 'vip9'],
+    requireAuth: true,
+    description: 'VIP8 rooms - requires VIP8 or higher',
   },
 
   vip9_rooms: {
@@ -61,7 +112,7 @@ export const ACCESS_POLICIES: Record<string, AccessRule> = {
   // Kids content
   kids_rooms: {
     allowedRoles: ['user', 'moderator', 'admin'],
-    allowedTiers: ['kids_1', 'kids_2', 'kids_3', 'vip1', 'vip2', 'vip3', 'vip3ii', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'],
+    allowedTiers: KIDS_ACCESSIBLE_TIERS,
     requireAuth: true,
     description: 'Kids rooms - accessible to kids tiers and all adult tiers',
   },
@@ -69,7 +120,7 @@ export const ACCESS_POLICIES: Record<string, AccessRule> = {
   // Admin pages
   admin_dashboard: {
     allowedRoles: ['admin'],
-    allowedTiers: ['free', 'vip1', 'vip2', 'vip3', 'vip3ii', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9', 'kids_1', 'kids_2', 'kids_3'],
+    allowedTiers: ALL_TIERS,
     requireAuth: true,
     description: 'Admin dashboard - requires admin role',
   },
@@ -77,7 +128,7 @@ export const ACCESS_POLICIES: Record<string, AccessRule> = {
   // Moderator pages
   mod_dashboard: {
     allowedRoles: ['moderator', 'admin'],
-    allowedTiers: ['free', 'vip1', 'vip2', 'vip3', 'vip3ii', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9', 'kids_1', 'kids_2', 'kids_3'],
+    allowedTiers: ALL_TIERS,
     requireAuth: true,
     description: 'Moderator dashboard - requires moderator or admin role',
   },
@@ -85,7 +136,7 @@ export const ACCESS_POLICIES: Record<string, AccessRule> = {
   // Profile & settings
   profile: {
     allowedRoles: ['user', 'moderator', 'admin'],
-    allowedTiers: ['free', 'vip1', 'vip2', 'vip3', 'vip3ii', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9', 'kids_1', 'kids_2', 'kids_3'],
+    allowedTiers: ALL_TIERS,
     requireAuth: true,
     description: 'User profile - accessible to all authenticated users',
   },
