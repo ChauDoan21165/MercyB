@@ -42,6 +42,7 @@ import { setCustomKeywordMappings, clearCustomKeywordMappings, loadRoomKeywords 
 import { buildAudioSrc } from "@/lib/audioHelpers";
 import { ProfileAvatarUpload } from "@/components/ProfileAvatarUpload";
 import { getTierRoute } from "@/lib/tierRoutes";
+import { LockedBanner } from "@/components/room/LockedBanner";
 import { PrimaryHero } from "@/components/layout/PrimaryHero";
 import heroRainbowBg from '@/assets/hero-rainbow-clean.png';
 import { useFavoriteRooms } from "@/hooks/useFavoriteRooms";
@@ -112,6 +113,8 @@ const ChatHub = () => {
   const [showAccessDenied, setShowAccessDenied] = useState(false);
   const [showCreditLimit, setShowCreditLimit] = useState(false);
   const [showSignupPrompt, setShowSignupPrompt] = useState(false);
+  const [isPreviewMode, setIsPreviewMode] = useState(false); // NEW: true when viewing locked room preview
+  const [loadedRoomTier, setLoadedRoomTier] = useState<string | null>(null); // NEW: tier from room loader
   const contentMode = "keyword"; // Always use keyword mode
   const [currentAudio, setCurrentAudio] = useState<string | null>(null);
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
@@ -217,34 +220,16 @@ const ChatHub = () => {
     fetchUsername();
   }, []);
 
-  // Check access - Free rooms require registration, VIP rooms require subscription
+  // Check access - NEW: Preview model - don't block, let room loader handle preview
+  // Only show access denied for truly blocked scenarios (kids tier mismatch)
   useEffect(() => {
     if (accessLoading) {
-      // Don't show access denied while still loading
       return;
     }
     
-    if (!info) {
-      return;
-    }
-
-    // Unauthenticated users can't access any rooms
-    if (!isAuthenticated) {
-      setShowAccessDenied(true);
-      return;
-    }
-    
-    // Authenticated users: check tier access using unified helper
-    const roomTierId = info.tier === 'vip3_ii' ? 'vip3ii' : info.tier || 'free';
-    const hasAccess = canAccessTier(roomTierId);
-    
-    setShowAccessDenied(!hasAccess);
-  }, [
-    accessLoading,
-    info,
-    isAuthenticated,
-    canAccessTier,
-  ]);
+    // Reset showAccessDenied - preview mode is now handled by LockedBanner
+    setShowAccessDenied(false);
+  }, [accessLoading]);
 
   const handleAccessDenied = () => {
     navigate('/');
@@ -277,9 +262,22 @@ const ChatHub = () => {
       
       try {
         // Load merged entries - uses authenticated tier internally
+        // NEW: Returns preview entries if user doesn't have full access
         const result = await loadMergedRoom(roomId || '');
         setMergedEntries(result.merged);
         setAudioBasePath(result.audioBasePath || '/');
+        setLoadedRoomTier(result.roomTier || null);
+        
+        // Check if this is preview mode (user doesn't have full access)
+        const isPreview = result.hasFullAccess === false && result.merged.length > 0;
+        setIsPreviewMode(isPreview);
+        
+        // Handle ROOM_NOT_FOUND error
+        if (result.errorCode === 'ROOM_NOT_FOUND') {
+          setRoomError({ kind: 'not_found', message: roomId ? `Room ID: ${roomId}` : undefined });
+          setRoomLoading(false);
+          return;
+        }
        
         if (!result.merged || result.merged.length === 0) {
           console.warn(`No merged entries for room ${roomId} tier ${tier}`);
@@ -907,6 +905,14 @@ const ChatHub = () => {
           onRefresh={handleRefreshRooms}
           isRefreshing={isRefreshing}
         />
+        
+        {/* Preview Mode Banner - Shows when user doesn't have full access */}
+        {isPreviewMode && (
+          <LockedBanner 
+            roomTier={loadedRoomTier as any} 
+            isLoggedIn={isAuthenticated} 
+          />
+        )}
         
         {/* Main Room Content - Loading and Error States */}
         {roomLoading && !roomError ? (
