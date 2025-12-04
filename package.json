@@ -4,15 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "generate:audio-manifest": "node scripts/generate-audio-manifest.js",
-    "build": "npm run generate:audio-manifest && vite build",
-    "build:dev": "vite build --mode development",
-    "audio:audit": "node scripts/audio-sync-audit.mjs",
-    "audio:audit:cleanup": "node scripts/audio-sync-audit.mjs --delete-orphans",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
+  "dev": "vite",
+  "generate:audio-manifest": "node scripts/generate-audio-manifest.js",
+  "build": "npm run generate:audio-manifest && vite build",
+  "build:dev": "vite build --mode development",
+  "lint": "eslint .",
+  "preview": "vite preview"
+},
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
     "@monaco-editor/react": "^4.7.0",
