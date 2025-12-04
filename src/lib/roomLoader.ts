@@ -19,6 +19,7 @@ export type LoadedRoomResult = {
   audioBasePath: string;
   roomTier?: TierId | null;
   errorCode?: RoomLoadErrorCode;
+  hasFullAccess?: boolean; // NEW: true = full access, false = preview only
 };
 
 // Kids tier array for cleaner checks
@@ -53,6 +54,14 @@ const normalizeRoomId = (roomId: string): string => {
 };
 
 const AUDIO_BASE_PATH = `${AUDIO_FOLDER}/`;
+
+/**
+ * Build preview entries - show first 2 entries as a "shop window" preview
+ */
+const buildPreviewEntries = (entries: any[]): any[] => {
+  if (!Array.isArray(entries)) return [];
+  return entries.slice(0, 2);
+};
 
 /**
  * Load room from database
@@ -152,52 +161,51 @@ export const loadMergedRoom = async (roomId: string): Promise<LoadedRoomResult> 
 
 /**
  * Internal room loader - optimized for fast loading with tier-based access control
- * SECURITY: Fetches authenticated user tier internally, never trusts caller
+ * 
+ * NEW BEHAVIOR: "Shop preview" model
+ * - Visitors/Free users CAN see preview of VIP rooms (title, intro, first 2 entries)
+ * - Full access requires correct tier subscription
+ * - Never returns empty room just because of tier mismatch
  */
 const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult> => {
   const startTime = performance.now();
   const { canUserAccessRoom } = await import('./accessControl');
 
   try {
-    // 1. Get authenticated user
+    // 1. Get authenticated user (guests treated as free tier)
     const {
       data: { user },
     } = await supabase.auth.getUser();
 
-    if (!user) {
-      return {
-        merged: [],
-        keywordMenu: { en: [], vi: [] },
-        audioBasePath: AUDIO_BASE_PATH,
-        errorCode: 'AUTH_REQUIRED',
-      };
+    let isAdmin = false;
+    let baseTier: TierId = 'free'; // Guest default = free tier
+
+    if (user) {
+      // 2. Check admin status via has_role RPC
+      const { data: isAdminRpc, error: adminError } = await supabase.rpc('has_role', {
+        _role: 'admin',
+        _user_id: user.id,
+      });
+
+      if (adminError) {
+        logger.error('Error checking admin role', { scope: 'roomLoader', error: adminError.message });
+      }
+
+      isAdmin = !!isAdminRpc;
+
+      // 3. Get user's tier from database
+      const { data: subscription } = await supabase
+        .from('user_subscriptions')
+        .select('subscription_tiers(name)')
+        .eq('user_id', user.id)
+        .eq('status', 'active')
+        .maybeSingle();
+
+      const rawUserTier = (subscription?.subscription_tiers as any)?.name || 'Free / Miễn phí';
+      baseTier = normalizeTier(rawUserTier);
     }
 
-    // 2. Check admin status via has_role RPC
-    const { data: isAdminRpc, error: adminError } = await supabase.rpc('has_role', {
-      _role: 'admin',
-      _user_id: user.id,
-    });
-
-    if (adminError) {
-      logger.error('Error checking admin role', { scope: 'roomLoader', error: adminError.message });
-    }
-
-    const isAdmin = !!isAdminRpc;
-
-    // 3. Get user's tier from database
-    const { data: subscription } = await supabase
-      .from('user_subscriptions')
-      .select('subscription_tiers(name)')
-      .eq('user_id', user.id)
-      .eq('status', 'active')
-      .maybeSingle();
-
-    const rawUserTier = (subscription?.subscription_tiers as any)?.name || 'Free / Miễn phí';
-    const baseTier: TierId = normalizeTier(rawUserTier);
     const normalizedUserTier: TierId = isAdmin ? 'vip9' : baseTier;
-
-    // Special handling for Kids tiers (using helper)
     const isUserKidsTier = isKidsTier(baseTier);
 
     // 4. Normalize room ID
@@ -238,42 +246,54 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
         const normalizedRoomTier = dbResult.roomTier ?? ('free' as TierId);
         const isRoomKidsTier = isKidsTier(normalizedRoomTier);
         
-        // 6. Enforce access control using authenticated tier (admins bypass)
+        // 6. Determine access level (but don't block - return preview instead)
+        let hasFullAccess = true;
+        
         if (!isAdmin) {
           if (isUserKidsTier && !isRoomKidsTier) {
-            return {
-              merged: [],
-              keywordMenu: { en: [], vi: [] },
-              audioBasePath: AUDIO_BASE_PATH,
-              roomTier: normalizedRoomTier,
-              errorCode: 'ACCESS_DENIED',
-            };
-          }
-          
-          if (!canUserAccessRoom(normalizedUserTier, normalizedRoomTier)) {
-            return {
-              merged: [],
-              keywordMenu: { en: [], vi: [] },
-              audioBasePath: AUDIO_BASE_PATH,
-              roomTier: normalizedRoomTier,
-              errorCode: 'ACCESS_DENIED',
-            };
+            hasFullAccess = false;
+          } else if (!canUserAccessRoom(normalizedUserTier, normalizedRoomTier)) {
+            hasFullAccess = false;
           }
         }
+
+        // If no full access, return PREVIEW (not empty)
+        if (!hasFullAccess) {
+          const previewMerged = buildPreviewEntries(dbResult.merged);
+          const duration = performance.now() - startTime;
+          logger.roomLoad(roomId, duration, true, { 
+            source: 'database', 
+            entryCount: previewMerged.length, 
+            preview: true,
+            userTier: normalizedUserTier,
+            roomTier: normalizedRoomTier,
+          });
+
+          return {
+            merged: previewMerged,
+            keywordMenu: dbResult.keywordMenu,
+            audioBasePath: AUDIO_BASE_PATH,
+            roomTier: normalizedRoomTier,
+            errorCode: 'ACCESS_DENIED', // Indicates "preview only, not full access"
+            hasFullAccess: false,
+          };
+        }
   
-        // Log successful load with performance
+        // Full access - return everything
         const duration = performance.now() - startTime;
         logger.roomLoad(roomId, duration, true, { source: 'database', entryCount: dbResult.merged.length });
         
-        return dbResult;
+        return {
+          ...dbResult,
+          hasFullAccess: true,
+        };
       }
     } catch (dbError: any) {
       // Database load failed, continue to JSON fallback
       logger.error('Database load error', { scope: 'roomLoader', roomId, error: dbError?.message });
     }
 
-    // 7. Fallback to JSON files (with tier enforcement)
-    // Use normalized ID first, then try original if different
+    // 7. Fallback to JSON files (with same preview logic)
     try {
       let jsonResult = await loadFromJson(dbRoomId);
       
@@ -283,39 +303,52 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
       }
       
       if (jsonResult) {
-        const isRoomKidsTierJson = isKidsTier(jsonResult.roomTier);
+        const normalizedRoomTier = jsonResult.roomTier ?? ('free' as TierId);
+        const isRoomKidsTierJson = isKidsTier(normalizedRoomTier);
         
-        // Enforce tier access for JSON rooms too (admins bypass)
-        if (jsonResult.roomTier && !isAdmin) {
+        // Determine access level for JSON rooms (same logic)
+        let hasFullAccess = true;
+        
+        if (!isAdmin) {
           if (isUserKidsTier && !isRoomKidsTierJson) {
-            return {
-              merged: [],
-              keywordMenu: { en: [], vi: [] },
-              audioBasePath: AUDIO_BASE_PATH,
-              roomTier: jsonResult.roomTier,
-              errorCode: 'ACCESS_DENIED',
-            };
-          }
-          
-          if (!canUserAccessRoom(normalizedUserTier, jsonResult.roomTier)) {
-            return {
-              merged: [],
-              keywordMenu: { en: [], vi: [] },
-              audioBasePath: AUDIO_BASE_PATH,
-              roomTier: jsonResult.roomTier,
-              errorCode: 'ACCESS_DENIED',
-            };
+            hasFullAccess = false;
+          } else if (jsonResult.roomTier && !canUserAccessRoom(normalizedUserTier, jsonResult.roomTier)) {
+            hasFullAccess = false;
           }
         }
+
+        // If no full access, return preview
+        if (!hasFullAccess) {
+          const previewMerged = buildPreviewEntries(jsonResult.merged);
+          const duration = performance.now() - startTime;
+          logger.roomLoad(roomId, duration, true, { 
+            source: 'json', 
+            entryCount: previewMerged.length, 
+            preview: true,
+            userTier: normalizedUserTier,
+            roomTier: normalizedRoomTier,
+          });
+
+          return {
+            merged: previewMerged,
+            keywordMenu: jsonResult.keywordMenu,
+            audioBasePath: AUDIO_BASE_PATH,
+            roomTier: normalizedRoomTier,
+            errorCode: 'ACCESS_DENIED',
+            hasFullAccess: false,
+          };
+        }
         
-        // Log successful load with performance
+        // Full access
         const duration = performance.now() - startTime;
         logger.roomLoad(roomId, duration, true, { source: 'json', entryCount: jsonResult.merged.length });
         
-        return jsonResult;
+        return {
+          ...jsonResult,
+          hasFullAccess: true,
+        };
       }
     } catch (error: any) {
-      // Failed to load room from JSON
       logger.error('JSON load error', { scope: 'roomLoader', roomId, error: error?.message });
     }
 
@@ -328,9 +361,9 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
       keywordMenu: { en: [], vi: [] },
       audioBasePath: AUDIO_BASE_PATH,
       errorCode: 'ROOM_NOT_FOUND',
+      hasFullAccess: false,
     };
   } catch (error: any) {
-    // Log error and return with error code
     const duration = performance.now() - startTime;
     logger.error('Room load error', {
       scope: 'roomLoader',
@@ -345,6 +378,7 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
       keywordMenu: { en: [], vi: [] },
       audioBasePath: AUDIO_BASE_PATH,
       errorCode: 'ROOM_NOT_FOUND',
+      hasFullAccess: false,
     };
   }
 };
