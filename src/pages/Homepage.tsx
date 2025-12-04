@@ -155,17 +155,50 @@ const Homepage = () => {
       <main>
         {config.sections
           .filter((section) => section.id !== 'vip9_strategic')
-          .map((section) => (
-            <HomepageSection
-              key={section.id}
-              id={section.id}
-              backgroundColor={section.background_color}
-              headingColor={section.heading_color}
-              accentColor={section.accent_color}
-              title={section.title}
-              body={section.body}
-              audio={section.audio}
-            />
+          .map((section, index) => (
+            <>
+              <HomepageSection
+                key={section.id}
+                id={section.id}
+                backgroundColor={section.background_color}
+                headingColor={section.heading_color}
+                accentColor={section.accent_color}
+                title={section.title}
+                body={section.body}
+                audio={section.audio}
+              />
+              {/* Insert Theme Song Music Player after song_lyrics (3rd position) */}
+              {section.id === 'song_lyrics' && homepageSongs.length > 0 && (
+                <section className="py-12 px-6 bg-gradient-to-b from-purple-50 to-indigo-100 dark:from-purple-950/30 dark:to-indigo-950/30">
+                  <div className="max-w-4xl mx-auto space-y-6">
+                    <div className="text-center space-y-2">
+                      <h2 className="text-2xl md:text-3xl font-bold text-purple-900 dark:text-purple-100">
+                        🎵 Mercy Blade Music
+                      </h2>
+                      <p className="text-purple-700 dark:text-purple-300">
+                        Âm Nhạc Mercy Blade
+                      </p>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      {homepageSongs.map((song) => (
+                        <div key={song.id} className="bg-white/80 dark:bg-gray-800/80 rounded-xl p-4 shadow-sm">
+                          <p className="font-semibold text-purple-800 dark:text-purple-200 mb-1">
+                            {song.title_en}
+                          </p>
+                          <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                            {song.title_vi}
+                          </p>
+                          <audio controls className="w-full" preload="metadata">
+                            <source src={song.audioSrc} type="audio/mpeg" />
+                          </audio>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+              )}
+            </>
           ))}
       </main>
 
@@ -186,8 +219,8 @@ const Homepage = () => {
               vi: "Lộ trình tiếng Anh của Mercy Blade là hành trình học trọn vẹn, dành riêng cho người học Việt Nam muốn phát triển từ mức hoàn toàn mới bắt đầu đến giao tiếp tự tin ở trình độ cao. Mỗi cấp độ đều nhẹ nhàng, có cấu trúc rõ ràng và an toàn về mặt cảm xúc. Bạn bắt đầu từ các âm cơ bản, bảng chữ cái và câu giao tiếp sinh tồn, rồi từng bước chuyển sang nói tự nhiên, nghe thực tế, ngữ pháp chắc chắn, phát âm rõ ràng và giao tiếp nâng cao.\nLộ trình gồm bảy giai đoạn: Nền tảng Tiếng Anh → A1 → A2 → B1 → B2 → C1 → C2.\nMỗi cấp độ được xây dựng dựa trên cấp độ trước, giúp bạn không bao giờ bị quá tải hay mất hướng. Với các bài học ngắn, hướng dẫn phát âm bình tĩnh và thói quen luyện tập mỗi ngày, tiếng Anh của bạn sẽ trở nên rõ ràng, mạnh mẽ và tự nhiên theo từng bước nhỏ.\nDù bạn bắt đầu từ con số 0 hay muốn đạt tới khả năng sử dụng tiếng Anh nâng cao, lộ trình này sẽ giúp bạn tiến bộ với sự tự tin, kiên trì và trọn vẹn phẩm giá."
             }}
             audio={{
-              en: "",
-              vi: ""
+              en: "english_pathway_homepage_en.mp3",
+              vi: "english_pathway_homepage_vi.mp3"
             }}
           />
           
@@ -298,37 +331,6 @@ Kids English không chỉ là chương trình dành cho trẻ.
           </section>
         ))}
 
-      {/* Theme Song Section */}
-      {homepageSongs.length > 0 && (
-        <section className="py-16 px-6 bg-gradient-to-b from-purple-50 to-indigo-100 dark:from-purple-950/30 dark:to-indigo-950/30">
-          <div className="max-w-4xl mx-auto space-y-6">
-            <div className="text-center space-y-2">
-              <h2 className="text-2xl md:text-3xl font-bold text-purple-900 dark:text-purple-100">
-                🎵 Mercy Blade Music
-              </h2>
-              <p className="text-purple-700 dark:text-purple-300">
-                Âm Nhạc Mercy Blade
-              </p>
-            </div>
-            
-            <div className="space-y-4">
-              {homepageSongs.map((song) => (
-                <div key={song.id} className="bg-white/80 dark:bg-gray-800/80 rounded-xl p-4 shadow-sm">
-                  <p className="font-semibold text-purple-800 dark:text-purple-200 mb-1">
-                    {song.title_en}
-                  </p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                    {song.title_vi}
-                  </p>
-                  <audio controls className="w-full" preload="metadata">
-                    <source src={song.audioSrc} type="audio/mpeg" />
-                  </audio>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Footer CTA */}
       <footer className="py-12 px-6 bg-gradient-to-b from-teal-100 to-teal-200">
