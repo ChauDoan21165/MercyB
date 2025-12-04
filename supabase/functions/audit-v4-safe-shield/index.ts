@@ -219,14 +219,78 @@ function inferTierFromRoomId(roomId: string): string {
   return CANONICAL_TIERS.free;
 }
 
-// Helper: infer domain from tier
+// Helper: infer domain from tier (expanded for VIP4/5/6/Kids)
 function inferDomainFromTier(tier: string): string {
   const tierLower = tier.toLowerCase();
   if (tierLower.includes("vip9")) return "Strategic Intelligence";
-  if (tierLower.includes("vip")) return "VIP Learning";
+  if (tierLower.includes("vip8")) return "Advanced Mastery";
+  if (tierLower.includes("vip7")) return "Professional Growth";
+  if (tierLower.includes("vip6")) return "Deep Psychology";
+  if (tierLower.includes("vip5")) return "Creative Writing";
+  if (tierLower.includes("vip4")) return "CareerZ";
+  if (tierLower.includes("vip3")) return "Intermediate English";
+  if (tierLower.includes("vip2")) return "Pre-Intermediate English";
+  if (tierLower.includes("vip1")) return "Beginner English";
   if (tierLower.includes("free") || tierLower.includes("miễn phí")) return "English Foundation";
   if (tierLower.includes("kids") || tierLower.includes("trẻ em")) return "Kids English";
   return "General";
+}
+
+// Deprecated field names that should be migrated
+const DEPRECATED_FIELDS = new Set([
+  "artifact_id",
+  "identifier", 
+  "copy_en",
+  "copy_vi",
+  "audio_en",
+  "audio_vi",
+]);
+
+// Placeholder patterns to detect unfinished content
+const PLACEHOLDER_PATTERNS: RegExp[] = [
+  /\bTODO\b/i,
+  /\bTBD\b/i,
+  /\bplaceholder\b/i,
+  /\bLorem ipsum\b/i,
+  /^\.{3,}$/,
+  /^_{3,}$/,
+  /^\[.*\]$/,
+  /^<.*>$/,
+];
+
+// TTS-unsafe patterns (symbols that break audio generation)
+const TTS_UNSAFE_PATTERNS: RegExp[] = [
+  /["""][^"""]*$/,  // Unclosed quotes
+  /[\u{1F300}-\u{1F9FF}]/u,  // Emojis
+  /[<>{}[\]\\|]/,  // Programming symbols
+  /\${.*}/,  // Template literals
+];
+
+// Check for placeholders in text
+function detectPlaceholder(text: string): boolean {
+  return PLACEHOLDER_PATTERNS.some(re => re.test(text));
+}
+
+// Check for TTS-unsafe content
+function detectTtsUnsafe(text: string): { unsafe: boolean; reasons: string[] } {
+  const reasons: string[] = [];
+  
+  // Check unclosed quotes
+  const doubleQuotes = (text.match(/"/g) || []).length;
+  const singleQuotes = (text.match(/'/g) || []).length;
+  if (doubleQuotes % 2 !== 0) reasons.push("unclosed double quotes");
+  if (singleQuotes % 2 !== 0) reasons.push("unclosed single quotes");
+  
+  // Check emojis
+  if (/[\u{1F300}-\u{1F9FF}]/u.test(text)) reasons.push("contains emojis");
+  
+  // Check programming symbols
+  if (/[<>{}[\]\\|]/.test(text)) reasons.push("contains programming symbols");
+  
+  // Check template literals
+  if (/\${.*}/.test(text)) reasons.push("contains template literals");
+  
+  return { unsafe: reasons.length > 0, reasons };
 }
 
 // Helper: check if tier is canonical
@@ -398,6 +462,44 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
       issues.push({ id: `title_vi-${roomId}`, file, type: "missing_title_vi", severity: "warning", message: `Missing title_vi`, autoFixable: false });
     }
 
+    // 📝 Essay checks (word count + placeholder detection)
+    const essayEn = room.room_essay_en?.trim() || "";
+    const essayVi = room.room_essay_vi?.trim() || "";
+    
+    // Missing essays
+    if (!essayEn) {
+      issues.push({ id: `essay_en-${roomId}`, file, type: "missing_room_essay_en", severity: "warning", message: `Missing room_essay_en`, autoFixable: false });
+    } else {
+      const essayWc = countWords(essayEn);
+      // Essay too short (less than 20 words)
+      if (essayWc < 20) {
+        issues.push({ id: `essay_short_en-${roomId}`, file, type: "essay_too_short", severity: "warning", message: `room_essay_en has only ${essayWc} words (minimum 20)`, autoFixable: false });
+      }
+      // Essay too long (more than 500 words)
+      if (essayWc > 500) {
+        issues.push({ id: `essay_long_en-${roomId}`, file, type: "essay_too_long", severity: "warning", message: `room_essay_en has ${essayWc} words (maximum 500)`, autoFixable: false });
+      }
+      // Placeholder detection
+      if (detectPlaceholder(essayEn)) {
+        issues.push({ id: `essay_placeholder_en-${roomId}`, file, type: "essay_placeholder_detected", severity: "error", message: `room_essay_en contains placeholder text (TODO, TBD, etc.)`, autoFixable: false });
+      }
+    }
+    
+    if (!essayVi) {
+      issues.push({ id: `essay_vi-${roomId}`, file, type: "missing_room_essay_vi", severity: "warning", message: `Missing room_essay_vi`, autoFixable: false });
+    } else {
+      const essayWc = countWords(essayVi);
+      if (essayWc < 20) {
+        issues.push({ id: `essay_short_vi-${roomId}`, file, type: "essay_too_short", severity: "warning", message: `room_essay_vi has only ${essayWc} words (minimum 20)`, autoFixable: false });
+      }
+      if (essayWc > 500) {
+        issues.push({ id: `essay_long_vi-${roomId}`, file, type: "essay_too_long", severity: "warning", message: `room_essay_vi has ${essayWc} words (maximum 500)`, autoFixable: false });
+      }
+      if (detectPlaceholder(essayVi)) {
+        issues.push({ id: `essay_placeholder_vi-${roomId}`, file, type: "essay_placeholder_detected", severity: "error", message: `room_essay_vi contains placeholder text (TODO, TBD, etc.)`, autoFixable: false });
+      }
+    }
+
     // Get entries
     const entries = Array.isArray(room.entries) ? (room.entries as any[]) : [];
 
@@ -420,10 +522,30 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
 
     const slugs = new Set<string>();
 
+    // Track all keywords for duplicate detection
+    const allKeywordsInRoom = new Map<string, number[]>();
+
     for (let i = 0; i < entries.length; i++) {
       const entry = entries[i] as Record<string, any>;
       const entrySlug = entry.slug || entry.artifact_id || entry.id || `entry-${i}`;
       const entryPrefix = `${roomId}-e${i}`;
+
+      // 🔄 Deprecated field detection
+      for (const key of Object.keys(entry)) {
+        if (DEPRECATED_FIELDS.has(key)) {
+          issues.push({ 
+            id: `deprecated-${entryPrefix}-${key}`, 
+            file, 
+            type: "deprecated_field_present", 
+            severity: "info", 
+            message: `Entry "${entrySlug}" uses deprecated field "${key}"`, 
+            fix: key === "artifact_id" || key === "identifier" ? "Rename to 'slug'" : 
+                 key === "copy_en" || key === "copy_vi" ? "Use copy: { en, vi } structure" :
+                 key === "audio_en" || key === "audio_vi" ? "Use 'audio' field only" : undefined,
+            autoFixable: false 
+          });
+        }
+      }
 
       // Check entry identifier
       const slug = entry.slug || entry.artifact_id || entry.id;
@@ -440,6 +562,33 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
         if (!isKebabCase(slug)) {
           issues.push({ id: `slug-fmt-${entryPrefix}`, file, type: "slug_format_info", severity: "info", message: `Entry slug "${slug}" is not kebab-case`, autoFixable: false });
         }
+      }
+
+      // 🏷️ Per-entry keyword validation
+      const kwEn = entry.keywords_en;
+      const kwVi = entry.keywords_vi;
+      
+      // Check keywords_en
+      if (!Array.isArray(kwEn) || kwEn.length === 0) {
+        issues.push({ id: `kw_missing_en-${entryPrefix}`, file, type: "entry_keyword_missing_en", severity: "warning", message: `Entry "${entrySlug}" missing keywords_en`, autoFixable: false });
+      } else {
+        // Too few keywords
+        if (kwEn.length < 3) {
+          issues.push({ id: `kw_few_en-${entryPrefix}`, file, type: "entry_keyword_too_few", severity: "info", message: `Entry "${entrySlug}" has only ${kwEn.length} keywords_en (recommended: 3+)`, autoFixable: false });
+        }
+        // Track for duplicate detection
+        for (const kw of kwEn) {
+          if (typeof kw === "string") {
+            const kwLower = kw.toLowerCase();
+            if (!allKeywordsInRoom.has(kwLower)) allKeywordsInRoom.set(kwLower, []);
+            allKeywordsInRoom.get(kwLower)!.push(i);
+          }
+        }
+      }
+      
+      // Check keywords_vi
+      if (!Array.isArray(kwVi) || kwVi.length === 0) {
+        issues.push({ id: `kw_missing_vi-${entryPrefix}`, file, type: "entry_keyword_missing_vi", severity: "warning", message: `Entry "${entrySlug}" missing keywords_vi`, autoFixable: false });
       }
 
       // Check copy exists
@@ -459,11 +608,36 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
         if (wc < 30 || wc > 260) {
           issues.push({ id: `wc_en-${entryPrefix}`, file, type: "copy_word_count_extreme", severity: "warning", message: `Entry "${entrySlug}" copy.en has ${wc} words (outside 30-260 range)`, autoFixable: false });
         }
+        
+        // 🎤 TTS safety check for English copy
+        if (wc > 300) {
+          issues.push({ id: `tts_long_en-${entryPrefix}`, file, type: "tts_length_exceeded", severity: "warning", message: `Entry "${entrySlug}" copy.en has ${wc} words - may cause TTS issues (max 300)`, autoFixable: false });
+        }
+        const ttsCheck = detectTtsUnsafe(copyEn);
+        if (ttsCheck.unsafe) {
+          issues.push({ id: `tts_unsafe_en-${entryPrefix}`, file, type: "tts_unstable_text", severity: "warning", message: `Entry "${entrySlug}" copy.en has TTS-unsafe content: ${ttsCheck.reasons.join(", ")}`, autoFixable: false });
+        }
+        // Placeholder detection in copy
+        if (detectPlaceholder(copyEn)) {
+          issues.push({ id: `placeholder_en-${entryPrefix}`, file, type: "copy_placeholder_detected", severity: "error", message: `Entry "${entrySlug}" copy.en contains placeholder text`, autoFixable: false });
+        }
       }
       if (copyVi) {
         const wc = countWords(copyVi);
         if (wc < 30 || wc > 260) {
           issues.push({ id: `wc_vi-${entryPrefix}`, file, type: "copy_word_count_extreme", severity: "warning", message: `Entry "${entrySlug}" copy.vi has ${wc} words (outside 30-260 range)`, autoFixable: false });
+        }
+        
+        // 🎤 TTS safety check for Vietnamese copy
+        if (wc > 300) {
+          issues.push({ id: `tts_long_vi-${entryPrefix}`, file, type: "tts_length_exceeded", severity: "warning", message: `Entry "${entrySlug}" copy.vi has ${wc} words - may cause TTS issues (max 300)`, autoFixable: false });
+        }
+        const ttsCheck = detectTtsUnsafe(copyVi);
+        if (ttsCheck.unsafe) {
+          issues.push({ id: `tts_unsafe_vi-${entryPrefix}`, file, type: "tts_unstable_text", severity: "warning", message: `Entry "${entrySlug}" copy.vi has TTS-unsafe content: ${ttsCheck.reasons.join(", ")}`, autoFixable: false });
+        }
+        if (detectPlaceholder(copyVi)) {
+          issues.push({ id: `placeholder_vi-${entryPrefix}`, file, type: "copy_placeholder_detected", severity: "error", message: `Entry "${entrySlug}" copy.vi contains placeholder text`, autoFixable: false });
         }
       }
 
@@ -501,6 +675,20 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
             autoFixable: false,
           });
         }
+      }
+    }
+
+    // 🏷️ Check for duplicate keywords across entries in this room
+    for (const [keyword, entryIndices] of allKeywordsInRoom.entries()) {
+      if (entryIndices.length > 1) {
+        issues.push({ 
+          id: `kw_dup-${roomId}-${keyword.substring(0, 20)}`, 
+          file, 
+          type: "entry_keyword_duplicate_across_room", 
+          severity: "info", 
+          message: `Keyword "${keyword}" appears in ${entryIndices.length} entries (indices: ${entryIndices.join(", ")})`, 
+          autoFixable: false 
+        });
       }
     }
 
