@@ -98,6 +98,7 @@ const SystemLogs = lazy(() => import("./pages/admin/SystemLogs"));
 const FastAudioScannerPage = lazy(() => import("./pages/admin/FastAudioScannerPage"));
 const EntriesWithoutAudioPage = lazy(() => import("./pages/admin/EntriesWithoutAudioPage"));
 const AuditSafeShield = lazy(() => import("./components/admin/AuditSafeShield"));
+const SystemCodeFiles = lazy(() => import("./pages/admin/SystemCodeFiles"));
 
 // Paths pages - lazy loaded
 const PathOverview = lazy(() => import("./pages/PathOverview"));
@@ -315,6 +316,7 @@ const App = () => {
                       <Route path="/admin/room-health-dashboard" element={<AdminRoute><RoomHealthDashboard /></AdminRoute>} />
                       <Route path="/admin/system-health" element={<AdminRoute><SystemHealth /></AdminRoute>} />
                       <Route path="/admin/audit-v4" element={<AdminRoute><AuditSafeShield /></AdminRoute>} />
+                      <Route path="/admin/system-codes" element={<AdminRoute><SystemCodeFiles /></AdminRoute>} />
                       
                       <Route path="/admin/edge-functions" element={<AdminRoute><EdgeFunctions /></AdminRoute>} />
                       <Route path="/admin/music-approval" element={<AdminRoute><MusicApproval /></AdminRoute>} />
