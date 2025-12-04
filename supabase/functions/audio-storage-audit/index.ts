@@ -19,38 +19,78 @@ interface AudioSyncReport {
     orphanCount: number;
     coveragePercent: number;
   };
+  debug?: {
+    sanityTests: Record<string, { inStorage: boolean; inReferenced: boolean }>;
+  };
 }
 
-async function listAllBucketFiles(supabase: any): Promise<string[]> {
-  const allFiles: string[] = [];
+/**
+ * Normalize audio filename to bare filename only (no folder prefix)
+ */
+function normalizeAudioName(name: string): string {
+  if (!name) return '';
+  // Trim whitespace, get last segment after any slashes, lowercase
+  return (name.trim().split('/').pop() ?? '').toLowerCase();
+}
+
+/**
+ * Recursively list all .mp3 files in a bucket folder
+ */
+async function listFolderRecursive(
+  supabase: any,
+  folderPath: string,
+  allFiles: string[]
+): Promise<void> {
   let offset = 0;
   const limit = 1000;
 
   while (true) {
     const { data, error } = await supabase.storage
       .from(BUCKET_NAME)
-      .list('', { limit, offset, sortBy: { column: 'name', order: 'asc' } });
+      .list(folderPath, { limit, offset, sortBy: { column: 'name', order: 'asc' } });
 
     if (error) {
-      console.error('Error listing bucket:', error.message);
+      console.error(`Error listing bucket folder '${folderPath}':`, error.message);
       break;
     }
 
     if (!data || data.length === 0) break;
 
     for (const obj of data) {
-      if (obj.name?.toLowerCase().endsWith('.mp3')) {
-        allFiles.push(obj.name.toLowerCase());
+      if (!obj.name) continue;
+
+      const fullPath = folderPath ? `${folderPath}/${obj.name}` : obj.name;
+
+      // Check if it's a folder (folders have id = null in Supabase storage)
+      if (obj.id === null) {
+        // It's a folder, recurse into it
+        await listFolderRecursive(supabase, fullPath, allFiles);
+      } else if (obj.name.toLowerCase().endsWith('.mp3')) {
+        // It's an mp3 file - normalize to bare filename
+        const normalized = normalizeAudioName(obj.name);
+        if (normalized) {
+          allFiles.push(normalized);
+        }
       }
     }
 
     if (data.length < limit) break;
     offset += limit;
   }
+}
 
+/**
+ * List all .mp3 files in the bucket (including all subdirectories)
+ */
+async function listAllBucketFiles(supabase: any): Promise<string[]> {
+  const allFiles: string[] = [];
+  await listFolderRecursive(supabase, '', allFiles);
   return allFiles;
 }
 
+/**
+ * Get all referenced audio filenames from database rooms
+ */
 async function getReferencedAudioFromDB(supabase: any): Promise<string[]> {
   const referencedAudio: Set<string> = new Set();
 
@@ -68,24 +108,37 @@ async function getReferencedAudioFromDB(supabase: any): Promise<string[]> {
     if (!room.entries || !Array.isArray(room.entries)) continue;
 
     for (const entry of room.entries) {
-      // Check audio field
-      if (entry.audio && typeof entry.audio === 'string') {
-        const filename = entry.audio.replace(/^\/?(audio\/)?/, '').toLowerCase();
-        if (filename.endsWith('.mp3')) {
-          referencedAudio.add(filename);
+      // Check audio field (can be string or object)
+      if (entry.audio) {
+        if (typeof entry.audio === 'string') {
+          const normalized = normalizeAudioName(entry.audio);
+          if (normalized.endsWith('.mp3')) {
+            referencedAudio.add(normalized);
+          }
+        } else if (typeof entry.audio === 'object') {
+          // Handle object format { en: "...", vi: "..." }
+          for (const lang of ['en', 'vi']) {
+            if (entry.audio[lang] && typeof entry.audio[lang] === 'string') {
+              const normalized = normalizeAudioName(entry.audio[lang]);
+              if (normalized.endsWith('.mp3')) {
+                referencedAudio.add(normalized);
+              }
+            }
+          }
         }
       }
+
       // Check audio_en and audio_vi fields
       if (entry.audio_en && typeof entry.audio_en === 'string') {
-        const filename = entry.audio_en.replace(/^\/?(audio\/)?/, '').toLowerCase();
-        if (filename.endsWith('.mp3')) {
-          referencedAudio.add(filename);
+        const normalized = normalizeAudioName(entry.audio_en);
+        if (normalized.endsWith('.mp3')) {
+          referencedAudio.add(normalized);
         }
       }
       if (entry.audio_vi && typeof entry.audio_vi === 'string') {
-        const filename = entry.audio_vi.replace(/^\/?(audio\/)?/, '').toLowerCase();
-        if (filename.endsWith('.mp3')) {
-          referencedAudio.add(filename);
+        const normalized = normalizeAudioName(entry.audio_vi);
+        if (normalized.endsWith('.mp3')) {
+          referencedAudio.add(normalized);
         }
       }
     }
@@ -116,45 +169,67 @@ Deno.serve(async (req) => {
 
     console.log('Starting audio storage audit...');
 
-    // Get all files from storage bucket
-    console.log('Listing storage bucket files...');
+    // Get all files from storage bucket (recursively)
+    console.log('Listing storage bucket files (recursive)...');
     const storageFiles = await listAllBucketFiles(supabase);
-    console.log(`Found ${storageFiles.length} files in storage`);
+    console.log(`Found ${storageFiles.length} .mp3 files in storage`);
 
     // Get all referenced audio from database
     console.log('Getting referenced audio from database...');
     const referencedAudio = await getReferencedAudioFromDB(supabase);
     console.log(`Found ${referencedAudio.length} referenced audio files`);
 
-    // Create sets for comparison
+    // Create sets for comparison (already normalized)
     const storageSet = new Set(storageFiles);
     const referencedSet = new Set(referencedAudio);
 
     // Find missing in storage (referenced but not in bucket)
-    const missingInStorage = referencedAudio.filter(file => !storageSet.has(file));
+    const missingInStorage = [...referencedSet].filter(file => !storageSet.has(file));
 
     // Find orphans (in bucket but not referenced)
-    const orphans = storageFiles.filter(file => !referencedSet.has(file));
+    const orphans = [...storageSet].filter(file => !referencedSet.has(file));
 
-    const coveragePercent = referencedAudio.length > 0
-      ? Math.round(((referencedAudio.length - missingInStorage.length) / referencedAudio.length) * 100)
+    const coveragePercent = referencedSet.size > 0
+      ? Math.round(((referencedSet.size - missingInStorage.length) / referencedSet.size) * 100)
       : 100;
 
+    // Sanity tests with known files
+    const sanityTestFiles = [
+      'meaning-of-life-vip1-entry-1-en.mp3',
+      'meaning_of_life_vip1_entry_1_en.mp3',
+      'ef01_01_en.mp3',
+      'english_foundation_ef01_01_en.mp3',
+    ];
+
+    const sanityTests: Record<string, { inStorage: boolean; inReferenced: boolean }> = {};
+    for (const testFile of sanityTestFiles) {
+      const normalized = normalizeAudioName(testFile);
+      sanityTests[testFile] = {
+        inStorage: storageSet.has(normalized),
+        inReferenced: referencedSet.has(normalized),
+      };
+    }
+
+    console.log('Sanity tests:', JSON.stringify(sanityTests, null, 2));
+
     const report: AudioSyncReport = {
-      storageFiles,
-      referencedAudio,
+      storageFiles: [...storageSet], // Return unique normalized filenames
+      referencedAudio: [...referencedSet],
       missingInStorage,
       orphans,
       summary: {
-        storageCount: storageFiles.length,
-        referencedCount: referencedAudio.length,
+        storageCount: storageSet.size,
+        referencedCount: referencedSet.size,
         missingCount: missingInStorage.length,
         orphanCount: orphans.length,
         coveragePercent,
       },
+      debug: {
+        sanityTests,
+      },
     };
 
-    console.log(`Audit complete: ${storageFiles.length} in storage, ${referencedAudio.length} referenced, ${missingInStorage.length} missing, ${orphans.length} orphans`);
+    console.log(`Audit complete: ${storageSet.size} in storage, ${referencedSet.size} referenced, ${missingInStorage.length} missing, ${orphans.length} orphans`);
 
     return new Response(
       JSON.stringify({ ok: true, ...report }),
