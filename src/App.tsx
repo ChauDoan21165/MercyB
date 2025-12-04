@@ -92,6 +92,7 @@ const EdgeFunctions = lazy(() => import("./pages/admin/EdgeFunctions"));
 const RoomSpecification = lazy(() => import("./pages/admin/RoomSpecification"));
 const MusicApproval = lazy(() => import("./pages/admin/MusicApproval"));
 const MusicManager = lazy(() => import("./pages/admin/MusicManager"));
+const HomepageMusicController = lazy(() => import("./pages/admin/HomepageMusicController"));
 const FeatureFlags = lazy(() => import("./pages/admin/FeatureFlags"));
 const AudioAssetAuditor = lazy(() => import("./pages/admin/AudioAssetAuditor"));
 const UserSupportConsole = lazy(() => import("./pages/admin/UserSupportConsole"));
@@ -325,6 +326,7 @@ const App = () => {
                       <Route path="/admin/edge-functions" element={<AdminRoute><EdgeFunctions /></AdminRoute>} />
                       <Route path="/admin/music-approval" element={<AdminRoute><MusicApproval /></AdminRoute>} />
                       <Route path="/admin/music-manager" element={<AdminRoute><MusicManager /></AdminRoute>} />
+                      <Route path="/admin/homepage-music" element={<AdminRoute><HomepageMusicController /></AdminRoute>} />
                       <Route path="/admin/audit-log" element={<AdminRoute><AuditLog /></AdminRoute>} />
                       <Route path="/admin/ai-usage" element={<AdminRoute><AIUsage /></AdminRoute>} />
                       <Route path="/admin/feature-flags" element={<AdminRoute><FeatureFlags /></AdminRoute>} />

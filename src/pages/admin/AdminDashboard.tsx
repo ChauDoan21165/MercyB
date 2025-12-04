@@ -13,7 +13,8 @@ import {
   CheckCircle2,
   AlertTriangle,
   TrendingUp,
-  Database
+  Database,
+  Music
 } from 'lucide-react';
 
 const AdminDashboard = () => {
@@ -79,6 +80,13 @@ const AdminDashboard = () => {
       description: 'Audit audio coverage',
       icon: Database,
       path: '/admin/audio-assets',
+      variant: 'default' as const
+    },
+    {
+      title: 'Music Controller',
+      description: 'Manage homepage songs',
+      icon: Music,
+      path: '/admin/homepage-music',
       variant: 'default' as const
     }
   ];
