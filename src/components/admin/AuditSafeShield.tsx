@@ -9,18 +9,41 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
-  Shield, Play, Loader2, CheckCircle, AlertTriangle, Search, Wrench,
+  Shield, Play, Loader2, CheckCircle, AlertTriangle, Search,
   FileJson, Music, Database, Filter, Heart, AlertOctagon,
   Clock, FileAudio, Trash2, Terminal, Download,
   BookOpen, Key, AlertCircle, Info, XCircle, ListTodo, Mic,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import type { AuditIssue, AuditSummary, AuditTaskSuggestion, AudioJob } from "@/lib/audit-v4-types";
+import type { AuditIssue, AuditSummary } from "@/lib/audit-v4-types";
+import { ISSUE_TYPE_LABELS, TASK_TYPE_LABELS } from "@/lib/audit-v4-types";
+import AuditCodeViewer from "./AuditCodeViewer";
+
+// Types for V5.2
+interface TTSTask {
+  taskId: string;
+  taskType: "generate_tts" | "generate_entry_tts" | "generate_intro_tts";
+  roomId: string;
+  entrySlug: string | null;
+  language: "en" | "vi";
+  filename: string;
+  text: string;
+}
+
+interface AudioJob {
+  room_id: string;
+  entry_slug?: string;
+  field: "intro" | "content";
+  lang: "en" | "vi";
+  text: string;
+  filename: string;
+}
 
 interface StorageScanResult {
   ok: boolean;
   error?: string;
+  fileCount: number;
   filesInBucket: number;
   basenamesInBucket: number;
 }
@@ -32,31 +55,62 @@ interface AudioFileStats {
   coverage: number;
   missingFiles: string[];
 }
-import { ISSUE_TYPE_LABELS, TASK_TYPE_LABELS } from "@/lib/audit-v4-types";
-import AuditCodeViewer from "./AuditCodeViewer";
+
+interface IntroStats {
+  withIntroEn: number;
+  missingIntroEn: number;
+  withIntroVi: number;
+  missingIntroVi: number;
+}
+
+interface AuditResponse {
+  ok: boolean;
+  mode: string;
+  error?: string;
+  stats: AuditSummary;
+  summary: AuditSummary & {
+    audio?: AudioFileStats;
+    intro?: IntroStats;
+    storageScan?: StorageScanResult;
+    orphanAudioCount?: number;
+    referencedAudioCount?: number;
+  };
+  issues: AuditIssue[];
+  tasks: TTSTask[];
+  legacyTasks?: any[];
+  audioJobs: AudioJob[];
+  orphanFiles: string[];
+  fixesApplied: number;
+  fixed: number;
+  logs: string[];
+  storageScan: StorageScanResult;
+  audioFileStats: AudioFileStats;
+}
+
+type AuditMode = "scan";
 
 type FilterType = "all" | "errors" | "warnings" | "infos" | "audio" | "intro_audio" | "orphan_audio" | "essays" | "keywords" | "tts" | "safety" | "deprecated" | "room_identity" | "entry_structure";
 
 export default function AuditSafeShield() {
   const [isRunning, setIsRunning] = useState(false);
-  const [isRepairing, setIsRepairing] = useState(false);
   const [issues, setIssues] = useState<AuditIssue[]>([]);
-  const [tasks, setTasks] = useState<AuditTaskSuggestion[]>([]);
+  const [tasks, setTasks] = useState<TTSTask[]>([]);
   const [audioJobs, setAudioJobs] = useState<AudioJob[]>([]);
+  const [orphanFiles, setOrphanFiles] = useState<string[]>([]);
   const [logs, setLogs] = useState<string[]>([]);
   const [progress, setProgress] = useState(0);
   const [filter, setFilter] = useState<FilterType>("all");
   const [search, setSearch] = useState("");
   const [checkFiles, setCheckFiles] = useState(true);
   const [roomIdPrefix, setRoomIdPrefix] = useState("");
-  const [summary, setSummary] = useState<AuditSummary | null>(null);
+  const [summary, setSummary] = useState<AuditResponse["summary"] | null>(null);
+  const [storageScan, setStorageScan] = useState<StorageScanResult | null>(null);
+  const [audioFileStats, setAudioFileStats] = useState<AudioFileStats | null>(null);
   const { toast } = useToast();
 
-  const isAutoFixable = (issue: AuditIssue) => (issue as any).autoFixable || (issue as any).auto_fixable;
-
-  const callAuditEndpoint = async (mode: AuditMode): Promise<AuditResponse | null> => {
+  const callAuditEndpoint = async (_mode: AuditMode): Promise<AuditResponse | null> => {
     const { data, error } = await supabase.functions.invoke("audit-v4-safe-shield", {
-      body: { mode, checkFiles, roomIdPrefix: roomIdPrefix || undefined },
+      body: { mode: "scan", checkFiles, roomIdPrefix: roomIdPrefix || undefined },
     });
     if (error) throw new Error(error.message || "Failed to call audit endpoint");
     return data as AuditResponse;
@@ -67,8 +121,11 @@ export default function AuditSafeShield() {
     setIssues([]);
     setTasks([]);
     setAudioJobs([]);
+    setOrphanFiles([]);
     setLogs([]);
     setSummary(null);
+    setStorageScan(null);
+    setAudioFileStats(null);
     setProgress(10);
 
     try {
@@ -79,34 +136,17 @@ export default function AuditSafeShield() {
       setIssues(response.issues || []);
       setTasks(response.tasks || []);
       setAudioJobs(response.audioJobs || []);
+      setOrphanFiles(response.orphanFiles || []);
       setLogs(response.logs || []);
-      setSummary(response.stats || response.summary);
+      setSummary(response.summary || response.stats);
+      setStorageScan(response.storageScan);
+      setAudioFileStats(response.audioFileStats);
       
-      toast({ title: "Audit Complete", description: `Found ${response.issues?.length || 0} issues, generated ${response.tasks?.length || 0} tasks` });
+      toast({ title: "Audit Complete", description: `Found ${response.issues?.length || 0} issues, generated ${response.tasks?.length || 0} TTS tasks` });
     } catch (error) {
       toast({ title: "Audit Error", description: error instanceof Error ? error.message : String(error), variant: "destructive" });
     } finally {
       setIsRunning(false);
-    }
-  };
-
-  const handleAutoRepair = async () => {
-    if (issues.length === 0) {
-      toast({ title: "Run Audit First", description: "Please run an audit before repairs." });
-      return;
-    }
-    
-    setIsRepairing(true);
-    try {
-      const response = await callAuditEndpoint("repair");
-      if (!response?.ok) throw new Error(response?.error || "Repair failed");
-
-      toast({ title: "Repair Complete", description: `Fixed ${response.fixesApplied || 0} issues.` });
-      await runAudit();
-    } catch (error) {
-      toast({ title: "Repair Failed", description: error instanceof Error ? error.message : String(error), variant: "destructive" });
-    } finally {
-      setIsRepairing(false);
     }
   };
 
@@ -140,21 +180,45 @@ export default function AuditSafeShield() {
     }
   });
 
-  const orphanIssue = issues.find(i => i.type === "orphan_audio_files");
-  const orphanFiles = orphanIssue?.orphanList || [];
-  const autoFixableCount = issues.filter(isAutoFixable).length;
-
   const severityColors: Record<string, string> = { error: "bg-red-100 text-red-800", warning: "bg-amber-100 text-amber-800", info: "bg-blue-100 text-blue-800" };
   const severityIcons: Record<string, typeof AlertTriangle> = { error: XCircle, warning: AlertCircle, info: Info };
-  const priorityColors: Record<string, string> = { critical: "bg-red-600 text-white", high: "bg-orange-500 text-white", medium: "bg-amber-400 text-black", low: "bg-gray-300 text-black" };
-
-  const issueCountByFilter = (f: FilterType): number => {
-    if (f === "all") return issues.length;
-    return filteredIssues.length;
-  };
 
   const getTypeLabel = (type: string): string => ISSUE_TYPE_LABELS[type] || type.replace(/_/g, " ");
-  const getTaskLabel = (type: string): string => TASK_TYPE_LABELS[type as keyof typeof TASK_TYPE_LABELS] || type.replace(/_/g, " ");
+  const getTaskTypeLabel = (type: string): string => {
+    const labels: Record<string, string> = {
+      generate_tts: "Generate TTS",
+      generate_entry_tts: "Entry TTS",
+      generate_intro_tts: "Intro TTS",
+    };
+    return labels[type] || type;
+  };
+
+  // Get audio/intro stats from new or legacy format
+  const getAudioStats = () => {
+    if (summary?.audio) return summary.audio;
+    if (audioFileStats) return audioFileStats;
+    return null;
+  };
+
+  const getIntroStats = () => {
+    if (summary?.intro) return summary.intro;
+    return {
+      withIntroEn: summary?.roomsWithIntroEn || 0,
+      missingIntroEn: summary?.roomsMissingIntroEn || 0,
+      withIntroVi: summary?.roomsWithIntroVi || 0,
+      missingIntroVi: summary?.roomsMissingIntroVi || 0,
+    };
+  };
+
+  const getStorageStats = () => {
+    if (summary?.storageScan) return summary.storageScan;
+    if (storageScan) return storageScan;
+    return null;
+  };
+
+  const audioStats = getAudioStats();
+  const introStats = getIntroStats();
+  const storageStats = getStorageStats();
 
   return (
     <div className="min-h-screen bg-white p-6">
@@ -165,15 +229,12 @@ export default function AuditSafeShield() {
             <Shield className="h-8 w-8 text-black" />
             <div>
               <h1 className="text-2xl font-bold text-black">Full System Sync Auditor</h1>
-              <p className="text-gray-600 text-sm">Safe Shield V5 — Non-destructive room & audio validation with task generation</p>
+              <p className="text-gray-600 text-sm">Safe Shield V5.2 — Non-destructive room & audio validation with TTS task generation</p>
             </div>
           </div>
           <div className="flex gap-2">
-            <Button onClick={runAudit} className="bg-black text-white hover:bg-gray-800" disabled={isRepairing || isRunning}>
+            <Button onClick={runAudit} className="bg-black text-white hover:bg-gray-800" disabled={isRunning}>
               {isRunning ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" />Scanning...</> : <><Play className="h-4 w-4 mr-2" />Run Audit</>}
-            </Button>
-            <Button onClick={handleAutoRepair} variant="outline" className="border-black" disabled={isRepairing || isRunning || autoFixableCount === 0}>
-              {isRepairing ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" />Repairing...</> : <><Wrench className="h-4 w-4 mr-2" />Auto-Fix ({autoFixableCount})</>}
             </Button>
           </div>
         </div>
@@ -183,7 +244,7 @@ export default function AuditSafeShield() {
           <CardContent className="py-4 flex flex-wrap gap-6 items-center">
             <div className="flex items-center gap-2">
               <Switch id="checkFiles" checked={checkFiles} onCheckedChange={setCheckFiles} />
-              <Label htmlFor="checkFiles" className="text-sm">Deep audio file check</Label>
+              <Label htmlFor="checkFiles" className="text-sm">Real storage scan</Label>
             </div>
             <div className="flex items-center gap-2">
               <Label className="text-sm">Room prefix:</Label>
@@ -196,43 +257,66 @@ export default function AuditSafeShield() {
         {/* Progress */}
         {isRunning && <Card className="border border-black"><CardContent className="py-4"><Progress value={progress} className="h-2" /></CardContent></Card>}
 
+        {/* Storage Scan Warning */}
+        {storageStats && !storageStats.ok && (
+          <Card className="border-2 border-amber-500 bg-amber-50">
+            <CardContent className="py-4">
+              <div className="flex items-center gap-3 text-amber-800">
+                <AlertTriangle className="h-6 w-6" />
+                <div>
+                  <p className="font-semibold">⚠ Storage scan failed — audio coverage cannot be trusted</p>
+                  <p className="text-sm">{storageStats.error || "Unknown error"}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
         {/* Summary Stats */}
         {summary && (
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3">
             <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold">{summary.totalRooms}</div><div className="text-xs text-gray-500">Rooms</div></CardContent></Card>
+            <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold">{summary.totalEntries || 0}</div><div className="text-xs text-gray-500">Entries</div></CardContent></Card>
             <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold text-red-600">{summary.errors}</div><div className="text-xs text-gray-500">Errors</div></CardContent></Card>
             <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold text-amber-600">{summary.warnings}</div><div className="text-xs text-gray-500">Warnings</div></CardContent></Card>
-            <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold text-green-600">{summary.fixed}</div><div className="text-xs text-gray-500">Fixed</div></CardContent></Card>
-            <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold">{summary.audioCoveragePercent}%</div><div className="text-xs text-gray-500">Audio Coverage</div></CardContent></Card>
-            <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold text-purple-600">{summary.orphanAudioCount || summary.orphanAudioFiles || 0}</div><div className="text-xs text-gray-500">Orphan Audio</div></CardContent></Card>
-            <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold text-blue-600">{summary.tasksGenerated || tasks.length}</div><div className="text-xs text-gray-500">Tasks</div></CardContent></Card>
-            <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold text-indigo-600">{summary.audioJobsGenerated || audioJobs.length}</div><div className="text-xs text-gray-500">Audio Jobs</div></CardContent></Card>
+            <Card className="border"><CardContent className="py-3 text-center"><div className={`text-xl font-bold ${audioStats?.coverage === 100 ? 'text-green-600' : audioStats?.coverage && audioStats.coverage < 50 ? 'text-red-600' : ''}`}>{audioStats?.coverage ?? summary.audioCoveragePercent ?? 0}%</div><div className="text-xs text-gray-500">Audio Coverage</div></CardContent></Card>
+            <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold text-purple-600">{summary.orphanAudioCount ?? orphanFiles.length}</div><div className="text-xs text-gray-500">Orphan Audio</div></CardContent></Card>
+            <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold text-blue-600">{tasks.length}</div><div className="text-xs text-gray-500">TTS Tasks</div></CardContent></Card>
+            <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold text-indigo-600">{audioJobs.length}</div><div className="text-xs text-gray-500">Audio Jobs</div></CardContent></Card>
           </div>
         )}
 
-        {/* Audio & Intro Stats */}
+        {/* Audio, Intro & Storage Stats */}
         {summary && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Card className="border"><CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><Music className="h-4 w-4" />Entry Audio</CardTitle></CardHeader>
+            <Card className="border"><CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><Music className="h-4 w-4" />Audio Files</CardTitle></CardHeader>
               <CardContent className="text-sm space-y-1">
-                <div className="flex justify-between"><span>Total slots:</span><span className="font-mono">{summary.totalAudioSlots}</span></div>
-                <div className="flex justify-between"><span>Present:</span><span className="font-mono text-green-600">{summary.totalAudioPresent}</span></div>
-                <div className="flex justify-between"><span>Missing:</span><span className="font-mono text-red-600">{summary.entriesMissingAudio || summary.totalAudioMissing}</span></div>
+                <div className="flex justify-between"><span>Referenced:</span><span className="font-mono">{audioStats?.referenced ?? summary.referencedAudioFiles ?? 0}</span></div>
+                <div className="flex justify-between"><span>Present:</span><span className="font-mono text-green-600">{audioStats?.present ?? summary.totalAudioPresent ?? 0}</span></div>
+                <div className="flex justify-between"><span>Missing:</span><span className="font-mono text-red-600">{audioStats?.missing ?? summary.entriesMissingAudio ?? 0}</span></div>
+                <div className="flex justify-between"><span>Coverage:</span><span className={`font-mono ${(audioStats?.coverage ?? 0) >= 80 ? 'text-green-600' : 'text-red-600'}`}>{audioStats?.coverage ?? summary.audioCoveragePercent ?? 0}%</span></div>
               </CardContent>
             </Card>
             <Card className="border"><CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><FileAudio className="h-4 w-4" />Intro Audio</CardTitle></CardHeader>
               <CardContent className="text-sm space-y-1">
-                <div className="flex justify-between"><span>With EN intro:</span><span className="font-mono text-green-600">{summary.roomsWithIntroEn}</span></div>
-                <div className="flex justify-between"><span>With VI intro:</span><span className="font-mono text-green-600">{summary.roomsWithIntroVi}</span></div>
-                <div className="flex justify-between"><span>Missing EN:</span><span className="font-mono text-amber-600">{summary.roomsMissingIntroEn}</span></div>
-                <div className="flex justify-between"><span>Missing VI:</span><span className="font-mono text-amber-600">{summary.roomsMissingIntroVi}</span></div>
+                <div className="flex justify-between"><span>With EN intro:</span><span className="font-mono text-green-600">{introStats.withIntroEn}</span></div>
+                <div className="flex justify-between"><span>Missing EN:</span><span className="font-mono text-amber-600">{introStats.missingIntroEn}</span></div>
+                <div className="flex justify-between"><span>With VI intro:</span><span className="font-mono text-green-600">{introStats.withIntroVi}</span></div>
+                <div className="flex justify-between"><span>Missing VI:</span><span className="font-mono text-amber-600">{introStats.missingIntroVi}</span></div>
               </CardContent>
             </Card>
-            <Card className="border"><CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><Database className="h-4 w-4" />Storage</CardTitle></CardHeader>
+            <Card className="border"><CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><Database className="h-4 w-4" />Storage Bucket</CardTitle></CardHeader>
               <CardContent className="text-sm space-y-1">
-                <div className="flex justify-between"><span>Files in bucket:</span><span className="font-mono">{summary.audioFilesInBucket}</span></div>
-                <div className="flex justify-between"><span>Referenced:</span><span className="font-mono">{summary.referencedAudioFiles}</span></div>
-                <div className="flex justify-between"><span>Orphans:</span><span className="font-mono text-gray-600">{summary.orphanAudioCount || summary.orphanAudioFiles || 0}</span></div>
+                {storageStats?.ok === false ? (
+                  <div className="text-amber-600 font-medium">⚠ Scan failed</div>
+                ) : (
+                  <>
+                    <div className="flex justify-between"><span>Files in bucket:</span><span className="font-mono">{storageStats?.fileCount ?? summary.audioFilesInBucket ?? 0}</span></div>
+                    <div className="flex justify-between"><span>Unique basenames:</span><span className="font-mono">{storageStats?.basenamesInBucket ?? summary.audioBasenamesInBucket ?? 0}</span></div>
+                  </>
+                )}
+                <div className="flex justify-between"><span>Referenced:</span><span className="font-mono">{summary.referencedAudioCount ?? summary.referencedAudioFiles ?? 0}</span></div>
+                <div className="flex justify-between"><span>Orphans:</span><span className="font-mono text-gray-600">{summary.orphanAudioCount ?? orphanFiles.length}</span></div>
               </CardContent>
             </Card>
           </div>
@@ -273,7 +357,7 @@ export default function AuditSafeShield() {
         <Tabs defaultValue="issues" className="w-full">
           <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="issues" className="gap-2"><Filter className="h-4 w-4" />Issues ({filteredIssues.length})</TabsTrigger>
-            <TabsTrigger value="tasks" className="gap-2"><ListTodo className="h-4 w-4" />Tasks ({tasks.length})</TabsTrigger>
+            <TabsTrigger value="tasks" className="gap-2"><ListTodo className="h-4 w-4" />TTS Tasks ({tasks.length})</TabsTrigger>
             <TabsTrigger value="audio-jobs" className="gap-2"><Mic className="h-4 w-4" />Audio Jobs ({audioJobs.length})</TabsTrigger>
             <TabsTrigger value="orphans" className="gap-2"><Trash2 className="h-4 w-4" />Orphans ({orphanFiles.length})</TabsTrigger>
             <TabsTrigger value="logs" className="gap-2"><Terminal className="h-4 w-4" />Logs</TabsTrigger>
@@ -299,7 +383,6 @@ export default function AuditSafeShield() {
                                 <Badge variant="outline" className={`text-xs ${issue.severity === "error" ? "border-red-300 text-red-700" : issue.severity === "warning" ? "border-amber-300 text-amber-700" : "border-blue-300 text-blue-700"}`}>
                                   {getTypeLabel(issue.type)}
                                 </Badge>
-                                {isAutoFixable(issue) && <Badge className="bg-green-100 text-green-700 text-xs">Auto-fixable</Badge>}
                               </div>
                               <p className="text-sm text-gray-700 mt-1">{issue.message}</p>
                               {issue.fix && <p className="text-xs text-gray-500 mt-1">💡 Fix: {issue.fix}</p>}
@@ -314,33 +397,35 @@ export default function AuditSafeShield() {
             </Card>
           </TabsContent>
 
-          {/* Tasks Tab */}
+          {/* TTS Tasks Tab */}
           <TabsContent value="tasks">
             <Card className="border">
               <CardHeader className="pb-2 flex flex-row items-center justify-between">
-                <CardTitle className="text-sm flex items-center gap-2"><ListTodo className="h-4 w-4" />Generated Tasks ({tasks.length})</CardTitle>
+                <CardTitle className="text-sm flex items-center gap-2"><ListTodo className="h-4 w-4" />TTS Tasks ({tasks.length})</CardTitle>
                 {tasks.length > 0 && (
-                  <Button size="sm" variant="outline" onClick={() => exportToJson(tasks, `audit_tasks_${Date.now()}.json`)}>
+                  <Button size="sm" variant="outline" onClick={() => exportToJson(tasks, `tts_tasks_${Date.now()}.json`)}>
                     <Download className="h-3.5 w-3.5 mr-1" />Export JSON
                   </Button>
                 )}
               </CardHeader>
               <CardContent>
                 {tasks.length === 0 ? (
-                  <div className="py-8 text-center text-gray-500"><ListTodo className="h-8 w-8 mx-auto mb-2" /><p>No tasks generated</p></div>
+                  <div className="py-8 text-center text-gray-500"><ListTodo className="h-8 w-8 mx-auto mb-2" /><p>No TTS tasks generated</p></div>
                 ) : (
                   <ScrollArea className="h-[400px]">
                     <div className="space-y-2">
-                      {tasks.map((task, idx) => (
-                        <div key={idx} className="p-3 border rounded hover:bg-gray-50">
+                      {tasks.map((task) => (
+                        <div key={task.taskId} className="p-3 border rounded hover:bg-gray-50">
                           <div className="flex items-center gap-2 flex-wrap mb-1">
-                            <Badge className={`text-xs ${priorityColors[task.priority]}`}>{task.priority}</Badge>
-                            <Badge variant="outline" className="text-xs">{getTaskLabel(task.task_type)}</Badge>
-                            {task.language && <Badge variant="secondary" className="text-xs">{task.language.toUpperCase()}</Badge>}
-                            <code className="text-xs font-mono text-gray-600">{task.room_id}</code>
+                            <Badge variant={task.taskType === "generate_intro_tts" ? "default" : "secondary"} className="text-xs">
+                              {getTaskTypeLabel(task.taskType)}
+                            </Badge>
+                            <Badge variant="outline" className="text-xs">{task.language.toUpperCase()}</Badge>
+                            <code className="text-xs font-mono text-gray-600">{task.roomId}</code>
+                            {task.entrySlug && <code className="text-xs font-mono text-gray-400">/ {task.entrySlug}</code>}
                           </div>
-                          <p className="text-sm text-gray-700">{task.description}</p>
-                          {task.suggested_filename && <p className="text-xs text-gray-500 mt-1">📁 {task.suggested_filename}</p>}
+                          <p className="text-xs font-mono text-gray-700">📁 {task.filename}</p>
+                          <p className="text-xs text-gray-500 mt-1 line-clamp-2">{task.text.slice(0, 150)}...</p>
                         </div>
                       ))}
                     </div>
@@ -389,21 +474,28 @@ export default function AuditSafeShield() {
           {/* Orphans Tab */}
           <TabsContent value="orphans">
             <Card className="border">
-              <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><Trash2 className="h-4 w-4" />Orphan Audio Files ({orphanFiles.length})</CardTitle></CardHeader>
+              <CardHeader className="pb-2 flex flex-row items-center justify-between">
+                <CardTitle className="text-sm flex items-center gap-2"><Trash2 className="h-4 w-4" />Orphan Audio Files ({orphanFiles.length})</CardTitle>
+                {orphanFiles.length > 0 && (
+                  <Button size="sm" variant="outline" onClick={() => exportToJson(orphanFiles, `orphan_files_${Date.now()}.json`)}>
+                    <Download className="h-3.5 w-3.5 mr-1" />Export JSON
+                  </Button>
+                )}
+              </CardHeader>
               <CardContent>
                 {orphanFiles.length === 0 ? (
                   <div className="py-8 text-center text-gray-500"><CheckCircle className="h-8 w-8 mx-auto mb-2 text-green-500" /><p>No orphan audio files detected</p></div>
                 ) : (
                   <ScrollArea className="h-[350px]">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-                      {orphanFiles.map((file, idx) => (
+                      {orphanFiles.slice(0, 200).map((file, idx) => (
                         <div key={idx} className="flex items-center gap-2 p-2 bg-gray-50 rounded text-xs font-mono truncate">
                           <FileAudio className="h-3.5 w-3.5 text-gray-400 flex-shrink-0" />
                           <span className="truncate">{file}</span>
                         </div>
                       ))}
                     </div>
-                    {orphanFiles.length >= 200 && <p className="text-xs text-gray-500 mt-3 text-center">Showing first 200 files...</p>}
+                    {orphanFiles.length > 200 && <p className="text-xs text-gray-500 mt-3 text-center">Showing first 200 of {orphanFiles.length} files...</p>}
                   </ScrollArea>
                 )}
               </CardContent>
@@ -428,8 +520,8 @@ export default function AuditSafeShield() {
 
         {/* Safe Mode Notice */}
         <div className="p-4 bg-gray-100 border rounded text-center">
-          <p className="text-black font-medium flex items-center justify-center gap-2"><Shield className="h-4 w-4" />SAFE MODE ACTIVE — V5</p>
-          <p className="text-gray-600 text-sm mt-1">Non-destructive: Only generates fix tasks and audio jobs. Auto-repair fixes tier, schema_id, domain, and keywords only.</p>
+          <p className="text-black font-medium flex items-center justify-center gap-2"><Shield className="h-4 w-4" />SAFE MODE ACTIVE — V5.2</p>
+          <p className="text-gray-600 text-sm mt-1">Non-destructive: Only generates TTS tasks and audio jobs. No database modifications.</p>
         </div>
 
         <AuditCodeViewer />
