@@ -31,6 +31,19 @@ interface HomepageConfig {
   sections: HomepageSection[];
 }
 
+// Default fallback config when JSON fails to load
+const DEFAULT_CONFIG: HomepageConfig = {
+  id: "homepage_fallback",
+  name: "Mercy Blade Homepage",
+  name_vi: "Trang Chủ Mercy Blade",
+  layout: {
+    mobile_first: true,
+    section_spacing: "medium",
+    max_width: "640px"
+  },
+  sections: []
+};
+
 export const useHomepageConfig = () => {
   const [config, setConfig] = useState<HomepageConfig | null>(null);
   const [loading, setLoading] = useState(true);
@@ -46,25 +59,36 @@ export const useHomepageConfig = () => {
         }
 
         // Always prefer fresh JSON; fallback to pinned if fetch fails
-        let data: HomepageConfig | null = null;
         try {
-          const response = await fetch(`/data/Mercy_Blade_home_page.json?t=${Date.now()}`, { cache: 'no-store' });
+          const response = await fetch(`/data/Mercy_Blade_home_page.json?t=${Date.now()}`, { 
+            cache: 'no-store',
+            headers: { 'Accept': 'application/json' }
+          });
           if (!response.ok) {
-            throw new Error('Failed to load homepage config');
+            throw new Error(`Failed to load homepage config: ${response.status}`);
           }
-          data = await response.json();
+          const contentType = response.headers.get('content-type');
+          if (contentType && !contentType.includes('application/json')) {
+            throw new Error('Response is not JSON');
+          }
+          const data = await response.json();
           setConfig(data);
         } catch (fetchErr) {
+          console.warn('Failed to fetch homepage config:', fetchErr);
+          // Try pinned config
           const pinned = localStorage.getItem('pinnedHomepageConfig');
           if (pinned) {
-            console.warn('Using pinned homepage config due to fetch error');
+            console.warn('Using pinned homepage config');
             setConfig(JSON.parse(pinned));
           } else {
-            throw fetchErr instanceof Error ? fetchErr : new Error('Unknown error');
+            // Use default fallback
+            console.warn('Using default homepage config');
+            setConfig(DEFAULT_CONFIG);
           }
         }
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Unknown error');
+        setConfig(DEFAULT_CONFIG);
       } finally {
         setLoading(false);
       }
