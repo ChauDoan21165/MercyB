@@ -642,12 +642,16 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
 
 const AVAILABLE_FILES = Object.keys(CODE_FILES);
 
+const DEFAULT_FILE = "src/lib/constants/tiers.ts";
+
 export default function CodeViewer() {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const [copied, setCopied] = useState(false);
   
-  const filePath = searchParams.get("file") || "";
+  const rawFilePath = searchParams.get("file") || "";
+  // Clean the path - remove leading slash if present
+  const filePath = rawFilePath.startsWith("/") ? rawFilePath.slice(1) : rawFilePath;
   const content = CODE_FILES[filePath];
 
   const copyCode = async () => {
@@ -662,55 +666,39 @@ export default function CodeViewer() {
     }
   };
 
-  // No file specified - show file list
-  if (!filePath) {
-    return (
-      <div className="min-h-screen bg-white p-8">
-        <h1 className="text-2xl font-bold text-black mb-6">Code Viewer</h1>
-        <p className="text-gray-600 mb-4">Select a file to view:</p>
-        <div className="grid gap-2">
-          {AVAILABLE_FILES.map(f => (
-            <button 
-              key={f}
-              onClick={() => navigate(`/admin/code-viewer?file=${encodeURIComponent(f)}`)}
-              className="text-left p-3 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded font-mono text-sm"
-            >
-              {f}
-            </button>
-          ))}
+  // No file specified or invalid file - redirect to default
+  if (!filePath || !content) {
+    // Auto-redirect to the default file
+    if (!filePath) {
+      setSearchParams({ file: DEFAULT_FILE });
+    } else if (!content) {
+      // Show brief message then redirect
+      return (
+        <div className="min-h-screen bg-white p-8">
+          <h1 className="text-2xl font-bold text-black mb-4">Redirecting...</h1>
+          <p className="text-gray-600 mb-4">
+            File <code className="bg-gray-100 px-2 py-1 rounded">{rawFilePath}</code> not found.
+          </p>
+          <p className="text-gray-500 mb-6">Select a file:</p>
+          <div className="grid gap-2 mb-6">
+            {AVAILABLE_FILES.map(f => (
+              <button 
+                key={f}
+                onClick={() => setSearchParams({ file: f })}
+                className="text-left p-3 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded font-mono text-sm"
+              >
+                {f}
+              </button>
+            ))}
+          </div>
+          <Button variant="outline" className="border-black" onClick={() => navigate("/admin/system-codes")}>
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Back
+          </Button>
         </div>
-        <Button variant="outline" className="mt-6 border-black" onClick={() => navigate("/admin/system-codes")}>
-          <ArrowLeft className="h-4 w-4 mr-2" />
-          Back
-        </Button>
-      </div>
-    );
-  }
-
-  // File not found
-  if (!content) {
-    return (
-      <div className="min-h-screen bg-white p-8">
-        <h1 className="text-2xl font-bold text-black mb-4">File Not Found</h1>
-        <p className="text-gray-600 mb-2">File: <code className="bg-gray-100 px-2 py-1 rounded">{filePath}</code></p>
-        <p className="text-gray-500 text-sm mb-6">This file is not in the viewer. Available files:</p>
-        <div className="grid gap-2 mb-6">
-          {AVAILABLE_FILES.map(f => (
-            <button 
-              key={f}
-              onClick={() => navigate(`/admin/code-viewer?file=${encodeURIComponent(f)}`)}
-              className="text-left p-3 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded font-mono text-sm"
-            >
-              {f}
-            </button>
-          ))}
-        </div>
-        <Button variant="outline" className="border-black" onClick={() => navigate("/admin/system-codes")}>
-          <ArrowLeft className="h-4 w-4 mr-2" />
-          Back
-        </Button>
-      </div>
-    );
+      );
+    }
+    return null;
   }
 
   // Show file with single Copy Code button
