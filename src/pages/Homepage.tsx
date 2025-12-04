@@ -29,21 +29,27 @@ const Homepage = () => {
   const [textColor, setTextColor] = useState('#111827');
   const companion = useHomeCompanion();
   
+  // Default theme song
+  const DEFAULT_THEME_SONG: HomepageSong = {
+    id: 'default',
+    title_en: 'The Song of Mercy Blade',
+    title_vi: 'Khúc Ca Mercy Blade',
+    audioSrc: '/audio/mercy_blade_theme.mp3'
+  };
+
   // Load songs from localStorage (synced with admin Music Controller)
-  const [homepageSongs, setHomepageSongs] = useState<HomepageSong[]>([]);
+  const [homepageSongs, setHomepageSongs] = useState<HomepageSong[]>([DEFAULT_THEME_SONG]);
   
   useEffect(() => {
     const stored = localStorage.getItem(SONGS_STORAGE_KEY);
     if (stored) {
       try {
-        setHomepageSongs(JSON.parse(stored));
+        const parsed = JSON.parse(stored);
+        if (parsed.length > 0) {
+          setHomepageSongs(parsed);
+        }
       } catch {
-        setHomepageSongs([{
-          id: 'default',
-          title_en: 'The Song of Mercy Blade',
-          title_vi: 'Khúc Ca Mercy Blade',
-          audioSrc: '/audio/mercy_blade_theme.mp3'
-        }]);
+        // Keep default
       }
     }
   }, []);
@@ -107,7 +113,8 @@ const Homepage = () => {
     );
   }
 
-  if (error || !config) {
+  // Only show error if we have no config at all
+  if (!config) {
     return (
       <div className="min-h-screen flex items-center justify-center p-6">
         <div className="text-center space-y-4 max-w-md">
