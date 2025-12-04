@@ -155,50 +155,17 @@ const Homepage = () => {
       <main>
         {config.sections
           .filter((section) => section.id !== 'vip9_strategic')
-          .map((section, index) => (
-            <>
-              <HomepageSection
-                key={section.id}
-                id={section.id}
-                backgroundColor={section.background_color}
-                headingColor={section.heading_color}
-                accentColor={section.accent_color}
-                title={section.title}
-                body={section.body}
-                audio={section.audio}
-              />
-              {/* Insert Theme Song Music Player after song_lyrics (3rd position) */}
-              {section.id === 'song_lyrics' && homepageSongs.length > 0 && (
-                <section className="py-12 px-6 bg-gradient-to-b from-purple-50 to-indigo-100 dark:from-purple-950/30 dark:to-indigo-950/30">
-                  <div className="max-w-4xl mx-auto space-y-6">
-                    <div className="text-center space-y-2">
-                      <h2 className="text-2xl md:text-3xl font-bold text-purple-900 dark:text-purple-100">
-                        🎵 Mercy Blade Music
-                      </h2>
-                      <p className="text-purple-700 dark:text-purple-300">
-                        Âm Nhạc Mercy Blade
-                      </p>
-                    </div>
-                    
-                    <div className="space-y-4">
-                      {homepageSongs.map((song) => (
-                        <div key={song.id} className="bg-white/80 dark:bg-gray-800/80 rounded-xl p-4 shadow-sm">
-                          <p className="font-semibold text-purple-800 dark:text-purple-200 mb-1">
-                            {song.title_en}
-                          </p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                            {song.title_vi}
-                          </p>
-                          <audio controls className="w-full" preload="metadata">
-                            <source src={song.audioSrc} type="audio/mpeg" />
-                          </audio>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </section>
-              )}
-            </>
+          .map((section) => (
+            <HomepageSection
+              key={section.id}
+              id={section.id}
+              backgroundColor={section.background_color}
+              headingColor={section.heading_color}
+              accentColor={section.accent_color}
+              title={section.title}
+              body={section.body}
+              audio={section.audio}
+            />
           ))}
       </main>
 
