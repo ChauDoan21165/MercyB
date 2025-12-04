@@ -307,6 +307,52 @@ export type Database = {
         }
         Relationships: []
       }
+      audio_audit_room: {
+        Row: {
+          last_checked: string
+          missing_en: number
+          missing_vi: number
+          orphan_count: number
+          room_id: string
+        }
+        Insert: {
+          last_checked?: string
+          missing_en?: number
+          missing_vi?: number
+          orphan_count?: number
+          room_id: string
+        }
+        Update: {
+          last_checked?: string
+          missing_en?: number
+          missing_vi?: number
+          orphan_count?: number
+          room_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "audio_audit_room_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: true
+            referencedRelation: "room_health_view"
+            referencedColumns: ["room_id"]
+          },
+          {
+            foreignKeyName: "audio_audit_room_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: true
+            referencedRelation: "room_health_view"
+            referencedColumns: ["slug"]
+          },
+          {
+            foreignKeyName: "audio_audit_room_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: true
+            referencedRelation: "rooms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       audit_logs: {
         Row: {
           action: string
