@@ -2,7 +2,7 @@
 import { supabase } from '@/integrations/supabase/client';
 import { processEntriesOptimized } from './roomLoaderHelpers';
 import { ROOMS_TABLE, AUDIO_FOLDER } from '@/lib/constants/rooms';
-import { normalizeTier, type TierId, isKidsTier } from '@/lib/constants/tiers';
+import { normalizeTier, type TierId, isKidsTier, KIDS_TIER_IDS, TIERS } from '@/lib/constants/tiers';
 import type { Database } from '@/integrations/supabase/types';
 import { logger } from './logger';
 import { useSWR } from './cache/swrCache';
@@ -10,7 +10,8 @@ import { useSWR } from './cache/swrCache';
 type RoomRow = Database['public']['Tables']['rooms']['Row'];
 
 // Error codes for distinguishing room load failures
-export type RoomLoadErrorCode = 'ROOM_NOT_FOUND' | 'ACCESS_DENIED' | 'AUTH_REQUIRED';
+// Note: AUTH_REQUIRED removed - guests get preview mode instead of blocking
+export type RoomLoadErrorCode = 'ROOM_NOT_FOUND' | 'ACCESS_DENIED';
 
 // Return type for room loader
 export type LoadedRoomResult = {
@@ -137,11 +138,10 @@ const loadFromJson = async (roomId: string) => {
   }
 };
 
-// isKidsTier is imported from '@/lib/constants/tiers'
-// Wrapper to handle null/undefined for local usage
+// Helper to check kids tier with null safety
 const checkIsKidsTier = (tier: TierId | null | undefined): boolean => {
   if (!tier) return false;
-  return isKidsTier(tier);
+  return KIDS_TIER_IDS.includes(tier);
 };
 
 /**
@@ -199,7 +199,7 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
         .eq('status', 'active')
         .maybeSingle();
 
-      const rawUserTier = (subscription?.subscription_tiers as any)?.name || 'Free / Miễn phí';
+      const rawUserTier = (subscription?.subscription_tiers as any)?.name || TIERS.FREE;
       baseTier = normalizeTier(rawUserTier);
     }
 
