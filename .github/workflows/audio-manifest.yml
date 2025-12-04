@@ -1,52 +1,28 @@
 name: Audio Manifest Check
 
 on:
-  push:
-    branches: [main, master]
-    paths:
-      - "public/audio/**"
-      - "scripts/generate-audio-manifest.js"
-      - ".github/workflows/audio-manifest.yml"
-  pull_request:
-    branches: [main, master]
-    paths:
-      - "public/audio/**"
-      - "scripts/generate-audio-manifest.js"
   workflow_dispatch:
+  push:
+    paths:
+      - "public/audio/**"
 
 jobs:
-  generate-audio-manifest:
+  generate:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Use Node 20
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: 20
 
-      - name: Generate audio manifest
-        run: node scripts/generate-audio-manifest.js
-
-      - name: Show manifest summary
+      - name: Generate manifest
         run: |
-          echo "Generated manifest:"
-          cat public/audio/manifest.json | head -n 30
+          node scripts/generate-audio-manifest.js
 
-      - name: Verify manifest has files
-        run: |
-          FILE_COUNT=$(node -e "const m = require('./public/audio/manifest.json'); console.log(m.totalFiles)")
-          echo "Total audio files: $FILE_COUNT"
-
-      - name: Commit manifest if changed
-        if: github.event_name == 'push'
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add public/audio/manifest.json
-          git diff --staged --quiet || git commit -m "chore: auto-generate audio manifest [skip ci]"
-          git push || echo "Nothing to push"
+      - name: Commit manifest
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "[skip ci] Update audio manifest"
+          file_pattern: "public/audio/manifest.json"
