@@ -29,7 +29,12 @@ export type AuditIssueType =
   | "malformed_entries"
   | "entry_count_info"
   | "slug_format_info"
-  | "registry_missing";
+  | "registry_missing"
+  // Content safety types
+  | "crisis_content"
+  | "medical_claims"
+  | "emergency_phrasing"
+  | "kids_crisis_blocker";
 
 export type AuditSeverity = "error" | "warning" | "info";
 

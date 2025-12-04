@@ -110,6 +110,81 @@ const VALID_ENTRY_KEYS = new Set([
   "severity_level", "title", "title_en", "title_vi",
 ]);
 
+// --- Content safety patterns ---
+
+// Self-harm / crisis (EN + VI)
+const CRISIS_PATTERNS: RegExp[] = [
+  /\bsuicid(e|al)\b/i,
+  /\bkill myself\b/i,
+  /\bhurt myself\b/i,
+  /\b(end|ending) it all\b/i,
+  /\bcan't go on\b/i,
+  /\bno reason to live\b/i,
+  /\bi want to die\b/i,
+  /tự tử/i,
+  /muốn chết/i,
+  /không muốn sống nữa/i,
+  /kết thúc cuộc đời/i,
+];
+
+// Strong medical claims (EN + VI)
+const MEDICAL_PATTERNS: RegExp[] = [
+  /\bcure(s|d)?\b/i,
+  /\bpermanent(ly)? cure\b/i,
+  /\bguaranteed (healing|recovery|results)\b/i,
+  /\b100% (healing|recovery|hiệu quả)\b/i,
+  /\bchữa khỏi hoàn toàn\b/i,
+  /\bđiều trị dứt điểm\b/i,
+  /\bkhỏi hẳn\b/i,
+];
+
+// Generic emergency instructions that MUST be careful
+const EMERGENCY_PATTERNS: RegExp[] = [
+  /\bcall 911\b/i,
+  /\bgo to the emergency room\b/i,
+  /gọi 115\b/i,
+  /tới phòng cấp cứu/i,
+];
+
+type CrisisCheck = {
+  hasCrisis: boolean;
+  patterns: string[];
+};
+
+type MedicalCheck = {
+  hasClaims: boolean;
+  patterns: string[];
+};
+
+type EmergencyCheck = {
+  hasEmergency: boolean;
+  patterns: string[];
+};
+
+function detectCrisisContent(text: string): CrisisCheck {
+  const patterns: string[] = [];
+  CRISIS_PATTERNS.forEach((re) => {
+    if (re.test(text)) patterns.push(re.source);
+  });
+  return { hasCrisis: patterns.length > 0, patterns };
+}
+
+function detectMedicalClaims(text: string): MedicalCheck {
+  const patterns: string[] = [];
+  MEDICAL_PATTERNS.forEach((re) => {
+    if (re.test(text)) patterns.push(re.source);
+  });
+  return { hasClaims: patterns.length > 0, patterns };
+}
+
+function detectEmergencyPhrasing(text: string): EmergencyCheck {
+  const patterns: string[] = [];
+  EMERGENCY_PATTERNS.forEach((re) => {
+    if (re.test(text)) patterns.push(re.source);
+  });
+  return { hasEmergency: patterns.length > 0, patterns };
+}
+
 // Helper: count words
 function countWords(text: string): number {
   return text.trim().split(/\s+/).filter(w => w.length > 0).length;
@@ -491,6 +566,81 @@ async function runSafeShieldAudit(mode: AuditMode): Promise<AuditResult> {
       } else {
         referencedAudioBasenames.add(introViName);
       }
+    }
+
+    // --- Content safety aggregation (titles + essays + entries copy) ---
+    const roomTextParts: string[] = [];
+
+    // Room essays (if present)
+    if (room.room_essay_en) roomTextParts.push(String(room.room_essay_en));
+    if (room.room_essay_vi) roomTextParts.push(String(room.room_essay_vi));
+
+    // Titles
+    if (room.title_en) roomTextParts.push(String(room.title_en));
+    if (room.title_vi) roomTextParts.push(String(room.title_vi));
+
+    // Entries copy
+    for (const e of entries as any[]) {
+      const cEn = e.copy?.en ?? e.copy_en;
+      const cVi = e.copy?.vi ?? e.copy_vi;
+      if (cEn) roomTextParts.push(String(cEn));
+      if (cVi) roomTextParts.push(String(cVi));
+    }
+
+    const allText = roomTextParts.join("\n").toLowerCase();
+
+    // --- Content safety checks ---
+    const crisisCheck = detectCrisisContent(allText);
+    const medicalCheck = detectMedicalClaims(allText);
+    const emergencyCheck = detectEmergencyPhrasing(allText);
+
+    // 1) Crisis / self-harm content (global)
+    if (crisisCheck.hasCrisis) {
+      issues.push({
+        id: `crisis-${roomId}`,
+        file,
+        type: "crisis_content",
+        severity: "error",
+        message: `Potential crisis / self-harm content detected: ${crisisCheck.patterns.join(", ")}`,
+        autoFixable: false,
+      });
+    }
+
+    // 2) Medical over-claiming
+    if (medicalCheck.hasClaims) {
+      issues.push({
+        id: `medical-${roomId}`,
+        file,
+        type: "medical_claims",
+        severity: "warning",
+        message: `Strong medical / cure-like claims detected: ${medicalCheck.patterns.join(", ")}`,
+        autoFixable: false,
+      });
+    }
+
+    // 3) Emergency phrasing that must be framed correctly
+    if (emergencyCheck.hasEmergency) {
+      issues.push({
+        id: `emergency-${roomId}`,
+        file,
+        type: "emergency_phrasing",
+        severity: "warning",
+        message: 'Emergency instructions detected (e.g. "call 115" / "go to ER"). Make sure they are framed as: "If you are in immediate danger, contact local emergency services / 115 / 911."',
+        autoFixable: false,
+      });
+    }
+
+    // 4) Extra strict rule for Kids tiers: any crisis content = hard blocker
+    const effectiveTier = room.tier || inferTierFromRoomId(roomId);
+    if (effectiveTier.toLowerCase().includes("kids") && crisisCheck.hasCrisis) {
+      issues.push({
+        id: `kids-crisis-${roomId}`,
+        file,
+        type: "kids_crisis_blocker",
+        severity: "error",
+        message: "Crisis / self-harm content detected in a Kids room. This must be removed or heavily reframed; kids content cannot contain self-harm narratives.",
+        autoFixable: false,
+      });
     }
   }
 

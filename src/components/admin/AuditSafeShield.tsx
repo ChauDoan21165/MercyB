@@ -18,13 +18,17 @@ import {
   Database,
   Filter,
   RefreshCw,
+  Heart,
+  Stethoscope,
+  AlertOctagon,
+  Baby,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import type { AuditIssue, AuditResponse, AuditMode } from "@/lib/audit-v4-types";
 import AuditCodeViewer from "./AuditCodeViewer";
 
-type FilterType = "all" | "errors" | "missing_audio" | "missing_json" | "missing_entries";
+type FilterType = "all" | "errors" | "missing_audio" | "missing_json" | "missing_entries" | "crisis" | "medical" | "safety";
 
 export default function AuditSafeShield() {
   const [isRunning, setIsRunning] = useState(false);
@@ -126,15 +130,35 @@ export default function AuditSafeShield() {
       case "errors":
         return issue.severity === "error";
       case "missing_audio":
-        return issue.type === "missing_audio";
+        return issue.type === "missing_audio" || issue.type === "missing_audio_field" || issue.type === "missing_audio_file";
       case "missing_json":
         return issue.type === "missing_json" || issue.type === "missing_db";
       case "missing_entries":
         return issue.type === "missing_entries";
+      case "crisis":
+        return issue.type === "crisis_content" || issue.type === "kids_crisis_blocker";
+      case "medical":
+        return issue.type === "medical_claims";
+      case "safety":
+        return issue.type === "crisis_content" || issue.type === "kids_crisis_blocker" || 
+               issue.type === "medical_claims" || issue.type === "emergency_phrasing";
       default:
         return true;
     }
   });
+
+  // Human-readable labels for issue types
+  const typeLabels: Record<string, string> = {
+    crisis_content: "Crisis / self-harm content",
+    medical_claims: "Medical over-claiming",
+    emergency_phrasing: "Emergency phrasing",
+    kids_crisis_blocker: "Kids crisis blocker",
+    missing_audio_field: "Missing audio field",
+    missing_audio_file: "Missing audio file",
+    missing_intro_audio_en: "Missing intro audio (EN)",
+    missing_intro_audio_vi: "Missing intro audio (VI)",
+    orphan_audio_files: "Orphan audio files",
+  };
 
   // Count auto-fixable from ALL issues, not just filtered
   const autoFixableCount = issues.filter(isAutoFixable).length;
@@ -217,9 +241,21 @@ export default function AuditSafeShield() {
   const typeIcons: Record<string, React.ReactNode> = {
     missing_json: <FileJson className="h-4 w-4" />,
     missing_audio: <Music className="h-4 w-4" />,
+    missing_audio_field: <Music className="h-4 w-4" />,
+    missing_audio_file: <Music className="h-4 w-4" />,
     missing_db: <Database className="h-4 w-4" />,
     missing_entries: <AlertTriangle className="h-4 w-4" />,
+    crisis_content: <Heart className="h-4 w-4" />,
+    medical_claims: <Stethoscope className="h-4 w-4" />,
+    emergency_phrasing: <AlertOctagon className="h-4 w-4" />,
+    kids_crisis_blocker: <Baby className="h-4 w-4" />,
   };
+
+  // Count safety issues for badge
+  const safetyIssueCount = issues.filter(i => 
+    i.type === "crisis_content" || i.type === "kids_crisis_blocker" || 
+    i.type === "medical_claims" || i.type === "emergency_phrasing"
+  ).length;
 
   return (
     <div className="min-h-screen bg-white p-6">
@@ -364,22 +400,45 @@ export default function AuditSafeShield() {
               { key: "missing_audio", label: "Missing Audio" },
               { key: "missing_json", label: "Missing JSON" },
               { key: "missing_entries", label: "Missing Entries" },
+              { key: "safety", label: "⚠️ Safety Issues" },
+              { key: "crisis", label: "Crisis" },
+              { key: "medical", label: "Medical" },
             ].map(({ key, label }) => (
               <Button
                 key={key}
                 variant={filter === key ? "default" : "outline"}
                 size="sm"
                 onClick={() => setFilter(key as FilterType)}
-                className={filter === key ? "bg-black text-white" : "border-gray-300"}
+                className={
+                  filter === key 
+                    ? key === "safety" || key === "crisis" 
+                      ? "bg-red-600 text-white" 
+                      : "bg-black text-white" 
+                    : key === "safety" || key === "crisis"
+                      ? "border-red-300 text-red-700 hover:bg-red-50"
+                      : "border-gray-300"
+                }
               >
                 {label}
                 {key !== "all" && (
-                  <Badge variant="secondary" className="ml-1 text-xs">
+                  <Badge 
+                    variant="secondary" 
+                    className={`ml-1 text-xs ${
+                      (key === "safety" || key === "crisis") && issues.filter((i) => {
+                        if (key === "crisis") return i.type === "crisis_content" || i.type === "kids_crisis_blocker";
+                        if (key === "safety") return i.type === "crisis_content" || i.type === "kids_crisis_blocker" || i.type === "medical_claims" || i.type === "emergency_phrasing";
+                        return false;
+                      }).length > 0 ? "bg-red-100 text-red-700" : ""
+                    }`}
+                  >
                     {issues.filter((i) => {
                       if (key === "errors") return i.severity === "error";
-                      if (key === "missing_audio") return i.type === "missing_audio";
+                      if (key === "missing_audio") return i.type === "missing_audio" || i.type === "missing_audio_field" || i.type === "missing_audio_file";
                       if (key === "missing_json") return i.type === "missing_json" || i.type === "missing_db";
                       if (key === "missing_entries") return i.type === "missing_entries";
+                      if (key === "crisis") return i.type === "crisis_content" || i.type === "kids_crisis_blocker";
+                      if (key === "medical") return i.type === "medical_claims";
+                      if (key === "safety") return i.type === "crisis_content" || i.type === "kids_crisis_blocker" || i.type === "medical_claims" || i.type === "emergency_phrasing";
                       return false;
                     }).length}
                   </Badge>
@@ -438,7 +497,7 @@ export default function AuditSafeShield() {
                                 : "border-blue-300 text-blue-700"
                             }`}
                           >
-                            {issue.type.replace(/_/g, " ")}
+                            {typeLabels[issue.type] || issue.type.replace(/_/g, " ")}
                           </Badge>
                           {isAutoFixable(issue) && (
                             <Badge className="bg-green-100 text-green-700 text-xs">
