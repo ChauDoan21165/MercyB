@@ -186,8 +186,8 @@ const Homepage = () => {
               vi: "Lộ trình tiếng Anh của Mercy Blade là hành trình học trọn vẹn, dành riêng cho người học Việt Nam muốn phát triển từ mức hoàn toàn mới bắt đầu đến giao tiếp tự tin ở trình độ cao. Mỗi cấp độ đều nhẹ nhàng, có cấu trúc rõ ràng và an toàn về mặt cảm xúc. Bạn bắt đầu từ các âm cơ bản, bảng chữ cái và câu giao tiếp sinh tồn, rồi từng bước chuyển sang nói tự nhiên, nghe thực tế, ngữ pháp chắc chắn, phát âm rõ ràng và giao tiếp nâng cao.\nLộ trình gồm bảy giai đoạn: Nền tảng Tiếng Anh → A1 → A2 → B1 → B2 → C1 → C2.\nMỗi cấp độ được xây dựng dựa trên cấp độ trước, giúp bạn không bao giờ bị quá tải hay mất hướng. Với các bài học ngắn, hướng dẫn phát âm bình tĩnh và thói quen luyện tập mỗi ngày, tiếng Anh của bạn sẽ trở nên rõ ràng, mạnh mẽ và tự nhiên theo từng bước nhỏ.\nDù bạn bắt đầu từ con số 0 hay muốn đạt tới khả năng sử dụng tiếng Anh nâng cao, lộ trình này sẽ giúp bạn tiến bộ với sự tự tin, kiên trì và trọn vẹn phẩm giá."
             }}
             audio={{
-              en: "english_pathway_homepage_en.mp3",
-              vi: "english_pathway_homepage_vi.mp3"
+              en: "Homepage_1.mp3",
+              vi: "Homepage_1.mp3"
             }}
           />
           
