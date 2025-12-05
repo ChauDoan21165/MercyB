@@ -14,9 +14,11 @@ import { MercyAvatar } from './MercyAvatar';
 import { AVATAR_STYLES, type MercyAvatarStyle } from '@/lib/mercy-host/avatarStyles';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Slider } from '@/components/ui/slider';
-import { VolumeX, Volume2, Sparkles, GraduationCap, Sword } from 'lucide-react';
+import { VolumeX, Volume2, Sparkles, GraduationCap, Sword, MessageSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { RitualIntensity, TeacherLevel, MartialCoachLevel } from '@/lib/mercy-host/engine';
+import { formatCharCount } from '@/lib/mercy-host/talkBudget';
+import { Progress } from '@/components/ui/progress';
 
 interface MercySettingsToggleProps {
   language?: 'en' | 'vi';
@@ -248,7 +250,44 @@ export function MercySettingsToggle({ language = 'en' }: MercySettingsToggleProp
             </p>
           </div>
 
-          {/* Silence Mode Toggle - Phase 6 */}
+          {/* Phase 9: Talk Budget Info (read-only) */}
+          <div className="p-3 rounded-lg bg-muted/50 space-y-2">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <MessageSquare className="h-4 w-4 text-primary" />
+                <Label>
+                  {language === 'vi' ? 'Mercy talk hôm nay' : "Today's Mercy talk"}
+                </Label>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-medium">
+                  {formatCharCount(mercy.talkUsedToday)} / {formatCharCount(mercy.talkDailyLimit)}
+                </span>
+                {mercy.isGrowthModeActive && (
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-medium">
+                    Growth
+                  </span>
+                )}
+              </div>
+            </div>
+            <Progress 
+              value={Math.min(100, (mercy.talkUsedToday / mercy.talkDailyLimit) * 100)} 
+              className={cn(
+                "h-1.5",
+                mercy.isTalkLimited && "[&>div]:bg-destructive",
+                mercy.hasTalkSoftWarned && !mercy.isTalkLimited && "[&>div]:bg-amber-500"
+              )}
+            />
+            {mercy.isTalkLimited && (
+              <p className="text-xs text-muted-foreground">
+                {language === 'vi' 
+                  ? 'Đã đạt giới hạn hôm nay. Mercy vẫn ở đây với bạn.'
+                  : 'Limit reached for today. Mercy is still here with you.'
+                }
+              </p>
+            )}
+          </div>
+
           <div className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
             <div className="flex items-center gap-3">
               {mercy.silenceMode ? (

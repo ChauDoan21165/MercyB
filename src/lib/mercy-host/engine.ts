@@ -31,6 +31,13 @@ import { getDomainCategory, isEnglishDomain, isMartialDomain, type DomainCategor
 import { getTeacherTip, type TeacherLevel, type TeacherContext } from './teacherScripts';
 import { getMartialCoachTip, inferMartialDiscipline, type MartialCoachLevel, type MartialContext } from './martialCoachScripts';
 import { logEvent } from './logs';
+import { 
+  getEffectiveBudget, 
+  isInGrowthMode, 
+  normalizeTierId,
+  formatCharCount,
+  type TierId 
+} from './talkBudget';
 
 // Storage keys
 const STORAGE_KEYS = {
@@ -90,6 +97,15 @@ export interface MercyEngineState {
   lastMartialTipId: string | null;
   lastMartialTip: { en: string; vi: string } | null;
   isMartialHintVisible: boolean;
+  // Phase 9: Talk Budget state
+  talkUsedToday: number;
+  talkDailyLimit: number;
+  talkSoftWarnAt: number;
+  talkHardCap: number;
+  isTalkLimited: boolean;
+  hasTalkSoftWarned: boolean;
+  isGrowthModeActive: boolean;
+  hasShownLimitMessageThisSession: boolean;
 }
 
 export interface MercyEngineActions {
@@ -322,6 +338,11 @@ export function createMercyEngine(
       const tierScript = getTierScript(tier);
       const mem = memory.get();
 
+      const tierId = normalizeTierId(tier);
+      const talkUsage = memory.getTalkUsage();
+      const budget = getEffectiveBudget(tierId, mem.totalVisits);
+      const growthActive = isInGrowthMode(tierId, mem.totalVisits);
+
       setState(s => ({
         ...s,
         isEnabled: savedEnabled !== 'false',
@@ -339,7 +360,15 @@ export function createMercyEngine(
         // Phase 8: Martial Coach from memory
         martialCoachLevel: (mem as any).martialCoachLevel || 'off',
         currentMartialDiscipline: (mem as any).lastMartialDiscipline || null,
-        lastMartialTipId: (mem as any).lastMartialTipId || null
+        lastMartialTipId: (mem as any).lastMartialTipId || null,
+        // Phase 9: Talk Budget from memory
+        talkUsedToday: talkUsage.usedChars,
+        talkDailyLimit: budget.dailyChars,
+        talkSoftWarnAt: budget.softWarnAt,
+        talkHardCap: budget.hardCap,
+        isTalkLimited: talkUsage.hardBlocked,
+        hasTalkSoftWarned: talkUsage.softWarned,
+        isGrowthModeActive: growthActive
       }));
 
       resetIdleTimer();
@@ -897,5 +926,14 @@ export const initialEngineState: MercyEngineState = {
   currentMartialDiscipline: null,
   lastMartialTipId: null,
   lastMartialTip: null,
-  isMartialHintVisible: false
+  isMartialHintVisible: false,
+  // Phase 9 additions
+  talkUsedToday: 0,
+  talkDailyLimit: 3000,
+  talkSoftWarnAt: 2400,
+  talkHardCap: 3300,
+  isTalkLimited: false,
+  hasTalkSoftWarned: false,
+  isGrowthModeActive: false,
+  hasShownLimitMessageThisSession: false
 };
