@@ -1,6 +1,6 @@
 /**
  * Audio utilities barrel export
- * Chief Automation Engineer: Audio System v4.0 - Full Expanded Version
+ * Chief Automation Engineer: Audio System v4.3 - Zero-Friction Ecosystem
  * 
  * Zero-Friction Audio System:
  * ✓ No missing files
@@ -9,6 +9,9 @@
  * ✓ No duplicates
  * ✓ No manual renaming
  * ✓ All errors repaired automatically
+ * ✓ Governance-controlled autopilot
+ * ✓ Multi-pass verification
+ * ✓ Cross-room protection
  */
 
 // Global Consistency Engine (GCE) - THE SINGLE SOURCE OF TRUTH
@@ -39,6 +42,41 @@ export {
   type GCEIssue,
   type GCERoomResult,
 } from './globalConsistencyEngine';
+
+// Audio Governance Engine (AGE) - AUTOPILOT CONTROL
+export {
+  // Core governance functions
+  evaluateChangeSet,
+  evaluateOperation,
+  shouldAutoApply,
+  blockCriticalChanges,
+  // System integrity
+  getSystemIntegrity,
+  meetsIntegrityThreshold,
+  detectCrossRoomPollution,
+  verifyEnViParity,
+  // Multi-pass verification
+  runMultiPassVerification,
+  // Autopilot
+  getAutopilotStatus,
+  updateAutopilotStatus,
+  setAutopilotEnabled,
+  // Report generation
+  generateGovernanceReport,
+  // Configuration
+  configureGovernance,
+  getGovernanceConfig,
+  DEFAULT_GOVERNANCE_CONFIG,
+  // Types
+  type GovernanceConfig,
+  type GovernanceDecision,
+  type GovernanceOperation,
+  type GovernanceReport,
+  type GovernanceViolation,
+  type ChangeSet,
+  type AutopilotStatus,
+  type DecisionType,
+} from './audioGovernanceEngine';
 
 // Core validator (v3.0 APIs)
 export {
