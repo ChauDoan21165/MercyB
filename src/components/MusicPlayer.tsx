@@ -457,15 +457,19 @@ export const MusicPlayer = () => {
           </DropdownMenuTrigger>
           <DropdownMenuContent 
             align="end" 
-            className="w-[280px] z-[9999] bg-popover border border-border shadow-xl"
+            className="w-[280px] max-h-[350px] overflow-y-auto z-[9999] bg-popover border border-border shadow-xl"
             sideOffset={4}
           >
-            <DropdownMenuLabel className="text-xs font-semibold">
+            <DropdownMenuLabel className="text-xs font-semibold sticky top-0 bg-popover">
               {mode === "mercy" ? "MB Songs" : mode === "favorites" ? "My Favorites" : "Common Tracks"} ({displayTracks.length})
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <ScrollArea className="h-[300px]">
-              {displayTracks.map((track) => (
+            {displayTracks.length === 0 ? (
+              <div className="px-2 py-4 text-xs text-muted-foreground text-center">
+                {mode === "favorites" ? "No favorites yet. Click ♥ to add songs." : "No tracks available."}
+              </div>
+            ) : (
+              displayTracks.map((track) => (
                 <DropdownMenuItem
                   key={track.id}
                   onClick={() => handleTrackChange(track.id)}
@@ -481,8 +485,8 @@ export const MusicPlayer = () => {
                     )}
                   </div>
                 </DropdownMenuItem>
-              ))}
-            </ScrollArea>
+              ))
+            )}
           </DropdownMenuContent>
         </DropdownMenu>
 
