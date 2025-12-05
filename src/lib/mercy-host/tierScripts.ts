@@ -591,17 +591,3 @@ export function getEmotionScript(
   // Ultimate fallback to free tier
   return TIER_EMOTION_SCRIPTS.free?.[emotion] || null;
 }
-
-// Re-export for backward compatibility
-const TIER_FALLBACK_CHAIN: Record<string, string[]> = {
-  vip9: ['vip8', 'vip7', 'vip6', 'free'],
-  vip8: ['vip7', 'vip6', 'free'],
-  vip7: ['vip6', 'vip5', 'free'],
-  vip6: ['vip5', 'vip4', 'free'],
-  vip5: ['vip4', 'vip3', 'free'],
-  vip4: ['vip3', 'vip2', 'free'],
-  vip3: ['vip2', 'vip1', 'free'],
-  vip2: ['vip1', 'free'],
-  vip1: ['free'],
-  free: []
-};
