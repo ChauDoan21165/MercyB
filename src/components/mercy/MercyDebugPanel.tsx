@@ -10,8 +10,8 @@ import { cn } from '@/lib/utils';
 import { useMercyHostContext } from './MercyHostProvider';
 import { runFullValidation } from '@/lib/mercy-host/validation';
 import { hostSignal } from '@/lib/mercy-host/hostSignal';
-import { memory } from '@/lib/mercy-host/memory';
 import { getRitualForEvent } from '@/lib/mercy-host/rituals';
+import { getMemoryData, type MercyMemoryV2 } from '@/lib/mercy-host/memorySchema';
 import { Button } from '@/components/ui/button';
 import { 
   Bug, 
@@ -49,7 +49,7 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
 
   const validation = runFullValidation(mercy);
   const signalHistory = hostSignal.getHistory();
-  const memoryData = memory.get();
+  const memoryData: MercyMemoryV2 = getMemoryData();
 
   // Simulate streak milestone
   const simulateStreakMilestone = () => {
@@ -233,14 +233,14 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
                 <StateRow label="Greeted Rooms" value={String(memoryData.greetedRooms.length)} />
                 <StateRow 
                   label="Coaching Level" 
-                  value={memoryData.emotionCoachingLevel || 'full'} 
+                  value={memoryData.emotionCoachingLevel} 
                 />
                 
                 <Button 
                   size="sm" 
                   variant="destructive" 
                   onClick={() => {
-                    memory.clear();
+                    localStorage.removeItem('mercy_host_memory');
                     hostSignal.resetMemory();
                   }}
                   className="text-xs h-7 mt-2"
@@ -263,7 +263,7 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
                   <StateRow label="Current Streak" value={`${mercy.visitStreak} days`} />
                   <StateRow 
                     label="Longest Streak" 
-                    value={`${(memoryData as any).longestStreak || 0} days`} 
+                    value={`${memoryData.longestStreak} days`} 
                   />
                 </div>
 
@@ -310,7 +310,7 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
                   />
                   <StateRow 
                     label="Tiers Celebrated" 
-                    value={String(((memoryData as any).tiersCelebrated || []).length)} 
+                    value={String(memoryData.tiersCelebrated.length)} 
                   />
                 </div>
 

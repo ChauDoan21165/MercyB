@@ -3,103 +3,43 @@
  * 
  * Stores user-related data for personalized host behavior.
  * Uses localStorage for persistence across sessions.
- * Phase 6: Added streak and ritual tracking.
+ * Phase 6: Delegates to memorySchema.ts for single source of truth.
  */
 
-import type { EmotionState } from './emotionModel';
-import type { RitualIntensity } from './engine';
+import { 
+  loadValidatedMemory, 
+  saveMemory as saveSchemaMemory,
+  updateMemory as updateSchemaMemory,
+  type MercyMemoryV2,
+  type RitualIntensity,
+  type EmotionCoachingLevel
+} from './memorySchema';
 
-export interface MercyMemory {
-  userName: string | null;
-  lastVisitISO: string | null;
-  lastRoom: string | null;
-  totalVisits: number;
-  hasOnboarded: boolean;
-  onboardingEmotionSeed: EmotionState | null;
-  emotionCoachingLevel: 'off' | 'gentle' | 'full';
-  hostPreferences: {
-    enabled: boolean;
-    avatarStyle: string;
-    language: 'en' | 'vi';
-    voiceEnabled: boolean;
-    animationsEnabled: boolean;
-    silenceMode: boolean;
-  };
-  greetedRooms: string[];
-  favoriteRooms: string[];
-  lastMood: 'neutral' | 'happy' | 'focused' | 'tired' | null;
-  sessionCount: number;
-  // Phase 6: Streak & Ritual tracking
-  streakDays: number;
-  longestStreak: number;
-  tiersCelebrated: string[];
-  lastStreakMilestone: number | null;
-  ritualIntensity: RitualIntensity;
-}
+// Re-export types for backward compatibility
+export type { MercyMemoryV2, RitualIntensity, EmotionCoachingLevel };
+export type MercyMemory = MercyMemoryV2;
 
 const MEMORY_KEY = 'mercy_host_memory';
-
-const DEFAULT_MEMORY: MercyMemory = {
-  userName: null,
-  lastVisitISO: null,
-  lastRoom: null,
-  totalVisits: 0,
-  hasOnboarded: false,
-  onboardingEmotionSeed: null,
-  emotionCoachingLevel: 'full',
-  hostPreferences: {
-    enabled: true,
-    avatarStyle: 'minimalist',
-    language: 'en',
-    voiceEnabled: true,
-    animationsEnabled: true,
-    silenceMode: false
-  },
-  greetedRooms: [],
-  favoriteRooms: [],
-  lastMood: null,
-  sessionCount: 0,
-  // Phase 6 defaults
-  streakDays: 0,
-  longestStreak: 0,
-  tiersCelebrated: [],
-  lastStreakMilestone: null,
-  ritualIntensity: 'normal'
-};
 
 /**
  * Get all memory data
  */
-export function getMemory(): MercyMemory {
-  try {
-    const stored = localStorage.getItem(MEMORY_KEY);
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      return { ...DEFAULT_MEMORY, ...parsed };
-    }
-  } catch {
-    // ignore parse errors
-  }
-  return { ...DEFAULT_MEMORY };
+export function getMemory(): MercyMemoryV2 {
+  return loadValidatedMemory();
 }
 
 /**
  * Set entire memory object
  */
-export function setMemory(memory: MercyMemory): void {
-  try {
-    localStorage.setItem(MEMORY_KEY, JSON.stringify(memory));
-  } catch {
-    // ignore storage errors
-  }
+export function setMemory(memory: MercyMemoryV2): void {
+  saveSchemaMemory(memory);
 }
 
 /**
  * Update specific memory fields
  */
-export function updateMemory(updates: Partial<MercyMemory>): void {
-  const current = getMemory();
-  setMemory({ ...current, ...updates });
+export function updateMemory(updates: Partial<MercyMemoryV2>): void {
+  updateSchemaMemory(updates);
 }
 
 /**
@@ -116,14 +56,14 @@ export function clearMemory(): void {
 /**
  * Get a specific memory value
  */
-export function get<K extends keyof MercyMemory>(key: K): MercyMemory[K] {
+export function get<K extends keyof MercyMemoryV2>(key: K): MercyMemoryV2[K] {
   return getMemory()[key];
 }
 
 /**
  * Set a specific memory value
  */
-export function set<K extends keyof MercyMemory>(key: K, value: MercyMemory[K]): void {
+export function set<K extends keyof MercyMemoryV2>(key: K, value: MercyMemoryV2[K]): void {
   const memory = getMemory();
   memory[key] = value;
   setMemory(memory);
@@ -257,6 +197,18 @@ export function recordStreakMilestone(days: number): void {
   updateMemory({ lastStreakMilestone: days });
 }
 
+/**
+ * Update streak days
+ */
+export function updateStreakDays(newStreak: number): void {
+  const memory = getMemory();
+  memory.streakDays = newStreak;
+  if (newStreak > memory.longestStreak) {
+    memory.longestStreak = newStreak;
+  }
+  setMemory(memory);
+}
+
 // Export memory API as object for convenient use
 export const memory = {
   get: getMemory,
@@ -276,5 +228,6 @@ export const memory = {
   completeOnboarding,
   addCelebratedTier,
   hasCelebratedTier,
-  recordStreakMilestone
+  recordStreakMilestone,
+  updateStreakDays
 };
