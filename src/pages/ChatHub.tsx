@@ -48,6 +48,8 @@ import heroRainbowBg from '@/assets/hero-rainbow-clean.png';
 import { useFavoriteRooms } from "@/hooks/useFavoriteRooms";
 import { useRecentRooms } from "@/hooks/useRecentRooms";
 import { useRoomAudioPreload } from "@/hooks/useRoomAudioPreload";
+import { useMercyHost } from "@/hooks/useMercyHost";
+import { MercyHostGreeting, MercyColorModeToast } from "@/components/MercyHostGreeting";
 // CornerTalker removed - talking mouth integrated into AudioPlayer
 import { Heart, Star, History, Clock } from "lucide-react";
 import {
@@ -157,6 +159,14 @@ const ChatHub = () => {
     introEn: roomIntroData.introEn || roomEssay?.en || '',
     introVi: roomIntroData.introVi || roomEssay?.vi || '',
     userName: username || 'friend',
+  });
+
+  // Mercy Host System - room entry greeting
+  const mercyHost = useMercyHost({
+    roomId: roomId || '',
+    roomTitle: currentRoom.nameEn,
+    roomTier: info?.tier || loadedRoomTier || 'free',
+    language: 'en'
   });
 
   const handleRefreshRooms = () => {
@@ -824,6 +834,24 @@ const ChatHub = () => {
   return (
     <>
       <GlobalAppBar breadcrumbs={breadcrumbItems} />
+      
+      {/* Mercy Host Greeting */}
+      {mercyHost.greeting && (
+        <MercyHostGreeting
+          greeting={mercyHost.greeting}
+          show={mercyHost.showGreeting}
+          onDismiss={mercyHost.dismissGreeting}
+          onReopen={mercyHost.reopenGreeting}
+        />
+      )}
+      
+      {/* Color Mode Toast */}
+      {mercyHost.colorModeMessage && (
+        <MercyColorModeToast
+          message={mercyHost.colorModeMessage}
+          onDismiss={mercyHost.clearColorModeMessage}
+        />
+      )}
       
       {/* English Foundation Hero - only for EF rooms */}
       {roomId?.startsWith('english_foundation_') && (
