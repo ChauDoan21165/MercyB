@@ -25,6 +25,7 @@ interface HomepageSong {
 }
 
 const STORAGE_KEY = 'mercyBladeHomepageSongs';
+const MB_SONGS_STORAGE_KEY = 'mercyBladeSongs';
 
 const DEFAULT_SONGS: HomepageSong[] = [
   {
@@ -36,21 +37,30 @@ const DEFAULT_SONGS: HomepageSong[] = [
   }
 ];
 
+const DEFAULT_MB_SONGS: HomepageSong[] = [];
+
 export default function HomepageMusicController() {
   const [songs, setSongs] = useState<HomepageSong[]>([]);
-  const [deleteTarget, setDeleteTarget] = useState<HomepageSong | null>(null);
+  const [mbSongs, setMbSongs] = useState<HomepageSong[]>([]);
+  const [deleteTarget, setDeleteTarget] = useState<{ song: HomepageSong; type: 'homepage' | 'mb' } | null>(null);
   const [playingId, setPlayingId] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   
-  // New song form
+  // New song form (Homepage)
   const [newTitleEn, setNewTitleEn] = useState('');
   const [newTitleVi, setNewTitleVi] = useState('');
   const [newAudioSrc, setNewAudioSrc] = useState('');
+  
+  // New song form (Mercy Blade Songs)
+  const [mbTitleEn, setMbTitleEn] = useState('');
+  const [mbTitleVi, setMbTitleVi] = useState('');
+  const [mbAudioSrc, setMbAudioSrc] = useState('');
   
   const { toast } = useToast();
 
   // Load songs from localStorage
   useEffect(() => {
+    // Homepage songs
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       try {
@@ -62,12 +72,30 @@ export default function HomepageMusicController() {
       setSongs(DEFAULT_SONGS);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_SONGS));
     }
+    
+    // Mercy Blade songs
+    const mbStored = localStorage.getItem(MB_SONGS_STORAGE_KEY);
+    if (mbStored) {
+      try {
+        setMbSongs(JSON.parse(mbStored));
+      } catch {
+        setMbSongs(DEFAULT_MB_SONGS);
+      }
+    } else {
+      setMbSongs(DEFAULT_MB_SONGS);
+    }
   }, []);
 
-  // Save to localStorage
+  // Save homepage songs
   const saveSongs = (updatedSongs: HomepageSong[]) => {
     setSongs(updatedSongs);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedSongs));
+  };
+  
+  // Save Mercy Blade songs
+  const saveMbSongs = (updatedSongs: HomepageSong[]) => {
+    setMbSongs(updatedSongs);
+    localStorage.setItem(MB_SONGS_STORAGE_KEY, JSON.stringify(updatedSongs));
   };
 
   const handleAddSong = () => {
@@ -100,14 +128,50 @@ export default function HomepageMusicController() {
       description: `"${newSong.title_en}" has been added to the homepage.`
     });
   };
+  
+  const handleAddMbSong = () => {
+    if (!mbTitleEn.trim() || !mbAudioSrc.trim()) {
+      toast({
+        title: "Missing fields",
+        description: "Please fill in English title and audio path.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const newSong: HomepageSong = {
+      id: `mb_song_${Date.now()}`,
+      title_en: mbTitleEn.trim(),
+      title_vi: mbTitleVi.trim() || mbTitleEn.trim(),
+      audioSrc: mbAudioSrc.startsWith('/') ? mbAudioSrc : `/audio/${mbAudioSrc}`,
+      createdAt: new Date().toISOString()
+    };
+
+    const updated = [...mbSongs, newSong];
+    saveMbSongs(updated);
+
+    setMbTitleEn('');
+    setMbTitleVi('');
+    setMbAudioSrc('');
+
+    toast({
+      title: "Mercy Blade Song added",
+      description: `"${newSong.title_en}" has been added.`
+    });
+  };
 
   const handleDeleteConfirm = () => {
     if (!deleteTarget) return;
     
-    const updated = songs.filter(s => s.id !== deleteTarget.id);
-    saveSongs(updated);
+    if (deleteTarget.type === 'homepage') {
+      const updated = songs.filter(s => s.id !== deleteTarget.song.id);
+      saveSongs(updated);
+    } else {
+      const updated = mbSongs.filter(s => s.id !== deleteTarget.song.id);
+      saveMbSongs(updated);
+    }
     
-    if (playingId === deleteTarget.id) {
+    if (playingId === deleteTarget.song.id) {
       setPlayingId(null);
       if (audioRef.current) {
         audioRef.current.pause();
@@ -116,7 +180,7 @@ export default function HomepageMusicController() {
 
     toast({
       title: "Song deleted",
-      description: `"${deleteTarget.title_en}" has been removed.`
+      description: `"${deleteTarget.song.title_en}" has been removed.`
     });
     
     setDeleteTarget(null);
@@ -144,10 +208,55 @@ export default function HomepageMusicController() {
   const handleAudioEnded = () => {
     setPlayingId(null);
   };
+  
+  // Render song list component
+  const renderSongList = (songList: HomepageSong[], type: 'homepage' | 'mb') => (
+    songList.length === 0 ? (
+      <p className="text-gray-500 text-center py-8">
+        No songs added yet. Add your first song above.
+      </p>
+    ) : (
+      <div className="space-y-3">
+        {songList.map((song) => (
+          <div 
+            key={song.id}
+            className="flex items-center justify-between p-4 border border-black rounded bg-white"
+          >
+            <div className="flex items-center gap-3 flex-1">
+              <button
+                onClick={() => handlePlayPause(song)}
+                className="p-2 rounded-full bg-purple-100 hover:bg-purple-200 transition-colors"
+              >
+                {playingId === song.id ? (
+                  <Pause className="h-5 w-5 text-purple-700" />
+                ) : (
+                  <Play className="h-5 w-5 text-purple-700" />
+                )}
+              </button>
+              <div>
+                <p className="font-semibold text-black">{song.title_en}</p>
+                <p className="text-sm text-gray-600">{song.title_vi}</p>
+                <p className="text-xs text-gray-400 mt-1">{song.audioSrc}</p>
+              </div>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setDeleteTarget({ song, type })}
+              className="border-red-500 text-red-500 hover:bg-red-50"
+            >
+              <Trash2 className="h-4 w-4" />
+            </Button>
+          </div>
+        ))}
+      </div>
+    )
+  );
 
   return (
-    <div className="container mx-auto p-6 max-w-4xl">
-      <Card className="bg-white border-2 border-black mb-6">
+    <div className="container mx-auto p-6 max-w-4xl space-y-6">
+      {/* Homepage Music Controller */}
+      <Card className="bg-white border-2 border-black">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-black">
             <Music className="h-6 w-6" />
@@ -211,46 +320,74 @@ export default function HomepageMusicController() {
             <h3 className="font-bold text-black mb-4">
               Current Songs ({songs.length})
             </h3>
-            {songs.length === 0 ? (
-              <p className="text-gray-500 text-center py-8">
-                No songs added yet. Add your first song above.
-              </p>
-            ) : (
-              <div className="space-y-3">
-                {songs.map((song) => (
-                  <div 
-                    key={song.id}
-                    className="flex items-center justify-between p-4 border border-black rounded bg-white"
-                  >
-                    <div className="flex items-center gap-3 flex-1">
-                      <button
-                        onClick={() => handlePlayPause(song)}
-                        className="p-2 rounded-full bg-purple-100 hover:bg-purple-200 transition-colors"
-                      >
-                        {playingId === song.id ? (
-                          <Pause className="h-5 w-5 text-purple-700" />
-                        ) : (
-                          <Play className="h-5 w-5 text-purple-700" />
-                        )}
-                      </button>
-                      <div>
-                        <p className="font-semibold text-black">{song.title_en}</p>
-                        <p className="text-sm text-gray-600">{song.title_vi}</p>
-                        <p className="text-xs text-gray-400 mt-1">{song.audioSrc}</p>
-                      </div>
-                    </div>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => setDeleteTarget(song)}
-                      className="border-red-500 text-red-500 hover:bg-red-50"
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
-                  </div>
-                ))}
+            {renderSongList(songs, 'homepage')}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Mercy Blade Songs */}
+      <Card className="bg-white border-2 border-black">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-black">
+            <Music className="h-6 w-6 text-purple-600" />
+            Mercy Blade Songs
+          </CardTitle>
+          <CardDescription className="text-black">
+            Original songs created exclusively for Mercy Blade app.
+          </CardDescription>
+        </CardHeader>
+
+        <CardContent className="space-y-6">
+          {/* Add New MB Song Form */}
+          <div className="p-4 border border-purple-300 rounded bg-purple-50">
+            <h3 className="font-bold text-black mb-4 flex items-center gap-2">
+              <Upload className="h-4 w-4" />
+              Add Mercy Blade Song
+            </h3>
+            <div className="grid gap-4 md:grid-cols-2">
+              <div>
+                <Label className="text-black">English Title *</Label>
+                <Input
+                  value={mbTitleEn}
+                  onChange={(e) => setMbTitleEn(e.target.value)}
+                  placeholder="Healing Waters"
+                  className="border-purple-300"
+                />
               </div>
-            )}
+              <div>
+                <Label className="text-black">Vietnamese Title</Label>
+                <Input
+                  value={mbTitleVi}
+                  onChange={(e) => setMbTitleVi(e.target.value)}
+                  placeholder="Dòng Nước Chữa Lành"
+                  className="border-purple-300"
+                />
+              </div>
+              <div className="md:col-span-2">
+                <Label className="text-black">Audio Path *</Label>
+                <Input
+                  value={mbAudioSrc}
+                  onChange={(e) => setMbAudioSrc(e.target.value)}
+                  placeholder="/audio/mb_song_name.mp3"
+                  className="border-purple-300"
+                />
+              </div>
+            </div>
+            <Button 
+              onClick={handleAddMbSong}
+              className="mt-4 bg-purple-600 text-white hover:bg-purple-700"
+            >
+              <Upload className="h-4 w-4 mr-2" />
+              Add Song
+            </Button>
+          </div>
+
+          {/* MB Songs List */}
+          <div>
+            <h3 className="font-bold text-black mb-4">
+              Mercy Blade Songs ({mbSongs.length})
+            </h3>
+            {renderSongList(mbSongs, 'mb')}
           </div>
         </CardContent>
       </Card>
@@ -264,8 +401,8 @@ export default function HomepageMusicController() {
           <AlertDialogHeader>
             <AlertDialogTitle>Delete Song?</AlertDialogTitle>
             <AlertDialogDescription>
-              Are you sure you want to delete "{deleteTarget?.title_en}"? 
-              This will remove it from the homepage.
+              Are you sure you want to delete "{deleteTarget?.song.title_en}"? 
+              This action cannot be undone.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
