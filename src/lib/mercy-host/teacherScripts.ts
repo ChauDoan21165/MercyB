@@ -5,7 +5,9 @@
  * All lines ≤120 chars, warm tone, no "AI" language.
  */
 
-export type TeacherLevel = 'gentle' | 'normal' | 'intense';
+import type { TeacherLevel } from './memorySchema';
+
+export type { TeacherLevel };
 
 export type TeacherContext = 
   | 'ef_room_enter'

@@ -35,7 +35,7 @@ export * from './vipCeremonies';
 // Phase 7: Logs, Domain Detection, Teacher
 export * from './logs';
 export * from './domainMap';
-export * from './teacherScripts';
+export { getTeacherTip, getAllTipsForContext, validateTeacherTips, type TeacherContext, type TeacherTip } from './teacherScripts';
 
 // Re-export types
 export type { RitualIntensity } from './engine';
