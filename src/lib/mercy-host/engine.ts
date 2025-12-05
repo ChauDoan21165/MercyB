@@ -277,7 +277,10 @@ export function createMercyEngine(
     }, TEACHER_HINT_DURATION_MS);
   };
 
-  return {
+  // Store reference to onNewSession for use in init
+  let onNewSessionFn: ((context?: SessionContext) => void) | null = null;
+
+  const actions: MercyEngineActions = {
     init: (config) => {
       const savedEnabled = localStorage.getItem(STORAGE_KEYS.HOST_ENABLED);
       const savedLang = localStorage.getItem(STORAGE_KEYS.LANGUAGE) as 'en' | 'vi' | null;
@@ -303,9 +306,10 @@ export function createMercyEngine(
 
       resetIdleTimer();
 
-      // Call onNewSession on init
-      const actions = createMercyEngine(setState, getState);
-      actions.onNewSession({ tier, lastVisitISO: mem.lastVisitISO });
+      // Call onNewSession directly (no recursion)
+      if (onNewSessionFn) {
+        onNewSessionFn({ tier, lastVisitISO: mem.lastVisitISO });
+      }
     },
 
     onNewSession: (context) => {
@@ -748,6 +752,11 @@ export function createMercyEngine(
       }
     }
   };
+
+  // Wire up onNewSession reference for init() to call
+  onNewSessionFn = actions.onNewSession;
+
+  return actions;
 }
 
 /**
