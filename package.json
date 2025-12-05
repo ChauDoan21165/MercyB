@@ -10,7 +10,8 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "system:check": "tsx scripts/check-system-health.ts"
+    "system:check": "tsx scripts/check-system-health.ts",
+    "fix:rooms": "tsx scripts/fix-rooms.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
