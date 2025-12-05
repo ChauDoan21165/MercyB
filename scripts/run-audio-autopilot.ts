@@ -46,6 +46,11 @@ const isApply = args.includes('--apply');
 const withTTS = args.includes('--with-tts');
 const verbose = args.includes('--verbose');
 
+// Phase 4.6: Partial cycle modes
+const isFastMode = args.includes('--fast');
+const isDeepMode = args.includes('--deep');
+const cycleMode: 'fast' | 'normal' | 'deep' = isFastMode ? 'fast' : isDeepMode ? 'deep' : 'normal';
+
 // Extract --rooms pattern
 let roomFilter: string | undefined;
 const roomsIndex = args.indexOf('--rooms');
@@ -99,6 +104,17 @@ if (cycleLabelIndex !== -1 && args[cycleLabelIndex + 1]) {
 }
 
 const mode = isApply ? 'apply' : 'dry-run';
+
+// Phase 4.6: Adjust limits for cycle modes
+if (cycleMode === 'fast') {
+  // Fast mode: limited scope, no TTS, no semantic matching
+  maxRooms = Math.min(maxRooms, 50);
+  maxChanges = Math.min(maxChanges, 100);
+} else if (cycleMode === 'deep') {
+  // Deep mode: full scope, TTS enabled, full semantic matching
+  maxRooms = 999;
+  maxChanges = 2000;
+}
 
 // ============================================
 // Types
@@ -520,8 +536,10 @@ async function runAutopilot(): Promise<void> {
   
   log(`🚀 Starting Audio Autopilot v4.6`);
   log(`   Mode: ${mode}`);
+  log(`   Cycle Mode: ${cycleMode} (${cycleMode === 'fast' ? 'skip TTS/semantic' : cycleMode === 'deep' ? 'full cycle' : 'standard'})`);
   log(`   Governance Mode: ${governanceMode}`);
-  log(`   TTS: ${withTTS ? 'enabled' : 'disabled'}`);
+  log(`   TTS: ${cycleMode === 'fast' ? 'disabled (fast mode)' : withTTS ? 'enabled' : 'disabled'}`);
+  log(`   Max Rooms: ${maxRooms}, Max Changes: ${maxChanges}`);
   if (roomFilter) log(`   Filter: ${roomFilter}`);
   if (cycleLabel) log(`   Label: ${cycleLabel}`);
   log('');

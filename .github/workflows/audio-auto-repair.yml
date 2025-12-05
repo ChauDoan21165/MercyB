@@ -1,4 +1,4 @@
-name: Audio Auto-Repair v4.5
+name: Audio Auto-Repair v4.6
 
 on:
   push:
@@ -24,20 +24,37 @@ on:
         required: false
         default: 'false'
         type: boolean
+      cycle_mode:
+        description: 'Cycle mode: fast (skip TTS/semantic), deep (full), or normal'
+        required: false
+        default: 'normal'
+        type: choice
+        options:
+          - fast
+          - normal
+          - deep
+
+# ============================================
+# CONCURRENCY: Job-level mutex (Phase 4.6)
+# Only one autopilot run at a time per branch
+# ============================================
+concurrency:
+  group: audio-autopilot-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   # ============================================
-  # JOB 1: AUTOPILOT CYCLE (v4.5)
+  # JOB 1: AUTOPILOT CYCLE (v4.6)
   # ============================================
   run-autopilot-cycle:
     runs-on: ubuntu-latest
     outputs:
-      integrity_before: ${{ steps.autopilot.outputs.integrity_before }}
-      integrity_after: ${{ steps.autopilot.outputs.integrity_after }}
-      total_changes: ${{ steps.autopilot.outputs.total_changes }}
-      changes_applied: ${{ steps.autopilot.outputs.changes_applied }}
-      changes_blocked: ${{ steps.autopilot.outputs.changes_blocked }}
-      meets_threshold: ${{ steps.autopilot.outputs.meets_threshold }}
+      integrity_before: ${{ steps.read_artifacts.outputs.integrity_before }}
+      integrity_after: ${{ steps.read_artifacts.outputs.integrity_after }}
+      total_changes: ${{ steps.read_artifacts.outputs.total_changes }}
+      changes_applied: ${{ steps.read_artifacts.outputs.changes_applied }}
+      changes_blocked: ${{ steps.read_artifacts.outputs.changes_blocked }}
+      meets_threshold: ${{ steps.read_artifacts.outputs.meets_threshold }}
       
     steps:
       - name: Checkout
@@ -81,6 +98,7 @@ jobs:
           ROOM_FILTER="${{ github.event.inputs.rooms }}"
           APPLY_MODE="${{ github.event.inputs.apply_fixes }}"
           RUN_AUTOPILOT="${{ github.event.inputs.run_autopilot }}"
+          CYCLE_MODE="${{ github.event.inputs.cycle_mode || 'normal' }}"
           
           # Determine mode
           if [ "$APPLY_MODE" == "true" ] || [ "$RUN_AUTOPILOT" == "true" ]; then
@@ -91,42 +109,125 @@ jobs:
           
           # Build command
           CMD="npx tsx scripts/run-audio-autopilot.ts $MODE --verbose"
+          
+          # Add room filter
           if [ -n "$ROOM_FILTER" ]; then
             CMD="$CMD --rooms \"$ROOM_FILTER\""
           fi
           
+          # Add cycle mode (Phase 4.6)
+          if [ "$CYCLE_MODE" == "fast" ]; then
+            CMD="$CMD --fast"
+          elif [ "$CYCLE_MODE" == "deep" ]; then
+            CMD="$CMD --deep"
+          fi
+          
+          # Add cycle label for tracking
+          CMD="$CMD --cycle-label \"ci-run-${{ github.run_number }}\""
+          
           echo "Running: $CMD"
           eval $CMD 2>&1 | tee autopilot-output.log
+
+      # ============================================
+      # PHASE 3: VALIDATE ARTIFACTS (Phase 4.6)
+      # ============================================
+      
+      - name: Validate Artifacts
+        id: validate_artifacts
+        run: |
+          ARTIFACTS_VALID="true"
           
-          # Extract metrics from output
-          BEFORE=$(grep -oP "Before Integrity: \K[\d.]+" autopilot-output.log || echo "0")
-          AFTER=$(grep -oP "After Integrity: \K[\d.]+" autopilot-output.log || echo "0")
-          TOTAL=$(grep -oP "Total Changes: \K\d+" autopilot-output.log || echo "0")
-          APPLIED=$(grep -oP "Applied: \K\d+" autopilot-output.log || echo "0")
-          BLOCKED=$(grep -oP "Blocked: \K\d+" autopilot-output.log || echo "0")
+          # Check and validate each artifact file
+          for artifact in "autopilot-status.json" "autopilot-report.json" "autopilot-changeset.json"; do
+            FILE="public/audio/$artifact"
+            if [ ! -f "$FILE" ]; then
+              echo "⚠️ Missing artifact: $FILE"
+              ARTIFACTS_VALID="false"
+            else
+              # Validate JSON syntax
+              if ! jq empty "$FILE" 2>/dev/null; then
+                echo "❌ Invalid JSON in: $FILE"
+                ARTIFACTS_VALID="false"
+              else
+                echo "✅ Valid: $FILE"
+              fi
+            fi
+          done
           
-          echo "integrity_before=$BEFORE" >> $GITHUB_OUTPUT
-          echo "integrity_after=$AFTER" >> $GITHUB_OUTPUT
-          echo "total_changes=$TOTAL" >> $GITHUB_OUTPUT
-          echo "changes_applied=$APPLIED" >> $GITHUB_OUTPUT
-          echo "changes_blocked=$BLOCKED" >> $GITHUB_OUTPUT
+          echo "artifacts_valid=$ARTIFACTS_VALID" >> $GITHUB_OUTPUT
           
-          # Check threshold
-          AFTER_INT=${AFTER%.*}
-          if [ "$AFTER_INT" -ge 99 ]; then
-            echo "meets_threshold=true" >> $GITHUB_OUTPUT
-          else
-            echo "meets_threshold=false" >> $GITHUB_OUTPUT
+          if [ "$ARTIFACTS_VALID" == "false" ]; then
+            echo "⚠️ Some artifacts are missing or invalid"
           fi
 
       # ============================================
-      # PHASE 3: INTEGRITY GATE (≥99%)
+      # PHASE 4: READ METRICS FROM ARTIFACTS (Phase 4.6)
+      # ============================================
+      
+      - name: Read Metrics from Artifacts
+        id: read_artifacts
+        run: |
+          STATUS_FILE="public/audio/autopilot-status.json"
+          
+          if [ -f "$STATUS_FILE" ]; then
+            # Read metrics directly from artifact file (not console parsing)
+            BEFORE=$(jq -r '.beforeIntegrity // 0' "$STATUS_FILE")
+            AFTER=$(jq -r '.afterIntegrity // 0' "$STATUS_FILE")
+            APPLIED=$(jq -r '.changesApplied // 0' "$STATUS_FILE")
+            BLOCKED=$(jq -r '.changesBlocked // 0' "$STATUS_FILE")
+            ROOMS=$(jq -r '.roomsTouched // 0' "$STATUS_FILE")
+            
+            # Calculate total
+            TOTAL=$((APPLIED + BLOCKED))
+            
+            echo "integrity_before=$BEFORE" >> $GITHUB_OUTPUT
+            echo "integrity_after=$AFTER" >> $GITHUB_OUTPUT
+            echo "total_changes=$TOTAL" >> $GITHUB_OUTPUT
+            echo "changes_applied=$APPLIED" >> $GITHUB_OUTPUT
+            echo "changes_blocked=$BLOCKED" >> $GITHUB_OUTPUT
+            echo "rooms_touched=$ROOMS" >> $GITHUB_OUTPUT
+            
+            # Check threshold
+            AFTER_INT=${AFTER%.*}
+            if [ "$AFTER_INT" -ge 99 ]; then
+              echo "meets_threshold=true" >> $GITHUB_OUTPUT
+            else
+              echo "meets_threshold=false" >> $GITHUB_OUTPUT
+            fi
+            
+            echo "📊 Metrics loaded from artifacts:"
+            echo "   Integrity: $BEFORE% → $AFTER%"
+            echo "   Changes: $APPLIED applied, $BLOCKED blocked"
+          else
+            # Fallback to console parsing
+            echo "⚠️ Status artifact not found, falling back to log parsing"
+            BEFORE=$(grep -oP "Before Integrity: \K[\d.]+" autopilot-output.log || echo "0")
+            AFTER=$(grep -oP "After Integrity: \K[\d.]+" autopilot-output.log || echo "0")
+            APPLIED=$(grep -oP "Applied: \K\d+" autopilot-output.log || echo "0")
+            BLOCKED=$(grep -oP "Blocked: \K\d+" autopilot-output.log || echo "0")
+            
+            echo "integrity_before=$BEFORE" >> $GITHUB_OUTPUT
+            echo "integrity_after=$AFTER" >> $GITHUB_OUTPUT
+            echo "total_changes=$((APPLIED + BLOCKED))" >> $GITHUB_OUTPUT
+            echo "changes_applied=$APPLIED" >> $GITHUB_OUTPUT
+            echo "changes_blocked=$BLOCKED" >> $GITHUB_OUTPUT
+            
+            AFTER_INT=${AFTER%.*}
+            if [ "$AFTER_INT" -ge 99 ]; then
+              echo "meets_threshold=true" >> $GITHUB_OUTPUT
+            else
+              echo "meets_threshold=false" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      # ============================================
+      # PHASE 5: INTEGRITY GATE (≥99%)
       # ============================================
       
       - name: Check Integrity Gate
         id: integrity_gate
         run: |
-          AFTER="${{ steps.autopilot.outputs.integrity_after }}"
+          AFTER="${{ steps.read_artifacts.outputs.integrity_after }}"
           THRESHOLD=99
           
           # Handle decimal comparison
@@ -141,31 +242,40 @@ jobs:
           fi
 
       # ============================================
-      # PHASE 4: UPLOAD ARTIFACTS
+      # PHASE 6: UPLOAD ARTIFACTS
       # ============================================
       
       - name: Upload Autopilot Artifacts
         uses: actions/upload-artifact@v4
+        if: steps.validate_artifacts.outputs.artifacts_valid == 'true'
         with:
           name: autopilot-artifacts
           path: |
             public/audio/autopilot-status.json
             public/audio/autopilot-report.json
             public/audio/autopilot-changeset.json
+            public/audio/autopilot-history.json
           retention-days: 30
           if-no-files-found: warn
 
+      - name: Compress and Upload Logs (Phase 4.6)
+        run: |
+          # Compress logs to save space
+          gzip -k autopilot-output.log test-results.log 2>/dev/null || true
+          
       - name: Upload Logs
         uses: actions/upload-artifact@v4
         with:
           name: autopilot-logs
           path: |
+            autopilot-output.log.gz
             autopilot-output.log
+            test-results.log.gz
             test-results.log
           retention-days: 7
 
       # ============================================
-      # PHASE 5: CHECK FOR CHANGES (No Surprise Mode)
+      # PHASE 7: CHECK FOR CHANGES (No Surprise Mode)
       # ============================================
       
       - name: Check for Actual Changes
@@ -190,7 +300,7 @@ jobs:
           fi
 
       # ============================================
-      # PHASE 6: COMMIT (only if changes exist and apply mode)
+      # PHASE 8: COMMIT (only if changes exist and apply mode)
       # ============================================
       
       - name: Commit Changes
@@ -199,18 +309,19 @@ jobs:
           (github.event.inputs.apply_fixes == 'true' || github.event.inputs.run_autopilot == 'true')
         run: |
           git config --local user.email "automation@mercyblade.app"
-          git config --local user.name "Audio Autopilot v4.5"
+          git config --local user.name "Audio Autopilot v4.6"
           
           # Add all relevant files
           git add public/audio || true
           git add public/data || true
           
-          git commit -m "[skip ci] Audio Autopilot v4.5 - Governed Repairs" \
+          git commit -m "[skip ci] Audio Autopilot v4.6 - Governed Repairs" \
             -m "🤖 Full Autopilot with Governance Engine" \
             -m "" \
-            -m "Integrity: ${{ steps.autopilot.outputs.integrity_before }}% → ${{ steps.autopilot.outputs.integrity_after }}%" \
-            -m "Changes: ${{ steps.autopilot.outputs.total_changes }} total (${{ steps.autopilot.outputs.changes_applied }} applied, ${{ steps.autopilot.outputs.changes_blocked }} blocked)" \
-            -m "Gate: ${{ steps.integrity_gate.outputs.gate_passed && '✅ PASSED' || '⚠️ BELOW THRESHOLD' }}"
+            -m "Integrity: ${{ steps.read_artifacts.outputs.integrity_before }}% → ${{ steps.read_artifacts.outputs.integrity_after }}%" \
+            -m "Changes: ${{ steps.read_artifacts.outputs.total_changes }} total (${{ steps.read_artifacts.outputs.changes_applied }} applied, ${{ steps.read_artifacts.outputs.changes_blocked }} blocked)" \
+            -m "Gate: ${{ steps.integrity_gate.outputs.gate_passed == 'true' && '✅ PASSED' || '⚠️ BELOW THRESHOLD' }}" \
+            -m "Mode: ${{ github.event.inputs.cycle_mode || 'normal' }}"
           
           git push
 
@@ -220,15 +331,16 @@ jobs:
       
       - name: Generate Summary Report
         run: |
-          BEFORE=${{ steps.autopilot.outputs.integrity_before }}
-          AFTER=${{ steps.autopilot.outputs.integrity_after }}
-          TOTAL=${{ steps.autopilot.outputs.total_changes }}
-          APPLIED=${{ steps.autopilot.outputs.changes_applied }}
-          BLOCKED=${{ steps.autopilot.outputs.changes_blocked }}
+          BEFORE=${{ steps.read_artifacts.outputs.integrity_before }}
+          AFTER=${{ steps.read_artifacts.outputs.integrity_after }}
+          TOTAL=${{ steps.read_artifacts.outputs.total_changes }}
+          APPLIED=${{ steps.read_artifacts.outputs.changes_applied }}
+          BLOCKED=${{ steps.read_artifacts.outputs.changes_blocked }}
           GATE=${{ steps.integrity_gate.outputs.gate_passed }}
           CHANGES=${{ steps.changes.outputs.change_count || 0 }}
+          ARTIFACTS_VALID=${{ steps.validate_artifacts.outputs.artifacts_valid }}
           
-          echo "## 🤖 Audio Autopilot v4.5 Report" >> $GITHUB_STEP_SUMMARY
+          echo "## 🤖 Audio Autopilot v4.6 Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
           # Status Badge
@@ -236,6 +348,15 @@ jobs:
             echo "### ✅ PASSED - System Healthy (≥99%)" >> $GITHUB_STEP_SUMMARY
           else
             echo "### ⚠️ WARNING - Below Threshold (<99%)" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Artifact Validation (Phase 4.6)
+          echo "### 🔍 Artifact Validation" >> $GITHUB_STEP_SUMMARY
+          if [ "$ARTIFACTS_VALID" == "true" ]; then
+            echo "✅ All artifacts valid JSON" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ Some artifacts missing or invalid" >> $GITHUB_STEP_SUMMARY
           fi
           echo "" >> $GITHUB_STEP_SUMMARY
           
@@ -280,27 +401,39 @@ jobs:
           echo "| Files Changed | $CHANGES |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
+          # Cycle Mode (Phase 4.6)
+          echo "### ⚙️ Configuration" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Cycle Mode**: ${{ github.event.inputs.cycle_mode || 'normal' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Apply Mode**: ${{ github.event.inputs.apply_fixes || 'false' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Room Filter**: ${{ github.event.inputs.rooms || '(all)' }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
           # Artifacts
           echo "### 📦 Artifacts" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- \`autopilot-status.json\` - Persistent status store" >> $GITHUB_STEP_SUMMARY
           echo "- \`autopilot-report.json\` - Full run report" >> $GITHUB_STEP_SUMMARY
           echo "- \`autopilot-changeset.json\` - Categorized changes" >> $GITHUB_STEP_SUMMARY
+          echo "- \`autopilot-history.json\` - Last 20 cycles" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
           # Commands
           echo "### 💻 Local Commands" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
-          echo "# Dry-run autopilot locally" >> $GITHUB_STEP_SUMMARY
-          echo "npx tsx scripts/run-audio-autopilot.ts --dry-run --verbose" >> $GITHUB_STEP_SUMMARY
+          echo "# Quick scan (skip TTS + semantic)" >> $GITHUB_STEP_SUMMARY
+          echo "npx tsx scripts/run-audio-autopilot.ts --dry-run --fast" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "# Apply autopilot fixes" >> $GITHUB_STEP_SUMMARY
+          echo "# Full deep scan" >> $GITHUB_STEP_SUMMARY
+          echo "npx tsx scripts/run-audio-autopilot.ts --dry-run --deep" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "# Apply fixes" >> $GITHUB_STEP_SUMMARY
           echo "npx tsx scripts/run-audio-autopilot.ts --apply --verbose" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
 
       # ============================================
-      # FAIL IF INTEGRITY GATE NOT PASSED (optional enforcement)
+      # FAIL IF INTEGRITY GATE NOT PASSED (Phase 4.6)
       # ============================================
       
       - name: Enforce Integrity Gate
@@ -308,4 +441,15 @@ jobs:
         run: |
           echo "❌ Integrity gate failed: System integrity below 99%"
           echo "Review the autopilot report and address blocking issues"
+          exit 1
+
+      # ============================================
+      # FAIL IF ARTIFACTS INVALID (Phase 4.6)
+      # ============================================
+      
+      - name: Enforce Artifact Validity
+        if: steps.validate_artifacts.outputs.artifacts_valid == 'false' && github.event.inputs.apply_fixes == 'true'
+        run: |
+          echo "❌ Artifact validation failed: Some artifacts are missing or invalid JSON"
+          echo "Check the autopilot script output for errors"
           exit 1

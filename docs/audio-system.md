@@ -1,4 +1,4 @@
-# Mercy Blade Audio System Documentation v4.5
+# Mercy Blade Audio System Documentation v4.6
 
 **Chief Automation Engineer: Audio System Documentation**
 
@@ -6,17 +6,33 @@ Self-healing, governed audio automation system for Mercy Blade.
 
 ---
 
-## 🆕 What's New in v4.5 — The Unified Autopilot Loop
+## 🆕 What's New in v4.6 — Stability, Locking & Reliability Hardening
 
-Phase 4.5 delivers a **fully integrated, governed, CI-compatible autopilot system** with persistent artifacts and unified schemas.
+Phase 4.6 delivers **production-grade reliability hardening** with job-level mutex, artifact validation, partial cycle modes, and fail-safe operations.
 
-### Key Improvements
+### Key Improvements in v4.6
+
+1. **Job-Level Mutex**: Concurrency control prevents parallel autopilot runs on same branch
+2. **Artifact Validation**: All JSON artifacts validated before upload (syntax + schema)
+3. **Read from Artifacts**: CI reads metrics directly from JSON files, not console parsing
+4. **Partial Cycle Modes**:
+   - `--fast` — Skip TTS + semantic matching (quick validation)
+   - `--deep` — Full cycle with TTS + aggressive semantic matching
+   - `--normal` — Standard balanced operation (default)
+5. **Log Compression**: Logs gzipped before upload to save space
+6. **Enhanced CLI Flags**:
+   - `--cycle-label "<name>"` — Track cycles by name
+   - `--governance-mode <auto|assisted|strict>` — Control approval thresholds
+   - `--save-artifacts <dir>` — Custom artifact output directory
+
+### v4.5 Features (still active)
 
 1. **Single Orchestrator**: `runAutopilotCycle()` drives the complete 8-stage cycle
 2. **Persistent Artifacts**: Every run writes to disk:
    - `public/audio/autopilot-status.json` — Status store
    - `public/audio/autopilot-report.json` — Full report
    - `public/audio/autopilot-changeset.json` — Categorized changes
+   - `public/audio/autopilot-history.json` — Last 20 cycles
 3. **Unified ChangeSet Schema**: Single contract used everywhere
 4. **Governance Integration**: All changes evaluated before apply
 5. **Lifecycle Tracking**: Every change logged via `audioLifecycle.ts`
@@ -120,7 +136,7 @@ npx tsx scripts/run-audio-autopilot.ts --apply --verbose
 
 ---
 
-## Autopilot CLI Usage
+## Autopilot CLI Usage (v4.6)
 
 ```bash
 # Dry-run (preview changes, no modifications)
@@ -140,7 +156,33 @@ npx tsx scripts/run-audio-autopilot.ts --dry-run --verbose
 
 # Limit rooms processed
 npx tsx scripts/run-audio-autopilot.ts --apply --max-rooms 50
+
+# Phase 4.6: Quick validation (skip TTS + semantic)
+npx tsx scripts/run-audio-autopilot.ts --dry-run --fast
+
+# Phase 4.6: Full deep scan
+npx tsx scripts/run-audio-autopilot.ts --dry-run --deep
+
+# Phase 4.6: Custom governance mode
+npx tsx scripts/run-audio-autopilot.ts --apply --governance-mode assisted
+
+# Phase 4.6: Named cycle for tracking
+npx tsx scripts/run-audio-autopilot.ts --apply --cycle-label "nightly-fix"
+
+# Phase 4.6: Custom artifact output directory
+npx tsx scripts/run-audio-autopilot.ts --apply --save-artifacts "./artifacts"
+
+# Phase 4.6: Combined options
+npx tsx scripts/run-audio-autopilot.ts --apply --fast --max-changes 100 --verbose
 ```
+
+### Cycle Modes (v4.6)
+
+| Mode | Flag | TTS | Semantic | Max Rooms | Use Case |
+|------|------|-----|----------|-----------|----------|
+| Fast | `--fast` | ❌ | ❌ | 50 | Quick validation |
+| Normal | (default) | Optional | ✅ | 100 | Standard operation |
+| Deep | `--deep` | ✅ | ✅ | 999 | Thorough repair |
 
 ### CLI Output Artifacts
 
@@ -151,6 +193,7 @@ After each run, the CLI writes:
 | Status | `public/audio/autopilot-status.json` | Persistent state store |
 | Report | `public/audio/autopilot-report.json` | Full run details |
 | ChangeSet | `public/audio/autopilot-changeset.json` | Categorized changes |
+| History | `public/audio/autopilot-history.json` | Last 20 cycles (v4.6) |
 
 ---
 
@@ -181,14 +224,31 @@ interface AudioChange {
 
 ---
 
-## CI Workflow v4.5
+## CI Workflow v4.6
 
-The GitHub Actions workflow (`audio-auto-repair.yml`) runs the full autopilot cycle.
+The GitHub Actions workflow (`audio-auto-repair.yml`) runs the full autopilot cycle with v4.6 stability features.
+
+### v4.6 Stability Features
+
+1. **Job-Level Mutex**: Only one autopilot run at a time per branch
+2. **Artifact Validation**: JSON syntax check before upload
+3. **Read from Artifacts**: Metrics pulled from JSON files, not console parsing
+4. **Log Compression**: Logs gzipped before upload
+5. **Cycle Mode Support**: Fast/Normal/Deep modes via `cycle_mode` input
 
 ### Triggers
 
 - **Push to main**: Changes to `public/audio/**` or `public/data/**/*.json`
-- **Manual dispatch**: With inputs for `apply_fixes`, `rooms`, and `run_autopilot`
+- **Manual dispatch**: With inputs for `apply_fixes`, `rooms`, `run_autopilot`, `cycle_mode`
+
+### Workflow Inputs (v4.6)
+
+| Input | Type | Default | Description |
+|-------|------|---------|-------------|
+| `apply_fixes` | boolean | false | Apply changes or dry-run |
+| `rooms` | string | "" | Room filter pattern |
+| `run_autopilot` | boolean | false | Run full cycle |
+| `cycle_mode` | choice | normal | fast/normal/deep |
 
 ### Workflow Behavior
 
@@ -203,6 +263,7 @@ The GitHub Actions workflow (`audio-auto-repair.yml`) runs the full autopilot cy
 The workflow **fails** if:
 1. Integrity after < 99%
 2. Critical changes were blocked by governance
+3. Artifacts are missing or invalid JSON (v4.6)
 
 ### Artifacts Uploaded
 
