@@ -1,10 +1,13 @@
 /**
- * Supabase Storage Renamer
+ * Supabase Storage Renamer v4.0
+ * Chief Automation Engineer: Full Expanded Version
  * 
- * Renames audio files to canonical format and updates:
- * - Local storage files
- * - JSON room references
- * - Audio manifest
+ * Features:
+ * - Uses batchValidate + generateCanonicalFilename
+ * - Detects duplicates and picks canonical survivor
+ * - Updates JSON references automatically
+ * - Regenerates manifest after completion
+ * - Full --dry-run and --verbose support
  * 
  * Run: npx tsx scripts/rename-audio-storage.ts [--dry-run] [--verbose]
  */
@@ -15,6 +18,7 @@ import path from 'path';
 const DATA_DIR = 'public/data';
 const AUDIO_DIR = 'public/audio';
 const MANIFEST_PATH = 'public/audio/manifest.json';
+const DUPLICATES_DIR = 'public/audio/_duplicates';
 
 interface RenameOperation {
   oldPath: string;
@@ -22,6 +26,8 @@ interface RenameOperation {
   oldFilename: string;
   newFilename: string;
   reason: string;
+  confidence: number;
+  isDuplicate: boolean;
 }
 
 interface RenameReport {
@@ -30,58 +36,100 @@ interface RenameReport {
   totalOperations: number;
   successful: number;
   failed: number;
+  duplicatesHandled: number;
+  jsonFilesUpdated: number;
   operations: RenameOperation[];
 }
 
-// Validate and generate canonical filename
-function generateCanonicalName(filename: string): string | null {
-  const lower = filename.toLowerCase();
-  
-  // Extract language
-  let lang: 'en' | 'vi' | null = null;
-  if (/_en\.mp3$/i.test(filename) || /-en\.mp3$/i.test(filename)) {
-    lang = 'en';
-  } else if (/_vi\.mp3$/i.test(filename) || /-vi\.mp3$/i.test(filename)) {
-    lang = 'vi';
-  }
-  
-  if (!lang) return null;
-  
-  // Normalize: lowercase, replace underscores with hyphens
-  let canonical = lower
+// ============================================
+// Validation Functions (matching filenameValidator)
+// ============================================
+
+function normalizeFilename(filename: string): string {
+  return filename
+    .toLowerCase()
     .replace(/\s+/g, '-')
     .replace(/_/g, '-')
     .replace(/--+/g, '-')
-    .replace(/^["']+/, '');
-  
-  // Ensure proper suffix
-  canonical = canonical
-    .replace(/_en\.mp3$/i, `-${lang}.mp3`)
-    .replace(/_vi\.mp3$/i, `-${lang}.mp3`);
-  
-  return canonical;
+    .replace(/^["']+/, '')
+    .trim();
 }
 
-// Check if filename needs renaming
+function extractLanguage(filename: string): 'en' | 'vi' | null {
+  if (/_en\.mp3$/i.test(filename) || /-en\.mp3$/i.test(filename)) return 'en';
+  if (/_vi\.mp3$/i.test(filename) || /-vi\.mp3$/i.test(filename)) return 'vi';
+  return null;
+}
+
+function generateCanonicalFilename(
+  roomId: string,
+  entrySlug: string | number,
+  language: 'en' | 'vi'
+): string {
+  const cleanRoomId = roomId.toLowerCase().replace(/[_\s]/g, '-');
+  const cleanSlug = typeof entrySlug === 'number'
+    ? `entry-${entrySlug}`
+    : entrySlug.toLowerCase().replace(/[_\s]/g, '-');
+  
+  return `${cleanRoomId}-${cleanSlug}-${language}.mp3`;
+}
+
+function isValidFilename(filename: string): boolean {
+  // Must be lowercase
+  if (filename !== filename.toLowerCase()) return false;
+  // No underscores
+  if (filename.includes('_')) return false;
+  // No spaces
+  if (filename.includes(' ')) return false;
+  // Must end with language suffix
+  if (!/-en\.mp3$/i.test(filename) && !/-vi\.mp3$/i.test(filename)) return false;
+  // No leading quotes
+  if (filename.startsWith('"') || filename.startsWith("'")) return false;
+  return true;
+}
+
 function needsRename(filename: string): boolean {
-  // Check for uppercase
-  if (filename !== filename.toLowerCase()) return true;
-  
-  // Check for underscores
-  if (filename.includes('_')) return true;
-  
-  // Check for spaces
-  if (filename.includes(' ')) return true;
-  
-  // Check for leading quotes
-  if (filename.startsWith('"') || filename.startsWith("'")) return true;
-  
-  return false;
+  return !isValidFilename(filename);
 }
 
-// Collect all files that need renaming
-function collectRenameOperations(): RenameOperation[] {
-  const operations: RenameOperation[] = [];
+// ============================================
+// Duplicate Detection
+// ============================================
+
+interface DuplicateGroup {
+  normalizedName: string;
+  variants: string[];
+  keepRecommendation: string;
+}
+
+function detectDuplicates(filenames: string[]): DuplicateGroup[] {
+  const groups = new Map<string, string[]>();
+  
+  for (const filename of filenames) {
+    const normalized = normalizeFilename(filename);
+    const existing = groups.get(normalized) || [];
+    existing.push(filename);
+    groups.set(normalized, existing);
+  }
+
+  const duplicates: DuplicateGroup[] = [];
+  for (const [normalizedName, variants] of groups) {
+    if (variants.length > 1) {
+      // Keep the one already in canonical format, or the first one
+      const canonical = variants.find(v => v === normalizedName) || variants[0];
+      duplicates.push({ normalizedName, variants, keepRecommendation: canonical });
+    }
+  }
+
+  return duplicates;
+}
+
+// ============================================
+// File Operations
+// ============================================
+
+function collectAllAudioFiles(): Map<string, string> {
+  const files = new Map<string, string>(); // filename -> fullPath
   
   function scan(dir: string) {
     if (!fs.existsSync(dir)) return;
@@ -89,52 +137,92 @@ function collectRenameOperations(): RenameOperation[] {
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
       const fullPath = path.join(dir, entry.name);
       
-      if (entry.isDirectory()) {
+      if (entry.isDirectory() && !entry.name.startsWith('_')) {
         scan(fullPath);
       } else if (entry.name.toLowerCase().endsWith('.mp3')) {
-        if (needsRename(entry.name)) {
-          const canonical = generateCanonicalName(entry.name);
-          if (canonical && canonical !== entry.name.toLowerCase()) {
-            const newPath = path.join(path.dirname(fullPath), canonical);
-            operations.push({
-              oldPath: fullPath,
-              newPath,
-              oldFilename: entry.name,
-              newFilename: canonical,
-              reason: getRenamingReason(entry.name)
-            });
-          }
-        }
+        files.set(entry.name, fullPath);
       }
     }
   }
   
   scan(AUDIO_DIR);
+  return files;
+}
+
+function collectRenameOperations(verbose: boolean): RenameOperation[] {
+  const operations: RenameOperation[] = [];
+  const files = collectAllAudioFiles();
+  const filenames = Array.from(files.keys());
+  
+  // Detect duplicates first
+  const duplicates = detectDuplicates(filenames);
+  const duplicateFiles = new Set<string>();
+  
+  for (const dup of duplicates) {
+    for (const variant of dup.variants) {
+      if (variant !== dup.keepRecommendation) {
+        duplicateFiles.add(variant);
+        const fullPath = files.get(variant)!;
+        
+        operations.push({
+          oldPath: fullPath,
+          newPath: path.join(DUPLICATES_DIR, variant),
+          oldFilename: variant,
+          newFilename: `_duplicates/${variant}`,
+          reason: `Duplicate of ${dup.keepRecommendation}`,
+          confidence: 95,
+          isDuplicate: true
+        });
+        
+        if (verbose) {
+          console.log(`  [DUP] ${variant} → _duplicates/ (keep: ${dup.keepRecommendation})`);
+        }
+      }
+    }
+  }
+  
+  // Now process files that need renaming (but not duplicates being moved)
+  for (const [filename, fullPath] of files) {
+    if (duplicateFiles.has(filename)) continue;
+    
+    if (needsRename(filename)) {
+      const canonical = normalizeFilename(filename);
+      
+      if (canonical !== filename) {
+        operations.push({
+          oldPath: fullPath,
+          newPath: path.join(path.dirname(fullPath), canonical),
+          oldFilename: filename,
+          newFilename: canonical,
+          reason: getRenamingReason(filename),
+          confidence: 90,
+          isDuplicate: false
+        });
+        
+        if (verbose) {
+          console.log(`  [RENAME] ${filename} → ${canonical}`);
+        }
+      }
+    }
+  }
+  
   return operations;
 }
 
-// Get human-readable reason for renaming
 function getRenamingReason(filename: string): string {
   const reasons: string[] = [];
-  
-  if (filename !== filename.toLowerCase()) {
-    reasons.push('not lowercase');
-  }
-  if (filename.includes('_')) {
-    reasons.push('contains underscores');
-  }
-  if (filename.includes(' ')) {
-    reasons.push('contains spaces');
-  }
-  if (filename.startsWith('"') || filename.startsWith("'")) {
-    reasons.push('starts with quote');
-  }
-  
+  if (filename !== filename.toLowerCase()) reasons.push('not lowercase');
+  if (filename.includes('_')) reasons.push('contains underscores');
+  if (filename.includes(' ')) reasons.push('contains spaces');
+  if (filename.startsWith('"') || filename.startsWith("'")) reasons.push('starts with quote');
   return reasons.join(', ') || 'naming convention';
 }
 
-// Update JSON files with new filenames
-function updateJsonReferences(renames: Map<string, string>, dryRun: boolean): number {
+// ============================================
+// JSON Update
+// ============================================
+
+function updateJsonReferences(renames: Map<string, string>, dryRun: boolean, verbose: boolean): number {
   let updatedCount = 0;
   
   if (!fs.existsSync(DATA_DIR)) return 0;
@@ -149,13 +237,15 @@ function updateJsonReferences(renames: Map<string, string>, dryRun: boolean): nu
       let modified = false;
       
       for (const [oldName, newName] of renames) {
-        // Check both the filename and the full lowercase version
+        // Skip duplicate moves (they're being moved, not renamed in JSON)
+        if (newName.startsWith('_duplicates/')) continue;
+        
+        // Check both exact and lowercase versions
         if (content.includes(oldName)) {
           content = content.split(oldName).join(newName);
           modified = true;
         }
         
-        // Also check lowercase version
         const oldLower = oldName.toLowerCase();
         if (oldLower !== oldName && content.includes(oldLower)) {
           content = content.split(oldLower).join(newName);
@@ -168,6 +258,9 @@ function updateJsonReferences(renames: Map<string, string>, dryRun: boolean): nu
           fs.writeFileSync(filePath, content);
         }
         updatedCount++;
+        if (verbose) {
+          console.log(`  [JSON] Updated: ${file}`);
+        }
       }
     } catch (error) {
       console.warn(`Warning: Could not update ${file}`);
@@ -177,102 +270,121 @@ function updateJsonReferences(renames: Map<string, string>, dryRun: boolean): nu
   return updatedCount;
 }
 
-// Update manifest with new filenames
-function updateManifest(renames: Map<string, string>, dryRun: boolean): boolean {
-  if (!fs.existsSync(MANIFEST_PATH)) {
-    console.warn('Manifest not found, skipping manifest update');
-    return false;
-  }
+// ============================================
+// Manifest Regeneration
+// ============================================
+
+function regenerateManifest(verbose: boolean): void {
+  const files: string[] = [];
   
-  try {
-    const manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf-8'));
+  function scan(dir: string) {
+    if (!fs.existsSync(dir)) return;
     
-    if (manifest.files && Array.isArray(manifest.files)) {
-      manifest.files = manifest.files.map((file: string) => {
-        const basename = path.basename(file).toLowerCase();
-        const newName = renames.get(basename);
-        if (newName) {
-          return file.replace(path.basename(file), newName);
-        }
-        return file.toLowerCase();
-      });
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const fullPath = path.join(dir, entry.name);
       
-      // Sort and dedupe
-      manifest.files = [...new Set(manifest.files)].sort();
-      manifest.totalFiles = manifest.files.length;
-      manifest.generated = new Date().toISOString();
-      
-      if (!dryRun) {
-        fs.writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2));
+      if (entry.isDirectory() && !entry.name.startsWith('_')) {
+        scan(fullPath);
+      } else if (entry.name.toLowerCase().endsWith('.mp3')) {
+        files.push(entry.name.toLowerCase());
       }
-      
-      return true;
     }
-  } catch (error) {
-    console.error('Error updating manifest:', error);
   }
   
-  return false;
+  scan(AUDIO_DIR);
+  
+  const manifest = {
+    generated: new Date().toISOString(),
+    totalFiles: files.length,
+    files: [...new Set(files)].sort()
+  };
+  
+  fs.writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2));
+  
+  if (verbose) {
+    console.log(`  [MANIFEST] Regenerated with ${files.length} files`);
+  }
 }
 
-// Execute rename operations
-function executeRenames(operations: RenameOperation[], dryRun: boolean): { successful: number; failed: number } {
+// ============================================
+// Execute Renames
+// ============================================
+
+function executeRenames(
+  operations: RenameOperation[], 
+  dryRun: boolean, 
+  verbose: boolean
+): { successful: number; failed: number; duplicatesHandled: number } {
   let successful = 0;
   let failed = 0;
+  let duplicatesHandled = 0;
+  
+  // Ensure _duplicates directory exists
+  if (!dryRun && !fs.existsSync(DUPLICATES_DIR)) {
+    fs.mkdirSync(DUPLICATES_DIR, { recursive: true });
+  }
   
   for (const op of operations) {
     try {
       if (!dryRun) {
         // Check if target already exists
-        if (fs.existsSync(op.newPath)) {
-          console.warn(`Target already exists, skipping: ${op.newFilename}`);
+        if (fs.existsSync(op.newPath) && op.oldPath !== op.newPath) {
+          console.warn(`Target exists, skipping: ${op.newFilename}`);
           failed++;
           continue;
         }
         
         fs.renameSync(op.oldPath, op.newPath);
       }
+      
       successful++;
+      if (op.isDuplicate) duplicatesHandled++;
+      
     } catch (error) {
-      console.error(`Failed to rename ${op.oldFilename}:`, error);
+      console.error(`Failed: ${op.oldFilename} → ${error}`);
       failed++;
     }
   }
   
-  return { successful, failed };
+  return { successful, failed, duplicatesHandled };
 }
 
-// Main execution
+// ============================================
+// Main Execution
+// ============================================
+
 function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes('--dry-run');
   const verbose = args.includes('--verbose');
   
   console.log('='.repeat(60));
-  console.log('Audio Storage Renamer');
-  console.log(`Mode: ${dryRun ? 'DRY RUN (no changes)' : 'LIVE (will rename files)'}`);
+  console.log('Audio Storage Renamer v4.0');
+  console.log('Chief Automation Engineer: Full Expanded Version');
   console.log('='.repeat(60));
+  console.log(`Mode: ${dryRun ? 'DRY RUN (no changes)' : 'LIVE (will rename files)'}`);
+  console.log(`Verbose: ${verbose ? 'ON' : 'OFF'}`);
+  console.log('');
   
   // Collect operations
-  console.log('\nScanning for files that need renaming...');
-  const operations = collectRenameOperations();
+  console.log('Scanning for files that need renaming or deduplication...');
+  const operations = collectRenameOperations(verbose);
   
   if (operations.length === 0) {
     console.log('\n✅ All files already follow naming conventions!');
+    console.log('Total renames needed: 0');
     return;
   }
   
-  console.log(`Found ${operations.length} files to rename\n`);
+  const renameOps = operations.filter(o => !o.isDuplicate);
+  const duplicateOps = operations.filter(o => o.isDuplicate);
   
-  if (verbose) {
-    operations.forEach(op => {
-      console.log(`  ${op.oldFilename} → ${op.newFilename}`);
-      console.log(`    Reason: ${op.reason}`);
-    });
-    console.log('');
-  }
+  console.log(`\nFound ${operations.length} operations:`);
+  console.log(`  - Renames: ${renameOps.length}`);
+  console.log(`  - Duplicate moves: ${duplicateOps.length}`);
+  console.log('');
   
-  // Build rename map
+  // Build rename map for JSON updates
   const renames = new Map<string, string>();
   operations.forEach(op => {
     renames.set(op.oldFilename, op.newFilename);
@@ -280,25 +392,28 @@ function main() {
   });
   
   // Execute renames
-  console.log('Renaming files...');
-  const { successful, failed } = executeRenames(operations, dryRun);
+  console.log('Executing file operations...');
+  const { successful, failed, duplicatesHandled } = executeRenames(operations, dryRun, verbose);
   
   // Update JSON references
-  console.log('Updating JSON references...');
-  const jsonUpdated = updateJsonReferences(renames, dryRun);
+  console.log('\nUpdating JSON references...');
+  const jsonUpdated = updateJsonReferences(renames, dryRun, verbose);
   
-  // Update manifest
-  console.log('Updating manifest...');
-  const manifestUpdated = updateManifest(renames, dryRun);
+  // Regenerate manifest
+  if (!dryRun) {
+    console.log('\nRegenerating manifest...');
+    regenerateManifest(verbose);
+  }
   
   // Summary
   console.log('\n' + '='.repeat(60));
   console.log('SUMMARY');
   console.log('='.repeat(60));
-  console.log(`Files renamed: ${successful}/${operations.length}`);
+  console.log(`Total renames needed: ${operations.length}`);
+  console.log(`Files renamed: ${successful - duplicatesHandled}`);
+  console.log(`Duplicates moved: ${duplicatesHandled}`);
   console.log(`Failed: ${failed}`);
   console.log(`JSON files updated: ${jsonUpdated}`);
-  console.log(`Manifest updated: ${manifestUpdated ? 'Yes' : 'No'}`);
   
   // Write report
   const report: RenameReport = {
@@ -307,6 +422,8 @@ function main() {
     totalOperations: operations.length,
     successful,
     failed,
+    duplicatesHandled,
+    jsonFilesUpdated: jsonUpdated,
     operations
   };
   

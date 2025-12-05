@@ -1,11 +1,17 @@
 /**
  * Audio utilities barrel export
- * Chief Automation Engineer: Audio System v3.0 - Phase 3 Complete
+ * Chief Automation Engineer: Audio System v4.0 - Full Expanded Version
  * 
- * True Self-Healing Audio Intelligence
+ * Zero-Friction Audio System:
+ * ✓ No missing files
+ * ✓ No broken names
+ * ✓ No JSON mismatch
+ * ✓ No duplicates
+ * ✓ No manual renaming
+ * ✓ All errors repaired automatically
  */
 
-// Core validator
+// Core validator (v3.0 APIs)
 export {
   validateAudioFilename,
   validateWithRoomContext,
@@ -20,6 +26,7 @@ export {
   calculateRoomCompletenessScore,
   generateRoomFixReport,
   getCanonicalAudioPair,
+  findOrphanMatch,
   type ValidationResult,
   type RoomAwareValidationResult,
   type DuplicateGroup,
@@ -28,7 +35,7 @@ export {
   type FixReport,
 } from './filenameValidator';
 
-// Auto-repair engine
+// Auto-repair engine (v3.0)
 export {
   analyzeAndRepair,
   generateRepairBatch,
@@ -45,7 +52,7 @@ export {
   type RoomAudioData,
 } from './autoRepair';
 
-// Global Consistency Engine (Phase 3)
+// Global Consistency Engine (GCE)
 export {
   getCanonicalAudioForRoom,
   normalizeRoomId,
@@ -64,7 +71,7 @@ export {
   type GCEOperation,
 } from './globalConsistencyEngine';
 
-// Integrity Mapping (Phase 3)
+// Integrity Mapping
 export {
   buildRoomIntegrity,
   buildIntegrityMap,
@@ -78,7 +85,7 @@ export {
   type IntegritySummary,
 } from './integrityMap';
 
-// Semantic Matcher (Phase 3)
+// Semantic Matcher
 export {
   matchAudioToEntry,
   batchMatchOrphans,
@@ -86,7 +93,7 @@ export {
   type SemanticMatch,
 } from './semanticMatcher';
 
-// Phase 4 Types (preparation)
+// Phase 4 Types (Audio Generation)
 export type {
   AudioGenerationPlan,
   AudioGenerationBatch,
