@@ -9,3 +9,5 @@ export * from './tierScripts';
 export * from './voicePack';
 export * from './avatarStyles';
 export * from './types';
+export * from './engine';
+export * from './eventMap';
