@@ -1,10 +1,10 @@
 /**
- * Mercy Domain Map - Phase 7
+ * Mercy Domain Map - Phase 7 + Phase 8 (Martial)
  * 
  * Maps room IDs and domains to categories for behavior customization.
  */
 
-export type DomainCategory = 'english' | 'health' | 'strategy' | 'kids' | 'other';
+export type DomainCategory = 'english' | 'health' | 'strategy' | 'kids' | 'martial' | 'other';
 
 /**
  * English domain patterns
@@ -62,11 +62,70 @@ const KIDS_PATTERNS = [
 ];
 
 /**
+ * Martial arts domain patterns - Phase 8
+ */
+const MARTIAL_PATTERNS = [
+  /martial/i,
+  /combat/i,
+  /karate/i,
+  /judo/i,
+  /aikido/i,
+  /muay[_-]?thai/i,
+  /boxing/i,
+  /bjj/i,
+  /kung[_-]?fu/i,
+  /samurai/i,
+  /sword/i,
+  /blade/i,
+  /kendo/i,
+  /taekwondo/i,
+  /wushu/i
+];
+
+/**
+ * Martial arts tags
+ */
+const MARTIAL_TAGS = ['martial', 'martial_arts', 'combat_sport', 'dojo', 'fighting'];
+
+/**
+ * Check if room is in martial arts domain
+ */
+export function isMartialDomain(
+  roomId?: string | null,
+  roomDomain?: string | null,
+  tags?: string[]
+): boolean {
+  const id = roomId?.toLowerCase() || '';
+  const dom = roomDomain?.toLowerCase() || '';
+  
+  // Check domain string
+  if (dom.includes('martial') || dom.includes('combat') || dom.includes('dojo')) {
+    return true;
+  }
+  
+  // Check room ID patterns
+  for (const pattern of MARTIAL_PATTERNS) {
+    if (pattern.test(id)) return true;
+  }
+  
+  // Check tags
+  if (tags) {
+    for (const tag of tags) {
+      const lowerTag = tag.toLowerCase();
+      if (MARTIAL_TAGS.some(mt => lowerTag.includes(mt))) return true;
+    }
+  }
+  
+  return false;
+}
+
+/**
  * Get domain category from room ID and/or domain string
  */
 export function getDomainCategory(
   roomId?: string | null,
-  domain?: string | null
+  domain?: string | null,
+  tags?: string[]
 ): DomainCategory {
   const id = roomId?.toLowerCase() || '';
   const dom = domain?.toLowerCase() || '';
@@ -83,6 +142,11 @@ export function getDomainCategory(
   }
   if (dom.includes('kids') || dom.includes('children')) {
     return 'kids';
+  }
+  
+  // Check martial domain (before 'other')
+  if (isMartialDomain(roomId, domain, tags)) {
+    return 'martial';
   }
 
   // Check room ID patterns
@@ -151,6 +215,8 @@ export function getDomainGreetingStyle(category: DomainCategory): {
       return { tone: 'confident, focused', maxLength: 140 };
     case 'kids':
       return { tone: 'playful, simple, warm', maxLength: 80 };
+    case 'martial':
+      return { tone: 'calm, disciplined, focused', maxLength: 140 };
     default:
       return { tone: 'warm, friendly', maxLength: 140 };
   }

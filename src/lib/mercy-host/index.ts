@@ -1,6 +1,7 @@
 /**
  * Mercy Host Module - Public API
  * Phase 7: User Logs, English Teacher Mode
+ * Phase 8: Martial Coach
  */
 
 // Core
@@ -34,8 +35,11 @@ export * from './vipCeremonies';
 
 // Phase 7: Logs, Domain Detection, Teacher
 export * from './logs';
-export * from './domainMap';
+export { getDomainCategory, isEnglishDomain, isHealthDomain, isKidsDomain, isMartialDomain, getDomainGreetingStyle, type DomainCategory } from './domainMap';
 export { getTeacherTip, getAllTipsForContext, validateTeacherTips, type TeacherContext, type TeacherTip } from './teacherScripts';
+
+// Phase 8: Martial Coach
+export { getMartialCoachTip, validateMartialCoachTips, getAllMartialTips, inferMartialDiscipline, type MartialCoachLevel, type MartialContext, type MartialCoachTip } from './martialCoachScripts';
 
 // Re-export types
 export type { RitualIntensity } from './engine';
