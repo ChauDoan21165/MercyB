@@ -3,9 +3,10 @@
  * 
  * Context wrapper for the entire app.
  * Provides Mercy engine state and actions globally.
+ * Phase 6: Added heartbeat cleanup and proper lifecycle.
  */
 
-import React, { createContext, useContext, useState, useCallback, useEffect, useMemo } from 'react';
+import React, { createContext, useContext, useState, useCallback, useEffect, useMemo, useRef } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { 
   createMercyEngine, 
@@ -14,6 +15,7 @@ import {
   type MercyEngine
 } from '@/lib/mercy-host/engine';
 import type { MercyEventType } from '@/lib/mercy-host/eventMap';
+import { mercyHeartbeat } from '@/lib/mercy-host/heartbeat';
 
 const MercyHostContext = createContext<MercyEngine | null>(null);
 
@@ -31,6 +33,9 @@ export function MercyHostProvider({
     language: defaultLanguage
   });
   
+  // Track if heartbeat is started to avoid duplicates
+  const heartbeatStartedRef = useRef(false);
+  
   // Create stable getter
   const getState = useCallback(() => state, [state]);
   
@@ -44,6 +49,64 @@ export function MercyHostProvider({
     () => createMercyEngine(setStateFn, getState),
     [setStateFn, getState]
   );
+
+  // Combine state and actions early for heartbeat
+  const engine: MercyEngine = useMemo(() => ({
+    ...state,
+    ...actions
+  }), [state, actions]);
+
+  // Start heartbeat only once, stop on unmount
+  useEffect(() => {
+    // Only start if not already started and host is enabled
+    if (!heartbeatStartedRef.current && state.isEnabled && !state.silenceMode) {
+      mercyHeartbeat.start(
+        getState,
+        () => {
+          // Auto-repair: reset to safe state
+          setState(s => ({
+            ...s,
+            currentAnimation: 'halo',
+            presenceState: 'active',
+            isBubbleVisible: false,
+            isRitualBannerVisible: false
+          }));
+        }
+      );
+      heartbeatStartedRef.current = true;
+    }
+    
+    return () => {
+      if (heartbeatStartedRef.current) {
+        mercyHeartbeat.stop();
+        heartbeatStartedRef.current = false;
+      }
+    };
+  }, [state.isEnabled, state.silenceMode, getState]);
+
+  // Stop heartbeat when silence mode is on or host is disabled
+  useEffect(() => {
+    if (state.silenceMode || !state.isEnabled) {
+      if (heartbeatStartedRef.current) {
+        mercyHeartbeat.stop();
+        heartbeatStartedRef.current = false;
+      }
+    } else if (!heartbeatStartedRef.current && state.isEnabled) {
+      mercyHeartbeat.start(
+        getState,
+        () => {
+          setState(s => ({
+            ...s,
+            currentAnimation: 'halo',
+            presenceState: 'active',
+            isBubbleVisible: false,
+            isRitualBannerVisible: false
+          }));
+        }
+      );
+      heartbeatStartedRef.current = true;
+    }
+  }, [state.silenceMode, state.isEnabled, getState]);
   
   // Fetch user profile on mount
   useEffect(() => {
@@ -85,12 +148,6 @@ export function MercyHostProvider({
   useEffect(() => {
     actions.init({ language: defaultLanguage });
   }, [actions, defaultLanguage]);
-  
-  // Combine state and actions
-  const engine: MercyEngine = useMemo(() => ({
-    ...state,
-    ...actions
-  }), [state, actions]);
   
   return (
     <MercyHostContext.Provider value={engine}>
@@ -137,7 +194,18 @@ export function useMercyHostRoom(roomId: string, roomTitle: string, tier?: strin
 export function useMercyEvent() {
   const mercy = useMercyHostContext();
   
-  return useCallback((event: MercyEventType) => {
-    mercy.onEvent(event);
+  return useCallback((event: MercyEventType, payload?: Record<string, unknown>) => {
+    mercy.onEvent(event, payload);
+  }, [mercy]);
+}
+
+/**
+ * Hook for triggering room complete
+ */
+export function useMercyRoomComplete() {
+  const mercy = useMercyHostContext();
+  
+  return useCallback((roomId: string, roomTags?: string[], roomDomain?: string) => {
+    mercy.onRoomComplete(roomId, roomTags, roomDomain);
   }, [mercy]);
 }

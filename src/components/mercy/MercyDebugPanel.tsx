@@ -1,15 +1,17 @@
 /**
  * Mercy Debug Panel (Admin Only)
  * 
- * Shows engine state, loaded tiers, voices, and signals.
+ * Shows engine state, loaded tiers, voices, signals, and rituals.
+ * Phase 6: Added streak/ritual info and simulation buttons.
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { useMercyHostContext } from './MercyHostProvider';
 import { runFullValidation } from '@/lib/mercy-host/validation';
 import { hostSignal } from '@/lib/mercy-host/hostSignal';
 import { memory } from '@/lib/mercy-host/memory';
+import { getRitualForEvent } from '@/lib/mercy-host/rituals';
 import { Button } from '@/components/ui/button';
 import { 
   Bug, 
@@ -21,23 +23,64 @@ import {
   Sparkles,
   User,
   Globe,
-  Palette
+  Palette,
+  Flame,
+  Calendar,
+  Star,
+  VolumeX
 } from 'lucide-react';
 
 interface MercyDebugPanelProps {
   isAdmin?: boolean;
 }
 
+// Gate: only render in development or for explicit admin
+const isDev = typeof window !== 'undefined' && 
+  (window.location.hostname === 'localhost' || 
+   window.location.hostname.includes('preview'));
+
 export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<'state' | 'validation' | 'signals' | 'memory'>('state');
+  const [activeTab, setActiveTab] = useState<'state' | 'validation' | 'signals' | 'memory' | 'rituals'>('state');
   const mercy = useMercyHostContext();
 
-  if (!isAdmin) return null;
+  // Admin gate: only show in dev mode or with explicit admin flag
+  if (!isAdmin && !isDev) return null;
 
   const validation = runFullValidation(mercy);
   const signalHistory = hostSignal.getHistory();
   const memoryData = memory.get();
+
+  // Simulate streak milestone
+  const simulateStreakMilestone = () => {
+    const ritual = getRitualForEvent('streak_milestone', {
+      tier: mercy.currentTier,
+      streakDays: 7
+    });
+    if (ritual) {
+      // Trigger via signal
+      hostSignal.emit({
+        type: 'ritual_trigger',
+        source: 'debug_panel',
+        payload: { ritual }
+      });
+    }
+  };
+
+  // Simulate comeback ritual
+  const simulateComebackRitual = () => {
+    const ritual = getRitualForEvent('comeback_after_gap', {
+      tier: mercy.currentTier,
+      daysSinceLastVisit: 14
+    });
+    if (ritual) {
+      hostSignal.emit({
+        type: 'ritual_trigger',
+        source: 'debug_panel',
+        payload: { ritual }
+      });
+    }
+  };
 
   return (
     <>
@@ -73,13 +116,13 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
           </div>
 
           {/* Tabs */}
-          <div className="flex border-b border-border">
-            {(['state', 'validation', 'signals', 'memory'] as const).map(tab => (
+          <div className="flex border-b border-border overflow-x-auto">
+            {(['state', 'validation', 'signals', 'memory', 'rituals'] as const).map(tab => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={cn(
-                  "flex-1 px-2 py-1.5 text-xs font-medium transition-colors",
+                  "flex-1 px-2 py-1.5 text-xs font-medium transition-colors whitespace-nowrap",
                   activeTab === tab 
                     ? "bg-accent text-accent-foreground" 
                     : "text-muted-foreground hover:text-foreground"
@@ -103,6 +146,16 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
                 <StateRow label="Enabled" value={mercy.isEnabled ? 'Yes' : 'No'} />
                 <StateRow label="Animation" value={mercy.currentAnimation || 'None'} />
                 <StateRow label="Bubble" value={mercy.isBubbleVisible ? 'Visible' : 'Hidden'} />
+                <StateRow 
+                  icon={mercy.silenceMode ? <VolumeX /> : <Volume2 />} 
+                  label="Silence Mode" 
+                  value={mercy.silenceMode ? 'On' : 'Off'} 
+                />
+                <StateRow 
+                  icon={<Sparkles />} 
+                  label="Ritual Intensity" 
+                  value={mercy.ritualIntensity} 
+                />
                 
                 <div className="pt-2 flex gap-2">
                   <Button 
@@ -178,6 +231,10 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
                 <StateRow label="Onboarded" value={memoryData.hasOnboarded ? 'Yes' : 'No'} />
                 <StateRow label="Last Room" value={memoryData.lastRoom || 'None'} />
                 <StateRow label="Greeted Rooms" value={String(memoryData.greetedRooms.length)} />
+                <StateRow 
+                  label="Coaching Level" 
+                  value={memoryData.emotionCoachingLevel || 'full'} 
+                />
                 
                 <Button 
                   size="sm" 
@@ -191,6 +248,93 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
                   <RefreshCw className="h-3 w-3 mr-1" />
                   Clear Memory
                 </Button>
+              </div>
+            )}
+
+            {/* Phase 6: Rituals Tab */}
+            {activeTab === 'rituals' && (
+              <div className="space-y-3">
+                {/* Streak Info */}
+                <div className="p-2 bg-muted/50 rounded">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Flame className="h-4 w-4 text-orange-500" />
+                    <span className="font-medium">Visit Streak</span>
+                  </div>
+                  <StateRow label="Current Streak" value={`${mercy.visitStreak} days`} />
+                  <StateRow 
+                    label="Longest Streak" 
+                    value={`${(memoryData as any).longestStreak || 0} days`} 
+                  />
+                </div>
+
+                {/* Last Visit */}
+                <div className="p-2 bg-muted/50 rounded">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Calendar className="h-4 w-4 text-blue-500" />
+                    <span className="font-medium">Visit Info</span>
+                  </div>
+                  <StateRow 
+                    label="Last Visit" 
+                    value={mercy.lastVisitISO 
+                      ? new Date(mercy.lastVisitISO).toLocaleDateString() 
+                      : 'Never'
+                    } 
+                  />
+                </div>
+
+                {/* Last Ritual */}
+                <div className="p-2 bg-muted/50 rounded">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Sparkles className="h-4 w-4 text-primary" />
+                    <span className="font-medium">Last Ritual</span>
+                  </div>
+                  <StateRow 
+                    label="Ritual ID" 
+                    value={mercy.lastRitualId || 'None'} 
+                  />
+                  <StateRow 
+                    label="Banner Visible" 
+                    value={mercy.isRitualBannerVisible ? 'Yes' : 'No'} 
+                  />
+                </div>
+
+                {/* Last VIP Ceremony */}
+                <div className="p-2 bg-muted/50 rounded">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Star className="h-4 w-4 text-yellow-500" />
+                    <span className="font-medium">VIP Ceremony</span>
+                  </div>
+                  <StateRow 
+                    label="Last Ceremony Tier" 
+                    value={mercy.lastCeremonyTier || 'None'} 
+                  />
+                  <StateRow 
+                    label="Tiers Celebrated" 
+                    value={String(((memoryData as any).tiersCelebrated || []).length)} 
+                  />
+                </div>
+
+                {/* Simulation Buttons */}
+                <div className="pt-2 space-y-2">
+                  <Button 
+                    size="sm" 
+                    variant="outline" 
+                    onClick={simulateStreakMilestone}
+                    className="text-xs h-7 w-full"
+                  >
+                    <Flame className="h-3 w-3 mr-1" />
+                    Simulate 7-day Streak
+                  </Button>
+                  <Button 
+                    size="sm" 
+                    variant="outline" 
+                    onClick={simulateComebackRitual}
+                    className="text-xs h-7 w-full"
+                  >
+                    <Calendar className="h-3 w-3 mr-1" />
+                    Simulate Comeback Ritual
+                  </Button>
+                </div>
               </div>
             )}
           </div>

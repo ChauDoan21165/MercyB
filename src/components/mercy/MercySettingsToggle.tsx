@@ -2,6 +2,7 @@
  * Mercy Host Settings Toggle
  * 
  * Toggle for enabling/disabling host in settings.
+ * Phase 6: Added ritual intensity slider and silence mode.
  */
 
 import { Switch } from '@/components/ui/switch';
@@ -11,13 +12,52 @@ import { useMercyHostContext } from './MercyHostProvider';
 import { MercyAvatar } from './MercyAvatar';
 import { AVATAR_STYLES, type MercyAvatarStyle } from '@/lib/mercy-host/avatarStyles';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Slider } from '@/components/ui/slider';
+import { VolumeX, Volume2, Sparkles } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import type { RitualIntensity } from '@/lib/mercy-host/engine';
 
 interface MercySettingsToggleProps {
   language?: 'en' | 'vi';
 }
 
+const RITUAL_INTENSITY_LABELS: Record<RitualIntensity, { en: string; vi: string }> = {
+  off: { en: 'Off', vi: 'Tắt' },
+  minimal: { en: 'Light', vi: 'Nhẹ' },
+  normal: { en: 'Full', vi: 'Đầy đủ' }
+};
+
+const RITUAL_INTENSITY_DESCRIPTIONS: Record<RitualIntensity, { en: string; vi: string }> = {
+  off: { 
+    en: 'No rituals or ceremonies', 
+    vi: 'Không có nghi lễ hay lễ kỷ niệm' 
+  },
+  minimal: { 
+    en: 'Only streak milestones and gentle rituals', 
+    vi: 'Chỉ cột mốc streak và nghi lễ nhẹ nhàng' 
+  },
+  normal: { 
+    en: 'All rituals and VIP ceremonies enabled', 
+    vi: 'Tất cả nghi lễ và lễ VIP được bật' 
+  }
+};
+
 export function MercySettingsToggle({ language = 'en' }: MercySettingsToggleProps) {
   const mercy = useMercyHostContext();
+  
+  const intensityToSlider = (intensity: RitualIntensity): number => {
+    switch (intensity) {
+      case 'off': return 0;
+      case 'minimal': return 50;
+      case 'normal': return 100;
+    }
+  };
+
+  const sliderToIntensity = (value: number): RitualIntensity => {
+    if (value <= 25) return 'off';
+    if (value <= 75) return 'minimal';
+    return 'normal';
+  };
   
   return (
     <Card>
@@ -44,7 +84,7 @@ export function MercySettingsToggle({ language = 'en' }: MercySettingsToggleProp
       </CardHeader>
       
       {mercy.isEnabled && (
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-6">
           {/* Avatar Style Selection */}
           <div className="space-y-2">
             <Label>
@@ -85,6 +125,56 @@ export function MercySettingsToggle({ language = 'en' }: MercySettingsToggleProp
                 <Label htmlFor="lang-vi" className="cursor-pointer">Tiếng Việt</Label>
               </div>
             </RadioGroup>
+          </div>
+
+          {/* Ritual Intensity Slider - Phase 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <Label className="flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-primary" />
+                {language === 'vi' ? 'Cường độ nghi lễ' : 'Ritual Intensity'}
+              </Label>
+              <span className="text-sm font-medium text-muted-foreground">
+                {RITUAL_INTENSITY_LABELS[mercy.ritualIntensity][language]}
+              </span>
+            </div>
+            <Slider
+              value={[intensityToSlider(mercy.ritualIntensity)]}
+              onValueChange={([value]) => mercy.setRitualIntensity(sliderToIntensity(value))}
+              max={100}
+              step={50}
+              className="w-full"
+            />
+            <p className="text-xs text-muted-foreground">
+              {RITUAL_INTENSITY_DESCRIPTIONS[mercy.ritualIntensity][language]}
+            </p>
+          </div>
+
+          {/* Silence Mode Toggle - Phase 6 */}
+          <div className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
+            <div className="flex items-center gap-3">
+              {mercy.silenceMode ? (
+                <VolumeX className="h-4 w-4 text-muted-foreground" />
+              ) : (
+                <Volume2 className="h-4 w-4 text-primary" />
+              )}
+              <div>
+                <Label className="cursor-pointer">
+                  {language === 'vi' ? 'Chế độ im lặng' : 'Silence Mode'}
+                </Label>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  {language === 'vi' 
+                    ? 'Tắt giọng nói và hoạt ảnh lớn'
+                    : 'Mutes voice and large animations'
+                  }
+                </p>
+              </div>
+            </div>
+            <Switch
+              checked={mercy.silenceMode}
+              onCheckedChange={mercy.setSilenceMode}
+              aria-label={language === 'vi' ? 'Bật/tắt chế độ im lặng' : 'Toggle silence mode'}
+            />
           </div>
           
           {/* Keyboard shortcut hint */}
