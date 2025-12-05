@@ -14,9 +14,9 @@ import { MercyAvatar } from './MercyAvatar';
 import { AVATAR_STYLES, type MercyAvatarStyle } from '@/lib/mercy-host/avatarStyles';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Slider } from '@/components/ui/slider';
-import { VolumeX, Volume2, Sparkles, GraduationCap } from 'lucide-react';
+import { VolumeX, Volume2, Sparkles, GraduationCap, Sword } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import type { RitualIntensity, TeacherLevel } from '@/lib/mercy-host/engine';
+import type { RitualIntensity, TeacherLevel, MartialCoachLevel } from '@/lib/mercy-host/engine';
 
 interface MercySettingsToggleProps {
   language?: 'en' | 'vi';
@@ -61,6 +61,32 @@ const TEACHER_LEVEL_DESCRIPTIONS: Record<TeacherLevel, { en: string; vi: string 
   intense: { 
     en: 'Active coaching and practice reminders', 
     vi: 'Huấn luyện tích cực và nhắc nhở luyện tập' 
+  }
+};
+
+const MARTIAL_LEVEL_LABELS: Record<MartialCoachLevel, { en: string; vi: string }> = {
+  off: { en: 'Off', vi: 'Tắt' },
+  gentle: { en: 'Gentle', vi: 'Nhẹ nhàng' },
+  focused: { en: 'Focused', vi: 'Tập trung' },
+  dojo: { en: 'Dojo Mode', vi: 'Chế độ Dojo' }
+};
+
+const MARTIAL_LEVEL_DESCRIPTIONS: Record<MartialCoachLevel, { en: string; vi: string }> = {
+  off: { 
+    en: 'No martial coaching', 
+    vi: 'Không huấn luyện võ thuật' 
+  },
+  gentle: { 
+    en: 'Quiet mindset tips', 
+    vi: 'Gợi ý tư duy nhẹ nhàng' 
+  },
+  focused: { 
+    en: 'Discipline and focus reminders', 
+    vi: 'Nhắc nhở kỷ luật và tập trung' 
+  },
+  dojo: { 
+    en: 'Full warrior mindset training', 
+    vi: 'Huấn luyện tư duy chiến binh' 
   }
 };
 
@@ -194,6 +220,31 @@ export function MercySettingsToggle({ language = 'en' }: MercySettingsToggleProp
             </RadioGroup>
             <p className="text-xs text-muted-foreground">
               {TEACHER_LEVEL_DESCRIPTIONS[mercy.teacherLevel][language]}
+            </p>
+          </div>
+
+          {/* Martial Coach Level - Phase 8 */}
+          <div className="space-y-3">
+            <Label className="flex items-center gap-2">
+              <Sword className="h-4 w-4 text-amber-600" />
+              {language === 'vi' ? 'Huấn luyện Võ Thuật' : 'Martial Coach Level'}
+            </Label>
+            <RadioGroup
+              value={mercy.martialCoachLevel}
+              onValueChange={(value) => mercy.setMartialCoachLevel(value as MartialCoachLevel)}
+              className="flex flex-wrap gap-3"
+            >
+              {(['off', 'gentle', 'focused', 'dojo'] as MartialCoachLevel[]).map((level) => (
+                <div key={level} className="flex items-center space-x-2">
+                  <RadioGroupItem value={level} id={`martial-${level}`} />
+                  <Label htmlFor={`martial-${level}`} className="cursor-pointer">
+                    {MARTIAL_LEVEL_LABELS[level][language]}
+                  </Label>
+                </div>
+              ))}
+            </RadioGroup>
+            <p className="text-xs text-muted-foreground">
+              {MARTIAL_LEVEL_DESCRIPTIONS[mercy.martialCoachLevel][language]}
             </p>
           </div>
 
