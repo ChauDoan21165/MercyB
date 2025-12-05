@@ -298,4 +298,3 @@ export const memory = {
   markGrowthModeSeen,
   hasSeenGrowthModeWelcome
 };
-};
