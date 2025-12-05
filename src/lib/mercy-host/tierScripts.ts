@@ -292,12 +292,63 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
   }
 };
 
+// Fallback chain: VIP tier → lower tier → free
+const TIER_FALLBACK_CHAIN: Record<string, string[]> = {
+  vip9: ['vip8', 'vip7', 'vip6', 'free'],
+  vip8: ['vip7', 'vip6', 'free'],
+  vip7: ['vip6', 'vip5', 'free'],
+  vip6: ['vip5', 'vip4', 'free'],
+  vip5: ['vip4', 'vip3', 'free'],
+  vip4: ['vip3', 'vip2', 'free'],
+  vip3: ['vip2', 'vip1', 'free'],
+  vip2: ['vip1', 'free'],
+  vip1: ['free'],
+  free: []
+};
+
+// Script weights (tone intensity 0-1)
+export const TIER_WEIGHTS: Record<string, number> = {
+  free: 0.3,
+  vip1: 0.4,
+  vip2: 0.5,
+  vip3: 0.6,
+  vip4: 0.7,
+  vip5: 0.75,
+  vip6: 0.8,
+  vip7: 0.85,
+  vip8: 0.9,
+  vip9: 1.0
+};
+
 /**
- * Get tier script by tier ID
+ * Get tier script by tier ID with fallback chain
  */
 export function getTierScript(tier: string): TierScript {
   const normalizedTier = tier.toLowerCase().replace('-', '');
-  return TIER_SCRIPTS[normalizedTier] || TIER_SCRIPTS.free;
+  
+  // Direct match
+  if (TIER_SCRIPTS[normalizedTier]) {
+    return TIER_SCRIPTS[normalizedTier];
+  }
+  
+  // Try fallback chain
+  const fallbacks = TIER_FALLBACK_CHAIN[normalizedTier] || [];
+  for (const fallbackTier of fallbacks) {
+    if (TIER_SCRIPTS[fallbackTier]) {
+      return TIER_SCRIPTS[fallbackTier];
+    }
+  }
+  
+  // Ultimate fallback
+  return TIER_SCRIPTS.free;
+}
+
+/**
+ * Get tier weight (intensity)
+ */
+export function getTierWeight(tier: string): number {
+  const normalizedTier = tier.toLowerCase().replace('-', '');
+  return TIER_WEIGHTS[normalizedTier] ?? 0.3;
 }
 
 /**
