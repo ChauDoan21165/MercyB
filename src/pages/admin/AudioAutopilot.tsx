@@ -121,6 +121,80 @@ interface GovernanceDecision {
   canOverride: boolean;
 }
 
+// Quick Approve Button Component for bulk approving high-confidence reviews
+function QuickApproveButton({ 
+  pending, 
+  onApproved 
+}: { 
+  pending: PendingGovernanceReview[];
+  onApproved: () => void;
+}) {
+  const [threshold, setThreshold] = useState(90);
+  const [isApproving, setIsApproving] = useState(false);
+
+  const eligibleCount = pending.filter(r => r.operation.confidence >= threshold).length;
+
+  const handleBulkApprove = async () => {
+    const toApprove = pending.filter(r => r.operation.confidence >= threshold);
+    if (toApprove.length === 0) {
+      toast.info('No reviews meet the confidence threshold');
+      return;
+    }
+
+    setIsApproving(true);
+    try {
+      const reviewIds = toApprove.map(r => r.id);
+      const { error } = await supabase
+        .from('audio_governance_reviews')
+        .update({
+          status: 'approved',
+          reviewed_by: 'admin-bulk',
+          reviewed_at: new Date().toISOString(),
+          notes: `Bulk approved (≥${threshold}% confidence)`,
+        })
+        .in('review_id', reviewIds);
+
+      if (error) throw error;
+      
+      toast.success(`Approved ${toApprove.length} reviews ≥${threshold}%`);
+      onApproved();
+    } catch (error) {
+      console.error('Bulk approve error:', error);
+      toast.error('Failed to bulk approve');
+    } finally {
+      setIsApproving(false);
+    }
+  };
+
+  return (
+    <div className="flex items-center gap-2">
+      <Select value={String(threshold)} onValueChange={(v) => setThreshold(Number(v))}>
+        <SelectTrigger className="w-[100px]">
+          <SelectValue placeholder="Threshold" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="85">≥85%</SelectItem>
+          <SelectItem value="90">≥90%</SelectItem>
+          <SelectItem value="92">≥92%</SelectItem>
+          <SelectItem value="95">≥95%</SelectItem>
+        </SelectContent>
+      </Select>
+      <Button 
+        size="sm" 
+        onClick={handleBulkApprove}
+        disabled={isApproving || eligibleCount === 0}
+      >
+        {isApproving ? (
+          <RefreshCw className="w-4 h-4 mr-1 animate-spin" />
+        ) : (
+          <CheckCircle className="w-4 h-4 mr-1" />
+        )}
+        Approve All ({eligibleCount})
+      </Button>
+    </div>
+  );
+}
+
 export default function AudioAutopilot() {
   const [isLoading, setIsLoading] = useState(false);
   const [autopilotStatus, setAutopilotStatus] = useState<AutopilotStatusStore | null>(null);
@@ -668,11 +742,22 @@ export default function AudioAutopilot() {
           {/* Pending Reviews Tab (Phase 4.6) */}
           <TabsContent value="pending">
             <Card>
-              <CardHeader>
-                <CardTitle>Pending Human Reviews</CardTitle>
-                <CardDescription>
-                  Changes requiring manual approval or rejection
-                </CardDescription>
+              <CardHeader className="flex flex-row items-center justify-between">
+                <div>
+                  <CardTitle>Pending Human Reviews</CardTitle>
+                  <CardDescription>
+                    Changes requiring manual approval or rejection
+                  </CardDescription>
+                </div>
+                {pendingGovernance && pendingGovernance.pending.length > 0 && (
+                  <QuickApproveButton 
+                    pending={pendingGovernance.pending}
+                    onApproved={() => {
+                      loadPendingGovernanceFromAPI();
+                      loadGovernanceStats();
+                    }}
+                  />
+                )}
               </CardHeader>
               <CardContent>
                 {!pendingGovernance || pendingGovernance.pending.length === 0 ? (
