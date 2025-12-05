@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Trash2, Music, Upload, Play, Pause } from 'lucide-react';
+import { Trash2, Music, Upload, Play, Pause, GripVertical, ArrowUp, ArrowDown } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import {
   AlertDialog,
@@ -209,6 +209,30 @@ export default function HomepageMusicController() {
     setPlayingId(null);
   };
   
+  // Move song up/down
+  const handleMoveUp = (index: number, type: 'homepage' | 'mb') => {
+    if (index === 0) return;
+    const list = type === 'homepage' ? [...songs] : [...mbSongs];
+    [list[index - 1], list[index]] = [list[index], list[index - 1]];
+    if (type === 'homepage') {
+      saveSongs(list);
+    } else {
+      saveMbSongs(list);
+    }
+  };
+
+  const handleMoveDown = (index: number, type: 'homepage' | 'mb') => {
+    const list = type === 'homepage' ? songs : mbSongs;
+    if (index === list.length - 1) return;
+    const newList = [...list];
+    [newList[index], newList[index + 1]] = [newList[index + 1], newList[index]];
+    if (type === 'homepage') {
+      saveSongs(newList);
+    } else {
+      saveMbSongs(newList);
+    }
+  };
+
   // Render song list component
   const renderSongList = (songList: HomepageSong[], type: 'homepage' | 'mb') => (
     songList.length === 0 ? (
@@ -217,12 +241,34 @@ export default function HomepageMusicController() {
       </p>
     ) : (
       <div className="space-y-3">
-        {songList.map((song) => (
+        {songList.map((song, index) => (
           <div 
             key={song.id}
             className="flex items-center justify-between p-4 border border-black rounded bg-white"
           >
             <div className="flex items-center gap-3 flex-1">
+              {/* Reorder controls */}
+              <div className="flex flex-col gap-1">
+                <button
+                  onClick={() => handleMoveUp(index, type)}
+                  disabled={index === 0}
+                  className="p-1 rounded hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed"
+                  title="Move up"
+                >
+                  <ArrowUp className="h-4 w-4 text-gray-600" />
+                </button>
+                <button
+                  onClick={() => handleMoveDown(index, type)}
+                  disabled={index === songList.length - 1}
+                  className="p-1 rounded hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed"
+                  title="Move down"
+                >
+                  <ArrowDown className="h-4 w-4 text-gray-600" />
+                </button>
+              </div>
+              
+              <span className="text-xs text-gray-400 font-mono w-6">{index + 1}</span>
+              
               <button
                 onClick={() => handlePlayPause(song)}
                 className="p-2 rounded-full bg-purple-100 hover:bg-purple-200 transition-colors"
