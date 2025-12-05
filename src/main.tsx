@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
+import { ColorModeProvider } from "@/lib/color-mode";
 
 // Initialize session manager for auto-renewal
 import "./lib/session-manager";
@@ -13,4 +14,8 @@ if (import.meta.env.DEV) {
   performanceMonitor.startFpsMonitoring();
 }
 
-createRoot(document.getElementById("root")!).render(<App />);
+createRoot(document.getElementById("root")!).render(
+  <ColorModeProvider>
+    <App />
+  </ColorModeProvider>
+);

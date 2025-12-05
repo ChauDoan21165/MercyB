@@ -13,6 +13,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useEffect, useState } from 'react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { RoomSearch } from '@/components/RoomSearch';
+import { ColorModeToggle } from '@/components/ColorModeToggle';
 
 export interface BreadcrumbItem {
   label: string;
@@ -92,6 +93,7 @@ export function GlobalAppBar({
             </div>
             
             <ThemeToggle />
+            <ColorModeToggle />
             
             {!user ? (
               <Button

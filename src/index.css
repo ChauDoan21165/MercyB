@@ -6,6 +6,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global B&W mode - applies grayscale filter to entire page */
+html.bw-mode {
+  filter: grayscale(1);
+  transition: filter 200ms ease-in-out;
+}
+
 /* ============================================
    MERCY BLADE DESIGN SYSTEM V2.0
    Apple-quality polish tokens
