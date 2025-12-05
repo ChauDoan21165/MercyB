@@ -1,12 +1,12 @@
 /**
- * Audio Autopilot Admin Dashboard v4.6
+ * Audio Autopilot Admin Dashboard v4.7
  * Full autonomous audio management command center
  * 
- * Phase 4.6 enhancements:
- * - History Chart (last 20 cycles)
- * - Pending Human Review List
- * - Governance Overrides Panel
- * - Lifecycle Inspector
+ * Phase 4.7 enhancements:
+ * - Two-way governance integration via Supabase
+ * - Deep filtering (room, confidence, type)
+ * - Deduplication indicators
+ * - Real-time stats from API
  */
 
 import { useState, useEffect } from 'react';
@@ -18,6 +18,13 @@ import { Progress } from '@/components/ui/progress';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { 
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { 
   Play, 
   RefreshCw, 
@@ -36,8 +43,11 @@ import {
   ThumbsDown,
   TrendingUp,
   TrendingDown,
+  Filter,
+  Trash2,
 } from 'lucide-react';
 import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
 import type { AutopilotStatusStore, AudioChangeSet, AudioChange } from '@/lib/audio/types';
 
 interface AutopilotReport {
@@ -121,6 +131,12 @@ export default function AudioAutopilot() {
   const [pendingGovernance, setPendingGovernance] = useState<PendingGovernanceDB | null>(null);
   const [selectedReview, setSelectedReview] = useState<PendingGovernanceReview | null>(null);
   const [reviewNotes, setReviewNotes] = useState('');
+  
+  // Phase 4.7: Filters
+  const [roomFilter, setRoomFilter] = useState('');
+  const [typeFilter, setTypeFilter] = useState('');
+  const [confidenceFilter, setConfidenceFilter] = useState('');
+  const [governanceStats, setGovernanceStats] = useState<any>(null);
 
   useEffect(() => {
     loadAllArtifacts();
@@ -133,7 +149,8 @@ export default function AudioAutopilot() {
       loadAutopilotReport(),
       loadChangeSet(),
       loadHistory(),
-      loadPendingGovernance(),
+      loadPendingGovernanceFromAPI(),
+      loadGovernanceStats(),
     ]);
     setIsLoading(false);
   };
@@ -192,32 +209,190 @@ export default function AudioAutopilot() {
     }
   };
 
-  const loadPendingGovernance = async () => {
+  // Phase 4.7: Load from Supabase API
+  const loadPendingGovernanceFromAPI = async () => {
     try {
-      const response = await fetch('/audio/pending-governance.json');
-      if (response.ok) {
-        const pg = await response.json();
-        setPendingGovernance(pg);
+      const { data, error } = await supabase.functions.invoke('audio-governance-console', {
+        body: null,
+        method: 'GET',
+      });
+      
+      // Also try loading from local file as fallback
+      if (error) {
+        console.log('API not available, trying local file');
+        const response = await fetch('/audio/pending-governance.json');
+        if (response.ok) {
+          const pg = await response.json();
+          setPendingGovernance(pg);
+        }
+        return;
+      }
+
+      // Transform API response to match local format
+      if (data?.data) {
+        setPendingGovernance({
+          version: '4.7',
+          updatedAt: new Date().toISOString(),
+          pending: data.data.pending?.map((r: any) => ({
+            id: r.review_id,
+            cycleId: r.cycle_id,
+            timestamp: r.created_at,
+            operation: {
+              type: r.operation_type,
+              roomId: r.room_id,
+              before: r.before_filename,
+              after: r.after_filename,
+              confidence: r.confidence,
+            },
+            reason: r.reason,
+            status: r.status,
+            reviewedBy: r.reviewed_by,
+            reviewedAt: r.reviewed_at,
+            notes: r.notes,
+          })) || [],
+          approved: [],
+          rejected: [],
+        });
       }
     } catch (error) {
-      console.log('No pending governance file found');
+      console.log('Error loading governance from API:', error);
+      // Try fallback
+      try {
+        const response = await fetch('/audio/pending-governance.json');
+        if (response.ok) {
+          const pg = await response.json();
+          setPendingGovernance(pg);
+        }
+      } catch {
+        // Ignore
+      }
     }
   };
 
-  const copyCommand = (cmd: string) => {
-    navigator.clipboard.writeText(cmd);
-    toast.success('Command copied to clipboard');
+  // Phase 4.7: Load stats from API
+  const loadGovernanceStats = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('audio_governance_reviews')
+        .select('status, room_id, confidence');
+      
+      if (!error && data) {
+        const stats = {
+          totalPending: data.filter(r => r.status === 'pending').length,
+          totalApproved: data.filter(r => r.status === 'approved').length,
+          totalRejected: data.filter(r => r.status === 'rejected').length,
+          pendingByRoom: {} as Record<string, number>,
+          avgConfidence: 0,
+        };
+        
+        const pending = data.filter(r => r.status === 'pending');
+        for (const r of pending) {
+          stats.pendingByRoom[r.room_id] = (stats.pendingByRoom[r.room_id] || 0) + 1;
+        }
+        
+        if (pending.length > 0) {
+          stats.avgConfidence = pending.reduce((sum, r) => sum + Number(r.confidence), 0) / pending.length;
+        }
+        
+        setGovernanceStats(stats);
+      }
+    } catch (error) {
+      console.log('Error loading governance stats:', error);
+    }
   };
 
-  const downloadReport = () => {
-    if (!lastReport) return;
-    
-    const blob = new Blob([JSON.stringify(lastReport, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `autopilot-report-${lastReport.timestamp || Date.now()}.json`;
-    a.click();
+  // Phase 4.7: Approve via API
+  const handleApproveReview = async (review: PendingGovernanceReview) => {
+    try {
+      const { error } = await supabase
+        .from('audio_governance_reviews')
+        .update({
+          status: 'approved',
+          reviewed_by: 'admin',
+          reviewed_at: new Date().toISOString(),
+          notes: reviewNotes,
+        })
+        .eq('review_id', review.id);
+
+      if (error) throw error;
+      
+      toast.success(`Approved: ${review.id}`);
+      setSelectedReview(null);
+      setReviewNotes('');
+      loadPendingGovernanceFromAPI();
+      loadGovernanceStats();
+    } catch (error) {
+      console.error('Error approving:', error);
+      toast.error('Failed to approve review');
+    }
+  };
+
+  // Phase 4.7: Reject via API
+  const handleRejectReview = async (review: PendingGovernanceReview) => {
+    try {
+      const { error } = await supabase
+        .from('audio_governance_reviews')
+        .update({
+          status: 'rejected',
+          reviewed_by: 'admin',
+          reviewed_at: new Date().toISOString(),
+          notes: reviewNotes,
+        })
+        .eq('review_id', review.id);
+
+      if (error) throw error;
+      
+      toast.info(`Rejected: ${review.id}`);
+      setSelectedReview(null);
+      setReviewNotes('');
+      loadPendingGovernanceFromAPI();
+      loadGovernanceStats();
+    } catch (error) {
+      console.error('Error rejecting:', error);
+      toast.error('Failed to reject review');
+    }
+  };
+
+  // Phase 4.7: Cleanup stale
+  const handleCleanupStale = async () => {
+    try {
+      const cutoffDate = new Date();
+      cutoffDate.setDate(cutoffDate.getDate() - 7);
+      
+      const { data, error } = await supabase
+        .from('audio_governance_reviews')
+        .delete()
+        .eq('status', 'pending')
+        .lt('created_at', cutoffDate.toISOString())
+        .select();
+
+      if (error) throw error;
+      
+      toast.success(`Cleaned up ${data?.length || 0} stale items`);
+      loadPendingGovernanceFromAPI();
+      loadGovernanceStats();
+    } catch (error) {
+      console.error('Error cleaning up:', error);
+      toast.error('Failed to cleanup stale items');
+    }
+  };
+
+  // Filter pending reviews
+  const filteredPending = pendingGovernance?.pending?.filter(review => {
+    if (roomFilter && !review.operation.roomId.toLowerCase().includes(roomFilter.toLowerCase())) {
+      return false;
+    }
+    if (typeFilter && review.operation.type !== typeFilter) {
+      return false;
+    }
+    if (confidenceFilter) {
+      const minConf = parseFloat(confidenceFilter);
+      if (!isNaN(minConf) && review.operation.confidence < minConf) {
+        return false;
+      }
+    }
+    return true;
+  }) || [];
     URL.revokeObjectURL(url);
     toast.success('Report downloaded');
   };
@@ -269,8 +444,8 @@ export default function AudioAutopilot() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-foreground">Audio Autopilot v4.6</h1>
-            <p className="text-muted-foreground">Full autonomous audio management with governance & history</p>
+            <h1 className="text-3xl font-bold text-foreground">Audio Autopilot v4.7</h1>
+            <p className="text-muted-foreground">Persistent governance DB with two-way integration</p>
           </div>
           <div className="flex items-center gap-3">
             <Badge variant={autopilotStatus?.lastRunAt ? 'default' : 'secondary'}>
