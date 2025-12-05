@@ -836,20 +836,15 @@ const ChatHub = () => {
       <GlobalAppBar breadcrumbs={breadcrumbItems} />
       
       {/* Mercy Host Greeting */}
-      {mercyHost.greeting && (
-        <MercyHostGreeting
-          greeting={mercyHost.greeting}
-          show={mercyHost.showGreeting}
-          onDismiss={mercyHost.dismissGreeting}
-          onReopen={mercyHost.reopenGreeting}
-        />
+      {mercyHost.greetingText && (
+        <MercyHostGreeting mercy={mercyHost} />
       )}
       
       {/* Color Mode Toast */}
-      {mercyHost.colorModeMessage && (
+      {mercyHost.currentVoiceLine && !mercyHost.isPlaying && (
         <MercyColorModeToast
-          message={mercyHost.colorModeMessage}
-          onDismiss={mercyHost.clearColorModeMessage}
+          message={mercyHost.language === 'vi' ? mercyHost.currentVoiceLine.vi : mercyHost.currentVoiceLine.en}
+          onDismiss={mercyHost.stopVoice}
         />
       )}
       

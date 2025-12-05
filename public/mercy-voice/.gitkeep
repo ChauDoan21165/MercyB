@@ -1,0 +1,10 @@
+# Mercy Voice Pack Directory
+# Place MP3 files here with naming convention:
+# - {id}_en.mp3 (English)
+# - {id}_vi.mp3 (Vietnamese)
+#
+# Example files:
+# - welcome_back_en.mp3
+# - welcome_back_vi.mp3
+# - take_breath_en.mp3
+# - take_breath_vi.mp3
