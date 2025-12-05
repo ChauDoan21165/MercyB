@@ -48,18 +48,22 @@ export default function HomepageMusicController() {
   
   const { toast } = useToast();
 
-  // Load audio manifest
+  // Load audio manifest - show ONLY music tracks (Fesliyan Studios etc.)
   useEffect(() => {
     fetch('/audio/manifest.json')
       .then(res => res.json())
       .then((data: { files: string[] }) => {
-        // Filter to show only .mp3 files that look like songs (not room audio)
+        // Filter to show only actual music tracks - Fesliyan Studios and similar
         const songFiles = data.files.filter(f => 
-          f.endsWith('.mp3') && 
-          !f.includes('_en.mp3') && 
-          !f.includes('_vi.mp3') &&
-          !f.includes('day') &&
-          !f.includes('entry')
+          f.endsWith('.mp3') && (
+            f.includes('fesliyan') ||
+            f.includes('david_renda') ||
+            f.includes('steve_oxen') ||
+            f.includes('stephen_bennett') ||
+            f.includes('mercy_blade') ||
+            f.includes('theme') ||
+            f.includes('song_of')
+          )
         );
         setAvailableFiles(songFiles);
       })
