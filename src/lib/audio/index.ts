@@ -193,7 +193,7 @@ export type {
   AudioSystemHealth,
 } from './types';
 
-// Autopilot Engine (Phase 4.5)
+// Autopilot Engine (Phase 4.5 - Full Integration)
 export {
   // Core autopilot functions
   runAutopilotCycle,
@@ -202,6 +202,11 @@ export {
   // Report generation
   generateAutopilotReport,
   generateMarkdownReport,
+  // Serialization functions for external consumption
+  serializeAutopilotReport,
+  serializeChangeSet,
+  getAutopilotStatusStore,
+  updateAutopilotStatusStore,
   // Types
   type AutopilotConfig,
   type AutopilotResult,
@@ -214,3 +219,6 @@ export type {
   AudioChange,
   AutopilotStatusStore,
 } from './types';
+
+// Export default governance config
+export { DEFAULT_GOVERNANCE_CONFIG } from './audioGovernanceEngine';
