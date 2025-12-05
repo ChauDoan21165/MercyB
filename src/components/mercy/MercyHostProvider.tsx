@@ -36,15 +36,19 @@ export function MercyHostProvider({
   // Track if heartbeat is started to avoid duplicates
   const heartbeatStartedRef = useRef(false);
   
-  // Create stable getter
-  const getState = useCallback(() => state, [state]);
+  // Use ref to always have access to latest state without causing re-renders
+  const stateRef = useRef(state);
+  stateRef.current = state;
+  
+  // Create stable getter that reads from ref
+  const getState = useCallback(() => stateRef.current, []);
   
   // Create stable setter
   const setStateFn = useCallback((updater: (prev: MercyEngineState) => MercyEngineState) => {
     setState(updater);
   }, []);
   
-  // Create engine actions
+  // Create engine actions ONCE (stable reference)
   const actions = useMemo(
     () => createMercyEngine(setStateFn, getState),
     [setStateFn, getState]
