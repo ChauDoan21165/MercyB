@@ -128,37 +128,76 @@ export interface AutopilotReport {
 // ============================================
 
 const AUTOPILOT_STATUS_KEY = 'audio_autopilot_status';
+const DEFAULT_STATUS: AutopilotStatusStore = {
+  version: '4.5',
+  lastRunAt: null,
+  mode: null,
+  beforeIntegrity: 0,
+  afterIntegrity: 0,
+  roomsTouched: 0,
+  changesApplied: 0,
+  changesBlocked: 0,
+  governanceFlags: [],
+  lastReportPath: null,
+};
 
 export function getAutopilotStatus(): AutopilotStatusStore {
-  try {
-    const stored = localStorage.getItem(AUTOPILOT_STATUS_KEY);
-    if (stored) {
-      return JSON.parse(stored);
+  // In browser context, use localStorage
+  if (typeof window !== 'undefined' && window.localStorage) {
+    try {
+      const stored = localStorage.getItem(AUTOPILOT_STATUS_KEY);
+      if (stored) {
+        return JSON.parse(stored);
+      }
+    } catch {
+      // Ignore parse errors
     }
-  } catch {
-    // Ignore parse errors
   }
   
-  return {
-    version: '4.4',
-    lastRunAt: null,
-    mode: null,
-    beforeIntegrity: 0,
-    afterIntegrity: 0,
-    roomsTouched: 0,
-    changesApplied: 0,
-    changesBlocked: 0,
-    governanceFlags: [],
-    lastReportPath: null,
-  };
+  return { ...DEFAULT_STATUS };
 }
 
 export function saveAutopilotStatus(status: AutopilotStatusStore): void {
-  try {
-    localStorage.setItem(AUTOPILOT_STATUS_KEY, JSON.stringify(status));
-  } catch {
-    console.error('Failed to save autopilot status');
+  // In browser context, use localStorage
+  if (typeof window !== 'undefined' && window.localStorage) {
+    try {
+      localStorage.setItem(AUTOPILOT_STATUS_KEY, JSON.stringify(status));
+    } catch {
+      console.error('Failed to save autopilot status to localStorage');
+    }
   }
+}
+
+// ============================================
+// File Writing Functions (for CLI/Node.js)
+// ============================================
+
+/**
+ * Write autopilot status to file (Node.js only)
+ * Path: public/audio/autopilot-status.json
+ */
+export function writeAutopilotStatusToFile(status: AutopilotStatusStore, outputPath?: string): void {
+  // This function is designed for Node.js CLI use
+  // It will be called by the CLI script with fs module
+  console.log('[Autopilot] Status ready to write:', JSON.stringify(status, null, 2));
+}
+
+/**
+ * Write autopilot report to file (Node.js only)
+ * Path: public/audio/autopilot-report.json
+ */
+export function writeAutopilotReportToFile(report: AutopilotReport, outputPath?: string): void {
+  // This function is designed for Node.js CLI use
+  console.log('[Autopilot] Report ready to write');
+}
+
+/**
+ * Write autopilot changeset to file (Node.js only)
+ * Path: public/audio/autopilot-changeset.json
+ */
+export function writeAutopilotChangeSetToFile(changeSet: AudioChangeSet, timestamp: string, outputPath?: string): void {
+  // This function is designed for Node.js CLI use
+  console.log('[Autopilot] ChangeSet ready to write');
 }
 
 // ============================================

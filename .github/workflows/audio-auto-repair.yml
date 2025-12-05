@@ -1,4 +1,4 @@
-name: Audio Auto-Repair v5.0
+name: Audio Auto-Repair v4.5
 
 on:
   push:
@@ -19,14 +19,25 @@ on:
         required: false
         default: ''
         type: string
+      run_autopilot:
+        description: 'Run full autopilot cycle'
+        required: false
+        default: 'false'
+        type: boolean
 
 jobs:
-  audio-repair:
+  # ============================================
+  # JOB 1: AUTOPILOT CYCLE (v4.5)
+  # ============================================
+  run-autopilot-cycle:
     runs-on: ubuntu-latest
     outputs:
-      integrity_before: ${{ steps.verify_before.outputs.integrity }}
-      integrity_after: ${{ steps.verify_after.outputs.integrity }}
-      total_repairs: ${{ steps.apply_fixes.outputs.total_repairs }}
+      integrity_before: ${{ steps.autopilot.outputs.integrity_before }}
+      integrity_after: ${{ steps.autopilot.outputs.integrity_after }}
+      total_changes: ${{ steps.autopilot.outputs.total_changes }}
+      changes_applied: ${{ steps.autopilot.outputs.changes_applied }}
+      changes_blocked: ${{ steps.autopilot.outputs.changes_blocked }}
+      meets_threshold: ${{ steps.autopilot.outputs.meets_threshold }}
       
     steps:
       - name: Checkout
@@ -44,7 +55,7 @@ jobs:
         run: npm ci
 
       # ============================================
-      # PHASE 1: AUDIO CHECK (audio:check)
+      # PHASE 1: AUDIO TESTS
       # ============================================
       
       - name: Run Audio Tests
@@ -60,183 +71,106 @@ jobs:
       - name: Generate Audio Manifest (no-timestamp mode)
         run: node scripts/generate-audio-manifest.js --no-timestamp
 
-      - name: Run JSON Refresh (dry-run, no-timestamp)
-        id: dry_run_refresh
+      # ============================================
+      # PHASE 2: AUTOPILOT CYCLE (DRY-RUN OR APPLY)
+      # ============================================
+      
+      - name: Run Autopilot Cycle
+        id: autopilot
         run: |
           ROOM_FILTER="${{ github.event.inputs.rooms }}"
+          APPLY_MODE="${{ github.event.inputs.apply_fixes }}"
+          RUN_AUTOPILOT="${{ github.event.inputs.run_autopilot }}"
+          
+          # Determine mode
+          if [ "$APPLY_MODE" == "true" ] || [ "$RUN_AUTOPILOT" == "true" ]; then
+            MODE="--apply"
+          else
+            MODE="--dry-run"
+          fi
+          
+          # Build command
+          CMD="npx tsx scripts/run-audio-autopilot.ts $MODE --verbose"
           if [ -n "$ROOM_FILTER" ]; then
-            npx tsx scripts/refresh-json-audio.ts --dry-run --verbose --no-timestamp --rooms "$ROOM_FILTER" 2>&1 | tee refresh-dry.log
-          else
-            npx tsx scripts/refresh-json-audio.ts --dry-run --verbose --no-timestamp 2>&1 | tee refresh-dry.log
+            CMD="$CMD --rooms \"$ROOM_FILTER\""
           fi
           
-          FIXES=$(grep -oP "Total fixes needed: \K\d+" refresh-dry.log || echo "0")
-          SCANNED=$(grep -oP "Rooms scanned: \K\d+" refresh-dry.log || echo "0")
-          REVERSALS=$(grep -oP "Reversed-lang fixes: \K\d+" refresh-dry.log || echo "0")
-          CRITICAL=$(grep -oP "critical: \K\d+" refresh-dry.log || echo "0")
-          STRUCTURAL=$(grep -oP "structural: \K\d+" refresh-dry.log || echo "0")
-          COSMETIC=$(grep -oP "cosmetic: \K\d+" refresh-dry.log || echo "0")
+          echo "Running: $CMD"
+          eval $CMD 2>&1 | tee autopilot-output.log
           
-          echo "json_fixes=$FIXES" >> $GITHUB_OUTPUT
-          echo "rooms_scanned=$SCANNED" >> $GITHUB_OUTPUT
-          echo "reversals=$REVERSALS" >> $GITHUB_OUTPUT
-          echo "critical_fixes=$CRITICAL" >> $GITHUB_OUTPUT
-          echo "structural_fixes=$STRUCTURAL" >> $GITHUB_OUTPUT
-          echo "cosmetic_fixes=$COSMETIC" >> $GITHUB_OUTPUT
-
-      - name: Detect Orphan Files (dry-run, no-timestamp)
-        id: orphan_check
-        run: |
-          npx tsx scripts/cleanup-orphans.ts --dry-run --no-timestamp 2>&1 | tee orphan-dry.log
+          # Extract metrics from output
+          BEFORE=$(grep -oP "Before Integrity: \K[\d.]+" autopilot-output.log || echo "0")
+          AFTER=$(grep -oP "After Integrity: \K[\d.]+" autopilot-output.log || echo "0")
+          TOTAL=$(grep -oP "Total Changes: \K\d+" autopilot-output.log || echo "0")
+          APPLIED=$(grep -oP "Applied: \K\d+" autopilot-output.log || echo "0")
+          BLOCKED=$(grep -oP "Blocked: \K\d+" autopilot-output.log || echo "0")
           
-          ORPHANS=$(grep -oP "Total orphan files: \K\d+" orphan-dry.log || echo "0")
-          AUTO_ATTACH=$(grep -oP "Auto-attach.*: \K\d+" orphan-dry.log || echo "0")
-          FLAG_REVIEW=$(grep -oP "Flag for review.*: \K\d+" orphan-dry.log || echo "0")
-          BLOCKED=$(grep -oP "Blocked.*: \K\d+" orphan-dry.log || echo "0")
+          echo "integrity_before=$BEFORE" >> $GITHUB_OUTPUT
+          echo "integrity_after=$AFTER" >> $GITHUB_OUTPUT
+          echo "total_changes=$TOTAL" >> $GITHUB_OUTPUT
+          echo "changes_applied=$APPLIED" >> $GITHUB_OUTPUT
+          echo "changes_blocked=$BLOCKED" >> $GITHUB_OUTPUT
           
-          echo "orphan_count=$ORPHANS" >> $GITHUB_OUTPUT
-          echo "auto_attach=$AUTO_ATTACH" >> $GITHUB_OUTPUT
-          echo "flag_review=$FLAG_REVIEW" >> $GITHUB_OUTPUT
-          echo "blocked=$BLOCKED" >> $GITHUB_OUTPUT
-
-      - name: Check Rename Operations (dry-run, no-timestamp)
-        id: rename_check
-        run: |
-          npx tsx scripts/rename-audio-storage.ts --dry-run --verbose --no-timestamp 2>&1 | tee rename-dry.log
-          
-          RENAMES=$(grep -oP "Total renames needed: \K\d+" rename-dry.log || echo "0")
-          DUPS=$(grep -oP "Duplicate moves: \K\d+" rename-dry.log || echo "0")
-          
-          echo "rename_count=$RENAMES" >> $GITHUB_OUTPUT
-          echo "duplicate_count=$DUPS" >> $GITHUB_OUTPUT
-
-      - name: Check if fixes needed (only critical/structural)
-        id: needs_fix
-        run: |
-          # Only count critical and structural issues, not cosmetic
-          CRITICAL=${{ steps.dry_run_refresh.outputs.critical_fixes }}
-          STRUCTURAL=${{ steps.dry_run_refresh.outputs.structural_fixes }}
-          ORPHANS=${{ steps.orphan_check.outputs.auto_attach }}
-          RENAMES=${{ steps.rename_check.outputs.rename_count }}
-          
-          TOTAL_ACTIONABLE=$((CRITICAL + STRUCTURAL + ORPHANS + RENAMES))
-          TOTAL_ALL=$(( ${{ steps.dry_run_refresh.outputs.json_fixes }} + ${{ steps.orphan_check.outputs.orphan_count }} + RENAMES ))
-          
-          if [ "$TOTAL_ACTIONABLE" -gt 0 ]; then
-            echo "has_issues=true" >> $GITHUB_OUTPUT
+          # Check threshold
+          AFTER_INT=${AFTER%.*}
+          if [ "$AFTER_INT" -ge 99 ]; then
+            echo "meets_threshold=true" >> $GITHUB_OUTPUT
           else
-            echo "has_issues=false" >> $GITHUB_OUTPUT
+            echo "meets_threshold=false" >> $GITHUB_OUTPUT
           fi
-          
-          echo "total_issues=$TOTAL_ALL" >> $GITHUB_OUTPUT
-          echo "actionable_issues=$TOTAL_ACTIONABLE" >> $GITHUB_OUTPUT
-          echo "Total issues: $TOTAL_ALL (Actionable: $TOTAL_ACTIONABLE)"
 
       # ============================================
-      # PHASE 2: AUDIO FIX (audio:fix) - AUTOPILOT
+      # PHASE 3: INTEGRITY GATE (≥99%)
       # ============================================
       
-      - name: Calculate Integrity Before
-        id: verify_before
-        run: |
-          TOTAL=${{ steps.needs_fix.outputs.total_issues }}
-          ROOMS=${{ steps.dry_run_refresh.outputs.rooms_scanned }}
-          if [ "$ROOMS" -gt 0 ] && [ "$TOTAL" -gt 0 ]; then
-            INTEGRITY=$(( 100 - (TOTAL * 100 / (ROOMS * 2)) ))
-            [ "$INTEGRITY" -lt 0 ] && INTEGRITY=0
-          else
-            INTEGRITY=100
-          fi
-          echo "integrity=$INTEGRITY" >> $GITHUB_OUTPUT
-          echo "System integrity before: $INTEGRITY%"
-      
-      - name: Apply Fixes (Autopilot - only if actionable issues exist)
-        id: apply_fixes
-        if: |
-          github.event.inputs.apply_fixes == 'true' || 
-          (github.event_name == 'push' && steps.needs_fix.outputs.has_issues == 'true')
-        run: |
-          echo "🤖 AUTOPILOT MODE: Applying automated fixes..."
-          REPAIRS=0
-          
-          # Apply JSON fixes
-          ROOM_FILTER="${{ github.event.inputs.rooms }}"
-          if [ -n "$ROOM_FILTER" ]; then
-            npx tsx scripts/refresh-json-audio.ts --apply --verbose --rooms "$ROOM_FILTER" 2>&1 | tee json-fix.log
-          else
-            npx tsx scripts/refresh-json-audio.ts --apply --verbose 2>&1 | tee json-fix.log
-          fi
-          JSON_FIXED=$(grep -oP "Total fixes applied: \K\d+" json-fix.log || echo "0")
-          REPAIRS=$((REPAIRS + JSON_FIXED))
-          
-          # Apply renames
-          npx tsx scripts/rename-audio-storage.ts --verbose 2>&1 | tee rename-fix.log
-          RENAMES_FIXED=$(grep -oP "Files renamed: \K\d+" rename-fix.log || echo "0")
-          REPAIRS=$((REPAIRS + RENAMES_FIXED))
-          
-          # Auto-fix attachable orphans only
-          npx tsx scripts/cleanup-orphans.ts --auto-fix 2>&1 | tee orphan-fix.log
-          ORPHANS_FIXED=$(grep -oP "Auto-attached: \K\d+" orphan-fix.log || echo "0")
-          REPAIRS=$((REPAIRS + ORPHANS_FIXED))
-          
-          # Regenerate manifest (full mode with timestamp)
-          node scripts/generate-audio-manifest.js
-          
-          echo "total_repairs=$REPAIRS" >> $GITHUB_OUTPUT
-          echo "✅ Autopilot applied $REPAIRS repairs"
-
-      # ============================================
-      # PHASE 3: AUDIO VERIFY
-      # ============================================
-      
-      - name: Verify System Integrity After
-        id: verify_after
-        run: |
-          # Re-run dry checks to calculate new integrity
-          npx tsx scripts/refresh-json-audio.ts --dry-run --no-timestamp 2>&1 | tee verify-refresh.log
-          npx tsx scripts/cleanup-orphans.ts --dry-run --no-timestamp 2>&1 | tee verify-orphan.log
-          npx tsx scripts/rename-audio-storage.ts --dry-run --no-timestamp 2>&1 | tee verify-rename.log
-          
-          NEW_JSON=$(grep -oP "Total fixes needed: \K\d+" verify-refresh.log || echo "0")
-          NEW_ORPHANS=$(grep -oP "Total orphan files: \K\d+" verify-orphan.log || echo "0")
-          NEW_RENAMES=$(grep -oP "Total renames needed: \K\d+" verify-rename.log || echo "0")
-          
-          NEW_TOTAL=$((NEW_JSON + NEW_ORPHANS + NEW_RENAMES))
-          ROOMS=${{ steps.dry_run_refresh.outputs.rooms_scanned }}
-          
-          if [ "$ROOMS" -gt 0 ] && [ "$NEW_TOTAL" -gt 0 ]; then
-            INTEGRITY=$(( 100 - (NEW_TOTAL * 100 / (ROOMS * 2)) ))
-            [ "$INTEGRITY" -lt 0 ] && INTEGRITY=0
-          else
-            INTEGRITY=100
-          fi
-          
-          echo "integrity=$INTEGRITY" >> $GITHUB_OUTPUT
-          echo "remaining_issues=$NEW_TOTAL" >> $GITHUB_OUTPUT
-          echo "System integrity after: $INTEGRITY%"
-
-      - name: Check Integrity Gate (≥99% for Phase 5)
+      - name: Check Integrity Gate
         id: integrity_gate
         run: |
-          INTEGRITY=${{ steps.verify_after.outputs.integrity }}
+          AFTER="${{ steps.autopilot.outputs.integrity_after }}"
           THRESHOLD=99
           
-          if [ "$INTEGRITY" -lt "$THRESHOLD" ]; then
-            echo "⚠️ WARNING: System integrity ($INTEGRITY%) below threshold ($THRESHOLD%)"
+          # Handle decimal comparison
+          AFTER_INT=$(echo "$AFTER" | cut -d. -f1)
+          
+          if [ "$AFTER_INT" -lt "$THRESHOLD" ]; then
+            echo "⚠️ WARNING: System integrity ($AFTER%) below threshold ($THRESHOLD%)"
             echo "gate_passed=false" >> $GITHUB_OUTPUT
           else
-            echo "✅ System integrity ($INTEGRITY%) meets threshold ($THRESHOLD%)"
+            echo "✅ System integrity ($AFTER%) meets threshold ($THRESHOLD%)"
             echo "gate_passed=true" >> $GITHUB_OUTPUT
           fi
 
       # ============================================
-      # PHASE 4: COMMIT & REPORT (No Surprise Mode)
+      # PHASE 4: UPLOAD ARTIFACTS
       # ============================================
       
-      - name: Check for Actual Changes (No Surprise Mode)
+      - name: Upload Autopilot Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: autopilot-artifacts
+          path: |
+            public/audio/autopilot-status.json
+            public/audio/autopilot-report.json
+            public/audio/autopilot-changeset.json
+          retention-days: 30
+          if-no-files-found: warn
+
+      - name: Upload Logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: autopilot-logs
+          path: |
+            autopilot-output.log
+            test-results.log
+          retention-days: 7
+
+      # ============================================
+      # PHASE 5: CHECK FOR CHANGES (No Surprise Mode)
+      # ============================================
+      
+      - name: Check for Actual Changes
         id: changes
         run: |
-          # Only consider actual content changes, not timestamp-only changes
           git diff --name-only > changed-files.txt
           
           # Filter to only audio/data files
@@ -255,50 +189,28 @@ jobs:
             echo "No actual content changes detected"
           fi
 
-      - name: Generate Change-Set JSON (Audit Trail)
-        if: steps.changes.outputs.has_changes == 'true'
-        run: |
-          cat > public/audio-changeset.json << EOF
-          {
-            "generatedAt": "$(date -Iseconds)",
-            "workflowRun": "${{ github.run_id }}",
-            "trigger": "${{ github.event_name }}",
-            "applyFixes": "${{ github.event.inputs.apply_fixes }}",
-            "integrityBefore": ${{ steps.verify_before.outputs.integrity }},
-            "integrityAfter": ${{ steps.verify_after.outputs.integrity }},
-            "totalRepairs": ${{ steps.apply_fixes.outputs.total_repairs || 0 }},
-            "changedFiles": $(cat relevant-changes.txt | jq -R . | jq -s .),
-            "categories": {
-              "critical": ${{ steps.dry_run_refresh.outputs.critical_fixes || 0 }},
-              "structural": ${{ steps.dry_run_refresh.outputs.structural_fixes || 0 }},
-              "cosmetic": ${{ steps.dry_run_refresh.outputs.cosmetic_fixes || 0 }}
-            }
-          }
-          EOF
-          echo "Change-set JSON generated"
-
-      - name: Commit All Changes (only if actual changes exist)
-        if: steps.changes.outputs.has_changes == 'true'
+      # ============================================
+      # PHASE 6: COMMIT (only if changes exist and apply mode)
+      # ============================================
+      
+      - name: Commit Changes
+        if: |
+          steps.changes.outputs.has_changes == 'true' && 
+          (github.event.inputs.apply_fixes == 'true' || github.event.inputs.run_autopilot == 'true')
         run: |
           git config --local user.email "automation@mercyblade.app"
-          git config --local user.name "Audio Autopilot v5.0"
+          git config --local user.name "Audio Autopilot v4.5"
           
-          # Recursive add for all nested files
+          # Add all relevant files
           git add public/audio || true
           git add public/data || true
-          git add public/*.json || true
           
-          git commit -m "[skip ci] Audio Auto-Repair v5.0 (Phase 5 Autopilot)" \
-            -m "🤖 Zero-Friction Autopilot: Fully Autonomous" \
+          git commit -m "[skip ci] Audio Autopilot v4.5 - Governed Repairs" \
+            -m "🤖 Full Autopilot with Governance Engine" \
             -m "" \
-            -m "Integrity: ${{ steps.verify_before.outputs.integrity }}% → ${{ steps.verify_after.outputs.integrity }}%" \
-            -m "Repairs Applied: ${{ steps.apply_fixes.outputs.total_repairs || 0 }}" \
-            -m "Files Changed: ${{ steps.changes.outputs.change_count }}" \
-            -m "" \
-            -m "Categories:" \
-            -m "  🔴 Critical: ${{ steps.dry_run_refresh.outputs.critical_fixes || 0 }}" \
-            -m "  🟡 Structural: ${{ steps.dry_run_refresh.outputs.structural_fixes || 0 }}" \
-            -m "  🟢 Cosmetic: ${{ steps.dry_run_refresh.outputs.cosmetic_fixes || 0 }}"
+            -m "Integrity: ${{ steps.autopilot.outputs.integrity_before }}% → ${{ steps.autopilot.outputs.integrity_after }}%" \
+            -m "Changes: ${{ steps.autopilot.outputs.total_changes }} total (${{ steps.autopilot.outputs.changes_applied }} applied, ${{ steps.autopilot.outputs.changes_blocked }} blocked)" \
+            -m "Gate: ${{ steps.integrity_gate.outputs.gate_passed && '✅ PASSED' || '⚠️ BELOW THRESHOLD' }}"
           
           git push
 
@@ -308,13 +220,15 @@ jobs:
       
       - name: Generate Summary Report
         run: |
-          BEFORE=${{ steps.verify_before.outputs.integrity }}
-          AFTER=${{ steps.verify_after.outputs.integrity }}
-          REPAIRS=${{ steps.apply_fixes.outputs.total_repairs || 0 }}
+          BEFORE=${{ steps.autopilot.outputs.integrity_before }}
+          AFTER=${{ steps.autopilot.outputs.integrity_after }}
+          TOTAL=${{ steps.autopilot.outputs.total_changes }}
+          APPLIED=${{ steps.autopilot.outputs.changes_applied }}
+          BLOCKED=${{ steps.autopilot.outputs.changes_blocked }}
           GATE=${{ steps.integrity_gate.outputs.gate_passed }}
           CHANGES=${{ steps.changes.outputs.change_count || 0 }}
           
-          echo "## 🤖 Audio Autopilot v5.0 Report" >> $GITHUB_STEP_SUMMARY
+          echo "## 🤖 Audio Autopilot v4.5 Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
           # Status Badge
@@ -322,14 +236,6 @@ jobs:
             echo "### ✅ PASSED - System Healthy (≥99%)" >> $GITHUB_STEP_SUMMARY
           else
             echo "### ⚠️ WARNING - Below Threshold (<99%)" >> $GITHUB_STEP_SUMMARY
-          fi
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          # No Surprise Mode indicator
-          if [ "$CHANGES" == "0" ]; then
-            echo "### 🔒 No Surprise Mode: No commits made (no actual changes)" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "### 📝 Changes Committed: $CHANGES files" >> $GITHUB_STEP_SUMMARY
           fi
           echo "" >> $GITHUB_STEP_SUMMARY
           
@@ -350,59 +256,56 @@ jobs:
           echo "| **Integrity Score** | ${BEFORE}% | ${AFTER}% |" >> $GITHUB_STEP_SUMMARY
           echo "| **Threshold** | 99% | 99% |" >> $GITHUB_STEP_SUMMARY
           
-          if [ "$AFTER" -ge "$BEFORE" ]; then
-            DELTA="↑ +$((AFTER - BEFORE))%"
-          else
-            DELTA="↓ -$((BEFORE - AFTER))%"
+          # Calculate delta
+          if [ -n "$BEFORE" ] && [ -n "$AFTER" ]; then
+            BEFORE_INT=${BEFORE%.*}
+            AFTER_INT=${AFTER%.*}
+            if [ "$AFTER_INT" -ge "$BEFORE_INT" ]; then
+              DELTA="↑ +$((AFTER_INT - BEFORE_INT))%"
+            else
+              DELTA="↓ -$((BEFORE_INT - AFTER_INT))%"
+            fi
+            echo "| **Change** | - | $DELTA |" >> $GITHUB_STEP_SUMMARY
           fi
-          echo "| **Change** | - | $DELTA |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
-          # Category Breakdown
-          echo "### 📋 Fix Categories" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Category | Count | Action |" >> $GITHUB_STEP_SUMMARY
-          echo "|----------|-------|--------|" >> $GITHUB_STEP_SUMMARY
-          echo "| 🔴 Critical | ${{ steps.dry_run_refresh.outputs.critical_fixes || 0 }} | Auto-fix |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🟡 Structural | ${{ steps.dry_run_refresh.outputs.structural_fixes || 0 }} | Auto-fix |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🟢 Cosmetic | ${{ steps.dry_run_refresh.outputs.cosmetic_fixes || 0 }} | Skipped (dry-run only) |" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          # Repairs Applied
-          echo "### 🔧 Repairs Applied" >> $GITHUB_STEP_SUMMARY
+          # Changes Summary
+          echo "### 🔧 Changes" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Category | Count |" >> $GITHUB_STEP_SUMMARY
           echo "|----------|-------|" >> $GITHUB_STEP_SUMMARY
-          echo "| Total Repairs | $REPAIRS |" >> $GITHUB_STEP_SUMMARY
-          echo "| JSON Fixes | ${{ steps.dry_run_refresh.outputs.json_fixes }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| EN/VI Reversals | ${{ steps.dry_run_refresh.outputs.reversals }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Orphans Auto-Attached | ${{ steps.orphan_check.outputs.auto_attach }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Orphans Flagged | ${{ steps.orphan_check.outputs.flag_review }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| File Renames | ${{ steps.rename_check.outputs.rename_count }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Duplicates Moved | ${{ steps.rename_check.outputs.duplicate_count }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Total Changes | $TOTAL |" >> $GITHUB_STEP_SUMMARY
+          echo "| Applied | $APPLIED |" >> $GITHUB_STEP_SUMMARY
+          echo "| Blocked | $BLOCKED |" >> $GITHUB_STEP_SUMMARY
+          echo "| Files Changed | $CHANGES |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
-          # Governance
-          echo "### 🛡️ Governance (Phase 5)" >> $GITHUB_STEP_SUMMARY
+          # Artifacts
+          echo "### 📦 Artifacts" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Auto-Approved (≥92%)**: High confidence repairs" >> $GITHUB_STEP_SUMMARY
-          echo "- **Flagged (75-91%)**: Needs human review" >> $GITHUB_STEP_SUMMARY
-          echo "- **Blocked (<75%)**: Not auto-fixed" >> $GITHUB_STEP_SUMMARY
-          echo "- **Remaining Issues**: ${{ steps.verify_after.outputs.remaining_issues }}" >> $GITHUB_STEP_SUMMARY
+          echo "- \`autopilot-status.json\` - Persistent status store" >> $GITHUB_STEP_SUMMARY
+          echo "- \`autopilot-report.json\` - Full run report" >> $GITHUB_STEP_SUMMARY
+          echo "- \`autopilot-changeset.json\` - Categorized changes" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
           # Commands
           echo "### 💻 Local Commands" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo '```bash' >> $GITHUB_STEP_SUMMARY
-          echo "npm run audio:check    # Dry-run all checks" >> $GITHUB_STEP_SUMMARY
-          echo "npm run audio:fix      # Apply all fixes" >> $GITHUB_STEP_SUMMARY
-          echo "npm run test:audio     # Run audio tests" >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+          echo "# Dry-run autopilot locally" >> $GITHUB_STEP_SUMMARY
+          echo "npx tsx scripts/run-audio-autopilot.ts --dry-run --verbose" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          
-          echo "### 🔗 Trigger CLI" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo '```bash' >> $GITHUB_STEP_SUMMARY
-          echo 'gh workflow run "Audio Auto-Repair v5.0" -f apply_fixes=true' >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "# Apply autopilot fixes" >> $GITHUB_STEP_SUMMARY
+          echo "npx tsx scripts/run-audio-autopilot.ts --apply --verbose" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+      # ============================================
+      # FAIL IF INTEGRITY GATE NOT PASSED (optional enforcement)
+      # ============================================
+      
+      - name: Enforce Integrity Gate
+        if: steps.integrity_gate.outputs.gate_passed == 'false' && github.event.inputs.apply_fixes == 'true'
+        run: |
+          echo "❌ Integrity gate failed: System integrity below 99%"
+          echo "Review the autopilot report and address blocking issues"
+          exit 1
