@@ -242,7 +242,7 @@ export default function AudioCoverage() {
 
   const storageEmpty = !!report && report.storageFileCount === 0;
 
-  // Commands for modals - v4.2 standard
+  // Commands for modals - v4.3 Autopilot standard
   const dryRunCommands = `# Option 1: npm script (recommended)
 npm run audio:check
 
@@ -254,13 +254,13 @@ npx tsx scripts/rename-audio-storage.ts --dry-run --verbose`;
   const fixCommands = `# Option 1: npm script (recommended)
 npm run audio:fix
 
-# Option 2: Individual commands
+# Option 2: Individual commands (Autopilot)
 npx tsx scripts/refresh-json-audio.ts --apply --verbose
 npx tsx scripts/rename-audio-storage.ts --verbose
 npx tsx scripts/cleanup-orphans.ts --auto-fix
 node scripts/generate-audio-manifest.js`;
 
-  const ghCommand = 'gh workflow run "Audio Auto-Repair v4.2" -f apply_fixes=true';
+  const ghCommand = 'gh workflow run "Audio Auto-Repair v4.3" -f apply_fixes=true';
 
   return (
     <div className="min-h-screen bg-white p-6">
@@ -270,9 +270,9 @@ node scripts/generate-audio-manifest.js`;
           <div className="flex items-center gap-3">
             <Music className="h-8 w-8 text-black" />
             <div>
-              <h1 className="text-2xl font-bold text-black">Audio Coverage v4.2</h1>
+              <h1 className="text-2xl font-bold text-black">Audio Coverage v4.3</h1>
               <p className="text-gray-600 text-sm">
-                GCE-Powered Self-Healing Audio System (No-Noise CI)
+                Zero-Friction Autopilot System • Governance-Controlled
               </p>
             </div>
           </div>

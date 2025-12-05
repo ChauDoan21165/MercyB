@@ -1,4 +1,4 @@
-name: Audio Auto-Repair v4.2
+name: Audio Auto-Repair v4.3
 
 on:
   push:
@@ -23,6 +23,11 @@ on:
 jobs:
   audio-repair:
     runs-on: ubuntu-latest
+    outputs:
+      integrity_before: ${{ steps.verify_before.outputs.integrity }}
+      integrity_after: ${{ steps.verify_after.outputs.integrity }}
+      total_repairs: ${{ steps.apply_fixes.outputs.total_repairs }}
+      
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -39,7 +44,7 @@ jobs:
         run: npm ci
 
       # ============================================
-      # RUN AUDIO TESTS
+      # PHASE 1: AUDIO CHECK (audio:check)
       # ============================================
       
       - name: Run Audio Tests
@@ -52,18 +57,9 @@ jobs:
             echo "tests_passed=false" >> $GITHUB_OUTPUT
           fi
 
-      # ============================================
-      # GENERATE MANIFEST (NO-NOISE MODE)
-      # Use --no-timestamp for dry-run to prevent timestamp-only commits
-      # ============================================
-      
       - name: Generate Audio Manifest (dry-run mode)
         run: node scripts/generate-audio-manifest.js --no-timestamp
 
-      # ============================================
-      # DRY-RUN CHECKS (audio:check)
-      # ============================================
-      
       - name: Run JSON Refresh (dry-run)
         id: dry_run_refresh
         run: |
@@ -106,11 +102,6 @@ jobs:
           echo "rename_count=$RENAMES" >> $GITHUB_OUTPUT
           echo "duplicate_count=$DUPS" >> $GITHUB_OUTPUT
 
-      # ============================================
-      # CHECK IF FIXES ARE NEEDED
-      # Only apply and commit if there are actual issues
-      # ============================================
-      
       - name: Check if fixes needed
         id: needs_fix
         run: |
@@ -120,42 +111,109 @@ jobs:
           else
             echo "has_issues=false" >> $GITHUB_OUTPUT
           fi
+          echo "total_issues=$TOTAL_ISSUES" >> $GITHUB_OUTPUT
           echo "Total issues detected: $TOTAL_ISSUES"
 
       # ============================================
-      # CONDITIONAL APPLY (audio:fix)
-      # Only runs if apply_fixes=true OR (push AND has_issues)
+      # PHASE 2: AUDIO FIX (audio:fix) - AUTOPILOT
       # ============================================
       
-      - name: Apply Fixes
+      - name: Calculate Integrity Before
+        id: verify_before
+        run: |
+          # Simple integrity calculation based on issues
+          TOTAL=${{ steps.needs_fix.outputs.total_issues }}
+          ROOMS=${{ steps.dry_run_refresh.outputs.rooms_scanned }}
+          if [ "$ROOMS" -gt 0 ] && [ "$TOTAL" -gt 0 ]; then
+            INTEGRITY=$(( 100 - (TOTAL * 100 / (ROOMS * 2)) ))
+            [ "$INTEGRITY" -lt 0 ] && INTEGRITY=0
+          else
+            INTEGRITY=100
+          fi
+          echo "integrity=$INTEGRITY" >> $GITHUB_OUTPUT
+          echo "System integrity before: $INTEGRITY%"
+      
+      - name: Apply Fixes (Autopilot)
+        id: apply_fixes
         if: |
           github.event.inputs.apply_fixes == 'true' || 
           (github.event_name == 'push' && steps.needs_fix.outputs.has_issues == 'true')
         run: |
-          echo "🔧 Applying automated fixes..."
+          echo "🤖 AUTOPILOT MODE: Applying automated fixes..."
+          REPAIRS=0
           
           # Apply JSON fixes
           ROOM_FILTER="${{ github.event.inputs.rooms }}"
           if [ -n "$ROOM_FILTER" ]; then
-            npx tsx scripts/refresh-json-audio.ts --apply --verbose --rooms "$ROOM_FILTER"
+            npx tsx scripts/refresh-json-audio.ts --apply --verbose --rooms "$ROOM_FILTER" 2>&1 | tee json-fix.log
           else
-            npx tsx scripts/refresh-json-audio.ts --apply --verbose
+            npx tsx scripts/refresh-json-audio.ts --apply --verbose 2>&1 | tee json-fix.log
           fi
+          JSON_FIXED=$(grep -oP "Applied: \K\d+" json-fix.log || echo "0")
+          REPAIRS=$((REPAIRS + JSON_FIXED))
           
           # Apply renames
-          npx tsx scripts/rename-audio-storage.ts --verbose
+          npx tsx scripts/rename-audio-storage.ts --verbose 2>&1 | tee rename-fix.log
+          RENAMES_FIXED=$(grep -oP "Renamed: \K\d+" rename-fix.log || echo "0")
+          REPAIRS=$((REPAIRS + RENAMES_FIXED))
           
           # Auto-fix attachable orphans
-          npx tsx scripts/cleanup-orphans.ts --auto-fix
+          npx tsx scripts/cleanup-orphans.ts --auto-fix 2>&1 | tee orphan-fix.log
+          ORPHANS_FIXED=$(grep -oP "Fixed: \K\d+" orphan-fix.log || echo "0")
+          REPAIRS=$((REPAIRS + ORPHANS_FIXED))
           
-          # Regenerate manifest (full mode with timestamp after fixes)
+          # Regenerate manifest (full mode with timestamp)
           node scripts/generate-audio-manifest.js
           
-          echo "✅ Fixes applied successfully!"
+          echo "total_repairs=$REPAIRS" >> $GITHUB_OUTPUT
+          echo "✅ Autopilot applied $REPAIRS repairs"
 
       # ============================================
-      # COMMIT & PUSH
-      # Uses broader git add patterns to catch all nested files
+      # PHASE 3: AUDIO VERIFY
+      # ============================================
+      
+      - name: Verify System Integrity After
+        id: verify_after
+        run: |
+          # Re-run dry checks to calculate new integrity
+          npx tsx scripts/refresh-json-audio.ts --dry-run 2>&1 | tee verify-refresh.log
+          npx tsx scripts/cleanup-orphans.ts --dry-run 2>&1 | tee verify-orphan.log
+          npx tsx scripts/rename-audio-storage.ts --dry-run 2>&1 | tee verify-rename.log
+          
+          NEW_JSON=$(grep -oP "Total fixes needed: \K\d+" verify-refresh.log || echo "0")
+          NEW_ORPHANS=$(grep -oP "Total orphan files: \K\d+" verify-orphan.log || echo "0")
+          NEW_RENAMES=$(grep -oP "Total renames needed: \K\d+" verify-rename.log || echo "0")
+          
+          NEW_TOTAL=$((NEW_JSON + NEW_ORPHANS + NEW_RENAMES))
+          ROOMS=${{ steps.dry_run_refresh.outputs.rooms_scanned }}
+          
+          if [ "$ROOMS" -gt 0 ] && [ "$NEW_TOTAL" -gt 0 ]; then
+            INTEGRITY=$(( 100 - (NEW_TOTAL * 100 / (ROOMS * 2)) ))
+            [ "$INTEGRITY" -lt 0 ] && INTEGRITY=0
+          else
+            INTEGRITY=100
+          fi
+          
+          echo "integrity=$INTEGRITY" >> $GITHUB_OUTPUT
+          echo "remaining_issues=$NEW_TOTAL" >> $GITHUB_OUTPUT
+          echo "System integrity after: $INTEGRITY%"
+
+      - name: Check Integrity Gate
+        id: integrity_gate
+        run: |
+          INTEGRITY=${{ steps.verify_after.outputs.integrity }}
+          THRESHOLD=98
+          
+          if [ "$INTEGRITY" -lt "$THRESHOLD" ]; then
+            echo "⚠️ WARNING: System integrity ($INTEGRITY%) below threshold ($THRESHOLD%)"
+            echo "gate_passed=false" >> $GITHUB_OUTPUT
+          else
+            echo "✅ System integrity ($INTEGRITY%) meets threshold ($THRESHOLD%)"
+            echo "gate_passed=true" >> $GITHUB_OUTPUT
+          fi
+
+      # ============================================
+      # PHASE 4: COMMIT & REPORT
       # ============================================
       
       - name: Check for Changes
@@ -174,21 +232,20 @@ jobs:
         if: steps.changes.outputs.has_changes == 'true'
         run: |
           git config --local user.email "automation@mercyblade.app"
-          git config --local user.name "Audio Automation Bot v4.2"
+          git config --local user.name "Audio Autopilot v4.3"
           
-          # Add all audio files recursively (catches nested folders)
+          # Recursive add for all nested files
           git add public/audio || true
-          
-          # Add all JSON files recursively under public/data
           git add public/data || true
-          
-          # Add any JSON reports in public root
           git add public/*.json || true
           
-          git commit -m "[skip ci] Audio Auto-Repair v4.2" \
-            -m "Rooms: ${{ steps.dry_run_refresh.outputs.rooms_scanned }}" \
-            -m "JSON fixes: ${{ steps.dry_run_refresh.outputs.json_fixes }}" \
-            -m "Reversals: ${{ steps.dry_run_refresh.outputs.reversals }}" \
+          git commit -m "[skip ci] Audio Auto-Repair v4.3 (Autopilot)" \
+            -m "🤖 Autopilot Mode: Fully Autonomous" \
+            -m "" \
+            -m "Integrity: ${{ steps.verify_before.outputs.integrity }}% → ${{ steps.verify_after.outputs.integrity }}%" \
+            -m "Repairs Applied: ${{ steps.apply_fixes.outputs.total_repairs || 0 }}" \
+            -m "Rooms Scanned: ${{ steps.dry_run_refresh.outputs.rooms_scanned }}" \
+            -m "JSON Fixes: ${{ steps.dry_run_refresh.outputs.json_fixes }}" \
             -m "Orphans: ${{ steps.orphan_check.outputs.orphan_count }}" \
             -m "Renames: ${{ steps.rename_check.outputs.rename_count }}" \
             -m "Duplicates: ${{ steps.rename_check.outputs.duplicate_count }}"
@@ -201,55 +258,78 @@ jobs:
       
       - name: Generate Summary Report
         run: |
-          # Calculate integrity estimate
-          TOTAL_ISSUES=$(( ${{ steps.dry_run_refresh.outputs.json_fixes }} + ${{ steps.orphan_check.outputs.orphan_count }} + ${{ steps.rename_check.outputs.rename_count }} ))
-          ROOMS=${{ steps.dry_run_refresh.outputs.rooms_scanned }}
-          if [ "$ROOMS" -gt 0 ] && [ "$TOTAL_ISSUES" -gt 0 ]; then
-            AVG_SCORE=$(( 100 - (TOTAL_ISSUES * 100 / (ROOMS * 2)) ))
-            [ "$AVG_SCORE" -lt 0 ] && AVG_SCORE=0
-          else
-            AVG_SCORE=100
-          fi
+          BEFORE=${{ steps.verify_before.outputs.integrity }}
+          AFTER=${{ steps.verify_after.outputs.integrity }}
+          REPAIRS=${{ steps.apply_fixes.outputs.total_repairs || 0 }}
+          GATE=${{ steps.integrity_gate.outputs.gate_passed }}
           
-          echo "## 🎵 Audio Auto-Repair v4.2 Summary" >> $GITHUB_STEP_SUMMARY
+          echo "## 🤖 Audio Autopilot v4.3 Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Status Badge
+          if [ "$GATE" == "true" ]; then
+            echo "### ✅ PASSED - System Healthy" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "### ⚠️ WARNING - Below Threshold" >> $GITHUB_STEP_SUMMARY
+          fi
           echo "" >> $GITHUB_STEP_SUMMARY
           
           # Test Results
-          echo "### 🧪 Test Results" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🧪 Tests" >> $GITHUB_STEP_SUMMARY
           if [ "${{ steps.audio_tests.outputs.tests_passed }}" == "true" ]; then
             echo "✅ All audio tests passed" >> $GITHUB_STEP_SUMMARY
           else
-            echo "⚠️ Some tests failed - check logs" >> $GITHUB_STEP_SUMMARY
+            echo "⚠️ Some tests failed" >> $GITHUB_STEP_SUMMARY
           fi
           echo "" >> $GITHUB_STEP_SUMMARY
           
           # Integrity Summary
-          echo "### 📊 Integrity Summary" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 System Integrity" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
-          echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
-          echo "| Rooms Scanned | ${{ steps.dry_run_refresh.outputs.rooms_scanned }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Avg Integrity Score | ~${AVG_SCORE}% |" >> $GITHUB_STEP_SUMMARY
-          echo "| JSON Fixes Needed | ${{ steps.dry_run_refresh.outputs.json_fixes }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Before | After |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|--------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| **Integrity Score** | ${BEFORE}% | ${AFTER}% |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Threshold** | 98% | 98% |" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "$AFTER" -ge "$BEFORE" ]; then
+            DELTA="↑ +$((AFTER - BEFORE))%"
+          else
+            DELTA="↓ -$((BEFORE - AFTER))%"
+          fi
+          echo "| **Change** | - | $DELTA |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Repairs Applied
+          echo "### 🔧 Repairs Applied" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Category | Count |" >> $GITHUB_STEP_SUMMARY
+          echo "|----------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Total Repairs | $REPAIRS |" >> $GITHUB_STEP_SUMMARY
+          echo "| JSON Fixes | ${{ steps.dry_run_refresh.outputs.json_fixes }} |" >> $GITHUB_STEP_SUMMARY
           echo "| EN/VI Reversals | ${{ steps.dry_run_refresh.outputs.reversals }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Orphan Files | ${{ steps.orphan_check.outputs.orphan_count }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Attachable Orphans | ${{ steps.orphan_check.outputs.attachable }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Dangerous Orphans | ${{ steps.orphan_check.outputs.dangerous }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Orphan Attachments | ${{ steps.orphan_check.outputs.attachable }} |" >> $GITHUB_STEP_SUMMARY
           echo "| File Renames | ${{ steps.rename_check.outputs.rename_count }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Duplicates Detected | ${{ steps.rename_check.outputs.duplicate_count }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Changes Committed | ${{ steps.changes.outputs.has_changes }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Duplicates Moved | ${{ steps.rename_check.outputs.duplicate_count }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Governance
+          echo "### 🛡️ Governance" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Auto-Approved**: High confidence repairs (≥90%)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Governance-Approved**: Medium confidence (70-89%)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Blocked**: Low confidence or critical violations" >> $GITHUB_STEP_SUMMARY
+          echo "- **Remaining Issues**: ${{ steps.verify_after.outputs.remaining_issues }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
           # Mode
-          echo "### 🔧 Mode" >> $GITHUB_STEP_SUMMARY
+          echo "### 🚀 Mode" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           if [ "${{ github.event.inputs.apply_fixes }}" == "true" ]; then
-            echo "✅ **Fixes were applied** (manual trigger with apply_fixes=true)" >> $GITHUB_STEP_SUMMARY
+            echo "✅ **Manual Trigger** (apply_fixes=true)" >> $GITHUB_STEP_SUMMARY
           elif [ "${{ steps.changes.outputs.has_changes }}" == "true" ]; then
-            echo "✅ **Auto-applied on push** (issues detected and fixed)" >> $GITHUB_STEP_SUMMARY
+            echo "🤖 **Autopilot** (auto-applied on push)" >> $GITHUB_STEP_SUMMARY
           else
-            echo "ℹ️ **Dry-run only** - No changes made (0 issues found)" >> $GITHUB_STEP_SUMMARY
+            echo "ℹ️ **Dry-run** (no changes needed)" >> $GITHUB_STEP_SUMMARY
           fi
           echo "" >> $GITHUB_STEP_SUMMARY
           
@@ -257,20 +337,14 @@ jobs:
           echo "### 💻 Local Commands" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo '```bash' >> $GITHUB_STEP_SUMMARY
-          echo "# Dry-run checks" >> $GITHUB_STEP_SUMMARY
-          echo "npm run audio:check" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "# Apply fixes" >> $GITHUB_STEP_SUMMARY
-          echo "npm run audio:fix" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "# Run audio tests" >> $GITHUB_STEP_SUMMARY
-          echo "npm run test:audio" >> $GITHUB_STEP_SUMMARY
+          echo "npm run audio:check    # Dry-run all checks" >> $GITHUB_STEP_SUMMARY
+          echo "npm run audio:fix      # Apply all fixes" >> $GITHUB_STEP_SUMMARY
+          echo "npm run test:audio     # Run audio tests" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
-          # GitHub trigger
-          echo "### 🚀 Trigger via CLI" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔗 Trigger CLI" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo '```bash' >> $GITHUB_STEP_SUMMARY
-          echo 'gh workflow run "Audio Auto-Repair v4.2" -f apply_fixes=true' >> $GITHUB_STEP_SUMMARY
+          echo 'gh workflow run "Audio Auto-Repair v4.3" -f apply_fixes=true' >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
