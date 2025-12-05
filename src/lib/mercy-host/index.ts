@@ -11,3 +11,7 @@ export * from './avatarStyles';
 export * from './types';
 export * from './engine';
 export * from './eventMap';
+export * from './personalityRules';
+export * from './memory';
+export * from './hostSignal';
+export * from './validation';
