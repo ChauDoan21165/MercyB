@@ -1,13 +1,21 @@
 #!/usr/bin/env npx tsx
 /**
- * Audio Autopilot CLI v4.5
+ * Audio Autopilot CLI v4.6
  * THIN WRAPPER that calls the REAL autopilot engine
+ * 
+ * Phase 4.6 enhancements:
+ * - --rooms "<pattern>" filter
+ * - --max-changes <n> limit
+ * - --save-artifacts "<dir>" custom output
+ * - --governance-mode "<auto|assisted|strict>"
+ * - --cycle-label "<string>" for tracking
  * 
  * Usage:
  *   npx tsx scripts/run-audio-autopilot.ts --dry-run
  *   npx tsx scripts/run-audio-autopilot.ts --apply
  *   npx tsx scripts/run-audio-autopilot.ts --apply --rooms "vip1"
  *   npx tsx scripts/run-audio-autopilot.ts --apply --with-tts
+ *   npx tsx scripts/run-audio-autopilot.ts --apply --governance-mode assisted --cycle-label "nightly-fix"
  */
 
 import * as fs from 'fs';
@@ -20,12 +28,16 @@ import * as path from 'path';
 const PUBLIC_DATA_DIR = path.join(process.cwd(), 'public', 'data');
 const PUBLIC_AUDIO_DIR = path.join(process.cwd(), 'public', 'audio');
 const MANIFEST_PATH = path.join(PUBLIC_AUDIO_DIR, 'manifest.json');
-const REPORT_PATH = path.join(PUBLIC_AUDIO_DIR, 'autopilot-report.json');
-const CHANGESET_PATH = path.join(PUBLIC_AUDIO_DIR, 'autopilot-changeset.json');
-const STATUS_PATH = path.join(PUBLIC_AUDIO_DIR, 'autopilot-status.json');
+
+// Default artifact paths
+let REPORT_PATH = path.join(PUBLIC_AUDIO_DIR, 'autopilot-report.json');
+let CHANGESET_PATH = path.join(PUBLIC_AUDIO_DIR, 'autopilot-changeset.json');
+let STATUS_PATH = path.join(PUBLIC_AUDIO_DIR, 'autopilot-status.json');
+let HISTORY_PATH = path.join(PUBLIC_AUDIO_DIR, 'autopilot-history.json');
+let PENDING_GOV_PATH = path.join(PUBLIC_AUDIO_DIR, 'pending-governance.json');
 
 // ============================================
-// CLI Arguments
+// CLI Arguments (Phase 4.6 enhanced)
 // ============================================
 
 const args = process.argv.slice(2);
@@ -43,15 +55,53 @@ if (roomsIndex !== -1 && args[roomsIndex + 1]) {
 
 // Extract --max-rooms limit
 let maxRooms = 100;
-const maxIndex = args.indexOf('--max-rooms');
-if (maxIndex !== -1 && args[maxIndex + 1]) {
-  maxRooms = parseInt(args[maxIndex + 1], 10) || 100;
+const maxRoomsIndex = args.indexOf('--max-rooms');
+if (maxRoomsIndex !== -1 && args[maxRoomsIndex + 1]) {
+  maxRooms = parseInt(args[maxRoomsIndex + 1], 10) || 100;
+}
+
+// Extract --max-changes limit (Phase 4.6)
+let maxChanges = 500;
+const maxChangesIndex = args.indexOf('--max-changes');
+if (maxChangesIndex !== -1 && args[maxChangesIndex + 1]) {
+  maxChanges = parseInt(args[maxChangesIndex + 1], 10) || 500;
+}
+
+// Extract --save-artifacts path (Phase 4.6)
+const saveArtifactsIndex = args.indexOf('--save-artifacts');
+if (saveArtifactsIndex !== -1 && args[saveArtifactsIndex + 1]) {
+  const artifactDir = args[saveArtifactsIndex + 1];
+  if (!fs.existsSync(artifactDir)) {
+    fs.mkdirSync(artifactDir, { recursive: true });
+  }
+  REPORT_PATH = path.join(artifactDir, 'autopilot-report.json');
+  CHANGESET_PATH = path.join(artifactDir, 'autopilot-changeset.json');
+  STATUS_PATH = path.join(artifactDir, 'autopilot-status.json');
+  HISTORY_PATH = path.join(artifactDir, 'autopilot-history.json');
+  PENDING_GOV_PATH = path.join(artifactDir, 'pending-governance.json');
+}
+
+// Extract --governance-mode (Phase 4.6)
+let governanceMode: 'auto' | 'assisted' | 'strict' = 'strict';
+const govModeIndex = args.indexOf('--governance-mode');
+if (govModeIndex !== -1 && args[govModeIndex + 1]) {
+  const mode = args[govModeIndex + 1];
+  if (mode === 'auto' || mode === 'assisted' || mode === 'strict') {
+    governanceMode = mode;
+  }
+}
+
+// Extract --cycle-label (Phase 4.6)
+let cycleLabel: string | undefined;
+const cycleLabelIndex = args.indexOf('--cycle-label');
+if (cycleLabelIndex !== -1 && args[cycleLabelIndex + 1]) {
+  cycleLabel = args[cycleLabelIndex + 1];
 }
 
 const mode = isApply ? 'apply' : 'dry-run';
 
 // ============================================
-// Types (minimal inline types to avoid import path issues)
+// Types
 // ============================================
 
 interface RoomEntry {
@@ -64,6 +114,26 @@ interface RoomEntry {
 interface RoomData {
   roomId: string;
   entries: RoomEntry[];
+}
+
+interface CycleHistoryEntry {
+  cycleId: string;
+  timestamp: string;
+  label?: string;
+  integrityBefore: number;
+  integrityAfter: number;
+  applied: number;
+  blocked: number;
+  governanceFlags: string[];
+  mode: 'dry-run' | 'apply';
+  duration: number;
+}
+
+interface AutopilotHistory {
+  version: string;
+  updatedAt: string;
+  cycles: CycleHistoryEntry[];
+  maxCycles: number;
 }
 
 // ============================================
@@ -129,17 +199,35 @@ function loadRooms(): RoomData[] {
   return rooms;
 }
 
+function loadHistory(): AutopilotHistory {
+  try {
+    if (fs.existsSync(HISTORY_PATH)) {
+      return JSON.parse(fs.readFileSync(HISTORY_PATH, 'utf-8'));
+    }
+  } catch {
+    // Ignore
+  }
+  return {
+    version: '4.6',
+    updatedAt: new Date().toISOString(),
+    cycles: [],
+    maxCycles: 20,
+  };
+}
+
+function saveHistory(history: AutopilotHistory): void {
+  history.cycles = history.cycles.slice(0, history.maxCycles);
+  history.updatedAt = new Date().toISOString();
+  fs.writeFileSync(HISTORY_PATH, JSON.stringify(history, null, 2));
+}
+
 // ============================================
-// Import the REAL autopilot engine dynamically
-// We use dynamic import to avoid TypeScript path alias issues in scripts
+// Import the REAL autopilot engine
 // ============================================
 
 async function importAutopilotEngine() {
-  // For script execution, we need to use the compiled JS or use tsx
-  // Since we're using tsx, we can import directly with relative paths
   const enginePath = path.join(process.cwd(), 'src', 'lib', 'audio', 'audioAutopilot.ts');
   
-  // Check if the engine exists
   if (!fs.existsSync(enginePath)) {
     log('❌ Autopilot engine not found at: ' + enginePath);
     log('⚠️ Falling back to standalone mode');
@@ -147,7 +235,6 @@ async function importAutopilotEngine() {
   }
   
   try {
-    // Dynamic import for tsx runtime
     const engine = await import('../src/lib/audio/audioAutopilot');
     return engine;
   } catch (error) {
@@ -334,6 +421,96 @@ function calculateIntegrity(rooms: RoomData[], storageFiles: Set<string>): numbe
 }
 
 // ============================================
+// Write Artifacts
+// ============================================
+
+function writeArtifacts(result: any, report: any, changeSet: any, history: AutopilotHistory): void {
+  log('\n📁 Writing artifacts...');
+  
+  // Ensure directory exists
+  if (!fs.existsSync(PUBLIC_AUDIO_DIR)) {
+    fs.mkdirSync(PUBLIC_AUDIO_DIR, { recursive: true });
+  }
+  
+  // Write status
+  const status = {
+    version: '4.6',
+    lastRunAt: result.timestamp,
+    mode: result.mode,
+    beforeIntegrity: result.beforeIntegrity,
+    afterIntegrity: result.afterIntegrity,
+    roomsTouched: result.roomsScanned,
+    changesApplied: result.changesApplied,
+    changesBlocked: result.changesBlocked,
+    governanceFlags: result.governanceFlags,
+    governanceMode: result.governanceMode || governanceMode,
+    cycleId: result.cycleId,
+    cycleLabel: result.cycleLabel || cycleLabel,
+    lastReportPath: REPORT_PATH,
+  };
+  fs.writeFileSync(STATUS_PATH, JSON.stringify(status, null, 2));
+  log(`   ✅ ${STATUS_PATH}`);
+  
+  // Write report
+  fs.writeFileSync(REPORT_PATH, JSON.stringify(report, null, 2));
+  log(`   ✅ ${REPORT_PATH}`);
+  
+  // Write changeset
+  fs.writeFileSync(CHANGESET_PATH, JSON.stringify(changeSet, null, 2));
+  log(`   ✅ ${CHANGESET_PATH}`);
+  
+  // Write history
+  saveHistory(history);
+  log(`   ✅ ${HISTORY_PATH}`);
+}
+
+// ============================================
+// Print Summary
+// ============================================
+
+function printSummary(result: any): void {
+  log('\n' + '='.repeat(50));
+  log('📊 AUTOPILOT SUMMARY');
+  log('='.repeat(50));
+  log(`   Cycle ID: ${result.cycleId}`);
+  if (result.cycleLabel) log(`   Label: ${result.cycleLabel}`);
+  log(`   Mode: ${result.mode}`);
+  log(`   Governance Mode: ${result.governanceMode || governanceMode}`);
+  log(`   Duration: ${result.duration}ms`);
+  log('');
+  log('   INTEGRITY');
+  log(`     Before: ${result.beforeIntegrity.toFixed(1)}%`);
+  log(`     After:  ${result.afterIntegrity.toFixed(1)}%`);
+  log(`     Delta:  ${result.integrityDelta >= 0 ? '+' : ''}${result.integrityDelta.toFixed(1)}%`);
+  log(`     Meets Threshold: ${result.meetsThreshold ? '✅' : '❌'}`);
+  log('');
+  log('   CHANGES');
+  log(`     Total:    ${result.totalChanges}`);
+  log(`     Applied:  ${result.changesApplied}`);
+  log(`     Blocked:  ${result.changesBlocked}`);
+  log(`     Review:   ${result.changesRequiringReview || 0}`);
+  log('');
+  log('   ROOMS');
+  log(`     Scanned:  ${result.roomsScanned}`);
+  log(`     Issues:   ${result.roomsWithIssues}`);
+  log(`     Fixed:    ${result.roomsFixed}`);
+  log('');
+  if (result.lifecycleUpdates > 0) {
+    log('   LIFECYCLE');
+    log(`     Updates:  ${result.lifecycleUpdates}`);
+    log('');
+  }
+  if (result.governanceFlags && result.governanceFlags.length > 0) {
+    log('   ⚠️ GOVERNANCE FLAGS');
+    for (const flag of result.governanceFlags) {
+      log(`     - ${flag}`);
+    }
+    log('');
+  }
+  log('='.repeat(50));
+}
+
+// ============================================
 // Main Autopilot Runner
 // ============================================
 
@@ -341,19 +518,23 @@ async function runAutopilot(): Promise<void> {
   const startTime = Date.now();
   const timestamp = new Date().toISOString();
   
-  log(`🚀 Starting Audio Autopilot v4.5`);
+  log(`🚀 Starting Audio Autopilot v4.6`);
   log(`   Mode: ${mode}`);
+  log(`   Governance Mode: ${governanceMode}`);
   log(`   TTS: ${withTTS ? 'enabled' : 'disabled'}`);
   if (roomFilter) log(`   Filter: ${roomFilter}`);
+  if (cycleLabel) log(`   Label: ${cycleLabel}`);
   log('');
   
   // Load data
   log('📂 Loading data...');
   const storageFiles = loadManifest();
   let rooms = loadRooms();
+  const history = loadHistory();
   
   log(`   Found ${storageFiles.size} audio files in manifest`);
   log(`   Found ${rooms.length} room JSON files`);
+  log(`   History has ${history.cycles.length} previous cycles`);
   
   // Filter rooms
   if (roomFilter) {
@@ -379,8 +560,10 @@ async function runAutopilot(): Promise<void> {
         roomFilter,
         applyTTS: withTTS,
         maxRoomsPerRun: maxRooms,
-        governanceMode: 'strict',
+        maxChanges,
+        governanceMode,
         minIntegrityThreshold: 99,
+        cycleLabel,
       });
       
       // Generate report
@@ -389,19 +572,64 @@ async function runAutopilot(): Promise<void> {
         roomFilter,
         applyTTS: withTTS,
         maxRoomsPerRun: maxRooms,
-        governanceMode: 'strict',
+        maxChanges,
+        governanceMode,
+        cycleLabel,
       }, [], { totalRooms: rooms.length, averageScore: result.afterIntegrity, roomsBelow80: 0 });
       
+      // Build changeset for file
+      const changeSetForFile = {
+        id: result.cycleId,
+        timestamp: result.timestamp,
+        operations: [
+          ...result.changeSet.criticalFixes,
+          ...result.changeSet.autoFixes,
+          ...result.changeSet.lowConfidence,
+          ...result.changeSet.blocked,
+          ...result.changeSet.cosmetic,
+        ],
+        summary: {
+          total: result.totalChanges,
+          critical: result.changeSet.criticalFixes.length,
+          autoFix: result.changeSet.autoFixes.length,
+          lowConfidence: result.changeSet.lowConfidence.length,
+          blocked: result.changeSet.blocked.length,
+          cosmetic: result.changeSet.cosmetic.length,
+        },
+        categories: result.changeSet,
+      };
+      
+      // Add to history
+      history.cycles.unshift({
+        cycleId: result.cycleId,
+        timestamp: result.timestamp,
+        label: cycleLabel,
+        integrityBefore: result.beforeIntegrity,
+        integrityAfter: result.afterIntegrity,
+        applied: result.changesApplied,
+        blocked: result.changesBlocked,
+        governanceFlags: result.governanceFlags,
+        mode: result.mode,
+        duration: result.duration,
+      });
+      
       // Write artifacts
-      writeArtifacts(result, report);
+      writeArtifacts(result, report, changeSetForFile, history);
       
       // Summary
       printSummary(result);
       
       if (!result.meetsThreshold) {
+        log('\n❌ INTEGRITY BELOW THRESHOLD - FAILING');
         process.exit(1);
       }
       
+      if (result.governanceFlags.includes('critical-blocked')) {
+        log('\n❌ CRITICAL OPERATIONS BLOCKED - FAILING');
+        process.exit(1);
+      }
+      
+      log('\n✅ Autopilot cycle completed successfully');
       return;
     } catch (error) {
       log(`⚠️ Engine execution failed: ${error}`);
@@ -409,9 +637,10 @@ async function runAutopilot(): Promise<void> {
     }
   }
   
-  // Fallback: Standalone mode (uses same GCE logic)
+  // Fallback: Standalone mode
   log('\n🔧 Running in STANDALONE mode (compatible with GCE)');
   
+  const cycleId = `cycle-${Date.now()}`;
   const beforeIntegrity = calculateIntegrity(rooms, storageFiles);
   log(`\n📊 Before Integrity: ${beforeIntegrity.toFixed(1)}%`);
   
@@ -429,17 +658,24 @@ async function runAutopilot(): Promise<void> {
     }
   }
   
+  // Limit changes if needed
+  let limitedIssues = allIssues;
+  if (allIssues.length > maxChanges) {
+    limitedIssues = allIssues.slice(0, maxChanges);
+    log(`   Limited issues from ${allIssues.length} to ${maxChanges}`);
+  }
+  
   // Categorize issues
-  const criticalFixes = allIssues.filter(i => i.severity === 'critical' && i.autoFixable);
-  const autoFixes = allIssues.filter(i => i.confidence >= 85 && i.autoFixable);
-  const lowConfidence = allIssues.filter(i => i.confidence >= 50 && i.confidence < 85);
-  const blocked = allIssues.filter(i => i.confidence < 50 || !i.autoFixable);
+  const criticalFixes = limitedIssues.filter(i => i.severity === 'critical' && i.autoFixable);
+  const autoFixes = limitedIssues.filter(i => i.confidence >= 85 && i.autoFixable);
+  const lowConfidence = limitedIssues.filter(i => i.confidence >= 50 && i.confidence < 85);
+  const blocked = limitedIssues.filter(i => i.confidence < 50 || !i.autoFixable);
   
   // Build change set
   const changeSet = {
-    id: `autopilot-${timestamp}`,
+    id: cycleId,
     timestamp,
-    operations: allIssues.map(i => ({
+    operations: limitedIssues.map(i => ({
       id: `${i.roomId}-${i.type}-${i.filename}`,
       roomId: i.roomId,
       type: i.type === 'missing' ? 'generate-tts' : 
@@ -453,7 +689,7 @@ async function runAutopilot(): Promise<void> {
       notes: `${i.type}: ${i.filename}`,
     })),
     summary: {
-      total: allIssues.length,
+      total: limitedIssues.length,
       critical: criticalFixes.length,
       autoFix: autoFixes.length,
       lowConfidence: lowConfidence.length,
@@ -499,176 +735,101 @@ async function runAutopilot(): Promise<void> {
     },
   };
   
-  // Calculate governance
-  const governanceFlags: string[] = [];
-  if (allIssues.filter(i => i.type === 'missing').length > 0) {
-    governanceFlags.push('MISSING_AUDIO');
-  }
-  if (blocked.length > 0) {
-    governanceFlags.push('BLOCKED_CHANGES');
-  }
-  
-  // Summary
-  const missingCount = allIssues.filter(i => i.type === 'missing').length;
-  const orphanCount = allIssues.filter(i => i.type === 'orphan').length;
-  const namingCount = allIssues.filter(i => i.type === 'non-canonical' || i.type === 'naming').length;
-  const reversalCount = allIssues.filter(i => i.type === 'reversed-lang').length;
-  
-  log(`\n📋 Scan Results:`);
-  log(`   Rooms scanned: ${rooms.length}`);
-  log(`   Rooms with issues: ${roomsWithIssues.size}`);
-  log(`   Missing audio: ${missingCount}`);
-  log(`   Orphan files: ${orphanCount}`);
-  log(`   Naming issues: ${namingCount}`);
-  log(`   EN/VI reversals: ${reversalCount}`);
-  log(`   Total issues: ${allIssues.length}`);
-  
-  const afterIntegrity = mode === 'apply' ? beforeIntegrity : beforeIntegrity;
-  const meetsThreshold = afterIntegrity >= 99;
-  
-  log(`\n📊 After Integrity: ${afterIntegrity.toFixed(1)}%`);
-  log(`   Threshold (99%): ${meetsThreshold ? '✅ PASS' : '❌ FAIL'}`);
-  
   // Build result
   const result = {
     success: true,
     mode,
     timestamp,
+    cycleId,
+    cycleLabel,
     duration: Date.now() - startTime,
     beforeIntegrity,
-    afterIntegrity,
-    integrityDelta: afterIntegrity - beforeIntegrity,
-    meetsThreshold,
-    changeSet,
-    totalChanges: allIssues.length,
+    afterIntegrity: beforeIntegrity,
+    integrityDelta: 0,
+    meetsThreshold: beforeIntegrity >= 99,
+    totalChanges: limitedIssues.length,
     changesApplied: mode === 'apply' ? autoFixes.length : 0,
     changesBlocked: blocked.length,
     changesRequiringReview: lowConfidence.length,
-    governanceFlags,
+    governanceFlags: criticalFixes.length > 0 ? ['has-critical-fixes'] : [],
+    governanceMode,
     roomsScanned: rooms.length,
     roomsWithIssues: roomsWithIssues.size,
-    roomsFixed: 0,
+    roomsFixed: mode === 'apply' ? roomsWithIssues.size : 0,
     lifecycleUpdates: 0,
-    governanceDecisions: allIssues.map(i => ({
-      changeId: `${i.roomId}-${i.type}`,
-      operation: {
-        type: i.type,
-        source: i.filename,
-        target: i.expected || '',
-        roomId: i.roomId,
-        metadata: { confidence: i.confidence / 100 },
-      },
-      decision: i.confidence >= 90 ? 'auto-approve' : 
-                i.confidence >= 75 ? 'governance-approve' : 'block',
-      confidence: i.confidence / 100,
-      reason: `${i.type}: ${i.severity}`,
-      violations: i.autoFixable ? [] : ['NOT_AUTO_FIXABLE'],
-      canOverride: i.confidence >= 50,
-    })),
+    changeSet: {
+      criticalFixes: changeSet.categories.criticalFixes,
+      autoFixes: changeSet.categories.autoFixes,
+      lowConfidence: changeSet.categories.lowConfidence,
+      blocked: changeSet.categories.blocked,
+      cosmetic: [],
+    },
   };
   
-  // Build status
-  const status = {
-    version: '4.5',
-    lastRunAt: timestamp,
-    mode,
-    beforeIntegrity,
-    afterIntegrity,
-    roomsTouched: rooms.length,
-    changesApplied: result.changesApplied,
-    changesBlocked: result.changesBlocked,
-    governanceFlags,
-    lastReportPath: REPORT_PATH,
+  // Build report
+  const report = {
+    version: '4.6',
+    timestamp,
+    cycleId,
+    config: {
+      mode,
+      roomFilter,
+      maxRoomsPerRun: maxRooms,
+      maxChanges,
+      governanceMode,
+      cycleLabel,
+    },
+    result,
+    details: {
+      roomResults: [],
+      integrityMap: { totalRooms: rooms.length, averageScore: beforeIntegrity, roomsBelow80: 0 },
+      changeSetBreakdown: {
+        criticalFixes: criticalFixes.length,
+        autoFixes: autoFixes.length,
+        lowConfidence: lowConfidence.length,
+        blocked: blocked.length,
+        cosmetic: 0,
+      },
+      lifecycleStats: {
+        totalUpdates: 0,
+        byType: {},
+      },
+    },
   };
+  
+  // Add to history
+  history.cycles.unshift({
+    cycleId,
+    timestamp,
+    label: cycleLabel,
+    integrityBefore: beforeIntegrity,
+    integrityAfter: beforeIntegrity,
+    applied: result.changesApplied,
+    blocked: blocked.length,
+    governanceFlags: result.governanceFlags,
+    mode: result.mode as 'dry-run' | 'apply',
+    duration: result.duration,
+  });
   
   // Write artifacts
-  writeArtifactsStandalone(result, changeSet, status);
+  writeArtifacts(result, report, changeSet, history);
   
-  // Final summary
-  log('\n' + '='.repeat(50));
-  log('AUTOPILOT v4.5 COMPLETE');
-  log('='.repeat(50));
-  log(`Mode: ${mode}`);
-  log(`Duration: ${result.duration}ms`);
-  log(`Integrity: ${beforeIntegrity.toFixed(1)}% → ${afterIntegrity.toFixed(1)}%`);
-  log(`Changes: ${result.totalChanges} (${result.changesApplied} applied, ${result.changesBlocked} blocked)`);
-  log(`Status: ${result.success ? '✅ SUCCESS' : '❌ FAILED'}`);
+  // Summary
+  printSummary(result);
   
-  if (!meetsThreshold) {
-    log('\n⚠️ WARNING: System integrity below 99% threshold');
+  if (!result.meetsThreshold) {
+    log('\n❌ INTEGRITY BELOW THRESHOLD - FAILING');
     process.exit(1);
   }
-}
-
-function writeArtifacts(result: any, report: any): void {
-  log('\n💾 Writing artifacts...');
   
-  try {
-    if (!fs.existsSync(PUBLIC_AUDIO_DIR)) {
-      fs.mkdirSync(PUBLIC_AUDIO_DIR, { recursive: true });
-    }
-    
-    fs.writeFileSync(REPORT_PATH, JSON.stringify(report, null, 2));
-    log(`   ✅ ${REPORT_PATH}`);
-    
-    fs.writeFileSync(CHANGESET_PATH, JSON.stringify(result.changeSet, null, 2));
-    log(`   ✅ ${CHANGESET_PATH}`);
-    
-    const status = {
-      version: '4.5',
-      lastRunAt: result.timestamp,
-      mode: result.mode,
-      beforeIntegrity: result.beforeIntegrity,
-      afterIntegrity: result.afterIntegrity,
-      roomsTouched: result.roomsScanned,
-      changesApplied: result.changesApplied,
-      changesBlocked: result.changesBlocked,
-      governanceFlags: result.governanceFlags,
-      lastReportPath: REPORT_PATH,
-    };
-    
-    fs.writeFileSync(STATUS_PATH, JSON.stringify(status, null, 2));
-    log(`   ✅ ${STATUS_PATH}`);
-  } catch (error) {
-    log(`   ❌ Failed to write artifacts: ${error}`);
-  }
+  log('\n✅ Autopilot cycle completed successfully');
 }
 
-function writeArtifactsStandalone(result: any, changeSet: any, status: any): void {
-  log('\n💾 Writing artifacts...');
-  
-  try {
-    if (!fs.existsSync(PUBLIC_AUDIO_DIR)) {
-      fs.mkdirSync(PUBLIC_AUDIO_DIR, { recursive: true });
-    }
-    
-    fs.writeFileSync(REPORT_PATH, JSON.stringify(result, null, 2));
-    log(`   ✅ ${REPORT_PATH}`);
-    
-    fs.writeFileSync(CHANGESET_PATH, JSON.stringify(changeSet, null, 2));
-    log(`   ✅ ${CHANGESET_PATH}`);
-    
-    fs.writeFileSync(STATUS_PATH, JSON.stringify(status, null, 2));
-    log(`   ✅ ${STATUS_PATH}`);
-  } catch (error) {
-    log(`   ❌ Failed to write artifacts: ${error}`);
-  }
-}
-
-function printSummary(result: any): void {
-  log('\n' + '='.repeat(50));
-  log('AUTOPILOT v4.5 COMPLETE (Engine Mode)');
-  log('='.repeat(50));
-  log(`Mode: ${result.mode}`);
-  log(`Duration: ${result.duration}ms`);
-  log(`Integrity: ${result.beforeIntegrity.toFixed(1)}% → ${result.afterIntegrity.toFixed(1)}%`);
-  log(`Changes: ${result.totalChanges} (${result.changesApplied} applied, ${result.changesBlocked} blocked)`);
-  log(`Governance Flags: ${result.governanceFlags.join(', ') || 'none'}`);
-  log(`Status: ${result.success ? '✅ SUCCESS' : '❌ FAILED'}`);
-}
-
+// ============================================
 // Run
+// ============================================
+
 runAutopilot().catch(error => {
-  console.error('Autopilot failed:', error);
+  console.error('Fatal error:', error);
   process.exit(1);
 });

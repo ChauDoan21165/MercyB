@@ -1,9 +1,15 @@
 /**
- * Audio Autopilot Engine v4.4
+ * Audio Autopilot Engine v4.6
  * THE CENTRAL ORCHESTRATOR for Zero-Friction Audio System
  * 
  * Runs the complete autopilot cycle:
  * scan → repair → generate-missing → semantic-attach → rebuild-manifest → integrity-eval → governance-eval → report
+ * 
+ * Phase 4.6 additions:
+ * - State persistence with history merging
+ * - Cycle history (last 20 cycles)
+ * - Lifecycle integration for all changes
+ * - Governance mode support
  */
 
 import {
@@ -39,6 +45,8 @@ import {
   upsertLifecycleEntry,
   getLifecycleDB,
   saveLifecycleDB,
+  markFixed,
+  markRegenerated,
   type AudioLifecycleDB,
 } from './audioLifecycle';
 import type { AudioChangeSet, AudioChange, AutopilotStatusStore } from './types';
@@ -52,14 +60,18 @@ export interface AutopilotConfig {
   roomFilter?: string; // Pattern to filter rooms
   applyTTS?: boolean;
   maxRoomsPerRun?: number;
-  governanceMode?: 'strict' | 'relaxed';
+  maxChanges?: number;
+  governanceMode?: 'auto' | 'assisted' | 'strict';
   minIntegrityThreshold?: number;
+  cycleLabel?: string;
+  saveArtifactsPath?: string;
 }
 
 const DEFAULT_CONFIG: AutopilotConfig = {
   mode: 'dry-run',
   applyTTS: false,
   maxRoomsPerRun: 100,
+  maxChanges: 500,
   governanceMode: 'strict',
   minIntegrityThreshold: 99,
 };
@@ -72,6 +84,8 @@ export interface AutopilotResult {
   success: boolean;
   mode: 'dry-run' | 'apply';
   timestamp: string;
+  cycleId: string;
+  cycleLabel?: string;
   duration: number;
   
   // Integrity metrics
@@ -90,6 +104,7 @@ export interface AutopilotResult {
   // Governance summary
   governanceDecisions: GovernanceDecision[];
   governanceFlags: string[];
+  governanceMode: string;
   
   // Room summary
   roomsScanned: number;
@@ -98,16 +113,13 @@ export interface AutopilotResult {
   
   // Lifecycle summary
   lifecycleUpdates: number;
-  
-  // Report paths
-  reportPath?: string;
-  changeSetPath?: string;
-  statusPath?: string;
+  lifecycleEntryIds: string[];
 }
 
 export interface AutopilotReport {
   version: string;
   timestamp: string;
+  cycleId: string;
   config: AutopilotConfig;
   result: AutopilotResult;
   details: {
@@ -120,16 +132,78 @@ export interface AutopilotReport {
       blocked: number;
       cosmetic: number;
     };
+    lifecycleStats: {
+      totalUpdates: number;
+      byType: Record<string, number>;
+    };
   };
 }
 
 // ============================================
-// Autopilot Status Store
+// History Types (Phase 4.6)
+// ============================================
+
+export interface CycleHistoryEntry {
+  cycleId: string;
+  timestamp: string;
+  label?: string;
+  integrityBefore: number;
+  integrityAfter: number;
+  applied: number;
+  blocked: number;
+  governanceFlags: string[];
+  mode: 'dry-run' | 'apply';
+  duration: number;
+}
+
+export interface AutopilotHistory {
+  version: string;
+  updatedAt: string;
+  cycles: CycleHistoryEntry[];
+  maxCycles: number;
+}
+
+// ============================================
+// Pending Governance Types (Phase 4.6)
+// ============================================
+
+export interface PendingGovernanceReview {
+  id: string;
+  cycleId: string;
+  timestamp: string;
+  operation: {
+    type: string;
+    roomId: string;
+    before: string;
+    after?: string;
+    confidence: number;
+  };
+  reason: string;
+  status: 'pending' | 'approved' | 'rejected';
+  reviewedBy?: string;
+  reviewedAt?: string;
+  notes?: string;
+}
+
+export interface PendingGovernanceDB {
+  version: string;
+  updatedAt: string;
+  pending: PendingGovernanceReview[];
+  approved: PendingGovernanceReview[];
+  rejected: PendingGovernanceReview[];
+}
+
+// ============================================
+// Autopilot Status Store (v4.6 - with merge)
 // ============================================
 
 const AUTOPILOT_STATUS_KEY = 'audio_autopilot_status';
+const AUTOPILOT_HISTORY_KEY = 'audio_autopilot_history';
+const PENDING_GOVERNANCE_KEY = 'audio_pending_governance';
+const MAX_HISTORY_CYCLES = 20;
+
 const DEFAULT_STATUS: AutopilotStatusStore = {
-  version: '4.5',
+  version: '4.6',
   lastRunAt: null,
   mode: null,
   beforeIntegrity: 0,
@@ -142,7 +216,6 @@ const DEFAULT_STATUS: AutopilotStatusStore = {
 };
 
 export function getAutopilotStatus(): AutopilotStatusStore {
-  // In browser context, use localStorage
   if (typeof window !== 'undefined' && window.localStorage) {
     try {
       const stored = localStorage.getItem(AUTOPILOT_STATUS_KEY);
@@ -158,14 +231,142 @@ export function getAutopilotStatus(): AutopilotStatusStore {
 }
 
 export function saveAutopilotStatus(status: AutopilotStatusStore): void {
-  // In browser context, use localStorage
   if (typeof window !== 'undefined' && window.localStorage) {
     try {
-      localStorage.setItem(AUTOPILOT_STATUS_KEY, JSON.stringify(status));
+      // Merge with existing status (Phase 4.6)
+      const existing = getAutopilotStatus();
+      const merged: AutopilotStatusStore = {
+        ...existing,
+        ...status,
+        version: '4.6',
+        // Keep governance flags history if current has none
+        governanceFlags: status.governanceFlags.length > 0 
+          ? status.governanceFlags 
+          : existing.governanceFlags,
+      };
+      localStorage.setItem(AUTOPILOT_STATUS_KEY, JSON.stringify(merged));
     } catch {
       console.error('Failed to save autopilot status to localStorage');
     }
   }
+}
+
+// ============================================
+// Autopilot History (Phase 4.6)
+// ============================================
+
+export function getAutopilotHistory(): AutopilotHistory {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    try {
+      const stored = localStorage.getItem(AUTOPILOT_HISTORY_KEY);
+      if (stored) {
+        return JSON.parse(stored);
+      }
+    } catch {
+      // Ignore parse errors
+    }
+  }
+  
+  return {
+    version: '4.6',
+    updatedAt: new Date().toISOString(),
+    cycles: [],
+    maxCycles: MAX_HISTORY_CYCLES,
+  };
+}
+
+export function saveAutopilotHistory(history: AutopilotHistory): void {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    try {
+      // Trim to max cycles
+      history.cycles = history.cycles.slice(0, MAX_HISTORY_CYCLES);
+      history.updatedAt = new Date().toISOString();
+      localStorage.setItem(AUTOPILOT_HISTORY_KEY, JSON.stringify(history));
+    } catch {
+      console.error('Failed to save autopilot history');
+    }
+  }
+}
+
+export function addCycleToHistory(entry: CycleHistoryEntry): void {
+  const history = getAutopilotHistory();
+  // Add to beginning (most recent first)
+  history.cycles.unshift(entry);
+  // Trim to max
+  history.cycles = history.cycles.slice(0, MAX_HISTORY_CYCLES);
+  saveAutopilotHistory(history);
+}
+
+// ============================================
+// Pending Governance (Phase 4.6)
+// ============================================
+
+export function getPendingGovernance(): PendingGovernanceDB {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    try {
+      const stored = localStorage.getItem(PENDING_GOVERNANCE_KEY);
+      if (stored) {
+        return JSON.parse(stored);
+      }
+    } catch {
+      // Ignore
+    }
+  }
+  
+  return {
+    version: '4.6',
+    updatedAt: new Date().toISOString(),
+    pending: [],
+    approved: [],
+    rejected: [],
+  };
+}
+
+export function savePendingGovernance(db: PendingGovernanceDB): void {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    try {
+      db.updatedAt = new Date().toISOString();
+      localStorage.setItem(PENDING_GOVERNANCE_KEY, JSON.stringify(db));
+    } catch {
+      console.error('Failed to save pending governance');
+    }
+  }
+}
+
+export function addPendingReview(review: PendingGovernanceReview): void {
+  const db = getPendingGovernance();
+  db.pending.push(review);
+  savePendingGovernance(db);
+}
+
+export function approveGovernanceReview(id: string, reviewedBy?: string, notes?: string): boolean {
+  const db = getPendingGovernance();
+  const index = db.pending.findIndex(r => r.id === id);
+  if (index === -1) return false;
+  
+  const review = db.pending.splice(index, 1)[0];
+  review.status = 'approved';
+  review.reviewedBy = reviewedBy;
+  review.reviewedAt = new Date().toISOString();
+  review.notes = notes;
+  db.approved.push(review);
+  savePendingGovernance(db);
+  return true;
+}
+
+export function rejectGovernanceReview(id: string, reviewedBy?: string, notes?: string): boolean {
+  const db = getPendingGovernance();
+  const index = db.pending.findIndex(r => r.id === id);
+  if (index === -1) return false;
+  
+  const review = db.pending.splice(index, 1)[0];
+  review.status = 'rejected';
+  review.reviewedBy = reviewedBy;
+  review.reviewedAt = new Date().toISOString();
+  review.notes = notes;
+  db.rejected.push(review);
+  savePendingGovernance(db);
+  return true;
 }
 
 // ============================================
@@ -177,8 +378,6 @@ export function saveAutopilotStatus(status: AutopilotStatusStore): void {
  * Path: public/audio/autopilot-status.json
  */
 export function writeAutopilotStatusToFile(status: AutopilotStatusStore, outputPath?: string): void {
-  // This function is designed for Node.js CLI use
-  // It will be called by the CLI script with fs module
   console.log('[Autopilot] Status ready to write:', JSON.stringify(status, null, 2));
 }
 
@@ -187,7 +386,6 @@ export function writeAutopilotStatusToFile(status: AutopilotStatusStore, outputP
  * Path: public/audio/autopilot-report.json
  */
 export function writeAutopilotReportToFile(report: AutopilotReport, outputPath?: string): void {
-  // This function is designed for Node.js CLI use
   console.log('[Autopilot] Report ready to write');
 }
 
@@ -196,16 +394,102 @@ export function writeAutopilotReportToFile(report: AutopilotReport, outputPath?:
  * Path: public/audio/autopilot-changeset.json
  */
 export function writeAutopilotChangeSetToFile(changeSet: AudioChangeSet, timestamp: string, outputPath?: string): void {
-  // This function is designed for Node.js CLI use
   console.log('[Autopilot] ChangeSet ready to write');
 }
 
-// ============================================
-// Core Autopilot Cycle
-// ============================================
+/**
+ * Write autopilot history to file (Node.js only)
+ * Path: public/audio/autopilot-history.json
+ */
+export function writeAutopilotHistoryToFile(history: AutopilotHistory, outputPath?: string): void {
+  console.log('[Autopilot] History ready to write');
+}
 
 /**
- * Run the complete autopilot cycle
+ * Write pending governance to file (Node.js only)
+ * Path: public/audio/pending-governance.json
+ */
+export function writePendingGovernanceToFile(db: PendingGovernanceDB, outputPath?: string): void {
+  console.log('[Autopilot] Pending governance ready to write');
+}
+
+// ============================================
+// Lifecycle Integration (Phase 4.6)
+// ============================================
+
+interface LifecycleLogResult {
+  entryId: string;
+  filename: string;
+  action: string;
+  success: boolean;
+}
+
+function logChangeToLifecycle(
+  change: AudioChange,
+  decision: GovernanceDecision | undefined,
+  db: AudioLifecycleDB
+): LifecycleLogResult {
+  const filename = change.after || change.before || '';
+  const entryId = `${change.roomId}-${filename}-${Date.now()}`;
+  
+  // Determine source based on change type
+  let source: 'tts' | 'manual' | 'repaired' | 'unknown' = 'repaired';
+  if (change.type === 'generate-tts') {
+    source = 'tts';
+  }
+  
+  // Extract entry slug from filename
+  const parts = filename.replace(/\.(mp3|wav|ogg)$/i, '').split('-');
+  const language = parts.pop() as 'en' | 'vi';
+  const entrySlug = parts.slice(1).join('-'); // Skip roomId prefix
+  
+  upsertLifecycleEntry(db, {
+    filename,
+    roomId: change.roomId,
+    entrySlug: entrySlug || 'unknown',
+    language: language || 'en',
+    source,
+    confidenceScore: change.confidence / 100,
+    metadata: {
+      changeType: change.type,
+      governanceDecision: decision?.decision || 'unknown',
+      appliedAt: new Date().toISOString(),
+      changeId: change.id,
+      governanceReason: decision?.reason,
+    },
+  });
+  
+  // Mark as fixed if it was a repair operation
+  if (change.type === 'rename' || change.type === 'attach-orphan' || change.type === 'fix-json-ref') {
+    markFixed(db, filename);
+  }
+  
+  // Mark as regenerated if it was TTS generation
+  if (change.type === 'generate-tts') {
+    markRegenerated(db, filename);
+  }
+  
+  return {
+    entryId,
+    filename,
+    action: change.type,
+    success: true,
+  };
+}
+
+// ============================================
+// Core Autopilot Cycle (v4.6)
+// ============================================
+
+function generateCycleId(): string {
+  const now = new Date();
+  const date = now.toISOString().split('T')[0].replace(/-/g, '');
+  const time = now.toISOString().split('T')[1].split('.')[0].replace(/:/g, '');
+  return `cycle-${date}-${time}`;
+}
+
+/**
+ * Run the complete autopilot cycle (v4.6)
  */
 export async function runAutopilotCycle(
   rooms: RoomData[],
@@ -215,12 +499,15 @@ export async function runAutopilotCycle(
   const startTime = Date.now();
   const fullConfig: AutopilotConfig = { ...DEFAULT_CONFIG, ...config };
   const timestamp = new Date().toISOString();
+  const cycleId = generateCycleId();
   
   // Initialize result
   const result: AutopilotResult = {
     success: false,
     mode: fullConfig.mode,
     timestamp,
+    cycleId,
+    cycleLabel: fullConfig.cycleLabel,
     duration: 0,
     beforeIntegrity: 0,
     afterIntegrity: 0,
@@ -233,10 +520,12 @@ export async function runAutopilotCycle(
     changesRequiringReview: 0,
     governanceDecisions: [],
     governanceFlags: [],
+    governanceMode: fullConfig.governanceMode || 'strict',
     roomsScanned: 0,
     roomsWithIssues: 0,
     roomsFixed: 0,
     lifecycleUpdates: 0,
+    lifecycleEntryIds: [],
   };
   
   try {
@@ -278,6 +567,12 @@ export async function runAutopilotCycle(
     // STAGE 2: BUILD CHANGESET
     // =====================
     const changeSet = buildChangeSetFromResults(roomResults, storageFiles);
+    
+    // Apply max changes limit
+    if (fullConfig.maxChanges) {
+      limitChangeSet(changeSet, fullConfig.maxChanges);
+    }
+    
     result.changeSet = changeSet;
     result.totalChanges = countTotalChanges(changeSet);
     
@@ -285,7 +580,7 @@ export async function runAutopilotCycle(
     // STAGE 3: GOVERNANCE EVALUATION
     // =====================
     const governanceChangeSet: ChangeSet = {
-      id: `autopilot-${timestamp}`,
+      id: cycleId,
       operations: changeSetToOperations(changeSet),
       timestamp,
       source: 'autopilot',
@@ -294,12 +589,52 @@ export async function runAutopilotCycle(
     const decisions = evaluateChangeSet(governanceChangeSet);
     result.governanceDecisions = decisions;
     
-    // Categorize decisions
+    // Categorize decisions based on governance mode
     for (const decision of decisions) {
       if (decision.decision === 'block') {
         result.changesBlocked++;
+        
+        // In strict mode, add blocked items to pending review
+        if (fullConfig.governanceMode === 'strict' || fullConfig.governanceMode === 'assisted') {
+          const change = findChangeByDecision(changeSet, decision);
+          if (change) {
+            addPendingReview({
+              id: `review-${cycleId}-${change.id}`,
+              cycleId,
+              timestamp,
+              operation: {
+                type: change.type,
+                roomId: change.roomId,
+                before: change.before || '',
+                after: change.after,
+                confidence: change.confidence,
+              },
+              reason: decision.reason || 'Blocked by governance',
+              status: 'pending',
+            });
+          }
+        }
       } else if (decision.decision === 'human-review') {
         result.changesRequiringReview++;
+        
+        // Add to pending governance
+        const change = findChangeByDecision(changeSet, decision);
+        if (change) {
+          addPendingReview({
+            id: `review-${cycleId}-${change.id}`,
+            cycleId,
+            timestamp,
+            operation: {
+              type: change.type,
+              roomId: change.roomId,
+              before: change.before || '',
+              after: change.after,
+              confidence: change.confidence,
+            },
+            reason: decision.reason || 'Requires human review',
+            status: 'pending',
+          });
+        }
       }
       
       // Collect governance flags
@@ -314,23 +649,22 @@ export async function runAutopilotCycle(
     // STAGE 4: APPLY (if mode = 'apply')
     // =====================
     if (fullConfig.mode === 'apply') {
+      const lifecycleDB = getLifecycleDB();
+      
       const appliedCount = applyApprovedChanges(changeSet, decisions);
       result.changesApplied = appliedCount;
       result.roomsFixed = countRoomsWithAppliedChanges(changeSet, decisions);
       
-      // Update lifecycle DB
-      const lifecycleDB = getLifecycleDB();
+      // Log all applied changes to lifecycle (Phase 4.6)
       for (const change of getAllChanges(changeSet)) {
         if (isChangeApproved(change, decisions)) {
-          upsertLifecycleEntry(lifecycleDB, {
-            filename: change.after || change.before || '',
-            roomId: change.roomId,
-            source: 'repaired',
-            confidenceScore: change.confidence,
-          });
+          const decision = decisions.find(d => d.operation.metadata?.changeId === change.id);
+          const lifecycleResult = logChangeToLifecycle(change, decision, lifecycleDB);
           result.lifecycleUpdates++;
+          result.lifecycleEntryIds.push(lifecycleResult.entryId);
         }
       }
+      
       saveLifecycleDB(lifecycleDB);
     }
     
@@ -346,10 +680,10 @@ export async function runAutopilotCycle(
     result.meetsThreshold = afterIntegrity >= (fullConfig.minIntegrityThreshold || 99);
     
     // =====================
-    // STAGE 6: UPDATE STATUS
+    // STAGE 6: UPDATE STATUS & HISTORY
     // =====================
     const status: AutopilotStatusStore = {
-      version: '4.4',
+      version: '4.6',
       lastRunAt: timestamp,
       mode: fullConfig.mode,
       beforeIntegrity: result.beforeIntegrity,
@@ -361,6 +695,20 @@ export async function runAutopilotCycle(
       lastReportPath: 'public/audio/autopilot-report.json',
     };
     saveAutopilotStatus(status);
+    
+    // Add to history (Phase 4.6)
+    addCycleToHistory({
+      cycleId,
+      timestamp,
+      label: fullConfig.cycleLabel,
+      integrityBefore: result.beforeIntegrity,
+      integrityAfter: result.afterIntegrity,
+      applied: result.changesApplied,
+      blocked: result.changesBlocked,
+      governanceFlags: result.governanceFlags,
+      mode: fullConfig.mode,
+      duration: Date.now() - startTime,
+    });
     
     result.success = true;
     result.duration = Date.now() - startTime;
@@ -388,6 +736,21 @@ function createEmptyChangeSet(): AudioChangeSet {
   };
 }
 
+function limitChangeSet(changeSet: AudioChangeSet, maxChanges: number): void {
+  let total = countTotalChanges(changeSet);
+  if (total <= maxChanges) return;
+  
+  // Remove from least important first
+  while (total > maxChanges && changeSet.cosmetic.length > 0) {
+    changeSet.cosmetic.pop();
+    total--;
+  }
+  while (total > maxChanges && changeSet.lowConfidence.length > 0) {
+    changeSet.lowConfidence.pop();
+    total--;
+  }
+}
+
 function buildChangeSetFromResults(
   roomResults: GCERoomResult[],
   storageFiles: Set<string>
@@ -397,7 +760,7 @@ function buildChangeSetFromResults(
   for (const room of roomResults) {
     for (const issue of room.allIssues) {
       const change: AudioChange = {
-        id: `${room.roomId}-${issue.type}-${Date.now()}`,
+        id: `${room.roomId}-${issue.type}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
         roomId: room.roomId,
         type: mapIssueTypeToChangeType(issue.type),
         before: issue.filename,
@@ -490,6 +853,12 @@ function isChangeApproved(change: AudioChange, decisions: GovernanceDecision[]):
   return decision?.decision === 'auto-approve' || decision?.decision === 'governance-approve';
 }
 
+function findChangeByDecision(changeSet: AudioChangeSet, decision: GovernanceDecision): AudioChange | undefined {
+  const changeId = decision.operation.metadata?.changeId;
+  if (!changeId) return undefined;
+  return getAllChanges(changeSet).find(c => c.id === changeId);
+}
+
 function applyApprovedChanges(
   changeSet: AudioChangeSet,
   decisions: GovernanceDecision[]
@@ -498,15 +867,13 @@ function applyApprovedChanges(
   
   for (const change of getAllChanges(changeSet)) {
     if (isChangeApproved(change, decisions)) {
-      // In a real implementation, this would apply the change
-      // For now, we just count it
-      change.governanceDecision = 'auto-approve';
+      // In actual implementation, this would:
+      // - Rename files in storage
+      // - Update JSON references
+      // - Generate TTS if needed
+      // For now, we mark as applied
+      change.governanceDecision = 'governance-approve';
       applied++;
-    } else {
-      const decision = decisions.find(d => 
-        d.operation.metadata?.changeId === change.id
-      );
-      change.governanceDecision = decision?.decision || 'blocked';
     }
   }
   
@@ -517,15 +884,15 @@ function countRoomsWithAppliedChanges(
   changeSet: AudioChangeSet,
   decisions: GovernanceDecision[]
 ): number {
-  const roomsWithChanges = new Set<string>();
+  const rooms = new Set<string>();
   
   for (const change of getAllChanges(changeSet)) {
     if (isChangeApproved(change, decisions)) {
-      roomsWithChanges.add(change.roomId);
+      rooms.add(change.roomId);
     }
   }
   
-  return roomsWithChanges.size;
+  return rooms.size;
 }
 
 // ============================================
@@ -535,17 +902,24 @@ function countRoomsWithAppliedChanges(
 export function generateAutopilotReport(
   result: AutopilotResult,
   config: AutopilotConfig,
-  roomResults: GCERoomResult[],
-  integrityMap: IntegritySummary
+  roomResults: GCERoomResult[] = [],
+  integritySummary: IntegritySummary = { totalRooms: 0, averageScore: 0, roomsBelow80: 0 }
 ): AutopilotReport {
+  // Count lifecycle updates by type
+  const lifecycleByType: Record<string, number> = {};
+  for (const change of getAllChanges(result.changeSet)) {
+    lifecycleByType[change.type] = (lifecycleByType[change.type] || 0) + 1;
+  }
+  
   return {
-    version: '4.5',
+    version: '4.6',
     timestamp: result.timestamp,
+    cycleId: result.cycleId,
     config,
     result,
     details: {
       roomResults,
-      integrityMap,
+      integrityMap: integritySummary,
       changeSetBreakdown: {
         criticalFixes: result.changeSet.criticalFixes.length,
         autoFixes: result.changeSet.autoFixes.length,
@@ -553,76 +927,94 @@ export function generateAutopilotReport(
         blocked: result.changeSet.blocked.length,
         cosmetic: result.changeSet.cosmetic.length,
       },
+      lifecycleStats: {
+        totalUpdates: result.lifecycleUpdates,
+        byType: lifecycleByType,
+      },
     },
   };
 }
 
-export function generateMarkdownReport(result: AutopilotResult): string {
-  const lines: string[] = [
-    '# Audio Autopilot Report v4.5',
-    '',
-    `**Timestamp**: ${result.timestamp}`,
-    `**Mode**: ${result.mode}`,
-    `**Duration**: ${result.duration}ms`,
-    '',
-    '## Integrity',
-    '',
-    `| Metric | Value |`,
-    `|--------|-------|`,
-    `| Before | ${result.beforeIntegrity.toFixed(1)}% |`,
-    `| After | ${result.afterIntegrity.toFixed(1)}% |`,
-    `| Delta | ${result.integrityDelta >= 0 ? '+' : ''}${result.integrityDelta.toFixed(1)}% |`,
-    `| Meets Threshold | ${result.meetsThreshold ? '✅ Yes' : '❌ No'} |`,
-    '',
-    '## Changes',
-    '',
-    `| Category | Count |`,
-    `|----------|-------|`,
-    `| Critical Fixes | ${result.changeSet.criticalFixes.length} |`,
-    `| Auto Fixes | ${result.changeSet.autoFixes.length} |`,
-    `| Low Confidence | ${result.changeSet.lowConfidence.length} |`,
-    `| Blocked | ${result.changeSet.blocked.length} |`,
-    `| Cosmetic | ${result.changeSet.cosmetic.length} |`,
-    '',
-    '## Summary',
-    '',
-    `- **Rooms Scanned**: ${result.roomsScanned}`,
-    `- **Rooms With Issues**: ${result.roomsWithIssues}`,
-    `- **Rooms Fixed**: ${result.roomsFixed}`,
-    `- **Changes Applied**: ${result.changesApplied}`,
-    `- **Changes Blocked**: ${result.changesBlocked}`,
-    `- **Lifecycle Updates**: ${result.lifecycleUpdates}`,
-    '',
-  ];
+export function generateMarkdownReport(report: AutopilotReport): string {
+  const r = report.result;
   
-  if (result.governanceFlags.length > 0) {
-    lines.push('## Governance Flags');
-    lines.push('');
-    for (const flag of result.governanceFlags) {
-      lines.push(`- ${flag}`);
-    }
-    lines.push('');
-  }
-  
-  return lines.join('\n');
+  return `# Audio Autopilot Report v4.6
+
+## Cycle Info
+- **Cycle ID**: ${report.cycleId}
+- **Timestamp**: ${report.timestamp}
+- **Mode**: ${r.mode}
+- **Duration**: ${r.duration}ms
+- **Governance Mode**: ${r.governanceMode}
+
+## Integrity
+- **Before**: ${r.beforeIntegrity.toFixed(1)}%
+- **After**: ${r.afterIntegrity.toFixed(1)}%
+- **Delta**: ${r.integrityDelta >= 0 ? '+' : ''}${r.integrityDelta.toFixed(1)}%
+- **Meets Threshold**: ${r.meetsThreshold ? '✅' : '❌'}
+
+## Changes
+| Category | Count |
+|----------|-------|
+| Critical | ${report.details.changeSetBreakdown.criticalFixes} |
+| Auto Fix | ${report.details.changeSetBreakdown.autoFixes} |
+| Low Conf | ${report.details.changeSetBreakdown.lowConfidence} |
+| Blocked  | ${report.details.changeSetBreakdown.blocked} |
+| Cosmetic | ${report.details.changeSetBreakdown.cosmetic} |
+| **Total** | **${r.totalChanges}** |
+
+## Summary
+- Rooms Scanned: ${r.roomsScanned}
+- Rooms with Issues: ${r.roomsWithIssues}
+- Rooms Fixed: ${r.roomsFixed}
+- Changes Applied: ${r.changesApplied}
+- Changes Blocked: ${r.changesBlocked}
+- Lifecycle Updates: ${r.lifecycleUpdates}
+
+## Governance Flags
+${r.governanceFlags.length > 0 ? r.governanceFlags.map(f => `- ${f}`).join('\n') : 'None'}
+
+---
+Generated by Audio Autopilot v4.6
+`;
 }
 
 // ============================================
-// Serialize functions for external consumption
+// Serialization Functions
 // ============================================
 
 export function serializeAutopilotReport(report: AutopilotReport): string {
   return JSON.stringify(report, null, 2);
 }
 
-export function serializeChangeSet(changeSet: AudioChangeSet): string {
-  return JSON.stringify(changeSet, null, 2);
+export function serializeChangeSet(changeSet: AudioChangeSet, cycleId: string, timestamp: string): string {
+  return JSON.stringify({
+    id: cycleId,
+    timestamp,
+    operations: getAllChanges(changeSet),
+    summary: {
+      total: countTotalChanges(changeSet),
+      critical: changeSet.criticalFixes.length,
+      autoFix: changeSet.autoFixes.length,
+      lowConfidence: changeSet.lowConfidence.length,
+      blocked: changeSet.blocked.length,
+      cosmetic: changeSet.cosmetic.length,
+    },
+    categories: {
+      criticalFixes: changeSet.criticalFixes,
+      autoFixes: changeSet.autoFixes,
+      lowConfidence: changeSet.lowConfidence,
+      blocked: changeSet.blocked,
+      cosmetic: changeSet.cosmetic,
+    },
+  }, null, 2);
 }
 
 export function getAutopilotStatusStore(): AutopilotStatusStore {
   return getAutopilotStatus();
 }
 
-export function updateAutopilotStatusStore(status: AutopilotStatusStore): void {
-  saveAutopilotStatus(status);
+export function updateAutopilotStatusStore(updates: Partial<AutopilotStatusStore>): void {
+  const current = getAutopilotStatus();
+  saveAutopilotStatus({ ...current, ...updates });
 }

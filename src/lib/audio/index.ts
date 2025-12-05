@@ -193,12 +193,22 @@ export type {
   AudioSystemHealth,
 } from './types';
 
-// Autopilot Engine (Phase 4.5 - Full Integration)
+// Autopilot Engine (Phase 4.6 - Full Integration with History & Governance)
 export {
   // Core autopilot functions
   runAutopilotCycle,
   getAutopilotStatus,
   saveAutopilotStatus,
+  // History functions (Phase 4.6)
+  getAutopilotHistory,
+  saveAutopilotHistory,
+  addCycleToHistory,
+  // Pending governance functions (Phase 4.6)
+  getPendingGovernance,
+  savePendingGovernance,
+  addPendingReview,
+  approveGovernanceReview,
+  rejectGovernanceReview,
   // Report generation
   generateAutopilotReport,
   generateMarkdownReport,
@@ -207,10 +217,20 @@ export {
   serializeChangeSet,
   getAutopilotStatusStore,
   updateAutopilotStatusStore,
+  // File writing functions
+  writeAutopilotStatusToFile,
+  writeAutopilotReportToFile,
+  writeAutopilotChangeSetToFile,
+  writeAutopilotHistoryToFile,
+  writePendingGovernanceToFile,
   // Types
   type AutopilotConfig,
   type AutopilotResult,
   type AutopilotReport,
+  type CycleHistoryEntry,
+  type AutopilotHistory,
+  type PendingGovernanceReview,
+  type PendingGovernanceDB,
 } from './audioAutopilot';
 
 // Re-export unified types for CLI/CI consumption
