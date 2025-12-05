@@ -112,6 +112,7 @@ export default function AudioCoverage() {
       "presentVi",
       "missingViCount",
       "missingViFilenames",
+      "namingViolations",
     ];
 
     const rows = filteredRooms.map((room) => [
@@ -126,6 +127,7 @@ export default function AudioCoverage() {
       room.presentVi.toString(),
       room.missingVi.length.toString(),
       room.missingVi.join(";"),
+      (room.namingViolations || []).join(";"),
     ]);
 
     const csvContent = [
@@ -261,7 +263,7 @@ export default function AudioCoverage() {
         {/* Summary Cards */}
         {report && !isLoading && (
           <>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
               <Card className="border border-gray-200">
                 <CardContent className="py-4">
                   <div className="text-2xl font-bold text-black">
@@ -300,6 +302,14 @@ export default function AudioCoverage() {
                     {report.summary.totalMissingVi}
                   </div>
                   <div className="text-sm text-gray-600">Missing VI</div>
+                </CardContent>
+              </Card>
+              <Card className="border border-gray-200">
+                <CardContent className="py-4">
+                  <div className={`text-2xl font-bold ${(report.summary.totalNamingViolations || 0) > 0 ? 'text-amber-600' : 'text-green-600'}`}>
+                    {report.summary.totalNamingViolations || 0}
+                  </div>
+                  <div className="text-sm text-gray-600">Naming Issues</div>
                 </CardContent>
               </Card>
             </div>
@@ -497,6 +507,24 @@ export default function AudioCoverage() {
                   <div className="flex items-center gap-2 text-green-600 py-2">
                     <CheckCircle className="h-4 w-4" />
                     All VI audio present ✅
+                  </div>
+                )}
+
+                {selectedRoom.namingViolations && selectedRoom.namingViolations.length > 0 && (
+                  <div>
+                    <h4 className="font-semibold text-black mb-2 flex items-center gap-2">
+                      <AlertTriangle className="h-4 w-4 text-amber-500" />
+                      Naming Violations ({selectedRoom.namingViolations.length})
+                    </h4>
+                    <ScrollArea className="h-32 border rounded p-2 bg-amber-50">
+                      <div className="space-y-1">
+                        {selectedRoom.namingViolations.map((issue, i) => (
+                          <div key={i} className="font-mono text-xs text-amber-700">
+                            {issue}
+                          </div>
+                        ))}
+                      </div>
+                    </ScrollArea>
                   </div>
                 )}
               </div>
