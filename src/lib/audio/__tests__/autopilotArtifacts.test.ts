@@ -5,17 +5,8 @@
  * artifacts maintain their expected structure after round-trips.
  */
 
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import type { AudioChangeSet, AudioChange, AutopilotStatusStore } from '../types';
-
-// Mock the autopilot module functions since they may have side effects
-vi.mock('../audioAutopilot', async () => {
-  const actual = await vi.importActual('../audioAutopilot');
-  return {
-    ...actual,
-    // Only mock file system operations if needed
-  };
-});
 
 describe('Autopilot artifacts (Phase 4.7)', () => {
   describe('AutopilotStatusStore serialization', () => {
@@ -148,13 +139,10 @@ describe('Autopilot artifacts (Phase 4.7)', () => {
       const json = JSON.stringify(changeSet, null, 2);
       const parsed = JSON.parse(json) as AudioChangeSet;
 
-      expect(Object.keys(parsed)).toEqual([
-        'criticalFixes',
-        'autoFixes',
-        'lowConfidence',
-        'blocked',
-        'cosmetic',
-      ]);
+      // Use sorted comparison to avoid brittle key-order assumptions
+      expect(Object.keys(parsed).sort()).toEqual(
+        ['criticalFixes', 'autoFixes', 'lowConfidence', 'blocked', 'cosmetic'].sort()
+      );
     });
   });
 
