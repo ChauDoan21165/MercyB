@@ -1,4 +1,4 @@
-name: Audio Auto-Repair v4.6
+name: Audio Auto-Repair v4.7
 
 on:
   push:
@@ -35,7 +35,7 @@ on:
           - deep
 
 # ============================================
-# CONCURRENCY: Job-level mutex (Phase 4.6)
+# CONCURRENCY: Job-level mutex (Phase 4.7)
 # Only one autopilot run at a time per branch
 # ============================================
 concurrency:
@@ -44,7 +44,7 @@ concurrency:
 
 jobs:
   # ============================================
-  # JOB 1: AUTOPILOT CYCLE (v4.6)
+  # JOB 1: AUTOPILOT CYCLE (v4.7)
   # ============================================
   run-autopilot-cycle:
     runs-on: ubuntu-latest
@@ -78,11 +78,15 @@ jobs:
       - name: Run Audio Tests
         id: audio_tests
         run: |
+          set -o pipefail
           npx vitest run src/lib/audio --reporter=verbose 2>&1 | tee test-results.log
-          if [ $? -eq 0 ]; then
+          EXIT_CODE=${PIPESTATUS[0]}
+          if [ "$EXIT_CODE" -eq 0 ]; then
             echo "tests_passed=true" >> $GITHUB_OUTPUT
           else
             echo "tests_passed=false" >> $GITHUB_OUTPUT
+            # Make the step itself fail so the job stops early
+            exit $EXIT_CODE
           fi
 
       - name: Enforce Test Pass
@@ -135,7 +139,7 @@ jobs:
           eval $CMD 2>&1 | tee autopilot-output.log
 
       # ============================================
-      # PHASE 3: VALIDATE ARTIFACTS (Phase 4.6)
+      # PHASE 3: VALIDATE ARTIFACTS (Phase 4.7)
       # ============================================
       
       - name: Validate Artifacts
@@ -167,7 +171,39 @@ jobs:
           fi
 
       # ============================================
-      # PHASE 4: READ METRICS FROM ARTIFACTS (Phase 4.6)
+      # PHASE 3.5: VALIDATE STATUS SCHEMA (Phase 4.7)
+      # ============================================
+      
+      - name: Validate Status Schema
+        id: validate_schema
+        if: success()
+        run: |
+          STATUS_FILE="public/audio/autopilot-status.json"
+          if [ ! -f "$STATUS_FILE" ]; then
+            echo "⚠️ Status file missing - skipping schema validation"
+            echo "schema_valid=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Must have numeric fields the workflow reads
+          if jq -e '
+            has("beforeIntegrity") and
+            has("afterIntegrity") and
+            has("changesApplied") and
+            has("changesBlocked") and
+            has("roomsTouched")
+          ' "$STATUS_FILE" >/dev/null; then
+            echo "✅ Status schema looks good"
+            echo "schema_valid=true" >> $GITHUB_OUTPUT
+          else
+            echo "❌ Status schema invalid – required fields missing"
+            cat "$STATUS_FILE"
+            echo "schema_valid=false" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+      # ============================================
+      # PHASE 4: READ METRICS FROM ARTIFACTS (Phase 4.7)
       # ============================================
       
       - name: Read Metrics from Artifacts
@@ -218,8 +254,11 @@ jobs:
             echo "changes_applied=$APPLIED" >> $GITHUB_OUTPUT
             echo "changes_blocked=$BLOCKED" >> $GITHUB_OUTPUT
             
+            # Guard against empty values in fallback mode
             AFTER_INT=${AFTER%.*}
-            if [ "$AFTER_INT" -ge 99 ]; then
+            if [ -z "$AFTER" ] || [ -z "$AFTER_INT" ]; then
+              echo "meets_threshold=false" >> $GITHUB_OUTPUT
+            elif [ "$AFTER_INT" -ge 99 ]; then
               echo "meets_threshold=true" >> $GITHUB_OUTPUT
             else
               echo "meets_threshold=false" >> $GITHUB_OUTPUT
@@ -264,7 +303,7 @@ jobs:
           retention-days: 30
           if-no-files-found: warn
 
-      - name: Compress and Upload Logs (Phase 4.6)
+      - name: Compress and Upload Logs (Phase 4.7)
         run: |
           # Compress logs to save space
           gzip -k autopilot-output.log test-results.log 2>/dev/null || true
@@ -315,13 +354,13 @@ jobs:
           (github.event.inputs.apply_fixes == 'true' || github.event.inputs.run_autopilot == 'true')
         run: |
           git config --local user.email "automation@mercyblade.app"
-          git config --local user.name "Audio Autopilot v4.6"
+          git config --local user.name "Audio Autopilot v4.7"
           
           # Add all relevant files
           git add public/audio || true
           git add public/data || true
           
-          git commit -m "[skip ci] Audio Autopilot v4.6 - Governed Repairs" \
+          git commit -m "[skip ci] Audio Autopilot v4.7 - Stability Tests" \
             -m "🤖 Full Autopilot with Governance Engine" \
             -m "" \
             -m "Integrity: ${{ steps.read_artifacts.outputs.integrity_before }}% → ${{ steps.read_artifacts.outputs.integrity_after }}%" \
@@ -346,7 +385,7 @@ jobs:
           CHANGES=${{ steps.changes.outputs.change_count || 0 }}
           ARTIFACTS_VALID=${{ steps.validate_artifacts.outputs.artifacts_valid }}
           
-          echo "## 🤖 Audio Autopilot v4.6 Report" >> $GITHUB_STEP_SUMMARY
+          echo "## 🤖 Audio Autopilot v4.7 Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
           # Status Badge
@@ -357,7 +396,7 @@ jobs:
           fi
           echo "" >> $GITHUB_STEP_SUMMARY
           
-          # Artifact Validation (Phase 4.6)
+          # Artifact Validation (Phase 4.7)
           echo "### 🔍 Artifact Validation" >> $GITHUB_STEP_SUMMARY
           if [ "$ARTIFACTS_VALID" == "true" ]; then
             echo "✅ All artifacts valid JSON" >> $GITHUB_STEP_SUMMARY
@@ -407,7 +446,7 @@ jobs:
           echo "| Files Changed | $CHANGES |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
-          # Cycle Mode (Phase 4.6)
+          # Cycle Mode (Phase 4.7)
           echo "### ⚙️ Configuration" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- **Cycle Mode**: ${{ github.event.inputs.cycle_mode || 'normal' }}" >> $GITHUB_STEP_SUMMARY
@@ -439,7 +478,7 @@ jobs:
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
 
       # ============================================
-      # FAIL IF INTEGRITY GATE NOT PASSED (Phase 4.6)
+      # FAIL IF INTEGRITY GATE NOT PASSED (Phase 4.7)
       # ============================================
       
       - name: Enforce Integrity Gate
@@ -450,7 +489,7 @@ jobs:
           exit 1
 
       # ============================================
-      # FAIL IF ARTIFACTS INVALID (Phase 4.6)
+      # FAIL IF ARTIFACTS INVALID (Phase 4.7)
       # ============================================
       
       - name: Enforce Artifact Validity
