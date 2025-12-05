@@ -1,0 +1,42 @@
+name: System Health Check
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "public/data/**"
+      - "public/audio/**"
+      - "scripts/check-system-health.ts"
+
+jobs:
+  system-health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install deps
+        run: npm ci --prefer-offline
+
+      - name: Run system health checker
+        run: npx tsx scripts/check-system-health.ts
+
+      - name: Upload system-health.json artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: system-health
+          path: public/system-health.json
+          retention-days: 7
+
+      - name: Show summary
+        run: |
+          echo "## System Health Snapshot" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          cat public/system-health.json | jq '.' >> $GITHUB_STEP_SUMMARY
