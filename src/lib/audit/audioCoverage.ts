@@ -1,4 +1,5 @@
 import { supabase } from "@/integrations/supabase/client";
+import { validateAudioFilename, normalizeFilename } from "@/lib/audio/filenameValidator";
 
 export interface RoomAudioCoverage {
   roomId: string;
@@ -12,17 +13,19 @@ export interface RoomAudioCoverage {
   presentVi: number;
   missingEn: string[];
   missingVi: string[];
+  namingViolations: string[]; // Files with naming issues
 }
 
 export interface AudioCoverageReport {
   rooms: RoomAudioCoverage[];
-  storageFiles: string[]; // Array for safer serialization
+  storageFiles: string[];
   storageFileCount: number;
   summary: {
     totalRooms: number;
     roomsWithMissingAudio: number;
     totalMissingEn: number;
     totalMissingVi: number;
+    totalNamingViolations: number;
   };
 }
 
@@ -173,6 +176,7 @@ export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
   let totalMissingEn = 0;
   let totalMissingVi = 0;
   let roomsWithMissingAudio = 0;
+  let totalNamingViolations = 0;
 
   // Guard: if storage is empty, skip missing calculation to avoid false positives
   const storageEmpty = storageFilesSet.size === 0;
@@ -185,16 +189,26 @@ export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
     
     const allEnAudio: string[] = [];
     const allViAudio: string[] = [];
+    const namingViolations: string[] = [];
 
     for (const entry of entries) {
       const { en, vi } = extractAudioFromEntry(entry);
       allEnAudio.push(...en);
       allViAudio.push(...vi);
+      
+      // Check naming conventions for all referenced files
+      [...en, ...vi].forEach(filename => {
+        const validation = validateAudioFilename(filename);
+        if (!validation.isValid) {
+          namingViolations.push(`${filename}: ${validation.errors.join(', ')}`);
+        }
+      });
     }
 
     // De-duplicate per-room references
     const uniqueEn = Array.from(new Set(allEnAudio));
     const uniqueVi = Array.from(new Set(allViAudio));
+    const uniqueViolations = Array.from(new Set(namingViolations));
 
     // Check which files are missing from storage (skip if storage is empty)
     const missingEn = storageEmpty ? [] : uniqueEn.filter(f => !storageFilesSet.has(f));
@@ -212,12 +226,14 @@ export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
       presentVi: storageEmpty ? 0 : uniqueVi.length - missingVi.length,
       missingEn,
       missingVi,
+      namingViolations: uniqueViolations,
     };
 
     roomCoverages.push(coverage);
 
     totalMissingEn += missingEn.length;
     totalMissingVi += missingVi.length;
+    totalNamingViolations += uniqueViolations.length;
     if (missingEn.length > 0 || missingVi.length > 0) {
       roomsWithMissingAudio++;
     }
@@ -232,6 +248,7 @@ export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
       roomsWithMissingAudio,
       totalMissingEn,
       totalMissingVi,
+      totalNamingViolations,
     },
   };
 }

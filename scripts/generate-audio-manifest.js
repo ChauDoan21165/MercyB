@@ -5,6 +5,11 @@
  * listing all .mp3 files. This manifest is used by the audio coverage audit
  * to know which audio files actually exist.
  *
+ * Naming standard enforced:
+ * - all lowercase
+ * - hyphen-separated (no underscores)
+ * - ends with -en.mp3 or -vi.mp3
+ *
  * Run: node scripts/generate-audio-manifest.js
  */
 
@@ -14,12 +19,33 @@ import path from "path";
 const AUDIO_DIR = "public/audio";
 const OUTPUT_FILE = "public/audio/manifest.json";
 
+// Naming validation
+function validateFilename(name) {
+  const warnings = [];
+  
+  if (name !== name.toLowerCase()) {
+    warnings.push("not lowercase");
+  }
+  if (name.includes("_")) {
+    warnings.push("contains underscores (use hyphens)");
+  }
+  if (name.includes(" ")) {
+    warnings.push("contains spaces");
+  }
+  if (name.startsWith('"') || name.startsWith("'")) {
+    warnings.push("starts with quote character");
+  }
+  
+  return warnings;
+}
+
 function getAllMp3Files(dir, baseDir = dir) {
   const files = [];
+  const warnings = [];
 
   if (!fs.existsSync(dir)) {
     console.error(`Directory not found: ${dir}`);
-    return files;
+    return { files, warnings };
   }
 
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -28,24 +54,36 @@ function getAllMp3Files(dir, baseDir = dir) {
     const fullPath = path.join(dir, entry.name);
 
     if (entry.isDirectory()) {
-      // Recurse into subdirectories
-      files.push(...getAllMp3Files(fullPath, baseDir));
+      const result = getAllMp3Files(fullPath, baseDir);
+      files.push(...result.files);
+      warnings.push(...result.warnings);
     } else if (entry.isFile() && entry.name.toLowerCase().endsWith(".mp3")) {
-      // Get relative path from base audio directory
       const relativePath = path.relative(baseDir, fullPath);
-      // Normalize to forward slashes and lowercase
       const normalized = relativePath.replace(/\\/g, "/").toLowerCase();
+      
+      // Skip files with leading quotes (corrupted)
+      if (normalized.startsWith('"') || normalized.startsWith("'")) {
+        warnings.push(`SKIPPED (corrupted): ${normalized}`);
+        continue;
+      }
+      
       files.push(normalized);
+      
+      // Check naming conventions
+      const nameWarnings = validateFilename(entry.name);
+      if (nameWarnings.length > 0) {
+        warnings.push(`${entry.name}: ${nameWarnings.join(", ")}`);
+      }
     }
   }
 
-  return files;
+  return { files, warnings };
 }
 
 function main() {
   console.log(`Scanning ${AUDIO_DIR} for .mp3 files...`);
 
-  const mp3Files = getAllMp3Files(AUDIO_DIR);
+  const { files: mp3Files, warnings } = getAllMp3Files(AUDIO_DIR);
 
   // Sort for consistent output
   mp3Files.sort();
@@ -62,11 +100,20 @@ function main() {
   console.log(`✅ Generated ${OUTPUT_FILE}`);
   console.log(`   Total .mp3 files: ${mp3Files.length}`);
 
-  // Show some stats
+  // Show stats
   const rootFiles = mp3Files.filter((f) => !f.includes("/"));
   const subfolderFiles = mp3Files.filter((f) => f.includes("/"));
   console.log(`   - Root files: ${rootFiles.length}`);
   console.log(`   - In subfolders: ${subfolderFiles.length}`);
+  
+  // Show naming warnings (limit to first 20)
+  if (warnings.length > 0) {
+    console.log(`\n⚠️  Naming warnings (${warnings.length} total):`);
+    warnings.slice(0, 20).forEach(w => console.log(`   - ${w}`));
+    if (warnings.length > 20) {
+      console.log(`   ... and ${warnings.length - 20} more`);
+    }
+  }
 }
 
 main();
