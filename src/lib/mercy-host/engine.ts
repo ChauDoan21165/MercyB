@@ -27,9 +27,11 @@ import {
 import { isCrisisRoom, isSafeTrigger, enforceSafeEmotion } from './safetyRails';
 import { memory } from './memory';
 import { submitThrottledEvent } from './eventLimiter';
-import { getDomainCategory, isEnglishDomain, type DomainCategory } from './domainMap';
+import { getDomainCategory, isEnglishDomain, isMartialDomain, type DomainCategory } from './domainMap';
 import { getTeacherTip, type TeacherLevel, type TeacherContext } from './teacherScripts';
+import { getMartialCoachTip, inferMartialDiscipline, type MartialCoachLevel, type MartialContext } from './martialCoachScripts';
 import { logEvent } from './logs';
+import { isCrisisRoom as checkCrisis } from './safetyRails';
 
 // Storage keys
 const STORAGE_KEYS = {
@@ -53,6 +55,7 @@ export type HostPresenceState = 'hidden' | 'idle' | 'active';
 export type RitualIntensity = 'off' | 'minimal' | 'normal';
 
 export type { TeacherLevel };
+export type { MartialCoachLevel };
 
 export interface MercyEngineState {
   isEnabled: boolean;
@@ -108,6 +111,10 @@ export interface MercyEngineActions {
   setTeacherLevel: (level: TeacherLevel) => void;
   dismissTeacherHint: () => void;
   dismissRitualBanner: () => void;
+  // Phase 8: Martial Coach
+  setMartialCoachLevel: (level: MartialCoachLevel) => void;
+  dismissMartialHint: () => void;
+  recordMartialPractice: (context?: { discipline?: string }) => void;
   dismiss: () => void;
   show: () => void;
   trackAnalytics: (event: string, data?: Record<string, unknown>) => void;
@@ -264,6 +271,8 @@ export function createMercyEngine(
   };
 
   let teacherHintTimeout: ReturnType<typeof setTimeout> | null = null;
+  let martialHintTimeout: ReturnType<typeof setTimeout> | null = null;
+  const MARTIAL_HINT_DURATION_MS = 12000;
 
   // Helper: show teacher hint bubble
   const showTeacherHint = (tip: { en: string; vi: string }) => {
@@ -281,6 +290,26 @@ export function createMercyEngine(
     teacherHintTimeout = setTimeout(() => {
       setState(s => ({ ...s, isTeacherHintVisible: false }));
     }, TEACHER_HINT_DURATION_MS);
+  };
+
+  // Helper: show martial hint bubble
+  const showMartialHint = (tip: { id: string; en: string; vi: string }) => {
+    const state = getState();
+    if (state.silenceMode || state.ritualIntensity === 'off') return;
+    if (!tip.en && !tip.vi) return; // Skip empty tips (off mode)
+
+    setState(s => ({
+      ...s,
+      lastMartialTipId: tip.id,
+      lastMartialTip: { en: tip.en, vi: tip.vi },
+      isMartialHintVisible: true
+    }));
+
+    // Auto-dismiss after timeout
+    if (martialHintTimeout) clearTimeout(martialHintTimeout);
+    martialHintTimeout = setTimeout(() => {
+      setState(s => ({ ...s, isMartialHintVisible: false }));
+    }, MARTIAL_HINT_DURATION_MS);
   };
 
   // Store reference to onNewSession for use in init
@@ -307,7 +336,11 @@ export function createMercyEngine(
         lastVisitISO: mem.lastVisitISO,
         ritualIntensity: (mem as any).ritualIntensity || 'normal',
         silenceMode: mem.hostPreferences?.silenceMode || false,
-        teacherLevel: (mem as any).teacherLevel || 'normal'
+        teacherLevel: (mem as any).teacherLevel || 'normal',
+        // Phase 8: Martial Coach from memory
+        martialCoachLevel: (mem as any).martialCoachLevel || 'off',
+        currentMartialDiscipline: (mem as any).lastMartialDiscipline || null,
+        lastMartialTipId: (mem as any).lastMartialTipId || null
       }));
 
       resetIdleTimer();
@@ -457,6 +490,34 @@ export function createMercyEngine(
             setState(s => ({ ...s, isBubbleVisible: false, currentAnimation: 'halo' }));
           }, 5000 + jitter());
         }, jitter());
+      }
+
+      // Phase 8: Martial Coach behavior
+      if (domain === 'martial' && state.martialCoachLevel !== 'off' && !state.silenceMode) {
+        const roomTags = [domain];
+        const isCrisis = checkCrisis(roomTags, domain);
+        if (!isCrisis) {
+          // Determine martial context based on mood (simple heuristic)
+          const martialContext: MartialContext = 'martial_room_enter';
+          const tip = getMartialCoachTip({
+            level: state.martialCoachLevel,
+            context: martialContext,
+            userName: state.userName
+          });
+          
+          // Show martial hint after greeting fades
+          setTimeout(() => {
+            showMartialHint(tip);
+          }, isFirstTime ? 6000 : 1000);
+          
+          // Log martial room enter
+          logEvent({
+            type: 'martial_room_enter',
+            roomId,
+            domain,
+            tier: state.currentTier
+          });
+        }
       }
 
       // English Teacher behavior
@@ -719,6 +780,41 @@ export function createMercyEngine(
       setState(s => ({ ...s, isTeacherHintVisible: false }));
     },
 
+    // Phase 8: Martial Coach actions
+    setMartialCoachLevel: (level) => {
+      const mem = memory.get();
+      memory.update({ ...mem, martialCoachLevel: level } as any);
+      setState(s => ({ ...s, martialCoachLevel: level }));
+    },
+
+    dismissMartialHint: () => {
+      if (martialHintTimeout) clearTimeout(martialHintTimeout);
+      setState(s => ({ ...s, isMartialHintVisible: false }));
+    },
+
+    recordMartialPractice: (context) => {
+      const mem = memory.get();
+      const practiceCount = ((mem as any).martialPracticeCount || 0) + 1;
+      const discipline = context?.discipline || getState().currentMartialDiscipline;
+      
+      memory.update({ 
+        ...mem, 
+        martialPracticeCount: practiceCount,
+        lastMartialDiscipline: discipline
+      } as any);
+      
+      setState(s => ({
+        ...s,
+        currentMartialDiscipline: discipline
+      }));
+
+      // Log practice event
+      logEvent({
+        type: 'martial_practice',
+        extra: { discipline, practiceCount }
+      });
+    },
+
     dismissRitualBanner: () => {
       if (ritualBannerTimeout) clearTimeout(ritualBannerTimeout);
       setState(s => ({ ...s, isRitualBannerVisible: false }));
@@ -731,6 +827,7 @@ export function createMercyEngine(
         isBubbleVisible: false,
         isRitualBannerVisible: false,
         isTeacherHintVisible: false,
+        isMartialHintVisible: false,
         presenceState: 'idle'
       }));
     },

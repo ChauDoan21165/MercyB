@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import { MercyAvatar } from './MercyAvatar';
 import { MercyAnimation } from './MercyAnimations';
 import { useMercyHostContext } from './MercyHostProvider';
-import { X, Volume2, VolumeX } from 'lucide-react';
+import { X, Volume2, VolumeX, Sword } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 /**
@@ -188,6 +188,66 @@ export function MercyHostCore({
           onDismiss={mercy.dismiss}
         />
       )}
+
+      {/* Martial Hint Bubble - Phase 8 */}
+      {mercy.isMartialHintVisible && mercy.lastMartialTip && !isSilenceMode && (
+        <MartialHintBubble
+          text={mercy.language === 'vi' ? mercy.lastMartialTip.vi : mercy.lastMartialTip.en}
+          onDismiss={mercy.dismissMartialHint}
+        />
+      )}
+    </div>
+  );
+}
+
+/**
+ * Martial Hint Bubble Component - Phase 8
+ */
+interface MartialHintBubbleProps {
+  text: string;
+  onDismiss: () => void;
+}
+
+function MartialHintBubble({ text, onDismiss }: MartialHintBubbleProps) {
+  if (!text) return null;
+  
+  return (
+    <div 
+      className={cn(
+        "absolute right-0 top-full mt-2 w-64",
+        "animate-fade-in",
+        "max-w-[calc(100vw-2rem)]"
+      )}
+    >
+      <div className="relative bg-amber-900/90 dark:bg-amber-950/95 backdrop-blur-sm border border-amber-600/50 rounded-xl p-3 shadow-lg">
+        {/* Dismiss button */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={onDismiss}
+          className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-amber-800 border border-amber-600 shadow-sm hover:bg-amber-700"
+        >
+          <X className="h-3 w-3 text-amber-100" />
+        </Button>
+        
+        {/* Sword indicator */}
+        <div className="flex items-center gap-1.5 mb-1.5">
+          <div className="w-4 h-4 rounded-full bg-amber-600/30 flex items-center justify-center">
+            <Sword className="w-2.5 h-2.5 text-amber-300" />
+          </div>
+          <span className="text-[10px] font-medium text-amber-300 uppercase tracking-wide">
+            Martial Coach
+          </span>
+        </div>
+        
+        {/* Text */}
+        <p className="text-sm text-amber-50 leading-relaxed">
+          {text}
+        </p>
+        
+        {/* Tail */}
+        <div className="absolute -top-2 right-6 w-4 h-4 bg-amber-900/90 dark:bg-amber-950/95 border-l border-t border-amber-600/50 rotate-45" />
+      </div>
     </div>
   );
 }

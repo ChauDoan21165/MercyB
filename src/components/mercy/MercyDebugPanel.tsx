@@ -32,7 +32,8 @@ import {
   VolumeX,
   ScrollText,
   GraduationCap,
-  BookOpen
+  BookOpen,
+  Sword
 } from 'lucide-react';
 
 interface MercyDebugPanelProps {
@@ -339,6 +340,38 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
                   <StateRow 
                     label="Hint Visible" 
                     value={mercy.isTeacherHintVisible ? 'Yes' : 'No'} 
+                  />
+                </div>
+
+                {/* Martial Coach Info - Phase 8 */}
+                <div className="p-2 bg-amber-50 dark:bg-amber-950/30 rounded">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Sword className="h-4 w-4 text-amber-600" />
+                    <span className="font-medium">Martial Coach</span>
+                  </div>
+                  <StateRow 
+                    label="Coach Level" 
+                    value={mercy.martialCoachLevel} 
+                  />
+                  <StateRow 
+                    label="Domain" 
+                    value={mercy.currentRoomDomain || 'None'} 
+                  />
+                  <StateRow 
+                    label="Hint Visible" 
+                    value={mercy.isMartialHintVisible ? 'Yes' : 'No'} 
+                  />
+                  <StateRow 
+                    label="Practice Count" 
+                    value={String((memoryData as any).martialPracticeCount || 0)} 
+                  />
+                  <StateRow 
+                    label="Last Discipline" 
+                    value={(memoryData as any).lastMartialDiscipline || 'None'} 
+                  />
+                  <StateRow 
+                    label="Last Tip ID" 
+                    value={(memoryData as any).lastMartialTipId || 'None'} 
                   />
                 </div>
 
