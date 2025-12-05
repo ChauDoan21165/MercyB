@@ -21,7 +21,7 @@ import { preloadCriticalRoutes } from "@/lib/performance";
 import { DevObservabilityPanel } from "@/components/dev/DevObservabilityPanel";
 import { MercyToggle } from "@/components/companion/MercyToggle";
 // GlobalHeader removed from global render - individual pages handle their own headers
-import { GlobalHomeButton } from "@/components/GlobalHomeButton";
+import { GlobalNavigationBox } from "@/components/GlobalNavigationBox";
 import { logger } from "@/lib/logger";
 
 // Critical pages - loaded immediately
@@ -218,7 +218,7 @@ const App = () => {
               <MusicPlayerProvider>
                 <BrowserRouter>
                   <EnvironmentBanner />
-                  <GlobalHomeButton />
+                  <GlobalNavigationBox />
                   
                   <PerformanceProfiler />
                   
