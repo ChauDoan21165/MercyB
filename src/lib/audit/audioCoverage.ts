@@ -20,12 +20,14 @@ export interface AudioCoverageReport {
   rooms: RoomAudioCoverage[];
   storageFiles: string[];
   storageFileCount: number;
+  orphanFiles: string[]; // Files in storage but not referenced
   summary: {
     totalRooms: number;
     roomsWithMissingAudio: number;
     totalMissingEn: number;
     totalMissingVi: number;
     totalNamingViolations: number;
+    totalOrphans: number;
   };
 }
 
@@ -239,16 +241,36 @@ export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
     }
   }
 
+  // Detect orphan files (in storage but not referenced)
+  const allReferencedFiles = new Set<string>();
+  roomCoverages.forEach(room => {
+    room.missingEn.forEach(f => allReferencedFiles.add(f));
+    room.missingVi.forEach(f => allReferencedFiles.add(f));
+  });
+  // Add present files too
+  for (const room of rooms || []) {
+    const entries = Array.isArray(room.entries) ? room.entries : [];
+    for (const entry of entries) {
+      const { en, vi } = extractAudioFromEntry(entry);
+      en.forEach(f => allReferencedFiles.add(f));
+      vi.forEach(f => allReferencedFiles.add(f));
+    }
+  }
+  
+  const orphanFiles = Array.from(storageFilesSet).filter(f => !allReferencedFiles.has(f));
+
   return {
     rooms: roomCoverages,
     storageFiles: Array.from(storageFilesSet),
     storageFileCount: storageFilesSet.size,
+    orphanFiles,
     summary: {
       totalRooms: roomCoverages.length,
       roomsWithMissingAudio,
       totalMissingEn,
       totalMissingVi,
       totalNamingViolations,
+      totalOrphans: orphanFiles.length,
     },
   };
 }
