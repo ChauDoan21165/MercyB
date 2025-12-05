@@ -5,12 +5,18 @@
  * Phase 6: Added streak, ritual intensity, and ceremony tracking.
  * Phase 7: Added teacher & logging fields.
  * Phase 8: Added martial coach fields.
+ * Phase 9: Added talk budget and growth mode fields.
  */
 
 import { safeLocalStorage } from './guard';
+import { 
+  type TalkUsage, 
+  createDefaultTalkUsage, 
+  getTodayISO 
+} from './talkBudget';
 
-// Current schema version - bumped to 5 for Phase 8
-export const MEMORY_SCHEMA_VERSION = 5;
+// Current schema version - bumped to 6 for Phase 9
+export const MEMORY_SCHEMA_VERSION = 6;
 
 export type RitualIntensity = 'off' | 'minimal' | 'normal';
 export type EmotionCoachingLevel = 'off' | 'gentle' | 'full';
@@ -63,6 +69,9 @@ export interface MercyMemoryV2 {
   martialPracticeCount: number;
   lastMartialDiscipline: string | null;
   lastMartialTipId: string | null;
+  // Phase 9: Talk Budget fields
+  talkUsage: TalkUsage;
+  growthModeSeen: boolean;
 }
 
 const MEMORY_KEY = 'mercy_host_memory';
@@ -110,7 +119,10 @@ const DEFAULT_MEMORY: MercyMemoryV2 = {
   martialCoachLevel: 'off',
   martialPracticeCount: 0,
   lastMartialDiscipline: null,
-  lastMartialTipId: null
+  lastMartialTipId: null,
+  // Phase 9 defaults
+  talkUsage: createDefaultTalkUsage(),
+  growthModeSeen: false
 };
 
 /**
@@ -254,6 +266,23 @@ export function migrateMemory(data: Record<string, unknown>): MercyMemoryV2 {
     migrated.martialPracticeCount = typeof data.martialPracticeCount === 'number' ? data.martialPracticeCount : 0;
     migrated.lastMartialDiscipline = typeof data.lastMartialDiscipline === 'string' ? data.lastMartialDiscipline : null;
     migrated.lastMartialTipId = typeof data.lastMartialTipId === 'string' ? data.lastMartialTipId : null;
+  }
+
+  // V5 → V6: Add Phase 9 talk budget fields
+  if (version < 6) {
+    // Migrate talkUsage from old data or create default
+    if (data.talkUsage && typeof data.talkUsage === 'object') {
+      const oldUsage = data.talkUsage as Record<string, unknown>;
+      migrated.talkUsage = {
+        dateISO: typeof oldUsage.dateISO === 'string' ? oldUsage.dateISO : getTodayISO(),
+        usedChars: typeof oldUsage.usedChars === 'number' ? oldUsage.usedChars : 0,
+        softWarned: typeof oldUsage.softWarned === 'boolean' ? oldUsage.softWarned : false,
+        hardBlocked: typeof oldUsage.hardBlocked === 'boolean' ? oldUsage.hardBlocked : false
+      };
+    } else {
+      migrated.talkUsage = createDefaultTalkUsage();
+    }
+    migrated.growthModeSeen = typeof data.growthModeSeen === 'boolean' ? data.growthModeSeen : false;
   }
 
   // Set current version

@@ -4,6 +4,7 @@
  * Stores user-related data for personalized host behavior.
  * Uses localStorage for persistence across sessions.
  * Phase 6: Delegates to memorySchema.ts for single source of truth.
+ * Phase 9: Added talk usage helpers.
  */
 
 import { 
@@ -14,9 +15,16 @@ import {
   type RitualIntensity,
   type EmotionCoachingLevel
 } from './memorySchema';
+import { 
+  type TalkUsage,
+  type TalkBudget,
+  resetTalkUsageIfNewDay,
+  incrementTalkUsage as incrementTalkUsageRaw,
+  createDefaultTalkUsage
+} from './talkBudget';
 
 // Re-export types for backward compatibility
-export type { MercyMemoryV2, RitualIntensity, EmotionCoachingLevel };
+export type { MercyMemoryV2, RitualIntensity, EmotionCoachingLevel, TalkUsage };
 export type MercyMemory = MercyMemoryV2;
 
 const MEMORY_KEY = 'mercy_host_memory';
@@ -209,6 +217,58 @@ export function updateStreakDays(newStreak: number): void {
   setMemory(memory);
 }
 
+// ============ Phase 9: Talk Budget Helpers ============
+
+/**
+ * Get current talk usage (auto-resets if new day)
+ */
+export function getTalkUsage(): TalkUsage {
+  const memory = getMemory();
+  return resetTalkUsageIfNewDay(memory.talkUsage || createDefaultTalkUsage());
+}
+
+/**
+ * Update talk usage atomically
+ */
+export function updateTalkUsage(updater: (usage: TalkUsage) => TalkUsage): TalkUsage {
+  const memory = getMemory();
+  const currentUsage = resetTalkUsageIfNewDay(memory.talkUsage || createDefaultTalkUsage());
+  const newUsage = updater(currentUsage);
+  memory.talkUsage = newUsage;
+  setMemory(memory);
+  return newUsage;
+}
+
+/**
+ * Increment talk usage by delta chars
+ */
+export function incrementTalkUsage(deltaChars: number, budget: TalkBudget): TalkUsage {
+  return updateTalkUsage((usage) => incrementTalkUsageRaw(usage, deltaChars, budget));
+}
+
+/**
+ * Reset talk usage for today (admin/debug only)
+ */
+export function resetTalkUsageForToday(): void {
+  const memory = getMemory();
+  memory.talkUsage = createDefaultTalkUsage();
+  setMemory(memory);
+}
+
+/**
+ * Mark growth mode welcome as seen
+ */
+export function markGrowthModeSeen(): void {
+  updateMemory({ growthModeSeen: true });
+}
+
+/**
+ * Check if growth mode welcome has been seen
+ */
+export function hasSeenGrowthModeWelcome(): boolean {
+  return getMemory().growthModeSeen;
+}
+
 // Export memory API as object for convenient use
 export const memory = {
   get: getMemory,
@@ -229,5 +289,13 @@ export const memory = {
   addCelebratedTier,
   hasCelebratedTier,
   recordStreakMilestone,
-  updateStreakDays
+  updateStreakDays,
+  // Phase 9: Talk budget
+  getTalkUsage,
+  updateTalkUsage,
+  incrementTalkUsage,
+  resetTalkUsageForToday,
+  markGrowthModeSeen,
+  hasSeenGrowthModeWelcome
+};
 };
