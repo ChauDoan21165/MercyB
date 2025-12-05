@@ -1,6 +1,6 @@
 /**
- * JSON Room Audio Refresher v4.0
- * Chief Automation Engineer: Full GCE Integration
+ * JSON Room Audio Refresher v5.0
+ * Phase 5: Zero-Friction Autopilot
  * 
  * Uses Global Consistency Engine for all decisions.
  * 
@@ -9,9 +9,10 @@
  * - EN/VI reversal detection and auto-fix
  * - Non-canonical reference correction
  * - Room filtering support
- * - Comprehensive reporting
+ * - No-timestamp mode for CI dry-runs
+ * - Change-set JSON export for audit
  * 
- * Run: npx tsx scripts/refresh-json-audio.ts [--dry-run] [--apply] [--verbose] [--rooms <pattern>]
+ * Run: npx tsx scripts/refresh-json-audio.ts [--dry-run] [--apply] [--verbose] [--rooms <pattern>] [--no-timestamp]
  */
 
 import fs from 'fs';
@@ -108,6 +109,19 @@ interface FixReport {
   newValue: string;
   reason: string;
   fixType: 'rename' | 'create' | 'swap' | 'normalize';
+  category: 'critical' | 'structural' | 'cosmetic';
+}
+
+interface ChangeSet {
+  generatedAt: string;
+  mode: string;
+  roomsScanned: number;
+  roomsChanged: number;
+  totalFixes: number;
+  reversals: number;
+  byType: Record<string, number>;
+  byCategory: Record<string, number>;
+  fixes: FixReport[];
 }
 
 // ============================================
@@ -119,6 +133,13 @@ function detectReversedAudio(audio: AudioRef): boolean {
   const enLang = extractLanguage(audio.en);
   const viLang = extractLanguage(audio.vi);
   return enLang === 'vi' && viLang === 'en';
+}
+
+function categorizeChange(reason: string, fixType: string): 'critical' | 'structural' | 'cosmetic' {
+  if (fixType === 'swap' || reason.includes('reversed')) return 'critical';
+  if (fixType === 'create' || reason.includes('Missing')) return 'structural';
+  if (reason.includes('Non-canonical') || reason.includes('format')) return 'cosmetic';
+  return 'structural';
 }
 
 function processRoom(filePath: string, dryRun: boolean, verbose: boolean): FixReport[] {
@@ -140,14 +161,16 @@ function processRoom(filePath: string, dryRun: boolean, verbose: boolean): FixRe
       
       // Case 1: No audio at all - create canonical reference
       if (!entry.audio) {
+        const reason = 'Missing audio reference - creating canonical pair';
         fixes.push({
           roomId: room.id,
           entryIndex: index,
           field: 'audio',
           oldValue: '',
           newValue: JSON.stringify({ en: canonical.en, vi: canonical.vi }),
-          reason: 'Missing audio reference - creating canonical pair',
-          fixType: 'create'
+          reason,
+          fixType: 'create',
+          category: categorizeChange(reason, 'create'),
         });
         
         if (!dryRun) {
@@ -162,14 +185,16 @@ function processRoom(filePath: string, dryRun: boolean, verbose: boolean): FixRe
         const lang = extractLanguage(entry.audio);
         if (lang) {
           const newAudio = { en: canonical.en, vi: canonical.vi };
+          const reason = 'Converting string to canonical object format';
           fixes.push({
             roomId: room.id,
             entryIndex: index,
             field: 'audio',
             oldValue: entry.audio,
             newValue: JSON.stringify(newAudio),
-            reason: 'Converting string to canonical object format',
-            fixType: 'normalize'
+            reason,
+            fixType: 'normalize',
+            category: categorizeChange(reason, 'normalize'),
           });
           
           if (!dryRun) {
@@ -185,14 +210,16 @@ function processRoom(filePath: string, dryRun: boolean, verbose: boolean): FixRe
       
       // Check for reversed EN/VI
       if (detectReversedAudio(audioObj)) {
+        const reason = 'EN/VI audio references are reversed';
         fixes.push({
           roomId: room.id,
           entryIndex: index,
           field: 'audio.en+vi',
           oldValue: `en:${audioObj.en} vi:${audioObj.vi}`,
           newValue: `en:${audioObj.vi} vi:${audioObj.en}`,
-          reason: 'EN/VI audio references are reversed',
-          fixType: 'swap'
+          reason,
+          fixType: 'swap',
+          category: categorizeChange(reason, 'swap'),
         });
         
         if (!dryRun) {
@@ -206,18 +233,21 @@ function processRoom(filePath: string, dryRun: boolean, verbose: boolean): FixRe
       // Validate EN
       if (audioObj.en) {
         if (!isValidFilename(audioObj.en) || !startsWithRoomId(audioObj.en, room.id) || audioObj.en.toLowerCase() !== canonical.en) {
+          const reason = !startsWithRoomId(audioObj.en, room.id)
+            ? 'EN: Missing roomId prefix'
+            : audioObj.en.toLowerCase() !== canonical.en
+            ? 'EN: Non-canonical filename'
+            : 'EN: Invalid filename format';
+          
           fixes.push({
             roomId: room.id,
             entryIndex: index,
             field: 'audio.en',
             oldValue: audioObj.en,
             newValue: canonical.en,
-            reason: !startsWithRoomId(audioObj.en, room.id)
-              ? 'EN: Missing roomId prefix'
-              : audioObj.en.toLowerCase() !== canonical.en
-              ? 'EN: Non-canonical filename'
-              : 'EN: Invalid filename format',
-            fixType: 'rename'
+            reason,
+            fixType: 'rename',
+            category: categorizeChange(reason, 'rename'),
           });
           
           if (!dryRun) {
@@ -226,14 +256,16 @@ function processRoom(filePath: string, dryRun: boolean, verbose: boolean): FixRe
           }
         }
       } else {
+        const reason = 'Missing EN audio reference';
         fixes.push({
           roomId: room.id,
           entryIndex: index,
           field: 'audio.en',
           oldValue: '',
           newValue: canonical.en,
-          reason: 'Missing EN audio reference',
-          fixType: 'create'
+          reason,
+          fixType: 'create',
+          category: categorizeChange(reason, 'create'),
         });
         
         if (!dryRun) {
@@ -245,18 +277,21 @@ function processRoom(filePath: string, dryRun: boolean, verbose: boolean): FixRe
       // Validate VI
       if (audioObj.vi) {
         if (!isValidFilename(audioObj.vi) || !startsWithRoomId(audioObj.vi, room.id) || audioObj.vi.toLowerCase() !== canonical.vi) {
+          const reason = !startsWithRoomId(audioObj.vi, room.id)
+            ? 'VI: Missing roomId prefix'
+            : audioObj.vi.toLowerCase() !== canonical.vi
+            ? 'VI: Non-canonical filename'
+            : 'VI: Invalid filename format';
+          
           fixes.push({
             roomId: room.id,
             entryIndex: index,
             field: 'audio.vi',
             oldValue: audioObj.vi,
             newValue: canonical.vi,
-            reason: !startsWithRoomId(audioObj.vi, room.id)
-              ? 'VI: Missing roomId prefix'
-              : audioObj.vi.toLowerCase() !== canonical.vi
-              ? 'VI: Non-canonical filename'
-              : 'VI: Invalid filename format',
-            fixType: 'rename'
+            reason,
+            fixType: 'rename',
+            category: categorizeChange(reason, 'rename'),
           });
           
           if (!dryRun) {
@@ -265,14 +300,16 @@ function processRoom(filePath: string, dryRun: boolean, verbose: boolean): FixRe
           }
         }
       } else {
+        const reason = 'Missing VI audio reference';
         fixes.push({
           roomId: room.id,
           entryIndex: index,
           field: 'audio.vi',
           oldValue: '',
           newValue: canonical.vi,
-          reason: 'Missing VI audio reference',
-          fixType: 'create'
+          reason,
+          fixType: 'create',
+          category: categorizeChange(reason, 'create'),
         });
         
         if (!dryRun) {
@@ -305,6 +342,7 @@ function main() {
   const dryRun = args.includes('--dry-run');
   const applyMode = args.includes('--apply');
   const verbose = args.includes('--verbose');
+  const noTimestamp = args.includes('--no-timestamp');
   
   // Extract room filter
   const roomsIndex = args.indexOf('--rooms');
@@ -314,10 +352,13 @@ function main() {
   const actualDryRun = applyMode ? false : (dryRun || !applyMode);
   
   console.log('='.repeat(60));
-  console.log('JSON Room Audio Refresher v4.0 (GCE Integration)');
+  console.log('JSON Room Audio Refresher v5.0 (Phase 5 Autopilot)');
   console.log(`Mode: ${actualDryRun ? 'DRY RUN (no changes)' : 'APPLY (will modify files)'}`);
   if (roomFilter) {
     console.log(`Room filter: ${roomFilter}`);
+  }
+  if (noTimestamp) {
+    console.log('Timestamp suppression: ON');
   }
   console.log('='.repeat(60));
   
@@ -356,6 +397,12 @@ function main() {
     return acc;
   }, {} as Record<string, number>);
   
+  // Summary by category
+  const byCategory = allFixes.reduce((acc, fix) => {
+    acc[fix.category] = (acc[fix.category] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
+  
   // Count reversals
   const reversals = allFixes.filter(f => f.fixType === 'swap').length;
   
@@ -372,6 +419,14 @@ function main() {
     console.log('\nFixes by type:');
     Object.entries(byType).forEach(([type, count]) => {
       console.log(`  ${type}: ${count}`);
+    });
+  }
+  
+  if (Object.keys(byCategory).length > 0) {
+    console.log('\nFixes by category:');
+    Object.entries(byCategory).forEach(([category, count]) => {
+      const emoji = category === 'critical' ? '🔴' : category === 'structural' ? '🟡' : '🟢';
+      console.log(`  ${emoji} ${category}: ${count}`);
     });
   }
   
@@ -398,20 +453,27 @@ function main() {
   console.log(`\nTotal fixes needed: ${allFixes.length}`);
   console.log(`Total fixes applied: ${actualDryRun ? 0 : allFixes.length}`);
   
-  // Write report
+  // Write report (with or without timestamp)
   const reportPath = 'public/audio-refresh-report.json';
-  fs.writeFileSync(reportPath, JSON.stringify({
-    generatedAt: new Date().toISOString(),
+  const changeSet: ChangeSet = {
+    generatedAt: noTimestamp ? 'suppressed' : new Date().toISOString(),
     mode: actualDryRun ? 'dry-run' : 'apply',
     roomsScanned: jsonFiles.length,
     roomsChanged: roomsChanged.size,
     totalFixes: allFixes.length,
     reversals,
     byType,
-    fixes: allFixes
-  }, null, 2));
+    byCategory,
+    fixes: allFixes,
+  };
   
-  console.log(`\nReport saved to: ${reportPath}`);
+  // Only write report if there are changes or not in no-timestamp mode
+  if (!noTimestamp || allFixes.length > 0) {
+    fs.writeFileSync(reportPath, JSON.stringify(changeSet, null, 2));
+    console.log(`\nReport saved to: ${reportPath}`);
+  } else {
+    console.log('\nNo report written (no-timestamp mode with no changes)');
+  }
 }
 
 main();

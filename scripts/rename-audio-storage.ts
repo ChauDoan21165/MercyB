@@ -1,15 +1,16 @@
 /**
- * Supabase Storage Renamer v4.0
- * Chief Automation Engineer: Full Expanded Version
+ * Supabase Storage Renamer v5.0
+ * Phase 5: Zero-Friction Autopilot with Change Classification
  * 
  * Features:
  * - Uses batchValidate + generateCanonicalFilename
  * - Detects duplicates and picks canonical survivor
  * - Updates JSON references automatically
  * - Regenerates manifest after completion
- * - Full --dry-run and --verbose support
+ * - No-timestamp mode for CI dry-runs
+ * - Change classification (critical/structural/cosmetic)
  * 
- * Run: npx tsx scripts/rename-audio-storage.ts [--dry-run] [--verbose]
+ * Run: npx tsx scripts/rename-audio-storage.ts [--dry-run] [--verbose] [--no-timestamp]
  */
 
 import fs from 'fs';
@@ -28,6 +29,7 @@ interface RenameOperation {
   reason: string;
   confidence: number;
   isDuplicate: boolean;
+  category: 'critical' | 'structural' | 'cosmetic';
 }
 
 interface RenameReport {
@@ -38,6 +40,7 @@ interface RenameReport {
   failed: number;
   duplicatesHandled: number;
   jsonFilesUpdated: number;
+  byCategory: Record<string, number>;
   operations: RenameOperation[];
 }
 
@@ -90,6 +93,17 @@ function isValidFilename(filename: string): boolean {
 
 function needsRename(filename: string): boolean {
   return !isValidFilename(filename);
+}
+
+function categorizeRename(oldFilename: string, reason: string): 'critical' | 'structural' | 'cosmetic' {
+  // Critical: completely wrong format, underscores, wrong language
+  if (reason.includes('underscore') || reason.includes('quote')) return 'critical';
+  
+  // Structural: missing language suffix, wrong case
+  if (reason.includes('not lowercase') || !extractLanguage(oldFilename)) return 'structural';
+  
+  // Cosmetic: minor formatting
+  return 'cosmetic';
 }
 
 // ============================================
@@ -163,15 +177,17 @@ function collectRenameOperations(verbose: boolean): RenameOperation[] {
       if (variant !== dup.keepRecommendation) {
         duplicateFiles.add(variant);
         const fullPath = files.get(variant)!;
+        const reason = `Duplicate of ${dup.keepRecommendation}`;
         
         operations.push({
           oldPath: fullPath,
           newPath: path.join(DUPLICATES_DIR, variant),
           oldFilename: variant,
           newFilename: `_duplicates/${variant}`,
-          reason: `Duplicate of ${dup.keepRecommendation}`,
+          reason,
           confidence: 95,
-          isDuplicate: true
+          isDuplicate: true,
+          category: 'structural',
         });
         
         if (verbose) {
@@ -189,14 +205,16 @@ function collectRenameOperations(verbose: boolean): RenameOperation[] {
       const canonical = normalizeFilename(filename);
       
       if (canonical !== filename) {
+        const reason = getRenamingReason(filename);
         operations.push({
           oldPath: fullPath,
           newPath: path.join(path.dirname(fullPath), canonical),
           oldFilename: filename,
           newFilename: canonical,
-          reason: getRenamingReason(filename),
+          reason,
           confidence: 90,
-          isDuplicate: false
+          isDuplicate: false,
+          category: categorizeRename(filename, reason),
         });
         
         if (verbose) {
@@ -274,7 +292,7 @@ function updateJsonReferences(renames: Map<string, string>, dryRun: boolean, ver
 // Manifest Regeneration
 // ============================================
 
-function regenerateManifest(verbose: boolean): void {
+function regenerateManifest(verbose: boolean, noTimestamp: boolean): void {
   const files: string[] = [];
   
   function scan(dir: string) {
@@ -293,8 +311,19 @@ function regenerateManifest(verbose: boolean): void {
   
   scan(AUDIO_DIR);
   
+  // Read existing manifest to preserve timestamp if no-timestamp mode
+  let existingTimestamp = new Date().toISOString();
+  if (noTimestamp && fs.existsSync(MANIFEST_PATH)) {
+    try {
+      const existing = JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf-8'));
+      existingTimestamp = existing.generated || existingTimestamp;
+    } catch {
+      // Use current timestamp if can't read existing
+    }
+  }
+  
   const manifest = {
-    generated: new Date().toISOString(),
+    generated: noTimestamp ? existingTimestamp : new Date().toISOString(),
     totalFiles: files.length,
     files: [...new Set(files)].sort()
   };
@@ -302,7 +331,7 @@ function regenerateManifest(verbose: boolean): void {
   fs.writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2));
   
   if (verbose) {
-    console.log(`  [MANIFEST] Regenerated with ${files.length} files`);
+    console.log(`  [MANIFEST] Regenerated with ${files.length} files${noTimestamp ? ' (timestamp preserved)' : ''}`);
   }
 }
 
@@ -357,13 +386,16 @@ function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes('--dry-run');
   const verbose = args.includes('--verbose');
+  const noTimestamp = args.includes('--no-timestamp');
   
   console.log('='.repeat(60));
-  console.log('Audio Storage Renamer v4.0');
-  console.log('Chief Automation Engineer: Full Expanded Version');
+  console.log('Audio Storage Renamer v5.0 (Phase 5 Autopilot)');
   console.log('='.repeat(60));
   console.log(`Mode: ${dryRun ? 'DRY RUN (no changes)' : 'LIVE (will rename files)'}`);
   console.log(`Verbose: ${verbose ? 'ON' : 'OFF'}`);
+  if (noTimestamp) {
+    console.log('Timestamp suppression: ON');
+  }
   console.log('');
   
   // Collect operations
@@ -379,9 +411,20 @@ function main() {
   const renameOps = operations.filter(o => !o.isDuplicate);
   const duplicateOps = operations.filter(o => o.isDuplicate);
   
+  // Group by category
+  const byCategory = operations.reduce((acc, op) => {
+    acc[op.category] = (acc[op.category] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
+  
   console.log(`\nFound ${operations.length} operations:`);
   console.log(`  - Renames: ${renameOps.length}`);
   console.log(`  - Duplicate moves: ${duplicateOps.length}`);
+  console.log('\nBy category:');
+  Object.entries(byCategory).forEach(([cat, count]) => {
+    const emoji = cat === 'critical' ? '🔴' : cat === 'structural' ? '🟡' : '🟢';
+    console.log(`  ${emoji} ${cat}: ${count}`);
+  });
   console.log('');
   
   // Build rename map for JSON updates
@@ -402,7 +445,7 @@ function main() {
   // Regenerate manifest
   if (!dryRun) {
     console.log('\nRegenerating manifest...');
-    regenerateManifest(verbose);
+    regenerateManifest(verbose, noTimestamp);
   }
   
   // Summary
@@ -417,19 +460,26 @@ function main() {
   
   // Write report
   const report: RenameReport = {
-    generatedAt: new Date().toISOString(),
+    generatedAt: noTimestamp ? 'suppressed' : new Date().toISOString(),
     mode: dryRun ? 'dry-run' : 'live',
     totalOperations: operations.length,
     successful,
     failed,
     duplicatesHandled,
     jsonFilesUpdated: jsonUpdated,
+    byCategory,
     operations
   };
   
   const reportPath = 'public/rename-report.json';
-  fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
-  console.log(`\nReport saved to: ${reportPath}`);
+  
+  // Only write report if there are changes or not in no-timestamp mode
+  if (!noTimestamp || operations.length > 0) {
+    fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
+    console.log(`\nReport saved to: ${reportPath}`);
+  } else {
+    console.log('\nNo report written (no-timestamp mode with no changes)');
+  }
 }
 
 main();

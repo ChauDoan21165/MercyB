@@ -1,4 +1,4 @@
-name: Audio Auto-Repair v4.3
+name: Audio Auto-Repair v5.0
 
 on:
   push:
@@ -57,44 +57,52 @@ jobs:
             echo "tests_passed=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Generate Audio Manifest (dry-run mode)
+      - name: Generate Audio Manifest (no-timestamp mode)
         run: node scripts/generate-audio-manifest.js --no-timestamp
 
-      - name: Run JSON Refresh (dry-run)
+      - name: Run JSON Refresh (dry-run, no-timestamp)
         id: dry_run_refresh
         run: |
           ROOM_FILTER="${{ github.event.inputs.rooms }}"
           if [ -n "$ROOM_FILTER" ]; then
-            npx tsx scripts/refresh-json-audio.ts --dry-run --verbose --rooms "$ROOM_FILTER" 2>&1 | tee refresh-dry.log
+            npx tsx scripts/refresh-json-audio.ts --dry-run --verbose --no-timestamp --rooms "$ROOM_FILTER" 2>&1 | tee refresh-dry.log
           else
-            npx tsx scripts/refresh-json-audio.ts --dry-run --verbose 2>&1 | tee refresh-dry.log
+            npx tsx scripts/refresh-json-audio.ts --dry-run --verbose --no-timestamp 2>&1 | tee refresh-dry.log
           fi
           
           FIXES=$(grep -oP "Total fixes needed: \K\d+" refresh-dry.log || echo "0")
           SCANNED=$(grep -oP "Rooms scanned: \K\d+" refresh-dry.log || echo "0")
           REVERSALS=$(grep -oP "Reversed-lang fixes: \K\d+" refresh-dry.log || echo "0")
+          CRITICAL=$(grep -oP "critical: \K\d+" refresh-dry.log || echo "0")
+          STRUCTURAL=$(grep -oP "structural: \K\d+" refresh-dry.log || echo "0")
+          COSMETIC=$(grep -oP "cosmetic: \K\d+" refresh-dry.log || echo "0")
           
           echo "json_fixes=$FIXES" >> $GITHUB_OUTPUT
           echo "rooms_scanned=$SCANNED" >> $GITHUB_OUTPUT
           echo "reversals=$REVERSALS" >> $GITHUB_OUTPUT
+          echo "critical_fixes=$CRITICAL" >> $GITHUB_OUTPUT
+          echo "structural_fixes=$STRUCTURAL" >> $GITHUB_OUTPUT
+          echo "cosmetic_fixes=$COSMETIC" >> $GITHUB_OUTPUT
 
-      - name: Detect Orphan Files (dry-run)
+      - name: Detect Orphan Files (dry-run, no-timestamp)
         id: orphan_check
         run: |
-          npx tsx scripts/cleanup-orphans.ts --dry-run 2>&1 | tee orphan-dry.log
+          npx tsx scripts/cleanup-orphans.ts --dry-run --no-timestamp 2>&1 | tee orphan-dry.log
           
           ORPHANS=$(grep -oP "Total orphan files: \K\d+" orphan-dry.log || echo "0")
-          ATTACHABLE=$(grep -oP "Attachable.*: \K\d+" orphan-dry.log || echo "0")
-          DANGEROUS=$(grep -oP "Dangerous.*: \K\d+" orphan-dry.log || echo "0")
+          AUTO_ATTACH=$(grep -oP "Auto-attach.*: \K\d+" orphan-dry.log || echo "0")
+          FLAG_REVIEW=$(grep -oP "Flag for review.*: \K\d+" orphan-dry.log || echo "0")
+          BLOCKED=$(grep -oP "Blocked.*: \K\d+" orphan-dry.log || echo "0")
           
           echo "orphan_count=$ORPHANS" >> $GITHUB_OUTPUT
-          echo "attachable=$ATTACHABLE" >> $GITHUB_OUTPUT
-          echo "dangerous=$DANGEROUS" >> $GITHUB_OUTPUT
+          echo "auto_attach=$AUTO_ATTACH" >> $GITHUB_OUTPUT
+          echo "flag_review=$FLAG_REVIEW" >> $GITHUB_OUTPUT
+          echo "blocked=$BLOCKED" >> $GITHUB_OUTPUT
 
-      - name: Check Rename Operations (dry-run)
+      - name: Check Rename Operations (dry-run, no-timestamp)
         id: rename_check
         run: |
-          npx tsx scripts/rename-audio-storage.ts --dry-run --verbose 2>&1 | tee rename-dry.log
+          npx tsx scripts/rename-audio-storage.ts --dry-run --verbose --no-timestamp 2>&1 | tee rename-dry.log
           
           RENAMES=$(grep -oP "Total renames needed: \K\d+" rename-dry.log || echo "0")
           DUPS=$(grep -oP "Duplicate moves: \K\d+" rename-dry.log || echo "0")
@@ -102,17 +110,27 @@ jobs:
           echo "rename_count=$RENAMES" >> $GITHUB_OUTPUT
           echo "duplicate_count=$DUPS" >> $GITHUB_OUTPUT
 
-      - name: Check if fixes needed
+      - name: Check if fixes needed (only critical/structural)
         id: needs_fix
         run: |
-          TOTAL_ISSUES=$(( ${{ steps.dry_run_refresh.outputs.json_fixes }} + ${{ steps.orphan_check.outputs.orphan_count }} + ${{ steps.rename_check.outputs.rename_count }} ))
-          if [ "$TOTAL_ISSUES" -gt 0 ]; then
+          # Only count critical and structural issues, not cosmetic
+          CRITICAL=${{ steps.dry_run_refresh.outputs.critical_fixes }}
+          STRUCTURAL=${{ steps.dry_run_refresh.outputs.structural_fixes }}
+          ORPHANS=${{ steps.orphan_check.outputs.auto_attach }}
+          RENAMES=${{ steps.rename_check.outputs.rename_count }}
+          
+          TOTAL_ACTIONABLE=$((CRITICAL + STRUCTURAL + ORPHANS + RENAMES))
+          TOTAL_ALL=$(( ${{ steps.dry_run_refresh.outputs.json_fixes }} + ${{ steps.orphan_check.outputs.orphan_count }} + RENAMES ))
+          
+          if [ "$TOTAL_ACTIONABLE" -gt 0 ]; then
             echo "has_issues=true" >> $GITHUB_OUTPUT
           else
             echo "has_issues=false" >> $GITHUB_OUTPUT
           fi
-          echo "total_issues=$TOTAL_ISSUES" >> $GITHUB_OUTPUT
-          echo "Total issues detected: $TOTAL_ISSUES"
+          
+          echo "total_issues=$TOTAL_ALL" >> $GITHUB_OUTPUT
+          echo "actionable_issues=$TOTAL_ACTIONABLE" >> $GITHUB_OUTPUT
+          echo "Total issues: $TOTAL_ALL (Actionable: $TOTAL_ACTIONABLE)"
 
       # ============================================
       # PHASE 2: AUDIO FIX (audio:fix) - AUTOPILOT
@@ -121,7 +139,6 @@ jobs:
       - name: Calculate Integrity Before
         id: verify_before
         run: |
-          # Simple integrity calculation based on issues
           TOTAL=${{ steps.needs_fix.outputs.total_issues }}
           ROOMS=${{ steps.dry_run_refresh.outputs.rooms_scanned }}
           if [ "$ROOMS" -gt 0 ] && [ "$TOTAL" -gt 0 ]; then
@@ -133,7 +150,7 @@ jobs:
           echo "integrity=$INTEGRITY" >> $GITHUB_OUTPUT
           echo "System integrity before: $INTEGRITY%"
       
-      - name: Apply Fixes (Autopilot)
+      - name: Apply Fixes (Autopilot - only if actionable issues exist)
         id: apply_fixes
         if: |
           github.event.inputs.apply_fixes == 'true' || 
@@ -149,17 +166,17 @@ jobs:
           else
             npx tsx scripts/refresh-json-audio.ts --apply --verbose 2>&1 | tee json-fix.log
           fi
-          JSON_FIXED=$(grep -oP "Applied: \K\d+" json-fix.log || echo "0")
+          JSON_FIXED=$(grep -oP "Total fixes applied: \K\d+" json-fix.log || echo "0")
           REPAIRS=$((REPAIRS + JSON_FIXED))
           
           # Apply renames
           npx tsx scripts/rename-audio-storage.ts --verbose 2>&1 | tee rename-fix.log
-          RENAMES_FIXED=$(grep -oP "Renamed: \K\d+" rename-fix.log || echo "0")
+          RENAMES_FIXED=$(grep -oP "Files renamed: \K\d+" rename-fix.log || echo "0")
           REPAIRS=$((REPAIRS + RENAMES_FIXED))
           
-          # Auto-fix attachable orphans
+          # Auto-fix attachable orphans only
           npx tsx scripts/cleanup-orphans.ts --auto-fix 2>&1 | tee orphan-fix.log
-          ORPHANS_FIXED=$(grep -oP "Fixed: \K\d+" orphan-fix.log || echo "0")
+          ORPHANS_FIXED=$(grep -oP "Auto-attached: \K\d+" orphan-fix.log || echo "0")
           REPAIRS=$((REPAIRS + ORPHANS_FIXED))
           
           # Regenerate manifest (full mode with timestamp)
@@ -176,9 +193,9 @@ jobs:
         id: verify_after
         run: |
           # Re-run dry checks to calculate new integrity
-          npx tsx scripts/refresh-json-audio.ts --dry-run 2>&1 | tee verify-refresh.log
-          npx tsx scripts/cleanup-orphans.ts --dry-run 2>&1 | tee verify-orphan.log
-          npx tsx scripts/rename-audio-storage.ts --dry-run 2>&1 | tee verify-rename.log
+          npx tsx scripts/refresh-json-audio.ts --dry-run --no-timestamp 2>&1 | tee verify-refresh.log
+          npx tsx scripts/cleanup-orphans.ts --dry-run --no-timestamp 2>&1 | tee verify-orphan.log
+          npx tsx scripts/rename-audio-storage.ts --dry-run --no-timestamp 2>&1 | tee verify-rename.log
           
           NEW_JSON=$(grep -oP "Total fixes needed: \K\d+" verify-refresh.log || echo "0")
           NEW_ORPHANS=$(grep -oP "Total orphan files: \K\d+" verify-orphan.log || echo "0")
@@ -198,11 +215,11 @@ jobs:
           echo "remaining_issues=$NEW_TOTAL" >> $GITHUB_OUTPUT
           echo "System integrity after: $INTEGRITY%"
 
-      - name: Check Integrity Gate
+      - name: Check Integrity Gate (≥99% for Phase 5)
         id: integrity_gate
         run: |
           INTEGRITY=${{ steps.verify_after.outputs.integrity }}
-          THRESHOLD=98
+          THRESHOLD=99
           
           if [ "$INTEGRITY" -lt "$THRESHOLD" ]; then
             echo "⚠️ WARNING: System integrity ($INTEGRITY%) below threshold ($THRESHOLD%)"
@@ -213,42 +230,75 @@ jobs:
           fi
 
       # ============================================
-      # PHASE 4: COMMIT & REPORT
+      # PHASE 4: COMMIT & REPORT (No Surprise Mode)
       # ============================================
       
-      - name: Check for Changes
+      - name: Check for Actual Changes (No Surprise Mode)
         id: changes
         run: |
-          if [[ -n $(git status --porcelain) ]]; then
+          # Only consider actual content changes, not timestamp-only changes
+          git diff --name-only > changed-files.txt
+          
+          # Filter to only audio/data files
+          grep -E "^(public/audio|public/data)" changed-files.txt > relevant-changes.txt || true
+          
+          CHANGE_COUNT=$(wc -l < relevant-changes.txt | tr -d ' ')
+          
+          if [ "$CHANGE_COUNT" -gt 0 ]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
-            echo "Changed files:"
-            git status --porcelain | head -30
+            echo "change_count=$CHANGE_COUNT" >> $GITHUB_OUTPUT
+            echo "Changed files ($CHANGE_COUNT):"
+            cat relevant-changes.txt | head -30
           else
             echo "has_changes=false" >> $GITHUB_OUTPUT
-            echo "No changes detected"
+            echo "change_count=0" >> $GITHUB_OUTPUT
+            echo "No actual content changes detected"
           fi
 
-      - name: Commit All Changes
+      - name: Generate Change-Set JSON (Audit Trail)
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          cat > public/audio-changeset.json << EOF
+          {
+            "generatedAt": "$(date -Iseconds)",
+            "workflowRun": "${{ github.run_id }}",
+            "trigger": "${{ github.event_name }}",
+            "applyFixes": "${{ github.event.inputs.apply_fixes }}",
+            "integrityBefore": ${{ steps.verify_before.outputs.integrity }},
+            "integrityAfter": ${{ steps.verify_after.outputs.integrity }},
+            "totalRepairs": ${{ steps.apply_fixes.outputs.total_repairs || 0 }},
+            "changedFiles": $(cat relevant-changes.txt | jq -R . | jq -s .),
+            "categories": {
+              "critical": ${{ steps.dry_run_refresh.outputs.critical_fixes || 0 }},
+              "structural": ${{ steps.dry_run_refresh.outputs.structural_fixes || 0 }},
+              "cosmetic": ${{ steps.dry_run_refresh.outputs.cosmetic_fixes || 0 }}
+            }
+          }
+          EOF
+          echo "Change-set JSON generated"
+
+      - name: Commit All Changes (only if actual changes exist)
         if: steps.changes.outputs.has_changes == 'true'
         run: |
           git config --local user.email "automation@mercyblade.app"
-          git config --local user.name "Audio Autopilot v4.3"
+          git config --local user.name "Audio Autopilot v5.0"
           
           # Recursive add for all nested files
           git add public/audio || true
           git add public/data || true
           git add public/*.json || true
           
-          git commit -m "[skip ci] Audio Auto-Repair v4.3 (Autopilot)" \
-            -m "🤖 Autopilot Mode: Fully Autonomous" \
+          git commit -m "[skip ci] Audio Auto-Repair v5.0 (Phase 5 Autopilot)" \
+            -m "🤖 Zero-Friction Autopilot: Fully Autonomous" \
             -m "" \
             -m "Integrity: ${{ steps.verify_before.outputs.integrity }}% → ${{ steps.verify_after.outputs.integrity }}%" \
             -m "Repairs Applied: ${{ steps.apply_fixes.outputs.total_repairs || 0 }}" \
-            -m "Rooms Scanned: ${{ steps.dry_run_refresh.outputs.rooms_scanned }}" \
-            -m "JSON Fixes: ${{ steps.dry_run_refresh.outputs.json_fixes }}" \
-            -m "Orphans: ${{ steps.orphan_check.outputs.orphan_count }}" \
-            -m "Renames: ${{ steps.rename_check.outputs.rename_count }}" \
-            -m "Duplicates: ${{ steps.rename_check.outputs.duplicate_count }}"
+            -m "Files Changed: ${{ steps.changes.outputs.change_count }}" \
+            -m "" \
+            -m "Categories:" \
+            -m "  🔴 Critical: ${{ steps.dry_run_refresh.outputs.critical_fixes || 0 }}" \
+            -m "  🟡 Structural: ${{ steps.dry_run_refresh.outputs.structural_fixes || 0 }}" \
+            -m "  🟢 Cosmetic: ${{ steps.dry_run_refresh.outputs.cosmetic_fixes || 0 }}"
           
           git push
 
@@ -262,15 +312,24 @@ jobs:
           AFTER=${{ steps.verify_after.outputs.integrity }}
           REPAIRS=${{ steps.apply_fixes.outputs.total_repairs || 0 }}
           GATE=${{ steps.integrity_gate.outputs.gate_passed }}
+          CHANGES=${{ steps.changes.outputs.change_count || 0 }}
           
-          echo "## 🤖 Audio Autopilot v4.3 Report" >> $GITHUB_STEP_SUMMARY
+          echo "## 🤖 Audio Autopilot v5.0 Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
           # Status Badge
           if [ "$GATE" == "true" ]; then
-            echo "### ✅ PASSED - System Healthy" >> $GITHUB_STEP_SUMMARY
+            echo "### ✅ PASSED - System Healthy (≥99%)" >> $GITHUB_STEP_SUMMARY
           else
-            echo "### ⚠️ WARNING - Below Threshold" >> $GITHUB_STEP_SUMMARY
+            echo "### ⚠️ WARNING - Below Threshold (<99%)" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # No Surprise Mode indicator
+          if [ "$CHANGES" == "0" ]; then
+            echo "### 🔒 No Surprise Mode: No commits made (no actual changes)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "### 📝 Changes Committed: $CHANGES files" >> $GITHUB_STEP_SUMMARY
           fi
           echo "" >> $GITHUB_STEP_SUMMARY
           
@@ -289,7 +348,7 @@ jobs:
           echo "| Metric | Before | After |" >> $GITHUB_STEP_SUMMARY
           echo "|--------|--------|-------|" >> $GITHUB_STEP_SUMMARY
           echo "| **Integrity Score** | ${BEFORE}% | ${AFTER}% |" >> $GITHUB_STEP_SUMMARY
-          echo "| **Threshold** | 98% | 98% |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Threshold** | 99% | 99% |" >> $GITHUB_STEP_SUMMARY
           
           if [ "$AFTER" -ge "$BEFORE" ]; then
             DELTA="↑ +$((AFTER - BEFORE))%"
@@ -297,6 +356,16 @@ jobs:
             DELTA="↓ -$((BEFORE - AFTER))%"
           fi
           echo "| **Change** | - | $DELTA |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Category Breakdown
+          echo "### 📋 Fix Categories" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Category | Count | Action |" >> $GITHUB_STEP_SUMMARY
+          echo "|----------|-------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| 🔴 Critical | ${{ steps.dry_run_refresh.outputs.critical_fixes || 0 }} | Auto-fix |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🟡 Structural | ${{ steps.dry_run_refresh.outputs.structural_fixes || 0 }} | Auto-fix |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🟢 Cosmetic | ${{ steps.dry_run_refresh.outputs.cosmetic_fixes || 0 }} | Skipped (dry-run only) |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
           # Repairs Applied
@@ -307,30 +376,19 @@ jobs:
           echo "| Total Repairs | $REPAIRS |" >> $GITHUB_STEP_SUMMARY
           echo "| JSON Fixes | ${{ steps.dry_run_refresh.outputs.json_fixes }} |" >> $GITHUB_STEP_SUMMARY
           echo "| EN/VI Reversals | ${{ steps.dry_run_refresh.outputs.reversals }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Orphan Attachments | ${{ steps.orphan_check.outputs.attachable }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Orphans Auto-Attached | ${{ steps.orphan_check.outputs.auto_attach }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Orphans Flagged | ${{ steps.orphan_check.outputs.flag_review }} |" >> $GITHUB_STEP_SUMMARY
           echo "| File Renames | ${{ steps.rename_check.outputs.rename_count }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Duplicates Moved | ${{ steps.rename_check.outputs.duplicate_count }} |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
           # Governance
-          echo "### 🛡️ Governance" >> $GITHUB_STEP_SUMMARY
+          echo "### 🛡️ Governance (Phase 5)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Auto-Approved**: High confidence repairs (≥90%)" >> $GITHUB_STEP_SUMMARY
-          echo "- **Governance-Approved**: Medium confidence (70-89%)" >> $GITHUB_STEP_SUMMARY
-          echo "- **Blocked**: Low confidence or critical violations" >> $GITHUB_STEP_SUMMARY
+          echo "- **Auto-Approved (≥92%)**: High confidence repairs" >> $GITHUB_STEP_SUMMARY
+          echo "- **Flagged (75-91%)**: Needs human review" >> $GITHUB_STEP_SUMMARY
+          echo "- **Blocked (<75%)**: Not auto-fixed" >> $GITHUB_STEP_SUMMARY
           echo "- **Remaining Issues**: ${{ steps.verify_after.outputs.remaining_issues }}" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          # Mode
-          echo "### 🚀 Mode" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ github.event.inputs.apply_fixes }}" == "true" ]; then
-            echo "✅ **Manual Trigger** (apply_fixes=true)" >> $GITHUB_STEP_SUMMARY
-          elif [ "${{ steps.changes.outputs.has_changes }}" == "true" ]; then
-            echo "🤖 **Autopilot** (auto-applied on push)" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "ℹ️ **Dry-run** (no changes needed)" >> $GITHUB_STEP_SUMMARY
-          fi
           echo "" >> $GITHUB_STEP_SUMMARY
           
           # Commands
@@ -346,5 +404,5 @@ jobs:
           echo "### 🔗 Trigger CLI" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo '```bash' >> $GITHUB_STEP_SUMMARY
-          echo 'gh workflow run "Audio Auto-Repair v4.3" -f apply_fixes=true' >> $GITHUB_STEP_SUMMARY
+          echo 'gh workflow run "Audio Auto-Repair v5.0" -f apply_fixes=true' >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY

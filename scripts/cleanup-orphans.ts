@@ -1,18 +1,16 @@
 /**
- * Orphan Audio Cleanup Script v4.0
- * Chief Automation Engineer: Full GCE + Semantic Matcher Integration
- * 
- * Uses Integrity Map + GCE to derive orphans.
- * Uses Semantic Matcher for high-confidence auto-attachment.
+ * Orphan Audio Cleanup Script v5.0
+ * Phase 5: Zero-Friction Autopilot with Multi-Factor Scoring
  * 
  * Features:
  * - GCE-based orphan detection
- * - Levenshtein matching for auto-fix
- * - Safe vs dangerous categorization
+ * - Multi-factor semantic matching (Levenshtein + token + room similarity)
+ * - Safe vs dangerous categorization with 0.92/0.75 thresholds
  * - Backup before delete
- * - Comprehensive reporting
+ * - No-timestamp mode for CI dry-runs
+ * - Change-set JSON export for audit
  * 
- * Run: npx tsx scripts/cleanup-orphans.ts [--dry-run] [--auto-fix] [--delete-orphans]
+ * Run: npx tsx scripts/cleanup-orphans.ts [--dry-run] [--auto-fix] [--delete-orphans] [--no-timestamp]
  */
 
 import fs from 'fs';
@@ -28,7 +26,9 @@ const MANIFEST_PATH = 'public/audio/manifest.json';
 // GCE + Matcher Functions (inline)
 // ============================================
 
-const MIN_CONFIDENCE_FOR_AUTO_FIX = 0.85;
+const MIN_CONFIDENCE_AUTO_ATTACH = 0.92;
+const MIN_CONFIDENCE_FLAG = 0.75;
+const MIN_CONFIDENCE_BLOCK = 0.75;
 
 function normalizeRoomId(roomId: string): string {
   return roomId
@@ -91,6 +91,33 @@ function similarityScore(a: string, b: string): number {
   return 1 - levenshteinDistance(a, b) / maxLen;
 }
 
+// Token similarity (Jaccard index)
+function tokenSimilarity(a: string, b: string): number {
+  const tokensA = new Set(a.toLowerCase().split(/[-_\s]+/).filter(t => t.length > 1));
+  const tokensB = new Set(b.toLowerCase().split(/[-_\s]+/).filter(t => t.length > 1));
+  
+  if (tokensA.size === 0 || tokensB.size === 0) return 0;
+  
+  const intersection = new Set([...tokensA].filter(x => tokensB.has(x)));
+  const union = new Set([...tokensA, ...tokensB]);
+  
+  return intersection.size / union.size;
+}
+
+// Room semantic closeness
+function roomSimilarity(filename: string, roomId: string): number {
+  const normalizedRoom = normalizeRoomId(roomId);
+  const fileBase = filename.toLowerCase().replace(/-(en|vi)\.mp3$/i, '');
+  
+  // Check if filename starts with roomId
+  if (fileBase.startsWith(normalizedRoom)) {
+    return 1;
+  }
+  
+  // Otherwise use token similarity
+  return tokenSimilarity(fileBase, normalizedRoom);
+}
+
 // ============================================
 // Types
 // ============================================
@@ -100,12 +127,17 @@ interface OrphanReport {
   fullPath: string;
   sizeKB: number;
   reason: string;
-  category: 'attachable' | 'dangerous';
+  category: 'auto-attach' | 'flag-review' | 'blocked';
   potentialMatch?: {
     roomId: string;
     entrySlug: string;
     confidence: number;
     suggestedName: string;
+    matchFactors: {
+      levenshtein: number;
+      token: number;
+      room: number;
+    };
   };
 }
 
@@ -185,7 +217,7 @@ function getAudioFiles(): Map<string, { fullPath: string; sizeKB: number }> {
 }
 
 // ============================================
-// Orphan Detection with GCE
+// Multi-Factor Orphan Detection
 // ============================================
 
 function findPotentialMatch(
@@ -199,14 +231,26 @@ function findPotentialMatch(
   
   for (const entry of entries) {
     const canonical = getCanonicalAudioForRoom(entry.roomId, entry.slug);
-    const score = similarityScore(filename.toLowerCase(), canonical[lang]);
     
-    if (score > 0.7 && (!bestMatch || score > bestMatch.confidence)) {
+    // Multi-factor scoring
+    const levenshteinScore = similarityScore(filename.toLowerCase(), canonical[lang]);
+    const tokenScore = tokenSimilarity(filename, canonical[lang]);
+    const roomScore = roomSimilarity(filename, entry.roomId);
+    
+    // Weighted combination
+    const combinedScore = (levenshteinScore * 0.5) + (tokenScore * 0.3) + (roomScore * 0.2);
+    
+    if (combinedScore > 0.6 && (!bestMatch || combinedScore > bestMatch.confidence)) {
       bestMatch = {
         roomId: entry.roomId,
         entrySlug: entry.slug,
-        confidence: score,
-        suggestedName: canonical[lang]
+        confidence: combinedScore,
+        suggestedName: canonical[lang],
+        matchFactors: {
+          levenshtein: Math.round(levenshteinScore * 100),
+          token: Math.round(tokenScore * 100),
+          room: Math.round(roomScore * 100),
+        },
       };
     }
   }
@@ -227,10 +271,15 @@ function detectOrphans(
     if (!references.has(filename) && !references.has(basename)) {
       const potentialMatch = findPotentialMatch(filename, entries);
       
-      // Categorize: attachable if high confidence, dangerous otherwise
-      const category = potentialMatch && potentialMatch.confidence >= MIN_CONFIDENCE_FOR_AUTO_FIX
-        ? 'attachable'
-        : 'dangerous';
+      // Categorize based on Phase 5 thresholds
+      let category: OrphanReport['category'];
+      if (potentialMatch && potentialMatch.confidence >= MIN_CONFIDENCE_AUTO_ATTACH) {
+        category = 'auto-attach';
+      } else if (potentialMatch && potentialMatch.confidence >= MIN_CONFIDENCE_FLAG) {
+        category = 'flag-review';
+      } else {
+        category = 'blocked';
+      }
       
       orphans.push({
         filename,
@@ -271,40 +320,40 @@ function backupOrphans(orphans: OrphanReport[]): number {
   return backed;
 }
 
-function autoFixAttachable(orphans: OrphanReport[], dryRun: boolean): number {
-  let fixed = 0;
-  const attachable = orphans.filter(o => o.category === 'attachable' && o.potentialMatch);
+function autoAttachOrphans(orphans: OrphanReport[], dryRun: boolean): number {
+  let attached = 0;
+  const autoAttach = orphans.filter(o => o.category === 'auto-attach' && o.potentialMatch);
   
-  for (const orphan of attachable) {
+  for (const orphan of autoAttach) {
     if (!orphan.potentialMatch) continue;
     
     if (!dryRun) {
       try {
         const newPath = path.join(path.dirname(orphan.fullPath), orphan.potentialMatch.suggestedName);
         fs.renameSync(orphan.fullPath, newPath);
-        console.log(`  ✅ Renamed: ${orphan.filename} → ${orphan.potentialMatch.suggestedName}`);
-        fixed++;
+        console.log(`  ✅ Auto-attached: ${orphan.filename} → ${orphan.potentialMatch.suggestedName} (${Math.round(orphan.potentialMatch.confidence * 100)}%)`);
+        attached++;
       } catch (error) {
         console.warn(`Could not rename: ${orphan.filename}`);
       }
     } else {
-      console.log(`  [DRY] Would rename: ${orphan.filename} → ${orphan.potentialMatch.suggestedName}`);
-      fixed++;
+      console.log(`  [DRY] Would auto-attach: ${orphan.filename} → ${orphan.potentialMatch.suggestedName} (${Math.round(orphan.potentialMatch.confidence * 100)}%)`);
+      attached++;
     }
   }
   
-  return fixed;
+  return attached;
 }
 
-function moveDangerousToOrphans(orphans: OrphanReport[], dryRun: boolean): number {
+function moveBlockedToOrphans(orphans: OrphanReport[], dryRun: boolean): number {
   if (!dryRun && !fs.existsSync(ORPHANS_DIR)) {
     fs.mkdirSync(ORPHANS_DIR, { recursive: true });
   }
   
   let moved = 0;
-  const dangerous = orphans.filter(o => o.category === 'dangerous');
+  const blocked = orphans.filter(o => o.category === 'blocked');
   
-  for (const orphan of dangerous) {
+  for (const orphan of blocked) {
     if (!dryRun) {
       try {
         const dest = path.join(ORPHANS_DIR, path.basename(orphan.fullPath));
@@ -323,12 +372,11 @@ function moveDangerousToOrphans(orphans: OrphanReport[], dryRun: boolean): numbe
 
 function deleteOrphans(orphans: OrphanReport[], dryRun: boolean): number {
   let deleted = 0;
-  const dangerous = orphans.filter(o => o.category === 'dangerous');
+  const blocked = orphans.filter(o => o.category === 'blocked');
   
-  for (const orphan of dangerous) {
+  for (const orphan of blocked) {
     if (!dryRun) {
       try {
-        // Log deletion with timestamp
         const logEntry = `${new Date().toISOString()} DELETED: ${orphan.fullPath}\n`;
         fs.appendFileSync('public/audio-deletion-log.txt', logEntry);
         
@@ -354,13 +402,17 @@ function main() {
   const dryRun = args.includes('--dry-run');
   const shouldAutoFix = args.includes('--auto-fix');
   const shouldDelete = args.includes('--delete-orphans');
+  const noTimestamp = args.includes('--no-timestamp');
   
   console.log('='.repeat(60));
-  console.log('Orphan Audio Cleanup v4.0 (GCE + Semantic Matcher)');
+  console.log('Orphan Audio Cleanup v5.0 (Phase 5 Multi-Factor Matching)');
   console.log('='.repeat(60));
   console.log(`Mode: ${dryRun ? 'DRY RUN' : 'APPLY'}`);
-  console.log(`Auto-fix attachable: ${shouldAutoFix ? 'YES' : 'NO'}`);
-  console.log(`Delete dangerous: ${shouldDelete ? 'YES' : 'NO (move to _orphans/)'}`);
+  console.log(`Auto-attach (≥${Math.round(MIN_CONFIDENCE_AUTO_ATTACH * 100)}%): ${shouldAutoFix ? 'YES' : 'NO'}`);
+  console.log(`Delete blocked (<${Math.round(MIN_CONFIDENCE_BLOCK * 100)}%): ${shouldDelete ? 'YES' : 'NO (move to _orphans/)'}`);
+  if (noTimestamp) {
+    console.log('Timestamp suppression: ON');
+  }
   console.log('');
   
   // Collect data
@@ -373,12 +425,13 @@ function main() {
   const audioFiles = getAudioFiles();
   console.log(`Found ${audioFiles.size} audio files\n`);
   
-  // Detect orphans using GCE
-  console.log('Detecting orphans with semantic matching...');
+  // Detect orphans using multi-factor matching
+  console.log('Detecting orphans with multi-factor semantic matching...');
   const orphans = detectOrphans(audioFiles, references, entries);
   
-  const attachable = orphans.filter(o => o.category === 'attachable');
-  const dangerous = orphans.filter(o => o.category === 'dangerous');
+  const autoAttach = orphans.filter(o => o.category === 'auto-attach');
+  const flagReview = orphans.filter(o => o.category === 'flag-review');
+  const blocked = orphans.filter(o => o.category === 'blocked');
   
   const totalSizeKB = orphans.reduce((sum, o) => sum + o.sizeKB, 0);
   const totalSizeMB = (totalSizeKB / 1024).toFixed(2);
@@ -387,30 +440,48 @@ function main() {
   console.log('ORPHAN DETECTION RESULTS');
   console.log('='.repeat(60));
   console.log(`Orphans found: ${orphans.length}`);
-  console.log(`  - Attachable (high confidence): ${attachable.length}`);
-  console.log(`  - Dangerous (low confidence): ${dangerous.length}`);
+  console.log(`  - 🟢 Auto-attach (≥${Math.round(MIN_CONFIDENCE_AUTO_ATTACH * 100)}%): ${autoAttach.length}`);
+  console.log(`  - 🟡 Flag for review (${Math.round(MIN_CONFIDENCE_FLAG * 100)}-${Math.round(MIN_CONFIDENCE_AUTO_ATTACH * 100)}%): ${flagReview.length}`);
+  console.log(`  - 🔴 Blocked (<${Math.round(MIN_CONFIDENCE_BLOCK * 100)}%): ${blocked.length}`);
   console.log(`Total size: ${totalSizeMB} MB`);
   
-  // Show attachable
-  if (attachable.length > 0) {
-    console.log('\nAttachable (auto-fixable, confidence ≥85%):');
-    attachable.slice(0, 10).forEach(o => {
-      console.log(`  - ${o.filename} → ${o.potentialMatch?.suggestedName} (${Math.round(o.potentialMatch!.confidence * 100)}%)`);
+  // Show auto-attachable
+  if (autoAttach.length > 0) {
+    console.log(`\n🟢 Auto-attachable (confidence ≥${Math.round(MIN_CONFIDENCE_AUTO_ATTACH * 100)}%):`);
+    autoAttach.slice(0, 10).forEach(o => {
+      const factors = o.potentialMatch?.matchFactors;
+      console.log(`  - ${o.filename} → ${o.potentialMatch?.suggestedName}`);
+      console.log(`    (${Math.round(o.potentialMatch!.confidence * 100)}%: L=${factors?.levenshtein}% T=${factors?.token}% R=${factors?.room}%)`);
     });
-    if (attachable.length > 10) {
-      console.log(`  ... and ${attachable.length - 10} more`);
+    if (autoAttach.length > 10) {
+      console.log(`  ... and ${autoAttach.length - 10} more`);
     }
   }
   
-  // Show dangerous
-  if (dangerous.length > 0) {
-    console.log('\nDangerous (requires manual review):');
-    dangerous.slice(0, 10).forEach(o => {
-      const conf = o.potentialMatch ? ` (best match: ${Math.round(o.potentialMatch.confidence * 100)}%)` : '';
+  // Show flagged for review
+  if (flagReview.length > 0) {
+    console.log(`\n🟡 Flagged for human review (${Math.round(MIN_CONFIDENCE_FLAG * 100)}-${Math.round(MIN_CONFIDENCE_AUTO_ATTACH * 100)}%):`);
+    flagReview.slice(0, 5).forEach(o => {
+      const factors = o.potentialMatch?.matchFactors;
+      console.log(`  - ${o.filename} → ${o.potentialMatch?.suggestedName || 'no match'}`);
+      if (factors) {
+        console.log(`    (${Math.round(o.potentialMatch!.confidence * 100)}%: L=${factors.levenshtein}% T=${factors.token}% R=${factors.room}%)`);
+      }
+    });
+    if (flagReview.length > 5) {
+      console.log(`  ... and ${flagReview.length - 5} more`);
+    }
+  }
+  
+  // Show blocked
+  if (blocked.length > 0) {
+    console.log(`\n🔴 Blocked (confidence <${Math.round(MIN_CONFIDENCE_BLOCK * 100)}%):`);
+    blocked.slice(0, 5).forEach(o => {
+      const conf = o.potentialMatch ? ` (best: ${Math.round(o.potentialMatch.confidence * 100)}%)` : ' (no match)';
       console.log(`  - ${o.filename}${conf}`);
     });
-    if (dangerous.length > 10) {
-      console.log(`  ... and ${dangerous.length - 10} more`);
+    if (blocked.length > 5) {
+      console.log(`  ... and ${blocked.length - 5} more`);
     }
   }
   
@@ -418,24 +489,24 @@ function main() {
   let autoAttached = 0;
   let movedOrDeleted = 0;
   
-  if (shouldAutoFix && attachable.length > 0) {
-    console.log('\nAuto-fixing attachable orphans...');
-    autoAttached = autoFixAttachable(orphans, dryRun);
+  if (shouldAutoFix && autoAttach.length > 0) {
+    console.log('\nAuto-attaching high-confidence orphans...');
+    autoAttached = autoAttachOrphans(orphans, dryRun);
     console.log(`Auto-attached: ${autoAttached}`);
   }
   
-  if (dangerous.length > 0 && !dryRun) {
+  if (blocked.length > 0 && !dryRun) {
     // Always backup before delete
-    console.log('\nBacking up dangerous orphans...');
-    backupOrphans(dangerous);
+    console.log('\nBacking up blocked orphans...');
+    backupOrphans(blocked);
     
     if (shouldDelete) {
-      console.log('Deleting dangerous orphans...');
+      console.log('Deleting blocked orphans...');
       movedOrDeleted = deleteOrphans(orphans, dryRun);
       console.log(`Deleted: ${movedOrDeleted}`);
     } else {
-      console.log('Moving dangerous orphans to _orphans/...');
-      movedOrDeleted = moveDangerousToOrphans(orphans, dryRun);
+      console.log('Moving blocked orphans to _orphans/...');
+      movedOrDeleted = moveBlockedToOrphans(orphans, dryRun);
       console.log(`Moved: ${movedOrDeleted}`);
     }
   }
@@ -446,8 +517,8 @@ function main() {
   console.log('='.repeat(60));
   console.log(`Total orphan files: ${orphans.length}`);
   console.log(`Auto-attached: ${autoAttached}`);
+  console.log(`Flagged for review: ${flagReview.length}`);
   console.log(`${shouldDelete ? 'Deleted' : 'Moved'}: ${movedOrDeleted}`);
-  console.log(`Unsafe / left untouched: ${dangerous.length - movedOrDeleted}`);
   
   if (orphans.length === 0) {
     console.log('\n✅ No orphan files detected!');
@@ -455,12 +526,18 @@ function main() {
   
   // Write report
   const reportPath = 'public/orphan-report.json';
-  fs.writeFileSync(reportPath, JSON.stringify({
-    generatedAt: new Date().toISOString(),
+  const report = {
+    generatedAt: noTimestamp ? 'suppressed' : new Date().toISOString(),
     mode: dryRun ? 'dry-run' : 'apply',
+    thresholds: {
+      autoAttach: MIN_CONFIDENCE_AUTO_ATTACH,
+      flagReview: MIN_CONFIDENCE_FLAG,
+      blocked: MIN_CONFIDENCE_BLOCK,
+    },
     totalOrphans: orphans.length,
-    attachable: attachable.length,
-    dangerous: dangerous.length,
+    autoAttachable: autoAttach.length,
+    flaggedForReview: flagReview.length,
+    blocked: blocked.length,
     autoAttached,
     movedOrDeleted,
     totalSizeKB,
@@ -468,11 +545,17 @@ function main() {
       filename: o.filename,
       sizeKB: o.sizeKB,
       category: o.category,
-      potentialMatch: o.potentialMatch
-    }))
-  }, null, 2));
+      potentialMatch: o.potentialMatch,
+    })),
+  };
   
-  console.log(`\nReport saved to: ${reportPath}`);
+  // Only write report if there are changes or not in no-timestamp mode
+  if (!noTimestamp || orphans.length > 0) {
+    fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
+    console.log(`\nReport saved to: ${reportPath}`);
+  } else {
+    console.log('\nNo report written (no-timestamp mode with no orphans)');
+  }
 }
 
 main();

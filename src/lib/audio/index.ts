@@ -1,8 +1,8 @@
 /**
  * Audio utilities barrel export
- * Chief Automation Engineer: Audio System v4.3 - Zero-Friction Ecosystem
+ * Chief Automation Engineer: Audio System v5.0 - Zero-Friction Ecosystem
  * 
- * Zero-Friction Audio System:
+ * Phase 5 Zero-Friction Audio System:
  * ✓ No missing files
  * ✓ No broken names
  * ✓ No JSON mismatch
@@ -12,6 +12,8 @@
  * ✓ Governance-controlled autopilot
  * ✓ Multi-pass verification
  * ✓ Cross-room protection
+ * ✓ TTS auto-generation
+ * ✓ Audio lifecycle tracking
  */
 
 // Global Consistency Engine (GCE) - THE SINGLE SOURCE OF TRUTH
@@ -142,9 +144,41 @@ export {
   type SemanticMatch,
 } from './semanticMatcher';
 
+// TTS Generator (Phase 5)
+export {
+  createGenerationPlan,
+  generateMissingAudio,
+  batchGenerateMissingAudio,
+  detectCrossLanguageGaps,
+  type TTSRequest,
+  type TTSResult,
+  type MissingAudioEntry,
+  type AudioGenerationPlan,
+} from './ttsGenerator';
+
+// Audio Lifecycle Database (Phase 5)
+export {
+  getLifecycleDB,
+  saveLifecycleDB,
+  upsertLifecycleEntry,
+  markVerified,
+  markFixed,
+  markRegenerated,
+  getLifecycleEntry,
+  removeLifecycleEntry,
+  calculateLifecycleStats,
+  findEntriesByRoom,
+  findEntriesNeedingRegeneration,
+  findRecentlyModified,
+  exportLifecycleDB,
+  importLifecycleDB,
+  type AudioLifecycleEntry,
+  type AudioLifecycleDB,
+  type LifecycleStats,
+} from './audioLifecycle';
+
 // Phase 4 Types (Audio Generation)
 export type {
-  AudioGenerationPlan,
   AudioGenerationBatch,
   TTSProviderConfig,
   AudioFileMetadata,
