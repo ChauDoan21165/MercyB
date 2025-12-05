@@ -5,3 +5,6 @@
 export * from './persona';
 export * from './greetings';
 export * from './mercyHost';
+export * from './tierScripts';
+export * from './voicePack';
+export * from './avatarStyles';
