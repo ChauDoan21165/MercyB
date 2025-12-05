@@ -31,6 +31,7 @@ const MB_TRACKS = [
   { id: 'mb6', name: 'When Mercy Looks at Me (3)', url: '/audio/when_mercy_looks_at_me_3.mp3' },
   { id: 'mb7', name: 'Heart of the Blade', url: '/audio/heart_of_the_blade.mp3' },
   { id: 'mb8', name: 'Heart of the Blade (1)', url: '/audio/heart_of_the_blade_1.mp3' },
+  { id: 'mb8b', name: 'Heart of the Blade (2)', url: '/audio/heart_of_the_blade_2.mp3' },
   { id: 'mb9', name: 'Rise With Mercy', url: '/audio/rise_with_mercy.mp3' },
   { id: 'mb10', name: 'Where Mercy Finds Me', url: '/audio/where_mercy_finds_me.mp3' },
   { id: 'mb11', name: 'Where Mercy Finds Me (1)', url: '/audio/where_mercy_finds_me_1.mp3' },
