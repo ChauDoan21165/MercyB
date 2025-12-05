@@ -88,6 +88,7 @@ const HealthDashboard = lazy(() => import("./pages/admin/HealthDashboard"));
 const RoomHealthDashboard = lazy(() => import("./pages/admin/RoomHealthDashboard"));
 const UnifiedRoomHealthCheck = lazy(() => import("./pages/admin/UnifiedRoomHealthCheck"));
 const SystemHealth = lazy(() => import("./pages/admin/SystemHealth"));
+const SystemHealthLive = lazy(() => import("./pages/admin/SystemHealthLive"));
 const EdgeFunctions = lazy(() => import("./pages/admin/EdgeFunctions"));
 const RoomSpecification = lazy(() => import("./pages/admin/RoomSpecification"));
 const MusicApproval = lazy(() => import("./pages/admin/MusicApproval"));
@@ -324,7 +325,8 @@ const App = () => {
                       <Route path="/admin/room-health/:tier" element={<AdminRoute><UnifiedRoomHealthCheck /></AdminRoute>} />
                       <Route path="/admin/health-dashboard" element={<AdminRoute><HealthDashboard /></AdminRoute>} />
                       <Route path="/admin/room-health-dashboard" element={<AdminRoute><RoomHealthDashboard /></AdminRoute>} />
-                      <Route path="/admin/system-health" element={<AdminRoute><SystemHealth /></AdminRoute>} />
+<Route path="/admin/system-health" element={<AdminRoute><SystemHealth /></AdminRoute>} />
+                      <Route path="/admin/system-health-live" element={<AdminRoute><SystemHealthLive /></AdminRoute>} />
                       <Route path="/admin/audit-v4" element={<AdminRoute><AuditSafeShield /></AdminRoute>} />
                       <Route path="/admin/system-codes" element={<AdminRoute><SystemCodeFiles /></AdminRoute>} />
                       <Route path="/admin/code-viewer" element={<AdminRoute><CodeViewer /></AdminRoute>} />
