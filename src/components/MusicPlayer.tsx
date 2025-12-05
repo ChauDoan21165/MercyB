@@ -14,7 +14,7 @@ import { Slider } from '@/components/ui/slider';
 import { useFavoriteTracks } from '@/hooks/useFavoriteTracks';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
-// Mercy Blade original songs (26 tracks)
+// Mercy Blade original songs (32 tracks)
 const MB_TRACKS = [
   { id: 'mb1', name: 'In A Quiet Room I Open My Mind', url: '/audio/in_a_quiet_room_i_open_my_mind.mp3' },
   { id: 'mb2', name: 'In A Quiet Room I Open My Mind (2)', url: '/audio/in_a_quiet_room_i_open_my_mind_2.mp3' },
@@ -43,6 +43,12 @@ const MB_TRACKS = [
   { id: 'mb24', name: 'Step With Me Mercy', url: '/audio/step_with_me_mercy.mp3' },
   { id: 'mb25', name: 'Step With Me Mercy (2)', url: '/audio/step_with_me_mercy_2.mp3' },
   { id: 'mb26', name: 'In A Quiet Room I Open My Mind (3)', url: '/audio/in_a_quiet_room_i_open_my_mind_3.mp3' },
+  { id: 'mb27', name: 'From My Heart to Yours', url: '/audio/from_my_heart_to_yours_mercy_blade.mp3' },
+  { id: 'mb28', name: 'Fire in My Veins', url: '/audio/fire_in_my_veins_mercy_blade.mp3' },
+  { id: 'mb29', name: 'Bridge of Hearts', url: '/audio/mercy_blade_bridge_of_hearts.mp3' },
+  { id: 'mb30', name: 'Bridge of Hearts (1)', url: '/audio/mercy_blade_bridge_of_hearts_1.mp3' },
+  { id: 'mb31', name: 'Say My Name Mercy Blade', url: '/audio/say_my_name_mercy_blade.mp3' },
+  { id: 'mb32', name: 'Say My Name Mercy Blade (1)', url: '/audio/say_my_name_mercy_blade_1.mp3' },
 ];
 
 // Common background music (Fesliyan Studios etc)
