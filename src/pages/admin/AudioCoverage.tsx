@@ -12,6 +12,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import {
   Table,
@@ -31,10 +32,13 @@ import {
   Eye,
   Download,
   AlertCircle,
-  Wrench,
   Zap,
   Shield,
   BarChart3,
+  Terminal,
+  Github,
+  Copy,
+  Play,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import {
@@ -49,7 +53,6 @@ import {
   exportIntegrityMapCSV,
   type IntegrityMap,
   type IntegritySummary,
-  type RoomIntegrity,
 } from "@/lib/audio/integrityMap";
 
 interface FixProgress {
@@ -61,7 +64,6 @@ interface FixProgress {
 
 export default function AudioCoverage() {
   const [isLoading, setIsLoading] = useState(false);
-  const [isFixing, setIsFixing] = useState(false);
   const [report, setReport] = useState<AudioCoverageReport | null>(null);
   const [integrityMap, setIntegrityMap] = useState<IntegrityMap | null>(null);
   const [integritySummary, setIntegritySummary] = useState<IntegritySummary | null>(null);
@@ -69,6 +71,11 @@ export default function AudioCoverage() {
   const [search, setSearch] = useState("");
   const [showOnlyMissing, setShowOnlyMissing] = useState(true);
   const [selectedRoom, setSelectedRoom] = useState<RoomAudioCoverage | null>(null);
+  
+  // Modal states
+  const [showFixModal, setShowFixModal] = useState(false);
+  const [showDryRunModal, setShowDryRunModal] = useState(false);
+  
   const [fixProgress, setFixProgress] = useState<FixProgress>({
     stage: '',
     current: 0,
@@ -84,7 +91,6 @@ export default function AudioCoverage() {
       const data = await getRoomAudioCoverage();
       setReport(data);
       
-      // Build integrity map from room data
       if (data.rooms.length > 0) {
         const storageFiles = new Set<string>(
           (data as any).storageFiles?.map((f: string) => f.toLowerCase()) || []
@@ -149,50 +155,9 @@ export default function AudioCoverage() {
     return getLowestIntegrityRooms(integrityMap, 10);
   }, [integrityMap]);
 
-  const handleFixEntireSystem = async () => {
-    setIsFixing(true);
-    setFixProgress({ stage: 'Starting...', current: 0, total: 5, status: 'running' });
-    
-    try {
-      // Stage 1: Refresh JSON Audio
-      setFixProgress({ stage: 'Refreshing JSON audio references...', current: 1, total: 5, status: 'running' });
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      // Stage 2: Rename Storage Files
-      setFixProgress({ stage: 'Renaming storage files...', current: 2, total: 5, status: 'running' });
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      // Stage 3: Cleanup Orphans
-      setFixProgress({ stage: 'Cleaning up orphan files...', current: 3, total: 5, status: 'running' });
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      // Stage 4: Regenerate Manifest
-      setFixProgress({ stage: 'Regenerating manifest...', current: 4, total: 5, status: 'running' });
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      // Stage 5: Recompute Integrity Map
-      setFixProgress({ stage: 'Recomputing integrity map...', current: 5, total: 5, status: 'running' });
-      await loadCoverage();
-      
-      setFixProgress({ stage: 'Complete!', current: 5, total: 5, status: 'completed' });
-      
-      toast({
-        title: "System Fixed",
-        description: "All automated repairs have been applied. Please run scripts manually for storage changes.",
-      });
-    } catch (err) {
-      setFixProgress({ stage: 'Error occurred', current: 0, total: 5, status: 'error' });
-      toast({
-        title: "Fix Failed",
-        description: err instanceof Error ? err.message : "An error occurred",
-        variant: "destructive",
-      });
-    } finally {
-      setIsFixing(false);
-      setTimeout(() => {
-        setFixProgress({ stage: '', current: 0, total: 0, status: 'idle' });
-      }, 3000);
-    }
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    toast({ title: "Copied to clipboard" });
   };
 
   const handleExportCSV = () => {
@@ -200,39 +165,27 @@ export default function AudioCoverage() {
 
     const headers = [
       "roomId", "tier", "titleEn", "totalEntries",
-      "presentEn", "missingEnCount", "missingEnFilenames", "canonicalSuggestionEn",
-      "presentVi", "missingViCount", "missingViFilenames", "canonicalSuggestionVi",
-      "integrityScore", "repairStatus", "confidenceScore",
+      "presentEn", "missingEnCount", "missingEnFilenames",
+      "presentVi", "missingViCount", "missingViFilenames",
+      "integrityScore", "orphanCount", "namingIssuesCount", "duplicateGroups",
     ];
 
     const rows = filteredRooms.map((room) => {
-      const canonical = (i: number, lang: string) => `${room.roomId}-entry-${i + 1}-${lang}.mp3`;
-      const canonicalEn = room.missingEn.map((_, i) => canonical(i, 'en')).join(";");
-      const canonicalVi = room.missingVi.map((_, i) => canonical(i, 'vi')).join(";");
-      
       const integrity = integrityMap?.[room.roomId];
       const integrityScore = integrity?.score ?? 100;
-      const missingCount = room.missingEn.length + room.missingVi.length;
-      
-      let repairStatus = "ok";
-      let confidenceScore = 100;
-      if (missingCount > 0) {
-        repairStatus = "pending";
-        confidenceScore = 70;
-      }
-      if ((room.namingViolations || []).length > 0) {
-        repairStatus = "manual-required";
-        confidenceScore = Math.max(50, confidenceScore - 5);
-      }
+      const orphanCount = integrity?.orphans.length ?? 0;
+      const namingCount = (room.namingViolations || []).length;
+      const dupCount = integrity?.duplicates.length ?? 0;
 
       return [
         room.roomId, room.tier || "", room.titleEn || "",
         room.totalEntries.toString(),
         room.presentEn.toString(), room.missingEn.length.toString(),
-        room.missingEn.join(";"), canonicalEn,
+        room.missingEn.join(";"),
         room.presentVi.toString(), room.missingVi.length.toString(),
-        room.missingVi.join(";"), canonicalVi,
-        integrityScore.toString(), repairStatus, confidenceScore.toString(),
+        room.missingVi.join(";"),
+        integrityScore.toString(), orphanCount.toString(),
+        namingCount.toString(), dupCount.toString(),
       ];
     });
 
@@ -289,6 +242,20 @@ export default function AudioCoverage() {
 
   const storageEmpty = !!report && report.storageFileCount === 0;
 
+  // Commands for modals
+  const dryRunCommands = `# Dry-run checks (safe - no modifications)
+npx tsx scripts/refresh-json-audio.ts --dry-run --verbose
+npx tsx scripts/cleanup-orphans.ts --dry-run
+npx tsx scripts/rename-audio-storage.ts --dry-run --verbose`;
+
+  const fixCommands = `# Apply all fixes
+npx tsx scripts/refresh-json-audio.ts --apply --verbose
+npx tsx scripts/rename-audio-storage.ts --verbose
+npx tsx scripts/cleanup-orphans.ts --auto-fix
+node scripts/generate-audio-manifest.js`;
+
+  const ghCommand = 'gh workflow run "Audio Auto-Repair v4.1" -f apply_fixes=true';
+
   return (
     <div className="min-h-screen bg-white p-6">
       <div className="max-w-7xl mx-auto space-y-6">
@@ -297,29 +264,27 @@ export default function AudioCoverage() {
           <div className="flex items-center gap-3">
             <Music className="h-8 w-8 text-black" />
             <div>
-              <h1 className="text-2xl font-bold text-black">Audio Coverage v3.0</h1>
+              <h1 className="text-2xl font-bold text-black">Audio Coverage v4.1</h1>
               <p className="text-gray-600 text-sm">
-                Self-Healing Audio Intelligence Dashboard
+                GCE-Powered Self-Healing Audio System
               </p>
             </div>
           </div>
           <div className="flex gap-2 flex-wrap">
             <Button
-              onClick={handleFixEntireSystem}
-              className="bg-green-600 text-white hover:bg-green-700"
-              disabled={isLoading || isFixing}
+              onClick={() => setShowDryRunModal(true)}
+              variant="outline"
+              className="border-blue-500 text-blue-600 hover:bg-blue-50"
             >
-              {isFixing ? (
-                <>
-                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                  Fixing...
-                </>
-              ) : (
-                <>
-                  <Zap className="h-4 w-4 mr-2" />
-                  Fix Entire System
-                </>
-              )}
+              <Terminal className="h-4 w-4 mr-2" />
+              Dry-Run Check
+            </Button>
+            <Button
+              onClick={() => setShowFixModal(true)}
+              className="bg-green-600 text-white hover:bg-green-700"
+            >
+              <Zap className="h-4 w-4 mr-2" />
+              Fix Entire System
             </Button>
             <Button
               onClick={handleExportCSV}
@@ -373,11 +338,11 @@ export default function AudioCoverage() {
             <CardHeader className="pb-2">
               <CardTitle className="text-lg text-black flex items-center gap-2">
                 <Shield className="h-5 w-5" />
-                System Integrity Summary
+                System Integrity Summary (GCE v4.1)
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
                 <div className="text-center p-3 bg-gray-50 rounded">
                   <div className={`text-3xl font-bold ${getScoreColor(integritySummary.averageScore)}`}>
                     {integritySummary.averageScore}%
@@ -386,7 +351,7 @@ export default function AudioCoverage() {
                 </div>
                 <div className="text-center p-3 bg-gray-50 rounded">
                   <div className="text-3xl font-bold text-green-600">{integritySummary.healthyRooms}</div>
-                  <div className="text-sm text-gray-600">Healthy Rooms</div>
+                  <div className="text-sm text-gray-600">Healthy</div>
                 </div>
                 <div className="text-center p-3 bg-gray-50 rounded">
                   <div className={`text-3xl font-bold ${integritySummary.roomsWithIssues > 0 ? 'text-red-600' : 'text-green-600'}`}>
@@ -398,13 +363,19 @@ export default function AudioCoverage() {
                   <div className={`text-3xl font-bold ${integritySummary.totalMissing > 0 ? 'text-red-600' : 'text-green-600'}`}>
                     {integritySummary.totalMissing}
                   </div>
-                  <div className="text-sm text-gray-600">Missing Files</div>
+                  <div className="text-sm text-gray-600">Missing</div>
                 </div>
                 <div className="text-center p-3 bg-gray-50 rounded">
                   <div className={`text-3xl font-bold ${integritySummary.totalOrphans > 0 ? 'text-orange-600' : 'text-green-600'}`}>
                     {integritySummary.totalOrphans}
                   </div>
                   <div className="text-sm text-gray-600">Orphans</div>
+                </div>
+                <div className="text-center p-3 bg-gray-50 rounded">
+                  <div className={`text-3xl font-bold ${integritySummary.totalDuplicates > 0 ? 'text-amber-600' : 'text-green-600'}`}>
+                    {integritySummary.totalDuplicates}
+                  </div>
+                  <div className="text-sm text-gray-600">Duplicates</div>
                 </div>
               </div>
               <div className="mt-4 flex justify-end">
@@ -429,15 +400,36 @@ export default function AudioCoverage() {
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
                 {lowestIntegrityRooms.filter(r => r.score < 100).slice(0, 5).map((room) => (
-                  <div key={room.roomId} className="bg-white p-3 rounded border border-red-200">
+                  <div 
+                    key={room.roomId} 
+                    className="bg-white p-3 rounded border border-red-200 cursor-pointer hover:shadow-md transition-shadow"
+                    onClick={() => {
+                      const fullRoom = report?.rooms.find(r => r.roomId === room.roomId);
+                      if (fullRoom) setSelectedRoom(fullRoom);
+                    }}
+                  >
                     <div className="font-mono text-sm truncate" title={room.roomId}>
                       {room.roomId}
                     </div>
                     <div className={`text-2xl font-bold ${getScoreColor(room.score)}`}>
                       {room.score}%
                     </div>
-                    <div className="text-xs text-gray-500 mt-1">
-                      {room.missing.length} missing, {room.orphans.length} orphans
+                    <div className="flex flex-wrap gap-1 mt-1">
+                      {room.missing.length > 0 && (
+                        <Badge variant="destructive" className="text-xs">
+                          {room.missing.length} missing
+                        </Badge>
+                      )}
+                      {room.orphans.length > 0 && (
+                        <Badge className="bg-orange-500 text-xs">
+                          {room.orphans.length} orphans
+                        </Badge>
+                      )}
+                      {room.duplicates.length > 0 && (
+                        <Badge className="bg-amber-500 text-xs">
+                          {room.duplicates.length} dups
+                        </Badge>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -639,7 +631,6 @@ export default function AudioCoverage() {
                         filteredRooms.map((room) => {
                           const integrity = integrityMap?.[room.roomId];
                           const score = integrity?.score ?? 100;
-                          const hasMissing = room.missingEn.length > 0 || room.missingVi.length > 0;
                           
                           return (
                             <TableRow key={room.roomId} className="border-b border-gray-100 hover:bg-gray-50">
@@ -698,7 +689,107 @@ export default function AudioCoverage() {
           </>
         )}
 
-        {/* Detail Modal */}
+        {/* Dry-Run Modal */}
+        <Dialog open={showDryRunModal} onOpenChange={setShowDryRunModal}>
+          <DialogContent className="max-w-xl">
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-2">
+                <Terminal className="h-5 w-5" />
+                Dry-Run Check (Safe)
+              </DialogTitle>
+              <DialogDescription>
+                These commands only report issues without making any changes.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="space-y-4">
+              <div className="relative">
+                <pre className="text-xs bg-gray-100 p-4 rounded border font-mono overflow-x-auto">
+                  {dryRunCommands}
+                </pre>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="absolute top-2 right-2"
+                  onClick={() => copyToClipboard(dryRunCommands)}
+                >
+                  <Copy className="h-4 w-4" />
+                </Button>
+              </div>
+              <p className="text-sm text-gray-600">
+                Run these commands locally to see what issues exist without modifying any files.
+              </p>
+            </div>
+          </DialogContent>
+        </Dialog>
+
+        {/* Fix Entire System Modal */}
+        <Dialog open={showFixModal} onOpenChange={setShowFixModal}>
+          <DialogContent className="max-w-xl">
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-2">
+                <Zap className="h-5 w-5 text-green-600" />
+                Fix Entire System
+              </DialogTitle>
+              <DialogDescription>
+                Choose how to apply automated fixes to all audio issues.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="space-y-6">
+              {/* GitHub Actions Option */}
+              <div className="border rounded-lg p-4 bg-gray-50">
+                <div className="flex items-center gap-2 mb-2">
+                  <Github className="h-5 w-5" />
+                  <h4 className="font-semibold">Via GitHub Actions (Recommended)</h4>
+                </div>
+                <p className="text-sm text-gray-600 mb-3">
+                  Trigger the workflow to run fixes in CI with automatic commit.
+                </p>
+                <div className="relative">
+                  <pre className="text-xs bg-white p-3 rounded border font-mono">
+                    {ghCommand}
+                  </pre>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="absolute top-1 right-1"
+                    onClick={() => copyToClipboard(ghCommand)}
+                  >
+                    <Copy className="h-4 w-4" />
+                  </Button>
+                </div>
+                <p className="text-xs text-gray-500 mt-2">
+                  Or: GitHub → Actions → "Audio Auto-Repair v4.1" → Run workflow → apply_fixes=true
+                </p>
+              </div>
+
+              {/* Local Option */}
+              <div className="border rounded-lg p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Play className="h-5 w-5" />
+                  <h4 className="font-semibold">Run Locally</h4>
+                </div>
+                <p className="text-sm text-gray-600 mb-3">
+                  Execute fixes directly on your machine.
+                </p>
+                <div className="relative">
+                  <pre className="text-xs bg-gray-100 p-3 rounded border font-mono overflow-x-auto">
+                    {fixCommands}
+                  </pre>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="absolute top-1 right-1"
+                    onClick={() => copyToClipboard(fixCommands)}
+                  >
+                    <Copy className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
+
+        {/* Room Detail Modal */}
         <Dialog open={!!selectedRoom} onOpenChange={() => setSelectedRoom(null)}>
           <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
             <DialogHeader>
@@ -709,7 +800,7 @@ export default function AudioCoverage() {
             </DialogHeader>
             {selectedRoom && (
               <div className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-3 gap-4">
                   <div>
                     <Label className="text-sm font-semibold">Title</Label>
                     <p className="text-sm">{selectedRoom.titleEn || "-"}</p>
@@ -717,6 +808,12 @@ export default function AudioCoverage() {
                   <div>
                     <Label className="text-sm font-semibold">Tier</Label>
                     <p className="text-sm">{selectedRoom.tier || "-"}</p>
+                  </div>
+                  <div>
+                    <Label className="text-sm font-semibold">Integrity Score</Label>
+                    <p className={`text-lg font-bold ${getScoreColor(integrityMap?.[selectedRoom.roomId]?.score ?? 100)}`}>
+                      {integrityMap?.[selectedRoom.roomId]?.score ?? 100}%
+                    </p>
                   </div>
                 </div>
 
@@ -746,12 +843,39 @@ export default function AudioCoverage() {
                   </div>
                 )}
 
-                <div className="bg-gray-100 p-3 rounded">
-                  <Label className="text-sm font-semibold">Recommended Fix</Label>
-                  <pre className="text-xs mt-2 bg-white p-2 rounded border">
-{`npx tsx scripts/refresh-json-audio.ts --room=${selectedRoom.roomId}
-node scripts/generate-audio-manifest.js`}
-                  </pre>
+                {(selectedRoom.namingViolations || []).length > 0 && (
+                  <div>
+                    <Label className="text-sm font-semibold text-amber-600">
+                      Naming Violations ({selectedRoom.namingViolations?.length || 0})
+                    </Label>
+                    <ScrollArea className="h-24 border rounded p-2 mt-1 bg-amber-50">
+                      {(selectedRoom.namingViolations || []).map((v: any, i: number) => (
+                        <div key={i} className="text-xs text-amber-700 py-0.5">
+                          <span className="font-mono">{v.filename}</span>
+                          <span className="text-amber-500 ml-2">→ {v.expectedCanonicalName || 'fix needed'}</span>
+                        </div>
+                      ))}
+                    </ScrollArea>
+                  </div>
+                )}
+
+                {(integrityMap?.[selectedRoom.roomId]?.duplicates || []).length > 0 && (
+                  <div>
+                    <Label className="text-sm font-semibold text-purple-600">
+                      Duplicates ({integrityMap?.[selectedRoom.roomId]?.duplicates.length})
+                    </Label>
+                    <ScrollArea className="h-20 border rounded p-2 mt-1 bg-purple-50">
+                      {integrityMap?.[selectedRoom.roomId]?.duplicates.map((d, i) => (
+                        <div key={i} className="font-mono text-xs text-purple-700 py-0.5">{d}</div>
+                      ))}
+                    </ScrollArea>
+                  </div>
+                )}
+
+                <div className="bg-blue-50 p-3 rounded border border-blue-200">
+                  <p className="text-sm text-blue-800">
+                    💡 These issues can be auto-fixed by running the Audio Auto-Repair workflow or local scripts.
+                  </p>
                 </div>
               </div>
             )}
