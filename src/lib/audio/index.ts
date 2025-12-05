@@ -179,6 +179,9 @@ export {
 
 // Phase 4 Types (Audio Generation)
 export type {
+  AudioChangeSet,
+  AudioChange,
+  AutopilotStatusStore,
   AudioGenerationBatch,
   TTSProviderConfig,
   AudioFileMetadata,
@@ -189,3 +192,15 @@ export type {
   RepairLogEntry,
   AudioSystemHealth,
 } from './types';
+
+// Autopilot Engine (Phase 4.4)
+export {
+  runAutopilotCycle,
+  getAutopilotStatus,
+  saveAutopilotStatus,
+  generateAutopilotReport,
+  generateMarkdownReport,
+  type AutopilotConfig,
+  type AutopilotResult,
+  type AutopilotReport,
+} from './audioAutopilot';

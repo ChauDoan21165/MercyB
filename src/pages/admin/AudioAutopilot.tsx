@@ -28,16 +28,16 @@ import {
 import { toast } from 'sonner';
 import type { 
   AutopilotStatusStore, 
-  AutopilotReport, 
-  StructuredChangeSet,
-} from '@/lib/audio/autopilotEngine';
+  AutopilotReport,
+} from '@/lib/audio/audioAutopilot';
+import type { AudioChangeSet } from '@/lib/audio/types';
 import type { GovernanceDecision } from '@/lib/audio/audioGovernanceEngine';
 
 export default function AudioAutopilot() {
   const [isLoading, setIsLoading] = useState(false);
   const [autopilotStatus, setAutopilotStatus] = useState<AutopilotStatusStore | null>(null);
   const [lastReport, setLastReport] = useState<AutopilotReport | null>(null);
-  const [changeSet, setChangeSet] = useState<StructuredChangeSet | null>(null);
+  const [changeSet, setChangeSet] = useState<AudioChangeSet | null>(null);
   const [governanceLog, setGovernanceLog] = useState<GovernanceDecision[]>([]);
   const [isDryRun, setIsDryRun] = useState(true);
 

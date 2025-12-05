@@ -1,7 +1,56 @@
 /**
- * Audio System Types v1.0
- * Phase 4 Preparation: Interfaces for future TTS and voice generation
+ * Audio System Types v4.4
+ * Phase 4.4: Full Autopilot Types
  */
+
+// ============================================
+// Phase 4.4: Unified Change Set Types
+// ============================================
+
+/**
+ * Unified change set structure used by autopilot
+ */
+export interface AudioChangeSet {
+  criticalFixes: AudioChange[];
+  autoFixes: AudioChange[];
+  lowConfidence: AudioChange[];
+  blocked: AudioChange[];
+  cosmetic: AudioChange[];
+}
+
+/**
+ * Individual audio change operation
+ */
+export interface AudioChange {
+  id: string;
+  roomId: string;
+  type: 'rename' | 'attach-orphan' | 'generate-tts' | 'fix-json-ref' | 'delete-orphan';
+  before?: string;
+  after?: string;
+  confidence: number;
+  governanceDecision: 'auto-approve' | 'governance-approve' | 'requires-review' | 'blocked';
+  notes?: string;
+}
+
+/**
+ * Persistent autopilot status store
+ */
+export interface AutopilotStatusStore {
+  version: string;
+  lastRunAt: string | null;
+  mode: 'dry-run' | 'apply' | null;
+  beforeIntegrity: number;
+  afterIntegrity: number;
+  roomsTouched: number;
+  changesApplied: number;
+  changesBlocked: number;
+  governanceFlags: string[];
+  lastReportPath: string | null;
+}
+
+// ============================================
+// Audio Generation Types
+// ============================================
 
 /**
  * Audio Generation Plan
