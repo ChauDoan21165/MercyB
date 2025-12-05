@@ -3,6 +3,7 @@
  * 
  * Shows engine state, loaded tiers, voices, signals, and rituals.
  * Phase 6: Added streak/ritual info and simulation buttons.
+ * Phase 7: Added logs tab and teacher info.
  */
 
 import { useState, useEffect } from 'react';
@@ -12,6 +13,7 @@ import { runFullValidation } from '@/lib/mercy-host/validation';
 import { hostSignal } from '@/lib/mercy-host/hostSignal';
 import { getRitualForEvent } from '@/lib/mercy-host/rituals';
 import { getMemoryData, type MercyMemoryV2 } from '@/lib/mercy-host/memorySchema';
+import { getRecentLogs, getLogSummary, getLogBufferSize, type MercyLogEvent } from '@/lib/mercy-host/logs';
 import { Button } from '@/components/ui/button';
 import { 
   Bug, 
@@ -27,7 +29,10 @@ import {
   Flame,
   Calendar,
   Star,
-  VolumeX
+  VolumeX,
+  ScrollText,
+  GraduationCap,
+  BookOpen
 } from 'lucide-react';
 
 interface MercyDebugPanelProps {
@@ -41,7 +46,7 @@ const isDev = typeof window !== 'undefined' &&
 
 export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<'state' | 'validation' | 'signals' | 'memory' | 'rituals'>('state');
+  const [activeTab, setActiveTab] = useState<'state' | 'validation' | 'signals' | 'memory' | 'rituals' | 'logs'>('state');
   const mercy = useMercyHostContext();
 
   // Admin gate: only show in dev mode or with explicit admin flag
@@ -50,6 +55,9 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
   const validation = runFullValidation(mercy);
   const signalHistory = hostSignal.getHistory();
   const memoryData: MercyMemoryV2 = getMemoryData();
+  const recentLogs = getRecentLogs(20);
+  const logSummary = getLogSummary();
+  const logBufferSize = getLogBufferSize();
 
   // Simulate streak milestone
   const simulateStreakMilestone = () => {
@@ -117,7 +125,7 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
 
           {/* Tabs */}
           <div className="flex border-b border-border overflow-x-auto">
-            {(['state', 'validation', 'signals', 'memory', 'rituals'] as const).map(tab => (
+            {(['state', 'validation', 'signals', 'memory', 'rituals', 'logs'] as const).map(tab => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -314,6 +322,26 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
                   />
                 </div>
 
+                {/* Teacher Info - Phase 7 */}
+                <div className="p-2 bg-emerald-50 dark:bg-emerald-950/30 rounded">
+                  <div className="flex items-center gap-2 mb-2">
+                    <GraduationCap className="h-4 w-4 text-emerald-500" />
+                    <span className="font-medium">English Teacher</span>
+                  </div>
+                  <StateRow 
+                    label="Teacher Level" 
+                    value={mercy.teacherLevel} 
+                  />
+                  <StateRow 
+                    label="Room Domain" 
+                    value={mercy.currentRoomDomain || 'None'} 
+                  />
+                  <StateRow 
+                    label="Hint Visible" 
+                    value={mercy.isTeacherHintVisible ? 'Yes' : 'No'} 
+                  />
+                </div>
+
                 {/* Simulation Buttons */}
                 <div className="pt-2 space-y-2">
                   <Button 
@@ -334,6 +362,56 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
                     <Calendar className="h-3 w-3 mr-1" />
                     Simulate Comeback Ritual
                   </Button>
+                </div>
+              </div>
+            )}
+
+            {/* Phase 7: Logs Tab */}
+            {activeTab === 'logs' && (
+              <div className="space-y-3">
+                {/* Log Summary */}
+                <div className="p-2 bg-muted/50 rounded">
+                  <div className="flex items-center gap-2 mb-2">
+                    <ScrollText className="h-4 w-4 text-blue-500" />
+                    <span className="font-medium">Log Summary</span>
+                  </div>
+                  <StateRow label="Buffer Size" value={`${logBufferSize}/100`} />
+                  <StateRow label="Room Enters" value={String(logSummary.room_enter)} />
+                  <StateRow label="Room Completes" value={String(logSummary.room_complete)} />
+                  <StateRow label="Entry Clicks" value={String(logSummary.entry_click)} />
+                  <StateRow label="EF Practice" value={String(logSummary.ef_practice)} />
+                </div>
+
+                {/* Recent Logs */}
+                <div className="p-2 bg-muted/50 rounded">
+                  <div className="flex items-center gap-2 mb-2">
+                    <BookOpen className="h-4 w-4 text-primary" />
+                    <span className="font-medium">Recent Logs</span>
+                  </div>
+                  <div className="space-y-1 max-h-40 overflow-y-auto">
+                    {recentLogs.length === 0 ? (
+                      <p className="text-muted-foreground text-xs">No logs yet</p>
+                    ) : (
+                      recentLogs.slice(0, 10).map((log) => (
+                        <div 
+                          key={log.id} 
+                          className="text-xs p-1.5 bg-background rounded border border-border"
+                        >
+                          <div className="flex justify-between">
+                            <span className="font-medium text-primary">{log.type}</span>
+                            <span className="text-muted-foreground">
+                              {new Date(log.timestampISO).toLocaleTimeString()}
+                            </span>
+                          </div>
+                          {log.roomId && (
+                            <div className="text-muted-foreground truncate">
+                              {log.roomId}
+                            </div>
+                          )}
+                        </div>
+                      ))
+                    )}
+                  </div>
                 </div>
               </div>
             )}
