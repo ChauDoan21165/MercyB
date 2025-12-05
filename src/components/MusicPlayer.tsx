@@ -21,7 +21,7 @@ import { Slider } from '@/components/ui/slider';
 import { useFavoriteTracks } from '@/hooks/useFavoriteTracks';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
-// Mercy Blade original songs
+// Mercy Blade original songs (26 tracks)
 const MB_TRACKS = [
   { id: 'mb1', name: 'In A Quiet Room I Open My Mind', url: '/audio/in_a_quiet_room_i_open_my_mind.mp3' },
   { id: 'mb2', name: 'In A Quiet Room I Open My Mind (2)', url: '/audio/in_a_quiet_room_i_open_my_mind_2.mp3' },
