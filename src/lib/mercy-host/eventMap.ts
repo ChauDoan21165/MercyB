@@ -20,6 +20,26 @@ export type MercyEventType =
   | 'audio_play'
   | 'audio_complete';
 
+/**
+ * Array of all Mercy event types for validation
+ */
+export const MERCY_EVENTS: MercyEventType[] = [
+  'room_enter',
+  'room_exit',
+  'entry_click',
+  'entry_complete',
+  'color_toggle',
+  'tier_unlock',
+  'vip_upgrade',
+  'achievement',
+  'first_visit',
+  'return_inactive',
+  'scroll_reflection',
+  'favorite_add',
+  'audio_play',
+  'audio_complete'
+];
+
 export type MercyAnimationType = 
   | 'halo'
   | 'shimmer'
