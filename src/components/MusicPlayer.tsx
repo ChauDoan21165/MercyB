@@ -21,7 +21,32 @@ import { Slider } from '@/components/ui/slider';
 import { useFavoriteTracks } from '@/hooks/useFavoriteTracks';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
-const TRACKS = [
+// Mercy Blade original songs
+const MB_TRACKS = [
+  { id: 'mb1', name: 'In A Quiet Room I Open My Mind', url: '/audio/in_a_quiet_room_i_open_my_mind.mp3' },
+  { id: 'mb2', name: 'In A Quiet Room I Open My Mind (2)', url: '/audio/in_a_quiet_room_i_open_my_mind_2.mp3' },
+  { id: 'mb3', name: 'When Mercy Looks at Me', url: '/audio/when_mercy_looks_at_me.mp3' },
+  { id: 'mb4', name: 'When Mercy Looks at Me (1)', url: '/audio/when_mercy_looks_at_me_1.mp3' },
+  { id: 'mb5', name: 'When Mercy Looks at Me (2)', url: '/audio/when_mercy_looks_at_me_2.mp3' },
+  { id: 'mb6', name: 'When Mercy Looks at Me (3)', url: '/audio/when_mercy_looks_at_me_3.mp3' },
+  { id: 'mb7', name: 'Heart of the Blade', url: '/audio/heart_of_the_blade.mp3' },
+  { id: 'mb8', name: 'Heart of the Blade (1)', url: '/audio/heart_of_the_blade_1.mp3' },
+  { id: 'mb9', name: 'Rise With Mercy', url: '/audio/rise_with_mercy.mp3' },
+  { id: 'mb10', name: 'Where Mercy Finds Me', url: '/audio/where_mercy_finds_me.mp3' },
+  { id: 'mb11', name: 'Where Mercy Finds Me (1)', url: '/audio/where_mercy_finds_me_1.mp3' },
+  { id: 'mb12', name: 'Where Mercy Finds Me (2)', url: '/audio/where_mercy_finds_me_2.mp3' },
+  { id: 'mb13', name: 'Where Mercy Finds Me (3)', url: '/audio/where_mercy_finds_me_3.mp3' },
+  { id: 'mb14', name: 'Where Mercy Finds Me (4)', url: '/audio/where_mercy_finds_me_4.mp3' },
+  { id: 'mb15', name: 'Where Mercy Finds Me (4 v2)', url: '/audio/where_mercy_finds_me_4_v2.mp3' },
+  { id: 'mb16', name: 'Where Mercy Finds Me (5)', url: '/audio/where_mercy_finds_me_5.mp3' },
+  { id: 'mb17', name: 'Mercy On My Mind', url: '/audio/mercy_on_my_mind.mp3' },
+  { id: 'mb18', name: 'Mercy On My Mind (1)', url: '/audio/mercy_on_my_mind_1.mp3' },
+  { id: 'mb19', name: 'In the Quiet Mercy', url: '/audio/in_the_quiet_mercy.mp3' },
+  { id: 'mb20', name: 'Step With Me Mercy', url: '/audio/step_with_me_mercy.mp3' },
+];
+
+// Common background music (Fesliyan Studios etc)
+const COMMON_TRACKS = [
   { id: '1', name: 'Land of 8 Bits', url: '/audio/relaxing/land-of-8-bits.mp3' },
   { id: '2', name: 'Lazy Day', url: '/audio/relaxing/lazy-day.mp3' },
   { id: '3', name: 'Done With Work', url: '/audio/relaxing/done-with-work.mp3' },
@@ -84,170 +109,42 @@ const TRACKS = [
   { id: '60', name: 'Quiet Time', url: '/audio/relaxing/quiet-time.mp3' },
   { id: '61', name: 'In The Light', url: '/audio/relaxing/in-the-light.mp3' },
   { id: '62', name: 'Tranquility', url: '/audio/relaxing/tranquility.mp3' },
-  { id: '63', name: 'Land of 8 Bits (v2)', url: '/music/2019-01-10_-_Land_of_8_Bits_-_Stephen_Bennett_-_FesliyanStudios.com-2.mp3' },
-  { id: '64', name: 'Done With Work (v2)', url: '/music/2019-07-02_-_Done_With_Work_-_www.FesliyanStudios.com_-_David_Renda-2.mp3' },
-  { id: '65', name: 'Cruisin Along (v2)', url: '/music/2020-08-19_-_Cruisin_Along_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
-  { id: '66', name: 'Tender Love (v2)', url: '/music/RomanticMusic2018-11-11_-_Tender_Love_-_David_Fesliyan-2.mp3' },
-  { id: '67', name: 'Mellow Thoughts (v2)', url: '/music/2020-09-14_-_Mellow_Thoughts_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
-  { id: '68', name: 'Sad Winds (v2)', url: '/music/2017-10-14_-_Sad_Winds_Chapter_1_-_David_Fesliyan-2.mp3' },
-  { id: '69', name: 'Looking Up (v2)', url: '/music/2020-09-14_-_Looking_Up_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
-  { id: '70', name: 'Simplicity (v2)', url: '/music/2020-09-24_-_Simplicity_-_David_Fesliyan-2.mp3' },
-  { id: '71', name: 'Tropical Keys (v2)', url: '/music/2020-09-14_-_Tropical_Keys_-_www.FesliyanStudios.com_David_Renda_1.mp3' },
-  { id: '72', name: 'Chill Gaming (v2)', url: '/music/2019-06-07_-_Chill_Gaming_-_David_Fesliyan-2.mp3' },
-  { id: '73', name: 'Peace (v2)', url: '/music/2015-11-08_-_Peace_-_David_Fesliyan-2.mp3' },
-  { id: '74', name: 'An Ambient Day (v2)', url: '/music/2015-12-22_-_An_Ambient_Day_-_David_Fesliyan-2.mp3' },
-  { id: '75', name: 'Peace And Happy (v2)', url: '/music/2016-04-26_-_Peace_And_Happy_-_David_Fesliyan-2.mp3' },
-  { id: '76', name: 'On My Own (v2)', url: '/music/2019-06-27_-_On_My_Own_-_www.FesliyanStudios.com_-_David_Renda-2.mp3' },
-  { id: '77', name: 'Strings of Time (v2)', url: '/music/2016-05-06_-_Strings_of_Time_-_David_Fesliyan_1.mp3' },
-  { id: '78', name: 'Elven Forest (v2)', url: '/music/2019-07-29_-_Elven_Forest_-_FesliyanStudios.com_-_David_Renda-2.mp3' },
-  { id: '79', name: 'Elevator Ride (v2)', url: '/music/2019-05-03_-_Elevator_Ride_-_www.fesliyanstudios.com-2.mp3' },
-  { id: '80', name: 'The Lounge (v2)', url: '/music/2019-06-05_-_The_Lounge_-_www.fesliyanstudios.com_-_David_Renda-2.mp3' },
-  { id: '81', name: 'The Soft Lullaby (v2)', url: '/music/2020-03-22_-_The_Soft_Lullaby_-_FesliyanStudios.com_-_David_Renda-2.mp3' },
-  { id: '82', name: 'Not Much To Say (v2)', url: '/music/2020-02-11_-_Not_Much_To_Say_-_David_Fesliyan-2.mp3' },
-  { id: '83', name: 'The Soft Lullaby (v3)', url: '/audio/2020-03-22_-_The_Soft_Lullaby_-_FesliyanStudios.com_-_David_Renda-3.mp3' },
-  { id: '84', name: 'Not Much To Say (v3)', url: '/audio/2020-02-11_-_Not_Much_To_Say_-_David_Fesliyan-3.mp3' },
-  { id: '85', name: 'Relaxing Green Nature (v2)', url: '/audio/2020-02-22_-_Relaxing_Green_Nature_-_David_Fesliyan-2.mp3' },
-  { id: '86', name: 'We Were Friends (v2)', url: '/audio/2020-04-28_-_We_Were_Friends_-_David_Fesliyan-2.mp3' },
-  { id: '87', name: 'Beautiful Memories (v1)', url: '/audio/Happy_Music-2018-09-18_-_Beautiful_Memories_-_David_Fesliyan_1.mp3' },
-  { id: '88', name: 'In The Moment (v2)', url: '/audio/2020-05-05_-_In_The_Moment_-_www.FesliyanStudios.com_Steve_Oxen-2.mp3' },
-  { id: '89', name: 'Champagne at Sunset (v2)', url: '/audio/2020-05-27_-_Champagne_at_Sunset_-_www.FesliyanStudios.com_Steve_Oxen-2.mp3' },
-  { id: '90', name: 'Serenity (v2)', url: '/audio/2020-06-18_-_Serenity_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
-  { id: '91', name: 'Cathedral Ambience (v2)', url: '/audio/2020-06-18_-_Cathedral_Ambience_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
-  { id: '92', name: 'Painful Memories (v2)', url: '/audio/2020-08-17_-_Painful_Memories_-_www.FesliyanStudios.com_Steve_Oxen-2.mp3' },
-  { id: '93', name: 'Stasis (1)', url: '/audio/2020-10-27_-_Stasis_-_www.FesliyanStudios.com_Steve_Oxen-2.mp3' },
-  { id: '94', name: 'Upon Reflection (1)', url: '/audio/2020-10-27_-_Upon_Reflection_-_www.FesliyanStudios.com_Steve_Oxen-2.mp3' },
-  { id: '95', name: 'Down Days (1)', url: '/audio/2020-11-16_-_Down_Days_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
-  { id: '96', name: 'Time Alone (1)', url: '/audio/2020-11-17_-_Time_Alone_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
-  { id: '97', name: 'Beauty Of Russia (1)', url: '/audio/2021-05-26_-_Beauty_Of_Russia_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '98', name: 'Irish Sunset (1)', url: '/audio/2021-06-03_-_Irish_Sunset_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '99', name: 'Country Fireside (1)', url: '/audio/2021-10-11_-_Country_Fireside_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '100', name: 'Heaven (1)', url: '/audio/2021-10-20_-_Heaven_-_David_Fesliyan-2.mp3' },
-  { id: '101', name: 'Our Hopes And Dreams (1)', url: '/audio/2022-07-13_-_Our_Hopes_And_Dreams_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '102', name: 'Galaxys Endless Expanse (1)', url: '/audio/2023-05-02_-_Galaxys_Endless_Expanse_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '103', name: 'Glistening Gifts (1)', url: '/audio/2023-08-25_-_Glistening_Gifts_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '104', name: 'Broken Inside (1)', url: '/audio/2024-10-28_-_Broken_Inside_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '105', name: 'Requiem (1)', url: '/audio/2024-12-18_-_Requiem_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '106', name: 'News Chill (1)', url: '/audio/2025-01-21_-_News_Chill_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '107', name: 'Wishing Well (1)', url: '/audio/2025-02-04_-_Wishing_Well_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '108', name: 'Anhedonia (1)', url: '/audio/2025-03-27_-_Anhedonia_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '109', name: 'Saying Goodbye (1)', url: '/audio/2025-05-05_-_Saying_Goodbye_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '110', name: 'I Wish I Told You (1)', url: '/audio/2025-06-05_I_Wish_I_Told_You_-_www.FesliyanStudios.com_David_Fesliyan-2.mp3' },
-  { id: '111', name: 'Deep Meditation (1)', url: '/audio/2019-04-06_-_Deep_Meditation_-_David_Fesliyan-2.mp3' },
-  { id: '112', name: 'Slow Funny Music A', url: '/audio/2019-02-21_-_Slow_Funny_Music_A_-_www.fesliyanstudios.com_-_David_Renda.mp3' },
-  { id: '113', name: 'Holiday Hustle', url: '/audio/2020-11-11_-_Holiday_Hustle_-_www.FesliyanStudios.com_David_Renda.mp3' },
-  { id: '114', name: 'Skies', url: '/audio/2013-12-28_Skies_-_David_Fesliyan.mp3' },
-  { id: '115', name: 'Eye Laugh', url: '/audio/2019-01-27_-_Eye_Laugh_-_David_Renda-www.fesliyanstudios.com.mp3' },
-  { id: '116', name: 'Overcomer', url: '/audio/2014-12-27_Overcomer_-_David_Fesliyan.mp3' },
   { id: '117', name: 'Healing', url: '/audio/2015-08-11_-_Healing_-_David_Fesliyan.mp3' },
-  { id: '118', name: 'Life At The Inn', url: '/audio/2015-05-29_-_Life_At_The_Inn_-_David_Fesliyan.mp3' },
-  { id: '119', name: 'The Town Of Our Youth', url: '/audio/2015-11-29_-_The_Town_Of_Our_Youth_-_David_Fesliyan.mp3' },
   { id: '120', name: 'Joy', url: '/audio/2015-12-12_-_Joy_-_David_Fesliyan.mp3' },
-  { id: '121', name: 'We Fought For Freedom', url: '/audio/2016-02-15_-_We_Fought_For_Freedom_-_David_Fesliyan.mp3' },
-  { id: '122', name: 'Our Memories', url: '/audio/2016-04-05_-_Our_Memories_-_David_Fesliyan.mp3' },
   { id: '123', name: 'Spirit', url: '/audio/2016-03-20_-_Spirit_-_David_Fesliyan.mp3' },
-  { id: '124', name: 'Strings of Time (1)', url: '/audio/2016-05-06_-_Strings_of_Time_-_David_Fesliyan-2.mp3' },
-  { id: '125', name: 'Tiny Kingdom', url: '/audio/2016-10-30_-_Tiny_Kingdom_-_David_Fesliyan.mp3' },
-  { id: '126', name: 'Unseen Affection', url: '/audio/2016-11-13_-_Unseen_Affection_-_David_Fesliyan.mp3' },
-  { id: '127', name: 'Absurd', url: '/audio/2017-01-06_-_Absurd_-_David_Fesliyan.mp3' },
-  { id: '128', name: 'Childhood Nostalgia (1)', url: '/audio/2016-11-29_-_Childhood_Nostalgia_-_David_Fesliyan-2.mp3' },
-  { id: '129', name: 'Funktastic (1)', url: '/audio/2017-01-25_-_Funktastic_-_David_Fesliyan_1.mp3' },
-  { id: '130', name: 'Funktastic', url: '/audio/2017-01-25_-_Funktastic_-_David_Fesliyan.mp3' },
-  { id: '131', name: 'Happy Streams', url: '/audio/2017-06-02_-_Happy_Streams_-_David_Fesliyan.mp3' },
-  { id: '132', name: 'A Rockin Time', url: '/audio/2017-10-07_-_A_Rockin_Time_-_David_Fesliyan.mp3' },
-  { id: '133', name: 'Pirate Dance', url: '/audio/2017-08-20_-_Pirate_Dance_-_David_Fesliyan.mp3' },
-  { id: '134', name: 'Forest Ventures', url: '/audio/2017-11-07_-_Forest_Ventures_-_David_Fesliyan.mp3' },
-  { id: '135', name: 'Beach Boogie (Slow)', url: '/audio/2017-11-29_-_Beach_Boogie-SLOWVERSION_-_David_Fesliyan.mp3' },
-  { id: '136', name: 'Beach Boogie', url: '/audio/2017-11-29_-_Beach_Boogie_-_David_Fesliyan.mp3' },
-  { id: '137', name: 'Dreams of a Child', url: '/audio/2018-06-06_-_Dreams_of_a_Child_-_David_Fesliyan.mp3' },
-  { id: '138', name: 'Happy Tree', url: '/audio/2018-11-27_-_Happy_Tree_-_FesliyanStudios.com_By_Stephen_Bennett.mp3' },
-  { id: '139', name: 'In A Jiffy', url: '/audio/2018-11-27_-_In_A_Jiffy_-_FesliyanStudios.com_By_Stephen_Bennett.mp3' },
-  { id: '140', name: '8 Bit Menu', url: '/audio/2019-01-02_-_8_Bit_Menu_-_David_Renda_-_FesliyanStudios.com.mp3' },
-  { id: '141', name: 'Fist Bump', url: '/audio/2019-03-12_-_Fist_Bump_-_www.fesliyanstudios.com.mp3' },
-  { id: '142', name: 'Like Ras', url: '/audio/2018-11-27_-_Like_Ras_-_FesliyanStudios.com_By_Stephen_Bennett.mp3' },
-  { id: '143', name: 'Track A', url: '/audio/2018-11-27_-_Track_A_-_FesliyanStudios.com_By_Stephen_Bennett.mp3' },
-  { id: '144', name: 'Tears of Joy', url: '/audio/2018-07-02_-_Tears_of_Joy_-_David_Fesliyan.mp3' },
-  { id: '145', name: 'Trusted Advertising', url: '/audio/2019-04-23_-_Trusted_Advertising_-_www.fesliyanstudios.com.mp3' },
-  { id: '146', name: 'Commercial Bliss', url: '/audio/2019-05-29_-_Commercial_Bliss_-_www.fesliyanstudios.com_-_David_Renda.mp3' },
-  { id: '147', name: 'Warm Light (1)', url: '/audio/2019-06-14_-_Warm_Light_-_David_Fesliyan-2.mp3' },
   { id: '148', name: 'Feels Good', url: '/audio/2019-10-21_-_Feels_Good_-_David_Fesliyan.mp3' },
-  { id: '149', name: 'Feeling The Best', url: '/audio/2019-12-29_-_Feeling_The_Best_-_FesliyanStudios.com_-_David_Renda.mp3' },
-  { id: '150', name: 'A Better Life', url: '/audio/2019-12-29_-_A_Better_Life_-_FesliyanStudios.com_-_David_Renda.mp3' },
-  { id: '151', name: 'Feeling Happy (1)', url: '/audio/2020-01-19_-_Feeling_Happy_-_FesliyanStudios.com_-_David_Renda_1.mp3' },
-  { id: '152', name: 'Feeling Happy', url: '/audio/2020-01-19_-_Feeling_Happy_-_FesliyanStudios.com_-_David_Renda.mp3' },
-  { id: '153', name: 'Solutions That Work', url: '/audio/2020-03-29_-_Solutions_That_Work_-_David_Fesliyan.mp3' },
-  { id: '154', name: 'Crazy Crowd', url: '/audio/2020-07-14_-_Crazy_Crowd_-_www.FesliyanStudios.com_David_Renda.mp3' },
-  { id: '155', name: 'Strings Galore', url: '/audio/2020-07-30_-_Strings_Galore_-_www.FesliyanStudios.com_Steve_Oxen.mp3' },
-  { id: '156', name: 'Sonata Rondo', url: '/audio/2020-07-30_-_Sonata_Rondo_-_www.FesliyanStudios.com_Steve_Oxen.mp3' },
-  { id: '157', name: 'The Wrong Side Of Town', url: '/audio/2020-08-17_-_The_Wrong_Side_Of_Town_-_www.FesliyanStudios.com_Steve_Oxen.mp3' },
-  { id: '158', name: 'Smilin And Vibin', url: '/audio/2020-08-18_-_Smilin_And_Vibin_-_www.FesliyanStudios.com_David_Renda.mp3' },
-  { id: '159', name: 'Easy Going', url: '/audio/2020-09-30_-_Easy_Going_-_David_Fesliyan.mp3' },
-  { id: '160', name: 'Its A Good Day', url: '/audio/2020-10-19_-_Its_A_Good_Day_-_www.FesliyanStudios.com_Steve_Oxen.mp3' },
-  { id: '161', name: 'Tropical Keys (1)', url: '/audio/2020-09-14_-_Tropical_Keys_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
   { id: '162', name: 'Feeling Free', url: '/audio/2021-01-09_-_Feeling_Free_-_www.FesliyanStudios.com_David_Renda.mp3' },
   { id: '163', name: 'Happy Feet', url: '/audio/2021-06-15_-_Happy_Feet_-_www.FesliyanStudios.com.mp3' },
-  { id: '164', name: 'Prairie Evening (1)', url: '/audio/2023-05-15_-_Prairie_Evening_-_www.FesliyanStudios.com-2.mp3' },
-  { id: '165', name: 'Swingin Yuletide', url: '/audio/2023-08-18_-_Swingin_Yuletide_-_www.FesliyanStudios.com.mp3' },
-  { id: '166', name: 'Soaring Through The Skies', url: '/audio/2023-10-17_-_Soaring_Through_The_Skies_-_www.FesliyanStudios.com.mp3' },
-  { id: '167', name: 'Step-by-step', url: '/audio/2024-05-21_-_Step-by-step_-_www.FesliyanStudios.com.mp3' },
-  { id: '168', name: 'Information Regime', url: '/audio/2025-01-14_-_Information_Regime_-_www.FesliyanStudios.com.mp3' },
-  { id: '169', name: 'A Happy Christmas', url: '/audio/ChristmasBackgroundMusic2018-12-5_-_A_Happy_Christmas_-_David_Fesliyan.mp3' },
-  { id: '170', name: 'Too Fly', url: '/audio/2018-04-29_-_Too_Fly_David_Fesliyan.mp3' },
-  { id: '171', name: 'Super Spiffy', url: '/audio/2019-06-17_-_Super_Spiffy_-_David_Fesliyan.mp3' },
-  { id: '172', name: 'Beautiful Memories (2)', url: '/audio/Happy_Music-2018-09-18_-_Beautiful_Memories_-_David_Fesliyan-2.mp3' },
   { id: '173', name: 'Happy Dreams', url: '/audio/2017-04-14_-_Happy_Dreams_-_David_Fesliyan.mp3' },
-  { id: '174', name: 'In The Light (1)', url: '/audio/2019-12-13_-_In_The_Light_-_FesliyanStudios.com_-_David_Renda-2.mp3' },
-  { id: '175', name: 'Quiet Time (1)', url: '/audio/2019-04-20_-_Quiet_Time_-_David_Fesliyan-2.mp3' },
-  { id: '176', name: 'Tranquility (1)', url: '/audio/2019-04-26_-_Tranquility_-_www.fesliyanstudios.com-2.mp3' },
-  { id: '177', name: 'In A Quiet Room I Open My Mind', url: '/audio/in_a_quiet_room_i_open_my_mind.mp3' },
-  { id: '178', name: 'When Mercy Looks at Me (3)', url: '/audio/when_mercy_looks_at_me_3.mp3' },
-  { id: '179', name: 'When Mercy Looks at Me (2)', url: '/audio/when_mercy_looks_at_me_2.mp3' },
-  { id: '180', name: 'When Mercy Looks at Me (1)', url: '/audio/when_mercy_looks_at_me_1.mp3' },
-  { id: '181', name: 'When Mercy Looks at Me', url: '/audio/when_mercy_looks_at_me.mp3' },
-  { id: '182', name: 'Heart of the Blade (1)', url: '/audio/heart_of_the_blade_1.mp3' },
-  { id: '183', name: 'Heart of the Blade', url: '/audio/heart_of_the_blade.mp3' },
-  { id: '184', name: 'Rise With Mercy', url: '/audio/rise_with_mercy.mp3' },
-  { id: '185', name: 'Where Mercy Finds Me (5)', url: '/audio/where_mercy_finds_me_5.mp3' },
-  { id: '186', name: 'Where Mercy Finds Me (4)', url: '/audio/where_mercy_finds_me_4.mp3' },
-  { id: '187', name: 'Where Mercy Finds Me (4 v2)', url: '/audio/where_mercy_finds_me_4_v2.mp3' },
-  { id: '188', name: 'Where Mercy Finds Me (3)', url: '/audio/where_mercy_finds_me_3.mp3' },
-  { id: '189', name: 'Where Mercy Finds Me (2)', url: '/audio/where_mercy_finds_me_2.mp3' },
-  { id: '190', name: 'Where Mercy Finds Me (1)', url: '/audio/where_mercy_finds_me_1.mp3' },
-  { id: '191', name: 'Where Mercy Finds Me', url: '/audio/where_mercy_finds_me.mp3' },
-  { id: '192', name: 'Mercy On My Mind (1)', url: '/audio/mercy_on_my_mind_1.mp3' },
-  { id: '193', name: 'Mercy On My Mind', url: '/audio/mercy_on_my_mind.mp3' },
-  { id: '194', name: 'In the Quiet Mercy', url: '/audio/in_the_quiet_mercy.mp3' },
-  { id: '195', name: 'Step With Me Mercy', url: '/audio/step_with_me_mercy.mp3' },
-  { id: '196', name: 'In A Quiet Room I Open My Mind (2)', url: '/audio/in_a_quiet_room_i_open_my_mind_2.mp3' },
 ];
+
+// All tracks combined for searching
+const ALL_TRACKS = [...COMMON_TRACKS, ...MB_TRACKS];
 
 export const MusicPlayer = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrackId, setCurrentTrackId] = useState<string>('1');
   const [volume, setVolume] = useState<number>(50);
-  const [mode, setMode] = useState<"common" | "favorites">("common");
+  const [mode, setMode] = useState<"common" | "mercy" | "favorites">("common");
   const [isShuffle, setIsShuffle] = useState(false);
-  const [shuffledTracks, setShuffledTracks] = useState<typeof TRACKS>([]);
+  const [shuffledTracks, setShuffledTracks] = useState<typeof ALL_TRACKS>([]);
   const { favoriteIds, toggleFavorite, isFavorite } = useFavoriteTracks();
 
-  // Common tracks (always all tracks)
-  const commonTracks = TRACKS;
-  
-  // Favorite tracks (filtered from TRACKS)
-  const favoriteTracks = TRACKS.filter(t => favoriteIds.includes(t.id));
+  // Favorite tracks (filtered from ALL_TRACKS)
+  const favoriteTracks = ALL_TRACKS.filter(t => favoriteIds.includes(t.id));
 
   // Load saved preferences on mount
   useEffect(() => {
     const savedTrackId = localStorage.getItem('musicPlayerTrackId');
     const savedVolume = localStorage.getItem('musicPlayerVolume');
     const savedShuffle = localStorage.getItem('musicPlayerShuffle');
-    const savedMode = localStorage.getItem('musicPlayerMode');
+    const savedMode = localStorage.getItem('musicPlayerMode') as "common" | "mercy" | "favorites" | null;
     
     if (savedTrackId) setCurrentTrackId(savedTrackId);
     if (savedVolume) setVolume(parseInt(savedVolume, 10));
     if (savedShuffle) setIsShuffle(savedShuffle === 'true');
-    // Always start in "common" mode (common playlist) unless explicitly saved as favorites
-    if (savedMode === 'favorites') setMode('favorites');
+    if (savedMode && ['common', 'mercy', 'favorites'].includes(savedMode)) setMode(savedMode);
   }, []);
 
   // Update audio element when track changes and auto-play if already playing
@@ -284,7 +181,7 @@ export const MusicPlayer = () => {
   };
 
   // Shuffle tracks
-  const shuffleArray = (array: typeof TRACKS) => {
+  const shuffleArray = (array: typeof ALL_TRACKS) => {
     const shuffled = [...array];
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -300,17 +197,16 @@ export const MusicPlayer = () => {
     localStorage.setItem('musicPlayerShuffle', newShuffleState.toString());
     
     if (newShuffleState) {
-      const shuffled = shuffleArray(TRACKS);
+      const shuffled = shuffleArray(getCurrentPlaylist());
       setShuffledTracks(shuffled);
     }
   };
 
   // Get current playlist based on mode
   const getCurrentPlaylist = () => {
-    if (mode === "favorites" && favoriteTracks.length > 0) {
-      return favoriteTracks;
-    }
-    return commonTracks;
+    if (mode === "mercy") return MB_TRACKS;
+    if (mode === "favorites" && favoriteTracks.length > 0) return favoriteTracks;
+    return COMMON_TRACKS;
   };
 
   // Play next track
@@ -318,7 +214,6 @@ export const MusicPlayer = () => {
     let trackList = getCurrentPlaylist();
     
     if (isShuffle) {
-      // If shuffle is on but shuffledTracks is empty, create it
       if (shuffledTracks.length === 0) {
         trackList = shuffleArray(trackList);
         setShuffledTracks(trackList);
@@ -333,7 +228,6 @@ export const MusicPlayer = () => {
     
     setCurrentTrackId(nextTrack.id);
     localStorage.setItem('musicPlayerTrackId', nextTrack.id);
-    // Keep playing state true so the next track auto-plays
   };
 
   // Toggle play/pause
@@ -348,7 +242,7 @@ export const MusicPlayer = () => {
     setIsPlaying(!isPlaying);
   };
 
-  const currentTrack = TRACKS.find(t => t.id === currentTrackId) || TRACKS[0];
+  const currentTrack = ALL_TRACKS.find(t => t.id === currentTrackId) || COMMON_TRACKS[0];
   const currentPlaylist = getCurrentPlaylist();
   const displayTracks = currentPlaylist;
 
@@ -429,7 +323,7 @@ export const MusicPlayer = () => {
           />
         </Button>
 
-        {/* Mode Buttons: Common Playlist vs My Favorites */}
+        {/* Mode Buttons: Common / Mercy Blade / My List */}
         <div className="flex gap-1">
           <Button
             onClick={() => {
@@ -443,9 +337,25 @@ export const MusicPlayer = () => {
                 ? 'bg-blue-500 text-white hover:bg-blue-600 border-blue-500 font-bold'
                 : ''
             }`}
-            title="Play common playlist (all tracks)"
+            title={`Common playlist (${COMMON_TRACKS.length} tracks)`}
           >
             Common
+          </Button>
+          <Button
+            onClick={() => {
+              setMode("mercy");
+              localStorage.setItem('musicPlayerMode', 'mercy');
+            }}
+            variant="outline"
+            size="sm"
+            className={`h-8 px-2 transition-colors text-xs ${
+              mode === "mercy"
+                ? 'bg-purple-500 text-white hover:bg-purple-600 border-purple-500 font-bold'
+                : ''
+            }`}
+            title={`Mercy Blade Songs (${MB_TRACKS.length} tracks)`}
+          >
+            MB Songs
           </Button>
           <Button
             onClick={() => {
@@ -462,7 +372,7 @@ export const MusicPlayer = () => {
                 ? 'bg-pink-500 text-white hover:bg-pink-600 border-pink-500 font-bold'
                 : ''
             }`}
-            title={favoriteTracks.length === 0 ? "No favorites yet" : `Play my favorites only (${favoriteTracks.length})`}
+            title={favoriteTracks.length === 0 ? "No favorites yet" : `My favorites (${favoriteTracks.length})`}
           >
             <Heart className={`h-3 w-3 mr-1 ${mode === "favorites" ? 'fill-current' : ''}`} />
             My List
@@ -490,7 +400,7 @@ export const MusicPlayer = () => {
                   No favorites yet. Click the heart icon to add tracks.
                 </div>
               ) : (
-                TRACKS.filter(t => favoriteIds.includes(t.id)).map((track) => (
+                ALL_TRACKS.filter(t => favoriteIds.includes(t.id)).map((track) => (
                   <DropdownMenuItem
                     key={track.id}
                     onClick={() => handleTrackChange(track.id)}
