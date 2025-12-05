@@ -3,13 +3,6 @@ import { Play, Pause, Volume2, Heart, Music, Shuffle } from 'lucide-react';
 import { useMusicPlayer } from '@/contexts/MusicPlayerContext';
 import { Button } from '@/components/ui/button';
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -450,30 +443,48 @@ export const MusicPlayer = () => {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        {/* Track Selector */}
-        <Select value={currentTrackId} onValueChange={handleTrackChange}>
-          <SelectTrigger className="w-[180px] h-8 text-xs">
-            <SelectValue placeholder="Select track" />
-          </SelectTrigger>
-          <SelectContent className="z-[100] bg-popover border border-border shadow-lg">
+        {/* Track Selector - Using DropdownMenu for better reliability */}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="outline"
+              size="sm"
+              className="w-[180px] h-8 text-xs justify-between"
+            >
+              <span className="truncate">{currentTrack?.name || 'Select track'}</span>
+              <Music className="h-3 w-3 ml-1 shrink-0" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent 
+            align="end" 
+            className="w-[280px] z-[9999] bg-popover border border-border shadow-xl"
+            sideOffset={4}
+          >
+            <DropdownMenuLabel className="text-xs font-semibold">
+              {mode === "mercy" ? "MB Songs" : mode === "favorites" ? "My Favorites" : "Common Tracks"} ({displayTracks.length})
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
             <ScrollArea className="h-[300px]">
               {displayTracks.map((track) => (
-                <SelectItem 
-                  key={track.id} 
-                  value={track.id} 
-                  className="text-xs cursor-pointer hover:bg-accent"
+                <DropdownMenuItem
+                  key={track.id}
+                  onClick={() => handleTrackChange(track.id)}
+                  className={`cursor-pointer text-xs ${currentTrackId === track.id ? 'bg-accent' : ''}`}
                 >
-                  <div className="flex items-center justify-between w-full">
-                    <span className="truncate">{track.name}</span>
+                  <div className="flex items-center justify-between w-full gap-2">
+                    <span className="truncate flex-1">{track.name}</span>
                     {isFavorite(track.id) && (
-                      <Heart className="h-3 w-3 fill-red-500 text-red-500 ml-2" />
+                      <Heart className="h-3 w-3 fill-red-500 text-red-500 shrink-0" />
+                    )}
+                    {currentTrackId === track.id && (
+                      <span className="text-primary shrink-0">▶</span>
                     )}
                   </div>
-                </SelectItem>
+                </DropdownMenuItem>
               ))}
             </ScrollArea>
-          </SelectContent>
-        </Select>
+          </DropdownMenuContent>
+        </DropdownMenu>
 
         {/* Hidden Audio Element */}
       <audio
