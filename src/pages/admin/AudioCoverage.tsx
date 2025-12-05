@@ -100,35 +100,73 @@ export default function AudioCoverage() {
   const handleExportCSV = () => {
     if (!filteredRooms.length) return;
 
+    // Enhanced CSV with Phase 2 fields
     const headers = [
       "roomId",
       "tier",
       "titleEn",
+      "totalEntries",
       "totalAudioRefsEn",
       "presentEn",
       "missingEnCount",
       "missingEnFilenames",
+      "canonicalSuggestionEn",
       "totalAudioRefsVi",
       "presentVi",
       "missingViCount",
       "missingViFilenames",
+      "canonicalSuggestionVi",
+      "namingViolationCount",
       "namingViolations",
+      "repairStatus",
+      "confidenceScore",
     ];
 
-    const rows = filteredRooms.map((room) => [
-      room.roomId,
-      room.tier || "",
-      room.titleEn || "",
-      room.totalAudioRefsEn.toString(),
-      room.presentEn.toString(),
-      room.missingEn.length.toString(),
-      room.missingEn.join(";"),
-      room.totalAudioRefsVi.toString(),
-      room.presentVi.toString(),
-      room.missingVi.length.toString(),
-      room.missingVi.join(";"),
-      (room.namingViolations || []).join(";"),
-    ]);
+    const rows = filteredRooms.map((room) => {
+      // Generate canonical suggestions for missing files
+      const canonicalEn = room.missingEn.map((f, i) => 
+        `${room.roomId}-entry-${i + 1}-en.mp3`
+      ).join(";");
+      const canonicalVi = room.missingVi.map((f, i) => 
+        `${room.roomId}-entry-${i + 1}-vi.mp3`
+      ).join(";");
+      
+      const violationCount = (room.namingViolations || []).length;
+      const missingCount = room.missingEn.length + room.missingVi.length;
+      
+      // Determine repair status
+      let repairStatus = "ok";
+      let confidenceScore = 100;
+      if (missingCount > 0) {
+        repairStatus = "pending";
+        confidenceScore = 70;
+      }
+      if (violationCount > 0) {
+        repairStatus = "manual-required";
+        confidenceScore = Math.max(50, confidenceScore - violationCount * 5);
+      }
+
+      return [
+        room.roomId,
+        room.tier || "",
+        room.titleEn || "",
+        room.totalEntries.toString(),
+        room.totalAudioRefsEn.toString(),
+        room.presentEn.toString(),
+        room.missingEn.length.toString(),
+        room.missingEn.join(";"),
+        canonicalEn,
+        room.totalAudioRefsVi.toString(),
+        room.presentVi.toString(),
+        room.missingVi.length.toString(),
+        room.missingVi.join(";"),
+        canonicalVi,
+        violationCount.toString(),
+        (room.namingViolations || []).join(";"),
+        repairStatus,
+        confidenceScore.toString(),
+      ];
+    });
 
     const csvContent = [
       headers.join(","),
@@ -141,7 +179,7 @@ export default function AudioCoverage() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "audio-coverage.csv";
+    link.download = `audio-coverage-${new Date().toISOString().split('T')[0]}.csv`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -149,7 +187,7 @@ export default function AudioCoverage() {
 
     toast({
       title: "CSV Exported",
-      description: `Exported ${filteredRooms.length} rooms to audio-coverage.csv`,
+      description: `Exported ${filteredRooms.length} rooms with repair suggestions`,
     });
   };
 
@@ -263,7 +301,7 @@ export default function AudioCoverage() {
         {/* Summary Cards */}
         {report && !isLoading && (
           <>
-            <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-7 gap-4">
               <Card className="border border-gray-200">
                 <CardContent className="py-4">
                   <div className="text-2xl font-bold text-black">
@@ -312,7 +350,50 @@ export default function AudioCoverage() {
                   <div className="text-sm text-gray-600">Naming Issues</div>
                 </CardContent>
               </Card>
+              <Card className="border border-gray-200">
+                <CardContent className="py-4">
+                  <div className={`text-2xl font-bold ${(report.summary.totalOrphans || 0) > 0 ? 'text-orange-600' : 'text-green-600'}`}>
+                    {report.summary.totalOrphans || 0}
+                  </div>
+                  <div className="text-sm text-gray-600">Orphan Files</div>
+                </CardContent>
+              </Card>
             </div>
+
+            {/* Orphan Files Warning */}
+            {(report.orphanFiles?.length || 0) > 0 && (
+              <Card className="border-2 border-orange-400 bg-orange-50">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-lg text-orange-800 flex items-center gap-2">
+                    <AlertTriangle className="h-5 w-5" />
+                    Orphan Audio Files ({report.orphanFiles?.length || 0})
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-orange-700 mb-3">
+                    These files exist in storage but are not referenced by any room JSON.
+                    Consider running the cleanup script to remove them.
+                  </p>
+                  <ScrollArea className="h-32 border rounded p-2 bg-white">
+                    <div className="space-y-1">
+                      {(report.orphanFiles || []).slice(0, 50).map((file, i) => (
+                        <div key={i} className="font-mono text-xs text-orange-600">
+                          {file}
+                        </div>
+                      ))}
+                      {(report.orphanFiles?.length || 0) > 50 && (
+                        <div className="text-xs text-orange-500 italic">
+                          ... and {(report.orphanFiles?.length || 0) - 50} more
+                        </div>
+                      )}
+                    </div>
+                  </ScrollArea>
+                  <pre className="text-xs bg-orange-100 p-2 rounded mt-3 text-orange-800">
+                    npx tsx scripts/cleanup-orphans.ts --dry-run
+                  </pre>
+                </CardContent>
+              </Card>
+            )}
 
             {/* Filters */}
             <Card className="border border-gray-200">
