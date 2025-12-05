@@ -31,7 +31,6 @@ import { getDomainCategory, isEnglishDomain, isMartialDomain, type DomainCategor
 import { getTeacherTip, type TeacherLevel, type TeacherContext } from './teacherScripts';
 import { getMartialCoachTip, inferMartialDiscipline, type MartialCoachLevel, type MartialContext } from './martialCoachScripts';
 import { logEvent } from './logs';
-import { isCrisisRoom as checkCrisis } from './safetyRails';
 
 // Storage keys
 const STORAGE_KEYS = {
@@ -495,8 +494,8 @@ export function createMercyEngine(
       // Phase 8: Martial Coach behavior
       if (domain === 'martial' && state.martialCoachLevel !== 'off' && !state.silenceMode) {
         const roomTags = [domain];
-        const isCrisis = checkCrisis(roomTags, domain);
-        if (!isCrisis) {
+        const crisisCheck = isCrisisRoom(roomTags, domain);
+        if (!crisisCheck) {
           // Determine martial context based on mood (simple heuristic)
           const martialContext: MartialContext = 'martial_room_enter';
           const tip = getMartialCoachTip({
