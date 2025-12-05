@@ -56,10 +56,13 @@ export const ColorfulMercyBladeHeader = ({
 
   return (
     <header className={`sticky top-0 z-40 ${headerBg} backdrop-blur-sm border-b border-border py-4`}>
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="flex items-center justify-between">
-          {/* Center - Title */}
-          <div className="flex-1 text-center">
+      <div className="mx-auto max-w-screen-xl px-4">
+        <div className="grid grid-cols-3 items-center">
+          {/* Left column - empty or nav */}
+          <div></div>
+
+          {/* Center - Title - ALWAYS EXACT CENTER */}
+          <div className="flex justify-center">
             <h1 className="text-2xl font-bold tracking-tight">
               {mode === "color" ? (
                 <>
@@ -84,8 +87,8 @@ export const ColorfulMercyBladeHeader = ({
             )}
           </div>
 
-          {/* Right side - Controls aligned right, same row */}
-          <div className="flex items-center gap-2 ml-4">
+          {/* Right side - Controls */}
+          <div className="flex items-center gap-2 justify-end">
             <ThemeToggle />
             
             {showResetButton && onReset && (
