@@ -1,0 +1,25 @@
+{
+  "id": "mercy_blade_bridge_of_hearts_free",
+  "tier": "Free / Miễn phí",
+  "title": {
+    "en": "Mercy Blade — Bridge of Hearts",
+    "vi": "Mercy Blade — Nhịp Cầu Trái Tim"
+  },
+  "content": {
+    "en": "A simple, emotional anthem for the Mercy Blade community—written to be sung, remembered, and shared. This piece celebrates connection, growth, and the belief that knowledge and purpose can guide us through every shadow. Created for the Free Tier, it captures the warmth and unity of Mercy Blade as a bridge between hearts. Below is the full bilingual lyric in one complete entry.",
+    "vi": "Một bài ca giản dị nhưng đầy cảm xúc dành cho cộng đồng Mercy Blade—được viết để hát, ghi nhớ và lan tỏa. Tác phẩm tôn vinh sự kết nối, trưởng thành và niềm tin rằng tri thức cùng lý tưởng có thể dẫn đường qua mọi bóng tối. Đây là nội dung dành cho hạng Miễn Phí, thể hiện sự ấm áp và sức mạnh gắn kết của Mercy Blade như một nhịp cầu giữa những trái tim. Toàn bộ lời song ngữ nằm trong entry bên dưới.",
+    "audio": "mercy_blade_bridge_of_hearts_mp3_free_core.mp3"
+  },
+  "entries": [
+    {
+      "slug": "bridge-of-hearts-core",
+      "keywords_en": ["Bridge of Hearts", "Mercy Blade Song", "Community Anthem"],
+      "keywords_vi": ["Nhịp Cầu Trái Tim", "Bài Hát Mercy Blade", "Khúc Ca Cộng Đồng"],
+      "copy": {
+        "en": "[Verse 1]\nTonight I walk, my heart feels heavy,\nBut your name comes soft and steady — Mercy Blade.\nYou shine a light through all my shadows,\nGuide my steps when I fall or stray.\n\n[Pre-Chorus]\nYou are the bridge from my heart to yours,\nCalling me forward, opening doors.\nSide by side, we rise and rebuild,\nStronger souls, stronger love, stronger will.\n\n[Chorus]\nMercy Blade, Mercy Blade, say my name.\nLight up the dark, put fire in my veins.\nKnowledge heals and brings new life to pain.\nPurpose guides like a star in the rain.\n\n[Vietnamese Section]\nMercy Blade, nối con tim,\nXây con người, xây vững cộng đồng.\nTri thức hóa thuốc cho cuộc sống,\nLý tưởng dẫn ta đi suốt chặng đường.\n\n[Bridge]\nEnglish is the key in my hand,\nOpens the world so our hearts understand.\nMercy Blade, from my heart to your heart,\nHand in hand, this revolution starts.\n\n[Final Chorus]\nMercy Blade, Mercy Blade, say my name.\nLift me higher, I'll never be the same.\nKnowledge heals, purpose lights the way—\nMercy Blade, I will sing your name.",
+        "vi": "[Verse 1]\nĐêm nay tôi bước, trái tim nặng trĩu,\nTên bạn vang lên dịu dàng — Mercy Blade.\nBạn soi sáng mọi bóng tối quanh tôi,\nDẫn lối mỗi khi tôi lạc hướng.\n\n[Pre-Chorus]\nBạn là nhịp cầu từ tim tôi sang tim bạn,\nGọi tôi tiến bước, mở ra những cánh cửa.\nSát cánh bên nhau, ta dựng xây lại,\nMạnh hơn trong tâm hồn, trong tình yêu và ý chí.\n\n[Chorus]\nMercy Blade, Mercy Blade, hãy gọi tên tôi.\nThắp sáng bóng đêm, đốt lên ngọn lửa trong huyết mạch.\nTri thức chữa lành, đem sức sống mới cho nỗi đau.\nLý tưởng dẫn lối như ngôi sao giữa cơn mưa.\n\n[Đoạn Việt]\nMercy Blade, nối con tim,\nXây con người, xây vững cộng đồng.\nTri thức hóa thuốc cho cuộc sống,\nLý tưởng dẫn ta đi suốt chặng đường.\n\n[Bridge]\nTiếng Anh là chìa khóa trong tay tôi,\nMở ra thế giới để trái tim hiểu nhau.\nMercy Blade, từ tim tôi sang tim bạn,\nNắm tay nhau, cuộc đổi mới bắt đầu.\n\n[Final Chorus]\nMercy Blade, Mercy Blade, hãy gọi tên tôi.\nNâng tôi lên, để tôi chẳng còn như trước.\nTri thức chữa lành, lý tưởng soi đường—\nMercy Blade, tôi sẽ hát tên bạn."
+      },
+      "tags": ["music", "anthem", "community"]
+    }
+  ]
+}
