@@ -242,19 +242,25 @@ export default function AudioCoverage() {
 
   const storageEmpty = !!report && report.storageFileCount === 0;
 
-  // Commands for modals
-  const dryRunCommands = `# Dry-run checks (safe - no modifications)
+  // Commands for modals - v4.2 standard
+  const dryRunCommands = `# Option 1: npm script (recommended)
+npm run audio:check
+
+# Option 2: Individual commands
 npx tsx scripts/refresh-json-audio.ts --dry-run --verbose
 npx tsx scripts/cleanup-orphans.ts --dry-run
 npx tsx scripts/rename-audio-storage.ts --dry-run --verbose`;
 
-  const fixCommands = `# Apply all fixes
+  const fixCommands = `# Option 1: npm script (recommended)
+npm run audio:fix
+
+# Option 2: Individual commands
 npx tsx scripts/refresh-json-audio.ts --apply --verbose
 npx tsx scripts/rename-audio-storage.ts --verbose
 npx tsx scripts/cleanup-orphans.ts --auto-fix
 node scripts/generate-audio-manifest.js`;
 
-  const ghCommand = 'gh workflow run "Audio Auto-Repair v4.1" -f apply_fixes=true';
+  const ghCommand = 'gh workflow run "Audio Auto-Repair v4.2" -f apply_fixes=true';
 
   return (
     <div className="min-h-screen bg-white p-6">
@@ -264,9 +270,9 @@ node scripts/generate-audio-manifest.js`;
           <div className="flex items-center gap-3">
             <Music className="h-8 w-8 text-black" />
             <div>
-              <h1 className="text-2xl font-bold text-black">Audio Coverage v4.1</h1>
+              <h1 className="text-2xl font-bold text-black">Audio Coverage v4.2</h1>
               <p className="text-gray-600 text-sm">
-                GCE-Powered Self-Healing Audio System
+                GCE-Powered Self-Healing Audio System (No-Noise CI)
               </p>
             </div>
           </div>

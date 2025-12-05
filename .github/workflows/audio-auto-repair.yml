@@ -1,4 +1,4 @@
-name: Audio Auto-Repair v4.1
+name: Audio Auto-Repair v4.2
 
 on:
   push:
@@ -53,11 +53,12 @@ jobs:
           fi
 
       # ============================================
-      # GENERATE MANIFEST
+      # GENERATE MANIFEST (NO-NOISE MODE)
+      # Use --no-timestamp for dry-run to prevent timestamp-only commits
       # ============================================
       
-      - name: Generate Audio Manifest
-        run: node scripts/generate-audio-manifest.js
+      - name: Generate Audio Manifest (dry-run mode)
+        run: node scripts/generate-audio-manifest.js --no-timestamp
 
       # ============================================
       # DRY-RUN CHECKS (audio:check)
@@ -106,13 +107,30 @@ jobs:
           echo "duplicate_count=$DUPS" >> $GITHUB_OUTPUT
 
       # ============================================
+      # CHECK IF FIXES ARE NEEDED
+      # Only apply and commit if there are actual issues
+      # ============================================
+      
+      - name: Check if fixes needed
+        id: needs_fix
+        run: |
+          TOTAL_ISSUES=$(( ${{ steps.dry_run_refresh.outputs.json_fixes }} + ${{ steps.orphan_check.outputs.orphan_count }} + ${{ steps.rename_check.outputs.rename_count }} ))
+          if [ "$TOTAL_ISSUES" -gt 0 ]; then
+            echo "has_issues=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_issues=false" >> $GITHUB_OUTPUT
+          fi
+          echo "Total issues detected: $TOTAL_ISSUES"
+
+      # ============================================
       # CONDITIONAL APPLY (audio:fix)
+      # Only runs if apply_fixes=true OR (push AND has_issues)
       # ============================================
       
       - name: Apply Fixes
         if: |
           github.event.inputs.apply_fixes == 'true' || 
-          (github.event_name == 'push' && (steps.dry_run_refresh.outputs.json_fixes != '0' || steps.rename_check.outputs.rename_count != '0'))
+          (github.event_name == 'push' && steps.needs_fix.outputs.has_issues == 'true')
         run: |
           echo "🔧 Applying automated fixes..."
           
@@ -130,13 +148,14 @@ jobs:
           # Auto-fix attachable orphans
           npx tsx scripts/cleanup-orphans.ts --auto-fix
           
-          # Regenerate manifest after all fixes
+          # Regenerate manifest (full mode with timestamp after fixes)
           node scripts/generate-audio-manifest.js
           
           echo "✅ Fixes applied successfully!"
 
       # ============================================
       # COMMIT & PUSH
+      # Uses broader git add patterns to catch all nested files
       # ============================================
       
       - name: Check for Changes
@@ -144,24 +163,29 @@ jobs:
         run: |
           if [[ -n $(git status --porcelain) ]]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
-            git status --porcelain | head -20
+            echo "Changed files:"
+            git status --porcelain | head -30
           else
             echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes detected"
           fi
 
       - name: Commit All Changes
         if: steps.changes.outputs.has_changes == 'true'
         run: |
           git config --local user.email "automation@mercyblade.app"
-          git config --local user.name "Audio Automation Bot v4.1"
+          git config --local user.name "Audio Automation Bot v4.2"
           
-          git add public/audio/manifest.json || true
-          git add public/audio/*.mp3 || true
-          git add public/audio/_duplicates/*.mp3 || true
-          git add public/data/*.json || true
+          # Add all audio files recursively (catches nested folders)
+          git add public/audio || true
+          
+          # Add all JSON files recursively under public/data
+          git add public/data || true
+          
+          # Add any JSON reports in public root
           git add public/*.json || true
           
-          git commit -m "[skip ci] Audio Auto-Repair v4.1" \
+          git commit -m "[skip ci] Audio Auto-Repair v4.2" \
             -m "Rooms: ${{ steps.dry_run_refresh.outputs.rooms_scanned }}" \
             -m "JSON fixes: ${{ steps.dry_run_refresh.outputs.json_fixes }}" \
             -m "Reversals: ${{ steps.dry_run_refresh.outputs.reversals }}" \
@@ -187,7 +211,7 @@ jobs:
             AVG_SCORE=100
           fi
           
-          echo "## 🎵 Audio Auto-Repair v4.1 Summary" >> $GITHUB_STEP_SUMMARY
+          echo "## 🎵 Audio Auto-Repair v4.2 Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
           # Test Results
@@ -225,7 +249,7 @@ jobs:
           elif [ "${{ steps.changes.outputs.has_changes }}" == "true" ]; then
             echo "✅ **Auto-applied on push** (issues detected and fixed)" >> $GITHUB_STEP_SUMMARY
           else
-            echo "ℹ️ **Dry-run only** - No changes made" >> $GITHUB_STEP_SUMMARY
+            echo "ℹ️ **Dry-run only** - No changes made (0 issues found)" >> $GITHUB_STEP_SUMMARY
           fi
           echo "" >> $GITHUB_STEP_SUMMARY
           
@@ -233,19 +257,14 @@ jobs:
           echo "### 💻 Local Commands" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo '```bash' >> $GITHUB_STEP_SUMMARY
-          echo "# Dry-run checks (audio:check)" >> $GITHUB_STEP_SUMMARY
-          echo "npx tsx scripts/refresh-json-audio.ts --dry-run --verbose" >> $GITHUB_STEP_SUMMARY
-          echo "npx tsx scripts/cleanup-orphans.ts --dry-run" >> $GITHUB_STEP_SUMMARY
-          echo "npx tsx scripts/rename-audio-storage.ts --dry-run --verbose" >> $GITHUB_STEP_SUMMARY
+          echo "# Dry-run checks" >> $GITHUB_STEP_SUMMARY
+          echo "npm run audio:check" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "# Apply fixes (audio:fix)" >> $GITHUB_STEP_SUMMARY
-          echo "npx tsx scripts/refresh-json-audio.ts --apply --verbose" >> $GITHUB_STEP_SUMMARY
-          echo "npx tsx scripts/rename-audio-storage.ts --verbose" >> $GITHUB_STEP_SUMMARY
-          echo "npx tsx scripts/cleanup-orphans.ts --auto-fix" >> $GITHUB_STEP_SUMMARY
-          echo "node scripts/generate-audio-manifest.js" >> $GITHUB_STEP_SUMMARY
+          echo "# Apply fixes" >> $GITHUB_STEP_SUMMARY
+          echo "npm run audio:fix" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "# Run audio tests (test:audio)" >> $GITHUB_STEP_SUMMARY
-          echo "npx vitest run src/lib/audio" >> $GITHUB_STEP_SUMMARY
+          echo "# Run audio tests" >> $GITHUB_STEP_SUMMARY
+          echo "npm run test:audio" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
@@ -253,5 +272,5 @@ jobs:
           echo "### 🚀 Trigger via CLI" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo '```bash' >> $GITHUB_STEP_SUMMARY
-          echo 'gh workflow run "Audio Auto-Repair v4.1" -f apply_fixes=true' >> $GITHUB_STEP_SUMMARY
+          echo 'gh workflow run "Audio Auto-Repair v4.2" -f apply_fixes=true' >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
