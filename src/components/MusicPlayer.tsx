@@ -336,6 +336,12 @@ export const MusicPlayer = () => {
             onClick={() => {
               setMode("common");
               localStorage.setItem('musicPlayerMode', 'common');
+              // Switch to first track of common playlist if current track not in it
+              const currentInCommon = COMMON_TRACKS.find(t => t.id === currentTrackId);
+              if (!currentInCommon && COMMON_TRACKS.length > 0) {
+                setCurrentTrackId(COMMON_TRACKS[0].id);
+                localStorage.setItem('musicPlayerTrackId', COMMON_TRACKS[0].id);
+              }
             }}
             variant="outline"
             size="sm"
@@ -352,6 +358,12 @@ export const MusicPlayer = () => {
             onClick={() => {
               setMode("mercy");
               localStorage.setItem('musicPlayerMode', 'mercy');
+              // Switch to first track of MB playlist if current track not in it
+              const currentInMB = MB_TRACKS.find(t => t.id === currentTrackId);
+              if (!currentInMB && MB_TRACKS.length > 0) {
+                setCurrentTrackId(MB_TRACKS[0].id);
+                localStorage.setItem('musicPlayerTrackId', MB_TRACKS[0].id);
+              }
             }}
             variant="outline"
             size="sm"
@@ -369,6 +381,12 @@ export const MusicPlayer = () => {
               if (favoriteTracks.length > 0) {
                 setMode("favorites");
                 localStorage.setItem('musicPlayerMode', 'favorites');
+                // Switch to first favorite track if current track not in favorites
+                const currentInFavorites = favoriteTracks.find(t => t.id === currentTrackId);
+                if (!currentInFavorites && favoriteTracks.length > 0) {
+                  setCurrentTrackId(favoriteTracks[0].id);
+                  localStorage.setItem('musicPlayerTrackId', favoriteTracks[0].id);
+                }
               }
             }}
             disabled={favoriteTracks.length === 0}
@@ -437,10 +455,14 @@ export const MusicPlayer = () => {
           <SelectTrigger className="w-[180px] h-8 text-xs">
             <SelectValue placeholder="Select track" />
           </SelectTrigger>
-          <SelectContent className="z-[100]">
+          <SelectContent className="z-[100] bg-popover border border-border shadow-lg">
             <ScrollArea className="h-[300px]">
               {displayTracks.map((track) => (
-                <SelectItem key={track.id} value={track.id} className="text-xs">
+                <SelectItem 
+                  key={track.id} 
+                  value={track.id} 
+                  className="text-xs cursor-pointer hover:bg-accent"
+                >
                   <div className="flex items-center justify-between w-full">
                     <span className="truncate">{track.name}</span>
                     {isFavorite(track.id) && (
