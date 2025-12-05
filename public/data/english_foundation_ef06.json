@@ -1,139 +1,163 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "english_foundation_ef06",
-  "id": "english_foundation_ef06",
   "tier": "Free / Miễn phí",
-  "domain": "",
-  "description": {
-    "en": "EF-06 — Fixing the 6 Biggest Vietnamese Pronunciation Errors",
-    "vi": "EF-06 — Sửa 6 Lỗi Phát Âm Lớn Nhất Của Người Việt"
+  "title": {
+    "en": "EF06 — Fixing the 6 Biggest Pronunciation Mistakes",
+    "vi": "EF06 — Sửa 6 Lỗi Phát Âm Thường Gặp Nhất"
   },
-  "keywords": [
-    "final sounds",
-    "pronunciation",
-    "common errors",
-    "vowel errors",
-    "tones",
-    "intonation",
-    "beginner",
-    "speed",
-    "clarity",
-    "vowels",
-    "air flow",
-    "pronunciation basics",
-    "âm cuối",
-    "phát âm",
-    "lỗi phổ biến",
-    "lỗi nguyên âm",
-    "thanh điệu",
-    "ngữ điệu",
-    "người mới",
-    "tốc độ",
-    "rõ ràng",
-    "nguyên âm",
-    "luồng hơi",
-    "phát âm cơ bản"
-  ],
+  "content": {
+    "en": "This lesson is a repair workshop for your pronunciation. Instead of learning new sounds, you slow down, listen carefully, and correct six common mistakes that block clear English: dropping final sounds, adding extra vowels, using Vietnamese tones on English words, reading too fast, mixing up short and long vowels, and speaking without enough air. Each card shows you what the mistake looks like, how it sounds to a native listener, and one simple drill to retrain your mouth. Use this room whenever you feel stuck: a few weeks of gentle, focused practice here can completely change how confident you feel when you open your mouth.",
+    "vi": "Bài học này là xưởng sửa chữa phát âm của bạn. Thay vì học thêm âm mới, bạn chậm lại, lắng nghe kỹ và sửa sáu lỗi phổ biến đang làm tiếng Anh khó nghe: nuốt âm cuối, thêm nguyên âm thừa, mang thanh điệu tiếng Việt vào từ tiếng Anh, đọc quá nhanh, lẫn lộn nguyên âm ngắn và dài, và nói mà không đủ hơi. Mỗi thẻ giải thích lỗi trông như thế nào, người bản ngữ nghe ra sao, và một bài tập đơn giản để tập lại miệng. Hãy quay lại phòng này bất cứ khi nào thấy bí; vài tuần luyện tập nhẹ nhàng nhưng tập trung ở đây có thể thay đổi hẳn cảm giác tự tin khi bạn cất tiếng nói."
+  },
   "entries": [
     {
-      "slug": "error-1-dropping-final-sounds",
-      "audio": "ef06_01_en.mp3",
-      "copy_en": "Vietnamese learners often drop ending sounds.\nSay these slowly and keep the final sound:\n\ncat\nmap\nbig\nred\ncup\nmilk\n\nIf the ending disappears, read again more slowly.\nEnding sounds change the meaning.",
-      "copy_vi": "Người Việt thường bỏ âm cuối. Hãy đọc chậm và giữ rõ âm cuối trong các từ: cat, map, big, red, cup, milk. Nếu âm cuối biến mất, hãy giảm tốc độ. Âm cuối rất quan trọng và có thể thay đổi nghĩa.",
+      "slug": "error-dropping-final-sounds",
       "keywords_en": [
-        "final sounds",
+        "Drop final sounds",
+        "ending consonants",
+        "clear pronunciation",
+        "speaking practice"
+      ],
+      "keywords_vi": [
+        "Nuốt âm cuối",
+        "âm cuối từ",
+        "phát âm rõ",
+        "luyện nói"
+      ],
+      "copy": {
+        "en": "Dare: For three days, choose five short words with strong final sounds (like: cat, pick, leave, ask, cold). Stand in front of a mirror and say each word ten times, exaggerating the final sound: “caT”, “piCK”, “leaVE”. Feel your tongue, lips, and teeth really close the sound before you release the air. Then put two or three of the words into tiny phrases: “cold tea”, “pick one”, “ask them”. Record yourself, listen back, and circle any word where the final sound disappears. Repeat until you can clearly hear every ending, even when you speak faster.",
+        "vi": "Dám: Trong ba ngày, chọn năm từ ngắn có âm cuối rõ (ví dụ: cat, pick, leave, ask, cold). Đứng trước gương và nói mỗi từ mười lần, cố ý nhấn mạnh âm cuối: “caT”, “piCK”, “leaVE”. Cảm nhận lưỡi, môi, răng thực sự đóng âm lại trước khi thả hơi. Sau đó ghép hai đến ba từ vào cụm ngắn: “cold tea”, “pick one”, “ask them”. Thu âm lại, nghe thật kỹ và khoanh tròn những từ bị mất âm cuối. Lặp lại cho đến khi bạn nghe rõ mọi âm cuối ngay cả khi nói nhanh hơn."
+      },
+      "tags": [
         "pronunciation",
-        "common errors"
+        "speaking",
+        "foundation"
       ],
-      "keywords_vi": [
-        "âm cuối",
-        "phát âm",
-        "lỗi phổ biến"
-      ]
+      "audio": "english_foundation_ef06_01_en.mp3"
     },
     {
-      "slug": "error-2-adding-extra-vowels",
-      "audio": "ef06_02_en.mp3",
-      "copy_en": "Avoid adding Vietnamese vowels after consonants.\nSay the sound only:\n\nT not tờ\nK not ca\nP not pờ\nB not bờ\n\nShort, clean sounds make your English clearer.",
-      "copy_vi": "Đừng thêm nguyên âm tiếng Việt vào sau phụ âm. Chỉ phát âm đúng phụ âm: T không phải tờ, K không phải ca, P không phải pờ, B không phải bờ. Âm ngắn và rõ giúp tiếng Anh của bạn dễ hiểu hơn.",
+      "slug": "error-adding-extra-vowels",
       "keywords_en": [
-        "vowel errors",
-        "pronunciation"
+        "Extra vowels",
+        "remove uh sound",
+        "clean endings",
+        "native-like rhythm"
       ],
       "keywords_vi": [
-        "lỗi nguyên âm",
-        "phát âm"
-      ]
+        "Thêm nguyên âm thừa",
+        "bỏ âm ơ",
+        "kết thúc gọn",
+        "nhịp tự nhiên"
+      ],
+      "copy": {
+        "en": "Dare: For one week, hunt for the small \"uh\" you add after English words. Pick ten common words ending in consonants (like: stop, milk, fast, work, bank). First say them the way you usually do, then say them again cutting the final \"uh\": “stoP”, not “stop-uh”. Place your hand under your chin; the jaw should not drop again after the last consonant. Make a two-column list in your notebook: left side = “Vietnamese way” with the extra vowel, right side = “clean English way”. Review the list every evening and practice both versions to feel the difference in your mouth.",
+        "vi": "Dám: Trong một tuần, hãy săn lùng tiếng “ơ” nhỏ bạn thêm sau từ tiếng Anh. Chọn mười từ quen thuộc kết thúc bằng phụ âm (ví dụ: stop, milk, fast, work, bank). Nói lại theo cách bạn hay nói, rồi nói lại lần nữa nhưng cắt bỏ “ơ”: “stoP”, không phải “stop-ơ”. Đặt tay dưới cằm; hàm không được hạ xuống lần nữa sau phụ âm cuối. Viết hai cột trong sổ: bên trái = “cách Việt Nam” có âm “ơ”, bên phải = “cách tiếng Anh gọn”. Mỗi tối xem lại danh sách, luyện cả hai cách để cảm nhận khác biệt trong miệng."
+      },
+      "tags": [
+        "pronunciation",
+        "listening",
+        "rhythm"
+      ],
+      "audio": "english_foundation_ef06_02_en.mp3"
     },
     {
-      "slug": "error-3-using-tones-in-english",
-      "audio": "ef06_03_en.mp3",
-      "copy_en": "English has no tones.\nKeep your voice flat and gentle.\nPractice these words without rising or falling:\n\nbook\npen\nwater\nteacher\nfamily\nhello\n\nSmooth English rhythm makes you easier to understand.",
-      "copy_vi": "Tiếng Anh không có dấu. Hãy giữ giọng bằng phẳng và nhẹ. Luyện các từ sau mà không lên xuống giọng: book, pen, water, teacher, family, hello. Nhịp tiếng Anh mượt giúp người nghe hiểu bạn tốt hơn.",
+      "slug": "error-using-tones-in-english",
       "keywords_en": [
-        "tones",
+        "Vietnamese tones",
+        "flat melody",
+        "sentence stress",
+        "sound natural"
+      ],
+      "keywords_vi": [
+        "Đem thanh điệu sang tiếng Anh",
+        "melody phẳng",
+        "nhấn câu",
+        "nghe tự nhiên"
+      ],
+      "copy": {
+        "en": "Dare: Spend ten minutes a day shadowing short English sentences spoken by a native speaker. Choose one slow video or podcast, pause after each sentence, and copy the melody exactly: where the voice goes up, where it falls, where it stays flat. Do not think about Vietnamese tones at all; imagine English as a song with only gentle waves, not sharp tone marks. Record your version and compare the shape of your voice with the original, not just the words. Over a week, notice how your English becomes smoother, with fewer sudden tone jumps that make it sound like Vietnamese.",
+        "vi": "Dám: Mỗi ngày dành mười phút “nhại” theo câu tiếng Anh ngắn của người bản ngữ. Chọn một video hoặc podcast chậm, dừng sau từng câu và bắt chước đúng giai điệu: chỗ giọng đi lên, chỗ hạ xuống, chỗ giữ phẳng. Đừng nghĩ gì về thanh điệu tiếng Việt; hãy tưởng tượng tiếng Anh là một bài hát chỉ có sóng nhẹ, không có dấu sắc huyền. Thu âm giọng của bạn rồi so sánh hình dáng đường đi của giọng nói với bản gốc, không chỉ so chữ. Sau một tuần, bạn sẽ thấy tiếng Anh mượt hơn, ít những cú nhảy thanh đột ngột nghe giống tiếng Việt."
+      },
+      "tags": [
+        "pronunciation",
         "intonation",
-        "beginner"
+        "listening"
       ],
-      "keywords_vi": [
-        "thanh điệu",
-        "ngữ điệu",
-        "người mới"
-      ]
+      "audio": "english_foundation_ef06_03_en.mp3"
     },
     {
-      "slug": "error-4-reading-too-fast",
-      "audio": "ef06_04_en.mp3",
-      "copy_en": "Reading fast creates mistakes.\nSlow is correct.\nPractice slowly:\n\nI am learning English.\nPlease help me.\nI do not understand.\n\nSlow rhythm builds clean pronunciation.",
-      "copy_vi": "Đọc nhanh dễ gây lỗi. Chậm mới là đúng. Hãy luyện chậm với các câu: I am learning English, Please help me, I do not understand. Nhịp chậm tạo ra phát âm rõ ràng.",
+      "slug": "error-reading-too-fast",
       "keywords_en": [
-        "speed",
-        "clarity"
+        "Too fast",
+        "slow practice",
+        "control rhythm",
+        "clear speech"
       ],
       "keywords_vi": [
-        "tốc độ",
-        "rõ ràng"
-      ]
+        "Đọc quá nhanh",
+        "luyện chậm",
+        "kiểm soát nhịp",
+        "nói rõ"
+      ],
+      "copy": {
+        "en": "Dare: For the next five days, choose one short paragraph (3–4 lines) and read it three times at different speeds. First, read extremely slowly, leaving a full one-second pause between words. Second, read at a normal slow speed, focusing on every sound. Third, read at your usual speed and check: did clarity disappear? Mark any word that becomes blurry when you speed up. Your rule this week: when you feel nervous and want to rush, deliberately drop your speed by 30% and imagine you are speaking to a small child who needs each word clearly.",
+        "vi": "Dám: Trong năm ngày tới, chọn một đoạn ngắn (3–4 dòng) và đọc ba lần với ba tốc độ. Lần một, đọc siêu chậm, ngắt hẳn một giây giữa các từ. Lần hai, đọc chậm bình thường, tập trung vào từng âm. Lần ba, đọc với tốc độ quen thuộc rồi kiểm tra: độ rõ có biến mất không? Đánh dấu những từ bị mờ khi bạn tăng tốc. Luật tuần này: khi thấy hồi hộp và muốn nói nhanh, hãy cố tình giảm tốc độ khoảng 30% và tưởng tượng bạn đang nói với một em bé cần nghe từng từ rõ ràng."
+      },
+      "tags": [
+        "speaking",
+        "confidence",
+        "rhythm"
+      ],
+      "audio": "english_foundation_ef06_04_en.mp3"
     },
     {
-      "slug": "error-5-confusing-short-and-long-vowels",
-      "audio": "ef06_05_en.mp3",
-      "copy_en": "English uses short and long vowel sounds.\nSay these pairs slowly:\n\nship vs sheep\nsit vs seat\nfull vs fool\n\nSmall mouth changes make a big difference in meaning.",
-      "copy_vi": "Tiếng Anh có nguyên âm ngắn và dài. Hãy luyện các cặp sau thật chậm: ship và sheep, sit và seat, full và fool. Chỉ một thay đổi nhỏ ở khẩu hình cũng có thể làm thay đổi nghĩa.",
+      "slug": "error-mixing-short-long-vowels",
       "keywords_en": [
-        "vowels",
-        "pronunciation"
+        "Short vs long vowels",
+        "minimal pairs",
+        "ear training",
+        "pronunciation drill"
       ],
       "keywords_vi": [
-        "nguyên âm",
-        "phát âm"
-      ]
+        "Nhầm nguyên âm ngắn dài",
+        "cặp tối thiểu",
+        "luyện tai",
+        "bài tập phát âm"
+      ],
+      "copy": {
+        "en": "Dare: Make a mini deck of minimal pairs on paper or in your phone: ship/sheep, sit/seat, full/fool, bit/beat, live/leave. Each day, pick five pairs. First listen to online recordings or dictionary audio for each word, then close your eyes and say them yourself: short sound like a quick tap, long sound like a gentle stretch. Ask a friend or use a randomiser app to test you: they read one word, you point to the correct card. When you can consistently hear the difference, record a short story using at least five of the words and listen for any slips.",
+        "vi": "Dám: Tự tạo một bộ thẻ cặp tối thiểu trên giấy hoặc trong điện thoại: ship/sheep, sit/seat, full/fool, bit/beat, live/leave. Mỗi ngày chọn năm cặp. Đầu tiên nghe phát âm mẫu trên mạng hoặc trong từ điển cho từng từ, sau đó nhắm mắt và tự nói: âm ngắn như cú chạm nhanh, âm dài như kéo nhẹ. Nhờ bạn bè hoặc dùng app random đọc một từ, bạn chỉ đúng chiếc thẻ tương ứng. Khi đã nghe phân biệt ổn, hãy thu một câu chuyện ngắn dùng ít nhất năm từ trong danh sách và lắng nghe xem còn trượt chỗ nào."
+      },
+      "tags": [
+        "pronunciation",
+        "listening",
+        "vowels"
+      ],
+      "audio": "english_foundation_ef06_05_en.mp3"
     },
     {
-      "slug": "error-6-speaking-without-air",
-      "audio": "ef06_06_en.mp3",
-      "copy_en": "English sounds need more air than Vietnamese.\nPractice short air bursts:\n\nP\nT\nK\n\nPut your hand near your mouth.\nFeel the air.\nAir helps your consonants sound clear.",
-      "copy_vi": "Âm tiếng Anh cần nhiều hơi hơn tiếng Việt. Hãy luyện thổi hơi nhẹ với các phụ âm P, T, K. Đặt tay trước miệng để cảm nhận luồng hơi. Hơi mạnh giúp phụ âm rõ và đúng hơn.",
+      "slug": "error-speaking-without-air",
       "keywords_en": [
-        "air flow",
-        "pronunciation basics"
+        "No air support",
+        "breath control",
+        "relaxed voice",
+        "speaking stamina"
       ],
       "keywords_vi": [
-        "luồng hơi",
-        "phát âm cơ bản"
-      ]
+        "Nói không đủ hơi",
+        "kiểm soát hơi thở",
+        "giọng thoải mái",
+        "độ bền khi nói"
+      ],
+      "copy": {
+        "en": "Dare: Two times a day, do a two-minute breathing and speaking drill. Inhale gently through your nose for four counts, hold for two, then release the air on a long \"ssss\" sound for eight counts. Repeat five times, keeping shoulders relaxed. Then read one short paragraph out loud, feeling the air flow continuously instead of squeezing each word from your throat. If you run out of breath, stop, inhale again, and continue calmly. Imagine your voice riding on a quiet stream of air from your belly, not being forced from a tight, tense chest.",
+        "vi": "Dám: Mỗi ngày hai lần, luyện hai phút thở và nói. Hít nhẹ bằng mũi trong bốn nhịp, giữ hai nhịp, rồi thở ra bằng tiếng “ssss” kéo dài tám nhịp. Lặp lại năm lần, giữ vai thả lỏng. Sau đó đọc một đoạn ngắn thành tiếng, cảm nhận luồng hơi chảy liên tục thay vì bóp từng từ từ cổ họng. Nếu hết hơi, dừng lại, hít vào rồi tiếp tục bình tĩnh. Hãy tưởng tượng giọng nói của bạn cưỡi trên dòng khí êm từ bụng, không phải bị ép ra từ lồng ngực căng cứng."
+      },
+      "tags": [
+        "breathing",
+        "pronunciation",
+        "speaking"
+      ],
+      "audio": "english_foundation_ef06_06_en.mp3"
     }
-  ],
-  "room_essay": {
-    "en": "This room helps beginners correct the six pronunciation habits that make English hard for Vietnamese learners. Each entry explains one common mistake with slow, simple examples and gentle practice. When these habits change, listening becomes easier and speaking becomes clearer. Fixing these six patterns gives you a strong foundation for all future English skills.",
-    "vi": "Phòng này giúp người mới sửa sáu thói quen phát âm khiến tiếng Anh trở nên khó hơn với người Việt. Mỗi mục giải thích một lỗi phổ biến với ví dụ chậm, đơn giản và bài tập nhẹ nhàng. Khi sửa được những thói quen này, bạn sẽ nghe dễ hơn và nói rõ hơn. Sửa sáu lỗi này chính là nền tảng vững chắc cho mọi kỹ năng tiếng Anh sau này."
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
-    "vi": ""
-  }
+  ]
 }
