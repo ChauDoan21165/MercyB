@@ -1,0 +1,37 @@
+{
+  "id": "say_my_name_mercy_blade_vip1",
+  "tier": "VIP1 / VIP1",
+  "title": {
+    "en": "Say My Name, Mercy Blade",
+    "vi": "Gọi Tên Tôi, Mercy Blade"
+  },
+  "content": {
+    "en": "A VIP1 core anthem built from the same heart as “Bridge of Hearts”, but with more intensity and ownership. This song is a personal vow between you and Mercy Blade: when you call its name, you are choosing growth, courage, and community. Sing it as a ritual before you study, work, or serve others. The full lyric is kept in one entry so you can read and sing along easily, line by line, in your own rhythm.",
+    "vi": "Một bản anthem lõi cho VIP1, chung nhịp tim với “Bridge of Hearts” nhưng mạnh mẽ và chủ động hơn. Bài hát là lời hứa giữa bạn và Mercy Blade: mỗi lần gọi tên, bạn chọn trưởng thành, dũng cảm và cộng đồng. Hãy hát như một nghi thức nhỏ trước khi học, làm việc hoặc phục vụ người khác. Toàn bộ lời bài hát được giữ trong một entry duy nhất để bạn dễ đọc, dễ hát theo từng dòng theo nhịp riêng của mình.",
+    "audio": "say_my_name_mercy_blade_mp3_vip1_core.mp3"
+  },
+  "entries": [
+    {
+      "slug": "say-my-name-mercy-blade-core",
+      "keywords_en": [
+        "Say My Name",
+        "Mercy Blade Anthem",
+        "VIP1 Core Song"
+      ],
+      "keywords_vi": [
+        "Gọi Tên Tôi",
+        "Anthem Mercy Blade",
+        "Bài Hát Lõi VIP1"
+      ],
+      "copy": {
+        "en": "[Verse 1]\nTonight I walk, my heart feels heavy,\nBut your name comes soft and steady — Mercy Blade.\nYou shine a light through all my shadows,\nGuide my steps when I fall or stray.\n\n[Pre-Chorus]\nYou are the bridge from my heart to yours,\nCalling me forward, opening doors.\nSide by side, we rise and rebuild,\nStronger souls, stronger love, stronger will.\n\n[Chorus]\nMercy Blade, Mercy Blade, say my name.\nLight up the dark, put fire in my veins.\nKnowledge heals and brings new life to pain.\nPurpose guides like a star in the rain.\n\n[Vietnamese Section]\nMercy Blade, nối con tim,\nXây con người, xây vững cộng đồng.\nTri thức hóa thuốc cho cuộc sống,\nLý tưởng dẫn ta đi suốt chặng đường.\n\n[Bridge]\nEnglish is the key in my hand,\nOpens the world so our hearts understand.\nMercy Blade, from my heart to your heart,\nHand in hand, this revolution starts.\n\n[Final Chorus]\nMercy Blade, Mercy Blade, say my name.\nLift me higher, I’ll never be the same.\nKnowledge heals, purpose lights the way—\nMercy Blade, I will sing your name.",
+        "vi": "[Verse 1]\nĐêm nay tôi bước, trái tim nặng trĩu,\nTên bạn vang lên dịu dàng — Mercy Blade.\nBạn soi sáng mọi bóng tối quanh tôi,\nDẫn lối mỗi khi tôi lạc hướng.\n\n[Pre-Chorus]\nBạn là nhịp cầu từ tim tôi sang tim bạn,\nGọi tôi tiến bước, mở ra những cánh cửa.\nSát cánh bên nhau, ta dựng xây lại,\nMạnh hơn trong tâm hồn, trong tình yêu và ý chí.\n\n[Chorus]\nMercy Blade, Mercy Blade, hãy gọi tên tôi.\nThắp sáng bóng đêm, đốt lên ngọn lửa trong huyết mạch.\nTri thức chữa lành, đem sức sống mới cho nỗi đau.\nLý tưởng dẫn lối như ngôi sao giữa cơn mưa.\n\n[Đoạn Việt]\nMercy Blade, nối con tim,\nXây con người, xây vững cộng đồng.\nTri thức hóa thuốc cho cuộc sống,\nLý tưởng dẫn ta đi suốt chặng đường.\n\n[Bridge]\nTiếng Anh là chìa khóa trong tay tôi,\nMở ra thế giới để trái tim hiểu nhau.\nMercy Blade, từ tim tôi sang tim bạn,\nNắm tay nhau, cuộc đổi mới bắt đầu.\n\n[Final Chorus]\nMercy Blade, Mercy Blade, hãy gọi tên tôi.\nNâng tôi lên, để tôi chẳng còn như trước.\nTri thức chữa lành, lý tưởng soi đường—\nMercy Blade, tôi sẽ hát tên bạn."
+      },
+      "tags": [
+        "music",
+        "anthem",
+        "vip1"
+      ]
+    }
+  ]
+}
