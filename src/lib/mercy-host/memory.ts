@@ -3,9 +3,11 @@
  * 
  * Stores user-related data for personalized host behavior.
  * Uses localStorage for persistence across sessions.
+ * Phase 6: Added streak and ritual tracking.
  */
 
 import type { EmotionState } from './emotionModel';
+import type { RitualIntensity } from './engine';
 
 export interface MercyMemory {
   userName: string | null;
@@ -27,6 +29,12 @@ export interface MercyMemory {
   favoriteRooms: string[];
   lastMood: 'neutral' | 'happy' | 'focused' | 'tired' | null;
   sessionCount: number;
+  // Phase 6: Streak & Ritual tracking
+  streakDays: number;
+  longestStreak: number;
+  tiersCelebrated: string[];
+  lastStreakMilestone: number | null;
+  ritualIntensity: RitualIntensity;
 }
 
 const MEMORY_KEY = 'mercy_host_memory';
@@ -50,7 +58,13 @@ const DEFAULT_MEMORY: MercyMemory = {
   greetedRooms: [],
   favoriteRooms: [],
   lastMood: null,
-  sessionCount: 0
+  sessionCount: 0,
+  // Phase 6 defaults
+  streakDays: 0,
+  longestStreak: 0,
+  tiersCelebrated: [],
+  lastStreakMilestone: null,
+  ritualIntensity: 'normal'
 };
 
 /**
@@ -218,6 +232,31 @@ export function completeOnboarding(): void {
   updateMemory({ hasOnboarded: true });
 }
 
+/**
+ * Add a tier to the celebrated list
+ */
+export function addCelebratedTier(tier: string): void {
+  const memory = getMemory();
+  if (!memory.tiersCelebrated.includes(tier.toLowerCase())) {
+    memory.tiersCelebrated = [...memory.tiersCelebrated, tier.toLowerCase()];
+    setMemory(memory);
+  }
+}
+
+/**
+ * Check if a tier has been celebrated
+ */
+export function hasCelebratedTier(tier: string): boolean {
+  return getMemory().tiersCelebrated.includes(tier.toLowerCase());
+}
+
+/**
+ * Update streak milestone
+ */
+export function recordStreakMilestone(days: number): void {
+  updateMemory({ lastStreakMilestone: days });
+}
+
 // Export memory API as object for convenient use
 export const memory = {
   get: getMemory,
@@ -234,5 +273,8 @@ export const memory = {
   getHoursSinceLastVisit,
   isFirstTimeVisitor,
   needsOnboarding,
-  completeOnboarding
+  completeOnboarding,
+  addCelebratedTier,
+  hasCelebratedTier,
+  recordStreakMilestone
 };

@@ -31,3 +31,6 @@ export * from './safetyRails';
 // Phase 6: Rituals & Ceremonies
 export * from './rituals';
 export * from './vipCeremonies';
+
+// Re-export RitualIntensity from engine
+export type { RitualIntensity } from './engine';
