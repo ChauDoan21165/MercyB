@@ -242,3 +242,14 @@ export type {
 
 // Export default governance config
 export { DEFAULT_GOVERNANCE_CONFIG } from './audioGovernanceEngine';
+
+// CLI Helpers (Phase 4.7 - testable pure functions)
+export {
+  parseAutopilotCliOptions,
+  formatIntegrityLine,
+  formatChangesLine,
+  type CycleMode,
+  type RunMode,
+  type GovernanceMode,
+  type ParsedCliOptions,
+} from './cliHelpers';
