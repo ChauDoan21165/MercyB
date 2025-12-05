@@ -12,10 +12,19 @@ export { MercyAnimation, HaloPulse, WingsShimmer, GuidingSpark, RippleWelcome, C
 export { MercyStyleSelector } from './MercyStyleSelector';
 
 // Host Core
-export { MercyHostCore, MercyHostButton } from './MercyHostCore';
+export { MercyHostCore, MercyHostButton } from './MercyHostCoreSafe';
 
 // Provider
 export { MercyHostProvider, useMercyHostContext, useMercyHostRoom, useMercyEvent } from './MercyHostProvider';
 
 // Settings
 export { MercySettingsToggle } from './MercySettingsToggle';
+
+// Onboarding
+export { OnboardingIntro, useOnboardingCheck } from './OnboardingIntro';
+
+// Presence Indicator
+export { MercyPresenceIndicator, MercyNavIndicator } from './MercyPresenceIndicator';
+
+// Debug Panel
+export { MercyDebugPanel } from './MercyDebugPanel';

@@ -49,10 +49,16 @@ const EVENT_ANIMATION_MAP: Record<MercyEventType, MercyAnimationType> = {
 };
 
 /**
- * Get animation for event
+ * Get animation for event (with fallback for unrecognized events)
  */
-export function getAnimationForEvent(event: MercyEventType): MercyAnimationType {
-  return EVENT_ANIMATION_MAP[event] || 'halo';
+export function getAnimationForEvent(event: MercyEventType | string): MercyAnimationType {
+  if (event in EVENT_ANIMATION_MAP) {
+    return EVENT_ANIMATION_MAP[event as MercyEventType];
+  }
+  
+  // Log unrecognized event
+  console.warn(`[MercyEventMap] Unrecognized event: ${event}, using fallback animation`);
+  return 'halo'; // Fallback animation
 }
 
 /**
@@ -100,10 +106,10 @@ export function shouldTriggerVoice(event: MercyEventType): boolean {
 }
 
 /**
- * Get voice trigger type for event
+ * Get voice trigger type for event (with fallback for unrecognized)
  */
 export function getVoiceTriggerForEvent(
-  event: MercyEventType
+  event: MercyEventType | string
 ): 'room_enter' | 'entry_complete' | 'color_toggle' | 'return_inactive' | 'encouragement' | null {
   switch (event) {
     case 'room_enter':
@@ -121,6 +127,10 @@ export function getVoiceTriggerForEvent(
     case 'achievement':
       return 'encouragement';
     default:
-      return null;
+      // Log unrecognized event
+      if (typeof event === 'string' && !Object.keys(EVENT_ANIMATION_MAP).includes(event)) {
+        console.warn(`[MercyEventMap] Unrecognized event for voice: ${event}, using comfort fallback`);
+      }
+      return 'encouragement'; // Fallback to comfort/encouragement
   }
 }

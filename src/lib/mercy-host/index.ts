@@ -15,3 +15,7 @@ export * from './personalityRules';
 export * from './memory';
 export * from './hostSignal';
 export * from './validation';
+export * from './heartbeat';
+export * from './eventLimiter';
+export * from './guard';
+export * from './memorySchema';
