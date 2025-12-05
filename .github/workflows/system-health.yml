@@ -8,6 +8,11 @@ on:
       - "public/audio/**"
       - "scripts/check-system-health.ts"
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   system-health:
     runs-on: ubuntu-latest
@@ -35,8 +40,28 @@ jobs:
           path: public/system-health.json
           retention-days: 7
 
+      - name: Upload static health files for Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
       - name: Show summary
         run: |
           echo "## System Health Snapshot" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           cat public/system-health.json | jq '.' >> $GITHUB_STEP_SUMMARY
+
+  deploy:
+    needs: system-health
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
