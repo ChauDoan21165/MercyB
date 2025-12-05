@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": "scripts": {
+  "scripts": {
   "dev": "vite",
   "generate:audio-manifest": "node scripts/generate-audio-manifest.js",
   "build": "npm run generate:audio-manifest && vite build",
