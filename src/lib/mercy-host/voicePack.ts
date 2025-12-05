@@ -1,9 +1,25 @@
 /**
- * Mercy Voice Pack
+ * Mercy Voice Pack - Phase 5 Enhanced
  * 
- * Voice line definitions for EN + VI.
+ * Voice line definitions for EN + VI with emotion triggers.
  * Audio files stored in /public/mercy-voice/
  */
+
+import type { EmotionState } from './emotionModel';
+
+export type VoiceTrigger = 
+  | 'room_enter' 
+  | 'entry_complete' 
+  | 'color_toggle' 
+  | 'return_inactive' 
+  | 'encouragement'
+  | 'onboarding'
+  | 'onboarding_complete'
+  | 'low_mood'
+  | 'confusion'
+  | 'stress_release'
+  | 'celebration'
+  | 'returning_after_gap';
 
 export interface VoiceLine {
   id: string;
@@ -11,7 +27,7 @@ export interface VoiceLine {
   vi: string;
   audioEn?: string;
   audioVi?: string;
-  trigger: 'room_enter' | 'entry_complete' | 'color_toggle' | 'return_inactive' | 'encouragement';
+  trigger: VoiceTrigger;
 }
 
 export const MERCY_VOICE_LINES: VoiceLine[] = [
@@ -151,6 +167,114 @@ export const MERCY_VOICE_LINES: VoiceLine[] = [
     audioEn: '/mercy-voice/strength_within_en.mp3',
     audioVi: '/mercy-voice/strength_within_vi.mp3',
     trigger: 'encouragement'
+  },
+
+  // Phase 5: Onboarding
+  {
+    id: 'onboarding_welcome',
+    en: "Welcome to your journey. I'm Mercy, and I'll walk beside you.",
+    vi: "Chào mừng đến hành trình của bạn. Mình là Mercy, mình sẽ bước cùng bạn.",
+    audioEn: '/mercy-voice/onboarding_welcome_en.mp3',
+    audioVi: '/mercy-voice/onboarding_welcome_vi.mp3',
+    trigger: 'onboarding'
+  },
+  {
+    id: 'onboarding_complete',
+    en: "We're ready to begin. I'm honored to guide you.",
+    vi: "Chúng ta sẵn sàng bắt đầu. Mình vinh dự được hướng dẫn bạn.",
+    audioEn: '/mercy-voice/onboarding_complete_en.mp3',
+    audioVi: '/mercy-voice/onboarding_complete_vi.mp3',
+    trigger: 'onboarding_complete'
+  },
+
+  // Phase 5: Low Mood
+  {
+    id: 'low_mood_gentle',
+    en: "It's okay to feel this way. I'm here with you.",
+    vi: "Không sao cả khi cảm thấy như vậy. Mình ở đây với bạn.",
+    audioEn: '/mercy-voice/low_mood_gentle_en.mp3',
+    audioVi: '/mercy-voice/low_mood_gentle_vi.mp3',
+    trigger: 'low_mood'
+  },
+  {
+    id: 'low_mood_comfort',
+    en: "Some days are harder. You're not alone in this.",
+    vi: "Có những ngày khó khăn hơn. Bạn không đơn độc trong chuyện này.",
+    audioEn: '/mercy-voice/low_mood_comfort_en.mp3',
+    audioVi: '/mercy-voice/low_mood_comfort_vi.mp3',
+    trigger: 'low_mood'
+  },
+
+  // Phase 5: Confusion
+  {
+    id: 'confusion_support',
+    en: "Confusion means you're exploring new territory. That's good.",
+    vi: "Bối rối nghĩa là bạn đang khám phá vùng đất mới. Điều đó tốt.",
+    audioEn: '/mercy-voice/confusion_support_en.mp3',
+    audioVi: '/mercy-voice/confusion_support_vi.mp3',
+    trigger: 'confusion'
+  },
+  {
+    id: 'confusion_patience',
+    en: "Take your time. Understanding comes in its own moment.",
+    vi: "Từ từ thôi. Sự hiểu biết sẽ đến vào lúc của nó.",
+    audioEn: '/mercy-voice/confusion_patience_en.mp3',
+    audioVi: '/mercy-voice/confusion_patience_vi.mp3',
+    trigger: 'confusion'
+  },
+
+  // Phase 5: Stress Release
+  {
+    id: 'stress_breathe',
+    en: "Breathe with me. In... and out. You're safe here.",
+    vi: "Hít thở cùng mình. Vào... và ra. Bạn an toàn ở đây.",
+    audioEn: '/mercy-voice/stress_breathe_en.mp3',
+    audioVi: '/mercy-voice/stress_breathe_vi.mp3',
+    trigger: 'stress_release'
+  },
+  {
+    id: 'stress_pause',
+    en: "It's okay to pause. Rest is part of the journey.",
+    vi: "Được phép tạm dừng. Nghỉ ngơi là một phần của hành trình.",
+    audioEn: '/mercy-voice/stress_pause_en.mp3',
+    audioVi: '/mercy-voice/stress_pause_vi.mp3',
+    trigger: 'stress_release'
+  },
+
+  // Phase 5: Celebration
+  {
+    id: 'celebration_proud',
+    en: "Look at you! I'm so proud of what you've accomplished.",
+    vi: "Nhìn bạn kìa! Mình rất tự hào về những gì bạn đã đạt được.",
+    audioEn: '/mercy-voice/celebration_proud_en.mp3',
+    audioVi: '/mercy-voice/celebration_proud_vi.mp3',
+    trigger: 'celebration'
+  },
+  {
+    id: 'celebration_milestone',
+    en: "A milestone reached! Your dedication shines through.",
+    vi: "Một cột mốc đạt được! Sự cống hiến của bạn tỏa sáng.",
+    audioEn: '/mercy-voice/celebration_milestone_en.mp3',
+    audioVi: '/mercy-voice/celebration_milestone_vi.mp3',
+    trigger: 'celebration'
+  },
+
+  // Phase 5: Returning After Gap
+  {
+    id: 'return_gap_welcome',
+    en: "You've been missed, {{name}}. Welcome home.",
+    vi: "Bạn đã được nhớ, {{name}}. Chào mừng về nhà.",
+    audioEn: '/mercy-voice/return_gap_welcome_en.mp3',
+    audioVi: '/mercy-voice/return_gap_welcome_vi.mp3',
+    trigger: 'returning_after_gap'
+  },
+  {
+    id: 'return_gap_gentle',
+    en: "Life takes us away sometimes. I'm glad you're here again.",
+    vi: "Cuộc sống đôi khi đưa ta đi xa. Mình vui vì bạn ở đây lại.",
+    audioEn: '/mercy-voice/return_gap_gentle_en.mp3',
+    audioVi: '/mercy-voice/return_gap_gentle_vi.mp3',
+    trigger: 'returning_after_gap'
   }
 ];
 
@@ -158,11 +282,27 @@ export const MERCY_VOICE_LINES: VoiceLine[] = [
  * Get random voice line by trigger type
  */
 export function getVoiceLineByTrigger(
-  trigger: VoiceLine['trigger'],
+  trigger: VoiceTrigger,
   name?: string
 ): VoiceLine {
   const lines = MERCY_VOICE_LINES.filter(l => l.trigger === trigger);
-  const line = lines[Math.floor(Math.random() * lines.length)];
+  
+  // Fallback to encouragement if no lines for trigger
+  const fallbackLines = lines.length > 0 
+    ? lines 
+    : MERCY_VOICE_LINES.filter(l => l.trigger === 'encouragement');
+  
+  const line = fallbackLines[Math.floor(Math.random() * fallbackLines.length)];
+  
+  if (!line) {
+    // Ultimate fallback - text only
+    return {
+      id: 'fallback',
+      en: "I'm here with you.",
+      vi: "Mình ở đây với bạn.",
+      trigger: 'encouragement'
+    };
+  }
   
   if (name) {
     return {
@@ -190,4 +330,31 @@ export function getVoiceLineById(id: string, name?: string): VoiceLine | undefin
   }
   
   return line;
+}
+
+/**
+ * Map emotion state to voice trigger
+ */
+export function getVoiceTriggerForEmotion(emotion: EmotionState): VoiceTrigger {
+  switch (emotion) {
+    case 'low_mood': return 'low_mood';
+    case 'confused': return 'confusion';
+    case 'stressed': return 'stress_release';
+    case 'celebrating': return 'celebration';
+    case 'returning_after_gap': return 'returning_after_gap';
+    case 'focused': return 'encouragement';
+    case 'neutral':
+    default: return 'room_enter';
+  }
+}
+
+/**
+ * Get emotion-aware voice line
+ */
+export function getEmotionVoiceLine(
+  emotion: EmotionState,
+  name?: string
+): VoiceLine {
+  const trigger = getVoiceTriggerForEmotion(emotion);
+  return getVoiceLineByTrigger(trigger, name);
 }
