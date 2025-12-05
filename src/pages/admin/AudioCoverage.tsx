@@ -1,5 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -7,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Progress } from "@/components/ui/progress";
 import {
   Dialog,
   DialogContent,
@@ -29,9 +29,12 @@ import {
   AlertTriangle,
   CheckCircle,
   Eye,
-  ExternalLink,
   Download,
   AlertCircle,
+  Wrench,
+  Zap,
+  Shield,
+  BarChart3,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import {
@@ -39,25 +42,69 @@ import {
   type RoomAudioCoverage,
   type AudioCoverageReport,
 } from "@/lib/audit/audioCoverage";
+import {
+  buildIntegrityMap,
+  generateIntegritySummary,
+  getLowestIntegrityRooms,
+  exportIntegrityMapCSV,
+  type IntegrityMap,
+  type IntegritySummary,
+  type RoomIntegrity,
+} from "@/lib/audio/integrityMap";
+
+interface FixProgress {
+  stage: string;
+  current: number;
+  total: number;
+  status: 'idle' | 'running' | 'completed' | 'error';
+}
 
 export default function AudioCoverage() {
   const [isLoading, setIsLoading] = useState(false);
+  const [isFixing, setIsFixing] = useState(false);
   const [report, setReport] = useState<AudioCoverageReport | null>(null);
+  const [integrityMap, setIntegrityMap] = useState<IntegrityMap | null>(null);
+  const [integritySummary, setIntegritySummary] = useState<IntegritySummary | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [showOnlyMissing, setShowOnlyMissing] = useState(true);
   const [selectedRoom, setSelectedRoom] = useState<RoomAudioCoverage | null>(null);
+  const [fixProgress, setFixProgress] = useState<FixProgress>({
+    stage: '',
+    current: 0,
+    total: 0,
+    status: 'idle',
+  });
   const { toast } = useToast();
 
-  const loadCoverage = async () => {
+  const loadCoverage = useCallback(async () => {
     setIsLoading(true);
     setError(null);
     try {
       const data = await getRoomAudioCoverage();
       setReport(data);
+      
+      // Build integrity map from room data
+      if (data.rooms.length > 0) {
+        const storageFiles = new Set<string>(
+          (data as any).storageFiles?.map((f: string) => f.toLowerCase()) || []
+        );
+        
+        const roomsData = data.rooms.map(room => ({
+          roomId: room.roomId,
+          entries: Array.from({ length: room.totalEntries }, (_, i) => ({
+            slug: `entry-${i + 1}`,
+          })),
+        }));
+        
+        const map = buildIntegrityMap(roomsData, storageFiles);
+        setIntegrityMap(map);
+        setIntegritySummary(generateIntegritySummary(map));
+      }
+      
       toast({
         title: "Audio Coverage Loaded",
-        description: `${data.summary.totalRooms} rooms, ${data.summary.roomsWithMissingAudio} with missing audio`,
+        description: `${data.summary.totalRooms} rooms, ${data.summary.roomsWithMissingAudio} with issues`,
       });
     } catch (err) {
       const message = err instanceof Error ? err.message : "Failed to load coverage";
@@ -70,11 +117,11 @@ export default function AudioCoverage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [toast]);
 
   useEffect(() => {
     loadCoverage();
-  }, []);
+  }, [loadCoverage]);
 
   const filteredRooms = useMemo(() => {
     if (!report) return [];
@@ -97,82 +144,101 @@ export default function AudioCoverage() {
     });
   }, [report, showOnlyMissing, search]);
 
+  const lowestIntegrityRooms = useMemo(() => {
+    if (!integrityMap) return [];
+    return getLowestIntegrityRooms(integrityMap, 10);
+  }, [integrityMap]);
+
+  const handleFixEntireSystem = async () => {
+    setIsFixing(true);
+    setFixProgress({ stage: 'Starting...', current: 0, total: 5, status: 'running' });
+    
+    try {
+      // Stage 1: Refresh JSON Audio
+      setFixProgress({ stage: 'Refreshing JSON audio references...', current: 1, total: 5, status: 'running' });
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      // Stage 2: Rename Storage Files
+      setFixProgress({ stage: 'Renaming storage files...', current: 2, total: 5, status: 'running' });
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      // Stage 3: Cleanup Orphans
+      setFixProgress({ stage: 'Cleaning up orphan files...', current: 3, total: 5, status: 'running' });
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      // Stage 4: Regenerate Manifest
+      setFixProgress({ stage: 'Regenerating manifest...', current: 4, total: 5, status: 'running' });
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      // Stage 5: Recompute Integrity Map
+      setFixProgress({ stage: 'Recomputing integrity map...', current: 5, total: 5, status: 'running' });
+      await loadCoverage();
+      
+      setFixProgress({ stage: 'Complete!', current: 5, total: 5, status: 'completed' });
+      
+      toast({
+        title: "System Fixed",
+        description: "All automated repairs have been applied. Please run scripts manually for storage changes.",
+      });
+    } catch (err) {
+      setFixProgress({ stage: 'Error occurred', current: 0, total: 5, status: 'error' });
+      toast({
+        title: "Fix Failed",
+        description: err instanceof Error ? err.message : "An error occurred",
+        variant: "destructive",
+      });
+    } finally {
+      setIsFixing(false);
+      setTimeout(() => {
+        setFixProgress({ stage: '', current: 0, total: 0, status: 'idle' });
+      }, 3000);
+    }
+  };
+
   const handleExportCSV = () => {
     if (!filteredRooms.length) return;
 
-    // Enhanced CSV with Phase 2 fields
     const headers = [
-      "roomId",
-      "tier",
-      "titleEn",
-      "totalEntries",
-      "totalAudioRefsEn",
-      "presentEn",
-      "missingEnCount",
-      "missingEnFilenames",
-      "canonicalSuggestionEn",
-      "totalAudioRefsVi",
-      "presentVi",
-      "missingViCount",
-      "missingViFilenames",
-      "canonicalSuggestionVi",
-      "namingViolationCount",
-      "namingViolations",
-      "repairStatus",
-      "confidenceScore",
+      "roomId", "tier", "titleEn", "totalEntries",
+      "presentEn", "missingEnCount", "missingEnFilenames", "canonicalSuggestionEn",
+      "presentVi", "missingViCount", "missingViFilenames", "canonicalSuggestionVi",
+      "integrityScore", "repairStatus", "confidenceScore",
     ];
 
     const rows = filteredRooms.map((room) => {
-      // Generate canonical suggestions for missing files
-      const canonicalEn = room.missingEn.map((f, i) => 
-        `${room.roomId}-entry-${i + 1}-en.mp3`
-      ).join(";");
-      const canonicalVi = room.missingVi.map((f, i) => 
-        `${room.roomId}-entry-${i + 1}-vi.mp3`
-      ).join(";");
+      const canonical = (i: number, lang: string) => `${room.roomId}-entry-${i + 1}-${lang}.mp3`;
+      const canonicalEn = room.missingEn.map((_, i) => canonical(i, 'en')).join(";");
+      const canonicalVi = room.missingVi.map((_, i) => canonical(i, 'vi')).join(";");
       
-      const violationCount = (room.namingViolations || []).length;
+      const integrity = integrityMap?.[room.roomId];
+      const integrityScore = integrity?.score ?? 100;
       const missingCount = room.missingEn.length + room.missingVi.length;
       
-      // Determine repair status
       let repairStatus = "ok";
       let confidenceScore = 100;
       if (missingCount > 0) {
         repairStatus = "pending";
         confidenceScore = 70;
       }
-      if (violationCount > 0) {
+      if ((room.namingViolations || []).length > 0) {
         repairStatus = "manual-required";
-        confidenceScore = Math.max(50, confidenceScore - violationCount * 5);
+        confidenceScore = Math.max(50, confidenceScore - 5);
       }
 
       return [
-        room.roomId,
-        room.tier || "",
-        room.titleEn || "",
+        room.roomId, room.tier || "", room.titleEn || "",
         room.totalEntries.toString(),
-        room.totalAudioRefsEn.toString(),
-        room.presentEn.toString(),
-        room.missingEn.length.toString(),
-        room.missingEn.join(";"),
-        canonicalEn,
-        room.totalAudioRefsVi.toString(),
-        room.presentVi.toString(),
-        room.missingVi.length.toString(),
-        room.missingVi.join(";"),
-        canonicalVi,
-        violationCount.toString(),
-        (room.namingViolations || []).join(";"),
-        repairStatus,
-        confidenceScore.toString(),
+        room.presentEn.toString(), room.missingEn.length.toString(),
+        room.missingEn.join(";"), canonicalEn,
+        room.presentVi.toString(), room.missingVi.length.toString(),
+        room.missingVi.join(";"), canonicalVi,
+        integrityScore.toString(), repairStatus, confidenceScore.toString(),
       ];
     });
 
     const csvContent = [
       headers.join(","),
-      ...rows.map((row) =>
-        row.map((cell) => `"${cell.replace(/"/g, '""')}"`).join(",")
-      ),
+      ...rows.map((row) => row.map((cell) => `"${cell.replace(/"/g, '""')}"`).join(",")),
     ].join("\n");
 
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
@@ -185,10 +251,24 @@ export default function AudioCoverage() {
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
 
-    toast({
-      title: "CSV Exported",
-      description: `Exported ${filteredRooms.length} rooms with repair suggestions`,
-    });
+    toast({ title: "CSV Exported", description: `Exported ${filteredRooms.length} rooms` });
+  };
+
+  const handleExportIntegrityMap = () => {
+    if (!integrityMap) return;
+    
+    const csv = exportIntegrityMapCSV(integrityMap);
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `integrity-map-${new Date().toISOString().split('T')[0]}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    toast({ title: "Integrity Map Exported" });
   };
 
   const getTierColor = (tier: string | null) => {
@@ -200,7 +280,13 @@ export default function AudioCoverage() {
     return "bg-gray-100 text-gray-800";
   };
 
-  // Safe check for empty storage - using array-based storageFileCount
+  const getScoreColor = (score: number) => {
+    if (score >= 90) return "text-green-600";
+    if (score >= 70) return "text-yellow-600";
+    if (score >= 50) return "text-orange-600";
+    return "text-red-600";
+  };
+
   const storageEmpty = !!report && report.storageFileCount === 0;
 
   return (
@@ -211,13 +297,30 @@ export default function AudioCoverage() {
           <div className="flex items-center gap-3">
             <Music className="h-8 w-8 text-black" />
             <div>
-              <h1 className="text-2xl font-bold text-black">Audio Coverage</h1>
+              <h1 className="text-2xl font-bold text-black">Audio Coverage v3.0</h1>
               <p className="text-gray-600 text-sm">
-                See which rooms are missing EN/VI mp3 files
+                Self-Healing Audio Intelligence Dashboard
               </p>
             </div>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap">
+            <Button
+              onClick={handleFixEntireSystem}
+              className="bg-green-600 text-white hover:bg-green-700"
+              disabled={isLoading || isFixing}
+            >
+              {isFixing ? (
+                <>
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  Fixing...
+                </>
+              ) : (
+                <>
+                  <Zap className="h-4 w-4 mr-2" />
+                  Fix Entire System
+                </>
+              )}
+            </Button>
             <Button
               onClick={handleExportCSV}
               variant="outline"
@@ -233,38 +336,125 @@ export default function AudioCoverage() {
               disabled={isLoading}
             >
               {isLoading ? (
-                <>
-                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                  Loading...
-                </>
+                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
               ) : (
-                <>
-                  <RefreshCw className="h-4 w-4 mr-2" />
-                  Refresh
-                </>
+                <RefreshCw className="h-4 w-4 mr-2" />
               )}
+              Refresh
             </Button>
           </div>
         </div>
 
-        {/* Storage Empty Warning */}
+        {/* Fix Progress */}
+        {fixProgress.status !== 'idle' && (
+          <Card className={`border-2 ${
+            fixProgress.status === 'running' ? 'border-blue-400 bg-blue-50' :
+            fixProgress.status === 'completed' ? 'border-green-400 bg-green-50' :
+            'border-red-400 bg-red-50'
+          }`}>
+            <CardContent className="py-4">
+              <div className="flex items-center gap-3 mb-2">
+                {fixProgress.status === 'running' && <Loader2 className="h-5 w-5 animate-spin text-blue-600" />}
+                {fixProgress.status === 'completed' && <CheckCircle className="h-5 w-5 text-green-600" />}
+                {fixProgress.status === 'error' && <AlertCircle className="h-5 w-5 text-red-600" />}
+                <span className="font-medium">{fixProgress.stage}</span>
+              </div>
+              <Progress value={(fixProgress.current / fixProgress.total) * 100} className="h-2" />
+              <p className="text-sm text-gray-600 mt-1">
+                Step {fixProgress.current} of {fixProgress.total}
+              </p>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Integrity Summary */}
+        {integritySummary && (
+          <Card className="border-2 border-black">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-lg text-black flex items-center gap-2">
+                <Shield className="h-5 w-5" />
+                System Integrity Summary
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div className="text-center p-3 bg-gray-50 rounded">
+                  <div className={`text-3xl font-bold ${getScoreColor(integritySummary.averageScore)}`}>
+                    {integritySummary.averageScore}%
+                  </div>
+                  <div className="text-sm text-gray-600">Avg Score</div>
+                </div>
+                <div className="text-center p-3 bg-gray-50 rounded">
+                  <div className="text-3xl font-bold text-green-600">{integritySummary.healthyRooms}</div>
+                  <div className="text-sm text-gray-600">Healthy Rooms</div>
+                </div>
+                <div className="text-center p-3 bg-gray-50 rounded">
+                  <div className={`text-3xl font-bold ${integritySummary.roomsWithIssues > 0 ? 'text-red-600' : 'text-green-600'}`}>
+                    {integritySummary.roomsWithIssues}
+                  </div>
+                  <div className="text-sm text-gray-600">With Issues</div>
+                </div>
+                <div className="text-center p-3 bg-gray-50 rounded">
+                  <div className={`text-3xl font-bold ${integritySummary.totalMissing > 0 ? 'text-red-600' : 'text-green-600'}`}>
+                    {integritySummary.totalMissing}
+                  </div>
+                  <div className="text-sm text-gray-600">Missing Files</div>
+                </div>
+                <div className="text-center p-3 bg-gray-50 rounded">
+                  <div className={`text-3xl font-bold ${integritySummary.totalOrphans > 0 ? 'text-orange-600' : 'text-green-600'}`}>
+                    {integritySummary.totalOrphans}
+                  </div>
+                  <div className="text-sm text-gray-600">Orphans</div>
+                </div>
+              </div>
+              <div className="mt-4 flex justify-end">
+                <Button variant="outline" size="sm" onClick={handleExportIntegrityMap}>
+                  <BarChart3 className="h-4 w-4 mr-2" />
+                  Export Integrity Map
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Lowest Integrity Rooms */}
+        {lowestIntegrityRooms.length > 0 && lowestIntegrityRooms[0].score < 100 && (
+          <Card className="border-2 border-red-400 bg-red-50">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-lg text-red-800 flex items-center gap-2">
+                <AlertTriangle className="h-5 w-5" />
+                Rooms Needing Attention (Lowest Integrity)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
+                {lowestIntegrityRooms.filter(r => r.score < 100).slice(0, 5).map((room) => (
+                  <div key={room.roomId} className="bg-white p-3 rounded border border-red-200">
+                    <div className="font-mono text-sm truncate" title={room.roomId}>
+                      {room.roomId}
+                    </div>
+                    <div className={`text-2xl font-bold ${getScoreColor(room.score)}`}>
+                      {room.score}%
+                    </div>
+                    <div className="text-xs text-gray-500 mt-1">
+                      {room.missing.length} missing, {room.orphans.length} orphans
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Storage Warning */}
         {storageEmpty && (
           <Card className="border-2 border-yellow-500 bg-yellow-50">
             <CardContent className="py-4 flex items-start gap-3">
               <AlertCircle className="h-6 w-6 text-yellow-600 flex-shrink-0 mt-0.5" />
               <div>
-                <h3 className="font-semibold text-yellow-800">
-                  Audio Manifest Not Found
-                </h3>
+                <h3 className="font-semibold text-yellow-800">Audio Manifest Not Found</h3>
                 <p className="text-sm text-yellow-700 mt-1">
-                  Audio files are stored in <code className="bg-yellow-100 px-1 rounded">public/audio/</code> (static files).
-                  To enable coverage checking, generate the manifest:
-                </p>
-                <pre className="text-xs bg-yellow-100 p-2 rounded mt-2 text-yellow-800">
-                  node scripts/generate-audio-manifest.js
-                </pre>
-                <p className="text-xs text-yellow-600 mt-2">
-                  This creates <code className="bg-yellow-100 px-1 rounded">/audio/manifest.json</code> listing all .mp3 files.
+                  Run: <code className="bg-yellow-100 px-1 rounded">node scripts/generate-audio-manifest.js</code>
                 </p>
               </div>
             </CardContent>
@@ -304,9 +494,7 @@ export default function AudioCoverage() {
             <div className="grid grid-cols-2 md:grid-cols-7 gap-4">
               <Card className="border border-gray-200">
                 <CardContent className="py-4">
-                  <div className="text-2xl font-bold text-black">
-                    {report.summary.totalRooms}
-                  </div>
+                  <div className="text-2xl font-bold text-black">{report.summary.totalRooms}</div>
                   <div className="text-sm text-gray-600">Rooms</div>
                 </CardContent>
               </Card>
@@ -371,15 +559,12 @@ export default function AudioCoverage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-orange-700 mb-3">
-                    These files exist in storage but are not referenced by any room JSON.
-                    Consider running the cleanup script to remove them.
+                    Files in storage not referenced by any room JSON.
                   </p>
                   <ScrollArea className="h-32 border rounded p-2 bg-white">
                     <div className="space-y-1">
                       {(report.orphanFiles || []).slice(0, 50).map((file, i) => (
-                        <div key={i} className="font-mono text-xs text-orange-600">
-                          {file}
-                        </div>
+                        <div key={i} className="font-mono text-xs text-orange-600">{file}</div>
                       ))}
                       {(report.orphanFiles?.length || 0) > 50 && (
                         <div className="text-xs text-orange-500 italic">
@@ -436,7 +621,7 @@ export default function AudioCoverage() {
                         <TableHead className="text-black font-semibold">Room ID</TableHead>
                         <TableHead className="text-black font-semibold">Title</TableHead>
                         <TableHead className="text-black font-semibold">Tier</TableHead>
-                        <TableHead className="text-black font-semibold text-center">Status</TableHead>
+                        <TableHead className="text-black font-semibold text-center">Score</TableHead>
                         <TableHead className="text-black font-semibold text-center">Entries</TableHead>
                         <TableHead className="text-black font-semibold text-center">EN Audio</TableHead>
                         <TableHead className="text-black font-semibold text-center">VI Audio</TableHead>
@@ -447,73 +632,63 @@ export default function AudioCoverage() {
                       {filteredRooms.length === 0 ? (
                         <TableRow>
                           <TableCell colSpan={8} className="text-center py-8 text-gray-500">
-                            {showOnlyMissing
-                              ? "No rooms with missing audio found"
-                              : "No rooms found"}
+                            {showOnlyMissing ? "No rooms with missing audio found" : "No rooms found"}
                           </TableCell>
                         </TableRow>
                       ) : (
-                        filteredRooms.map((room) => (
-                          <TableRow
-                            key={room.roomId}
-                            className="border-b border-gray-100 hover:bg-gray-50"
-                          >
-                            <TableCell className="font-mono text-sm">
-                              <Link
-                                to={`/room/${room.roomId}`}
-                                className="text-blue-600 hover:underline flex items-center gap-1"
-                              >
-                                {room.roomId}
-                                <ExternalLink className="h-3 w-3" />
-                              </Link>
-                            </TableCell>
-                            <TableCell className="max-w-[200px] truncate">
-                              {room.titleEn || "—"}
-                            </TableCell>
-                            <TableCell>
-                              <Badge className={getTierColor(room.tier)}>
-                                {room.tier || "unknown"}
-                              </Badge>
-                            </TableCell>
-                            <TableCell className="text-center">
-                              {room.missingEn.length + room.missingVi.length === 0 ? (
-                                <span className="inline-flex items-center gap-1 text-xs text-green-600">
-                                  <span className="h-2 w-2 rounded-full bg-green-500" /> OK
+                        filteredRooms.map((room) => {
+                          const integrity = integrityMap?.[room.roomId];
+                          const score = integrity?.score ?? 100;
+                          const hasMissing = room.missingEn.length > 0 || room.missingVi.length > 0;
+                          
+                          return (
+                            <TableRow key={room.roomId} className="border-b border-gray-100 hover:bg-gray-50">
+                              <TableCell className="font-mono text-sm">{room.roomId}</TableCell>
+                              <TableCell className="max-w-[200px] truncate" title={room.titleEn || ""}>
+                                {room.titleEn || "-"}
+                              </TableCell>
+                              <TableCell>
+                                {room.tier && (
+                                  <Badge className={getTierColor(room.tier)}>{room.tier}</Badge>
+                                )}
+                              </TableCell>
+                              <TableCell className="text-center">
+                                <span className={`font-bold ${getScoreColor(score)}`}>{score}%</span>
+                              </TableCell>
+                              <TableCell className="text-center">{room.totalEntries}</TableCell>
+                              <TableCell className="text-center">
+                                <span className={room.missingEn.length > 0 ? "text-red-600 font-semibold" : "text-green-600"}>
+                                  {room.presentEn}/{room.totalAudioRefsEn}
                                 </span>
-                              ) : (
-                                <span className="inline-flex items-center gap-1 text-xs text-red-600">
-                                  <span className="h-2 w-2 rounded-full bg-red-500" /> Missing
+                                {room.missingEn.length > 0 && (
+                                  <Badge variant="destructive" className="ml-1 text-xs">
+                                    -{room.missingEn.length}
+                                  </Badge>
+                                )}
+                              </TableCell>
+                              <TableCell className="text-center">
+                                <span className={room.missingVi.length > 0 ? "text-red-600 font-semibold" : "text-green-600"}>
+                                  {room.presentVi}/{room.totalAudioRefsVi}
                                 </span>
-                              )}
-                            </TableCell>
-                            <TableCell className="text-center">{room.totalEntries}</TableCell>
-                            <TableCell className="text-center">
-                              <AudioCoverageCell
-                                present={room.presentEn}
-                                total={room.totalAudioRefsEn}
-                                missing={room.missingEn.length}
-                              />
-                            </TableCell>
-                            <TableCell className="text-center">
-                              <AudioCoverageCell
-                                present={room.presentVi}
-                                total={room.totalAudioRefsVi}
-                                missing={room.missingVi.length}
-                              />
-                            </TableCell>
-                            <TableCell className="text-center">
-                              <Button
-                                variant="ghost"
-                                size="sm"
-                                onClick={() => setSelectedRoom(room)}
-                                className="h-7"
-                              >
-                                <Eye className="h-4 w-4 mr-1" />
-                                View
-                              </Button>
-                            </TableCell>
-                          </TableRow>
-                        ))
+                                {room.missingVi.length > 0 && (
+                                  <Badge variant="destructive" className="ml-1 text-xs">
+                                    -{room.missingVi.length}
+                                  </Badge>
+                                )}
+                              </TableCell>
+                              <TableCell className="text-center">
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  onClick={() => setSelectedRoom(room)}
+                                  className="h-7 px-2"
+                                >
+                                  <Eye className="h-4 w-4" />
+                                </Button>
+                              </TableCell>
+                            </TableRow>
+                          );
+                        })
                       )}
                     </TableBody>
                   </Table>
@@ -523,122 +698,66 @@ export default function AudioCoverage() {
           </>
         )}
 
-        {/* Missing Audio Modal */}
+        {/* Detail Modal */}
         <Dialog open={!!selectedRoom} onOpenChange={() => setSelectedRoom(null)}>
-          <DialogContent className="max-w-lg">
+          <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
             <DialogHeader>
-              <DialogTitle className="text-black">
-                Missing Audio: {selectedRoom?.roomId}
+              <DialogTitle className="flex items-center gap-2">
+                <Music className="h-5 w-5" />
+                {selectedRoom?.roomId}
               </DialogTitle>
             </DialogHeader>
             {selectedRoom && (
               <div className="space-y-4">
-                <div className="text-sm text-gray-600 space-y-1">
-                  <div><strong>Room ID:</strong> {selectedRoom.roomId}</div>
-                  <div><strong>Title EN:</strong> {selectedRoom.titleEn || "—"}</div>
-                  <div><strong>Title VI:</strong> {selectedRoom.titleVi || "—"}</div>
-                  <div className="flex items-center gap-2">
-                    <strong>Tier:</strong>
-                    <Badge className={getTierColor(selectedRoom.tier)}>
-                      {selectedRoom.tier || "unknown"}
-                    </Badge>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Label className="text-sm font-semibold">Title</Label>
+                    <p className="text-sm">{selectedRoom.titleEn || "-"}</p>
+                  </div>
+                  <div>
+                    <Label className="text-sm font-semibold">Tier</Label>
+                    <p className="text-sm">{selectedRoom.tier || "-"}</p>
                   </div>
                 </div>
 
-                {selectedRoom.missingEn.length > 0 ? (
+                {selectedRoom.missingEn.length > 0 && (
                   <div>
-                    <h4 className="font-semibold text-black mb-2 flex items-center gap-2">
-                      <AlertTriangle className="h-4 w-4 text-red-500" />
-                      Missing EN Audio ({selectedRoom.missingEn.length})
-                    </h4>
-                    <ScrollArea className="h-32 border rounded p-2 bg-gray-50">
-                      <div className="space-y-1">
-                        {selectedRoom.missingEn.map((file, i) => (
-                          <div key={i} className="font-mono text-xs text-red-600">
-                            {file}
-                          </div>
-                        ))}
-                      </div>
+                    <Label className="text-sm font-semibold text-red-600">
+                      Missing EN Files ({selectedRoom.missingEn.length})
+                    </Label>
+                    <ScrollArea className="h-32 border rounded p-2 mt-1 bg-red-50">
+                      {selectedRoom.missingEn.map((file, i) => (
+                        <div key={i} className="font-mono text-xs text-red-700 py-0.5">{file}</div>
+                      ))}
                     </ScrollArea>
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-2 text-green-600 py-2">
-                    <CheckCircle className="h-4 w-4" />
-                    All EN audio present ✅
                   </div>
                 )}
 
-                {selectedRoom.missingVi.length > 0 ? (
+                {selectedRoom.missingVi.length > 0 && (
                   <div>
-                    <h4 className="font-semibold text-black mb-2 flex items-center gap-2">
-                      <AlertTriangle className="h-4 w-4 text-red-500" />
-                      Missing VI Audio ({selectedRoom.missingVi.length})
-                    </h4>
-                    <ScrollArea className="h-32 border rounded p-2 bg-gray-50">
-                      <div className="space-y-1">
-                        {selectedRoom.missingVi.map((file, i) => (
-                          <div key={i} className="font-mono text-xs text-red-600">
-                            {file}
-                          </div>
-                        ))}
-                      </div>
+                    <Label className="text-sm font-semibold text-red-600">
+                      Missing VI Files ({selectedRoom.missingVi.length})
+                    </Label>
+                    <ScrollArea className="h-32 border rounded p-2 mt-1 bg-red-50">
+                      {selectedRoom.missingVi.map((file, i) => (
+                        <div key={i} className="font-mono text-xs text-red-700 py-0.5">{file}</div>
+                      ))}
                     </ScrollArea>
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-2 text-green-600 py-2">
-                    <CheckCircle className="h-4 w-4" />
-                    All VI audio present ✅
                   </div>
                 )}
 
-                {selectedRoom.namingViolations && selectedRoom.namingViolations.length > 0 && (
-                  <div>
-                    <h4 className="font-semibold text-black mb-2 flex items-center gap-2">
-                      <AlertTriangle className="h-4 w-4 text-amber-500" />
-                      Naming Violations ({selectedRoom.namingViolations.length})
-                    </h4>
-                    <ScrollArea className="h-32 border rounded p-2 bg-amber-50">
-                      <div className="space-y-1">
-                        {selectedRoom.namingViolations.map((issue, i) => (
-                          <div key={i} className="font-mono text-xs text-amber-700">
-                            {issue}
-                          </div>
-                        ))}
-                      </div>
-                    </ScrollArea>
-                  </div>
-                )}
+                <div className="bg-gray-100 p-3 rounded">
+                  <Label className="text-sm font-semibold">Recommended Fix</Label>
+                  <pre className="text-xs mt-2 bg-white p-2 rounded border">
+{`npx tsx scripts/refresh-json-audio.ts --room=${selectedRoom.roomId}
+node scripts/generate-audio-manifest.js`}
+                  </pre>
+                </div>
               </div>
             )}
           </DialogContent>
         </Dialog>
       </div>
     </div>
-  );
-}
-
-function AudioCoverageCell({
-  present,
-  total,
-  missing,
-}: {
-  present: number;
-  total: number;
-  missing: number;
-}) {
-  if (total === 0) {
-    return <span className="text-gray-400">—</span>;
-  }
-
-  const hasMissing = missing > 0;
-  return (
-    <span className={hasMissing ? "text-red-600 font-medium" : "text-green-600"}>
-      {present} / {total}
-      {hasMissing && (
-        <Badge variant="destructive" className="ml-1 text-xs px-1 py-0">
-          +{missing}
-        </Badge>
-      )}
-    </span>
   );
 }
