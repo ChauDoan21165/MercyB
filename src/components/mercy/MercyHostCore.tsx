@@ -4,6 +4,7 @@
  * Renders avatar + animation container with absolute positioning.
  * Includes voice line display bubble and ritual banner.
  * Phase 6: Added ritual banner for ceremonies.
+ * Phase 7: Added teacher hint bubble.
  */
 
 import { useEffect, useCallback, useState } from 'react';
@@ -11,7 +12,7 @@ import { cn } from '@/lib/utils';
 import { MercyAvatar } from './MercyAvatar';
 import { MercyAnimation } from './MercyAnimations';
 import { useMercyHostContext } from './MercyHostProvider';
-import { X, Volume2, Sparkles, Star } from 'lucide-react';
+import { X, Volume2, Sparkles, Star, GraduationCap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface MercyHostCoreProps {
@@ -94,6 +95,18 @@ export function MercyHostCore({
   const ritualText = mercy.lastRitualText
     ? (mercy.language === 'vi' ? mercy.lastRitualText.vi : mercy.lastRitualText.en)
     : null;
+
+  // Teacher hint text - Phase 7
+  const teacherHintText = mercy.lastEnglishTip
+    ? (mercy.language === 'vi' ? mercy.lastEnglishTip.vi : mercy.lastEnglishTip.en)
+    : null;
+
+  // Show teacher hint only in English domain
+  const showTeacherHint = 
+    mercy.isTeacherHintVisible && 
+    teacherHintText && 
+    mercy.currentRoomDomain === 'english' &&
+    mercy.teacherLevel !== 'gentle'; // 'gentle' mode doesn't show hints proactively
   
   return (
     <div 
@@ -131,7 +144,7 @@ export function MercyHostCore({
       </div>
       
       {/* Voice Line Bubble */}
-      {mercy.isBubbleVisible && displayText && !mercy.isRitualBannerVisible && (
+      {mercy.isBubbleVisible && displayText && !mercy.isRitualBannerVisible && !showTeacherHint && (
         <VoiceLineBubble
           text={displayText}
           language={mercy.language}
@@ -147,6 +160,15 @@ export function MercyHostCore({
           isCeremony={!!mercy.lastCeremonyTier}
           animation={mercy.currentAnimation}
           onDismiss={mercy.dismissRitualBanner}
+        />
+      )}
+
+      {/* Teacher Hint Bubble - Phase 7 */}
+      {showTeacherHint && !mercy.isRitualBannerVisible && (
+        <TeacherHintBubble
+          text={teacherHintText!}
+          language={mercy.language}
+          onDismiss={mercy.dismissTeacherHint}
         />
       )}
     </div>
@@ -292,6 +314,56 @@ function RitualBanner({ text, ritualId, isCeremony, animation, onDismiss }: Ritu
               ? "bg-primary/10 border-primary/30"
               : "bg-background border-border"
         )} />
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Teacher Hint Bubble Component - Phase 7
+ */
+interface TeacherHintBubbleProps {
+  text: string;
+  language: 'en' | 'vi';
+  onDismiss: () => void;
+}
+
+function TeacherHintBubble({ text, language, onDismiss }: TeacherHintBubbleProps) {
+  return (
+    <div 
+      className={cn(
+        "absolute right-0 top-full mt-2 w-64",
+        "animate-fade-in"
+      )}
+    >
+      <div className="relative bg-emerald-50 dark:bg-emerald-950/50 backdrop-blur-sm border border-emerald-200 dark:border-emerald-800 rounded-xl p-3 shadow-lg">
+        {/* Dismiss button */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={onDismiss}
+          className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-background border border-border shadow-sm"
+        >
+          <X className="h-3 w-3" />
+        </Button>
+        
+        {/* Teacher indicator */}
+        <div className="flex items-center gap-1.5 mb-1.5">
+          <div className="w-4 h-4 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <GraduationCap className="w-2.5 h-2.5 text-emerald-600 dark:text-emerald-400" />
+          </div>
+          <span className="text-[10px] font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-wide">
+            {language === 'vi' ? 'Gợi ý học' : 'Teacher Tip'}
+          </span>
+        </div>
+        
+        {/* Text */}
+        <p className="text-sm text-emerald-800 dark:text-emerald-200 leading-relaxed">
+          {text}
+        </p>
+        
+        {/* Tail */}
+        <div className="absolute -top-2 right-6 w-4 h-4 bg-emerald-50 dark:bg-emerald-950/50 border-l border-t border-emerald-200 dark:border-emerald-800 rotate-45" />
       </div>
     </div>
   );

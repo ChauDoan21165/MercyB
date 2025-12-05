@@ -3,6 +3,7 @@
  * 
  * Full engine with init, greet, events, state management.
  * Phase 6: Added rituals, ceremonies, streaks.
+ * Phase 7: Added English teacher mode and logging.
  */
 
 import { getTierScript, getTierGreeting, getTierEncouragement } from './tierScripts';
@@ -26,6 +27,9 @@ import {
 import { isCrisisRoom, isSafeTrigger, enforceSafeEmotion } from './safetyRails';
 import { memory } from './memory';
 import { submitThrottledEvent } from './eventLimiter';
+import { getDomainCategory, isEnglishDomain, type DomainCategory } from './domainMap';
+import { getTeacherTip, type TeacherLevel, type TeacherContext } from './teacherScripts';
+import { logEvent } from './logs';
 
 // Storage keys
 const STORAGE_KEYS = {
@@ -43,11 +47,12 @@ const JITTER_MIN_MS = 120;
 const JITTER_MAX_MS = 350;
 const MAX_SPEECH_LENGTH = 160;
 const RITUAL_BANNER_DURATION_MS = 12000; // 12 seconds
+const TEACHER_HINT_DURATION_MS = 20000; // 20 seconds
 
 export type HostPresenceState = 'hidden' | 'idle' | 'active';
 export type RitualIntensity = 'off' | 'minimal' | 'normal';
 
-export type TeacherLevel = 'gentle' | 'normal' | 'intense';
+export type { TeacherLevel };
 
 export interface MercyEngineState {
   isEnabled: boolean;
@@ -74,8 +79,8 @@ export interface MercyEngineState {
   // Phase 7: Teacher state
   teacherLevel: TeacherLevel;
   currentRoomId: string | null;
-  currentRoomDomain: string | null;
-  lastEnglishTip: { en: string; vi: string; context: string; timestampISO: string } | null;
+  currentRoomDomain: DomainCategory;
+  lastEnglishTip: { en: string; vi: string } | null;
   isTeacherHintVisible: boolean;
 }
 
@@ -94,6 +99,8 @@ export interface MercyEngineActions {
   setUserName: (name: string | null) => void;
   setRitualIntensity: (intensity: RitualIntensity) => void;
   setSilenceMode: (silent: boolean) => void;
+  setTeacherLevel: (level: TeacherLevel) => void;
+  dismissTeacherHint: () => void;
   dismissRitualBanner: () => void;
   dismiss: () => void;
   show: () => void;
@@ -250,6 +257,26 @@ export function createMercyEngine(
     }, RITUAL_BANNER_DURATION_MS);
   };
 
+  let teacherHintTimeout: ReturnType<typeof setTimeout> | null = null;
+
+  // Helper: show teacher hint bubble
+  const showTeacherHint = (tip: { en: string; vi: string }) => {
+    const state = getState();
+    if (state.silenceMode || state.ritualIntensity === 'off') return;
+
+    setState(s => ({
+      ...s,
+      lastEnglishTip: tip,
+      isTeacherHintVisible: true
+    }));
+
+    // Auto-dismiss after timeout
+    if (teacherHintTimeout) clearTimeout(teacherHintTimeout);
+    teacherHintTimeout = setTimeout(() => {
+      setState(s => ({ ...s, isTeacherHintVisible: false }));
+    }, TEACHER_HINT_DURATION_MS);
+  };
+
   return {
     init: (config) => {
       const savedEnabled = localStorage.getItem(STORAGE_KEYS.HOST_ENABLED);
@@ -270,7 +297,8 @@ export function createMercyEngine(
         visitStreak: (mem as any).streakDays || 0,
         lastVisitISO: mem.lastVisitISO,
         ritualIntensity: (mem as any).ritualIntensity || 'normal',
-        silenceMode: mem.hostPreferences?.silenceMode || false
+        silenceMode: mem.hostPreferences?.silenceMode || false,
+        teacherLevel: (mem as any).teacherLevel || 'normal'
       }));
 
       resetIdleTimer();
@@ -365,6 +393,26 @@ export function createMercyEngine(
       const state = getState();
       if (!state.isEnabled) return;
 
+      // Determine domain category
+      const domain = getDomainCategory(roomId, roomTitle);
+      
+      // Update current room state
+      setState(s => ({
+        ...s,
+        currentRoomId: roomId,
+        currentRoomDomain: domain
+      }));
+
+      // Log room entry
+      logEvent({
+        type: 'room_enter',
+        roomId,
+        roomTitle,
+        domain,
+        tier: state.currentTier,
+        language: state.language
+      });
+
       const isFirstTime = shouldGreet(roomId);
       
       if (isFirstTime && !state.silenceMode) {
@@ -399,6 +447,21 @@ export function createMercyEngine(
             setState(s => ({ ...s, isBubbleVisible: false, currentAnimation: 'halo' }));
           }, 5000 + jitter());
         }, jitter());
+      }
+
+      // English Teacher behavior
+      if (domain === 'english' && state.teacherLevel !== 'gentle' && !state.silenceMode) {
+        const tip = getTeacherTip({
+          tier: state.currentTier,
+          teacherLevel: state.teacherLevel,
+          context: 'ef_room_enter',
+          userName: state.userName || undefined
+        });
+        
+        // Show teacher hint after greeting fades
+        setTimeout(() => {
+          showTeacherHint({ en: tip.en, vi: tip.vi });
+        }, isFirstTime ? 6000 : 1000);
       }
     },
 
@@ -538,6 +601,19 @@ export function createMercyEngine(
     onRoomComplete: (roomId, roomTags, roomDomain) => {
       const state = getState();
       if (!state.isEnabled) return;
+
+      // Determine effective domain
+      const effectiveDomain = roomDomain || state.currentRoomDomain || getDomainCategory(roomId);
+
+      // Log room completion
+      logEvent({
+        type: 'room_complete',
+        roomId,
+        domain: effectiveDomain,
+        tier: state.currentTier,
+        language: state.language
+      });
+
       if (state.ritualIntensity === 'off') return;
 
       const isCrisis = isCrisisRoom(roomTags, roomDomain);
@@ -566,6 +642,21 @@ export function createMercyEngine(
         }
 
         setTimeout(() => showRitualBanner(ritual), jitter());
+      }
+
+      // English Teacher behavior for room completion
+      if (effectiveDomain === 'english' && !isCrisis && !state.silenceMode) {
+        const tip = getTeacherTip({
+          tier: state.currentTier,
+          teacherLevel: state.teacherLevel,
+          context: 'ef_entry_complete',
+          userName: state.userName || undefined
+        });
+        
+        // Show teacher tip after ritual fades
+        setTimeout(() => {
+          showTeacherHint({ en: tip.en, vi: tip.vi });
+        }, ritual ? RITUAL_BANNER_DURATION_MS + 1000 : 1000);
       }
     },
 
@@ -607,6 +698,17 @@ export function createMercyEngine(
       setState(s => ({ ...s, silenceMode: silent }));
     },
 
+    setTeacherLevel: (level) => {
+      const mem = memory.get();
+      memory.update({ ...mem, teacherLevel: level } as any);
+      setState(s => ({ ...s, teacherLevel: level }));
+    },
+
+    dismissTeacherHint: () => {
+      if (teacherHintTimeout) clearTimeout(teacherHintTimeout);
+      setState(s => ({ ...s, isTeacherHintVisible: false }));
+    },
+
     dismissRitualBanner: () => {
       if (ritualBannerTimeout) clearTimeout(ritualBannerTimeout);
       setState(s => ({ ...s, isRitualBannerVisible: false }));
@@ -618,6 +720,7 @@ export function createMercyEngine(
         isGreetingVisible: false,
         isBubbleVisible: false,
         isRitualBannerVisible: false,
+        isTeacherHintVisible: false,
         presenceState: 'idle'
       }));
     },
@@ -632,7 +735,11 @@ export function createMercyEngine(
     },
 
     trackAnalytics: (event, data) => {
-      console.debug('[Mercy Analytics]', event, data);
+      // Log to mercy logs
+      logEvent({
+        type: 'chat_message',
+        extra: { analyticsEvent: event, ...data }
+      });
       
       if (typeof window !== 'undefined') {
         window.dispatchEvent(new CustomEvent('mercy_analytics', {
@@ -667,5 +774,11 @@ export const initialEngineState: MercyEngineState = {
   lastCeremonyTier: null,
   isRitualBannerVisible: false,
   ritualIntensity: 'normal',
-  silenceMode: false
+  silenceMode: false,
+  // Phase 7 additions
+  teacherLevel: 'normal',
+  currentRoomId: null,
+  currentRoomDomain: 'other',
+  lastEnglishTip: null,
+  isTeacherHintVisible: false
 };

@@ -3,6 +3,7 @@
  * 
  * Toggle for enabling/disabling host in settings.
  * Phase 6: Added ritual intensity slider and silence mode.
+ * Phase 7: Added English teacher level selector.
  */
 
 import { Switch } from '@/components/ui/switch';
@@ -13,9 +14,9 @@ import { MercyAvatar } from './MercyAvatar';
 import { AVATAR_STYLES, type MercyAvatarStyle } from '@/lib/mercy-host/avatarStyles';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Slider } from '@/components/ui/slider';
-import { VolumeX, Volume2, Sparkles } from 'lucide-react';
+import { VolumeX, Volume2, Sparkles, GraduationCap } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import type { RitualIntensity } from '@/lib/mercy-host/engine';
+import type { RitualIntensity, TeacherLevel } from '@/lib/mercy-host/engine';
 
 interface MercySettingsToggleProps {
   language?: 'en' | 'vi';
@@ -39,6 +40,27 @@ const RITUAL_INTENSITY_DESCRIPTIONS: Record<RitualIntensity, { en: string; vi: s
   normal: { 
     en: 'All rituals and VIP ceremonies enabled', 
     vi: 'Tất cả nghi lễ và lễ VIP được bật' 
+  }
+};
+
+const TEACHER_LEVEL_LABELS: Record<TeacherLevel, { en: string; vi: string }> = {
+  gentle: { en: 'Gentle', vi: 'Nhẹ nhàng' },
+  normal: { en: 'Normal', vi: 'Bình thường' },
+  intense: { en: 'Intense', vi: 'Chuyên sâu' }
+};
+
+const TEACHER_LEVEL_DESCRIPTIONS: Record<TeacherLevel, { en: string; vi: string }> = {
+  gentle: { 
+    en: 'Quiet support, minimal tips', 
+    vi: 'Hỗ trợ im lặng, ít gợi ý' 
+  },
+  normal: { 
+    en: 'Balanced tips and encouragement', 
+    vi: 'Gợi ý và khuyến khích cân bằng' 
+  },
+  intense: { 
+    en: 'Active coaching and practice reminders', 
+    vi: 'Huấn luyện tích cực và nhắc nhở luyện tập' 
   }
 };
 
@@ -147,6 +169,31 @@ export function MercySettingsToggle({ language = 'en' }: MercySettingsToggleProp
             />
             <p className="text-xs text-muted-foreground">
               {RITUAL_INTENSITY_DESCRIPTIONS[mercy.ritualIntensity][language]}
+            </p>
+          </div>
+
+          {/* English Teacher Level - Phase 7 */}
+          <div className="space-y-3">
+            <Label className="flex items-center gap-2">
+              <GraduationCap className="h-4 w-4 text-emerald-500" />
+              {language === 'vi' ? 'Mức độ giáo viên tiếng Anh' : 'English Coach Level'}
+            </Label>
+            <RadioGroup
+              value={mercy.teacherLevel}
+              onValueChange={(value) => mercy.setTeacherLevel(value as TeacherLevel)}
+              className="flex gap-4"
+            >
+              {(['gentle', 'normal', 'intense'] as TeacherLevel[]).map((level) => (
+                <div key={level} className="flex items-center space-x-2">
+                  <RadioGroupItem value={level} id={`teacher-${level}`} />
+                  <Label htmlFor={`teacher-${level}`} className="cursor-pointer">
+                    {TEACHER_LEVEL_LABELS[level][language]}
+                  </Label>
+                </div>
+              ))}
+            </RadioGroup>
+            <p className="text-xs text-muted-foreground">
+              {TEACHER_LEVEL_DESCRIPTIONS[mercy.teacherLevel][language]}
             </p>
           </div>
 
