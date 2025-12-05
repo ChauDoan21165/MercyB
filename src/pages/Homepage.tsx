@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { RoomSearch } from '@/components/RoomSearch';
 import { CalmMindWidget } from '@/components/paths/CalmMindWidget';
 import heroRainbowBg from '@/assets/hero-rainbow-clean.png';
 import { PrimaryHero } from '@/components/layout/PrimaryHero';
@@ -138,11 +137,6 @@ const Homepage = () => {
         subtitle="Colors of Life"
         background={heroRainbowBg}
       />
-
-      {/* Search box - top right corner */}
-      <div className="fixed top-28 right-6 z-30 w-80">
-        <RoomSearch />
-      </div>
 
       {/* Calm Mind 7-Day Path Widget */}
       <section className="py-8 px-6 bg-gradient-to-b from-white to-indigo-50/50 dark:from-background dark:to-indigo-950/20">

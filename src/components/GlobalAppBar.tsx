@@ -3,7 +3,7 @@
  * Unified top navigation bar with:
  * - Left: Breadcrumb navigation
  * - Center: Mercy Blade logo (truly centered in viewport using absolute positioning)
- * - Right: Theme toggle, Tier Map, User actions
+ * - Right: Search, Theme toggle, Tier Map, User actions
  */
 
 import { Button } from '@/components/ui/button';
@@ -12,6 +12,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useEffect, useState } from 'react';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { RoomSearch } from '@/components/RoomSearch';
 
 export interface BreadcrumbItem {
   label: string;
@@ -85,6 +86,11 @@ export function GlobalAppBar({
 
           {/* Right: Controls - flex-1 to take equal space */}
           <div className="flex-1 flex items-center justify-end gap-2">
+            {/* Global Room Search */}
+            <div className="hidden sm:block w-48 lg:w-64">
+              <RoomSearch />
+            </div>
+            
             <ThemeToggle />
             
             {!user ? (
