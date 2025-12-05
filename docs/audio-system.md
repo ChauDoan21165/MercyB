@@ -1,4 +1,4 @@
-# Mercy Blade Audio System Documentation v4.6
+# Mercy Blade Audio System Documentation v4.7
 
 **Chief Automation Engineer: Audio System Documentation**
 
@@ -6,37 +6,34 @@ Self-healing, governed audio automation system for Mercy Blade.
 
 ---
 
-## 🆕 What's New in v4.6 — Stability, Locking & Reliability Hardening
+## 🆕 What's New in v4.7 — Persistent Governance & Two-Way Integration
 
-Phase 4.6 delivers **production-grade reliability hardening** with job-level mutex, artifact validation, partial cycle modes, and fail-safe operations.
+Phase 4.7 delivers **persistent governance database**, **two-way autopilot integration**, and **deep filtering** for production-grade reliability.
 
-### Key Improvements in v4.6
+### Key Improvements in v4.7
 
-1. **Job-Level Mutex**: Concurrency control prevents parallel autopilot runs on same branch
-2. **Artifact Validation**: All JSON artifacts validated before upload (syntax + schema)
-3. **Read from Artifacts**: CI reads metrics directly from JSON files, not console parsing
-4. **Partial Cycle Modes**:
-   - `--fast` — Skip TTS + semantic matching (quick validation)
-   - `--deep` — Full cycle with TTS + aggressive semantic matching
-   - `--normal` — Standard balanced operation (default)
-5. **Log Compression**: Logs gzipped before upload to save space
-6. **Enhanced CLI Flags**:
-   - `--cycle-label "<name>"` — Track cycles by name
-   - `--governance-mode <auto|assisted|strict>` — Control approval thresholds
-   - `--save-artifacts <dir>` — Custom artifact output directory
+1. **Persistent Governance DB**: Supabase table `audio_governance_reviews` replaces in-memory storage
+2. **Two-Way Integration**: 
+   - Autopilot sends pending reviews → Governance DB
+   - Approved decisions → Autopilot applies them
+3. **Deduplication**: Unique constraint prevents duplicate reviews by (room_id, before_filename, operation_type)
+4. **Deep Filtering**: Filter by room, confidence, operation type
+5. **Stale Cleanup**: Auto-cleanup of pending items older than 7 days
+6. **API Endpoints**:
+   - `GET /pending-reviews` with filters
+   - `POST /approve-change` 
+   - `POST /reject-change`
+   - `GET /approved-ready` (for autopilot)
+   - `POST /mark-applied` (after autopilot applies)
+   - `POST /cleanup-stale`
 
-### v4.5 Features (still active)
+### v4.6 Features (still active)
 
-1. **Single Orchestrator**: `runAutopilotCycle()` drives the complete 8-stage cycle
-2. **Persistent Artifacts**: Every run writes to disk:
-   - `public/audio/autopilot-status.json` — Status store
-   - `public/audio/autopilot-report.json` — Full report
-   - `public/audio/autopilot-changeset.json` — Categorized changes
-   - `public/audio/autopilot-history.json` — Last 20 cycles
-3. **Unified ChangeSet Schema**: Single contract used everywhere
-4. **Governance Integration**: All changes evaluated before apply
-5. **Lifecycle Tracking**: Every change logged via `audioLifecycle.ts`
-6. **99% Integrity Gate**: CI fails if integrity < 99%
+1. **Job-Level Mutex**: Concurrency control prevents parallel CI runs
+2. **Artifact Validation**: JSON validation before upload
+3. **Partial Cycle Modes**: `--fast`, `--normal`, `--deep`
+4. **History Tracking**: Last 20 cycles stored
+5. **99% Integrity Gate**: CI fails if integrity < 99%
 
 ### Autopilot Flow Diagram
 

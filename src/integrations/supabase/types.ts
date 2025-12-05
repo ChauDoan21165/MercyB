@@ -353,6 +353,60 @@ export type Database = {
           },
         ]
       }
+      audio_governance_reviews: {
+        Row: {
+          after_filename: string | null
+          before_filename: string | null
+          confidence: number
+          created_at: string
+          cycle_id: string
+          id: string
+          notes: string | null
+          operation_type: string
+          reason: string | null
+          review_id: string
+          reviewed_at: string | null
+          reviewed_by: string | null
+          room_id: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          after_filename?: string | null
+          before_filename?: string | null
+          confidence?: number
+          created_at?: string
+          cycle_id: string
+          id?: string
+          notes?: string | null
+          operation_type: string
+          reason?: string | null
+          review_id: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          room_id: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          after_filename?: string | null
+          before_filename?: string | null
+          confidence?: number
+          created_at?: string
+          cycle_id?: string
+          id?: string
+          notes?: string | null
+          operation_type?: string
+          reason?: string | null
+          review_id?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          room_id?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       audit_logs: {
         Row: {
           action: string
