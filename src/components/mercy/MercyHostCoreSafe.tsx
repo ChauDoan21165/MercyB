@@ -135,8 +135,8 @@ export function MercyHostCore({
     ? (mercy.language === 'vi' ? mercy.currentVoiceLine.vi : mercy.currentVoiceLine.en)
     : null;
 
-  // Check silence mode from preferences
-  const isSilenceMode = mercy.hostPreferences?.silenceMode ?? false;
+  // Check silence mode from state (not hostPreferences)
+  const isSilenceMode = mercy.silenceMode ?? false;
 
   return (
     <div 
