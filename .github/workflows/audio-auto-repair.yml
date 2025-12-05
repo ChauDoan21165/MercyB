@@ -85,6 +85,12 @@ jobs:
             echo "tests_passed=false" >> $GITHUB_OUTPUT
           fi
 
+      - name: Enforce Test Pass
+        if: steps.audio_tests.outputs.tests_passed != 'true'
+        run: |
+          echo "❌ Audio tests failed - blocking autopilot cycle"
+          exit 1
+
       - name: Generate Audio Manifest (no-timestamp mode)
         run: node scripts/generate-audio-manifest.js --no-timestamp
 
@@ -199,12 +205,12 @@ jobs:
             echo "   Integrity: $BEFORE% → $AFTER%"
             echo "   Changes: $APPLIED applied, $BLOCKED blocked"
           else
-            # Fallback to console parsing
+            # Fallback to console parsing (matches CLI printSummary format)
             echo "⚠️ Status artifact not found, falling back to log parsing"
-            BEFORE=$(grep -oP "Before Integrity: \K[\d.]+" autopilot-output.log || echo "0")
-            AFTER=$(grep -oP "After Integrity: \K[\d.]+" autopilot-output.log || echo "0")
-            APPLIED=$(grep -oP "Applied: \K\d+" autopilot-output.log || echo "0")
-            BLOCKED=$(grep -oP "Blocked: \K\d+" autopilot-output.log || echo "0")
+            BEFORE=$(grep -oP "Before:\s*\K[\d.]+" autopilot-output.log || echo "0")
+            AFTER=$(grep -oP "After:\s*\K[\d.]+" autopilot-output.log || echo "0")
+            APPLIED=$(grep -oP "Applied:\s*\K\d+" autopilot-output.log || echo "0")
+            BLOCKED=$(grep -oP "Blocked:\s*\K\d+" autopilot-output.log || echo "0")
             
             echo "integrity_before=$BEFORE" >> $GITHUB_OUTPUT
             echo "integrity_after=$AFTER" >> $GITHUB_OUTPUT
