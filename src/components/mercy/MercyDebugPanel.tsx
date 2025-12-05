@@ -166,6 +166,25 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
                   value={mercy.ritualIntensity} 
                 />
                 
+                {/* Phase 9: Talk Budget */}
+                <div className="pt-2 border-t border-border">
+                  <p className="text-xs font-medium text-muted-foreground mb-1">Talk Budget</p>
+                  <StateRow label="Used Today" value={`${mercy.talkUsedToday} chars`} />
+                  <StateRow label="Daily Limit" value={`${mercy.talkDailyLimit} chars`} />
+                  <StateRow label="Soft Warn" value={`${mercy.talkSoftWarnAt} chars`} />
+                  <StateRow label="Hard Cap" value={`${mercy.talkHardCap} chars`} />
+                  <StateRow 
+                    label="Growth Mode" 
+                    value={mercy.isGrowthModeActive ? 'Active' : 'Off'} 
+                  />
+                  {mercy.hasTalkSoftWarned && (
+                    <StateRow label="Status" value="Soft warned" />
+                  )}
+                  {mercy.isTalkLimited && (
+                    <StateRow label="Status" value="Hard blocked" />
+                  )}
+                </div>
+                
                 <div className="pt-2 flex gap-2">
                   <Button 
                     size="sm" 
