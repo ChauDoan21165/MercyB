@@ -523,6 +523,50 @@ Manifest (public/audio/manifest.json) ← Storage files (public/audio/*.mp3)
 
 ---
 
+## Phase 5: Production Rollout
+
+### 5.1 Rollout Strategy
+
+Start with safe daily checks, graduate to human-driven applies:
+
+| Stage | Mode | Frequency | Auto-Commit |
+|-------|------|-----------|-------------|
+| 1. Monitor | `--dry-run --fast` | Daily CI | No |
+| 2. Review | `--dry-run --deep` | Weekly manual | No |
+| 3. Apply | `--apply --governance-mode assisted` | Manual only | Yes |
+
+### 5.2 Blessed Presets
+
+Copy-paste these commands as your standard workflows:
+
+**Safe daily check (CI cron):**
+```bash
+npx tsx scripts/run-audio-autopilot.ts --dry-run --fast --cycle-label "ci-fast-check"
+```
+
+**Human-driven apply (local):**
+```bash
+npx tsx scripts/run-audio-autopilot.ts --apply --governance-mode assisted --cycle-label "manual-audio-fix"
+```
+
+**Targeted repair for one tier:**
+```bash
+npx tsx scripts/run-audio-autopilot.ts --apply --rooms "vip1" --max-changes 50 --cycle-label "vip1-audio-pass"
+```
+
+**Deep scan before release:**
+```bash
+npx tsx scripts/run-audio-autopilot.ts --dry-run --deep --verbose --cycle-label "pre-release-audit"
+```
+
+### 5.3 Governance Console Tips
+
+- **Quick Approve**: Use "Approve All ≥ 90%" button to bulk-approve high-confidence changes
+- **Review badge**: Dashboard shows "Human reviews this cycle: N" for audit trail
+- **Filter first**: Use room/confidence filters before bulk actions
+
+---
+
 ## Safety Guarantees
 
 1. **Never delete without backup**: Orphans → `_orphans/`, duplicates → `_duplicates/`
