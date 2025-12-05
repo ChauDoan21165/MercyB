@@ -1,6 +1,6 @@
 /**
  * Mercy Host Module - Public API
- * Phase 6: Rituals, Ceremonies, Streaks
+ * Phase 7: User Logs, English Teacher Mode
  */
 
 // Core
@@ -32,5 +32,11 @@ export * from './safetyRails';
 export * from './rituals';
 export * from './vipCeremonies';
 
-// Re-export RitualIntensity from engine
+// Phase 7: Logs, Domain Detection, Teacher
+export * from './logs';
+export * from './domainMap';
+export * from './teacherScripts';
+
+// Re-export types
 export type { RitualIntensity } from './engine';
+export type { TeacherLevel, EnglishProgress } from './memorySchema';

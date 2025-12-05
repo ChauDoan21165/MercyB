@@ -7,11 +7,18 @@
 
 import { safeLocalStorage } from './guard';
 
-// Current schema version - bumped to 3 for Phase 6
-export const MEMORY_SCHEMA_VERSION = 3;
+// Current schema version - bumped to 4 for Phase 7
+export const MEMORY_SCHEMA_VERSION = 4;
 
 export type RitualIntensity = 'off' | 'minimal' | 'normal';
 export type EmotionCoachingLevel = 'off' | 'gentle' | 'full';
+export type TeacherLevel = 'gentle' | 'normal' | 'intense';
+
+export interface EnglishProgress {
+  roomsVisited: string[];
+  entriesCompleted: number;
+  lastEfVisitISO: string | null;
+}
 
 export interface MercyMemoryV2 {
   version: number;
@@ -41,6 +48,13 @@ export interface MercyMemoryV2 {
   lastStreakMilestone: number | null;
   emotionCoachingLevel: EmotionCoachingLevel;
   onboardingEmotionSeed: string | null;
+  // Phase 7: Teacher & Logging fields
+  teacherLevel: TeacherLevel;
+  englishProgress: EnglishProgress;
+  totalRoomEnters: number;
+  totalEntriesCompleted: number;
+  totalEfSessions: number;
+  lastEfRoomId: string | null;
 }
 
 const MEMORY_KEY = 'mercy_host_memory';
@@ -72,7 +86,18 @@ const DEFAULT_MEMORY: MercyMemoryV2 = {
   tiersCelebrated: [],
   lastStreakMilestone: null,
   emotionCoachingLevel: 'full',
-  onboardingEmotionSeed: null
+  onboardingEmotionSeed: null,
+  // Phase 7 defaults
+  teacherLevel: 'normal',
+  englishProgress: {
+    roomsVisited: [],
+    entriesCompleted: 0,
+    lastEfVisitISO: null
+  },
+  totalRoomEnters: 0,
+  totalEntriesCompleted: 0,
+  totalEfSessions: 0,
+  lastEfRoomId: null
 };
 
 /**
@@ -184,6 +209,28 @@ export function migrateMemory(data: Record<string, unknown>): MercyMemoryV2 {
       ? data.onboardingEmotionSeed 
       : null;
     migrated.hostPreferences.ritualIntensity = 'normal';
+  }
+
+  // V3 → V4: Add Phase 7 teacher & logging fields
+  if (version < 4) {
+    migrated.teacherLevel = ['gentle', 'normal', 'intense'].includes(data.teacherLevel as string)
+      ? data.teacherLevel as TeacherLevel
+      : 'normal';
+    migrated.englishProgress = {
+      roomsVisited: Array.isArray((data.englishProgress as any)?.roomsVisited) 
+        ? (data.englishProgress as any).roomsVisited 
+        : [],
+      entriesCompleted: typeof (data.englishProgress as any)?.entriesCompleted === 'number'
+        ? (data.englishProgress as any).entriesCompleted
+        : 0,
+      lastEfVisitISO: typeof (data.englishProgress as any)?.lastEfVisitISO === 'string'
+        ? (data.englishProgress as any).lastEfVisitISO
+        : null
+    };
+    migrated.totalRoomEnters = typeof data.totalRoomEnters === 'number' ? data.totalRoomEnters : 0;
+    migrated.totalEntriesCompleted = typeof data.totalEntriesCompleted === 'number' ? data.totalEntriesCompleted : 0;
+    migrated.totalEfSessions = typeof data.totalEfSessions === 'number' ? data.totalEfSessions : 0;
+    migrated.lastEfRoomId = typeof data.lastEfRoomId === 'string' ? data.lastEfRoomId : null;
   }
 
   // Set current version
