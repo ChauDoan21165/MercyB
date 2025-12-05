@@ -3,16 +3,19 @@
  * 
  * Hardened memory system with schema validation and migration.
  * Phase 6: Added streak, ritual intensity, and ceremony tracking.
+ * Phase 7: Added teacher & logging fields.
+ * Phase 8: Added martial coach fields.
  */
 
 import { safeLocalStorage } from './guard';
 
-// Current schema version - bumped to 4 for Phase 7
-export const MEMORY_SCHEMA_VERSION = 4;
+// Current schema version - bumped to 5 for Phase 8
+export const MEMORY_SCHEMA_VERSION = 5;
 
 export type RitualIntensity = 'off' | 'minimal' | 'normal';
 export type EmotionCoachingLevel = 'off' | 'gentle' | 'full';
 export type TeacherLevel = 'gentle' | 'normal' | 'intense';
+export type MartialCoachLevel = 'off' | 'gentle' | 'focused' | 'dojo';
 
 export interface EnglishProgress {
   roomsVisited: string[];
@@ -55,6 +58,11 @@ export interface MercyMemoryV2 {
   totalEntriesCompleted: number;
   totalEfSessions: number;
   lastEfRoomId: string | null;
+  // Phase 8: Martial Coach fields
+  martialCoachLevel: MartialCoachLevel;
+  martialPracticeCount: number;
+  lastMartialDiscipline: string | null;
+  lastMartialTipId: string | null;
 }
 
 const MEMORY_KEY = 'mercy_host_memory';
@@ -97,7 +105,12 @@ const DEFAULT_MEMORY: MercyMemoryV2 = {
   totalRoomEnters: 0,
   totalEntriesCompleted: 0,
   totalEfSessions: 0,
-  lastEfRoomId: null
+  lastEfRoomId: null,
+  // Phase 8 defaults
+  martialCoachLevel: 'off',
+  martialPracticeCount: 0,
+  lastMartialDiscipline: null,
+  lastMartialTipId: null
 };
 
 /**
@@ -231,6 +244,16 @@ export function migrateMemory(data: Record<string, unknown>): MercyMemoryV2 {
     migrated.totalEntriesCompleted = typeof data.totalEntriesCompleted === 'number' ? data.totalEntriesCompleted : 0;
     migrated.totalEfSessions = typeof data.totalEfSessions === 'number' ? data.totalEfSessions : 0;
     migrated.lastEfRoomId = typeof data.lastEfRoomId === 'string' ? data.lastEfRoomId : null;
+  }
+
+  // V4 → V5: Add Phase 8 martial coach fields
+  if (version < 5) {
+    migrated.martialCoachLevel = ['off', 'gentle', 'focused', 'dojo'].includes(data.martialCoachLevel as string)
+      ? data.martialCoachLevel as MartialCoachLevel
+      : 'off';
+    migrated.martialPracticeCount = typeof data.martialPracticeCount === 'number' ? data.martialPracticeCount : 0;
+    migrated.lastMartialDiscipline = typeof data.lastMartialDiscipline === 'string' ? data.lastMartialDiscipline : null;
+    migrated.lastMartialTipId = typeof data.lastMartialTipId === 'string' ? data.lastMartialTipId : null;
   }
 
   // Set current version

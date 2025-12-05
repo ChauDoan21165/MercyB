@@ -17,7 +17,11 @@ export type MercyLogEventType =
   | 'streak_milestone'
   | 'vip_upgrade'
   | 'color_toggle'
-  | 'host_toggle';
+  | 'host_toggle'
+  // Phase 8: Martial events
+  | 'martial_practice'
+  | 'martial_room_enter'
+  | 'martial_room_complete';
 
 export interface MercyLogEvent {
   id: string;
@@ -127,7 +131,11 @@ export function getLogSummary(): Record<MercyLogEventType, number> {
     streak_milestone: 0,
     vip_upgrade: 0,
     color_toggle: 0,
-    host_toggle: 0
+    host_toggle: 0,
+    // Phase 8: Martial events
+    martial_practice: 0,
+    martial_room_enter: 0,
+    martial_room_complete: 0
   };
 
   for (const log of logs) {

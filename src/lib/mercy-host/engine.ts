@@ -82,6 +82,12 @@ export interface MercyEngineState {
   currentRoomDomain: DomainCategory;
   lastEnglishTip: { en: string; vi: string } | null;
   isTeacherHintVisible: boolean;
+  // Phase 8: Martial Coach state
+  martialCoachLevel: 'off' | 'gentle' | 'focused' | 'dojo';
+  currentMartialDiscipline: string | null;
+  lastMartialTipId: string | null;
+  lastMartialTip: { en: string; vi: string } | null;
+  isMartialHintVisible: boolean;
 }
 
 export interface MercyEngineActions {
@@ -789,5 +795,11 @@ export const initialEngineState: MercyEngineState = {
   currentRoomId: null,
   currentRoomDomain: 'other',
   lastEnglishTip: null,
-  isTeacherHintVisible: false
+  isTeacherHintVisible: false,
+  // Phase 8 additions
+  martialCoachLevel: 'off',
+  currentMartialDiscipline: null,
+  lastMartialTipId: null,
+  lastMartialTip: null,
+  isMartialHintVisible: false
 };
