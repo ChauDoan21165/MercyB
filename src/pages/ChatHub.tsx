@@ -50,6 +50,7 @@ import { useRecentRooms } from "@/hooks/useRecentRooms";
 import { useRoomAudioPreload } from "@/hooks/useRoomAudioPreload";
 import { useMercyHost } from "@/hooks/useMercyHost";
 import { MercyHostGreeting, MercyColorModeToast } from "@/components/MercyHostGreeting";
+import { useMercyRoomComplete } from "@/components/mercy";
 // CornerTalker removed - talking mouth integrated into AudioPlayer
 import { Heart, Star, History, Clock } from "lucide-react";
 import {
@@ -104,6 +105,7 @@ const ChatHub = () => {
   const progress = useRoomProgress(roomId);
   const { trackMessage, trackKeyword, trackCompletion } = useBehaviorTracking(roomId || "");
   const { awardPoints } = usePoints();
+  const markRoomComplete = useMercyRoomComplete();
   const {
     tier,
     isAdmin,

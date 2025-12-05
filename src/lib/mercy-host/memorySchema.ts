@@ -2,12 +2,16 @@
  * Mercy Memory Schema & Validation
  * 
  * Hardened memory system with schema validation and migration.
+ * Phase 6: Added streak, ritual intensity, and ceremony tracking.
  */
 
 import { safeLocalStorage } from './guard';
 
-// Current schema version
-export const MEMORY_SCHEMA_VERSION = 2;
+// Current schema version - bumped to 3 for Phase 6
+export const MEMORY_SCHEMA_VERSION = 3;
+
+export type RitualIntensity = 'off' | 'minimal' | 'normal';
+export type EmotionCoachingLevel = 'off' | 'gentle' | 'full';
 
 export interface MercyMemoryV2 {
   version: number;
@@ -23,12 +27,20 @@ export interface MercyMemoryV2 {
     voiceEnabled: boolean;
     animationsEnabled: boolean;
     silenceMode: boolean;
+    ritualIntensity: RitualIntensity;
   };
   greetedRooms: string[];
   favoriteRooms: string[];
   lastMood: 'neutral' | 'happy' | 'focused' | 'tired' | null;
   sessionCount: number;
   lastRepairAt: string | null;
+  // Phase 6: Streak & Ritual fields
+  streakDays: number;
+  longestStreak: number;
+  tiersCelebrated: string[];
+  lastStreakMilestone: number | null;
+  emotionCoachingLevel: EmotionCoachingLevel;
+  onboardingEmotionSeed: string | null;
 }
 
 const MEMORY_KEY = 'mercy_host_memory';
@@ -46,13 +58,21 @@ const DEFAULT_MEMORY: MercyMemoryV2 = {
     language: 'en',
     voiceEnabled: true,
     animationsEnabled: true,
-    silenceMode: false
+    silenceMode: false,
+    ritualIntensity: 'normal'
   },
   greetedRooms: [],
   favoriteRooms: [],
   lastMood: null,
   sessionCount: 0,
-  lastRepairAt: null
+  lastRepairAt: null,
+  // Phase 6 defaults
+  streakDays: 0,
+  longestStreak: 0,
+  tiersCelebrated: [],
+  lastStreakMilestone: null,
+  emotionCoachingLevel: 'full',
+  onboardingEmotionSeed: null
 };
 
 /**
@@ -95,6 +115,15 @@ export function validateMemorySchema(data: unknown): { valid: boolean; errors: s
     }
   }
 
+  // Phase 6 validations
+  if (mem.streakDays !== undefined && typeof mem.streakDays !== 'number') {
+    errors.push('Invalid streakDays');
+  }
+
+  if (mem.tiersCelebrated !== undefined && !Array.isArray(mem.tiersCelebrated)) {
+    errors.push('Invalid tiersCelebrated');
+  }
+
   return { valid: errors.length === 0, errors };
 }
 
@@ -127,7 +156,10 @@ export function migrateMemory(data: Record<string, unknown>): MercyMemoryV2 {
       language: oldPrefs.language === 'vi' ? 'vi' : 'en',
       voiceEnabled: typeof oldPrefs.voiceEnabled === 'boolean' ? oldPrefs.voiceEnabled : true,
       animationsEnabled: typeof oldPrefs.animationsEnabled === 'boolean' ? oldPrefs.animationsEnabled : true,
-      silenceMode: typeof oldPrefs.silenceMode === 'boolean' ? oldPrefs.silenceMode : false
+      silenceMode: typeof oldPrefs.silenceMode === 'boolean' ? oldPrefs.silenceMode : false,
+      ritualIntensity: ['off', 'minimal', 'normal'].includes(oldPrefs.ritualIntensity as string) 
+        ? oldPrefs.ritualIntensity as RitualIntensity 
+        : 'normal'
     };
   }
 
@@ -135,6 +167,23 @@ export function migrateMemory(data: Record<string, unknown>): MercyMemoryV2 {
   if (version < 2) {
     migrated.hostPreferences.silenceMode = false;
     migrated.lastRepairAt = null;
+  }
+
+  // V2 → V3: Add Phase 6 fields
+  if (version < 3) {
+    migrated.streakDays = typeof data.streakDays === 'number' ? data.streakDays : 0;
+    migrated.longestStreak = typeof data.longestStreak === 'number' ? data.longestStreak : 0;
+    migrated.tiersCelebrated = Array.isArray(data.tiersCelebrated) 
+      ? data.tiersCelebrated.filter(t => typeof t === 'string') 
+      : [];
+    migrated.lastStreakMilestone = typeof data.lastStreakMilestone === 'number' ? data.lastStreakMilestone : null;
+    migrated.emotionCoachingLevel = ['off', 'gentle', 'full'].includes(data.emotionCoachingLevel as string)
+      ? data.emotionCoachingLevel as EmotionCoachingLevel
+      : 'full';
+    migrated.onboardingEmotionSeed = typeof data.onboardingEmotionSeed === 'string' 
+      ? data.onboardingEmotionSeed 
+      : null;
+    migrated.hostPreferences.ritualIntensity = 'normal';
   }
 
   // Set current version
@@ -209,4 +258,11 @@ export function updateMemory(updates: Partial<MercyMemoryV2>): MercyMemoryV2 {
   const updated = { ...current, ...updates };
   saveMemory(updated);
   return updated;
+}
+
+/**
+ * Get current memory data
+ */
+export function getMemoryData(): MercyMemoryV2 {
+  return loadValidatedMemory();
 }

@@ -1,5 +1,6 @@
 /**
  * Mercy Components - Public API
+ * Phase 6: Complete exports including rituals hooks.
  */
 
 // Avatars
@@ -14,8 +15,14 @@ export { MercyStyleSelector } from './MercyStyleSelector';
 // Host Core
 export { MercyHostCore, MercyHostButton } from './MercyHostCoreSafe';
 
-// Provider
-export { MercyHostProvider, useMercyHostContext, useMercyHostRoom, useMercyEvent } from './MercyHostProvider';
+// Provider & Hooks
+export { 
+  MercyHostProvider, 
+  useMercyHostContext, 
+  useMercyHostRoom, 
+  useMercyEvent,
+  useMercyRoomComplete 
+} from './MercyHostProvider';
 
 // Settings
 export { MercySettingsToggle } from './MercySettingsToggle';
