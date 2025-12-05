@@ -393,21 +393,6 @@ export default function AudioAutopilot() {
     }
     return true;
   }) || [];
-    URL.revokeObjectURL(url);
-    toast.success('Report downloaded');
-  };
-
-  const handleApproveReview = (review: PendingGovernanceReview) => {
-    toast.success(`Approved: ${review.id}`);
-    setSelectedReview(null);
-    setReviewNotes('');
-  };
-
-  const handleRejectReview = (review: PendingGovernanceReview) => {
-    toast.info(`Rejected: ${review.id}`);
-    setSelectedReview(null);
-    setReviewNotes('');
-  };
 
   const getIntegrityColor = (value: number) => {
     if (value >= 99) return 'text-green-600';
