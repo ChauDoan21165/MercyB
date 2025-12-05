@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import { MercyAvatar } from './MercyAvatar';
 import { MercyAnimation } from './MercyAnimations';
 import { useMercyHostContext } from './MercyHostProvider';
-import { X, Volume2, VolumeX, Sword } from 'lucide-react';
+import { X, Volume2, VolumeX, Sword, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 /**
@@ -59,6 +59,7 @@ export function MercyHostCore({
   const isClient = useIsClient();
   const mercy = useMercyHostContext();
   const [lastViewportSize, setLastViewportSize] = useState({ width: 0, height: 0 });
+  const [hasShownLimitMessage, setHasShownLimitMessage] = useState(false);
 
   // Auto-dismiss bubble on viewport resize > 15%
   useEffect(() => {
@@ -196,6 +197,14 @@ export function MercyHostCore({
           onDismiss={mercy.dismissMartialHint}
         />
       )}
+
+      {/* Talk Limit Message - Phase 9 */}
+      {mercy.isTalkLimited && !hasShownLimitMessage && !isSilenceMode && (
+        <TalkLimitBubble
+          language={mercy.language}
+          onDismiss={() => setHasShownLimitMessage(true)}
+        />
+      )}
     </div>
   );
 }
@@ -247,6 +256,60 @@ function MartialHintBubble({ text, onDismiss }: MartialHintBubbleProps) {
         
         {/* Tail */}
         <div className="absolute -top-2 right-6 w-4 h-4 bg-amber-900/90 dark:bg-amber-950/95 border-l border-t border-amber-600/50 rotate-45" />
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Talk Limit Bubble Component - Phase 9
+ */
+interface TalkLimitBubbleProps {
+  language: 'en' | 'vi';
+  onDismiss: () => void;
+}
+
+function TalkLimitBubble({ language, onDismiss }: TalkLimitBubbleProps) {
+  const message = language === 'vi' 
+    ? "Giờ mình sẽ hơi yên lặng để chăm mọi người công bằng hơn. Mình vẫn ở đây với bạn."
+    : "I'll go quiet for now to take care of everyone fairly. I'm still here with you.";
+  
+  return (
+    <div 
+      className={cn(
+        "absolute right-0 top-full mt-2 w-64",
+        "animate-fade-in",
+        "max-w-[calc(100vw-2rem)]"
+      )}
+    >
+      <div className="relative bg-slate-800/95 dark:bg-slate-900/95 backdrop-blur-sm border border-slate-600/50 rounded-xl p-3 shadow-lg">
+        {/* Dismiss button */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={onDismiss}
+          className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-slate-700 border border-slate-600 shadow-sm hover:bg-slate-600"
+        >
+          <X className="h-3 w-3 text-slate-100" />
+        </Button>
+        
+        {/* Moon indicator */}
+        <div className="flex items-center gap-1.5 mb-1.5">
+          <div className="w-4 h-4 rounded-full bg-slate-600/30 flex items-center justify-center">
+            <Moon className="w-2.5 h-2.5 text-slate-300" />
+          </div>
+          <span className="text-[10px] font-medium text-slate-300 uppercase tracking-wide">
+            {language === 'vi' ? 'Nghỉ ngơi' : 'Resting'}
+          </span>
+        </div>
+        
+        {/* Text */}
+        <p className="text-sm text-slate-50 leading-relaxed">
+          {message}
+        </p>
+        
+        {/* Tail */}
+        <div className="absolute -top-2 right-6 w-4 h-4 bg-slate-800/95 dark:bg-slate-900/95 border-l border-t border-slate-600/50 rotate-45" />
       </div>
     </div>
   );
