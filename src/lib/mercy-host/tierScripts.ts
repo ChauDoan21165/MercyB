@@ -1,13 +1,20 @@
 /**
- * Tier-Specific Host Scripts
+ * Tier-Specific Host Scripts - Phase 5 Enhanced
  * 
- * Each tier has a unique tone and set of greeting/guidance lines.
+ * Each tier has a unique tone, greeting/guidance lines, and emotion-specific variants.
  */
+
+import type { EmotionState } from './emotionModel';
 
 export interface TierScript {
   tone: string;
   greetings: { en: string; vi: string }[];
   encouragements: { en: string; vi: string }[];
+}
+
+export interface EmotionScript {
+  en: string;
+  vi: string;
 }
 
 export const TIER_SCRIPTS: Record<string, TierScript> = {
@@ -370,3 +377,231 @@ export function getTierEncouragement(tier: string): { en: string; vi: string } {
   const script = getTierScript(tier);
   return script.encouragements[Math.floor(Math.random() * script.encouragements.length)];
 }
+
+/**
+ * Emotion-specific scripts per tier (Phase 5)
+ * Each script ≤160 chars, warm/humble/never preachy
+ */
+export const TIER_EMOTION_SCRIPTS: Record<string, Partial<Record<EmotionState, EmotionScript>>> = {
+  free: {
+    low_mood: {
+      en: "It's okay to feel this way. I'm here, walking beside you.",
+      vi: "Không sao cả khi cảm thấy như vậy. Mình ở đây, bước cùng bạn."
+    },
+    confused: {
+      en: "Take your time. Clarity comes step by step.",
+      vi: "Từ từ thôi. Sự rõ ràng sẽ đến từng bước một."
+    },
+    stressed: {
+      en: "Breathe. You don't have to rush. I'm here.",
+      vi: "Hít thở. Không cần vội. Mình ở đây."
+    },
+    celebrating: {
+      en: "Look at you! Every step forward counts.",
+      vi: "Nhìn bạn kìa! Mỗi bước tiến đều quan trọng."
+    }
+  },
+  vip1: {
+    low_mood: {
+      en: "Gentle progress is still progress. I see you.",
+      vi: "Tiến bộ nhẹ nhàng vẫn là tiến bộ. Mình thấy bạn."
+    },
+    confused: {
+      en: "Questions mean you're thinking deeply. That's growth.",
+      vi: "Câu hỏi có nghĩa là bạn đang suy nghĩ sâu. Đó là phát triển."
+    },
+    stressed: {
+      en: "One breath at a time. You're stronger than you know.",
+      vi: "Từng nhịp thở. Bạn mạnh mẽ hơn bạn nghĩ."
+    },
+    celebrating: {
+      en: "Your foundation grows stronger each day.",
+      vi: "Nền tảng của bạn vững chắc hơn mỗi ngày."
+    }
+  },
+  vip2: {
+    low_mood: {
+      en: "Even on hard days, you're building something real.",
+      vi: "Ngay cả những ngày khó, bạn vẫn xây dựng điều có thật."
+    },
+    confused: {
+      en: "Confusion is the doorway to understanding.",
+      vi: "Sự bối rối là cánh cửa dẫn đến hiểu biết."
+    },
+    stressed: {
+      en: "Your discipline will carry you through. Trust it.",
+      vi: "Kỷ luật của bạn sẽ đưa bạn vượt qua. Hãy tin."
+    },
+    celebrating: {
+      en: "Your momentum is building. Feel it.",
+      vi: "Đà tiến của bạn đang tăng. Hãy cảm nhận."
+    }
+  },
+  vip3: {
+    low_mood: {
+      en: "Mastery includes the valleys. Keep walking.",
+      vi: "Sự thành thạo bao gồm cả thung lũng. Tiếp tục bước."
+    },
+    confused: {
+      en: "Depth requires patience. You're going deeper.",
+      vi: "Chiều sâu đòi hỏi kiên nhẫn. Bạn đang đi sâu hơn."
+    },
+    stressed: {
+      en: "Clarity emerges from stillness. Take a moment.",
+      vi: "Sự rõ ràng xuất hiện từ sự tĩnh lặng. Dành một khoảnh khắc."
+    },
+    celebrating: {
+      en: "Your mind grows sharper. Well done.",
+      vi: "Tâm trí bạn sắc bén hơn. Làm tốt lắm."
+    }
+  },
+  vip4: {
+    low_mood: {
+      en: "Precision doesn't mean perfection. You're doing well.",
+      vi: "Chính xác không có nghĩa là hoàn hảo. Bạn đang làm tốt."
+    },
+    confused: {
+      en: "Structure will guide you. Trust the process.",
+      vi: "Cấu trúc sẽ hướng dẫn bạn. Tin vào quá trình."
+    },
+    stressed: {
+      en: "Focus narrows to what matters. Breathe.",
+      vi: "Tập trung thu hẹp vào điều quan trọng. Hít thở."
+    },
+    celebrating: {
+      en: "Your precision cuts through the noise.",
+      vi: "Sự chính xác của bạn cắt xuyên tiếng ồn."
+    }
+  },
+  vip5: {
+    low_mood: {
+      en: "Leaders have quiet moments too. Rest is strength.",
+      vi: "Người lãnh đạo cũng có lúc yên lặng. Nghỉ ngơi là sức mạnh."
+    },
+    confused: {
+      en: "New territory feels uncertain. That's leadership.",
+      vi: "Vùng đất mới cảm thấy bất định. Đó là lãnh đạo."
+    },
+    stressed: {
+      en: "Your influence grows in calm, not chaos.",
+      vi: "Ảnh hưởng của bạn tăng trong bình tĩnh, không phải hỗn loạn."
+    },
+    celebrating: {
+      en: "Your circle expands. Lead with heart.",
+      vi: "Vòng tròn của bạn mở rộng. Dẫn dắt bằng trái tim."
+    }
+  },
+  vip6: {
+    low_mood: {
+      en: "Deep waters hold great treasures. Be patient.",
+      vi: "Vùng nước sâu chứa kho báu lớn. Hãy kiên nhẫn."
+    },
+    confused: {
+      en: "Strategy emerges from contemplation.",
+      vi: "Chiến lược xuất hiện từ sự chiêm nghiệm."
+    },
+    stressed: {
+      en: "Serenity is your power. Return to it.",
+      vi: "Sự thanh thản là sức mạnh của bạn. Trở về với nó."
+    },
+    celebrating: {
+      en: "Your calm mind sees what others miss.",
+      vi: "Tâm trí bình tĩnh của bạn thấy điều người khác bỏ lỡ."
+    }
+  },
+  vip7: {
+    low_mood: {
+      en: "Visionaries see through the fog. Keep looking.",
+      vi: "Người có tầm nhìn nhìn xuyên qua sương mù. Tiếp tục nhìn."
+    },
+    confused: {
+      en: "Creation is messy before it's beautiful.",
+      vi: "Sáng tạo lộn xộn trước khi nó đẹp."
+    },
+    stressed: {
+      en: "The horizon awaits. Take your time reaching it.",
+      vi: "Chân trời đang chờ. Hãy dành thời gian để đến."
+    },
+    celebrating: {
+      en: "You're shaping tomorrow. Beautiful.",
+      vi: "Bạn đang định hình ngày mai. Tuyệt đẹp."
+    }
+  },
+  vip8: {
+    low_mood: {
+      en: "Light moves through shadow. You are that light.",
+      vi: "Ánh sáng xuyên qua bóng tối. Bạn là ánh sáng đó."
+    },
+    confused: {
+      en: "Poetry lives in uncertainty. Let it speak.",
+      vi: "Thơ sống trong sự bất định. Hãy để nó nói."
+    },
+    stressed: {
+      en: "Transcendence comes in stillness. Rest.",
+      vi: "Siêu việt đến trong tĩnh lặng. Nghỉ ngơi."
+    },
+    celebrating: {
+      en: "Your inner world grows ever more luminous.",
+      vi: "Thế giới nội tâm của bạn ngày càng rạng rỡ."
+    }
+  },
+  vip9: {
+    low_mood: {
+      en: "Even masters walk through shadows. You are not alone.",
+      vi: "Ngay cả bậc thầy cũng bước qua bóng tối. Bạn không đơn độc."
+    },
+    confused: {
+      en: "At the pinnacle, questions become wisdom.",
+      vi: "Ở đỉnh cao, câu hỏi trở thành trí tuệ."
+    },
+    stressed: {
+      en: "Your presence itself is calming. Remember that.",
+      vi: "Sự hiện diện của bạn tự nó đã an nhiên. Hãy nhớ điều đó."
+    },
+    celebrating: {
+      en: "Mastery is a continuous unfolding. You embody it.",
+      vi: "Sự thành thạo là sự bày tỏ liên tục. Bạn thể hiện nó."
+    }
+  }
+};
+
+/**
+ * Get emotion-specific script for tier
+ */
+export function getEmotionScript(
+  tier: string, 
+  emotion: EmotionState
+): EmotionScript | null {
+  const normalizedTier = tier.toLowerCase().replace('-', '');
+  const tierScripts = TIER_EMOTION_SCRIPTS[normalizedTier];
+  
+  if (tierScripts && tierScripts[emotion]) {
+    return tierScripts[emotion]!;
+  }
+  
+  // Fallback through tier chain
+  const fallbacks = TIER_FALLBACK_CHAIN[normalizedTier] || [];
+  for (const fallbackTier of fallbacks) {
+    const fallbackScripts = TIER_EMOTION_SCRIPTS[fallbackTier];
+    if (fallbackScripts && fallbackScripts[emotion]) {
+      return fallbackScripts[emotion]!;
+    }
+  }
+  
+  // Ultimate fallback to free tier
+  return TIER_EMOTION_SCRIPTS.free?.[emotion] || null;
+}
+
+// Re-export for backward compatibility
+const TIER_FALLBACK_CHAIN: Record<string, string[]> = {
+  vip9: ['vip8', 'vip7', 'vip6', 'free'],
+  vip8: ['vip7', 'vip6', 'free'],
+  vip7: ['vip6', 'vip5', 'free'],
+  vip6: ['vip5', 'vip4', 'free'],
+  vip5: ['vip4', 'vip3', 'free'],
+  vip4: ['vip3', 'vip2', 'free'],
+  vip3: ['vip2', 'vip1', 'free'],
+  vip2: ['vip1', 'free'],
+  vip1: ['free'],
+  free: []
+};

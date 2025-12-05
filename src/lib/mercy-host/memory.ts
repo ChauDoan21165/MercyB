@@ -5,18 +5,23 @@
  * Uses localStorage for persistence across sessions.
  */
 
+import type { EmotionState } from './emotionModel';
+
 export interface MercyMemory {
   userName: string | null;
   lastVisitISO: string | null;
   lastRoom: string | null;
   totalVisits: number;
   hasOnboarded: boolean;
+  onboardingEmotionSeed: EmotionState | null;
+  emotionCoachingLevel: 'off' | 'gentle' | 'full';
   hostPreferences: {
     enabled: boolean;
     avatarStyle: string;
     language: 'en' | 'vi';
     voiceEnabled: boolean;
     animationsEnabled: boolean;
+    silenceMode: boolean;
   };
   greetedRooms: string[];
   favoriteRooms: string[];
@@ -32,12 +37,15 @@ const DEFAULT_MEMORY: MercyMemory = {
   lastRoom: null,
   totalVisits: 0,
   hasOnboarded: false,
+  onboardingEmotionSeed: null,
+  emotionCoachingLevel: 'full',
   hostPreferences: {
     enabled: true,
     avatarStyle: 'minimalist',
     language: 'en',
     voiceEnabled: true,
-    animationsEnabled: true
+    animationsEnabled: true,
+    silenceMode: false
   },
   greetedRooms: [],
   favoriteRooms: [],
