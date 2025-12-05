@@ -52,6 +52,7 @@ const roomItems = [
   { title: "Audit v4 Safe Shield", url: "/admin/audit-v4", icon: Shield },
   { title: "VIP Rooms", url: "/admin/vip-rooms", icon: LayoutDashboard },
   { title: "Audio Management", url: "/admin/audio-upload", icon: Music },
+  { title: "Music Controller", url: "/admin/homepage-music", icon: Music },
   { title: "Audio Scanner", url: "/admin/audio-scanner", icon: Volume2 },
   { title: "Missing Audio", url: "/admin/missing-audio", icon: AlertTriangle },
 ];
