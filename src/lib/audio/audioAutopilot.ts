@@ -500,7 +500,7 @@ export function generateAutopilotReport(
   integrityMap: IntegritySummary
 ): AutopilotReport {
   return {
-    version: '4.4',
+    version: '4.5',
     timestamp: result.timestamp,
     config,
     result,
@@ -520,7 +520,7 @@ export function generateAutopilotReport(
 
 export function generateMarkdownReport(result: AutopilotResult): string {
   const lines: string[] = [
-    '# Audio Autopilot Report v4.4',
+    '# Audio Autopilot Report v4.5',
     '',
     `**Timestamp**: ${result.timestamp}`,
     `**Mode**: ${result.mode}`,
@@ -569,7 +569,21 @@ export function generateMarkdownReport(result: AutopilotResult): string {
 }
 
 // ============================================
-// Export for CLI
+// Serialize functions for external consumption
 // ============================================
 
-export type { AudioChangeSet, AudioChange, AutopilotStatusStore };
+export function serializeAutopilotReport(report: AutopilotReport): string {
+  return JSON.stringify(report, null, 2);
+}
+
+export function serializeChangeSet(changeSet: AudioChangeSet): string {
+  return JSON.stringify(changeSet, null, 2);
+}
+
+export function getAutopilotStatusStore(): AutopilotStatusStore {
+  return getAutopilotStatus();
+}
+
+export function updateAutopilotStatusStore(status: AutopilotStatusStore): void {
+  saveAutopilotStatus(status);
+}

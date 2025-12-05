@@ -193,14 +193,24 @@ export type {
   AudioSystemHealth,
 } from './types';
 
-// Autopilot Engine (Phase 4.4)
+// Autopilot Engine (Phase 4.5)
 export {
+  // Core autopilot functions
   runAutopilotCycle,
   getAutopilotStatus,
   saveAutopilotStatus,
+  // Report generation
   generateAutopilotReport,
   generateMarkdownReport,
+  // Types
   type AutopilotConfig,
   type AutopilotResult,
   type AutopilotReport,
 } from './audioAutopilot';
+
+// Re-export unified types for CLI/CI consumption
+export type {
+  AudioChangeSet,
+  AudioChange,
+  AutopilotStatusStore,
+} from './types';
