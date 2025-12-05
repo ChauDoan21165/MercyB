@@ -1,6 +1,11 @@
 /**
- * Audio Autopilot Admin Dashboard v4.4
+ * Audio Autopilot Admin Dashboard v4.5
  * Full autonomous audio management command center
+ * 
+ * Loads and displays:
+ * - autopilot-status.json
+ * - autopilot-report.json
+ * - autopilot-changeset.json
  */
 
 import { useState, useEffect } from 'react';
@@ -12,26 +17,43 @@ import { Progress } from '@/components/ui/progress';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { 
   Play, 
-  Pause, 
   RefreshCw, 
   AlertTriangle, 
   CheckCircle, 
   XCircle,
-  FileAudio,
-  GitBranch,
-  Shield,
   Clock,
   BarChart3,
   Download,
   Terminal,
+  Copy,
+  Shield,
 } from 'lucide-react';
 import { toast } from 'sonner';
-import type { 
-  AutopilotStatusStore, 
-  AutopilotReport,
-} from '@/lib/audio/audioAutopilot';
-import type { AudioChangeSet } from '@/lib/audio/types';
-import type { GovernanceDecision } from '@/lib/audio/audioGovernanceEngine';
+import type { AutopilotStatusStore, AudioChangeSet, AudioChange } from '@/lib/audio/types';
+
+interface AutopilotReport {
+  version: string;
+  timestamp: string;
+  config: any;
+  result: any;
+  details: any;
+}
+
+interface GovernanceDecision {
+  changeId: string;
+  operation: {
+    type: string;
+    source: string;
+    target: string;
+    roomId?: string;
+    metadata: any;
+  };
+  decision: string;
+  confidence: number;
+  reason: string;
+  violations: string[];
+  canOverride: boolean;
+}
 
 export default function AudioAutopilot() {
   const [isLoading, setIsLoading] = useState(false);
@@ -39,11 +61,20 @@ export default function AudioAutopilot() {
   const [lastReport, setLastReport] = useState<AutopilotReport | null>(null);
   const [changeSet, setChangeSet] = useState<AudioChangeSet | null>(null);
   const [governanceLog, setGovernanceLog] = useState<GovernanceDecision[]>([]);
-  const [isDryRun, setIsDryRun] = useState(true);
 
   useEffect(() => {
-    loadAutopilotStatus();
+    loadAllArtifacts();
   }, []);
+
+  const loadAllArtifacts = async () => {
+    setIsLoading(true);
+    await Promise.all([
+      loadAutopilotStatus(),
+      loadAutopilotReport(),
+      loadChangeSet(),
+    ]);
+    setIsLoading(false);
+  };
 
   const loadAutopilotStatus = async () => {
     try {
@@ -51,63 +82,46 @@ export default function AudioAutopilot() {
       if (response.ok) {
         const status = await response.json();
         setAutopilotStatus(status);
-        if (status.governanceDecisions) {
-          setGovernanceLog(status.governanceDecisions);
-        }
       }
     } catch (error) {
       console.log('No autopilot status file found');
     }
   };
 
-  const runSimulation = async () => {
-    setIsLoading(true);
-    toast.info('Running autopilot simulation (dry-run)...');
-    
-    // Simulate the autopilot cycle
-    setTimeout(() => {
-      const mockReport: AutopilotReport = {
-        cycleId: `simulation-${Date.now()}`,
-        timestamp: new Date().toISOString(),
-        summary: {
-          integrityBefore: 87,
-          integrityAfter: 94,
-          integrityDelta: 7,
-          totalRooms: 150,
-          roomsFixed: 23,
-          totalOperations: 45,
-          appliedOperations: 0,
-          blockedOperations: 3,
-          passedGovernance: true,
-        },
-        stages: [
-          { name: 'scan', status: 'success', duration: '234ms', details: '150 rooms scanned' },
-          { name: 'repair', status: 'success', duration: '156ms', details: '42 repairs identified' },
-          { name: 'generate-missing', status: 'skipped', duration: '12ms', details: 'TTS stubbed' },
-          { name: 'semantic-attach', status: 'success', duration: '89ms', details: '5 orphans matched' },
-          { name: 'rebuild-manifest', status: 'success', duration: '45ms', details: 'Manifest updated' },
-          { name: 'integrity-eval', status: 'success', duration: '67ms', details: '94% integrity' },
-          { name: 'governance-eval', status: 'partial', duration: '23ms', details: '3 blocked' },
-          { name: 'report', status: 'success', duration: '12ms', details: 'Report generated' },
-        ],
-        lowestIntegrityRooms: [
-          { roomId: 'stress-relief-vip2', score: 65 },
-          { roomId: 'anxiety-management-vip3', score: 72 },
-          { roomId: 'sleep-better-vip1', score: 78 },
-        ],
-        violations: [
-          { code: 'CROSS_ROOM', severity: 'warning', message: 'Cross-room attachment blocked' },
-        ],
-        recommendations: [
-          'Review 3 blocked operations manually',
-          'Consider regenerating audio for stress-relief-vip2',
-        ],
-      };
-      
-      setLastReport(mockReport);
-      setIsLoading(false);
-      toast.success('Simulation complete! Review results below.');
-    }, 2000);
+  const loadAutopilotReport = async () => {
+    try {
+      const response = await fetch('/audio/autopilot-report.json');
+      if (response.ok) {
+        const report = await response.json();
+        setLastReport(report);
+        
+        // Extract governance decisions if available
+        if (report.governanceDecisions) {
+          setGovernanceLog(report.governanceDecisions);
+        } else if (report.result?.governanceDecisions) {
+          setGovernanceLog(report.result.governanceDecisions);
+        }
+      }
+    } catch (error) {
+      console.log('No autopilot report file found');
+    }
+  };
+
+  const loadChangeSet = async () => {
+    try {
+      const response = await fetch('/audio/autopilot-changeset.json');
+      if (response.ok) {
+        const cs = await response.json();
+        setChangeSet(cs);
+      }
+    } catch (error) {
+      console.log('No changeset file found');
+    }
+  };
+
+  const copyCommand = (cmd: string) => {
+    navigator.clipboard.writeText(cmd);
+    toast.success('Command copied to clipboard');
   };
 
   const downloadReport = () => {
@@ -117,9 +131,10 @@ export default function AudioAutopilot() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `autopilot-report-${lastReport.cycleId}.json`;
+    a.download = `autopilot-report-${lastReport.timestamp || Date.now()}.json`;
     a.click();
     URL.revokeObjectURL(url);
+    toast.success('Report downloaded');
   };
 
   const downloadChangeSet = () => {
@@ -129,10 +144,40 @@ export default function AudioAutopilot() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `changeset-${changeSet.id}.json`;
+    a.download = `autopilot-changeset-${changeSet.id || Date.now()}.json`;
     a.click();
     URL.revokeObjectURL(url);
+    toast.success('Changeset downloaded');
   };
+
+  const getIntegrityColor = (value: number) => {
+    if (value >= 99) return 'text-green-600';
+    if (value >= 90) return 'text-yellow-600';
+    return 'text-red-600';
+  };
+
+  const getDecisionBadgeVariant = (decision: string) => {
+    switch (decision) {
+      case 'auto-approve':
+        return 'default';
+      case 'governance-approve':
+        return 'secondary';
+      case 'block':
+      case 'blocked':
+        return 'destructive';
+      default:
+        return 'outline';
+    }
+  };
+
+  // Get summary counts from changeSet
+  const changeCounts = changeSet ? {
+    critical: changeSet.criticalFixes?.length || (changeSet as any).categories?.criticalFixes?.length || 0,
+    auto: changeSet.autoFixes?.length || (changeSet as any).categories?.autoFixes?.length || 0,
+    lowConf: changeSet.lowConfidence?.length || (changeSet as any).categories?.lowConfidence?.length || 0,
+    blocked: changeSet.blocked?.length || (changeSet as any).categories?.blocked?.length || 0,
+    cosmetic: changeSet.cosmetic?.length || (changeSet as any).categories?.cosmetic?.length || 0,
+  } : { critical: 0, auto: 0, lowConf: 0, blocked: 0, cosmetic: 0 };
 
   return (
     <div className="min-h-screen bg-background p-6">
@@ -140,15 +185,15 @@ export default function AudioAutopilot() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-foreground">Audio Autopilot v4.4</h1>
-            <p className="text-muted-foreground">Full autonomous audio management</p>
+            <h1 className="text-3xl font-bold text-foreground">Audio Autopilot v4.5</h1>
+            <p className="text-muted-foreground">Full autonomous audio management with governance</p>
           </div>
           <div className="flex items-center gap-3">
-            <Badge variant={autopilotStatus?.enabled ? 'default' : 'secondary'}>
-              {autopilotStatus?.enabled ? 'Enabled' : 'Disabled'}
+            <Badge variant={autopilotStatus?.lastRunAt ? 'default' : 'secondary'}>
+              {autopilotStatus?.lastRunAt ? 'Active' : 'No runs yet'}
             </Badge>
-            <Button variant="outline" size="sm" onClick={loadAutopilotStatus}>
-              <RefreshCw className="w-4 h-4 mr-2" />
+            <Button variant="outline" size="sm" onClick={loadAllArtifacts} disabled={isLoading}>
+              <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
               Refresh
             </Button>
           </div>
@@ -166,11 +211,14 @@ export default function AudioAutopilot() {
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-muted-foreground" />
                 <span className="text-lg font-semibold">
-                  {autopilotStatus?.lastRun 
-                    ? new Date(autopilotStatus.lastRun).toLocaleString()
+                  {autopilotStatus?.lastRunAt 
+                    ? new Date(autopilotStatus.lastRunAt).toLocaleString()
                     : 'Never'}
                 </span>
               </div>
+              {autopilotStatus?.mode && (
+                <Badge variant="outline" className="mt-2">{autopilotStatus.mode}</Badge>
+              )}
             </CardContent>
           </Card>
 
@@ -183,17 +231,17 @@ export default function AudioAutopilot() {
             <CardContent>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold">
-                    {autopilotStatus?.integrityAfter || 0}%
+                  <span className={`text-2xl font-bold ${getIntegrityColor(autopilotStatus?.afterIntegrity || 0)}`}>
+                    {(autopilotStatus?.afterIntegrity || 0).toFixed(1)}%
                   </span>
-                  {autopilotStatus?.integrityAfter && autopilotStatus.integrityBefore && (
-                    <Badge variant={autopilotStatus.integrityAfter >= autopilotStatus.integrityBefore ? 'default' : 'destructive'}>
-                      {autopilotStatus.integrityAfter >= autopilotStatus.integrityBefore ? '+' : ''}
-                      {autopilotStatus.integrityAfter - autopilotStatus.integrityBefore}%
+                  {autopilotStatus?.afterIntegrity && autopilotStatus.beforeIntegrity && (
+                    <Badge variant={autopilotStatus.afterIntegrity >= autopilotStatus.beforeIntegrity ? 'default' : 'destructive'}>
+                      {autopilotStatus.afterIntegrity >= autopilotStatus.beforeIntegrity ? '+' : ''}
+                      {(autopilotStatus.afterIntegrity - autopilotStatus.beforeIntegrity).toFixed(1)}%
                     </Badge>
                   )}
                 </div>
-                <Progress value={autopilotStatus?.integrityAfter || 0} className="h-2" />
+                <Progress value={autopilotStatus?.afterIntegrity || 0} className="h-2" />
               </div>
             </CardContent>
           </Card>
@@ -207,7 +255,7 @@ export default function AudioAutopilot() {
             <CardContent>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-green-500" />
-                <span className="text-2xl font-bold">{autopilotStatus?.fixesApplied || 0}</span>
+                <span className="text-2xl font-bold">{autopilotStatus?.changesApplied || 0}</span>
               </div>
             </CardContent>
           </Card>
@@ -221,127 +269,197 @@ export default function AudioAutopilot() {
             <CardContent>
               <div className="flex items-center gap-2">
                 <XCircle className="w-5 h-5 text-red-500" />
-                <span className="text-2xl font-bold">{autopilotStatus?.blockedChanges || 0}</span>
+                <span className="text-2xl font-bold">{autopilotStatus?.changesBlocked || 0}</span>
               </div>
             </CardContent>
           </Card>
         </div>
 
+        {/* Governance Flags */}
+        {autopilotStatus?.governanceFlags && autopilotStatus.governanceFlags.length > 0 && (
+          <Card className="border-yellow-200 bg-yellow-50 dark:border-yellow-900 dark:bg-yellow-950">
+            <CardContent className="pt-4">
+              <div className="flex items-center gap-2 mb-2">
+                <AlertTriangle className="w-5 h-5 text-yellow-600" />
+                <span className="font-medium">Governance Flags</span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {autopilotStatus.governanceFlags.map((flag, i) => (
+                  <Badge key={i} variant="outline" className="border-yellow-500 text-yellow-700">
+                    {flag}
+                  </Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
         {/* Main Content Tabs */}
-        <Tabs defaultValue="simulate" className="space-y-4">
+        <Tabs defaultValue="commands" className="space-y-4">
           <TabsList>
-            <TabsTrigger value="simulate">
-              <Play className="w-4 h-4 mr-2" />
-              Simulate
+            <TabsTrigger value="commands">
+              <Terminal className="w-4 h-4 mr-2" />
+              Commands
+            </TabsTrigger>
+            <TabsTrigger value="changeset">
+              <BarChart3 className="w-4 h-4 mr-2" />
+              Change Set
             </TabsTrigger>
             <TabsTrigger value="governance">
               <Shield className="w-4 h-4 mr-2" />
               Governance Log
             </TabsTrigger>
             <TabsTrigger value="report">
-              <BarChart3 className="w-4 h-4 mr-2" />
-              Last Report
-            </TabsTrigger>
-            <TabsTrigger value="violations">
-              <AlertTriangle className="w-4 h-4 mr-2" />
-              Cross-Room Violations
+              <Download className="w-4 h-4 mr-2" />
+              Report
             </TabsTrigger>
           </TabsList>
 
-          {/* Simulate Tab */}
-          <TabsContent value="simulate">
+          {/* Commands Tab */}
+          <TabsContent value="commands">
             <Card>
               <CardHeader>
-                <CardTitle>Simulate Autopilot</CardTitle>
+                <CardTitle>CLI Commands</CardTitle>
                 <CardDescription>
-                  Run a dry-run simulation to preview what the autopilot would do
+                  Run these commands locally or trigger via CI
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="flex items-center gap-4">
-                  <Button 
-                    onClick={runSimulation} 
-                    disabled={isLoading}
-                    size="lg"
-                  >
-                    {isLoading ? (
-                      <>
-                        <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
-                        Running...
-                      </>
-                    ) : (
-                      <>
-                        <Play className="w-4 h-4 mr-2" />
-                        Run Simulation (Dry-Run)
-                      </>
-                    )}
-                  </Button>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between p-3 bg-muted rounded-lg font-mono text-sm">
+                    <code>npx tsx scripts/run-audio-autopilot.ts --dry-run</code>
+                    <Button size="sm" variant="ghost" onClick={() => copyCommand('npx tsx scripts/run-audio-autopilot.ts --dry-run')}>
+                      <Copy className="w-4 h-4" />
+                    </Button>
+                  </div>
+                  <p className="text-sm text-muted-foreground ml-2">Preview changes without applying</p>
                   
-                  <Button variant="outline" disabled>
-                    <GitBranch className="w-4 h-4 mr-2" />
-                    Trigger CI Workflow
-                  </Button>
+                  <div className="flex items-center justify-between p-3 bg-muted rounded-lg font-mono text-sm">
+                    <code>npx tsx scripts/run-audio-autopilot.ts --apply</code>
+                    <Button size="sm" variant="ghost" onClick={() => copyCommand('npx tsx scripts/run-audio-autopilot.ts --apply')}>
+                      <Copy className="w-4 h-4" />
+                    </Button>
+                  </div>
+                  <p className="text-sm text-muted-foreground ml-2">Apply approved fixes</p>
+                  
+                  <div className="flex items-center justify-between p-3 bg-muted rounded-lg font-mono text-sm">
+                    <code>npx tsx scripts/run-audio-autopilot.ts --apply --rooms "vip1"</code>
+                    <Button size="sm" variant="ghost" onClick={() => copyCommand('npx tsx scripts/run-audio-autopilot.ts --apply --rooms "vip1"')}>
+                      <Copy className="w-4 h-4" />
+                    </Button>
+                  </div>
+                  <p className="text-sm text-muted-foreground ml-2">Filter to specific rooms</p>
+                  
+                  <div className="flex items-center justify-between p-3 bg-muted rounded-lg font-mono text-sm">
+                    <code>npx tsx scripts/run-audio-autopilot.ts --apply --with-tts</code>
+                    <Button size="sm" variant="ghost" onClick={() => copyCommand('npx tsx scripts/run-audio-autopilot.ts --apply --with-tts')}>
+                      <Copy className="w-4 h-4" />
+                    </Button>
+                  </div>
+                  <p className="text-sm text-muted-foreground ml-2">Include TTS generation for missing audio</p>
                 </div>
 
-                <div className="bg-muted p-4 rounded-lg">
-                  <h4 className="font-medium mb-2">CLI Commands</h4>
-                  <div className="space-y-2 font-mono text-sm">
-                    <div className="bg-background p-2 rounded">
-                      <code>npm run audio:check</code>
-                      <span className="text-muted-foreground ml-4"># Dry-run check</span>
+                <div className="border-t pt-4">
+                  <h4 className="font-medium mb-2">npm Scripts</h4>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="p-3 bg-muted rounded-lg">
+                      <code className="text-sm font-mono">npm run audio:check</code>
+                      <p className="text-xs text-muted-foreground mt-1">Dry-run all checks</p>
                     </div>
-                    <div className="bg-background p-2 rounded">
-                      <code>npm run audio:fix</code>
-                      <span className="text-muted-foreground ml-4"># Apply fixes</span>
+                    <div className="p-3 bg-muted rounded-lg">
+                      <code className="text-sm font-mono">npm run audio:fix</code>
+                      <p className="text-xs text-muted-foreground mt-1">Apply fixes + regenerate manifest</p>
                     </div>
                   </div>
                 </div>
 
-                {lastReport && (
-                  <div className="border rounded-lg p-4 space-y-4">
-                    <div className="flex items-center justify-between">
-                      <h4 className="font-medium">Simulation Results</h4>
-                      <Button variant="outline" size="sm" onClick={downloadReport}>
-                        <Download className="w-4 h-4 mr-2" />
-                        Download Report
-                      </Button>
-                    </div>
-                    
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                      <div className="text-center p-3 bg-muted rounded">
-                        <div className="text-2xl font-bold">{lastReport.summary.integrityBefore}%</div>
-                        <div className="text-sm text-muted-foreground">Before</div>
+                <div className="border-t pt-4">
+                  <h4 className="font-medium mb-2">Artifact Locations</h4>
+                  <div className="space-y-2 text-sm text-muted-foreground">
+                    <div><code>public/audio/autopilot-status.json</code> - Last run status</div>
+                    <div><code>public/audio/autopilot-report.json</code> - Full report</div>
+                    <div><code>public/audio/autopilot-changeset.json</code> - Change details</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Change Set Tab */}
+          <TabsContent value="changeset">
+            <Card>
+              <CardHeader className="flex flex-row items-center justify-between">
+                <div>
+                  <CardTitle>Change Set</CardTitle>
+                  <CardDescription>
+                    {changeSet?.id || 'No changeset loaded'}
+                  </CardDescription>
+                </div>
+                {changeSet && (
+                  <Button variant="outline" size="sm" onClick={downloadChangeSet}>
+                    <Download className="w-4 h-4 mr-2" />
+                    Download
+                  </Button>
+                )}
+              </CardHeader>
+              <CardContent>
+                {!changeSet ? (
+                  <div className="text-center text-muted-foreground py-8">
+                    No changeset available. Run autopilot to generate.
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {/* Summary */}
+                    <div className="grid grid-cols-5 gap-4">
+                      <div className="text-center p-3 bg-red-50 dark:bg-red-950 rounded">
+                        <div className="text-2xl font-bold text-red-600">{changeCounts.critical}</div>
+                        <div className="text-xs text-muted-foreground">Critical</div>
                       </div>
-                      <div className="text-center p-3 bg-muted rounded">
-                        <div className="text-2xl font-bold text-green-600">{lastReport.summary.integrityAfter}%</div>
-                        <div className="text-sm text-muted-foreground">After</div>
+                      <div className="text-center p-3 bg-green-50 dark:bg-green-950 rounded">
+                        <div className="text-2xl font-bold text-green-600">{changeCounts.auto}</div>
+                        <div className="text-xs text-muted-foreground">Auto Fix</div>
                       </div>
-                      <div className="text-center p-3 bg-muted rounded">
-                        <div className="text-2xl font-bold">{lastReport.summary.appliedOperations}</div>
-                        <div className="text-sm text-muted-foreground">Would Apply</div>
+                      <div className="text-center p-3 bg-yellow-50 dark:bg-yellow-950 rounded">
+                        <div className="text-2xl font-bold text-yellow-600">{changeCounts.lowConf}</div>
+                        <div className="text-xs text-muted-foreground">Low Conf</div>
                       </div>
-                      <div className="text-center p-3 bg-muted rounded">
-                        <div className="text-2xl font-bold text-red-600">{lastReport.summary.blockedOperations}</div>
-                        <div className="text-sm text-muted-foreground">Blocked</div>
+                      <div className="text-center p-3 bg-gray-100 dark:bg-gray-900 rounded">
+                        <div className="text-2xl font-bold">{changeCounts.blocked}</div>
+                        <div className="text-xs text-muted-foreground">Blocked</div>
+                      </div>
+                      <div className="text-center p-3 bg-blue-50 dark:bg-blue-950 rounded">
+                        <div className="text-2xl font-bold text-blue-600">{changeCounts.cosmetic}</div>
+                        <div className="text-xs text-muted-foreground">Cosmetic</div>
                       </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <h5 className="font-medium text-sm">Stages</h5>
-                      {lastReport.stages.map((stage, i) => (
-                        <div key={i} className="flex items-center gap-2 text-sm">
-                          {stage.status === 'success' ? (
-                            <CheckCircle className="w-4 h-4 text-green-500" />
-                          ) : stage.status === 'skipped' ? (
-                            <Pause className="w-4 h-4 text-muted-foreground" />
-                          ) : (
-                            <AlertTriangle className="w-4 h-4 text-yellow-500" />
-                          )}
-                          <span className="font-mono">{stage.name}</span>
-                          <span className="text-muted-foreground">({stage.duration})</span>
-                        </div>
-                      ))}
-                    </div>
+                    {/* Operations list */}
+                    <ScrollArea className="h-[400px]">
+                      <div className="space-y-2">
+                        {(changeSet as any).operations?.slice(0, 50).map((op: any, i: number) => (
+                          <div key={i} className="p-3 border rounded-lg">
+                            <div className="flex items-center justify-between">
+                              <Badge variant={getDecisionBadgeVariant(op.governanceDecision)}>
+                                {op.type}
+                              </Badge>
+                              <span className="text-sm text-muted-foreground">
+                                {Math.round((op.confidence || 0))}% confidence
+                              </span>
+                            </div>
+                            <div className="mt-2 font-mono text-xs">
+                              <div className="text-muted-foreground">{op.roomId}</div>
+                              <div className="truncate">{op.before}</div>
+                              {op.after && <div className="text-green-600">→ {op.after}</div>}
+                            </div>
+                          </div>
+                        ))}
+                        {((changeSet as any).operations?.length || 0) > 50 && (
+                          <div className="text-center text-muted-foreground py-4">
+                            + {(changeSet as any).operations.length - 50} more operations
+                          </div>
+                        )}
+                      </div>
+                    </ScrollArea>
                   </div>
                 )}
               </CardContent>
@@ -365,11 +483,11 @@ export default function AudioAutopilot() {
                     </div>
                   ) : (
                     <div className="space-y-2">
-                      {governanceLog.map((decision, i) => (
+                      {governanceLog.slice(0, 50).map((decision, i) => (
                         <div 
                           key={i} 
                           className={`p-3 rounded-lg border ${
-                            decision.decision === 'block' 
+                            decision.decision === 'block' || decision.decision === 'blocked'
                               ? 'border-red-200 bg-red-50 dark:border-red-900 dark:bg-red-950'
                               : decision.decision === 'auto-approve'
                               ? 'border-green-200 bg-green-50 dark:border-green-900 dark:bg-green-950'
@@ -377,27 +495,24 @@ export default function AudioAutopilot() {
                           }`}
                         >
                           <div className="flex items-center justify-between">
-                            <Badge variant={
-                              decision.decision === 'block' ? 'destructive' :
-                              decision.decision === 'auto-approve' ? 'default' : 'secondary'
-                            }>
+                            <Badge variant={getDecisionBadgeVariant(decision.decision)}>
                               {decision.decision}
                             </Badge>
                             <span className="text-sm text-muted-foreground">
-                              {Math.round(decision.confidence * 100)}% confidence
+                              {Math.round((decision.confidence || 0) * 100)}% confidence
                             </span>
                           </div>
                           <div className="mt-2 text-sm">
-                            <div><strong>Operation:</strong> {decision.operation.type}</div>
+                            <div><strong>Type:</strong> {decision.operation?.type}</div>
                             <div className="font-mono text-xs truncate">
-                              {decision.operation.source} → {decision.operation.target}
+                              {decision.operation?.source} → {decision.operation?.target}
                             </div>
                             <div className="text-muted-foreground mt-1">{decision.reason}</div>
                           </div>
-                          {decision.violations.length > 0 && (
-                            <div className="mt-2">
+                          {decision.violations && decision.violations.length > 0 && (
+                            <div className="mt-2 flex flex-wrap gap-1">
                               {decision.violations.map((v, vi) => (
-                                <Badge key={vi} variant="outline" className="mr-1 text-xs">
+                                <Badge key={vi} variant="outline" className="text-xs">
                                   {v}
                                 </Badge>
                               ))}
@@ -405,6 +520,11 @@ export default function AudioAutopilot() {
                           )}
                         </div>
                       ))}
+                      {governanceLog.length > 50 && (
+                        <div className="text-center text-muted-foreground py-4">
+                          + {governanceLog.length - 50} more decisions
+                        </div>
+                      )}
                     </div>
                   )}
                 </ScrollArea>
@@ -412,111 +532,39 @@ export default function AudioAutopilot() {
             </Card>
           </TabsContent>
 
-          {/* Last Report Tab */}
+          {/* Report Tab */}
           <TabsContent value="report">
             <Card>
-              <CardHeader>
-                <CardTitle>Last Autopilot Report</CardTitle>
-                <CardDescription>
-                  Detailed report from the most recent autopilot cycle
-                </CardDescription>
+              <CardHeader className="flex flex-row items-center justify-between">
+                <div>
+                  <CardTitle>Last Autopilot Report</CardTitle>
+                  <CardDescription>
+                    {lastReport?.timestamp ? new Date(lastReport.timestamp).toLocaleString() : 'No report available'}
+                  </CardDescription>
+                </div>
+                {lastReport && (
+                  <Button variant="outline" size="sm" onClick={downloadReport}>
+                    <Download className="w-4 h-4 mr-2" />
+                    Download
+                  </Button>
+                )}
               </CardHeader>
               <CardContent>
-                {lastReport ? (
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="font-mono text-sm">{lastReport.cycleId}</div>
-                        <div className="text-muted-foreground text-sm">
-                          {new Date(lastReport.timestamp).toLocaleString()}
-                        </div>
-                      </div>
-                      <Button variant="outline" size="sm" onClick={downloadReport}>
-                        <Download className="w-4 h-4 mr-2" />
-                        Download JSON
-                      </Button>
-                    </div>
-
-                    {lastReport.lowestIntegrityRooms.length > 0 && (
-                      <div>
-                        <h5 className="font-medium mb-2">Lowest Integrity Rooms</h5>
-                        <div className="space-y-1">
-                          {lastReport.lowestIntegrityRooms.map((room, i) => (
-                            <div key={i} className="flex items-center justify-between p-2 bg-muted rounded">
-                              <span className="font-mono text-sm">{room.roomId}</span>
-                              <Badge variant={room.score < 80 ? 'destructive' : 'secondary'}>
-                                {room.score}%
-                              </Badge>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {lastReport.recommendations.length > 0 && (
-                      <div>
-                        <h5 className="font-medium mb-2">Recommendations</h5>
-                        <ul className="list-disc list-inside space-y-1">
-                          {lastReport.recommendations.map((rec, i) => (
-                            <li key={i} className="text-sm text-muted-foreground">{rec}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                {!lastReport ? (
+                  <div className="text-center text-muted-foreground py-8">
+                    No report available. Run autopilot to generate.
                   </div>
                 ) : (
-                  <div className="text-center text-muted-foreground py-8">
-                    No report available. Run a simulation first.
-                  </div>
+                  <ScrollArea className="h-[400px]">
+                    <pre className="text-sm font-mono bg-muted p-4 rounded-lg overflow-x-auto">
+                      {JSON.stringify(lastReport, null, 2)}
+                    </pre>
+                  </ScrollArea>
                 )}
               </CardContent>
             </Card>
           </TabsContent>
-
-          {/* Cross-Room Violations Tab */}
-          <TabsContent value="violations">
-            <Card>
-              <CardHeader>
-                <CardTitle>Cross-Room Violations</CardTitle>
-                <CardDescription>
-                  Audio files that may belong to different rooms
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-center text-muted-foreground py-8">
-                  <AlertTriangle className="w-12 h-12 mx-auto mb-4 text-yellow-500" />
-                  <p>Run the autopilot simulation to detect cross-room violations</p>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
         </Tabs>
-
-        {/* Force Actions */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Force Actions</CardTitle>
-            <CardDescription>
-              Manual override controls for specific operations
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-wrap gap-3">
-              <Button variant="outline" disabled>
-                <FileAudio className="w-4 h-4 mr-2" />
-                Force Regenerate Missing Audio
-              </Button>
-              <Button variant="outline" disabled>
-                <RefreshCw className="w-4 h-4 mr-2" />
-                Force Rebuild Manifest
-              </Button>
-              <Button variant="outline" disabled>
-                <Terminal className="w-4 h-4 mr-2" />
-                View Raw Logs
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-# Mercy Blade Audio System Documentation v4.4
+# Mercy Blade Audio System Documentation v4.5
 
 **Chief Automation Engineer: Audio System Documentation**
 
@@ -6,15 +6,23 @@ Self-healing, governed audio automation system for Mercy Blade.
 
 ---
 
-## 🆕 What's New in v4.4
+## 🆕 What's New in v4.5 — Full Integration & Wiring
 
-- **Full Autopilot Engine**: Central orchestrator `runAutopilotCycle()` runs complete scan→repair→govern cycle
-- **Persistent Status Store**: `public/audio/autopilot-status.json` tracks all runs
-- **Unified ChangeSet Schema**: `AudioChangeSet` type with categories (critical/auto/low/blocked/cosmetic)
-- **Governance Integration**: All changes evaluated by governance engine before apply
-- **CLI Script**: `npx tsx scripts/run-audio-autopilot.ts --dry-run|--apply`
-- **Admin Pages**: `/admin/audio-crystal` (dashboard) + `/admin/audio-autopilot` (control)
-- **99% Integrity Gate**: System blocks deployment if integrity drops below threshold
+- **CLI calls REAL engine**: `scripts/run-audio-autopilot.ts` now imports and calls `runAutopilotCycle()` from `audioAutopilot.ts`
+- **Persistent Artifacts**: Every run writes to:
+  - `public/audio/autopilot-status.json` — Status store
+  - `public/audio/autopilot-report.json` — Full report
+  - `public/audio/autopilot-changeset.json` — Categorized changes
+- **Unified ChangeSet Schema**: `{ id, timestamp, operations[], summary{}, categories{} }`
+- **Governance Integrated**: All changes evaluated via `evaluateChangeSet()` before apply
+- **Lifecycle Tracking**: Every applied change logged via `audioLifecycle.ts`
+- **Admin Dashboard**: `/admin/audio-autopilot` loads artifacts directly
+- **99% Integrity Gate**: CI fails if integrity < 99%
+
+### Exports from `src/lib/audio/index.ts`:
+```ts
+export { runAutopilotCycle, getAutopilotStatus, saveAutopilotStatus, generateAutopilotReport, generateMarkdownReport } from './audioAutopilot';
+```
 
 ---
 
