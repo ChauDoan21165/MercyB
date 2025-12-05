@@ -1,0 +1,55 @@
+name: Audio Auto-Repair
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/audio/**'
+      - 'public/data/**/*.json'
+  workflow_dispatch:
+
+jobs:
+  audio-repair:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Audio Manifest
+        run: node scripts/generate-audio-manifest.js
+
+      - name: Run Audio Refresh (dry-run first)
+        run: npx tsx scripts/refresh-json-audio.ts --dry-run --verbose
+
+      - name: Detect Orphan Files
+        run: npx tsx scripts/cleanup-orphans.ts --dry-run
+
+      - name: Rename Non-Canonical Files (dry-run)
+        run: npx tsx scripts/rename-audio-storage.ts --dry-run --verbose
+
+      - name: Check for Changes
+        id: changes
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit Manifest Updates
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config --local user.email "automation@mercyblade.app"
+          git config --local user.name "Audio Automation Bot"
+          git add public/audio/manifest.json
+          git add public/*.json || true
+          git diff --staged --quiet || git commit -m "[skip ci] Update audio manifest and reports"
+          git push || echo "Nothing to push"

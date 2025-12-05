@@ -88,10 +88,24 @@ function main() {
   // Sort for consistent output
   mp3Files.sort();
 
+  // Separate valid files from files with naming issues
+  const validFiles = mp3Files.filter(f => {
+    const name = f.split('/').pop() || f;
+    return name === name.toLowerCase() && !name.includes('_') && !name.includes(' ');
+  });
+  
+  const invalidFiles = mp3Files.filter(f => {
+    const name = f.split('/').pop() || f;
+    return name !== name.toLowerCase() || name.includes('_') || name.includes(' ');
+  });
+
   const manifest = {
     generated: new Date().toISOString(),
     totalFiles: mp3Files.length,
+    validFiles: validFiles.length,
+    invalidFiles: invalidFiles.length,
     files: mp3Files,
+    errors: invalidFiles.length > 0 ? invalidFiles : undefined,
   };
 
   // Write manifest
