@@ -7,6 +7,12 @@ on:
       - 'public/audio/**'
       - 'public/data/**/*.json'
   workflow_dispatch:
+    inputs:
+      apply_fixes:
+        description: 'Apply fixes (true) or dry-run only (false)'
+        required: false
+        default: 'false'
+        type: boolean
 
 jobs:
   audio-repair:
@@ -14,6 +20,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -26,30 +35,94 @@ jobs:
       - name: Generate Audio Manifest
         run: node scripts/generate-audio-manifest.js
 
-      - name: Run Audio Refresh (dry-run first)
-        run: npx tsx scripts/refresh-json-audio.ts --dry-run --verbose
+      - name: Run Audio Refresh (dry-run)
+        id: dry_run_refresh
+        run: |
+          npx tsx scripts/refresh-json-audio.ts --dry-run --verbose 2>&1 | tee refresh-dry.log
+          if grep -q "Total fixes needed:" refresh-dry.log; then
+            FIXES=$(grep "Total fixes needed:" refresh-dry.log | awk '{print $NF}')
+            echo "json_fixes=$FIXES" >> $GITHUB_OUTPUT
+          else
+            echo "json_fixes=0" >> $GITHUB_OUTPUT
+          fi
 
       - name: Detect Orphan Files
-        run: npx tsx scripts/cleanup-orphans.ts --dry-run
+        id: orphan_check
+        run: |
+          npx tsx scripts/cleanup-orphans.ts --dry-run 2>&1 | tee orphan-dry.log
+          if grep -q "Total orphan files:" orphan-dry.log; then
+            ORPHANS=$(grep "Total orphan files:" orphan-dry.log | awk '{print $NF}')
+            echo "orphan_count=$ORPHANS" >> $GITHUB_OUTPUT
+          else
+            echo "orphan_count=0" >> $GITHUB_OUTPUT
+          fi
 
       - name: Rename Non-Canonical Files (dry-run)
-        run: npx tsx scripts/rename-audio-storage.ts --dry-run --verbose
+        id: rename_check
+        run: |
+          npx tsx scripts/rename-audio-storage.ts --dry-run --verbose 2>&1 | tee rename-dry.log
+          if grep -q "Total renames needed:" rename-dry.log; then
+            RENAMES=$(grep "Total renames needed:" rename-dry.log | awk '{print $NF}')
+            echo "rename_count=$RENAMES" >> $GITHUB_OUTPUT
+          else
+            echo "rename_count=0" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Apply Fixes (if requested or auto-mode)
+        if: |
+          github.event.inputs.apply_fixes == 'true' || 
+          (steps.dry_run_refresh.outputs.json_fixes != '0' && github.event_name == 'push')
+        run: |
+          echo "Applying automatic fixes..."
+          
+          # Apply JSON fixes
+          npx tsx scripts/refresh-json-audio.ts --verbose
+          
+          # Apply renames
+          npx tsx scripts/rename-audio-storage.ts --verbose
+          
+          # Regenerate manifest after fixes
+          node scripts/generate-audio-manifest.js
+          
+          echo "Fixes applied successfully!"
 
       - name: Check for Changes
         id: changes
         run: |
           if [[ -n $(git status --porcelain) ]]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
+            git status --porcelain
           else
             echo "has_changes=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Commit Manifest Updates
+      - name: Commit All Changes
         if: steps.changes.outputs.has_changes == 'true'
         run: |
           git config --local user.email "automation@mercyblade.app"
           git config --local user.name "Audio Automation Bot"
+          
+          # Stage all audio and data changes
           git add public/audio/manifest.json
+          git add public/audio/*.mp3 || true
+          git add public/data/*.json || true
           git add public/*.json || true
-          git diff --staged --quiet || git commit -m "[skip ci] Update audio manifest and reports"
-          git push || echo "Nothing to push"
+          
+          # Commit with detailed message
+          git commit -m "[skip ci] Audio Auto-Repair: manifest update, JSON fixes, renames" \
+            -m "JSON fixes: ${{ steps.dry_run_refresh.outputs.json_fixes }}" \
+            -m "Orphans detected: ${{ steps.orphan_check.outputs.orphan_count }}" \
+            -m "Renames applied: ${{ steps.rename_check.outputs.rename_count }}"
+          
+          git push
+
+      - name: Generate Summary Report
+        run: |
+          echo "## Audio Auto-Repair Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Count |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| JSON Fixes | ${{ steps.dry_run_refresh.outputs.json_fixes }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Orphan Files | ${{ steps.orphan_check.outputs.orphan_count }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Renames | ${{ steps.rename_check.outputs.rename_count }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Changes Committed | ${{ steps.changes.outputs.has_changes }} |" >> $GITHUB_STEP_SUMMARY
