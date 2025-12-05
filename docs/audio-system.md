@@ -1,8 +1,20 @@
-# Mercy Blade Audio System Documentation v4.2
+# Mercy Blade Audio System Documentation v4.4
 
 **Chief Automation Engineer: Audio System Documentation**
 
-Self-healing audio automation system for Mercy Blade.
+Self-healing, governed audio automation system for Mercy Blade.
+
+---
+
+## 🆕 What's New in v4.4
+
+- **Full Autopilot Engine**: Central orchestrator `runAutopilotCycle()` runs complete scan→repair→govern cycle
+- **Persistent Status Store**: `public/audio/autopilot-status.json` tracks all runs
+- **Unified ChangeSet Schema**: `AudioChangeSet` type with categories (critical/auto/low/blocked/cosmetic)
+- **Governance Integration**: All changes evaluated by governance engine before apply
+- **CLI Script**: `npx tsx scripts/run-audio-autopilot.ts --dry-run|--apply`
+- **Admin Pages**: `/admin/audio-crystal` (dashboard) + `/admin/audio-autopilot` (control)
+- **99% Integrity Gate**: System blocks deployment if integrity drops below threshold
 
 ---
 
