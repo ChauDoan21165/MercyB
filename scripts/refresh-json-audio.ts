@@ -1,14 +1,17 @@
 /**
- * JSON Room Audio Refresher v3.0
+ * JSON Room Audio Refresher v4.0
+ * Chief Automation Engineer: Full GCE Integration
  * 
- * Full expanded version with:
- * - Complete filename validation
- * - Canonical filename regeneration
- * - EN/VI reversal detection
- * - Missing reference creation
+ * Uses Global Consistency Engine for all decisions.
+ * 
+ * Features:
+ * - GCE-based validation and canonical naming
+ * - EN/VI reversal detection and auto-fix
+ * - Non-canonical reference correction
+ * - Room filtering support
  * - Comprehensive reporting
  * 
- * Run: npx tsx scripts/refresh-json-audio.ts [--dry-run] [--verbose]
+ * Run: npx tsx scripts/refresh-json-audio.ts [--dry-run] [--apply] [--verbose] [--rooms <pattern>]
  */
 
 import fs from 'fs';
@@ -16,6 +19,68 @@ import path from 'path';
 
 const DATA_DIR = 'public/data';
 const AUDIO_DIR = 'public/audio';
+
+// ============================================
+// GCE Functions (inline to avoid import issues)
+// ============================================
+
+const MIN_CONFIDENCE_FOR_AUTO_FIX = 0.85;
+
+function normalizeRoomId(roomId: string): string {
+  return roomId
+    .toLowerCase()
+    .trim()
+    .replace(/[_\s]+/g, '-')
+    .replace(/[^a-z0-9-]/g, '')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+function normalizeEntrySlug(slug: string | number): string {
+  if (typeof slug === 'number') {
+    return `entry-${slug}`;
+  }
+  return String(slug)
+    .toLowerCase()
+    .trim()
+    .replace(/[_\s]+/g, '-')
+    .replace(/[^a-z0-9-]/g, '')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+function getCanonicalAudioForRoom(roomId: string, entrySlug: string | number): { en: string; vi: string } {
+  const normalizedRoomId = normalizeRoomId(roomId);
+  const normalizedSlug = normalizeEntrySlug(entrySlug);
+  return {
+    en: `${normalizedRoomId}-${normalizedSlug}-en.mp3`,
+    vi: `${normalizedRoomId}-${normalizedSlug}-vi.mp3`,
+  };
+}
+
+function extractLanguage(filename: string): 'en' | 'vi' | null {
+  if (/-en\.mp3$/i.test(filename) || /_en\.mp3$/i.test(filename)) return 'en';
+  if (/-vi\.mp3$/i.test(filename) || /_vi\.mp3$/i.test(filename)) return 'vi';
+  return null;
+}
+
+function isValidFilename(filename: string): boolean {
+  if (!filename) return true;
+  if (filename !== filename.toLowerCase()) return false;
+  if (filename.includes('_')) return false;
+  if (filename.includes(' ')) return false;
+  if (!/-en\.mp3$/i.test(filename) && !/-vi\.mp3$/i.test(filename)) return false;
+  return true;
+}
+
+function startsWithRoomId(filename: string, roomId: string): boolean {
+  const normalizedRoomId = normalizeRoomId(roomId);
+  return filename.toLowerCase().startsWith(normalizedRoomId + '-');
+}
+
+// ============================================
+// Types
+// ============================================
 
 interface AudioRef {
   en?: string;
@@ -45,79 +110,17 @@ interface FixReport {
   fixType: 'rename' | 'create' | 'swap' | 'normalize';
 }
 
-// Naming validation (strict)
-function isValidFilename(filename: string): boolean {
-  if (!filename) return true;
-  
-  // Must be lowercase
-  if (filename !== filename.toLowerCase()) return false;
-  
-  // No underscores
-  if (filename.includes('_')) return false;
-  
-  // No spaces
-  if (filename.includes(' ')) return false;
-  
-  // Must end with -en.mp3 or -vi.mp3
-  if (!/-en\.mp3$/i.test(filename) && !/-vi\.mp3$/i.test(filename)) return false;
-  
-  return true;
-}
+// ============================================
+// Processing Functions
+// ============================================
 
-// Check if filename starts with roomId (CRITICAL RULE)
-function startsWithRoomId(filename: string, roomId: string): boolean {
-  const normalizedRoomId = roomId.toLowerCase().replace(/[_\s]/g, '-');
-  return filename.toLowerCase().startsWith(normalizedRoomId + '-');
-}
-
-// Generate canonical filename
-function generateCanonical(roomId: string, entrySlug: string | number, lang: 'en' | 'vi'): string {
-  const cleanRoom = roomId.toLowerCase().replace(/[_\s]/g, '-');
-  const cleanSlug = typeof entrySlug === 'number' 
-    ? `entry-${entrySlug}` 
-    : String(entrySlug).toLowerCase().replace(/[_\s]/g, '-');
-  
-  return `${cleanRoom}-${cleanSlug}-${lang}.mp3`;
-}
-
-// Extract language from filename
-function extractLang(filename: string): 'en' | 'vi' | null {
-  if (/_en\.mp3$/i.test(filename) || /-en\.mp3$/i.test(filename)) return 'en';
-  if (/_vi\.mp3$/i.test(filename) || /-vi\.mp3$/i.test(filename)) return 'vi';
-  return null;
-}
-
-// Detect reversed EN/VI
 function detectReversedAudio(audio: AudioRef): boolean {
   if (!audio.en || !audio.vi) return false;
-  
-  const enLang = extractLang(audio.en);
-  const viLang = extractLang(audio.vi);
-  
+  const enLang = extractLanguage(audio.en);
+  const viLang = extractLanguage(audio.vi);
   return enLang === 'vi' && viLang === 'en';
 }
 
-// Get all audio files for quick lookup
-function getAudioFiles(): Set<string> {
-  const files = new Set<string>();
-  
-  function scan(dir: string) {
-    if (!fs.existsSync(dir)) return;
-    
-    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-      if (entry.isDirectory()) {
-        scan(path.join(dir, entry.name));
-      } else if (entry.name.toLowerCase().endsWith('.mp3')) {
-        files.add(entry.name.toLowerCase());
-      }
-    }
-  }
-  
-  scan(AUDIO_DIR);
-  return files;
-}
-
-// Process a single room file
 function processRoom(filePath: string, dryRun: boolean, verbose: boolean): FixReport[] {
   const fixes: FixReport[] = [];
   
@@ -133,52 +136,45 @@ function processRoom(filePath: string, dryRun: boolean, verbose: boolean): FixRe
     
     room.entries.forEach((entry, index) => {
       const entrySlug = entry.slug || entry.artifact_id || entry.id || index;
+      const canonical = getCanonicalAudioForRoom(room.id, entrySlug);
       
       // Case 1: No audio at all - create canonical reference
       if (!entry.audio) {
-        const canonicalEn = generateCanonical(room.id, entrySlug, 'en');
-        const canonicalVi = generateCanonical(room.id, entrySlug, 'vi');
-        
         fixes.push({
           roomId: room.id,
           entryIndex: index,
           field: 'audio',
           oldValue: '',
-          newValue: JSON.stringify({ en: canonicalEn, vi: canonicalVi }),
+          newValue: JSON.stringify({ en: canonical.en, vi: canonical.vi }),
           reason: 'Missing audio reference - creating canonical pair',
           fixType: 'create'
         });
         
         if (!dryRun) {
-          entry.audio = { en: canonicalEn, vi: canonicalVi };
+          entry.audio = { en: canonical.en, vi: canonical.vi };
           modified = true;
         }
         return;
       }
       
-      // Case 2: String format - convert to object and validate
+      // Case 2: String format - convert to object
       if (typeof entry.audio === 'string') {
-        const lang = extractLang(entry.audio);
+        const lang = extractLanguage(entry.audio);
         if (lang) {
-          // Check validity and roomId prefix
-          if (!isValidFilename(entry.audio) || !startsWithRoomId(entry.audio, room.id)) {
-            const canonical = generateCanonical(room.id, entrySlug, lang);
-            fixes.push({
-              roomId: room.id,
-              entryIndex: index,
-              field: 'audio',
-              oldValue: entry.audio,
-              newValue: canonical,
-              reason: !startsWithRoomId(entry.audio, room.id) 
-                ? 'Missing roomId prefix' 
-                : 'Invalid filename format',
-              fixType: 'rename'
-            });
-            
-            if (!dryRun) {
-              entry.audio = canonical;
-              modified = true;
-            }
+          const newAudio = { en: canonical.en, vi: canonical.vi };
+          fixes.push({
+            roomId: room.id,
+            entryIndex: index,
+            field: 'audio',
+            oldValue: entry.audio,
+            newValue: JSON.stringify(newAudio),
+            reason: 'Converting string to canonical object format',
+            fixType: 'normalize'
+          });
+          
+          if (!dryRun) {
+            entry.audio = newAudio;
+            modified = true;
           }
         }
         return;
@@ -209,80 +205,78 @@ function processRoom(filePath: string, dryRun: boolean, verbose: boolean): FixRe
       
       // Validate EN
       if (audioObj.en) {
-        if (!isValidFilename(audioObj.en) || !startsWithRoomId(audioObj.en, room.id)) {
-          const canonical = generateCanonical(room.id, entrySlug, 'en');
+        if (!isValidFilename(audioObj.en) || !startsWithRoomId(audioObj.en, room.id) || audioObj.en.toLowerCase() !== canonical.en) {
           fixes.push({
             roomId: room.id,
             entryIndex: index,
             field: 'audio.en',
             oldValue: audioObj.en,
-            newValue: canonical,
+            newValue: canonical.en,
             reason: !startsWithRoomId(audioObj.en, room.id)
               ? 'EN: Missing roomId prefix'
+              : audioObj.en.toLowerCase() !== canonical.en
+              ? 'EN: Non-canonical filename'
               : 'EN: Invalid filename format',
             fixType: 'rename'
           });
           
           if (!dryRun) {
-            audioObj.en = canonical;
+            audioObj.en = canonical.en;
             modified = true;
           }
         }
       } else {
-        // Missing EN - create
-        const canonical = generateCanonical(room.id, entrySlug, 'en');
         fixes.push({
           roomId: room.id,
           entryIndex: index,
           field: 'audio.en',
           oldValue: '',
-          newValue: canonical,
+          newValue: canonical.en,
           reason: 'Missing EN audio reference',
           fixType: 'create'
         });
         
         if (!dryRun) {
-          audioObj.en = canonical;
+          audioObj.en = canonical.en;
           modified = true;
         }
       }
       
       // Validate VI
       if (audioObj.vi) {
-        if (!isValidFilename(audioObj.vi) || !startsWithRoomId(audioObj.vi, room.id)) {
-          const canonical = generateCanonical(room.id, entrySlug, 'vi');
+        if (!isValidFilename(audioObj.vi) || !startsWithRoomId(audioObj.vi, room.id) || audioObj.vi.toLowerCase() !== canonical.vi) {
           fixes.push({
             roomId: room.id,
             entryIndex: index,
             field: 'audio.vi',
             oldValue: audioObj.vi,
-            newValue: canonical,
+            newValue: canonical.vi,
             reason: !startsWithRoomId(audioObj.vi, room.id)
               ? 'VI: Missing roomId prefix'
+              : audioObj.vi.toLowerCase() !== canonical.vi
+              ? 'VI: Non-canonical filename'
               : 'VI: Invalid filename format',
             fixType: 'rename'
           });
           
           if (!dryRun) {
-            audioObj.vi = canonical;
+            audioObj.vi = canonical.vi;
             modified = true;
           }
         }
       } else {
-        // Missing VI - create
-        const canonical = generateCanonical(room.id, entrySlug, 'vi');
         fixes.push({
           roomId: room.id,
           entryIndex: index,
           field: 'audio.vi',
           oldValue: '',
-          newValue: canonical,
+          newValue: canonical.vi,
           reason: 'Missing VI audio reference',
           fixType: 'create'
         });
         
         if (!dryRun) {
-          audioObj.vi = canonical;
+          audioObj.vi = canonical.vi;
           modified = true;
         }
       }
@@ -302,15 +296,29 @@ function processRoom(filePath: string, dryRun: boolean, verbose: boolean): FixRe
   return fixes;
 }
 
-// Main execution
+// ============================================
+// Main Execution
+// ============================================
+
 function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes('--dry-run');
+  const applyMode = args.includes('--apply');
   const verbose = args.includes('--verbose');
   
+  // Extract room filter
+  const roomsIndex = args.indexOf('--rooms');
+  const roomFilter = roomsIndex !== -1 && args[roomsIndex + 1] ? args[roomsIndex + 1] : null;
+  
+  // If neither --dry-run nor --apply specified, default to dry-run
+  const actualDryRun = applyMode ? false : (dryRun || !applyMode);
+  
   console.log('='.repeat(60));
-  console.log('JSON Room Audio Refresher v3.0');
-  console.log(`Mode: ${dryRun ? 'DRY RUN (no changes)' : 'LIVE (will modify files)'}`);
+  console.log('JSON Room Audio Refresher v4.0 (GCE Integration)');
+  console.log(`Mode: ${actualDryRun ? 'DRY RUN (no changes)' : 'APPLY (will modify files)'}`);
+  if (roomFilter) {
+    console.log(`Room filter: ${roomFilter}`);
+  }
   console.log('='.repeat(60));
   
   if (!fs.existsSync(DATA_DIR)) {
@@ -318,16 +326,27 @@ function main() {
     process.exit(1);
   }
   
-  const jsonFiles = fs.readdirSync(DATA_DIR)
+  let jsonFiles = fs.readdirSync(DATA_DIR)
     .filter(f => f.endsWith('.json'))
     .map(f => path.join(DATA_DIR, f));
   
-  console.log(`Found ${jsonFiles.length} JSON files to process\n`);
+  // Apply room filter if specified
+  if (roomFilter) {
+    const filterRegex = new RegExp(roomFilter, 'i');
+    jsonFiles = jsonFiles.filter(f => filterRegex.test(path.basename(f)));
+    console.log(`Filtered to ${jsonFiles.length} files matching "${roomFilter}"\n`);
+  } else {
+    console.log(`Found ${jsonFiles.length} JSON files to process\n`);
+  }
   
   const allFixes: FixReport[] = [];
+  const roomsChanged = new Set<string>();
   
   for (const file of jsonFiles) {
-    const fixes = processRoom(file, dryRun, verbose);
+    const fixes = processRoom(file, actualDryRun, verbose);
+    if (fixes.length > 0) {
+      roomsChanged.add(fixes[0].roomId);
+    }
     allFixes.push(...fixes);
   }
   
@@ -337,12 +356,17 @@ function main() {
     return acc;
   }, {} as Record<string, number>);
   
+  // Count reversals
+  const reversals = allFixes.filter(f => f.fixType === 'swap').length;
+  
   // Summary
   console.log('\n' + '='.repeat(60));
   console.log('SUMMARY');
   console.log('='.repeat(60));
-  console.log(`Total files processed: ${jsonFiles.length}`);
-  console.log(`Total fixes ${dryRun ? 'needed' : 'applied'}: ${allFixes.length}`);
+  console.log(`Rooms scanned: ${jsonFiles.length}`);
+  console.log(`Rooms changed: ${roomsChanged.size}`);
+  console.log(`JSON refs updated: ${allFixes.length}`);
+  console.log(`Reversed-lang fixes: ${reversals}`);
   
   if (Object.keys(byType).length > 0) {
     console.log('\nFixes by type:');
@@ -351,7 +375,7 @@ function main() {
     });
   }
   
-  if (allFixes.length > 0) {
+  if (allFixes.length > 0 && verbose) {
     console.log('\nFixes by room:');
     const byRoom = allFixes.reduce((acc, fix) => {
       acc[fix.roomId] = (acc[fix.roomId] || 0) + 1;
@@ -370,13 +394,19 @@ function main() {
     }
   }
   
+  // Final output for CI parsing
+  console.log(`\nTotal fixes needed: ${allFixes.length}`);
+  console.log(`Total fixes applied: ${actualDryRun ? 0 : allFixes.length}`);
+  
   // Write report
   const reportPath = 'public/audio-refresh-report.json';
   fs.writeFileSync(reportPath, JSON.stringify({
     generatedAt: new Date().toISOString(),
-    mode: dryRun ? 'dry-run' : 'live',
-    totalFiles: jsonFiles.length,
+    mode: actualDryRun ? 'dry-run' : 'apply',
+    roomsScanned: jsonFiles.length,
+    roomsChanged: roomsChanged.size,
     totalFixes: allFixes.length,
+    reversals,
     byType,
     fixes: allFixes
   }, null, 2));

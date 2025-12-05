@@ -1,22 +1,23 @@
 /**
- * Global Consistency Engine (GCE) v1.0
- * Phase 3: True Self-Healing Audio Intelligence
+ * Global Consistency Engine (GCE) v2.0
+ * Phase 4: Full Pipeline Integration
  * 
- * Single source of truth for canonical audio naming across:
+ * THE SINGLE SOURCE OF TRUTH for canonical audio naming across:
  * - validator
  * - autoRepair
  * - JSON refresh
  * - storage rename
  * - manifest generation
+ * - integrity mapping
+ * - semantic matching
  */
 
-import type { IntegrityMap, RoomIntegrity } from './integrityMap';
-import type { SemanticMatch } from './semanticMatcher';
+import type { RoomEntry as IntegrityRoomEntry } from './integrityMap';
+import { similarityScore } from './filenameValidator';
 
-export interface CanonicalAudioPair {
-  en: string;
-  vi: string;
-}
+// ============================================
+// Configuration
+// ============================================
 
 export interface GCEConfig {
   enforceRoomIdPrefix: boolean;
@@ -24,6 +25,71 @@ export interface GCEConfig {
   autoRepairThreshold: number; // 0-1 confidence threshold
   orphanMatchThreshold: number;
   duplicateResolutionStrategy: 'keep-canonical' | 'keep-oldest' | 'keep-newest';
+}
+
+/** Shared threshold constant - used by all scripts */
+export const MIN_CONFIDENCE_FOR_AUTO_FIX = 0.85;
+
+const DEFAULT_CONFIG: GCEConfig = {
+  enforceRoomIdPrefix: true,
+  enforceEntryMatch: true,
+  autoRepairThreshold: MIN_CONFIDENCE_FOR_AUTO_FIX,
+  orphanMatchThreshold: MIN_CONFIDENCE_FOR_AUTO_FIX,
+  duplicateResolutionStrategy: 'keep-canonical',
+};
+
+let currentConfig: GCEConfig = { ...DEFAULT_CONFIG };
+
+export function configureGCE(config: Partial<GCEConfig>): void {
+  currentConfig = { ...currentConfig, ...config };
+}
+
+export function getGCEConfig(): GCEConfig {
+  return { ...currentConfig };
+}
+
+// ============================================
+// Core Types
+// ============================================
+
+export interface CanonicalAudioPair {
+  en: string;
+  vi: string;
+}
+
+export interface GCEEntryResult {
+  entrySlug: string;
+  expectedEn: string;
+  expectedVi: string;
+  jsonRefsEn: string | null;
+  jsonRefsVi: string | null;
+  storageMatchesEn: boolean;
+  storageMatchesVi: boolean;
+  issues: GCEIssue[];
+}
+
+export interface GCEIssue {
+  type: 'missing' | 'duplicate' | 'non-canonical' | 'reversed-lang' | 'orphan-candidate' | 'json-mismatch';
+  filename?: string;
+  description: string;
+  severity: 'warning' | 'critical';
+  autoFixable: boolean;
+  suggestedFix?: string;
+}
+
+export interface GCERoomResult {
+  roomId: string;
+  entries: GCEEntryResult[];
+  roomIntegrityScore: number;
+  summary: {
+    totalEntries: number;
+    missing: number;
+    orphans: number;
+    namingIssues: number;
+    duplicates: number;
+    reversals: number;
+  };
+  allIssues: GCEIssue[];
 }
 
 export interface GCEValidationResult {
@@ -60,34 +126,49 @@ export interface GCEOperation {
   };
 }
 
-// Default configuration
-const DEFAULT_CONFIG: GCEConfig = {
-  enforceRoomIdPrefix: true,
-  enforceEntryMatch: true,
-  autoRepairThreshold: 0.85,
-  orphanMatchThreshold: 0.85,
-  duplicateResolutionStrategy: 'keep-canonical',
-};
+// ============================================
+// Normalization Functions
+// ============================================
 
-let currentConfig: GCEConfig = { ...DEFAULT_CONFIG };
-
-/**
- * Configure the GCE
- */
-export function configureGCE(config: Partial<GCEConfig>): void {
-  currentConfig = { ...currentConfig, ...config };
+export function normalizeRoomId(roomId: string): string {
+  return roomId
+    .toLowerCase()
+    .trim()
+    .replace(/[_\s]+/g, '-')
+    .replace(/[^a-z0-9-]/g, '')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
 }
 
-/**
- * Get current GCE configuration
- */
-export function getGCEConfig(): GCEConfig {
-  return { ...currentConfig };
+export function normalizeEntrySlug(slug: string | number): string {
+  if (typeof slug === 'number') {
+    return `entry-${slug}`;
+  }
+  
+  return String(slug)
+    .toLowerCase()
+    .trim()
+    .replace(/[_\s]+/g, '-')
+    .replace(/[^a-z0-9-]/g, '')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
 }
 
+export function extractLanguage(filename: string): 'en' | 'vi' | null {
+  if (/-en\.mp3$/i.test(filename)) return 'en';
+  if (/-vi\.mp3$/i.test(filename)) return 'vi';
+  if (/_en\.mp3$/i.test(filename)) return 'en';
+  if (/_vi\.mp3$/i.test(filename)) return 'vi';
+  return null;
+}
+
+// ============================================
+// THE SINGLE SOURCE OF TRUTH
+// ============================================
+
 /**
- * THE SINGLE SOURCE OF TRUTH: Generate canonical audio pair for a room entry
- * Every script MUST use this function.
+ * Generate canonical audio pair for a room entry.
+ * EVERY script MUST use this function.
  */
 export function getCanonicalAudioForRoom(
   roomId: string,
@@ -103,38 +184,176 @@ export function getCanonicalAudioForRoom(
 }
 
 /**
- * Normalize room ID to canonical format
+ * Get complete canonical audio information for an entire room.
+ * This is the primary function for scripts to use.
  */
-export function normalizeRoomId(roomId: string): string {
-  return roomId
-    .toLowerCase()
-    .trim()
-    .replace(/[_\s]+/g, '-')
-    .replace(/[^a-z0-9-]/g, '')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
-}
+export function getCanonicalAudioForEntireRoom(
+  roomId: string,
+  entries: Array<{ slug?: string; id?: string | number; artifact_id?: string; index?: number; audio?: any }>,
+  storageFiles: Set<string>,
+  jsonAudioRefs?: Map<number, { en?: string; vi?: string }>
+): GCERoomResult {
+  const normalizedRoomId = normalizeRoomId(roomId);
+  const entryResults: GCEEntryResult[] = [];
+  const allIssues: GCEIssue[] = [];
+  
+  let missing = 0;
+  let orphans = 0;
+  let namingIssues = 0;
+  let duplicates = 0;
+  let reversals = 0;
 
-/**
- * Normalize entry slug to canonical format
- */
-export function normalizeEntrySlug(slug: string | number): string {
-  if (typeof slug === 'number') {
-    return `entry-${slug}`;
+  // Process each entry
+  for (let i = 0; i < entries.length; i++) {
+    const entry = entries[i];
+    const entrySlug = String(entry.slug || entry.artifact_id || entry.id || `entry-${i}`);
+    const canonical = getCanonicalAudioForRoom(roomId, entrySlug);
+    
+    // Get JSON refs for this entry
+    const jsonRefs = jsonAudioRefs?.get(i);
+    const jsonRefEn = jsonRefs?.en || (typeof entry.audio === 'object' ? entry.audio?.en : null);
+    const jsonRefVi = jsonRefs?.vi || (typeof entry.audio === 'object' ? entry.audio?.vi : null);
+    
+    // Check storage
+    const storageMatchesEn = storageFiles.has(canonical.en.toLowerCase());
+    const storageMatchesVi = storageFiles.has(canonical.vi.toLowerCase());
+    
+    const issues: GCEIssue[] = [];
+    
+    // Check for missing files
+    if (!storageMatchesEn) {
+      missing++;
+      issues.push({
+        type: 'missing',
+        filename: canonical.en,
+        description: `Missing EN audio: ${canonical.en}`,
+        severity: 'critical',
+        autoFixable: false,
+      });
+    }
+    
+    if (!storageMatchesVi) {
+      missing++;
+      issues.push({
+        type: 'missing',
+        filename: canonical.vi,
+        description: `Missing VI audio: ${canonical.vi}`,
+        severity: 'critical',
+        autoFixable: false,
+      });
+    }
+    
+    // Check JSON references
+    if (jsonRefEn && jsonRefEn.toLowerCase() !== canonical.en) {
+      namingIssues++;
+      issues.push({
+        type: 'non-canonical',
+        filename: jsonRefEn,
+        description: `JSON EN ref "${jsonRefEn}" should be "${canonical.en}"`,
+        severity: 'warning',
+        autoFixable: true,
+        suggestedFix: canonical.en,
+      });
+    }
+    
+    if (jsonRefVi && jsonRefVi.toLowerCase() !== canonical.vi) {
+      namingIssues++;
+      issues.push({
+        type: 'non-canonical',
+        filename: jsonRefVi,
+        description: `JSON VI ref "${jsonRefVi}" should be "${canonical.vi}"`,
+        severity: 'warning',
+        autoFixable: true,
+        suggestedFix: canonical.vi,
+      });
+    }
+    
+    // Check for reversed EN/VI
+    if (jsonRefEn && jsonRefVi) {
+      const enLang = extractLanguage(jsonRefEn);
+      const viLang = extractLanguage(jsonRefVi);
+      if (enLang === 'vi' && viLang === 'en') {
+        reversals++;
+        issues.push({
+          type: 'reversed-lang',
+          description: `EN/VI references are swapped: en="${jsonRefEn}", vi="${jsonRefVi}"`,
+          severity: 'critical',
+          autoFixable: true,
+          suggestedFix: `Swap: en="${jsonRefVi}", vi="${jsonRefEn}"`,
+        });
+      }
+    }
+    
+    entryResults.push({
+      entrySlug,
+      expectedEn: canonical.en,
+      expectedVi: canonical.vi,
+      jsonRefsEn: jsonRefEn || null,
+      jsonRefsVi: jsonRefVi || null,
+      storageMatchesEn,
+      storageMatchesVi,
+      issues,
+    });
+    
+    allIssues.push(...issues);
   }
   
-  return slug
-    .toLowerCase()
-    .trim()
-    .replace(/[_\s]+/g, '-')
-    .replace(/[^a-z0-9-]/g, '')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
+  // Detect orphans (files in storage not expected by any entry)
+  const expectedFiles = new Set<string>();
+  for (const entry of entryResults) {
+    expectedFiles.add(entry.expectedEn.toLowerCase());
+    expectedFiles.add(entry.expectedVi.toLowerCase());
+  }
+  
+  for (const file of storageFiles) {
+    const normalizedFile = file.toLowerCase();
+    if (normalizedFile.startsWith(normalizedRoomId + '-') && !expectedFiles.has(normalizedFile)) {
+      orphans++;
+      allIssues.push({
+        type: 'orphan-candidate',
+        filename: file,
+        description: `Orphan file: ${file} (not expected by any entry)`,
+        severity: 'warning',
+        autoFixable: false,
+      });
+    }
+  }
+  
+  // Calculate integrity score
+  const totalExpected = entries.length * 2; // EN + VI per entry
+  const totalFound = entryResults.filter(e => e.storageMatchesEn).length + 
+                     entryResults.filter(e => e.storageMatchesVi).length;
+  
+  const coverageScore = totalExpected > 0 ? (totalFound / totalExpected) * 60 : 60;
+  const namingPenalty = Math.min(20, namingIssues * 3);
+  const orphanPenalty = Math.min(10, orphans * 2);
+  const duplicatePenalty = Math.min(5, duplicates * 1);
+  const reversalPenalty = Math.min(5, reversals * 2);
+  
+  const roomIntegrityScore = Math.max(0, Math.min(100, Math.round(
+    coverageScore + 40 - namingPenalty - orphanPenalty - duplicatePenalty - reversalPenalty
+  )));
+  
+  return {
+    roomId,
+    entries: entryResults,
+    roomIntegrityScore,
+    summary: {
+      totalEntries: entries.length,
+      missing,
+      orphans,
+      namingIssues,
+      duplicates,
+      reversals,
+    },
+    allIssues,
+  };
 }
 
-/**
- * Validate a filename against GCE rules
- */
+// ============================================
+// Validation Functions
+// ============================================
+
 export function validateWithGCE(
   filename: string,
   roomId: string,
@@ -144,7 +363,6 @@ export function validateWithGCE(
   const normalizedFilename = filename.toLowerCase();
   const normalizedRoomId = normalizeRoomId(roomId);
   
-  // Get canonical pair
   const canonical = entrySlug 
     ? getCanonicalAudioForRoom(roomId, entrySlug)
     : { en: '', vi: '' };
@@ -197,161 +415,80 @@ export function validateWithGCE(
   };
 }
 
-/**
- * Extract language from filename
- */
-export function extractLanguage(filename: string): 'en' | 'vi' | null {
-  if (/-en\.mp3$/i.test(filename)) return 'en';
-  if (/-vi\.mp3$/i.test(filename)) return 'vi';
-  return null;
-}
+// ============================================
+// Repair Plan Generation
+// ============================================
 
-/**
- * Generate a complete repair plan for a room
- */
 export function generateRoomRepairPlan(
-  roomId: string,
-  integrity: RoomIntegrity
+  roomResult: GCERoomResult
 ): GCERepairPlan {
   const operations: GCEOperation[] = [];
   
-  // Handle mismatched files (wrong names)
-  for (const file of integrity.mismatchedLang) {
-    const lang = extractLanguage(file);
-    if (lang) {
-      // Try to find matching entry by parsing filename
-      const slug = extractSlugFromFilename(file, roomId);
-      if (slug) {
-        const canonical = getCanonicalAudioForRoom(roomId, slug);
+  for (const issue of roomResult.allIssues) {
+    if (!issue.autoFixable) continue;
+    
+    switch (issue.type) {
+      case 'non-canonical':
+        if (issue.filename && issue.suggestedFix) {
+          operations.push({
+            type: 'update-json',
+            source: issue.filename,
+            target: issue.suggestedFix,
+            metadata: {
+              roomId: roomResult.roomId,
+              reason: issue.description,
+              confidence: 90,
+              reversible: true,
+            },
+          });
+        }
+        break;
+        
+      case 'reversed-lang':
         operations.push({
-          type: 'rename',
-          source: file,
-          target: lang === 'en' ? canonical.en : canonical.vi,
+          type: 'update-json',
+          source: 'en/vi refs',
+          target: 'swapped',
           metadata: {
-            roomId,
-            entrySlug: slug,
-            language: lang,
-            reason: 'Rename to canonical format',
-            confidence: 85,
+            roomId: roomResult.roomId,
+            reason: issue.description,
+            confidence: 95,
             reversible: true,
           },
         });
-      }
+        break;
     }
   }
   
-  // Handle orphans - try to match
-  for (const orphan of integrity.orphans) {
-    operations.push({
-      type: 'move',
-      source: orphan,
-      target: `_orphans/${orphan}`,
-      metadata: {
-        roomId,
-        reason: 'Orphan file - move to _orphans/',
-        confidence: 60,
-        reversible: true,
-      },
-    });
-  }
-  
-  // Handle duplicates
-  for (const dup of integrity.duplicates) {
-    operations.push({
-      type: 'move',
-      source: dup,
-      target: `_duplicates/${dup}`,
-      metadata: {
-        roomId,
-        reason: 'Duplicate file - move to _duplicates/',
-        confidence: 75,
-        reversible: true,
-      },
-    });
-  }
-  
-  // Handle missing - create JSON references
-  for (const missing of integrity.missing) {
-    operations.push({
-      type: 'create-ref',
-      source: '',
-      target: missing,
-      metadata: {
-        roomId,
-        reason: 'Missing audio file - needs generation',
-        confidence: 90,
-        reversible: false,
-      },
-    });
-  }
-  
-  // Calculate estimated impact
   const estimatedImpact = {
-    filesRenamed: operations.filter(o => o.type === 'rename').length,
+    filesRenamed: 0,
     jsonUpdates: operations.filter(o => o.type === 'update-json').length,
-    orphansResolved: integrity.orphans.length,
-    duplicatesRemoved: integrity.duplicates.length,
+    orphansResolved: 0,
+    duplicatesRemoved: 0,
   };
   
-  // Calculate overall confidence
   const avgConfidence = operations.length > 0
     ? operations.reduce((sum, o) => sum + o.metadata.confidence, 0) / operations.length
     : 100;
   
   return {
-    roomId,
+    roomId: roomResult.roomId,
     operations,
     estimatedImpact,
     confidence: Math.round(avgConfidence),
   };
 }
 
-/**
- * Extract entry slug from a filename
- */
-function extractSlugFromFilename(filename: string, roomId: string): string | null {
-  const normalizedRoomId = normalizeRoomId(roomId);
-  const normalizedFilename = filename.toLowerCase();
-  
-  // Remove room prefix and language suffix
-  const withoutRoom = normalizedFilename.replace(new RegExp(`^${normalizedRoomId}-?`), '');
-  const withoutLang = withoutRoom.replace(/-(en|vi)\.mp3$/, '');
-  
-  if (withoutLang && withoutLang !== withoutRoom) {
-    return withoutLang;
-  }
-  
-  return null;
-}
-
-/**
- * Generate repair operations for all rooms
- */
 export function generateGlobalRepairPlan(
-  integrityMap: IntegrityMap
+  roomResults: GCERoomResult[]
 ): GCERepairPlan[] {
-  const plans: GCERepairPlan[] = [];
-  
-  for (const [roomId, integrity] of Object.entries(integrityMap)) {
-    if (integrity.missing.length > 0 || 
-        integrity.orphans.length > 0 || 
-        integrity.duplicates.length > 0 ||
-        integrity.mismatchedLang.length > 0 ||
-        integrity.unrepairable.length > 0) {
-      plans.push(generateRoomRepairPlan(roomId, integrity));
-    }
-  }
-  
-  // Sort by number of issues (most first)
-  plans.sort((a, b) => b.operations.length - a.operations.length);
-  
-  return plans;
+  return roomResults
+    .filter(r => r.allIssues.length > 0)
+    .map(r => generateRoomRepairPlan(r))
+    .filter(p => p.operations.length > 0)
+    .sort((a, b) => b.operations.length - a.operations.length);
 }
 
-/**
- * Apply a repair plan (returns operations to execute)
- * Does NOT execute destructive operations - returns them for review
- */
 export function applyRepairPlan(plan: GCERepairPlan): {
   safeOperations: GCEOperation[];
   destructiveOperations: GCEOperation[];
@@ -367,16 +504,17 @@ export function applyRepairPlan(plan: GCERepairPlan): {
         safeOperations.push(op);
       }
     } else {
-      destructiveOperations.push(op); // Low confidence = needs review
+      destructiveOperations.push(op);
     }
   }
   
   return { safeOperations, destructiveOperations };
 }
 
-/**
- * Bidirectional reconciliation: JSON ↔ Audio folder
- */
+// ============================================
+// Bidirectional Reconciliation
+// ============================================
+
 export function reconcileRoom(
   roomId: string,
   entries: Array<{ slug: string | number; audio?: { en?: string; vi?: string } | string }>,
@@ -393,8 +531,8 @@ export function reconcileRoom(
   const missing: string[] = [];
   
   const expectedFiles = new Set<string>();
+  const normalizedRoomId = normalizeRoomId(roomId);
   
-  // Process each entry
   for (const entry of entries) {
     const slug = typeof entry.slug === 'number' ? `entry-${entry.slug}` : entry.slug;
     const canonical = getCanonicalAudioForRoom(roomId, slug);
@@ -402,14 +540,14 @@ export function reconcileRoom(
     expectedFiles.add(canonical.en.toLowerCase());
     expectedFiles.add(canonical.vi.toLowerCase());
     
-    // Check if JSON needs update
     let needsUpdate = false;
     if (!entry.audio) {
       needsUpdate = true;
     } else if (typeof entry.audio === 'string') {
-      needsUpdate = true; // Should be object with en/vi
+      needsUpdate = true;
     } else {
-      if (entry.audio.en !== canonical.en || entry.audio.vi !== canonical.vi) {
+      if (entry.audio.en?.toLowerCase() !== canonical.en || 
+          entry.audio.vi?.toLowerCase() !== canonical.vi) {
         needsUpdate = true;
       }
     }
@@ -418,7 +556,6 @@ export function reconcileRoom(
       jsonToUpdate.push({ entrySlug: slug, newAudio: canonical });
     }
     
-    // Check if files exist
     if (!storageFiles.has(canonical.en.toLowerCase())) {
       missing.push(canonical.en);
     }
@@ -427,8 +564,6 @@ export function reconcileRoom(
     }
   }
   
-  // Find orphans (files in storage not expected)
-  const normalizedRoomId = normalizeRoomId(roomId);
   for (const file of storageFiles) {
     if (file.startsWith(normalizedRoomId + '-') && !expectedFiles.has(file)) {
       orphans.push(file);
@@ -439,5 +574,4 @@ export function reconcileRoom(
 }
 
 // Re-export types
-export type { IntegrityMap, RoomIntegrity } from './integrityMap';
-export type { SemanticMatch } from './semanticMatcher';
+export type { IntegrityRoomEntry as RoomEntry };

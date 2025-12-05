@@ -1,19 +1,24 @@
 /**
- * Integrity Map v1.0
- * Phase 3: Room-to-Storage Integrity Mapping
+ * Integrity Map v2.0
+ * Phase 4: Full GCE Integration
  * 
- * Provides comprehensive mapping between:
- * - Expected canonical audio filenames
- * - Found storage filenames
- * - Missing files
- * - Orphan files
- * - Language mismatches
- * - Duplicates
- * - Unrepairable issues
+ * Uses GCE internally as the single consistency model.
+ * Provides comprehensive room-to-storage integrity mapping.
  */
 
-import { getCanonicalAudioForRoom, normalizeRoomId, extractLanguage } from './globalConsistencyEngine';
+import { 
+  getCanonicalAudioForRoom, 
+  getCanonicalAudioForEntireRoom,
+  normalizeRoomId, 
+  extractLanguage,
+  MIN_CONFIDENCE_FOR_AUTO_FIX,
+  type GCERoomResult,
+} from './globalConsistencyEngine';
 import { similarityScore } from './filenameValidator';
+
+// ============================================
+// Types
+// ============================================
 
 export interface RoomIntegrity {
   roomId: string;
@@ -24,7 +29,7 @@ export interface RoomIntegrity {
   mismatchedLang: string[];
   duplicates: string[];
   unrepairable: string[];
-  score: number; // 0-100 integrity score
+  score: number;
   lastChecked: string;
 }
 
@@ -47,7 +52,9 @@ export interface IntegritySummary {
 }
 
 export interface RoomEntry {
-  slug: string | number;
+  slug?: string | number;
+  id?: string | number;
+  artifact_id?: string;
   audio?: { en?: string; vi?: string } | string;
 }
 
@@ -56,8 +63,12 @@ export interface RoomData {
   entries: RoomEntry[];
 }
 
+// ============================================
+// Core Functions
+// ============================================
+
 /**
- * Build integrity map for a single room
+ * Build integrity map for a single room using GCE
  */
 export function buildRoomIntegrity(
   roomId: string,
@@ -76,9 +87,10 @@ export function buildRoomIntegrity(
   const expectedSet = new Set<string>();
   const foundForRoom = new Set<string>();
   
-  // Build expected list from entries
-  for (const entry of entries) {
-    const slug = typeof entry.slug === 'number' ? `entry-${entry.slug}` : entry.slug;
+  // Build expected list using GCE
+  for (let i = 0; i < entries.length; i++) {
+    const entry = entries[i];
+    const slug = entry.slug || entry.artifact_id || entry.id || i;
     const canonical = getCanonicalAudioForRoom(roomId, slug);
     
     expected.push(canonical.en, canonical.vi);
@@ -86,11 +98,10 @@ export function buildRoomIntegrity(
     expectedSet.add(canonical.vi.toLowerCase());
   }
   
-  // Check storage files against room
+  // Check storage files
   for (const file of storageFiles) {
     const normalizedFile = file.toLowerCase();
     
-    // Only consider files that belong to this room
     if (!normalizedFile.startsWith(normalizedRoomId + '-')) {
       continue;
     }
@@ -100,12 +111,10 @@ export function buildRoomIntegrity(
     if (expectedSet.has(normalizedFile)) {
       found.push(file);
     } else {
-      // Potential orphan - check if it's a naming issue
       const lang = extractLanguage(file);
       if (lang) {
-        // Try to match to an expected file
         const potentialMatch = findBestMatch(file, expected);
-        if (potentialMatch && potentialMatch.confidence > 0.8) {
+        if (potentialMatch && potentialMatch.confidence > MIN_CONFIDENCE_FOR_AUTO_FIX) {
           mismatchedLang.push(file);
         } else {
           orphans.push(file);
@@ -123,7 +132,7 @@ export function buildRoomIntegrity(
     }
   }
   
-  // Detect duplicates (files that normalize to same canonical)
+  // Detect duplicates
   const normalizedMap = new Map<string, string[]>();
   for (const file of foundForRoom) {
     const normalized = normalizeFilename(file);
@@ -134,12 +143,11 @@ export function buildRoomIntegrity(
   
   for (const [, files] of normalizedMap) {
     if (files.length > 1) {
-      // Keep the first one (canonical), mark others as duplicates
       duplicates.push(...files.slice(1));
     }
   }
   
-  // Calculate integrity score
+  // Calculate score
   const score = calculateIntegrityScore({
     expected: expected.length,
     found: found.length,
@@ -178,6 +186,16 @@ export function buildIntegrityMap(
   }
   
   return map;
+}
+
+/**
+ * Get integrity map - main accessor function
+ */
+export function getIntegrityMap(
+  rooms: RoomData[],
+  storageFiles: Set<string>
+): IntegrityMap {
+  return buildIntegrityMap(rooms, storageFiles);
 }
 
 /**
@@ -224,9 +242,10 @@ export function generateIntegritySummary(map: IntegrityMap): IntegritySummary {
   };
 }
 
-/**
- * Find best matching expected filename for a misnamed file
- */
+// ============================================
+// Helper Functions
+// ============================================
+
 function findBestMatch(
   filename: string,
   expectedFiles: string[]
@@ -244,9 +263,6 @@ function findBestMatch(
   return best;
 }
 
-/**
- * Calculate integrity score (0-100)
- */
 function calculateIntegrityScore(metrics: {
   expected: number;
   found: number;
@@ -258,10 +274,7 @@ function calculateIntegrityScore(metrics: {
 }): number {
   if (metrics.expected === 0) return 100;
   
-  // Base score from coverage
   const coverageScore = (metrics.found / metrics.expected) * 60;
-  
-  // Penalty for issues
   const missingPenalty = (metrics.missing / metrics.expected) * 20;
   const orphanPenalty = Math.min(10, metrics.orphans * 2);
   const duplicatePenalty = Math.min(5, metrics.duplicates * 1);
@@ -272,20 +285,18 @@ function calculateIntegrityScore(metrics: {
   return Math.max(0, Math.min(100, Math.round(score)));
 }
 
-/**
- * Normalize filename for comparison
- */
 function normalizeFilename(filename: string): string {
   return filename
     .toLowerCase()
-    .replace(/[_\\s]+/g, '-')
-    .replace(/[^a-z0-9\\-\\.]/g, '')
+    .replace(/[_\s]+/g, '-')
+    .replace(/[^a-z0-9\-\.]/g, '')
     .replace(/-+/g, '-');
 }
 
-/**
- * Get rooms with lowest integrity scores
- */
+// ============================================
+// Query Functions
+// ============================================
+
 export function getLowestIntegrityRooms(
   map: IntegrityMap,
   count: number = 10
@@ -295,9 +306,6 @@ export function getLowestIntegrityRooms(
     .slice(0, count);
 }
 
-/**
- * Get rooms with specific issue types
- */
 export function getRoomsWithIssues(
   map: IntegrityMap,
   issueType: 'missing' | 'orphans' | 'duplicates' | 'unrepairable' | 'mismatchedLang'
@@ -305,9 +313,10 @@ export function getRoomsWithIssues(
   return Object.values(map).filter(room => room[issueType].length > 0);
 }
 
-/**
- * Export integrity map as JSON
- */
+// ============================================
+// Export Functions
+// ============================================
+
 export function exportIntegrityMapJSON(map: IntegrityMap): string {
   return JSON.stringify({
     summary: generateIntegritySummary(map),
@@ -315,9 +324,6 @@ export function exportIntegrityMapJSON(map: IntegrityMap): string {
   }, null, 2);
 }
 
-/**
- * Export integrity map as CSV
- */
 export function exportIntegrityMapCSV(map: IntegrityMap): string {
   const headers = [
     'roomId',
