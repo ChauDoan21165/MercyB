@@ -47,6 +47,8 @@ const RITUAL_BANNER_DURATION_MS = 12000; // 12 seconds
 export type HostPresenceState = 'hidden' | 'idle' | 'active';
 export type RitualIntensity = 'off' | 'minimal' | 'normal';
 
+export type TeacherLevel = 'gentle' | 'normal' | 'intense';
+
 export interface MercyEngineState {
   isEnabled: boolean;
   presenceState: HostPresenceState;
@@ -69,6 +71,12 @@ export interface MercyEngineState {
   isRitualBannerVisible: boolean;
   ritualIntensity: RitualIntensity;
   silenceMode: boolean;
+  // Phase 7: Teacher state
+  teacherLevel: TeacherLevel;
+  currentRoomId: string | null;
+  currentRoomDomain: string | null;
+  lastEnglishTip: { en: string; vi: string; context: string; timestampISO: string } | null;
+  isTeacherHintVisible: boolean;
 }
 
 export interface MercyEngineActions {

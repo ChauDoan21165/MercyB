@@ -19,7 +19,12 @@ export type VoiceTrigger =
   | 'confusion'
   | 'stress_release'
   | 'celebration'
-  | 'returning_after_gap';
+  | 'returning_after_gap'
+  // Phase 7: English teacher triggers
+  | 'ef_room_enter'
+  | 'ef_entry_complete'
+  | 'ef_pronunciation_focus'
+  | 'ef_streak';
 
 export interface VoiceLine {
   id: string;
@@ -275,6 +280,32 @@ export const MERCY_VOICE_LINES: VoiceLine[] = [
     audioEn: '/mercy-voice/return_gap_gentle_en.mp3',
     audioVi: '/mercy-voice/return_gap_gentle_vi.mp3',
     trigger: 'returning_after_gap'
+  },
+
+  // Phase 7: English Teacher triggers
+  {
+    id: 'ef_welcome',
+    en: "Let's practice English together. No rush.",
+    vi: "Cùng luyện tiếng Anh nhé. Không vội.",
+    trigger: 'ef_room_enter'
+  },
+  {
+    id: 'ef_progress',
+    en: "Your English is growing. Well done!",
+    vi: "Tiếng Anh của bạn đang tiến bộ. Làm tốt lắm!",
+    trigger: 'ef_entry_complete'
+  },
+  {
+    id: 'ef_pronunciation',
+    en: "Listen carefully and repeat. Sounds build fluency.",
+    vi: "Lắng nghe và lặp lại. Âm thanh xây dựng sự lưu loát.",
+    trigger: 'ef_pronunciation_focus'
+  },
+  {
+    id: 'ef_streak_praise',
+    en: "Your daily English practice is building real skill.",
+    vi: "Việc luyện tiếng Anh hàng ngày đang xây dựng kỹ năng thực sự.",
+    trigger: 'ef_streak'
   }
 ];
 
