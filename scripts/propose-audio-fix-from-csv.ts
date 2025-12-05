@@ -1,5 +1,5 @@
 /**
- * Audio Coverage Fix Proposal Script
+ * Audio Coverage Fix Proposal Script v1.0
  * 
  * Reads audio-coverage.csv exported from /admin/audio-coverage
  * Finds all rows with missing EN/VI audio
