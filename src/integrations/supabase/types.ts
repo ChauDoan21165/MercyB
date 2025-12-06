@@ -667,6 +667,13 @@ export type Database = {
             referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "feedback_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "vip3_public_profiles"
+            referencedColumns: ["id"]
+          },
         ]
       }
       gift_codes: {
@@ -2970,6 +2977,24 @@ export type Database = {
         }
         Relationships: []
       }
+      vip3_public_profiles: {
+        Row: {
+          avatar_url: string | null
+          id: string | null
+          username: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          id?: string | null
+          username?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          id?: string | null
+          username?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       award_points: {
@@ -3039,6 +3064,7 @@ export type Database = {
         Returns: boolean
       }
       is_user_blocked: { Args: { user_email: string }; Returns: boolean }
+      is_vip3_user: { Args: { user_uuid: string }; Returns: boolean }
       log_admin_access: {
         Args: {
           _accessed_record_id?: string
