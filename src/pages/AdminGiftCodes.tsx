@@ -63,6 +63,7 @@ const AdminGiftCodes = () => {
   }, []);
 
   const fetchGiftCodes = async () => {
+    setIsLoading(true);
     try {
       const { data, error } = await supabase
         .from('gift_codes')
@@ -70,6 +71,7 @@ const AdminGiftCodes = () => {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
+      console.log('[AdminGiftCodes] Fetched codes:', data?.length);
       setAllCodes(data || []);
     } catch (error: any) {
       console.error('Error fetching gift codes:', error);
@@ -123,6 +125,7 @@ const AdminGiftCodes = () => {
           description: errorMessage,
           variant: "destructive",
         });
+        setIsGenerating(false);
         return;
       }
 
@@ -133,6 +136,7 @@ const AdminGiftCodes = () => {
           description: data?.error || "Unknown error occurred",
           variant: "destructive",
         });
+        setIsGenerating(false);
         return;
       }
 
@@ -142,8 +146,8 @@ const AdminGiftCodes = () => {
         description: `Generated ${data.generated} gift code(s)`,
       });
 
-      // Refresh the codes list
-      fetchGiftCodes();
+      // Refresh the codes list and wait for it to complete
+      await fetchGiftCodes();
 
       // Reset form
       setNotes("");
@@ -176,6 +180,11 @@ const AdminGiftCodes = () => {
       });
     }
   };
+
+  // Calculate summary stats
+  const totalCodes = allCodes.length;
+  const availableCodes = allCodes.filter(c => !c.used_by && c.is_active).length;
+  const usedCodes = allCodes.filter(c => c.used_by).length;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-pink-50">
@@ -315,6 +324,13 @@ const AdminGiftCodes = () => {
               <CardDescription>
                 View and manage all generated gift codes
               </CardDescription>
+              {/* Debug summary */}
+              <div className="mt-2 text-xs bg-muted/50 rounded p-2">
+                <span className="font-mono">
+                  Total: {totalCodes} | Available: {availableCodes} | Used: {usedCodes}
+                </span>
+                <span className="text-muted-foreground ml-2">(from DB)</span>
+              </div>
             </CardHeader>
             <CardContent>
               {isLoading ? (

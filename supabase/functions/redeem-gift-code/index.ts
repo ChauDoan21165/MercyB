@@ -26,7 +26,7 @@ Deno.serve(async (req) => {
     
     if (authError || !user) {
       return new Response(
-        JSON.stringify({ error: 'Unauthorized' }),
+        JSON.stringify({ error: 'Unauthorized - please log in again' }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 401 }
       );
     }
@@ -43,33 +43,22 @@ Deno.serve(async (req) => {
     // Normalize code to uppercase
     const normalizedCode = code.toUpperCase().trim();
 
-    // Check if code exists and is valid
+    // Check if code exists and is valid with all conditions:
+    // - is_active = true
+    // - used_at IS NULL (not yet used)
+    // - code_expires_at IS NULL OR code_expires_at > now()
     const { data: giftCode, error: codeError } = await supabaseClient
       .from('gift_codes')
       .select('*')
       .eq('code', normalizedCode)
+      .eq('is_active', true)
+      .is('used_at', null)
       .single();
 
     if (codeError || !giftCode) {
       return new Response(
-        JSON.stringify({ error: 'Invalid gift code' }),
+        JSON.stringify({ error: 'Invalid or already used gift code' }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 404 }
-      );
-    }
-
-    // Check if code is already used
-    if (giftCode.used_by) {
-      return new Response(
-        JSON.stringify({ error: 'This gift code has already been used' }),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
-      );
-    }
-
-    // Check if code is active
-    if (!giftCode.is_active) {
-      return new Response(
-        JSON.stringify({ error: 'This gift code is no longer active' }),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
       );
     }
 
@@ -81,7 +70,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Check if user already has this gift code redeemed (check by user)
+    // Check if user already has this tier via a gift code
     const { data: existingRedemption } = await supabaseClient
       .from('gift_codes')
       .select('id')
@@ -113,7 +102,7 @@ Deno.serve(async (req) => {
     const now = new Date();
     const subscriptionEnd = new Date(now);
     
-    // Use the gift code's expiry date if set, otherwise default to 1 year
+    // Use the gift code's expiry date to calculate subscription duration
     if (giftCode.code_expires_at) {
       // Calculate duration based on code creation + expiry
       const expiryDate = new Date(giftCode.code_expires_at);
@@ -151,19 +140,20 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Mark code as used
+    // Mark code as used AND set is_active to false in one update
     const { error: updateError } = await supabaseClient
       .from('gift_codes')
       .update({
         used_by: user.id,
         used_at: now.toISOString(),
+        is_active: false,
       })
       .eq('id', giftCode.id);
 
     if (updateError) {
       console.error('Gift code update error:', updateError);
       // Note: Subscription was created, but we couldn't mark the code as used
-      // This is acceptable as the code validation will still prevent reuse by checking used_by
+      // This is acceptable as the code validation will still prevent reuse by checking used_at
     }
 
     return new Response(
