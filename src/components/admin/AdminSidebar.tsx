@@ -98,11 +98,11 @@ export function AdminSidebar() {
             <NavLink
               to={item.url}
               end={item.end}
-              className="hover:bg-gray-100 text-black"
-              activeClassName="bg-gray-200 text-black font-bold"
+              className="hover:bg-[hsl(var(--admin-bg))] text-[hsl(var(--admin-text))]"
+              activeClassName="bg-[hsl(var(--admin-accent))] text-[hsl(var(--admin-accent-foreground))] font-bold"
             >
-              <item.icon className="h-4 w-4 text-black" />
-              {open && <span className="text-black">{item.title}</span>}
+              <item.icon className="h-4 w-4 text-[hsl(var(--admin-text))]" />
+              {open && <span className="text-[hsl(var(--admin-text))]">{item.title}</span>}
             </NavLink>
           </SidebarMenuButton>
         </SidebarMenuItem>
@@ -111,11 +111,11 @@ export function AdminSidebar() {
   );
 
   return (
-    <Sidebar collapsible="icon" className="border-r-2 border-black bg-white">
+    <Sidebar collapsible="icon" className="border-r border-[hsl(var(--admin-card-border))] bg-[hsl(var(--admin-card-bg))]">
       <SidebarContent className="py-4">
         {/* Main Navigation */}
         <SidebarGroup>
-          {open && <SidebarGroupLabel className="text-black font-bold">Main</SidebarGroupLabel>}
+          {open && <SidebarGroupLabel className="text-[hsl(var(--admin-text-muted))] font-bold">Main</SidebarGroupLabel>}
           <SidebarGroupContent>
             {renderMenuItems(mainItems)}
           </SidebarGroupContent>
@@ -123,7 +123,7 @@ export function AdminSidebar() {
 
         {/* Room Management */}
         <SidebarGroup>
-          {open && <SidebarGroupLabel className="text-black font-bold">Rooms</SidebarGroupLabel>}
+          {open && <SidebarGroupLabel className="text-[hsl(var(--admin-text-muted))] font-bold">Rooms</SidebarGroupLabel>}
           <SidebarGroupContent>
             {renderMenuItems(roomItems)}
           </SidebarGroupContent>
@@ -131,7 +131,7 @@ export function AdminSidebar() {
 
         {/* Monitoring & Analytics */}
         <SidebarGroup>
-          {open && <SidebarGroupLabel className="text-black font-bold">Monitoring</SidebarGroupLabel>}
+          {open && <SidebarGroupLabel className="text-[hsl(var(--admin-text-muted))] font-bold">Monitoring</SidebarGroupLabel>}
           <SidebarGroupContent>
             {renderMenuItems(monitoringItems)}
           </SidebarGroupContent>
@@ -139,7 +139,7 @@ export function AdminSidebar() {
 
         {/* User Management */}
         <SidebarGroup>
-          {open && <SidebarGroupLabel className="text-black font-bold">Users</SidebarGroupLabel>}
+          {open && <SidebarGroupLabel className="text-[hsl(var(--admin-text-muted))] font-bold">Users</SidebarGroupLabel>}
           <SidebarGroupContent>
             {renderMenuItems(userManagementItems)}
           </SidebarGroupContent>
@@ -147,7 +147,7 @@ export function AdminSidebar() {
 
         {/* Developer Tools */}
         <SidebarGroup>
-          {open && <SidebarGroupLabel className="text-black font-bold">Dev Tools</SidebarGroupLabel>}
+          {open && <SidebarGroupLabel className="text-[hsl(var(--admin-text-muted))] font-bold">Dev Tools</SidebarGroupLabel>}
           <SidebarGroupContent>
             {renderMenuItems(devToolsItems)}
           </SidebarGroupContent>
@@ -155,7 +155,7 @@ export function AdminSidebar() {
 
         {/* System */}
         <SidebarGroup>
-          {open && <SidebarGroupLabel className="text-black font-bold">System</SidebarGroupLabel>}
+          {open && <SidebarGroupLabel className="text-[hsl(var(--admin-text-muted))] font-bold">System</SidebarGroupLabel>}
           <SidebarGroupContent>
             {renderMenuItems(systemItems)}
           </SidebarGroupContent>
