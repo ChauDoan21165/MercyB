@@ -12,6 +12,7 @@ import { RoomGridSkeleton } from '@/components/RoomCardSkeleton';
 import { getHeadingColor } from '@/lib/roomColors';
 import { TIERS } from '@/lib/constants';
 import { usePrefetchRooms } from "@/hooks/usePrefetchRooms";
+import { VIPLockedAccess } from "@/components/VIPLockedAccess";
 
 const RoomGridVIP5 = () => {
   const navigate = useNavigate();
@@ -43,6 +44,9 @@ const RoomGridVIP5 = () => {
     );
   }
 
+  if (!hasAccess) {
+    return <VIPLockedAccess tier="vip5" tierLabel="VIP5 Writing" backgroundColor="hsl(var(--page-vip5))" />;
+  }
 
   return (
     <div className="min-h-screen">

@@ -11,6 +11,7 @@ import { VirtualizedRoomGrid } from '@/components/VirtualizedRoomGrid';
 import { useToast } from "@/hooks/use-toast";
 import { TIERS } from '@/lib/constants';
 import { usePrefetchRooms } from "@/hooks/usePrefetchRooms";
+import { VIPLockedAccess } from "@/components/VIPLockedAccess";
 
 const RoomGridVIP2 = () => {
   const navigate = useNavigate();
@@ -42,7 +43,9 @@ const RoomGridVIP2 = () => {
     );
   }
 
-  return (
+  if (!hasAccess) {
+    return <VIPLockedAccess tier="vip2" tierLabel="VIP2" backgroundColor="hsl(var(--page-vip2))" />;
+  }
     <div className="min-h-screen">
       <GlobalAppBar breadcrumbs={[{ label: 'VIP2 Rooms' }]} />
       <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip2))' }}>

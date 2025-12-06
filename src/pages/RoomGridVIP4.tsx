@@ -12,6 +12,7 @@ import { VirtualizedRoomGrid } from '@/components/VirtualizedRoomGrid';
 import { RoomGridSkeleton } from '@/components/RoomCardSkeleton';
 import { TIERS } from '@/lib/constants';
 import { usePrefetchRooms } from "@/hooks/usePrefetchRooms";
+import { VIPLockedAccess } from "@/components/VIPLockedAccess";
 
 const VIP4_CAREER_ROOMS = [
   { id: "courage-to-begin", name: "Courage to Begin" },
@@ -59,11 +60,7 @@ const RoomGridVIP4 = () => {
   }
 
   if (!hasAccess) {
-    return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: 'hsl(var(--page-vip4))' }}>
-        <p className="text-muted-foreground">You don't have access to VIP4 yet.</p>
-      </div>
-    );
+    return <VIPLockedAccess tier="vip4" tierLabel="VIP4 Career" backgroundColor="hsl(var(--page-vip4))" />;
   }
 
   return (

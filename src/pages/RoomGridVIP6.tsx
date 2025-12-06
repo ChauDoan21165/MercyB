@@ -11,6 +11,7 @@ import { VirtualizedRoomGrid } from '@/components/VirtualizedRoomGrid';
 import { RoomGridSkeleton } from '@/components/RoomCardSkeleton';
 import { TIERS } from '@/lib/constants';
 import { usePrefetchRooms } from "@/hooks/usePrefetchRooms";
+import { VIPLockedAccess } from "@/components/VIPLockedAccess";
 
 const RoomGridVIP6 = () => {
   const navigate = useNavigate();
@@ -43,11 +44,7 @@ const RoomGridVIP6 = () => {
   }
 
   if (!hasAccess) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <p className="text-muted-foreground">You don't have access to VIP6 yet.</p>
-      </div>
-    );
+    return <VIPLockedAccess tier="vip6" tierLabel="VIP6 Psychology" backgroundColor="hsl(var(--page-vip6))" />;
   }
 
   return (
