@@ -1,7 +1,7 @@
 {
-  "version": "2024-12-06-16",
-  "hash": "gift-fix",
-  "buildTime": "2024-12-06T16:00:00.000Z",
+  "version": "2024-12-06-17",
+  "hash": "version-block",
+  "buildTime": "2024-12-06T17:00:00.000Z",
   "app": "mercy-blade",
-  "semver": "0.9.16"
+  "semver": "0.9.17"
 }

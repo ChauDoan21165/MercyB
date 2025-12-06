@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Gift, Loader2, X } from "lucide-react";
+import { Gift, Loader2 } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { useNavigate, useLocation } from "react-router-dom";
 
 interface GiftCodeModalProps {
   open: boolean;
@@ -30,6 +31,8 @@ export function GiftCodeModal({
   const [isRedeeming, setIsRedeeming] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { toast } = useToast();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleRedeem = async () => {
     if (!code.trim()) {
@@ -49,14 +52,47 @@ export function GiftCodeModal({
 
       console.log('[redeem-gift-code] Response:', { data, invokeError });
 
+      // Handle 401/auth errors - redirect to login
       if (invokeError) {
         console.error('[redeem-gift-code] Invoke error:', invokeError);
+        
+        // Check for auth-related errors
+        const errorMessage = invokeError.message?.toLowerCase() || '';
+        if (errorMessage.includes('unauthorized') || errorMessage.includes('401') || errorMessage.includes('auth')) {
+          toast({
+            title: "Session Expired",
+            description: "Session expired, please log in again / Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại",
+            variant: "destructive",
+          });
+          
+          // Close modal and redirect to auth
+          onOpenChange(false);
+          const redirectPath = encodeURIComponent(location.pathname);
+          navigate(`/auth?redirect=${redirectPath}`);
+          return;
+        }
+        
         setError(invokeError.message || "Failed to redeem code");
         return;
       }
 
       if (data?.error) {
         console.error('[redeem-gift-code] API error:', data.error);
+        
+        // Check for auth errors in response data
+        if (data.error.toLowerCase().includes('unauthorized') || data.error.toLowerCase().includes('session')) {
+          toast({
+            title: "Session Expired",
+            description: "Session expired, please log in again / Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại",
+            variant: "destructive",
+          });
+          
+          onOpenChange(false);
+          const redirectPath = encodeURIComponent(location.pathname);
+          navigate(`/auth?redirect=${redirectPath}`);
+          return;
+        }
+        
         setError(data.error);
         return;
       }
@@ -175,7 +211,7 @@ export function GiftCodeModal({
             <ul className="space-y-1 list-disc list-inside">
               <li>Enter your gift code above</li>
               <li>Click "Redeem" to activate</li>
-              <li>VIP access is granted for 1 year</li>
+              <li>VIP access is granted based on code duration</li>
               <li>Each code can only be used once</li>
             </ul>
           </div>
