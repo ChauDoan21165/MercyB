@@ -41,6 +41,9 @@ Deno.serve(async (req) => {
       );
     }
 
+    // Extract JWT token from Authorization header
+    const token = authHeader.replace('Bearer ', '');
+    
     // Create client with user's auth for getting user info
     const supabaseClient = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
@@ -52,8 +55,8 @@ Deno.serve(async (req) => {
       }
     );
 
-    // Get user from auth
-    const { data: { user }, error: authError } = await supabaseClient.auth.getUser();
+    // Get user from auth - pass the token directly
+    const { data: { user }, error: authError } = await supabaseClient.auth.getUser(token);
     console.log('[generate-gift-code] Auth result:', { userId: user?.id, authError: authError?.message });
     
     if (authError || !user) {
