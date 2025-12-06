@@ -12,6 +12,7 @@ import { ThemeProvider } from "next-themes";
 import { AdminRoute } from "@/components/AdminRoute";
 import { MusicPlayerProvider } from "@/contexts/MusicPlayerContext";
 import { LowDataModeProvider } from "@/contexts/LowDataModeContext";
+import { MbThemeProvider } from "@/hooks/useMbTheme";
 import { UnifiedBottomBar } from "@/components/UnifiedBottomBar";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { OfflineDetector } from "@/components/OfflineDetector";
@@ -163,6 +164,19 @@ const RouteAwareBottomBar = () => {
   return <UnifiedBottomBar />;
 };
 
+// Content wrapper that applies B&W mode scoping - excludes admin routes
+const ScopedAppContent = ({ children }: { children: React.ReactNode }) => {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
+  
+  // Admin routes don't get the mb-app-content wrapper, so B&W mode won't affect them
+  if (isAdminRoute) {
+    return <>{children}</>;
+  }
+  
+  return <div className="mb-app-content">{children}</div>;
+};
+
 const App = () => {
   useEffect(() => {
     // Log app startup
@@ -211,20 +225,22 @@ const App = () => {
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <LowDataModeProvider>
-            <TooltipProvider>
-              <Toaster />
-              <Sonner />
-              <OfflineDetector />
-              <DevObservabilityPanel />
-              <MusicPlayerProvider>
-                <BrowserRouter>
-                  <EnvironmentBanner />
-                  <GlobalNavigationBox />
-                  
-                  <PerformanceProfiler />
-                  
-                  <Suspense fallback={<LoadingSkeleton variant="page" />}>
+          <MbThemeProvider>
+            <LowDataModeProvider>
+              <TooltipProvider>
+                <Toaster />
+                <Sonner />
+                <OfflineDetector />
+                <DevObservabilityPanel />
+                <MusicPlayerProvider>
+                  <BrowserRouter>
+                    <EnvironmentBanner />
+                    <GlobalNavigationBox />
+                    
+                    <PerformanceProfiler />
+                    
+                    <ScopedAppContent>
+                    <Suspense fallback={<LoadingSkeleton variant="page" />}>
                     <Routes>
                       {/* Public routes */}
                       <Route path="/" element={<Homepage />} />
@@ -350,15 +366,17 @@ const App = () => {
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </Suspense>
+                    </ScopedAppContent>
                   
                   <RouteAwareBottomBar />
                   
                   {/* Mercy Toggle - shows when companion is disabled */}
                   <MercyToggle />
-                </BrowserRouter>
-              </MusicPlayerProvider>
-            </TooltipProvider>
-          </LowDataModeProvider>
+                  </BrowserRouter>
+                </MusicPlayerProvider>
+              </TooltipProvider>
+            </LowDataModeProvider>
+          </MbThemeProvider>
         </ThemeProvider>
       </QueryClientProvider>
     </ErrorBoundary>
