@@ -14,7 +14,7 @@ export function AdminThemeToggle() {
       variant="ghost"
       size="icon"
       onClick={toggleTheme}
-      className="text-white hover:bg-white/10"
+      className="text-black hover:bg-gray-100"
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
       {theme === "dark" ? (
