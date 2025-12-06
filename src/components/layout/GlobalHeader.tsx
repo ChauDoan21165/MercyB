@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { HomeButton } from "@/components/HomeButton";
 import { BackButton } from "@/components/BackButton";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { RoomSearch } from "@/components/RoomSearch";
 
 /**
  * GlobalHeader - Single app-wide header with Mercy Blade logo
@@ -11,19 +12,23 @@ import { ThemeToggle } from "@/components/ThemeToggle";
  * - Single source of truth for the header
  * - Logo centered within 720px container
  * - Navigation left, controls right
+ * - Search box available on all pages
  */
 export function GlobalHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background/80 backdrop-blur-sm">
-      <div className="h-12 px-4 grid grid-cols-[auto,1fr,auto] items-center">
+      <div className="h-12 px-4 grid grid-cols-[auto,1fr,auto] items-center gap-2">
         {/* Left: navigation */}
         <div className="flex items-center gap-2">
           <HomeButton />
           <BackButton />
         </div>
 
-        {/* Center: Mercy Blade logo - perfectly centered in column 2 */}
-        <div className="flex justify-center">
+        {/* Center: Search box + Logo */}
+        <div className="flex items-center justify-center gap-4">
+          <div className="hidden sm:block w-48 lg:w-64">
+            <RoomSearch />
+          </div>
           <Link
             to="/"
             className="font-semibold text-lg tracking-tight bg-gradient-to-r from-[hsl(var(--rainbow-magenta))] via-[hsl(var(--rainbow-purple))] to-[hsl(var(--rainbow-cyan))] bg-clip-text text-transparent hover:opacity-80 transition-opacity"
