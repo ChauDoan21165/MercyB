@@ -111,8 +111,26 @@ Deno.serve(async (req) => {
     }
 
     const now = new Date();
-    const oneYearLater = new Date(now);
-    oneYearLater.setFullYear(oneYearLater.getFullYear() + 1);
+    const subscriptionEnd = new Date(now);
+    
+    // Use the gift code's expiry date if set, otherwise default to 1 year
+    if (giftCode.code_expires_at) {
+      // Calculate duration based on code creation + expiry
+      const expiryDate = new Date(giftCode.code_expires_at);
+      const createdDate = new Date(giftCode.created_at);
+      const durationMs = expiryDate.getTime() - createdDate.getTime();
+      subscriptionEnd.setTime(now.getTime() + durationMs);
+    } else {
+      // Default to 1 year
+      subscriptionEnd.setFullYear(subscriptionEnd.getFullYear() + 1);
+    }
+
+    // Format duration for user-friendly message
+    const durationDays = Math.round((subscriptionEnd.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+    let durationLabel = '1 year';
+    if (durationDays <= 35) durationLabel = '1 month';
+    else if (durationDays <= 100) durationLabel = '3 months';
+    else if (durationDays <= 200) durationLabel = '6 months';
 
     // Create subscription
     const { error: subscriptionError } = await supabaseClient
@@ -122,7 +140,7 @@ Deno.serve(async (req) => {
         tier_id: tier.id,
         status: 'active',
         current_period_start: now.toISOString(),
-        current_period_end: oneYearLater.toISOString(),
+        current_period_end: subscriptionEnd.toISOString(),
       });
 
     if (subscriptionError) {
@@ -151,9 +169,10 @@ Deno.serve(async (req) => {
     return new Response(
       JSON.stringify({ 
         success: true,
-        message: `Successfully redeemed ${giftCode.tier} gift code! Access granted for 1 year.`,
+        message: `Successfully redeemed ${giftCode.tier} gift code! Access granted for ${durationLabel}.`,
         tier: giftCode.tier,
-        expires_at: oneYearLater.toISOString(),
+        duration: durationLabel,
+        expires_at: subscriptionEnd.toISOString(),
       }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 200 }
     );

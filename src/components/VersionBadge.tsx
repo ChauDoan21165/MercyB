@@ -14,7 +14,7 @@ export function VersionBadge() {
   const [open, setOpen] = useState(false);
 
   // Fallback version if not loaded yet
-  const displayVersion = currentVersion?.semver || '0.9.15';
+  const displayVersion = currentVersion?.semver || '0.9.16';
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
