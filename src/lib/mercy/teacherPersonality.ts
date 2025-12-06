@@ -351,9 +351,6 @@ export const MESSAGES_BY_EVENT: Record<TeacherEvent, MercyMessage[]> = {
   // SHADOW ATTEMPT GOOD (18 lines) ✅ COMPLETE
   // ============================================
   shadow_attempt_good: [
-    { id: 'sag_1', event: 'shadow_attempt_good', emotion: 'excited_proud', text: { en: "Great shadowing! Your pronunciation is improving.", vi: "Shadowing tốt lắm! Phát âm của bạn đang tiến bộ." } },
-    { id: 'sag_2', event: 'shadow_attempt_good', emotion: 'excited_proud', text: { en: "Well done! Your voice matches the rhythm.", vi: "Làm tốt lắm! Giọng bạn khớp với nhịp." } },
-    { id: 'sag_3', event: 'shadow_attempt_good', emotion: 'playful', text: { en: "That sounded natural! Keep it up.", vi: "Nghe tự nhiên lắm! Tiếp tục nhé." } },
     { id: 'shadow_good_01', event: 'shadow_attempt_good', emotion: 'excited_proud', text: { en: "That sounded smoother. Your mouth is learning the path.", vi: "Vừa rồi nghe mượt hơn. Miệng bạn đang học đúng đường đi." } },
     { id: 'shadow_good_02', event: 'shadow_attempt_good', emotion: 'warm_gentle', text: { en: "Nice. Feel how the rhythm is clearer now?", vi: "Hay lắm. Bạn thấy nhịp rõ hơn chưa?" } },
     { id: 'shadow_good_03', event: 'shadow_attempt_good', emotion: 'playful', text: { en: "Your tongue just leveled up a little.", vi: "Lưỡi của bạn vừa lên level một chút rồi đó." } },
@@ -376,9 +373,6 @@ export const MESSAGES_BY_EVENT: Record<TeacherEvent, MercyMessage[]> = {
   // SHADOW ATTEMPT BAD (18 lines) ✅ COMPLETE
   // ============================================
   shadow_attempt_bad: [
-    { id: 'sab_1', event: 'shadow_attempt_bad', emotion: 'warm_gentle', text: { en: "Good try! Listen again and repeat slowly.", vi: "Cố gắng tốt! Nghe lại và lặp lại chậm hơn." } },
-    { id: 'sab_2', event: 'shadow_attempt_bad', emotion: 'warm_gentle', text: { en: "It's okay. Practice makes progress, not perfection.", vi: "Không sao. Luyện tập tạo tiến bộ, không phải hoàn hảo." } },
-    { id: 'sab_3', event: 'shadow_attempt_bad', emotion: 'warm_gentle', text: { en: "Let's try that again. Slower this time.", vi: "Thử lại nhé. Chậm hơn lần này." } },
     { id: 'shadow_bad_01', event: 'shadow_attempt_bad', emotion: 'warm_gentle', text: { en: "Messy is okay. Your mouth is still mapping the route.", vi: "Lộn xộn cũng không sao. Miệng bạn vẫn đang vẽ bản đồ đường đi." } },
     { id: 'shadow_bad_02', event: 'shadow_attempt_bad', emotion: 'reassuring', text: { en: "That felt rough, right? Good. That's how training works.", vi: "Cảm giác hơi gồ ghề phải không? Tốt. Tập luyện là như vậy." } },
     { id: 'shadow_bad_03', event: 'shadow_attempt_bad', emotion: 'warm_gentle', text: { en: "Let's slow it down and try a smaller piece.", vi: "Mình giảm tốc độ và chia câu này nhỏ hơn nhé." } },
@@ -408,8 +402,6 @@ export const MESSAGES_BY_EVENT: Record<TeacherEvent, MercyMessage[]> = {
   // SHADOW SESSION COMPLETE (12 lines) ✅ COMPLETE
   // ============================================
   shadow_session_complete: [
-    { id: 'ssc_1', event: 'shadow_session_complete', emotion: 'excited_proud', text: { en: "Shadow session complete! Your speaking grows stronger.", vi: "Hoàn thành buổi shadow! Kỹ năng nói mạnh hơn rồi." } },
-    { id: 'ssc_2', event: 'shadow_session_complete', emotion: 'excited_proud', text: { en: "Well done! Regular shadow practice builds fluency.", vi: "Làm tốt lắm! Luyện shadow đều đặn xây dựng sự lưu loát." } },
     { id: 'shadow_done_01', event: 'shadow_session_complete', emotion: 'excited_proud', text: { en: "Shadowing session done. Your speaking muscles worked well.", vi: "Buổi shadowing xong rồi. Các cơ nói của bạn đã hoạt động rất tốt." } },
     { id: 'shadow_done_02', event: 'shadow_session_complete', emotion: 'warm_gentle', text: { en: "Nice effort. Your mouth is a bit more used to English now.", vi: "Bạn đã cố gắng rất tốt. Miệng bạn giờ quen tiếng Anh hơn một chút rồi." } },
     { id: 'shadow_done_03', event: 'shadow_session_complete', emotion: 'excited_proud', text: { en: "You stayed with the audio until the end. That's real discipline.", vi: "Bạn đã theo audio tới cuối. Đó là sự kỷ luật thật sự." } },
@@ -442,7 +434,6 @@ export const MESSAGES_BY_EVENT: Record<TeacherEvent, MercyMessage[]> = {
     { id: 'sd30_2', event: 'streak_day_30', emotion: 'excited_proud', text: { en: "One month of English! I'm so proud of you.", vi: "Một tháng tiếng Anh! Mình rất tự hào về bạn." } },
   ],
   streak_continue: [
-    { id: 'sc_1', event: 'streak_continue', emotion: 'playful', text: { en: "Another day, another win. Keep the streak alive!", vi: "Thêm một ngày, thêm chiến thắng. Giữ chuỗi ngày!" } },
     { id: 'streak_keep_01', event: 'streak_continue', emotion: 'excited_proud', text: { en: "Streak alive. Showing up again is powerful.", vi: "Chuỗi ngày học vẫn đang chạy. Việc bạn lại xuất hiện rất có sức mạnh." } },
     { id: 'streak_keep_02', event: 'streak_continue', emotion: 'warm_gentle', text: { en: "Another day, another quiet step forward.", vi: "Thêm một ngày, thêm một bước tiến nhẹ nhàng nữa." } },
     { id: 'streak_keep_03', event: 'streak_continue', emotion: 'excited_proud', text: { en: "You're proving you can be consistent.", vi: "Bạn đang chứng minh mình có thể kiên trì." } },
@@ -456,7 +447,6 @@ export const MESSAGES_BY_EVENT: Record<TeacherEvent, MercyMessage[]> = {
     // --- INSERT NEW streak_continue MESSAGES ABOVE THIS LINE ---
   ],
   streak_break: [
-    { id: 'sb_1', event: 'streak_break', emotion: 'reassuring', text: { en: "Streaks can restart. What matters is you're here now.", vi: "Chuỗi ngày có thể bắt đầu lại. Quan trọng là bạn ở đây." } },
     { id: 'streak_break_01', event: 'streak_break', emotion: 'reassuring', text: { en: "You missed a day. That's human. We simply start again.", vi: "Bạn bỏ lỡ một ngày. Điều đó rất con người. Giờ mình bắt đầu lại thôi." } },
     { id: 'streak_break_02', event: 'streak_break', emotion: 'warm_gentle', text: { en: "A broken streak doesn't erase what you learned.", vi: "Chuỗi bị đứt không xóa đi những gì bạn đã học." } },
     { id: 'streak_break_03', event: 'streak_break', emotion: 'reassuring', text: { en: "One gap is okay. What matters is the next step.", vi: "Một khoảng trống không sao. Quan trọng là bước tiếp theo." } },
@@ -474,9 +464,6 @@ export const MESSAGES_BY_EVENT: Record<TeacherEvent, MercyMessage[]> = {
     // --- INSERT NEW streak_comeback_short MESSAGES ABOVE THIS LINE ---
   ],
   streak_comeback_long: [
-    { id: 'scl_1', event: 'streak_comeback_long', emotion: 'reassuring', text: { en: "You've been missed! English missed you too.", vi: "Bạn đã được nhớ! Tiếng Anh cũng nhớ bạn." } },
-    { id: 'scl_2', event: 'streak_comeback_long', emotion: 'reassuring', text: { en: "Welcome home. Let's refresh what you learned.", vi: "Chào mừng về nhà. Hãy ôn lại những gì bạn đã học." } },
-    { id: 'scl_3', event: 'streak_comeback_long', emotion: 'reassuring', text: { en: "Every return is a victory. Welcome back.", vi: "Mỗi lần quay lại là chiến thắng. Chào mừng trở lại." } },
     { id: 'streak_back_01', event: 'streak_comeback_long', emotion: 'reassuring', text: { en: "You came back after a long break. That's brave.", vi: "Bạn đã quay lại sau một thời gian dài. Điều đó rất dũng cảm." } },
     { id: 'streak_back_02', event: 'streak_comeback_long', emotion: 'warm_gentle', text: { en: "I'm genuinely happy to see you here again.", vi: "Mình thật sự rất vui khi thấy bạn ở đây lần nữa." } },
     { id: 'streak_back_03', event: 'streak_comeback_long', emotion: 'reassuring', text: { en: "We don't need to catch up. We just need to continue.", vi: "Chúng ta không cần "đuổi kịp". Chỉ cần tiếp tục thôi." } },
@@ -494,8 +481,6 @@ export const MESSAGES_BY_EVENT: Record<TeacherEvent, MercyMessage[]> = {
   // USER STATES ✅ COMPLETE
   // ============================================
   user_confused: [
-    { id: 'uc_1', event: 'user_confused', emotion: 'calm_firm', text: { en: "Confused? That's okay. Let's break this down.", vi: "Bối rối? Không sao. Hãy chia nhỏ ra." } },
-    { id: 'uc_2', event: 'user_confused', emotion: 'calm_firm', text: { en: "Let me explain that differently.", vi: "Để mình giải thích khác đi." } },
     { id: 'confused_01', event: 'user_confused', emotion: 'reassuring', text: { en: "Good. Confusion means your brain just met something new.", vi: "Tốt. Bối rối nghĩa là não bạn vừa gặp điều mới." } },
     { id: 'confused_02', event: 'user_confused', emotion: 'warm_gentle', text: { en: "Let's break this idea into smaller pieces together.", vi: "Cùng chia nhỏ ý này ra từng phần nhé." } },
     { id: 'confused_03', event: 'user_confused', emotion: 'reassuring', text: { en: "You're not 'bad at English'. You're just at the edge of your level.", vi: "Bạn không "dở tiếng Anh". Bạn chỉ đang đứng ở rìa trình độ hiện tại thôi." } },
@@ -509,8 +494,6 @@ export const MESSAGES_BY_EVENT: Record<TeacherEvent, MercyMessage[]> = {
     // --- INSERT NEW user_confused MESSAGES ABOVE THIS LINE ---
   ],
   user_low_energy: [
-    { id: 'ule_1', event: 'user_low_energy', emotion: 'reassuring', text: { en: "Low energy today? Even small steps count.", vi: "Hôm nay mệt? Bước nhỏ vẫn có giá trị." } },
-    { id: 'ule_2', event: 'user_low_energy', emotion: 'reassuring', text: { en: "Take it easy. Learning is a marathon.", vi: "Nhẹ nhàng thôi. Học là chặng đường dài." } },
     { id: 'low_energy_01', event: 'user_low_energy', emotion: 'warm_gentle', text: { en: "You're tired. Let's do a tiny version of today's practice.", vi: "Bạn đang mệt. Hôm nay mình làm phiên bản siêu nhỏ nhé." } },
     { id: 'low_energy_02', event: 'user_low_energy', emotion: 'reassuring', text: { en: "Two honest minutes are enough when your energy is low.", vi: "Khi bạn kiệt sức, hai phút luyện thật lòng cũng đã đủ." } },
     { id: 'low_energy_03', event: 'user_low_energy', emotion: 'warm_gentle', text: { en: "We can switch to lighter content but keep the habit alive.", vi: "Ta có thể dùng nội dung nhẹ hơn nhưng vẫn giữ thói quen sống." } },
