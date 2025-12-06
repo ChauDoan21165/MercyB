@@ -294,6 +294,7 @@ const App = () => {
                       <Route path="/promo-code" element={<PromoCode />} />
                       <Route path="/vip-topic-request" element={<VIPTopicRequest />} />
                       <Route path="/redeem-gift" element={<RedeemGiftCode />} />
+                      <Route path="/redeem" element={<RedeemGiftCode />} />
                       <Route path="/user-music-upload" element={<UserMusicUpload />} />
                       <Route path="/tier-map" element={<TierMap />} />
                       <Route path="/audio-upload" element={<AudioUpload />} />

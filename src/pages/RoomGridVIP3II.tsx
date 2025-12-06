@@ -14,6 +14,7 @@ import { VirtualizedRoomGrid } from '@/components/VirtualizedRoomGrid';
 import { RoomGridSkeleton } from '@/components/RoomCardSkeleton';
 import { TIERS, ROOM_GRID_CLASS } from '@/lib/constants';
 import { usePrefetchRooms } from "@/hooks/usePrefetchRooms";
+import { VIPLockedAccess } from "@/components/VIPLockedAccess";
 
 const RoomGridVIP3II = () => {
   const navigate = useNavigate();
@@ -43,6 +44,10 @@ const RoomGridVIP3II = () => {
         <p className="text-muted-foreground">Loading...</p>
       </div>
     );
+  }
+
+  if (!canAccessVIP3II) {
+    return <VIPLockedAccess tier="vip3ii" tierLabel="VIP3 II" backgroundColor="hsl(220, 70%, 95%)" />;
   }
 
   // Filter only VIP3 II rooms (rooms with '-vip3-ii' in their ID)

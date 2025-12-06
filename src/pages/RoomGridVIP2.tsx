@@ -46,6 +46,8 @@ const RoomGridVIP2 = () => {
   if (!hasAccess) {
     return <VIPLockedAccess tier="vip2" tierLabel="VIP2" backgroundColor="hsl(var(--page-vip2))" />;
   }
+
+  return (
     <div className="min-h-screen">
       <GlobalAppBar breadcrumbs={[{ label: 'VIP2 Rooms' }]} />
       <div className="min-h-screen" style={{ background: 'hsl(var(--page-vip2))' }}>

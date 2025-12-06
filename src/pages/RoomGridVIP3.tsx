@@ -14,6 +14,7 @@ import { highlightTextByRules, highlightShortTitle } from "@/lib/wordColorHighli
 
 import { TIERS, ROOM_GRID_CLASS } from '@/lib/constants';
 import { usePrefetchRooms } from "@/hooks/usePrefetchRooms";
+import { VIPLockedAccess } from "@/components/VIPLockedAccess";
 
 // Special VIP3 rooms with custom styling
 const VIP3_SPECIAL_ROOMS: Record<string, string> = {
@@ -54,6 +55,10 @@ const RoomGridVIP3 = () => {
         <p className="text-muted-foreground">Loading...</p>
       </div>
     );
+  }
+
+  if (!hasAccess) {
+    return <VIPLockedAccess tier="vip3" tierLabel="VIP3" backgroundColor="hsl(var(--page-vip3))" />;
   }
 
   // Filter out English Foundation Ladder rooms
